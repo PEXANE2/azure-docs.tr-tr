@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 03/17/2020
+ms.date: 04/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: ed27097d29f3a10e708044ad7e2e30736e2c60e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471855"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638008"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -61,7 +61,7 @@ Ağ filtreleme kurallarını kaynak ve hedef IP adresine, bağlantı noktasına 
 
 ## <a name="fqdn-tags"></a>FQDN etiketleri
 
-FQDN etiketleri, tanınan Azure hizmeti ağ trafiğine güvenlik duvarınızda izin vermenizi kolaylaştırır. Örneğin Windows Update ağ trafiğine güvenlik duvarınızda izin vermek istediğiniz varsayalım. Bir uygulama kuralı oluşturup Windows Update etiketini eklersiniz. Artık Windows Update’in ağ trafiği, güvenlik duvarınızdan geçebilir.
+FQDN etiketleri, güvenlik duvarınızda tanınmış Azure hizmet ağı trafiğine izin vermenizi kolaylaştırır. Örneğin Windows Update ağ trafiğine güvenlik duvarınızda izin vermek istediğiniz varsayalım. Bir uygulama kuralı oluşturup Windows Update etiketini eklersiniz. Artık Windows Update’in ağ trafiği, güvenlik duvarınızdan geçebilir.
 
 ## <a name="service-tags"></a>Hizmet etiketleri
 
@@ -118,7 +118,8 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |SQL FQDN filtreleme desteği yalnızca proxy modunda (port 1433)|Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure SQL Yönetilen Örnek için:<br><br>Önizleme sırasında, SQL FQDN filtreleme yalnızca proxy modunda desteklenir (bağlantı noktası 1433).<br><br>Azure SQL IaaS için:<br><br>Standart olmayan bağlantı noktaları kullanıyorsanız, uygulama kurallarında bu bağlantı noktalarını belirtebilirsiniz.|Azure içinden bağlanıyorsanız varsayılan olan yeniden yönlendirme modunda KI SQL için, bunun yerine Azure Güvenlik Duvarı ağ kurallarının bir parçası olarak SQL hizmet etiketini kullanarak erişime filtre uygulayabilirsiniz.
 |TCP bağlantı noktası 25'te giden trafiğe izin verilmiyor| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. Bağlantı noktası 25 öncelikle kimlik doğrulamamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için [Azure'da giden SMTP bağlantısı sorunlarıyla](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)ilgili daha fazla Sorun Giderme sorunu görün. Ancak, sanal makinelerin aksine, bu işlevselliği Azure Güvenlik Duvarı'nda etkinleştirmek şu anda mümkün değildir.|SMTP sorun giderme makalesinde belgelenmiş olarak e-posta göndermek için önerilen yöntemi izleyin. Veya, varsayılan rotanızdan güvenlik duvarına giden SMTP erişimine ihtiyaç olan sanal makineyi hariç tonuyla dışla ve bunun yerine giden erişimi doğrudan Internet'e yapılandırın.
 |Etkin FTP desteklenmiyor|Etkin FTP, FTP PORT komutunu kullanarak FTP sıçrama saldırılarına karşı korunmak için Azure Güvenlik Duvarı'nda devre dışı bırakılır.|Bunun yerine Pasif FTP kullanabilirsiniz. Güvenlik duvarında TCP bağlantı noktaları 20 ve 21'i hala açıkça açmanız gerekir.
-|SNAT bağlantı noktası kullanım ölçümü %0'ı gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak metrik kullanmak yanlış bir sonuç sağlar.|Bu sorun giderilmiş ve Mayıs 2020 için üretime rollout hedeflenmiştir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu giderir, ancak tutarlı değildir. Ara geçici çözüm olarak, *yalnızca durum=bozulmuş*, *durum=sağlıksız*için değil aramak için güvenlik duvarı durumu durumunu kullanın. Port tükenmesi *bozulmuş*olarak gösterecektir. Güvenlik duvarı sağlığını etkilemek için daha fazla ölçüm olduğunda *sağlıklı değil,* gelecekteki kullanım için ayrılmıştır. 
+|SNAT bağlantı noktası kullanım ölçümü %0'ı gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak metrik kullanmak yanlış bir sonuç sağlar.|Bu sorun giderilmiş ve Mayıs 2020 için üretime rollout hedeflenmiştir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu giderir, ancak tutarlı değildir. Ara geçici çözüm olarak, *yalnızca durum=bozulmuş*, *durum=sağlıksız*için değil aramak için güvenlik duvarı durumu durumunu kullanın. Port tükenmesi *bozulmuş*olarak gösterecektir. Güvenlik duvarı sağlığını etkilemek için daha fazla ölçüm olduğunda *sağlıklı değil,* gelecekteki kullanım için ayrılmıştır.
+|DNAT, Zorunlu Tünelleme özelliğiyle desteklenmez|Zorunlu Tünelleme etkinleştirilmiş olan güvenlik duvarları, asimetrik yönlendirme nedeniyle Internet'ten gelen erişimi destekleyemez.|Bu asimetrik yönlendirme nedeniyle tasarım gereğidir. Gelen bağlantıların dönüş yolu, bağlantının kurulduğunu görmeyen şirket içi güvenlik duvarından geçer.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

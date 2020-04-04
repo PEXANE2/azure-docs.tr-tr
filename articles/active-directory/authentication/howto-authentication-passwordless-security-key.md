@@ -4,19 +4,19 @@ description: FIDO2 güvenlik anahtarlarını kullanarak Azure AD'de parolasız g
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e088d239a91edeff34ecd1a7dc5be7a9f8628da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129154"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653932"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Parolasız güvenlik anahtarı oturum açma (önizleme) etkinleştirme
 
@@ -70,7 +70,7 @@ Parolasız kimlik doğrulama yöntemleriiçin kayıt özellikleri, birleştirilm
 1. USB aygıtı veya **NFC** **aygıtını** seçin.
 1. Anahtarınızı hazırlayın ve **İleri'yi**seçin.
 1. Bir kutu görüntülenir ve kullanıcıdan güvenlik anahtarınız için bir PIN oluşturmasını/girmesini ister, ardından anahtar için gerekli hareketi biyometrik veya dokunma olarak gerçekleştirir.
-1. Kullanıcı, birleşik kayıt deneyimine döndürülür ve anahtar için anlamlı bir ad sağlaması istenir, böylece kullanıcı birden fazla kayıt sahibi olup olmadığını belirleyebilir. **İleri**'ye tıklayın.
+1. Kullanıcı, birleşik kayıt deneyimine döndürülür ve anahtar için anlamlı bir ad sağlaması istenir, böylece kullanıcı birden fazla kayıt sahibi olup olmadığını belirleyebilir. **İleri**’ye tıklayın.
 1. İşlemi tamamlamak için **Bitti'yi** tıklatın.
 
 ## <a name="sign-in-with-passwordless-credential"></a>Parolasız kimlik bilgisi ile oturum açma

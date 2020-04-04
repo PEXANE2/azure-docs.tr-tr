@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c7ec8db212a24f1f23f393e4cb0e7f4150605a56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e3038617c6270acf9af295c910e9fd5c7dae2043
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350789"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633791"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Quickstart: Azure PowerShell ile Synapse SQL havuzu için hesaplamayı ölçeklendirin
 
-Azure PowerShell'i kullanarak Synapse SQL havuzu (veri ambarı) için bilgi işlem ölçeklendirebilirsiniz. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın. 
+Azure PowerShell'i kullanarak Synapse SQL havuzu (veri ambarı) için bilgi işlem ölçeklendirebilirsiniz. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -32,19 +32,19 @@ Bu hızlı başlatma, ölçeklendirebileceğiniz bir SQL havuzuna sahip olduğun
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription)çalıştırın.
+Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext)çalıştırın.
+Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -69,7 +69,7 @@ Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımlar�
 
 SQL havuzunda, veri ambarı birimlerini ayarlayarak bilgi işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
-Veri ambarı birimlerini değiştirmek için [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet'i kullanın. Aşağıdaki örnek, sunucu **sqlpoolservername'deki**Kaynak grubu **kaynak grubunda** barındırılan **mySampleDataWarehouse**veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
+Veri ambarı birimlerini değiştirmek için [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet'i kullanın. Aşağıdaki örnek, sunucu **sqlpoolservername'deki**Kaynak grubu **kaynak grubunda** barındırılan **mySampleDataWarehouse**veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
 
-Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) PowerShell cmdlet'ini kullanın. Bu cmdlet, ResourceGroup **kaynak grubu adı** ve sunucu **sqlpoolservername.database.windows.net** **mySampleDataWarehouse** veritabanının durumunu gösterir.
+Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet'ini kullanın. Bu cmdlet, ResourceGroup **kaynak grubu adı** ve sunucu **sqlpoolservername.database.windows.net** **mySampleDataWarehouse** veritabanının durumunu gösterir.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -120,6 +120,7 @@ $database | Select-Object DatabaseName,Status
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Şimdi SQL havuzu için hesaplamayı ölçeklendirmeyi öğrendiniz. SQL havuzu hakkında daha fazla bilgi edinmek için veri yükleme eğitimine devam edin.
 
 > [!div class="nextstepaction"]

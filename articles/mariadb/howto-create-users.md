@@ -5,22 +5,25 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 23e3c9db6302d2db597283358ff71c3693ecf435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/2/2020
+ms.openlocfilehash: 1b79a49b2fb87ebf180aaaa40447f40c5a982c2e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530181"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632279"
 ---
 # <a name="create-users-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda kullanıcı oluşturma 
 Bu makalede, MariaDB için Azure Veritabanı'nda nasıl kullanıcı oluşturabileceğiniz açıklanmaktadır.
 
 MariaDB için Azure Veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi giriş kullanıcı adı ve parola sağladınız. Daha fazla bilgi için [Quickstart'ı](quickstart-create-mariadb-server-database-using-azure-portal.md)takip edebilirsiniz. Azure portalından sunucu yönetici giriş kullanıcı adınızı bulabilirsiniz.
 
-Sunucu yöneticisi kullanıcı listelenen sunucunuz için belirli ayrıcalıklar alır: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLOLARI, EXECUTE, REPLICATION SLAVE, REPLICATION İSTEMCI, GÖRÜNÜM OLUŞTUR, GÖRÜNÜMÜ GÖSTER, RUTIN OLUŞTUR, RUTINI DEĞIŞTIRME, KULLANıCı OLUŞTURMA, OLAY, TETIKLEYICI
+Sunucu yöneticisi kullanıcı listelenen sunucunuz için belirli ayrıcalıklar alır: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 MariaDB sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve yöneticierişimi vermek için ilk sunucu yöneticisi kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı tek tek veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcılar oluşturmak için kullanılabilir.
+
+> [!NOTE]
+> SUPER ayrıcalığı ve DBA rolü desteklenmez. Hizmette desteklenmeyenleri anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privilege-support) gözden geçirin.
 
 ## <a name="create-additional-admin-users"></a>Ek yönetici kullanıcıları oluşturma
 1. Bağlantı bilgilerini ve yönetici kullanıcı adını alın.

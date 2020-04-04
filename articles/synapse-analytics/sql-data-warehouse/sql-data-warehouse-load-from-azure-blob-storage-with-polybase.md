@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584000"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633268"
 ---
 # <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso perakende verilerini Synapse SQL veri ambarına yükleyin
 
@@ -77,41 +77,40 @@ WITH (
 
 ## <a name="create-the-external-data-source"></a>Dış veri kaynağını oluşturma
 
-Verilerin konumunu ve veri türünü depolamak için bu [CREATE EXTERNAL DATA SOURCE](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql?view=sql-server-ver15) komutunu kullanın. 
+Verilerin konumunu ve veri türünü depolamak için bu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu kullanın.
 
 ```sql
 CREATE EXTERNAL DATA SOURCE AzureStorage_west_public
-WITH 
+WITH
 (  
-    TYPE = Hadoop 
+    TYPE = Hadoop
 ,   LOCATION = 'wasbs://contosoretaildw-tables@contosoretaildw.blob.core.windows.net/'
-); 
+);
 ```
 
 > [!IMPORTANT]
-> Azure blob depolama kaplarınızı herkese açık hale getirmeyi seçerseniz, veri sahibi olarak veri merkezinden ayrıldığında veri çıkış ücretleri için ücretlendirileceğinizi unutmayın. 
-> 
+> Azure blob depolama kaplarınızı herkese açık hale getirmeyi seçerseniz, veri sahibi olarak veri merkezinden ayrıldığında veri çıkış ücretleri için ücretlendirileceğinizi unutmayın.
 
 ## <a name="configure-the-data-format"></a>Veri biçimini yapılandırma
 
 Veriler Azure blob depolama metin dosyalarında depolanır ve her alan bir sınırlayıcı ile ayrılır. SSMS'te, metin dosyalarındaki verilerin biçimini belirtmek için aşağıdaki CREATE EXTERNAL FILE FORMAT komutunu çalıştırın. Contoso verileri sıkıştırılmamış ve boru sınırlandırılmış.
 
 ```sql
-CREATE EXTERNAL FILE FORMAT TextFileFormat 
-WITH 
+CREATE EXTERNAL FILE FORMAT TextFileFormat
+WITH
 (   FORMAT_TYPE = DELIMITEDTEXT
 ,    FORMAT_OPTIONS    (   FIELD_TERMINATOR = '|'
                     ,    STRING_DELIMITER = ''
                     ,    DATE_FORMAT         = 'yyyy-MM-dd HH:mm:ss.fff'
-                    ,    USE_TYPE_DEFAULT = FALSE 
+                    ,    USE_TYPE_DEFAULT = FALSE
                     )
 );
-``` 
+```
 
-## <a name="create-the-external-tables"></a>Dış tabloları oluşturma
-Artık veri kaynağını ve dosya biçimini belirttiğinize göre, dış tabloları oluşturmaya hazırsınız. 
+## <a name="create-the-schema-for-the-external-tables"></a>Dış tablolar için şema oluşturma
 
-## <a name="create-a-schema-for-the-data"></a>Veriler için şema oluşturma
+Artık veri kaynağını ve dosya biçimini belirttiğinize göre, dış tablolar için şemayı oluşturmaya hazırsınız.
+
 Contoso verilerini veritabanınızda depolamak için bir yer oluşturmak için bir şema oluşturun.
 
 ```sql
@@ -163,7 +162,7 @@ CREATE EXTERNAL TABLE [asb].DimProduct (
 )
 WITH
 (
-    LOCATION='/DimProduct/' 
+    LOCATION='/DimProduct/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -172,7 +171,7 @@ WITH
 ;
 
 --FactOnlineSales
-CREATE EXTERNAL TABLE [asb].FactOnlineSales 
+CREATE EXTERNAL TABLE [asb].FactOnlineSales
 (
     [OnlineSalesKey] [int]  NOT NULL,
     [DateKey] [datetime] NOT NULL,
@@ -198,7 +197,7 @@ CREATE EXTERNAL TABLE [asb].FactOnlineSales
 )
 WITH
 (
-    LOCATION='/FactOnlineSales/' 
+    LOCATION='/FactOnlineSales/'
 ,   DATA_SOURCE = AzureStorage_west_public
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
@@ -208,9 +207,10 @@ WITH
 ```
 
 ## <a name="load-the-data"></a>Verileri yükleme
+
 Dış verilere erişmenin farklı yolları vardır.  Verileri doğrudan dış tablolardan sorgulayabilir, verileri veri ambarındaki yeni tablolara yükleyebilir veya varolan veri ambarı tablolarına dış veri ekleyebilirsiniz.  
 
-###  <a name="create-a-new-schema"></a>Yeni bir şema oluşturma
+### <a name="create-a-new-schema"></a>Yeni bir şema oluşturma
 
 CTAS veri içeren yeni bir tablo oluşturur.  İlk olarak, contoso verileri için bir şema oluşturun.
 
@@ -221,11 +221,11 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Verileri yeni tablolara yükleme
 
-Azure blob depolamadan verileri veri ambarı tablosuna yüklemek için [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) deyimini kullanın. [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) ile yükleme, oluşturduğunuz güçlü bir şekilde yazılan harici tablolardan yararlanır. Verileri yeni tablolara yüklemek için tablo başına bir CTAS deyimi kullanın. 
- 
+Azure blob depolamadan verileri veri ambarı tablosuna yüklemek için [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini kullanın. [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) ile yükleme, oluşturduğunuz güçlü bir şekilde yazılan harici tablolardan yararlanır. Verileri yeni tablolara yüklemek için tablo başına bir CTAS deyimi kullanın.
+
 CTAS yeni bir tablo oluşturur ve onu seçili bir deyimin sonuçlarıyla doldurur. CTAS, yeni tabloyu seçifadenin sonuçlarıyla aynı sütunlara ve veri türlerine sahip olacak şekilde tanımlar. Harici bir tablodaki tüm sütunları seçerseniz, yeni tablo dış tablodaki sütunların ve veri türlerinin bir kopyası olur.
 
-Bu örnekte, karma dağıtılmış tablolar olarak hem boyut hem de olgu tablosunu oluştururuz. 
+Bu örnekte, karma dağıtılmış tablolar olarak hem boyut hem de olgu tablosunu oluştururuz.
 
 ```sql
 SELECT GETDATE();
@@ -237,7 +237,7 @@ CREATE TABLE [cso].[FactOnlineSales]       WITH (DISTRIBUTION = HASH([ProductKey
 
 ### <a name="track-the-load-progress"></a>Yük ilerlemesini izleme
 
-Dinamik yönetim görünümlerini (DMV) kullanarak yükünüzün ilerlemesini izleyebilirsiniz. 
+Dinamik yönetim görünümlerini (DMV) kullanarak yükünüzün ilerlemesini izleyebilirsiniz.
 
 ```sql
 -- To see all requests
@@ -254,13 +254,13 @@ SELECT
     r.command,
     s.request_id,
     r.status,
-    count(distinct input_name) as nbr_files, 
+    count(distinct input_name) as nbr_files,
     sum(s.bytes_processed)/1024/1024/1024 as gb_processed
 FROM
     sys.dm_pdw_exec_requests r
     inner join sys.dm_pdw_dms_external_work s
         on r.request_id = s.request_id
-WHERE 
+WHERE
     r.[label] = 'CTAS : Load [cso].[DimProduct]             '
     OR r.[label] = 'CTAS : Load [cso].[FactOnlineSales]        '
 GROUP BY
@@ -276,7 +276,7 @@ ORDER BY
 
 Varsayılan olarak, Synapse SQL veri ambarı tabloyu kümelenmiş sütun deposu dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları sütun deposuna sıkıştırılmamış olabilir.  Bunun olmasının farklı nedenleri vardır. Daha fazla bilgi edinmek için [sütun mağazası dizinlerini yönet'e](sql-data-warehouse-tables-index.md)bakın.
 
-Bir yükten sonra sorgu performansını ve sütun mağazası sıkıştırmasını en iyi duruma getirmek için, sütun deposu dizini tüm satırları sıkıştırmaya zorlamak için tabloyu yeniden oluşturun. 
+Bir yükten sonra sorgu performansını ve sütun mağazası sıkıştırmasını en iyi duruma getirmek için, sütun deposu dizini tüm satırları sıkıştırmaya zorlamak için tabloyu yeniden oluşturun.
 
 ```sql
 SELECT GETDATE();
@@ -290,7 +290,7 @@ Sütun mağazası dizinlerini koruma hakkında daha fazla bilgi için [sütun ma
 
 ## <a name="optimize-statistics"></a>İstatistikleri optimize edin
 
-Yüklemeden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. Belirli sütunların sorgu yüklemlerinde olmayacağını biliyorsanız, bu sütunlar üzerinde istatistik oluşturmayı atlayabilirsiniz. Her sütunda tek sütunlu istatistikler oluşturursanız, tüm istatistikleri yeniden oluşturmak uzun sürebilir. 
+Yüklemeden hemen sonra tek sütunlu istatistikler oluşturmak en iyisidir. Belirli sütunların sorgu yüklemlerinde olmayacağını biliyorsanız, bu sütunlar üzerinde istatistik oluşturmayı atlayabilirsiniz. Her sütunda tek sütunlu istatistikler oluşturursanız, tüm istatistikleri yeniden oluşturmak uzun sürebilir.
 
 Her tablonun her sütununda tek sütunlu istatistikler oluşturmaya karar verirseniz, `prc_sqldw_create_stats` [istatistik](sql-data-warehouse-tables-statistics.md) makalesinde depolanan yordam kodu örneğini kullanabilirsiniz.
 
@@ -339,6 +339,7 @@ CREATE STATISTICS [stat_cso_FactOnlineSales_StoreKey] ON [cso].[FactOnlineSales]
 ```
 
 ## <a name="achievement-unlocked"></a>Başarı kilidi!
+
 Genel verileri veri ambarınıza başarıyla yüklediniz. Harika iş!
 
 Artık verilerinizi keşfetmek için tabloları sorgulamaya başlayabilirsiniz. Marka başına toplam satışları bulmak için aşağıdaki sorguyu çalıştırın:
@@ -352,5 +353,6 @@ GROUP BY p.[BrandName]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Tam veri kümesini yüklemek için, microsoft SQL Server örnek deposundan [contoso perakende veri ambarına tam contoso perakende veri ambarını yükleyin.](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/contoso-data-warehouse/readme.md)
 Daha fazla geliştirme ipucu için, [veri ambarları için Tasarım kararları ve kodlama tekniklerine](sql-data-warehouse-overview-develop.md)bakın.

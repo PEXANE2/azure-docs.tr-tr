@@ -4,19 +4,19 @@ description: Azure AD self servis parola sıfırlama ve bunları nasıl karşıl
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/09/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42f7e120745357d3bd5735cca568bdd6971ea061
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74964046"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652350"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Son kullanıcı kaydı gerektirmeden parola sıfırlama dağıtma
 

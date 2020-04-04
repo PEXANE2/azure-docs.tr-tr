@@ -11,17 +11,19 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586061"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632674"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics için bellek ve eşzamanlılık sınırları
+
 Azure Synapse Analytics'teki çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.  
 
 ## <a name="data-warehouse-capacity-settings"></a>Veri ambarı kapasite ayarları
+
 Aşağıdaki tablolar, farklı performans düzeylerinde veri ambarı için maksimum kapasiteyi gösterir. Performans düzeyini değiştirmek için bkz: [Ölçek hesaplama - portal.](quickstart-scale-compute-portal.md)
 
 ### <a name="service-levels"></a>Hizmet Düzeyleri
@@ -50,7 +52,8 @@ Hizmet düzeyleri DW100c ile DW30000c arasında değişir.
 Maksimum hizmet düzeyi, 60 İşlem düğümü ve İşlem düğümü başına bir dağılıma sahip DW30000c'dir. Örneğin, DW30000c'deki 600 TB veri ambarı, Bilgi İşlem düğümü başına yaklaşık 10 TB'yi işler.
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>İş yükü grupları için eşzamanlılık maksimumları
-İş yükü [gruplarının](sql-data-warehouse-workload-isolation.md)devreye girmesiyle, eşzamanlılık yuvaları kavramı artık geçerli değildir.  İstek başına kaynaklar yüzde bazında ayrılır ve iş yükü grubu tanımında belirtilir.  Ancak, eşzamanlılık yuvaları kaldırılsa bile, hizmet düzeyine bağlı olarak sorgubaşına gereken en az kaynak miktarı vardır.  Aşağıdaki tabloda, hizmet düzeyleri arasında sorgu başına gereken minimum kaynak miktarı ve elde edilebilen ilişkili eşzamanlılık tanımlanmıştır. 
+
+İş yükü [gruplarının](sql-data-warehouse-workload-isolation.md)devreye girmesiyle, eşzamanlılık yuvaları kavramı artık geçerli değildir.  İstek başına kaynaklar yüzde bazında ayrılır ve iş yükü grubu tanımında belirtilir.  Ancak, eşzamanlılık yuvaları kaldırılsa bile, hizmet düzeyine bağlı olarak sorgubaşına gereken en az kaynak miktarı vardır.  Aşağıdaki tabloda, hizmet düzeyleri arasında sorgu başına gereken minimum kaynak miktarı ve elde edilebilen ilişkili eşzamanlılık tanımlanmıştır.
 
 |Hizmet Düzeyi|Maksimum eşzamanlı sorgular|Min % REQUEST_MIN_RESOURCE_GRANT_PERCENT için desteklendi|
 |---|---|---|
@@ -73,7 +76,8 @@ Maksimum hizmet düzeyi, 60 İşlem düğümü ve İşlem düğümü başına bi
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Kaynak sınıfları için eşzamanlılık maksimumları
-Her sorgunun verimli bir şekilde yürütülmesi için yeterli kaynağa sahip olduğundan emin olmak için, kaynak kullanımı her sorguya eşzamanlılık yuvaları atayarak izlenir. Sistem sorguları önem ve eşzamanlılık yuvalarına göre sıraya koyar. Sorgular, yeterli eşzamanlılık yuvası kullanılabilir olana kadar kuyrukta bekler. [Önem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) ve eşzamanlılık yuvaları CPU önceliklendirmesi belirler. Daha fazla bilgi için [bkz.](analyze-your-workload.md)
+
+Her sorgunun verimli bir şekilde yürütülmesi için yeterli kaynağa sahip olduğundan emin olmak için, Azure Synapse'deki SQL Analytics, her sorguya eşzamanlılık yuvaları atayarak kaynak kullanımını izler. Sistem sorguları önem ve eşzamanlılık yuvalarına göre sıraya koyar. Sorgular, yeterli eşzamanlılık yuvası kullanılabilir olana kadar kuyrukta bekler. [Önem](sql-data-warehouse-workload-importance.md) ve eşzamanlılık yuvaları CPU önceliklendirmesi belirler. Daha fazla bilgi için [bkz.](analyze-your-workload.md)
 
 **Statik kaynak sınıfları**
 
@@ -121,11 +125,11 @@ Aşağıdaki tablo, her [dinamik kaynak sınıfı](resource-classes-for-workload
 | DW15000c      | 32                         |  600                        | 18                    | 60                     | 132                   | 420                    |
 | DW30000c      | 32                         | 1200                        | 36                    | 120                    | 264                   | 840                    |
 
-
-Sorgu yürütmeyi başlatmak için yeterli eşzamanlılık yuvası olmadığında, sorgular öneme bağlı olarak sıraya alınır ve yürütülür.  Eşdeğer önem varsa, sorgular ilk katılım, ilk çıkış esasına göre yürütülür.  Sorgular biterken ve sorgu ve yuva sayısı sınırların altına düştükçe, SQL Veri Ambarı sıralı sorgular bırakır. 
+Sorgu yürütmeyi başlatmak için yeterli eşzamanlılık yuvası olmadığında, sorgular öneme bağlı olarak sıraya alınır ve yürütülür.  Eşdeğer önem varsa, sorgular ilk katılım, ilk çıkış esasına göre yürütülür.  Sorgular biterken ve sorgu ve yuva sayısı sınırların altına düştükçe, SQL Veri Ambarı sıralı sorgular bırakır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İş yükünüzü daha da optimize etmek için kaynak sınıfları hakkında daha fazla bilgi edinmek için lütfen aşağıdaki makaleleri inceleyin:
+
 * [İş yükü yönetimi için kaynak sınıfları](resource-classes-for-workload-management.md)
 * [İş yükünüzü analiz etme](analyze-your-workload.md)

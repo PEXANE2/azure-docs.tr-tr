@@ -1,6 +1,6 @@
 ---
 title: Azure Synapse için sütun düzeyinde güvenlik nedir?
-description: Sütun Düzeyinde Güvenlik, müşterilerin kullanıcının yürütme bağlamına veya grup üyeliğine dayalı veritabanı tablo sütunlarına erişimi denetlemesine, uygulamanızdaki güvenliğin tasarımını ve kodlanmasına basitleştirmesine ve sütun üzerindeki kısıtlamaları uygulamanıza olanak tanır Erişim.
+description: Sütun Düzeyinde Güvenlik, müşterilerin kullanıcının yürütme bağlamına veya grup üyeliğine dayalı veritabanı tablo sütunlarına erişimi denetlemesine, uygulamanızdaki güvenliğin tasarımını ve kodlanmasıbasitleştirilmesini ve sütun erişimine kısıtlamalar uygulamanıza olanak tanır.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,24 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 24ead458232b096a5c69ffe8b45c6298a9da9f75
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 61a3e2eadaf79cdb30a931b31cff709298d0a22c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349087"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631291"
 ---
 # <a name="column-level-security"></a>Sütun düzeyinde Güvenlik
 
 Sütun Düzeyinde Güvenlik, müşterilerin kullanıcının yürütme bağlamını veya grup üyeliğini temel alan tablo sütunlarına erişimi denetlemesine olanak tanır.
 
-
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-Bu video yayınlandığından beri [Satır düzeyinde Güvenlik](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) Azure Sinaps için kullanılabilir hale geldi. 
+Bu video yayınlandığından beri [Satır düzeyinde Güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) Azure Sinaps için kullanılabilir hale geldi.
 
 Sütun düzeyinde güvenlik, uygulamanızdaki güvenliğin tasarımını ve kodlamasını basitleştirerek hassas verileri korumak için sütun erişimini kısıtlamanıza olanak sağlar. Örneğin, belirli kullanıcıların bölümleriyle ilgili bir tablonun yalnızca belirli sütunlarına erişebilmesini sağlamak. Erişim kısıtlaması mantığı, başka bir uygulama katmanındaki verilerden uzakta değil, veritabanı katmanında bulunur. Veritabanı, herhangi bir katmandan veri erişimi denendiği her seferde erişim kısıtlamalarını uygular. Bu kısıtlama, genel güvenlik sisteminizin yüzey alanını azaltarak güvenliğinizi daha güvenilir ve sağlam hale getirir. Buna ek olarak, sütun düzeyinde güvenlik, kullanıcılara erişim kısıtlamaları uygulamak için sütunları filtrelemek için görünüm ler sunma gereksinimini de ortadan kaldırır.
 
-[GRANT](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL deyimi yle sütun düzeyinde güvenlik uygulayabilirsiniz. Bu mekanizma yla hem SQL hem de Azure Etkin Dizin (AAD) kimlik doğrulaması desteklenir.
+[GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL deyimi yle sütun düzeyinde güvenlik uygulayabilirsiniz. Bu mekanizma yla hem SQL hem de Azure Etkin Dizin (AAD) kimlik doğrulaması desteklenir.
 
 ![Cls](./media/column-level-security/cls.png)
 
@@ -52,6 +51,7 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Örnek
+
 Aşağıdaki örnek, tablonun `TestUser` `SSN` `Membership` sütununa erişimin nasıl kısıtlanır olduğunu gösterir:
 
 Sosyal `Membership` güvenlik numaralarını depolamak için kullanılan SSN sütunlu tablo oluşturma:

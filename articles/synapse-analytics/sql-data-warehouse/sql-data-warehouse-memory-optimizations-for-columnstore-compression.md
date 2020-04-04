@@ -11,24 +11,28 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 8e78ad26701bae1357ef6a2a0a03dff1319f0efe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586545"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633178"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Sütun mağazası için satır grubu kalitesini en üst düzeye çıkarma
 
 Satır grubu kalitesi, bir satır grubundaki satır sayısına göre belirlenir. Kullanılabilir belleği artırmak, bir sütun deposu dizininin her satır grubuna sıkıştıran satır sayısını en üst düzeye çıkarabilir.  Sıkıştırma oranlarını ve sütun mağazası dizinleri için sorgu performansını artırmak için bu yöntemleri kullanın.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Satır grubu boyutu neden önemlidir?
-Bir sütun deposu dizini tek tek satır gruplarının sütun bölümlerini tarayarak bir tabloyu taradığından, her satır grubundaki satır sayısını en üst düzeye çıkarmak sorgu performansını artırır. Satır grupları nın satır sayısı yüksekolduğunda, veri sıkıştırma geliştirir, bu da diskten okunacak daha az veri olduğu anlamına gelir.
+Bir sütun deposu dizini tek tek satır gruplarının sütun bölümlerini tarayarak bir tabloyu taradığından, her satır grubundaki satır sayısını en üst düzeye çıkarmak sorgu performansını artırır. 
+
+Satır grupları nın satır sayısı yüksekolduğunda, veri sıkıştırma geliştirir, bu da diskten okunacak daha az veri olduğu anlamına gelir.
 
 Satır grupları hakkında daha fazla bilgi için [Columnstore Dizinler Kılavuzu'na](https://msdn.microsoft.com/library/gg492088.aspx)bakın.
 
 ## <a name="target-size-for-rowgroups"></a>Satır grupları için hedef boyutu
-En iyi sorgu performansı için amaç, sütun deposu dizininde satır başına satır başına satır sayısını en üst düzeye çıkarmaktır. Bir satır grubunun en fazla 1.048.576 satırı olabilir. Satır grubu başına en fazla satır sayısına sahip olmamak sorun değil. Sütun grupları en az 100.000 satır olduğunda sütun mağazası dizinleri iyi performans elde eder.
+En iyi sorgu performansı için amaç, sütun deposu dizininde satır başına satır başına satır sayısını en üst düzeye çıkarmaktır. Bir satır grubunun en fazla 1.048.576 satırı olabilir. 
+
+Satır grubu başına en fazla satır sayısına sahip olmamak sorun değil. Sütun grupları en az 100.000 satır olduğunda sütun mağazası dizinleri iyi performans elde eder.
 
 ## <a name="rowgroups-can-get-trimmed-during-compression"></a>Satır grupları sıkıştırma sırasında kırpılabilir
 
@@ -40,7 +44,9 @@ Toplu yükleme hakkında daha fazla bilgi için, [kümelenmiş sütun deposu diz
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Rowgroup kalitesi nasıl izlenir?
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats[(sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) sql DB eşleşen görünüm tanımı içerir) satır gruplarında satır sayısı ve kırpma varsa kırpma nedeni gibi yararlı bilgileri ortaya çıkarır. Satır grubu kırpma hakkında bilgi almak için bu DMV'yi sorgulamanın kullanışlı bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats[(sys.dm_db_column_store_row_group_physical_stats,](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) satır gruplarındaki satır sayısı ve kırpma varsa kırpma nedeni gibi yararlı bilgileri ortaya çıkaran SQL DB eşleşen görünüm tanımını içerir. 
+
+Satır grubu kırpma hakkında bilgi almak için bu DMV'yi sorgulamanın kullanışlı bir yolu olarak aşağıdaki görünümü oluşturabilirsiniz.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -68,7 +74,7 @@ from cte;
 ```
 
 trim_reason_desc, satır grubunun kırpılıp kırpılmadığını söyler (trim_reason_desc = NO_TRIM kırpma olmadığını ve satır grubunun en uygun kalitede olduğunu gösterir). Aşağıdaki kırpma nedenleri, satır grubunun erken kırpılmış olduğunu gösterir:
-- BULKLOAD: Bu kırpma nedeni, yük için gelen satır toplu 1 milyondan az satır olduğunda kullanılır. 100.000'den fazla satır takılıysa (delta deposuna eklemek yerine) sıkıştırılmış satır grupları oluşturur, ancak kırpma nedenini BULKLOAD olarak ayarlar. Bu senaryoda, toplu iş yükünüzü daha fazla satır içerecek şekilde artırmayı düşünün. Ayrıca, satır grupları bölüm sınırlarını genişletemediğinden çok parçalı olmadığından emin olmak için bölümleme düzeninizi yeniden değerlendirin.
+- BULKLOAD: Bu kırpma nedeni, yük için gelen satır toplu 1 milyondan az satır olduğunda kullanılır. 100.000'den fazla satır takılıysa (delta deposuna eklemek yerine) sıkıştırılmış satır grupları oluşturur, ancak kırpma nedenini BULKLOAD olarak ayarlar. Bu senaryoda, toplu iş yükünüzü daha fazla satır içerecek şekilde artırmayı düşünün. Ayrıca, satır grupları bölüm sınırlarını genişletememesi nedeniyle çok parçalı olmadığından emin olmak için bölümleme düzeninizi yeniden değerlendirin.
 - MEMORY_LIMITATION: 1 milyon satırlık satır grupları oluşturmak için, motor tarafından belirli bir miktar çalışma belleği gereklidir. Yükleme oturumunun kullanılabilir belleği gerekli çalışma belleğinden daha az olduğunda, satır grupları zamanından önce kırpılır. Aşağıdaki bölümlerde, gerekli bellek nasıl tahmin ve daha fazla bellek ayırmak açıklayınız.
 - DICTIONARY_SIZE: Bu kırpma nedeni, geniş ve/veya yüksek kardinallik dizelerine sahip en az bir dize sütunu olduğundan satır grubu kırpma sının oluştuğunu gösterir. Sözlük boyutu bellekte 16 MB ile sınırlıdır ve bu sınıra ulaşıldıktan sonra satır grubu sıkıştırılır. Bu durumla karşılaştıysanız, sorunlu sütunu ayrı bir tabloya yalıtmayı düşünün.
 
@@ -85,18 +91,21 @@ Bir satır grubunu sıkıştırmak için gereken maksimum bellek yaklaşık olar
 - \#satırkısa \* \#dize-sütunlar \* 32 bayt +
 - \#sıkıştırma sözlüğü için \* uzun dize sütunları 16 MB
 
-kısa dize sütunları <= 32 bayt ve uzun dize-sütunlar > 32 bayt dize veri türleri string veri türleri kullanın dize veri türleri kullanın.
+> [!NOTE]
+> Kısa dize sütunları <= 32 bayt ve uzun dize-sütunlar > 32 bayt dize veri türleri string veri türleri kullanın dize veri türleri kullanın.
 
 Uzun dizeleri metin sıkıştırma için tasarlanmış bir sıkıştırma yöntemi ile sıkıştırılır. Bu sıkıştırma yöntemi metin desenleri depolamak için bir *sözlük* kullanır. Sözlüğün maksimum boyutu 16 MB'dır. Satır grubundaki her uzun dize sütunu için yalnızca bir sözlük vardır.
 
-Sütun deposu bellek gereksinimlerini derinlemesine tartışmak için [synapse SQL ölçekleme](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)videosuna bakın: yapılandırma ve kılavuz.
+Sütun deposu bellek gereksinimlerini derinlemesine tartışmak için, video [Synapse SQL havuz ölçekleme bakın: yapılandırma ve rehberlik.](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Bellek gereksinimlerini azaltmanın yolları
 
 Satır gruplarını sütun deposu dizinlerine sıkıştırmak için bellek gereksinimlerini azaltmak için aşağıdaki teknikleri kullanın.
 
 ### <a name="use-fewer-columns"></a>Daha az sütun kullanma
-Mümkünse, tabloyu daha az sütuniçeren tasarlayın. Bir satır grubu sütun deposuna sıkıştırıldığında, sütun deposu dizini her sütun kesimini ayrı ayrı sıkıştırır. Bu nedenle, sütun sayısı arttıkça bir satır grubunu sıkıştırmak için bellek gereksinimleri artar.
+Mümkünse, tabloyu daha az sütuniçeren tasarlayın. Bir satır grubu sütun deposuna sıkıştırıldığında, sütun deposu dizini her sütun kesimini ayrı ayrı sıkıştırır. 
+
+Bu nedenle, sütun sayısı arttıkça bir satır grubunu sıkıştırmak için bellek gereksinimleri artar.
 
 
 ### <a name="use-fewer-string-columns"></a>Daha az dize sütunu kullanma
@@ -109,19 +118,28 @@ Dize sıkıştırma için ek bellek gereksinimleri:
 
 ### <a name="avoid-over-partitioning"></a>Aşırı bölümlemeden kaçının
 
-Sütun mağazası dizinleri bölüm başına bir veya daha fazla satır grubu oluşturur. Azure Synapse Analytics'te veri depolama için, veriler dağıtıldıkça ve her dağıtım bölümlendirildikçe bölüm sayısı hızla artar. Tabloda çok fazla bölüm varsa, satır gruplarını doldurmak için yeterli satır olmayabilir. Satır eksikliği sıkıştırma sırasında bellek basıncı oluşturmaz, ancak en iyi sütun mağazası sorgu performansını elde olmayan satır gruplarına yol açar.
+Sütun mağazası dizinleri bölüm başına bir veya daha fazla satır grubu oluşturur. Azure Synapse Analytics'teki SQL havuzunda, veriler dağıtıldıkça ve her dağıtım bölümlendirildikçe bölüm sayısı hızla artar. 
 
-Aşırı bölümleme önlemek için başka bir nedeni bölümlenmiş bir tabloüzerinde bir sütun deposu dizini içine satır yükleme için bir bellek yükü olmasıdır. Bir yük sırasında, her bölüm sıkıştırılmak için yeterli satır alanına kadar bellekte tutulan birçok bölüm gelen satırları alabilir. Çok fazla bölüm olması ek bellek basıncı oluşturur.
+Tabloda çok fazla bölüm varsa, satır gruplarını doldurmak için yeterli satır olmayabilir. Satır eksikliği sıkıştırma sırasında bellek basıncı oluşturmaz. Ancak, en iyi sütun mağazası sorgu performansını elde olmayan satır gruplarına yol açar.
+
+Aşırı bölümleme önlemek için başka bir nedeni bölümlenmiş bir tabloüzerinde bir sütun deposu dizini içine satır yükleme için bir bellek yükü olmasıdır. 
+
+Bir yük sırasında, her bölüm sıkıştırılmak için yeterli satır alanına kadar bellekte tutulan birçok bölüm gelen satırları alabilir. Çok fazla bölüm olması ek bellek basıncı oluşturur.
 
 ### <a name="simplify-the-load-query"></a>Yük sorgusunu basitleştirin
 
 Veritabanı, sorgudaki tüm işleçler arasında bir sorgu için bellek hibesini paylaşır. Bir yük sorgusu karmaşık sıralamaları ve birleştirir, sıkıştırma için kullanılabilir bellek azalır.
 
-Yalnızca sorguyu yüklemeye odaklanmak için yük sorgusunu tasarla. Verilerdeki dönüşümleri çalıştırmanız gerekiyorsa, bunları yük sorgusundan ayrı çalıştırın. Örneğin, verileri yığın tablosunda sahneleyin, dönüşümleri çalıştırın ve ardından evreleme tablosunu sütun deposu dizinine yükleyin. Ayrıca önce verileri yükleyebilir, sonra da verileri dönüştürmek için MPP sistemini kullanabilirsiniz.
+Yalnızca sorguyu yüklemeye odaklanmak için yük sorgusunu tasarla. Verilerdeki dönüşümleri çalıştırmanız gerekiyorsa, bunları yük sorgusundan ayrı çalıştırın. Örneğin, verileri yığın tablosunda sahneleyin, dönüşümleri çalıştırın ve ardından evreleme tablosunu sütun deposu dizinine yükleyin. 
+
+> [!TIP]
+> Ayrıca önce verileri yükleyebilir, sonra da verileri dönüştürmek için MPP sistemini kullanabilirsiniz.
 
 ### <a name="adjust-maxdop"></a>MAXDOP'u ayarla
 
-Her dağıtım, her dağıtım için birden fazla CPU çekirdeği olduğunda satır gruplarını paralel olarak sütun deposuna sıkıştırır. Paralellik, bellek basıncıve satır grubu kırpma yol açabilir ek bellek kaynakları gerektirir.
+Her dağıtım, her dağıtım için birden fazla CPU çekirdeği olduğunda satır gruplarını paralel olarak sütun deposuna sıkıştırır. 
+
+Paralellik, bellek basıncıve satır grubu kırpma yol açabilir ek bellek kaynakları gerektirir.
 
 Bellek basıncını azaltmak için, yük işlemini her dağıtım da seri modunda çalıştırmaya zorlamak için MAXDOP sorgu ipucunu kullanabilirsiniz.
 
@@ -134,11 +152,13 @@ OPTION (MAXDOP 1);
 
 ## <a name="ways-to-allocate-more-memory"></a>Daha fazla bellek ayırmanın yolları
 
-DWU boyutu ve kullanıcı kaynak sınıfı birlikte bir kullanıcı sorgusu için ne kadar bellek kullanılabilir belirler. Bir yük sorgusu için bellek hibesini artırmak için, DWUs sayısını artırabilir veya kaynak sınıfını artırabilirsiniz.
+DWU boyutu ve kullanıcı kaynak sınıfı birlikte bir kullanıcı sorgusu için ne kadar bellek kullanılabilir belirler. 
+
+Bir yük sorgusu için bellek hibesini artırmak için, DWUs sayısını artırabilir veya kaynak sınıfını artırabilirsiniz.
 
 - DWUs'ları artırmak için [performansı nasıl ölçeklendirebilirim bakın?](quickstart-scale-compute-portal.md)
 - Sorgunun kaynak sınıfını değiştirmek için [bkz.](resource-classes-for-workload-management.md#change-a-users-resource-class)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse SQL için performansı artırmak için daha fazla yol bulmak için [Performansa genel bakış'a](cheat-sheet.md)bakın.
+SQL havuzu için performansı artırmanın daha fazla yolunu bulmak için [Performans'a genel bakış'a](cheat-sheet.md)bakın.

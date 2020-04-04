@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ccc5db828a03c37d3fc4f49b13883ac3eeda2368
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d0a246b111e4ab27a9e595952bb029fa62fe976d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584226"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633664"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure Synapse Analytics'e kimlik doğrulama
 
-Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure Synapse'de Synapse SQL poool'a nasıl kimlik doğrulaması yapılacağını öğrenin.
+Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure Sinaps'ta SQL Analytics'e nasıl kimlik doğrulaması yapılacağını öğrenin.
 
 BIR SQL havuzuna bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçmeniz gerekir. Bağlantı kurduktan sonra, sorgu oturumunuzu kurmanın bir parçası olarak belirli bağlantı ayarları yapılandırılır.  
 
@@ -44,14 +44,12 @@ Varsayılan olarak, bağlantınız kullanıcı veritabanınıza *değil, ana* ve
 
 > [!NOTE]
 > Transact-SQL deyimi **USE MyDatabase;** bir bağlantı için veritabanını değiştirmek için desteklenmez. SSDT içeren bir SQL havuzuna bağlanan kılavuzlar için [Visual Studio makalesini sorgula](sql-data-warehouse-query-visual-studio.md) makalesine bakın.
-> 
-> 
 
-## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Etkin Dizin (Azure AD) kimlik doğrulaması
+## <a name="azure-active-directory-aad-authentication"></a>Azure Etkin Dizin (AAD) kimlik doğrulaması
 
-[Azure Etkin Dizin](../../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulaması, Azure Etkin Dizin'de (Azure AD) kimlikleri kullanarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak tek bir merkezi konumda yönetebilirsiniz. Merkezi kimlik yönetimi, Azure Synapse kullanıcılarını yönetmek için tek bir yer sağlar ve izin yönetimini kolaylaştırır. 
+[Azure Etkin Dizin](../../active-directory/fundamentals/active-directory-whatis.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kimlik doğrulaması, Azure Etkin Dizin'de (Azure AD) kimlikleri kullanarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak tek bir merkezi konumda yönetebilirsiniz. Merkezi kimlik yönetimi, Azure Synapse kullanıcılarını yönetmek için tek bir yer sağlar ve izin yönetimini kolaylaştırır.
 
-### <a name="benefits"></a>Avantajlar
+### <a name="benefits"></a>Yararları
 
 Azure Etkin Dizin avantajları şunlardır:
 
@@ -62,12 +60,10 @@ Azure Etkin Dizin avantajları şunlardır:
 * Azure Active Directory tarafından desteklenen tümleşik Windows kimlik doğrulaması ve diğer kimlik doğrulama biçimlerini etkinleştirerek parola depolamayı ortadan kaldırır.
 * Veritabanı düzeyinde kimlikleri doğrulamak için veritabanı kullanıcıları içeren kullanır.
 * SQL havuzuna bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
-* [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md) ve SQL Server Data [Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json)gibi çeşitli araçlar için Active Directory Universal Authentication aracılığıyla Çoklu Faktörlü kimlik doğrulamayı destekler.
+* [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve SQL Server Data [Tools](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)gibi çeşitli araçlar için Active Directory Universal Authentication aracılığıyla Çoklu Faktörlü kimlik doğrulamayı destekler.
 
 > [!NOTE]
-> Azure Etkin Dizin ilerki hala nispeten yenidir ve bazı sınırlamaları vardır. Azure Etkin Dizininin ortamınız için uygun olduğundan emin olmak için Azure [REKLAM özelliklerine ve sınırlamalarına](../../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)(özellikle Ek hususlara) bakın.
-> 
-> 
+> Azure Etkin Dizin ilerki hala nispeten yenidir ve bazı sınırlamaları vardır. Azure Etkin Dizininin ortamınız için uygun olduğundan emin olmak için Azure [REKLAM özelliklerine ve sınırlamalarına](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations)(özellikle Ek hususlara) bakın.
 
 ### <a name="configuration-steps"></a>Yapılandırma adımları
 
@@ -80,12 +76,12 @@ Azure Etkin Dizin kimlik doğrulamasını yapılandırmak için aşağıdaki ad�
 5. Veritabanınızda Azure AD kimliklerine eşlenen veritabanında bulunan veritabanı kullanıcıları oluşturma
 6. Azure AD kimliklerini kullanarak SQL havuzunuza bağlanın
 
-Şu anda Azure Etkin Dizin kullanıcıları SSDT Object Explorer'da gösterilmez. Geçici çözüm olarak, [sys.database_principals'deki](https://msdn.microsoft.com/library/ms187328.aspx)kullanıcıları görüntüleyin.
+Şu anda Azure Etkin Dizin kullanıcıları SSDT Object Explorer'da gösterilmez. Geçici çözüm olarak, [sys.database_principals'deki](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql??toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#azure-ad-features-and-limitations)kullanıcıları görüntüleyin.
 
 ### <a name="find-the-details"></a>Ayrıntıları bulun
 
-* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları, Azure Sinaps'taki Azure SQL Veritabanı ve Synapse SQL havuzu için hemen hemen aynıdır. [Azure Active Directory Authentication'ı kullanarak SQL Veritabanına veya SQL Havuzuna Bağlanma](../../sql-database/sql-database-aad-authentication.md)konusundaki ayrıntılı adımları izleyin.
-* Özel veritabanı rolleri oluşturun ve rolleri kullanıcılarekleyin. Ardından rollere ayrıntılı izinler tanıyın. Daha fazla bilgi için veritabanı [altyapısı izinleri ile başlarken](https://msdn.microsoft.com/library/mt667986.aspx)bakın.
+* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları, Azure Sinaps'taki Azure SQL Veritabanı ve SQL Analytics için hemen hemen aynıdır. [Azure Active Directory Authentication'ı kullanarak SQL Veritabanına veya SQL Havuzuna Bağlanma](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)konusundaki ayrıntılı adımları izleyin.
+* Özel veritabanı rolleri oluşturun ve rolleri kullanıcılarekleyin. Ardından rollere ayrıntılı izinler tanıyın. Daha fazla bilgi için veritabanı [altyapısı izinleri ile başlarken](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

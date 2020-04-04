@@ -8,43 +8,37 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
-ms.date: 10/25/2019
-ms.openlocfilehash: b68d2a72dc18f683f2203429908a536db1b5124a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: Luis.Quintanilla
+ms.date: 04/02/2020
+ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063996"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631407"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Azure Machine Learning'de model yorumlanabilirliği
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 ## <a name="overview-of-model-interpretability"></a>Model yorumlanabilirliğine genel bakış
 
-Yorumlanabilirlik, şirket politikalarına, endüstri standartlarına ve devlet yönetmeliklerine uygunluğu sağlamak için veri bilimciler ve iş karar vericileri için çok önemlidir:
-+ Veri bilimciler, bulgularının değerini ve doğruluğunu anlayabilmek için modellerini yöneticilere ve paydaşlara açıklayabilme yeteneğine ihtiyaç duyarlar. 
-+ İş karar vericileri, son kullanıcıların güvenlerini kazanmaları ve sürdürmeleri için şeffaflık sağlama becerisine ihtiyaç duyarlar.
+Yorumlanabilirlik, şirket politikalarına, endüstri standartlarına ve devlet yönetmeliklerine uygunluğu sağlamak için veri bilimciler, denetçiler ve iş karar vericileri için çok önemlidir:
+
++ Veri bilimcilerin modellerini yöneticilere ve paydaşlara açıklayabilmeleri gerekir, böylece bulgularının değerini ve doğruluğunu anlayabilirler. Ayrıca, modellerini hata ayıklamak ve bunları nasıl geliştireceklerine dair bilinçli kararlar almak için yorumlanabilirlik gerektirirler. 
+
++ Yasal denetçiler, mevzuata uygunluk la ilgili modelleri doğrulamak ve modellerin kararlarının insanları nasıl etkilediğini izlemek için araçlara ihtiyaç duyarlar. 
+
++ İş karar vericileri, son kullanıcılara şeffaflık sağlama yeteneğine sahip olarak huzur alabilmeye ihtiyaç duyarlar. Bu onları kazanmak ve güven korumak için izin verir.
+
 
 Bir makine öğrenme modelini açıklama yeteneğini etkinleştirmek, model geliştirmenin iki ana aşamasında önemlidir:
-+ Makine öğrenme modeli geliştirme döngüsünün eğitim aşamasında. Model tasarımcıları ve değerlendiriciler hipotezleri doğrulamak ve paydaşlarla güven oluşturmak için bir modelin yorumlanabilirlik çıktısını kullanabilirler. Ayrıca, hata ayıklama, model davranışını doğrulamak ve yanlı lık veya önemsiz özellikleri denetlemek için modele ilişkin öngörüleri de kullanırlar.
++ Eğitim aşamasında, model tasarımcıları ve değerlendiriciler hipotezleri doğrulamak ve paydaşlarla güven oluşturmak için bir modelin yorumlanabilirlik çıktısını kullanabilirler. Ayrıca hata ayıklama, model davranışını doğrulamak ve model haksızlığını veya önemsiz özellikleri denetlemek için modele ilişkin öngörüleri de kullanırlar.
+
 + Çıkarıcı aşama boyunca, dağıtılan modellerin etrafında şeffaflığa sahip olmak, yöneticilerin modelin nasıl çalıştığını ve kararlarının gerçek hayatta insanlara nasıl davrandığını ve etkilediğini "dağıtıldığında" anlamalarını sağlar. 
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning ile Yorumlanabilirlik
 
-Bu makalede, Model yorumlanabilirlik kavramlarının SDK'da nasıl uygulandığını öğreniyorsunuz.
-
-SDK'daki sınıfları ve yöntemleri kullanarak şunları elde edebilirsiniz:
-+ Hem ham hem de mühendislik özellikleri için özellik önem değerleri
-+ Gerçek dünya veri kümelerinde, eğitim ve çıkarım sırasında ölçekte yorumlanabilirlik.
-+ Eğitim zamanında veri ve açıklamalardaki örüntülerin keşfinde size yardımcı olacak etkileşimli görselleştirmeler
-
-
-Makine öğreniminde **özellikler,** hedef veri noktasını tahmin etmek için kullanılan veri alanlarıdır. Örneğin, kredi riskini tahmin etmek için yaş, hesap boyutu ve hesap yaşı için veri alanları kullanılabilir. Bu durumda, yaş, hesap boyutu ve hesap yaşı **özellikleridir.** Özellik önemi, her veri alanının modelin öngörülerini nasıl etkilediğini söyler. Örneğin, hesap boyutu ve yaşı tahmin doğruluğunu önemli ölçüde etkilemezken, yaş tahminde yoğun olarak kullanılabilir. Bu işlem, veri bilimcilerin ortaya çıkan tahminleri açıklamalarına olanak tanır, böylece paydaşlar modelde hangi veri noktalarının en önemli olduğu konusunda görünürlüğe sahiptir.
-
-Bu araçları kullanarak, makine öğrenimi modellerini **tüm verilerüzerinde veya** **yerel olarak belirli bir veri noktasında,** kullanımı kolay ve ölçeklenebilir bir şekilde kullanarak en son teknolojiyi kullanarak açıklayabilirsiniz.
-
-Yorumlanabilirlik sınıfları birden fazla SDK paketi aracılığıyla kullanılabilir hale getirilir. [Azure Machine Learning için SDK paketlerini](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)nasıl yükleyin öğrenin.
+Yorumlanabilirlik sınıfları birden fazla SDK paketi aracılığıyla kullanılabilir: [(Azure Machine Learning için SDK paketlerinin](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)nasıl yüklenir öğrenin )
 
 * `azureml.interpret`, Microsoft tarafından desteklenen işlevleri içeren ana paket.
 
@@ -52,64 +46,76 @@ Yorumlanabilirlik sınıfları birden fazla SDK paketi aracılığıyla kullanı
 
 * `azureml.train.automl.automlexplainer`otomatik makine öğrenme modellerini yorumlamak için paket.
 
+Yorumlanabilirlik `pip install azureml-interpret` paketlerini almak için kullanmak ve `pip install azureml-interpret-contrib` genel kullanım için ve `pip install azureml-interpret-contrib` AutoML kullanımı için.
+
+
 > [!IMPORTANT]
 > `contrib` Ad alanındaki içerik tam olarak desteklenmez. Deneysel işlevler olgunlaştıkça, yavaş yavaş ana ad alanına taşınırlar.
+.
+
+
 
 ## <a name="how-to-interpret-your-model"></a>Modelinizi yorumlama
 
-Modelin genel davranışını veya belirli tahminlerini anlamak için yorumlanabilirlik sınıflarını ve yöntemlerini uygulayabilirsiniz. Eski küresel açıklama denir ve ikinci yerel açıklama denir.
-
-Yöntemler, yöntemin model agnostik mi yoksa modele özgü mü olduğuna göre de kategorize edilebilir. Bazı yöntemler belirli türde modelleri hedeflenebilmiştir. Örneğin, SHAP'ın ağaç açıklayıcısı yalnızca ağaç tabanlı modeller için geçerlidir. Bazı yöntemler modeli taklit açıklayıcı veya SHAP'ın çekirdek açıklayıcısı gibi bir kara kutu olarak ele alabilirsiniz. Paket, `interpret` veri kümelerini, model türlerini ve kullanım örneklerini temel alan bu farklı yaklaşımlardan yararlanır.
-
-Çıktı, belirli bir modelin tahminini nasıl yaptığına ilişkin bir bilgi kümesidir:
-* Genel/yerel göreli özellik önemi
-* Genel/yerel özellik ve tahmin ilişkisi
-
-### <a name="explainers"></a>Açıklamalayıcılar
-
-Bu paket, yorumlanabilir modelleri eğitmek ve kara kutu AI sistemlerini açıklamaya yardımcı olmak için açık kaynak kodlu bir python paketi olan [Interpret-Community'de](https://github.com/interpretml/interpret-community/)geliştirilen yorumlanabilirlik tekniklerini kullanır. [Interpret-Community,](https://github.com/interpretml/interpret-community/) bu SDK'nın desteklenen açıklayıcılarına ev sahipliği yapmaktadır ve şu anda aşağıdaki yorumlanabilirlik tekniklerini desteklemektedir:
-
-* **SHAP Ağacı Açıklayıcısı**: [SHAP](https://github.com/slundberg/shap)'ın ağaç açıklayıcısı, ağaçlara ve ağaç topluluklarına özgü polinom zamanı hızlı SHAP değer tahmin algoritmasına odaklanır.
-* **SHAP Deep Explainer**: [SHAP'ın](https://github.com/slundberg/shap)açıklamasına dayanarak, Deep Explainer ["SHAP NIPS kağıtta](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)açıklanan DeepLIFT ile bağlantı kuran derin öğrenme modellerinde SHAP değerleri için yüksek hızlı bir yaklaşım algoritmasıdır. TensorFlow arka uç kullanan TensorFlow modelleri ve Keras modelleri desteklenmektedir (PyTorch için ön destek de vardır)".
-* **SHAP Lineer Açıklayıcı**: [SHAP](https://github.com/slundberg/shap)'ın Lineer açıklayıcısı, opsiyonel olarak özellikler arası korelasyonları hesaba katmak üzere, doğrusal bir model için SHAP değerlerini hesaplar.
-
-* **SHAP Kernel Explainer**: [SHAP](https://github.com/slundberg/shap)'s Kernel açıklayıcı herhangi bir model için SHAP değerlerini tahmin etmek için özel ağırlıklı yerel lineer regresyon kullanır.
-* **Mimic Explainer**: Mimic explainer karakutu modelleri taklit etmek için [küresel vekil modelleri](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrine dayanmaktadır. Küresel bir vekil modeli mümkün olduğunca doğru bir kara kutu modelinin tahminleri yaklaşık eğitilmiş bir özünde yorumlanabilir bir modeldir. Veri bilim adamı kara kutu modeli hakkında sonuçlar alabilirsiniz vekil modeli yorumlayabilirsiniz. Aşağıdaki yorumlanabilir modellerden birini vekil modeli olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), Lineer Regresyon (LinearExplainableModel), Stochastic Gradyan Descent açıklanabilir model (SGDExplainableModel) ve Karar Ağacı ( KararTreeExplainableModel).
+SDK'daki sınıfları ve yöntemleri kullanarak şunları yapabilirsiniz:
++ Tüm model ve/veya tek tek veri noktaları için özellik önem değerleri oluşturarak model tahminini açıklayın. 
++ Eğitim ve çıkarım sırasında, ölçekte gerçek dünya veri kümelerinde model yorumlanabilirliği elde edin.
++ Eğitim zamanında veri ve açıklamalardaki desenleri keşfetmek için etkileşimli görselleştirme panosu kullanın
 
 
-* **Permütasyon Özelliği Önem Açıklayıcı**: Permütasyon Özelliği [Önemi, Breiman'ın Rastgele Ormanlar makalesine](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. bölüm 10). Yüksek düzeyde, çalışma şekli, tüm veri kümesi için bir anda verileri rasgele bir özelliği karıştırmave faiz ölçümünün ne kadar değiştiğini hesaplamaktır. Değişiklik ne kadar büyükse, bu özellik o kadar önemlidir.
+Makine öğreniminde **özellikler,** hedef veri noktasını tahmin etmek için kullanılan veri alanlarıdır. Örneğin, kredi riskini tahmin etmek için yaş, hesap boyutu ve hesap yaşı için veri alanları kullanılabilir. Bu durumda, yaş, hesap boyutu ve hesap yaşı **özellikleridir.** Özellik önemi, her veri alanının modelin öngörülerini nasıl etkilediğini söyler. Örneğin, hesap boyutu ve yaşı tahmin değerlerini önemli ölçüde etkilemezken, tahminde yaş büyük ölçüde kullanılabilir. Bu işlem, veri bilimcilerin ortaya çıkan tahminleri açıklamalarına olanak tanır, böylece paydaşlar modelde hangi özelliklerin en önemli olduğu konusunda görünürlüğe sahiptir.
 
-* **LIME Explainer** (`contrib`): LIME dayalı , [LIME](https://github.com/marcotcr/lime)Explainer state-of-the-art Yerel yorumlanabilir model-agnostik açıklamalar (LIME) algoritması yerel vekil modelleri oluşturmak için kullanır. Küresel vekil modelleri aksine, LIME bireysel tahminleri açıklamak için yerel vekil modelleri eğitim odaklanır.
-* **HAN Metin Açıklayıcısı** (`contrib`): HAN Text Explainer, belirli bir kara kutu metin modeli için metin verilerinden model açıklamaları almak için Hiyerarşik Dikkat Ağı kullanır. Bu belirli bir kara kutu modelinin öngörülen çıkışları HAN vekil modeli trenler. Metin corpus genelinde küresel eğitim den sonra, açıklamaların doğruluğunu artırmak için belirli bir belge için bir ince ayar adımı ekler. HAN, cümle ve kelime dikkati için iki dikkat katmanı içeren çift yönlü bir RNN kullanır. DNN kara kutu modeli üzerinde eğitildikten ve belirli bir belge üzerinde ince ayar yaptıktan sonra, kullanıcı dikkat katmanlarından sözcük önemlerini ayıklayabilir. HAN metin verileri için LIME veya SHAP daha doğru olduğu gösterilmiştir ama eğitim süresi açısından da daha pahalı. Kullanıcıya, eğitim süresini kısaltmak için GloVe kelime katıştırmalarıyla ağı başlatma seçeneği vermek için iyileştirmeler yapılmıştır. Uzak bir Azure GPU VM üzerinde HAN çalıştırılarak eğitim süresi önemli ölçüde artırılabilir. HAN'ın uygulanması ['Belge Sınıflandırması için Hiyerarşik Dikkat Ağları (Yang vd., 2016)'](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)'' olarak açıklanmıştır.
+Desteklenen yorumlanabilirlik teknikleri, desteklenen makine öğrenimi modelleri ve desteklenen çalışma ortamları hakkında bilgi edinin.
 
 
-* **Tabular Açıklayıcı** `TabularExplainer` : Doğrudan [SHAP](https://github.com/slundberg/shap) Açıklayıcıları çağırmak için aşağıdaki mantığı kullanır:
+## <a name="supported-interpretability-techniques"></a>Desteklenen yorumlanabilirlik teknikleri
 
-    1. Ağaç tabanlı bir modelse, SHAP `TreeExplainer`uygulayın, başka
-    2. Bir DNN modeli ise, SHAP `DeepExplainer`uygulayın, başka
-    3. Doğrusal bir modelse, `LinearExplainer`SHAP uygulayın, başka
-    3. Bir kara kutu modeli olarak davranın ve SHAP uygulayın`KernelExplainer`
+ `azureml-interpret`Yorumlanabilir modelleri eğitmek ve karakutu AI sistemlerinin açıklanmasına yardımcı olmak için açık kaynak kodlu bir python paketi olan [Interpret-Community'de](https://github.com/interpretml/interpret-community/)geliştirilen yorumlanabilirlik tekniklerini kullanır. [Interpret-Community,](https://github.com/interpretml/interpret-community/) bu SDK'nın desteklenen açıklayıcılarına ev sahipliği yapmaktadır ve şu anda aşağıdaki yorumlanabilirlik tekniklerini desteklemektedir:
 
+|Yorumlanabilirlik Tekniği|Açıklama|Tür|
+|--|--|--------------------|
+|1. SHAP Ağacı Açıklama| [SHAP](https://github.com/slundberg/shap)'s ağaç açıklayıcı, hangi polinom zaman hızlı SHAP değer tahmin algoritması **ağaçlar ve ağaçların toplulukları**özgü odaklanır .|Modele özel|
+|2. SHAP Derin Açıklama| [SHAP](https://github.com/slundberg/shap)gelen açıklamaya dayanarak , Deep Explainer ["SHAP NIPS kağıt](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)açıklanan DeepLIFT ile bir bağlantı üzerine inşa derin öğrenme modellerinde SHAP değerleri için yüksek hızlı bir yaklaşım algoritması . **TensorFlow** arka uç kullanan TensorFlow modelleri ve **Keras** modelleri desteklenmektedir (PyTorch için ön destek de vardır)".|Modele özel|
+|3. SHAP Lineer Açıklama| [SHAP'ın](https://github.com/slundberg/shap)Lineer açıklayıcısı, opsiyonel olarak özellikler arası korelasyonları hesaba katmak üzere **doğrusal**bir model için SHAP değerlerini hesaplar.|Modele özel|
+|4. SHAP Kernel Açıklayıcı| [SHAP](https://github.com/slundberg/shap)'s Kernel açıklayıcı herhangi bir **model**için SHAP değerlerini tahmin etmek için özel ağırlıklı yerel doğrusal regresyon kullanır.|Model-agnostik|
+|5. Mimic Explainer (Küresel Vekil)| Mimic explainer karakutu modelleri taklit etmek için [küresel vekil modelleri](https://christophm.github.io/interpretable-ml-book/global.html) eğitim fikrine dayanmaktadır. Küresel bir vekil modeli mümkün olduğunca doğru **olarak herhangi bir kara kutu modelinin** tahminleri yaklaşık eğitimli bir özünde yorumlanabilir bir modeldir. Veri bilim adamları kara kutu modeli hakkında sonuçlar alabilirsiniz vekil modeli yorumlayabilirsiniz. Aşağıdaki yorumlanabilir modellerden birini vekil modeli olarak kullanabilirsiniz: LightGBM (LGBMExplainableModel), Lineer Regresyon (LinearExplainableModel), Stochastic Gradient Descent açıklanabilir model (SGDExplainableModel) ve Karar Ağacı (DecisionTreeExplainableModel).|Model-agnostik|
+|6. Permütasyon Özelliği Önem Açıklayıcı (PFI)| Permütasyon Özelliği Önemi, [Breiman'ın Rastgele Ormanlar makalesine](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) göre sınıflandırma ve regresyon modellerini açıklamak için kullanılan bir tekniktir (bkz. bölüm 10). Yüksek düzeyde, çalışma şekli, tüm veri kümesi için bir anda verileri rasgele bir özelliği karıştırmave faiz ölçümünün ne kadar değiştiğini hesaplamaktır. Değişiklik ne kadar büyükse, bu özellik o kadar önemlidir. PFI, altta yatan **herhangi bir modelin** genel davranışını açıklayabilir, ancak bireysel öngörüleri açıklamaz. |Model-agnostik|
+
+
+
+
+Yukarıda açıklanan yorumlanabilirlik tekniklerinin yanı sıra, başka bir `TabularExplainer` [SHAP tabanlı açıklayıcıyı](https://github.com/slundberg/shap)destekliyoruz. Modele bağlı olarak, `TabularExplainer` desteklenen SHAP açıklamalarından birini kullanır:
+
+* Tüm ağaç tabanlı modeller için TreeExplainer
+* DNN modelleri için DeepExplainer
+* Lineer modeller için LinearExplainer
+* Diğer tüm modeller için KernelExplainer
 
 `TabularExplainer`ayrıca doğrudan SHAP Açıklayıcıları üzerinde önemli özellik ve performans geliştirmeleri yapmıştır:
 
-* **Başlatma veri kümesinin özeti.** Açıklama hızının en önemli olduğu durumlarda, başlatma veri kümesini özetler ve hem genel hem de yerel açıklamayı hızlandıran küçük bir temsilci örnekleri kümesi oluştururuz.
-* **Değerlendirme veri kümesini örnekleme.** Kullanıcı büyük bir değerlendirme örneği kümesini geçerse, ancak bunların tamamının değerlendirilmesi gerekmezse, genel açıklamayı hızlandırmak için örnekleme parametresi doğru olarak ayarlanabilir.
+* **Başlatma veri kümesinin özeti.** Açıklama hızının en önemli olduğu durumlarda, başlatma veri kümesini özetler ve genel ve bireysel özellik önem değerlerinin oluşturulmasını hızlandıran küçük bir temsili örnek kümesi oluştururuz.
+* **Değerlendirme veri kümesini örnekleme.** Kullanıcı büyük bir değerlendirme örneği kümesini geçerse, ancak bunların tamamının değerlendirilmesi gerekmezse, genel model açıklamalarının hesaplanmasını hızlandırmak için örnekleme parametresi doğru olarak ayarlanabilir.
 
-Aşağıdaki diyagram, doğrudan ve meta açıklayıcıların geçerli yapısını gösterir.
+Aşağıdaki diyagram, desteklenen açıklayıcıların geçerli yapısını gösterir.
 
 [![Makine Öğrenimi Yorumlanabilirlik Mimarisi](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
 
 
-### <a name="models-supported"></a>Desteklenen modeller
+## <a name="supported-machine-learning-models"></a>Desteklenen makine öğrenme modelleri
 
-Python `numpy.array` `pandas.DataFrame`, `iml.datatypes.DenseData`veya `scipy.sparse.csr_matrix` biçimde veri kümeleri üzerinde eğitilmiş tüm modeller `explain` SDK'nın yorumlanabilirlik paketi tarafından desteklenir.
+SDK `azureml.interpret` paketi aşağıdaki veri seti biçimleri ile eğitilmiş modelleri destekler:
+- `numpy.array`
+- `pandas.DataFrame`
+- `iml.datatypes.DenseData`
+- `scipy.sparse.csr_matrix`
 
-Açıklama işlevleri hem modelleri hem de ardışık hatları girdi olarak kabul eder. Bir model sağlanırsa, modelin tahmin `predict` `predict_proba` işlevini veya Scikit kuralına uygun şekilde uygulaması gerekir. Bir ardışık hatlar (ardışık komut dosyasının adı) sağlanırsa, açıklama işlevi çalışan ardışık komut dosyasının bir öngörü döndürür varsayar. PyTorch, TensorFlow ve Keras derin öğrenme çerçeveleri üzerinden eğitilmiş modelleri destekliyoruz.
+Açıklama işlevleri hem modelleri hem de ardışık hatları girdi olarak kabul eder. Bir model sağlanırsa, modelin tahmin `predict` `predict_proba` işlevini veya Scikit kuralına uygun şekilde uygulaması gerekir. Modeliniz bunu desteklemiyorsa, modelinizi Scikit'te `predict` veya `predict_proba` Scikit'te aynı sonucu oluşturan bir işleve sarıbilir ve bu sarıcı işlevini seçili açıklamayla kullanabilirsiniz. Bir ardışık hatlar sağlanmışsa, açıklama işlevi çalışan ardışık komut dosyasının bir öngörü döndürür varsayar. Bu sarma tekniğini kullanarak, `azureml.interpret` PyTorch, TensorFlow ve Keras derin öğrenme çerçeveleri yanı sıra klasik makine öğrenme modelleri ile eğitilmiş modelleri destekleyebilir.
 
-### <a name="local-and-remote-compute-target"></a>Yerel ve uzak işlem hedefi
+## <a name="local-and-remote-compute-target"></a>Yerel ve uzak işlem hedefi
 
-Paket `explain` hem yerel hem de uzaktan işlem hedefleri ile çalışacak şekilde tasarlanmıştır. Yerel olarak çalıştırılırsa, SDK işlevleri hiçbir Azure hizmetine başvurmaz. Açıklamayı Azure Machine Learning Compute'da uzaktan çalıştırabilir ve açıklama bilgilerini Azure Machine Learning Run History Services'da oturum açabilirsiniz. Bu bilgiler günlüğe kaydedildikten sonra, kullanıcı çözümlemesi için Azure Machine Learning çalışma alanında açıklamadan gelen raporlar ve görselleştirmeler kolayca kullanılabilir.
+Paket `azureml.interpret` hem yerel hem de uzaktan işlem hedefleri ile çalışacak şekilde tasarlanmıştır. Yerel olarak çalıştırılırsa, SDK işlevleri hiçbir Azure hizmetine başvurmaz. 
+
+Açıklamayı Azure Machine Learning Compute'da uzaktan çalıştırabilir ve açıklama bilgilerini Azure Machine Learning Run History Service'de kaydedebilirsiniz. Bu bilgiler günlüğe kaydedildikten sonra, kullanıcı çözümlemesi için Azure Machine Learning stüdyosunda açıklamadan gelen raporlar ve görselleştirmeler kolayca kullanılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

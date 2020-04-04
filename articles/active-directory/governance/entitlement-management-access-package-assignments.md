@@ -16,16 +16,23 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a2107974cd63c0d02aaeb555430453c39990bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12e3b86f41e7188778393ab717554907ef5d44ec
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262028"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631738"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketi için atamaları görüntüleme, ekleme ve kaldırma
 
 Azure AD yetkilendirme yönetiminde, paketlere erişmek için kimlerin atandığını, ilkelerini ve durumlarını görebilirsiniz. Bir erişim paketinin uygun bir ilkesi varsa, kullanıcıyı doğrudan bir erişim paketine atayabilirsiniz. Bu makalede, erişim paketleri için atamaların nasıl görüntüleneneme, eklenip kaldırılacak olduğu açıklanmaktadır.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+Azure AD yetkilendirme yönetimini kullanmak ve kullanıcıları erişim paketlerine atamak için aşağıdaki lisanslardan birine sahip olmalısınız:
+
+- Azure AD Premium P2
+- Kurumsal Mobilite + Güvenlik (EMS) E5 lisansı
 
 ## <a name="view-who-has-an-assignment"></a>Kimin ataması olduğunu görüntüleme
 

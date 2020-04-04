@@ -11,28 +11,28 @@ ms.date: 2/5/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: feb7b52c84e5e702202bc668cfda676d291ea82e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e281f8a1fb3959256d836134b4c59f5399deb9bd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350429"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633293"
 ---
 # <a name="use-azure-stream-analytics-with-azure-synapse-analytics"></a>Azure Synapse Analytics ile Azure Akış Analizi'ni kullanma
 
-Azure Akış Analizi, bulutta veri akışı üzerinden düşük gecikmeli, yüksek oranda kullanılabilir, ölçeklenebilir karmaşık olay işleme sağlayan tam olarak yönetilen bir hizmettir. [Azure Akışı Analizine Giriş'i](../../stream-analytics/stream-analytics-introduction.md)okuyarak temel bilgileri öğrenebilirsiniz. Daha sonra Azure Akış Analizi öğreticisini [kullanmaya başlayın'](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) ı izleyerek Stream Analytics ile uçtan uca bir çözüm oluşturmayı öğrenebilirsiniz.
+Azure Akış Analizi, bulutta veri akışı üzerinden düşük gecikmeli, yüksek oranda kullanılabilir, ölçeklenebilir karmaşık olay işleme sağlayan tam olarak yönetilen bir hizmettir. [Azure Akışı Analizine Giriş'i](../../stream-analytics/stream-analytics-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)okuyarak temel bilgileri öğrenebilirsiniz. Daha sonra Azure Akış Analizi öğreticisini [kullanmaya başlayın'](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ı izleyerek Stream Analytics ile uçtan uca bir çözüm oluşturmayı öğrenebilirsiniz.
 
 Bu makalede, veri ambarınızı Azure Akış Analizi işleriniz için çıktı lavabosu olarak nasıl kullanacağınızı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure Akış Analizi İşi - Bir Azure Akışı Analizi işi oluşturmak için, [Aşağıdakiler](../../stream-analytics/stream-analytics-real-time-fraud-detection.md) için Azure Akış Analizi öğreticisini kullanmaya başlayın adımlarA uyun:  
+* Azure Akış Analizi İşi - Bir Azure Akışı Analizi işi oluşturmak için, [Aşağıdakiler](../../stream-analytics/stream-analytics-real-time-fraud-detection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) için Azure Akış Analizi öğreticisini kullanmaya başlayın adımlarA uyun:  
 
     1. Olay Hub girişi oluşturma
     2. Yapılandırır ve olay jeneratörü uygulamasını başlatın
     3. Akış Analizi işini sağlama
     4. İş girişini ve sorguyı belirtin
-* Azure Synapse SQL havuz veri ambarı - Yeni bir veri ambarı oluşturmak [için, yeni bir veri ambarı oluşturmak için Quickstart'taki](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal)adımları izleyin.
+* Azure Synapse SQL havuz veri ambarı - Yeni bir veri ambarı oluşturmak [için, yeni bir veri ambarı oluşturmak için Quickstart'taki](create-data-warehouse-portal.md)adımları izleyin.
 
 ## <a name="specify-streaming-output-to-point-to-your-data-warehouse"></a>Veri ambarınıza işaret etmek için akış çıktısını belirtin
 
@@ -44,7 +44,7 @@ Azure portalından Stream Analytics işinize gidin ve İş **topolojisi** menüs
 
 **Ekle** düğmesine tıklayın ve açılan menüden **SQL Veritabanı'nı** seçin.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
+![SQL Veritabanı'nı seçin](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutput.png)
 
 ### <a name="step-3"></a>3. Adım
 
@@ -60,7 +60,7 @@ Aşağıdaki değerleri girin:
 * *Tablo*: Veritabanında hedef tablonun adını belirtin.
 * **Kaydet** düğmesine tıklayın
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
+![Tamamlanmış SQL Veritabanı formu](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaoutputdbsettings.png)
 
 ### <a name="step-4"></a>4. Adım
 
@@ -102,23 +102,23 @@ WITH (DISTRIBUTION = ROUND_ROBIN)
 
 Stream Analytics işi için Azure portalında iş adınıza tıklayın.  ***Çıktı ayrıntıları*** bölmesinde ***Test*** düğmesine tıklayın.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png)Veritabanına bağlantı başarılı olduğunda, portalda bir bildirim görürsünüz.
+![Outpout ayrıntıları](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asatest.png) ndaki test düğmesi veritabanına bağlantı başarılı olduğunda, portalda bir bildirim görürsünüz.
 
 ### <a name="step-6"></a>6. Adım
 
 ***İş topolojisi*** altındaki ***Sorgu*** menüsüne tıklayın ve oluşturduğunuz Akış çıktısına veri eklemek için sorguyu değiştirin.  Sorgunuzu test etmek için ***Seçili Sorgu*** Düğmesine tıklayın.  Sorgu testiniz başarılı olduğunda ***Sorgu'u Kaydet*** düğmesini tıklatın.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
+![Sorguyı kaydet](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asaquery.png)
 
 ### <a name="step-7"></a>7. Adım
 
 Azure Akışı Analizi işini başlatın.  ***Genel Bakış*** menüsündeki ***Başlat*** düğmesine tıklayın.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
+![Stream Analytics işini başlatma](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastart.png)
 
-iş ***bölmesi*** başlat düğmesine tıklayın.
+İş ***bölmesini*** başlat düğmesine tıklayın.
 
-![](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
+![Başlat'ı tıklatın](./media/sql-data-warehouse-integrate-azure-stream-analytics/sqlpool-asastartconfirm.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

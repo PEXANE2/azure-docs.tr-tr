@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586322"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632226"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri Ambarı Birimleri (DWUs)
 
@@ -24,14 +24,18 @@ Fiyat ve performansı optimize etmek için ideal veri ambarı birimi (DWUs) say�
 
 ## <a name="what-are-data-warehouse-units"></a>Veri Ambarı Birimleri nedir
 
-[Synapse SQL havuzu,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) sağlanan analitik kaynaklar koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir kombinasyonu olarak tanımlanır. Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyetini ayarlayan, sistemin kullanabileceği DW'lerin sayısını değiştirir.
+[Synapse SQL havuzu,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) sağlanan analitik kaynaklar koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir leşimi olarak tanımlanır. 
+
+Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. 
+
+Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyetini ayarlayan, sistemin kullanabileceği DW'lerin sayısını değiştirir.
 
 Daha yüksek performans için veri ambarı birimlerinin sayısını artırabilirsiniz. Daha az performans için veri ambarı birimlerini azaltın. Depolama ve hesaplama maliyetleri ayrıca faturalandırılır, yani veri ambarı birimlerini değiştirmek depolama maliyetlerini etkilemez.
 
 Veri ambarı birimlerinin performansı şu iş yükü ölçümlerini temel alar:
 
-- Standart bir veri ambarı sorgusunun çok sayıda satırı tarayıp karmaşık bir toplama gerçekleştirmesi ne kadar hızlı olabilir. Bu işlem G/Ç ve CPU yoğundur.
-- Veri ambarı, Azure Depolama Blobs veya Azure Veri Gölü'nden ne kadar hızlı veri alabilir. Bu işlem ağ ve CPU yoğundur.
+- Standart bir SQL havuzu sorgusunun çok sayıda satırı tarayıp karmaşık bir toplama gerçekleştirmesi ne kadar hızlı olabilir. Bu işlem G/Ç ve CPU yoğundur.
+- SQL havuzu, Azure Depolama Blobs veya Azure Veri Gölü'nden ne kadar hızlı veri alabilir. Bu işlem ağ ve CPU yoğundur.
 - T-SQL [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) komutu bir tabloyu ne kadar hızlı kopyalayabilir. Bu işlem, depolamadan gelen verileri okumayı, cihazın düğümlerine dağıtmayı ve yeniden depolamaya yazmayı içerir. Bu işlem CPU, IO ve ağ yoğundur.
 
 Artan DWUs:
@@ -42,7 +46,7 @@ Artan DWUs:
 
 ## <a name="service-level-objective"></a>Hizmet Düzeyi Hedefi
 
-Hizmet Düzeyi Hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzunun hizmet düzeyleri, dw2000c gibi veri ambarı birimlerinde (DWU) ölçülür.
+Hizmet Düzeyi Hedefi (SLO), SQL havuzunuzun maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzunun hizmet düzeyleri, dw2000c gibi veri ambarı birimlerinde (DWU) ölçülür.
 
 T-SQL'de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini belirler.
 
@@ -56,7 +60,7 @@ CREATE DATABASE mySQLDW
 
 ## <a name="capacity-limits"></a>Kapasite sınırları
 
-Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda veri ambarı birimi sağlayan bir [Veritabanı İşlem Birimi (DTU)](../../sql-database/sql-database-service-tiers-dtu.md) kotası vardır. Daha fazla bilgi için [iş yükü yönetimi kapasite sınırlarına](sql-data-warehouse-service-capacity-limits.md#workload-management)bakın.
+Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda veri ambarı birimi sağlayan bir [Veritabanı İşlem Birimi (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kotası vardır. Daha fazla bilgi için [iş yükü yönetimi kapasite sınırlarına](sql-data-warehouse-service-capacity-limits.md#workload-management)bakın.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Kaç veri ambarı birimine ihtiyacım var
 
@@ -68,7 +72,9 @@ Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda v
 2. Gözlemlediğiniz performansa göre seçilen DW'lerin sayısını gözlemleyerek, sistemdeki veri yüklerini test ederken uygulama performansınızı izleyin.
 3. Yoğun aktivitenin periyodik dönemleri için ek gereksinimleri belirleyin. Etkinlikte önemli zirveler ve çukurlar gösteren iş yüklerinin sık sık ölçeklendirilmesi gerekebilir.
 
-SQL Analytics, büyük miktarda bilgi işlem ve sorgulanabilir miktarda veri sağlayan ölçeklendirilebilir bir sistemdir. Ölçeklendirme için gerçek yeteneklerini görmek için, özellikle büyük DWUs'larda, CPU'ları beslemek için yeterli veriye sahip olduğundan emin olmak için ölçeklendikçe veri kümesini ölçeklendirmenizi öneririz. Ölçek testi için en az 1 TB kullanmanızı öneririz.
+SQL havuzu, büyük miktarda bilgi işlem ve sorgu lanabilir miktarda veri sağlayan ölçeklendirilebilir bir sistemdir. 
+
+Ölçeklendirme için gerçek yeteneklerini görmek için, özellikle büyük DWUs'larda, CPU'ları beslemek için yeterli veriye sahip olduğundan emin olmak için ölçeklendikçe veri kümesini ölçeklendirmenizi öneririz. Ölçek testi için en az 1 TB kullanmanızı öneririz.
 
 > [!NOTE]
 >
@@ -172,7 +178,7 @@ DWU değişikliklerinin durumunu denetlemek için:
     FROM      sys.databases
     ;
     ```
-    
+
 1. İşlem durumunu denetlemek için aşağıdaki sorguyu gönderme
 
     ```sql
@@ -182,7 +188,7 @@ DWU değişikliklerinin durumunu denetlemek için:
     AND       major_resource_id = 'MySQLDW'
     ;
     ```
-    
+
 Bu DMV, SQL havuzunuzdaki işlem ve işlemin durumu gibi IN_PROGRESS veya TAMAMLANAN gibi çeşitli yönetim işlemleri hakkında bilgi verir.
 
 ## <a name="the-scaling-workflow"></a>Ölçekleme iş akışı

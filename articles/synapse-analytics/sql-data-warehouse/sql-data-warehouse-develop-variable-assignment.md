@@ -1,6 +1,6 @@
 ---
 title: Değişkenleri atama
-description: Çözümler geliştirmek için Azure SQL Veri Ambarı'nda T-SQL değişkenleri atamaipuçları.
+description: Bu makalede, SQL havuzunda T-SQL değişkenleri atamak için gerekli ipuçlarını bulacaksınız.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,20 +11,20 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0adcd9bdf92b7ec649b7d91ca0e655fc006b3549
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351656"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633418"
 ---
-# <a name="assigning-variables-in-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarında değişken atama
+# <a name="assign-variables-in-synapse-sql-pool"></a>Synapse SQL havuzunda değişken atama
 
-Çözümler geliştirmek için Azure SQL Veri Ambarı'nda T-SQL değişkenleri atamaipuçları.
+Bu makalede, SQL havuzunda T-SQL değişkenleri atamak için gerekli ipuçlarını bulacaksınız.
 
-## <a name="setting-variables-with-declare"></a>DECLARE ile değişkenleri ayarlama
+## <a name="set-variables-with-declare"></a>DECLARE ile değişkenleri ayarlama
 
-SQL Veri Ambarı'ndaki değişkenler `DECLARE` deyim `SET` veya deyim kullanılarak ayarlanır. DEĞIŞKENleri DECLARE ile başlatma, SQL Veri Ambarı'nda değişken değeri belirlemenin en esnek yollarından biridir.
+SQL havuzundaki değişkenler `DECLARE` deyim veya `SET` deyim kullanılarak ayarlanır. DEĞIŞKENleri DECLARE ile başlatma, SQL havuzunda değişken değeri ayarlamanın en esnek yollarından biridir.
 
 ```sql
 DECLARE @v  int = 0
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Aynı DECLARE deyiminde bir değişkeni baş harfe ait hale alamaz ve kullanamazsınız. Noktayı göstermek için, hem başharfe @p1 hem de aynı DECLARE deyiminde kullanıldığından aşağıdaki örneğe izin **verilmez.** Aşağıdaki örnekte bir hata verir.
+Aynı DECLARE deyiminde bir değişkeni baş harfe ve kullanamazsın. Noktayı göstermek için, hem başharfe @p1 hem de aynı DECLARE deyiminde kullanıldığından aşağıdaki örneğe izin **verilmez.** Bu nedenle, aşağıdaki örnekte bir hata verir:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,7 +47,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>SET ile değerleri ayarlama
+## <a name="set-values-with-set"></a>SET ile değerleri ayarlama
 
 SET, tek bir değişkeni ayarlamak için yaygın bir yöntemdir.
 

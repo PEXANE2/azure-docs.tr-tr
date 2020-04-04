@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: overview
 ms.date: 02/19/2020
-ms.openlocfilehash: dc708e8e4a6ce4f073552332e90e752686a573b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 336704d00ee2fdc03d5c8acf684910f98c933724
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282707"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632092"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi'nde hangi araçlar yer alıyor?
 
@@ -95,7 +95,7 @@ Veri Bilimi Sanal Makine en yararlı veri-bilim araçları önceden yüklenmiş 
 | &nbsp;&nbsp;&nbsp;&nbsp; [Sparkmagic](https://github.com/jupyter-incubator/sparkmagic)                                                                                |                                                                                  <span class='red-x'>&#10060;</span>                                                                                 |                                                    <span class='green-check'>&#9989;</span></br> (Sadece Ubuntu)                                                   |                                                                                                                                                                  |                                                                                                                                |                                                                                                                             |
 | &nbsp;&nbsp;&nbsp;&nbsp;Kıvılcım                                                                                                                                       |                                                                                  <span class='red-x'>&#10060;</span>                                                                                 |                                                             <span class='green-check'>&#9989;</span>                                                             |                                                                                                                                                                   |                                                                                                                          |                                                                                                                             |
 
-**Ubuntu 18.04 DSVM ve Windows Server 2019 DSVM** Jupyter Çekirdekleri aşağıdaki vardır:-</br> 
+**Ubuntu 18.04 DSVM ve Windows Server 2019 DSVM** aşağıdaki Jupyter Çekirdekleri vardır:-</br> 
 * Python 3.7 - varsayılan</br>  
 * Python 3.7 - PyTorch</br>  
 * Python 3.7 - TensorFlow</br>  
@@ -109,7 +109,7 @@ Veri Bilimi Sanal Makine en yararlı veri-bilim araçları önceden yüklenmiş 
 * Scala Kıvılcım - HDInsight</br>  
 * Python 3 Kıvılcım - HDInsight</br>  
 
-**Ubuntu 18.04 DSVM ve Windows Server 2019 DSVM** conda ortamlarını takip ediyor:-</br> 
+**Ubuntu 18.04 DSVM ve Windows Server 2019 DSVM** aşağıdaki conda ortamlarına sahiptir:-</br> 
 * py37_default  </br>
 * py37_tensorflow </br> 
 * py37_pytorch  </br>
@@ -117,12 +117,12 @@ Veri Bilimi Sanal Makine en yararlı veri-bilim araçları önceden yüklenmiş 
 * azureml_py36_pytorch  </br>
 * azureml_py36_automl  </br> 
 
-**Ubuntu 16.04 DSVM** conda ortamlarını takip ediyor:-</br>   
+**Ubuntu 16.04 DSVM** aşağıdaki conda ortamlarına sahiptir:-</br>   
 * base  </br>
 * py37 </br>
 * azureml_py36 </br>
 
-**Windows Server 2016** conda ortamlarını takip ediyor:-</br>  
+**Windows Server 2016** aşağıdaki conda ortamlarına sahiptir:-</br>  
 * base   </br>
 * AzureML  </br>
 * piton2  </br>

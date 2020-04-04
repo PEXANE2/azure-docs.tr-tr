@@ -4,21 +4,19 @@ description: Bu makalede, Akka Akışları'nın bir Azure etkinlik merkezine nas
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.topic: how-to
+ms.date: 04/02/2020
 ms.author: shvija
-ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521833"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632853"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Akka Streams’i kullanma
 Bu öğretici, akka akışlarını protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan bir etkinlik merkezine nasıl bağlayabileceğinizi gösterir. Kafka için Azure Etkinlik Hub'ları [Apache Kafka sürüm 1.0'ı destekler.](https://kafka.apache.org/10/documentation.html)
@@ -140,22 +138,11 @@ Olay hub'ında olaylar varsa (örneğin, üreticiniz de çalışıyorsa), tüket
 Akka Akımları hakkında daha detaylı bilgi için [Akka Akımları Kafka Rehberi'ne](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) göz atın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu eğitimde, akka akışlarını iletişim istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan olay merkezine nasıl bağlayabileceğinizi öğrendiniz. Kafka için Azure Etkinlik Hub'ları [Apache Kafka sürüm 1.0'ı destekler.](https://kafka.apache.org/10/documentation.html) Bu öğreticinin bir parçası olarak aşağıdaki eylemleri yaptınız: 
+Kafka için Etkinlik Hub'ları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:  
 
-> [!div class="checklist"]
-> * Event Hubs ad alanı oluşturma
-> * Örnek projeyi kopyalama
-> * Akka Akarsu ları yapımcısı çalıştırın 
-> * Akka Streams tüketici çalıştırın
-
-Event Hubs ve Kafka için Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki konuya bakın:  
-
-- [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Olay hub'ı oluşturma](event-hubs-create.md)
-- [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
 - [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
 - [Kafka Connect'i bir etkinlik merkeziyle bütünleştirin](event-hubs-kafka-connect-tutorial.md)
 - [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka)
+- [Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu](apache-kafka-developer-guide.md)

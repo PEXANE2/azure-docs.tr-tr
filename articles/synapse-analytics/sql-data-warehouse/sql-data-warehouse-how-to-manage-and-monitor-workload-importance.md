@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 114f8d637a927a899807a676fb3e1b45f5c7687c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 3efd8a776542616a9ceefba331b06406540905a8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585756"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633331"
 ---
 # <a name="manage-and-monitor-workload-importance-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te iş yükünün önemini yönetme ve izleme
 
@@ -24,7 +24,7 @@ DMVs ve katalog görünümlerini kullanarak Azure Synapse'de Synapse SQL istek d
 
 ## <a name="monitor-importance"></a>İzleme önemi
 
-[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütunundan sonra önemi izleyin.
+[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) dinamik yönetim görünümündeki yeni önem sütunundan sonra önemi izleyin.
 Aşağıdaki izleme sorgusu, sorgular için gönderme zamanını ve başlangıç saatini gösterir. Önemli olanın zamanlamayı nasıl etkilediğini görmek için gönderme süresini ve başlangıç saatini ve başlangıç saatini önemli olarak gözden geçirin.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Katalog görünümü, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest), sınıflandırıcı oluşturulmasında kullanılan parametreler hakkında bilgi içerir.  Aşağıdaki sorgu, ExecutiveReports ile değerler ```membername``` için parametre üzerinde ExecReportsClassifier oluşturulduğunu gösterir:
+Katalog görünümü, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), sınıflandırıcı oluşturulmasında kullanılan parametreler hakkında bilgi içerir.  Aşağıdaki sorgu, ExecutiveReports ile değerler ```membername``` için parametre üzerinde ExecReportsClassifier oluşturulduğunu gösterir:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value
@@ -69,6 +69,7 @@ GO
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - Sınıflandırma hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-classification.md)
 - Önem hakkında daha fazla bilgi için İş [yükünün önemi](sql-data-warehouse-workload-importance.md) ne redeleyecek
 

@@ -9,15 +9,15 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: c28b63749cfdbcd16b94cbd3ca7dd4023f46a351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78897720"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632908"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki faktörlü doğrulama ve iş veya okul hesabınızla ilgili sık karşılaşılan sorunlar
 
@@ -99,6 +99,8 @@ Uygulama parolaları, iki faktörlü doğrulamayı desteklemeyen eski masaüstü
 ## <a name="i-cant-turn-two-factor-verification-off"></a>İki faktörlü doğrulamayı kapatamıyorum
 
 İş veya okul hesabınızla birlikte iki faktörlü doğrulama kullanıyorsanız (örneğin), alain@contoso.combu büyük olasılıkla kuruluşunuzun bu ek güvenlik özelliğini kullanmanız gerektiğine karar verdiği anlamına gelir. Kuruluşunuz bu özelliği kullanmanız gerektiğine karar verdiği için, bu özelliği tek tek kapatmanız için bir yol yoktur. Ancak, kişisel bir hesapla iki faktörlü doğrulama kullanıyorsanız, örneğin, alain@outlook.comözelliği açıp kapatma olanağınız vardır. Kişisel hesaplarınız için iki faktörlü doğrulamayı nasıl denetleyeceklerine ilişkin yönergeler [için](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)bkz.
+
+İki faktörlü doğrulamayı kapatamıyorsanız, bunun nedeni kuruluş düzeyinde uygulanan güvenlik varsayılanları da olabilir. Güvenlik varsayılanları hakkında daha fazla bilgi için [bkz.](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Sorunuma bir cevap bulamadım.
 

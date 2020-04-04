@@ -11,12 +11,12 @@ ms.date: 4/11/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 45982c0761fecdb456dba5dc4a5d604972b9c3e5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 57564e9dffd6022e1e4fe464b4b26a5bb8eb318b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349307"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631338"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Quickstart: Azure PowerShell ile synapse SQL havuzu oluşturma ve sorgulama
 
@@ -33,24 +33,23 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription)çalıştırın.
+Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext)çalıştırın.
+Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
 ```
-
 
 ## <a name="create-variables"></a>Değişken oluşturma
 
@@ -75,7 +74,7 @@ $databasename = "mySampleDataWarehouse"
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure kaynak grubu](../../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur.
+[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak bir [Azure kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek `westeurope` konumunda `myResourceGroup` adlı bir kaynak grubu oluşturur.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
@@ -83,7 +82,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 
 ## <a name="create-a-logical-server"></a>Mantıksal sunucu oluşturma
 
-[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) komutunu kullanarak bir [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-logical-servers.md) oluşturun. Mantıksal sunucu, grup olarak yönetilen bir veritabanı grubu içerir. Aşağıdaki örnek, kaynak grubunuzda rasgele adlandırılmış bir sunucu `ServerAdmin` oluşturur ve `ChangeYourAdminPassword1`bir yönetici kullanıcı adlı ve bir şifre . Bu önceden tanımlı değerleri istediğiniz gibi değiştirin.
+[New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak bir [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturun. Mantıksal sunucu, grup olarak yönetilen bir veritabanı grubu içerir. Aşağıdaki örnek, kaynak grubunuzda rasgele adlandırılmış bir sunucu `ServerAdmin` oluşturur ve `ChangeYourAdminPassword1`bir yönetici kullanıcı adlı ve bir şifre . Bu önceden tanımlı değerleri istediğiniz gibi değiştirin.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -94,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Sunucu güvenlik duvarı kurallarını yapılandırma
 
-[Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) komutunu kullanarak [Azure SQL sunucu düzeyinde bir güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md) oluşturun. Sunucu düzeyinde güvenlik duvarı kuralı, SQL Server Management Studio veya SQLCMD yardımcı programı gibi harici bir uygulamanın SQL havuz hizmeti güvenlik duvarı üzerinden SQL havuzuna bağlanmasına olanak tanır. 
+[Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak [Azure SQL sunucu düzeyinde bir güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturun. Sunucu düzeyinde güvenlik duvarı kuralı, SQL Server Management Studio veya SQLCMD yardımcı programı gibi harici bir uygulamanın SQL havuz hizmeti güvenlik duvarı üzerinden SQL havuzuna bağlanmasına olanak tanır.
 
 Aşağıdaki örnekte, güvenlik duvarı yalnızca diğer Azure kaynakları için açılır. Dışarıdan bağlantı kurulabilmesi için IP adresini ortamınız için uygun bir adres olarak değiştirin. Tüm IP adreslerini açmak için başlangıç IP adresi olarak 0.0.0.0’ı, bitiş adresi olaraksa 255.255.255.255’i kullanın.
 
@@ -108,9 +107,9 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 > SQL uç noktaları bağlantı noktası 1433 üzerinden iletişim kurar. Bir şirket ağı içinden bağlanmaya çalışıyorsanız, 1433 bağlantı noktası üzerindeki giden trafiğe ağınızın güvenlik duvarı izin vermeyebilir. Bu nedenle, BT departmanınız 1433 bağlantı noktasını açmadıkça Azure SQL sunucunuza bağlanamazsınız.
 >
 
-
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
-Aşağıdaki örnekte, daha önce tanımlanmış değişkenleri kullanarak bir SQL havuzu oluşturulur.  Hizmet hedefini, SQL havuzunuz için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak belirtir. 
+
+Aşağıdaki örnekte, daha önce tanımlanmış değişkenleri kullanarak bir SQL havuzu oluşturulur.  Hizmet hedefini, SQL havuzunuz için daha düşük maliyetli bir başlangıç noktası olan DW100c olarak belirtir.
 
 ```Powershell
 New-AzSqlDatabase `
@@ -133,15 +132,14 @@ Gerekli Parametreler şunlardır:
 
 İsteğe Bağlı Parametreler şunlardır:
 
-- **CollationName**: Belirtilmezse varsayılan harmanlama SQL_Latin1_General_CP1_CI_AS şeklindedir. Veritabanında harmanlama değiştirilemez.
-- **MaxSizeBytes**: Bir veritabanının varsayılan maksimum boyutu 240 TB'dir. Maksimum boyut rowstore verilerini sınırlar. Sütun verileri için sınırsız depolama alanı vardır.
+* **CollationName**: Belirtilmezse varsayılan harmanlama SQL_Latin1_General_CP1_CI_AS şeklindedir. Veritabanında harmanlama değiştirilemez.
+* **MaxSizeBytes**: Bir veritabanının varsayılan maksimum boyutu 240 TB'dir. Maksimum boyut rowstore verilerini sınırlar. Sütun verileri için sınırsız depolama alanı vardır.
 
-Parametre seçenekleri hakkında daha fazla bilgi için [New-AzSqlDatabase 'a](/powershell/module/az.sql/new-azsqldatabase)bakın.
-
+Parametre seçenekleri hakkında daha fazla bilgi için [New-AzSqlDatabase 'a](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu koleksiyondaki diğer hızlı başlangıç öğreticileri, bu hızlı başlangıcı temel alır. 
+Bu koleksiyondaki diğer hızlı başlangıç öğreticileri, bu hızlı başlangıcı temel alır.
 
 > [!TIP]
 > Daha sonraki hızlı başlatma öğreticileriyle çalışmaya devam etmeyi planlıyorsanız, bu hızlı başlatmada oluşturulan kaynakları temizlemeyin. Devam etmeyi düşünmüyorsanız, Azure portalındaki bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silmek için aşağıdaki adımları kullanın.

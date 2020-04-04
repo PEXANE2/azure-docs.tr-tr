@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 719a1985aeb0db7b0cf7f55a10762bf3ebb3e045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8118ecde698b54213547e717d25613c0c3e0d3fd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250198"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631548"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure’a yüklemek için Windows VHD veya VHDX’i hazırlama
 
-Şirket içinden Azure'a bir Windows sanal makinesi (VM) yüklemeden önce sanal sabit diski (VHD veya VHDX) hazırlamanız gerekir. Azure, VHD dosya biçiminde olan ve sabit boyutlu diski olan nesil 1 ve nesil 2 VM'leri destekler. VHD için izin verilen maksimum boyut 1.023 GB'dır. 
+Şirket içinden Azure'a bir Windows sanal makinesi (VM) yüklemeden önce sanal sabit diski (VHD veya VHDX) hazırlamanız gerekir. Azure, VHD dosya biçiminde olan ve sabit boyutlu diski olan nesil 1 ve nesil 2 VM'leri destekler. VHD için izin verilen maksimum boyut 2 TB'dir.
 
 Bir nesil 1 VM, VHDX dosya sistemini VHD'ye dönüştürebilirsiniz. Dinamik olarak genişleyen bir diski sabit boyutlu bir diske de dönüştürebilirsiniz. Ama bir VM'in neslini değiştiremezsin. Daha fazla bilgi için [bkz.](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) [Azure support for generation 2 VMs (preview)](generation-2.md)
 

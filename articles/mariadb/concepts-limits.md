@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bb907ee59891e5a9a1ffc9c8c6eee34d3e71ad2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531949"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632337"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanında Sınırlamalar
 Aşağıdaki bölümlerde veritabanı hizmetinde kapasite, depolama motoru desteği, ayrıcalık desteği, veri işleme bildirimi desteği ve işlevsel sınırlar açıklanmıştır.
@@ -147,6 +147,10 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MariaDB belgelerini](http
 |Bellek İçin İyileştirilmiş|8|16777216|1024|536870912|
 |Bellek İçin İyileştirilmiş|16|16777216|1024|1073741824|
 |Bellek İçin İyileştirilmiş|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+Saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL Workbench gibi bir araçtan depolanan yordamı arayarak doldurulabilir. Depolanan [Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) yordamı [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) nasıl çağırıp genel veya oturum düzeyinde saat dilimlerini ayarlanın.
 
 ## <a name="storage-engine-support"></a>Depolama motoru desteği
 

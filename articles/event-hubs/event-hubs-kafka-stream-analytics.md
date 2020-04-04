@@ -11,14 +11,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 02/20/2020
+ms.date: 04/02/2020
 ms.author: spelluru
-ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 9c678a91b88b87acb438311b4968be4cae46733b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521769"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632799"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Akış analizini kullanarak Etkinlik Hub'ları etkinlikleri için Apache Kafka'yı işleme 
 Bu makalede, veri lerin Olay Hub'larına nasıl aktarılacağa ve Azure Akış Analitiği ile nasıl işlenirken işlenmeyi gösterilmektedir. Size aşağıdaki adımları ilerehberlik edin: 
@@ -181,15 +181,4 @@ Gelen bir veri akışını okumak için bir Stream Analytics işi ayarladıktan 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Event Hubs ve Kafka için Event Hubs hakkında daha fazla bilgi edinmek için aşağıdaki konuya bakın:  
-
-- [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
-- [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Olay hub’ı oluşturma](event-hubs-create.md)
-- [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
-- [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
-- [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)
-- [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md)
-- [Kafka Connect'i bir etkinlik merkeziyle bütünleştirin](event-hubs-kafka-connect-tutorial.md)
-- [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md)
-- [GitHub'ımızdaki örnekleri inceleme](https://github.com/Azure/azure-event-hubs-for-kafka) 
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Apache Kafka için Etkinlik Hub'ları hakkında daha fazla bilgi edinmek [için Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzuna](apache-kafka-developer-guide.md)bakın. 

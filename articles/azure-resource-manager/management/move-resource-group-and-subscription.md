@@ -3,12 +3,12 @@ title: Kaynakları yeni bir abonelik veya kaynak grubuna taşıma
 description: Kaynakları yeni bir kaynak grubuna veya aboneye taşımak için Azure Kaynak Yöneticisi'ni kullanın.
 ms.topic: conceptual
 ms.date: 03/02/2020
-ms.openlocfilehash: 40432c55a7f7e289d2e5cbc8afe94847074e4ca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248859"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631497"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Kaynakları yeni kaynak grubuna veya aboneliğe taşıma
 
@@ -107,7 +107,7 @@ Kaynakları bir abonelikten diğerine taşımak üç adımlı bir işlemdir:
 
 * Adım 1: Bağımlı kaynaklar farklı kaynak gruplarına dağıtılırsa, önce bunları tek bir kaynak grubuna taşıyın.
 * Adım 2: Kaynak ve bağımlı kaynakları kaynak abonelikten hedef aboneye taşıyın.
-* Adım 3: İsteğe bağlı olarak, bağımlı kaynakları hedef abonelik içindeki farklı kaynak gruplarına yeniden dağıtın. 
+* Adım 3: İsteğe bağlı olarak, bağımlı kaynakları hedef abonelik içindeki farklı kaynak gruplarına yeniden dağıtın.
 
 ## <a name="validate-move"></a>Hareketi doğrula
 
@@ -260,8 +260,9 @@ Bir kaynağı taşırken, bağımlı kaynakları nın hedef kaynak grubunda veya
 Örneğin, sanal bir makineyi taşımak, üç farklı kaynak sağlayıcısıyla yedi kaynak türünü taşımayı gerektirebilir. Bu kaynak sağlayıcıları ve türleri şunlardır:
 
 * Microsoft.Compute
-   * virtualMachines
-   * Disk
+
+  * virtualMachines
+  * Disk
 * Microsoft.Network
   * ağArayüzler
   * publicIPAdresleri

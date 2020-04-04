@@ -11,16 +11,17 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583319"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632996"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
-Bu makalede, Synapse SQL havuzunuza bağlanma konusunda sık karşılaşılan sorun giderme teknikleri listelanmaktadır.
+Bu makalede, SQL Analytics veritabanınıza bağlanma konusunda sık karşılaşılan sorun giderme teknikleri listelanmaktadır.
+
 - [Hizmet kullanılabilirliğini denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Duraklatılmış veya ölçeklendirilen işlemleri denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Güvenlik duvarı ayarlarını denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -54,15 +55,15 @@ Hizmetinizin duraklatAndığını veya ölçeklemediğini görürseniz, hizmetin
 
 ![Genel Bakım Çizelgesi](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize danışın. Synapse SQL havuz örneğini devam ettirmek için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)özetlenen adımları izleyin.
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize danışın. SQL Analytics örneğini devam ettirmek için [aşağıdaki adımları](pause-and-resume-compute-portal.md)izleyin.
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarını denetleme
 
-Synapse SQL havuzu port 1433 üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik duvarı yapılandırmaları hakkında ek bilgi [burada](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)bulabilirsiniz.
+SQL Analytics veritabanı port 1433 üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik duvarı yapılandırmaları hakkında ek bilgi [burada](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)bulabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme
 
-Hatalar 40914 ve 40615 alıyorsanız, [burada hata açıklaması ve çözümbakın.](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)
+Hatalar 40914 ve 40615 alıyorsanız, [burada hata açıklaması ve çözümbakın.](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)
 
 ## <a name="check-for-the-latest-drivers"></a>En son sürücüleri denetleme
 
@@ -70,22 +71,22 @@ Hatalar 40914 ve 40615 alıyorsanız, [burada hata açıklaması ve çözümbak�
 
 Synapse SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
 
-* SSMS
-* Azure Data Studio
-* SQL Server Veri Araçları (Visual Studio)
+- SSMS
+- Azure Data Studio
+- SQL Server Veri Araçları (Visual Studio)
 
 ### <a name="drivers"></a>Sürücüler
 
 En son sürücü sürümlerini kullandığınızdan emin olun.Eski sürücüler yeni özellikleri desteklemeyebilir gibi sürücülerin eski bir sürümünü kullanarak beklenmeyen davranışlara neden olabilir.
 
-* [ODBC](https://docs.microsoft.com/sql/connect/odbc/download-odbc-driver-for-sql-server)
-* [JDBC](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-* [OLE DB](https://docs.microsoft.com/sql/connect/oledb/download-oledb-driver-for-sql-server)
-* [PHP](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server)
 
 ## <a name="check-your-connection-string"></a>Bağlantı dizenizi denetleme
 
-Bağlantı dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Bağlantı dizeleriyle ilgili ek bilgileri [burada](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-connection-strings) bulabilirsiniz.
+Bağlantı dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Bağlantı dizeleriyle ilgili ek bilgileri [burada](/sql-data-warehouse/sql-data-warehouse-connection-strings.md) bulabilirsiniz.
 
 ADO.NET bağlantı dizesi
 
@@ -117,7 +118,8 @@ Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklen
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 
-Hatalar 40914 ve 40615, [hata açıklaması ve çözüm burada](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#errors-40914-and-40615)bakın.
+Hatalar 40914 ve 40615, [hata açıklaması ve çözüm burada](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#errors-40914-and-40615)bakın.
 
 ## <a name="still-having-connectivity-issues"></a>Hala bağlantı sorunları yaşıyor musunuz?
-Mühendislik ekibinin sizi destekleyebilmeleri için bir [destek bileti](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) oluşturun.
+
+Mühendislik ekibinin sizi destekleyebilmeleri için bir [destek bileti](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) oluşturun.

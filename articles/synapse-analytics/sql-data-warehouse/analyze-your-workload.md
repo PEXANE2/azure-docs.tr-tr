@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586072"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631255"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te iş yükünüzü analiz edin
 
@@ -68,7 +68,7 @@ Synapse SQL aşağıdaki bekleme türlerine sahiptir:
 * **LocalQueriesConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesinin dışında yer alan sorgular. DMV sorguları ve sistem `SELECT @@VERSION` işlevleri gibi yerel sorguörnekleridir.
 * **UserConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesi içinde yer alan sorgular. Son kullanıcı tablolarına yönelik sorgular, bu kaynak türünü kullanacak örnekleri temsil eder.
 * **DmsConcurrencyResourceType**: Veri hareketi işlemlerinden kaynaklanan bekler.
-* **BackupConcurrencyResourceType**: Bu bekleme, bir veritabanının yedeklendiğini gösterir. Bu kaynak türü için en büyük değer 1'dir. Aynı anda birden çok yedekleme isteniyorsa, diğerleri sıraya alınır. Genel olarak, 10 dakikalık ardışık anlık görüntüler arasında en az bir süre öneririz. 
+* **BackupConcurrencyResourceType**: Bu bekleme, bir veritabanının yedeklendiğini gösterir. Bu kaynak türü için en büyük değer 1'dir. Aynı anda birden çok yedekleme isteniyorsa, diğerleri sıraya alınır. Genel olarak, 10 dakikalık ardışık anlık görüntüler arasında en az bir süre öneririz.
 
 DMV, `sys.dm_pdw_waits` bir isteğin beklediği kaynakları görmek için kullanılabilir.
 

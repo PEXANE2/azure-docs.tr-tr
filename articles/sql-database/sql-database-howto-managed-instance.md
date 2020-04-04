@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlr
 ms.date: 04/16/2019
-ms.openlocfilehash: 906ae2a970ce1d5b82302d0277ca45bd93c23011
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b56375388f6293d27bcd2f2548d8b20205a92b15
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256919"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638026"
 ---
 # <a name="how-to-use-a-managed-instance-in-azure-sql-database"></a>Azure SQL Veritabanı'nda yönetilen bir örnek nasıl kullanılır?
 
@@ -43,6 +43,7 @@ Bu makalede, yönetilen örneğini yönetmenize ve yapılandırmanıza yardımc�
 
 - [İşlemsel çoğaltma,](replication-with-sql-database-managed-instance.md) verilerinizi yönetilen örnekler arasında veya şirket içi SQL Server'dan yönetilen bir örne veya tam tersi arasında çoğaltmanızı sağlar. Bu kılavuzda işlem çoğaltmanın nasıl kullanılacağı ve yapılandırılacağı hakkında daha fazla bilgi edinin.
 - [Tehdit algılamayı yapılandırma](sql-database-managed-instance-threat-detection.md) – [tehdit algılama,](sql-database-threat-detection-overview.md) SQL Enjeksiyonu veya şüpheli konumlardan erişim gibi çeşitli olası saldırıları algılayan yerleşik bir Azure SQL Veritabanı özelliğidir. Bu kılavuzda, yönetilen bir örnek için [tehdit algılamayı](sql-database-threat-detection-overview.md) nasıl etkinleştirebileceğinizi ve yapılandırabileceğinizi öğrenebilirsiniz.
+- [Cpu](sql-database-managed-instance-alerts.md) kullanımı, depolama alanı tüketimi, IOPS ve yönetilen örneğin diğerleri gibi izlenen ölçümlerde uyarılar oluşturmanıza olanak sağlar. Bu kılavuzda, yönetilen örneğin uyarıları nasıl etkinleştireceğinizi ve yapılandıracağınızı öğreneceksiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

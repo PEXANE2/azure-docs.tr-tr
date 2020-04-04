@@ -4,17 +4,18 @@ description: Bu belgenin amacı, bir kullanıcının şirket içi kaynaklarında
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
+manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcf86deda32069bf9711dbeb733dc9361e22a771
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75860495"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631781"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Sanal ağa yönelik VPN aktarım hızını doğrulama
 
@@ -242,7 +243,7 @@ Azure'un Yerel Ağ Ağ Ağ Geçidi'nde VPN üzerinden erişmesini istediğiniz �
 
 * **İlke Tabanlı Ağ Geçidi**: İlke tabanlı VPN'ler, şirket içi ağınız ile Azure VNet arasındaki adres önekleri birleşimlerini temel alan Paketleri IPsec tünellerinde şifreler ve yönlendirir. İlke (veya Trafik Seçici) çoğunlukla VPN yapılandırmasında bir erişim listesi olarak tanımlanır.
 
-* **UsePolicyBasedTrafficSelector** bağlantıları: ("UsePolicyBasedTrafficSelectors" bir bağlantı üzerinde $True için şirket içinde ilke tabanlı VPN güvenlik duvarına bağlanmak için Azure VPN ağ geçidini yapılandıracaktır. PolicyBasedTrafficSelectors'u etkinleştirirseniz, VPN cihazınızın, Azure sanal ağ önekleri yerine şirket içi ağınızın (yerel ağ ağ geçidi) önekleri nizdeki tüm kombinasyonları ile tanımlanan eşleşen trafik seçicilerine sahip olduğundan emin olmanız gerekir herhangi bir-to-any.
+* **UsePolicyBasedTrafficSelector** bağlantıları: ("UsePolicyBasedTrafficSelectors" bir bağlantı üzerinde $True için şirket içinde ilke tabanlı VPN güvenlik duvarına bağlanmak için Azure VPN ağ geçidini yapılandıracaktır. PolicyBasedTrafficSelectors'u etkinleştirirseniz, VPN cihazınızın, herhangi bir ağ yerine Azure sanal ağ önekleri için ve bunlardan gelen şirket içi ağınızın (yerel ağ ağ geçidi) önekleri ile tanımlanan eşleşen trafik seçicilerine sahip olduğundan emin olmanız gerekir.
 
 Uygun olmayan yapılandırma, tünel içinde sık sık kopmalara, paket düşüşlerine, hatalı iş çıkışına ve gecikmeye neden olabilir.
 

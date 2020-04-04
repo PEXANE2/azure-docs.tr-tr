@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
-ms.openlocfilehash: ad8b4b39e582d10c2a3b6003bfa07138f4697b71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499197"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632939"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Cihaz ve modül ikizleri, işler ve mesaj yönlendirmesi için IoT Hub sorgu dili
 
@@ -481,7 +481,7 @@ Rota koşullarında, aşağıdaki tip kontrol ve döküm fonksiyonları destekle
 | AS_NUMBER | Giriş dizesini bir sayıya dönüştürür. `noop`giriş bir sayı ise; `Undefined` dize bir sayıtemsil etmiyorsa.|
 | IS_ARRAY | Belirtilen ifade nin türü bir dizi olup olmadığını belirten bir Boolean değeri döndürür. |
 | IS_BOOL | Belirtilen ifadenin türü boolean olup olmadığını belirten bir Boolean değeri döndürür. |
-| IS_DEFINED | Özellik bir değer atanmış olup olmadığını belirten bir Boolean döndürür. |
+| IS_DEFINED | Özellik bir değer atanmış olup olmadığını belirten bir Boolean döndürür. Bu yalnızca değer ilkel bir tür olduğunda desteklenir. İlkel türleri dize, Boolean, `null`sayısal veya . DateTime, nesne türleri ve diziler desteklenmez. |
 | IS_NULL | Belirtilen ifadenin türünün null olup olmadığını belirten bir Boolean değeri döndürür. |
 | IS_NUMBER | Belirtilen ifadenin türü bir sayı olup olmadığını belirten bir Boolean değeri döndürür. |
 | IS_OBJECT | Belirtilen ifade nin türünün JSON nesnesi olup olmadığını belirten bir Boolean değeri döndürür. |

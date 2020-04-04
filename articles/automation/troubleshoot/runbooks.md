@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b5d326d02587d6b5bd8fd73dcccfefdb13c47d57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26c5c5b31d5f3f9e1a642c0bafb947190e479055
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500926"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632620"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook sorunlarını giderme
 
@@ -33,7 +33,7 @@ Azure Otomasyonu'nda runbook'ları çalıştırırken hatalar olduğunda, sorunl
 
 3. **Düğümlerinizin ve Otomasyon çalışma alanınızın gerekli modüllere sahip olduğundan emin olun.** 
 
-    Runbook'unuz herhangi bir modül alıyorsa, [İçe Aktarma modüllerinde](../shared-resources/modules.md#import-modules)listelenen adımları kullanarak bunların Otomasyon hesabınızda kullanılabildiğini doğrulayın. Azure Otomasyonu'ndaki [Azure modüllerini güncelleştir'deki](..//automation-update-azure-modules.md)yönergeleri izleyerek modüllerinizi en son sürüme güncelleyin. Daha fazla sorun giderme bilgisi için [Sorun Giderme modüllerine](shared-resources.md#modules)bakın.
+    Runbook'unuz herhangi bir modül alıyorsa, [İçe Aktarma modüllerinde](../shared-resources/modules.md#importing-modules)listelenen adımları kullanarak bunların Otomasyon hesabınızda kullanılabildiğini doğrulayın. Azure Otomasyonu'ndaki [Azure modüllerini güncelleştir'deki](..//automation-update-azure-modules.md)yönergeleri izleyerek modüllerinizi en son sürüme güncelleyin. Daha fazla sorun giderme bilgisi için [Sorun Giderme modüllerine](shared-resources.md#modules)bakın.
 
 4. **Runbook'unuzun askıya alınması veya beklenmedik bir şekilde başarısız olması durumunda yapın.**
 
@@ -284,7 +284,7 @@ Bu hata, aşağıdaki sorunlardan biri nedeniyle oluşur:
 
 ### <a name="resolution"></a>Çözüm
 
-* Bellek Sınırı, Ağ Soketleri. Bellek sınırları içinde çalışmanın önerilen yolları, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook'larınızdan gereksiz çıktı yazmaktan kaçınmak ve PowerShell iş akışınıza kaç denetim noktası yazdığını göz önünde bulundurmaktır runbooks. Değişkenleri temizlemek ve `$myVar.clear`çöp toplamayı hemen çalıştırmak `[GC]::Collect` için kullanmak gibi açık yöntemi kullanın. Bu eylemler, çalışma sırasında runbook'unuzun bellek ayak izini azaltır.
+* Bellek Sınırı, Ağ Soketleri. Bellek sınırları içinde çalışmanın önerilen yolları, iş yükünü birden çok runbook arasında bölmek, bellekte daha az veri işlemek, runbook'larınızdan gereksiz çıktı yazmaktan kaçınmak ve PowerShell iş akışı çalışma kitaplarınızda kaç denetim noktası yazıldığını göz önünde bulundurmaktır. Değişkenleri temizlemek ve `$myVar.clear`çöp toplamayı hemen çalıştırmak `[GC]::Collect` için kullanmak gibi açık yöntemi kullanın. Bu eylemler, çalışma sırasında runbook'unuzun bellek ayak izini azaltır.
 
 * Modül Uyumsuz. [Azure PowerShell modüllerini Azure](../automation-update-azure-modules.md)Otomasyonu'nda güncelleştirme adımlarını izleyerek Azure modüllerinizi güncelleştirin.
 

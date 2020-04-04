@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 65a6f51d0eef28ea33adcc755d3d51f1e06a5341
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 70fa66a96291e0c2a638bf69bdce7da531d32bb7
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528334"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637460"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows bilgisayarlarını Azure Monitörüne bağlama
 
@@ -32,7 +32,7 @@ Aracı aşağıdaki yöntemlerden biri kullanılarak yüklenebilir. Çoğu yükl
 
 Aracıyı birden fazla çalışma alanına rapor yapacak şekilde yapılandırmanız gerekiyorsa, bu işlem ilk kurulum sırasında, yalnızca daha sonra [bir çalışma alanı ekleme veya kaldırmada](agent-manage.md#adding-or-removing-a-workspace)açıklandığı gibi Denetim Masası veya PowerShell'den ayarları güncelleştirerek gerçekleştirilemez.  
 
-Desteklenen yapılandırmayı anlamak için [desteklenen Windows işletim sistemlerini](log-analytics-agent.md#supported-windows-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](log-analytics-agent.md#firewall-requirements) inceleyin.
+Desteklenen yapılandırmayı anlamak için [desteklenen Windows işletim sistemlerini](log-analytics-agent.md#supported-windows-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](log-analytics-agent.md#network-requirements) inceleyin.
 
 ## <a name="obtain-workspace-id-and-key"></a>Çalışma alanı kimliği ve anahtarını alma
 Windows için Log Analytics aracısını yüklemeden önce, Log Analytics çalışma alanınız için çalışma alanı kimliğine ve anahtarına ihtiyacınız vardır.  Aracıyı düzgün bir şekilde yapılandırmak ve Azure ticari ve ABD Devlet bulutu içinde Azure Monitor ile başarılı bir şekilde iletişim kurabilmesini sağlamak için bu bilgiler her yükleme yönteminden kurulum sırasında gereklidir. 
@@ -136,44 +136,44 @@ Aracı paketinin 32 bit ve 64 bit sürümleri farklı ürün kodlarına sahiptir
 Ürün kodunu doğrudan aracı yükleme paketinden almak için, Windows Yazılım Geliştirme Kiti'nin bir bileşeni olan [Windows Installer Geliştiricileri için Windows SDK Bileşenleri'nden](https://msdn.microsoft.com/library/windows/desktop/aa370834%28v=vs.85%29.aspx) Orca.exe'yi veya Microsoft Değerli Profesyonel (MVP) tarafından yazılmış örnek bir [komut dosyasının](https://www.scconfigmgr.com/2014/08/22/how-to-get-msi-file-information-with-powershell/) ardından PowerShell'i kullanabilirsiniz.  Her iki yaklaşım için de öncelikle **MOMagent.msi** dosyasını MMASetup yükleme paketinden çıkarmanız gerekir.  Bu daha önce ilk adımda [komut satırını kullanarak aracıyı yükleyin](#install-the-agent-using-the-command-line)bölümünde gösterilir.  
 
 1. xPSDesiredStateConfiguration DSC Modül'ünden [https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration](https://www.powershellgallery.com/packages/xPSDesiredStateConfiguration) Azure Otomasyonuna aktarın.  
-1. *OPSINSIGHTS_WS_ID* ve *OPSINSIGHTS_WS_KEY*için Azure Otomasyon değişken varlıkları oluşturun. Log Analytics çalışma alanı kimliğinize *OPSINSIGHTS_WS_ID* ayarlayın ve *OPSINSIGHTS_WS_KEY* çalışma alanınızın birincil anahtarına ayarlayın.
-1. Komut dosyasını kopyalayın ve MMAgent.ps1 olarak kaydedin.
+2.    *OPSINSIGHTS_WS_ID* ve *OPSINSIGHTS_WS_KEY*için Azure Otomasyon değişken varlıkları oluşturun. Log Analytics çalışma alanı kimliğinize *OPSINSIGHTS_WS_ID* ayarlayın ve *OPSINSIGHTS_WS_KEY* çalışma alanınızın birincil anahtarına ayarlayın.
+3.    Komut dosyasını kopyalayın ve MMAgent.ps1 olarak kaydedin.
 
-   ```powershell
-   Configuration MMAgent
-   {
-       $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
-       $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
-       $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
+```powershell
+Configuration MMAgent
+{
+    $OIPackageLocalPath = "C:\Deploy\MMASetup-AMD64.exe"
+    $OPSINSIGHTS_WS_ID = Get-AutomationVariable -Name "OPSINSIGHTS_WS_ID"
+    $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
-       Import-DscResource -ModuleName xPSDesiredStateConfiguration
-       Import-DscResource -ModuleName PSDesiredStateConfiguration
+    Import-DscResource -ModuleName xPSDesiredStateConfiguration
+    Import-DscResource -ModuleName PSDesiredStateConfiguration
 
-       Node OMSnode {
-           Service OIService
-           {
-               Name = "HealthService"
-               State = "Running"
-               DependsOn = "[Package]OI"
-           }
+    Node OMSnode {
+        Service OIService
+        {
+            Name = "HealthService"
+            State = "Running"
+            DependsOn = "[Package]OI"
+        }
 
-           xRemoteFile OIPackage {
-               Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
-               DestinationPath = $OIPackageLocalPath
-           }
+        xRemoteFile OIPackage {
+            Uri = "https://go.microsoft.com/fwlink/?LinkId=828603"
+            DestinationPath = $OIPackageLocalPath
+        }
 
-           Package OI {
-               Ensure = "Present"
-               Path  = $OIPackageLocalPath
-               Name = "Microsoft Monitoring Agent"
-               ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-               Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + '      OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
-               DependsOn = "[xRemoteFile]OIPackage"
-           }
-       }
-   }
+        Package OI {
+            Ensure = "Present"
+            Path  = $OIPackageLocalPath
+            Name = "Microsoft Monitoring Agent"
+            ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
+            Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+            DependsOn = "[xRemoteFile]OIPackage"
+        }
+    }
+}
 
-   ```
+```
 
 4. Daha `ProductId` önce önerilen yöntemleri kullanarak aracı yükleme paketinin en son sürümünden çıkarılan ürün koduyla komut dosyasındaki değeri güncelleştirin. 
 5. [MMAgent.ps1 yapılandırma komut dosyasını](../../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) Otomasyon hesabınıza aktarın. 

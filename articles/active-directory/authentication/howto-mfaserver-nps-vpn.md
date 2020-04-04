@@ -4,29 +4,29 @@ description: Azure MFA Server'ın Cisco, Citrix ve Juniper ile tümleştirmesi i
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdb24bcd79f1766a52f290fd6fe0e6e5bf17e7c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01decb99a9eb24ae60250f83f1f961b4c1690bc0
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847958"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652855"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Azure MFA Server ve üçüncü taraf VPN çözümleri yle gelişmiş senaryolar
 
-Azure Çok Faktörlü Kimlik Doğrulama Sunucusu (Azure MFA Server), çeşitli üçüncü taraf VPN çözümleriyle sorunsuz bir şekilde bağlantı kurmak için kullanılabilir. Bu makale, Cisco® ASA VPN cihazı, Citrix NetScaler SSL VPN cihazı ve Ardıç Ağları Güvenli Erişim/Pulse Secure Connect Secure SSL VPN cihazına odaklanır. Bu üç ortak cihaza yönelik yapılandırma kılavuzları oluşturduk. Azure MFA Server, AD FS'de RADIUS, LDAP, IIS veya talep tabanlı kimlik doğrulaması kullanan diğer sistemlerin çoğuyla da tümleşebilir. [Azure MFA Server yapılandırmalarında](howto-mfaserver-deploy.md#next-steps)daha fazla ayrıntı bulabilirsiniz.
+Azure Çok Faktörlü Kimlik Doğrulama Sunucusu (Azure MFA Server), çeşitli üçüncü taraf VPN çözümleriyle sorunsuz bir şekilde bağlantı kurmak için kullanılabilir. Bu makale, Cisco&reg; ASA VPN cihazı, Citrix NetScaler SSL VPN cihazı ve Ardıç Ağları Güvenli Erişim/Pulse Secure Connect Secure SSL VPN cihazına odaklanır. Bu üç ortak cihaza yönelik yapılandırma kılavuzları oluşturduk. Azure MFA Server, AD FS'de RADIUS, LDAP, IIS veya talep tabanlı kimlik doğrulaması kullanan diğer sistemlerin çoğuyla da tümleşebilir. [Azure MFA Server yapılandırmalarında](howto-mfaserver-deploy.md#next-steps)daha fazla ayrıntı bulabilirsiniz.
 
 > [!IMPORTANT]
 > 1 Temmuz 2019 itibariyle Microsoft, yeni dağıtımlar için Artık MFA Server sunmayacak. Kullanıcılarından çok faktörlü kimlik doğrulaması isteyen yeni müşteriler bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulaması'nı kullanmalıdır. 1 Temmuz'dan önce MFA Server'ı etkinleştirmiş olan mevcut müşteriler en son sürümü, gelecekteki güncelleştirmeleri karşıdan yükleyebilecek ve her zamanki gibi etkinleştirme kimlik bilgilerini oluşturabilecek.
 
 ## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN cihazı ve Azure MFA Server
-Azure MFA Server, Cisco AnyConnect® VPN girişleri ve portal erişimi için ek güvenlik sağlamak için Cisco® ASA VPN cihazınızla tümleşir.  LDAP veya RADIUS protokolünü kullanabilirsiniz.  Ayrıntılı adım adım yapılandırma kılavuzlarını indirmek için aşağıdakilerden birini seçin.
+Azure MFA Server, Cisco&reg; AnyConnect&reg; VPN girişleri ve portal erişimi için ek güvenlik sağlamak için Cisco ASA VPN cihazınızla entegre dir.  LDAP veya RADIUS protokolünü kullanabilirsiniz.  Ayrıntılı adım adım yapılandırma kılavuzlarını indirmek için aşağıdakilerden birini seçin.
 
 | Yapılandırma Kılavuzu | Açıklama |
 | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: Hareketleri kullanma
-description: Çözümler geliştirmek için Azure SQL Veri Ambarı'nda hareketleri uygulama ipuçları.
+title: Synapse SQL havuzunda hareketleri kullanma
+description: Bu makalede, Synapse SQL havuzunda hareketleri uygulama ve çözüm geliştirme ipuçları içerir.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,26 +11,30 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a14201131eac5ce1efc4020c9ce0f40a80cac8a3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351552"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633423"
 ---
-# <a name="using-transactions-in-sql-data-warehouse"></a>SQL Veri Ambarı'ndaki hareketleri kullanma
-Çözümler geliştirmek için Azure SQL Veri Ambarı'nda hareketleri uygulama ipuçları.
+# <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL havuzunda hareketleri kullanma
+Bu makalede, sql havuzunda hareketleri uygulama ve çözüm geliştirme ipuçları içerir.
 
 ## <a name="what-to-expect"></a>Ne beklenebilir
-Beklediğiniz gibi, SQL Veri Ambarı veri ambarı iş yükünün bir parçası olarak hareketleri destekler. Ancak, SQL Veri Ambarı performansının ölçekte tutulmasını sağlamak için bazı özellikler SQL Server ile karşılaştırıldığında sınırlıdır. Bu makalede, farklılıkları vurgular ve diğerleri listeler. 
+Beklediğiniz gibi, SQL havuzu veri ambarı iş yükünün bir parçası olarak hareketleri destekler. Ancak, SQL havuzunun ölçekte tutulmasını sağlamak için, bazı özellikler SQL Server ile karşılaştırıldığında sınırlıdır. Bu makalede, farklar vurgulamaktadır. 
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
-SQL Veri Ambarı ACID hareketlerini uygular. İşlemsel desteğin yalıtım düzeyi, TAAHHÜTEDİlMEYEN READ için varsayılandır.  Ana veritabanına bağlandığında kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak COMMITTED SNAPSHOT ISOLATION'ı OKUMA olarak değiştirebilirsiniz.  Etkinleştirildiğinde, bu veritabanındaki tüm işlemler READ COMMITTED SNAPSHOT Isolation altında yürütülür ve READ UNCOMMITTED'un oturum düzeyinde ayarlanması onurlandırılmaz. Ayrıntılar için [ALTER DATABASE SET seçeneklerini (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) kontrol edin.
+SQL havuzu ACID hareketlerini uygular. İşlemsel desteğin yalıtım düzeyi, TAAHHÜTEDİlMEYEN READ için varsayılandır.  Ana veritabanına bağlandığında kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak COMMITTED SNAPSHOT ISOLATION'ı OKUMA olarak değiştirebilirsiniz.  
+
+Etkinleştirildiğinde, bu veritabanındaki tüm işlemler READ COMMITTED SNAPSHOT Isolation altında yürütülür ve READ UNCOMMITTED'un oturum düzeyinde ayarlanması onurlandırılmaz. Ayrıntılar için [ALTER DATABASE SET seçeneklerini (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) kontrol edin.
 
 ## <a name="transaction-size"></a>İşlem boyutu
-Tek bir veri modifikasyon hareketinin boyutu sınırlıdır. Sınır dağıtım başına uygulanır. Bu nedenle, toplam ayırma, sınır dağılımı sayısı ile çarpılarak hesaplanabilir. İşlemdeki en fazla satır sayısını yaklaşık olarak tahmin etmek için dağıtım kapağını her satırın toplam boyutuna bölün. Değişken uzunluktaki sütunlar için, maksimum boyutu kullanmak yerine ortalama bir sütun uzunluğu almayı düşünün.
+Tek bir veri modifikasyon hareketinin boyutu sınırlıdır. Sınır dağıtım başına uygulanır. Bu nedenle, toplam ayırma, sınır dağılımı sayısı ile çarpılarak hesaplanabilir. 
 
-Aşağıdaki tabloda aşağıdaki varsayımlar yapılmıştır:
+İşlemdeki en fazla satır sayısını yaklaşık olarak tahmin etmek için dağıtım kapağını her satırın toplam boyutuna bölün. Değişken uzunluktaki sütunlar için, maksimum boyutu kullanmak yerine ortalama bir sütun uzunluğu almayı düşünün.
+
+Aşağıdaki tabloda, iki varsayım yapılmıştır:
 
 * Verilerin eşit dağılımı oluştu 
 * Ortalama satır uzunluğu 250 bayt
@@ -84,12 +88,15 @@ Günlüğe yazılan veri miktarını en iyi duruma getirmek ve en aza indirmek i
 > 
 
 ## <a name="transaction-state"></a>İşlem durumu
-SQL Veri Ambarı , -2 değerini kullanarak başarısız bir hareketi bildirmek için XACT_STATE() işlevini kullanır. Bu değer, hareketin başarısız olduğu ve yalnızca geri alma için işaretlendiğini gösterir.
+SQL havuzu -2 değerini kullanarak başarısız bir hareketi bildirmek için XACT_STATE() işlevini kullanır. Bu değer, hareketin başarısız olduğu ve yalnızca geri alma için işaretlendiğini gösterir.
 
 > [!NOTE]
-> -2'nin XACT_STATE işlevi tarafından başarısız bir işlemi belirtmek için kullanılması SQL Server'a farklı bir davranışı temsil eder. SQL Server, -1 değerini işitilemez bir işlemi temsil etmek için kullanır. SQL Server, bir işlem içinde bazı hataları, taahhüt edilemez olarak işaretlemek zorunda kalmadan tolere edebilir. Örneğin, `SELECT 1/0` bir hataya neden olur, ancak bir hareketi işlenmemiş bir duruma zorlamaz. SQL Server ayrıca taahhüt edilemeyen işlemde okumalara da izin verir. Ancak, SQL Veri Ambarı bunu yapmanıza izin vermez. Bir SQL Veri Ambarı hareketinde bir hata oluşursa, otomatik olarak -2 durumuna girer ve ekstre geri alınana kadar başka seçim ekstreleri yapamazsınız. Bu nedenle, kod değişiklikleri yapmak için gerekebileceği gibi XACT_STATE() kullanıp kullanmadığını görmek için uygulama kodunuzu kontrol etmek önemlidir.
-> 
-> 
+> -2'nin XACT_STATE işlevi tarafından başarısız bir işlemi belirtmek için kullanılması SQL Server'a farklı bir davranışı temsil eder. SQL Server, -1 değerini işitilemez bir işlemi temsil etmek için kullanır. SQL Server, bir işlem içinde bazı hataları, taahhüt edilemez olarak işaretlemek zorunda kalmadan tolere edebilir. Örneğin, `SELECT 1/0` bir hataya neden olur, ancak bir hareketi işlenmemiş bir duruma zorlamaz. 
+
+SQL Server ayrıca taahhüt edilemeyen işlemde okumalara da izin verir. Ancak, SQL havuzu bunu yapmanıza izin vermez. Bir SQL havuzu hareketinin içinde bir hata oluşursa, otomatik olarak -2 durumuna girer ve ekstre geri alınana kadar başka seçim ekstreleri yapamazsınız. 
+
+Bu nedenle, kod değişiklikleri yapmak için gerekebileceği gibi XACT_STATE() kullanıp kullanmadığını görmek için uygulama kodunuzu kontrol etmek önemlidir.
+
 
 Örneğin, SQL Server'da aşağıdaki gibi görünen bir işlem görebilirsiniz:
 
@@ -131,11 +138,11 @@ SELECT @xact_state AS TransactionState;
 
 Önceki kod aşağıdaki hata iletisini verir:
 
-Msg 111233, Düzey 16, Devlet 1, Hat 1 111233; Geçerli hareket iptal edildi ve bekleyen değişiklikler geri alındı. Neden: Yalnızca geri alma durumundaki bir hareket, DDL, DML veya SELECT deyiminden önce açıkça geri alınmadı.
+Msg 111233, Düzey 16, Devlet 1, Hat 1 111233; Geçerli hareket iptal edildi ve bekleyen değişiklikler geri alındı. Bu sorunun nedeni, yalnızca geri alma durumundaki bir işlemin DDL, DML veya SELECT deyiminden önce açıkça geri alınmamasıdır.
 
 ERROR_* işlevlerinin çıktısını alamazsınız.
 
-SQL Veri Ambarı'nda kodun biraz değiştirilmesi gerekir:
+SQL havuzunda kodun biraz değiştirilmesi gerekir:
 
 ```sql
 SET NOCOUNT ON;
@@ -177,17 +184,19 @@ Beklenen davranış şimdi gözlenir. Hareketteki hata yönetilir ve ERROR_* iş
 Değişen tek şey, işlemin ROLLBACK'inin CATCH bloğundaki hata bilgilerinin okunmasından önce gerçekleşmesi gerektiğidir.
 
 ## <a name="error_line-function"></a>Error_Line() fonksiyonu
-Ayrıca, SQL Veri Ambarı'nın ERROR_LINE() işlevini uygulamadığını veya desteklemediğini de belirtmekte yarar vardır. Kodunuzda bu varsa, SQL Veri Ambarı ile uyumlu olması için kodu kaldırmanız gerekir. Eşdeğer işlevsellik uygulamak için kodunuzdaki sorgu etiketlerini kullanın. Daha fazla bilgi için [LABEL](sql-data-warehouse-develop-label.md) makalesine bakın.
+Ayrıca, SQL havuzunun ERROR_LINE() işlevini uygulamadığını veya desteklemediğini de belirtmekte yarar vardır. Kodunuzda bu varsa, SQL havuzuyla uyumlu olması için kodu kaldırmanız gerekir. 
+
+Eşdeğer işlevsellik uygulamak için kodunuzdaki sorgu etiketlerini kullanın. Daha fazla bilgi için [LABEL](sql-data-warehouse-develop-label.md) makalesine bakın.
 
 ## <a name="using-throw-and-raiserror"></a>THROW ve RAISERROR kullanma
-THROW, SQL Veri Ambarı'ndaki özel durumları yükseltmek için daha modern bir uygulamadır ancak RAISERROR da desteklenir. Ancak dikkat değer birkaç farklılıklar vardır.
+THROW, SQL havuzunda özel durumları yükseltmek için daha modern bir uygulamadır ancak RAISERROR da desteklenir. Ancak dikkat değer birkaç farklılıklar vardır.
 
 * Kullanıcı tanımlı hata iletileri numaraları THROW için 100.000 - 150.000 aralığında olamaz
 * RAISERROR hata iletileri 50.000 sabit
 * sys.messages kullanımı desteklenmiyor
 
 ## <a name="limitations"></a>Sınırlamalar
-SQL Veri Ambarı'nın hareketle ilgili birkaç başka kısıtlaması vardır.
+SQL havuzunun hareketle ilgili birkaç başka kısıtlaması vardır.
 
 Bunlar şu şekildedir:
 
@@ -199,5 +208,5 @@ Bunlar şu şekildedir:
 * Kullanıcı tanımlı bir işlemde CREATE TABLE gibi DDL desteği yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İşlemleri en iyi duruma getirmek hakkında daha fazla bilgi edinmek [için, Hareketler'in en iyi uygulamaları'na](sql-data-warehouse-develop-best-practices-transactions.md)bakın. Diğer SQL Veri Ambarı en iyi uygulamaları hakkında bilgi edinmek için [SQL Veri Ambarı en iyi uygulamaları](sql-data-warehouse-best-practices.md)bakın.
+İşlemleri en iyi duruma getirmek hakkında daha fazla bilgi edinmek [için, Hareketler'in en iyi uygulamaları'na](sql-data-warehouse-develop-best-practices-transactions.md)bakın. Diğer SQL havuzu en iyi uygulamaları hakkında bilgi edinmek için, [SQL havuzu en iyi uygulamaları](sql-data-warehouse-best-practices.md)bakın.
 

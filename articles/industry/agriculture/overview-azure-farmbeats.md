@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76767964"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638057"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats'e Genel Bakış (Önizleme)
 
@@ -42,6 +42,24 @@ Datahub genişletilebilir bir API platformu olarak tasarlanmıştır. Azure Farm
 ## <a name="accelerator"></a>Hızlandırıcı
 
 Azure FarmBeats Hızlandırıcı, Datahub'ın üzerine inşa edilmiş örnek bir web uygulamasıdır. Hızlandırıcı, kullanıcı arabiriminizi ve model geliştirmenizi hızlandırıyor. Azure FarmBeats hızlandırıcısı Azure FarmBeats'in API'lerini kullanır. Sindirilen sensör verilerini grafikler ve model çıktıları olarak harita olarak görselleştirir. Örneğin, hızlandırıcıyı hızlı bir şekilde bir çiftlik oluşturmak ve o çiftlik için bir bitki indeksi haritası veya sensör yerleştirme haritası almak için kullanabilirsiniz.
+
+## <a name="role-based-access-control-rbac"></a>Rol Tabanlı Access Control (RBAC)
+
+Yönetici, önceden tanımlanmış rollerden birini kullanarak Azure FarmBeats için erişim kurallarını tanımlayabilir. Roller, bir kullanıcının uygulamanın hangi alanlarına erişebileceğini ve hangi eylemleri gerçekleştirebileceğini belirler. Azure FarmBeats'te kullanıcılar ve iş ortakları için iki tür rol vardır.
+
+### <a name="user-roles"></a>Kullanıcı Rolleri
+
+Yönetici, [kullanıcıları ekleyebilir ve yönetebilir](manage-users-in-azure-farmbeats.md) ve erişim düzeylerini iki kullanıcı rolüne göre tanımlayabilir: Yalnızca Yönetici ve Salt Okunur.
+
+### <a name="partner-roles"></a>Ortak Rolleri
+
+Bir yönetici Azure FarmBeats'e veri sağlayıcısı olarak birden çok iş ortağı ekleyebilir. FarmBeats'teki kullanılabilir iş ortağı rollerini ve izinlerini aşağıda özetler:
+
+| Ortak Türü    |   Eylemler  | Kapsam |
+| ---- | -------- | -------- |
+| Sensör Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme | DeviceModel, Cihaz, Sensör Modeli, Sensör <br/> <br/> Genişletilmiş Tip |
+| Görüntü Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | Sahne, SahneDosyası <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
+| Görüntü Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | WeatherDataModel, WeatherDataLocation, İş Tipi <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
 
 ## <a name="resources"></a>Kaynaklar
 

@@ -10,16 +10,18 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0f5f890b4f32961e00fb30316a1dc7c88ef93a45
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474325"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654835"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Etki Alanı Hizmetleri nedir?
 
 Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS), etki alanı birleştirme, grup ilkesi, hafif dizin erişim protokolü (LDAP) ve Windows Server Active Directory ile tam uyumlu Kerberos / NTLM kimlik doğrulaması gibi yönetilen etki alanı hizmetleri sağlar. Bu etki alanı hizmetlerini bulutta etki alanı denetleyicilerini dağıtmaya, yönetmeye ve düzeltmee gerek kalmadan kullanırsınız. Azure AD DS, kullanıcıların mevcut kimlik bilgilerini kullanarak oturum açmalarını mümkün kılan mevcut Azure AD kiracınızla tümleşir. Kaynaklara erişimi güvence altına almak için varolan grupları ve kullanıcı hesaplarını da kullanabilirsiniz ve bu da şirket içi kaynakların Azure'a daha sorunsuz bir şekilde kaldırılmasını ve kaydırmasını sağlar.
+
+Başlamak için, [Azure portalını kullanarak Azure AD DS yönetilen bir etki alanı oluşturun.][tutorial-create]
 
 Azure AD DS, Azure AD'deki kimlik bilgilerini çoğaltır, bu nedenle yalnızca bulut erişimiolan veya şirket içi Active Directory Domain Services (AD DS) ortamıyla eşitlenmiş Azure AD kiracılarıyla çalışır. Her iki ortam için de aynı Azure AD DS özellikleri kümesi bulunur.
 
@@ -51,7 +53,11 @@ Azure AD DS, şirket içi BIR AD DS ortamına VPN bağlantıları oluşturma vey
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS özellikleri ve avantajları
 
-Azure AD DS, buluttaki uygulamalara ve VM'lere kimlik hizmetleri sağlamak için etki alanına katılma, güvenli LDAP (LDAPS), Grup İlkesi, DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD'den senkronize edilen kaynaklar için kullanılamaz. Azure AD DS'nin aşağıdaki özellikleri dağıtım ve yönetim işlemlerini basitleştirir:
+Azure AD DS, buluttaki uygulamalara ve VM'lere kimlik hizmetleri sağlamak için etki alanına katılma, güvenli LDAP (LDAPS), Grup İlkesi, DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD'den senkronize edilen kaynaklar için kullanılamaz.
+
+Kimlik seçenekleriniz hakkında daha fazla bilgi edinmek için [Azure AD DS'sini Azure AD ile, Azure VM'lerde Active Directory Etki Alanı Hizmetleri ve şirket içinde Active Directory Etki Alanı Hizmetleri ile karşılaştırın.][compare]
+
+Azure AD DS'nin aşağıdaki özellikleri dağıtım ve yönetim işlemlerini basitleştirir:
 
 * **Basitleştirilmiş dağıtım deneyimi:** Azure REKLAM DS, Azure portalında tek bir sihirbaz kullanarak Azure AD kiracınız için etkinleştirilir.
 * **Azure AD ile entegre:** Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri Azure AD kiracınızdan otomatik olarak kullanılabilir. Azure AD kiracınızdan veya şirket içi AD DS ortamınızdan yeni kullanıcılar, gruplar veya özniteliklerdeki değişiklikler otomatik olarak Azure AD DS ile senkronize edilir.

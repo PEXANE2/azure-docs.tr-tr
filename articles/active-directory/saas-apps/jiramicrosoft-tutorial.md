@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd922d0e65da627f11e6aab3827cb848c3dd635
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7c6db9ed92161e968b36c75b8bee5a847137c072
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75560535"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631879"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JIRA SAML SSO ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -42,7 +42,7 @@ Tek oturum açmayı etkinleştirmek için Atlassian JIRA sunucusundaki Microsoft
 Microsoft tarafından JIRA SAML SSO ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
 - Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-- JIRA Core ve Software 6.4 ila 8.5.1 veya JIRA Service Desk 3.0 ila 4.6.0 Windows 64-bit sürümünde yüklü ve yapılandırılmış olmalıdır
+- JIRA Core ve Software 6.4 ila 8.8.0 veya JIRA Service Desk 3.0 ila 4.8.0 Windows 64-bit sürümünde yüklü ve yapılandırılmış olmalıdır
 - JIRA sunucusu HTTPS etkin
 - JIRA Plugin için desteklenen sürümleri aşağıdaki bölümde belirtilmiştir unutmayın.
 - JIRA sunucusuna internetüzerinden özellikle azure AD Giriş sayfasına kimlik doğrulama için ulaşılabilir ve belirteci Azure AD'den alabilmeli
@@ -60,8 +60,8 @@ Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
 ## <a name="supported-versions-of-jira"></a>JIRA'nın desteklenen sürümleri
 
-* JIRA Çekirdek ve Yazılım: 6,4 ila 8,5,1
-* JIRA Servis Masası 3.0.0 - 4.6.0
+* JIRA Çekirdek ve Yazılım: 6,4 ila 8,8,0
+* JIRA Servis Masası 3.0.0 - 4.8.0
 * JIRA da 5.2 destekler. Daha fazla ayrıntı [için, JIRA 5.2 için Microsoft Azure Active Directory tek oturum açma'yı](jira52microsoft-tutorial.md) tıklatın
 
 > [!NOTE]

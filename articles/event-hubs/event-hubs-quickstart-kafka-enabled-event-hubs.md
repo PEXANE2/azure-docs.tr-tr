@@ -8,12 +8,12 @@ ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: d196611dcf9f29e981977b8506ad9623f4629b53
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 89d2c16e3f54d3170b4f0d23590294be13dd8caa
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521643"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632743"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Quickstart: Kafka protokolünü kullanarak Olay Hub'ları ile veri akışı
 Bu hızlı başlangıç, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını gösterir. Uygulamalarınızda sadece bir yapılandırma değişikliğiyle Etkinlik Hub'larıyla konuşmak için üreticilerinizi ve tüketicilerinizi nasıl kullanacağınızı öğrenirsiniz. Azure Event Hubs [Apache Kafka sürüm 1.0](https://kafka.apache.org/10/documentation.html)’ı destekler.
@@ -108,10 +108,4 @@ Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşıla
 Event Hubs Kafka kümenizin olayları varsa, bu olayları artık tüketiciden almaya başlarsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Daha fazla bilgi için aşağıdaki makale ve örneklere bakın:
-
-- [Kafka için Event Hubs hakkında bilgi edinin](event-hubs-for-kafka-ecosystem-overview.md)
-- [GitHub'da Kafka için Etkinlik Hub'ları için hızlı başlangıçlar](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart)
-- [GitHub'da Kafka için Etkinlik Hub'ları için Eğitimler](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials)
-- [Olayları Kafka'dan şirket içinde bulutta Olay Hub'larına aktarmak için MirrorMaker'ı kullanın.](event-hubs-kafka-mirror-maker-tutorial.md) [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)
-- [Apache Flink](event-hubs-kafka-flink-tutorial.md) veya [Akka Akışları'nı](event-hubs-kafka-akka-streams-tutorial.md) kullanarak Etkinlik Hub'larına nasıl akış yapılacağını öğrenin
+Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Olay Hub'larına nasıl akış yapılacağını öğrendiniz. Daha fazla bilgi için [Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzuna](apache-kafka-developer-guide.md)bakın. 

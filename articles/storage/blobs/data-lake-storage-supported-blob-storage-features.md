@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 215244204aa58cc2fdedc639d48e01b514759694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78196017"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637207"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Blob depolama özellikleri Azure Veri Gölü Depolama Gen2'de kullanılabilir
 
@@ -38,7 +38,7 @@ Bu tablo, Azure Veri Gölü Depolama Gen2 ile kullanabileceğiniz Blob depolama 
 |Blob depolama API'leri|Genel kullanıma sunuldu|[Quickstart: .NET için Azure Blob depolama istemcisi kitaplığı v12](storage-quickstart-blobs-dotnet.md)<br>[Quickstart: Java v12 SDK ile blobs yönetin](storage-quickstart-blobs-java.md)<br>[Quickstart: Python v12 SDK ile blobs yönetin](storage-quickstart-blobs-python.md)<br>[Quickstart: Node.js JavaScript v12 SDK ile blobs yönetin](storage-quickstart-blobs-nodejs.md)|
 |Arşiv Erişim Katmanı|Önizleme|[Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md)|
 |Yaşam döngüsü yönetimi politikaları|Önizleme|[Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)|
-|Tanılama günlükleri|Önizleme|[Azure Depolama analizi günlüğü](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Tanılama günlükleri|Genel kullanıma sunuldu|[Azure Depolama analizi günlüğü](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Akışı değiştirme|Henüz desteklenmedi|[Azure Blob depolama alanında özet akışı desteğini değiştirme](storage-blob-change-feed.md)|
 |Hesap başarısız|Henüz desteklenmedi|[Olağanüstü durum kurtarma ve hesap başarısız](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob konteyner ACL|Henüz desteklenmedi|[Konteyner ACL'yi Ayarla](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|

@@ -11,23 +11,22 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39501cef3bb2f7e4a0e061968520f687cf97ecc5
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 20afa3f37bb85fd268962aea03107f0eaeb9bea2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584214"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633592"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Veri depolama için sürekli entegrasyon ve dağıtım
 
-Bu basit öğretici, SQL Server Veri araçları (SSDT) veritabanı projenizi Azure DevOps ile nasıl entegre edebilirsiniz ve sürekli tümleştirme ve dağıtım ayarlamak için Azure Pipelines'dan nasıl yararlanacağınızı özetlemektedir. Bu öğretici, veri depolama için sürekli tümleştirme ve dağıtım ardışık alan oluşturmanın ikinci adımıdır. 
+Bu basit öğretici, SQL Server Veri araçları (SSDT) veritabanı projenizi Azure DevOps ile nasıl entegre edebilirsiniz ve sürekli tümleştirme ve dağıtım ayarlamak için Azure Pipelines'dan nasıl yararlanacağınızı özetlemektedir. Bu öğretici, veri depolama için sürekli tümleştirme ve dağıtım ardışık alan oluşturmanın ikinci adımıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-- [Kaynak denetimi tümleştirme öğreticisini](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration) gözden geçirin
+- [Kaynak denetimi tümleştirme öğreticisini](sql-data-warehouse-source-control-integration.md) gözden geçirin
 
 - Azure DevOps'leri ayarlama ve bu tür lere bağlanma
-
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Visual Studio build ile sürekli entegrasyon
 
@@ -37,7 +36,7 @@ Bu basit öğretici, SQL Server Veri araçları (SSDT) veritabanı projenizi Azu
 
 2. Kaynak kod deponuzu (Azure Repos Git) ve .NET Desktop uygulama şablonunu seçin.
 
-      ![Boru Hattı Kurulumu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Boru Hattı Kurulumu") 
+      ![Boru Hattı Kurulumu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Boru Hattı Kurulumu")
 
 3. Aracınızın uygun havuzunu kullanmak için YAML dosyanızı edin. YAML dosyanız şuna benzer olmalıdır:
 
@@ -45,10 +44,9 @@ Bu basit öğretici, SQL Server Veri araçları (SSDT) veritabanı projenizi Azu
 
 Bu noktada, kaynak denetim deposu ana dalınızda yapılan herhangi bir iadenin veritabanı projenizin başarılı bir Visual Studio oluşturmasını otomatik olarak tetiklemesi gereken basit bir ortamınız vardır. Yerel veritabanı projenizde bir değişiklik yaparak ve ana dalınızda bu değişikliği denetleyerek otomasyonun uçuca çalıştığını doğrulayın.
 
-
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Veri Ambarı (veya Veritabanı) dağıtım göreviyle sürekli dağıtım
 
-1. Azure SQL Veritabanı [dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları doldurun. Bu görev çalıştığında, önceki yapı işleminden oluşturulan DACPAC hedef veri ambarına dağıtılır. [Azure SQL Veri Ambarı dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)de kullanabilirsiniz. 
+1. Azure SQL Veritabanı [dağıtım görevini](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları doldurun. Bu görev çalıştığında, önceki yapı işleminden oluşturulan DACPAC hedef veri ambarına dağıtılır. [Azure SQL Veri Ambarı dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)de kullanabilirsiniz.
 
       ![Dağıtım Görevi](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Dağıtım Görevi")
 

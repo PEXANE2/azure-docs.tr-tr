@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5f0432cafee07dbed071d24aa8c24ee9b2176967
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350188"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633059"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Azure Synapse Analytics'i kullanarak silinmiş bir SQL havuzunun geri yüklenmesi
 
@@ -39,16 +39,16 @@ Silinmiş bir SQL havuzunu geri yüklemek için [Geri Yükleme-AzSqlDatabase](ht
 5. Belirli silinmiş veri ambarını alın.
 6. Silinen veri ambarını geri yükleme
     1. Silinen SQL Veri Ambarı'nı farklı bir mantıksal sunucuya geri yüklemek için diğer mantıksal sunucu adını belirttiğinden emin olun.  Bu mantıksal sunucu farklı bir kaynak grubu ve bölgede de olabilir.
-    1. Farklı bir aboneye geri yüklemek için, mantıksal sunucuyu başka bir aboneye taşımak için [Taşı](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources#use-the-portal) düğmesini kullanın.
-1. Geri yüklenen veri ambarının çevrimiçi olduğunu doğrulayın.
-1. Geri yükleme tamamlandıktan sonra, kurtarma sonra [veritabanınızı yapılandırmayı](../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)izleyerek kurtarılan veri ambarını yapılandırabilirsiniz.
+    1. Farklı bir aboneye geri yüklemek için, mantıksal sunucuyu başka bir aboneye taşımak için [Taşı](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#use-the-portal) düğmesini kullanın.
+7. Geri yüklenen veri ambarının çevrimiçi olduğunu doğrulayın.
+8. Geri yükleme tamamlandıktan sonra, kurtarma sonra [veritabanınızı yapılandırmayı](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)izleyerek kurtarılan veri ambarını yapılandırabilirsiniz.
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
 #$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
-#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>" 
+#$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
 
@@ -86,5 +86,6 @@ $RestoredDatabase.status
     ![Veritabanı Adını Belirt](./media/sql-data-warehouse-restore-deleted-dw/restoring-deleted-21.png)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+
 - [Varolan bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-active-paused-dw.md)
 - [Coğrafi yedekleme SQL havuzundan geri yükleme](sql-data-warehouse-restore-from-geo-backup.md)

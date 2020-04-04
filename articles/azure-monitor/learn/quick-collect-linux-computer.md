@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 12/24/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b83592aa069b5262961f5e41a909821786a178b6
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 1da862a7994d7db5ee8c9f090119e14f19c6b13a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528561"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637885"
 ---
 # <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Hızlı başlatma: Azure Monitor ile karma bir ortamda bir Linux bilgisayarından veri toplama
 
 [Azure Monitor,](../overview.md) ortamınızdaki fiziksel veya sanal Linux bilgisayarlarınızdan doğrudan veri toplayabilir ve ayrıntılı analiz ve korelasyon için Log Analytics çalışma alanına girebilir. Log [Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure Monitor'un veri merkezinden veya başka bir bulut ortamından veri toplamasına olanak tanır. Bu hızlı başlangıç, birkaç kolay adımla Linux sunucunuzdan nasıl veri yapılandırabileceğinizi ve topladığınızı gösterir. Azure Linux SANAL M'leri hakkında bilgi [için](../../azure-monitor/learn/quick-collect-azurevm.md)bkz.  
 
-Desteklenen yapılandırmayı anlamak için [bkz.](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) [Network firewall configuration](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+Desteklenen yapılandırmayı anlamak için [bkz.](../../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) [Network firewall configuration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)
  
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 

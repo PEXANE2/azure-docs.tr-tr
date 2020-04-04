@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes Hizmeti & GitHub Eylemleri (önizleme)
 services: azure-dev-spaces
-ms.date: 02/04/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 description: GitHub Eylemleri ve Azure Dev Alanları'nı kullanarak doğrudan Azure Kubernetes Hizmeti'nde çekme isteğindeki değişiklikleri gözden geçirme ve test etme
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, GitHub Eylemleri, Miğfer, servis örgü, servis örgü yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 49715e38f36d4421b7327640ec8392a83b3c2996
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252371"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637941"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Hizmeti & GitHub Eylemleri (önizleme)
 
@@ -101,6 +101,11 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 > Tüm bu sırlar GitHub eylem tarafından kullanılan ve [.github/iş akışları/bikes.yml][github-action-yaml]yapılandırılır.
 
 İsteğe bağlı olarak, PR birleştirdikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io*olan *>.gateway.<HOST_SUFFIX>MASTER_SPACE<* formu alır *GATEWAY_HOST* sırrı ekleyin. Değişikliklerinizi çatalınızdaki ana dalda birleştirdikten sonra, ana dev alanında tüm uygulamanızı yeniden oluşturmak ve çalıştırmak için başka bir eylem çalışacaktır. Bu örnekte, ana alan *dev.* Bu eylem [.github/iş akışları/bikesharing.yml][github-action-bikesharing-yaml]olarak yapılandırılır.
+
+Ayrıca, PR değişiklikleri bir torun alanında çalıştırmak istiyorsanız, *MASTER_SPACE* ve *HOST* sırlarını güncelleyin. Örneğin, uygulamanız *dev/azureuser1*ile *dev'de* çalışıyorsa, PR'ın *dev/azureuser1'in*bir alt alanında çalıştırmasını sağlamak için1 :
+
+* Bu örnekte *azureuser1,* üst alan olarak istediğiniz alt alana *MASTER_SPACE* güncelleştirin.
+* Bu *örnekte*GRANDPARENT_SPACE *HOST'u* *>,<>,<HOST_SUFFIX<>,<APP_NAME *HOST_SUFFIX>olarak dev.bikesharingweb.fedcab0987.eus.azds.io güncelleştirin.
 
 ## <a name="create-a-new-branch-for-code-changes"></a>Kod değişiklikleri için yeni bir dal oluşturma
 

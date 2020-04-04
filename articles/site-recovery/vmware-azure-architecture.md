@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77b4dd4c0efbe6d03e64865f18c2c87614aaecb5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514876"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632515"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware'den Azure olağanüstü durum kurtarma mimarisine
 
@@ -25,7 +25,7 @@ Aşağıdaki tablo ve grafik, Azure'a VMware olağanüstü durum kurtarma için 
 
 **Bileşen** | **Gereksinim** | **Şey**
 --- | --- | ---
-**Azure** | Önbellek için Azure aboneliği, Önbellek için Azure Depolama hesabı, Yönetilen Disk ve Azure ağı. | Şirket içi Sanal M'lerden çoğaltılan veriler Azure depolama alanında depolanır. Azure Sanal Taşıtları, şirket içinde Azure'a bir arıza çalıştırdığınızda çoğaltılan verilerle oluşturulur. Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
+**Azure** | Azure aboneliği, önbellek için Azure Depolama hesabı, Yönetilen Disk ve Azure ağı. | Şirket içi Sanal M'lerden çoğaltılan veriler Azure depolama alanında depolanır. Azure Sanal Taşıtları, şirket içinde Azure'a bir arıza çalıştırdığınızda çoğaltılan verilerle oluşturulur. Azure VM’leri oluşturulduğunda Azure sanal ağına bağlanır.
 **Yapılandırma sunucu makinesi** | Tek bir şirket içi makine. İndirilen ovf şablonundan dağıtılabilen bir VMware VM olarak çalıştırmanızı öneririz.<br/><br/> Makine, yapılandırma sunucusu, işlem sunucusu ve ana hedef sunucuyu içeren tüm şirket içi Site Kurtarma bileşenlerini çalıştırın. | **Yapılandırma sunucusu**: Şirket içi ve Azure arasındaki iletişimi koordine eder ve veri çoğaltmayı yönetir.<br/><br/> **İşlem sunucusu**: Yapılandırma sunucusunda varsayılan olarak yüklenir. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile optimize eder; ve Azure Depolama'ya gönderir. İşlem sunucusu aynı zamanda çoğaltmak istediğiniz VM’lere Azure Site Recovery Mobility Hizmetini yükler ve şirket içi makinelerinin otomatik olarak bulunmasını sağlar. Dağıtımınız büyüdükçe, daha büyük birim çoğaltma trafiğini işlemek için ek, ayrı işlem sunucuları ekleyebilirsiniz.<br/><br/> **Ana hedef sunucu**: Yapılandırma sunucusunda varsayılan olarak yüklenir. Azure'dan geri dönüş sırasında çoğaltma verilerini işler. Büyük dağıtımlar için, failback için ek, ayrı bir ana hedef sunucu ekleyebilirsiniz.
 **VMware sunucuları** | VMware VM'ler şirket içi vSphere ESXi sunucularında barındırılır. Ana bilgisayarları yönetmek için bir vCenter sunucusu öneririz. | Site Kurtarma dağıtımı sırasında, Kurtarma Hizmetleri kasasına VMware sunucuları eklersiniz.
 **Çoğaltılan makineler** | Mobilite Hizmeti, çoğalttırdığınız her VMware VM'ye yüklenir. | İşlem sunucusundan otomatik yüklemeye izin vermenizi öneririz. Alternatif olarak, hizmeti el ile yükleyebilir veya Configuration Manager gibi otomatik bir dağıtım yöntemi kullanabilirsiniz.
@@ -33,7 +33,6 @@ Aşağıdaki tablo ve grafik, Azure'a VMware olağanüstü durum kurtarma için 
 **VMware-Azure arası mimari**
 
 ![Bileşenler](./media/vmware-azure-architecture/arch-enhanced.png)
-
 
 
 ## <a name="replication-process"></a>Çoğaltma işlemi
@@ -46,7 +45,7 @@ Aşağıdaki tablo ve grafik, Azure'a VMware olağanüstü durum kurtarma için 
         - **Uygulama tutarlı anlık görüntüler.** Uygulama tutarlı anlık görüntüsü, uygulama gereksinimlerinize bağlı olarak her 1 ila 12 saatte bir alınabilir. Anlık görüntüler standart Azure blob anlık görüntüleridir. VM üzerinde çalışan Mobilite aracısı bu ayara uygun olarak bir VSS anlık görüntüsü ister ve çoğaltma akışında uygulama tutarlı noktası olarak zaman içinde yer imleri.
 
 2. Trafik, Internet üzerinden Azure depolama ortak uç noktalarına çoğalır. Alternatif olarak, [Microsoft'un bakışlarıyla](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)Azure ExpressRoute'u kullanabilirsiniz. Şirket içi bir siteden Azure'a siteden siteye sanal özel ağ (VPN) üzerinden trafiği çoğaltmak desteklenmez.
-3. İlk çoğaltma işlemi bittikten sonra, Delta değişikliklerinin Azure'da çoğaltılması başlar. Bir makine için izlenen değişiklikler işlem sunucusuna gönderilir.
+3. İlk çoğaltma işlemi, etkinleştirme işlemi sırasında makinedeki tüm verilerin Azure'a gönderilmesini sağlar. İlk çoğaltma işlemi bittikten sonra, Delta değişikliklerinin Azure'da çoğaltılması başlar. Bir makine için izlenen değişiklikler işlem sunucusuna gönderilir.
 4. İletişim aşağıdaki gibi olur:
 
     - VM'ler, çoğaltma yönetimi için HTTPS 443'ün gelen bağlantı noktasındaki şirket içi yapılandırma sunucusuyla iletişim kurar.
@@ -55,12 +54,21 @@ Aşağıdaki tablo ve grafik, Azure'a VMware olağanüstü durum kurtarma için 
     - İşlem sunucusu çoğaltma verilerini alır, en iyi duruma getirir ve şifreler ve 443 bağlantı noktası üzerinden Azure depolamasına gönderir.
 5. Çoğaltma verileri ilk olarak Azure'daki bir önbellek depolama hesabında yer açar. Bu günlükler işlenir ve veriler bir Azure Yönetilen Disk'te (asr tohum diski olarak adlandırılır) depolanır. Kurtarma noktaları bu diskte oluşturulur.
 
-
-
-
 **VMware'den Azure çoğaltma işlemine**
 
 ![Çoğaltma işlemi](./media/vmware-azure-architecture/v2a-architecture-henry.png)
+
+## <a name="resynchronization-process"></a>Yeniden senkronizasyon süreci
+
+1. Zaman zaman, ilk çoğaltma sırasında veya delta değişiklikleri aktarırken, kaynak makine arasında sunucu işlemek için ağ bağlantısı sorunları veya işlem sunucusu arasında Azure olabilir. Bunlardan biri, azure'a anlık olarak veri aktarımında hatalara neden olabilir.
+2. Veri bütünlüğü sorunlarını önlemek ve veri aktarım maliyetlerini en aza indirmek için Site Kurtarma, yeniden eşitleme için bir makineyi işaretler.
+3. Bir makine, kaynak makine ile Azure'da depolanan veriler arasında tutarlılık sağlamak gibi durumlarda yeniden senkronizasyon için işaretlenebilir
+    - Bir makine kuvvet kapatma uğrarsa
+    - Bir makine disk yeniden boyutlandırma gibi yapılandırma değişikliklerine uğrarsa (disk boyutunu n 2 TB'den 4 TB'ye değiştirme)
+4. Yeniden eşitleme, Azure'a yalnızca delta verileri gönderir. Kaynak makine ile Azure'da depolanan veriler arasındaki veri denetimleri hesaplandırılarak en aza indirilerek şirket içi ve Azure arasında veri aktarımı.
+5. Varsayılan olarak yeniden eşitleme, çalışma saatleri dışında otomatik olarak çalışacak şekilde zamanlanır. Saat dışında varsayılan yeniden eşitleme beklemek istemiyorsanız, vm'yi el ile yeniden eşitleyebilirsiniz. Bunu yapmak için Azure portalına gidin, VM > **Yeniden senkronize edin'i**seçin.
+6. Varsayılan yeniden eşitleme çalışma saatleri dışında başarısız olursa ve el ile müdahale gerekiyorsa, Azure portalındaki belirli bir makinede bir hata oluşturulur. Hatayı çözebilir ve yeniden eşitlemi el ile tetikleyebilirsiniz.
+7. Yeniden eşitleme tamamlandıktan sonra, delta değişikliklerinin çoğaltılması devam edecektir.
 
 ## <a name="failover-and-failback-process"></a>Yük devretme ve yeniden çalışma işlemi
 

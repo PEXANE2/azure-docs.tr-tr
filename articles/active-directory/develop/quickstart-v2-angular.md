@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 95db8115a80dcf4be74ef0463bbf915578dd9dae
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 61a098b92db13b8422d9cfebb19610c5de7685cd
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423105"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631759"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-spa"></a>Quickstart: Kullanıcıları oturum açın ve Açısal SPA'da bir erişim belirteci alın
 
@@ -68,7 +68,7 @@ Bu hızlı başlangıçta, açısal tek sayfalı bir uygulamanın (SPA) kişisel
 >[!div renderon="docs"]
 >Node.js kullanarak projeyi bir web sunucusuyla https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular çalıştırmak, çekirdek proje dosyalarını klonlamak veya [indirmek.](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip) Visual Studio Code gibi bir düzenleyici kullanarak dosyaları açın.
 
-> [!div renderon="portal" id="autoupdate" class="sxs-lookup" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Kod örneğini indirin](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
 
 > [!div renderon="docs"]

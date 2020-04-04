@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: f193580ca03d4b1805f3c044658a34f468f3f44f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 43fc32e910c51e8b70e15aa49584a18e5b703fca
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346553"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631601"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Servis güncelleştirmelerini ve bakımlarını yönetmek için bakım zamanlamalarını kullanma
 
-Bakım çizelgesi özelliği, Azure Synapse Analytics içindeki Synapse SQL havuzu (veri ambarı) için Hizmet Durumu Planlı Bakım Bildirimleri, Kaynak Durumu Denetimi Monitörü ve bakım zamanlama hizmetini entegre eder. 
+Bakım çizelgesi özelliği, Azure Synapse Analytics içindeki Synapse SQL havuzu (veri ambarı) için Hizmet Durumu Planlı Bakım Bildirimleri, Kaynak Durumu Denetimi Monitörü ve bakım zamanlama hizmetini entegre eder.
 
 Yeni özellikler, yükseltmeler ve düzeltme eklerinde uygun olduğunda bir zaman penceresi seçmek için bakım zamanlamasını kullanmanız gerekir. Yedi günlük bir süre içinde bir birincil ve ikincil bakım penceresi seçmeniz gerekir, her pencere ayrı gün aralıkları içinde olmalıdır.
 
@@ -48,52 +48,55 @@ Tüm etkin bakım olayları **Servis Durumu - Planlı Bakım** bölümünde gör
 
 Seçtiğiniz bölgede bakım zamanlama kullanılamıyorsa bile, bakım zamanlamanızı istediğiniz zaman görüntüleyebilir ve düzenleyebilirsiniz. Bölgenizde bakım zamanlama kullanılabilir olduğunda, tanımlanan zamanlama Synapse SQL havuzunuzda hemen etkin hale gelir.
 
-## <a name="view-a-maintenance-schedule"></a>Bakım zamanlamasını görüntüleme 
+## <a name="view-a-maintenance-schedule"></a>Bakım zamanlamasını görüntüleme
 
 Varsayılan olarak, yeni oluşturulan tüm veri ambarı örnekleri, dağıtım sırasında sekiz saatlik birincil ve ikincil bakım penceresi uygulanır. Yukarıda belirtildiği gibi, dağıtım tamamlanır tamamlanmaz pencereleri değiştirebilirsiniz. Belirtilen bakım pencerelerinin dışında, önceden bildirimde bulunmadan hiçbir bakım yapılmaz.
 
 Synapse SQL havuzunuza uygulanan bakım zamanlamasını görüntülemek için aşağıdaki adımları tamamlayın:
 
-1.    [Azure portalında](https://portal.azure.com/)oturum açın.
-2.    Görüntülemek istediğiniz Synapse SQL havuzunu seçin. 
-3.    Seçilen Synapse SQL havuzu genel bakış bıçağında açılır. Veri ambarına uygulanan bakım çizelgesi Bakım **zamanlamasının**altında görünür.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Görüntülemek istediğiniz Synapse SQL havuzunu seçin.
+3. Seçilen Synapse SQL havuzu genel bakış bıçağında açılır. Veri ambarına uygulanan bakım çizelgesi Bakım **zamanlamasının**altında görünür.
 
 ![Genel bakış bıçağı](./media/maintenance-scheduling/clear-overview-blade.PNG)
 
-## <a name="change-a-maintenance-schedule"></a>Bakım zamanlamasını değiştirme 
+## <a name="change-a-maintenance-schedule"></a>Bakım zamanlamasını değiştirme
 
-Bakım çizelgesi herhangi bir zamanda güncellenebilir veya değiştirilebilir. Seçili örnek etkin bir bakım döngüsünden geçiyorsa, ayarlar kaydedilir. Bir sonraki tanımlanmış bakım döneminde aktif hale gelecekler. Etkin bir bakım etkinliği sırasında veri ambarınızı izleme hakkında [daha fazla bilgi edinin.](../../service-health/resource-health-overview.md) 
+Bakım çizelgesi herhangi bir zamanda güncellenebilir veya değiştirilebilir. Seçili örnek etkin bir bakım döngüsünden geçiyorsa, ayarlar kaydedilir. Bir sonraki tanımlanmış bakım döneminde aktif hale gelecekler. Etkin bir bakım etkinliği sırasında veri ambarınızı izleme hakkında [daha fazla bilgi edinin.](../../service-health/resource-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ## <a name="identifying-the-primary-and-secondary-windows"></a>Birincil ve ikincil pencereleri tanımlama
 
 Birincil ve ikincil pencerelerayrı gün aralıklarına sahip olmalıdır. Buna bir örnek, Salı-Perşembe'nin birincil penceresi ve Cumartesi-Pazar penceresinin ikincil penceresidir.
 
 Synapse SQL havuzunuzun bakım zamanlamasını değiştirmek için aşağıdaki adımları tamamlayın:
-1.    [Azure portalında](https://portal.azure.com/)oturum açın.
-2.    Güncelleştirmek istediğiniz Synapse SQL havuzunu seçin. Sayfa genel bakış bıçağında açılır. 
-3.    Genel bakış bıçağındaki Bakım Çizelgesi **özet** bağlantısını seçerek bakım çizelgesi ayarları için sayfayı açın. Veya sol taraftaki kaynak menüsünde **Bakım Çizelgesi** seçeneğini belirleyin.  
+
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Güncelleştirmek istediğiniz Synapse SQL havuzunu seçin. Sayfa genel bakış bıçağında açılır.
+Genel bakış bıçağındaki Bakım Çizelgesi **özet** bağlantısını seçerek bakım çizelgesi ayarları için sayfayı açın. Veya sol taraftaki kaynak menüsünde **Bakım Çizelgesi** seçeneğini belirleyin.
 
     ![Genel bakış bıçak seçenekleri](./media/maintenance-scheduling/maintenance-change-option.png)
 
-4. Sayfanın üst kısmındaki seçenekleri kullanarak birincil bakım pencereniz için tercih edilen gün aralığını belirleyin. Bu seçim, birincil pencerenizin hafta içi mi yoksa hafta sonu mı olacağını belirler. Seçiminiz açılır değerleri güncelleştirecektir. Önizleme sırasında, bazı bölgeler kullanılabilir **Gün** seçeneklerinin tam kümesini henüz desteklemeyebilir.
+3. Sayfanın üst kısmındaki seçenekleri kullanarak birincil bakım pencereniz için tercih edilen gün aralığını belirleyin. Bu seçim, birincil pencerenizin hafta içi mi yoksa hafta sonu mı olacağını belirler. Seçiminiz açılır değerleri güncelleştirecektir.
+Önizleme sırasında, bazı bölgeler kullanılabilir **Gün** seçeneklerinin tam kümesini henüz desteklemeyebilir.
 
    ![Bakım ayarları blade](./media/maintenance-scheduling/maintenance-settings-page.png)
 
-5. Açılan liste kutularını kullanarak tercih ettiğiniz birincil ve ikincil bakım pencerelerini seçin:
+4. Açılan liste kutularını kullanarak tercih ettiğiniz birincil ve ikincil bakım pencerelerini seçin:
    - **Gün**: Seçilen pencerede bakım yapmak için tercih edilen gün.
    - **Başlangıç saati**: Bakım penceresi için tercih edilen başlangıç zamanı.
    - **Zaman penceresi**: Zaman pencerenizin tercih edilen süresi.
 
-   Bıçağın altındaki **Zamanlama özet** alanı seçtiğiniz değerlere göre güncelleştirilir. 
+   Bıçağın altındaki **Zamanlama özet** alanı seçtiğiniz değerlere göre güncelleştirilir.
   
-6. **Kaydet'i**seçin. Yeni zamanlamanızın artık etkin olduğunu onaylayan bir ileti görüntülenir. 
+5. **Kaydet'i**seçin. Yeni zamanlamanızın artık etkin olduğunu onaylayan bir ileti görüntülenir.
 
-   Bakım zamanlamasını desteklemeyen bir bölgede zamanlama kaydediyorsanız, aşağıdaki ileti görüntülenir. Özellik seçtiğiniz bölgede kullanıma sunulduğunda ayarlarınız kaydedilir ve etkin hale gelir.    
+   Bakım zamanlamasını desteklemeyen bir bölgede zamanlama kaydediyorsanız, aşağıdaki ileti görüntülenir. Özellik seçtiğiniz bölgede kullanıma sunulduğunda ayarlarınız kaydedilir ve etkin hale gelir.
 
    ![Bölge kullanılabilirliği ile ilgili ileti](./media/maintenance-scheduling/maintenance-not-active-toast.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Azure Monitor'u kullanarak uyarı oluşturma, görüntüleme ve yönetme hakkında [daha fazla bilgi edinin.](../../azure-monitor/platform/alerts-metric.md)
-- Günlük uyarı kuralları için webhook eylemleri hakkında [daha fazla bilgi edinin.](../..//azure-monitor/platform/alerts-log-webhook.md)
-- [Daha fazla bilgi edinin](../..//azure-monitor/platform/action-groups.md) Eylem Grupları oluşturma ve yönetme.
-- Azure Hizmet Durumu hakkında [daha fazla bilgi edinin.](../../service-health/service-health-overview.md)
+
+- Azure Monitor'u kullanarak uyarı oluşturma, görüntüleme ve yönetme hakkında [daha fazla bilgi edinin.](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+- Günlük uyarı kuralları için webhook eylemleri hakkında [daha fazla bilgi edinin.](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
+- [Daha fazla bilgi edinin](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Eylem Grupları oluşturma ve yönetme.
+- Azure Hizmet Durumu hakkında [daha fazla bilgi edinin.](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)

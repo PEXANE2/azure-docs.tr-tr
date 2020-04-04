@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 56975c52b22b90840fb1534187e99f6efa19469e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 3ba06ea592d51eedbe827e1ab6418f65722d579c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527682"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632295"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Azure CLI kullanarak sunucu yapılandırma parametrelerini özelleştirme
 Azure komut satırı yardımcı programı Azure CLI'yi kullanarak MariaDB sunucusu için bir Azure Veritabanı için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Motor yapılandırmalarının bir alt kümesi sunucu düzeyinde açığa çıkar ve değiştirilebilir.
@@ -59,10 +59,10 @@ Bu **kod, yavaş\_\_sorgu günlüğü** yapılandırmasını varsayılan değer 
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarının doldurulma
 
-Sunucunuzdaki saat dilimi tabloları, depolanan `az_load_timezone` yordamı MariaDB komut satırı veya MariaDB Workbench gibi bir araçtan arayarak doldurulabilir.
+Sunucunuzdaki saat dilimi tabloları, depolanan `mysql.az_load_timezone` yordamı MariaDB komut satırı veya MariaDB Workbench gibi bir araçtan arayarak doldurulabilir.
 
 > [!NOTE]
-> MariaDB Workbench'in komutunu `az_load_timezone` çalıştırıyorsanız, önce güvenli güncelleştirme modunu kapatmanız `SET SQL_SAFE_UPDATES=0;`gerekebilir.
+> MariaDB Workbench'in komutunu `mysql.az_load_timezone` çalıştırıyorsanız, önce güvenli güncelleştirme modunu kapatmanız `SET SQL_SAFE_UPDATES=0;`gerekebilir.
 
 ```sql
 CALL mysql.az_load_timezone();

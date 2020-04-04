@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/02/2020
+ms.openlocfilehash: 1d044ddaea0a2c7a1d489523cc9aa4515df0728a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73903745"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632654"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter dizüstü bilgisayarınızı yükleyin ve HDInsight'ta Apache Spark'a bağlanın
 
-Bu makalede, özel PySpark (Python için) ve Apache Spark (Scala için) çekirdekleri Spark sihirli ile jupyter dizüstü bilgisayar yüklemek için nasıl öğrenmek ve bir HDInsight kümesine dizüstü bağlamak. Jupyter'ı yerel bilgisayarınıza yüklemek için bir dizi neden olabilir ve bazı zorluklar da olabilir. Bu konuda daha fazla bilgi için, bu makalenin sonunda [bilgisayarıma Neden Jupyter yüklemeliyim](#why-should-i-install-jupyter-on-my-computer) bölümüne bakın.
+Bu makalede, özel PySpark (Python için) ve Apache Spark (Scala için) spark sihirli çekirdekleri ile Jupyter dizüstü yüklemeyi öğrenirsiniz. Daha sonra not defterini bir HDInsight kümesine bağlarsınız.
 
 Jupyter'ı yüklemek ve HDInsight'ta Apache Spark'a bağlanmak için dört önemli adım vardır.
 
@@ -26,17 +26,17 @@ Jupyter'ı yüklemek ve HDInsight'ta Apache Spark'a bağlanmak için dört önem
 * Kıvılcım büyüsü ile PySpark ve Kıvılcım çekirdekleri yükleyin.
 * Spark büyüsünü HDInsight'taki Spark kümesine erişmek için yapılandırın.
 
-HDInsight kümesine sahip Jupyter dizüstü bilgisayarlar için özel çekirdekler ve Spark sihri hakkında daha fazla bilgi için, [HDInsight'ta Apache Spark Linux kümelerine sahip Jupyter dizüstü bilgisayarlar için kullanılabilir Çekirdekler'e](apache-spark-jupyter-notebook-kernels.md)bakın.
+Özel çekirdekler ve Kıvılcım büyüsü hakkında daha fazla bilgi için, [HDInsight'ta Apache Spark Linux kümelerine sahip Jupyter dizüstü bilgisayarlar için kullanılabilir Çekirdekler'e](apache-spark-jupyter-notebook-kernels.md)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). Bu, jupyter dizüstü bilgisayarı dizüstü bilgisayar yüklendikten sonra bir HDInsight kümesine bağlamak için bir ön koşuldur.
+* HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md). Yerel not defteri HDInsight kümesine bağlanır.
 
 * HDInsight üzerinde Spark ile Jupyter Notebook kullanma bilgisi.
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter dizüstü bilgisayarını bilgisayarınıza yükleme
 
-Jupyter dizüstü bilgisayarları yüklemeden önce Python'u yüklemeniz gerekir. [Anaconda dağıtımı](https://www.anaconda.com/download/) hem Python'u hem de Jupyter Notebook'u yükler.
+Jupyter dizüstü bilgisayarlarını yüklemeden önce Python'u yükleyin. [Anaconda dağıtımı](https://www.anaconda.com/download/) hem Python'u hem de Jupyter Notebook'u yükler.
 
 Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/) indirin ve kurulumu çalıştırın. Kurulum sihirbazını çalıştırırken, PATH değişkeninize Anaconda ekleme seçeneğini seçtiğinizden emin olun.  Ayrıca bakınız, [Anaconda kullanarak Jupyter yükleme.](https://jupyter.readthedocs.io/en/latest/install.html)
 
@@ -63,9 +63,9 @@ Platformunuz için [Anaconda yükleyicisini](https://www.anaconda.com/download/)
     pip show sparkmagic
     ```
 
-    Ardından çalışma dizininizi yukarıdaki komutla tanımlanan konuma değiştirin.
+    Ardından çalışma dizininizi yukarıdaki komutla tanımlanan **konuma** değiştirin.
 
-1. Yeni çalışma dizininizden, istediğiniz çekirdeği(ler) yüklemek için aşağıdaki komutlardan birini veya birkaçını girin:
+1. Yeni çalışma dizininizden, istenen çekirdeği(ler) yüklemek için aşağıdaki komutlardan birini veya birkaçını girin:
 
     |Çekirdek | Komut |
     |---|---|
@@ -90,7 +90,7 @@ Bu bölümde, bir Apache Spark kümesine bağlanmak için daha önce yüklediği
     python
     ```
 
-2. Jupyter yapılandırma bilgileri genellikle kullanıcıların ev dizininde depolanır. Ev dizinini tanımlamak için aşağıdaki komutu girin ve **.sparkmagic**adlı bir klasör oluşturun.  Tam yol çıktı edilecektir.
+2. Jupyter yapılandırma bilgileri genellikle kullanıcıların ev dizininde depolanır. Ev dizinini tanımlamak için aşağıdaki komutu girin ve ** \.sparkmagic**adlı bir klasör oluşturun.  Tam yol çıktı edilecektir.
 
     ```python
     import os
@@ -146,7 +146,7 @@ Bu bölümde, bir Apache Spark kümesine bağlanmak için daha önce yüklediği
     jupyter notebook
     ```
 
-6. Çekirdeklerle birlikte mevcut Olan Kıvılcım büyüsünü kullanabileceğinizi doğrulayın. Aşağıdaki adımları uygulayın.
+6. Çekirdeklerle birlikte mevcut Olan Kıvılcım büyüsünü kullanabileceğinizi doğrulayın. Aşağıdaki adımları tamamlayın.
 
     a. Yeni bir not defteri oluşturun. Sağ köşeden **Yeni'yi**seçin. Varsayılan çekirdek **Python 2** veya **Python 3'u** ve yüklediğiniz çekirdekleri görmeniz gerekir. Gerçek değerler yükleme seçeneklerinize bağlı olarak değişebilir.  **PySpark'ı**seçin.
 
@@ -168,9 +168,9 @@ Bu bölümde, bir Apache Spark kümesine bağlanmak için daha önce yüklediği
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>Jupyter'ı neden bilgisayarıma yüklemeliyim?
 
-Jupyter'ı bilgisayarınıza yükleyip HDInsight'taki bir Apache Spark kümesine bağlamak istemenizin birkaç nedeni olabilir.
+Jupyter'ı bilgisayarınıza yüklemek ve ardından HDInsight'ta bir Apache Spark kümesine bağlamak için nedenler:
 
-* Azure HDInsight'ta Spark kümesinde zaten mevcut olsa da, Jupyter'ı bilgisayarınıza yüklemek dizüstü bilgisayarlarınızı yerel olarak oluşturma, uygulamanızı çalışan bir kümeyle test etme ve ardından kümeye not defterleri. Not defterlerini kümeye yüklemek için, bunları çalışan Jupyter not defterini veya kümeyi kullanarak yükleyebilir veya kümeyle ilişkili depolama hesabındaki /HdiNotebooks klasörüne kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için [bkz.](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
+* Not defterlerinizi yerel olarak oluşturma, uygulamanızı çalışan kümeyle test etme ve not defterlerini kümeye yükleme seçeneği sunar. Not defterlerini kümeye yüklemek için, bunları çalışan Jupyter not defterini veya kümeyi kullanarak `/HdiNotebooks` yükleyebilir veya kümeyle ilişkili depolama hesabındaki klasöre kaydedebilirsiniz. Not defterlerinin kümede nasıl depolandığı hakkında daha fazla bilgi için [bkz.](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)
 * Yerel olarak kullanılabilen dizüstü bilgisayarlarla, uygulama gereksiniminize bağlı olarak farklı Spark kümelerine bağlanabilirsiniz.
 * Bir kaynak kontrol sistemi uygulamak ve dizüstü bilgisayarlar için sürüm denetimine sahip olmak için GitHub'ı kullanabilirsiniz. Ayrıca, birden çok kullanıcının aynı not defteriyle çalışabileceği ortak bir ortama da sahip olabilirsiniz.
 * Bir küme bile olmadan dizüstü bilgisayarlarla yerel olarak çalışabilirsiniz. Not defterlerinizi el ile veya geliştirme ortamına göre değil, not defterlerinizi test etmek için yalnızca bir kümeye ihtiyacınız vardır.
@@ -182,5 +182,5 @@ Jupyter'ı bilgisayarınıza yükleyip HDInsight'taki bir Apache Spark kümesine
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi yapın](apache-spark-use-bi-tools.md)
+* [BI ile Apache Spark: HDInsight'ta Power BI kullanarak Apache Spark verilerini analiz edin](apache-spark-use-bi-tools.md)
 * [Machine Learning ile Apache Spark: HVAC verilerini kullanarak bina sıcaklığını analiz etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-ipython-notebook-machine-learning.md)

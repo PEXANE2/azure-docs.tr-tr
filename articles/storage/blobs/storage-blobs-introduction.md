@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ff1d34462680ddd6be7f1a47d9a27594bcce4ff6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f7d1967c8a9585fbf5131da986595761030f0e5f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061500"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631989"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob depolamaya giriş
 
@@ -38,35 +38,35 @@ Depolama hesabı, verileriniz için Azure'da benzersiz bir ad alanı sağlar. Az
 Örneğin, depolama *hesabınıza mystorageaccount*adı verebiliyorsa, Blob depolama için varsayılan bitiş noktası şudur:
 
 ```
-http://mystorageaccount.blob.core.windows.net 
+http://mystorageaccount.blob.core.windows.net
 ```
 
 Depolama hesabı oluşturmak için [bkz.](../common/storage-account-create.md) Depolama hesapları hakkında daha fazla bilgi edinmek için [Azure depolama hesabına genel bakış'a](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın.
 
 ### <a name="containers"></a>Kapsayıcılar
 
-Kapsayıcı, dosya sistemindeki dizine benzer bir dizi blob düzenler. Depolama hesabında sınırsız sayıda kapsayıcı olabilir ve her kapsayıcı sınırsız sayıda blob depolayabilir. 
+Kapsayıcı, dosya sistemindeki dizine benzer bir dizi blob düzenler. Depolama hesabında sınırsız sayıda kapsayıcı olabilir ve her kapsayıcı sınırsız sayıda blob depolayabilir.
 
-  > [!NOTE]
-  > Kapsayıcı adındaki harfler küçük harf olmalıdır. Kapsayıcıları adlandırma hakkında daha fazla bilgi için, [Bkz. Adlandırma ve Başvuru Kapsayıcıları, Blobs ve Metadata.](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+> [!NOTE]
+> Kapsayıcı adındaki harfler küçük harf olmalıdır. Kapsayıcıları adlandırma hakkında daha fazla bilgi için, [Bkz. Adlandırma ve Başvuru Kapsayıcıları, Blobs ve Metadata.](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
 
 ### <a name="blobs"></a>Bloblar
- 
+
 Azure Depolama üç tür blob'u destekler:
 
 - **Blobs'un** metin ve ikili verileri yaklaşık 4,7 TB'a kadar depolamasını engelleyin. Blok blobları, ayrı ayrı yönetilebilen veri bloklarından oluşur.
 - **Ek lekelerblok** lekeleri gibi bloklardan oluşur, ancak ek işlemler için optimize edilmiştir. Ekleme blobları sanal makine verilerini günlüğe alma gibi senaryolar için idealdir.
 - **Sayfa lekeleri** rasgele erişim dosyalarını 8 TB boyutunda depolar. Sayfa blobs sanal sabit disk (VHD) dosyaları depolamak ve Azure sanal makineler için diskler olarak hizmet vermektedir. Sayfa lekeleri hakkında daha fazla bilgi için Azure [sayfa lekelerine genel bakış](storage-blob-pageblob-overview.md)
 
-Farklı blob türleri hakkında daha fazla bilgi için [Bkz.](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
+Farklı blob türleri hakkında daha fazla bilgi için [Bkz.](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 ## <a name="move-data-to-blob-storage"></a>Verileri Blob depolamaya taşıma
 
 Varolan verileri Blob depolamasına geçirmek için çeşitli çözümler vardır:
 
-- **AzCopy,** Windows ve Linux için blob depolamaya, kapsayıcılara veya depolama hesaplarından verileri kopyalayan kullanımı kolay bir komut satırı aracıdır. AzCopy hakkında daha fazla bilgi için, [AzCopy v10 (Önizleme) ile veri aktarımı](../common/storage-use-azcopy-v10.md)bakın. 
-- **Azure Depolama Veri Hareketi kitaplığı,** verileri Azure Depolama hizmetleri arasında taşımak için bir .NET kitaplığıdır. AzCopy yardımcı programı Veri Hareketi kitaplığı ile oluşturulmuşdur. Daha fazla bilgi için Veri Hareketi kitaplığı için [başvuru belgelerine](/dotnet/api/microsoft.azure.storage.datamovement) bakın. 
-- **Azure Veri Fabrikası,** hesap anahtarını, paylaşılan erişim imzasını, hizmet sorumlusunu veya Azure kaynakları için yönetilen kimlikleri kullanarak Blob depolamaalanına veri kopyalamayı destekler. Daha fazla bilgi için Azure [Veri Fabrikası'nı kullanarak Azure Blob depolama alanına veya Azure Blob depolamasından veri kopyalama'ya](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın. 
+- **AzCopy,** Windows ve Linux için blob depolamaya, kapsayıcılara veya depolama hesaplarından verileri kopyalayan kullanımı kolay bir komut satırı aracıdır. AzCopy hakkında daha fazla bilgi için, [AzCopy v10 (Önizleme) ile veri aktarımı](../common/storage-use-azcopy-v10.md)bakın.
+- **Azure Depolama Veri Hareketi kitaplığı,** verileri Azure Depolama hizmetleri arasında taşımak için bir .NET kitaplığıdır. AzCopy yardımcı programı Veri Hareketi kitaplığı ile oluşturulmuşdur. Daha fazla bilgi için Veri Hareketi kitaplığı için [başvuru belgelerine](/dotnet/api/microsoft.azure.storage.datamovement) bakın.
+- **Azure Veri Fabrikası,** hesap anahtarını, paylaşılan erişim imzasını, hizmet sorumlusunu veya Azure kaynakları için yönetilen kimlikleri kullanarak Blob depolamaalanına veri kopyalamayı destekler. Daha fazla bilgi için Azure [Veri Fabrikası'nı kullanarak Azure Blob depolama alanına veya Azure Blob depolamasından veri kopyalama'ya](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın.
 - **Blobfuse,** Azure Blob depolama alanı için sanal bir dosya sistemi sürücüsüdür. Linux dosya sistemi üzerinden Depolama hesabınızdaki mevcut blok blob verilerine erişmek için blobfuse kullanabilirsiniz. Daha fazla bilgi için [Blob depolamanın blobfuse içeren bir dosya sistemi olarak nasıl monte edilebildiğini](storage-how-to-mount-container-linux.md)görün.
 - **Azure Veri Kutusu** hizmeti, büyük veri kümeleri veya ağ kısıtlamaları kablo üzerinden veri yüklemeyi gerçekçi hale getirince şirket içi verileri Blob depolamaalanına aktarmak için kullanılabilir. Veri boyutunuza bağlı olarak, [Microsoft'tan Azure Veri Kutusu Diski](../../databox/data-box-disk-overview.md), [Azure Veri Kutusu](../../databox/data-box-overview.md)veya Azure Veri [Kutusu Ağır](../../databox/data-box-heavy-overview.md) aygıtları isteyebilirsiniz. Daha sonra verilerinizi bu aygıtlara kopyalayabilir ve Blob depolama alanına yüklenmesi için Microsoft'a geri gönderebilirsiniz.
 - **Azure İçe Alma/Dışa Aktarma hizmeti,** sağladığınız sabit diskleri kullanarak depolama hesabınıza büyük miktarda veri almanın veya dışa aktarmanın bir yolunu sağlar. Daha fazla bilgi için [bkz.](../common/storage-import-export-service.md)

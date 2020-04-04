@@ -1,14 +1,14 @@
 ---
 title: İlke tanım yapısının ayrıntıları
 description: İlke tanımlarının kuruluşunuzdaki Azure kaynakları için sözleşmeler oluşturmak için nasıl kullanıldığını açıklar.
-ms.date: 02/26/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7cb1ab7d045a0595f6949052ecedba6cd1bf694
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6b1d5c43f290fc2dd953492440670608a15faca
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239999"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80638087"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -361,7 +361,7 @@ Bu ilke kuralı örneği, iç içe geçen birden çok işlevin sonucunun **eşit
     "policyRule": {
         "if": {
             "value": "[less(length(field('tags')), 3)]",
-            "equals": true
+            "equals": "true"
         },
         "then": {
             "effect": "deny"
@@ -578,6 +578,9 @@ Aşağıdaki işlevler ve kullanıcı tanımlı işlevler dışında tüm [Kayna
 - resourceId()
 - değişkenler()
 
+> [!NOTE]
+> Bu işlevler, bir `details.deployment.properties.template` **deployIfNotExists** ilke tanımında şablon dağıtımının bölümü içinde hala kullanılabilir.
+
 Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak Azure Kaynak Yöneticisi şablonundaki kullanımdan farklıdır:
 
 - `utcNow()`- Kaynak Yöneticisi şablonundan farklı olarak, bu varsayılanDeğer dışında kullanılabilir.
@@ -593,10 +596,9 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
   - If koşulu tarafından değerlendirilmekte olan kaynaktan bu alanın değerini verir
   - `field`öncelikle **AuditIfNotExists** ve **DeployIfNotExists** ile değerlendirilmekte olan kaynak üzerinde başvuru alanları kullanılır. Bu kullanıma bir örnek [DeployIfNotExists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 - `requestContext().apiVersion`
-  - İlke değerlendirmesini tetikleyen isteğin API sürümünü `2019-09-01`döndürür (örnek: ). Bu, kaynak oluşturma/güncelleştirme yle ilgili değerlendirmeler için PUT/PATCH isteğinde kullanılan API sürümü olacaktır. En son API sürümü her zaman varolan kaynaklara ilişkin uyumluluk değerlendirmesi sırasında kullanılır.
+  - İlke değerlendirmesini tetikleyen isteğin API sürümünü `2019-09-01`döndürür (örnek: ).
+    Bu, kaynak oluşturma/güncelleştirme yle ilgili değerlendirmeler için PUT/PATCH isteğinde kullanılan API sürümü olacaktır. En son API sürümü her zaman varolan kaynaklara ilişkin uyumluluk değerlendirmesi sırasında kullanılır.
   
-
-
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
 Bu ilke kuralı örneği, kaynak grubu adı ile `concat` başlamak için kaynak `like` adı zorlayan bir koşul oluşturmak için dizi ve nesne işlevi ile birlikte ad **özelliği** almak için `resourceGroup` kaynak işlevini kullanır.
@@ -707,8 +709,6 @@ Bu örnek kural **ipRules.value'ın\[\*\]** **10.0.4.1** eşleşmelerini denetle
     }
 }
 ```
-
-
 
 Daha fazla bilgi için [[\*] diğer adını değerlendirmeye](../how-to/author-policies-for-arrays.md#evaluating-the--alias)bakın.
 

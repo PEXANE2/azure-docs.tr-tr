@@ -11,16 +11,17 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 336b5a65c7a23a060e422b69f8ad3216bee6ad19
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f257f3751e7a411015ca188d704b676950845a74
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350976"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633828"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-with-azure-powershell"></a>Quickstart: Azure PowerShell ile Synapse SQL havuzunda hesaplamayı duraklatma ve devam ettirme
 
-Synapse SQL havuzu (veri ambarı) bilgi işlem kaynaklarını duraklatmak ve devam ettirmek için Azure PowerShell'i kullanabilirsiniz. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Synapse SQL havuzu (veri ambarı) bilgi işlem kaynaklarını duraklatmak ve devam ettirmek için Azure PowerShell'i kullanabilirsiniz.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -30,19 +31,19 @@ Bu hızlı başlatma, duraklatabileceğiniz ve devam ettirebileceğiniz bir SQL 
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
-[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) komutunu kullanarak Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription)çalıştırın.
+Hangi aboneliği kullandığınızı görmek için [Get-AzSubscription'ı](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Get-AzSubscription
 ```
 
-Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext)çalıştırın.
+Varsayılan dan farklı bir abonelik kullanmanız gerekiyorsa, [Set-AzContext'ı](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)çalıştırın.
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -65,20 +66,19 @@ SQL havuzunuz için konum bilgilerini bulmak için aşağıdaki adımları izley
 
 ## <a name="pause-compute"></a>İşlemi duraklatma
 
-Maliyetlerden tasarruf etmek için, kaynakları isteğe bağlı olarak duraklatabilir ve yeniden başlatabilirsiniz. Örneğin, veritabanını gece ve hafta sonları kullanmıyorsanız, bu saatlerde veritabanını duraklatabilir ve gün içinde devam ettirebilirsiniz. 
+Maliyetlerden tasarruf etmek için, kaynakları isteğe bağlı olarak duraklatabilir ve yeniden başlatabilirsiniz. Örneğin, veritabanını gece ve hafta sonları kullanmıyorsanız, bu saatlerde veritabanını duraklatabilir ve gün içinde devam ettirebilirsiniz.
 
 >[!NOTE]
 >Veritabanı duraklatılmışken hesaplama kaynakları için ücret alınmaz. Ancak, depolama için ücretlendirilmeye devam edin.
 
-Bir veritabanını duraklatmak için [Askıya Alma-AzSqlVeritabanı](/powershell/module/az.sql/suspend-azsqldatabase) cmdlet'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **mySampleDataWarehouse** adlı bir SQL havuzuduraklatıyor. Sunucu **myResourceGroup**adlı bir Azure kaynak grubundadır.
-
+Bir veritabanını duraklatmak için [Askıya Alma-AzSqlVeritabanı](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **mySampleDataWarehouse** adlı bir SQL havuzuduraklatıyor. Sunucu **myResourceGroup**adlı bir Azure kaynak grubundadır.
 
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "nsqlpoolservername" –DatabaseName "mySampleDataWarehouse"
 ```
 
-Aşağıdaki örnekveritabanını $database nesnesine alır. Daha sonra askıya [alma-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase)nesne borular. Sonuçlar nesne sonucu Veritabanı'nda depolanır. Son komut sonuçları gösterir.
+Aşağıdaki örnekveritabanını $database nesnesine alır. Daha sonra askıya [alma-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)nesne borular. Sonuçlar nesne sonucu Veritabanı'nda depolanır. Son komut sonuçları gösterir.
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -89,7 +89,7 @@ $resultDatabase
 
 ## <a name="resume-compute"></a>Özgeçmiş hesaplama
 
-Veritabanı başlatmak için [Özgeçmiş-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase) cmdlet'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **mySampleDataWarehouse** adlı bir veritabanı nı başlatır. Sunucu **myResourceGroup**adlı bir Azure kaynak grubundadır.
+Veritabanı başlatmak için [Özgeçmiş-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**adlı bir sunucuda barındırılan **mySampleDataWarehouse** adlı bir veritabanı nı başlatır. Sunucu **myResourceGroup**adlı bir Azure kaynak grubundadır.
 
 ```Powershell
 Resume-AzSqlDatabase –ResourceGroupName "myResourceGroup" `
@@ -107,7 +107,7 @@ $resultDatabase
 
 ## <a name="check-status-of-your-sql-pool-operation"></a>SQL havuz işleminizin durumunu kontrol edin
 
-SQL havuzunuzun durumunu kontrol etmek için [Get-AzSqlDatabaseActivity](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description) cmdlet'i kullanın.
+SQL havuzunuzun durumunu kontrol etmek için [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/Get-AzSqlDatabaseActivity#description?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet'i kullanın.
 
 ```Powershell
 Get-AzSqlDatabaseActivity -ResourceGroupName "myResourceGroup" -ServerName "sqlpoolservername" -DatabaseName "mySampleDataWarehouse"
@@ -134,7 +134,6 @@ Kaynakları istediğiniz gibi temizlemek için bu adımları izleyin.
 
 5. Kaynak grubunu kaldırmak için, **myResourceGroup**’a tıklayıp daha sonra **Kaynak grubunu sil**’e tıklayın.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzu hakkında daha fazla bilgi edinmek [için, verileri SQL havuzu makalesine yüklemeye](load-data-from-azure-blob-storage-using-polybase.md) devam edin. Bilgi işlem yeteneklerini yönetme hakkında daha fazla bilgi için, [bilgi işlem genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesini yönet'e bakın. 
+SQL havuzu hakkında daha fazla bilgi edinmek [için, verileri SQL havuzu makalesine yüklemeye](load-data-from-azure-blob-storage-using-polybase.md) devam edin. Bilgi işlem yeteneklerini yönetme hakkında daha fazla bilgi için, [bilgi işlem genel bakış](sql-data-warehouse-manage-compute-overview.md) makalesini yönet'e bakın.

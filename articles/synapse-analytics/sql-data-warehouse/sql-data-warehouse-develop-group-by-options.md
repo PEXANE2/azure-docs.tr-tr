@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 25e6770fb38d13591186754bc5e6a7641083a899
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619055"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633504"
 ---
 # <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL havuzundaki seçeneklere göre gruplandırma
 
@@ -24,7 +24,7 @@ Bu makalede, SQL havuzunda grup seçeneklerine göre grup uygulama ipuçları bu
 
 ## <a name="what-does-group-by-do"></a>GROUP BY ne yapar?
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL yan tümcesi verileri bir özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçenekleraşağıdaki gibi geçici çözüm vardır:
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL yan tümcesi verileri bir özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçenekleraşağıdaki gibi geçici çözüm vardır:
 
 * ROLLUP ile GRUP
 * GRUPLANDıRMA KÜMELerİ
@@ -35,6 +35,7 @@ Bu makalede, SQL havuzunda grup seçeneklerine göre grup uygulama ipuçları bu
 Buradaki en basit seçenek, açık sözdizimine güvenmek yerine toplamayı gerçekleştirmek için UNION ALL'ı kullanmaktır. Sonuç tamamen aynıdır.
 
 ROLLUP seçeneği ile GROUP BY deyimini kullanarak aşağıdaki örnek:
+
 ```sql
 SELECT [SalesTerritoryCountry]
 ,      [SalesTerritoryRegion]
@@ -84,9 +85,10 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 GRUPLAMA KÜMELERİnİnİ DEĞIŞTIRMEK IÇIN örnek ilkesi uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNION ALL bölümleri oluşturmanız gerekir.
 
 ## <a name="cube-options"></a>Küp seçenekleri
+
 UNION ALL yaklaşımını kullanarak KÜP İlE Bİr GRUP OLUŞTURMAK MÜMKÜNDÜR. Sorun, kodun hızlı bir şekilde hantal ve hantal hale gelebiliyor olmasıdır. Bu sorunu azaltmak için bu daha gelişmiş yaklaşımı kullanabilirsiniz.
 
-Önceki örneği kullanarak, ilk adım oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır. 
+Önceki örneği kullanarak, ilk adım oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır.
 
 Bu bizim için tüm düzeyleri oluşturur beri iki türetilmiş tabloların CROSS JOIN not alın. Kodun geri kalanı biçimlendirme için vardır:
 
@@ -182,5 +184,5 @@ ORDER BY 1,2,3
 Kodu bölümlere ayırıp bir döngü yapısı oluşturarak, kod daha yönetilebilir ve korunabilir hale gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.
 
+Daha fazla geliştirme ipucu için [geliştirme genel bakış](sql-data-warehouse-overview-develop.md)ına bakın.

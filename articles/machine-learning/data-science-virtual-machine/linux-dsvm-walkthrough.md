@@ -8,13 +8,13 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.openlocfilehash: 1d15d53816d916bd28841aae39255685524faa2d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/02/2020
+ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477858"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632726"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure'da Linux Veri Bilimi Sanal Makine ile veri bilimi
 
@@ -45,16 +45,22 @@ Daha fazla depolama alanına ihtiyacınız varsa, ek diskler oluşturabilir ve b
 
 Verileri indirmek için bir terminal penceresi açın ve ardından şu komutu çalıştırın:
 
-    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```bash
+wget --no-check-certificate https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+```
 
 İndirilen dosyada üstbilgi satırı yok. Üstbilgisi olan başka bir dosya oluşturalım. Uygun üstbilgi içeren bir dosya oluşturmak için bu komutu çalıştırın:
 
-    echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```bash
+echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
+```
 
 Ardından, iki dosyayı birleştirin:
 
-    cat spambase.data >> headers
-    mv headers spambaseHeaders.data
+```bash
+cat spambase.data >> headers
+mv headers spambaseHeaders.data
+```
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
@@ -71,51 +77,69 @@ Verileri inceleyelim ve R kullanarak bazı temel makine öğrenimi yapalım. DSV
 
 Bu izbarada kullanılan kod örneklerinin kopyalarını almak için, Azure-Machine-Learning-Data-Science deposunu klonlamak için git'i kullanın. Git, DSVM'ye önceden yüklenmiş. Git komut satırında çalıştırın:
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```bash
+git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+```
 
 Terminal penceresini açın ve R etkileşimli konsolunda yeni bir R oturumu başlatın. Ayrıca, DSVM'ye önceden yüklenmiş olan RStudio'yu da kullanabilirsiniz.
 
 Verileri almak ve ortamı ayarlamak için:
 
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
+```
 
 Her sütunla ilgili özet istatistikleri görmek için:
 
-    summary(data)
+```R
+summary(data)
+```
 
 Verilerin farklı bir görünümü için:
 
-    str(data)
+```R
+str(data)
+```
 
 Bu görünüm, her değişkenin türünü ve veri kümesindeki ilk birkaç değeri gösterir.
 
 **Spam** sütunu tamsayı olarak okundu, ancak aslında kategorik bir değişken (veya faktör) bulunuyor. Türünü ayarlamak için:
 
-    data$spam <- as.factor(data$spam)
+```R
+data$spam <- as.factor(data$spam)
+```
 
 Bazı keşif analizi yapmak için, DSVM'ye önceden yüklenmiş R için popüler bir grafik kitaplığı olan [ggplot2](https://ggplot2.tidyverse.org/) paketini kullanın. Daha önce görüntülenen özet verilere dayanarak, ünlem işareti karakterinin sıklığına ilişkin özet istatistiklerimiz var. Aşağıdaki komutları çalıştırarak bu frekansları burada çizelim:
 
-    library(ggplot2)
-    ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+library(ggplot2)
+ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 Sıfır çubuğu çizimi çarpıttığı için, onu ortadan kaldıralım:
 
-    email_with_exclamation = data[data$char_freq_exclamation > 0, ]
-    ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+email_with_exclamation = data[data$char_freq_exclamation > 0, ]
+ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 İlginç görünen 1'in üzerinde önemsiz bir yoğunluk vardır. Sadece bu verilere bakalım:
 
-    ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```R
+ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
+```
 
 Sonra, spam karşı jambon tarafından bölün:
 
-    ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
-    geom_density(lty=3) +
-    geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
-    xlab("spam") +
-    ggtitle("Distribution of spam \nby frequency of !") +
-    labs(fill="spam", y="Density")
+```R
+ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
+geom_density(lty=3) +
+geom_density(aes(fill=spam, colour=spam), alpha=0.55) +
+xlab("spam") +
+ggtitle("Distribution of spam \nby frequency of !") +
+labs(fill="spam", y="Density")
+```
 
 Bu örnekler, benzer çizimler yapmak ve diğer sütunlarda verileri keşfetmek yardımcı olmalıdır.
 
@@ -128,16 +152,20 @@ Veri setindeki e-postaları spam veya jambon içeren olarak sınıflandırmak i�
 
 İlk olarak, veri kümesini eğitim kümelerine ve test kümelerine bölelim:
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+```R
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
+```
 
 Ardından, e-postaları sınıflandırmak için bir karar ağacı oluşturun:
 
-    require(rpart)
-    model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
-    plot(model.rpart)
-    text(model.rpart)
+```R
+require(rpart)
+model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
+plot(model.rpart)
+text(model.rpart)
+```
 
 İşte sonuç:
 
@@ -145,99 +173,37 @@ Ardından, e-postaları sınıflandırmak için bir karar ağacı oluşturun:
 
 Eğitim kümesinde ne kadar iyi performans gösterdiğini belirlemek için aşağıdaki kodu kullanın:
 
-    trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
-    t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
+t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 Test kümesinde ne kadar iyi performans gösterdiğini belirlemek için:
 
-    testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
+```R
+testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 Rastgele bir orman modeli de deneyelim. Rastgele ormanlar karar ağaçları çok sayıda tren ve tüm bireysel karar ağaçlarından sınıflandırmalar modu bir sınıf çıktı. Daha güçlü bir makine öğrenme yaklaşımı sağlarlar, çünkü bir karar ağacı modelinin eğitim veri kümesini aşırı yakışma eğilimini düzeltirler.
 
-    require(randomForest)
-    trainVars <- setdiff(colnames(data), 'spam')
-    model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
+```R
+require(randomForest)
+trainVars <- setdiff(colnames(data), 'spam')
+model.rf <- randomForest(x=trainSet[, trainVars], y=trainSet$spam)
 
-    trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
-    table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
+trainSetPred <- predict(model.rf, newdata = trainSet[, trainVars], type = "class")
+table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
 
-    testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
-    t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
-    accuracy <- sum(diag(t))/sum(t)
-    accuracy
-
-
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'ya bir model dağıtma (klasik)
-
-[Azure Machine Learning Studio (klasik),](https://studio.azureml.net/) tahmine dayalı analitik modelleri oluşturmayı ve dağıtmayı kolaylaştıran bir bulut hizmetidir. Azure Machine Learning Studio'nun (klasik) güzel bir özelliği, herhangi bir R işlevini bir web hizmeti olarak yayımlama yeteneğidir. Azure Machine Learning Studio (klasik) R paketi, DSVM'deki R oturumunuzdan itibaren dağıtımı kolaylaştırır.
-
-Karar ağacı kodunu önceki bölümden dağıtmak için Azure Machine Learning Studio'da (klasik) oturum açın. Oturum açabilmek için çalışma alanı kimliğinize ve yetkilendirme belirtecinize ihtiyacınız vardır. Bu değerleri bulmak ve Azure Machine Learning değişkenlerini onlarla birlikte başlatmak için aşağıdaki adımları tamamlayın:
-
-1. Sol menüde **Ayarlar'ı**seçin. WORKSPACE ID değerini not **edin.**
-
-   ![Azure Machine Learning Studio (klasik) çalışma alanı kimliği](./media/linux-dsvm-walkthrough/workspace-id.png)
-
-1. Yetkilendirme **Belirteçleri** sekmesini seçin. **Birincil Yetkilendirme Belirteci'nin**değerini not edin.
-
-   ![Azure Machine Learning Studio (klasik) birincil yetkilendirme belirteci](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. **AzureML** paketini yükleyin ve dsvm'deki R oturumunuzdaki belirteç ve çalışma alanı kimliğinizle değişkenlerin değerlerini ayarlayın:
-
-        if(!require("devtools")) install.packages("devtools")
-        devtools::install_github("RevolutionAnalytics/AzureML")
-        if(!require("AzureML")) install.packages("AzureML")
-        require(AzureML)
-        wsAuth = "<authorization-token>"
-        wsID = "<workspace-id>"
-
-1. Bu gösterimin uygulanmasını kolaylaştırmak için modeli basitleştirelim. Köke en yakın karar ağacındaki üç değişkeni seçin ve yalnızca bu üç değişkeni kullanarak yeni bir ağaç oluşturun:
-
-        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-        smallTrainSet <- trainSet[, colNames]
-        smallTestSet <- testSet[, colNames]
-        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
-
-1. Özellikleri girdi olarak alan ve öngörülen değerleri döndüren bir tahmin işlevine ihtiyacımız vardır:
-
-        predictSpam <- function(newdata) {
-        predictDF <- predict(model.rpart, newdata = newdata)
-        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-        }
-
-1. Bu çalışma alanı için settings.json dosyası oluşturun:
-
-        vim ~/.azureml/settings.json
-
-1. Aşağıdaki içeriğin settings.json içine konulduğundan emin olun:
-
-         {"workspace":{
-           "id": "<workspace-id>",
-           "authorization_token": "<authorization-token>",
-           "api_endpoint": "https://studioapi.azureml.net",
-           "management_endpoint": "https://management.azureml.net"
-         }
-
-
-1. PublishWebService işlevini kullanarak **predictSpam** işlevini AzureML'de **yayımlayın:**
-
-        ws <- workspace()
-        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
-
-1. Bu işlev **predictSpam** işlevini alır, **spamWebService** adlı, giriş ve çıktıları tanımlayan bir web hizmeti oluşturur ve ardından yeni bitiş noktası hakkında bilgi verir.
-
-    API bitiş noktası ve erişim anahtarları da dahil olmak üzere en son yayınlanan web hizmetinin ayrıntılarını görüntülemek için bu komutu kullanın:
-
-        s<-tail(services(ws, name = "spamWebService"), 1)
-        ep <- endpoints(ws,s)
-        ep
-
-1. Test kümesinin ilk 10 satırında denemek için:
-
-        consume(ep, smallTestSet[1:10, ])
+testSetPred <- predict(model.rf, newdata = testSet[, trainVars], type = "class")
+t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
+accuracy <- sum(diag(t))/sum(t)
+accuracy
+```
 
 <a name="deep-learning"></a>
 
@@ -268,19 +234,21 @@ Geri kalan bölümler, Linux DSVM'de yüklenen bazı araçların nasıl kullanı
 
 [XGBoost](https://xgboost.readthedocs.org/en/latest/) hızlı ve doğru artırılmış ağaç uygulaması sağlar.
 
-    require(xgboost)
-    data <- read.csv("spambaseHeaders.data")
-    set.seed(123)
+```R
+require(xgboost)
+data <- read.csv("spambaseHeaders.data")
+set.seed(123)
 
-    rnd <- runif(dim(data)[1])
-    trainSet = subset(data, rnd <= 0.7)
-    testSet = subset(data, rnd > 0.7)
+rnd <- runif(dim(data)[1])
+trainSet = subset(data, rnd <= 0.7)
+testSet = subset(data, rnd > 0.7)
 
-    bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
+bst <- xgboost(data = data.matrix(trainSet[,0:57]), label = trainSet$spam, nthread = 2, nrounds = 2, objective = "binary:logistic")
 
-    pred <- predict(bst, data.matrix(testSet[, 0:57]))
-    accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
-    print(paste("test accuracy = ", accuracy))
+pred <- predict(bst, data.matrix(testSet[, 0:57]))
+accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
+print(paste("test accuracy = ", accuracy))
+```
 
 XGBoost ayrıca Python'dan veya bir komut satırından da arayabilir.
 
@@ -293,45 +261,52 @@ Python gelişimi için Anaconda Python dağılımları 3.5 ve 2.7 DSVM'ye yükle
 
 Bazı spambase veri kümesini okuyalım ve Scikit-learn'teki destek vektör makineleriyle e-postaları sınıflandıralım:
 
-    import pandas
-    from sklearn import svm
-    data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
-    X = data.ix[:, 0:57]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+import pandas
+from sklearn import svm
+data = pandas.read_csv("spambaseHeaders.data", sep = ',\s*')
+X = data.ix[:, 0:57]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 Tahminlerde bulunmak için:
 
-    clf.predict(X.ix[0:20, :])
+```Python
+clf.predict(X.ix[0:20, :])
+```
 
 Azure Machine Learning bitiş noktasının nasıl yayımlandırış gösteriş yapılacağını göstermek için daha temel bir model yapalım. R modelini daha önce yayınladığımızda kullandığımız üç değişkeni kullanacağız:
 
-    X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
-    y = data.ix[:, 57]
-    clf = svm.SVC()
-    clf.fit(X, y)
+```Python
+X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
+y = data.ix[:, 57]
+clf = svm.SVC()
+clf.fit(X, y)
+```
 
 Modeli Azure Machine Learning olarak yayımlamak için:
 
-    # Publish the model.
-    workspace_id = "<workspace-id>"
-    workspace_token = "<workspace-token>"
-    from azureml import services
-    @services.publish(workspace_id, workspace_token)
-    @services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-    @services.returns(int) # 0 or 1
-    def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-        inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-        return clf.predict(inputArray)
+```Python
+# Publish the model.
+workspace_id = "<workspace-id>"
+workspace_token = "<workspace-token>"
+from azureml import services
+@services.publish(workspace_id, workspace_token)
+@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
+@services.returns(int) # 0 or 1
+def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
+    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
+    return clf.predict(inputArray)
 
-    # Get some info about the resulting model.
-    predictSpam.service.url
-    predictSpam.service.api_key
+# Get some info about the resulting model.
+predictSpam.service.url
+predictSpam.service.api_key
 
-    # Call the model
-    predictSpam.service(1, 1, 1)
-
+# Call the model
+predictSpam.service(1, 1, 1)
+```
 
 > [!NOTE]
 > Bu seçenek yalnızca Python 2.7 için kullanılabilir. Python 3.5'te henüz desteklenmedi. Çalıştırmak için **/anaconda/bin/python2.7**kullanın.
@@ -343,14 +318,14 @@ DSVM'deki Anaconda dağılımı, Python, R veya Julia kod ve çözümlemesi payl
 > [!NOTE]
 > Geçerli çekirdekteki bir Jupyter Notebook'tan Python Paket Yöneticisi'ni `pip` (komut yoluyla) kullanmak için kod hücresinde şu komutu kullanın:
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
 > Geçerli çekirdekteki bir Jupyter `conda` Notebook'tan Gelen Conda yükleyicisini (komut yoluyla) kullanmak için bu komutu bir kod hücresinde kullanın:
 >
->   ```python
+>   ```Python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
@@ -372,9 +347,11 @@ DSVM'de zaten birkaç örnek dizüstü bilgisayar yüklenmiştir:
 
 Bu komutları çalıştırarak Rattle'ı yükleyin ve başlatın:
 
-    if(!require("rattle")) install.packages("rattle")
-    require(rattle)
-    rattle()
+```R
+if(!require("rattle")) install.packages("rattle")
+require(rattle)
+rattle()
+```
 
 > [!NOTE]
 > Rattle'ı DSVM'ye yüklemenize gerek yok. Ancak, Rattle açıldığında ek paketler yüklemeniz istenebilir.
@@ -452,48 +429,64 @@ DSVM, PostgreSQL yüklü olarak gelir. PostgreSQL karmaşık, açık kaynak ili�
 
 Verileri yükleyemeden önce, yerel ana bilgisayardan parola kimlik doğrulaması için izin vermelisiniz. Bir komut isteminde şunu çalıştırın:
 
-    sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```Bash
+sudo gedit /var/lib/pgsql/data/pg_hba.conf
+```
 
 Config dosyasının alt kısmında izin verilen bağlantıları ayrıntılı birkaç satır vardır:
 
-    # "local" is only for Unix domain socket connections:
-    local   all             all                                     trust
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            ident
-    # IPv6 local connections:
-    host    all             all             ::1/128                 ident
+```
+# "local" is only for Unix domain socket connections:
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            ident
+# IPv6 local connections:
+host    all             all             ::1/128                 ident
+```
 
 **IPv4 yerel bağlantı** hattını **ident**yerine **md5** kullanmak için değiştirin, böylece bir kullanıcı adı ve parola kullanarak oturum açabiliriz:
 
-    # IPv4 local connections:
-    host    all             all             127.0.0.1/32            md5
+```
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+```
 
 Ardından, PostgreSQL hizmetini yeniden başlatın:
 
-    sudo systemctl restart postgresql
+```Bash
+sudo systemctl restart postgresql
+```
 
 Yerleşik postgres kullanıcısı olarak *psql* (PostgreSQL için etkileşimli bir terminal) başlatmak için şu komutu çalıştırın:
 
-    sudo -u postgres psql
+```Bash
+sudo -u postgres psql
+```
 
 Oturum açmak için kullandığınız Linux hesabının kullanıcı adını kullanarak yeni bir kullanıcı hesabı oluşturun. Parola oluşturma:
 
-    CREATE USER <username> WITH CREATEDB;
-    CREATE DATABASE <username>;
-    ALTER USER <username> password '<password>';
-    \quit
+```Bash
+CREATE USER <username> WITH CREATEDB;
+CREATE DATABASE <username>;
+ALTER USER <username> password '<password>';
+\quit
+```
 
 psql'e giriş yapın:
 
-    psql
+```Bash
+psql
+```
 
 Verileri yeni bir veritabanına aktarın:
 
-    CREATE DATABASE spam;
-    \c spam
-    CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
-    \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
-    \quit
+```SQL
+CREATE DATABASE spam;
+\c spam
+CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer);
+\copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
+\quit
+```
 
 Şimdi, verileri inceleyelim ve bir JDBC sürücüsü aracılığıyla veritabanlarıyla etkileşimde kalmak için kullanabileceğiniz bir grafik aracı olan SQuirreL SQL'i kullanarak bazı sorguları çalıştıralım.
 
@@ -525,11 +518,15 @@ Bazı sorguları çalıştırmak için:
 
 Bu verileri keşfetmek için çalıştırabileceğiniz daha birçok sorgu vardır. Örneğin, sözcüğün sıklığı spam *make* ve jambon arasında nasıl farklılık gösterir?
 
-    SELECT avg(word_freq_make), spam from data group by spam;
+```SQL
+SELECT avg(word_freq_make), spam from data group by spam;
+```
 
 Veya, sık sık *3d*içeren e-posta özellikleri nelerdir?
 
-    SELECT * from data order by word_freq_3d desc;
+```SQL
+SELECT * from data order by word_freq_3d desc;
+```
 
 *3d* yüksek bir olay var çoğu e-postalar görünüşte spam vardır. Bu bilgiler, e-postaları sınıflandırmak için tahmine dayalı bir model oluşturmak için yararlı olabilir.
 
@@ -541,24 +538,32 @@ Azure SQL Veri Ambarı, hem ilişkisel hem de ilişkisel olmayan büyük hacimli
 
 Veri ambarına bağlanmak ve tabloyu oluşturmak için aşağıdaki komutu komut isteminden çalıştırın:
 
-    sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```Bash
+sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
+```
 
 sqlcmd komut u komutunu çalıştırın:
 
-    CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
-    GO
+```SQL
+CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
+GO
+```
 
 BCP kullanarak verileri kopyalayın:
 
-    bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```bash
+bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
+```
 
 > [!NOTE]
 > İndirilen dosya, Windows stili satır sonları içerir. bcp aracı Unix tarzı çizgi uçları bekliyor. bcp'yi söylemek için -r bayrağını kullanın.
 
 Sonra, sqlcmd kullanarak sorgulayın:
 
-    select top 10 spam, char_freq_dollar from spam;
-    GO
+```sql
+select top 10 spam, char_freq_dollar from spam;
+GO
+```
 
 Ayrıca SQuirreL SQL kullanarak sorgulayabilirsiniz. SQL Server JDBC sürücüsünü kullanarak PostgreSQL'e benzer adımları izleyin. JDBC sürücüsü /usr/share/java/jdbcdrivers/sqljdbc42.jar klasöründedir.
 
