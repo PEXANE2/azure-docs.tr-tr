@@ -697,6 +697,10 @@
       items:
         - name: Interactive Query ile verileri çözümleme
           href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: Kavramlar
+      items:
+        - name: En iyi ağ geçidi yöntemleri
+          href: ./interactive-query/gateway-best-practices.md
     - name: Nasıl yapılır
       items:
         - name: Geliştirme
@@ -816,6 +820,8 @@
       items:
         - name: Depolamaya yazmak için Apache Storm kullanma
           href: ./storm/apache-storm-write-data-lake-store.md
+        - name: Apache Kafka ve Apache Storm (Java)
+          href: ./hdinsight-apache-storm-with-kafka.md
     - name: Nasıl yapılır
       items:
         - name: Storm’u Spark’a geçirme
@@ -836,10 +842,6 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Akış işlem hatları
               items:
-                - name: Apache Kafka ve Apache Storm (Java)
-                  href: ./hdinsight-apache-storm-with-kafka.md
-                - name: 'Event Hubs, Depolama ve Data Lake Storage (Java)'
-                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: 'Event Hubs ve Apache Storm (C# ve Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Yönetme

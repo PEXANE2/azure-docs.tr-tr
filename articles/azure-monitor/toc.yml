@@ -15,7 +15,7 @@
     - name: Sanal makineleri izleme
       items:
         - name: Azure VM’leri
-          href: learn/quick-collect-azurevm.md
+          href: learn/quick-monitor-azure-vm.md
         - name: Linux bilgisayarı
           href: learn/quick-collect-linux-computer.md
         - name: Windows bilgisayar
@@ -303,10 +303,6 @@
             - name: Telemetri bağıntısı
               href: app/correlation.md
               displayname: 'correlation headers, w3c, distributed tracing, tracing'
-            - name: Yerel iletici
-              href: app/opencensus-local-forwarder.md
-            - name: Başlayın
-              href: app/opencensus-go.md
         - name: Canlı Ölçüm akışı
           displayname: 'live, quickpulse, quick pulse, live metrics'
           href: app/live-stream.md
@@ -488,9 +484,17 @@
             - name: Genel Bakış
               displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/platform-logs-overview.md
-            - name: Etkinlik günlüğünü görüntüleme
-              displayName: Platform logs
-              href: platform/activity-log-view.md
+            - name: Etkinlik günlüğü
+              items:
+                - name: Azure portalında görüntüleme
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-view.md
+                - name: Toplama ve analiz etme
+                  displayName: 'Platform logs, Activity log'
+                  href: platform/activity-log-collect.md
+                - name: Dışarı aktarma (eski)
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
             - name: Hedeflere gönderme
               items:
                 - name: Log Analytics çalışma alanı
@@ -502,20 +506,6 @@
                 - name: Event Hubs
                   displayname: 'Resource logs, Activity log, Platform logs'
                   href: platform/resource-logs-stream-event-hubs.md
-            - name: Eski Etkinlik günlüğü koleksiyonu
-              items:
-                - name: Genel Bakış
-                  displayName: Resource logs
-                  href: platform/diagnostic-settings-legacy.md
-                - name: Toplama ve analiz etme
-                  displayname: Activity log
-                  href: platform/activity-log-collect.md
-                - name: Kiracılar genelinde toplama
-                  displayname: Activity log
-                  href: platform/activity-log-collect-tenants.md
-                - name: Dışarı Aktarma
-                  displayname: Activity log
-                  href: platform/activity-log-export.md
         - name: Tanılama ayarları
           items:
             - name: Tanılama ayarı oluşturma
@@ -531,6 +521,8 @@
           href: platform/stream-monitoring-data-event-hubs.md
     - name: VM’leri ve konuk işletim sistemini izleme
       items:
+        - name: Azure sanal makinelerini izleme
+          href: insights/monitor-vm-azure.md
         - name: Aracılar
           items:
             - name: Aracılara genel bakış
@@ -636,12 +628,10 @@
           items:
             - name: Genel Bakış
               href: insights/vminsights-overview.md
-            - name: Bilinen sorunlar
-              href: insights/vminsights-known-issues.md
             - name: Genel Kullanılabilirlik Hakkında SSS
               href: insights/vminsights-ga-release-faq.md
             - name: SSS
-              href: 'faq.md#azure-monitor-for-vms-preview'
+              href: 'faq.md#azure-monitor-for-vms'
             - name: İzlemeyi etkinleştirme
               items:
                 - name: İzlemeyi etkinleştirmeye genel bakış
@@ -654,18 +644,16 @@
                   href: insights/vminsights-enable-at-scale-powershell.md
                 - name: Hibrit ortam için etkinleştirme
                   href: insights/vminsights-enable-hybrid-cloud.md
-                - name: Operations Manager ile tümleştirme
-                  href: insights/service-map-scom.md
-            - name: Sistem durumunu izleme
-              href: insights/vminsights-health.md
             - name: Bağımlılıkları eşleme
               href: insights/vminsights-maps.md
             - name: Performansı izleme
               href: insights/vminsights-performance.md
-            - name: Çalışma kitaplarını kullanma
-              href: insights/vminsights-workbooks.md
             - name: Günlük sorgularıyla verileri çözümleme
               href: insights/vminsights-log-search.md
+            - name: Çalışma kitapları ile verileri görselleştirme
+              href: insights/vminsights-workbooks.md
+            - name: Uyarı kuralları oluşturma
+              href: insights/vminsights-alerts.md
             - name: Dependency Agent’ı yükseltme
               href: insights/vminsights-dependency-agent-maintenance.md
             - name: İzlemeyi devre dışı bırakma
@@ -680,6 +668,8 @@
               href: insights/wire-data.md
             - name: Hizmet Eşlemesi çözümü
               href: insights/service-map.md
+            - name: Hizmet Eşlemesi ve Operations Manager
+              href: insights/service-map-scom.md
         - name: Bilgisayar grupları
           href: platform/computer-groups.md
     - name: Kapsayıcıları izleme
@@ -708,6 +698,8 @@
               href: insights/container-insights-analyze.md
             - name: Sistem durumunu izleme
               href: insights/container-insights-health.md
+            - name: GPU performansını izleme
+              href: insights/container-insights-gpu-monitoring.md
             - name: Canlı verileri görüntüleme
               items:
                 - name: Canlı Verilere (önizleme) genel bakış
@@ -896,13 +888,11 @@
                   href: log-query/query-optimization.md
                 - name: Metin verilerini ayrıştırma
                   href: log-query/parse-text.md
-        - name: Flow / Logic Apps
+        - name: Logic Apps
           items:
-            - name: Günlüklerle Flow bağlayıcısı
-              href: platform/flow-tutorial.md
-            - name: Uygulamalarla Flow Bağlayıcısı
-              href: app/automate-with-flow.md
-            - name: Uygulamalarla Logic Apps
+            - name: Azure İzleyici Günlükleri bağlayıcısı
+              href: platform/logicapp-flow-connector.md
+            - name: Application Insights bağlayıcısı
               href: app/automate-with-logic-apps.md
         - name: REST API
           displayname: 'metrics, analyze'
@@ -975,6 +965,8 @@
           href: platform/grafana-plugin.md
     - name: Uyarı
       items:
+        - name: Sorun giderme uyarıları
+          href: platform/alerts-troubleshoot.md
         - name: Uygulama uyarı kuralları
           items:
             - name: Kullanılabilirlik
@@ -999,7 +991,7 @@
               href: platform/alerts-log-query.md
             - name: Web kancası eylemleri
               href: platform/alerts-log-webhook.md
-            - name: Sorun giderme
+            - name: Günlük uyarılarıyla ilgili sorunları giderme
               href: platform/alert-log-troubleshoot.md
         - name: Etkinlik günlüğü uyarı kuralları
           items:
@@ -1263,8 +1255,6 @@
           href: 'https://azure.microsoft.com/updates/?product=log-analytics'
         - name: SDK sürüm notları
           href: app/release-notes.md
-    - name: Windows Analizi
-      href: 'https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics'
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/?products=monitor&regions=all'
     - name: Videolar

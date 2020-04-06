@@ -13,11 +13,13 @@
       href: quick-create-cli.md
     - name: Azure PowerShell ile oluşturma
       href: quick-create-powershell.md
-    - name: Şablon ile oluşturma
+    - name: ARM şablonu ile oluşturma
       items:
         - name: Linux ölçek kümesi
+          displayName: 'ARM, resource manager'
           href: quick-create-template-linux.md
         - name: Windows ölçek kümesi
+          displayName: 'ARM, resource manager'
           href: quick-create-template-windows.md
 - name: Öğreticiler
   items:
@@ -236,7 +238,7 @@
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: Spot örneği kullanma
           href: use-spot.md
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Genel yönetim görevleri
           items:

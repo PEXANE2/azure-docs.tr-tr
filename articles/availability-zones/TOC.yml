@@ -30,7 +30,7 @@
           items:
             - name: Kullanılabilirlik Alanında ölçek kümesi oluşturma
               href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
-        - name: Yük Dengeleyici
+        - name: Load Balancer
           items:
             - name: Yük Dengeleyici nedir?
               href: ../load-balancer/load-balancer-overview.md
@@ -85,6 +85,10 @@
           items:
             - name: Azure Active Directory Domain Services örneği oluşturma
               href: ../active-directory-domain-services/tutorial-create-instance.md
+    - name: Edge Zones Belgeleri
+      items:
+        - name: Edge Zones nedir?
+          href: ../networking/edge-zones-overview.md
 - name: Olağanüstü Durum Kurtarma
   items:
     - name: Azure Site Recovery’yi kullanma

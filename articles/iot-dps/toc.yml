@@ -103,6 +103,8 @@
       href: concepts-tpm-attestation.md
     - name: Simetrik anahtar kanıtlama
       href: concepts-symmetric-key-attestation.md
+    - name: Cihaz üreticileri için güvenlik uygulamaları
+      href: concepts-device-oem-security-practices.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: MXChip IoT DevKit’i IoT Hub’a bağlama

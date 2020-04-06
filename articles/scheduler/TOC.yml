@@ -1,5 +1,5 @@
-- name: Scheduler Belgeleri
-  href: index.md
+- name: Azure Scheduler belgeleri
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Azure Scheduler nedir?

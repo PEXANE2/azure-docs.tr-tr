@@ -23,6 +23,9 @@
           href: knowledge-store-create-portal.md
         - name: Arama gezgini ile sorgulama
           href: search-explorer.md
+    - name: ARM şablonu
+      displayName: Resource Manager
+      href: search-get-started-arm.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -77,14 +80,6 @@
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=python'
     - name: REST örnekleri
       href: 'https://docs.microsoft.com/samples/browse/?products=azure-cognitive-search&languages=rest'
-- name: Eğitim
-  items:
-    - name: Giriş (Microsoft Learn)
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
-    - name: Uygulamalara arama ekleme (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
-    - name: Geliştirici kursu (Pluralsight)
-      href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
 - name: Kavramlar
   items:
     - name: Tam metin arama
@@ -233,7 +228,7 @@
           href: search-query-simple-examples.md
         - name: Tam Lucene söz dizimini kullanma
           href: search-query-lucene-examples.md
-        - name: Özel karakterler ve kısmi terimler
+        - name: Parçalı terimler ve özel karakterler
           href: search-query-partial-matching.md
         - name: Power Apps’ten sorgulama
           href: search-howto-powerapps.md
@@ -261,7 +256,7 @@
           href: search-example-adventureworks-multilevel-faceting.md
     - name: Sonuçlar
       items:
-        - name: Sayfayla ilgili özellikler
+        - name: Sonuçlar üzerinde çalışma
           href: search-pagination-page-layout.md
         - name: İlgi düzeyini ayarlama (puanlama profilleri)
           href: index-add-scoring-profiles.md
@@ -460,6 +455,14 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Arama kullanım örnekleri
           href: 'https://searchsamples.azurewebsites.net/'
+    - name: Eğitim
+      items:
+        - name: Giriş (Microsoft Learn)
+          href: 'https://docs.microsoft.com/learn/modules/intro-to-azure-search/'
+        - name: Uygulamalara arama ekleme (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
+        - name: Geliştirici kursu (Pluralsight)
+          href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
     - name: SSS
       href: search-faq-frequently-asked-questions.md
     - name: Fiyatlandırma

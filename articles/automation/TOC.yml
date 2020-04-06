@@ -15,22 +15,26 @@
     - name: Otomasyon Farklı Çalıştır hesabı yönetme
       href: manage-runas-account.md
       displayName: certificate renewal
-    - name: AWS ile kimlik doğrulamasını yapılandırma
-      href: automation-config-aws-account.md
-    - name: Azure Otomasyonu'nda güvenli varlıkların şifrelenmesi
-      href: automation-secure-asset-encryption.md
     - name: Rol tabanlı erişim denetimini yönetme
       href: automation-role-based-access-control.md
       displayName: RBAC
+    - name: Azure Otomasyonu’nda Azure AD kullanarak Azure’a kimlik doğrulaması yapma
+      href: automation-use-azure-ad.md
+    - name: Azure Otomasyonu’nu kullanarak Office 365 hizmetlerini yönetme
+      href: manage-office-365.md
+    - name: AWS ile kimlik doğrulamasını yapılandırma
+      href: automation-config-aws-account.md
+    - name: Azure Otomasyonu’nda güvenli varlıkları şifreleme
+      href: automation-secure-asset-encryption.md
     - name: Otomasyon Hesabınızı başka bir Aboneliğe taşıma
       href: how-to/move-account.md
     - name: Otomasyon Hizmetleri’nin eklenmesini otomatikleştirme
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
-    - name: Log Analytics Çalışma Alanı Eşlemeleri için Desteklenen Bölgeler
-      href: how-to/region-mappings.md
     - name: Azure Otomasyonu verilerini yönetme
       href: automation-managing-data.md
       displayName: backup
+    - name: Log Analytics Çalışma Alanı Eşlemeleri için Desteklenen Bölgeler
+      href: how-to/region-mappings.md
     - name: Sorun giderme
       items:
         - name: Otomasyon hesabı sorunlarını giderme
@@ -56,7 +60,15 @@
     - name: Nasıl Yapılır Kılavuzları
       items:
         - name: Hizmetin kapalı olduğu saatlerde VM’leri başlatma/durdurma
-          href: automation-solution-vm-management.md
+          items:
+            - name: Genel Bakış
+              href: automation-solution-vm-management.md
+            - name: Çözümü etkinleştirme
+              href: automation-solution-vm-management-enable.md
+            - name: Çözümü yapılandırma
+              href: automation-solution-vm-management-config.md
+            - name: Günlük sorgularıyla verileri çözümleme
+              href: automation-solution-vm-management-logs.md
         - name: Runbook'ları yönetme
           href: manage-runbooks.md
         - name: Runbook oluşturma
@@ -317,9 +329,9 @@
       href: shared-resources/credentials.md
     - name: PowerShell modülleri
       items:
-        - name: Modüller
+        - name: Azure Otomasyonu’nda modülleri yönetme
           href: shared-resources/modules.md
-        - name: Azure Otomasyonu'nda Az modüllerini kullanma
+        - name: Azure Otomasyonu’nda Az modülleri desteği
           href: az-modules.md
         - name: Azure PowerShell modüllerini güncelleştirme
           href: automation-update-azure-modules.md

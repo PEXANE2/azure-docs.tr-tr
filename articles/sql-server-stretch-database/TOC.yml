@@ -1,5 +1,5 @@
-- name: SQL Server Stretch Database Belgeleri
-  href: index.md
+- name: Azure SQL Server Stretch Database belgeleri
+  href: index.yml
 - name: Genel Bakış
   items:
     - name: Stretch Database nedir?
@@ -22,7 +22,7 @@
           href: /sql/sql-server/stretch-database/enable-stretch-database-for-a-table
         - name: Geçirilecek satırları seçme
           href: /sql/sql-server/stretch-database/select-rows-to-migrate-by-using-a-filter-function-stretch-database
-    - name: Yönet
+    - name: Yönetme
       items:
         - name: Veri geçişini izleme
           href: /sql/sql-server/stretch-database/monitor-and-troubleshoot-data-migration-stretch-database

@@ -1,129 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure SQL Veritabanı
+### YamlMime:Landing
+title: Azure SQL tek veritabanları, sunucu veritabanları ve elastik havuzlar hakkındaki belgeleri bulma
+summary: Azure SQL Veritabanı tek veritabanları, elastik havuzları ve veritabanı sunucularına yönelik kavramlar, hızlı başlangıç, öğretici ve örneklere ulaşın.
 metadata:
-  title: 'Belgeler: Tek veritabanı, veritabanı sunucusu, elastik havuz'
-  description: 'Azure SQL Veritabanı tek veritabanları, elastik havuzları ve veritabanı sunucularına yönelik hızlı başlangıç, öğretici ve örneklere ulaşın.'
+  title: Belgeler
+  description: Microsoft SQL Server’ın en son kararlı sürümünü temel alan ve hizmet olarak ilişkisel veritabanı (DBaaS) ürünü olan Azure SQL Veritabanı belgelerine ulaşın.
   services: sql-database
-  requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
-  ms.topic: overview
-  author: jovanpop-msft
-  ms.author: jovanpop
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
   ms.reviewer: carlrab
-  manager: craigg
-  ms.date: 04/26/2019
-abstract:
-  description: 'Azure SQL Veritabanı, Microsoft SQL Server Veritabanı Altyapısı''nın en son kararlı sürümünü temel alan hizmet olarak ilişkisel veritabanı (DBaaS) ürünüdür. SQL Veritabanı, altyapı yönetimine gerek kalmadan kendi seçtiğiniz programlama dilinde yeni uygulamalar, web siteleri ve mikro hizmetler oluşturmak için kullanabileceğiniz yüksek performanslı, kullanımı kolay, güvenilir ve güvenli bir veritabanıdır. Hızlı başlangıç kılavuzlarımız, öğreticilerimiz ve örneklerimizle, SQL Veritabanı’nı kullanmayı öğrenin.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
-      width: 250
-    title: 'Azure’da tek bir SQL veritabanı oluşturma (3:12)'
-    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - title: Esnek havuzlar
-            href: /azure/sql-database/sql-database-elastic-pool
-            html: '<p>SQL Veritabanı elastik havuzları, kullanım talepleri değişken olan ve öngörülmeyen birden çok veritabanını yönetmeye ve ölçeklendirmeye yönelik kolay ve ekonomik bir çözümdür.</p>'
-            image:
-              src: media/index/i_elasticpool.svg
-          - title: SQL Veritabanı sunucusu
-            href: /azure/sql-database/sql-database-servers
-            html: '<p>SQL Veritabanı sunucusu, sunucunun içindeki bir dizi tek veya havuza alınmış veritabanında güvenliği, ayarlamayı, yedekleme ilkesini ve diğer yapılandırma özelliklerini yapılandırmak için merkezi bir yönetim noktasıdır.</p>'
-            image:
-              src: media/index/i_mi.svg
-          - title: Fiyat ve hizmet katmanları
-            href: /azure/sql-database/sql-database-service-tiers
-            html: <p>Aylık 5 ABD doları gibi makul ücretlerden 80 çekirdekli güçlü veritabanlarına varan esnek hizmet katmanlarıyla fiyat/performans oranını ihtiyaçlarınıza göre uyarlayın.</p>
-            image:
-              src: media/index/i_perftier.svg
-          - title: Ölçeklenebilirlik
-            href: /azure/sql-database/sql-database-scale-resources
-            html: <p>Uygulamanızın performansını geliştirmek için veritabanınızın ölçeğini kolayca artırın.</p>
-            image:
-              src: media/index/i_scale.svg
-          - title: Hizmet olarak platform
-            href: /azure/sql-database/sql-database-paas
-            html: '<p>Yerleşik yüksek kullanılabilirlik, otomatik yedeklemeler ve coğrafi çoğaltma özellikleri, bakım işlemlerinin ve altyapı hatalarının veya donanım hatalarının işletmenizi durdurmasını önlemeye yardımcı olur.</p>'
-            image:
-              src: media/index/gear.svg
-          - title: Gelişmiş güvenlik
-            href: /azure/sql-database/sql-database-security-index
-            html: '<p>Azure AD kimlik doğrulaması, sanal ağlar, güvenlik duvarları ve Always Encrypted bağlantılar ile veritabanınızın güvenliğini korumaya yardımcı olun. Yerleşik güvenlik sayesinde tehditleri ve güvenlik açıklarını belirleyin.</p>'
-            image:
-              src: media/index/i_security.svg
-  - title: Beş dakikalık hızlı başlangıçlar
-    items:
-      - type: paragraph
-        text: 'Azure SQL Veritabanı sayesinde Azure portalı, Azure CLI ve Azure PowerShell’i kullanarak temel yönetim görevlerini gerçekleştirebilirsiniz. Aşağıdaki hızlı başlangıç örneklerini kullanarak temel yönetim görevlerini nasıl gerçekleştireceğinizi öğrenin:'
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-            title: Azure portal
-          - image:
-              src: media/index/cli.svg
-            title: Azure CLI
-          - image:
-              src: media/index/logo_powershell.svg
-            title: PowerShell
-          - image:
-              src: media/index/logo_arm.svg
-            title: Azure Resource Manager şablonu
-        rows:
-          - title: Veritabanı oluşturma
-            values:
-              - href: /azure/sql-database/sql-database-single-database-get-started
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
-          - title: Elastik havuz oluşturma
-            values:
-              - href: /azure/sql-database/sql-database-elastic-pool-manage
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
-          - title: Veritabanını ölçeklendirme
-            values:
-              - href: null
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
-              - href: null
-          - title: Elastik havuzu ölçekleme
-            values:
-              - href: null
-              - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
-              - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
-  - title: Adım adım öğreticiler
-    items:
-      - type: paragraph
-        text: 'Azure SQL Veritabanı kullanarak veritabanlarını oluşturma, yönetme ve geçirme hakkında bilgi edinin.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> veya <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> kullanarak yeni SQL veritabanı için şema oluşturun ve tasarlayın.
-          - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Veritabanı Geçiş Yardımcısı</a> veya <a href="/azure/sql-database/sql-database-import">BACPAC İçeri Aktarma</a>’yı kullanarak mevcut veritabanını Azure’a aktarın.
-          - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL veritabanınızın güvenliğini sağlayın</a>.
-          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Coğrafi olarak dağıtılmış bir veritabanı</a> kullanarak verilerinizi küresel ölçekte dağıtın.
-          - html: Veritabanınızı yapılandırmanıza yardımcı olabilecek daha fazla <a href="sql-database-howto-single-database.md">nasıl yapılır kılavuzu</a> bulun.
-  - title: Örnekler
-    items:
-      - type: paragraph
-        text: Genel görevleri yönetmeye yönelik betikleri bulun.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
+  ms.date: 03/30/2020
+  ms.openlocfilehash: 1aa091dadce4f45db93e97640f5705524d72879e
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80421237"
+landingContent:
+- title: Tek Veritabanı
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Database nedir?
+      url: sql-database-technical-overview.md
+    - text: Hangi SQL Veritabanı seçeneğini belirlemeliyim?
+      url: sql-database-paas-vs-sql-server-iaas.md
+    - text: Satın alma seçenekleri
+      url: sql-database-purchase-models.md
+    - text: Hizmet katmanları
+      url: sql-database-service-tiers-general-purpose-business-critical.md
+- title: Esnek havuzlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Esnek havuzlar
+      url: sql-database-elastic-pool.md
+    - text: Esnek havuzları yönetme
+      url: sql-database-elastic-pool-manage.md
+    - text: Elastik havuzları ölçeklendirme
+      url: sql-database-elastic-pool-scale.md
+- title: SQL Veritabanı sunucusu
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SQL Veritabanı sunucuları
+      url: sql-database-servers.md
+    - text: Bağlantı ayarları
+      url: sql-database-connectivity-settings.md
+    - text: Güvenlik duvarı kuralları
+      url: sql-database-server-level-firewall-rule.md
+- title: Gelişmiş güvenlik
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Güvenlik özellikleri
+      url: sql-database-security-overview.md
+    - text: En iyi güvenlik uygulamaları
+      url: sql-database-security-best-practice.md
+    - text: Oturum açmalar, kullanıcı hesapları, roller ve izinler
+      url: sql-database-manage-logins.md
+    - text: Azure Active Directory
+      url: sql-database-aad-authentication.md
+- title: Ölçeklenebilirlik
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dinamik olarak ölçeği artırma veya azaltma
+      url: sql-database-scale-resources.md
+    - text: Okuma Amaçlı Ölçeği Genişletme
+      url: sql-database-read-scale-out.md
+    - text: Çapraz veritabanı işleri
+      url: sql-database-elastic-jobs-overview.md
+- title: Fiyatlar ve hizmet katmanları
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Satın alma modelleri
+      url: sql-database-purchase-models.md
+    - text: Hizmet katmanları
+      url: sql-database-service-tiers-general-purpose-business-critical.md
+    - text: Sunucusuz
+      url: sql-database-serverless.md
+    - text: Hiper Ölçek
+      url: sql-database-service-tier-hyperscale.md

@@ -102,6 +102,8 @@
               href: how-to-enable-nested-virtualization-template-vm-using-script.md
         - name: Windows şablon VM’si hazırlama
           href: how-to-prepare-windows-template.md
+        - name: Windows’un kapatılma davranışını denetleme
+          href: how-to-windows-shutdown.md
         - name: Destek bilgilerini görüntüleme (eğitmen)
           href: lab-creator-support-information.md
     - name: Sınıf laboratuvarlarında VM’lere bağlanma (öğrenci)

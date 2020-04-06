@@ -39,6 +39,8 @@
               href: sql-api-java-get-started.md
             - name: Async Java
               href: sql-api-async-java-get-started.md
+            - name: Zaman uyumsuz Java uçtan uca örnek uygulaması
+              href: create-sql-api-java-changefeed.md
             - name: Node.js
               href: sql-api-nodejs-get-started.md
         - name: Web uygulaması oluşturma
@@ -636,10 +638,6 @@
           items:
             - name: Cosmos DB’deki MongoDB API nedir?
               href: mongodb-introduction.md
-            - name: Kablo protokolü desteği (3.2)
-              href: mongodb-feature-support.md
-            - name: Kablo protokolü desteği (3.6)
-              href: mongodb-feature-support-36.md
         - name: Hızlı Başlangıçlar
           items:
             - name: .NET
@@ -683,6 +681,12 @@
               href: tutorial-query-mongodb.md
             - name: 4 - Verileri global olarak dağıtma
               href: tutorial-global-distribution-mongodb.md
+        - name: Kavramlar
+          items:
+            - name: Kablo protokolü desteği (3.6)
+              href: mongodb-feature-support-36.md
+            - name: Kablo protokolü desteği (3.2)
+              href: mongodb-feature-support.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Geçiş öncesine yönelik kılavuz
@@ -727,7 +731,7 @@
       items:
         - name: Genel Bakış
           items:
-            - name: Cosmos DB’deki Germlin API nedir?
+            - name: Cosmos DB’deki Gremlin API nedir?
               href: graph-introduction.md
             - name: Kablo protokolü desteği
               href: gremlin-support.md
@@ -1008,10 +1012,13 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Başlangıç Noktaları Arası Kaynak Paylaşımı'nı (CORS) yapılandırma
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama
-          href: access-secrets-from-keyvault.md
+        - name: Yönetilen kimlik kullanarak anahtarların güvenliğini sağlama
+          href: managed-identity-based-authentication.md
+          displayName: 'msi, managed service identity, aad, azure active directory, identity'
         - name: Azure AD ile sertifika tabanlı kimlik doğrulaması
           href: certificate-based-authentication.md
+        - name: Key Vault kullanarak anahtarların güvenliğini sağlama
+          href: access-secrets-from-keyvault.md
         - name: Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
           href: how-to-restrict-user-data.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
@@ -1026,6 +1033,8 @@
           href: monitor-cosmos-db.md
         - name: Tanılama günlükleriyle izleme
           href: cosmosdb-monitor-resource-logs.md
+        - name: Kontrol düzlemi günlüklerini denetleme
+          href: audit-control-plane-logs.md
         - name: Cosmos için Azure İzleyici (önizleme)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Cosmos DB hesabından ölçümleri görüntüleme
@@ -1102,6 +1111,8 @@
           href: bulk-executor-overview.md
         - name: Toplu yürütücü - .NET kitaplığı
           href: bulk-executor-dot-net.md
+        - name: Toplu yürütücüden .NET SDK’ya geçirme
+          href: how-to-migrate-from-bulk-executor-library.md
         - name: Toplu yürütücü - Java kitaplığı
           href: bulk-executor-java.md
 - name: Başvuru

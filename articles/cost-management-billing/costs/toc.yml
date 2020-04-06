@@ -32,6 +32,8 @@
           href: migrate-cost-management-api.md
     - name: Nasıl yapılır kılavuzları
       items:
+        - name: Beklenmeyen ücretleri önleme ve analiz etme
+          href: ../manage/getting-started.md
         - name: Verilere erişim atama
           href: assign-access-acm-data.md
         - name: Yaygın görevlerde maliyet analizini kullanma

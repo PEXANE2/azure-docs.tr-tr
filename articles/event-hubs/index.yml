@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: spelluru
   ms.author: spelluru
-  ms.date: 01/29/2020
-  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
-  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.date: 03/13/2020
+  ms.openlocfilehash: 24f3c35b41effaaad7aa3058c4a3d3af13739a01
+  ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80288300"
+  ms.lasthandoff: 04/01/2020
+  ms.locfileid: "80520310"
 landingContent:
 - title: Event Hubs hakkında
   linkLists:
@@ -69,8 +69,6 @@ landingContent:
       url: event-hubs-kafka-stream-analytics.md
   - linkListType: how-to-guide
     links:
-    - text: Apache Kafka özellikli olay hub'ı oluşturma
-      url: event-hubs-create.md
     - text: Bir olay hub'ında Kafka aracısı yansıtma
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Apache Spark'ı bir olay hub'ına bağlama
@@ -99,12 +97,34 @@ landingContent:
       url: event-hubs-storm-getstarted-receive.md
     - text: Başlayın
       url: event-hubs-go-get-started-send.md
+- title: Azure Stack Hub üzerinde Event Hubs önizlemesi
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Genel Bakış
+      url: /azure-stack/user/event-hubs-overview
+    - text: Ortak özellik kümesi
+      url: /azure-stack/user/event-hubs-overview#features
+  - linkListType: how-to-guide
+    links:
+    - text: Kapasite planlaması
+      url: /azure-stack/operator/event-hubs-rp-capacity-planning
+    - text: Yükleme önkoşulları (işleç)
+      url: /azure-stack/operator/event-hubs-rp-prerequisites
+    - text: Yükleme (işleç)
+      url: /azure-stack/operator/event-hubs-rp-install
+    - text: Denetim noktası deposu olarak Blob Depolama’yı kullanma
+      url: use-blob-storage-checkpoint-store-azure-stack-hub.md
+  - linkListType: quickstart
+    links:
+    - text: Event Hubs kümesi oluşturma
+      url: /azure-stack/user/event-hubs-quickstart-cluster-portal
 - title: Olayları yakalama
   linkLists:
   - linkListType: overview
     links:
     - text: Olayları Azure Blob Depolama’da veya Azure Data Lake Storage’da yakalama
-      url: event-hubs-dedicated-overview.md
+      url: event-hubs-capture-overview.md
   - linkListType: quickstart
     links:
     - text: Olayların yakalanmasını etkinleştirmek için Azure portal kullanma

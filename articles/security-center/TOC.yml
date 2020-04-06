@@ -29,6 +29,8 @@
       href: quick-onboard-azure-stack.md
 - name: Öğreticiler
   items:
+    - name: Planlama ve işlemler kılavuzu
+      href: security-center-planning-and-operations-guide.md
     - name: Kaynaklarınızı koruma
       href: tutorial-protect-resources.md
     - name: Olaylara yanıt verme
@@ -71,8 +73,8 @@
           href: security-center-incident.md
         - name: Bulut Akıllı Uyarı bağıntısı (olaylar)
           href: security-center-alerts-cloud-smart.md
-        - name: Güvenlik uyarıları haritası ve tehdit bilgileri
-          href: security-center-threat-intel.md
+        - name: Tehdit raporları
+          href: security-center-threat-report.md
         - name: Uyarı doğrulaması (EICAR sınama dosyası)
           href: security-center-alert-validation.md
 - name: Nasıl yapılır kılavuzları
@@ -149,6 +151,8 @@
           href: security-center-sql-service-recommendations.md
         - name: Kimliği ve erişimi koruma
           href: security-center-identity-access.md
+        - name: Araştırma kullanıcı verilerini yönetme
+          href: security-center-investigation-user-data.md
     - name: Bulut savunmalarını uygulama
       items:
         - name: Tam zamanında erişimi yönetme
@@ -159,24 +163,6 @@
           href: security-center-file-integrity-monitoring.md
         - name: Uyarlamalı ağ sağlamlaştırma
           href: security-center-adaptive-network-hardening.md
-    - name: Arşiv
-      items:
-        - name: Disk şifrelemesi uygulayın
-          href: security-center-apply-disk-encryption.md
-        - name: Sistem güncelleştirmelerini uygulayın
-          href: security-center-apply-system-updates.md
-        - name: Endpoint Protection yükleyin
-          href: security-center-install-endpoint-protection.md
-        - name: Tehdit raporları
-          href: security-center-threat-report.md
-        - name: Güvenilirlik puanı uyarısı
-          href: security-center-confidence-score.md
-        - name: Araştırma
-          href: security-center-investigation.md
-        - name: Araştırma kullanıcı verilerini yönetme
-          href: security-center-investigation-user-data.md
-        - name: Planlama ve işlemler
-          href: security-center-planning-and-operations-guide.md
 - name: Başvuru
   items:
     - name: REST API'leri

@@ -150,6 +150,8 @@
               href: plan-migrate-adfs-password-hash-sync.md
             - name: Federasyondan PTA’ya geçirme
               href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Grupları bir ormandan diğerine taşıma
+              href: how-to-connect-migrate-groups.md
         - name: Hibrit Kimlik Tasarım Kılavuzu
           items:
             - name: Hibrit Kimlik Tasarım Kılavuzuna Genel Bakış

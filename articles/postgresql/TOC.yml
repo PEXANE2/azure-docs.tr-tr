@@ -149,6 +149,8 @@
           items:
             - name: Okuma amaçlı çoğaltmalar
               href: concepts-read-replicas.md
+            - name: Mantıksal kod çözme
+              href: concepts-logical.md
     - name: Hiper Ölçek (Citus)
       items:
         - name: Düğümler
@@ -269,6 +271,8 @@
           items:
             - name: Azure portal
               href: howto-data-encryption-portal.md
+            - name: Azure CLI
+              href: howto-data-encryption-cli.md
         - name: Sunucuyu yeniden başlatma
           items:
             - name: Azure portal

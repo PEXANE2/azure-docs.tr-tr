@@ -143,12 +143,18 @@
           href: how-to-auto-provision-x509-certs.md
         - name: Simetrik anahtar kanıtlama
           href: how-to-auto-provision-symmetric-keys.md
-    - name: Özel modüller geliştirme ve bunlarda hata ayıklama
+    - name: Özel modüller geliştirme
       items:
-        - name: Visual Studio 2019
+        - name: Visual Studio 2019 ile geliştirme
           href: how-to-visual-studio-develop-module.md
-        - name: Visual Studio Code
+        - name: Visual Studio Code ile geliştirme
           href: how-to-vs-code-develop-module.md
+        - name: CreateOptions modülünü yapılandırma
+          items:
+            - name: CreateOptions’ı anlama ve kullanma
+              href: how-to-use-create-options.md
+            - name: Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
+              href: how-to-access-host-storage-from-module.md
     - name: Modülleri dağıtma
       items:
         - name: Tek tek cihazlara dağıtma
@@ -183,11 +189,9 @@
           href: deploy-modbus-gateway.md
     - name: Proxy desteğini yapılandırma
       href: how-to-configure-proxy-support.md
-    - name: Uçta veri depolama
+    - name: IoT Edge üzerinde Azure Blob Depolama
       items:
-        - name: Modüllerin bir cihazın yerel depolama alanına erişmesine izin ver
-          href: how-to-access-host-storage-from-module.md
-        - name: IoT Edge üzerinde Azure Blob Depolama
+        - name: Uç sistemlerde blob depolamayı anlama
           href: how-to-store-data-blob.md
         - name: Blob depolama modüllerini dağıtma
           href: how-to-deploy-blob.md

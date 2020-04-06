@@ -1,97 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: IoT Hub Belgeleri
+### YamlMime:Landing
+title: Azure IoT Hub Belgeleri
 metadata:
-  title: 'Azure IoT Hub Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
-  description: 'IoT Hub’ı kullanarak milyarlarca Nesnelerin İnterneti varlığına bağlanma, bunları izleme ve denetleme hakkında bilgi edinin. Öğreticiler, API başvuruları, videolar ve diğer belgeler.'
-  author: dominicbetts
-  manager: timlt
-  ms.service: iot-hub
+  title: Azure IoT Hub Belgeleri
+  description: Azure IoT Hub’ı kullanarak milyarlarca Nesnelerin İnterneti varlığına bağlanma, bunları izleme ve denetleme hakkında bilgi edinin.
   services: iot-hub
+  ms.service: iot-hub
   ms.topic: landing-page
-  ms.date: 04/26/2018
-  ms.author: dobett
-abstract:
-  description: 'IoT Hub’ı kullanarak milyarlarca Nesnelerin İnterneti varlığına bağlanma, bunları izleme ve denetleme hakkında bilgi edinin. Öğreticiler, API başvuruları, videolar ve diğer belgeler, IoT cihazlarıyla bir çözümün arka ucu arasında güvenilir ve çift yönlü iletişim dağıtmanıza yardımcı olur.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo_cli.svg
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_nodejs.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_NET.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_java.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_python.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_android.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_c.svg'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_ios.svg'
-        rows:
-          - title: Telemetri gönderme
-            values:
-              - href: /azure/iot-hub/quickstart-send-telemetry-cli
-              - href: /azure/iot-hub/quickstart-send-telemetry-node
-              - href: /azure/iot-hub/quickstart-send-telemetry-dotnet
-              - href: /azure/iot-hub/quickstart-send-telemetry-java
-              - href: /azure/iot-hub/quickstart-send-telemetry-python
-              - href: /azure/iot-hub/quickstart-send-telemetry-android
-              - href: /azure/iot-hub/quickstart-send-telemetry-c
-              - href: /azure/iot-hub/quickstart-send-telemetry-ios
-          - title: Cihazı denetleme
-            values:
-              - href: null
-              - href: /azure/iot-hub/quickstart-control-device-node
-              - href: /azure/iot-hub/quickstart-control-device-dotnet
-              - href: /azure/iot-hub/quickstart-control-device-java
-              - href: /azure/iot-hub/quickstart-control-device-python
-              - href: /azure/iot-hub/quickstart-control-device-android
-          - title: Cihaz akışlarını kullanarak iletişim kurma (önizleme)
-            values:
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-echo-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-echo-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-echo-c
-              - href: null
-          - title: Cihaz akışlarını kullanarak SSH/RDP (önizleme)
-            values:
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-nodejs
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-csharp
-              - href: null
-              - href: null
-              - href: null
-              - href: /azure/iot-hub/quickstart-device-streams-proxy-c
-              - href: null
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/iot-hub/tutorial-routing">IoT Hub’da otomatik ileti yönlendirmeyi yapılandırma</a>
-          - html: <a href="/azure/iot-hub/tutorial-device-twins">Cihazlarınızı bir arka uç hizmetinden yapılandırma</a>
-          - html: <a href="/azure/iot-hub/tutorial-firmware-update">Cihaz yazılımı güncelleştirme işlemi gerçekleştirme</a>
-          - html: <a href="/azure/iot-hub/tutorial-connectivity">IoT hub’ınızla bağlantıyı test etmek için bir sanal cihaz kullanma</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Komut Satırı
-            html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
-          - title: Diller
-            html: '<p><a href="/dotnet/api/microsoft.azure.devices">.NET (Hizmet)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (Cihazlar)</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C (Cihaz SDK’sı)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (Hizmet)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (Cihazlar)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (Hizmet)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (Cihazlar)</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/iothub/device">REST (Cihaz)</a></p><p><a href="/rest/api/iothub/service/configuration">REST (Hizmet)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub Kaynağı)</a></p><p><a href="/rest/api/iothub/certificates">REST (Sertifikalar)</a></p>
+  author: robinsh
+  ms.author: robinsh
+  manager: eliotgra
+  ms.date: 03/23/2020
+  ms.openlocfilehash: 101c9623ed102fc8e4419df14e383e1df6afb010
+  ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/31/2020
+  ms.locfileid: "80420846"
+landingContent:
+- title: Başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portalını kullanarak merkez oluşturma
+      url: iot-hub-create-through-portal.md
+    - text: CLI kullanarak bir cihazdan merkeze telemetri gönderme
+      url: quickstart-send-telemetry-cli.md
+    - text: Merkeze bağlı bir cihazı denetleme
+      url: quickstart-control-device-node.md
+  - linkListType: get-started
+    links:
+    - text: Cihaz yönetimi
+      url: iot-hub-node-node-device-management-get-started.md
+    - text: Cihazları yapılandırma
+      url: iot-hub-configuration-best-practices.md
+- title: Cihaz Durumunu Eşitleme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Node.js kullanarak Cihaz İkizleriyle çalışma
+      url: iot-hub-node-node-twin-getstarted.md
+    - text: IoT ölçümlerini anlama
+      url: iot-hub-metrics.md
+    - text: Tanılama Günlüğüne Kaydetme
+      url: iot-hub-monitor-resource-health.md
+    - text: IoT ile bağlantı kesilmelerini algılama, tanılama ve sorunları giderme
+      url: iot-hub-troubleshoot-connectivity.md
+- title: Çözümünüzü ölçeklendirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Doğru katmanı seçme
+      url: iot-hub-scaling.md
+    - text: Kotaları ve bant genişliği azaltmayı anlama
+      url: iot-hub-devguide-quotas-throttling.md
+- title: Protokolünüzü seçme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Desteklenen Protokoller
+      url: iot-hub-devguide-protocols.md
+    - text: TLS Desteği
+      url: iot-hub-tls-support.md
+    - text: MQTT Desteği
+      url: iot-hub-mqtt-support.md
+    - text: IP Adresleme
+      url: iot-hub-understand-ip-address.md
+    - text: AMQP
+      url: iot-hub-amqp-support.md
+    - text: Protokol ağ geçidi
+      url: iot-hub-protocol-gateway.md
+- title: Cihaz verilerini başka bir hizmete yönlendirme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure IoT Hub ileti yönlendirmesini anlama
+      url: iot-hub-devguide-messages-d2c.md
+  - linkListType: tutorial
+    links:
+    - text: Azure CLI ile hazırlanma
+      url: tutorial-routing-config-message-routing-cli.md
+    - text: Azure Resource Manager şablonu ile hazırlanma
+      url: tutorial-routing-config-message-routing-rm-template.md
+    - text: Yönlendirme sonuçlarını çalıştırma ve görüntüleme
+      url: tutorial-routing-view-message-routing-results.md
+- title: IoT Hub Araçları’nı kullanma
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VS Code için IoT Araçları’nı kullanma
+      url: iot-hub-create-use-iot-toolkit.md
+    - text: IoT Gezgini
+      url: ../iot-pnp/howto-install-iot-explorer.md
+- title: IoT Güvenlik sertifikalarını kullanma
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IoT Hub’a erişimi denetleme
+      url: iot-hub-devguide-security.md
+    - text: X.509 CA sertifikalarını kullanarak Cihaz Kimlik Doğrulaması
+      url: iot-hub-x509ca-overview.md
+    - text: IoT Hub ile X.509 güvenliği
+      url: iot-hub-security-x509-get-started.md
+    - text: X.509 CA sertifikası güvenlik kavramları
+      url: iot-hub-x509ca-concept.md
