@@ -4,16 +4,16 @@ description: Azure IoT Edge için Azure Aygıt Sağlama Hizmetini test etmek iç
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/01/2019
+ms.date: 3/2/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6bb1282212ccff45f179b8750e3ed8aec27d129e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b62f551e2532e0205159358b3618695524ae85c8
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76511068"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666698"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux sanal makinede sanal TPM ile bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -156,6 +156,9 @@ Aygıt Sağlama Hizmeti çalıştırdıktan **sonra, kimlik kapsamının** değe
 Sanal makinenizden sağlama bilgilerini alın ve bunu Aygıt Sağlama Hizmetine tek tek bir kayıt oluşturmak için kullanın.
 
 DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bildirme fırsatınız vardır. Aygıt ikizinde, etiketleri aygıtları bölge, ortam, konum veya aygıt türü gibi çözümünüzde gereksinim duyduğunuz herhangi bir metrike göre gruplayabilir. Bu etiketler otomatik [dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır.
+
+> [!TIP]
+> Azure CLI'de bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve bir aygıtın veya aygıt grubunun bir IoT Edge aygıtı olduğunu belirtmek için **kenar özellikli** bayrağı kullanabilirsiniz.
 
 1. Azure [portalında,](https://portal.azure.com)IoT Hub Aygıt Sağlama Hizmeti örneğinize gidin.
 

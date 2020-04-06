@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Service (AKS) kümesi ile giriş için kendi TLS sertifikalarınızı kullanın
+title: TLS sertifikalarınızı giriş için kullanın
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) kümesinde kendi sertifikalarınızı kullanan bir NGINX giriş denetleyicisini nasıl yükleyip yapılandırıştırmayı öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: e567f5384cdd1e40ea67284713a29a92ee87af7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595510"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668469"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service'te (AKS) HTTPS giriş denetleyicisi oluşturma ve kendi TLS sertifikalarınızı kullanma
 

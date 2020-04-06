@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 38f9f85a7e961d426b66a24bb4a5c63f9f0301da
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638057"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667317"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats'e Genel Bakış (Önizleme)
 
@@ -59,7 +59,7 @@ Bir yönetici Azure FarmBeats'e veri sağlayıcısı olarak birden çok iş orta
 | ---- | -------- | -------- |
 | Sensör Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme | DeviceModel, Cihaz, Sensör Modeli, Sensör <br/> <br/> Genişletilmiş Tip |
 | Görüntü Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | Sahne, SahneDosyası <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
-| Görüntü Ortağı  |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | WeatherDataModel, WeatherDataLocation, İş Tipi <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
+| Hava Durumu Ortağı* <br/> <br/>  (* Yakında) |   Oluşturma, Okuma, Güncelleme <br/> <br/> Okuma, Güncelleştirme <br/> <br/> Okuma | WeatherDataModel, WeatherDataLocation, İş Tipi <br/> <br/> Genişletilmiş Tip <br/> <br/> Çiftlik |
 
 ## <a name="resources"></a>Kaynaklar
 

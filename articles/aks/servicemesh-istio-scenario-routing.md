@@ -1,17 +1,18 @@
 ---
-title: Azure Kubernetes Hizmetinde (AKS) Istio ile akıllı yönlendirme ve kanarya yayınları
+title: Akıllı yönlendirme için Istio'u kullanın
+titleSuffix: Azure Kubernetes Service
 description: Bir Azure Kubernetes Hizmeti (AKS) kümesinde akıllı yönlendirme sağlamak ve kanarya sürümlerini dağıtmak için Istio'nun nasıl kullanılacağını öğrenin
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 4a695957c287e69ff6b40e5a01254a729eaae441
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01a7764eb0a353e6842441093f70ad29c9316bbd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78272997"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668285"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Istio ile akıllı yönlendirme ve kanarya sürümlerini kullanın
 

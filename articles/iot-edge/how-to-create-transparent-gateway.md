@@ -4,16 +4,16 @@ description: Azure IoT Edge aygıtını, akış aşağı aygıtlardan gelen bilg
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/30/2019
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6069e0782f69d0dfb73d9be2998cbb11d59d7d22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b3aeff595671c5f924d01599b572b6b938ef09d
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529178"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666655"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>IoT Edge cihazını saydam ağ geçidi olarak davranacak şekilde yapılandırma
 
@@ -42,7 +42,7 @@ Aygıt ağ geçidi topolojiniz için gereken güveni sağlayan herhangi bir sert
 >[!NOTE]
 >Bu makale boyunca kullanılan "kök CA" terimi, PKI sertifika zincirinin en üstteki yetkili kamu sertifikasını ifade eder ve sendikasyon sertifika yetkilisinin sertifika kökünü ifade eder. Çoğu durumda, aslında bir ara CA ortak sertifika.
 
-Ağ geçidi, bağlantının başlatılması sırasında IoT Edge aygıtCA sertifikasını alt aygıta sunar. Alt akış aygıtı, IoT Edge aygıt CA sertifikasının kök CA sertifikası tarafından imzalandığından emin olmak için denetler. Bu işlem, alt aygıt ağ geçidigüvenilir bir kaynaktan geldiğini onaylamak için izin verir.
+IoT Edge güvenlik daemon ioT Edge aygıt CA sertifikası nı kullanır ve bu sertifika, IoT Edge hub'ı için bir sunucu sertifikası nı imzalar. Ağ geçidi, bağlantının başlatılması sırasında sunucu sertifikasını alt akış aygıtına sunar. Akış aşağı aygıt, sunucu sertifikasının kök CA sertifikasına kadar gelen bir sertifika zincirinin parçası olduğundan emin olmak için denetler. Bu işlem, alt aygıt ağ geçidigüvenilir bir kaynaktan geldiğini onaylamak için izin verir. Daha fazla bilgi için [bkz.](iot-edge-certs.md)
 
 Aşağıdaki adımlar, sertifikaları oluşturma ve ağ geçidinde doğru yerlere yükleme işleminde size yol açar. Sertifikaları oluşturmak için herhangi bir makineyi kullanabilir ve bunları IoT Edge aygıtınıza kopyalayabilirsiniz.
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f6684df42971b91975f6a7f5aeded9326cef3f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d2324343a31c3f3930975eea47659d023b9bbb94
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72969808"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667591"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Öğretici: Paylocity ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -45,6 +44,8 @@ Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
 * Paylocity **SP ve IDP** SSO başlatılan destekler
+
+* Paylocity'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimlerini uygulayabilirsiniz. Oturum denetimleri Koşullu Erişim'den itibaren genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-paylocity-from-the-gallery"></a>Galeriden Paylocity ekleme
 
@@ -82,8 +83,6 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
 1. Temel **SAML Yapılandırması** bölümünde, uygulama Azure ile önceden entegre edilmiş olduğundan, kullanıcının herhangi bir adım gerçekleştirmesi gerekmez.
 
-    ![Paylocity Domain ve URL'ler tek oturum açma bilgileri](common/preintegrated.png)
-
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
     Oturum **Açma URL** metin kutusuna bir URL yazın:`https://access.paylocity.com/`
@@ -98,13 +97,24 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     | Adı |  Kaynak Özniteliği|
     | ---------------| --------------- |
-    | Ortak Kimlik | <"PartnerID" > |
-    | PaylocityUser | <"PaylocityUser" > |
-    | PaylocityEntity | <"PaylocityEntity"> |
+    | Ortak Kimlik | `P8000010` |
+    | PaylocityUser | `user.mail`|
+    | PaylocityEntity | < `PaylocityEntity` > |
+
+    > [!NOTE]
+    > PaylocityEntity Paylocity Şirket Kimliği olduğunu.
 
 1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
+
+1. **SAML sayfasıyla tek oturum** açma'da, **SAML İmza Sertifikası** bölümünde **Simgeyi Güncelle'yi**tıklatın.
+
+    ![SAML İmza Sertifikası Edit](./media/paylocity-tutorial/edit-samlassertion.png)
+
+1. **Oturum Açma Seçeneği'ni** SAML yanıtını ve **iddiasını imzala'yı** seçin ve **Kaydet'i**tıklatın.
+
+    ![SAML İmza Sertifikası Edit](./media/paylocity-tutorial/saml-assertion.png)
 
 1. **Paylocity'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
@@ -163,3 +173,7 @@ Erişim Paneli'ndeki Paylocity karosu tıklattığınızda, SSO'yu kurduğunuz P
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD ile Paylocity'yi deneyin](https://aad.portal.azure.com/)
+
+* [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+* [Paylocity'yi gelişmiş görünürlük ve kontrollerle nasıl koruyabilen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

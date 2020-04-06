@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 23550c83e76631e44d5036e0a038f01b61a79f1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79208242"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666835"
 ---
-## <a name="assign-access-permissions-to-an-identity"></a>Bir kimliğe erişim izinleri atama
+## <a name="2-assign-access-permissions-to-an-identity"></a>2. Bir kimliğe erişim izinleri atama
 
-Kimlik tabanlı kimlik doğrulamayla Azure Dosyaları kaynaklarına erişmek için, bir kimliğin (kullanıcı, grup veya hizmet sorumlusu) paylaşım düzeyinde gerekli izinlere sahip olması gerekir. Bu işlem, belirli bir kullanıcının dosya paylaşımına sahip olduğu erişim türünü belirttiğiniz Windows paylaşım izinlerini belirtmeye benzer. Bu bölümdeki kılavuz, bir kimlik için dosya paylaşımı için okuma, yazma veya silme izinlerinin nasıl atayılabildiğini gösterir.
+Kimlik tabanlı kimlik doğrulamayla Azure Dosyaları kaynaklarına erişmek için, bir kimliğin (kullanıcı, grup veya hizmet sorumlusu) paylaşım düzeyinde gerekli izinlere sahip olması gerekir. Bu işlem, belirli bir kullanıcının dosya paylaşımına sahip olduğu erişim türünü belirttiğiniz Windows paylaşım izinlerini belirtmeye benzer. Genel öneri, bir takım veya gruba üst düzey erişim yönetimi için hisse düzeyi iznini kullanmak, ardından dizin/dosya düzeyinde parçalı erişim denetimi için NTFS izinlerinden yararlanmaktır. Bu bölümdeki kılavuz, bir kimlik için dosya paylaşımı için okuma, yazma veya silme izinlerinin nasıl atayılabildiğini gösterir. 
 
 Kullanıcılara paylaşım düzeyi izinleri vermek için üç Azure yerleşik rolü sunduk:
 
@@ -33,7 +33,7 @@ Yerleşik rolleri bir kullanıcının Azure AD kimliğine paylaşım düzeyi izi
 > [!NOTE]
 > AD kimlik doğrulaması için REKLAM'ınızı kullanmayı planlıyorsanız, REKLAM kimlik bilgilerinizi Azure AD ile eşitlemeyi unutmayın. AD'den Azure AD'ye parola karma eşitleme isteğe bağlıdır. AD'den senkronize edilen Azure AD kimliğine hisse düzeyi izni verilir.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 [Azure portalını](https://portal.azure.com)kullanarak bir Azure REKLAM kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:
 
 1. Azure portalında, dosya paylaşımınıza gidin veya [dosya paylaşımı oluşturun.](../articles/storage/files/storage-how-to-create-file-share.md)
@@ -68,7 +68,7 @@ Aşağıdaki örnek komut dosyasını çalıştırmadan önce, parantezler de da
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="configure-ntfs-permissions-over-smb"></a>NTFS izinlerini Kobİ üzerinden yapılandırma 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS izinlerini Kobİ üzerinden yapılandırın 
 RBAC ile paylaşım düzeyi izinleri atadıktan sonra, kök, dizin veya dosya düzeyinde uygun NTFS izinleri atamanız gerekir. Paylaşım düzeyi izinlerini, kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey kapı cısı olarak düşünün. NTFS izinleri ise, kullanıcının dizin veya dosya düzeyinde neler yapabileceğini belirlemek için daha ayrıntılı bir düzeyde hareket eder.
 
 Azure Files, NTFS temel ve gelişmiş izinlerinin tam kümesini destekler. Paylaşımı monte edip Windows File Explorer'ı kullanarak veya Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu çalıştırarak Azure dosya paylaşımındaki Dizinler ve dosyalardaki NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
@@ -113,9 +113,9 @@ Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere v
 8.  Güvenlik sekmesinde, yeni eklenen kullanıcıya vermek istediğiniz tüm izinleri seçin
 9.  **Uygula'ya** tıklayın
 
-## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>Etki alanı birleştirilmiş VM'den dosya paylaşımı nı montaj
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Etki alanı birleştirilmiş VM'den dosya paylaşımı nı monte edin
 
-Aşağıdaki işlem, dosya paylaşımınızın ve erişim izinlerinizin doğru şekilde ayarlandığını ve etki alanı yla birleştirilmiş bir VM'den Azure Dosyası paylaşımına erişebileceğinizi doğrular:
+Aşağıdaki işlem, dosya paylaşımınızın ve erişim izinlerinizin doğru şekilde ayarlandığını ve etki alanı yla birleştirilmiş bir VM'den Azure Dosyası paylaşımına erişebileceğinizi doğrular. Hisse düzeyi RBAC rol atamasının etkin olmasının biraz zaman alacağını unutmayın. 
 
 Aşağıdaki resimde gösterildiği gibi, izin vermiş olduğunuz Azure AD kimliğini kullanarak VM'de oturum açın. Azure Dosyaları için AD kimlik doğrulamasını etkinleştirdiyseniz, AD kimlik belgesini kullanın. Azure AD DS kimlik doğrulaması için Azure AD kimlik bilgisi ile oturum açın.
 

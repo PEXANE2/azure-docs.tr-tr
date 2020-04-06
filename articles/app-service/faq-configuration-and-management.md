@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 300294f37c809b01fe8fba7e627d6bc5bdc9903a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e7070e925d12df82adbc3683da5b10e48c5d4b0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942942"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668127"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure'da Web Apps için yapılandırma ve yönetim SSS'leri
 
@@ -35,14 +35,14 @@ Azure web uygulamanızla özel bir etki alanı adı kullanma yla ilgili sık sor
 App Service web uygulamanız için nasıl satın alınıp özel bir etki alanı kurabilirsiniz öğrenmek için, [Uygulama Hizmeti'nde özel bir etki alanı adı satın alın ve yapılandırma](manage-custom-dns-buy-domain.md)kAdınızı görün.
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Web uygulamam için varolan bir SSL sertifikasını nasıl yükler ve yapılandırım?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Web uygulamam için varolan bir TLS/SSL sertifikasını nasıl yükler ve yapılandırım?
 
-Varolan özel bir SSL sertifikasını nasıl yükleyip kurup kurmayı öğrenmek [için](configure-ssl-certificate.md)bkz.
+Mevcut özel bir TLS/SSL sertifikasını nasıl yükleyip kurup kurmayı öğrenmek [için uygulamanıza TLS/SSL sertifikası ekleme](configure-ssl-certificate.md)'ye bakın.
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Web uygulamam için Azure'da yeni bir SSL sertifikasını nasıl satın alarım ve yapılandırmam?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Web uygulamam için Azure'da yeni bir TLS/SSL sertifikasını nasıl satın alarım ve yapılandırmam?
 
-App Service web uygulamanız için nasıl satın alınıp bir SSL sertifikası ayarlayınızı öğrenmek için uygulama [nız uygulamasına Bir SSL sertifikası ekle'ye](configure-ssl-certificate.md)bakın.
+App Service web uygulamanız için tls/SSL sertifikası satın alma ve ayarlama yı öğrenmek için uygulama [nızın uygulamasına TLS/SSL sertifikası ekle](configure-ssl-certificate.md)'ye bakın.
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Application Insights kaynaklarını nasıl taşıyacağım?
@@ -84,7 +84,7 @@ Web siteniz bir Uygulama Hizmet Ortamında barındırılansa giden IP adresini n
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Web uygulamam için ayrılmış veya özel gelen IP adresini nasıl alabilirim?
 
-Azure uygulama web sitenize yapılan gelen aramalar için özel veya ayrılmış bir IP adresi ayarlamak için IP tabanlı bir SSL sertifikası yükleyin ve yapılandırır.
+Azure uygulama web sitenize yapılan gelen aramalar için özel veya ayrılmış bir IP adresi ayarlamak için IP tabanlı bir TLS/SSL sertifikası yükleyin ve yapılandırır.
 
 Gelen aramalar için özel veya ayrılmış bir IP adresi kullanmak için Uygulama Hizmeti planınızın Temel veya daha yüksek bir hizmet planında olması gerektiğini unutmayın.
 

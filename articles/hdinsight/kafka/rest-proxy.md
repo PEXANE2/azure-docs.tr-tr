@@ -1,42 +1,42 @@
 ---
 title: Apache Kafka REST proxy - Azure HDInsight
-description: Azure HDInsight'ta Kafka REST proxy'sini kullanarak Apache Kafka işlemlerini nasıl gerçekleştireceğinizi öğrenin.
+description: Azure HDInsight'ta Kafka REST proxy'sini kullanarak Apache Kafka işlemlerini nasıl yapacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/03/2020
+ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548189"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667777"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight'taki Apache Kafka kümeleriyle etkileşimkurun
 
-Kafka REST Proxy, HTTP üzerinden bir REST API üzerinden Kafka kümenizle etkileşimkurmanızı sağlar. Bu, Kafka müşterilerinizin sanal ağınızın dışında olabileceği anlamına gelir. Ayrıca, istemciler Kafka kitaplıklarına güvenmek yerine Kafka kümesine mesaj göndermek ve almak için basit HTTP aramaları yapabilir. Bu öğretici, bir REST proxy etkin Kafka küme oluşturmak ve REST proxy aramaları nasıl gösteren bir örnek kod sağlamak nasıl gösterecektir.
+Kafka REST Proxy, HTTP üzerinden bir REST API üzerinden Kafka kümenizle etkileşimkurmanızı sağlar. Bu eylem, Kafka müşterilerinizin sanal ağınızın dışında olabileceği anlamına gelir. İstemciler Kafka kitaplıklarına güvenmek yerine Kafka kümesine basit HTTP aramaları yapabilir. Bu makalede, nasıl bir REST proxy kafka küme etkin oluşturmak için gösterecektir. Ayrıca, REST proxy'ye nasıl arama yapılacağını gösteren bir örnek kod sağlar.
 
 ## <a name="rest-api-reference"></a>REST API başvurusu
 
-Kafka REST API tarafından desteklenen operasyonların tam özellikleri için [HDInsight Kafka REST Proxy API Referans'a](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
+Kafka REST API tarafından desteklenen operasyonlar için [HDInsight Kafka REST Proxy API Referans'a](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
 
 ## <a name="background"></a>Arka plan
 
-![Kafka REST proxy mimarisi](./media/rest-proxy/rest-proxy-architecture.png)
+![Kafka REST proxy tasarımı](./media/rest-proxy/rest-proxy-architecture.png)
 
-API tarafından desteklenen operasyonların tam özellikleri için, [Lütfen Apache Kafka REST Proxy API](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
+API tarafından desteklenen operasyonların tam belirtimi için, [Bkz. Apache Kafka REST Proxy API.](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)
 
 ### <a name="rest-proxy-endpoint"></a>REST Proxy bitiş noktası
 
-REST proxy ile HDInsight Kafka kümesi oluşturmak, Azure portalındaki HDInsight kümenizde bulabileceğiniz kümeniz için yeni bir genel bitiş noktası oluşturur.
+REST proxy ile HDInsight Kafka kümesi oluşturmak, Azure portalındaki HDInsight küme **Özelliklerinizde** bulabileceğiniz kümeniz için yeni bir genel bitiş noktası oluşturur.
 
 ### <a name="security"></a>Güvenlik
 
-Kafka REST proxy'sine erişim Azure Active Directory güvenlik gruplarıyla yönetilir. REST proxy etkinken Kafka kümesini oluştururken, REST bitiş noktasına erişimi olması gereken Azure Etkin Dizin güvenlik grubunu sağlarsınız. REST proxy'sine erişmesi gereken Kafka istemcileri (uygulamalar) grup sahibi tarafından bu gruba kaydedilmelidir. Grup sahibi bunu Portal veya PowerShell üzerinden yapabilir.
+Kafka REST proxy'sine erişim Azure Active Directory güvenlik gruplarıyla yönetilir. Kafka kümesini oluştururken, Azure AD güvenlik grubuna REST uç noktası erişimi sağlayın. REST proxy'sine erişimi olan Kafka istemcilerinin grup sahibi tarafından bu gruba kaydedilmesi gerekmektedir. Grup sahibi Portal veya PowerShell üzerinden kayıt yaptırabilir.
 
-REST proxy bitiş noktasına istekte bulunmadan önce, istemci uygulaması doğru güvenlik grubunun üyeliğini doğrulamak için bir OAuth belirteci almalıdır. Aşağıda, OAuth jetonunun nasıl alındığını gösteren bir [İstemci uygulama örneği](#client-application-sample) bulun. İstemci uygulaması OAuth belirteci ne zaman, onlar REST proxy yapılan HTTP isteği bu belirteci geçmek gerekir.
+REST proxy bitiş noktası istekleri için, istemci uygulamaları bir OAuth belirteci almalısınız. Belirteç, güvenlik grubu üyeliğini doğrulamak için kullanılır. Aşağıda, OAuth jetonunun nasıl alındığını gösteren bir [İstemci uygulama örneği](#client-application-sample) bulun. İstemci uygulaması, HTTP isteğindeki OAuth belirteci'ni REST proxy'sine geçirir.
 
 > [!NOTE]  
 > AAD güvenlik grupları hakkında daha fazla bilgi edinmek için [Azure Etkin Dizin gruplarını kullanarak uygulama ve kaynak erişimini yönet'e](../../active-directory/fundamentals/active-directory-manage-groups.md)bakın. OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için [bkz.](../../active-directory/develop/v1-protocols-oauth-code.md)
@@ -45,15 +45,17 @@ REST proxy bitiş noktasına istekte bulunmadan önce, istemci uygulaması doğr
 
 1. Bir uygulamayı Azure AD'ye kaydedin. Kafka REST proxy ile etkileşim kurmak için yazdığınız istemci uygulamaları, Azure'a kimlik doğrulamak için bu uygulamanın kimliğini ve gizli sini kullanır.
 
-1. Bir Azure AD güvenlik grubu oluşturun ve Azure AD'de kaydettiğiniz uygulamayı grubun "üyesi" olarak güvenlik grubuna ekleyin. Bu güvenlik grubu, hangi uygulamaların REST proxy ile etkileşime girebilmek için izin verildiğini denetlemek için kullanılır. Azure REKLAM grupları oluşturma hakkında daha fazla bilgi için temel [bir grup oluştur ve Azure Etkin Dizini'ni kullanarak üye ekleyin'](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)e bakın.
+1. Bir Azure AD güvenlik grubu oluşturun. Azure AD'ye kaydettiğiniz uygulamayı grubun **bir üyesi** olarak güvenlik grubuna ekleyin. Bu güvenlik grubu, hangi uygulamaların REST proxy ile etkileşime girebilmek için izin verildiğini denetlemek için kullanılır. Azure REKLAM grupları oluşturma hakkında daha fazla bilgi için temel [bir grup oluştur ve Azure Etkin Dizini'ni kullanarak üye ekleyin'](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)e bakın.
 
-    Grubu doğrulama türü "Güvenlik" ![Güvenlik Grubu](./media/rest-proxy/rest-proxy-group.png)
+    Grubu doğrulayın tür **Güvenlik.**
+    ![Güvenlik Grubu](./media/rest-proxy/rest-proxy-group.png)
 
-    Bu uygulamanın Grup ![ÜyeSayısı'nın üyesi olduğunu doğrulayın](./media/rest-proxy/rest-proxy-membergroup.png)
+    Bu uygulamanın Grup üyesi olduğunu doğrulayın.
+    ![Üyeliği Kontrol Et](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST proxy etkin leştirilmiş bir Kafka kümesi oluşturma
 
-1. Kafka küme oluşturma iş akışı sırasında"Güvenlik + ağ" sekmesinde "Kafka REST proxy'sini etkinleştir" seçeneğini işaretleyin.
+1. Kafka küme oluşturma iş akışı sırasında, **Güvenlik + ağ** sekmesinde Kafka REST **proxy'yi etkinleştir** seçeneğini işaretleyin.
 
      ![Kafka REST proxy'sini etkinleştirin ve güvenlik grubunu seçin](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
 
@@ -73,19 +75,23 @@ Kafka kümenizdeki REST proxy ile etkileşimde kalmak için aşağıdaki python 
 
 1. Örnek kodu Python yüklü bir makineye kaydedin.
 1. Yürütme `pip3 install adal` ve `pip install msrestazure`.
-1. Kod bölümünü *değiştirin Bu özellikleri yapılandırın* ve ortamınız için aşağıdaki özellikleri güncelleştirin:
-    1.    *Kiracı Kimliği* – Aboneliğinizin olduğu Azure kiracısı.
-    1.    *Müşteri Kimliği* – Güvenlik grubuna kaydettiğiniz başvurunun kimliği.
-    1.    *Client Secret* – Güvenlik grubuna kaydettiğiniz uygulamanın sırrı
-    1.    *Kafkarest_endpoint* – [dağıtım bölümünde](#create-a-kafka-cluster-with-rest-proxy-enabled)açıklandığı gibi küme genel bakış "özellikleri" sekmesinden bu değeri almak. Bu aşağıdaki biçimde olmalıdır -`https://<clustername>-kafkarest.azurehdinsight.net`
+1. Kod bölümünü **değiştirin Bu özellikleri yapılandırın** ve ortamınız için aşağıdaki özellikleri güncelleştirin:
+
+    |Özellik |Açıklama |
+    |---|---|
+    |Kiracı Kimliği|Aboneliğinizin olduğu Azure kiracısı.|
+    |İstemci Kimliği|Güvenlik grubuna kaydettiğiniz uygulamanın kimliği.|
+    |İstemci Gizli Anahtarı|Güvenlik grubuna kaydettiğiniz uygulamanın sırrı.|
+    |Kafkarest_endpoint|[Dağıtım bölümünde](#create-a-kafka-cluster-with-rest-proxy-enabled)açıklandığı gibi küme genel bakış özellikleri **sekmesinden** bu değeri alın. Bu aşağıdaki biçimde olmalıdır -`https://<clustername>-kafkarest.azurehdinsight.net`|
+
 1. Komut satırından, python dosyasını`python <filename.py>`
 
-Bu kod aşağıdakileri yapar:
+Bu kod aşağıdaki eylemi yapar:
 
-1. Azure AD'den bir OAuth belirteci getirir
-1. Kafka REST proxy'ye nasıl istekte bulunulur gösterilmektedir
+1. Azure AD'den bir OAuth belirteci getirir.
+1. Kafka REST proxy'ye nasıl istekte bulunulur.
 
-Python'da OAuth belirteçleri alma hakkında daha fazla bilgi için [Python AuthenticationContext sınıfına](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)bakın. Kafka REST proxy'si aracılığıyla oluşturulmayan veya silinmemiş konular burada yansıtılırken bir gecikme görebilirsiniz. Bu gecikme önbellek yenileme nedeniyle.
+Python'da OAuth belirteçleri alma hakkında daha fazla bilgi için [Python AuthenticationContext sınıfına](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)bakın. Kafka REST proxy'si aracılığıyla oluşturulmayan veya silinmemiş bir `topics` gecikme görebilirsiniz. Bu gecikme, önbellek yenileme nedeniyle.
 
 ```python
 #Required python packages

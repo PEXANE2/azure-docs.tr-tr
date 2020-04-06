@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421257"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668861"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Veri Fabrikası ile Azure Veri Gölü Depolama Gen1'den Gen2'ye verileri kopyalama
 
@@ -137,7 +137,7 @@ Bu makalede, Azure Veri Gölü Depolama Gen1'deki verileri Azure Veri Gölü Dep
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 
-Azure Veri Gölü Depolama Gen1'den Genel Olarak Azure Veri Gölü Depolama Gen2'ye yükseltmeyi değerlendirmek [için](../storage/blobs/data-lake-storage-upgrade.md)bkz. Aşağıdaki bölümler, Veri Gölü Depolama Gen1'den Data Lake Storage Gen2'ye veri yükseltmesi için Veri Fabrikası'nı kullanmak için en iyi uygulamaları tanıyın.
+Azure Veri Gölü Depolama Gen1'den Genel Olarak Azure Veri Gölü Depolama Gen2'ye yükseltmeyi değerlendirmek [için](../storage/blobs/data-lake-storage-migrate-gen1-to-gen2.md)bkz. Aşağıdaki bölümler, Veri Gölü Depolama Gen1'den Data Lake Storage Gen2'ye veri yükseltmesi için Veri Fabrikası'nı kullanmak için en iyi uygulamaları tanıyın.
 
 ### <a name="data-partition-for-historical-data-copy"></a>Geçmiş veri kopyalamaiçin veri bölümü
 

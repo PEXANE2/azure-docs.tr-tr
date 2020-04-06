@@ -1,14 +1,14 @@
 ---
 title: Azure Deniz Feneri senaryolarında kiracılar, roller ve kullanıcılar
 description: Azure Etkin Dizin kiracıları, kullanıcıları ve rolleri kavramlarını ve Azure Deniz Feneri senaryolarında nasıl kullanılabileceğini anlayın.
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7540e17fd80f9a1d8e996295000c126614b838d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4734f12c8b4b25bf75ecabc39d9e99d8ebe0951c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246900"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668869"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Deniz Feneri senaryolarında kiracılar, roller ve kullanıcılar
 
@@ -41,6 +41,7 @@ Yetkilendirmelerinizi oluştururken, aşağıdaki en iyi uygulamaları öneririz
 - Kullanıcıların yalnızca işlerini tamamlamak için gereken izinlere sahip olmaları ve yanlışlıkla hata olasılığını azaltmalarına yardımcı olmak için en az ayrıcalık ilkesine uymayı unutmayın. Daha fazla bilgi için önerilen [güvenlik uygulamalarına](../concepts/recommended-security-practices.md)bakın.
 - Gerekirse daha sonra [temsilciye erişimi kaldırabilmeniz için](../how-to/onboard-customer.md#remove-access-to-a-delegation) Yönetilen Hizmetler Kaydı Atama Silme [Rolü'ne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) sahip bir kullanıcı ekleyin. Bu rol atanmazsa, devredilen kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
 - [Azure portalında Müşterilerim sayfasını görüntülemesi](../how-to/view-manage-customers.md) gereken herhangi bir kullanıcının [Okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya Okuyucu erişimini içeren başka bir yerleşik role) sahip olduğundan emin olun.
+- Yönetici kiracıdaki kullanıcılar, genellikle erişime izin verecek yerleşik bir role sahip olsalar bile, devralınan bir müşteri aboneliği için fatura bilgilerini görüntüleme erişimine sahip olmayacaktır. Bunun nedeni, faturalandırma bilgilerine erişimin şu anda yalnızca aynı kiracıiçindeki kullanıcılar için desteklenen ek adımlar gerektirmesidir.
 
 > [!IMPORTANT]
 > Bir Azure REKLAM grubu için izin eklemek için **Grup türü** **Office 365** **değil, Güvenlik** olmalıdır. Grup oluşturulduğunda bu seçenek seçilir. Daha fazla bilgi için [bkz.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)

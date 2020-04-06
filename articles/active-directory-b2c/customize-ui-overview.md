@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37ddf57057b736cd76a74276e5593a865e7df8cc
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051731"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666861"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'deki kullanıcı arabirimini özelleştirme
 
@@ -91,7 +91,10 @@ UI'yi özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanmadan önce
 
 Kullanıcı Arabirimi'ni özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanırken, Kullanıcı Arabirimi içeriğinizi CORS'leri destekleyen herkese açık herhangi bir HTTPS bitiş noktasında barındırabilirsiniz. Örneğin, [Azure Blob depolama,](../storage/blobs/storage-blobs-introduction.md)web sunucuları, CDN'ler, AWS S3 veya dosya paylaşım sistemleri.
 
-Önemli olan nokta, içeriği, CORS etkinleştirilmiş, herkese açık bir HTTPS bitiş noktasında barındırmanızdır. İçeriğinizde belirttiğinizde mutlak bir URL kullanmanız gerekir.
+Önemli olan nokta, [içeriği, CORS etkinleştirilmiş,](https://enable-cors.org/server.html)herkese açık bir HTTPS bitiş noktasında barındırmanızdır. İçeriğinizde belirttiğinizde mutlak bir URL kullanmanız gerekir.
+
+> [!NOTE]
+> HTML içeriği oluşturma, Azure Blob depolama alanına içerik yükleme ve CORS'ü yapılandırma hakkında daha fazla bilgi için, Kullanıcı Arabirimi özelleştirme makalesindeki [Özel sayfa içeriği gözden geçirme](custom-policy-ui-customization.md#custom-page-content-walkthrough) bölümüne bakın.
 
 ## <a name="get-started-with-custom-html-and-css"></a>Özel HTML ve CSS ile başlayın
 

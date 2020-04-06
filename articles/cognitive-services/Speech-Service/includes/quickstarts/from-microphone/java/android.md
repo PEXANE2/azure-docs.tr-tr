@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 6348d09351cf627624340083e2c419def38dfc01
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c37a52ea2a7d5f1d3e325c2f6d17bc075f50c5e0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77446070"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671677"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -23,7 +23,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kur](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [Geliştirme ortamınızı kur](../../../../quickstarts/setup-platform.md?tabs=android&pivots=programming-language-java)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 ## <a name="create-a-user-interface"></a>Kullanıcı arabirimi oluşturma

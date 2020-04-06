@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ed7686bbef7dc1342528475226d11b8b8b8fb640
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656907"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668599"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da Lucene sorgu sözdizimi
 
@@ -104,7 +104,7 @@ Alan gruplandırması benzerdir, ancak gruplandırmayı tek bir alana doğru kap
 
 ### <a name="or-operator-or-or-"></a>VEYA `OR` operatörü veya`||`
 
-OR işleci dikey bir çubuk veya boru karakteridir. Örneğin: `wifi || luxury` "wifi" veya "lüks" veya her ikisini de içeren belgeleri arar. OR varsayılan bağlaç işleci olduğundan, aynı zamanda `wifi luxury` , bu `wifi || luxuery`eşdeğerdir, dışında bırakabilirsiniz .
+OR işleci dikey bir çubuk veya boru karakteridir. Örneğin: `wifi || luxury` "wifi" veya "lüks" veya her ikisini de içeren belgeleri arar. OR varsayılan bağlaç işleci olduğundan, aynı zamanda `wifi luxury` , bu `wifi || luxury`eşdeğerdir, dışında bırakabilirsiniz .
 
 ### <a name="and-operator-and--or-"></a>VE `AND`operatörü `&&` , veya`+`
 
@@ -162,6 +162,8 @@ Aşağıdaki örnek, farklılıkların ortaya önüne gibi yardımcı olur. Beli
  Normal bir ifade [araması, RegExp sınıfında](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)belgelenen "/" ileri eğik çizgileri arasındaki içeriği temel alan bir eşleşme bulur.  
 
  Örneğin, "motel" veya "otel" içeren belgeleri `/[mh]otel/`bulmak için, belirtin. Normal ifade aramaları tek sözcüklerle eşleşir.
+
+Bazı araçlar ve diller ek kaçış karakteri gereksinimleri empoze. JSON için, ileri eğik çizgi içeren dizeleri geriye doğru `search=/.*microsoft.com\/azure\/.*/` eğik çizgi ile kaçar: "microsoft.com/azure/" normal ifade kurar nerede `search=/.* <string-placeholder>.*/` olur ve `microsoft.com\/azure\/` bir kaçan ileri eğik çizgi ile dize.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Joker karakter arama  
  Birden çok (*) veya tek (?) karakter joker karakter aramaları için genel olarak tanınan sözdizimini kullanabilirsiniz. Lucene sorgu arayıcının bu sembollerin bir tümcecikle değil, tek bir terimle kullanımını desteklediğini unutmayın.

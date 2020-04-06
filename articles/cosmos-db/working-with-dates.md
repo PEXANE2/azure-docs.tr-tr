@@ -5,13 +5,13 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: 92fa35fbe8e5eef4dbdc8b6c47a9055affd449a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 174279e4bd241ee9b336fc1ce7e0af389d2297a3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273196"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667000"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB'de Tarihlerle Çalışma
 
@@ -21,7 +21,9 @@ Temel türlere ek olarak, birçok uygulamatarihleri ve zaman damgalarını temsi
 
 ## <a name="storing-datetimes"></a>DateTimes'ı Depolama
 
-Azure Cosmos DB gibi JSON türlerini destekler - dize, sayı, boolean, null, dizi, nesne. Doğrudan bir DateTime türünü desteklemez. Şu anda Azure Cosmos DB tarihlerin yerelleştirilmesini desteklemez. Bu nedenle, DateTimes'ı dizeleri olarak depolamanız gerekir. Azure Cosmos DB'deki DateTime dizeleri `YYYY-MM-DDThh:mm:ss.sssZ` için önerilen biçim, ISO 8601 UTC standardını izler. Tüm tarihleri Azure Cosmos DB'de UTC olarak depolamak önerilir. Tarih dizeleri'ni bu biçime dönüştürmek, tarihleri lexicographically sıralamaya olanak sağlar. UTC dışı tarihler depolanırsa, mantık istemci tarafında işlenmelidir. Yerel bir DateTime'ı UTC'ye dönüştürmek için, ofsetin JSON'da bir özellik olarak bilinmesi/depolanmış olması gerekir ve istemci mahsup ı UTC DateTime değerini hesaplamak için ofset kullanabilir.
+Azure Cosmos DB gibi JSON türlerini destekler - dize, sayı, boolean, null, dizi, nesne. Doğrudan bir DateTime türünü desteklemez. Şu anda Azure Cosmos DB tarihlerin yerelleştirilmesini desteklemez. Bu nedenle, DateTimes'ı dizeleri olarak depolamanız gerekir. Azure Cosmos DB'deki DateTime dizeleri `YYYY-MM-DDThh:mm:ss.fffffffZ` için önerilen biçim, ISO 8601 UTC standardını izler. Tüm tarihleri Azure Cosmos DB'de UTC olarak depolamak önerilir. Tarih dizeleri'ni bu biçime dönüştürmek, tarihleri lexicographically sıralamaya olanak sağlar. UTC dışı tarihler depolanırsa, mantık istemci tarafında işlenmelidir. Yerel bir DateTime'ı UTC'ye dönüştürmek için, ofsetin JSON'da bir özellik olarak bilinmesi/depolanmış olması gerekir ve istemci, UTC DateTime değerini hesaplamak için mahsup özelliğini kullanabilir.
+
+DateTime dizeleri filtre olarak aralık sorguları yalnızca DateTime dizeleri UTC ve aynı uzunlukta ise desteklenir. Azure Cosmos DB'de [GetCurrentDateTime](sql-query-getcurrentdatetime.md) sistem işlevi geçerli UTC tarih ve saatini ISO 8601 dize değerini biçimde döndürür: `YYYY-MM-DDThh:mm:ss.fffffffZ`.
 
 Çoğu uygulama, DateTime için varsayılan dize gösterimini aşağıdaki nedenlerle kullanabilir:
 
@@ -47,7 +49,7 @@ Azure Cosmos DB gibi JSON türlerini destekler - dize, sayı, boolean, null, diz
         {
             Id = "09152014101",
             OrderDate = DateTime.UtcNow.AddDays(-30),
-            ShipDate = DateTime.UtcNow.AddDays(-14), 
+            ShipDate = DateTime.UtcNow.AddDays(-14),
             Total = 113.39
         });
 ```
@@ -76,7 +78,7 @@ SQL .NET SDK, LINQ aracılığıyla Azure Cosmos DB'de depolanan verilerin sorgu
 Aşağıdaki SQL deyimine çevrilmiş ve Azure Cosmos DB'de yürütülmüştür:
 
 ```sql
-    SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
+    SELECT * FROM root WHERE (root["ShipDate"] >= "2014-09-30T23:14:25.7251173Z")
 ```
 
 Azure Cosmos DB'nin SQL sorgu dili ve [LINQ'daki Cosmos DB'yi Sorgulama'da](sql-query-linq-to-sql.md)LINQ sağlayıcısı hakkında daha fazla bilgi edinebilirsiniz.

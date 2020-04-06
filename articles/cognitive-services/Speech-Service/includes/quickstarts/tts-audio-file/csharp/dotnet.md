@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 04/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 4ccc68b38d98c332435e252877d258c8591aab8a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f820a2811ce4878d73b53a028998c51a1fed70bd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78925819"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671441"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -23,7 +23,7 @@ Başlamadan önce şunları unutmayın:
 
 > [!div class="checklist"]
 > * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 ## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın
 

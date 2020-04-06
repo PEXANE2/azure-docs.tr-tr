@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e3cf302437c3e4954ac977ac3f4ff6b2021a760
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4887b4359451ca5ce85042b4de42d5376bf4a730
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72330493"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667775"
 ---
 # <a name="create-and-manage-schedules-for-classroom-labs-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'ndeki sınıf laboratuvarları için zamanlamaoluşturma ve yönetme 
 Zamanlamalar, laboratuvardaki VM'lerin belirli bir zamanda otomatik olarak başlayıp kapanması nı sağlayacak şekilde bir sınıf laboratuarı yapılandırmanıza olanak sağlar. Tek seferlik zamanlama veya yinelenen bir zamanlama tanımlayabilirsiniz. Aşağıdaki yordamlar, bir sınıf laboratuvarı için zamanlamaoluşturmak ve yönetmek için adımlar verir: 
@@ -28,6 +28,12 @@ Zamanlamalar, laboratuvardaki VM'lerin belirli bir zamanda otomatik olarak başl
 
 ## <a name="set-a-schedule-for-the-lab"></a>Laboratuvar için bir zamanlama ayarlama
 Laboratuardaki VM'lerin belirli zamanlarda otomatik olarak başlatılabilmesi/durdurulması için laboratuvar için zamanlanmış bir olay oluşturun. Daha önce belirttiğiniz kullanıcı kotası, bu zamanlanan saatin dışında her kullanıcıya atanan ek süredir. 
+
+> [!NOTE]
+> Başlamadan önce, zamanlamalar laboratuvar sanal makinelerini şu şekilde etkiler: 
+>- Şablon sanal makine zamanlamalara dahil edilmez. 
+>- Yalnızca atanan sanal makineler başlatılır. Bu, bir makinenin son kullanıcı (öğrenci) tarafından talep edilmezse, makinenin planlanan saatlerde başlatılmayacağı anlamına gelir. 
+>- Tüm sanal makineler (kullanıcı tarafından talep edilsin veya talep edilmesin) laboratuar zamanlamasına göre durdurulur. 
 
 1. **Zamanlamalar** sayfasına geçin ve araç çubuğunda **zamanlanmış olay ekle'yi** seçin. 
 

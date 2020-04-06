@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 98181bac7cf9aca85766d78fcd753ad8bdabc3ee
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 699bbea9d50c24558f6c9d4671cb6035e4718a43
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659148"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671484"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -23,7 +23,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=xamarin)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=xamarin&pivots=programming-language-csharp)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 Bunu zaten yaptıysan, harika. Devam edelim.

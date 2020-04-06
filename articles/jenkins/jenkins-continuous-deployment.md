@@ -1,17 +1,18 @@
 ---
-title: Öğretici - Jenkins ile GitHub'dan Azure Kubernetes Hizmetine (AKS) dağıtın
+title: Jenkins ile GitHub'dan AKS'ye dağıtın
+titleSuffix: Azure Kubernetes Service
 description: Jenkins'i GitHub'dan sürekli tümleştirme (CI) ve Azure Kubernetes Hizmetine (AKS) sürekli dağıtım (CD) için ayarlama
 services: container-service
 author: zr-msft
 ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: eb48a8558aab6c7a832efe45650686d9df0d7426
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a93cfc77178ff7638217663c2ceda500aae4cfd7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624754"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668631"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>Öğretici: GitHub'dan Azure Kubernetes Hizmetine (AKS) Jenkins sürekli tümleştirme ve dağıtımla dağıtın
 

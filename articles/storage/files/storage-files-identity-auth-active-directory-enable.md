@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: 0bf8960f1e97de45d5369f69c698311d0b4e3dbb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 081ee364b3ddee5d1d1be75613309a4ae427066f
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584510"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666826"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden Etkin Dizin kimlik doğrulamasını etkinleştirme
 
@@ -34,6 +34,9 @@ ms.locfileid: "80584510"
 SMB üzerinden Azure dosya paylaşımları için AD'yi etkinleştirdiğinizde, AD etki alanı birleştirilmiş makineleriniz, mevcut AD kimlik bilgilerinizi kullanarak Azure dosya paylaşımlarını monte edebilir. Bu özellik, prem makinelerde veya Azure'da barındırılan bir REKLAM ortamıyla etkinleştirilebilir.
 
 Standart [rol tabanlı erişim denetimi (RBAC)](../../role-based-access-control/overview.md) modeli aracılığıyla paylaşım düzeyi dosya izinlerini zorlamak için Azure dosya paylaşımlarına erişmek için kullanılan AD kimliklerinin Azure AD ile eşitlenilmesi gerekir. Varolan dosya sunucularından taşınan dosyalar/dizinler üzerindeki [Windows tarzı DACL'lar](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) korunur ve uygulanır. Bu özellik, kurumsal AD etki alanı altyapınızla sorunsuz entegrasyon sağlar. Oturum açma dosya sunucularını Azure dosya paylaşımlarıyla değiştirin, varolan kullanıcılar geçerli istemcilerinden tek bir oturum açma deneyimiyle, kullanılan kimlik bilgilerinde herhangi bir değişiklik yapmadan Azure dosya paylaşımlarına erişebilir.  
+
+> [!NOTE]
+> Ortak kullanım durumları için Azure Files AD kimlik doğrulaması kurmanıza yardımcı olmak için, şirket içi dosya sunucularını Azure Dosyaları ile değiştirme ve Azure Dosyalarını Windows Sanal Masaüstü profil kapsayıcısı olarak kullanma konusunda adım adım kılavuzlu [iki video](https://docs.microsoft.com/azure/storage/files/storage-files-introduction#videos) yayınladık.
  
 ## <a name="prerequisites"></a>Ön koşullar 
 
@@ -69,15 +72,17 @@ Azure Files AD kimlik doğrulaması (önizleme) [Genel Bulut'taki tüm bölgeler
 
 Azure dosya paylaşımları için SMB üzerinden AD Kimlik Doğrulaması'nı etkinleştirmeden önce, [ön koşulları](#prerequisites) gözden geçirmenizi ve tüm adımları tamamladığınızdan emin olmamızı öneririz. Ön koşullar, AD, Azure AD ve Azure Depolama ortamlarınızın düzgün şekilde yapılandırılmış olduğunu doğrular. 
 
-Ardından, AD kimlik bilgilerine sahip Azure Dosyaları kaynaklarına erişim izni verebin: 
+Ardından, AD Kimlik Doğrulaması için Azure Dosyaları'nı kurmak için aşağıdaki adımları izleyin: 
 
-- Depolama hesabınızda Azure Dosyaları AD kimlik doğrulamasını etkinleştirin.  
+1. Depolama hesabınızda Azure Dosyaları AD kimlik doğrulamasını etkinleştirin. 
 
-- Bir paylaşım için erişim izinlerini hedef AD kimliğiyle eşitlenmiş olan Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) atayın. 
+2. Bir paylaşım için erişim izinlerini hedef AD kimliğiyle eşitlenmiş olan Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) atayın. 
 
-- Dizinler ve dosyalar için SMB üzerinden ABILEr' i yapılandırın. 
+3. Dizinler ve dosyalar için SMB üzerinden ABILEr' i yapılandırın. 
 
-- VM'ye katılan bir AD etki alanından Azure dosya paylaşımını monte edin. 
+4. VM'ye katılan bir AD etki alanından Azure dosya paylaşımını monte edin. 
+
+5. AD hesap parolasını döndürme (İsteğe bağlı)
 
 Aşağıdaki diyagram, Azure dosya paylaşımları için SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için uçlardan uca iş akışını göstermektedir. 
 
@@ -86,25 +91,28 @@ Aşağıdaki diyagram, Azure dosya paylaşımları için SMB üzerinden Azure AD
 > [!NOTE]
 > Azure dosya paylaşımları için SMB üzerinden AD kimlik doğrulaması yalnızca Windows 7 veya Windows Server 2008 R2'den daha yeni işletim sistemi sürümlerinde çalışan makinelerde veya VM'lerde desteklenir. 
 
-## <a name="enable-ad-authentication-for-your-account"></a>Hesabınız için AD kimlik doğrulamasını etkinleştirme 
+## <a name="1-enable-ad-authentication-for-your-account"></a>1. Hesabınız için AD kimlik doğrulamasını etkinleştirme 
 
 Azure dosya paylaşımları için SMB üzerinden AD kimlik doğrulamasını etkinleştirmek için, önce depolama hesabınızı AD'ye kaydettirmeniz ve ardından depolama hesabında gerekli etki alanı özelliklerini ayarlamanız gerekir. Özellik depolama hesabında etkinleştirildiğinde, hesaptaki tüm yeni ve varolan dosya paylaşımları için geçerlidir. Özelliği `join-AzStorageAccountForAuth` etkinleştirmek için kullanın. Uçtan uca iş akışının ayrıntılı açıklamasını aşağıdaki bölümde bulabilirsiniz. 
 
 > [!IMPORTANT]
 > Cmdlet, `Join-AzStorageAccountForAuth` AD ortamınızda değişiklikler yapacaktır. Komutu yürütmek için uygun izinlere sahip olduğundan ve uygulanan değişikliklerin uyumluluk ve güvenlik ilkeleriyle uyumlu olduğundan emin olmak için ne yaptığını daha iyi anlamak için aşağıdaki açıklamayı okuyun. 
 
-Cmdlet, `Join-AzStorageAccountForAuth` belirtilen depolama hesabı adına çevrimdışı alan adı birleştirme eşdeğerini gerçekleştirecektir. AD etki alanınızda bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) veya hizmet oturum [açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)oluşturacaktır. Oluşturulan AD hesabı, AD etki alanındabulunan depolama hesabını temsil eder. AD hesabı, parola son kullanma tarihini zorlayan bir AD Organizasyon Birimi (OU) altında oluşturulursa, parolayı maksimum parola çağından önce güncelleştirmeniz gerekir. AD hesap parolasını güncelleştirmemek, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarına neden olur. Parolayı nasıl güncelleştirileştirileştirebilirsiniz öğrenmek için Bkz. [AD hesap parolasını güncelleştir.](#update-ad-account-password)
+Cmdlet, `Join-AzStorageAccountForAuth` belirtilen depolama hesabı adına çevrimdışı alan adı birleştirme eşdeğerini gerçekleştirecektir. AD etki alanınızda bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya bir hizmet oturum [açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)oluşturacaktır. Oluşturulan AD hesabı, AD etki alanındabulunan depolama hesabını temsil eder. AD hesabı, parola son kullanma tarihini zorlayan bir AD Organizasyon Birimi (OU) altında oluşturulursa, parolayı maksimum parola çağından önce güncelleştirmeniz gerekir. AD hesap parolasını güncelleştirmemek, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarına neden olur. Parolayı nasıl güncelleştirileştirileştirebilirsiniz öğrenmek için Bkz. [AD hesap parolasını güncelleştir.](#5-update-ad-account-password)
 
 Kaydı gerçekleştirmek ve özelliği etkinleştirmek için aşağıdaki komut dosyasını kullanabilir veya alternatif olarak komut dosyasının yapacağı işlemleri el ile gerçekleştirebilirsiniz. Bu işlemler komut dosyasından sonraki bölümde açıklanmıştır. İkisini de yapmana gerek yok.
 
-### <a name="1-check-prerequisites"></a>1. Ön koşulları kontrol edin
+### <a name="11-check-prerequisites"></a>1.1 Ön koşulları kontrol edin
 - [AzFilesHybrid modüllerini indirin ve fermuarını aç](https://github.com/Azure-Samples/azure-files-samples/releases)
 - Modülü, hedef AD'de bir hizmet oturum açma hesabı veya bilgisayar hesabı oluşturma izinleri olan AD kimlik bilgileriyle AD'ye katılan bir aygıtta yükleyin ve çalıştırın.
 -  Azure AD'niz ile senkronize edilmiş bir AD kimlik bilgisi kullanarak komut dosyasını çalıştırın. AD kimlik bilgisi, depolama hesabı sahibine veya katkıda bulunan RBAC rol izinlerine sahip olmalıdır.
 - Depolama hesabınızın desteklenen bir [bölgede](#regional-availability)olduğundan emin olun.
 
-### <a name="2-domain-join-your-storage-account"></a>2. Alan adı depolama hesabınıza katılın
+### <a name="12-domain-join-your-storage-account"></a>1.2 Alan adı depolama hesabınıza katılın
 PowerShell'de gerçekleştirmeden önce aşağıdaki parametrelerde yer tutucu değerlerini kendi değerleriyle değiştirmeyi unutmayın.
+> [!IMPORTANT]
+> Parola son kullanma tarihini zorlamayan bir AD Organizasyon Birimi (OU) sağlamanızı öneririz. Parola süresi yapılandırılmış bir OU kullanıyorsanız, parolayı maksimum parola yaşından önce güncelleştirmeniz gerekir. AD hesap parolasını güncelleştirmemek, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarına neden olur. Parolayı nasıl güncelleştirileştirileştirebilirsiniz öğrenmek için Bkz. [AD hesap parolasını güncelleştir.](#5-update-ad-account-password)
+
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -123,19 +131,19 @@ Connect-AzAccount
 Select-AzSubscription -SubscriptionId "<your-subscription-id-here>"
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
-# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName.
+# You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName "<resource-group-name-here>" `
         -Name "<storage-account-name-here>" `
         -DomainAccountType "ComputerAccount" `
-        -OrganizationalUnitName "<ou-name-here>"
+        -OrganizationalUnitName "<ou-name-here>" or -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>"
 ```
 
 Aşağıdaki `Join-AzStorageAccountForAuth` açıklama, cmdlet yürütüldüğünde gerçekleştirilen tüm eylemleri özetler. Komutu kullanmamayı tercih ederseniz, bu adımları el ile gerçekleştirebilirsiniz:
 
 > [!NOTE]
-> Yukarıdaki komut dosyasını `Join-AzStorageAccountForAuth` başarıyla uyguladıysanız, bir sonraki bölüme gidin "3. Özelliğin etkin olduğunu doğrulayın". Aşağıdaki işlemleri tekrar gerçekleştirmeniz gerekmez.
+> Yukarıdaki komut dosyasını `Join-AzStorageAccountForAuth` başarıyla uyguladıysanız, sonraki bölüme gidin "1.3 Özelliğin etkin olduğunu doğrulayın". Aşağıdaki işlemleri tekrar gerçekleştirmeniz gerekmez.
 
 #### <a name="a-checking-environment"></a>a. Çevre kontrol etme
 
@@ -147,7 +155,7 @@ Bu hesabı el ile oluşturmak için, depolama hesabınız için `New-AzStorageAc
 
 Bu anahtarı aldıktan sonra OU'nuzun altında bir hizmet veya bilgisayar hesabı oluşturun. Aşağıdaki belirtimi kullanın: SPN: "cifs/your-storage-account-name-here.file.core.windows.net" Şifre: Depolama hesabınız için Kerberos anahtarı.
 
-OU'nuz parolanızın sona ermesini zorunlu kıyorsa, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarını önlemek için parolayı maksimum parola yaşından önce güncelleştirmeniz gerekir. Ayrıntılar için [REKLAM hesap parolalarını güncelleştir'e](#update-ad-account-password) bakın.
+OU'nuz parolanızın sona ermesini zorunlu kıyorsa, Azure dosya paylaşımlarına erişirken kimlik doğrulama hatalarını önlemek için parolayı maksimum parola yaşından önce güncelleştirmeniz gerekir. Ayrıntılar için [REKLAM hesap parolalarını güncelleştir'e](#5-update-ad-account-password) bakın.
 
 Yeni oluşturulan hesabın SID tutun, bir sonraki adım için gerekir. Depolama hesabını temsil eden yeni oluşturduğunuz AD kimliğinin Azure AD ile eşitlemesi gerekmez.
 
@@ -170,7 +178,7 @@ Set-AzStorageAccount `
 ```
 
 
-### <a name="3-confirm-that-the-feature-is-enabled"></a>3. Özelliğin etkin olduğunu doğrulayın
+### <a name="13-confirm-that-the-feature-is-enabled"></a>1.3 Özelliğin etkin olduğunu doğrulayın
 
 Özelliğin depolama hesabınızda etkin olup olmadığını doğrulamak için aşağıdaki komut dosyasını kullanabilirsiniz:
 
@@ -191,9 +199,9 @@ Artık depolama hesabınızdaki özelliği başarıyla etkinleştirdin. Özellik
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Artık SMB üzerinden AD kimlik doğrulamasını başarıyla etkinleştirdin ve AD kimliğiyle Azure dosya paylaşımına erişim sağlayan özel bir rol atadınız. Ek kullanıcılara dosya paylaşımınıza erişim izni vermek için, kimlik kullanmak için [erişim izinleri atayın](#assign-access-permissions-to-an-identity) yönergelerini izleyin ve SMB bölümleri [üzerinden NTFS izinlerini yapılandırın.](#configure-ntfs-permissions-over-smb)
+Artık SMB üzerinden AD kimlik doğrulamasını başarıyla etkinleştirdin ve AD kimliğiyle Azure dosya paylaşımına erişim sağlayan özel bir rol atadınız. Ek kullanıcılara dosya paylaşımınıza erişim izni vermek için, kimlik kullanmak için [erişim izinleri atayın](#2-assign-access-permissions-to-an-identity) yönergelerini izleyin ve SMB bölümleri [üzerinden NTFS izinlerini yapılandırın.](#3-configure-ntfs-permissions-over-smb)
 
-## <a name="update-ad-account-password"></a>AD hesap parolası güncelleştirme
+## <a name="5-update-ad-account-password"></a>5. AD hesap parolalarını güncelleştirin
 
 Depolama hesabınızı temsil eden AD kimliğini/hesabını parola son kullanma süresini zorlayan bir OU altında kaydettiyseniz, parolayı maksimum parola yaşından önce döndürmeniz gerekir. AD hesabının parolasını güncelleştirmemek, Azure dosya paylaşımlarına erişemeyen kimlik doğrulama hatalarına neden olur.  
 

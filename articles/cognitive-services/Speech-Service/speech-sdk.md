@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 440944033e4b6a8fb29cf9ace6ad784b91316526
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656616"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668758"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
@@ -69,21 +69,11 @@ Konuşma SDK programlama dillerinin bir çoğu codec sıkıştırılmış ses gi
 
 ## <a name="rest-api"></a>REST API
 
-Konuşma SDK Konuşma Hizmeti'nin birçok özellik özelliğini kapsarken, bazı senaryolar için REST API'sini kullanmak isteyebilirsiniz. Örnek olarak, uç nokta yönetimi yalnızca REST API ile ortaya çıkarır.
-
-> [!TIP]
-> REST API'sine güvendiğinizde, istemci kitaplıklarını otomatik olarak oluşturmak için Swagger Düzenleyicisi'ni kullanın. Örneğin, Toplu İşlem istemcisi kitaplığı oluşturmak için.
-> 1. Aşağıdaki örnek URL'yi kopyalayın:
->     ```http
->     https://westus.cris.ai/docs/v2.0/swagger
->     ```
-> 1. <a href="https://editor.swagger.io/" target="_blank">Swagger <span class="docon docon-navigate-external x-hidden-focus"></span> Düzenleyicisine</a> Git
-> 1. **Dosya** > **Alma URL'sini** seçin ve URL'yi yapıştırın
-> 1. **İstemciyi Oluştur'u** seçin ve istediğiniz programlama dilini seçin
+Konuşma SDK Konuşma Hizmeti'nin birçok özellik özelliğini kapsarken, bazı senaryolar için REST API'sini kullanmak isteyebilirsiniz.
 
 ### <a name="batch-transcription"></a>Toplu iş transkripsiyonu
 
-[Toplu transkripsiyon,](batch-transcription.md) büyük hacimli verilerin eş zamanlı olarak konuşmadan metne transkripsiyonuna olanak tanır. Toplu transkripsiyon sadece REST API mümkündür.
+[Toplu transkripsiyon,](batch-transcription.md) büyük hacimli verilerin eş zamanlı olarak konuşmadan metne transkripsiyonuna olanak tanır. Toplu transkripsiyon sadece REST API mümkündür. Konuşma sesini metne dönüştürmenin yanı sıra, toplu konuşmadan metne de ishal ve duygu analizi sağlar.
 
 ## <a name="customization"></a>Özelleştirme
 

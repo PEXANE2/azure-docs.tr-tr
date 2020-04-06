@@ -6,12 +6,12 @@ ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 03/24/2020
-ms.openlocfilehash: cc0feff48e7da35535e30c6741994f48750d931a
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: a4f9d48934bcb08147de4c6487629d552c252282
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80293496"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668697"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Eşleme veri akışı video öğreticileri
 
@@ -92,6 +92,8 @@ Aşağıda, Azure Veri Fabrikası ekibi tarafından oluşturulan veri akışı �
 [Dosyalarınızı veri gölüne bölme](https://youtu.be/VNWv-MvLQ_0)
 
 [Veri ambarı yükleme deseni](https://www.youtube.com/watch?v=7mLqwtmeQFg)
+
+[Veri gölü dosya çıktıseçenekleri](https://www.youtube.com/watch?v=NAPSbjvSQA8)
 
 ## <a name="optimizing-mapping-data-flows"></a>Eşleme veri akışlarını en iyi duruma çıkarma
 

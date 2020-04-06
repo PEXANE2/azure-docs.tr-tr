@@ -1,6 +1,6 @@
 ---
-title: Self servis parola sıfırlama dağıtımı - Azure Etkin Dizini
-description: Azure AD self servis parola sıfırlamanın başarılı bir şekilde uygulanması için strateji
+title: Azure Active Directory self servis parola sıfırlama için dağıtım hususları
+description: Azure AD self servis parola sıfırlamanın başarılı bir şekilde uygulanması için dağıtım konuları ve stratejisi hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,27 +11,34 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7be99959c2ae420cff667491f68c40dfa0862a9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cd5b9e1f2640e68f7c819a49ad34d9c051c582c5
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652399"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667324"
 ---
-# <a name="plan-an-azure-active-directory-self-service-password-reset"></a>Azure Active Directory self servis parola sıfırlama planı
+# <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Etkin Dizin self servis parola sıfırlama dağıtımı planlama
 
-> [!NOTE]
-> Bu dağıtım planı, Azure AD self servis parola sıfırlama (SSPR) dağıtmaya yönelik planlama kılavuzu ve en iyi uygulamaları sunar. <br>**Hesabınıza geri [https://aka.ms/sspr](https://aka.ms/sspr)dönmek için SSPR aracı arıyorsanız, **gidin.
+> [!IMPORTANT]
+> Bu dağıtım planı, Azure AD self servis parola sıfırlama (SSPR) dağıtmaya yönelik kılavuz ve en iyi uygulamaları sunar.
+>
+> **Son kullanıcıysanız ve hesabınıza geri dönmeniz gerekiyorsa, [https://aka.ms/sspr](https://aka.ms/sspr)'' **
 
-[Self Servis Parola Sıfırlama (SSPR),](https://www.youtube.com/watch?v=tnb2Qf4hTP8) kullanıcıların yardım almak için BT personeliyle iletişim ebaşvurmadan parolalarını sıfırlamalarını sağlayan bir Azure Etkin Dizin (AD) özelliğidir. Kullanıcılar kendilerini hızlı bir şekilde kaldırabilir ve nerede olurlarsa olsunlar veya günün hangi saatinde olursa olsun çalışmaya devam edebilirler. Kuruluşunuzun, çalışanların kendilerinin engelini kaldırmalarına izin vererek, parolayla ilgili çoğu sorun için üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir. 
+[Self Servis Parola Sıfırlama (SSPR),](https://www.youtube.com/watch?v=tnb2Qf4hTP8) kullanıcıların yardım almak için BT personeliyle iletişim ebaşvurmadan parolalarını sıfırlamalarını sağlayan bir Azure Etkin Dizin (AD) özelliğidir. Kullanıcılar kendilerini hızlı bir şekilde kaldırabilir ve nerede olurlarsa olsunlar veya günün hangi saatinde olursa olsun çalışmaya devam edebilirler. Kuruluşunuzun, çalışanların kendilerinin engelini kaldırmalarına izin vererek, parolayla ilgili çoğu sorun için üretken olmayan süreyi ve yüksek destek maliyetlerini azaltabilir.
 
 SSPR aşağıdaki temel özelliklere sahiptir:
 
 * Self servis, son kullanıcıların süresi dolmuş veya süresi dolmamış parolalarını bir yöneticiye veya destek için yardım masasına başvurmadan sıfırlamalarına olanak tanır.
-
 * [Parola Yazma Geri Ödeme,](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-writeback) şirket içi parolaların yönetimine ve buluta rağmen hesap kilitlemesinin çözülmesine olanak tanır.
-
 * Parola yönetimi etkinlik raporları, yöneticilere kuruluşlarında gerçekleşen parola sıfırlama ve kayıt etkinliği hakkında bilgi verir.
+
+Bu dağıtım kılavuzu, bir SSPR kullanıma nasıl planlayacağınızı ve sonra nasıl test edilebilmektedir.
+
+SSPR'yi hızlı bir şekilde iş başında görmek ve ardından ek dağıtım hususlarını anlamak için geri gelmek için:
+
+> [!div class="nextstepaction"]
+> [Self servis parola sıfırlamayı etkinleştirme (SSPR)](tutorial-enable-sspr.md)
 
 ## <a name="learn-about-sspr"></a>SSPR hakkında bilgi edinin
 
@@ -134,7 +141,7 @@ Teknoloji projeleri başarısız olduğunda, genellikle etki, sonuçlar ve sorum
 
 ### <a name="plan-a-pilot"></a>Bir pilot planlayın
 
-SSPR'nin ilk yapılandırmasının bir test ortamında olmasını öneririz. Kuruluşunuzdaki bir kullanıcı alt kümesi için SSPR'yi etkinleştirerek bir pilot grupla başlayın. [Bir pilot için en iyi uygulamalara](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)bakın.
+SSPR'nin ilk yapılandırmasının bir test ortamında olduğunu öneririz. Kuruluşunuzdaki bir kullanıcı alt kümesi için SSPR'yi etkinleştirerek bir pilot grupla başlayın. [Bir pilot için en iyi uygulamalara](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans)bakın.
 
 Bir grup oluşturmak için, [bir grup oluşturma ve Azure Etkin Dizini'ne nasıl üye ekleyiş](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal)gerektiğini görün. 
 
@@ -213,7 +220,7 @@ Prem Active Directory yönetici hesaplarınızı Azure AD ile senkronize etmemen
 
 ### <a name="environments-with-multiple-identity-management-systems"></a>Birden fazla kimlik yönetim sistemine sahip ortamlar
 
-Bazı ortamlarda birden çok kimlik yönetim sistemi vardır. Oracle ve SiteMinder gibi on-premesis kimlik yöneticileri, parolalar için AD ile senkronizasyon gerektirir. Bunu, Microsoft Identity Manager (MIM) ile Parola Değişikliği Bildirim Hizmeti (PCNS) gibi bir aracı kullanarak yapabilirsiniz. Bu daha karmaşık senaryo hakkında bilgi bulmak için, bir [etki alanı denetleyicisi üzerinde MIM Şifre Değişikliği Bildirim Hizmeti dağıtın](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)makalebakın.
+Bazı ortamlarda birden çok kimlik yönetim sistemi vardır. Oracle ve SiteMinder gibi şirket içi kimlik yöneticileri, parolalar için AD ile senkronizasyon gerektirir. Bunu, Microsoft Identity Manager (MIM) ile Parola Değişikliği Bildirim Hizmeti (PCNS) gibi bir aracı kullanarak yapabilirsiniz. Bu daha karmaşık senaryo hakkında bilgi bulmak için, bir [etki alanı denetleyicisi üzerinde MIM Şifre Değişikliği Bildirim Hizmeti dağıtın](https://docs.microsoft.com/microsoft-identity-manager/deploying-mim-password-change-notification-service-on-domain-controller)makalebakın.
 
 ## <a name="plan-testing-and-support"></a>Plan Test ve Destek
 
@@ -255,7 +262,7 @@ Destek ekibinizin başarısını sağlamak için, kullanıcılarınızdan aldı�
 | Kullanıcı yeni bir parola ayarlayamıyor| Kullanıcı parola sıfırlama akışı sırasında doğrulamayı tamamlar, ancak yeni bir parola ayarlayamaz. |
 | Kullanıcı, Windows 10 aygıtında Parolayı Sıfırla bağlantısını görmüyor| Bir kullanıcı Windows 10 kilit ekranından parolayı sıfırlamaya çalışıyor, ancak aygıt Azure AD'ye katılmıyor veya Intune aygıt ilkesi etkinleştirildi |
 
-### <a name="plan-roll-back"></a>Geri alma planı
+### <a name="plan-rollback"></a>Geri alma planı
 
 Dağıtımı geri almak için:
 
@@ -295,7 +302,7 @@ Bkz. Aşağıdaki alanların yapılandırılmasıyla ilgili adım adım yol tari
 1. [Şirket içi tümleştirme](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback)
 
 ### <a name="enable-sspr-in-windows"></a>Windows'da SSPR'yi etkinleştirme
-Windows 7, 8, 8.1 ve 10 çalıştıran makinelerde [kullanıcıların Windows oturum açma ekranında parolalarını sıfırlamalarını sağlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
+Windows 7, 8, 8.1 ve 10 çalıştıran [makinelerde, kullanıcıların Windows oturum açma ekranında parolalarını sıfırlamalarını sağlayabilirsiniz](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-windows)
 
 ## <a name="manage-sspr"></a>SSPR'yi yönet
 
@@ -336,7 +343,7 @@ Kayıt ve parola sıfırlama için denetim günlükleri 30 gün boyunca kullanı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* SSPR'yi dağıtmaya başlamak için Azure [AD self servis parola sıfırlama pilot una](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) bürünme
+* SSPR'yi dağıtmaya başlamak için Azure [AD self servis parola sıfırlamayı etkinleştir'e](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-sspr.md) bakın
 
 * [Azure AD parola koruması uygulamayı düşünün](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)
 

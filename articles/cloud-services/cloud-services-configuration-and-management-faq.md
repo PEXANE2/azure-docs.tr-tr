@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 40abd048b047bbece79b7c05d36a1fb189a4f28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5821c72ae1be4759cf5aa76ff1f5af43337749c0
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77656934"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668591"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Bulut Hizmetleri için yapılandırma ve yönetim sorunları: Sık sorulan sorular (SSS)
 
@@ -30,11 +30,11 @@ Bu makalede, [Microsoft Azure Bulut Hizmetleri](https://azure.microsoft.com/serv
 
 **Sertifikalar**
 
-- [Bulut Hizmeti SSL sertifikamın sertifika zinciri neden eksik?](#why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete)
+- [Bulut Hizmeti TLS/SSL sertifikamın sertifika zinciri neden eksik?](#why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete)
 - ["Uzantılar için Windows Azure Araçları Şifreleme Sertifikası"nın amacı nedir?](#what-is-the-purpose-of-the-windows-azure-tools-encryption-certificate-for-extensions)
 - [Örnekte "RDP-ing" olmadan nasıl sertifika imzalama isteği (CSR) oluşturabilirim?](#how-can-i-generate-a-certificate-signing-request-csr-without-rdp-ing-in-to-the-instance)
 - [Bulut Hizmeti Yönetimi Sertifikamın süresi doluyor. Nasıl yenilenir?](#my-cloud-service-management-certificate-is-expiring-how-to-renew-it)
-- [Ana SSL sertifikası(.pfx) ve ara sertifika(.p7b) kurulumu nasıl otomatikleştirilir?](#how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b)
+- [Ana TLS/SSL sertifikası(.pfx) ve ara sertifika(.p7b) kurulumu nasıl otomatikleştirilir?](#how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b)
 - ["MachineKey için Microsoft Azure Hizmet Yönetimi" sertifikasının amacı nedir?](#what-is-the-purpose-of-the-microsoft-azure-service-management-for-machinekey-certificate)
 
 **İzleme ve günlüğe kaydetme**
@@ -55,7 +55,7 @@ Bu makalede, [Microsoft Azure Bulut Hizmetleri](https://azure.microsoft.com/serv
 - [Microsoft dahili mühendisleri masaüstünü Bulut Hizmeti örneklerine izinsiz uzak layabilir mi?](#can-microsoft-internal-engineers-remote-desktop-to-cloud-service-instances-without-permission)
 - [RDP dosyasını kullanarak masaüstünü Cloud Service VM'ye uzaklatamam. Aşağıdaki hatayı alıyorum: Bir kimlik doğrulama hatası oluştu (Kod: 0x80004005)](#i-cannot-remote-desktop-to-cloud-service-vm--by-using-the-rdp-file-i-get-following-error-an-authentication-error-has-occurred-code-0x80004005)
 
-**Ölçekleme**
+**Ölçeklendirme**
 
 - [X örneklerinin ötesine ölçeklendiremiyorum](#i-cannot-scale-beyond-x-instances)
 - [Bellek ölçümlerine göre Otomatik Ölçeklendirmeyi nasıl yapılandırabilirim?](#how-can-i-configure-auto-scale-based-on-memory-metrics)
@@ -75,7 +75,7 @@ Bu makalede, [Microsoft Azure Bulut Hizmetleri](https://azure.microsoft.com/serv
 
 ## <a name="certificates"></a>Sertifikalar
 
-### <a name="why-is-the-certificate-chain-of-my-cloud-service-ssl-certificate-incomplete"></a>Bulut Hizmeti SSL sertifikamın sertifika zinciri neden eksik?
+### <a name="why-is-the-certificate-chain-of-my-cloud-service-tlsssl-certificate-incomplete"></a>Bulut Hizmeti TLS/SSL sertifikamın sertifika zinciri neden eksik?
     
 Müşterilerin sadece yaprak sertifikası yerine tam sertifika zincirini (yaprak cert, ara cert ve kök cert) yüklemelerini öneririz. Yalnızca yaprak sertifikasını yüklediğinizde, CTL'yi yürüyerek sertifika zincirini oluşturmak için Windows'a güvenirsiniz. Windows sertifikayı doğrulamaya çalışırken Azure veya Windows Update'te aralıklı ağ veya DNS sorunları oluşursa, sertifika geçersiz kabul edilebilir. Tam sertifika zinciri yüklenerek, bu sorun önlenebilir. [Zincirli SSL sertifikası nasıl yüklenir](https://blogs.msdn.microsoft.com/azuredevsupport/2010/02/24/how-to-install-a-chained-ssl-certificate/) blogu bunu nasıl yapacağımı gösterir.
 
@@ -103,7 +103,7 @@ Yönetim Sertifikalarınızı yenilemek için aşağıdaki PowerShell komutları
 
 **Azure'u AlPublishSettingsFile,** Azure portalında **Abonelik** > **Yönetimi Sertifikalarında** yeni bir yönetim sertifikası oluşturur. Yeni sertifikanın adı "YourSubscriptionNam]-[CurrentDate]-credentials" gibi görünür.
 
-### <a name="how-to-automate-the-installation-of-main-ssl-certificatepfx-and-intermediate-certificatep7b"></a>Ana SSL sertifikası(.pfx) ve ara sertifika(.p7b) kurulumu nasıl otomatikleştirilir?
+### <a name="how-to-automate-the-installation-of-main-tlsssl-certificatepfx-and-intermediate-certificatep7b"></a>Ana TLS/SSL sertifikası(.pfx) ve ara sertifika(.p7b) kurulumu nasıl otomatikleştirilir?
 
 Başlangıç komut dosyası (toplu iş/cmd/PowerShell) kullanarak bu görevi otomatikleştirebilir ve bu başlangıç komut dosyasını hizmet tanım dosyasına kaydedebilirsiniz. Başlangıç komut dosyasının aynı dizininin proje klasörüne hem başlangıç komut dosyasını hem de sertifikayı (.p7b dosyası) ekleyin.
 
@@ -183,7 +183,7 @@ Statik bir IP adresi ayarlamak için ayrılmış bir IP oluşturmanız gerekir. 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Azure temel IPS/IDS ve DDOS'un sağladığı özellikler ve özellikler nelerdir?
 Azure'da tehditlere karşı savunmak için veri merkezi fiziksel sunucularında IPS/IDS vardır. Ayrıca, müşteriler web uygulaması güvenlik duvarları, ağ güvenlik duvarları, kötü amaçlı yazılımdan koruma, izinsiz giriş algılama, önleme sistemleri (IDS/IPS) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini dağıtabilir. Daha fazla bilgi için bkz: [Verilerinizi ve varlıklarınızı koruyun ve küresel güvenlik standartlarına uyun.](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)
 
-Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları sürekli olarak izler. Azure'un çok yönlü tehdit yönetimi yaklaşımı, savunmasını sürekli güçlendirmek için izinsiz giriş algılama, dağıtılmış hizmet reddi (DDoS) saldırı önleme, nüfuz testi, davranış analizi, anormallik algılama ve makine öğrenimini kullanır ve riskleri azaltmak. Azure için Microsoft Kötü Amaçlı Yazılımdan Koruma, Azure Bulut Hizmetlerini ve sanal makineleri korur. Web uygulaması yangın duvarları, ağ güvenlik duvarları, kötü amaçlı yazılımdan koruma, izinsiz giriş algılama ve önleme sistemleri (IDS/IPS) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini dağıtma seçeneğiniz vardır.
+Microsoft, tehditleri algılamak için sunucuları, ağları ve uygulamaları sürekli olarak izler. Azure'un çok yönlü tehdit yönetimi yaklaşımı, savunmasını sürekli güçlendirmek ve riskleri azaltmak için izinsiz giriş algılama, dağıtılmış hizmet reddi (DDoS) saldırı önleme, nüfuz testi, davranış analizi, anormallik algılama ve makine öğrenimi kullanır. Azure için Microsoft Kötü Amaçlı Yazılımdan Koruma, Azure Bulut Hizmetlerini ve sanal makineleri korur. Web uygulaması yangın duvarları, ağ güvenlik duvarları, kötü amaçlı yazılımdan koruma, izinsiz giriş algılama ve önleme sistemleri (IDS/IPS) ve daha fazlası gibi üçüncü taraf güvenlik çözümlerini dağıtma seçeneğiniz vardır.
 
 ### <a name="how-to-enable-http2-on-cloud-services-vm"></a>Bulut Hizmetleri VM'de HTTP/2 nasıl etkinleştirilir?
 

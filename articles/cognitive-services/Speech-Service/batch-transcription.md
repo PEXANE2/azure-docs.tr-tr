@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: ee7fbddade055c11f5870aa5a588a2fd02f10a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131595"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668847"
 ---
 # <a name="what-is-batch-transcription"></a>Toplu transkripsiyon nedir?
 
@@ -304,9 +304,6 @@ Transkripsiyon hizmeti gönderilen transkripsiyonların çok sayıda işleyebili
 ## <a name="sample-code"></a>Örnek kod
 
 Tam örnekler alt dizinin içindeki [GitHub örnek deposunda](https://aka.ms/csspeech/samples) `samples/batch` mevcuttur.
-
-> [!NOTE]
-> Toplu transkripsiyon işlevi yukarıda açıklanan REST API ile ortaya çıkmıştır. Böylece Toplu transkripsiyon REST destekleyen hemen hemen her programlama dili veya ortamından kullanılabilir. Aşağıdaki örnekler ve GitHub'daki örnekler yalnızca temsilidir ve API'nin nerede kullanılabileceğini ifade **etmez.**
 
 Örnek kodu abonelik bilgileriniz, hizmet bölgeniz, yazıya uygun ses dosyasını işaret eden SAS URI ve özel bir akustik veya dil modeli kullanmak istediğinizde model iyelikleri ile özelleştirmeniz gerekir.
 

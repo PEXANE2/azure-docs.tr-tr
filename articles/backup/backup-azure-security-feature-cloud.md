@@ -3,12 +3,12 @@ title: Bulut iş yüklerinin korunmasına yardımcı olacak güvenlik özellikle
 description: Yedeklemeleri daha güvenli hale getirmek için Azure Yedekleme'de güvenlik özelliklerini nasıl kullanacağınızı öğrenin.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 57c9fd76ae32aea49f480f2a88d8296538d8052d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7c86e18114513a264a0f9252589533fb7ff2d3
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156081"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668732"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Yedekleme kullanan bulut iş yüklerinin korunmasına yardımcı olacak güvenlik özellikleri
 
@@ -34,7 +34,7 @@ VM'ler için yumuşak silme, VM'lerinizin yedeklerini istenmeyen silmeye karşı
 
 ### <a name="supported-regions"></a>Desteklenen bölgeler
 
-Yumuşak silme şu anda Batı Orta ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fransa Orta, Fransa Güney, Kore Orta, Kore Güney, İngiltere Güney, İngiltere Batı, Avustralya Doğu, Avustralya Güney Doğu, Kuzey Avrupa, Batı ABD, Batı US2, Orta ABD, Güney desteklenir Doğu Asya, Kuzey Orta ABD, Güney Orta ABD, Japonya Doğu, Japonya Batı, Hindistan Güney, Hindistan Orta, Hindistan Batı, Doğu ABD 2, İsviçre Kuzey, İsviçre Batı ve tüm Ulusal bölgeler.
+Yumuşak silme şu anda Batı Orta ABD, Doğu Asya, Kanada Orta, Kanada Doğu, Fransa Orta, Fransa Güney, Kore Orta, Kore Güney, İngiltere Güney, İngiltere Batı, Avustralya Doğu, Avustralya Güney Doğu, Kuzey Avrupa, Batı ABD, Batı US2, Orta ABD, Güney Doğu Asya, Kuzey Orta ABD, Güney Orta ABD, Japonya Doğu, Japonya Batı, Hindistan Güney, Hindistan Orta, Hindistan Batı, Doğu ABD 2 desteklenir , İsviçre Kuzey, İsviçre Batı, Norveç Batı, Norveç Doğu ve tüm Ulusal bölgeler.
 
 ### <a name="soft-delete-for-vms-using-azure-portal"></a>Azure portalını kullanan VM'ler için yumuşak silme
 
@@ -264,7 +264,7 @@ Azure Sanal Makinelerinizi yedeklerken, artık sahip olduğunuz ve yönettiğini
 
 ### <a name="backup-of-managed-disk-vms-encrypted-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmiş yönetilen disk VM'lerinin yedeklemesi
 
-Azure Yedekleme, sunucu tarafındaki şifreleme için anahtarınızı kullanan Azure VM'lerinizi yedeklemenize de olanak tanır. Diskleri şifrelemek için kullanılan anahtar Azure Anahtar Kasası'nda depolanır ve sizin yeriniz tarafından yönetilir. Müşteri tarafından yönetilen anahtarları kullanan sunucu tarafı şifrelemesi Azure Disk Şifreleme'den farklıdır, çünkü ADE, BitLocker (Windows için) ve DM-Crypt'i (Linux için) konuk içi şifreleme gerçekleştirmek için kullanır, SSE depolama hizmetindeki verileri şifreler ve herhangi bir işletim sistemi veya işletim sistemi kullanmanızı sağlar VM'leriniz için görüntüler. Daha fazla ayrıntı için [müşteri yönetilen anahtarlarla yönetilen disklerin Şifrelemesine](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) bakın.
+Azure Yedekleme, sunucu tarafındaki şifreleme için anahtarınızı kullanan Azure VM'lerinizi yedeklemenize de olanak tanır. Diskleri şifrelemek için kullanılan anahtar Azure Anahtar Kasası'nda depolanır ve sizin yeriniz tarafından yönetilir. Müşteri tarafından yönetilen anahtarları kullanan sunucu tarafı şifrelemesi Azure Disk Şifreleme'den farklıdır, çünkü ADE, BitLocker (Windows için) ve DM-Crypt'i (Linux için) konuk içi şifreleme gerçekleştirmek için kullanır, SSE depolama hizmetindeki verileri şifreler ve Sanal İletileriniz için herhangi bir işletim sistemi veya resim kullanmanızı sağlar. Daha fazla ayrıntı için [müşteri yönetilen anahtarlarla yönetilen disklerin Şifrelemesine](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) bakın.
 
 ### <a name="backup-of-vms-encrypted-using-ade"></a>ADE kullanılarak şifrelenmiş VM'lerin yedeklemesi
 

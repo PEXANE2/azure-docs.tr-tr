@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti'nde (AKS) statik IP adresine sahip bir HTTP giriş denetleyicisi oluşturma
+title: Statik IP ile giriş denetleyicisi kullanma
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) kümesinde statik genel IP adresine sahip bir NGINX giriş denetleyicisini nasıl yükleyip yapılandırabilirsiniz öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: fe7f1070ce233c204d9658d4a75c5e1c7a189f12
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617284"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668516"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) statik genel IP adresine sahip bir giriş denetleyicisi oluşturma
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c251569cfe6a2f27f86421ffe6a446ace52b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f884f4c0ea3a610f28a8fdbb34b081f0b0a64d08
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051164"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666960"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -78,6 +78,7 @@ NPS sunucusunun 80 ve 443 bağlantı noktaları üzerinden aşağıdaki URL'lerl
 
 - https:\//adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
+- https:\//credentials.azure.com
 
 Ayrıca, [sağlanan PowerShell komut dosyasını kullanarak bağdaştırıcının kurulumünü](#run-the-powershell-script) tamamlamak için aşağıdaki URL'lere bağlantı gereklidir
 
@@ -125,7 +126,7 @@ NPS uzantılı dağıtımda hangi kimlik doğrulama yöntemlerinin kullanılabil
       > [!NOTE]
       > NPS uzantısını dağıttığınızda, kullanıcılarınız için hangi yöntemlerin kullanılabilen yöntemleri değerlendirmek için bu etkenleri kullanın. RADIUS istemciniz PAP'ı destekliyorsa, ancak istemci UX'nin doğrulama kodu için giriş alanları yoksa, telefon görüşmesi ve mobil uygulama bildirimi desteklenen iki seçenektir.
       >
-      > Buna ek olarak, VPN istemciniz UX giriş alanını destekliyorsa ve Ağ Erişim İlkesi'ni yapılandırmışsanız , kimlik doğrulaması başarılı olabilir, ancak Ağ Politikası'nda yapılandırılan RADIUS özniteliklerinin hiçbiri Ağ Erişim Aygıtı'na uygulanmaz, RRAS sunucusu gibi, ne de VPN istemcisi. Sonuç olarak, VPN istemcisi istenilenden daha fazla erişime sahip olabilir veya daha az erişim emeyebilir.
+      > Buna ek olarak, VPN istemciniz UX giriş alanını destekliyorsa ve Ağ Erişim İlkesi'ni yapılandırmışsanız , kimlik doğrulama başarılı olabilir, ancak Ağ Politikası'nda yapılandırılan RADIUS özniteliklerinin hiçbiri Ne RRAS sunucusu ne de VPN istemcisi gibi Ağ Erişim Aygıtı'na uygulanmaz. Sonuç olarak, VPN istemcisi istenilenden daha fazla erişime sahip olabilir veya daha az erişim emeyebilir.
       >
 
 2. İstemci uygulamasının (VPN, Netscaler sunucusu veya diğer) işleyebilir giriş yöntemleri. Örneğin, VPN istemcisinin kullanıcının bir metin veya mobil uygulamadan doğrulama kodu yazabilmesine izin vermek için bazı araçları var mı?

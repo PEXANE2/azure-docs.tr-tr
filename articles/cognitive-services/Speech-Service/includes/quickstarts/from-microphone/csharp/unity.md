@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 6b3c8c62382d548d8a1bc7d5f611cdfbe2fd72fb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80659535"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671666"
 ---
 > [!NOTE]
 > Unity için Konuşma SDK Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatörü, ARM32 ve ARM64) destekler
@@ -25,7 +25,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=unity&pivots=programming-language-csharp)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 Bunu zaten yaptıysan, harika. Devam edelim.

@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: 3e7cd96b979fb97d7b50b84907881fe59d03e295
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 9a3f478604547819162ad13d39a9383263321857
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658951"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671823"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -22,7 +22,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=uwp&pivots=programming-language-csharp)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 Bunu zaten yaptıysan, harika. Devam edelim.

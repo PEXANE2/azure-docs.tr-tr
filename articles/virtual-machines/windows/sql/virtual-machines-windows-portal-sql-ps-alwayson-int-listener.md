@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75647892"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668895"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Bir veya daha fazla Always On availability grup dinleyicisini yapılandırın - Kaynak Yöneticisi
 Bu konu nasıl gösterin:
@@ -58,9 +58,13 @@ Bir Azure Ağ Güvenlik Grubu ile erişimi kısıtlıyorsanız, izin kuralların
 
 ## <a name="determine-the-load-balancer-sku-required"></a>Gerekli yük dengeleyiciSku SKU'yu belirleyin
 
-[Azure yük dengeleyicisi](../../../load-balancer/load-balancer-overview.md) 2 SCARI: Basic & Standard'da mevcuttur. Standart yük dengeleyici önerilir. Sanal makineler bir kullanılabilirlik kümesindeyse, temel yük dengeleyiciye izin verilir. Standart yük dengeleyici, tüm VM IP adreslerinin standart IP adreslerini kullanmasını gerektirir.
+[Azure yük dengeleyicisi](../../../load-balancer/load-balancer-overview.md) 2 SCARI: Basic & Standard'da mevcuttur. Standart yük dengeleyici önerilir. Sanal makineler bir kullanılabilirlik kümesindeyse, temel yük dengeleyiciye izin verilir. Sanal makineler kullanılabilirlik bölgesindeyse, standart bir yük dengeleyicisi gereklidir. Standart yük dengeleyici, tüm VM IP adreslerinin standart IP adreslerini kullanmasını gerektirir.
 
 Kullanılabilirlik grubu için geçerli [Microsoft şablonu,](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) temel IP adreslerine sahip temel bir yük dengeleyicisi kullanır.
+
+   > [!NOTE]
+   > Bulut tanığı için standart bir yük dengeleyicisi ve Azure Depolama kullanıyorsanız, bir [hizmet bitiş noktası](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) yapılandırmanız gerekir. 
+
 
 Bu makaledeki örneklerde standart yük dengeleyicisi belirtilmektedir. Örneklerde, komut dosyası `-sku Standard`içerir.
 
@@ -226,6 +230,8 @@ Dahili yük dengeleyicisini kullanarak Azure'daki kullanılabilirlik grubu dinle
 * Dahili yük dengeleyicisi ile dinleyiciye yalnızca aynı sanal ağ dan erişebilirsiniz.
 
 * Bir Azure Ağ Güvenlik Grubu ile erişimi kısıtlıyorsanız, izin kurallarının arka uç SQL Server VM IP adreslerini ve varsa AG dinleyicisi ve küme çekirdeği IP adresi için yük bakiyesi kayan IP adreslerini içerdiğinden emin olun.
+
+* Bulut tanığı için Azure Depolama ile standart bir yük dengeleyicisi kullanırken bir hizmet bitiş noktası oluşturun. Daha fazla bilgi için bkz: [Sanal ağdan Erişim Tanına.](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 Daha fazla bilgi için azure [VM'deki her zaman kullanılabilirlik grubunda her zaman yapılandır'a](virtual-machines-windows-portal-sql-availability-group-tutorial.md)bakın.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12be766f36a0901079a5a26f20ea7dacc75268de
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73242486"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667868"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files ağ planlaması yönergeleri
 
@@ -39,10 +39,11 @@ Aşağıdaki özellikler şu anda Azure NetApp Dosyaları için desteklenmez:
 * Azure NetApp dosyaları alt ağı olarak adres önekine sahip kullanıcı tanımlı rotalar (ÜDR)
 * Azure NetApp Dosyaları arabirimindeki Azure ilkeleri (örneğin, özel adlandırma ilkeleri)
 * Azure NetApp Dosyaları trafiği için yük bakiyeleri
+* Azure NetApp Dosyaları Azure Virtual WAN ile desteklenmiyor
 
 Aşağıdaki ağ kısıtlamaları Azure NetApp Dosyaları için geçerlidir:
 
-* Azure NetApp Files'a sahip bir VNet'te (eşlenen VNet'ler dahil) kullanılan IP sayısı 1000'i geçemez. Müşteri ölçeği taleplerini karşılamak için bu limiti artırmak için çalışıyoruz. Bu arada, daha fazla IP'ye ihtiyacınız varsa, kullanım durumunuz ve gerekli limitinizle destek ekibimize ulaşın.
+* Azure NetApp Files'a sahip bir VNet'te (eşlenen VNet'ler dahil) kullanılan IP sayısı 1000'i geçemez. Müşteri ölçeği taleplerini karşılamak için bu limiti artırmak için çalışıyoruz. 
 * Her Azure Sanal Ağında (VNet), Azure NetApp Dosyalarına yalnızca bir alt ağ devredilebilir.
 
 
@@ -123,8 +124,8 @@ Yukarıda gösterildiği topolojide, şirket içi ağ Azure'daki bir hub VNet'e 
 * Şirket içi kaynaklar VM 1 ve VM 2, siteden siteye VPN ve bölgesel Vnet eşlemeleri üzerinden Cilt 2 veya Cilt 3'e bağlanabilir.
 * VNet hub'ındaki VM 3, kollu VNet 1'de Volume 2'ye ve vnet 2'de Hacim 3'e bağlanabilir.
 * VM 4 spoke VNet 1 ve VM 5 spoke VNet 2 hub VNet Hacim 1 bağlanabilir.
-
-VM 4, spoke VNet 1'de VNet 2'de Cilt 3'e bağlanamaz. Ayrıca, VM 5 spoke VNet2'de VNet 1'de Cilt 2'ye bağlanamaz. Bu durum, sözcü VNet'lerin bakılmadığını ve _transit yönlendirmenin VNet'e bakma üzerinde desteklenmemesi_nedeniyle durum böyledir.
+* VM 4, spoke VNet 1'de VNet 2'de Cilt 3'e bağlanamaz. Ayrıca, VM 5 spoke VNet2'de VNet 1'de Cilt 2'ye bağlanamaz. Bu durum, sözcü VNet'lerin bakılmadığını ve _transit yönlendirmenin VNet'e bakma üzerinde desteklenmemesi_nedeniyle durum böyledir.
+* Yukarıdaki mimaride, konuşan VNET'te de bir ağ geçidi varsa, Hub'daki ağ geçidi üzerinden bağlanan ön prem'den ANF birimine bağlantı kaybolur. Tasarım gereği, tercih, konuşan VNet'teki ağ geçidine verilir ve böylece yalnızca bu ağ geçidi üzerinden bağlanan makineler ANF birimine bağlanabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

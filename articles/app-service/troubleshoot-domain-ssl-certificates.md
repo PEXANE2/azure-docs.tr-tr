@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme etki alanı ve SSL sertifikaları
-description: Azure Uygulama Hizmeti'nde bir etki alanı veya SSL sertifikası yapılandırDığınızda karşılaşabileceğiniz sık karşılaşılan sorunlara çözümler bulun.
+title: Sorun giderme etki alanı ve TLS/SSL sertifikaları
+description: Azure Uygulama Hizmeti'nde bir etki alanı veya TLS/SSL sertifikası yapılandırDığınızda karşılaşabileceğiniz sık karşılaşılan sorunlara çözüm bulun.
 author: genlin
 manager: dcscontentpm
 tags: top-support-issue
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d61b95c7136a4cbce11789a58d27cc1a164ae374
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966971"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668019"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde etki alanı ve SSL sertifika sorunlarını giderme
+# <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde etki alanı ve TLS/SSL sertifika sorunlarını giderme
 
-Bu makalede, Azure Uygulama Hizmeti'ndeki web uygulamalarınız için bir etki alanı veya SSL sertifikası yapılandırdığınızda karşılaşabileceğiniz sık karşılaşılan sorunlar listelanmaktadır. Ayrıca, bu sorunların olası nedenlerini ve çözümlerini de açıklar.
+Bu makalede, Azure Uygulama Hizmeti'ndeki web uygulamalarınız için bir etki alanı veya TLS/SSL sertifikası yapılandırDığınızda karşılaşabileceğiniz sık karşılaşılan sorunlar listelanmaktadır. Ayrıca, bu sorunların olası nedenlerini ve çözümlerini de açıklar.
 
 Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure Destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
 
@@ -26,17 +26,17 @@ Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [
 
 ## <a name="certificate-problems"></a>Sertifika sorunları
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-an-app"></a>Bir uygulamaya SSL sertifikası bağlama ekemezsiniz 
+### <a name="you-cant-add-a-tlsssl-certificate-binding-to-an-app"></a>Bir uygulamaya TLS/SSL sertifikası bağlama ekemezsiniz 
 
 #### <a name="symptom"></a>Belirti
 
-Bir SSL bağlama eklediğinizde, aşağıdaki hata iletisini alırsınız:
+TLS bağlama eklediğinizde, aşağıdaki hata iletisini alırsınız:
 
 "SSL bağlama eklemek için başarısız oldu. Başka bir VIP zaten bu sertifikayı kullandığından, mevcut VIP için sertifika ayarlayamıyor."
 
 #### <a name="cause"></a>Nedeni
 
-Bu sorun, birden çok uygulamada aynı IP adresi için birden çok IP tabanlı SSL bağlamanız varsa oluşabilir. Örneğin, A uygulamasının eski bir sertifikası olan IP tabanlı bir SSL'si vardır. App B aynı IP adresi için yeni bir sertifika ile IP tabanlı bir SSL vardır. Uygulama SSL bağlamayı yeni sertifikayla güncellediğinizde, aynı IP adresi başka bir uygulama için kullanıldığından bu hatayla başarısız olur. 
+Bu sorun, birden çok uygulamada aynı IP adresi için birden çok IP tabanlı SSL bağlamanız varsa oluşabilir. Örneğin, A uygulamasının eski bir sertifikası olan IP tabanlı bir SSL'si vardır. App B aynı IP adresi için yeni bir sertifika ile IP tabanlı bir SSL vardır. Uygulama TLS bağlamayı yeni sertifikayla güncellediğinizde, aynı IP adresi başka bir uygulama için kullanıldığından bu hatayla başarısız olur. 
 
 #### <a name="solution"></a>Çözüm 
 
@@ -51,7 +51,7 @@ Bu sorunu gidermek için aşağıdaki yöntemlerden birini kullanın:
 
 Bir sertifikayı silmeye çalıştığınızda aşağıdaki hata iletisini alırsınız:
 
-"Şu anda bir SSL bağlama kullanılıyor çünkü sertifika silmek mümkün değildir. Sertifikayı silmeden önce SSL bağlaması kaldırılmalıdır."
+"Şu anda TLS/SSL bağlamada kullanıldığından sertifika silinemiyor. Sertifikayı silmeden önce TLS bağlaması kaldırılmalıdır."
 
 #### <a name="cause"></a>Nedeni
 
@@ -59,7 +59,7 @@ Başka bir uygulama sertifikayı kullanırsa bu sorun oluşabilir.
 
 #### <a name="solution"></a>Çözüm
 
-Bu sertifika için SSL bağlamayı uygulamalardan kaldırın. Ardından sertifikayı silmeyi deneyin. Sertifikayı hala silemiyorsanız, internet tarayıcıönbelleğini temizleyin ve Azure portalını yeni bir tarayıcı penceresinde yeniden açın. Ardından sertifikayı silmeyi deneyin.
+Bu sertifika için TLS bağlamayı uygulamalardan kaldırın. Ardından sertifikayı silmeyi deneyin. Sertifikayı hala silemiyorsanız, internet tarayıcıönbelleğini temizleyin ve Azure portalını yeni bir tarayıcı penceresinde yeniden açın. Ardından sertifikayı silmeyi deneyin.
 
 ### <a name="you-cant-purchase-an-app-service-certificate"></a>Uygulama Hizmeti sertifikası satın alamazsınız 
 
@@ -69,7 +69,7 @@ Azure portalından [Azure Uygulama Hizmeti sertifikası](./configure-ssl-certifi
 #### <a name="cause-and-solution"></a>Neden ve çözüm
 Bu sorun aşağıdaki nedenlerden herhangi biri için oluşabilir:
 
-- Uygulama Hizmeti planı Ücretsiz veya Paylaşılan. Bu fiyatlandırma katmanları SSL'yi desteklemez. 
+- Uygulama Hizmeti planı Ücretsiz veya Paylaşılan. Bu fiyatlandırma katmanları TLS'yi desteklemez. 
 
     **Çözüm**: Uygulama için Uygulama Hizmeti planını Standart'a yükseltin.
 
@@ -165,7 +165,7 @@ Etki alanınız yedi günden kısa bir süre önce silinmişse, etki alanı silm
 
 ## <a name="domain-problems"></a>Etki alanı sorunları
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Yanlış etki alanı için bir SSL sertifikası satın aldınız
+### <a name="you-purchased-a-tlsssl-certificate-for-the-wrong-domain"></a>Yanlış etki alanı için bir TLS/SSL sertifikası satın aldınız
 
 #### <a name="symptom"></a>Belirti
 
@@ -306,7 +306,7 @@ Bir etki alanı satın aldığınızda, etki alanını istemediğiniz ekibe kara
 
 **Etki alanını aboneliğimdeki başka bir Azure Uygulama Hizmeti uygulamasında kullanabilir miyim?**
 
-Evet. Azure portalında Özel Etki Alanları ve SSL blade'ine erişdiğinizde, satın aldığınız etki alanlarını görürsünüz. Uygulamanızı bu etki alanlarından herhangi birini kullanacak şekilde yapılandırabilirsiniz.
+Evet. Azure portalında Özel Etki Alanları ve TLS bıçağına erişdiğinizde, satın aldığınız etki alanlarını görürsünüz. Uygulamanızı bu etki alanlarından herhangi birini kullanacak şekilde yapılandırabilirsiniz.
 
 **Bir etki alanını bir abonelikten başka bir aboneye aktarabilir miyim?**
 

@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 969193b2c0843c4eb217d2bdb9f9ad9a40ccf9af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbdae8b8506731f13ff08e877ea8eedb6d57fa78
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154976"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666934"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory uygulama galerisinde uygulamanızı listeleme
 
@@ -49,9 +49,9 @@ Tüm premium Azure AD özellikleriyle ücretsiz bir test hesabı alabilirsiniz -
 
 ## <a name="submit-the-request-in-the-portal"></a>İsteği portalda gönderin
 
-Uygulama tümleştirmenizin Azure AD ile çalıştığını test ettikten sonra, erişim isteğinizi [Uygulama Ağı portalına](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderin. Office 365 hesabınız varsa, bu portalda oturum açabilmek için bunu kullanın. Değilse, oturum açabilmek için Outlook veya Hotmail gibi Microsoft hesabınızı kullanın.
+Uygulama tümleştirmenizin Azure AD ile çalıştığını test ettikten sonra, uygulama isteğinizi [Microsoft Application Network portalına](https://microsoft.sharepoint.com/teams/apponboarding/Apps)gönderin.
 
-Oturum açmadan sonra aşağıdaki sayfa görünürse, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteğe yönelik göndermek için kullanmak istediğiniz e-posta hesabını sağlayın. Azure AD ekibi hesabı Microsoft Application Network portalına ekler.
+Oturum açmadan sonra aşağıdaki sayfa görünürse, [Azure AD SSO Tümleştirme Ekibi'ne](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)başvurun. İsteğe yönelik göndermek için kullanmak istediğiniz e-posta hesabını sağlayın. Gibi bir iş [name@yourbusiness.com](mailto:name@yourbusiness.com) e-posta adresi tercih edilir. Azure AD ekibi hesabı Microsoft Application Network portalına ekler.
 
 ![SharePoint portalında istek iletisi erişim](./media/howto-app-gallery-listing/errorimage.png)
 

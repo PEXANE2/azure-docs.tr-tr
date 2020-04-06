@@ -5,16 +5,16 @@ author: kgremban
 manager: philmea
 ms.author: kgremban
 ms.reviewer: mrohera
-ms.date: 10/04/2019
+ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9944308d00c9cfecbd38a6443efb49913148806
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 139a2cafe137d000b991cbad8b8567e005ffc728
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535927"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668666"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Simetrik anahtar attestation kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
@@ -71,6 +71,9 @@ DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bild
    1. İsterseniz cihazınız için bir **IoT Hub Aygıt Kimliği** sağlayın. Modül dağıtımı için tek bir aygıtı hedeflemek için aygıt adlarını kullanabilirsiniz. Aygıt kimliği sağlamazsanız, kayıt kimliği kullanılır.
 
    1. Kaydın bir IoT Edge aygıtı için olduğunu bildirmek için **True'yu** seçin. Grup kaydı için tüm aygıtların IoT Edge aygıtları olması gerekir veya bunların hiçbiri olamaz.
+
+   > [!TIP]
+   > Azure CLI'de bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve bir aygıtın veya aygıt grubunun bir IoT Edge aygıtı olduğunu belirtmek için **kenar özellikli** bayrağı kullanabilirsiniz.
 
    1. Aygıt Sağlama Hizmeti'nin tahsisat ilkesindeki varsayılan değeri **hub'lara nasıl atamak istediğinize** veya bu kayda özgü farklı bir değer seçme şeklinize ilişkin olarak kabul edin.
 

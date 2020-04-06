@@ -12,14 +12,14 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/02/2020
 ms.author: jeedes
-ms.openlocfilehash: a4cfcf20fc7a6a3532f65c3e797da6c876844d2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 349a9920adc0d9353ee8e8e821f54bc2ea2f2616
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76985576"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wdesk"></a>Öğretici: Wdesk ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -181,6 +181,10 @@ Bu bölümde, Britta Simon'ın Wdesk'e erişim izni vererek Azure tek oturum aç
 
     ![Tek İşaret-On'u Yapılandır](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig2.png)
 
+1. **SAML Kullanıcı Kimliği Ayarları**altında, **SAML Kullanıcı Kimliği Wdesk Kullanıcı Adı olduğunu**kontrol edin.
+
+    ![Tek İşaret-On'u Yapılandır](./media/wdesk-tutorial/wdesk-username.png)
+
 4. **Genel Ayarlar**altında, **Etkinleştir MESLEK Tek İşareti:'yi kontrol edin:**
 
     ![Tek İşaret-On'u Yapılandır](./media/wdesk-tutorial/tutorial_wdesk_ssoconfig3.png)
@@ -223,7 +227,7 @@ Azure AD kullanıcılarının Wdesk'te oturum açabilmeleri için Wdesk'te oturu
    
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser1.png)  
 
-5. **Kullanıcı** metin kutusuna, beğen brittasimon@contoso.com kullanıcı adını girin ve **Devam** düğmesini tıklatın.
+5. **Kullanıcı** metin kutusuna, beğen b.simon@contoso.com kullanıcı adını girin ve **Devam** düğmesini tıklatın.
 
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser3.png)
 
@@ -231,9 +235,9 @@ Azure AD kullanıcılarının Wdesk'te oturum açabilmeleri için Wdesk'te oturu
   
     ![Azure AD test kullanıcısı oluşturma](./media/wdesk-tutorial/createuser4.png)
  
-    a. **E-posta** metin kutusuna, kullanıcının brittasimon@contoso.come-postasını girin.
+    a. **E-posta** metin kutusuna, kullanıcının b.simon@contoso.come-postasını girin.
 
-    b. **Ad metin** kutusuna, **Britta**gibi kullanıcının ilk adını girin.
+    b. **Ad metin** kutusuna, **B**gibi kullanıcının ilk adını girin.
 
     c. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 35116ca2c1792b7a94e5f4078d5e213a65eee5de
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 4e960a2dee87db77647ba1596a9c22138c64d15c
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80658790"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80671783"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -17,7 +17,7 @@ Başlamadan önce:
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
 ## <a name="open-your-project-in-visual-studio"></a>Görsel Stüdyo'da projenizi açın

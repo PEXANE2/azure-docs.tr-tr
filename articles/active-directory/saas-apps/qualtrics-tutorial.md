@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory entegrasyonu ile Qualtrics | Microsoft Dokümanlar'
-description: Azure Active Directory ve Qualtrics arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
+title: 'Öğretici: SAP Qualtrics ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve SAP Qualtrics arasında tek oturum açma yı nasıl yapılandırılayarıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,198 +11,157 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/27/2019
+ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 1c409c58e023c1919cf7b59794ebd21d90e82541
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d7a35f9f366f45a111aa7111501c9261ecbfa87e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093472"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667515"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Öğretici: Azure Active Directory entegrasyonu ile Qualtrics
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Öğretici: SAP Qualtrics ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu eğitimde, Qualtrics'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
-Qualtrics'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
+Bu eğitimde, SAP Qualtrics'in Azure Etkin Dizin (Azure AD) ile nasıl entegre edileceğinizi öğreneceksiniz. SAP Qualtrics'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD'de Qualtrics'e erişimi olan denetimi yapabilirsiniz.
-* Kullanıcılarınızın Azure REKLAM hesaplarıyla otomatik olarak Qualtrics (Tek Oturum Açma) oturum açmalarını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
+* SAP Qualtrics'e erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla SAP Qualtrics'te otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD tümleştirmesini Qualtrics ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü alabilirsiniz
-* Qualtrics tek oturum açma özellikli abonelik
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* SAP Qualtrics tek oturum açma (SSO) aboneliği ni sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Qualtrics **SP** başlatılan SSO destekler
+* SAP Qualtrics, **SP** ve **IDP'nin** başlattığı SSO'ya destek veriyor
+* SAP Qualtrics **Just In Time** kullanıcı sağlama desteği
+* SAP Qualtrics'i yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
-* Qualtrics **Just In Time** kullanıcı sağlama destekler
+## <a name="adding-sap-qualtrics-from-the-gallery"></a>Galeriden SAP Qualtrics ekleme
 
-## <a name="adding-qualtrics-from-the-gallery"></a>Galeriden Qualtrics ekleme
+SAP Qualtrics'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden SAP Qualtrics'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-Qualtrics'in Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Qualtrics eklemeniz gerekir.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **SAP Qualtrics** yazın.
+1. Sonuç panelinden **SAP Qualtrics'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-**Galeriden Qualtrics eklemek için aşağıdaki adımları gerçekleştirin:**
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-qualtrics"></a>SAP Qualtrics için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak SAP Qualtrics ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile SAP Qualtrics'teki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
+Azure AD SSO'yu SAP Qualtrics ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. SAP **[Qualtrics SSO'yu yapılandırır](#configure-sap-qualtrics-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[SAP Qualtrics test kullanıcısını oluşturun](#create-sap-qualtrics-test-user)** - kullanıcının Azure AD gösterimine bağlı SAP Qualtrics'teki B.Simon'ın bir örneğine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+1. Azure [portalında,](https://portal.azure.com/) **SAP Qualtrics** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-4. Arama kutusunda, **Qualtrics**yazın, sonuç panelinden **Qualtrics'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-     ![Sonuç listesindeki qualtrics](common/search-new-app.png)
+1. **SAML** ile tek oturum açma'da, **Uygulamayı IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
+    
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
+    `https://< DATACENTER >.qualtrics.com`
+   
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
 
-Bu bölümde, Azure AD tek oturum açma işlemini **Britta Simon**adlı bir test kullanıcısına göre Qualtrics ile yapılandırıp test esiniz.
-Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Qualtrics'teki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
+    `https://< DATACENTER >.qualtrics.com/login/v1/sso/saml2/default-sp`
 
-Azure AD oturumlarını Qualtrics ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
+    c. **Röle Durumu** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
-2. Uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[Qualtrics Single Sign-On](#configure-qualtrics-single-sign-on)** 'u yapılandırın.
-3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
-4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-5. **[Qualtrics test kullanıcıoluşturun](#create-qualtrics-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı Qualtrics Britta Simon bir meslektaşı olması.
-6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
+    `https://< brandID >.< DATACENTER >.qualtrics.com`
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
+    URL metin kutusunda **Oturum Aç'ta** aşağıdaki deseni kullanarak bir URL yazın:
 
-Azure AD oturumaçmayı Qualtrics ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
-
-1. Azure [portalında,](https://portal.azure.com/) **Qualtrics** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
-
-    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
-
-    ![Tek oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
-
-    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
-
-4. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Qualtrics Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier.png)
-
-    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.qualtrics.com`
-
-    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
-
-    | |
-    |--|
-    | `https://<companyname>.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
-    | `https://<companyname>.co1.qualtrics.com/WRSAML/simplesaml/www/module.php/saml/sp/metadata.php/default-sp`|
-    | |
+    `https://< brandID >.< DATACENTER >.qualtrics.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Qualtrics Müşteri destek ekibine](https://www.qualtrics.com/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL'de gerçek Oturum Aç, Tanımlayıcı, Yanıt URL'si ve Röle Durumu ile güncelleştirin. Bu değerleri almak için [Qualtrics Müşteri destek ekibine](https://www.qualtrics.com/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
+1. **SAML ile Tek Oturum** Açma sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-6. **Qualtrics'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-    a. Oturum Açma URL’si
-
-    b. Azure AD Tanımlayıcısı
-
-    c. Giriş URL'si
-
-### <a name="configure-qualtrics-single-sign-on"></a>Qualtrics Tek İşaret-On Yapıla
-
-**Qualtrics** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve azure portalından uygun kopyalanmış URL'leri [Qualtrics destek ekibine](https://www.qualtrics.com/support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
-
-1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
-
-    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
-
-    ![Yeni kullanıcı Düğmesi](common/new-user.png)
-
-3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanında **BrittaSimon**girin.
-  
-    b. Kullanıcı **adı** alanı brittasimon@yourcompanydomain.extensiontüründe. Örneğin, BrittaSimon@contoso.com
-
-    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur'u**tıklatın.
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Britta Simon'ın Qualtrics'e erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
+Bu bölümde, B.Simon'ın SAP Qualtrics'e erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Qualtrics'i**seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **SAP Qualtrics'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-2. Uygulamalar listesinde **Qualtrics'i**seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Uygulamalar listesindeki Qualtrics bağlantısı](common/all-applications.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+## <a name="configure-sap-qualtrics-sso"></a>SAP Qualtrics SSO'nun yapılandırılması
 
-4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
+**SAP Qualtrics** tarafında tek oturum açma yapılandırmak için, kopyalanan **App Federation Metadata Url'sini** Azure portalından SAP [Qualtrics destek ekibine](https://www.qualtrics.com/support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+### <a name="create-sap-qualtrics-test-user"></a>SAP Qualtrics test kullanıcıoluşturma
 
-5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+Bu bölümde, Britta Simon adlı bir kullanıcı SAP Qualtrics oluşturulur. SAP Qualtrics, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. SAP Qualtrics'te bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
-6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-
-7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
-
-### <a name="create-qualtrics-test-user"></a>Qualtrics test kullanıcısı oluşturma
-
-Bu bölümde, Britta Simon adlı bir kullanıcı Qualtrics oluşturulur. Qualtrics, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Qualtrics'te zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
-
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+## <a name="test-sso"></a>Test SSO 
 
 Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Access Paneli'ndeki Qualtrics karosu tıklattığınızda, SSO'yu kurduğunuz Qualtrics'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim Paneli'ndeki SAP Qualtrics karosu tıklattığınızda, SSO'yu kurduğunuz SAP Qualtrics'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+## <a name="additional-resources"></a>Ek kaynaklar
 
 - [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD ile SAP Qualtrics'i deneyin](https://aad.portal.azure.com/)
+
+- [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [SAP Qualtrics'i gelişmiş görünürlük ve kontrollerle nasıl koruyulur?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

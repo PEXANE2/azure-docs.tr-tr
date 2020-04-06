@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e2e3c7763a13c8850554b079a426ed4172b74d28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb173bcbf7cd163dca16c211d45018e0fe056edd
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599281"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666846"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Dosyalarında Azure Etkin Dizin Etki Alanı Hizmetleri kimlik doğrulamasını etkinleştirme
 
@@ -61,22 +61,22 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD DS Kimlik Doğrulamas�
 
 Ardından, Azure AD kimlik bilgileriyle Azure Dosyaları kaynaklarına erişim izni vermek için aşağıdaki leri yapın:
 
-- Depolama hesabınızın ilgili Azure AD DS dağıtımına kaydolması için Depolama hesabınız için Kobİ üzerinden Azure AD DS kimlik doğrulamasını etkinleştirin.
-- Bir Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) bir paylaşım için erişim izinleri atayın.
-- Dizinler ve dosyalar için NTFS izinlerini SMB üzerinden yapılandırın.
-- Etki alanı birleştirilmiş vm'den Azure dosya paylaşımını monte edin.
+1. Depolama hesabınızın ilgili Azure AD DS dağıtımına kaydolması için Depolama hesabınız için Kobİ üzerinden Azure AD DS kimlik doğrulamasını etkinleştirin.
+2. Bir Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) bir paylaşım için erişim izinleri atayın.
+3. Dizinler ve dosyalar için NTFS izinlerini SMB üzerinden yapılandırın.
+4. Etki alanı birleştirilmiş vm'den Azure dosya paylaşımını monte edin.
 
 Aşağıdaki diyagram, Azure Dosyaları için SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için uçlardan uca iş akışını göstermektedir.
 
 ![Azure Dosyaları iş akışı için SPK üzerinden Azure AD'yi gösteren diyagram](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="enable-azure-ad-ds-authentication-for-your-account"></a>Hesabınız için Azure AD DS kimlik doğrulamasını etkinleştirme
+## <a name="1-enable-azure-ad-ds-authentication-for-your-account"></a>1. Hesabınız için Azure AD DS kimlik doğrulamasını etkinleştirme
 
 Azure Dosyaları için SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için, Azure portalı, Azure PowerShell veya Azure CLI'yi kullanarak depolama hesaplarında bir özellik ayarlayabilirsiniz. Bu özelliği nisbeten "etki alanı birleştirme" ile ilişkili Azure AD DS dağıtımıyla ayarlama. Azure AD DS kimlik doğrulaması, depolama hesabındaki tüm yeni ve varolan dosya paylaşımları için etkinleştirilir.
 
 Azure AD DS kimlik doğrulamasını SMB üzerinden etkinleştirebileceğinizi ancak Azure AD DS'yi Azure AD kiracınıza başarıyla dağıttıktan sonra kullanabileceğinizi unutmayın. Daha fazla bilgi için [ön koşullara](#prerequisites)bakın.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 [Azure portalı](https://portal.azure.com)ile SMB üzerinden Azure AD DS kimlik doğrulamasını etkinleştirmek için aşağıdaki adımları izleyin:
 
@@ -135,7 +135,7 @@ az storage account update -n <storage-account-name> -g <resource-group-name> --e
 
 [!INCLUDE [storage-files-aad-permissions-and-mounting](../../../includes/storage-files-aad-permissions-and-mounting.md)]
 
-Artık Azure AD DS kimlik doğrulamasını Kobİ üzerinden başarıyla etkinleştirdin ve Azure AD kimliğiyle Azure dosya paylaşımına erişim sağlayan özel bir rol atadınız. Ek kullanıcılara dosya paylaşımınıza erişim izni vermek için, kimlik kullanmak için [erişim izinlerini atayın](#assign-access-permissions-to-an-identity) yönergelerini izleyin ve [SMB bölümleri üzerinden NTFS izinlerini yapılandırın.](#configure-ntfs-permissions-over-smb)
+Artık Azure AD DS kimlik doğrulamasını Kobİ üzerinden başarıyla etkinleştirdin ve Azure AD kimliğiyle Azure dosya paylaşımına erişim sağlayan özel bir rol atadınız. Ek kullanıcılara dosya paylaşımınıza erişim izni vermek için, kimlik kullanmak için [erişim izinlerini atayın](#2-assign-access-permissions-to-an-identity) yönergelerini izleyin ve [SMB bölümleri üzerinden NTFS izinlerini yapılandırın.](#3-configure-ntfs-permissions-over-smb)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -7,20 +7,24 @@ ms.topic: overview
 ms.date: 03/10/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a7bb7939921bfcc3a870193cb9025a8f3dff72c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aff6f99c119ba2854fd7923d2a15efb2e1a6b601
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78969125"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666807"
 ---
 # <a name="what-is-azure-files"></a>Azure Dosyaları nedir?
 Azure Dosyaları bulutta tamamen yönetilen dosya paylaşımları sunar. Bu dosyalara sektör standardı olan [Sunucu İleti Bloğu (SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) aracılığıyla erişilebilir. Azure dosya paylaşımları Windows, Linux ve macOS bulut ve şirket içi dağıtımları tarafından aynı anda bağlanabilir. Azure dosya paylaşımları ayrıca verilerin kullanıldığı yerin yakınlarında hızlı erişim sağlamak için Azure Dosya Eşitleme ile Windows Server’larda önbelleğe alınabilir.
 
 ## <a name="videos"></a>Videolar
-| Azure Dosya Eşitleme Tanıtımı (2 dk.) | Eşitleme ile Azure Dosyaları (Ignite 2017) (85 dk.)  |
+| Azure Dosya Eşitleme ile KarşıNızda | Eşitlenmiş Azure Dosyaları (Ignite 2019)  |
 |-|-|
-| [![Azure Dosya Senkronizasyonu videosunun ekran yayını - oynatmak için tıklayın!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Sync sunusu ile Azure Dosyaları Screencast - oynamak için tıklayın!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/watch?v=GMzh2M66E9o) |
+| [![Azure Dosya Senkronizasyonu videosunun ekran yayını - oynatmak için tıklayın!](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Sync sunusu ile Azure Dosyaları Screencast - oynamak için tıklayın!](./media/storage-files-introduction/ignite-2018-video.png)](https://www.youtube.com/embed/6E2p28XwovU) |
+
+Azure Dosyaları'nın yaygın kullanım durumlarına ilişkin bazı videolar şunlardır:
+* [Dosya sunucunuzu sunucusuz bir Azure Dosya Paylaşımı ile değiştirme](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
+* [AD kimlik doğrulamadan yararlanarak Windows Sanal Masaüstü'ndeki Azure Dosyalarındaki FSLogix profil kapsayıcılarıyla başlarken](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
 ## <a name="why-azure-files-is-useful"></a>Azure Dosyaları neden faydalıdır?
 Azure dosya paylaşımları şunları yapmak için kullanılabilir:

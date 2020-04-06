@@ -8,29 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 3e0e0291ff855b4502224466e17696a4fe668c2a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655996"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80666780"
 ---
-# <a name="partial-term-search-in-azure-cognitive-search-queries-wildcard-regex-fuzzy-search-patterns"></a>Azure Bilişsel Arama sorgularında kısmi süreli arama (joker karakter, regex, bulanık arama, desenler)
+# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Özel karakterlere sahip kısmi süreli arama ve desenler - Azure Bilişsel Arama (joker karakter, regex, desenler)
 
-*Kısmi terim araması,* bir dizenin ilk, son veya iç kısımları gibi terim parçalarından oluşan sorguları veya genellikle tire veya kesikler gibi özel karakterlerle ayrılmış parçaların birleşiminden oluşan bir desen anlamına gelir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
+*Kısmi terim araması,* bir dizenin ilk, son veya iç kısımları gibi terim parçalarından oluşan sorguları ifade eder. *Desen,* bazen sorgunun bir parçası olan tire veya kesikler gibi özel karakterlerle parçaların bir birleşimi olabilir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
 
-Dizin kendisi genellikle kısmi dize ve desen eşleştirme için elverişli bir şekilde terimleri depolamak değil, çünkü kısmi arama sorunlu olabilir. Dizin oluşturmanın metin çözümleme aşamasında, özel karakterler atılır, bileşik ve bileşik dizeleri bölünür ve eşleme bulununca desen sorgularının başarısız olması gerekir. Örneğin, bu içerik `+1 (425) 703-6214`dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
+Dizin desen eşleştirme için gerekli biçimde terimler yoksa kısmi arama sorunlu olabilir. Dizin oluşturmanın metin çözümleme aşamasında, varsayılan standart çözümleyici kullanılarak, özel karakterler atılır, bileşik ve bileşik dizeleri ayrılır, hiçbir eşleşme bulununca desen sorguları başarısız olur. Örneğin, bu içerik `+1 (425) 703-6214`dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
 
-Çözüm, kısmi arama senaryolarını destekleyebilmeniz için bu dizelerin bozulmamış sürümlerini dizinde depolamaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
+Çözüm, kısmi terimleri ve desenleri destekleyebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dize yi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da kısmi arama nedir
 
-Azure Bilişsel Arama'da kısmi arama şu formlarda kullanılabilir:
+Azure Bilişsel Arama'da kısmi arama ve desen şu formlarda kullanılabilir:
 
 + [Önek arama](query-simple-syntax.md#prefix-search), `search=cap*`örneğin , "Cap'n Jack's Waterfront Inn" veya "Gacc Capital" ile eşleşen. Önek araması için basit sorgu sözdizimini kullanabilirsiniz.
-+ [Joker karakter araması](query-lucene-syntax.md#bkmk_wildcard) veya soneki de dahil olmak üzere katışılmış bir dize veya parçaları arayan [normal ifadeler.](query-lucene-syntax.md#bkmk_regex) Örneğin, "alfanümerik" terimi göz önüne alındığında, bu`search=/.*numeric.*/`terimdeki sonek sorgusu eşleşmesi için joker karakter araması ( ) kullanırsınız. Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir.
 
-İstemci uygulamanızda yukarıdaki sorgu türlerinden herhangi biri gerektiğinde, dizininizde gerekli içeriğin bulunduğundan emin olmak için bu makaledeki adımları izleyin.
++ [Joker karakter araması](query-lucene-syntax.md#bkmk_wildcard) veya soneki de dahil olmak üzere katışılmış bir dize veya parçaları arayan [normal ifadeler.](query-lucene-syntax.md#bkmk_regex) Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir. 
+
+  Kısmi süreli aramanın bazı örnekleri şunlardır: "Alfasayısal" terimi verilen sonek sorgusunda, eşleşme bulmak için joker karakter`search=/.*numeric.*/`araması () kullanırsınız. URL parçası gibi karakterleri içeren kısmi bir terim için kaçış karakterleri eklemeniz gerekebilir. JSON'da, bir `/` ileri eğik `\`çizgi geriye doğru eğik çizgi ile kaçar. Bu nedenle, `search=/.*microsoft.com\/azure\/.*/` URL parçası "microsoft.com/azure/" için sözdizimidir.
+
+Belirtildiği gibi, yukarıdaki tüm dizin standart çözümleyici sağlamaz desen eşleştirme, elverişli bir biçimde dizeleri içerir gerektirir. Bu makaledeki adımları izleyerek, bu senaryoları desteklemek için gerekli içeriğin bulunduğundan emin olabilirsiniz.
 
 ## <a name="solving-partial-search-problems"></a>Kısmi arama sorunlarını çözme
 

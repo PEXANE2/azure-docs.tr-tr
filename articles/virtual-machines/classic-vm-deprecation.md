@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: 764567bffd2a08ebb5beb17e3063998848b3f110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e56aa5ec073aadc2a16d53c266d33255a34077cb
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127341"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668801"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>IaaS kaynaklarınızı 1 Mart 2023'e kadar Azure Kaynak Yöneticisi'ne taşıyın 
 
@@ -45,6 +45,6 @@ Aşağıdaki Azure hizmetleri ve **NOT** işlevleri bu emeklilikten etkilenmez:
 
 - Daha fazla bilgi [için, azure kaynak yöneticisi geçişi için klasik hakkında sık sorulan sorulara](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq) bakın
 
-- Teknik sorular ve sorunlar için [desteğe başvurun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+- Teknik sorular, sorunlar ve abonelik beyaz liste [iletişim desteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)için.
 
 - SSS ve geri bildirimin parçası olmayan diğer sorularınız için aşağıdaki yorumu yapın.

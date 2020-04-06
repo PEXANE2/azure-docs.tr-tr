@@ -1,6 +1,6 @@
 ---
-title: Azure Çok Faktörlü Kimlik Doğrulamayı Dağıtma - Azure Etkin Dizini
-description: Microsoft Azure Çok Faktörlü Kimlik Doğrulama dağıtım planlaması
+title: Azure Çok Faktörlü Kimlik Doğrulama için dağıtım hususları
+description: Azure Çok Faktörlü Kimlik Doğrulama'nın başarılı bir şekilde uygulanması için dağıtım konuları ve stratejisi hakkında bilgi edinin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,18 +11,25 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ae58482ced524958ffcdd6094ae57856d088eaf
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653950"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80667336"
 ---
-# <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Bulut tabanlı Azure Multi-Factor Authentication dağıtımı planlama
+# <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Çok Faktörlü Kimlik Doğrulama dağıtımı planlama
 
 İnsanlar giderek karmaşıklaşan senaryolarda örgütsel kaynaklara bağlanıyor. İnsanlar, genellikle birden çok platformda akıllı telefonlar, tabletler, bilgisayarlar ve dizüstü bilgisayarlar kullanarak şirket ağında ve şirket dışında kuruluşa ait, kişisel ve ortak aygıtlardan bağlanır. Her zaman birbirine bağlı, çok cihazlı ve çok platformlu bu dünyada, kullanıcı hesaplarının güvenliği her zamankinden daha önemlidir. Parolalar, karmaşıklıkları ne olursa olsun, aygıtlar, ağlar ve platformlar arasında kullanılan parolalar, özellikle kullanıcılar hesaplar arasında parolaları yeniden kullanma eğiliminde olduklarında, kullanıcı hesabının güvenliğini sağlamak için artık yeterli değildir. Gelişmiş kimlik avı ve diğer sosyal mühendislik saldırıları, kullanıcı adlarının ve parolaların karanlık web'de yayınlanmasına ve satılmasına neden olabilir.
 
 [Azure Çok Faktörlü Kimlik Doğrulama (MFA),](concept-mfa-howitworks.md) verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimini kullanarak ek bir güvenlik katmanı sağlar. Kuruluşlar, çözümü kendi özel gereksinimlerine uygun hale getirmek için [Koşullu Erişim'i](../conditional-access/overview.md) kullanabilir.
+
+Bu dağıtım kılavuzu, Azure Çok Faktörlü Kimlik Doğrulama dağıtımını nasıl planlayacağınızı ve sonra nasıl test edilebilmektedir.
+
+Azure Çok Faktörlü Kimlik Doğrulama'yı hızlı bir şekilde iş başında görmek ve ardından ek dağıtım hususlarını anlamak için geri gelmek için:
+
+> [!div class="nextstepaction"]
+> [Azure Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -173,7 +180,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
 
 Kullanıcılarınız kullanıcı başına etkin leştirilmiş ve zorunlu Azure Çok Faktörlü Kimlik Doğrulaması kullanılarak etkinleştirildiyse, aşağıdaki PowerShell Koşullu Erişim tabanlı Azure Çok Faktörlü Kimlik Doğrulamasına dönüştürme de size yardımcı olabilir.
 
-Bu PowerShell'i Bir İmKB penceresinde çalıştırın veya bir . PS1 dosyası yerel olarak çalışacak.
+Bu PowerShell'i Birİm penceresinde `.PS1` çalıştırın veya yerel olarak çalışacak bir dosya olarak kaydedin.
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -317,7 +324,7 @@ Her AD FS sunucusunda, yerel bilgisayarı My Store'da, sertifikanın son kullanm
 
 Sertifikalarınızın geçerlilik süresi sona ermek üzereyse, [her AD FS sunucusunda yeni bir MFA sertifikası oluşturun ve doğrulayın.](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa#configure-the-ad-fs-servers)
 
-Aşağıdaki kılavuz, AD FS sunucularınızdaki Azure MFA sertifikalarını nasıl yöneteceğimize ayrıntılı olarak açıklanmaktadır. AD FS'yi Azure MFA ile yapılandırdığınızda, `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet üzerinden oluşturulan sertifikalar 2 yıl süreyle geçerlidir. Yenilenen sertifikaları, MFA hizmetindeki geçersiz kesintiler için sona ermeden önce yenileyin ve kurutun.
+Aşağıdaki kılavuz, AD FS sunucularınızdaki Azure MFA sertifikalarını nasıl yöneteceğimize ayrıntılı olarak açıklanmaktadır. AD FS'yi Azure MFA ile yapılandırdığınızda, `New-AdfsAzureMfaTenantCertificate` PowerShell cmdlet üzerinden oluşturulan sertifikalar iki yıl süreyle geçerlidir. Yenilenen sertifikaları, MFA hizmetindeki geçersiz kesintiler için sona ermeden önce yenileyin ve kurutun.
 
 ## <a name="implement-your-plan"></a>Planınızı uygulayın
 
@@ -357,6 +364,7 @@ Microsoft Destek Merkezi'ndeki [Sorun Giderme Azure Çok Faktörlü Kimlik Doğr
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Kimlik doğrulaması yöntemleri nelerdir?](concept-authentication-methods.md)
-* [Azure Çok Faktörlü Kimlik Doğrulama ve Azure AD self servis parola sıfırlama için yakınsama kaydını etkinleştirme](concept-registration-mfa-sspr-converged.md)
-* Neden bir kullanıcıdan MFA gerçekleştirmesi istendi veya istenmedi? [Azure Çok Faktörlü Kimlik Doğrulama belgesindeki Raporlar'daki Azure AD oturum açma raporuna](howto-mfa-reporting.md#azure-ad-sign-ins-report)bakın.
+Azure Çok Faktörlü Kimlik Doğrulama'yı iş başında görmek için aşağıdaki öğreticiyi tamamlayın:
+
+> [!div class="nextstepaction"]
+> [Azure Multi-Factor Authentication’ı etkinleştirme](tutorial-enable-azure-mfa.md)

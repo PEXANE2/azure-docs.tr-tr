@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti (AKS) kümesi ile HTTPS girişi oluşturma
+title: Otomatik TLS ile giriş oluşturma
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) kümesinde otomatik TLS sertifika oluşturma için Let's Encrypt kullanan bir NGINX giriş denetleyicisini nasıl yükleyip yapılandırılabildiğini öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: ece117d60ae3d7fd70c0972bb463340c5d38c9e1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: c98310bc5dc6b8f17403505cbcdd7e51355ca2b7
+ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637259"
+ms.lasthandoff: 04/05/2020
+ms.locfileid: "80668436"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) https giriş denetleyicisi oluşturma
 
