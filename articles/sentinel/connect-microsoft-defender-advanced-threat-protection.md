@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: ee2c917d02a442ebabc0e1b40bc245982af794f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 831baabcc26130d9b2c730afd85f2ed4b3842690
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588221"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756348"
 ---
 # <a name="connect-alerts-from-microsoft-defender-advanced-threat-protection"></a>Microsoft Defender Gelişmiş Tehdit Koruması uyarılarını bağlama 
 
 
 > [!IMPORTANT]
-> Microsoft Defender Gelişmiş Tehdit Koruması günlüklerinin alınması şu anda genel önizlemededir.
+> Microsoft Defender Gelişmiş Tehdit Koruması uyarılarının alınması şu anda genel önizlemededir.
 > Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 > Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
  
 
-Microsoft Defender Gelişmiş [Tehdit Koruması'ndan](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) uyarıları tek bir tıklamayla Azure Sentinel'e aktarabilirsiniz. Bu bağlantı, Microsoft Defender Gelişmiş Tehdit Koruması'ndaki uyarıları Azure Sentinel'e aktarabilmenizi sağlar. 
+[Microsoft Defender Gelişmiş Tehdit Koruması](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) konektörü, Microsoft Defender Gelişmiş Tehdit Koruması'ndan gelen uyarıları Azure Sentinel'e aktarmanızı sağlar. Bu, kuruluşunuzdaki güvenlik olaylarını daha kapsamlı bir şekilde analiz etmenizi ve etkili ve anında yanıt için oyun kitapları oluşturmanıza olanak tanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- Microsoft Defender Gelişmiş Tehdit Koruması için geçerli lisans, Microsoft Defender Gelişmiş Tehdit Koruması için lisans [sağlamayı doğrula ve Microsoft Defender Gelişmiş Tehdit Koruması için tam kurulumda](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)açıklandığı gibi etkinleştirilir. 
+- [Microsoft Defender ATP dağıtımını ayarla'da](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/licensing)açıklandığı gibi, Microsoft Defender Gelişmiş Tehdit Koruması için geçerli bir lisansa sahip olmalısınız. 
 - Azure Sentinel kiracısının yöneticisi veya güvenlik yöneticisi olmalısınız.
 
 

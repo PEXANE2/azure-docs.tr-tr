@@ -4,12 +4,12 @@ description: Visual Studio Code projenize bir çıktı bağlama ekleyerek Azure 
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 22f7df52e90a35a3ed9a26a7672f8354efc173e3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241335"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673503"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Visual Studio Kodunu kullanarak Azure Fonksiyonlarını Azure Depolama'ya bağlayın
 
@@ -52,9 +52,13 @@ Bu makalede, Visual Studio Code'tan Azure aboneliğinizde zaten oturum açmış 
 
 Sıra depolama çıktısı bağlama kullanıyorsanız, projeyi çalıştırmadan önce Depolama bağlayıcıları uzantısıyüklü olmalıdır. 
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
-[!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
+Projeniz, önceden tanımlanmış bir uzantı paketleri kümesini otomatik olarak yükleyen [uzantı demetlerini](functions-bindings-register.md#extension-bundles)kullanacak şekilde yapılandırılmıştır. 
+
+Uzantı demetleri, projenin kökündeki host.json dosyasında aşağıdaki gibi görünen etkinleştirilir:
+
+:::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
 ::: zone-end
 
@@ -74,7 +78,7 @@ Artık, depolama çıktısını projenize bağlayabilirsiniz.
 
 İşlevler'de, her `direction`bağlama `type`türü, `name` function.json dosyasında tanımlanması gereken bir , ve benzersiz bir bağlama gerektirir. Bu öznitelikleri tanımlama şekliniz işlev uygulamanızın diline bağlıdır.
 
-::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -83,6 +87,12 @@ Artık, depolama çıktısını projenize bağlayabilirsiniz.
 ::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+[!INCLUDE [functions-add-output-binding-java](../../includes/functions-add-output-binding-java.md)]
 
 ::: zone-end
 
@@ -111,8 +121,20 @@ Bağlama tanımlandıktan sonra, işlev `name` imzasında bir öznitelik olarak 
 ::: zone-end
 
 ::: zone pivot="programming-language-csharp"  
+
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+
 ::: zone-end  
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-storage-binding-java-code](../../includes/functions-add-storage-binding-java-code.md)]
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end  
+
+<!--- Local testing section --->
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
@@ -127,6 +149,12 @@ Bağlama tanımlandıktan sonra, işlev `name` imzasında bir öznitelik olarak 
 ::: zone-end
 
 Çıktı bağlama ilk kullanıldığında, Işlevler çalışma zamanı tarafından depolama hesabınızda **outqueue** adlı yeni bir kuyruk oluşturulur. Sıranın yeni iletiyle birlikte oluşturulduğunu doğrulamak için Depolama Gezgini'ni kullanırsınız.
+
+::: zone pivot="programming-language-java"  
+
+[!INCLUDE [functions-add-output-binding-java-test](../../includes/functions-add-output-binding-java-test.md)]
+
+::: zone-end
 
 ### <a name="connect-storage-explorer-to-your-account"></a>Depolama Gezgini’ni hesabınıza bağlama
 

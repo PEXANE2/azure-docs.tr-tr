@@ -11,12 +11,12 @@ ms.date: 02/19/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 87b33e91076f8f7f31740795f0ec05cea49a1e83
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631197"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744967"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Synapse SQL havuzu için veri yükleme stratejileri
 
@@ -24,7 +24,7 @@ Geleneksel SMP SQL havuzları, veri yüklemek için ayıklama, dönüştürme ve
 
 Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi kullanmak MPP'den yararlanır ve yüklemeden önce veri dönüşümü için gereken kaynakları ortadan kaldırır.
 
-SQL [havuzu, bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gibi popüler SQL Server seçenekleri de dahil olmak üzere birçok yükleme yöntemini desteklerken, verileri yüklemenin en hızlı ve en ölçeklenebilir yolu PolyBase harici tabloları ve [COPY deyimi](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (önizleme) üzerinden dir.
+SQL [havuzu, bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)gibi popüler SQL Server seçenekleri de dahil olmak üzere birçok yükleme yöntemini desteklerken, verileri yüklemenin en hızlı ve en ölçeklenebilir yolu PolyBase harici tabloları ve [COPY deyimi](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (önizleme) üzerinden dir.
 
 PolyBase ve COPY deyimi yle, Azure Blob depolama veya Azure Veri Gölü Deposu'nda depolanan harici verilere T-SQL dili üzerinden erişebilirsiniz. Yükleme yaparken en fazla esneklik için COPY deyimini kullanmanızı öneririz.
 
@@ -58,7 +58,7 @@ Verileri kaynak sisteminizden çıkarmak depolama konumuna bağlıdır.  Amaç, 
 
 PolyBase ve COPY deyimi ile UTF-8 ve UTF-16 kodlanmış sınırlandırılmış metin veya CSV dosyalarından veri yükleyebilirsiniz. Sınırlı metin veya CSV dosyalarına ek olarak, ORC ve Parke gibi Hadoop dosya biçimlerinden yükler. PolyBase ve COPY deyimi de Gzip ve Snappy sıkıştırılmış dosyalardan veri yükleyebilir.
 
-Genişletilmiş ASCII, sabit genişlik biçimi ve WinZip veya XML gibi iç içe formatlar desteklenmez. SQL Server'dan dışa aktarım yapıyorsunuzsa, verileri sınırlı metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
+Genişletilmiş ASCII, sabit genişlik biçimi ve WinZip veya XML gibi iç içe formatlar desteklenmez. SQL Server'dan dışa aktarım yapıyorsunuzsa, verileri sınırlı metin dosyalarına aktarmak için [bcp komut satırı aracını](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanabilirsiniz.
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Verileri Azure Blob depolama veya Azure Veri Gölü Deposu'na aktarın
 
@@ -141,10 +141,10 @@ PolyBase ile veri yüklemek için şu yükleme seçeneklerinden birini kullanabi
 
 ### <a name="other-loading-options"></a>Diğer yükleme seçenekleri
 
-PolyBase ve COPY deyimine ek olarak [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15) veya [SqlBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx)kullanabilirsiniz. bCP, Azure Blob depolama alanına girmeden doğrudan veritabanına yüklenir ve yalnızca küçük yükler için tasarlanmıştır.
+PolyBase ve COPY deyimine ek olarak [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) veya [SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanabilirsiniz. bCP, Azure Blob depolama alanına girmeden doğrudan veritabanına yüklenir ve yalnızca küçük yükler için tasarlanmıştır.
 
 > [!NOTE]
-> Bu seçeneklerin yük performansı Nın PolyBase ve COPY deyiminden daha yavaş olduğunu unutmayın.
+> Bu seçeneklerin yük performansı PolyBase ve COPY deyiminden daha yavaştır.
 
 ## <a name="5-transform-the-data"></a>5. Verileri dönüştürme
 

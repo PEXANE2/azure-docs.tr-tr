@@ -2,13 +2,13 @@
 title: Belge biçim yönergelerini içe aktarma - QnA Maker
 description: QnA kümelerini almak ve oluşturmak için URL türlerinin nasıl kullanıldığını anlayın.
 ms.topic: reference
-ms.date: 01/02/2020
-ms.openlocfilehash: 6a954f2fd607b70c6db256ab6dcc1dbcd7a5a473
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651844"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754897"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>İthal edilen belgeler ve URL'ler için biçimlendirme yönergeleri
 
@@ -20,6 +20,8 @@ Bir dosya veya URL aldıktan sonra, QnA Maker içeriğinizi [işaretleme biçimi
 
 İçeriğinizi doğrudan bilgi tabanınıza ekler veya değiştirirseniz, zengin metin içeriği oluşturmak veya yanıtta bulunan işaretleme biçimi içeriğini değiştirmek için **işaretleme biçimlendirmesini** kullanın. QnA Maker, içeriğinize zengin metin özellikleri getirmek için işaretleme biçiminin çoğunu destekler. Ancak, sohbet botu gibi istemci uygulaması aynı işaretleme biçimleri kümesini desteklemeyebilir. İstemci uygulamasının yanıt ları görüntülemesini sınamak önemlidir.
 
+[İçerik türlerinin ve örneklerin](./Concepts/content-types.md#file-and-url-data-types)tam listesine bakın.
+
 ## <a name="basic-document-formatting"></a>Temel belge biçimlendirme
 
 QnA Maker gibi görsel ipuçlarıdayalı dosyada bölümleri ve alt bölümleri ve ilişkileri tanımlar:
@@ -28,12 +30,6 @@ QnA Maker gibi görsel ipuçlarıdayalı dosyada bölümleri ve alt bölümleri 
 * yazı tipi stili
 * Numaralandırma
 * Renkler
-
-|Belge örnekleri|
-|--|
-||
-
-
 
 ## <a name="product-manuals"></a>Ürün kılavuzları
 
@@ -116,7 +112,8 @@ Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin ye
 * Başlığın ilk karakteri büyük harfle yazılmalı.
 * Bir başlığı soru işaretiyle bitirmeyin. `?`
 
+**Örnek belgeler**:<br>[Yüzey Pro (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso Faydaları (docx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso Faydaları (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
-|Belge örnekleri|
-|--|
-||
+## <a name="next-steps"></a>Sonraki adımlar
+
+[İçerik türlerinin ve örneklerin](./Concepts/content-types.md#file-and-url-data-types) tam listesini görün

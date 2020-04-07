@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: 46947579ea72e2199af116442472eec330b38009
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112337"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758350"
 ---
 Bu Postman tabanlı quickstart bilgi tabanından bir cevap alma ile size yol.
 
@@ -49,7 +49,7 @@ Postman yapılandırmak için bu yordamı kullanın, sonra POST gövde JSON yap�
 
 ## <a name="use-metadata-to-filter-answer"></a>Yanıta filtre lemek için meta verileri kullanma
 
-Önceki hızlı başlatmada, iki farklı soruyu ayırt etmek için iki QnA kümesine meta veriler eklenmiştir. Filtreyi yalnızca ilgili QnA kümesiyle sınırlamak için sorguya meta verileri ekleyin.
+Önceki hızlı başlatmada, iki farklı soruyu ayırt etmek için iki QnA çiftine meta veriler eklenmiştir. Filtreyi yalnızca ilgili QnA çiftiyle sınırlamak için sorguya meta verileri ekleyin.
 
 1. Postman'da, yalnızca json sorgusunu `strictFilters` değiştirerek özelliği ad/değer çiftinin ''in' ile birlikte `service:qna_maker`eklemesini Vücut JSON olmalıdır:
 

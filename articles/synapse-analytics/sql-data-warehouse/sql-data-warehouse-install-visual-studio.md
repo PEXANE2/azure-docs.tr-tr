@@ -12,12 +12,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b8e37a15f473e5777fe5412b785a0916bd78f095
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: f83ae9c8290a52381c8087b46da959d4723d7f4e
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655909"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745159"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 ile başlarken
 
@@ -32,7 +32,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT), aşağıdakileri yapmanıza
 
 ## <a name="install-visual-studio-2019"></a>Visual Studio 2019'u Yükle
 
-Visual Studio **16.3 ve üzerini**indirmek ve yüklemek için [Visual Studio 2019'u indirin][] ve yükleyin. Yükleme sırasında, veri depolama ve işleme iş yükünü seçin. Visual Studio 2019'da bağımsız SSDT kurulumuna artık gerek yok.
+Visual Studio **16.3 ve üzerini**indirmek ve yüklemek için [Visual Studio 2019'u indirin](https://visualstudio.microsoft.com/downloads/) ve yükleyin. Yükleme sırasında, veri depolama ve işleme iş yükünü seçin. Visual Studio 2019'da bağımsız SSDT kurulumuna artık gerek yok.
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT'de desteklenmeyen özellikler
 
@@ -43,18 +43,11 @@ Synapse SQL için özellik sürümlerisssSSDT desteği içermeyebilir zamanlar v
 - [COPY deyimi](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [İş yükü yönetimi](sql-data-warehouse-workload-management.md) - iş yükü grupları ve sınıflandırıcılar
 - [Satır düzeyi güvenlik](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-  - Özelliğin desteklenmesi için bir destek bileti gönderin veya [buraya](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) oy verin.
+  - Özelliğin desteklenmesi için bir destek bileti gönderin [veya oy verin.](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)
 - [Dinamik veri maskeleme](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-  - Özelliğin desteklenmesi için bir destek bileti gönderin veya [buraya](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) oy verin.
+   - Özelliğin desteklenmesi için bir destek bileti gönderin [veya oy verin.](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)
 - [Kısıtlamaları olan tablolar](sql-data-warehouse-table-constraints.md#table-constraints) desteklenmez. Bu tablo nesneleri için yapı eylemini "Yok" olarak ayarlayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Artık SSDT'nin en son sürümüne sahip olduğunuza göre, SQL havuzunuza [bağlanmaya](sql-data-warehouse-query-visual-studio.md) hazırsınız.
-
-<!--Other-->
-
-[Visual Studio 2019’u İndirin]: https://visualstudio.microsoft.com/downloads/
-[Installing Visual Studio]: https://msdn.microsoft.com/library/e2h7fzkw.aspx
-[SSDT Download]: https://msdn.microsoft.com/library/mt204009.aspx
-[UserVoice]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu

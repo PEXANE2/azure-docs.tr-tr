@@ -2,13 +2,13 @@
 title: Bilgi tabanını geliştirin - QnA Maker
 description: Aktif öğrenme ile bilgi tabanınızın kalitesini artırın. Varolan soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/06/2020
+ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474892"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756766"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi tabanında aktif öğrenme önerilen soruları kabul edin
 
@@ -33,7 +33,7 @@ Etkin Öğrenme, öneriyi onayladıktan sonra Bilgi Bankası'nı veya Arama Hizm
 
 1. Her QnA çifti, soruyu kabul `✔` `x` etmek veya önerileri reddetmek için bir onay işareti ile yeni soru alternatifleri önerir. Soruyu eklemek için onay işaretini seçin.
 
-    [![Yeşil onay işaretini veya kırmızı silme işaretini seçerek etkin öğrenmenin önerilen soru alternatiflerini seçin veya reddedin.](../media/improve-knowledge-base/accept-active-learning-suggestions.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![Yeşil onay işaretini veya kırmızı silme işaretini seçerek etkin öğrenmenin önerilen soru alternatiflerini seçin veya reddedin.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
     **Tümünü Ekle** veya **Tümünü Tümünü** Reddet'i seçerek _tüm önerileri_ ekleyebilir veya silebilirsiniz.
 

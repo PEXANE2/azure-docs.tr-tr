@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 67f863826a2e9eb1bffcb316754ad5c40a2f2bb1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e7aa0c402878c994aabe4e12d811a99e300d7e67
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583130"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743644"
 ---
 # <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics iş yükü sınıflandırması
 
@@ -36,7 +36,7 @@ Tüm ifadeler kaynak gerektirmedikleri veya yürütmeyi etkilemek için önem ge
 
 ## <a name="classification-process"></a>Sınıflandırma süreci
 
-Azure Synapse'deki Synapse SQL havuzu için sınıflandırma, bugün kullanıcıları [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)kullanarak kendisine atanan ilgili kaynak sınıfına atanan bir role atayarak elde edilir. Kaynak sınıfına giriş in ötesinde istekleri karakterize etme yeteneği bu yetenekle sınırlıdır. [Create WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) sözdizimi ile sınıflandırma için daha zengin bir yöntem artık kullanılabilir.  Bu sözdizimi ile Synapse SQL havuzu kullanıcıları önem atayabilir ve `workload_group` parametre aracılığıyla bir isteğe ne kadar sistem kaynağı atanabilir. 
+Azure Synapse'deki Synapse SQL havuzu için sınıflandırma, bugün kullanıcıları [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanarak kendisine atanan ilgili kaynak sınıfına atanan bir role atayarak elde edilir. Kaynak sınıfına giriş in ötesinde istekleri karakterize etme yeteneği bu yetenekle sınırlıdır. [Create WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimi ile sınıflandırma için daha zengin bir yöntem artık kullanılabilir.  Bu sözdizimi ile Synapse SQL havuzu kullanıcıları önem atayabilir ve `workload_group` parametre aracılığıyla bir isteğe ne kadar sistem kaynağı atanabilir.
 
 > [!NOTE]
 > Sınıflandırma istek bazında değerlendirilir. Tek bir oturumdaki birden çok istek farklı olarak sınıflandırılabilir.
@@ -76,7 +76,7 @@ Sizin adınıza oluşturulan sistem sınıflandırıcıları, iş yükü sınıf
 - Yeni sınıflandırma sözdizimini test etmek için, DBAUser'in üyesi olduğu veritabanı rolü DBARole'de, onları mediumrc ve yüksek öneme göre eşlemeleri için oluşturulmuş bir sınıflandırıcı vardır.
 - DBAUser oturum açıp bir sorgu çalıştırdığında, sorgu daha büyük türe atanır. Çünkü bir kullanıcı rol üyeliğinden önce gelir.
 
-Sorun giderme yanlış sınıflandırmasını basitleştirmek için, iş yükü sınıflayıcıları oluştururken kaynak sınıfı rol eşlemelerini kaldırmanızı tavsiye ettik.  Aşağıdaki kod varolan kaynak sınıfı rol üyeliklerini döndürür.  İlgili kaynak sınıfından döndürülen her üye adı için [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) çalıştırın.
+Sorun giderme yanlış sınıflandırmasını basitleştirmek için, iş yükü sınıflayıcıları oluştururken kaynak sınıfı rol eşlemelerini kaldırmanızı tavsiye ettik.  Aşağıdaki kod varolan kaynak sınıfı rol üyeliklerini döndürür.  İlgili kaynak sınıfından döndürülen her üye adı için [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) çalıştırın.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -92,7 +92,7 @@ sp_droprolemember '[Resource Class]', membername
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sınıflandırıcı oluşturma hakkında daha fazla bilgi için [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)'ye bakın.  
+- Sınıflandırıcı oluşturma hakkında daha fazla bilgi için [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'ye bakın.  
 - İş yükü sınıflandırıcısı oluşturma konusunda Hızlı Başlangıç'a bakın [İş yükü sınıflandırıcısı oluşturun.](quickstart-create-a-workload-classifier-tsql.md)
 - [İş Yükü Önemini Yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve İş Yükü Yönetimini nasıl [yönetip izleyeceğini](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)görmek için nasıl yapılan makalelere bakın.
-- Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) bakın.
+- Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.

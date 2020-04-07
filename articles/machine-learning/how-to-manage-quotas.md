@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 03/05/2020
-ms.openlocfilehash: 17a4652604c0faa804d24530869aac0848c972b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399149"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756595"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure kaynakları için kotaları yönetme ve talep etme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ Kullanılabilir kaynaklar:
 
 + Bölge başına kümelerin varsayılan sınırı 200'tür. Bunlar bir eğitim kümesi ve bir işlem örneği (kota amaçları için tek bir düğüm kümesi olarak kabul edilir) arasında paylaşılır. Bu sınırın üzerinde bir artış talep etmek istiyorsanız Azure desteğine başvurun.
 
-+ **Vurulduktan sonra aşılamayacak diğer katı sınırlar vardır.
++ Bir kez vurmak aşılamaz diğer sıkı sınırları vardır.
 
 | **Kaynak** | **Maksimum limit** |
 | --- | --- |

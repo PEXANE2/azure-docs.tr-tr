@@ -1,14 +1,14 @@
 ---
 title: Azure portalından Linux'ta bir işlev uygulaması oluşturma
 description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İşlevinizi oluşturma hakkında bilgi edinin.
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/28/2019
-ms.openlocfilehash: 1492188f72eb4a691ddceb78aa269601f192e467
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2de36faf07ad661ff8817adc48b726f54990ceb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76963844"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754122"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure Uygulama Hizmeti planında Linux'ta bir işlev uygulaması oluşturma
 
@@ -40,12 +40,12 @@ Linux’ta işlevlerinizin yürütülmesini barındıran bir işlev uygulamasın
     | **Abonelik** | Aboneliğiniz | Bu yeni işlev uygulamasının oluşturulduğu abonelik. | 
     | **[Kaynak Grubu](../azure-resource-manager/management/overview.md)** |  myResourceGroup | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
     | **İşletim Sistemi** | Linux | Fonksiyon uygulaması Linux üzerinde çalışır. |
-    | **Yayımlamak** | Kod | **Runtime** Stack'iniz için varsayılan Linux kapsayıcısı kullanılır. Sağlamanız gereken tek şey işlev uygulaması proje kodunuzdur. Başka bir seçenek özel bir [Docker görüntü](functions-create-function-linux-custom-image.md)yayımlamaktır. |
+    | **Yayımlama** | Kod | **Runtime** Stack'iniz için varsayılan Linux kapsayıcısı kullanılır. Sağlamanız gereken tek şey işlev uygulaması proje kodunuzdur. Başka bir seçenek özel bir [Docker görüntü](functions-create-function-linux-custom-image.md)yayımlamaktır. |
     | **[Hosting planı](functions-scale.md)** | App Service planı | Kaynakların işlev uygulamanıza nasıl ayrılacağını tanımlayan barındırma planı. Bir Uygulama Hizmeti planında çalıştırdığınızda, [işlev uygulamanızın ölçeklemesini](functions-scale.md)kontrol edebilirsiniz.  |
     | **Uygulama hizmeti planı/Konumu** | Plan oluşturma | **Yeni Oluştur'u** seçin ve bir Uygulama **Hizmeti planı** adı kaynağı oluşturun. Yakınınızdaki bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlere yakın bir konumda bir **Konum** seçin. İstediğiniz **[Fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/app-service/linux/)** seçin. <br/>Aynı Uygulama Hizmeti planında hem Linux hem de Windows işlev uygulamalarını çalıştıramazsınız. |
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
     | **[Depolama](../storage/common/storage-account-create.md)** |  Genel olarak benzersiz bir ad |  İşlev uygulamanız tarafından kullanılan bir depolama hesabı oluşturun. Depolama hesabı adları 3 ile 24 karakter arasında olmalı ve yalnızca sayıyla küçük harf içermelidir. Dilerseniz [depolama hesabı gereksinimlerini](storage-considerations.md#storage-account-requirements) karşılayan mevcut bir hesap da kullanabilirsiniz. |
-    | **[Uygulama Öngörüleri](functions-monitoring.md)** | Etkin | Uygulama Öngörüleri varsayılan olarak devre dışı bırakılır. Uygulama Öngörüleri entegrasyonunu şimdi etkinleştirmenizi ve Uygulama Hizmeti planı konumunuza yakın bir barındırma konumu seçmenizi öneririz. Bunu daha sonra yapmak istiyorsanız, [Azure İşlerini İzle'ye](functions-monitoring.md)bakın.  |
+    | **[Application Insights](functions-monitoring.md)** | Etkin | Uygulama Öngörüleri varsayılan olarak devre dışı bırakılır. Uygulama Öngörüleri entegrasyonunu şimdi etkinleştirmenizi ve Uygulama Hizmeti planı konumunuza yakın bir barındırma konumu seçmenizi öneririz. Bunu daha sonra yapmak istiyorsanız, [Azure İşlerini İzle'ye](functions-monitoring.md)bakın.  |
 
 3. İşlev uygulamasını sağlamak ve dağıtmak için **Oluştur**'u seçin.
 

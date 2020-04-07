@@ -11,12 +11,12 @@ ms.date: 11/4/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a249dfc4f04fbd7b6b73a0e9f37d53106bf82efd
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633335"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745180"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak Sınıflarını İş Yükü Gruplarına Dönüştürme
 
@@ -53,7 +53,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Sınıflandırıcı yı oluşturma
 
-Daha önce, kaynak sınıflarına sorguların eşleme [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapıldı.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarına eşlemek için [CREATE WORKLOAD CLASSIFIER](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql) sözdizimini kullanın.  sp_addrolemember kullanmak, yalnızca kaynakları bir girişe dayalı bir isteğe eşlemenize olanak sağlar.  Bir sınıflandırıcı, oturum açmanın yanı sıra şunları gibi ek seçenekler de sağlar:
+Daha önce, kaynak sınıflarına sorguların eşleme [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)ile yapıldı.  Aynı işlevselliği elde etmek ve istekleri iş yükü gruplarına eşlemek için [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) sözdizimini kullanın.  sp_addrolemember kullanmak, yalnızca kaynakları bir girişe dayalı bir isteğe eşlemenize olanak sağlar.  Bir sınıflandırıcı, oturum açmanın yanı sıra şunları gibi ek seçenekler de sağlar:
     - etiket
     - oturum
     - zaman Aşağıdaki örnek, oturum açma `AdfLogin` dan yukarıda oluşturulan iş yükü `factloads` grubuna `wgDataLoads` ayarlanmış [OPTION LABEL](sql-data-warehouse-develop-label.md) sorguları atar.

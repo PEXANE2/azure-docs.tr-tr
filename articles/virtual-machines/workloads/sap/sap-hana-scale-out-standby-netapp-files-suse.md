@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: c594ef3a62d45fb68002ec2b21fb89115f7a30af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b584341931299e408b596bd6a66d1da4580cfffe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77565817"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754785"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server'da Azure NetApp Dosyalarını kullanarak Azure VM'lerinde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtma 
 
@@ -83,7 +83,6 @@ Başlamadan önce aşağıdaki SAP notlarına ve bildirilerine bakın:
 * [SUSE SAP HA En İyi Uygulama Kılavuzları][suse-ha-guide]: NetWeaver Yüksek Kullanılabilirlik ve SAP HANA Sistem Çoğaltma şirket içinde kurmak için gerekli tüm bilgileri içerir (genel bir temel olarak kullanılacak; çok daha ayrıntılı bilgi sağlar)
 * [SUSE Yüksek Kullanılabilirlik Uzantısı 12 SP3 Sürüm Notları][suse-ha-12sp3-relnotes]
 * [Azure NetApp Dosyalarını Kullanarak Microsoft Azure'daki NetApp SAP Uygulamaları][anf-sap-applications-azure]
-* [AĞ Dosya Sistemi (NFS) ile NetApp Sistemlerinde SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf): NetApp tarafından Azure NFS kullanarak SAP HANA'nın nasıl kurulabildiğini içeren bir yapılandırma kılavuzu
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -334,7 +333,7 @@ Aşağıdaki adımları yaparak işletim sisteminizi yapılandırın ve hazırla
 
     Değişiklikleri etkinleştirmek için VM'yi yeniden başlatın.  
 
-3. **[A]** NFS yapılandırma [kılavuzu ile NetApp AFF Sistemleri SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf)açıklandığı gibi, NFS ile NetApp Sistemleri SAP HANA çalıştırmak için işletim sistemi hazırlayın. NetApp yapılandırma ayarları için configuration file */etc/sysctl.d/netapp-hana.conf* oluşturun.  
+3. **[A]** [Azure NetApp Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamalarında][anf-sap-applications-azure]açıklandığı gibi, Os'u NFS ile NetApp Sistemlerinde SAP HANA'yı çalıştırmak için hazırlayın. NetApp yapılandırma ayarları için configuration file */etc/sysctl.d/netapp-hana.conf* oluşturun.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -368,7 +367,7 @@ Aşağıdaki adımları yaparak işletim sisteminizi yapılandırın ve hazırla
     vm.swappiness=10
     </code></pre>
 
-4. **[A]** [NFS yapılandırma kılavuzu ile NetApp AFF Sistemleri SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf)tavsiye olarak sunrpc ayarlarını ayarlayın.  
+4. **[A]** [Azure NetApp Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamalarında][anf-sap-applications-azure]önerilen sunrpc ayarlarını ayarlayın.  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -637,7 +636,7 @@ Bu örnekte, SAP HANA'yı Azure ile bekleme düğümü ile ölçeklendirme yapı
    - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**tüm**
 
-   Daha fazla bilgi için [NFS Yapılandırma Kılavuzu ile NetApp AFF Sistemlerinde SAP HANA'ya](https://www.netapp.com/us/media/tr-4435.pdf)bakın. 
+   Daha fazla bilgi için [Azure NetApp Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamaları'na][anf-sap-applications-azure]bakın. 
 
    SAP HANA 2.0 sistemlerinden başlayarak parametreleri `global.ini`. Daha fazla bilgi için SAP Note [1999930'a](https://launchpad.support.sap.com/#/notes/1999930)bakın.  
    
@@ -855,5 +854,4 @@ Bu örnekte, SAP HANA'yı Azure ile bekleme düğümü ile ölçeklendirme yapı
 * [AZURE Sanal Makineler SAP için planlama ve uygulama][planning-guide]
 * [SAP için Azure Sanal Makineler dağıtımı][deployment-guide]
 * [SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* Yüksek kullanılabilirlik oluşturmayı ve AZURE'da SAP HANA'nın olağanüstü durum kurtarmasını nasıl planlayabilirsiniz (büyük örnekler), Bkz. [SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve Azure'da olağanüstü durum kurtarma.](hana-overview-high-availability-disaster-recovery.md)
 * Azure Sanal M'lerde SAP HANA'nın yüksek kullanılabilirlik oluşturmasını ve olağanüstü kurtarma planını öğrenmek için Azure [Sanal Makinelerde (VM) SAP HANA'nın Yüksek Kullanılabilirliği][sap-hana-ha]bölümüne bakın.

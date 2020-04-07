@@ -3,23 +3,23 @@ title: Öğretici - Azure IoT Merkezi uygulamanızda kurallar oluşturun ve yön
 description: Bu öğretici, Azure IoT Merkezi kurallarının cihazlarınızı gerçek zamanlı olarak izlemenize ve kural tetiklendiğinde e-posta gönderme gibi eylemleri otomatik olarak başlatmanızı nasıl sağladığını gösterir.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f61a41fa89c7006341db928472f6b20d272bc550
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77167491"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673764"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturun ve bildirimler ayarlayın
 
 *Bu makale, işleçler, oluşturucular ve yöneticiler için geçerlidir.*
 
-Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central'ı kullanabilirsiniz. Azure IoT Merkezi kuralları, cihazlarınızı neredeyse gerçek zamanlı olarak izlemenize ve e-posta gönderme gibi eylemleri otomatik olarak çağırmanıza olanak tanır. Yalnızca birkaç tıklamayla, aygıtlarınızdan telemetriyi izlemek ve ilgili eylemi yapılandırmak için bir koşul tanımlayabilirsiniz. Bu makalede, aygıt tarafından gönderilen telemetri izlemek için kurallar nasıl oluşturulur.
+Bağlı cihazlarınızı uzaktan izlemek için Azure IoT Central'ı kullanabilirsiniz. Azure IoT Merkezi kuralları, cihazlarınızı neredeyse gerçek zamanlı olarak izlemenize ve e-posta gönderme gibi eylemleri otomatik olarak çağırmanıza izin verir. Bu makalede, aygıtlarınızın gönderdiği telemetriyi izlemek için kuralların nasıl oluşturuluyorum.
 
 Aygıtlar, aygıttan sayısal veri göndermek için telemetri kullanır. Seçili aygıt telemetrisi belirtilen eşiği geçtiğinde bir kural tetikler.
 
@@ -34,11 +34,11 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce [Azure IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlamalı ve [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-pnp-device.md) gerekmektedir ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmaya hızlı bir şekilde başlamalısınız.
+Başlamadan önce Azure [IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlayın ve [IoT Central uygulamanıza simüle edilmiş bir aygıt ekleyin](./quick-create-pnp-device.md) ve çalışmak için **MXChip IoT DevKit** aygıt şablonu oluşturmaya hızlı bir şekilde başlayın.
 
 ## <a name="create-a-rule"></a>Kural oluşturma
 
-Bir telemetri kuralı oluşturmak için aygıt şablonunda en az bir telemetri ölçümü tanımlanmış olmalıdır. Bu öğretici sıcaklık ve nem telemetri gönderir bir çevre sensörü cihazı kullanır. Bu aygıt şablonunu eklediniz ve [IoT Central uygulama hızlı başlatmanıza benzetilen bir benzetim aygıtı oluşturdunuz.](./quick-create-pnp-device.md) Kural, cihaz tarafından bildirilen sıcaklığı izler ve 70 derecenin üzerine çıktığında bir e-posta gönderir.
+Bir telemetri kuralı oluşturmak için aygıt şablonunda en az bir telemetri değeri içermesi gerekir. Bu öğretici sıcaklık ve nem telemetri gönderir bir simüle **MXChip IoT DevKit** cihaz kullanır. Bu aygıt şablonunu eklediniz ve [IoT Central uygulama hızlı başlatmanıza benzetilen bir benzetim aygıtı oluşturdunuz.](./quick-create-pnp-device.md) Kural, cihaz tarafından bildirilen sıcaklığı izler ve 70 derecenin üzerine çıktığında bir e-posta gönderir.
 
 1. Sol bölmede **Kurallar'ı**seçin.
 
@@ -66,8 +66,8 @@ Koşullar, kuralın izlediği ölçütleri tanımlar. Bu öğreticide, sıcaklı
 
 1. İsteğe bağlı olarak, bir **Zaman toplama**ayarlayabilirsiniz. Bir zaman toplama seçtiğinizde, toplama açılır bırakma ortalaması veya toplamı gibi bir toplama türü de seçmeniz gerekir.
 
-    * Toplama olmadan, kural koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kural sıcaklık 70'in üzerinde olduğunda tetiklemek üzere yapılandırılırsa, aygıt sıcaklığı 70'> bildirdiğinde kural neredeyse anında tetiklenir.
-    * Toplama ile, zaman penceresinde telemetri veri noktalarının toplam değeri koşulu karşılıyorsa kural tetikler. Örneğin, kural sıcaklık 70'in üzerinde olduğunda tetiklemek üzere yapılandırılırsa, zaman toplama 10 dakikaya ayarlanır ve toplama türü ortalamaise, aygıt ortalama sıcaklığı 70 > bildirdiğinde kural tetikler ve 10 dakikalık bir aralıkta hesaplanır.
+    * Toplama olmadan, kural koşulu karşılayan her telemetri veri noktası için tetikler. Örneğin, kuralı sıcaklık 70'in üzerinde olduğunda tetikleecek şekilde yapılandırırsanız, aygıt sıcaklığı bu değeri aştığında kural neredeyse anında tetikler.
+    * Toplama ile, zaman penceresinde telemetri veri noktalarının toplam değeri koşulu karşılıyorsa kural tetikler. Örneğin, kuralı sıcaklık 70'in üzerinde olduğunda ve ortalama 10 dakikalık bir zaman toplamasıyla tetikleecek şekilde yapılandırırsanız, kural, aygıtın 10 dakikalık bir aralıkla hesaplanan ortalama sıcaklığı 70'ten büyük bildirdiği zaman tetikler.
 
      ![Toplam durum](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 
@@ -100,11 +100,11 @@ Artık bir kurala ihtiyacınız yoksa, kuralı açarak ve **Sil'i**seçerek kura
 
 ## <a name="enable-or-disable-a-rule"></a>Bir kuralı etkinleştirme veya devre dışı
 
-Etkinleştirmek veya devre dışı kalmak istediğiniz kuralı seçin. Kuralın kapsamına giren tüm aygıtlar için kuralı etkinleştirmek veya devre dışı etmek için kuralı etkinleştir meyledeki **Etkinleştir** veya **Devre Dışı Atdüğmesini** değiştirin.
+Etkinleştirmek veya devre dışı kalmak istediğiniz kuralı seçin. Kural kapsamında ki tüm aygıtlar için kuralı etkinleştirmek veya devre dışı katmak için kuraldaki **Etkin/Devreden** düğmesini değiştirin.
 
-## <a name="enable-or-disable-a-rule-for-a-device"></a>Aygıt için kuralı etkinleştirme veya devre dışı
+## <a name="enable-or-disable-a-rule-for-specific-devices"></a>Belirli aygıtlar için bir kuralı etkinleştirme veya devre dışı
 
-Etkinleştirmek veya devre dışı kalmak istediğiniz kuralı seçin. Aygıt şablonuna belirli bir aygıtı eklemek veya hariç tutmak için **Kapsamlar** bölümüne bir filtre ekleyin.
+Özelleştirmek istediğiniz kuralı seçin. Kuralın kapsamını izlemek istediğiniz aygıtlara daraltmak için **Hedef aygıtlar** bölümünde bir veya daha fazla filtre kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

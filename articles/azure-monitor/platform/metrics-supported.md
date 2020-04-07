@@ -4,15 +4,15 @@ description: Azure Monitor ile her kaynak türü için kullanılabilen ölçüml
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 03/17/2020
+ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586034"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754671"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor ile desteklenen ölçümler
 
@@ -1256,7 +1256,7 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |istekleri/sayısı|Sunucu istekleri|Sayı|Sayı|HTTP isteklerinin sayısı tamamlandı.|istek/performansKova,istek/sonuçKodu,işlem/sentetik,bulut/roleInstance,request/success,cloud/roleName|
 |istekleri/başarısız|Başarısız istekler|Sayı|Sayı|Başarısız olarak işaretlenmiş HTTP isteklerisayısı. Çoğu durumda bu bir yanıt kodu >= 400 ve 401 eşit olmayan isteklerdir.|istek/performansKova,istek/sonuçKodu,istek/başarı,işlem/sentetik,bulut/rolInstance,cloud/roleName|
 |istekler/oran|Sunucu istek oranı|CountPerSecond|Ortalama|Sunucu isteklerinin saniyede oranı|istek/performansKova,istek/sonuçKodu,işlem/sentetik,bulut/roleInstance,request/success,cloud/roleName|
-|özel durumlar/sayım|Özel Durumlar|Sayı|Sayı|Tüm yakalanmamış özel durumlar için birleştirilmiş sayı.|bulut/roleName,bulut/roleInstance,istemci/tür|
+|özel durumlar/sayım|Özel durumlar|Sayı|Sayı|Tüm yakalanmamış özel durumlar için birleştirilmiş sayı.|bulut/roleName,bulut/roleInstance,istemci/tür|
 |özel durumlar/tarayıcı|Tarayıcı özel durumları|Sayı|Sayı|Tarayıcıya atılan yakalanmamış özel durumlar sayısı.|istemci/isServer,bulut/roleName|
 |özel durumlar/sunucu|Sunucu özel durumları|Sayı|Sayı|Sunucu uygulamasına atılan yakalanmamış özel durumlar sayısı.|istemci/isServer,cloud/roleName,cloud/roleInstance|
 |izler/sayım|İzlemeler|Sayı|Sayı|Belge sayısını izleme|trace/önemDüzeyi,çalışma/sentetik,bulut/roleName,bulut/roleInstance|
@@ -1999,11 +1999,11 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |dwu_used|Kullanılan DWU|Sayı|Maksimum|DWU kullanılır. Yalnızca veri ambarları için geçerlidir.|None|
 |cache_hit_percent|Önbellek isabet yüzdesi|Yüzde|Maksimum|Önbellek isabet yüzdesi. Yalnızca veri ambarları için geçerlidir.|None|
 |cache_used_percent|Önbellek kullanılan yüzde|Yüzde|Maksimum|Önbellek kullanılan yüzde. Yalnızca veri ambarları için geçerlidir.|None|
-|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi.|None|
-|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi.|None|
-|tempdb_data_size|Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir.|None|
-|tempdb_log_size|Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir.|None|
-|tempdb_log_used_percent|Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlüğü Kullanılır. Veri ambarları için geçerli değildir.|None|
+|sqlserver_process_core_percent<sup>1</sup> |SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi.|None|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi.|None|
+|tempdb_data_size<sup>2</sup> |Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt.|None|
+|tempdb_log_size<sup>2</sup> |Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt.|None|
+|tempdb_log_used_percent<sup>2</sup> |Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlüğü Kullanılır.|None|
 |local_tempdb_usage_percent|Yerel tempdb yüzdesi|Yüzde|Ortalama|Yerel tempdb yüzdesi. Yalnızca veri ambarları için geçerlidir.|None|
 |app_cpu_billed|Uygulama CPU faturalı|Sayı|Toplam|Uygulama CPU faturalandırılır. Sunucusuz veritabanları için geçerlidir.|None|
 |app_cpu_percent|Uygulama CPU yüzdesi|Yüzde|Ortalama|Uygulama CPU yüzdesi. Sunucusuz veritabanları için geçerlidir.|None|
@@ -2028,6 +2028,9 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |snapshot_backup_size_bytes|Anlık görüntü yedekleme depolama boyutu|Bayt|Maksimum|Birikmeli anlık görüntü yedekleme depolama boyutu. Hyperscale veritabanları için geçerlidir.|None|
 |base_blob_size_bytes|Taban blob depolama boyutu|Bayt|Maksimum|Taban blob depolama boyutu. Hyperscale veritabanları için geçerlidir.|None|
 
+<sup>1</sup> Bu metrik, 2 vCore ve daha yüksek vCore veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek vCore satın alma modelini kullanan veritabanları için kullanılabilir. 
+
+<sup>2</sup> Bu metrik, 2 vCore ve daha yüksek vCore satÝn alýnan vCore satýnýnatýs modelini kullanan veritabanları veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek veritabanýr. Bu metrik şu anda Hiper ölçekli veritabanları veya veri ambarları için kullanılamaz.
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -2057,14 +2060,19 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |database_cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı|VeritabanıResourceId|
 |cpu_used|Kullanılan CPU|Sayı|Ortalama|CPU kullanılır. vCore tabanlı elastik havuzlar için geçerlidir.|None|
 |database_cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU|VeritabanıResourceId|
-|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi. Elastik havuzlar için geçerlidir.|None|
-|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi. Elastik havuzlar için geçerlidir.|None|
-|tempdb_data_size|Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt|None|
-|tempdb_log_size|Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt|None|
-|tempdb_log_used_percent|Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlük Kullanılan|None|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi. Elastik havuzlar için geçerlidir. |None|
+|sqlserver_process_memory_percent<sup>1</sup>|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi. Elastik havuzlar için geçerlidir. |None|
+|tempdb_data_size<sup>2</sup>|Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt.|None|
+|tempdb_log_size<sup>2</sup>|Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt. |None|
+|tempdb_log_used_percent<sup>2</sup>|Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlüğü Kullanılır.|None|
 |allocated_data_storage|Ayrılan veri alanı|Bayt|Ortalama|Ayrılan veri alanı|None|
 |database_allocated_data_storage|Ayrılan veri alanı|Bayt|Ortalama|Ayrılan veri alanı|VeritabanıResourceId|
 |allocated_data_storage_percent|Yüzde ayrılan veri alanı|Yüzde|Maksimum|Yüzde ayrılan veri alanı|None|
+
+<sup>1</sup> Bu metrik, 2 vCore ve daha yüksek vCore veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek vCore satın alma modelini kullanan veritabanları için kullanılabilir. 
+
+<sup>2</sup> Bu metrik, 2 vCore ve daha yüksek vCore satÝn alýnan vCore satýnýnatýs modelini kullanan veritabanları veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek veritabanýr. Bu metrik şu anda Hiper ölçekli veritabanları için kullanılamıyor.
+
 
 ## <a name="microsoftsqlservers"></a>Microsoft.Sql/sunucular
 

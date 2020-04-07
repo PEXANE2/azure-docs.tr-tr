@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e5ad5f6f2f5be239af23ee4802cf09c388c93ae9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632920"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745500"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Synapse SQL havuzukullanarak veri yüklemek için en iyi uygulamalar
 
@@ -104,7 +104,7 @@ Bellek baskısı olduğunda, columnstore dizini en yüksek sıkıştırma oranla
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>SqLBulkCopy API veya bcp kullanırken toplu iş boyutunu artırın
 
-PolyBase ile yükleme SQL havuzu ile en yüksek iş için sağlayacaktır. Yüklemek için PolyBase'i kullanamıyorsanız ve [SqLBulkCopy API](https://msdn.microsoft.com/library/system.data.sqlclient.sqlbulkcopy.aspx) veya [bcp](https://docs.microsoft.com/sql/tools/bcp-utility?view=sql-server-ver15)kullanıyorsanız, daha iyi iş üretimi için toplu iş boyutunu artırmayı düşünmelisiniz.
+PolyBase ile yükleme SQL havuzu ile en yüksek iş için sağlayacaktır. Yüklemek için PolyBase'i kullanamıyorsanız ve [SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanıyorsanız, daha iyi iş üretimi için toplu iş boyutunu artırmayı düşünmelisiniz.
 
 > [!TIP]
 > 100 K ile 1M satırları arasında bir toplu iş boyutu, en uygun toplu iş boyutu kapasitesini belirlemek için önerilen temeldir.
@@ -120,7 +120,7 @@ Bir veri kaydı, aşağıdaki koşullardan birini karşılıyorsa kirli olarak k
 
 Kirli kayıtları düzeltmek için dış tablo ve dış dosya biçimlerinizin doğru olduğundan ve dış verilerinizin bu tanımlara uyduğundan emin olun.
 
-Dış veri kayıtlarının bir alt kümesi kirliyse, [CREATE EXTERNAL TABLE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql?view=sql-server-ver15)'deki reddetme seçeneklerini kullanarak sorgularınız için bu kayıtları reddetmeyi seçebilirsiniz.
+Dış veri kayıtlarının bir alt kümesi kirliyse, [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'deki reddetme seçeneklerini kullanarak sorgularınız için bu kayıtları reddetmeyi seçebilirsiniz.
 
 ## <a name="inserting-data-into-a-production-table"></a>Üretim tablosuna veri ekleme
 

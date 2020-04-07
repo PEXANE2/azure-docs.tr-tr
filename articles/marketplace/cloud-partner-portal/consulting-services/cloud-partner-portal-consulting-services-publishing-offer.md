@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1015734ac0da6b4641c0bf32049146e3820f4616
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ceef030d2c0176313cbce8f6817a89c06f134d3d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278544"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745668"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure ve Dynamics 365 danışmanlık hizmeti teklifi
+
+>[!Important]
+>30 Mart 2020'den itibaren Danışmanlık hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
 
 Bu makalede, Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketi</a> veya <a href="https://appsource.microsoft.com">AppSource'a</a>bir danışmanlık hizmeti teklifinin nasıl yayımlanabileceği açıklanmaktadır. Microsoft Dynamics <a href="https://dynamics.microsoft.com">365,</a> <a href="https://powerbi.microsoft.com">Power BI</a>ve <a href="https://powerapps.microsoft.com">Power Apps'a</a> dayalı çözümler AppSource'da listelenebilir. Diğer Microsoft Azure <a href="https://azure.microsoft.com/services">hizmetlerine</a> dayalı diğer teklifler Azure Marketi'nde listelenebilir.
 

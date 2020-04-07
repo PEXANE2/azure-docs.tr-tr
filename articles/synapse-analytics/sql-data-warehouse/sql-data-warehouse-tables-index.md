@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d5acc2b69ed521af4fd4777dc9f3496290078379
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583278"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742699"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tabloekleme
 
@@ -24,9 +24,9 @@ Synapse SQL havuzunda tabloları dizine ekleme önerileri ve örnekleri.
 
 ## <a name="index-types"></a>Dizin türleri
 
-Synapse SQL havuzu [kümelenmiş sütun lu dizini,](/sql/relational-databases/indexes/columnstore-indexes-overview) [kümelenmiş dizinler ve kümesiz dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described)ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes)olarak da bilinen dizin dışı bir seçenek de dahil olmak üzere çeşitli dizinleme seçenekleri sunar.  
+Synapse SQL havuzu [kümelenmiş sütun lu dizini,](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [kümelenmiş dizinler ve kümesiz dizinler](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [yığın](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)olarak da bilinen dizin dışı bir seçenek de dahil olmak üzere çeşitli dizinleme seçenekleri sunar.  
 
-Dizin içeren bir tablo oluşturmak için [CREATE TABLE (Synapse SQL pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) belgelerine bakın.
+Dizin içeren bir tablo oluşturmak için [CREATE TABLE (Synapse SQL pool)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) belgelerine bakın.
 
 ## <a name="clustered-columnstore-indexes"></a>Kümelenmiş sütun deposu dizinleri
 
@@ -230,7 +230,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 
 Şu anda daha yüksek bir kaynak sınıfı kullanan adım 1'den (örn. LoadUser) kullanıcı olarak oturum açın ve ALTER INDEX deyimlerini çalıştırın. Bu kullanıcının dizinin yeniden oluşturulmakta olduğu tablolariçin ALTER izni olduğundan emin olun. Bu örnekler, sütun deposu dizininin tamamının nasıl yeniden oluşturulacak veya tek bir bölümün nasıl yeniden oluşturulabildiğini gösterir. Büyük tablolarda, dizinleri bir defada tek bir bölümü yeniden oluşturmak daha pratiktir.
 
-Alternatif olarak, dizini yeniden oluşturmak yerine, [ctas kullanarak](sql-data-warehouse-develop-ctas.md)tabloyu yeni bir tabloya kopyalayabilirsiniz. Hangi yol daha iyi? Büyük hacimli veriler için CTAS genellikle [ALTER INDEX'ten](/sql/t-sql/statements/alter-index-transact-sql)daha hızlıdır. Daha küçük veri hacimleri için ALTER INDEX'in kullanımı daha kolaydır ve tabloyu değiştirmenizi gerektirmez.
+Alternatif olarak, dizini yeniden oluşturmak yerine, [ctas kullanarak](sql-data-warehouse-develop-ctas.md)tabloyu yeni bir tabloya kopyalayabilirsiniz. Hangi yol daha iyi? Büyük hacimli veriler için CTAS genellikle [ALTER INDEX'ten](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)daha hızlıdır. Daha küçük veri hacimleri için ALTER INDEX'in kullanımı daha kolaydır ve tabloyu değiştirmenizi gerektirmez.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -252,7 +252,7 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_COMPRESSION = COLUMNSTORE)
 ```
 
-Synapse SQL havuzunda bir dizini yeniden oluşturma çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi [için, Sütun deposu Dizinleri Parçalanma](/sql/relational-databases/indexes/columnstore-indexes-defragmentation)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql)ALTER INDEX ALTER INDEX rebuild bölümüne bakın.
+Synapse SQL havuzunda bir dizini yeniden oluşturma çevrimdışı bir işlemdir.  Dizinleri yeniden oluşturma hakkında daha fazla bilgi [için, Sütun deposu Dizinleri Parçalanma](/sql/relational-databases/indexes/columnstore-indexes-defragmentation?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ve [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ALTER INDEX ALTER INDEX rebuild bölümüne bakın.
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Adım 3: Kümelenmiş sütun deposu segment kalitesinin iyileştiğini doğrulayın
 
@@ -260,7 +260,7 @@ Düşük segment kalitesiyle tablotanımlayan sorguyu yeniden çalıştırın ve
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>CTAS ve bölüm anahtarlama ile dizinleri yeniden oluşturma
 
-Bu örnek, [create table AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) deyimini ve tablo bölümünü yeniden oluşturmak için bölüm geçişini kullanır.
+Bu örnek, [create table AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini ve tablo bölümünü yeniden oluşturmak için bölüm geçişini kullanır.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437872"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743303"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım komut dosyalarını kullanma (Önizleme)
 
@@ -33,6 +33,8 @@ Dağıtım komut dosyasının yararları:
 - Komut dosyalarını yürütmek için kullanılan kimlikleri belirtmeye izin ver. Şu anda yalnızca [Azure kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) desteklenir.
 - Komut satırı bağımsız değişkenlerini komut dosyasına geçirmene izin verin.
 - Komut dosyası çıktılarını belirtebilir ve dağıtıma geri geçirebilir.
+
+Dağıtım komut dosyası kaynağı yalnızca Azure Kapsayıcı Örneği'nin kullanılabildiği bölgelerde kullanılabilir.  [Azure bölgelerindeki Azure Kapsayıcı Örnekleri için Kaynak kullanılabilirliği'ne](../../container-instances/container-instances-region-availability.md)bakın.
 
 > [!IMPORTANT]
 > Komut dosyası yürütme ve sorun giderme için aynı kaynak grubunda iki dağıtım komut dosyası kaynağı, bir depolama hesabı ve bir kapsayıcı örneği oluşturulur. Dağıtım komut dosyası yürütme terminal durumuna geldiğinde bu kaynaklar genellikle komut dosyası hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için [Temizleme dağıtım komut dosyası kaynaklarına](#clean-up-deployment-script-resources)bakın.
@@ -189,6 +191,8 @@ Satır lı komut dosyalarına ek olarak, harici komut dosyası dosyalarını da 
 Bir örnek görmek için [burayı](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)seçin.
 
 Harici komut dosyası dosyalarına erişilebilir olmalıdır.  Azure depolama hesaplarında depolanan komut dosyası dosyalarınızı güvenli hale getirmek için [Bkz.](./template-tutorial-secure-artifacts.md)
+
+**PrimaryScriptUri** veya **SupportingScriptUris**dağıtım komut dosyası tarafından başvurulan komut dosyalarının bütünlüğünü sağlamaktan siz sorumlusunuz.  Yalnızca güvendiğiniz komut dosyalarına başvurun.
 
 ## <a name="use-supporting-scripts"></a>Destekleyici komut dosyalarını kullanma
 

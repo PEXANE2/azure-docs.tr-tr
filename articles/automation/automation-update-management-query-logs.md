@@ -3,14 +3,14 @@ title: Azure Güncelleştirme Yönetimi günlüklerini sorgula
 description: Bu makalede, Log Analytics çalışma alanınızda Güncelleştirme Yönetimi günlüklerinin nasıl sorgulanır.
 services: automation
 ms.subservice: update-management
-ms.date: 03/31/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 81e12e775306cc8637dedd534f50e8a14bc09a26
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437836"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743877"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitör Günlüklerinde Güncelleştirme Yönetimi kayıtlarını sorgula
 
@@ -38,7 +38,7 @@ Bir makine tarafından `RequiredUpdate` gerekli güncelleştirmeleri temsil eden
 | SourceSystem | *OperationsManager* | 
 | TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. | 
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. | 
-| Tür | *Güncelleştirme* | 
+| Tür | *Güncelleştir* | 
 | Güncelleme Sınıflandırması | Uygulanabilecek güncelleştirmelerin türünü gösterir. Windows için:<br> *Kritik güncellemeler*<br> *Güvenlik güncelleştirmeleri*<br> *Güncelleştirme paketleri*<br> *Özellik paketleri*<br> *Hizmet paketleri*<br> *Tanım güncelleştirmeleri*<br> *Araçlar*<br> *Güncelleştirmeler*. Linux için:<br> *Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*<br> *Diğer* |
 | UpdateSeverity | Güvenlik açığı için önem derecesi. Değerler şunlardır:<br> *Kritik*<br> *Önemli*<br> *Orta*<br> *Düşük* |
 | Güncelleme Başlığı | Güncelleştirmenin başlığı.|
@@ -63,7 +63,7 @@ Kullanılabilir güncelleştirmeleri ve `Update` bir makine için kurulum duruml
 | İsteğe bağlı | *Doğru* veya *Yanlış* | 
 | RebootBehavior | Güncelleştirmeyi yükledikten/kaldırmadan sonra yeniden başlatma davranışı. |
 | _ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
-| Tür | *Güncelleştirme* |
+| Tür | *Güncelleştir* |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | MG | Yönetim grubu veya Log Analytics çalışma alanı için benzersiz tanımlayıcı. | 
 | TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. | 
@@ -97,7 +97,7 @@ Makinedeki güncelleştirme aracısının ayrıntılarını sağlayan bir türe 
 | SourceSystem | *OperationsManager* | 
 | TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. |
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. |
-| Tür | *Güncelleştirme* | 
+| Tür | *Güncelleştir* | 
 | WindowsUpdateAgentVersion | Windows Update aracısının sürümü. |
 | WSUSServer | Windows Update aracısının sorun giderme de yardımcı olmak için bir sorun varsa hataları gösterir. |
 
@@ -112,7 +112,7 @@ Makine tarafından zamanlanan `UpdateRunProgress` bir dağıtımın güncelleşt
 | CorrelationId | Güncelleştirme için runbook iş çalıştırın benzersiz tanımlayıcısı. |
 | EndTime | Eşitleme işleminin sona erdirilmesi zamanı. | 
 | Hata Sonucu | Güncelleştirme yüklenmezse oluşturulan Windows Update hata kodu. | 
-| Kurulum Durumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları, *Devam eden*, *Başarılı*, Kısmen *başarısız oldu.* |
+| Kurulum Durumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları,<br> *NotStarted* - iş henüz tetiklenmedi.<br> *FailedToStart* - makinede işe başlayamıyor.<br> *Başarısız* - iş başladı ama bir özel durum ile başarısız oldu.<br> *InProgress* - iş devam ediyor.<br> *MaintenanceWindowExceeded* - yürütme kaldı ama bakım penceresi aralığı ulaştı.<br> *Başarılı* - iş başardı.<br> *InstallFailed* - güncelleştirme başarıyla yüklenemebaşarısız oldu.<br> *NotDahil*<br> *Dış -lanan* |
 | KBID | Windows güncelleştirmesi için bilgi temel makale kimliği. | 
 | ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
 | OSType | İşletim sisteminin, *Windows'un* veya *Linux'un*türünü belirtir. | 

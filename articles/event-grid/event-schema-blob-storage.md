@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265044"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756011"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob depolama için Azure Olay Izgara olay şeması
 
@@ -21,7 +21,7 @@ Bu makalede, blob depolama olayları için özellikleri ve şema sağlar.Etkinli
 Örnek komut dosyaları ve öğreticilerin listesi için [Depolama olay kaynağına](event-sources.md#storage)bakın.
 
 >[!NOTE]
-> Yalnızca depolama türü **StorageV2 (genel amaçlı v2)** ve **BlobStorage** destek olay tümleştirmedepolama hesapları. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
+> Tür **StorageV2 (genel amaçlı v2)** sadece depolama hesapları, **BlockBlobStorage**ve **BlobStorage** destek olay entegrasyonu. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API'leri için etkinlikler listesi
 
@@ -37,7 +37,7 @@ Bu olaylar, istemci Blob REST API'lerini arayarak bir blob oluşturduğunda, de�
 
 ## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Veri Gölü Depolama Gen 2 REST API'leri için etkinlikler listesi
 
-Depolama hesabında hiyerarşik bir ad alanı etkinleştiriseniz ve istemciler Azure Veri Gölü Depolama Gen2 REST API'lerini çağırırsanız, bu olaylar tetiklenir.
+Depolama hesabında hiyerarşik bir ad alanı etkinleştiriseniz ve istemciler Azure Veri Gölü Depolama Gen2 REST API'lerini çağırırsanız, bu olaylar tetiklenir. Azure Veri Gölü Depolama Gen2 hakkında daha fazla bilgi [için](../storage/blobs/data-lake-storage-introduction.md)bkz.
 
 |Olay adı|Açıklama|
 |----------|-----------|

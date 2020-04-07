@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 880072c9865e38e181869506e35968767fa95e8a
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.date: 04/06/2020
+ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387912"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756421"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Azure SQL Veritabanı tanısal telemetrinin akış dışa aktarma yapılandırma
 
@@ -25,8 +25,8 @@ Bu makalede, Azure SQL Veritabanı için çözümleme için birkaç hedeften bir
 Ayrıca, bu tanısal telemetriyi aktarabileceğiniz yerler ve bu seçenekler arasında nasıl seçim yapabileceğiniz hakkında da bilgi edineceksiniz. Hedef seçenekleriniz şunlardır:
 
 - [Log Analytics ve SQL Analytics](#stream-into-sql-analytics)
-- [Etkinlik Hub'ları](#stream-into-event-hubs)
-- [Azure Depolama](#stream-into-azure-storage)
+- [Event Hubs](#stream-into-event-hubs)
+- [Azure Storage](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Azure SQL Veritabanı için dışa aktarma için tanılama telemetrisi
 
@@ -77,7 +77,7 @@ Bu hedeflerden birine aktarılan bu tanısal telemetri, daha kolay performans iz
 
 Aşağıdaki yöntemlerden birini kullanarak ölçümleri ve tanısal telemetri günlüğe kaydetmeyi etkinleştirebilir ve yönetebilirsiniz:
 
-- Azure portalında
+- Azure portal
 - PowerShell
 - Azure CLI
 - Azure İzleyici REST API'si
@@ -95,7 +95,7 @@ Tanılama telemetrisinin akışını etkinleştirmek ve yapılandırmak için Az
 
 Azure portalında tanısal telemetrinin akış dışa aktarAn dışa aktarAn yapılandırmave PowerShell ve Azure CLI ile aynı şeyi gerçekleştirmek için komut dosyaları için adım adım kılavuziçin aşağıdaki sekmelerden birini seçin.
 
-# <a name="azure-portal"></a>[Azure portalında](#tab/azure-portal)
+# <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
 ### <a name="elastic-pools"></a>Esnek havuzlar
 
@@ -225,7 +225,7 @@ Aşağıdaki tanısal telemetriyi toplamak için bir örnek veritabanı kaynağ�
 > [!TIP]
 > İzlemek istediğiniz her örnek veritabanı için bu adımları yineleyin.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -454,9 +454,15 @@ Gelişmiş ölçümler le ilgili ayrıntılar için aşağıdaki tabloya bakın.
 
 |**Ölçüm**|**Metrik Görüntü Adı**|**Açıklama**|
 |---|---|---|
-|tempdb_data_size| Tempdb Veri Dosya Boyutu Kilobayt |Tempdb Veri Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir. Bu metrik, 2 vCore ve daha yüksek vCore satÝnýr ýsýnýs veya DTU tabanlı satýn alma modelleri için 200 DTU ve daha yüksek olan vCore satın alma modelini kullanan veritabanları için kullanılabilecektir. Bu metrik şu anda Hiper ölçekli veritabanları için kullanılamıyor.|
-|tempdb_log_size| Tempdb Log Dosya Boyutu Kilobayt |Tempdb Log Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir. Bu metrik, 2 vCore ve daha yüksek vCore satÝnýr ýsýnýs veya DTU tabanlı satýn alma modelleri için 200 DTU ve daha yüksek olan vCore satın alma modelini kullanan veritabanları için kullanılabilecektir. Bu metrik şu anda Hiper ölçekli veritabanları için kullanılamıyor.|
-|tempdb_log_used_percent| Tempdb Yüzde Günlük Kullanılan |Tempdb Yüzde Günlüğü Kullanılır. Veri ambarları için geçerli değildir. Bu metrik, 2 vCore ve daha yüksek vCore satÝnýr ýsýnýs veya DTU tabanlı satýn alma modelleri için 200 DTU ve daha yüksek olan vCore satın alma modelini kullanan veritabanları için kullanılabilecektir. Bu metrik şu anda Hiper ölçekli veritabanları için kullanılamıyor.|
+|sqlserver_process_core_percent<sup>1</sup>|SQL Server işlem çekirdek yüzdesi|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi.|
+|sqlserver_process_memory_percent<sup>1</sup> |SQL Server işleme bellek yüzdesi|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi.|
+|tempdb_data_size<sup>2</sup>| Tempdb Veri Dosya Boyutu Kilobayt |Tempdb Veri Dosya Boyutu Kilobayt.|
+|tempdb_log_size<sup>2</sup>| Tempdb Log Dosya Boyutu Kilobayt |Tempdb Log Dosya Boyutu Kilobayt.|
+|tempdb_log_used_percent<sup>2</sup>| Tempdb Yüzde Günlük Kullanılan |Tempdb Yüzde Günlüğü Kullanılır.|
+
+<sup>1</sup> Bu metrik, 2 vCore ve daha yüksek vCore veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek vCore satın alma modelini kullanan veritabanları için kullanılabilir. 
+
+<sup>2</sup> Bu metrik, 2 vCore ve daha yüksek vCore satÝn alýnan vCore satýnýnatýs modelini kullanan veritabanları veya DTU tabanlı satın alma modelleri için 200 DTU ve daha yüksek veritabanýr. Bu metrik şu anda Hiper ölçekli veritabanları veya veri ambarları için kullanılamaz.
 
 ### <a name="basic-logs"></a>Temel günlükler
 

@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
-ms.openlocfilehash: 074b547917b65a411d2b1d1b2f094156828eef78
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631387"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754988"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
 
@@ -26,7 +26,7 @@ DSVM şu konularda kullanılabilir:
 + **Windows Server 2019**
 + **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16.04 LTS ve CentOS 7.4
++ Ubuntu 16.04 LTS
 
 > [!NOTE]
 > Derin öğrenme için tüm VM araçları Veri Bilimi Sanal Makine içine katlanmış. 
@@ -68,9 +68,9 @@ DSVM'yi, özellikle yayınlanmış [örneklerimizden ve gözden geçirmelerimizd
 
 DSVM'de, eğitim modelleriniz grafik işleme birimlerine (GPU) dayalı donanımlarda derin öğrenme algoritmaları kullanabilir. DSVM, Azure platformunun VM ölçekleme özelliklerinden yararlanarak, bulutta GPU tabanlı donanımı ihtiyaçlarınıza göre kullanmanıza yardımcı olur. Büyük modelleri eğitirken veya aynı işletim sistemi diskini tutarken yüksek hızlı hesaplamalara ihtiyaç duyduğunuzda GPU tabanlı bir VM'ye geçebilirsiniz. DSVM özellikli N serisi GPU özellikli sanal makine SKU'lardan herhangi birini seçebilirsiniz. Azure ücretsiz hesaplarının GPU özellikli sanal makine SKU'larını desteklemediğini lütfen unutmayın.
 
-DSVM'nin Windows Server 2016 sürümü, derin öğrenme çerçevelerinin GPU sürücüleri, çerçeveleri ve GPU sürümleriyle önceden yüklenmiş olarak gelir. Linux sürümünde, Hem CentOS hem de Ubuntu DSVM'lerde GPU'larda derin öğrenme etkindir. 
+DSVM'nin Windows sürümleri, derin öğrenme çerçevelerinin GPU sürücüleri, çerçeveleri ve GPU sürümleriyle önceden yüklenmiş olarak gelir. Linux sürümünde, Ubuntu DSVM'lerde GPU'larda derin öğrenme etkindir. 
 
-DSVM'nin Ubuntu, CentOS veya Windows 2016 sürümünü GPU'lara dayanmayan bir Azure sanal makinesine de dağıtabilirsiniz. Bu durumda, tüm derin öğrenme çerçeveleri CPU moduna geri düşecek.
+Ayrıca, DSVM'nin Ubuntu veya Windows sürümlerini GPU'ları temel almayan bir Azure sanal makinesine de dağıtabilirsiniz. Bu durumda, tüm derin öğrenme çerçeveleri CPU moduna geri düşecek.
 
 [Mevcut derin öğrenme ve AI çerçeveleri hakkında daha fazla bilgi edinin.](dsvm-tools-deep-learning-frameworks.md)
 
@@ -89,5 +89,4 @@ Bu makalelerle daha fazla bilgi edinin:
 
 + Linux:
   + [Linux DSVM (Ubuntu) ayarlama](dsvm-ubuntu-intro.md)
-  + [Linux DSVM (CentOS) ayarlama](linux-dsvm-intro.md)
   + [Linux DSVM'de veri bilimi](linux-dsvm-walkthrough.md)

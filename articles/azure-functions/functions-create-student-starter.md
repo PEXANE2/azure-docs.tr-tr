@@ -3,15 +3,15 @@ title: Öğrenciler Başlangıç Için Azure'u kullanarak bir işlev oluşturma
 description: Öğrenci Başlangıç aboneliği için Azure'un içinden azure işlevi oluşturmayı öğrenin
 Customer intent: As a student, I want to be able to create an HTTP triggered Function App within the Student Starter plan so that I can easily add APIs to any project.
 author: alexkarcher-msft
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 189a0bc80ab2894b2888b496b3beb45249d859f6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c7dd88bf0ead558a0c4951baf38543566d805caa
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75921126"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756466"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Öğrenciler Başlangıç Için Azure'u kullanarak bir işlev oluşturma
 
@@ -50,7 +50,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com> sayfasında otu
     | **[Kaynak Grubu](../azure-resource-manager/management/overview.md)** |  myResourceGroup | İşlev uygulamanızın oluşturulacağı yeni kaynak grubunun adı. |
    | **[Uygulama Hizmet Planı/Konumu](./functions-scale.md)** | Yeni | İşlev uygulamanızın hangi bölgeye dağıtılan bölgeye ve kaynaklarınızın yoğunluğunu kontrol eden barındırma planı. Aynı plana dağıtılan Birden Çok Fonksiyon Uygulaması nın tümü aynı tek ücretsiz örneği paylaşır. Bu, Öğrenci Başlangıç planının bir kısıtlamasIdır. Tam barındırma seçenekleri [burada açıklanmıştır.](./functions-scale.md)|
     | **Çalışma zamanı yığını** | Tercih edilen dil | Tercih ettiğiniz işlev programlama dilini destekleyen bir çalışma zamanı seçin. C# ve F# için **.NET** işlevlerini seçin. |
-    |**[Uygulama Öngörüleri](./functions-monitoring.md)**| Etkin | Application Insights, işlev uygulamanızın günlüklerini depolamak ve analiz etmek için kullanılır. Uygulama Öngörülerini destekleyen bir konum seçerseniz varsayılan olarak etkinleştirilir. Uygulama Öngörüleri, Uygulama Öngörülerini dağıtmak için yakındaki bir bölgeyi el ile seçerek herhangi bir işlev için etkinleştirilebilir. Application Insights olmadan yalnızca canlı akış günlüklerini görüntüleyebilirsiniz.
+    |**[Application Insights](./functions-monitoring.md)**| Etkin | Application Insights, işlev uygulamanızın günlüklerini depolamak ve analiz etmek için kullanılır. Uygulama Öngörülerini destekleyen bir konum seçerseniz varsayılan olarak etkinleştirilir. Uygulama Öngörüleri, Uygulama Öngörülerini dağıtmak için yakındaki bir bölgeyi el ile seçerek herhangi bir işlev için etkinleştirilebilir. Application Insights olmadan yalnızca canlı akış günlüklerini görüntüleyebilirsiniz.
 
 3. Farklı bir konum seçmek için yukarıdaki **Uygulama Hizmeti planını/Konumunu** seçin
 

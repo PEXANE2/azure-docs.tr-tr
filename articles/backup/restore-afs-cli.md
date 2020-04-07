@@ -3,12 +3,12 @@ title: Azure CLI ile Azure dosya paylaşımlarını geri yükleme
 description: Kurtarma Hizmetleri kasasında yedeklenmiş Azure dosya paylaşımlarını geri yüklemek için Azure CLI'yi nasıl kullanacağınızı öğrenin
 ms.topic: conceptual
 ms.date: 01/16/2020
-ms.openlocfilehash: 63b2be2fe24c1274ed1581b7b849de578c978842
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 980044011e3417a2aff8447a939e02299923da38
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76931042"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757100"
 ---
 # <a name="restore-azure-file-shares-with-the-azure-cli"></a>Azure CLI ile Azure dosya paylaşımlarını geri yükleme
 
@@ -19,6 +19,9 @@ Bu makalenin sonunda, Azure CLI ile aşağıdaki işlemleri nasıl gerçekleşti
 * Yedeklenmiş bir Azure dosya paylaşımı için geri yükleme noktalarını görüntüleyin.
 * Tam bir Azure dosya paylaşımını geri yükleyin.
 * Tek tek dosyaları veya klasörleri geri yükleyin.
+
+>[!NOTE]
+> Azure Yedekleme artık Azure CLI'yi kullanarak birden çok dosya veya klasörü özgün veya alternatif bir konuma geri getirmeyi destekler. Daha fazla bilgi edinmek için birden çok dosya veya klasörü bu belgenin [özgün veya alternatif konum bölümüne geri yükleyin.](#restore-multiple-files-or-folders-to-original-or-alternate-location)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -42,7 +45,7 @@ Yedeklenmiş dosya paylaşımı için tüm kurtarma noktalarını listelemek iç
 Aşağıdaki örnek, *afsaccount* depolama hesabında *azurefiles* dosya paylaşımı için kurtarma noktaları listesini getirir.
 
 ```azurecli-interactive
-az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --backup-management-type azurestorage --item-name “AzureFileShare;azurefiles” --workload-type azurefileshare --out table
+az backup recoverypoint list --vault-name azurefilesvault --resource-group azurefiles --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --backup-management-type azurestorage --item-name "AzureFileShare;azurefiles" --workload-type azurefileshare --out table
 ```
 
 Ayrıca, aşağıdaki iki ek parametre yi sağlayarak, kapsayıcı ve öğe için uygun adı kullanarak önceki cmdlet'i çalıştırabilirsiniz:
@@ -82,7 +85,7 @@ Geri yükleme işlemleri gerçekleştirmek için aşağıdaki parametreleri tan�
 Aşağıdaki örnekte, *azurefiles* dosya paylaşımını özgün konumda geri yüklemek için *özgün konuma* ayarlanmış geri yükleme moduyla az yedekleme geri [yükleme azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) cmdlet kullanır. [Azure dosya paylaşımı için Kurtarma noktalarını getir'de](#fetch-recovery-points-for-the-azure-file-share)elde ettiğiniz 932883129628959823 kurtarma noktasını kullanırsınız:
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932887541532871865   --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -105,7 +108,7 @@ Bu seçeneği, dosya paylaşımını alternatif bir konuma geri yüklemek ve öz
 Aşağıdaki örnekte, *afsaccount* depolama hesabındaki azurefiles dosya paylaşımını *afaccount1* depolama hesabındaki *azurefiles1"* dosya paylaşımına geri yüklemek için *alternatif konum* olarak geri yükleme moduile [az yedekleme geri yükleme-azurefileshare](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurefileshare) kullanır. *azurefiles*
 
 ```azurecli-interactive
-az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
+az backup restore restore-azurefileshare --vault-name azurefilesvault --resource-group azurefiles --rp-name 932883129628959823 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --out table
 ```
 
 ```output
@@ -138,7 +141,7 @@ Belirli dosya veya klasörleri özgün konumlarına geri yüklemek için *özgü
 Aşağıdaki örnek, Özgün konumunda *ki Geri Yükleme Testi.txt* dosyasını geri yükler: *azurefiles* dosya paylaşımı.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore/RestoreTest.txt" --resolve-conflict overwrite  --out table
 ```
 
 ```output
@@ -160,7 +163,7 @@ Belirli dosya veya klasörleri alternatif bir konuma geri yüklemek için, *alte
 Aşağıdaki örnek, *azurefiles* dosyası paylaşımında başlangıçta bulunan *RestoreTest.txt* dosyasını alternatif bir konuma geri yükler: *azurefiles1* dosya paylaşımındaki *geri yükleme veri* klasörü *afaccount1* depolama hesabında barındırılan.
 
 ```azurecli-interactive
-az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount” --item-name “AzureFileShare;azurefiles” --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932881556234035474 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode alternatelocation --target-storage-account afaccount1 --target-file-share azurefiles1 --target-folder restoredata --resolve-conflict overwrite --source-file-type file --source-file-path "Restore/RestoreTest.txt" --out table
 ```
 
 ```output
@@ -170,6 +173,28 @@ df4d9024-0dcb-4edc-bf8c-0a3d18a25319  azurefiles
 ```
 
 Çıktıdaki **Ad** özniteliği, geri yükleme işleminiz için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için az [yedekleme iş gösterisi](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet kullanın.
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Birden çok dosya veya klasörü özgün veya alternatif konuma geri yükleme
+
+Birden çok öğe için geri yükleme gerçekleştirmek için, geri yüklemek istediğiniz tüm dosya veya klasörlerin **boşluk ayrılmış** yolları olarak **kaynak dosya-yol** parametresinin değerini geçirin.
+
+Aşağıdaki örnek, *Geri Yükleme.txt* ve *AFS test Report.docx* dosyalarını özgün konumlarında geri yükler.
+
+```azurecli-interactive
+az backup restore restore-azurefiles --vault-name azurefilesvault --resource-group azurefiles --rp-name 932889937058317910 --container-name "StorageContainer;Storage;AzureFiles;afsaccount" --item-name "AzureFileShare;azurefiles" --restore-mode originallocation  --source-file-type file --source-file-path "Restore Test.txt" "AFS Testing Report.docx" --resolve-conflict overwrite  --out table
+```
+
+Çıktı şununla benzerlik gösterecektir:
+
+```output
+Name                                          ResourceGroup
+------------------------------------          ---------------
+649b0c14-4a94-4945-995a-19e2aace0305          azurefiles
+```
+
+Çıktıdaki **Ad** özniteliği, geri yükleme işleminiz için yedekleme hizmeti tarafından oluşturulan işin adına karşılık gelir. İşin durumunu izlemek için az [yedekleme iş gösterisi](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet kullanın.
+
+Birden çok öğeyi alternatif bir konuma geri yüklemek istiyorsanız, tek [tek dosyaları veya klasörleri alternatif bir konum bölümüne geri yükle'de](#restore-individual-files-or-folders-to-an-alternate-location) açıklandığı gibi hedefle ilgili parametreleri belirterek yukarıdaki komutu kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

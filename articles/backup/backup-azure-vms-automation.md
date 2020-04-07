@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM'leri yedekle ve kurtarın
 description: PowerShell ile Azure Yedekleme'yi kullanarak Azure VM'leri nasıl yedekleyip kurtarılamayı açıklar
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 733a06a84aa170f1361ea74d126ec9752586fce2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d1074eea3d530b17904e2f49fba7c0d24e84e59
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247988"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743284"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM'leri yedekle ve geri yükleme
 
@@ -199,7 +199,7 @@ Yedekleme koruma ilkesi en az bir bekletme ilkesiyle ilişkilidir. Bekletme ilke
 Varsayılan olarak, Zamanlama İlkesi Nesnesi'nde bir başlangıç zamanı tanımlanır. Başlangıç saatini istenilen başlangıç saatine değiştirmek için aşağıdaki örneği kullanın. İstenilen başlangıç süresi UTC'de de olmalıdır. Aşağıdaki örnekte, günlük yedeklemeler için istenen başlangıç saatinin 01:00 UTC olduğu varsayar.
 
 ```powershell
-$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM" 
 $UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
 $UtcTime = $UtcTime.ToUniversalTime()
 $schpol.ScheduleRunTimes[0] = $UtcTime
@@ -211,7 +211,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 Aşağıdaki örnek, zamanlama ilkesini ve bekletme ilkesini değişkenlerde saklar. Örnek, bir koruma ilkesi, *NewPolicy*oluştururken parametreleri tanımlamak için bu değişkenleri kullanır.
 
 ```powershell
-$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" -VaultId $targetVault.ID
+$retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM" 
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol -VaultId $targetVault.ID
 ```
 
@@ -324,6 +324,20 @@ Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol -VaultId $targetVau
 ````
 
 Varsayılan değer 2 olacak, kullanıcı değeri 1 dk ve en fazla 5 dk ile ayarlayabilir. Haftalık yedekleme ilkeleri için dönem 5 olarak ayarlanır ve değiştirilemez.
+
+#### <a name="creating-azure-backup-resource-group-during-snapshot-retention"></a>Anlık görüntü tutma sırasında Azure Yedekleme kaynak grubu oluşturma
+
+> [!NOTE]
+> Azure PS sürüm 3.7.0'dan itibaren anlık anlık görüntüleri depolamak için oluşturulan kaynak grubunu oluşturabilir ve edebilirsiniz.
+
+Kaynak grubu oluşturma kuralları ve diğer ilgili ayrıntılar hakkında daha fazla bilgi almak için Sanal Makineler belgeleri [için Azure Yedekleme kaynak grubuna](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines) bakın.
+
+```powershell
+$bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -name "DefaultPolicyForVMs"
+$bkpPol.AzureBackupRGName="Contosto_"
+$bkpPol.AzureBackupRGNameSuffix="ForVMs"
+Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
 
 ### <a name="trigger-a-backup"></a>Yedeklemeyi tetikleme
 

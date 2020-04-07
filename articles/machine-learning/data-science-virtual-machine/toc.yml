@@ -17,8 +17,6 @@
       href: provision-vm.md
     - name: Ubuntu Veri Bilimi Sanal Makinesi oluşturma
       href: dsvm-ubuntu-intro.md
-    - name: CentOS Veri Bilimi Sanal Makinesi oluşturma
-      href: linux-dsvm-intro.md
     - name: Coğrafi AI Veri Bilimi Sanal Makinesi oluşturma
       href: provision-geo-ai-dsvm.md
 - name: Kavramlar
@@ -67,8 +65,6 @@
   items:
     - name: Ubuntu Veri Bilimi Sanal Makinesi
       href: reference-ubuntu-vm.md
-    - name: CentOS Veri Bilimi Sanal Makinesi
-      href: reference-centos-vm.md
     - name: Sürüm notları
       href: release-notes.md
     - name: Bilinen sorunlar

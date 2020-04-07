@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 04/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 2e274aa353f6c3e485ae10a6a67ee2940eb88b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d2e22804c06f589c7990bf8f19319b897363a93
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246331"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743456"
 ---
 # <a name="troubleshoot-account-lockout-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Etki Alanı Hizmetleri yönetilen etki alanıyla hesap kilitleme sorunlarını giderme
 
@@ -33,11 +33,11 @@ Varsayılan hesap kilitleme eşikleri, ince taneli parola ilkesi kullanılarak y
 
 ### <a name="fine-grained-password-policy"></a>İnce taneli parola ilkesi
 
-Ayrıntılı parola ilkeleri (FGPPs), bir etki alanında farklı kullanıcılara parola ve hesap kilitleme ilkeleri için belirli kısıtlamalar uygulamanıza izin verir. FGPP yalnızca Azure AD DS'de oluşturulan kullanıcıları etkiler. Azure AD'den Azure AD DS yönetilen etki alanına senkronize edilen bulut kullanıcıları ve etki alanı kullanıcıları parola ilkelerinden etkilenmez.
+Ayrıntılı parola ilkeleri (FGPPs), bir etki alanında farklı kullanıcılara parola ve hesap kilitleme ilkeleri için belirli kısıtlamalar uygulamanıza izin verir. FGPP yalnızca Azure AD DS yönetilen etki alanındaki kullanıcıları etkiler. Azure AD'den Azure AD DS yönetilen etki alanına senkronize edilen bulut kullanıcıları ve etki alanı kullanıcıları yalnızca Azure AD DS'deki parola ilkelerinden etkilenir. Azure AD'deki veya şirket içi dizinindeki hesapları etkilenmez.
 
 İlkeler, Azure AD DS yönetilen etki alanında grup ilişkilendirme yoluyla dağıtılır ve yaptığınız tüm değişiklikler bir sonraki kullanıcı oturum açma sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenmiş bir kullanıcı hesabının kilidini açmaz.
 
-İnce taneli parola ilkeleri hakkında daha fazla bilgi için [parolayı ve hesap kilitleme ilkelerini yapılandır'a][configure-fgpp]bakın.
+Ayrıntılı parola ilkeleri ve doğrudan Azure AD DS'de oluşturulan ve Azure AD'den senkronize edilen kullanıcılar arasındaki farklar hakkında daha fazla bilgi için [bkz.][configure-fgpp]
 
 ## <a name="common-account-lockout-reasons"></a>Ortak hesap kilitleme nedenleri
 

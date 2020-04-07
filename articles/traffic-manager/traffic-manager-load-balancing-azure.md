@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: b77248813463f51d4bd2c5186e421aec43ffaf52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cccd4a6b0b52608a6a17b73688e18f27088df5b0
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76939218"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757197"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure’daki yük dengeleme hizmetlerini kullanma
 
@@ -38,7 +38,7 @@ Kavramsal düzeyde, bu hizmetlerin her biri yük dengeleme hiyerarşisinde ayrı
   * Tek bir DNS yanıtında birden fazla uygulama uç noktasının IP adreslerini göndermenizi sağlayan Çok Değerli yönlendirme.
 
   İstemci doğrudan Trafik Yöneticisi tarafından döndürülen bitiş noktasına bağlanır. Azure Trafik Yöneticisi, bir bitiş noktasının sağlıksız olduğunu algılar ve istemcileri başka bir sağlıklı örneğe yönlendirir. Hizmet hakkında daha fazla bilgi edinmek için [Azure Trafik Yöneticisi belgelerine](traffic-manager-overview.md) bakın.
-* **Uygulama Ağ Geçidi,** uygulamanız için çeşitli Katman 7 yük dengeleme özellikleri sunan uygulama dağıtım denetleyicisi (ADC) hizmeti sağlar. Müşterilerin, CPU yoğun SSL sonlandırmaişlemini uygulama ağ geçidine boşaltarak web farm üretkenliğini optimize etmesine olanak tanır. Diğer Katman 7 yönlendirme yetenekleri arasında gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden çok web sitesini barındırma olanağı yer almaktadır. Uygulama Ağ Geçidi, Internet'e bakan bir ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin birleşimi olarak yapılandırılabilir. Uygulama Ağ Geçidi tamamen Azure tarafından yönetilir, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
+* **Uygulama Ağ Geçidi,** uygulamanız için çeşitli Katman 7 yük dengeleme özellikleri sunan uygulama dağıtım denetleyicisi (ADC) hizmeti sağlar. Cpu yoğun TLS sonlandırmayı uygulama ağ geçidine boşaltarak müşterilerin web farm üretkenliğini optimize etmesini sağlar. Diğer Katman 7 yönlendirme yetenekleri arasında gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir uygulama ağ geçidinin arkasında birden çok web sitesini barındırma olanağı yer almaktadır. Uygulama Ağ Geçidi, Internet'e bakan bir ağ geçidi, yalnızca dahili ağ geçidi veya her ikisinin birleşimi olarak yapılandırılabilir. Uygulama Ağ Geçidi tamamen Azure tarafından yönetilir, ölçeklenebilir ve yüksek oranda kullanılabilir. Daha iyi yönetilebilirlik için zengin tanılama ve günlüğe kaydetme özellikleri sağlar.
 * **Yük Dengeleyici,** tüm UDP ve TCP protokolleri için yüksek performanslı, düşük gecikmeli Katman 4 yük dengeleme hizmetleri sağlayan Azure SDN yığınının ayrılmaz bir parçasıdır. Gelen ve giden bağlantıları yönetir. Yük dengeleme özelliğine sahip genel ve şirket içi yük uç noktaları yapılandırıp TCP ve HTTP hizmet durumu yoklama seçeneklerini kullanarak gelen bağlantıları arka uç havuz hedefleriyle eşleyebilir ve hizmet kullanılabilirliği sağlayabilirsiniz.
 
 ## <a name="scenario"></a>Senaryo
@@ -59,7 +59,7 @@ Aşağıdaki diyagram, bu senaryonun mimarisini gösterir:
 ![Yük dengeleme mimarisinin diyagramı](./media/traffic-manager-load-balancing-azure/scenario-diagram.png)
 
 > [!NOTE]
-> Bu örnek, Azure'un sunduğu yük dengeleme hizmetlerinin birçok olası yapılandırmalarından yalnızca biridir. Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyicisi karıştırılabilir ve yük dengeleme ihtiyaçlarınıza en uygun şekilde eşlenebilir. Örneğin, SSL boşaltma veya Katman 7 işleme gerekli değilse, Yük Dengeleyici Uygulama Ağ Geçidi yerine kullanılabilir.
+> Bu örnek, Azure'un sunduğu yük dengeleme hizmetlerinin birçok olası yapılandırmalarından yalnızca biridir. Trafik Yöneticisi, Uygulama Ağ Geçidi ve Yük Dengeleyicisi karıştırılabilir ve yük dengeleme ihtiyaçlarınıza en uygun şekilde eşlenebilir. Örneğin, TLS boşaltma veya Katman 7 işlemi gerekli değilse, Yük Dengeleyici Sİstem Ağ Geçidi yerine kullanılabilir.
 
 ## <a name="setting-up-the-load-balancing-stack"></a>Yük dengeleme yığınını ayarlama
 

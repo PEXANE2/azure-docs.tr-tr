@@ -3,12 +3,12 @@ title: Azure Backup raporlarını yapılandırma
 description: Günlük Analitiği ve Azure Çalışma Kitaplarını kullanarak Azure Yedekleme için raporları yapılandırma ve görüntüleme
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 651d1383f0f292895ed95c91bafd5206d4f04c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 497d70c1bcc577faa467720b959eb828e785a26a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161210"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672660"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
@@ -21,7 +21,7 @@ Bugün Azure Yedekleme, Azure Monitör [Günlükleri](https://docs.microsoft.com
 * Yedekleme Raporları Azure VM'ler için desteklenir, Azure VM'lerde SQL, Azure VM'lerde SAP HANA/ASE, Azure Yedekleme Aracısı (MARS), Azure Yedekleme Sunucusu (MABS) ve Sistem Merkezi DPM için desteklenir.
 * DPM iş yükleri için Yedekleme Raporları DPM Sürüm 5.1.363.0 ve üzeri ve Aracı Sürüm 2.0.9127.0 ve üzeri için desteklenir.
 * MABS iş yükleri için Yedekleme Raporları MABS Sürüm 13.0.415.0 ve üzeri ve Aracı Sürüm 2.0.9170.0 ve üzeri için desteklenir.
-* Yedekleme Raporları, verileri kullanıcının erişebildiği bir Günlük Analizi (LA) Çalışma Alanına gönderildiği sürece tüm yedekleme öğeleri, kasalar, abonelikler ve bölgelerde görüntülenebilir. 
+* Yedekleme Raporları, verileri kullanıcının erişebildiği bir Günlük Analizi (LA) Çalışma Alanına gönderildiği sürece tüm yedekleme öğeleri, kasalar, abonelikler ve bölgelerde görüntülenebilir. Bir dizi tonozun raporlarını görüntülemek için yalnızca kasaların verilerini gönderdiği **LA Çalışma Alanına okuyucu erişimine** sahip olmanız gerektiğini unutmayın. Tek tek kasalara erişiminiz **gerekmez.**
 * Müşterilerinizin aboneliklerine yetkili erişimi olan bir [Azure Deniz Feneri](https://docs.microsoft.com/azure/lighthouse/) kullanıcısıysanız, bu raporları tüm kiracılarınızda raporları görüntülemek için Azure Deniz Feneri ile kullanabilirsiniz.
 * Günlük yedekleme işlerine ait veriler şu anda raporlarda görüntülenmez.
 

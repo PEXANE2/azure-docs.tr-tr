@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 6f1c211a8110d95adb5e6802313c5b7deafe3864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276470"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673434"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Hızlı başlatma: Visual Studio Kodunu kullanarak Azure İşlevleri projesi oluşturma
 
@@ -26,7 +26,7 @@ Başlamadan önce aşağıdaki gereksinimleri n istediğinizden emin olun:
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
 + [Node.js](https://nodejs.org/), Windows tarafından npm için gereklidir. Sadece [Aktif LTS ve Bakım LTS sürümleri. ](https://nodejs.org/about/releases/) Sürümünüzü `npm --version` kontrol etmek için komutu kullanın.
-    MacOS ve Linux'ta yerel geliştirme için gerekli değildir.   
+    macOS ve Linux'ta yerel geliştirme için gerekli değildir.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
 + [Node.js](https://nodejs.org/), Active LTS ve Maintenance LTS versiyonları (10.14.1 önerilir). Sürümünüzü `npm --version` kontrol etmek için komutu kullanın.
@@ -39,6 +39,11 @@ Başlamadan önce aşağıdaki gereksinimleri n istediğinizden emin olun:
 
 + [.NET Çekirdek SDK 2.2+](https://www.microsoft.com/net/download)  
 ::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java Geliştirici Kiti](https://aka.ms/azure-jdks), sürüm 8.
+
++ [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri.
+::: zone-end  
 + [Desteklenen](https://code.visualstudio.com/) [platformlardan](https://code.visualstudio.com/docs/supporting/requirements#_platforms)birinde Visual Studio Code .  
 ::: zone pivot="programming-language-csharp"  
 + Visual Studio Code için [C# uzantısı.](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)  
@@ -47,7 +52,10 @@ Başlamadan önce aşağıdaki gereksinimleri n istediğinizden emin olun:
 + Visual Studio Code için [Python uzantısı.](https://marketplace.visualstudio.com/items?itemName=ms-python.python)  
 ::: zone-end  
 ::: zone pivot="programming-language-powershell"
-+ [Visual Studio Code için PowerShell uzantısı.](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)  
++ [Visual Studio Code için PowerShell uzantısı.](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell) 
+::: zone-end  
+::: zone pivot="programming-language-java"  
++ [Java uzantı paketi](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
 ::: zone-end  
 
 + Visual Studio Code için [Azure İşlevler uzantısı.](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) 
@@ -85,21 +93,35 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure İşlevler projesi oluşturmak 
     + **Sanal ortam oluşturmak için bir Python takma adı seçin**: Python yorumlayıcınızın konumunu seçin. Konum gösterinmiyorsa, Python ikilinize tam yolu yazın.  
     ::: zone-end
 
+    ::: zone pivot="programming-language-java"  
+    + **İşlev projeniz için**bir `Java`dil seçin : Seçin.
+
+    + **Grup kimliği sağlayın** `com.function`: Seçin.
+
+    + **Bir yapı kimliği** `myFunction`sağlayın : Seçin.
+
+    + **Bir sürüm**sağlayın `1.0-SNAPSHOT`: Seçin.
+
+    + **Paket adı ver** `com.function`: Seç .
+
+    + **Bir uygulama adı** `myFunction-12345`sağlayın : Seçin.
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Projenizin ilk işlevi için bir** `HTTP trigger`şablon seçin : Seçin.
     
     + **Bir işlev adı** `HttpExample`sağlayın : Yazın.
-    
+    ::: zone-end  
     ::: zone pivot="programming-language-csharp"
     + **Ad alanı sağlayın** `My.Functions`: Yazın. 
-    ::: zone-end
-
+    ::: zone-end  
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
     + **Yetkilendirme düzeyi** `Anonymous`: Herkesin işlev bitiş noktasını aramasını sağlayan , seçin. Yetkilendirme düzeyi hakkında bilgi edinmek için [Yetkilendirme tuşlarına](functions-bindings-http-webhook-trigger.md#authorization-keys)bakın.
-
+    ::: zone-end  
     + **Projenizi nasıl açmak istediğinizi**seçin `Add to workspace`: Seçin.
 
 1. Bu bilgileri kullanarak Visual Studio Code, HTTP tetikleyicisi olan bir Azure İşleyiş projesi oluşturur. Yerel proje dosyalarını Explorer'da görüntüleyebilirsiniz. Oluşturulan dosyalar hakkında daha fazla bilgi edinmek için [oluşturulan proje dosyalarına](functions-develop-vs-code.md#generated-project-files)bakın. 
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python,programming-language-java"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
 
@@ -119,7 +141,7 @@ Bu bölümde, seçtiğiniz dilde yerel bir Azure İşlevler projesi oluşturmak 
 
 ## <a name="run-the-function-in-azure"></a>İşlevi Azure'da çalıştırın
 
-1. Azure'da: Yan çubuktaki **işlevler** alanında, aboneliğiniz altındaki yeni işlev uygulamasını genişletin. **İşlevleri**Genişlet , **httpExample'da**sağ tıkla (Windows) veya Ctrl + + tıklayın (MacOS) ve ardından **İşlev URL'sini Kopyala'yı**seçin.
+1. Azure'da: Yan çubuktaki **işlevler** alanında, aboneliğiniz altındaki yeni işlev uygulamasını genişletin. **İşlevleri**Genişlet , **httpExample'da**sağ tıkla (Windows) veya Ctrl + +click (macOS) ve ardından **Kopyala işlev URL'sini**seçin.
 
     ![Yeni HTTP tetikleyicisi için işlev URL'sini kopyalama](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 

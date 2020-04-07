@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaş küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz kumaş ayarları ve kumaş yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477901"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753988"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Özelleştirebileceğiniz Hizmet Kumaşı kümenizin çeşitli kumaş ayarları açıklanmaktadır. Azure'da barındırılan kümeler için, ayarları [Azure portalı](https://portal.azure.com) üzerinden veya Azure Kaynak Yöneticisi şablonu kullanarak özelleştirebilirsiniz. Daha fazla bilgi için [bkz.](service-fabric-cluster-config-upgrade-azure.md) Bağımsız kümeler için *ClusterConfig.json* dosyasını güncelleştirerek ve kümenizde yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz: [Bağımsız bir kümenin yapılandırmasını yükseltin.](service-fabric-cluster-config-upgrade-windows-server.md)
@@ -29,7 +29,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |BodyChunkSize |Uint, varsayılan 16384 |Dinamik| Vücudu okumak için kullanılan baytlar içinde yığın için boyutunu verir. |
 |CrlCheckingFlag|uint, varsayılan 0x4000000 |Dinamik| Uygulama/hizmet sertifikası zinciri doğrulaması için bayraklar; örneğin 0x10000000CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x4000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT000 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 0 devre dışı kalarak CRL denetimi desteklenen değerlerin tam listesini CertGetCertificateChain dwFlags tarafından belgelenir:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |VarsayılanHttpRequestTimeout |Saniyeler içinde zaman. varsayılan 120 |Dinamik|Zaman açıklığı saniye cinsinden belirtin.  Http uygulaması ağ geçidinde işlenen http istekleri için varsayılan istek zaman arasını verir. |
-|ForwardClientCertificate|bool, varsayılan FALSE olduğunu|Dinamik|Yanlış olarak ayarlandığında, ters proxy istemci sertifikası için istekte bulunmaz. Doğru ayarlandığında, ters proxy SSL el sıkışma sıcağa göre istemci sertifikası için istekte bulunacak ve base64 kodlanmış PEM biçimi dizesini X-Client-Certificate.The servis, sertifika verilerini inceledikten sonra uygun durum koduyla isteği başarısız alacaktır. Bu doğruysa ve istemci bir sertifika sunmuyorsa, ters proxy boş bir üstbilgi iletir ve servisin servisin servis ini işlemesine izin verir. Ters proxy saydam bir katman olarak hareket edecektir. Daha fazla bilgi için [bkz.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
+|ForwardClientCertificate|bool, varsayılan FALSE olduğunu|Dinamik|Yanlış olarak ayarlandığında, ters proxy istemci sertifikası için istekte bulunmaz. Doğru ayarlandığında, ters proxy TLS el sıkışma sıcağa göre istemci sertifikası için istekte bulunacak ve base64 kodlanmış PEM formatı dizesini X-Client-Certificate.The servis, sertifika verilerini inceledikten sonra uygun durum koduyla isteğe bağlı olarak hizmete iletecektir. Bu doğruysa ve istemci bir sertifika sunmuyorsa, ters proxy boş bir üstbilgi iletir ve servisin servisin servis ini işlemesine izin verir. Ters proxy saydam bir katman olarak hareket edecektir. Daha fazla bilgi için [bkz.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
 |GatewayAuthCredentialType |dize, varsayılan "Yok" |Statik| http app ağ geçidi bitiş noktası Geçerli değerleri kullanmak için güvenlik kimlik bilgileri türünü gösterir None/X509 vardır. |
 |GatewayX509CertificateFindType |dize, varsayılan "FindByThumbprint" |Dinamik| GatewayX509CertificateStoreName Desteklenen değer tarafından belirtilen mağazada sertifika aramanasıl yapılacağını gösterir: FindByThumbprint; Findbysubjectname. |
 |GatewayX509CertificateFindValue | dize, varsayılan "" |Dinamik| Http uygulaması ağ geçidi sertifikasını bulmak için kullanılan arama filtresi değeri. Bu sertifika https bitiş noktasında yapılandırılır ve hizmetler tarafından gerekirse uygulamanın kimliğini doğrulamak için de kullanılabilir. FindValue ilk aranır; ve eğer bu yoksa; FindValueSecondary yukarı bakılır. |

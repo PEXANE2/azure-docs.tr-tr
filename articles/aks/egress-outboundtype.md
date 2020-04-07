@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmeti'nde (AKS) özel bir çıkış rotasını n
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 30b7b6bae92221b268d40977f5b299e9b0b267b0
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637817"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676499"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Kullanıcı Tanımlı Rota (Önizleme) ile küme çıkışLarını özelleştirin
 
@@ -361,7 +361,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- Yeni oluşturduğunuz Kubernetes kümenize bağlanmak `kubectl` için yapılandırmak için [az aks get-credentials][az-aks-get-credentials] komutunu kullanın. 
+ Yeni oluşturduğunuz Kubernetes kümenize `kubectl` bağlanmak için yapılandırmak için [az aks get-credentials][az-aks-get-credentials] komutunu kullanın. 
 
  ```azure-cli
  az aks get-credentials -g $RG -n $AKS_NAME
@@ -542,3 +542,6 @@ Azure oylama uygulamasının bir resmini görmeniz gerekir.
 Bkz. [Azure ağ UDR genel bakış.](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview)
 
 [Rota tablosunun nasıl oluşturuleceğini, değiştireceğiniz veya silineceğiniz hakkında](https://docs.microsoft.com/azure/virtual-network/manage-route-table)bakın.
+
+<!-- LINKS - internal -->
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74025406"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755107"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>LinkedIn hesap bağlantılarını Azure Etkin Dizini'ne entegre et
 
@@ -26,8 +26,9 @@ Kuruluşunuzdaki kullanıcıların bazı Microsoft uygulamalarında LinkedIn ba�
 
 > [!IMPORTANT]
 > LinkedIn hesap bağlantıları ayarı şu anda Azure REKLAM kuruluşlarına dağıtılıyor. Kuruluşunuz için kullanıma sunulduğunda, varsayılan olarak etkinleştirilir.
-> 
+>
 > Özel durumlar:
+>
 > * Ayar, ABD Hükümeti, Microsoft Cloud Almanya veya Çin'de 21Vianet tarafından işletilen Azure ve Office 365 için Microsoft Cloud kullanan müşteriler için kullanılamaz.
 > * Ayar, Almanya'da sağlanan kiracılar için varsayılan olarak kapalıdır. Ayarın Microsoft Cloud Germany kullanan müşteriler için kullanılmadığını unutmayın.
 > * Ayar, Fransa'da sağlanan kiracılar için varsayılan olarak kapalıdır.
@@ -40,7 +41,7 @@ LinkedIn hesap bağlantılarını yalnızca erişmek istediğiniz kullanıcılar
 
 1. Azure AD kuruluşu için genel bir yönetici olan bir hesapla [Azure AD yönetici merkezinde](https://aad.portal.azure.com/) oturum açın.
 1. **Kullanıcılar**’ı seçin.
-1. **Kullanıcılar** bıçağında, **Kullanıcı ayarlarını**seçin.
+1. **Kullanıcılar** **sayfasında, Kullanıcı ayarlarını**seçin.
 1. **LinkedIn hesap bağlantıları**altında, kullanıcıların bazı Microsoft uygulamalarında LinkedIn bağlantılarına erişmek için hesaplarını bağlamalarına izin verin. Kullanıcılar hesaplarını bağlamayı kabul ettirene kadar hiçbir veri paylaşılmaz.
 
     * Kuruluşunuzdaki tüm kullanıcılar için hizmeti etkinleştirmek için **Evet'i** seçin
@@ -55,6 +56,7 @@ LinkedIn hesap bağlantılarını yalnızca erişmek istediğiniz kullanıcılar
 > LinkedIn tümleştirmesi, kullanıcılarınızın hesaplarını bağlamayı kabul etmelerine kadar tam olarak etkinleştirilemez. Kullanıcılarınız için hesap bağlantılarını etkinleştirdiğinizde hiçbir veri paylaşılmaz.
 
 ### <a name="assign-selected-users-with-a-group"></a>Seçili kullanıcıları bir grupla atama
+
 LinkedIn ve Microsoft hesaplarını birçok bireysel kullanıcı yerine tek bir grup için bağlama olanağı sağlayabilmeniz için bir kullanıcı grubu seçme seçeneğine sahip bir kullanıcı listesini belirten 'Seçili' seçeneğini değiştirdik. Seçili kullanıcılar için LinkedIn hesap bağlantıları etkinleştirmiyorsanız, hiçbir şey yapmanız gerekmez. Seçili bireysel kullanıcılar için LinkedIn hesap bağlantılarını daha önce etkinleştirdiyseniz, şunları
 
 1. Tek tek kullanıcıların geçerli listesini alma
@@ -64,15 +66,11 @@ LinkedIn ve Microsoft hesaplarını birçok bireysel kullanıcı yerine tek bir 
 > [!NOTE]
 > Şu anda seçili tek tek kullanıcılarınızı bir gruba taşımasanız bile, Microsoft uygulamalarında LinkedIn bilgilerini görmeye devam edebilirler.
 
-### <a name="get-the-current-list-of-selected-users"></a>Seçili kullanıcıların geçerli listesini alma
+### <a name="move-currently-selected-users-to-a-group"></a>Şu anda seçili kullanıcıları bir gruba taşıma
 
+1. LinkedIn hesap bağlantıları için seçilen kullanıcıların csv dosyasını oluşturun.
 1. Yönetici hesabınızla Microsoft 365'te oturum açın.
-1. https://linkedinselectedusermigration.azurewebsites.net/ kısmına gidin. LinkedIn hesap bağlantıları için seçilen kullanıcıların listesini görürsünüz.
-1. Listeyi bir CSV dosyasına dışa aktarın.
-
-### <a name="move-the-currently-selected-individual-users-to-a-group"></a>Şu anda seçili olan tek tek kullanıcıları bir gruba taşıma
-
-1. PowerShell’i başlatın
+1. PowerShell’i başlatın.
 1. Çalıştırarak Azure AD modüllerini yükleme`Install-Module AzureAD`
 1. Şu betiği çalıştırın:
 

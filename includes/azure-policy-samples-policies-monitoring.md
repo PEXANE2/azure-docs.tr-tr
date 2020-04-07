@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: d5bade2f75ecdb8e1fbf2f9eb06a73d69cf27dc9
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 014ad120a12b836ae05f96b42a96ee7ae5e3d2f9
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80623956"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758584"
 ---
 |Adı |Açıklama |Etki(ler) |Sürüm |GitHub |
 |---|---|---|---|---|
@@ -56,6 +56,6 @@ ms.locfileid: "80623956"
 |[Windows VM'ler için Günlük Analizi aracısı dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0868462e-646c-4fe3-9ced-a733534b6a2c) |VM Image (OS) tanımlanan listedeyse ve aracı yüklü değilse, Windows VM'leri için Günlük Analizi aracısını dağıtın. Destek güncelleştirildikçe işletim sistemi görüntüleri listesi zaman içinde güncellenir. |deployIfNotExists |1.0.1 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/LogAnalyticsExtension_Windows_VM_Deploy.json)
 |[Ağ trafiği veri toplama aracısı Linux sanal makinelere kurulmalıdır](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F04c4380f-3fae-46e8-96c9-30193528f602) |Güvenlik Merkezi, ağ haritasında trafik görselleştirmesi, ağ sertleştirme önerileri ve belirli ağ tehditleri gibi gelişmiş ağ koruma özelliklerini etkinleştirmek için Azure sanal makinelerinizden ağ trafiği verilerini toplamak için Microsoft İzleme Bağımlılık Aracısı'nı kullanır. |Auditifnotexists, Devre Dışı |1.0.0-önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Linux.json)
 |[Ağ trafiği veri toplama aracısı Windows sanal makinelere yüklenmeli](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2f2ee1de-44aa-4762-b6bd-0893fc3f306d) |Güvenlik Merkezi, ağ haritasında trafik görselleştirmesi, ağ sertleştirme önerileri ve belirli ağ tehditleri gibi gelişmiş ağ koruma özelliklerini etkinleştirmek için Azure sanal makinelerinizden ağ trafiği verilerini toplamak için Microsoft İzleme Bağımlılık Aracısı'nı kullanır. |Auditifnotexists, Devre Dışı |1.0.0-önizleme |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ASC_Dependency_Agent_Audit_Windows.json)
-|[Etkinlik günlükleri olan kapsayıcıyı içeren depolama hesabı BYOK ile şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |Etkinlik günlükleri olan kapsayıcıyı içeren Depolama hesabı BYOK ile şifrelenirse, bu ilke denetler. İlke yalnızca depolama hesabı, tasarıma göre etkinlik günlükleri ile aynı abonelikte yse çalışır. Azure Depolama şifrelemesi hakkında daha https://aka.ms/azurestoragebyokfazla bilgiyi burada bulabilirsiniz.  |Auditifnotexists, Devre Dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)
+|[Etkinlik günlükleri olan kapsayıcıyı içeren depolama hesabı BYOK ile şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |Etkinlik günlükleri olan kapsayıcıyı içeren Depolama hesabı BYOK ile şifrelenirse, bu ilke denetler. İlke yalnızca depolama hesabı, tasarıma göre etkinlik günlükleri ile aynı abonelikte yse çalışır. Azure Depolama şifrelemesi hakkında daha [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok)fazla bilgiyi burada bulabilirsiniz.  |Auditifnotexists, Devre Dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json)
 |[Log Analytics aracısı Sanal Makine Ölçeği Kümelerine yüklenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |Bu ilke, Log Analytics aracısı yüklü değilse, windows/Linux Sanal Makine Ölçeği kümelerini denetler. |Auditifnotexists, Devre Dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json)
 |[Log Analytics aracısı sanal makinelere yüklenmeli](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |Bu ilke, Log Analytics aracısı yüklü değilse, windows/Linux sanal makinelerini denetler. |Auditifnotexists, Devre Dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json)

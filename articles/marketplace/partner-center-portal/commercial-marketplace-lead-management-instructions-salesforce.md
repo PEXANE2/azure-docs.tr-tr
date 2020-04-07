@@ -7,16 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: dsindona
-ms.openlocfilehash: 1720026b4beff941b02a60cd1c755a043d66bdb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281502"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755386"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce için müşteri adayı yönetimini yapılandırma
 
-Bu makalede, Satış Gücü sisteminizi pazar teklifinizden satış müşteri adaylarını işlemek için nasıl kurlayacağınız açıklanmaktadır.
+Bu makalede, satış müşteri adaylarını ticari pazar teklifinizden işlemek için Salesforce sisteminizin nasıl ayarlanır.
+
+> [!Note]
+> Market, **Ülke** alanı için değerler listesi gibi önceden doldurulmuş listeleri desteklemez. Devam etmeden önce ayarlanmış liste olmadığından emin olun. Alternatif olarak, müşteri adaylarını alacak şekilde bir [HTTPS bitiş noktası](./commercial-marketplace-lead-management-instructions-https.md) veya Azure [tablosu](./commercial-marketplace-lead-management-instructions-azure-table.md) yapılandırabilirsiniz.
 
 ## <a name="set-up-your-salesforce-system"></a>Salesforce sisteminizi ayarlama
 
@@ -26,14 +29,16 @@ Bu makalede, Satış Gücü sisteminizi pazar teklifinizden satış müşteri ad
     ![Salesforce kurulumu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
 
     1. Kurulum sayfasından, sol navigasyon üzerinden **Platform Araçları->Özellik Ayarları->Pazarlama->Web-to-Lead**gidin.
-    ![Salesforce Web'den Müşteri Adayına](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
+
+        ![Salesforce Web'den Müşteri Adayına](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
 3. Salesforce Classic deneyimini kullanıyorsanız:
     1. Salesforce Ana sayfasından **Kurulum'u** seçin.
     ![Salesforce klasik kurulum](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-setup.png)
 
     1. Kurulum sayfasından, sol gezinme yoluyla Yapı **->Özelleştir->Müşteri Adayları->Web'den Müşteri Adayına.**
-    ![Salesforce klasik web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
+
+        ![Salesforce klasik web-to-lead](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
 Talimatların geri kalanı, hangi Salesforce deneyimini kullandığınızdan bağımsız olarak aynıdır.
 

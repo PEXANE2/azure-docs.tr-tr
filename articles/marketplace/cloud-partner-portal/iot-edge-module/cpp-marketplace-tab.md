@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 3ff65a637c1d3722e773ab27f051b3b5bc109a23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281740"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745107"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modülü Pazar sekmesi
+
+>[!Important]
+>30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 **Yeni Teklif** sayfasının **Pazar sekmesi,** potansiyel müşterilerinize pazarlama, satış ve yasal bilgi ve anlaşmaları sağlamanızı ve pazardan oluşturulan müşteri adaylarını yönetmenize olanak tanır. Bu uzun form dört bölüme ayrılmıştır: **Genel Bakış**, **Pazarlama Eserler**, **Kurşun Yönetimi**, ve **Yasal**.
 
@@ -86,7 +89,7 @@ Bu bölümde aşağıdaki alt bölümler vardır: **Logolar**, **Ekran Görünt�
 |  ---------                |     ---------------                                                          |
 | *Logo*  | Logolarınızın nasıl ve nerede kullanılacağını görmek için önceki ekran görüntülerine bakın.  |
 | **Küçük\***                 | 40x40 piksel PNG formatı                                                     |
-| **Orta\***                | 90x90 piksel PNG formatı                                                     |
+| **Medium\***                | 90x90 piksel PNG formatı                                                     |
 | **Büyük\***                 | 115x115 piksel PNG formatı                                                  |
 | **Geniş\***                  | 255x115 piksel PNG formatı                                                   |
 | **Kahraman**                  | 815x290 piksel PNG formatında.  İsteğe bağlı, ancak bir kez kahraman simgesi yüklendiğinde silinemez. |

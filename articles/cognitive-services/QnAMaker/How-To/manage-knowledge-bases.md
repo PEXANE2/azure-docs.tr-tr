@@ -3,12 +3,12 @@ title: Bilgi tabanlarını yönet - QnA Maker
 description: QnA Maker, bilgi tabanı ayarlarına ve içeriğine erişim sağlayarak bilgi temellerinizi yönetmenize olanak tanır.
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 57839125011016daed5f0b3d441a83e8db488198
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80071149"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756808"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Bilgi tabanı oluşturma ve ayarları yönetme
 
@@ -107,5 +107,5 @@ Bilgi tabanınızı ortak çalışanlarla paylaşırsanız,](işbirliği-bilgi-b
 
 Bir [kaynaktaki](language-knowledge-base.md) tüm bilgi tabanlarının dilini yönetme hakkında bilgi edinin.
 
-* QnA kümelerini edit
+* QnA çiftlerini edit
 * QnA Maker tarafından kullanılan Azure kaynaklarını yönetme

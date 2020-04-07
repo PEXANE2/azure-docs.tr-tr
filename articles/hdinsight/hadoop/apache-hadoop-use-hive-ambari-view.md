@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: 787d88d336abcf3b0ba9b14c3d3798850b665eca
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73097113"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745101"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop ile Apache Ambari Hive Görünümünü Kullanma
 
@@ -23,14 +23,13 @@ Apache Ambari Hive View'ı kullanarak Hive sorgularını nasıl çalıştıraca�
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight'ta hadoop kümesi. [Linux'ta HDInsight ile başlayın](./apache-hadoop-linux-tutorial-get-started.md)bakın.
-* Bir web tarayıcısı
+HDInsight'ta hadoop kümesi. [Linux'ta HDInsight ile başlayın](./apache-hadoop-linux-tutorial-get-started.md)bakın.
 
 ## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
-1. Azure [portalından](https://portal.azure.com/)kümenizi seçin.  Bkz. Yönergeler için [liste ve gösteri kümeleri.](../hdinsight-administer-use-portal-linux.md#showClusters) Küme yeni bir portal bıçak la açılır.
+1. Azure [portalından](https://portal.azure.com/)kümenizi seçin.  Bkz. Yönergeler için [liste ve gösteri kümeleri.](../hdinsight-administer-use-portal-linux.md#showClusters) Küme yeni bir portal görünümünde açılır.
 
-1. **Küme panolarından** **Ambari görünümlerini**seçin. Kimlik doğrulaması istendiğinde, kümeyi oluşturduğunuzda `admin`sağladığınız küme giriş (varsayılan) hesap adını ve parolasını kullanın. Alternatif olarak, `https://CLUSTERNAME.azurehdinsight.net/#/main/views` kümenizin `CLUSTERNAME` adının bulunduğu tarayıcınıza gidin.
+1. **Küme panolarından** **Ambari görünümlerini**seçin. Kimlik doğrulaması istendiğinde, kümeyi oluşturduğunuzda `admin`sağladığınız küme giriş (varsayılan) hesap adını ve parolasını kullanın. Ayrıca, kümenizin adının `https://CLUSTERNAME.azurehdinsight.net/#/main/views` `CLUSTERNAME` bulunduğu tarayıcınızda da gidebilirsiniz.
 
 1. Görünümler listesinden __Kovan Görünümü'nü__seçin.
 
@@ -59,18 +58,15 @@ Apache Ambari Hive View'ı kullanarak Hive sorgularını nasıl çalıştıraca�
         GROUP BY t4;
     ```
 
-    Bu ifadeler aşağıdaki eylemleri gerçekleştirir:
+    Bu ifadeler aşağıdaki eylemleri yapmak:
 
-   * `DROP TABLE`: Tablozaten varsa tabloyu ve veri dosyasını siler.
-
-   * `CREATE EXTERNAL TABLE`: Hive'da yeni bir "harici" tablo oluşturur.
-     Dış tablolar yalnızca Hive'da tablo tanımını depolar. Veriler özgün konumda bırakılır.
-
-   * `ROW FORMAT`: Verilerin nasıl biçimlendiğini gösterir. Bu durumda, her günlükteki alanlar bir boşlukla ayrılır.
-
-   * `STORED AS TEXTFILE LOCATION`: Verilerin nerede depolandığı ve metin olarak depolandığı gösterir.
-
-   * `SELECT`: T4 sütununun [HATA] değerini içerdiği tüm satırların sayısını seçer.
+    |Deyim | Açıklama |
+    |---|---|
+    |DAMLA TABLOSU|Tablo zaten varsa tabloyu ve veri dosyasını siler.|
+    |DıŞ TABLO OLUŞTURMA|Hive'da yeni bir "harici" tablo oluşturur. Dış tablolar yalnızca Hive'da tablo tanımını depolar. Veriler özgün konumda bırakılır.|
+    |SATıR BIÇIMI|Verilerin nasıl biçimlendirilir olduğunu gösterir. Bu durumda, her günlükteki alanlar bir boşlukla ayrılır.|
+    |TEXTFILE KONUMU OLARAK DEPOLANAN|Verilerin nerede depolandığı ve metin olarak depolandığı gösterir.|
+    |SELECT|T4 sütununun [HATA] değerini içerdiği tüm satırların sayısını seçer.|
 
    > [!IMPORTANT]  
    > __Veritabanı__ seçimini __varsayılan olarak__bırakın. Bu belgedeki örnekler, HDInsight ile birlikte varsayılan veritabanını kullanır.
@@ -116,7 +112,7 @@ Hive veritabanındaki tablolarla çalışmak için __Tablolar__ sekmesini kullan
 
 **Sorgu** sekmesinden, isteğe bağlı olarak sorguları kaydedebilirsiniz. Bir sorguyu kaydettikten sonra, Kaydedilen __Sorgular__ sekmesinden yeniden kullanabilirsiniz.
 
-![Apache Hive görünümü kaydedilen sorgular sekmesi](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
+![Apache Hive görünümleri sorguları sekmesini kaydetti](./media/apache-hadoop-use-hive-ambari-view/ambari-saved-queries.png)
 
 > [!TIP]  
 > Kaydedilen sorgular varsayılan küme depolama sında depolanır. Kaydedilen sorguları yolun `/user/<username>/hive/scripts`altında bulabilirsiniz. Bunlar düz metin `.hql` dosyaları olarak depolanır.
@@ -131,7 +127,7 @@ Kovan Görünümü'nün üst kısmındaki **UDF** sekmesini kullanarak bir UDF k
 
 ![Apache Hive görünüm UDFs sekmesi ekran](./media/apache-hadoop-use-hive-ambari-view/user-defined-functions.png)
 
-Kovan Görünümü'ne bir UDF ekledikten sonra Sorgu Düzenleyicisi'nin alt kısmında **Query Editor** **udfs ekle** düğmesi belirir. Bu giriş inseçilmesi, Kovan Görünümü'nde tanımlanan UDF'lerin açılır listesini görüntüler. UDF seçmek, UDF'yi etkinleştirmek için sorgunuza HiveQL deyimleri ekler.
+**Sorgu**Düzenleyicisi'nin alt kısmında **bir Ekle udfs** düğmesi görünür. Bu giriş, Kovan Görünümü'nde tanımlanan UDF'lerin açılır listesini görüntüler. UDF seçmek, UDF'yi etkinleştirmek için sorgunuza HiveQL deyimleri ekler.
 
 Örneğin, aşağıdaki özelliklere sahip bir UDF tanımladıysanız:
 
@@ -155,13 +151,13 @@ Daha sonra sorgunuzda UDF'yi kullanabilirsiniz. Örneğin, `SELECT myawesomeudf(
 HDInsight'ta Hive ile UDF kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [HDInsight'ta Apache Hive ve Apache Pig ile Python kullanma](python-udf-hdinsight.md)
-* [HDInsight'a özel bir Apache Hive UDF nasıl eklenir?](https://blogs.msdn.com/b/bigdatasupport/archive/2014/01/14/how-to-add-custom-hive-udfs-to-hdinsight.aspx)
+* [HDInsight'ta Apache Hive ile Java UDF kullanın](./apache-hadoop-hive-java-udf.md)
 
 ## <a name="hive-settings"></a>Kovan ayarları
 
 Hive için yürütme motorlarını Tez'den (varsayılan) MapReduce olarak değiştirmek gibi çeşitli Hive ayarlarını değiştirebilirsiniz.
 
-## <a name="next-steps"></a><a id="nextsteps"></a>Sonraki adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 
 HDInsight'ta Hive hakkında genel bilgi için:
 

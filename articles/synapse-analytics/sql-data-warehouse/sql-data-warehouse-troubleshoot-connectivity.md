@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 08fb0a6675d18370482abe9b1d7b9a0d9ee5c364
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632996"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742582"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
@@ -79,14 +79,14 @@ Synapse SQL havuzunuza bağlanmak için en son araçları kullandığınızdan e
 
 En son sürücü sürümlerini kullandığınızdan emin olun.Eski sürücüler yeni özellikleri desteklemeyebilir gibi sürücülerin eski bir sürümünü kullanarak beklenmeyen davranışlara neden olabilir.
 
-- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server)
-- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)
-- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server)
-- [PHP](/sql/connect/php/download-drivers-php-sql-server)
+- [ODBC](/sql/connect/odbc/download-odbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [JDBC](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [OLE DB](/sql/connect/oledb/download-oledb-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [PHP](/sql/connect/php/download-drivers-php-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ## <a name="check-your-connection-string"></a>Bağlantı dizenizi denetleme
 
-Bağlantı dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Bağlantı dizeleriyle ilgili ek bilgileri [burada](/sql-data-warehouse/sql-data-warehouse-connection-strings.md) bulabilirsiniz.
+Bağlantı dizelerinizin düzgün ayarlandığından emin olun.  Aşağıda bazı örnekler verilmiştir.  Bağlantı dizeleriyle ilgili ek bilgileri [burada](sql-data-warehouse-connection-strings.md) bulabilirsiniz.
 
 ADO.NET bağlantı dizesi
 
@@ -122,4 +122,4 @@ Hatalar 40914 ve 40615, [hata açıklaması ve çözüm burada](../../sql-databa
 
 ## <a name="still-having-connectivity-issues"></a>Hala bağlantı sorunları yaşıyor musunuz?
 
-Mühendislik ekibinin sizi destekleyebilmeleri için bir [destek bileti](/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md) oluşturun.
+Mühendislik ekibinin sizi destekleyebilmeleri için bir [destek bileti](sql-data-warehouse-get-started-create-support-ticket.md) oluşturun.

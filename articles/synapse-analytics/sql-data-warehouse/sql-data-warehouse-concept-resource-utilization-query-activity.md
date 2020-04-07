@@ -11,12 +11,12 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 61c823aee5d8a6755a3bd7971cd7cca952cbb911
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633611"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745294"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak kullanımı ve sorgu etkinliğini izleme
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics, veri ambarı iş yükünüzle ilgili yüzey öngörüle
 
 ## <a name="resource-utilization"></a>Kaynak kullanımı
 
-Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. Bu ölçümler Azure [Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse?toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla su yüzüne çıkar.
+Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. Bu ölçümler Azure [Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)aracılığıyla su yüzüne çıkar.
 
 | Metrik Adı             | Açıklama                                                  | Toplama Türü |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |

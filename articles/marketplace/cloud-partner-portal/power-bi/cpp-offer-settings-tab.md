@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: f3a8d740d391edc09a290d3dba4307af7eec00b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 637217d718e6e91a3fa29bd38d8215d0a1324825
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286362"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745437"
 ---
 # <a name="power-bi-apps-offer-settings-tab"></a>Power BI Apps Teklif Ayarları sekmesi
+
+>[!Important]
+>30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
 
 Hizmet uygulamaları için **Yeni Teklif** sayfasını açtığınızda, önce **Teklif Ayarları** sekmesini görürsünüz. Bu sekmede birincil tanımlayıcıları ve teklifinizin adını sağlarsınız. Yıldız işareti (*) gerekli alanı gösterir.
 

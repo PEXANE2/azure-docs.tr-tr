@@ -11,12 +11,12 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632975"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743676"
 ---
 # <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure Synapse'de SQL Analytics'te Sorun Giderme
 
@@ -30,13 +30,13 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | Sunucu sorumlusu "MyUserName" geçerli güvenlik bağlamında "asıl" veritabanına erişemiyor. Kullanıcının varsayılan veritabanı açılamıyor. Oturum açılamadı. 'MyUserName' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, Hata: 916) | Bu hata, bir Azure AD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak ana veritabanında bir kullanıcı olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla ayrıntı için [Güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
 | CTAIP hatası                                                  | Bu hata, SQL server ana veritabanında bir giriş oluşturulduğunda oluşabilir, ancak SQL veritabanında oluşturulmaz.  Bu hatayla karşılaşırsanız, Güvenlik [genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bir göz atın.  Bu makalede, master üzerinde bir giriş ve kullanıcı oluşturmak için nasıl ve daha sonra nasıl SQL veritabanında bir kullanıcı oluşturmak için açıklar. |
 | Güvenlik Duvarı tarafından engellendi                                          | SQL havuzları, yalnızca bilinen IP adreslerinin bir veritabanına erişebilmesini sağlamak için güvenlik duvarları tarafından korunur. Güvenlik duvarları varsayılan olarak güvenlidir, bu da bağlanabilmeniz için açıkça etkinleştirmeniz ve IP adresi veya adres aralığı anlamına gelir.  Erişim için güvenlik duvarınızı yapılandırmak için, Sağlama yönergelerinde [istemci IP'niz için sunucu güvenlik duvarı erişimini yapılandırma](create-data-warehouse-portal.md) [adımlarını](create-data-warehouse-portal.md)izleyin. |
-| Araç veya sürücüyle bağlanamıyor                           | Synapse SQL havuzu, Visual Studio için [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanmanızı önerir. Sürücüler ve Azure Synapse'ye bağlanma hakkında daha fazla bilgi için Azure [Synapse sürücüleri](sql-data-warehouse-connection-strings.md) ve Azure [Synapse makalelerine bağlan'a](sql-data-warehouse-connect-overview.md) bakın. |
+| Araç veya sürücüyle bağlanamıyor                           | Synapse SQL havuzu, Visual Studio için [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanmanızı önerir. Sürücüler ve Azure Synapse'ye bağlanma hakkında daha fazla bilgi için Azure [Synapse sürücüleri](sql-data-warehouse-connection-strings.md) ve Azure [Synapse makalelerine bağlan'a](sql-data-warehouse-connect-overview.md) bakın. |
 
 ## <a name="tools"></a>Araçlar
 
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| Visual Studio nesne gezgini Azure AD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici çözüm olarak, [sys.database_principals'deki](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)kullanıcıları görüntüleyin.  Synapse SQL havuzuile Azure Active Directory'yi kullanma hakkında daha fazla bilgi edinmek için [Azure Synapse'ye kimlik doğrulama](sql-data-warehouse-authentication.md) bilgisini edinin. |
+| Visual Studio nesne gezgini Azure AD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici çözüm olarak, [sys.database_principals'deki](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanıcıları görüntüleyin.  Synapse SQL havuzuile Azure Active Directory'yi kullanma hakkında daha fazla bilgi edinmek için [Azure Synapse'ye kimlik doğrulama](sql-data-warehouse-authentication.md) bilgisini edinin. |
 | Komut dosyası oluşturma, komut dosyası oluşturma sihirbazını kullanma veya SSMS üzerinden bağlanma yavaştır, yanıt vermez veya hata üretir | Kullanıcıların ana veritabanında oluşturulduğundan emin olun. Komut dosyası oluşturma seçeneklerinde, motor sürümünün "Microsoft Azure SQL Veri Ambarı Sürümü" ve motor türü "Microsoft Azure SQL Veritabanı" olarak ayarlandıklarında da emin olun. |
 | SSMS'te komut dosyaları oluşturma başarısız olur                               | Synapse SQL havuzu için komut dosyası oluşturma seçeneği "Bağımlı nesneler için komut dosyası oluşturma" seçeneği "True" olarak ayarlanırsa başarısız olur. Geçici çözüm olarak, kullanıcılar araçlara el ile gitmeli **-> Seçenekleri -sql server object explorer >-> Bağımlı seçenekler için komut dosyası oluşturma ve yanlış olarak ayarlanmalıdır** |
 
@@ -59,7 +59,7 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | Msg 40847: Sunucu izin verilen 45000 Veritabanı İşlem Birimi kotasını aşacağı için işlemi gerçekleştiremedi. | Oluşturmaya çalıştığınız veritabanının [DWU'yu](what-is-a-data-warehouse-unit-dwu-cdwu.md) azaltın veya [kota artışı isteyin.](sql-data-warehouse-get-started-create-support-ticket.md) |
 | Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için [Tablo boyutlarına](sql-data-warehouse-tables-overview.md#table-size-queries) bakın. |
 | Tabloları yönetme konusunda yardım                                    | Tablolarınızı yönetmekonusunda yardım için [Tabloya genel bakış](sql-data-warehouse-tables-overview.md) makalesine bakın.  Bu makalede ayrıca Tablo veri [türleri](sql-data-warehouse-tables-data-types.md)gibi daha ayrıntılı konulara bağlantılar içerir , [tablo dağıtma](sql-data-warehouse-tables-distribute.md), [tablo dizinleme](sql-data-warehouse-tables-index.md), [Tablo bölümleme](sql-data-warehouse-tables-partition.md), [tablo istatistikleri](sql-data-warehouse-tables-statistics.md) ve Geçici [tablolar](sql-data-warehouse-tables-temporary.md)bakımı . |
-| Saydam veri şifreleme (TDE) ilerleme çubuğu Azure portalında güncelleştirmiyor | Powershell ile TDE durumunu [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)görüntüleyebilirsiniz. |
+| Saydam veri şifreleme (TDE) ilerleme çubuğu Azure portalında güncelleştirmiyor | Powershell ile TDE durumunu [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)görüntüleyebilirsiniz. |
 
 ## <a name="differences-from-sql-database"></a>SQL Veritabanından Farklar
 
@@ -70,7 +70,7 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | DELETE ve UPDATE sınırlamaları         | Bkz. [UPDATE geçici işleri,](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements) [DELETE geçici işleri](sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements) ve [desteklenmeyen UPDATE ve DELETE sözdizimini aşmak için CTAS'ı kullanma.](sql-data-warehouse-develop-ctas.md) |
 | MERGE deyimi desteklenmiyor      | Bkz. [BİrLEŞTİrme geçici işleri.](sql-data-warehouse-develop-ctas.md#replace-merge-statements)                  |
 | Depolanan yordam sınırlamaları          | Depolanan yordamların bazı sınırlamalarını anlamak için [Depolanan yordam sınırlamalarına](sql-data-warehouse-develop-stored-procedures.md#limitations) bakın. |
-| UDF'ler SELECT ifadelerini destekletmiyor | Bu, UDF'lerimizin geçerli bir sınırlamasıdır.  Desteklediğimiz sözdizimi için [CREATE FONKSIYONU'na](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) bakın. |
+| UDF'ler SELECT ifadelerini destekletmiyor | Bu, UDF'lerimizin geçerli bir sınırlamasıdır.  Desteklediğimiz sözdizimi için [CREATE FONKSIYONU'na](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

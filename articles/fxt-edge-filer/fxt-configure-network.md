@@ -6,12 +6,12 @@ ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9b0154889544e0054e309cc5f43851b73b4396b4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239801"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754681"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Öğretici: Kümenin ağ ayarlarını yapılandırma
 
@@ -76,7 +76,7 @@ FXT Edge Filer kümesi bu işlevler için X.509 sertifikalarını kullanır:
 
 Kümeye sertifika yüklemeniz gerekiyorsa, **Küme** > **Sertifikaları** ayarları sayfasını kullanın. Ayrıntılar, Küme Yapılandırma Kılavuzu'nun [> Sertifikaları Küme](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) sayfasında dır.
 
-Küme yönetimi iletişimini şifrelemek için, yönetimSSL için hangi sertifikanın kullanılacağını seçmek için **Cluster** > **Genel Kurulum** ayarları sayfasını kullanın.
+Küme yönetimi iletişimini şifrelemek için, yönetim TLS için hangi sertifikanın kullanılacağını seçmek için **Cluster** > **Genel Kurulum** ayarları sayfasını kullanın.
 
 > [!Note] 
 > Bulut hizmeti erişim **anahtarları, Bulut Kimlik Bilgileri** yapılandırma sayfası kullanılarak depolanır. Yukarıdaki [çekirdek filer](fxt-add-storage.md#add-a-core-filer) ekle bölümü bir örnek gösterir; ayrıntılar için Küme Yapılandırma Kılavuzu [Bulut Kimlik Bilgileri](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) bölümünü okuyun. 

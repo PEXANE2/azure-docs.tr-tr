@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6b44d9fd0bdd6e4b41013373472b5882a7ca1434
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73b1d93cc7f6325a5319b632aa7f827d9ee6303c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286600"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745053"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge modülü yayımlama genel bakış teklifi
+
+>[!Important]
+>30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 <table> <tr> <td>Bu bölümde, Microsoft Azure Marketi'nde yeni bir <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>Azure IoT Edge modülü teklifinin nasıl yayımlanabileceği açıklanmaktadır. IoT Edge modülü, Docker uyumlu bir kapsayıcıdır ve IoT Edge aygıtında çalışmak üzere üretilmiştir. Azure IoT Edge modülleri, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure hizmetleri veya özel çözüm kodu içerebilir. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: e16166c741b99c1af5b36f2c7ccd25b01f7544ba
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 3bc095d8949f177ccb6c4cc111ba4b272027904e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109000"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756704"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Quickstart: Toplu sorular ve beklenen yanıtlarla bilgi tabanını test edin
 
@@ -149,7 +149,7 @@ Veri kaynağı ve işlem otomatik olduğundan, test dosyası doğru değerleri b
     |Surface Pro 4'ünüzü şarj edin|
     |Pil seviyesini kontrol edin|
 
-    İki QnA kümesi meta veri kümesine sahiptir.
+    İki QnA çifti meta veri kümesine sahiptir.
 
     > [!TIP]
     > Her kümenin meta verilerini ve QnA d'lerini görmek için bilgi tabanını dışa aktarın. **Ayarlar** sayfasını seçin ve ardından `.xls` dosya olarak **Dışa Aktar'ı** seçin. İndirilen bu dosyayı bulun ve Excel'in meta veri ve kimlik incelemesiyle açın.
@@ -169,7 +169,7 @@ Toplu iş testi için iki ana senaryo vardır:
 
 Aşağıdaki yordam, senaryonun sohbet günlüklerini
 
-1. İsteğe bağlı verileri eklemek için `batch-test-data-2.tsv`yeni bir toplu iş testi dosyası oluşturun. Özgün toplu iş testi giriş dosyasından 6 satır ekleyin, ardından her satır için meta veri, üst ve QnA kümesi kimliği ekleyin.
+1. İsteğe bağlı verileri eklemek için `batch-test-data-2.tsv`yeni bir toplu iş testi dosyası oluşturun. Özgün toplu iş testi giriş dosyasından 6 satır ekleyin, ardından her satır için meta veri, üst ve QnA çifti kimliği ekleyin.
 
     Sohbet günlüklerinden yeni metni bilgi tabanına göre denetleme işlemini simüle etmek için, her `topic:power`sütun için meta verileri aynı değere ayarlayın: .
 

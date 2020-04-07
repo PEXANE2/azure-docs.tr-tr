@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure temsilci kaynak yönetimi, kiracılar arası yönetim deneyimi sağlar.
-ms.date: 03/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0e55923e688d1062adc5838a88e8d3202864282a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218384"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754137"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -21,7 +21,7 @@ Bir hizmet sağlayıcısı olarak, [Azure portalında](https://portal.azure.com)
 
 Azure Etkin Dizin (Azure AD) kiracısı bir kuruluşun temsilidir. Azure, Microsoft 365 veya diğer hizmetlere kaydolarak Microsoft ile ilişki oluşturduğunda bir kuruluşun aldığı Azure AD özel bir örneğidir. Her Azure AD kiracısı diğer Azure AD kiracılarından farklıdır ve ayrıdır ve kendi kiracı kimliğine (GUID) sahiptir. Daha fazla bilgi için Azure [Etkin Dizin nedir?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-Genellikle, bir müşteri için Azure kaynaklarını yönetmek için, hizmet sağlayıcıların müşterinin kiracısıyla ilişkili bir hesabı kullanarak Azure portalında oturum açmaları gerekir ve müşterinin kiracısındaki bir yöneticinin kullanıcı hesapları oluşturması ve yönetmesi gerekir. servis sağlayıcı için.
+Genellikle, bir müşteri için Azure kaynaklarını yönetmek için, hizmet sağlayıcıların müşterinin kiracısıyla ilişkili bir hesabı kullanarak Azure portalında oturum açmaları gerekir ve bu da müşterinin kiracısındaki bir yöneticinin hizmet sağlayıcısı için kullanıcı hesapları oluşturması ve yönetmesini gerektirir.
 
 Azure temsilcikaynak yönetimi yle, onboarding işlemi, hizmet sağlayıcısının kiracısında, müşterinin kiracısındaki aboneliklere, kaynak gruplarına ve kaynaklara erişebilecek ve yönetebilecek kullanıcıları belirtir. Bu kullanıcılar daha sonra kendi kimlik bilgilerini kullanarak Azure portalında oturum açabilir. Azure portalında, erişebildikleri tüm müşterilere ait kaynakları yönetebilirler. Bu işlem, Azure portalındaki [Müşterilerim](../how-to/view-manage-customers.md) sayfasını ziyaret ederek veya doğrudan azure portalında veya API'ler aracılığıyla müşterinin aboneliği bağlamında çalışarak yapılabilir.
 
@@ -141,6 +141,7 @@ Tüm senaryolarda, lütfen aşağıdaki geçerli sınırlamalara dikkat edin:
 - Rol atamaları, rol tabanlı erişim denetimi (RBAC) [yerleşik rolleri](../../role-based-access-control/built-in-roles.md)kullanmalıdır. Tüm yerleşik roller şu anda Sahibi veya [DataActions](../../role-based-access-control/role-definitions.md#dataactions) izni olan yerleşik roller dışında Azure temsilci kaynak yönetimiyle desteklenir. Kullanıcı Erişim Yöneticisi rolü yalnızca [yönetilen kimliklere rol atamada](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)sınırlı kullanım için desteklenir.  Özel roller ve [klasik abonelik yöneticisi rolleri](../../role-based-access-control/classic-administrators.md) desteklenmez.
 - Siz Azure Databricks kullanan abonelikleri kullanabilmenize izin veremeseniz de, yönetici kiracıdaki kullanıcılar şu anda devralınan bir abonelikte Azure Databricks çalışma alanlarını başlatamaz.
 - Kaynak kilitleri olan Azure temsilcili kaynak yönetimi için abonelikleri ve kaynak gruplarını yerleşik olarak kullanabilmenize rağmen, bu kilitler eylemleri yönetici kiracıdaki kullanıcılar tarafından gerçekleştirilmesini engellemez. Azure tarafından yönetilen uygulamalar veya Azure Planları (sistem tarafından atanan reddet atamaları) gibi sistem tarafından yönetilen kaynakları koruyan [atamaları reddetme,](../../role-based-access-control/deny-assignments.md) yönetici kiracıdaki kullanıcıların bu kaynaklar üzerinde hareket etmesini engeller; ancak, şu anda müşteri kiracıkullanıcılar kendi reddi atamaları (kullanıcı tarafından atanan reddet atamaları) oluşturamaz.
+- Yönetici kiracıdaki kullanıcılar, genellikle erişime izin verecek yerleşik bir role sahip olsalar bile, devralınan bir müşteri aboneliği için fatura bilgilerini görüntüleme erişimine sahip olmayacaktır. Bunun nedeni, faturalandırma bilgilerine erişimin şu anda yalnızca aynı kiracıiçindeki kullanıcılar için desteklenen ek adımlar gerektirmesidir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

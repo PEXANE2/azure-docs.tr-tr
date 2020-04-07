@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/06/2020
+ms.openlocfilehash: fe2cb04f36026740dc54f4668d3c3188592bd8ae
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314700"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754217"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight'ta Apache Hadoop hizmetleri tarafından kullanılan bağlantı noktaları
 
@@ -21,9 +21,9 @@ Bu belge, HDInsight kümelerinde çalışan Apache Hadoop hizmetleri tarafından
 
 ## <a name="public-ports-vs-non-public-ports"></a>Ortak bağlantı noktaları ve halka açık olmayan bağlantı noktaları
 
-Linux tabanlı HDInsight kümeleri yalnızca internet üzerinde üç bağlantı noktasını herkese açık olarak ortaya çıkarır; 22, 23 ve 443. Bu bağlantı noktaları, SSH ve güvenli HTTPS protokolü üzerinde açığa çıkan hizmetleri kullanarak kümeye güvenli bir şekilde erişmek için kullanılır.
+Linux tabanlı HDInsight kümeleri yalnızca internette herkese açık üç bağlantı noktası nı ortaya çıkarır: 22, 23 ve 443. Bu bağlantı noktaları, Güvenli HTTPS protokolü üzerinde açığa çıkan SSH ve hizmetleri kullanarak küme erişimini güvence altına alır.
 
-Dahili olarak, HDInsight, bir Azure Sanal Ağı'nda çalışan birkaç Azure Sanal Makinesi (küme içindeki düğümler) tarafından uygulanır. Sanal ağ içinden, internet üzerinden maruz olmayan bağlantı noktalarına erişebilirsiniz. Örneğin, SSH kullanarak kafa düğümlerinden birine bağlanırsanız, kafa düğümünden küme düğümleri üzerinde çalışan hizmetlere doğrudan erişebilirsiniz.
+HDInsight, Azure Sanal Ağı'nda çalışan birkaç Azure Sanal Makinesi (küme düğümleri) tarafından uygulanır. Sanal ağ içinden, internet üzerinden maruz olmayan bağlantı noktalarına erişebilirsiniz. SSH üzerinden baş düğümüne bağlanırsanız, küme düğümlerinde çalışan hizmetlere doğrudan erişebilirsiniz.
 
 > [!IMPORTANT]  
 > HDInsight için yapılandırma seçeneği olarak bir Azure Sanal Ağı belirtmezseniz, otomatik olarak oluşturulur. Ancak, diğer makinelere (diğer Azure Sanal Makineleri veya istemci geliştirme makineniz gibi) bu sanal ağa katılamazsınız.
@@ -32,7 +32,7 @@ Sanal ağa ek makinelere katılmak için önce sanal ağı oluşturmanız ve ard
 
 ## <a name="public-ports"></a>Ortak bağlantı noktaları
 
-HDInsight kümesindeki tüm düğümler bir Azure Sanal Ağı'nda bulunur ve internetten doğrudan erişilemez. Ortak ağ geçidi, tüm HDInsight küme türlerinde yaygın olan aşağıdaki bağlantı noktalarına internet erişimi sağlar.
+BIR HDInsight kümesindeki tüm düğümler bir Azure Sanal Ağı'nda bulunur. Düğümlere internetten doğrudan erişilemez. Ortak ağ geçidi, tüm HDInsight küme türlerinde yaygın olan aşağıdaki bağlantı noktalarına internet erişimi sağlar.
 
 | Hizmet | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ Belirli küme türleri için aşağıdakiler kullanılabilir:
 
 | Hizmet | Bağlantı noktası | Protokol | Küme türü | Açıklama |
 | --- | --- | --- | --- | --- |
-| Yıldız geçidi |443 |HTTPS |HBase |HBase REST API. Bkz. [Apache HBase'i kullanmaya başlayın](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| `Stargate` |443 |HTTPS |HBase |HBase REST API. Bkz. [Apache HBase'i kullanmaya başlayın](hbase/apache-hbase-tutorial-get-started-linux.md) |
 | Livy |443 |HTTPS |Spark |Kıvılcım REST API. Bkz. [Apache Livy'yi kullanarak Apache Spark işlerini uzaktan gönder](spark/apache-spark-livy-rest-interface.md) |
 | Kıvılcım Tutumlu sunucu |443 |HTTPS |Spark |Spark Thrift sunucusu Hive sorguları göndermek için kullanılır. [HDInsight'ta Apache Hive ile Beeline Kullanın](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Fırtına web ui. [HDInsight'ta Apache Storm topolojilerini dağıtın ve yönetin](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Rest vekil |443 |HTTPS |Kafka |Kafka REST API. [REST proxy kullanarak Azure HDInsight'taki Apache Kafka kümeleriyle etkileşime](kafka/rest-proxy.md) bakın |
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Internet'te herkese açık tüm hizmetlerin kimlik doğrulaması yapılmalıdır:
 
@@ -89,7 +89,7 @@ Internet'te herkese açık tüm hizmetlerin kimlik doğrulaması yapılmalıdır
 | --- | --- | --- | --- | --- |
 | NameNode web Kullanıcı Arabirimi |Kafa düğümleri |30070 |HTTPS |Durumu görüntülemek için Web UI |
 | NameNode meta veri hizmeti |baş düğümleri |8020 |ıpc |Dosya sistemi meta verileri |
-| DataNode |Tüm işçi düğümleri |30075 |HTTPS |Web UI durumu, günlükleri, vb görüntülemek için |
+| DataNode |Tüm işçi düğümleri |30075 |HTTPS |Durumu, günlükleri ve benzeri durumları görüntülemek için Web UI. |
 | DataNode |Tüm işçi düğümleri |30010 |&nbsp; |Veri aktarımı |
 | DataNode |Tüm işçi düğümleri |30020 |ıpc |Meta veri işlemleri |
 | İkincil NameNode |Kafa düğümleri |50090 |HTTP |NameNode meta verileri için denetim noktası |
@@ -100,7 +100,7 @@ Internet'te herkese açık tüm hizmetlerin kimlik doğrulaması yapılmalıdır
 | --- | --- | --- | --- | --- |
 | Kaynak Yöneticisi web UI |Kafa düğümleri |8088 |HTTP |Kaynak Yöneticisi için Web Arabirimi |
 | Kaynak Yöneticisi web UI |Kafa düğümleri |8090 |HTTPS |Kaynak Yöneticisi için Web Arabirimi |
-| Kaynak Yöneticisi yönetici arabirimi |baş düğümleri |8141 |ıpc |Başvuru gönderimleri için (Kovan, Kovan sunucusu, Domuz, vb.) |
+| Kaynak Yöneticisi yönetici arabirimi |baş düğümleri |8141 |ıpc |Uygulama gönderimleri için (Hive, Hive sunucusu, Domuz vb.) |
 | Kaynak Yöneticisi zamanlayıcısı |baş düğümleri |8030 |HTTP |Yönetim arabirimi |
 | Kaynak Yöneticisi uygulama arabirimi |baş düğümleri |8050 |HTTP |Applications manager arabiriminin adresi |
 | DüğümYöneticisi |Tüm işçi düğümleri |30050 |&nbsp; |Konteyner yöneticisinin adresi |

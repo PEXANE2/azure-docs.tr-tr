@@ -3,12 +3,12 @@ title: Tasarım bilgi tabanı - QnA Maker
 description: QnA Maker bilgi tabanı, her QnA çiftiyle ilişkili bir dizi soru-cevap (QnA) kümesi ve isteğe bağlı meta verilerden oluşur.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb71de0f6a3e372d8c1c1fede67ba0c0354532ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d24434d1343f4174cfbfeb3a30c36737b213168
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76844334"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756792"
 ---
 # <a name="question-and-answer-set-concepts"></a>Soru-cevap seti kavramları
 
@@ -33,7 +33,7 @@ Bir küme için **isteğe bağlı** ayarlar şunlardır:
 
 ## <a name="editorially-add-to-knowledge-base"></a>Editoryal bilgi tabanına eklemek
 
-Bilgi tabanını doldurmak için önceden varolan içeriğiniz yoksa, QnA Maker portalına editoryal olarak QnA kümeleri ekleyebilirsiniz. Bilgi tabanınızı nasıl güncelleştirteceklerinizi [buradan](../How-To/edit-knowledge-base.md)öğrenin.
+Bilgi tabanını doldurmak için önceden varolan içeriğiniz yoksa, QnA Maker portalına editoryal olarak QnA çiftleri ekleyebilirsiniz. Bilgi tabanınızı nasıl güncelleştirteceklerinizi [buradan](../How-To/edit-knowledge-base.md)öğrenin.
 
 ## <a name="editing-your-knowledge-base-locally"></a>Bilgi tabanınızı yerel olarak düzenleme
 

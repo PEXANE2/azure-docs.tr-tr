@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75369431"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745549"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Akış Analizi pencere işlevlerine giriş
 
@@ -35,7 +35,7 @@ Atlamalı pencere işlevleri, sabit bir süre kadar ileri gider. Bunlar çakış
 ![Akış Analizi atlamalı penceresi](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>Sürgülü pencere
-Yuvarlanan veya Zıplayan pencerelerin aksine kayan pencere işlevleri yalnızca bir olay **oluştuğunda** çıktı üretir. Her pencerede en az bir olay bulunur ve pencere sürekli olarak bir € (epsilon) ileri gider. Atlamalı pencereler gibi olaylar birden fazla kayan pencereye ait olabilir.
+Yuvarlanan veya Zıplayan pencerelerin aksine kayan pencere işlevleri yalnızca bir olay **oluştuğunda** çıktı üretir. Her pencerede en az bir olay olur ve pencere sürekli olarak bir ε (epsilon) ile ilerler. Atlamalı pencereler gibi olaylar birden fazla kayan pencereye ait olabilir.
 
 ![Stream Analytics kayan pencere](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 

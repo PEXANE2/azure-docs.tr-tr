@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd1c381ecd2b7dba4c77a025cb0332ace4147bf
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75561295"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673655"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Azure'da OpenShift Kapsayıcı Platformu 3.11'i dağıtın
 
@@ -303,7 +303,7 @@ Farklı sürümler, kullandığınız dal için gerekli parametreleri doğrulama
 | `masterClusterType` | Kümenin özel veya ortak ana düğümler kullanıp kullanmayacağını belirtin. Özel seçilirse, ana düğümler genel bir IP aracılığıyla Internet'e maruz kalmaz. Bunun yerine, belirtilen özel IP kullanacak`masterPrivateClusterIp` | public <br> private | public |
 | `masterPrivateClusterIp` | Özel ana düğümler seçilirse, ana düğümler için dahili yük dengeleyicisi tarafından kullanılmak üzere özel bir IP adresi belirtilmelidir. Bu statik IP ana alt ağ için CIDR bloğu içinde olmalı ve zaten kullanılmamalıdır. Ortak ana düğümler seçilirse, bu değer kullanılmaz, ancak yine de belirtilmelidir |  | 10.1.0.200 |
 | `routerClusterType` | Kümenin özel veya ortak altyapı düğümleri kullanıp kullanmayacağını belirtin. Özel seçilirse, infra düğümleri genel bir IP üzerinden Internet'e maruz kalmaz. Bunun yerine, belirtilen özel IP kullanacak`routerPrivateClusterIp` | public <br> private | public |
-| `routerPrivateClusterIp` | Özel infra düğümleri seçilirse, infra düğümleri için dahili yük dengeleyicisi tarafından kullanılmak üzere özel bir IP adresi belirtilmelidir. Bu statik IP ana alt ağ için CIDR bloğu içinde olmalı ve zaten kullanılmamalıdır. Ortak infra düğümleri seçilirse, bu değer kullanılmaz, ancak yine de belirtilmelidir |  | 10.2.0.200 |
+| `routerPrivateClusterIp` | Özel infra düğümleri seçilirse, infra düğümleri için dahili yük dengeleyicisi tarafından kullanılmak üzere özel bir IP adresi belirtilmelidir. Bu statik IP, infra alt ağ için CIDR bloğu içinde olmalı ve kullanılmamalıdır. Ortak infra düğümleri seçilirse, bu değer kullanılmaz, ancak yine de belirtilmelidir |  | 10.2.0.200 |
 | `routingCertType` | Etki alanını yönlendirme için özel sertifika veya varsayılan kendi imzalı sertifikayı kullanın - **Özel Sertifikalar** bölümündeki yönergeleri izleyin | kendi imzalı <br> custom | kendi imzalı |
 | `masterCertType` | Ana etki alanı veya varsayılan kendi imzalı sertifika için özel sertifika kullanın - **Özel Sertifikalar** bölümündeki yönergeleri izleyin | kendi imzalı <br> custom | kendi imzalı |
 

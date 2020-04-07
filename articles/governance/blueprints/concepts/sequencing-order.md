@@ -3,12 +3,12 @@ title: Dağıtım sırası sırasını anlama
 description: Plan ataması sırasında plan yapılarının dağıtılan varsayılan sırası ve dağıtım sırasını nasıl özelleştirişleri hakkında bilgi edinin.
 ms.date: 08/22/2019
 ms.topic: conceptual
-ms.openlocfilehash: 51026862c989f15acf6d3e21702cfcfc8b2b27b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41b1b1ada5b7c6c919f227927001570332eeccbf
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74128828"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677571"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure Planları'ndaki dağıtım sırasını anlama
 
@@ -42,7 +42,7 @@ Her **kaynak grubu** yapı içinde, bu kaynak grubu içinde oluşturulacak yapı
 
 ## <a name="customizing-the-sequencing-order"></a>Sıralama sırasını özelleştirme
 
-Büyük plan tanımları oluştururken, kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseni, bir plan tanımının birkaç Azure Kaynak Yöneticisi şablonu içerdiği dir. Planlar, sıralama sırasının tanımlanmasına izin vererek bu deseni işler.
+Büyük plan tanımları oluştururken, kaynakların belirli bir sırada oluşturulması gerekebilir. Bu senaryonun en yaygın kullanım deseni, bir plan tanımının birkaç Azure Kaynak Yöneticisi şablonu içerdiği dir. Azure Blueprints, sıralama sırasının tanımlanmasına izin vererek bu deseni işler.
 
 Sıralama JSON bir `dependsOn` özellik tanımlayarak gerçekleştirilir. Kaynak grupları ve yapı nesneleri için plan tanımı bu özelliği destekler. `dependsOn`belirli bir yapının oluşturulmadan önce oluşturulması gereken yapı adlarının bir dizidir.
 

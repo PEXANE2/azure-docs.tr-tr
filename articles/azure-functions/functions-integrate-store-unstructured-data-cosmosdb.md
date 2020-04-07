@@ -1,15 +1,15 @@
 ---
 title: Azure Cosmos DB ve Fonksiyonlar kullanarak yapılandırılmamış verileri depolama
 description: Azure İşlevleri ve Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
-ms.topic: quickstart
+ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc
-ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d11b7e7d55d0327bdec0a8bd6c73571cf846fd3c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74230556"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756659"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure İşlevleri ve Azure Cosmos DB’yi kullanarak yapılandırılmamış verileri depolama
 
@@ -102,7 +102,7 @@ public static IActionResult Run(HttpRequest req, out object taskDocument, ILogge
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Mevcut JavaScript işlevini aşağıdaki kodla değiştirin:
 

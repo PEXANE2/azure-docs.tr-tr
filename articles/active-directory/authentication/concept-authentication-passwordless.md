@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07ba38a5d7e8e8a89ba122efb1734c1f13a94d48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 402eaecbf03fd52fbb5e871fdd196da2bc9a3e1f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332179"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743526"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Etkin Dizin için parolasız kimlik doğrulama seçenekleri
 
@@ -97,7 +97,7 @@ Bir kullanıcı FIDO2 güvenlik anahtarıyla giriş yaptığında aşağıdaki i
 8. Azure AD, FIDO2 ortak anahtarını kullanarak imzalı nonce'yi doğrular.
 9. Azure AD, şirket içi kaynaklara erişimi etkinleştirmek için PRT'yi döndürür.
 
-FIDO2 tarafından onaylanan birçok anahtar olsa da, Microsoft maksimum güvenlik ve en iyi güvenliği sağlamak için satıcı tarafından uygulanacak FIDO2 İstemci-Kimlik Doğrulayıcı Protokolü (CTAP) belirtiminin bazı isteğe bağlı uzantılarını gerektirir Deneyim.
+FIDOAlliance tarafından onaylanan birçok anahtar olsa da, Microsoft maksimum güvenlik ve en iyi deneyimi sağlamak için satıcı tarafından uygulanacak FIDO2 İstemci-Kimlik Doğrulayıcı Protokolü (CTAP) belirtiminin bazı isteğe bağlı uzantılarını gerektirir.
 
 Bir güvenlik anahtarı Microsoft uyumlu olması için FIDO2 CTAP protokolünden aşağıdaki özellikleri ve uzantıları uygulamak **GEREKIR:**
 

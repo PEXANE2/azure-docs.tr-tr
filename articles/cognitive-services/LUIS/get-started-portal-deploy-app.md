@@ -1,21 +1,14 @@
 ---
 title: 'Quickstart: LUIS portalı ile bir uygulama dağıtma'
-titleSuffix: Azure Cognitive Services
 description: Bu hızlı başlangıç, bir tahmin bitiş noktası kaynağı oluşturarak, kaynağı atayarak, uygulamanın nasıl dağıtılsüreceğini ve uygulamayı nasıl yayımlayyaratacağını gösterir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 01/27/2020
-ms.author: diberry
-ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/06/2020
+ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79241783"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756294"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Quickstart: LUIS portalında bir uygulama dağıtma
 
@@ -29,35 +22,13 @@ Bu hızlı başlangıçta, bir uygulamayı dağıtmayı öğrenirsiniz. Bir tahm
 * Önceki [portalı hızlı başlatın](get-started-portal-build-app.md) veya [uygulamayı indirip içe aktarın.](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)
 * Azure kaynak kimlik doğrulaması için tarih veren uygulamalarınız varsa, [bir Azure kaynağına geçiş yapın.](luis-migration-authoring.md) E-posta kimlik doğrulaması geçerli olduğunda bazı portal sayfaları farklı görünür.
 
-## <a name="create-the-endpoint-resource"></a>Uç nokta kaynağını oluşturma
+<a name="create-the-endpoint-resource"></a>
 
-Azure portalında tahmin bitiş noktası kaynağını oluşturursunuz. Bu kaynak yalnızca uç nokta tahmin sorguları için kullanılmalıdır. Bu kaynağı uygulamada değişiklik yazarken kullanmayın.
-
-1. Azure [portalında](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)oturum açın ve bir kaynak oluşturun.
-
-1. Aboneliği aşağıdaki ayarlarla yapılandırın:
-
-   |Ayar|Değer|Amaç|
-   |--|--|--|
-   |Adı|`my-luis-resource`|Azure kaynağının adı. Kaynağı LUIS portalındaki uygulamaya atadığınızda bu ada ihtiyacınız gerekir.|
-   |Abonelik|Aboneliğiniz|Hesabınızla ilişkili aboneliklerden birini seçin.|
-   |Kaynak grubu|`my-resource-group`|Tüm bilişsel hizmet kaynaklarınız için yeni bir kaynak grubu oluşturun. Kaynaklarla işiniz bittiğinde, aboneliğinizi temizlemek için kaynak grubunu silebilirsiniz. |
-   |Yazma konumu|**Batı ABD**|Yazma için Azure bölgesi.|
-   |Fiyatlandırma katmanı yazma|**F0**|Yazma için varsayılan fiyatlandırma katmanı.|
-   |Çalışma zamanı konumu|**Batı ABD**|Tahmin bitiş noktası sorguları için Azure bölgesi.|
-   |Runtime fiyatlandırma katmanı|**S0**|Bu fiyatlandırma katmanı, yüksek trafikli web siteleri için sağlar.|
-   | | | |
-
-
-   ![Azure API seçimi](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
-
-1. Azure kaynağını oluşturmak için **Oluştur'u** seçin.
-
-   Bir sonraki bölümde, bu yeni kaynağı luis portalındaki bir LUIS uygulamasına nasıl bağlayabileceğinizi öğreneceksiniz.
+[!INCLUDE [Create LUIS resource](includes/create-luis-resource.md)]
 
 ## <a name="assign-the-resource-key-to-the-luis-app-in-the-luis-portal"></a>LUIS portalındaki LUIS uygulamasının kaynak anahtarını atama
 
-LUIS için her yeni kaynak oluşturduğunuzda, kaynağı LUIS uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız sürece bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha fazla sayıda tahmin sorgusunu desteklemek için yeni bir kaynak oluşturabilirsiniz.
+LUIS için her yeni bir yazma veya sorgu tahmin kaynağı oluşturduğunuzda, kaynağı LUIS uygulamasına atamanız gerekir. Atandıktan sonra, yeni bir kaynak oluşturmadığınız sürece bu adımı tekrar yapmanız gerekmez. Uygulamanızın bölgelerini genişletmek veya daha fazla sayıda tahmin sorgusunu desteklemek için yeni bir kaynak oluşturabilirsiniz.
 
 1. Önizleme LUIS [portalında](https://preview.luis.ai) oturum açın ve uygulamalar listesinden **myEnglishApp** uygulamasını seçin.
 

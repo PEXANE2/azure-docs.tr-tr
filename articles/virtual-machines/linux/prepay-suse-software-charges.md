@@ -7,14 +7,14 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3bb7a62433993f1af26b1ce8bcb4ed258c34623c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75973127"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757239"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure yazılım planları için ön ödeme yapma
 
@@ -38,6 +38,7 @@ Abonelik ödeme yöntemi, rezervasyon için peşin maliyetler tahsil edilir. Abo
 4. Bir kapsam seçin. Kapsam, bir aboneliği veya birden çok aboneliği (paylaşılan kapsam) kapsayabilir.
     - Tek abonelik - Plan iskontosu abonelikteki eşleşen kullanıma uygulanır.
     - Paylaşılan - Plan iskontosu, faturalandırma bağlamınızdaki herhangi bir abonelikteki eşleşen örneklere uygulanır. Kurumsal müşteriler için faturalandırma bağlamı kayıttır ve kayıttaki tüm abonelikleri içerir. Gittiniz gibi öde fiyatlandırma müşterileri ile bireysel plan için, faturalandırma bağlamı, hesap yöneticisi tarafından oluşturulan gittikçe öde fiyatlandırma abonelikleri içeren tüm bireysel planlardır.
+    - Tek kaynak grubu - Rezervasyon iskontosu yalnızca seçili kaynak grubundaki eşleşen kaynaklara uygulanır.
 5. VM boyutunu ve görüntü türünü seçmek için bir ürün seçin. İndirim yalnızca seçili VM boyutu için geçerlidir.
 6. Bir veya üç yıllık bir dönem seçin.
 7. Faturalandırma indirimini alabilecek ön ödemeli VM örneklerinin sayısı olan bir miktar seçin.

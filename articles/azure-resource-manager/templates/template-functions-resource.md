@@ -3,12 +3,12 @@ title: Şablon işlevleri - kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478265"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744999"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -444,12 +444,12 @@ Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | resourceName veya resourceIdentifier |Evet |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablonda bir kaynağa başvururken, yalnızca kaynak adını parametre olarak sağlayın. Daha önce dağıtılan bir kaynağa başvururken veya kaynağın adı belirsiz olduğunda kaynak kimliğini sağlayın. |
-| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. Kaynak aynı şablon içinde sağlanmış değilken bu parametreyi ekleyin. Tipik olarak, biçiminde, **yyyy-mm-dd**. Kaynağınız için geçerli API sürümleri için [şablon başvurusuna](/azure/templates/)bakın. |
+| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. **Kaynak aynı şablon içinde sağlanmıyorsa, bu parametre gereklidir.** Tipik olarak, biçiminde, **yyyy-mm-dd**. Kaynağınız için geçerli API sürümleri için [şablon başvurusuna](/azure/templates/)bakın. |
 | 'Tam' |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz, `'Full'`yalnızca kaynağın özellikleri nesnesi döndürülür. Tam nesne kaynak kimliği ve konum gibi değerleri içerir. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
-Her kaynak türü, başvuru işlevi için farklı özellikler döndürür. İşlev, önceden tanımlanmış tek bir biçimi döndürmez. Ayrıca, döndürülen değer, tam nesneyi belirtip belirtmediğinize bağlı olarak değişir. Kaynak türü özelliklerini görmek için, örnekte gösterildiği gibi çıktılar bölümündeki nesneyi döndürün.
+Her kaynak türü, başvuru işlevi için farklı özellikler döndürür. İşlev, önceden tanımlanmış tek bir biçimi döndürmez. Ayrıca, döndürülen değer `'Full'` bağımsız değişkenin değerine göre değişir. Kaynak türü özelliklerini görmek için, örnekte gösterildiği gibi çıktılar bölümündeki nesneyi döndürün.
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -514,7 +514,7 @@ Aynı şablonda dağıtılan bir kaynağa başvururken, kaynağın adını sağl
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Aynı şablonda dağıtılmadı bir kaynağa başvururken, kaynak kimliğini sağlayın.
+Aynı şablonda dağıtılmadı bir kaynağa başvururken, kaynak kimliği `apiVersion`ve .
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"

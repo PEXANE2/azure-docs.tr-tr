@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: d8e6f4b58cf17a7502e2c0d67e4fa67af7cdb3f5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632944"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757217"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -91,6 +91,9 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [Azure K
 
     Key Vault örneğini oluştururken, yumuşak silme ve temizleme korumasını etkinleştirmelisiniz. Yumuşak silme, Anahtar Kasası'nın belirli bir bekletme süresi (90 günlük varsayılan) için silinmiş bir anahtar tutmasını sağlar. Temizleme koruması, silinen anahtarın bekletme süresi sona erinceye kadar kalıcı olarak silinmemesini sağlar. Bu ayarlar, yanlışlıkla silinme nedeniyle veri kaybetmenizi korur. Yönetilen diskleri şifrelemek için Bir Anahtar Kasası kullanırken bu ayarlar zorunludur.
 
+    > [!IMPORTANT]
+    > Azure portalındaki kaynağa ek diskler atarken sorunlarla karşılaşabilirsiniz.
+    
     ```powershell
     $ResourceGroupName="yourResourceGroupName"
     $LocationName="westcentralus"

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 04/06/2020
 ms.author: victorh
-ms.openlocfilehash: 74e5a427d62d5249ffe6b0426b62a3577e43462f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0638cbccd5e3bc282dbdd7d3b5918e29081a12b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444491"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757171"
 ---
 # <a name="ip-groups-preview-in-azure-firewall"></a>Azure Güvenlik Duvarı'nda IP Grupları (önizleme)
 
@@ -54,7 +54,7 @@ IP Grubu'ndaki tüm IP adreslerini ve ip grubuyla ilişkili kuralları veya kayn
 
 1. IP adreslerini görüntülemek veya düzenlediklerini görmek için sol bölmedeki **Ayarlar'ın** altındaki **IP Adreslerini** seçin.
 2. Tek veya birden çok IP adresi(es) eklemek için **IP Adresleri Ekle'yi**seçin. Bu, yükleme için **Sürükle veya Gözat** sayfasını açar veya adresi el ile girebilirsiniz.
-3.  IP adreslerini düzenlemek veya silmek için sağa (**...**) elipsleri seçme. Birden çok IP adresini düzenlemek veya silmek için kutuları seçin ve en üstte **Düzenle** veya **Sil'i** seçin.
+3.    IP adreslerini düzenlemek veya silmek için sağa (**...**) elipsleri seçme. Birden çok IP adresini düzenlemek veya silmek için kutuları seçin ve en üstte **Düzenle** veya **Sil'i** seçin.
 4. Son olarak, dosyayı CSV dosya biçiminde dışa aktarabilirsiniz.
 
 > [!NOTE]
@@ -72,24 +72,47 @@ Azure Güvenlik Duvarı DNAT,uygulama veya ağ kuralları oluştururken IP adres
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-IP Grupları şu anda aşağıdaki bölgelerde kullanılabilir:
+IP Grupları tüm genel bulut bölgelerinde kullanılabilir.
 
-- Batı ABD
-- Batı ABD 2
-- Doğu ABD
-- Doğu ABD 2
-- Orta ABD
-- Orta Kuzey ABD
-- Orta Batı ABD
-- Orta Güney ABD
-- Orta Kanada
-- Kuzey Avrupa
-- Batı Avrupa
-- Orta Fransa
-- Güney Birleşik Krallık
-- Doğu Avustralya
-- Orta Avustralya
-- Güneydoğu Avustralya
+## <a name="ip-address-limits"></a>IP adresi sınırları
+
+50 IP Grubu veya daha azı için, güvenlik duvarı örneği başına en fazla 5000 tek tek IP adresine sahip olabilirsiniz. 51 ila 100 IP Grubu için, güvenlik duvarı örneği başına 500 ayrı IP adresine sahip olabilirsiniz.
+
+### <a name="examples"></a>Örnekler
+
+#### <a name="example-1-supported"></a>Örnek 1: desteklenen
+
+|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Kural1|
+|IPGroup2     |3|196.0.0.0 - 196.0.0.2|Kural1|
+|IPGroup3     |1|1.2.3.4|Kural1|
+|     |**Toplam 4100**|         |         |
+|     |         |         |         |
+
+#### <a name="example-2-supported"></a>Örnek 2: desteklenen
+
+|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Kural1|
+|IPGroup2     |4096|11.0.0.0/20|Kural1|
+|     |**Toplam 8192**|         |         |
+
+#### <a name="example-3-not-supported"></a>Örnek 3: desteklenmiyor
+
+|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
+|---------|---------|---------|---------|
+|IPGroup1 |8192     |10.0.0.0/20, 11.0.0.0/20  |Kural1|
+|     |**Toplam 8192**|||
+
+#### <a name="example-4-supported"></a>Örnek 4: desteklenen
+
+|IP Grupları  |# IP adresleri  |Gösterim  |Kural  |
+|---------|---------|---------|---------|
+|IPGroup1 |4096     |10.0.0.0/20  |Kural1|
+|IPGroup2     |4096|11.0.0.0/20|Kural2|
+|     |**Toplam 8192**|         |         |
+
 
 ## <a name="related-azure-powershell-cmdlets"></a>İlgili Azure PowerShell cmdlets
 

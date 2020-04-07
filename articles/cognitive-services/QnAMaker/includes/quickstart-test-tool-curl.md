@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 02/08/2020
 ms.author: diberry
-ms.openlocfilehash: f3a1a33b2fe859839deec587191b3b3a319c0cf8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 4bd483e40e3a85a2934e58abdf46d09b17a33ed4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77495111"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758778"
 ---
 Bu cURL tabanlı quickstart bilgi tabanından bir cevap alma ile size yol.
 
@@ -34,13 +34,13 @@ Bu cURL tabanlı quickstart bilgi tabanından bir cevap alma ile size yol.
 Meta verilere dayalı bir yanıt için önceki hızlı sorgu bilgi tabanını kullanın.
 
 1. Bilgi tabanının **Ayarlar** sayfasından, bilgi tabanından yanıt oluşturmak için kullanılan örnek bir cURL komutunu görmek için **CURL** sekmesini seçin.
-1. Komutu yeniden yapabilmek için komutu editable ortama (metin dosyası gibi) kopyalayın. Soru değerini, qna kümeleri için `service:qna_maker` filtre olarak kullanılacak şekilde aşağıdaki gibi edin.
+1. Komutu yeniden yapabilmek için komutu editable ortama (metin dosyası gibi) kopyalayın. Soru değerini, qna çiftleri için `service:qna_maker` filtre olarak kullanılacak şekilde aşağıdaki gibi edin.
 
     ```bash
     curl -X POST https://replace-with-your-resource-name.azurewebsites.net/qnamaker/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey replace-with-your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Soru sadece tek bir `size`kelime, iki QnA setleri de döndürebilir. Dizi, `strictFilters` yanıtı sadece `qna_maker` yanıtlara indirgeyecek şekilde söyler.
+    Soru sadece tek bir `size`kelime, iki QnA çifti ya döndürebilir. Dizi, `strictFilters` yanıtı sadece `qna_maker` yanıtlara indirgeyecek şekilde söyler.
 
 1. Yanıt, yalnızca filtre ölçütlerini karşılayan yanıtı içerir. Aşağıdaki cURL yanıtı okunabilirlik için biçimlendirilmiştir:
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94e5e6fb826528aab1a358d44cb51bfcd6219032
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75531369"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673584"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT çözümünde IoT Tak ve Çalıştır Önizleme modeli keşfini uygulayın
 
@@ -46,7 +46,7 @@ Amaca yönelik bir IoT çözümü, bilinen bir ioT Tak ve Çalıştır aygıtı 
 
 Çözümünüze önceden bağlanacak aygıtlar için yetenek modeline ve arabirimlerine sahip olacaksınız. Çözümünüzü hazırlamak için aşağıdaki adımları kullanın:
 
-1. Arabirim JSON dosyalarını Azure'da, çözümünüzün okuyabileceği bir konumda saklayın.
+1. Arabirim JSON dosyalarını, çözümünüzün okuyabileceği bir [model deposunda](./howto-manage-models.md) saklayın.
 1. Beklenen IoT Tak ve Çalıştır özelliği modellerine ve arabirimine göre IoT çözümünüze mantık yazın.
 1. Çözümünüzünüzün kullandığı IoT merkezinden gelen bildirimlere abone olun.
 

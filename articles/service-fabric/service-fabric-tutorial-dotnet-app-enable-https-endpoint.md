@@ -4,12 +4,12 @@ description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hiz
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 077c2ab67efa51542baa3048eb678fa22b0bc2eb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238933"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756088"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -20,7 +20,7 @@ Serinin üçüncü bölümünde şunları öğrenirsiniz:
 > [!div class="checklist"]
 > * Hizmette bir HTTPS uç noktası tanımlama
 > * Kestrel’i HTTPS kullanacak şekilde yapılandırma
-> * Uzak küme düğümlerine SSL sertifikası yükleme
+> * TLS/SSL sertifikasını uzak küme düğümlerine yükleme
 > * Sertifikanın özel anahtarına AĞ HİZMETİ erişimi verme
 > * Azure yük dengeleyicide 443 numaralı bağlantı noktasını açma
 > * Uygulamayı uzak kümeye dağıtma
@@ -396,7 +396,7 @@ Uygulama dağıtıldığında, bir web tarayıcısı [https://mycluster.region.c
 > [!div class="checklist"]
 > * Hizmette bir HTTPS uç noktası tanımlama
 > * Kestrel’i HTTPS kullanacak şekilde yapılandırma
-> * Uzak küme düğümlerine SSL sertifikası yükleme
+> * TLS/SSL sertifikasını uzak küme düğümlerine yükleme
 > * Sertifikanın özel anahtarına AĞ HİZMETİ erişimi verme
 > * Azure yük dengeleyicide 443 numaralı bağlantı noktasını açma
 > * Uygulamayı uzak kümeye dağıtma

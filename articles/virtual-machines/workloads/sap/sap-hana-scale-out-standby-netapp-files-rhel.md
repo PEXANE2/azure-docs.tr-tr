@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/10/2020
+ms.date: 04/06/2020
 ms.author: radeltch
-ms.openlocfilehash: ace30b044682cb4e62a0f81da90f21a77be1edd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78f60cbd20e7801f4af26372884275d7d6782777
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372977"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754160"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux'ta Azure NetApp Dosyalarını kullanarak Azure VM'lerinde bekleme düğümü içeren bir SAP HANA ölçeklendirme sistemi dağıtma 
 
@@ -337,7 +337,7 @@ Aşağıdaki adımları yaparak işletim sisteminizi yapılandırın ve hazırla
     yum install nfs-utils
     </code></pre>
 
-3. **[A]** NFS yapılandırma [kılavuzu ile NetApp AFF Sistemleri'nde SAP HANA'da](https://www.netapp.com/us/media/tr-4435.pdf)açıklandığı gibi, OS'yi Azure NetApp'te NFS ile SAP HANA çalıştırmak için hazırlayın. NetApp yapılandırma ayarları için configuration file */etc/sysctl.d/netapp-hana.conf* oluşturun.  
+3. **[A]** Azure NetApp [Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamalarında][anf-sap-applications-azure]açıklandığı gibi, Os'u Azure NetApp'te NFS ile SAP HANA çalıştırmak için hazırlayın. NetApp yapılandırma ayarları için configuration file */etc/sysctl.d/netapp-hana.conf* oluşturun.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -369,7 +369,7 @@ Aşağıdaki adımları yaparak işletim sisteminizi yapılandırın ve hazırla
     vm.swappiness=10
     </code></pre>
 
-5. **[A]** [NFS yapılandırma kılavuzu ile NetApp AFF Sistemleri SAP HANA](https://www.netapp.com/us/media/tr-4435.pdf)tavsiye olarak sunrpc ayarlarını ayarlayın.  
+5. **[A]** [Azure NetApp Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamalarında][anf-sap-applications-azure]önerilen sunrpc ayarlarını ayarlayın.  
 
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
@@ -707,7 +707,7 @@ Bu örnekte, SAP HANA'yı Azure ile bekleme düğümü ile ölçeklendirme yapı
    - `async_write_submit_active` **on**
    - `async_write_submit_blocks`**tüm**
 
-   Daha fazla bilgi için [NFS Yapılandırma Kılavuzu ile NetApp AFF Sistemlerinde SAP HANA'ya](https://www.netapp.com/us/media/tr-4435.pdf)bakın. 
+   Daha fazla bilgi için [Azure NetApp Dosyalarını kullanarak Microsoft Azure'daki NetApp SAP Uygulamaları'na][anf-sap-applications-azure]bakın. 
 
    SAP HANA 2.0 sistemlerinden başlayarak parametreleri `global.ini`. Daha fazla bilgi için SAP Note [1999930'a](https://launchpad.support.sap.com/#/notes/1999930)bakın.  
    
@@ -923,5 +923,4 @@ Bu örnekte, SAP HANA'yı Azure ile bekleme düğümü ile ölçeklendirme yapı
 * [AZURE Sanal Makineler SAP için planlama ve uygulama][planning-guide]
 * [SAP için Azure Sanal Makineler dağıtımı][deployment-guide]
 * [SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* Yüksek kullanılabilirlik oluşturmayı ve AZURE'da SAP HANA'nın olağanüstü durum kurtarmasını nasıl planlayabilirsiniz (büyük örnekler), Bkz. [SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve Azure'da olağanüstü durum kurtarma.](hana-overview-high-availability-disaster-recovery.md)
 * Azure Sanal M'lerde SAP HANA'nın yüksek kullanılabilirlik oluşturmasını ve olağanüstü kurtarma planını öğrenmek için Azure [Sanal Makinelerde (VM) SAP HANA'nın Yüksek Kullanılabilirliği][sap-hana-ha]bölümüne bakın.

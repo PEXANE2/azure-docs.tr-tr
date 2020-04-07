@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 251fdb83e848aaac3a5391320df23149ce1bce33
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d2e2fdb181b553d330368b043b75159e211dd0d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633059"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745138"
 ---
 # <a name="restore-a-deleted-sql-pool-using-azure-synapse-analytics"></a>Azure Synapse Analytics'i kullanarak silinmiş bir SQL havuzunun geri yüklenmesi
 
@@ -30,9 +30,9 @@ Bu makalede, Azure portalını veya PowerShell'i kullanarak bir SQL'i geri yükl
 
 ## <a name="restore-a-deleted-data-warehouse-through-powershell"></a>PowerShell aracılığıyla silinen bir veri ambarı geri yükleme
 
-Silinmiş bir SQL havuzunu geri yüklemek için [Geri Yükleme-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) cmdlet'ini kullanın. Karşılık gelen mantıksal sunucu da silinmişse, bu veri ambarını geri yükleyemezsiniz.
+Silinmiş bir SQL havuzunu geri yüklemek için [Geri Yükleme-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) cmdlet'ini kullanın. Karşılık gelen mantıksal sunucu da silinmişse, bu veri ambarını geri yükleyemezsiniz.
 
-1. Başlamadan önce [Azure PowerShell'i yüklediğinizden](https://docs.microsoft.com/powershell/azure/overview)emin olun.
+1. Başlamadan önce [Azure PowerShell'i yüklediğinizden](/powershell/azure/overview?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)emin olun.
 2. PowerShell’i açın.
 3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
 4. Geri yüklenecek silinmiş veri ambarını içeren aboneliği seçin.

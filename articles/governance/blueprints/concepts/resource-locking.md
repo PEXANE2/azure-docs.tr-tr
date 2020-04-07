@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Bir plan atarken kaynakları korumak için Azure Planları'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 86897ae6665f7a339b51aaae5f1c00144d8b7309
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437744"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676743"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Planları'nda kaynak kilitlemeyi anlama
 
@@ -20,20 +20,20 @@ ms.locfileid: "80437744"
 ## <a name="locking-modes-and-states"></a>Kilitleme modları ve durumları
 
 Kilitleme Modu plan ataması için geçerlidir ve üç seçeneği vardır: **Kilitleme ,** **Salt Oku**, veya **Silmeyin**. Kilitleme modu, bir plan ataması sırasında yapılandırma sırasında yapılandırılır. Plan ataması güncelleştirilerek farklı bir kilitleme modu ayarlanabilir.
-Ancak kilitleme modları Blueprints dışında değiştirilemez.
+Ancak kilitleme modları Azure Planları dışında değiştirilemez.
 
 Bir plan atamasında eserler tarafından oluşturulan kaynaklar dört durum vardır: **Kilitli Değil**, **Yalnızca Oku**, **Düzenleyemiyor / Sil,** veya **Silemez**. Her yapı türü **Kilitli Olmayan** durumda olabilir. Aşağıdaki tablo, kaynağın durumunu belirlemek için kullanılabilir:
 
 |Mod|Artefakt Kaynak Türü|Durum|Açıklama|
 |-|-|-|-|
-|Kilitleme|*|Kilitli Değil|Kaynaklar Blueprints tarafından korunmaz. Bu durum, bir plan ataması dışından bir **Salt Oku** veya **Silme yat kaynak** grubu yapısına eklenen kaynaklar için de kullanılır.|
+|Kilitleme|*|Kilitli Değil|Kaynaklar Azure Planları tarafından korunmaz. Bu durum, bir plan ataması dışından bir **Salt Oku** veya **Silme yat kaynak** grubu yapısına eklenen kaynaklar için de kullanılır.|
 |Salt Okunur|Kaynak grubu|Düzenleyemiyor / Sil|Kaynak grubu yalnızca okunur ve kaynak grubundaki etiketler değiştirilemez. **Kilitli olmayan** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 |Salt Okunur|Kaynak dışı grup|Salt Okunur|Kaynak hiçbir şekilde değiştirilemez -- değişiklik olmaz ve silinemez.|
 |Silme|*|Silemez|Kaynaklar değiştirilebilir, ancak silinemez. **Kilitli olmayan** kaynaklar bu kaynak grubundan eklenebilir, taşınabilir, değiştirilebilir veya silinebilir.|
 
 ## <a name="overriding-locking-states"></a>Kilitleme durumlarını geçersiz kılma
 
-Abonelikte uygun [rol tabanlı erişim denetimine](../../../role-based-access-control/overview.md) (RBAC) sahip birinin (RBAC) 'Sahip' rolü gibi herhangi bir kaynağı değiştirmesine veya silmesine izin verilmesi genellikle mümkündür. Blueprints, dağıtılan bir atamanın bir parçası olarak kilitleme uyguladığında, bu erişim söz konusu değildir. Atama **Yalnızca Oku** veya Silme **seçeneğiyle** ayarlanmışsa, abonelik sahibi bile engellenen eylemi korumalı kaynak üzerinde gerçekleştiremez.
+Abonelikte uygun [rol tabanlı erişim denetimine](../../../role-based-access-control/overview.md) (RBAC) sahip birinin (RBAC) 'Sahip' rolü gibi herhangi bir kaynağı değiştirmesine veya silmesine izin verilmesi genellikle mümkündür. Azure Blueprints dağıtılan bir atamanın bir parçası olarak kilitleme uyguladığında bu erişim söz konusu değildir. Atama **Yalnızca Oku** veya Silme **seçeneğiyle** ayarlanmışsa, abonelik sahibi bile engellenen eylemi korumalı kaynak üzerinde gerçekleştiremez.
 
 Bu güvenlik önlemi, tanımlanan planın tutarlılığını ve yanlışlıkla veya programlı silme veya değiştirmeden oluşturmak üzere tasarlandığı ortamı korur.
 
@@ -97,11 +97,11 @@ Bir atama tarafından korunan bir kaynağı değiştirmek veya silmek gerekli ha
 - Plan atamasını **Kilitle'nin** kilitleme moduna güncelleştirme
 - Plan atamasını silme
 
-Atama kaldırıldığında, Blueprints tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak geride bırakılır ve normal yollarla silinmesi gerekir.
+Atama kaldırıldığında, Azure Planları tarafından oluşturulan kilitler kaldırılır. Ancak, kaynak geride bırakılır ve normal yollarla silinmesi gerekir.
 
 ## <a name="how-blueprint-locks-work"></a>Plan kilitleri nasıl çalışır?
 
-Bir RBAC [reddet atamaları](../../../role-based-access-control/deny-assignments.md) reddet eylem bir plan atama sırasında yapı kaynaklarına uygulanır atama **Yalnızca Oku** veya **Silmem** seçeneği seçti. Reddet eylemi, plan atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimlikle yapı kaynaklarından kaldırılabilir. Bu güvenlik önlemi kilitleme mekanizmasını zorlar ve Blueprints dışındaki plan kilidinin kaldırılmasını önler.
+Bir RBAC [reddet atamaları](../../../role-based-access-control/deny-assignments.md) reddet eylem bir plan atama sırasında yapı kaynaklarına uygulanır atama **Yalnızca Oku** veya **Silmem** seçeneği seçti. Reddet eylemi, plan atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimlikle yapı kaynaklarından kaldırılabilir. Bu güvenlik önlemi kilitleme mekanizmasını zorlar ve Azure Planları dışındaki plan kilidinin kaldırılmasını önler.
 
 ![Kaynak grubunda plan reddi ataması](../media/resource-locking/blueprint-deny-assignment.png)
 

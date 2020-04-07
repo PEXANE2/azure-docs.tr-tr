@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: rohink
-ms.openlocfilehash: fcc9c5333b37c041342c2d20a53cf5d3908d1a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61aafbe8cb12e93d72f5efd01155f06fb3ec0c28
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938548"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757267"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager uç nokta izleme
 
@@ -25,7 +25,7 @@ Azure Trafik Yöneticisi yerleşik uç nokta izleme ve otomatik bitiş noktası 
 
 Uç nokta izlemeyi yapılandırmak için Trafik Yöneticisi profilinizde aşağıdaki ayarları belirtmeniz gerekir:
 
-* **Protokol.** Trafik Yöneticisi'nin sistem durumunu kontrol etmek için bitiş noktanızı araştırırken kullandığı protokol olarak HTTP, HTTPS veya TCP'yi seçin. HTTPS izleme, SSL sertifikanızın geçerli olup olmadığını doğrulamaz, yalnızca sertifikanın mevcut olup olmadığını denetler.
+* **Protokol.** Trafik Yöneticisi'nin sistem durumunu kontrol etmek için bitiş noktanızı araştırırken kullandığı protokol olarak HTTP, HTTPS veya TCP'yi seçin. HTTPS izleme tls/SSL sertifikanızın geçerli olup olmadığını doğrulamaz, yalnızca sertifikanın mevcut olup olmadığını denetler.
 * **Bağlantı noktası**. İstek için kullanılan bağlantı noktasını seçin.
 * **Yol**. Bu yapılandırma ayarı yalnızca yol ayarını belirtmenin gerekli olduğu HTTP ve HTTPS protokolleri için geçerlidir. TCP izleme protokolü için bu ayarı sağlamak bir hata yla sonuçlanır. HTTP ve HTTPS protokolü için, göreli yolu ve web sayfasının veya izlemenin eriştikleri dosyanın adını verin. İleri eğik çizgi (/) göreli yol için geçerli bir giriştir. Bu değer, dosyanın kök dizinde (varsayılan) olduğu anlamına gelir.
 * **Özel üstbilgi ayarları** Bu yapılandırma ayarı, Trafik Yöneticisi'nin profil altındaki uç noktalara gönderdiği sistem durumu denetimlerine belirli BIRDURUM üstbilgilerini eklemenize yardımcı olur. Özel üstbilgi, bu profildeki tüm uç noktalar için geçerli olacak bir profil düzeyinde ve/veya yalnızca bu bitiş noktasına uygulanabilir bir bitiş noktası düzeyinde belirtilebilir. Çok kiracılı bir ortamda son noktaların ana bilgisayar üstbilgisini belirterek hedeflerine doğru şekilde yönlendirilmesi için sistem durumu denetimlerinin olması için özel üstbilgi kullanabilirsiniz. Trafik Yöneticisi kaynaklı HTTP(S) isteklerini tanımlamak ve bunları farklı şekilde işler belirlemek için kullanılabilecek benzersiz üstbilgi ekleyerek de bu ayarı kullanabilirsiniz. En fazla sekiz üstbilgi belirtebilirsiniz: bir virgülle ayrılmış değer çiftleri. Örneğin, "header1:value1,header2:value2". 
@@ -108,7 +108,7 @@ Aşağıdaki olaylardan herhangi biri oluştuğunda bitiş noktası sağlıksız
 
 Sorun giderme başarısız denetimleri hakkında daha fazla bilgi için Azure [Trafik Yöneticisi'nde Sorun Giderme Durumu'na](traffic-manager-troubleshooting-degraded.md)bakın. 
 
-Aşağıdaki şekildeki zaman çizelgesi, Trafik Yöneticisi bitiş noktasının aşağıdaki ayarları içeren izleme sürecinin ayrıntılı bir açıklamasıdır: izleme protokolü HTTP' dir, sondalama aralığı 30 saniyedir, tolere edilen hata sayısı 3, zaman aralığı değeri 10'dur saniye ve DNS TTL 30 saniyedir.
+Aşağıdaki şekildeki zaman çizelgesi, Trafik Yöneticisi bitiş noktasının aşağıdaki ayarları içeren izleme sürecinin ayrıntılı bir açıklamasıdır: izleme protokolü HTTP' dir, sondalama aralığı 30 saniyedir, tolere edilen hata sayısı 3, zaman aralığı değeri 10 saniye ve DNS TTL 30 saniyedir.
 
 ![Trafik Yöneticisi bitiş noktası failover ve failback dizisi](./media/traffic-manager-monitoring/timeline.png)
 

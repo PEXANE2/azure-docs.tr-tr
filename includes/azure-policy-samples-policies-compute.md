@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/02/2020
+ms.date: 04/03/2020
 ms.author: dacoulte
-ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e65d24b30cecdbabefabc652c7c864205414d5a6
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80624096"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80758342"
 ---
 |Adı |Açıklama |Etki(ler) |Sürüm |GitHub |
 |---|---|---|---|---|
 |[İzin verilen sanal makine SUS'lar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Bu ilke, kuruluşunuzun dağıtabileceği bir sanal makine SKU'ları kümesi belirtmenizi sağlar. |Reddet |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json)
-|[Olağanüstü durum kurtarma yapılandırması yapılmadan sanal makineleri denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olağanüstü durum kurtarma yapılandırılması olmayan sanal makineleri denetle. Olağanüstü durum kurtarma hakkında https://aka.ms/asr-docdaha fazla bilgi edinmek için. |auditIfNotExists |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
+|[Olağanüstü durum kurtarma yapılandırması yapılmadan sanal makineleri denetleme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Olağanüstü durum kurtarma yapılandırılması olmayan sanal makineleri denetle. Olağanüstü durum kurtarma hakkında [https://aka.ms/asr-doc](https://aka.ms/asr-doc)daha fazla bilgi edinmek için. |auditIfNotExists |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json)
 |[Yönetilen diskleri kullanmayan denetim VM'leri](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Bu ilke, yönetilen diskleri kullanmayan VM'leri denetler |Denetim |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json)
 |[Windows Server için varsayılan Microsoft IaaaSAntimalware uzantısı dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |Bu ilke, bir VM kötü amaçlı yazılımdan koruma uzantısı ile yapılandırılmadığını zedelesahip varsayılan yapılandırmayla birlikte bir Microsoft IaaSAntimalware uzantısı dağıtır. |deployIfNotExists |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json)
 |[Sanal Makine Ölçek Kümelerinde tanılama günlükleri etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Bir olay veya uzlaşma durumunda soruşturmalar gerektiğinde etkinlik izinin yeniden oluşturulabilmesi için Günlükler'in etkinleştirilmesi önerilir. |Auditifnotexists, Devre Dışı |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json)

@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 368276f75128c80b8df326a26acf26c841e9f68a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583182"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742679"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tabloları bölümleme
 
@@ -46,9 +46,9 @@ Bölümleme bazı senaryoların performansını artırmak için kullanılabilirk
 
 ## <a name="syntax-differences-from-sql-server"></a>SQL Server'dan sözdizimi farklılıkları
 
-Synapse SQL havuzu, SQL Server'dan daha basit bölümleri tanımlamanın bir yolunu sunar. Bölümleme işlevleri ve düzenleri, SQL Server'da olduğu gibi Synapse SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütun ve sınır noktalarını tanımlamaktır. Bölümleme sözdizimi SQL Server'dan biraz farklı olsa da, temel kavramlar aynıdır. SQL Server ve Synapse SQL havuzu, tablo başına bölüm aralığı na sahip bir bölüm sütununa destek sağlar. Bölümleme hakkında daha fazla bilgi edinmek için [Bölümlenmiş Tablolar ve Dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes)bölümüne bakın.
+Synapse SQL havuzu, SQL Server'dan daha basit bölümleri tanımlamanın bir yolunu sunar. Bölümleme işlevleri ve düzenleri, SQL Server'da olduğu gibi Synapse SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütun ve sınır noktalarını tanımlamaktır. Bölümleme sözdizimi SQL Server'dan biraz farklı olsa da, temel kavramlar aynıdır. SQL Server ve Synapse SQL havuzu, tablo başına bölüm aralığı na sahip bir bölüm sütununa destek sağlar. Bölümleme hakkında daha fazla bilgi edinmek için [Bölümlenmiş Tablolar ve Dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bölümüne bakın.
 
-Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölmek için [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) deyimini kullanır:
+Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölmek için [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini kullanır:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -78,8 +78,8 @@ WITH
 
 SQL Server bölüm tanımlarını Synapse SQL havuzuna geçirmek için:
 
-- SQL Server [bölümşemasını](/sql/t-sql/statements/create-partition-scheme-transact-sql)ortadan kaldırın.
-- CREATE TABLONUZA [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql) tanımını ekleyin.
+- SQL Server [bölümşemasını](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)ortadan kaldırın.
+- CREATE TABLONUZA [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) tanımını ekleyin.
 
 Bir SQL Server örneğinden bölümlenmiş bir tabloyu geçişiyorsanız, aşağıdaki SQL her bölümdeki satır sayısını belirlemenize yardımcı olabilir. Synapse SQL havuzunda aynı bölümleme parçalı lık kullanılırsa, bölüm başına satır sayısının 60 kat azaldığını unutmayın.  
 
@@ -119,7 +119,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Bölüm değiştirme
 
-Synapse SQL havuzu bölme, birleştirme ve geçiş desteklemektedir. Bu işlevlerin her biri [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) deyimi kullanılarak yürütülür.
+Synapse SQL havuzu bölme, birleştirme ve geçiş desteklemektedir. Bu işlevlerin her biri [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimi kullanılarak yürütülür.
 
 Bölümleri iki tablo arasında değiştirmek için, bölümlerin kendi sınırlarında hizalandığından ve tablo tanımlarının eşleştirdiğinden emin olmalısınız. Bir tablodaki değer aralığını zorlamak için denetim kısıtlamaları kullanılamadığından, kaynak tablonun hedef tabloyla aynı bölüm sınırlarını içermesi gerekir. Bölüm sınırları aynı değilse, bölüm meta verileri eşitlenmeyeceği için bölüm anahtarı başarısız olur.
 
@@ -344,4 +344,3 @@ Bu yaklaşımla kaynak denetimindeki kod sabit kalır ve bölümleme sınır de�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Tablo geliştirme hakkında daha fazla bilgi için [Tablogenel Bakış'taki](sql-data-warehouse-tables-overview.md)makalelere bakın.
-

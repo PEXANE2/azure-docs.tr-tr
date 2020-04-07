@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 12/20/2019
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 93c9ce45fd660f444146827e2f5bafaeb12fc471
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa1a677836be3f05269539d52abf7bd8704833d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76310542"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757082"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portalı nasıl yapılır video serisi
 
@@ -22,18 +22,18 @@ Azure portalı nasıl sunulur video serisi, Azure portalında Azure hizmetleriyl
 
 ## <a name="featured-video"></a>Öne çıkan video
 
-Bu özellikli videoda, sanal makinelerle ilgili sık karşılaşılan sorunları nasıl giderebileceğimizi araştırıyoruz.
+Bu özellikli videoda, Azure Danışmanı maliyet önerilerini kullanarak Azure'da nasıl tasarruf edilebildiğinizi gösteriyoruz.
 
-> [!VIDEO https://www.youtube.com/embed/MAJrN-2IPY8]
+> [!VIDEO https://www.youtube.com/embed/ky2WS3KWuYs]
 
-[Sanal makinelerle ilgili sık karşılaşılan sorunları giderme](https://www.youtube.com/watch?v=MAJrN-2IPY8)
+[Azure Danışmanı'nda maliyet önerileri nasıl kullanılır?](https://www.youtube.com/watch?v=ky2WS3KWuYs)
 
 Kaçırmış olabileceğiniz bu son videoları takip edin:
 
 |   |   |   |
 | ------| ------ | ------ |
-| [![Bir işlev uygulaması oluşturmak hakkında YouTube video görüntüsü](https://i.ytimg.com/vi/BEIZKCDElMs/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=BEIZKCDElMs) | [![Yeni Azure giriş ekranının nasıl kullanılacağı hakkında YouTube videosu görüntüsü](https://i.ytimg.com/vi/Ddo__jkzgVo/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=Ddo__jkzgVo) | [![Azure Danışmanı'ndan en iyi şekilde yararlanailgili YouTube videosu görüntüsü](https://i.ytimg.com/vi/ANz3cCiFsJw/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=ANz3cCiFsJw) |
-| [İşlev uygulaması nasıl oluşturulur?](https://www.youtube.com/watch?v=BEIZKCDElMs) | [Yeni Azure ev nasıl kullanılır?](https://www.youtube.com/watch?v=Ddo__jkzgVo) | [Azure Danışmanı'ndan en iyi şekilde nasıl çıkarabilirsiniz?](https://www.youtube.com/watch?v=ANz3cCiFsJw) |
+| [![Azure Monitor çalışma kitaplarını kullanma yla ilgili YouTube videosu görüntüsü](https://i.ytimg.com/vi/Z5xRyy3HB8U/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=Z5xRyy3HB8U) | [![Azure portalında kaynak listesi görünümünüzü filtreleme hakkında YouTube videosu görüntüsü](https://i.ytimg.com/vi/L3I-xOZKWcg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=L3I-xOZKWcg) | [![Panolar için otomatik yenileme kullanma hakkında YouTube video görüntüsü](https://i.ytimg.com/vi/tVoDXygZzWM/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=tVoDXygZzWM) |
+| [Azure Monitör çalışma kitaplarını kullanma](https://www.youtube.com/watch?v=Z5xRyy3HB8U) | [Azure portalında kaynak listesi görünümünüzü filtreleme](https://www.youtube.com/watch?v=L3I-xOZKWcg) | [Panolar için otomatik yenileme kullanma](https://www.youtube.com/watch?v=tVoDXygZzWM) |
 
 ## <a name="video-playlist"></a>Video oynatma listesi
 

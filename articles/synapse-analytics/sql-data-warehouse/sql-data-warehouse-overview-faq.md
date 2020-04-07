@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: dcefe6a6144c9a8f9c6ab7daf5b34b2d81a73c3f
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586521"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743009"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (eski adıyla SQL DW) Sık sorulan sorular
 
@@ -35,7 +35,7 @@ A. Synapse SQL havuzu, genellikle Azure Synapse ile kullanılabilen kurumsal ver
 
 S. Azure Synapse'ye nasıl başlarım?
 
-A. Daha fazla bilgi için [Azure ücretsiz hesabıyla](https://azure.microsoft.com/free/sql-data-warehouse/) veya [satışlarla iletişim kurabilirsiniz.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html) 
+A. Daha fazla bilgi için [Azure ücretsiz hesabıyla](https://azure.microsoft.com/free/sql-data-warehouse/) veya [satışlarla iletişim kurabilirsiniz.](https://info.microsoft.com/ww-landing-azure-sql-data-warehouse-contactme.html)
 
 S. Azure Synapse veri güvenliği için neler sunar?
 
@@ -43,7 +43,8 @@ A. Azure Synapse, TDE ve denetim gibi verileri korumak için çeşitli çözüml
 
 S. Azure Synapse'nin hangi yasal veya iş standartlarına uygun olduğunu nereden öğrenebilirim?
 
-A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) sayfasını ziyaret edin. İlk olarak, Uyumluluk başlığına göre seçin. Ardından, hangi hizmetlerin Azure Synapse uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft kapsam içi bulut hizmetleri bölümünde Azure'u genişletin.
+A. SOC ve ISO gibi ürüne göre çeşitli uyumluluk teklifleri için [Microsoft Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) sayfasını ziyaret edin.
+İlk olarak, Uyumluluk başlığına göre seçin. Ardından, hangi hizmetlerin Azure Synapse uyumlu olduğunu görmek için sayfanın sağ tarafındaki Microsoft kapsam içi bulut hizmetleri bölümünde Azure'u genişletin.
 
 S. Power BI'ye bağlanabilir miyim?
 
@@ -51,7 +52,7 @@ A. Evet! Power BI, Azure Synapse ile doğrudan sorguyı desteklese de, çok say�
 
 S. Synapse SQL havuz kapasite sınırları nelerdir?
 
-A. Geçerli [kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın. 
+A. Geçerli [kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın.
 
 S. Ölçek/Duraklatma/Özgeçmişim neden bu kadar uzun sürüyor?
 
@@ -65,13 +66,13 @@ A. Bir özellik isteğiniz varsa, [kullanıcı](https://feedback.azure.com/forum
 
 S. X'i nasıl yapabilirim?
 
-A. Azure Synapse ile geliştirme konusunda yardım için [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) sayfamızda sorular sorabilirsiniz. 
+A. Azure Synapse ile geliştirme konusunda yardım için [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw) sayfamızda sorular sorabilirsiniz.
 
 S. Destek biletini nasıl gönderirim?
 
 A. [Destek Biletleri](sql-data-warehouse-get-started-create-support-ticket.md) Azure portalı üzerinden dosyalanabilir.
 
-## <a name="sql-languagefeature-support"></a>SQL dil/özellik desteği 
+## <a name="sql-languagefeature-support"></a>SQL dil/özellik desteği
 
 S. Hangi veri türleri desteklenir?
 
@@ -85,7 +86,7 @@ A. Birçok özellik desteklenir. [Desteklenmeyen Tablo Özellikleri'nde destekle
 
 S. Synapse SQL havuzu REST API'lerini destekliyor mu?
 
-A. Evet. SQL Veritabanı ile kullanılabilecek rest işlevlerinin çoğu Synapse SQL havuzunda da kullanılabilir. API bilgilerini REST dokümantasyon sayfalarında veya [MSDN'de](https://msdn.microsoft.com/library/azure/mt163685.aspx)bulabilirsiniz.
+A. Evet. SQL Veritabanı ile kullanılabilecek rest işlevlerinin çoğu Synapse SQL havuzunda da kullanılabilir. API bilgilerini REST dokümantasyon sayfalarında veya [Veritabanlarında](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bulabilirsiniz.
 
 ## <a name="loading"></a>Yükleme
 
@@ -97,17 +98,17 @@ S: Hangi dosya biçimleri PolyBase tarafından desteklenir?
 
 C: Orc, RC, Parke ve düz sınırlı metin
 
-S: PolyBase kullanarak hangi veri kaynaklarına bağlanabilirim? 
+S: PolyBase kullanarak hangi veri kaynaklarına bağlanabilirim?
 
 C: [Azure Veri Gölü Depolama](sql-data-warehouse-load-from-azure-data-lake-store.md) ve Azure Depolama [Blobs](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 
-S: Azure Depolama Blobs veya ADLS'ye bağlanırken hesaplama geri tepmesi mümkün mü? 
+S: Azure Depolama Blobs veya ADLS'ye bağlanırken hesaplama geri tepmesi mümkün mü?
 
-C: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime geçer. 
+C: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime geçer.
 
 S: HDI'ye bağlanabilir miyim?
 
-C: HDI, ADFS katmanı olarak ADLS veya WASB'yi kullanabilir. HDFS katmanınız olarak varsa, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine pushdown hesaplama oluşturamazsınız. 
+C: HDI, ADFS katmanı olarak ADLS veya WASB'yi kullanabilir. HDFS katmanınız olarak varsa, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine pushdown hesaplama oluşturamazsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 4b6d954d06f09bef5240bddc4860ddbc83513d69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220858"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744155"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS için dil ve bölge desteği
 
@@ -35,18 +35,25 @@ LUIS aşağıdaki dillerdeki sözlerle anlar:
 | Amerikan İngilizcesi |`en-US` | ✔ | ✔  |✔|✔|
 | Arapça (önizleme - modern standart Arapça) |`ar-AR`|-|-|-|-|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| Felemenkçe |`nl-NL` |✔|  -   |-|✔|
+| Felemenkçe |`nl-NL` |✔|-|-|✔|
 | Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
-| Fransızca (Kanada) |`fr-CA` |-|   -   |-|✔|
+| Fransızca (Kanada) |`fr-CA` |-|-|-|✔|
 | Almanca |`de-DE` |✔| ✔ |✔ |✔|
-| Hintçe | `hi-IN`|-|-|-|-|
+| Gucerat dili | `gu-IN`|-|-|-|-|
+| Hintçe | `hi-IN`|-|✔|-|-|
 | İtalyanca |`it-IT` |✔| ✔ |✔|✔|
 | *[Japonca](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|Yalnızca anahtar tümcecik|
-| Korece |`ko-KR` |✔|   -   |-|Yalnızca anahtar tümcecik|
+| Korece |`ko-KR` |✔|-|-|Yalnızca anahtar tümcecik|
+| Marathi | `mr-IN`|-|-|-|-|
 | Portekizce (Brezilya) |`pt-BR` |✔| ✔ |✔ |tüm alt kültürler|
 | İspanyolca (İspanya) |`es-ES` |✔| ✔ |✔|✔|
-| İspanyolca (Meksika)|`es-MX` |-|  -   |✔|✔|
-| Türkçe | `tr-TR` |✔|-|-|Sadece duygusallık|
+| İspanyolca (Meksika)|`es-MX` |-|-|✔|✔|
+| Tamil dili | `ta-IN`|-|-|-|-|
+| Telugu dili | `te-IN`|-|-|-|-|
+| Türkçe | `tr-TR` |✔|✔|-|Sadece duygusallık|
+
+
+
 
 Dil [desteği, önceden oluşturulmuş varlıklar](luis-reference-prebuilt-entities.md) ve önceden oluşturulmuş etki [alanları](luis-reference-prebuilt-domains.md)için değişir.
 
@@ -77,22 +84,28 @@ Karma diller İngilizce ve Çince gibi iki kültürden gelen sözcükleri birle�
 ## <a name="tokenization"></a>Tokenization
 Makine öğrenimini gerçekleştirmek için LUIS, kültüre dayalı [belirteçlere](luis-glossary.md#token) bir söz verir.
 
-|Dil|  her alan veya özel karakter | karakter düzeyi|bileşik sözcükler|[tokenized varlık döndü](luis-concept-data-extraction.md#tokenized-entity-returned)
-|--|:--:|:--:|:--:|:--:|
-|Arapça|||||
-|Çince||✔||✔|
-|Felemenkçe|||✔|✔|
-|İngilizce (en-us)|✔ ||||
-|Fransızca (fr-FR)|✔||||
-|Fransızca (fr-CA)|✔||||
-|Almanca|||✔|✔|
-| Hintçe |✔|-|-|-|-|
-|İtalyanca|✔||||
-|Japonca||||✔|
-|Korece||✔||✔|
-|Portekizce (Brezilya)|✔||||
-|İspanyolca (es-ES)|✔||||
-|İspanyolca (es-MX)|✔||||
+|Dil|  her alan veya özel karakter | karakter düzeyi|bileşik sözcükler
+|--|:--:|:--:|:--:|
+|Arapça|✔|||
+|Çince||✔||
+|Felemenkçe|✔||✔|
+|İngilizce (en-us)|✔ |||
+|Fransızca (fr-FR)|✔|||
+|Fransızca (fr-CA)|✔|||
+|Almanca|✔||✔|
+|Gucerat dili|✔|||
+|Hintçe|✔|||
+|İtalyanca|✔|||
+|Japonca|||✔
+|Korece||✔||
+|Marathi|✔|||
+|Portekizce (Brezilya)|✔|||
+|İspanyolca (es-ES)|✔|||
+|İspanyolca (es-MX)|✔|||
+|Tamil dili|✔|||
+|Telugu dili|✔|||
+|Türkçe|✔|||
+
 
 ### <a name="custom-tokenizer-versions"></a>Özel belirteç sürümleri
 
@@ -101,7 +114,10 @@ Aşağıdaki kültürlerin özel belirteç sürümleri vardır:
 |Kültür|Sürüm|Amaç|
 |--|--|--|
 |Almanca<br>`de-de`|1.0.0|Sözcükleri, bileşik sözcükleri tek bileşenlerine ayırmaya çalışan makine öğrenimi tabanlı bir belirteç kullanarak bölerek sözcükleri tokenize eder.<br>Bir kullanıcı `Ich fahre einen krankenwagen` bir söz olarak girerse, `Ich fahre einen kranken wagen`bu. Farklı varlıklar olarak `kranken` `wagen` ve bağımsız olarak işaretlenmesine izin verir.|
-|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklara bölerek tokenize eder.<br> bir kullanıcı `Ich fahre einen krankenwagen` bir söz olarak girerse, tek bir belirteç kalır. Böylece `krankenwagen` tek bir varlık olarak işaretlenir. |
+|Almanca<br>`de-de`|1.0.2|Sözcükleri boşluklara bölerek tokenize eder.<br> Bir kullanıcı `Ich fahre einen krankenwagen` bir söz olarak girerse, tek bir belirteç kalır. Böylece `krankenwagen` tek bir varlık olarak işaretlenir. |
+|Felemenkçe<br>`de-de`|1.0.0|Sözcükleri, bileşik sözcükleri tek bileşenlerine ayırmaya çalışan makine öğrenimi tabanlı bir belirteç kullanarak bölerek sözcükleri tokenize eder.<br>Bir kullanıcı `Ik ga naar de kleuterschool` bir söz olarak girerse, `Ik ga naar de kleuter school`bu. Farklı varlıklar olarak `kleuter` `school` ve bağımsız olarak işaretlenmesine izin verir.|
+|Felemenkçe<br>`de-de`|1.0.1|Sözcükleri boşluklara bölerek tokenize eder.<br> Bir kullanıcı `Ik ga naar de kleuterschool` bir söz olarak girerse, tek bir belirteç kalır. Böylece `kleuterschool` tek bir varlık olarak işaretlenir. |
+
 
 ### <a name="migrating-between-tokenizer-versions"></a>Tokenizer sürümleri arasında geçiş
 <!--

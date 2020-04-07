@@ -7,19 +7,19 @@ ms.service: web-application-firewall
 ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
-ms.openlocfilehash: 559ce4d1500dc5f1b67a3b3dbdbeb5d8dda7e487
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79485856"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754287"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure İçerik Dağıtım Ağında Azure Web Uygulaması Güvenlik Duvarı
 
-Azure İçerik Dağıtım Ağı'ndaki (CDN) Azure Web Uygulaması Güvenlik Duvarı (WAF), web içeriğiniz için merkezi koruma sağlar. WAF, web hizmetlerinizi sık karşılaşılan açıklara ve güvenlik açıklarına karşı korur. Hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
+Microsoft'un Azure İçerik Dağıtım Ağı'ndaki (CDN) Azure Web Uygulaması Güvenlik Duvarı (WAF), web içeriğiniz için merkezi koruma sağlar. WAF, web hizmetlerinizi sık karşılaşılan açıklara ve güvenlik açıklarına karşı korur. Hizmetinizi kullanıcılarınız için yüksek oranda kullanılabilir tutar ve uyumluluk gereksinimlerini karşılamanıza yardımcı olur.
 
 > [!IMPORTANT]
-> Azure CDN'deki WAF şu anda genel önizlemededir ve bir önizleme hizmeti düzeyi sözleşmesiyle sağlanır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Microsoft'un Azure CDN'deki WAF'ı şu anda genel önizlemededir ve bir önizleme hizmeti düzeyi sözleşmesiyle sağlanır. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.  Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure CDN'deki WAF, küresel ve merkezi bir çözümdür. Dünya çapındaki Azure ağ kenarı konumlarında dağıtılır. WAF, kötü amaçlı saldırıları kaynağınıza ulaşmadan önce saldırı kaynaklarına yakın durdurur. Performanstan ödün vermeden ölçekte küresel koruma elde elabilirsiniz. 
 

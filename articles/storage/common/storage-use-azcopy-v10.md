@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 90adb3b973b6952d10ef89e4b40d0fc68489e224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061102"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756017"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -21,7 +21,7 @@ AzCopy, bir depolama hesabına veya bir depolama hesabından blobveya dosya kopy
 > [!NOTE]
 > AzCopy **V10,** AzCopy'nin şu anda desteklenen sürümüdür.
 >
-> AzCopy **v8.1**kullanmanız gerekiyorsa, bu [makalenin AzCopy bölümünün önceki sürümünü kullanın](#previous-version) bakın.
+> AzCopy'nin önceki bir sürümünü kullanmanız gerekiyorsa, bu [makalenin Önceki AzCopy](#previous-version) bölümünün önceki sürümünü kullanın bölümüne bakın.
 
 <a id="download-and-install-azcopy" />
 
@@ -308,11 +308,11 @@ Depolama Gezgini işlemleri gerçekleştirmek için hesap anahtarınızı kullan
 
 ## <a name="use-the-previous-version-of-azcopy"></a>AzCopy önceki sürümünü kullanma
 
-AzCopy'nin önceki sürümünü (AzCopy v8.1) kullanmanız gerekiyorsa, aşağıdaki bağlantılardan herhangi birini görün:
+AzCopy'nin önceki sürümünü kullanmanız gerekiyorsa, aşağıdaki bağlantılardan hiçbirine bakın:
 
 - [Windows üzerinde AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy)
 
-- [Linux üzerinde AzCopy (v8)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
+- [Linux'ta AzCopy (v7)](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux)
 
 ## <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme
 

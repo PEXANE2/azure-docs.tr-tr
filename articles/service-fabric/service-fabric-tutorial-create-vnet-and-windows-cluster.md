@@ -4,12 +4,12 @@ description: Bu eğitimde, PowerShell'i kullanarak Bir Windows Service Fabric k�
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2d170057a85a8e223fa9d1bc2bfc17e0c284afcd
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75551735"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756043"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Öğretici: Windows çalıştıran bir Hizmet Kumaşı kümesini Azure sanal ağına dağıtma
 
@@ -156,7 +156,7 @@ Varsayılan olarak, [Windows Defender virüsten koruma programı](/windows/secur
 ## <a name="set-up-azure-active-directory-client-authentication"></a>Azure Etkin Dizin istemci kimlik doğrulaması ayarlama
 Azure'da barındırılan ortak bir ağda dağıtılan Hizmet Kumaşı kümeleri için istemciden düğüme karşılıklı kimlik doğrulaması için öneri şudur:
 * İstemci kimliği için Azure Etkin Dizini'ni kullanın.
-* Sunucu kimliği ve HTTP iletişiminin SSL şifrelemesi için bir sertifika kullanın.
+* SUNUCU kimliği ve HTTP iletişiminin TLS şifrelemesi için bir sertifika kullanın.
 
 Bir Hizmet Dokusu kümesi için istemcilerin kimliğini doğrulamak için Azure Active Directory 'i (Azure AD) [ayarlamanın kümeoluşturmadan](#createvaultandcert)önce yapılması gerekir. Azure AD, kuruluşların (kiracı olarak da bilinir) uygulamalara kullanıcı erişimini yönetmesini sağlar. 
 

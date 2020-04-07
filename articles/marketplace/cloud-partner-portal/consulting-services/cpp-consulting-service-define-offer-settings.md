@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ac7ac2cc049c87b3f619f68a9a93a2268d961114
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b2c9d136a32e54ce5b5db8f6ce9ba8cd63a4f3c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278578"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745640"
 ---
 # <a name="offer-settings-tab"></a>Teklif ayarları sekmesi
+
+>[!Important]
+>30 Mart 2020'den itibaren Danışmanlık hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
 
 Yeni **Teklif** ekranında ilk adım teklif kimliğini oluşturmaktır. Teklif kimliği üç bölümden oluşur: **Teklif Kimliği,** **Yayıncı Kimliği**ve **Ad**. Bu bölümlerin her biri aşağıdaki bölümlerde ele alınmıştır.
 

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e65ebbfa0971bf2156165b55ca18eee3cc74bc9
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 83108c056035b16d26343d82c721b275ebcad0c5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239271"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754316"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonları ile SQL BACPAC dosyalarını alma
 
-Azure Kaynak Yöneticisi (ARM) şablonlarıyla bir BACPAC dosyasını almak için Azure SQL Veritabanı uzantılarını nasıl kullanacağınızı öğrenin. Dağıtım yapıları, dağıtımtamamlamak için gereken ana şablon dosyalarına ek olarak tüm dosyalardır. BACPAC dosyası bir artefakttır. 
+Azure Kaynak Yöneticisi (ARM) şablonlarıyla bir BACPAC dosyasını almak için Azure SQL Veritabanı uzantılarını nasıl kullanacağınızı öğrenin. Dağıtım yapıları, dağıtımtamamlamak için gereken ana şablon dosyalarına ek olarak tüm dosyalardır. BACPAC dosyası bir artefakttır.
 
 Bu öğreticide, bir Azure SQL sunucusu ve SQL veritabanı dağıtmak ve bir BACPAC dosyası almak için bir şablon oluşturursunuz. ARM şablonlarını kullanarak Azure sanal makine uzantılarının nasıl dağıtılanacınız hakkında bilgi için [Bkz.](./template-tutorial-deploy-vm-extensions.md)
 
@@ -255,7 +255,7 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir SQL sunucusu ve BIR SQL veritabanı dağıttınız ve bir BACPAC dosyası aldınız. BACPAC dosyası bir Azure Depolama hesabında depolanır. URL'si olan herkes dosyaya erişebilir. BACPAC dosyasını (artefakt) nasıl güvenli hale erdireceklerini öğrenmek için bkz:
+Bu öğreticide, bir SQL sunucusu ve BIR SQL veritabanı dağıttınız ve bir BACPAC dosyası aldınız. Şablon dağıtımıyla nasıl sorun giderileceksiniz öğrenmek için bkz:
 
 > [!div class="nextstepaction"]
-> [Yapıları güvenli hale](./template-tutorial-secure-artifacts.md)
+> [Sorun giderme ARM şablon dağıtımları](./template-tutorial-troubleshoot.md)

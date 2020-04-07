@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 89d437fe74d209e0dc04ffc590a1e32426b28732
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52270e623a713d7188ac5ff907ebb82ada13283
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275875"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745611"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>Power BI App teklifi yayınlama
+
+>[!Important]
+>30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
 
 Bulut İş Ortağı Portalı'nda bir teklif tanımladıktan ve ilişkili teknik varlıkları oluşturduktan sonra son adım, teklifi yayımlama için göndermektir. Bu işlemi başlatmak için, **Yeni Teklif** penceresinin sol bölmesinde **Yayımla'yı**seçin. Daha fazla bilgi için bkz: [Azure Marketi ve AppSource tekliflerini yayımla.](../manage-offers/cpp-publish-offer.md)
 

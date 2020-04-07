@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7e5f70d0323aa5c502491ab99db303fde31ade83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528634"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755036"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>Azure Dosya Eşitlemi için StorSimple 8100 ve 8600 geçişi
 
@@ -146,7 +146,10 @@ Verilerin genel boyutu bir darboğaz daha azdır - bu makine özellikleri terzi 
 > VM'nin StorSimple 8020 sanal cihazla aynı Azure bölgesinde dağıtıldıkdığından emin olun. Bu geçişin bir parçası olarak, bulut verilerinizin bugün depolanan bölgeden bölgesini de değiştirmeniz gerekiyorsa, bunu Azure dosya paylaşımlarını sağlarken daha sonraki bir adımda yapabilirsiniz.
 
 > [!IMPORTANT]
-> Performans için optimize etmek için bulut VM'iniz için çok hızlı bir **işletim sistemi diski** dağıtın. Tüm veri birimleriniz için eşitleme veritabanını işletim sistemi diskinde saklarsınız. Ayrıca, büyük bir **işletim sistemi diski**oluşturduğunuzdan emin olun. StorSimple birimlerinizdeki öğelerin (dosya ve klasörler) sayısına bağlı olarak, işletim sistemi diskinin eşitleme veritabanını barındırmak için **birkaç yüz GiB** alanı gerekebilir.
+> Genellikle, şirket içi StorSimple cihazınızın önünde bir şirket içi Windows Server kullanılır. Böyle bir yapılandırmada, bu Windows Server'daki "[Data Deduplication](https://docs.microsoft.com/windows-server/storage/data-deduplication/install-enable)" özelliğini etkinleştirmek mümkündür. **StorSimple verilerinizle Veri Çoğaltma'yı kullandıysanız, bu Azure VM'de de Veri Çoğaltma'yı etkinleştirdiğinizden emin olun.** Bu dosya düzeyindeki yinelemeyi, hiçbir eylemin gerekli olmadığı StorSimples yerleşik blok düzeyi yinelemesiyle karıştırmayın.
+
+> [!IMPORTANT]
+> Performans için optimize etmek için bulut VM'iniz için hızlı bir **işletim sistemi diski** dağıtın. Tüm veri birimleriniz için eşitleme veritabanını işletim sistemi diskinde saklarsınız. Ayrıca, büyük bir **işletim sistemi diski**oluşturduğunuzdan emin olun. StorSimple birimlerinizdeki öğelerin (dosya ve klasörler) sayısına bağlı olarak, işletim sistemi diskinin eşitleme veritabanını barındırmak için **birkaç yüz GiB** alanı gerekebilir.
 
 ### <a name="expose-the-storsimple-8020-volumes-to-the-azure-vm"></a>StorSimple 8020 birimlerini Azure VM'ye maruz bırak
 
@@ -424,7 +427,7 @@ Dosyaların geride bırakIlip bırakılmadığını görmek için robocopy günl
 
 Büyük olasılıkla Daha önce StorSimple verilerinde olan Windows Server'da SMB paylaşımlarını oluşturmak gerekir. Bu adımı önceden yükleyebilir ve burada zaman kaybetmemek için daha erken yükleyebilirsiniz, ancak bu noktadan önce Windows sunucusunda dosyalarda değişiklik yapılmadığından emin olmalısınız.
 
-DFS-N dağıtımınız varsa, DFN-Namespaces'i yeni sunucu klasörü konumlarına yönlendirebilirsiniz. DFS-N dağıtımınız yoksa ve 8100 8600 cihazınızı bir Windows Server ile yerel olarak ön plana çıkardıysanız, bu sunucuyu etki alanından alabilir ve etki alanınıza AFS ile yeni Windows Server'ınızı katabilir ve eski sunucuyla aynı sunucu adını verebilirsiniz ve aynı paylaşım adları, ardından yeni sunucuya kesme kullanıcılarınız, grup ilkeniz veya komut dosyaları için saydam kalır.
+DFS-N dağıtımınız varsa, DFN-Namespaces'i yeni sunucu klasörü konumlarına yönlendirebilirsiniz. DFS-N dağıtımınız yoksa ve 8100 8600 cihazınızı bir Windows Server ile yerel olarak ön plana çıkardıysanız, bu sunucuyu etki alanından alabilir ve etki alanınız afs ile yeni Windows Server'ınıza katılabilir, eski sunucuyla aynı sunucu adını ve aynı paylaşım adlarını verebilirsiniz, ardından yeni sunucuya geçiş kullanıcılarınız için saydam kalır , grup ilkesi veya komut dosyaları.
 
 ## <a name="phase-7-deprovision"></a>7. Aşama: Deprovision
 

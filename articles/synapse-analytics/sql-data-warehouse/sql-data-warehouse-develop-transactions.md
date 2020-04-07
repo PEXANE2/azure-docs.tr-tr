@@ -11,32 +11,36 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fdbffba7bee84c32d11f8b60431a35f185d9e637
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d9578653ff8074fee8336df447caf119f79febe0
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633423"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745258"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Synapse SQL havuzunda hareketleri kullanma
+
 Bu makalede, sql havuzunda hareketleri uygulama ve çözüm geliştirme ipuçları içerir.
 
 ## <a name="what-to-expect"></a>Ne beklenebilir
-Beklediğiniz gibi, SQL havuzu veri ambarı iş yükünün bir parçası olarak hareketleri destekler. Ancak, SQL havuzunun ölçekte tutulmasını sağlamak için, bazı özellikler SQL Server ile karşılaştırıldığında sınırlıdır. Bu makalede, farklar vurgulamaktadır. 
+
+Beklediğiniz gibi, SQL havuzu veri ambarı iş yükünün bir parçası olarak hareketleri destekler. Ancak, SQL havuzunun ölçekte tutulmasını sağlamak için, bazı özellikler SQL Server ile karşılaştırıldığında sınırlıdır. Bu makalede, farklar vurgulamaktadır.
 
 ## <a name="transaction-isolation-levels"></a>İşlem yalıtım düzeyleri
+
 SQL havuzu ACID hareketlerini uygular. İşlemsel desteğin yalıtım düzeyi, TAAHHÜTEDİlMEYEN READ için varsayılandır.  Ana veritabanına bağlandığında kullanıcı veritabanı için READ_COMMITTED_SNAPSHOT veritabanı seçeneğini açarak COMMITTED SNAPSHOT ISOLATION'ı OKUMA olarak değiştirebilirsiniz.  
 
-Etkinleştirildiğinde, bu veritabanındaki tüm işlemler READ COMMITTED SNAPSHOT Isolation altında yürütülür ve READ UNCOMMITTED'un oturum düzeyinde ayarlanması onurlandırılmaz. Ayrıntılar için [ALTER DATABASE SET seçeneklerini (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) kontrol edin.
+Etkinleştirildiğinde, bu veritabanındaki tüm işlemler READ COMMITTED SNAPSHOT Isolation altında yürütülür ve READ UNCOMMITTED'un oturum düzeyinde ayarlanması onurlandırılmaz. Ayrıntılar için [ALTER DATABASE SET seçeneklerini (Transact-SQL)](/sql/t-sql/statements/alter-database-transact-sql-set-options?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kontrol edin.
 
 ## <a name="transaction-size"></a>İşlem boyutu
-Tek bir veri modifikasyon hareketinin boyutu sınırlıdır. Sınır dağıtım başına uygulanır. Bu nedenle, toplam ayırma, sınır dağılımı sayısı ile çarpılarak hesaplanabilir. 
+
+Tek bir veri modifikasyon hareketinin boyutu sınırlıdır. Sınır dağıtım başına uygulanır. Bu nedenle, toplam ayırma, sınır dağılımı sayısı ile çarpılarak hesaplanabilir.
 
 İşlemdeki en fazla satır sayısını yaklaşık olarak tahmin etmek için dağıtım kapağını her satırın toplam boyutuna bölün. Değişken uzunluktaki sütunlar için, maksimum boyutu kullanmak yerine ortalama bir sütun uzunluğu almayı düşünün.
 
 Aşağıdaki tabloda, iki varsayım yapılmıştır:
 
-* Verilerin eşit dağılımı oluştu 
+* Verilerin eşit dağılımı oluştu
 * Ortalama satır uzunluğu 250 bayt
 
 ## <a name="gen2"></a>Gen2
@@ -77,26 +81,24 @@ Aşağıdaki tabloda, iki varsayım yapılmıştır:
 | DW3000 |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
 | DW6000 |45 |60 |2,700 |180,000,000 |10,800,000,000 |
 
-Hareket boyutu sınırı hareket veya işlem başına uygulanır. Tüm eşzamanlı hareketlerde uygulanmaz. Bu nedenle, her işlemin bu miktarda veriyi günlüğe yazmasına izin verilir. 
+Hareket boyutu sınırı hareket veya işlem başına uygulanır. Tüm eşzamanlı hareketlerde uygulanmaz. Bu nedenle, her işlemin bu miktarda veriyi günlüğe yazmasına izin verilir.
 
 Günlüğe yazılan veri miktarını en iyi duruma getirmek ve en aza indirmek için lütfen [En İyi İşlemler](sql-data-warehouse-develop-best-practices-transactions.md) makalesine bakın.
 
 > [!WARNING]
 > Maksimum işlem boyutu yalnızca verilerin yayılmasının eşit olduğu HASH veya ROUND_ROBIN dağıtılmış tablolar için elde edilebilir. Hareket, verileri dağıtımlara çarpık bir şekilde yazıyorsa, sınıra maksimum işlem boyutundan önce ulaşılması olasıdır.
 > <!--REPLICATED_TABLE-->
-> 
-> 
 
 ## <a name="transaction-state"></a>İşlem durumu
+
 SQL havuzu -2 değerini kullanarak başarısız bir hareketi bildirmek için XACT_STATE() işlevini kullanır. Bu değer, hareketin başarısız olduğu ve yalnızca geri alma için işaretlendiğini gösterir.
 
 > [!NOTE]
-> -2'nin XACT_STATE işlevi tarafından başarısız bir işlemi belirtmek için kullanılması SQL Server'a farklı bir davranışı temsil eder. SQL Server, -1 değerini işitilemez bir işlemi temsil etmek için kullanır. SQL Server, bir işlem içinde bazı hataları, taahhüt edilemez olarak işaretlemek zorunda kalmadan tolere edebilir. Örneğin, `SELECT 1/0` bir hataya neden olur, ancak bir hareketi işlenmemiş bir duruma zorlamaz. 
+> -2'nin XACT_STATE işlevi tarafından başarısız bir işlemi belirtmek için kullanılması SQL Server'a farklı bir davranışı temsil eder. SQL Server, -1 değerini işitilemez bir işlemi temsil etmek için kullanır. SQL Server, bir işlem içinde bazı hataları, taahhüt edilemez olarak işaretlemek zorunda kalmadan tolere edebilir. Örneğin, `SELECT 1/0` bir hataya neden olur, ancak bir hareketi işlenmemiş bir duruma zorlamaz.
 
-SQL Server ayrıca taahhüt edilemeyen işlemde okumalara da izin verir. Ancak, SQL havuzu bunu yapmanıza izin vermez. Bir SQL havuzu hareketinin içinde bir hata oluşursa, otomatik olarak -2 durumuna girer ve ekstre geri alınana kadar başka seçim ekstreleri yapamazsınız. 
+SQL Server ayrıca taahhüt edilemeyen işlemde okumalara da izin verir. Ancak, SQL havuzu bunu yapmanıza izin vermez. Bir SQL havuzu hareketinin içinde bir hata oluşursa, otomatik olarak -2 durumuna girer ve ekstre geri alınana kadar başka seçim ekstreleri yapamazsınız.
 
 Bu nedenle, kod değişiklikleri yapmak için gerekebileceği gibi XACT_STATE() kullanıp kullanmadığını görmek için uygulama kodunuzu kontrol etmek önemlidir.
-
 
 Örneğin, SQL Server'da aşağıdaki gibi görünen bir işlem görebilirsiniz:
 
@@ -184,11 +186,13 @@ Beklenen davranış şimdi gözlenir. Hareketteki hata yönetilir ve ERROR_* iş
 Değişen tek şey, işlemin ROLLBACK'inin CATCH bloğundaki hata bilgilerinin okunmasından önce gerçekleşmesi gerektiğidir.
 
 ## <a name="error_line-function"></a>Error_Line() fonksiyonu
-Ayrıca, SQL havuzunun ERROR_LINE() işlevini uygulamadığını veya desteklemediğini de belirtmekte yarar vardır. Kodunuzda bu varsa, SQL havuzuyla uyumlu olması için kodu kaldırmanız gerekir. 
+
+Ayrıca, SQL havuzunun ERROR_LINE() işlevini uygulamadığını veya desteklemediğini de belirtmekte yarar vardır. Kodunuzda bu varsa, SQL havuzuyla uyumlu olması için kodu kaldırmanız gerekir.
 
 Eşdeğer işlevsellik uygulamak için kodunuzdaki sorgu etiketlerini kullanın. Daha fazla bilgi için [LABEL](sql-data-warehouse-develop-label.md) makalesine bakın.
 
 ## <a name="using-throw-and-raiserror"></a>THROW ve RAISERROR kullanma
+
 THROW, SQL havuzunda özel durumları yükseltmek için daha modern bir uygulamadır ancak RAISERROR da desteklenir. Ancak dikkat değer birkaç farklılıklar vardır.
 
 * Kullanıcı tanımlı hata iletileri numaraları THROW için 100.000 - 150.000 aralığında olamaz
@@ -196,6 +200,7 @@ THROW, SQL havuzunda özel durumları yükseltmek için daha modern bir uygulama
 * sys.messages kullanımı desteklenmiyor
 
 ## <a name="limitations"></a>Sınırlamalar
+
 SQL havuzunun hareketle ilgili birkaç başka kısıtlaması vardır.
 
 Bunlar şu şekildedir:
@@ -208,5 +213,5 @@ Bunlar şu şekildedir:
 * Kullanıcı tanımlı bir işlemde CREATE TABLE gibi DDL desteği yok
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İşlemleri en iyi duruma getirmek hakkında daha fazla bilgi edinmek [için, Hareketler'in en iyi uygulamaları'na](sql-data-warehouse-develop-best-practices-transactions.md)bakın. Diğer SQL havuzu en iyi uygulamaları hakkında bilgi edinmek için, [SQL havuzu en iyi uygulamaları](sql-data-warehouse-best-practices.md)bakın.
 
+İşlemleri en iyi duruma getirmek hakkında daha fazla bilgi edinmek [için, Hareketler'in en iyi uygulamaları'na](sql-data-warehouse-develop-best-practices-transactions.md)bakın. Diğer SQL havuzu en iyi uygulamaları hakkında bilgi edinmek için, [SQL havuzu en iyi uygulamaları](sql-data-warehouse-best-practices.md)bakın.

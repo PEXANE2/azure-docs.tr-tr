@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 04e10b9c5410d15d3509829af7502c9a93c7267d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02f2f8ce523e9316b749a9639112176a74da66d2
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281638"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745539"
 ---
 # <a name="update-a-power-bi-app-offer"></a>Power BI App teklifini güncelleştirin
+
+>[!Important]
+>30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
 
 Bu makalede, Microsoft Power BI App teklifinizi [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/) nasıl güncelleştirip teklifi yeniden yayımlayacağınızı gösterir. Bir teklifi güncelleştirmek için bazı yaygın nedenler şunlardır:
 

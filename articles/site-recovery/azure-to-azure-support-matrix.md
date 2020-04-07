@@ -4,12 +4,12 @@ description: Azure Site Kurtarma ile ikincil bir bölgeye Azure VM'ler olağanü
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 0b4a654093e0842e66e1f8b0924edfa6c9c215e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276657"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673800"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -20,8 +20,8 @@ Bu makalede, [Azure Site Kurtarma](site-recovery-overview.md) hizmetini kullanar
 
 **Dağıtım** |  **Destek**
 --- | ---
-**Azure portalında** | Destekleniyor.
-**Powershell** | Destekleniyor. [Daha fazlasını öğrenin](azure-to-azure-powershell.md)
+**Azure portal** | Destekleniyor.
+**PowerShell** | Destekleniyor. [Daha fazlasını öğrenin](azure-to-azure-powershell.md)
 **REST API** | Destekleniyor.
 **CLI** | Şu anda desteklenmiyor
 
@@ -44,13 +44,13 @@ Aynı coğrafi küme içindeki herhangi iki bölge arasında VM'leri çoğaltabi
 **Coğrafi küme** | **Azure bölgeleri**
 -- | --
 Amerika | Kanada Doğu, Kanada Merkez, Güney Orta ABD, Batı Orta ABD, Doğu ABD, Doğu ABD 2, Batı ABD, Batı ABD 2, Orta ABD, Kuzey Orta ABD
-Avrupa | İngiltere Batı, İngiltere Güney, Kuzey Avrupa, Batı Avrupa, Fransa Orta, Fransa Güney, Güney Afrika Batı, Güney Afrika Kuzey, Norveç Doğu, Norveç Batı
-Asya | Güney Hindistan, Orta Hindistan, Batı Hindistan, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, BAE Merkez, BAE Kuzey
+Avrupa | İngiltere Batı, İngiltere Güney, Kuzey Avrupa, Batı Avrupa, Güney Afrika Batı, Güney Afrika Kuzey, Norveç Doğu, Norveç Batı
+Asya | Güney Hindistan, Orta Hindistan, Batı Hindistan, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney
 Avustralya    | Avustralya Doğu, Avustralya Güneydoğu, Avustralya Merkez, Avustralya Merkez 2
 Azure Kamu    | ABD GOV Virginia, ABD GOV Iowa, ABD GOV Arizona, ABD GOV Texas, ABD DOD Doğu, ABD DOD Merkez
 Almanya    | Almanya Merkez, Almanya Kuzeydoğu
 Çin | Çin Doğu, Çin Kuzey, Çin North2, Çin Doğu2
-Ülke içi felaket kurtarma için ayrılmış kısıtlı bölgeler |Almanya Kuzey Almanya West Central, İsviçre Batı İsviçre Kuzey, Fransa Güney fransa merkez müşterileri için ayrılmış ayrılmış
+Ülke içi felaket kurtarma için ayrılmış kısıtlı bölgeler |Almanya Kuzey Almanya West Central, İsviçre Batı İsviçre Kuzey, Fransa Güney için ayrılmış Fransa Merkez, BAE Merkez BAE Kuzey müşterileri için sınırlı saklıdır
 
 >[!NOTE]
 >
@@ -177,7 +177,7 @@ Azure Galerisi resimleri - Üçüncü taraf yayınlandı | Destekleniyor | VM de
 Özel görüntüler - Üçüncü taraf yayınlandı | Destekleniyor | VM desteklenen bir işletim sistemi üzerinde çalışıyorsa desteklenir.
 Site Kurtarma kullanarak geçirilen VM'ler | Destekleniyor | Bir VMware VM veya fiziksel makine Site Kurtarma'yı kullanarak Azure'a geçirildiyse, makinede çalışan Mobilite hizmetinin eski sürümünü kaldırmanız ve başka bir Azure bölgesine çoğaltmadan önce makineyi yeniden başlatmanız gerekir.
 RBAC ilkeleri | Desteklenmiyor | VM'lerde rol tabanlı Erişim denetimi (RBAC) ilkeleri hedef bölgedeki başarısız VM'ye çoğaltılmaz.
-Uzantılar | Desteklenmiyor | Uzantılar hedef bölgede başarısız VM çoğaltılamaz. Bu failover sonra el ile yüklenmesi gerekir.
+Uzantıları | Desteklenmiyor | Uzantılar hedef bölgede başarısız VM çoğaltılamaz. Bu failover sonra el ile yüklenmesi gerekir.
 
 ## <a name="replicated-machines---disk-actions"></a>Çoğaltılan makineler - disk eylemleri
 

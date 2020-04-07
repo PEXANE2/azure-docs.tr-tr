@@ -3,12 +3,12 @@ title: 'Quickstart: Oluşturma, tren ve bilgi tabanı yayınlamak - QnA Maker'
 description: SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kullanarak bir Soru-Cevap Oluşturma bilgi bankası (KB) oluşturabilirsiniz. Bu makalede, soru QnA Maker yanıtlamak için basit bir SSS web sayfasından bir QnA Maker bilgi tabanı oluşturma bir örnek içerir.
 ms.topic: conceptual
 ms.date: 02/08/2020
-ms.openlocfilehash: b1f80006e2dc72b5b623f4c29c093c734dc1efea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220583"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756828"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Quickstart: QnA Maker bilgi tabanınızı oluşturun, eğitin ve yayınlayın
 
@@ -135,7 +135,7 @@ Bilgi tabanında değişiklik yaptığınızda ve yeniden yayımladığınızda,
 
 ## <a name="what-did-you-accomplish"></a>Ne başardın?
 
-Yeni bir bilgi tabanı oluşturdunuz, bilgi tabanına genel bir URL eklediniz, kendi QnA setinizi eklediniz, eğittiniz, test edindin ve bilgi tabanını yayınladınız.
+Yeni bir bilgi tabanı oluşturdunuz, bilgi tabanına genel bir URL eklediniz, kendi QnA çiftinize eklediniz, eğitildiniz, test edindin ve bilgi tabanını yayınladınız.
 
 Bilgi tabanını yayımladıktan sonra, bir bot oluşturdunuz ve botu test ettin.
 

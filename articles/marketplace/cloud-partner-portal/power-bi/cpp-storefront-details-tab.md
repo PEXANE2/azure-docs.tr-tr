@@ -5,16 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b69ef8aa57393c5be8d23aaf4af1821697295235
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bcf06056dd7fdaf22716409f53d86da7321b94d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281689"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745596"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI uygulaması Storefront Ayrıntılar sekmesi
+
+>[!Important]
+>30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
 
 Yeni **Teklif** sayfasında, olası müşterileriniz için pazarlama, satış ve yasal bilgiler sağlamak için **Storefront Ayrıntılar** sekmesini kullanın. Bu sekmede, Azure Marketi'nin oluşturduğu müşteri adayları için yönetim de ayarlayabilirsiniz. Bu uzun form altı bölüme ayrılmıştır: **Teklif Detayları**, **Listeleme Ayrıntıları**, Pazarlama **Eserler**, **Yasal**, **Müşteri Desteği**, ve Kurşun **Yönetimi**.  Alan etiketinin sonundaki yıldız işareti (*) alanın gerekli olduğu anlamına gelir.
 

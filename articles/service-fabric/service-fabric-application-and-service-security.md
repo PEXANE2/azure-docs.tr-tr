@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama güvenliği hakkında bilgi edinin
 description: Service Fabric'te mikro hizmet uygulamalarının nasıl güvenli bir şekilde çalıştırılacaklarına genel bakış. Hizmetleri ve başlangıç komut dosyasını farklı güvenlik hesapları altında çalıştırmayı, kullanıcıların kimliğini doğrulamayı ve yetkilendirmeyi, uygulama sırlarını yönetmeyi, hizmet iletişimini nasıl sağlayacağınızı, bir API ağ geçidini nasıl kullanacağınızı ve uygulama verilerini istirahatte nasıl güvenli hale erdireceklerini öğrenin.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75452247"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756244"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Servis Kumaşı uygulaması ve servis güvenliği
 Bir microservices mimarisi [birçok faydalar](service-fabric-overview-microservices.md)getirebilir. Ancak, mikro hizmetlerin güvenliğini yönetmek, geleneksel monolitik uygulama güvenliğini yönetmekten farklıdır ve zordur. 
@@ -20,7 +20,7 @@ Bu makalede, mikro hizmetler güvenliği için bir rehber değildir, bu tür bir
 ## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
 Genellikle bir hizmet tarafından açığa çıkarılan kaynakların ve API'lerin belirli güvenilir kullanıcılar veya istemciler ile sınırlı olması gerekir. Kimlik doğrulama, kullanıcının kimliğini güvenilir bir şekilde belirleme işlemidir.  Yetkilendirme, API'leri veya hizmetleri bazı kimlik doğrulaması yapılan kullanıcılar için kullanılabilir kılan, başkalarının değil, işlemdir.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 API düzeyinde güven kararları vermenin ilk adımı kimlik doğrulamadır. Kimlik doğrulama, kullanıcının kimliğini güvenilir bir şekilde belirleme işlemidir.  Mikro hizmet senaryolarında kimlik doğrulama genellikle merkezi olarak işlenir. Bir API Ağ Geçidi kullanıyorsanız, [kimlik doğrulamayı](/azure/architecture/patterns/gateway-offloading) ağ geçidine boşaltabilirsiniz. Bu yaklaşımı kullanırsanız, ağ geçidinden gelen iletileri doğrulamak için ek güvenlik olmadığı sürece, tek tek hizmetlere doğrudan (API Ağ Geçidi olmadan) ulaşılamayacağından emin olun.
 
 Hizmetlere doğrudan erişilebiliyorsa, Azure Etkin Dizini gibi bir kimlik doğrulama hizmeti veya güvenlik belirteci hizmeti (STS) olarak hareket eden özel bir kimlik doğrulama mikro hizmeti, kullanıcıların kimliğini doğrulamak için kullanılabilir. Güven kararları, güvenlik belirteçleri veya tanımlama bilgileriyle hizmetler arasında paylaşılır. 
@@ -33,7 +33,7 @@ Kimlik doğrulamadan sonra, hizmetlerin kullanıcı erişimini yetkilendirmesi v
 [ASP.NET Çekirdek yetkilendirme,](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kullanıcıların rollerine veya talepleri veya diğer buluşsal denetimleri içeren özel ilkelere dayalı olarak yapılabilir.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>API ağ geçidini kullanarak erişimi kısıtlama ve güvenli hale
-Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara tek giriş noktası sağlamak için bir ön uç ağ geçidine ihtiyacı vardır. ApI [ağ geçidi](/azure/architecture/microservices/gateway) istemciler ve hizmetler arasında yer alıyor ve uygulamanızın sağladığı tüm hizmetlerin giriş noktasıdır. İstemlerden hizmetlere istekleri yönlendirme, ters proxy olarak görür. Ayrıca kimlik doğrulama ve yetkilendirme, SSL sonlandırma ve oran sınırlama gibi çeşitli çapraz kesme görevleri gerçekleştirebilir. Bir ağ geçidi dağıtmazsanız, istemcilerin istekleri doğrudan ön uç hizmetlerine göndermesi gerekir.
+Bulut uygulamalarının normalde kullanıcılar, cihazlar ve diğer uygulamalara tek giriş noktası sağlamak için bir ön uç ağ geçidine ihtiyacı vardır. ApI [ağ geçidi](/azure/architecture/microservices/gateway) istemciler ve hizmetler arasında yer alıyor ve uygulamanızın sağladığı tüm hizmetlerin giriş noktasıdır. İstemlerden hizmetlere istekleri yönlendirme, ters proxy olarak görür. Ayrıca kimlik doğrulama ve yetkilendirme, TLS sonlandırma ve oran sınırlama gibi çeşitli çapraz kesme görevleri gerçekleştirebilir. Bir ağ geçidi dağıtmazsanız, istemcilerin istekleri doğrudan ön uç hizmetlerine göndermesi gerekir.
 
 Hizmet Kumaşı'nda ağ geçidi, [ASP.NET Core uygulaması](service-fabric-reliable-services-communication-aspnetcore.md)veya [Traefik,](https://docs.traefik.io/) [Event Hubs,](https://docs.microsoft.com/azure/event-hubs/) [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)veya Azure [API Yönetimi](https://docs.microsoft.com/azure/api-management)gibi trafik girişi için tasarlanmış başka bir hizmet gibi herhangi bir devletsiz hizmet olabilir.
 

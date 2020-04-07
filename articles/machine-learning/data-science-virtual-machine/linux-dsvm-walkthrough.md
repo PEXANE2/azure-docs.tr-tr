@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7292064a1df8aa9bfffcd9a19a03f7b332c0615e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632726"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755153"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure'da Linux Veri Bilimi Sanal Makine ile veri bilimi
 
@@ -39,7 +39,7 @@ Linux DSVM kullanamadan önce aşağıdaki ön koşullara sahip olmalısınız:
 [Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesi, 4.601 örnek içeren nispeten küçük bir veri kümesidir. Veri kümesi, kaynak gereksinimlerini mütevazı tuttuğundan DSVM'nin bazı temel özelliklerini göstermek için kullanışlı bir boyuttır.
 
 > [!NOTE]
-> Bu izim, D2 v2 boyutunda bir Linux DSVM (CentOS Edition) kullanılarak oluşturulmuştur. Bu izbiste gösterilen yordamları tamamlamak için bu boyutta bir DSVM kullanabilirsiniz.
+> Bu gözden geçirme, D2 v2 boyutunda bir Linux DSVM (Ubuntu 18.04 Edition) kullanılarak oluşturulmuştur. Bu izbiste gösterilen yordamları tamamlamak için bu boyutta bir DSVM kullanabilirsiniz.
 
 Daha fazla depolama alanına ihtiyacınız varsa, ek diskler oluşturabilir ve bunları DSVM'nize ekleyebilirsiniz. Diskler kalıcı Azure depolama sını kullanır, bu nedenle sunucu yeniden boyutlandırma nedeniyle yeniden sağlanmış veya kapatılmış olsa bile verileri korunur. Bir disk eklemek ve DSVM'nize eklemek [için, Linux VM'ye disk ekle'deki](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)adımları tamamlayın. Disk ekleme adımları, DSVM'de zaten yüklü olan Azure CLI'yi kullanır. Adımları DSVM'nin kendisinden tamamen tamamlayabilirsiniz. Depolamayı artırmak için başka bir seçenek de [Azure Dosyaları'nı](../../storage/files/storage-how-to-use-files-linux.md)kullanmaktır.
 

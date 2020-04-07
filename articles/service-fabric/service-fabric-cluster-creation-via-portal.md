@@ -3,17 +3,17 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure portalını ve Azure Anahtar Kasası'nı kullanarak Azure'da güvenli bir Hizmet Dokusu kümesini nasıl ayarlayamanızı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: 0f384da75f09390e9b0988722b974e7e16d13e63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258804"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754096"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure portalını kullanarak Azure'da Hizmet Dokusu kümesi oluşturma
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalında](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
 > 
 > 
 
@@ -36,13 +36,13 @@ Sertifikalar, Service Fabric’te bir küme ile uygulamalarının çeşitli yön
 Bu sertifika, bir kümenin güvenliğini sağlamak ve kümeye yetkisiz erişimi önlemek için gereklidir. Küme güvenliğini birkaç şekilde sağlar:
 
 * **Küme kimlik doğrulaması:** Küme federasyonu için düğümden düğüme iletişimi doğrular. Kümeye yalnızca bu sertifikayla kimliklerini kanıtlayabilen düğümler katılabilir.
-* **Sunucu kimlik doğrulaması:** Küme yönetiminin uç noktalarını bir yönetim istemcisine doğrular, böylece yönetim istemcisi gerçek kümeyle konuştuğunu bilir. Bu sertifika ayrıca HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için SSL sağlar.
+* **Sunucu kimlik doğrulaması:** Küme yönetiminin uç noktalarını bir yönetim istemcisine doğrular, böylece yönetim istemcisi gerçek kümeyle konuştuğunu bilir. Bu sertifika aynı zamanda HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için TLS sağlar.
 
 Bu amaçlara hizmet etmek için sertifikanın aşağıdaki gereksinimleri karşılaması gerekir:
 
 * Sertifika özel bir anahtar içermelidir.
 * Sertifika anahtar değişimi için oluşturulmalıdır, Kişisel Bilgi Alışverişi (.pfx) dosyasına ihraç edilebilir.
-* Sertifikanın özne adı, Hizmet Kumaşı kümesine erişmek için kullanılan **etki alanıyla eşleşmelidir.** Bu kümenin HTTPS yönetim bitiş noktaları ve Hizmet Kumaş Explorer için SSL sağlamak için gereklidir. `.cloudapp.azure.com` Etki alanı için bir sertifika yetkilisinden (CA) SSL sertifikası alamazsınız. Kümeniz için özel bir etki alanı adı edinin. CA'dan sertifika istediğinizde, sertifikanın özne adı kümeniz için kullanılan özel alan adıyla eşleşmelidir.
+* Sertifikanın özne adı, Hizmet Kumaşı kümesine erişmek için kullanılan **etki alanıyla eşleşmelidir.** Bu kümenin HTTPS yönetim bitiş noktaları ve Hizmet Kumaş Explorer için TLS sağlamak için gereklidir. `.cloudapp.azure.com` Etki alanı için bir sertifika yetkilisinden (CA) TLS/SSL sertifikası alamazsınız. Kümeniz için özel bir etki alanı adı edinin. CA'dan sertifika istediğinizde, sertifikanın özne adı kümeniz için kullanılan özel alan adıyla eşleşmelidir.
 
 #### <a name="client-authentication-certificates"></a>İstemci kimlik doğrulama sertifikaları
 Ek istemci sertifikaları küme yönetimi görevleri için yöneticilerin kimlik doğruluğunu sağlar. Service Fabric'in iki erişim düzeyi vardır: **yönetici** ve **salt okunur kullanıcı.** En azından, yönetim erişimi için tek bir sertifika kullanılmalıdır. Ek kullanıcı düzeyinde erişim için ayrı bir sertifika sağlanmalıdır. Erişim rolleri hakkında daha fazla bilgi için [Service Fabric istemcileri için rol tabanlı erişim denetimine][service-fabric-cluster-security-roles]bakın.

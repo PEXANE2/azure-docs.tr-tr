@@ -5,16 +5,19 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b7a3374e8b1bb5c7624f41c994f7f9a6135506c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24d62ac04cd70832e7c092b903b6936836a866e9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278527"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80745620"
 ---
 # <a name="consulting-service-prerequisites"></a>Danışmanlık hizmeti ön koşulları
+
+>[!Important]
+>30 Mart 2020'den itibaren Danışmanlık hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
 
 Azure Marketi ve [AppSource için Danışmanlık Hizmetleri'nde](../../consulting-services.md)bu teklif türünün açıklamasını ve gereksinimlerini gözden geçirin.  Aşağıdaki özel danışmanlık hizmet türleri ek gereksinimlere sahiptir:
 

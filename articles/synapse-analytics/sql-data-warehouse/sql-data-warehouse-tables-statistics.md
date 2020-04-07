@@ -11,12 +11,12 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 5fae2bba0acc4ab462c91f7272694d032fc6ceaa
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80628645"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742670"
 ---
 # <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL havuzunda tablo istatistikleri
 
@@ -70,9 +70,9 @@ Bu ifadeler istatistiklerin otomatik oluşturulmasını tetikler:
 Ölçülebilir performans bozulmasını önlemek için, sistem profil oluşturmadan önce kıyaslama iş yükünü çalıştırarak önce istatistiklerin oluşturulduğundan emin olmalısınız.
 
 > [!NOTE]
-> İstatistiklerin oluşturulması farklı bir kullanıcı bağlamında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) günlüğe kaydedilir.
+> İstatistiklerin oluşturulması farklı bir kullanıcı bağlamında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) günlüğe kaydedilir.
 
-Otomatik istatistikler oluşturulduğunda, onlar formu alır: _hex_>_ 8 haneli sütun id<WA_Sys> 8 haneli tablo id<. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?view=azure-sqldw-latest) komutunu çalıştırarak zaten oluşturulmuş istatistikleri görüntüleyebilirsiniz:
+Otomatik istatistikler oluşturulduğunda, onlar formu alır: _hex_>_ 8 haneli sütun id<WA_Sys> 8 haneli tablo id<. [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu çalıştırarak zaten oluşturulmuş istatistikleri görüntüleyebilirsiniz:
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
@@ -142,7 +142,7 @@ Tersine, müşteri tablosundaki cinsiyet sütunundaki istatistiklerin hiçbir za
 
 SQL havuzunuz yalnızca bir cinsiyet içeriyorsa ve birden çok cinsiyette yeni bir gereksinim sonuç alıyorsa, cinsiyet sütunundaki istatistikleri güncelleştirmeniz gerekir.
 
-Daha fazla bilgi için [İstatistikler](/sql/relational-databases/statistics/statistics)için genel kılavuza bakın.
+Daha fazla bilgi için [İstatistikler](/sql/relational-databases/statistics/statistics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)için genel kılavuza bakın.
 
 ## <a name="implementing-statistics-management"></a>İstatistik yönetiminin uygulanması
 
@@ -158,7 +158,7 @@ Yükleme işlemi sırasında istatistiklerinizi güncelleştirmek için aşağı
 - Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi düşünün.
 - Unutmayın, her istatistik nesnesi sırayla güncelleştirilir. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için, uygulama her zaman ideal değildir.
 
-Daha fazla bilgi için [Kardinallik Tahmini'ne](/sql/relational-databases/performance/cardinality-estimation-sql-server)bakın.
+Daha fazla bilgi için [Kardinallik Tahmini'ne](/sql/relational-databases/performance/cardinality-estimation-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
 
 ## <a name="examples-create-statistics"></a>Örnekler: İstatistik oluşturma
 
@@ -227,7 +227,7 @@ Seçenekleri bir araya da getirebilirsiniz. Aşağıdaki örnek, özel bir örne
 CREATE STATISTICS stats_col1 ON table1 (col1) WHERE col1 > '2000101' AND col1 < '20001231' WITH SAMPLE = 50 PERCENT;
 ```
 
-Tam başvuru için, CREATE [STATISTICS'a](/sql/t-sql/statements/create-statistics-transact-sql)bakın.
+Tam başvuru için, CREATE [STATISTICS'a](/sql/t-sql/statements/create-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
 
 ### <a name="create-multi-column-statistics"></a>Çok sütunlu istatistikler oluşturma
 
@@ -420,7 +420,7 @@ UPDATE İstATİstİkler deyiminin kullanımı kolaydır. Yalnızca, masadaki *t�
 
 Yordamın `UPDATE STATISTICS` uygulanması için [Geçici Tablolar'a](sql-data-warehouse-tables-temporary.md)bakın. Uygulama yöntemi önceki `CREATE STATISTICS` yordamdan biraz farklıdır, ancak sonuç aynıdır.
 
-Sözdiziminin tamamı için [Istatistikleri Güncelleştir'e](/sql/t-sql/statements/update-statistics-transact-sql)bakın.
+Sözdiziminin tamamı için [Istatistikleri Güncelleştir'e](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın.
 
 ## <a name="statistics-metadata"></a>İstatistikler meta verileri
 
@@ -432,13 +432,13 @@ Bu sistem görünümleri istatistikler hakkında bilgi sağlar:
 
 | Katalog görünümü | Açıklama |
 |:--- |:--- |
-| [Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql) |Her sütun için bir satır. |
-| [Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Veritabanındaki her nesne için bir satır. |
-| [sys.şemalar](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql) |Veritabanındaki her şema için bir satır. |
-| [Stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql) |Her istatistik nesnesi için bir satır. |
-| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql) |İstatistik nesnesindeki her sütun için bir satır. Sys.columns'a geri bağlantılar. |
-| [Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql) |Her tablo için bir satır (dış tabloları içerir). |
-| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql) |Her veri türü için bir satır. |
+| [Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her sütun için bir satır. |
+| [Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her nesne için bir satır. |
+| [sys.şemalar](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Veritabanındaki her şema için bir satır. |
+| [Stats](/sql/relational-databases/system-catalog-views/sys-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her istatistik nesnesi için bir satır. |
+| [sys.stats_columns](/sql/relational-databases/system-catalog-views/sys-stats-columns-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesindeki her sütun için bir satır. Sys.columns'a geri bağlantılar. |
+| [Tables](/sql/relational-databases/system-catalog-views/sys-tables-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her tablo için bir satır (dış tabloları içerir). |
+| [sys.table_types](/sql/relational-databases/system-catalog-views/sys-table-types-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |Her veri türü için bir satır. |
 
 ### <a name="system-functions-for-statistics"></a>İstatistikler için sistem fonksiyonları
 
@@ -446,8 +446,8 @@ Bu sistem işlevleri istatistiklerle çalışmak için yararlıdır:
 
 | Sistem fonksiyonu | Açıklama |
 |:--- |:--- |
-| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql) |İstatistik nesnesinin en son güncelleştirilen tarih. |
-| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql) |İstatistik nesnesi tarafından anlaşıldığı gibi değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgi. |
+| [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesinin en son güncelleştirilen tarih. |
+| [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) |İstatistik nesnesi tarafından anlaşıldığı gibi değerlerin dağılımı hakkında özet düzeyi ve ayrıntılı bilgi. |
 
 ### <a name="combine-statistics-columns-and-functions-into-one-view"></a>İstatistik sütunlarını ve işlevlerini tek bir görünümde birleştirme
 

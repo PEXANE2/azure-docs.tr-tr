@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c2717b1f29af39c6fdc4602b11acba131d959f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534397"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756285"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Azure Web Uygulaması için Özel Uç Noktaları Kullanma (Önizleme)
 
@@ -25,7 +25,7 @@ Azure Web Uygulamanız için Özel Bitiş Noktası'nı kullanarak özel ağını
 
 Web Uygulamanız için Özel Bitiş Noktası'nı kullanmak şunları yapmanızı sağlar:
 
-- Hizmet Bitiş Noktası'nı yapılandırarak ve herkese açık açığa çıkanları ortadan kaldırarak Web Uygulamanızı güvence altına alanın.
+- Özel Bitiş Noktası'nı yapılandırarak ve herkese açık açığa çıkanları ortadan kaldırarak Web Uygulamanızı güvence altına alanın.
 - VPN veya ExpressRoute özel eşleme kullanarak VNet'e bağlanan şirket içi ağlardan Web App'e güvenli bir şekilde bağlanın.
 
 VNet'inizle Web Uygulamanız arasında güvenli bir bağlantıya ihtiyacınız varsa, Hizmet Bitiş Noktası en basit çözümdür. Web uygulamasına şirket içinde azure ağ geçidi, bölgesel olarak bakıldığında bir VNet veya küresel olarak bakıldığında bir VNet aracılığıyla da ulaşmanız gerekiyorsa, çözüm Private Endpoint'tir.  

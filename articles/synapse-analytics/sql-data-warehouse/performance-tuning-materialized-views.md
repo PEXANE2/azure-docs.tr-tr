@@ -11,12 +11,12 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28dbe66d27ac75bee2ceecd160ead3dea6538034
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633824"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743180"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
@@ -32,7 +32,7 @@ Standart görünüm, görünüm her kullanıldığında verilerini bilgilenir.  
 
 Somutlaştırılmış görünüm, verilerini bir tablo gibi SQL havuzunda önceden hesaplar, depolar ve korur.  Somutlaştırılmış görünüm kullanıldığında her seferinde yeniden hesaplama gerekmez.  Bu nedenle, verilerin tamamını veya alt kümesini maddeleştirilmiş görünümlerde kullanan sorgular daha hızlı performans elde edebilir.  Daha da iyisi, sorgular doğrudan başvuru yapmadan somutlaştırılmış bir görünüm kullanabilir, bu nedenle uygulama kodunu değiştirmeye gerek yoktur.  
 
-Standart görünümdeki gereksinimlerin çoğu yine de maddeleştirilmiş görünüm için geçerlidir. Maddeleştirilmiş görünüm sözdizimi ve diğer gereksinimler hakkında ayrıntılı bilgi için SELECT [olarak MATERYALIZE GÖRÜNÜM OLUŞTUR'a](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)bakın.
+Standart görünümdeki gereksinimlerin çoğu yine de maddeleştirilmiş görünüm için geçerlidir. Somutlaştırılmış görünüm sözdizimi ve diğer gereksinimler hakkında ayrıntılı bilgi için SELECT [olarak CREATE MATERIALIZED VIEW](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 'a bakın
 
 | Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
@@ -58,8 +58,8 @@ SQL havuzunda uygulanan somutlaştırılmış görünümler de aşağıdaki ek a
 Diğer veri ambarı sağlayıcılarıyla karşılaştırıldığında, Azure SQL Veri Ambarı'nda uygulanan somutlaştırılmış görünümler de aşağıdaki ek avantajlar sağlar:
 
 - Temel tablolardaki veri değişiklikleriyle otomatik ve eşzamanlı veri yenileme. Kullanıcı eylemi gerekmez.
-- Geniş toplam işlev desteği. Bkz. [SELECT (Transact-SQL) olarak MATERYALIZE GÖRÜNÜM OLUŞTUR.](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)
-- Sorguya özgü maddeleştirilmiş görünüm önerisi desteği.  Bkz. [AÇIKLAMA (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/explain-transact-sql?view=azure-sqldw-latest).
+- Geniş toplam işlev desteği. Bkz. [SELECT (Transact-SQL) olarak MATERYALIZE GÖRÜNÜM OLUŞTUR.](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- Sorguya özgü maddeleştirilmiş görünüm önerisi desteği.  Bkz. [AÇIKLAMA (Transact-SQL)](/sql/t-sql/queries/explain-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="common-scenarios"></a>Genel senaryolar  
 

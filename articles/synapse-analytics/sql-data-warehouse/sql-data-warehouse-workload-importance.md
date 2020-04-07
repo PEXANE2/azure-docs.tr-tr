@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 43ee14784b6049e9b5c1a78e733e72bbc45f915d
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632450"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744048"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics iş yükü önemi
 
@@ -38,7 +38,7 @@ Satış ve hava durumu verileriyle yukarıda açıklanan temel önem senaryosunu
 
 ### <a name="locking"></a>Kilitleme
 
-Okuma ve yazma etkinliği için kilitlere erişim doğal çekişme bir alandır. [Bölüm değiştirme](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) veya [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  Azure Synapse'deki Synapse SQL havuzu, iş yükü açısından önem kaybetmeden, iş ortası için en iyi duruma getirilir. İş kaynağı için optimizasyon, çalışan ve sıraya giren istekler aynı kilitleme gereksinimlerine sahipken ve kaynaklar kullanılabilirken, sıralanmış isteklerin istek kuyruğuna daha önce gelen daha yüksek kilitleme gereksinimleriolan istekleri atlayabileceği anlamına gelir. Daha yüksek kilitleme gereksinimleri olan isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce yürütülecektir.
+Okuma ve yazma etkinliği için kilitlere erişim doğal çekişme bir alandır. [Bölüm değiştirme](sql-data-warehouse-tables-partition.md) veya [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  Azure Synapse'deki Synapse SQL havuzu, iş yükü açısından önem kaybetmeden, iş ortası için en iyi duruma getirilir. İş kaynağı için optimizasyon, çalışan ve sıraya giren istekler aynı kilitleme gereksinimlerine sahipken ve kaynaklar kullanılabilirken, sıralanmış isteklerin istek kuyruğuna daha önce gelen daha yüksek kilitleme gereksinimleriolan istekleri atlayabileceği anlamına gelir. Daha yüksek kilitleme gereksinimleri olan isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce yürütülecektir.
 
 Aşağıdaki örneği inceleyin:
 
@@ -62,8 +62,8 @@ Q5 mediumrc olduğundan, iki eşzamanlılık yuvası gerektirir. Q5'in çalışa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Sınıflandırıcı oluşturma hakkında daha fazla bilgi için [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)'ye bakın.  
+- Sınıflandırıcı oluşturma hakkında daha fazla bilgi için [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)'ye bakın.  
 - İş yükü sınıflandırması hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-classification.md)  
 - İş yükü [sınıflandırıcısı](quickstart-create-a-workload-classifier-tsql.md) oluşturmak için Hızlı Başlangıç Oluşturma iş yükü sınıflandırıcısına bakın.
 - [İş Yükü Önemini Yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve İş Yükü Yönetimini Nasıl [Yönetecek ve İzleyecek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)makalelere bakın.
-- Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) bakın.
+- Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.

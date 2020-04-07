@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 2/24/2020
 ms.subservice: alerts
-ms.openlocfilehash: fe1f1d2700619bfcac4512bb0e631262edf8401c
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398091"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677005"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -563,7 +563,7 @@ az group deployment create \
 
 ## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Birden çok ölçüt izleyen statik eşik metrik uyarısı şablonu
 
-Yeni metrik uyarılar, çok boyutlu ölçümler konusunda uyarının yanı sıra birden çok ölçütleri desteklemeyi de destekler. Boyutsal ölçümler üzerinde daha gelişmiş bir metrik uyarı kuralı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
+Yeni metrik uyarılar, çok boyutlu ölçümler konusunda uyarının yanı sıra birden çok ölçüt (uyarı kuralı başına en fazla 5 criterions) tanımlamayı destekler. Boyutsal ölçümler üzerinde daha gelişmiş bir metrik uyarı kuralı oluşturmak ve birden çok ölçüt belirtmek için aşağıdaki şablonu kullanabilirsiniz.
 
 Boyutları birden çok ölçüt içeren bir uyarı kuralında kullanırken lütfen aşağıdaki kısıtlamalara dikkat edin:
 - Her ölçüt içinde boyut başına yalnızca bir değer seçebilirsiniz.

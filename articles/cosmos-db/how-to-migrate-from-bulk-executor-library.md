@@ -4,14 +4,14 @@ description: Azure Cosmos DB SDK V3'teki toplu yürütme kitaplığını kullana
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/06/2020
 ms.author: maquaran
-ms.openlocfilehash: e1a2a5d849d3c94d62b8645c41f288ba130aa6a4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479337"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755980"
 ---
 # <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK'daki toplu yürütme kitaplığından toplu desteğe geçiş
 
@@ -73,6 +73,15 @@ Görev listesi tanımlandıktan sonra, hepsi tamamlanana kadar bekleyin. Toplu i
 1. Başarılı operasyonların sayısı.
 1. Tüketilen istek birimlerinin toplamı.
 1. Hata lar varsa, günlüğe kaydetme ve tanımlama amacıyla özel durum ve ilişkili öğeyi içeren bir tuples listesini görüntüler.
+
+## <a name="retry-configuration"></a>Yapılandırmayı yeniden deneyin
+
+Toplu yürütücü kitaplığı, denetimi kitaplıka devretmek `0` için RetryOptions'ı `MaxRetryWaitTimeInSeconds` `MaxRetryAttemptsOnThrottledRequests` ve [RetryOptions'ı](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) ayarlamak için belirtilen [kılavuza](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) sahipti.
+
+.NET SDK'da toplu destek için gizli bir davranış yoktur. Yeniden deneme seçeneklerini doğrudan [CosmosClientOptions.MaxRetryDenemeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) ve [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)üzerinden yapılandırabilirsiniz.
+
+> [!NOTE]
+> Sağlanan istek birimlerinin veri miktarına bağlı olarak beklenenden çok daha düşük olduğu durumlarda, bunları yüksek değerlere ayarlamayı düşünebilirsiniz. Toplu işlem daha uzun sürer, ancak daha yüksek yeniden denemeler nedeniyle tamamen başarılı olma şansı daha yüksektir.
 
 ## <a name="performance-improvements"></a>Performans iyileştirmeleri
 

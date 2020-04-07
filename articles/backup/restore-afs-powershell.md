@@ -3,21 +3,24 @@ title: PowerShell ile Azure Dosyalarını Geri Yükleme
 description: Bu makalede, Azure Yedekleme hizmetini ve PowerShell'i kullanarak Azure Dosyalarını nasıl geri yükleyin öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 99aeaa6173bb5336e6e1719a9fc0df0c668374e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12bff49bc249b23542534d218b13b517411f461b
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086831"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756199"
 ---
 # <a name="restore-azure-files-with-powershell"></a>PowerShell ile Azure Dosyalarını Geri Yükleme
 
-Bu makalede, Azure Powershell kullanarak [Azure Yedekleme](backup-overview.md) hizmeti tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yüklenir.
+Bu makalede, Azure PowerShell kullanarak [Azure Yedekleme](backup-overview.md) hizmeti tarafından oluşturulan bir geri yükleme noktasından tüm dosya paylaşımının veya belirli dosyaların nasıl geri yüklenir.
 
 Tüm dosya paylaşımını veya paylaşımla ilgili belirli dosyaları geri yükleyebilirsiniz. Özgün konuma veya başka bir konuma geri yükleyebilirsiniz.
 
 > [!WARNING]
-> PS sürümünün AFS yedeklemeleri için 'Az.RecoveryServices 2.6.0' için minimum sürüme yükseltildiklerinden emin olun. Daha fazla ayrıntı için, bu değişikliğin gereksinimini özetleyen [bölüme](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) bakın.
+> PS sürümünün AFS yedeklemeleri için 'Az.RecoveryServices 2.6.0' için minimum sürüme yükseltildiklerinden emin olun. Daha fazla bilgi için, bu değişikliğin gereksinimini özetleyen [bölüme](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) bakın.
+
+>[!NOTE]
+>Azure Yedekleme artık PowerShell kullanarak birden çok dosya veya klasörü özgün veya alternatif Konuma geri eklemeyi destekler. Nasıl yapılacağını öğrenmek için belgenin [bu bölümüne](#restore-multiple-files-or-folders-to-original-or-alternate-location) bakın.
 
 ## <a name="fetch-recovery-points"></a>Kurtarma noktalarını getir
 
@@ -102,17 +105,67 @@ Bu komut, önceki bölümde gösterildiği gibi izlenecek kimliği olan bir işi
 
 Özgün bir konuma geri yüklediğinizde, hedef ve hedefle ilgili parametreleri belirtmeniz gerekmez. Yalnızca **ÇözümÇakış** sağlanmalıdır.
 
-#### <a name="overwrite-an-azure-file-share"></a>Azure dosya paylaşımının üzerine yazma
+### <a name="overwrite-an-azure-file-share"></a>Azure dosya paylaşımının üzerine yazma
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Azure dosyasının üzerine yazma
+### <a name="overwrite-an-azure-file"></a>Azure dosyasının üzerine yazma
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
+
+## <a name="restore-multiple-files-or-folders-to-original-or-alternate-location"></a>Birden çok dosya veya klasörü özgün veya alternatif konuma geri yükleme
+
+**MultipleSourceFilePath** parametresi için bir değer olarak geri yüklemek istediğiniz tüm dosya veya klasörlerin yolunu geçerek [Geri Yükleme-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) komutunu kullanın.
+
+### <a name="restore-multiple-files"></a>Birden çok dosyayı geri yükleme
+
+Aşağıdaki komut dosyasında, *FileSharePage.png* ve *MyTestFile.txt* dosyalarını geri yüklemeye çalışıyoruz.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("FileSharePage.png", "MyTestFile.txt")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType File -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+### <a name="restore-multiple-directories"></a>Birden çok dizin geri yükleme
+
+Aşağıdaki komut dosyasında, *zrs1_restore* ve Geri *Yükleme* dizinlerini geri yüklemeye çalışıyoruz.
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "azurefiles" -Name "azurefilesvault"
+
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureStorage -Status Registered -FriendlyName "afsaccount" -VaultId $vault.ID
+
+$BackupItem = Get-AzRecoveryServicesBackupItem -Container $Container -WorkloadType AzureFiles -VaultId $vault.ID -FriendlyName "azurefiles"
+
+$RP = Get-AzRecoveryServicesBackupRecoveryPoint -Item $BackupItem -VaultId $vault.ID
+
+$files = ("Restore","zrs1_restore")
+
+Restore-AzRecoveryServicesBackupItem -RecoveryPoint $RP[0] -MultipleSourceFilePath $files -SourceFileType Directory -ResolveConflict Overwrite -VaultId $vault.ID -VaultLocation $vault.Location
+```
+
+Çıktı şununla benzerlik gösterecektir:
+
+```output
+WorkloadName         Operation         Status          StartTime                EndTime       JobID
+------------         ---------         ------          ---------                -------       -----
+azurefiles           Restore           InProgress      4/5/2020 8:01:24 AM                    cd36abc3-0242-44b1-9964-0a9102b74d57
+```
+
+Birden çok dosya veya klasörü alternatif konuma geri yüklemek istiyorsanız, yukarıda [azure dosyasını alternatif bir konuma geri yükleme'de](#restore-an-azure-file-to-an-alternate-location)açıklandığı gibi, hedef konumla ilgili parametre değerlerini belirterek yukarıdaki komut dosyalarını kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

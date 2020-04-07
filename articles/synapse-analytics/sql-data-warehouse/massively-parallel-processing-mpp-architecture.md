@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631946"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80744206"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (eski adıyla SQL DW) mimarisi
 
@@ -66,7 +66,7 @@ Kontrol düğümü mimarinin beynidir. Tüm uygulamalarla ve bağlantılarla etk
 
 İşlem düğümleri, hesaplama gücü sağlar. Dağıtımlar işleme için bilgi işlem düğümleri için eşleme. Daha fazla işlem kaynağı için ödeme yaptığınızda, dağıtımlar kullanılabilir İşlem düğümlerine yeniden eşlenir. İşlem düğümlerinin sayısı 1 ile 60 arasında değişir ve Synapse SQL için hizmet düzeyine göre belirlenir.
 
-Her İşlem düğümünde sistem görünümlerinde görünen bir düğüm kimliği vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerinde node_id sütununa bakarak İşlem düğümü kimliğini görebilirsiniz. Bu sistem görünümlerinin bir listesi için [MPP sistem görünümlerini görün.](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7)
+Her İşlem düğümünde sistem görünümlerinde görünen bir düğüm kimliği vardır. Adları sys.pdw_nodes ile başlayan sistem görünümlerinde node_id sütununa bakarak İşlem düğümü kimliğini görebilirsiniz. Bu sistem görünümlerinin bir listesi için [MPP sistem görünümlerini görün.](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ### <a name="data-movement-service"></a>Veri Taşıma Hizmeti
 

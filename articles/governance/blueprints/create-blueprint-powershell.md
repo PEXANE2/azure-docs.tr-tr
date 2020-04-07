@@ -3,12 +3,12 @@ title: 'Quickstart: PowerShell ile bir plan oluşturun'
 description: Bu hızlı başlangıçta, PowerShell'i kullanarak yapı oluşturmak, tanımlamak ve dağıtmak için Azure Planları'nı kullanırsınız.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75436630"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676576"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: PowerShell ile Azure Blueprint tanımlayın ve Atayın
 
@@ -377,7 +377,7 @@ PowerShell kullanılarak bir plan yayımlandıktan sonra, bir aboneye atayılabi
      **Kullanıcı tarafından atanan yönetilen kimlik,** planı atadığı kullanıcının izinleri olan herhangi bir abonelik ve kaynak grubunda olabilir.
 
      > [!IMPORTANT]
-     > Planlar, kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rolleri ve izinleri atamaktan sorumludur veya plan ataması başarısız olur.
+     > Azure Blueprints, kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rolleri ve izinleri atamaktan sorumludur veya plan ataması başarısız olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

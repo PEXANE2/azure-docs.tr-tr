@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 86cc081ef47eb2ac2e8e0a49bc79e8973f34baf1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633701"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743272"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak sınıflarıyla iş yükü yönetimi
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Kaynak sınıfları, kullanıcıları veritabanı rollerine atayarak uygulanır. Bir kullanıcı bir sorgu çalıştırdığında, sorgu kullanıcının kaynak sınıfıyla çalışır. Örneğin, bir kullanıcı staticrc10 veritabanı rolünün bir üyesiyse, sorguları az miktarda bellekle çalışır. Bir veritabanı kullanıcısı xbiggerc veya staticrc80 veritabanı rollerinin bir üyesiyse, sorguları büyük miktarda bellekle çalışır.
 
-Bir kullanıcının kaynak sınıfını artırmak için, kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne eklemek için [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) kullanın.  Aşağıdaki kod, daha büyük veritabanı rolüne bir kullanıcı ekler.  Her istek sistem belleği% 22 alır.
+Bir kullanıcının kaynak sınıfını artırmak için, kullanıcıyı büyük bir kaynak sınıfının veritabanı rolüne eklemek için [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanın.  Aşağıdaki kod, daha büyük veritabanı rolüne bir kullanıcı ekler.  Her istek sistem belleği% 22 alır.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Kaynak sınıfını azaltmak için [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)kullanın.  'Loaduser' bir üye veya başka bir kaynak sınıfları değilse, varsayılan smallrc kaynak sınıfına %3 bellek hibesi ile girerler.  
+Kaynak sınıfını azaltmak için [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanın.  'Loaduser' bir üye veya başka bir kaynak sınıfları değilse, varsayılan smallrc kaynak sınıfına %3 bellek hibesi ile girerler.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

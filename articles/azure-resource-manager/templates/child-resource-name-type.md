@@ -3,18 +3,18 @@ title: Şablonlarda alt kaynaklar
 description: Azure Kaynak Yöneticisi şablonunda alt kaynaklar için ad ve yazının nasıl ayarlanır olduğunu açıklar.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 6de2b476fe19a057a62e4a54963dd8fde0d11579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207902"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743846"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür belirleme
 
 Alt kaynaklar yalnızca başka bir kaynak bağlamında var olan kaynaklardır. Örneğin, [sanal makine uzantısı](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) sanal bir [makine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)olmadan var olamaz. Uzantı kaynağı sanal makinenin bir alt alanıdır.
 
-Kaynak Yemliği şablonunda, alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnekte, üst kaynağın kaynak özelliği içinde yer alan alt kaynak gösterilmektedir.
+Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnekte, üst kaynağın kaynak özelliği içinde yer alan alt kaynak gösterilmektedir.
 
 ```json
 "resources": [

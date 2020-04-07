@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437484"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80756575"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik
 
@@ -134,7 +134,15 @@ Daha fazla bilgi için, [sanal ağda denemeleri ve çıkarımları nasıl çalı
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
 
 > [!IMPORTANT]
-> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamanızı öneririz. Bu, Microsoft'un tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarda ek şifreleme sağlar.
+> Çalışma alanınız hassas veriler içeriyorsa, çalışma alanınızı oluştururken [hbi_workspace bayrağını](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) ayarlamanızı öneririz. 
+
+Bayrak, Microsoft'un `hbi_workspace` tanılama amacıyla topladığı veri miktarını denetler ve Microsoft yönetilen ortamlarda ek şifreleme sağlar. Buna ek olarak aşağıdakileri sağlar:
+
+* Amlcompute kümenizdeki yerel karalama diskini şifrelemeye başlar, bu abonelikte daha önce herhangi bir küme oluşturmamış sanız. Aksi takdirde, işlem kümelerinizin kazı kazan diskinin şifresini etkinleştirmek için bir destek bileti yükseltmeniz gerekir 
+* Yerel karalama diskinizi çalıştırmalar arasında temizler
+* Depolama hesabınız, konteyner kayıt defteriniz ve SSH hesabınız için kimlik bilgilerini yürütme katmanından anahtar kasanızı kullanarak işlem kümelerinize güvenli bir şekilde geçirir
+* Temel toplu iş havuzlarının AzureMachineLearningService dışındaki harici hizmetler tarafından çağrılmamasını sağlamak için IP filtreleme sağlar
+
 
 Azure'da şifrelemenin nasıl çalıştığı hakkında daha fazla bilgi için Azure [veri şifrelemesi'ne bakın.](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
 

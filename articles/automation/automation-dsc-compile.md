@@ -3,14 +3,14 @@ title: Azure Otomasyon Durumu Yapılandırmasında yapılandırmaları derleme
 description: Bu makalede, Azure Otomasyonu için İstenilen Durum Yapılandırması (DSC) yapılandırmalarının nasıl derlenedeğiştirilen olduğu açıklanmaktadır.
 services: automation
 ms.subservice: dsc
-ms.date: 09/10/2018
+ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48593920bdfcf743fceaeaeec891c0d5c4f2e108
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b366777cce4dd4212a2e3ec0cdcd180e0d7164f4
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80057626"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80757180"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -27,7 +27,7 @@ Azure Otomasyon Durumu Yapılandırmasında İstenilen Durum Yapılandırması (
   - Ölçekte düğüm ve düğüm olmayan verilerle çalışma
   - Önemli performans artışı
 
-Derleme ayrıntıları için Azure [Kaynak Yöneticisi şablonları ile İstenilen Durum Yapılandırması uzantısına](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)bakın.
+Yapılandırmaları Azure VM'lerinize itmek için Azure İstenen Durum Yapılandırması (DSC) uzantılı Azure Kaynak Yöneticisi şablonlarını da kullanabilirsiniz. Azure DSC uzantısı, Azure VM'lerde çalışan DSC yapılandırmalarını sunmak, yürürlüğe koymak ve raporlamak için Azure VM Aracısı çerçevesini kullanır. Azure Kaynak Yöneticisi şablonlarını kullanarak derleme ayrıntıları için, [Azure Kaynak Yöneticisi şablonları ile İstenilen Durum Yapılandırma uzantısına](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template#details)bakın. 
 
 ## <a name="compiling-a-dsc-configuration-in-azure-state-configuration"></a>Azure Durum Yapılandırmasında DSC yapılandırması derleme
 

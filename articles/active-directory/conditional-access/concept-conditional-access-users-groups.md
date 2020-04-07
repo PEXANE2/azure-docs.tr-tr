@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43ae866959dd2112bacbb6b56e5683e7b3b851a0
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631906"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80755277"
 ---
 # <a name="conditional-access-users-and-groups"></a>Koşullu Erişim: Kullanıcılar ve gruplar
 
@@ -35,9 +35,9 @@ Koşullu Erişim ilkesi oluşturulurken aşağıdaki seçenekleri içerecek şek
 - Tüm kullanıcılar
    - B2B konukları da dahil olmak üzere dizinde bulunan tüm kullanıcılar.
 - Kullanıcıları ve grupları seçme
-   - Tüm konuk ve harici kullanıcılar (önizleme)
+   - Tüm konuk ve dış kullanıcılar
       - Bu seçim, b2B `user type` `guest`konukları ve dış kullanıcıları içerir. Bu seçim, Bulut Çözüm Sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm harici kullanıcı için de geçerlidir. 
-   - Dizin rolleri (önizleme)
+   - Dizin rolleri
       - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure REKLAM dizini rollerini seçmelerine olanak tanır. Örneğin, kuruluşlar genel yönetici rolü atanan kullanıcılar üzerinde daha kısıtlayıcı bir ilke oluşturabilir.
    - Kullanıcılar ve gruplar
       - Belirli kullanıcı kümelerinin hedeflenemesine izin verir. Örneğin, bir İk uygulaması bulut uygulaması olarak seçildiğinde kuruluşlar İk departmanının tüm üyelerini içeren bir grup seçebilir. Grup, dinamik veya atanmış güvenlik ve dağıtım grupları da dahil olmak üzere Azure AD'deki herhangi bir grup türü olabilir.
@@ -51,9 +51,9 @@ Kuruluşlar bir kullanıcıyı veya grubu hem dahil ettihem de dışladığında
 
 Koşullu Erişim ilkesi oluşturulurken aşağıdaki seçenekleri hariç tutmak için kullanılabilir.
 
-- Tüm konuk ve harici kullanıcılar (önizleme)
+- Tüm konuk ve dış kullanıcılar
    - Bu seçim, b2B `user type` `guest`konukları ve dış kullanıcıları içerir. Bu seçim, Bulut Çözüm Sağlayıcısı (CSP) gibi farklı bir kuruluştan oturum açmış tüm harici kullanıcı için de geçerlidir. 
-- Dizin rolleri (önizleme)
+- Dizin rolleri
    - Yöneticilerin atamayı belirlemek için kullanılan belirli Azure REKLAM dizini rollerini seçmelerine olanak tanır. Örneğin, kuruluşlar genel yönetici rolü atanan kullanıcılar üzerinde daha kısıtlayıcı bir ilke oluşturabilir.
 - Kullanıcılar ve gruplar
    - Belirli kullanıcı kümelerinin hedeflenemesine izin verir. Örneğin, bir İk uygulaması bulut uygulaması olarak seçildiğinde kuruluşlar İk departmanının tüm üyelerini içeren bir grup seçebilir. Grup, dinamik veya atanmış güvenlik ve dağıtım grupları da dahil olmak üzere Azure AD'deki herhangi bir grup türü olabilir.

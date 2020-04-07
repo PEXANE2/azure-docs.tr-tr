@@ -4,12 +4,12 @@ description: Azure Hizmet Kumaşı kümesinin güvenlik senaryoları ve bunları
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 92d2c4d03075eaafce039f94b4f03c0791985b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258687"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80753802"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Hizmet Kumaş küme güvenlik senaryoları
 
@@ -74,7 +74,7 @@ Azure'da çalışan kümeler için, Azure Etkin Dizini (Azure AD) kullanarak yö
 Azure'da barındırılan ortak bir ağda dağıtılan Hizmet Kumaşı kümeleri için istemciden düğüme karşılıklı kimlik doğrulaması için öneri şudur:
 
 * İstemci kimliği için Azure Etkin Dizini'ni kullanma
-* Sunucu kimliği ve http iletişim SSL şifreleme için bir sertifika
+* Sunucu kimliği ve TLS şifreleme için bir sertifika http iletişim
 
 Azure'da barındırılan ortak bir ağda dağıtılan Hizmet Kumaşı kümeleri için düğümden düğüme güvenlik önerisi, düğümlerin kimliğini doğrulamak için bir Küme sertifikası kullanmaktır.
 
@@ -103,13 +103,13 @@ Göz önünde bulundurulması gereken bazı önemli şeyler:
 
 Bu sertifikalar (bir birincil ve isteğe bağlı olarak ikincil) bir kümeyi güvenli ve yetkisiz erişimi önlemek için gereklidir. Bu sertifikalar küme ve sunucu kimlik doğrulaması sağlar.
 
-Küme kimlik doğrulaması küme federasyonu için düğümden düğüme iletişimi doğrular. Kümeye yalnızca bu sertifikayla kimliklerini kanıtlayabilen düğümler katılabilir. Sunucu kimlik doğrulaması küme yönetimi uç noktalarını bir yönetim istemcisine doğru lar, böylece yönetim istemcisi 'ortadaki adam' ile değil, gerçek kümeyle konuştuğunu bilir. Bu sertifika ayrıca HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için bir SSL sağlar. İstemci veya düğüm bir düğümü doğruladığında, ilk denetimlerden biri **Özne** alanındaki ortak adın değeridir. Bu ortak ad veya sertifikaların Özne Alternatif Adları (SN'ler) izin verilen ortak adlar listesinde bulunmalıdır.
+Küme kimlik doğrulaması küme federasyonu için düğümden düğüme iletişimi doğrular. Kümeye yalnızca bu sertifikayla kimliklerini kanıtlayabilen düğümler katılabilir. Sunucu kimlik doğrulaması küme yönetimi uç noktalarını bir yönetim istemcisine doğru lar, böylece yönetim istemcisi 'ortadaki adam' ile değil, gerçek kümeyle konuştuğunu bilir. Bu sertifika ayrıca HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için bir TLS sağlar. İstemci veya düğüm bir düğümü doğruladığında, ilk denetimlerden biri **Özne** alanındaki ortak adın değeridir. Bu ortak ad veya sertifikaların Özne Alternatif Adları (SN'ler) izin verilen ortak adlar listesinde bulunmalıdır.
 
 Sertifika aşağıdaki gereksinimleri karşılamalıdır:
 
 * Sertifika özel bir anahtar içermelidir. Bu sertifikalar genellikle .pfx veya .pem uzantıları vardır  
 * Sertifika, Kişisel Bilgi Alışverişi (.pfx) dosyasına ihraç edilebilir anahtar değişimi için oluşturulmalıdır.
-* **Sertifikanın özne adı, Hizmet Kumaşı kümesine erişmek için kullandığınız etki alanıyla eşleşmelidir.** Bu eşleştirme kümenin HTTPS yönetim bitiş noktası ve Hizmet Kumaş Explorer için bir SSL sağlamak için gereklidir. *.cloudapp.azure.com etki alanı için bir sertifika yetkilisinden (CA) SSL sertifikası alamazsınız. Kümeniz için özel bir etki alanı adı edinmeniz gerekir. CA’dan sertifika istediğinizde sertifikanın konu adı, kümeniz için kullandığınız özel etki alanı adıyla eşleşmelidir.
+* **Sertifikanın özne adı, Hizmet Kumaşı kümesine erişmek için kullandığınız etki alanıyla eşleşmelidir.** Bu eşleştirme kümenin HTTPS yönetim bitiş noktası ve Hizmet Kumaş Explorer için bir TLS sağlamak için gereklidir. *.cloudapp.azure.com etki alanı için bir sertifika yetkilisinden (CA) TLS/SSL sertifikası alamazsınız. Kümeniz için özel bir etki alanı adı edinmeniz gerekir. CA’dan sertifika istediğinizde sertifikanın konu adı, kümeniz için kullandığınız özel etki alanı adıyla eşleşmelidir.
 
 Göz önünde bulundurulması gereken diğer bazı şeyler:
 

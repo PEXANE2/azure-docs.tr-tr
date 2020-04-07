@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: a32624c37cd8ca7fbef9e38ca61de9369791dd25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162540"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677014"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -167,7 +167,7 @@ Kanal, canlı kodlayıcıda belirttiğiniz bir giriş bitiş noktası (URL yutma
 
 Bir Kanal oluşturduktan sonra en yüksek URL'leri alabilirsiniz. Bu URL'leri almak için, **Kanal'ın Çalışan** durumunda olması gerekmez. Verileri Kanal'a itmeye başlamaya hazır olduğunuzda, bu veri **Çalışan** durumunda olmalıdır. Kanal veri sindirilmeye başladıktan sonra, akışınızı önizleme URL'si üzerinden önizleyebilirsiniz.
 
-Parçalanmış MP4 (Smooth Streaming) canlı akışını Bir SSL bağlantısı üzerinden sindireseçeneğiniz vardır. SSL üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda, AMS özel etki alanları ile SSL desteklemiyor.  
+Bir TLS bağlantısı üzerinden Parçalanmış MP4 (Smooth Streaming) canlı akışını sindireseçeneğiniz vardır. TLS üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda, AMS özel etki alanları ile TLS desteklemiyor.  
 
 ### <a name="allowed-ip-addresses"></a>İzin verilen IP adresleri
 Bu kanalda video yayımlamalarına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örneğin, '10.0.0.1'), IP adresi ve CIDR alt ağ maskesi kullanan bir IP aralığı (örneğin, '10.0.0.1/22') veya IP adresi ve noktalı ondalık alt ağ maskesi (örneğin, '10.0.0.1(255.25.25.05.02)) kullanan bir IP aralığı olarak belirtilebilir.
@@ -205,7 +205,7 @@ Reklam işaretçileri sinyallerinin kaynağını belirtebilirsiniz. Varsayılan 
 Canlı kodlayıcıya gelen videoya katıştak CEA 708 altyazı verilerini yoksaymasını söyleyen isteğe bağlı bir bayrak. Bayrak false (varsayılan) olarak ayarlandığında, kodlayıcı CEA 708 verilerini algılar ve çıkış video akışlarına yeniden ekler.
 
 #### <a name="index"></a>Dizin oluşturma
-Tek bir program aktarım akışı (SPTS) göndermek önerilir. Giriş akışı birden fazla program içeriyorsa, Kanal içindeki canlı kodlayıcı girişte Program Harita Tablosunu (PMT) ayrıştırır, Girişte MPEG-2 AAC ADTS veya AC-3 System-A veya AC-3 System-B veya MPEG-2 Private PES veya MPEG-1 akış türü ne olan girişleri tanımlar Ses veya MPEG-2 Ses ve PMT belirtilen sırada düzenler. Sıfır tabanlı dizin daha sonra bu düzenlemedeki n-th girişini almak için kullanılır.
+Tek bir program aktarım akışı (SPTS) göndermek önerilir. Giriş akışı birden fazla program içeriyorsa, Kanal içindeki canlı kodlayıcı girişte Program Harita Tablosunu (PMT) ayrıştırır, MPEG-2 AAC ADTS veya AC-3 System-A veya AC-3 System-B veya MPEG-2 Private PES veya MPEG-1 Audio veya MPEG-2 Audio akış türü ne olursa oylayır ve bunları PMT'de belirtilen sırada düzenler. Sıfır tabanlı dizin daha sonra bu düzenlemedeki n-th girişini almak için kullanılır.
 
 #### <a name="language"></a>Dil
 SES akışının eng gibi ISO 639-2'ye uygun dil tanımlayıcısı. Yoksa, varsayılan UND (tanımsız).

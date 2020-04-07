@@ -3,18 +3,18 @@ title: 'Öğretici: Yeni ortama blueprint örneği'
 description: Bu öğreticide, iki kaynak grubu oluşturan ve her biri için bir rol ataması yapılandıran bir plan tanımı oluşturmak için bir plan örneği kullanırsınız.
 ms.date: 03/25/2020
 ms.topic: tutorial
-ms.openlocfilehash: c4230282223b0a64f6254448fe069bf8f7ab9a15
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 79928822b41dfe0583afbeaf2f5f1a4a87dd3202
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80282027"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677084"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Öğretici: Plan örneğinden bir ortam oluşturma
 
 Örnek planlar, Azure Planları kullanılarak neler yapılabileceğinin örneklerini sağlar. Her biri belirli bir amaç veya amaca sahip bir örnektir, ancak tek başlarına tam bir ortam oluşturmaz. Her biri, azure planlarını n içindahil olan yapı, tasarım ve parametrelerin çeşitli kombinasyonları ile birlikte kullanarak keşfetmek için bir başlangıç noktası olarak tasarlanmıştır.
 
-Aşağıdaki öğretici, Blueprints hizmetinin farklı yönlerini sergilemek için RBAC plan örneğine **sahip Kaynak Gruplarını** kullanır. Aşağıdaki adımlar kapsanmaktadır:
+Aşağıdaki öğretici, Azure Planları hizmetinin farklı yönlerini sergilemek için RBAC plan örneğine **sahip Kaynak Gruplarını** kullanır. Aşağıdaki adımlar kapsanmaktadır:
 
 > [!div class="checklist"]
 > - Örnekten yeni bir plan tanımı oluşturma

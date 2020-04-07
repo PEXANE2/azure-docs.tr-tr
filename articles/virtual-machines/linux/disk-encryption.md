@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 20aa55f9fc4ea65da1973628aeec313a5367816a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f7eb63d0bbdce86f4a7195430dc15d6873e9f6e6
+ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632050"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80754305"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -90,10 +90,13 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [Azure K
 
     Key Vault örneğini oluştururken, yumuşak silme ve temizleme korumasını etkinleştirmelisiniz. Yumuşak silme, Anahtar Kasası'nın belirli bir bekletme süresi (90 günlük varsayılan) için silinmiş bir anahtar tutmasını sağlar. Temizleme koruması, silinen anahtarın bekletme süresi sona erinceye kadar kalıcı olarak silinmemesini sağlar. Bu ayarlar, yanlışlıkla silinme nedeniyle veri kaybetmenizi korur. Yönetilen diskleri şifrelemek için Bir Anahtar Kasası kullanırken bu ayarlar zorunludur.
 
+    > [!IMPORTANT]
+    > Azure portalındaki kaynağa ek diskler atarken sorunlarla karşılaşabilirsiniz.
+
     ```azurecli
     subscriptionId=yourSubscriptionID
     rgName=yourResourceGroupName
-    location=WestCentralUS
+    location=westcentralus
     keyVaultName=yourKeyVaultName
     keyName=yourKeyName
     diskEncryptionSetName=yourDiskEncryptionSetName
@@ -134,7 +137,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [Azure K
 ```azurecli
 rgName=yourResourceGroupName
 vmName=yourVMName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -162,7 +165,7 @@ az disk update -n $diskName -g $rgName --encryption-type EncryptionAtRestWithCus
 ```azurecli
 rgName=yourResourceGroupName
 vmssName=yourVMSSName
-location=WestCentralUS
+location=westcentralus
 vmSize=Standard_DS3_V2
 image=UbuntuLTS 
 diskEncryptionSetName=yourDiskencryptionSetName
@@ -179,7 +182,7 @@ rgName=yourResourceGroupName
 diskName=yourDiskName
 diskSkuName=Premium_LRS
 diskSizeinGiB=30
-location=WestCentralUS
+location=westcentralus
 diskLUN=2
 diskEncryptionSetName=yourDiskEncryptionSetName
 
