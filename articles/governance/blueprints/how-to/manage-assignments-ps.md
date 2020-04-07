@@ -3,12 +3,12 @@ title: PowerShell ile atamaları yönetme
 description: Resmi Azure Blueprints PowerShell modülü Az.Blueprint ile plan atamalarını nasıl yönettemize edin.
 ms.date: 09/30/2019
 ms.topic: how-to
-ms.openlocfilehash: b16cf887ba8bfc51616839db5f4af87944ec686d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247410"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677436"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell ile atamaları yönetme
 
@@ -27,12 +27,12 @@ Azure Blueprints modülü aşağıdaki yazılımı gerektirir:
 
 ### <a name="install-the-module"></a>Modülü yükleyin
 
-PowerShell için Blueprints modülü **Az.Blueprint**olduğunu.
+PowerShell için Azure Planları modülü **Az.Blueprint'tir.**
 
 1. **İdari** powershell isteminden aşağıdaki komutu çalıştırın:
 
    ```azurepowershell-interactive
-   # Install the Blueprints module from PowerShell Gallery
+   # Install the Azure Blueprints module from PowerShell Gallery
    Install-Module -Name Az.Blueprint
    ```
 

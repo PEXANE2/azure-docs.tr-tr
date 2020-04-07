@@ -3,12 +3,12 @@ title: 'Quickstart: REST API ile bir plan oluşturma'
 description: Bu hızlı başlangıçta, REST API'sini kullanarak yapı oluşturmak, tanımlamak ve dağıtmak için Azure Planları'nı kullanırsınız.
 ms.date: 02/26/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3e7e7c67822eec939c7d7752f8771d3b486abc3c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 93c9aef9efd826b88da59cdb77dedfb10fb11262
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241545"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676577"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: REST API ile Bir Azure Planı tanımlayın ve Atayın
 
@@ -25,7 +25,7 @@ ms.locfileid: "79241545"
 
 REST API konusunda bilginiz yoksa özellikle istek URI'si ve istek gövdesi olmak üzere REST API hakkında genel bilgi edinmek için [Azure REST API Başvurusu](/rest/api/azure/) sayfasını inceleyerek başlayın. Bu makalede Azure Blueprints ile çalışmak üzere yönlendirme yapmak için bu kavramlar kullanılmakta ve bunları bildiğiniz kabul edilmektedir. [ARMClient](https://github.com/projectkudu/ARMClient) gibi araçlar yetkilendirme adımlarını otomatik olarak gerçekleştirebilir ve bu nedenle yeni başlayanlar için önerilir.
 
-Blueprints belirtimleri için bkz. [Azure Blueprints REST API’si](/rest/api/blueprints/).
+Azure Blueprints özellikleri için [Azure Blueprints REST API'ye](/rest/api/blueprints/)bakın.
 
 ### <a name="rest-api-and-powershell"></a>REST API ve PowerShell
 
@@ -406,7 +406,7 @@ Her bir REST API URI'sinde kendi değerlerinizle değiştirmeniz gereken değiş
      **Kullanıcı tarafından atanan yönetilen kimlik,** planı atadığı kullanıcının izinleri olan herhangi bir abonelik ve kaynak grubunda olabilir.
 
      > [!IMPORTANT]
-     > Planlar, kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rolleri ve izinleri atamaktan sorumludur veya plan ataması başarısız olur.
+     > Azure Blueprints, kullanıcı tarafından atanan yönetilen kimliği yönetmez. Kullanıcılar yeterli rolleri ve izinleri atamaktan sorumludur veya plan ataması başarısız olur.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

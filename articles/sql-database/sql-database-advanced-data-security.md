@@ -11,12 +11,12 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 03/31/2019
-ms.openlocfilehash: 1f0e6694e596dc60264dfe0789a2f80090e0da3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aed0bcb79dedf057c5943cea9f4b4399b2f630cb
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269139"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677462"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL Veritabanı için gelişmiş veri güvenliği
 
@@ -26,8 +26,8 @@ Gelişmiş veri güvenliği, gelişmiş SQL güvenlik yetenekleri için birleşi
 
 Gelişmiş veri güvenliği (ADS), veri bulma & sınıflandırması, güvenlik açığı değerlendirmesi ve Gelişmiş Tehdit Koruması dahil olmak üzere bir dizi gelişmiş SQL güvenlik özelliği sağlar.
 
-- [Veri bulma & sınıflandırma,](sql-database-data-discovery-and-classification.md) veritabanlarınızdaki hassas verileri keşfetmek, sınıflandırmak, etiketlemek & korumak için Azure SQL Veritabanı'nda yerleşik özellikler sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
-- [Güvenlik açığı değerlendirmesi,](sql-vulnerability-assessment.md) olası veritabanı güvenlik açıklarını keşfedebilen, izleyebilen ve düzeltmenize yardımcı olabilecek kolay bir hizmeti yapılandırmaktır. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
+- [Veri Bulma & Sınıflandırması,](sql-database-data-discovery-and-classification.md) veritabanlarınızdaki hassas verileri keşfetmek, sınıflandırmak, etiketlemek & raporlamak için Azure SQL Veritabanı'nda yerleşik özellikler sağlar. Veri sınıflandırma durumunuz için görünürlük sağlamanın yanı sıra veritabanı içindeki ve dışındaki hassas verilere erişimin izlenmesi için kullanılabilir.
+- [Güvenlik Açığı Değerlendirmesi](sql-vulnerability-assessment.md) olası veritabanı güvenlik açıklarını keşfetmenizi ve izlemenizi sağlamanın yanı sıra bunları gidermeye yardımcı olan yapılandırması kolay bir hizmettir. Güvenlik durumunuz hakkında görünürlük sağlamasının yanı sıra güvenlik sorunlarınızı çözmek ve veritabanı güçlendirmelerinizi geliştirmek için eyleme dönüştürülebilir adımlar sunar.
 - [Gelişmiş Tehdit Koruması](sql-database-threat-detection-overview.md), veritabanlarınıza erişme veya bunları kullanma konusunda olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri belirler. Veritabanınızı şüpheli etkinliklere karşı sürekli izler ve olası güvenlik açıkları, SQL ekleme saldırıları ve anormal veritabanı erişim modelleri hakkında anında güvenlik uyarıları sunar. Gelişmiş Tehdit Koruması uyarıları, şüpheli etkinliğin ayrıntılarının yanı sıra tehdidi araştırmak ve ortadan kaldırmak için önerilen eylemleri de içerir.
 
 Bu dahil özelliklerin tümünün etkinleştirilmesini sağlamak için SQL ADS'ı bir kez etkinleştirin. Tek bir tıklamayla, SQL Veritabanı sunucunuzdaki veya yönetilen örneğinizdeki tüm veritabanları için ADS'yi etkinleştirebilirsiniz. ADS ayarlarını etkinleştirmek veya yönetmek, [SQL güvenlik yöneticisi](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) rolüne, SQL veritabanı yöneticisi rolüne veya SQL server yönetici rolüne ait olmayı gerektirir. 
@@ -62,7 +62,7 @@ ADS ayarlarını görüntülemek ve yönetmek için, SQL Veritabanı sunucunuz v
 
 ## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. SQL veritabanı için ADS ayarlarını yönetme
 
-Belirli bir veritabanının ADS ayarlarını geçersiz kılmak için veritabanı düzeyindeki onay kutusunda **Gelişmiş Veri Güvenliğini Etkinleştir'i** denetleyin. Bu seçeneği yalnızca, tüm veritabanları için alınan uyarılar ve sonuçlar yerine veya bunlara ek olarak, tek tek veritabanı için ayrı Gelişmiş Tehdit Koruması uyarıları veya güvenlik açığı değerlendirme sonuçları almak için belirli bir gereksinimi niz varsa kullanın veritabanı sunucusu veya yönetilen örnek.
+Belirli bir veritabanının ADS ayarlarını geçersiz kılmak için veritabanı düzeyindeki onay kutusunda **Gelişmiş Veri Güvenliğini Etkinleştir'i** denetleyin. Bu seçeneği yalnızca, veritabanı sunucusundaki veya yönetilen örnekteki tüm veritabanları için alınan uyarılar ve sonuçlar yerine veya bunlara ek olarak, tek tek veritabanı için ayrı Gelişmiş Tehdit Koruması uyarıları veya güvenlik açığı değerlendirme sonuçları almak için belirli bir gereksinimi varsa kullanın.
 
 Onay kutusu seçildikten sonra, bu veritabanı için ilgili ayarları yapılandırabilirsiniz.
  
@@ -74,7 +74,7 @@ Veritabanı sunucunuz veya yönetilen örneğiniz için gelişmiş veri güvenli
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-- [Veri bulma & sınıflandırması](sql-database-data-discovery-and-classification.md) hakkında daha fazla bilgi edinin 
-- [Güvenlik açığı değerlendirmesi](sql-vulnerability-assessment.md) hakkında daha fazla bilgi edinin 
+- [Veri Bulma & Sınıflandırması](sql-database-data-discovery-and-classification.md) hakkında daha fazla bilgi edinin 
+- [Güvenlik Açığı Değerlendirmesi](sql-vulnerability-assessment.md) hakkında daha fazla bilgi edinin 
 - [Gelişmiş Tehdit Koruması](sql-database-threat-detection.md) hakkında daha fazla bilgi edinin
-- [Azure güvenlik merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
+- [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin

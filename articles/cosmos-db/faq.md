@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545668"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672456"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -236,7 +236,7 @@ Ortak MongoDB hata kodlarının yanı sıra, Azure Cosmos DB'nin MongoDB için A
 
 Evet, MongoDB için Azure Cosmos DB'nin API'si ile Simba'nın Mongo ODBC sürücüsünü kullanabilirsiniz
 
-## <a name="table-api"></a><a id="table"></a>Tablo API'si
+## <a name="table-api"></a><a id="table"></a>Tablo API’si
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Tablo API teklifini nasıl kullanabilirim?
 
@@ -640,7 +640,7 @@ Yukarıdaki profilin çıktısı, tepe noktası nesnelerini, kenar nesnelerini v
 
 ## <a name="cassandra-api"></a><a id="cassandra"></a>Cassandra API
 
-### <a name="what-is-the-protocol-version-supported-by-azure-cosmso-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmso DB Cassandra API tarafından desteklenen protokol sürümü nedir? Diğer protokolleri desteklemek için bir plan var mı?
+### <a name="what-is-the-protocol-version-supported-by-azure-cosmos-db-cassandra-api-is-there-a-plan-to-support-other-protocols"></a>Azure Cosmos DB Cassandra API tarafından desteklenen protokol sürümü nedir? Diğer protokolleri desteklemek için bir plan var mı?
 
 Azure Cosmos DB için Apache Cassandra API bugün CQL sürüm 4'ü destekler. Diğer protokolleri destekleme hakkında geri bildiriminiz varsa, [kullanıcı ses geri](https://feedback.azure.com/forums/263030-azure-cosmos-db) [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)bildirimi aracılığıyla bize bildirin veya e-posta gönderin.
 

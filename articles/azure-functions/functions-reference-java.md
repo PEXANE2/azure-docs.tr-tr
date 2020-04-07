@@ -3,12 +3,12 @@ title: Azure İşlevler için Java geliştirici başvurusu
 description: Java ile işlevlerin nasıl geliştirildiğini öğrenin.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276757"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672996"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure İşlevler Java geliştirici kılavuzu
 
@@ -16,7 +16,7 @@ Azure Fonksiyonları çalışma süresi [Java SE 8 LTS 'yi (zulu8.31.0.2-jre8.0.
 
 Diğer dillerde olduğu gibi, Bir İşlev Uygulamasının bir veya daha fazla işlevi olabilir. Java işlevi, `public` ek açıklama `@FunctionName`ile dekore edilmiş bir yöntemdir. Bu yöntem, java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Java'da yazılmış bir Fonksiyon Uygulaması, birden çok genel `@FunctionName`yöntemle açıklamalı birden çok sınıfa sahip olabilir.
 
-Bu makalede, [Azure İşlevler geliştirici başvurularını](functions-reference.md)zaten okuduğunuz varsayar. Ayrıca [Visual Studio Code](functions-create-first-function-vs-code.md) veya [Maven](functions-create-first-java-maven.md)kullanarak, ilk işlevi oluşturmak için Fonksiyonları quickstart tamamlamanız gerekir.
+Bu makalede, [Azure İşlevler geliştirici başvurularını](functions-reference.md)zaten okuduğunuz varsayar. Ayrıca [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) veya [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)kullanarak, ilk işlevi oluşturmak için Fonksiyonları quickstart tamamlamanız gerekir.
 
 ## <a name="programming-model"></a>Programlama modeli 
 
@@ -38,28 +38,31 @@ Yukarıdaki makale bağlantıları, seçtiğiniz IDE'yi kullanarak ilk işlevler
 
 ### <a name="project-scaffolding"></a>Proje İskelesi
 
-Terminalden komut satırı geliştirmeyi tercih ederseniz, Java tabanlı işlev projelerini iskeleye `Apache Maven` bağlamanın en basit yolu arketipler kullanmaktır. Şu anda Maven için iki Fonksiyon arketipleri vardır:
+Terminalden komut satırı geliştirmeyi tercih ederseniz, Java tabanlı işlev projelerini iskeleye `Apache Maven` bağlamanın en basit yolu arketipler kullanmaktır. Azure Fonksiyonları için Java Maven arketipi aşağıdaki _groupId_altında yayınlanır:_artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-+ **Java Archetype**: aşağıdaki groupId ve artifactId [com.microsoft.azure altında yayınlandı:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/):
+Aşağıdaki komut, bu arketip kullanarak yeni bir Java işlev projesi oluşturur:
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-archetype 
-    ```
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
 
-    Bu arketip kullanmaya başlamak için [Java quickstart'ına](functions-create-first-java-maven.md)bakın. 
+Bu arketip kullanmaya başlamak için [Java quickstart'ına](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)bakın. 
 
-+ **Kotlin Archetype (Önizleme)** aşağıdaki groupId ve artifactId [com.microsoft.azure altında yayınlanan:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/):
+## <a name="create-kotlin-functions-preview"></a>Kotlin işlevleri oluşturma (önizleme)
 
-    ```
-    mvn archetype:generate \
-        -DarchetypeGroupId=com.microsoft.azure \
-        -DarchetypeArtifactId=azure-functions-kotlin-archetype
-    ```
+Kotlin işlevleri ni oluşturmak için bir Maven arketipi de vardır. Bu arketip, şu anda önizleme, aşağıdaki _groupId_altında yayınlanır:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
 
-Bu arketiplerin kaynak kodu Azure [Maven Archetypes GitHub deposunda](https://github.com/microsoft/azure-maven-archetypes)bulunabilir.
+Aşağıdaki komut, bu arketip kullanarak yeni bir Java işlev projesi oluşturur:
 
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+Bu arketip kullanmaya başlamak için [Kotlin quickstart'a](functions-create-first-kotlin-maven.md)bakın.
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
@@ -156,7 +159,7 @@ Fonksiyonlar, Java işlevlerinizi çalıştırmak için kullanılan Java sanal m
 
 Adlandırılmış `JAVA_OPTS`bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz. Azure portalında veya Azure CLI'de Azure'a dağıtılan işlev uygulamanıza uygulama ayarları ekleyebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Azure [portalında,](https://portal.azure.com)ayarı eklemek için `JAVA_OPTS` Uygulama Ayarları [sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın.
 

@@ -1,16 +1,16 @@
 ---
 title: Özel bir görüntü kullanarak Linux'ta Azure Fonksiyonları oluşturma
 description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevleri oluşturmayı öğrenin.
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8c074c677c645dd03e3cf5288d82aa3e65720e8b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 44ca8f721967b90be283f867f8656344ec3f1906
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239633"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673406"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Linux üzerinde işlev oluşturma
 
@@ -31,236 +31,158 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Kapsayıcıya SSH bağlantılarını etkinleştirin.
 > * Sıra depolama çıktısı bağlama ekleyin. 
 
-Bu öğreticiyi Windows, Mac OS veya Linux çalıştıran herhangi bir bilgisayarda takip edebilirsiniz. Öğreticinin tamamlanması, Azure hesabınızda birkaç ABD doları maliyetine neden olur.
+Bu öğreticiyi Windows, macOS veya Linux çalıştıran herhangi bir bilgisayarda takip edebilirsiniz. Öğreticinin tamamlanması, Azure hesabınızda birkaç ABD doları maliyetine neden olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure İşletme Temel Araçları](./functions-run-local.md#v2) sürümü 2.7.1846 veya daha sonra
-- [Azure CLI](/cli/azure/install-azure-cli) sürümü 2.0.77 veya sonrası
-- [Azure İşlevler 2.x çalışma süresi](functions-versions.md)
-- Aşağıdaki dil çalışma zamanı bileşenleri:
-    ::: zone pivot="programming-language-csharp"
-    - [.NET Core 2.2.x veya sonrası](https://dotnet.microsoft.com/download)
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    - [Node.js](https://nodejs.org/en/download/)
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    - [Powershell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7)
-    ::: zone-end
-    ::: zone pivot="programming-language-python"
-    - [Python 3.6 - 64 bit](https://www.python.org/downloads/release/python-3610/) veya [Python 3.7 - 64 bit](https://www.python.org/downloads/release/python-376/)
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    - [Node.js](https://nodejs.org/en/download/)
-    - [TypeScript](http://www.typescriptlang.org/#download-links)
-    ::: zone-end
-- [Docker](https://docs.docker.com/install/)
-- [Docker Kimliği](https://hub.docker.com/signup)
+<!---Requirements specific to Docker --->
++ [Docker](https://docs.docker.com/install/)  
 
-### <a name="prerequisite-check"></a>Ön koşul kontrolü
++ [Docker Kimliği](https://hub.docker.com/signup)
 
-1. Bir terminal veya komut `func --version` penceresinde, Azure İşlevler Temel Araçları'nın sürüm 2.7.1846 veya sonraki sürüm olup olmadığını denetlemek için çalıştırın.
-1. Azure `az --version` CLI sürümünün 2.0.76 veya sonraki sürüm olup olmadığını kontrol etmek için çalıştırın.
-1. Azure'da oturum açmak ve etkin bir aboneliği doğrulamak için çalıştırın. `az login`
-1. `docker login` Docker'a imza at. Docker çalışmıyorsa bu komut başarısız olur, bu durumda docker'ı başlatın ve komutu yeniden deneyin.
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
+
++ `docker login` Docker'a imza at. Docker çalışmıyorsa bu komut başarısız olur, bu durumda docker'ı başlatın ve komutu yeniden deneyin.
+
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-and-test-the-local-functions-project"></a>Yerel işlevler projesini oluşturma ve test edin
 
-1. Bir terminal veya komut isteminde, uygun bir konumda bu öğretici için bir klasör oluşturun ve ardından bu klasöre gidin.
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Bir terminal veya komut isteminde, seçtiğiniz dil için aşağıdaki komutu çalıştırın. `LocalFunctionsProject`  
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionsProject --worker-runtime dotnet --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language javascript --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionsProject --worker-runtime powershell --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionsProject --worker-runtime python --docker
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionsProject --worker-runtime node --language typescript --docker
+```
+::: zone-end
+::: zone pivot="programming-language-java"  
+İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın.
 
-1. Bu öğreticiyle kullanılmak üzere sanal bir ortam oluşturmak için [Sanal ortam Oluştur'daki](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#create-venv) yönergeleri izleyin ve etkinleştirin.
+# <a name="bash"></a>[bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype -Ddocker
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" "-Ddocker"
+```
+---
 
-1. Bir işlev uygulaması projesi oluşturmak için seçtiğiniz dil için `LocalFunctionsProject`aşağıdaki komutu çalıştırın. Bu `--docker` seçenek, `Dockerfile` Azure İşlevleri ve seçili çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcı tanımlayan proje için bir seçenek oluşturur.
+Maven, dağıtımı sırasında projeoluşturmayı bitirmek için gereken değerleri sizden sorar.   
+İstendiğinde aşağıdaki değerleri sağlayın:
 
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionsProject --worker-runtime dotnet --docker
-    ```
-    ::: zone-end
+| İstem | Değer | Açıklama |
+| ------ | ----- | ----------- |
+| **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) izleyerek, projenizi tüm projelerde benzersiz olarak tanımlayan bir değer. |
+| **Artifactıd** | `fabrikam-functions` | Bir sürüm numarası olmayan kavanozun adı olan bir değer. |
+| **Sürüm** | `1.0-SNAPSHOT` | Varsayılan değeri seçin. |
+| **Paket** | `com.fabrikam.functions` | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. |
 
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language javascript --docker
-    ```
-    ::: zone-end
+Onaylamak `Y` için Enter yazın veya enter tuşuna basın.
 
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionsProject --worker-runtime powershell --docker
-    ```
-    ::: zone-end
+Maven, bu örnekte yer alan _artifactId_adında yeni bir klasörde proje dosyalarını `fabrikam-functions`oluşturur. 
+::: zone-end
+Bu `--docker` seçenek, `Dockerfile` Azure İşlevleri ve seçili çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcı tanımlayan proje için bir seçenek oluşturur.
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionsProject --worker-runtime python --docker
-    ```
-    ::: zone-end
+Proje klasörüne gidin:
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
+`--name` Bağımsız değişkenin işlevinizin benzersiz adı olduğu ve `--template` bağımsız değişkenin işlevin tetikleyicisini belirttiği aşağıdaki komutu kullanarak projenize bir işlev ekleyin. `func new`projenin seçilen diline uygun bir kod dosyası ve *function.json*adlı yapılandırma dosyası içeren işlev adı ile eşleşen bir alt klasör oluşturun.
 
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionsProject --worker-runtime node --language typescript --docker
-    ```
-    ::: zone-end
-    
-1. Proje klasörüne gidin:
+```
+func new --name HttpExample --template "HTTP trigger"
+```
+::: zone-end  
+İşlevi yerel olarak sınamak için, proje klasörünün kökünde yerel Azure İşlevler çalışma zamanı ana bilgisayarını başlatın: 
+::: zone pivot="programming-language-csharp"  
+```
+func start --build  
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-powershell,programming-language-python"   
+```
+func start  
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+npm install
+npm start
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+mvn clean package  
+mvn azure-functions:run
+```
+::: zone-end
+Çıktıda bitiş `HttpExample` noktasının göründüğünü gördüğünüzde, [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions)'ye gidin. Tarayıcı, sorgu parametresi için sağlanan `Functions`değeri geri yankılanan `name` bir "merhaba" iletisi göstermelidir.
 
-    ```
-    cd LocalFunctionsProject
-    ```
-    
-1. `--name` Bağımsız değişkenin işlevinizin benzersiz adı olduğu ve `--template` bağımsız değişkenin işlevin tetikleyicisini belirttiği aşağıdaki komutu kullanarak projenize bir işlev ekleyin. `func new`projenin seçilen diline uygun bir kod dosyası ve *function.json*adlı yapılandırma dosyası içeren işlev adı ile eşleşen bir alt klasör oluşturun.
-
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
-
-1. İşlevi yerel olarak sınamak *için, LocalFunctionsProject* klasöründe yerel Azure İşlevler çalışma zamanı ana bilgisayarını başlatın:
-   
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func start --build
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func start
-    ```
-    ::: zone-end
-
-    ::: zone pivot="programming-language-python"
-    ```
-    func start
-    ```
-    ::: zone-end    
-
-    ::: zone pivot="programming-language-typescript"
-    ```
-    npm install
-    ```
-
-    ```
-    npm start
-    ```
-    ::: zone-end
-
-1. Çıktıda bitiş `HttpExample` noktasının göründüğünü gördüğünüzde, `http://localhost:7071/api/HttpExample?name=Functions`'ye gidin. Tarayıcı "Merhaba, Fonksiyonlar" gibi bir ileti görüntülemelidir (seçtiğiniz programlama diline bağlı olarak biraz değişir).
-
-1. Ana bilgisayarı durdurmak için **Ctrl**-**C'yi** kullanın.
+Ana bilgisayarı durdurmak için **Ctrl**-**C'yi** kullanın.
 
 ## <a name="build-the-container-image-and-test-locally"></a>Kapsayıcı görüntüsünü oluşturun ve yerel olarak test edin
 
-1. (İsteğe bağlı) *LocalFunctionsProj* klasöründeki *Dockerfile'ı inceleyin. Dockerfile, işlev uygulamasını Linux üzerinde çalıştırmak için gerekli ortamı açıklar: 
+(İsteğe bağlı) Proje klasörünün kökündeki *Dockerfile'ı inceleyin. Dockerfile, işlev uygulamasını Linux üzerinde çalıştırmak için gerekli ortamı açıklar.  Azure İşlevleri için desteklenen temel görüntülerin tam listesini [Azure İşlevleri temel resim sayfasında](https://hub.docker.com/_/microsoft-azure-functions-base)bulabilirsiniz.
+    
+Kök proje klasöründe, [docker build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın `azurefunctionsimage`ve bir `v1.0.0`ad ve etiket sağlayın. `<DOCKER_ID>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
 
-    ::: zone pivot="programming-language-csharp"
-    ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk AS installer-env
+```
+docker build --tag <DOCKER_ID>/azurefunctionsimage:v1.0.0 .
+```
 
-    COPY . /src/dotnet-function-app
-    RUN cd /src/dotnet-function-app && \
-        mkdir -p /home/site/wwwroot && \
-        dotnet publish *.csproj --output /home/site/wwwroot
+Komut tamamlandığında, yeni kapsayıcıyı yerel olarak çalıştırabilirsiniz.
     
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/dotnet:2.0-appservice 
-    FROM mcr.microsoft.com/azure-functions/dotnet:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
-    ```
-    ::: zone-end
+Yapıyı test etmek için, docker [run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanarak görüntüyü `<DOCKER_ID` yerel bir kapsayıcıda çalıştırın, `-p 8080:80`Docker Kimliğinizi yeniden değiştirin ve bağlantı noktaları bağımsız değişkenini ekleyerek:
 
-    ::: zone pivot="programming-language-javascript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+```
+docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
+```
 
-    ::: zone pivot="programming-language-powershell"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/powershell:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/powershell:2.0
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Görüntü yerel bir kapsayıcıda çalışırken, aşağıda `http://localhost:8080`gösterilen yer tutucu görüntüsünü görüntülemek için bir tarayıcı açın. İşleviniz Azure'da olduğu gibi yerel kapsayıcıda çalıştığından, görüntü bu noktada görünür, bu da `"authLevel": "function"` özellik ile birlikte *function.json'da* tanımlandığı gibi bir erişim anahtarı tarafından korunduğu anlamına gelir. Ancak kapsayıcı henüz Azure'daki bir işlev uygulamasında yayınlanmamıştır, bu nedenle anahtar henüz kullanılamamıştır. Yerel kapsayıcıya karşı test etmek istiyorsanız, docker'ı `"authLevel": "anonymous"`durdurun, yetkilendirme özelliğini değiştirin, görüntüyü yeniden oluşturun ve docker'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.json*sıfırlamak . Daha fazla bilgi için [yetkilendirme anahtarlarına](functions-bindings-http-webhook-trigger.md#authorization-keys)bakın.
 
-    ::: zone pivot="programming-language-python"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7-appservice
-    FROM mcr.microsoft.com/azure-functions/python:2.0-python3.7
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY requirements.txt /
-    RUN pip install -r /requirements.txt
-    
-    COPY . /home/site/wwwroot    
-    ```
-    ::: zone-end
+![Konteynerin yerel olarak çalıştığını belirten yer tutucu görüntüsü](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-    ::: zone pivot="programming-language-typescript"
-    ```Dockerfile
-    # To enable ssh & remote debugging on app service change the base image to the one below
-    # FROM mcr.microsoft.com/azure-functions/node:2.0-appservice
-    FROM mcr.microsoft.com/azure-functions/node:2.0
-    
-    ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
-        AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-    
-    COPY . /home/site/wwwroot
-    
-    RUN cd /home/site/wwwroot && \
-    npm install    
-    ```
-    ::: zone-end
+::: zone-end
+::: zone pivot="programming-language-java"  
+Görüntü yerel bir kapsayıcıda çalışırken, eskisi [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)gibi aynı "merhaba" iletisini görüntülemesi gereken "merhaba" iletisine göz atın. Maven arketipi anonim yetkilendirme kullanan bir HTTP tetikleme işlevi oluşturduğundan, kapsayıcıda çalışıyor olsa bile işlevi çağırabilirsiniz. 
+::: zone-end  
 
-    > [!NOTE]
-    > Azure İşlevleri için desteklenen temel görüntülerin tam listesini [Azure İşlevleri temel resim sayfasında](https://hub.docker.com/_/microsoft-azure-functions-base)bulabilirsiniz.
-    
-1. *LocalFunctionsProject* klasöründe docker [build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve `azurefunctionsimage`bir ad `v1.0.0`ve etiket sağlayın. `<docker_id>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
-
-    ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.0 .
-    ```
-    
-    Komut tamamlandığında, yeni kapsayıcıyı yerel olarak çalıştırabilirsiniz.
-    
-1. Yapıyı test etmek için, docker [run](https://docs.docker.com/engine/reference/commandline/run/) komutunu kullanarak görüntüyü `<docker_id>` yerel bir kapsayıcıda çalıştırın, `-p 8080:80`Docker Kimliğinizi yeniden değiştirin ve bağlantı noktaları bağımsız değişkenini ekleyerek:
-
-    ```
-    docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
-    ```
-    
-1. Görüntü yerel bir kapsayıcıda çalışırken, aşağıda `http://localhost:8080`gösterilen yer tutucu görüntüsünü görüntülemek için bir tarayıcı açın. İşleviniz Azure'da olduğu gibi yerel kapsayıcıda çalıştığından, görüntü bu noktada görünür, bu da `"authLevel": "function"` özellik ile birlikte *function.json'da* tanımlandığı gibi bir erişim anahtarı tarafından korunduğu anlamına gelir. Ancak kapsayıcı henüz Azure'daki bir işlev uygulamasında yayınlanmamıştır, bu nedenle anahtar henüz kullanılamamıştır. Yerel olarak test etmek istiyorsanız, docker'ı durdurun, yetkilendirme özelliğini `"authLevel": "anonymous"`değiştirin, görüntüyü yeniden oluşturun ve docker'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.json*sıfırlamak . Daha fazla bilgi için [yetkilendirme anahtarlarına](functions-bindings-http-webhook-trigger.md#authorization-keys)bakın.
-
-    ![Konteynerin yerel olarak çalıştığını belirten yer tutucu görüntüsü](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
-
-1. Kapsayıcıdaki fonksiyon uygulamasını doğruladıktan sonra **Ctrl**+**C**ile docker'ı durdurun.
+Kapsayıcıdaki işlev uygulamasını doğruladıktan sonra **Ctrl**+**C**ile docker'ı durdurun.
 
 ## <a name="push-the-image-to-docker-hub"></a>Görüntüyü Docker Hub'a itin
 
@@ -349,18 +271,18 @@ Azure'daki bir işlev uygulaması, barındırma planınızda işlevlerinizin yü
 
 1. İşlev artık depolama hesabına erişmek için bu bağlantı dizesini kullanabilir.
 
-> [!TIP]
-> Bash'te, panoyerine bağlantı dizesini yakalamak için bir kabuk değişkeni kullanabilirsiniz. İlk olarak, bağlantı dizeli bir değişken oluşturmak için aşağıdaki komutu kullanın:
-> 
-> ```bash
-> storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
-> ```
-> 
-> Daha sonra ikinci komuttaki değişkene bakın:
-> 
-> ```azurecli
-> az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
-> ```
+    > [!TIP]
+    > Bash'te, panoyerine bağlantı dizesini yakalamak için bir kabuk değişkeni kullanabilirsiniz. İlk olarak, bağlantı dizeli bir değişken oluşturmak için aşağıdaki komutu kullanın:
+    > 
+    > ```bash
+    > storageConnectionString=$(az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv)
+    > ```
+    > 
+    > Daha sonra ikinci komuttaki değişkene bakın:
+    > 
+    > ```azurecli
+    > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
+    > ```
 
 > [!NOTE]    
 > Özel resminizi özel bir kapsayıcı hesabına yayımlarsanız, bağlantı dizesi için Dockerfile'daki ortam değişkenlerini kullanmanız gerekir. Daha fazla bilgi için [ENV talimatına](https://docs.docker.com/engine/reference/builder/#env)bakın. Ayrıca değişkenleri `DOCKER_REGISTRY_SERVER_USERNAME` ve `DOCKER_REGISTRY_SERVER_PASSWORD`. Değerleri kullanmak için görüntüyü yeniden oluşturmanız, resmi kayıt defterine itmeniz ve ardından Azure'daki işlev uygulamasını yeniden başlatmanız gerekir.
@@ -499,7 +421,7 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
 
 1. Bir tarayıcıda, `https://<app_name>.scm.azurewebsites.net/`açık `<app_name>` , benzersiz adınızı ile değiştirerek. Bu URL, işlev uygulama kapsayıcınız için Gelişmiş Araçlar (Kudu) bitiş noktasıdır.
 
-1. Azure hesabınızda oturum açın ve kapsayıcıyla bağlantı kurmak için **SSH'yi** seçin. Azure kapsayıcı görüntüsünü güncelleştirme sürecindeyse bağlanma birkaç dakika sürebilir.
+1. Azure hesabınızda oturum açın ve kapsayıcıyla bağlantı kurmak için **SSH'yi** seçin. Azure kapsayıcı görüntüsünü hala güncelliyorsa bağlanma birkaç dakika sürebilir.
 
 1. Kapsayıcınızla bir bağlantı kurulduktan sonra, `top` şu anda çalışan işlemleri görüntülemek için komutu çalıştırın. 
 
@@ -511,347 +433,47 @@ Azure İşlevleri, işlevlerinizi kendi tümleştirme kodunuzu yazmak zorunda ol
 
 Bu bölümde, işlevinizi bir Azure Depolama kuyruğuyla nasıl tümleştiracağınızı gösterir. Bu işleve eklediğiniz çıktı bağlama, bir HTTP isteğindeki verileri kuyruktaki bir iletiye yazar.
 
-## <a name="retrieve-the-azure-storage-connection-string"></a>Azure Depolama bağlantı dizesini alın
+[!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
 
-Daha önce, işlev uygulaması tarafından kullanılmak üzere bir Azure Depolama hesabı oluşturabilirsiniz. Bu hesabın bağlantı dizesi Azure'daki uygulama ayarlarında güvenli bir şekilde depolanır. Ayarı *local.settings.json* dosyasına indirerek, işlevi yerel olarak çalıştırırken bu bağlantıyı aynı hesaptaki Depolama kuyruğuna yazma'yı kullanabilirsiniz. 
+[!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
-1. Projenin kökünden, önceki hızlı başlangıçtaki işlev `<app_name>` uygulamanızın adını değiştirerek aşağıdaki komutu çalıştırın. Bu komut, dosyadaki varolan değerlerin üzerine yazılır.
+[!INCLUDE [functions-add-output-binding-cli](../../includes/functions-add-output-binding-cli.md)]
 
-    ```
-    func azure functionapp fetch-app-settings <app_name>
-    ```
-    
-1. *local.settings.json'u* açın ve `AzureWebJobsStorage`Depolama hesabı bağlantı dizesi olan adlı değeri bulun. Bu makalenin `AzureWebJobsStorage` diğer bölümlerinde adı ve bağlantı dizesini kullanırsınız.
-
-> [!IMPORTANT]
-> *local.settings.json* Azure'dan indirilen sırları içerdiğinden, bu dosyayı her zaman kaynak denetiminden hariç tutar. Yerel işlevler projesiyle oluşturulan *.gitignore* dosyası varsayılan olarak dosyayı dışlar.
-
-### <a name="add-an-output-binding-to-functionjson"></a>function.json'a çıktı bağlama ekleme
-
-Azure İşlevlerinde, her bağlama `direction` `type` `name` *türü, function.json* dosyasında tanımlanması gereken bir , ve benzersiz bir bağlama gerektirir. *Function.json* zaten "httpTrigger" türü için bir giriş bağlama ve HTTP yanıtı için bir çıkış bağlama içerir. Depolama sırasına bağlama eklemek için, sıranın kodda bir giriş bağımsız değişkeni olarak `msg`göründüğü "sıra" türü için çıktı bağlayıcısı ekleyen dosyayı aşağıdaki gibi değiştirin. Sıra bağlama da kullanmak için sıranın adını gerektirir, bu durumda `outqueue`, ve bağlantı dizesini `AzureWebJobStorage`tutan ayarların adı, bu durumda .
-
-::: zone pivot="programming-language-csharp"
-
-C# sınıfı kitaplık projesinde, bağlamalar işlev yöntemine bağlama öznitelikleri olarak tanımlanır. *Function.json* dosyası daha sonra bu özniteliklere göre otomatik olarak oluşturulur.
-
-1. Sıra bağlama için, projenize Depolama uzantısı paketini eklemek için aşağıdaki [dotnet ekle paket](/dotnet/core/tools/dotnet-add-package) komutunu çalıştırın.
-
-    ```
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
-    ```
-
-1. *HttpTrigger.cs* dosyasını açın ve `using` aşağıdaki ifadeyi ekleyin:
-
-    ```cs
-    using Microsoft.Azure.WebJobs.Extensions.Storage;
-    ```
-    
-1. Yöntem tanımına aşağıdaki `Run` parametreyi ekleyin:
-    
-    ```csharp
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg
-    ```
-    
-    `Run` Yöntem tanımı şimdi aşağıdaki kod la eşleşmelidir:
-    
-    ```csharp
-    [FunctionName("HttpTrigger")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-        [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-    ```
-
-`msg` Parametre, işlev `ICollector<T>` tamamlandığında çıktı bağlamasına yazılan iletiler koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı `outqueue`bir depolama sırasıdır. Depolama hesabının `StorageAccountAttribute`bağlantı dizesi . Bu öznitelik, Depolama hesabı bağlantı dizesini içeren ve sınıf, yöntem veya parametre düzeyinde uygulanabilen ayarı gösterir. Bu durumda, varsayılan depolama `StorageAccountAttribute` hesabını zaten kullandığınıziçin atlayabilirsiniz.
-
-::: zone-end
-
-::: zone pivot="programming-language-javascript"
-
-HTTP bağlama sonra sıra bağlama ekleyerek aşağıdaki leri eşleştirmek için *function.json* güncelleştirin:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-
-HTTP bağlama sonra sıra bağlama ekleyerek aşağıdaki leri eşleştirmek için *function.json* güncelleştirin:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-
-HTTP bağlama sonra sıra bağlama ekleyerek aşağıdaki leri eşleştirmek için *function.json* güncelleştirin:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-
-HTTP bağlama sonra sıra bağlama ekleyerek aşağıdaki leri eşleştirmek için *function.json* güncelleştirin:
-
-```json
-{
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "Request",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "Response"
-    },
-    {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-::: zone-end
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]  
+::: zone-end  
+::: zone pivot="programming-language-java" 
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
+::: zone-end  
 
 ## <a name="add-code-to-use-the-output-binding"></a>Çıktı bağlamayı kullanmak için kod ekleme
 
-Bağlama tanımlandıktan sonra, bağlama nın adı, `msg`bu durumda işlev kodunda bağımsız değişken olarak `context` (veya JavaScript ve TypeScript'teki nesnede) görünür. Daha sonra sıraya ileti yazmak için bu değişkeni kullanabilirsiniz. Kimlik doğrulama, sıra başvurusu alma veya veri yazma için herhangi bir kod yazmanız gerekir. Tüm bu tümleştirme görevleri Azure İşlevleri çalışma zamanında ve sıra çıktısına bağlamada rahatlıkla işlenir.
+Tanımlanan sıra bağlama ile, artık `msg` çıktı parametresini almak ve sıraya iletiyazmak için işlevinizi güncelleştirebilirsiniz.
 
-::: zone pivot="programming-language-csharp"
-```csharp
-[FunctionName("HttpTrigger")]
-public static async Task<IActionResult> Run(
-    [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, 
-    [Queue("outqueue"), StorageAccount("AzureWebJobsStorage")] ICollector<string> msg, ILogger log)
-{
-    log.LogInformation("C# HTTP trigger function processed a request.");
+::: zone pivot="programming-language-python"     
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+::: zone-end  
 
-    string name = req.Query["name"];
+::: zone pivot="programming-language-javascript"  
+[!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
+::: zone-end  
 
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-    dynamic data = JsonConvert.DeserializeObject(requestBody);
-    name = name ?? data?.name;
+::: zone pivot="programming-language-typescript"  
+[!INCLUDE [functions-add-output-binding-ts](../../includes/functions-add-output-binding-ts.md)]
+::: zone-end  
 
-    if (!string.IsNullOrEmpty(name))
-    {
-        // Add a message to the output collection.
-        msg.Add(string.Format("Name passed to the function: {0}", name));
-    }
-    
-    return name != null
-        ? (ActionResult)new OkObjectResult($"Hello, {name}")
-        : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
-}
-```
+::: zone pivot="programming-language-powershell"  
+[!INCLUDE [functions-add-output-binding-powershell](../../includes/functions-add-output-binding-powershell.md)]  
 ::: zone-end
 
-::: zone pivot="programming-language-javascript"
-```js
-module.exports = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+::: zone pivot="programming-language-csharp"  
+[!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
+::: zone-end 
 
-    if (req.query.name || (req.body && req.body.name)) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
+::: zone pivot="programming-language-java"
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-```
-::: zone-end
-
-::: zone pivot="programming-language-powershell"
-```powershell
-using namespace System.Net
-
-# Input bindings are passed in via param block.
-param($Request, $TriggerMetadata)
-
-# Write to the Azure Functions log stream.
-Write-Host "PowerShell HTTP trigger function processed a request."
-
-# Interact with query parameters or the body of the request.
-$name = $Request.Query.Name
-if (-not $name) {
-    $name = $Request.Body.Name
-}
-
-if ($name) {
-    $outputMsg = "Name passed to the function: $name"
-    Push-OutputBinding -name msg -Value $outputMsg
-
-    $status = [HttpStatusCode]::OK
-    $body = "Hello $name"
-}
-else {
-    $status = [HttpStatusCode]::BadRequest
-    $body = "Please pass a name on the query string or in the request body."
-}
-
-# Associate values to output bindings by calling 'Push-OutputBinding'.
-Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
-    StatusCode = $status
-    Body = $body
-})
-```
-::: zone-end
-
-::: zone pivot="programming-language-python"
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
-::: zone-end
-
-::: zone pivot="programming-language-typescript"
-```typescript
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-
-const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
-    context.log('HTTP trigger function processed a request.');
-    const name = (req.query.name || (req.body && req.body.name));
-
-    if (name) {
-        // Add a message to the Storage queue.
-        context.bindings.msg = "Name passed to the function: " +
-            (req.query.name || req.body.name);
-        
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
-};
-
-export default httpTrigger;
-```
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
 ### <a name="update-the-image-in-the-registry"></a>Kayıt defterindeki resmi güncelleştirme
@@ -874,71 +496,7 @@ export default httpTrigger;
 
 Bir tarayıcıda, işlevinizi çağırmak için önceki URL'yi kullanın. İşlev kodunun bu bölümünü değiştirmediğiniz için tarayıcı öncekiyle aynı yanıtı görüntülemelidir. Ancak eklenen kod, `name` `outqueue` depolama kuyruğuna URL parametresini kullanarak bir ileti yazdı.
 
-[Kuyruğa Azure portalında](../storage/queues/storage-quickstart-queues-portal.md) veya [Microsoft Azure Depolama Gezgini'nde](https://storageexplorer.com/)görüntüleyebilirsiniz. Azure CLI'deki sırayı aşağıdaki adımlarda açıklandığı gibi de görüntüleyebilirsiniz:
-
-1. İşlev projesinin *yerel.setting.json* dosyasını açın ve bağlantı dize değerini kopyalayın. Bir terminal veya komut penceresinde, aşağıdaki komutu çalıştırarak bir ortam değişkeni oluşturmak için , `AZURE_STORAGE_CONNECTION_STRING`'yerine belirli bağlantı dizesi yapıştırma `<connection_string>`. (Bu ortam değişkeni, `--connection-string` bağımsız değişkeni kullanarak sonraki her komuta bağlantı dizesi sağlamanız gerekolmadığı anlamına gelir.)
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    $env:AZURE_STORAGE_CONNECTION_STRING = "<connection_string>"
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```cmd
-    set AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
-    ```
-    
-    ---
-    
-1. (İsteğe bağlı) Hesabınızdaki [`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) Depolama kuyruklarını görüntülemek için komutu kullanın. Bu komutun çıktısı, işlev `outqueue`bu kuyruğa ilk iletisini yazdığında oluşturulan , adlı bir sıra içermelidir.
-    
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    ```azurecli
-    az storage queue list --output tsv
-    ```
-    
-    ---
-
-1. İşlevdaha önce sınama sırasında kullandığınız ilk ad olmalıdır bu sırada iletileri görüntülemek için [`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) komutu kullanın. Komut, [base64 kodlamasında](functions-bindings-storage-queue-trigger.md#encoding)kuyruktaki ilk iletiyi alır, bu nedenle metin olarak görüntülemek için iletiyi deşifre etmeniz gerekir.
-
-    # <a name="bash"></a>[bash](#tab/bash)
-    
-    ```bash
-    echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-    ```
-    
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
-    
-    ```powershell
-    [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}')))
-    ```
-    
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-    
-    İleti koleksiyonunu dereference'ı deşifre edip base64'ten çözmeniz, PowerShell'i çalıştırmanız ve PowerShell komutunu kullanmanız gerektiğinden.
-
-    ---
+[!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,15 +1,15 @@
 ---
 title: Azure'da HTTP isteklerine yanıt veren bir işlev oluşturma
 description: Komut satırından nasıl bir işlev oluşturlayacağınızı ve ardından yerel projeyi Azure İşlevlerinde sunucusuz barındırmaya nasıl yayınlayacağınızı öğrenin.
-ms.date: 01/28/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 89b6a9f31414cbaa9cc92c1a0d881a1354180990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a131feab91816a6fdd5075a903cf53651f0de555
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282741"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673166"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlatma: Azure'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -17,147 +17,90 @@ Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için komut sa
 
 Ayrıca bu makalenin [Visual Studio Code tabanlı bir sürümü](functions-create-first-function-vs-code.md) vardır.
 
-## <a name="configure-your-local-environment"></a>Yerel ortamınızı yapılandırın
+[!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
-Başlamadan önce aşağıdakileri almalısınız:
+[!INCLUDE [functions-cli-verify-prereqs](../../includes/functions-cli-verify-prereqs.md)]
 
-+ Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell"  
-+ [Azure İşletme Temel Araçları](./functions-run-local.md#v2) sürümü 2.7.1846 veya daha sonraki bir 2.x sürümü.
-::: zone-end  
-::: zone pivot="programming-language-python"
-+ Python 3.6 ve 3.7, [Azure İşlevler Çekirdek Araçları](./functions-run-local.md#v2) sürümü 2.7.1846 veya daha sonraki bir 2.x sürümü gerektirir. Python 3.8, Çekirdek Araçları'nın [3.x sürümünü](./functions-run-local.md#v2) gerektirir.
-::: zone-end
-
-+ [Azure CLI](/cli/azure/install-azure-cli) sürümü 2.0.76 veya sonrası. 
-::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ [Node.js](https://nodejs.org/), Active LTS ve Maintenance LTS versiyonları (8.11.1 ve 10.14.1 önerilir).
-::: zone-end
-
-::: zone pivot="programming-language-python"
-+ [Python 3.8](https://www.python.org/downloads/release/python-382/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/), Azure Fonksiyonları (x64) tarafından desteklenir.
-::: zone-end
-::: zone pivot="programming-language-powershell"
-+ [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows)
-
-+ [.NET Çekirdek SDK 2.2+](https://www.microsoft.com/net/download)
-::: zone-end
-
-### <a name="check-your-environment"></a>Çevrenizi kontrol edin
-
-+ Bir terminal veya komut `func --version` penceresinde, Azure İşlevler Temel Araçları'nın sürüm 2.7.1846 veya daha sonraki bir 2.x sürümü olup olmadığını kontrol etmek için çalıştırın.
-
-+ Azure `az --version` CLI sürümünün 2.0.76 veya sonraki sürüm olup olmadığını kontrol etmek için çalıştırın.
-
-+ Azure'da oturum açmak ve etkin bir aboneliği doğrulamak için çalıştırın. `az login`
-
-::: zone pivot="programming-language-javascript,programming-language-typescript"
-+ Node.js sürüm raporlarınızı 8.x veya 10.x olarak kontrol etmek için çalıştırın. `node --version`
-::: zone-end
-::: zone pivot="programming-language-python"
-+ Python `python --version` sürüm raporlarınızı 3.8.x, 3.7.x veya 3.6.x olarak denetlemek için (Linux/MacOS) veya `py --version` (Windows) çalıştırın.
-
-## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Sanal ortam oluşturma ve etkinleştirme
-
-Uygun bir klasörde, ', adlı sanal bir ortam `.venv`oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. Azure İşlevleri tarafından desteklenen Python 3.8, 3.7 veya 3.6'yı kullandığınızdan emin olun.
-
-
-# <a name="bash"></a>[bash](#tab/bash)
-
-```bash
-python -m venv .venv
-```
-
-```bash
-source .venv/bin/activate
-```
-
-Python venv paketini Linux dağıtımınıza yüklemediyse aşağıdaki komutu çalıştırın:
-
-```bash
-sudo apt-get install python3-venv
-```
-
-# <a name="powershell"></a>[Powershell](#tab/powershell)
-
-```powershell
-py -m venv .venv
-```
-
-```powershell
-.venv\scripts\activate
-```
-
-# <a name="cmd"></a>[Cmd](#tab/cmd)
-
-```cmd
-py -m venv .venv
-```
-
-```cmd
-.venv\scripts\activate
-```
-
----
-
-Bu etkinleştirilen sanal ortamda sonraki tüm komutları çalıştırın. (Sanal ortamdan çıkmak `deactivate`için çalıştırın.)
-
-::: zone-end
+[!INCLUDE [functions-cli-create-venv](../../includes/functions-cli-create-venv.md)]
 
 ## <a name="create-a-local-function-project"></a>Yerel bir işlev projesi oluşturma
 
 Azure İşlevlerinde işlev projesi, her biri belirli bir tetikleyiciye yanıt veren bir veya daha fazla ayrı işlev için bir kapsayıcıdır. Projedeki tüm işlevler aynı yerel ve barındırma yapılandırmalarını paylaşır. Bu bölümde, tek bir işlev içeren bir işlev projesi oluşturursunuz.
 
-1. Sanal ortamda, belirtilen `func init` çalışma süresi ile *LocalFunctionProj* adlı bir klasörde bir işlev ler projesi oluşturmak için komutu çalıştırın:
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+Belirtilen `func init` çalışma süresiile *LocalFunctionProj* adlı bir klasörde bir işlev projesi oluşturmak için aşağıdaki gibi komutu çalıştırın:  
+::: zone-end  
+::: zone pivot="programming-language-python"  
+```
+func init LocalFunctionProj --python
+```
+::: zone-end  
+::: zone pivot="programming-language-csharp"  
+```
+func init LocalFunctionProj --dotnet
+```
+::: zone-end  
+::: zone pivot="programming-language-javascript"  
+```
+func init LocalFunctionProj --javascript
+```
+::: zone-end  
+::: zone pivot="programming-language-typescript"  
+```
+func init LocalFunctionProj --typescript
+```
+::: zone-end  
+::: zone pivot="programming-language-powershell"  
+```
+func init LocalFunctionProj --powershell
+```
+::: zone-end    
+::: zone pivot="programming-language-java"  
+İşlevler projesini bir [Maven arketipinden](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) oluşturmak için boş bir klasörde aşağıdaki komutu çalıştırın.
 
-    ::: zone pivot="programming-language-python"
-    ```
-    func init LocalFunctionProj --python
-    ```
-    ::: zone-end
-    ::: zone pivot="programming-language-csharp"
-    ```
-    func init LocalFunctionProj --dotnet
-    ```
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript"
-    ```
-    func init LocalFunctionProj --javascript
-    ```
-    ::: zone-end
-    ::: zone pivot="programming-language-typescript"
-    ```
-    func init LocalFunctionProj --typescript
-    ```
-    ::: zone-end
-    ::: zone pivot="programming-language-powershell"
-    ```
-    func init LocalFunctionProj --powershell
-    ```
-    ::: zone-end
+# <a name="bash"></a>[bash](#tab/bash)
+```bash
+mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype 
+```
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+```powershell
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" 
+```
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+```cmd
+mvn archetype:generate "-DarchetypeGroupId=com.microsoft.azure" "-DarchetypeArtifactId=azure-functions-archetype" 
+```
+---
 
+Maven, dağıtımı sırasında projeoluşturmayı bitirmek için gereken değerleri sizden sorar.   
+İstendiğinde aşağıdaki değerleri sağlayın:
 
-    Bu klasör, [local.settings.json](functions-run-local.md#local-settings-file) ve [host.json](functions-host-json.md)adlı yapılandırma dosyaları da dahil olmak üzere proje için çeşitli dosyalar içerir. *local.settings.json* Azure'dan indirilen sırları içerebildiği *için,..gitignore* dosyasında varsayılan olarak dosya kaynak denetiminden çıkarılır.
+| İstem | Değer | Açıklama |
+| ------ | ----- | ----------- |
+| **groupId** | `com.fabrikam` | Java için [paket adlandırma kurallarını](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) izleyerek, projenizi tüm projelerde benzersiz olarak tanımlayan bir değer. |
+| **Artifactıd** | `fabrikam-functions` | Bir sürüm numarası olmayan kavanozun adı olan bir değer. |
+| **Sürüm** | `1.0-SNAPSHOT` | Varsayılan değeri seçin. |
+| **Paket** | `com.fabrikam.functions` | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. |
 
-1. Proje klasörüne gidin:
+Onaylamak `Y` için Enter yazın veya enter tuşuna basın.
 
-    ```
-    cd LocalFunctionProj
-    ```
-    
-1. `--name` Bağımsız değişkenin işlevinizin benzersiz adı olduğu ve `--template` bağımsız değişkenin işlevin tetikleyicisini belirttiği aşağıdaki komutu kullanarak projenize bir işlev ekleyin. 
+Maven, bu örnekte yer alan _artifactId_adında yeni bir klasörde proje dosyalarını `fabrikam-functions`oluşturur. 
+::: zone-end  
+Proje klasörüne gidin:
 
-    ```
-    func new --name HttpExample --template "HTTP trigger"
-    ```
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+```
+cd LocalFunctionsProject
+```
+::: zone-end  
+::: zone pivot="programming-language-java"  
+```
+cd fabrikam-functions
+```
+::: zone-end  
+Bu klasör, [local.settings.json](functions-run-local.md#local-settings-file) ve [host.json](functions-host-json.md)adlı yapılandırma dosyaları da dahil olmak üzere proje için çeşitli dosyalar içerir. *local.settings.json* Azure'dan indirilen sırları içerebildiği *için,..gitignore* dosyasında varsayılan olarak dosya kaynak denetiminden çıkarılır.
 
-    ::: zone pivot="programming-language-csharp"
-    `func new`HttpExample.cs kod dosyası oluşturur.
-    ::: zone-end
-    ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
-    `func new`projenin seçilen diline uygun bir kod dosyası ve *function.json*adlı yapılandırma dosyası içeren işlev adı ile eşleşen bir alt klasör oluşturur.
-    ::: zone-end
+[!INCLUDE [functions-cli-add-function](../../includes/functions-cli-add-function.md)]
 
 ### <a name="optional-examine-the-file-contents"></a>(İsteğe bağlı) Dosya içeriğini inceleme
 
@@ -173,6 +116,26 @@ Azure İşlevlerinde işlev projesi, her biri belirli bir tetikleyiciye yanıt v
 İade nesnesi, yanıt iletisini [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) veya [BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400) olarak döndüren bir [Eylem](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) Sonucudur. Daha fazla bilgi edinmek için [Azure İşlevleri HTTP tetikleyicileri ve bağlamalarına](/azure/azure-functions/functions-bindings-http-webhook?tabs=csharp)bakın.
 ::: zone-end
 
+::: zone pivot="programming-language-java"
+#### <a name="functionjava"></a>Fonksiyon.java
+`request` *Function.java,* `run` istek verilerini değişkenden alan bir yöntem içerir, tetikleyici davranışı tanımlayan [HttpTrigger](/java/api/com.microsoft.azure.functions.annotation.httptrigger) ek açıklamasıyla dekore edilmiş bir [HttpRequestMessage'dır.](/java/api/com.microsoft.azure.functions.httprequestmessage) 
+
+:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/src/main/java/com/function/Function.java":::
+
+Yanıt iletisi [HttpResponseMessage.Builder](/java/api/com.microsoft.azure.functions.httpresponsemessage.builder) API tarafından oluşturulur.
+
+#### <a name="pomxml"></a>pom.xml
+
+Uygulamanızı barındırmak için oluşturulan Azure kaynaklarının ayarları, oluşturulan pom.xml `com.microsoft.azure` dosyasında **groupId** ile eklentinin **yapılandırma** öğesinde tanımlanır. Örneğin, aşağıdaki yapılandırma öğesi, `java-functions-group` `westus` bölgedeki kaynak grubunda bir işlev uygulaması oluşturmak için Maven tabanlı bir dağıtım talimatı verir. İşlev uygulamasının kendisi, varsayılan `java-functions-app-service-plan` olarak sunucusuz bir Tüketim planı olan planda barındırılan Windows'ta çalışır.    
+
+:::code language="java" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/pom.xml" range="116-155":::
+
+Bu ayarları, ilk dağıtımdan `runtime.os` `windows` öncekine `linux` geçiş yapmak gibi Kaynakların Azure'da nasıl oluşturulduğunu denetlemek için değiştirebilirsiniz. Maven eklentisi tarafından desteklenen ayarların tam listesi için [yapılandırma ayrıntılarına](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)bakın.
+
+#### <a name="functiontestjava"></a>FonksiyonTest.java
+
+Arketip ayrıca işleviniz için bir birim testi oluşturur. Projeye bağlama eklemek veya yeni işlevler eklemek için işlevinizi değiştirdiğinizde, *FunctionTest.java* dosyasındaki testleri de değiştirmeniz gerekir.
+::: zone-end  
 ::: zone pivot="programming-language-python"
 #### <a name="__init__py"></a>\_\_init\_\_.py
 
@@ -239,6 +202,7 @@ Her bağlama bir yön, bir tür ve benzersiz bir ad gerektirir. HTTP tetikleyici
 
 [!INCLUDE [functions-run-function-test-local-cli](../../includes/functions-run-function-test-local-cli.md)]
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"    
 ## <a name="create-supporting-azure-resources-for-your-function"></a>İşleviniz için destekleyici Azure kaynakları oluşturun
 
 İşlev kodunuzu Azure'a dağıtmadan önce üç kaynak oluşturmanız gerekir:
@@ -249,66 +213,69 @@ Her bağlama bir yön, bir tür ve benzersiz bir ad gerektirir. HTTP tetikleyici
 
 Bu öğeleri oluşturmak için aşağıdaki Azure CLI komutlarını kullanın. Her komut tamamlandıktan sonra JSON çıkışı sağlar.
 
-1. Bunu daha önce yapmadıysanız, [az giriş](/cli/azure/reference-index#az-login) komutuyla Azure'da oturum açın:
+Bunu daha önce yapmadıysanız, [az giriş](/cli/azure/reference-index#az-login) komutuyla Azure'da oturum açın:
 
     ```azurecli
     az login
     ```
     
-1. [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, `AzureFunctionsQuickstart-rg` `westeurope` bölgede adlı bir kaynak grubu oluşturur. (Genellikle `az account list-locations` kaynak grubunuzu ve kaynaklarınızı komuttan kullanılabilir bir bölgeyi kullanarak yakınınızdaki bir bölgede oluşturursunuz.)
+[az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, `AzureFunctionsQuickstart-rg` `westeurope` bölgede adlı bir kaynak grubu oluşturur. (Genellikle `az account list-locations` kaynak grubunuzu ve kaynaklarınızı komuttan kullanılabilir bir bölgeyi kullanarak yakınınızdaki bir bölgede oluşturursunuz.)
 
-    ```azurecli
-    az group create --name AzureFunctionsQuickstart-rg --location westeurope
-    ```
-    ::: zone pivot="programming-language-python"  
-    > [!NOTE]
-    > Linux ve Windows uygulamalarını aynı kaynak grubunda barındıramaz. Windows işlev uygulaması uygulaması `AzureFunctionsQuickstart-rg` veya web uygulamasıyla birlikte adında varolan bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
-    ::: zone-end  
+```azurecli
+az group create --name AzureFunctionsQuickstart-rg --location westeurope
+```
+
+> [!NOTE]
+> Linux ve Windows uygulamalarını aynı kaynak grubunda barındıramaz. Windows işlev uygulaması uygulaması `AzureFunctionsQuickstart-rg` veya web uygulamasıyla birlikte adında varolan bir kaynak grubunuz varsa, farklı bir kaynak grubu kullanmanız gerekir.
+ 
     
-1. Az depolama hesabı oluşturma komutunu kullanarak kaynak grubunuzda ve bölgenizde genel amaçlı bir [depolama hesabı oluşturun.](/cli/azure/storage/account#az-storage-account-create) Aşağıdaki örnekte, `<STORAGE_NAME>` size uygun genel olarak benzersiz bir ad la değiştirin. Adlar yalnızca üç ila 24 karakter lisi ve küçük harf içermelidir. `Standard_LRS`[fonksiyonlar tarafından desteklenen](storage-considerations.md#storage-account-requirements)genel amaçlı bir hesap belirtir.
+Az depolama hesabı oluşturma komutunu kullanarak kaynak grubunuzda ve bölgenizde genel amaçlı bir [depolama hesabı oluşturun.](/cli/azure/storage/account#az-storage-account-create) Aşağıdaki örnekte, `<STORAGE_NAME>` size uygun genel olarak benzersiz bir ad la değiştirin. Adlar yalnızca üç ila 24 karakter lisi ve küçük harf içermelidir. `Standard_LRS`[fonksiyonlar tarafından desteklenen](storage-considerations.md#storage-account-requirements)genel amaçlı bir hesap belirtir.
 
-    ```azurecli
-    az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
-    ```
+```azurecli
+az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
+```
+
+Depolama hesabı bu hızlı başlangıç için yalnızca birkaç sent (USD) alır.
     
-    Depolama hesabı bu hızlı başlangıç için yalnızca birkaç sent (USD) alır.
-    
-1. [az functionapp create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak fonksiyon uygulamasını oluşturun. Aşağıdaki örnekte, `<STORAGE_NAME>` önceki adımda kullandığınız hesabın adını değiştirin ve `<APP_NAME>` size uygun genel olarak benzersiz bir adla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
+[az functionapp create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak fonksiyon uygulamasını oluşturun. Aşağıdaki örnekte, `<STORAGE_NAME>` önceki adımda kullandığınız hesabın adını değiştirin ve `<APP_NAME>` size uygun genel olarak benzersiz bir adla değiştirin. `<APP_NAME>` aynı zamanda işlev uygulamasının varsayılan DNS etki alanıdır. 
+::: zone-end  
 
-    ::: zone pivot="programming-language-python"  
-    Python 3.8 kullanıyorsanız, `--runtime-version` `3.8` değiştirin `--functions_version` `3`ve ' a
-    
-    Python 3.6 kullanıyorsanız, `--runtime-version` 'ye `3.6`değiştirin.
+::: zone pivot="programming-language-python"  
+Python 3.8 kullanıyorsanız, `--runtime-version` `3.8` değiştirin `--functions_version` `3`ve ' a
 
-    ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
-    ```
-    ::: zone-end  
+Python 3.6 kullanıyorsanız, `--runtime-version` 'ye `3.6`değiştirin.
 
-    ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-    Düğüm.js 8 kullanıyorsanız, aynı `--runtime-version` zamanda `8`değiştirin.
+```azurecli
+az functionapp create --resource-group AzureFunctionsQuickstart-rg --os-type Linux --consumption-plan-location westeurope --runtime python --runtime-version 3.7 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+```
+::: zone-end  
 
-    
-    ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
-    ```
-    ::: zone-end  
+::: zone pivot="programming-language-javascript,programming-language-typescript"  
+Düğüm.js 8 kullanıyorsanız, aynı `--runtime-version` zamanda `8`değiştirin.
 
-    ::: zone pivot="programming-language-csharp"  
-    ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
-    ```
-    ::: zone-end  
-    
-    ::: zone pivot="programming-language-powershell"  
-    ```azurecli
-    az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
-    ```
-    ::: zone-end  
 
-    Bu komut, [azure işlevleri tüketim planı](functions-scale.md#consumption-plan)altında belirtilen dilde çalışma zamanında çalışan bir işlev uygulaması oluşturur ve burada maruz kaldığınız kullanım miktarı için ücretsizdir. Komut ayrıca, işlev uygulamanızı izleyip günlüklerinizi görüntüleyebileceğiniz ilişkili bir Azure Uygulama Öngörüleri örneğini de aynı kaynak grubunda karşılar. Daha fazla bilgi için [bkz.](functions-monitoring.md) Örneği etkinleştirene kadar hiçbir ücret etüt etmez.
+```azurecli
+az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 10 --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+```
+::: zone-end  
+
+::: zone pivot="programming-language-csharp"  
+```azurecli
+az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime dotnet --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+```
+::: zone-end  
+
+::: zone pivot="programming-language-powershell"  
+```azurecli
+az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime powershell --functions-version 2 --name <APP_NAME> --storage-account <STORAGE_NAME>
+```
+::: zone-end  
+
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"  
+Bu komut, [azure işlevleri tüketim planı](functions-scale.md#consumption-plan)altında belirtilen dilde çalışma zamanında çalışan bir işlev uygulaması oluşturur ve burada maruz kaldığınız kullanım miktarı için ücretsizdir. Komut ayrıca, işlev uygulamanızı izleyip günlüklerinizi görüntüleyebileceğiniz ilişkili bir Azure Uygulama Öngörüleri örneğini de aynı kaynak grubunda karşılar. Daha fazla bilgi için [bkz.](functions-monitoring.md) Örneği etkinleştirene kadar hiçbir ücret etüt etmez.
     
 ## <a name="deploy-the-function-project-to-azure"></a>İşlev projesini Azure'a dağıtma
+::: zone-end  
 
 ::: zone pivot="programming-language-typescript"  
 Projenizi Azure'a dağıtmak için Temel Araçlar'ı kullanmadan önce, TypeScript kaynak dosyalarından üretime hazır bir JavaScript dosyaları oluşturursunuz.
@@ -320,6 +287,7 @@ npm run build:production
 ```
 ::: zone-end  
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp"  
 Gerekli kaynaklar yerindeyken, [func azure functionapp publish](functions-run-local.md#project-file-deployment) komutunu kullanarak yerel işlevler projenizi Azure'daki işlev uygulamasına dağıtmaya hazırsınız. Aşağıdaki örnekte, `<APP_NAME>` uygulamanızın adını değiştirin.
 
 ```
@@ -346,6 +314,37 @@ Functions in msdocs-azurefunctions-qs:
     HttpExample - [httpTrigger]
         Invoke url: https://msdocs-azurefunctions-qs.azurewebsites.net/api/httpexample?code=KYHrydo4GFe9y0000000qRgRJ8NdLFKpkakGJQfC3izYVidzzDN4gQ==
 </pre>
+
+::: zone-end  
+::: zone pivot="programming-language-java"  
+## <a name="deploy-the-function-project-to-azure"></a>İşlev projesini Azure'a dağıtma
+
+İşlevprojenizi ilk dağıttığınızda Azure'da bir işlev uygulaması ve ilgili kaynaklar oluşturulur. Uygulamanızı barındırmak için oluşturulan Azure kaynaklarının ayarları [pom.xml dosyasında](#pomxml)tanımlanır. Bu makalede, varsayılanları kabul eeceksiniz.
+
+> [!TIP]
+> Windows yerine Linux üzerinde çalışan bir işlev `runtime.os` uygulaması oluşturmak için, pom.xml dosyasındaki öğeyi ' den `windows` ' e `linux`değiştirin. Linux'u bir tüketim planında çalıştırmak [bu bölgelerde](https://github.com/Azure/azure-functions-host/wiki/Linux-Consumption-Regions)desteklenir. Linux'ta çalışan uygulamalara ve aynı kaynak grubunda Windows'da çalışan uygulamalara sahip olamazsınız.
+
+Dağıtmadan önce Azure aboneliğinizde oturum açmak için [az giriş](/cli/azure/authenticate-azure-cli) Azure CLI komutunu kullanın. 
+
+```azurecli
+az login
+```
+
+Projenizi yeni bir işlev uygulamasına dağıtmak için aşağıdaki komutu kullanın. 
+
+```
+mvn azure-functions:deploy
+```
+
+Bu, Azure'da aşağıdaki kaynakları oluşturur:
+
++ Kaynak grubu. _Java-functions-group_olarak adlandırılır.
++ Depolama hesabı. Fonksiyonlar tarafından gereklidir. Ad, Depolama hesabı adı gereksinimlerine göre rasgele oluşturulur.
++ Hosting planı. _Westus_ bölgesindeki işlev uygulamanız için sunucusuz barındırma. Adı _java-functions-app-service-plan._
++ Fonksiyon uygulaması. İşlevler için dağıtım ve yürütme birimidir. Ad rasgele oluşturulan bir sayı ile _eklenen, artifakı_D'niz olduğunuza göre rasgele oluşturulur. 
+
+Dağıtım, proje dosyalarını paketler ve [zip dağıtımını](functions-deployment-technologies.md#zip-deploy)kullanarak bunları yeni işlev uygulamasına dağıtır. Kod, Azure'daki dağıtım paketinden çalışır.
+::: zone-end
 
 ## <a name="invoke-the-function-on-azure"></a>Azure'da işlevi çağırma
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 95a579cacc339360295f5f25fa6415ab29cd68ff
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618315"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673909"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Öngörüleri Önizlemesinde veri depolama ve giriş
 
@@ -42,7 +42,7 @@ Azure Zaman Serisi Öngörüleri Önizleme aşağıdaki etkinlik kaynaklarını 
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
 
-Azure Zaman Serisi Öngörüleri Önizleme, her örnek için en fazla iki olay kaynağını destekler.
+Azure Zaman Serisi Öngörüleri Önizleme, her örnek için en fazla iki olay kaynağını destekler. Bir olay kaynağını bağladığınızda, TSI ortamınız en eski olaydan başlayarak Şu anda Iot veya Event Hub'ınızda depolanan tüm olayları okur. 
 
 > [!IMPORTANT] 
 > * Önizleme ortamınıza bir olay kaynağı takarken yüksek başlangıç gecikmesi yaşayabilirsiniz. 

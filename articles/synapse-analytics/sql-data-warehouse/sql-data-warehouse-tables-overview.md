@@ -11,12 +11,12 @@ ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c5964bc944cd50e05d548eb731450a4944e854d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 2802c62acef0d78f8cfa7dd7f06bc34d8eecca4c
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631259"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742615"
 ---
 # <a name="design-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tasarım tabloları
 
@@ -111,7 +111,7 @@ Tablo kategorisi genellikle tablodağıtmak için hangi seçeneği seçeceğiniz
 
 ## <a name="table-partitions"></a>Tablo bölümleri
 
-Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarındaki işlemleri depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Sorgu talanını bölüm içindeki verilerle sınırlayan bölüm eliminasyonu yoluyla sorgu performansını artırabilirsiniz. Ayrıca, bölüm geçişi yoluyla verileri koruyabilirsiniz. SQL Veri Ambarı'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için [Bölümleme kılavuzuna](sql-data-warehouse-tables-partition.md)bakın.  Bölüm boş olmayan tablo bölümlerine geçerken, varolan veriler kesilirse [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ekstrenizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerdeki anahtarları varolan verilerin üzerine yazma SalesFact'e dönüşür.
+Bölümlenmiş bir tablo, veri aralıklarına göre tablo satırlarındaki işlemleri depolar ve gerçekleştirir. Örneğin, bir tablo güne, aya veya yıla göre bölümlenebilir. Sorgu talanını bölüm içindeki verilerle sınırlayan bölüm eliminasyonu yoluyla sorgu performansını artırabilirsiniz. Ayrıca, bölüm geçişi yoluyla verileri koruyabilirsiniz. SQL Veri Ambarı'ndaki veriler zaten dağıtıldığından, çok fazla bölüm sorgu performansını yavaşlatabilir. Daha fazla bilgi için [Bölümleme kılavuzuna](sql-data-warehouse-tables-partition.md)bakın.  Bölüm boş olmayan tablo bölümlerine geçerken, varolan veriler kesilirse [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ekstrenizdeki TRUNCATE_TARGET seçeneğini kullanmayı düşünün. Aşağıdaki kod, dönüştürülmüş günlük verilerdeki anahtarları varolan verilerin üzerine yazma SalesFact'e dönüşür.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  
@@ -126,7 +126,7 @@ Kümelenmiş sütun deposu dizini genellikle en iyi seçimdir, ancak bazı durum
 > [!TIP]
 > Yığın tablo, özellikle son tabloya dönüştürülmüş bir hazırlama tablosu gibi geçici verileri yüklemek için yararlı olabilir.
 
-Sütun mağazası özelliklerinin listesi [için, sütun mağazası dizinleri için yeniliklere](/sql/relational-databases/indexes/columnstore-indexes-what-s-new)bakın. Sütun deposu dizini performansını artırmak [için, sütun deposu dizinleri için satır grubu kalitesini en üst düzeye çıkarma'ya](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)bakın.
+Sütun mağazası özelliklerinin listesi [için, sütun mağazası dizinleri için yeniliklere](/sql/relational-databases/indexes/columnstore-indexes-what-s-new?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)bakın. Sütun deposu dizini performansını artırmak [için, sütun deposu dizinleri için satır grubu kalitesini en üst düzeye çıkarma'ya](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)bakın.
 
 ## <a name="statistics"></a>İstatistikler
 
@@ -146,10 +146,10 @@ Yeni boş tablo olarak bir tablo oluşturabilirsiniz. Ayrıca, seçili bir deyim
 
 | T-SQL Bildirimi | Açıklama |
 |:----------------|:------------|
-| [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
-| [DıŞ TABLO OLUŞTURMA](/sql/t-sql/statements/create-external-table-transact-sql) | Harici bir tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolama veya Azure Veri Gölü Deposu'nda depolanır. |
-| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) | Seçili bir deyimin sonuçlarıyla birlikte yeni bir tabloyu doldurur. Tablo sütunları ve veri türleri, select deyimi sonuçlarına dayanır. Veri almak için bu deyim harici bir tablodan seçim yapabilir. |
-| [SEÇOLARAK HARICI TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql) | Seçili bir deyimin sonuçlarını dış konuma dışa dışa dışa dışa dışa aktararak yeni bir dış tablo oluşturur.  Konumu, Azure Blob depolama alanı veya Azure Veri Gölü Deposu'dur. |
+| [TABLO OLUŞTUR](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Tüm tablo sütunlarını ve seçeneklerini tanımlayarak boş bir tablo oluşturur. |
+| [DıŞ TABLO OLUŞTURMA](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Harici bir tablo oluşturur. Tablonun tanımı SQL havuzunda depolanır. Tablo verileri Azure Blob depolama veya Azure Veri Gölü Deposu'nda depolanır. |
+| [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Seçili bir deyimin sonuçlarıyla birlikte yeni bir tabloyu doldurur. Tablo sütunları ve veri türleri, select deyimi sonuçlarına dayanır. Veri almak için bu deyim harici bir tablodan seçim yapabilir. |
+| [SEÇOLARAK HARICI TABLO OLUŞTUR](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) | Seçili bir deyimin sonuçlarını dış konuma dışa dışa dışa dışa dışa aktararak yeni bir dış tablo oluşturur.  Konumu, Azure Blob depolama alanı veya Azure Veri Gölü Deposu'dur. |
 
 ## <a name="aligning-source-data-with-the-sql-pool"></a>Kaynak verileri SQL havuzuyla hizalama
 
@@ -174,7 +174,7 @@ SQL havuzu, diğer veritabanları tarafından sunulan tablo özelliklerinin ço�
 
 ## <a name="table-size-queries"></a>Tablo boyutu sorguları
 
-60 dağıtımın her birinde bir tablo tarafından tüketilen alanı ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql)kullanmaktır.
+60 dağıtımın her birinde bir tablo tarafından tüketilen alanı ve satırları belirlemenin basit bir yolu, [DBCC PDW_SHOWSPACEUSED](/sql/t-sql/database-console-commands/dbcc-pdw-showspaceused-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)kullanmaktır.
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');

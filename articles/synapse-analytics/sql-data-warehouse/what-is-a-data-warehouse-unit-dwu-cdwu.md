@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01a05755fc18a85a95e9c1bec1c470d37af656d1
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632226"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742547"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri Ambarı Birimleri (DWUs)
 
@@ -24,9 +24,9 @@ Fiyat ve performansı optimize etmek için ideal veri ambarı birimi (DWUs) say�
 
 ## <a name="what-are-data-warehouse-units"></a>Veri Ambarı Birimleri nedir
 
-[Synapse SQL havuzu,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) sağlanan analitik kaynaklar koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir leşimi olarak tanımlanır. 
+[Synapse SQL havuzu,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) sağlanan analitik kaynaklar koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir leşimi olarak tanımlanır.
 
-Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. 
+Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder.
 
 Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyetini ayarlayan, sistemin kullanabileceği DW'lerin sayısını değiştirir.
 
@@ -72,7 +72,7 @@ Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda v
 2. Gözlemlediğiniz performansa göre seçilen DW'lerin sayısını gözlemleyerek, sistemdeki veri yüklerini test ederken uygulama performansınızı izleyin.
 3. Yoğun aktivitenin periyodik dönemleri için ek gereksinimleri belirleyin. Etkinlikte önemli zirveler ve çukurlar gösteren iş yüklerinin sık sık ölçeklendirilmesi gerekebilir.
 
-SQL havuzu, büyük miktarda bilgi işlem ve sorgu lanabilir miktarda veri sağlayan ölçeklendirilebilir bir sistemdir. 
+SQL havuzu, büyük miktarda bilgi işlem ve sorgu lanabilir miktarda veri sağlayan ölçeklendirilebilir bir sistemdir.
 
 Ölçeklendirme için gerçek yeteneklerini görmek için, özellikle büyük DWUs'larda, CPU'ları beslemek için yeterli veriye sahip olduğundan emin olmak için ölçeklendikçe veri kümesini ölçeklendirmenizi öneririz. Ölçek testi için en az 1 TB kullanmanızı öneririz.
 
@@ -82,7 +82,7 @@ SQL havuzu, büyük miktarda bilgi işlem ve sorgu lanabilir miktarda veri sağl
 
 ## <a name="permissions"></a>İzinler
 
-Veri ambarı birimlerinin değiştirilmesi [alter DATABASE'te](/sql/t-sql/statements/alter-database-transact-sql)açıklanan izinleri gerektirir.
+Veri ambarı birimlerinin değiştirilmesi [alter DATABASE'te](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)açıklanan izinleri gerektirir.
 
 SQL DB Katılımcısı ve SQL Server Katılımcısı gibi Azure kaynaklarının yerleşik rolleri DWU ayarlarını değiştirebilir.
 
@@ -134,7 +134,7 @@ T-SQL ile geçerli DWU ayarlarını görüntüleyebilir, ayarları değiştirebi
 DWUs'u değiştirmek için:
 
 1. Mantıksal SQL Veritabanı sunucunuzla ilişkili ana veritabanına bağlanın.
-2. ALTER [DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL deyimini kullanın. Aşağıdaki örnek, MySQLDW veritabanı için dw1000c hizmet düzeyi hedefini ayarlar.
+2. ALTER [DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL deyimini kullanın. Aşağıdaki örnek, MySQLDW veritabanı için dw1000c hizmet düzeyi hedefini ayarlar.
 
 ```Sql
 ALTER DATABASE MySQLDW

@@ -6,12 +6,12 @@ ms.author: karler
 ms.date: 10/14/2019
 ms.topic: quickstart
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: 8ae69bfa7ed00e310205332e05c071158c5fc9a3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d9815fd27a57acc8b418962e610d2ae1c106edde
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78272799"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673273"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java işlevinizi Azure Depolama'ya bağlayın
 
@@ -37,77 +37,13 @@ Artık projenize Depolama çıktısı bağlamayı ekleyebilirsiniz.
 
 ## <a name="add-an-output-binding"></a>Çıktı bağlaması ekleme
 
-Java projesinde, bağlamalar işlev yöntemine bağlama ek açıklamaları olarak tanımlanır. *Function.json* dosyası daha sonra bu ek açıklamalara göre otomatik olarak oluşturulur.
-
-_Src/main/java_altında işlev kodunuzu konumuna göz atın, *Function.java* proje dosyasını açın `run` ve yöntem tanımına aşağıdaki parametreyi ekleyin:
-
-```java
-@QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") OutputBinding<String> msg
-```
-
-`msg` Parametre, işlev [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) tamamlandığında çıktı bağlamasına ileti olarak yazılan dizeler koleksiyonunu temsil eden bir türdür. Bu durumda, çıktı adlı `outqueue`bir depolama sırasıdır. Depolama hesabının bağlantı dizesi `connection` yönteme göre ayarlanır. Bağlantı dizesi yerine, Depolama hesabı bağlantı dizesini içeren uygulama ayarını geçersiniz.
-
-`run` Yöntem tanımı şimdi aşağıdaki örnek gibi görünmelidir:  
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION)  
-        HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    ...
-}
-```
+[!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Çıkış bağlaması kullanan kod ekleme
 
-Şimdi, işlev kodunuzdan çıktı bağlama yazmak için yeni `msg` parametreyi kullanabilirsiniz. Çıktı bağlama değeri eklemek `name` için başarı yanıtı önce kod aşağıdaki satırı ekleyin. `msg`
+[!INCLUDE [functions-add-output-binding-java-code](../../includes/functions-add-output-binding-java-code.md)]
 
-```java
-msg.setValue(name);
-```
-
-Çıktı bağlama kullandığınızda, kimlik doğrulaması, sıra başvurusu almak veya veri yazmak için Azure Depolama SDK kodunu kullanmanız gerekmez. İşlevler çalışma zamanı ve sıra çıktısı bağlama bu görevleri sizin için yapar.
-
-Yönteminiz `run` şimdi aşağıdaki örnek gibi görünmelidir:
-
-```java
-@FunctionName("HttpTrigger-Java")
-public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request, 
-        @QueueOutput(name = "msg", queueName = "outqueue", connection = "AzureWebJobsStorage") 
-        OutputBinding<String> msg, final ExecutionContext context) {
-    context.getLogger().info("Java HTTP trigger processed a request.");
-
-    // Parse query parameter
-    String query = request.getQueryParameters().get("name");
-    String name = request.getBody().orElse(query);
-
-    if (name == null) {
-        return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Please pass a name on the query string or in the request body").build();
-    } else {
-        // Write the name to the message queue. 
-        msg.setValue(name);
-
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-    }
-}
-```
-
-## <a name="update-the-tests"></a>Testleri güncelleştirme
-
-Arketip aynı zamanda bir dizi test oluşturduğundan, yöntem imzasındaki `msg` yeni parametreyi işlemek için bu testleri güncelleştirmeniz `run` gerekir.  
-
-_Src/test/java_altında test kodunuzun konumuna göz atın, *Function.java* proje dosyasını `//Invoke` açın ve aşağıdaki kodla kod satırını değiştirin.
-
-```java
-@SuppressWarnings("unchecked")
-final OutputBinding<String> msg = (OutputBinding<String>)mock(OutputBinding.class);
-
-// Invoke
-final HttpResponseMessage ret = new Function().run(req, msg, context);
-``` 
+[!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 
 Artık yeni çıktı bağlamayı yerel olarak denemeye hazırsınız.
 
@@ -115,19 +51,17 @@ Artık yeni çıktı bağlamayı yerel olarak denemeye hazırsınız.
 
 Daha önce olduğu gibi, projeyi oluşturmak ve Işlevleri yerel olarak çalıştırma zamanını başlatmak için aşağıdaki komutu kullanın:
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)
 ```bash
 mvn clean package 
 mvn azure-functions:run
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle) 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-::: zone-end
+---
 
 > [!NOTE]  
 > Host.json'da uzantı demetlerini etkinleştirdiğiniz için, [Depolama bağlama uzantısı](functions-bindings-storage-blob.md#add-to-your-functions-app) başlangıç sırasında diğer Microsoft bağlama uzantılarıyla birlikte karşıdan yüklendi ve sizin için yüklendi.
@@ -150,17 +84,15 @@ Ardından, yeni kuyruğa görüntülemek ve bir iletinin eklandığını doğrul
 
 Yayınlanan uygulamanızı güncellemek için aşağıdaki komutu yeniden çalıştırın:  
 
-::: zone pivot="java-build-tools-maven"  
+# <a name="maven"></a>[Maven](#tab/maven)  
 ```bash
 mvn azure-functions:deploy
 ```
-::: zone-end
-
-::: zone pivot="java-build-tools-gradle"  
+# <a name="gradle"></a>[Gradle](#tab/gradle)  
 ```bash
 gradle azureFunctionsDeploy
 ```
-::: zone-end
+---
 
 Yine, dağıtılan işlevi sınamak için cURL kullanabilirsiniz. Daha önce olduğu `AzureFunctions` gibi, post isteğinin gövdesindeki değeri aşağıdaki örnekte olduğu gibi URL'ye iletin:
 

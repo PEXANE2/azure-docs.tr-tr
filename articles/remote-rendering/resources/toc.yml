@@ -1,0 +1,6 @@
+- name: Araçlar
+  href: tools/toc.yml
+- name: Sorun giderme
+  href: troubleshoot.md
+- name: Ürün geri bildirimi sağlama
+  href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'

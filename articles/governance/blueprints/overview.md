@@ -3,12 +3,12 @@ title: Azure Blueprints’e genel bakış
 description: Azure Planları hizmetinin Azure ortamınızda yapıtları oluşturmanıza, tanımlamanıza ve dağıtmanıza nasıl olanak sağladığını anlayın.
 ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74321776"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677408"
 ---
 # <a name="what-is-azure-blueprints"></a>Azure Blueprints nedir?
 
@@ -22,17 +22,17 @@ Blueprints, aşağıdakiler gibi çeşitli kaynak şablonlarını ve diğer yap�
 - Kaynak Grupları
 
 Azure Blueprints hizmeti, genel olarak dağıtılmış [Azure Cosmos DB](../../cosmos-db/introduction.md) tarafından desteklenir.
-Şema nesneleri birden çok Azure bölgesinde çoğaltılır. Bu çoğaltma Blueprints’in kaynaklarınızı dağıttığı bölgeden bağımsız olarak tüm şema nesnelerinizde düşük gecikme süresi, yüksek kullanılabilirlik ve tutarlılık sağlar.
+Şema nesneleri birden çok Azure bölgesinde çoğaltılır. Bu çoğaltma, Azure Blueprints'in kaynaklarınızı hangi bölgeye dağıttığının bakılmaksızın, plan nesnelerinize düşük gecikme sonu, yüksek kullanılabilirlik ve tutarlı erişim sağlar.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Resource Manager şablonlarından farkı
 
 Bu hizmet, _ortam kurulumu_ aşamasında yardımcı olmak üzere tasarlanmıştır. Bu kurulum genellikle bir dizi kaynak grubu, ilke, rol ataması ve Resource Manager şablon dağıtımını içerir. Şema, tüm bu _yapıt_ türlerini bir araya getirerek CI/CD işlem hattı dahil olmak üzere oluşturmanızı ve sürüm belirlemenizi sağlayan bir pakettir. Sonuç olarak her biri tek bir işlem içindeki bir aboneliğe atanır ve denetlenip izlenebilir.
 
-Blueprints ile dağıtmak için kullanmak istediğiniz hemen her şey Resource Manager şablonu ile gerçekleştirilebilir. Ancak Resource Manager şablonu, Azure'da yerel olarak bulunan bir belge değildir, her birinin yerel ortamda veya kaynak denetiminde depolanması gerekir. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
+Azure Planları'nda dağıtım için eklemek istediğiniz hemen hemen her şey Bir Kaynak Yöneticisi şablonuyla gerçekleştirilebilir. Ancak Resource Manager şablonu, Azure'da yerel olarak bulunan bir belge değildir, her birinin yerel ortamda veya kaynak denetiminde depolanması gerekir. Şablon bir veya daha fazla Azure kaynağının dağıtılması için kullanılır ancak bu kaynaklar dağıtıldıktan sonra kullanılan şablonla etkin bir bağlantı veya ilişki kalmaz.
 
-Blueprints ile şema tanımı (dağıtılması _gereken şey_) ile şema ataması (dağıtılan _şey_) arasındaki ilişki korunur. Bu bağlantı dağıtımların daha iyi izlenmesini ve denetlenmesini destekler. Blueprints ile aynı şema tarafından yönetilen birden fazla aboneliğin aynı anda yükseltilmesi de mümkündür.
+Azure Planları ile, plan tanımı (dağıtılması _gerekenler)_ ile plan ataması _(dağıtılanlar)_ arasındaki ilişki korunur. Bu bağlantı dağıtımların daha iyi izlenmesini ve denetlenmesini destekler. Azure Planları, aynı plana göre yönetilen birden çok aboneliği aynı anda yükseltebilir.
 
-Resource Manager şablonu ile şema arasında seçim yapmanıza gerek yoktur. Her şema sıfır veya daha fazla Resource Manager şablonu _yapıtı_ içerebilir. Bu destek, Resource Manager şablonu kitaplığı geliştirme ve koruma çabalarının Blueprints ile yeniden kullanılabileceği anlamına gelir.
+Resource Manager şablonu ile şema arasında seçim yapmanıza gerek yoktur. Her şema sıfır veya daha fazla Resource Manager şablonu _yapıtı_ içerebilir. Bu destek, Kaynak Yöneticisi şablonları kitaplığını geliştirme ve koruma amaçlı önceki çabaların Azure Blueprints'te yeniden kullanılabilir olduğu anlamına gelir.
 
 ## <a name="how-its-different-from-azure-policy"></a>Azure İlkesi'nden farkı
 
@@ -46,7 +46,7 @@ Bir ilke, bir plan tanımına birçok _yapıttan_ biri olarak eklenebilir. Şema
 
 ## <a name="blueprint-definition"></a>Şema tanımı
 
-Şemalar, _yapıtlardan_ meydana gelir. Şu an için aşağıdaki kaynaklar şemalarda yapıtlar olarak kullanılabilir:
+Şemalar, _yapıtlardan_ meydana gelir. Azure Blueprints şu anda aşağıdaki kaynakları yapı olarak destekler:
 
 |Kaynak  | Hiyerarşi seçenekleri| Açıklama  |
 |---------|---------|---------|

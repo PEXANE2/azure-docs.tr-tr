@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437722"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677443"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -212,4 +212,8 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Azure Güvenlik Duvarı'ndaki kural bu trafiğe izin vermese bile, TCP ping ve benzeri araçlar neden hedef FQDN'ye başarılı bir şekilde bağlanabilir?
 
-Bir TCP ping aslında hedef FQDN bağlanmıyor. Bunun nedeni, Azure Güvenlik Duvarı'nın saydam proxy'si giden trafik için 80/443 bağlantı noktasında niçin dinler. TCP ping, güvenlik duvarıyla bağlantı kurar ve bu da paketi düşürür ve bağlantıyı kaydeder. Bu davranışın herhangi bir güvenlik etkisi yoktur. Ancak, karışıklığı önlemek için bu davranışta olası değişiklikleri araştırıyoruz. 
+Bir TCP ping aslında hedef FQDN bağlanmıyor. Bunun nedeni, Azure Güvenlik Duvarı'nın saydam proxy'si giden trafik için 80/443 bağlantı noktasında niçin dinler. TCP ping, güvenlik duvarıyla bağlantı kurar ve bu da paketi düşürür ve bağlantıyı kaydeder. Bu davranışın herhangi bir güvenlik etkisi yoktur. Ancak, karışıklığı önlemek için bu davranışta olası değişiklikleri araştırıyoruz.
+
+## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>IP Grupları tarafından desteklenen IP adreslerinin sayısı için sınırlar var mı?
+
+Evet. Daha fazla bilgi için Azure [abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)

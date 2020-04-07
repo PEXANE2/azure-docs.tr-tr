@@ -3,12 +3,12 @@ title: Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 description: Azure Yedekleme ile bir Azure VM oluştururken yedeklemeyi nasıl etkinleştirdiğinizi açıklar.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7739109eb8bad88c9b723e67e13adc78c127499a
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247858"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672816"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM’sini oluşturduğunuz sırada yedeklemeyi etkinleştirme
 
@@ -64,6 +64,8 @@ Dikkat edilmesi gereken noktalar:
 5. Gerektiğinde ilkeyi değiştirerek RG'nin adını değiştirebilirsiniz. Ad deseni değiştirilirse, yeni RG'de yeni RP'ler oluşturulur. Ancak, RP Collection kaynak hareketini desteklemediği için eski RP'ler eski RG'de yaşamaya devam eder ve taşınmaz. Sonunda, puanlar sona erdiğinde, RP'ler çöp leri toplayacak.
 ![İlkeyi değiştirirken adı değiştirme](./media/backup-during-vm-creation/modify-policy.png)
 6. Yedekleme hizmeti tarafından kullanılmak üzere oluşturulan kaynak grubunu kilitlememesi önerilir.
+
+PowerShell kullanarak Sanal Makineler için Azure Yedekleme kaynak grubunu yapılandırmak için [anlık görüntü tutma sırasında Azure Yedekleme kaynak grubu oluşturma'ya](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)bakın.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>VM'yi oluşturduktan sonra yedekleme başlatın
 

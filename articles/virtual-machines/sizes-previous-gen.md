@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: e5fe58891aa901509dc44d3b2465c794bd92b22d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f13ab3cd6ff765bc3b1bee8e8fad7e7273f6c7d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476578"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673924"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Sanal makine boyutları önceki nesiller
 
@@ -66,6 +66,7 @@ Premium Depolama önbelleğe alma: Desteklenen
 MB/sn = 10^6 bayt/saniye ve GiB = 1024^3 bayt.
 
 <sup>1</sup> Fs serisi VM ile mümkün olan maksimum disk verimi (IOPS veya MBps) ekli diskin (ler) sayısı, boyutu ve şeritle sınırlı olabilir.  Ayrıntılar için, [Windows](windows/premium-storage-performance.md) veya [Linux](linux/premium-storage-performance.md)için yüksek performans için tasarım bölümüne bakın.  
+
 
 ## <a name="nvv2-series"></a>NVv2 serisi
 
@@ -341,9 +342,33 @@ Premium Depolama önbelleğe alma: Desteklenmiyor
 <sup>1</sup> Örnek, tek bir müşteriye adanmış donanıma yalıtılır.
 <br>
 
+# <a name="nv-series"></a>NV serisi
+**Yeni boyut önerisi**: [NVv3 serisi ve NVv4](nvv3-series.md) [serisi](nvv4-series.md)
+
+NV serisi sanal makineler, müşterilerin verilerini veya simülasyonlarını görselleştirebildiği masaüstü hızlandırılmış uygulamalar ve sanal masaüstü bilgisayarlar için [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU'ları ve NVIDIA GRID teknolojisi ile desteklenmektedir. Kullanıcılar, üstün grafik yeteneği elde etmek ve kodlama ve işleme gibi tek duyarlıklı iş yüklerini çalıştırmak için NV örneklerinde grafik yoğun iş akışlarını görselleştirebilir. NV serisi VM'ler de Intel Xeon E5-2690 v3 (Haswell) CPU'lar tarafından desteklenmektedir.
+
+NV örneklerindeki her GPU bir GRID lisansıyla birlikte gelir. Bu lisans, bir NV örneğini tek bir kullanıcı için sanal iş istasyonu olarak kullanma esnekliği sağlar veya 25 eşzamanlı kullanıcı sanal bir uygulama senaryosu için VM'ye bağlanabilir.
+
+Premium Depolama: Desteklenmiyor
+
+Premium Depolama önbelleğe alma: Desteklenmiyor
+
+Canlı Geçiş: Desteklenmiyor
+
+Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
+
+| Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU bellek: GiB | Maksimum veri diskleri | En fazla NIC | Sanal İş İstasyonları | Sanal Uygulamalar |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_NV6  | 6  | 56  | 340  | 1 | 8  | 24 | 1 | 1 | 25  |
+| Standard_NV12 | 12 | 112 | 680  | 2 | 16 | 48 | 2 | 2 | 50  |
+| Standard_NV24 | 24 | 224 | 1440 | 4 | 32 | 64 | 4 | 4 | 100 |
+
+1 GPU = M60 kartın yarısı.
+<br>
+
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-* [Genel amaç](sizes-general.md)
+* [Genel amaçlı](sizes-general.md)
 * [İşlem için iyileştirilmiş](sizes-compute.md)
 * [Bellek için iyileştirilmiş](sizes-memory.md)
 * [Depolama için iyileştirilmiş](sizes-storage.md)

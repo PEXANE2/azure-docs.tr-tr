@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 56c53b9e2388cc0594076a5ef35b072216aec20d
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478459"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672760"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/physical server olağanüstü durum kurtarma yapılandırma sunucusunu yönetme
 
@@ -93,6 +93,32 @@ Açık Sanallaştırma Biçimi (OVF) şablonu yapılandırma sunucusu VM'yi tek 
 - [VM'ye ek bir bağdaştırıcı ekleyebilirsiniz,](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter)ancak yapılandırma sunucusunu kasaya kaydettirmeden önce eklemeniz gerekir.
 - Yapılandırma sunucusunu kasaya kaydettirdikten sonra bağdaştırıcı eklemek için bağdaştırıcıyı VM özelliklerine ekleyin. Sonra kasadaki sunucuyu [yeniden kaydetmeniz](#reregister-a-configuration-server-in-the-same-vault) gerekir.
 
+## <a name="how-to-renew-ssl-certificates"></a>SSL sertifikaları nasıl yenilenir?
+
+Yapılandırma sunucusu, tüm korumalı makinelerde, dahili/ölçeklendirme işlem sunucularında ve ona bağlı ana hedef sunucularda Mobility aracılarının etkinliklerini düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
+
+### <a name="check-expiry"></a>Son kullanma tarihini kontrol edin
+
+Son kullanma tarihi **Configuration Server health**altında görünür. Yapılandırma sunucusu dağıtımları için Mayıs 2016'dan önce sertifika son kullanma süresi bir yıla ayarlandı. Süresi dolacak bir sertifikanız varsa, aşağıdakiler oluşur:
+
+- Son kullanma tarihi iki ay veya daha az olduğunda, hizmet portalda ve e-posta yla (Site Kurtarma bildirimlerine abone olduysanız) bildirim göndermeye başlar.
+- Kasa kaynak sayfasında bir bildirim başlığı görüntülenir. Daha fazla bilgi için banner'ı seçin.
+- **Şimdi Yükseltme** düğmesini görürseniz, ortamınızdaki bazı bileşenlerin 9.4.xxxx.x veya daha yüksek sürümlere yükseltilmediğini gösterir. Sertifikayı yenilemeden önce bileşenleri yükseltin. Eski sürümlerinde yenileyemezsiniz.
+
+### <a name="if-certificates-are-yet-to-expire"></a>Sertifikaların süresi henüz dolmadıysa
+
+1. Yenilemek için, kasada, **Site Kurtarma Altyapı** > **Yapılandırma Sunucusu'nu**açın. Gerekli yapılandırma sunucusunu seçin.
+2. Tüm bileşenlerin ölçeklendirme işlem sunucularını, ana hedef sunucularını ve tüm korumalı makinelerdeki mobilite aracılarının en son sürümlerde olduğundan ve bağlı durumda olduğundan emin olun.
+3. Şimdi, **Sertifikaları Yenile'yi**seçin.
+4. Bu sayfadaki yönergeleri dikkatle izleyin ve seçili yapılandırma sunucusunda sertifikaları yenilemek için tamam'ı tıklatın ve ilişkili bileşenler.
+
+### <a name="if-certificates-have-already-expired"></a>Sertifikaların süresi dolmuşsa
+
+1. Son kullanma tarihi geçti, sertifikalar **Azure portalından yenilenemez.** Devam etmeden önce, tüm bileşenlerin ölçeklendirme işlem sunucularını, ana hedef sunucularını ve tüm korumalı makinelerdeki mobilite aracılarının en son sürümlerde olduğundan ve bağlı durumda olduğundan emin olun.
+2. **Yalnızca sertifikaların süresi dolmuşsa bu yordamı izleyin.** Yapılandırma sunucusuna giriş yapın, C sürücü > Program Veri > Site Kurtarma > ev > svsystems > ve yönetici olarak "RenewCerts" yürütme aracı yürütmek gidin.
+3. PowerShell yürütme penceresi açılır ve sertifikaların yenilenmesini tetikler. Bu işlem 15 dakika sürebilir. Yenileme tamamlanıncaya kadar pencereyi kapatmayın.
+
+:::image type="content" source="media/vmware-azure-manage-configuration-server/renew-certificates.png" alt-text="Sertifikaları Yenileme":::
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Yapılandırma sunucusunu aynı kasada yeniden kaydetme
 
@@ -112,7 +138,7 @@ Gerekirse yapılandırma sunucusunu aynı kasada yeniden kaydedebilirsiniz. Yap�
    ```
 
     >[!NOTE]
-    >Yapılandırma sunucusundan ölçeklendirme işlem sunucusuna **en son sertifikaları çekmek** için " *\<Yükleme Sürücüsü\Microsoft Azure Site Kurtarma\aracısı\cdpcli.exe>" --registermt* komutunu çalıştırın
+    >Yapılandırma sunucusundan ölçeklendirme işlem sunucusuna **en son sertifikaları çekmek** için " *\<Yükleme Sürücüsü\Microsoft Azure Site Kurtarma\aracısı\cdpcli.exe>"-- registermt* komutunu çalıştırın
 
 8. Son olarak, aşağıdaki komutu çalıştırarak obengine yeniden başlatın.
    ```
@@ -269,24 +295,6 @@ PowerShell'i kullanarak yapılandırma sunucusunu isteğe bağlı olarak silebil
 2. Dizini depo kutusu klasörüne değiştirmek için **cd %ProgramData%\ASR\home\svsystems\bin** komutunu çalıştırın
 3. Passphrase dosyasını oluşturmak için **genpassphrase.exe -v > MobSvc.passphrase'i**uygulayın.
 4. Parolanız **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**adresinde bulunan dosyada depolanır.
-
-## <a name="renew-tlsssl-certificates"></a>TLS/SSL sertifikalarını yenileme
-
-Yapılandırma sunucusu, Mobilite Hizmetinin etkinliklerini, işlem sunucularını ve ona bağlı ana hedef sunucuları düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir TLS/SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
-
-### <a name="check-expiry"></a>Son kullanma tarihini kontrol edin
-
-Yapılandırma sunucusu dağıtımları için Mayıs 2016'dan önce sertifika son kullanma süresi bir yıla ayarlandı. Süresi dolacak bir sertifikanız varsa, aşağıdakiler oluşur:
-
-- Son kullanma tarihi iki ay veya daha az olduğunda, hizmet portalda ve e-posta yla (Site Kurtarma bildirimlerine abone olduysanız) bildirim göndermeye başlar.
-- Kasa kaynak sayfasında bir bildirim başlığı görüntülenir. Daha fazla bilgi için banner'ı seçin.
-- **Şimdi Yükseltme** düğmesini görürseniz, ortamınızdaki bazı bileşenlerin 9.4.xxxx.x veya daha yüksek sürümlere yükseltilmediğini gösterir. Sertifikayı yenilemeden önce bileşenleri yükseltin. Eski sürümlerinde yenileyemezsiniz.
-
-### <a name="renew-the-certificate"></a>Sertifikayı yenileme
-
-1. Kasada Site **Kurtarma Altyapı** > **Yapılandırma Sunucusu'nu**açın. Gerekli yapılandırma sunucusunu seçin.
-2. Son kullanma tarihi **Configuration Server health**altında görünür.
-3. **Sertifikaları Yenile'yi**seçin.
 
 ## <a name="refresh-configuration-server"></a>Yapılandırma sunucusuyenileme
 

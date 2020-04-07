@@ -3,16 +3,16 @@ title: PowerShell ile ithalat ve ihracat planları
 description: Kod olarak plan tanımlarınızla nasıl çalışacağınızı öğrenin. Dışa aktarma ve alma komutlarını kullanarak bunları paylaşın, kaynak denetimi ve yönetme.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: fc7b9818072665d79deaf8a456868943e8428730
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873208"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677148"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell ile plan tanımlarını alma ve ihraç etme
 
-Azure Planları, Azure portalı üzerinden tam olarak yönetilebilir. Kuruluşlar Blueprints'i kullanırken ilerledikçe, plan tanımlarını yönetilen kod olarak düşünmeye başlamalıdırlar. Bu kavram genellikle Kod (IaC) olarak Altyapı olarak adlandırılır. Plan tanımlarınızı kod olarak ele almanız, Azure portalının sunduğunun ötesinde ek avantajlar sunar. Bu avantajlar şunlardır:
+Azure Planları, Azure portalı üzerinden tam olarak yönetilebilir. Kuruluşlar Azure Planlarını kullanırken ilerledikçe, plan tanımlarını yönetilen kod olarak düşünmeye başlamalıdır. Bu kavram genellikle Kod (IaC) olarak Altyapı olarak adlandırılır. Plan tanımlarınızı kod olarak ele almanız, Azure portalının sunduğunun ötesinde ek avantajlar sunar. Bu avantajlar şunlardır:
 
 - Plan tanımlarını paylaşma
 - Plan tanımlarınızı yedekleme

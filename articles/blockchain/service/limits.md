@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmeti sınırları
 description: Azure Blockchain Hizmeti'nde hizmete ve işlevsel sınırlara genel bakış
-ms.date: 03/30/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.reviewer: ravastra
-ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 71e1bebf10fa0142870d03977182472da1ad031f
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529568"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80676528"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Hizmetinde Sınırlar
 
@@ -35,7 +35,6 @@ Temel katmanı kullanmak geliştirme, test ve kavramların kanıtı içindir. Ü
 Genel muhasebe verileri ve günlükleri için düğüm başına kullanılabilecek maksimum depolama miktarı 1,8 terabayttır.
 
 Azalan genel muhasebe ve günlük depolama boyutu desteklenmez.
-
 ## <a name="consortium-limits"></a>Konsorsiyum limitleri
 
 * **Konsorsiyum ve üye adları** Azure Blockchain Hizmeti'ndeki diğer konsorsiyum ve üye adlardan benzersiz olmalıdır.
@@ -59,6 +58,12 @@ Azalan genel muhasebe ve günlük depolama boyutu desteklenmez.
 * **Konsorsiyumdaki tüm üyeler aynı genel muhasebe sürümünü kullanmalıdır**
 
     Azure Blockchain Hizmeti'nde bulunan yama, güncelleştirmeler ve genel muhasebe sürümleri hakkında daha fazla bilgi için [bkz.](ledger-versions.md)
+
+## <a name="performance"></a>Performans
+
+Her işlem gönderimi için *eth.estimate* gaz işlevini kullanmayın. *Eth.estimate* işlevi bellek yoğundur. İşlevi birden çok kez çağırmak, saniyede hareketleri önemli ölçüde azaltır.
+
+Mümkünse, işlemleri göndermek için konservatif bir gaz değeri kullanın ve *eth.estimate*kullanımını en aza indirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

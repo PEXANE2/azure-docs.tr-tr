@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 9c1260bb1fab23ede2d1a96725c3086dc128fffc
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387657"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673600"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Veritabanı ile Ortak Güvenlik Gereksinimlerini Ele Almak Için Oyun Kitabı
 
@@ -63,7 +63,7 @@ Aksi belirtilmedikçe, ilgili hedefe veya gereksinime ulaşmak için her bölüm
 
 Burada listelenen önerileri ve en iyi uygulamaları güncellemeye devam etmeyi planlıyoruz. Bu makalenin altındaki **Geri Bildirim** bağlantısını kullanarak bu belge için giriş veya düzeltme sağlayın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının iddia ettikleri kişi olduğunu kanıtlama işlemidir. Azure SQL Veritabanı iki tür kimlik doğrulamayı destekler:
 
@@ -265,7 +265,7 @@ Aşağıdaki en iyi uygulamalar isteğe bağlıdır, ancak güvenlik stratejiniz
 
 - SQL Server Database Engine'deki izinlerin aşağıdaki kapsamlarda uygulanabileceğini unutmayın. Kapsam ne kadar küçükse, verilen izinlerin etkisi o kadar küçük türdedir: 
   - Azure SQL Veritabanı sunucusu (ana veritabanında özel roller) 
-  - Database 
+  - Veritabanı 
   - Şema
       - Şemaları veritabanı içinde izin vermek için kullanmak en iyi yöntemdir. (ayrıca bakınız: [SQL Server için şema tasarımı: güvenlik göz önünde bulundurularak Şema tasarımı için öneriler)](http://andreas-wolter.com/en/schema-design-for-sql-server-recommendations-for-schema-design-with-security-in-mind/)
   - Nesne (tablo, görünüm, yordam, vb.) 
@@ -466,7 +466,7 @@ CLE kullanırken:
 
 Her Zaman Şifrelenmiş'in öncelikle Azure SQL Veritabanı'nın yüksek ayrıcalıklı kullanıcılarından (bulut operatörleri, DAB' ler) kullanımdaki hassas [verileri](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users)korumak için tasarlanır olduğunu unutmayın - bkz. Verileri uygulama kullanıcılarından korumak için Her Zaman Şifrelenmiş'i kullanırken aşağıdaki zorluklara dikkat edin:
 
-- Varsayılan olarak, Her Zaman Şifrelenmiş'i destekleyen tüm Microsoft istemci sürücüleri sütun şifreleme anahtarlarının genel (uygulama başına bir) önbelleğini korur. Bir istemci sürücü, sütun ana anahtarı nı tutan bir anahtar deposuna başvurarak düz metin sütun şifreleme anahtarı nı satın aldıktan sonra, düz metin sütun şifreleme anahtarı önbelleğe çıkar. Bu, çok kullanıcılı bir uygulamanın kullanıcılarından gelen verileri yalıtmalarını zorlaştırır. Uygulamanız bir anahtar deposuyla (Azure Key Vault gibi) etkileşimde yken son kullanıcıların kimliğine bürünüyorsa, bir kullanıcının sorgusu önbelleği sütun şifreleme anahtarıyla doldurduktan sonra, aynı anahtarı gerektiren ancak başka bir kullanıcı tarafından tetiklenen sonraki bir sorgu önbelleğe alınmış anahtar. Sürücü anahtar mağazasını aramaz ve ikinci kullanıcının sütun şifreleme anahtarına erişmek için izni olup olmadığını denetlemez. Sonuç olarak, kullanıcı anahtarlara erişimi olmasa bile, kullanıcı şifrelenmiş verileri görebilir. Çok kullanıcılı bir uygulama içinde kullanıcıların yalıtımını elde etmek için sütun şifreleme anahtarı önbelleğe alma devre dışı kullanabilirsiniz. Sürücünün her veri şifrelemesi veya şifre çözme işlemi için anahtar deposuna başvurması gerektiğinden, önbelleğe alma ek akışeklerine neden olur.
+- Varsayılan olarak, Her Zaman Şifrelenmiş'i destekleyen tüm Microsoft istemci sürücüleri sütun şifreleme anahtarlarının genel (uygulama başına bir) önbelleğini korur. Bir istemci sürücü, sütun ana anahtarı nı tutan bir anahtar deposuna başvurarak düz metin sütun şifreleme anahtarı nı satın aldıktan sonra, düz metin sütun şifreleme anahtarı önbelleğe çıkar. Bu, çok kullanıcılı bir uygulamanın kullanıcılarından gelen verileri yalıtmalarını zorlaştırır. Uygulamanız bir anahtar deposuyla (Azure Key Vault gibi) etkileşimde yken son kullanıcıların kimliğine bürünüyorsa, bir kullanıcının sorgusu önbelleği sütun şifreleme anahtarıyla doldurduktan sonra, aynı anahtarı gerektiren ancak başka bir kullanıcı tarafından tetiklenen sonraki bir sorgu önbelleğe alınmış anahtarı kullanır. Sürücü anahtar mağazasını aramaz ve ikinci kullanıcının sütun şifreleme anahtarına erişmek için izni olup olmadığını denetlemez. Sonuç olarak, kullanıcı anahtarlara erişimi olmasa bile, kullanıcı şifrelenmiş verileri görebilir. Çok kullanıcılı bir uygulama içinde kullanıcıların yalıtımını elde etmek için sütun şifreleme anahtarı önbelleğe alma devre dışı kullanabilirsiniz. Sürücünün her veri şifrelemesi veya şifre çözme işlemi için anahtar deposuna başvurması gerektiğinden, önbelleğe alma ek akışeklerine neden olur.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Veri biçimini korurken verileri uygulama kullanıcıları tarafından yetkisiz görüntülemeye karşı koruyun
 Yetkisiz kullanıcıların verileri görüntülemesini engellemenin bir diğer tekniği de, kullanıcı uygulamalarının verileri işlemeye ve görüntülemeye devam edebilmesini sağlamak için veri türlerini ve biçimleri korurken verileri gizlemek veya maskelemektir.
@@ -735,7 +735,7 @@ Hassas verilere kimlerin erişmesini izleyin ve denetim günlüklerinde hassas v
 **Nasıl uygulanır:**
 
 - SQL Denetim ve Veri Sınıflandırması'nı birlikte kullanın. 
-  - SQL [Veritabanı Denetimi](sql-database-auditing.md) günlüğünde, özellikle hassas verilere erişimi izleyebilirsiniz. Ayrıca, erişilen veriler gibi bilgileri ve duyarlılık etiketini görüntüleyebilirsiniz. Daha fazla bilgi için [bkz.](sql-database-data-discovery-and-classification.md#subheading-3) 
+  - SQL [Veritabanı Denetimi](sql-database-auditing.md) günlüğünde, özellikle hassas verilere erişimi izleyebilirsiniz. Ayrıca, erişilen veriler gibi bilgileri ve duyarlılık etiketini görüntüleyebilirsiniz. Daha fazla bilgi için bkz [Auditing access to sensitive data](sql-database-data-discovery-and-classification.md#audit-sensitive-data) [&.](sql-database-data-discovery-and-classification.md) 
 
 **En iyi uygulamalar:**
 

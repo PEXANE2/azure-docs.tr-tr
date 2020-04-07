@@ -14,16 +14,16 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a123a85d653415f7b067e0c144c90ed79f2d081
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: e3a17eb7fdde6840ce04fb0cbce13ec3f1a121e0
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80330986"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80673699"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Öğretici: Tek bir AD orman ortamını buluta aktarın
 
-![Oluşturma](media/tutorial-federation/diagram.png)
+![Oluştur](media/tutorial-federation/diagram.png)
 
 Aşağıdaki öğretici federasyon kullanarak bir melez kimlik ortamı oluşturma yoluyla size yol verecektir.  Bu ortam daha sonra sınamak veya karma kimliğin nasıl çalıştığını daha iyi tanımak için kullanılabilir.
 
@@ -145,7 +145,7 @@ $ForestMode = "WinThreshold"
 $LogPath = "c:\windows\NTDS"
 $SysVolPath = "c:\windows\SYSVOL"
 $featureLogPath = "c:\poshlog\featurelog.txt" 
-$Password = "Pass1w0rd"
+$Password = ConvertTo-SecureString "Passw0rd" -AsPlainText -Force
 
 #Install AD DS, DNS and GPMC 
 start-job -Name addFeature -ScriptBlock { 
@@ -246,7 +246,7 @@ Artık bir kiracımız ve küresel bir yöneticimiz olduğuna göre, Azure'un bu
 
 1. Azure AD'ye Bağlan ekranına, yukarıda oluşturduğumuz global yöneticinin kullanıcı adını ve parolasını girin ve **İleri'yi**tıklatın.
 2. Dizinlerinizi Bağla ekranında **Dizin Ekle'yi**tıklatın.  Ardından **yeni AD hesabı oluştur'u** seçin ve contoso\Administrator kullanıcı adı ve parolasını girin ve **Tamam'ı**tıklatın.
-3. **İleri**'ye tıklayın.
+3. **İleri**’ye tıklayın.
 4. Azure AD oturum açma yapılandırma ekranında, **doğrulanmış etki alanlarıyla tüm UPN soneklerini eşleştirmeden Devam** et'i seçin ve **İleri'yi tıklatın.**
 5. Etki Alanı ve OU filtreleme ekranında **İleri'yi**tıklatın.
 6. Kullanıcılarınızı Benzersiz olarak tanımlama ekranında **İleri'yi**tıklatın.
@@ -256,10 +256,10 @@ Artık bir kiracımız ve küresel bir yöneticimiz olduğuna göre, Azure'un bu
 10. AD FS çiftlik ekranında, **yeni bir AD FS çiftliğini yapılandırıldığından** emin olun.
 11. **Federasyon sunucularında yüklü bir sertifika kullan'ı** seçin ve **Gözat'ı**tıklatın.
 12. Arama kutusuna DC1'i girin ve bulunduğunda seçin.  **Tamam**'a tıklayın.
-13. Sertifika **Dosyası** açılır tarihinden yukarıda oluşturduğumuz **sertifikaadfs.contoso.com seçin.**  **İleri**'ye tıklayın.
+13. Sertifika **Dosyası** açılır tarihinden yukarıda oluşturduğumuz **sertifikaadfs.contoso.com seçin.**  **İleri**’ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed2.png)
 
-1. AD FS sunucu **ekranında, Gözat'ı** tıklatın ve arama kutusuna DC1 girin ve bulunduğunda seçin.  **Tamam**'a tıklayın.  **İleri**'ye tıklayın.
+1. AD FS sunucu **ekranında, Gözat'ı** tıklatın ve arama kutusuna DC1 girin ve bulunduğunda seçin.  **Tamam**'a tıklayın.  **İleri**’ye tıklayın.
 ![Federasyon](media/tutorial-federation/fed3.png)
 
 1. Web uygulaması Proxy sunucuları ekranında **İleri'yi**tıklatın.

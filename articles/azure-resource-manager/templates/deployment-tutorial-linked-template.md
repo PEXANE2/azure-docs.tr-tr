@@ -4,12 +4,12 @@ description: Bağlantılı bir şablonu nasıl dağıtılayacaklarını öğreni
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 70a09315b0947f41e7602e630460cb3e674a7bf8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 177a994450b6ffe5489a8c95c3b484521fd9b77b
+ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80082247"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80672930"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Öğretici: Bağlantılı bir şablon dağıtma
 
@@ -91,7 +91,10 @@ Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci olu
 
 Kaynak grubunu oluşturmadıysanız, [bkz.](./deployment-tutorial-local-template.md#create-resource-group)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+> [!NOTE]
+> Aşağıdaki Azure CLI kodunda tarih parametresi -d macOS'ta geçersiz bir bağımsız değişken olacaktır. Yani macOS kullanıcıları, macOS'ta terminalde geçerli saate 2 saat eklemek için -v+2H kullanmalısınız.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656267"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80742902"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Bitiş Noktası nedir?
 
@@ -144,7 +144,7 @@ Azure hizmetleri için, aşağıdaki tabloda açıklandığı gibi önerilen bö
 |Azure Röle (Microsoft.Relay/namespaces) | ad alanı |privatelink.servicebus.windows.net|
 |Azure Olay Kılavuz (Microsoft.EventGrid/konular)   | konu başlığı | Konu. {region}.privatelink.eventgrid.azure.net|
 |Azure Olay Grid (Microsoft.EventGrid/etki alanları) | etki alanı | Etki alanı. {region}.privatelink.eventgrid.azure.net |
-|Azure WebApps (Microsoft.Web/siteler) | Site | privatelink.azurewebsites.net |
+|Azure WebApps (Microsoft.Web/siteler)    | Site | privatelink.azurewebsites.net |
 |Azure Machine Learning (Microsoft.MachineLearningServices/çalışma alanları)   | çalışma alanı | privatelink.api.azureml.ms |
  
 Azure, çözümü önerilen alan adlarına yönlendirmek için ortak DNS'de bir dns adı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresiyle çözünürlüğü geçersiz kılabilirsiniz. 

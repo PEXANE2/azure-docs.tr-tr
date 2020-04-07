@@ -3,12 +3,12 @@ title: Dinamik planlar oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler ve güvenli ve dinamik planlar oluşturmak için bunları nasıl kullanacağınız hakkında bilgi edinin.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264719"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677576"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -20,7 +20,7 @@ Basit bir örnek kaynak grubu artifakıdır. Bir kaynak grubu oluşturulduğunda
 > İki farklı planın aynı ada sahip bir kaynak grubu içermesi sorun değildir.
 > Plana dahil edilen bir kaynak grubu zaten varsa, plan bu kaynak grubunda ilgili yapıları oluşturmaya devam eder. Bu, aynı ada ve kaynak türüne sahip iki kaynak bir abonelik içinde var olamayacağından çakışma neden olabilir.
 
-Bu sorunun çözümü parametrelerdir. Planlar, bir aboneliğe atama sırasında yapının her özelliğinin değerini tanımlamanızı sağlar. Parametre, çakışmadan tek bir abonelik içinde kaynak grubu ve diğer kaynaklar oluşturan bir planı yeniden kullanmayı mümkün kılar.
+Bu sorunun çözümü parametrelerdir. Azure Blueprints, bir aboneliğe atama sırasında yapının her özelliğinin değerini tanımlamanıza olanak tanır. Parametre, çakışmadan tek bir abonelik içinde kaynak grubu ve diğer kaynaklar oluşturan bir planı yeniden kullanmayı mümkün kılar.
 
 ## <a name="blueprint-parameters"></a>Şema parametreleri
 

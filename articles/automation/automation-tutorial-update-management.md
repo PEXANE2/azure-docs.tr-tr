@@ -4,14 +4,14 @@ description: Bu makalede, Azure ve Azure olmayan VM'leriniziçin güncelleştirm
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 03/04/2020
+ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: b5b03efafbed3439e5f8fdf98e2cd5b2d63a3d45
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
+ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411036"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80677044"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM'leriniz için güncelleştirmeleri ve yamaları yönetme
 
@@ -123,7 +123,7 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 
    Sınıflandırma türlerinin açıklamaları için [bkz.](automation-view-update-assessments.md#update-classifications)
 
-* **Ekle/hariç tutmak için güncelleştirmeler - Ekle/Hariç** tut sayfasını açar. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir.
+* **Ekle/hariç tutmak için güncelleştirmeler - Ekle/Hariç** tut sayfasını açar. Eklenecek veya dışlanacak güncelleştirmeler, KB Madde Kimlik numaraları belirtilmek suretiyle ayrı sekmelerde bulunur. Bir veya daha fazla kimlik numarası belirtirken, güncelleştirme dağıtımıyla birlikte tüm sınıflandırmaları kaldırmanız veya denetlemeniz gerekir. Bu, güncelleştirme iI'lerini belirtirken güncelleştirme paketinizde başka güncelleştirmenin dahil olmamasını sağlar.
 
 > [!NOTE]
 > Dışlamaların kapsayıcıları geçersiz kdığını bilmek önemlidir. Örneğin, bir dışlama kuralı `*`tanımlarsanız, Update Management, tümü hariç olduğu için hiçbir düzeltme eki veya paket yüklemez. Dışlanmış yamalar hala makineden eksik olarak göstermektedir. Linux makineleri için, dışlanmış bağımlı bir pakete sahip bir paket eklerseniz, Güncelleştirme Yönetimi ana paketi yüklemez.
