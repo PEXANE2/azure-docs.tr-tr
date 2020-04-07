@@ -597,6 +597,8 @@
           items:
             - name: Esnek ölçek
               href: manage-scale-cassandra.md
+            - name: İkincil Dizinler
+              href: cassandra-secondary-index.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Akışı değiştirme
@@ -1012,12 +1014,12 @@
           href: ../private-link/create-private-endpoint-cosmosdb-portal.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Başlangıç Noktaları Arası Kaynak Paylaşımı'nı (CORS) yapılandırma
           href: how-to-configure-cross-origin-resource-sharing.md
-        - name: Yönetilen kimlik kullanarak anahtarların güvenliğini sağlama
+        - name: Verilere erişmek için yönetilen kimlikleri kullanma
           href: managed-identity-based-authentication.md
           displayName: 'msi, managed service identity, aad, azure active directory, identity'
-        - name: Azure AD ile sertifika tabanlı kimlik doğrulaması
+        - name: Verilere erişmek için sertifikaları kullanma
           href: certificate-based-authentication.md
-        - name: Key Vault kullanarak anahtarların güvenliğini sağlama
+        - name: Verilere erişmek için Azure Key Vault’u kullanma
           href: access-secrets-from-keyvault.md
         - name: Kullanıcı erişimini yalnızca veri işlemleriyle sınırlama
           href: how-to-restrict-user-data.md

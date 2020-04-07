@@ -75,6 +75,8 @@
           href: overview-security.md
         - name: Güvenlik temeli
           href: security-baseline.md
+        - name: Yerleşik Güvenlik
+          href: key-vault-security-controls.md
         - name: Güvenlik dünyaları
           href: key-vault-ovw-security-worlds.md
         - name: Anahtar kasanızın güvenliğini sağlama

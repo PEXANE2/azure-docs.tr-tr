@@ -22,8 +22,6 @@
           href: functions-create-your-first-function-visual-studio.md
         - name: Komut satırı
           href: functions-create-first-azure-function-azure-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-create-first-java-maven.md
     - name: Depolamaya bağlanma
       items:
         - name: Visual Studio Code
@@ -32,8 +30,6 @@
           href: functions-add-output-binding-storage-queue-vs.md
         - name: Komut satırı
           href: functions-add-output-binding-storage-queue-cli.md
-        - name: Maven/Gradle (Java)
-          href: functions-add-output-binding-storage-queue-java.md
 - name: Öğreticiler
   items:
     - name: Logic Apps ile İşlevler
@@ -175,10 +171,16 @@
                   href: create-visual-studio.md
                 - name: Visual Studio Code
                   href: create-visual-studio-code.md
+                - name: Gradle kullanarak Java
+                  href: functions-create-first-java-gradle.md
                 - name: Eclipse kullanarak Java
                   href: functions-create-maven-eclipse.md
                 - name: IntelliJ IDEA kullanarak Java
                   href: functions-create-maven-intellij.md
+                - name: Maven kullanarak Kotlin
+                  href: functions-create-first-kotlin-maven.md
+                - name: IntelliJ kullanarak Java
+                  href: functions-create-maven-kotlin-intellij.md
                 - name: Linux App Service planı
                   href: create-function-app-linux-app-service-plan.md
                 - name: Linux Tüketimi planı
@@ -205,6 +207,8 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Depolama - Visual Studio
               href: add-output-binding-storage-queue-vs.md
+            - name: Depolama - Java/Gradle
+              href: functions-add-output-binding-storage-queue-java.md
         - name: Hata ayıklama ve test etme
           items:
             - name: İşlevleri test etme

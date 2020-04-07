@@ -1,0 +1,20 @@
+- name: Azure Remote Rendering Belgeleri
+  href: index.yml
+- name: Genel Bakış
+  expanded: true
+  href: overview/toc.yml
+- name: Hızlı Başlangıçlar
+  expanded: true
+  href: quickstarts/toc.yml
+- name: Öğreticiler
+  href: tutorials/toc.yml
+- name: Örnekler
+  href: samples/toc.yml
+- name: Kavramlar
+  href: concepts/toc.yml
+- name: Nasıl yapılır kılavuzları
+  href: how-tos/toc.yml
+- name: Başvuru
+  href: reference/toc.yml
+- name: Kaynaklar
+  href: resources/toc.yml

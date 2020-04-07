@@ -1,26 +1,26 @@
 ---
-title: Azure Rezervasyonları nedir?
+title: Azure Ayırmaları nedir?
 description: Sanal makineleriniz, SQL veritabanlarınız, Azure Cosmos DB ve diğer kaynak maliyetlerinde tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri ve fiyatlandırma hakkında bilgi edinin.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 6277a7e7dc5891a3bc67c298a31344284c92e31d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 97bd03fb2aa8f5b486ef87a04f260fec43eb81bd
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235646"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396707"
 ---
-# <a name="what-are-azure-reservations"></a>Azure Rezervasyonları nedir?
+# <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
 Azure Rezervasyonları birden çok ürün için bir yıllık veya üç yıllık planları kabul ederek tasarruf etmenize yardımcı olur. Taahhütte bulunarak kullandığınız kaynakları indirimli satın alabilirsiniz. Rezervasyonlar, kaynak maliyetlerinizi kullandıkça öde fiyatlarına kıyasla %72'ye varan oranda azaltabilir. Rezervasyonlar bir faturalandırma indirimi sağlar ve kaynaklarınızın çalışma zamanı durumunu etkilemez. Rezervasyon satın aldıktan sonra, eşleşen kaynaklara otomatik olarak indirim uygulanır.
 
 Bir rezervasyonun ödemesini peşin veya aylık olarak yapabilirsiniz. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz. Aylık ödeme, üçüncü taraf ürünleri için değil Azure rezervasyonları için kullanılabilir.
 
-[Azure portalından](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) da rezervasyon satın alabilirsiniz.
+[https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) adresindeki Azure portalından da rezervasyon satın alabilirsiniz.
 
 ## <a name="why-buy-a-reservation"></a>Neden rezervasyon satın almalıyım?
 
@@ -34,6 +34,48 @@ Satın alma sonrasında, rezervasyon indirimi rezervasyonu satın alırken seçt
 
 Rezervasyon kapsamının nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Kapsam rezervasyonları](prepare-buy-reservation.md#scope-reservations).
 
+## <a name="determine-what-to-purchase"></a>Neyin satın alınacağını saptama 
+
+Azure Databricks dışındaki tüm rezervasyonlar saatlik olarak uygulanır. Tutarlı temel kullanımınızı temel alan rezervasyon satın alımlarınızı göz önünde bulundurun. Kullanım verilerinizi analiz ederek veya rezervasyon önerilerini kullanarak, satın alacağınız rezervasyonu belirleyebilirsiniz. Önerileri şurada bulabilirsiniz:
+
+- Azure Danışmanı (yalnızca VM’ler)
+- Azure portalında rezervasyon satın alma deneyimi
+- Maliyet Yönetimi Power BI uygulaması
+- API'ler 
+
+Daha fazla bilgi için bkz.  [Satın alınacak rezervasyonu belirleme](determine-reservation-purchase.md) 
+
+## <a name="buying-a-reservation"></a>Rezervasyon satın alma 
+
+Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon satın alabilirsiniz. 
+
+Satın almak için Azure portalına gidin (https://ms.portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/Docs) ) 
+
+Daha fazla bilgi için bkz.  [Rezervasyon satın alma](prepare-buy-reservation.md) 
+
+## <a name="how-is-a-reservation-billed"></a>Rezervasyon nasıl faturalandırılır? 
+
+Rezervasyon ücreti, aboneliğe bağlı ödeme yöntemiyle tahsil edilir. Rezervasyon maliyeti, varsa parasal taahhüt bakiyenizden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığında fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartından peşin alma işlemleri için hemen ücret alınır. Aylık ödemeler faturanızda görünür ve kredi kartınızdan aylık olarak ücret alınır. Fatura ile ücret aldığınızda ücretleri bir sonraki faturanızda görürsünüz. 
+
+## <a name="permissions-to-view-and-manage-reservations"></a>Rezervasyonları görüntüleme ve yönetme izinleri 
+
+Rezervasyon satın alan kullanıcı ve rezervasyonu faturalamak için kullanılan aboneliğin hesap yöneticisi, rezervasyon siparişinde ve rezervasyonun kendisinde Sahip rolü elde eder.
+
+Rezervasyon siparişindeki veya rezervasyondaki rollere kullanıcı ekleyerek bir rezervasyonun yönetimi için temsilciler belirleyebilirsiniz. Rolleri Azure portalından veya API’leri ve PowerShell’i kullanarak atarsınız. 
+
+Daha fazla bilgi için bkz.  [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+
+## <a name="get-reservation-details-and-utilization-after-purchase"></a>Satın alma işleminden sonra rezervasyon ayrıntılarını ve kullanımını alma
+
+Rezervasyonu görüntüleme izniniz varsa rezervasyonun kendisini ve kullanımını Azure portalında görebilirsiniz. Verileri, API’leri kullanarak da alabilirsiniz. 
+
+Rezervasyonları Azure portalında görme hakkında daha fazla bilgi için bkz.  [Azure portalında rezervasyonları görüntüleme](view-reservations.md) 
+
+## <a name="manage-reservations-after-purchase"></a>Satın alma sonrasında rezervasyonları yönetme 
+
+Azure rezervasyonu satın aldıktan sonra, rezervasyonu farklı bir aboneliğe uygulamak için kapsamı güncelleştirebilir, rezervasyonu yöneten kişileri değiştirebilir, rezervasyonu daha küçük parçalara bölebilir veya örnek boyutu esnekliğini değiştirebilirsiniz. 
+
+Daha fazla bilgi için bkz.  [Azure kaynakları için Rezervasyonları yönetme](manage-reserved-vm-instance.md) 
 
 ## <a name="flexibility-with-azure-reservations"></a>Azure rezervasyonlarıyla esneklik
 
@@ -76,7 +118,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Aşağıdaki makalelerle Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinin:
-    - [Azure Ayırmalarını yönetme](manage-reserved-vm-instance.md)
+    - [Azure Rezervasyonlarını yönetme](manage-reserved-vm-instance.md)
     - [Kullandıkça öde fiyatlarına tabi aboneliğiniz için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
     - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)
     - [Rezervasyonlara dahil olmayan Windows yazılımı maliyetleri](reserved-instance-windows-software-costs.md)

@@ -1,0 +1,12 @@
+- name: Modelleri dönüştürme
+  href: model-conversion.md
+- name: Model dönüştürmesi için Azure Blob depolamayı kullanma
+  href: blob-storage.md
+- name: Model dönüştürme REST API’yi kullanma
+  href: conversion-rest-api.md
+- name: Model dönüştürmeyi yapılandırma
+  href: configure-model-conversion.md
+- name: Model dönüştürme sırasında malzemeleri geçersiz kılma
+  href: override-materials.md
+- name: Dönüştürülmüş bir model hakkında bilgi alma
+  href: get-information.md

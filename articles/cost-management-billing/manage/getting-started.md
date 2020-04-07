@@ -1,19 +1,19 @@
 ---
-title: Azure'da beklenmeyen maliyetleri önleme ve faturalandırmayı yönetme
-description: Azure faturanızda beklenmeyen ücretleri nasıl önleyeceğinizi öğrenin. Azure hesabınız için maliyet izleme ve yönetim özelliklerini kullanın.
+title: Azure Maliyet Yönetimi ve Faturalama ile beklenmeyen ücretleri önleme ve analiz etme
+description: Azure faturanızdaki beklenmeyen ücretleri önleme ve Azure hesabınızda maliyet izleme ile yönetim özellikleri hakkında bilgi edinin.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/11/2020
+ms.date: 3/30/2020
 ms.author: banders
-ms.openlocfilehash: 0e0003b3adfdb6ebba49bd8d014fc0ba287ca3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238151"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475268"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure faturasında beklenmeyen ücretlendirmeleri önleme ve maliyet yönetimi
 
@@ -112,11 +112,6 @@ Sol taraftan **Maliyet**’i seçin. **Maliyet** sekmesinde eyleme dönüştür�
 
 Maliyet tasarrufu sağlayan Danışmanı önerileri hakkında kılavuzlu bir öğretici için [Önerilerle maliyetleri iyileştirme](../costs/tutorial-acm-opt-recommendations.md) öğreticisini gözden geçirin.
 
-## <a name="review-charges-against-your-latest-invoice"></a>Ücretleri en son faturanıza göre gözden geçirme
-
-Faturalama döneminin sonunda faturanız oluşturulur. [Faturaları ve ayrıntılı kullanım dosyalarını indirebilir](download-azure-invoice-daily-usage-date.md) ve doğru ücretin yansıtıldığından emin olmak için karşılaştırabilirsiniz. Günlük kullanımınızı faturanızla karşılaştırma hakkında daha fazla bilgi için bkz. [Microsoft Azure faturanızı anlama](../understand/review-individual-bill.md).
-
-Azure'ı bir Microsoft Müşteri Sözleşmesi (MCA) aracılığıyla kullanıyorsanız, faturanızdaki ücretleri anlamak için [faturanızı işlemlerle de karşılaştırabilirsiniz](../understand/review-customer-agreement-bill.md#review-invoiced-transactions-in-the-azure-portal).
 
 ## <a name="integrate-with-billing-and-consumption-apis"></a>Fatura ve tüketim API'leriyle tümleştirme
 
@@ -178,9 +173,65 @@ Bazı hizmetlerde SLA'nın uygulanması önkoşullara bağlıdır. Örneğin, sa
 
 Daha fazla bilgi için [Hizmet Düzeyi Sözleşmeleri](https://azure.microsoft.com/support/legal/sla/) ve [Azure hizmetleri için SLA özeti](https://azure.microsoft.com/support/legal/sla/summary/) belgelerine bakın.
 
-## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
+## <a name="analyze-unexpected-charges"></a>Beklenmeyen ücretleri analiz etme
 
-Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
+Kuruluşunuz için oluşturduğunuz bulut kaynak altyapısı büyük olasılıkla karmaşıktır. Azure kaynak türlerinin pek çoğu farklı ücret türlerine sahip olabilir. Azure kaynakları, kuruluşunuzdaki farklı ekiplere ait olabilir ve çeşitli kaynaklara uygulanan farklı faturalama modeli türlerine sahip olabilir. Ücretleri daha iyi anlamak için, aşağıdaki bölümlerde yer alan bir veya daha çok stratejiden yararlanarak analizinizi başlatın.
+
+### <a name="review-your-invoice-and-identify-the-resource-that-is-responsible-for-the-charge"></a>Faturanızı gözden geçirme ve ücretten sorumlu olan kaynağı belirleme
+
+Azure hizmetlerini satın alma yönteminiz, ücretle ilişkili kaynağı belirledikçe kullanabileceğiniz metodoloji ve araçlara da karar vermenize yardımcı olur. Sizin için geçerli olan metodolojiye karar vermek için öncelikle [Azure teklif türünüze karar verin](../costs/understand-cost-mgt-data.md#determine-your-offer-type). Daha sonra, [desteklenen Azure teklifleri](../costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers) listesinden müşteri kategorinizi belirleyebilirsiniz.
+
+Aşağıdaki makalelerde, müşteri türüne göre faturanızı nasıl gözden geçireceğinizi açıklayan ayrıntılı adımlar sağlanmaktadır. Her bir makalede, verilen faturalama dönemine ait kullanım ve maliyet ayrıntılarını içeren bir CSV dosyasını indirmeye ilişkin yönergeler yer alır.
+
+- [Kullandıkça Öde fatura gözden geçirme süreci](../understand/review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Kurumsal Sözleşme fatura gözden geçirme süreci](../understand/review-enterprise-agreement-bill.md)
+- [Microsoft Müşteri Sözleşmesini gözden geçirme süreci](../understand/review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
+- [Microsoft İş Ortağı Sözleşmesini gözden geçirme süreci](../understand/review-partner-agreement-bill.md#analyze-your-azure-usage-charges)
+
+Azure faturanızda, o aya ait ücretlerinizi _ölçüm_ başına değerlendirilerek toplanır. Ölçümler, bir kaynağın zaman içinde kullanımını izlemek ve faturanızı hesaplamak için kullanılır. Örneğin, sanal makine gibi tek bir Azure kaynağı oluşturduğunuzda bu kaynağa ait bir veya birden fazla ölçüm örneği oluşturulur.
+
+CSV biçimindeki kullanım dosyasını, analiz etmek istediğiniz fatura üzerinde gösterilen _MeterName_’e göre filtreleyip ilgili ölçüme uygulanan tüm satır öğelerini görün. Satır öğesine ait _InstanceID_, ücrete neden olan Azure kaynağına karşılık gelir.
+
+Söz konusu kaynağı tanımladıktan sonra, kaynakla ilgili maliyetleri daha derin analiz etmek için Azure Maliyet Yönetimi’nde maliyet analizini kullanabilirsiniz. Maliyet analizini kullanma hakkında daha fazla bilgi için bkz. [Maliyetleri analiz etmeye başlama](../costs/quick-acm-cost-analysis.md).
+
+### <a name="identify-spikes-in-cost-over-time"></a>Zaman içindeki maliyette oluşan ani artışları belirleme
+
+Bazen faturalanan ücretlerinizde değişikliğe neden olan son maliyetleri bilemeyebilirsiniz. Değişiklikleri anlamak için, [zaman içindeki maliyetlerin günlük veya aylık olarak dökümünü görmek](../costs/cost-analysis-common-uses.md#view-costs-per-day-or-by-month) amacıyla maliyet analizini kullanabilirsiniz. Görünümü oluşturduktan sonra, değişiklikleri tanımlamak için ücretlerinizi **Hizmet** veya **Kaynak** seçeneklerinden biriyle gruplandırın. Dilerseniz verileri daha iyi görselleştirmek için görünümünüzü **Çizgi** grafiği olarak değiştirebilirsiniz.
+
+![Maliyet analizinde zaman içindeki maliyeti gösteren örnek](./media/getting-started/costs-over-time.png)
+
+### <a name="determine-resource-pricing-and-understand-its-billing-model"></a>Kaynak fiyatlandırmasını belirleme ve faturalama modelini anlama
+
+Tek bir kaynak, birden çok Azure ürünü ve hizmeti arasındaki ücretleri tahakkuk edebilir. Her bir Azure hizmetine ait fiyatlandırma hakkında daha fazla bilgi edinmek için [ürüne göre Azure fiyatlandırması](https://azure.microsoft.com/pricing/#product-pricing) sayfasına göz atın. Örneğin, Azure’da oluşturulan tek bir sanal makinenin (VM) kullanımını izlemek için aşağıdaki ölçümler oluşturulmuş olabilir. Her birinin fiyatlandırması farklı olabilir.
+
+- İşlem Saatleri
+- IP Adresi Saatleri
+- Gelen Veri Aktarımı
+- Giden Veri Aktarımı
+- Standart Yönetilen Diskler
+- Standart Yönetilen Disk İşlemleri
+- Standart GÇ-Disk
+- Standart GÇ-Blok Blobu Okuma
+- Standart GÇ-Blok Blobu Yazma
+- Standart GÇ-Blok Blobu Silme
+
+VM oluşturulduğunda her ölçüm kullanım kayıtları üretmeye başlar. Kullanım ve ölçümün fiyatı Azure ölçüm sisteminde izlenir. CSV biçimindeki kullanım dosyanızda faturanızın hesaplanması için kullanılan ölçümleri görebilirsiniz.
+
+### <a name="find-the-people-responsible-for-the-resource-and-engage-them"></a>Kaynaktan sorumlu kişileri bulma ve bu kişilerin katılımını sağlama
+
+Belirli bir kaynaktan sorumlu ekip sıklıkla bu kaynağa yapılan değişiklikler hakkında bilgi sahibidir. Ücretlerin neden oluşabileceğini belirlediğinizden, bu kişilerin katılımını sağlamak yararlıdır. Örneğin, kaynağa sahip olan ekip kaynağı yeni oluşturmuş, SKU’sunu güncelleştirmiş (doğal olarak kaynak ücretini de değiştirmiş) veya kod değişikliklerinden dolayı kaynak üzerindeki yükü artırmış olabilir. Kaynağa sahip olan kişileri belirlemeye yönelik diğer teknikler için aşağıdaki bölümleri okumaya devam edin.
+
+#### <a name="analyze-the-audit-logs-for-the-resource"></a>Kaynağa ait denetim günlüklerini analiz etme
+
+Bir kaynağı görüntüleme iznine sahipseniz kaynağın denetim günlüklerine de erişebilmeniz gerekir. Kaynakta yapılan son değişikliklerden sorumlu olan kullanıcıyı bulmak için günlükleri inceleyin. Daha fazla bilgi edinmek için bkz. [Azure Etkinlik günlüğü olaylarını görüntüleme ve alma](../../azure-monitor/platform/activity-log-view.md).
+
+#### <a name="analyze-user-permissions-to-the-resources-parent-scope"></a>Kaynağın üst kapsamına yönelik kullanıcı izinlerini analiz etme
+
+Bir aboneliğe veya kaynak grubuna yazma erişimi olan kişiler, genellikle oluşturulan kaynaklar hakkında bilgi sahibidir. Bu kişiler, bir kaynağın amacını açıklayabilir veya bilen bir kişiye sizi yönlendirebilir. Bir Abonelik kapsamına yönelik izinlere sahip olan kişileri belirlemek için bkz. [Rol atamalarını görüntüleme](../../role-based-access-control/check-access.md#view-role-assignments). Kaynak grupları için benzer bir süreçten yararlanabilirsiniz.
+
+### <a name="get-help-to-identify-charges"></a>Ücretleri belirlemek için yardım alma
+
+Önceki stratejileri kullandıysanız ve hala neden ücret aldığınızı anlamadıysanız veya faturalama sorunlarıyla ilgili başka konularda yardıma ihtiyacınız varsa lütfen [destek isteği oluşturun](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - Fazla harcamayı önlemek için [harcama limitlerini](spending-limit.md) kullanma hakkında bilgi edinin.

@@ -193,10 +193,10 @@
       href: luis-how-to-publish-app.md
     - name: Uygulama yönetme
       items:
-        - name: Yazma ve çalışma zamanı anahtarları
+        - name: Azure kaynakları
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: Yazma anahtarına geçirme
+        - name: Yazma kaynağına geçirme
           items:
             - name: Genel Bakış
               href: luis-migration-authoring.md

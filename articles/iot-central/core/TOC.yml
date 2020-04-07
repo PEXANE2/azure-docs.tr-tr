@@ -21,8 +21,10 @@
   items:
     - name: Bağlanma
       items:
-        - name: Cihaz bağlama
-          href: tutorial-connect-device.md
+        - name: Cihazı bağlama (Node.js)
+          href: tutorial-connect-device-nodejs.md
+        - name: Cihaz bağlama (Python)
+          href: tutorial-connect-device-python.md
         - name: Tak Çalıştır (önizleme) cihazını bağlama
           href: tutorial-connect-pnp-device.md
         - name: Ağ geçidi cihaz şablonu oluşturma

@@ -456,8 +456,6 @@
           href: speech-sdk.md
         - name: Senaryo kullanılabilirliği
           href: scenario-availability.md
-        - name: Uygulama teslim etme
-          href: ship-application.md
     - name: Hızlı Başlangıç
       items:
         - name: Konuşma SDK'sını Ayarlama
@@ -472,6 +470,9 @@
         - name: Linux için OpenSSL’yi yapılandırma
           displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
           href: how-to-configure-openssl-linux.md
+        - name: RHEL/CentOS 7’yi yapılandırma
+          href: how-to-configure-rhel-centos-7.md
+          displayName: 'RHEL, CentOS 7, CentOS, Configure RHEL, Configure CentOS'
     - name: Örnekler
       items:
         - name: Konuşma SDK’sı örnekleri (GitHub)

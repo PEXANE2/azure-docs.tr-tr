@@ -88,6 +88,10 @@
       href: app-attach.md
     - name: Microsoft Teams’i kullanma
       href: teams-on-wvd.md
+    - name: Azure Multi-Factor Authentication’ı ayarlama
+      href: set-up-mfa.md
+    - name: Dil paketlerini yükleme
+      href: language-packs.md
 - name: Kavramlar
   items:
     - name: Windows Sanal Masaüstü ortamı

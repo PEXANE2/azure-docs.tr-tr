@@ -83,7 +83,7 @@
         - name: 3 - İşlem hattı oluşturma
           displayName: Devop
           href: deployment-tutorial-pipeline.md
-    - name: Gelişmiş
+    - name: Gelişmiş şablonlar
       items:
         - name: Şablon başvurusunu kullanma
           href: template-tutorial-use-template-reference.md
@@ -101,23 +101,21 @@
         - name: Key Vault oluşturma
           displayName: secrets
           href: template-tutorial-use-key-vault.md
-        - name: Bağlı şablonlar oluşturma
-          href: template-tutorial-create-linked-templates.md
         - name: VM uzantılarını dağıtma
           displayName: virtual machine extensions
           href: template-tutorial-deploy-vm-extensions.md
         - name: SQL uzantılarını dağıtma
           href: template-tutorial-deploy-sql-extensions-bacpac.md
-        - name: Güvenli yapıtlar
-          href: template-tutorial-secure-artifacts.md
+        - name: Şablon dağıtımı sorunlarını giderme
+          href: template-tutorial-troubleshoot.md
+    - name: Dağıtım yöneticisi
+      items:
         - name: Güvenli dağıtım uygulamalarını kullanma
           displayName: adm
           href: deployment-manager-tutorial.md
         - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
-        - name: Şablon dağıtımı sorunlarını giderme
-          href: template-tutorial-troubleshoot.md
 - name: Örnekler
   items:
     - name: Azure Hızlı Başlangıç Şablonları

@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: c4366b272aab160828afca927f6432c98a8fecd7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da16e0898f08e1cca602ca5927bce82ed32353fe
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79370738"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437853"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure aboneliklerinin fatura sahipliğini MPA hesabınıza alma
 
@@ -139,7 +139,7 @@ Bulut Çözümü Sağlayıcıları (CSP) tarafından yönetilen abonelikler içi
 
 ### <a name="azure-reservations-transfer"></a>Azure rezervasyonları aktarımı
 
-Azure Rezervasyonları, aboneliklerle birlikte otomatik olarak taşınmaz. Rezervasyonu diğer abonelikler için EA’da tutabilir veya [Rezervasyonu iptal ederek](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) iş ortağının CSP’de yeniden satın alabilmesini sağlayabilirsiniz. 
+Azure rezervasyonları abonelikle birlikte otomatik olarak taşınmaz. Rezervasyonu diğer abonelikler için EA’da tutabilir veya [Rezervasyonu iptal ederek](https://docs.microsoft.com/azure/cost-management-billing/reservations/exchange-and-refund-azure-reservations) iş ortağının CSP’de yeniden satın alabilmesini sağlayabilirsiniz. 
 
 ### <a name="access-to-azure-services"></a>Azure hizmetlerine erişim
 

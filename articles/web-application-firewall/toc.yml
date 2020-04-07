@@ -18,6 +18,14 @@
       items:
         - name: Azure CDN üzerinde Web Uygulaması Güvenlik Duvarı
           href: ./cdn/cdn-overview.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: Application Gateway
+      items:
+        - name: WAF v2 - ARM şablonunu dağıtma
+          displayName: Resource Manager
+          href: ./ag/quick-create-template.md
 - name: Öğreticiler
   items:
     - name: Application Gateway

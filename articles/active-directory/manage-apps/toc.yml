@@ -7,6 +7,8 @@
       href: what-is-application-management.md
     - name: Şirket içi uygulamalar için Uygulama Ara Sunucusu nedir?
       href: what-is-application-proxy.md
+    - name: Yaygın uygulama yönetim senaryoları
+      href: common-scenarios.md
     - name: Uygulama sağlama nedir?
       href: /azure/active-directory/app-provisioning/user-provisioning?context=azure/active-directory/manage-apps/context/manage-apps-context
 - name: Hızlı Başlangıçlar

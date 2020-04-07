@@ -1,0 +1,12 @@
+- name: Model biçimleri için malzeme eşleme
+  href: material-mapping.md
+- name: Bölgeler
+  href: regions.md
+- name: Ağ gereksinimleri
+  href: network-requirements.md
+- name: Sınırlar
+  href: limits.md
+- name: arrClient deposu (GitHub)
+  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
+  href: 'https://docs.microsoft.com/rest/api/mixedreality/'

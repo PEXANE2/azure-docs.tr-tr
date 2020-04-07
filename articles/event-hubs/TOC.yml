@@ -21,8 +21,8 @@
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
-        - name: Azure Resource Manager şablonu
-          displayName: ARM
+        - name: ARM şablonu
+          displayName: Resource Manager
           href: event-hubs-resource-manager-namespace-event-hub.md
     - name: Olay gönderme ve alma
       items:
@@ -115,13 +115,19 @@
                   href: authenticate-application.md
             - name: Paylaşılan erişim imzasıyla kimlik doğrulaması yapma
               href: authenticate-shared-access-signature.md
+        - name: Ağ güvenliği
+          href: network-security.md
         - name: Yerleşik güvenlik denetimleri
           href: event-hubs-security-controls.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: AMQP 1.0 protokol kılavuzu
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Azure Stack Hub üzerinde denetim noktası deposu olarak Blob Depolama’yı kullanma
+      href: use-blob-storage-checkpoint-store-azure-stack-hub.md
     - name: Azure Service Manager (klasik) API’lerinden Resource Manager API’lerine geçiş
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fevent-hubs%2ftoc.json
     - name: Geliştirme
@@ -156,17 +162,17 @@
           maintainContext: true
     - name: Apache Kafka ile tümleştirme
       items:
-        - name: Apache Kafka özellikli Event Hubs oluşturma
-          href: event-hubs-create-kafka-enabled.md
-        - name: Apache Kafka özellikli bir olay hub'ında Kafka aracısını yansıtma
+        - name: Event Hubs için Kafka geliştirici kılavuzu
+          href: apache-kafka-developer-guide.md
+        - name: Bir olay hub'ında Kafka aracısı yansıtma
           href: event-hubs-kafka-mirror-maker-tutorial.md
-        - name: Apache Spark'ı Apache Kafka özellikli bir olay hub'ına bağlama
+        - name: Apache Spark'ı bir olay hub'ına bağlama
           href: event-hubs-kafka-spark-tutorial.md
-        - name: Apache Flink’i Apache Kafka özellikli bir olay hub'ına bağlama
+        - name: Apache Flink'i bir olay hub'ına bağlama
           href: event-hubs-kafka-flink-tutorial.md
-        - name: Apache Kafka Connect'i Kafka özellikli olay hub'ıyla tümleştirme (Önizleme)
+        - name: Apache Kafka Connect’i bir merkez ile tümleştirme (Önizleme)
           href: event-hubs-kafka-connect-tutorial.md
-        - name: Akka Streams’i Apache Kafka özellikli bir olay hub'ına bağlama
+        - name: Akka Streams’i bir olay hub’ına bağlama
           href: event-hubs-kafka-akka-streams-tutorial.md
     - name: Yönetme ve izleme
       items:
@@ -182,13 +188,13 @@
           href: event-hubs-management-libraries.md
     - name: Güvenlik
       items:
-        - name: Güvenlik duvarlarını kullanma
+        - name: IP güvenlik duvarını yapılandırma
           href: event-hubs-ip-filtering.md
-        - name: Sanal ağ hizmet uç noktalarını kullanma
+        - name: Sanal ağ hizmet uç noktalarını yapılandırma
           href: event-hubs-service-endpoints.md
-        - name: Event Hubs Ad Alanında Sanal Ağ Tümleştirmesi ve Güvenlik Duvarları
-          href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma
+        - name: Özel uç noktaları yapılandırma (önizleme)
+          href: private-link-service.md
+        - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           href: configure-customer-managed-key.md
     - name: Sorun giderme
       items:

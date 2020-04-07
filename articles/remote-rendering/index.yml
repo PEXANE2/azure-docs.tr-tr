@@ -1,0 +1,66 @@
+### YamlMime:Landing
+title: Azure Remote Rendering belgeleri
+summary: Azure Remote Rendering (ARR), son derece karmaşık 3B modelleri HoloLens 2 gibi cihazlarda gerçek zamanlı bir şekilde işlemenize olanak veren bir hizmettir. ARR şu anda genel önizleme aşamasındadır.
+metadata:
+  title: Azure Remote Rendering belgeleri
+  description: Son derece karmaşık 3B modelleri uzaktan gerçek zamanlı bir şekilde işlemek ve HoloLens 2 gibi cihazlarda sonucu görüntülemek için Azure Remote Rendering’i (ARR) kullanmayı öğrenin.
+  ms.service: azure-remote-rendering
+  ms.topic: landing-page
+  author: florianborn71
+  ms.author: flborn
+  ms.date: 03/26/2020
+  ms.openlocfilehash: a257b294c105ca153a57afe90db95a1bd1b753e8
+  ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80678323"
+landingContent:
+- title: Azure Remote Rendering hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Remote Rendering nedir?
+      url: overview/about.md
+    - text: Sistem gereksinimleri
+      url: overview/system-requirements.md
+    - text: Azure Remote Rendering hesabı oluşturma
+      url: how-tos/create-an-account.md
+- title: Azure Remote Rendering’i kullanmaya başlamaya yönelik temel kavramları öğrenme
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Kimlik doğrulamasını yapılandırma
+      url: how-tos/authentication.md
+    - text: Remote Rendering Oturumları
+      url: concepts/sessions.md
+    - text: Varlıklar
+      url: concepts/entities.md
+    - text: Bileşenler
+      url: concepts/components.md
+    - text: Modeller
+      url: concepts/models.md
+    - text: Modelleri dönüştürme
+      url: how-tos/conversion/model-conversion.md
+- title: İlk modelinizi dönüştürme ve işleme
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Unity ile model işleme
+      url: quickstarts/render-model.md
+    - text: Unity örneğini HoloLens’e dağıtma
+      url: quickstarts/deploy-to-hololens.md
+    - text: Unity örneğini Masaüstüne dağıtma
+      url: quickstarts/deploy-to-desktop.md
+    - text: Modeli işlenmek üzere dönüştürme
+      url: quickstarts/convert-model.md
+- title: Unity’de kendi uygulamanızı oluşturmayı öğrenme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Sıfırdan Unity projesi ayarlama
+      url: tutorials/unity/project-setup.md
+    - text: Unity’de uzak varlıklarla çalışma
+      url: tutorials/unity/working-with-remote-entities.md
+    - text: Ortamı ve malzemeleri değiştirme
+      url: tutorials/unity/changing-environment-and-materials.md

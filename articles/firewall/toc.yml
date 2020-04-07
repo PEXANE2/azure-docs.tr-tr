@@ -5,7 +5,6 @@
     - name: Azure Güvenlik Duvarı nedir?
       href: overview.md
 - name: Öğreticiler
-  expanded: true
   items:
     - name: Dağıtma ve yapılandırma
       href: tutorial-firewall-deploy-portal.md
@@ -15,6 +14,12 @@
       href: tutorial-firewall-dnat.md
     - name: Tanılama günlüklerini izleme
       href: tutorial-diagnostics.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: IP Grupları ile dağıtma
+      displayName: Resource Manager
+      href: quick-create-ipgroup-template.md
 - name: Örnekler
   items:
     - name: Azure PowerShell

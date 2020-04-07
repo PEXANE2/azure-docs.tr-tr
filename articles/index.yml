@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: ecd4763d1198908f982426bfae8252f1e0cbd89f
-  ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+  ms.openlocfilehash: 1dd9d27cf21cd28b34232e1e9527e76a8d4a4c4c
+  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/03/2020
-  ms.locfileid: "80656146"
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80756868"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -1032,6 +1032,12 @@ productDirectory:
     azureCategories:
     - mixed-reality
     url: spatial-anchors/index.yml
+  - title: Remote Rendering (Önizleme)
+    summary: Yüksek kaliteli ve etkileşimli 3B içerik işleyerek cihazlarınızda bu içeriğin akışını gerçek zamanlı olarak gerçekleştirin
+    imageSrc: https://static.docs.com/ui/media/product/azure/remote-rendering.svg
+    azureCategories:
+    - mixed-reality
+    url: remote-rendering/index.yml
   - title: Visual Studio App Center
     summary: Mobil ve masaüstü uygulamalarınızı sürekli olarak derleyin, test edin, yayınlayın ve izleyin
     imageSrc: https://docs.microsoft.com/media/logos/logo_vs-mobile-center.svg
@@ -1232,7 +1238,7 @@ tools:
   items:
   - title: Python
     imageSrc: https://docs.microsoft.com/media/logos/logo_python.svg
-    url: https://docs.microsoft.com/azure/python/
+    url: https://docs.microsoft.com/azure/developer/python/
   - title: .NET
     imageSrc: ./media/index/net-logo.svg
     url: https://docs.microsoft.com/dotnet/azure/
@@ -1244,7 +1250,7 @@ tools:
     url: https://docs.microsoft.com/azure/java/
   - title: Başlayın
     imageSrc: https://docs.microsoft.com/media/logos/logo_Go-lightblue.svg
-    url: https://docs.microsoft.com/azure/go/
+    url: https://docs.microsoft.com/azure/developer/go/
   - title: REST API
     imageSrc: https://docs.microsoft.com/media/logos/logo_REST.svg
     url: https://docs.microsoft.com/rest/api/

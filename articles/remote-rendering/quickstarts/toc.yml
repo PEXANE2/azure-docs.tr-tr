@@ -1,0 +1,8 @@
+- name: Unity ile model işleme
+  href: render-model.md
+- name: Unity örneğini HoloLens’e dağıtma
+  href: deploy-to-hololens.md
+- name: Unity örneğini Masaüstüne dağıtma
+  href: deploy-to-desktop.md
+- name: Modeli işlenmek üzere dönüştürme
+  href: convert-model.md

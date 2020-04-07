@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 24f7a81b267e858d16ae0805f9c7ab384be3b2fc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 81b6b8a7024de9ff3361e24cb14190d479e50681
+ms.sourcegitcommit: 2a09565db8681cdb76607e7ed51eecf68f4ff8f0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200651"
+ms.lasthandoff: 03/25/2020
+ms.locfileid: "80258065"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızı ayarlama
 
@@ -115,7 +115,7 @@ Bildirim ilgili kişilerine Azure Kurumsal Anlaşma ile ilgili e-posta iletişim
 
 ### <a name="spending-quotas"></a>Harcama kotaları
 
-Kurumsal Anlaşma kaydınızdaki departmanlar için ayarlanan harcama kotaları, yeni ödeme hesabındaki bütçelerle değiştirilir. Kaydınızda ayarlanmış her harcama kotası kümesi için bir bütçe oluşturulur. Bütçeler hakkında daha fazla bilgi için bkz. [Azure bütçeleri oluşturma ve yönetme](../cloudyn/manage-budgets.md).
+Kurumsal Anlaşma kaydınızdaki departmanlar için ayarlanan harcama kotaları, yeni ödeme hesabındaki bütçelerle değiştirilir. Kaydınızda ayarlanmış her harcama kotası kümesi için bir bütçe oluşturulur. Bütçeler hakkında daha fazla bilgi için bkz. [Öğretici: Azure bütçesi oluşturma ve yönetme](../costs/tutorial-acm-create-budgets.md).
 
 ### <a name="cost-centers"></a>Maliyet merkezleri
 
@@ -181,7 +181,7 @@ Ayarlamayı tamamlamak için hem yeni faturalama hesabına hem de Kurumsal Anla�
 
     - Yeni ödeme hesabında, Kurumsal Anlaşma hiyerarşinize karşılık gelen bir faturalandırma hiyerarşisi oluşturulur. Daha fazla bilgi için bkz. [Faturalandırma hiyerarşinizdeki değişiklikleri anlayın](#understand-changes-to-your-billing-hierarchy).
     - Kurumsal Anlaşma kaydınızdaki yöneticilere, kuruluşunuzun faturalandırmasını yönetmeye devam edebilmeleri için yeni ödeme hesabına erişim izni verilir.
-    - Azure aboneliklerinizin faturaları yeni hesaba geçirilir. **Bu geçiş sırasında Azure hizmetleriniz etkilenmez. Herhangi bir kesinti olmadan çalışmaya devam ederler.**
+    - Azure aboneliklerinizin faturaları yeni hesaba geçirilir. **Bu geçiş sırasında Azure hizmetleriniz etkilenmez. Herhangi bir kesinti olmadan çalışmaya devam ederler**.
     - Azure Rezervasyonlarınız varsa avantajlar veya koşullar değişmeden yeni ödeme hesabınıza taşınır.
 
 4. Geçişinizin durumunu **Geçiş durumu** sayfasından izleyebilirsiniz.

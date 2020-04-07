@@ -1,0 +1,16 @@
+- name: Azure Remote Rendering hesabı oluşturma
+  href: create-an-account.md
+- name: Hizmet erişim belirteçlerini alma
+  href: tokens.md
+- name: Kimlik doğrulamasını yapılandırma
+  href: authentication.md
+- name: Kimlik doğrulaması için Azure Ön Uç API’lerini kullanma
+  href: frontend-apis.md
+- name: Oturum yönetimi REST API’yi kullanma
+  href: session-rest-api.md
+- name: Modelleri dönüştürme
+  href: conversion/toc.yml
+- name: Unity ile uzaktan işleme
+  href: unity/toc.yml
+- name: İstemci tarafı performans izlemeleri oluşturma
+  href: performance-tracing.md

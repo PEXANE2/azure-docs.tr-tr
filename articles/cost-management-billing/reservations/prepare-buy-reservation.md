@@ -1,20 +1,20 @@
 ---
-title: Azure rezervasyonu satın almaya hazırlanma
-description: Azure rezervasyonu satın almadan önce önemli noktalar hakkında bilgi edinin.
+title: Azure rezervasyonu satın alma
+description: Azure rezervasyonu satın almanıza yardımcı olan önemli noktalar hakkında bilgi edinin.
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 03/30/2020
 ms.author: banders
-ms.openlocfilehash: 1f5ca2d43356eab98cffe8414c00d97e5744739a
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 3a45a04786bb9976a42269191c8b24282905f96f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80235660"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436981"
 ---
-# <a name="prepare-to-buy-a-reservation"></a>Rezervasyon satın almaya hazırlanma
+# <a name="buy-a-reservation"></a>Ayırma satın alma
 
 Azure Rezervasyonları birçok Azure kaynağı için bir yıllık veya üç yıllık planları kabul ederek tasarruf etmenize yardımcı olur. Rezervasyon satın alma taahhüdünde bulunmadan önce, satın almanıza hazırlamak için aşağıdaki bölümleri gözden geçirdiğinizden emin olun.
 
@@ -50,6 +50,17 @@ Rezervasyon satın aldıktan sonra her zaman kapsamı güncelleştirebilirsiniz.
 
 ![Bir rezervasyon kapsamı değişikliğini gösteren örnek](./media/prepare-buy-reservation/rescope-reservation-resource-group.png)
 
+## <a name="discounted-subscription-and-offer-types"></a>İndirimli abonelik ve teklif türleri
+
+Rezervasyon indirimleri aşağıdaki uygun aboneliklere ve teklif türlerine uygulanır.
+
+- Kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P)
+- Microsoft Müşteri Sözleşmesi abonelikleri.
+- Kullandıkça öde ücretlerinin uygulandığı bireysel planlar (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P)
+- CSP abonelikleri
+
+Başka teklif türlerinin kullanıldığı bir abonelikte çalıştırılan kaynaklar rezervasyon indirimi almaz.
+
 ## <a name="purchase-reservations"></a>Rezervasyon satın alma
 
 Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon satın alabilirsiniz. Rezervasyon satın almaya hazır olduğunuzda aşağıdaki makalelerden size uygun olanları okuyun:
@@ -66,6 +77,54 @@ Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon sat�
 - [SQL Veritabanı](../../sql-database/sql-database-reserved-capacity.md)
 - [SQL Veri Ambarı](prepay-sql-data-warehouse-charges.md)
 - [Sanal makineler](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
+
+## <a name="buy-reservations-with-monthly-payments"></a>Aylık ödemelerle rezervasyonlar satın alma
+
+Aylık ödemelerle rezervasyonlar için ödeme yapabilirsiniz. Tüm tutarı ödediğiniz peşin satın almadan farklı olarak aylık ödeme seçeneği, rezervasyonun toplam maliyetini dönemin her ayına eşit olarak böler. Peşin ve aylık rezervasyonların toplam maliyeti aynıdır ve aylık ödemeyi seçtiğinizde ekstra ücret ödemezsiniz.
+
+Rezervasyonunuz Microsoft müşteri sözleşmesi (MCA) kullanılarak satın alındıysa, aylık ödeme tutarınız yerel para biriminiz için güncel ayın döviz kuruna bağlı olarak değişiklik gösterebilir.
+
+Şunlar için aylık ödemeler kullanılamaz: Databricks, SUSE Linux rezervasyonları, Red Hat Planları ve Azure Red Hat OpenShift Compute.
+
+### <a name="view-payments-made"></a>Yapılan ödemeleri görüntüleme
+
+API’ler, kullanım verileri ve maliyet analizi kullanılarak yapılan ödemeleri görüntüleyebilirsiniz. Aylık olarak ödenen rezervasyonlar için sıklık değeri, kullanım verileri ve Rezervasyon Ücretleri API’sinde **yinelenen** olarak gösterilir. Peşin ödenen rezervasyonlar için değer, **tek seferlik** olarak gösterilir.
+
+Maliyet analizi, varsayılan görünümde aylık satın almaları gösterir. Satın alınan tüm öğeleri görmek istiyorsanız **Masraf türü** için **satın alma** filtresini ve **Sıklık** için **yinelenen** filtresini uygulayın. Yalnızca rezervasyonları görüntülemek istiyorsanız, **Rezervasyon** için bir filtre uygulayın.
+
+![Maliyet analizinde rezervasyon satın alma maliyetlerini gösteren örnek](./media/prepare-buy-reservation/cost-analysis.png)
+
+### <a name="exchange-and-refunds"></a>Değiştirme ve para iadeleri
+
+Diğer rezervasyonlar gibi, aylık faturalama ile satın alınan rezervasyonları değiştirebilir veya para iadesi alabilirsiniz. 
+
+Aylık olarak ödenen bir rezervasyonu değiştirdiğinizde, yeni satın almanın toplam yaşam süresi maliyeti, iade edilen rezervasyon için iptal edilen kalan ödemelerden fazla olmalıdır. Değişimler için başka bir limit veya ücret yoktur. Aylık olarak faturalandırılan yeni bir rezervasyon satın almak için peşin ödenen bir rezervasyonu değiştirebilirsiniz. Ancak yeni rezervasyonun yaşam süresi değeri, iade edilen rezervasyonun eşit olarak dağıtılan değerinden büyük olmalıdır.
+
+Aylık ödeme yapılan bir rezervasyonu iptal ederseniz, iptal edilen gelecek ödemeleri 50.000 ABD doları para iadesi sınırına kadar tahakkuk ettirilir.
+
+Değişim ve para iadeleri hakkında daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](exchange-and-refund-azure-reservations.md).
+
+## <a name="reservation-notifications"></a>Rezervasyon bildirimleri
+
+Azure aboneliğiniz için nasıl ödeme yaptığınıza bağlı olarak, kuruluşunuzdaki aşağıdaki kullanıcılara rezervasyon bildirimleri e-posta ile gönderilir. Bildirimleri aşağıdakiler dahil çeşitli olaylar için gönderilir: 
+
+- Satın Al
+- Yaklaşan rezervasyon süre sonu
+- Süre sonu
+- Yenileme
+- İptal
+- Kapsam değişikliği
+
+EA abonelikleri olan müşteriler için:
+
+- Bildirimler yalnızca EA bildirim kişilerine gönderilir.
+- RBAC (IAM) izni kullanılarak rezervasyona eklenen kullanıcılar herhangi bir e-posta bildirimi almaz.
+
+Bireysel abonelikleri olan müşteriler için:
+
+- Satın alan kişi bir satın alma bildirimi alır.
+- Satın alma sırasında, abonelik faturalama hesabı sahibi bir satın alma bildirimi alır.
+- Hesap sahibi diğer tüm bildirimleri alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
