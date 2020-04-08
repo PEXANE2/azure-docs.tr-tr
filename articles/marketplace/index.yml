@@ -1,23 +1,23 @@
 ### YamlMime:Landing
-title: Microsoft’un ticari marketine hoş geldiniz
-summary: Startup’lardan kuruluşlara kadar tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan Microsoft ticari market hakkında bilgi edinin.
+title: Ticari markete hoş geldiniz
+summary: Ölçeği fark etmeksizin tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
 metadata:
-  title: Microsoft’un ticari marketine hoş geldiniz
-  description: Startup’lardan kuruluşlara kadar tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan Microsoft ticari market hakkında bilgi edinin.
+  title: Ticari markete hoş geldiniz
+  description: Ölçeği fark etmeksizin tüm şirketlere, çözümleri dünyanın her yerinden müşterilere sunma olanağı sağlayan bir çevrimiçi uygulama ve hizmet marketi olan ticari market hakkında bilgi edinin.
   ms.service: marketplace
   ms.subservice: partnercenter-marketplace-publisher
   ms.topic: landing-page
   author: MaggiePucciEvans
   ms.author: evansma
-  ms.date: 03/04/2020
-  ms.openlocfilehash: 3dced8953c09520b96a9aa24cf7b5db1022de6ce
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/02/2020
+  ms.openlocfilehash: 6351a18cf2e56152adfc0ad8433ee40cec4e9d9c
+  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78927605"
+  ms.lasthandoff: 04/06/2020
+  ms.locfileid: "80756308"
 landingContent:
-- title: Microsoft ticari markette çalışma
+- title: Ticari markette çalışma
   linkLists:
   - linkListType: get-started
     links:
@@ -25,44 +25,52 @@ landingContent:
       url: ./partner-center-portal/create-account.md
     - text: Yayımlama seçeneğinizi belirleme
       url: ./determine-your-listing-type.md
+    - text: İlkeler ve koşullar
+      url: ./policies-terms.md
     - text: Microsoft ticari market hakkında SSS
       url: ./marketplace-faq-publisher-guide.md
     - text: Sürüm notları
       url: https://aka.ms/publicmarketplaceroadmap
-    - text: İlkeler ve koşullar
-      url: ./policies-terms.md
 - title: Yaygın senaryolar ve görevler
   linkLists:
   - linkListType: overview
     links:
-    - text: En iyi pazarlama deneyimleri
-      url: ./gtm-marketing-best-practices.md
-    - text: En iyi teklif listeleme deneyimleri
-      url: ./gtm-offer-listing-best-practices.md
     - text: SaaS uygulaması teklifi yayımlama kılavuzu
       url: ./marketplace-saas-applications-technical-publishing-guide.md
+    - text: En iyi pazarlama deneyimleri
+      url: ./gtm-marketing-best-practices.md
+    - text: Bulut çözüm sağlayıcıları
+      url: ./cloud-solution-providers.md
+    - text: En iyi teklif listeleme deneyimleri
+      url: ./gtm-offer-listing-best-practices.md
   - linkListType: get-started
     links:
+    - text: Market teklifinizden müşteri adayları
+      url: ./partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - text: İş Ortağı Merkezi’nde ortak satış seçeneği
+      url: ./partner-center-portal/commercial-marketplace-co-sell.md
+    - text: Ortak satış iş ortağı etkileşimi
+      url: ./marketplace-co-sell.md
+    - text: Microsoft AppSource ve Office içinde çözümleri kullanılabilir hale getirme
+      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
     - text: Azure Market ve AppSource topluluk forumuna katılın
       url: https://aka.ms/MarketplaceCommunity
     - text: Tartışmaya katmak veya daha sonra isteğe bağlı olarak izlemek için web seminerlerine kaydolun
       url: https://aka.ms/allwebinars
-    - text: Microsoft AppSource ve Office içinde çözümleri kullanılabilir hale getirme
-      url: https://docs.microsoft.com/office/dev/store/submit-to-appsource-via-partner-center
 - title: Teklifinizi ve müşteri verilerini analiz etme
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Özet panosu
       url: ./partner-center-portal/summary-dashboard.md
-    - text: Siparişler panosu
-      url: ./partner-center-portal/orders-dashboard.md
-    - text: Müşteri panosu
-      url: ./partner-center-portal/customer-dashboard.md
-    - text: Kullanım panosu
-      url: ./partner-center-portal/usage-dashboard.md
     - text: Market İçgörüleri panosu
       url: ./partner-center-portal/insights-dashboard.md
+    - text: Kullanım panosu
+      url: ./partner-center-portal/usage-dashboard.md
+    - text: Müşteri panosu
+      url: ./partner-center-portal/customer-dashboard.md
+    - text: Siparişler panosu
+      url: ./partner-center-portal/orders-dashboard.md
     - text: İndirmeler panosu
       url: ./partner-center-portal/downloads-dashboard.md
     - text: Derecelendirme ve incelemeler panosu
@@ -71,61 +79,61 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Azure uygulama teklifleri
-      url: ./partner-center-portal/create-new-azure-apps-offer.md
-    - text: Dynamics 365 for Customer Engagement ve PowerApps teklifleri
-      url: ./partner-center-portal/create-new-customer-engagement-offer.md
-    - text: Dynamics 365 for Operations teklifleri
-      url: ./partner-center-portal/create-new-operations-offer.md
-    - text: Dynamics 365 Business Central teklifleri
-      url: ./partner-center-portal/create-new-business-central-offer.md
     - text: SaaS teklifleri
       url: ./partner-center-portal/create-new-saas-offer.md
     - text: Sanal makine teklifleri
       url: ./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md
+    - text: Azure uygulama teklifleri
+      url: ./partner-center-portal/create-new-azure-apps-offer.md
+    - text: Dynamics 365 for Customer Engagement ve PowerApps teklifleri
+      url: ./partner-center-portal/create-new-customer-engagement-offer.md
+    - text: Dynamics 365 Business Central teklifleri
+      url: ./partner-center-portal/create-new-business-central-offer.md
+    - text: Dynamics 365 for Operations teklifleri
+      url: ./partner-center-portal/create-new-operations-offer.md
     - text: Daha fazla teklif türü
       url: ./cloud-partner-portal/cpp-marketplace-offers.md
 - title: Ödeme alma
   linkLists:
   - linkListType: concept
     links:
-    - text: Ödeme hesabınızı ve vergi formlarınızı ayarlama
-      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-    - text: Ticari market faturalaması
-      url: ./partner-center-portal/billing-details.md
-    - text: Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
-      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
     - text: Ödeme raporlama
       url: ./partner-center-portal/payout-summary.md
+    - text: Ödeme eşikleri, yöntemleri ve zaman çerçeveleri
+      url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+    - text: Ödeme hesabınızı ve vergi formlarınızı ayarlama
+      url: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
     - text: Vergi ayrıntıları
       url: ./partner-center-portal/tax-details-paid-transactions.md
+    - text: Ticari market faturalaması
+      url: ./partner-center-portal/billing-details.md
 - title: API başvurusu
   linkLists:
   - linkListType: reference
     links:
-    - text: API ön koşulları
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: SaaS gerçekleştirme API'leri
       url: ./partner-center-portal/pc-saas-fulfillment-api-v2.md
-    - text: Bulut İş Ortağı Portalı API Başvurusu
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
     - text: Market ölçüm hizmeti API’leri
       url: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-    - text: Teklifi oluşturma veya değiştirme
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
+    - text: Bulut İş Ortağı Portalı API Başvurusu
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-overview.md
+    - text: API ön koşulları
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-prerequisites.md
     - text: Teklifleri alma
       url: .//cloud-partner-portal-orig/cloud-partner-portal-api-retrieve-offers.md
-    - text: Canlı yayına geçme
-      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
+    - text: Teklifi oluşturma veya değiştirme
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-creating-offer.md
     - text: Sanal makine tekliflerinin fiyatlandırması
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-setting-price.md
+    - text: Canlı yayına geçme
+      url: ./cloud-partner-portal-orig/cloud-partner-portal-api-go-live.md
 - title: Destek alın
   linkLists:
   - linkListType: get-started
     links:
     - text: Destek seçenekleri
       url: ./partner-center-portal/support.md
-    - text: Coğrafi kullanılabilirlik ve para birimleri
-      url: ./marketplace-geo-availability-currencies.md
     - text: Kimlik doğrulama sorunlarını giderme
       url: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
+    - text: Coğrafi kullanılabilirlik ve para birimleri
+      url: ./marketplace-geo-availability-currencies.md

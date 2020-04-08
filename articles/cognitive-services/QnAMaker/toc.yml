@@ -87,9 +87,9 @@
           displayName: 'metadata, pair'
         - name: Test etme
           href: How-To/test-knowledge-base.md
-    - name: QnA kümelerini yönetme
+    - name: Soru-Cevap çiftlerini yönetme
       items:
-        - name: Soru-Cevap kümesini düzenleme
+        - name: Soru-Cevap çiftini düzenleme
           href: How-To/edit-knowledge-base.md
         - name: İzleme istemleri ekleme
           href: How-To/multiturn-conversation.md
