@@ -1,24 +1,24 @@
 ---
-title: Kodda SSL sertifikasını kullanma
+title: Kodda TLS/SSL sertifikası kullanma
 description: Kodunuzda istemci sertifikalarını nasıl kullanacağınızı öğrenin. İstemci sertifikasına sahip uzak kaynaklarla kimlik doğrulaması yapın veya onlarla şifreleme görevleri çalıştırın.
 ms.topic: article
 ms.date: 11/04/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: d783b61c372c7d0f8cca13106bf297ab9b55c424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d76bac60bae11f0843d81de523030154af62a373
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671889"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811704"
 ---
-# <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde kodunuzda bir SSL sertifikası kullanma
+# <a name="use-a-tlsssl-certificate-in-your-code-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde kodunuzda TLS/SSL sertifikası kullanma
 
 Uygulama kodunuzda, Uygulama [Hizmeti'ne eklediğiniz genel veya özel sertifikalara](configure-ssl-certificate.md)erişebilirsiniz. Uygulama kodunuz bir istemci olarak hareket edebilir ve sertifika kimlik doğrulaması gerektiren harici bir hizmete erişebilir veya şifreleme görevleri gerçekleştirmesi gerekebilir. Bu nasıl yapılacağını kılavuzu, uygulama kodunuzdaki ortak veya özel sertifikaların nasıl kullanılacağını gösterir.
 
-Kodunuzda sertifika kullanmaya bu yaklaşım, uygulamanızın **Temel** katmanda veya üzerinde olmasını gerektiren Uygulama Hizmeti'ndeki SSL işlevini kullanır. Uygulamanız **Ücretsiz** veya **Paylaşılan** katmandaysa, [sertifika dosyasını uygulama deponuza ekleyebilirsiniz.](#load-certificate-from-file)
+Kodunuzda sertifika kullanmaya bu yaklaşım, uygulamanızın **Temel** katmanda veya üzerinde olmasını gerektiren App Hizmeti'ndeki TLS işlevselliğini kullanır. Uygulamanız **Ücretsiz** veya **Paylaşılan** katmandaysa, [sertifika dosyasını uygulama deponuza ekleyebilirsiniz.](#load-certificate-from-file)
 
-Uygulama Hizmeti'nin SSL sertifikalarınızı yönetmesine izin verdiğinde, sertifikaları ve uygulama kodunuzu ayrı olarak koruyabilir ve hassas verilerinizi koruyabilirsiniz.
+Uygulama Hizmeti'nin TLS/SSL sertifikalarınızı yönetmesine izin verdiğinde, sertifikaları ve uygulama kodunuzu ayrı olarak koruyabilir ve hassas verilerinizi koruyabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -58,25 +58,32 @@ C# kodunda, sertifikaya sertifika parmak izinden erişebilirsiniz. Aşağıdaki 
 
 ```csharp
 using System;
+using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 
-...
-X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser);
-certStore.Open(OpenFlags.ReadOnly);
-X509Certificate2Collection certCollection = certStore.Certificates.Find(
-                            X509FindType.FindByThumbprint,
-                            // Replace below with your certificate's thumbprint
-                            "E661583E8FABEF4C0BEF694CBC41C28FB81CD870",
-                            false);
-// Get the first cert with the thumbprint
-if (certCollection.Count > 0)
+string certThumbprint = "E661583E8FABEF4C0BEF694CBC41C28FB81CD870";
+bool validOnly = false;
+
+using (X509Store certStore = new X509Store(StoreName.My, StoreLocation.CurrentUser))
 {
-    X509Certificate2 cert = certCollection[0];
-    // Use certificate
-    Console.WriteLine(cert.FriendlyName);
+  certStore.Open(OpenFlags.ReadOnly);
+
+  X509Certificate2Collection certCollection = certStore.Certificates.Find(
+                              X509FindType.FindByThumbprint,
+                              // Replace below with your certificate's thumbprint
+                              certThumbprint,
+                              validOnly);
+  // Get the first cert with the thumbprint
+  X509Certificate2 cert = certCollection.OfType<X509Certificate>().FirstOrDefault();
+
+  if (cert is null)
+      throw new Exception($"Certificate with thumbprint {certThumbprint} was not found");
+
+  // Use certificate
+  Console.WriteLine(cert.FriendlyName);
+  
+  // Consider to call Dispose() on the certificate after it's being used, avaliable in .NET 4.6 and later
 }
-certStore.Close();
-...
 ```
 
 Java kodunda, "Windows-MY" mağazasından Özne Ortak Adı alanını kullanarak sertifikaya erişirsiniz [(Bkz. Ortak anahtar sertifikası).](https://en.wikipedia.org/wiki/Public_key_certificate) Aşağıdaki kod, özel bir anahtar sertifikasının nasıl yüklenir olduğunu gösterir:
@@ -111,16 +118,17 @@ Sertifika dosya adları sertifika parmak izleridir. Aşağıdaki C# kodu, bir Li
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
+var bytes = File.ReadAllBytes("/var/ssl/certs/<thumbprint>.der");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Node.js, PHP, Python, Java veya Ruby'deki bir dosyadan SSL sertifikasının nasıl yüklenir olduğunu görmek için ilgili dil veya web platformuna ilişkin belgelere bakın.
+Node.js, PHP, Python, Java veya Ruby'deki bir dosyadan TLS/SSL sertifikasının nasıl yüklenir olduğunu görmek için ilgili dil veya web platformuna ilişkin belgelere bakın.
 
 ## <a name="load-certificate-from-file"></a>Dosyadan yükleme sertifikası
 
@@ -133,26 +141,27 @@ El ile yüklediğiniz bir sertifika dosyasını yüklemeniz gerekiyorsa, sertifi
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
 >
-> Kodunuzda sertifika kullanmaya bu yaklaşım, uygulamanızın **Temel** katmanda veya üzerinde olmasını gerektiren Uygulama Hizmeti'ndeki SSL işlevini kullanır.
+> Kodunuzda sertifika kullanmaya bu yaklaşım, uygulamanızın **Temel** katmanda veya üzerinde olmasını gerektiren App Hizmeti'ndeki TLS işlevselliğini kullanır.
 
 Aşağıdaki C# örneği, uygulamanızdaki göreceli bir yoldan ortak sertifika yükler:
 
 ```csharp
 using System;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
 ...
-var bytes = System.IO.File.ReadAllBytes("~/<relative-path-to-cert-file>");
+var bytes = File.ReadAllBytes("~/<relative-path-to-cert-file>");
 var cert = new X509Certificate2(bytes);
 
 // Use the loaded certificate
 ```
 
-Node.js, PHP, Python, Java veya Ruby'deki bir dosyadan SSL sertifikasının nasıl yüklenir olduğunu görmek için ilgili dil veya web platformuna ilişkin belgelere bakın.
+Node.js, PHP, Python, Java veya Ruby'deki bir dosyadan TLS/SSL sertifikasının nasıl yüklenir olduğunu görmek için ilgili dil veya web platformuna ilişkin belgelere bakın.
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [SSL bağlama ile özel bir DNS adını güvenli hale](configure-ssl-bindings.md)
+* [Azure Uygulama Hizmetinde TLS/SSL bağlama ile özel bir DNS adı güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS zorlama](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 zorlama](configure-ssl-bindings.md#enforce-tls-versions)
 * [SSS : Uygulama Hizmet Sertifikaları](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

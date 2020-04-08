@@ -6,15 +6,79 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 03/05/2020
-ms.openlocfilehash: c29790035ec4e971957784e826a1e8bd8e0c9329
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79500506"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802613"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitör belgelerindeki yenilikler nelerdir?
 Bu makalede, yeni veya önemli ölçüde güncelleştirilen Azure Monitor makaleleri listelenmektedir. Her ayın ilk haftasında bir önceki aya ait makale güncelleştirmelerini eklemek üzere yenilenir.
+
+## <a name="march-2020"></a>Mart 2020
+
+### <a name="general"></a>Genel
+- [Azure Monitor'a genel bakış](overview.md) - Azure Monitor genel bakış videosu eklendi.
+- [Azure Monitör müşteri tarafından yönetilen anahtar yapılandırması](platform/customer-managed-keys.md) - Genel güncelleştirmeler.
+- [Azure Monitor veri başvurusu](/azure/azure-monitor/reference) - Yeni site.
+
+### <a name="alerts"></a>Uyarılar
+
+- [Azure Monitor'da etkinlik günlüğü uyarıları oluşturun, görüntüleyin ve yönetin](platform/alerts-activity-log.md) - Kaynak Yöneticisi şablonunun ek açıklaması.
+- [Azure Monitor'da metrik uyarıların nasıl çalıştığını anlayın.](platform/alerts-metric-overview.md) - Devlet desteği için güncellendi.
+- [Azure Monitor uyarı ve bildirimlerini sorun giderme](platform/alerts-troubleshoot.md) - Yeni makale
+
+### <a name="application-insights"></a>Application Insights
+- [PowerShell ile Azure Uygulama Öngörülerini Otomatikleştirin](app/powershell.md) - ARMClient örnekleri eklendi.
+- [Uygulama Öngörüleri'nden telemetrisürekli dışa aktarma](app/export-telemetry.md) - İhracat yapısının ayrıntılarını içeren tablo ekleyin.
+- [Azure Uygulama Hizmetinde .NET uygulamaları için Anlık Görüntü Hata Ayıklama'yı etkinleştirin](app/snapshot-debugger-appservice.md) - Kaynak Yöneticisi şablonu örneği eklendi.
+- [Azure Uygulama Öngörüleri için kullanımı ve maliyetleri yönetin](app/pricing.md) - Veri kapağı uyarısı hakkında bilgi eklendi.
+- [Azure Monitor (önizleme) ile Python uygulamalarını izleyin](app/opencensus-python.md) - Standart ölçümler eklendi.
+- [JavaScript uygulamaları için kaynak harita desteği - Azure Monitor Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/source-map-support) - Yeni makale.
+
+
+### <a name="containers"></a>Kapsayıcılar
+- [Azure Monitor SSS](faq.md) - Kapsayıcılar için Azure Monitor için güncelleştirin.
+- [Kapsayıcılar için Azure Monitor ile GPU izlemeyi yapılandırma](insights/container-insights-gpu-monitoring.md) - Yeni makale
+
+### <a name="insights"></a>Insights
+- [Azure'da Office 365 yönetim çözümü](insights/solution-office-365.md) - Amortisman tarihi güncelleştirildi.
+
+### <a name="logs"></a>Günlükler
+- [Azure Monitor'da günlük sorgularını optimize edin](log-query/query-optimization.md) - XML ve JSON ayrıştırma için CPU koşulu eklendi.
+- [Azure Günlük Analizi çalışma alanını silme ve kurtarma](platform/delete-workspace.md) - Sorun giderme eklendi.
+- [Azure Mantık Uygulamaları yla Azure Monitör Günlükleri'ni kullanın ve](platform/logicapp-flow-connector.md) Yeni Azure Monitör konektörü için Güncelleştirilen Power Automate'i kullanın.
+
+### <a name="metrics"></a>Ölçümler
+- [Azure portalında disk ölçümleri amortismanı](https://docs.microsoft.com/azure/azure-monitor/platform/portal-disk-metrics-deprecation) - Yeni makale.
+- [Öğretici - Azure Monitor'da bir metrik grafiği oluşturun](learn/tutorial-metrics-explorer.md) - Video eklendi.
+
+### <a name="platform-logs"></a>Platform günlükleri
+- [Azure Monitor'da Azure etkinlik günlüğünü toplayın ve analiz edin](platform/activity-log-collect.md) - Tanılama ayarlarıyla Etkinlik günlüğünü toplamayı daha iyi açıklamak için yeniden yazın.
+
+### <a name="virtual-machines"></a>Sanal makineler
+- [Azure Monitor ile Azure sanal makinelerini izleyin](insights/monitor-vm-azure.md) - Yeni makale.
+- [Hızlı başlangıç: Azure Monitor ile Azure sanal makinelerini izleyin](learn/quick-monitor-azure-vm.md) - Sanal Makineler için Azure Monitör eklemek için güncelleştirildi.
+- [VM'ler için Azure Monitor'dan uyarılar](insights/vminsights-alerts.md) - Yeni makale
+- [VM'lere genel bakış için Azure Monitörünü etkinleştirin](insights/vminsights-enable-overview.md) - Güncelleştirilmiş aracı indirme bağlantıları.
+
+
+VM'ler için Azure Monitörünün genel kullanılabilirliği için genel güncelleştirmeler
+- [VM'ler için Azure Monitör nedir?](insights/vminsights-overview.md)
+- [VM'ler için Azure Monitörü (GA) sık sorulan sorular](insights/vminsights-ga-release-faq.md) 
+- [Azure İlkesi'ni kullanarak VM'ler için Azure Monitörünü etkinleştirme](insights/vminsights-enable-at-scale-policy.md) 
+- [VM'ler için Azure Monitor ile performans grafiği nasıl çizilir?](insights/vminsights-performance.md)
+- [VM'ler için Azure Monitöründen Günlükler Nasıl Sorgulanır?](insights/vminsights-log-search.md)
+- [VM'ler için Azure Monitor ile uygulama bağımlılıklarını görüntüleme](insights/vminsights-maps.md) 
+
+
+### <a name="visualizations"></a>Görsel öğeler
+- [Azure Monitor'dan verileri görselleştirme](visualizations.md) - Görünüm Tasarımcısı'nın planlı amortismanına dikkat etmek için güncelleştirildi.
+
+
+
+
 
 ## <a name="february-2020"></a>Şubat 2020
 

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/07/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a8930af1366fef3d8c4491fca5e9403905648de1
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 951396afc95a215a6ff9f4885f83fcdf6efdeb72
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80638008"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810342"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -120,6 +120,7 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Etkin FTP desteklenmiyor|Etkin FTP, FTP PORT komutunu kullanarak FTP sıçrama saldırılarına karşı korunmak için Azure Güvenlik Duvarı'nda devre dışı bırakılır.|Bunun yerine Pasif FTP kullanabilirsiniz. Güvenlik duvarında TCP bağlantı noktaları 20 ve 21'i hala açıkça açmanız gerekir.
 |SNAT bağlantı noktası kullanım ölçümü %0'ı gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak metrik kullanmak yanlış bir sonuç sağlar.|Bu sorun giderilmiş ve Mayıs 2020 için üretime rollout hedeflenmiştir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu giderir, ancak tutarlı değildir. Ara geçici çözüm olarak, *yalnızca durum=bozulmuş*, *durum=sağlıksız*için değil aramak için güvenlik duvarı durumu durumunu kullanın. Port tükenmesi *bozulmuş*olarak gösterecektir. Güvenlik duvarı sağlığını etkilemek için daha fazla ölçüm olduğunda *sağlıklı değil,* gelecekteki kullanım için ayrılmıştır.
 |DNAT, Zorunlu Tünelleme özelliğiyle desteklenmez|Zorunlu Tünelleme etkinleştirilmiş olan güvenlik duvarları, asimetrik yönlendirme nedeniyle Internet'ten gelen erişimi destekleyemez.|Bu asimetrik yönlendirme nedeniyle tasarım gereğidir. Gelen bağlantıların dönüş yolu, bağlantının kurulduğunu görmeyen şirket içi güvenlik duvarından geçer.
+|Giden Pasif FTP, birden çok genel IP adresine sahip Güvenlik Duvarları için çalışmaz.|Pasif FTP, kontrol ve veri kanalları için farklı bağlantılar kurar. Birden çok genel IP adresine sahip bir Güvenlik Duvarı veri giden gönderdiğinde, kaynak IP adresi için ortak IP adreslerinden birini rasgele seçer. FTP, veri ve denetim kanalları farklı kaynak IP adresleri kullandığında başarısız olur.|Açık bir SNAT yapılandırması planlanır. Bu arada, bu durumda tek bir IP adresi kullanmayı düşünün.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

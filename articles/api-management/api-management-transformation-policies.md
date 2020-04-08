@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 34a70a4698b69881a06cfb7a7017fa0c30647197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047692"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803254"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
 Bu konu, aşağıdaki API Yönetimi ilkeleri için bir başvuru sağlar. İlkeler ekleme ve yapılandırma hakkında bilgi için [API Yönetimi'ndeki İlkeler'e](https://go.microsoft.com/fwlink/?LinkID=398186)bakın.
@@ -540,17 +540,12 @@ OriginalUrl.
 </set-query-parameter>
 ```
 
-### <a name="examples"></a>Örnekler
-
 #### <a name="example"></a>Örnek
 
 ```xml
 
-<set-query-parameter>
-  <parameter name="api-key" exists-action="skip">
-    <value>12345678901</value>
-  </parameter>
-  <!-- for multiple parameters with the same name add additional value elements -->
+<set-query-parameter name="api-key" exists-action="skip">
+  <value>12345678901</value>
 </set-query-parameter>
 
 ```
@@ -596,7 +591,7 @@ OriginalUrl.
 
 - İstek URL ' i -`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
-  Bu ilke, insan ve/veya tarayıcı dostu bir URL'nin web hizmeti tarafından beklenen URL biçimine dönüştürülmesi gerektiğinde kullanılabilir. Bu ileme yalnızca temiz URL'ler, YENIlendirilebilir URL'ler, kullanıcı dostu URL'ler veya tamamen sorgu dizesi içermeyen ve bunun yerine yalnızca kaynağın yolunu içeren yapısal URL'ler gibi alternatif bir URL biçimi ortaya çıkarırken uygulanması gerekir ( düzeni ve otorite sonra). Bu genellikle estetik, kullanılabilirlik veya arama motoru optimizasyonu (SEO) amaçlar için yapılır.
+  Bu ilke, insan ve/veya tarayıcı dostu bir URL'nin web hizmeti tarafından beklenen URL biçimine dönüştürülmesi gerektiğinde kullanılabilir. Bu ilenin yalnızca temiz URL'ler, YENI lendirilebilir URL'ler, kullanıcı dostu URL'ler veya sorgu dizesi içermeyen ve bunun yerine yalnızca kaynağın yolunu içeren (şema ve yetki) içeren tamamen yapısal URL'ler gibi alternatif bir URL biçimi ortaya çıkarırken uygulanması gerekir. Bu genellikle estetik, kullanılabilirlik veya arama motoru optimizasyonu (SEO) amaçlar için yapılır.
 
 > [!NOTE]
 >  Yalnızca ilkeyi kullanarak sorgu dize parametreleri ekleyebilirsiniz. Yeniden yazma URL'sinde ek şablon yolu parametreleri ekleyemezsiniz.

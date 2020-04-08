@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 693f132bed590af65cf79ebf4739ea5dcadbfc52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 65e97453ba2ee85fb2ed7b512db87a269d2d7f77
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045525"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811513"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Linux'ta Azure Uygulama Hizmeti'nde PHP ve MySQL uygulaması oluşturun
 
@@ -254,9 +254,9 @@ Değişiklikleri kaydedin.
 > MySQL bağlantı bilgilerinizin güvenliğini sağlamak için bu dosya zaten Git deposunun dışında bırakılmıştır (Depo kökünde _.gitignore_ dosyasına bakın). Daha sonra, App Service’teki ortam değişkenlerini, MySQL için Azure Veritabanı içinde veritabanınıza bağlanmak üzere nasıl yapılandıracağınızı öğreneceksiniz. Ortam değişkenlerini kullandığınızda App Service içinde *.env* dosyası gerekli değildir.
 >
 
-### <a name="configure-ssl-certificate"></a>SSL sertifikası yapılandırma
+### <a name="configure-tlsssl-certificate"></a>TLS/SSL sertifikasını yapılandırma
 
-Varsayılan olarak, MySQL için Azure Veritabanı, istemcilerden gelen SSL bağlantılarını zorlar. Azure’da MySQL veritabanınıza bağlanmak üzere MySQL için Azure Veritabanı tarafından sağlanan [_.pem_ sertifikasını kullanmanız gerekir](../../mysql/howto-configure-ssl.md).
+Varsayılan olarak, MySQL için Azure Veritabanı istemcilerden TLS bağlantılarını zorlar. Azure’da MySQL veritabanınıza bağlanmak üzere MySQL için Azure Veritabanı tarafından sağlanan [_.pem_ sertifikasını kullanmanız gerekir](../../mysql/howto-configure-ssl.md).
 
 _config/database.php_ dosyasını açın ve aşağıdaki kodda gösterildiği gibi _sslmode_ ile _options_ parametrelerini `connections.mysql` içine ekleyin.
 

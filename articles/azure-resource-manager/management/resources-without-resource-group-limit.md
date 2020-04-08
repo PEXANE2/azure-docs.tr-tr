@@ -2,13 +2,13 @@
 title: 800 sayım sınırı olmayan kaynaklar
 description: Bir kaynak grubunda 800'den fazla örneği olabilecek Azure kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 735cad0bfa936c41f603e42bdb9be77a1562cc1f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937946"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804784"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Kaynak grubu başına 800 örnekle sınırlı olmayan kaynaklar
 
@@ -26,7 +26,6 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılması için dest
 * Kayıt
 * kayıtlar/müşteriAbonelikleri
 * kayıtlar/ürünler
-* doğrulamaTuşları
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 
@@ -35,6 +34,9 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılması için dest
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 * Disk
+* Galerileri
+* galeriler/resimler
+* galeriler/resimler/sürümler
 * images
 * anlık görüntüler
 * virtualMachines
@@ -67,6 +69,11 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılması için dest
 * Servergroups
 * Sunucu
 * sunucularv2
+* singleServers
+
+## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
+
+* zamanlamaları - Varsayılan olarak, 800 örnekleri ile sınırlıdır. Bu sınır desteğe başvurarak artırılabilir.
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
 
@@ -90,7 +97,7 @@ Bazı kaynak türleri için, 800 örnek sınırının kaldırılması için dest
 * softwareUpdateProfile
 * softwareUpdates
 
-## <a name="microsoftinsights"></a>Microsoft.Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 * metricalerts
 

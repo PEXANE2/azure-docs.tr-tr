@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7671d07a468a9f67a4851ec828fe18896d7a6c66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334272"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804495"
 ---
 # <a name="add-a-simple-data-layer"></a>Basit bir veri katmanı ekleme
 
@@ -56,7 +56,7 @@ Aşağıdaki kod, basit veri katmanını kullanarak yukarıdaki nokta özelliği
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Basit veri katmanını kullanma" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Bkz. Kalem <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar'a göre <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>basit veri katmanını kullanın</a> .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
+<iframe height="500" style="width: 100%;" scrolling="no" title="Basit veri katmanını kullanma" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Bkz. Kalem <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar'a göre <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>basit veri katmanını kullanın</a> .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
 Basit veri katmanının gerçek gücü aşağıdaki zaman gelir:

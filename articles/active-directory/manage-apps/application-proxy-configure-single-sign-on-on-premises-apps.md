@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf34b52e06e369fe4dd459ff9dfa2880596fb35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3d2117e913f292e92f37f31d2e123587c70a189
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481356"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803306"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Uygulama Proxy ile şirket içi uygulamalar için SAML tek oturum açma
 
@@ -74,14 +74,14 @@ Aşağıdaki protokol diyagramları, hem hizmet sağlayıcısı tarafından baş
 
 2. **SAML sayfasıyla Tek Oturum Açma'da** Temel **SAML Yapılandırması** başlığına gidin ve **Edit** simgesini (kalem) seçin. Uygulama Proxy'sinde yapılandırdığınız **Harici URL'nin** **Tanımlayıcı,** **YanıtURL'si**ve **Giriş URL** alanlarında olduğundan emin olun. Bu URL'lerin Uygulama Proxy'si için doğru çalışması gerekir. 
 
-3. Etki alanına Application Proxy tarafından erişilebilmek için daha önce yapılandırılan **Yanıt URL'sini** düzenleme. Örneğin, Harici **URL'niz** `https://contosotravel-f128.msappproxy.net` ve özgün **Yanıtla URL'niz** ise, `https://contosotravel.com/acs`özgün **Yanıtla URL'sini** güncelleştirmeniz `https://contosotravel-f128.msappproxy.net/acs`gerekir. 
+3. Etki alanının Uygulama Proxy'si aracılığıyla internet üzerinden erişilebilmeleri için daha önce yapılandırılan **Yanıt URL'sini** edin. Örneğin, Harici **URL'niz** `https://contosotravel-f128.msappproxy.net` ve özgün **Yanıtla URL'niz** ise, `https://contosotravel.com/acs`özgün **Yanıtla URL'sini** güncelleştirmeniz `https://contosotravel-f128.msappproxy.net/acs`gerekir.
 
     ![Temel SAML yapılandırma verilerini girin](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
 4. Varsayılan olarak işaretlemek için güncelleştirilmiş **Yanıt URL'sinin** yanındaki onay kutusunu seçin.
 
-   * Gerekli **Yanıt URL'si** zaten listelenmişse, bu Yanıt **URL'sini** varsayılan olarak işaretleyin ve önceden yapılandırılmış Yanıt **URL'sini**silin.
+   * Gerekli **Yanıt URL'sini** varsayılan olarak işaretlemekten sonra, dahili URL'yi kullanan önceden yapılandırılmış **Yanıt URL'sini** de silebilirsiniz.
 
    * SP tarafından başlatılan akış için, arka uç uygulamasının kimlik doğrulama belirteci almak için doğru **YanıtURL'sini** veya İddia Tüketici Hizmeti URL'sini belirttiğinden emin olun.
 

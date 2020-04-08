@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 04/07/2020
 ms.author: victorh
-ms.openlocfilehash: 550d9f4f5396b2165260e39cd28222b083dd6756
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f021eed959ef88a1ef3671e1d0ace8080710c92a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279994"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810239"
 ---
 # <a name="azure-application-gateway-features"></a>Azure Uygulama Ağ Geçidi özellikleri
 
@@ -26,7 +26,7 @@ Uygulama Ağ Geçidi aşağıdaki özellikleri içerir:
 - [Otomatik ölçeklendirme](#autoscaling)
 - [Bölge artıklığı](#zone-redundancy)
 - [Statik VIP](#static-vip)
-- [Web Uygulama Güvenlik Duvarı](#web-application-firewall)
+- [Web Uygulaması Güvenlik Duvarı](#web-application-firewall)
 - [AKS için Giriş Denetleyicisi](#ingress-controller-for-aks)
 - [URL tabanlı yönlendirme](#url-based-routing)
 - [Birden çok site barındırma](#multiple-site-hosting)
@@ -160,6 +160,10 @@ Aşağıdaki tablo, SSL boşaltma etkin olan her uygulama ağ geçidi v1 örneğ
 
 > [!NOTE]
 > Bu değerler bir uygulama ağ geçidi verimliliği için yaklaşık değerlerdir. Gerçek verimlilik; ortalama sayfa boyutu, arka uç örneklerinin konumu ve bir sayfaya hizmet etmek için işleme süresi gibi çeşitli ortam ayrıntılarına bağlıdır. Tam performans rakamlarına ulaşmak için kendi testlerinizi çalıştırmanız gerekir. Bu değerler yalnızca kapasite planlama konusunda yardımcı olmak için verilmiştir.
+
+## <a name="version-feature-comparison"></a>Sürüm özelliği karşılaştırması
+
+Uygulama Ağ Geçidi v1-v2 özellik karşılaştırması için, [Bkz. Otomatik Ölçekleme ve Bölge yedekli Uygulama Ağ Geçidi v2](application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

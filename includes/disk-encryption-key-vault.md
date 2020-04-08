@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 0aa62a76727f6f913c277100d8c5b36ed1b00110
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77618494"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813803"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Az keyvault kullanarak bir anahtar atlama oluşturun Azure CLI komutu, [Yeni-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell komutu, [Azure portalı](https://portal.azure.com)veya [Kaynak Yöneticisi şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) [oluşturun.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)
 
 >[!WARNING]
-> Şifreleme sırlarının bölgesel sınırları aşmamasını sağlamak için Azure Disk Şifrelemesi, Anahtar Kasası ve VM'lerin aynı bölgede birlikte bulunmasını gerektirir. Şifrelenecek VM'ler ile aynı bölgede bulunan bir Anahtar Kasası oluşturun ve kullanın. 
+> Şifreleme sırlarının bölgesel sınırları aşmamasını sağlamak için Azure Disk Şifrelemesi, Anahtar Kasası ve VM'lerin aynı bölgede ve aynı abonelikte birlikte bulunmasını gerektirir. Şifrelenecek VM'ler ile aynı bölgede bulunan bir Anahtar Kasası oluşturun ve kullanın. 
 
 Her Key Vault'un benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
 
@@ -115,7 +115,7 @@ Anahtar kasası için disk şifrelemesini etkinleştirmek için [az keyvault gü
      Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup" -EnabledForTemplateDeployment
      ```
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 1. Anahtar kasanızı seçin, **Access İlkeleri'ne**gidin ve **gelişmiş erişim ilkelerini göstermek için tıklatın.**
 2. **Birim şifreleme için Azure Disk Şifrelemesine erişimi etkinleştir**etiketiyle kutuyu seçin.

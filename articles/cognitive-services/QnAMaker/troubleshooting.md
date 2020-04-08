@@ -4,12 +4,12 @@ description: QnA Maker hizmeti ile ilgili en sık sorulan soruların küratörl�
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7847e21dbcf07f669d6802fffdd1e43623a72340
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474949"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804359"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker için sorun giderme
 
@@ -142,7 +142,7 @@ Soru ve yanıt çiftleri, dosyalar, URL'ler, özel sorular ve yanıtlar, bilgi t
 * Dosyalar - desteklenmiyor
 
 #### <a name="answer-text-in-markdown"></a>İşaretlemetin yanıtla
-QnA kümeleri bilgi tabanında olduğunda, genel URL'lerden kullanılabilen ortambağlantıları içerecek şekilde bir yanıtın işaretleme metnini edinebilirsiniz.
+QnA çiftleri bilgi tabanına girdiğinde, genel URL'lerden kullanılabilen ortambağlantıları içerecek şekilde bir yanıtın işaretleme metnini edebilirsiniz.
 
 
 </details>

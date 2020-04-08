@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
 ms.date: 11/19/2019
-ms.openlocfilehash: 550c315023c0ae907c369778c81b16e137004bec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: afb30a17d7a1450f169402c18f41ce249415e89d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067257"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804835"
 ---
 # <a name="sql-database-resource-limits-and-resource-governance"></a>SQL Veritabanı kaynak sınırları ve kaynak yönetimi
 
@@ -103,7 +103,7 @@ Azure SQL Veritabanı, kaynak sınırlarını zorlamak için, Azure'da bir SQL S
 
 Azure SQL Veritabanı, SQL Server işlemindeki kaynakları yönetmek için Kaynak Yöneticisi'ni kullanmanın yanı sıra, işlem düzeyi kaynak yönetimi için Windows [İş Nesneleri'ni](https://docs.microsoft.com/windows/win32/procthread/job-objects) ve depolama kotası yönetimi için Windows [File Server Resource Manager'ı (FSRM)](https://docs.microsoft.com/windows-server/storage/fsrm/fsrm-overview) de kullanır.
 
-Azure SQL Veritabanı kaynak yönetimi doğası gereği hiyerarşiktir. Yukarıdan aşağıya doğru, sınırlar işletim sistemi kaynak yönetim mekanizmaları ve Kaynak Yöneticisi kullanılarak işletim sistemi düzeyinde ve depolama hacmi düzeyinde, daha sonra Kaynak Valisi kullanarak kaynak havuzu düzeyinde ve daha sonra iş yükü grubu düzeyinde Kaynak Valisi. Geçerli veritabanı veya elastik havuz için geçerli olan kaynak yönetim sınırları [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde su yüzüne çıkar. 
+Azure SQL Veritabanı kaynak yönetimi doğası gereği hiyerarşiktir. Yukarıdan aşağıya doğru, sınırlar işletim sistemi kaynak yönetim mekanizmaları ve Kaynak Yöneticisi, daha sonra Kaynak Valisi kullanarak kaynak havuzu düzeyinde ve daha sonra Kaynak Valisi kullanarak iş yükü grup düzeyinde kullanarak işletim sistemi düzeyinde ve depolama hacmi düzeyinde uygulanır. Geçerli veritabanı veya elastik havuz için geçerli olan kaynak yönetim sınırları [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) görünümünde su yüzüne çıkar. 
 
 ### <a name="data-io-governance"></a>Veri IO yönetimi
 
@@ -134,7 +134,7 @@ Günlük kayıtları oluşturulduğunda, her işlem, istenilen maksimum günlük
 
 Çalışma zamanında uygulanan gerçek günlük oluşturma oranları da geri bildirim mekanizmalarından etkilenerek, sistemin stabilize edilebilmesi için izin verilen günlük oranlarını geçici olarak azaltabilir. Günlük alanı yönetimi, günlük alanı koşulları ve Kullanılabilirlik Grubu çoğaltma mekanizmaları dışında çalışan kaçınarak geçici olarak genel sistem sınırlarını azaltabilir.
 
-Günlük hızı valilik trafik aşağıdaki bekleme türleri [(sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV maruz) ile su yüzüne çıkar:
+Günlük oranı vali trafik aşağıdaki bekleme türleri [(sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) görünümlerde maruz) ile su yüzüne çıkar:
 
 | Bekleme Türü | Notlar |
 | :--- | :--- |
@@ -143,6 +143,7 @@ Günlük hızı valilik trafik aşağıdaki bekleme türleri [(sys.dm_db_wait_st
 | INSTANCE_LOG_RATE_GOVERNOR | Örnek düzeyi sınırlayıcı |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Geri bildirim kontrolü, Premium/Business Critical'te kullanılabilirlik grubu fiziksel çoğaltma |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Geri bildirim kontrolü, günlük dışı alan durumunu önlemek için oranları sınırlama |
+| HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO | Coğrafi çoğaltma geri bildirim kontrolü, yüksek veri gecikmesi ve coğrafi-saniyelerin kullanılamamasını önlemek için günlük hızını sınırlayan|
 |||
 
 İstenilen ölçeklenebilirliği engelleyen bir günlük hızı sınırıyla karşılaştığında aşağıdaki seçenekleri göz önünde bulundurun:

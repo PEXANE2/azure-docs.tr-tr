@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301021"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811736"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure Uygulama Hizmeti için TLS karşılıklı kimlik doğrulamasını yapılandırma
 
@@ -41,7 +41,7 @@ Dışlama yolları **Yapılandırma** > **Genel Ayarları** seçilerek ve bir d�
 
 ## <a name="access-client-certificate"></a>Müşteri sertifikasına erişin
 
-App Service'de, isteğin SSL sonlandırılması ön uç yük dengeleyicisinde gerçekleşir. [İstemci sertifikaları etkinken](#enable-client-certificates)isteği uygulama kodunuza iletilirken, Uygulama Hizmeti istemci sertifikasıile birlikte bir `X-ARR-ClientCert` istek üstbilgisini ekler. Uygulama Hizmeti, bu istemci sertifikasıyla uygulamanıza iletmekten başka bir şey yapmaz. Uygulama kodunuz istemci sertifikasını doğrulamadan sorumludur.
+App Service'de, TLS sonlandırma isteği ön uç yük bakiyesinde gerçekleşir. [İstemci sertifikaları etkinken](#enable-client-certificates)isteği uygulama kodunuza iletilirken, Uygulama Hizmeti istemci sertifikasıile birlikte bir `X-ARR-ClientCert` istek üstbilgisini ekler. Uygulama Hizmeti, bu istemci sertifikasıyla uygulamanıza iletmekten başka bir şey yapmaz. Uygulama kodunuz istemci sertifikasını doğrulamadan sorumludur.
 
 ASP.NET için istemci sertifikası **httprequest.clientcertificate** özelliği aracılığıyla kullanılabilir.
 

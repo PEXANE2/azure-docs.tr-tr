@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cfeff430e5313c8728582c4790c9aca9482d63aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c85d6078fce7fc8e5a5b5d8485517a8b262044a9
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79534926"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802340"
 ---
 # <a name="create-a-map"></a>Harita oluşturma
 
@@ -26,7 +26,7 @@ Harita yüklemek [için, Harita sınıfının](https://docs.microsoft.com/javasc
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Temel harita yükü" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Temel harita yükü" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar 'a göre Kalem <a href='https://codepen.io/azuremaps/pen/rXdBXx/'>Temel harita yüküne</a> bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
@@ -39,7 +39,7 @@ Harita geniş bir ekranda uzaklaştırıldığında, dünyanın birden çok kopy
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopys = yanlış" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopys = yanlış" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 CodePen'de Kalem <a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopys</a> =<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Haritalar tarafından false ( ) <a href='https://codepen.io'>bakın.</a>
 </iframe>
 

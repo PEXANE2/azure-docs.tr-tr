@@ -2,13 +2,13 @@
 title: Operasyon desteğini kaynak türüne göre taşıma
 description: Yeni bir kaynak grubuna veya aboneye taşınabilen Azure kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 2250283136608161956716abadb63b9f706bf581
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460424"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804801"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 Bu makalede, Azure kaynak türünün taşıma işlemini destekleyip desteklemediği listelanmaktadır. Ayrıca, bir kaynağı taşınırken göz önünde bulundurulması gereken özel koşullar hakkında bilgi sağlar.
@@ -35,6 +35,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.BingHaritalar](#microsoftbingmaps)
 > - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Önbellek](#microsoftcache)
@@ -43,6 +44,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.ClassicCompute](#microsoftclassiccompute)
 > - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
 > - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.Cognition](#microsoftcognition)
 > - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
 > - [Microsoft.Compute](#microsoftcompute)
 > - [Microsoft.Consumption](#microsoftconsumption)
@@ -72,6 +74,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
 > - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.DesktopVirtualization](#microsoftdesktopvirtualization)
 > - [Microsoft.Devices](#microsoftdevices)
 > - [Microsoft.Devops](#microsoftdevops)
 > - [Microsoft.DevSpaces](#microsoftdevspaces)
@@ -82,6 +85,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Deneme](#microsoftexperimentation)
 > - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Genomik](#microsoftgenomics)
 > - [Microsoft.GuestConfiguration](#microsoftguestconfiguration)
@@ -90,11 +94,13 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.HealthcareApis](#microsofthealthcareapis)
 > - [Microsoft.HybridCompute](#microsofthybridcompute)
 > - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
@@ -106,7 +112,9 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
 > - [Microsoft.MachineLearningOperasyonelleştirme](#microsoftmachinelearningoperationalization)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.ManagedNetwork](#microsoftmanagednetwork)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Haritalar](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
@@ -128,7 +136,9 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.ProviderHub](#microsoftproviderhub)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.RedHatOpenShift](#microsoftredhatopenshift)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.ResourceHealth](#microsoftresourcehealth)
@@ -149,6 +159,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
 > - [Microsoft.SqlVM](#microsoftsqlvm)
 > - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageÖnbellek](#microsoftstoragecache)
 > - [Microsoft.StorageSync](#microsoftstoragesync)
 > - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
 > - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
@@ -157,13 +168,17 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
 > - [Microsoft.Abonelik](#microsoftsubscription)
 > - [microsoft.support](#microsoftsupport)
+> - [Microsoft.Synapse](#microsoftsynapse)
 > - [Microsoft.TerraformOSS](#microsoftterraformoss)
 > - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
 > - [microsoft.visualstudio](#microsoftvisualstudio)
 > - [Microsoft.VMwareCloudBasit](#microsoftvmwarecloudsimple)
+> - [Microsoft.VnfManager](#microsoftvnfmanager)
 > - [Microsoft.VSOnline](#microsoftvsonline)
 > - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsESU](#microsoftwindowsesu)
 > - [Microsoft.WindowsIoT](#microsoftwindowsiot)
 > - [Microsoft.WorkloadMonitor](#microsoftworkloadmonitor)
 
@@ -344,7 +359,15 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | blockchainmembers | Hayır | Hayır |
+> | cordamembers | Hayır | Hayır |
 > | Watchers | Hayır | Hayır |
+
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | belirteç hizmetleri | Hayır | Hayır |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
@@ -423,6 +446,13 @@ Kaynak sağlayıcı ad alanına atla:
 > [!IMPORTANT]
 > [Bkz. Klasik dağıtım taşıma kılavuzu.](./move-limitations/classic-model-move-limitations.md) Klasik dağıtım kaynakları, bu senaryoya özgü bir işlemle abonelikler arasında taşınabilir.
 
+## <a name="microsoftcognition"></a>Microsoft.Cognition
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | sentetik hesaplar | Hayır | Hayır |
+
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 
 > [!div class="mx-tableFixed"]
@@ -446,6 +476,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | images | Evet | Evet |
 > | yakınlık yerleşim grupları | Evet | Evet |
 > | restorenokta koleksiyonları | Hayır | Hayır |
+> | sharedvmuzanlar | Hayır | Hayır |
 > | sharedvmimages | Hayır | Hayır |
 > | sharedvmimages / sürümler | Hayır | Hayır |
 > | anlık görüntüler | Evet | Evet |
@@ -506,6 +537,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | Kayıt | Evet | Evet |
+> | kayıt defterleri / agentpools | Hayır | Hayır |
 > | kayıt defterleri / oluşturma görevleri | Evet | Evet |
 > | kayıt defterleri / çoğaltmalar | Evet | Evet |
 > | kayıt defterleri / görev defterleri | Evet | Evet |
@@ -700,6 +732,15 @@ Kaynak sağlayıcı ad alanına atla:
 > | servis topolojileri / servisler / servis birimleri | Evet | Evet |
 > | adımlar | Evet | Evet |
 
+## <a name="microsoftdesktopvirtualization"></a>Microsoft.DesktopVirtualization
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | uygulama grupları | Hayır | Hayır |
+> | hostpools | Hayır | Hayır |
+> | çalışma alanı | Hayır | Hayır |
+
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
@@ -774,6 +815,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | eventsubscriptions | Hayır - bağımsız olarak taşınamaz, ancak abone olan kaynakla otomatik olarak taşınır. | Hayır - bağımsız olarak taşınamaz, ancak abone olan kaynakla otomatik olarak taşınır. |
 > | uzantılı konular | Hayır | Hayır |
 > | ortak namespaces | Evet | Evet |
+> | ortak kayıtlar | Hayır | Hayır |
 > | ortak konular | Evet | Evet |
 > | sistem konuları | Evet | Evet |
 > | konuları | Evet | Evet |
@@ -785,6 +827,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | Küme | Evet | Evet |
 > | Ad alanları | Evet | Evet |
+
+## <a name="microsoftexperimentation"></a>Microsoft.Deneme
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | deneme çalışma alanları | Hayır | Hayır |
 
 ## <a name="microsoftfalcon"></a>Microsoft.Falcon
 
@@ -805,6 +854,8 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
+> | otomatik yönetilen hesaplar | Hayır | Hayır |
+> | automanagedvmconfigurationprofiles | Hayır | Hayır |
 > | guestconfigurationassignments | Hayır | Hayır |
 > | Yazılım | Hayır | Hayır |
 > | softwareupdateprofile | Hayır | Hayır |
@@ -852,6 +903,14 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | veri yöneticileri | Evet | Evet |
 
+## <a name="microsofthydra"></a>Microsoft.Hydra
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | Bileşen | Hayır | Hayır |
+> | ağ skopları | Hayır | Hayır |
+
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 
 > [!div class="mx-tableFixed"]
@@ -871,10 +930,12 @@ Kaynak sağlayıcı ad alanına atla:
 > | Temel | Hayır | Hayır |
 > | taban çizgisini hesaplama | Hayır | Hayır |
 > | Bileşen | Evet | Evet |
+> | veri toplama kuralları | Hayır | Hayır |
 > | tanı ayarları | Hayır | Hayır |
 > | tanı ayarları kategorileri | Hayır | Hayır |
 > | olay türleri | Hayır | Hayır |
 > | genişletilmiş tanılama ayarları | Hayır | Hayır |
+> | konuk tanıayarları | Hayır | Hayır |
 > | logdefinitions | Hayır | Hayır |
 > | günlükler | Hayır | Hayır |
 > | metricalerts | Hayır | Hayır |
@@ -883,6 +944,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | metrikname alanları | Hayır | Hayır |
 > | metrics | Hayır | Hayır |
 > | çalışma kitaplarım | Hayır | Hayır |
+> | bildirim grupları | Hayır | Hayır |
 > | privatelinkscopes | Evet | Evet |
 > | scheduledqueryrules | Evet | Evet |
 > | topology | Hayır | Hayır |
@@ -915,10 +977,18 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
+> | hsmpools | Hayır | Hayır |
 > | Tonoz | Evet | Evet |
 
 > [!IMPORTANT]
 > Disk şifreleme si için kullanılan Anahtar Kasalar, aynı abonelikteki veya abonelikler arasında bir kaynak grubuna taşınama.
+
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | bağlı kümeler | Hayır | Hayır |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
@@ -965,7 +1035,7 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
-> | taahhüt planları | Evet | Evet |
+> | taahhüt planları | Hayır | Hayır |
 > | Webservices | Evet | Hayır |
 > | çalışma alanı | Evet | Evet |
 
@@ -1010,6 +1080,16 @@ Kaynak sağlayıcı ad alanına atla:
 > | çalışma alanı | Hayır | Hayır |
 > | çalışma alanları / hesaplamalar | Hayır | Hayır |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | güncellemeleri uygular | Hayır | Hayır |
+> | yapılandırma atamaları | Hayır | Hayır |
+> | bakım yapılandırmaları | Evet | Evet |
+> | güncelleştirmeler | Hayır | Hayır |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1017,6 +1097,16 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | Kimlik | Hayır | Hayır |
 > | kullanıcı atanan kimlikler | Hayır | Hayır |
+
+## <a name="microsoftmanagednetwork"></a>Microsoft.ManagedNetwork
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | yönetilen ağlar | Hayır | Hayır |
+> | yönetilen ağlar / yönetilen ağ grupları | Hayır | Hayır |
+> | yönetilen ağlar / yönetilen ağ eşleme politikaları | Hayır | Hayır |
+> | bildirim | Hayır | Hayır |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft.ManagedServices
 
@@ -1032,6 +1122,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | accounts | Evet | Evet |
+> | hesaplar / privateatlases | Evet | Evet |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1063,6 +1154,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | değerlendirme projeleri | Evet | Evet |
 > | göç projeleri | Evet | Evet |
+> | taşıma koleksiyonları | Hayır | Hayır |
 > | Proje | Hayır | Hayır |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
@@ -1155,6 +1247,7 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
+> | Küme | Hayır | Hayır |
 > | storageinsightconfigs | Hayır | Hayır |
 > | çalışma alanı | Evet | Evet |
 
@@ -1238,6 +1331,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | kullanıma sunulması | Hayır | Hayır |
 
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | çalışma alanı | Hayır | Hayır |
+
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
 > [!div class="mx-tableFixed"]
@@ -1249,6 +1349,13 @@ Kaynak sağlayıcı ad alanına atla:
 
 > [!IMPORTANT]
 > Bkz. [Kurtarma Hizmetleri, kılavuzu taşır.](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
+
+## <a name="microsoftredhatopenshift"></a>Microsoft.RedHatOpenShift
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | openshiftclusters | Hayır | Hayır |
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 
@@ -1374,6 +1481,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | uygulamalar | Evet | Evet |
+> | konteyner grupları | Hayır | Hayır |
 > | Ağ geçit -leri | Evet | Evet |
 > | Ağlar | Evet | Evet |
 > | Sır -larını | Evet | Evet |
@@ -1449,6 +1557,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | depolama hesapları | Evet | Evet |
 
+## <a name="microsoftstoragecache"></a>Microsoft.StorageÖnbellek
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | Önbellek | Hayır | Hayır |
+
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
@@ -1512,6 +1627,15 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | destek biletleri | Hayır | Hayır |
 
+## <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | çalışma alanı | Hayır | Hayır |
+> | çalışma alanları / bigdatapools | Hayır | Hayır |
+> | çalışma alanları / sqlpools | Hayır | Hayır |
+
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
 > [!div class="mx-tableFixed"]
@@ -1536,6 +1660,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ---------- |
 > | Mağaza | Evet | Evet |
 
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | imagetemplates | Hayır | Hayır |
+
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
 > [!div class="mx-tableFixed"]
@@ -1557,6 +1688,14 @@ Kaynak sağlayıcı ad alanına atla:
 > | özel cloudservices | Hayır | Hayır |
 > | sanal makineler | Hayır | Hayır |
 
+## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | cihazlar | Hayır | Hayır |
+> | vnfs | Hayır | Hayır |
+
 ## <a name="microsoftvsonline"></a>Microsoft.VSOnline
 
 > [!div class="mx-tableFixed"]
@@ -1575,6 +1714,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Bağlantı | Evet | Evet |
 > | customapis | Evet | Evet |
 > | barındırma ortamları | Hayır | Hayır |
+> | kubeenvironments | Evet | Evet |
 > | serverfarms | Evet | Evet |
 > | Siteler | Evet | Evet |
 > | siteler / premieraddons | Evet | Evet |
@@ -1583,6 +1723,13 @@ Kaynak sağlayıcı ad alanına atla:
 
 > [!IMPORTANT]
 > Bkz. [Uygulama Hizmeti taşıma kılavuzu.](./move-limitations/app-service-move-limitations.md)
+
+## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Kaynak grubu | Abonelik |
+> | ------------- | ----------- | ---------- |
+> | çoklu aktivasyon tuşları | Hayır | Hayır |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 

@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 29d837446960b7535b26284efdfab7a1c59ea968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fece1155d2f707f11dda9f3896bd8a08deff1557
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132507"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802392"
 ---
 # <a name="http-features"></a>HTTP Özellikleri
 
@@ -41,11 +41,11 @@ Dayanıklı İşlevler uzantısı tarafından açığa çıkarılan tüm yerleş
 
 [Orkestrasyon istemcisi bağlama,](durable-functions-bindings.md#orchestration-client) kullanışlı HTTP yanıt yükleri oluşturabilen API'leri ortaya çıkarır. Örneğin, belirli bir orkestrasyon örneği için yönetim API'lerine bağlantılar içeren bir yanıt oluşturabilir. Aşağıdaki örnekler, bu API'nin yeni bir düzenleme örneği için nasıl kullanılacağını gösteren bir HTTP tetikleyici işlevi gösterir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **index.js**
 
@@ -114,7 +114,7 @@ Dayanıklı Fonksiyonlar 2.0 ile başlayarak, orkestrasyon lar yerel olarak [dü
 
 Aşağıdaki örnek kod, giden bir HTTP isteği yapan bir orkestratör işlevini gösterir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,7 +134,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -172,7 +172,7 @@ Dayanıklı İşlevler, yetkilendirme için Azure Etkin Dizin (Azure AD) belirte
 
 Aşağıdaki kod bir .NET orchestrator işlevinin bir örneğidir. İşlev, Azure Kaynak Yöneticisi sanal makineleri REST [API](https://docs.microsoft.com/rest/api/compute/virtualmachines)kullanarak sanal bir makineyi yeniden başlatmak için kimlik doğrulaması çağrıları yapar.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RestartVm")]
@@ -198,7 +198,7 @@ public static async Task RunOrchestrator(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -232,7 +232,7 @@ module.exports = df.orchestrator(function*(context) {
 * Belirteçler asla dayanıklı orkestrasyon durumunda depolanır.
 * Belirteç edinimi yönetmek için herhangi bir kod yazmanız gerekmez.
 
-[Önceden derlenmiş C# RestartVMs örneğinde](https://github.com/Azure/azure-functions-durable-extension/blob/v2/samples/v2/precompiled/RestartVMs.cs)daha eksiksiz bir örnek bulabilirsiniz.
+[Önceden derlenmiş C# RestartVMs örneğinde](https://github.com/Azure/azure-functions-durable-extension/blob/dev/samples/precompiled/RestartVMs.cs)daha eksiksiz bir örnek bulabilirsiniz.
 
 Yönetilen kimlikler Azure kaynak yönetimiyle sınırlı değildir. Microsoft'un Azure hizmetleri ve iş ortaklarından gelen web uygulamaları da dahil olmak üzere Azure AD taşıyıcı belirteçlerini kabul eden tüm API'lere erişmek için yönetilen kimlikleri kullanabilirsiniz. Bir ortağın web uygulaması başka bir işlev uygulaması bile olabilir. Microsoft'un Azure AD ile kimlik doğrulamasını destekleyen Azure hizmetlerinin listesi için Azure [AD kimlik doğrulamasını destekleyen Azure hizmetlerine](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)bakın.
 

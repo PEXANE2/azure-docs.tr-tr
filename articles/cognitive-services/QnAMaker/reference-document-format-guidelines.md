@@ -1,14 +1,14 @@
 ---
 title: Belge biçim yönergelerini içe aktarma - QnA Maker
-description: QnA kümelerini almak ve oluşturmak için URL türlerinin nasıl kullanıldığını anlayın.
+description: Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 1e006520ce5c61f2da3f425af2332b0d41cc3881
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754897"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804342"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>İthal edilen belgeler ve URL'ler için biçimlendirme yönergeleri
 

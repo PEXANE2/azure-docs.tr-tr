@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 8b396b782c1254b3229aeeb8e51b61cc744d6318
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190374"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804376"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory ve API Management ile OAuth 2.0 kullanarak API'yi koruma
 
@@ -137,7 +137,7 @@ Bu örnekte, Geliştirici Konsolu istemci uygulamasıdır. Aşağıdaki adımlar
 
 1. **v1** uç noktaları kullanıyorsanız, **kaynak**adlı bir gövde parametresi ekleyin. Bu parametrenin değeri için arka uç uygulamasının **Uygulama Kimliği'ni** kullanın. 
 
-1. **v2** uç noktaları kullanıyorsanız, **Varsayılan kapsam** alanında arka uç uygulaması için oluşturduğunuz kapsamı kullanın.
+1. **v2** uç noktaları kullanıyorsanız, **Varsayılan kapsam** alanında arka uç uygulaması için oluşturduğunuz kapsamı kullanın. Ayrıca, [uygulama bildiriminde](/azure/active-directory/develop/reference-app-manifest) [`accessTokenAcceptedVersion`](/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) özellik `2` için değer ayarlamak için emin olun.
 
 1. Ardından, istemci kimlik bilgilerini belirtin. Bunlar istemci uygulamasının kimlik bilgileridir.
 

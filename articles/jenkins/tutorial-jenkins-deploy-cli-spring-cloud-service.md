@@ -3,12 +3,12 @@ title: Jenkins ve Azure CLI kullanarak uygulamaları Azure Spring Cloud’a dağ
 description: Azure Yay Bulutu hizmetine mikro hizmetleri dağıtmak için Azure CLI'yi sürekli tümleştirme ve dağıtım boru hattında nasıl kullanacağınızı öğrenin
 ms.topic: tutorial
 ms.date: 01/07/2020
-ms.openlocfilehash: 67ad97bb762ed302ef52c404d47c5755ea4b245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bc48eecc9e73b95fd9112d645135409c24369e10
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75734981"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810210"
 ---
 # <a name="tutorial-deploy-apps-to-azure-spring-cloud-using-jenkins-and-the-azure-cli"></a>Öğretici: Jenkins ve Azure CLI'yi kullanarak uygulamaları Azure İlkbahar Bulutu'na dağıtın
 
@@ -28,7 +28,7 @@ Bu öğretici, temel Azure hizmetleri, Azure Bahar Bulutu, Jenkins boru hatları
 >[!Note]
 > Azure İlkbahar Bulutu şu anda genel önizleme olarak sunulmaktadır. Genel önizleme teklifleri, müşterilerin resmi yayınlanmalarından önce yeni özelliklerle denemeler e-sayılsa.  Genel önizleme özellikleri ve hizmetleri üretim kullanımı için değildir.  Önizlemeler sırasında destek hakkında daha fazla bilgi için lütfen [SSS'mizi](https://azure.microsoft.com/support/faq/) gözden geçirin veya daha fazla bilgi edinmek için bir [Destek isteği](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) dosyalayın.
 
-[!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
+- **Azure aboneliği**: Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) oluşturun.
 
 * GitHub hesabı. GitHub hesabınız yoksa, başlamadan önce ücretsiz bir [hesap](https://github.com/) oluşturun.
 

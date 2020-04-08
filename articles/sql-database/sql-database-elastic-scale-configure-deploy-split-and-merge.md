@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 50dbca0b3a761b72134eaa6cfed57e231be4ef13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421040"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810196"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>Verileri kırık veritabanları arasında taşımak için bölünmüş birleştirme hizmeti dağıtma
 
@@ -150,7 +150,7 @@ Web rolü için:
 
 ## <a name="troubleshoot-the-deployment"></a>Dağıtımı sorun giderme
 
-Web rolünüz çevrimiçi duruma geçmezse, güvenlik yapılandırmasıyla ilgili bir sorun olabilir. SSL'nin yukarıda açıklandığı gibi yapılandırıldığından kontrol edin.
+Web rolünüz çevrimiçi duruma geçmezse, güvenlik yapılandırmasıyla ilgili bir sorun olabilir. TLS/SSL'nin yukarıda açıklandığı şekilde yapılandırıldığından kontrol edin.
 
 Çalışan rolünüz çevrimiçi duruma geçmezse, ancak web rolünüz başarılı olursa, bu büyük olasılıkla daha önce oluşturduğunuz durum veritabanına bağlanan bir sorundur.
 
@@ -254,7 +254,7 @@ Dahil komut dosyası dosyaları şunlardır:
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. Bir bölme işlemi (ilk parçadaki verilerin yarısını ikinci parçaya taşımak) ve ardından birleştirme işlemini (verileri ilk parçaya geri taşımak) yürütmek için *ExecuteSampleSplitMerge.ps1* komut dosyasını çalıştırın. SSL'yi yapılandırıp http bitiş noktasını devre dışı bıraktıysanız, bunun yerine https:// bitiş noktasını kullandığınızdan emin olun.
+5. Bir bölme işlemi (ilk parçadaki verilerin yarısını ikinci parçaya taşımak) ve ardından birleştirme işlemini (verileri ilk parçaya geri taşımak) yürütmek için *ExecuteSampleSplitMerge.ps1* komut dosyasını çalıştırın. TLS'yi yapılandırıp http uç noktasını devre dışı bıraktıysanız, bunun yerine https:// bitiş noktasını kullandığınızdan emin olun.
 
    Örnek komut satırı:
 
@@ -333,7 +333,7 @@ Bölme Birleştirme hizmeti sizin için hedef veritabanını (veya veritabanınd
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-Bu hata, SSL sertifikanızın doğru yapılandırılmadığını gösterir. Lütfen 'Bir web tarayıcısına bağlanma' bölümündeki yönergeleri izleyin.
+Bu hata, TLS/SSL sertifikanızın doğru yapılandırılmadığını gösterir. Lütfen 'Bir web tarayıcısına bağlanma' bölümündeki yönergeleri izleyin.
 
 İstek gönderemiyorsanız şunları görebilirsiniz:
 

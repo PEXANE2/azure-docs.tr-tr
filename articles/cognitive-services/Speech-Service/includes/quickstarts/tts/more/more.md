@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: dapine
-ms.openlocfilehash: b9398a3fc01cd7f08009f15ba5983235fbad3198
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 25472e5aab824a7e8444c43e674057eb3f9a1684
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419235"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80813822"
 ---
 ## <a name="additional-language-and-platform-support"></a>Ek dil ve platform desteği
 
@@ -20,7 +20,7 @@ Bu sekmeyi tıklattıysanız, büyük olasılıkla en sevdiğiniz programlama di
 | C# | [Bir ses dosyasına][1-file] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Birlik][unity], [Xamarin][xamarin] |
 | C++ | [Bir ses dosyasına][2-file] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
 | Java | [Bir ses dosyasına][3-file] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | | [Windows, Linux, macOS][js-code] |
+| JavaScript | [Ses dosyasına düğüm.js][js-node] | [Windows, Linux, macOS][js-code] |
 | Objective-C | [iOS hoparlöre,][obj-iOS-qck] [macOS hoparlöre][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
 | Python | [Bir ses dosyasına][4-file] | [Windows, Linux, macOS][python] |
 | Swift | [iOS hoparlöre,][swift-iOS-qck] [macOS hoparlöre][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
@@ -44,6 +44,7 @@ Bu sekmeyi tıklattıysanız, büyük olasılıkla en sevdiğiniz programlama di
 [java-android]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android
 [java-jre]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/jre
 
+[js-node]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech
 [js-code]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript
 
 [obj-iOS-qck]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/ios/text-to-speech

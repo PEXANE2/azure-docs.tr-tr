@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ca1327a547e8550e47ff37e4ba100fcbd2b7a79f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282469"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811450"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Alma/Dışa Aktarma hizmeti için Azure Anahtar Kasası'nda müşteri tarafından yönetilen anahtarları kullanma
 
@@ -103,7 +103,7 @@ Müşteri yönetilen anahtarınızla ilgili herhangi bir hata alırsanız, sorun
 | CmkErrorAccessİptal | Müşteri yönetilen anahtar uygulandı, ancak anahtar erişimi şu anda iptal edildi. Daha fazla bilgi için, anahtar erişimini nasıl [etkinleştirin' e](https://docs.microsoft.com/rest/api/keyvault/vaults/updateaccesspolicy)bakın.                                                      | Evet, kontrol edin: <ol><li>Anahtar kasası erişim ilkesinde hala MSI'ye sahip.</li><li>Erişim ilkesi, Get, Wrap, Unwrap için izinler sağlar.</li><li>Anahtar kasası güvenlik duvarının arkasındaki bir vNet'teyse, **Microsoft Trusted Services'a İzin Ver'in** etkin olup olmadığını denetleyin.</li></ol>                                                                                            |
 | CmkHatası Devre Dışı Bırakma      | Müşteri yönetilen anahtar uygulanır, ancak anahtar devre dışı bırakılır. Daha fazla bilgi için anahtarı nasıl [etkinleştirin' e](https://docs.microsoft.com/rest/api/keyvault/vaults/createorupdate)bakın.                                                                             | Evet, anahtar sürümünü etkinleştirerek     |
 | CmkErrorNotFound      | Müşteri yönetilen bir anahtar uygulandı, ancak anahtarı bulamıyor. <br>Anahtar bekletme döneminden sonra silinir ve temizlenirse, anahtarı kurtaramazsınız. Anahtarı yedeklediyseniz, bu sorunu gidermek için anahtarı geri yükleyebilirsiniz. | Hayır, anahtar silindi ve bekletme döneminden sonra da temizlendi. <br>Evet, yalnızca müşteri anahtar yedeklenir ve geri yüklerse.  |
-| CmkErrorVaultNotFound | Müşteri yönetilen bir anahtar uygulanır, ancak anahtarla ilişkili anahtar kasasını bulamıyor.<br>Anahtar kasasını sildiyseniz, müşteri yönetilen anahtarını kurtaramazsınız.  Anahtar kasasını farklı bir kiracıya taşıdıysanız, [bkz.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Hayır, eğer müşteri anahtar kasasını sildiyse.<br> Evet, anahtar kasakiracı göçünden geçtiyse, şu: <ol><li>anahtar kasasını eski kiracıya geri taşıyın.</li><li>set Identity = Yok ve sonra geri Identity = SystemAssigned, bu siler ve kimlik yeniden oluşturur</li></ol><br>Not: Kiracı geçiş durumu sınırlı anlayışa dayanır, gerçek davranışı test etmek ve onaylamak gerekir, daha sonra gözden geçirilebilir. |
+| CmkErrorVaultNotFound | Müşteri yönetilen bir anahtar uygulanır, ancak anahtarla ilişkili anahtar kasasını bulamıyor.<br>Anahtar kasasını sildiyseniz, müşteri yönetilen anahtarını kurtaramazsınız.  Anahtar kasasını farklı bir kiracıya taşıdıysanız, [bkz.](https://docs.microsoft.com/azure/key-vault/key-vault-subscription-move-fix) |   Hayır, eğer müşteri anahtar kasasını sildiyse.<br> Evet, anahtar kasakiracı göçünden geçtiyse, şu: <ol><li>anahtar kasasını eski kiracıya geri taşıyın.</li><li>set Identity = Yok ve sonra geri Identity = SystemAssigned, bu siler ve kimlik yeniden oluşturur</li></ol>|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

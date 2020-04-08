@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: cbrooks
-ms.openlocfilehash: e4dd6bab6198546dc5acab78ec59d92387328dbb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d9c666fd6fcf020908b6fc5bdd639261853ad9c6
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755010"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811552"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob depolama olaylarına yanıt verme
 
@@ -98,7 +98,7 @@ Blob depolama olaylarını işleyen uygulamalar önerilen birkaç uygulamayı iz
 > * Benzer şekilde, eventType'ın işlemeye hazır olup olmadığını denetleyin ve aldığınız tüm olayların beklediğiniz türler olacağını varsaymayın.
 > * İletiler biraz gecikmeden sonra gelebileceğinden, nesneler hakkındaki bilgilerinizin hala güncel olup olmadığını anlamak için etag alanlarını kullanın. Etag alanını nasıl kullanacağınızı öğrenmek için [Blob depolamabiriminde eşzamanlılık yönetme'ye](https://docs.microsoft.com/azure/storage/common/storage-concurrency?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage)bakın. 
 > * İletiler sıradışı gelebildiği için, belirli bir nesnedeki olayların sırasını anlamak için sıralayıcı alanlarını kullanın. Sıralayıcı alanı, belirli bir blob adı için olayların mantıksal dizisini temsil eden bir dize değeridir. Aynı blob adı üzerinde iki olayın göreli dizisini anlamak için standart dize karşılaştırması kullanabilirsiniz.
-> Depolama olayları, abonelere en az bir kez teslimatı garanti eder ve bu da tüm iletilerin çıktılanmasını sağlar. Ancak yeniden denemeler veya aboneliklerin kullanılabilirliği nedeniyle, yinelenen iletiler bazen oluşabilir.
+> * Depolama olayları, abonelere en az bir kez teslimatı garanti eder ve bu da tüm iletilerin çıktılanmasını sağlar. Ancak yeniden denemeler veya aboneliklerin kullanılabilirliği nedeniyle, yinelenen iletiler bazen oluşabilir. İleti teslimi ve yeniden deneme hakkında daha fazla bilgi edinmek için [Olay Ağı iletisi teslimi ve yeniden deneme](../../event-grid/delivery-and-retry.md)konusuna bakın.
 > * Blob'da ne tür işlemlere izin verildiğini ve blob'a erişmek için hangi istemci kitaplık türlerini kullanmanız gerektiğini anlamak için blobType alanını kullanın. Geçerli değerler `BlockBlob` ya `PageBlob`da . 
 > * Blob erişmek için `CloudBlockBlob` `CloudAppendBlob` url alanı ve yapıcılar ile kullanın.
 > * Anlamadığınız alanları yoksay. Bu uygulama, gelecekte eklenebilir yeni özelliklere karşı esnek tutmanıza yardımcı olacaktır.

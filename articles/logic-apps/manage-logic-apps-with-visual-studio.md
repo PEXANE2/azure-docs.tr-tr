@@ -7,16 +7,18 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: 6319d2d72df69cc9633bd2b2ff8e777c2a48966a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270257"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803199"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio ile mantıksal uygulamaları yönetme
 
 [Azure portalında](https://portal.azure.com)mantık uygulamaları oluşturabiliyor, bunları yönetebilir ve dağıtabiliyor sanız da, mantık uygulamalarınızı kaynak denetimine eklemek, farklı sürümler yayınlamak ve çeşitli dağıtım ortamları için [Azure Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) şablonları oluşturmak istediğinizde Visual Studio'yu da kullanabilirsiniz. Visual Studio Cloud Explorer ile diğer Azure kaynaklarıyla birlikte mantık uygulamalarınızı bulabilir ve yönetebilirsiniz. Örneğin, Azure portalında zaten dağıtılmış olan mantık uygulamalarını açabilir, karşıdan yükleyebilir, edinebilir, çalıştırabilir, görüntüleyebilir, devre dışı bırakıp etkinleştirebilirsiniz. Visual Studio'da Azure Logic Apps ile çalışmaya yeni başladıysanız, [Visual Studio ile nasıl mantık uygulamaları oluşturabileceğinizi](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)öğrenin.
+
+[Ayrıca mantıksal uygulamalarınızı Azure portalında da yönetebilirsiniz.](manage-logic-apps-with-azure-portal.md)
 
 > [!IMPORTANT]
 > Visual Studio'dan bir mantık uygulaması dağıtmak veya yayımlama, azure portalında bu uygulamanın sürümünün üzerine yazar. Bu nedenle, saklamak istediğiniz Azure portalında değişiklikler yaparsanız, Visual Studio'da bir sonraki dağıtımınızdan veya Visual Studio'dan yayımlamadan önce [Visual Studio'daki mantık uygulamasını](#refresh) Azure portalından yenilediğinizden emin olun.
@@ -63,7 +65,7 @@ Visual Studio'da, Azure aboneliğinizle ilişkili olan ve Azure portalında dağ
 
 1. Visual Studio'yu açın. **Görünüm** menüsünde **Bulut Gezgini'ni**seçin.
 
-1. Bulut Gezgini'nde **Hesap Yönetimi'ni**seçin. Mantık uygulamalarınızla ilişkili Azure aboneliğini seçin ve ardından **Uygula'yı**seçin. Örnek:
+1. Bulut Gezgini'nde **Hesap Yönetimi'ni**seçin. Mantık uygulamalarınızla ilişkili Azure aboneliğini seçin ve ardından **Uygula'yı**seçin. Örneğin:
 
    !["Hesap Yönetimi" seçeneğini belirleyin](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
@@ -226,7 +228,7 @@ Durumu kontrol etmek ve mantık uygulaması çalıştırmalarıyla ilgili sorunl
 
    ![Mantık uygulamanız için çalışma geçmişini açın](./media/manage-logic-apps-with-visual-studio/open-run-history-for-logic-app.png)
 
-1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmayı çift tıklatın. Örnek:
+1. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için, bir çalıştırmayı çift tıklatın. Örneğin:
 
    ![Belirli çalışma yla ilgili bilgileri görüntüleme](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   

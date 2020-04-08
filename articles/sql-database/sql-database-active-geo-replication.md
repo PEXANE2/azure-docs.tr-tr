@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 02/17/2020
-ms.openlocfilehash: b80b58d64ea27df95c2704243d8a89fa6ca12e2a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/06/2020
+ms.openlocfilehash: 1f339d987d67047f5857679b440e93e6c3730059
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548501"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810458"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Etkin coğrafi çoğaltma oluşturma ve kullanma
 
@@ -113,14 +113,19 @@ Uygulamanızın başarısız olduktan sonra yeni birincil ana maddeye hemen eri�
 
 ## <a name="configuring-secondary-database"></a>İkincil veritabanını yapılandırma
 
-Hem birincil hem de ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil veritabanıyla aynı işlem boyutuyla (DTUs veya vCores) oluşturulması da önemle önerilir. Birincil veritabanında ağır bir yazma iş yükü yaşıyorsa, daha düşük işlem boyutuna sahip ikincil bir veritabanı bu veritabanına ayak uyduramayabilir. Bu ikincil ve potansiyel kullanılamazlık üzerinde redo gecikme neden olur. Birincil arkasında kalan ikincil bir veritabanı da zorunlu bir hata gerekli olması halinde büyük bir veri kaybı riskleri. Bu riskleri azaltmak için, etkin etkin coğrafi çoğaltma birincil günlük oranını azaltacak ve ikincilerinin yetişmesine izin verir. Dengesiz bir ikincil yapılandırmanın diğer sonucu, uygulamanın performansının başarısız lığından sonra yeni birincil in yetersiz bilgi işlem kapasitesi nedeniyle zarar görecek olmasıdır. Kesinti azaltılına kadar mümkün olmayacak olan, gerekli seviyeye daha yüksek bir bilgi işlem için yükseltmek için gerekli olacaktır. 
+Hem birincil hem de ikincil veritabanlarının aynı hizmet katmanına sahip olması gerekir. İkincil veritabanının birincil veritabanıyla aynı işlem boyutuyla (DTUs veya vCores) oluşturulması da önemle önerilir. Birincil veritabanında ağır bir yazma iş yükü yaşıyorsa, daha düşük işlem boyutuna sahip ikincil bir veritabanı bu veritabanına ayak uyduramayabilir. Bu ikincil redo gecikme neden olur, ve ikincil potansiyel kullanılamazlık. Birincil arkasında kalan ikincil bir veritabanı da büyük bir veri kaybı riskleri, zorunlu bir hata gerekli olması halinde. Bu riskleri azaltmak için, etkin coğrafi çoğaltma, ikincilerinin yetişmesine izin vermek için gerekirse birincil günlük hızını daraltacaktır. 
 
+Dengesiz bir ikincil yapılandırmanın diğer sonucu, başarısız olduktan sonra, yeni birincil bilgi işlem kapasitesinin yetersizliği nedeniyle uygulama performansının zarar görebilecek olmasıdır. Bu durumda, veritabanı hizmeti hedefini gerekli düzeye ölçeklendirmek gerekir, bu da önemli zaman alabilir ve kaynakları hesaplayabilir ve ölçeklendirme işleminin sonunda [yüksek kullanılabilirlik](sql-database-high-availability.md) başarısızlığı gerektirir.
 
 > [!IMPORTANT]
-> İkincil veritabanı birincil le aynı işlem boyutuyla yapılandırılmadığı sürece yayınlanan RPO = 5 sn garanti edilemez. 
+> İkincil veritabanı birincil olarak aynı veya daha yüksek bilgi işlem boyutuile yapılandırılmadığı sürece, yayınlanan 5 sn RPO SLA garanti edilemez. 
 
+Daha düşük işlem boyutuna sahip ikincil boyutu oluşturmaya karar verirseniz, Azure portalındaki günlük IO yüzdesi grafiği, çoğaltma yükünü sürdürmek için gereken ikincil işlemin en az işlem boyutunu tahmin etmek için iyi bir yol sağlar. Örneğin, birincil veritabanınız P6 (1000 DTU) ise ve günlük yazma yüzdesi %50 ise, ikincil veritabanıen az P4 (500 DTU) olmalıdır. Geçmiş günlük IO verilerini almak için [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) görünümünü kullanın. Günlük hızındaki kısa vadeli ani artışları daha iyi yansıtan daha yüksek parçalı veri oranına sahip son günlük yazma verilerini almak için [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) görünümünü kullanın. 
 
-Daha düşük işlem boyutuna sahip ikincil boyutu oluşturmaya karar verirseniz, Azure portalındaki günlük IO yüzdesi grafiği, çoğaltma yükünü sürdürmek için gereken ikincil işlemin en az işlem boyutunu tahmin etmek için iyi bir yol sağlar. Örneğin, Birincil veritabanınız P6 (1000 DTU) ise ve günlük IO yüzdesi %50 ikincil olması gereken en az P4 (500 DTU) ise. Ayrıca [sys.resource_stats veya sys.dm_db_resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) veritabanı görünümlerini kullanarak günlük IO verilerini de alabilirsiniz.  Azaltma, [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ve [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) veritabanı görünümlerinde HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO bekleme durumu olarak bildirilir. 
+Bir ikincil işlemin daha düşük olması nedeniyle birincil işlem günlüğü oranı azaltma [sys.dm_exec_requests ve sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) veritabanı görünümlerinde görünür HADR_THROTTLE_LOG_RATE_MISMATCHED_SLO bekleme türü kullanılarak bildirilir. [sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql) 
+
+> [!NOTE]
+> Birincil işlem günlüğü oranı, ikincil bir işlem boyutuyla ilgisi olmayan nedenlerden dolayı daraltılabilir. Bu tür bir azaltma, ikincil işlem boyutu birincilden aynı veya daha yüksek olsa bile oluşabilir. Farklı türde günlük hızı azaltma için bekleme türleri de dahil olmak üzere ayrıntılar için [Bkz.](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)
 
 SQL Veritabanı bilgi işlem boyutları hakkında daha fazla bilgi için SQL [Veritabanı Hizmet Katmanları nelerdir'e](sql-database-purchase-models.md)bakın.
 

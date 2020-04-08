@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti'nde (AKS) birden çok bölme için statik bir birim oluşturma
+title: Azure Dosyaları paylaşımını el ile oluşturun
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmetinde (AKS) birden çok eşzamanlı bölmeyle kullanılmak üzere Azure Dosyaları ile nasıl el ile bir birim oluşturabilirsiniz öğrenin
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 084ab5cd6736c9148bcab1faf048d3d9081855d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 412b7158ea366eefb1c3e9c1d2586d54c316aa6c
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596411"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803458"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Azure Dosyaları paylaşımı yla el ile bir birim oluşturun ve kullanın
 
@@ -132,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Bağlama seçenekleri
 
-*fileMode* ve *dirMode* için varsayılan değer Kubernetes sürüm 1.9.1 ve üzeri için *0755'tir.* Kuberetes sürüm 1.8.5 veya daha büyük ve statik olarak kalıcı hacim nesnesi oluşturan bir küme *kullanıyorsanız, kalıcı Hacim* nesnesi üzerinde montaj seçeneklerinin belirtilmesi gerekir. Aşağıdaki örnek *0777*ayarlar:
+*fileMode* ve *dirMode* için varsayılan değer Kubernetes sürüm 1.9.1 ve üzeri için *0755'tir.* Kubernetes sürüm 1.8.5 veya daha büyük ve statik olarak kalıcı hacim nesnesi oluşturan bir küme *kullanıyorsanız, kalıcı Hacim* nesnesi üzerinde montaj seçeneklerinin belirtilmesi gerekir. Aşağıdaki örnek *0777*ayarlar:
 
 ```yaml
 apiVersion: v1
@@ -160,7 +161,7 @@ spec:
 
 Sürüm 1.8.0 - 1.8.4 kümesi kullanıyorsanız, 0 olarak ayarlanmış *runAsUser* *0*değeri ile bir güvenlik bağlamı belirtilebilir. Pod güvenlik bağlamı hakkında daha fazla bilgi için [bkz.][kubernetes-security-context]
 
-Montaj seçeneklerinizi güncelleştirmek için, *PersistentVolume*içeren *azurefile montaj seçenekleri-pv.yaml* dosyası oluşturun. Örnek:
+Montaj seçeneklerinizi güncelleştirmek için, *PersistentVolume*içeren *azurefile montaj seçenekleri-pv.yaml* dosyası oluşturun. Örneğin:
 
 ```yaml
 apiVersion: v1
@@ -186,7 +187,7 @@ spec:
   - nobrl
 ```
 
-*PersistentVolume'i*kullanan *persistentVolumeClaim* ile *azurefile-mount-options-pvc.yaml* dosyası oluşturun. Örnek:
+*PersistentVolume'i*kullanan *persistentVolumeClaim* ile *azurefile-mount-options-pvc.yaml* dosyası oluşturun. Örneğin:
 
 ```yaml
 apiVersion: v1
@@ -218,7 +219,7 @@ NAME        STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 azurefile   Bound    azurefile   5Gi        RWX            azurefile      5s
 ```
 
-*PersistentVolumeClaim'inize* başvurmak için konteyner spektrumunuzu güncelleyin ve bölmenizi güncelleyin. Örnek:
+*PersistentVolumeClaim'inize* başvurmak için konteyner spektrumunuzu güncelleyin ve bölmenizi güncelleyin. Örneğin:
 
 ```yaml
 ...

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
-ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733f4b74ca7643476586189b36f4e1d3e446968b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298071"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811162"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Yönetimini Uygulama Ağ Geçidi ile dahili bir VNET'e entegre edin
 
@@ -64,7 +64,7 @@ Bu makalede, hem dahili hem de harici tüketiciler için tek bir API Yönetimi h
 * **Arka uç sunucu havuzu:** Bu, API Yönetimi hizmetinin dahili sanal IP adresidir.
 * **Arka uç sunucu havuzu ayarları**: Her havuzun bağlantı noktası, protokol ve tanımlama bilgisi temelli benzeşim gibi ayarları vardır. Bu ayarlar havuz içindeki tüm sunuculara uygulanır.
 * **Ön uç bağlantı noktası:** Bu, uygulama ağ geçidinde açılan ortak bağlantı noktasıdır. Trafik isabet arka uç sunucularından birine yönlendirilir alır.
-* **Dinleyici:** Dinleyicide bir ön uç bağlantı noktası, bir protokol (Http veya Https, bu değerler büyük/küçük harfe duyarlıdır) ve SSL sertifika adı (SSL yük boşaltımı yapılandırılıyorsa) vardır.
+* **Dinleyici:** Dinleyicinin bir ön uç bağlantı noktası, bir protokol (Http veya Https, bu değerler büyük/SSL sertifika adı (TLS boşaltmayı yapılandırıyorsa) vardır.
 * **Kural:** Kural, dinleyiciyi arka uç sunucu havuzuna bağlar.
 * **Özel Sağlık Sondası:** Uygulama Ağ Geçidi, varsayılan olarak, BackendAddressPool'daki hangi sunucuların etkin olduğunu anlamak için IP adresi tabanlı probları kullanır. API Yönetimi hizmeti yalnızca doğru ana bilgisayar üstbilgisiyle istekleri yanıtlar, bu nedenle varsayılan sondalar başarısız olur. Uygulama ağ geçidinin hizmetin canlı olduğunu belirlemesine ve istekleri iletmesi gerektiğine yardımcı olmak için özel bir sistem durumu sondasının tanımlanması gerekir.
 * **Özel etki alanı sertifikaları:** API Yönetimi'ne internetten erişmek için, ana bilgisayar adının Uygulama Ağ Geçidi ön uç DNS adına cname eşlemesi oluşturmanız gerekir. Bu, API Yönetimi'ne iletilen Uygulama Ağ Geçidi'ne gönderilen ana bilgisayar adı üstbilgisinin ve sertifikasının APIM'nin geçerli olarak tanıyabileceği bir üstbilgi olmasını sağlar. Bu örnekte, arka uç ve geliştirici portalı için iki sertifika kullanacağız.  
@@ -271,7 +271,7 @@ $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -Certificate
 
 ### <a name="step-5"></a>5. Adım
 
-Uygulama Ağ Geçidi için HTTP dinleyicilerini oluşturun. Ön uç IP yapılandırmasını, bağlantı noktasını ve ssl sertifikalarını onlara atayın.
+Uygulama Ağ Geçidi için HTTP dinleyicilerini oluşturun. Ön uç IP yapılandırmasını, bağlantı noktasını ve TLS/SSL sertifikalarını onlara atayın.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
@@ -280,7 +280,7 @@ $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Proto
 
 ### <a name="step-6"></a>6. Adım
 
-API Management hizmeti `ContosoApi` proxy etki alanı bitiş noktasına özel problar oluşturun. Yol, `/status-0123456789abcdef` tüm API Yönetimi hizmetlerinde barındırılan varsayılan bir sistem durumu bitiş noktasıdır. SSL sertifikası ile güvenli hale getirmek için özel bir sonda ana bilgisayar adı olarak ayarlayın. `api.contoso.net`
+API Management hizmeti `ContosoApi` proxy etki alanı bitiş noktasına özel problar oluşturun. Yol, `/status-0123456789abcdef` tüm API Yönetimi hizmetlerinde barındırılan varsayılan bir sistem durumu bitiş noktasıdır. TLS/SSL sertifikası ile güvenli hale getirmek için özel bir sonda ana bilgisayar adı olarak ayarlayın. `api.contoso.net`
 
 > [!NOTE]
 > Ana bilgisayar `contosoapi.azure-api.net` adı, ortak Azure'da adı `contosoapi` geçen bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
@@ -293,7 +293,7 @@ $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -
 
 ### <a name="step-7"></a>7. Adım
 
-SSL özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı yükleyin. Bu, yukarıda Adım 4'te sağladığınız sertifikanın aynısI.
+TLS özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı yükleyin. Bu, yukarıda Adım 4'te sağladığınız sertifikanın aynısI.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath

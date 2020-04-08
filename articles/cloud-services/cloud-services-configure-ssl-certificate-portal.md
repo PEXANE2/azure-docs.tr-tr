@@ -1,6 +1,6 @@
 ---
-title: Bir bulut hizmeti için SSL'yi yapılandırma | Microsoft Dokümanlar
-description: Bir web rolü için https bitiş noktasını nasıl belirtdiğinizi ve uygulamanızı güvence altına almak için ssl sertifikasını nasıl yükleydiğinizi öğrenin. Bu örnekler Azure portalını kullanır.
+title: Bir bulut hizmeti için TLS'yi yapılandırma | Microsoft Dokümanlar
+description: Bir web rolü için https bitiş noktasını nasıl belirtdiğinizi ve uygulamanızı güvence altına almak için TLS/SSL sertifikasını nasıl yükleydiğinizi öğrenin. Bu örnekler Azure portalını kullanır.
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,16 +8,16 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273143"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811685"
 ---
-# <a name="configuring-ssl-for-an-application-in-azure"></a>Azure'daki uygulama için SSL'yi yapılandırma
+# <a name="configuring-tls-for-an-application-in-azure"></a>Azure'daki bir uygulama için TLS yapılandırma
 
-Secure Socket Layer (SSL) şifrelemesi, internet üzerinden gönderilen verileri güvence altına almak için en yaygın olarak kullanılan yöntemdir. Bu yaygın görev, bir web rolü için bir HTTPS bitiş noktasının nasıl belirtilen ve uygulamanızı güvence altına almak için bir SSL sertifikasının nasıl yüklenilebildiğini tartışır.
+Daha önce Güvenli Soket Katmanı (SSL) şifrelemesi olarak bilinen Aktarım Katmanı Güvenliği (TLS), internet üzerinden gönderilen verileri güvence altına almak için en yaygın kullanılan yöntemdir. Bu yaygın görev, bir web rolü için bir HTTPS bitiş noktasının nasıl belirtilen ve uygulamanızı güvence altına almak için TLS/SSL sertifikasının nasıl yüklenilebildiğini tartışır.
 
 > [!NOTE]
 > Bu görevdeki yordamlar Azure Bulut Hizmetleri için geçerlidir; Uygulama Hizmetleri için [bkz.](../app-service/configure-ssl-bindings.md)
@@ -27,14 +27,14 @@ Bu görev bir üretim dağıtımı kullanır. Bu konunun sonunda bir hazırlama 
 
 Henüz bir bulut hizmeti oluşturmadıysanız [bunu](cloud-services-how-to-create-deploy-portal.md) ilk olarak okuyun.
 
-## <a name="step-1-get-an-ssl-certificate"></a>Adım 1: SSL sertifikası alın
-Bir uygulama için SSL'yi yapılandırmak için öncelikle, bu amaçla sertifika veren güvenilir bir üçüncü taraf olan Sertifika Yetkilisi (CA) tarafından imzalanmış bir SSL sertifikası almanız gerekir. Zaten bir sertifikanız yoksa, SSL sertifikası satan bir şirketten bir sertifika almanız gerekir.
+## <a name="step-1-get-a-tlsssl-certificate"></a>Adım 1: TLS/SSL sertifikası alın
+Bir uygulama için TLS yapılandırmak için öncelikle, bu amaçla sertifika veren güvenilir bir üçüncü taraf olan Sertifika Yetkilisi (CA) tarafından imzalanmış bir TLS/SSL sertifikası almanız gerekir. Zaten bir tane yoksa, TLS/SSL sertifikası satan bir şirketten almanız gerekir.
 
-Sertifika, Azure'daki SSL sertifikaları için aşağıdaki gereksinimleri karşılamalıdır:
+Sertifika, Azure'daki TLS/SSL sertifikaları için aşağıdaki gereksinimleri karşılamalıdır:
 
 * Sertifika özel bir anahtar içermelidir.
 * Sertifika anahtar değişimi için oluşturulmalıdır, Kişisel Bilgi Alışverişi (.pfx) dosyasına ihraç edilebilir.
-* Sertifikanın özne adı bulut hizmetine erişmek için kullanılan etki alanıyla eşleşmelidir. cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) SSL sertifikası alamazsınız. Hizmetinize erişirken kullanmak üzere özel bir etki alanı adı edinmeniz gerekir. CA'dan sertifika istediğinizde, sertifikanın özne adı, başvurunuza erişmek için kullanılan özel alan adıile eşleşmelidir. Örneğin, özel alan adınız **contoso.com** ***.contoso.com** veya **www\.contoso.com**için CA'nızdan bir sertifika isteyebilirsiniz.
+* Sertifikanın özne adı bulut hizmetine erişmek için kullanılan etki alanıyla eşleşmelidir. cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) TLS/SSL sertifikası alamazsınız. Hizmetinize erişirken kullanmak üzere özel bir etki alanı adı edinmeniz gerekir. CA'dan sertifika istediğinizde, sertifikanın özne adı, başvurunuza erişmek için kullanılan özel alan adıile eşleşmelidir. Örneğin, özel alan adınız **contoso.com** ***.contoso.com** veya **www\.contoso.com**için CA'nızdan bir sertifika isteyebilirsiniz.
 * Sertifika en az 2048 bit şifreleme kullanmalıdır.
 
 Test amacıyla, kendi imzalı bir sertifika [oluşturabilir](cloud-services-certs-create.md) ve kullanabilirsiniz. Kendi imzalı bir sertifika ca üzerinden doğrulanmaz ve cloudapp.net etki alanını web sitesi URL'si olarak kullanabilir. Örneğin, aşağıdaki görev, sertifikada kullanılan ortak adın (CN) **sslexample.cloudapp.net**olan kendi imzalı bir sertifika kullanır.
@@ -166,7 +166,7 @@ Azure'da dağıtımınız çalışmaya devam ettiğine göre, HTTPS'yi kullanara
    ![Site önizleme](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Üretim dağıtımı yerine hazırlama dağıtımı için SSL'yi kullanmak istiyorsanız, öncelikle hazırlama dağıtımı için kullanılan URL'yi belirlemeniz gerekir. Bulut hizmetiniz dağıtıldıktan sonra, hazırlama ortamının URL'si **dağıtım kimliği** GUID tarafından bu biçimde belirlenir:`https://deployment-id.cloudapp.net/`  
+   > TlS'yi üretim dağıtımı yerine hazırlama dağıtımı için kullanmak istiyorsanız, öncelikle hazırlama dağıtımı için kullanılan URL'yi belirlemeniz gerekir. Bulut hizmetiniz dağıtıldıktan sonra, hazırlama ortamının URL'si **dağıtım kimliği** GUID tarafından bu biçimde belirlenir:`https://deployment-id.cloudapp.net/`  
    >
    > GUID tabanlı URL'ye eşit ortak ada (CN) sahip bir sertifika oluşturun (örneğin, **328187776e774ceda8fc57609d404462.cloudapp.net).** Sertifikayı aşamalı bulut hizmetinize eklemek için portalı kullanın. Ardından, sertifika bilgilerini CSDEF ve CSCFG dosyalarınıza ekleyin, uygulamanızı yeniden paketleyin ve yeni paketi kullanmak üzere aşamalı dağıtımınızı güncelleyin.
    >

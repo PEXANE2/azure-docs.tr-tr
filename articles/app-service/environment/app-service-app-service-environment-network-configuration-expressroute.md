@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc11c6932d625b119ad933f5d4d128b4355530c5
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243880"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804444"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute ile PowerApps için Uygulama Hizmet Ortamı için ağ yapılandırma ayrıntıları
 
@@ -39,7 +39,7 @@ Uygulama Hizmet Ortamı nın düzgün çalışması için aşağıdaki ağ bağl
 
 * Azure yönetim düzlemi uç noktalarına giden ağ bağlantısı (hem Azure klasik dağıtım modeli hem de Azure Kaynak Yöneticisi uç noktaları). Bu uç noktalara bağlantı, management.core.windows.net ve management.azure.com etki alanlarını içerir. 
 
-* ocsp.msocsp.com, mscrl.microsoft.com ve crl.microsoft.com etki alanına giden ağ bağlantısı. SSL işlevselliğini desteklemek için bu etki adlarına bağlantı gereklidir.
+* ocsp.msocsp.com, mscrl.microsoft.com ve crl.microsoft.com etki alanına giden ağ bağlantısı. TLS işlevselliğini desteklemek için bu etki adlarına bağlantı gereklidir.
 
 * Sanal ağ için DNS yapılandırması, bu makalede belirtilen tüm uç noktaları ve etki alanlarını çözebilmeli. Uç noktalar çözülemezse, App Service Environment oluşturma başarısız olur. Varolan tüm Uygulama Hizmet Ortamı sağlıksız olarak işaretlenir.
 

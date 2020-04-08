@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: cf9c79f608aa3ffd1137be41ff3348f62b890867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8509af7829910bdda8bba3d63553e83626fe784
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198318"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804682"
 ---
 # <a name="drawing-tool-events"></a>Çizim aracı olayları
 
@@ -31,7 +31,7 @@ Aşağıdaki kod, Çizim Araçları modülündeki olayların nasıl çalıştı�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araçları etkinlikleri" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çizim araçları etkinlikleri" src="https://codepen.io/azuremaps/embed/dyPMRWo?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a göre Kalem <a href='https://codepen.io/azuremaps/pen/dyPMRWo'>Çizimi araçları etkinliklerine</a> bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 
@@ -59,7 +59,7 @@ Bu kod, kullanıcı şekli çizmeyi bitirdikten sonra şeklin alanı içindeki i
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen alanda çizim ve arama" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Çokgen alanda çizim ve arama" src="https://codepen.io/azuremaps/embed/eYmZGNv?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından çokgen alanda kalem çizin ve <a href='https://codepen.io/azuremaps/pen/eYmZGNv'>arama yapın.</a>
 </iframe>
 
@@ -71,7 +71,7 @@ Aşağıdaki kod, çizim olaylarının bir ölçme aracı oluşturmak için nas�
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Ölçüm aleti" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Ölçüm aleti" src="https://codepen.io/azuremaps/embed/RwNaZXe?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar<a href='https://codepen.io/azuremaps'>@azuremaps</a>'a göre Kalem <a href='https://codepen.io/azuremaps/pen/RwNaZXe'>Ölçme aracına</a> bakın .
 </iframe>
 

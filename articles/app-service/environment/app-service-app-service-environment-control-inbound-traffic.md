@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 857b2b00aadced567bc8ac191cdd9908f7bea7a3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687384"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804410"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Uygulama Servis Ortamına Gelen Trafiği Denetleme
 ## <a name="overview"></a>Genel Bakış
 Bir Azure Kaynak Yöneticisi **either** sanal ağında **veya** klasik dağıtım modeli [sanal ağında][virtualnetwork]Bir Uygulama Hizmet Ortamı oluşturulabilir.  Uygulama Hizmet Ortamı oluşturulduğunda yeni bir sanal ağ ve yeni alt ağ tanımlanabilir.  Alternatif olarak, önceden varolan bir sanal ağda ve önceden varolan bir alt ağda bir Uygulama Hizmet Ortamı oluşturulabilir.  Haziran 2016'da yapılan bir değişiklikle, AS'ler genel adres aralıklarını veya RFC1918 adres alanlarını (örn. özel adresler) kullanan sanal ağlara da dağıtılabilir.  Bir Uygulama Hizmeti Ortamı oluşturma hakkında daha fazla bilgi için, [Uygulama Hizmeti Ortamı Nasıl Oluşturulur'][HowToCreateAnAppServiceEnvironment]a bakın.
 
-Bir alt ağ, gelen trafiği, http ve HTTPS trafiğinin yalnızca belirli upstream'den kabul edildiği şekilde yukarı akışlı aygıtların ve hizmetlerin arkasına kilitlemek için kullanılabilecek bir ağ sınırı sağladığından, her zaman bir alt ağ içinde oluşturulmalıdır IP adresleri.
+Bir alt ağ, gelen trafiği, http ve HTTPS trafiğinin yalnızca belirli upstream IP adreslerinden kabul edilmesi gibi yukarı akışlı aygıtların ve hizmetlerin arkasına kilitlemek için kullanılabilecek bir ağ sınırı sağladığından, her zaman bir alt ağ içinde oluşturulmalıdır.
 
 Bir alt ağdaki gelen ve giden ağ trafiği bir [ağ güvenlik grubu][NetworkSecurityGroups]kullanılarak denetlenir. Gelen trafiği denetlemek, ağ güvenlik grubunda ağ güvenliği kuralları oluşturmayı ve ardından ağ güvenlik grubuna App Service Environment'ı içeren alt ağı atamayı gerektirir.
 
@@ -31,10 +31,10 @@ Bir ağ güvenlik grubuyla gelen ağ trafiğini kilitlemeden önce, Bir Uygulama
 
 Aşağıda, Bir Uygulama Hizmet Ortamı tarafından kullanılan bağlantı noktalarının listesi verilmiştir. Aksi açıkça belirtilmedikçe tüm bağlantı noktaları **TCP'dir:**
 
-* 454: SSL üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
-* 455: SSL üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
+* 454: TLS üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
+* 455: TLS üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
 * 80: Uygulama Hizmeti Ortamında Uygulama Hizmeti Planlarında çalışan uygulamalara gelen HTTP trafiği için varsayılan bağlantı noktası.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
-* 443: Uygulama Hizmet Ortamında Uygulama Hizmet Planları'nda çalışan uygulamalara gelen SSL trafiği için varsayılan bağlantı noktası.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
+* 443: Uygulama Hizmet Ortamında Uygulama Hizmet Planları'nda çalışan uygulamalara gelen TLS trafiği için varsayılan bağlantı noktası.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
 * 21: FTP için kontrol kanalı.  FTP kullanılıyorsa bu bağlantı noktası güvenle engellenebilir.  ILB özellikli bir ASE'de, bu bağlantı noktası bir ASE için ILB adresine bağlanabilir.
 * 990: FTPS için kontrol kanalı.  FTPS kullanılmadığı takdirde bu bağlantı noktası güvenli bir şekilde engellenebilir.  ILB özellikli bir ASE'de, bu bağlantı noktası bir ASE için ILB adresine bağlanabilir.
 * 10001-10020: FTP için veri kanalları.  Kontrol kanalında olduğu gibi, FTP kullanılmadığı takdirde bu bağlantı noktaları güvenli bir şekilde engellenebilir.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlanabilir.
@@ -62,7 +62,7 @@ Aşağıdakiler bir ağ güvenlik grubu oluşturmayı gösterir:
 
 Bir ağ güvenlik grubu oluşturulduktan sonra, bir veya daha fazla ağ güvenlik kuralı eklenir.  Kurallar kümesi zaman içinde değişebileceğinden, zaman içinde ek kurallar eklemeyi kolaylaştırmak için kural öncelikleri için kullanılan numaralandırma düzenini ayarlamaları önerilir.
 
-Aşağıdaki örnekte, Bir Uygulama Hizmeti Ortamını yönetmek ve sürdürmek için Azure altyapısının ihtiyaç duyduğu yönetim bağlantı noktalarına erişim sağlayan bir kural gösterilmektedir.  Tüm yönetim trafiğinin SSL üzerinden aktığını ve istemci sertifikaları yla güvence altına alınmıştır, bu nedenle bağlantı noktaları açılsa bile Azure yönetim altyapısı dışındaki herhangi bir kuruluş tarafından erişilemez.
+Aşağıdaki örnekte, Bir Uygulama Hizmeti Ortamını yönetmek ve sürdürmek için Azure altyapısının ihtiyaç duyduğu yönetim bağlantı noktalarına erişim sağlayan bir kural gösterilmektedir.  Tüm yönetim trafiğinin TLS üzerinden aktığını ve istemci sertifikaları yla güvence altına alınmıştır, bu nedenle bağlantı noktaları açılsa bile Azure yönetim altyapısı dışındaki herhangi bir kuruluş tarafından erişilemez.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 

@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586008"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810462"
 ---
-# <a name="planning-and-operations-guide"></a>Planlama ve operasyon rehberi
+# <a name="planning-and-operations-guide"></a>Planlama ve işlemler kılavuzu
 Bu kılavuz, bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve Azure Güvenlik Merkezi'ni kullanmayı planlayan bulut yöneticileri içindir.
 
 
@@ -25,7 +25,7 @@ Bu kılavuz, kuruluşunuzun güvenlik gereksinimlerine ve bulut yönetimi modeli
 * Güvenlik Rolleri ve Erişim Denetimleri
 * Güvenlik İlkeleri ve Öneriler
 * Veri Koleksiyonu ve Storage
-* Devam eden Azure dışı kaynaklar
+* Azure dışı kaynakları ekleme
 * Devam Eden Güvenlik İzleme
 * Olay Yanıtı
 
@@ -40,7 +40,7 @@ Kuruluşunuzun büyüklüğüne ve yapısına bağlı olarak birçok kişi ve ek
 
 ![Roller](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örnek:
+Güvenlik Merkezi, bu çok çeşitli sorumlulukları karşılamak için kişileri etkinleştirir. Örneğin:
 
 **Cem (İş Yükü Sahibi)**
 

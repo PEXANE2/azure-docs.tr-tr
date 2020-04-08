@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: e65681aefc047ba540d4ad0d91ef6e4d2af5f3ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce2891201331ee1efd861d2f13cec78c0551b6ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77190272"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804580"
 ---
 # <a name="clustering-point-data"></a>Nokta verilerini kümeleme
 
@@ -62,7 +62,7 @@ Kümenin boyutunu kabarcığın üstünde görüntülemek için metin içeren bi
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Temel kabarcık katmanı kümeleme" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Temel kabarcık katmanı kümeleme" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 CodePen'de Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Temel kabarcık katmanı <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>kümeleme</a> () <a href='https://codepen.io'>bakın.</a>
 </iframe>
 
@@ -74,7 +74,7 @@ Temiz bir kullanıcı arabirimi tutarken veri noktaları yoğunluğunu gösterme
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Kümelenmiş Sembol katmanı" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Kümelenmiş Sembol katmanı" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>Kümelenmiş Sembol katmanına</a> bakın .
 </iframe>
 
@@ -84,7 +84,7 @@ Isı haritaları haritadaki veri yoğunluğunu görüntülemek için harika bir 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme ağırlıklı Isı Haritası" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Küme ağırlıklı Isı Haritası" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem Kümesi ağırlıklı <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>Isı Haritası'na</a> bakın .
 </iframe>
 
@@ -103,7 +103,7 @@ Bu örnek, küme noktaları işleyen bir kabarcık katmanı alır ve bir tıklam
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Küme getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 CodePen'de Kalem <a href='https://codepen.io/azuremaps/pen/moZWeV/'>Kümesi getClusterExpansionZoom</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>'a</a>( ) Azure Haritalar'a bakın.
 </iframe>
 
@@ -113,7 +113,7 @@ Bir kümenin temsil ettiği nokta verileri bir alana yayılır. Bu örnekte fare
 
 <br/>
 
- <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı konveks gövdesi" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+ <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı konveks gövdesi" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar ()<a href='https://codepen.io/azuremaps'>@azuremaps</a>ile Kalem <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>Kümesi alanı eksveç gövdesine</a> bakın.
 </iframe>
 
@@ -123,7 +123,7 @@ Genellikle kümeler küme içinde nokta sayısı ile bir sembol kullanılarak te
 
 Aşağıdaki örnekte toplu bir ifade kullanır. Kod, bir kümedeki her veri noktasının varlık türü özelliğini temel alan bir sayım hesaplar. Bir kullanıcı bir kümeyi tıklattığında, bir açılır pencere küme hakkında ek bilgilerle birlikte gösterir.
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'de</a>Azure Haritalar 'a göre Kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>Kümesi toplamlarına</a> bakın .<a href='https://codepen.io/azuremaps'>@azuremaps</a>
 </iframe>
 

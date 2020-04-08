@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5bcfeebc1fcb96cfdf6ea802293eb4027f339815
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1de9dd9721700418b1aa9ba661fc070db1dbedcc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335205"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804648"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Haritalar Uzamsal IO modülü nasıl kullanılır?
 
@@ -26,6 +26,13 @@ Azure Haritalar Web SDK, JavaScript veya TypeScript kullanarak uzamsal verileri 
 - [Kaldıraç yüksek hızlı XML ve sınırlı dosya okuyucu ve yazar sınıfları.](spatial-io-core-operations.md)
 
 Bu kılavuzda, bir web uygulamasında Uzamsal IO modüllerini nasıl entegre edebileceğimizi ve kullanacağımızı öğreneceğiz.
+
+Bu video, Azure Haritalar Web SDK'daki Uzamsal IO modülüne genel bir bakış sağlar.
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Uzamsal verileri Azure Haritalar'a kolayca entegre edin - Microsoft Channel 9 Video"></iframe>
+
 
 > [!WARNING]
 > Yalnızca güvendiğiniz bir kaynaktan gelen verileri ve hizmetleri kullanın, özellikle de başka bir etki alanından başvuruyorsanız. Uzamsal IO modülü riski en aza indirmek için adımlar atar, ancak en güvenli yaklaşım uygulamanıza herhangi bir danagerous veri ile başlamak için izin vermez. 

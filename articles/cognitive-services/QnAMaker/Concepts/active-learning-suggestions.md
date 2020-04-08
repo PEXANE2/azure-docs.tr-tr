@@ -3,12 +3,12 @@ title: Aktif öğrenme önerileri - QnA Maker
 description: Aktif öğrenme önerileri, soru ve yanıt çiftinize kullanıcı gönderimlerine dayalı alternatif sorular önererek bilgi tabanınızın kalitesini artırmanızı sağlar.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: af4f6b399bfd537b38ea741d03e59371ee81e588
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edbe06b12fbb97473b28ccca968fd3e7d8366152
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053148"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804230"
 ---
 # <a name="active-learning-suggestions"></a>Aktif öğrenme önerileri
 
@@ -27,7 +27,7 @@ Her iki yöntem de sıralamacıya kümelenmiş benzer sorgularla sağlar.
 
 ## <a name="how-active-learning-works"></a>Aktif öğrenme nasıl çalışır?
 
-Aktif öğrenme, QnA Maker tarafından döndürülen en iyi birkaç yanıtın puanlarına göre tetiklenir. Sorguyla eşleşen QnA kümeleri arasındaki puan farkları küçük bir aralıkta yatıyorsa, sorgu olası QnA çiftlerinin her biri için olası bir öneri (alternatif soru olarak) olarak kabul edilir. Belirli bir QnA çifti için önerilen soruyu kabul ettiğinizde, diğer çiftler için reddedilir. Önerileri kabul ettikten sonra, kaydetmek ve tren hatırlamak gerekir.
+Aktif öğrenme, QnA Maker tarafından döndürülen en iyi birkaç yanıtın puanlarına göre tetiklenir. Sorguyla eşleşen QnA çiftleri arasındaki puan farkları küçük bir aralıkta yatıyorsa, sorgu olası QnA çiftlerinin her biri için olası bir öneri (alternatif soru olarak) olarak kabul edilir. Belirli bir QnA çifti için önerilen soruyu kabul ettiğinizde, diğer çiftler için reddedilir. Önerileri kabul ettikten sonra, kaydetmek ve tren hatırlamak gerekir.
 
 Etkin öğrenme, uç noktaların makul miktarda ve çeşitli kullanım sorguları aldığı durumlarda mümkün olan en iyi önerileri verir. Her 30 dakikada bir 5 veya daha fazla benzer sorgu kümelendiğinde, QnA Maker kullanıcı tabanlı soruları bilgi bankası tasarımcısına kabul etmesi veya reddetmesi için önerir. Tüm öneriler benzerlik tarafından bir araya toplanır ve alternatif sorular için en iyi öneriler, son kullanıcıların belirli sorgularının sıklığına göre görüntülenir.
 

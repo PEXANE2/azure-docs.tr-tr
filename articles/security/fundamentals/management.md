@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: terrylan
-ms.openlocfilehash: 45efaadf7d15fff290165fe831c45c0bc063db53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73643791"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811278"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
 Azure aboneleri yönetim iş istasyonları, geliştirici PC’leri ve hatta göreve özel izinleri bulunan ayrıcalıklı son kullanıcı cihazları dahil birden fazla cihazda kendi bulut ortamlarını yönetebilir. Bazı durumlarda, yönetim işlevleri [Azure portal](https://azure.microsoft.com/features/azure-portal/) gibi web tabanlı konsollar aracılığıyla gerçekleştirilir Diğer durumlarda, Sanal Özel Ağlar (VPN), Terminal Hizmetleri, istemci uygulaması protokolleri ya da (programlı olarak) Azure Service Management API (SMAPI) üzerinden şirket için sistemlerden Azure’a bağlantılar olabilir. Ayrıca, istemci uç noktaları ya da etki alanına katılmış veya yalıtılmış ve yönetilmeyen olabilir, tabletler veya akıllı telefonlar gibi.
@@ -118,8 +118,8 @@ Uzak Masaüstü Ağ geçidi, güvenlik gereksinimlerini uygulayan ilke tabanlı 
 ## <a name="security-guidelines"></a>Güvenlik yönergeleri
 Genel olarak, bulutla kullanıma yönelik olarak yönetici iş istasyonlarının güvenliğini sağlamaya yardımcı olmak, şirket içi iş istasyonları için kullanılan uygulamalara benzerdir. Örneğin, en aza indirilmiş yapı ve kısıtlayıcı izinler. Bulut yönetiminin bazı benzersiz yönleri uzaktan ya da bant dışı kurumsal yönetime daha yakındır. Bunlar kimlik bilgilerini, gelişmiş güvenlikli uzaktan erişimin ve tehdit algılama ve yanıtın denetlenmesini içerir.
 
-### <a name="authentication"></a>Kimlik doğrulaması
-Yönetim araçlarına ve denetim erişim isteklerine erişim için kaynak IP adreslerini sınırlamak amacıyla Azure oturum açma kısıtlamalarını kullanabilirsiniz. Azure’un yönetim istemcilerini (iş istasyonları ve/veya uygulamalar) tanımlamasına yardımcı olmak için, SSL sertifikalarının yanı sıra, istemci tarafı yönetim sertifikalarının yüklenmesini gerekli kılmaya yönelik olarak SMAPI (Windows PowerShell cmdlet’leri gibi müşteri tarafından geliştirilen araçlar aracılığıyla) ve Azure portalını yapılandırabilirsiniz. Yönetici erişiminin multi-factor authentication gerektirmesine de öneriyoruz.
+### <a name="authentication"></a>Kimlik Doğrulaması
+Yönetim araçlarına ve denetim erişim isteklerine erişim için kaynak IP adreslerini sınırlamak amacıyla Azure oturum açma kısıtlamalarını kullanabilirsiniz. Azure'un yönetim istemcilerini (iş istasyonları ve/veya uygulamaları) tanımlamasına yardımcı olmak için, hem SMAPI'yi (Windows PowerShell cmdlets gibi müşteri tarafından geliştirilen araçlar aracılığıyla) hem de Azure portalı, TLS/SSL sertifikalarına ek olarak istemci tarafı yönetim sertifikalarının yüklenmesini gerektirecek şekilde yapılandırabilirsiniz. Yönetici erişiminin multi-factor authentication gerektirmesine de öneriyoruz.
 
 Azure’a dağıttığınız bazı uygulamalar veya hizmetler hem son kullanıcı hem de yönetici erişimi için kendi kimlik doğrulama mekanizmalarına sahip olabilirken, diğerleri Azure AD’den faydalanabilir. Kimlik bilgilerini Active Directory Federasyon Hizmetleri (AD FS) aracılığıyla birleştirip birleştirmemenize bağlı olarak, dizin eşitlemeyi kullanmak veya bulutta yalnızca kullanıcı hesaplarını tutmak, [Microsoft Identity Manager](https://technet.microsoft.com/library/mt218776.aspx) (Azure AD Premium’un parçası) kullanmak kaynaklar arasında kimlik yaşam döngülerini yönetmenize yardımcı olur.
 
@@ -138,7 +138,7 @@ Sıkı erişim denetimleri içeren ilke uygulama yönetici eylemlerini yönetebi
 ## <a name="client-configuration"></a>İstemci yapılandırması
 Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz. Bunlar arasındaki en büyük fark, tüm seçeneklerde benzer güvenlik profili sağlarken, maliyet, kullanılabilirlik ve erişilebilirliktir. Aşağıdaki tabloda her birinin avantajları ve risklerinin kısa bir çözümlemesini sağlar. (“kurumsal PC” ifadesinin, rollerden bağımsız olarak, tüm etki alanı kullanıcıları için dağıtılabilecek standart masaüstü PC yapılandırması anlamına geldiğini unutmayın.)
 
-| Yapılandırma | Avantajlar | Simgeler |
+| Yapılandırma | Yararları | Simgeler |
 | --- | --- | --- |
 | Tek başına sağlamlaştırılmış iş istasyonu |Sıkı denetlenen iş istasyonu |ayrılmış masaüstü bilgisayarlar için daha yüksek maliyet |
 | - | Azaltılmış uygulama açıkları riski |Artan yönetim çabası |
@@ -188,7 +188,7 @@ Bir iş istasyonu kilitlenmiş olduğu için diğer genel güvenlik gereksinimle
 
 | Yapmayın | Yapın |
 | --- | --- |
-| Yönetici erişimine ilişkin kimlik bilgilerini veya diğer parolaları (ör. SSL veya yönetim sertifikaları) e-posta ile göndermeyin |Hesap adlarını ve parolaları sesli olarak ileterek gizliliği koruyun (ancak bunları sesli posta olarak depolamayın), istemci/sunucu sertifikalarının uzaktan yüklemesini gerçekleştirin (şifreli oturum yoluyla), korumalı ağ paylaşımından indirin ya da taşınabilir medya kullanarak el ile dağıtın. |
+| Yönetici erişimi veya diğer sırlar için kimlik bilgilerini e-postayla e-postayla gönder (örneğin, TLS/SSL veya yönetim sertifikaları) |Hesap adlarını ve parolaları sesli olarak ileterek gizliliği koruyun (ancak bunları sesli posta olarak depolamayın), istemci/sunucu sertifikalarının uzaktan yüklemesini gerçekleştirin (şifreli oturum yoluyla), korumalı ağ paylaşımından indirin ya da taşınabilir medya kullanarak el ile dağıtın. |
 | - | Yaşam döngüsü yönetimi sertifikanızı proaktif olarak yönetin. |
 | Hesap parolalarını şifrelenmemiş ya da karma olmayan uygulama depolama biriminde depolamayın (örneğin, elektronik tablolarda, SharePoint sitelerinde ya da dosya paylaşımlarında). |Güvenlik yönetim ilkeleri ve sistem sağlamlaştırma ilkeleri oluşturun ve bunları geliştirme ortamınıza uygulayın. |
 | - | Azure SSL/TLS sitelerine uygun erişim sağlamak için [Enhanced Mitigation Experience Toolkit 5.5](https://technet.microsoft.com/security/jj653751) sertifikası sabitleme kuralları kullanın. |

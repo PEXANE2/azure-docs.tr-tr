@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 8fd5a063683d09cb94b45205426871d880119cc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77138027"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811479"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -100,8 +100,8 @@ Aşağıdaki tabloDA STRIDE tehditleri listeler ve Azure özelliklerini kullanan
 
 | Tehdit | Güvenlik özelliği | Olası Azure platformu azaltımları |
 | --- | --- | --- |
-| Kandırma | Kimlik doğrulaması | HTTPS bağlantıları gerektirir. |
-| İzinsiz Değişiklik | Bütünlük | SSL sertifikalarını doğrulayın. |
+| Kandırma | Kimlik Doğrulaması | HTTPS bağlantıları gerektirir. |
+| İzinsiz Değişiklik | Bütünlük | TLS/SSL sertifikalarını doğrulayın. |
 | Tanımadığı | İnkar etmeme | Azure [izleme ve tanılamayı](/azure/architecture/best-practices/monitoring)etkinleştirin. |
 | Bilgi nin açıklanması | Gizlilik | [Hizmet sertifikalarını](/rest/api/appservice/certificates)kullanarak hassas verileri istirahatte şifreleyin. |
 | Hizmet reddi | Kullanılabilirlik | Olası hizmet reddi koşulları için performans ölçümlerini izleyin. Bağlantı filtrelerini uygulayın. |
@@ -153,9 +153,9 @@ Fuzz testi, bu verileri ayrıştıran ve tüketen program arabirimlerine (giriş
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede, bir Azure PaaS dağıtımının güvenlik avantajları na ve bulut uygulamaları için en iyi güvenlik uygulamalarına odaklandık. Ardından, belirli Azure hizmetlerini kullanarak PaaS web ve mobil çözümlerinizi güvence altına almak için önerilen uygulamaları öğrenin. Azure Uygulama Hizmeti, Azure SQL Veritabanı ve Azure SQL Veri Ambarı ve Azure Depolama ile başlayacağız. Diğer Azure hizmetleri için önerilen uygulamalarla ilgili makaleler kullanıma sunulduğunda, bağlantılar aşağıdaki listede sağlanacaktır:
 
-- [Azure Uygulama Hizmeti](paas-applications-using-app-services.md)
+- [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Veritabanı ve Azure SQL Veri Ambarı](paas-applications-using-sql.md)
-- [Azure Depolama](paas-applications-using-storage.md)
+- [Azure Storage](paas-applications-using-storage.md)
 - Redis için Azure Önbelleği
 - Azure Service Bus
 - Web Uygulama Güvenlik Duvarları

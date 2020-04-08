@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 11bf7c0ae05c2e52d59efb32be47ce6bd96fac4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599c4a31840b47294b43c4c4d1f0200b17f04540
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76937972"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810539"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Azure AD uygulaması için güvenli uygulama geliştirme
 ## <a name="overview"></a>Genel Bakış
@@ -228,7 +228,7 @@ $cert = New-AzApplicationGatewaySSLCertificate -Name cert01 -CertificateFile "C:
 
 $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
 
-#Upload the certificate to be used on the SSL-enabled back-end pool resources
+#Upload the certificate to be used on the TLS/SSL-enabled back-end pool resources
 
 #$authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
 
@@ -246,7 +246,7 @@ $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basi
 
 $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 
-#Configure the SSL policy to be used on the application gateway
+#Configure the TLS/SSL policy to be used on the application gateway
 
 $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
 
@@ -361,7 +361,7 @@ Aşağıdaki teknolojiler, Azure ortamında kart sahibi verilerine erişimi yön
 - Azure Active Directory, Microsoft'un çok kiracılı bulut tabanlı dizin ve kimlik yönetimi hizmetidir. Bu çözümün tüm kullanıcıları, Azure WebApp'a erişen kullanıcılar da dahil olmak üzere Azure Active Directory'de oluşturulur.
 - Azure rol tabanlı erişim denetimi, yöneticilerin yalnızca kullanıcıların işlerini gerçekleştirmek için gereken erişim miktarını vermek için ince taneli erişim izinlerini tanımlamasına olanak tanır. Yöneticiler, her kullanıcıya Azure kaynakları için sınırsız izin vermek yerine, kart sahibi verilerine erişmek için yalnızca belirli eylemlere izin verebilir. Abonelik erişimi abonelik yöneticisiyle sınırlıdır.
 - Azure Active Directory Ayrıcalıklı Kimlik Yönetimi, müşterilerin kart sahibi verileri gibi belirli bilgilere erişimi olan kullanıcı sayısını en aza indirmesini sağlar. Yöneticiler, ayrıcalıklı kimlikleri ve kaynaklara erişimlerini keşfetmek, kısıtlamak ve izlemek için Azure Etkin Dizin Ayrıcalıklı Kimlik Yönetimi'ni kullanabilir. Bu işlevsellik, gerektiğinde isteğe bağlı, tam zamanında yönetim erişimi zorlamak için de kullanılabilir.
-- Azure Etkin Dizin Kimlik Koruması, kuruluşun kimliklerini etkileyen olası güvenlik açıklarını algılar, kuruluşun kimliğiyle ilgili algılanan şüpheli eylemlere otomatik yanıtlar yapılandırır ve şüpheli olayları çözmek için uygun eylemi yapmak.
+- Azure Etkin Dizin Kimlik Koruması, kuruluşun kimliklerini etkileyen olası güvenlik açıklarını algılar, kuruluşun kimlikleri ile ilgili algılanan şüpheli eylemlere otomatik yanıtlar yapılandırır ve bunları çözmek için uygun eylemi yapmak üzere şüpheli olayları araştırır.
 ### <a name="secrets-management"></a>Gizli dizi yönetimi
 Çözüm, anahtarların ve sırların yönetimi için Azure Key Vault'u kullanır. Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Aşağıdaki Azure Anahtar Kasası özellikleri, müşterilerin bu tür verileri korumasına ve bunlara erişmemede yardımcı olur
    - Gelişmiş erişim ilkeleri gereksinim bazında yapılandırılır.
@@ -380,7 +380,7 @@ Azure Güvenlik Merkezi ile müşteriler iş yükleri arasında güvenlik ilkele
    - Azure Güvenlik Merkezi, müşterilerin olası güvenlik sorunlarını keşfetmesini ve busorunları çözmesini kolaylaştırarak öncelikli güvenlik uyarıları ve olayları sağlar. Tespit edilen her tehdit için, tehditleri araştırmave tedavi etmede olay müdahale ekiplerine yardımcı olmak için bir tehdit istihbarat raporu oluşturulur.
 ### <a name="azure-application-gateway"></a>Azure Application Gateway 
    Mimari, web uygulama güvenlik duvarı yapılandırılan ve OWASP kural kümesi etkinleştirilmiş bir Azure Uygulama Ağ Geçidi kullanarak güvenlik açıkları riskini azaltır. Ek özellikler şunlardır:
-   - Uçuç-ssl.
+   - Uçuça TLS.
    - TLS v1.0 ve v1.1'i devre dışı.
    - TLSv1.2'yi etkinleştirin.
    - Web uygulaması güvenlik duvarı (önleme modu).

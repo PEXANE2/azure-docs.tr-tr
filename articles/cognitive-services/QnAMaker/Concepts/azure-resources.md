@@ -3,12 +3,12 @@ title: Azure kaynakları - QnA Maker
 description: QnA Maker, her biri farklı bir amaca sahip olmak üzere birkaç Azure kaynağı kullanır. Bunların tek tek nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlamanıza ve seçmenize veya fiyatlandırma katmanınızı ne zaman değiştireceğinize bilmenize olanak tanır. Bunların birlikte nasıl kullanıldığını anlamak, sorunları oluştuğunda bulmanızı ve düzeltmenizi sağlar.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 8a5cc0f4889e31470514015035a92d230c40ed43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284254"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804308"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker için azure kaynakları
 
@@ -54,7 +54,7 @@ Aşağıdaki tablo size bazı üst düzey yönergeler verir.
 
 |Yükseltme|Neden|
 |--|--|
-|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker yönetimi SKU|Bilgi tabanınızda daha fazla QnA kümesi veya belge kaynağı olmasını istiyorsunuz.|
+|[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku) QnA Maker yönetimi SKU|Bilgi tabanınızda daha fazla QnA çifti veya belge kaynağı olmasını istiyorsunuz.|
 |[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service) App Service SKU ve Bilişsel Arama katmanı kontrol edin ve [Bilişsel Arama kopyaları oluşturmak](../../../search/search-capacity-planning.md)|Bilgi tabanınızın, sohbet botu gibi istemci uygulamanızdan daha fazla istek sunması gerekir.|
 |[Yükseltme](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service) Azure Bilişsel Arama hizmeti|Birçok bilgi tabanına sahip olmayı planlıyorsun.|
 
@@ -95,8 +95,8 @@ QnA Maker ile oluşturulan her Azure kaynağının belirli bir amacı vardır:
 
 [Bilişsel Arama](../../../search/index.yml) kaynağı aşağıdakileri yapmak için kullanılır:
 
-* QnA kümelerini saklayın
-* Çalışma zamanında QnA kümelerinin ilk sıralamasını (ranker #1) sağlayın
+* QnA çiftlerini saklayın
+* Çalışma zamanında QnA çiftlerinin ilk sıralamasını (ranker #1) sağlayın
 
 #### <a name="index-usage"></a>Dizin kullanımı
 
@@ -110,7 +110,7 @@ QnA Maker kaynağında oluşturulan ilk bilgi tabanı, Bilişsel Arama kaynağı
 
 ### <a name="qna-maker-resource"></a>QnA Maker kaynağı
 
-QnA Maker kaynağı, çalışma zamanında QnA kümelerinin doğal dil işleme (NLP) tabanlı ikinci sıralama katmanına (ranker #2) yazma ve yayımlama API'lerine erişim sağlar.
+QnA Maker kaynağı, çalışma zamanında QnA çiftlerinin doğal dil işleme (NLP) tabanlı ikinci sıralama katmanına (ranker #2) yazma ve yayımlama API'lerine erişim sağlar.
 
 İkinci sıralama, meta veri ve izleme istemleri içerebilen akıllı filtreler uygular.
 
@@ -136,7 +136,7 @@ QnA Maker birkaç Azure kaynağı oluşturur. Yönetimi azaltmak ve maliyet payl
 
 |Hizmet|Paylaş|Neden|
 |--|--|--|
-|Bilişsel hizmetler|X|Tasarım la mümkün değil|
+|Bilişsel Hizmetler|X|Tasarım la mümkün değil|
 |App Service planı|✔|Bir Uygulama Hizmeti planı için ayrılan sabit disk alanı. Aynı Uygulama Hizmeti planını paylaşan diğer uygulamalar önemli disk alanı kullanıyorsa, QnAMaker Uygulama Hizmeti örneği sorunlarla karşılaşır.|
 |App Service|X|Tasarım la mümkün değil|
 |Application Insights|✔|Paylaşılabilir|
@@ -164,7 +164,7 @@ API'ler aracılığıyla hizmete istekte bulunmak için bu anahtarları kullanı
 
 |Adı|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure portalında](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [QnA Maker yönetim hizmeti API'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API'ler, bilgi tabanınızdaki soruları ve yanıtları yeniden atamasına ve bilgi tabanınızı yayımlamanıza izin verir. Bu anahtarlar, yeni bir QnA Maker hizmeti oluşturduğunuzda oluşturulur.<br><br>Bu **anahtarları, Anahtarlar** **sayfasındaki Bilişsel Hizmetler** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [QnA Maker yönetim hizmeti API'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API'ler, bilgi tabanınızdaki soruları ve yanıtları yeniden atamasına ve bilgi tabanınızı yayımlamanıza izin verir. Bu anahtarlar, yeni bir QnA Maker hizmeti oluşturduğunuzda oluşturulur.<br><br>Bu **anahtarları, Anahtarlar** **sayfasındaki Bilişsel Hizmetler** kaynağında bulabilirsiniz.|
 |Sorgu bitiş noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, kullanıcı sorusuna yanıt almak için yayımlanmış bilgi bankası bitiş noktasını sorgulamak için kullanılır. Bu sorgu bitiş noktasını genellikle sohbet botunuzda veya QnA Maker hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar, QnA Maker bilgi tabanınızı yayımladığınızda oluşturulur.<br><br>Bu anahtarları **Hizmet ayarları** sayfasında bulun. Açılan menüdeki sayfanın sağ üst kısmındaki kullanıcı menüsünden bu sayfayı bulun.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları

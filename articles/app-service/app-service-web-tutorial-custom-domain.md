@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 2e62062fabfbb7c320bbeaf473979ccef96b0ba3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80047206"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811776"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Öğretici: Varolan özel bir DNS adını Azure Uygulama Hizmetiile eşleme
 
@@ -151,7 +151,7 @@ Yeni özel etki alanının uygulamanın **Özel etki alanları** sayfasına yans
 ![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added.png)
 
 > [!NOTE]
-> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. Bir SSL bağlayıcısı eklemek için Azure [Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
+> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir TLS/SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. TLS bağlama eklemek için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
 
 Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
 
@@ -235,7 +235,7 @@ Yeni özel etki alanının uygulamanın **Özel etki alanları** sayfasına yans
 ![A kaydı eklenir](./media/app-service-web-tutorial-custom-domain/a-record-added.png)
 
 > [!NOTE]
-> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. Bir SSL bağlayıcısı eklemek için Azure [Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
+> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir TLS/SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. TLS bağlama eklemek için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
 
 Daha önce bir adımı atladıysanız veya yazım hatası yaptıysanız, sayfanın en altında bir doğrulama hatası görürsünüz.
 
@@ -290,7 +290,7 @@ Joker **+** karakter etki alanıyla eşleşen başka bir özel etki alanı eklem
 ![CNAME kaydı eklenir](./media/app-service-web-tutorial-custom-domain/cname-record-added-wildcard2.png)
 
 > [!NOTE]
-> Özel etki alanınız için **Note Secure** etiketi, henüz bir SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. Bir SSL bağlayıcısı eklemek için Azure [Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
+> Özel etki alanınız için **Note Secure** etiketi, henüz bir TLS/SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği alır ve tarayıcıya bağlı olarak hata veya uyarı alır. TLS bağlama eklemek için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
 
 ## <a name="test-in-browser"></a>Tarayıcıda test
 
@@ -366,7 +366,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Varsayılan URL'yi özel bir dizine yeniden yönlendirme
 > * Etki alanı eşlemesini betiklerle otomatikleştirme
 
-Web uygulamasına özel bir SSL sertifikası bağlamayla ilgili bilgi edinmek için sonraki öğreticiye geçin.
+Özel bir TLS/SSL sertifikasını bir web uygulamasına nasıl bağlatılamayı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
+> [Azure Uygulama Hizmetinde TLS/SSL bağlama ile özel bir DNS adı güvenliğini sağlama](configure-ssl-bindings.md)

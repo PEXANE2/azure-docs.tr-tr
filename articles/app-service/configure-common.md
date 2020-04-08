@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce0a170a629f347e2687a2e9f63fb3438fe2bd2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18469c94b66acab27b58243e8d15eb924843319b
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280176"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811126"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portalında bir Uygulama Hizmeti uygulamasını yapılandırma
 
@@ -96,10 +96,11 @@ Bağlantı dizeleri değerlere erişmek için değişken tuşlarında özel biç
 
 Çalışma zamanında, bağlantı dizeleri aşağıdaki bağlantı türleri ile önceden belirlenmiş ortam değişkenleri olarak kullanılabilir:
 
-* SQL Sunucusu:`SQLCONNSTR_`
-* Mysql:`MYSQLCONNSTR_`
-* SQL Veritabanı:`SQLAZURECONNSTR_`
+* Sqlserver:`SQLCONNSTR_`  
+* Mysql:`MYSQLCONNSTR_` 
+* SQLAzure:`SQLAZURECONNSTR_` 
 * Özel:`CUSTOMCONNSTR_`
+* Postgresql:`POSTGRESQLCONNSTR_`  
 
 Örneğin, *connectionstring1* adlı bir MySql bağlantı dizesi `MYSQLCONNSTR_connectionString1`ortam değişkeni olarak erişilebilir. Dil yığınına özgü adımlar için bkz:
 
@@ -173,7 +174,7 @@ Burada, uygulama için bazı ortak ayarları yapılandırabilirsiniz. Bazı [aya
     - **Yönetilen boru hattı sürümü**: IIS [boru hattı modu.] IIS'nin eski bir sürümünü gerektiren eski bir uygulamanız varsa **Klasik** olarak ayarlayın.
     - **HTTP sürümü**: [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokolü için destek sağlamak için **2.0** olarak ayarlayın.
     > [!NOTE]
-    > Çoğu modern tarayıcı sadece TLS üzerinden HTTP/2 protokolünü desteklerken, şifrelenmemiş trafik HTTP/1.1'i kullanmaya devam eder. İstemci tarayıcılarının HTTP/2 ile uygulamanıza bağlanmasını sağlamak için, [Azure Uygulama Hizmeti'nde bir SSL bağlama ile özel DNS adınızı güvence altına](configure-ssl-bindings.md)alayın.
+    > Çoğu modern tarayıcı sadece TLS üzerinden HTTP/2 protokolünü desteklerken, şifrelenmemiş trafik HTTP/1.1'i kullanmaya devam eder. İstemci tarayıcılarının http/2 ile uygulamanıza bağlanmasını sağlamak için özel DNS adınızı güvence altına alayın. Daha fazla bilgi için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
     - **ARR yakınlığı**: Çok örnekli dağıtımda, istemcinin oturumun ömrü boyunca aynı örneğe yönlendirilmesini sağlayın. Bu seçeneği, durum dışı uygulamalar için **Kapatma** olarak ayarlayabilirsiniz.
 - **Hata ayıklama**: [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug), [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)veya [Node.js](containers/configure-language-nodejs.md#debug-remotely) uygulamaları için uzaktan hata ayıklama etkinleştirin. Bu seçenek 48 saat sonra otomatik olarak kapanır.
 - **Gelen istemci sertifikaları**: [karşılıklı kimlik doğrulama](app-service-web-configure-tls-mutual-auth.md)istemci sertifikaları gerektirir.
@@ -248,7 +249,7 @@ Bkz. [Azure Uygulama Hizmeti için özel bir Linux kapsayıcısı yapılandırı
 
 - [Azure App Service'te özel etki alanı adını yapılandırma]
 - [Azure App Service’te hazırlık ortamları ayarlama]
-- [Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama](configure-ssl-bindings.md)
+- [Azure Uygulama Hizmetinde TLS/SSL bağlama ile özel bir DNS adı güvenliğini sağlama](configure-ssl-bindings.md)
 - [Tanılama günlüklerini etkinleştirme](troubleshoot-diagnostic-logs.md)
 - [Azure Uygulama Hizmeti'nde bir uygulamayı ölçeklendirin]
 - [Azure Uygulama Hizmeti'nde temel leri izleme]

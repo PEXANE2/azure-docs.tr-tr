@@ -3,12 +3,12 @@ title: Hizmet yapılandırması - QnA Maker
 description: Kaynakların nasıl ve nerede yapılandırılabildiğini anlayın.
 ms.topic: reference
 ms.date: 02/21/2020
-ms.openlocfilehash: 8ef6fecbfeb119d0c68ec5bc3bbc90ec449dbb7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651866"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804269"
 ---
 # <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -27,8 +27,8 @@ Uygulama Ayarları listesinde n ayrı bir ayar ayarlayabilir veya **Gelişmiş d
 
 |Kaynak|Ayar|
 |--|--|
-|AzureSearchAdminKey|Bilişsel Arama - QnA set depolama ve Ranker #1 için kullanılır|
-|AzureSearchName|Bilişsel Arama - QnA set depolama ve Ranker #1 için kullanılır|
+|AzureSearchAdminKey|Bilişsel Arama - QnA çifti depolama ve Ranker #1 için kullanılır|
+|AzureSearchName|Bilişsel Arama - QnA çifti depolama ve Ranker #1 için kullanılır|
 |Varsayılan Yanıt|Eşleşme bulunamediğinde yanıt metni|
 |UserAppInsightsAppId|Sohbet günlüğü ve telemetri|
 |UserAppInsightsKey|Sohbet günlüğü ve telemetri|

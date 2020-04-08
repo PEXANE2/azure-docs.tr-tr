@@ -11,94 +11,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 04/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60456926"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811077"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Karma Kimlik dizin tümleştirme araçları karşılaştırması
-Yıllar içinde dizin tümleştirme araçları büyüme ve gelişim göstermiştir.  Bu belgenin amacı, bu araçlara yönelik birleştirilmiş bir görünüm ve her birinin içerdiği özelliklere dair bir karşılaştırma sağlamaya yardımcı olmaktır.
+Yıllar içinde dizin tümleştirme araçları büyüme ve gelişim göstermiştir.  
 
-<!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
-> [!NOTE]
-> Azure AD Connect, daha önce Dirsync ve AAD Sync olarak daha önce yayımlanan bileşenleri ve işlevleri içerir. Bu araçlar artık tek tek yayımlanmayacak ve gelecekteki tüm geliştirmeler Azure AD Connect güncelleştirmelerine dahil edilecektir, böylece en güncel işlevselliği nereden alacağınızı her zaman bilirsiniz.
-> 
-> DirSync ve Azure AD Eşitleme kullanım dışı bırakılmıştır. [Buradan](reference-connect-dirsync-deprecated.md) daha fazla bilgi edinebilirsiniz.
-> 
-> 
+- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29) ve [MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) hala desteklenir ve öncelikle şirket içi sistemler arasında eşitlemesini sağlar.   [FIM Windows Azure AD Bağlayıcısı](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN) hem FIM hem de MIM'de desteklenir, ancak yeni dağıtımlar için önerilmez - Notlar veya SAP HCM gibi şirket içi kaynakları olan müşteriler Active Directory Domain Services'ı (AD DS) doldurmak için MIM'i kullanmalı ve ardından AD DS'den Azure AD'ye senkronize etmek için Azure AD Connect eşitleme veya Azure AD Connect bulut sağlama yı da kullanmalıdır.
+- [Azure AD Connect eşitlemi,](how-to-connect-sync-whatis.md) AD DS ormanları ile Azure AD arasında eşitleme için DirSync ve Azure AD Sync'de daha önce yayımlanmış bileşenleri ve işlevleri içerir.  
+- [Azure AD Connect bulut sağlama,](../cloud-provisioning/what-is-cloud-provisioning.md) satın alınan şirketin AD ormanlarının ana şirketin AD ormanlarından izole edildiği birleşme ve satın alma gibi senaryolar için yararlı olan, AD DS'den Azure AD'ye senkronize etmek için yeni bir Microsoft aracısıdır.
 
-Tabloların her biri için aşağıdaki anahtarı kullanın.
-
-●  = Şimdi Kullanılabilir  
-GS = Gelecekteki Sürüm  
-GÖ = Genel Önizleme  
-
-## <a name="on-premises-to-cloud-synchronization"></a>Şirket İçi - Bulut Eşitlemesi
-| Özellik | Azure Active Directory Connect | Azure Active Directory Eşitleme Hizmetleri (AAD Eşitleme) - ARTIK DESTEKLENMİYOR | Azure Active Directory Eşitleme Aracı (DirSync) - ARTIK DESTEKLENMİYOR | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Tek şirket içi AD ormanına bağlanma |● |● |● |● |● |
-| Birden çok şirket içi AD ormanına bağlanma |● |● | |● |● |
-| Birden çok şirket içi Exchange Kuruluşu'na bağlanma |● | | | | |
-| Tek şirket içi LDAP dizinine bağlanma |●* | | |● |● | 
-| Birden çok şirket içi LDAP dizinine bağlanma |●*  | | |● |● | 
-| Şirket içi AD ve şirket içi LDAP dizinlerine bağlanma |●* | | |● |● | 
-| Özel sistemlere (SQL, Oracle, MySQL vb.) bağlanma |GS | | |● |● |
-| Müşteri tanımlı öznitelikleri (dizin uzantıları) eşitleme |● | | | | |
-| Şirket içi İK olanağına (SAP, Oracle eBusiness,PeopleSoft) bağlanma |GS | | |● |● |
-| FIM eşitleme kurallarını ve şirket içi sistemlere hazırlamaya yönelik bağlayıcıları destekler. | | | |● |● |
-
- 
-&#42; Şu anda bunun için desteklenen iki seçenek mevcuttur.  Bunlar: 
-
-   1. Genel LDAP bağlayıcısını kullanarak Azure AD Connect dışında etkinleştirebilirsiniz.  Bu seçenek karmaşıktır ve ekleme için bir iş ortağı ile sürdürülmesi için bir premier destek sözleşmesi gerektirir.  Bu seçenek, hem tek hem de birden çok LDAP dizinini işleyebilir. 
-
-   2. LDAP’den Active Directory'ye nesneleri taşımak için kendi çözümünüzü geliştirebilirsiniz.  Ardından nesnelerin Azure AD Connect ile eşitleyebilirsiniz.  MIM veya FIM nesneleri taşımak için olası bir çözüm olarak kullanılabilir. 
-
-## <a name="cloud-to-on-premises-synchronization"></a>Bulut - Şirket İçi Eşitlemesi
-| Özellik | Azure Active Directory Connect | Azure Active Directory Eşitleme Hizmetleri - ARTIK DESTEKLENMİYOR  | Azure Active Directory Eşitleme Aracı (DirSync) - ARTIK DESTEKLENMİYOR  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Cihazlar için geri yazma |● | |● | | |
-| Öznitelik geri yazma (Exchange karma dağıtımı için) |● |● |● |● |● |
-| Gruplar nesneleri için geri yazma |● | | | | |
-| Parola geri yazma (self servis parola sıfırlama (SSPR) ve parola değiştirme işleminden) |● |● | | | |
-
-## <a name="authentication-feature-support"></a>Kimlik Doğrulama Özelliği Desteği
-| Özellik | Azure Active Directory Connect | Azure Active Directory Eşitleme Hizmetleri - ARTIK DESTEKLENMİYOR  | Azure Active Directory Eşitleme Aracı (DirSync) - ARTIK DESTEKLENMİYOR  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Tek şirket içi AD ormanı için Parola Karma Eşitlemesi |●|●|● | | |
-| Birden çok şirket içi AD ormanı için Parola Karma Eşitlemesi |●|● | | | |
-| Tek şirket içi AD ormanı için Geçiş Kimlik Doğrulaması |●| | | | |
-| Federasyon ile Çoklu Oturum Açma |● |● |● |● |● |
-| Sorunsuz Çoklu Oturum Açma|● |||||
-| Parola geri yazma (SSPR ve parola değiştirme işleminden) |● |● | | | |
-
-## <a name="set-up-and-installation"></a>Kurulum ve Yükleme
-| Özellik | Azure Active Directory Connect | Azure Active Directory Eşitleme Hizmetleri - ARTIK DESTEKLENMİYOR  | Azure Active Directory Eşitleme Aracı (DirSync) - ARTIK DESTEKLENMİYOR  | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|
-| Etki Alanı Denetleyicisi üzerinde yüklemeyi destekler |● |● |● | |
-| SQL Express kullanarak yüklemeyi destekler |● |● |● | |
-| DirSync'ten kolay yükseltme |● | | | |
-| Yönetici Kullanıcı Deneyiminin Windows Server dillerine yerelleştirmesi |● |● |● | |
-| Son kullanıcının kullanıcı deneyiminin Windows Server dillerine yerelleştirmesi | | | |● |
-| Windows Server 2008 ve Windows Server 2008 R2 desteği |● Eşitleme içindir, Federasyon için hayır |● |● |● |
-| Windows Server 2012 ve Windows Server 2012 R2 desteği |● |● |● |● |
-
-## <a name="filtering-and-configuration"></a>Filtreleme ve Yapılandırma
-| Özellik | Azure Active Directory Connect | Azure Active Directory Eşitleme Hizmetleri - ARTIK DESTEKLENMİYOR  | Azure Active Directory Eşitleme Aracı (DirSync) - ARTIK DESTEKLENMİYOR  | Forefront Identity Manager 2010 R2 (FIM) | Microsoft Identity Manager 2016 (MIM) |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-| Etki Alanları ve Kuruluş Birimleri üzerinde filtreleme |● |● |● |● |● |
-| Nesnelerin öznitelik değerleri üzerinde filtreleme |● |● |● |● |● |
-| Minimal öznitelik kümesinin eşitlenmesine izin ver (MinSync) |● |● | | | |
-| Öznitelik akışları için farklı hizmet şablonlarının uygulanmasına izin ver |● |● | | | |
-| Öznitelik kaldırma işleminin AD'den Azure AD'ye akışına izin ver |● |● | | | |
-| Öznitelik akışları için gelişmiş özelleştirmeye izin ver |● |● | |● |● |
+Azure AD Connect eşitleme ve Azure AD Connect bulut sağlama arasındaki [What is Azure AD Connect cloud provisioning?](../cloud-provisioning/what-is-cloud-provisioning.md) farklar hakkında daha fazla bilgi edinmek için bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md) hakkında daha fazla bilgi edinin.

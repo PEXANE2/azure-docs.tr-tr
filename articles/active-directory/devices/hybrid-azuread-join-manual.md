@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6754393bdeabcd67dcf6514102e3c825a26fc3e9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878960738830dbe2f94b977e98215a681c4a79d2
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239087"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802561"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -66,7 +66,7 @@ Kuruluşunuz Sorunsuz SSO kullanmayı planlıyorsa, aşağıdaki URL'ye kuruluş
 
 Ayrıca kullanıcının intranet bölgesinde aşağıdaki ayarların etkinleştirilebilmesi gereklidir: "Betikle durum çubuğu güncelleştirmelerine izin ver".
 
-Kuruluşunuz şirket içi Active Directory ile yönetilen (federe olmayan) kurulumu kullanıyorsa ve Azure AD ile federe kullanmak için Active Directory Federation Services (AD FS) kullanmıyorsa, Windows 10'daki karma Azure AD join'i Active'deki bilgisayar nesnelerine dayanır Azure AD ile eşitlenecek dizin. Azure AD Connect eşitleme yapılandırmasında eşitlemek için karma Azure AD birleştirilmiş bilgisayar nesneleri içeren tüm OS'lerin etkin olduğundan emin olun.
+Kuruluşunuz şirket içi Active Directory ile yönetilen (federe olmayan) kurulumu kullanıyorsa ve Azure AD ile federe kullanmak için Active Directory Federation Services (AD FS) kullanmıyorsa, Windows 10'daki karma Azure AD join'ine Azure AD ile senkronize edilecek Bilgisayar nesnelerine dayanır. Azure AD Connect eşitleme yapılandırmasında eşitlemek için karma Azure AD birleştirilmiş bilgisayar nesneleri içeren tüm OS'lerin etkin olduğundan emin olun.
 
 Sürüm 1703 veya daha önceki Sürüm 10 aygıtları için, kuruluşunuz giden bir proxy üzerinden Internet erişimi gerektiriyorsa, Windows 10 bilgisayarlarının Azure AD'ye kaydolmasını sağlamak için Web Proxy Otomatik Bulma (WPAD) uygulamanız gerekir.
 
@@ -85,7 +85,7 @@ Senaryonuz için gereken adımlara ilişkin genel bir bakış elde etmek için a
 | Hizmet bağlantı noktasını yapılandırma | ![İşaretli][1] | ![İşaretli][1] | ![İşaretli][1] |
 | Taleplerin verilmesini ayarlama |     | ![İşaretli][1] | ![İşaretli][1] |
 | Windows 10 olmayan cihazları etkinleştirme |       |        | ![İşaretli][1] |
-| Katılmış cihazları doğrulama | ![İşaretli][1] | ![İşaretli][1] | [İşaretli][1] |
+| Katılmış cihazları doğrulama | ![İşaretli][1] | ![İşaretli][1] | ![İşaretli][1] |
 
 ## <a name="configure-a-service-connection-point"></a>Hizmet bağlantı noktası yapılandırma
 

@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmetinde RBAC ve Azure AD ile küme kaynaklarını denetleme
+title: Kümeler için Azure AD ve RBAC'ı kullanma
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti'nde (AKS) rol tabanlı erişim denetimi (RBAC) kullanarak küme kaynaklarına erişimi kısıtlamak için Azure Active Directory grup üyeliğini nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
 ms.date: 04/16/2019
-ms.openlocfilehash: 456b6dcdd590b48e06c830db85b726d4bebb69e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad195085c049776bf0db418c57f2c72830f1adff
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596530"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803578"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Hizmeti'nde rol tabanlı erişim denetimi ve Azure Etkin Dizin kimliklerini kullanarak küme kaynaklarına erişimi denetleme
 

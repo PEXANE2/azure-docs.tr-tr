@@ -1,17 +1,18 @@
 ---
-title: Azure Kubernetes Service (AKS) bölmeleri tarafından kullanılmak üzere bir NFS (Ağ Dosya Sistemi) Ubuntu Sunucusu oluşturun
+title: NFS Ubuntu Linux Server hacmi ni oluşturma
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmetinde (AKS) bölmelerle kullanılmak üzere el ile nasıl bir NFS Ubuntu Linux Server hacmi oluşturabilirsiniz öğrenin
 services: container-service
 author: ozboms
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: obboms
-ms.openlocfilehash: e5676710bc47557318f3e2adcf36ec0ed13d47de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f806df88e5b23012e97ba5c2f14ca65b2508
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596632"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803475"
 ---
 # <a name="manually-create-and-use-an-nfs-network-file-system-linux-server-volume-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile nfs (Ağ Dosya Sistemi) Linux Server hacmini el ile oluşturun ve kullanın
 Verileri kapsayıcılar arasında paylaşmak genellikle kapsayıcı tabanlı hizmetlerin ve uygulamaların gerekli bir bileşenidir. Genellikle harici kalıcı birimde aynı bilgilere erişmeniz gereken çeşitli bölmelere sahipsiniz.    

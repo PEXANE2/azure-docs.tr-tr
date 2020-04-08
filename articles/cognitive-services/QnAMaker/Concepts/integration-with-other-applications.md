@@ -3,12 +3,12 @@ title: Diğer uygulamalarla tümleştirme - QnA Maker
 description: QnA Maker, sohbet botları gibi istemci uygulamalarına ve Dil Anlama (LUIS) gibi diğer doğal dil işleme hizmetlerine entegre dir.
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 38b275aa2b8cf5768a2bc95634a7ff4892893eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300528"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804199"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>İstemci uygulamaları için tasarım bilgi tabanı
 
@@ -24,7 +24,7 @@ Bilgi tabanınızı yayımladıktan **sonra, Bot Oluştur** düğmesini seçerek
 
 ## <a name="providing-multi-turn-conversations"></a>Çok döndürerek konuşmalar sağlama
 
-Bir bot istemcisi bilgi tabanınızdan en iyi seçilen yanıtı sağlar ve yanıt çok döndürülme QnA kümesinin bir parçasıysa izleme istemleri sağlayabilir. Bilgi [tabanınıza](../how-to/multiturn-conversation.md) çok döndürme sorusu ve yanıt kümelerini nasıl ekleyeceğinizi öğrenin.
+Bir bot istemcisi bilgi tabanınızdan en iyi seçilen yanıtı sağlar ve yanıt çok döndürülme QnA çiftinin bir parçasıysa izleme istemleri sağlayabilir. Bilgi [tabanınıza](../how-to/multiturn-conversation.md) çok döndürme sorusu ve yanıt kümelerini nasıl ekleyeceğinizi öğrenin.
 
 ## <a name="natural-language-processing"></a>Doğal dil işleme
 

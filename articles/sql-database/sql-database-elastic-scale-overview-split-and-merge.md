@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7eb1670ee911895bdba23921845b8795f4998af
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74421564"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811310"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Ölçeği genişletilen bulut veritabanları arasında veri taşıma
 
@@ -62,7 +62,7 @@ Bölme birleştirme aracı Azure web hizmeti olarak çalışır. Bir yönetici v
 
 - **Müşteri tarafından barındırılan hizmetler**
 
-  Bölme birleştirme, müşteri tarafından barındırılan bir hizmet olarak teslim edilir. Hizmeti Microsoft Azure aboneliğinizde dağıtmanız ve barındırmanız gerekir. NuGet'den indirdiğiniz paket, belirli dağıtımınıza ait bilgilerle tamamlanması gereken bir yapılandırma şablonu içerir. Ayrıntılar için [bölme birleştirme öğreticisine](sql-database-elastic-scale-configure-deploy-split-and-merge.md) bakın. Hizmet Azure aboneliğinizde çalıştığından, hizmetin güvenlik yönlerini n için denetleyebilir ve yapılandırabilirsiniz. Varsayılan şablon, SSL yapılandırma, sertifika tabanlı istemci kimlik doğrulaması, depolanan kimlik bilgileri için şifreleme, DoS koruma ve IP kısıtlamaları seçeneklerini içerir. Aşağıdaki belge [bölme birleştirme güvenlik yapılandırmasında](sql-database-elastic-scale-split-merge-security-configuration.md)güvenlik yönleri hakkında daha fazla bilgi bulabilirsiniz.
+  Bölme birleştirme, müşteri tarafından barındırılan bir hizmet olarak teslim edilir. Hizmeti Microsoft Azure aboneliğinizde dağıtmanız ve barındırmanız gerekir. NuGet'den indirdiğiniz paket, belirli dağıtımınıza ait bilgilerle tamamlanması gereken bir yapılandırma şablonu içerir. Ayrıntılar için [bölme birleştirme öğreticisine](sql-database-elastic-scale-configure-deploy-split-and-merge.md) bakın. Hizmet Azure aboneliğinizde çalıştığından, hizmetin güvenlik yönlerini n için denetleyebilir ve yapılandırabilirsiniz. Varsayılan şablon, TLS yapılandırma, sertifika tabanlı istemci kimlik doğrulaması, depolanan kimlik bilgileri için şifreleme, DoS koruma ve IP kısıtlamaları yapılandırma seçeneklerini içerir. Aşağıdaki belge [bölme birleştirme güvenlik yapılandırmasında](sql-database-elastic-scale-split-merge-security-configuration.md)güvenlik yönleri hakkında daha fazla bilgi bulabilirsiniz.
 
   Varsayılan dağıtılan hizmet, bir alt ve bir web rolüyle çalışır. Her biri Azure Bulut Hizmetleri'nde A1 VM boyutunu kullanır. Paketi dağıtırken bu ayarları değiştiremeseniz de, çalışan bulut hizmetinde (Azure portalı üzerinden) başarılı bir dağıtımdan sonra bunları değiştirebilirsiniz. Alt rolün teknik nedenlerle tek bir örnekten fazla yapılandırılmaması gerektiğini unutmayın.
 
@@ -72,7 +72,7 @@ Bölme birleştirme aracı Azure web hizmeti olarak çalışır. Bir yönetici v
 
 - **Tutarlı parça bağlantıları**
 
-  Yeni bir parça grubu için veri hareketi başladığında, parçayı depolayan parçaya veri bağımlı yönlendirme bağlantıları sağlandığında ve parçalayıcı harita API'lerinden parçaparçaya sonraki bağlantılar engellenirken veri hareketi tutarsızlıkları önlemek için devam etmektedir. Aynı parçadaki diğer parçaların bağlantıları da öldürülecek, ancak yeniden denemede hemen başarılı olacaktır. Toplu iş taşındıktan sonra, parçaparçaları hedef parça için yeniden çevrimiçi olarak işaretlenir ve kaynak veriler kaynak parçadan kaldırılır. Hizmet, tüm parçaları taşınana kadar her toplu iş için bu adımlardan geçer. Bu, tam bölme/birleştirme/taşıma işlemi sırasında birkaç bağlantı öldürme işlemine yol açar.  
+  Yeni bir parça grubu için veri hareketi başladığında, parçayı depolayan parçaya veri bağımlı yönlendirme bağlantıları sağlandığında ve parçalayıcı harita API'lerinden parçaparçaya sonraki bağlantılar engellenirken, veri hareketi tutarsızlıkları önlemek için devam etmektedir. Aynı parçadaki diğer parçaların bağlantıları da öldürülecek, ancak yeniden denemede hemen başarılı olacaktır. Toplu iş taşındıktan sonra, parçaparçaları hedef parça için yeniden çevrimiçi olarak işaretlenir ve kaynak veriler kaynak parçadan kaldırılır. Hizmet, tüm parçaları taşınana kadar her toplu iş için bu adımlardan geçer. Bu, tam bölme/birleştirme/taşıma işlemi sırasında birkaç bağlantı öldürme işlemine yol açar.  
 
 - **Shardlet kullanılabilirliğini yönetme**
 

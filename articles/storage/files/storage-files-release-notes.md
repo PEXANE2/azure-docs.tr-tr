@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5b247e8f4a611ace227f5adcef7e0e27de341c96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 578d00d4bd65b3ffbfb6cdac439762344604e6b8
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454644"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804886"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -35,9 +35,7 @@ Azure Dosya Eşitleme aracısı aşağıdaki sürümleri destekler:
 | Haziran 2019 güncelleme toplama - [KB4489738](https://support.microsoft.com/help/4489738)| 6.2.0.0 | Haziran 13, 2019 | Desteklenen - Aracı sürümü 21 Nisan 2020 tarihinde sona erecek |
 | Mayıs 2019 güncelleme toplama - [KB4489737](https://support.microsoft.com/help/4489737)| 6.1.0.0 | Mayıs 7, 2019 | Desteklenen - Aracı sürümü 21 Nisan 2020 tarihinde sona erecek |
 | V6 Yayın - [KB4489736](https://support.microsoft.com/help/4489736)| 6.0.0.0 | 21 Nisan 2019 | Desteklenen - Aracı sürümü 21 Nisan 2020 tarihinde sona erecek |
-| Nisan 2019 güncelleme toplama - [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4 Nisan 2019 | Desteklenen - Agent sürümü 18 Mart 2020 tarihinde sona erecek |
-| Mart 2019 güncelleme toplama - [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7 Mart 2019 | Desteklenen - Agent sürümü 18 Mart 2020 tarihinde sona erecek |
-| V5 Yayın - [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12 Şubat 2019 | Desteklenen - Agent sürümü 18 Mart 2020 tarihinde sona erecek |
+| V5 Yayın | 5.0.2.0 - 5.2.0.0 | Yok | Desteklenmiyor - Aracı sürümlerinin süresi 18 Mart 2020'de doldu |
 | V4 Yayın | 4.0.1.0 - 4.3.0.0 | Yok | Desteklenmiyor - Aracı sürümlerinin süresi 6 Kasım 2019'da doldu |
 | V3 Yayın | 3.1.0.0 - 3.4.0.0 | Yok | Desteklenmiyor - Aracı sürümlerinin süresi 19 Ağustos 2019'da sona erdi |
 | Ga öncesi ajanlar | 1.1.0.0 - 3.0.13.0 | Yok | Desteklenmiyor - Aracı sürümleri1 Ekim 2018 tarihinde sona erdi |

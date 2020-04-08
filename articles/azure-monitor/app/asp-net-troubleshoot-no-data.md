@@ -3,12 +3,12 @@ title: Veri bulunmama sorunlarını giderme - .NET için Application Insights
 description: Azure Application Insights'ta veri görmüyor musunuz? Burayı dene.
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 2627fde55f4177798d04aab02db169f3117d32dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665910"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802595"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Veri sorunu giderme - .NET/.NET Core için Uygulama Öngörüleri
 
@@ -241,12 +241,16 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 Bu parametreleri gerektiği gibi değiştirebilirsiniz:
 - **MaxCollectSec**. Bu parametreyi, PerfView'in süresiz çalışmasını ve sunucunuzun performansını etkilemesini önlemek için ayarlayın.
 - **Yalnızca Sağlayıcılar**. Bu parametreyi yalnızca SDK'dan günlükleri toplamak için ayarlayın. Bu listeyi özel araştırmalarınıza göre özelleştirebilirsiniz. 
-- **NoGui.** Gui olmadan günlükleri toplamak için bu parametreyi ayarlayın.
+- **NoGui.** GUI olmadan günlükleri toplamak için bu parametreyi ayarlayın.
 
 
 Daha fazla bilgi için,
 - [PerfView ile performans izlemelerini kaydetme.](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)
 - [Uygulama Öngörüleri Etkinlik Kaynakları](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+
+## <a name="how-to-remove-application-insights"></a>Uygulama Öngörüleri nasıl kaldırılır?
+
+Visual Studio'daki Uygulama Öngörülerini kaldırma [makalesinde](../../azure-monitor/app/remove-application-insights.md)belirtilen adımları izleyerek nasıl kaldırılacağını öğrenin.
 
 ## <a name="still-not-working"></a>Hala çalışmıyor ...
 * [Uygulama Öngörüleri forumu](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)

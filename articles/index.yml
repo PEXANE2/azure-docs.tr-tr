@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: 1dd9d27cf21cd28b34232e1e9527e76a8d4a4c4c
-  ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+  ms.openlocfilehash: 5d155f17c5b8d2d4c2cac5c2a4e788fd5dca78eb
+  ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 04/06/2020
-  ms.locfileid: "80756868"
+  ms.lasthandoff: 04/07/2020
+  ms.locfileid: "80810512"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -1271,7 +1271,7 @@ tools:
     url: terraform/index.yml
   - title: Ansible
     imageSrc: ./media/index/ansible.svg
-    url: ansible/index.yml
+    url: https://docs.microsoft.com/azure/developer/ansible
 additionalContent:
   sections:
   - title: Bağımsız bulutlar

@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmetinde (AKS) çıkış trafiği için statik IP adresi
+title: Çıkış trafiği için statik IP'yi kullanma
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) kümesinde çıkış trafiği için statik bir genel IP adresi oluşturma ve kullanma
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 5850f8dfc08ed80dfe5e5e13f49808c3fd9338c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 08a9682434605fffde73c835e7a9e9d6971d7ff0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595765"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803391"
 ---
 # <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) çıkış trafiği için statik bir genel IP adresi kullanın
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0de94cdce1d7f0e9da9d2844b300956ad6f6970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 041fb8d881307b52fb170a11618f930debc522a4
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80330832"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803169"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de Beni Oturum Aç (KMSI) etkinleştirin
 
@@ -54,7 +54,7 @@ KMSI'yi etkinleştirmek için `DataUri` içerik tanım öğesini [sayfa tanımla
 
 ## <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Meta verileri kendi kendini öne süren teknik profile ekleme
 
-KMSI onay kutusunu kaydolma ve kaydolma sayfasına eklemek `setting.enableRememberMe` için meta verileri yanlış olarak ayarlayın. Uzantı dosyasındaki SelfAsserted-LocalAccountSignin-Email teknik profillerini geçersiz kılın.
+KMSI onay kutusunu kaydolma ve kaydolma sayfasına eklemek `setting.enableRememberMe` için meta verileri doğru olarak ayarlayın. Uzantı dosyasındaki SelfAsserted-LocalAccountSignin-Email teknik profillerini geçersiz kılın.
 
 1. İddia Sağlayıcıları öğesini bulun. Öğe yoksa, ekleyin.
 1. Aşağıdaki talep sağlayıcıyı Talep Sağlayıcıları öğesine ekleyin:

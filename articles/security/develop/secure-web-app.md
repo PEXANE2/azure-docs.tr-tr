@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 75890efebc42b74c56fb95ed1803152b516588b9
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385223"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811243"
 ---
 # <a name="develop-a-secure-web-app"></a>Güvenli web uygulaması geliştirme
 
@@ -95,7 +95,7 @@ Azure'da uygulamaları dağıtmanın birçok yolu vardır:
 - Azure Resource Manager şablonları
 - PowerShell
 - Azure CLI
-- Azure portalında
+- Azure portal
 - Azure DevOps
 
 Bu uygulama kullanılır:
@@ -104,11 +104,11 @@ Bu uygulama kullanılır:
 - Dağıtım için [Azure CLI.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Konteyner kayıt defteri olarak [Docker Hub.](https://hub.docker.com/)
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 ### <a name="network"></a>Ağ
 
-Örnek uygulama, ağa giren ve çıkan akıgeçiş verileri için uçtan uca SSL şifrelemesi kullanır. Ağ geçidi, kendi imzalı bir sertifikayla yapılandırılır.
+Örnek uygulama, ağa giren ve çıkan akıta geçen veriler için uçtan uca TLS/SSL şifrelemesi kullanır. Ağ geçidi, kendi imzalı bir sertifikayla yapılandırılır.
 > [!IMPORTANT]
 > Bu gösteride kendi imzalı bir sertifika kullanılır. Üretim ortamında, doğrulanmış bir Sertifika Yetkilisi'nden (CA) sertifika almanız gerekir.
 
@@ -363,7 +363,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 ```
 
-PostgreSQL için SSL ve Sertifika Yetkilisi (CA) doğrulaması nasıl ayarlandığı hakkında daha fazla bilgi için, [PostgreSQL için Azure Veritabanı'nda SSL bağlantısını yapılandırın.](/azure/postgresql/concepts-ssl-connection-security)
+PostgreSQL için TLS ve Sertifika Yetkilisi (CA) doğrulaması nasıl ayarlandığı hakkında daha fazla bilgi için, [PostgreSQL için Azure Veritabanı'nda TLS bağlantısını yapılandırma ya](/azure/postgresql/concepts-ssl-connection-security)da yapılandırma bilgisine bakın.
 
 Bir kök sertifikası kapsayıcıya dahildir. Sertifikayı almak için atılan adımlar şunlardır:
 
@@ -375,7 +375,7 @@ Bir kök sertifikası kapsayıcıya dahildir. Sertifikayı almak için atılan a
    openssl x509 -inform DER -in BaltimoreCyberTrustRoot.crt -text -out root.crt
    ```
 
-PostgreSQL için SSL güvenliğini yapılandırmak için nasıl daha fazla bilgi için burada [SSL Bağlantı Güvenliği'ni yapılandırın.](/azure/postgresql/concepts-ssl-connection-security)
+PostgreSQL için TLS güvenliğinin nasıl yapılandırılabildiğini buradan okuyabilirsiniz [TLS Bağlantı Güvenliğini Yapılandırın.](/azure/postgresql/concepts-ssl-connection-security)
 
 #### <a name="deploy-azure-web-apps-on-linux"></a>Azure Web Uygulamalarını Linux'ta dağıtma
 

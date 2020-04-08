@@ -3,12 +3,12 @@ title: Veri kaynaklarından alma - QnA Maker
 description: QnA Maker bilgi tabanı, her QnA çiftiyle ilişkili bir dizi soru-cevap (QnA) kümesi ve isteğe bağlı meta verilerden oluşur.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: e7772b2c76dfb92ced4d2c0d4b8dae97a59d1b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f648e15be803159dadb3f8bd047b2f46885eec91
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79457830"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804291"
 ---
 # <a name="importing-from-data-sources"></a>Veri kaynaklarından içeri aktarma
 
@@ -56,7 +56,7 @@ Bilgi tabanının içe aktarılışı, varolan bilgi tabanının içeriğinin ye
 
 ## <a name="export-as-example"></a>Örnek olarak dışa aktarma
 
-`.tsv` QnA setinizi dosyada nasıl temsil edeceğinden emin değilseniz:
+`.tsv` QnA çiftinizi dosyada nasıl temsil edeceğinden emin değilseniz:
 * [GitHub'dan bu indirilebilir örneği](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Structured-multi-turn-format.xlsx?raw=true) kullanma
 * Veya QnA Maker portalında seti oluşturun, kaydedin ve ardından seti nasıl temsil edilecin bir örneği için bilgi tabanını dışa aktarın.
 

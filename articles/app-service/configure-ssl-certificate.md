@@ -1,19 +1,19 @@
 ---
-title: SSL sertifikaları ekleme ve yönetme
+title: TLS/SSL sertifikaları ekleme ve yönetme
 description: Ücretsiz sertifika oluşturun, Uygulama Hizmeti sertifikası alın, Key Vault sertifikası alın veya Azure Uygulama Hizmeti'nde bir Uygulama Hizmeti sertifikası satın alın.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 120caf459a7a8ca4e60d5e447a1e4130c0bce389
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239766"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810598"
 ---
-# <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service'de SSL sertifikası ekleme
+# <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure Uygulama Hizmetinde TLS/SSL sertifikası ekleme
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, Özel bir sertifikaveya ortak sertifikanın App Service'e nasıl oluşturulabileceğinizi, yükleyip aktarılabildiğinizi veya içe aktarabileceğinizi gösterir. 
 
@@ -47,7 +47,7 @@ Bu nasıl yapılacağını takip etmek için:
 * En az 2048 bit uzunluğunda özel anahtar içermesi
 * Sertifika zincirindeki tüm ara sertifikaları içermesi
 
-Özel bir etki alanını SSL bağlamada güvence altına almak için, sertifikanın ek gereksinimleri vardır:
+TLS bağlamada özel bir etki alanını güvence altına almak için sertifikanın ek gereksinimleri vardır:
 
 * Sunucu kimlik doğrulaması için [Genişletilmiş Anahtar Kullanımı](https://en.wikipedia.org/w/index.php?title=X.509&section=4#Extensions_informing_a_specific_usage_of_a_certificate) içerir (OID = 1.3.6.1.5.5.7.3.1)
 * Güvenilir bir sertifika yetkilisi tarafından imzalanması
@@ -59,7 +59,7 @@ Bu nasıl yapılacağını takip etmek için:
 
 ## <a name="create-a-free-certificate-preview"></a>Ücretsiz sertifika oluşturma (Önizleme)
 
-Ücretsiz Uygulama Hizmeti Yönetilen Sertifikası, Özel DNS adınızı App Service'te güvence altına almak için anahtar teslim bir çözümdür. App Service tarafından yönetilen ve otomatik olarak yenilenen tamamen işlevsel bir SSL sertifikasıdır. Ücretsiz sertifika aşağıdaki sınırlamalarla birlikte gelir:
+Ücretsiz Uygulama Hizmeti Yönetilen Sertifikası, Özel DNS adınızı App Service'te güvence altına almak için anahtar teslim bir çözümdür. App Service tarafından yönetilen ve otomatik olarak yenilenen tamamen işlevsel bir TLS/SSL sertifikasıdır. Ücretsiz sertifika aşağıdaki sınırlamalarla birlikte gelir:
 
 - Joker karakter sertifikalarını desteklemez.
 - Çıplak etki alanlarını desteklemez.
@@ -237,7 +237,7 @@ Birleştirilmiş sertifika için _mergedcertificate.crt_ adlı bir dosya oluştu
 
 ### <a name="export-certificate-to-pfx"></a>Sertifikayı PFX dosyasına aktarma
 
-Birleştirilmiş SSL sertifikanızı sertifika isteğinizi oluşturmak için kullanılan özel anahtarla dışarı aktarın.
+Birleştirilmiş TLS/SSL sertifikanızı, sertifika isteğinizin oluşturulduğu özel anahtarla dışa aktarın.
 
 Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dosyası oluşturduğunuz anlamına gelir. Sertifikanızı PFX dosyasına aktarmak için aşağıdaki komutu çalıştırın. Yer tutucuları _ &lt;özel anahtar dosyası>_ ve _ &lt;birleştirilmiş sertifika-dosya>_ özel anahtarınızın ve birleştirilmiş sertifika dosyanızın yollarıyla değiştirin.
 
@@ -245,7 +245,7 @@ Sertifika isteğinizi OpenSSL kullanarak oluşturduysanız bir özel anahtar dos
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>  
 ```
 
-Sorulduğunda bir dışarı aktarma parolası tanımlayın. Bu parolayı daha sonra SSL sertifikanızı App Service’e yüklerken kullanacaksınız.
+Sorulduğunda bir dışarı aktarma parolası tanımlayın. TLS/SSL sertifikanızı daha sonra App Service'e yüklerken bu parolayı kullanırsınız.
 
 Sertifika isteğinizi oluşturmak için IIS veya _Certreq.exe_ kullandıysanız, sertifikayı yerel makinenize yükleyin ve sonra [sertifikayı PFX’e aktarın](https://technet.microsoft.com/library/cc754329(v=ws.11).aspx).
 
@@ -363,16 +363,16 @@ Artık Uygulama Hizmeti sertifikasını silebilirsiniz. Sol gezintiden **Genel B
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [SSL bağlama ile özel bir DNS adını güvenli hale](configure-ssl-bindings.md)
+* [Azure Uygulama Hizmetinde TLS/SSL bağlama ile özel bir DNS adı güvenliğini sağlama](configure-ssl-bindings.md)
 * [HTTPS zorlama](configure-ssl-bindings.md#enforce-https)
 * [TLS 1.1/1.2 zorlama](configure-ssl-bindings.md#enforce-tls-versions)
-* [Uygulama kodunuzda Bir SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
+* [Azure Uygulama Hizmeti'nde kodunuzda TLS/SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
 * [SSS : Uygulama Hizmet Sertifikaları](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

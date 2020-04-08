@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/18/2020
-ms.openlocfilehash: e313048986beca1991e38ce2e65ea12f954170d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/07/2020
+ms.openlocfilehash: 3c1369e813ba6518f6cd4b27082020ae36a24c82
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598281"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811212"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
-HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işlerini çalıştırmak için kullanabileceğiniz [Apache Zeppelin](https://zeppelin.apache.org/) dizüstü bilgisayarları içerir. Bu makalede, Bir HDInsight kümesinde Zeppelin not defterini nasıl kullanacağınızı öğreneceksiniz.
+HDInsight Spark kümeleri [arasında Apache Zeppelin](https://zeppelin.apache.org/) dizüstü bilgisayarlar yer almaktadır. [Apache Spark](https://spark.apache.org/) işlerini çalıştırmak için not defterlerini kullanın. Bu makalede, Bir HDInsight kümesinde Zeppelin not defterini nasıl kullanacağınızı öğreneceksiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
-* Kümeleriniz birincil depolama için URI düzeni. Bu, `wasb://` Azure Blob Depolama, `abfs://` Azure Veri Gölü `adl://` Depolama Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Blob Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`.  Daha fazla bilgi için bkz. Azure [Depolama'da güvenli aktarım talep edin.](../../storage/common/storage-require-secure-transfer.md)
+* Kümeleriniz birincil depolama için URI düzeni. Bu şema `wasb://` Azure Blob `abfs://` Depolama, Azure Veri Gölü `adl://` Depolama Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Blob Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`.  Daha fazla bilgi için bkz. Azure [Depolama'da güvenli aktarım talep edin.](../../storage/common/storage-require-secure-transfer.md)
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Bir Apache Zeppelin dizüstü bilgisayar başlatın
 
@@ -71,7 +71,7 @@ HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işlerini �
     hvac.registerTempTable("hvac")
     ```
 
-    **SHIFT + ENTER** tuşuna basın veya paragrafın snippet'i çalıştırması için **Oynat** düğmesini seçin. Paragrafın sağ köşesindeki durum READY, BEKLEYEN, TAMAMLANANA doğru ilerlemelidir. Çıktı aynı paragrafın alt kısmında gösterir. Ekran görüntüsü aşağıdaki gibi görünür:
+    **SHIFT + ENTER** tuşuna basın veya paragrafın snippet'i çalıştırması için **Oynat** düğmesini seçin. Paragrafın sağ köşesindeki durum READY, BEKLEYEN, TAMAMLANANA doğru ilerlemelidir. Çıktı aynı paragrafın alt kısmında gösterir. Ekran görüntüsü aşağıdaki resme benzer:
 
     ![Ham verilerden geçici tablo oluşturma](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "Ham verilerden geçici tablo oluşturma")
 
@@ -80,7 +80,7 @@ HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işlerini �
     > [!NOTE]  
     > Zeppelin dizüstü bilgisayarlarında tüm HDInsight sürümlerinde %spark2 tercümanı desteklenmez ve %sh tercümanı HDInsight 4.0'dan itibaren desteklenmez.
 
-5. Artık Spark SQL deyimlerini `hvac` tabloda çalıştırabilirsiniz. Aşağıdaki sorguyu yeni bir paragrafa yapıştırın. Sorgu, bina kimliğini ve belirli bir tarihteki her bina için hedef ve gerçek sıcaklıklar arasındaki farkı alır. **SHIFT + ENTER**tuşuna basın.
+5. Artık Spark SQL deyimlerini `hvac` tabloda çalıştırabilirsiniz. Aşağıdaki sorguyu yeni bir paragrafa yapıştırın. Sorgu bina kimliğini alır. Ayrıca belirli bir tarihte her bina için hedef ve gerçek sıcaklıklar arasındaki fark. **SHIFT + ENTER**tuşuna basın.
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işlerini �
 
     Başlangıçtaki **%sql** deyimi not defterine Livy Scala yorumlayıcısını kullanmasını söyler.
 
-6. Ekranı değiştirmek için **Çubuk Grafik** simgesini seçin.  **Ayarlar**, **Çubuk Grafik'i**seçtikten sonra görünen ayarlar, **Tuşlar**ve **Değerler'i**seçmenize olanak tanır.  Aşağıdaki ekran görüntüsü çıktıyı gösterir.
+6. Ekranı değiştirmek için **Çubuk Grafik** simgesini seçin.  **ayarlar**, **Çubuk Grafik'i**seçtikten sonra görünür , **Tuşlar**ve **Değerler'i**seçmenize olanak tanır.  Aşağıdaki ekran görüntüsü çıktıyı gösterir.
 
     ![Dizüstü bilgisayarı kullanarak bir Spark SQL deyimi çalıştırma1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Dizüstü bilgisayarı kullanarak bir Spark SQL deyimi çalıştırma1")
 
@@ -113,7 +113,7 @@ HDInsight Spark kümeleri, [Apache Spark](https://spark.apache.org/) işlerini �
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Dizüstü bilgisayarla harici paketleri nasıl kullanırım?
 
-HdInsight'taki Apache Spark kümesindeki Zeppelin dizüstü bilgisayarını, kümede kullanıma hazır olmayan harici, topluluk tarafından katkıda bulunulan paketleri kullanmak üzere yapılandırabilirsiniz. Kullanılabilir paketlerin tam listesi için [Maven deposunda](https://search.maven.org/) arama yapabilirsiniz. Ayrıca diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, Topluluk tarafından katkıda bulunulan paketlerin tam listesi [Spark Paketleri'nde](https://spark-packages.org/)mevcuttur.
+HDInsight'taki Apache Spark kümesindeki Zeppelin dizüstü bilgisayar, kümede yer almayan harici, topluluk tarafından katkıda bulunulan paketleri kullanabilir. Kullanılabilir paketlerin tam listesi için [Maven deposunda](https://search.maven.org/) arama yapın. Ayrıca diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, Topluluk tarafından katkıda bulunulan paketlerin tam listesi [Spark Paketleri'nde](https://spark-packages.org/)mevcuttur.
 
 Bu makalede, Jupyter dizüstü bilgisayar ile [spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketinin nasıl kullanılacağını göreceksiniz.
 
@@ -149,12 +149,13 @@ Zeppelin dizüstü bilgisayarlar küme başlıkları kaydedilir. Bu nedenle, kü
 
 ![Not defterini indirin](./media/apache-spark-zeppelin-notebook/zeppelin-download-notebook.png "Not defterini indirin")
 
-Bu, not defterini indirme konumunuzdaki JSON dosyası olarak kaydeder.
+Bu eylem, not defterini indirme konumunuzdaki JSON dosyası olarak kaydeder.
 
-## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Kurumsal Güvenlik Paketi (ESP) Kümelerinde Zeplin Tercümanlarına Erişimi Yapılandırmak için Shiro'yu kullanın
-Yukarıda belirtildiği gibi, `%sh` tercüman HDInsight 4.0'dan itibaren desteklenmez. Ayrıca, `%sh` çevirmen kabuk komutlarını kullanarak erişim tuşları gibi olası güvenlik sorunlarını ortaya çıkardığından, HDInsight 3.6 ESP kümelerinden de kaldırılmıştır. Bu, `%sh` **yeni not oluştur'u** tıklattığınızda veya varsayılan olarak Yorumlayıcı UI'de yorumlayıcının kullanılamadığı anlamına gelir. 
+## <a name="use-shiro-to-configure-access-to-zeppelin-interpreters-in-enterprise-security-package-esp-clusters"></a>Kurumsal `Shiro` Güvenlik Paketi (ESP) Kümelerinde Zeplin Tercümanlarına Erişimi Yapılandırmak Için Kullanın
 
-Ayrıcalıklı etki alanı kullanıcıları, Yorumlayıcı Kullanıcı UI'ye erişimi denetlemek için dosyayı `Shiro.ini` kullanabilir. Böylece, yalnızca bu kullanıcılar `%sh` yeni yorumlayıcılar oluşturabilir `%sh` ve her yeni yorumlayıcı için izinler ayarlayabilir. Dosyayı `shiro.ini` kullanarak erişimi denetlemek için aşağıdaki adımları kullanın:
+Yukarıda belirtildiği gibi, `%sh` tercüman HDInsight 4.0'dan itibaren desteklenmez. Ayrıca, `%sh` çevirmen kabuk komutlarını kullanarak erişim tuşları gibi olası güvenlik sorunlarını ortaya çıkardığından, HDInsight 3.6 ESP kümelerinden de kaldırılmıştır. Bu, `%sh` **yeni not oluştur'u** tıklattığınızda veya varsayılan olarak Yorumlayıcı UI'de yorumlayıcının kullanılamadığı anlamına gelir.
+
+Ayrıcalıklı etki alanı `Shiro.ini` kullanıcıları, Yorumlayıcı Kullanıcı UI'ye erişimi denetlemek için dosyayı kullanabilir. Yalnızca bu kullanıcılar `%sh` yeni yorumlayıcılar oluşturabilir ve `%sh` her yeni yorumlayıcı için izinler ayarlayabilir. Dosyayı `shiro.ini` kullanarak erişimi denetlemek için aşağıdaki adımları kullanın:
 
 1. Varolan bir etki alanı grubu adını kullanarak yeni bir rol tanımlayın. Aşağıdaki örnekte, `adminGroupName` AAD ayrıcalıklı kullanıcılar grubudur. Grup adında özel karakterler veya beyaz boşluklar kullanmayın. Karakterler bu `=` rol için izinverdikten sonra. `*`grubun tam izinleri olduğu anlamına gelir.
 
@@ -163,7 +164,7 @@ Ayrıcalıklı etki alanı kullanıcıları, Yorumlayıcı Kullanıcı UI'ye eri
     adminGroupName = *
     ```
 
-2. Zeppelin tercümanlarına erişmek için yeni rolü ekleyin. Aşağıdaki örnekte, tüm `adminGroupName` kullanıcılara Zeplin tercümanlarına erişim izni verilir ve yeni tercümanlar oluşturabilirsiniz. Virgülle ayrılmış parantezler `roles[]`arasına birden çok rol koyabilirsiniz. Daha sonra gerekli izinlere sahip kullanıcılar Zeppelin tercümanlarına erişebilirler.
+2. Zeppelin tercümanlarına erişmek için yeni rolü ekleyin. Aşağıdaki örnekte, tüm `adminGroupName` kullanıcılara Zeplin tercümanlarına erişim izni verilir ve yeni tercümanlar oluşturabilir. Virgülle ayrılmış parantezler `roles[]`arasına birden çok rol koyabilirsiniz. Daha sonra gerekli izinlere sahip kullanıcılar Zeppelin tercümanlarına erişebilirler.
 
     ```
     [urls]
@@ -172,9 +173,9 @@ Ayrıcalıklı etki alanı kullanıcıları, Yorumlayıcı Kullanıcı UI'ye eri
 
 ## <a name="livy-session-management"></a>Livy oturum yönetimi
 
-Zeppelin not defterinizdeki ilk kod paragrafını çalıştırdığınızda, HDInsight Spark kümenizde yeni bir Livy oturumu oluşturulur. Bu oturum, daha sonra oluşturduğunuz tüm Zeppelin dizüstü bilgisayarlarda paylaşılır. Bazı nedenlerden dolayı Livy oturumu öldürülürse (küme yeniden başlatma, vb.), Zeppelin not defterinden işleri çalıştıramazsınız.
+Zeppelin defterinizdeki ilk kod paragrafı kümenizde yeni bir Livy oturumu oluşturur. Bu oturum, daha sonra oluşturduğunuz tüm Zeppelin dizüstü bilgisayarlarda paylaşılır. Eğer Livy oturumu herhangi bir sebepten dolayı öldürülürse, işler Zeppelin defterinden çalışmaz.
 
-Böyle bir durumda, bir Zeppelin dizüstü bilgisayardan işleri çalıştırmaya başlamadan önce aşağıdaki adımları gerçekleştirmeniz gerekir.  
+Böyle bir durumda, bir Zeppelin dizüstü bilgisayardan işleri çalıştırmaya başlamadan önce aşağıdaki adımları yapmanız gerekir.  
 
 1. Zeppelin defterinden Livy tercümanını yeniden başlatın. Bunu yapmak için, sağ üst köşeden oturum açmış kullanıcı adını seçerek tercüman ayarlarını açın ve ardından **Yorumlayıcı'yı**seçin.
 
@@ -184,7 +185,7 @@ Böyle bir durumda, bir Zeppelin dizüstü bilgisayardan işleri çalıştırmay
 
     ![Livy tercümanını yeniden başlatın](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin tercümanını yeniden başlatın")
 
-3. Varolan bir Zeppelin not defterinden bir kod hücresi çalıştırın. Bu, HDInsight kümesinde yeni bir Livy oturumu oluşturur.
+3. Varolan bir Zeppelin not defterinden bir kod hücresi çalıştırın. Bu kod, HDInsight kümesinde yeni bir Livy oturumu oluşturur.
 
 ## <a name="general-information"></a>Genel bilgiler
 
@@ -206,7 +207,7 @@ Bir komut satırından hizmeti doğrulamak için, SSH baş düğümü. Komutu ku
 |---|---|
 |zeplin-sunucu|/usr/hdp/current/zeppelin-server/|
 |Sunucu Günlükleri|/var/log/zeppelin|
-|Yapılandırma Tercümanı, Shiro, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf veya /etc/zeppelin/conf|
+|Yapılandırma Tercümanı, `Shiro`, site.xml, log4j|/usr/hdp/current/zeppelin-server/conf veya /etc/zeppelin/conf|
 |PID dizini|/var/run/zeppelin|
 
 ### <a name="enable-debug-logging"></a>Hata ayıklama günlüğe kaydetmeyi etkinleştirme
@@ -227,7 +228,7 @@ Bir komut satırından hizmeti doğrulamak için, SSH baş düğümü. Komutu ku
 
 ### <a name="scenarios"></a>Senaryolar
 
-* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi yapın](apache-spark-use-bi-tools.md)
+* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi](apache-spark-use-bi-tools.md)
 * [Machine Learning ile Apache Spark: HVAC verilerini kullanarak bina sıcaklığını analiz etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-ipython-notebook-machine-learning.md)
 * [Machine Learning ile Apache Spark: Gıda denetimi sonuçlarını tahmin etmek için HDInsight'ta Kıvılcım'ı kullanın](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight'ta Apache Spark kullanarak web sitesi günlük analizi](apache-spark-custom-library-website-log-analysis.md)

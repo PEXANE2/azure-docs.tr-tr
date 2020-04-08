@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
-ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63cf864a3f3b92728ad613ac45542bdbce2c9858
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386179"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811348"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Bulut hizmeti oluşturma ve dağıtma
 Azure portalı, bir bulut hizmeti oluşturmanız ve dağıtmanız için iki yol sağlar: *Hızlı Oluşturma* ve *Özel Oluşturma.*
@@ -42,7 +42,7 @@ Bir bulut hizmeti dağıtabilesiniz, uygulama kodunuzdan bulut hizmeti paketini 
 
 Üç bulut hizmeti özelliği, bir hizmet paketini dışa aktarmadan önce özel yapılandırmalar gerektirir:
 
-* Veri şifrelemesi için Güvenli Soket katmanı (SSL) kullanan bir bulut hizmeti dağıtmak istiyorsanız, uygulamanızı SSL için [yapılandırın.](cloud-services-configure-ssl-certificate-portal.md#modify)
+* Veri şifrelemesi için daha önce Güvenli Soketkatmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliği (TLS) kullanan bir bulut hizmeti dağıtmak istiyorsanız, UYGULAMANIZI TLS için [yapılandırın.](cloud-services-configure-ssl-certificate-portal.md#modify)
 * Uzak Masaüstü bağlantılarını rol örneklerine yapılandırmak istiyorsanız, Uzak Masaüstü için [rolleri yapılandırın.](cloud-services-role-enable-remote-desktop-new-portal.md)
 * Bulut hizmetiniz için ayrıntılı izlemeyi yapılandırmak istiyorsanız, bulut hizmeti için Azure Tanılama'yı etkinleştirin. *Minimum izleme* (varsayılan izleme düzeyi), rol örnekleri (sanal makineler) için ana bilgisayar işletim sistemlerinden toplanan performans sayaçlarını kullanır. *Verbose izleme,* uygulama işleme sırasında ortaya çıkan sorunların daha yakın analizini sağlamak için rol örnekleri içindeki performans verilerine dayalı ek ölçümler toplar. Azure Tanılama'yı nasıl etkinleştireceklerini öğrenmek için [bkz.](cloud-services-dotnet-diagnostics.md)
 
@@ -70,7 +70,7 @@ Web rolleri veya çalışan rollerinin dağıtımıyla bir bulut hizmeti oluştu
 ## <a name="upload-a-certificate"></a>Sertifika yükleme
 Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa,](cloud-services-configure-ssl-certificate-portal.md#modify)sertifikayı şimdi yükleyebilirsiniz.
 
-1. **Sertifikalar'ı**seçin ve **Sertifika Ekle** bölmesine, SSL sertifikası .pfx dosyasını seçin ve ardından sertifika için **Parola'yı** girin,
+1. **Sertifikalar'ı**seçin ve **Sertifika Ekle** bölmesine TLS/SSL sertifikası .pfx dosyasını seçin ve ardından sertifika için **Parola'yı** girin,
 2. **Sertifika Ekle'yi**tıklatın ve ardından **Sertifika Ekle** bölmesine **Tamam'ı** tıklatın.
 3. **Bulut Hizmeti** bölmesine **Oluştur'u** tıklatın. Dağıtım **Hazır** durumuna ulaştığında, sonraki adımlara geçebilirsiniz.
 
@@ -90,7 +90,7 @@ Dağıtım paketiniz [sertifikaları kullanacak şekilde yapılandırıldıysa,]
 * [Bulut hizmetinizin genel yapılandırması.](cloud-services-how-to-configure-portal.md)
 * Özel bir [etki alanı adı](cloud-services-custom-domain-name-portal.md)yapılandırın.
 * [Bulut hizmetinizi yönetin.](cloud-services-how-to-manage-portal.md)
-* [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma .
+* [TLS/SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırın.
 
 
 

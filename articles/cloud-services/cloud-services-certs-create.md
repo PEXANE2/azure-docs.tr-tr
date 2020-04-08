@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248144"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811467"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
 Sertifikalar Azure'da bulut hizmetleri[(hizmet sertifikaları)](#what-are-service-certificates)ve yönetim API'si[(yönetim sertifikaları)](#what-are-management-certificates)ile kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türüne de genel bir genel bakış, bunları nasıl [oluşturulup](#create) Azure'a dağıtılayabilmek sağlar.
@@ -55,7 +55,7 @@ Bu ayarlara uydukları sürece kendi imzalı sertifika oluşturmak için kullan�
 * Anahtar değişimi (.pfx dosyası) için oluşturulmuştur.
 * Konu adı, bulut hizmetine erişmek için kullanılan etki alanıyla eşleşmelidir.
 
-    > cloudapp.net (veya Azure ile ilgili herhangi bir alan adı için) bir SSL sertifikası alamazsınız; sertifikanın özne adı, başvurunuza erişmek için kullanılan özel alan adı ile eşleşmelidir. Örneğin, **contoso.net,** **contoso.cloudapp.net**değil.
+    > cloudapp.net (veya Azure ile ilgili herhangi bir alan adı için) TLS/SSL sertifikası alamazsınız; sertifikanın özne adı, başvurunuza erişmek için kullanılan özel alan adı ile eşleşmelidir. Örneğin, **contoso.net,** **contoso.cloudapp.net**değil.
 
 * En az 2048 bit şifreleme.
 * **Yalnızca Hizmet Sertifikası**: İstemci tarafındaki sertifika *Kişisel* sertifika deposunda yer almalıdır.

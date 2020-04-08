@@ -1,18 +1,18 @@
 ---
 title: İthalat için desteklenen URL türleri - QnA Maker
-description: QnA kümelerini almak ve oluşturmak için URL türlerinin nasıl kullanıldığını anlayın.
+description: Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: cf2a02f55d7c95ff9b3f0231ea07a783d18b73cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651833"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804325"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Belge alma için desteklenen URL'ler
 
-QnA kümelerini almak ve oluşturmak için URL türlerinin nasıl kullanıldığını anlayın.
+Url türlerinin QnA çiftlerini almak ve oluşturmak için nasıl kullanıldığını anlayın.
 
 ## <a name="faq-urls"></a>SSS URL'leri
 

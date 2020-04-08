@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 843c179826b2064a1be24d3cee84b398987b4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 787640ef08ee91220f42065af155c372247f0136
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274222"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804614"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure kaynak günlüğünü depolama hesabına arşivleme
 Azure Etkinliği günlüğü ve kaynak günlükleri de dahil olmak üzere Azure'daki [platform günlükleri,](platform-logs-overview.md) Azure kaynakları ve bağlı oldukları Azure platformu için ayrıntılı tanılama ve denetleme bilgileri sağlar.  Bu makalede, arşivleme için veri tutmak için bir Azure depolama hesabında platform günlükleri toplama açıklanmaktadır.
@@ -20,6 +20,8 @@ Azure Etkinliği günlüğü ve kaynak günlükleri de dahil olmak üzere Azure'
 ## <a name="prerequisites"></a>Ön koşullar
 Zaten bir Azure depolama hesabınız yoksa [bir Azure depolama hesabı oluşturmanız](../../storage/common/storage-account-create.md) gerekir. Depolama hesabı, ayarı yapılandıran kullanıcının her iki aboneye de uygun RBAC erişimine sahip olması nedeniyle, kaynak gönderme günlükleri ile aynı abonelikte olması gerekmez.
 
+> [!IMPORTANT]
+> Verileri değişmez depolamaalanına göndermek için, Depolama hesabı için değişmez ilkeyi Set'te açıklandığı şekilde ayarlayın [ve Blob depolama için imkansızlık ilkelerini yönetin.](../../storage/blobs/storage-blob-immutability-policies-manage.md) Korumalı ek blobs yazmalarını etkinleştirme de dahil olmak üzere bu makalede tüm adımları izlemeniz gerekir.
 
 > [!IMPORTANT]
 > Azure Veri Gölü Depolama Gen2 hesapları, Azure portalında geçerli bir seçenek olarak listelenmiş olsalar bile, şu anda tanılama ayarları için bir hedef olarak desteklenmemektedir.

@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68cabbd00dd0b738590109cc39d8df82f5b7362d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280761"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811718"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure'da Uygulama Hizmeti planını yönetme
 
@@ -61,7 +61,7 @@ Kaynak planı ve hedef plan _aynı kaynak grubunda ve coğrafi bölgede_olduğu 
 4. Bir plan oluşturursanız, yeni planın fiyatlandırma katmanını seçebilirsiniz. **Fiyatlandırma**Katmanı'nda, değiştirmek için varolan katmanı seçin. 
    
    > [!IMPORTANT]
-   > Bir uygulamayı daha üst katmanlı bir plandan **D1'den** **F1'e**kadar daha düşük katmanlı bir plana taşıyorsanız, uygulama hedef plandaki bazı özellikleri kaybedebilir. Örneğin, uygulamanız SSL sertifikalarını kullanıyorsa, şu hata iletisi görebilirsiniz:
+   > Bir uygulamayı daha üst katmanlı bir plandan **D1'den** **F1'e**kadar daha düşük katmanlı bir plana taşıyorsanız, uygulama hedef plandaki bazı özellikleri kaybedebilir. Örneğin, uygulamanız TLS/SSL sertifikaları kullanıyorsa, şu hata iletisi görebilirsiniz:
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 

@@ -6,12 +6,12 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: d8582dfc796fe3e87b8bdc5be763dddfb5d0176b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b3579d12981e2b0add916a280bac7b4f9392d8ba
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245421"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80803152"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlatma: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -126,13 +126,13 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
 
     Bu gizliye Uygulama Yapılandırma API'si ile erişebilirsiniz. Bir kolon (:) desteklenen tüm platformlarda App Configuration API ile yapılandırma adında çalışır. [Ortama göre Yapılandırma'ya](https://docs.microsoft.com/aspnet/core/fundamentals/configuration)bakın.
 
-1. Yöntemi `CreateWebHostBuilder` arayarak Uygulama Yapılandırması'nı kullanmak için yöntemi güncelleştirin. `config.AddAzureAppConfiguration()`
-    
+1. *Program.cs,* yöntemi `CreateWebHostBuilder` arayarak Uygulama Yapılandırması'nı kullanma yöntemini güncelleştirin. `config.AddAzureAppConfiguration()`
+
     > [!IMPORTANT]
     > `CreateHostBuilder`.NET `CreateWebHostBuilder` Core 3.0'ın yerini alır.  Ortamınıza göre doğru sözdizimini seçin.
 
     #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
-    
+
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -148,7 +148,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     ```
 
     #### <a name="net-core-3x"></a>[.NET Çekirdek 3.x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -188,12 +188,12 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
         services.AddControllersWithViews();
         services.AddFeatureManagement();
     }
-    ```
+
     ---
 
-1. ASP.NET `Configure` Core web uygulaması istek almaya devam ederken özellik bayrak değerlerinin yinelenen bir aralıkta yenilenmesine izin vermek için bir ara yazılım eklemek için yöntemi güncelleştirin.
-    
-    #### <a name="net-core-2x"></a>[.NET Çekirdek 2.x](#tab/core2x)
+1. Update the `Configure` method to add a middleware to allow the feature flag values to be refreshed at a recurring interval while the ASP.NET Core web app continues to receive requests.
+
+    #### [.NET Core 2.x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
@@ -351,7 +351,7 @@ Gizli Dizi Yöneticisi aracı, geliştirme işine yönelik hassas verileri proje
     Tarayıcınız aşağıdaki resme benzer bir sayfa görüntülemelidir.
     ![Quickstart uygulaması yerel başlatmak](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve hızlı başlangıçta oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynakları**seçin ve hızlı başlangıçta oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
 
 1. **Özellik Yöneticisi'ni**seçin ve **Beta** tuşu'nun durumunu **On**olarak değiştirin.
 

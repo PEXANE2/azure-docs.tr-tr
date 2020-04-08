@@ -1,28 +1,28 @@
 ---
-title: SSL bağlama ile özel bir DNS'yi emniyete alma
+title: TLS/SSL bağlama ile özel bir DNS'yi emniyete alma
 description: Sertifika ile tls/SSL bağlama oluşturarak özel etki alanınıza HTTPS erişimini güvence altına ala. HTTPS veya TLS 1.2'yi uygulayarak web sitenizin güvenliğini artırın.
 tags: buy-ssl-certificates
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 263b4e76d334aab82f6bbac9aa268a50f4dd3784
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239710"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811755"
 ---
-# <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service'de SSL bağlamasıyla özel DNS adının güvenliğini sağlama
+# <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Azure Uygulama Hizmetinde TLS/SSL bağlama ile özel bir DNS adı güvenliğini sağlama
 
 Bu makalede, bir sertifika bağlama oluşturarak [App Service uygulamanızda](https://docs.microsoft.com/azure/app-service/) veya [işlev uygulamanızda](https://docs.microsoft.com/azure/azure-functions/) [özel etki alanının](app-service-web-tutorial-custom-domain.md) nasıl güvence altına alınırsınız gösterilmektedir. İşinizi bitirdiğinizde, Özel DNS adınız `https://` için bitiş noktasındaki Uygulama Hizmeti uygulamasına erişebilirsiniz (örneğin,). `https://www.contoso.com` 
 
-![Özel SSL sertifikası ile web uygulaması](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+![Özel TLS/SSL sertifikasına sahip web uygulaması](./media/configure-ssl-bindings/app-with-custom-ssl.png)
 
 [Sertifikaile özel](app-service-web-tutorial-custom-domain.md) bir etki alanı nın güvenliğini sağlamak iki adımdan oluşur:
 
-- [SSL bağlamaları için](configure-ssl-certificate.md#private-certificate-requirements)tüm gereksinimleri karşılayan [App Service'e özel bir sertifika ekleyin.](configure-ssl-certificate.md)
--  İlgili özel etki alanına bir SSL bağlama oluşturun. Bu ikinci adım bu makale kapsamındadır.
+- Tüm [özel sertifika gereksinimlerini](configure-ssl-certificate.md#private-certificate-requirements)karşılayan Uygulama Hizmetine özel sertifika [ekleyin.](configure-ssl-certificate.md)
+-  İlgili özel etki alanına bağlanan bir TLS oluşturun. Bu ikinci adım bu makale kapsamındadır.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -77,17 +77,17 @@ Uygulamanızın seçili özel etki alanı için sertifikası yoksa, iki seçene�
 
 ### <a name="create-binding"></a>Bağlayıcı oluşturma
 
-**TLS/SSL Bağlama** iletişim kutusundaSL bağlamayapılandırmanıza yardımcı olmak için aşağıdaki tabloyu kullanın, ardından **Bağlayıcı ekle'yi**tıklatın.
+**TLS/SSL Bağlama** iletişim kutusunda TLS bağlama yapılandırmanıza yardımcı olmak için aşağıdaki tabloyu kullanın, ardından **Bağlayıcı ekle'yi**tıklatın.
 
 | Ayar | Açıklama |
 |-|-|
-| Özel etki alanı | SSL bağlayıcı eklemek için etki alanı adı. |
+| Özel etki alanı | TLS/SSL bağlayıcısı için alan adı. |
 | Özel Sertifika Parmak İzi | Bağlatılmak için sertifika. |
-| TLS/SSL Tipi | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Birden fazla SNI SSL bağlaması eklenebilir. Bu seçenek, aynı IP adresi üzerinde birden fazla SSL sertifikası ile birden fazla etki alanının güvenliğini sağlamaya olanak tanır. Çoğu modern tarayıcı (Internet Explorer, Chrome, Firefox ve Opera dahil) SNI'yi destekler (daha fazla bilgi için [Sunucu Adı Göstergesi'ne](https://wikipedia.org/wiki/Server_Name_Indication)bakın).</li><li>**IP SSL** - Yalnızca bir IP SSL bağlama eklenebilir. Bu seçenek yalnızca bir SSL sertifikası ile ayrılmış bir genel IP adresinin güvenliğini sağlamaya olanak tanır. Bağlamayı yapılandırıldıktan sonra, [IP SSL için Remap A kaydındaki](#remap-a-record-for-ip-ssl)adımları izleyin.<br/>IP SSL yalnızca Üretim veya İzole katmanlarında desteklenir. </li></ul> |
+| TLS/SSL Tipi | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** - Birden fazla SNI SSL bağlaması eklenebilir. Bu seçenek, aynı IP adresi üzerinde birden çok etki alanını güvenli hale getirmek için birden çok TLS/SSL sertifikasısağlar. Çoğu modern tarayıcı (Internet Explorer, Chrome, Firefox ve Opera dahil) SNI'yi destekler (daha fazla bilgi için [Sunucu Adı Göstergesi'ne](https://wikipedia.org/wiki/Server_Name_Indication)bakın).</li><li>**IP SSL** - Yalnızca bir IP SSL bağlama eklenebilir. Bu seçenek, özel bir genel IP adresini güvence altına almak için yalnızca bir TLS/SSL sertifikası sağlar. Bağlamayı yapılandırıldıktan sonra, [IP SSL için Remap A kaydındaki](#remap-a-record-for-ip-ssl)adımları izleyin.<br/>IP SSL yalnızca Üretim veya İzole katmanlarında desteklenir. </li></ul> |
 
-İşlem tamamlandıktan sonra, özel etki alanının SSL durumu **Güvenli**olarak değiştirilir.
+İşlem tamamlandıktan sonra, özel etki alanının TLS/SSL durumu **Secure**olarak değiştirilir.
 
-![SSL bağlama başarılı](./media/configure-ssl-bindings/secure-domain-finished.png)
+![TLS/SSL bağlama başarılı](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
 > **Özel etki alanlarında** **güvenli** bir durum, sertifikayla güvenli olduğu anlamına gelir, ancak Uygulama Hizmeti sertifikanın kendi imzalanmış veya süresi dolmuş olup olmadığını denetlemez, bu da tarayıcıların hata veya uyarı göstermesine neden olabilir.
@@ -131,7 +131,7 @@ Uygulama sayfanızda, sol navigasyonda **SSL ayarlarını**seçin. Ardından **Y
 
 ![HTTPS zorlama](./media/configure-ssl-bindings/enforce-https.png)
 
-İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örnek:
+İşlem tamamlandığında, uygulamanıza işaret eden HTTP URL'lerinden herhangi birine gidin. Örneğin:
 
 - `http://<app_name>.azurewebsites.net`
 - `http://contoso.com`
@@ -147,9 +147,9 @@ Uygulama sayfanızda, sol navigasyonda **SSL ayarlarını**seçin. Ardından **T
 
 İşlem tamamlandığında, uygulamanız daha düşük TLS sürümleriyle tüm bağlantıları reddeder.
 
-## <a name="handle-ssl-termination"></a>SSL sonlandırma işlemini işleme
+## <a name="handle-tls-termination"></a>TLS sonlandırma işlemini işleme
 
-App Service'te, [SSL sonlandırma](https://wikipedia.org/wiki/TLS_termination_proxy) ağı yük dengeleyicilerinde gerçekleşir, böylece tüm HTTPS istekleri uygulamanıza şifrelenmemiş HTTP istekleri olarak ulaşır. Uygulama mantığınızın kullanıcı isteklerinin şifreli olup olmadığını denetlemesi gerekiyorsa, üstbilgide inceleme. `X-Forwarded-Proto`
+App Service'de [TLS sonlandırma](https://wikipedia.org/wiki/TLS_termination_proxy) ağı yük bakiyelerinde gerçekleşir, böylece tüm HTTPS istekleri uygulamanıza şifrelenmemiş HTTP istekleri olarak ulaşır. Uygulama mantığınızın kullanıcı isteklerinin şifreli olup olmadığını denetlemesi gerekiyorsa, üstbilgide inceleme. `X-Forwarded-Proto`
 
 [Linux Node.js yapılandırma](containers/configure-language-nodejs.md#detect-https-session) kılavuzu gibi dile özgü yapılandırma kılavuzları, uygulama kodunuzda bir HTTPS oturumunu nasıl algıladığınızı gösterir.
 
@@ -157,13 +157,13 @@ App Service'te, [SSL sonlandırma](https://wikipedia.org/wiki/TLS_termination_pr
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom SSL certificate to a web app")] 
+[!code-azurecli[main](../../cli_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.sh?highlight=3-5 "Bind a custom TLS/SSL certificate to a web app")] 
 
 ### <a name="powershell"></a>PowerShell
 
-[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom SSL certificate to a web app")]
+[!code-powershell[main](../../powershell_scripts/app-service/configure-ssl-certificate/configure-ssl-certificate.ps1?highlight=1-3 "Bind a custom TLS/SSL certificate to a web app")]
 
 ## <a name="more-resources"></a>Diğer kaynaklar
 
-* [Uygulama kodunuzda Bir SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
+* [Azure Uygulama Hizmeti'nde kodunuzda TLS/SSL sertifikası kullanma](configure-ssl-certificate-in-code.md)
 * [SSS : Uygulama Hizmet Sertifikaları](https://docs.microsoft.com/azure/app-service/faq-configuration-and-management/)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 741cbc82f2ed3ffffb553b146d981b4e35a273f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726674"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811418"
 ---
 # <a name="azure-customer-data-protection"></a>Azure müşteri veri koruması   
 Microsoft işlemleri ve destek personeli tarafından müşteri verilerine erişim varsayılan olarak reddedilir. Müşteri verilerine erişim verildiğinde, liderlik onayı gereklidir ve erişim dikkatle yönetilir ve günlüğe kaydedilir. Erişim denetimi gereksinimleri aşağıdaki Azure Güvenlik İlkesi tarafından belirlenir:
@@ -45,7 +45,7 @@ Azure, müşterilere hem varsayılan olarak hem de müşteri seçenekleri olarak
 - Müşteri ve bulut.
 - Azure sistemleri ve veri merkezleri arasında dahili olarak.
 
-**Şifreleme**: Depolama ve aktarım sırasındaki verilerin şifrelemesi, verilerin gizliliğini ve bütünlüğünü sağlamak için en iyi uygulama olarak müşteriler tarafından dağıtılabilir. Müşterilerin Azure bulut hizmetlerini, Internet'ten ve hatta Azure tarafından barındırılan VM'leri arasında iletişimi korumak için SSL'yi kullanacak şekilde yapılandırmaları kolaydır.
+**Şifreleme**: Depolama ve aktarım sırasındaki verilerin şifrelemesi, verilerin gizliliğini ve bütünlüğünü sağlamak için en iyi uygulama olarak müşteriler tarafından dağıtılabilir. Müşterilerin Azure bulut hizmetlerini, Internet'ten ve hatta Azure tarafından barındırılan VM'leri arasında iletişimi korumak için TLS kullanacak şekilde yapılandırmaları kolaydır.
 
 **Veri artıklığı**: Microsoft, bir veri merkezine siber saldırı veya fiziksel hasar olduğunda verilerin korunmasını sağlamaya yardımcı olur. Müşteriler şunları tercih edebilir:
 

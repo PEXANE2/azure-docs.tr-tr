@@ -2,13 +2,13 @@
 title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 6100c667c7df0b3e1740777565d260af9fa818a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e012126995136bec15dc360be5e91007b6f69f09
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77657582"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802501"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediği açıklanmaktadır. **Destekler etiketleri** etiketli sütun, kaynak türünün etiket için bir özelliği olup olmadığını gösterir. Maliyet raporunda **Etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmeyeceğini gösterir. Maliyetleri Maliyet Yönetimi maliyet [analizinde,](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) Azure [fatura faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)etiketlere göre görüntüleyebilirsiniz.
@@ -38,6 +38,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.Faturalandırma](#microsoftbilling)
 > - [Microsoft.BingHaritalar](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Önbellek](#microsoftcache)
@@ -55,7 +56,6 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
@@ -83,6 +83,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Özellikler](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomik](#microsoftgenomics)
@@ -99,11 +100,13 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -129,6 +132,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.RemoteApp](#microsoftremoteapp)
@@ -220,9 +224,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | uyarılarıMetaData | Hayır | Hayır |
 > | alertsSummary | Hayır | Hayır |
 > | alertsSummaryList | Hayır | Hayır |
-> | Geribildirim | Hayır | Hayır |
 > | smartDetectorAlertRules | Evet | Evet |
-> | smartDetectorRuntimeOrtamlar | Hayır | Hayır |
 > | smartGroups | Hayır | Hayır |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -331,7 +333,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ----------- |
 > | hibridDataManagers | Evet | Evet |
 > | postgresÖrnekleri | Evet | Evet |
-> | sqlBigDataClusters | Evet | Evet |
 > | sqlInstances | Evet | Evet |
 > | Sqlserverregistrations | Evet | Evet |
 > | sqlServerRegistrations / sqlServers | Hayır | Hayır |
@@ -341,10 +342,10 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
+> | cloudManifestFiles | Hayır | Hayır |
 > | Kayıt | Evet | Evet |
 > | kayıtlar / müşteriAbonelikleri | Hayır | Hayır |
 > | kayıtlar / ürünler | Hayır | Hayır |
-> | doğrulamaTuşları | Hayır | Hayır |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -459,6 +460,17 @@ Kaynak sağlayıcı ad alanına atla:
 > | cordaÜyeler | Evet | Evet |
 > | Watchers | Evet | Evet |
 
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | TokenServices | Evet | Evet |
+> | TokenServices / BlockchainNetworks | Hayır | Hayır |
+> | TokenServices / Gruplar | Hayır | Hayır |
+> | TokenServices / Gruplar / Hesaplar | Hayır | Hayır |
+> | TokenServices / TokenTemplates | Hayır | Hayır |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -528,6 +540,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Profil | Evet | Evet |
 > | profiller / uç noktalar | Evet | Evet |
 > | profiller / uç noktalar / özel etki alanları | Hayır | Hayır |
+> | profiller / uç noktalar / origingroups | Hayır | Hayır |
 > | profiller / uç noktalar / origins | Hayır | Hayır |
 > | validateProbe | Hayır | Hayır |
 
@@ -648,9 +661,12 @@ Kaynak sağlayıcı ad alanına atla:
 > | yakınlıkPlacementGroups | Evet | Evet |
 > | restorePointCollections | Evet | Evet |
 > | restorePointCollections / restorePoints | Hayır | Hayır |
+> | paylaşılanVMExtensions | Evet | Evet |
+> | sharedVMExtensions / sürümleri | Hayır | Hayır |
 > | paylaşılanVMImages | Evet | Evet |
 > | paylaşılanVMImages / sürümleri | Hayır | Hayır |
 > | anlık görüntüler | Evet | Evet |
+> | sshPublicKeys | Evet | Evet |
 > | virtualMachines | Evet | Evet |
 > | virtualMachines / uzantıları | Evet | Evet |
 > | virtualMachines / metricDefinitions | Hayır | Hayır |
@@ -701,6 +717,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
 > | Kayıt | Evet | Evet |
+> | kayıt defterleri / agentPools | Evet | Evet |
 > | kayıt defterleri / oluşturur | Hayır | Hayır |
 > | kayıt defterleri / oluşturur / iptal | Hayır | Hayır |
 > | kayıt defteri / oluşturur / getLogLink | Hayır | Hayır |
@@ -740,13 +757,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | yönetilen Kümeler | Evet | Evet |
 > | openShiftManagedClusters | Evet | Evet |
 
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
-> | ------------- | ----------- | ----------- |
-> | accounts | Evet | Evet |
-
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
@@ -775,7 +785,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Sorgu | Hayır | Hayır |
 > | register | Hayır | Hayır |
 > | Reportconfigs | Hayır | Hayır |
-> | Reports | Hayır | Hayır |
+> | Raporlar | Hayır | Hayır |
 > | Ayarlar | Hayır | Hayır |
 > | showbackKurallar | Hayır | Hayır |
 > | Görünümler | Hayır | Hayır |
@@ -939,6 +949,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | sunucular / virtualNetworkRules | Hayır | Hayır |
 > | sunucular / waitStatistics | Hayır | Hayır |
 > | sunucularv2 | Evet | Evet |
+> | singleServers | Evet | Evet |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1075,13 +1086,22 @@ Kaynak sağlayıcı ad alanına atla:
 > | ad alanları / eventhubs / tüketici grupları | Hayır | Hayır |
 > | ad alanları / networkrulesets | Hayır | Hayır |
 
+## <a name="microsoftfalcon"></a>Microsoft.Falcon
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | Ad alanları | Evet | Evet |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Özellikler
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
+> | özellikSağlayıcılar | Hayır | Hayır |
 > | özellikler | Hayır | Hayır |
 > | Sağlayıcı | Hayır | Hayır |
+> | abonelikÖzellik Kayıtları | Hayır | Hayır |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1216,6 +1236,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | kasalar / olayGridFilters | Hayır | Hayır |
 > | kasalar / sırlar | Hayır | Hayır |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | bağlıKümeler | Evet | Evet |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1227,6 +1254,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | kümeleri / veritabanları / veri bağlantıları | Hayır | Hayır |
 > | kümeleri / veritabanları / eventhubconnections | Hayır | Hayır |
 > | kümeleri / veritabanları / ilkeler atamaları | Hayır | Hayır |
+> | kümeler / veri bağlantıları | Hayır | Hayır |
 > | kümeler / ilkeler atamaları | Hayır | Hayır |
 > | kümeler / paylaşılan kimlikler | Hayır | Hayır |
 
@@ -1268,6 +1296,16 @@ Kaynak sağlayıcı ad alanına atla:
 > | çalışma alanları / hesaplamalar | Hayır | Hayır |
 > | çalışma alanları / eventGridFilters | Hayır | Hayır |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | uygulamaGüncellemeler | Hayır | Hayır |
+> | yapılandırmaAtamaları | Hayır | Hayır |
+> | maintenanceYapılandırmalar | Evet | Evet |
+> | güncelleştirmeler | Hayır | Hayır |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1304,6 +1342,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ----------- |
 > | accounts | Evet | Evet |
 > | hesaplar / eventGridFilters | Hayır | Hayır |
+> | hesaplar / privateAtlases | Evet | Evet |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1320,10 +1359,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | offerTypes / yayıncılar / teklifler / planlar / configs / importImage | Hayır | Hayır |
 > | privategalleryitems | Hayır | Hayır |
 > | privateStoreClient | Hayır | Hayır |
+> | privateMağazalar | Hayır | Hayır |
+> | privateStores / teklifler | Hayır | Hayır |
 > | Ürünler | Hayır | Hayır |
 > | Yayıncı | Hayır | Hayır |
 > | yayıncılar / teklifler | Hayır | Hayır |
 > | yayıncılar / teklifler / değişiklikler | Hayır | Hayır |
+> | register | Hayır | Hayır |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1390,7 +1432,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | objectUnderstandingAccounts | Evet | Evet |
 > | remoteRenderingHesapları | Evet | Evet |
 > | mekansalÇapaLarHesapları | Evet | Evet |
-> | surfaceReconstructionAccounts | Evet | Evet |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1398,6 +1439,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
 > | netAppHesapları | Evet | Hayır |
+> | netAppAccounts / hesapYedekler | Hayır | Hayır |
 > | netAppAccounts / capacityPools | Evet | Hayır |
 > | netAppAccounts / capacityPools / volumes | Evet | Hayır |
 > | netAppAccounts / capacityPools / hacimler / anlık görüntüler | Hayır | Hayır |
@@ -1536,9 +1578,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | çalışma alanları / dataExports | Hayır | Hayır |
 > | çalışma alanları / dataSources | Hayır | Hayır |
 > | çalışma alanları / linkedServices | Hayır | Hayır |
-> | çalışma alanları / privateEndpointConnectionProxies | Hayır | Hayır |
-> | çalışma alanları / privateEndpointConnections | Hayır | Hayır |
-> | çalışma alanları / privateLinkResources | Hayır | Hayır |
+> | çalışma alanları / linkedStorageAccounts | Hayır | Hayır |
 > | çalışma alanları / sorgu | Hayır | Hayır |
 > | çalışma alanları / scopedPrivateLinkProxies | Hayır | Hayır |
 
@@ -1604,6 +1644,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
 > | accounts | Evet | Evet |
+
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | Çalışma Alanları | Evet | Evet |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1726,6 +1773,10 @@ Kaynak sağlayıcı ad alanına atla:
 > | mevzuatUyumStandartları | Hayır | Hayır |
 > | düzenlemeUyumlulukStandartları / regulatoryComplianceControls | Hayır | Hayır |
 > | düzenlemeUyumlulukStandartlar / düzenleyiciUygunlukDenetimler / düzenleyiciUygunlukDeğerlendirmeleri | Hayır | Hayır |
+> | secureScoreControlDefinitions | Hayır | Hayır |
+> | secureScoreControls | Hayır | Hayır |
+> | secureScores | Hayır | Hayır |
+> | secureScores / secureScoreControls | Hayır | Hayır |
 > | securityKişiler | Hayır | Hayır |
 > | securitySolutions | Hayır | Hayır |
 > | securitySolutionsReferenceData | Hayır | Hayır |
@@ -1998,6 +2049,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | yeniden adlandır | Hayır | Hayır |
 > | AbonelikTanımlar | Hayır | Hayır |
 > | Abonelik İşlemleri | Hayır | Hayır |
+> | Abonelik | Hayır | Hayır |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2028,6 +2080,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Satıcı | Hayır | Hayır |
 > | satıcılar / skus | Hayır | Hayır |
 > | satıcılar / vnfs | Hayır | Hayır |
+> | sanalNetworkFunctionSkus | Hayır | Hayır |
 > | vnfs | Evet | Evet |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2055,6 +2108,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | hostingOrtamlar / olayGridFilters | Hayır | Hayır |
 > | hostingOrtamlar / multiRolePools | Hayır | Hayır |
 > | hostingOrtamlar / işçiHavuzları | Hayır | Hayır |
+> | kubeOrtamlar | Evet | Evet |
 > | publishingKullanıcılar | Hayır | Hayır |
 > | Öneriler | Hayır | Hayır |
 > | kaynakSağlıkMetadata | Hayır | Hayır |

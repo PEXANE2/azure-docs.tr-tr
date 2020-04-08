@@ -2,16 +2,16 @@
 title: 'Quickstart: Linux Python uygulaması oluşturun'
 description: İlk Python uygulamanızı App Service'teki bir Linux konteynerine dağıtarak Azure Uygulama Hizmeti'ndeki Linux uygulamalarıyla başlayın.
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 9cc314edf35d6a327522ed49fcc0c7798c7dcf63
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 63daecca710e0e4d7b3326cea59c0c025c24f619
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045661"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811148"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Quickstart: Linux'ta Azure Uygulama Hizmeti'nde Bir Python uygulaması oluşturun
 
@@ -24,7 +24,7 @@ Uygulamaları bir IDE üzerinden dağıtmayı tercih ediyorsanız, [Visual Studi
 - Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 da desteklenir)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 veya üzeri. Sürümünüzü kontrol etmek için `az --version` komutunu çalıştırın.
 
 ## <a name="download-the-sample"></a>Örneği indirme
 
@@ -56,7 +56,7 @@ export FLASK_APP=application.py
 flask run
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 py -3 -m venv env
@@ -98,39 +98,44 @@ az login
 
 Komut, [`az webapp up`](/cli/azure/webapp#az-webapp-up) App Service'de web uygulamasını oluşturur ve kodunuzu dağıtır.
 
-Örnek kodu içeren *python-docs-hello-world* klasöründe aşağıdaki `az webapp up` komutu çalıştırın. Genel `<app-name>` olarak benzersiz bir uygulama adı ile değiştirin *(geçerli karakterler `a-z`, , `0-9`ve `-` *). Ayrıca `<location-name>` **centralus,** **eastasia**, **westeurope**, koreasouth , **brazilsouth**, **centralindia**, ve benzeri gibi bir Azure bölgesi ile değiştirin. **brazilsouth** [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) (Komutu çalıştırarak Azure hesabınız için izin verilebilen bölgelerin listesini alabilirsiniz.)
+Örnek kodu içeren *python-docs-hello-world* klasöründe aşağıdaki `az webapp up` komutu çalıştırın. Genel `<app-name>` olarak benzersiz bir uygulama adı ile değiştirin *(geçerli karakterler `a-z`, , `0-9`ve `-` *).
 
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up --sku F1 -n <app-name>
 ```
 
-Bu komutun tamamen çalışması birkaç dakika sürebilir. Çalıştırıldığında, aşağıdaki örneğe benzer bilgiler görüntüler:
+Bağımsız `--sku F1` değişken, Ücretsiz fiyatlandırma katmanında web uygulamasını oluşturur. Bunun yerine, saatlik maliyete neden olan bir premium katman kullanmak için bu bağımsız değişkeni atlayabilirsiniz.
 
-```output
-The behavior of this command has been altered by the following extension: webapp
+İsteğe bağlı olarak `-l <location-name>` **centralus,** **eastasia**, **westeurope**, koreasouth , **brazilsouth**, **centralindia**, ve benzeri gibi bir Azure bölgesi **koreasouth** `<location_name>` olduğu bağımsız değişkeni ekleyebilirsiniz. [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) Komutu çalıştırarak Azure hesabınız için izin verilebilen bölgelerin listesini alabilirsiniz.
+
+Komutun `az webapp up` tamamen çalışması birkaç dakika sürebilir. Çalışırken, aşağıdaki örneğe benzer bilgileri görüntüler, daha önce sağladığınız ad nerede `<app_name>` olacaktır:
+
+<pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
 Creating app '<app-name>' ....
-Webapp creation complete
-Creating zip with contents of dir /home/username/quickstart/python-docs-hello-world ...
-Preparing to deploy contents to app.
-All done.
+Configuring default logging for the app, if not already enabled
+Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://<app-name>.azurewebsites.net
 {
-  "app_url": "https:/<app-name>.azurewebsites.net",
-  "location": "Central US",
+  "URL": "http://<app-name>.net",
+  "appserviceplan": "appsvc_asp_Linux_centralus",
+  "location": "eastus",
   "name": "<app-name>",
   "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus ",
-  "serverfarm": "appsvc_asp_Linux_centralus",
-  "sku": "BASIC",
-  "src_path": "/home/username/quickstart/python-docs-hello-world ",
-  "version_detected": "-",
-  "version_to_create": "python|3.7"
+  "resourcegroup": "appsvc_rg_Linux_centralus",
+  "runtime_version": "python|3.7",
+  "runtime_version_detected": "-",
+  "sku": "FREE",
+  "src_path": "D:\\Examples\\python-docs-hello-world"
 }
-```
+</pre>
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -146,20 +151,23 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service'de bir Linux
 
 ## <a name="redeploy-updates"></a>Güncelleştirmeleri yeniden dağıtma
 
-Favori kod düzenleyicinizde, *application.py* açın `return` ve aşağıdaki kodla eşleşecek şekilde son satırdaki deyimi değiştirin. İfade, `print` bir sonraki bölümde birlikte çalıştığınız günlük çıktısını oluşturmak için burada yer almaktadır. 
+En sevdiğiniz kod düzenleyicisinde, *application.py* açın ve `hello` işlevi aşağıdaki gibi güncelleyin. Bu değişiklik, `print` bir sonraki bölümde birlikte çalıştığınız günlük çıktısı oluşturmak için bir deyim ekler. 
 
 ```python
-print("Handling request to home page.")
-return "Hello Azure!"
+def hello():
+    print("Handling request to home page.")
+    return "Hello Azure!"
 ```
 
 Değişikliklerinizi kaydedin ve editörden çıkın. 
 
-Uygulamayı aşağıdaki `az webapp up` komutu kullanarak yeniden dağıtın, uygulamayı ilk kez dağıtmak için `<app-name>` kullandığınız `<location-name>` komutu kullanarak, daha önce kullandığınız adların yerini ve aynı adlarını değiştirin. 
+Komutu kullanarak uygulamayı `az webapp up` yeniden dağıtın:
 
 ```azurecli
-az webapp up --sku F1 -n <app-name> -l <location-name>
+az webapp up
 ```
+
+Bu komut, uygulama adı, kaynak grubu ve Uygulama Hizmeti planı da dahil olmak üzere *.azure/config* dosyasında önbelleğe alınmış değerleri kullanır.
 
 Dağıtım tamamlandıktan sonra, değiştirilen iletiyi `http://<app-name>.azurewebsites.net` görüntülemesi gereken sayfayı açık olan tarayıcı penceresine geri geçin ve yenileyin:
 
@@ -172,24 +180,18 @@ Dağıtım tamamlandıktan sonra, değiştirilen iletiyi `http://<app-name>.azur
 
 Uygulamanın içinden oluşturulan konsol günlüklerine ve çalıştığı kapsayıcıya erişebilirsiniz. Günlükler, deyimler `print` kullanılarak oluşturulan çıktıları içerir.
 
-İlk olarak, aşağıdaki komutu bir terminalde çalıştırarak, `<app-name>` uygulamanızın adını `<resource-group-name>` ve kullandığınız `az webapp up` komutun çıktısında gösterilen kaynak grubunun adını ("appsvc_rg_Linux_centralus" gibi değiştirerek konteyner günlüğe kaydetmeyi açın:
+Günlükleri akış için aşağıdaki komutu çalıştırın:
 
 ```azurecli
-az webapp log config --name <app-name> --resource-group <resource-group-name> --docker-container-logging filesystem
-```
-
-Kapsayıcı günlüğe kaydetme açık olduktan sonra, günlük akışını göstermek için aşağıdaki komutu çalıştırın:
-
-```azurecli
-az webapp log tail --name <app-name> --resource-group <resource-group-name>
+az webapp log tail
 ```
 
 Aşağıdaki metne benzer satırlar içermelidir konsol günlükleri oluşturmak için tarayıcıda uygulamayı yenileyin. Çıkışı hemen görmüyorsanız, 30 saniye içinde yeniden deneyin.
 
-```output
-2019-10-23T12:40:03.815574424Z Handling request to home page.
-2019-10-23T12:40:03.815602424Z 172.16.0.1 - - [23/Oct/2019:12:40:03 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.63 Safari/537.36 Edg/78.0.276.19"
-```
+<pre>
+2020-04-03T22:54:04.236405938Z Handling request to home page.
+2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
+</pre>
 
 Ayrıca tarayıcıdan günlük dosyalarını da `https://<app-name>.scm.azurewebsites.net/api/logs/docker`inceleyebilirsiniz.
 
@@ -213,7 +215,7 @@ Uygulama Hizmeti menüsü, uygulamanızı yapılandırmak için farklı sayfalar
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Kaynak grubunun konumunuza bağlı olarak "appsvc_rg_Linux_CentralUS" gibi bir adı vardır. Ücretsiz F1 katmanı dışında bir Uygulama Hizmeti SKU kullanıyorsanız, bu kaynaklar sürekli maliyetlere neden olur.
+Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Kaynak grubunun konumunuza bağlı olarak "appsvc_rg_Linux_CentralUS" gibi bir adı vardır. Ücretsiz F1 katmanı dışında bir Uygulama Hizmeti SKU kullanıyorsanız, bu kaynaklar devam eden maliyetlere tabidir (Bkz. [App Service fiyatlandırması).](https://azure.microsoft.com/pricing/details/app-service/linux/)
 
 Gelecekte bu kaynaklara ihtiyaç duymayı beklemiyorsanız, "appsvc_rg_Linux_centralus" gibi `<resource-group-name>` `az webapp up` komutun çıktısında gösterilen kaynak grubuyla değiştirerek aşağıdaki komutu çalıştırarak kaynak grubunu silin. Komutun tamamlanması bir dakika sürebilir.
 

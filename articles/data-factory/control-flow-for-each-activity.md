@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: b8f95f22553a3b4639b1aba6576ce844116ae20b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679869"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804852"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Her Etkinlik
 ForEach Etkinliği, ardışık ardınızdaki yinelenen bir kontrol akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
@@ -73,7 +73,7 @@ ForEach Etkinliği, ardışık ardınızdaki yinelenen bir kontrol akışını t
 ad | Her biri için etkinliğin adı. | Dize | Evet
 type | **ForEach** olarak ayarlanmalıdır | Dize | Evet
 isSequential | Döngünün sırayla mı yoksa paralel olarak mı yürütülmesi gerektiğini belirtir.  En fazla 20 döngü yinelemesi paralel olarak aynı anda yürütülebilir). Örneğin, 10 farklı kaynağa sahip bir kopyalama etkinliği üzerinde bir ForEach etkinliğini yinelerseniz ve **isSequential** false olarak ayarlanmış veri kümelerini batırınsa, tüm kopyalar aynı anda yürütülür. Varsayılan, False'dur. <br/><br/> "isSequential" False olarak ayarlanmışsa, birden çok yürütülebilir çalıştırmak için doğru bir yapılandırma olduğundan emin olun. Aksi takdirde, bu özellik yazma çakışmaları tahakkuk önlemek için dikkatli kullanılmalıdır. Daha fazla bilgi için [Paralel yürütme](#parallel-execution) bölümüne bakın. | Boole | Hayır. Varsayılan, False'dur.
-toplu Say | Paralel yürütme sayısını denetlemek için kullanılacak toplu iş sayısı (isSequential false olarak ayarlandığında). | Üstsayı (maksimum 50) | Hayır. Varsayılan değer 20'dir.
+toplu Say | Paralel yürütme sayısını denetlemek için kullanılacak toplu iş sayısı (isSequential false olarak ayarlandığında). Bu üst eşzamanlılık sınırıdır, ancak her biri için etkinlik her zaman bu sayıda yürütülmez | Üstsayı (maksimum 50) | Hayır. Varsayılan değer 20'dir.
 Öğeler | Üzerinde yinelenecek bir JSON Dizisini döndüren bir ifade. | İfade (JSON Dizisini döndürür) | Evet
 Etkinlikler | Yürütülecek faaliyetler. | Etkinlikler Listesi | Evet
 

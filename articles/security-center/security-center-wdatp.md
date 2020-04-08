@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
+ms.date: 04/07/2020
 ms.author: memildin
-ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: a502541a5a01ec3304338054239fc3b50f4d3c61
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435451"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80810297"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş Tehdit Koruması
 
@@ -36,7 +36,7 @@ Microsoft Defender ATP'yi kullandığınızda şunları elde eeesiniz:
 
 Aşağıdaki özellikler artık Azure Güvenlik Merkezi'nde kullanılabilir:
 
-- **Otomatik onboarding**: Azure Güvenlik Merkezi'ne bağlı Windows sunucuları için Microsoft Defender ATP sensörü otomatik olarak etkinleştirilir.
+- **Otomatik onboarding**: Microsoft Defender ATP sensörü, Azure Güvenlik Merkezi'ne dahil edilen Windows sunucuları için otomatik olarak etkinleştirilir (Windows Server 2019 çalıştıranlar hariç).
 
 - **Tek cam bölme**: Azure Güvenlik Merkezi konsolu Microsoft Defender ATP uyarılarını görüntüler.
 
@@ -107,11 +107,11 @@ Bir Microsoft Defender ATP sensörü sistem bağlamından bağlandığından, an
 
    ![Yukarıdaki komutu içeren Komut İstemi penceresi](media/security-center-wdatp/image4.jpeg)
 
-3. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Microsoft Defender ATP portalında yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
+1. Komut başarılı olursa, Azure Güvenlik Merkezi panosunda ve Microsoft Defender ATP portalında yeni bir uyarı görürsünüz. Bu uyarının görünmesi birkaç dakika sürebilir.
 
-4. Güvenlik Merkezi'ndeki uyarıyı incelemek **için, Güvenlik uyarılarışüpheli** > **PowerShell CommandLine'a**gidin.
+1. Güvenlik Merkezi'ndeki uyarıyı incelemek **için, Güvenlik uyarılarışüpheli** > **PowerShell CommandLine'a**gidin.
 
-5. Araştırma penceresinden Microsoft Defender ATP portalına gitmek için bağlantıyı seçin.
+1. Araştırma penceresinden Microsoft Defender ATP portalına gitmek için bağlantıyı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,13 +2,13 @@
 title: Tam modda silme
 description: Kaynak türlerinin Azure Kaynak Yöneticisi şablonlarında tam mod silme işlemini nasıl ele düzeye bildiğini gösterir.
 ms.topic: conceptual
-ms.date: 02/26/2020
-ms.openlocfilehash: 5f797974212636460306c6a17869d6b8380545ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: e0250b289ce7a228d844023c3e1d1110438b3afc
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77664415"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80802578"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Tam mod dağıtımları için Azure kaynaklarının silinmesi
 
@@ -43,6 +43,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.Faturalandırma](#microsoftbilling)
 > - [Microsoft.BingHaritalar](#microsoftbingmaps)
 > - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.BlockchainTokens](#microsoftblockchaintokens)
 > - [Microsoft.Blueprint](#microsoftblueprint)
 > - [Microsoft.BotService](#microsoftbotservice)
 > - [Microsoft.Önbellek](#microsoftcache)
@@ -60,7 +61,6 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
 > - [Microsoft.CustomProviders](#microsoftcustomproviders)
@@ -88,6 +88,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
 > - [Microsoft.EventGrid](#microsofteventgrid)
 > - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Falcon](#microsoftfalcon)
 > - [Microsoft.Özellikler](#microsoftfeatures)
 > - [Microsoft.Gallery](#microsoftgallery)
 > - [Microsoft.Genomik](#microsoftgenomics)
@@ -104,11 +105,13 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kubernetes](#microsoftkubernetes)
 > - [Microsoft.Kusto](#microsoftkusto)
 > - [Microsoft.LabServices](#microsoftlabservices)
 > - [Microsoft.Logic](#microsoftlogic)
 > - [Microsoft.MachineLearning](#microsoftmachinelearning)
 > - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.Maintenance](#microsoftmaintenance)
 > - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
 > - [Microsoft.ManagedServices](#microsoftmanagedservices)
 > - [Microsoft.Management](#microsoftmanagement)
@@ -121,8 +124,8 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.Migrate](#microsoftmigrate)
 > - [Microsoft.MixedReality](#microsoftmixedreality)
 > - [Microsoft.NetApp](#microsoftnetapp)
-> - [Microsoft.Notebook'lar](#microsoftnotebooks)
 > - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.Notebook'lar](#microsoftnotebooks)
 > - [Microsoft.NotificationHub'lar](#microsoftnotificationhubs)
 > - [Microsoft.ObjectStore](#microsoftobjectstore)
 > - [Microsoft.OffAzure](#microsoftoffazure)
@@ -134,6 +137,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.PowerBI](#microsoftpowerbi)
 > - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
 > - [Microsoft.ProjectBabylon](#microsoftprojectbabylon)
+> - [Microsoft.Quantum](#microsoftquantum)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
 > - [Microsoft.RemoteApp](#microsoftremoteapp)
@@ -225,9 +229,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | uyarılarıMetaData | Hayır |
 > | alertsSummary | Hayır |
 > | alertsSummaryList | Hayır |
-> | Geribildirim | Hayır |
 > | smartDetectorAlertRules | Evet |
-> | smartDetectorRuntimeOrtamlar | Hayır |
 > | smartGroups | Hayır |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
@@ -336,7 +338,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- |
 > | hibridDataManagers | Evet |
 > | postgresÖrnekleri | Evet |
-> | sqlBigDataClusters | Evet |
 > | sqlInstances | Evet |
 > | Sqlserverregistrations | Evet |
 > | sqlServerRegistrations / sqlServers | Hayır |
@@ -346,10 +347,10 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | cloudManifestFiles | Hayır |
 > | Kayıt | Evet |
 > | kayıtlar / müşteriAbonelikleri | Hayır |
 > | kayıtlar / ürünler | Hayır |
-> | doğrulamaTuşları | Hayır |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -464,6 +465,17 @@ Kaynak sağlayıcı ad alanına atla:
 > | cordaÜyeler | Evet |
 > | Watchers | Evet |
 
+## <a name="microsoftblockchaintokens"></a>Microsoft.BlockchainTokens
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | TokenServices | Evet |
+> | TokenServices / BlockchainNetworks | Hayır |
+> | TokenServices / Gruplar | Hayır |
+> | TokenServices / Gruplar / Hesaplar | Hayır |
+> | TokenServices / TokenTemplates | Hayır |
+
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
@@ -533,6 +545,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Profil | Evet |
 > | profiller / uç noktalar | Evet |
 > | profiller / uç noktalar / özel etki alanları | Hayır |
+> | profiller / uç noktalar / origingroups | Hayır |
 > | profiller / uç noktalar / origins | Hayır |
 > | validateProbe | Hayır |
 
@@ -653,9 +666,12 @@ Kaynak sağlayıcı ad alanına atla:
 > | yakınlıkPlacementGroups | Evet |
 > | restorePointCollections | Evet |
 > | restorePointCollections / restorePoints | Hayır |
+> | paylaşılanVMExtensions | Evet |
+> | sharedVMExtensions / sürümleri | Hayır |
 > | paylaşılanVMImages | Evet |
 > | paylaşılanVMImages / sürümleri | Hayır |
 > | anlık görüntüler | Evet |
+> | sshPublicKeys | Evet |
 > | virtualMachines | Evet |
 > | virtualMachines / uzantıları | Evet |
 > | virtualMachines / metricDefinitions | Hayır |
@@ -706,6 +722,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | Kayıt | Evet |
+> | kayıt defterleri / agentPools | Evet |
 > | kayıt defterleri / oluşturur | Hayır |
 > | kayıt defterleri / oluşturur / iptal | Hayır |
 > | kayıt defteri / oluşturur / getLogLink | Hayır |
@@ -745,13 +762,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | yönetilen Kümeler | Evet |
 > | openShiftManagedClusters | Evet |
 
-## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | accounts | Evet |
-
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
@@ -780,7 +790,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Sorgu | Hayır |
 > | register | Hayır |
 > | Reportconfigs | Hayır |
-> | Reports | Hayır |
+> | Raporlar | Hayır |
 > | Ayarlar | Hayır |
 > | showbackKurallar | Hayır |
 > | Görünümler | Hayır |
@@ -944,6 +954,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | sunucular / virtualNetworkRules | Hayır |
 > | sunucular / waitStatistics | Hayır |
 > | sunucularv2 | Evet |
+> | singleServers | Evet |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
@@ -1080,13 +1091,22 @@ Kaynak sağlayıcı ad alanına atla:
 > | ad alanları / eventhubs / tüketici grupları | Hayır |
 > | ad alanları / networkrulesets | Hayır |
 
+## <a name="microsoftfalcon"></a>Microsoft.Falcon
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Ad alanları | Evet |
+
 ## <a name="microsoftfeatures"></a>Microsoft.Özellikler
 
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
+> | özellikSağlayıcılar | Hayır |
 > | özellikler | Hayır |
 > | Sağlayıcı | Hayır |
+> | abonelikÖzellik Kayıtları | Hayır |
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
 
@@ -1221,6 +1241,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | kasalar / olayGridFilters | Hayır |
 > | kasalar / sırlar | Hayır |
 
+## <a name="microsoftkubernetes"></a>Microsoft.Kubernetes
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | bağlıKümeler | Evet |
+
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
@@ -1232,6 +1259,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | kümeleri / veritabanları / veri bağlantıları | Hayır |
 > | kümeleri / veritabanları / eventhubconnections | Hayır |
 > | kümeleri / veritabanları / ilkeler atamaları | Hayır |
+> | kümeler / veri bağlantıları | Hayır |
 > | kümeler / ilkeler atamaları | Hayır |
 > | kümeler / paylaşılan kimlikler | Hayır |
 
@@ -1273,6 +1301,16 @@ Kaynak sağlayıcı ad alanına atla:
 > | çalışma alanları / hesaplamalar | Hayır |
 > | çalışma alanları / eventGridFilters | Hayır |
 
+## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | uygulamaGüncellemeler | Hayır |
+> | yapılandırmaAtamaları | Hayır |
+> | maintenanceYapılandırmalar | Evet |
+> | güncelleştirmeler | Hayır |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
@@ -1309,6 +1347,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- |
 > | accounts | Evet |
 > | hesaplar / eventGridFilters | Hayır |
+> | hesaplar / privateAtlases | Evet |
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
 
@@ -1325,10 +1364,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | offerTypes / yayıncılar / teklifler / planlar / configs / importImage | Hayır |
 > | privategalleryitems | Hayır |
 > | privateStoreClient | Hayır |
+> | privateMağazalar | Hayır |
+> | privateStores / teklifler | Hayır |
 > | Ürünler | Hayır |
 > | Yayıncı | Hayır |
 > | yayıncılar / teklifler | Hayır |
 > | yayıncılar / teklifler / değişiklikler | Hayır |
+> | register | Hayır |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
@@ -1395,7 +1437,6 @@ Kaynak sağlayıcı ad alanına atla:
 > | objectUnderstandingAccounts | Evet |
 > | remoteRenderingHesapları | Evet |
 > | mekansalÇapaLarHesapları | Evet |
-> | surfaceReconstructionAccounts | Evet |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
@@ -1403,17 +1444,10 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | netAppHesapları | Evet |
+> | netAppAccounts / hesapYedekler | Hayır |
 > | netAppAccounts / capacityPools | Evet |
 > | netAppAccounts / capacityPools / volumes | Evet |
-> | netAppAccounts / capacityPools / volumes / mountTargets | Evet |
 > | netAppAccounts / capacityPools / hacimler / anlık görüntüler | Evet |
-
-## <a name="microsoftnotebooks"></a>Microsoft.Notebook'lar
-
-> [!div class="mx-tableFixed"]
-> | Kaynak türü | Tam modda silme |
-> | ------------- | ----------- |
-> | NotebookProxies | Hayır |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
@@ -1498,6 +1532,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | vpnSiteler | Evet |
 > | webApplicationFirewallPolitikalar | Evet |
 
+## <a name="microsoftnotebooks"></a>Microsoft.Notebook'lar
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | NotebookProxies | Hayır |
+
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHub'lar
 
 > [!div class="mx-tableFixed"]
@@ -1535,9 +1576,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | çalışma alanları / dataExports | Hayır |
 > | çalışma alanları / dataSources | Hayır |
 > | çalışma alanları / linkedServices | Hayır |
-> | çalışma alanları / privateEndpointConnectionProxies | Hayır |
-> | çalışma alanları / privateEndpointConnections | Hayır |
-> | çalışma alanları / privateLinkResources | Hayır |
+> | çalışma alanları / linkedStorageAccounts | Hayır |
 > | çalışma alanları / sorgu | Hayır |
 > | çalışma alanları / scopedPrivateLinkProxies | Hayır |
 
@@ -1603,6 +1642,13 @@ Kaynak sağlayıcı ad alanına atla:
 > | Kaynak türü | Tam modda silme |
 > | ------------- | ----------- |
 > | accounts | Evet |
+
+## <a name="microsoftquantum"></a>Microsoft.Quantum
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Tam modda silme |
+> | ------------- | ----------- |
+> | Çalışma Alanları | Evet |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 
@@ -1725,6 +1771,10 @@ Kaynak sağlayıcı ad alanına atla:
 > | mevzuatUyumStandartları | Hayır |
 > | düzenlemeUyumlulukStandartları / regulatoryComplianceControls | Hayır |
 > | düzenlemeUyumlulukStandartlar / düzenleyiciUygunlukDenetimler / düzenleyiciUygunlukDeğerlendirmeleri | Hayır |
+> | secureScoreControlDefinitions | Hayır |
+> | secureScoreControls | Hayır |
+> | secureScores | Hayır |
+> | secureScores / secureScoreControls | Hayır |
 > | securityKişiler | Hayır |
 > | securitySolutions | Hayır |
 > | securitySolutionsReferenceData | Hayır |
@@ -1988,6 +2038,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | yeniden adlandır | Hayır |
 > | AbonelikTanımlar | Hayır |
 > | Abonelik İşlemleri | Hayır |
+> | Abonelik | Hayır |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
@@ -2018,6 +2069,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | Satıcı | Hayır |
 > | satıcılar / skus | Hayır |
 > | satıcılar / vnfs | Hayır |
+> | sanalNetworkFunctionSkus | Hayır |
 > | vnfs | Evet |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
@@ -2045,6 +2097,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | hostingOrtamlar / olayGridFilters | Hayır |
 > | hostingOrtamlar / multiRolePools | Hayır |
 > | hostingOrtamlar / işçiHavuzları | Hayır |
+> | kubeOrtamlar | Evet |
 > | publishingKullanıcılar | Hayır |
 > | Öneriler | Hayır |
 > | kaynakSağlıkMetadata | Hayır |

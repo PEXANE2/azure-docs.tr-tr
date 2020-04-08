@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 1a0ec9465be3b714e90bfca6a15b60423d6065a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f05780610a2a6033b069721b143aca5e5efa6c35
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295573"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804529"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager Şablonlarını kullanarak ILB ASE oluşturma
 
@@ -28,8 +28,8 @@ Uygulama Hizmet Ortamları, herkese açık bir VIP yerine sanal ağ dahili adres
 Bir ILB ASE'nin oluşturulmasını otomatikleştirmek için üç adım vardır:
 
 1. İlk temel ASE bir sanal ağ da bir iç yük dengeleyici adresi yerine bir kamu VIP kullanılarak oluşturulur.  Bu adımın bir parçası olarak, ILB ASE'ye bir kök etki alanı adı atanır.
-2. ILB ASE oluşturulduktan sonra bir SSL sertifikası yüklenir.  
-3. Yüklenen SSL sertifikası açıkça ILB ASE'ye "varsayılan" SSL sertifikası olarak atanır.  Bu SSL sertifikası, uygulamalar ASE'ye atanan ortak kök etki alanı kullanılarak ele alındığında ILB ASE'deki uygulamalara SSL trafiği için kullanılacaktır (örn. `https://someapp.mycustomrootcomain.com`)
+2. ILB ASE oluşturulduktan sonra bir TLS/SSL sertifikası yüklenir.  
+3. Yüklenen TLS/SSL sertifikası açıkça ILB ASE'ye "varsayılan" TLS/SSL sertifikası olarak atanır.  Bu TLS/SSL sertifikası, uygulamalar ASE'ye atanan ortak kök etki alanı kullanılarak ele alındığında ILB ASE'deki `https://someapp.mycustomrootcomain.com`uygulamalara TLS trafiği için kullanılacaktır (örn. )
 
 ## <a name="creating-the-base-ilb-ase"></a>Temel ILB ASE oluşturma
 Örnek bir Azure Kaynak Yöneticisi şablonu ve ilişkili parametreler dosyası [GitHub'da bulunmaktadır.][quickstartilbasecreate]
@@ -49,17 +49,17 @@ Bir ILB ASE'nin oluşturulmasını otomatikleştirmek için üç adım vardır:
 
 Azure Kaynak Yöneticisi şablonu gönderildikten sonra ILB ASE'nin oluşturulması birkaç saat sürer.  Oluşturma tamamlandıktan sonra, ILB ASE, dağıtımı tetikleyen abonelik için App Service Environments listesinde ki PORTAL UX'de gösterecektir.
 
-## <a name="uploading-and-configuring-the-default-ssl-certificate"></a>"Varsayılan" SSL Sertifikasını Karşıya Yükleme ve Yapılandırma
-ILB ASE oluşturulduktan sonra, uygulamalara SSL bağlantıları kurmak için "varsayılan" SSL sertifika kullanımı olarak ASE sertifikası ile ilişkilendirilmelidir.  Varsayımsal Contoso Corporation örneği ile devam, ASE varsayılan DNS soneki *internal-contoso.com*ise, *https://some-random-app.internal-contoso.com* o zaman bir bağlantı **.internal-contoso.com*için geçerli bir SSL sertifikası gerektirir . 
+## <a name="uploading-and-configuring-the-default-tlsssl-certificate"></a>"Varsayılan" TLS/SSL Sertifikasının Yüklenmesi ve Yapılandırılması
+ILB ASE oluşturulduktan sonra, tls/SSL sertifikası, uygulamalara TLS/SSL bağlantıları kurmak için "varsayılan" TLS/SSL sertifika kullanımı olarak ASE ile ilişkilendirilmelidir.  Varsayımsal Contoso Corporation örneğine devam ederek, ASE'nin varsayılan DNS soneki *internal-contoso.com* *https://some-random-app.internal-contoso.com* ise , o zaman bir bağlantı **.internal-contoso.com*için geçerli bir TLS/SSL sertifikası gerektirir. 
 
-Dahili BIR SSL sertifikası almanın, harici bir verenden sertifika satın almanın ve kendi imzasını taşıyan bir sertifika kullanmanın çeşitli yolları vardır.  SSL sertifikasının kaynağından bağımsız olarak, aşağıdaki sertifika özniteliklerinin doğru şekilde yapılandırılması gerekir:
+İç C'ler, harici bir verenden sertifika satın alma ve kendi imzalı sertifika kullanma dahil olmak üzere geçerli bir TLS/SSL sertifikası almanın çeşitli yolları vardır.  TLS/SSL sertifikasının kaynağıne bakılmaksızın, aşağıdaki sertifika özniteliklerinin düzgün şekilde yapılandırılması gerekir:
 
 * *Konu*: Bu öznitelik **.your-root-domain-here.com* olarak ayarlanmalıdır
-* *Özne Alternatif Adı*: Bu öznitelik hem **.your-root-domain-here.com*ve **.scm.your-root-domain-here.com*içermelidir.  İkinci girişin nedeni, her uygulamayla ilişkili SCM/Kudu sitesine SSL bağlantılarının *your-app-name.scm.your-root-domain-here.com*formun adresi kullanılarak yapılmasıdır.
+* *Özne Alternatif Adı*: Bu öznitelik hem **.your-root-domain-here.com*ve **.scm.your-root-domain-here.com*içermelidir.  İkinci girişin nedeni, her uygulamayla ilişkili SCM/Kudu sitesine TLS bağlantılarının *your-app-name.scm.your-root-domain-here.com*formun adresi kullanılarak yapılmasıdır.
 
-Elinizde geçerli bir SSL sertifikası ile iki ek hazırlık adımı gereklidir.  SSL sertifikasının .pfx dosyası olarak dönüştürülmesi/kaydedilmesi gerekir.  .pfx dosyasının tüm ara ve kök sertifikaları içermesi ve ayrıca parolayla güvenli hale alınması gerektiğini unutmayın.
+Elinizde geçerli bir TLS/SSL sertifikası ile iki ek hazırlık adımı gereklidir.  TLS/SSL sertifikasının .pfx dosyası olarak dönüştürülmesi/kaydedilmesi gerekir.  .pfx dosyasının tüm ara ve kök sertifikaları içermesi ve ayrıca parolayla güvenli hale alınması gerektiğini unutmayın.
 
-Ardından ortaya çıkan .pfx dosyasının base64 dizesine dönüştürülmesi gerekir, çünkü SSL sertifikası Azure Kaynak Yöneticisi şablonu kullanılarak yüklenir.  Azure Kaynak Yöneticisi şablonları metin dosyaları olduğundan, şablonun parametresi olarak eklenebilmesi için .pfx dosyasının base64 dizesine dönüştürülmesi gerekir.
+TlS/SSL sertifikası Azure Kaynak Yöneticisi şablonu kullanılarak yüklenecektir, çünkü ortaya çıkan .pfx dosyasının base64 dizesine dönüştürülmesi gerekir.  Azure Kaynak Yöneticisi şablonları metin dosyaları olduğundan, şablonun parametresi olarak eklenebilmesi için .pfx dosyasının base64 dizesine dönüştürülmesi gerekir.
 
 Aşağıdaki Powershell kod parçacığı, kendi imzalı bir sertifika oluşturma, sertifikayı .pfx dosyası olarak dışa aktarma, .pfx dosyasını base64 kodlanmış bir dize haline dönüştürme ve ardından base64 kodlanmış dizeyi ayrı bir dosyaya kaydetme örneğini gösterir.  Base64 kodlama için Powershell kodu [Powershell Scripts blog][examplebase64encoding]uyarlanmıştır.
 
@@ -75,7 +75,7 @@ Aşağıdaki Powershell kod parçacığı, kendi imzalı bir sertifika oluşturm
     $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
     $fileContentEncoded | set-content ($fileName + ".b64")
 
-SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dönüştürüldükten sonra, [varsayılan SSL sertifikasını yapılandırmak][configuringDefaultSSLCertificate] için GitHub'daki Azure Kaynak Yöneticisi şablonu örneği kullanılabilir.
+TLS/SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dönüştürüldükten sonra, [varsayılan TLS/SSL sertifikasını yapılandırmak][configuringDefaultSSLCertificate] için GitHub'daki Azure Kaynak Yöneticisi şablonu örneği kullanılabilir.
 
 *azuredeploy.parameters.json* dosyasındaki parametreler aşağıda listelenmiştir:
 
@@ -84,7 +84,7 @@ SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dö
 * *pfxBlobString*: .pfx dosyasının based64 kodlanmış dize gösterimi.  Daha önce gösterilen kod parçacıklarını kullanarak, "exportedcert.pfx.b64" de yer alan dizeyi kopyalar ve *pfxBlobString* özniteliğinin değeri olarak yapıştırırsınız.
 * şifre : .pfx dosyasını güvenli hale getirmek için kullanılan *şifre.*
 * *sertifikaThumbprint*: Sertifikanın parmak izi.  Bu değeri Powershell'den alırsanız (örn. *$certificate. *Önceki kod parçacığından parmak izi), olduğu gibi değeri kullanabilirsiniz.  Ancak, Değeri Windows sertifikası iletişim kutusundan kopyalarsanız, gereksiz alanları söktüğünü unutmayın.  *SertifikaThumbprint* gibi bir şey görünmelidir: AF3143EB61D43F6727842115BB7F17BBCECAEE
-* *certificateName*: Sertifikayı kimlik olarak kullanarak kendi seçtiğiniz dostane bir dize tanımlayıcısıdır.  Ad, SSL sertifikasını temsil eden *Microsoft.Web/sertifikalar* tüzel kişiliğinin benzersiz Azure Kaynak Yöneticisi tanımlayıcısının bir parçası olarak kullanılır.  Ad aşağıdaki sonek ile **bitmelidir:** \_yourASENameHere_InternalLoadBalancingASE.  Bu sonek, portal tarafından sertifikanın ILB özellikli bir ASE'yi güvence altına almak için kullanıldığını gösteren bir gösterge olarak kullanılır.
+* *certificateName*: Sertifikayı kimlik olarak kullanarak kendi seçtiğiniz dostane bir dize tanımlayıcısıdır.  Ad, TLS/SSL sertifikasını temsil eden *Microsoft.Web/sertifikalar* tüzel kişiliğinin benzersiz Azure Kaynak Yöneticisi tanımlayıcısının bir parçası olarak kullanılır.  Ad aşağıdaki sonek ile **bitmelidir:** \_yourASENameHere_InternalLoadBalancingASE.  Bu sonek, portal tarafından sertifikanın ILB özellikli bir ASE'yi güvence altına almak için kullanıldığını gösteren bir gösterge olarak kullanılır.
 
 *Azuredeploy.parameters.json'un* kısaltılmış bir örneği aşağıda gösterilmiştir:
 
@@ -113,7 +113,7 @@ SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dö
          }
     }
 
-*Azuredeploy.parameters.json* dosyası doldurulduktan sonra varsayılan SSL sertifikası aşağıdaki Powershell kod parçacığı kullanılarak yapılandırılabilir.  PATH'ler dosyasını, makinenizde Azure Kaynak Yöneticisi şablon dosyalarının bulunduğu yerle eşleşecek şekilde değiştirin.  Ayrıca Azure Kaynak Yöneticisi dağıtım adı ve kaynak grubu adı için kendi değerlerinizi sağlamayı unutmayın.
+*Azuredeploy.parameters.json* dosyası doldurulduktan sonra varsayılan TLS/SSL sertifikası aşağıdaki Powershell kodu snippet kullanılarak yapılandırılabilir.  PATH'ler dosyasını, makinenizde Azure Kaynak Yöneticisi şablon dosyalarının bulunduğu yerle eşleşecek şekilde değiştirin.  Ayrıca Azure Kaynak Yöneticisi dağıtım adı ve kaynak grubu adı için kendi değerlerinizi sağlamayı unutmayın.
 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
@@ -122,9 +122,9 @@ SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dö
 
 Azure Kaynak Yöneticisi şablonu gönderildikten sonra, değişikliği uygulamak ASE ön uç başına yaklaşık kırk dakika sürer.  Örneğin, iki ön uç kullanarak varsayılan boyutlandırılmış BIR ASE ile şablonun tamamlanması yaklaşık bir saat yirmi dakika sürer.  Şablon çalışırken ASE ölçeklendirilemez.  
 
-Şablon tamamlandıktan sonra, ILB ASE'deki uygulamalara HTTPS üzerinden erişilebilir ve bağlantılar varsayılan SSL sertifikası kullanılarak güvenli hale gelir.  Varsayılan SSL sertifikası, ILB ASE'deki uygulamalar uygulama adı artı varsayılan ana bilgisayar adının birleşimi kullanılarak ele alınınca kullanılır.  Örneğin *https://mycustomapp.internal-contoso.com* **.internal-contoso.com*için varsayılan SSL sertifikasını kullanır.
+Şablon tamamlandıktan sonra, ILB ASE'deki uygulamalara HTTPS üzerinden erişilebilir ve bağlantılar varsayılan TLS/SSL sertifikası kullanılarak güvenli hale gelir.  Varsayılan TLS/SSL sertifikası, ILB ASE'deki uygulamalar uygulama adı artı varsayılan ana bilgisayar adının birleşimi kullanılarak ele alındığında kullanılır.  Örneğin *https://mycustomapp.internal-contoso.com* **.internal-contoso.com*için varsayılan TLS/SSL sertifikasını kullanır.
 
-Ancak, tıpkı genel çok kiracılı hizmette çalışan uygulamalar gibi, geliştiriciler de tek tek uygulamalar için özel ana bilgisayar adlarını yapılandırabilir ve ardından tek tek uygulamalar için benzersiz SNI SSL sertifika bağlamalarını yapılandırabilir.  
+Ancak, tıpkı genel çok kiracılı hizmette çalışan uygulamalar gibi, geliştiriciler de tek tek uygulamalar için özel ana bilgisayar adlarını yapılandırabilir ve ardından tek tek uygulamalar için benzersiz SNI TLS/SSL sertifika bağlamalarını yapılandırabilir.  
 
 ## <a name="getting-started"></a>Başlarken
 Uygulama Hizmet Ortamlarına başlamak için Uygulama [Hizmet Ortamına Giriş](app-service-app-service-environment-intro.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75749943"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811093"
 ---
 # <a name="azure-network-security-overview"></a>Azure ağ güvenliğine genel bakış
 
@@ -160,7 +160,7 @@ Azure'da tek tek geliştiricilerin veya operasyon personelinin sanal makineleri 
 
 Noktadan siteye VPN bağlantısı, kullanıcı ile sanal ağ arasında özel ve güvenli bir bağlantı kurmanızı sağlar. VPN bağlantısı kurulduğunda, kullanıcı VPN üzerinden SANAL ağdaki herhangi bir sanal makineye RDP veya SSH bağlantısı yapabilir. (Bu, kullanıcının kimlik doğrulaması yapabileceğinizi ve yetkili olduğunu varsayar.) Noktadan siteye VPN destekler:
 
-* Güvenli Soket Tünel Protokolü (SSTP), özel bir SSL tabanlı VPN protokolü. Çoğu güvenlik duvarı, SSL'nin kullandığı TCP port443'ün çoğunu açtığından, bir SSL VPN çözümü güvenlik duvarlarına nüfuz edebilir. SSTP yalnızca Windows aygıtlarında desteklenir. Azure, Windows'un SSTP (Windows 7 ve sonrası) tüm sürümlerini destekler.
+* Güvenli Soket Tünel Protokolü (SSTP), özel bir SSL tabanlı VPN protokolü. Bir SSL VPN çözümü güvenlik duvarlarına nüfuz edebilir, çünkü çoğu güvenlik duvarı TLS/SSL'nin kullandığı TCP portu 443'ü açar. SSTP yalnızca Windows aygıtlarında desteklenir. Azure, Windows'un SSTP (Windows 7 ve sonrası) tüm sürümlerini destekler.
 
 * IKEv2 VPN, standart tabanlı bir IPsec VPN çözümüdür. IKEv2 VPN, Mac cihazlardan (OSX sürüm 10.11 ve üzeri) bağlantı kurmak için kullanılabilir.
 
@@ -232,7 +232,7 @@ Web tabanlı hizmetleri çalıştıran kuruluşlar genellikle bu web hizmetlerin
 Azure Application Gateway, web tabanlı hizmetleriniz için HTTP tabanlı yük dengelemesağlar. Uygulama Ağ Geçidi destekler:
 
 * Çerez tabanlı oturum yakınlığı. Bu özellik, yük dengeleyicisinin arkasındaki sunuculardan birine kurulan bağlantıların istemci ve sunucu arasında bozulmadan kalmasını sağlar. Bu, işlemlerin kararlılığını sağlar.
-* SSL boşaltma. İstemci yük dengeleyicisi ile bağlandığında, bu oturum HTTPS (SSL) protokolü kullanılarak şifrelenir. Ancak, performansı artırmak için, yük dengeleyicisi ile yük dengeleyicisinin arkasındaki web sunucusu arasında bağlantı kurmak için HTTP (şifrelenmemiş) protokolünü kullanabilirsiniz. Yük dengeleyicisinin arkasındaki web sunucuları şifrelemeyle ilgili işlemci yükünü deneyimlemediği için buna "SSL boşaltma" adı verilir. Bu nedenle web sunucuları istekleri daha hızlı bir şekilde servis edebilir.
+* TLS boşaltma. İstemci yük dengeleyicisi ile bağlandığında, bu oturum HTTPS (TLS) protokolü kullanılarak şifrelenir. Ancak, performansı artırmak için, yük dengeleyicisi ile yük dengeleyicisinin arkasındaki web sunucusu arasında bağlantı kurmak için HTTP (şifrelenmemiş) protokolünü kullanabilirsiniz. Yük dengeleyicisinin arkasındaki web sunucuları şifrelemeyle ilgili işlemci yükünü deneyimlemediği için buna "TLS boşaltma" adı verilir. Bu nedenle web sunucuları istekleri daha hızlı bir şekilde servis edebilir.
 * URL tabanlı içerik yönlendirme. Bu özellik, yük dengeleyicisinin hedef URL'ye bağlı olarak bağlantıları nereye ileteceğimiz konusunda karar vermesini mümkün kılar. Bu, IP adreslerine dayalı yük dengeleme kararları veren çözümlerden çok daha fazla esneklik sağlar.
 
 Daha fazla bilgi edinin:
@@ -336,7 +336,7 @@ Daha fazla bilgi edinin:
 
 ## <a name="azure-front-door"></a>Azure Front Door
 
-Azure Ön Kapı Hizmeti, web trafiğinizin genel yönlendirmesini tanımlamanızı, yönetmenize ve izlemenize olanak tanır. En iyi performans ve yüksek kullanılabilirlik için trafik yönlendirmenizi optimize eder. Azure Front Door, HTTP/HTTPS iş yükünüzü istemci IP adreslerine, ülke koduna ve http parametrelerine dayalı istismardan korumaya yönelik erişim denetimi için özel web uygulaması güvenlik duvarı (WAF) kuralları yazmanıza olanak tanır. Ayrıca, Ön Kapı da kötü niyetli bot trafiği savaş için oran sınırlayıcı kurallar oluşturmanıza olanak sağlar, bu SSL boşaltma ve başına HTTP / HTTPS isteği, uygulama katmanı işleme içerir.
+Azure Ön Kapı Hizmeti, web trafiğinizin genel yönlendirmesini tanımlamanızı, yönetmenize ve izlemenize olanak tanır. En iyi performans ve yüksek kullanılabilirlik için trafik yönlendirmenizi optimize eder. Azure Front Door, HTTP/HTTPS iş yükünüzü istemci IP adreslerine, ülke koduna ve http parametrelerine dayalı istismardan korumaya yönelik erişim denetimi için özel web uygulaması güvenlik duvarı (WAF) kuralları yazmanıza olanak tanır. Ayrıca, Ön Kapı da kötü niyetli bot trafiği savaş için oran sınırlayıcı kurallar oluşturmanıza olanak sağlar, bu TLS boşaltma ve başına HTTP/HTTPS isteği, uygulama katmanı işleme içerir.
 
 Front Door platformunun kendisi Temel Azure DDoS Koruması ile korunur. Korumayı artırmak için, sanal ağlarınızda Azure DDoS Koruması Standart etkinleştirilebilir ve kaynakları ağ katmanı (TCP/UDP) saldırılarına karşı otomatik ayar ve risk azaltma yoluyla koruma altına alır. Ön Kapı bir katman 7 ters proxy, sadece web trafiğinin arka uç sunuculara geçmesine ve varsayılan olarak trafik diğer türleri engellemek için izin verir.
 
@@ -391,7 +391,7 @@ Daha fazla bilgi edinin:
 
 * [Sanal ağ TAP](../../virtual-network/virtual-network-tap-overview.md)
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Ağ düzeyinde günlüğe kaydetme, herhangi bir ağ güvenlik senaryosu için önemli bir işlevdir. Azure'da, ağ düzeyinde günlük bilgileri almak için NSG'ler için elde edilen bilgileri günlüğe kaydedebilirsiniz. NSG günlüğü ile şu bilgileri alırsınız:
 

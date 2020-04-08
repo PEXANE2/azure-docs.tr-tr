@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 4a853871ef5f66881235e5a6ffec0886b81f5a92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19765bd28f365cc6f6d5b06646896613dd3e3e87
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77208548"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804563"
 ---
 # <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
@@ -98,11 +98,11 @@ Varsayılan olarak, ısı haritası katmanında işlenen veri noktalarının yar
 
 Her `zoom` zum düzeyi için yarıçapı ölçeklendirmek için bir ifade kullanın, böylece her veri noktası haritanın aynı fiziksel alanını kaplar. Bu ifade, ısı haritası katmanının daha statik ve tutarlı görünmesini sağlar. Haritanın her yakınlaştırma düzeyi, önceki yakınlaştırma düzeyinin iki katı dikey ve yatay piksele sahiptir. 
 
-Yarıçapı, her yakınlaştırma düzeyiyle iki katına çıkaracak şekilde ölçekleme, tüm yakınlaştırma düzeylerinde tutarlı görünen bir ısı haritası oluşturur. Bu ölçekleme uygulamak için, aşağıdaki `exponential interpolation` örnekte gösterildiği gibi bir taban 2 ifadesi ile kullanın. `zoom` Isı haritasının yakınlaştırma düzeyiyle nasıl ölçeklendirildirini görmek için haritayı yakınlaştırın.
+Yarıçapı, her yakınlaştırma düzeyiyle iki katına çıkaracak şekilde ölçekleme, tüm yakınlaştırma düzeylerinde tutarlı görünen bir ısı haritası oluşturur. Bu ölçeklendirmeyi uygulamak `zoom` için, piksel `exponential interpolation` yarıçapı minimum yakınlaştırma düzeyi için ayarlanmış bir taban 2 ifadesi ve `2 * Math.pow(2, minZoom - maxZoom)` aşağıdaki örnekte gösterildiği gibi hesaplanan maksimum yakınlaştırma düzeyi için ölçeklenmiş yarıçap ile kullanın. Isı haritasının yakınlaştırma düzeyiyle nasıl ölçeklendirildirini görmek için haritayı yakınlaştırın.
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Tutarlı yakınlaştırılabilir ısı haritası" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Tutarlı yakınlaştırılabilir ısı haritası" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
 <a href='https://codepen.io'>CodePen'deki</a>Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>Tutarlı yakınlaştırılabilir ısı haritasına</a> bakın .
 </iframe>
 

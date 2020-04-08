@@ -2,13 +2,13 @@
 title: Şablon işlevleri - kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 23c0463649e748b35917c959a73536147e91f60b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.date: 04/06/2020
+ms.openlocfilehash: 90cee78c29c26c88d808cdef798e74a2184a5fcf
+ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744999"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80804767"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -496,7 +496,9 @@ Genellikle, blob bitiş noktası URI veya tam nitelikli etki alanı adı gibi bi
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Başvuru işlevi yalnızca kaynak tanımının özelliklerinde ve şablon veya dağıtımın çıktılar bölümünde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak `input` özelliğine atandığı için başvuru işlevini kullanabilirsiniz. Başvuru işlevi çözülmeden `count` önce sayım belirlenmelidir, çünkü bunu kullanamazsınız.
+Başvuru işlevi yalnızca kaynak tanımının özelliklerinde ve şablon veya dağıtımın çıktılar bölümünde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak `input` özelliğine atandığı için başvuru işlevini kullanabilirsiniz.
+
+Bir kopya döngüsünde `count` özelliğin değerini ayarlamak için başvuru işlevini kullanamazsınız. Döngüdeki diğer özellikleri ayarlamak için kullanabilirsiniz. Başvuru işlevi çözülmeden önce bu özelliğin belirlenmesi gerektiğinden, sayım özelliği için başvuru engellenir.
 
 İç içe olan şablonda dağıttığınız bir kaynağı döndürmek için [iç içe kullanılan şablonun](linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, bağlantılı bir [şablon](linked-templates.md#linked-template)kullanın.
 
@@ -530,7 +532,7 @@ Bir kaynağa tam nitelikli bir başvuru yaparken, tür ve addan segmentleri birl
 
 **{kaynak sağlayıcı-ad alanı}/{üst kaynak-türü}/{üst kaynak-adı}[/{alt kaynak türü}/{alt kaynak-adı}/{alt kaynak adı}]**
 
-Örnek:
+Örneğin:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` değil doğru
 

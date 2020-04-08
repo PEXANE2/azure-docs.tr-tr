@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 702df1bfaf0701a40e514f8a47151f96917adf38
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657013"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811590"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual masaüstünde Microsoft Ekipleri'ni kullanma
 
@@ -51,7 +51,7 @@ Ekipler masaüstü uygulamasını makine başına yükleme yi kullanarak dağıt
 2. MSI'ı ana bilgisayar VM'ye yüklemek için bu komutu çalıştırın.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
       ```
 
       Bu, Takımlar'ı Program Dosyaları'na veya Program Dosyalarına (x86) yükler. Bir sonraki oturum açtığınızda ve Takımlar'ı başlattığınızda, uygulama kimlik bilgilerinizi ister.

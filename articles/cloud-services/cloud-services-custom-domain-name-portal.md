@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
-ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e764e6a474b9843d43f9e8af9cf3b6a8ddf37189
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75386808"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811639"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure bulut hizmeti için özel bir etki alanı adı yapılandırma
 Bir Bulut Hizmeti oluşturduğunuzda, Azure bu hizmeti **cloudapp.net**bir alt etki alanına atar. Örneğin, Bulut Hizmetinizin adı "contoso" ise, kullanıcılarınız uygulamanıza `http://contoso.cloudapp.net`. Azure ayrıca sanal bir IP adresi de atar.
@@ -30,7 +30,7 @@ CNAME ve A kayıtlarının ne olduğunu zaten anlıyor musunuz? [Açıklamanın 
 <p/>
 
 > [!TIP]
-> Daha hızlı gitmeye alış-Yenİ Azure [kılavuzlu gözden geçirme](https://support.microsoft.com/kb/2990804)yi kullanın!  Azure Bulut Hizmetleri veya Azure Web Siteleri ile özel bir etki alanı adı ve iletişimi (SSL) güvence altına alma gibi bir ilişki sağlar.
+> Daha hızlı gitmeye alış-Yenİ Azure [kılavuzlu gözden geçirme](https://support.microsoft.com/kb/2990804)yi kullanın!  Azure Bulut Hizmetleri veya Azure Web Siteleri ile özel bir etki alanı adı ilişkilendirme ve iletişimi (TLS) sağlama yı kolaylaştırır.
 > 
 > 
 
@@ -128,14 +128,14 @@ Bu örnek, kök etki alanı için bir A kaydı oluşturmayı gösterir. Tüm alt
 * [CDN İçeriğini Özel Etki Alanı ile Eşleme](../cdn/cdn-map-content-to-custom-domain.md)
 * [Bulut hizmetinizin genel yapılandırması.](cloud-services-how-to-configure-portal.md)
 * [Bulut hizmetini](cloud-services-how-to-create-deploy-portal.md)nasıl dağıtılayın öğrenin.
-* [SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırma .
+* [TLS/SSL sertifikalarını](cloud-services-configure-ssl-certificate-portal.md)yapılandırın.
 
 [Expose Your Application on a Custom Domain]: #access-app
 [Add a CNAME Record for Your Custom Domain]: #add-cname
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure portalında]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
 

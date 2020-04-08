@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
+ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475387"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80811757"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -233,10 +233,28 @@ VS Kodu'nu kullanma hakkında daha fazla bilgi için, [VS Kodu uzantısı üzeri
 > VS Kodu üzerinden dağıtmak, AKS kümesinin önceden oluşturulmasını veya çalışma alanınıza eklenmesini gerektirir.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modelleri kontrollü kullanıma alma (önizleme) kullanarak AKS'ye dağıtın
-Son noktaları kullanarak model sürümlerini kontrollü bir şekilde analiz edin ve tanıtın. Tek bir bitiş noktasının arkasına en fazla 6 sürüm dağıtın ve dağıtılan her sürüme puanlama trafiğinin %'sini yapılandırın. Son noktaların ve dağıtılan sürümlerin operasyonel ölçümlerini görüntülemek için uygulama öngörülerini etkinleştirebilirsiniz.
+
+Son noktaları kullanarak model sürümlerini kontrollü bir şekilde analiz edin ve tanıtın. Tek bir bitiş noktasının arkasında en fazla altı sürüm dağıtabilirsiniz. Uç noktalar aşağıdaki yetenekleri sağlar:
+
+* __Her bitiş noktasına gönderilen puanlama trafiğinin yüzdesini__yapılandırın. Örneğin, trafiğin %20'sini bitiş noktası 'test'e, %80'ini 'üretim'e yönlendirin.
+
+    > [!NOTE]
+    > Trafiğin %100'ünü hesaba katmıyorsanız, kalan yüzdeler __varsayılan__ bitiş noktası sürümüne yönlendirilir. Örneğin, trafiğin %10'u için son nokta sürümü 'test' ve %30 için 'prod' olarak yapılandırırsanız, kalan %60 varsayılan bitiş noktası sürümüne gönderilir.
+    >
+    > Oluşturulan ilk uç nokta sürümü varsayılan olarak otomatik olarak yapılandırılır. Bir bitiş noktası `is_default=True` sürümünü oluştururken veya güncellerken ayarlayarak bunu değiştirebilirsiniz.
+     
+* Bir bitiş noktası sürümünü __kontrol__ veya __tedavi__olarak etiketle. Örneğin, geçerli üretim bitiş noktası sürümü denetim olabilir, potansiyel yeni modeller ise tedavi sürümleri olarak dağıtılır. Tedavi sürümlerinin performansını değerlendirdikten sonra, mevcut denetimden daha iyi performans gösteren biri varsa, yeni üretim/denetime yükseltilebilir.
+
+    > [!NOTE]
+    > Sadece __bir__ kontrolün olabilir. Birden fazla tedavi olabilir.
+
+Son noktaların ve dağıtılan sürümlerin operasyonel ölçümlerini görüntülemek için uygulama öngörülerini etkinleştirebilirsiniz.
 
 ### <a name="create-an-endpoint"></a>Uç nokta oluşturma
-Modellerinizi dağıtmaya hazır olduktan sonra, bir puanlama bitiş noktası oluşturun ve ilk sürümünüzü dağıtın. Aşağıdaki adım, SDK'yı kullanarak bitiş noktasını nasıl dağıtabileceğinizi ve oluşturabileceğinizi gösterir. İlk dağıtım varsayılan sürüm olarak tanımlanır, bu da tüm sürümler arasında belirtilmeyen trafiğin yüzdesinin varsayılan sürüme gideceği anlamına gelir.  
+Modellerinizi dağıtmaya hazır olduktan sonra, bir puanlama bitiş noktası oluşturun ve ilk sürümünüzü dağıtın. Aşağıdaki örnekte, SDK'yı kullanarak bitiş noktasının nasıl dağıtılanve oluşturulacak olduğu gösterilmektedir. İlk dağıtım varsayılan sürüm olarak tanımlanır, bu da tüm sürümler arasında belirtilmeyen trafiğin yüzdesinin varsayılan sürüme gideceği anlamına gelir.  
+
+> [!TIP]
+> Aşağıdaki örnekte, yapılandırma trafiğin %20'sini işlemek için ilk bitiş noktası sürümünü ayarlar. Bu ilk bitiş noktası olduğundan, aynı zamanda varsayılan sürümüdür. Trafiğin diğer %80'i için başka bir sürümümiz olmadığından, varsayılana da yönlendirilir. Trafiğin yüzdesini alan diğer sürümler dağıtılana kadar, bu sürüm etkin bir şekilde trafiğin %100'ünü alır.
 
 ```python
 import azureml.core,
@@ -247,8 +265,8 @@ from azureml.core.compute import ComputeTarget
 compute = ComputeTarget(ws, 'myaks')
 namespace_name= endpointnamespace
 # define the endpoint and version name
-endpoint_name = "mynewendpoint",
-version_name= "versiona",
+endpoint_name = "mynewendpoint"
+version_name= "versiona"
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
                                                               enable_app_insights = True,
@@ -258,11 +276,16 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
                                                               traffic_percentile = 20)
  # deploy the model and endpoint
  endpoint = Model.deploy(ws, endpoint_name, [model], inference_config, endpoint_deployment_config, compute)
+ # Wait for he process to complete
+ endpoint.wait_for_deployment(True)
  ```
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Sürümleri bir bitiş noktasına güncelleştirme ve ekleme
 
 Bitiş noktanıza başka bir sürüm ekleyin ve sürüme giden puanlama trafiğinin yüzdeliğini yapılandırın. İki tür versiyon vardır, bir kontrol ve bir tedavi sürümü. Tek bir denetim sürümüyle karşılaştırmaya yardımcı olacak birden çok tedavi sürümü olabilir.
+
+> [!TIP]
+> Aşağıdaki kod snippet tarafından oluşturulan ikinci sürüm, trafiğin% 10 kabul eder. İlk sürüm %20 için yapılandırılmıştır, bu nedenle trafiğin yalnızca %30'u belirli sürümler için yapılandırılır. Kalan %70'lik kısım, varsayılan sürüm olduğundan ilk uç nokta sürümüne gönderilir.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -275,9 +298,13 @@ endpoint.create_version(version_name = version_name_add,
                         tags = {'modelVersion':'b'},
                         description = "my second version",
                         traffic_percentile = 10)
+endpoint.wait_for_deployment(True)
 ```
 
-Varolan sürümleri güncelleştirin veya bitiş noktasında silin. Sürümün varsayılan türünü, denetim türünü ve trafik yüzdeliğini değiştirebilirsiniz.
+Varolan sürümleri güncelleştirin veya bitiş noktasında silin. Sürümün varsayılan türünü, denetim türünü ve trafik yüzdeliğini değiştirebilirsiniz. Aşağıdaki örnekte, ikinci sürüm trafiğini %40'a yükseltir ve şimdi varsayılan dır.
+
+> [!TIP]
+> Aşağıdaki kod parçacığından sonra, ikinci sürüm artık varsayılandır. Orijinal sürüm hala %20 için yapılandırılırken, şimdi %40 için yapılandırılmıştır. Bu, trafiğin %40'ının sürüm yapılandırmaları tarafından hesaba katılmadığı anlamına gelir. Artık kalan trafik, artık varsayılan olduğundan ikinci sürüme yönlendirilir. Etkin bir şekilde trafiğin% 80 alır.
 
  ```python
 from azureml.core.webservice import AksEndpoint
@@ -288,7 +315,8 @@ endpoint.update_version(version_name=endpoint.versions["versionb"].name,
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
-
+# Wait for the process to complete before deleting
+endpoint.wait_for_deployment(true)
 # delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 
