@@ -207,7 +207,7 @@
               href: add-output-binding-storage-queue-vs-code.md
             - name: Depolama - Visual Studio
               href: add-output-binding-storage-queue-vs.md
-            - name: Depolama - Java/Gradle
+            - name: Depolama - Java
               href: functions-add-output-binding-storage-queue-java.md
         - name: Hata ayıklama ve test etme
           items:
