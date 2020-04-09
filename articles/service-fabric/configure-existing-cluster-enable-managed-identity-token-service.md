@@ -4,12 +4,12 @@ description: 'Varolan bir Azure Hizmet Kumaşı kümesinde yönetilen kimlik des
 ms.topic: article
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: cb6e4ab00afd80cba41881e46296f7046a905919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934958"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983815"
 ---
 # <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Yönetilen kimlik desteğini varolan bir Hizmet Kumaşı kümesinde yapılandırma (önizleme)
 
@@ -40,7 +40,7 @@ Yönetilen Kimlik Belirteci Hizmetini varolan bir kümede etkinleştirmek için,
 ]
 ```
 
-Değişikliklerin etkili olması için, yükseltme küme de ilerledikçe her düğümde Hizmet Kumaşı çalışma zamanının güçlü bir şekilde yeniden başlatılmasını belirtmek için yükseltme ilkesini değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilen sistem hizmetinin başlatılmasını ve her düğümüzerinde çalışmasını sağlar. Aşağıdaki snippet olarak, `forceRestart` temel ayardır; ayarların geri kalanı için varolan değerleri kullanın.  
+Değişikliklerin etkili olması için, yükseltme küme de ilerledikçe her düğümde Hizmet Kumaşı çalışma zamanının güçlü bir şekilde yeniden başlatılmasını belirtmek için yükseltme ilkesini değiştirmeniz gerekir. Bu yeniden başlatma, yeni etkinleştirilen sistem hizmetinin başlatılmasını ve her düğümüzerinde çalışmasını sağlar. Aşağıdaki snippet' `forceRestart` te yeniden başlatmayı etkinleştirmek için gerekli ayar dır. Kalan parametreler için aşağıda açıklanan değerleri kullanın veya küme kaynağı için önceden belirtilen varolan özel değerleri kullanın. Hizmet Kumaşı kaynağında 'Kumaş Yükseltmeleri' seçeneğini seçerek Azure Portalı'ndan Kumaş Yükseltme İlkesi ('yükseltme Açıklaması') için özel ayarlar görüntülenebilir veya resources.azure.com. Yükseltme ilkesi ('upgradeDescription') için varsayılan seçenekler powershell veya resources.azure.com görüntülenemez. Ek bilgi için [ClusterUpgradePolicy'ye](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) bakın.  
 
 ```json
 "upgradeDescription": {

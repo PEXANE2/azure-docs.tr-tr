@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf512fc521ef553f0bbd6ef6dd8ee19e398b37b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442179"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982712"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API'de toplu işlemler gerçekleştirmek için grafik toplu uygulayıcısı .NET kitaplığını kullanma
 
 Bu öğretici, grafik nesnelerini bir Azure Cosmos DB Gremlin API kapsayıcısına almak ve güncelleştirmek için Azure CosmosDB'nin toplu uygulayıcısı .NET kitaplığını kullanma yla ilgili yönergeler sağlar. Bu işlem, vertex ve Edge nesnelerini programlı bir şekilde oluşturmak ve ağ isteği başına birden fazla eklemek için [toplu yürütme kitaplığındaki](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-overview) Grafik sınıfını kullanır. Bu davranış, hem veritabanı hem de yerel bellek kaynaklarını en iyi şekilde kullanmak için toplu yürütme kitaplığı aracılığıyla yapılandırılabilir.
 
-Gremlin sorgularını komutun değerlendirilip teker teker yürütüldüğü bir veritabanına göndermek yerine, toplu yürütme kitaplığını kullanmak yerine nesneleri yerel olarak oluşturmayı ve doğrulamayı gerektirir. Kitaplık, nesneleri oluşturduktan sonra grafik nesnelerini veritabanı hizmetine sıralı bir şekilde göndermenizi sağlar. Bu yöntemle veri alımı hızları 100 kata kadar artırılabilir ve bu da ilk veri geçişi veya düzenli veri taşıma işlemleri için ideal bir yöntem olmasını sağlar. [Azure Cosmos DB Graph toplu yürütme veya örnek uygulamasının](https://aka.ms/graph-bulkexecutor-sample)GitHub sayfasını ziyaret ederek daha fazla bilgi edinin.
+Gremlin sorgularını komutun değerlendirilip teker teker yürütüldüğü bir veritabanına göndermek yerine, toplu yürütme kitaplığını kullanmak yerine nesneleri yerel olarak oluşturmayı ve doğrulamayı gerektirir. Kitaplık, nesneleri oluşturduktan sonra grafik nesnelerini veritabanı hizmetine sıralı bir şekilde göndermenizi sağlar. Bu yöntemle veri alımı hızları 100 kata kadar artırılabilir ve bu da ilk veri geçişi veya düzenli veri taşıma işlemleri için ideal bir yöntem olmasını sağlar. [Azure Cosmos DB Graph toplu yürütme veya örnek uygulamasının](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started)GitHub sayfasını ziyaret ederek daha fazla bilgi edinin.
 
 ## <a name="bulk-operations-with-graph-data"></a>Grafik verileriyle toplu işlemler
 
@@ -120,7 +120,7 @@ e.AddProperty("customProperty", "value");
 * Git. Daha fazla bilgi için [Git indirme sayfasına](https://git-scm.com/downloads) bakın.
 
 ### <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
-Bu öğreticide, GitHub'da barındırılan Azure [Cosmos DB Graph toplu yürütme örneğini](https://aka.ms/graph-bulkexecutor-sample) kullanarak başlamak için gereken adımları izleyeceğiz. Bu uygulama, rastgele köşe ve kenar nesneleri oluşturup belirtilen grafik veritabanı hesabına toplu ekleme yapan bir .NET çözümü içerir. Uygulamayı almak için aşağıdaki `git clone` komutunu çalıştırın:
+Bu öğreticide, GitHub'da barındırılan Azure [Cosmos DB Graph toplu yürütme örneğini](https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started) kullanarak başlamak için gereken adımları izleyeceğiz. Bu uygulama, rastgele köşe ve kenar nesneleri oluşturup belirtilen grafik veritabanı hesabına toplu ekleme yapan bir .NET çözümü içerir. Uygulamayı almak için aşağıdaki `git clone` komutunu çalıştırın:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dotnet-getting-started.git

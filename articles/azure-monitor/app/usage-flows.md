@@ -1,17 +1,17 @@
 ---
-title: Azure Uygulama Öngörüleri'nde Kullanıcı Akışları ile kullanıcı gezinti modellerini analiz edin | Microsoft dokümanlar
+title: Azure Uygulama Öngörüleri Kullanıcı Akışları navigasyon akışlarını analiz eder
 description: Kullanıcıların web uygulamanızın sayfaları ve özellikleri arasında nasıl gezinip gezinebildiğini analiz edin.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: a4a81a3e4c5759e444836162319abb97d83a4c74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8622ede9e6f7fba2fde2e0b2e90eb31520a23d04
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671078"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892453"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Uygulama Öngörülerinde Kullanıcı Akışları ile kullanıcı gezinti modellerini analiz edin
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft Grafik API | Microsoft Dokümanlar
+title: Microsoft Graph API'si
 description: Microsoft Graph API, Microsoft Cloud hizmet kaynaklarına erişmenizi sağlayan yeni bir web API'sidir.
 author: davidmu1
 services: active-directory
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 02/13/2020
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 6c1b4390282f6d54178365714b1e2e665b4cf061
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67dbf696903e7a930d75762deb00ad58ed1a4f69
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136509"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886475"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph API'si
 
@@ -36,7 +36,7 @@ Beta API'lerini kullanmaya başlamak için [Microsoft Graph beta uç nokta başv
 
 v1.0 API'lerini kullanmaya başlamak için [Microsoft Graph REST API v1.0 başvurusuna](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) bakın
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Kullanıcı veya e-posta iletisi gibi bir kaynaktan okumak veya yazmak için aşağıdakigibi görünen bir istek oluşturuyorsunuz:
 

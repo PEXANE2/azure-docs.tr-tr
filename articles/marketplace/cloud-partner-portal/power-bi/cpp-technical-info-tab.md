@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 92bc172fd9a47d3b140e60a4083d65a2f532769a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745564"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981367"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Power BI Apps Teknik Bilgi sekmesi
 
 >[!Important]
->30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
+>13 Nisan 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
 
 Yeni **Teklif** sayfasında, Power BI yükleyici paket URL'sini ve yeni teklifi doğrulamak için ihtiyaç duyduğunuz diğer bilgileri sağlamak için **Teknik Bilgiler** sekmesini kullanın.  İlk sürüm için tüm Power BI uygulamaları ücretsizdir ve AppSource'tan indirilebilir. Bu nedenle, bu teklif türü için stok tutma birimlerini (SUS) tanımlayamam.
 

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 84cd201cd758293082a61a87528332c7d8c58811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ef511c203caa11aad4dea1047c982158810c4038
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264314"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982132"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Azure Cosmos DB ile küresel veri dağıtımı - Genel bakış
 
@@ -41,7 +41,7 @@ Azure Cosmos DB çoklu homing API'lerini kullanarak, uygulamanız en yakın böl
 
 **Bölgesel kesintiler sırasında iş sürekliliğini koruyun.** Azure Cosmos DB, bölgesel bir kesinti sırasında [otomatik olarak başarısızlığı](how-to-manage-database-account.md#automatic-failover) destekler. Azure Cosmos DB, bölgesel bir kesinti sırasında gecikme süresi, kullanılabilirlik, tutarlılık ve iş çıkış SLA'larını korumaya devam ediyor. Cosmos DB, tüm uygulamanızın son derece kullanılabilir olduğundan emin olmak için bölgesel bir kesintiyi simüle etmek için manuel bir hata API sunar. Bu API'yi kullanarak, düzenli iş sürekliliği matkapları gerçekleştirebilirsiniz.
 
-**Genel olarak okuma ve yazma iş lerini ölçeklendirin.** Her bölgenin yazılabilir ve elastik ölçek tüm dünyada okur ve yazıyor olmasını sağlayabilirsiniz. Uygulamanızın Bir Azure Cosmos veritabanında veya kapsayıcıda yapılandırdığı iş, Azure Cosmos hesabınızla ilişkili tüm bölgelere teslim edilmesi garanti edilir. Sağlanan iş [kolu, mali destekli SLA'lar](https://aka.ms/acdbsla)tarafından garanti edilir.
+**Genel olarak okuma ve yazma iş lerini ölçeklendirin.** Her bölgenin yazılabilir ve elastik ölçek tüm dünyada okur ve yazıyor olmasını sağlayabilirsiniz. Uygulamanızın Bir Azure Cosmos veritabanında veya kapsayıcıda yapılandırdığı iş, Azure Cosmos hesabınızla ilişkili tüm bölgelere teslim edilmesi garanti edilir. Sağlanan iş [kolu, mali destekli SLA'lar](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)tarafından garanti edilir.
 
 **Birkaç iyi tanımlanmış tutarlılık modelleri arasından seçim yapın.** Azure Cosmos DB çoğaltma protokolü iyi tanımlanmış, pratik ve sezgisel beş tutarlılık modeli sunar. Her modeltutarlılık ve performans arasında bir tradeoff vardır. Genel olarak dağıtılmış uygulamaları kolaylıkla oluşturmak için bu tutarlılık modellerini kullanın.
 

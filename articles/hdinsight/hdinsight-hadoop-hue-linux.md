@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 11/28/2019
-ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: dea7e8d5679c8c5a14d6a4253b8a4b36343e6ed8
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934574"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887104"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde Hue'yi yükleyin ve kullanın
 
@@ -51,7 +51,7 @@ Komut Dosyası Eyleminiz için aşağıdaki tablodaki bilgileri kullanın. Komut
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight kümeleriyle Hue'yi kullanma
 
-SSH Tünelleme, kümedeki Tona erişebilmek için tek yoldur. SSH üzerinden tünel yapmak, trafiğin doğrudan Hue'nin çalıştığı kümenin headnode'una gitmesini sağlar. Küme sağlama yı bitirdikten sonra, Bir HDInsight kümesinde Hue'yu kullanmak için aşağıdaki adımları kullanın.
+Normal kümelerde Hue ile yalnızca bir kullanıcı hesabınız olabilir. Çok kullanıcılı erişim için kümede [Kurumsal Güvenlik Paketi'ni](./domain-joined/hdinsight-security-overview.md) etkinleştirin. SSH Tünelleme, kümedeki Hue'ya bir kez çalıştırdıktan sonra erişebilmek için tek yoldur. SSH üzerinden tünel yapmak, trafiğin doğrudan Hue'nin çalıştığı kümenin headnode'una gitmesini sağlar. Küme sağlama yı bitirdikten sonra, Bir HDInsight kümesinde Hue'yu kullanmak için aşağıdaki adımları kullanın.
 
 > [!NOTE]  
 > Aşağıdaki talimatları takip etmek için Firefox web tarayıcısını kullanmanızı öneririz.
@@ -115,7 +115,7 @@ SSH Tünelleme, kümedeki Tona erişebilmek için tek yoldur. SSH üzerinden tü
 
 1. Hue, Hive için geçerli varsayılan olan Apache Tez işlerini anlamıyor. MapReduce'ı Kovan yürütme motoru olarak kullanmak istiyorsanız, komut dosyanızdaki aşağıdaki komutu kullanmak için komut dosyasını güncelleştirin:
 
-        set hive.execution.engine=mr;
+         set hive.execution.engine=mr;
 
 1. Linux kümeleri ile, Kaynak Yöneticisi ikincil de çalışıyor olabilir iken hizmetlerinbirincil başlık üzerinde çalışan bir senaryo olabilir. Böyle bir senaryo, kümedeki RUNNING işlerinin ayrıntılarını görüntülemek için Hue'yu kullanırken hatalara (aşağıda gösterilmiştir) neden olabilir. Ancak, iş tamamlandığında iş ayrıntılarını görüntüleyebilirsiniz.
 

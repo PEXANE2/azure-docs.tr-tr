@@ -2,20 +2,22 @@
 title: Kaynak günlüklerini toplama & analiz edin
 description: Azure Kapsayıcı Örnekleri'ndeki kapsayıcı gruplarından kaynak günlüklerini ve olay verilerini Azure Monitörgünlüklerine nasıl göndereceğinizi öğrenin
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 04/07/2020
 ms.author: danlep
-ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd21a511641d5ea027c18bedb4dce47749110bcb
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770552"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892402"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor günlükleriyle kapsayıcı grubu ve örnek günlüğe kaydetme
 
 Günlük Analizi çalışma alanları, günlük verilerini yalnızca Azure kaynaklarından değil, diğer bulutlardaki şirket içi kaynakları ve kaynakları depolamak ve sorgulamak için merkezi bir konum sağlar. Azure Kapsayıcı Örnekleri, günlükleri ve olay verilerini Azure Monitor günlüklerine göndermek için yerleşik destek içerir.
 
-Kapsayıcı grup günlüğü ve olay verilerini Azure Monitor günlüklerine göndermek için, kapsayıcı grubu oluştururken varolan bir Log Analytics çalışma alanı kimliği ve çalışma alanı anahtarını belirtin. Aşağıdaki bölümlerde, günlüğe kaydetme özelliğine göre kapsayıcı grubunun nasıl oluşturulup sorgulanmayı anlatılıyor.
+Kapsayıcı grup günlüğü ve olay verilerini Azure Monitor günlüklerine göndermek için, kapsayıcı grubunu yapılandırırken varolan bir Log Analytics çalışma alanı kimliği ve çalışma alanı anahtarını belirtin. 
+
+Aşağıdaki bölümlerde, günlüğe kaydetme özelliğine göre kapsayıcı grubunun nasıl oluşturulup sorgulanmayı anlatılıyor. Ayrıca, günlüğe kaydetmeyi etkinleştirmek için bir kapsayıcı grubunu çalışma alanı kimliği ve çalışma alanı anahtarıyla [da güncelleştirebilirsiniz.](container-instances-update.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

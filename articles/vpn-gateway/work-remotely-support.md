@@ -1,18 +1,18 @@
 ---
 title: 'P2S ile uzaktan çalışma: Azure VPN Ağ Geçidi'
-description: Bu sayfa, COVID-19 salgını nedeniyle uzaktan çalışmayı etkinleştirmek için Azure Kalesi'nden nasıl yararlanabileceğinizi açıklar.
+description: Bu sayfa, COVID-19 salgını nedeniyle uzaktan çalışmayı etkinleştirmek için VPN Ağ Geçidi'nden nasıl yararlanabileceğinizi açıklar.
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: b751817467bd263e8b7c64ccc95ec82ef1579836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d07a13c654f30e48c37d2e8d3e801166e26f4f4
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337113"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886594"
 ---
 # <a name="remote-work-using-azure-vpn-gateway-point-to-site"></a>Azure VPN Ağ Geçidi Sayfa-to-site kullanarak uzaktan çalışma
 
@@ -20,11 +20,11 @@ ms.locfileid: "80337113"
 >Bu makalede, COVID-19 krizi nedeniyle karşılaştığınız ağ sorunlarını uzaktan çalışmak ve ağ sorunlarını azaltmak için Azure VPN Ağ Geçidi, Azure, Microsoft ağı ve Azure iş ortağı ekosisteminden nasıl yararlanabileceğiniz açıklanmaktadır.
 >
 
-Bu makalede, kuruluşların kullanıcıları için uzaktan erişim kurulumu veya COVID-19 salgını sırasında mevcut çözümlerini ek kapasiteyle tamamlamaları için kullanabileceği seçenekler açıklanmaktadır.
+Bu makalede, kuruluşların kullanıcıları için uzaktan erişim ayarlamaları veya COVID-19 salgını sırasında mevcut çözümlerini ek kapasiteyle tamamlamaları için kullanabileceği seçenekler açıklanmaktadır.
 
 Azure noktadan siteye çözüm bulut tabanlıdır ve kullanıcıların evden çalışma talebini karşılamak için hızlı bir şekilde sağlanabilir. Artırılmış kapasiteye artık ihtiyaç duyulmadığında kolayca ölçeklenebilir ve kolayca ve hızlı bir şekilde kapatılabilir.
 
-## <a name="about-point-to-site-vpn"></a>Noktadan Siteye VPN Hakkında
+## <a name="about-point-to-site-vpn"></a><a name="p2s"></a>Noktadan Siteye VPN Hakkında
 
 Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisayardan sanal ağınıza güvenli bir bağlantı oluşturmanıza olanak sağlar. P2S bağlantısı, istemci bilgisayardan başlatılarak oluşturulur. Bu çözüm, Azure VNet'lerine veya şirket içi veri merkezlerine evden veya konferans gibi uzak bir konumdan bağlanmak isteyen yolcular için yararlıdır. Bu makalede, kullanıcıların çeşitli senaryolara göre uzaktan çalışmasını nasıl etkinleştirin.
 
@@ -32,25 +32,26 @@ Aşağıdaki tabloistemci işletim sistemlerini ve bunların kullanabileceği ki
 
 ![noktadan siteye](./media/working-remotely-support/ostable.png "İşletim Sistemi")
 
-## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a>Senaryo 1 - Kullanıcıların yalnızca Azure'daki kaynaklara erişmeleri gerekir
+## <a name="scenario-1---users-need-access-to-resources-in-azure-only"></a><a name="scenario1"></a>Senaryo 1 - Kullanıcıların yalnızca Azure'daki kaynaklara erişmeleri gerekir
 
 Bu senaryoda, uzak kullanıcıların yalnızca Azure'da bulunan kaynaklara erişmeleri gerekir.
 
-![noktadan siteye](./media/working-remotely-support/scenario1.png "Scanario 1")
+![noktadan siteye](./media/working-remotely-support/scenario1.png "Senaryo 1")
 
 Yüksek düzeyde, kullanıcıların Azure kaynaklarına güvenli bir şekilde bağlanabilmeleri için aşağıdaki adımlar gereklidir:
 
-1. Sanal Ağ Ağ Ağ Geçidi Oluşturma (yoksa)
-2. Ağ geçidinde noktadan siteye VPN'i yapılandırma
-    3. [Sertifika kimlik doğrulaması için bu bağlantıyı takip edin.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#creategw)
-    2.  [OpenVPN için bu bağlantıyı takip edin.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn)
-    3.  [Azure AD kimlik doğrulaması için bu bağlantıyı izleyin.](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant)
-    4.  [Sorun giderme noktası sayfa-site bağlantıları için bu bağlantıyı izleyin.](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems)
-3. VPN istemcisi yapılandırmasını indirin ve dağıtın
-4. Sertifikaları (sertifika kimlik doğrulaması seçilirse) istemcilere dağıtma
-5. Azure VPN'e bağlanın
+1. Sanal ağ ağ geçidi oluşturun (yoksa).
+2. Ağ geçidinde noktadan siteye VPN'i yapılandırın.
 
-## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a>Senaryo 2 - Kullanıcıların Azure ve/veya ön hazırlık kaynaklarındaki kaynaklara erişmeleri gerekir
+   * Sertifika kimlik doğrulaması için [bu bağlantıyı](vpn-gateway-howto-point-to-site-resource-manager-portal.md#creategw)takip edin.
+   * OpenVPN için bu bağlantıyı takip [edin.](vpn-gateway-howto-openvpn.md)
+   * Azure AD kimlik doğrulaması için [bu bağlantıyı](openvpn-azure-ad-tenant.md)izleyin.
+   * Sorun giderme noktası sayfa-site bağlantıları için [bu bağlantıyı](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)izleyin.
+3. VPN istemcisi yapılandırmasını indirin ve dağıtın.
+4. Sertifikaları (sertifika kimlik doğrulaması seçiliyse) istemcilere dağıtın.
+5. Azure VPN'e bağlanın.
+
+## <a name="scenario-2---users-need-access-to-resources-in-azure-andor-on-prem-resources"></a><a name="scenario2"></a>Senaryo 2 - Kullanıcıların Azure ve/veya ön hazırlık kaynaklarındaki kaynaklara erişmeleri gerekir
 
 Bu senaryoda, uzak kullanıcıların Azure'da ve şirket içi veri merkezinde bulunan kaynaklara erişmeleri gerekir.
 
@@ -58,13 +59,13 @@ Bu senaryoda, uzak kullanıcıların Azure'da ve şirket içi veri merkezinde bu
 
 Yüksek düzeyde, kullanıcıların Azure kaynaklarına güvenli bir şekilde bağlanabilmeleri için aşağıdaki adımlar gereklidir:
 
-1. Sanal Ağ Ağ Ağ Geçidi Oluşturma (yoksa)
-2. Ağ geçidinde noktadan siteye VPN'i yapılandırın (yukarıdaki Senaryo 1'e bakın)
-3. Azure Sanal Ağ Ağ Geçidi'nde BGP etkinleştirilmiş siteden siteye tüneli yapılandırma
-4. Azure Sanal Ağ Ağ Geçidine bağlanmak için şirket aygıtında yapılandırma
+1. Sanal ağ ağ geçidi oluşturun (yoksa).
+2. Ağ geçidinde noktadan siteye VPN'i yapılandırın (bkz. [Senaryo 1).](#scenario1)
+3. Azure sanal ağ ağ geçidinde BGP etkinken siteden siteye tünel yapılandırın.
+4. Şirket içi aygıtı Azure sanal ağ ağ geçidine bağlanacak şekilde yapılandırın.
 5. Azure portalından siteye nokta profilini indirin ve istemcilere dağıtın
 
-[Siteden siteye VPN tüneli nasıl kurulacaksını öğrenmek için bu bağlantıyı izleyin](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+Siteden siteye VPN tüneli nasıl kurulmayı öğrenmek için [bu bağlantıyı](vpn-gateway-howto-site-to-site-resource-manager-portal.md)görün.
 
 ## <a name="faq-for-native-azure-certificate-authentication"></a><a name="faqcert"></a>Yerel Azure sertifika kimlik doğrulaması için SSS
 

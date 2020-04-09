@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörüleri ile hataları ve özel durumları tanılama
 description: İstek telemetrisiyle birlikte ASP.NET uygulamalardan istisnaları yakalayın.
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: ccfcb354e27d36f40810b114a1729cf6addf8fb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f24f09e7d2ef0a3e5f3a8f6546a9115118473ab
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294698"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892351"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights ile web uygulamalarınızda özel durumları tanılama
 Canlı web uygulamanızdaki istisnalar [Application Insights](../../azure-monitor/app/app-insights-overview.md)tarafından raporlanır. Başarısız istekleri, nedenleri hızlı bir şekilde tanılayabilmeniz için hem istemcide hem de sunucudaki özel durumlar ve diğer olaylarla ilişkilendirebilirsiniz.
@@ -19,7 +19,7 @@ Canlı web uygulamanızdaki istisnalar [Application Insights](../../azure-monito
   * Azure VM ve Azure sanal makine ölçeği, IIS tarafından barındırılan uygulamaları ayarlar: [Uygulama İzleme Uzantısını](../../azure-monitor/app/azure-vm-vmss-apps.md) ekleyin
   * [Uygulama Öngörüleri SDK'yı](../../azure-monitor/app/asp-net.md) uygulama kodunuza yükleyin veya
   * IIS web sunucuları: [Uygulama Öngörüleri Aracısı](../../azure-monitor/app/monitor-performance-live-website-now.md)Çalıştır ; Veya
-  * Java web uygulamaları: [Java aracısını](../../azure-monitor/app/java-agent.md) yükleyin
+  * Java web uygulamaları: [Java aracısını](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) etkinleştirin
 * Tarayıcı özel durumlarını yakalamak için web sayfalarınızda [JavaScript snippet'ini](../../azure-monitor/app/javascript.md) yükleyin.
 * Bazı uygulama çerçevelerinde veya bazı ayarlarda, daha fazla özel durum yakalamak için bazı ek adımlar atmanız gerekir:
   * [Web formları](#web-forms)
@@ -199,7 +199,7 @@ Ancak etkin yönlendirmeler varsa, Global.asax.cs'daki Application_Error işlevi
 ## <a name="mvc"></a>MVC
 Application Insights Web SDK sürüm 2.6 (beta3 ve sonraki sürüm) ile başlayarak, Application Insights MVC 5+ denetleyicileri yöntemlerine otomatik olarak atılan işlenmemiş özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift kez izlenmesini önlemek için bu özel durumu kaldırabilirsiniz.
 
-Özel durum filtrelerinin işleyemediği birkaç servis vardır. Örnek:
+Özel durum filtrelerinin işleyemediği birkaç servis vardır. Örneğin:
 
 * Denetleyici oluşturuculardan atılan özel durumlar.
 * İleti işleyicilerinden atılan özel durumlar.
@@ -291,7 +291,7 @@ AiHandleErrorAttribute'ı FilterConfig.cs'da genel bir filtre olarak kaydedin:
 ## <a name="web-api"></a>Web API
 Application Insights Web SDK sürüm 2.6 (beta3 ve sonraki sürüm) ile başlayarak, Application Insights WebAPI 2+ için denetleyici yöntemlerine otomatik olarak atılan işlenmemiş özel durumları toplar. Bu tür özel durumları izlemek için daha önce özel bir işleyici eklediyseniz (aşağıdaki örneklerde açıklandığı gibi), özel durumların çift kez izlenmesini önlemek için bu özel durumu kaldırabilirsiniz.
 
-Özel durum filtrelerinin işleyemediği birkaç servis vardır. Örnek:
+Özel durum filtrelerinin işleyemediği birkaç servis vardır. Örneğin:
 
 * Denetleyici oluşturuculardan atılan özel durumlar.
 * İleti işleyicilerinden atılan özel durumlar.

@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Birden çok hesabı bağlamak için Amazon Web Hizmetleri (AWS) ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
-description: Azure AD ile Amazon Web Hizmetleri'nin (AWS) birden çok hesabı arasında tek oturum açma yı nasıl yapılandırabileceğinizi öğrenin.
+description: Azure AD ve Amazon Web Hizmetleri (AWS) (Eski Öğretici) arasında tek oturum açma işlemlerini nasıl yapılandırabileceğinizi öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,21 +11,20 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edd54352b1328c95ae2c3e466003b64eaa0fcfde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368007"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885386"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Öğretici: Birden çok Amazon Web Hizmetleri (AWS) hesabıyla Azure Active Directory entegrasyonu
+# <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Hizmetleri (AWS) ile Azure Active Directory entegrasyonu (Eski Öğretici)
 
-Bu eğitimde, Azure Etkin Dizinini (Azure AD) ile Amazon Web Hizmetleri 'nin (AWS) birden çok hesabıyla nasıl entegre acağınızı öğrenirsiniz.
+Bu öğreticide, Azure Active Directory'yi (Azure AD) ile Amazon Web Hizmetleri (AWS) (Eski Öğretici) ile nasıl entegre acağınızı öğrenirsiniz.
 
 Amazon Web Hizmetlerini (AWS) Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
@@ -37,8 +36,8 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak isti
 
 ![Amazon Web Services (AWS) sonuç listesinde](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
->[!NOTE]
->Lütfen bir AWS uygulamasını tüm AWS hesaplarınıza bağlamanın tavsiye edilen yaklaşımımız olmadığını unutmayın. Bunun [yerine,](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) Birden çok AWS hesabı örneğini Azure AD'deki Birden çok AWS uygulaması örneğine yapılandırmak için bu yaklaşımı kullanmanızı öneririz.
+> [!NOTE]
+> Lütfen bir AWS uygulamasını tüm AWS hesaplarınıza bağlamanın tavsiye edilen yaklaşımımız olmadığını unutmayın. Bunun [yerine,](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) Birden çok AWS hesabı örneğini Azure AD'deki Birden çok AWS uygulaması örneğine yapılandırmak için bu yaklaşımı kullanmanızı öneririz. [Bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşımı yalnızca içinde çok daha az Sayıda AWS Hesabı ve Rolü varsa kullanmalısınız. [AWS](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) hesapları ve bu hesapların içindeki roller büyüdükçe bu model ölçeklenebilir değildir. Ayrıca [bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşım, Azure AD Kullanıcı Sağlama'yı kullanarak AWS Role alma işlevini kullanmaz ve bu nedenle rolleri el ile eklemeniz/güncelleştirmeniz/silmeniz gerekir. [Bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşımla ilgili diğer sınırlamalar için lütfen aşağıdaki ayrıntılara bakın.
 
 **Bu yaklaşımı aşağıdaki nedenlerle kullanmanızı önermediğimizi lütfen unutmayın:**
 
@@ -70,32 +69,22 @@ Bu öğreticideki adımları sınamak için aşağıdaki önerileri izlemeniz ge
 Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
 * Amazon Web Services (AWS) **SP ve IDP** SSO başlatılan destekler
+* Amazon Web Hizmetlerini (AWS) yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan Oturum Denetimi'ni uygulayabilirsiniz. Oturum Denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>Galeriden Amazon Web Hizmetleri (AWS) ekleme
 
 Amazon Web Hizmetleri'nin (AWS) Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Amazon Web Hizmetleri 'ni (AWS) eklemeniz gerekir.
 
-**Galeriden Amazon Web Hizmetleri (AWS) eklemek için aşağıdaki adımları gerçekleştirin:**
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Amazon Web Hizmetleri (AWS)** yazın.
+1. Sonuç panelinden **Amazon Web Services'ı (AWS)** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
+1. Uygulama eklendikten sonra **Özellikler** sayfasına gidin ve **Nesne Kimliğini**kopyalayın.
 
-    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
-
-2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
-
-    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
-
-3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
-
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
-
-4. Arama kutusunda, **Amazon Web Services (AWS)** yazın, sonuç panelinden Amazon Web Services **(AWS)** seçeneğini seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
-
-     ![Amazon Web Services (AWS) sonuç listesinde](common/search-new-app.png)
-
-5. Uygulama eklendikten sonra **Özellikler** sayfasına gidin ve **Nesne Kimliğini**kopyalayın.
-
-    ![Amazon Web Services (AWS) sonuç listesinde](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_properties.png)
+    ![Amazon Web Services (AWS) sonuç listesinde](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
@@ -129,9 +118,7 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
     ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Temel **SAML Yapılandırması** bölümünde, uygulama Azure ile önceden entegre edilmiş olduğundan, kullanıcının herhangi bir adım gerçekleştirmesi gerekmez.
-
-    ![image](common/preintegrated.png)
+4. Temel **SAML Yapılandırması** bölümünde, uygulama Azure ile önceden entegre edilmiş olduğundan kullanıcının herhangi bir adım gerçekleştirmesine gerek yoktur ve **Kaydet'i**tıklatın.
 
 5. Amazon Web Services (AWS) uygulaması belirli bir biçimde SAML iddiaları bekliyor. Bu uygulama için aşağıdaki talepleri yapılandırın. Bu özniteliklerin değerlerini, uygulama tümleştirme sayfasındaki **Kullanıcı Öznitelikleri & Talepler** bölümünden yönetebilirsiniz. **SAML sayfasıyla Tek Oturum** Açma'da, **Kullanıcı Öznitelikleri & Talepler** iletişim kutusunu açmak için **Edit** düğmesini tıklatın.
 
@@ -141,9 +128,9 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
     | Adı  | Kaynak Özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
-    | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Rol            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | Oturum Süresi             | "900 saniye (15 dakika) ile 43200 saniye (12 saat) arasında bir değer sağlar" |  https://aws.amazon.com/SAML/Attributes |
+    | RoleSessionName | user.userprincipalname | `https://aws.amazon.com/SAML/Attributes` |
+    | Rol            | user.assignedroles |  `https://aws.amazon.com/SAML/Attributes`|
+    | Oturum Süresi             | "900 saniye (15 dakika) ile 43200 saniye (12 saat) arasında bir değer sağlar" |  `https://aws.amazon.com/SAML/Attributes` |
 
     a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
 
@@ -171,19 +158,19 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
 1. Farklı bir tarayıcı penceresinde, Amazon Web Services (AWS) şirket sitenizi yönetici olarak oturum açın.
 
-2. **AWS Ana Sayfa'yı**tıklatın.
+1. **AWS Ana Sayfa'yı**tıklatın.
 
     ![Tek Oturum Açma ev yapılandırma][11]
 
-3. **Kimlik ve Erişim Yönetimi'ni**tıklatın.
+1. **Kimlik ve Erişim Yönetimi'ni**tıklatın.
 
     ![Tek Oturum Açma Kimliğini Yapılandırma][12]
 
-4. **Kimlik Sağlayıcıları'nı**tıklatın ve ardından **Sağlayıcı Oluştur'u**tıklatın.
+1. **Kimlik Sağlayıcıları'nı**tıklatın ve ardından **Sağlayıcı Oluştur'u**tıklatın.
 
     ![Tek Oturum Açma Sağlayıcısını Yapılandırma][13]
 
-5. **Sağlayıcıyı Yapılandırıyorum** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
+1. **Sağlayıcıyı Yapılandırıyorum** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
 
     ![Tek Oturum Açma iletişim kutusunu yapılandırma][14]
 
@@ -195,15 +182,15 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
     d. **Sonraki Adım'ı**tıklatın.
 
-6. Sağlayıcı **Bilgilerini Doğrula** iletişim sayfasında **Oluştur'u**tıklatın.
+1. Sağlayıcı **Bilgilerini Doğrula** iletişim sayfasında **Oluştur'u**tıklatın.
 
     ![Tek İşaret-On Doğrula'yı Yapılandır][15]
 
-7. **Roller'i**tıklatın ve ardından **Rol Oluştur'u**tıklatın.
+1. **Roller'i**tıklatın ve ardından **Rol Oluştur'u**tıklatın.
 
     ![Tek Oturum Açma Rollerini Yapılandırma][16]
 
-8. Rol **Oluştur** sayfasında aşağıdaki adımları gerçekleştirin:  
+1. Rol **Oluştur** sayfasında aşağıdaki adımları gerçekleştirin:  
 
     ![Tek Oturum Açma Güvenini Yapılandırma][19]
 
@@ -215,51 +202,72 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
   
     d. **Sonraki'yi tıklatın: İzinler**.
 
-9. İzin **İlkeleri Ekle** iletişim kutusunda, lütfen kuruluşunuz için uygun ilke ekleyin. **Sonraki'yi tıklatın: Gözden Geçirin.**  
+1. Arama çubuğunda **Yönetici Erişimi'ni** arayın ve **AdministratorAccess** onay kutusunu seçin ve **ardından Sonraki: Etiketler'i**tıklatın.
 
-    ![Tek Oturum Açma İlkesi'ni Yapılandır][33]
+    ![Yönetici Erişimi'ni seçin](./media/aws-multi-accounts-tutorial/administrator-access.png)
 
-10. Gözden **Geçirme** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
+1. **Etiketlerekle (isteğe bağlı)** bölümünde aşağıdaki adımları gerçekleştirin:
+
+    ![Yönetici Erişimi'ni seçin](./media/aws-multi-accounts-tutorial/config2.png)
+
+    a. **Anahtar** metin kutusuna eski sevgilinin anahtar adını girin: Azureadtest.
+
+    b. Değer **(isteğe bağlı)** textbox'a, aşağıdaki `accountname-aws-admin`biçimi kullanarak anahtar değerini girin. Hesap adı tüm küçük harfle olmalıdır.
+
+    c. Sonraki ni **tıklatın: Gözden geçirin.**
+
+1. Gözden **Geçirme** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
     ![Tek İşaretLi İncelemeyi Yapılandır][34]
 
-    a. Rol **adı** metin kutusuna Rol adınızı girin.
+    a. Rol **adı** metin kutusuna, aşağıdaki desendeki `accountname-aws-admin`değeri girin.
 
-    b. Rol **açıklaması** textbox'ına açıklamayı girin.
+    b. Rol **açıklaması** metin kutusuna, rol adı için kullandığınız değeri girin.
 
     c. **Rol Oluştur'u**tıklatın.
 
     d. Gerektiği kadar rol oluşturun ve bunları Kimlik Sağlayıcısı ile eşleyin.
 
-11. Geçerli AWS hesabından oturum açın ve Azure AD ile tek oturum açmak istediğiniz diğer hesapla oturum açın.
+    > [!NOTE]
+    > Benzer şekilde, hesap adı-finans-admin, hesap adı-salt-user, accountname-devops-user, accountname-tpm-user gibi farklı ilkeler eklenecek kalan diğer rolleri oluşturun. Daha sonra da bu rol ilkeleri AWS hesabı başına gereksinimleri ne göre değiştirilebilir, ancak Her zaman AWS hesapları arasında her rol için aynı ilkeleri tutmak için daha iyidir.
 
-12. Bu hesap için kurmak istediğiniz birden çok rol oluşturmak için adım-2'den adım 10'a gerçekleştirin. İkiden fazla hesabınız varsa, lütfen tüm hesapların onlar için rol oluşturması için aynı adımları gerçekleştirin.
+1. Aşağıda vurgulandığı gibi EC2 özelliklerinden veya IAM panosundan bu AWS hesabı için lütfen hesap kimliği notu alın:
 
-13. Tüm roller hesaplarda oluşturulduktan sonra, bu hesapların **Roller** listesinde gösterirler.
+    ![Yönetici Erişimi'ni seçin](./media/aws-multi-accounts-tutorial/aws-accountid.png)
 
-    ![Roller kurulumu](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_listofroles.png)
+1. Şimdi [Azure portalında](https://portal.azure.com/) oturum açın ve **Gruplar'a**gidin.
 
-14. Azure AD uygulamasıyla el ile haritalamamız gereken tüm hesaplardaki tüm roller için tüm Role ARN ve Trusted Ntities'ı yakalamamız gerekir.
+1. Daha önce oluşturulan IAM Rolleri ile aynı ada sahip yeni gruplar oluşturun ve bu yeni grupların **Nesne Adlarını** not edin.
 
-15. **Role ARN** ve **Trusted Ntities** values değerlerini kopyalamak için rolleri tıklatın. Azure AD'de oluşturmanız gereken tüm roller için bu değerlere ihtiyacınız var.
+    ![Yönetici Erişimi'ni seçin](./media/aws-multi-accounts-tutorial/copy-objectids.png)
 
-    ![Roller kurulumu](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_role_summary.png)
+1. Geçerli AWS hesabından oturum açın ve Azure AD ile tek oturum açmak istediğiniz diğer hesapla oturum açın.
 
-16. Tüm hesaplardaki tüm roller için yukarıdaki adımı gerçekleştirin ve bunların hepsini **Role ARN,Trusted varlıklar** biçiminde bir not defterinde saklayın.
+1. Tüm roller hesaplarda oluşturulduktan sonra, bu hesapların **Roller** listesinde gösterirler.
 
-17. [Microsoft Graph Explorer'ı](https://developer.microsoft.com/graph/graph-explorer) başka bir pencerede açın.
+    ![Roller kurulumu](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-listofroles.png)
 
-    a. Kiracınız için Global Admin/Co-admin kimlik bilgilerini kullanarak Graph Explorer sitesinde oturum açın.
+1. Azure AD uygulamasıyla el ile haritalamamız gereken tüm hesaplardaki tüm roller için tüm Role ARN ve Trusted Ntities'ı yakalamamız gerekir.
+
+1. **Role ARN** ve **Trusted Ntities** values değerlerini kopyalamak için rolleri tıklatın. Azure AD'de oluşturmanız gereken tüm roller için bu değerlere ihtiyacınız var.
+
+    ![Roller kurulumu](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-role-summary.png)
+
+1. Tüm hesaplardaki tüm roller için yukarıdaki adımı gerçekleştirin ve bunların hepsini **Role ARN,Trusted varlıklar** biçiminde bir not defterinde saklayın.
+
+1. [Microsoft Graph Explorer'ı](https://developer.microsoft.com/graph/graph-explorer) başka bir pencerede açın.
+
+    a. Kiracınız için Global Admin/Co-admin kimlik bilgilerini kullanarak Microsoft Graph Explorer sitesinde oturum açın.
 
     b. Rolleri oluşturmak için yeterli izinlere sahip olmanız gerekir. Gerekli **izinleri** almak için izinleri değiştir'i tıklatın.
 
-    ![Grafik gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
     c. Listeden aşağıdaki izinleri seçin (bunlar zaten yoksa) ve "İzinleri Değiştir"i tıklayın 
 
-    ![Grafik gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Bu, tekrar oturum açmanızı ve onayı kabul etmenizi isteyecektir. Onayı kabul ettikten sonra, Grafik Gezgini'ne yeniden giriş yapmış olursunuz.
+    d. Bu, tekrar oturum açmanızı ve onayı kabul etmenizi isteyecektir. Onayı kabul ettikten sonra, Microsoft Graph Explorer'da yeniden oturum açmış olursunuz.
 
     e. Sürüm açılır sürümünü **beta**olarak değiştirin. Tüm Hizmet Müdürlerini kiracınızdan almak için aşağıdaki sorguyu kullanın:
 
@@ -267,17 +275,17 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
     Birden çok dizin kullanıyorsanız, birincil etki alanınız içinde bulunan aşağıdaki deseni kullanabilirsiniz`https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
 
-    ![Grafik gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. Getirilen Hizmet Müdürleri listesinden değiştirmeniz gerekeni alın. Ayrıca, listelenen tüm ServicePrincipals'dan uygulamayı aramak için Ctrl+F'yi de kullanabilirsiniz. İlgili Hizmet Sorumlusuna ulaşmak için Azure AD Özellikleri sayfasından kopyalamış olduğunuz **Object id'i** kullanarak sorguyu aşağıdaki leri kullanabilirsiniz.
+    f. Getirilen Hizmet Müdürleri listesinden değiştirmeniz gerekeni alın. Ayrıca, listelenen tüm ServicePrincipals'dan uygulamayı aramak için Ctrl+F'yi de kullanabilirsiniz. İlgili Hizmet Sorumlusuna ulaşmak için Azure AD Özellikleri sayfasından kopyalamış olduğunuz **Nesne Kimliği'ni** kullanarak sorguyu aşağıdaki leri kullanabilirsiniz.
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    ![Grafik gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
     g. Hizmet ana nesnesinden appRoles özelliğini ayıklayın.
 
-    ![Grafik gezgini iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
     h. Artık uygulamanız için yeni roller oluşturmanız gerekir. 
 
@@ -325,22 +333,22 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
     > [!Note]
     > Yalnızca yama işlemi için **msiam_access** sonra yeni roller ekleyebilirsiniz. Ayrıca, Kuruluşunuz gereksiniminize göre istediğiniz kadar rol ekleyebilirsiniz. Azure AD, SAML yanıtında talep değeri olarak bu rollerin **değerini** gönderir.
 
-    j. Microsoft Graph Explorer'a geri dön ve yöntemi **GET'den** **PATCH'e**değiştirin. Örnekte yukarıda gösterilene benzer appRoles özelliğini güncelleyerek Hizmet Müdürü nesnesini istenen rollere sahip olacak şekilde yama. Yama işlemini yürütmek için **Sorguyu Çalıştır'ı** tıklatın. Bir başarı mesajı Amazon Web Hizmetleri uygulamanız için rolün oluşturulmasını onaylar.
+    j. Microsoft Graph Explorer'ınıza geri dön ve yöntemi **GET'den** **PATCH'e**değiştirin. Örnekte yukarıda gösterilene benzer appRoles özelliğini güncelleyerek Hizmet Müdürü nesnesini istenen rollere sahip olacak şekilde yama. Yama işlemini yürütmek için **Sorguyu Çalıştır'ı** tıklatın. Bir başarı mesajı Amazon Web Hizmetleri uygulamanız için rolün oluşturulmasını onaylar.
 
-    ![Microsoft Graph explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+    ![Microsoft Graph Explorer iletişim kutusu](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
-18. Hizmet Sorumlusu daha fazla rolle yamalı hale geldikten sonra, Kullanıcıları/Grupları ilgili rollere atayabilirsiniz. Bu portal a gidip Amazon Web Services uygulamasına gezinerek yapılabilir. Üstteki **Kullanıcılar ve Gruplar** sekmesine tıklayın.
+1. Hizmet Sorumlusu daha fazla rolle yamalı hale geldikten sonra, Kullanıcıları/Grupları ilgili rollere atayabilirsiniz. Bu portal a gidip Amazon Web Services uygulamasına gezinerek yapılabilir. Üstteki **Kullanıcılar ve Gruplar** sekmesine tıklayın.
 
-19. Söz konusu gruptaki belirli rolü atayabilmeniz için her AWS rolü için yeni gruplar oluşturmanızı öneririz. Bunun bir gruba bir rol için bire bir eşleme olduğunu unutmayın. Daha sonra bu gruba ait üyeleri ekleyebilirsiniz.
+1. Söz konusu gruptaki belirli rolü atayabilmeniz için her AWS rolü için yeni gruplar oluşturmanızı öneririz. Bunun bir gruba bir rol için bire bir eşleme olduğunu unutmayın. Daha sonra bu gruba ait üyeleri ekleyebilirsiniz.
 
-20. Gruplar oluşturulduktan sonra grubu seçin ve uygulamaya atayın.
+1. Gruplar oluşturulduktan sonra grubu seçin ve uygulamaya atayın.
 
     ![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
 
     > [!Note]
     > İç içe gruplar grup atarken desteklenmez.
 
-21. Rolü gruba atamak için rolü seçin ve sayfanın altındaki **Atla düğmesini** tıklatın.
+1. Rolü gruba atamak için rolü seçin ve sayfanın altındaki **Atla düğmesini** tıklatın.
 
     ![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/graph-explorer-new6.png)
 
@@ -353,19 +361,21 @@ Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırm
 
 Access Paneli'ndeki Amazon Web Hizmetleri (AWS) döşemesini tıklattığınızda, rolü seçme seçeneğiyle Birlikte Amazon Web Hizmetleri (AWS) uygulama sayfasını almalısınız.
 
-![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_screen.png)
+![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-screen.png)
 
 Ayrıca, rollerin talep olarak geçirildiğini görmek için SAML yanıtını da doğrulayabilirsiniz.
 
-![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_test_saml.png)
+![Tek İşaret Eklemeyi Yapılandır](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-test-saml.png)
 
 Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](../active-directory-saas-access-panel-introduction.md)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Microsoft Graph API'lerini kullanarak sağlama yapılandırma nasıl yapılır?](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
+* [MS Graph API'leri kullanarak sağlama yapılandırma nasıl yapılır?](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](tutorial-list.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+* [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+* [Amazon Web Services (AWS) gelişmiş görünürlük ve kontroller ile nasıl korunur?](https://docs.microsoft.com/cloud-app-security/protect-aws)
 
 <!--Image references-->
 
@@ -380,11 +390,11 @@ Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](../a
 [19]: ./media/aws-multi-accounts-tutorial/ic795025.png
 [32]: ./media/aws-multi-accounts-tutorial/ic7950251.png
 [33]: ./media/aws-multi-accounts-tutorial/ic7950252.png
-[35]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning.png
-[34]: ./media/aws-multi-accounts-tutorial/ic7950253.png
-[36]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_securitycredentials.png
-[37]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_securitycredentials_continue.png
-[38]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_createnewaccesskey.png
-[39]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
-[40]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
+[35]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning.png
+[34]: ./media/aws-multi-accounts-tutorial/config3.png
+[36]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-securitycredentials.png
+[37]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-securitycredentials-continue.png
+[38]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-createnewaccesskey.png
+[39]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning-automatic.png
+[40]: ./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-provisioning-testconnection.png
 [41]: ./media/aws-multi-accounts-tutorial/

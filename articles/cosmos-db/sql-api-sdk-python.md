@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547710"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982914"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Python SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ ms.locfileid: "80547710"
 * Azure DocumentDB yerine Azure Cosmos DB'ye başvurmak için güncelleştirilmiş belgeler.
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Bu SDK sürümü, Azure Cosmos DB Emulator'un https://aka.ms/cosmosdb-emulatoren son sürümünü n için gerekli.
+* Bu SDK [sürümü, Azure Cosmos DB Emülatörü'nün](https://aka.ms/cosmosdb-emulator)en son sürümünü gerektirir.
 
 ### <a name="221"></a><a name="2.2.1"/>2.2.1
 * Toplu sözlük için hata düzeltmesi.

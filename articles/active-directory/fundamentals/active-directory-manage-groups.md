@@ -13,19 +13,17 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 961444e15ae1c45db1fc7423a6ac3cc96cc7b3fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75768019"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982608"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>Azure Active Directory gruplarını kullanarak uygulama ve kaynak erişimini yönetme
 Azure Etkin Dizin (Azure AD), bulut tabanlı uygulamalarınıza, şirket içi uygulamalarınıza ve kaynaklarınıza erişimi yönetmek için grupları kullanmanıza olanak tanır. Kaynaklarınız, Azure AD'deki roller aracılığıyla veya Hizmet Olarak Yazılım (SaaS) uygulamaları, Azure hizmetleri, SharePoint siteleri ve şirket içi kaynaklar gibi kuruluş dışında nesneleri yönetme izinleri gibi Azure AD kuruluşunun bir parçası olabilir.
 
 >[!NOTE]
->Azure Active Directory'yi kullanmak için bir Azure hesabına ihtiyacınız vardır. Hesabınız yoksa [ücretsiz Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
->
 > Azure portalında, üyelik ve grup bilgilerini portalda yönetemediğiniz bazı grupları görebilirsiniz:
 >
 > - Şirket içi Active Directory'den senkronize edilen gruplar yalnızca şirket içi Active Directory'de yönetilebilir.

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 3c7ff0061a57d1a1a7525ec03b4f77c117415ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80155859"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887274"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Veri Gölü Depolama Gen2'deki verileri kopyalama ve dönüştürme
 
@@ -44,10 +44,8 @@ Kopyalama etkinliği için, bu bağlayıcı ile şunları yapabilirsiniz:
 >[!IMPORTANT]
 >Güvenilen Microsoft hizmetlerinin Azure Depolama güvenlik duvarı ayarlarında **bu depolama hesabı seçeneğine erişmesini** etkinleştiriyorsanız ve Veri Gölü Depolama Gen2'nize bağlanmak için Azure tümleştirme çalışma süresini kullanmak istiyorsanız, ADLS Gen2 için yönetilen kimlik kimlik [doğrulamasını](#managed-identity) kullanmanız gerekir.
 
->[!TIP]
->Hiyerarşik ad alanını etkinleştiriyorsanız, şu anda Blob ve Data Lake Storage Gen2 API'leri arasında birlikte çalışabilirlik yok. "Belirtilen dosya sistemi yok" iletisi ile "ErrorCode=FilesystemNotFound" hatasına basarsanız, bunun nedeni, Başka bir yerde Veri Gölü Depolama Gen2 API yerine Blob API ile oluşturulan belirtilen lavabo dosya sisteminden kaynaklanır. Sorunu gidermek için, Blob kapsayıcısının adı olarak var olmayan bir ada sahip yeni bir dosya sistemi belirtin. Daha sonra Veri Fabrikası, veri kopyalama sırasında bu dosya sistemini otomatik olarak oluşturur.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 >[!TIP]
 >Veri Gölü Depolama Gen2 konektörünün nasıl kullanılacağına bir göz atmak için, [Verileri Azure Veri Gölü Depolama Gen2'ye Yükleyin'e](load-azure-data-lake-storage-gen2.md)bakın.
@@ -314,7 +312,7 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama lavabosundaki ayarlar altın
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Altındaki tür `storeSettings` özelliği **AzureBlobFSWriteSettings**olarak ayarlanmalıdır. | Evet      |
 | copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosya olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>- Koruma Hiyerarşisi (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>- FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak oluşturulmuş adları vardır. <br/><b>- Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulmuş bir dosya adıdır. | Hayır       |
-| blockSizeInMB | ADLS Gen2'ye veri yazmak için kullanılan MB'deki blok boyutunu belirtin. [Blobs Engelle hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer **4 ile 100 MB arasındadır.** <br/>Varsayılan olarak, ADF kaynak mağaza türüve verilerinize bağlı olarak blok boyutunu otomatik olarak belirler. ADLS Gen2'ye ikili olmayan kopyaiçin varsayılan blok boyutu en fazla 4,95 TB veriye sığacak şekilde 100 MB'dır. Verileriniz büyük olmadığında, özellikle de çalışma zaman ayarı veya performans sorunuyla sonuçlanan kötü ağla Kendi kendine barındırılan Tümleştirme Çalışma Süresi'ni kullandığınızda en iyi olmayabilir. BlockSizeInMB*50000'in verileri depolayacak kadar büyük olduğundan emin olurken, bir blok boyutunu açıkça belirtebilirsiniz, aksi takdirde kopyalama etkinliği başarısız olur. | Hayır |
+| blockSizeInMB | ADLS Gen2'ye veri yazmak için kullanılan MB'deki blok boyutunu belirtin. [Blobs Engelle hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)daha fazla bilgi edinin. <br/>İzin verilen değer **4 ile 100 MB arasındadır.** <br/>Varsayılan olarak, ADF kaynak depo türünüze ve verilerinize göre blok boyutunu otomatik olarak belirler. ADLS Gen2'ye ikili olmayan kopyaiçin varsayılan blok boyutu en fazla 4,95 TB veriye sığacak şekilde 100 MB'dır. Verileriniz büyük olmadığında, özellikle de çalışma zaman ayarı veya performans sorunuyla sonuçlanan kötü ağla Kendi kendine barındırılan Tümleştirme Çalışma Süresi'ni kullandığınızda en iyi olmayabilir. BlockSizeInMB*50000'in verileri depolayacak kadar büyük olduğundan emin olurken, bir blok boyutunu açıkça belirtebilirsiniz, aksi takdirde kopyalama etkinliği başarısız olur. | Hayır |
 | maxConcurrentConnections | Veri deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır       |
 
 **Örnek:**
@@ -393,7 +391,7 @@ Veri akışını eşlemede verileri dönüştürürken, JSON, Avro, Sınırlı M
 
 ### <a name="source-transformation"></a>Kaynak dönüşümü
 
-Kaynak dönüşümünde, Azure Veri Gölü Depolama Gen2'deki bir kapsayıcı, klasör veya tek tek dosyadan okuyabilirsiniz. **Kaynak seçenekleri** sekmesi, dosyaların nasıl okunduğunu yönetmenize olanak tanır. 
+Kaynak dönüşümünde, Azure Veri Gölü Depolama Gen2'deki bir kapsayıcıdan, klasörden veya tek tek dosyadan okuyabilirsiniz. **Kaynak seçenekleri** sekmesi, dosyaların nasıl okunduğunu yönetmenize olanak tanır. 
 
 ![Kaynak seçenekleri](media/data-flow/sourceOptions1.png "Kaynak seçenekleri")
 

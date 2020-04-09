@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 55fa14f367dbf24e951fde8e9075a34499a510b1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547070"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886985"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -193,11 +193,11 @@ SNAT bağlantı noktaları ayırmaları IP taşıma protokolüne özgüdür (TCP
 Bu bölüm, SNAT yorgunluğunu azaltmaya yardımcı olmak için tasarlanmıştır ve Azure'daki giden bağlantılarda oluşabilir.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>SNAT (PAT) bağlantı noktası tükenmesi yönetme
-[PAT](#pat) için kullanılan [geçici bağlantı noktaları,](#preallocatedports) [Genel IP adresi olmayan Bağımsız VM'de](#defaultsnat) ve Ortak IP adresi olmayan Yük dengeli VM'de açıklandığı gibi tükenmez [bir kaynaktır.](#lb)
+[PAT](#pat) için kullanılan [geçici bağlantı noktaları,](#preallocatedports) [Genel IP adresi olmayan Bağımsız VM'de](#defaultsnat) ve Ortak IP adresi olmayan Yük dengeli VM'de açıklandığı gibi tükenmez [bir kaynaktır.](#lb) Bu [kılavuzu](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) kullanarak SNAT eksünü riskini belirlemek veya onaylamak için geçici bağlantı noktaları kullanımınızı izleyebilir ve geçerli tahsisatınızla karşılaştırabilirsiniz.
 
 Aynı hedef IP adresine ve bağlantı noktasına giden birçok TCP veya UDP bağlantısı başlattığınızı biliyorsanız ve giden bağlantıların başarısız olduğunu gözlemliyorsanız veya destek tarafından SNAT bağlantı noktalarını [(PAT](#pat)tarafından kullanılan önceden ayrılmış [geçici bağlantı noktaları)](#preallocatedports) tükettiğiniz idika tavsiye ediliyorsa, birkaç genel azaltma seçeneğiniz vardır. Bu seçenekleri gözden geçirin ve senaryonuz için neyin uygun ve en iyi olduğuna karar verin. Bir veya daha fazla kişi bu senaryoyu yönetmenize yardımcı olabilir.
 
-Giden bağlantı davranışını anlamakta güçlük yaşıyorsanız, IP yığını istatistiklerini (netstat) kullanabilirsiniz. Veya paket yakalamaları kullanarak bağlantı davranışlarını gözlemlemek yararlı olabilir. Bu paket yakalamalarını örneğinizin konuk işletim sistemi içinde gerçekleştirebilir veya [paket yakalama için Ağ İzleyicisi'ni](../network-watcher/network-watcher-packet-capture-manage-portal.md)kullanabilirsiniz.
+Giden bağlantı davranışını anlamakta güçlük yaşıyorsanız, IP yığını istatistiklerini (netstat) kullanabilirsiniz. Veya paket yakalamaları kullanarak bağlantı davranışlarını gözlemlemek yararlı olabilir. Bu paket yakalamalarını örneğinizin konuk işletim sistemi içinde gerçekleştirebilir veya [paket yakalama için Ağ İzleyicisi'ni](../network-watcher/network-watcher-packet-capture-manage-portal.md)kullanabilirsiniz. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Bağlantıları yeniden kullanmak için uygulamayı değiştirme 
 Uygulamanızdaki bağlantıları yeniden kullanarak SNAT için kullanılan geçici bağlantı noktalarına olan talebi azaltabilirsiniz. Bu, özellikle bağlantı nın yeniden kullanılmasının varsayılan olduğu HTTP/1.1 gibi protokoller için geçerlidir. Ve kendi aktarım (örneğin, REST) olarak HTTP kullanan diğer protokoller sırayla yararlanabilir. 

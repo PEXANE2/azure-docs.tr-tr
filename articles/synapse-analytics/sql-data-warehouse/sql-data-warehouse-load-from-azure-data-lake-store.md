@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/04/2020
+ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8ca51e0ed33d2a5dfb484520335e32ac547deb72
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: aeaa95090dc40c6e161f0c336c43032a50e5aad0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633258"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983577"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>SQL Analytics için Azure Veri Gölü Depolama'dan veri yükleme
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>Dış veri kaynağını oluşturma
 
-Verilerin konumunu depolamak için bu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu kullanın. AAD geçişi ile kimlik doğrulaması yapıyorsunuzsa, Kimlik Kartı parametresi gerekli değildir.
+Verilerin konumunu depolamak için bu [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) komutunu kullanın. AAD geçişi ile kimlik doğrulaması yapıyorsunuzsa, Kimlik Kartı parametresi gerekli değildir. Hizmet bitiş noktaları için Yönetilen Kimlik'i kullanarak kimlik doğrulaması yapıyorsunuz, dış veri kaynağını ayarlamak için bu [belgeleri](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json#azure-sql-data-warehouse-polybase) izleyin. 
 
 ```sql
 -- C (for Gen1): Create an external data source

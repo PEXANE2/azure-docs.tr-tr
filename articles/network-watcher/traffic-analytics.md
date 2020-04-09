@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: damendo
 ms.reviewer: vinigam
-ms.openlocfilehash: 83164a615cacc067e5f1ea6a1dd6ce0f0fd9d540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adba282a96f9d250569e090e186859c04e89ebda
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298842"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981554"
 ---
 # <a name="traffic-analytics"></a>Trafik Analizi
 
@@ -183,8 +183,8 @@ Resimde gösterildiği gibi aşağıdaki seçenekleri seçin:
 
 1. **Durum** için *A'yı* Seçin
 2. **Akış Günlükleri sürümü**için Sürüm *2'yi* seçin. Sürüm 2 akış oturumu istatistiklerini (Baytlar ve Paketler) içerir
-3. Akış günlüğünü depolamak için varolan bir depolama hesabı seçin. Verileri sonsuza kadar depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure Depolama ücretlerine tabisiniz. Depolama nızın "Veri Gölü Depolama Gen2 Hiyerarşik Ad Alanı Etkin" olarak ayarlanmış olmadığından emin olun.
-4. **Bekletme'yi,** verileri depolamak istediğiniz gün sayısına ayarlayın.
+3. Akış günlüğünü depolamak için varolan bir depolama hesabı seçin. Depolama nızın "Veri Gölü Depolama Gen2 Hiyerarşik Ad Alanı Etkin" olarak ayarlanmış olmadığından emin olun.
+4. **Bekletme'yi,** verileri depolamak istediğiniz gün sayısına ayarlayın. Verileri sonsuza kadar depolamak istiyorsanız, değeri *0*olarak ayarlayın. Depolama hesabı için Azure Depolama ücretlerine tabisiniz. 
 5. **Trafik Analitiği Durumu**için *A'yı* seçin.
 6. İşlem aralığını seçin. Seçtiğiniz temel ekibe göre akış günlükleri depolama hesabından toplanır ve Traffic Analytics tarafından işlenir. Her 1 saat veya her 10 dakikada bir işlem aralığı seçebilirsiniz. 
 7. Varolan bir Günlük Analizi (OMS) Çalışma Alanı'nı seçin veya yeni bir çalışma alanı oluşturmak için **Yeni Çalışma Alanı Oluştur'u** seçin. Bir Log Analytics çalışma alanı, Trafik Analitiği tarafından daha sonra analitiği oluşturmak için kullanılan toplu ve dizine eklenmiş verileri depolamak için kullanılır. Varolan bir çalışma alanı seçerseniz, desteklenen [bölgelerden](#supported-regions-log-analytics-workspaces) birinde bulunması ve yeni sorgu diline yükseltilmiş olması gerekir. Varolan bir çalışma alanını yükseltmek istemiyorsanız veya desteklenen bir bölgede çalışma alanı nız yoksa, yeni bir çalışma alanı oluşturun. Sorgu dilleri hakkında daha fazla bilgi için Azure [Günlük Analizi yükseltmesi ile ilgili yeni günlük araması bölümüne](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)bakın.

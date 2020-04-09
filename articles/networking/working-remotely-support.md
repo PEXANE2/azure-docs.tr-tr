@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618923"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982863"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetlerini kullanarak uzaktan çalışma
 
@@ -80,16 +80,16 @@ Diğer genel bulutlardaki dağıtımlarınız için Microsoft genel bağlantı s
 
 Aşağıdaki makalelerde, kullanıcıları uzaktan çalışacak şekilde ölçeklendirmek için farklı Azure ağ özelliklerinin nasıl kullanılabileceğini açıklayabilirsiniz:
 
-| **Makale** | **Son güncelleştirme** |
+| **Makale** | **Açıklama** |
 | --- | --- |
-| [Kullanıcıların uzaktan çalışmasını etkinleştirme](../vpn-gateway/work-remotely-support.md) | 23 Mart 2020 |
-| [Ev ihtiyaçları işe hitap etmek için mücadele? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır](../virtual-wan/work-remotely-support.md) | 23 Mart 2020 |
-| [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | 23 Mart 2020 |
-| [Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar](../vpn-gateway/nva-work-remotely-support.md)| 23 Mart 2020 |
-| [SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | 23 Mart 2020 |
-| [Azure Bastion'u kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | 23 Mart 2020 |
-| [Uzak kullanıcıları desteklemek için karma bağlantı oluşturmak için Azure ExpressRoute'u kullanma](../expressroute/work-remotely-support.md) | 23 Mart 2020 |
-| [Azure Güvenlik Duvarı uzaktan çalışma desteği](../firewall/remote-work-support.md)|25 Mart 2020|
+| [Kullanıcıların uzaktan çalışmasını etkinleştirme](../vpn-gateway/work-remotely-support.md) | Kullanıcılar için uzaktan erişim ayarlamak veya mevcut çözümlerini kuruluşunuz için ek kapasiteyle tamamlamak için kullanılabilir seçenekleri gözden geçirin.|
+| [Ev ihtiyaçları işe hitap etmek için mücadele? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır](../virtual-wan/work-remotely-support.md) | Kuruluşunuzun uzaktan bağlantı gereksinimlerini karşılamak için Azure Virtual WAN'ı kullanın.|
+| [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | Web uygulamalarınız daki trafiği yönetmenin ölçeklenebilir ve güvenli bir yolu için Web Uygulaması Güvenlik Duvarı (WAF) ile Uygulama Ağ Geçidi'ni kullanın. |
+| [Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar](../vpn-gateway/nva-work-remotely-support.md)|Uzaktan erişim çözümleri sağlamak için Azure'da NV'ler kullanma yla ilgili kılavuzu gözden geçirin. |
+| [SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | OpenVPN protokolüne veya IKEv2'ye geçerek SSTP'nin 128 eşzamanlı bağlantı limitini aşın.|
+| [Azure Bastion'u kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | Ortak bir IP adresi kullanmadan Azure sanal ağındaki sanal makinelere doğrudan Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlayın. |
+| [Uzak kullanıcıları desteklemek için karma bağlantı oluşturmak için Azure ExpressRoute'u kullanma](../expressroute/work-remotely-support.md) | Kuruluşunuzdaki kullanıcıların uzaktan çalışmasını sağlamak için hibrit bağlantı için ExpressRoute'u kullanın.|
+| [Azure Güvenlik Duvarı uzaktan çalışma desteği](../firewall/remote-work-support.md)|Azure Güvenlik Duvarı'nı kullanarak Azure sanal ağ kaynaklarınızı koruyun. |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

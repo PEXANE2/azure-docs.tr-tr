@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: surmb
-ms.openlocfilehash: 71e1f8be2af5556d86996175e8a1ddbccc9c7de1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a16120194b1b8015466005f42336828c2b4ace6c
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72001673"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983849"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Uygulama Ağ Geçidi'ndeki arka uç sistem sorunlarını giderme
 ==================================================
@@ -157,7 +157,7 @@ Ayrıca herhangi bir NSG/UDR/Firewall ip ve bu arka uç bağlantı noktasına er
 
     a.  Komut istemini açın (Win+R\> - `netstat`cmd), enter ve Enter'u seçin.
 
-    b.  Sunucunun yapılandırılan bağlantı noktasında dinleyip dinlemediğini denetleyin. Örnek:
+    b.  Sunucunun yapılandırılan bağlantı noktasında dinleyip dinlemediğini denetleyin. Örneğin:
     ```
             Proto Local Address Foreign Address State PID
             TCP 0.0.0.0:80 0.0.0.0:0 LISTENING 4
@@ -170,7 +170,7 @@ Ayrıca herhangi bir NSG/UDR/Firewall ip ve bu arka uç bağlantı noktasına er
 
 **İleti:** Arka uç\'s HTTP yanıtının durum kodu sonda ayarı yla eşleşmedi. Beklenen:{HTTPStatusCode0} Alındı:{HTTPStatusCode1}.
 
-**Sebep:** TCP bağlantısı kurulduktan ve Bir SSL el sıkışması yapıldıktan sonra (SSL etkinse), Application Gateway sondayı arka uç sunucusuna HTTP GET isteği olarak gönderir. Daha önce açıklandığı gibi, varsayılan \<\>sonda protokole http17.0.0.1:\<bağlantı noktası\>/, olacak ve öfke 200 ile 399 arasında yanıt durum kodlarını Sağlıklı olarak dikkate alır. Sunucu başka bir durum kodu döndürürse, bu iletiyle sağlıksız olarak işaretlenir.
+**Sebep:** TCP bağlantısı kurulduktan ve TLS el sıkışması yapıldıktan sonra (TLS etkinse), Application Gateway sondayı arka uç sunucusuna HTTP GET isteği olarak gönderir. Daha önce açıklandığı gibi, varsayılan \<\>sonda protokole http17.0.0.1:\<bağlantı noktası\>/, olacak ve öfke 200 ile 399 arasında yanıt durum kodlarını Sağlıklı olarak dikkate alır. Sunucu başka bir durum kodu döndürürse, bu iletiyle sağlıksız olarak işaretlenir.
 
 **Çözüm:** Arka uç sunucusunun yanıt koduna bağlı olarak aşağıdaki adımları atabilirsiniz. Ortak durum kodlarından bazıları burada listelenmiştir:
 
@@ -208,7 +208,7 @@ Veya yanıtın yasal olduğunu düşünüyorsanız ve Application Gateway'in di�
 **İleti:** Arka uç tarafından kullanılan sunucu sertifikası tanınmış bir Sertifika Yetkilisi (CA) tarafından imzalanmaz. Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikasını yükleyerek Uygulama Ağ Geçidi'ndeki arka ucu beyaz listeye ait.
 
 **Sebep:** Application Gateway v2 ile uçlardan uca SSL, sunucuyu Sağlıklı görebilmek için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
-Bir SSL sertifikasının güvenilir olması için, arka uç sunucusunun sertifikasının, Uygulama Ağ Geçidi'nin güvenilir deposuna dahil edilmiş bir CA tarafından verilmesi gerekir. Sertifika güvenilir bir CA tarafından verilmediyse (örneğin, kendi imzasını taşıyan bir sertifika kullanıldıysa), kullanıcılar verenin sertifikasını Uygulama Ağ Geçidi'ne yüklemelidir.
+Bir TLS/SSL sertifikasının güvenilir bir şekilde güvenilen deposunda bulunan bir CA tarafından arka uç sunucusunun sertifikasının verilmesi gerekir. Sertifika güvenilir bir CA tarafından verilmediyse (örneğin, kendi imzasını taşıyan bir sertifika kullanıldıysa), kullanıcılar verenin sertifikasını Uygulama Ağ Geçidi'ne yüklemelidir.
 
 **Çözüm:** Güvenilen kök sertifikayı dışa aktarmak ve Uygulama Ağ Geçidi'ne yüklemek için aşağıdaki adımları izleyin. (Bu adımlar Windows istemcileri içindir.)
 
@@ -241,7 +241,7 @@ Uygulama Ağ Geçidi'nde Güvenilen Kök Sertifikalarının nasıl ayıklanıp y
 **İleti:** Arka uç tarafından kullanılan sunucu sertifikasının kök sertifikası, uygulama ağ geçidine eklenen güvenilen kök sertifikasıyla eşleşmiyor. Arka uçbeyaz listeye doğru kök sertifikası eklediğinizden emin olun
 
 **Sebep:** Application Gateway v2 ile uçlardan uca SSL, sunucuyu Sağlıklı görebilmek için arka uç sunucusunun sertifikasının doğrulanmasını gerektirir.
-Bir SSL sertifikasının güvenilir olması için arka uç sunucu sertifikasının, Uygulama Ağ Geçidi'nin güvenilir deposuna dahil edilmiş bir CA tarafından verilmesi gerekir. Sertifika güvenilir bir CA tarafından verilmeyense (örneğin, kendi imzasını taşıyan bir sertifika kullanıldı), kullanıcılar verenin sertifikasını Uygulama Ağ Geçidi'ne yüklemelidir.
+Bir TLS/SSL sertifikasının güvenilir bir şekilde güvenilen deposuna dahil edilmiş bir CA tarafından arka uç sunucu sertifikası verilmesi gerekir. Sertifika güvenilir bir CA tarafından verilmeyense (örneğin, kendi imzasını taşıyan bir sertifika kullanıldı), kullanıcılar verenin sertifikasını Uygulama Ağ Geçidi'ne yüklemelidir.
 
 Uygulama Ağ Geçidi HTTP ayarlarına yüklenen sertifika, arka uç sunucu sertifikasının kök sertifikasıyla eşleşmelidir.
 
@@ -253,7 +253,7 @@ Uygulama Ağ Geçidi'nde Güvenilen Kök Sertifikalarının nasıl ayıklanıp y
 > [!NOTE]
 > Bu hata, TLS el sıkışması sırasında Root > Intermediate (varsa) > Leaf de dahil olmak üzere arka uç sunucusu nun certzincirinin tam zincirini değiştirmemesi durumunda da oluşabilir. Doğrulamak için, herhangi bir istemciden OpenSSL komutlarını kullanabilir ve Uygulama Ağ Geçidi sondasında yapılandırılan ayarları kullanarak arka uç sunucusuna bağlanabilirsiniz.
 
-Örnek:
+Örneğin:
 ```
 OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 ```
@@ -280,7 +280,7 @@ OpenSSL> s_client -connect 10.0.0.4:443 -servername www.example.com -showcerts
 
 **İleti:** Arka uç sertifikasının Ortak Adı (CN), sondanın ana bilgisayarıüster ile eşleşmez.
 
-**Sebep:** Uygulama Ağ Geçidi, arka uç HTTP ayarlarında belirtilen ana bilgisayar adının arka uç sunucusunun SSL sertifikası tarafından sunulan CN ile eşleşip eşleşmediğini denetler. Bu Standard_v2 ve WAF_v2 SKU davranışıdır. Standart ve WAF SKU'nun Sunucu Adı Göstergesi (SNI), arka uç havuzu adresindeki FQDN olarak ayarlanır.
+**Sebep:** Uygulama Ağ Geçidi, arka uç HTTP ayarlarında belirtilen ana bilgisayar adının arka uç sunucusunun TLS/SSL sertifikası tarafından sunulan CN ile eşleşip eşleşmediğini denetler. Bu Standard_v2 ve WAF_v2 SKU davranışıdır. Standart ve WAF SKU'nun Sunucu Adı Göstergesi (SNI), arka uç havuzu adresindeki FQDN olarak ayarlanır.
 
 v2 SKU'da, varsayılan bir sonda varsa (özel bir sonda yapılandırılmamış ve ilişkilendirilmemişse), SNI HTTP ayarlarında belirtilen ana bilgisayar adından ayarlanır. Veya, arka uç adresi havuzunun geçerli bir FQDN içerdiği HTTP ayarlarında "Arka uç adresinden ana bilgisayar adı seç" belirtilmişse, bu ayar uygulanır.
 
@@ -321,9 +321,9 @@ OpenSSL kullanan Linux için:
 
 **İleti:** Arka uç sertifikası geçersizdir. \"Geçerli tarih, sertifikadaki\" Geçerli \"ve\" Geçerli lik aralığında değildir.
 
-**Sebep:** Her sertifikanın geçerlilik aralığı vardır ve sunucunun SSL sertifikası geçerli olmadığı sürece HTTPS bağlantısı güvenli olmayacaktır. Geçerli veriler **geçerli** ve aralık için **geçerli** olmalıdır. Değilse, sertifika geçersiz kabul edilir ve bu, Uygulama Ağ Geçidi'nin arka uç sunucusunu Sağlıksız olarak işaretlediği bir güvenlik sorunu oluşturur.
+**Sebep:** Her sertifikanın geçerlilik aralığı vardır ve sunucunun TLS/SSL sertifikası geçerli olmadığı sürece HTTPS bağlantısı güvenli olmayacaktır. Geçerli veriler **geçerli** ve aralık için **geçerli** olmalıdır. Değilse, sertifika geçersiz kabul edilir ve bu, Uygulama Ağ Geçidi'nin arka uç sunucusunu Sağlıksız olarak işaretlediği bir güvenlik sorunu oluşturur.
 
-**Çözüm:** SSL sertifikanızın süresi dolduysa, sertifikayı satıcınızla yenileyin ve sunucu ayarlarını yeni sertifikayla güncelleştirin. Kendi imzalı bir sertifikaysa, geçerli bir sertifika oluşturmanız ve kök sertifikayı Uygulama Ağ Geçidi HTTP ayarlarına yüklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
+**Çözüm:** TLS/SSL sertifikanızın süresi dolduysa, sertifikayı satıcınızla yenileyin ve sunucu ayarlarını yeni sertifikayla güncelleştirin. Kendi imzalı bir sertifikaysa, geçerli bir sertifika oluşturmanız ve kök sertifikayı Uygulama Ağ Geçidi HTTP ayarlarına yüklemeniz gerekir. Bunu yapmak için şu adımları uygulayın:
 
 1.  Portalda Uygulama Ağ Geçidi HTTP ayarlarınızı açın.
 
@@ -333,7 +333,7 @@ OpenSSL kullanan Linux için:
 
 #### <a name="certificate-verification-failed"></a>Sertifika doğrulama başarısız oldu
 
-**İleti:** Arka uç sertifikasının geçerliliği doğrulanamadı. Nedenini öğrenmek için hata kodu {errorCode} ile ilişkili ileti için SSL tanısını aç'ı işaretleyin
+**İleti:** Arka uç sertifikasının geçerliliği doğrulanamadı. Nedenini öğrenmek için, hata kodu {errorCode} ile ilişkili ileti için OpenSSL tanılama kontrol edin
 
 **Sebep:** Bu hata, Uygulama Ağ Geçidi sertifikanın geçerliliğini doğrulayamadığında oluşur.
 

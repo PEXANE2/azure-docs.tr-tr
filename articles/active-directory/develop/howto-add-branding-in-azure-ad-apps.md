@@ -5,7 +5,6 @@ description: Azure Active Directory'nin geliştirici yönelimli kaynakları içi
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 37d6cd03c07c10bfac5b25e3850c7d3af97bcec7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76697498"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884435"
 ---
 # <a name="branding-guidelines-for-applications"></a>Uygulamalar için markalama yönergeleri
 
@@ -68,7 +67,7 @@ Yöneticiler uygulamanızı kabul ettikten sonra, uygulamayı kullanıcıların�
 
 ![Microsoft logosunu ve "Kuruluşuma Ekle" metnini gösteren düğme](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
-Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örnek:
+Ancak düğmelere güvenmek yerine açıklayıcı metinler yazmanızı öneririz. Örneğin:
 
 > *Office 365'i veya Microsoft'un diğer iş hizmetlerini zaten kullanıyorsanız, kuruluşunuzun verilerine> <your_app_name erişim izni verebilirsiniz. Bu, kullanıcılarınızın mevcut iş hesaplarıyla <your_app_name> erişmesine olanak sağlar.*
 

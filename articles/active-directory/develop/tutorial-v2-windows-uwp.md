@@ -2,25 +2,21 @@
 title: Microsoft kimlik platformu UWP başlıyor | Azure
 description: Evrensel Windows Platformu uygulamalarının (UWP) Microsoft kimlik platformu bitiş noktası tarafından erişim belirteçleri gerektiren bir API'yi nasıl çağırabileceği.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 68473ff5a3faddd36bd4299dfdc882f679acd068
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6e7ee1b03dda30bea15a837b6daf6469e00e46d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129887"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886407"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API'yi (XAML) arayın
 
@@ -346,7 +342,7 @@ Belirteç le ilgili temel bilgileri görüntülemek için *MainPage.xaml.cs* aş
 
 Şimdi başvurunuzu kaydetmeniz gerekir:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Azure Active Directory** > **App kayıtlarını**seçin.
 1. **Yeni kayıt**seçin. *UWP-App-calling-MSGraph*gibi uygulama kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
 1. **Desteklenen hesap türleri**altında, tüm kuruluş **dizininde ve kişisel Microsoft hesaplarında (örneğin Skype, Xbox) Hesapları**seçin ve devam etmek için **Kaydol'u** seçin.

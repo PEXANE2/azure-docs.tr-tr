@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2019
+ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: e50eb561bcbb924ea093722d6c61bbe51747b328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: e1223560c5d7b19bf9da4c7c16a56c4741e582a0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811278"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981316"
 ---
 # <a name="security-management-in-azure"></a>Azure’da Güvenlik Yönetimi
 Azure aboneleri yönetim iş istasyonları, geliştirici PC’leri ve hatta göreve özel izinleri bulunan ayrıcalıklı son kullanıcı cihazları dahil birden fazla cihazda kendi bulut ortamlarını yönetebilir. Bazı durumlarda, yönetim işlevleri [Azure portal](https://azure.microsoft.com/features/azure-portal/) gibi web tabanlı konsollar aracılığıyla gerçekleştirilir Diğer durumlarda, Sanal Özel Ağlar (VPN), Terminal Hizmetleri, istemci uygulaması protokolleri ya da (programlı olarak) Azure Service Management API (SMAPI) üzerinden şirket için sistemlerden Azure’a bağlantılar olabilir. Ayrıca, istemci uç noktaları ya da etki alanına katılmış veya yalıtılmış ve yönetilmeyen olabilir, tabletler veya akıllı telefonlar gibi.
@@ -145,9 +145,6 @@ Sağlamlaştırılmış iş istasyonu için üç temel yapılandırma öneririz.
 | - | Net görev ayrımları | - |
 | Sanal makine olarak kurumsal PC |Sınırlı donanım maliyetleri | - |
 | - | Rol ve uygulamaların ayrımı | - |
-| BitLocker Sürücü Şifrelemesi ile Windows to go |Çoğu PC ile uyumluluk |Varlık izleme |
-| - | Düşük maliyet ve taşınabilirlik | - |
-| - | Yalıtılmış yönetim ortamı |- |
 
 Sağlamlaştırılmış is istasyonunun, ana bilgisayar işletim sistemi ile donanım arasında bir şey olmadan, konuk değil ana bilgisayar olması önemlidir. “Temiz kaynak ilkesi”ni (“güvenli kaynak” olarak da bilinir) izleme ana bilgisayarın en fazla sağlamlaştırılmış olması gereken olduğu anlamına gelir. Aksi takdirde, sağlamlaştırılmış iş istasyonu (konuk) üzerinde barındırıldığı sistemde saldırılara maruz kalır.
 
@@ -170,15 +167,6 @@ Ayrı bir tek başına sağlamlaştırılmış iş istasyonunun engelleyici ya d
 Sistem Yönetimi ve diğer günlük iş görevleri için bir iş istasyonu kullanarak oluşabilecek çeşitli güvenlik risklerini önlemek için, sağlamlaştırılmış iş istasyonuna Windows Hyper-V sanal makinesi dağıtabilirsiniz. Bu sanal makine kurumsal PC olarak kullanılabilir. Kurumsal PC ortamı, saldırı yüzeyini azaltan ve önemli yönetim görevleri ile birlikte bulunan kullanıcının günlük etkinliklerini (örneğin, e-posta) kaldıran, Ana Bilgisayardan yalıtılmış durumda kalabilir.
 
 Kurumsal PC sanal makinesi korumalı alanda çalışır ve kullanıcı uygulamaları sağlar. Ana bilgisayar "temiz kaynak" olarak kalır ve kök işletim sisteminde katı ağ ilkeleri uygular (örneğin, sanal makineden RDP erişimini engelleme).
-
-### <a name="windows-to-go"></a>Windows To Go
-Tek başına sağlamlaştırılmış iş istasyonu gerekli kılmanın başka bir alternatifi, istemci tarafı USB önyükleme özelliğini destekleyen bir özellik olan[Windows To Go](https://technet.microsoft.com/library/hh831833.aspx) kullanmaktır. Windows To Go kullanıcıların şifrelenmiş bir USB flash sürücüde çalışan yalıtılmış bir sistem görüntüsüne uyumlu bir PC önyüklemesine olanak sağlar. Görüntü, sıkı güvenlik ilkeleri, minimum işletim sistemi yapısı ve TPM desteğiyle kurumsal BT grubu tarafından tam olarak yönetilebildiğinden, uzaktan yönetin uç noktaları için ek denetimler sağlar.
-
-Aşağıdaki çizimde, taşınabilir görüntü yalnızca Azure’a bağlanmak için önceden yapılandırılmış etki alanına katılmış sistemdir, multi-factor authentication gerektirir ve tüm yönetim dışı trafiği engeller. Bir kullanıcı aynı PC’yi standart kurumsal görüntüye önyükler ve Azure yönetim araçları için RD Ağ Geçidine erişmeye çalışırsa, oturum engellenir. Windows To Go kök düzeyinde işletim sistemi haline gelir ve dış saldırılara karşı daha savunmasız olabilecek ek katman gerekmez (ana bilgisayar işletim sistemi, hiper yönetici, sanal makine).
-
-![](./media/management/hardened-workstation-using-windows-to-go-on-a-usb-flash-drive.png)
-
-USB flash sürücülerin ortalama bir masaüstü bilgisayara göre daha kolay kaybolduğuna dikkat etmek önemlidir. Birimin tamamını, güçlü bir parola ile şifrelemek için BitLocker kullanmak, bir saldırganın zararlı amaçlar için sürücü görüntüsü kullanabilme olasılığını düşürür. Ayrıca, USB flash sürücü kaybolursa, hızlı parola sıfırlama ile iptal etme ve [yeni bir yönetim sertifikası verme](https://technet.microsoft.com/library/hh831574.aspx) tehlikeye maruz kalmayı azaltabilir. Yönetim denetim günlüklerinin, istemcide değil, Azure’da bulunması da potansiyel veri kayıplarını azaltır.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 Azure’da uygulama ve veri yönetirken aşağıdaki ek yönergeleri dikkate alın.
@@ -215,7 +203,7 @@ Sağlamlaştırılmış bir iş istasyonunda yöneticilerin gerçekleştirebilec
 * Grup İlkesi. Yönetim (ve diğer tüm kişilerden gelen erişimi engellemek) için kullanılan tüm etki alanı iş istasyonlarının yanı sıra, bu istasyonlarında kimlik doğrulaması yapılan kullanıcı hesaplarına uygulanan genel bir yönetim ilkesi oluşturun.
 * Gelişmiş güvenlik sağlama. Kurcalanmaya karşı korumaya yardımcı olmak için taban çizgisi sağlamlaştırılmış iş istasyonunu görüntünüzü koruyun. Görüntüler, sanal makineler ve betikleri depolamak için şifreleme ve yalıtma gibi güvenlik önlemleri kullanın ve erişimi kısıtlayın (ya da denetlenebilir iade etme/kullanıma alma işlemi kullanın).
 * Düzeltme eki uygulama. Tutarlı yapıyı koruyun (ya da geliştirme işlemleri ve diğer yönetim görevleri için ayrı görüntülere sahip olun), değişiklikler ve kötü amaçlı yazılımlara karşı düzenli tarama yapın, yapıyı güncel tutun ve makineleri yalnızca gerektiğinden etkinleştirin.
-* Şifreleme. Daha güvenli bir şekilde etkin [Şifreleme Dosya Sistemi](https://technet.microsoft.com/library/cc700811.aspx) (EFS) ve BitLocker için yönetim iş istasyonlarının TPM içerdiğinden emin olun. Windows To Go kullanıyorsanız, yalnızca şifrelenmiş USB anahtarlarını BitLocker ile birlikte kullanın.
+* Şifreleme. Daha güvenli bir şekilde etkin [Şifreleme Dosya Sistemi](https://technet.microsoft.com/library/cc700811.aspx) (EFS) ve BitLocker için yönetim iş istasyonlarının TPM içerdiğinden emin olun.
 * İdare. Tüm yöneticilerin Windows arabirimleri için (dosya paylaşımı gibi) AD DS GPO’larını kullanın. Yönetim iş istasyonlarını denetim, izleme ve günlüğe kaydetme işlemlerine dahil edin. Tüm yönetici ve geliştirici erişimini ve kullanımını izleyin.
 
 ## <a name="summary"></a>Özet

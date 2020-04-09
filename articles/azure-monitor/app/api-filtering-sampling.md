@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörüleri SDK'da filtreleme ve ön işleme | Microsoft
 description: Telemetri Uygulama Öngörüleri portalına gönderilmeden önce verilere özellikleri filtrelemek veya eklemek için SDK'ya Telemetri İşlemcileri ve Telemetri Başharfleri yazın.
 ms.topic: conceptual
 ms.date: 11/23/2016
-ms.openlocfilehash: 53b6ecc51961feba35d571eab3115c8e7ccf9964
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8f2064f73821a017046cbb552a8dcf592ce13267
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366305"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983767"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Uygulama Öngörüleri SDK'da filtreleme ve ön işleme telemetrisi
 
@@ -21,7 +21,7 @@ Uygulama Öngörüleri hizmetine gönderilmeden önce telemetrinin nasıl zengin
 
 Başlamadan önce:
 
-* Uygulamanız için uygun SDK'yı yükleyin: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Non HTTP/Worker for .NET/.NET Core,](worker-service.md) [Java](../../azure-monitor/app/java-get-started.md) veya [JavaScript](javascript.md)
+* Uygulamanız için uygun SDK'yı yükleyin: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Non HTTP/Worker for .NET/.NET Core](worker-service.md)veya [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
@@ -203,7 +203,7 @@ public void Process(ITelemetry item)
    ```JS
    var filteringFunction = (envelope) => {
      if (envelope.data.someField === 'tobefilteredout') {
-        return false;
+         return false;
      }
   
      return true;
@@ -227,7 +227,7 @@ Bir telemetri başharfi sağlarsanız, Track*() yöntemlerinden herhangi biri ç
 
 **Baş harfinizi tanımlayın**
 
-*C #*
+*C#*
 
 ```csharp
 using System;
@@ -307,28 +307,8 @@ Core veya [WorkerService](worker-service.md#adding-telemetryinitializers) [kulla
     services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
 }
 ```
-
-### <a name="java-telemetry-initializers"></a>Java telemetri başharfleri
-
-[Java SDK belgeleri](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.telemetryinitializer?view=azure-java-stable)
-
-```Java
-public interface TelemetryInitializer
-{ /** Initializes properties of the specified object. * @param telemetry The {@link com.microsoft.applicationinsights.telemetry.Telemetry} to initialize. */
-
-void initialize(Telemetry telemetry); }
-```
-
-Daha sonra applicationinsights.xml dosyanıza özel baş harflerini kaydedin.
-
-```xml
-<Add type="mypackage.MyConfigurableContextInitializer">
-    <Param name="some_config_property" value="some_value" />
-</Add>
-```
-
 ### <a name="javascript-telemetry-initializers"></a>JavaScript telemetri başharfleri
-*Javascript*
+*JavaScript*
 
 Portaldan aldığınız başlatma kodundan hemen sonra bir telemetri başharfi ekleyin:
 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
-ms.openlocfilehash: 3e8cd2f1e594cd6a60296b2df135f275641df313
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3738da806ff36cdb7e8d561b88a457a5264eb76
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77086973"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886934"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Uygulama Ağ Geçidi için Web Uygulaması Güvenlik Duvarı ilkeleri oluşturma
 
@@ -24,6 +24,8 @@ Uygulama Ağ Geçidinizde bir ilke uygulanırsa ve bu Uygulama Ağ Geçidi'ndeki
 
    > [!NOTE]
    > Site başına ve URI BAŞıNA WAF İlkeleri Genel Önizleme'dedir. Bu, bu özelliğin Microsoft'un Ek Kullanım Koşullarına tabi olduğu anlamına gelir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
+   > [!NOTE]
+   > Bir Güvenlik Duvarı İlkesi BIR WAF ile ilişkilendirildikten sonra, her zaman bu WAF ile ilişkili bir ilke olmalıdır. Bu politikanın üzerine yazabilirsiniz, ancak WAF'den bir politikayı ayırmanız tamamen desteklenmez. 
 
 Tüm yeni Web Uygulaması Güvenlik Duvarı'nın WAF ayarları (özel kurallar, yönetilen rulset yapılandırmaları, dışlamalar, vb.) bir WAF Politikası'nın içinde yaşar. Varolan bir WAF'ınız varsa, bu ayarlar WAF config'inizde hala bulunabilir. Yeni WAF İlkesine nasıl taşınış edileilgili adımlar için, [waf Config'inizi](#migrate) bu makalenin ilerleyen saatlerinde bir WAF Politikasına geçirin' e bakın. 
 

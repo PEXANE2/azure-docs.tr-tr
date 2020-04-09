@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 5d876d7db13ce73603f212ec11544cb2f680bf46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02481d5dcbaba15c9b17a27348207d9af64f3355
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158189"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982047"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>CSP portalından bir Azure IoT Merkezi uygulaması oluşturma ve yönetme
 
@@ -33,7 +33,7 @@ Azure IoT Merkezi Uygulama Yöneticisi sayfasına inersiniz. Azure IoT Central, 
 
 ![CSP'ler için Yönetici Oluştur](media/howto-create-and-manage-applications-csp/image3.png)
 
-Azure IoT Merkezi uygulaması oluşturmak için sol menüde **Oluştur'u** seçin. Endüstri şablonlarından birini seçin veya sıfırdan bir uygulama oluşturmak için **Eski uygulamasını** seçin. Bu, Uygulama Oluşturma sayfasını yükler. Bu sayfadaki tüm alanları tamamlamanız ve sonra **Oluştur'u**seçmeniz gerekir. Aşağıdaki alanların her biri hakkında daha fazla bilgi bulabilirsiniz.
+Azure IoT Merkezi uygulaması oluşturmak için sol menüde **Oluştur'u** seçin. Endüstri şablonlarından birini seçin veya sıfırdan bir uygulama oluşturmak için **Özel uygulamayı** seçin. Bu, Uygulama Oluşturma sayfasını yükler. Bu sayfadaki tüm alanları tamamlamanız ve sonra **Oluştur'u**seçmeniz gerekir. Aşağıdaki alanların her biri hakkında daha fazla bilgi bulabilirsiniz.
 
 ![CSP'ler için Uygulama Sayfası Oluşturma](media/howto-create-and-manage-applications-csp/image4.png)
 

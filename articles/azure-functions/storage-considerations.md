@@ -3,12 +3,12 @@ title: Azure İşlevleri için depolama yla ilgili hususlar
 description: Azure İşlevlerinin depolama gereksinimleri ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 3bacc93ad6c1851d9165e8efb7d27b427050e6f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276588"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984172"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure İşlevleri için depolama yla ilgili hususlar
 
@@ -29,7 +29,7 @@ Azure İşlevler, bir işlev uygulaması örneği oluşturduğunuzda bir Azure D
 
 Bir işlev uygulaması oluştururken, Blob, Queue ve Tablo depolama alanını destekleyen genel amaçlı bir Azure Depolama hesabı oluşturmanız veya bağlantı kurmanız gerekir. Bunun nedeni, Işlevlerin tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Azure Depolama'ya dayanmasıdır. Bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bu hesaplar, yalnızca blob depolama hesaplarını, Azure Premium Depolama'yı ve ZRS çoğaltma içeren genel amaçlı depolama hesaplarını içerir. Bu desteklenmeyen hesaplar, bir işlev uygulaması oluşturulurken Depolama Hesabı bıyığınızdan filtrelenir.
 
-Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#azure-storage-services). 
+Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#core-storage-services). 
 
 İşlev uygulamanızla varolan bir depolama hesabı kullanabiliyorken, bu gereksinimleri karşıladığından emin olmalısınız. İşlev uygulamasının bir parçası olarak oluşturulan depolama hesapları, bu depolama hesabı gereksinimlerini karşılayacak şekilde akış oluşturur.  
 

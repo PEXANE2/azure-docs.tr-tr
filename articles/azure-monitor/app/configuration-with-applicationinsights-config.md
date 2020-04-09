@@ -4,12 +4,12 @@ description: Veri toplama modüllerini etkinleştirin veya devre dışı kullana
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: b2c407036277b17c0f8c08f3261c932a6dc66624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 460bd79e3a37c492301f7438112fef4487618fed
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276185"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982098"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config veya .xml ile Application Insights SDK yapılandırma
 Application Insights .NET SDK bir dizi NuGet paketinden oluşur. [Çekirdek paket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) Uygulama Öngörüleri telemetri göndermek için API sağlar. [Ek paketler,](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) uygulamanızdan ve bağlamından telemetriyi otomatik olarak izlemek için telemetri *modülleri* ve *başlangıç layıcıları* sağlar. Yapılandırma dosyasını ayarlayarak, Telemetri Modüllerini ve baş harflerini etkinleştirebilir veya devre dışı bırakabilir ve bazıları için parametreler ayarlayabilirsiniz.
@@ -165,65 +165,6 @@ Standart bir [örnekleme Telemetri İşlemcisi](../../azure-monitor/app/api-filt
      </Add>
    </TelemetryProcessors>
 
-```
-
-
-
-## <a name="channel-parameters-java"></a>Kanal parametreleri (Java)
-Bu parametreler, Java SDK'nın topladığı telemetri verilerini nasıl depolaması ve temizlemesi gerektiğini etkiler.
-
-#### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferKapasite
-SDK'nın bellek içi depolama alanında depolanabilecek telemetri öğelerinin sayısı. Bu numaraya ulaşıldığında, telemetri arabelleği temizlenir - yani telemetri öğeleri Application Insights sunucusuna gönderilir.
-
-* Min: 1
-* Maksimum: 1000
-* Varsayılan: 500
-
-```
-
-  <ApplicationInsights>
-      ...
-      <Channel>
-       <MaxTelemetryBufferCapacity>100</MaxTelemetryBufferCapacity>
-      </Channel>
-      ...
-  </ApplicationInsights>
-```
-
-#### <a name="flushintervalinseconds"></a>FlushIntervalinSeconds
-Bellek içi depolama alanında depolanan verilerin ne sıklıkta temizleneceğini (Application Insights'a gönderilir) belirler.
-
-* Min: 1
-* Maksimum: 300
-* Varsayılan: 5
-
-```
-
-    <ApplicationInsights>
-      ...
-      <Channel>
-        <FlushIntervalInSeconds>100</FlushIntervalInSeconds>
-      </Channel>
-      ...
-    </ApplicationInsights>
-```
-
-#### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-MB'de yerel diskteki kalıcı depolama alanına ayrılan maksimum boyutu belirler. Bu depolama, Uygulama Öngörüleri bitiş noktasına aktarılamayan telemetri öğelerini kalıcı olarak sürdürmek için kullanılır. Depolama boyutu karşılandığında, yeni telemetri öğeleri atılır.
-
-* Min: 1
-* Maksimum: 100
-* Varsayılan: 10
-
-```
-
-   <ApplicationInsights>
-      ...
-      <Channel>
-        <MaxTransmissionStorageCapacityInMB>50</MaxTransmissionStorageCapacityInMB>
-      </Channel>
-      ...
-   </ApplicationInsights>
 ```
 
 ## <a name="instrumentationkey"></a>EnstrümantasyonAnahtar

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f27adb6098ac339ee188b3e84e1c225faa9f72a6
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238723"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892504"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Öğretici: Azure CDN özel etki alanı üzerinde HTTPS yapılandırma
 
@@ -58,8 +58,8 @@ Ayrıca CDN uç noktanızda bir Azure CDN özel etki alanını ilişkilendirebil
 
 ---
 
-## <a name="ssl-certificates"></a>SSL sertifikaları
-Bir Azure CDN özel etki alanında içeriği güvenli bir şekilde teslim etmek üzere HTTPS protokolünü etkinleştirmek için SSL sertifikası kullanmanız gerekir. Azure CDN tarafından yönetilen bir sertifika kullanmayı seçebilir ya da kendi sertifikanızı kullanabilirsiniz.
+## <a name="tlsssl-certificates"></a>TLS/SSL sertifikaları
+Azure CDN özel etki alanında güvenli bir şekilde içerik sunmak için HTTPS protokolünü etkinleştirmek için TLS/SSL sertifikası kullanmanız gerekir. Azure CDN tarafından yönetilen bir sertifika kullanmayı seçebilir ya da kendi sertifikanızı kullanabilirsiniz.
 
 
 # <a name="option-1-default-enable-https-with-a-cdn-managed-certificate"></a>[1. Seçenek (varsayılan): Yönetilen CDN sertifikasıyla HTTPS’yi etkinleştirme](#tab/option-1-default-enable-https-with-a-cdn-managed-certificate)
@@ -99,7 +99,7 @@ CDN tarafından yönetilen bir sertifika kullandığınızda HTTPS özelliği sa
 > Bu seçenek yalnızca **Microsoft'tan Azure CDN** ve **Verizon profillerinden Azure CDN** ile kullanılabilir. 
 >
  
-HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure CDN, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. SSL sertifikanızı oluştururken, bunu izin verilen bir sertifika yetkilisiyle (CA) oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için, [Azure CDN'de özel HTTPS etkinleştirmek için İzin Verilen sertifika yetkililerine](cdn-troubleshoot-allowed-ca.md)bakın. **Verizon'daki Azure CDN**için geçerli herhangi bir CA kabul edilecektir. 
+HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure CDN, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. TLS/SSL sertifikanızı oluştururken, sertifikayı izin verilen bir sertifika yetkilisi (CA) ile oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için, [Azure CDN'de özel HTTPS etkinleştirmek için İzin Verilen sertifika yetkililerine](cdn-troubleshoot-allowed-ca.md)bakın. **Verizon'daki Azure CDN**için geçerli herhangi bir CA kabul edilecektir. 
 
 ### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault hesabınızı ve sertifikanızı hazırlama
  
@@ -308,7 +308,7 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
 4. *Ayrılmış sertifika kullanmak, SAN sertifikasından daha mı güvenlidir?*
     
-    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Verilen tüm SSL sertifikaları, gelişmiş sunucu güvenliği için SHA-256 standardını kullanır.
+    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Verilen tüm TLS/SSL sertifikaları gelişmiş sunucu güvenliği için SHA-256 kullanır.
 
 5. *DNS sağlayıcım ile Sertifika Yetkilisi Yetkilendirme kaydı kullanmam gerekir mi?*
 
@@ -320,7 +320,7 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
 7. *Kendi Sertifikasını Getir ile sertifika yenilemeleri nasıl çalışır?*
 
-    PoP altyapısına daha yeni bir sertifika nın dağıtılmasını sağlamak için yeni sertifikanızı Azure KeyVault'a yüklemeniz ve ardından Azure CDN'deki SSL ayarlarınızda en yeni sertifika sürümünü seçin ve kaydedin. Azure CDN daha sonra yeni güncellenen sertifikanızı yayacaktır. 
+    PoP altyapısına daha yeni bir sertifika nın dağıtılmasını sağlamak için yeni sertifikanızı Azure KeyVault'a yüklemeniz ve ardından Azure CDN'deki TLS ayarlarınızda en yeni sertifika sürümünü seçin ve kaydedin. Azure CDN daha sonra yeni güncellenen sertifikanızı yayacaktır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

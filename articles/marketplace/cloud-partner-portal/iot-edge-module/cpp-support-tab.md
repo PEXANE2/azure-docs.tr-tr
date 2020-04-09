@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 306f13cbc83c0c48ce1c90581762275a86dfcb90
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743979"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981877"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge modülü Destek sekmesi
 
 >[!Important]
->30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 Teklifiniz için teknik ve kullanıcı destek kaynakları sağlamak için **Yeni Teklif** sayfasının **Destek** sekmesini kullanın.  Destek formunda aşağıdaki giriş alanları sağlanmaktadır: **Engineering Contact**, **Customer Support**ve **Support Urls**. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
 

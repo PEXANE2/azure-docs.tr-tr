@@ -16,12 +16,12 @@ ms.date: 11/11/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a71c5328c6fa85f85db4bd7e6103f6470b86d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258337"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983271"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect eşitle: Office 365 kaynakları için tercih edilen veri konumunu yapılandırma
 Bu konunun amacı, Azure Active Directory (Azure AD) Connect eşitlemesinde tercih edilen veri konumu için özniteliği nasıl yapılandırabileceğinizi size sağlamaktır. Birisi Office 365'te Multi-Geo özelliklerini kullandığında, bu özelliği kullanıcının Office 365 verilerinin coğrafi konumunu belirlemek için kullanırsınız. (Bölge *region* ve *coğrafi* terimler birbirinin yerine kullanılır.)
@@ -51,6 +51,7 @@ Multi-Geo için kullanılabilen Office 365'teki coğrafi kakışlar şunlardır:
 | Japonya | JPN |
 | Güney Kore | KOR |
 | Güney Afrika | ZAF |
+| İsviçre | CHE |
 | Birleşik Arap Emirlikleri | ARE |
 | Birleşik Krallık | Gbr |
 | Amerika Birleşik Devletleri | Nam |
@@ -154,7 +155,7 @@ Gelen eşitleme kuralı, öznitelik değerinin şirket içi Active Directory'dek
 
     | Akış türü | Hedef öznitelik | Kaynak | Bir kez uygulayın | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    |Direct | tercihDataLocation | Kaynak özniteliğini seçin | Denetlenme -yen | Güncelleştirme |
+    |Direct | tercihDataLocation | Kaynak özniteliğini seçin | Denetlenme -yen | Güncelleştir |
 
 7. Gelen kuralı oluşturmak için **Ekle'yi**seçin.
 
@@ -191,7 +192,7 @@ Giden eşitleme kuralı, öznitelik değerinin metaverse'den Azure AD'deki **ter
 
     | Akış türü | Hedef öznitelik | Kaynak | Bir kez uygulayın | Birleştirme türü |
     | --- | --- | --- | --- | --- |
-    | Direct | tercihDataLocation | tercihDataLocation | Denetlenme -yen | Güncelleştirme |
+    | Direct | tercihDataLocation | tercihDataLocation | Denetlenme -yen | Güncelleştir |
 
 7. Giden kuralı oluşturmak için **Ekle'yi** kapat.
 

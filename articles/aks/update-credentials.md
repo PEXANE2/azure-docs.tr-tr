@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti (AKS) kümesinin kimlik bilgilerini sıfırlama
+title: Kümenin kimlik bilgilerini sıfırlama
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) kümesi için hizmet sorumlusu veya AAD Uygulama kimlik bilgilerini nasıl güncelleştirip sıfırladığını öğrenin
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: b7d652be3733cb130a3973909de59489047efe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475553"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886764"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) kimlik bilgilerini güncelleştirme veya döndürme
 

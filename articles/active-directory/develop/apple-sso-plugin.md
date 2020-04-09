@@ -1,5 +1,5 @@
 ---
-title: Apple aygıtları için Microsoft Enterprise SSO eklentisi
+title: Apple cihazlar için Microsoft Enterprise SSO eklentisi
 titleSuffix: Microsoft identity platform | Azure
 description: iOS ve macOS aygıtları için Microsoft'un Azure Active Directory SSO eklentisi hakkında bilgi edinin.
 services: active-directory
@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 7233a0bba5cf30eab018bfa744a7322303300604
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550324"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982591"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple aygıtları için Microsoft Enterprise SSO eklentisi (Önizleme)
 
@@ -27,7 +27,7 @@ ms.locfileid: "80550324"
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
 > Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-*Apple aygıtları için Microsoft Enterprise SSO* eklentisi, Apple'ın [Enterprise Tek Oturum](https://developer.apple.com/documentation/authenticationservices) Açma özelliğini destekleyen tüm uygulamalarda Active Directory hesapları için tek oturum açma (SSO) sağlar. Microsoft, apple ve Microsoft'un sağlayabileceği en iyi korumayı sağlarken uygulamanızın kullanılabilirliğini artırmak için bu eklentiyi geliştirmek için Apple ile yakın işbirliği içinde çalışmıştır.
+*Apple aygıtları için Microsoft Enterprise SSO eklentisi,* Apple'ın [Kurumsal Tek Oturum](https://developer.apple.com/documentation/authenticationservices) Açma özelliğini destekleyen tüm uygulamalarda Azure Active Directory (Azure AD) hesapları için tek oturum açma (SSO) sağlar. Microsoft, apple ve Microsoft'un sağlayabileceği en iyi korumayı sağlarken uygulamanızın kullanılabilirliğini artırmak için bu eklentiyi geliştirmek için Apple ile yakın işbirliği içinde çalışmıştır.
 
 Bu Genel Önizleme sürümünde, Enterprise SSO eklentisi yalnızca iOS aygıtları için kullanılabilir ve belirli Microsoft uygulamalarında dağıtılır.
 
@@ -37,7 +37,7 @@ Enterprise SSO eklentisini ilk kullanıma yeni [paylaşılan cihaz modu](msal-io
 
 Apple cihazları için Microsoft Enterprise SSO eklentisi aşağıdaki avantajları sunar:
 
-- Apple'ın Enterprise Tek Oturum Açma özelliğini destekleyen tüm uygulamalarda Active Directory hesapları için SSO sağlar.
+- Apple'ın Kurumsal Tek Oturum Açma özelliğini destekleyen tüm uygulamalarda Azure AD hesapları için SSO sağlar.
 - Microsoft Authenticator'da otomatik olarak teslim edilir ve herhangi bir mobil cihaz yönetimi (MDM) çözümü tarafından etkinleştirilebilir.
 
 ## <a name="requirements"></a>Gereksinimler

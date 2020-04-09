@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: b0103f7b827de77c522f78000c8d28683ac85f4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441893"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983016"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: Anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB'de Cassandra API hesabı oluşturun
 
@@ -34,14 +34,14 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 * Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bir hesap oluşturun. 
 
-* [Java Geliştirme Kiti'nin (JDK)](https://aka.ms/azure-jdks)en son sürümünü alın. 
+* [Java Geliştirme Kiti'nin (JDK)](/java/azure/jdk/?view=azure-java-stable)en son sürümünü alın. 
 
 * [Maven](https://maven.apache.org/) ikili arşivini [indirin](https://maven.apache.org/download.cgi) ve [kurun.](https://maven.apache.org/install.html) 
   - Ubuntu’da Maven’i yüklemek için `apt-get install maven` komutunu çalıştırabilirsiniz. 
 
 ## <a name="create-a-database-account"></a>Veritabanı hesabı oluşturma 
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın. 
+1. [Azure Portal](https://portal.azure.com/) oturum açın. 
 
 2. **Kaynak** > **Oluştur Veritabanları** > **Azure Cosmos DB'yi**seçin. 
 

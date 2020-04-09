@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 93e0418004ea65f93ad436eec1ce523424a194ba
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744973"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983186"
 ---
 # <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge modülü yayımlama ön koşulları
 
 >[!Important]
->30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 Bu makalede, bir IoT Edge modülü teklifi yayımlama nın ön koşulları açıklanmaktadır.  Bunu zaten yapmadıysanız, [IoT Edge modülleri yayımlama kılavuzunu gözden geçirin.](../..//iot-edge-module.md)
 

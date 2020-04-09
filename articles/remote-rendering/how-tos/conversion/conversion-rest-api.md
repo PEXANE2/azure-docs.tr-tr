@@ -5,14 +5,14 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 064a7b8adaec6f47a153743b58f4e1caf50db723
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681512"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887053"
 ---
-# <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API'yi kullanma
+# <a name="use-the-model-conversion-rest-api"></a>Model dönüştürme REST API’yi kullanma
 
 [Model dönüştürme](model-conversion.md) [hizmeti, REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)üzerinden denetlenir. Bu makalede, dönüşüm hizmeti API ayrıntıları açıklanmaktadır.
 
@@ -47,7 +47,7 @@ Azure Uzaktan İşlem Emki Hesabınızın, depolama hesaplarını nasıl bağlay
 
 | Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversion/create | POST |
+| /v1/accounts/**accountID**/conversions/create | POST |
 
 JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı "conversionId"dir.
 
@@ -77,7 +77,7 @@ ARR hesabınız depolama hesabınıza bağlı değilse, bu REST arabirimi *Payla
 
 | Uç Nokta | Yöntem |
 |-----------|:-----------|
-| /v1/accounts/**accountID**/conversion/createWithSharedAccessSignature | POST |
+| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
 JSON belgesine sarılmış devam eden dönüşümün kimliğini verir. Alan adı "conversionId"dir.
 
@@ -128,5 +128,5 @@ Durum "Hata" ise, hata bilgilerini içeren bir "ileti" alt alanı içeren ek bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Model dönüştürme için Azure Blob Depolama'yı kullanma](blob-storage.md)
+- [Model dönüştürmesi için Azure Blob depolamayı kullanma](blob-storage.md)
 - [Model dönüştürme](model-conversion.md)

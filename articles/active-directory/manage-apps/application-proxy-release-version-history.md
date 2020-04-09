@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 04/07/2020
 ms.subservice: app-mgmt
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9ecd193282ed9b7333df44689530b4d057ad7f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f027fbce66a73306165a0ad35d1ba3faa7a5c0bc
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68693894"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983900"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Uygulama Proxy: Sürüm sürüm geçmişi
 Bu makalede, Azure Etkin Dizin (Azure AD) Uygulama Proxy'sinin yayımlanmış sürümleri ve özellikleri listelenmiştir. Azure AD ekibi, Uygulama Proxy'sini düzenli olarak yeni özellikler ve işlevlerle güncelleştirir. Uygulama Proxy bağlayıcıları yeni bir sürüm yayımlandığında otomatik olarak güncelleştirilir. 
@@ -35,6 +35,22 @@ Kaynak |  Ayrıntılar
 Uygulama Proxy nasıl etkinleştirilir | Uygulama Proxy etkinleştirmek ve yükleme ve bir bağlayıcı kayıt için ön koşullar bu [öğreticide](application-proxy-add-on-premises-application.md)açıklanmıştır.
 Azure AD Uygulama Proxy bağlayıcılarını anlama | [Konektör yönetimi](application-proxy-connectors.md) ve bağlayıcıların [otomatik yükseltme](application-proxy-connectors.md#automatic-updates)si hakkında daha fazla bilgi edinin.
 Azure AD Uygulama Proxy Bağlayıcı İndir |  [En son konektörü indirin.](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)
+
+## <a name="1515260"></a>1.5.1526.0
+
+### <a name="release-status"></a>Yayın durumu
+
+Nisan 07, 2020: İndirme için yayımlandı
+
+### <a name="new-features-and-improvements"></a>Yeni özellikler ve geliştirmeler
+-   Bağlayıcılar tüm bağlantılar için yalnızca TLS 1.2 kullanır. Daha fazla ayrıntı için [Bağlayıcı ön koşulları](application-proxy-add-on-premises-application.md#before-you-begin) görün.
+- Bağlayıcı ve Azure hizmetleri arasında gelişmiş sinyal. Buna, Bağlayıcı ve Azure hizmetleri arasındaki WCF iletişimi için güvenilir oturumların desteklenmesi ve WebSocket iletişimleri için DNS önbelleğe alma geliştirmeleri dahildir.
+- Bağlayıcı ve arka uç uygulaması arasında proxy yapılandırma desteği. Daha fazla bilgi için bkz: [Mevcut şirket içi proxy sunucularıyla çalışma.](application-proxy-configure-connectors-with-proxy-servers.md)
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+- Bağlayıcıdan Azure hizmetlerine iletişim için bağlantı noktası 8080'e geri dalma kaldırıldı.
+- WebSocket iletişimi için hata ayıklama izlemeleri eklendi. 
+- Arka uç uygulama tanımlama bilgilerinde ayarlandığında SameSite özniteliğinin korunması çözüldü.
 
 ## <a name="156120"></a>1.5.612.0
 

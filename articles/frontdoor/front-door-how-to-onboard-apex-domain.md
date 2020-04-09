@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b74338f22a82d76ef13126ee0862b841bd89a99
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74184607"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878893"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Ön Kapınızda bir kök veya tepe etki alanı
 Azure Ön Kapı, özel etki alanlarının bindirilmesi için etki alanı sahipliğini doğrulamak için CNAME kayıtlarını kullanır. Ayrıca, Ön Kapı, Ön Kapı profilinizle ilişkili ön uç IP adresini ortaya çıkarmaz ve bu nedenle amaç Azure Ön Kapı'ya dahil etmekse, apeks etki alanınızı bir IP adresiyle eşlemezsiniz.
@@ -26,7 +26,7 @@ Bu sorun, Azure DNS'deki diğer ad kayıtları kullanılarak çözülür. CNAME 
 > [!NOTE]
 > CNAME düzlemesi veya DNS takibini destekleyen başka DNS sağlayıcıları da vardır, ancak Azure Ön Kapı, etki alanlarını barındırmak için müşterileri için Azure DNS kullanmanızı önerir.
 
-Azure portalını Ön Kapınızdaki bir tepe etki alanında kullanmak ve SSL sonlandırma sertifikasıyla ilişkilendirerek https'yi etkinleştirebilirsiniz. Apex etki alanları kök veya çıplak etki alanları olarak da adlandırılır.
+Azure portalını Ön Kapınızdaki bir tepe etki alanında kullanmak ve TLS sonlandırma sertifikasıyla ilişkilendirerek https'yi etkinleştirebilirsiniz. Apex etki alanları kök veya çıplak etki alanları olarak da adlandırılır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -65,7 +65,7 @@ Bu makalede şunları öğreneceksiniz:
 2. _'Kendi sertifikamı kullan'_ için **Sertifika yönetim türünü** seçin.
 
 > [!WARNING]
-> Ön Kapı yönetilen sertifika yönetim türü şu anda tepe veya kök etki alanları için desteklenmez. Ön Kapı için bir tepe veya kök etki alanında HTTPS'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault'ta barındırılan kendi özel SSL sertifikanızı kullanmaktır.
+> Ön Kapı yönetilen sertifika yönetim türü şu anda tepe veya kök etki alanları için desteklenmez. Ön Kapı için bir tepe veya kök etki alanında HTTPS'yi etkinleştirmek için kullanılabilen tek seçenek, Azure Key Vault'ta barındırılan kendi özel TLS/SSL sertifikanızı kullanmaktır.
 
 3. Bir sonraki adıma geçmeden önce, Web-Üfe'de belirtildiği gibi, Ön Kapı'nın anahtar Vault'unuza erişmesi için doğru izinlere sahip olduğundan emin olun.
 4. Geçerli aboneliğinizden bir **Key Vault hesabı** seçin ve ardından doğru sertifikayla eşlenecek uygun **Gizli** ve **Gizli sürümünü** seçin.

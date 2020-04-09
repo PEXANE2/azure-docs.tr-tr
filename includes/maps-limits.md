@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 2bf9f75442ccf57aa28e6a12f415fb6e4ede78ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1ce91aede9328237aef8e5d5b7d74a3b72f10d50
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67188765"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887439"
 ---
 Aşağıdaki tabloda Azure Haritalar S0 fiyatlandırma katmanının kullanım sınırı gösterilmektedir. Kullanım sınırı fiyatlandırma katmanına bağlıdır. 
 
@@ -26,6 +26,6 @@ Aşağıdaki tabloda Azure Haritalar için veri boyutu sınırı gösterilmekted
 
 | Kaynak                              | Sınır |
 |---------------------------------------|:---------------------:|
-| Maksimum veri boyutu |   50 MB  |
+| Maksimum veri boyutu |   1 GB  |
 
 Azure Haritalar fiyatlandırma katmanları hakkında daha fazla bilgi için Azure [Haritalar fiyatlandırması'na](https://azure.microsoft.com/pricing/details/azure-maps/)bakın.

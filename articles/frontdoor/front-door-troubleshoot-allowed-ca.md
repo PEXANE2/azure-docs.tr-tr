@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: sharadag
-ms.openlocfilehash: cac6bc9895f2b8778f2b27cc6b1dff4d4b898ae7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 611f5730afed4c3a84b81d6acfd33b633c532bbc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471532"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874679"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-front-door"></a>Azure Ön Kapı'da özel HTTPS etkinleştirme için sertifika yetkililerine izin
 
-Azure Ön Kapı özel etki alanı için, [kendi sertifikanızı kullanarak HTTPS özelliğini etkinleştirdiğinizde,](front-door-custom-domain-https.md?tabs=option-2-enable-https-with-your-own-certificate)SSL sertifikanızı oluşturmak için izin verilen bir sertifika yetkilisini (CA) kullanmanız gerekir. Aksi takdirde, izin verilmeyen bir CA veya kendi imzalı sertifika kullanırsanız, isteğiniz reddedilir.
+Azure Ön Kapı özel etki alanı için, [kendi sertifikanızı kullanarak HTTPS özelliğini etkinleştirdiğinizde](front-door-custom-domain-https.md?tabs=option-2-enable-https-with-your-own-certificate)TLS/SSL sertifikanızı oluşturmak için izin verilen bir sertifika yetkilisini (CA) kullanmanız gerekir. Aksi takdirde, izin verilmeyen bir CA veya kendi imzalı sertifika kullanırsanız, isteğiniz reddedilir.
 
 [!INCLUDE [cdn-front-door-allowed-ca](../../includes/cdn-front-door-allowed-ca.md)]

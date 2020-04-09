@@ -6,12 +6,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: c2f384370c3ceaf24164e4a27adc05b1a1e1ddf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83575aa7f9b63615f453e00bd06b00a5540b9a9e
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294971"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892266"
 ---
 # <a name="what-is-distributed-tracing"></a>Dağıtılmış İzleme Nedir?
 
@@ -27,17 +27,17 @@ Azure Monitor ayrıca, sistemlerin nasıl etkileşime girdiği ve ortalama perfo
 
 ## <a name="how-to-enable-distributed-tracing"></a>Dağıtılmış İzleme Nasıl Etkinleştirilir?
 
-Bir uygulamada hizmetler arasında dağıtılmış izlemeyi etkinleştirmek, hizmetin uygulandığı dile göre her hizmete uygun SDK veya kitaplığı eklemek kadar kolaydır.
+Bir uygulamada hizmetler arasında dağıtılmış izlemeyi etkinleştirmek, hizmetin uygulandığı dile göre her hizmete uygun aracıyı, SDK'yı veya kitaplığı eklemek kadar kolaydır.
 
-## <a name="enabling-via-application-insights-sdks"></a>Uygulama Öngörüleri SDK'ları ile etkinleştirme
+## <a name="enabling-via-application-insights-through-auto-instrumentation-or-sdks"></a>Otomatik enstrümantasyon veya SDK'lar aracılığıyla Uygulama Öngörüleri ile etkinleştirme
 
-.NET, .NET Core, Java, Node.js ve JavaScript için SDK'lar için Uygulama Öngörüleri tüm destek yerel olarak izleme dağıtılır. Her Uygulama Öngörüleri SDK'nın yüklenmesi ve yapılandırılmasına ilişkin talimatlaraşağıda mevcuttur:
+.NET, .NET Core, Java, Node.js ve JavaScript için Bulunan Application Insights aracıları ve/veya SDK'ları tüm destek yerel olarak izleme olarak dağıtılır. Her Uygulama Öngörüleri SDK'nın yüklenmesi ve yapılandırılmasına ilişkin talimatlaraşağıda mevcuttur:
 
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
-* [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
+* [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 * [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
-* [Javascript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 * [Python](opencensus-python.md)
 
 Uygun Uygulama Öngörüleri SDK yüklü ve yapılandırılmış, izleme bilgileri otomatik olarak popüler çerçeveler, kütüphaneler ve teknolojiler için SDK bağımlılık otomatik toplayıcıları tarafından toplanır. Desteklenen teknolojilerin tam listesi Bağımlılık [otomatik toplama belgelerinde](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)kullanılabilir.

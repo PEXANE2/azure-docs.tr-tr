@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: alzam
-ms.openlocfilehash: 9250464e3d28bdac20840aa9f69cfac707f73b30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bc28a03476e773325d14808e1c7ac99103b2d5d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371473"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879454"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>P2S OpenVPN iletişim kuralı bağlantıları için VPN istemcisini yapılandırma: Azure AD kimlik doğrulaması
 
@@ -230,6 +230,16 @@ Bu adımlar, bağlantınızı Her Zaman A'ya otomatik olarak bağlanmak üzere y
 </clientconfig>
 </azvpnprofile>
 ```
+
+### <a name="can-i-import-the-profile-from-a-command-line-prompt"></a>Profili komut satırı isteminden alabilir miyim?
+
+İndirilen **azurevpnconfig.xml** dosyasını **%userprofile%\AppData\Local\Packages\Microsoft.AzureVpn_8wekyb3d8bbwe\LocalState** klasörüne yerleştirerek ve aşağıdaki komutu çalıştırarak profili komut satırından içe aktarabilirsiniz:
+
+```
+azurevpn -i azurevpnconfig.xml 
+```
+-f anahtarını **-f** da ithalata zorlamak için
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

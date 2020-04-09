@@ -1,18 +1,18 @@
 ---
-title: Örnek PowerShell komut dosyaları
+title: Örnek PowerShell betikleri
 description: PowerShell komut dosyaları aracılığıyla ön uç nasıl kullanılacağını gösteren örnekler
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: d7238c899301d76edde86d52c6db74468ffe18ad
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: c45d2fc34ccbab6d813f12563678d036f9f35753
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679481"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891501"
 ---
-# <a name="example-powershell-scripts"></a>Örnek PowerShell komut dosyaları
+# <a name="example-powershell-scripts"></a>Örnek PowerShell betikleri
 
 Azure Uzaktan İşleme aşağıdaki iki REST API'si sağlar:
 
@@ -35,9 +35,12 @@ Azure Uzaktan İşleme aşağıdaki iki REST API'si sağlar:
 
 1. [Azure Depolama hesabı hazırlama](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
-1. Azure Uzaktan İşlem hesabınızı içeren aboneliğe giriş yapın:
+1. Azure Uzaktan İşlem hesabınızı içeren aboneliğinize giriş yapın:
     1. PowerShell aç
-    1. Çalıştırmak:`Connect-AzAccount -Subscription "<your Azure subscription id>"`
+    1. Çalıştırın: `Connect-AzAccount` ve ekrandaki yönergeleri izleyin.
+
+> [!NOTE]
+> Kuruluşunuzun birden fazla aboneliği olması durumunda, SubscriptionId ve Kiracı bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
 1. [Azure Uzaktan İşleme GithHub deposundan](https://github.com/Azure/azure-remote-rendering) *Scriptler* klasörünü indirin.
 

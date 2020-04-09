@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: sngun
-ms.openlocfilehash: 514982727509788918c159e07f8061962df32336
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e57029e53365fbf99054e2d926296ccca3360663
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77558937"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983611"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Java SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "77558937"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu uygulayıcı - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -37,9 +37,9 @@ SQL API Java SDK senkron işlemleri destekler. Eşzamanlı destek için [SQL API
 |**SDK İndir**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API belgeleri**|[Java API başvuru belgeleri](/java/api/com.microsoft.azure.documentdb)|
 |**SDK'ya Katkıda Bulunun**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
-|**Kullanmaya başlayın**|[Java SDK ile başlayın](sql-api-java-get-started.md)|
+|**başlarken**|[Java SDK ile başlayın](sql-api-java-get-started.md)|
 |**Web uygulaması eğitimi**|[Azure Cosmos DB ile web uygulaması geliştirme](sql-api-java-application.md)|
-|**Desteklenen minimum çalışma süresi**|[Java Geliştirme Kiti (JDK) 7+](https://aka.ms/azure-jdks)|
+|**Desteklenen minimum çalışma süresi**|[Java Geliştirme Kiti (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
@@ -131,7 +131,7 @@ SQL API Java SDK senkron işlemleri destekler. Eşzamanlı destek için [SQL API
 
 ### <a name="1150"></a><a name="1.15.0"/>1.15.0
 * Geliştirilmiş Json Serileştirme performansı.
-* Bu SDK sürümü, Azure Cosmos DB Emulator'un https://aka.ms/cosmosdb-emulatoren son sürümünü n için gerekli.
+* Bu SDK [sürümü, Azure Cosmos DB Emülatörü'nün](https://aka.ms/cosmosdb-emulator)en son sürümünü gerektirir.
 
 ### <a name="1140"></a><a name="1.14.0"/>1.14.0
 * Microsoft arkadaş kitaplıkları için iç değişiklikler.

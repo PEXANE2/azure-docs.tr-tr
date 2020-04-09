@@ -1,15 +1,15 @@
 ---
-title: Önizleme - Azure Kubernetes Hizmeti (AKS) kümesinde Windows Server kapsayıcısı oluşturma
+title: Azure Kubernetes Hizmet kümesinde Windows Server kapsayıcısı çalıştırma
 description: Azure CLI'yi kullanarak Azure Kubernetes Hizmeti'ndeki (AKS) bir Windows Server kapsayıcısında uygulamayı nasıl hızla oluşturabilirsiniz ve bir Uygulamayı nasıl hızla oluşturabilirsiniz öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 01/27/2020
-ms.openlocfilehash: 259728da5ea7f71110ce183ae25bb47a0f873614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d2a91f63815e7ba4bcbe4084b80a06fa7779099
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475519"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886730"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Önizleme - Azure CLI'yi kullanarak Azure Kubernetes Hizmeti (AKS) kümesinde Windows Server kapsayıcısı oluşturma
 

@@ -16,12 +16,12 @@ ms.date: 06/25/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5486a8d8bd4c295f49e0ab847daf45d0fcab47ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300545"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983084"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect eşitleme hizmeti özellikleri
 
@@ -94,7 +94,9 @@ Geçmişte, bu koşulların her ikisi de doğru olmadığı sürece, şirket iç
 * Kullanıcı yönetilir (federe olmayan).
 * Kullanıcıya lisans atanmadı.
 
-Daha fazla ayrıntı için [Bkz. Office 365, Azure veya Intune'daki Kullanıcı adları şirket içi UPN veya alternatif giriş kimliğiyle eşleşmiyor.](https://support.microsoft.com/kb/2523192)
+> [!NOTE]
+> Mart 2019'dan itibaren, federe kullanıcı hesapları için UPN değişikliklerinin eşitlenmesine izin verilir.
+> 
 
 Bu özelliği etkinleştirmek, senkronizasyon motorunun şirket içinde değiştirildiğinde userPrincipalName'yi güncelleştirmesine olanak tanır ve parola karma eşitleme veya geçiş kimlik doğrulaması kullanırsınız.
 
