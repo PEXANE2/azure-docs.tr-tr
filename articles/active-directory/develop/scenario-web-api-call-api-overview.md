@@ -2,24 +2,21 @@
 title: Web API'lerini çağıran bir web API'sı oluşturma - Microsoft kimlik platformu | Azure
 description: Akış aşağı web API'lerini çağıran bir web API'sini nasıl oluşturabilirsiniz (genel bakış).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 467ff2f789cc83bc5651d831838da0b5c922c839
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76701748"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885081"
 ---
 # <a name="scenario-a-web-api-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran bir web API'si
 

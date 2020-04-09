@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/19/2020
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: f0fe4ab46bfe5c0c0c2ea67aa2e2694321628be5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1d02cb42a86023e5c341daab678c39f22f75dda
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136372"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877703"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Istio'yı Azure Kubernetes Hizmetinde (AKS) yükleyin ve kullanın
 
@@ -97,7 +97,10 @@ Istio için [Helm][helm] kurulum yaklaşımı gelecekte küçümsülecektir. Ist
 > Istio şu anda Linux düğümleri üzerinde çalışacak şekilde zamanlanmış olmalıdır. Kümenizde Windows Server düğümleri varsa, Istio bölmelerinin yalnızca Linux düğümlerinde çalışacak şekilde zamanlandığını sağlamalısınız. Bölmelerin doğru düğümlere zamanlanmış olduğundan emin olmak için [düğüm seçicileri][kubernetes-node-selectors] kullanırız.
 
 > [!CAUTION]
-> [SDS (gizli keşif hizmeti)][istio-feature-sds] ve [Istio CNI][istio-feature-cni] Istio özellikleri Alpha şu anda [,][istio-feature-stages]bu yüzden bu etkinleştirmeden önce verilmelidir düşündüm. Buna ek olarak, [Servis Hesabı Belirteç Hacim][kubernetes-feature-sa-projected-volume] ProjeksiyonKubernetes özelliği (SDS için bir gereklilik) geçerli AKS sürümlerinde etkinleştirilmez.
+> [SDS (gizli keşif hizmeti)][istio-feature-sds] ve [Istio CNI][istio-feature-cni] Istio özellikleri Alpha şu anda [,][istio-feature-stages]bu yüzden bu etkinleştirmeden önce verilmelidir düşündüm. 
+>
+> [Hizmet Hesabı Belirteç Hacim][kubernetes-feature-sa-projected-volume] ProjeksiyonKubernetes özelliği (SDS için bir gereklilik) artık AKS'deki tüm Kubernetes 1.13 ve daha yüksek sürümler için **etkinleştirildi** unutmayın.
+
 Aşağıdaki içerikle `istio.aks.yaml` birlikte çağrılan bir dosya oluşturun. Bu dosya Istio yapılandırmak için [Istio kontrol düzlemi spec][istio-control-plane] ayrıntıları nı tutar.
 
 ```yaml

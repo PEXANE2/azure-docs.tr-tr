@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/08/2020
 ms.author: anavin
-ms.openlocfilehash: 12fb7e03062600745cd8511d37b439ce44f2ef78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9604d5567e74ef470c3e798b6a3df9e48d6fde5d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75640729"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985312"
 ---
 # <a name="public-ip-address-prefix"></a>Genel IP adresi ön eki
 
@@ -34,7 +34,7 @@ Bir ad belirterek bir Azure bölgesinde ve abonelikte genel bir IP adresi öneki
 
 Ortak IP adresi kaynakları oluşturduğunuzda, Azure bölgede kullanılan aralıklardan herhangi birinden kullanılabilir bir genel IP adresi atar. Azure adresi atadıktan sonra, adresin ne olduğunu bilirsiniz, ancak Azure adresi atayana kadar hangi adresin atanabileceğini bilemezsiniz. Bu durum, örneğin siz veya iş ortaklarınız belirli IP adreslerine izin veren güvenlik duvarı kuralları nı kurduğunda sorun yaratabilir. Bir kaynağa her yeni bir genel IP adresi atadığınızda, adresin güvenlik duvarı kuralına eklenmesi gerekir. Genel bir IP adresi önekinden kaynaklarınıza adres ler atadığınızda, tüm aralık bir kurala eklenebileceğinden, adreslerden birini her atadığınızda güvenlik duvarı kurallarının güncelleştirilmesi gerekmez.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 - Bilinen bir aralıktan genel IP adresi kaynakları oluşturabilirsiniz.
 - Siz veya iş ortaklarınız, şu anda atadığınız genel IP adreslerinin yanı sıra henüz atadığınız adresleri içeren aralıklarla güvenlik duvarı kuralları oluşturabilir. Bu, IP adreslerini yeni kaynaklara atadıkça güvenlik duvarı kurallarını değiştirme gereksinimini ortadan kaldırır.
@@ -56,7 +56,7 @@ Aşağıdaki kaynakları bir önek teki statik genel IP adresiyle ilişkilendire
 ## <a name="constraints"></a>Kısıtlamalar
 
 - Önek için IP adreslerini belirtemezsiniz. Azure, belirttiğiniz boyuta bağlı olarak önek için IP adreslerini ayırır.
-- En fazla 16 IP adresi veya /28 öneki oluşturabilirsiniz. Daha fazla bilgi için [Azure sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)bakın.
+- Varsayılan olarak en fazla 16 IP adresi veya /28 önek oluşturabilirsiniz. İnceleme Ağ sınırları, daha fazla bilgi için istekleri ve [Azure sınırlarını](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) [artırır.](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests)
 - Önek oluşturduktan sonra aralığı değiştiremezsiniz.
 - Yalnızca Standart SKU ile oluşturulan statik genel IP adresleri öneek aralığından atanabilir. Ortak IP adresi SK'leri hakkında daha fazla bilgi edinmek için [genel IP adresine](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)bakın.
 - Aralıktaki adresler yalnızca Azure Kaynak Yöneticisi kaynaklarına atanabilir. Adresler klasik dağıtım modelindeki kaynaklara atanamıyor.

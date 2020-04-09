@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 194da036260a78b27748dfc7f755212ab4f30b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae5d5f2d282c546f5172ca1c8cb0e420d3b6e96b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78256023"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878060"
 ---
 # <a name="known-issuesmigration-limitations-with-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB'den Azure Cosmos DB'nin MongoDB api'sine yapılan geçişlerle ilgili bilinen sorunlar/geçiş sınırlamaları
 
@@ -45,7 +45,7 @@ MongoDB'den Cosmos DB'nin MongoDB api'sine yapılan göçlerle ilgili bilinen so
 
 | Nedeni         | Çözüm |
 | ------------- | ------------- |
-| MongoDB'nin desteklenmeyen bir sürümünden Azure Cosmos DB'ye geçiş yapmaya çalışırsınız. | MongoDB'nin yeni sürümleri yayımlandıkça, Azure Veritabanı Geçiş Hizmeti ile uyumluluğu sağlamak için test edilirler ve hizmet en son sürümü(ler) kabul etmek üzere düzenli aralıklarla güncellenmektedir. Hemen geçiş gerekirse, geçici çözüm olarak veritabanlarını/koleksiyonları Azure Depolama'ya ve kaynağın ortaya çıkan döküme yönlendirebileceğiniz. Depolama Gezgini'ndeki blob kapsayıcısında SAS'ı oluşturun ve ardından kaynak ayrıntı bağlantı dizesi olarak kapsayıcı SAS bilgisine sahip URL'yi kullanın.<br><br> |
+| MongoDB'nin desteklenmeyen bir sürümünden Azure Cosmos DB'ye geçiş yapmaya çalışırsınız. | MongoDB'nin yeni sürümleri yayımlandıkça, Azure Veritabanı Geçiş Hizmeti ile uyumluluğu sağlamak için test edilirler ve hizmet en son sürümü(ler) kabul etmek üzere düzenli aralıklarla güncellenmektedir. Hemen geçiş gerekirse, geçici çözüm olarak veritabanlarını/koleksiyonları Azure Depolama'ya dışa aktarabilir ve kaynağı ortaya çıkan döküme yönlendirebilirsiniz. Depolama Gezgini'ndeki blob kapsayıcısında SAS'ı oluşturun ve ardından kaynak ayrıntı bağlantı dizesi olarak kapsayıcı SAS bilgisine sahip URL'yi kullanın.<br><br> |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 02/28/2020
+ms.date: 04/07/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63e561ff1b976b3de993414607b694e621b1d536
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346958"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877924"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
 Azure Etkin Dizini 'ni (Azure AD) kullanarak, kimlik görevlerini daha az ayrıcalıklı rollerde yönetmesi için sınırlı yöneticileri atayabilirsiniz. Yöneticiler, kullanıcı ekleme veya değiştirme, yönetim rolleri atama, kullanıcı parolalarını sıfırlama, kullanıcı lisanslarını yönetme ve etki alanı adlarını yönetme gibi amaçlarla atanabilir. Varsayılan kullanıcı izinleri yalnızca Azure AD'deki kullanıcı ayarlarında değiştirilebilir.
 
-## <a name="limit-the-use-of-global-administrator"></a>Global yöneticikullanımını sınırlama
+## <a name="limit-use-of-global-administrator"></a>Global yöneticinin kullanımını sınırlandırın
 
 Genel yönetici rolüne atanan kullanıcılar, Azure REKLAM kuruluşunuzdaki her yönetim ayarını okuyabilir ve değiştirebilir. Varsayılan olarak, Azure aboneliğine kaydolan kişiye Azure AD kuruluşu için Global yönetici rolü atanır. Yönetici rollerini yalnızca Global yöneticiler ve Ayrıcalıklı Rol yöneticileri devredebilir. İşletmeniziçin riski azaltmak için, bu rolü kuruluşunuzdaki mümkün olan en az kişiye atamanızı öneririz.
 
@@ -70,7 +70,8 @@ Bu roldeki kullanıcılar, "Kullanıcılar uygulamaları kaydedebilir" ayarı No
 
 ### <a name="authentication-administrator"></a>[Kimlik Doğrulama Yöneticisi](#authentication-administrator-permissions)
 
-Bu roldeki kullanıcılar parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir, parolaları güncelleyebilir, mevcut parola dışı kimlik bilgisine (örneğin, MFA veya FIDO) karşı yeniden kaydolmasını gerektirebilir ve yalnızca yönetici olmayan veya yalnızca aşağıdaki rollere atanan kullanıcıların **aygıttaki MFA'yı hatırlamasını** (bir sonraki oturum açmada MFA'nın istenmesini) iptal edebilir:
+Kimlik Doğrulama yöneticisi rolü şu anda genel önizlemededir. Bu role sahip kullanıcılar parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik Doğrulama Yöneticileri, kullanıcıların mevcut parola dışı kimlik bilgilerine (örneğin, MFA veya FIDO) karşı yeniden kaydolmalarını ve **aygıttaki MFA'yı iptal**etmesini gerektirebilir , bu da yönetici olmayan veya yalnızca aşağıdaki rolleratanan kullanıcıların bir sonraki oturumlarında MFA'yı ister:
+
 * Kimlik Doğrulama Yöneticisi
 * Dizin Okuyucular
 * Misafir Davetçi
@@ -78,7 +79,7 @@ Bu roldeki kullanıcılar parola olmayan kimlik bilgilerini ayarlayabilir veya s
 * Raporlar Okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen Uygulama Kaydı ve Kurumsal Uygulama sahipleri. Bu uygulamaların Azure AD'de ayrıcalıklı izinleri olabilir ve kimlik doğrulama yöneticilerine verilmeyen başka yerlerde. Bu yol sayesinde bir Kimlik Doğrulama Yöneticisi bir uygulama sahibinin kimliğini üstlenebilir ve daha sonra uygulama için kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini üstlenebilir.
 >- Azure'da hassas veya özel bilgilere veya kritik yapılandırmaya erişebilecek azure abonelik sahipleri.
@@ -113,7 +114,7 @@ Kullanıcı belirteç şifreleme, belirteç imzaları ve şifreleme/şifre çöz
 
 ### <a name="b2c-ief-policy-administrator"></a>[B2C IEF İlke Yöneticisi](#b2c-ief-policy-administrator-permissions)
 
-Bu roldeki kullanıcılar Azure AD B2C'deki tüm özel ilkeleri oluşturma, okuma, güncelleştirme ve silme yeteneğine sahiptir ve bu nedenle ilgili Azure AD B2C kiracısında Kimlik Deneyimi Çerçevesi üzerinde tam denetime sahiptir. Bu kullanıcı, ilkeleri düzenleyerek, dış kimlik sağlayıcılarıyla doğrudan federasyon kurabilir, dizin şemasını değiştirebilir, kullanıcıya yönelik tüm içeriği değiştirebilir (HTML, CSS, JavaScript), kimlik doğrulaması tamamlamak için gereksinimleri değiştirebilir, yeni kullanıcılar oluşturabilir, tam geçişler de dahil olmak üzere harici sistemlere kullanıcı verileri ve parolalar ve telefon numaraları gibi hassas alanlar da dahil olmak üzere tüm kullanıcı bilgilerini de olsa. Tersine, bu rol şifreleme anahtarlarını değiştiremez veya kiracıda federasyon için kullanılan sırları kaldıramaz.
+Bu roldeki kullanıcılar Azure AD B2C'deki tüm özel ilkeleri oluşturma, okuma, güncelleştirme ve silme yeteneğine sahiptir ve bu nedenle ilgili Azure AD B2C kiracısında Kimlik Deneyimi Çerçevesi üzerinde tam denetime sahiptir. Bu kullanıcı, ilkeleri düzenleyerek, dış kimlik sağlayıcılarıyla doğrudan federasyon kurabilir, dizin şemasını değiştirebilir, kullanıcıya yönelik tüm içeriği değiştirebilir (HTML, CSS, JavaScript), kimlik doğrulamayı tamamlamak için gereksinimleri değiştirebilir, yeni kullanıcılar oluşturabilir, kullanıcı verilerini tam geçişler de dahil olmak üzere dış sistemlere gönderebilir ve parolalar ve telefon numaraları gibi hassas alanlar da dahil olmak üzere tüm kullanıcı bilgilerini düzenleyebilir. Tersine, bu rol şifreleme anahtarlarını değiştiremez veya kiracıda federasyon için kullanılan sırları kaldıramaz.
 
 > [!IMPORTANT]
 > B2 IEF İlke Yöneticisi, üretimdeki kiracılar için çok sınırlı bir temelde atanması gereken son derece hassas bir roldür.Bu kullanıcıların faaliyetleri, özellikle üretimdeki kiracılar için yakından denetlenmelidir.
@@ -139,7 +140,7 @@ Bu roldeki kullanıcılar Azure AD'deki aygıtları etkinleştirebilir, devre d�
 
 ### <a name="compliance-administrator"></a>[Uyumluluk Yöneticisi](#compliance-administrator-permissions)
 
-Bu role sahip kullanıcılar, Microsoft 365 uyumluluk merkezi, Microsoft 365 yönetici merkezi, Azure ve Office 365 Güvenlik & Uyumluluk Merkezi'nde uyumlulukla ilgili özellikleri yönetme iznine sahiptir. Devrilenler, Azure ve Microsoft 365 için destek biletleri de oluşturabilir. Office [365 yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi edinilebilir.
+Bu role sahip kullanıcılar, Microsoft 365 uyumluluk merkezi, Microsoft 365 yönetici merkezi, Azure ve Office 365 Güvenlik & Uyumluluk Merkezi'nde uyumlulukla ilgili özellikleri yönetme iznine sahiptir. Devralan kişiler ayrıca Exchange yönetim merkezi ve Skype for Business yönetici merkezleri & Ekipler'deki tüm özellikleri yönetebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. Office [365 yönetici rolleri hakkında](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)daha fazla bilgi edinilebilir.
 
 İçindeki | Yapabilirim
 ----- | ----------
@@ -214,11 +215,11 @@ Bu role sahip kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange Online
 Bu yönetici, Azure Etkin Dizin kiracıları ile dış kimlik sağlayıcıları arasındaki federasyonu yönetir.Bu rol ile kullanıcılar yeni kimlik sağlayıcıları ekleyebilir ve kullanılabilir tüm ayarları (örneğin kimlik doğrulama yolu, hizmet kimliği, atanan anahtar kapsayıcıları) yapılandırabilir.Bu kullanıcı, kiracının dış kimlik sağlayıcılarının kimlik doğrulamalarına güvenmesini sağlayabilir.Son kullanıcı deneyimleri üzerindeki sonuç, kiracının türüne bağlıdır:
 
 * Çalışanlar ve iş ortakları için Azure Active Directory kiracıları: Bir federasyonun eklenmesi (örneğin Gmail ile) henüz kullanılmayan tüm konuk davetlerini hemen etkileyecektir. Bkz. [B2B konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme.](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)
-* Azure Active Directory B2C kiracıları: Bir federasyonun eklenmesi (örneğin, Facebook veya başka bir Azure AD kuruluşuyla) kimlik sağlayıcısı kullanıcı akışına seçenek olarak ekleninden (yerleşik olarak da adlandırılır) son kullanıcı akışlarını hemen etkilemez politikası). Bkz. Bir Microsoft hesabını bir örnek için [kimlik sağlayıcısı olarak yapılandırma.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Kullanıcı akışlarını değiştirmek için "B2C Kullanıcı Akışı Yöneticisi"nin sınırlı rolü gereklidir.
+* Azure Active Directory B2C kiracıları: Bir federasyonun eklenmesi (örneğin, Facebook veya başka bir Azure AD kuruluşuyla) kimlik sağlayıcısı kullanıcı akışına seçenek olarak eklenine (yerleşik ilke olarak da adlandırılır) son kullanıcı akışlarını hemen etkilemez. Bkz. Bir Microsoft hesabını bir örnek için [kimlik sağlayıcısı olarak yapılandırma.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Kullanıcı akışlarını değiştirmek için "B2C Kullanıcı Akışı Yöneticisi"nin sınırlı rolü gereklidir.
 
 ### <a name="global-administrator--company-administrator"></a>[Global Yönetici / Şirket Yöneticisi](#company-administrator-permissions)
 
-Bu role sahip kullanıcılar Azure Active Directory'deki tüm yönetim özelliklerine ve Microsoft 365 güvenlik merkezi, Microsoft 365 uyumluluk merkezi, Exchange Online, SharePoint Online ve Skype for Business Online. Azure Etkin Dizin kiracısı için kaydolan kişi genel bir yönetici olur. Şirketinizde birden fazla global yönetici olabilir. Genel yöneticiler, tüm kullanıcıların ve diğer tüm yöneticilerin parolalarını sıfırlayabilir.
+Bu role sahip kullanıcılar Azure Active Directory'deki tüm yönetim özelliklerine ve Microsoft 365 güvenlik merkezi, Microsoft 365 uyumluluk merkezi, Exchange Online, SharePoint Online ve Skype for Business Online gibi Azure Active Directory kimliklerini kullanan hizmetlere erişebilir. Azure Etkin Dizin kiracısı için kaydolan kişi genel bir yönetici olur. Şirketinizde birden fazla global yönetici olabilir. Genel yöneticiler, tüm kullanıcıların ve diğer tüm yöneticilerin parolalarını sıfırlayabilir.
 
 > [!NOTE]
 > Microsoft Graph API ve Azure AD PowerShell'de bu rol "Şirket Yöneticisi" olarak tanımlanır. [Azure portalındaki](https://portal.azure.com)"Global Administrator"dur.
@@ -264,7 +265,7 @@ Bu role sahip kullanıcılar parolaları değiştirebilir, yenileme belirteçler
 * Raporlar Okuyucu
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen Uygulama Kaydı ve Kurumsal Uygulama sahipleri. Bu uygulamaların Azure AD'de ayrıcalıklı izinleri olabilir ve Yardım Masası Yöneticilerine verilmeyen başka yerlerde. Bu yol sayesinde bir Yardım Masası Yöneticisi bir uygulama sahibinin kimliğini üstlenebilir ve daha sonra uygulama için kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini üstlenebilir.
 >- Azure'da hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olabilecek Azure abonelik sahipleri.
@@ -451,7 +452,7 @@ Bu role sahip kullanıcılar, kullanıcılar oluşturabilir ve bazı kısıtlama
 |Yalnızca yönetici olmayan veya aşağıdaki sınırlı yönetici rollerinden herhangi birinde olan kullanıcılarda:<ul><li>Dizin Okuyucular<li>Misafir Davetçi<li>Yardım Masası Yöneticisi<li>İleti Merkezi Okuyucu<li>Raporlar Okuyucu<li>Kullanıcı Yöneticisi|<p>Silme ve geri yükleme</p><p>Devre dışı ve etkinleştir</p><p>Yenileme Belirteçleri'ni geçersiz kılma</p><p>Kullanıcı Ana Adı da dahil olmak üzere tüm kullanıcı özelliklerini yönetme</p><p>Parola sıfırlama</p><p>Güncelleme (FIDO) aygıt anahtarları</p>|
 
 > [!IMPORTANT]
-> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örnek:
+> Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin parolalarını değiştirebilir. Bir kullanıcının parolasını değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örneğin:
 >
 >- Sahip oldukları uygulamaların kimlik bilgilerini yönetebilen Uygulama Kaydı ve Kurumsal Uygulama sahipleri. Bu uygulamaların Azure AD'de ayrıcalıklı izinleri olabilir ve Kullanıcı Yöneticilerine verilmeyen başka yerlerde. Bu yol sayesinde Bir Kullanıcı Yöneticisi bir uygulama sahibinin kimliğini üstlenebilir ve daha sonra uygulama için kimlik bilgilerini güncelleştirerek ayrıcalıklı bir uygulamanın kimliğini üstlenebilir.
 >- Azure'da hassas veya özel bilgilere veya kritik yapılandırmaya erişebilecek azure abonelik sahipleri.
@@ -764,7 +765,10 @@ Azure AD ve Office 365'te uyumluluk yapılandırmasını ve raporlarını okuyab
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal'daki tüm kaynaklardaki temel özellikleri okuyun. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 Uyumluluk Yöneticisi'nin tüm yönlerini yönetme |
+| microsoft.office365.exchange/allEntities/allTasks | Exchange Online'ın tüm yönlerini yönetin. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Hizmet Durumu'nun okunmasını ve yapılandırılsın. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Microsoft.office365.sharepoint'teki tüm kaynakları oluşturun ve silin ve standart özellikleri okuyun ve güncelleyin. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online'ın tüm yönlerini yönetin. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="compliance-data-administrator-permissions"></a>Uyumluluk Veri Yöneticisi izinleri
@@ -784,7 +788,10 @@ Uyumluluk içeriğini oluşturur ve yönetir.
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure destek biletleri oluşturun ve yönetin. |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal'daki tüm kaynaklardaki temel özellikleri okuyun. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 Uyumluluk Yöneticisi'nin tüm yönlerini yönetme |
+| microsoft.office365.exchange/allEntities/allTasks | Exchange Online'ın tüm yönlerini yönetin. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Hizmet Durumu'nun okunmasını ve yapılandırılsın. |
+| microsoft.office365.sharepoint/allEntities/allTasks | Microsoft.office365.sharepoint'teki tüm kaynakları oluşturun ve silin ve standart özellikleri okuyun ve güncelleyin. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online'ın tüm yönlerini yönetin. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 destek biletleri oluşturun ve yönetin. |
 
 ### <a name="conditional-access-administrator-permissions"></a>Koşullu Erişim Yöneticisi izinleri
@@ -1755,8 +1762,31 @@ Aşağıdaki roller kullanılmamalıdır. Bunlar amortismana uğradı ve gelecek
 * Posta Kutusu Yöneticisi
 * İşyeri Cihaz Birleştirme
 
+## <a name="roles-not-shown-in-the-portal"></a>Portalda gösterilmeyen roller
+
+PowerShell veya MS Graph API tarafından döndürülen her rol Azure portalında görünmez. Aşağıdaki tablo bu farklılıkları düzenler.
+
+API adı | Azure portal adı | Notlar
+-------- | ------------------- | -------------
+Şirket Yöneticisi | Genel Yönetici | [Daha iyi netlik için ad değiştirildi](directory-assign-admin-roles.md#role-template-ids)
+CRM Servis Yöneticisi | Dynamics 365 yöneticisi | [Mevcut ürün markasını yansıtır](directory-assign-admin-roles.md#role-template-ids)
+Aygıt Birleştirme | Kullanım Dışı | [Amortismana karşı roller dokümantasyonu](directory-assign-admin-roles.md#deprecated-roles)
+Cihaz Yöneticileri | Kullanım Dışı | [Amortismana karşı roller dokümantasyonu](directory-assign-admin-roles.md#deprecated-roles)
+Cihaz Kullanıcıları | Kullanım Dışı | [Amortismana karşı roller dokümantasyonu](directory-assign-admin-roles.md#deprecated-roles)
+Dizin Senkronizasyon Hesapları | Kullanılmaması gerektiği için gösterilmedi | [Dizin Senkronizasyon Hesapları dokümantasyonu](directory-assign-admin-roles.md#directory-synchronization-accounts)
+Dizin Yazarlar | Kullanılmaması gerektiği için gösterilmedi | [Dizin Yazarlar dokümantasyon](directory-assign-admin-roles.md#directory-writers)
+Konuk Kullanıcı | Kullanılamadığı için gösterilmedi  | NA
+Lync Servis Yöneticisi | Skype Kurumsal yöneticisi | [Mevcut ürün markasını yansıtır](directory-assign-admin-roles.md#role-template-ids)
+Ortak Tier 1 Desteği | Kullanılmaması gerektiği için gösterilmedi | [İş Ortağı Tier1 Destek belgeleri](directory-assign-admin-roles.md#partner-tier1-support)
+Ortak Tier 2 Desteği | Kullanılmaması gerektiği için gösterilmedi | [İş Ortağı Tier2 Destek belgeleri](directory-assign-admin-roles.md#partner-tier2-support)
+Yazıcı Yöneticisi | İş sürüyor | İş sürüyor
+Yazıcı Teknisyeni | İş sürüyor | İş sürüyor
+Kısıtlı Konuk Kullanıcı | Kullanılamadığı için gösterilmedi | NA
+Kullanıcı | Kullanılamadığı için gösterilmedi | NA
+İşyeri Cihaz Birleştirme | Kullanım Dışı | [Amortismana karşı roller dokümantasyonu](directory-assign-admin-roles.md#deprecated-roles)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bir kullanıcıyı Azure aboneliğinin yöneticisi olarak nasıl atayınız hakkında daha fazla bilgi edinmek için [RBAC ve Azure portalını kullanarak erişimi yönet'e](../../role-based-access-control/role-assignments-portal.md) bakın
-* Microsoft Azure'da kaynak erişiminin nasıl denetlendiği konusunda daha fazla bilgi için bkz. [Azure'da kaynak erişimini anlama](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* Bir kullanıcıyı Azure aboneliğinin yöneticisi olarak nasıl atayınız hakkında daha fazla bilgi edinmek için Azure [rollerini kullanarak erişimi yönet 'e (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) bakın
+* Microsoft Azure'da kaynak erişiminin nasıl denetlenir hakkında daha fazla bilgi edinmek için [bkz.](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure Active Directory ile Azure aboneliğinizin arasındaki ilişki hakkında bilgi için bkz. [Azure aboneliklerinin Azure Active Directory ile ilişkisi](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

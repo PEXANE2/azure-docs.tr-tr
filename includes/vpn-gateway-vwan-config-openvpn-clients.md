@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 921e22e637782ffd744af1a28e6bd43e7dd53c67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066057"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986609"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows istemcileri
 
@@ -130,7 +130,7 @@ ms.locfileid: "80066057"
 5. Özel anahtarı ve base64 parmak izini .pfx'ten çıkar. Bunu yapmanın birden çok yolu vardır. Bilgisayarınızda OpenSSL kullanmak tek yönlüdür.
 
     ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
+    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
     ```
    *profileinfo.txt* dosyası, CA'nın özel anahtarını ve parmak izini ve İstemci sertifikasını içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
 
@@ -161,7 +161,7 @@ ms.locfileid: "80066057"
 11. Komut satırını kullanarak bağlanmak için aşağıdaki komutu yazın:
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
+    sudo openvpn --config <name and path of your VPN profile file>&
     ```
 12. GUI kullanarak bağlanmak için sistem ayarlarına gidin.
 13. Yeni **+** bir VPN bağlantısı eklemek için tıklatın.

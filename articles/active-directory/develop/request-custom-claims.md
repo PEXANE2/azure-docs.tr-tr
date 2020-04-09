@@ -3,26 +3,21 @@ title: Özel talepler isteyin (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: Özel talepler nasıl isteyeceğini öğrenin.
 services: active-directory
-documentationcenter: ''
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: marsma
-ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 44158296faaf238fd72f2360149d3d93f68c5ba0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4974fe3b387683f662d7a7b4f3ccb4935153f07e
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085596"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883105"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>Nasıl yapilir: iOS ve macOS için MSAL kullanarak özel talep teshis ihya
 
@@ -30,7 +25,7 @@ OpenID Connect, UserInfo Bitiş Noktası'ndan ve/veya Id Jetonundan bireysel tal
 
 iOS ve macOS için Microsoft Kimlik Doğrulama Kitaplığı (MSAL), hem etkileşimli hem de sessiz belirteç edinme senaryolarında belirli talepler talep edilmesine olanak tanır. Bunu `claimsRequest` parametre aracılığıyla yapar.
 
-Bunun gerekli olduğu birden çok senaryo vardır. Örnek:
+Bunun gerekli olduğu birden çok senaryo vardır. Örneğin:
 
 - Başvurunuz için standart kümenin dışında talepte bulunmak.
 - Uygulamanız için kapsamlar kullanılarak belirtilemeyen standart taleplerin belirli birleşimlerini istemek. Örneğin, bir erişim belirteci eksik talepler nedeniyle reddedilirse, uygulama MSAL kullanarak eksik talepleri isteyebilir.

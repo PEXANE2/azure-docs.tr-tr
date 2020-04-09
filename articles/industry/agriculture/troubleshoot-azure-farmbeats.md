@@ -5,16 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 2270ee7c850c528bd24fa2e58c2b1684acfc24d6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585302"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886492"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
 Bu makalede, ortak Azure FarmBeats sorunlarına çözümler sağlar. Ek yardım için [Destek](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) Forumu'muza farmbeatssupport@microsoft.combaşvurun veya bize e-posta gönderin.
+
+> [!NOTE]
+  > Nisan ayında FarmBeats'i yüklediyseniz ve işleriniz boş bir hata iletisiyle başarısız oluyorsa, yüklemeniz acil durum, sağlık ve diğer kritik ihtiyaçlara yönelik olan tüm kaynaklar nedeniyle toplu iş kotası tahsis edilmemiş olabilir. Toplu İşlem hesabına tahsis edilecek VM'leri istemeniz gerekir.
 
 ## <a name="install-issues"></a>Yükleme sorunları
 
@@ -280,7 +283,7 @@ Sentinel sunucusunda herhangi bir bakım aktivitesi yapılıyorsa bu sorun oluş
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-in-datahub"></a>Datahub'da Azure Veri Fabrikası iş günlüklerini veya Uygulama Hizmeti günlüklerini topla
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda FarmBeats Datahub kaynak grubunu arayın.
 3. Kaynak **Grubu** panosunda *datahublogs\* * depolama hesabını arayın. Örneğin, *datahublogsmvxmq*.  
 4. **Ad** sütununda, **Depolama Hesabı** panosunu görüntülemek için depolama hesabını seçin.
@@ -292,7 +295,7 @@ Sentinel sunucusunda herhangi bir bakım aktivitesi yapılıyorsa bu sorun oluş
 
 ### <a name="collect-azure-data-factory-job-logs-or-app-service-logs-for-accelerator"></a>Hızlandırıcı için Azure Veri Fabrikası iş günlüklerini veya Uygulama Hizmeti günlüklerini topla
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Arama** kutusunda FarmBeats Hızlandırıcı kaynak grubunu arayın.
 3. Kaynak **Grubu** panosunda *depolama\* * alanı hesabını arayın. Örneğin, *storagedop4k\**.
 4. **Depolama Hesabı** panosunu görüntülemek için **Ad** sütunundaki depolama hesabını seçin.

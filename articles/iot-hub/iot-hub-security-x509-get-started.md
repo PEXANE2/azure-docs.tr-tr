@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271180"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985669"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub’ınızda X.509 güvenliğini ayarlayın
 
@@ -38,6 +38,9 @@ Sertifikalarınızı almak için aşağıdaki yollardan birini seçebilirsiniz:
 * [OpenSSL](https://www.openssl.org/)gibi bir üçüncü taraf aracını kullanarak kendi X.509 sertifikalarınızı oluşturun. Bu teknik test ve geliştirme amacıyla iyidir. PowerShell veya Bash kullanarak test CA sertifikaları oluşturma hakkında bilgi için [örnekler ve öğreticiler için test CA sertifikalarını yönetmeye](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) bakın. Bu öğreticinin geri kalanı, [örnekler ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)yönergelerini izleyerek oluşturulan test CA sertifikalarını kullanır.
 
 * Varolan bir kök CA sertifikası tarafından imzalanmış bir [X.509 ara CA sertifikası](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) oluşturun ve hub'a yükleyin. Ara sertifika yüklendikten ve doğrulandıktan sonra, aşağıda belirtildiği gibi, aşağıda belirtilen kök CA sertifikası yerine kullanılabilir. OpenSSL ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) ve [openssl ca)](https://www.openssl.org/docs/man1.1.0/man1/ca.html)gibi araçlar bir ara CA sertifikası oluşturmak ve imzalamak için kullanılabilir.
+
+> [!NOTE]
+> Üçüncü tarafın diğer müşterilerinin cihazlarını IoT Hub'ınıza bağlamasına olanak sağlayacağından, size özgü değilse üçüncü taraf kökünü yüklemeyin.
 
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X.509 CA sertifikalarını IoT hub'ınıza kaydettirin
 

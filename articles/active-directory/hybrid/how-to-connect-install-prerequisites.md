@@ -16,12 +16,12 @@ ms.date: 02/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79741557e6eea1b4252e5ab4d9976b124cea1169
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6446b039d90e04c9fe7fca28b361f620183a0292
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346898"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875750"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect Önkoşulları
 Bu konu, Azure AD Connect için ön koşulları ve donanım gereksinimlerini açıklar.
@@ -87,7 +87,7 @@ Daha fazla bilgi için bkz:
 ### <a name="accounts"></a>Hesaplar
 * Tümleştirmek istediğiniz Azure AD kiracısı için bir Azure AD Global Administrator hesabı. Bu hesap bir **okul veya kuruluş hesabı** olmalıdır ve microsoft **hesabı**olamaz.
 * [Açık ayarları](reference-connect-accounts-permissions.md#express-settings-installation) kullanıyorsanız veya DirSync'den yükseltme yapıyorsunuz, şirket içi Active Directory'niz için bir Kurumsal Yönetici hesabınız olması gerekir.
-* Özel ayarlar yükleme yolunu kullanırsanız, Daha fazla seçeneğiniz var: [Active Directory'deki Hesaplar'a](reference-connect-accounts-permissions.md#custom-installation-settings) bakın
+* Özel ayarlar yükleme yolunu kullanıyorsanız, daha fazla seçeneğiniz vardır. Daha fazla bilgi için [Özel yükleme ayarlarına](reference-connect-accounts-permissions.md#custom-installation-settings)bakın.
 
 ### <a name="connectivity"></a>Bağlantı
 * Azure AD Connect sunucusunun hem intranet hem de internet için DNS çözünürlüğüne ihtiyacı vardır. DNS sunucusu, adları hem şirket içi Etkin Dizininizde hem de Azure AD uç noktalarınıza çözümleyebilmeli.
@@ -173,7 +173,7 @@ When using Azure AD Connect to deploy Active Directory Federation Services or th
       * To validate remote PowerShell connectivity, in the Server Manager All Servers tab: right click WAP server and choose Windows PowerShell. A remote PowerShell session should open to ensure remote PowerShell sessions can be established.
 
 ### TLS/SSL Certificate Requirements
-* It’s strongly recommended to use the same TLS/SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
+* It's strongly recommended to use the same TLS/SSL certificate across all nodes of your AD FS farm and all Web Application proxy servers.
 * The certificate must be an X509 certificate.
 * You can use a self-signed certificate on federation servers in a test lab environment. However, for a production environment, we recommend that you obtain the certificate from a public CA.
   * If using a certificate that is not publicly trusted, ensure that the certificate installed on each Web Application Proxy server is trusted on both the local server and on all federation servers

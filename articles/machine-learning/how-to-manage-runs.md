@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: 8c261a010a1e8f4d1be9b3883510eb38c37a15ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296895"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985924"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python'da eğitim çalıştırmayı başlatın, izleyin ve iptal edin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -264,16 +264,41 @@ Birçok alt çalışan verimli oluşturmak [`create_children()`](https://docs.mi
 
 ### <a name="submit-child-runs"></a>Çocuk çalıştırmaları gönderme
 
-Alt çalıştırmalar bir üst çalıştırmadan da gönderilebilir. Bu, her biri ortak üst çalıştırma kimliğiyle bağlanan farklı işlem hedeflerinde çalışan üst ve alt çalışan hiyerarşileri oluşturmanıza olanak tanır.
+Alt çalıştırmalar bir üst çalıştırmadan da gönderilebilir. Bu, üst ve alt çalışır hiyerarşileri oluşturmanıza olanak sağlar. 
 
-Bir alt çalıştırmayı bir üst çalışma içinden çalıştırmak göndermek için ['submit_child()'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) yöntemini kullanın. Bunu üst çalıştırma komut dosyasında yapmak için, çalıştır bağlamını ``submit_child`` alın ve alt çalıştırmayı bağlam örneği yöntemini kullanarak gönderin.
+Çocuğunuzun çalışır ana çalıştırmadan farklı bir çalıştırma yapılandırması kullanmasını isteyebilirsiniz. Örneğin, çocuklarınız için GPU tabanlı yapılandırmaları kullanırken üst öğe için daha az güçlü, CPU tabanlı bir yapılandırma kullanabilirsiniz. Başka bir ortak arzu her çocuk farklı argümanlar ve veri geçmektir. Bir alt çalıştırmayı özelleştirmek `RunConfiguration` için, bir `ScriptRunConfig` nesneyi çocuğun oluşturucusuna geçirin. Üst `ScriptRunConfig` nesnenin komut dosyasının bir parçası olacak bu kod örneği:
+
+- Adlandırılmış `RunConfiguration` bir bilgi işlem kaynağı alma oluşturur`"gpu-compute"`
+- Çocuklara `ScriptRunConfig` aktarılacak farklı bağımsız değişken değerlerini yineler nesneler
+- Özel bilgi işlem kaynağını ve bağımsız değişkenini kullanarak yeni bir alt çalışma oluşturur ve gönderir
+- Tüm çocuk tamamlanana kadar engeller
 
 ```python
-## In parent run script
-parent_run = Run.get_context()
-child_run_config = ScriptRunConfig(source_directory='.', script='child_script.py')
-parent_run.submit_child(child_run_config)
+# parent.py
+# This script controls the launching of child scripts
+from azureml.core import Run, ScriptRunConfig, RunConfiguration
+
+run_config_for_aml_compute = RunConfiguration()
+run_config_for_aml_compute.target = "gpu-compute"
+run_config_for_aml_compute.environment.docker.enabled = True 
+
+run = Run.get_context()
+
+child_args = ['Apple', 'Banana', 'Orange']
+for arg in child_args: 
+    run.log('Status', f'Launching {arg}')
+    child_config = ScriptRunConfig(source_directory=".", script='child.py', arguments=['--fruit', arg], run_config = run_config_for_aml_compute)
+    # Starts the run asynchronously
+    run.submit_child(child_config)
+
+# Experiment will "complete" successfully at this point. 
+# Instead of returning immediately, block until child runs complete
+
+for child in run.get_children():
+    child.wait_for_completion()
 ```
+
+Aynı yapılandırmaları, bağımsız değişkenleri ve girişleri verimli bir şekilde [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) birçok alt çalışır oluşturmak için yöntemi kullanın. Her oluşturma bir ağ çağrısıyla sonuçlandığı için, bir dizi çalıştırma oluşturmak, bunları tek tek oluşturmaktan daha verimlidir.
 
 Bir alt çalışma içinde, üst çalışan kimliği görüntüleyebilirsiniz:
 

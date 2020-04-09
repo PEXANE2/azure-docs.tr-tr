@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/07/2020
 ms.author: juliako
-ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a4f4bd6eaa07907dd672abe068b515b5127adac9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80068003"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886832"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Medya Hizmetleri v3 sık sorulan sorular
 
@@ -166,6 +166,112 @@ Daha fazla bilgi için bkz: [Medya Hizmetlerine Geçir v3.](media-services-v2-vs
 ### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nereye gitti?
 
 Artık sunucu tarafındaki depolama şifrelemesinin kullanılması önerilir (varsayılan olarak açık). Daha fazla bilgi [için, Veriler için Azure Depolama Hizmeti Şifrelemesi'ne](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)bakın.
+
+## <a name="offline-streaming"></a>Çevrimdışı akış
+
+### <a name="fairplay-streaming-for-ios"></a>iOS için FairPlay Akışı
+
+Aşağıdaki sık sorulan sorular iOS için çevrimdışı FairPlay akışı sorun giderme ile yardımcı sağlar:
+
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Çevrimdışı modda neden yalnızca ses çalınmıyor, video oynanmıyor?
+
+Bu davranış örnek uygulamanın tasarımı ile gibi görünüyor. Çevrimdışı modda alternatif bir ses parçası (HLS için geçerli olan) olduğunda, hem iOS 10 hem de iOS 11 varsayılan olarak alternatif ses parçasına geçer. FPS çevrimdışı modu için bu davranışı telafi etmek için, alternatif ses parçasını akıştan kaldırın. Bunu Medya Hizmetleri'nde yapmak için dinamik bildirim filtresini "yalnızca ses=false" ekleyin. Başka bir deyişle, HLS URL 'si .ism/manifest(format=m3u8-aapl,audio-only=false) ile biter. 
+
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Ben yalnızca sesli=false ekledikten sonra neden çevrimdışı modda yalnızca video olmadan ses oynatmıyor?
+
+İçerik teslim ağı (CDN) önbellek anahtarı tasarımına bağlı olarak, içerik önbelleğe alınabilir. Önbelleği temizle.
+
+#### <a name="is-fps-offline-mode-also-supported-on-ios-11-in-addition-to-ios-10"></a>FPS çevrimdışı modu iOS 11'de de iOS 10'a ek olarak desteklenir mi?
+
+Evet. FPS çevrimdışı modu iOS 10 ve iOS 11 için desteklenir.
+
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>FPS Server SDK'da neden "FairPlay Streaming ile Çevrimdışı Oynatma ve HTTP Live Streaming" belgesini bulamıyorum?
+
+FPS Server SDK sürüm 4'ten bu yana, bu belge "FairPlay Akış Programlama Kılavuzu" ile birleştirilmiştir.
+
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>iOS aygıtlarında indirilen/çevrimdışı dosya yapısı nedir?
+
+iOS aygıtında indirilen dosya yapısı aşağıdaki ekran görüntüsüne benzer. Klasör, `_keys` her lisans hizmeti ana bilgisayarı için bir mağaza dosyasıyla birlikte FPS lisanslarını karşıdan yükledi. Klasör `.movpkg` ses ve video içeriğini depolar. Bir çizgi ile biten bir ad ile ilk klasör ütambir sayısal video içeriği içerir. Sayısal değer, video yorumlamalarının PeakBandwidth'idir. Bir çizgi ve ardından 0 ile biten bir ada sahip ikinci klasör ses içeriği içerir. "Veri" adlı üçüncü klasör FPS içeriğinin ana çalma listesini içerir. Son olarak, boot.xml klasör `.movpkg` içeriğinin tam bir açıklamasını sağlar. 
+
+![Çevrimdışı FairPlay iOS örnek uygulama dosya yapısı](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+
+Örnek bir boot.xml dosyası:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
+  <Version>1.0</Version>
+  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
+  <Streams>
+    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
+      <Complete>YES</Complete>
+    </Stream>
+  </Streams>
+  <MasterPlaylist>
+    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
+  </MasterPlaylist>
+  <DataItems Directory="Data">
+    <DataItem>
+      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
+      <Category>Playlist</Category>
+      <Name>master.m3u8</Name>
+      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
+      <Role>Master</Role>
+    </DataItem>
+  </DataItems>
+</HLSMoviePackage>
+```
+
+### <a name="widevine-streaming-for-android"></a>Android için Widevine akışı
+
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-key"></a>Bazı istemciler/kullanıcılar için kalıcı lisansları (çevrimdışı etkin) ve diğerleri için kalıcı olmayan lisansları (çevrimdışı devre dışı) nasıl teslim edebilirim? İçeriği çoğaltmak ve ayrı içerik anahtarı kullanmak zorunda mıyım?
+
+Media Services v3 bir Varlığın birden fazla StreamingLocators'a sahip olmasını sağladığından. Sen olabilir
+
+* license_type ile Bir ContentKeyPolicy = "kalıcı", ContentKeyPolicyRestriction "kalıcı" üzerinde iddia ile ve onun StreamingLocator;
+* başka bir ContentKeyPolicy ile license_type="nonpersistent", ContentKeyPolicyRestriction "nonpersistent" üzerinde iddia ile ve onun StreamingLocator.
+* İki StreamingLocators farklı ContentKey var.
+
+Özel STS iş mantığına bağlı olarak, farklı talepler JWT belirteci verilir. Belirteç ile yalnızca ilgili lisans alınabilir ve yalnızca ilgili URL oynatılabilir.
+
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Widevine ve Medya Hizmetleri DRM güvenlik düzeyleri arasındaki haritalama nedir?
+
+Google'ın "Widevine DRM Architecture Overview" üç farklı güvenlik düzeyi tanımlar. Ancak, [Widevine lisans şablonundaki Azure Medya Hizmetleri belgelerinde](widevine-license-template-overview.md)beş farklı güvenlik düzeyi özetlenmiştir. Bu bölümde, güvenlik düzeylerinin nasıl eşlenebildiğini açıklanmaktadır.
+
+Google'ın "Widevine DRM Architecture Review" dokümanı aşağıdaki üç güvenlik düzeyine göre tanımlanır:
+
+* Güvenlik Düzeyi 1: Tüm içerik işleme, şifreleme ve denetim Güvenilir Yürütme Ortamı (TEE) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işleme farklı yongalarda gerçekleştirilebilir.
+* Güvenlik Düzeyi 2: TEE içinde şifreleme (ancak video işleme) gerçekleştirir: şifresi çözülmüş arabellekleri uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılımı aracılığıyla işlenir. Ancak 2.
+* Güvenlik Seviyesi 3 Cihazda TEE yok. Ana bilgisayar işletim sistemindeki kriptografik bilgileri ve şifresi çözülmüş içeriği korumak için uygun önlemler alınabilir. Düzey 3 uygulaması da bir donanım şifreleme motoru içerebilir, ancak bu yalnızca performansı artırır, güvenliği değil.
+
+Aynı zamanda, [Widevine lisans şablonundaki Azure Medya Hizmetleri belgelerinde,](widevine-license-template-overview.md)content_key_specs security_level özelliği aşağıdaki beş farklı değere (oynatma için istemci sağlamlığı gereksinimleri) sahip olabilir:
+
+* Yazılım tabanlı beyaz kutu kripto gereklidir.
+* Yazılım kripto ve bir obfuscated kod çözücü gereklidir.
+* Anahtar malzeme ve kripto işlemleri donanım destekli TEE içinde yapılmalıdır.
+* İçeriğin kriptolanması ve şifresi donanım destekli TEE içinde yapılmalıdır.
+* Kripto, kod çözme ve ortamın tüm kullanımı (sıkıştırılmış ve sıkıştırılmamış) donanım destekli TEE içinde ele alınmalıdır.
+
+Her iki güvenlik düzeyi de Google Widevine tarafından tanımlanır. Fark kullanım düzeyinde: mimari düzeyi veya API düzeyi. Beş güvenlik düzeyi Widevine API'sinde kullanılır. security_level içeren content_key_specs nesnesi, Azure Media Services Widevine lisans hizmeti tarafından seri olarak deserialize edilir ve Widevine global teslimat hizmetine aktarılır. Aşağıdaki tablo, iki güvenlik düzeyi kümesi arasındaki eşlemi gösterir.
+
+| **Widevine Mimarisinde Tanımlanan Güvenlik Düzeyleri** |**Widevine API'de Kullanılan Güvenlik Düzeyleri**|
+|---|---| 
+| **Güvenlik Düzeyi 1**: Tüm içerik işleme, şifreleme ve denetim Güvenilir Yürütme Ortamı (TEE) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işleme farklı yongalarda gerçekleştirilebilir.|**security_level=5**: Kripto, kod çözme ve ortamın tüm kullanımı (sıkıştırılmış ve sıkıştırılmamış) donanım destekli TEE içinde ele alınmalıdır.<br/><br/>**security_level=4**: İçeriğin kriptolanması ve şifresi donanım destekli TEE içinde yapılmalıdır.|
+**Güvenlik Düzeyi 2**: TEE içinde kriptografi (ancak video işleme) gerçekleştirir: şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanım ı veya yazılım aracılığıyla işlenir. Ancak 2.| **security_level=3**: Anahtar malzeme ve kripto işlemleri donanım destekli TEE içinde yapılmalıdır. |
+| **Güvenlik Düzeyi 3**: Cihazda TEE yok. Ana bilgisayar işletim sistemindeki kriptografik bilgileri ve şifresi çözülmüş içeriği korumak için uygun önlemler alınabilir. Düzey 3 uygulaması da bir donanım şifreleme motoru içerebilir, ancak bu yalnızca performansı artırır, güvenliği değil. | **security_level=2**: Yazılım kriptosu ve gizlenmiş bir kod çözücü gereklidir.<br/><br/>**security_level=1**: Yazılım tabanlı beyaz kutu kripto gereklidir.|
+
+#### <a name="why-does-content-download-take-so-long"></a>İçerik indirme işlemi neden bu kadar uzun sürüyor?
+
+İndirme hızını artırmanın iki yolu vardır:
+
+* CdN'yi etkinleştirin, böylece son kullanıcıların içerik karşıdan yükleme için başlangıç/akış bitiş noktası yerine CDN'ye basma olasılığı daha yüksektir. Kullanıcı akış bitiş noktasına vurursa, her HLS kesimi veya DASH parçası dinamik olarak paketlenir ve şifrelenir. Bu gecikme gecikmesi her kesim/parça için milisaniye ölçeğinde olsa da, bir saatlik videonuz olduğunda, birikmiş gecikme gecikmesi daha uzun indirmeye neden olabilir.
+* Son kullanıcılara tüm içerikler yerine video kalitesi katmanlarını ve ses parçalarını seçikal olarak indirme seçeneği sağlayın. Çevrimdışı mod için, tüm kalite katmanlarını indirmenin bir anlamı yoktur. Bunu başarmanın iki yolu vardır:
+
+   * İstemci kontrollü: ya oyuncu uygulaması otomatik seçer veya kullanıcı indirmek için video kalitesi katmanı ve ses parçaları seçer;
+   * Hizmet denetimi: HLS çalma listesi veya DASH MPD'yi tek bir video kalitesi katmanı ve seçili ses parçalarıyla sınırlayan (genel) bir filtre oluşturmak için Azure Media Services'teki Dinamik Bildirim özelliğini kullanabilirsiniz. Ardından, son kullanıcılara sunulan indirme URL'si bu filtreyi içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

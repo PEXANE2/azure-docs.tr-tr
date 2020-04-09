@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c1e740fbfa4bf1e8a77a2d9d6060ab39dba7ae7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0938fbe94cb0d1e6dae3dcb84950a11f90dd9db8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256217"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878162"
 ---
 # <a name="what-are-sql-database-instance-pools-preview"></a>SQL Veritabanı örnek havuzları (önizleme) nedir?
 
@@ -59,7 +59,7 @@ Aşağıdaki liste, örnek havuzlarının dikkate alınması gereken ana kullan�
 
 ## <a name="architecture-of-instance-pools"></a>Örnek havuzlarının mimarisi
 
-Örnek havuzları normal yönetilen örneklere *(tek örnek)* benzer mimariye sahiptir. Azure [Sanal Ağlar (VNets)](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) içindeki dağıtımları desteklemek ve müşteriler için yalıtım ve güvenlik sağlamak için örnek havuzları da [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)güvenir. Sanal kümeler, müşterinin sanal ağ alt ağında dağıtılan özel bir yalıtılmış sanal makine kümesini temsil eder.
+Örnek havuzları normal yönetilen örneklere *(tek örnek)* benzer mimariye sahiptir. Azure [Sanal Ağlar (VNets)](../virtual-network/virtual-network-for-azure-services.md) içindeki dağıtımları desteklemek ve müşteriler için yalıtım ve güvenlik sağlamak için örnek havuzları da [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)güvenir. Sanal kümeler, müşterinin sanal ağ alt ağında dağıtılan özel bir yalıtılmış sanal makine kümesini temsil eder.
 
 İki dağıtım modeli arasındaki temel fark, örnek [havuzlarının, Windows İş Nesneleri](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verirken, tek örnekler sanal makine düğümünde her zaman tek başına dır.
 
@@ -112,7 +112,7 @@ Belirli değerleri seçmeniz gereken isteğe bağlı özellikler veya özellikle
 
 Havuzlar içinde yönetilen örnekleri özel vCore ve RAM olmasına rağmen, yerel disk (tempdb kullanımı için) ve ağ kaynaklarını paylaşır. Bu olası değildir, ancak havuzda birden fazla örnek aynı anda yüksek kaynak tüketimi varsa *gürültülü komşu* etkisi yaşamak mümkündür. Bu davranışı gözlemlerseniz, bu örnekleri daha büyük bir havuza veya tek örnek olarak dağıtmayı düşünün.
 
-## <a name="security-considerations"></a>Güvenlik konuları
+## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
 
 Havuzda dağıtılan örnekler aynı sanal makineyi paylaştığından, daha yüksek güvenlik riskleri ne kadar yüksek güvenlik riskleri doğuran özellikleri devre dışı bırakmayı veya bu özelliklere erişim izinlerini sıkı bir şekilde denetlemeyi düşünebilirsiniz. Örneğin, CLR entegrasyonu, yerel yedekleme ve geri yükleme, veritabanı e-posta, vb.
 

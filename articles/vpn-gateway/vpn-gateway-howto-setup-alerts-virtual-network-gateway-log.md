@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: b587fa31f1aa42e8dbd5a9d2430c0117891f2091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49510b26e0b2a9c69dd65faf0f343e86d1a068db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239780"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878910"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Ağ Geçidi'nden tanılama günlüğü olayları yla ilgili uyarıları ayarlama
 
@@ -26,7 +26,7 @@ Aşağıdaki günlükler Azure'da kullanılabilir:
 |TünelDiagnosticLog | Tünel durumu değişikliği olaylarını içerir. Tünel bağlantısı/kesme olayları, varsa durum değişikliğinin özet bir nedeni |
 |RouteDiagnosticLog | Ağ geçidinde oluşan statik rotalarda ve BGP olaylarında değişiklikleri günlüğe kaydeder |
 |IKEDiagnosticLog | Giriş iKE denetim iletileri ve ağ geçidindeki olayları kaydeder |
-|P2SDiagnosticlog | Ağ geçidinde noktadan siteye denetim iletilerini ve etkinlikleri günlüğe kaydeder |
+|P2SDiagnosticlog | Ağ geçidinde noktadan siteye denetim iletilerini ve olayları günlüğe kaydeder. Bağlantı kaynağı bilgileri yalnızca IKEv2 bağlantıları için sağlanır |
 
 ## <a name="set-up-alerts-in-the-azure-portal"></a><a name="setup"></a>Azure portalında uyarılar ayarlama
 
@@ -35,7 +35,7 @@ Aşağıdaki örnek adımlar, siteden siteye VPN tüneli içeren bir bağlantı 
 
 1. Azure portalında, **Tüm hizmetler** altında **Günlük Analitiği'ni** arayın ve **Log Analytics çalışma alanlarını**seçin.
 
-   ![Günlük Analytics çalışma alanlarına gitmek için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Oluşturma")
+   ![Günlük Analytics çalışma alanlarına gitmek için seçimler](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Oluştur")
 
 2. **Log Analytics** sayfasında **Oluştur'u** seçin.
 

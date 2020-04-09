@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti'nde (AKS) ağ ilkeleriyle güvenli bölmeler
+title: Ağ ilkesiyle güvenli pod trafiği
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti'nde (AKS) Kubernetes ağ ilkelerini kullanarak bölmelere girip çıkan trafiği nasıl güvenli hale erdireceklerini öğrenin
 services: container-service
 ms.topic: article
 ms.date: 05/06/2019
-ms.openlocfilehash: 37b6ebd1c8b147db0a9cead4678a0b2bb4ed234d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 01ba9e7353b6783d1b4fd1649291a64405fd9382
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473617"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886713"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) ağ ilkelerini kullanarak bölmeler arasındaki trafiği güvenli hale
 
@@ -24,7 +25,7 @@ Azure CLI sürümü 2.0.61 veya daha sonra yüklenmiş ve yapılandırılan gere
 > [!TIP]
 > Önizleme sırasında ağ ilkesi özelliğini kullandıysanız, [yeni bir küme oluşturmanızı](#create-an-aks-cluster-and-enable-network-policy)öneririz.
 > 
-> Önizleme sırasında ağ ilkesini kullanan varolan test kümelerini kullanmaya devam etmek istiyorsanız, kümenizi en son GA sürümü için yeni bir Kubernetes sürümlerine yükseltin ve çöken ölçüm sunucusu ve Kubernetes'i düzeltmek için aşağıdaki YAML bildirimini dağıtın Pano. Bu düzeltme yalnızca Calico ağ ilkesi altyapısını kullanan kümeler için gereklidir.
+> Önizleme sırasında ağ ilkesini kullanan varolan test kümelerini kullanmaya devam etmek istiyorsanız, kümenizi en son GA sürümü için yeni bir Kubernetes sürümlerine yükseltin ve ardından çöken ölçüm sunucusu ve Kubernetes panosunu düzeltmek için aşağıdaki YAML bildirimini dağıtın. Bu düzeltme yalnızca Calico ağ ilkesi altyapısını kullanan kümeler için gereklidir.
 >
 > Güvenlik en iyi uygulama olarak, AKS kümesine nelerin dağıtılmış olduğunu anlamak için [bu YAML bildiriminin içeriğini gözden geçirin.][calico-aks-cleanup]
 >
@@ -56,7 +57,7 @@ Her iki uygulama da belirtilen ilkeleri uygulamak için Linux *IPTable'ları* ku
 | Kubernetes belirtimine uygunluk | Desteklenen tüm ilke türleri |  Desteklenen tüm ilke türleri |
 | Ek özellikler                      | None                       | Global Ağ İlkesi, Global Ağ Kümesi ve Ana Bilgisayar Uçnokta'ndan oluşan genişletilmiş ilke modeli. Bu genişletilmiş özellikleri `calicoctl` yönetmek için CLI'yi kullanma hakkında daha fazla bilgi için [kalikoktl kullanıcı başvurusuna][calicoctl]bakın. |
 | Destek                                  | Azure desteği ve Mühendislik ekibi tarafından desteklenir | Calico toplum desteği. Ek ücretli destek hakkında daha fazla bilgi için [Project Calico destek seçeneklerine][calico-support]bakın. |
-| Günlüğe Kaydetme                                  | IPTable'larda eklenen / silinen kurallar */var/log/azure-npm.log* altında her ana bilgisayarda günlüğe kaydedilir | Daha fazla bilgi için [Calico bileşen günlüklerine][calico-logs] bakın |
+| Günlüğe kaydetme                                  | IPTable'larda eklenen / silinen kurallar */var/log/azure-npm.log* altında her ana bilgisayarda günlüğe kaydedilir | Daha fazla bilgi için [Calico bileşen günlüklerine][calico-logs] bakın |
 
 ## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Bir AKS kümesi oluşturun ve ağ ilkesini etkinleştirin
 

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 09/12/2019
-ms.openlocfilehash: 9f115d51657993562642391a235de79420aa434a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ce88f9a61b8aa7c2588a6e077d694afa6fb8631
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823372"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878859"
 ---
 # <a name="create-a-virtual-network-for-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı Yönetilen Örneği için sanal ağ oluşturma
 
@@ -29,13 +29,13 @@ Azure SQL Veritabanı Yönetilen Örnek, bir Azure [sanal ağında](../virtual-n
 - Yönetilen Örnek'i bağlantılı sunucuya veya başka bir şirket içi veri deposuna bağlama
 - Yönetilen Örnek'i Azure kaynaklarına bağlama  
 
-> [!Note]
+> [!NOTE]
 > İlk örneği dağıtmadan önce [Yönetilen Örnek için alt netboyutunu belirlemeniz](sql-database-managed-instance-determine-size-vnet-subnet.md) gerekir. Kaynakları içine koyduktan sonra alt ağı yeniden boyutlandıramaz.
 >
 > Varolan bir sanal ağı kullanmayı planlıyorsanız, yönetilen örneğinizi barındıracak şekilde bu ağ yapılandırmasını değiştirmeniz gerekir. Daha fazla bilgi için bkz. [Yönetilen Örnek için varolan bir sanal ağı değiştir.](sql-database-managed-instance-configure-vnet-subnet.md)
 >
-> Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneğin veya VNet'in başka bir kaynak grubuna taşınması veya aboneliği desteklenmez.
-
+> Yönetilen bir örnek oluşturulduktan sonra, yönetilen örneğin veya VNet'in başka bir kaynak grubuna taşınması veya aboneliği desteklenmez.  Yönetilen örneğin başka bir alt ağa taşınması da desteklenmez.
+>
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 

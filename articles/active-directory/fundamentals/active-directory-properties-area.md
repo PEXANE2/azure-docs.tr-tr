@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: bpham
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95f1877ae630919ba7da5a851b5f8291ade2d165
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 343671c1d9ee82950a9822648f9831588da7e9f8
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76897590"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876193"
 ---
 # <a name="add-your-organizations-privacy-info-using-azure-active-directory"></a>Azure Active Directory'yi kullanarak kuruluşunuzun gizlilik bilgilerini ekleme
 Bu makalede, kiracı yöneticinin Azure portalı aracılığıyla kuruluşun Azure Etkin Dizini (Azure AD) kiracısına gizlilikle ilgili bilgileri nasıl ekleyebileceği açıklanmaktadır.
@@ -32,15 +32,15 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD'nin **Özellikler** alanına eklers
 
 ### <a name="to-access-the-properties-area-and-add-your-privacy-information"></a>Özellikler alanına erişmek ve gizlilik bilgilerinizi eklemek için
 
-1.  Azure portalında kiracı yönetici olarak oturum açın.
+1.    Azure portalında kiracı yönetici olarak oturum açın.
 
-2.  Soldaki gezinme çubuğunda **Azure Etkin Dizini'ni**seçin ve ardından **Özellikler'i**seçin.
+2.    Soldaki gezinme çubuğunda **Azure Etkin Dizini'ni**seçin ve ardından **Özellikler'i**seçin.
 
     **Özellikler** alanı görüntülenir.
 
     ![Gizlilik bilgileri alanını vurgulayan Azure AD Özellikleri alanı](media/active-directory-properties-area/properties-area.png)
 
-3.  Çalışanlarınız için gizlilik bilgilerinizi ekleyin:
+3.    Çalışanlarınız için gizlilik bilgilerinizi ekleyin:
 
     - **Teknik temas.** Kuruluşunuzdaki teknik destek için iletişim kuracak kişinin e-posta adresini yazın.
     
@@ -53,8 +53,8 @@ Kuruluşunuzun gizlilik bilgilerini Azure AD'nin **Özellikler** alanına eklers
 
         ![B2B İşbirliği İnceleme İzinleri kutusu ile ileti](media/active-directory-properties-area/active-directory-no-privacy-statement-or-contact.png)
 
-4.  **Kaydet'i**seçin.
+4.    **Kaydet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure Active Directory B2B işbirliği daveti ödeme](https://aka.ms/b2bredemption)
+- [Azure Active Directory B2B işbirliği daveti ödeme](../b2b/redemption-experience.md)
 - [Azure Etkin Dizini'ndeki bir kullanıcı için profil bilgileri ekleme veya değiştirme](active-directory-users-profile-azure-portal.md)

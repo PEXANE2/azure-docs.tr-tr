@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 9/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 348633ffc91bc25a226b05743a18d2c87533a01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280652"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874979"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure iş ortağı müşteri kullanımı ilişkilendirmesi
 
@@ -232,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Rapor
 
-İş Ortağı Merkezi Analiz panosunda müşteri kullanımı yla ilgili atıf raporunu bulabilirsiniz. ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Raporu görmek için oturum açabilmek için Ortak Merkezi kimlik bilgilerinizi kullanmanız gerekir. Rapor veya oturum açma yla ilgili herhangi bir sorunla karşılaşırsanız, destek al bölümündeki yönergeyi izleyerek bir destek isteği oluşturun.
+İş Ortağı Merkezi panonuzda müşteri kullanımı ile ilgili[https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)atıf raporunu bulabilirsiniz ( ). Raporu görmek için oturum açabilmek için Ortak Merkezi kimlik bilgilerinizi kullanmanız gerekir. Rapor veya oturum açma yla ilgili herhangi bir sorunla karşılaşırsanız, destek al bölümündeki yönergeyi izleyerek bir destek isteği oluşturun.
 
 Raporu görmek için Ortak İlişkilendirme Türü açılır listesinde Izlenen Şablon'u seçin.
 
@@ -267,7 +267,7 @@ Müşteri kullanımı atfını nasıl ayarlanız gerektiği gibi genel olarak Ma
 1. Sorununuzun **Kategorisini** seçin:
 
    - Kullanım ilişkilendirme sorunları için **Diğer'i**seçin.
-   - Azure Marketi CPP'si ile ilgili erişim sorunları için **Access Problem'i**seçin.
+   - Azure Marketi ile ilgili erişim sorunları için **Access Problem'i**seçin.
 
      ![Sorun kategorisini seçin](media/marketplace-publishers-guide/lu-article-incident.png)
 
@@ -315,7 +315,7 @@ Evet, bir müşteri veya uygulama ortağı şablonu özelleştirebilir ve GUID'i
 
 **GitHub gibi Microsoft'a ait olmayan bir depodan dağıtılan şablonları izleyebilir miyim?**
 
-Evet, şablon dağıtıldığında GUID olduğu sürece, kullanım izlenir. İş ortaklarının Azure Marketi dışında dağıtım için kullanılan GUID'leri kaydetmek için CPP'de bir profile sahip olması gerekir.
+Evet, şablon dağıtıldığında GUID olduğu sürece, kullanım izlenir. İş ortaklarının, Azure Marketi dışında dağıtım için kullanılan GUID'leri kaydetmek için İş Merkezi'ndeki ticari pazar kaydında bir profile sahip olması gerekir.
 
 **Müşteri de raporlama alıyor mu?**
 

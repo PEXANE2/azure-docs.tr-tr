@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 4290bad405ddab6d89cac5ef7bfd185247d41da1
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: df51a408cc47908a240ceb66bf510fe3df3ce87f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745107"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983407"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modülü Pazar sekmesi
 
 >[!Important]
->30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 **Yeni Teklif** sayfasının **Pazar sekmesi,** potansiyel müşterilerinize pazarlama, satış ve yasal bilgi ve anlaşmaları sağlamanızı ve pazardan oluşturulan müşteri adaylarını yönetmenize olanak tanır. Bu uzun form dört bölüme ayrılmıştır: **Genel Bakış**, **Pazarlama Eserler**, **Kurşun Yönetimi**, ve **Yasal**.
 
@@ -36,7 +36,7 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 | **Özet\***               | Teklifin kısa özeti. Maksimum uzunluğu 100 karakter. <!--ADD PICTURE IN ACTION-->|
 | **Uzun Özet\***          | Teklifin daha uzun özeti **(özetle**aynı olsa da).  Maksimum uzunluğu 256 karakter. <!--ADD PICTURE IN ACTION-->|
 | **Açıklama\***           | Teklifin açıklaması.  Maksimum uzunluğu 3000 karakter, basit HTML biçimlendirme destekler.<br/> En altta *en az donanım gereksinimleri* paragrafı içermelidir. örneğin: <br/> <p><u>Minimum donanım gereksinimleri:</u> Linux x64 ve arm32 işletim sistemi, 1 GB RAM, 500 Mb depolama</p>
-| **Pazarlama Tanımlayıcısı\***  | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir.  Örnek: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Pazarlama Tanımlayıcısı\***  | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir.  Örneğin: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Abonelik IYT'lerini Önizleme** | Bir ila 100 abonelik tanımlayıcıları previewers ekleyin. Bu beyaz listedeki abonelikler, yayınlanmadan önce, yayınlanmadan önce teklife erişebilir. |
 | **Faydalı Linkler**          | Sunulan iş ve teknik kategorilerin çok seçimi en iyi şekilde ilişkilendirilebilir.  En fazla 10 izin verildi. [Azure IoT aygıt kataloğundan](https://catalog.azureiotsolutions.com/)belgelerinize en az bir bağlantı ve uyumlu IoT Edge aygıtlarına bir bağlantı eklediğinizden emin olun. |
 | **Önerilen Kategoriler\*** | Beş kategoriye kadar seçin. Ürün ayrıntıları sayfanızda gösterilir. Gözatma sayfalarında, tüm IoT Edge modülleri *Nesnelerin \> İnterneti IoT Edge modülü* kategorisi altında gösterilir.|

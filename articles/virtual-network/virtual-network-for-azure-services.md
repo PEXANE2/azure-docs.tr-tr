@@ -13,23 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: b721857f2fa76dcee144521fb34b34ce48b7bd95
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 70266a1280b90b4573073d633a918f701f9ee8c2
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616917"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878281"
 ---
-# <a name="virtual-network-integration-for-azure-services"></a>Azure hizmetleri için sanal ağ tümleştirmesi
-
-Azure hizmetlerini bir Azure sanal ağına entegre etmek, sanal makinelerden hizmete özel erişim veya sanal ağdaki bilgi işlem kaynaklarına özel erişim sağlar.
-Azure hizmetlerini sanal ağınızda aşağıdaki seçeneklerle tümleştirebilirsiniz:
-- Hizmetin özel örneklerini sanal ağa dağıtma. Hizmetlere daha sonra sanal ağ içinde ve şirket içi ağlardan özel olarak erişilebilir.
-- [Özel Bağlantı'yı](../private-link/private-link-overview.md) kullanarak sanal ağınızdan ve şirket içi ağlardan hizmetin belirli bir örneğine özel olarak erişin.
-
-Ayrıca, [hizmet bitiş noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla, hizmete sanal bir ağ genişleterek ortak uç noktaları kullanarak hizmete erişebilirsiniz. Hizmet bitiş noktaları, hizmet kaynaklarının sanal ağa güvenli hale alınmasına olanak tanır.
- 
-## <a name="deploy-azure-services-into-virtual-networks"></a>Azure hizmetlerini sanal ağlara dağıtma
+# <a name="deploy-dedicated-azure-services-into-virtual-networks"></a>Özel Azure hizmetlerini sanal ağlara dağıtma
 
 Özel Azure hizmetlerini sanal [ağda](virtual-networks-overview.md)dağıttığınızda, özel IP adresleri aracılığıyla hizmet kaynaklarıyla özel olarak iletişim kurabilirsiniz.
 
@@ -48,16 +39,17 @@ Hizmetleri sanal ağ içinde dağıtmak aşağıdaki özellikleri sağlar:
 
 ### <a name="services-that-can-be-deployed-into-a-virtual-network"></a>Sanal ağa dağıtılabilecek hizmetler
 
-|Kategori|Hizmet| Adanmış¹ Alt Ağ
+|Kategori|Hizmet| Özel<sup>1</sup>sup</sup>>1 Subnet
 |-|-|-|
-| İşlem | Sanal makineler: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Sanal makine ölçek kümeleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Bulut Hizmeti](https://msdn.microsoft.com/library/azure/jj156091): Yalnızca sanal ağ (klasik)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Hayır <br/> Hayır <br/> Hayır <br/> No²
+| İşlem | Sanal makineler: [Linux](../virtual-machines/linux/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) veya [Windows](../virtual-machines/windows/infrastructure-networking-guidelines.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Sanal makine ölçek setleri](../virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-existing-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Bulut Hizmeti](https://msdn.microsoft.com/library/azure/jj156091): Yalnızca sanal ağ (klasik)<br/> [Azure Batch](../batch/batch-api-basics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual-network-vnet-and-firewall-configuration)| Hayır <br/> Hayır <br/> Hayır <br/> No<sup>2</sup>sup>2</sup>
 | Ağ | [Uygulama Ağ Geçidi - WAF](../application-gateway/application-gateway-ilb-arm.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Güvenlik Duvarı](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) <br/>[Ağ Sanal Cihazlar](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn) | Evet <br/> Evet <br/> Evet <br/> Hayır
 |Veriler|[RedisCache](../azure-cache-for-redis/cache-how-to-premium-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure SQL Veritabanı Yönetilen Örneği](../sql-database/sql-database-managed-instance-connectivity-architecture.md?toc=%2fazure%2fvirtual-network%2ftoc.json)| Evet <br/> Evet <br/> 
-|Analiz | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |No² <br/> No² <br/> 
+|Analiz | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |No<sup>2</sup>sup>2</su<sup>2</sup>> <br/> Hayır<sup>2</sup> <br/> 
 | Kimlik | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |Hayır <br/>
-| Kapsayıcılar | [Azure Kubernetes Hizmeti (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>Azure Sanal Ağ CNI [eklentili](https://github.com/Azure/acs-engine/tree/master/examples/vnet) [Azure Konteyner Servis Motoru](https://github.com/Azure/acs-engine)<br/>[Azure İşlevleri](../azure-functions/functions-networking-options.md#virtual-network-integration) |No²<br/> Evet <br/><br/> Hayır <br/> Evet
+| Kapsayıcılar | [Azure Kubernetes Hizmeti (AKS)](../aks/concepts-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Container Instance (ACI)](https://www.aka.ms/acivnet)<br/>Azure Sanal Ağ CNI [eklentili](https://github.com/Azure/acs-engine/tree/master/examples/vnet) [Azure Konteyner Servis Motoru](https://github.com/Azure/acs-engine)<br/>[Azure İşlevleri](../azure-functions/functions-networking-options.md#virtual-network-integration) |No<sup>2</sup>sup>2</sup><br/> Evet <br/><br/> Hayır <br/> Evet
 | Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Web Apps](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[App Service Ortamı](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure Logic Apps](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Evet <br/> Evet <br/> Evet <br/> Evet
 | Barındırılan | [Azure Ayrılmış HSM](../dedicated-hsm/index.yml?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Azure NetApp Files](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>|Evet <br/> Evet <br/>
 | | |
 
-¹ 'Adanmış' yalnızca hizmete özgü kaynakların bu alt ağda dağıtılabildiği ve müşteri VM/VMSS'leri ile birleştirilemeyeceği anlamına gelir <br/> ² Bu hizmetlerin özel bir alt ağda olması en iyi uygulama olarak önerilir, ancak hizmet tarafından dayatılan zorunlu bir gereklilik değildir.
+<sup>1</sup> 'Adanmış', yalnızca hizmete özgü kaynakların bu alt ağda dağıtılabildiği ve müşteri VM/VMSS'leri ile birleştirilemeyeceği anlamına gelir <br/> 
+<sup>2</sup> Bu hizmetlerin özel bir alt ağda olması en iyi uygulama olarak önerilir, ancak hizmet tarafından dayatılan zorunlu bir gereklilik değildir.

@@ -7,22 +7,22 @@ ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: b7385ef27cd17705f2c86b6f57d4780511b6935c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246866"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878009"
 ---
 # <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portalını kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir Ön Kapı oluşturma
 
-Azure portalını kullanarak SSL sonlandırma sertifikasına sahip bir [Ön Kapı](front-door-overview.md) oluşturabilirsiniz. YÖNLENDIRME kuralı, HTTP trafiğini HTTPS'ye yönlendirmek için kullanılır.
+Azure portalını kullanarak TLS sonlandırma sertifikasına sahip bir [Ön Kapı](front-door-overview.md) oluşturabilirsiniz. YÖNLENDIRME kuralı, HTTP trafiğini HTTPS'ye yönlendirmek için kullanılır.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Varolan bir Web Uygulaması kaynağıyla Ön Kapı Oluşturma
-> * SSL sertifikasına sahip özel bir etki alanı ekleme 
+> * TLS/SSL sertifikasına sahip özel bir etki alanı ekleme 
 > * Özel etki alanında HTTPS yeniden yönlendirmekurulum
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
@@ -87,7 +87,7 @@ CNAME kaydını ekledikten sonra, DNS kayıtları sayfası aşağıdaki örnekte
 ### <a name="enable-https-on-your-custom-domain"></a>Özel etki alanınızda HTTPS'yi etkinleştirme
 
 1. Eklenen özel etki alanına tıklayın ve **Özel etki alanı HTTPS**bölümünün altında, durumu **Etkin**olarak değiştirin.
-2. Sertifika yönetim **türünü,** Ön Kapı tarafından tutulan, yönetilen ve otomatik olarak döndürülen ücretsiz sertifika için _yönetilen Ön Kapı'ya_ bırakabilirsiniz. Azure Key Vault ile depolanan kendi özel SSL sertifikanızı da kullanmayı seçebilirsiniz. Bu öğretici, Ön Kapı yönetilen sertifika kullanımı varsayar.
+2. Sertifika yönetim **türünü,** Ön Kapı tarafından tutulan, yönetilen ve otomatik olarak döndürülen ücretsiz sertifika için _yönetilen Ön Kapı'ya_ bırakabilirsiniz. Azure Key Vault ile depolanan kendi özel TLS/SSL sertifikanızı da kullanmayı seçebilirsiniz. Bu öğretici, Ön Kapı yönetilen sertifika kullanımı varsayar.
 ![Özel etki alanı için HTTPS'yi etkinleştirme](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
 3. Seçimi kaydetmek için **Güncelleştir'e** tıklayın ve ardından **Kaydet'i**tıklatın.

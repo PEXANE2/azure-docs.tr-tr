@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411278"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982897"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Düğümü.js SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -295,14 +295,14 @@ Her zaman en görünür değişiklikler değil, ama ekibimizin daha hızlı, dah
 
 ### <a name=""></a><a name="1.14.0"/>1.14.0</a>
 * Oturum Tutarlılığı için destek ekler.
-* Bu SDK sürümü, Azure Cosmos DB Emulator'un https://aka.ms/cosmosdb-emulatoren son sürümünü n için gerekli.
+* Bu SDK [sürümü, Azure Cosmos DB Emülatörü'nün](https://aka.ms/cosmosdb-emulator)en son sürümünü gerektirir.
 
 ### <a name=""></a><a name="1.13.0"/>1.13.0</a>
 * Bölünmüş provalı çapraz bölüm sorguları.
 * Satır aralığı ve sondaki kesiklerle (ve ilgili testlere) kaynak bağlantısı için destek ekler.
 
 ### <a name=""></a><a name="1.12.2"/>1.12.2</a>
-*   npm belgeleri düzeltildi.
+*    npm belgeleri düzeltildi.
 
 ### <a name=""></a><a name="1.12.1"/>1.12.1</a>
 * Ilgili belgelerin özel Unicode karakterleri (LS, PS) olduğu executeStoredProcedure'deki bir hata düzeltildi.

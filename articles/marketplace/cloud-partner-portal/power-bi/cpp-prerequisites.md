@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 5e8f63d63739f15d6d140b1eff510e6e006955b8
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ac27a2c95789eac3e824e4ecb31138a6720868a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744271"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981656"
 ---
 # <a name="power-bi-app-offer-prerequisites"></a>Power BI Uygulama teklifi önkoşulları
 
 >[!Important]
->30 Mart 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzurePBIAppCreationOverview) yönergelerini izleyin.
+>13 Nisan 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzurePBIAppCreationOverview) yönergelerini izleyin.
 
 Bu makale, AppSource pazar yerine bir Power BI App teklifi yayımlamadan önce karşılamanız gereken teknik ve iş gereksinimlerini sağlar.  Bunu zaten yapmadıysanız, Office [365, Dynamics 365, PowerApps ve Power BI Teklif Yayın Kılavuzu'nu](../../appsource-offer-publishing-guide.md)inceleyin.
 

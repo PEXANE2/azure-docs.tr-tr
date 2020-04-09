@@ -4,19 +4,20 @@ description: Java ve Gradle ile Azure'da HTTP tarafından tetiklenen bir işlev 
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
-ms.date: 08/10/2018
-ms.openlocfilehash: 1a24569a89755a33a80b7f884b803bd36f38ca3f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/08/2020
+ms.openlocfilehash: 5e18e035bd237fd489b715986e58d7ede726348d
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757133"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886611"
 ---
-# <a name="quickstart-use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Quickstart: Azure'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle'yi kullanın
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Azure'da bir işlev oluşturmak ve yayımlamak için Java ve Gradle'yi kullanın
 
 Bu makalede, Gradle komut satırı aracıyla Azure İşlevleri'ne bir Java işlevi projesi oluşturma ve yayımlama şekli gösterilmektedir. İşinizi bitirdiğinizde, işlev kodunuz [Azure'da sunucusuz](functions-scale.md#consumption-plan) bir barındırma planında çalışır ve bir HTTP isteği tarafından tetiklenir. 
 
-Ayrıca, [Maven arketiplerini](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)kullanarak komut satırından bir Java işlevi projesi oluşturabilir ve yayımlayabilirsiniz.
+> [!NOTE]
+> Gradle tercih geliştirme aracı değilse, [Maven,](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) ve [VS Kodu](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java devlopers için benzer öğreticiler göz atın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -172,4 +173,4 @@ HTTP tetiklenen işlevi olan bir Java işlevleri projesi oluşturdunuz, yerel ma
 
 
 [Azure CLI]: /cli/azure
-[Azure portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

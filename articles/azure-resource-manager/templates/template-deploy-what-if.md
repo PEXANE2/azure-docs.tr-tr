@@ -3,29 +3,68 @@ title: Şablon dağıtımı ne-if (Önizleme)
 description: Azure Kaynak Yöneticisi şablonunu dağıtmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşeceğini belirleyin.
 author: mumian
 ms.topic: conceptual
-ms.date: 03/05/2020
+ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: bc42585204e5cc2c3ece5293a3934fd22fe8507b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156455"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886849"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablon dağıtımı ne-if işlemi (Önizleme)
 
 Azure Kaynak Yöneticisi (ARM) şablonu dağıtmadan önce, meydana gelecek değişiklikleri önizlemek isteyebilirsiniz. Azure Kaynak Yöneticisi, şablonu dağıttınızca kaynakların nasıl değişeceğini görmenizi sağlamak için "durum" işlemini sağlar. What-if işlemi varolan kaynaklarda herhangi bir değişiklik yapmaz. Bunun yerine, belirtilen şablon dağıtılırsa değişiklikleri tahmin eder.
 
 > [!NOTE]
-> What-if işlemi şu anda önizlemede. Kullanmak [için önizlemeye kaydolmalısınız.](https://aka.ms/armtemplatepreviews) Önizleme sürümü olarak, sonuçlar bazen bir kaynağın gerçekte bir değişiklik olmadığında değişeceğini gösterebilir. Bu sorunları azaltmak için çalışıyoruz ama yardımınıza ihtiyacımız var. Lütfen bu sorunları [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+> What-if işlemi şu anda önizlemede. Önizleme sürümü olarak, sonuçlar bazen bir kaynağın gerçekte bir değişiklik olmadığında değişeceğini gösterebilir. Bu sorunları azaltmak için çalışıyoruz ama yardımınıza ihtiyacımız var. Lütfen bu sorunları [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
 PowerShell komutları veya REST API işlemleri ile what-if işlemini kullanabilirsiniz.
+
+## <a name="install-powershell-module"></a>PowerShell modüllerini yükleyin
+
+PowerShell'de what-if'i kullanmak için PowerShell galerisinden Az.Resources modülünün önizleme sürümünü yükleyin.
+
+### <a name="uninstall-alpha-version"></a>Alfa sürümünü kaldırma
+
+Daha önce if-if modülünün alfa sürümünü yüklediyseniz, bu modülü kaldırın. Alfa sürümü yalnızca erken bir önizleme için kaydolan kullanıcılar tarafından kullanılabilir. Bu önizlemeyi yüklemediyseniz, bu bölümü atlayabilirsiniz.
+
+1. PowerShell’i yönetici olarak çalıştırın
+1. Az.Resources modülünün yüklü sürümlerini kontrol edin.
+
+   ```powershell
+   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
+   ```
+
+1. **2.x.x-alpha**biçiminde sürüm numarası olan yüklü bir sürümünüz varsa, bu sürümü kaldırın.
+
+   ```powershell
+   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
+   ```
+
+1. Önizlemeyi yüklemek için kullandığınız olasılık deposunun kaydını kaldırın.
+
+   ```powershell
+   Unregister-PSRepository -Name WhatIfRepository
+   ```
+
+### <a name="install-preview-version"></a>Önizleme sürümünü yükleme
+
+Önizleme modüllerini yüklemek için şunları kullanın:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
+
+Eğer olursa onu kullanmaya hazırsın.
+
+## <a name="see-results"></a>Sonuçlara bakın
 
 PowerShell'de çıktı, farklı değişiklik türlerini görmenize yardımcı olan renk kodlu sonuçlar içerir.
 
 ![Kaynak Yöneticisi şablon dağıtımı ne-if işlemi tam kaynak payload ve değişiklik türleri](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
-Metin ouptput:
+Metin çıktısı:
 
 ```powershell
 Resource and property changes are indicated with these symbols:
@@ -72,11 +111,8 @@ Veya, değişiklikleri önizlemek `-Confirm` ve dağıtıma devam etmek için is
 
 Önceki komutlar, el ile inceleyebileceğiniz bir metin özeti döndürer. Değişiklikler için programlı olarak inceleyebileceğiniz bir nesne almak için şunları kullanın:
 
-* `$results = Get-AzResourceGroupDeploymentWhatIf`kaynak grubu dağıtımları için
-* `$results = Get-AzSubscriptionDeploymentWhatIf`veya `$results = Get-AzDeploymentWhatIf` abonelik düzeyi dağıtımları için
-
-> [!NOTE]
-> Sürüm 2.0.1-alpha5 sürümünden önce komutu `New-AzDeploymentWhatIf` kullandınız. Bu komut `Get-AzDeploymentWhatIf`, , `Get-AzResourceGroupDeploymentWhatIf`ve `Get-AzSubscriptionDeploymentWhatIf` komutları ile değiştirildi. Önceki bir sürümü kullandıysanız, sözdizimini güncelleştirmeniz gerekir. Parametre `-ScopeType` kaldırıldı.
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult`kaynak grubu dağıtımları için
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult`veya `$results = Get-AzDeploymentWhatIfResult` abonelik düzeyi dağıtımları için
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -214,7 +250,7 @@ Resource changes: 1 to modify.
 
 Çıktının üst kısmında değişikliklerin türünü belirtmek için renklerin tanımlandığına dikkat edin.
 
-Çıktının alt kısmında, Sahibi etiketinin silindiği gösterir. Adres öneki 10.0.0.0/16'dan 10.0.0.0/15'e değiştirildi. Subnet001 adlı alt ağ silindi. Bu değişikliklerin gerçekte dağıtılmadığını unutmayın. Şablonu dağıtsanız meydana gelecek değişikliklerin önizlemesini görürsünüz.
+Çıktının alt kısmında, Sahibi etiketinin silindiği gösterir. Adres öneki 10.0.0.0/16'dan 10.0.0.0/15'e değiştirildi. Subnet001 adlı alt ağ silindi. Bu değişikliklerin aslında dağıtılmadığını unutmayın. Şablonu dağıtsanız meydana gelecek değişikliklerin önizlemesini görürsünüz.
 
 Silinmiş olarak listelenen özelliklerden bazıları gerçekte değişmez. Özellikler şablonda yokken yanlış olarak silinmiş olarak bildirilebilir, ancak dağıtım sırasında varsayılan değerler olarak otomatik olarak ayarlanır. Bu sonuç, if yanıtında "gürültü" olarak kabul edilir. Dağıtılan son kaynak, özellikler için ayarlanan değerlere sahip olur. What-if işlemi olgunlaştıkça, bu özellikler sonuçtan filtrelenir.
 
@@ -223,7 +259,7 @@ Silinmiş olarak listelenen özelliklerden bazıları gerçekte değişmez. Öze
 Şimdi, komutu bir değişkene ayarlayarak "ne olur" sonuçlarını programlı olarak değerlendirelim.
 
 ```azurepowershell
-$results = Get-AzResourceGroupDeploymentWhatIf `
+$results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```

@@ -11,18 +11,18 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 101cfc9edce8f4df1ad2388c08a5bd9702dffe68
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806618"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878230"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure'da Oracle Uygulamalarına ve çözümlerine genel bakış
 
-Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmak için yetenekler tanıtıştır. Azure Marketi'nde mevcut [Oracle VM görüntülerinin](oracle-vm-solutions.md) ayrıntılı tanıtımlarına ve [Azure'u Oracle Cloud Infrastructure (OCI) ile birbirine bağlama](oracle-oci-overview.md)önizleme özelliğine de bakın.
+Bu makalede, Azure altyapısını kullanarak Oracle çözümlerini çalıştırmak için yetenekler tanıtıştır. Azure Marketi'ndeki mevcut [Oracle VM görüntülerinin](oracle-vm-solutions.md) ayrıntılı tanıtımlarına ve [Azure'u Oracle Cloud Infrastructure (OCI) ile birbirine bağlama](oracle-oci-overview.md)özelliğine de bakın.
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure altyapısında Oracle veritabanları
 
@@ -58,7 +58,7 @@ Desteklenen Oracle işletim sistemlerinde Azure'da kurumsal uygulamalar çalış
 
 * Oracle RMAN'ı kullanarak Oracle Veritabanınızı yedekleyin ve isteğe bağlı olarak [Azure Blob Fuse'u](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux) kullanarak [yüksek oranda yenibir Azure Blob Depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-redundancy) açın ve daha fazla esneklik için RMAN yedeklemelerinizi bu hesaba yazın.
 
-## <a name="integration-of-azure-with-oci-preview"></a>Azure ile OCI'nin entegrasyonu (önizleme)
+## <a name="integration-of-azure-with-oci"></a>Azure'un OCI ile entegrasyonu
 
 Oracle Cloud Infrastructure (OCI) arka uç veritabanlarına bağlı Olan Azure altyapısında Oracle Applications çalıştırın. Bu çözüm aşağıdaki yetenekleri kullanır: 
 
@@ -67,7 +67,10 @@ Oracle Cloud Infrastructure (OCI) arka uç veritabanlarına bağlı Olan Azure a
 
 ### <a name="deploy-oracle-applications-on-azure"></a>Oracle Uygulamalarını Azure'da dağıtma
 
-Azure altyapısını ayarlamak ve bulutlar arası yapılandırmada çalışacak şekilde doğrulanmış ve desteklenen Oracle Uygulamalarını yüklemek için Terraform şablonlarını kullanın:
+Azure altyapısını kurmak ve Oracle Applications'ı yüklemek için Terraform şablonlarını kullanın. 
+
+> [!IMPORTANT]
+> Oracle, Azure / Oracle Cloud ara bağlantı çözümünü Mayıs 2020'ye kadar kullanırken bu uygulamaları Azure'da çalışacak şekilde onaylar.
 
 * E-İş Paketi
 * JD Edwards EnterpriseOne

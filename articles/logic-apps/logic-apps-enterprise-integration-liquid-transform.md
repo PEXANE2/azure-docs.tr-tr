@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 04/01/2020
-ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d2598dfe9d7972dcb764abf4a1239613a1e8417a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657295"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879182"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps'ta Sıvı şablonları ile gelişmiş JSON dönüşümleri gerçekleştirin
 
@@ -33,7 +33,7 @@ Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON 
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Entegrasyon hesabınız için Sıvı şablonu veya harita oluşturma
 
-1. Bu örnekte, bu adımda açıklanan örnek Sıvı şablonu oluşturun. Sıvı şablonunuzda, [DotLiquid](https://dotliquidmarkup.org/) ve C# adlandırma kurallarını kullanan [Sıvı filtreleri](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz.
+1. Bu örnekte, bu adımda açıklanan örnek Sıvı şablonu oluşturun. Sıvı şablonunuzda, [DotLiquid](https://github.com/dotliquid/dotliquid) ve C# adlandırma kurallarını kullanan [Sıvı filtreleri](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz.
 
    > [!NOTE]
    > Filtre adlarının şablonunuzda *cümle kılıfı* kullandığından emin olun. Aksi takdirde, filtreler çalışmaz. Ayrıca, haritalar [dosya boyutu sınırları](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)var.

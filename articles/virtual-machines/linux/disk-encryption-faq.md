@@ -8,16 +8,22 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584030"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985414"
 ---
-# <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VMs SSS için Azure Disk Şifrelemesi
+# <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineler için Azure Disk Şifreleme SSS
 
-Bu makalede, Linux VM'ler için Azure Disk Şifrelemesi hakkında sık sorulan soruların (SSS) yanıtları verilmektedir. Bu hizmet hakkında daha fazla bilgi için [Azure Disk Şifrelemegenel bakış](disk-encryption-overview.md)bilgisine bakın.
+Bu makalede, Linux sanal makineleri (VM) için Azure Disk Şifrelemesi hakkında sık sorulan soruların (SSS) yanıtları verilmektedir. Bu hizmet hakkında daha fazla bilgi için [Azure Disk Şifrelemegenel bakış](disk-encryption-overview.md)bilgisine bakın.
+
+## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Linux VM'leri için Azure Disk Şifreleme nedir?
+
+Linux VM'leri için Azure Disk Şifreleme, işletim sistemi diski* ve veri disklerinin tam disk şifrelemesini sağlamak için Linux'un dm-crypt özelliğini kullanır. Ayrıca, [EncryptFormatAll özelliğini](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)kullanırken geçici kaynak diskinin şifrelemesini sağlar. İçerik VM'den Depolama arka ucuna şifrelenmiş olarak akar. Bu nedenle, müşteri tarafından yönetilen bir anahtarla uçdan uca şifreleme sağlar.
+ 
+Bkz. [Desteklenen VM'ler ve işletim sistemleri.](disk-encryption-overview.md#supported-vms-and-operating-systems)
 
 ## <a name="where-is-azure-disk-encryption-in-general-availability-ga"></a>Azure Disk Şifreleme si nerede genel kullanılabilirlik (GA)?
 
@@ -48,6 +54,20 @@ Evet, hem önyükleme hem de veri birimlerini şifreleyebilir veya önce işleti
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Azure Disk Şifreleme ile monte edilmemiş bir birimi şifreleyebilir miyim?
 
 Hayır, Azure Disk Şifreleme yalnızca monte edilmiş birimleri şifreler.
+
+## <a name="what-is-storage-server-side-encryption"></a>Depolama sunucu tarafı şifreleme nedir?
+
+Depolama sunucu tarafındaki şifreleme, Azure Depolama'da Azure yönetilen diskleri şifreler. Yönetilen diskler varsayılan olarak sunucu tarafı şifrelemesi ile platform tarafından yönetilen bir anahtarla şifrelenir (10 Haziran 2017 itibariyle). Yönetilen disklerin şifrelemesini müşteri tarafından yönetilen bir anahtar belirterek kendi anahtarlarınızla yönetebilirsiniz. Daha fazla bilgi için bkz: [Azure yönetilen disklerin sunucu tarafı şifrelemesi.](disk-encryption.md)
+ 
+## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Azure Disk Şifrelemesi, müşteri tarafından yönetilen anahtarla Depolama sunucusu tarafındaki şifrelemeden nasıl farklıdır ve her çözümü ne zaman kullanmalıyım?
+
+Azure Disk Şifreleme, işletim sistemi diski, veri diskleri ve müşteri tarafından yönetilen bir anahtara sahip kısa ömürlü kaynak diski için uçlardan uca şifreleme sağlar.
+- Gereksinimleriniz yukarıdaki ve uçtan uca şifrelemeyi içeriyorsa, Azure Disk Şifreleme'yi kullanın. 
+- Gereksinimleriniz yalnızca verileri müşteri tarafından yönetilen anahtarla şifrelemeyi içeriyorsa, [sunucu tarafı şifrelemesini müşteri tarafından yönetilen anahtarlarla](disk-encryption.md)kullanın. Bir diski hem Azure Disk Şifrelemesi hem de Depolama sunucu tarafı şifrelemesiyle müşteri tarafından yönetilen anahtarlarla şifreleyemezsiniz. 
+- Linux dağıtım Sisteminiz [Azure Disk Şifreleme için desteklenen işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) altında listelenmiyorsa veya Windows için [desteklenmeyen senaryolarda](disk-encryption-linux.md#unsupported-scenarios)çağrılan bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla Sunucu tarafı şifrelemeyi](disk-encryption.md)düşünün.
+- Kuruluşunuzun ilkesi, azure tarafından yönetilen bir anahtarla içeriği istirahatte şifrelemenize izin veriyorsa, herhangi bir işlem gerekmez - içerik varsayılan olarak şifrelenir. Yönetilen diskler için depolama içindeki içerik varsayılan olarak platform tarafından yönetilen anahtarla Sunucu tarafı şifrelemesiyle şifrelenir. Anahtar Azure Depolama hizmeti tarafından yönetilir. 
+
+
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Sırları veya şifreleme anahtarlarını nasıl döndürebilirim?
 

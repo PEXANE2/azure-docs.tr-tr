@@ -3,12 +3,12 @@ title: Yetkin kaynakları ölçekte izleme
 description: Azure Monitör Günlükleri'ni, yönetmekte olduğunuz müşteri kiracıları arasında ölçeklenebilir bir şekilde nasıl etkili bir şekilde kullanacağınızı öğrenin.
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 217df3c55ab54b6569bae8cacb338764ecb7125d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a600cec524c9f715ada9da09dea35f3baa98151
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77122902"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985210"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Yetkin kaynakları ölçekte izleme
 
@@ -28,7 +28,7 @@ Bu çalışma alanlarını doğrudan müşteri kiracılarında oluşturmanızı 
 
 Log Analytics çalışma alanlarınızı oluşturduktan sonra, tanılama verilerinin her kiracıdaki uygun çalışma alanına gönderilmesi için [Azure İlkesini](../../governance/policy/index.yml) müşteri hiyerarşileriniz arasında dağıtabilirsiniz. Dağıtdığınız tam ilkeler, izlemek istediğiniz kaynak türlerine bağlı olarak değişebilir.
 
-İlkeler oluşturma hakkında daha fazla bilgi edinmek için [bkz.](../../governance/policy/tutorials/create-and-manage.md) Bu [topluluk aracı,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/azure-diagnostics-policy-generator) seçtiğiniz belirli kaynak türlerini izlemek için ilkeler oluşturmanıza yardımcı olacak bir komut dosyası sağlar.
+İlkeler oluşturma hakkında daha fazla bilgi edinmek için [bkz.](../../governance/policy/tutorials/create-and-manage.md) Bu [topluluk aracı,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/azure-diagnostics-policy-generator) seçtiğiniz belirli kaynak türlerini izlemek için ilkeler oluşturmanıza yardımcı olacak bir komut dosyası sağlar.
 
 Hangi ilkelerin dağıtılacayacağını belirlediğinizde, [bunları yetkiverilen aboneliklerinize ölçekte dağıtabilirsiniz.](policy-at-scale.md)
 

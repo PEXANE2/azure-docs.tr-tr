@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 82fbaf7fceec72c925f07e002847611dfd0e4b65
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c5a326c07c8c2b0e5482361060c25c06d25643c1
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745331"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874152"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Veri depolama için sürekli entegrasyon ve dağıtım
 
@@ -46,7 +46,7 @@ Bu noktada, kaynak denetim deposu ana dalınızda yapılan herhangi bir iadenin 
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Veri Ambarı (veya Veritabanı) dağıtım göreviyle sürekli dağıtım
 
-1. Azure SQL Veritabanı [dağıtım görevini](/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları doldurun. Bu görev çalıştığında, önceki yapı işleminden oluşturulan DACPAC hedef veri ambarına dağıtılır. [Azure SQL Veri Ambarı dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)de kullanabilirsiniz.
+1. Azure SQL Veritabanı [dağıtım görevini](https://docs.microsoft.com/azure/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak yeni bir görev ekleyin ve hedef veri ambarınıza bağlanmak için gerekli alanları doldurun. Bu görev çalıştığında, önceki yapı işleminden oluşturulan DACPAC hedef veri ambarına dağıtılır. [Azure SQL Veri Ambarı dağıtım görevini](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)de kullanabilirsiniz.
 
       ![Dağıtım Görevi](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Dağıtım Görevi")
 

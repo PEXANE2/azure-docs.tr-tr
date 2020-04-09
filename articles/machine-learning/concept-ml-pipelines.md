@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 11/06/2019
-ms.openlocfilehash: da45c0db027dffc89bd058b70331a4bd6d093b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336952"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878587"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning boru hatları nedir?
 
@@ -64,7 +64,7 @@ Azure Machine Learning ile, boru hattınızdaki her adım için PyTorch veya Ten
 
 Boru [hattı denemelerinizin ölçümlerini](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments) doğrudan Azure portalında veya [çalışma alanı açılış sayfanızda (önizleme)](https://ml.azure.com)izleyebilirsiniz. Bir ardışık hatlar yayımlandıktan sonra, ardışık hattı herhangi bir platformdan veya yığından yeniden çalıştırmanızı sağlayan bir REST bitiş noktası yapılandırabilirsiniz.
 
-Kısacası, makine öğrenimi yaşam döngüsünün tüm karmaşık görevleri boru hatları ile yardımcı olabilir. Diğer Azure boru hattı teknolojileri, sürekli tümleştirme ve dağıtım için verilerle çalışmak için [Azure Veri Fabrikası ardışık hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) ve Azure [Ardışık Hatları](https://azure.microsoft.com/services/devops/pipelines/) gibi kendi güçlü yanlarına sahiptir. Ancak odak noktanız makine öğrenimiyse, Azure Machine Learning boru hatları iş akışı gereksinimleriniz için en iyi seçim olabilir. 
+Kısacası, makine öğrenimi yaşam döngüsünün tüm karmaşık görevleri boru hatları ile yardımcı olabilir. Diğer Azure boru hattı teknolojilerinin kendi güçlü yanları vardır. [Azure Veri Fabrikası ardışık hatları](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) verilerle çalışmada öne çıkmaktadır ve [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) sürekli tümleştirme ve dağıtım için doğru araçtır. Ancak odak noktanız makine öğrenimiyse, Azure Machine Learning boru hatları iş akışı gereksinimleriniz için en iyi seçim olabilir. 
 
 ## <a name="what-are-azure-ml-pipelines"></a>Azure ML boru hatları nedir?
 
@@ -126,7 +126,7 @@ Ardışık hatları görsel olarak tasarlarken, bir adımın giriş ve çıkış
 
 Bir ardışık ardışık alandaki adımlar diğer adımlara bağımlı olabilir. Azure ML boru hattı hizmeti, bu bağımlılıkları çözümleme ve düzenleme işini yapar. Ortaya çıkan "yürütme grafiği" düğümleri işleme adımları vardır. Her adım, belirli bir donanım ve yazılım birleşimi oluşturmayı veya yeniden kullanmayı, önbelleğe alınmış sonuçları yeniden oluşturmayı ve benzerlerini içerebilir. Hizmetin bu yürütme grafiğinin düzenlenmesi ve optimizasyonu ml aşamasını önemli ölçüde hızlandırabilir ve maliyetleri düşürebilir. 
 
-Adımlar bağımsız olarak çalıştırıldığı için, adımlar arasında akan giriş ve çıktı verilerini tutacak nesnelerin dışarıdan tanımlanması gerekir. Bu [DataReference,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)ve ilişkili sınıfların rolüdür. Bu veri nesneleri, depolama yapılandırmalarını kapsülleyen bir [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) nesnesi ile ilişkilidir. `PipelineStep` Taban sınıf her zaman `name` bir dize, `inputs`bir listesi `outputs`ve bir listesi ile oluşturulur. Genellikle, aynı zamanda bir `arguments` listesi vardır ve genellikle `resource_inputs`bir listesi olacak . Alt sınıfların da genellikle ek bağımsız değişkenleri olacaktır (örneğin, `PythonScriptStep` dosya adı ve komut dosyasının çalışması için yol gerektirir). 
+Adımlar bağımsız olarak çalıştırıldığı için, adımlar arasında akan giriş ve çıktı verilerini tutacak nesnelerin dışarıdan tanımlanması gerekir. Bu [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)ve [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), nesnelerin rolüdür. Bu veri nesneleri, depolama yapılandırmalarını kapsülleyen bir [Datastore](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore%28class%29?view=azure-ml-py) nesnesi ile ilişkilidir. `PipelineStep` Taban sınıf her zaman `name` bir dize, `inputs`bir listesi `outputs`ve bir listesi ile oluşturulur. Genellikle, aynı zamanda bir `arguments` listesi vardır ve genellikle `resource_inputs`bir listesi olacak . Alt sınıfların da genellikle ek bağımsız değişkenleri olacaktır (örneğin, `PythonScriptStep` dosya adı ve komut dosyasının çalışması için yol gerektirir). 
 
 Yürütme grafiği asikliktir, ancak ardışık düzenler yinelenen bir zamanlamada çalıştırılabilir ve dosya sistemine durum bilgilerini yazabilen Python komut dosyalarını çalıştırarak karmaşık profiller oluşturmayı mümkün kılar. Belirli adımların paralel veya eş zamanlı olarak çalışabilmesi için ardışık yapınızı tasarlarsanız, Azure Machine Learning, fan-out ve fan-in bağımlılık çözümlemesi ve koordinasyonunu şeffaf bir şekilde işler. Genellikle yürütme grafiğinin ayrıntıları ile kendinizi endişe etmek zorunda değilsiniz, ama [Pipeline.graph](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py#attributes) özniteliği üzerinden kullanılabilir. 
 
@@ -141,19 +141,16 @@ blob_store = Datastore(ws, "workspaceblobstore")
 compute_target = ws.compute_targets["STANDARD_NC6"]
 experiment = Experiment(ws, 'MyExperiment') 
 
-input_data = DataReference(
-    datastore=Datastore(ws, blob_store),
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+input_data = Dataset.File.from_files(
+    DataPath(datastore, '20newsgroups/20news.pkl'))
 
-output_data = PipelineData(
-    "output_data",
-    datastore=blob_store,
-    output_name="output_data1")
+output_data = PipelineData("output_data", datastore=blob_store)
+
+input_named = input_data.as_named_input('input')
 
 steps = [ PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", input_data, "--output", output_data],
+    arguments=["--input", input_named.as_download(), "--output", output_data],
     inputs=[input_data],
     outputs=[output_data],
     compute_target=compute_target,
@@ -168,7 +165,7 @@ pipeline_run.wait_for_completion()
 
 Parçacık ortak Azure Machine Learning nesneleri ile başlar, `Workspace` `Datastore`a , a , bir `Experiment` [ComputeTarget](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py), ve bir . Daha sonra, kod tutmak `input_data` için nesneleri `output_data`oluşturur ve. Dizi `steps` tek bir öğe, `PythonScriptStep` veri nesneleri kullanacak ve üzerinde `compute_target`çalışacak bir tutar. Daha sonra, kod nesnenin `Pipeline` kendisini anında, çalışma alanı ve adım dizisinde niçin geçer. Azure ML `experiment.submit(pipeline)` ardışık hatlar hattını çalıştırma çağrısı. Boru hattı `wait_for_completion()` bitene kadar engelleme çağrısı. 
 
-Ardışık hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için, [verilere nasıl erişilir](how-to-access-data.md) ve [Veri Kümelerini Nasıl Kaydeder'](how-to-create-register-datasets.md)makalelerine bakın. 
+Ardışık hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için Azure Machine Learning ve Moving [data access'teki makalelere](concept-data.md) bakın VERI erişimleri [ML ardışık hat lar (Python) içine ve arasına girer.](how-to-move-data-in-out-of-pipelines.md) 
 
 ## <a name="best-practices-when-using-pipelines"></a>Boru hatlarını kullanırken en iyi uygulamalar
 
@@ -207,11 +204,11 @@ Makine öğrenimi iş akışlarınız için boru hatları kullanmanın temel ava
 
 ### <a name="choosing-the-proper-pipelinestep-subclass"></a>Uygun PipelineStep alt sınıfını seçme
 
-Soyut `PythonScriptStep` en esnek alt `PipelineStep`sınıftır. Alt sınıflar gibi `EstimatorStep` diğer alt `DataTransferStep` sınıflar ve daha az kodla belirli görevleri gerçekleştirebilirsiniz. Örneğin, yalnızca `EstimatorStep` adım, bir `Estimator`ve bir işlem hedefi için bir ad geçerek oluşturulabilir. Veya giriş ve çıkışları, boru hattı parametrelerini ve bağımsız değişkenleri geçersiz kılabilir. Daha fazla bilgi için, [tahminci kullanarak Azure Machine Learning'e sahip Train modellerine](how-to-train-ml-models.md)bakın. 
+Soyut `PythonScriptStep` en esnek alt `PipelineStep`sınıftır. Alt sınıflar gibi `EstimatorStep` diğer alt `DataTransferStep` sınıflar ve daha az kodla belirli görevleri gerçekleştirebilirsiniz. Örneğin, bir `EstimatorStep` adım, bir `Estimator`ve bir işlem hedefi için bir ad geçerek oluşturulabilir. Veya giriş ve çıkışları, boru hattı parametrelerini ve bağımsız değişkenleri geçersiz kılabilir. Daha fazla bilgi için, [tahminci kullanarak Azure Machine Learning'e sahip Train modellerine](how-to-train-ml-models.md)bakın. 
 
-Veri `DataTransferStep` kaynakları ve lavabolar arasında veri taşımayı kolaylaştırır. Bunu el ile yapmak için kod basit ama yinelenen. Bunun yerine, yalnızca `DataTransferStep` bir ad, bir veri kaynağı ve veri lavabo ve bir bilgi işlem hedefi referansları ile oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) birlikte dizüstü Azure Machine Learning Pipeline bu esnekliği gösterir.
+Veri `DataTransferStep` kaynakları ve lavabolar arasında veri taşımayı kolaylaştırır. Bu aktarımı el ile yapmak için kod basit ama yinelenen. Bunun yerine, yalnızca `DataTransferStep` bir ad, bir veri kaynağı ve veri lavabo ve bir bilgi işlem hedefi referansları ile oluşturabilirsiniz. [DataTransferStep ile](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-data-transfer.ipynb) birlikte dizüstü Azure Machine Learning Pipeline bu esnekliği gösterir.
 
-## <a name="modules"></a>Modules
+## <a name="modules"></a>Modüller
 
 Ardışık hatlar adımları önceki çalıştırmanın sonuçlarının yeniden kullanılmasına izin verirken, çoğu durumda adımın yapısı, gerekli komut dosyalarının ve bağımlı dosyaların yerel olarak kullanılabilir olması gerektiğini varsayar. Bir veri bilimci varolan kodun üzerine oluşturmak istiyorsa, komut dosyaları ve bağımlılıklar genellikle ayrı bir depodan klonlanmalıdır.
 

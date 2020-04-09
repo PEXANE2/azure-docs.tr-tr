@@ -11,21 +11,26 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/02/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
-ms.openlocfilehash: 0e2e16ccc04ff6df80597d646a00c40551e4cfd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd0b8a50d25cd8d1a66a8eb98e54ec231aa2c62f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302058"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878723"
 ---
 # <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>Azure ve Oracle Cloud Altyapısı arasında doğrudan bağlantı kurma  
 
-Entegre bir [çoklu bulut deneyimi](oracle-oci-overview.md) (önizleme) oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)üzerinden Azure ve Oracle Bulut Altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect ara bağlantısı sayesinde müşteriler, iki bulut arasında düşük gecikme, yüksek verim ve özel doğrudan bağlantı yaşayabilir.
+Entegre bir [çoklu bulut deneyimi](oracle-oci-overview.md)oluşturmak için Microsoft ve Oracle, [ExpressRoute](../../../expressroute/expressroute-introduction.md) ve [FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)üzerinden Azure ve Oracle Bulut Altyapısı (OCI) arasında doğrudan bağlantı sağlar. ExpressRoute ve FastConnect ara bağlantısı sayesinde müşteriler, iki bulut arasında düşük gecikme, yüksek verim ve özel doğrudan bağlantı yaşayabilir.
 
 > [!IMPORTANT]
-> Microsoft Azure ve OCI arasındaki bağlantı önizleme aşamasındadır. Azure ve OCI arasında düşük gecikme sonu bağlantısı oluşturmak için, bu özellik için öncelikle Azure aboneliğinizin etkinleştirilmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)doldurarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Bir onay e-postası alana kadar bu özelliği kullanamazsınız. Bu önizleme için etkinleştirilmek üzere Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, kullanılabilirlik durumuna bağlıdır ve microsoft tarafından kendi takdirine bağlı olarak kısıtlanır. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure Önizlemeleri için [Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Oracle, Azure / Oracle Cloud ara bağlantı çözümünü Mayıs 2020'ye kadar kullanırken bu uygulamaları Azure'da çalışacak şekilde onaylar.
+> * E-İş Paketi
+> * JD Edwards EnterpriseOne
+> * Peoplesoft
+> * Oracle Perakende uygulamaları
+> * Oracle Hyperion Finansal Yönetimi
 
 Aşağıdaki resim, ara bağlantının üst düzey bir genel görünümünü gösterir:
 
@@ -36,8 +41,6 @@ Aşağıdaki resim, ara bağlantının üst düzey bir genel görünümünü gö
 * Azure ve OCI arasında bağlantı kurmak için etkin bir Azure aboneliğiniz ve etkin bir OCI kiranız olması gerekir.
 
 * Bağlantı, yalnızca Bir Azure ExpressRoute bakış konumu OCI FastConnect'e yakın veya aynı bakış konumuna sahipolduğunda mümkündür. [Bkz. Bölge Kullanılabilirliği](oracle-oci-overview.md#region-availability).
-
-* Bu önizleme özelliği için Azure aboneliğinizin etkinleştirilmesi gerekir.
 
 ## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>ExpressRoute ve FastConnect arasında doğrudan bağlantıyı yapılandırma
 
@@ -79,7 +82,7 @@ Aşağıdaki resim, ara bağlantının üst düzey bir genel görünümünü gö
 
 Ağ yapılandırmasını tamamladıktan sonra, Azure portalındaki ExpressRoute Özel örnek bıçak altında **ARP Records'u al'a** tıklayarak yapılandırmanızın geçerliliğini doğrulayabilir ve **rota tablosunu alabilirsiniz.**
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Otomasyon
 
 Microsoft, ağ ara bağlantısının otomatik olarak dağıtılmasını sağlamak için Terraform komut dosyaları oluşturmuştur. Terraform komut dosyalarının yürütmeden önce Azure ile kimlik doğrulaması gerekir, çünkü Azure aboneliğinde yeterli izinlere ihtiyaç duyarlar. Kimlik doğrulama, bir [Azure Active Directory hizmet yöneticisi](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) veya Azure CLI kullanılarak gerçekleştirilebilir. Daha fazla bilgi için [Terraform belgelerine](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)bakın.
 

@@ -5,12 +5,12 @@ description: Azure Kubernetes Hizmetinde (AKS) depolama, veri şifreleme ve yede
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 90abf2e36fd46c707904d87f00362091fe931743
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668108"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877907"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) depolama ve yedekleme ler için en iyi uygulamalar
 
@@ -40,7 +40,7 @@ Aşağıdaki tablo, kullanılabilir depolama türlerini ve bunların yetenekleri
 
 AKS'deki birimler için sağlanan iki birincil depolama alanı türü Azure Diskleri veya Azure Dosyaları tarafından desteklenir. Güvenliği artırmak için, her iki depolama alanı türü de varsayılan olarak verileri istirahatte şifreleyen Azure Depolama Hizmeti Şifrelemesini (SSE) kullanır. Diskler şu anda AKS düğümü düzeyinde Azure Disk Şifrelemesi kullanılarak şifrelenemez.
 
-Azure Dosyaları şu anda Standart performans katmanında kullanılabilir. Azure Diskleri Standart ve Premium performans katmanlarında kullanılabilir:
+Hem Azure Dosyaları hem de Azure Diskleri Standart ve Premium performans katmanlarında kullanılabilir:
 
 - *Premium* diskler yüksek performanslı katı hal diskleri (SSD'ler) tarafından desteklenir. Tüm üretim iş yükleri için premium diskler önerilir.
 - *Standart* diskler normal dönen diskler (HDD'ler) tarafından desteklenir ve arşivleme veya seyrek erişilen veriler için iyidir.

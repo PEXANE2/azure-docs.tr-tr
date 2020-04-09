@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetlemeyi öğrenin
 description: Azure İlke'nin sanal makinelerdeki ayarları denetlemek için Konuk Yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: cc2ba11f75da5f993b99c90e5d0cc1030003203e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257265"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985329"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk Yapılandırması'nı anlayın
 
@@ -18,7 +18,7 @@ Azure İlkesi, Azure kaynaklarını denetlemenin ve [düzeltmenin](../how-to/rem
 - Uygulama yapılandırması veya varlığı
 - Ortam ayarları
 
-Şu anda Azure İlkesi Konuk Yapılandırması yalnızca makinenin içindeki ayarları denetlemektedir. Yapılandırma uygulamamaktadır.
+Şu anda, çoğu Azure İlkesi Konuk Yapılandırma ilkesi yalnızca makine içindeki ayarları denetler. Yapılandırmaları uygulamıyorlar. Özel [durum, aşağıda başvurulan](#applying-configurations-using-guest-configuration)yerleşik bir ilkedir.
 
 ## <a name="extension-and-client"></a>Uzantı ve istemci
 
@@ -62,11 +62,12 @@ Aşağıdaki tablo, desteklenen her işletim sisteminde kullanılan yerel araçl
 |İşletim sistemi|Doğrulama aracı|Notlar|
 |-|-|-|
 |Windows|[Windows PowerShell İstenilen Durum Yapılandırması](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Şef InSpec](https://www.chef.io/inspec/)| Ruby ve Python Konuk Yapılandırma uzantısı tarafından yüklenir. |
+|Linux|[Şef InSpec](https://www.chef.io/inspec/)| Ruby ve Python makinede değilse, Konuk Yapılandırma uzantısı tarafından yüklenir. |
 
 ### <a name="validation-frequency"></a>Doğrulama sıklığı
 
-Konuk Yapılandırma istemcisi her 5 dakikada bir yeni içerik için kontrol eder. Konuk ataması alındıktan sonra, ayarlar 15 dakikalık aralıklarla denetlenir. Sonuçlar, denetim tamamlanır tamamlanmaz Konuk Yapılandırma kaynak sağlayıcısına gönderilir. İlke [değerlendirme tetikleyicisi](../how-to/get-compliance-data.md#evaluation-triggers) oluştuğunda, makinenin durumu Konuk Yapılandırma kaynak sağlayıcısına yazılır. Bu güncelleştirme, Azure İlkesi'nin Azure Kaynak Yöneticisi özelliklerini değerlendirmesine neden olur. İsteğe bağlı Azure İlkesi değerlendirmesi, Konuk Yapılandırma kaynak sağlayıcısından en son değeri alır. Ancak, makine içindeki yapılandırmanın yeni bir denetimini tetiklemiyor.
+Konuk Yapılandırma istemcisi her 5 dakikada bir yeni içerik için kontrol eder. Konuk atama alındıktan sonra, bu yapılandırmanın ayarları 15 dakikalık bir aralıkla yeniden denetlenir.
+Denetim tamamlandığında sonuçlar Konuk Yapılandırma kaynak sağlayıcısına gönderilir. İlke [değerlendirme tetikleyicisi](../how-to/get-compliance-data.md#evaluation-triggers) oluştuğunda, makinenin durumu Konuk Yapılandırma kaynak sağlayıcısına yazılır. Bu güncelleştirme, Azure İlkesi'nin Azure Kaynak Yöneticisi özelliklerini değerlendirmesine neden olur. İsteğe bağlı Azure İlkesi değerlendirmesi, Konuk Yapılandırma kaynak sağlayıcısından en son değeri alır. Ancak, makine içindeki yapılandırmanın yeni bir denetimini tetiklemiyor.
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
@@ -78,12 +79,9 @@ Aşağıdaki tablo, Azure görüntülerinde desteklenen işletim sisteminin list
 |Credativ|Debian|8, 9|
 |Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
 |Microsoft|Windows İstemcisi|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6|
+|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
+|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7|
 |Suse|SLES|12 SP3|
-
-> [!IMPORTANT]
-> Konuk Yapılandırma, desteklenen bir işletim sistemi çalıştıran düğümleri denetleyebilir. Özel bir görüntü kullanan sanal makineleri denetlemek istiyorsanız, **DeployIfNotExists** tanımını yinelemeniz ve Görüntü özelliklerinizi içerecek şekilde **If** bölümünü değiştirmeniz gerekir.
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 
@@ -139,10 +137,6 @@ Konuk Yapılandırma sı için kullanılabilir Denetim ilkeleri **Microsoft.Hybr
 ### <a name="multiple-assignments"></a>Birden çok atama
 
 Konuk Yapılandırma ilkeleri şu anda, İlke ataması farklı parametreler kullansa bile, makine başına yalnızca bir kez aynı Konuk Atamasını atamayı destekler.
-
-## <a name="built-in-resource-modules"></a>Dahili kaynak modülleri
-
-Konuk Yapılandırma uzantısı nı yüklerken, 'GuestConfiguration' PowerShell modülü DSC kaynak modüllerinin en son sürümüyle birlikte verilir. Bu modül PowerShell Gallery'den modül sayfasından 'Manuel İndir' linki kullanılarak indirilebilir [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/). '.nupkg' dosya biçimi, sıkıştırmak ve gözden geçirmek için '.zip' olarak yeniden adlandırılabilir.
 
 ## <a name="client-log-files"></a>İstemci günlük dosyaları
 

@@ -4,12 +4,12 @@ description: Azure Blockchain Hizmeti işlem düğümleri nasıl yapılandırıl
 ms.date: 11/20/2019
 ms.topic: article
 ms.reviewer: janders
-ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa18496d0c1aa59beb55569e731967d5ebea427
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252265"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876938"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Hizmeti hareket düğümlerini yapılandırma
 
@@ -17,7 +17,7 @@ ms.locfileid: "79252265"
 
 Varsayılan hareket node ayrıntılarını görüntülemek için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure Blockchain Service üyenize gidin. **Hareket düğümlerini**seçin.
 
     ![Varsayılan hareket düğümünü seçin](./media/configure-transaction-nodes/nodes.png)
@@ -54,7 +54,7 @@ Bir hareket düğümün bitiş noktası ayrıntılarını görüntülemek için:
 
     ![Uç Noktalar](./media/configure-transaction-nodes/endpoints.png)
 
-İşlem düğümü uç noktaları güvenlidir ve kimlik doğrulaması gerektirir. Azure AD kimlik doğrulaması, HTTPS temel kimlik doğrulaması ve SSL üzerinden HTTPS veya Websocket üzerinden bir erişim anahtarı nı kullanarak bir işlem bitiş noktasına bağlanabilirsiniz.
+İşlem düğümü uç noktaları güvenlidir ve kimlik doğrulaması gerektirir. Azure AD kimlik doğrulaması, HTTPS temel kimlik doğrulaması ve TLS üzerinden HTTPS veya Websocket üzerinden bir erişim anahtarı nı kullanarak bir işlem bitiş noktasına bağlanabilirsiniz.
 
 ### <a name="azure-active-directory-access-control"></a>Azure Active Directory erişim denetimi
 

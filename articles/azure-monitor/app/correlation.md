@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 06897fffda490cdfcbb2a9cf6f55c7945e8afda0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c68b83726371d346019d18d0b066173f93196e6d
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276133"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982064"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Uygulama Öngörülerinde Telemetri korelasyon
 
@@ -63,7 +63,7 @@ Uygulama Öngörüleri [W3C İzleme](https://w3c.github.io/trace-context/)Bağla
 
 Uygulama Öngörüleri SDK'nın en son sürümü İzleme Bağlamı protokolünü destekler, ancak bunu kabul etmeniz gerekebilir. (Application Insights SDK tarafından desteklenen önceki korelasyon protokolü ile geriye dönük uyumluluk korunacaktır.)
 
-[İstek-Id olarak da adlandırılan http protokolü,](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)amortismana neden oluyor. Bu protokol iki üstbilgi tanımlar:
+[İstek-Id olarak da adlandırılan http protokolü,](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)amortismana neden oluyor. Bu protokol iki üstbilgi tanımlar:
 
 - `Request-Id`: Aramanın genel olarak benzersiz kimliğini taşır.
 - `Correlation-Context`: Dağıtılmış izleme özelliklerinin ad değeri çiftleri koleksiyonunu taşır.
@@ -202,13 +202,13 @@ Bu özellik `Microsoft.ApplicationInsights.JavaScript`. Varsayılan olarak devre
 
 [OpenTracing veri modeli belirtimi](https://opentracing.io/) ve Application Insights veri modelleri aşağıdaki şekilde eşlendi:
 
-| Application Insights                  | OpenTracing                                       |
-|------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span`Ile`span.kind = server`                  |
-| `Dependency`                          | `Span`Ile`span.kind = client`                  |
-| `Id`ve `Request``Dependency`    | `SpanId`                                          |
-| `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference`türü `ChildOf` (üst açıklık)   |
+| Application Insights                   | OpenTracing                                        |
+|------------------------------------    |-------------------------------------------------    |
+| `Request`, `PageView`                  | `Span`Ile`span.kind = server`                    |
+| `Dependency`                           | `Span`Ile`span.kind = client`                    |
+| `Id`ve `Request``Dependency`     | `SpanId`                                            |
+| `Operation_Id`                         | `TraceId`                                           |
+| `Operation_ParentId`                   | `Reference`türü `ChildOf` (üst açıklık)     |
 
 Daha fazla bilgi için [Bkz. Application Insights telemetri veri modeli.](../../azure-monitor/app/data-model.md)
 
@@ -320,19 +320,12 @@ Klasik ASP.NET için yeni bir HTTP modülü, [Microsoft.AspNet.TelemetryCorrelat
 Uygulama Öngörüleri SDK, sürüm 2.4.0-beta1 `DiagnosticSource` ile `Activity` başlayan, kullanır ve telemetri toplamak ve mevcut etkinlik ile ilişkilendirmek.
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Java SDK'da telemetri korelasyon
+## <a name="telemetry-correlation-in-the-java"></a>Java'da Telemetri korelasyon
 
-Java sürüm 2.0.0 [için Uygulama Insights SDK](../../azure-monitor/app/java-get-started.md) veya daha sonra telemetri otomatik korelasyon destekler. Bir istek kapsamında `operation_id` verilen tüm telemetriler (izlemeler, özel durumlar ve özel olaylar gibi) için otomatik olarak doldurulur. [Java SDK aracısı](../../azure-monitor/app/java-agent.md) yapılandırılırsa, http üzerinden hizmete çağrı çağrıları için korelasyon üstbilgisini (daha önce açıklanan) da yayar.
+[Uygulama Insights Java aracısı](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) yanı sıra [Java SDK](../../azure-monitor/app/java-get-started.md) sürüm 2.0.0 veya daha sonra telemetri otomatik korelasyon destekler. Bir istek kapsamında `operation_id` verilen tüm telemetriler (izlemeler, özel durumlar ve özel olaylar gibi) için otomatik olarak doldurulur. [Java SDK aracısı](../../azure-monitor/app/java-agent.md) yapılandırılırsa, http üzerinden hizmete çağrı çağrıları için korelasyon üstbilgisini (daha önce açıklanan) da yayar.
 
 > [!NOTE]
-> Korelasyon özelliği için yalnızca Apache HttpClient üzerinden yapılan aramalar desteklenir. Hem Bahar RestTemplate ve Feign başlık altında Apache HttpClient ile kullanılabilir.
-
-Şu anda, ileti teknolojileri (Kafka, RabbitMQ ve Azure Servis Veri Servisi gibi) arasında otomatik bağlam yayılımı desteklenmemektedir. Bu tür senaryoları el ile kodlamak `trackDependency` `trackRequest` mümkündür. Bu yöntemlerde, bağımlılık telemetrisi bir üretici tarafından sıralanan bir iletiyi temsil eder. İstek, tüketici tarafından işlenen bir iletiyi temsil eder. Bu durumda, `operation_id` iletinin özelliklerinde hem ve her ikisi ve yayılması `operation_parentId` gerekir.
-
-### <a name="telemetry-correlation-in-asynchronous-java-applications"></a>Asynchronous Java uygulamalarında telemetri korelasyon
-
-Bir eşzamanlı Bahar Önyükleme uygulamasında telemetriyi nasıl ilişkilendireceklerini öğrenmek için, [Asynchronous Java Uygulamalarında Dağıtılmış İzleme'ye](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)bakın. Bu makalede, [Spring's ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) ve [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)enstrümanting için rehberlik sağlar.
-
+> Uygulama Öngörüleri Java aracısı JMS, Kafka, Netty/Webflux ve daha fazlası için istekleri ve bağımlılıkları otomatik olarak toplar. Java SDK için sadece Apache HttpClient üzerinden yapılan aramalar korelasyon özelliği için desteklenir. SDK'da ileti teknolojileri (Kafka, RabbitMQ ve Azure Servis Veri Servisi gibi) arasında otomatik bağlam yayılımı desteklenmez. 
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Rol adı

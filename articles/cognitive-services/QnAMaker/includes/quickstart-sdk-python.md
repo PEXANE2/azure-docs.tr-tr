@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a77041c0e53c2f0f8b6d0891a0f755e8ca474923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03aa3919e1da982bb8a8c235bb598f5b94df1ebf
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75946351"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80986673"
 ---
 
 Python için QnA Maker istemci kitaplığını kullanın:
@@ -68,7 +68,7 @@ Kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluştur
 
 |Ortam değişkeni|değişken|Örnek|
 |--|--|--|
-|`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|Anahtar 32 karakterli bir dizedir ve Azure portalında, QnA Maker kaynağında, Quickstart sayfasında kullanılabilir. Bu, tahmin bitiş noktası anahtarıyla aynı değildir.|
+|`QNAMAKER_KEY`|`subscription_key`|Anahtar 32 karakterli bir dizedir ve Azure portalında, QnA Maker kaynağında, Quickstart sayfasında kullanılabilir. Bu, tahmin bitiş noktası anahtarıyla aynı değildir.|
 |`QNAMAKER_HOST`|`host`| Yazarlık bitiş noktanız, kaynak `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` **adınızı**içerir. Bu, tahmin bitiş noktasını sorgulamak için kullanılan URL ile aynı url değildir.|
 
 [!code-python[Azure resource variables](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=resourcekeys)]

@@ -1,26 +1,22 @@
 ---
-title: Özel Azure AD uygulamaları için belirteç kullanım ömrü varsayılanlarını değiştirme | Microsoft Dokümanlar
+title: Özel Azure AD uygulamaları için belirteç kullanım ömrü varsayılanlarını değiştirme
 description: Azure AD'de geliştirmekte olduğunuz uygulamanız için Belirteç Kullanım Ömrü ilkelerini güncelleştirme
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: ryanwi
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: 431f18b9babb52b5000d3bf4cca75a0f5e29bb93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc71ebe61fba8c1bdb6b7625b16a50d8995a581a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702819"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883362"
 ---
 # <a name="how-to-change-the-token-lifetime-defaults-for-a-custom-developed-application"></a>Özel olarak geliştirilmiş bir uygulama için belirteç ömür varsayılanları nasıl değiştirilir?
 

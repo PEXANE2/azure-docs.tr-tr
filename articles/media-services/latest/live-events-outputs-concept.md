@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: e6f2ad2c5c30e3c75e8d3588e386ea14e8e3350b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065954"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985907"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Medya Hizmetlerinde Canlı Etkinlikler ve Canlı Çıktılar
 
@@ -112,8 +112,11 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 * Vanity URL
 
     Vanity modu, donanım yayını kodlayıcıları kullanan ve Live Event'i başlattıklarında kodlayıcılarını yeniden yapılandırmak istemeyen büyük medya yayıncıları tarafından tercih edilir. Zaman içinde değişmeyen bir tahmine dayalı url istiyorlar.
+    
+    > [!NOTE]
+    > Azure portalında, makyaj URL'si "*Kalıcı giriş URL'si*" olarak adlandırılır.
 
-    Bu modu belirtmek `vanityUrl` için, `true` oluşturma zamanında ayarlayın `false`(varsayılan). Ayrıca oluşturma zamanında kendi erişim belirteci (`LiveEventInput.accessToken`) geçmek gerekir. URL'de rasgele bir belirteç önlemek için belirteç değerini belirtirsiniz. Erişim belirteci geçerli bir GUID dizesi olmalıdır (tireli veya tiresiz). Mod ayarlandıktan sonra güncelleştirilemez.
+    API'de bu modu belirtmek `vanityUrl` `true` için, oluşturma zamanında `false`ayarlanmış (varsayılan). Ayrıca oluşturma zamanında kendi erişim belirteci (`LiveEventInput.accessToken`) geçmek gerekir. URL'de rasgele bir belirteç önlemek için belirteç değerini belirtirsiniz. Erişim belirteci geçerli bir GUID dizesi olmalıdır (tireli veya tiresiz). Mod ayarlandıktan sonra güncelleştirilemez.
 
     Erişim belirteci veri merkezinizde benzersiz olması gerekir. Uygulamanızın bir makyaj URL'si kullanması gerekiyorsa, erişim belirteciniz için her zaman yeni bir GUID örneği oluşturmanız önerilir (varolan guid'leri yeniden kullanmak yerine).
 

@@ -1,5 +1,5 @@
 ---
-title: Otomatik makine öğrenimi ile ortak ML model tuzaklarını yönetin.
+title: AutoML ile & dengesiz verileri aşırı yakıştmaktan kaçının
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning'in otomatik makine öğrenme çözümleriyle ML modellerinin yaygın tuzaklarını belirleyin ve yönetin.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/27/2020
-ms.openlocfilehash: e0bc1aa48dfb40ea146fa79fdfd57da841ca1404
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 04/09/2020
+ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385538"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874866"
 ---
-# <a name="manage-ml-pitfalls-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile ML tuzaklarını yönetme
+# <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile aşırı montaj ve dengesiz verileri önleme
 
 Makine öğrenme modelleri oluştururken aşırı montaj ve dengesiz veriler yaygın tuzaklar vardır. Varsayılan olarak, Azure Machine Learning'in otomatik makine öğrenimi, bu riskleri belirlemenize yardımcı olacak grafikler ve ölçümler sağlar ve bunları azaltmaya yardımcı olmak için en iyi uygulamaları uygular. 
 

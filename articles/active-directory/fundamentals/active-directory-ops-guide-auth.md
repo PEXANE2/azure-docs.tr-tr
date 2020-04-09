@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: f25abb70a95f559cf0cc14efa6cf9f0e81ec9ec0
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546243"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876301"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication management işlemleri başvuru kılavuzu
 
@@ -64,7 +64,7 @@ Ele alınması gereken sorunu hafifletmek için önerilen çözümü bulmak içi
 | Zayıf parolalara karşı koruma mekanizması yok | Azure AD [self servis parola sıfırlama (SSPR)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks) ve parola [korumayı](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) etkinleştirme |
 | Sızdırılan parolaları algılatacak mekanizma yok | Öngörüler elde etmek için [parola karma eşitleme](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-password-hash-synchronization) (PHS) etkinleştirme |
 | AD FS kullanma ve yönetilen kimlik doğrulamasına geçemiyor | [AD FS Extranet Akıllı Kilitleme](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) ve/veya Azure AD Akıllı [Kilitleme'yi](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout) etkinleştirme |
-| Parola ilkesi uzunluk, birden çok karakter kümesi veya son kullanma gibi karmaşıklık tabanlı kurallar kullanır | [Microsoft Önerilen Uygulamalar](https://aka.ms/passwordguidance) lehine yeniden düşünün ve parola yönetimine yaklaşımınızı değiştirin ve Azure AD parola [koruması](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)dağıtın. |
+| Parola ilkesi uzunluk, birden çok karakter kümesi veya son kullanma gibi karmaşıklık tabanlı kurallar kullanır | [Microsoft Önerilen Uygulamalar](https://www.microsoft.com/research/publication/password-guidance/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F265143%2Fmicrosoft_password_guidance.pdf) lehine yeniden düşünün ve parola yönetimine yaklaşımınızı değiştirin ve Azure AD parola [koruması](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad)dağıtın. |
 | Kullanıcılar çok faktörlü kimlik doğrulaması (MFA) kullanmak için kayıtlı değil | Parolaları ile birlikte kullanıcının kimliğini doğrulamak için bir mekanizma olarak kullanılabilen [tüm kullanıcının güvenlik bilgilerini kaydedin](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-mfa-policy) |
 | Kullanıcı riskine dayalı parolaların iptali yoktur | SSPR kullanarak sızdırılan kimlik bilgilerinde parola değişikliklerini zorlamak için Azure AD [Identity Protection kullanıcı risk ilkelerini](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy) dağıtma |
 | Tanımlanan IP adreslerinden gelen kötü aktörlere karşı kötü kimlik doğrulaması korumak için akıllı kilitleme mekanizması yoktur | Bulut tarafından yönetilen kimlik doğrulamayı parola karma eşitleme veya [geçiş kimlik doğrulaması](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start) (PTA) ile dağıtma |
@@ -101,11 +101,11 @@ Azure AD Password Hash Sync (PHS) ve Azure MFA, basitliğin ve sızdırılan kim
 
 ![şifre karma eşitleme akışı](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Kimlik doğrulama seçeneklerinizi daha iyi anlamak [için](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)bkz.
+Kimlik doğrulama seçeneklerinizi daha iyi anlamak [için](../hybrid/choose-ad-authn.md)bkz.
 
 ### <a name="programmatic-usage-of-credentials"></a>Kimlik bilgilerinin programlı kullanımı
 
-PowerShell kullanan Azure AD komut dosyaları veya Microsoft Graph API'sını kullanan uygulamalar güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları çalıştıran kötü kimlik bilgisi yönetimi kimlik bilgisi hırsızlığı riskini artırır. Sabit kodlu parolalara veya parola istemlerine dayanan komut dosyaları veya uygulamalar kullanıyorsanız, önce config dosyalarındaki veya kaynak kodundaki parolaları gözden geçirmeniz, ardından bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure Yönetilen [Kimlikler,](https://docs.microsoft.com/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates) Tümleşik Windows Kimlik Doğrulaması veya sertifikaları kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalarda Azure [Key Vault'u](https://azure.microsoft.com/services/key-vault/)kullanmayı düşünün.
+PowerShell kullanan Azure AD komut dosyaları veya Microsoft Graph API'sını kullanan uygulamalar güvenli kimlik doğrulaması gerektirir. Bu komut dosyalarını ve araçları çalıştıran kötü kimlik bilgisi yönetimi kimlik bilgisi hırsızlığı riskini artırır. Sabit kodlu parolalara veya parola istemlerine dayanan komut dosyaları veya uygulamalar kullanıyorsanız, önce config dosyalarındaki veya kaynak kodundaki parolaları gözden geçirmeniz, ardından bu bağımlılıkları değiştirmeniz ve mümkün olduğunda Azure Yönetilen [Kimlikler,](../reports-monitoring/tutorial-access-api-with-certificates.md) Tümleşik Windows Kimlik Doğrulaması veya sertifikaları kullanmanız gerekir. Önceki çözümlerin mümkün olmadığı uygulamalarda Azure [Key Vault'u](https://azure.microsoft.com/services/key-vault/)kullanmayı düşünün.
 
 Parola kimlik bilgilerine sahip hizmet ilkelerinin olduğunu belirlerseniz ve bu parola kimlik bilgilerinin komut dosyaları veya uygulamalar tarafından nasıl güvence altına alındığınızdan emin değilseniz, kullanım modellerini daha iyi anlamak için uygulamanın sahibine başvurun.
 
@@ -115,7 +115,7 @@ Microsoft ayrıca, parola kimlik bilgilerine sahip hizmet ilkeleri varsa kullan�
 
 ### <a name="on-premises-authentication"></a>Şirket içi kimlik doğrulama
 
-Tümleşik Windows Kimlik Doğrulama (IWA) veya Sorunsuz Tek Oturum Açma (SSO) ile yönetilen kimlik doğrulama, parola karma eşitleme veya geçiş kimlik doğrulaması ile yönetilen kimlik doğrulama, şirket ağında, şirket içi etki alanı denetleyicilerine görünürken en iyi kullanıcı deneyimidir. Kimlik bilgisi istemi yorgunluğunu en aza indirir ve kullanıcıların kimlik avı saldırılarına kurban düşme riskini azaltır. Zaten PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, hemen [Kesintisiz SSO'yu dağıtmanız](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)gerekir. Diğer taraftan, şu anda bulut tarafından yönetilen kimlik doğrulamasına geçiş planları yla doluysanız, geçiş projesinin bir parçası olarak Kesintisiz SSO uygulamanız gerekir.
+Tümleşik Windows Kimlik Doğrulama (IWA) veya Sorunsuz Tek Oturum Açma (SSO) ile yönetilen kimlik doğrulama, parola karma eşitleme veya geçiş kimlik doğrulaması ile yönetilen kimlik doğrulama, şirket ağında, şirket içi etki alanı denetleyicilerine görünürken en iyi kullanıcı deneyimidir. Kimlik bilgisi istemi yorgunluğunu en aza indirir ve kullanıcıların kimlik avı saldırılarına kurban düşme riskini azaltır. Zaten PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, hemen [Kesintisiz SSO'yu dağıtmanız](../hybrid/how-to-connect-sso.md)gerekir. Diğer taraftan, şu anda bulut tarafından yönetilen kimlik doğrulamasına geçiş planları yla doluysanız, geçiş projesinin bir parçası olarak Kesintisiz SSO uygulamanız gerekir.
 
 ### <a name="device-trust-access-policies"></a>Aygıt güven erişim ilkeleri
 
@@ -123,66 +123,66 @@ Kuruluşunuzdaki bir kullanıcı gibi, aygıt da korumak istediğiniz temel bir 
 
 - Örneğin, Cihaz güvenilir olduğunda MFA ile sürtünmeden kaçınma
 - Güvenilmeyen aygıtlardan erişimi engelleme
-- Windows 10 aygıtları için şirket [içi kaynakları sorunsuz bir şekilde tek](https://docs.microsoft.com/azure/active-directory/devices/azuread-join-sso)oturum aç't'a sağlayın.
+- Windows 10 aygıtları için şirket [içi kaynakları sorunsuz bir şekilde tek](../devices/azuread-join-sso.md)oturum aç't'a sağlayın.
 
 Aşağıdaki yöntemlerden birini kullanarak aygıt kimliklerini getirerek ve Azure AD'de yöneterek bu hedefi gerçekleştirebilirsiniz:
 
 - Kuruluşlar, aygıtı yönetmek ve uyumluluk ilkelerini uygulamak, aygıt durumunu kanıtlamak ve aygıtın uyumlu olup olmadığına bağlı koşullu erişim ilkeleri ayarlamak için [Microsoft Intune'u](https://docs.microsoft.com/intune/what-is-intune) kullanabilir. Microsoft Intune iOS aygıtlarını, Mac masaüstü bilgisayarlarını (JAMF tümleştirme yoluyla), Windows masaüstü bilgisayarlarını (windows 10 için mobil aygıt yönetimini ve Microsoft Endpoint Configuration Manager ile birlikte yönetimi kullanarak) ve Android mobil cihazları yönetebilir.
-- [Karma Azure AD join,](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) Active Directory etki alanı yla birleştirilmiş bilgisayar aygıtlarının olduğu bir ortamda Grup İlkeleri veya Microsoft Endpoint Configuration Manager ile yönetim sağlar. Kuruluşlar, Sorunsuz SSO ile PHS veya PTA aracılığıyla yönetilen bir ortamı dağıtabilir. Cihazlarınızı Azure AD'ye getirmek, bulutve şirket içi kaynaklarınız üzerinden SSO aracılığıyla kullanıcı verimliliğini en üst düzeye çıkarırken, aynı zamanda [Koşullu Erişim](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) ile bulutlarınıza ve şirket içi kaynaklarınıza erişimi güvence altına almanızı sağlar.
+- [Karma Azure AD join,](../devices/hybrid-azuread-join-managed-domains.md) Active Directory etki alanı yla birleştirilmiş bilgisayar aygıtlarının olduğu bir ortamda Grup İlkeleri veya Microsoft Endpoint Configuration Manager ile yönetim sağlar. Kuruluşlar, Sorunsuz SSO ile PHS veya PTA aracılığıyla yönetilen bir ortamı dağıtabilir. Cihazlarınızı Azure AD'ye getirmek, bulutve şirket içi kaynaklarınız üzerinden SSO aracılığıyla kullanıcı verimliliğini en üst düzeye çıkarırken, aynı zamanda [Koşullu Erişim](../conditional-access/overview.md) ile bulutlarınıza ve şirket içi kaynaklarınıza erişimi güvence altına almanızı sağlar.
 
-Bulutta kayıtlı olmayan etki alanına katılan Windows aygıtlarınız veya bulutta kayıtlı ancak koşullu erişim ilkeleri olmayan etki alanına katılan Windows aygıtlarınız varsa, kaydedilmemiş aygıtları kaydetmeniz ve her iki durumda da koşullu erişim ilkelerinizde [denetim olarak Karma Azure AD birleştirme'yi kullanmanız](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) gerekir.
+Bulutta kayıtlı olmayan etki alanına katılan Windows aygıtlarınız veya bulutta kayıtlı ancak koşullu erişim ilkeleri olmayan etki alanına katılan Windows aygıtlarınız varsa, kaydedilmemiş aygıtları kaydetmeniz ve her iki durumda da koşullu erişim ilkelerinizde [denetim olarak Karma Azure AD birleştirme'yi kullanmanız](../conditional-access/require-managed-devices.md) gerekir.
 
 ![Karma aygıt gerektiren koşullu erişim ilkesinde hibenin ekran görüntüsü](./media/active-directory-ops-guide/active-directory-ops-img6.png)
 
-MDM veya Microsoft Intune'a sahip aygıtları yönetiyor, ancak koşullu erişim ilkelerinizde aygıt denetimlerini kullanmıyorsanız, bu ilkelerde denetim [olarak uyumlu olarak işaretlenecek şekilde Aygıt İste'yi](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices#require-device-to-be-marked-as-compliant) kullanmanızı öneririz.
+MDM veya Microsoft Intune'a sahip aygıtları yönetiyor, ancak koşullu erişim ilkelerinizde aygıt denetimlerini kullanmıyorsanız, bu ilkelerde denetim [olarak uyumlu olarak işaretlenecek şekilde Aygıt İste'yi](../conditional-access/require-managed-devices.md#require-device-to-be-marked-as-compliant) kullanmanızı öneririz.
 
 ![Cihaz uyumluluğu gerektiren koşullu erişim ilkesinde hibenin ekran görüntüsü](./media/active-directory-ops-guide/active-directory-ops-img7.png)
 
 #### <a name="device-trust-access-policies-recommended-reading"></a>Aygıt güven erişim ilkeleri önerilen okuma
 
-- [Nasıl Olunması: Karma Azure Etkin Dizininizi uygulamayla birleştirin](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
+- [Nasıl Olunması: Karma Azure Etkin Dizininizi uygulamayla birleştirin](../devices/hybrid-azuread-join-plan.md)
 - [Kimlik ve cihaz erişim yapılandırmaları](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)
 
 ### <a name="windows-hello-for-business"></a>İş İçin Windows Hello
 
 Windows 10'da, [Windows Hello for Business,](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) parolaları bilgisayarlarda güçlü iki faktörlü kimlik doğrulamayla değiştirir. Windows Hello for Business, kullanıcılar için daha kolay laştırılmış bir MFA deneyimi sağlar ve parolalara olan bağımlılığınızı azaltır. Windows 10 aygıtlarını kullanıma başlamadıysanız veya bunları yalnızca kısmen dağıtmadıysanız, Windows 10'a yükseltmenizi ve tüm cihazlarda [Windows Hello for Business'ı etkinleştirmenizi](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) öneririz.
 
-Parolasız kimlik doğrulama hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Active Directory ile parolasız bir dünya](https://aka.ms/passwordlessdoc)'ya bakın.
+Parolasız kimlik doğrulama hakkında daha fazla bilgi edinmek istiyorsanız, [Azure Active Directory ile parolasız bir dünya](../authentication/concept-authentication-passwordless.md)'ya bakın.
 
 ## <a name="application-authentication-and-assignment"></a>Uygulama kimlik doğrulaması ve atama
 
 ### <a name="single-sign-on-for-apps"></a>Uygulamalar için tek oturum açma
 
-Tüm kuruluşa standartlaştırılmış tek oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, riskin azaltılması, rapor verme yeteneği ve yönetişim için çok önemlidir. Azure AD ile SSO'yu destekleyen ancak şu anda yerel hesapları kullanacak şekilde yapılandırılan uygulamalar kullanıyorsanız, bu uygulamaları Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir. Aynı şekilde, Azure AD ile SSO'yu destekleyen ancak başka bir Kimlik Sağlayıcısı kullanıyorsanız, bu uygulamaları Azure AD ile de SSO kullanacak şekilde yeniden yapılandırmanız gerekir. Federasyon protokollerini desteklemeyen ancak form tabanlı kimlik doğrulamayı destekleyen uygulamalar için, uygulamayı Azure AD Application Proxy ile [parola atlama](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting) yı kullanacak şekilde yapılandırmanızı öneririz.
+Tüm kuruluşa standartlaştırılmış tek oturum açma mekanizması sağlamak, en iyi kullanıcı deneyimi, riskin azaltılması, rapor verme yeteneği ve yönetişim için çok önemlidir. Azure AD ile SSO'yu destekleyen ancak şu anda yerel hesapları kullanacak şekilde yapılandırılan uygulamalar kullanıyorsanız, bu uygulamaları Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir. Aynı şekilde, Azure AD ile SSO'yu destekleyen ancak başka bir Kimlik Sağlayıcısı kullanıyorsanız, bu uygulamaları Azure AD ile de SSO kullanacak şekilde yeniden yapılandırmanız gerekir. Federasyon protokollerini desteklemeyen ancak form tabanlı kimlik doğrulamayı destekleyen uygulamalar için, uygulamayı Azure AD Application Proxy ile [parola atlama](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) yı kullanacak şekilde yapılandırmanızı öneririz.
 
 ![AppProxy Şifre Tabanlı Oturum Açma](./media/active-directory-ops-guide/active-directory-ops-img8.png)
 
 > [!NOTE]
 > Kuruluşunuzdaki yönetilmeyen uygulamaları keşfedecek bir mekanizmanız yoksa, [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security)gibi bir bulut erişimi güvenlik aracısı çözümü (CASB) kullanarak bir bulma işlemi uygulamanızı öneririz.
 
-Son olarak, bir Azure AD uygulama galeriniz varsa ve Azure AD ile SSO'yu destekleyen uygulamalar kullanıyorsanız, [uygulamayı uygulama galerisinde listelemenizi](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)öneririz.
+Son olarak, bir Azure AD uygulama galeriniz varsa ve Azure AD ile SSO'yu destekleyen uygulamalar kullanıyorsanız, [uygulamayı uygulama galerisinde listelemenizi](../azuread-dev/howto-app-gallery-listing.md)öneririz.
 
 #### <a name="single-sign-on-recommended-reading"></a>Tek oturum açma önerilen okuma
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir](../manage-apps/what-is-single-sign-on.md)
 
 ### <a name="migration-of-ad-fs-applications-to-azure-ad"></a>AD FS uygulamalarının Azure AD'ye geçişi
 
-[Uygulamaları AD FS'den Azure AD'ye geçirmek,](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure) güvenlik, daha tutarlı yönetilebilirlik ve daha iyi bir işbirliği deneyimi konusunda ek özellikler sağlar. SSO'yu Azure AD ile destekleyen AD FS'de yapılandırılmış uygulamalarınız varsa, bu uygulamaları Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir. AD FS'de Azure AD tarafından desteklenmeyen yaygın yapılandırmalarla yapılandırılan uygulamalarınız varsa, özel yapılandırmanın uygulamanın mutlak bir gereksinimi olup olmadığını anlamak için uygulama sahipleriyle iletişime geçmeniz gerekir. Gerekli değilse, uygulamayı Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir.
+[Uygulamaları AD FS'den Azure AD'ye geçirmek,](../manage-apps/migrate-adfs-apps-to-azure.md) güvenlik, daha tutarlı yönetilebilirlik ve daha iyi bir işbirliği deneyimi konusunda ek özellikler sağlar. SSO'yu Azure AD ile destekleyen AD FS'de yapılandırılmış uygulamalarınız varsa, bu uygulamaları Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir. AD FS'de Azure AD tarafından desteklenmeyen yaygın yapılandırmalarla yapılandırılan uygulamalarınız varsa, özel yapılandırmanın uygulamanın mutlak bir gereksinimi olup olmadığını anlamak için uygulama sahipleriyle iletişime geçmeniz gerekir. Gerekli değilse, uygulamayı Azure AD ile SSO kullanacak şekilde yeniden yapılandırmanız gerekir.
 
 ![Birincil kimlik sağlayıcısı olarak Azure AD](./media/active-directory-ops-guide/active-directory-ops-img9.png)
 
 > [!NOTE]
-> [ADFS için Azure AD Connect Health,](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs) Azure AD'ye geçirilebilen her uygulama yla ilgili yapılandırma ayrıntılarını toplamak için kullanılabilir.
+> [ADFS için Azure AD Connect Health,](../hybrid/how-to-connect-health-adfs.md) Azure AD'ye geçirilebilen her uygulama yla ilgili yapılandırma ayrıntılarını toplamak için kullanılabilir.
 
 ### <a name="assign-users-to-applications"></a>Kullanıcıları uygulamalara atama
 
-[Kullanıcıları uygulamalara atamak,](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) daha fazla esneklik ve ölçekte yönetme olanağı sağladıklarından, gruplar kullanılarak en iyi şekilde eşlenir. Grupları kullanmanın yararları arasında [öznitelik tabanlı dinamik grup üyeliği](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership) ve uygulama [sahiplerine delegasyon](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners)yer alır. Bu nedenle, grupları zaten kullanıyor ve yönetiyorsanız, ölçekte yönetimi geliştirmek için aşağıdaki eylemleri yapmanızı öneririz:
+[Kullanıcıları uygulamalara atamak,](../manage-apps/assign-user-or-group-access-portal.md) daha fazla esneklik ve ölçekte yönetme olanağı sağladıklarından, gruplar kullanılarak en iyi şekilde eşlenir. Grupları kullanmanın yararları arasında [öznitelik tabanlı dinamik grup üyeliği](../users-groups-roles/groups-dynamic-membership.md) ve uygulama [sahiplerine delegasyon](../fundamentals/active-directory-accessmanagement-managing-group-owners.md)yer alır. Bu nedenle, grupları zaten kullanıyor ve yönetiyorsanız, ölçekte yönetimi geliştirmek için aşağıdaki eylemleri yapmanızı öneririz:
 
 - Grup yönetimini ve yönetimini uygulama sahiplerine devredin.
 - Uygulamaya self servis erişimine izin verin.
 - Kullanıcı öznitelikleri sürekli olarak uygulamalara erişimi belirleyebiliyorsa dinamik gruplar tanımlayın.
-- [Azure AD erişim incelemelerini](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)kullanarak uygulama erişimi için kullanılan gruplara attestation uygulayın.
+- [Azure AD erişim incelemelerini](../governance/access-reviews-overview.md)kullanarak uygulama erişimi için kullanılan gruplara attestation uygulayın.
 
 Diğer taraftan, tek tek kullanıcılara atama sı bulunan uygulamalar bulursanız, bu uygulamalar etrafında [yönetişim](https://docs.microsoft.com/azure/active-directory/governance/index) uyguladığından emin olun.
 
@@ -223,12 +223,12 @@ Erişim ilkelerinde risk kullanmayı destekleyen Azure AD Premium P2 lisansları
 
 #### <a name="risk-based-access-policies-recommended-reading"></a>Risk tabanlı erişim ilkeleri önerilen okuma
 
-- [Nasıl Yapılandırılır: Oturum açma risk ilkesini yapılandırın](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-sign-in-risk-policy)
-- [Nasıl Yapılandırılır: Kullanıcı risk ilkesini yapılandırın](https://docs.microsoft.com/azure/active-directory/identity-protection/howto-user-risk-policy)
+- [Nasıl Yapılandırılır: Oturum açma risk ilkesini yapılandırın](../identity-protection/howto-identity-protection-configure-risk-policies.md)
+- [Nasıl Yapılandırılır: Kullanıcı risk ilkesini yapılandırın](../identity-protection/howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="client-application-access-policies"></a>İstemci uygulama erişim ilkeleri
 
-Microsoft Intune Application Management (MAM), Outlook Mobile gibi uyumlu istemci mobil uygulamalarına depolama şifrelemesi, PIN, uzaktan depolama temizleme vb. veri koruma denetimlerini itme olanağı sağlar. Ayrıca, onaylı veya uyumlu uygulamalardan Exchange Online gibi bulut hizmetlerine [erişimi kısıtlamak](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) için koşullu erişim ilkeleri oluşturulabilir.
+Microsoft Intune Application Management (MAM), Outlook Mobile gibi uyumlu istemci mobil uygulamalarına depolama şifrelemesi, PIN, uzaktan depolama temizleme vb. veri koruma denetimlerini itme olanağı sağlar. Ayrıca, onaylı veya uyumlu uygulamalardan Exchange Online gibi bulut hizmetlerine [erişimi kısıtlamak](../conditional-access/app-based-conditional-access.md) için koşullu erişim ilkeleri oluşturulabilir.
 
 Çalışanlarınız Exchange Online veya SharePoint Online gibi kurumsal kaynaklara erişmek için Office mobil uygulamaları gibi MAM özellikli uygulamalar yüklerse ve byOD'yi de destekliyorsanız (kendi aygıtınızı getirin), UYGULAMA yapılandırmasını MDM kaydı olmayan kişisel cihazlarda yönetmek için uygulama MAM ilkelerini dağıtmanızı ve ardından yalnızca MAM özellikli istemcilerden erişime izin vermek için koşullu erişim ilkelerinizi güncelleştirmenizi öneririz.
 
@@ -245,10 +245,10 @@ Koşullu Erişim, kuruluşunuzun güvenlik duruşunu iyileştirmek için önemli
 - **Tüm kullanıcıları** filtre olarak kullanmaktan ve yanlışlıkla **Misafirler** eklemekten kaçının
 - **Tüm "eski" ilkeleri Azure portalına geçirin**
 - Kullanıcılar, aygıtlar ve uygulamalar için tüm ölçütleri yakalayın
-- **Kullanıcı başına MFA** kullanmak yerine [MFA'yı uygulamak](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)için Koşullu Erişim ilkelerini kullanma
+- **Kullanıcı başına MFA** kullanmak yerine [MFA'yı uygulamak](../conditional-access/plan-conditional-access.md)için Koşullu Erişim ilkelerini kullanma
 - Birden çok uygulamaya uygulanabilecek küçük bir temel ilke kümesine sahip olması
 - Boş özel durum gruplarını tanımlayın ve özel durum stratejisi ne olacaksa ilkelere ekleyin
-- MFA kontrolleri olmadan cam hesapları [kırmak](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency) için plan
+- MFA kontrolleri olmadan cam hesapları [kırmak](../users-groups-roles/directory-admin-roles-secure.md#break-glass-what-to-do-in-an-emergency) için plan
 - Office 365 istemci uygulamaları arasında tutarlı bir deneyim sağlayın (örneğin, Takımlar, İşletmeler için OneDrive, Outlook, vb.) Exchange Online ve Sharepoint Online gibi hizmetler için aynı denetim kümesini uygulayarak
 - İlkelere atama bireyler değil, gruplar aracılığıyla uygulanmalıdır
 - Kullanıcıların güvenlik duruşudışında kalma süresini sınırlamak için ilkelerde kullanılan özel durum gruplarının düzenli olarak gözden yorumlarını yapın. Azure AD P2'ye sahipseniz, işlemi otomatikleştirmek için erişim değerlendirmelerini kullanabilirsiniz
@@ -309,7 +309,7 @@ Aşağıda, Microsoft bulut hizmetleri için incelemek isteyebileceğiniz izinle
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
-- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünmesini sağlar. Örnek:
+- Uygulamalar, oturum açmış kullanıcının tam kullanıcı kimliğine bürünmesini sağlar. Örneğin:
 
 |Kaynak | İzin |
 | :- | :- |

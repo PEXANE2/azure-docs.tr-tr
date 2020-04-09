@@ -5,7 +5,6 @@ description: Herhangi bir Azure Etkin Dizin kiracısından bir kullanıcıda otu
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -14,12 +13,12 @@ ms.date: 03/17/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: e15fb60ec339eae45f9f14a3333e8afe51fc05c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f22ecb13284eaf6fb2a833791b5563351ca19147
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480870"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884095"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Nasıl yapilir: Çok kiracılı uygulama deseni kullanarak herhangi bir Azure Active Directory kullanıcısında oturum açın
 
@@ -134,7 +133,7 @@ Uygulamanızın her biri Azure AD'de kendi kaydıyla temsil edilen birden çok k
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>Tek bir kiracıda birden çok katman
 
-Mantıksal uygulamanız iki veya daha fazla uygulama kaydından (örneğin ayrı bir istemci ve kaynak) oluşuyorsa, bu bir sorun olabilir. Kaynağı önce müşteri kiracısına nasıl alabilirsiniz? Azure AD, istemci ve kaynağın tek bir adımda onaylanmasına olanak sağlayarak bu durumu kapsar. Kullanıcı, onay sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, istemcinin `knownClientApplications` Uygulama Kimliğini [uygulama bildirimine][AAD-App-Manifest]dahil etmelidir. Örnek:
+Mantıksal uygulamanız iki veya daha fazla uygulama kaydından (örneğin ayrı bir istemci ve kaynak) oluşuyorsa, bu bir sorun olabilir. Kaynağı önce müşteri kiracısına nasıl alabilirsiniz? Azure AD, istemci ve kaynağın tek bir adımda onaylanmasına olanak sağlayarak bu durumu kapsar. Kullanıcı, onay sayfasında hem istemci hem de kaynak tarafından istenen izinlerin toplamını görür. Bu davranışı etkinleştirmek için, kaynağın uygulama kaydı, istemcinin `knownClientApplications` Uygulama Kimliğini [uygulama bildirimine][AAD-App-Manifest]dahil etmelidir. Örneğin:
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 

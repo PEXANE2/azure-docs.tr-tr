@@ -3,14 +3,14 @@ author: msmimart
 ms.service: active-directory-b2c
 ms.subservice: B2C
 ms.topic: include
-ms.date: 10/16/2019
+ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: 71a6654acd436c27bd2370646dede81778113860
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee63c1c0913baf3700d77e6fba1582fe7027ead7
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78186159"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875713"
 ---
 #### <a name="applications"></a>[Uygulamalar](#tab/applications/)
 
@@ -28,8 +28,8 @@ ms.locfileid: "78186159"
 1. **API'lerim** sekmesini seçin.
 1. Web uygulamasına erişim izni verilmesi gereken API'yi seçin. Örneğin, *webapi1*.
 1. **İzin** **altında, demoyu**genişletin ve daha önce tanımladığınız kapsamları seçin. Örneğin, *demo.read* ve *demo.write*.
-1. **İzin Ekle'yi**seçin. Yönlendirildikçe, bir sonraki adıma geçmeden önce birkaç dakika bekleyin.
+1. **İzin Ekle'yi**seçin.
 1. **(kiracı adınız) için Grant yönetici onayı**seçin.
-1. Şu anda oturum açmış yönetici hesabınızı seçin veya En azından *Bulut uygulama yöneticisi* rolüne atanmış Olan Azure AD B2C kiracınızda bir hesapla oturum açın.
-1. **Kabul Et**’i seçin.
-1. **Yenile'yi**seçin ve ardından "Verilenler..." her iki kapsam için **durum** altında görüntülenir. İzinlerin yayılması birkaç dakika sürebilir.
+1. Bir hesap seçmeniz istenirse, şu anda oturum açmış yönetici hesabınızı seçin veya Azure AD B2C kiracınızda en azından *Bulut uygulama yöneticisi* rolüne atanmış bir hesapla oturum açın.
+1. **Evet'i**seçin.
+1. **Yenile'yi**seçin ve ardından "Verilenler..." her iki kapsam için **durum** altında görüntülenir.

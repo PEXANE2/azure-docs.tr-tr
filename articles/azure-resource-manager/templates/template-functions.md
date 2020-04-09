@@ -2,13 +2,13 @@
 title: Şablon işlevleri
 description: Değerleri almak, dizeleri ve sayısal larla çalışmak ve dağıtım bilgilerini almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: 1d2789e59c091b4e6c39be48b83fe610a592abe1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: fbd82f89ed9a97a3f376a9ed6eaa8ae3760759ff
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156268"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982387"
 ---
 # <a name="arm-template-functions"></a>ARM şablon fonksiyonları
 
@@ -77,6 +77,13 @@ Kaynak Yöneticisi şablonlarınızda karşılaştırma yapmak için çeşitli i
 <a id="deployment" aria-hidden="true" />
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
+
+## <a name="date-functions"></a>Tarih işlevleri
+
+Kaynak Yöneticisi, tarihlerle çalışmak için aşağıdaki işlevleri sağlar.
+
+* [tarihTimeAdd](template-functions-date.md#datetimeadd)
+* [utcŞimdi](template-functions-date.md#utcnow)
 
 ## <a name="deployment-value-functions"></a>Dağıtım değeri fonksiyonları
 
@@ -224,7 +231,6 @@ Kaynak Yöneticisi dizeleri ile çalışmak için aşağıdaki işlevleri sağla
 * [Urı](template-functions-string.md#uri)
 * [uriComponent](template-functions-string.md#uricomponent)
 * [uriComponentToString](template-functions-string.md#uricomponenttostring)
-* [utcŞimdi](template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

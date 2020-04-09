@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: bf2a2385b3129ddf24ede7f6d851701186b0e33c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445705"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985652"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Azure Cosmos DB verilerinde toplu işlemler yapmak için toplu yürütücü Java kitaplığını kullanma
 
@@ -28,7 +28,7 @@ Bu öğretici, Azure Cosmos DB'nin toplu yürütme aracı Java kitaplığını k
 
 * Azure [Cosmos DB'yi](https://azure.microsoft.com/try/cosmosdb/) Azure aboneliği olmadan, ücretsiz ve taahhütler olmadan ücretsiz olarak deneyebilirsiniz. Veya, son nokta yla [Birlikte Azure Cosmos DB Emülatörü'ni](https://docs.microsoft.com/azure/cosmos-db/local-emulator) `https://localhost:8081` kullanabilirsiniz. Birincil Anahtar, [Kimlik doğrulama istekleri](local-emulator.md#authenticating-requests) bölümünde sağlanır.  
 
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)  
+* [Java Development Kit (JDK) 1.7+](/java/azure/jdk/?view=azure-java-stable)  
   - Ubuntu’da JDK’yi yüklemek için `apt-get install default-jdk` komutunu çalıştırın.  
 
   - JAVA_HOME ortam değişkenini JDK’nin yüklü olduğu klasöre işaret edecek şekilde ayarladığınızdan emin olun.
@@ -130,7 +130,7 @@ Klonlanmış depo ,"\azure-cosmosdb-bulkexecutor-java-getting-started\samples\bu
 6. Hedef bağımlılıklar oluşturulduktan sonra, aşağıdaki komutu kullanarak toplu içe aktarmacı uygulamasını çağırabilirsiniz:  
 
    ```java
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB’s endpoint>*  -masterKey *<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint *<Fill in your Azure Cosmos DB's endpoint>*  -masterKey *<Fill in your Azure Cosmos DB's master key>* -databaseId bulkImportDb -collectionId bulkImportColl -operation import -shouldCreateCollection -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
    Toplu içe aktarıcı, App.config dosyasında belirtilen veritabanı adı, koleksiyon adı ve iş gücü değerlerini içeren yeni bir veritabanı ve koleksiyon oluşturur. 
@@ -150,7 +150,7 @@ Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsini
    updateOperations.add(descriptionUpdate);
 
    List<UpdateItem> updateItems = new ArrayList<>(cfg.getNumberOfDocumentsForEachCheckpoint());
-   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                      
+   IntStream.range(0, cfg.getNumberOfDocumentsForEachCheckpoint()).mapToObj(j -> {                        
     return new UpdateItem(Long.toString(prefix + j), Long.toString(prefix + j), updateOperations);
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
@@ -182,7 +182,7 @@ Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsini
    |int getNumberOfDocumentsUpdated()  |   Toplu güncelleştirme API çağrısına sağlanan belgelerden başarıyla güncelleştirilen toplam belge sayısı.      |
    |çift getTotalRequestUnitsConsumed() |  Toplu güncelleştirme API çağrısı tarafından tüketilen toplam istek birimleri (RU).       |
    |Süre getTotalTimeTaken()  |   Toplu güncelleştirme API tarafından alınan toplam süre yürütmeyi tamamlamak için çağrı.      |
-   |Özel\<Durum> listele Hatalar()   |    Toplu güncelleştirme API çağrısına verilen toplu iş partisinden bazı belgeler eklenmezse hata listesini alır.      |
+   |Özel\<Durum> listele Hatalar()   |       Toplu güncelleştirme API çağrısına verilen toplu iş partisinden bazı belgeler eklenmezse hata listesini alır.      |
 
 3. Toplu güncelleme uygulamasını hazırladıktan sonra 'mvn clean package' komutunu kullanarak komuta hattı aracını kaynaktan oluşturun. Bu komut, hedef klasörde bir kavanoz dosyası oluşturur:  
 
@@ -193,7 +193,7 @@ Varolan belgeleri BulkUpdateAsync API'sını kullanarak güncelleştirebilirsini
 4. Hedef bağımlılıklar oluşturulduktan sonra, aşağıdaki komutu kullanarak toplu güncelleştirme uygulamasını çağırabilirsiniz:
 
    ```
-   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB’s endpoint>* -masterKey **<Fill in your Azure Cosmos DB’s master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
+   java -Xmx12G -jar bulkexecutor-sample-1.0-SNAPSHOT-jar-with-dependencies.jar -serviceEndpoint **<Fill in your Azure Cosmos DB's endpoint>* -masterKey **<Fill in your Azure Cosmos DB's master key>* -databaseId bulkUpdateDb -collectionId bulkUpdateColl -operation update -collectionThroughput 1000000 -partitionKey /profileid -maxConnectionPoolSize 6000 -numberOfDocumentsForEachCheckpoint 1000000 -numberOfCheckpoints 10
    ```
 
 ## <a name="performance-tips"></a>Performans ipuçları 

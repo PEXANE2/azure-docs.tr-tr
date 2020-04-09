@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af17f9c2ef7eea5eb531327d4df13d5885a49b7e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442147"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985601"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB toplu yürütücü kitaplığına genel bakış
  
@@ -51,4 +51,4 @@ Toplu yürütücü kitaplığı, koleksiyona ayrılan iş kısmını maksimum ol
 * [.NET](bulk-executor-dot-net.md) ve [Java'daki](bulk-executor-java.md)toplu yürütme kitaplığını tüketen örnek uygulamaları deneyerek daha fazla bilgi edinin.  
 * [.NET](sql-api-sdk-bulk-executor-dot-net.md) ve [Java'daki](sql-api-sdk-bulk-executor-java.md)toplu uygulayıcı SDK bilgilerine ve sürüm notlarına göz atın.
 * Toplu uygulayıcı kitaplığı, daha fazla bilgi edinmek için Azure [Cosmos DB Spark bağlayıcısı](spark-connector.md) makalesine bakın.  
-* Toplu uygulayıcı kitaplığı, verileri kopyalamak için Azure Veri Fabrikası için [Azure Cosmos DB bağlayıcısının](https://aka.ms/bulkexecutor-adf-v2) yeni sürümüne de entegre edilmiştir.
+* Toplu uygulayıcı kitaplığı, verileri kopyalamak için Azure Veri Fabrikası için [Azure Cosmos DB bağlayıcısının](../data-factory/connector-azure-cosmos-db.md) yeni sürümüne de entegre edilmiştir.

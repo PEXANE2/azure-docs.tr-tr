@@ -1,25 +1,27 @@
 ---
-title: İş Ortağı Merkezi'nde danışmanlık hizmeti teklifi oluşturun - Azure Marketi
+title: İş Ortağı Merkezi-Azure Marketi'nde Danışmanlık hizmeti teklifi oluşturun
 description: İş Ortağı Merkezi'ni kullanarak Azure Marketi veya AppSource'a danışmanlık hizmeti teklifini nasıl yayınlayacağınızı öğrenin.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ce8df36d3417417a5f70a5385aa94d9c8c7ff0cc
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.date: 04/06/2020
+ms.openlocfilehash: f1354ce824bc4e57ab55846c714d4a0a73a46966
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674286"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873829"
 ---
-# <a name="consulting-service-creation-overview"></a>Danışmanlık hizmeti oluşturma genel bakış
+# <a name="create-a-consulting-service-offer"></a>Danışmanlık hizmeti teklifi oluşturun
 
 > [!IMPORTANT]
 > Danışmanlık hizmet tekliflerinizin yönetimini Cloud Partner Portal'dan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izin verilene kadar, bulut iş ortağı portalının tekliflerinizi yönetmesi için [Azure ve Dynamics 365 danışmanlık hizmeti teklifindeki](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) talimatları izleyin.
 
-Bu makalede, [Azure Marketi](https://azuremarketplace.microsoft.com/) veya [AppSource'a](https://appsource.microsoft.com/)bir danışmanlık hizmeti teklifinin nasıl yayımlanabileceği açıklanmaktadır. AppSource'ta Microsoft [Dynamics 365](https://dynamics.microsoft.com/) ve Power Platform'u temel alan liste danışmanlık hizmeti teklifleri. Azure Marketi'nde Microsoft Azure'u temel alan danışmanlık hizmeti tekliflerini listele.
+Bu makalede, Bir Danışmanlık hizmeti [teklifinin Azure Marketi](https://azuremarketplace.microsoft.com/) veya [AppSource'a](https://appsource.microsoft.com/)nasıl yayımlanılabildiğini açıklanmaktadır. AppSource'ta Microsoft [Dynamics 365](https://dynamics.microsoft.com/) ve Power Platform'u temel alan List Consulting hizmeti teklifleri. Azure Marketinde Microsoft Azure'u temel alan List Danışmanlık hizmeti teklifleri.
+
+Azure Marketi veya AppSource Danışmanlık hizmetlerinde bir Danışmanlık hizmeti teklifi oluşturmak için öncelikle [İş Merkezi'nde bir yayımcı hesabınız](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)olması ve hesabınızın ticari pazar programına kaydolması gerekir. Teklifinizi oluşturmadan önce, Danışmanlık hizmeti [ön koşullarındaki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)ön koşulları gözden geçirin.
 
 ## <a name="publishing-benefits"></a>Yararlanma avantajları
 
@@ -30,60 +32,9 @@ Ticari pazara yayıncılığın faydaları:
 - Bu pazarlardan yüksek kaliteli müşteri adayları alın.
 - Hizmetlerinizin Microsoft alanı ve tele-satış ekipleri tarafından tanıtınır
 
-## <a name="requirements"></a>Gereksinimler
+## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-### <a name="business-requirements"></a>İş gereksinimleri
-
-Azure'un birincil ürün olarak seçildiği tekliflerde, teklifiniz aşağıdaki tam kazanılan yetkinliklerden en az birini listelemelidir:
-
-- Uygulama Geliştirme
-- Uygulama Entegrasyonu
-- Uygulama Yaşam Döngüsü Yönetimi
-- Bulut Platformu
-- Veri Analizi
-- Veri Merkezi
-- Veri Platformu
-- DevOps
-
-Birincil ürün olarak seçilen aşağıdaki seçeneklerden birine sahip teklifler için, listelenen ilgili uygunluk gereksinimlerini karşılamanız veya hizmet teklifinin ilişkili olduğu birincil ürün için ortak satış teklifi sunmalısınız.
-
-**Müşteri Katılımı Uygulamaları**
-
-- **Geçerli :** Dynamics 365 Satış, Dynamics 365 Pazarlama, Dynamics 365 Müşteri Hizmetleri, Dynamics 365 Saha Servisi, Dynamics 365 İnsan Kaynakları
-
-- **Kriterler**: Müşteri Katılımı seçeneği için [Bulut İş Uygulamaları uzmanlığında](https://partner.microsoft.com/membership/cloud-business-applications-competency) Altın veya Gümüş sertifikalı olmalıdır.
-
-**Finans ve Operasyon Uygulamaları**
-
-- **Geçerli geçerlidir**: Dynamics 365 Finans, Dynamics 365 Operations, Dynamics 365 Commerce, Dynamics 365 İnsan Kaynakları, Dynamics 365 Proje Hizmet Otomasyonu
-
-- **Kriterler**: Birleşik İşlemler seçeneği için [Bulut İş Uygulamaları uzmanlığında](https://partner.microsoft.com/membership/cloud-business-applications-competency) Altın veya Gümüş sertifikalı olmalıdır.
-
-**Dynamics 365 Customer Insights**
-
-- **Kriterler**: [Dynamics 365 Customer Insights'ın](https://dynamics.microsoft.com/ai/customer-insights/) en az beş ölçü ve beş segmentli üretim içi en az bir uygulaması olmalıdır.
-
-**Dynamics 365 Business Central**
-
-- **Kriterler**: [Kurumsal Kaynak Planlama uzmanlığında](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) Altın veya Gümüş sertifikalı olmalı ve en az üç müşteriye hizmet vermeli veya Microsoft AppSource'da bir Business Central uygulaması yayınlamış olmalıdır.
-
-**Power BI**
-
-- **Kriterler**: [Power BI ortak vitrininde](https://powerbi.microsoft.com/partner-showcase/)listelenmelidir.
-
-**Power Apps**
-
-- **Kriterler**: [Power Apps Ortaklık](https://aka.ms/PowerAppsPartner) programında Gelişmiş Avantajlar için uygun olmalıdır.
-
-Bu ön koşulların karşılanması yla ilgili ayrıntılar için [Danışmanlık hizmeti ön koşulları'na](consulting-service-prerequisites.md)bakın.
-
-### <a name="logistical-requirements"></a>Lojistik gereksinimler
-
-Azure Marketi veya AppSource danışmanlık hizmetlerinde bir danışmanlık hizmeti teklifi oluşturmak için öncelikle [İş Merkezi'nde bir yayımcı hesabınız](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)olması ve hesabınızın ticari pazar programına kaydolması gerekir.
-
-## <a name="create-a-new-consulting-service-offer-in-partner-center"></a>Partner Center'da yeni bir danışmanlık hizmeti teklifi oluşturun
-
-Yukarıda açıklanan gereksinimleri yerine getirin, bir danışmanlık hizmeti teklifi oluşturmak için aşağıdaki adımları izleyin.
+Yukarıda açıklanan gereksinimleri yerine getirin, bir Danışmanlık hizmeti teklifi oluşturmak için aşağıdaki adımları izleyin.
 
 1. [Ortak Merkezi'nde](https://partner.microsoft.com)oturum açın ve ardından üst menüden **Pano'yu** seçin.
 2. Sol daki gezinme **çubuğunda, Commercial Marketplace'i**seçin ve ardından **Genel Bakış'ı**seçin.
@@ -139,13 +90,13 @@ Aşağıda bazı ek müşteri adayı yönetim kaynakları vereme
 
 ### <a name="properties"></a>Özellikler
 
-Bu sayfa, danışmanlık hizmetinizin sunduğu birincil ürünü en iyi şekilde kapsamanızı, bir danışmanlık hizmeti türünü belirlemenizi ve geçerli ürünleri seçmenize olanak tanır.
+Bu sayfa, Danışmanlık hizmetinizin sunduğu birincil ürünü en iyi şekilde kapsamanızı, Bir Danışmanlık hizmet türünü belirlemenizi ve geçerli ürünleri seçmenize olanak tanır.
 
 1. Açılan listeden birincil **ürün** seçin.
 2. Açılan listeden bir **Danışmanlık hizmet türü** seçin:
 
     - **Değerlendirme** : Bir çözümün uygulanabilirliğini belirlemek ve maliyet ve zamanlama tahmini sağlamak için müşterinin&#39;ortamının değerlendirilmesi.
-    - **Brifing** : Çerçeveler, demolar ve müşteri örneklerini kullanarak müşteri ilgisini çekmek için bir çözüme veya danışmanlık hizmetine giriş.
+    - **Brifing** : Çerçeveler, demolar ve müşteri örneklerini kullanarak müşteri ilgisini çekmek için bir çözüm e-çözüm veya danışmanlık hizmetine giriş.
     - **Uygulama** : Tam çalışan bir çözümle sonuçlanan tam bir kurulum. İki hafta veya daha kısa sürede uygulanabilecek çözümleri sınırlandırın.
     - **Kavram Kanıtı** : Bir çözümün müşteri gereksinimlerini karşılayıp karşılamadığını belirlemek için sınırlı kapsamlı bir uygulamadır.
     - **Atölye** : Müşteri&#39;tesislerinde yapılan interaktif bir etkileşim. Müşteri&#39;verileri veya ortamı üzerine kurulu eğitim, brifingler, değerlendirmeler veya demolar içerebilir.
@@ -153,7 +104,7 @@ Bu sayfa, danışmanlık hizmetinizin sunduğu birincil ürünü en iyi şekilde
 1. **Azure'un**birincil ürününü seçtiyseniz, en fazla üç **Çözüm Alanı**seçin. Bunlar, Azure Marketi'ndeki müşterilerin teklifinizi bulmasını kolaylaştırır. Azure'u seçmediyseniz&#39;, bu adımı atlayın.
 2. Azure _dışında_ birincil bir ürün seçtiyseniz, en fazla üç **Geçerli ürün**seçin. Bunlar, AppSource'taki müşterilerin teklifinizi bulmasını kolaylaştırır. Ayrıntılar için [Microsoft AppSource Danışmanlık Hizmeti Listeleme Yönergeleri'ne](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF) bakın.
 3. Teklifinizin geçerli olduğu en fazla altı **Endüstri'yi** seçin. Bu, müşterilerin teklifinizi bulmasını kolaylaştırır.
-4. Şirketinizin danışmanlık hizmeti teklif listenizde görüntülemek için kazandığı en fazla üç **Yetkinlik** ekleyin. Azure Uzman MSP&#39;ve Azure Ağ MSP's&#39;dışında en az bir uzmanlık gereklidir.
+4. Şirketinizin Danışmanlık hizmeti teklif listenizde görüntülemek için kazandığı en fazla üç **Yetkinlik** ekleyin. Azure Uzman MSP&#39;ve Azure Ağ MSP's&#39;dışında en az bir uzmanlık gereklidir.
 
 Bir sonraki bölüme, Teklif listesine devam etmeden önce **taslağı Kaydet'i** seçin.
 
@@ -205,7 +156,7 @@ Açıklamanızı daha ilgi çekici hale getirmek için, açıklamanızı biçiml
 
 ### <a name="keywords"></a>Anahtar sözcükler
 
-Birincil ürün ve danışmanlık hizmetinizle alakalı en fazla üç arama anahtar kelimesini girin. Bunlar teklifinizi bulmanızı kolaylaştıracaktır.
+Birincil ürününuz ve Danışmanlık hizmetinizle alakalı en fazla üç arama anahtar kelimesini girin. Bunlar teklifinizi bulmanızı kolaylaştıracaktır.
 
 ### <a name="duration"></a>Süre
 
@@ -252,7 +203,7 @@ Burada fiyatlandırma, pazar ve özel anahtar gibi öğeleri tanımlarsınız.
 3. **Fiyatlandırma**: Teklifinizin **Ücretsiz** mi yoksa **Ücretli** mi olduğunu belirtin.
 
     > [!NOTE]
-    > Danışmanlık Hizmeti teklifleri sadece liste içindir. Herhangi bir işlem doğrudan, ticari pazar dışında gerçekleşecektir.
+    > Danışmanlık hizmeti teklifleri sadece liste içindir. Herhangi bir işlem doğrudan, ticari pazar dışında gerçekleşecektir.
 
 4. Ücretli bir teklif için **Fiyatı ve para birimini ve** fiyatın **Sabit** mi yoksa **Tahmini**mi olduğunu belirtin. Tahmin edilirse, açıklamada fiyatı hangi faktörlerin etkileyeceğini belirtmeniz gerekir.
 5. **Taslağı Kaydet'i**seçin.
@@ -269,6 +220,6 @@ Teklifin gerekli tüm bölümlerini tamamladıktan sonra, teklifinizi incelemek 
 
 Teklifinizin her yayımlama aşamasında ne kadar süreyle olmasını bekleyebileceğiniz hakkında daha fazla bilgi [için](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)bkz.
 
-## <a name="update-your-existing-consulting-service-offers"></a>Mevcut danışmanlık hizmeti tekliflerinizi güncelleyin
+## <a name="update-your-existing-consulting-service-offers"></a>Mevcut Danışmanlık hizmeti tekliflerinizi güncelleyin
 
 - [Ticari pazarda mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

@@ -3,24 +3,21 @@ title: Korumalı Web API - genel bakış
 titleSuffix: Microsoft identity platform
 description: Korumalı bir web API'sini (genel bakış) nasıl oluşturabildiğini öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: abe4ecf77e7a65251830ff822b15f79291471202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9017fbde1a44bcdf39fa8730bed25141da19fd56
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773346"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882412"
 ---
 # <a name="scenario-protected-web-api"></a>Senaryo: Korumalı web API
 

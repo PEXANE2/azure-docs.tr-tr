@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fe3a63e119fed6825982b9de13bc78cb7da5415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481407"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877397"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Varolan şirket içi proxy sunucularıyla çalışma
 
@@ -27,6 +27,7 @@ Bu ana dağıtım senaryolarına bakarak başlıyoruz:
 
 * Konektörleri şirket içi giden vekillerinizi atlayacak şekilde yapılandırın.
 * Azure AD Application Proxy'ye erişmek için giden proxy kullanacak şekilde bağlayıcıları yapılandırın.
+* Bağlayıcı ve arka uç uygulaması arasında bir proxy kullanarak yapılandırın.
 
 Bağlayıcıların nasıl çalıştığı hakkında daha fazla bilgi için [bkz.](application-proxy-connectors.md)
 
@@ -137,6 +138,23 @@ Bağlayıcı, CONNECT yöntemini kullanarak giden TLS tabanlı bağlantılar yap
 #### <a name="tls-inspection"></a>TLS denetimi
 
 Bağlayıcı trafiği için sorunlara neden olduğundan, bağlayıcı trafiği için TLS denetimi kullanmayın. Bağlayıcı, Uygulama Proxy hizmetine kimlik doğrulamak için bir sertifika kullanır ve bu sertifika TLS denetimi sırasında kaybolabilir.
+
+## <a name="configure-using-a-proxy-between-the-connector-and-backend-application"></a>Bağlayıcı ve arka uç uygulaması arasında proxy kullanarak yapılandırMa
+Arka uç uygulamasına yönelik iletişim için bir ileri proxy kullanmak bazı ortamlarda özel bir gereksinim olabilir.
+Bunu etkinleştirmek için lütfen sonraki adımları izleyin:
+
+### <a name="step-1-add-the-required-registry-value-to-the-server"></a>Adım 1: Sunucuya gerekli kayıt defteri değerini ekleme
+1. Varsayılan proxy'yi kullanarak "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft `UseDefaultProxyForBackendRequests = 1` AAD App Proxy Bağlayıcısı" bulunan Bağlayıcı yapılandırma kayıt defteri anahtarına aşağıdaki kayıt defteri değerini (DWORD) ekleyin.
+
+### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>Adım 2: Netsh komutunu kullanarak proxy sunucusunu el ile yapılandırın
+1.  Grup ilkesini etkinleştirin Makine başına proxy ayarları yapın. Bu şu nda bulunur: Bilgisayar Yapılandırması\İlkeler\Yönetim Şablonları\Windows Bileşenleri\Internet Gezgini. Bu ilkenin kullanıcı başına ayarlanması yerine ayarlanması gerekir.
+2.  Güncelleştirilmiş grup ilkesi ayarlarını kullandığından emin olmak için sunucuda çalıştırın `gpupdate /force` veya sunucuyu yeniden başlatın.
+3.  Yönetici haklarıyla yükseltilmiş bir komut `control inetcpl.cpl`istemi başlatın ve girin.
+4.  Gerekli proxy ayarlarını yapılandırın. 
+
+Bu ayarlar, bağlayıcının Azure'a ve arka uç uygulamasına iletişim için aynı ileri proxy'yi kullanmasını sağlar. Azure iletişiminin bağlayıcısı ileri proxy veya farklı bir ileri proxy gerektiriyorsa, bunu, giden proxy'leri veya giden proxy'leri kullanma bölümlerinde açıklandığı gibi ApplicationProxyConnectorService.exe.config dosyasını değiştirerek ayarlayabilirsiniz.
+
+Bağlayıcı güncelleyici hizmeti makine proxy'sini de kullanır. Bu davranış, ApplicationProxyConnectorUpdaterService.exe.config dosyadeğiştirerek değiştirilebilir.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Sorun giderme bağlayıcı proxy sorunları ve hizmet bağlantısı sorunları
 

@@ -5,25 +5,27 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f5944accb185f1311c811cf65a8ea8348fd569db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 065bbc62d65d7e91728b10cd9f95b2e73ea03abc
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77605616"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878740"
 ---
-# <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Mantık uygulama kaynaklarını diğer Azure aboneliklerine, kaynak gruplarına veya bölgelere taşıma
+# <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>Mantık uygulama kaynaklarını diğer Azure kaynak gruplarına, bölgelerine veya aboneliklerine taşıma
 
-Mantık uygulamanızı veya ilgili kaynaklarınızı başka bir Azure aboneliğine, kaynak grubuna veya bölgeye geçirmek için Azure portalı, Azure PowerShell, Azure CLI ve REST API gibi bu görevleri tamamlamak için çeşitli yollarınız vardır. Kaynakları taşımadan önce şu hususları gözden geçirin: 
+Mantık uygulamanızı veya ilgili kaynaklarınızı başka bir Azure kaynak grubuna, bölgeye veya aboneye geçirmek için Azure portalı, Azure PowerShell, Azure CLI ve REST API gibi bu görevleri tamamlamak için çeşitli yollarınız vardır. Kaynakları taşımadan önce şu hususları gözden geçirin: 
 
 * Azure kaynak grupları veya abonelikler arasında yalnızca [belirli mantık uygulaması kaynak türlerini](../azure-resource-manager/management/move-support-resources.md#microsoftlogic) taşıyabilirsiniz.
 
 * Azure aboneliğinizde ve her Azure bölgesinde sahip olabileceğiniz mantık uygulaması kaynaklarının sayısının [sınırlarını](../logic-apps/logic-apps-limits-and-config.md) kontrol edin. Bu sınırlar, bölge abonelikler veya kaynak grupları arasında aynı kaldığında belirli kaynak türlerini taşıyıp taşıyamayacağınızı etkiler. Örneğin, her Azure aboneliğinde her Azure bölgesi için yalnızca bir Serbest katman tümleştirme hesabınız olabilir.
 
+* Kaynakları taşıdığınızda, Azure yeni kaynak tbm'leri oluşturur. Bu nedenle, bunun yerine yeni t.c.'leri kullandığınızdan ve taşınan kaynaklarla ilişkili komut dosyalarını veya araçları güncelleştirdiğinizden emin olun.
+
 * Mantık uygulamalarını abonelikler, kaynak grupları veya bölgeler arasında geçiş yaptıktan sonra, Açık Kimlik Doğrulaması (OAuth) gerektiren bağlantıları yeniden oluşturmanız veya yeniden yetkilendirmeniz gerekir.
 
-* Kaynakları her taşıdığınızda, Azure yeni kaynak tbm'leri oluşturur. Bu nedenle, bunun yerine yeni t.c.'leri kullandığınızdan ve taşınan kaynaklarla ilişkili komut dosyalarını veya araçları güncelleştirdiğinizden emin olun.
+* Bir [tümleştirme hizmeti ortamını (Ise)](connect-virtual-network-vnet-isolated-environment-overview.md) yalnızca aynı Azure bölgesinde veya Azure aboneliğinde bulunan başka bir kaynak grubuna taşıyabilirsiniz. Bir İmKB'yi farklı bir Azure bölgesinde veya Azure aboneliğinde bulunan bir kaynak grubuna taşıyamazsınız. Ayrıca, böyle bir hareketten sonra, mantık uygulaması iş akışlarınızda, tümleştirme hesaplarınızda, bağlantılarınızda ve benzeri alanlarda İmKB'ye yapılan tüm başvuruları güncelleştirmeniz gerekir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -53,7 +55,7 @@ Mantık uygulaması veya tümleştirme hesabı gibi bir kaynağı başka bir Azu
 
 ## <a name="move-resources-between-resource-groups"></a>Kaynakları kaynak grupları arasında taşıma
 
-Mantık uygulaması veya tümleştirme hesabı gibi bir kaynağı başka bir Azure kaynak grubuna taşımak için Azure portalını, Azure PowerShell'i, Azure CLI'yi veya REST API'yi kullanabilirsiniz. Bu adımlar, kaynağın bölgesi aynı kaldığında kullanabileceğiniz Azure portalını kapsar. Diğer adımlar ve genel hazırlık için [bkz.](../azure-resource-manager/management/move-resource-group-and-subscription.md)
+Mantık uygulaması, tümleştirme hesabı veya [tümleştirme hizmeti ortamı (İmKB)](connect-virtual-network-vnet-isolated-environment-overview.md)gibi bir kaynağı başka bir Azure kaynak grubuna taşımak için Azure portalını, Azure PowerShell'i, Azure CLI'yi veya REST API'yi kullanabilirsiniz. Bu adımlar, kaynağın bölgesi aynı kaldığında kullanabileceğiniz Azure portalını kapsar. Diğer adımlar ve genel hazırlık için [bkz.](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 Kaynakları gruplar arasında gerçekten taşımadan önce, kaynağınızı başka bir gruba başarıyla taşıyıp taşıyamayacağınızı test edebilirsiniz. Daha fazla bilgi için [bkz.](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)
 

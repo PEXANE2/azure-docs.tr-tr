@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb0b5e37843413667e51112f52e6a69534e3425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063637"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875801"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Etkin Dizini hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -27,16 +27,17 @@ Daha fazla bilgi için bkz. [Azure Active Directory nedir?](active-directory-wha
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Azure ve Azure Active Directory erişimi
-**S: Azure portalında Azure AD'ye erişmeye çalıştığımda neden "Abonelik bulunamadı" yanıtını alıyorum?**
+**S: Azure portalında Azure AD'ye erişmeye çalıştığımda neden "Abonelik bulunamadı" alıyorum?**
 
-**Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli bir Office 365 veya Azure AD [https://aka.ms/accessAAD](https://aka.ms/accessAAD) aboneliğiniz varsa, tek seferlik etkinleştirme adımıiçin gidin. Aksi takdirde, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/pricing/free-trial/) veya ücretli aboneliği etkinleştirmeniz gerekir.
+**Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli bir Office 365 veya Azure AD aboneliğiniz yoksa, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/
+) veya ücretli abonelik etkinleştirmeniz gerekir.
 
 Daha fazla bilgi için bkz.
 
 * [Azure aboneliklerinin Azure Active Directory ile ilişkisi](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**S: Azure AD, Office 365 ve Azure arasında ne gibi bir ilişki söz konusudur?**
+**S: Azure AD, Office 365 ve Azure arasındaki ilişki nedir?**
 
 **Y:** Azure AD, tüm web hizmetlerine yönelik ortak kimlik ve erişim işlevleri sunar. Office 365, Microsoft Azure, Intune veya diğer uygulamalardan hangisini kullanırsanız kullanın bu hizmetlerin tümü için oturum açma ve erişim yönetimini etkinleştirmek üzere zaten Azure AD'yi kullanırsınız.
 
@@ -138,9 +139,9 @@ Azure AD hesapları için yöneticiler aşağıdakilerden birini kullanarak paro
 
 Hesapları kilitlemek için daha karmaşık bir strateji kullanırız.  Bu strateji, isteğin IP adresini ve girilen parolaları temel alır. Kilitleme süresi ayrıca girişimin bir saldırı olma olasılığına göre artar.  
 
-**S:  Bazı (yaygın) parolalar ‘bu parola birçok kez kullanılmış’ iletisiyle reddediliyor; bu durum parolaların geçerli active directory’de kullanıldığı anlamına mı gelir?**
+**S: Belirli (yaygın) parolalar 'bu parola birçok kez kullanıldı' iletileriyle reddedilir, bu geçerli etkin dizinde kullanılan parolalara atıfta bulunur mu?**
 
-Bu durum, parolaların “Parola” ve “123456” değerlerinin çeşitlemeleri gibi genel olarak yaygın olduğunu ifade eder.
+Bu, "Parola" ve "123456" türevleri gibi genel olarak yaygın olan parolaları ifade eder.
 
 **S: Güvenilmez kaynaklardan (botnet, tor uç noktası) gelen oturum açma istekleri bir B2C kiracısında engellenir mi veya bir Temel ya da Premium sürüm kiracı gerekir mi?**
 
@@ -157,7 +158,7 @@ Bu durum, parolaların “Parola” ve “123456” değerlerinin çeşitlemeler
 ---
 **S: İhtiyacım olan uygulama Azure AD marketinde yoksa ne olur?**
 
-**Y:** Azure AD Premium ile istediğiniz uygulamayı ekleyip yapılandırabilirsiniz. Uygulamanızın özelliklerine ve tercihlerinize bağlı olarak, SSO'yu ve otomatik hazırlamayı yapılandırabilirsiniz.  
+**Y:** Azure AD Premium ile istediğiniz uygulamayı ekleyip yapılandırabilirsiniz. Uygulamanızın özelliklerine ve tercihlerinize bağlı olarak, SSO'yu ve otomatik sağlamayı yapılandırabilirsiniz.  
 
 Daha fazla bilgi için bkz.
 
@@ -188,7 +189,7 @@ Daha fazla bilgi için bkz.
 * [Azure AD'deki uygulamalar için tek oturum açma](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**S: Şirket içi olarak çalıştırdığım uygulamaları ekleyebilir miyim?**
+**S: Şirket içinde yürüttüğüm uygulamaları ekleyebilir miyim?**
 
 **Y:** Azure AD Uygulama Ara Sunucusu, size seçtiğiniz şirket içi web uygulamaları için kolay ve güvenli erişim sağlar. Bu uygulamalara, Azure AD'de hizmet olarak yazılım (SaaS) uygulamalarınıza eriştiğiniz gibi erişebilirsiniz. VPN kullanmanız veya ağ altyapınızı değiştirmeniz gerekmez.  
 
@@ -199,7 +200,7 @@ Daha fazla bilgi için bkz. [Şirket içi uygulamalara güvenli uzaktan erişim 
 
 **A:** Azure AD Koşullu Erişim ile her uygulama için benzersiz bir erişim ilkesi atayabilirsiniz. İlkenizde, çok faktörlü kimlik doğrulamasını her zaman veya kullanıcılar yerel ağa bağlı olmadığında gerekli kılabilirsiniz.  
 
-Daha fazla bilgi için bkz. [Office 365'e ve Azure Active Directory'ye bağlı diğer uygulamalara erişimi güvence altına alma](../active-directory-conditional-access-azure-portal.md).
+Daha fazla bilgi için bkz. [Office 365'e ve Azure Active Directory'ye bağlı diğer uygulamalara erişimi güvence altına alma](../conditional-access/overview.md).
 
 ---
 **S: SaaS uygulamaları için otomatik kullanıcı hazırlama nedir?**
@@ -211,4 +212,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory ile SaaS uygulamalarına kul
 ---
 **S:  Azure AD ile güvenli bir LDAP bağlantısı oluşturabilir miyim?**
 
-**Y:** Hayır. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya Secure LDAP'yi doğrudan desteklemez. Ancak, LDAP bağlantısı elde etmek için Azure Ağını üzerinden düzgün yapılandırılmış ağ güvenlik gruplarıyla Azure AD Etki Alanı Hizmetleri (Azure AD DS) örneğini Azure AD kiracınızda etkinleştirmek mümkündür. Daha fazla bilgi için bkz. https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.
+**Y:** Hayır. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya Secure LDAP'yi doğrudan desteklemez. Ancak, LDAP bağlantısı elde etmek için Azure Ağını üzerinden düzgün yapılandırılmış ağ güvenlik gruplarıyla Azure AD Etki Alanı Hizmetleri (Azure AD DS) örneğini Azure AD kiracınızda etkinleştirmek mümkündür. Daha fazla bilgi için bkz: [Azure Active Directory Etki Alanı Hizmetleri yönetilen etki alanı için güvenli LDAP Yapılandırma](../../active-directory-domain-services/tutorial-configure-ldaps.md)

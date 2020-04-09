@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: cshoe
-ms.openlocfilehash: dd74fd5c38e5a8800d2092afc1db1b412b126861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77649917"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878213"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Action kullanarak sürekli teslimat
 
@@ -24,8 +24,8 @@ Azure İşlevleri iş akışı için dosyanın üç bölümü vardır:
 
 | Section | Görevler |
 | ------- | ----- |
-| **Kimlik doğrulaması** | <ol><li>Bir hizmet ilkesi tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>Bir GitHub sırrı oluşturun.</li></ol>|
-| **Oluşturma** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
+| **Kimlik Doğrulaması** | <ol><li>Bir hizmet ilkesi tanımlayın.</li><li>Yayımlama profilini indirin.</li><li>Bir GitHub sırrı oluşturun.</li></ol>|
+| **Yapı** | <ol><li>Ortamı ayarlayın.</li><li>İşlev uygulamasını oluşturun.</li></ol> |
 | **Dağıt** | <ol><li>İşlev uygulamasını dağıtın.</li></ol>|
 
 > [!NOTE]
@@ -69,13 +69,13 @@ GitHub artık Azure'daki işlev uygulamanızın kimliğini doğrulayabilir.
 
 Ortamı ayarlama, dile özgü bir yayımlama kurulum eylemi kullanılarak yapılır.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, iş akışının ortamı ayarlamak `actions/setup-node` için eylemi kullanan bölümünü gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Node 10.x
@@ -90,7 +90,7 @@ Aşağıdaki örnek, iş akışının ortamı ayarlamak `actions/setup-python` i
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Python 3.6
@@ -99,13 +99,13 @@ Aşağıdaki örnek, iş akışının ortamı ayarlamak `actions/setup-python` i
         python-version: 3.6
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnek, iş akışının ortamı ayarlamak `actions/setup-dotnet` için eylemi kullanan bölümünü gösterir:
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Dotnet 2.2.300
@@ -120,7 +120,7 @@ Aşağıdaki örnek, iş akışının ortamı ayarlamak `actions/setup-java` iç
 
 ```yaml
     - name: 'Login via Azure CLI'
-      uses: Azure/actions/login@master
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Setup Java 1.8.x
@@ -138,7 +138,7 @@ Bu, dile ve Azure İşlevleri tarafından desteklenen dillere bağlıdır, bu b�
 
 Aşağıdaki örnek, iş akışının işlev uygulamasını oluşturan ve dile özgü olan kısmını gösterir:
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -167,7 +167,7 @@ Aşağıdaki örnek, iş akışının işlev uygulamasını oluşturan ve dile �
         popd
 ```
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

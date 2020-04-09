@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4f8fae6580272ed53b8d440ba3e74c6a1ed1e61a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061502"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985431"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2 ile bilinen sorunlar
 
@@ -25,11 +25,11 @@ Giderek artan sayıda Blob depolama özelliği artık hiyerarşik ad alanına sa
 
 ## <a name="supported-azure-service-integrations"></a>Desteklenen Azure hizmet tümleştirmeleri
 
-Veri Gölü Depolama gen2, verileri yutmak, analitik gerçekleştirmek ve görsel gösterimler oluşturmak için kullanabileceğiniz birkaç Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için, [Azure Veri Gölü Depolama Gen2'yi destekleyen Azure hizmetlerine](data-lake-storage-supported-azure-services.md)bakın.
+Azure Veri Gölü Depolama Gen2, verileri yutmak, analitik gerçekleştirmek ve görsel gösterimler oluşturmak için kullanabileceğiniz birkaç Azure hizmetlerini destekler. Desteklenen Azure hizmetlerinin listesi için, [Azure Veri Gölü Depolama Gen2'yi destekleyen Azure hizmetlerine](data-lake-storage-supported-azure-services.md)bakın.
 
 [Azure Veri Gölü Depolama Gen2'yi destekleyen Azure hizmetlerine](data-lake-storage-supported-azure-services.md)bakın.
 
-## <a name="supported-open-source-platforms"></a>Desteklenen açık kaynak platformları
+## <a name="supported-open-source-platforms"></a>Desteklenen açık kaynaklı platformlar
 
 Çeşitli açık kaynak platformları Data Lake Storage Gen2'yi destekler. Tam liste için bkz: [Azure Veri Gölü Depolama Gen2'yi destekleyen Açık kaynak platformları.](data-lake-storage-supported-open-source-platforms.md)
 
@@ -92,7 +92,7 @@ AzCopy sadece en son sürümünü kullanın ([AzCopy v10](https://docs.microsoft
 
 <a id="storage-explorer" />
 
-## <a name="azure-storage-explorer"></a>Azure Storage Gezgini
+## <a name="azure-storage-explorer"></a>Azure Depolama Gezgini
 
 Yalnızca sürümleri `1.6.0` veya daha yüksek sürümleri kullanın.
 
@@ -112,11 +112,8 @@ ALAK'lar henüz desteklenmedi.
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verilmişse, ALAK'ların o kapsayıcı veya o kapsayıcıdaki dosyalar üzerinde hiçbir etkisi yoktur.
 
-## <a name="windows-azure-storage-blob-wasb-driver"></a>Windows Azure Depolama Blob (WASB) sürücüsü
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure Depolama Blob (WASB) sürücüsü (ADLS Gen2 ile desteklenmez)
 
-Şu anda, hiyerarşik ad alanına sahip hesaplarla birlikte WASB sürücüsünün kullanımıyla ilişkili çeşitli sorunlar vardır. İş yüklerinizde [Azure Blob Dosya Sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmanızı öneririz. 
+Şu anda, WASB sürücüsü - yalnızca Blob API ile çalışmak üzere tasarlanmıştır - birkaç yaygın senaryoda sorunlarla karşılaşır, yani, bir ad alanı etkin depolama hesabı için bir istemci olduğunda. Multi-Protocol Access 'in (MPA) bu sorunları da azaltmayacağını unutmayın. 
 
-
-
-
-
+Şimdilik (ve büyük olasılıkla öngörülebilir bir gelecek) WASB sürücüsünü istemci olarak kullanan müşterileri ad alanı etkin bir depolama hesabına desteklemeyiz. Bunun yerine Hadoop ortamınızda [Azure Blob Dosya Sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmayı tercih etmenizi öneririz. Hadoop şube-3'ten daha önceki bir sürümle şirket içi Hadoop ortamından geçmeye çalışıyorsanız, siz ve kuruluşunuz için doğru yolda sizinle iletişim ebilebilmemiz için lütfen bir Azure Destek bileti açın.

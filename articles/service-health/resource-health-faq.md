@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu SSSS
 description: Azure Kaynak Durumu'na Genel Bakış
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459a29dca01dc186d75b4545f89068569975607
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75912779"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985040"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Kaynak Durumu SSSS
 Azure Kaynak Durumu ile ilgili sık sorulan soruların yanıtlarını öğrenin.
@@ -37,7 +37,7 @@ Kaynak Durumu belirli bir kaynak hakkında bilgi almayı durdurduğunda sistem d
 ## <a name="how-can-i-get-help-for-a-resource-that-is-unavailable"></a>Kullanılamayan bir kaynak için nasıl yardım alabilirim?
 Kaynak Durumu bıçağından bir destek isteği gönderebilirsiniz. Kaynak kullanılamadığında, platform olayları nedeniyle bir isteği açmak için Microsoft ile bir destek anlaşmasına ihtiyacınız yoktur.
 
-## <a name="does-resource-health-differentiate-between-unavailability-cased-by-platform-problems-versus-something-i-did"></a>Kaynak Durumu, platform sorunlarıyla benim yaptığım bir şeyle kullanılamazlık arasında ayrım yapar mı?
+## <a name="does-resource-health-differentiate-between-unavailability-caused-by-platform-problems-versus-something-i-did"></a>Kaynak Durumu, platform sorunlarının neden olduğu kullanılamaması ile benim yaptığım bir şey arasında ayrım yapar mı?
 Evet, bir kaynak kullanılamıyorsa, Kaynak Durumu bu kategorilerden birinde temel nedeni tanımlar: 
 -   Kullanıcı başlatılan eylem
 -   Planlanan olay 

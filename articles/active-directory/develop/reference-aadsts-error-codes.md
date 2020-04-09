@@ -2,26 +2,22 @@
 title: Azure AD kimlik doğrulama & yetkilendirme hata kodları
 description: Azure AD güvenlik belirteç hizmetinden (STS) döndürülen AADSTS hata kodları hakkında bilgi edinin.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
-ms.date: 03/31/2020
+ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473180"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875937"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulama ve yetkilendirme hata kodları
 
@@ -133,6 +129,7 @@ Döndürülen hata kodunun sayısal kısmında arama yapın.  Örneğin, "AADSTS
 | AADSTS50180 | WindowsIntegratedAuthMissing - Tümleşik Windows kimlik doğrulaması gereklidir. Sorunsuz SSO için kiracıyı etkinleştirin. |
 | AADSTS50187 | DeviceInformationNotProvided - Hizmet aygıt kimlik doğrulaması gerçekleştirmek için başarısız oldu. |
 | AADSTS50196 | LoopDetected - Bir istemci döngüsü algılandı. Belirteç önbelleğe almanın uygulandığından ve hata koşullarının doğru şekilde işlendiğinden emin olmak için uygulamanın mantığını denetleyin.  Uygulama, hatalı bir durumda olduğunu veya kötü amaçlı belirteçler talep ettiğini belirten, çok kısa bir süre içinde aynı istek çok fazla yaptı. |
+| AADSTS50197 | Çakışan Kimlikler - Kullanıcı bulunamadı. Tekrar oturum açmayı dene. |
 | AADSTS50199 | CmsiInterrupt - Güvenlik nedenleriyle, bu istek için kullanıcı onayı gereklidir.  Bu bir "interaction_required" hatası olduğundan, istemci etkileşimli auth yapmalıdır.  Bunun nedeni, bir sistem web görünümünün yerel bir uygulama için belirteç istemek için kullanılmasından kaynaklansa, kullanıcıdan bunun gerçekten oturum açmaları gereken uygulama olup olmadığını sorması istenir.|
 | AADSTS51000 | GerekliÖzellikNotEnabled - Özellik devre dışı bırakılır. |
 | AADSTS51001 | DomainHintMustbePresent - Etki alanı ipucu şirket içi güvenlik tanımlayıcısı veya şirket içi UPN ile birlikte bulunmalıdır. |

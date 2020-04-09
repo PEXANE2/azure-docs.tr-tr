@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: sngun
-ms.openlocfilehash: 70545020899b69508a4cedb0fd7cf5495c847104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 079c246f87bb8294f3c7ad6dea3391f5c67ba0ad
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462454"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985261"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB ve Azure Fonksiyonlarını kullanarak sunucusuz veritabanı hesaplama
 
@@ -110,7 +110,7 @@ Tüm bu kullanım durumlarında, işlev uygulamanın kendisini ayırdığı içi
 
 Azure Cosmos DB ve Azure Fonksiyonları arasındaki yerel tümleştirme, Azure portalında ve Visual Studio 2019'da kullanılabilir.
 
-* Azure İşlevler portalında bir tetikleyici oluşturabilirsiniz. Hızlı başlatma yönergeleri için [bkz.](https://aka.ms/cosmosdbtriggerportalfunc)
+* Azure İşlevler portalında bir tetikleyici oluşturabilirsiniz. Hızlı başlatma yönergeleri için [bkz.](../azure-functions/functions-create-cosmos-db-triggered-function.md)
 * Azure Cosmos DB portalında, aynı kaynak grubundaki mevcut bir Azure İşlevi uygulamasına Cosmos DB için Azure İşleme tetikleyicisi ekleyebilirsiniz.
 * Visual Studio 2019'da, [Azure İşlevaraçları araçlarını](../azure-functions/functions-develop-vs.md)kullanarak tetikleyiciyi oluşturabilirsiniz:
 
@@ -146,6 +146,6 @@ Akış, Mantık Uygulamaları, Azure İşlerİ veya Web İşlerinin uygulamanız
 
 Şimdi Azure Cosmos DB ve Azure Fonksiyonlarını gerçekten bağlayalım: 
 
-* [Azure portalında Cosmos DB için Azure İşlevleri tetikleyicisi oluşturma](https://aka.ms/cosmosdbtriggerportalfunc)
-* [Azure Cosmos DB giriş bağlama işlemiyle Azure İşlevleri HTTP Tetikleyicisi oluşturma](https://aka.ms/cosmosdbinputbind)
+* [Azure portalında Cosmos DB için Azure İşlevleri tetikleyicisi oluşturma](../azure-functions/functions-create-cosmos-db-triggered-function.md)
+* [Azure Cosmos DB giriş bağlama işlemiyle Azure İşlevleri HTTP Tetikleyicisi oluşturma](../azure-functions/functions-bindings-cosmosdb.md?tabs=csharp)
 * [Azure Cosmos DB bağlamaları ve tetikleyicileri](../azure-functions/functions-bindings-cosmosdb-v2.md)

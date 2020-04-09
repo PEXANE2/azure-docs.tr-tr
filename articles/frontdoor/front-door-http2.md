@@ -11,18 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 415a89cbccd6b43d64ba1a553d44ac003df5806a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3ae8065553b34a72528cb0f2681e327dc90097
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471634"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985193"
 ---
 # <a name="http2-support-in-azure-front-door"></a>Azure Ön Kapı'da HTTP/2 desteği
 
-Şu anda, HTTP/2 desteği tüm Ön Kapı yapılandırmaları için etkindir. Müşterilerden başka bir işlem gerekmez.
+Şu anda, HTTP/2 desteği tüm Azure Ön Kapı yapılandırmaları için etkindir. Müşterilerden başka bir işlem gerekmez.
 
 HTTP/2 HTTP/1.1 için büyük bir revizyondur. Tanıdık HTTP yöntemlerini, durum kodlarını ve anlambilimini korurken daha hızlı web performansı, daha az yanıt süresi ve gelişmiş kullanıcı deneyimi sağlar. HTTP/2 HTTP ve HTTPS ile çalışmak üzere tasarlanmış olsa da, birçok istemci web tarayıcısı yalnızca Taşıma Katmanı Güvenliği (TLS) üzerinden HTTP/2'yi destekler.
+
+> [!NOTE]
+> HTTP/2 protokol desteği yalnızca müşterilerden Front Door'a gelen istekler için kullanılabilir. Ön Kapıdan arkaya iletişim arka uç havuzunda biter HTTP/1.1 üzerinden olur. 
 
 ### <a name="http2-benefits"></a>HTTP/2 avantajları
 

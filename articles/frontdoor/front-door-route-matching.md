@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 605974e76c3ca878784129f7c9827a78d0642da6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 420aa52293da14a0dfe8fbdfe681440ee4309e6b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471600"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878604"
 ---
 # <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Ön Kapı istekleri yönlendirme kuralıyla nasıl eşleşir?
 
-Bir bağlantı kurduktan ve Bir SSL el sıkışması yaptıktan sonra, bir istek Ön Kapı ortamına indiğinde, Ön Kapı'nın yaptığı ilk şeylerden biri, isteği eşleştirmek için hangi özel yönlendirme kuralını belirleyen ve daha sonra tanımlanan eylem. Aşağıdaki belge, Ön Kapı'nın bir HTTP isteğini işlerken hangi Rota yapılandırmasını kullanacağını nasıl belirlediğini açıklar.
+Bir bağlantı kurduktan ve TLS el sıkışması yaptıktan sonra, bir istek Ön Kapı ortamına indiğinde, Ön Kapı'nın yaptığı ilk şeylerden biri, isteği eşleşecek şekilde hangi yönlendirme kuralını belirleyen ve daha sonra tanımlanan eylemi gerçekleştiren tüm yapılandırmalardan biridir. Aşağıdaki belge, Ön Kapı'nın bir HTTP isteğini işlerken hangi Rota yapılandırmasını kullanacağını nasıl belirlediğini açıklar.
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Ön Kapı rota yapılandırmasının yapısı
 Ön Kapı yönlendirme kuralı yapılandırması iki ana bölümden oluşur: "sol taraf" ve "sağ taraf". Gelen isteği rotanın sol tarafına eşleştirirken, sağ taraf isteği nasıl işlediğimizi tanımlar.

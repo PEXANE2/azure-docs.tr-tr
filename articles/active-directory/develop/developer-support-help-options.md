@@ -1,10 +1,9 @@
 ---
-title: Azure AD uygulama geliştiricileri için destek ve yardım seçenekleri | Microsoft Dokümanlar
+title: Azure AD uygulama geliştiricileri için destek ve yardım seçenekleri
 description: Microsoft kimlikleriyle tümleşen uygulama oluştururken geliştirmeyle ilgili sorular ve sorunlar için nasıl yardım ve destek alacağınızı öğrenin (Azure Active Directory ve Microsoft hesabı)
 services: active-directory
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
@@ -13,16 +12,16 @@ ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 89bf49fb44d8575b251a0b33698bc4ce8425cc2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea1afd2ecac8974c0e865e235288da545a9f1244
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160976"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885540"
 ---
 # <a name="support-and-help-options-for-developers"></a>Geliştiriciler için destek ve yardım seçenekleri
 
-Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API ile tümleştirmeye yeni başlıyorsanız veya uygulamanızda yeni bir özellik uygularken, topluluktan yardım almanız veya geliştirici olarak sahip olduğunuz destek seçenekleri. Bu makale, şu seçenekler de dahil olmak üzere bu seçenekleri anlamanıza yardımcı olur:
+Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API ile tümleştirmeye yeni başlıyorsanız veya uygulamanızda yeni bir özellik uygularken, topluluktan yardım almanız veya geliştirici olarak sahip olduğunuz destek seçeneklerini anlamanız gereken zamanlar vardır. Bu makale, şu seçenekler de dahil olmak üzere bu seçenekleri anlamanıza yardımcı olur:
 
 > [!div class="checklist"]
 > * Sorunuzun topluluk tarafından yanıtlanıp yanıtlanmadıveya yoksa uygulamaya çalıştığınız özellik için varolan bir belge nin zaten var olup olmadığını arama
@@ -31,7 +30,7 @@ Azure Active Directory (Azure AD), Microsoft kimlikleri veya Microsoft Graph API
 > * Kimlik doğrulama kitaplığılarımızdan biriyle ilgili bir sorun bulursanız, *Bir GitHub* sorunu
 > * Son olarak, biriyle konuşmanız gerekiyorsa, bir destek isteği açmak isteyebilirsiniz
 
-## <a name="search"></a>Search
+## <a name="search"></a>Arama
 
 Geliştirmeyle ilgili bir sorunuz varsa, yanıtı belgelerde, [GitHub örneklerinde](https://github.com/azure-samples)veya [Stack Overflow](https://www.stackoverflow.com) sorularının yanıtlarında bulabilirsiniz.
 

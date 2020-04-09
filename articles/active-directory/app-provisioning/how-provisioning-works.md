@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 555fb39836054be05102f4c28167d72016805639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481509"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884894"
 ---
 # <a name="how-provisioning-works"></a>Sağlama nasıl çalışır?
 
@@ -67,7 +67,7 @@ Bir SaaS uygulamasına sağlama yı yapılandırdığınızda, belirtebileceğin
 
 Azure AD'den Bir SaaS uygulamasına giden sağlama için, [kullanıcı veya grup atamalarına](../manage-apps/assign-user-or-group-access-portal.md) güvenmek, hangi kullanıcıların sağlama kapsamında olduğunu belirlemenin en yaygın yoludur. Kullanıcı atamaları tek oturum açma sağlamak için de kullanıldığından, aynı yöntem hem erişimi hem de sağlamayı yönetmek için kullanılabilir. Atama tabanlı kapsam, İş Günü ve Başarı Faktörleri gibi gelen sağlama senaryoları için geçerli değildir.
 
-* **Grup.** Azure AD Premium lisans planıyla, grupları bir SaaS uygulamasına erişim atamak için kullanabilirsiniz. Daha sonra, sağlama kapsamı **yalnızca atanan kullanıcıları ve grupları Eşitle**olarak ayarlandığında, Azure AD sağlama hizmeti, kullanıcılara uygulamaya atanan bir grubun üyesi olup olmadıklarına bağlı olarak sağlama veya sağlamadan kaldırma hizmeti sağlar. Uygulama grup nesnelerini desteklemedikçe grup nesnesinin kendisi sağlanmış değildir.
+* **Grup.** Azure AD Premium lisans planıyla, grupları bir SaaS uygulamasına erişim atamak için kullanabilirsiniz. Daha sonra, sağlama kapsamı **yalnızca atanan kullanıcıları ve grupları Eşitle**olarak ayarlandığında, Azure AD sağlama hizmeti, kullanıcılara uygulamaya atanan bir grubun üyesi olup olmadıklarına bağlı olarak sağlama veya sağlamadan kaldırma hizmeti sağlar. Uygulama grup nesnelerini desteklemedikçe grup nesnesinin kendisi sağlanmış değildir. Uygulamanıza atanan grupların "SecurityEnabled" özelliğine sahip olduğundan emin olun.
 
 * **Dinamik gruplar.** Azure AD kullanıcı sağlama hizmeti, kullanıcıları [dinamik gruplar](../users-groups-roles/groups-create-rule.md)halinde okuyabilir ve sağlayabilir. Bu uyarılar ve öneriler akılda tutun:
 

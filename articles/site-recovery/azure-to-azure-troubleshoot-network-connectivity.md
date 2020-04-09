@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 49d2d3d3e8829198a57aaf2feb40e89f105667bd
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: d2cc4133e52e7cab812413d23948da6ac2660e77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804869"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884877"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Azure'dan Azure'a VM ağ bağlantısı sorunları yla ilgili sorun giderme
 
@@ -18,8 +18,8 @@ Bu makalede, Azure sanal makinelerini (VM) bir bölgeden başka bir bölgeye ço
 
 Site Kurtarma çoğaltmasının çalışması için VM'den belirli URL'lere veya IP aralıklarına giden bağlantı gereklidir. VM'niz bir güvenlik duvarının arkasındaysa veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kurallarını kullanıyorsa, bu sorunlardan biriyle karşılaşabilirsiniz.
 
-| **URL** | **Şey** |
-| --- | --- |
+| URL'si | Ayrıntılar |
+|---|---|
 | `*.blob.core.windows.net` | Verilerin VM'den kaynak bölgedeki önbellek depolama hesabına yazılabilmesi için gereklidir. VM'lerinizin tüm önbellek depolama hesaplarını biliyorsanız, belirli depolama hesabı URL'leri için izin listesi kullanabilirsiniz. Örneğin, `cache1.blob.core.windows.net` ve `cache2.blob.core.windows.net` yerine `*.blob.core.windows.net`. |
 | `login.microsoftonline.com` | Site Kurtarma hizmet URL'lerine yetkilendirme ve kimlik doğrulama için gereklidir. |
 | `*.hypervrecoverymanager.windowsazure.com` | VM'den Site Kurtarma hizmeti iletişiminin gerçekleşebilmeleri için gereklidir. Güvenlik duvarı proxy'niz IP'leri destekliyorsa, ilgili _Site Kurtarma IP'sini_ kullanabilirsiniz. |
@@ -82,7 +82,7 @@ Bu örnek, bir VM'nin çoğaltması için NSG kurallarının nasıl yapılandır
 
 1. Hedef konuma karşılık gelen Site Kurtarma IP'leri için HTTPS bağlantı noktası 443 giden kuralları oluşturun:
 
-   | **Konum** | **Site Kurtarma IP adresi** |  **Site Kurtarma izleme IP adresi** |
+   | Konum | Site Kurtarma IP adresi | Site Kurtarma izleme IP adresi |
    | --- | --- | --- |
    | Orta ABD | 40.69.144.231 | 52.165.34.144 |
 
@@ -102,7 +102,7 @@ Bu örnekte, çoğaltmanın hedef bölgeden kaynak bölgeye başarısız sonras�
 
 1. Site Kurtarma IP'leri için kaynak konuma karşılık gelen HTTPS bağlantı noktası 443 giden kuralları oluşturun:
 
-   |**Konum** | **Site Kurtarma IP adresi** |  **Site Kurtarma izleme IP adresi** |
+   | Konum | Site Kurtarma IP adresi | Site Kurtarma izleme IP adresi |
    | --- | --- | --- |
    | Doğu ABD | 13.82.88.226 | 104.45.147.24 |
 
@@ -138,7 +138,8 @@ Azure Site Recovery bölgeye bağlı olarak [Site Recovery IP aralıklarına](az
    Port=567
    ```
 
-1. Azure Site Kurtarma Mobilitesi hizmet aracısı yalnızca **kimliği doğrulanmamış yakınlıkları**destekler.
+> [!NOTE]
+> Azure Site Kurtarma Mobilitesi hizmet aracısı yalnızca **kimliği doğrulanmamış yakınlıkları**destekler.
 
 ### <a name="fix-the-problem"></a>Sorunu çözme
 
@@ -146,4 +147,4 @@ Gerekli [URL'lere](azure-to-azure-about-networking.md#outbound-connectivity-for-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure sanal makinelerini çoğaltma](site-recovery-replicate-azure-to-azure.md)
+[Azure VM'leri başka bir Azure bölgesine çoğaltma](azure-to-azure-how-to-enable-replication.md)

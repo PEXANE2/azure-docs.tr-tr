@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: bcd14e618323aec1c7ce47fcebb25099fa96be81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8d79af9f45731971cb1be1f39fc193f9d0f0d9
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898504"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878978"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure Zamanlayıcısı için giden kimlik doğrulaması
 
@@ -47,8 +47,8 @@ Zamanlayıcı bu kimlik doğrulama modellerini destekler:
 
 | Öğe | Gerekli | Açıklama |
 |---------|----------|-------------|
-| **kimlik doğrulama** (üst öğe) | SSL istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Evet | Kimlik doğrulama türü. SSL istemci sertifikaları için `ClientCertificate`değer. |
+| **kimlik doğrulama** (üst öğe) | SSL/TLS istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
+| **Türü** | Evet | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
 | **Pfx** | Evet | PFX dosyasının temel 64 kodlanmış içeriği |
 | **parola** | Evet | PFX dosyasına erişmek için parola |
 ||| 
@@ -59,8 +59,8 @@ Bir istek kimlik doğrulama bilgileriyle gönderildiğinde, yanıt bu kimlik do�
 
 | Öğe | Açıklama | 
 |---------|-------------| 
-| **kimlik doğrulama** (üst öğe) | SSL istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
-| **Türü** | Kimlik doğrulama türü. SSL istemci sertifikaları için `ClientCertificate`değer. |
+| **kimlik doğrulama** (üst öğe) | SSL/TLS istemci sertifikası kullanmak için kimlik doğrulama nesnesi |
+| **Türü** | Kimlik doğrulama türü. SSL/TLS istemci sertifikaları için değer `ClientCertificate`. |
 | **certificateThumbprint** |Sertifikanın parmak izi |
 | **sertifikaSubjectName** |Sertifika konusu ayırt edici ad |
 | **sertifikaSona ermesi** | Sertifikanın son kullanma tarihi |

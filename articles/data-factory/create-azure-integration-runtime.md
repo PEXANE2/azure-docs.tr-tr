@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf3bb7e6733ef55a85d0b4ae26a4ce05059a8fb9
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260767"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887187"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Tümleştirme Çalışma Süresi oluşturma ve yapılandırma
 Tümleştirme Çalışma Süresi (IR), Azure Veri Fabrikası tarafından farklı ağ ortamlarında veri tümleştirme özellikleri sağlamak için kullanılan bilgi işlem altyapısıdır. IR hakkında daha fazla bilgi için [Tümleştirme çalışma zamanı'na](concepts-integration-runtime.md)bakın.
@@ -30,6 +30,10 @@ Bu belge, Azure Tümleştirme Çalışma Süresini nasıl oluşturabileceğinizi
 Varsayılan olarak, her veri fabrikasının arka ucunda, ortak ağdaki bulut veri depoları ve bilgi işlem hizmetleri yle ilgili işlemleri destekleyen bir Azure IR'si vardır. Azure IR'nin konumu otomatik çözümdür. **connectVia** özelliği bağlı hizmet tanımında belirtilmemişse, varsayılan Azure IR kullanılır. Ir'nin konumunu açıkça tanımlamak istediğinizde veya etkinlik yürütmelerini yönetim amacıyla farklı IR'lerde sanal olarak gruplandırmak istediğinizde açıkça bir Azure IR oluşturmanız gerekir. 
 
 ## <a name="create-azure-ir"></a>Azure IR oluşturma
+
+Bir Azure IR oluşturmak ve kurmak için aşağıdaki yordamları kullanabilirsiniz.
+
+### <a name="create-an-azure-ir-via-azure-powershell"></a>Azure PowerShell ile Azure IR oluşturma
 Entegrasyon Runtime **Set-AzDataFactoryV2IntegrationRuntime** PowerShell cmdlet kullanılarak oluşturulabilir. Azure IR oluşturmak için, komuta adını, konumunu ve türünü belirtirsiniz. Burada konum "Batı Avrupa" olarak ayarlanmış bir Azure IR oluşturmak için örnek bir komut:
 
 ```powershell
@@ -39,9 +43,30 @@ Azure IR için tür **Yönetilen**olarak ayarlanmalıdır. Bulutta elastik olara
 
 Varolan bir Azure IR'sini Set-AzDataFactoryV2IntegrationRuntime PowerShell cmdlet'i kullanarak konumunu değiştirecek şekilde yapılandırabilirsiniz. Azure IR'nin konumu hakkında daha fazla bilgi için [bkz.](concepts-integration-runtime.md)
 
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Azure Veri Fabrikası Web'si ile Azure IR oluşturma
+Azure Veri Fabrikası UI'sini kullanarak bir Azure IR oluşturmak için aşağıdaki adımları kullanın.
+
+1. Azure Veri Fabrikası **UI'nin başlangıç** sayfasında sol bölmedeki **Yazar** sekmesini seçin.
+
+   ![Ana sayfa Yazar düğmesi](media/doc-common-process/get-started-page-author-button.png)
+
+1. Sol bölmenin altındaki **Bağlantılar'ı** seçin ve **Bağlantılar** penceresinde **Tümleştirme çalışma sürelerini** seçin. **+Yeni'yi**seçin.
+
+   ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-integration-runtime.png)
+
+1. **Tümleştirme çalışma zamanı kurulum** sayfasında **Azure, Kendi Kendine Barındırılan'ı**seçin ve ardından **Devam et'i**seçin. 
+
+1. Aşağıdaki sayfada, Azure IR oluşturmak için **Azure'u** seçin ve ardından **Devam et'i**seçin.
+   ![Tümleştirme çalışma zamanı oluşturma](media/create-azure-integration-runtime/new-azure-ir.png)
+
+1. Azure IR'niz için bir ad girin ve **Oluştur'u**seçin.
+   ![Azure IR oluşturma](media/create-azure-integration-runtime/create-azure-ir.png)
+
+1. Oluşturma tamamlandığında bir açılır bildirim görürsünüz. **Tümleştirme çalışma saatleri** sayfasında, listede yeni oluşturulan IR'yi gördüğünüzden emin olun.
+
 ## <a name="use-azure-ir"></a>Azure IR'yi kullanma
 
-Azure IR oluşturulduktan sonra, Bağlantılı Hizmet tanımınızda bu radıyama başvuruda bulunabilirsiniz. Aşağıda, yukarıda oluşturulan Azure Depolama Bağlantılı Hizmetinden oluşturulan Azure Tümleştirme Çalışma Süresi'ne nasıl başvuruyapabileceğinizne bir örnek verilmiştir:  
+Azure IR oluşturulduktan sonra, Bağlantılı Hizmet tanımınızda bu radıyama başvuruda bulunabilirsiniz. Aşağıda, yukarıda oluşturulan Azure Depolama Bağlantılı Hizmetinden oluşturulan Azure Tümleştirme Çalışma Süresi'ne nasıl başvuruyapabileceğinizne bir örnek verilmiştir:
 
 ```json
 {

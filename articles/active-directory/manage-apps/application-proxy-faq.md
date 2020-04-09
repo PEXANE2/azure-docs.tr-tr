@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410712"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877312"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) Application Proxy sık sorulan sorular
 
@@ -48,10 +48,6 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 ### <a name="my-back-end-application-is-hosted-on-multiple-web-servers-and-requires-user-session-persistence-stickiness-how-can-i-achieve-session-persistence"></a>Benim arka uç uygulama birden çok web sunucularında barındırılan ve kullanıcı oturumu kalıcılığı (yapışkanlık) gerektirir. Oturum kalıcılığını nasıl sağlayabilirim? 
 
 Öneriler için, [Uygulama Proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirlik ve yük dengelemesi](application-proxy-high-availability-load-balancing.md)bölümüne bakın.
-
-### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Bağlayıcı sunucu(lar) ile arka uç Uygulama sunucusu arasına bir ileri proxy aygıtı yeralabilir miyim?
-
-Hayır, bu senaryo desteklenmiyor. Yalnızca bağlayıcı ve güncelleştirme hizmetleri, Azure'a giden trafik için bir ileri proxy kullanacak şekilde yapılandırılabilir. Bkz. [Varolan şirket içi proxy sunucularıyla çalışma](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)
 
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>TLS sonlandırma (TLS/HTTPS denetimi veya ivmesi) bağlayıcı sunuculardan Azure'a kadar olan trafikte desteklendi mi?
 

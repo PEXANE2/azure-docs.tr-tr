@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 5d6ba2bd52d8f4af4244e8ce1babeb7bc9d37fe4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235668"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878570"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166'yı Azure IoT Hub'ına bağlayın
 
@@ -82,7 +82,13 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
     ```
 
    > [!NOTE]
-   > Çalışırken `device-identity`bir hata alırsanız, daha fazla ayrıntı [için Azure CLI için Azure IOT Uzantısı'nı](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md) yükleyin.
+   > Çalışırken `device-identity`bir hata alırsanız, [Azure CLI için Azure IoT Uzantısı'nı](https://github.com/Azure/azure-iot-cli-extension/blob/dev/README.md)yükleyin.
+   > Bulut Kabuğu örneğinize Azure CLI için Microsoft Azure IoT Uzantısı'nı eklemek için aşağıdaki komutu çalıştırın. IoT Uzantı, Azure CLI'ye IoT Hub, IoT Edge ve IoT Aygıt Sağlama Hizmeti'ne (DPS) özgü komutlar ekler.
+   > 
+   > ```azurecli-interactive
+   > az extension add --name azure-iot
+   >  ```
+   >
   
 1. Yeni kaydettiğiniz cihazın _cihaz bağlantı dizesini_ almak için aşağıdaki komutları Azure Cloud Shell'de çalıştırın:
 

@@ -11,17 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: a20882de34cb306b767959e21327180ff284e658
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24591c20ed707d9541eece0698ecd6e6b5ddee35
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475952"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878196"
 ---
 # <a name="configure-ip-firewall-rules-for-azure-service-bus"></a>Azure Hizmet Veri Servisi veri hizmetleri için IP güvenlik duvarı kurallarını yapılandırma
 Varsayılan olarak, Hizmet Veri Servisi ad alanlarına, istek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
 
 Bu özellik, Azure Servis Veri Tos'unyalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Ekspres Rotası][express-route]ile Hizmet Veri Yolu kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden veya kurumsal bir NAT ağ geçidinin adreslerinden gelen trafiğe izin vermek için bir güvenlik duvarı **kuralı** oluşturabilirsiniz. 
+
+> [!IMPORTANT]
+> Güvenlik duvarları ve Sanal Ağlar yalnızca Servis Veri Veri Tos'un **premium** katmanında desteklenir. **En üst** düzeye yükseltme bir seçenek değilse, Paylaşılan Erişim İmzası (SAS) belirteci güvenli tutmanızı ve yalnızca yetkili kullanıcılarla paylaşmanızı öneririz. SAS kimlik doğrulaması hakkında daha fazla bilgi için kimlik [doğrulama ve yetkilendirme](service-bus-authentication-and-authorization.md#shared-access-signature)ye bakın.
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 IP güvenlik duvarı kuralları Hizmet Veri Servisi ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Hizmet Veri Gönderisi ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
@@ -44,12 +47,10 @@ Bu bölümde, Hizmet Veri Aracı ad alanı için IP güvenlik duvarı kuralları
 ## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
 Bu bölümde, sanal ağ ve güvenlik duvarı kuralı oluşturan örnek bir Azure Kaynak Yöneticisi şablonu vardır.
 
-> [!IMPORTANT]
-> Güvenlik duvarları ve Sanal Ağlar yalnızca Servis Veri Veri Tos'un **premium** katmanında desteklenir.
 
 Aşağıdaki Kaynak Yöneticisi şablonu, varolan bir Hizmet Veri Sitesi ad alanına sanal ağ kuralı eklemeyi sağlar.
 
-Template parameters:
+Şablon parametreleri:
 
 - **ipMask,** CIDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğudur. Örneğin, CIDR gösteriminde 70.37.104.0/24, 70.37.104.0 ile 70.37.104.255 arasında 256 IPv4 adresini temsil eder ve 24 aralık için önemli öneek bitlerinin sayısını gösterir.
 

@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Yedekleme hizmeti için destek ayarlarının ve sınırlamalarının bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: d036e527880a98d323e8de2f3a8721d7e12dbb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273273"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878961"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Yedekleme için destek matrisi
 
@@ -43,7 +43,7 @@ Aşağıdaki tabloda Kurtarma Hizmetleri kasalarının özellikleri açıklanmak
 
 Şirket içi makineleri yedeklemek istiyorsanız desteklenenler şunlardır:
 
-**Makine** | **Yedeklenenler** | **Konum** | **Özellik**
+**Makine** | **Yedeklenenler** | **Konum** | **Özellikler**
 --- | --- | --- | ---
 **Windows makinesinin MARS aracısıyla doğrudan yedeklemesi** | Dosyalar, klasörler, sistem durumu | Kurtarma Hizmetleri kasasına geri dön. | Günde üç kez yedekle<br/><br/> Uygulamaya duyarlı yedekleme yok<br/><br/> Dosyayı, klasörü, ses düzeyini geri yükleme
 **MARS aracısı ile Linux makinesinin doğrudan yedekleme** | Yedekleme desteklenmiyor
@@ -63,7 +63,7 @@ Aşağıdaki tabloda Kurtarma Hizmetleri kasalarının özellikleri açıklanmak
 
 Azure VM'leri yedeklemek istiyorsanız desteklenenler şunlardır:
 
-**Makine** | **Yedeklenenler** | **Konum** | **Özellik**
+**Makine** | **Yedeklenenler** | **Konum** | **Özellikler**
 --- | --- | --- | ---
 **VM uzantısını kullanarak Azure VM yedeklemesi** | Tüm VM | Kasaya geri dön. | Bir VM için yedekleme etkinleştirdiğinizde uzantısı yüklenir.<br/><br/> Günde bir kez yedekle.<br/><br/> Windows VM'leri için uygulamaya duyarlı yedekleme; Linux VM'leri için dosya tutarlı yedekleme. Özel komut dosyaları kullanarak Linux makineleri için uygulama tutarlılığını yapılandırabilirsiniz.<br/><br/> VM veya diski geri yükleyin.<br/><br/> Azure VM'yi şirket içi bir konuma yedekleyemezsin.
 **MARS aracısı kullanarak Azure VM yedeklemesi** | Dosyalar, klasörler, sistem durumu | Kasaya geri dön. | Günde üç kez yedekle.<br/><br/> VM'nin tamamı yerine belirli dosyaları veya klasörleri yedeklemek istiyorsanız, MARS aracısı VM uzantısı ile birlikte çalıştırılabilir.
@@ -116,7 +116,7 @@ Azure Yedekleme, aktarım ve istirahat sırasındaki veriler için şifrelemeyi 
 **Makine** | **Transit halinde** | **Istirahatte**
 --- | --- | ---
 **DPM/MABS'sız şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM'ler** | ![Evet][green] | ![Evet][green]
+**Azure VM’leri** | ![Evet][green] | ![Evet][green]
 **DPM'li şirket içi Windows makineleri veya Azure VM'leri** | ![Evet][green] | ![Evet][green]
 **MABS'li şirket içi Windows makineleri veya Azure VM'leri** | ![Evet][green] | ![Evet][green]
 
@@ -135,7 +135,7 @@ Yedekleme, aşağıdaki tabloda özetlendiği gibi yedekleme trafiğinin sıkı�
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
-**Ayar** | **Limitler**
+**Ayar** | **Sınırlar**
 --- | ---
 **Korunan örnek başına maksimum kurtarma noktaları (makine veya iş yükü)** | 9,999
 **Kurtarma noktası için maksimum son kullanma süresi** | Sınır yok
@@ -151,7 +151,7 @@ Azure Yedekleme, veri kullanılabilirliğini ve esneklik yeteneğini güçlendir
 
 | Yedekleme Yönetimi türü | Destekleniyor                                                    | Desteklenen Bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Evet. 4-TB'den daha az diske sahip şifreli VM'ler ve VM'ler için desteklenen genel sınırlı Önizleme | Orta Batı ABD   |
+| Azure VM               | Evet.   4-TB disklerden daha az olan şifreli VM'ler ve VM'ler için desteklenir | Tüm Azure ortak bölgeleri.  |
 | MARS Agent/On tesislerinde | Hayır                                                           | Yok               |
 | SQL /SAP HANA          | Hayır                                                           | Yok               |
 | Afs                    | Hayır                                                           | Yok               |

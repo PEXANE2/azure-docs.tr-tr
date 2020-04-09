@@ -1,23 +1,23 @@
 ---
-title: Azure Application Insights ile web uygulamaları için kullanıcı saklama analizi | Microsoft dokümanlar
+title: Azure Application Insights ile web uygulaması kullanıcı tutma analizi
 description: Uygulamanıza kaç kullanıcı geri döner?
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37ae97d5fbc62e507f726c452999a7f6e7c989c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d9be6bc6d7f90153e2fb58aa404e281568dbdd
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670976"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892419"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Application Insights ile web uygulamaları için kullanıcı saklama analizi
 
 Azure Uygulama [Öngörüleri'ndeki](../../azure-monitor/app/app-insights-overview.md) bekletme özelliği, kaç kullanıcının uygulamanıza geri döndüğünü ve belirli görevleri ne sıklıkta gerçekleştirdiklerini veya hedeflere ulaşmalarını analiz etmenize yardımcı olur. Örneğin, bir oyun sitesi çalıştırAcaksanız, bir oyunu kaybettikten sonra siteye dönen kullanıcı sayısını kazandıktan sonra geri dönen kullanıcı sayısıyla karşılaştırabilirsiniz. Bu bilgi, hem kullanıcı deneyiminizi hem de iş stratejinizi geliştirmenize yardımcı olabilir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Uygulama Öngörüleri portalındaki bekletme aracındaki verileri henüz göremiyorsanız, [kullanım araçlarıyla nasıl başlayın](usage-overview.md)gerektiğini öğrenin.
 
@@ -25,7 +25,7 @@ Uygulama Öngörüleri portalındaki bekletme aracındaki verileri henüz görem
 
 ![Elde tutma aracı](./media/usage-retention/retention.png)
 
-1. Araç çubuğu, kullanıcıların yeni bekletme raporları oluşturmasına, varolan bekletme raporlarını açmasına, geçerli saklama raporunu kaydetmesine veya kaydedilmiş olarak kaydetmesine, kaydedilen raporlarda yapılan değişiklikleri geri çevirmesine, rapordaki verileri yenilemesine, e-posta veya doğrudan bağlantı yoluyla raporu paylaşmasına ve belgelere erişmesine olanak tanır Sayfası. 
+1. Araç çubuğu, kullanıcıların yeni bekletme raporları oluşturmasına, varolan bekletme raporlarını açmasına, geçerli bekletme raporunu kaydetmesine veya kaydedilmiş olarak kaydetmesine, kaydedilen raporlarda yapılan değişiklikleri geri çevirmesine, rapordaki verileri yenilemesine, e-posta veya doğrudan bağlantı yoluyla raporu paylaşmasına ve dokümantasyon sayfasına erişmesine olanak tanır. 
 2. Varsayılan olarak, bekletme, bir şey yapan tüm kullanıcıların geri geldiğini ve bir süre içinde başka bir şey yaptığını gösterir. Belirli kullanıcı etkinliklerine odaklanmayı daraltmak için farklı etkinlik bileşimi seçebilirsiniz.
 3. Özelliklere bir veya daha fazla filtre ekleyin. Örneğin, belirli bir ülke veya bölgedeki kullanıcılara odaklanabilirsiniz. Filtreleri ayarladıktan sonra **Güncelleştir'i** tıklatın. 
 4. Genel bekletme grafiği, seçilen zaman dilimi boyunca kullanıcı bekletme sinin bir özetini gösterir. 

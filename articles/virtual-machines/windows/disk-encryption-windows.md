@@ -7,18 +7,18 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: b51f7a8b62d7131b7bbfc77101e60fab22e1f148
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529329"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985805"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
-Azure Disk Şifrelemesi, Azure sanal makinelerinin (VM) işletim sistemi ve veri diskleri için birim şifrelemesi sağlamak için BitLocker harici anahtar koruyucusu kullanır ve disk şifreleme anahtarlarını ve sırlarını kontrol ve yönetmenize yardımcı olmak için Azure Key Vault ile tümleştirilir. Hizmete genel bir bakış için [Windows VM'leri için Azure Disk Şifreleme'ye](disk-encryption-overview.md)bakın.
+Windows sanal makineler için Azure Disk Şifreleme (VM'ler), WindOS disk ve veri diskinin tam disk şifrelemesini sağlamak için Windows'un Bitlocker özelliğini kullanır. Ayrıca, VolumeType parametresi Tümü olduğunda kısa ömürlü kaynak diskinin şifrelemesini sağlar.
 
-Birçok disk şifreleme senaryosu vardır ve adımlar senaryoya göre değişebilir. Aşağıdaki bölümler, Windows VM'leri için senaryoları daha ayrıntılı olarak kapsamaktadır.
+Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol ve yönetmenize yardımcı olmak için [Azure Key Vault ile tümleşiktir.](disk-encryption-key-vault.md) Hizmete genel bir bakış için [Windows VM'leri için Azure Disk Şifreleme'ye](disk-encryption-overview.md)bakın.
 
 Disk şifrelemeyi yalnızca [desteklenen VM boyutlarının ve işletim sistemlerinin](disk-encryption-overview.md#supported-vms-and-operating-systems)sanal makinelerine uygulayabilirsiniz. Ayrıca aşağıdaki ön koşulları karşılamanız gerekir:
 
@@ -39,9 +39,6 @@ Disk şifrelemeyi yalnızca [desteklenen VM boyutlarının ve işletim sistemler
 
 ## <a name="enable-encryption-on-an-existing-or-running-windows-vm"></a>Varolan veya çalışan bir Windows VM'de şifrelemeyi etkinleştirme
 Bu senaryoda, Kaynak Yöneticisi şablonunu, PowerShell cmdlets'i veya CLI komutlarını kullanarak şifrelemeyi etkinleştirebilirsiniz. Sanal makine uzantısı için şema bilgisine ihtiyacınız varsa, [Windows uzantısı için Azure Disk Şifreleme](../extensions/azure-disk-enc-windows.md) makalesine bakın.
-
-## <a name="enable-encryption-on-existing-or-running-iaas-windows-vms"></a>Varolan veya çalışan IaaS Windows VM'lerde şifrelemeyi etkinleştirme
-Bir şablon, PowerShell cmdlets veya CLI komutları kullanarak şifrelemeyi etkinleştirebilirsiniz. Sanal makine uzantısı için şema bilgisine ihtiyacınız varsa, [Windows uzantısı için Azure Disk Şifreleme](../extensions/azure-disk-enc-windows.md) makalesine bakın.
 
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Azure PowerShell ile varolan veya çalışan VM'lerde şifreleme yi etkinleştirme 
 Azure'da çalışan bir IaaS sanal makinede şifreleme sağlamak için [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) cmdlet'ini kullanın. 

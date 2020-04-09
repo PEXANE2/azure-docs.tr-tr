@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 3e99263f6bf472c256e1747b8567249bbd62a445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c265665be26dcc6868ea9a303b0c12c52dfe05b
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969628"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878315"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Akışı Analizi önizleme özellikleri
 
@@ -47,9 +47,9 @@ Visual Studio için Azure Akış Analizi araçlarında yerel test yaparken veri 
 Azure Akış Analizi işleri Visual Studio Code'da yazılabilir. VS [Kodumuz öğretici başlarken](https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code)bakın.
 
 
-### <a name="integration-with-azure-machine-learning"></a>Azure Makine Öğrenimi ile Entegrasyon
+### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning tarafından yönetilen özel ML modelleri ile gerçek zamanlı yüksek performans puanlama
 
-Akış Analizi işlerini Machine Learning (ML) işlevleriyle ölçeklendirebilirsiniz. Akış Analizi işinizde ML işlevlerini nasıl kullanabileceğiniz hakkında daha fazla bilgi edinmek [için, Azure Machine Learning işlevleriyle Stream Analytics işinizi ölçeklendir'i](stream-analytics-scale-with-machine-learning-functions.md)ziyaret edin. Azure Akış Analizi ve [Azure Machine Learning'i kullanarak duyarlılık analizi gerçekleştirerek](stream-analytics-machine-learning-integration-tutorial.md)gerçek dünya senaryosuna göz atın.
+Azure Akış Analizi, Azure Machine Learning tarafından yönetilen ve kod yazmanızı gerektirmeyen bir iş akışını kullanarak Azure Kubernetes Hizmeti (AKS) veya Azure Kapsayıcı Örnekleri'nde (ACI) barındırılan özel önceden eğitilmiş Machine Learning modellerinden yararlanarak yüksek performanslı, gerçek zamanlı puanlamayı destekler. Önizleme için [kaydolun](https://aka.ms/asapreview1)
 
 
 ### <a name="live-data-testing-in-visual-studio"></a>Visual Studio'da canlı veri testi
@@ -64,10 +64,6 @@ Azure Akış Analitiği için Visual Studio araçları, sizi Event Hub veya IoT 
 ## <a name="other-previews"></a>Diğer önizlemeler
 
 Aşağıdaki özellikler istek üzerine önizlemede de kullanılabilir.
-
-### <a name="real-time-high-performance-scoring-with-custom-ml-models-managed-by-azure-machine-learning"></a>Azure Machine Learning tarafından yönetilen özel ML modelleri ile gerçek zamanlı yüksek performans puanlama
-
-Azure Akış Analizi, Azure Machine Learning tarafından yönetilen ve bir iş akışı kullanarak Azure Kubernetes Hizmeti (AKS) veya Azure Kapsayıcı Örneklerinde (ACI) barındırılan özel önceden eğitilmiş Machine Learning modellerinden yararlanarak yüksek performanslı, gerçek zamanlı puanlamayı destekler kod yazmanızı gerektirmez. Önizleme için [kaydolun](https://aka.ms/asapreview1)
 
 ### <a name="support-for-azure-stack"></a>Azure Yığını desteği
 Azure IoT Edge çalışma zamanında etkinleştirilen bu özellik, Azure Yığını'nda çalışan yerel giriş ve çıktılar için yerel destek (örneğin Olay Hub'ları, IoT Hub'ı, Blob Depolama) gibi özel Azure Yığını özelliklerinden yararlanır. Bu yeni tümleştirme, verilerinizi oluşturulduğu yere yakın analiz ederek gecikmeyi azaltan ve öngörüleri en üst düzeye çıkaran karma mimariler oluşturmanıza olanak tanır.

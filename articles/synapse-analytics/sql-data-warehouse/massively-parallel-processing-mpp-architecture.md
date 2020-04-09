@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d768581b8f1a177190da08986af8b60b4861432
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80744206"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884841"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (eski adıyla SQL DW) mimarisi
 
@@ -79,8 +79,6 @@ Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için 
 60 küçük sorgunun her biri veri dağıtımlarından birinde çalışır. Her İşlemci düğümü 60 dağıtımdan birini veya daha fazlasını yönetir. Maksimum işlem kaynağına sahip bir SQL havuzunun Işlem düğümü başına bir dağıtımı vardır. En az işlem kaynaklarına sahip bir SQL havuzu, tek bir işlem düğümündeki tüm dağılımlara sahiptir.  
 
 ## <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
-
-Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir.
 
 Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir.
 

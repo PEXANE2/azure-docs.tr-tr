@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory B2CLearn ile MSAL'ı Kullanın | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulamaların Azure AD B2C ile birlikte çalışmasını ve güvenli Web API'lerini aramak için belirteçler edinmesini sağlar. Bu web API'leri Microsoft Graph, diğer Microsoft API'leri, başkalarından gelen web API'leri veya kendi web API'niz olabilir.
+description: JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js), uygulamaların Azure AD B2C ile çalışmasını ve güvenli Web API'lerini aramak için belirteçler edinmesini sağlar. Bu web API'leri Microsoft Graph, diğer Microsoft API'leri, başkalarından gelen web API'leri veya kendi web API'niz olabilir.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,112 +13,132 @@ ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc8a330bc09f37f7941534ed7c17d1ffd14d08c5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696461"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80875971"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile birlikte çalışmak için Microsoft Kimlik Doğrulama Kitaplığını kullanma
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile çalışmak için JavaScript için Microsoft Kimlik Doğrulama Kitaplığını kullanma
 
-Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulama geliştiricilerin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak kullanıcıların sosyal ve yerel kimliklerini doğrulamalarını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Bunu kullanarak, müşterilerin uygulamalarınızı kullanırken profillerini nasıl kaydolduklarını, kaydolabileceğini ve yönetebileceğini özelleştirebilir ve denetleyebilirsiniz.
+[JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js),](https://github.com/AzureAD/microsoft-authentication-library-for-js) JavaScript geliştiricilerinin Azure [Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak kullanıcıların sosyal ve yerel kimliklerini doğrulamasını sağlar. Azure AD B2C'yi kimlik yönetimi hizmeti olarak kullanarak, müşterilerin uygulamalarınızı kullanırken profillerini nasıl kaydolduklarını, kaydolabileceğini ve yönetebileceğini özelleştirebilir ve denetleyebilirsiniz.
 
-Azure AD B2C, müşterilerinize sorunsuz bir deneyim sunmak için uygulamalarınızın kullanıcı arabirimi'ni markalamanızı ve özelleştirmenizi de sağlar.
+Azure AD B2C, müşterilerinize sorunsuz bir deneyim sunmak için kimlik doğrulama işlemi sırasında uygulamalarınızın kullanıcı arabirimi'ni markalamanızı ve özelleştirmenizi de sağlar.
 
-Bu öğretici, Azure AD B2C ile birlikte çalışmak için MSAL'ın nasıl kullanılacağını gösterir.
+Bu makalede, Azure AD B2C ile çalışmak için MSAL.js'nin nasıl kullanılacağı gösterilebilir ve dikkat edilmesi gereken önemli noktaları özetleyebilirsiniz. Tam bir tartışma ve öğretici için lütfen [Azure AD B2C Belgeleri'ne](https://docs.microsoft.com/azure/active-directory-b2c/overview)başvurun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Kendi [Azure AD B2C kiracınızı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)henüz oluşturmadıysanız, şimdi bir tane oluşturun. Ayrıca varolan bir Azure AD B2C kiracısı da kullanabilirsiniz.
+Kendi [Azure AD B2C kiracınızı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)henüz oluşturmadıysanız, şimdi bir tane oluşturmaya başlayın (zaten varsa varolan bir Azure AD B2C kiracınızı da kullanabilirsiniz).
 
-## <a name="javascript"></a>JavaScript
+Bu gösteri iki bölümden oluşur:
 
-Aşağıdaki adımlar, tek sayfalı bir uygulamanın kaydolmak, oturum açmak ve korumalı web API'sini aramak için Azure AD B2C'yi nasıl kullanabileceğini gösterir.
+- nasıl bir web API korumak için.
+- kimlik doğrulaması ve web API aramak için tek sayfalık bir uygulama nın nasıl *kaydedilen.*
+
+## <a name="nodejs-web-api"></a>Düğüm.js Web API
+
+> [!NOTE]
+> Şu anda, Düğüm için MSAL.js hala geliştirme aşamasındadır [(yol haritasına](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)bakın). Bu arada, Microsoft tarafından geliştirilen ve desteklenen Node.js için bir kimlik doğrulama kitaplığı olan [passport-azure-ad'ı](https://github.com/AzureAD/passport-azure-ad)kullanmanızı öneririz.
+
+Aşağıdaki adımlar, bir **web API'sinin** kendisini korumak ve seçili kapsamları istemci uygulamasına maruz bırakmak için Azure AD B2C'yi nasıl kullanabileceğini gösterir.
 
 ### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-Kimlik doğrulamasını uygulamak için öncelikle uygulamanızı kaydetmeniz gerekir. Bkz. Ayrıntılı adımlar için [başvurunuzu kaydedin.](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)
+Web API'nizi Azure AD B2C ile korumak için öncelikle bu api'yi kaydetmeniz gerekir. Bkz. Ayrıntılı adımlar için [başvurunuzu kaydedin.](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications)
 
 ### <a name="step-2-download-the-sample-application"></a>Adım 2: Örnek uygulamayı indirin
 
 Örneği zip dosyası olarak indirin veya GitHub'dan klonla:
 
+```console
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
+
+### <a name="step-3-configure-authentication"></a>Adım 3: Kimlik doğrulamasını yapılandırma
+
+1. Örnekteki `config.js` dosyayı açın.
+
+2. Örneği, başvurunuzu kaydederken daha önce elde ettiğiniz uygulama kimlik bilgileriyle yapılandırın. Değerleri müşteri kimliğiniz, ana bilgisayar, kiracı kimliği ve ilke adı adlarıyla değiştirerek aşağıdaki kod satırlarını değiştirin.
+
+```JavaScript
+const clientID = "<Application ID for your Node.js Web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
+const b2cDomainHost = "<Domain of your B2C host eg. fabrikamb2c.b2clogin.com>";
+const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can use your Directory (tenant) ID (GUID)
+const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
+```
+
+Daha fazla bilgi için, bu [Node.js B2C web API örnek](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)göz atın.
+
+---
+
+## <a name="javascript-spa"></a>JavaScript SPA
+
+Aşağıdaki adımlar, **tek sayfalı** bir uygulamanın kaydolmak, oturum açmak ve korumalı web API'sini aramak için Azure AD B2C'yi nasıl kullanabileceğini gösterir.
+
+### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
+
+Kimlik doğrulamasını uygulamak için öncelikle uygulamanızı kaydetmeniz gerekir. Bkz. Ayrıntılı adımlar için [başvurunuzu kaydedin.](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications)
+
+### <a name="step-2-download-the-sample-application"></a>Adım 2: Örnek uygulamayı indirin
+
+Örneği zip dosyası olarak indirin veya GitHub'dan klonla:
+
+```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
 ### <a name="step-3-configure-authentication"></a>Adım 3: Kimlik doğrulamasını yapılandırma
 
-1. Örnekteki **index.html** dosyasını açın.
+Uygulamanızı yapılandırmada iki önemli nokta vardır:
 
-1. Uygulamanızı kaydederken örneği daha önce kaydettiğiniz istemci kimliği ve anahtarla yapılandırın. Değerleri dizininizin ve API'lerin adlarıyla değiştirerek aşağıdaki kod satırlarını değiştirin:
+- API uç noktasını ve açıkta kalan kapsamları yapılandırma
+- Kimlik doğrulama parametrelerini ve belirteç kapsamlarını yapılandırma
+
+1. Örnekteki `apiConfig.js` dosyayı açın.
+
+2. Web API'nizi kaydederken örneği daha önce elde ettiğiniz parametrelerle yapılandırın. Değerleri web API'nizin ve açığa çıkarılan kapsamların adresiyle değiştirerek aşağıdaki kod satırlarını değiştirin.
 
    ```javascript
-   // The current application coordinates were pre-registered in a B2C tenant.
-
-    var appConfig = {
-        b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"],
-        webApi: "https://fabrikamb2chello.azurewebsites.net/hello"
+    // The current application coordinates were pre-registered in a B2C tenant.
+    const apiConfig = {
+        b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/helloapi/demo.read"], //API scopes you exposed during api registration
+        webApi: "https://fabrikamb2chello.azurewebsites.net/hello" 
     };
+   ```
 
+3. Örnekteki `authConfig.js` dosyayı açın.
+
+4. Tek sayfalı uygulamanızı kaydederken örneği daha önce elde ettiğiniz parametrelerle yapılandırın. Değerleri ClientId, yetki meta verileri ve belirteç isteği kapsamlarınızla değiştirerek aşağıdaki kod satırlarını değiştirin.
+
+   ```javascript
+    // Config object to be passed to Msal on creation.
     const msalConfig = {
         auth: {
-            clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902" //This is your client/application ID
-            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi", //This is your tenant info
+            clientId: "e760cab2-b9a1-4c0d-86fb-ff7084abd902",
+            authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/B2C_1_signupsignin1",
             validateAuthority: false
         },
         cache: {
-            cacheLocation: "localStorage",
-            storeAuthStateInCookie: true
+            cacheLocation: "localStorage", // This configures where your cache will be stored
+            storeAuthStateInCookie: false // Set this to "true" to save cache in cookies
         }
     };
-    // create UserAgentApplication instance
-    const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
+    // Add here scopes for id token to be used at the MS Identity Platform endpoint
+    const loginRequest = {
+        scopes: ["openid", "profile"],
+    };
    ```
 
-Bu öğreticide [kullanıcı akışının](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) adı **B2C_1_signupsignin1.** Farklı bir kullanıcı akışı adı kullanıyorsanız, **yetki** değerini bu ada ayarlayın.
+Daha fazla bilgi için, bu [JavaScript B2C tek sayfalık uygulama örneğine](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)göz atın.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Adım 4: Uygulamanızı kullanmak üzere yapılandırın`b2clogin.com`
-
-Yönlendirme `b2clogin.com` URL'si `login.microsoftonline.com` olarak yerine kullanabilirsiniz. Kaydolmak ve kaydolmak için bir kimlik sağlayıcısı ayarladığınızda Azure AD B2C uygulamanızda bunu yaparsınız.
-
-`b2clogin.com` Bağlamında kullanımı aşağıdaki `https://your-tenant-name.b2clogin.com/your-tenant-guid` etkilere sahiptir:
-
-- Microsoft hizmetleri çerez üstbilgisinde daha az yer tüketir.
-- URL'leriniz artık Microsoft'a başvuruda bulunmaz. Örneğin, Azure AD B2C uygulamanız `login.microsoftonline.com`büyük olasılıkla .
-
- Kullanmak `b2clogin.com`için, uygulamanızın yapılandırmasını güncelleştirmeniz gerekir.  
-
-- **DoğrulamaYetkisi** özelliğini `false`, yeniden `b2clogin.com` yönlendirmelerin oluşabilmesi için ayarlayın.
-
-Aşağıdaki örnek, özelliği nasıl ayarlayabileceğinizi gösterir:
-
-```javascript
-// The current application coordinates were pre-registered in a B2C directory.
-
-const msalConfig = {
-    auth:{
-        clientId: "Enter_the_Application_Id_here",
-        authority: "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_signupsignin1",
-        b2cScopes: ["https://contoso.onmicrosoft.com/demoapi/demo.read"],
-        webApi: 'https://contosohello.azurewebsites.net/hello',
-        validateAuthority: false;
-
-};
-// create UserAgentApplication instance
-const myMSALObj = new UserAgentApplication(msalConfig);
-```
-
-> [!NOTE]
-> Azure AD B2C uygulamanız `login.microsoftonline.com` büyük olasılıkla kullanıcı akışı başvurularınız ve belirteç uç noktalarınız gibi çeşitli yerlerde başvurur. Yetkilendirme bitiş noktanızın, belirteç bitiş noktanızın ve vereninin kullanmak `your-tenant-name.b2clogin.com`üzere güncelleştirdiğinden emin olun.
-
-JavaScript (MSAL.js) için MSAL Preview'un nasıl kullanılacağıyla ilgili [bu MSAL JavaScript örneğini](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) izleyin. Örnek bir erişim belirteci alır ve Azure AD B2C tarafından güvenli bir API çağırır.
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdakiler hakkında daha fazla bilgi edinin:
-
-- [Özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
-- [Kullanıcı arabirimini özelleştirme](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-overview)
+- [Kullanıcı akışları](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
+- [Özel ilkeler](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
+- [UX özelleştirme](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)

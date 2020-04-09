@@ -4,12 +4,12 @@ description: Azure Blockchain Hizmeti veri erişimi ve güvenlik kavramları
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989d9f2afad30517a85185878d694c0b6640e987
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75982238"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879607"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Hizmeti güvenliği
 
@@ -25,9 +25,9 @@ Azure Blockchain Hizmet kaynakları özel bir sanal ağda yalıtılır. Her hare
 
 Kullanıcı verileri Azure depolama alanında depolanır. Kullanıcı verileri güvenlik ve gizlilik için hareket halinde ve istirahatte şifrelenir. Daha fazla bilgi için bkz: [Azure Depolama güvenlik kılavuzu.](../../storage/blobs/security-recommendations.md)
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
-Hareketler bir RPC bitiş noktası üzerinden blockchain düğümlerine gönderilebilir. İstemciler, kullanıcı kimlik doğrulamasını işleyen ve Verileri SSL üzerinden şifreleyen bir ters proxy sunucusu kullanarak bir işlem düğümüyle iletişim kurar.
+Hareketler bir RPC bitiş noktası üzerinden blockchain düğümlerine gönderilebilir. İstemciler, kullanıcı kimlik doğrulamasını işleyen ve TLS üzerinden verileri şifreleyen bir ters proxy sunucusu kullanarak bir işlem düğümüyle iletişim kurar.
 
 ![Kimlik doğrulama diyagramı](./media/data-security/authentication.png)
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 74d696c19ac2a2d0d367f5a018fde8cd3a0eedb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 454138f8e0d92935126f446455810a444b0a053a
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535213"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984155"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Uygulama Öngörüleri ve Log Analytics tarafından kullanılan IP adresleri
 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) hizmeti nde çok sayıda IP adresi kullanır. İzlediğiniz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
@@ -55,6 +55,8 @@ Durum Monitörü Yapılandırması - yalnızca değişiklik yaparken gereklidir.
 ## <a name="availability-tests"></a>Kullanılabilirlik testleri
 Bu, [kullanılabilirlik web testlerinin](../../azure-monitor/app/monitor-web-app-availability.md) çalıştırıldığı adreslerin listesidir. Uygulamanızda web testleri çalıştırmak istiyorsanız, ancak web sunucunuz belirli istemcilere hizmet vermekle sınırlıdır, o zaman kullanılabilirlik test sunucularımızdan gelen trafiğe izin vermek zorunda sınız.
 
+### <a name="service-tag"></a>Hizmet etiketi
+
 Azure Ağ Güvenlik Grupları kullanıyorsanız, **Kaynak** hizmet etiketi olarak **Hizmet Etiketi'ni** ve **Kaynak hizmet etiketi**olarak **ApplicationInsightsAvailability'ı** seçerek Application Insights kullanılabilirlik testlerinden gelen trafiğin trafiğe izin vermek için **gelen bağlantı noktası kuralını** eklemeniz yeterlidir.
 
 >[!div class="mx-imgBorder"]
@@ -64,6 +66,11 @@ Azure Ağ Güvenlik Grupları kullanıyorsanız, **Kaynak** hizmet etiketi olara
 >![Gelen güvenlik kuralı sekmesi ekleme](./media/ip-addresses/add-inbound-security-rule2.png)
 
 Bu adreslerden gelen trafik için 80 (http) ve 443 (https) bağlantı noktalarını açın (IP adresleri konuma göre gruplandırılır):
+
+### <a name="addresses-grouped-by-location"></a>Konuma göre gruplanmış adresler
+
+> [!NOTE]
+> Bu adresler Sınıfsız Etki Alanları Yönlendirme (CIDR) gösterimi kullanılarak listelenir. Bu, gibi `51.144.56.112/28` bir girişin 16 IP'den `51.144.56.112` başlayıp 'da `51.144.56.127`bitene eşdeğer olduğu anlamına gelir.
 
 ```
 Australia East

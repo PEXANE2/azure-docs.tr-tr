@@ -11,30 +11,30 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/04/2019
+ms.date: 03/16/2020
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: e1249913300be532cc6514f1478bbc6f4183c001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300562"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878298"
 ---
-# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure-preview"></a>Microsoft Azure ve Oracle Bulut Altyapılarını entegre eden Oracle uygulama çözümleri (önizleme)
+# <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure ve Oracle Bulut Altyapılarını entegre eden Oracle uygulama çözümleri
 
 Microsoft ve Oracle, her iki bulutun da en iyi avantajlarından yararlanmanızı sağlayarak düşük gecikme gecikmesi, yüksek bulut lar arası bağlantı sağlamak için ortaklık kurmuştur. 
 
 Bu bulutlar arası bağlantıyı kullanarak, veritabanı katmanınızı Oracle Cloud Infrastructure'da (OCI) ve Microsoft Azure'daki uygulama ve diğer katmanları çalıştırmak için çok katmanlı bir uygulamayı bölümlere kullanabilirsiniz. Deneyim, tüm çözüm yığınını tek bir bulutta çalıştırmaya benzer. 
-
-> [!IMPORTANT]
-> Bu çapraz bulut özelliği şu anda önizlemededir ve [sınırlamalar geçerlidir.](#region-availability) Azure ve OCI arasında düşük gecikme sonu bağlantısı oluşturmak için, bu özellik için öncelikle Azure aboneliğinizin etkinleştirilmesi gerekir. Bu kısa [anket formunu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyzVVsi364tClw522rL9tkpUMVFGVVFWRlhMNUlRQTVWSTEzT0dXMlRUTyQlQCN0PWcu)doldurarak önizlemeye kaydolmalısınız. Aboneliğiniz kaydedildiğinde siz de bir e-posta alırsınız. Bir onay e-postası alana kadar bu özelliği kullanamazsınız. Bu önizleme için etkinleştirilmek üzere Microsoft temsilcinize de başvurabilirsiniz. Önizleme özelliğine erişim, kullanılabilirlik durumuna bağlıdır ve microsoft tarafından kendi takdirine bağlı olarak kısıtlanır. Anketin tamamlanması erişimi garanti etmez. Bu önizleme, hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için Microsoft Azure Önizlemeleri için [Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) bakın. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 Oracle çözümlerini tamamen Azure altyapısına dağıtmak istiyorsanız, [Oracle VM görüntülerine ve bunların Microsoft Azure'da dağıtımına](oracle-vm-solutions.md)bakın.
 
 ## <a name="scenario-overview"></a>Senaryoya genel bakış
 
 Çapraz bulut bağlantısı, OCI'da barındırılan veritabanı hizmetlerinin avantajlarından yararlanırken Oracle'ın sektör lideri uygulamalarını ve kendi özel uygulamalarınızı Azure sanal makinelerinde çalıştırmanız için bir çözüm sağlar. 
+
+> [!IMPORTANT]
+> Oracle, Azure / Oracle Cloud ara bağlantı çözümünü Mayıs 2020'ye kadar kullanırken bu uygulamaları Azure'da çalışacak şekilde onaylar.
 
 Bulutlar arası yapılandırmada çalıştırabileceğiniz uygulamalar şunlardır:
 
@@ -56,7 +56,7 @@ Bulutlar arası bağlantı aşağıdaki bölgelerle sınırlıdır:
 * Azure Canada Central (canadacentral) & OCI Toronto (Kanada Güneydoğu)
 * Azure Batı Avrupa (westeurope) & OCI Amsterdam (Hollanda Kuzeybatı)
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 Kurumsal müşteriler genellikle çeşitli iş ve operasyonel nedenlerle iş yüklerini birden çok bulut üzerinde çeşitlendirmeyi ve dağıtmayı seçer. Müşteriler bulut ağlarını internet, IPSec VPN veya şirket içi ağınız üzerinden bulut sağlayıcısının doğrudan bağlantı çözümünü kullanarak çeşitlendirin. Bulut ağlarını birbirine bağlamak zaman, para, tasarım, satın alma, kurulum, test ve işlemlerde önemli yatırımlar gerektirebilir. 
 

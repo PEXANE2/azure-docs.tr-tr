@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 887f9e100a60561271a4c15777e7131ea1f1f722
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631443"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984019"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Sanal Ağ için IPv6 nedir?
 
@@ -73,7 +73,7 @@ Azure VNET için IPv6, müşterilerin Azure'da çift yığın (IPv4+IPv6) uygula
 
 ## <a name="limitations"></a>Sınırlamalar
 Azure sanal ağ sürümü için geçerli IPv6 aşağıdaki sınırlamaları vardır:
-- Azure sanal ağı için IPv6, tüm küresel Azure Ticari bölgelerinde tüm dağıtım yöntemlerini kullanarak kullanılabilir.  ABD Hükümeti bulutunda dağıtım geçici olarak ARM (JSON) şablonu, Command Line Interface (CLI) ve Powershell ile sınırlıdır.  ABD Hükümeti bulut portalında IPv6 desteği kısa süre içinde kullanılabilir olacaktır.  
+- Azure sanal ağı için IPv6, tüm küresel Azure Ticari bölgelerinde tüm dağıtım yöntemlerini kullanarak kullanılabilir.  ABD Hükümeti bulutunda dağıtım geçici olarak ARM (JSON) şablonu, Command Line Interface (CLI) ve Powershell ile sınırlıdır.  ABD Hükümeti bulut portalında IPv6 desteği yakında sunulacaktır.  
 - ExpressRoute ağ geçitleri, IPv6 etkin leştirilmiş bir VNET'teki yalnızca IPv4 trafiği için kullanılabilir.  IPv6 trafiğine destek yol haritamızda yer almaktadır.   
 - VPN ağ geçitleri, Doğrudan veya "UseRemoteGateway" ile bakan IPv6 etkin leştirilmiş bir VNET'te kullanılamaz.
 - Azure platformu (AKS, vb.) Kapsayıcılar için IPv6 iletişimini desteklemez.  

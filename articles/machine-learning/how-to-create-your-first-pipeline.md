@@ -11,14 +11,15 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa0a5bfe921687ad964e9321e3874de37ccf9b98
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: d175a2cea685585da3767acdb0ab77a99c541d09
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549308"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873880"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi boru hatları oluşturma ve çalıştırma
+
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Bu makalede, [Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)kullanarak [bir makine öğrenimi ardışık hattını](concept-ml-pipelines.md) nasıl oluşturabileceğinizi, yayımlayacağınızı, çalıştırabileceğinizi ve izleyeceğinizi öğreneceksiniz.  Çeşitli ML aşamalarını birleştiren bir iş akışı oluşturmak için **ML ardışık hatlarını** kullanın ve daha sonra erişmek veya başkalarıyla paylaşmak için bu ardışık ardışık ardışık ardışık hattı Azure Machine Learning çalışma alanınızda yayımlayın.  ML ardışık hatları, çeşitli hesaplamaları kullanarak, adımları yeniden çalıştırmak yerine yeniden kullanmanın yanı sıra ML iş akışlarını başkalarıyla paylaşarak toplu puanlama senaryoları için idealdir.
@@ -48,14 +49,13 @@ from azureml.core import Workspace, Datastore
 ws = Workspace.from_config()
 ```
 
-
 ## <a name="set-up-machine-learning-resources"></a>Makine öğrenimi kaynaklarını ayarlama
 
 ML ardışık bir ardışık hattı çalıştırmak için gereken kaynakları oluşturun:
 
 * Ardışık hatlar adımlarında gereken verilere erişmek için kullanılan bir veri deposu ayarlayın.
 
-* Bir `DataReference` nesneyi, bir veri deposunda yaşayan veya erişilebilen verilere işaret etmek için yapılandırın.
+* Bir `Dataset` nesneyi, bir veri deposunda yaşayan veya erişilebilen kalıcı verilere işaret etmek için yapılandırın. Bir `PipelineData` nesneyi, satır başları arasında geçirilen geçici veriler için yapılandırın. 
 
 * Boru hattı adımlarınızın çalışacağı [işlem hedeflerini](concept-azure-machine-learning-architecture.md#compute-targets) ayarlayın.
 
@@ -90,17 +90,18 @@ Bir ardışık hat, bir veya daha fazla adımdan oluşur. Adım, bir işlem hede
 
 Ardışık hattınızı verilerinize bağlama hakkında daha fazla bilgi edinmek için, [verilere nasıl erişilir](how-to-access-data.md) ve [Veri Kümelerini Nasıl Kaydeder'](how-to-create-register-datasets.md)makalelerine bakın. 
 
-### <a name="configure-data-reference"></a>Veri başvurularını yapılandırma
+### <a name="configure-data-using-dataset-and-pipelinedata-objects"></a>Verileri kullanarak `Dataset` ve `PipelineData` nesneleri yapılandırma
 
-Yalnızca bir adıma giriş olarak bir ardışık hatlar üzerinde başvurulabilen bir veri kaynağı oluşturdunuz. Bir ardışık ardışık alandaki veri kaynağı, Bir [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference) nesnesi tarafından temsil edilir. Nesne, `DataReference` bir veri deposunda yaşayan veya erişilebilen verilere işaret ediyor.
+Yalnızca bir adıma giriş olarak bir ardışık hatlar üzerinde başvurulabilen bir veri kaynağı oluşturdunuz. Bir ardışık aygıta veri sağlamanın tercih edilen yolu bir [Dataset nesnesidir.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.Dataset) Nesne, `Dataset` bir veri deposunda veya Web URL'sinden yaşayan veya erişilebilen verilere işaret ediyor. Sınıf `Dataset` soyuttur, bu nedenle bir `FileDataset` (bir veya daha fazla dosyaya atıfta `TabularDataset` bulunularak) veya sınırlı veri sütunları olan bir veya daha fazla dosyadan oluşturulan bir örnek oluşturursunuz.
+
+`Dataset`nesneler sürüm, diffs ve özet istatistikleri destekler. `Dataset`s tembelce değerlendirilir (Python jeneratörleri gibi) ve bölme veya filtreleme tarafından alt kümelemek için verimli. 
+
+[from_file](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) veya `Dataset` [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)gibi yöntemler kullanırsınız.
 
 ```python
-from azureml.data.data_reference import DataReference
+from azureml.core import Dataset
 
-blob_input_data = DataReference(
-    datastore=def_blob_store,
-    data_reference_name="test_data",
-    path_on_datastore="20newsgroups/20news.pkl")
+iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
 ```
 
 Ara veriler (veya bir adımın çıktısı) bir [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nesnesi tarafından temsil edilir. `output_data1`bir adımın çıktısı olarak üretilir ve gelecekteki bir veya daha fazla adımın girişi olarak kullanılır. `PipelineData`adımlar arasında bir veri bağımlılığı sunar ve ardışık yürütme emri oluşturur. Bu nesne daha sonra ardışık işlem adımı oluştururken kullanılacaktır.
@@ -114,25 +115,11 @@ output_data1 = PipelineData(
     output_name="output_data1")
 ```
 
-### <a name="configure-data-using-datasets"></a>Veri kümelerini kullanarak verileri yapılandırma
+Veri kümeleri ve boru hattı verileriyle çalışmak için daha fazla ayrıntı ve örnek kod, [ML boru hattı adımlarına (Python) veri taşımada](how-to-move-data-in-out-of-pipelines.md)bulunabilir.
 
-Bir dosyada veya dosya kümesinde depolanan tabular verileriniz varsa, [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) bir `DataReference`. `TabularDataset`nesneler sürüm, diffs ve özet istatistikleri destekler. `TabularDataset`s tembelce değerlendirilir (Python jeneratörleri gibi) ve bölme veya filtreleme tarafından alt kümelemek için verimli. Sınıf, `FileDataset` bir veya daha fazla dosyayı temsil eden benzer lazily değerlendirilmiş verileri sağlar. 
+## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 
-from_delimited_files gibi `TabularDataset` bir [from_delimited_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-)yöntem kullanırsınız.
-
-```python
-from azureml.data import TabularDataset
-
-iris_tabular_dataset = Dataset.Tabular.from_delimited_files([(def_blob_store, 'train-dataset/tabular/iris.csv')])
-```
-
- Bir `FileDataset` [from_files](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-)kullanırsınız.
-
- Veri kümelerini [ekle & kayıt veri kümeleri](how-to-create-register-datasets.md) veya bu örnek not [defterinden](https://aka.ms/train-datasets)veri kümeleriyle çalışma hakkında daha fazla bilgi edinebilirsiniz.
-
-## <a name="set-up-compute-target"></a>İşlem hedefini ayarlama
-
-Azure Machine Learning'de, __hesaplama__ (veya __bilgi işlem hedefi)__ terimi, makine öğrenimi ardışık ardınızdaki hesaplama adımlarını gerçekleştiren makineleri veya kümeleri ifade eder.   İşlem [hedeflerinin](how-to-set-up-training-targets.md) tam listesi için model eğitimi için hesaplama hedeflerine ve bunları nasıl oluşturup çalışma alanınıza ekleyeceklerinize bakın.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitiyor veya bir ardışık işlem adımı çalıştırıyor sanız aynıdır. İşlem hedefini oluşturup iliştirdikten `ComputeTarget` [sonra, ardışık işlem adımındaki](#steps)nesneyi kullanın.
+Azure Machine Learning'de, __bilgi işlem__ (veya bilgi __işlem hedefi)__ terimi, makine öğrenimi ardışık ardınızdaki hesaplama adımlarını gerçekleştiren makineleri veya kümeleri ifade eder.   İşlem [hedeflerinin](how-to-set-up-training-targets.md) tam listesi için model eğitimi için hesaplama hedeflerine ve bunları nasıl oluşturup çalışma alanınıza ekleyeceklerinize bakın.  Bir işlem hedefi oluşturma ve ekleme işlemi, bir modeli eğitiyor veya bir ardışık işlem adımı çalıştırıyor sanız aynıdır. İşlem hedefini oluşturup iliştirdikten `ComputeTarget` [sonra, ardışık işlem adımındaki](#steps)nesneyi kullanın.
 
 > [!IMPORTANT]
 > İşlem hedefleri üzerinde yönetim işlemlerinin gerçekleştirilmesi uzak işlerden desteklenmez. Makine öğrenimi boru hatları uzak bir iş olarak sunulduğundan, boru hattının içinden bilgi işlem hedefleri üzerinde yönetim işlemleri kullanmayın.
@@ -287,13 +274,16 @@ Daha ayrıntılı bir örnek için GitHub'da örnek bir [not defterine](https://
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+ds_input = my_dataset.as_named_input('input1')
+
 trainStep = PythonScriptStep(
     script_name="train.py",
-    arguments=["--input", blob_input_data, "--output", output_data1],
-    inputs=[blob_input_data],
+    arguments=["--input", ds_input.as_download(), "--output", output_data1],
+    inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder
+    source_directory=project_folder,
+    allow_reuse=True
 )
 ```
 
@@ -339,8 +329,6 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma 
 
-A `TabularDataset` veya `FileDataset` ardışık sisteminizde kullanmak [için, as_named_input(ad)](https://docs.microsoft.com/python/api/azureml-core/azureml.data.abstract_dataset.abstractdataset?view=azure-ml-py#as-named-input-name-)çağırarak bir [DatasetConsumptionConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_consumption_config.datasetconsumptionconfig?view=azure-ml-py) nesnesine dönüştürmeniz gerekir. Bu `DatasetConsumptionConfig` nesneyi boru hattı `inputs` adımınız olarak geçersiniz. 
-
 Azure Blob depolama, Azure Dosyaları, Azure Veri Gölü Depolama Gen1, Azure Veri Gölü Depolama Gen2, Azure SQL Veritabanı ve PostgreSQL için Azure Veritabanı'ndan oluşturulan veri kümeleri, herhangi bir boru hattı adımına giriş olarak kullanılabilir. [Bir DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) veya [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py)çıktı yazma dışında , çıktı verileri[(PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)) yalnızca Azure Blob ve Azure Dosya payı veri depolarına yazılabilir.
 
 ```python
@@ -363,7 +351,15 @@ iris_dataset = run_context.input_datasets['iris_data']
 dataframe = iris_dataset.to_pandas_dataframe()
 ```
 
-Daha fazla bilgi için [azure-pipeline-steps paketine](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) ve [Pipeline sınıfı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) başvurusuna bakın.
+Çizgi `Run.get_context()` vurgulamaya değer. Bu işlev, `Run` geçerli deneme çalışmasını temsil eden bir işlev alır. Yukarıdaki örnekte, kayıtlı bir veri kümesini almak için kullanırız. Nesnenin `Run` bir diğer yaygın kullanımı da hem denemenin kendisini hem de denemenin bulunduğu çalışma alanını almaktır: 
+
+```python
+# Within a PythonScriptStep
+
+ws = Run.get_context().experiment.workspace
+```
+
+Verileri geçirmenin ve erişmenin alternatif yolları da dahil olmak üzere daha fazla ayrıntı için, [verileri ML ardışık satır adımlarına (Python) taşıma](how-to-move-data-in-out-of-pipelines.md)yı görün.
 
 ## <a name="submit-the-pipeline"></a>Boru hattını gönderme
 
@@ -387,7 +383,7 @@ Bir ardışık hattı ilk çalıştırdığınızda, Azure Machine Learning:
 * Proje anlık görüntüsünü çalışma alanıyla ilişkili Blob depolamasından işlem hedefine indirir.
 * Boru hattındaki her adıma karşılık gelen bir Docker görüntüsü oluşturur.
 * Konteyner kayıt defterinden işlem hedefine her adım için Docker görüntüsünü indirir.
-* Bir nesne bir `DataReference` adımda belirtilmişse veri deposunu bağlar. Montaj desteklenmiyorsa, veriler bunun yerine bilgi işlem hedefine kopyalanır.
+* Erişimi `Dataset` ve `PipelineData` nesneleri yapılandırır. Access `as_mount()` modu olarak, FUSE sanal erişim sağlamak için kullanılır. Montaj desteklenmiyorsa veya kullanıcı erişimi `as_download()`olarak belirtmişse, veriler bunun yerine bilgi işlem hedefine kopyalanır.
 * Adım tanımında belirtilen işlem hedefindeki adımı çalıştırın. 
 * Günlükler, stdout ve stderr, ölçümler ve adım tarafından belirtilen çıktı gibi yapılar oluşturur. Bu yapılar daha sonra yüklenir ve kullanıcının varsayılan veri deposunda tutulur.
 
@@ -464,6 +460,7 @@ response = requests.post(published_pipeline1.endpoint,
 ```
 
 ## <a name="create-a-versioned-pipeline-endpoint"></a>Sürümlenmiş ardışık hat sonu noktası oluşturma
+
 Arkasında birden çok yayımlanmış ardışık ardışık nokta içeren bir Pipeline Endpoint oluşturabilirsiniz. Bu, yayımlanmış bir ardışık işlem hattı gibi kullanılabilir, ancak ml ardışık hatlar üzerinde tesbit ve güncelleme olarak sabit bir REST bitiş noktası verir.
 
 ```python
@@ -475,19 +472,24 @@ pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpoin
 ```
 
 ### <a name="submit-a-job-to-a-pipeline-endpoint"></a>İşi bir ardışık nokta bitiş noktasına gönderme
+
 Bir işi bir ardışık nokta bitiş noktasının varsayılan sürümüne gönderebilirsiniz:
+
 ```python
 pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
 print(run_id)
 ```
+
 Ayrıca, belirli bir sürüme de iş gönderebilirsiniz:
+
 ```python
 run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
 print(run_id)
 ```
 
 Aynı REST API kullanılarak gerçekleştirilebilir:
+
 ```python
 rest_endpoint = pipeline_endpoint_by_name.endpoint
 response = requests.post(rest_endpoint, 
@@ -512,19 +514,17 @@ Ayrıca stüdyodan yayımlanmış bir ardışık hat lar çalıştırabilirsiniz
 
 1. Ardışık hatlar bitiş noktasının önceki çalıştırmalarının sonuçlarını çalıştırmak, tüketmek veya gözden geçirmek için belirli bir ardışık nokta seçin.
 
-
 ### <a name="disable-a-published-pipeline"></a>Yayımlanmış bir ardışık boru hattını devre dışı
 
 Bir ardışık ardışık hattı yayımlanmış ardışık lık listenizden gizlemek için, bu boru hattını stüdyoda veya SDK'dan devre dışı kağınızda:
 
-```
+```python
 # Get the pipeline by using its ID from Azure Machine Learning studio
 p = PublishedPipeline.get(ws, id="068f4885-7088-424b-8ce2-eeb9ba5381a6")
 p.disable()
 ```
 
 'ile `p.enable()`yeniden etkinleştirebilirsiniz. Daha fazla bilgi için Bkz. [PublishedPipeline sınıfı](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.publishedpipeline?view=azure-ml-py) başvurusu.
-
 
 ## <a name="caching--reuse"></a>Önbelleğe alma & yeniden  
 

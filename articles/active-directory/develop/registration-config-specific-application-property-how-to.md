@@ -2,25 +2,21 @@
 title: Özel olarak geliştirilen uygulamalar için Azure portalı kayıt alanları
 description: Azure AD ile özel olarak geliştirilmiş bir uygulama kaydetme kılavuzu
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: 36d74b9926639bb4ec49821a3d73b5d615016394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702683"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883177"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Özel olarak geliştirilen uygulamalar için Azure portalı kayıt alanları
 
@@ -60,7 +56,7 @@ Yukarıdaki alanları doldurduktan sonra, uygulama Azure portalına kaydedilir v
 | Yeni logo yükleyin | Bunu, uygulamanız için bir logo yüklemek için kullanabilirsiniz. Logo .bmp, .jpg veya .png formatında olmalı ve dosya boyutu 100 KB'den az olmalıdır. Görüntünün boyutları 215x215 piksel olmalı ve merkezi görüntü boyutları 94x94 piksel olmalıdır.|
 | Ana sayfa URL'si   | Bu, başvuru kaydı sırasında belirtilen oturum açma URL'sidir.|
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 | Alan           | Açıklama        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

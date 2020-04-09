@@ -5,32 +5,28 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/18/2019
-ms.openlocfilehash: 9498f2cf56f0bfe20d0806e5dc9872403dabb180
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/07/2020
+ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979102"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879148"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarını kullanarak HDInsight'ta Apache Hadoop kümeleri oluşturma
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Bu makalede, Azure Kaynak Yöneticisi şablonlarını kullanarak Azure HDInsight kümeleri oluşturmanın çeşitli yollarını öğrenirsiniz. Daha fazla bilgi için bkz: [Azure Kaynak Yöneticisi şablonuyla bir uygulama dağıt.](../azure-resource-manager/templates/deploy-powershell.md) Diğer küme oluşturma araçları ve özellikleri hakkında bilgi edinmek için, bu sayfanın üst kısmındaki sekme seçiciyi tıklatın veya [Küme oluşturma yöntemlerine](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)bakın.
+Bu makalede, [Azure Kaynak Yöneticisi şablonlarını](../azure-resource-manager/templates/deploy-powershell.md)kullanarak Azure HDInsight kümeleri oluşturmanın çeşitli yollarını öğreniyorsunuz. Diğer küme oluşturma araçları ve özellikleri hakkında bilgi edinmek için bu sayfanın üst kısmındaki sekme seçiciyi tıklatın. Ayrıca bakınız, [Küme oluşturma yöntemleri.](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
-
-* [Azure aboneliği.](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)
-* Azure PowerShell ve/veya Azure CLI.
-
-### <a name="resource-manager-templates"></a>Resource Manager şablonları
+## <a name="resource-manager-templates"></a>Resource Manager şablonları
 
 Kaynak Yöneticisi şablonu, uygulamanız için aşağıdaki kaynakları tek ve eşgüdümlü bir işlemle oluşturmayı kolaylaştırır:
+
 * HDInsight kümeleri ve bunların bağımlı kaynakları (varsayılan depolama hesabı gibi).
 * Diğer kaynaklar [(Apache Sqoop](https://sqoop.apache.org/)kullanmak için Azure SQL Veritabanı gibi).
 

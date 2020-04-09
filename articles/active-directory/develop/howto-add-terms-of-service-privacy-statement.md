@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
-ms.reviwer: lenalepa, sureshja
+ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 8fc85781f139b45e9e37f6e0f7cc36974041352d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78300018"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80884248"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Nasıl yapIlir: Bir uygulama için hizmet koşullarını ve gizlilik bildirimini yapılandırma
 
@@ -58,7 +58,7 @@ Hizmet koşulları ve gizlilik bildirimi hazır olduğunda, aşağıdaki yöntem
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>Azure portalını kullanma
 Azure portalında aşağıdaki adımları izleyin.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Uygulama Kayıtları** bölümüne gidin ve uygulamanızı seçin.
 3. Marka **bölmesini** açın.
 4. **Hizmet Şartları URL'si** ve **Gizlilik Bildirimi URL** alanlarını doldurun.

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585366"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879080"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı yönetilen örneği nedir?
 
@@ -121,7 +121,7 @@ Aşağıdaki liste, İş Açısından Kritik hizmet katmanının temel özellikl
 
 Azure SQL Veritabanı yeni yönetilen örnekleri otomatik olarak dağıtmak, örnek özelliklerini güncelleştirmek ve artık gerekmediğinde örnekleri silmek için kullanabileceğiniz yönetim işlemleri sağlar. Bu bölümde yönetim işlemleri ve bunların tipik süreleri hakkında bilgi verilmektedir.
 
-Azure [Sanal Ağlar (VNets) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md#deploy-azure-services-into-virtual-networks) desteklemek ve müşteriler için yalıtım ve güvenlik sağlamak için yönetilen örnek, müşterinin sanal ağ alt ağında dağıtılan özel bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)dayanır. Esasen, boş bir alt ağda yönetilen her örnek dağıtımı yeni bir sanal küme oluşturmayla sonuçlanır.
+Azure [Sanal Ağlar (VNets) içindeki dağıtımları](../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşteriler için yalıtım ve güvenlik sağlamak için yönetilen örnek, müşterinin sanal ağ alt ağında dağıtılan özel bir yalıtılmış sanal makine kümesini temsil eden [sanal kümelere](sql-database-managed-instance-connectivity-architecture.md#high-level-connectivity-architecture)dayanır. Esasen, boş bir alt ağda yönetilen her örnek dağıtımı yeni bir sanal küme oluşturmayla sonuçlanır.
 
 Dağıtılan yönetilen örneklerdeki sonraki işlemlerin altta yatan sanal küme üzerinde de etkileri olabilir. Bu, yeni dağıtımlar veya varolan yönetilen örneklerde güncelleştirmeler planlarken dikkate alınması gereken bir ek yükü yle birlikte ek sanal makineler intikal ettiğinden, yönetim işlemlerinin süresini etkiler.
 
@@ -151,13 +151,13 @@ Aşağıdaki tabloişlemleri ve tipik genel süreleri özetler:
 |Dağıtım |Boş veya boş olmayan bir alt ağda 4 vCore'un ilk örneği oluşturulması|Sanal küme oluşturma**|Operasyonların %90'ı 4 saatte bitiyor|
 |Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., 3. vb. örnek)|Sanal küme yeniden boyutlandırma|Operasyonların %90'ı 2,5 saatte bitiyor|
 |**Güncelleştir** |Örnek özellik değişikliği (yönetici parolası, AAD girişi, Azure Karma Avantaj bayrağı)|Yok|1 dakikaya kadar|
-|Güncelleştirme |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını ekleme|Operasyonların %90'ı 5 dakikada bitiyor|
-|Güncelleştirme |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik hizmet katmanı)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştirme |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç)|- Sanal küme yeniden boyutlandırma<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 2,5 saatte bitiyor|
-|Güncelleştirme |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştirme |Örnek ölçek 4 vCores (Genel Amaç)|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 4 saat 5 dk**|
-|Güncelleştirme |Örnek ölçek 4 vCores (İş Kritik) aşağı|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 4 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
-|Güncelleştirme |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
+|Güncelleştir |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını ekleme|Operasyonların %90'ı 5 dakikada bitiyor|
+|Güncelleştir |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik hizmet katmanı)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
+|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç)|- Sanal küme yeniden boyutlandırma<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 2,5 saatte bitiyor|
+|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
+|Güncelleştir |Örnek ölçek 4 vCores (Genel Amaç)|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 4 saat 5 dk**|
+|Güncelleştir |Örnek ölçek 4 vCores (İş Kritik) aşağı|- Sanal küme yeniden boyutlandırma (ilk kez yapılırsa, sanal küme oluşturma**)<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 4 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
+|Güncelleştir |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
 |**Silme**|Örnek silme|Tüm veritabanları için günlük kuyruk yedekleme|%90 operasyonlar 1 dakikaya kadar biter.<br>Not: alt ağdaki son örnek silinirse, bu işlem 12 saat sonra sanal küme silme zamanlayacaktır***|
 |Silme|Sanal küme silme (kullanıcı tarafından başlatılan işlem olarak)|Sanal küme silme|Operasyonların %90'ı 1,5 saate kadar tamamlar|
 
@@ -188,11 +188,11 @@ Aşağıdaki tablo, belirli yönetim işlemlerini ve tipik genel süreleri iptal
 Kategori  |İşlem  |Cancelable  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
 |Dağıtım |Örnek oluşturma |Hayır |  |
-|Güncelleştirme |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı) |Hayır |  |
-|Güncelleştirme |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştirme |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştirme |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
-|Güncelleştirme |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
+|Güncelleştir |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı) |Hayır |  |
+|Güncelleştir |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
+|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
+|Güncelleştir |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (İş Kritik) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
+|Güncelleştir |Örnek hizmet katmanı değişikliği (İş Açısından Genel Amaç ve tam tersi) |Evet |Operasyonların %90'ı 5 dakikada bitiyor |
 |Sil |Örnek silme |Hayır |  |
 |Sil |Sanal küme silme (kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
 
@@ -239,7 +239,7 @@ Azure SQL Veritabanı, verilerinizi korumak için kullanılabilecek bir dizi gel
 - [Yönetilen örnek denetimi](sql-database-managed-instance-auditing.md) veritabanı olaylarını izler ve bunları Azure depolama hesabınıza yerleştirilen bir denetim günlüğü dosyasına yazar. Denetim, mevzuata uygunluğun korunmasına, veritabanı etkinliğini anlamanıza ve iş kaygılarına veya şüpheli güvenlik ihlallerini gösterebilecek tutarsızlıklar ve anormallikler hakkında bilgi edinmeye yardımcı olabilir.
 - Hareket halindeki veri şifreleme - yönetilen bir örnek, Aktarım Katmanı Güvenliği'ni kullanarak hareket halindeki veriler için şifreleme sağlayarak verilerinizi güvence altına alar. Aktarım katmanı güvenliğine ek olarak, yönetilen örnek dağıtım seçeneği, [her zaman şifrelenmiş](/sql/relational-databases/security/encryption/always-encrypted-database-engine)olan uçuş, istirahat ve sorgu işleme sırasında hassas verilerin korunmasını sağlar. Always Encrypted, kritik öneme sahip verilerin çalınması gibi güvenlik ihlallerine karşı sektörde benzersiz koruma sağlayan bir özelliktir. Örneğin, Her Zaman Şifrelenmiş ile, kredi kartı numaraları her zaman veritabanında şifrelenir, hatta sorgu işleme sırasında bile, yetkili personel veya bu verileri işlemek için gereken uygulamalar tarafından kullanım noktasında şifre çözme sağlar.
 - [Gelişmiş Tehdit Koruması,](sql-database-managed-instance-threat-detection.md) hizmette yerleşik olarak veritabanlarına erişmek veya veritabanlarından yararlanmak için olağandışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlayarak [denetimi](sql-database-managed-instance-auditing.md) tamamlar. Şüpheli etkinlikler, olası güvenlik açıkları ve SQL enjeksiyon saldırılarının yanı sıra anormal veritabanı erişim desenleri hakkında uyarılırsınız. Gelişmiş Tehdit Koruması uyarıları Azure [Güvenlik Merkezi'nden](https://azure.microsoft.com/services/security-center/) görüntülenebilir ve şüpheli etkinliklerin ayrıntılarını sağlayabilir ve tehdidin nasıl araştırılabildiğini ve azaltılabildiğini nasıl değerlendireceğiniz konusunda eylem önerebilir.  
-- [Dinamik veri maskeleme,](/sql/relational-databases/security/dynamic-data-masking) ayrıcalıklı olmayan kullanıcılara maskeleyerek hassas veri maruziyetini sınırlar. Dinamik veri maskeleme, hassas verilerin ne kadarının uygulama katmanı üzerinde en az etkiyle ortaya çıkaracağını belirlemenize olanak sağlayarak hassas verilere yetkisiz erişimi önlemeye yardımcı olur. Bu özellik, hassas verileri belirlenen veritabanı alanlarına yapılan sorgunun sonuç kümesinde gizleyen ancak veritabanındaki verileri değiştirmeyen ilke tabanlı bir güvenlik özelliğidir.
+- [Dinamik veri maskeleme,](/sql/relational-databases/security/dynamic-data-masking) ayrıcalıklı olmayan kullanıcılara maskeleyerek hassas veri maruziyetini sınırlar. Dinamik veri maskeleme, hassas verilerin ne kadarının uygulama katmanı üzerinde en az etkiyle ortaya çıkaracağını belirlemenize olanak sağlayarak hassas verilere yetkisiz erişimi önlemeye yardımcı olur. Veritabanındaki veriler değiştirilmese de, belirli bir sorgunun sonucu kümesinde hassas verileri gizleyen ilke tabanlı bir güvenlik özelliğidir.
 - [Satır düzeyinde güvenlik,](/sql/relational-databases/security/row-level-security) bir sorguyu yürüten kullanıcının özelliklerine (grup üyeliği veya yürütme bağlamı gibi) dayalı olarak veritabanı tablosundaki satırlara erişimi denetlemenize olanak tanır. Satır düzeyi güvenlik (RLS), uygulamanızın güvenlik tasarımını ve kodlama aşamasını kolaylaştırır. RLS, veri satırı erişiminde kısıtlama uygulamanızı sağlar. Örneğin, çalışanların yalnızca departmanlarıyla ilgili veri satırlarına erişebilmelerini sağlamak veya bir veri erişimini yalnızca ilgili verilerle sınırlamak.
 - [Saydam veri şifreleme (TDE),](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) yönetilen örnek veri dosyalarını şifreler, veri leri istirahatte şifreleme olarak bilinir. TDE gerçek zamanlı G/Ç şifrelemeve veri ve günlük dosyalarışifresini gerçekleştirir. Şifreleme, kurtarma sırasında kullanılabilirlik için veritabanı önyükleme kaydında depolanan bir veritabanı şifreleme anahtarı (DEK) kullanır. Tüm veritabanlarınızı yönetilen bir durumda saydam veri şifrelemeile koruyabilirsiniz. TDE, SQL Server'ın depolama ortamının çalınmasına karşı korumak için birçok uyumluluk standardı tarafından gerekli olan kanıtlanmış şifreleme teknolojisidir.
 

@@ -2,24 +2,21 @@
 title: Web API'leri çağıran bir web uygulaması oluşturma - Microsoft kimlik platformu | Azure
 description: Web API'lerini çağıran bir web uygulaması oluşturmayı öğrenin (genel bakış)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 14f513306b3f0bc0c06a4143e5174c3ecddaef62
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5af9e34baf6115e801fbfe35e6e3895e48b360e7
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617157"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881732"
 ---
 # <a name="scenario-a-web-app-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran bir web uygulaması
 

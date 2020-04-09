@@ -1,28 +1,23 @@
 ---
-title: Microsoft kimlik platformu & OAuth2.0 On-Behalf-Akış | Azure
+title: Microsoft kimlik platformu ve OAuth2.0 On-Behalf-Akış | Azure
 description: Bu makalede, OAuth2.0 On-Behalf-Of akışını kullanarak hizmet kimlik doğrulaması için hizmet uygulamak için HTTP iletileri nasıl kullanılacağı açıklanmaktadır.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 09f6f318-e88b-4024-9ee1-e7f09fb19a82
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 37ce80c94478d2250eae321f7a42bda64d441dea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a689e0f588046296591069801d621f3608a372e5
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77159651"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886271"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 On-Behalf-Of akış
 

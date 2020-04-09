@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619139"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985295"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
@@ -23,7 +23,7 @@ Artık tüm Azure bölgelerinde Azure Cosmos DB'de depolanan belgeler ve yedekle
 
 ## <a name="how-do-i-secure-my-database"></a>Veritabanımı nasıl güvenli hale alarım?
 
-Veri güvenliği, siz, müşteri ve veritabanı sağlayıcınız arasında paylaşılan bir sorumluluktur. Seçtiğiniz veritabanı sağlayıcısına bağlı olarak, taşıdığınız sorumluluk miktarı değişebilir. Şirket içi bir çözüm seçerseniz, son nokta korumasından donanımınızın fiziksel güvenliğine kadar her şeyi sağlamanız gerekir ki bu kolay bir iş değildir. Azure Cosmos DB gibi bir PaaS bulut veritabanı sağlayıcısı seçerseniz, ilgi alanınız önemli ölçüde küçülür. Microsoft'un Cloud Computing için [Paylaşılan Sorumlulukları](https://aka.ms/sharedresponsibility) teknik incelemesinden ödünç alınan aşağıdaki resim, Azure Cosmos DB gibi bir PaaS sağlayıcısıyla sorumluluğunuzun nasıl azaldığını gösterir.
+Veri güvenliği, siz, müşteri ve veritabanı sağlayıcınız arasında paylaşılan bir sorumluluktur. Seçtiğiniz veritabanı sağlayıcısına bağlı olarak, taşıdığınız sorumluluk miktarı değişebilir. Şirket içi bir çözüm seçerseniz, son nokta korumasından donanımınızın fiziksel güvenliğine kadar her şeyi sağlamanız gerekir ki bu kolay bir iş değildir. Azure Cosmos DB gibi bir PaaS bulut veritabanı sağlayıcısı seçerseniz, ilgi alanınız önemli ölçüde küçülür. Microsoft'un Cloud Computing için [Paylaşılan Sorumlulukları](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) teknik incelemesinden ödünç alınan aşağıdaki resim, Azure Cosmos DB gibi bir PaaS sağlayıcısıyla sorumluluğunuzun nasıl azaldığını gösterir.
 
 ![Müşteri ve veritabanı sağlayıcısı sorumlulukları](./media/database-security/nosql-database-security-responsibilities.png)
 
@@ -70,7 +70,7 @@ Her birini ayrıntılı olarak inceleyelim.
 |Silinen verileri geri yükleme|Otomatik çevrimiçi yedeklemeler, olaydan 30 gün sonrasına kadar yanlışlıkla silmiş olabileceğiniz verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme hakkında](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) daha fazla bilgi edinin|
 |Hassas verileri koruma ve yalıtma|Yeniliklerde listelenen bölgelerdeki tüm veriler? şimdi istirahatte şifrelenir.<br><br>Kişisel veriler ve diğer gizli veriler belirli bir kapsayıcıya yalıtılabilir ve okuma-yazma veya salt okunur erişim belirli kullanıcılarla sınırlı olabilir.|
 |Saldırılar için monitör|Denetim [günlüğü ve etkinlik günlüklerini](logging.md)kullanarak, normal ve anormal etkinlik için hesabınızı izleyebilirsiniz. Kaynaklarınızda hangi işlemlerin gerçekleştirilmediğini, işlemi kimin başlattığını, işlemin ne zaman gerçekleştiğini, işlemin durumunu ve bu tabloyu izleyen ekran görüntüsünde gösterildiği gibi çok daha fazlasını görüntüleyebilirsiniz.|
-|Saldırılara yanıt verme|Olası bir saldırıyı bildirmek için Azure desteğiyle iletişime geçtikten sonra, 5 adımlık bir olay yanıt süreci başlatıldı. 5 adımlı işlemin amacı, bir sorun algılandıktan ve bir soruşturma başlatıldıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olan en kısa sürede geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik Yanıtı](https://aka.ms/securityresponsepaper)hakkında daha fazla bilgi edinin.|
+|Saldırılara yanıt verme|Olası bir saldırıyı bildirmek için Azure desteğiyle iletişime geçtikten sonra, 5 adımlık bir olay yanıt süreci başlatıldı. 5 adımlı işlemin amacı, bir sorun algılandıktan ve bir soruşturma başlatıldıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olan en kısa sürede geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik Yanıtı](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)hakkında daha fazla bilgi edinin.|
 |Geo-eskrim|Azure Cosmos DB, egemen bölgeler için veri yönetimi sağlar (örneğin, Almanya, Çin, ABD Gov).|
 |Korumalı tesisler|Azure Cosmos DB'deki veriler Azure'un korumalı veri merkezlerinde SSD'lerde depolanır.<br><br>[Microsoft küresel veri merkezlerinde](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) daha fazla bilgi edinin|
 |HTTPS/SSL/TLS şifreleme|Azure Cosmos DB'ye tüm bağlantılar HTTPS'yi destekler. Azure Cosmos DB, TLS 1.2'yi de destekler.<br>En az TLS sürümü sunucu tarafı zorlamak mümkündür. Bunu yapmak için [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)lütfen .|

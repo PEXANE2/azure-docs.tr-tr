@@ -3,12 +3,12 @@ title: Düzeltilebilir bir ilke dağıtma
 description: Bir müşteriyi Azure'a devredilen kaynak yönetimine nasıl bağlayıp kaynaklarına kendi kiracınız aracılığıyla erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b625e9e3c96866cfbc655a55b770c9ac07a626bd
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270647"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985176"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Devredilen abonelik içinde düzeltilebilen bir ilke dağıtma
 
@@ -40,7 +40,7 @@ Aşağıdaki örnekte, Kullanıcı Erişim Yöneticisi rolüne sahip bir **princ
 
 Kullanıcıyı yukarıda açıklandığı gibi gerekli izinlerle oluşturduktan sonra, bu kullanıcı düzeltme görevlerini kullanan müşteri kiracısında ilkeleri dağıtabilir.
 
-Örneğin, bu örnekte gösterildiği gibi, müşteri kiracısında Azure Anahtar Kasası kaynaklarında tanılamayı etkinleştirmek [istediğinizi](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring)varsayalım. Bu senaryoyu etkinleştirmek için uygun izinlere sahip (yukarıda açıklandığı gibi) yönetici kiracıdaki bir kullanıcı, bir [Azure Kaynak Yöneticisi şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtacak.
+Örneğin, bu örnekte gösterildiği gibi, müşteri kiracısında Azure Anahtar Kasası kaynaklarında tanılamayı etkinleştirmek [istediğinizi](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)varsayalım. Bu senaryoyu etkinleştirmek için uygun izinlere sahip (yukarıda açıklandığı gibi) yönetici kiracıdaki bir kullanıcı, bir [Azure Kaynak Yöneticisi şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtacak.
 
 Devralınan bir abonelikle kullanılacak ilke atamasını oluşturmanın şu anda Azure portalında değil, API'ler aracılığıyla yapılması gerektiğini unutmayın. Bunu yaparken, **apiVersion** **2019-04-01-önizleme**, yeni **temsilciManagedIdentityResourceId** özelliği ni içeren olarak ayarlanmalıdır. Bu özellik, müşteri kiracısında bulunan yönetilen bir kimliği (Azure temsilci kaynak yönetimine dahil edilmiş bir abonelik veya kaynak grubuna) eklemenize olanak tanır.
 
@@ -62,7 +62,7 @@ Aşağıdaki örnek, **bir temsilciManagedIdentityResourceId**ile bir rol atama 
 ```
 
 > [!TIP]
-> Benzer bir [örnek,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag) devredilen bir aboneye etiket ekleyen veya kaldıran (değişiklik efektini kullanarak) bir ilkenin nasıl dağıtılsüreceğini göstermek için kullanılabilir.
+> Benzer bir [örnek,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-add-or-replace-tag) devredilen bir aboneye etiket ekleyen veya kaldıran (değişiklik efektini kullanarak) bir ilkenin nasıl dağıtılsüreceğini göstermek için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

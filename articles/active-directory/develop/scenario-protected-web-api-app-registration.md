@@ -3,25 +3,21 @@ title: Korumalı web API uygulama kaydı | Azure
 titleSuffix: Microsoft identity platform
 description: Korumalı bir web API'sini nasıl oluşturabileceğinizi ve uygulamayı kaydetmek için ihtiyacınız olan bilgileri öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262509"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882395"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı web API: Uygulama kaydı
 

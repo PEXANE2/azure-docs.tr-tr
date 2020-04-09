@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: db886006ff5b9adf3de0932951f6cce4958e8ebd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06225e284000d7f10f575be08cd683488abec339
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158138"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985499"
 ---
 # <a name="create-and-manage-multiple-dashboards"></a>Birden çok pano oluşturma ve yönetme
 
-**Pano,** uygulamanıza ilk gittiğınızda yüklenen sayfadır. Uygulamanızdaki **bir oluşturucu,** tüm kullanıcılar için varsayılan uygulama panosunu tanımlar. Bu varsayılan panoyu kendi kişiselleştirilmiş uygulama panonuzla değiştirebilirsiniz. Farklı verileri görüntüleyen ve aralarında geçiş yapan birkaç panonuz olabilir. 
+**Pano,** uygulamanıza ilk gittiğınızda yüklenen sayfadır. Uygulamanızdaki **bir oluşturucu,** tüm kullanıcılar için varsayılan uygulama panosunu tanımlar. Ayrıca kendi kişiselleştirilmiş uygulama panonuzu da oluşturabilirsiniz. Farklı verileri görüntüleyen ve aralarında geçiş yapan birkaç panonuz olabilir.
 
 Uygulamanın **admin** yöneticisiyseniz, uygulamanın diğer kullanıcılarıyla paylaşmak üzere en fazla 10 uygulama düzeyi panosu oluşturabilirsiniz. Yalnızca **yöneticiler** uygulama düzeyi panoları oluşturma, düzenle ve silme yeteneğine sahiptir. 
 

@@ -2,25 +2,21 @@
 title: Web API (daemon uygulaması) aramak için belirteçler edinin - Microsoft kimlik platformu | Azure
 description: Web API'lerini çağıran bir daemon uygulaması oluşturmayı öğrenin (jeton edinme)
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f1010949a72f95ef2836c43666e6cea9281e04d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a81f3ffb7ec190943c50127b129523badf0ef0a7
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262652"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80882990"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API'leri çağıran Daemon uygulaması - bir belirteç edinin
 

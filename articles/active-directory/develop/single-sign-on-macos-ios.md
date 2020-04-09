@@ -3,26 +3,22 @@ title: macOS ve iOS'ta SSO'ya yapı
 titleSuffix: Microsoft identity platform
 description: macOS ve iOS'ta tek bir tabelayı (SSO) nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/03/2020
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 91a55520b37c549c8f1d94ba6cf08ecd24db85b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262457"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80881257"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Nasıl yapılandırılır: sso'nun macOS ve iOS'ta yapılandırılMası
 
@@ -69,7 +65,7 @@ Uygulamalarınızda SSO'yu etkinleştirmek için, aşağıda daha ayrıntılı o
 
 Microsoft kimlik platformunun hangi uygulamaların jetonları paylaşabileceğini bilmesi için, bu uygulamaların aynı İstemci Kimliğini veya Uygulama Kimliğini paylaşması gerekir. Bu, portala ilk uygulamanızı kaydettiğinizde size sağlanan benzersiz tanımlayıcıdır.
 
-Microsoft kimlik platformunun, aynı Uygulama Kimliğini ayrı kullanan uygulamalara yönlendirme **uri'leri**tarafından anlatılıyor. Her uygulama, biniş portalında kayıtlı birden çok Yönlendirme URIs'ine sahip olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Örnek:
+Microsoft kimlik platformunun, aynı Uygulama Kimliğini ayrı kullanan uygulamalara yönlendirme **uri'leri**tarafından anlatılıyor. Her uygulama, biniş portalında kayıtlı birden çok Yönlendirme URIs'ine sahip olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Örneğin:
 
 App1 Uri Yönlendirme:`msauth.com.contoso.mytestapp1://auth`  
 App2 Redirect URI:`msauth.com.contoso.mytestapp2://auth`  
@@ -149,7 +145,7 @@ MSAL, Microsoft Authenticator ile aracılı kimlik doğrulama desteği sağlar. 
 
 Uygulamanız için bir kimlik doğrulama aracısı kullanarak SSO'yu nasıl etkinleştirdiğiniz aşağıda veda edilebilen adımlar şunlardır:
 
-1. Uygulamaiçin uygulama için aracı uyumlu bir Yönlendirme URI biçimini uygulamanızın Info.plist'ine kaydedin. Broker uyumlu Redirect URI `msauth.<app.bundle.id>://auth`biçimidir. '<app.bundle.id>'' ile başvurunuzun paket kimliğini değiştirin. Örnek:
+1. Uygulamaiçin uygulama için aracı uyumlu bir Yönlendirme URI biçimini uygulamanızın Info.plist'ine kaydedin. Broker uyumlu Redirect URI `msauth.<app.bundle.id>://auth`biçimidir. '<app.bundle.id>'' ile başvurunuzun paket kimliğini değiştirin. Örneğin:
 
     ```xml
     <key>CFBundleURLSchemes</key>
