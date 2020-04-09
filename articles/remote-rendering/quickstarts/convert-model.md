@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 084f32ec9c1574dfdaf29edc24a406444de9a91d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b1bf2c365229a418870250a78a733f9870fb5bb0
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679929"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892385"
 ---
 # <a name="quickstart-convert-a-model-for-rendering"></a>Quickstart: Oluşturma için bir modeli dönüştürme
 
@@ -72,10 +72,10 @@ Formu aşağıdaki şekilde doldurun:
 * Açılan kutunun altındaki bağlantıdan yeni bir Kaynak Grubu oluşturun ve bu **ARR_Tutorial**
 * Depolama **hesabı adı için**buraya benzersiz bir ad girin. **Bu ad genel olarak benzersiz olmalıdır,** aksi takdirde adı verilen hazır olduğunu bildiren bir istem olacaktır. Bu hızlı başlangıç kapsamında, biz **arrtutorialstorage**adını. Buna göre, bu hızlı başlangıç herhangi bir olay için adınızı ile değiştirmeniz gerekir.
 * Size yakın bir **konum** seçin. İdeal olarak, diğer hızlı başlatmada işlemeyi ayarlamak için kullanılan aynı konumu kullanın.
-* **Performans** 'Standart' olarak ayarlandı
-* 'StorageV2 (genel amaçlı v2)' olarak ayarlanmış **hesap türü**
-* **Çoğaltma** 'Okuma-erişim coğrafi yedekli depolama (RA-GRS)' olarak ayarlanır
-* **Erişim katmanı** 'Hot' olarak ayarlandı
+* **Standart** olarak ayarlanmış performans
+* StorageV2 olarak ayarlanmış **hesap türü** (genel amaçlı v2)
+* **Çoğaltma,** Okuma erişimi coğrafi yedekli depolama (RA-GRS) olarak ayarlanmıştır
+* **Erişim katmanı** Hot olarak ayarlandı
 
 Diğer sekmelerde özelliklerin hiçbirinin değiştirilmesi gerekmez, bu nedenle **"Gözden Geçir + oluştur"** bölümüne devam edebilir ve kurulumu tamamlamak için adımları izleyebilirsiniz.
 
@@ -159,11 +159,14 @@ Model dönüştürüldükten sonra **blobOutputContainerName**tarafından verile
 
 Config ayarı **çıktısıAssetFileName** dönüştürülen varlığın adını belirler - parametre isteğe bağlıdır ve çıktı dosya adı aksi takdirde giriş dosyası adından çıkarılır. 
 
-Bir PowerShell açın, [ön koşullarda](#prerequisites)belirtildiği gibi *Azure PowerShell'i* yüklediğinizden emin olun. Ardından aboneliğinize giriş yapın:
+Bir PowerShell açın, [ön koşullarda](#prerequisites)belirtildiği gibi *Azure PowerShell'i* yüklediğinizden emin olun. Ardından aşağıdaki komutla aboneliğinize giriş yapın ve ekrandaki yönergeleri izleyin:
 
 ```PowerShell
-Connect-AzAccount -Subscription "<your Azure subscription id>"
+Connect-AzAccount
 ```
+
+> [!NOTE]
+> Kuruluşunuzun birden fazla aboneliği olması durumunda, SubscriptionId ve Kiracı bağımsız değişkenlerini belirtmeniz gerekebilir. [Connect-AzAccount belgelerindeki](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)ayrıntıları bulun.
 
 Dizin `azure-remote-rendering\Scripts` değiştirin ve dönüşüm komut dosyası çalıştırın:
 

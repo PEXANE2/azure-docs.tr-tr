@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74384106"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983628"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi'nde Azure Web Uygulaması Güvenlik Duvarı
 
@@ -32,7 +32,7 @@ Uygulama Ağ Geçidi bir uygulama teslim denetleyicisi (ADC) olarak çalışır.
 
 Uygulama Ağ Geçidi güvenlik geliştirmeleri SSL ilke yönetimi ve uçlardan uca SSL desteği içerir. Uygulama güvenliği, WAF'ın Application Gateway'e entegrasyonu yla güçlendirilir. Bu kombinasyon, web uygulamalarınızı sık karşılaşılan güvenlik açıklarına karşı korur. Ayrıca, yönetilmesi kolay bir merkezi konum sağlar.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Bu bölümde, WAF'ın Application Gateway'de sağladığı temel avantajlar açıklanmaktadır.
 
@@ -160,7 +160,7 @@ Yerleşik Azure WAF güvenlik duvarı etkinlikleri çalışma kitabıyla, WAF'ı
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Günlüğe Kaydetme
+#### <a name="logging"></a>Günlüğe kaydetme
 
 Uygulama Ağ Geçidi WAF, algıladığını her tehdit hakkında ayrıntılı raporlama sağlar. Günlüğe kaydetme, Azure Tanılama günlükleriyle tümleştirilir. Uyarılar .json biçiminde kaydedilir. Bu günlükler Azure [Monitor günlükleriyle](../../azure-monitor/insights/azure-networking-analytics.md)tümleştirilebilir.
 

@@ -3,19 +3,19 @@ title: Kapsayıcı desteği
 titleSuffix: Azure Cognitive Services
 description: Docker kapsayıcıların Bilişsel Hizmetleri verilerinize nasıl yaklaştırabileceğini öğrenin.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 01/10/2020
-ms.author: dapine
-ms.openlocfilehash: d75962b98543991a065f6b165279215614175925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 7a38ec47d416027e8ea3fa772ae01e4f6264197a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219417"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876852"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Bilişsel Hizmetlerde konteyner desteği
 
@@ -23,10 +23,10 @@ Azure Bilişsel Hizmetler'deki kapsayıcı desteği, geliştiricilerin Azure'da 
 
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
-> * [BilgisayarLı Vizyon][cv-containers]
+> * [Görüntü İşleme][cv-containers]
 > * [Yüz][fa-containers]
 > * [Form Tanıma][fr-containers]
-> * [Dil Anlama (LUIS)][lu-containers]
+> * [Language Understanding (LUIS)][lu-containers]
 > * [Konuşma Hizmeti API’si][sp-containers]
 > * [Metin Analizi][ta-containers]
 
@@ -52,7 +52,7 @@ Azure Bilişsel Hizmetler kapsayıcıları, her biri Azure Bilişsel Hizmetler'd
 | Hizmet | Desteklenen Fiyatlandırma Katmanı | Kapsayıcı | Açıklama |
 |---------|----------|----------|-------------|
 |[Anomali dedektörü][ad-containers] |F0, S0|**Anomali-Dedektör** |Anomali Dedektörü API'sı, zaman serisi verilerinizdeki anormallikleri makine öğrenimi ile izlemenizi ve algılamanızı sağlar.<br>[Erişim izni isteme](https://aka.ms/adcontainer)|
-|[BilgisayarLı Vizyon][cv-containers] |F0, S1|**Okuma** |Makbuzlar, posterler ve kartvizitler gibi farklı yüzeylere ve arka planlara sahip çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Read kapsayıcısı ayrıca resimlerdeki *el yazısı metni* algılar ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Read kapsayıcısı şu anda yalnızca İngilizce ile çalışır.|
+|[Görüntü İşleme][cv-containers] |F0, S1|**Okuma** |Makbuzlar, posterler ve kartvizitler gibi farklı yüzeylere ve arka planlara sahip çeşitli nesnelerin görüntülerinden yazdırılan metni ayıklar. Read kapsayıcısı ayrıca resimlerdeki *el yazısı metni* algılar ve PDF/TIFF/çok sayfalı destek sağlar.<br/><br/>**Önemli:** Read kapsayıcısı şu anda yalnızca İngilizce ile çalışır.|
 |[Yüz][fa-containers] |F0, S0|**Yüz** |Görüntülerdeki insan yüzlerini algılar ve yüz işaretleri (burun ve gözler gibi), cinsiyet, yaş ve makine tarafından öngörülen diğer yüz özellikleri gibi özellikleri tanımlar. Algılamaya ek olarak, Face aynı görüntüdeki iki yüzün veya farklı görüntülerin bir güven puanı kullanarak aynı olup olmadığını denetleyebilir veya benzer veya aynı yüzün zaten var olup olmadığını görmek için yüzleri veritabanıyla karşılaştırabilir. Ayrıca, paylaşılan görsel özellikleri kullanarak benzer yüzleri gruplar halinde düzenleyebilir.<br>[Erişim izni isteme](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Form tanıyıcı][fr-containers] |F0, S0|**Form Tanıma** |Form Anlama, anahtar değeri çiftleri ve tabloları formlardan tanımlamak ve ayıklamak için makine öğrenimi teknolojisini uygular.<br>[Erişim izni isteme](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS][lu-containers] |F0, S0|**LUIS** ([resim](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Luis uygulaması olarak da bilinen eğitimli veya yayımlanmış bir Dil Bilgisi modelini bir docker konteynerine yükler ve kapsayıcının API uç noktalarından sorgu tahminlerine erişim sağlar. Kapsayıcıdan sorgu günlükleri toplayabilir ve uygulamanın tahmin doğruluğunu artırmak için bunları [LUIS portalına](https://www.luis.ai) geri yükleyebilirsiniz.|

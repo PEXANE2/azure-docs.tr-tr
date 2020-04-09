@@ -2,26 +2,22 @@
 title: Microsoft kimlik platformuna (v2.0) genel bakış - Azure
 description: Microsoft kimlik platformu (v2.0) bitiş noktası ve platformu hakkında bilgi edinin.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: f6953fb5d016c802db260c55bc4970c3f029ab1a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240831"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886254"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft kimlik platformu (v2.0) genel bakış
 

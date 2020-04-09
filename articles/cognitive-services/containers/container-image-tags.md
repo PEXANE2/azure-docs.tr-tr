@@ -3,18 +3,18 @@ title: Bilişsel Hizmetler kapsayıcı görüntüsü etiketleri
 titleSuffix: Azure Cognitive Services
 description: Tüm Bilişsel Hizmet kapsayıcı görüntü etiketleri kapsamlı bir liste.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: eed2223dbfeee307b552cdd010530f27c379f5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219450"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878774"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Bilişsel Hizmetler kapsayıcı resim etiketleri
 
@@ -79,7 +79,7 @@ Bu kapsayıcı resimde aşağıdaki etiketler vardır:
 | `1.1.008640001-amd64-preview` |       |
 | `1.1.008510001-amd64-preview` |       |
 
-## <a name="language-understanding-luis"></a>Dil Anlama (LUIS)
+## <a name="language-understanding-luis"></a>Language Understanding (LUIS)
 
 [LUIS][lu-containers] kapsayıcı görüntüsü konteyner kayıt `mcr.microsoft.com` sendikasında bulunabilir. Bu depo içinde `azure-cognitive-services` bulunan ve adlandırılır. `luis` Tam nitelikli konteyner görüntü `mcr.microsoft.com/azure-cognitive-services/luis`adı, .
 

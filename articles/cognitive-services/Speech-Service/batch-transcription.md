@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: fb39f1ec83416ee8ab2a33b514971110db0c0b17
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1f88df186526c2f9903337bb3331940be0989c3d
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668847"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892470"
 ---
 # <a name="what-is-batch-transcription"></a>Toplu transkripsiyon nedir?
 
@@ -129,7 +129,7 @@ Transkripsiyon yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `AddSentiment`
    :::column-end:::
    :::column span="2":::
-      Duygu analizinin söyleyeme uygulanıp uygulanamaması gerektiğini belirtir. Kabul edilen `true` değerler etkinleştirmek ve `false` (varsayılan değer) devre dışı bırakılır.
+      Duygu analizinin söyleyeme uygulanıp uygulanamaması gerektiğini belirtir. Kabul edilen `true` değerler etkinleştirmek ve `false` (varsayılan değer) devre dışı bırakılır. Daha fazla ayrıntı için [Duygu Analizi'ne](#sentiment-analysis) bakın.
 :::row-end:::
 :::row:::
    :::column span="1":::
@@ -218,12 +218,41 @@ Mono giriş ses için bir transkripsiyon sonuç dosyası oluşturuluyor. Stereo 
 
 Sonuç şu formları içerir:
 
-| Form        | İçerik                                                                                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `Lexical`   | Gerçek kelimeler tanındı.                                                                                                                             |
-| `ITN`       | Tanınan metnin ters metin normalleştirilmiş biçimi. Kısaltmalar ("doctor smith" to "dr smith"), telefon numaraları ve diğer dönüşümler uygulanır. |
-| `MaskedITN` | Küfür maskeleme ile ITN formu uygulanır.                                                                                                             |
-| `Display`   | Tanınan metnin görüntü formu. Eklenen noktalama işaretleri ve büyük harf dahildir.                                                             |
+:::row:::
+   :::column span="1":::
+      **Form**
+   :::column-end:::
+   :::column span="2":::
+      **İçerik**
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Lexical`
+   :::column-end:::
+   :::column span="2":::
+      Gerçek kelimeler tanındı.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `ITN`
+   :::column-end:::
+   :::column span="2":::
+      Tanınan metnin ters metin normalleştirilmiş biçimi. Kısaltmalar ("doctor smith" to "dr smith"), telefon numaraları ve diğer dönüşümler uygulanır.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `MaskedITN`
+   :::column-end:::
+   :::column span="2":::
+      Küfür maskeleme ile ITN formu uygulanır.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `Display`
+   :::column-end:::
+   :::column span="2":::
+      Tanınan metnin görüntü formu. Eklenen noktalama işaretleri ve büyük harf dahildir.
+:::row-end:::
 
 ## <a name="speaker-separation-diarization"></a>Hoparlör ayrımı (Isarizasyon)
 
@@ -260,6 +289,10 @@ Duygu özelliği ses ifade duyguları tahmin ediyor. Duygu için `Negative`0 ve 
 - Müşterilerin bir ürün veya hizmet hakkında nelerden hoşlanıp hoşlanmadıklarını belirleme
 
 Duygusallık sözlü formuna göre ses segmenti başına puanlanır. Bu ses segmentindeki tüm metin duyarlılığı hesaplamak için kullanılır. Transkripsiyon un tamamı için hiçbir toplu duyarlılık hesaplanmıyor. Şu anda duygu analizi sadece İngilizce dil için kullanılabilir.
+
+> [!NOTE]
+> Bunun yerine Microsoft Text Analytics API'sini kullanmanızı öneririz. Bu anahtar cümlesi çıkarma, otomatik dil algılama ve daha fazlası gibi duygu analizi ötesinde daha gelişmiş özellikler sunuyor. [Metin Analizi belgelerinde](https://azure.microsoft.com/services/cognitive-services/text-analytics/)bilgi ve örnekleri bulabilirsiniz.
+>
 
 Bir JSON çıktı örneği aşağıdaki gibi görünür:
 

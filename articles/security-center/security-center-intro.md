@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: 11201d6560319dd34ec829f1fb34bd13d45011d7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: d2e7e157156a4049a5db37b1d5c0e02773adbcc3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435815"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879556"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 
@@ -29,7 +29,7 @@ Kaynaklarınızı güvende tutmak, bulut sağlayıcınız Azure ile müşteri ni
 
 Azure Güvenlik Merkezi en acil üç güvenlik sorununu giderir:
 
--   **Hızla değişen iş yükleri** - Bu, bulutun hem güçlü hem de sorunlu bir yönüdür. Bir yandan, son kullanıcıların daha fazlasını yapma yetkisi vardır. Diğer yandan, insanların kullandığı ve oluşturduğu sürekli değişen hizmetlerin güvenlik standartlarınıza uygun olduğundan ve en iyi güvenlik deneyimlerine uyduğundan nasıl emin olabilirsiniz?
+-   **Hızla değişen iş yükleri** – Bulutun hem gücü hem de mücadelesidir. Bir yandan, son kullanıcıların daha fazlasını yapma yetkisi vardır. Diğer yandan, insanların kullandığı ve oluşturduğu sürekli değişen hizmetlerin güvenlik standartlarınıza uygun olduğundan ve en iyi güvenlik deneyimlerine uyduğundan nasıl emin olabilirsiniz?
 
 -   **Giderek daha karmaşık olan saldırılar** - İş yüklerinizi çalıştırdığınız her yerde saldırılar daha karmaşık hale gelmektedir. Aslında İnternete yönelik bir iş yükü olan ve en iyi güvenlik deneyimlerini takip etmemeniz halinde sizi daha da savunmasız bırakabilecek genel bulut iş yüklerinizi güvenli hale getirmeniz zorunludur.
 
@@ -146,5 +146,7 @@ Kapsamlı günlük koleksiyonu - Windows ve Linux günlükleri tüm güvenlik an
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Güvenlik Merkezi ile çalışmaya başlamak için bir Microsoft Azure aboneliğinizin olması gerekir. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://azure.microsoft.com/free/) için kaydolabilirsiniz.
-- Azure aboneliğiniz ile Security Center'ın ücretsiz fiyatlandırma katmanı etkinleştirilir. Gelişmiş güvenlik yönetimi ve tehdit koruması özelliklerinden yararlanmak için standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman 30 gün boyunca ücretsiz olarak denenebilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
+
+- Azure Portalı'ndaki Azure Güvenlik Merkezi panosunu ilk kez ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirildikten sonra, Güvenlik Merkezi'nin ücretsiz fiyatlandırma katmanı tüm geçerli Azure aboneliklerinizde etkinleştirilir. Gelişmiş güvenlik yönetimi ve tehdit algılama özelliklerinden yararlanmak için standart fiyatlandırma katmanına yükseltmeniz gerekir. Standart katman 30 gün boyunca ücretsiz olarak denenebilir. Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/) bakın.
+
 - Güvenlik Merkezi standardını şimdi etkinleştirmeye hazırsanız, [Quickstart: Güvenlik Merkezi Standardı'na](security-center-get-started.md) azure aboneliğinizde adımlar alabilirsiniz.

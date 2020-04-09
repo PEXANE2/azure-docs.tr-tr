@@ -3,20 +3,20 @@ title: Docker konteyner ayarları - LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS kapsayıcı çalışma zamanı ortamı komut `docker run` bağımsız değişkenleri kullanılarak yapılandırılır. LUIS birkaç isteğe bağlı ayarları ile birlikte birkaç gerekli ayarları vardır.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.author: dapine
-ms.openlocfilehash: a30fcd0ec7e53c78876596baf787639e81c638db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73795018"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874220"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Dil Anlama Docker kapsayıcıları yapılandırma 
 
@@ -34,7 +34,7 @@ Bu kapsayıcı aşağıdaki yapılandırma ayarlarına sahiptir:
 |Evet|[Eula](#eula-setting)| Kapsayıcının lisansını kabul ettiğinizi gösterir.|
 |Hayır|[Akıcı](#fluentd-settings)|Log ve isteğe bağlı olarak metrik verileri Akıcı bir sunucuya yazın.|
 |Hayır|[Http Proxy](#http-proxy-credentials-settings)|Giden isteklerde bulunmak için bir HTTP proxy'si yapılandırın.|
-|Hayır|[Günlüğe Kaydetme](#logging-settings)|Kapsayıcınız için ASP.NET Çekirdek günlük desteği sağlar. |
+|Hayır|[Günlüğe kaydetme](#logging-settings)|Kapsayıcınız için ASP.NET Çekirdek günlük desteği sağlar. |
 |Evet|[Bağlar](#mount-settings)|Ana bilgisayardan kapsayıcıya ve kapsayıcıdan ana bilgisayara kadar verileri okuma ve yazma.|
 
 > [!IMPORTANT]

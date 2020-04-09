@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 3e0c56ed669ecda5a130dcf9df103bc8a19faf06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057423"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983919"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>App Service Ortamınızı zorlamalı tünel ile yapılandırma
 
@@ -60,7 +60,7 @@ ASE alt yağınızı BGP rotalarını yoksayacak şekilde yapılandırabilirsini
 ASE alt yağınızı BGP rotalarını yoksayacak şekilde yapılandırmak için:
 
 * Mevcut değilse bir UDR oluşturun ve ASE alt ağınıza atayın.
-* Azure portalda ASE alt ağınıza atanmış olan rota tablosu arabirimini açın.  Yapılandırma'yı seçin.  BGP rota yayma özelliğini Devre dışı olarak ayarlayın.  Kaydet’e tıklayın. Bu özelliği kapatma adımları [Rota tablosu oluşturma][routetable] belgesinde belirtilmiştir.
+* Azure portalda ASE alt ağınıza atanmış olan rota tablosu arabirimini açın.  Yapılandırma'yı seçin.  Sanal ağ ağ geçidi rotasını Devre Dışı Bırakılmış olarak ayarlayın.  Kaydet’e tıklayın. Bu özelliği kapatma adımları [Rota tablosu oluşturma][routetable] belgesinde belirtilmiştir.
 
 ASE alt netini tüm BGP rotalarını yok sayacak şekilde yapılandırdıktan sonra, uygulamalarınız artık şirket içinde erişemez. Uygulamalarınızın şirket içi kaynaklara erişmesini sağlamak için ASE alt ağınıza atanan UDR'yi güncelleyin ve şirket içi adres aralıklarınıza rotalar ekleyin. Sonraki atlama türünün Sanal ağ geçidi olarak ayarlanması gerekir. 
 

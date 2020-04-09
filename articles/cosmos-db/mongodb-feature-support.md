@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 12e5dba0339b6092564e5d35c1a6250b0c47f50f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "72754996"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981894"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>MongoDB için Azure Cosmos DB’nin API’si (sürüm 3.2): desteklenen özellikler ve söz dizimi
 
@@ -77,7 +77,7 @@ Azure Cosmos DB'nin MongoDB için API'si aşağıdaki veritabanı komutlarını 
 
 ## <a name="aggregation-pipelinea"></a>Toplama ardışık düzeni</a>
 
-Cosmos DB genel önizleme MongoDB 3.2 için toplama boru hattı destekler. Genel önizlemenin katılımı hakkında yönergeler için [Azure bloguna](https://aka.ms/mongodb-aggregation) bakın.
+Cosmos DB genel önizleme MongoDB 3.2 için toplama boru hattı destekler. Genel önizlemenin katılımı hakkında yönergeler için [Azure bloguna](https://azure.microsoft.com/blog/azure-cosmosdb-extends-support-for-mongodb-aggregation-pipeline-unique-indexes-and-more/) bakın.
 
 ### <a name="aggregation-commands"></a>Toplama komutları
 

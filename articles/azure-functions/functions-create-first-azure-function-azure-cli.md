@@ -4,18 +4,25 @@ description: Komut satırından nasıl bir işlev oluşturlayacağınızı ve ar
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: a131feab91816a6fdd5075a903cf53651f0de555
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: c1e1b9912109ae8a7361c9d0d776ca1810a90d5c
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673166"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886645"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlatma: Azure'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
 Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için komut satırı araçlarını kullanırsınız. Kodu yerel olarak sınandıktan sonra, kodu Azure İşlevlerinin sunucusuz ortamına dağıtirsınız. Bu hızlı başlangıcın tamamlanması, Azure hesabınızda birkaç USD sent veya daha az küçük bir maliyete neden olabilir.
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 Ayrıca bu makalenin [Visual Studio Code tabanlı bir sürümü](functions-create-first-function-vs-code.md) vardır.
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> Maven tercih geliştirme aracı değilse, [Gradle,](/azure/azure-functions/functions-create-first-java-gradle) [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions) ve [VS Kodu](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)kullanarak Java devlopers için benzer öğreticiler göz atın.
+::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 37f7366d6622356017e458fb8f893b0be0851335
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b12aa860bee189f706bd98df63fc194a3a0cc71
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73825703"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874713"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>Hızlı başlatma: Veritabanını Yönetilen Örneğe geri yükleme
 
@@ -46,7 +46,7 @@ Bu hızlı başlangıç:
 
 SSMS'te, Geniş Dünya İthalatçılar veritabanını Yönetilen Örneğinize geri yüklemek için aşağıdaki adımları izleyin. Veritabanı yedekleme dosyası önceden yapılandırılmış bir Azure Blob depolama hesabında depolanır.
 
-1. SMSS'i açın ve Yönetilen Örneğinize bağlanın.
+1. SSMS'leri açın ve Yönetilen Örneğinize bağlanın.
 2. Sol menüden Yönetilen Örnek'e sağ tıklayın ve yeni bir sorgu penceresi açmak için **Yeni Sorgu'yu** seçin.
 3. Yönetilen Örneğinizde [bir kimlik bilgisi oluşturmak](https://docs.microsoft.com/sql/t-sql/statements/create-credential-transact-sql) için önceden yapılandırılmış bir depolama hesabı ve SAS anahtarı kullanan aşağıdaki SQL komut dosyasını çalıştırın.
 

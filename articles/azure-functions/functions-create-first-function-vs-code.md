@@ -5,18 +5,25 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c1e5c0a714a8b66d83c19acc53f6a680a9196a90
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e1cf95d3c6ac8918e9e7e5593d687ee2d398810
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673434"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886628"
 ---
 # <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Hızlı başlatma: Visual Studio Kodunu kullanarak Azure İşlevleri projesi oluşturma
 
 Bu makalede, HTTP isteklerine yanıt veren bir işlev oluşturmak için Visual Studio Code'u kullanırsınız. Kodu yerel olarak sınandıktan sonra, kodu Azure İşlevlerinin sunucusuz ortamına dağıtirsınız. Bu hızlı başlangıcın tamamlanması, Azure hesabınızda birkaç USD sent veya daha az küçük bir maliyete neden olabilir. 
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 Bu makalenin [CLI tabanlı](functions-create-first-azure-function-azure-cli.md) bir sürümü de vardır.
+::: zone-end  
+
+::: zone pivot="programming-language-java"  
+> [!NOTE]
+> VS Kodu tercih geliştirme aracı değilse, [Maven,](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java) [Gradle](/azure/azure-functions/functions-create-first-java-gradle) ve [IntelliJ IDEA](/azure/java/intellij/azure-toolkit-for-intellij-quickstart-functions)kullanarak Java devlopers için benzer öğreticiler göz atın.
+::: zone-end  
 
 ## <a name="configure-your-environment"></a>Ortamınızı yapılandırma
 
@@ -25,11 +32,11 @@ Başlamadan önce aşağıdaki gereksinimleri n istediğinizden emin olun:
 + Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-python"  
-+ [Node.js](https://nodejs.org/), Windows tarafından npm için gereklidir. Sadece [Aktif LTS ve Bakım LTS sürümleri. ](https://nodejs.org/about/releases/) Sürümünüzü `npm --version` kontrol etmek için komutu kullanın.
++ [Node.js](https://nodejs.org/), Windows tarafından npm için gereklidir. Sadece [Aktif LTS ve Bakım LTS sürümleri.](https://nodejs.org/about/releases/) Sürümünüzü `node --version` kontrol etmek için komutu kullanın.
     macOS ve Linux'ta yerel geliştirme için gerekli değildir.   
 ::: zone-end  
 ::: zone pivot="programming-language-javascript,programming-language-typescript"  
-+ [Node.js](https://nodejs.org/), Active LTS ve Maintenance LTS versiyonları (10.14.1 önerilir). Sürümünüzü `npm --version` kontrol etmek için komutu kullanın.
++ [Node.js](https://nodejs.org/), Active LTS ve Maintenance LTS versiyonları (10.14.1 önerilir). Sürümünüzü `node --version` kontrol etmek için komutu kullanın.
 ::: zone-end 
 ::: zone pivot="programming-language-python"
 + [Python 3.8](https://www.python.org/downloads/release/python-381/), [Python 3.7](https://www.python.org/downloads/release/python-375/), [Python 3.6](https://www.python.org/downloads/release/python-368/) Azure Fonksiyonları (x64) tarafından desteklenir.

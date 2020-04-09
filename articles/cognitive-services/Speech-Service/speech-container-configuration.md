@@ -3,19 +3,19 @@ title: Konuşma kapsayıcılarını yapılandırma
 titleSuffix: Azure Cognitive Services
 description: Konuşma hizmeti, kapsayıcılarınız için depolama, günlük ve telemetri ve güvenlik ayarlarını kolayca yapılandırabilmeniz ve yönetebilmeniz için her kapsayıcıya ortak bir yapılandırma çerçevesi sağlar.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.author: dapine
-ms.openlocfilehash: dd5a531e4a979cba9c2a766c7774762a0427ad02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 5c74aa48b18661236eb55278d1e5a05215b2432c
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79037317"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877584"
 ---
 # <a name="configure-speech-service-containers"></a>Konuşma hizmet kapsayıcılarını yapılandırma
 

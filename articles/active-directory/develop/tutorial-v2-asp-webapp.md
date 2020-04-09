@@ -3,25 +3,21 @@ title: Microsoft kimlik platformuna web uygulaması ASP.NET oturum açma ekleme
 titleSuffix: Microsoft identity platform
 description: Geleneksel web tarayıcısı tabanlı bir uygulama ve OpenID Connect standardı kullanarak Microsoft oturum açma nın ASP.NET bir çözümde uygulanması
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e33f52d5c1f9c06a5acbae5c66b051ca82ef14c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 017cc886b3d47a97a29f45979cb49215de31ae0a
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79126630"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880984"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET bir web uygulamasına Microsoft'a oturum açma ekleme
 
@@ -461,7 +457,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Uygulamanızda kimlerin oturum açabileceğini kısıtlama
 
-Varsayılan olarak, bu kılavuz tarafından oluşturulan uygulamayı oluşturduğunuzda, başvurunuz kişisel hesapların oturum açma (outlook.com, live.com ve diğerleri dahil) yanı sıra entegre edilmiş herhangi bir şirket veya kuruluşun iş ve okul hesaplarını kabul edecektir. Microsoft kimlik platformu. Bu, SaaS uygulamaları için önerilen bir seçenektir.
+Varsayılan olarak, bu kılavuz tarafından oluşturulan uygulamayı oluşturduğunuzda, uygulamanız kişisel hesapların (outlook.com, live.com ve diğerleri dahil) oturum açmalarının yanı sıra Microsoft kimlik platformuyla entegre edilmiş herhangi bir şirket veya kuruluşun iş ve okul hesaplarını kabul eder. Bu, SaaS uygulamaları için önerilen bir seçenektir.
 
 Uygulamanız için kullanıcı oturum açma erişimini kısıtlamak için birden çok seçenek kullanılabilir.
 

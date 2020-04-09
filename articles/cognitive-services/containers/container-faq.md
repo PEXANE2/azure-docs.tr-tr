@@ -3,18 +3,18 @@ title: Bilişsel Hizmetler konteynersık sorulan sorular (SSS)
 titleSuffix: Azure Cognitive Services
 description: Sık sorulan sorular ve cevaplar.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/11/2019
-ms.author: dapine
-ms.openlocfilehash: 33b99d50db4384c7de818a7dd0bb8492c86bef97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73961888"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876515"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Bilişsel Hizmetler kapları sık sorulan sorular (SSS)
 
@@ -26,10 +26,10 @@ ms.locfileid: "73961888"
 
 > [!div class="checklist"]
 > * [Anomali Algılayıcısı][ad-containers]
-> * [BilgisayarLı Vizyon][cv-containers]
+> * [Görüntü İşleme][cv-containers]
 > * [Yüz][fa-containers]
 > * [Form Tanıma][fr-containers]
-> * [Dil Anlama (LUIS)][lu-containers]
+> * [Language Understanding (LUIS)][lu-containers]
 > * [Konuşma Hizmeti API’si][sp-containers]
 > * [Metin Analizi][ta-containers]
 
@@ -108,10 +108,10 @@ Müşteriler, soruları yanıtlamak ve sorunları desteklemek için [Azure bilgi
 **A:** Müşteriler, Bilişsel Hizmetler bulutuna benzer şekilde tüketime göre ücretlendirilir. Kapsayıcıların ölçüm verilerini Azure'a gönderecek şekilde yapılandırılması gerekir ve hareketler buna göre faturalandırılır. Barındırılan ve şirket içi hizmetlerde kullanılan kaynaklar, her iki kullanıma göre sayma, katmanlı fiyatlandırma ile tek kotaya eklenir. Daha fazla ayrıntı için, ilgili teklifin fiyatlandırma sayfasına bakın.
 
 * [Anomali Algılayıcısı][ad-containers-billing]
-* [BilgisayarLı Vizyon][cv-containers-billing]
+* [Görüntü İşleme][cv-containers-billing]
 * [Yüz][fa-containers-billing]
 * [Form Tanıma][fr-containers-billing]
-* [Dil Anlama (LUIS)][lu-containers-billing]
+* [Language Understanding (LUIS)][lu-containers-billing]
 * [Konuşma Hizmeti API’si][sp-containers-billing]
 * [Metin Analizi][ta-containers-billing]
 
@@ -135,10 +135,10 @@ Müşteriler, soruları yanıtlamak ve sorunları desteklemek için [Azure bilgi
 **A:** Bilişsel Hizmetler kapsayıcıları, x64 Linux Docker Containers'ı destekleyen uyumlu linux düğümü, VM ve kenar aygıtıçalıştırabilen x64 tabanlı kapsayıcılardır. Hepsi CPU işlemcileri gerektirir. Her konteyner teklifi için minimum ve önerilen yapılandırmalar aşağıda mevcuttur:
 
 * [Anomali Algılayıcısı][ad-containers-recommendations]
-* [BilgisayarLı Vizyon][cv-containers-recommendations]
+* [Görüntü İşleme][cv-containers-recommendations]
 * [Yüz][fa-containers-recommendations]
 * [Form Tanıma][fr-containers-recommendations]
-* [Dil Anlama (LUIS)][lu-containers-recommendations]
+* [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Konuşma Hizmeti API’si][sp-containers-recommendations]
 * [Metin Analizi][ta-containers-recommendations]
  

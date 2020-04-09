@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: a8ef0f172a8e9118eef2d2f8a11f3efbce665171
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473528"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873965"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Python web uygulamasına Microsoft ile oturum açma ekleme
 
@@ -41,8 +41,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
-> 1. Azure portalına gidin [- Uygulama kayıtları.](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)
-> 1. **Yeni kayıt**seçin.
+> 1. Azure portalına gidin [- Uygulama kayıtları.](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/PythonQuickstartPage/sourceType/docs)
 > 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yeni uygulamanızı indirmek ve otomatik olarak yapılandırmak için yönergeleri izleyin.
 >
@@ -59,8 +58,11 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 > 1. Bir uygulama sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin:
 >      - **Ad** bölümüne, örneğin `python-webapp`uygulama kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
 >      - **Desteklenen hesap türleri**altında, tüm kuruluş **dizininde ve kişisel Microsoft hesaplarında Hesapları**seçin.
->      - **Uri'yi Yeniden Yönlendirme** bölümünde, açılan listede **Web** platformünü seçin ve değeri `http://localhost:5000/getAToken`.'ye ayarlayın.
->      - **Kaydol**’u seçin. Uygulamaya **Genel Bakış** sayfasında, daha sonra kullanmak üzere **Uygulama (istemci) kimlik** değerine dikkat edin.
+>      - **Kaydol**’u seçin.
+>      - Uygulamaya **Genel Bakış** sayfasında, daha sonra kullanmak üzere **Uygulama (istemci) kimlik** değerine dikkat edin.
+> 1. Menüden **Kimlik Doğrulama'yı** seçin ve ardından aşağıdaki bilgileri ekleyin:
+>    - **Web** platformu yapılandırmasını ekleyin. Yönlendirme `http://localhost:5000/getAToken` **URI'leri**olarak ekleyin.
+>    - **Kaydet'i**seçin.
 > 1. Sol **menüde, Sertifikalar & sırları** seçin ve Müşteri **Sırları** bölümünde Yeni müşteri **sırrı** tıklayın:
 >
 >      - Anahtar açıklaması yazın (örnek uygulama gizli).
@@ -105,11 +107,11 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-the-application"></a>Adım 3: Uygulamayı Yapılandır
-> 
+>
 > 1. Zip dosyasını kök klasöre yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) açın
 > 1. Tümleşik bir geliştirme ortamı kullanıyorsanız, örneği favori IDE'nizde açın (isteğe bağlı).
 > 1. Kök klasöründe bulunabilen **app_config.py** dosyasını açın ve aşağıdaki kod parçacığı yla değiştirin:
-> 
+>
 > ```python
 > CLIENT_ID = "Enter_the_Application_Id_here"
 > CLIENT_SECRET = "Enter_the_Client_Secret_Here"

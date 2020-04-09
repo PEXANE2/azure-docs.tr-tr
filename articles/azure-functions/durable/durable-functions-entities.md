@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 6ecf3bb5999296b2f5f8f5c25616fac8e0278cda
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80132516"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877551"
 ---
 # <a name="entity-functions"></a>Varlık işlevleri
 
@@ -55,7 +55,7 @@ Varlıkların işlev olarak temsil edildiği ve işlemlerin uygulama tarafından
 
 Sınıf **tabanlı sözdizimi (.NET yalnızca)**, varlıklar ve işlemler sınıflar ve yöntemlerle temsil edilir. Bu sözdizimi daha kolay okunabilir kod üretir ve işlemlerin tür güvenli bir şekilde çağrılmasını sağlar. Sınıf tabanlı sözdizimi, işlev tabanlı sözdiziminin üstündeki ince bir katmandır, bu nedenle her iki varyant da aynı uygulamada birbirinin yerine kullanılabilir.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Örnek: Fonksiyon tabanlı sözdizimi - C #
 
@@ -109,7 +109,7 @@ Bu varlığın durumu, sayacın geçerli değerini depolayan bir alan içeren bi
 
 Sınıf tabanlı sözdizimi ve nasıl kullanılacağı hakkında daha fazla bilgi için varlık [sınıflarını tanımlama'ya](durable-functions-dotnet-entities.md#defining-entity-classes)bakın.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ### <a name="example-javascript-entity"></a>Örnek: JavaScript varlığı
 
@@ -171,7 +171,7 @@ Aşağıdaki örnekler, varlıklara erişmenin çeşitli yollarını göstermekt
 
 İstemci işlevi olarak da bilinen sıradan bir Azure İşlevi'nden varlıklara erişmek için [varlık istemcisi bağlamayı](durable-functions-bindings.md#entity-client)kullanın. Aşağıdaki örnek, bu bağlamayı kullanarak bir varlık sinyali bir kuyruk tetiklenen işlevi gösterir.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 > [!NOTE]
 > Basitlik için aşağıdaki örnekler, varlıklara erişmek için gevşek olarak yazılan sözdizimini gösterir. Genel olarak, daha fazla tür denetimi [sağladığından, varlıklara arabirimler üzerinden erişmenizi](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) öneririz.
@@ -189,7 +189,7 @@ public static Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -209,7 +209,7 @@ module.exports = async function (context) {
 
 İstemci işlevleri, aşağıdaki örnekte gösterildiği gibi bir varlığın durumunu da sorgulayabilir:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -223,7 +223,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -231,7 +231,7 @@ const df = require("durable-functions");
 module.exports = async function (context) {
     const client = df.getClient(context);
     const entityId = new df.EntityId("Counter", "myCounter");
-    const stateResponse = await context.df.readEntityState(entityId);
+    const stateResponse = await client.readEntityState(entityId);
     return stateResponse.entityState;
 };
 ```
@@ -244,7 +244,7 @@ Varlık durumu sorguları Dayanıklı izleme deposuna gönderilir ve varlığın
 
 Orchestrator [işlevleri, düzenleme tetikleyici bağlamada](durable-functions-bindings.md#orchestration-trigger)API'ler kullanarak varlıklara erişebilir. Aşağıdaki örnek kod, bir `Counter` varlığı çağıran ve işaretleyen bir orkestratör işlevini gösterir.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -263,7 +263,7 @@ public static async Task Run(
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,7 +291,7 @@ Yalnızca orkestrasyonlar varlıkları arama ve bir yanıt alma yeteneğine sahi
 Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara, hatta kendisine sinyal gönderebilir.
 Örneğin, sayaç 100 `Counter` değerine ulaştığında bazı monitör varlığına "kilometre taşına ulaşılan" sinyali gönderebilecek şekilde önceki varlık örneğini değiştirebiliriz.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -306,7 +306,7 @@ Bir varlık işlevi, bir işlemi yürütürken diğer varlıklara, hatta kendisi
         break;
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
     case "add":
@@ -406,7 +406,7 @@ Bu kuralların herhangi bir ihlali, hangi kuralın kırıldığını açıklayan
 
 ## <a name="comparison-with-virtual-actors"></a>Sanal aktörlerle karşılaştırma
 
-Dayanıklı varlıklar özelliklerinin çoğu aktör [modeli](https://en.wikipedia.org/wiki/Actor_model)esinlenilmiştir. Aktörleri zaten biliyorsanız, bu makalede açıklanan kavramların çoğunu tanıyabilirsiniz. Dayanıklı varlıklar özellikle sanal [aktörler](https://research.microsoft.com/projects/orleans/)benzer , veya tahıl, [Orleans projesi](http://dotnet.github.io/orleans/)tarafından popüler olarak . Örnek:
+Dayanıklı varlıklar özelliklerinin çoğu aktör [modeli](https://en.wikipedia.org/wiki/Actor_model)esinlenilmiştir. Aktörleri zaten biliyorsanız, bu makalede açıklanan kavramların çoğunu tanıyabilirsiniz. Dayanıklı varlıklar özellikle sanal [aktörler](https://research.microsoft.com/projects/orleans/)benzer , veya tahıl, [Orleans projesi](http://dotnet.github.io/orleans/)tarafından popüler olarak . Örneğin:
 
 * Dayanıklı varlıklar bir varlık kimliği ile adreslenebilir.
 * Dayanıklı varlık işlemleri, yarış koşullarını önlemek için teker teker seri olarak yürütülür.

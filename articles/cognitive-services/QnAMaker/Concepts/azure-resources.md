@@ -3,12 +3,12 @@ title: Azure kaynakları - QnA Maker
 description: QnA Maker, her biri farklı bir amaca sahip olmak üzere birkaç Azure kaynağı kullanır. Bunların tek tek nasıl kullanıldığını anlamak, doğru fiyatlandırma katmanını planlamanıza ve seçmenize veya fiyatlandırma katmanınızı ne zaman değiştireceğinize bilmenize olanak tanır. Bunların birlikte nasıl kullanıldığını anlamak, sorunları oluştuğunda bulmanızı ve düzeltmenizi sağlar.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 1bd491ecbd878cb7bb05a7eaa5712c75653f2cba
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804308"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873914"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker için azure kaynakları
 
@@ -49,6 +49,16 @@ Aşağıdaki tablo size bazı üst düzey yönergeler verir.
 | Deneme        | Ücretsiz SKU             | Ücretsiz Katman   | Ücretsiz Katman    | 2 KB'ye kadar, 50 MB boyutunda yayımla  |
 | Geliştirme/Test Ortamı   | Standart SKU         | Paylaşımlı      | Temel        | 14 KB'ye kadar, 2 GB boyutunda yayınlayın    |
 | Üretim Ortamı | Standart SKU         | Temel       | Standart     | 49 KB'ye kadar, 25 GB boyutunda yayınlayın |
+
+## <a name="recommended-settings"></a>Önerilen Ayarlar
+
+|Hedef QPS | App Service | Azure Bilişsel Arama |
+| -------------------- | ----------- | ------------ |
+| 3             | S1, 1 Örnek   | S1, 1 Örnek    |
+| 50         | S3, 10 Örnek       | S1, 12 Örnekler         |
+| 80         | S3, 10 Örnek      |  S3, 12 Örnek  |
+| 100         | P3V2, 10 Örnek  | S3, 12 Örnek, 3 Bölüm   |
+| 200 ile 250 arasında         | P3V2, 20 Örnek | S3, 12 Örnek, 3 Bölüm    |
 
 ## <a name="when-to-change-a-pricing-tier"></a>Fiyatlandırma katmanıne ne zaman değişiklik yapmak
 
@@ -164,7 +174,7 @@ API'ler aracılığıyla hizmete istekte bulunmak için bu anahtarları kullanı
 
 |Adı|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [QnA Maker yönetim hizmeti API'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API'ler, bilgi tabanınızdaki soruları ve yanıtları yeniden atamasına ve bilgi tabanınızı yayımlamanıza izin verir. Bu anahtarlar, yeni bir QnA Maker hizmeti oluşturduğunuzda oluşturulur.<br><br>Bu **anahtarları, Anahtarlar** **sayfasındaki Bilişsel Hizmetler** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure portalı](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Bu anahtarlar [QnA Maker yönetim hizmeti API'lerine](https://go.microsoft.com/fwlink/?linkid=2092179)erişmek için kullanılır. Bu API'ler, bilgi tabanınızdaki soruları ve yanıtları yeniden atamasına ve bilgi tabanınızı yayımlamanıza izin verir. Bu anahtarlar, yeni bir QnA Maker hizmeti oluşturduğunuzda oluşturulur.<br><br>Bu **anahtarları, Anahtarlar** **sayfasındaki Bilişsel Hizmetler** kaynağında bulabilirsiniz.|
 |Sorgu bitiş noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, kullanıcı sorusuna yanıt almak için yayımlanmış bilgi bankası bitiş noktasını sorgulamak için kullanılır. Bu sorgu bitiş noktasını genellikle sohbet botunuzda veya QnA Maker hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar, QnA Maker bilgi tabanınızı yayımladığınızda oluşturulur.<br><br>Bu anahtarları **Hizmet ayarları** sayfasında bulun. Açılan menüdeki sayfanın sağ üst kısmındaki kullanıcı menüsünden bu sayfayı bulun.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları

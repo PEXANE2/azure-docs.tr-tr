@@ -12,12 +12,12 @@ author: Ninarn
 ms.author: ninarn
 ms.reviewer: carlrab
 ms.date: 03/12/2020
-ms.openlocfilehash: 5847ef3033d257faef4831785b8abd864d54e835
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c072161db7a477b7973571a18d4f686b1b9c6202
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79209594"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985686"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-to-query-a-sql-database"></a>Hızlı başlatma: SQL veritabanını sorgulamak için Azure portalının sorgu düzenleyicisini kullanma
 
@@ -175,7 +175,7 @@ Sorgu düzenleyicisi ile çalışırken bilmeniz gereken birkaç şey vardır.
 
 * Sorgu düzenleyicisi iletişim kurmak için 443 ve 1443 bağlantı noktalarını kullanır. Bu bağlantı noktalarında giden HTTPS trafiğini etkinleştirdiğinizden emin olun. Ayrıca, veritabanlarınıza ve veri ambarlarınıza erişmek için giden IP adresinizi sunucunun izin verilen güvenlik duvarı kurallarına eklemeniz gerekir.
 
-* Sorgu Düzenleyicisi, Istemci Ip adresini SQL Veritabanı güvenlik duvarına eklemeye gerek kalmadan Private Link ile çalışır
+* Özel Bağlantı bağlantınız varsa, Sorgu Düzenleyicisi Istemci Ip adresini SQL Veritabanı güvenlik duvarına eklemeye gerek kalmadan çalışır
 
 * **F5 tuşuna** basıldığında sorgu düzenleyicisi sayfası yenilenir ve üzerinde çalışılan tüm sorgu kaybolur.
 

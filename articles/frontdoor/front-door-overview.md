@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 0ee35f4f0b4bd8c46a0445e2905ae3b50d11f721
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b2ee41324cfaefa4d5aec3aa02b2d0d8c75da78f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79471665"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879131"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door nedir?
 Azure Ön Kapı, yüksek kullanılabilirlik için en iyi performansı ve anında küresel arızayı optimize ederek web trafiğiniz için küresel yönlendirmeyi tanımlamanızı, yönetmenize ve izlemenize olanak tanır. Ön Kapı ile, global (çok bölgeli) tüketici ve kurumsal uygulamalarınızı Azure ile küresel bir kitleye ulaşan sağlam, yüksek performanslı kişiselleştirilmiş modern uygulamalara, API'lere ve içeriğe dönüştürebilirsiniz.
@@ -51,12 +51,12 @@ Benzer biçimde, aynı Front Door’da yapılandırılmış iki farklı etki ala
 ## <a name="session-affinity"></a>Oturum benzeşimi
 Tanımlama bilgilerine dayalı oturum benzeşimi özelliği, bir kullanıcı oturumunu aynı uygulama arka ucunda tutmak istediğinizde kullanışlıdır. Front Door tarafından yönetilen tanımlama bilgilerini kullanarak, kullanıcı oturumundan gelen sonraki trafik işlenmek üzere aynı uygulama arka ucuna yönlendirilir. Bu özellik, bir kullanıcı oturumu için oturum durumunun arka uca yerel olarak kaydedildiği durumlarda önemlidir.
 
-## <a name="secure-sockets-layer-ssl-termination"></a>Güvenli Yuva Katmanı (SSL) sonlandırma
-Front Door uçta SSL sonlandırmayı destekler. Başka bir deyişle, tek tek kullanıcılar uygulama arka ucuyla uzun ağır bağlantıları kullanmak yerine Front Door ortamlarına SSL bağlantısı ayarlayabilir. Front Door bunun yanı sıra Front Door ortamlarıyla arka uçlarınız arasında hem HTTP hem de HTTPS bağlantısını destekler. Dolayısıyla, uçtan uca SSL şifrelemesini de ayarlayabilirsiniz. Örneğin, Front Door uygulama yükünüz için bir dakikada 5000'den fazla istek alırsa, etkin hizmetler için sıcak bağlantının yeniden kullanımından dolayı arka ucunuzla diyelim ki yalnızca 500 bağlantı kurar; bu şekilde arka uçlarınızın yükünü önemli ölçüde azaltır.
+## <a name="tls-termination"></a>TLS sonlandırma
+Ön Kapı, TLS sonlandırmaişlemini, yani uygulama arka uçları ile uzun mesafeli bağlantılar üzerinden kurmak yerine, ön kapı ortamları ile TLS bağlantısı kurabilir. Front Door bunun yanı sıra Front Door ortamlarıyla arka uçlarınız arasında hem HTTP hem de HTTPS bağlantısını destekler. Böylece, uçlardan uca TLS şifrelemesini de ayarlayabilirsiniz. Örneğin, Front Door uygulama yükünüz için bir dakikada 5000'den fazla istek alırsa, etkin hizmetler için sıcak bağlantının yeniden kullanımından dolayı arka ucunuzla diyelim ki yalnızca 500 bağlantı kurar; bu şekilde arka uçlarınızın yükünü önemli ölçüde azaltır.
 
 ## <a name="custom-domains-and-certificate-management"></a>Özel etki alanları ve sertifika yönetimi
 İçerik ulaştırmak için Front Door kullandığınızda, Front Door URL’nizde kendi etki alanı adınızın görünmesini istiyorsanız özel bir etki alanı gereklidir. Görünür bir etki alanınızın olması, müşterileriniz için kolaylık sağlar ve markalama için faydalıdır.
-Front Door özel etki alanı adlarında HTTPS’yi de destekler. Trafiğiniz için Front Door tarafından yönetilen sertifikaları seçerek veya kendi özel SSL sertifikanızı karşıya yükleyerek bu özelliği kullanabilirsiniz.
+Front Door özel etki alanı adlarında HTTPS’yi de destekler. Bu özelliği, trafiğiniz için Ön Kapı yönetilen sertifikalarını seçerek veya kendi özel TLS/SSL sertifikanızı yükleyerek kullanın.
 
 ## <a name="application-layer-security"></a>Uygulama katmanı güvenliği
 Azure Ön Kapı, http/HTTPS iş yükünüzü istemci IP adreslerine, ülke koduna ve http parametrelerine dayalı olarak yararlanmaya karşı korumak için erişim denetimi için özel Web Uygulaması Güvenlik Duvarı (WAF) kuralları yazmanıza olanak tanır. Buna ek olarak, Front Door kötü amaçlı bot trafiğiyle mücadele etmek için hız sınırlaması kuralları oluşturmanızı da sağlar. Web Uygulaması Güvenlik Duvarı hakkında daha fazla bilgi için Azure [Web Uygulaması Güvenlik Duvarı nedir?](../web-application-firewall/overview.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3b908406c8717d2fa8834bc4dff1bcd27ec4761f
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 967d391d4ac9a9704688dce9636d9a71b2002549
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241426"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879369"
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Sanal Ağı nedir?
 
@@ -76,6 +76,15 @@ Azure varsayılan olarak alt ağlar, bağlı sanal ağlar, şirket içi ağlar v
 
 - **Rota tabloları:** Her bir alt ağ için trafiğin nereye yönlendirileceğini denetleyen rotalarla özel rota tabloları oluşturabilirsiniz. [Rota tabloları](virtual-networks-udr-overview.md#user-defined) hakkında daha fazla bilgi edinin.
 - **Sınır ağ geçidi protokolü (BGP) rotaları:** Azure VPN Gateway veya ExpressRoute bağlantısı kullanarak sanal ağınızı şirket içi ağınıza bağlarsanız, şirket içi BGP rotalarınızı sanal ağlarınıza yayabilirsiniz. [Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#dynamic-route-exchange) ile BGP’yi kullanma hakkında daha fazla bilgi edinin.
+
+## <a name="virtual-network-integration-for-azure-services"></a>Azure hizmetleri için sanal ağ tümleştirmesi
+
+Azure hizmetlerini bir Azure sanal ağına entegre etmek, sanal makinelerden hizmete özel erişim veya sanal ağdaki bilgi işlem kaynaklarına özel erişim sağlar.
+Azure hizmetlerini sanal ağınızda aşağıdaki seçeneklerle tümleştirebilirsiniz:
+- [Hizmetin özel örneklerini](virtual-network-for-azure-services.md) sanal ağa dağıtma. Hizmetlere daha sonra sanal ağ içinde ve şirket içi ağlardan özel olarak erişilebilir.
+- [Özel Bağlantı'yı](../private-link/private-link-overview.md) kullanarak sanal ağınızdan ve şirket içi ağlardan hizmetin belirli bir örneğine özel olarak erişin.
+- Ayrıca, [hizmet bitiş noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla, hizmete sanal bir ağ genişleterek ortak uç noktaları kullanarak hizmete erişebilirsiniz. Hizmet bitiş noktaları, hizmet kaynaklarının sanal ağa güvenli hale alınmasına olanak tanır.
+ 
 
 ## <a name="azure-vnet-limits"></a>Azure VNet sınırları
 

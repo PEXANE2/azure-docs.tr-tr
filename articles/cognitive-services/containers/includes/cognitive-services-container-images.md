@@ -1,19 +1,19 @@
 ---
 title: Konteyner depoları ve görüntüleri
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 description: Tüm Bilişsel Hizmet teklifleri için konteyner kayıtları, depolar ve görüntü adlarını temsil eden iki tablo.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 03/10/2020
-ms.author: dapine
-ms.openlocfilehash: 55a3bb5f894d3ab753cfec64687abc9c7cae53cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79082610"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80876853"
 ---
 ### <a name="container-repositories-and-images"></a>Konteyner depoları ve görüntüleri
 
@@ -28,7 +28,7 @@ Microsoft Kapsayıcı Kayıt Defteri (MCR), Bilişsel Hizmetler için herkese a�
 
 | Hizmet | Kapsayıcı | Konteyner Kayıt Defteri / Depo / Resim Adı |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Anahtar İfade Ayıklama | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Dil Algılama | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Metin Analizi](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Yaklaşım Analizi | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
@@ -40,7 +40,7 @@ Kapsayıcı Önizleme kayıt defteri, Bilişsel Hizmetler için herkese açık t
 | Hizmet | Kapsayıcı | Konteyner Kayıt Defteri / Depo / Resim Adı |
 |--|--|--|
 | [Anomali dedektörü](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomali Algılayıcısı | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
-| [BilgisayarLı Vizyon](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Görüntü İşleme](../../Computer-vision/computer-vision-how-to-install-containers.md) | Okuma | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
 | [Yüz](../../face/face-how-to-install-containers.md) | Yüz | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Form tanıyıcı](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Tanıma | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Konuşma Hizmeti API’si](../../speech-service/speech-container-howto.md?tab=stt) | Konuşmayı metne dönüştürme | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |

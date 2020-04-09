@@ -1,25 +1,21 @@
 ---
 title: Azure'da entegrasyon ve otomasyon platformu seçenekleri
-description: 'Tümleştirme görevleri için en iyi duruma getirilmiş Microsoft bulut hizmetlerini karşılaştırın: Microsoft Akışı, Mantıksal Uygulamalar, İşlevler ve Web İşler.'
+description: 'Tümleştirme görevleri için en iyi duruma getirilmiş Microsoft bulut hizmetlerini karşılaştırın: Otomatikleştir, Mantıksal Uygulamaları, İşlevler ve Web İşleri.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: bd9f3bfe1578b632707382cfe422f19514e7ce48
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 40293056a73fd88e9ad6b3922aebfe0ba71f07dd
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241321"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878145"
 ---
-> [!NOTE]
-> Microsoft Flow artık Power Automate hizmetidir. Daha fazla bilgi için bu [bloga](https://aka.ms/flow-now-pa) bakın.
-> 
-> Bu içerik, önümüzdeki günlerde marka değişikliğini yansıtacak şekilde güncelleştirilecektir.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure'da doğru entegrasyon ve otomasyon hizmetlerini seçin
 
 Bu makalede aşağıdaki Microsoft bulut hizmetleri karşılaştırılır:
 
-* [Microsoft Flow](https://flow.microsoft.com/)
+* [Microsoft Power Automate](https://flow.microsoft.com/) (Microsoft Flow oldu)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure İşlevleri](https://azure.microsoft.com/services/functions/)
 * [Azure App Service Web İşleri](../app-service/webjobs-create.md)
@@ -28,23 +24,23 @@ Tüm bu hizmetler, tümleştirme sorunlarını çözebilir ve iş süreçlerini 
 
 Azure İşlevleri ve diğer Azure bilgi işlem seçenekleri arasında daha genel bir karşılaştırma arıyorsanız, [Azure bilgi işlem hizmeti seçme ölçütleri](/azure/architecture/guide/technology-choices/compute-comparison) ve mikro hizmetler için Azure bilgi işlem seçeneğini [seçme](/azure/architecture/microservices/design/compute-options)ölçütleri'ne bakın.
 
-## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow ve Azure Logic Apps karşılaştırması
+## <a name="compare-microsoft-power-automate-and-azure-logic-apps"></a>Microsoft Power Automate ve Azure Logic Uygulamalarını Karşılaştırın
 
-Microsoft Flow ve Logic Apps, iş akışları oluşturabilen *ilk tasarımcı* tümleştirme hizmetleridir. Her iki hizmet de çeşitli SaaS uygulamaları ve kurumsal uygulamalarla tümleştirilir. 
+Power Automate ve Logic Apps, iş akışları oluşturabilen *ilk tasarımcı* tümleştirme hizmetleridir. Her iki hizmet de çeşitli SaaS uygulamaları ve kurumsal uygulamalarla tümleştirilir. 
 
-Microsoft Flow, Logic Apps'ın üzerine kurulmuştur. Aynı iş akışı tasarımcısını ve aynı [bağlayıcıları paylaşırlar.](../connectors/apis-list.md) 
+Power Automate, Logic Apps'ın üzerine kuruludur. Aynı iş akışı tasarımcısını ve aynı [bağlayıcıları paylaşırlar.](../connectors/apis-list.md) 
 
-Microsoft Flow, herhangi bir ofis çalışanının geliştiricilere veya BT'ye geçmeden basit tümleştirmeler (örneğin, SharePoint Document Library'deki onay işlemi) gerçekleştirmesini sağlar. Logic Apps, kurumsal düzeyde Azure DevOps ve güvenlik uygulamalarının gerekli olduğu gelişmiş tümleştirmeleri (örneğin, B2B işlemleri) de etkinleştirebilir. Kurumsal iş akışının zamanla karmaşık hale gelmesi tipik bir durumdur. Buna göre, ilk başta bir akışla başlayabilir ve daha sonra gerektiğinde bir mantık uygulamasına dönüştürebilirsiniz.
+Power Automate, herhangi bir ofis çalışanının geliştiricilere veya BT'ye geçmeden basit tümleştirmeler (örneğin, SharePoint Document Library'deki onay süreci) gerçekleştirmesini sağlar. Logic Apps, kurumsal düzeyde Azure DevOps ve güvenlik uygulamalarının gerekli olduğu gelişmiş tümleştirmeleri (örneğin, B2B işlemleri) de etkinleştirebilir. Kurumsal iş akışının zamanla karmaşık hale gelmesi tipik bir durumdur. Buna göre, ilk başta bir akışla başlayabilir ve daha sonra gerektiğinde bir mantık uygulamasına dönüştürebilirsiniz.
 
-Aşağıdaki tablo, Microsoft Flow veya Logic Apps'ın belirli bir tümleştirme için en iyisi olup olmadığını belirlemenize yardımcı olur:
+Aşağıdaki tablo, Power Automate veya Logic Apps'ın belirli bir tümleştirme için en iyisi olup olmadığını belirlemenize yardımcı olur:
 
-|  | Microsoft Flow | Logic Apps |
+|  | Power Automate | Logic Apps |
 | --- | --- | --- |
 | **Kullanıcılar** |Ofis çalışanları, iş kullanıcıları veya SharePoint yöneticileri |Uzman tümleştiriciler ve geliştiriciler, BT uzmanları |
 | **Senaryolar** |Self servis |Gelişmiş tümleştirmeler |
 | **Tasarım aracı** |Tarayıcı içi ve mobil uygulama, yalnızca kullanıcı arabirimi |Tarayıcı içi ve [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Cod görünümü](../logic-apps/logic-apps-author-definitions.md) sağlanır |
 | **Uygulama yaşam döngüsü yönetimi (ALM)** |Üretim dışı ortamlarda tasarım ve test, hazır olduğunda üretime teşvik |Azure DevOps: [Azure Kaynak Yöneticisi'nde](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) kaynak denetimi, test, destek, otomasyon ve yönetilebilirlik |
-| **Yönetici deneyimi** |Microsoft Akış ortamlarını ve veri kaybıönleme (DLP) ilkelerini yönetin, lisanslamayı izleyin: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetin: [Azure portalı](https://portal.azure.com) |
+| **Yönetici deneyimi** |Power Automate ortamlarını ve veri kaybıönleme (DLP) ilkelerini yönetin, lisanslamayı izleyin: [Yönetici merkezi](https://admin.flow.microsoft.com) |Kaynak gruplarını, bağlantıları, erişim yönetimini ve günlüğe kaydetmeyi yönetin: [Azure portalı](https://portal.azure.com) |
 | **Güvenlik** |Office 365 Güvenlik ve Uyumluluk denetim günlükleri, DLP, hassas veriler için [hazır şifreleme](https://wikipedia.org/wiki/Data_at_rest#Encryption) |Azure'un güvenlik güvencesi: [Azure güvenliği,](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity) [Azure Güvenlik Merkezi,](https://azure.microsoft.com/services/security-center/) [denetim günlükleri](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure İşlevleri ve Azure Logic Apps karşılaştırması
@@ -107,25 +103,25 @@ Azure veya üçüncü taraf hizmetleri tümleştirmek için kod parçacıkların
 
 <a name="together"></a>
 
-## <a name="microsoft-flow-logic-apps-functions-and-webjobs-together"></a>Microsoft Akışı, Mantıksal Uygulamalar, Fonksiyonlar ve Web İşler birlikte
+## <a name="power-automate-logic-apps-functions-and-webjobs-together"></a>Otomatikleştirme, Mantıksal Uygulamalar, İşlevler ve Webİş'leri bir arada kullanma
 
 Bu hizmetlerden sadece birini seçmek zorunda değilsiniz. Dış hizmetlerle olduğu kadar birbirleriyle de bütünleşirler.
 
 Akış bir mantıksal uygulamayı çağırabilir. Mantıksal uygulama bir işlevi çağırabilir ve işlev de bir mantıksal uygulamayı çağırabilir. Örneğin, bkz. [Azure Logic Apps ile tümleşen bir işlev oluşturma](functions-twitter-email.md).
 
-Microsoft Akışı, Logic Apps ve Fonksiyonlar arasındaki tümleştirme zaman içinde iyileşmeye devam eder. Bir hizmette bir şey oluşturabilir ve bunu diğer hizmetlerde kullanabilirsiniz.
+Power Automate, Logic Apps ve Fonksiyonlar arasındaki tümleştirme zaman içinde gelişmeye devam eder. Bir hizmette bir şey oluşturabilir ve bunu diğer hizmetlerde kullanabilirsiniz.
 
 Aşağıdaki bağlantıları kullanarak entegrasyon hizmetleri hakkında daha fazla bilgi alabilirsiniz:
 
 * [Tümleştirme senaryoları için Azure İşlevleri ve Azure App Service'ten yararlanma - Christopher Anderson](https://www.biztalk360.com/integrate-2016-resources/leveraging-azure-functions-azure-app-service-integration-scenarios/)
 * [Tümleştirmeler Basitleşti - Charles Lamanna](https://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Mantık Uygulamaları Canlı web yayını](https://aka.ms/logicappslive)
-* [Microsoft Flow sık sorulan sorular](/power-automate/frequently-asked-questions)
+* [Power Otomatikleştir'de sık sorulan sorular](/power-automate/frequently-asked-questions)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 İlk akışınızı, mantıksal uygulamanızı veya işlev uygulamanızı oluşturarak başlayın. Aşağıdaki bağlantılardan birini seçin:
 
-* [Microsoft Flow’u kullanmaya başlama](/power-automate/getting-started)
+* [Power Automate kullanmaya başlama](/power-automate/getting-started)
 * [Mantıksal uygulama oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [İlk Azure işlevinizi oluşturun](functions-create-first-azure-function.md)

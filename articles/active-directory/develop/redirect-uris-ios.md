@@ -3,26 +3,22 @@ title: MSAL (iOS/macOS) ile yönlendirme URI'lerini kullanma | Azure
 titleSuffix: Microsoft identity platform
 description: ObjectiveC için Microsoft Kimlik Doğrulama Kitaplığı (iOS ve macOS için MSAL) ile ObjectiveC için Azure AD Kimlik Doğrulama Kitaplığı (ADAL) arasındaki farklar hakkında bilgi edinin. ObjC) ve nasıl aralarında göç etmek.
 services: active-directory
-documentationcenter: dev-center-name
 author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
-ms.openlocfilehash: c36c6b1b1b08de6d2db9a7f7f9ebd3b162c02383
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1291563a39e3cf3acd4b343302be8b150bf794ca
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240845"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80883517"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>iOS ve macOS için Microsoft kimlik doğrulama kitaplığıyla yeniden yönlendirme URL'lerini kullanma
 
@@ -40,7 +36,7 @@ Ancak, aşağıda açıklandığı gibi, gelişmiş senaryolar için yeniden yö
 
 Microsoft Identity platformunun uygulamalar arasında belirteçleri paylaşabilmesi için her uygulamanın aynı istemci kimliğine veya uygulama kimliğine sahip olması gerekir. Bu, uygulamanızı portala kaydettiğinizde sağlanan benzersiz tanımlayıcıdır (Uygulama başına Apple'a kaydettiğiniz uygulama paketi kimliği değil).
 
-Yönlendirme URI'leri her iOS uygulaması için farklı olmalıdır. Bu, Microsoft kimlik hizmetinin bir uygulama kimliğini paylaşan farklı uygulamaları benzersiz olarak tanımlamasına olanak tanır. Her uygulamanın Azure portalında kayıtlı birden çok yeniden yönlendirme URL'si olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Örnek:
+Yönlendirme URI'leri her iOS uygulaması için farklı olmalıdır. Bu, Microsoft kimlik hizmetinin bir uygulama kimliğini paylaşan farklı uygulamaları benzersiz olarak tanımlamasına olanak tanır. Her uygulamanın Azure portalında kayıtlı birden çok yeniden yönlendirme URL'si olabilir. Süitinizdeki her uygulama farklı bir yeniden yönlendirme URI olacaktır. Örneğin:
 
 Azure portalında aşağıdaki uygulama kaydı göz önüne alındığında:
 
@@ -82,7 +78,7 @@ MSAL, yeniden yönlendirmeNIZIN URI'nin doğru kaydolup olmadığını doğrular
 
 ## <a name="use-a-custom-redirect-uri"></a>Özel yönlendirme URI kullanın
 
-Özel bir yeniden yönlendirme URI `redirectUri` kullanmak için, `MSALPublicClientApplicationConfig` parametreyi `MSALPublicClientApplication` geçirin ve nesneyi başharfe aldığınızda bu nesneyi geçirin. Yeniden yönlendirme URI geçersizse, baş harfdöndürür `nil` `redirectURIError`ve ek bilgilerle birlikte ayarlar.  Örnek:
+Özel bir yeniden yönlendirme URI `redirectUri` kullanmak için, `MSALPublicClientApplicationConfig` parametreyi `MSALPublicClientApplication` geçirin ve nesneyi başharfe aldığınızda bu nesneyi geçirin. Yeniden yönlendirme URI geçersizse, baş harfdöndürür `nil` `redirectURIError`ve ek bilgilerle birlikte ayarlar.  Örneğin:
 
 Amaç-C:
 
