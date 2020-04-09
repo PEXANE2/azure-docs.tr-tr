@@ -2,26 +2,21 @@
 title: Web API'lerini arayan masaüstü uygulamalarını kaydedin - Microsoft kimlik platformu | Azure
 description: Web API'leri (uygulama kaydı) çağıran bir masaüstü uygulamasını nasıl oluşturursunuz öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c55fc9eb94a88dba1ab9fc915fe84bc2dd7d4d40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599603ba867e21694392e38e9692280f010e08eb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76702190"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885166"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API'lerini çağıran masaüstü uygulaması: Uygulama kaydı
 
@@ -52,7 +47,7 @@ Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI'leri, kulla
 
 - macOS için yerel bir Objective-C veya Swift uygulaması oluşturursanız, uygulamanızın paket tanımlayıcısını temel alarak yeniden yönlendirme URI'yi aşağıdaki biçimde kaydedin: msauth.<your.app.bundle.id>://auth. <your.app.bundle.id> uygulamanızın paket tanımlayıcısıyla değiştirin.
 - Uygulamanız yalnızca Entegre Windows Kimlik Doğrulaması veya kullanıcı adı ve parola kullanıyorsa, uygulamanız için yeniden yönlendirme URI'si kaydetmeniz gerekmez. Bu akışlar, Microsoft kimlik platformu v2.0 bitiş noktasına gidiş-dönüş yapar. Başvurunuz belirli bir URI için geri çağrılmaz.
-- Cihaz kodu akışını, Entegre Windows Kimlik Doğrulaması'nı ve kullanıcı adı ve parolayı yeniden yönlendirme URI'leri olmayan gizli bir istemci uygulama akışından ayırt etmek için (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı), bunu ifade etmeniz gerekir başvurunuz bir kamu istemcisi uygulamasıdır. Bu yapılandırmayı gerçekleştirmek için, uygulamanız için **Kimlik Doğrulama** bölümüne gidin. Gelişmiş **ayarlar** alt bölümünde, **Varsayılan istemci türü** paragrafında, ortak istemci olarak Uygulama **Için** **Evet'i** seçin.
+- Aygıt kodu akışını, Tümleşik Windows Kimlik Doğrulaması'nı ve kullanıcı adı ve parolayı yeniden yönlendirme URI'leri olmayan gizli bir istemci uygulama akışından (daemon uygulamalarında kullanılan istemci kimlik bilgisi akışı) ayırt etmek için, uygulamanızın bir ortak istemci uygulaması olduğunu ifade etmeniz gerekir. Bu yapılandırmayı gerçekleştirmek için, uygulamanız için **Kimlik Doğrulama** bölümüne gidin. Gelişmiş **ayarlar** alt bölümünde, **Varsayılan istemci türü** paragrafında, ortak istemci olarak Uygulama **Için** **Evet'i** seçin.
 
   ![Ortak istemciye izin ver](media/scenarios/default-client-type.png)
 

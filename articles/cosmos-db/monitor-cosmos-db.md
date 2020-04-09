@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: b9b66c379714c2f4fa2421876fda3bdb500ce6c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250350"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887257"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB'nin İzlenmesi
 Azure kaynaklarına dayanan kritik uygulamalarınız ve iş süreçleriniz olduğunda, bu kaynakların kullanılabilirliği, performansı ve işleyişi için izlemek istersiniz. Bu makalede, Azure Cosmos veritabanları tarafından oluşturulan izleme verileri ve bu verileri analiz etmek ve uyarmak için Azure Monitor'un özelliklerini nasıl kullanabileceğiniz açıklanmaktadır.
@@ -38,7 +38,7 @@ Aşağıdaki bölümler, Azure Cosmos DB'den toplanan belirli verileri tanımlay
 
 ## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB için işlem düzeyi ölçümlerini görüntüleme
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Sol daki gezinme çubuğundan **Monitör'ü** seçin ve **Ölçümler'i**seçin.
 
@@ -63,10 +63,6 @@ Ayrıca ölçümleri ve belirli bir **CollectionName,** **DatabaseName,** **Oper
 **Uygula bölme** seçeneğini kullanarak ölçümleri gruplatabilirsiniz. Örneğin, istek birimlerini işlem türüne göre gruplayabilir ve aşağıdaki resimde gösterildiği gibi tüm işlemler için grafiği aynı anda görüntüleyebilirsiniz:
 
 ![Uygula bölme filtresi ekle](./media/monitor-cosmos-db/apply-metrics-splitting.png)
-
-Belirli bir veritabanı, kapsayıcı veya işlem için sunucu tarafındaki gecikme ölçümlerini görüntülemek için başka bir örnek aşağıda verilmiştir:
-
-![Sunucu tarafı gecikme ölçümleri](./media/monitor-cosmos-db/serverside-latency-metric.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Azure Cosmos DB'den toplanan verileri izleme
 

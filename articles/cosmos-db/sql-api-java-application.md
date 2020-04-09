@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: ramkris
-ms.openlocfilehash: 4a7c307e8a4d4088fe4d2f7800398fda4704219c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720841"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985278"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Öğretici: Azure Cosmos DB ve SQL API'yi kullanarak bir Java web uygulaması oluşturun
 
@@ -46,7 +46,7 @@ Bu uygulama geliştirme öğreticisine başlamadan önce aşağıdakilere sahip 
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Geliştirme Seti (JDK) 7 +](https://aka.ms/azure-jdks).
+* [Java Geliştirme Seti (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable).
 * [Java EE Geliştiricileri için Eclipse IDE.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java çalışma zamanı ortamı (ör. Tomcat veya Jetty) etkin bir Azure Web Sitesi.](../app-service/app-service-web-get-started-java.md)
 
@@ -62,7 +62,7 @@ Bu araçları ilk kez yüklüyorsanız coreservlets.com adresindeki [Öğretici:
 ## <a name="step-2-create-the-java-jsp-application"></a><a id="CreateJSP"></a>2. Adım: Java JSP uygulaması oluşturma
 JSP uygulaması oluşturmak için:
 
-1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya**'ya tıklayın, **Yeni**'ye tıklayın ve ardından **Dinamik Web Projesi**'ne tıklayın. Kullanılabilir bir proje olarak **Dinamik Web Projesi**'ni listelenmiş şekilde görmüyorsanız şunu yapın: **Dosya**'ya tıklayın, **Yeni**'ye tıklayın, **Proje**… seçeneğine tıklayın, **Web**'i genişletin, **Dinamik Web Projesi**'ne tıklayın ve **İleri**'ye tıklayın.
+1. İlk olarak, bir Java projesi oluşturarak başlayacağız. Eclipse'i başlatın, ardından **Dosya**'ya tıklayın, **Yeni**'ye tıklayın ve ardından **Dinamik Web Projesi**'ne tıklayın. **Dinamik Web Projesi'ni** kullanılabilir bir proje olarak görmüyorsanız, aşağıdakileri yapın: **Dosya'yı**tıklatın, **Yeni'yi**tıklatın, **Project**..., **Web'i**genişletin, Dinamik **Web Projesi'ni**tıklatın ve **İleri'yi**tıklatın.
    
     ![JSP Java Uygulaması Geliştirme](./media/sql-api-java-application/image10.png)
 2. **Proje adı** kutusuna bir proje adı girin ve **Hedef Çalışma Zamanı** açılan menüsünde isteğe bağlı olarak bir değer seçin (ör. Apache Tomcat v7.0) ve ardından **Son**'a tıklayın. Bir hedef çalışma zamanının seçilmesi, projenizi Eclipse aracılığıyla yerel olarak çalıştırmanızı sağlar.

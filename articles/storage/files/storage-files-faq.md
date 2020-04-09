@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 093f4b11d10396199e9fac1e22fd82197f3a5e79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268190"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984444"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure Files,](storage-files-introduction.md) bulutta endüstri standardı Sunucu İleti Bloğu [(SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutveya Windows, Linux ve macOS'un şirket içi dağıtımlarına eş zamanlı olarak monte edebilirsiniz. Ayrıca, verilerin kullanıldığı yere yakın hızlı erişim için Azure Dosya Eşitlemeyi'ni kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -45,7 +45,7 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 
     Azure Files özellikle bir dosya sistemidir. Azure Files, şirket içi işletim sistemleriyle yıllarca çalıştığınız ve sevdiğiniz tüm dosya özetlerine sahiptir. Azure Blob depolama gibi Azure Files da REST arabirimi ve REST tabanlı istemci kitaplıkları sunar. Azure Blob depolama alanının aksine, Azure Dosyaları SMB'nin Azure dosya paylaşımlarına erişimini sağlar. SMB'yi kullanarak, herhangi bir kod yazmadan veya dosya sistemine özel sürücüler eklemeden doğrudan Windows, Linux veya macOS'a, şirket içinde veya bulut VM'lere bir Azure dosya paylaşımı monte edebilirsiniz. Ayrıca, verilerin kullanıldığı yere yakın, hızlı erişim için Azure Dosya Eşitlemeyi'ni kullanarak şirket içi dosya sunucularında Azure dosya paylaşımlarını önbelleğe alabilirsiniz. 
    
-    Azure Dosyaları ve Azure Blob depolama alanı arasındaki farklar hakkında daha ayrıntılı bir açıklama için azure [blob depolama, Azure Dosyaları veya Azure Diskleri'ni ne zaman kullanacağınıza karar](../common/storage-decide-blobs-files-disks.md)verme 'ye bakın. Azure Blob depolama alanı hakkında daha fazla bilgi edinmek [için Blob depolamaya Giriş 'e](../blobs/storage-blobs-introduction.md)bakın.
+    Azure Dosyaları ve Azure Blob depolama alanı arasındaki farklar hakkında daha ayrıntılı bir açıklama için [temel Azure Depolama hizmetlerine Giriş'e](../common/storage-introduction.md)bakın. Azure Blob depolama alanı hakkında daha fazla bilgi edinmek [için Blob depolamaya Giriş 'e](../blobs/storage-blobs-introduction.md)bakın.
 
 * <a id="files-versus-disks"></a>**Azure Diskleri yerine neden Azure dosya paylaşımı kullansam?**  
     Azure Diskler'deki bir disk yalnızca bir disktir. Azure Disklerinden değer almak için, Azure'da çalışan sanal bir makineye bir disk eklemeniz gerekir. Azure Diskler, şirket içi sunucuda disk kullanacağınız her şey için kullanılabilir. Bunu işletim sistemi sistem diski olarak, işletim sistemi için takas alanı olarak veya bir uygulama için ayrılmış depolama alanı olarak kullanabilirsiniz. Azure Diskleri için ilginç bir kullanım, bulutta azure dosya paylaşımı kullanabileceğiniz aynı yerlerde kullanmak üzere bir dosya sunucusu oluşturmaktır. Azure Sanal Makineler'de bir dosya sunucusu dağıtmak, şu anda Azure Dosyaları tarafından desteklenmeyen dağıtım seçeneklerine (NFS protokol desteği veya premium depolama gibi) ihtiyaç duyduğunuzda Azure'da dosya depolamasını elde etmenin yüksek performanslı bir yoludur. 
@@ -54,7 +54,7 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 
     Hem Azure Dosyaları'ndan hem de Azure Sanal Makinelerde barındırılan bir dosya sunucusundan en iyi şekilde elde etmek için bir yaklaşım (Azure Disklerini arka uç depolama alanı olarak kullanmanın yanı sıra) bulut VM'de barındırılan bir dosya sunucusuna Azure Dosya Eşitlemi yüklemektir. Azure dosya paylaşımı dosya sunucunuzla aynı bölgedeyse, bulut katmanlamayı etkinleştirebilir ve boş alan yüzdesini maksimuma (%99) ayarlayabilirsiniz. Bu, verilerin en az çoğaltılmasını sağlar. Ayrıca, NFS protokol desteği gerektiren uygulamalar gibi dosya sunucularınızla istediğiniz uygulamaları da kullanabilirsiniz.
 
-    Azure'da yüksek performanslı ve yüksek oranda kullanılabilir bir dosya sunucusu ayarlama seçeneği hakkında bilgi [için](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)bkz. Azure Dosyaları ve Azure Diskleri arasındaki farkların daha ayrıntılı bir açıklaması için Azure [Blob depolama, Azure Dosyaları veya Azure Diskleri'ni ne zaman kullanacağınızkonusunda karar](../common/storage-decide-blobs-files-disks.md)verme bölümüne bakın. Azure Diskleri hakkında daha fazla bilgi edinmek için [Azure Yönetilen Diskler'e genel bakış](../../virtual-machines/windows/managed-disks-overview.md)'a bakın.
+    Azure'da yüksek performanslı ve yüksek oranda kullanılabilir bir dosya sunucusu ayarlama seçeneği hakkında bilgi [için](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure/)bkz. Azure Dosyaları ve Azure Diskleri arasındaki farkların daha ayrıntılı bir açıklaması için [temel Azure Depolama hizmetlerine Giriş bölümüne](../common/storage-introduction.md)bakın. Azure Diskleri hakkında daha fazla bilgi edinmek için [Azure Yönetilen Diskler'e genel bakış](../../virtual-machines/windows/managed-disks-overview.md)'a bakın.
 
 * <a id="get-started"></a>
   **Azure Dosyalarını kullanmaya nasıl başlarım?**  

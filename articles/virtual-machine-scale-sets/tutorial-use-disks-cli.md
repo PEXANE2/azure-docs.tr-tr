@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 12bde51222e1e648f97476d5dab039b4ad2adfe8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3accb1bb8c79d1842c4effe3b99fe2a904fa832
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80067054"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878876"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Öğretici: Azure CLI ile sanal makine ölçek kümesi içeren diskler oluşturma ve kullanma
 Sanal makine ölçek kümeleri, sanal makine örneğinin işletim sistemini, uygulamalarını ve verilerini depolamak için diskleri kullanır. Bir ölçek kümesi oluştururken ve yönetirken, beklenen iş yüküne uygun disk boyutu ve yapılandırmasını seçmek önemlidir. Bu öğretici, sanal makine disklerinin oluşturulmasını ve yönetilmesini kapsar. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -42,7 +42,7 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 ### <a name="temporary-disk-sizes"></a>Geçici disk boyutları
 | Tür | Ortak boyutlar | En yüksek geçici disk boyutu (GiB) |
 |----|----|----|
-| [Genel amaç](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 1600 |
+| [Genel amaçlı](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 1600 |
 | [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md) | F serisi | 576 |
 | [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md) | D, E, G ve M serisi | 6144 |
 | [Depolama için iyileştirilmiş](../virtual-machines/linux/sizes-storage.md) | L serisi | 5630 |
@@ -51,18 +51,7 @@ Bir ölçek kümesi oluşturulduğunda veya ölçeklendirildiğinde, her bir san
 
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
-Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolamanın istenildiği her koşulda veri diskleri kullanılmalıdır. Her veri diski maksimum 4 TB kapasiteye sahiptir. Sanal makine örneğinin boyutu, kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için iki veri diski eklenebilir.
-
-### <a name="max-data-disks-per-vm"></a>VM başına en fazla veri diski
-| Tür | Ortak boyutlar | VM başına en fazla veri diski |
-|----|----|----|
-| [Genel amaç](../virtual-machines/linux/sizes-general.md) | A, B ve D serisi | 64 |
-| [İşlem için iyileştirilmiş](../virtual-machines/linux/sizes-compute.md) | F serisi | 64 |
-| [Bellek için iyileştirilmiş](../virtual-machines/linux/sizes-memory.md) | D, E, G ve M serisi | 64 |
-| [Depolama için iyileştirilmiş](../virtual-machines/linux/sizes-storage.md) | L serisi | 64 |
-| [GPU](../virtual-machines/linux/sizes-gpu.md) | N serisi | 64 |
-| [Yüksek performans](../virtual-machines/linux/sizes-hpc.md) | A ve H serisi | 64 |
-
+Uygulamalar yüklemeniz ve veri depolamanız gerekirse ek veri diskleri eklenebilir. Dayanıklı ve duyarlı veri depolamanın istenildiği her koşulda veri diskleri kullanılmalıdır. Her veri diski maksimum 4 TB kapasiteye sahiptir. Sanal makine örneğinin boyutu, kaç veri diskinin eklenebileceğini belirler. Her VM vCPU için, sanal makine başına en fazla 64 diske kadar iki veri diski takılabilir.
 
 ## <a name="vm-disk-types"></a>VM disk türleri
 Azure iki disk türü sunar.

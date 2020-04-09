@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456fc2a736b3213a14e5704f89a808c120c45b33
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1848610250e696807acef118384f43d2a51442ca
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158667"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984496"
 ---
 # <a name="tutorial-integrate-bynder-with-azure-active-directory"></a>Öğretici: Bynder'ı Azure Etkin Dizini ile tümleştirin
 
@@ -84,13 +84,25 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
 1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.getbynder.com`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    
+    Varsayılan Etki Alanı için:`https://<company name>.getbynder.com`
+    
+    Özel Etki Alanı için:`https;//<subdomain>.<domain>.com`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
+    
+     Varsayılan Etki Alanı için:`https://<company name>.getbynder.com/sso/SAML/authenticate/`
+    
+    Özel Etki Alanı için:`https://<subdomain>.<domain>.com/sso/SAML/authenticate/`
 
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<company name>.getbynder.com/login/`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:
+    
+     Varsayılan Etki Alanı için:`https://<company name>.getbynder.com/login/`
+    
+     Özel Etki Alanı için:` https://<subdomain>.<domain>.com/login/`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Bynder Client destek ekibine](https://www.bynder.com/en/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.

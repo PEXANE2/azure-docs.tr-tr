@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: fae4206e555c85fe0555ce1c4366cd57dd386f1e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: efe2c96c619aaf92efc5b4abf76b6b89c96ebd37
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471838"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878043"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Öğretici: Front Door özel etki alanı üzerinde HTTPS'yi yapılandırma
 
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
 > - Özel etki alanınızda HTTPS protokolünü etkinleştirme.
 > - AFD tarafından yönetilen sertifikayı kullanma 
-> - Kendi sertifikanızı, başka bir deyişle özel bir SSL sertifikasını kullanma
+> - Kendi sertifikanızı, yani özel bir TLS/SSL sertifikasını kullanın
 > - Etki alanını doğrulama
 > - Özel etki alanınızda HTTPS protokolünü devre dışı bırakma
 
@@ -48,9 +48,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu öğreticideki adımları tamamlayabilmeniz için öncelikle bir Front Door oluşturmalı ve en az bir özel etki alanı eklemelisiniz. Daha fazla bilgi için bkz. [Öğretici: Front Door’unuza özel etki alanı ekleme](front-door-custom-domain.md).
 
-## <a name="ssl-certificates"></a>SSL sertifikaları
+## <a name="tlsssl-certificates"></a>TLS/SSL sertifikaları
 
-Front Door özel etki alanında içeriği güvenli bir şekilde teslim etmek üzere HTTPS protokolünü etkinleştirmek için SSL sertifikası kullanmanız gerekir. Azure Ön Kapı tarafından yönetilen bir sertifikayı kullanmayı veya kendi sertifikanızı kullanmayı seçebilirsiniz.
+Ön Kapı özel etki alanında güvenli bir şekilde içerik sunmak için HTTPS protokolünü etkinleştirmek için TLS/SSL sertifikası kullanmanız gerekir. Azure Ön Kapı tarafından yönetilen bir sertifikayı kullanmayı veya kendi sertifikanızı kullanmayı seçebilirsiniz.
 
 
 ### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Seçenek 1 (varsayılan): Front Door tarafından yönetilen bir sertifika kullanın
@@ -72,7 +72,7 @@ Azure Ön Kapı tarafından yönetilen bir sertifika kullandığınızda, HTTPS 
 
 ### <a name="option-2-use-your-own-certificate"></a>Seçenek 2: Kendi sertifikanızı kullanın
 
-HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure Ön Kapı, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. SSL sertifikanızı oluştururken, bunu izin verilen bir sertifika yetkilisiyle (CA) oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için, [Azure Ön Kapı'da özel HTTPS etkinleştirmek için İzin Verilen sertifika yetkililerine](front-door-troubleshoot-allowed-ca.md)bakın.
+HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz. Bu işlem, sertifikalarınızı güvenli bir şekilde depolamanıza olanak tanıyan Azure Key Vault ile tümleştirme yoluyla gerçekleştirilir. Azure Ön Kapı, sertifikanızı almak için bu güvenli mekanizmayı kullanır ve birkaç ek adım gerektirir. TLS/SSL sertifikanızı oluştururken, sertifikayı izin verilen bir sertifika yetkilisi (CA) ile oluşturmanız gerekir. Buna karşılık, izin verilmeyen bir CA kullanırsanız isteğiniz reddedilir. İzin verilen CA'ların listesi için, [Azure Ön Kapı'da özel HTTPS etkinleştirmek için İzin Verilen sertifika yetkililerine](front-door-troubleshoot-allowed-ca.md)bakın.
 
 #### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault hesabınızı ve sertifikanızı hazırlama
  
@@ -84,7 +84,7 @@ HTTPS özelliğini etkinleştirmek için kendi sertifikanızı kullanabilirsiniz
 2. Azure Key Vault sertifikaları: Zaten bir sertifikanız varsa, bu sertifikayı doğrudan Azure Key Vault hesabınıza yükleyebilir veya doğrudan Azure Key Vault’un tümleştirildiği iş ortağı CA'lardan birinin Azure Key Vault’u üzerinden yeni bir sertifika oluşturabilirsiniz. Sertifikanızı **gizli**değil, **sertifika** nesnesi olarak yükleyin.
 
 > [!NOTE]
-> Kendi SSL sertifikanız için Front Door, EC şifreleme algoritmalarına sahip sertifikaları desteklemez.
+> Kendi TLS/SSL sertifikanız için Front Door, EC şifreleme algoritmalarına sahip sertifikaları desteklemez.
 
 #### <a name="register-azure-front-door"></a>Azure Ön Kapıyı Kaydedin
 
@@ -260,7 +260,7 @@ Aşağıdaki tabloda, HTTPS’yi devre dışı bıraktığınızda oluşan işle
 
 4. *Ayrılmış sertifika kullanmak, SAN sertifikasından daha mı güvenlidir?*
     
-    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Verilen tüm SSL sertifikaları, gelişmiş sunucu güvenliği için SHA-256 standardını kullanır.
+    SAN sertifikası, ayrılmış sertifika ile aynı şifreleme ve güvenlik standartlarını uygular. Verilen tüm TLS/SSL sertifikaları gelişmiş sunucu güvenliği için SHA-256 kullanır.
 
 5. *DNS sağlayıcım ile Sertifika Yetkilisi Yetkilendirme kaydı kullanmam gerekir mi?*
 

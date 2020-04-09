@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 04/07/2020
 ms.author: willzhan
-ms.openlocfilehash: 64cd93acc78f4cb5b7ebc4266e7359aec662890c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94edec8261d9916b7575fb247e1698273f244130
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295430"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80887206"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Medya Hizmetleri v3 ile Android için Çevrimdışı Widevine akışı
 
@@ -140,7 +140,7 @@ Ayrıca, aşağıdaki iş parçacığıbakın: [Xamarin bağlama](https://github
 
 Buna ek olarak, Google bir Progressive Web App (PWA) örnek üretti ve açık kaynaklı: 
 
-- [Kaynak kodu](https://github.com/GoogleChromeLabs/sample-media-pwa)
+- [Kaynak kod](https://github.com/GoogleChromeLabs/sample-media-pwa)
 - [Google barındırılan sürüm](https://biograf-155113.appspot.com/ttt/episode-2/) (yalnızca Chrome v 62 ve daha yüksek Android cihazlarda çalışır)
 
 Mobil Chrome tarayıcınızı Android telefonda v62 'ye (veya daha yükseğe) yükseltir ve yukarıdaki barındırılan örnek uygulamayı test ederseniz, hem çevrimiçi akış hem de çevrimdışı oynatmanın işe yaradığını görürsünüz.
@@ -153,65 +153,13 @@ Yukarıdaki açık kaynak PWA uygulaması Düğüm.js'de yazılır. Kendi sürü
     - Sertifika güvenilir CA'ya sahip olmalıdır ve kendi imzalı geliştirme sertifikası çalışmıyor
     - Sertifikanın web sunucusunun veya ağ geçidinin DNS adı ile eşleşen bir CN'si olmalıdır
 
-## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+## <a name="faqs"></a>SSS
 
-### <a name="question"></a>Soru
-
-Bazı istemciler/kullanıcılar için kalıcı lisansları (çevrimdışı etkin) ve diğerleri için kalıcı olmayan lisansları (çevrimdışı devre dışı) nasıl teslim edebilirim? İçeriği çoğaltmak ve ayrı içerik anahtarı kullanmak zorunda mıyım?
-
-### <a name="answer"></a>Yanıt
-Media Services v3 bir Varlığın birden fazla StreamingLocators'a sahip olmasını sağladığından. Sen olabilir
-
-1.    license_type ile Bir ContentKeyPolicy = "kalıcı", ContentKeyPolicyRestriction "kalıcı" üzerinde iddia ile ve onun StreamingLocator;
-2.    başka bir ContentKeyPolicy ile license_type="nonpersistent", ContentKeyPolicyRestriction "nonpersistent" üzerinde iddia ile ve onun StreamingLocator.
-3.    İki StreamingLocators farklı ContentKey var.
-
-Özel STS iş mantığına bağlı olarak, farklı talepler JWT belirteci verilir. Belirteç ile yalnızca ilgili lisans alınabilir ve yalnızca ilgili URL oynatılabilir.
-
-### <a name="question"></a>Soru
-
-Widevine güvenlik düzeyleri için, Google'ın "Widevine DRM Architecture Overview" dokümanı üç farklı güvenlik düzeyi tanımlar. Ancak, [Widevine lisans şablonundaki Azure Medya Hizmetleri belgelerinde](widevine-license-template-overview.md)beş farklı güvenlik düzeyi özetlenmiştir. İki farklı güvenlik düzeyi kümesi arasındaki ilişki veya eşleme nedir?
-
-### <a name="answer"></a>Yanıt
-
-Google'ın "Widevine DRM Architecture Review" dokümanı aşağıdaki üç güvenlik düzeyine göre tanımlanır:
-
-1.  Güvenlik Düzeyi 1: Tüm içerik işleme, şifreleme ve denetim Güvenilir Yürütme Ortamı (TEE) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işleme farklı yongalarda gerçekleştirilebilir.
-2.  Güvenlik Düzeyi 2: TEE içinde şifreleme (ancak video işleme) gerçekleştirir: şifresi çözülmüş arabellekleri uygulama etki alanına döndürülür ve ayrı video donanımı veya yazılımı aracılığıyla işlenir. Ancak 2.
-3.  Güvenlik Seviyesi 3 Cihazda TEE yok. Ana bilgisayar işletim sistemindeki kriptografik bilgileri ve şifresi çözülmüş içeriği korumak için uygun önlemler alınabilir. Düzey 3 uygulaması da bir donanım şifreleme motoru içerebilir, ancak bu yalnızca performansı artırır, güvenliği değil.
-
-Aynı zamanda, [Widevine lisans şablonundaki Azure Medya Hizmetleri belgelerinde,](widevine-license-template-overview.md)content_key_specs security_level özelliği aşağıdaki beş farklı değere (oynatma için istemci sağlamlığı gereksinimleri) sahip olabilir:
-
-1.  Yazılım tabanlı beyaz kutu kripto gereklidir.
-2.  Yazılım kripto ve bir obfuscated kod çözücü gereklidir.
-3.  Anahtar malzeme ve kripto işlemleri donanım destekli TEE içinde yapılmalıdır.
-4.  İçeriğin kriptolanması ve şifresi donanım destekli TEE içinde yapılmalıdır.
-5.  Kripto, kod çözme ve ortamın tüm kullanımı (sıkıştırılmış ve sıkıştırılmamış) donanım destekli TEE içinde ele alınmalıdır.
-
-Her iki güvenlik düzeyi de Google Widevine tarafından tanımlanır. Fark kullanım düzeyinde: mimari düzeyi veya API düzeyi. Beş güvenlik düzeyi Widevine API'sinde kullanılır. security_level içeren content_key_specs nesnesi, Azure Media Services Widevine lisans hizmeti tarafından seri olarak deserialize edilir ve Widevine global teslimat hizmetine aktarılır. Aşağıdaki tablo, iki güvenlik düzeyi kümesi arasındaki eşlemi gösterir.
-
-| **Widevine Mimarisinde Tanımlanan Güvenlik Düzeyleri** |**Widevine API'de Kullanılan Güvenlik Düzeyleri**|
-|---|---| 
-| **Güvenlik Düzeyi 1**: Tüm içerik işleme, şifreleme ve denetim Güvenilir Yürütme Ortamı (TEE) içinde gerçekleştirilir. Bazı uygulama modellerinde, güvenlik işleme farklı yongalarda gerçekleştirilebilir.|**security_level=5**: Kripto, kod çözme ve ortamın tüm kullanımı (sıkıştırılmış ve sıkıştırılmamış) donanım destekli TEE içinde ele alınmalıdır.<br/><br/>**security_level=4**: İçeriğin kriptolanması ve şifresi donanım destekli TEE içinde yapılmalıdır.|
-**Güvenlik Düzeyi 2**: TEE içinde kriptografi (ancak video işleme) gerçekleştirir: şifresi çözülmüş arabellekler uygulama etki alanına döndürülür ve ayrı video donanım ı veya yazılım aracılığıyla işlenir. Ancak 2.| **security_level=3**: Anahtar malzeme ve kripto işlemleri donanım destekli TEE içinde yapılmalıdır. |
-| **Güvenlik Düzeyi 3**: Cihazda TEE yok. Ana bilgisayar işletim sistemindeki kriptografik bilgileri ve şifresi çözülmüş içeriği korumak için uygun önlemler alınabilir. Düzey 3 uygulaması da bir donanım şifreleme motoru içerebilir, ancak bu yalnızca performansı artırır, güvenliği değil. | **security_level=2**: Yazılım kriptosu ve gizlenmiş bir kod çözücü gereklidir.<br/><br/>**security_level=1**: Yazılım tabanlı whitebox kripto gereklidir.|
-
-### <a name="question"></a>Soru
-
-İçerik indirme işlemi neden bu kadar uzun sürüyor?
-
-### <a name="answer"></a>Yanıt
-
-İndirme hızını artırmanın iki yolu vardır:
-
-1.  CdN'yi etkinleştirin, böylece son kullanıcıların içerik karşıdan yükleme için başlangıç/akış bitiş noktası yerine CDN'ye basma olasılığı daha yüksektir. Kullanıcı akış bitiş noktasına vurursa, her HLS kesimi veya DASH parçası dinamik olarak paketlenir ve şifrelenir. Bu gecikme gecikmesi her kesim/parça için milisaniye ölçeğinde olsa da, bir saatlik videonuz olduğunda, birikmiş gecikme gecikmesi daha uzun indirmeye neden olabilir.
-2.  Son kullanıcılara tüm içerikler yerine video kalitesi katmanlarını ve ses parçalarını seçikal olarak indirme seçeneği sağlayın. Çevrimdışı mod için, tüm kalite katmanlarını indirmenin bir anlamı yoktur. Bunu başarmanın iki yolu vardır:
-    1.  İstemci kontrollü: ya oyuncu uygulaması otomatik seçer veya kullanıcı indirmek için video kalitesi katmanı ve ses parçaları seçer;
-    2.  Hizmet denetimi: HLS çalma listesi veya DASH MPD'yi tek bir video kalitesi katmanı ve seçili ses parçalarıyla sınırlayan (genel) bir filtre oluşturmak için Azure Media Services'teki Dinamik Bildirim özelliğini kullanabilirsiniz. Ardından, son kullanıcılara sunulan indirme URL'si bu filtreyi içerir.
+Daha fazla bilgi için [Widevine SSS'lerine](frequently-asked-questions.md#widevine-streaming-for-android)bakın.
 
 ## <a name="additional-notes"></a>Ek notlar
 
-* Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
+Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
 
 ## <a name="summary"></a>Özet
 

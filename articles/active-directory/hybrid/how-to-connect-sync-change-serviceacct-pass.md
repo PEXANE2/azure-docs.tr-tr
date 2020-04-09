@@ -17,12 +17,12 @@ ms.date: 05/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 077671ab4e964d7641aa3a0f0b435b39117eb6aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b2a0d0b77b6db481b13785907a1359d2bbe3e9b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65139387"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984513"
 ---
 # <a name="changing-the-adsync-service-account-password"></a>ADSync servis hesabı parolasını değiştirme
 ADSync hizmet hesabı parolasını değiştirirseniz, şifreleme anahtarını bırakıp ADSync hizmet hesabı parolasını yeniden başlatana kadar Eşitleme Hizmeti doğru şekilde başlatılamaz. 
@@ -84,7 +84,7 @@ Yeni şifreleme anahtarının oluşturulabilmesi için varolan şifreleme anahta
 
 2. Yeni bir PowerShell oturumu başlatın.
 
-3. Klasöre gidin:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Klasöre gidin:`'$env:ProgramFiles\Microsoft Azure AD Sync\bin\'`
 
 4. Komutu çalıştırın:`./miiskmu.exe /a`
 

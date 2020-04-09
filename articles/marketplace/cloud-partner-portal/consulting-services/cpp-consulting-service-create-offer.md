@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 1298a6d277f072491d05945b272925a2aba52e02
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ed744cfbb49393980c2622b00233fca373b32019
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745659"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985142"
 ---
 # <a name="create-a-consulting-offer"></a>Danışmanlık teklifi oluşturun
 
 >[!Important]
->30 Mart 2020'den itibaren Danışmanlık hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
+>13 Nisan 2020'den itibaren Danışmanlık hizmet tekliflerinizi Yönetim Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
 
 Bu makalede, bir danışmanlık hizmeti teklifinin nasıl oluşturulup yayımlandırılabildiğini açıklanmaktadır.
 

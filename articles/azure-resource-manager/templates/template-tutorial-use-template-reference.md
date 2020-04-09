@@ -1,19 +1,19 @@
 ---
-title: Şablon başvurusunu kullanma
-description: Şablon oluşturmak için Azure Kaynak Yöneticisi şablon umasını kullan.
+title: Şablon başvurukullanma
+description: Şablon oluşturmak için Azure Kaynak Yöneticisi şablonu başvurularını kullanın.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b742982121a20a2b057eba4211584b0386dde411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80373431"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878533"
 ---
-# <a name="tutorial-utilize-the-arm-template-reference"></a>Öğretici: ARM şablonu referansını kullanma
+# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Öğretici: Kaynak Yöneticisi şablon uytun
 
 Şablon şema bilgilerini nasıl bulacağınızı öğrenin ve azure kaynak yöneticisi (ARM) şablonları oluşturmak için bilgileri kullanın.
 
@@ -65,9 +65,13 @@ Bu makaleyi tamamlamak için gerekenler:
     * **resources**: Kaynak grubunda dağıtılan veya güncelleştirilen kaynak türlerini belirtin.
     * **outputs**: Dağıtım sonrasında döndürülen değerleri belirtin.
 
-1. **resources** bölümünü genişletin. Tanımlı bir `Microsoft.Storage/storageAccounts` kaynağı olduğunu göreceksiniz.
+1. **resources** bölümünü genişletin. Tanımlı bir `Microsoft.Storage/storageAccounts` kaynağı olduğunu göreceksiniz. SKU adı bir parametre değeri kullanır.  Parametre **storageAccountType**denir.
 
     ![Resource Manager şablonu depolama hesabı tanımı](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
+
+1. **StorageAccountType'ın** nasıl tanımlandığını görmek için **parametreleri** genişletin. Parametrenin izin verilen dört değeri vardır. İzin verilen diğer değerleri bulur ve parametre tanımını gözden geçirirsiniz.
+
+    ![Kaynak Yöneticisi şablon depolama hesabı kaynakları skus](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
 ## <a name="find-the-template-reference"></a>Şablon başvurusunu bulma
 
@@ -84,7 +88,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
     ![Kaynak Yöneticisi şablon başvuru depolama hesabı türleri sürümleri](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. **storageAccount** kaynak türünün en son sürümünü seçin.  Bu makalenin yazıldığı son sürüm **2019-06-01'dir.**
+1. **storageAccount** kaynak türünün en son sürümünü seçin. Bu makalenin yazıldığı son sürüm **2019-06-01'dir.** Bu sürümün şablonunuzdaki depolama hesabı kaynağı için kullanılan sürümle eşleştiğinden emin olun. API sürümünü güncellerseniz, kaynak tanımının şablon başvurusuyla eşleştiğini doğrulayın.
 
 1. Bu sayfa, storageAccount kaynak türünün ayrıntılarını listeler.  Örneğin, **Sku** nesnesi için izin verilen değerleri listeler. Daha önce açtığınız hızlı başlangıç şablonunda listelenenden daha fazla skus vardır. Kullanılabilir tüm depolama türlerini içerecek şekilde hızlı başlangıç şablonu özelleştirebilirsiniz.
 
@@ -98,7 +102,21 @@ Visual Studio Code'dan, aşağıdaki ekran görüntüsünde gösterildiği gibi 
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Dağıtım yordamı için Visual Studio Code hızlı başlangıçta [Şablonu dağıtma](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) bölümüne bakın. Şablonu dağıttığınızda, **örneğin, Premium_ZRS,** yeni eklenen bir değerle **storageAccountType** parametresini belirtin. **Premium_ZRS** izin verilen bir değer olmadığından, özgün quickstart şablonu kullanırsanız dağıtım başarısız olur.
+Dağıtım yordamı için Visual Studio Code hızlı başlangıçta [Şablonu dağıtma](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) bölümüne bakın. Şablonu dağıttığınızda, **örneğin, Premium_ZRS,** yeni eklenen bir değerle **storageAccountType** parametresini belirtin. **Premium_ZRS** izin verilen bir değer olmadığından, özgün quickstart şablonu kullanırsanız dağıtım başarısız olur.  Parametre değerini geçmek için dağıtım komutuna aşağıdaki anahtarı ekleyin:
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+--parameters storageAccountType='Premium_ZRS'
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+-storageAccountType "Premium_ZRS"
+```
+
+---
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

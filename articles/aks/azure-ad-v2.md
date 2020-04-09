@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 1ca4b70139ed5e0a136f6f5f2b0382b8c1688983
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389418"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984717"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure AD'yi Azure Kubernetes Hizmetine Entegre Edin (Önizleme)
 
@@ -49,11 +49,10 @@ az extension update --name aks-preview
 az extension list
 ```
 
-Kubectl yüklemek için aşağıdakileri kullanın
+Kubectl yüklemek için aşağıdakileri kullanın:
+
 ```azurecli
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.18.0-beta.2/bin/linux/amd64/kubectl"
-chmod +x ./kubectl
-sudo mv ./kubectl /usr/local/bin/kubectl
+sudo az aks install-cli
 kubectl version --client
 ```
 
@@ -99,7 +98,7 @@ Yukarıdaki komut üç düğüm AKS kümesi oluşturur, ancak kümeyi oluşturan
 Bir grup oluşturduktan ve üye olarak kendinizi (ve başkalarını) ekledikten sonra, aşağıdaki komutu kullanarak kümeyi Azure AD grubuyla güncelleştirebilirsiniz
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
 ```
 Alternatif olarak, önce bir grup oluşturup üye eklerseniz, aşağıdaki komutu kullanarak Azure REKLAM grubunu oluşturma zamanında etkinleştirebilirsiniz,
 

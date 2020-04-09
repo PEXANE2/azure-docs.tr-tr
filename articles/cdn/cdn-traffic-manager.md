@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: de91f61385942db077bc98721eabe9f3f0b8624c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d44e53520481e4ada5c2f16f0c56a4a6a724ec1
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083000"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80892487"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Trafik Yöneticisi ile birden çok Azure CDN uç noktasında hata ayarlama
 
@@ -62,13 +62,13 @@ CDN ve Trafik Yöneticisi profillerinizi ayarladıktan sonra, DNS eşleme ekleme
 
     a. İlk CNAME girişi için, cdnverify alt etki alanı yla özel etki alanAdınızı CDN bitiş noktanıza eşleştirin. Bu giriş, özel etki alanını 2.
 
-      Örnek: 
+      Örneğin: 
 
       `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101akamai.azureedge.net`  
 
     b. İkinci CNAME girişi için, CDNverify alt etki alanı olmadan özel etki alanadınızı CDN bitiş noktanıza eşleştirin. Bu giriş, özel etki alanını Trafik Yöneticisi ile eşler. 
 
-      Örnek: 
+      Örneğin: 
       
       `cdndemo101.dustydogpetcare.online  CNAME  cdndemo101.trafficmanager.net`   
 
@@ -82,12 +82,12 @@ CDN ve Trafik Yöneticisi profillerinizi ayarladıktan sonra, DNS eşleme ekleme
     Azure CDN, bu kayıt işlemini tamamlamak için DNS eşleciliğini doğrulamak için *cdnverify* alt etki alanını kullanır. Daha fazla bilgi için [cname DNS kaydı oluşturma'ya](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)bakın. Bu adım, Azure CDN'nin isteklerine yanıt verebilmek için özel etki alanını tanımasını sağlar.
     
     > [!NOTE]
-    > **Akamai profillerinden** bir Azure CDN'inde SSL'yi etkinleştirmek için, özel etki alanını doğrudan bitiş noktanıza açıklamanız gerekir. etkinleştirmek için cdnverify Henüz desteklenmez. 
+    > **Akamai profillerinden** bir Azure CDN'inde TLS'yi etkinleştirmek için, özel etki alanını doğrudan bitiş noktanıza açıklamanız gerekir. TLS etkinleştirmek için cdnverify henüz desteklenmez. 
     >
 
 3.  Özel etki alanınızın etki alanı sağlayıcısı için web sitesine dönün ve özel etki alanının ikinci CDN bitiş noktanıza eşlenmesi için oluşturduğunuz ilk DNS eşleciliğini güncelleştirin.
                              
-    Örnek: 
+    Örneğin: 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 

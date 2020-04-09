@@ -4,12 +4,12 @@ description: Uygulama Öngörüleri ile başlayın. Şirket içi veya Microsoft 
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.openlocfilehash: e398f23559729580ae4ad8b6507c2f09328052b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275626"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985074"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web uygulamalarının performansını izleme
 
@@ -26,8 +26,7 @@ Projenize henüz Uygulama Öngörüleri eklemediyseniz (diğer bir şekilde Appl
 * [ASP.NET web uygulamaları](../../azure-monitor/app/asp-net.md)
   * [Özel durum izleme ekleme](../../azure-monitor/app/asp-net-exceptions.md)
   * [Bağımlılık izleme ekleme](../../azure-monitor/app/monitor-performance-live-website-now.md)
-* [Java EE web uygulamaları](../../azure-monitor/app/java-get-started.md)
-  * [Bağımlılık izleme ekleme](../../azure-monitor/app/java-agent.md)
+* [Java EE web uygulamaları](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)
 
 ## <a name="exploring-performance-metrics"></a><a name="view"></a>Performans ölçümlerini keşfetme
 [Azure portalında,](https://portal.azure.com)uygulamanız için ayarladığınız Application Insights kaynağına göz atın. Genel bakış bıçağı temel performans verilerini gösterir:

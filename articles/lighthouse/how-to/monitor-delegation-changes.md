@@ -3,12 +3,12 @@ title: Yönetici kiracınızdaki temsilci değişikliklerini izleme
 description: Müşteri kiracılarından yönetici kiracınıza kadar temsilcilik etkinliğini nasıl izleyeceğinizi öğrenin.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421899"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985159"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönetici kiracınızdaki temsilci değişikliklerini izleme
 
@@ -73,7 +73,7 @@ Hizmet ana hesabınızı oluşturduktan ve Izleme Okuyucurolünü kök kapsamda 
 
 Yönetici kiracınızın kök kapsamına İzleme Okuyucusu erişimi içeren yeni bir hizmet ana hesabı oluşturduktan sonra, bunu kiracınızdaki temsilcilik etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz. 
 
-[Bu Azure PowerShell komut dosyası,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) eklenen veya kaldırılan tümleçlerle (veya başarısız olan girişimler) son 1 günlük etkinlik ve raporları sorgulamak için kullanılabilir. Kiracı Etkinlik [Günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, ardından eklenen veya kaldırılan delegasyonlar hakkında rapor vermek için aşağıdaki değerleri kurar:
+[Bu Azure PowerShell komut dosyası,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) eklenen veya kaldırılan tümleçlerle (veya başarısız olan girişimler) son 1 günlük etkinlik ve raporları sorgulamak için kullanılabilir. Kiracı Etkinlik [Günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, ardından eklenen veya kaldırılan delegasyonlar hakkında rapor vermek için aşağıdaki değerleri kurar:
 
 - **DelegatedResourceId**: Devredilen aboneliğin veya kaynak grubunun kimliği
 - **CustomerTenantId**: Müşteri kiracı kimliği

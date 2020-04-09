@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 2e14b669aadeec4c6a7245be8940051ec604059b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79409567"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879437"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki görüntüleri etiketleme
 
-Proje yöneticiniz Azure Machine Learning'de [bir etiketleme projesi oluşturduktan](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) sonra, bir Makine Öğrenimi projesi için hızla veri hazırlamak için etiketleme aracını kullanabilirsiniz. Bu makalede açıklanır:
+Proje yöneticiniz Azure Machine Learning'de [bir etiketleme projesi oluşturduktan](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) sonra, bir Machine Learning projesi için hızla veri hazırlamak için etiketleme aracını (genel önizleme) kullanabilirsiniz. Bu makalede açıklanır:
 
 > [!div class="checklist"]
 > * Etiketleme projelerinize nasıl erişilir?
@@ -45,7 +45,9 @@ Ayrıntılı **yönergeleri Görüntüleyin'** e gidin. Bu yönergeler projenize
 
 Tüm görüntü etiketleme görevlerinde, proje yöneticisi tarafından belirtilen bir kümeden uygun bir etiket veya etiket seçersiniz. Klavyenizdeki sayı tuşlarını kullanarak ilk dokuz etiketi seçebilirsiniz.  
 
-Görüntü sınıflandırma görevlerinde, birden çok görüntüyü aynı anda görüntülemeyi seçebilirsiniz. Düzeni seçmek için görüntü alanının üzerindeki simgeleri kullanın. Görüntülenen tüm görüntüleri aynı anda seçmek için **Tümünü Seç'i**kullanın. Tek tek görüntüleri seçmek için, resmin sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir resim seçmeniz gerekir. Birden çok resim seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm resimlere uygulanır.
+Görüntü sınıflandırma görevlerinde, birden çok görüntüyü aynı anda görüntülemeyi seçebilirsiniz. Düzeni seçmek için görüntü alanının üzerindeki simgeleri kullanın. 
+
+Görüntülenen tüm görüntüleri aynı anda seçmek için **Tümünü Seç'i**kullanın. Tek tek görüntüleri seçmek için, resmin sağ üst köşesindeki dairesel seçim düğmesini kullanın. Etiket uygulamak için en az bir resim seçmeniz gerekir. Birden çok resim seçerseniz, seçtiğiniz herhangi bir etiket seçili tüm resimlere uygulanır.
 
 Burada ikişer ikişer bir düzen seçtik ve ayı ve orka görüntülerine "Memeli" etiketini uygulamak üzereyiz. Köpekbalığının görüntüsü zaten "Kıkırdak balık" olarak etiketlendi ve iguana henüz etiketlenmemiş.
 

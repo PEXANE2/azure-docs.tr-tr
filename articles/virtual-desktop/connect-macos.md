@@ -5,15 +5,15 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 04/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ac3ee8d44d68f5c7929c2f93f1a1182c7f6083b
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128237"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891263"
 ---
 # <a name="connect-with-the-macos-client"></a>macOS istemcisiyle bağlanma
 
@@ -31,11 +31,11 @@ Yöneticinizin macOS aygıtınızda kullanabileceğiniz yönetilen kaynakların 
 
 Özet akışına abone olmak için:
 
-1. Hizmete bağlanmak ve kaynaklarınızı almak için ana sayfadaki **Yayın Ekle'yi** seçin.
+1. Hizmete bağlanmak ve kaynaklarınızı almak için ana sayfada **Çalışma Alanı Ekle'yi** seçin.
 2. Özet Akışı URL'sini girin. Bu bir URL veya e-posta adresi olabilir:
    - BIR URL kullanıyorsanız, yöneticinizin size verdiği URL'yi kullanın. Normalde, URL' <https://rdweb.wvd.microsoft.com>dir.
    - E-postakullanmak için e-posta adresinizi girin. Bu, yöneticiniz sunucuyu bu şekilde yapılandırırsa istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **Abone Ol'u**seçin.
+3. **Ekle'yi**seçin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 
 Oturum imzaladıktan sonra kullanılabilir kaynakların bir listesini görmeniz gerekir.

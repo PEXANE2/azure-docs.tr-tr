@@ -8,14 +8,14 @@ ms.service: frontdoor
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: de3b13162e7828542331e7e7a34d0101f7feaf71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 61ce63b15d2126a25b444e97acc8a3ea3964296b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79471668"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985822"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door için Azure Resource Manager dağıtım modeli şablonları
 
@@ -25,7 +25,7 @@ Aşağıdaki tabloda Azure Ön Kapı için Azure Kaynak Yöneticisi dağıtım m
 | ---| ---|
 | [Temel Front Door oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-basic)| Tek bir arka uçla temel Front Door yapılandırması oluşturur. |
 | [Birden çok arka uçla, arka uç havuzuyla ve URL tabanlı yönlendirmeyle Front Door oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-create-multiple-backends)| Arka uç havuzundaki birden çok arka uç için ve URL yolu temelinde arka uç havuzları arasında yük dengeleme yapılandırmasına sahip bir Front Door oluşturur. |
-| [Front Door ile HTTPS (Front Door yönetilen sertifikası) protokolüyle özel bir etki alanı ekleme](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-custom-domain)| Front Door'unuza özel bir etki alanı ekleyin ve DigiCert yoluyla oluşturulan bir Front Door yönetilen sertifikasıyla bu etki alanı için HTTPS trafiğini etkinleştirin. |
+| [Ön Kapıile özel bir etki alanı yerleşik](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-custom-domain)| Ön Kapınıza özel bir etki alanı ekleyin. |
 | [Geo filtreleme ile Ön Kapı Oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)| Belirli ülkelerden/bölgelerden gelen trafiğe izin veren/engelleyen bir Ön Kapı oluşturun. |
 | [Front Door'da arka uçlarınız için Durum Yoklamalarını denetleme](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-health-probes)| Yoklama yolunu ve ayrıca yoklamaların gönderileceği zaman aralıklarını güncelleştirerek durum yoklaması ayarlarını değiştirmek için Front Door'unuzu güncelleştirin. |
 | [Etkin/Beklemede arka uç yapılandırmasıyla Front Door oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-priority-lb)| Etkin/Beklemede uygulama topolojisi için önceliklere dayalı yönlendirme gösteren, başka bir deyişle varsayılan olarak tüm trafiği birincil (en yüksek öncelikli) arka uca gönderen ve arka uç kullanılamaz duruma gelene kadar buna devam eden bir Front Door oluşturur. |

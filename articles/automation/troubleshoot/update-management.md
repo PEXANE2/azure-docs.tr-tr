@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 900853b1ca68c1c540223db670b1173f5bb2fa2b
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754431"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984632"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi ile sorun giderme sorunları
 
@@ -21,7 +21,7 @@ Bu makalede, Güncelleştirme Yönetimi'ni kullanırken karşılaşabileceğiniz
 
 Altta yatan sorunu belirlemek için Karma İşçi aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın. Diğer tüm sorunlar için aşağıdaki sorun giderme kılavuzunu kullanın.
 
-Çözümü sanal bir makineye (VM) binerken sorunlarla karşılaşırsanız, yerel makinedeki **Uygulama ve Hizmetler Günlükleri** altında **Operasyon Yöneticisi** günlüğünü denetleyin. Olay kimliği 4502 ve olay ayrıntıları `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`içeren olaylar arayın.
+Çözümü sanal bir makinede (VM) uçağa binerken sorun bulursanız, yerel makinedeki **Uygulama ve Hizmetler Günlükleri** altındaki **Operasyon Yöneticisi** günlüğünü kontrol edin. Olay kimliği 4502 ve olay ayrıntıları `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`içeren olaylar arayın.
 
 Aşağıdaki bölümde, her biri için belirli hata iletileri ve olası çözümler vurgulanır. Diğer onboarding sorunları için, [onboarding Sorun Giderme çözümüne](onboarding.md)bakın.
 
@@ -39,7 +39,7 @@ Error details: Failed to enable the Update solution
 
 Bu hata aşağıdaki nedenlerle oluşabilir:
 
-* Log Analytics aracısı için ağ güvenlik duvarı gereksinimleri doğru şekilde yapılandırılamayabilir. Bu, DNS URL'lerini çözerken aracının başarısız lığa neden olabilir.
+* Log Analytics aracısı için ağ güvenlik duvarı gereksinimleri doğru şekilde yapılandırılamayabilir. Bu durum, DNS URL'lerini çözerken aracının başarısız lığa neden olabilir.
 
 * Çözüm hedeflemesi yanlış yapılandırılmıştır ve makine beklendiği gibi güncelleştirmeler almıyor.
 
@@ -61,11 +61,11 @@ Bu hata aşağıdaki nedenlerle oluşabilir:
 
 ### <a name="issue"></a>Sorun
 
-Eski güncelleştirmeler, otomasyon hesabında ki Güncelleştirme Yönetimi'nde, geçersiz hale getirilmiş olsalar bile eksik olarak görünür. Aynı güvenlik açığını düzelten daha sonraki bir güncelleştirme kullanılabilir olduğundan, yerini alan güncelleştirme yüklemek zorunda olmadığınız bir güncelleştirmedir. Update Management, geçersiz kılan güncelleştirmeyi yok sayar ve yerini alan güncelleştirme lehine geçerli değildir. İlgili bir sorun hakkında bilgi için [bkz.](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)
+Eski güncelleştirmeler, bir Otomasyon hesabı için, geçersiz hale getirilmiş olsalar bile eksik olarak görünür. Aynı güvenlik açığını düzelten daha sonraki bir güncelleştirme kullanılabilir olduğundan, yerini alan güncelleştirme yüklemek zorunda olmadığınız bir güncelleştirmedir. Update Management, geçersiz kılan güncelleştirmeyi yok sayar ve yerini alan güncelleştirme lehine geçerli değildir. İlgili bir sorun hakkında bilgi için [bkz.](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)
 
 ### <a name="cause"></a>Nedeni
 
-Değiştirilen güncelleştirmeler, geçerli olmadığı düşünülebilmeleri için reddedildiği doğru şekilde belirtilmez.
+Değiştirilen güncelleştirmeler, geçerli olmadığı düşünülebilmeleri için reddedilmiş olarak doğru şekilde belirtilmez.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -73,7 +73,7 @@ Yerine verilen bir güncelleştirme yüzde 100 geçerli değilse, bu güncelleş
 
 1. Otomasyon hesabında, makine durumunu görüntülemek için **Yönetim Güncelleştir'i** seçin. Bkz. [Güncelleştirme değerlendirmelerini görüntüleyin.](../manage-update-multi.md#view-an-update-assessment)
 
-2. Yüzde 100 geçerli olmadığından emin olmak için geçersiz olan güncelleştirmeyi denetleyin. 
+2. Yüzde 100 geçerli olmadığından emin olmak için yenilen güncelleştirmeyi denetleyin. 
 
 3. Güncelleştirme yle ilgili bir sorunuz yoksa güncelleştirmeyi reddedildi olarak işaretleyin. 
 
@@ -101,11 +101,11 @@ Makineleriniz aşağıdaki belirtilere sahiptir:
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, yerel yapılandırma sorunları ndan veya yanlış yapılandırılmış kapsam yapılandırmasından kaynaklanabilir.
+Bu sorun, yerel yapılandırma sorunları ndan veya yanlış yapılandırılmış kapsam yapılandırmasından kaynaklanabilir. Olası özel nedenler şunlardır:
 
-Karma Runbook Worker'ı yeniden kaydetmeniz ve yeniden yüklemeniz gerekebilir.
+* Karma Runbook Worker'ı yeniden kaydetmeniz ve yeniden yüklemeniz gerekebilir.
 
-Çalışma alanınızda ulaşılan ve daha fazla veri depolamasını engelleyen bir kota tanımlamış olabilirsiniz.
+* Çalışma alanınızda ulaşılan ve daha fazla veri depolamasını engelleyen bir kota tanımlamış olabilirsiniz.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -113,28 +113,30 @@ Karma Runbook Worker'ı yeniden kaydetmeniz ve yeniden yüklemeniz gerekebilir.
 
 2. Makinenizin doğru çalışma alanına rapor verdiğinden emin olun. Bu yönü nasıl doğrulayabilirsiniz hakkında kılavuz için [bkz.](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-log-analytics) Ayrıca, bu çalışma alanının Azure Otomasyon hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **İlgili Kaynaklar**altında Bağlantılı **çalışma alanını** seçin.
 
-3. Günlük Analizi çalışma alanınızda makinelerin ortaya çıktıklarından emin olun. Otomasyon hesabınıza bağlı Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın:
+3. Otomasyon hesabınıza bağlı Log Analytics çalışma alanında makinelerin ortaya çıktıklarından emin olun. Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
 
-  ```loganalytics
-  Heartbeat
-  | summarize by Computer, Solutions
-  ```
+   ```kusto
+   Heartbeat
+   | summarize by Computer, Solutions
+   ```
 
 4. Makinenizi sorgu sonuçlarında görmüyorsanız, yakın zamanda iade edilmemiş. Büyük olasılıkla yerel bir yapılandırma sorunu vardır ve [aracıyı yeniden yüklemeniz](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)gerekir. 
 
-5. Makineniz sorgu sonuçlarında ortaya çıkıyorsa, kapsam yapılandırma sorunları olup olmadığını denetleyin. [Kapsam yapılandırması,](../automation-onboard-solutions-from-automation-account.md#scope-configuration) çözüm için hangi makinelerin yapılandırıldırıldırış olduğunu belirler. Makineniz çalışma alanınızda görünüyorsa ancak **Update Management Portal'da görünmüyorsa, kapsam yapılandırmasını makineleri hedeflemesi için yapılandırmanız gerekir. Bunu nasıl yapacağınızı öğrenmek için [çalışma alanında yerleşik makinelere](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)bakın.
+5. Makineniz sorgu sonuçlarında ortaya çıkıyorsa, kapsam yapılandırma sorunları olup olmadığını denetleyin. [Kapsam yapılandırması,](../automation-onboard-solutions-from-automation-account.md#scope-configuration) çözüm için hangi makinelerin yapılandırıldırıldırış olduğunu belirler. 
 
-6. Çalışma alanınızda aşağıdaki sorguyu çalıştırın:
+6. Makineniz çalışma alanınızda görünüyorsa ancak Güncelleştirme Yönetimi'nde görünmüyorsa, kapsamı yapılandırmasını makineyi hedeflemesi için yapılandırmanız gerekir. Bunu nasıl yapacağınızı öğrenmek için [çalışma alanında yerleşik makinelere](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)bakın.
 
-  ```loganalytics
-  Operation
-  | where OperationCategory == 'Data Collection Status'
-  | sort by TimeGenerated desc
-  ```
+7. Çalışma alanınızda bu sorguyunuzu çalıştırın.
 
-7. Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanmış ve verilerin kaydedilmesine engel olan bir kota vardır. Çalışma alanınızda, Kullanım altında **veri hacmi yönetimine** ve tahmini **maliyetlere** gidin ve kotanızı kontrol edin veya kaldırın.
+   ```kusto
+   Operation
+   | where OperationCategory == 'Data Collection Status'
+   | sort by TimeGenerated desc
+   ```
 
-8. Sorununuz hala çözülmemişse, Windows için Karma Çalışan'ı yeniden yüklemek için [Windows Karma Runbook Worker'ı dağıt'taki](../automation-windows-hrw-install.md) adımları izleyin. Linux için, bir [Linux Hybrid Runbook Worker dağıt'taki](../automation-linux-hrw-install.md)adımları izleyin.
+8. Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesine engel oldu. Çalışma alanınızda, Kullanım altında **veri hacmi yönetimine** gidin ve tahmini **maliyetler**ve kotayı değiştirin veya kaldırın.
+
+9. Sorununuz hala çözülmemişse, Windows için Karma Çalışan'ı yeniden yüklemek için [Windows Karma Runbook Worker'ı dağıt'taki](../automation-windows-hrw-install.md) adımları izleyin. Linux için, bir [Linux Hybrid Runbook Worker dağıt'taki](../automation-linux-hrw-install.md)adımları izleyin.
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Senaryo: Abonelikler için Otomasyon kaynak sağlayıcısı nı kaydedemiyoruz
 
@@ -152,51 +154,132 @@ Otomasyon kaynak sağlayıcısı aboneye kayıtlı değildir.
 
 ### <a name="resolution"></a>Çözüm
 
-Otomasyon kaynak sağlayıcısını kaydetmek için Azure portalında aşağıdaki adımları izleyin:
+Otomasyon kaynak sağlayıcısını kaydetmek için Azure portalında aşağıdaki adımları izleyin.
 
 1. Portalın altındaki Azure hizmet listesinde Tüm **hizmetler'i**seçin ve ardından Genel hizmet grubunda **Abonelikleri** seçin.
-2. Aboneliğinizi seçin.
-3. **Ayarlar** **altında, Kaynak Sağlayıcıları**seçin.
-4. Kaynak sağlayıcıları listesinden kaynak sağlayıcısının `Microsoft.Automation` kayıtlı olduğunu doğrulayın.
-5. Listelenmemişse, kaynak sağlayıcı `Microsoft.Automation` kaydı için hataları çöz'teki adımları izleyerek sağlayıcıyı kaydedin. [Resolve errors for resource provider registration](/azure/azure-resource-manager/resource-manager-register-provider-errors)
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="update-missed-machines"></a>Senaryo: Dinamik bir zamanlama ile zamanlanmış güncelleştirme bazı makineleri cevapsız
+2. Aboneliğinizi seçin.
+
+3. **Ayarlar** **altında, Kaynak Sağlayıcıları**seçin.
+
+4. Kaynak sağlayıcıları listesinden, Microsoft.Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
+
+5. Listede yoksa, kaynak sağlayıcı kaydı yla ilgili hataları gider'deki adımları izleyerek Microsoft.Automation [sağlayıcısını kaydedin.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+
+## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>Senaryo: Dinamik bir zamanlama ile zamanlanmış güncelleştirme bazı makineleri cevapsız
 
 ### <a name="issue"></a>Sorun
 
-Güncelleştirmeye dahil edilen önizleme li makinelerin tümü, zamanlanmış bir çalıştırma sırasında yamalı makineler listesinde görünmez.
+Güncelleştirme önizlemesinde yer alan makinelerin tümü zamanlanan bir çalışma sırasında yamalı makineler listesinde görünmez.
 
 ### <a name="cause"></a>Nedeni
 
 Bu sorun aşağıdaki nedenlerden biri olabilir:
 
-* Dinamik bir sorguda kapsamda tanımlanan abonelikler kayıtlı Otomasyon kaynak sağlayıcısı için yapılandırılmamıştır. 
+* Dinamik bir sorguda kapsamda tanımlanan abonelikler kayıtlı Otomasyon kaynak sağlayıcısı için yapılandırılmamıştır.
+
 * Zamanlama yürütüldüğünde makineler kullanılamadı veya uygun etiketlere sahip değildi.
 
 ### <a name="resolution"></a>Çözüm
 
 #### <a name="subscriptions-not-configured-for-registered-automation-resource-provider"></a>Kayıtlı Otomasyon kaynak sağlayıcısı için yapılandırılmamış abonelikler
 
-Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, bu abonelikteki makinelerhakkında bilgi sorgulayamaz veya getiremezsiniz. Abonelik kaydını sağlamak için aşağıdaki adımları kullanın.
+Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, bu abonelikteki makinelerhakkında bilgi sorgulayamaz veya getiremezsiniz. Abonelik kaydını doğrulamak için aşağıdaki adımları kullanın.
 
-1. Azure [Portalı'nda](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)Azure hizmet listesine erişin.
+1. Azure [portalında](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-portal)Azure hizmet listesine erişin.
+
 2. **Tüm hizmetleri**seçin ve ardından Genel hizmet grubunda **Abonelikleri** seçin. 
+
 3. Dağıtımınızın kapsamında tanımlanan aboneliği bulun.
+
 4. **Ayarlar**altında, **Kaynak Sağlayıcıları**seçin.
-5. Kaynak sağlayıcısının `Microsoft.Automation` kayıtlı olduğunu doğrulayın.
-6. Listelenmemişse, kaynak sağlayıcı `Microsoft.Automation` kaydı için hataları çöz'teki adımları izleyerek sağlayıcıyı kaydedin. [Resolve errors for resource provider registration](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+
+5. Microsoft.Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
+
+6. Listede yoksa, kaynak sağlayıcı kaydı yla ilgili hataları gider'deki adımları izleyerek Microsoft.Automation [sağlayıcısını kaydedin.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>Zamanlama yürütüldüğünde kullanılamayan veya doğru etiketlenmemiş makineler
 
 Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırıldıysa, ancak güncelleştirme zamanlamasını belirtilen [dinamik gruplarla](../automation-update-management-groups.md) çalıştıran bazı makineleri kaçırdıysa aşağıdaki yordamı kullanın.
 
 1. Azure portalında Otomasyon hesabını açın ve **Yönetim Güncelleştir'i**seçin.
+
 2. Güncelleştirme dağıtımının tam olarak ne zaman çalıştırıldığını belirlemek için [Güncelleştirme Yönetimi geçmişini](https://docs.microsoft.com/azure/automation/manage-update-multi#view-results-of-an-update-deployment) denetleyin. 
-3. Güncelleştirme Yönetimi tarafından gözden kaçırıldığınızdan şüphelendiğiniz makineler [için, makine değişikliklerini bulmak](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)için Azure Kaynak Grafiği'ni kullanın. 
+
+3. Güncelleştirme Yönetimi tarafından gözden kaçırıldığınızdan şüphelendiğiniz makineler [için, makine değişikliklerini bulmak](https://docs.microsoft.com/azure/governance/resource-graph/how-to/get-resource-changes#find-detected-change-events-and-view-change-details)için Azure Kaynak Grafiği'ni (ARG) kullanın. 
+
 4. Güncelleştirme dağıtımı çalıştırıldıktan önceki bir gün gibi önemli bir dönemde değişiklik arayın.
+
 5. Bu dönemde makinelerde silme veya güncelleştirme değişiklikleri gibi sistemik değişiklikler için arama sonuçlarını denetleyin. Bu değişiklikler, güncelleştirmeler dağıtıldığında makinelerin makine listesinde seçilmemelerini sağlayacak şekilde makine durumunu veya etiketleri değiştirebilir.
+
 6. Makine durumunu veya etiket sorunlarını düzeltmek için makineleri ve kaynak ayarlarını gerektiği gibi ayarlayın.
+
 7. Belirtilen dinamik gruplarla dağıtımın tüm makineleri içerdiğinden emin olmak için güncelleştirme zamanlamasını yeniden çalıştırın.
+
+## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>Senaryo: Beklenen makineler dinamik grup için önizlemede görünmez
+
+### <a name="issue"></a>Sorun
+
+Dinamik bir grubun seçili kapsamları için sanal makineler Azure portalı önizleme listesinde görünmüyor. Bu liste, seçili kapsamlar için bir ARG sorgusu tarafından alınan tüm makinelerden oluşur. Kapsamlar, Karma Runbook İşçileri yüklü olan ve erişim izinlerine sahip olduğunuz makineler için filtrelenir. 
+
+### <a name="cause"></a>Nedeni
+ 
+Bu sorunun olası nedenleri şunlardır:
+
+* Seçili kapsamlarda doğru erişime sahip değilsiniz.
+* ARG sorgusu beklenen makineleri almaz.
+* Karma Runbook Worker makinelere yüklü değildir.
+
+### <a name="resolution"></a>Çözüm 
+
+#### <a name="incorrect-access-on-selected-scopes"></a>Seçili kapsamlarda yanlış erişim
+
+Azure portalı yalnızca belirli bir kapsamda yazma erişiminiz olan makineleri görüntüler. Kapsam için doğru erişime sahip değilseniz, [Bkz. Öğretici: RBAC ve Azure portalını kullanarak kullanıcıya Azure kaynaklarına erişim hakkı](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)tanıyın.
+
+#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG sorgusu beklenen makineleri döndürmez
+
+Sorgularınızın doğru çalışıp çalışmaz olduğunu öğrenmek için aşağıdaki adımları izleyin.
+
+1. Azure portalındaki Kaynak Grafiği gezgini bıçağında aşağıda gösterildiği gibi biçimlendirilmiş bir ARG sorgusu çalıştırın. Bu sorgu, Güncelleştirme Yönetimi'nde dinamik grubu oluşturduğunuzda seçtiğiniz filtreleri taklit eder. Bkz. [Güncelleştirme Yönetimi ile dinamik grupları kullan.](https://docs.microsoft.com/azure/automation/automation-update-management-groups) 
+
+    ```kusto
+    where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
+    | project id, location, name, tags = todynamic(tolower(tostring(tags)))
+    | where  (tags[tolower("<tagKey1>")] =~ "<tagValue1>" and tags[tolower("<tagKey2>")] =~ "<tagValue2>") // use this if "All" option selected for tags
+    | where  (tags[tolower("<tagKey1>")] =~ "<tagValue1>" or tags[tolower("<tagKey2>")] =~ "<tagValue2>") // use this if "Any" option selected for tags
+    | project id, location, name, tags
+    ```
+
+   Örnek aşağıda verilmiştir:
+
+    ```kusto
+    where (subscriptionId in~ ("20780d0a-b422-4213-979b-6c919c91ace1", "af52d412-a347-4bc6-8cb7-4780fbb00490") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "Windows" and resourceGroup in~ ("testRG","withinvnet-2020-01-06-10-global-resources-southindia") and location in~ ("australiacentral","australiacentral2","brazilsouth") )
+    | project id, location, name, tags = todynamic(tolower(tostring(tags)))
+    | where  (tags[tolower("ms-resource-usage")] =~ "azure-cloud-shell" and tags[tolower("temp")] =~ "temp")
+    | project id, location, name, tags
+    ```
+ 
+2. Aradığınız makinelerin sorgu sonuçlarında listeli olup olmadığını denetleyin. 
+
+3. Makineler listelenmemişse, dinamik grupta seçilen filtreyle ilgili bir sorun olabilir. Grup yapılandırmasını gerektiği gibi ayarlayın.
+
+#### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Karma Runbook İşçi makinelere yüklü değil
+
+Makineler ARG sorgu sonuçlarında görünür, ancak dinamik grup önizlemesinde yine de görünmez. Bu durumda, makineler karma çalışanlar olarak atanmayabilir ve bu nedenle Azure Otomasyon ve Güncelleştirme Yönetimi işlerini çalıştıramaz. Görmeyi beklediğiniz makinelerin Hibrit Runbook İşçileri olarak ayarlandığından emin olmak için:
+
+1. Azure portalında, doğru görünmeyen bir makine için Otomasyon hesabına gidin.
+
+2. **Proses Otomasyonu**altında **Karma işçi gruplarını** seçin.
+
+3. Sistem **karma işçi grupları** sekmesini seçin.
+
+4. Hibrit işçinin o makine için mevcut olduğunu doğrulayın.
+
+5. Makine karma bir çalışan olarak ayarlanmadıysa, Karma [Runbook Worker'ı kullanarak veri merkezinizdeki veya bulutunuzdaki kaynakları Otomatikleştir'deki](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker)yönergeleri kullanarak ayarlamalar yapın.
+
+6. Makineyi Karma Runbook Worker grubuna katılın.
+
+7. Önizlemede görüntülenmiyor tüm makineler için yukarıdaki adımları yineleyin.
 
 ## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Senaryo: Güncelleştirme Yönetimi çözümü için bileşenler etkinken, VM yapılandırıldığını göstermeye devam ediyor
 
@@ -220,7 +303,7 @@ Bu hata aşağıdaki nedenlerle oluşabilir:
 
 ### <a name="resolution"></a>Çözüm
 
-VM ile ilgili sorunun tam olarak belirlenmesine yardımcı olmak için, Otomasyon hesabınıza bağlı Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın:
+VM ile ilgili sorunun tam olarak belirlenmesine yardımcı olmak için, Otomasyon hesabınıza bağlı Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
 
 ```
 Update
@@ -242,7 +325,7 @@ Klonlanmış bir resim kullanıyorsanız, farklı bilgisayar adları aynı kayna
 
 1. Log Analytics çalışma alanınızda, gösterilirse kapsam yapılandırması için kaydedilen aramadan `MicrosoftDefaultScopeConfig-Updates` VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
 
-2. Aşağıdaki cmdlet'i çalıştırın:
+2. Aşağıdaki cmdlet çalıştırın.
 
     ```azurepowershell-interactive
     Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
@@ -250,7 +333,7 @@ Klonlanmış bir resim kullanıyorsanız, farklı bilgisayar adları aynı kayna
 
 3. Sağlık `Restart-Service HealthService` hizmetini yeniden başlatmak için çalıştırın. Bu işlem anahtarı yeniden oluşturur ve yeni bir UUID oluşturur.
 
-4. Bu yaklaşım işe yaramazsa, önce görüntüüzerinde sysprep çalıştırın ve sonra MMA yükleyin.
+4. Bu yaklaşım işe yaramazsa, önce görüntüüzerinde Sysprep çalıştırın ve sonra MMA'yı yükleyin.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Senaryo: Başka bir Azure kiracısında makineler için güncelleştirme dağıtımı oluşturduğunuzda bağlantılı bir abonelik hatası alırsınız
 
@@ -317,19 +400,19 @@ Bu hatanın oluşmasının nedeni aşağıdakilerden biri olabilir:
 
 ### <a name="resolution"></a>Çözüm
 
-Mümkün olduğunda, güncelleştirme dağıtımlarınız için [dinamik gruplar](../automation-update-management-groups.md) kullanın. Ek olarak:
+Mümkün olduğunda, güncelleştirme dağıtımlarınız için [dinamik gruplar](../automation-update-management-groups.md) kullanın. Ayrıca, aşağıdaki adımları atabilirsiniz.
 
-* Makinenin hala var olduğunu ve erişilebildiğini doğrulayın. 
-* Makine yoksa, dağıtımınızı edin ve makineyi kaldırın.
-* Güncelleştirme Yönetimi için gerekli olan bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve ardından makinenizin bu gereksinimleri karşıladığını doğrulayın.
-* Karma Runbook İşçisi aracısı sorun gidericisini kullanarak Karma Runbook İşçisi ile bağlantıyı doğrulayın. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın.
-* Kaynak bilgisayar kimliğinin değiştiği ortamınızda makineleri bulmak için Log Analytics'te aşağıdaki sorguyu çalıştırın. Aynı değere, ancak `Computer` farklı `SourceComputerId` bir değere sahip bilgisayarları arayın.
+1. Makinenin hala var olduğunu ve erişilebildiğini doğrulayın. 
+2. Makine yoksa, dağıtımınızı edin ve makineyi kaldırın.
+3. Güncelleştirme Yönetimi için gerekli olan bağlantı noktaları ve adreslerin listesi için [ağ planlama](../automation-update-management.md#ports) bölümüne bakın ve ardından makinenizin bu gereksinimleri karşıladığını doğrulayın.
+4. Karma Runbook İşçisi aracısı sorun gidericisini kullanarak Karma Runbook İşçisi ile bağlantıyı doğrulayın. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın.
+5. Kaynak bilgisayar kimliğinin değiştiği ortamınızda makineleri bulmak için Log Analytics'te aşağıdaki sorguyu çalıştırın. Aynı değere, ancak `Computer` farklı `SourceComputerId` bir değere sahip bilgisayarları arayın.
 
-   ```loganalytics
+   ```kusto
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-* Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzeltin ve doğru `SourceComputerId` değeri yansıtacak şekilde kaldırın ve okuyun.
+6. Etkilenen makineleri bulduktan sonra, bu makineleri hedefleyen güncelleştirme dağıtımlarını düzeltin ve doğru `SourceComputerId` değeri yansıtacak şekilde kaldırın ve okuyun.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Senaryo: Güncelleştirmeler dağıtım yapılmadan yüklenir
 
@@ -452,7 +535,7 @@ Bu sorun genellikle ağ yapılandırması ve güvenlik duvarı sorunları neden 
   * Makineler Windows Update için yapılandırıldıysa, [HTTP/proxy ile ilgili sorunlarda](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)açıklanan uç noktalara ulaşabileceğinizden emin olun.
   * Makineler Windows Server Update Services (WSUS) için yapılandırıldıysa, [WUServer kayıt defteri anahtarı](/windows/deployment/update/waas-wu-settings)tarafından yapılandırılan WSUS sunucusuna erişebildiğinizden emin olun.
 
-Bir HRESULT görürseniz, özel durum iletisinin tamamını görmek için kırmızı renkte görüntülenen özel durumu çift tıklatın. Olası çözümler veya önerilen eylemler için aşağıdaki tabloyu gözden geçirin:
+Bir HRESULT görürseniz, özel durum iletisinin tamamını görmek için kırmızı renkte görüntülenen özel durumu çift tıklatın. Olası çözümler veya önerilen eylemler için aşağıdaki tabloyu gözden geçirin.
 
 |Özel durum  |Çözüm veya eylem  |
 |---------|---------|
@@ -466,14 +549,14 @@ Bir HRESULT görürseniz, özel durum iletisinin tamamını görmek için kırm�
 |`0x80070005`| Erişim reddedilen bir hata aşağıdakilerden herhangi biri tarafından neden olabilir:<br> Virüslü bilgisayar<br> Windows Update ayarları doğru yapılandırılmamıştır<br> %WinDir%\SoftwareDistribution klasörü ile dosya izni hatası<br> Sistem sürücüsünde yetersiz disk alanı (C:).
 |Diğer genel özel durum     | Olası çözümler için internette bir arama yapın ve yerel BT desteğinizle çalışın.         |
 
-%Windir%\Windowsupdate.log dosyasını gözden geçirmek de olası nedenleri belirlemenize yardımcı olabilir. Günlüğü nasıl okuyabilirsiniz hakkında daha fazla bilgi için [Windowsupdate.log dosyasının nasıl okunduğuna](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)bakın.
+**%Windir%\Windowsupdate.log** dosyasını gözden geçirmek de olası nedenleri belirlemenize yardımcı olabilir. Günlüğü nasıl okuyabilirsiniz hakkında daha fazla bilgi için [Windowsupdate.log dosyasının nasıl okunduğuna](https://support.microsoft.com/help/902093/how-to-read-the-windowsupdate-log-file)bakın.
 
 Ayrıca, makinedeki Windows Update ile ilgili sorunları kontrol etmek için [Windows Update sorun gidericisini](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) indirip çalıştırabilirsiniz.
 
 > [!NOTE]
 > [Windows Update sorun giderici](https://support.microsoft.com/help/4027322/windows-update-troubleshooter) belgeleri, windows istemcilerinde kullanım için olduğunu gösterir, ancak Windows Server'da da çalışır.
 
-## <a name="scenario-update-run-returns-failed-status-linux"></a>Senaryo: Güncelleştirme çalıştır "Başarısız" durumunu döndürür (Linux)
+## <a name="scenario-update-run-returns-failed-status-linux"></a>Senaryo: Güncelleştirme çalıştır Başarısız durum (Linux) döndürür
 
 ### <a name="issue"></a>Sorun
 
@@ -495,11 +578,7 @@ Başarılı bir şekilde başladıktan sonra bir güncelleştirme çalışması 
 
 Belirli düzeltme eki, paket veya güncelleştirme, iş başarısız olmadan hemen önce görülürse, bu öğeleri bir sonraki güncelleştirme dağıtımından [hariç taslamayı](../automation-tutorial-update-management.md#schedule-an-update-deployment) deneyebilirsiniz. Windows Update'ten günlük bilgilerini toplamak için [Windows Update günlük dosyalarına](/windows/deployment/update/windows-update-logs)bakın.
 
-Bir düzeltme sorununu çözemediyseniz, aşağıdaki günlük dosyasının bir kopyasını yapın ve bir sonraki güncelleştirme dağıtımı başlamadan önce sorun giderme amacıyla saklayın.
-
-```bash
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+Bir düzeltme sorununu çözemediyseniz, **/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log** dosyasının bir kopyasını yapın ve bir sonraki güncelleştirme dağıtımı başlamadan önce sorun giderme amacıyla saklayın.
 
 ## <a name="patches-arent-installed"></a>Düzeltme emaları yüklü değil
 
@@ -515,9 +594,9 @@ Bu genellikle, makineler WSUS veya Microsoft Endpoint Configuration Manager'dan 
 
 [Bu makalenin Kayıt Defteri bölümünü düzenleyerek](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)Otomatik Güncelleştirmeleri Yapılandırma'daki `UseWUServer` kayıt defteri anahtarına kayıt defteri anahtarını çapraz yönlendirerek makinelerin WSUS ve SCCM için yapılandırılıp yapılıp yapılamayacağınızı kontrol edebilirsiniz.
 
-Güncelleştirmeler WSUS'ta onaylanmadıysa, bunlar yüklenmez. Log Analytics'te onaylanmamış güncelleştirmeleri aşağıdaki sorguyu çalıştırarak denetleyebilirsiniz.
+Güncelleştirmeler WSUS'ta onaylanmadıysa, yüklenmez. Log Analytics'te onaylanmamış güncelleştirmeleri aşağıdaki sorguyu çalıştırarak denetleyebilirsiniz.
 
-  ```loganalytics
+  ```kusto
   Update | where UpdateState == "Needed" and ApprovalSource == "WSUS" and Approved == "False" | summarize max(TimeGenerated) by Computer, KBID, Title
   ```
 
@@ -535,8 +614,8 @@ KB2267602, [Windows Defender tanım güncelleştirmesidir](https://www.microsoft
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemediyseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu görmediyseniz veya sorununuzu çözemediyseniz, ek destek için aşağıdaki kanallardan birini deneyin.
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
-* [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın.
 * Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.

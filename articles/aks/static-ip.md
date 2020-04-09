@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmeti (AKS) yük dengeleyicisi ile statik ip adresi ve DNS etiketi kullanın
+title: Yük dengeleyiciile statik IP kullanın
+titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Hizmeti (AKS) yük dengeleyicisi ile statik bir IP adresi oluşturmayı ve nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 03/09/2020
-ms.openlocfilehash: 6c219976db21fb05ea1ad313b4effdf95906f986
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5051232f29ad51d9fee893a4a660fc81f6e60d77
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047963"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886747"
 ---
 # <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Hizmeti (AKS) yük dengeleyicisi ile statik bir genel IP adresi ve DNS etiketi kullanın
 
@@ -62,7 +63,7 @@ $ az network public-ip show --resource-group myResourceGroup --name myAKSPublicI
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Statik IP adresini kullanarak hizmet oluşturma
 
-Hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet ilkesinin izinleri diğer kaynak grubuna devrettiğinden emin olun. Örnek:
+Hizmet oluşturmadan önce, AKS kümesi tarafından kullanılan hizmet ilkesinin izinleri diğer kaynak grubuna devrettiğinden emin olun. Örneğin:
 
 ```azurecli-interactive
 az role assignment create \
@@ -101,7 +102,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Hizmetiniz dinamik veya statik bir genel IP adresi kullanıyorsa, `service.beta.kubernetes.io/azure-dns-label-name` genel kullanıma açık bir DNS etiketi ayarlamak için hizmet ek açıklamasını kullanabilirsiniz. Bu, Azure'un genel DNS sunucularını ve üst düzey etki alanını kullanarak hizmetiniz için tam nitelikli bir etki alanı adı yayımlar. Ek açıklama değeri Azure konumu içinde benzersiz olmalıdır, bu nedenle yeterince nitelikli bir etiket kullanılması önerilir.   
 
-Azure daha sonra, tam nitelikli DNS `<location>.cloudapp.azure.com` adını oluşturmak için sağladığınız ada (seçtiğiniz bölge konumu) gibi varsayılan bir alt ağı otomatik olarak ekler. Örnek:
+Azure daha sonra, tam nitelikli DNS `<location>.cloudapp.azure.com` adını oluşturmak için sağladığınız ada (seçtiğiniz bölge konumu) gibi varsayılan bir alt ağı otomatik olarak ekler. Örneğin:
 
 ```yaml
 apiVersion: v1

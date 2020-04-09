@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
 ms.author: ramkris
-ms.openlocfilehash: 3dc2a2d7c0e9fae425340ab1aa91790070708cd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73606198"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80981333"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java toplu uygulayıcı kitaplığı: Bilgileri karşıdan yükleyin
 
@@ -25,7 +25,7 @@ ms.locfileid: "73606198"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu uygulayıcı - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -37,6 +37,6 @@ ms.locfileid: "73606198"
 |**SDK indir**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**GitHub'da toplu yürütme kitaplığı**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API belgeleri**| [Java API başvuru belgeleri](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
-|**Kullanmaya başlayın**|[Toplu yürütme kütüphanesi Java SDK ile başlayın](bulk-executor-java.md)|
-|**Desteklenen minimum çalışma süresi**|[Java Geliştirme Kiti (JDK) 7+](https://aka.ms/azure-jdks)|
+|**başlarken**|[Toplu yürütme kütüphanesi Java SDK ile başlayın](bulk-executor-java.md)|
+|**Desteklenen minimum çalışma süresi**|[Java Geliştirme Kiti (JDK) 7+](/java/azure/jdk/?view=azure-java-stable)|
 

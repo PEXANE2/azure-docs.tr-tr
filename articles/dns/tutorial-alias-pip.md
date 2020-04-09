@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
-ms.openlocfilehash: d4517314742f3ec8e9968d20745ffb697d96f324
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3017d09e94040d16950598dad360fe32930c16b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77149941"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985448"
 ---
 # <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Öğretici: Azure genel IP adresine başvurmak için diğer ad kaydı yapılandırma 
 
@@ -20,8 +20,8 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Ağ altyapısı oluşturma.
-> * Web sunucusu sanal makinesi oluşturma.
-> * Diğer ad kaydı oluşturma.
+> * Genel IP içeren bir web sunucusu sanal makinesi oluşturun.
+> * Genel IP'yi işaret eden bir takma ad kaydı oluşturun.
 > * Diğer ad kaydını test etme.
 
 
@@ -48,7 +48,7 @@ Bu öğreticide örnek olarak contoso.com etki alanı kullanılmaktadır ancak s
 4. **Ayarlar** için **VNet-Servers** sanal ağını ve **SN-Web** alt ağını seçin. Ortak gelen bağlantı noktaları için **HTTP** > **HTTPS** > **RDP (3389)** seçeneğini ve ardından **Tamam'ı**seçin.
 5. **Özet** sayfasında **Oluştur**'u seçin.
 
-Bu işlemin tamamlanması birkaç dakika sürer.
+Bu işlemin tamamlanması birkaç dakika sürer. Sanal makine web-01-ip denilen temel bir dinamik kamu IP olacak ekli bir NIC olacaktır. Sanal makine her yeniden başlatıldığında genel IP değişecektir.
 
 ### <a name="install-iis"></a>IIS yükleme
 

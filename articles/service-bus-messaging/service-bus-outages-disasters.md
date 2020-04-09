@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 2a7f5d5eacb2d03e64ae95d34e1cf0bd37bbc7f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259259"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984955"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Uygulamaları Service Bus kesintilerine ve olağanüstü durumlarına karşı dayanıklı hale getirmek için en iyi yöntemler
 
@@ -33,7 +33,7 @@ Service Bus Premium, ad alanı düzeyinde Coğrafi felaket kurtarmayı destekler
 
 ### <a name="availability-zones"></a>Kullanılabilirlik Alanları
 
-Service Bus Premium SKU, aynı Azure bölgesinde hataya göre yalıtılmış konumlar sağlayarak [Kullanılabilirlik Bölgelerini](../availability-zones/az-overview.md)destekler.
+Service Bus Premium SKU, aynı Azure bölgesinde hataya göre yalıtılmış konumlar sağlayarak [Kullanılabilirlik Bölgelerini](../availability-zones/az-overview.md)destekler. Service Bus, mesajlaşma mağazasının üç kopyasını yönetir (1 birincil ve 2 ikincil). Service Bus, veri ve yönetim işlemleri için üç kopyayı da eşit tutar. Birincil kopya başarısız olursa, ikincil kopyalardan biri algılanan kapalı kalma süresi olmadan birincil yükseltilir. Uygulamalar Servis Veri Servisi'nden geçici bağlantı keser görürse, SDK'daki yeniden deneme mantığı Servis Veri Servisi'ne otomatik olarak yeniden bağlanır. 
 
 > [!NOTE]
 > Azure Hizmet Veri Servisi Premium için Kullanılabilirlik Bölgeleri desteği yalnızca kullanılabilirlik bölgelerinin bulunduğu [Azure bölgelerinde](../availability-zones/az-overview.md#services-support-by-region) kullanılabilir.

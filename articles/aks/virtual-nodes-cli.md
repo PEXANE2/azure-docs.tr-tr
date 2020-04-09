@@ -1,15 +1,16 @@
 ---
-title: Azure Kubernetes Hizmetlerinde (AKS) Azure CLI'yi kullanarak sanal düğümler oluşturma
+title: Azure CLI'yi kullanarak sanal düğümler oluşturma
+titleSuffix: Azure Kubernetes Service
 description: Bölmeleri çalıştırmak için sanal düğümler kullanan bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturmak için Azure CLI'yi nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b6d44ceb9b447d670c4e51c951b547e90dfce38f
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616475"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984683"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI'yi kullanarak sanal düğümler kullanmak için bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturun ve yapılandırma
 
@@ -66,7 +67,7 @@ Sanal Düğümler işlevselliği büyük ölçüde ACI'ın özellik kümesine ba
 * [Ana bilgisayar takma adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI exec için [argümanlar](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) sanal düğüm e poddağıtmaz
-* [Windows Server düğümleri (şu anda AKS önizlemede)](windows-container-cli.md) sanal düğümlerin yanında desteklenmez. Bir AKS kümesinde Windows Server düğümlerine gerek kalmadan Windows Server kapsayıcılarını zamanlamak için sanal düğümler kullanabilirsiniz.
+* Sanal düğümler Linux bölmelerinin zamanlamasını destekler. Windows Server kapsayıcılarını ACI'ye zamanlamak için açık kaynak [Sanal Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını el ile yükleyebilirsiniz. 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 

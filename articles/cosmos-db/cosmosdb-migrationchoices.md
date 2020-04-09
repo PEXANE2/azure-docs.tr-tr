@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: bharathb
-ms.openlocfilehash: 9111193bb441487b9e3c49bc9ee1a296d49f8a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34698a215477abdd7d68c3dfe050657ecf049690
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882397"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984904"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>Şirket içi veya bulut verilerinizi Azure Cosmos DB'ye geçirme seçenekleri
 
@@ -31,18 +31,18 @@ Geçiş aracının seçimini aşağıdaki etkenler belirler:
 * **Beklenen geçiş süresi**: Geçişler, daha az iş ortası tüketen veya hedef Azure Cosmos DB kapsayıcısında sağlanan tüm iş ortasını tüketebilen ve geçişi daha kısa sürede tamamlayabilen yavaş ve aşamalı bir hızda gerçekleşecek şekilde yapılandırılabilir.
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
-|**Geçiş türü**|**Çözüm**|**Husus -lar**|
+|**Geçiş türü**|**Çözüm**|**Dikkat edilmesi gerekenler**|
 |---------|---------|---------|
 |Çevrimdışı|[Veri Geçiş Aracı](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Kurulumu kolay ve birden çok kaynağı destekler <br/>&bull;Büyük veri kümeleri için uygun değil|
 |Çevrimdışı|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Kurulumu kolay ve birden çok kaynağı destekler <br/>&bull;Azure Cosmos DB toplu uygulayıcı kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygundur <br/>&bull;Kontrol noktası eksikliği - Bu, geçiş sırasında bir sorun oluşursa, tüm geçiş işlemini yeniden başlatmanız gerektiği anlamına gelir<br/>&bull;Ölü harf sırasının olmaması - Birkaç hatalı dosyanın tüm geçiş işlemini durdurabileceği anlamına gelir.|
 |Çevrimdışı|[Azure Cosmos DB Kıvılcım konektörü](https://docs.microsoft.com/azure/cosmos-db/spark-connector)|&bull;Azure Cosmos DB toplu uygulayıcı kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygundur <br/>&bull;Özel bir Kıvılcım kurulumuna ihtiyaç duyar <br/>&bull;Kıvılcım şema tutarsızlıklarına karşı hassastır ve bu geçiş sırasında bir sorun olabilir |
 |Çevrimdışı|[Cosmos DB toplu uygulayıcı kitaplık ile özel araç](https://docs.microsoft.com/azure/cosmos-db/migrate-cosmosdb-data)|&bull;Geçiş esnekliğini artıran kontrol noktası, ölü harflerle yazma özellikleri sağlar <br/>&bull;Çok büyük veri kümeleri için uygundur (10 TB+)  <br/>&bull;Uygulama Hizmeti olarak çalışan bu aracın özel kurulumgerektirir |
 |Çevrimiçi|[Cosmos DB Fonksiyonları + ChangeFeed API](https://docs.microsoft.com/azure/cosmos-db/change-feed-functions)|&bull;Kurulumu kolay <br/>&bull;Yalnızca kaynak Bir Azure Cosmos DB kapsayıcısıysa çalışır <br/>&bull;Büyük veri kümeleri için uygun değil <br/>&bull;Kaynak kapsayıcıdan silmeleri yakalamaz |
-|Çevrimiçi|[ChangeFeed kullanarak Özel Geçiş Hizmeti](https://aka.ms/CosmosDBMigrationSample)|&bull;İlerleme izleme sağlar <br/>&bull;Yalnızca kaynak Bir Azure Cosmos DB kapsayıcısıysa çalışır <br/>&bull;Daha büyük veri kümeleri için de çalışır <br/>&bull;Kullanıcının Akış Işlemcisini Değiştir'i barındırmak için bir Uygulama Hizmeti ayarlamasını gerektirir <br/>&bull;Kaynak kapsayıcıdan silmeleri yakalamaz|
+|Çevrimiçi|[ChangeFeed kullanarak Özel Geçiş Hizmeti](https://github.com/nomiero/CosmosDBLiveETLSample)|&bull;İlerleme izleme sağlar <br/>&bull;Yalnızca kaynak Bir Azure Cosmos DB kapsayıcısıysa çalışır <br/>&bull;Daha büyük veri kümeleri için de çalışır <br/>&bull;Kullanıcının Akış Işlemcisini Değiştir'i barındırmak için bir Uygulama Hizmeti ayarlamasını gerektirir <br/>&bull;Kaynak kapsayıcıdan silmeleri yakalamaz|
 |Çevrimiçi|[Striim](https://docs.microsoft.com/azure/cosmos-db/cosmosdb-sql-api-migrate-data-striim)|&bull;Oracle, DB2, SQL Server gibi çok çeşitli kaynaklarla çalışır <br/>&bull;ETL boru hatları oluşturmak kolay ve izleme için bir pano sağlar <br/>&bull;Daha büyük veri kümelerini destekler <br/>&bull;Bu bir üçüncü taraf aracı olduğundan, pazardan satın alınması ve kullanıcının ortamına yüklenmesi gerekir|
 
 ## <a name="azure-cosmos-db-mongo-api"></a>Azure Cosmos DB Mongo API
-|**Geçiş türü**|**Çözüm**|**Husus -lar**|
+|**Geçiş türü**|**Çözüm**|**Dikkat edilmesi gerekenler**|
 |---------|---------|---------|
 |Çevrimdışı|[Veri Geçiş Aracı](https://docs.microsoft.com/azure/cosmos-db/import-data)|&bull;Kurulumu kolay ve birden çok kaynağı destekler <br/>&bull;Büyük veri kümeleri için uygun değil|
 |Çevrimdışı|[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db)|&bull;Kurulumu kolay ve birden çok kaynağı destekler <br/>&bull;Azure Cosmos DB toplu uygulayıcı kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygundur <br/>&bull;Denetim noktasının olmaması, geçiş sırasında ki herhangi bir sorunun tüm geçiş sürecinin yeniden başlatılmasını gerektireceği anlamına gelir<br/>&bull;Ölü harf sırasının olmaması, birkaç hatalı dosyanın tüm geçiş işlemini durdurabileceği anlamına gelir <br/>&bull;Belirli veri kaynakları için okuma iş verisini artırmak için özel kod gerekir|
@@ -50,7 +50,7 @@ Geçiş aracının seçimini aşağıdaki etkenler belirler:
 |Çevrimiçi|[Azure Veritabanı Geçiş Hizmeti](https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db-online)|&bull;Azure Cosmos DB toplu uygulayıcı kitaplığını kullanır <br/>&bull;Büyük veri kümeleri için uygundur ve canlı değişiklikleri çoğaltma yıkıyor <br/>&bull;Yalnızca diğer MongoDB kaynaklarıyla çalışır|
 
 ## <a name="azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API'si
-|**Geçiş türü**|**Çözüm**|**Husus -lar**|
+|**Geçiş türü**|**Çözüm**|**Dikkat edilmesi gerekenler**|
 |---------|---------|---------|
 |Çevrimdışı|[cqlsh COPY komutu](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-cqlsh-copy-command)|&bull;Kurulumu kolay <br/>&bull;Büyük veri kümeleri için uygun değil <br/>&bull;Yalnızca kaynak Cassandra tablosu olduğunda çalışır|
 |Çevrimdışı|[Spark ile kopyalama tablosu](https://docs.microsoft.com/azure/cosmos-db/cassandra-import-data#migrate-data-using-spark) |&bull;Dönüşüm ve yutma paralelleştirmek için Kıvılcım yetenekleri nden yararlanabilir <br/>&bull;Gaz ları işlemek için özel bir yeniden deneme ilkesiyle yapılandırmaya ihtiyaç duyar|
@@ -60,9 +60,9 @@ Geçiş aracının seçimini aşağıdaki etkenler belirler:
 ## <a name="other-apis"></a>Diğer API'ler
 SQL API, Mongo API ve Cassandra API dışındaki API'ler için, API'nin mevcut ekosistemlerinin her biri tarafından desteklenen çeşitli araçlar vardır. 
 
-**Tablo API'si** 
+**Tablo API’si** 
 * [Veri Geçiş Aracı](https://docs.microsoft.com/azure/cosmos-db/table-import#data-migration-tool)
-* [AzCopy](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
+* [Azcopy](https://docs.microsoft.com/azure/cosmos-db/table-import#migrate-data-by-using-azcopy)
 
 **Gremlin API**
 * [Grafik toplu uygulayıcı kitaplığı](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-graph-dotnet)

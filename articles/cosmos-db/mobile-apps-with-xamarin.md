@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 40f7de4b4feb2b312705238abd30402edb635ea9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8fbd2065ceae1aadf1dc57c78adb21b7c2848297
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73720896"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985567"
 ---
 # <a name="tutorial-build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Öğretici: Xamarin ve Azure Cosmos DB ile mobil uygulamalar oluşturun
 
@@ -37,14 +37,14 @@ Azure Cosmos DB mobil uygulama geliştiricileri için aşağıdaki anahtar yeten
 * İşlem hızı yüksektir. Azure Cosmos DB ile belgeleri okumak ve yazmak yalnızca birkaç milisaniye alır. Geliştiriciler ihtiyaçları olan işlem hızını belirtebilir ve Azure Cosmos DB, rahat bir tutarlılıkla tek tek tüm bölge hesapları ve çok bölgeli tüm hesaplar için %99,99 kullanılabilirlik SLA'sı ve çok bölgeli tüm veritabanı hesaplarında %99,999 okunabilirlik sağlar.
 * Sınırsız ölçek. Uygulamanız büyüdükçe Azure Cosmos [kaplarınız büyür.](partition-data.md) Küçük veri boyutu ve saniye başına yüzlerce istekle başlayabilirsiniz. Koleksiyonlarınız veya veritabanlarınız zaman içinde petabaytlarca veriye ve saniye başına yüz milyonlarca isteğe ulaşabilir.
 * Global olarak dağıtılmıştır. Mobil uygulama kullanıcıları sıklıkla tüm dünya çapında sürekli hareket halindedir. Azure Cosmos DB [global olarak dağıtılmış bir veritabanıdır](distribute-data-globally.md). Verilerinizi kullanıcılarınız tarafından erişilebilir hale getirmek için haritaya tıklayın.
-* Yerleşik zengin yetkilendirme. Azure Cosmos DB ile karmaşık özel yetkilendirme kodu olmadan [kullanıcı başına veri](https://aka.ms/documentdb-xamarin-todouser) veya çok kullanıcılı paylaşılan veriler gibi popüler düzenleri kolayca uygulayabilirsiniz.
+* Yerleşik zengin yetkilendirme. Azure Cosmos DB ile karmaşık özel yetkilendirme kodu olmadan [kullanıcı başına veri](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems) veya çok kullanıcılı paylaşılan veriler gibi popüler düzenleri kolayca uygulayabilirsiniz.
 * Jeo-uzamsal sorgular. Birçok mobil uygulama bugün coğrafi bağlamsal deneyimler sunar. [Jeo-uzamsal türler](geospatial.md) için birinci sınıf destekle Azure Cosmos DB bu deneyimleri kolayca oluşturmanızı sağlar.
 * İkili dosya ekleri. Uygulama verileriniz genellikle ikili bloblar içerir. Ekler için yerel destek, Azure Cosmos DB’yi uygulama verileriniz için ihtiyacınız olan her şeyi sağlayacak hale getirir.
 
 ## <a name="azure-cosmos-db-and-xamarin-tutorial"></a>Azure Cosmos DB ve Xamarin öğreticisi
 Aşağıdaki öğreticide Xamarin ve Azure Cosmos DB kullanarak bir mobil uygulamanın nasıl oluşturulacağı gösterilmiştir. Öğreticinin tam kaynak kodunu [GitHub'da Xamarin ve Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) altında bulabilirsiniz.
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 Azure Cosmos DB ile çalışmaya başlamak kolaydır. Azure portala gidin ve yeni bir Azure Cosmos DB hesabı oluşturun. Hızlı **başlangıç** sekmesini tıklatın. Azure Cosmos DB hesabınıza zaten bağlı olan Xamarin Formlar yapılacaklar listesini indirin. 
 
 ![Mobil uygulamalar için Azure Cosmos DB hızlı başlangıcı](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
@@ -83,7 +83,7 @@ Yapılacaklar listesi uygulamasını çok kullanıcılı bir yapılacaklar liste
 
   4. Uygulamayı Kaynak Belirteç Aracısının Facebook ile kimlik doğrulama yapacağı ve oturum açmış Facebook kullanıcıları için kaynak belirteçleri isteyeceği şekilde değiştirin. Ardından UserItems koleksiyonundaki verilere erişebilirsiniz.  
 
-Bu öğreticinin tam kod örneğini [GitHub'da Kaynak Belirteç Aracısı](https://aka.ms/documentdb-xamarin-todouser)’nda bulabilirsiniz. Bu diyagramda çözüm gösterilir:
+Bu öğreticinin tam kod örneğini [GitHub'da Kaynak Belirteç Aracısı](https://github.com/kirillg/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems)’nda bulabilirsiniz. Bu diyagramda çözüm gösterilir:
 
 ![Azure Cosmos DB kullanıcılar ve izinler aracısı](media/mobile-apps-with-xamarin/documentdb-resource-token-broker.png)
 

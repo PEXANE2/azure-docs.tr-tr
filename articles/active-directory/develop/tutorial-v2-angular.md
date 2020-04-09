@@ -3,25 +3,21 @@ title: Açısal tek sayfalık uygulama eğitimi - Azure
 titleSuffix: Microsoft identity platform
 description: Köşeli SPA uygulamalarının Microsoft kimlik platformu bitiş noktasından erişim belirteçleri gerektiren bir API'yi nasıl çağırabileceğini öğrenin
 services: active-directory
-documentationcenter: dev-center-name
 author: hahamil
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 63eda0c5d7b5ef4741e8244fbde290d13b54c5fb
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637843"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80880848"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Oturum açın ve Açısal tek sayfalı bir uygulamadan (SPA) Microsoft Graph API'yi arayın
 
@@ -277,14 +273,14 @@ this.authService.acquireTokenSilent(requestObj).then(function (tokenResponse) {
 
 API'nin erişim belirtecinde döndürülmek istenen kapsamları içerdiği yer. `scopes`
 
-Örnek:
+Örneğin:
 
 * `["user.read"]`Microsoft Graph için
 * `["<Application ID URL>/scope"]`özel Web API'leri `api://<Application ID>/access_as_user`için (yani, )
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Bazen kullanıcının Microsoft kimlik platformu bitiş noktasıyla etkileşimde olması gerekir. Örnek:
+Bazen kullanıcının Microsoft kimlik platformu bitiş noktasıyla etkileşimde olması gerekir. Örneğin:
 
 * Parolalarının süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmeleri gerekebilir.
 * Uygulamanız, kullanıcının onay ını alması gereken ek kaynak kapsamlarına erişim talep ediyor.

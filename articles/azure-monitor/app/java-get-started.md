@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: efa498ba600a664beab4b9a49eae2b2c3f1c8397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2355cb7ab995cab3060c7a94c9e7ea344bd9e92b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298307"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984649"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Quickstart: Java web projesinde Uygulama Öngörüleri ile başlayın
 
@@ -25,7 +25,7 @@ Application Insights, web geliştiricileri için canlı uygulamanızın performa
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights izleme anahtarı edinme
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure portalındabir Application Insights kaynağı oluşturun. Uygulama türünü Java web uygulaması olarak ayarlayın.
 
 3. Yeni kaynağın izleme anahtarını bulun. Bu anahtarı hemen kod projenize yapıştırmalısınız.
@@ -223,7 +223,7 @@ Ve otomatik operasyon adlandırma için.
 
 Uygulama Insights Java SDK şimdi [W3C dağıtılmış izleme](https://w3c.github.io/trace-context/)destekler.
 
-Gelen SDK [yapılandırması korelasyon](correlation.md#telemetry-correlation-in-the-java-sdk)hakkındaki yazımızda daha ayrıntılı olarak açıklanmıştır.
+Gelen SDK [yapılandırması korelasyon](correlation.md)hakkındaki yazımızda daha ayrıntılı olarak açıklanmıştır.
 
 Giden SDK [yapılandırması AI-Agent.xml](java-agent.md) dosyasında tanımlanır.
 
@@ -258,7 +258,7 @@ Toplanacak ek performans sayaçları belirtebilirsiniz.
 * `displayName` – Application Insights portalında görüntülenen ad.
 * `objectName` – JMX nesne adı.
 * `attribute` – Getirilecek JMX nesne adının özniteliği
-* `type` (isteğe bağlı) - JMX nesnenin öznitelik türü:
+* `type`(isteğe bağlı) - JMX nesnesinin özniteliğinin türü:
   * Varsayılan: int veya long gibi basit bir tür.
   * `composite`: performans sayacı verileri 'Attribute.Data' biçimindedir
   * `tabular`: performans sayacı verileri tablo satırı biçimindedir

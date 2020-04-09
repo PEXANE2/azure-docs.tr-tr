@@ -2,13 +2,13 @@
 title: Şablon işlevleri - string
 description: Dizeleri ile çalışmak için bir Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 070133c3db538e5df76644b62c25ced916adc4af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: c0517375b273384f263e8ba421995d4afb6c193b
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156285"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80982423"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM şablonları için dize işlevleri
 
@@ -46,7 +46,6 @@ Kaynak Yöneticisi, Azure Kaynak Yöneticisi (ARM) şablonlarınızdaki dizeleri
 * [Urı](#uri)
 * [uriComponent](#uricomponent)
 * [uriComponentToString](#uricomponenttostring)
-* [utcŞimdi](#utcnow)
 
 ## <a name="base64"></a>base64
 
@@ -1097,6 +1096,8 @@ Bu işlevi yalnızca bir parametrenin varsayılan değeri için bir ifade içind
 
 YeniGuid işlevi [kılavuz](#guid) işlevden farklıdır, çünkü herhangi bir parametre almaz. Guid'i aynı parametreyle aradiğinizde, her seferinde aynı tanımlayıcıyı döndürür. Belirli bir ortam için aynı GUID'i güvenilir bir şekilde oluşturmanız gerektiğinde guid'i kullanın. Kaynakları bir test ortamına dağıtmak gibi her seferinde farklı bir tanımlayıcıya ihtiyacınız olduğunda newGuid'i kullanın.
 
+YeniGuid işlevi, genel olarak benzersiz tanımlayıcıyı oluşturmak için .NET Framework'deki [Guid yapısını](/dotnet/api/system.guid) kullanır.
+
 Daha önceki [başarılı bir dağıtımı yeniden dağıtmak için bu seçeneği](rollback-on-error.md)kullanırsanız ve önceki dağıtım da yeniGuid kullanan bir parametre içeriyorsa, parametre yeniden değerlendirilmez. Bunun yerine, önceki dağıtımdaki parametre değeri geri alma dağıtımında otomatik olarak yeniden kullanılır.
 
 Bir test ortamında, yalnızca kısa bir süre için yaşayan kaynakları tekrar tekrar dağıtmanız gerekebilir. Benzersiz adlar oluşturmak yerine, benzersiz adlar oluşturmak için [uniqueString](#uniquestring) ile newGuid'i kullanabilirsiniz.
@@ -1876,7 +1877,7 @@ Aşağıdaki örnek, kaynak grubunuza dayalı bir depolama hesabı için benzers
     ...
 ```
 
-Bir şablonu her dağıttYaptığınızda yeni bir benzersiz ad oluşturmanız gerekiyorsa ve kaynağı güncelleştirmeyi düşünmüyorsanız, uniqueString ile [utcNow](#utcnow) işlevini kullanabilirsiniz. Bu yaklaşımı bir test ortamında kullanabilirsiniz. Örneğin, [bkz. utcNow](#utcnow).
+Bir şablonu her dağıttYaptığınızda yeni bir benzersiz ad oluşturmanız gerekiyorsa ve kaynağı güncelleştirmeyi düşünmüyorsanız, uniqueString ile [utcNow](template-functions-date.md#utcnow) işlevini kullanabilirsiniz. Bu yaklaşımı bir test ortamında kullanabilirsiniz. Örneğin, [bkz. utcNow](template-functions-date.md#utcnow).
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -2093,115 +2094,6 @@ Varsayılan değerlerle önceki örnekten çıktı:
 | uriOutput | Dize | `http://contoso.com/resources/nested/azuredeploy.json` |
 | componentOutput | Dize | `http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json` |
 | toStringOutput | Dize | `http://contoso.com/resources/nested/azuredeploy.json` |
-
-## <a name="utcnow"></a>utcŞimdi
-
-`utcNow(format)`
-
-Geçerli (UTC) tarih saati değerini belirtilen biçimde verir. Format sağlanmadıysa, ISO 8601 (yyyyMddTHHmmssZ) biçimi kullanılır. **Bu işlev yalnızca bir parametre için varsayılan değerde kullanılabilir.**
-
-### <a name="parameters"></a>Parametreler
-
-| Parametre | Gerekli | Tür | Açıklama |
-|:--- |:--- |:--- |:--- |
-| biçim |Hayır |string |URI kodlanmış değeri bir dize dönüştürmek için. Standart [biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizeleri](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
-
-### <a name="remarks"></a>Açıklamalar
-
-Bu işlevi yalnızca bir parametrenin varsayılan değeri için bir ifade içinde kullanabilirsiniz. Bu işlevi şablonda başka bir yerde kullanmak bir hata döndürür. Her çağrıldığında farklı bir değer döndürdüğünden, işlev şablonun diğer bölümlerinde izin verilmez. Aynı şablonu aynı parametrelerle dağıtmak güvenilir bir şekilde aynı sonuçları üretmez.
-
-Daha önceki [başarılı bir dağıtımı yeniden dağıtmak için bu seçeneği](rollback-on-error.md)kullanırsanız ve önceki dağıtım utcNow kullanan bir parametre içeriyorsa, parametre yeniden değerlendirilmez. Bunun yerine, önceki dağıtımdaki parametre değeri geri alma dağıtımında otomatik olarak yeniden kullanılır.
-
-Varsayılan bir değer için utcNow işlevine dayanan bir şablonu yeniden dağıtılırken dikkatli olun. Yeniden dağıttığınızda ve parametre için bir değer sağlamadığınızda, işlev yeniden değerlendirilir. Yeni bir kaynak oluşturmak yerine varolan bir kaynağı güncelleştirmek istiyorsanız, önceki dağıtımdan parametre değerini geçirin.
-
-### <a name="return-value"></a>Döndürülen değer
-
-Geçerli UTC tarih saati değeri.
-
-### <a name="examples"></a>Örnekler
-
-Aşağıdaki örnek şablon, tarih saati değeri için farklı biçimleri gösterir.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcValue": {
-            "type": "string",
-            "defaultValue": "[utcNow()]"
-        },
-        "utcShortValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "utcCustomValue": {
-            "type": "string",
-            "defaultValue": "[utcNow('M d')]"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "utcOutput": {
-            "type": "string",
-            "value": "[parameters('utcValue')]"
-        },
-        "utcShortOutput": {
-            "type": "string",
-            "value": "[parameters('utcShortValue')]"
-        },
-        "utcCustomOutput": {
-            "type": "string",
-            "value": "[parameters('utcCustomValue')]"
-        }
-    }
-}
-```
-
-Önceki örnekteki çıktı her dağıtım için değişir, ancak benzer olacaktır:
-
-| Adı | Tür | Değer |
-| ---- | ---- | ----- |
-| utcOutput | string | 20190305T175318Z |
-| utcShortOutput | string | 03/05/2019 |
-| utcCustomOutput | string | 3 5 |
-
-Sonraki örnek, etiket değeri ayarlarken işlevden bir değerin nasıl kullanılacağını gösterir.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "utcShort": {
-            "type": "string",
-            "defaultValue": "[utcNow('d')]"
-        },
-        "rgName": {
-            "type": "string"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Resources/resourceGroups",
-            "apiVersion": "2018-05-01",
-            "name": "[parameters('rgName')]",
-            "location": "westeurope",
-            "tags":{
-                "createdDate": "[parameters('utcShort')]"
-            },
-            "properties":{}
-        }
-    ],
-    "outputs": {
-        "utcShort": {
-            "type": "string",
-            "value": "[parameters('utcShort')]"
-        }
-    }
-}
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Azure Kaynak Yöneticisi şablonundaki bölümlerin açıklaması için [bkz.](template-syntax.md)

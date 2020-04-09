@@ -7,17 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: a989113c80cd8189cce9da959fe27509297f677a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745696"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80983339"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge modülü SUs sekmesi
 
 >[!Important]
->30 Mart 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
 
 **Yeni Teklif** sayfasının **STU** sekmesi, bir veya daha fazla SNU oluşturmanıza ve bunları yeni teklifinize ilişkilendirmenize olanak tanır.  Bir çözümü özellik kümelerine, faturalandırma modellerine veya başka bir özelliğe göre ayırt etmek için farklı SCO'lar kullanabilirsiniz.
 

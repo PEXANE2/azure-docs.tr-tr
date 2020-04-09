@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/01/2020
-ms.openlocfilehash: d39cf8745c6f53cb11bb12561fd452325fe52ac6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79296957"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80873897"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi oluşturma ve etiketleri dışa aktarma 
 
@@ -20,14 +20,14 @@ ms.locfileid: "79296957"
 
 Makine öğrenimi projelerinde hacimli verilerin etiketlanması genellikle baş ağrısıdır. Görüntü sınıflandırması veya nesne algılama gibi bilgisayar görme bileşenine sahip projeler genellikle binlerce görüntü için etiket gerektirir.
  
-[Azure Machine Learning,](https://ml.azure.com/) etiketleme projeleri oluşturmak, yönetmek ve izlemek için merkezi bir yer sağlar. Etiketleme görevlerini verimli bir şekilde yönetmek için verileri, etiketleri ve ekip üyelerini koordine etmek için kullanın. Machine Learning, çok etiketli veya çok katmanlı görüntü sınıflandırması ve sınırlı kutularla nesne tanımlamayı destekler.
+[Azure Machine Learning,](https://ml.azure.com/) etiketleme projeleri oluşturmak, yönetmek ve izlemek için merkezi bir yer sağlar (genel önizleme). Etiketleme görevlerini verimli bir şekilde yönetmek için verileri, etiketleri ve ekip üyelerini koordine etmek için kullanın. Machine Learning, çok etiketli veya çok katmanlı görüntü sınıflandırması ve sınırlı kutularla nesne tanımlamayı destekler.
 
 Machine Learning ilerlemeyi izler ve tamamlanmamış etiketleme görevlerinin sırasını korur. Etiketçilerin katılmak için azure hesabına ihtiyacı yoktur. Microsoft hesabınızveya [Azure Etkin Dizininizle](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)kimlik doğrulaması yaptıktan sonra, zamanlarının izin verdiği kadar etiketleme yapabilir.
 
 Projeyi başlatıp durdurursunuz, etiketleyiciler ve takımlar ekleyin ve kaldırırsınız ve etiketleme ilerlemesini izlersiniz. Etiketli verileri COCO biçiminde veya Azure Machine Learning veri kümesi olarak dışa aktarabilirsiniz.
 
 > [!Important]
-> Şu anda yalnızca görüntü sınıflandırma ve nesne tanımlama etiketleme projeleri desteklenir. Ayrıca, veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Varolan bir veri deponuz yoksa, proje oluşturma sırasında resim yükleyebilirsiniz.) 
+> Şu anda yalnızca görüntü sınıflandırma ve nesne tanımlama etiketleme projeleri desteklenir. Ayrıca, veri görüntülerinin bir Azure blob veri deposunda bulunması gerekir. (Varolan bir veri deponuz yoksa, proje oluşturma sırasında resim yükleyebilirsiniz.)
 
 Bu makalede, nasıl öğreneceksiniz:
 
@@ -41,6 +41,7 @@ Bu makalede, nasıl öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
+
 * Yerel dosyalarda veya Azure blob depolamasında etiketlemek istediğiniz veriler.
 * Uygulamak istediğiniz etiket kümesi.
 * Etiketleme talimatları.
@@ -51,11 +52,12 @@ Bu makalede, nasıl öğreneceksiniz:
 
 Etiketleme projeleri Azure Machine Learning'den yönetilir. Projelerinizi ve kişilerinizi yönetmek için **Etiketleme projeleri** sayfasını kullanırsınız. Bir projede bir veya daha fazla takım atanmış ve bir takımın bu projeye atanmış bir veya daha fazla kişisi vardır.
 
-Verileriniz azure blob depolama alanında ysa, etiketleme projesini oluşturmadan önce verilerinizi veri deposu olarak kullanılabilir hale getirmelisiniz. Ayrıntılar için [veri depoları oluştur ve kaydedin.](https://docs.microsoft.com/azure/machine-learning/how-to-access-data#create-and-register-datastores)
+Verileriniz azure blob depolama alanında ysa, etiketleme projesini oluşturmadan önce verilerinizi veri deposu olarak kullanılabilir hale getirmelisiniz. Bir veri deposu kullanma örneği için [Bkz. Öğretici: İlk resim sınıflandırma etiketleme projenizi oluşturun.](tutorial-labeling.md)
 
 Proje oluşturmak için **proje ekle'yi**seçin. Projeye uygun bir ad verin ve **Etiketleme görev türünü**seçin.
 
 ![Proje oluşturma sihirbazını etiketleme](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
+
 
 * Bir sınıf kümesinden görüntüye yalnızca tek bir *sınıf* uygulamak istediğinizde projeler için Görüntü Sınıflandırma **Çok sınıflı'yı** seçin.
 * Bir sınıf kümesinden bir resme *bir veya daha fazla* etiket uygulamak istediğinizde projeler için Resim Sınıflandırma Çok **etiketli'yi** seçin. Örneğin, bir köpek bir fotoğraf hem *köpek* hem de *gündüz*ile etiketlenmiş olabilir.
@@ -168,9 +170,9 @@ Etiketleme projesi başharfe büründürülmeden sonra, projenin bazı yönleri 
 
 ## <a name="manage-teams-and-people"></a>Ekipleri ve kişileri yönetme
 
-Varsayılan olarak, oluşturduğunuz her etiketleme projesi, üye olarak sizinle birlikte yeni bir takım alır. Ancak takımlar projeler arasında da paylaşılabilir. Ve projeler birden fazla takım olabilir. Takım oluşturmak için **Takımlar** sayfasında **takım ekle'yi** seçin.
+Varsayılan olarak, oluşturduğunuz her etiketleme projesi, üye olarak sizinle birlikte yeni bir takım alır. Ancak takımlar projeler arasında da paylaşılabilir. Ve projeler birden fazla takım olabilir. Takım oluşturmak için **Takımlar** sayfasında **takım ekle'yi** seçin. 
 
-**İnsanlar** sayfasındaki insanları yönetirsin. E-posta adresine göre kişi ekleme ve kaldırma. Her etiketleyicinin microsoft hesabınız veya Azure Etkin Dizini aracılığıyla kimlik doğrulaması yapmak zorundadır.  
+**Etiketler** sayfasındaki kişileri yönetirsiniz. E-posta adresine göre kişi ekleme ve kaldırma. Her etiketleyicinin microsoft hesabınız veya Azure Etkin Dizini aracılığıyla kimlik doğrulaması yapmak zorundadır.  
 
 Bir kişiyi ekledikten sonra, bu kişiyi bir veya daha fazla takıma atayabilirsiniz: **Takımlar** sayfasına gidin, takımı seçin ve ardından **kişileri atayın** veya **kişileri kaldırın'ı**seçin.
 
@@ -216,5 +218,6 @@ COCO dosyası, Azure Machine Learning çalışma alanının varsayılan blob dep
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Öğretici: İlk resim sınıflandırma etiketleme projenizi oluşturun.](tutorial-labeling.md)
 * [Görüntü sınıflandırması veya nesne algılama](how-to-label-images.md) için etiket görüntüleri
 * [Azure Machine Learning ve Machine Learning Studio (klasik)](compare-azure-ml-to-studio-classic.md) hakkında daha fazla bilgi edinin

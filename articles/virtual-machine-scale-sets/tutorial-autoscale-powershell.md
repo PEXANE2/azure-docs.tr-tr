@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2376f039b93ca22d3d5a988818538419489d2456
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278421"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80985618"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 
@@ -209,7 +209,7 @@ mstsc /v 52.168.121.216:50002
 
 
 ## <a name="monitor-the-active-autoscale-rules"></a>Etkin otomatik ölçeklendirme kurallarını izleme
-Ölçek kümenizdeki sanal makine örneği sayısını izlemek için **while** kullanın. Otomatik ölçeklendirme ölçeklerinin, sanal makine örneklerinin her birinde **CPUStress* tarafından oluşturulan CPU yüküne yanıt olarak ölçeği genişletme işlemini başlatması 5 dakika sürer:
+Ölçek kümenizdeki sanal makine örneği sayısını izlemek için **while** kullanın. Otomatik ölçek ölçeklerinin, **CPUStress** tarafından VM örneklerinin her birinde oluşturduğu CPU yüküne yanıt olarak ölçeklendirme işlemine başlaması 5 dakika sürer:
 
 ```azurepowershell-interactive
 while (1) {Get-AzureRmVmssVM `

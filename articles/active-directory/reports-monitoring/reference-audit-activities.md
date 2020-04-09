@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 843f12d14120a7becdc1e8b15bfcc65948602c44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86a0e0b3c64554e00a5ba7734af28dc136df643f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74007759"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891518"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD denetim etkinliği başvurusu
 
@@ -135,11 +135,11 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Uygulama Yönetimi|AdminPolicyDatas-SetResources|
 |Uygulama Yönetimi|AdminUserJourneys-GetResources|
 |Uygulama Yönetimi|AdminUserJourneys-RemoveResources|
-|Kimlik doğrulaması|AdminUserJourneys-SetResources|
-|Kimlik doğrulaması|IdentityProvider oluşturma|
-|Kimlik doğrulaması|V1 uygulaması oluşturma|
-|Kimlik doğrulaması|V2 uygulaması oluşturma|
-|Kimlik doğrulaması|Kiracıda özel etki alanları oluşturma|
+|Kimlik Doğrulaması|AdminUserJourneys-SetResources|
+|Kimlik Doğrulaması|IdentityProvider oluşturma|
+|Kimlik Doğrulaması|V1 uygulaması oluşturma|
+|Kimlik Doğrulaması|V2 uygulaması oluşturma|
+|Kimlik Doğrulaması|Kiracıda özel etki alanları oluşturma|
 |Yetkilendirme|Yeni bir AdminUserJourney oluşturma|
 |Yetkilendirme|Yerelleştirilmiş kaynak json oluşturma|
 |Yetkilendirme|Yeni Özel IDP oluşturma|
@@ -370,8 +370,8 @@ Bu makalede, denetim günlüklerinize kaydedilebilecek denetim etkinlikleri list
 |Uygulama Yönetimi|Kullanım Koşullarını Düzenleme|
 |Uygulama Yönetimi|Kullanım Koşullarını Yayımlama|
 |Uygulama Yönetimi|Kullanım Koşullarını Yayımdan Kaldırma|
-|Uygulama Yönetimi|Uygulama SSL sertifikası ekleme|
-|Uygulama Yönetimi|SSL bağlamasını silme|
+|Uygulama Yönetimi|Uygulama TLS/SSL sertifikası ekleme|
+|Uygulama Yönetimi|TLS bağlamayı silme|
 |Uygulama Yönetimi|Bağlayıcıyı kaydetme|
 |Uygulama Yönetimi|AdminPolicyDatas-RemoveResources|
 |Uygulama Yönetimi|AdminPolicyDatas-SetResources|

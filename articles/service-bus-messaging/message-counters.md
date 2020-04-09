@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 04/08/2020
 ms.author: aschhab
-ms.openlocfilehash: 3a4fca0b3b60fcb76bcdc4f5f2d53df816c5053b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756411"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891773"
 ---
 # <a name="message-counters"></a>İleti sayaçları
 
@@ -43,6 +43,11 @@ Etkin ileti sayısını bilmek, bir kuyruğun şu anda dağıtılandan daha fazl
 -   [TransferİletiSayısı](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.transfermessagecount#Microsoft_ServiceBus_Messaging_MessageCountDetails_TransferMessageCount): Başka bir kuyruğa veya konuya aktarılanınbekleyen iletiler.
 
 Bir uygulama kaynakları sıranın uzunluğuna göre ölçeklendirmek istiyorsa, bunu ölçülen bir hızda yapmalıdır. İleti sayaçlarının edinimi, ileti aracısı içinde pahalı bir işlemdir ve bunu sık sık doğrudan ve olumsuz bir şekilde yürütmek varlık performansını etkiler.
+
+> [!NOTE]
+> Hizmet Veri Servisi konusuna gönderilen iletiler, bu konuyla ilgili aboneliklere iletilir. Bu nedenle, bu iletiler aboneye başarıyla iletildik gibi, konunun kendisi üzerinde etkin ileti sayısı 0'dır. Abonelikteki ileti sayısını alın ve 0'dan büyük olduğunu doğrulayın. İletileri abonelikte görmenize rağmen, bunlar aslında konuya ait bir depolama alanında depolanır. 
+
+Aboneliklere bakarsanız, sıfır olmayan ileti sayısına sahip olurlar (bu tüm varlık için 323 MB'a kadar alan ekler).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

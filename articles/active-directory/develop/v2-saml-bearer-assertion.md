@@ -2,27 +2,22 @@
 title: Microsoft kimlik platformu & SAML taşıyıcı sıyrık iddiası akışı | Azure
 description: SAML taşıyıcısı savşması açığını kullanarak kullanıcıyı kimlik bilgileri iStemden çıkmadan Microsoft Graph' tan verileri nasıl alınırıcını öğrenin.
 services: active-directory
-documentationcenter: ''
 author: umeshbarapatre
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 16f30473ded5f1de5dc94c1cff9da96165b1a01c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cd79b1f9e4cd3afadee250da0c184c0c5b8ac07
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76700218"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80886186"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 SAML taşıyıcısı iddia akışı
 OAuth 2.0 SAML taşıyıcı sıyrık akışı, bir istemcinin varolan bir güven ilişkisini kullanması gerektiğinde SAML iddiasını kullanarak Bir OAuth erişim belirteci istemenize olanak tanır. SAML iddiasıiçin uygulanan imza, yetkili uygulamanın kimlik doğrulamasını sağlar. SAML iddiası, bir kimlik sağlayıcısı tarafından verilen ve bir hizmet sağlayıcısı tarafından tüketilen bir XML güvenlik belirtecidir. Hizmet sağlayıcısı, iddianın konusunu güvenlikle ilgili amaçlarla tanımlamak için içeriğine güvenir.

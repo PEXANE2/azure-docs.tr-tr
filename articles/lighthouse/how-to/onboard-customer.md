@@ -3,12 +3,12 @@ title: Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine e
 description: Bir müşteriyi Azure'a devredilen kaynak yönetimine nasıl bağlayıp kaynaklarına kendi kiracınız aracılığıyla erişilmesine ve yönetilmesine izin vermeyi öğrenin.
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6a5f4ce03f762b5903e8b3d6f10810819e02e422
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9eef2e73de7812fc65104131dfd319bf8dfb014e
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246883"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984598"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Bir müşteriyi Azure tarafından atanan temsilcinin kaynak yönetimine ekleme
 
@@ -36,7 +36,7 @@ Bir müşterinin kiracısına binebilmek için etkin bir Azure aboneliği olmas�
 
 Bu kimlik değerlerini zaten bilmiyorsanız, bunları aşağıdaki yollardan biriyle alabilirsiniz. Dağıtımınızda bu değerleri kullandığınızdan emin olun ve kullanın.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Kiracı kimliğiniz, Azure portalının sağ üst tarafında hesap adınızın üzerinde gezinerek veya **Switch dizinini**seçerek görülebilir. Kiracı kimliğinizi seçmek ve kopyalamak için portal içinden "Azure Etkin Dizini"ni arayın, ardından **Özellikler'i** seçin ve **Dizin Kimliği** alanında gösterilen değeri kopyalayın. Müşteri kiracısında bir abonelik kimliğini bulmak için "Abonelikler"i arayın ve ardından uygun abonelik kimliğini seçin.
 
@@ -126,17 +126,17 @@ Seçtiğiniz şablon, bir abonelik içinde tüm bir abonelik, kaynak grubu veya 
 
 |Bu gemide için  |Bu Azure Kaynak Yöneticisi şablonundan yararlanın  |Ve bu parametre dosyayı değiştirin |
 |---------|---------|---------|
-|Abonelik   |[delegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegeKaynak Yönetimi.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
-|Kaynak grubu   |[rgDelegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegeDResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
-|Abonelik içindeki birden çok kaynak grubu   |[multipleRgDelegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegeDResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
-|Abonelik (Azure Marketi'nde yayınlanan bir teklifi kullanırken)   |[pazarDelegeKaynakYönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[pazarDelegeKaynakYönetimi.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
+|Abonelik   |[delegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.json)  |[delegeKaynak Yönetimi.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/delegated-resource-management/delegatedResourceManagement.parameters.json)    |
+|Kaynak grubu   |[rgDelegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)  |[rgDelegeDResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)    |
+|Abonelik içindeki birden çok kaynak grubu   |[multipleRgDelegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.json)  |[multipleRgDelegeDResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/multipleRgDelegatedResourceManagement.parameters.json)    |
+|Abonelik (Azure Marketi'nde yayınlanan bir teklifi kullanırken)   |[pazarDelegeKaynakYönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.json)  |[pazarDelegeKaynakYönetimi.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/marketplace-delegated-resource-management/marketplaceDelegatedResourceManagement.parameters.json)    |
 
 > [!IMPORTANT]
 > Burada açıklanan işlem, aynı müşteri kiracısında yerleşik abonelikler olsa bile, gemide bulunan her abonelik için ayrı bir abonelik düzeyinde dağıtım gerektirir. Aynı müşteri kiracısında farklı abonelikler içinde birden çok kaynak grubuna biniyorsanız, ayrı dağıtımlar da gereklidir. Ancak, tek bir abonelik içinde birden çok kaynak grubuna binme tek bir abonelik düzeyinde dağıtım yapılabilir.
 >
 > Aynı aboneye (veya abonelik içindeki kaynak gruplarına) birden çok teklifin uygulanması için ayrı dağıtımlar da gereklidir. Uygulanan her teklif farklı bir **mspOfferName**kullanmalıdır.
 
-Aşağıdaki örnek, bir abonelik için kullanılabilecek değiştirilmiş bir **temsilciKaynak Yönetimi.parameters.json** dosyasını gösterir. Kaynak grubu parametre dosyaları [(rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management) klasöründe bulunan) benzerdir, ancak gemide bulunacak belirli kaynak grubunu(lar) tanımlamak için bir **rgName** parametresi de içerir.
+Aşağıdaki örnek, bir abonelik için kullanılabilecek değiştirilmiş bir **temsilciKaynak Yönetimi.parameters.json** dosyasını gösterir. Kaynak grubu parametre dosyaları [(rg-delegated-resource-management](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/rg-delegated-resource-management) klasöründe bulunan) benzerdir, ancak gemide bulunacak belirli kaynak grubunu(lar) tanımlamak için bir **rgName** parametresi de içerir.
 
 ```json
 {
@@ -242,9 +242,9 @@ az deployment create --name <deploymentName> \
 
 ## <a name="confirm-successful-onboarding"></a>Başarılı onboarding onaylayın
 
-Bir müşteri aboneliği Azure temsilcili kaynak yönetimine başarıyla bindiğinde, hizmet sağlayıcısının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (yukarıdaki işlem yoluyla bu aboneye erişim izni verilmişse, tek tek veya uygun izinlere sahip bir Azure REKLAM grubunun üyesi olarak). Bunu onaylamak için aboneliğin aşağıdaki yollardan birinde göründüğünden emin olun.  
+Bir müşteri aboneliği Azure temsilcili kaynak yönetimine başarıyla bindiğinde, hizmet sağlayıcısının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (yukarıdaki işlem yoluyla bunlara tek tek veya uygun izinlere sahip bir Azure AD grubunun üyesi olarak erişebiliyorlarsa). Bunu onaylamak için aboneliğin aşağıdaki yollardan birinde göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -300,7 +300,7 @@ Aşağıdaki örnekte, **parametre** dosyasına dahil edilebilen Yönetilen Hizm
 
 Bu izne sahip bir kullanıcı bir temsilciliği aşağıdaki yollardan biriyle kaldırabilir.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 1. [Müşterilerim sayfasına](view-manage-customers.md)gidin.
 2. **Heyetleri**seçin.

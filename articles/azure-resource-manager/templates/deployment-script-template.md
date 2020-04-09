@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: jgao
-ms.openlocfilehash: aa49b313f0fb10175dc6c0003f1a919f61731269
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: f84707adfa406011989c8f9bfdf1e8d9270698a6
+ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743303"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80984802"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım komut dosyalarını kullanma (Önizleme)
 
@@ -182,7 +182,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Harici komut dosyaları kullanma
 
-Satır lı komut dosyalarına ek olarak, harici komut dosyası dosyalarını da kullanabilirsiniz. **Yalnızca ps1** dosya uzantısına sahip birincil PowerShell komut dosyaları desteklenir. CLI komut dosyaları için, komut dosyaları geçerli bash komut dosyaları olduğu sürece birincil komut dosyalarının herhangi bir uzantısı (veya uzantısı olmadan) olabilir. Harici komut dosyası dosyalarını kullanmak için `scriptContent` değiştirin. `primaryScriptUri` Örnek:
+Satır lı komut dosyalarına ek olarak, harici komut dosyası dosyalarını da kullanabilirsiniz. **Yalnızca ps1** dosya uzantısına sahip birincil PowerShell komut dosyaları desteklenir. CLI komut dosyaları için, komut dosyaları geçerli bash komut dosyaları olduğu sürece birincil komut dosyalarının herhangi bir uzantısı (veya uzantısı olmadan) olabilir. Harici komut dosyası dosyalarını kullanmak için `scriptContent` değiştirin. `primaryScriptUri` Örneğin:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -313,7 +313,7 @@ Bu kaynakların yaşam döngüsü şablondaki aşağıdaki özellikler tarafınd
 
 Dağıtım komut dosyası yürütme idempotent bir işlemdir. DeploymentScripts kaynak özelliklerinin hiçbiri (satır satır komut dosyası dahil) değiştirilmezse, şablonu yeniden dağıttığınızda komut dosyası yürütülmez. Dağıtım komut dosyası hizmeti, şablondaki kaynak adlarını aynı kaynak grubundaki varolan kaynaklarla karşılaştırır. Aynı dağıtım komut dosyasını birden çok kez yürütmek istiyorsanız iki seçenek vardır:
 
-- DağıtımScripts kaynağınızın adını değiştirin. Örneğin, kaynak adı olarak veya kaynak adının bir parçası olarak [utcNow](./template-functions-string.md#utcnow) şablon işlevini kullanın. Kaynak adının değiştirilmesi, yeni bir dağıtımKomut Dosyaları kaynağı oluşturur. Bu komut dosyası yürütme bir geçmişi tutmak için iyidir.
+- DağıtımScripts kaynağınızın adını değiştirin. Örneğin, kaynak adı olarak veya kaynak adının bir parçası olarak [utcNow](./template-functions-date.md#utcnow) şablon işlevini kullanın. Kaynak adının değiştirilmesi, yeni bir dağıtımKomut Dosyaları kaynağı oluşturur. Bu komut dosyası yürütme bir geçmişi tutmak için iyidir.
 
     > [!NOTE]
     > utcNow işlevi yalnızca bir parametre için varsayılan değerde kullanılabilir.

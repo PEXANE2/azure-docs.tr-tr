@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynakların dağıtımı için Azure Kaynak Yöneticisi şablonlarını kullanarak avantajları açıklar.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 4570f5471ef6baf6f3f4a920be4d93c3f5a90438
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/06/2020
+ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
+ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258133"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80885744"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -30,11 +30,17 @@ ARM şablonlarını ve diğer altyapılardan birini kod hizmeti olarak kullanmak
 
    ![Şablon dağıtım karşılaştırması](./media/overview/template-processing.png)
 
-* **Yerleşik doğrulama**: Şablonunuz yalnızca doğrulamayı geçtikten sonra dağıtılır. Kaynak Yöneticisi, dağıtımın başarılı olacağından emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınızın yarı mamul durumda durma olasılığı daha düşüktür.
-
 * **Modüler dosyalar**: Şablonlarınızı daha küçük, yeniden kullanılabilir bileşenlere ayırabilir ve dağıtım zamanında birbirine bağlayabilirsiniz. Ayrıca, bir şablonu başka bir şablonun içine sokabilirsiniz.
 
 * **Herhangi bir Azure kaynağı oluşturma**: Yeni Azure hizmetlerini ve özelliklerini şablonlarda hemen kullanabilirsiniz. Bir kaynak sağlayıcısı yeni kaynaklar sunar tanıtmaz, bu kaynakları şablonlar aracılığıyla dağıtabilirsiniz. Yeni hizmetleri kullanmadan önce araçların veya modüllerin güncellenmesi için beklemeniz gerekmez.
+
+* **Genişletilebilirlik**: [Dağıtım komut dosyalarıyla](deployment-script-template.md)şablonlarınıza PowerShell veya Bash komut dosyaları ekleyebilirsiniz. Dağıtım komut dosyaları, dağıtım sırasında kaynakları ayarlama yeteneğinizi genişletir. Komut dosyası şablona eklenebilir veya harici bir kaynakta depolanabilir ve şablonda başvurulabilir. Dağıtım komut dosyaları, uçlardan uca ortam kurulumunuzu tek bir ARM şablonunda tamamlama olanağı sağlar.
+
+* **Test**: Şablonunuzun ARM şablon araç kiti (arm-ttk) ile test ederek önerilen yönergelere uyduğundan emin olabilirsiniz. Bu test [kiti, GitHub'dan](https://github.com/Azure/arm-ttk)indirebileceğiniz bir PowerShell komut dosyasıdır. Araç kiti, şablon dilini kullanarak uzmanlık geliştirmenizi kolaylaştırır.
+
+* **Önizleme değişiklikleri**: Şablonu dağıtmadan önce değişikliklerin önizlemesini almak için ["eğer" işlemini](template-deploy-what-if.md) kullanabilirsiniz. What-if ile, hangi kaynakların oluşturulacağını, güncelleştirildiğini veya silineceğini ve değişecek kaynak özelliklerini görürsünüz. What-if işlemi ortamınızın geçerli durumunu denetler ve durumu yönetme gereksinimini ortadan kaldırır.
+
+* **Yerleşik doğrulama**: Şablonunuz yalnızca doğrulamayı geçtikten sonra dağıtılır. Kaynak Yöneticisi, dağıtımın başarılı olacağından emin olmak için dağıtımı başlatmadan önce şablonu denetler. Dağıtımınızın yarı mamul durumda durma olasılığı daha düşüktür.
 
 * **İzlenen dağıtımlar**: Azure portalında dağıtım geçmişini inceleyebilir ve şablon dağıtımı hakkında bilgi alabilirsiniz. Dağıtılan şablonu, geçirilen parametre değerlerini ve çıktı değerlerini görebilirsiniz. Kod hizmetleri olarak diğer altyapı portalı üzerinden izlenmez.
 

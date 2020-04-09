@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 03/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1497b757d77d12cb5b963953224fa8929e987853
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 4af7dc5d55e451e4f6873df42e2b740fd1e5cd56
+ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385504"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80891756"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-anyconnect"></a>Öğretici: Cisco AnyConnect ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -96,6 +96,9 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 1. Cisco **AnyConnect'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
     ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Sunucunun birden çok TGT'si üzerinde yer almak istiyorsanız, galeriden Cisco AnyConnect uygulamasının birden çok örneğini eklemeniz gerekir. Ayrıca, tüm bu uygulama örnekleri için Azure AD'de kendi sertifikanızı yüklemeyi seçebilirsiniz. Bu şekilde uygulamalar için aynı sertifikaya sahip olabilirsiniz, ancak her uygulama için farklı Tanımlayıcı ve YanıtURL'i yapılandırabilirsiniz.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
