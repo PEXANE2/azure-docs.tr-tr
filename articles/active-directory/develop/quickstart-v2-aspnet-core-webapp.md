@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2d604da58f4056fc718239b6bc019d61ddbee51b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 1a73894e2003ae742f329adcda51cf21ceeacb31
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883840"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991169"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: ASP.NET Core web uygulamasına Microsoft ile oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azure Etkin Dizin (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarında nasıl oturum açabileceğini öğrenmek için bir kod örneği kullanırsınız. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
@@ -168,8 +168,3 @@ Yepyeni bir ASP.NET Core Web uygulamasına kimlik doğrulamanın nasıl ekleyece
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App öğretici](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
-
-Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
-
-> [!div class="nextstepaction"]
-> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

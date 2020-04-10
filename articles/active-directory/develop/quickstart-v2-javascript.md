@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 526922d73f2176825b8bba8982316f3c9c129963
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473575"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991118"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Kullanıcıları oturum açın ve JavaScript SPA'da bir erişim jetonu alın
 
@@ -268,7 +268,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 
-Kullanıcıları Microsoft kimlik platformu bitiş noktasıyla etkileşime girmeye zorlamanız gereken durumlar vardır. Örnek:
+Kullanıcıları Microsoft kimlik platformu bitiş noktasıyla etkileşime girmeye zorlamanız gereken durumlar vardır. Örneğin:
 * Parolalarının süresi dolduğundan kullanıcıların kimlik bilgilerini yeniden girmeleri gerekebilir.
 * Uygulamanız, kullanıcının onay ını alması gereken ek kaynak kapsamlarına erişim talep ediyor.
 * İki faktörlü kimlik doğrulama gereklidir.
@@ -306,8 +306,3 @@ Belgeler, SSS, sorunlar ve daha fazlası için MSAL repo'ya göz atmak için bkz
 
 > [!div class="nextstepaction"]
 > [MSAL.js GitHub repo](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-
-Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
-
-> [!div class="nextstepaction"]
-> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 42b478b598fe3034f1a97fe41662a38bc265074d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875988"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991144"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Java web uygulamasına Microsoft ile oturum açma ekleme
 
@@ -256,10 +256,5 @@ Bu senaryonun auth akışı hakkında daha fazla bilgi için Oauth 2.0 yetkilend
 
 > [!div class="nextstepaction"]
 > [Yetki Kodu Oauth akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)
-
-Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
-
-> [!div class="nextstepaction"]
-> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

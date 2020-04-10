@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 2946551233500a80c6fa7f02ad4c427f2d654b40
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883653"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991152"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET bir web uygulamasına Microsoft kimlik platformu oturum açma ekleme
 Bu hızlı başlangıçta, ASP.NET bir web uygulamasının herhangi bir Azure Etkin Dizin (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarında nasıl oturum açabildiğini öğrenmek için bir kod örneği kullanırsınız.  (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
@@ -205,8 +205,3 @@ Bu hızlı başlangıcın tam bir açıklamasının da içinde olduğu yeni öze
 > [Oturum açma öğreticisi](./tutorial-v2-asp-webapp.md)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
-
-Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
-
-> [!div class="nextstepaction"]
-> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

@@ -10,12 +10,12 @@ ms.custom:
 - mvc
 - seo-python-october2019
 ms.date: 11/05/2019
-ms.openlocfilehash: 7b05f12ad3fd3a0f56605d708bbbf06df7e341ed
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75433479"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010860"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Hızlı başlangıç: Redis için Azure Önbelleği kullanan bir Python uygulaması oluşturma
 
@@ -54,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Redis sürüm 3.0 veya üzeri için Azure Önbelleği için SSL sertifika denetimi uygulanır. redis için Azure Önbelleğine bağlanırken ssl_ca_certs açıkça ayarlanması gerekir. RedHat Linux için ssl_ca_certs */etc/pki/tls/certs/ca-bundle.crt* sertifika modülünde yer almaktadır.
+> Redis sürüm 3.0 veya üzeri için Azure Önbelleği için TLS/SSL sertifika denetimi uygulanır. redis için Azure Önbelleğine bağlanırken ssl_ca_certs açıkça ayarlanması gerekir. RedHat Linux için ssl_ca_certs */etc/pki/tls/certs/ca-bundle.crt* sertifika modülünde yer almaktadır.
 
 ## <a name="create-a-python-sample-app"></a>Python örnek uygulaması oluşturma
 

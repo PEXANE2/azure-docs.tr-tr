@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e56b733a567c706c2a15f2c30ed93a47c244db11
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77168716"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998912"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Hızlı başlatma: Cihazlarınızı izlemek için Azure IoT Central'ı kullanın
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıç, bir operatör olarak cihazlarınızı izlemek ve ayarla
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, önceki üç hızlı başlangıcı tamamlamanız gereken [bir Azure IoT Merkezi uygulaması oluşturma](./quick-deploy-iot-central.md), [IoT Central uygulamanıza simüle edilmiş bir aygıt ekleyin](./quick-create-pnp-device.md) ve cihazınız için kuralları ve eylemleri [yapılandırın.](quick-configure-rules.md)
+Başlamadan önce, önceki üç hızlı başlangıcı tamamlamanız gereken [bir Azure IoT Merkezi uygulaması oluşturma](./quick-deploy-iot-central.md), [IoT Central uygulamanıza simüle edilmiş bir aygıt ekleyin](./quick-create-simulated-device.md) ve cihazınız için kuralları ve eylemleri [yapılandırın.](quick-configure-rules.md)
 
 ## <a name="receive-a-notification"></a>Bildirim alma
 

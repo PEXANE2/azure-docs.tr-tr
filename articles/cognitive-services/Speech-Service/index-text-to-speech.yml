@@ -1,5 +1,5 @@
 ### YamlMime:Landing
-title: Metinden konuşmaya dokümantasyon
+title: Metin okuma belgeleri
 summary: Konuşma hizmetinden metin konuşma, uygulamalarınızın, araçlarınızın veya aygıtlarınızın metni insan ayarı gibi sentezlenmiş konuşmaya dönüştürmesini sağlar.
 metadata:
   title: Metinden konuşmaya dokümantasyon - Öğreticiler, API Başvurusu - Azure Bilişsel Hizmetler | Microsoft Dokümanlar
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/10/2020
   ms.author: dapine
-  ms.openlocfilehash: 4aa2cb134bc47841da2964f4f83898875098e6c4
-  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+  ms.openlocfilehash: e9fb4f1b26dd8c5a958f8321f8c6fd0def605c93
+  ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
   ms.translationtype: MT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/28/2020
-  ms.locfileid: "80052812"
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80991356"
 landingContent:
 - title: Metinden konuşmaya hakkında
   linkLists:
@@ -24,13 +24,15 @@ landingContent:
     links:
     - text: Metin okuma nedir?
       url: text-to-speech.md
+    - text: Konuşma sentezi temelleri
+      url: text-to-speech-basics.md
   - linkListType: quickstart
     links:
     - text: Konuşmayı hoparlöre sentezleme
       url: quickstarts/text-to-speech.md
     - text: Konuşmayı ses dosyasına sentezleme
       url: quickstarts/text-to-speech-audio-file.md
-    - text: Uzun biçimli ses ile konuşma sentezleme
+    - text: Uzun süreli ses ile konuşmayı sentezleme
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
 - title: Metinden konuşmaya ile geliştirme
   linkLists:
@@ -58,7 +60,7 @@ landingContent:
       url: language-support.md#standard-voices
     - text: Nöral ses desteği
       url: language-support.md#neural-voices
-    - text: SSML fonetik setleri
+    - text: SSML fonetik kümeleri
       url: speech-ssml-phonetic-sets.md
     - text: Metinden konuşmaya fiyatlandırma
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

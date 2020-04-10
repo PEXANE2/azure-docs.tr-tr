@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: 6c2514bd078cc3feee4bd2802cf314079b824311
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022129"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999015"
 ---
 # <a name="in-store-analytics-architecture"></a>Mağaza içi analitik mimarisi
 
@@ -48,10 +48,10 @@ Azure IoT Merkezi uygulaması, perakende mağaza ortamındaki farklı IoT sensö
 Azure IoT Central, mağaza operatörüne altyapı aygıtlarını uzaktan izlemelerini ve yönetmelerini sağlayan özel bir deneyim de sunar.
 
 ## <a name="data-transform"></a>Veri dönüşümü
-Bir çözümdeki Azure IoT Merkezi uygulaması, veri işleme gerçekleştirebilen ve bu öngörüleri bir işletmeye çıkarmadan önce zenginleştirebilen bir dizi Azure PaaS (Hizmet Olarak Platform) hizmetine ham veya toplu öngörüler dışa aktaracak şekilde yapılandırılabilir Uygulama. 
+Bir çözümdeki Azure IoT Merkezi uygulaması, veri işleme gerçekleştirebilen ve bu öngörüleri bir iş uygulamasına çıkarmadan önce zenginleştirebilen bir dizi Azure PaaS (Hizmet Olarak Platform) hizmetine ham veya toplu öngörüler dışa aktaracak şekilde yapılandırılabilir. 
 
 ## <a name="business-application"></a>İş başvurusu
-IoT verileri, perakende ortamında dağıtılan farklı türdeki iş uygulamalarına güç sağlamak için kullanılabilir. Bir perakende mağaza yöneticisi veya personel, iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı eylemlerde bulunmak için bu uygulamaları kullanabilir. Perakende ekibiniz için gerçek zamanlı bir Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app-pnp.md)izleyin.
+IoT verileri, perakende ortamında dağıtılan farklı türdeki iş uygulamalarına güç sağlamak için kullanılabilir. Bir perakende mağaza yöneticisi veya personel, iş öngörülerini görselleştirmek ve gerçek zamanlı olarak anlamlı eylemlerde bulunmak için bu uygulamaları kullanabilir. Perakende ekibiniz için gerçek zamanlı bir Power BI panosu oluşturmayı öğrenmek için [öğreticiyi](./tutorial-in-store-analytics-create-app.md)izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Mağaza İçi Analitik Ödeme](https://aka.ms/checkouttemplate) ve Mağaza [İçi Analitik Durum İzleme](https://aka.ms/conditiontemplate) uygulama şablonları ile başlayın. 

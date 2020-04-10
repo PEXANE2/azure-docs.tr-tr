@@ -3,45 +3,45 @@
 - name: Genel Bakış
   items:
     - name: Azure IoT Central ile perakende çözümleri oluşturma
-      href: overview-iot-central-retail-pnp.md
+      href: overview-iot-central-retail.md
 - name: Öğreticiler
   items:
     - name: Mağaza içi analizi ödeme
       items:
         - name: 1- Perakende uygulaması oluşturma
-          href: tutorial-in-store-analytics-create-app-pnp.md
+          href: tutorial-in-store-analytics-create-app.md
         - name: 2 - Operatör panosunu özelleştirme
-          href: tutorial-in-store-analytics-customize-dashboard-pnp.md
+          href: tutorial-in-store-analytics-customize-dashboard.md
         - name: 3 - Verileri dışarı aktarma ve içgörüleri görselleştirme
-          href: tutorial-in-store-analytics-export-data-visualize-insights-pnp.md
+          href: tutorial-in-store-analytics-export-data-visualize-insights.md
     - name: Akıllı envanter yönetimi
       items:
         - name: Akıllı envanter yönetimi uygulaması oluşturma
-          href: tutorial-iot-central-smart-inventory-management-pnp.md
+          href: tutorial-iot-central-smart-inventory-management.md
     - name: Bağlı lojistik
       items:
         - name: Bağlantılı lojistik uygulaması oluşturma
-          href: tutorial-iot-central-connected-logistics-pnp.md
+          href: tutorial-iot-central-connected-logistics.md
     - name: Dijital dağıtım merkezi
       items:
         - name: Dijital dağıtım merkezi uygulaması oluşturma
-          href: tutorial-iot-central-digital-distribution-center-pnp.md
+          href: tutorial-iot-central-digital-distribution-center.md
     - name: Mikro karşılama merkezi
       items:
         - name: Mikro karşılama merkezi uygulaması oluşturma
-          href: tutorial-micro-fulfillment-center-pnp.md
+          href: tutorial-micro-fulfillment-center.md
 - name: Kavramlar
   items:
     - name: Bağlı lojistik uygulama şablonu mimarisi
-      href: architecture-connected-logistics-pnp.md
+      href: architecture-connected-logistics.md
     - name: Dijital dağıtım merkezi uygulama şablonu mimarisi
-      href: architecture-digital-distribution-center-pnp.md
+      href: architecture-digital-distribution-center.md
     - name: Akıllı envanter yönetimi uygulama şablonu mimarisi
-      href: architecture-smart-inventory-management-pnp.md
+      href: architecture-smart-inventory-management.md
     - name: Mağaza analizi mimarisi
       href: store-analytics-architecture.md
     - name: Mikro karşılama merkezi uygulama şablonu mimarisi
-      href: architecture-micro-fulfillment-center-pnp.md
+      href: architecture-micro-fulfillment-center.md
     - name: Bağlantı
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Uygulama şablonları nedir?
@@ -116,7 +116,7 @@
       href: /azure/iot-fundamentals/iot-support-help
     - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
@@ -127,10 +127,10 @@
         - name: IoT çözüm hızlandırıcıları
           href: /azure/iot-accelerators
         - name: IoT Tak Çalıştır
-          href: /azure/iot-pnp
+          href: /azure/iot
         - name: Azure Haritalar
           href: /azure/azure-maps
-        - name: Zaman Serisi Öngörüleri
+        - name: Time Series Insights
           href: /azure/time-series-insights
     - name: Azure IoT SDK’ları
       items:

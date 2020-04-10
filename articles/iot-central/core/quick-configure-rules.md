@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 4bbf571d6b73a6f43c1c3b1ce261da6963a74183
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 66c3bd8650d1194d5d753c1dc967ec8e870c8748
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169510"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998974"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Hızlı başlatma: Azure IoT Central'da cihazınız için kuralları ve eylemleri yapılandırın
 
@@ -24,7 +24,7 @@ Bu hızlı başlatmada, bir aygıt sensörü tarafından bildirilen sıcaklık 9
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, önceki iki hızlı başlatmayı tamamlamanız bir [Azure IoT Central uygulaması oluşturmalı](./quick-deploy-iot-central.md) ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmak için [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-pnp-device.md) gerekir.
+Başlamadan önce, önceki iki hızlı başlatmayı tamamlamanız bir [Azure IoT Central uygulaması oluşturmalı](./quick-deploy-iot-central.md) ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmak için [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-simulated-device.md) gerekir.
 
 ## <a name="create-a-telemetry-based-rule"></a>Telemetri tabanlı kural oluşturma
 

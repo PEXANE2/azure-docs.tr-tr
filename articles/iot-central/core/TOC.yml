@@ -12,7 +12,7 @@
     - name: 1. Yeni uygulama oluşturma
       href: quick-deploy-iot-central.md
     - name: 2. Sanal cihaz ekleme
-      href: quick-create-pnp-device.md
+      href: quick-create-simulated-device.md
     - name: 3. Kuralları ve eylemleri yapılandırma
       href: quick-configure-rules.md
     - name: 4. Cihazlarınızı izleme

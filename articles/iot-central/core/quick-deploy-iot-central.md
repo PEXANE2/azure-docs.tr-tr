@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: d69a761df8066b4a84312c0c3ae8be5a79490960
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77169400"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998958"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central uygulaması oluşturma
 
@@ -62,4 +62,4 @@ Hızlı bir şekilde başlamanıza yardımcı olmak için endüstriyle alakalı 
 Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. Önerilen sonraki adım:
 
 > [!div class="nextstepaction"]
-> [IoT Merkezi uygulamanıza benzetilen bir aygıt ekleme](./quick-create-pnp-device.md)
+> [IoT Merkezi uygulamanıza benzetilen bir aygıt ekleme](./quick-create-simulated-device.md)
