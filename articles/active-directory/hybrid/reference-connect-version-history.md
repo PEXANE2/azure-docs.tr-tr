@@ -12,12 +12,12 @@ ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655973"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998740"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayın geçmişi
 Azure Etkin Dizin (Azure AD) ekibi, Azure AD Connect'i yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -48,6 +48,13 @@ Azure AD Connect'in tüm sürümleri otomatik yükseltme için kullanılamaz. S�
 >
 >Azure AD Connect'i en son sürüme nasıl yükseltilir hakkında daha fazla bilgi edinmek için lütfen [bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
 
+## <a name="15200"></a>1.5.20.0
+
+### <a name="release-status"></a>Yayın durumu
+04/09/2020: İndirmek için yayınlandı
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+Bu düzeltme yapısı, Grup Filtreleme özelliği etkinse ve kaynak çapa olarak mS-DS-ConsistencyGuid kullanıyorsanız, build 1.5.18.0 ile ilgili bir sorunu giderir.
 
 ## <a name="15180"></a>1.5.18.0
 

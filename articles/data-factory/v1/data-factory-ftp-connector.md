@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55c8bf2210eb0990a91aeff1f90e4af4db2c22ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeeb122d240d8c3eae4ebe1650f67cf0e4b9dac6
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79281411"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992054"
 ---
 # <a name="move-data-from-an-ftp-server-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak bir FTP sunucusundan veri taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -39,7 +39,7 @@ Verileri **şirket içi** FTP sunucusundan bir bulut veri deposuna (örneğin, A
 
 Ağ geçidini FTP sunucusuyla aynı şirket içi makineye veya IaaS VM'ye yüklemek mümkündür. Ancak, kaynak çekişmesini önlemek ve daha iyi performans için ağ geçidini ayrı bir makineye veya IaaS VM'ye yüklemenizi öneririz. Ağ geçidini ayrı bir makineye yüklediğinizde, makine FTP sunucusuna erişebilmeli.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 Farklı araçlar veya API'ler kullanarak bir FTP kaynağından veri hareket ettiren bir kopyalama etkinliği içeren bir ardışık hatlar oluşturabilirsiniz.
 
 Bir ardışık hatlar oluşturmanın en kolay yolu **Veri Fabrikası Kopyalama Sihirbazı'nı**kullanmaktır. Bkz. Öğretici: Hızlı bir geçiş için [Kopya Sihirbazı'nı kullanarak bir ardışık kaynak oluşturun.](data-factory-copy-data-wizard-tutorial.md)
@@ -73,7 +73,7 @@ Aşağıdaki tabloda FTP bağlantılı bir hizmete özgü JSON öğeleri açıkl
 | ağ geçidiAdı |Şirket içi ftp sunucusuna bağlanmak için Veri Yönetimi Ağ Geçidi'ndeki ağ geçidinin adını belirtin. |Hayır |&nbsp; |
 | port |FTP sunucusunun dinlediği bağlantı noktasını belirtin. |Hayır |21 |
 | sağlarSsl |FTP'yi bir SSL/TLS kanalı üzerinden kullanıp kullanmayacağını belirtin. |Hayır |true |
-| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu SSL sertifika doğrulamasını etkinleştirip etkinleştirmeyeceğiniz belirtin. |Hayır |true |
+| enableServerCertificateValidation |SSL/TLS kanalı üzerinden FTP kullanırken sunucu TLS/SSL sertifika doğrulamasını etkinleştirip etkinleştirmeyeceğiniz belirtin. |Hayır |true |
 
 >[!NOTE]
 >FTP konektörü FTP sunucusuna şifreleme veya açık SSL/TLS şifrelemesi olmadan erişmeyi destekler; örtülü SSL/TLS şifrelemeyi desteklemez.

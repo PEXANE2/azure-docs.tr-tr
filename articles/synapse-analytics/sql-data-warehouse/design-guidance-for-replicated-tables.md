@@ -11,12 +11,12 @@ ms.date: 03/19/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 128b4203d34b99df8363ef19783baa4a7b608aa5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 654aeddbb305124ea00a883dbef9d8b5ad585a36
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631308"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990795"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-sql-analytics"></a>SQL Analytics'te çoğaltılan tabloları kullanmak için tasarım kılavuzu
 
@@ -124,7 +124,7 @@ Yeniden oluşturduk `DimDate` `DimSalesTerritory` ve çoğaltılmış tablolar o
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>Çoğaltılan tabloları değiştirmek için performans hususları
 
-SQL Analytics, tablonun ana sürümünü koruyarak çoğaltılmış bir tablo uygular. Ana sürümü her İşlemçi düğümünde bir dağıtım veritabanına kopyalar. Bir değişiklik olduğunda, SQL Analytics önce ana tabloyu güncelleştirir. Sonra her İşlemdüğümün tablolarını yeniden bir araya gelir. Çoğaltılan tablonun yeniden oluşturulması, tabloyu her İşlem düğümüne kopyalamayı ve dizinleri oluşturmayı içerir.  Örneğin, Bir DW400 üzerinde çoğaltılan bir tablo verilerin 5 kopyası vardır.  Her İşlemçi düğümünde bir ana kopya ve tam bir kopya.  Tüm veriler dağıtım veritabanlarında depolanır. SQL Analytics bu modeli daha hızlı veri değişiklik bildirimlerini ve esnek ölçekleme işlemlerini desteklemek için kullanır.
+SQL Analytics, tablonun ana sürümünü koruyarak çoğaltılmış bir tablo uygular. Ana sürümü her İşlemçi düğümündeki ilk dağıtım veritabanına kopyalar. Bir değişiklik olduğunda, SQL Analytics önce ana sürümü güncelleştirir, ardından her İşlem düğümündeki tabloları yeniden oluşturur. Çoğaltılan tablonun yeniden oluşturulması, tabloyu her İşlem düğümüne kopyalamayı ve dizinleri oluşturmayı içerir.  Örneğin, Bir DW2000c üzerinde çoğaltılan bir tablo verilerin 5 kopyası vardır.  Her İşlemçi düğümünde bir ana kopya ve tam bir kopya.  Tüm veriler dağıtım veritabanlarında depolanır. SQL Analytics bu modeli daha hızlı veri değişiklik bildirimlerini ve esnek ölçekleme işlemlerini desteklemek için kullanır.
 
 Yeniden oluşturmalar sonra gereklidir:
 

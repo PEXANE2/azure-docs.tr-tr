@@ -11,13 +11,13 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/14/2018
-ms.openlocfilehash: 92f7d25a9c19409b220b6a71fba87da91e51a415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: 532258cecd823e10057ddc3536cd24071e444581
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928492"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992071"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Azure-SSIS Tümleştirme Çalışma Süresini Azure SQL Veritabanı coğrafi çoğaltma ve başarısızlıkla yapılandırın
 
@@ -112,9 +112,11 @@ Geçerli bölgede bir ADF veya Azure-SSIS IR felaketi meydana geldiğinde, SSISD
 
 ### <a name="steps"></a>Adımlar
 
-Azure-SSIS IR'nizi durdurmak, IR'yi yeni bir bölgeye geçmek ve yeniden başlatmak için aşağıdaki adımları izleyin.
+Azure-SSIS IR'nizi yeni bir bölgeye taşımak için aşağıdaki adımları izleyin.
+> [!NOTE]
+> Adım 3 (IR oluşturulması) PowerShell üzerinden yapılması gerekir. Azure portalı, SSISDB'nin zaten var olduğunu belirten bir hata bildirir.
 
-1. SSISDB'yi ** \<\> new_data_factory_name** veya ** \<new_integration_runtime_name\>** bağlı hale getirmek için depolanan yordamı çalıştırın.
+1. new_data_factory_name ve new_integration_runtime_name **\>bağlantılarını kabul etmek için SSISDB'deki meta verileri güncelleştirmek için depolanan yordamı çalıştırın. \<** **\> \<**
    
   ```SQL
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'

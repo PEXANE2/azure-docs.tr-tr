@@ -1,20 +1,20 @@
 ---
 title: Azure CLI Örnekleri - Bölge yedekli ölçek kümesi
 description: Bu komut dosyası, Birden çok Kullanılabilirlik Bölgesi arasında Ubuntu çalıştıran bir Azure sanal makine ölçeği kümesi oluşturur.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d03eb9ca86472670caf89f8a9f9c4cf861b2eb62
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 80b173daf2101180e5d78de625b914bd8396b7af
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278712"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010367"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Azure CLI ile bölge gereksiz sanal makine ölçeği kümesi oluşturun
 Bu betik, birden çok Kullanılabilirlik Alanı’nda Ubuntu çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makineye RDP üzerinden erişebilirsiniz.

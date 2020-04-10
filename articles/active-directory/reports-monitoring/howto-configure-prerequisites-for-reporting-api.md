@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12abfc0d345c937ae886f9bfacfb8ce30227cc45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fd3580ca03fa49d428904c6da78fdf9cda202c7
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399308"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991271"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Etkin Dizin raporlama API'sine erişmek için ön koşullar
 
@@ -33,9 +33,10 @@ Raporlama API'si, web API'lerine erişim yetkisi vermek için [OAuth'u](https://
 Raporlama API'sine erişiminizi hazırlamak için şunları yapmanız gerekir:
 
 1. [Rolleri atama](#assign-roles)
-2. [Bir uygulamayı kaydetme](#register-an-application)
-3. [İzinleri verme](#grant-permissions)
-4. [Yapılandırma ayarlarını toplama](#gather-configuration-settings)
+2. [Lisans Gereksinimleri](#license-requirements)
+3. [Bir uygulamayı kaydetme](#register-an-application)
+4. [İzinleri verme](#grant-permissions)
+5. [Yapılandırma ayarlarını toplama](#gather-configuration-settings)
 
 ## <a name="assign-roles"></a>Rolleri atama
 
@@ -46,6 +47,10 @@ API üzerinden raporlama verilerine erişmek için aşağıdaki rollerden birine
 - Güvenlik Yöneticisi
 
 - Genel Yönetici
+
+## <a name="license-requirements"></a>Lisans Gereksinimleri
+
+Bir kiracının oturum açma raporlarına erişmek için, bir Azure AD kiracısının Azure AD Premium lisansıyla ilişkili olması gerekir. Azure AD Premium P1 (veya üzeri) lisansı, herhangi bir Azure AD kiracısı için oturum açma raporlarına erişmek için gereklidir. Alternatif olarak, dizin türü Azure AD B2C ise, oturum açma raporlarına ek lisans gereksinimi olmadan API üzerinden erişilebilir. 
 
 
 ## <a name="register-an-application"></a>Bir uygulamayı kaydetme

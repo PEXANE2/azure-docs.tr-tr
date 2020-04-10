@@ -9,12 +9,12 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 745be21c2a7a09a09fdbbfd57a305d09a4fac3ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72793439"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998495"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"Tam" Lucene arama sözdizimini (Azure Bilişsel Arama'da gelişmiş sorgular) kullanın
 
@@ -86,7 +86,7 @@ Bu ilk örnek Lucene'ye özgü değildir, ancak ilk temel sorgu kavramını tan�
 
 Kısalık için, sorgu yalnızca *business_title* alanını hedefler ve yalnızca işletme başlıklarının döndürüldişini belirtir. **SearchFields** parametresi sorgu yürütmesini yalnızca business_title alanıyla sınırlandırıyor ve **yanıtta** hangi alanların dahil edildiğini belirtir.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 &search=*&searchFields=business_title&$select=business_title
@@ -119,7 +119,7 @@ Yanıttaki arama puanını fark etmiş olabilirsiniz. Tek tip 1 puanları, sıra
 
 Tam Lucene sözdizimi, tek tek arama ifadelerinin belirli bir alana dahil olmasını destekler. Bu örnek, üst düzey terimi olan iş unvanlarını arar, ancak küçük olmayan terimi arar.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 $select=business_title&search=business_title:(senior NOT junior)
@@ -156,7 +156,7 @@ Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız, bu
 
 Tam Lucene sözdizimi de bulanık arama destekler, benzer bir yapıya sahip terimlereşleşen. Bulanık bir arama yapmak için, tek `~` bir sözcüğün sonundaki tilde simgesini, 0 ile 2 arasında bir değer olan ve düzenlenen mesafeyi belirten isteğe bağlı bir parametreyle tamamla. Örneğin, `blue~` ya `blue~1` da mavi, blues ve tutkal döndürecek.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:asosiate~
@@ -186,7 +186,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-4-proximity-search"></a>Örnek 4: Yakınlık araması
 Yakınlık aramaları, belgede birbirine yakın terimleri bulmak için kullanılır. Yakınlık sınırını oluşturan sözcük sayısını izleyen bir tümceciğin sonuna bir tilde "~" simgesi ekleyin. Örneğin, "otel havaalanı"~5 bir belgede birbirinden 5 kelime içinde otel ve havaalanı terimlerini bulur.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:%22senior%20analyst%22~1
@@ -239,7 +239,7 @@ Faktör düzeyini ayarlarken, artırma faktörü ne kadar yüksekse, terim diğe
 
 Normal bir ifade [araması, RegExp sınıfında](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)belgelenen "/" ileri eğik çizgileri arasındaki içeriği temel alan bir eşleşme bulur.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:/(Sen|Jun)ior/
@@ -262,7 +262,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-
 ## <a name="example-7-wildcard-search"></a>Örnek 7: Joker karakter arama
 Birden çok ( ) veya tek\*(?) karakter joker karakter aramaları için genel olarak tanınan sözdizimini kullanabilirsiniz. Lucene sorgu arayıcının bu sembollerin bir tümcecikle değil, tek bir terimle kullanımını desteklediğini unutmayın.
 
-### <a name="partial-query-string"></a>Kısmi sorgu dizesi
+### <a name="search-expression"></a>Arama ifadesi
 
 ```http
 searchFields=business_title&$select=business_title&search=business_title:prog*

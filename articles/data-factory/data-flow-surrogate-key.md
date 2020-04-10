@@ -1,55 +1,83 @@
 ---
-title: Haritalama veri akışı Surrogate Anahtar Dönüşümü
+title: Veri akışını nakışlamada vekil anahtar dönüşümü
 description: Sıralı anahtar değerleri oluşturmak için Azure Veri Fabrikası'nın haritalama veri akışı Surrogate Anahtar Dönüşümü nasıl kullanılır?
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: bab48aa9079c1b8020bb828a6bb91bd244a78cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: e5ac25c002da121be3adadf0eed978dd60ba26d9
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930212"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010685"
 ---
-# <a name="mapping-data-flow-surrogate-key-transformation"></a>Haritalama veri akışı Surrogate Anahtar Dönüşümü
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Veri akışını nakışlamada vekil anahtar dönüşümü 
 
+Her veri satırına artışlı anahtar değeri eklemek için vekil anahtar dönüşümünün kullanın. Bu, yıldız şema analitik veri modelinde boyut tabloları tasarlarken yararlıdır. Bir yıldız şemasında, boyut tablolarınızdaki her üye, iş yeri olmayan bir anahtar olan benzersiz bir anahtar gerektirir.
 
-
-Veri akışı satır kümenize iş dışı rasgele bir anahtar değeri eklemek için Surrogate Anahtar Dönüşüm'üni kullanın. Bu, boyut tablolarınızdaki her üyenin Kimball DW metodolojisinin bir parçası olan benzersiz bir anahtara sahip olması gereken bir yıldız şema analitik veri modelinde boyut tabloları tasarlarken kullanışlıdır.
+## <a name="configuration"></a>Yapılandırma
 
 ![Vekil Anahtar Dönüşümü](media/data-flow/surrogate.png "Vekil Anahtar Dönüşümü")
 
-"Anahtar Sütun" yeni vekil anahtar sütununuza vereceğiniz addır.
+**Anahtar sütun:** Oluşturulan vekil anahtar sütununun adı.
 
-"Başlangıç Değeri" artımlı değerin başlangıç noktasıdır.
+**Başlangıç değeri:** Oluşturulacak en düşük anahtar değeri.
 
 ## <a name="increment-keys-from-existing-sources"></a>Varolan kaynaklardan artan anahtarlar
 
-Dizinizi Kaynak'ta bulunan bir değerden başlatmak istiyorsanız, Vekil Anahtar dönüşümünüzü hemen izleyen türetilmiş sütun dönüşümunu kullanabilir ve iki değeri bir araya ekleyebilirsiniz:
+Dizinizi kaynakta bulunan bir değerden başlatmak için, iki değeri bir araya getirmek için vekil anahtar dönüşümünüzü izleyen türetilmiş sütun dönüşümlerini kullanın:
 
 ![SK Max eklemek](media/data-flow/sk006.png "Surrogate Anahtar Dönüşümü Max ekle")
 
-Anahtar değerini önceki max ile tohumlamak için kullanabileceğiniz iki teknik vardır:
+### <a name="increment-from-existing-maximum-value"></a>Varolan maksimum değerden artış
 
-### <a name="database-sources"></a>Veritabanı kaynakları
+Anahtar değerini önceki max ile tohumlamak için, kaynak verilerinizin nerede olduğuna bağlı olarak kullanabileceğiniz iki teknik vardır.
 
-Kaynak dönüşümünü kullanarak kaynağınızdan MAX() seçeneğini seçmek için "Sorgula" seçeneğini kullanın:
+#### <a name="database-sources"></a>Veritabanı kaynakları
+
+Kaynağınızdan MAX() seçeneğini seçmek için bir SQL sorgusu seçeneği kullanın. Örneğin,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Vekil Anahtar Sorgusu](media/data-flow/sk002.png "Vekil Anahtar Dönüşüm Sorgusu")
 
-### <a name="file-sources"></a>Dosya kaynakları
+#### <a name="file-sources"></a>Dosya kaynakları
 
-Önceki maksimum değeriniz bir dosyadaysa, Kaynak dönüşümünüzü Bir Toplu dönüşümle birlikte kullanabilir ve önceki maksimum değeri elde etmek için MAX() ifade işlevini kullanabilirsiniz:
+Önceki maksimum değeriniz bir dosyadaysa, önceki maksimum değeri almak için toplu dönüştürme işlevini kullanın: `max()`
 
 ![Vekil Anahtar Dosyası](media/data-flow/sk008.png "Vekil Anahtar Dosyası")
 
-Her iki durumda da, gelen yeni verilerinizi önceki maksimum değeri içeren kaynağınızla birlikte birleştirmeniz gerekir:
+Her iki durumda da, gelen yeni verilerinizi önceki maksimum değeri içeren kaynağınızla birlikte birleştirmeniz gerekir.
 
 ![Vekil Anahtar Birleştirme](media/data-flow/sk004.png "Vekil Anahtar Birleştirme")
+
+## <a name="data-flow-script"></a>Veri akışı betiği
+
+### <a name="syntax"></a>Sözdizimi
+
+```
+<incomingStream> 
+    keyGenerate(
+        output(<surrogateColumnName> as long),
+        startAt: <number>L
+    ) ~> <surrogateKeyTransformationName>
+```
+
+### <a name="example"></a>Örnek
+
+![Vekil Anahtar Dönüşümü](media/data-flow/surrogate.png "Vekil Anahtar Dönüşümü")
+
+Yukarıdaki vekil anahtar yapılandırması için veri akışı komut dosyası aşağıdaki kod snippet bulunmaktadır.
+
+```
+AggregateDayStats
+    keyGenerate(
+        output(key as long),
+        startAt: 1L
+    ) ~> SurrogateKey1
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

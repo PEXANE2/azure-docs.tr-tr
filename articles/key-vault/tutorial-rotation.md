@@ -1,6 +1,6 @@
 ---
-title: Tek Kullanıcı/Parola Döndürme Öğreticisi
-description: Tek kullanıcı/parola döndürmeyi otomatikleştirmek için bu öğreticiyi kullanın
+title: Tek kullanıcı/tek parola döndürme öğreticisi
+description: Tek kullanıcı/tek parola kimlik doğrulaması kullanan kaynaklar için bir sırrın döndürmesini otomatikleştirmek için bu öğreticiyi kullanın.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,103 +10,101 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 890932f7c0e46a2c9c0b6e1cf1461e4d7d25b409
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 684bfccd698217acdafdaac8c33f1e5531cdb4bf
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239374"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998907"
 ---
-# <a name="automate-the-rotation-of-a-secret-for-resources-with-single-userpassword-authentication"></a>Tek kullanıcı/parola kimlik doğrulaması yla kaynaklar için bir sırrın döndürmesini otomatikleştirme
+# <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>Tek kullanıcı/tek parola kimlik doğrulaması kullanan kaynaklar için sırrın döndürmesini otomatikleştirme
 
-Azure hizmetlerine kimlik doğrulamanın en iyi yolu yönetilen bir kimlik kullanmak olsa [da,](managed-identity.md)bunun bir seçenek olmadığı bazı senaryolar vardır. Bu gibi durumlarda, erişim anahtarları veya sırları kullanılır. Erişim anahtarları veya sırlar periyodik olarak döndürülmelidir.
+Azure hizmetlerine kimlik doğrulamanın en iyi yolu yönetilen bir [kimlik](managed-identity.md)kullanmaktır, ancak bunun bir seçenek olmadığı bazı senaryolar vardır. Bu gibi durumlarda, erişim anahtarları veya sırları kullanılır. Erişim anahtarlarını veya sırları düzenli aralıklarla döndürmeniz gerekir.
 
-Bu öğretici, tek kullanıcı/parola kimlik doğrulaması ile veritabanları ve hizmetler için sırların periyodik olarak döndürülmenin nasıl otomatikleştirilebildiğini gösterir. Özellikle, bu senaryo, Olay Grid bildirimi tarafından tetiklenen bir işlevi kullanarak anahtar kasasında depolanan SQL sunucu parolalarını döndürür:
+Bu öğretici, tek kullanıcı/tek parola kimlik doğrulaması kullanan veritabanları ve hizmetler için sırların periyodik olarak döndürülme sini nasıl otomatikleştirini gösterir. Özellikle, bu öğretici Azure Olay Ağı bildirimi tarafından tetiklenen bir işlevi kullanarak Azure Key Vault'ta depolanan SQL Server parolalarını döndürür:
 
-![Dönüş diyagramı](./media/rotate1.png)
+![Döndürme çözeltisinin diyagramı](./media/rotate1.png)
 
 1. Bir sırrın son kullanma tarihinden otuz gün önce, Key Vault "neredeyse son kullanma" olayını Event Grid'e yayınlar.
-1. Olay Izgara olay abonelikleri denetler ve http post kullanarak, Bu etkinliğe abone Fonksiyon Uygulaması bitiş noktası çağırır.
-1. İşlev Uygulaması gizli bilgileri alır, yeni bir rasgele parola oluşturur ve Key Vault'ta yeni bir parolayla gizli için yeni bir sürüm oluşturur.
-1. İşlev App, SQL'i yeni parolayla güncelleştirir.
+1. Olay Izgaraolay abonelikleri denetler ve olay abone işlev uygulaması bitiş noktası aramak için HTTP POST kullanır.
+1. İşlev uygulaması gizli bilgileri alır, yeni bir rasgele parola oluşturur ve Key Vault'taki yeni parolayla gizli için yeni bir sürüm oluşturur.
+1. İşlev uygulaması SQL Server'ı yeni parolayla güncelleştirir.
 
 > [!NOTE]
-> Adım 3 ve 4 arasında bir gecikme olabilir ve bu süre zarfında Key Vault'ta gizli olan sql'e kimlik doğrulamak için geçerli olmaz. Herhangi bir adımda arıza olması durumunda Olay Izgarası 2 saat boyunca yeniden çalışır.
+> 3 ve 4. Bu süre zarfında, Key Vault'taki gizli SQL Server'a kimlik doğrulaması yapamaz. Adımlardan herhangi birinin başarısız olması durumunda, Olay Izgarası iki saat boyunca yeniden çalışır.
 
-## <a name="setup"></a>Kurulum
+## <a name="create-a-key-vault-and-sql-server-instance"></a>Anahtar kasası ve SQL Server örneği oluşturma
 
-## <a name="create-a-key-vault-and-sql-server"></a>Önemli bir kasa ve SQL sunucusu oluşturma
+İlk adım, anahtar kasası ve SQL Server örneği ve veritabanı oluşturmak ve SQL Server yönetici parolasını Key Vault'ta depolamaktır.
 
-Başlamadan önce bir Key Vault oluşturmalı, bir SQL Server ve veritabanı oluşturmalı ve SQL Server yönetici parolasını Key Vault'ta depolamalıyız.
+Bu öğretici, bileşenleri oluşturmak için varolan bir Azure Kaynak Yöneticisi şablonu kullanır. Kodu burada bulabilirsiniz: [Temel Gizli Rotasyon Şablonu Örneği](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/arm-templates).
 
-Bu öğretici, bileşenleri oluşturmak için önceden oluşturulmuş bir Azure Kaynak Yöneticisi şablonu kullanır. Kodun tamamını burada bulabilirsiniz: [Temel Gizli Rotasyon Şablonu Örneği.](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/arm-templates)
-
-1. Azure şablon dağıtım bağlantısını tıklatın:
+1. Azure şablon dağıtım bağlantısını seçin:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Finitial-setup%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. "Kaynak Grubu" için "Yeni Oluştur" seçeneğini belirleyin ve "simplerotation" adını verin.
-1. "Satın Al"ı seçin.
+1. **Kaynak grubu**altında, **yeni oluştur'u**seçin. Grup **simplerotation**adı .
+1. **Satın al**'ı seçin.
 
-    ![Yeni kaynak grubu oluşturma](./media/rotate2.png)
+    ![Kaynak grubu oluşturma](./media/rotate2.png)
 
-Bu adımları tamamladıktan sonra, bir anahtar kasası, bir SQL sunucusu ve bir SQL veritabanı nız olacaktır. Bunu bir Azure CLI terminalinde çalıştırarak doğrulayabilirsiniz:
+Artık bir anahtar kasanız, bir SQL Server örneğiniz ve bir SQL veritabanınız olacak. Bu kurulumu Azure CLI'de aşağıdaki komutu çalıştırarak doğrulayabilirsiniz:
 
 ```azurecli
 az resource list -o table
 ```
 
-Sonuçlar bir şey bu bakacağız:
+Sonuç bir şey aşağıdaki çıktı bakacağız:
 
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv             simplerotation             eastus      Microsoft.KeyVault/vaults
-simplerotation-sql            simplerotation             eastus      Microsoft.Sql/servers
-simplerotation-sql/master     simplerotation             eastus      Microsoft.Sql/servers/databases
+simplerotation-kv          simplerotation      eastus      Microsoft.KeyVault/vaults
+simplerotation-sql         simplerotation      eastus      Microsoft.Sql/servers
+simplerotation-sql/master  simplerotation      eastus      Microsoft.Sql/servers/databases
 ```
 
-## <a name="create-function-app"></a>Fonksiyon Uygulaması Oluştur
+## <a name="create-a-function-app"></a>İşlev uygulaması oluşturma
 
-Sistem tarafından yönetilen bir kimliğin yanı sıra ek gerekli bileşenlerle bir İşlev Uygulaması oluşturun: 
+Ardından, gerekli diğer bileşenlere ek olarak sistem tarafından yönetilen bir kimliğe sahip bir işlev uygulaması oluşturun.
 
-Fonksiyon uygulaması aşağıda bileşenleri ve yapılandırma gerektirir:
-- App Service Planı
-- Depolama Hesabı
-- İşlev Uygulaması Yönetilen Kimliğini kullanarak Key Vault'taki sırlara erişmek için erişim ilkesi
+İşlev uygulaması şu bileşenleri gerektirir:
+- Azure Uygulama Hizmeti planı
+- Depolama hesabı
+- İşlev uygulaması yönetilen kimlik aracılığıyla Key Vault'taki sırlara erişmek için bir erişim ilkesi
 
-1. Azure şablon dağıtım bağlantısını tıklatın:
+1. Azure şablon dağıtım bağlantısını seçin:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Ffunction-app%2Fazuredeploy.json" target="_blank"><img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. "Kaynak Grubu" için "simplerotation" seçeneğini belirleyin.
-1. "Satın Al"ı seçin.
+1. Kaynak **grup** listesinde **simplerotation'u**seçin.
+1. **Satın al**'ı seçin.
 
-   ![Satın alma ekranı](./media/rotate3.png)
+   ![Satın Alma'yı Seçin](./media/rotate3.png)
 
-Yukarıdaki adımları tamamladıktan sonra, bir depolama hesabı, bir sunucu çiftliği ve bir İşlev Uygulaması olacaktır.  Bunu bir Azure CLI terminalinde çalıştırarak doğrulayabilirsiniz:
+Önceki adımları tamamladıktan sonra, bir depolama hesabınız, sunucu çiftliğiniz ve bir işlev uygulamanız olur. Bu kurulumu Azure CLI'de aşağıdaki komutu çalıştırarak doğrulayabilirsiniz:
 
 ```azurecli
 az resource list -o table
 ```
 
-Sonuçlar bir şey bu bakacağız:
+Sonuç aşağıdaki çıktı gibi bir şey görünecektir:
 
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-simplerotation-kv             simplerotation             eastus      Microsoft.KeyVault/vaults
-simplerotation-sql            simplerotation             eastus      Microsoft.Sql/servers
-simplerotation-sql/master     simplerotation             eastus      Microsoft.Sql/servers/databases
-simplerotationstrg            simplerotation             eastus      Microsoft.Storage/storageAccounts
-simplerotation-plan           simplerotation             eastus      Microsoft.Web/serverFarms
-simplerotation-fn             simplerotation             eastus      Microsoft.Web/sites
+simplerotation-kv          simplerotation       eastus      Microsoft.KeyVault/vaults
+simplerotation-sql         simplerotation       eastus      Microsoft.Sql/servers
+simplerotation-sql/master  simplerotation       eastus      Microsoft.Sql/servers/databases
+simplerotationstrg         simplerotation       eastus      Microsoft.Storage/storageAccounts
+simplerotation-plan        simplerotation       eastus      Microsoft.Web/serverFarms
+simplerotation-fn          simplerotation       eastus      Microsoft.Web/sites
 ```
 
-İşlev Uygulaması'nı nasıl oluşturup Key Vault'a erişmek için Yönetilen Kimlik'i kullanma hakkında bilgi için [Azure portalından bir işlev uygulaması oluşturma](../azure-functions/functions-create-function-app-portal.md) ve yönetilen bir [kimlikle Anahtar Kasa kimlik doğrulaması sağlayın](managed-identity.md)
+Key Vault'a erişmek için bir işlev uygulaması oluşturma ve yönetilen kimliği kullanma hakkında bilgi için Azure [portalından bir işlev uygulaması oluşturma](../azure-functions/functions-create-function-app-portal.md) ve yönetilen bir [kimlikle Anahtar Kasa kimlik doğrulaması sağlayın'a](managed-identity.md)bakın.
 
-### <a name="rotation-function-and-deployment"></a>Döndürme işlevi ve dağıtım
-İşlev, olayı tetikleyici olarak kullanıyor ve Key Vault ve SQL veritabanını güncelleştiren gizli bir döndürme gerçekleştirin.
+### <a name="rotation-function"></a>Döndürme fonksiyonu
+İşlev, Key Vault ve SQL veritabanını güncelleştirerek bir sırrın döndürülmesini tetiklemek için bir olay kullanır.
 
-#### <a name="function-event-trigger-handler"></a>İşlev Olay Tetikleyici İşleyicisi
+#### <a name="function-trigger-event"></a>Fonksiyon tetikleyici olay
 
-Aşağıda Fonksiyon olay verilerini okur ve döndürme mantığını yürütür
+Bu işlev olay verilerini okur ve döndürme mantığını çalıştırAr:
 
 ```csharp
 public static class SimpleRotationEventHandler
@@ -127,8 +125,8 @@ public static class SimpleRotationEventHandler
 }
 ```
 
-#### <a name="secret-rotation-logic"></a>Gizli Döndürme Mantığı
-Bu döndürme yöntemi, veritabanı bilgilerini gizliden okur, sırrın yeni bir sürümünü oluşturur ve veritabanını yeni bir sırla güncelleştirir.
+#### <a name="secret-rotation-logic"></a>Gizli döndürme mantığı
+Bu döndürme yöntemi, veritabanı bilgilerini gizliden okur, sırrın yeni bir sürümünü oluşturur ve veritabanını yeni sırla güncelleştirir:
 
 ```csharp
 public class SecretRotator
@@ -139,13 +137,13 @@ public class SecretRotator
 
     public static void RotateSecret(ILogger log, string secretName, string secretVersion, string keyVaultName)
     {
-           //Retrieve Current Secret
+           //Retrieve current secret
            var kvUri = "https://" + keyVaultName + ".vault.azure.net";
            var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
            KeyVaultSecret secret = client.GetSecret(secretName, secretVersion);
            log.LogInformation("Secret Info Retrieved");
         
-           //Retrieve Secret Info
+           //Retrieve secret info
            var userId = secret.Properties.Tags.ContainsKey(UserIdTagName) ?  
                         secret.Properties.Tags[UserIdTagName] : "";
            var datasource = secret.Properties.Tags.ContainsKey(DataSourceTagName) ? 
@@ -153,11 +151,11 @@ public class SecretRotator
            log.LogInformation($"Data Source Name: {datasource}");
            log.LogInformation($"User Id Name: {userId}");
         
-           //create new password
+           //Create new password
            var randomPassword = CreateRandomPassword();
            log.LogInformation("New Password Generated");
         
-           //Check db connection using existing secret
+           //Check DB connection using existing secret
            CheckServiceConnection(secret);
            log.LogInformation("Service Connection Validated");
                     
@@ -165,107 +163,109 @@ public class SecretRotator
            CreateNewSecretVersion(client, secret, randomPassword);
            log.LogInformation("New Secret Version Generated");
         
-           //Update db password
+           //Update DB password
            UpdateServicePassword(secret, randomPassword);
            log.LogInformation("Password Changed");
            log.LogInformation($"Secret Rotated Succesffuly");
     }
 }
 ```
-Kodun tamamını burada bulabilirsiniz:https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/rotation-function
+Tüm kodu [GitHub'da](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/rotation-function)bulabilirsiniz.
 
 #### <a name="function-deployment"></a>Fonksiyon dağıtımı
 
-1. Download fonksiyonu uygulaması zip dosyası:https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip
+1. GitHub'dan fonksiyon uygulaması zip dosyasını [indirin.](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-fn.zip)
 
-1. Azure Cloud Shell'e dosya basit rotasyonörnek-fn.zip yükleyin.
- 
-1. Zip dosyasını işlev uygulamasına dağıtmak için aşağıda CLI komutunu kullanın:
+1. Basit rotasyon örneği-fn.zip dosyasını Azure Cloud Shell'e yükleyin.
 
-```azurecli
-az functionapp deployment source config-zip -g simplerotation -n simplerotation-fn --src /home/{firstname e.g jack}/simplerotationsample-fn.zip
-```
-![Satın alma ekranı](./media/rotate4.png)
+   ![Dosyayı yükleyin](./media/rotate4.png)
+1. Zip dosyasını işlev uygulamasına dağıtmak için bu Azure CLI komutunu kullanın:
 
-Dağıtımdan sonra simplerotation-fn altında iki işlev fark etmelisiniz:
+   ```azurecli
+   az functionapp deployment source config-zip -g simplerotation -n simplerotation-fn --src /home/{firstname e.g jack}/simplerotationsample-fn.zip
+   ```
 
-![Azure Cloud Shell](./media/rotate5.png)
+İşlev dağıtıldıktan sonra, simplerotation-fn altında iki işlev görmeniz gerekir:
 
-### <a name="add-event-subscription-for-secretnearexpiry-event"></a>"SecretNearExpiry" etkinliği için etkinlik aboneliği ekleme
+![SimpleRotation ve SimpleRotationHttpTest fonksiyonları](./media/rotate5.png)
 
-İşlev uygulamasını eventgrid_extension tuşa kopyalayın.
+## <a name="add-an-event-subscription-for-the-secretnearexpiry-event"></a>SecretNearExpiry etkinliği için etkinlik aboneliği ekleme
 
-![Azure Cloud Shell](./media/rotate6.png)
+İşlev uygulamasının `eventgrid_extension` anahtarını kopyalayın:
 
-![Test edin ve doğrulayın](./media/rotate7.png)
+   ![İşlev uygulama ayarlarını seçin](./media/rotate6.png)
 
-SecretNearExpiry olayları için bir olay ızgarası aboneliği oluşturmak için aşağıdaki komutta kopyalanan eventgrid uzantı anahtarını ve abonelik kimliğinizi kullanın.
+   ![eventgrid_extension anahtar](./media/rotate7.png)
+
+Olaylar için `eventgrid_extension` olay Izgara aboneliği oluşturmak için `SecretNearExpiry` aşağıdaki komutta kopyalanan anahtarı ve abonelik kimliğinizi kullanın:
 
 ```azurecli
 az eventgrid event-subscription create --name simplerotation-eventsubscription --source-resource-id "/subscriptions/<subscription-id>/resourceGroups/simplerotation/providers/Microsoft.KeyVault/vaults/simplerotation-kv" --endpoint "https://simplerotation-fn.azurewebsites.net/runtime/webhooks/EventGrid?functionName=SimpleRotation&code=<extension-key>" --endpoint-type WebHook --included-event-types "Microsoft.KeyVault.SecretNearExpiry"
 ```
 
-### <a name="add-secret-to-key-vault"></a>Key Vault'a sır ekleme
-Kullanıcılara "sırları yönetme" izni verecek erişim ilkenizi ayarlayın.
+## <a name="add-the-secret-to-key-vault"></a>Key Vault için gizli ekleyin
+Erişim politikanızı, *kullanıcılara sırlar yönetme* izinleri verecek şekilde ayarlayın:
 
 ```azurecli
 az keyvault set-policy --upn <email-address-of-user> --name simplerotation-kv --secret-permissions set delete get list
 ```
 
-Şimdi sql veritabanı veri kaynağı ve kullanıcı kimliği içeren etiketleri ile yeni bir sır oluşturun, yarın için son kullanma tarihi ayarlanır.
+SQL veritabanı veri kaynağını ve kullanıcı kimliğini içeren etiketlerle yeni bir sır oluşturun. Yarın için ayarlanmış bir son kullanma tarihi ekleyin.
 
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddThh:mm:ssZ")
 az keyvault secret set --name sqluser --vault-name simplerotation-kv --value "Simple123" --tags "UserID=azureuser" "DataSource=simplerotation-sql.database.windows.net" --expires $tomorrowDate
 ```
 
-Kısa bir son kullanma tarihi olan bir sır oluşturmak, sırrı döndürmek için işlevi tetikleyecek bir SecretNearExpiry olayını hemen yayımlar.
+Kısa bir son kullanma tarihi olan `SecretNearExpiry` bir sır oluşturmak hemen bir olay yayımlar, bu da sırrı döndürmek için işlevi tetikler.
 
-### <a name="test-and-verify"></a>Test edin ve doğrulayın
-Birkaç dakika sonra, sqluser gizli otomatik olarak döndürmek gerekir.
+## <a name="test-and-verify"></a>Test edin ve doğrulayın
+Birkaç dakika sonra, `sqluser` gizli otomatik olarak döndürmelidir.
 
-Gizli rotasyon doğrulamasını doğrulamak için Key Vault > Secrets'a gidin
+Sırrın döndüğünü doğrulamak için Key **Vault** > **Secrets'a**gidin:
 
-![Test edin ve doğrulayın](./media/rotate8.png)
+![Sırlara Git](./media/rotate8.png)
 
-"sqluser" sırrını açın ve özgün ve döndürülmüş sürümü görüntüleyin
+**Sqluser** sırrını açın ve özgün ve döndürülmüş sürümleri görüntüleyin:
 
-![Test edin ve doğrulayın](./media/rotate9.png)
+![sqluser sırrını açma](./media/rotate9.png)
 
-## <a name="create-web-app"></a>Web Uygulaması Oluşturma
+### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-SQL kimlik bilgilerini doğrulamak için bir web uygulaması oluşturun. Bu web uygulaması anahtar kasasından sırrı alacak, sql veritabanı bilgilerini ve kimlik bilgilerini secret'tan ayıklayacak ve sql bağlantısını test edecektir.
+SQL kimlik bilgilerini doğrulamak için bir web uygulaması oluşturun. Bu web uygulaması Key Vault'tan sırrı alır, SQL veritabanı bilgilerini ve kimlik bilgilerini secret'tan ayıklar ve SQL Server bağlantısını test edecektir.
 
-Web uygulaması aşağıdaki bileşenleri ve yapılandırmayı gerektirir:
-- Sistem Tarafından Yönetilen Kimlikle Web Uygulaması
-- Web App Yönetilen Kimliği kullanarak Key Vault'taki sırlara erişmek için erişim ilkesi
+Web uygulaması şu bileşenleri gerektirir:
+- Sistem tarafından yönetilen kimliğe sahip bir web uygulaması
+- Web uygulaması yönetilen kimlik üzerinden Key Vault'taki sırlara erişmek için bir erişim ilkesi
 
-1. Azure şablon dağıtım bağlantısını tıklatın:
+1. Azure şablon dağıtım bağlantısını seçin:
 <br><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2Fazure-keyvault-basicrotation-tutorial%2Fmaster%2Farm-templates%2Fweb-app%2Fazuredeploy.json" target="_blank"> <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/></a>
-1. Basit **döndürme** kaynak grubunu seçin
-1. Satın Alma'yı tıklatın
+1. Basit **döndürme** kaynak grubunu seçin.
+1. **Satın al**'ı seçin.
 
-### <a name="deploy-web-app"></a>Web Uygulaması Dağıtma
+### <a name="deploy-the-web-app"></a>Web uygulamasını dağıtma
 
-Web uygulamasının dağıtım Için web https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/test-webapp uygulamasında bulabileceğiniz kaynak kodu aşağıdakileri yapın:
+[GitHub'da](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/tree/master/test-webapp)web uygulaması nın kaynak kodunu bulabilirsiniz.
 
-1. Fonksiyon uygulaması zip dosyasını indirinhttps://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip
-1. Dosyayı `simplerotationsample-app.zip` Azure Bulut BulutU'na yükleyin.
+Web uygulamasını dağıtmak için aşağıdaki adımları tamamlayın:
+
+1. GitHub'dan fonksiyon uygulaması zip dosyasını [indirin.](https://github.com/jlichwa/azure-keyvault-basicrotation-tutorial/raw/master/simplerotationsample-app.zip)
+1. Basit rotasyon örneği-app.zip dosyasını Azure Cloud Shell'e yükleyin.
 1. Zip dosyasını işlev uygulamasına dağıtmak için bu Azure CLI komutunu kullanın:
 
    ```azurecli
    az webapp deployment source config-zip -g simplerotation -n simplerotation-app --src /home/{firstname e.g jack}/simplerotationsample-app.zip
    ```
 
-#### <a name="open-web-application"></a>Açık web Uygulaması
+### <a name="open-the-web-app"></a>Web uygulamasını açma
 
-Dağıtılan uygulamaya gidin ve "URL"yi tıklatın:
+Dağıtılan uygulamaya gidin ve URL'yi seçin:
  
-![Test edin ve doğrulayın](./media/rotate10.png)
+![URL'yi seçin](./media/rotate10.png)
 
-Oluşturulan Gizli Değer, Veritabanı Bağlı ile doğru olarak gösterilmelidir.
+Oluşturulan Gizli Değer'i true değerine bağlı bir Veritabanı ile görmeniz gerekir.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin:
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - Genel Bakış: [Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)](event-grid-overview.md)
 - Nasıl yapılsın: [Önemli bir kasa gizli değiştiğinde e-posta alın](event-grid-logicapps.md)

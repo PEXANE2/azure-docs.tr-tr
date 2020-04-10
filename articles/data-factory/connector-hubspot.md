@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb0e20a96bebec22dff99d89c6be0a6d294c80a1
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754144"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992156"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak HubSpot'tan veri kopyalama (Önizleme)
 
@@ -55,8 +55,8 @@ HubSpot bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 | accessToken | OAuth tümleştirmenizi ilk olarak doğrularken elde edilen erişim belirteci. Buradan müşteri kimliğiniz ve gizli ile nasıl erişim jetonu elde edebilirsiniz [öğrenin.](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens) Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
 | yenilemeToken | OAuth tümleştirmenizi ilk olarak doğrularken elde edilen yenileme belirteci. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | SSL üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | TLS üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 

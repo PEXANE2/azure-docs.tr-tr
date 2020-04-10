@@ -3,13 +3,13 @@ title: Azure Kubernetes Hizmetinde (AKS) bölme güvenlik ilkelerini kullanma
 description: Azure Kubernetes Hizmetinde (AKS) PodSecurityPolicy'yi kullanarak pod kabullerini nasıl denetleriz öğrenin
 services: container-service
 ms.topic: article
-ms.date: 04/17/2019
-ms.openlocfilehash: 74177136a7a61186ab1d273b57dbfce550a18ecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/08/2020
+ms.openlocfilehash: 9e3a17e4775150247ef7924dffec68cc86a0bcac
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77914543"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998352"
 ---
 # <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Önizleme - Azure Kubernetes Hizmeti'nde (AKS) bölme güvenlik ilkelerini kullanarak kümenizi güvenli hale
 
@@ -103,17 +103,17 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-*Ayrıcalıklı* bölme güvenliği ilkesi, AKS kümesindeki herhangi bir kimlik doğrulaması kullanıcıya uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl get clusterrolebindings][kubectl-get] komutunu kullanın ve *varsayılan:ayrıcalıklı:* bağlama:
+*Ayrıcalıklı* bölme güvenliği ilkesi, AKS kümesindeki herhangi bir kimlik doğrulaması kullanıcıya uygulanır. Bu atama ClusterRoles ve ClusterRoleBindings tarafından denetlenir. [Kubectl get rolebindings][kubectl-get] komutunu kullanın ve *varsayılan:ayrıcalıklı:* *kube-sistem* ad alanında bağlama:
 
 ```console
-kubectl get clusterrolebindings default:privileged -o yaml
+kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
 Aşağıdaki yoğunlaştırılmış çıktıda gösterildiği gibi, *psp:sınırlı* ClusterRole herhangi bir *sisteme atanır: kimlik doğrulaması* kullanıcılar. Bu yetenek, kendi ilkeleriniz tanımlanmadan temel düzeyde kısıtlama sağlar.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
+kind: RoleBinding
 metadata:
   [...]
   name: default:privileged
@@ -125,7 +125,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: Group
-  name: system:authenticated
+  name: system:masters
 ```
 
 Kendi bakla güvenlik ilkelerinizi oluşturmaya başlamadan önce bu varsayılan ilkelerin bölmeleri zamanlamak için kullanıcı istekleriyle nasıl etkileşimde bulundurunu anlamak önemlidir. Sonraki birkaç bölümde, bu varsayılan ilkeleri iş başında görmek için bazı bölmeler zamanlayalım.
@@ -195,7 +195,7 @@ Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 
-Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: [spec.containers[0].securityContext.privileged: Invalid value: true: Privileged containers are not allowed]
+Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
 Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
@@ -223,44 +223,15 @@ spec:
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Kubernetes zamanlayıcısı pod isteğini kabul eder. Ancak, bölmenin durumuna kullanarak `kubectl get pods`bakarsanız, bir hata var:
+Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 
-NAME                 READY   STATUS                       RESTARTS   AGE
-nginx-unprivileged   0/1     CreateContainerConfigError   0          26s
+Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Pod için olaylara bakmak için [kubectl describe pod][kubectl-describe] komutunu kullanın. Aşağıdaki yoğunlaştırılmış örnek, biz istemesek bile kapsayıcı ve görüntü kök izinleri gerektirir gösterir:
-
-```console
-$ kubectl-nonadminuser describe pod nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                     From                               Message
-  ----     ------     ----                    ----                               -------
-  Normal   Scheduled  7m14s                   default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged to aks-agentpool-34777077-0
-  Warning  Failed     5m2s (x12 over 7m13s)   kubelet, aks-agentpool-34777077-0  Error: container has runAsNonRoot and image will run as root
-  Normal   Pulled     2m10s (x25 over 7m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-```
-
-Herhangi bir ayrıcalıklı erişim talep etmesek de, NGINX için konteyner görüntüsünün *80*bağlantı noktası için bir bağlama oluşturması gerekir. *1024* ve altındaki bağlantı noktalarını bağlamak için *kök* kullanıcı gereklidir. Bölme başlatmaya çalıştığında, *kısıtlı* pod güvenlik ilkesi bu isteği reddeder.
-
-Bu örnek, AKS tarafından oluşturulan varsayılan bölme güvenlik ilkelerinin etkin olduğunu ve kullanıcının gerçekleştirebileceği eylemleri kısıtladığını gösterir. Temel bir NGINX bölmesinin reddedilmesini beklemeyin, bu varsayılan politikaların davranışını anlamak önemlidir.
-
-Bir sonraki adıma geçmeden önce [kubectl delete pod][kubectl-delete] komutunu kullanarak bu test bölmesini silin:
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged.yaml
-```
+Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
 
 ## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Belirli bir kullanıcı bağlamı ile bir bölmenin test oluşturma
 
@@ -287,61 +258,15 @@ spec:
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-Kubernetes zamanlayıcısı pod isteğini kabul eder. Ancak, pod'un durumuna bir `kubectl get pods`önceki örnekten farklı bir hata kullanırsanız:
+Aşağıdaki örnek çıktıda gösterildiği gibi bölme zamanlanamıyor:
 
 ```console
-$ kubectl-nonadminuser get pods
+$ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 
-NAME                         READY   STATUS              RESTARTS   AGE
-nginx-unprivileged-nonroot   0/1     CrashLoopBackOff    1          3s
+Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Pod için olaylara bakmak için [kubectl describe pod][kubectl-describe] komutunu kullanın. Aşağıdaki yoğunlaştırılmış örnek, pod olaylarını gösterir:
-
-```console
-$ kubectl-nonadminuser describe pods nginx-unprivileged
-
-Name:               nginx-unprivileged
-Namespace:          psp-aks
-Priority:           0
-PriorityClassName:  <none>
-Node:               aks-agentpool-34777077-0/10.240.0.4
-Start Time:         Thu, 28 Mar 2019 22:05:04 +0000
-[...]
-Events:
-  Type     Reason     Age                   From                               Message
-  ----     ------     ----                  ----                               -------
-  Normal   Scheduled  2m14s                 default-scheduler                  Successfully assigned psp-aks/nginx-unprivileged-nonroot to aks-agentpool-34777077-0
-  Normal   Pulled     118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Container image "nginx:1.14.2" already present on machine
-  Normal   Created    118s (x3 over 2m13s)  kubelet, aks-agentpool-34777077-0  Created container
-  Normal   Started    118s (x3 over 2m12s)  kubelet, aks-agentpool-34777077-0  Started container
-  Warning  BackOff    105s (x5 over 2m11s)  kubelet, aks-agentpool-34777077-0  Back-off restarting failed container
-```
-
-Olaylar, kapsayıcının oluşturulduğunu ve başlatıldığını gösterir. Kapsülün neden başarısız bir durumda olduğuna dair hemen bir şey yok. [Kubectl günlükleri][kubectl-logs] komutunu kullanarak pod günlüklerine bakalım:
-
-```console
-kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-```
-
-Aşağıdaki örnek günlük çıkışı, NGINX yapılandırmasının kendisi nde, hizmet başlatmaya çalıştığında bir izin hatası olduğunun bir göstergesidir. Bu hata yine bağlantı noktası 80'e bağlanmagereksiniminden kaynaklanır. Pod belirtimi normal bir kullanıcı hesabı tanımlasa da, bu kullanıcı hesabı NGINX hizmetinin başlatılması ve kısıtlı bağlantı noktasına bağlanması için OS düzeyinde yeterli değildir.
-
-```console
-$ kubectl-nonadminuser logs nginx-unprivileged-nonroot --previous
-
-2019/03/28 22:38:29 [warn] 1#1: the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
-2019/03/28 22:38:29 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (13: Permission denied)
-```
-
-Yine, varsayılan bölme güvenlik ilkelerinin davranışını anlamak önemlidir. Bu hatayı izlemek biraz daha zordu ve yine temel bir NGINX bölmenin reddedilmesini beklemeyebilirsiniz.
-
-Bir sonraki adıma geçmeden önce [kubectl delete pod][kubectl-delete] komutunu kullanarak bu test bölmesini silin:
-
-```console
-kubectl-nonadminuser delete -f nginx-unprivileged-nonroot.yaml
-```
+Bölme zamanlama aşamasına ulaşmadığından, devam etmeden önce silmek için kaynak yoktur.
 
 ## <a name="create-a-custom-pod-security-policy"></a>Özel bir bölme güvenlik ilkesi oluşturma
 
@@ -383,7 +308,7 @@ $ kubectl get psp
 
 NAME                  PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP    READONLYROOTFS   VOLUMES
 privileged            true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *
-psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
+psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
 ## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Kullanıcı hesabının özel bölme güvenlik ilkesini kullanmasına izin ver

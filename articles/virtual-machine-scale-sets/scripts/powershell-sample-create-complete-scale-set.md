@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell Örnekleri - Eksiksiz bir sanal makine ölçek kümesi oluşturun
 description: Bu komut dosyası, tek tek kaynakların yapılandırıldığı ve oluşturulduğu Windows Server 2016'yı çalıştıran sanal bir makine ölçeği kümesi oluşturur.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 522dc1e24b8d3c4abd7b24dd3e0901e02b78992d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2459aee8c93df3b039922ee53c0fe86d302505cf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278698"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011523"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>PowerShell ile eksiksiz bir sanal makine ölçek kümesi oluşturma
 

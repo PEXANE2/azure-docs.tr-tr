@@ -1,18 +1,18 @@
 ---
 title: Azure CLI ile Sanal Makine Ölçek Kümelerini Yönetme
 description: Ortak Azure CLI komutları, bir örneğin nasıl başlatıp durdurulur veya ölçek kümesi kapasitesini değiştirme gibi Sanal Makine Ölçeği Kümelerini yönetmeyi emreder.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: ad07a237dd40d836705b332c6c10356720901481
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275744"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011591"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI ile sanal makine ölçeği kümesini yönetme
 Sanal makine ölçek kümesinin yaşam döngüsü boyunca bir veya daha fazla yönetim görevi çalıştırmanız gerekebilir. Ayrıca, çeşitli yaşam döngüsü görevlerini otomatikleştiren betikler oluşturmak isteyebilirsiniz. Bu makalede, bu görevleri gerçekleştirmenize izin veren ortak Azure CLI komutlarından bazıları ayrıntılarıyla anlatılıyor.

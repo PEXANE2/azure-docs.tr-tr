@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 03/11/2020
+ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 85457b62c905cb30ca22264eff1b6c677473f9b9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745294"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011115"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak kullanımı ve sorgu etkinliğini izleme
 
@@ -33,8 +33,8 @@ Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. 
 | Bellek yüzdesi       | Veri ambarı için tüm düğümlerde bellek kullanımı (SQL Server) | Avg, Min, Max   |
 | Etkin Sorgular          | Sistemde çalıştırılabilen etkin sorgu sayısı             | Toplam              |
 | Sıralı Sorgular          | Yürütmeyi başlatmak için bekleyen sıralı sorgu ların sayısı          | Toplam              |
-| Başarılı Bağlantılar  | Verilere başarılı bağlantı sayısı                 | Toplam, Sayma       |
-| Başarısız Bağlantılar      | Veri ambarına başarısız bağlantı sayısı           | Toplam, Sayma       |
+| Başarılı Bağlantılar  | Veritabanına karşı başarılı bağlantı (oturum açma) sayısı | Toplam, Sayma       |
+| Başarısız Bağlantılar      | Veritabanına karşı başarısız bağlantı (oturum açma) sayısı | Toplam, Sayma       |
 | Güvenlik Duvarı tarafından engellendi     | Engellenen veri ambarına giriş sayısı     | Toplam, Sayma       |
 | DWU sınırı               | Veri ambarının hizmet düzeyi hedefi                | Avg, Min, Max    |
 | DWU yüzdesi          | CPU yüzdesi ile Veri IO yüzdesi arasında maksimum        | Avg, Min, Max    |
@@ -42,7 +42,7 @@ Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. 
 | Önbellek isabet yüzdesi    | (önbellek isabetleri / önbellek miss) * 100 nerede önbellek vurur yerel SSD önbellek ve önbellek miss tüm sütun mağaza segmentleri isabet toplamıdır yerel SSD önbelleğinde kalır sütun mağazası segmentleri tüm düğümleri arasında özetlenebilir | Avg, Min, Max    |
 | Önbellek kullanılan yüzde   | (kullanılan önbellek / önbellek kapasitesi) * Kullanılan önbelleğin tüm düğümler ve önbellek kapasitesi boyunca yerel SSD önbelleğindeki tüm baytların toplamı olduğu 100, tüm düğümler arasında yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Avg, Min, Max    |
 | Yerel tempdb yüzdesi | Tüm işlem düğümleri arasında yerel tempdb kullanımı - değerler her beş dakikada bir yayılır | Avg, Min, Max    |
-| Veri Depolama Boyutu (GB) | Veritabanına yüklenen toplam veri boyutu. Bu, CCI olmayan tabloların boyutunun toplam veritabanı dosya boyutuyla ölçüldüğü CCI ve CCI olmayan tablolarda bulunan verileri içerir | Toplam |
+| Veri Depolama Boyutu (GB) | Veritabanının toplam boyutu. Bu, kullanılan, ayrılmış ve ayrılmamış alanı içerir. Sorgu ve yük performansını en iyi duruma getirmek için veritabanı için ayrılmamış alan tutulur. | Toplam |
 | Olağanüstü Durum Kurtarma Boyutu (GB) | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
 | Anlık Görüntü Depolama boyutu (GB) | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntü toplam boyutu. Bu, otomatik ve kullanıcı tanımlı anlık görüntüleri içerir. | Toplam |
 

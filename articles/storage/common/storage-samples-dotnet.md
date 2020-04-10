@@ -7,12 +7,12 @@ ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: a4c9188c8f1315a3af452cd0c1fb5cf45ab82081
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77486126"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010503"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>v12 .NET istemci kitaplıklarını kullanarak Azure Depolama örnekleri
 
@@ -23,7 +23,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 ## <a name="blob-samples"></a>Blob örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -51,18 +51,18 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 :::row:::
    :::column span="":::
-      [Bir istekte birkaç blob silme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L22)
+      [Bir istekte birkaç blob silme](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L22)
    :::column-end:::
    :::column span="":::
-      [Tek bir istekte birkaç blob erişim katmanı ayarlama](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L56)
+      [Tek bir istekte birkaç blob erişim katmanı ayarlama](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L56)
    :::column-end:::
 :::row-end:::
 :::row:::
    :::column span="":::
-      [Toplu iş isteğinde ince taneli denetim](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L90)
+      [Toplu iş isteğinde ince taneli denetim](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L90)
    :::column-end:::
    :::column span="":::
-      [Başarısız bir alt işlemdeki hataları yakalama](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples/Sample03b_BatchingAsync.cs#L136)
+      [Başarısız bir alt işlemdeki hataları yakalama](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/storage/Azure.Storage.Blobs.Batch/samples/Sample03b_BatchingAsync.cs#L136)
    :::column-end:::
 :::row-end:::
 
@@ -94,7 +94,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 ## <a name="data-lake-storage-gen2-samples"></a>Data Lake Depolama Gen2 örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -180,7 +180,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 ## <a name="azure-files-samples"></a>Azure Dosyaları örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::
@@ -222,7 +222,7 @@ Aşağıdaki tablo, numune depomuzun ve her örnekte kapsanan senaryoların gene
 
 ## <a name="queue-samples"></a>Sıra örnekleri
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 :::row:::
    :::column span="":::

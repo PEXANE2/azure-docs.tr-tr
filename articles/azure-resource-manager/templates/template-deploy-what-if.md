@@ -3,14 +3,14 @@ title: Şablon dağıtımı ne-if (Önizleme)
 description: Azure Kaynak Yöneticisi şablonunu dağıtmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşeceğini belirleyin.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/09/2020
 ms.author: jgao
-ms.openlocfilehash: 9e0d0d572e08961b585a93e66e400b8c2e54bf7f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b8e94d0b4f364e2873dfc21792a67f11c33483bf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886849"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010198"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablon dağıtımı ne-if işlemi (Önizleme)
 
@@ -24,6 +24,14 @@ PowerShell komutları veya REST API işlemleri ile what-if işlemini kullanabili
 ## <a name="install-powershell-module"></a>PowerShell modüllerini yükleyin
 
 PowerShell'de what-if'i kullanmak için PowerShell galerisinden Az.Resources modülünün önizleme sürümünü yükleyin.
+
+### <a name="install-preview-version"></a>Önizleme sürümünü yükleme
+
+Önizleme modüllerini yüklemek için şunları kullanın:
+
+```powershell
+Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+```
 
 ### <a name="uninstall-alpha-version"></a>Alfa sürümünü kaldırma
 
@@ -47,14 +55,6 @@ Daha önce if-if modülünün alfa sürümünü yüklediyseniz, bu modülü kald
    ```powershell
    Unregister-PSRepository -Name WhatIfRepository
    ```
-
-### <a name="install-preview-version"></a>Önizleme sürümünü yükleme
-
-Önizleme modüllerini yüklemek için şunları kullanın:
-
-```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
-```
 
 Eğer olursa onu kullanmaya hazırsın.
 

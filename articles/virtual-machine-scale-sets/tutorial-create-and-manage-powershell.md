@@ -1,19 +1,19 @@
 ---
 title: Öğretici - Azure sanal makine ölçek kümesi oluşturma ve yönetme
 description: Örnek başlatma ve durdurma veya ölçek kümesi kapasitesini değiştirme gibi bazı genel yönetim görevlerinin yanı sıra, sanal makine ölçek kümesi oluşturmak için Azure PowerShell'in nasıl kullanılacağını öğrenin.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 05/18/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76271402"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011260"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Öğretici: Azure PowerShell ile sanal makine ölçek kümesi oluşturma ve yönetme
 
@@ -199,7 +199,7 @@ Aşağıdaki tabloda genel sanal makine boyutları, kullanım durumlarına göre
 
 | Tür                     | Ortak boyutlar           |    Açıklama       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| [Genel amaç](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
+| [Genel amaçlı](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Dengeli CPU/bellek. Küçük ve orta ölçekli uygulama ve veri çözümlerini geliştirmek/test etmek için idealdir.  |
 | [İşlem için iyileştirilmiş](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Yüksek CPU/bellek. Orta düzey trafiğe sahip uygulamalar, ağ gereçleri ve toplu işlemler için idealdir.        |
 | [Bellek için iyileştirilmiş](../virtual-machines/windows/sizes-memory.md)    | Esv3, Ev3, M, GS, G, DSv2, DS, Dv2, D   | Yüksek bellek/çekirdek. İlişkisel veritabanı, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 | [Depolama için iyileştirilmiş](../virtual-machines/windows/sizes-storage.md)      | Ls                | Yüksek disk aktarım hızı ve GÇ. Büyük Veri, SQL ve NoSQL veritabanları için ideal.                                                         |
@@ -326,4 +326,4 @@ Bu öğreticide, Azure PowerShell ile bazı temel ölçek kümesi oluşturma ve 
 Ölçek kümesi diskleri hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Veri disklerini ölçek kümeleri ile kullanma](tutorial-use-disks-powershell.md)
+> [Ölçek kümeleri ile veri diskleri kullanma](tutorial-use-disks-powershell.md)

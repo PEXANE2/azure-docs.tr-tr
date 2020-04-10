@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 71bff5e3761d72236e6896733b96bd6e01460e52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8364468277123205d967871ab7bf2d048db64a82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927795"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991799"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak Presto'dan veri kopyalama (Önizleme)
 
@@ -56,10 +56,10 @@ Presto bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 | authenticationType | Presto sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler şunlardır: **Anonim**, **LDAP** | Evet |
 | kullanıcı adı | Presto sunucusuna bağlanmak için kullanılan kullanıcı adı.  | Hayır |
 | password | Kullanıcı adına karşılık gelen parola. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| sağlarSsl | Sunucuya bağlantıların SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| güvenilirCertPath | SSL üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de SSL kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
+| sağlarSsl | Sunucuya bağlantıların TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| güvenilirCertPath | TLS üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de TLS kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
 | useSystemTrustStore | Sistem güven deposundan veya belirli bir PEM dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowHostNameCNMismatch | SSL üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde CA tarafından verilmiş bir SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| allowHostNameCNMismatch | TLS üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde CA tarafından verilmiş bir TLS/SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | izinSelfSignedServerCert | Sunucudan kendi imzalı sertifikalara izin verip vermemeyi belirtir. Varsayılan değer false'tur.  | Hayır |
 | timeZoneID | Bağlantı tarafından kullanılan yerel saat dilimi. Bu seçenek için geçerli değerler IANA Saat Dilimi Veritabanında belirtilir. Varsayılan değer sistem saat dilimidir.  | Hayır |
 

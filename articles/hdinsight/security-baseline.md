@@ -2,24 +2,23 @@
 title: HDInsight için Azure Güvenlik Taban Çizgisi
 description: HDInsight için Azure Güvenlik Taban Çizgisi
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 61c2b914671020b822814fc283b5f2641c2e787b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 93a5bcd77bb4f42d9099cc1ddb1b5c3130c19059
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657452"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010146"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik Taban Çizgisi
 
 HDInsight için Azure Güvenlik Taban Çizgisi, dağıtımınızın güvenlik duruşunu geliştirmenize yardımcı olacak öneriler içerir.
 
-Bu hizmetlerin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
+Bu hizmetin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
 
 Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)görün.
 
@@ -31,10 +30,11 @@ Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https:/
 
 **Rehberlik**: Azure HDInsight'ta çevre güvenliği sanal ağlar aracılığıyla sağlanır. Bir kuruluş yöneticisi sanal ağ içinde bir küme oluşturabilir ve sanal ağa erişimi kısıtlamak için bir ağ güvenlik grubu (NSG) kullanabilir. Yalnızca gelen Ağ Güvenliği Grubu kurallarında izin verilen IP adresleri Azure HDInsight kümesiyle iletişim kurabilir. Bu yapılandırma çevre güvenliği sağlar. Sanal ağda dağıtılan tüm kümeler, küme ağ geçitlerine özel HTTP erişimi için Sanal Ağ içindeki özel bir IP adresine giden özel bir bitiş noktasına da sahip olur.
 
+Dışa filtreleme yoluyla veri kaybı riskini azaltmak için, Azure Güvenlik Duvarı'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini kısıtlayın.
 
-Azure HDInsight'ı Sanal Ağ'da dağıtma ve Ağ Güvenlik Grubu yla Güvenli Hale Nasıl:
+Azure HDInsight'ı Sanal Ağ'da dağıtma ve Ağ Güvenlik Grubu yla Güvenli Hale Nasıl:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
-https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
+Azure Güvenlik Duvarı ile Azure HDInsight Kümeleri için giden trafiği sınırlama:https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -44,16 +44,13 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
 **Kılavuz**: Azure HDInsight kümenizi korumak için kullanılan sanal ağ, alt ağ ve ağ güvenlik grubu için Azure Güvenlik Merkezi'ni ve ağ koruma önerilerini düzeltin. Ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin ve günlükleri trafik denetimine Azure Depolama Hesabına gönderin. Ayrıca NSG akış günlüklerini bir Azure Log Analytics Çalışma Alanına gönderebilir ve Azure bulutunuzdaki trafik akışıhakkında bilgi sağlamak için Azure Trafik Analizi'ni kullanabilirsiniz. Azure Trafik Analitiği'nin bazı avantajları, ağ etkinliğini görselleştirebilme ve etkin noktaları belirleyebilme, güvenlik tehditlerini belirleyebilme, trafik akışı desenlerini anlama ve ağ yanlış yapılandırmalarını saptabilme yeteneğidir.
 
-
 NSG Akış Günlükleri Nasıl Etkinleştirilir:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-
 Azure Trafik Analizini Etkinleştirme ve Kullanma:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
-
 
 Azure Güvenlik Merkezi tarafından sağlanan Ağ Güvenliğini Anlayın:
 
@@ -75,11 +72,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Yönlendirme**: DDoS saldırılarına karşı koruma sağlamak için Azure HDInsight'ınızın dağıtıldığı sanal ağda Azure DDoS Standart korumasını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimi reddetmek için Azure Güvenlik Merkezi tümleşik tehdit istihbaratını kullanın.
 
-
 DDoS koruması nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı Anlayın:
 
@@ -91,13 +86,11 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Ağ paketlerini ve akış günlüklerini kaydetme
 
-**Kılavuz**: Azure HDInsight kümenizi korumak için kullanılan alt ağa bağlı NSG için ağ güvenlik grubu (NSG) akış günlüklerini etkinleştirin. Akış kayıtları oluşturmak için NSG akış günlüklerini bir Azure Depolama Hesabına kaydedin. Anormal etkinliği araştırmak için gerekirse, Azure Ağ İzleyicipaket yakalamayı etkinleştirin.
-
+**Kılavuz**: Azure HDInsight kümenizi korumak için kullanılan alt ağa bağlı NSG için ağ güvenlik grubu (NSG) flog günlüklerini etkinleştirin. Akış kayıtları oluşturmak için NSG akış günlüklerini bir Azure Depolama Hesabına kaydedin. Anormal etkinliği araştırmak için gerekirse, Azure Ağ İzleyicipaket yakalamayı etkinleştirin.
 
 NSG Akış Günlükleri Nasıl Etkinleştirilir:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
-
 
 Ağ İzleyicisi nasıl etkinleştirilir:
 
@@ -112,6 +105,8 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 **Kılavuz**: Gereksinim azure güvenlik denetimi KIMLIĞI 1.1;; Azure HDInsight kümesini sanal bir ağa dağıtın ve bir ağ güvenlik grubu (NSG) ile güvenli hale getirin.
 
 Azure HDInsight için gelen trafik gerektiren çeşitli bağımlılıklar vardır. Gelen yönetim trafiği bir güvenlik duvarı aygıtı ndan gönderilemez. Gerekli yönetim trafiği için kaynak adresleri bilinir ve yayımlanır. Kümelere gelen trafiği güvence altına alarak yalnızca güvenilen konumlardan gelen trafiğe izin vermek için bu bilgilerle Ağ Güvenlik Grubu kuralları oluşturun.
+
+Dışa filtreleme yoluyla veri kaybı riskini azaltmak için, Azure Güvenlik Duvarı'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini kısıtlayın.
 
 HDInsight'ı Sanal Ağ'da dağıtma ve Ağ Güvenlik Grubu yla Güvenli Hale Nasıl:https://docs.microsoft.com/azure/hdinsight/hdinsight-create-virtual-network
 
@@ -135,7 +130,6 @@ HDInsight yönetimi IP adresleri:https://docs.microsoft.com/azure/hdinsight/hdin
 
 **Kılavuz :** Azure HDInsight kümenizin dağıtılan alt ağına bağlı ağ güvenlik gruplarındaki (NSG) ağ erişim denetimlerini tanımlamak için Sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında servis etiketi adını (örn. ApiManagement) belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz. Microsoft, hizmet etiketinin kapsadığı adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
 
-
 Azure HDInsight için Hizmet Etiketlerini anlama ve kullanma:
 
 https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
@@ -148,19 +142,15 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 **Yönerge**: Azure HDInsight kümenizle ilgili ağ kaynakları için standart güvenlik yapılandırmaları tanımlayın ve uygulayın. Azure HDInsight kümenizin ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ve "Microsoft.Network" ad alanlarında Azure İlkesi takma adlarını kullanın.
 
-
 Azure Kaynak Yöneticisi şablonları, RBAC denetimleri ve ilkeleri gibi önemli ortam yapılarını tek bir plan tanımında paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure Planları'nı da kullanabilirsiniz. Planı yeni aboneliklere ve ortamlara kolayca uygulayın ve sürüm leme yoluyla denetim ve yönetime ince ayar uygulayın.
-
 
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
 
 Azure Blueprint nasıl oluşturulur:
 
@@ -174,22 +164,17 @@ https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 **Kılavuz :** Ağ güvenliği grubu (NSG'ler) ve Azure HDInsight kümenizle ilişkili ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için Etiketleri kullanın. Tek tek NSG kuralları için, bir ağa/aktan trafiğin alınmasına izin veren kurallar için iş gereksinimini ve/veya süresini (vb.) belirtmek için "Açıklama" alanını kullanın.
 
-
 Tüm kaynakların Etiketler ile oluşturulduğundan emin olmak ve varolan etiketlenmemiş kaynakları size bildirmek için etiketlemeyle ilgili "Etiket ve değeri gerektir" gibi yerleşik Azure ilke tanımlarından herhangi birini kullanın.
 
-
 Azure PowerShell veya Azure komut satırı arabirimini (CLI) Etiketleri'ne dayalı kaynaklara bakmak veya eylemler gerçekleştirmek için kullanabilirsiniz.
-
 
 Etiketler nasıl oluşturulur ve kullanılır:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-
 Sanal ağ nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
 
 Güvenlik Config ile bir NSG oluşturmak için nasıl:
 
@@ -203,11 +188,9 @@ https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 **Yönerge**: Ağ kaynak yapılandırmalarını izlemek ve Azure HDInsight dağıtımlarınızla ilgili ağ kaynaklarındaki değişiklikleri algılamak için Azure Etkinlik Günlüğü'ne kullanın. Azure Monitor'da kritik ağ kaynaklarında değişiklikler olduğunda tetikleyecek uyarılar oluşturun.
 
-
 Azure Etkinlik Günlüğü etkinliklerini görüntüleme ve alma:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
-
 
 Azure Monitor'da uyarı oluşturma:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
@@ -223,7 +206,6 @@ Azure Monitor'da uyarı oluşturma:https://docs.microsoft.com/azure/azure-monito
 
 **Kılavuz**: Microsoft, Azure HDInsight küme bileşenleri için zaman kaynaklarını korur, bilgi işlem dağıtımlarınız için zaman eşitlemesi güncelleştirebilirsiniz.
 
-
 Azure bilgi işlem kaynakları için zaman eşitleme yapılandırması nasıl yapılandırılır:
 
 https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
@@ -236,11 +218,9 @@ https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 **Yönerge**: Küme tarafından oluşturulan güvenlik verilerini toplamak için Azure HDInsight kümenizde Azure HDInsight kümesine binebilirsiniz. Çevredeki tehditleri algılamak ve yanıtlamak için özel sorgulardan yararlanın. 
 
-
 Azure Monitor'a Azure HDInsight kümesinde nasıl binilir:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
-
 
 Azure HDInsight kümesi için özel sorgular oluşturma:
 
@@ -254,11 +234,9 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-us
 
 **Yönlendirme**: HDInsight kümesi için Azure Monitör'ü etkinleştirin, log Analytics çalışma alanına yönlendirin. Bu, tüm Azure HDInsight küme düğümleri için ilgili küme bilgilerini ve işletim sistemi ölçümlerini kaydeder.
 
-
 HDInsight Cluster için günlüğe kaydetme nasıl etkinleştirilir:
 
  https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
-
 
 HDInsight günlükleri nasıl sorgulanır:
 
@@ -272,11 +250,9 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-us
 
 **Kılavuz**: Yerleşik Azure HDInsight kümesini Azure Monitor'a taşıyın. Kullanılan Log Analytics çalışma alanının kuruluşunuzun uyumluluk yönetmeliklerine göre günlük saklama süresi ne zaman ayarlandığından emin olun.
 
-
 Azure HDInsight Cluster'da Azure Monitor'a nasıl binilir:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
-
 
 Günlük Analizi Çalışma Alanı Bekletme Süresi nasıl yapılandırılatır:
 
@@ -290,11 +266,9 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
 **Kılavuz**: Yerleşik Azure HDInsight kümesini Azure Monitor'a taşıyın. Kullanılan Azure Günlük Analizi çalışma alanının kuruluşunuzun uyumluluk yönetmeliklerine göre günlük bekletme süresine sahip olduğundan emin olun.
 
-
 Azure HDInsight Cluster'da Azure Monitor'a nasıl binilir:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-tutorial
-
 
 Günlük Analizi Çalışma Alanı Bekletme Süresi nasıl yapılandırılatır:
 
@@ -308,7 +282,6 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
 **Yönerge**: Azure HDInsight günlüklerini sorgulamak için Azure Günlük Analizi çalışma alanı sorgularını kullanın:
 
-
 Azure HDInsight Kümeleri için Özel Sorgular Nasıl Oluşturulur:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-use-queries
@@ -321,11 +294,9 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-oms-log-analytics-us
 
 **Kılavuz :** Azure HDInsight kümenizle ilgili güvenlik günlükleri ve olaylardaki anormal etkinlikleri izlemek ve uyarmak için Azure Log Analytics çalışma alanını kullanın.
 
-
 Azure Güvenlik Merkezi'nde uyarılar nasıl yönetilir:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
-
 
 Günlük analitiği günlük verilerinde nasıl uyarı olun:
 
@@ -338,7 +309,6 @@ https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 ### <a name="28-centralize-anti-malware-logging"></a>2.8: Kötü amaçlı yazılımdan koruma günlüğe kaydetmeyi merkezileştirin
 
 **Yönlendirme**: Azure HDInsight, cluster düğüm görüntüleri için önceden yüklenmiş ve etkin leştirilmiş Clamscan ile birlikte gelir, ancak yazılımı yönetmeniz ve Clamscan'ın ürettiği günlükleri el ile toplamanız/izlemeniz gerekir.
-
 
 Clamscan'ı anlayın:
 
@@ -372,19 +342,15 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **Yönerge**: Azure HDInsight kümesinin küme sağlanması sırasında oluşturulan yerel yönetim hesabının ve oluşturduğunuz diğer hesapların kaydını koruyun. Ayrıca, Azure AD tümleştirmesi kullanılıyorsa, Azure AD'de açıkça atanması gereken ve bu nedenle sorgulanabilen yerleşik roller vardır. Yönetim gruplarının üyesi hesapları bulmak için geçici sorgular gerçekleştirmek için Azure AD PowerShell modüllerini kullanın.
 
-
 Ayrıca, Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi önerilerini de kullanabilirsiniz.
-
 
 PowerShell ile Azure AD'de dizin rolü nasıl elde elabilirsiniz:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-
 PowerShell ile Azure AD'de dizin rolünün üyelerini nasıl edinire bilgili olabilirsiniz:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
-
 
 Azure Güvenlik Merkezi ile kimlik ve erişim nasıl izlenir:
 
@@ -398,7 +364,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Kılavuz**: Bir küme oluştururken Azure, web portalı ve Secure Shell (SSH) erişimi için yeni parolalar oluşturmanızı gerektirir. Değiştirilen varsayılan parola lar yoktur, ancak SSH ve web portalı erişimi için farklı parolalar belirtebilirsiniz.
 
-
 Azure HDInsight kümesini sağlarken parolalar nasıl ayarlanır:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
@@ -411,14 +376,11 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix
 
 **Yönerge**: Azure HDInsight kümesi için Kimlik Doğrulamayı Azure Active Directory ile tümleştirin. Özel yönetim hesaplarının kullanımı yla ilgili ilke ler ve yordamlar oluşturun.
 
-
 Ayrıca, Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi önerilerini de kullanabilirsiniz.
-
 
 Azure HDInsight kimlik doğrulamasını Azure Active Directory ile nasıl tümleştirilir:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
-
 
 Azure Güvenlik Merkezi ile kimlik ve erişim nasıl izlenir:
 
@@ -432,7 +394,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Yönlendirme**: Birden Çok Faktörlü Kimlik Doğrulama'yı kullanarak, parola sağlamadan Kurumsal Güvenlik Paketi (ESP) kümelerinde oturum açabilmek için Azure HDInsight ID Aracısını kullanın. Azure portalı gibi diğer Azure hizmetlerinde oturum açtıysanız, tek bir oturum açma (SSO) deneyimiyle Azure HDInsight kümenizde oturum açabilirsiniz.
 
-
 Azure HDInsight ID Aracısı nasıl etkinleştirilir:
 
 https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-hdinsight-id-broker
@@ -445,11 +406,9 @@ https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker#enable-
 
 **Kılavuz**: Azure AD MFA'sını etkinleştirin ve Azure Güvenlik Merkezi Kimlik ve Erişim Yönetimi önerilerini izleyin. Yapılandırılan Kurumsal Güvenlik Paketi'ne sahip Azure HDInsight kümeleri, etki alanı kullanıcılarının kümeleri doğrulamak ve büyük veri işleri çalıştırmak için etki alanı bilgilerini kullanabilmeleri için bir etki alanına bağlanabilir. Çok faktörlü kimlik doğrulama (MFA) etkinleştirilmiş kimlik doğrulaması yapıldığında, kullanıcılara ikinci bir kimlik doğrulama faktörü sağlaması zorlanacaktır.
 
-
 Azure'da MFA nasıl etkinleştirilir:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
 
 Azure Güvenlik Merkezi'nde kimlik ve erişim nasıl izlenir:
 
@@ -463,11 +422,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Yönlendirme**: Azure HDInsight kümelerinize ve ilgili kaynaklarınızda oturum açmak ve yapılandırmak üzere yapılandırılan çok faktörlü kimlik doğrulama (MFA) ile PAW'ları (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-
 Ayrıcalıklı Erişim İş İstasyonları hakkında bilgi edinin:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
-
 
 Azure'da MFA nasıl etkinleştirilir:
 
@@ -481,11 +438,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Yönlendirme**: Kurumsal Güvenlik Paketi yapılandırılan Azure HDInsight kümeleri, etki alanı kullanıcılarının kimlik doğrulamaiçin etki alanı bilgilerini kullanabilmeleri için bir etki alanına bağlanabilir. AAD ortamında şüpheli veya güvensiz etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Active Directory (AAD) güvenlik raporlarını kullanabilirsiniz. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi'ni kullanın.
 
-
 Riskli etkinlik için işaretlenmiş AAD kullanıcılarını nasıl tanımlar:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
-
 
 Azure Güvenlik Merkezi'nde kullanıcıların kimlik ve erişim etkinliğini izleme:
 
@@ -498,7 +453,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
 
 **Yönlendirme**: Kurumsal Güvenlik Paketi yapılandırılan Azure HDInsight kümeleri, etki alanı kullanıcılarının kimlik doğrulamaiçin etki alanı bilgilerini kullanabilmeleri için bir etki alanına bağlanabilir. Yalnızca IP adresi aralıklarının veya ülkelerin/bölgelerinin belirli mantıksal gruplandırmalarından erişime izin vermek için Koşullu Erişim Adlandırılmış Konumlar'ı kullanın.
-
 
 Azure'da Adlandırılmış Konumlar nasıl yapılandırılabilen:
 
@@ -514,11 +468,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 Kurumsal Güvenlik Paketi (ESP) yapılandırılan Azure HDInsight kümeleri, etki alanı kullanıcılarının kümelerle kimlik doğrulama yapmak için etki alanı bilgilerini kullanabilmeleri için bir etki alanına bağlanabilir.
 
-
 AAD örneğini oluşturma ve yapılandırma:
 
 https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
-
 
 Azure HDInsight'ta Azure Active Directory Etki Alanı Hizmetleri ile Kurumsal Güvenlik Paketi nasıl yapılandırılabilen:
 
@@ -532,7 +484,6 @@ https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-co
 
 **Kılavuz :** Azure HDInsight kümenizle Azure Active Directory (AAD) kimlik doğrulamasını kullanın. AAD, eski hesapları keşfetmeye yardımcı olmak için günlükler sağlar. Ayrıca, grup üyeliklerini, kurumsal uygulamalara erişimi ve rol atamalarını verimli bir şekilde yönetmek için Azure Kimlik Erişim İncelemeleri'ni kullanın. Yalnızca doğru Kullanıcıların sürekli erişime sahip olduğundan emin olmak için kullanıcıerişimi düzenli olarak gözden geçirilebilir. 
 
-
 Azure Kimlik Erişim İncelemeleri nasıl kullanılır:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
@@ -545,9 +496,7 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 
 **Rehberlik**: Devre dışı bırakılmış hesaplara erişim girişimlerini izlemek için Azure Active Directory (AAD) Oturum Açma ve Denetleme günlüklerini kullanın; bu günlükler herhangi bir üçüncü taraf SIEM/izleme aracına entegre edilebilir.
 
-
 AAD kullanıcı hesapları için Tanılama Ayarları oluşturarak, denetim günlüklerini ve oturum açma günlüklerini Azure Log Analytics çalışma alanına göndererek bu işlemi kolaylaştırabilirsiniz. Azure Log Analytics çalışma alanı içinde istediğiniz Uyarıları yapılandırın.
-
 
 Azure Etkinlik Günlükleri Azure Monitör'e nasıl entegre eleştirilir:
 
@@ -561,11 +510,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 **Yönlendirme**: Kurumsal Güvenlik Paketi (ESP) yapılandırılan Azure HDInsight kümeleri, etki alanı kullanıcılarının kümelerle kimlik doğrulama yapmak için etki alanı bilgilerini kullanabilmeleri için bir etki alanına bağlanabilir.  Kullanıcı kimlikleri ile ilgili algılanan şüpheli eylemlere otomatik yanıtları yapılandırmak için Azure Etkin Dizin (AAD) Risk Algılamaları ve Kimlik Koruması özelliğini kullanın. Ayrıca, daha fazla araştırma için Azure Sentinel'e veri sindirebilirsiniz.
 
-
 AAD riskli oturum açma nasıl görüntülenebilir:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
-
 
 Kimlik Koruması risk ilkelerinin nasıl yapılandırılabilen ve etkinleştirilir:
 
@@ -582,6 +529,7 @@ https://docs.microsoft.com/azure/active-directory/identity-protection/howto-iden
 Müşteri Lockbox desteklenen hizmetler listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -593,7 +541,6 @@ Müşteri Lockbox desteklenen hizmetler listesi:https://docs.microsoft.com/azure
 ### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Hassas Bilgilerin envanterini koruyun
 
 **Kılavuz**: Azure HDInsight dağıtımlarınızla ilgili kaynaklardaki etiketleri kullanarak hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olun.
-
 
 Etiketler oluşturma ve kullanma:
 
@@ -607,16 +554,13 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Rehberlik**: Geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure HDInsight kümeleri ve ilişkili depolama hesapları sanal ağ/alt ağ tarafından ayrılmalı, uygun şekilde etiketlenmelidir ve bir ağ güvenlik grubu (NSG) veya Azure Güvenlik Duvarı içinde güvenli hale edilmelidir. Küme verileri güvenli bir Azure Depolama Hesabı veya Azure Veri Gölü Depolama (Gen1 veya Gen2) içinde yer almalıdır.
 
-
 Azure HDInsight kümeniz için depolama seçenekleri seçin:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
-
 Azure Veri Gölü Depolaması nasıl güvenli hale ilir:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
-
 
 Azure Depolama Hesapları nasıl güvenli hale ilir:
 
@@ -630,14 +574,11 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Kılavuz**: Azure HDInsight kümeleri için hassas bilgileri depolama veya işleme, kümeyi ve ilgili kaynakları etiketleri kullanarak hassas olarak işaretleyin. Dışa filtreleme yoluyla veri kaybı riskini azaltmak için, Azure Güvenlik Duvarı'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini kısıtlayın.
 
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
 
 Azure Güvenlik Duvarı ile Azure HDInsight Kümeleri için giden trafiği sınırlama:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-restrict-outbound-traffic
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
@@ -651,15 +592,13 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Rehberlik**: Tüm hassas bilgileri geçiş sırasında şifreleyin. Azure HDInsight kümenize veya küme veri depolarınıza (Azure Depolama Hesapları veya Azure Veri Gölü Depolama Gen1/Gen2) bağlanan istemcilerin TLS 1,2 veya daha büyük bir anlaşma sağlayabilmesini sağlayın. Microsoft Azure kaynakları TLS 1.2'yi varsayılan olarak görüşür. 
 
-
 Aktarım sırasında Azure Veri Gölü Depolama şifrelemesi anlayın:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview
 
-
 Aktarım sırasında Azure Depolama Hesabı şifrelemesini anlayın:
 
-https://docs.microsoft.com/azure/storage/blobs/security-recommendations
+https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -669,11 +608,7 @@ https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Yönlendirme**: Azure Depolama veya bilgi işlem kaynakları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
 
-
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
@@ -689,9 +624,13 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 RBAC ilkelerini Apache Ranger ile yapılandırmak, izinleri kuruluştaki bir rolile ilişkilendirmenize olanak tanır. Bu soyutlama katmanı, insanların yalnızca iş sorumluluklarını yerine getirmek için gereken izinlere sahip olmalarını kolaylaştırır.
 
-HDInsight'ta Azure Active Directory Domain Services ile Kurumsal Güvenlik Paketi yapılandırmaları:https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
+HDInsight'ta Azure Active Directory Domain Services ile Kurumsal Güvenlik Paketi yapılandırmaları:
 
-Azure HDInsight'ta kurumsal güvenliğe genel bakış:https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
+https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds
+
+Azure HDInsight'ta kurumsal güvenliğe genel bakış:
+
+https://docs.microsoft.com/azure/hdinsight/domain-joined/hdinsight-security-overview
 
 
 
@@ -703,9 +642,7 @@ Azure HDInsight'ta kurumsal güvenliğe genel bakış:https://docs.microsoft.com
 
 **Kılavuz**: Azure HDInsight kümeleri için hassas bilgileri depolama veya işleme, kümeyi ve ilgili kaynakları etiketleri kullanarak hassas olarak işaretleyin. Azure Depolama veya bilgi işlem kaynakları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
 
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
@@ -719,25 +656,17 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Kılavuz**: Apache Hive ve Apache Oozie meta verilerini depolamak için Azure SQL Veritabanı kullanıyorsanız, SQL verilerinin her zaman şifrelenmiş olduğundan emin olun. Azure Depolama Hesapları ve Veri Gölü Depolama (Gen1 veya Gen2) için, Microsoft'un şifreleme anahtarlarınızı yönetmesine izin vermeniz önerilir, ancak kendi anahtarlarınızı yönetme seçeneğiniz vardır.
 
-
-
 Azure Depolama Hesapları için şifreleme anahtarlarını yönetme:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
-
-
 
 Müşteri tarafından yönetilen şifreleme anahtarlarını kullanarak Azure Veri Gölü Depolaması nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
-
-
 Azure SQL Veritabanı için şifrelemeyi anlama:
 
 https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview#data-encryption
-
-
 
 Müşteri yönetilen anahtarları kullanarak SQL Veritabanı için Saydam Veri Şifrelemesi nasıl yapılandırılabilen:
 
@@ -751,11 +680,9 @@ https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-
 
 **Yönerge**: Tüm CRUD işlemlerini küme verilerine karşı izlemek ve günlüğe kaydetmek için Azure HDInsight kümeleriyle ilişkili Azure Depolama Hesapları için Tanı Ayarlarını Yapılandırın. Azure HDInsight kümesiyle ilişkili tüm Depolama Hesapları veya Veri Gölü Mağazaları için Denetimi Etkinleştirin.
 
-
 Azure Depolama Hesabı için ek günlüğe kaydetme/denetlemeyi etkinleştirme:
 
 https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
-
 
 Azure Veri Gölü Depolaması için ek günlüğe kaydetme/denetleme yi etkinleştirme:
 
@@ -773,19 +700,15 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 **Kılavuz**: Üçüncü taraf güvenlik açığı yönetimi çözümü uygulayın.
 
-
 İsteğe bağlı olarak, Rapid7, Qualys veya başka bir güvenlik açığı yönetim platformu aboneliğiniz varsa, Azure HDInsight küme düğümlerinize güvenlik açığı değerlendirme aracıları yüklemek ve düğümleri ilgili portal üzerinden yönetmek için komut dosyası eylemlerini kullanabilirsiniz.
-
 
 Rapid7 Agent El Ile Nasıl Yüklenir:
 
-https://insightvm.help.rapid7.com/docs/azure-security-center
-
+https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
 
 Qualys Agent El ile nasıl yüklenir:
 
 https://www.qualys.com/docs/qualys-cloud-agent-linux-install-guide.pdf
-
 
 Komut dosyası eylemleri nasıl kullanılır:
 
@@ -799,9 +722,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 **Yönerge :** Küme düğümü görüntüleri için otomatik sistem güncelleştirmeleri etkinleştirildi, ancak güncelleştirmelerin uygulandığından emin olmak için küme düğümlerini düzenli aralıklarla yeniden başlatmanız gerekir.
 
-
 Microsoft, temel Azure HDInsight düğüm görüntülerini korumak ve güncellemek için.
-
 
 HDInsight kümeleri için işletim sistemi yama zamanlaması nasıl yapılandırılabilen:
 
@@ -815,11 +736,9 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
 
 **Yönerge**: Azure HDInsight kümelerinizi yamalamak için komut dosyası eylemlerini veya diğer mekanizmaları kullanın. Yeni oluşturulan kümeler, en son güvenlik düzeltme eki de dahil olmak üzere her zaman kullanılabilir en son güncelleştirmelere sahip olur.
 
-
 Linux tabanlı Azure HDInsight kümeleri için işletim sistemi yama zamanlaması nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-os-patching
-
 
 Komut dosyası eylemleri nasıl kullanılır:
 
@@ -853,19 +772,15 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 **Yönlendirme**: Aboneliğinizde Azure HDInsight kümeleri de dahil olmak üzere tüm kaynakları (bilgi işlem, depolama, ağ, bağlantı noktaları ve protokoller vb.) sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın.  Kiracınızda uygun (okuma) izinlere sahip olduğundan ve aboneliklerinizdeki tüm Azure aboneliklerinin yanı sıra kaynakları sıralayabildiğinizden emin olun.
 
+Kaynak Grafiği aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Olarak Azure Kaynak Yöneticisi kaynaklarının oluşturulması ve kullanılması önerilir.
 
-Azure Kaynak Grafiği aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Olarak Azure Kaynak Yöneticisi kaynaklarının oluşturulması ve kullanılması önerilir.
-
-
-Azure Kaynak Grafiği ile sorgu oluşturma:
+Azure Graph ile sorgu oluşturma:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
 
 Azure Aboneliklerinizi görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
 
 Azure RBAC'ı anlayın:
 
@@ -879,7 +794,6 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Yönerge**: Meta verileri mantıksal olarak taksonomi olarak düzenlemek için meta veriler veren Azure kaynaklarına etiketler uygulayın.
 
-
 Etiketler oluşturma ve kullanma:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -892,16 +806,13 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Rehberlik**: Varlıkları düzenlemek ve izlemek için etiketlemeyi, yönetim gruplarını ve uygun olduğu durumlarda ayrı abonelikleri kullanın. Envanteri düzenli olarak uzlaştırın ve yetkisiz kaynakların abonelikten zamanında silindiğinden emin olun.
 
-
 Ek Azure abonelikleri oluşturma:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-
 Yönetim Grupları nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
-
 
 Etiketler oluşturma ve kullanma:
 
@@ -924,13 +835,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 **Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkesini kullanın:
 
 - İzin verilmeyen kaynak türleri
+
 - İzin verilen kaynak türleri
 
 Aboneliğinizdeki kaynakları sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Kaynak Grafiği ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
@@ -949,8 +862,7 @@ Azure Kaynak Grafiği ile sorgu oluşturma:https://docs.microsoft.com/azure/gove
 
 **Yönlendirme**: Aboneliğinizde Azure HDInsight kümeleri de dahil olmak üzere tüm kaynakları (bilgi işlem, depolama, ağ, bağlantı noktaları ve protokoller vb.) sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın.  Keşfettiğiniz onaylanmamış Azure kaynaklarını kaldırın. Azure HDInsight küme düğümleri için, onaylanmamış yazılımları kaldırmak veya uyarmak için bir üçüncü taraf çözümü uygulayın.
 
-
-Azure Kaynak Grafiği ile sorgu oluşturma:
+Azure Graph ile sorgu oluşturma:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -962,6 +874,7 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Kılavuz :** Azure HDInsight küme düğümleri için, yetkisiz yazılımın yürütülmesini önlemek için bir üçüncü taraf çözümü uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -971,13 +884,13 @@ https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 **Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkesini kullanın:
 
 - İzin verilmeyen kaynak türleri
-- İzin verilen kaynak türleri
 
+- İzin verilen kaynak türleri
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -987,6 +900,7 @@ Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.mic
 
 **Kılavuz**: Azure HDInsight küme düğümleri için, yetkisiz dosya türlerinin yürütülmesini önlemek için bir üçüncü taraf çözümü uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -995,8 +909,8 @@ Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.mic
 
 **Yönerge**: "Microsoft Azure Yönetimi" Uygulaması için "Erişimi engelle" yapılandırmayı yaparak kullanıcıların Azure Kaynak Yöneticisi ile etkileşim edebilmelerini sınırlamak için Azure Koşullu Erişim'i kullanın.
 
-
 Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1026,11 +940,9 @@ Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapıla
 
 **Yönerge**: HDInsight kümenizin ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ad alanında Azure İlkesi takma adlarını kullanın.
 
-
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
@@ -1044,6 +956,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Rehberlik**: Azure HDInsight İşletim Sistemi Görüntüleri Microsoft tarafından yönetilir ve korunur. Küme düğümlerinizin işletim sistemi için güvenli yapılandırmaları uygulamaktan sorumlu müşteri. 
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -1052,11 +965,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Yol gösterici**: Azure HDInsight kümeleriniz ve ilgili kaynaklarınız için güvenli ayarlar uygulamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın.
 
-
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
 
 Azure İlke Efektlerini Anlama:
 
@@ -1070,6 +981,7 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Rehberlik**: Azure HDInsight İşletim Sistemi Görüntüleri Microsoft tarafından yönetilir ve korunur. İşletim sistemi düzeyinde durum yapılandırması uygulamaktan sorumlu müşteri.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Paylaşılan
@@ -1078,13 +990,9 @@ https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 **Yönlendirme**: Özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure DevOps veya Azure Repos'unu kullanın.
 
-
-
 Azure DevOps'lerde kod depolama:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
-
 
 Azure Depobelgeleri:
 
@@ -1106,8 +1014,6 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Yönerge**: Sistem yapılandırmalarını uyarmak, denetlemek ve uygulamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ad alanında Azure İlkesi takma adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve ardışık hatlar geliştirin.
 
-
-
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
@@ -1128,11 +1034,9 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Yönerge**: HDInsight kümenizin yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ad alanında Azure İlkesi takma adlarını kullanın.
 
-
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
@@ -1154,17 +1058,13 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Rehberlik**: Azure HDInsight, Apache Kafka için Bring Your Own Key (BYOK) desteğini içerir. Bu özellik, verileri istirahatte şifrelemek için kullanılan anahtarlara sahip olabilirsiniz ve bunları yönetmenize olanak tanır.
 
-
 Azure HDInsight'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunur. Varsayılan olarak, bu diskler üzerindeki veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. BYOK'u etkinleştiriseniz, Azure HDInsight'ın azure key vault'u kullanarak kullanması ve yönetmesi için şifreleme anahtarını sağlarsınız.
 
-
 Anahtar Kasası, küme depolama (Azure Depolama Hesapları ve Azure Veri Gölü Depolama) için anahtarları yönetmek için Azure HDInsight dağıtımları ile de kullanılabilir
-
 
 Azure HDInsight'ta Apache Kafka için kendi anahtarınızı nasıl getireniz:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
-
 
 Azure Depolama Hesapları için şifreleme anahtarlarını yönetme:
 
@@ -1178,7 +1078,6 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 **Yönlendirme**: Yönetilen kimlikler, kümelerinizin Azure Active Directory etki alanı hizmetlerine erişmesine, Azure Key Vault'a erişmesine veya Azure Veri Gölü Depolama Gen2'deki dosyalara erişmesine izin vermek için Azure HDInsight'ta kullanılabilir.
 
-
 Azure HDInsight ile Yönetilen Kimlikleri Anlayın:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities
@@ -1190,7 +1089,6 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-managed-identities
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: İstenmeden kimlik bilgisi maruziyetini ortadan kaldırın
 
 **Kılavuz**: Azure HDInsight dağıtımınızla ilgili herhangi bir kod kullanıyorsanız, kod içindeki kimlik bilgilerini tanımlamak için Kimlik Bilgisi Tarayıcısı'nı uygulayabilirsiniz. Kimlik Bilgisi Tarayıcısı, keşfedilen kimlik bilgilerinin Azure Anahtar Kasası gibi daha güvenli konumlara taşınmasını da teşvik edecektir. 
-
 
 Kimlik Bilgisi Tarayıcı nasıl kurulturur:
 
@@ -1208,7 +1106,6 @@ https://secdevtools.azurewebsites.net/helpcredscan.html
 
 **Yönlendirme**: Azure HDInsight, cluster düğüm görüntüleri için önceden yüklenmiş ve etkin leştirilmiş Clamscan ile birlikte gelir, ancak yazılımı yönetmeniz ve Clamscan'ın ürettiği günlükleri el ile toplamanız/izlemeniz gerekir.
 
-
 Azure HDInsight için Clamscan'ı anlayın:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificates
@@ -1221,9 +1118,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **Yol gösterici**: Azure hizmetlerini destekleyen temel ana bilgisayarda Microsoft Antimalware etkindir, ancak müşteri içeriğinde çalışmaz.
 
-
 Veri Gölü Depolama, Blob Depolama, vb. gibi Azure HDInsight küme dağıtımınızla ilgili tüm Azure kaynaklarına yüklenen dosyaları önceden tarayabilirsiniz. Microsoft bu gibi durumlarda müşteri verilerine erişemez.
-
 
 Azure Bulut Hizmetleri ve Sanal Makineler için Microsoft Kötü Amaçlı Yazılımdan Koruma'yı anlayın:
 
@@ -1236,7 +1131,6 @@ Azure Bulut Hizmetleri ve Sanal Makineler için Microsoft Kötü Amaçlı Yazıl
 ### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Kötü amaçlı yazılımdan koruma yazılımının ve imzalarının güncelleştirilmesini sağlayın
 
 **Yönlendirme**: Azure HDInsight, cluster düğüm görüntüleri için önceden yüklenmiş ve etkin leştirilmiş Clamscan ile birlikte gelir. Clamscan motor ve tanım güncelleştirmelerini otomatik olarak gerçekleştirir, ancak günlüklerin toplanması ve yönetiminin el ile yapılması gerekir.
-
 
 Azure Azure HDInsight için Clamscan'ı anlayın:
 
@@ -1254,11 +1148,9 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-faq#security-and-certificat
 
 **Yönlendirme**: HDInsight küme veri deposu için bir Azure Depolama Hesabı kullanırken, uygun artıklık seçeneğini (LRS,ZRS, GRS, RA-GRS) seçin.  Azure HDInsight küme veri deposu için bir Azure SQL Veritabanı kullanırken, Etkin Coğrafi çoğaltmayı yapılandırın.
 
-
 Azure Depolama Hesapları için depolama artıklığı nasıl yapılandırılmaz:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
 
 Azure SQL Veritabanları için artıklık nasıl yapılandırılır:
 
@@ -1272,16 +1164,13 @@ https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replicatio
 
 **Yönlendirme**: Azure HDInsight küme veri deposu için Bir Azure Depolama Hesabı kullanırken, uygun artıklık seçeneğini (LRS, ZRS, GRS, RA-GRS) seçin. Azure HDInsight dağıtımınızın herhangi bir bölümü için Azure Key Vault kullanıyorsanız, anahtarlarınızın yedekolduğundan emin olun.
 
-
 Azure HDInsight kümeniz için depolama seçenekleri seçin:
 
 https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-compare-storage-options
 
-
 Azure Depolama Hesapları için depolama artıklığı nasıl yapılandırılmaz:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
 
 Azure'da Key Vault tuşlarını yedekleme:
 
@@ -1295,11 +1184,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 **Kılavuz**: Azure KEY Vault, Azure HDInsight dağıtımınızda kullanılıyorsa, yedeklenen müşteri yönetilen anahtarlarının geri yüklemesini test edin.
 
-
 Azure HDInsight'ta Apache Kafka için kendi anahtarınızı nasıl getireniz:
 
 https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-byok
-
 
 Azure'da anahtar kasa sıtuşlarını geri yükleme:
 
@@ -1313,10 +1200,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 **Kılavuz**: Azure KEY Vault'unuz Azure HDInsight dağıtımınızda kullanılıyorsa, anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Anahtar Kasası'ndaki Yumuşak Silme'yi etkinleştirin.
 
-
 Azure Anahtar Kasası'nda Yumuşak Silme nasıl etkinleştirilir:
 
-https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete
+https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -1329,8 +1215,6 @@ https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete
 ### <a name="101-create-an-incident-response-guide"></a>10.1: Olay yanıt kılavuzu oluşturma
 
 **Rehberlik**: Personelin rollerini ve olay işleme/yönetim aşamalarını tanımlayan yazılı olay yanıt planları olduğundan emin olun.
-
-
 
 Azure Güvenlik Merkezi'nde İş Akışı Otomasyonları nasıl yapılandırılabilen:
 
@@ -1360,8 +1244,6 @@ https://docs.microsoft.com/azure/security-center/security-center-planning-and-op
 
 **Kılavuz :** Microsoft Güvenlik Yanıt Merkezi (MSRC) verilerinize yasadışı veya yetkisiz bir taraf tarafından erişildiğini tespit ederse, güvenlik olayı iletişim bilgileri Microsoft tarafından sizinle iletişim kurmak için kullanılır.
 
-
-
 Azure Güvenlik Merkezi Güvenlik Kişisi nasıl ayarlanır:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
@@ -1374,13 +1256,9 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 **Kılavuz**: Sürekli Dışa Aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışa aktarın. Sürekli Dışa Aktarma, uyarı ve önerileri el ile veya sürekli olarak dışa aktarmanıza olanak tanır. Sentinel uyarılarını yayınlamak için Azure Güvenlik Merkezi veri konektörünü kullanabilirsiniz.
 
-
-
 Sürekli dışa aktarma nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
-
-
 
 Uyarıları Azure Sentinel'e nasıl aktarın:
 
@@ -1393,8 +1271,6 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Güvenlik uyarılarına yanıtı otomatikleştirin
 
 **Yönerge**: Güvenlik uyarıları ve önerileri nde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek için Azure Güvenlik Merkezi'ndeki İş Akışı Otomasyonu özelliğini kullanın.
-
-
 
 İş Akışı Otomasyonu ve Mantık Uygulamaları nasıl yapılandırılabilen:
 
@@ -1413,8 +1289,6 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 **Kılavuz**: Penetrasyon Testlerinizin Microsoft ilkelerini ihlal etmediğini sağlamak için lütfen Microsoft Etkileşim Kuralları'na uyun:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
-
-
 
 Microsoft'un stratejisi ve Red Teaming ve Microsoft yönetilen bulut altyapısı, hizmetleri ve uygulamalarına karşı canlı site penetrasyon testi nin uygulanması hakkında daha fazla bilgiyi burada bulabilirsiniz:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 

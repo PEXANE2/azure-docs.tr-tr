@@ -1,6 +1,6 @@
 ---
-title: Azure Otomasyon Durumu Yapılandırması Genel Bakış
-description: Azure Otomasyon Durumu Yapılandırmasına (DSC), terimlerine ve bilinen sorunlara Genel Bakış
+title: Durum Yapılandırmasına genel bakış
+description: Azure Otomasyon Durumu Yapılandırmasına (DSC), terimlerine ve bilinen sorunlara genel bakış
 keywords: powershell dsc, istenilen durum yapılandırması, powershell dsc azure
 services: automation
 ms.service: automation
@@ -10,14 +10,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 46cf0d6a12ffbc836db7bd79c0f2738a94e23085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283200"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010265"
 ---
-# <a name="azure-automation-state-configuration-overview"></a>Azure Otomasyon Durumu Yapılandırması Genel Bakış
+# <a name="state-configuration-overview"></a>Durum Yapılandırmasına genel bakış
 
 Azure Otomasyon Durumu Yapılandırması, PowerShell İstenen Durum Yapılandırması (DSC) [yapılandırmalarını](/powershell/scripting/dsc/configurations/configurations)yazmanıza, yönetmenize ve derlemenize olanak tanıyan bir Azure hizmetidir. Hizmet ayrıca [DSC Kaynaklarını](/powershell/scripting/dsc/resources/resources)da içeri zabıta eder ve tümü bulutta hedef düğümlere yapılandırmalar atar.
 

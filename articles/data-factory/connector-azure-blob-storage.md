@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 214b2868f9733dfc6790c492543fb86a832f18b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.openlocfilehash: dd13a08b3c2f63baf509efbb730032edd4eba61a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065503"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011557"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Blob depolamasında verileri kopyalama ve dönüştürme
 
@@ -25,7 +25,8 @@ ms.locfileid: "80065503"
 
 Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure Blob depolamadan ve Azure Blob depolamasından kopyalanması ve Azure Blob depolamasındaverileri dönüştürmek için Veri Akışı'nın nasıl kullanılacağı özetlenir. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+>[!TIP]
+>Veri gölü veya veri ambarı geçiş senaryosu için, [veri gölünüzden veya veri ambarınızdaki verileri Azure'a geçirmek için Azure Veri Fabrikası'nı kullanın'dan](data-migration-guidance-overview.md)daha fazla bilgi edinin.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -48,7 +49,7 @@ Kopyalama etkinliği için bu Blob depolama bağlayıcısı şunları destekler:
 >[!IMPORTANT]
 >Güvenilen Microsoft hizmetlerinin Azure Depolama güvenlik duvarı ayarlarında **bu depolama hesabı seçeneğine erişmesini** etkinleştiriyorsanız ve Blob Depolama'nıza bağlanmak için Azure tümleştirme çalışma süresini kullanmak istiyorsanız, yönetilen kimlik kimlik [doğrulaması](#managed-identity)kullanmanız gerekir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,7 +65,7 @@ Azure Blob bağlayıcısı aşağıdaki kimlik doğrulama türlerini destekler v
 - [Azure kaynakları kimlik doğrulaması için yönetilen kimlikler](#managed-identity)
 
 >[!NOTE]
->Verileri SQL Veri Ambarı'na yüklemek için PolyBase'i kullanırken, kaynak veya evreleme Blob depolama alanınız Virtual Network bitiş noktasıyla yapılandırıldıysa, PolyBase tarafından gerekli olduğu şekilde yönetilen kimlik doğrulamasını kullanmalı ve sürümle birlikte Kendi kendine barındırılan Tümleştirme Runtime'ı kullanmalısınız 3.18 veya üzeri. Daha fazla yapılandırma ön koşuluyla [yönetilen kimlik kimlik doğrulama](#managed-identity) bölümüne bakın.
+>Verileri SQL Veri Ambarı'na yüklemek için PolyBase'i kullanırken, kaynak veya evreleme Blob depolama alanınız Virtual Network bitiş noktasıyla yapılandırıldıysa, PolyBase tarafından gerekli olduğu şekilde yönetilen kimlik doğrulamasını kullanmalı ve sürüm 3.18 veya üzeri sürümle Kendi kendine barındırılan Tümleştirme Runtime'ı kullanmanız gerekir. Daha fazla yapılandırma ön koşuluyla [yönetilen kimlik kimlik doğrulama](#managed-identity) bölümüne bakın.
 
 >[!NOTE]
 >HDInsights ve Azure Machine Learning etkinlikleri yalnızca Azure Blob depolama hesabı anahtar kimlik doğrulamasını destekler.
@@ -136,11 +137,6 @@ Paylaşılan erişim imzası, depolama hesabınızdaki kaynaklara temsilci eriş
 > [!NOTE]
 >- Veri Fabrikası artık hem **hizmet paylaşılan erişim imzalarını** hem de **hesap paylaşılan erişim imzalarını**destekler. Paylaşılan erişim imzaları hakkında daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni](../storage/common/storage-sas-overview.md)ver.
 >- Daha sonraki veri kümesi yapılandırmasında, klasör yolu kapsayıcı düzeyinden başlayarak mutlak yoldur. SAS URI'nizdeki yolla uyumlu bir yapıya sahip olanı yapılandırmanız gerekir.
-
-> [!TIP]
-> Depolama hesabınız için paylaşılan bir hizmet erişim imzası oluşturmak için aşağıdaki PowerShell komutlarını gerçekleştirebilirsiniz. Yer tutucuları değiştirin ve gerekli izni ver.
-> `$context = New-AzStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
-> `New-AzStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
 Paylaşılan erişim imzası kimlik doğrulamasını kullanmak için aşağıdaki özellikler desteklenir:
 

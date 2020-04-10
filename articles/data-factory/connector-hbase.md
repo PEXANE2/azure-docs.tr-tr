@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 2dfb2a7766ddbda5dd27d5b4fd6745836ad1dc75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05f13bc668710e93c492206629f1d09ecb4e22f4
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929368"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992207"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak HBase'ten veri kopyalama 
 
@@ -56,9 +56,9 @@ Aşağıdaki özellikler HBase bağlantılı hizmet için desteklenir:
 | authenticationType | HBase sunucusuna bağlanmak için kullanılacak kimlik doğrulama mekanizması. <br/>İzin verilen değerler şunlardır: **Anonim**, **Temel** | Evet |
 | kullanıcı adı | HBase örneğine bağlanmak için kullanılan kullanıcı adı.  | Hayır |
 | password | Kullanıcı adına karşılık gelen parola. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| sağlarSsl | Sunucuya bağlantıların SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| güvenilirCertPath | SSL üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de SSL kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
-| allowHostNameCNMismatch | SSL üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde CA tarafından verilmiş bir SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| sağlarSsl | Sunucuya bağlantıların TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| güvenilirCertPath | TLS üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de TLS kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
+| allowHostNameCNMismatch | TLS üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde CA tarafından verilmiş bir TLS/SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | izinSelfSignedServerCert | Sunucudan kendi imzalı sertifikalara izin verip vermemeyi belirtir. Varsayılan değer false'tur.  | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 

@@ -9,21 +9,21 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 38c739ecdbfd54627d4fc45f807705e32dc94f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 879b971511238ab02a43896edaed074b8b0b447d
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086147"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007878"
 ---
 |Dil                                 |1.x         |2.x| 3.x |
 |-----------------------------------------|------------|---| --- |
-|[C #](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Çerçeve 4.7)|GA (.NET Çekirdek 2.2)| GA (.NET Çekirdek 3.1) |
-|[Javascript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (Düğüm 6)|GA (Düğüm 8 & 10)| GA (Düğüm 10 & 12) |
+|[C#](../articles/azure-functions/functions-reference-csharp.md)|GA (.NET Çerçeve 4.7)|GA (.NET Çekirdek 2.2)| GA (.NET Çekirdek 3.1) |
+|[JavaScript](../articles/azure-functions/functions-reference-node.md#node-version)|GA (Düğüm 6)|GA (Düğüm 8 & 10)| GA (Düğüm 10 & 12) |
 |[F#](../articles/azure-functions/functions-reference-fsharp.md)|GA (.NET Çerçeve 4.7)|GA (.NET Çekirdek 2.2)| GA (.NET Çekirdek 3.1) |
 |[Java](../articles/azure-functions/functions-reference-java.md)|Yok|GA (Java 8)| GA (Java 8)|
-|[Powershell](../articles/azure-functions/functions-reference-powershell.md) |Yok|GA (PowerShell Çekirdek 6)| GA (PowerShell Çekirdek 6)|
-|[Python](../articles/azure-functions/functions-reference-python.md)#python sürümü|Yok|GA (Python 3.6 & 3.7)| GA (Python 3.6, 3.7, & 3.8)|
+|[PowerShell](../articles/azure-functions/functions-reference-powershell.md) |Yok|GA (PowerShell Çekirdek 6)| GA (PowerShell Çekirdek 6)|
+|[Python](../articles/azure-functions/functions-reference-python.md#python-version)|Yok|GA (Python 3.6 & 3.7)| GA (Python 3.6, 3.7, & 3.8)|
 |[TypeScript](../articles/azure-functions/functions-reference-node.md#typescript) |Yok|GA<sup>1</sup>| GA<sup>1</sup> |
 
 

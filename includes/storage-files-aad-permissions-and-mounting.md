@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 12/12/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 8f71c039aa6666cec1b871a158d84a6f5a2a107c
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666835"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011438"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Bir kimliğe erişim izinleri atama
 
-Kimlik tabanlı kimlik doğrulamayla Azure Dosyaları kaynaklarına erişmek için, bir kimliğin (kullanıcı, grup veya hizmet sorumlusu) paylaşım düzeyinde gerekli izinlere sahip olması gerekir. Bu işlem, belirli bir kullanıcının dosya paylaşımına sahip olduğu erişim türünü belirttiğiniz Windows paylaşım izinlerini belirtmeye benzer. Genel öneri, bir takım veya gruba üst düzey erişim yönetimi için hisse düzeyi iznini kullanmak, ardından dizin/dosya düzeyinde parçalı erişim denetimi için NTFS izinlerinden yararlanmaktır. Bu bölümdeki kılavuz, bir kimlik için dosya paylaşımı için okuma, yazma veya silme izinlerinin nasıl atayılabildiğini gösterir. 
+Kimlik tabanlı kimlik doğrulamayla Azure Dosyaları kaynaklarına erişmek için, bir kimliğin (kullanıcı, grup veya hizmet sorumlusu) paylaşım düzeyinde gerekli izinlere sahip olması gerekir. Bu işlem, belirli bir kullanıcının dosya paylaşımına sahip olduğu erişim türünü belirttiğiniz Windows paylaşım izinlerini belirtmeye benzer. Bu bölümdeki kılavuz, bir kimlik için dosya paylaşımı için okuma, yazma veya silme izinlerinin nasıl atayılabildiğini gösterir. 
 
 Kullanıcılara paylaşım düzeyi izinleri vermek için üç Azure yerleşik rolü sunduk:
 
@@ -32,6 +32,8 @@ Yerleşik rolleri bir kullanıcının Azure AD kimliğine paylaşım düzeyi izi
 
 > [!NOTE]
 > AD kimlik doğrulaması için REKLAM'ınızı kullanmayı planlıyorsanız, REKLAM kimlik bilgilerinizi Azure AD ile eşitlemeyi unutmayın. AD'den Azure AD'ye parola karma eşitleme isteğe bağlıdır. AD'den senkronize edilen Azure AD kimliğine hisse düzeyi izni verilir.
+
+Genel öneri, bir kullanıcı ve kimlik grubunu temsil eden bir REKLAM grubuna üst düzey erişim yönetimi için hisse düzeyi iznini kullanmak ve ardından dizin/dosya düzeyinde parçalı erişim denetimi için NTFS izinlerinden yararlanmaktır. 
 
 #### <a name="azure-portal"></a>Azure portal
 [Azure portalını](https://portal.azure.com)kullanarak bir Azure REKLAM kimliğine RBAC rolü atamak için aşağıdaki adımları izleyin:

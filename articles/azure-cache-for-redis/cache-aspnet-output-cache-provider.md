@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: af003f1f0422c2351bcdf9b0c0010e38785c0344
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530334"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010214"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Redis için Azure Önbelleği için ASP.NET Çıktı Önbelleği Sağlayıcısı
 
@@ -54,9 +54,9 @@ NuGet paketi indirir ve gerekli montaj referansları ekler ve web.config dosyan�
 | Öznitelik | Tür | Varsayılan | Açıklama |
 | --------- | ---- | ------- | ----------- |
 | *Ana bilgisayar* | string | "localhost" | Redis sunucu IP adresi veya ana bilgisayar adı |
-| *Bağlantı noktası* | pozitif tamsayı | 6379 (SSL dışı)<br/>6380 (SSL) | Redis sunucu bağlantı noktası |
+| *Bağlantı noktası* | pozitif tamsayı | 6379 (TLS/SSL dışı)<br/>6380 (TLS/SSL) | Redis sunucu bağlantı noktası |
 | *Accesskey* | string | "" | Redis yetkilendirmesi etkinleştirildiğinde Redis sunucu parolası. Değer varsayılan olarak boş dizedir, bu da oturum durumu sağlayıcısının Redis sunucusuna bağlanırken parola kullanmayamayacağı anlamına gelir. **Redis sunucunuz Azure Redis Önbelleği gibi herkese açık bir ağdaysa, güvenliği artırmak ve güvenli bir parola sağlamak için Redis yetkilendirmesini etkinleştirdiğinden emin olun.** |
-| *Ssl* | boole | **False** | SSL üzerinden Redis sunucusuna bağlanmak ister. Redis kutunun dışında SSL desteklemiyor, çünkü bu değer varsayılan olarak **yanlıştır.** **SSL'yi kutunun dışında destekleyen Azure Redis Önbelleği kullanıyorsanız, güvenliği artırmak için bunu doğru ayarladığınızdan emin olun.**<br/><br/>SSL olmayan bağlantı noktasın yeni önbellekler için varsayılan olarak devre dışı bırakılmıştır. SSL bağlantı noktasını kullanmak için bu ayarın **doğru** olduğunu belirtin. SSL olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, önbellek konusunu [Yapılandır'daki](cache-configure.md) [Erişim Bağlantı Noktaları](cache-configure.md#access-ports) bölümüne bakın. |
+| *Ssl* | boole | **False** | TLS üzerinden Redis sunucusuna bağlanmak ister. Redis tls'yi kutunun dışında desteklemediği için bu değer varsayılan olarak **yanlıştır.** **SSL'yi kutunun dışında destekleyen Azure Redis Önbelleği kullanıyorsanız, güvenliği artırmak için bunu doğru ayarladığınızdan emin olun.**<br/><br/>TLS olmayan bağlantı noktası, yeni önbellekler için varsayılan olarak devre dışı bırakılır. TLS bağlantı noktasını kullanmak için bu ayarın **doğru** olduğunu belirtin. TLS olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, önbellek konusunu [Yapılandır'daki](cache-configure.md) [Erişim Bağlantı Noktaları](cache-configure.md#access-ports) bölümüne bakın. |
 | *databaseIdNumber* | pozitif tamsayı | 0 | *Bu öznitelik yalnızca web.config veya AppSettings üzerinden belirtilebilir.*<br/><br/>Hangi Redis veritabanının kullanılacağını belirtin. |
 | *bağlantıTimeoutInMilliseconds* | pozitif tamsayı | StackExchange.Redis tarafından sağlanan | StackExchange.Redis.ConnectionMultiplexer oluştururken *ConnectTimeout* ayarlamak için kullanılır. |
 | *operationTimeoutInMilliseconds* | pozitif tamsayı | StackExchange.Redis tarafından sağlanan | StackExchange.Redis.ConnectionMultiplexer oluştururken *SyncTimeout* ayarlamak için kullanılır. |

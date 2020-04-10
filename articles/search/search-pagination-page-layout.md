@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656005"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998389"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da arama sonuçlarıyla çalışma
 
@@ -94,7 +94,11 @@ Başka bir seçenek özel bir [puanlama profili](index-add-scoring-profiles.md)k
 
 Hit vurgulama, sonuç olarak eşleşen terime uygulanan metin biçimlendirme (kalın veya sarı vurgular gibi) anlamına gelir ve bu da eşleşmeyi fark etmeyi kolaylaştırır. Hit vurgulama yönergeleri sorgu [isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)sağlanır. Arama motoru eşleşen terimi etiketlere dahil `highlightPreTag` `highlightPostTag`eder ve kodunuz yanıtı işler (örneğin, kalın bir yazı tipi uygular).
 
-Biçimlendirme tüm terim sorgularına uygulanır. Aşağıdaki örnekte, Açıklama alanı içinde bulunan "kumlu", "kum", "plajlar", "plaj" terimleri vurgulamak için etiketlenir. Bulanık arama veya joker karakter araması gibi, motorda sorgu genişletmesi ile sonuçlanan kısmi terimlerdeki sorgular, isabet vurgulamayı kullanamaz.
+Biçimlendirme tüm terim sorgularına uygulanır. Aşağıdaki örnekte, Açıklama alanı içinde bulunan "kumlu", "kum", "plajlar", "plaj" terimleri vurgulamak için etiketlenir. Bulanık ve joker karakter araması gibi motorda sorgu genişletmesini tetikleyen sorguların isabet vurgulama desteği sınırlıdır.
+
+```http
+GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
+```
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 

@@ -7,19 +7,25 @@ ms.topic: reference
 ms.date: 04/06/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 846e8da889e3913c4a8eaab7808495bbd8afad29
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 80e38893d764f35511793d8b31f596dcbf16dd42
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754671"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991901"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor ile desteklenen ölçümler
 
 > [!NOTE]
 > Bu liste büyük ölçüde Azure Monitor Ölçümleri REST API'sinden otomatik olarak oluşturulur. Github üzerinden bu listede yapılan herhangi bir değişiklik uyarı olmadan üzerine yazılabilir. Kalıcı güncelleştirmelerin nasıl yapılacağını öğrenmek için bu makalenin yazarına başvurun.
 
-Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya PowerShell veya CLI kullanarak sorgulamak gibi ölçümlerle etkileşim kurmanın çeşitli yollarını sağlar. Aşağıda, Şu anda Azure Monitor'un metrik ardışık boru hattıyla kullanılabilen tüm ölçümlerin tam listesi verilmiştir. Diğer ölçümler portalda veya eski API'ler kullanılarak kullanılabilir. Aşağıdaki liste yalnızca birleştirilmiş Azure Monitor metrik ardışık ardışık hattını kullanarak kullanılabilen ölçümleri içerir. Ölçümler ad alanına göre düzenlenir. Hizmetlerin listesi ve bunlara ait ad alanları [için Azure hizmetleri için Kaynak sağlayıcılarına](../../azure-resource-manager/management/azure-services-resource-providers.md)bakın. Bu ölçümleri programlı olarak sorgulamak ve bunlara erişmek için lütfen [2018-01-01 api sürümünü](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) kullanın
+Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya PowerShell veya CLI kullanarak sorgulamak gibi ölçümlerle etkileşim kurmanın çeşitli yollarını sağlar. 
+
+Bu makale, Şu anda Azure Monitor'un birleştirilmiş metrik ardışık boru hattıyla kullanılabilen tüm platform (yani otomatik olarak toplanan) ölçümlerin tam listesidir. Liste en son 27 Mart 2020'de güncellendi. Bu tarihten sonra değiştirilen veya eklenen ölçümler aşağıda görünmeyebilir. Programlı olarak ölçüm listesini sorgulamak ve erişim için lütfen [2018-01-01 api sürümünü](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) kullanın
+
+Diğer ölçümler portalda veya eski API'ler kullanılarak kullanılabilir. Azure Sanal Makineleri, Hizmet Kumaşı ve Bulut Hizmetleri'nde çalışan konuk işletim sistemi (konuk işletim sistemi) ölçümleri burada **listelenmez.** Bunlar, işletim sisteminin bir parçası olarak çalışan bir veya daha fazla aracı aracılığıyla toplanmalıdır. Aracı ölçümlerini, şu anda genel önizlemede bulunan [özel ölçümler](metrics-custom-overview.md) API'sini kullanarak platform ölçümleri veritabanına gönderebilirsiniz. Daha sonra grafik, uyarı ve aksi platform ölçümleri gibi konuk işletim sistemi ölçümleri kullanabilirsiniz. Daha fazla bilgi için Bkz. [İzleme Aracıları Genel Bakış.](agents-overview.md)    
+
+Ölçümler ad alanına göre düzenlenir. Hizmetlerin listesi ve bunlara ait ad alanları [için Azure hizmetleri için Kaynak sağlayıcılarına](../../azure-resource-manager/management/azure-services-resource-providers.md)bakın. 
 
 > [!NOTE]
 > Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır.
@@ -1256,7 +1262,7 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |istekleri/sayısı|Sunucu istekleri|Sayı|Sayı|HTTP isteklerinin sayısı tamamlandı.|istek/performansKova,istek/sonuçKodu,işlem/sentetik,bulut/roleInstance,request/success,cloud/roleName|
 |istekleri/başarısız|Başarısız istekler|Sayı|Sayı|Başarısız olarak işaretlenmiş HTTP isteklerisayısı. Çoğu durumda bu bir yanıt kodu >= 400 ve 401 eşit olmayan isteklerdir.|istek/performansKova,istek/sonuçKodu,istek/başarı,işlem/sentetik,bulut/rolInstance,cloud/roleName|
 |istekler/oran|Sunucu istek oranı|CountPerSecond|Ortalama|Sunucu isteklerinin saniyede oranı|istek/performansKova,istek/sonuçKodu,işlem/sentetik,bulut/roleInstance,request/success,cloud/roleName|
-|özel durumlar/sayım|Özel durumlar|Sayı|Sayı|Tüm yakalanmamış özel durumlar için birleştirilmiş sayı.|bulut/roleName,bulut/roleInstance,istemci/tür|
+|özel durumlar/sayım|Özel Durumlar|Sayı|Sayı|Tüm yakalanmamış özel durumlar için birleştirilmiş sayı.|bulut/roleName,bulut/roleInstance,istemci/tür|
 |özel durumlar/tarayıcı|Tarayıcı özel durumları|Sayı|Sayı|Tarayıcıya atılan yakalanmamış özel durumlar sayısı.|istemci/isServer,bulut/roleName|
 |özel durumlar/sunucu|Sunucu özel durumları|Sayı|Sayı|Sunucu uygulamasına atılan yakalanmamış özel durumlar sayısı.|istemci/isServer,cloud/roleName,cloud/roleInstance|
 |izler/sayım|İzlemeler|Sayı|Sayı|Belge sayısını izleme|trace/önemDüzeyi,çalışma/sentetik,bulut/roleName,bulut/roleInstance|
@@ -1844,7 +1850,7 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |Average_Bytes Toplam/sn|Bayt Toplam/sn|Sayı|Ortalama|Average_Bytes Toplam/sn|Bilgisayar,ObjectName,InstanceName,Counterpath,SourceSystem|
 |Average_Processor Sıra Uzunluğu|İşlemci Sıra Uzunluğu|Sayı|Ortalama|Average_Processor Sıra Uzunluğu|Bilgisayar,ObjectName,InstanceName,Counterpath,SourceSystem|
 |Sinyal|Sinyal|Sayı|Toplam|Sinyal|Bilgisayar, OSType,Sürüm, SourceComputerid|
-|Güncelleştirme|Güncelleştirme|Sayı|Ortalama|Güncelleştirme|Bilgisayar, Ürün, Sınıflandırma, Güncelleme Durumu, İsteğe Bağlı, Onaylı|
+|Güncelleştir|Güncelleştir|Sayı|Ortalama|Güncelleştir|Bilgisayar, Ürün, Sınıflandırma, Güncelleme Durumu, İsteğe Bağlı, Onaylı|
 |Olay|Olay|Sayı|Ortalama|Olay|Kaynak,EventLog,Bilgisayar,EventKategori,EventLevel,EventLevelName,EventID|
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft.Peering/peeringServices

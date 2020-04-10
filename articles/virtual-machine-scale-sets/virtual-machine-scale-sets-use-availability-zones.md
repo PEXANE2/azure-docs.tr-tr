@@ -1,20 +1,20 @@
 ---
 title: Kullanılabilirlik Bölgeleri kullanan bir Azure ölçeği kümesi oluşturma
 description: Kesintilere karşı daha fazla fazlalık için Kullanılabilirlik Bölgelerini kullanan Azure sanal makine ölçeği kümelerini nasıl oluşturabilirsiniz öğrenin
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.author: cynthn
-ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: c8795f46e47b2ab43898f6f436b9ee6026a22fa7
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76274418"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011574"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Kullanılabilirlik Bölgeleri kullanan sanal makine ölçeği kümesi oluşturma
 
@@ -39,7 +39,7 @@ Bir ölçek kümesi dağıttığınızda, Kullanılabilirlik Bölgesi başına t
 
 ### <a name="zone-balancing"></a>Bölge dengeleme
 
-Son olarak, birden çok bölgede dağıtılan ölçek kümeleri için "en iyi çaba bölgesi dengesi" veya "sıkı bölge dengesi" seçeneğini zedeleme seçeneğiniz de vardır. Ölçek kümesi için diğer tüm bölgelerde her bölge aynı sayıda\\VM veya + - 1 VM ise bir ölçek kümesi "dengeli" olarak kabul edilir. Örnek:
+Son olarak, birden çok bölgede dağıtılan ölçek kümeleri için "en iyi çaba bölgesi dengesi" veya "sıkı bölge dengesi" seçeneğini zedeleme seçeneğiniz de vardır. Ölçek kümesi için diğer tüm bölgelerde her bölge aynı sayıda\\VM veya + - 1 VM ise bir ölçek kümesi "dengeli" olarak kabul edilir. Örneğin:
 
 - Bölge 1'de 2 VM, bölge 2'de 3 VM ve bölge 3'teki 3 VM'den bir ölçek dengeli olarak kabul edilir. Farklı bir VM sayısına sahip tek bir bölge vardır ve diğer bölgelere göre yalnızca 1 bölge daha azdır. 
 - Bölge 1'de 1 VM, bölge 2'de 3 VM ve bölge 3'teki 3 VM'li bir ölçek dengesiz olarak kabul edilir. Bölge 1'de 2 ve 3.
@@ -58,10 +58,10 @@ Tek bir bölgede bir ölçek kümesi oluşturduğunuzda, tüm bu VM örneklerini
 
 Kullanılabilirlik Bölgelerini kullanmak için ölçek kümenizin desteklenen bir [Azure bölgesinde](../availability-zones/az-overview.md#services-support-by-region)oluşturulması gerekir. Aşağıdaki yöntemlerden biriyle Kullanılabilirlik Bölgeleri kullanan bir ölçek kümesi oluşturabilirsiniz:
 
-- [Azure portalında](#use-the-azure-portal)
+- [Azure portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Kaynak Yöneticisi şablonları](#use-azure-resource-manager-templates)
+- [Azure Resource Manager şablonları](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 

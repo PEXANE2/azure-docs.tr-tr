@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca913a4c197e04e20c962c4a4a7a1e479a3cdf92
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867361"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990897"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri REST bitiş noktasından kopyalama
 
@@ -46,7 +46,7 @@ Verileri bir REST kaynağından desteklenen herhangi bir lavabo veri deposuna ko
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,7 +60,7 @@ REST bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 |:--- |:--- |:--- |
 | type | **Tür** özelliği **RestService**olarak ayarlanmalıdır. | Evet |
 | url | REST hizmetinin temel URL'si. | Evet |
-| enableServerCertificateValidation | Bitiş noktasına bağlanırken sunucu tarafındaki SSL sertifikasını doğrulayıp doğrulamayacağı. | Hayır<br /> (varsayılan **değer doğrudur)** |
+| enableServerCertificateValidation | Bitiş noktasına bağlanırken sunucu tarafındaki TLS/SSL sertifikasını doğrulayıp doğrulamayacağı. | Hayır<br /> (varsayılan **değer doğrudur)** |
 | authenticationType | REST hizmetine bağlanmak için kullanılan kimlik doğrulama türü. İzin verilen değerler **Anonim**, **Temel**, **AadServicePrincipal** ve **ManagedServiceIdentity'dir.** Daha fazla özellik ve örnekler sırasıyla aşağıdaki ilgili bölümlere bakın. | Evet |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, bu özellik varsayılan Azure Tümleştirme Çalışma Zamanı'nı kullanır. |Hayır |
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: aa996ae14276ecf246104d8778fbb6b723448e04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a76150756d87b5f2c1b73b8755500e63cdfe05c9
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931712"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991748"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Salesforce Marketing Cloud'dan veri kopyalama
 
@@ -53,8 +53,8 @@ Salesforce Marketing Cloud bağlantılı hizmet için aşağıdaki özellikler d
 | clientId | Salesforce Marketing Cloud uygulamasıyla ilişkili istemci kimliği.  | Evet |
 | clientSecret | Salesforce Marketing Cloud uygulamasıyla ilişkili istemci sırrı. Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | SSL üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | TLS üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 

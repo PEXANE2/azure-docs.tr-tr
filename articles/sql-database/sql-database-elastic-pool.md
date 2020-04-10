@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 08/06/2019
-ms.openlocfilehash: 8139ed8f4f4799a963a051eed96dd87c4ac38aec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/09/2020
+ms.openlocfilehash: 3252ecb030234e4c5543c07dfb4fc702f850a73e
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981435"
+ms.locfileid: "80998984"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastik havuzlar birden fazla Azure SQL veritabanını yönetmenize ve ölçeklendirmenize yardımcı olur
 
@@ -110,9 +110,9 @@ Havuz için en iyi boyut, havuzdaki tüm veritabanları için gereken toplu kayn
 - Havuzdaki tüm veritabanları tarafından kullanılan maksimum kaynaklar (kaynak modeli seçiminize bağlı olarak maksimum DTUs veya maksimum vCores).
 - Havuzdaki tüm veritabanları tarafından kullanılan en fazla depolama baytı sayısı.
 
-Her kaynak modeli için kullanılabilir hizmet katmanları için [DTU tabanlı satın alma modeline](sql-database-service-tiers-dtu.md) veya [vCore tabanlı satın alma modeline](sql-database-service-tiers-vcore.md)bakın.
+Her kaynak modeli için kullanılabilir hizmet katmanları ve sınırları için [DTU tabanlı satın alma modeline](sql-database-service-tiers-dtu.md) veya [vCore tabanlı satın alma modeline](sql-database-service-tiers-vcore.md)bakın.
 
-Araçları kullanamadığınız durumlarda aşağıdaki adım adım yönergeler bir havuzun tek veritabanlarından daha uygun maliyetli olup olmadığını tahmin etmenize yardımcı olabilir:
+Aşağıdaki adımlar, bir havuzun tek veritabanlarından daha uygun maliyetli olup olmadığını tahmin edebilirsiniz:
 
 1. Havuz için gereken eDT'leri veya vCore'ları aşağıdaki gibi tahmin edin:
 
@@ -126,6 +126,10 @@ Araçları kullanamadığınız durumlarda aşağıdaki adım adım yönergeler 
 3. DTU tabanlı satın alma modeli için, adım 1 ve adım 2 eDTU tahminlerinin daha büyük almak. vCore tabanlı satın alma modeli için, Adım 1 vCore tahmini atın.
 4. SQL [Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/) bakın ve Adım 3'teki tahminden daha büyük en küçük havuz boyutunu bulun.
 5. Adım 5'teki havuz fiyatını, tek veritabanları için uygun işlem boyutlarını kullanma fiyatıyla karşılaştırın.
+
+> [!IMPORTANT]
+> Bir havuzdaki veritabanlarının sayısı desteklenen maksimuma yaklaşıyorsa, [yoğun elastik havuzlarda Kaynak yönetimini](sql-database-elastic-pool-resource-management.md)dikkate almayı unutmayın.
+> 
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Elastik havuzlu diğer SQL Veritabanı özelliklerini kullanma
 
@@ -218,7 +222,7 @@ Daha fazla bilgi için Azure [portalında SQL Veritabanı uyarıları oluşturma
 
 - [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-   Daxko/CSI, geliştirme döngüsünü hızlandırmak ve müşteri hizmetlerini ve performansını artırmak için Azure SQL Veritabanı ile esnek havuzlar kullanır.   
+   Daxko/CSI, geliştirme döngüsünü hızlandırmak ve müşteri hizmetlerini ve performansını artırmak için Azure SQL Veritabanı ile esnek havuzlar kullanır.    
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

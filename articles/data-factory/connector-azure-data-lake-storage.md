@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
-ms.openlocfilehash: 929b9548661fe48fe90a55f0cacef234c3078cda
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a061df302680488377c3006dcef57b818a101d67
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887274"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011540"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Veri Gölü Depolama Gen2'deki verileri kopyalama ve dönüştürme
 
 Azure Veri Gölü Depolama Gen2 (ADLS Gen2), [Azure Blob depolamada](../storage/blobs/storage-blobs-introduction.md)yerleşik büyük veri analitiğine adanmış bir dizi özelliktir. Hem dosya sistemi hem de nesne depolama paradigmalarını kullanarak verilerinizi arabirim de kullanabilirsiniz.
 
 Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure Veri Gölü Deposu Gen2'den ve Azure Veri Gölü Deposu Gen2'den kopyalanması ve Azure Veri Gölü Depolama Gen2'deki verileri dönüştürmek için Veri Akışı'nı nasıl kullanacağı açıklanmaktadır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
+
+>[!TIP]
+>Veri gölü veya veri ambarı geçiş senaryosu için, [veri gölünüzden veya veri ambarınızdaki verileri Azure'a geçirmek için Azure Veri Fabrikası'nı kullanın'dan](data-migration-guidance-overview.md)daha fazla bilgi edinin.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 

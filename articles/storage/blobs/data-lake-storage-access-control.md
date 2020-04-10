@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 192e46fd7f86b6053eaf658fa65e3c6cdfa3a4e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528617"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992224"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'de erişim denetimi
 
@@ -54,7 +54,7 @@ SAS belirteçleri belirteçbir parçası olarak izin verilen izinleri içerir. S
 Bir güvenlik ilkesini dosyalar ve dizinler için erişim düzeyiyle ilişkilendirebilirsiniz. Bu ilişkilendirmeler bir *erişim denetim listesinde (ACL)* yakalanır. Depolama hesabınızdaki her dosya ve dizin bir erişim denetim listesi ne sahiptir.
 
 > [!NOTE]
-> ALA'lar yalnızca aynı kiracıdaki güvenlik ilkeleri için geçerlidir. Konuk kullanıcıyı erişim düzeyiyle ilişkilendiremezsiniz.  
+> ALA'lar yalnızca aynı kiracıdaki güvenlik ilkeleri için geçerlidir. 
 
 Depolama hesabı düzeyinde bir güvenlik ilkesine bir rol atadıysanız, bu güvenlik ilkesinin belirli dosyalara ve dizinlere yüksek erişim hakkı vermek için erişim denetim listelerini kullanabilirsiniz.
 
@@ -67,7 +67,7 @@ Dosya ve dizin düzeyi izinlerini ayarlamak için aşağıdaki makalelerden herh
 
 |||
 |--------|-----------|
-|Azure Storage Gezgini |[Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için Azure Depolama Gezgini'ni kullanın](data-lake-storage-explorer.md#managing-access)|
+|Azure Depolama Gezgini |[Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için Azure Depolama Gezgini'ni kullanın](data-lake-storage-explorer.md#managing-access)|
 |.NET |[Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için .NET'i kullanın](data-lake-storage-directory-file-acl-dotnet.md)|
 |Java|[Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için Java'yı kullanın](data-lake-storage-directory-file-acl-java.md)|
 |Python|[Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için Python'u kullanın](data-lake-storage-directory-file-acl-python.md)|

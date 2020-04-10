@@ -13,12 +13,12 @@ ms.date: 04/12/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: a0a2c5fc971c3f1f3283d95c5617bdf1e88a6a58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd700c787a844fa7538ed198f76ed5c06af2c28
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084032"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010163"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js kullanarak istemci uygulamalarını başlatma
 Bu makalede, JavaScript için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.js) bir kullanıcı aracısı uygulaması örneği yle baş harfe aktarma açıklanmaktadır. Kullanıcı aracısı uygulaması, istemci kodunun web tarayıcısı gibi bir kullanıcı aracısında yürütüldürün ortak istemci uygulaması biçimidir. Tarayıcı bağlamına açıkça erişilebildiğinden, bu istemciler sırları saklamaz. İstemci uygulama türleri ve uygulama yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için [genel bakışı](msal-client-applications.md)okuyun.
@@ -35,7 +35,7 @@ Bir uygulamayı başlatmadan önce, uygulamanızın Microsoft kimlik platformuyl
 
 MSAL.js'yi düz bir JavaScript/Typescript uygulamasında aşağıdaki gibi kullanabilirsiniz. Bir yapılandırma nesnesi ile anında `UserAgentApplication` anlayarak MSAL kimlik doğrulama bağlamını başlatma. MSAL.js'yi başlatmanız için gereken minimum config, başvuru kayıt portalından almalısınız.
 
-Yeniden yönlendirme akışları`loginRedirect` (ve `acquireTokenRedirect`), ile kimlik doğrulama yöntemleri için açıkça yöntem yoluyla `handleRedirectCallback()` başarı veya hata için bir geri arama kaydetmeniz gerekir. Yönlendirme akışları, pop-up deneyimi olan yöntemlerin verdiği gibi vaatleri döndürmediğinden bu gereklidir.
+MSAL.js 1.2.x veya daha önceki yönlendirme akışları`loginRedirect` (ve), `acquireTokenRedirect`kimlik doğrulama yöntemleri için, yöntem aracılığıyla `handleRedirectCallback()` başarı veya hata için bir geri arama yı açıkça kaydetmeniz gerekir. Yönlendirme akışları, pop-up deneyimi olan yöntemlerin verdiği gibi vaatleri döndürmediğinden bu gereklidir. Bu, MSAL.js sürüm 1.3.0'da isteğe bağlı hale geldi.
 
 ```javascript
 // Configuration object constructed

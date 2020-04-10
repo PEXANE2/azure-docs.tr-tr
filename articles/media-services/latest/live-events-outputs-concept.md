@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/08/2020
 ms.author: juliako
-ms.openlocfilehash: 8a00f7c0ec76510cc521966acf98b7250e723697
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8eca95f9fca47fca4d54bacbab35f3a0ffc3ba31
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985907"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010588"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Medya Hizmetlerinde Canlı Etkinlikler ve Canlı Çıktılar
 
@@ -111,7 +111,7 @@ Gösterim amaçlı olmayan URL'leri veya gösterim URL'lerini kullanabilirsiniz.
 
 * Vanity URL
 
-    Vanity modu, donanım yayını kodlayıcıları kullanan ve Live Event'i başlattıklarında kodlayıcılarını yeniden yapılandırmak istemeyen büyük medya yayıncıları tarafından tercih edilir. Zaman içinde değişmeyen bir tahmine dayalı url istiyorlar.
+    Vanity modu, donanım yayını kodlayıcıları kullanan ve Live Event'i başlattıklarında kodlayıcılarını yeniden yapılandırmak istemeyen büyük medya yayıncıları tarafından tercih edilir. Bu yayıncılar zaman içinde değişmeyen bir tahmine dayalı URL istiyor.
     
     > [!NOTE]
     > Azure portalında, makyaj URL'si "*Kalıcı giriş URL'si*" olarak adlandırılır.

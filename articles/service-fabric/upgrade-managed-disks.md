@@ -2,13 +2,13 @@
 title: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 description: Varolan bir Hizmet Kumaşı kümesini, kümenizin çok az veya hiç kapalı kalma süresi olmayan Azure yönetilen diskleri kullanmak için şu şekilde yükseltebilirsiniz.
 ms.topic: how-to
-ms.date: 3/01/2020
-ms.openlocfilehash: 2bda5572eda5579bb31c3613b220885f27220d99
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 4/07/2020
+ms.openlocfilehash: 5f4698718a35970e47de2a0ee6d053802c8ef919
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758059"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991220"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme
 
@@ -27,11 +27,11 @@ Bu makalede, yönetilen diskleri kullanmak için bir örnek kümenin birincil d�
 > [!CAUTION]
 > Bu yordamda yalnızca DNS kümesine bağımlılıklarıvarsa [(Örneğin, Hizmet Kumaş Gezgini'ne](service-fabric-visualizing-your-cluster.md)erişirken) bir kesinti yaşarsınız. Ön uç hizmetleri için mimari [en iyi uygulama,](https://docs.microsoft.com/azure/architecture/microservices/design/gateway) düğüm türünüzün önünde bir tür [yük dengeleyicisi](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) olması ve bir kesinti olmadan düğüm takasını mümkün kılmaktır.
 
-Azure Kaynak Yöneticisi için yükseltme senaryosunu tamamlamak için kullanacağımız [şablonlar ve cmdletler](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage) aşağıda verilmiştir. Şablon değişiklikleri, aşağıdaki [birincil düğüm türü için yükseltilmiş bir ölçek kümesinde](#deploy-an-upgraded-scale-set-for-the-primary-node-type) açıklanacaktır.
+Azure Kaynak Yöneticisi için yükseltme senaryosunu tamamlamak için kullanacağımız [şablonlar ve cmdletler](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) aşağıda verilmiştir. Şablon değişiklikleri, aşağıdaki [birincil düğüm türü için yükseltilmiş bir ölçek kümesinde](#deploy-an-upgraded-scale-set-for-the-primary-node-type) açıklanacaktır.
 
 ## <a name="set-up-the-test-cluster"></a>Test kümesini ayarlama
 
-İlk Service Fabric test kümesini ayarlayalım. İlk olarak, bu senaryoyu tamamlamak için kullanacağımız Azure kaynak yöneticisi örnek şablonlarını [indirin.](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+İlk Service Fabric test kümesini ayarlayalım. İlk olarak, bu senaryoyu tamamlamak için kullanacağımız Azure kaynak yöneticisi örnek şablonlarını [indirin.](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 Ardından Azure hesabınızda oturum açın.
 
@@ -370,6 +370,6 @@ Bu gözden geçirme de, işlem sırasında hizmet kesintilerini önlerken yönet
 
 Ayrıca bkz:
 
-* [Örnek: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme](https://github.com/erikadoyle/service-fabric-scripts-and-templates/tree/managed-disks/templates/nodetype-upgrade-no-outage)
+* [Örnek: Azure yönetilen diskleri kullanmak için küme düğümlerini yükseltme](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
 
 * [Dikey ölçekleme hususları](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

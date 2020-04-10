@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 38f5778e363a16117bab482a758666ec81352afd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 62c10a2ada9ff7d3bf7090028dd9684192517d02
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887573"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991438"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB kapsayıcısındaveya hesabındaki işlemler için sunucu tarafı gecikmesi nasıl izlenir?
 
@@ -35,11 +35,11 @@ Döndürülen verilerin boyutunu görmek için tanılama günlüğüne bakabilir
 
 1. **Ölçümler** bölmesinden > Gerekli **aboneliği**ve **kaynak grubunu**seçmek > bir **kaynak** seçin. Kaynak **türü**için **Azure Cosmos DB hesaplarını**seçin, varolan Azure Cosmos hesaplarınızdan birini seçin ve **Uygula'yı**seçin.
    
-   ![Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin](./media/monitor-server-side-latency/select-cosmosdb-account.png)
+   ![Ölçümleri görüntülemek için bir Cosmos DB hesabı seçin](./media/monitor-server-side-latency/select-cosmos-db-account.png)
 
 1. Ardından, kullanılabilir ölçümler listesinden **Server Side Gecikme sonu** ölçümünü seçin. Bu listedeki tüm kullanılabilir ölçümler hakkında ayrıntılı bilgi edinmek [için, kategori](monitor-cosmos-db-reference.md) makalesine göre Ölçümler'e bakın. Bu örnekte, toplama değeri olarak **Server Side Latency** ve **Avg'yi** seçelim. Bu ayrıntılara ek olarak, ölçümlerin **Zaman aralığı** ve **Zaman parçalı lığını** da seçebilirsiniz. Maksimum olarak, son 30 gün için ölçümleri görüntüleyebilirsiniz.  Filtreyi uyguladıktan sonra, filtrenize göre bir grafik görüntülenir. Seçili dönem için dakika başına tüketilen ortalama istek birimi sayısını görebilirsiniz.  
 
-   ![Azure portalından Sunucu Tarafı Gecikme Sonu ölçüm'ini seçin](./media/monitor-server-side-latency/serverside-latency-metric.png)
+   ![Azure portalından Sunucu Tarafı Gecikme Sonu ölçüm'ini seçin](./media/monitor-server-side-latency/server-side-latency-metric.png)
 
 ## <a name="filters-for-server-side-latency"></a>Sunucu tarafı gecikmesi için filtreler
 
@@ -49,7 +49,7 @@ Ayrıca ölçümleri ve belirli bir **CollectionName,** **ConnectionMode,** **Da
 
 Her işlem için **Server Side Gecikme sonu** ölçümleri aşağıdaki resimde gösterildiği gibi görüntülenir:
 
-![Sunucu tarafı gecikme ölçümleri için filtreler](./media/monitor-server-side-latency/serverside-latency-filters.png)
+![Sunucu tarafı gecikme ölçümleri için filtreler](./media/monitor-server-side-latency/server-side-latency-filters.png)
 
 Ayrıca, **Uygula bölme** seçeneğini kullanarak ölçümleri gruplandırmayapabilirsiniz.  
 

@@ -3,12 +3,12 @@ title: Linux'ta Azure Hizmet Kumaşı uygulamalarını hata ayıklama
 description: Yerel bir Linux geliştirme makinesinde Service Fabric hizmetlerinizi nasıl izleyeceğinizi ve tanılamayı öğrenin.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: d8b5ec2f2190586f5eced5eee112b190a82504c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75526303"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991339"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>Yerel bir Linux makine geliştirme kurulumunda hizmetleri izleme ve tanılama
 
@@ -59,7 +59,7 @@ Daha fazla bilgi için [GitHub'daki kod örneklerine](https://github.com/Azure-S
 ## <a name="debugging-service-fabric-c-applications"></a>Hata Ayıklama Servisi Kumaş C# uygulamaları
 
 
-Linux'taki CoreCLR uygulamalarının izlenmesi için birden fazla çerçeve mevcuttur. Daha fazla bilgi için [GitHub: günlüğe kaydetme.](http:/github.com/aspnet/logging)  EventSource C# geliştiricileri için tanıdık olduğundan, 'Bu makalede Linux CoreCLR örneklerinde izleme için EventSource kullanır.
+Linux'taki CoreCLR uygulamalarının izlenmesi için birden fazla çerçeve mevcuttur. Daha fazla bilgi [için, Günlük için .NET Uzantıları'na](https://github.com/dotnet/extensions/tree/master/src/Logging)bakın.  EventSource C# geliştiricileri için tanıdık olduğundan, 'Bu makalede Linux CoreCLR örneklerinde izleme için EventSource kullanır.
 
 İlk adım, günlüklerinizi belleğe, çıktı akışlarına veya konsol dosyalarına yazabilmeniz için System.Diagnostics.Tracing'i eklemektir.  EventSource'u kullanmak için project.json'unuza aşağıdaki projeyi ekleyin:
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278746"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010316"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redis için Azure Önbelleği nasıl yapılandırılır?
 Bu konu, Redis örnekleri için Azure Önbelleğiniz için kullanılabilen yapılandırmaları açıklar. Bu konu, Redis örnekleri için Azure Önbelleği için varsayılan Redis sunucu yapılandırmasını da kapsar.
@@ -39,7 +39,7 @@ Redis için Azure Önbelleği **ayarları, Kaynak Menüsü**kullanılarak **Redi
     * [Erişim tuşları](#access-keys)
     * [Gelişmiş ayarlar](#advanced-settings)
     * [Redis Danışmanı için Azure Önbelleği](#azure-cache-for-redis-advisor)
-    * [Ölçeklendirme](#scale)
+    * [Ölçek](#scale)
     * [Küme boyutu](#cluster-size)
     * [Veri kalıcılığı](#redis-data-persistence)
     * [Güncelleştirmeleri zamanlama](#schedule-updates)
@@ -91,7 +91,7 @@ Redis için Azure Önbelleği **ayarları, Kaynak Menüsü**kullanılarak **Redi
 * [Erişim tuşları](#access-keys)
 * [Gelişmiş ayarlar](#advanced-settings)
 * [Redis Danışmanı için Azure Önbelleği](#azure-cache-for-redis-advisor)
-* [Ölçeklendirme](#scale)
+* [Ölçek](#scale)
 * [Küme boyutu](#cluster-size)
 * [Veri kalıcılığı](#redis-data-persistence)
 * [Güncelleştirmeleri zamanlama](#schedule-updates)
@@ -117,10 +117,10 @@ Aşağıdaki ayarlar **Gelişmiş ayarlar** bıçak üzerinde yapılandırılır
 * [Anahtar alanı bildirimleri (gelişmiş ayarlar)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Erişim Bağlantı Noktaları
-SSL olmayan erişim yeni önbellekler için varsayılan olarak devre dışı bırakılmıştır. SSL olmayan bağlantı noktasını etkinleştirmek için, **Yalnızca** **Gelişmiş ayarlar** bıçağında **SSL üzerinden erişime izin ver'e** hayır'ı tıklatın ve ardından **Kaydet'i**tıklatın.
+Varsayılan olarak, TLS/SSL olmayan erişim yeni önbellekler için devre dışı bırakılır. TLS olmayan bağlantı noktasını etkinleştirmek **için, Yalnızca** **Gelişmiş ayarlar** bıçağında **SSL üzerinden erişime izin ver'e** hayır'ı tıklatın ve ardından **Kaydet'i**tıklatın.
 
 > [!NOTE]
-> Redis için Azure Önbelleğine SSL erişimi şu anda TLS 1.0, 1.1 ve 1.2'yi destekler, ancak 1.0 ve 1.1 sürümleri yakında kullanımdan kaldırılmaktadır.  Daha fazla bilgi için [lütfen TLS 1.0 ve 1.1 sayfamızı](cache-remove-tls-10-11.md) okuyunuz.
+> TLS erişimi Redis için Azure Önbelleği'ne erişim şu anda TLS 1.0, 1.1 ve 1.2'yi destekler, ancak 1.0 ve 1.1 sürümleri yakında kullanımdan kaldırılmaktadır.  Daha fazla bilgi için [lütfen TLS 1.0 ve 1.1 sayfamızı](cache-remove-tls-10-11.md) okuyunuz.
 
 ![Redis Access Bağlantı Noktaları için Azure Önbelleği](./media/cache-configure/redis-cache-access-ports.png)
 

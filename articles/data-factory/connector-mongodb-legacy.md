@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 0bdd8d454b979250b57cf657d347309b99a86ede
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31588f9657a883e9c4a5600d2d164125a5f68edf
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892565"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991952"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak MongoDB'deki verileri kopyalama
 
@@ -65,7 +65,7 @@ MongoDB bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 | kullanıcı adı |MongoDB'ye erişmek için kullanıcı hesabı. |Evet (temel kimlik doğrulama kullanılıyorsa). |
 | password |Kullanıcının parolası. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) |Evet (temel kimlik doğrulama kullanılıyorsa). |
 | authSource |Kimlik doğrulama için kimlik bilgilerinizi denetlemek için kullanmak istediğiniz MongoDB veritabanının adı. |Hayır. Temel kimlik doğrulama için varsayılan değer, yönetici hesabını ve databaseName özelliği kullanılarak belirtilen veritabanını kullanmaktır. |
-| sağlarSsl | Sunucuya bağlantıların SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
+| sağlarSsl | Sunucuya bağlantıların TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
 | izinSelfSignedServerCert | Sunucudan kendi imzalı sertifikalara izin verip vermemeyi belirtir. Varsayılan değer false'tur.  | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 

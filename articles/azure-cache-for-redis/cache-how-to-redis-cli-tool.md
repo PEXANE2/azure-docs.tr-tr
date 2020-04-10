@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: a48e69f19db88c7823365964c2fe9c0629a078bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75412681"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010780"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Redis için Azure Önbelleği ile Redis komut satırı aracı nasıl kullanılır?
 
@@ -38,9 +38,9 @@ Bu bölümde, anahtarları Azure portalından alırsınız.
 
 ## <a name="enable-access-for-redis-cliexe"></a>redis-cli.exe için erişimi etkinleştirin
 
-Redis için Azure Önbelleği ile varsayılan olarak yalnızca SSL bağlantı noktası (6380) etkinleştirilir. `redis-cli.exe` Komut satırı aracı SSL'yi desteklemiyor. Kullanmak için iki yapılandırma seçeneğiniz vardır:
+Redis için Azure Önbelleği ile varsayılan olarak yalnızca TLS bağlantı noktası (6380) etkinleştirilir. `redis-cli.exe` Komut satırı aracı TLS'yi desteklemiyor. Kullanmak için iki yapılandırma seçeneğiniz vardır:
 
-1. [SSL olmayan bağlantı noktasını etkinleştirin (6379)](cache-configure.md#access-ports) - Bu yapılandırma da**önerilmez,** çünkü bu yapılandırmada erişim anahtarları TCP üzerinden açık metin olarak gönderilir. Bu değişiklik önbelleğinize erişimi tehlikeye atabilir. Bu yapılandırmayı göz önünde bulundurabileceğiniz tek senaryo, yalnızca bir test önbelleğine eriştiğiniz zamandır.
+1. [TLS olmayan bağlantı noktasını etkinleştirin (6379)](cache-configure.md#access-ports) - **Bu yapılandırma önerilmez,** çünkü bu yapılandırmada erişim anahtarları TCP üzerinden açık metin olarak gönderilir. Bu değişiklik önbelleğinize erişimi tehlikeye atabilir. Bu yapılandırmayı göz önünde bulundurabileceğiniz tek senaryo, yalnızca bir test önbelleğine eriştiğiniz zamandır.
 
 2. [Stunnel'i](https://www.stunnel.org/downloads.html)indirin ve kurun.
 
@@ -74,7 +74,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![redis-cli ile stunnel](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-**Güvenli olmayan** SSL bağlantı noktası içeren bir test önbelleği `redis-cli.exe` kullanıyorsanız, test önbelleğine bağlanmak için ana *bilgisayar adınızı,* *bağlantı noktanızı*ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın ve geçirin.
+**TlS'siz güvenli olmayan** bağlantı noktası yla bir test önbelleği kullanıyorsanız, test önbelleğine bağlanmak için ana *bilgisayar adınızı*, *bağlantı noktanızı*ve *erişim anahtarınızı* (birincil veya ikincil) çalıştırın `redis-cli.exe` ve geçirin.
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

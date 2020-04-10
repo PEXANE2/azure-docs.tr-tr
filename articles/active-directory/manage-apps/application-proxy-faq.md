@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: ec9eeb0c35d96ee777771260686178faa536e909
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877312"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990914"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) Application Proxy sık sorulan sorular
 
@@ -52,6 +52,9 @@ Hayır, bu senaryo desteklenmiyor. Varsayılan ayarlar şunlardır:
 ### <a name="is-tls-termination-tlshttps-inspection-or-acceleration-on-traffic-from-the-connector-servers-to-azure-supported"></a>TLS sonlandırma (TLS/HTTPS denetimi veya ivmesi) bağlayıcı sunuculardan Azure'a kadar olan trafikte desteklendi mi?
 
 Uygulama Proxy Bağlayıcısı, Azure'da sertifika tabanlı kimlik doğrulaması gerçekleştirir. TLS Sonlandırma (TLS/HTTPS denetimi veya ivmesi) bu kimlik doğrulama yöntemini bozar ve desteklenmez. Bağlayıcıdan Azure'a gelen trafik, TLS Sonlandırma gerçekleştiren tüm aygıtları atlamalıdır.  
+
+### <a name="can-i-place-a-forward-proxy-device-between-the-connector-servers-and-the-back-end-application-server"></a>Bağlayıcı sunucu(lar) ile arka uç uygulama sunucusu arasına bir ileri proxy aygıtı yeralabilir miyim?
+Evet, bu senaryo bağlayıcı sürümü 1.5.1526.0'dan başlayarak desteklenir. Bkz. [Varolan şirket içi proxy sunucularıyla çalışma.](application-proxy-configure-connectors-with-proxy-servers.md)
 
 ### <a name="should-i-create-a-dedicated-account-to-register-the-connector-with-azure-ad-application-proxy"></a>Bağlayıcıyı Azure AD Application Proxy'ye kaydettirmek için özel bir hesap oluşturmalı mıyım?
 

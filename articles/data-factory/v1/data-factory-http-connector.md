@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 36592151385a08d75b9b34e85bfa9d62342fc8cd
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260429"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991578"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri bir HTTP kaynağından taşıma
 
@@ -38,7 +38,7 @@ Bu HTTP bağlayıcısını, http **GET** veya **POST** yöntemlerini kullanarak 
 
 Şirket içi bir HTTP bitiş noktasından verileri kopyaladiğinizde, Veri Yönetimi Ağ Geçidi'ni şirket içi ortama veya bir Azure VM'de yüklemeniz gerekir. Veri Yönetimi Ağ Geçidi hakkında bilgi edinmek ve ağ geçidinin nasıl ayarlanacacağına ilişkin adım adım talimatlar için, [verileri şirket içi konumlar ve bulut arasında taşıma'ya](data-factory-move-data-between-onprem-and-cloud.md)bakın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Farklı araçlar veya API'ler kullanarak verileri bir HTTP kaynağından taşımak için kopyalama etkinliği olan bir ardışık kaynak oluşturabilirsiniz:
 
@@ -55,7 +55,7 @@ Aşağıdaki tabloda HTTP bağlantılı hizmete özgü JSON öğeleri açıklanm
 | type | **Tür** özelliği **Http**olarak ayarlanmalıdır. | Evet |
 | url | Web sunucusunun temel URL'si. | Evet |
 | authenticationType | Kimlik doğrulama türünü belirtir. İzin verilen değerler **Anonim,** **Temel**, **Özet,** **Windows**ve **ClientCertificate'tır.** <br><br> Daha fazla özellik için bu makaledeki sonraki bölümlere ve bu kimlik doğrulama türleri için JSON örneklerine bakın. | Evet |
-| enableServerCertificateValidation | Kaynak bir HTTPS web sunucusuysa sunucu SSL sertifika doğrulamasını etkinleştirip etkinleştirmeyeceğini belirtir. HTTPS sunucunuz kendi imzalı bir sertifika kullandığında, bunu **yanlış**olarak ayarlayın. | Hayır<br /> (varsayılan **değer doğrudur)** |
+| enableServerCertificateValidation | Kaynak bir HTTPS web sunucusuysa sunucu TLS/SSL sertifika doğrulamasının etkinleştirilip etkinleştirilemeyeceğini belirtir. HTTPS sunucunuz kendi imzalı bir sertifika kullandığında, bunu **yanlış**olarak ayarlayın. | Hayır<br /> (varsayılan **değer doğrudur)** |
 | ağ geçidiAdı | Şirket içi bir HTTP kaynağına bağlanmak için kullanılacak Veri Yönetimi Ağ Geçidi örneğinin adı. | Evet, şirket içi http kaynağından veri kopyalıyorsanız |
 | şifreli Credential | HTTP bitiş noktasına erişmek için şifrelenmiş kimlik bilgisi. Değer, Kopya sihirbazındaki kimlik doğrulama bilgilerini yapılandırdığınızda veya **ClickOnce** iletişim kutusunu kullanarak otomatik olarak oluşturulur. | Hayır<br /> (yalnızca şirket içi bir HTTP sunucusundan veri kopyalarken uygulayın) |
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 69e2a0fe63be65a2b5d51f7bd2e0885fcbfc5bbb
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422856"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991680"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Netezza'dan kopyalama
 
@@ -63,8 +63,8 @@ Tipik bir bağlantı `Server=<server>;Port=<port>;Database=<database>;UID=<user 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| Güvenlik Düzeyi | Sürücünün veri deposuna bağlantı için kullandığı güvenlik düzeyi (SSL/TLS). Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (**yalnızca Güvenli Olmayan):** Sürücü SSL kullanmaz.<br/>- **Tercih edilen güvenli olmayan (preferredUnSecured) (varsayılan)**: Sunucu bir seçenek sunuyorsa, sürücü SSL kullanmaz. <br/>- **Tercih edilen güvenli (preferredSecured)**: Sunucu bir seçenek sunuyorsa, sürücü SSL kullanır. <br/>- **Yalnızca güvenli (yalnızca Güvenli)**: SSL bağlantısı olmadığı sürece sürücü bağlanmaz. | Hayır |
-| CaCertFile | Sunucu tarafından kullanılan SSL sertifikasına tam yol. Örnek: `CaCertFile=<cert path>;`| Evet, SSL etkinse |
+| Güvenlik Düzeyi | Sürücünün veri deposuna bağlantı için kullandığı güvenlik düzeyi (SSL/TLS). Örnek: `SecurityLevel=preferredSecured`. Desteklenen değerler şunlardır:<br/>- **Yalnızca güvenli olmayan** (**onlyUnSecured**): Sürücü TLS kullanmaz.<br/>- **Tercih edilen güvenli olmayan (tercihsiz Güvenli değil) (varsayılan)**: Sunucu bir seçenek sunuyorsa, sürücü TLS kullanmaz. <br/>- **Tercih edilen güvenli (preferredSecured)**: Sunucu bir seçenek sunuyorsa, sürücü TLS kullanır. <br/>- **Yalnızca güvenli (yalnızca Güvenli)**: TLS bağlantısı olmadığı sürece sürücü bağlanmaz. | Hayır |
+| CaCertFile | Sunucu tarafından kullanılan TLS/SSL sertifikasına tam yol. Örnek: `CaCertFile=<cert path>;`| Evet, TLS etkinse |
 
 **Örnek**
 

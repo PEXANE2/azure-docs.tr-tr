@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaş düğümü türünü ölçeklendir
 description: Sanal Makine Ölçeği Kümesi ekleyerek Service Fabric kümesini nasıl ölçeklendireceklerini öğrenin.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 33d535cb093eeb95e0ce95bdd5722bfd21150a40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464233"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998935"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric kümesi birincil düğüm türünün ölçeğini artırma
 Bu makalede, sanal makine kaynaklarını artırarak hizmet kumaşı küme birincil düğüm türünü nasıl ölçeklendirilir. Service Fabric kümesi, mikro hizmetlerinizin dağıtıldığı ve yönetildiği ağa bağlı sanal veya fiziksel makineler kümesidir. Kümenin bir parçası olan bir makine ye veya VM'ye düğüm denir. Sanal makine ölçek kümeleri, sanal makine koleksiyonunu küme olarak dağıtmak ve yönetmek için kullandığınız bir Azure bilgi işlem kaynağıdır. Azure kümesinde tanımlanan her düğüm türü [ayrı bir ölçek kümesi olarak ayarlanır.](service-fabric-cluster-nodetypes.md) Her düğüm türü daha sonra ayrı ayrı yönetilebilir. Hizmet Kumaşı kümesi oluşturduktan sonra, küme düğümü türünü dikey olarak ölçeklendirebilir (düğümlerin kaynaklarını değiştirebilir) veya düğüm türü VM'lerin işletim sistemini yükseltebilirsiniz.  Kümede iş yükleri çalışıyor olsa bile, kümeyi istediğiniz zaman ölçeklendirebilirsiniz.  Küme ölçeklendikçe, uygulamalarınız da otomatik olarak ölçeklenir.
@@ -34,7 +34,7 @@ Burada birincil düğüm türü VM'lerin VM boyutunu ve işletim sistemini günc
     Şablonda ayarlanan yeni ölçeği bulmak için *vmNodeType2Name* parametresi tarafından adlandırılan "Microsoft.Compute/virtualMachineScaleSets" kaynağını arayın.  Yeni ölçek kümesi özellikleri >virtualMachineProfile->extensionProfil->uzantıları->özellikleri->ayarları->düğümTypeRef ayarı kullanılarak birincil düğüm türüne eklenir.
 4. Küme durumunu denetleyin ve tüm düğümlerin sağlıklı olduğunu doğrulayın.
 5. Düğümü kaldırmak amacıyla birincil düğüm türünün eski ölçek kümesindeki düğümleri devre dışı bırak. Hepsini aynı anda devre dışı atabilirsiniz ve işlemler sıraya alınır. Tüm düğümler devre dışı bırakılana kadar bekleyin, bu da biraz zaman alabilir.  Düğüm türündeki eski düğümler devre dışı bırakıldığından, sistem hizmetleri ve tohum düğümleri birincil düğüm türünde ayarlanan yeni ölçeğin VM'lerine taşınır.
-6. Birincil düğüm türünden eski ölçek kümesini kaldırın.
+6. Birincil düğüm türünden eski ölçek kümesini kaldırın. (Düğümler adım 5'te olduğu gibi devre dışı bırakıldıktan sonra, Azure portalındaki sanal makine ölçeği set bıçaklarında, eski düğüm türünden düğümleri tek tek konuma ayarlayın.)
 7. Eski ölçek kümesiyle ilişkili yük dengeleyicisini çıkarın. Küme, yeni genel IP adresi ve yük dengeleyicisi yeni ölçek kümesi için yapılandırılırken kullanılamaz.  
 8. Bir değişkende ayarlanan eski birincil düğüm türü ölçeğiyle ilişkili genel IP adresinin DNS ayarlarını depolayın ve bu ortak IP adresini kaldırın.
 9. Silinen genel IP adresinin DNS ayarlarıyla yeni birincil düğüm türü ölçeği kümesiyle ilişkili genel IP adresinin DNS ayarlarını değiştirin.  Kümeye artık yeniden ulaşılabilir.

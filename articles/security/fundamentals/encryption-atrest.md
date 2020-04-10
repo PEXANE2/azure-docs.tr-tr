@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/23/2020
+ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548619"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008399"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Veri Şifreleme-at-Rest
 
@@ -241,7 +241,7 @@ Microsoft Azure Hizmetleri'nin her biri, dinlenme modellerindeki şifrelemenin b
 
 Azure Altyapı'yı Hizmet Olarak Kullanan (IaaS) özelliklerini kullanan tüm müşteriler, Azure Disk Şifrelemesi aracılığıyla IaaS VM'leri ve diskleri için tam bir şifreleme elde edebilir. Azure Disk şifrelemesi hakkında daha fazla bilgi için [Azure Disk Şifreleme belgelerine](../azure-security-disk-encryption-overview.md)bakın.
 
-#### <a name="azure-storage"></a>Azure depolama alanı
+#### <a name="azure-storage"></a>Azure Storage
 
 Tüm Azure Depolama hizmetleri (Blob depolama, Sıra depolama, Tablo depolama ve Azure Dosyaları) sunucu tarafındaki şifrelemeyi destekler; bazı hizmetler ayrıca müşteri tarafından yönetilen anahtarları ve istemci tarafı şifrelemeyi de destekler. 
 
@@ -263,16 +263,24 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 |                                  | **Sunucu Tarafı Hizmet Yönetilen Anahtarı Kullanma**     | **Müşteri Tarafından Yönetilen Anahtarı Kullanarak Sunucu Tarafı**             | **İstemci Tarafından Yönetilen Anahtarı Kullanma İstemci Tarafı**      |
 | **Yapay Al ve Makine Öğrenimi**      |                    |                    |                    |
 | Azure Bilişsel Arama           | Evet                | Evet                | -                  |
+| Azure Bilişsel Hizmetler         | Evet                | Evet                | -                  |
 | Azure Machine Learning           | Evet                | Evet                | -                  |
 | Azure Machine Learning Studio    | Evet                | Önizleme, RSA 2048-bit | -               |
+| Content Moderator                | Evet                | Evet                | -                  |
+| Yüz                             | Evet                | Evet                | -                  |
+| Language Understanding           | Evet                | Evet                | -                  |
+| Kişiselleştirme                     | Evet                | Evet                | -                  |
+| Soru-Cevap Oluşturucu                        | Evet                | Evet                | -                  |
+| Konuşma Hizmetleri                  | Evet                | Evet                | -                  |
+| Translator Metin Çevirisi                  | Evet                | Evet                | -                  |
 | Power BI                         | Evet                | Önizleme, RSA 2048-bit | -                  |
 | **Analiz**                    |                    |                    |                    |
-| Azure Stream Analytics           | Evet                | -                  | -                  |
+| Azure Stream Analytics           | Evet                | Yok\*            | -                  |
 | Event Hubs                       | Evet                | Evet, tüm RSA Uzunlukları. | -                  |
 | İşlevler                        | Evet                | Evet, tüm RSA Uzunlukları. | -                  |
 | Azure Analysis Services          | Evet                | -                  | -                  |
 | Azure Veri Kataloğu               | Evet                | -                  | -                  |
-| Apache Kafka Azure HDInsight'ta  | Evet                | Tüm RSA Uzunlukları.   | -                  |
+| Azure HDInsight                  | Evet                | Tümü                | -                  |
 | Azure Monitör Uygulama Öngörüleri | Evet                | Evet                | -                  |
 | Azure Monitör Günlük Analizi | Evet                | Evet                | -                  |
 | Azure Veri Gezgini              | Evet                | Evet                | -                  |
@@ -293,7 +301,7 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Azure Yönetilen Uygulamalar       | Evet                | Evet                | -                  |
 | Service Bus                      | Evet                | Evet                | -                  |
 | Site Recovery                    | Evet                | Evet                | -                  |
-| **Veritaban -ları**                    |                    |                    |                    |
+| **Veritabanları**                    |                    |                    |                    |
 | Sanal Makinelerde SQL Server   | Evet                | Evet, RSA 2048-bit  | Evet                |
 | Azure SQL Veritabanı               | Evet                | Evet, RSA 2048-bit  | Evet                |
 | MariaDB için Azure SQL Veritabanı   | Evet                | -                  | -                  |
@@ -305,7 +313,7 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Azure Cosmos DB                  | Evet                | Evet                | -                  |
 | Azure Databricks                 | Evet                | Evet                | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps                     | Evet                | -                  | Evet                |
+| Azure DevOps Services            | Evet                | -                  | Evet                |
 | Azure Repos                      | Evet                | -                  | Evet                |
 | **Kimlik**                     |                    |                    |                    |
 | Azure Active Directory           | Evet                | -                  | -                  |
@@ -316,24 +324,35 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | API Management                   | Evet                | -                  | -                  |
 | **IoT Hizmetleri**                 |                    |                    |                    |
 | IoT Hub                          | Evet                | Evet                | Evet                |
+| IoT Hub Cihaz Sağlama      | Evet                | Evet                | -                  |
 | **Yönetim ve İdare**    |                    |                    |                    |
 | Azure Site Recovery              | Evet                | -                  | -                  |
+| Azure Geçişi                    | Evet                | Evet                | -                  |
 | **Medya**                        |                    |                    |                    |
 | Media Services                   | Evet                | -                  | Evet                |
+| **Güvenlik**                     |                    |                    |                    |
+| IoT için Azure Güvenlik Merkezi    | Evet                | Evet                | -                  |
+| Azure Sentinel                   | Evet                | Evet                | -                  |
 | **Depolama**                      |                    |                    |                    |
 | Blob Depolama                     | Evet                | Evet, RSA 2048-bit  | Evet                |
+| Premium Blob Depolama             | Evet                | Evet, RSA 2048-bit  | Evet                |
 | Disk Depolama                     | Evet                | Evet                | -                  |
+| Ultra Disk Depolama               | Evet                | Evet                | -                  |
 | Yönetilen Disk Depolama             | Evet                | Evet                | -                  |
 | Dosya Depolama                     | Evet                | Evet, RSA 2048-bit  | -                  |
+| Dosya Premium Depolama             | Evet                | Evet, RSA 2048-bit  | -                  |
+| Dosya Eşitleme                        | Evet                | Evet, RSA 2048-bit  | -                  |
 | Kuyruk Depolama                    | Evet                | Evet                | Evet                |
 | Avere vFXT                       | Evet                | -                  | -                  |
-| Azure NetApp Files               | Evet                | -                  | -                  |
+| Azure NetApp Files               | Evet                | Evet                | -                  |
 | Arşiv Depolama                  | Evet                | Evet, RSA 2048-bit  | -                  |
 | StorSimple                       | Evet                | Evet, RSA 2048-bit  | Evet                |
 | Azure Backup                     | Evet                | Evet                | Evet                |
 | Data Box                         | Evet                | -                  | Evet                |
 | Data Box Edge                    | Evet                | Evet                | -                  |
 
+\*Bu hizmet verileri kalıcı olarak devam etmez. Geçici önbellekler, varsa, bir Microsoft anahtarı ile şifrelenir.
+
 ## <a name="conclusion"></a>Sonuç
 
-Azure Hizmetleri'nde depolanan müşteri verilerinin korunması Microsoft için son derece önemlidir. Tüm Azure barındırılan hizmetler, Rest'te Şifreleme seçenekleri sunmaya kendini adamıştır. Azure Depolama, Azure SQL Veritabanı ve önemli analiz ve istihbarat hizmetleri gibi temel hizmetler zaten Şifreleme de Rest seçenekleri sağlar. Bu hizmetlerden bazıları müşteri denetimli anahtarları ve istemci tarafı şifrelemenin yanı sıra hizmet tarafından yönetilen anahtarları ve şifrelemeyi destekler. Microsoft Azure hizmetleri, Rest kullanılabilirliği nde Şifreleme'yi genel olarak geliştirmeve önümüzdeki aylarda önizleme ve genel kullanılabilirlik için yeni seçenekler planlanmaktadır.
+Azure Hizmetleri'nde depolanan müşteri verilerinin korunması Microsoft için son derece önemlidir. Tüm Azure barındırılan hizmetler, Rest'te Şifreleme seçenekleri sunmaya kendini adamıştır. Azure hizmetleri, hizmet tarafından yönetilen anahtarları, müşteri tarafından yönetilen anahtarları veya istemci tarafı şifrelemeyi destekler. Azure hizmetleri, Rest kullanılabilirliği nde Şifreleme'yi genel olarak geliştirmeve önümüzdeki aylarda önizleme ve genel kullanılabilirlik için yeni seçenekler planlanmaktadır.

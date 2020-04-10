@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
-ms.openlocfilehash: 20a5c4befaa30383c54ac9536a3fd26dce3db4d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80059978"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010571"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -185,8 +186,7 @@ Sorguları Azure'a iletmek gereksinimlerinize uygun değilse, kendi DNS çözüm
 * Dış ajanların oluşturduğu tehditleri azaltmak için internetten erişime karşı güvence altına alın.
 
 > [!NOTE]
-> En iyi performans için, Azure VM'lerini DNS sunucusu olarak kullanıyorsanız, IPv6 devre dışı bırakılmalı. Her DNS sunucusu VM'ye [ortak bir IP adresi](virtual-network-public-ip-address.md) atanmalıdır. 
-> 
+> En iyi performans için, Azure VM'lerini DNS sunucusu olarak kullanıyorsanız, IPv6 devre dışı bırakılmalı.
 
 ### <a name="web-apps"></a>Web uygulamaları
 Sanal ağa bağlı App Service'i kullanarak aynı sanal ağdaki VM'lere oluşturulmuş web uygulamanızdan ad çözümlemesi yapmanız gerektiğini varsayalım. Sorguları Azure'a (sanal IP 168.63.129.16) ileten bir DNS iletmecisi olan özel bir DNS sunucusu ayarlamaya ek olarak, aşağıdaki adımları gerçekleştirin:

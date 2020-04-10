@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 0d63f2c29bfdbdf320185647bd33ec30500ed874
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 8cb4af8faccb68c455928c0d3c5405ef2d3e70df
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742699"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011030"
 ---
 # <a name="indexing-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tabloekleme
 
@@ -52,9 +52,9 @@ Kümelenmiş sütun mağazasının iyi bir seçenek olmayabileceği birkaç sena
 
 ## <a name="heap-tables"></a>Yığın tablolar
 
-Verileri geçici olarak Synapse SQL havuzuna indirdiğinizde, yığın tablosu kullanmanın genel işlemi hızlandırdığını görebilirsiniz. Bunun nedeni, yığınlara yüklenen yüklerin tabloları dizine göre daha hızlı olması ve bazı durumlarda sonraki okumanın önbellekten yapılabilecek olmasıdır.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce aşamalı olarak dolduruyorsanız, tabloyu yığın tablosuna yüklemek, verileri kümelenmiş bir sütun deposu tablosuna yüklemekten çok daha hızlıdır. Buna ek olarak, verileri geçici bir [tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, tabloyu kalıcı depolamaya yüklemekten daha hızlı yükler.  
+Verileri geçici olarak Synapse SQL havuzuna indirdiğinizde, yığın tablosu kullanmanın genel işlemi hızlandırdığını görebilirsiniz. Bunun nedeni, yığınlara yüklenen yüklerin tabloları dizine göre daha hızlı olması ve bazı durumlarda sonraki okumanın önbellekten yapılabilecek olmasıdır.  Verileri yalnızca daha fazla dönüşüm çalıştırmadan önce aşamalı olarak dolduruyorsanız, tabloyu yığın tablosuna yüklemek, verileri kümelenmiş bir sütun deposu tablosuna yüklemekten çok daha hızlıdır. Buna ek olarak, verileri geçici bir [tabloya](sql-data-warehouse-tables-temporary.md) yüklemek, tabloyu kalıcı depolamaya yüklemekten daha hızlı yükler.  Veri yüklendikten sonra, daha hızlı sorgu performansı için tabloda dizinler oluşturabilirsiniz.  
 
-Küçük arama tabloları için, 60 milyondan az satır, genellikle yığın tablolar mantıklı.  Küme sütun deposu tabloları, 60 milyondan fazla satır olduğunda en iyi sıkıştırmayı elde etmeye başlar.
+Küme sütun deposu tabloları, 60 milyondan fazla satır olduğunda en iyi sıkıştırmayı elde etmeye başlar.  60 milyondan az satır olan küçük arama tabloları için, daha hızlı sorgu performansı için HEAP veya kümelenmiş dizin kullanmayı düşünün. 
 
 Yığın tablosu oluşturmak için WITH yan tümcesinde HEAP belirtmeniz yeterlidir:
 

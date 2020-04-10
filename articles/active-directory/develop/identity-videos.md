@@ -1,6 +1,6 @@
 ---
 title: Microsoft kimlik platformu videoları | Azure
-description: Microsoft kimlik platformu yla ilgili videoların listesi
+description: Modern kimlik doğrulama ve Microsoft kimlik platformu hakkında video listesi
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -8,24 +8,73 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 01/29/2020
+ms.date: 04/08/2020
 ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: 22149ccfa258852b36da61ffbabde5e1856df9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085202"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991305"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft kimlik platformu videoları
 
-Microsoft kimlik platformu ve Microsoft Kimlik Doğrulama kitaplıkları (MSAL) hakkında bilgi edinin. Genellikle 1-2 dakika uzunluğundadırlar.
+Modern kimlik doğrulamanın temellerini, Microsoft kimlik platformunu ve Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) öğrenin.
+
+## <a name="authentication-fundamentals"></a>Kimlik doğrulama temelleri
+
+Kimlik sağlayıcılar, güvenlik belirteçleri, talepler ve hedef kitle gibi kavramlarda yeniyseniz, bu video serisi başlamak için iyi bir yerdir.
+___
+
+:::row:::
+    :::column:::
+        1 - Temel bilgiler: Modern kimlik doğrulama kavramları (04:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+     :::column:::
+        2 - Web uygulamaları için modern kimlik doğrulama (06:02)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        3 - Web tek oturum açma (04:13)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        4 - Federe web kimlik doğrulama (06:19)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        5 - Yerli müşteri uygulamaları - Bölüm 1 (08:12)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+    :::column:::
+        6 - Yerli müşteri uygulamaları - Bölüm 2 (05:33)
+    :::column-end:::
+    :::column:::
+        > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
+    :::column-end:::
+:::row-end:::
 
 ## <a name="microsoft-identity-platform-basics"></a>Microsoft kimlik platformu temelleri
 
-**Temel Microsoft kimlik platformu kavramlarını öğrenin**
+Microsoft kimlik platformunun bileşenleri, Microsoft Kimlik Doğrulama Kitaplıkları (MSAL) ve bu bileşenlerin Azure Etkin Dizini ile nasıl etkileşimde olduğu hakkında bilgi edinin. One Dev Question videoları 1-2 dakika uzunluğundadır.
+___
 
 :::row:::
     :::column:::
@@ -112,7 +161,8 @@ Microsoft kimlik platformu ve Microsoft Kimlik Doğrulama kitaplıkları (MSAL) 
 
 ## <a name="migrate-from-v10-to-v20"></a>v1.0'dan v2.0'a geçirin
 
-**Microsoft kimlik platformunun en son sürümüne geçiş hakkında bilgi edinin**
+Active Directory Authentication Library'den (ADAL) MSAL'a geçiş de dahil olmak üzere Microsoft kimlik platformunun en son sürümüne geçiş hakkında bilgi edinin.
+___
 
 :::row:::
     :::column:::

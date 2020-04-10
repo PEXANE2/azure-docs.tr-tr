@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 883dbc95ee77d03aee4c3231c6ab8c03f9f7f6e4
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387844"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011096"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows çalıştıran N serisi VM'lere AMD GPU sürücülerini yükleme
 
@@ -40,7 +40,7 @@ Temel özellikler, depolama kapasiteleri ve disk ayrıntıları için [GPU Windo
 
 2. Bir NVv4 önizleme müşterisiyseniz, lütfen VM'yi durdurun ve Durduruldu(Deallocated) durumuna geçmesini bekleyin.
 
-3. Lütfen VM'yi başlatın ve en son [AMD Temizleme Yardımcı Programını](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)indirin. "amdcleanuputility-x64.exe" çalıştırarak varolan sürücüyü kaldırın. Lütfen önceki sürücü ile yüklü herhangi bir exisitng temizleme programı KULLANMAYıN.  
+3. Lütfen VM'yi başlatın ve en son [AMD Temizleme Yardımcı Programını](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe)indirin. "amdcleanuputility-x64.exe" çalıştırarak varolan sürücüyü kaldırın. Lütfen önceki sürücü ile yüklü herhangi bir varolan temizleme yardımcı programı kullanmayın.  
 
 4. En son sürücüyü indirin ve kurun.
 
@@ -52,6 +52,12 @@ Aygıt Yöneticisi'nde sürücü yüklemeyi doğrulayabilirsiniz. Aşağıdaki �
 <br />
 ![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/device-manager.png)
 
-Video RAM de dahil olmak üzere GPU ekran özelliklerini doğrulamak için dxdiag'ı kullanabilirsiniz. Aşağıdaki örnek, Azure NVv4 VM'deki Radeon Instinct MI25 kartının 1/8'lik bir bölümüdür.
+Video RAM de dahil olmak üzere GPU ekran özelliklerini doğrulamak için dxdiag'ı kullanabilirsiniz. Aşağıdaki örnek, Azure NVv4 VM'deki Radeon Instinct MI25 kartının 1/2'lik bir bölümüdür.
 <br />
-![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/dxdiag.png)
+![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/dxdiag-output.png)
+
+Windows 10 build 1903 veya daha yüksek çalıştırıyorsanız, dxdiag 'Görüntüle' sekmesinde hiçbir bilgi göstermez. Lütfen en alttaki 'Tüm Bilgileri Kaydet' seçeneğini kullanın ve çıkış dosyası AMD MI25 GPU ile ilgili bilgileri gösterir.
+
+![GPU sürücü özellikleri](./media/n-series-amd-driver-setup/dxdiag-details.png)
+
+

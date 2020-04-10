@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/08/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409944"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992088"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönetme
 
@@ -88,6 +88,9 @@ Fiyatlandırma katmanını Azure Kaynak Yöneticisi aracılığıyla `sku` (Azur
 2 Nisan 2018 tarihinden önce log analytics çalışma alanı veya Uygulama Öngörüleri kaynağı olan veya 1 Şubat 2019'dan önce başlayan bir Kurumsal Sözleşme'ye bağlı olan abonelikler, eski fiyatlandırma katmanlarını kullanmaya erişmeye devam edecektir: **Ücretsiz**, **Bağımsız (GB Başına)** ve **Düğüm Başına (OMS)**.  Ücretsiz fiyatlandırma katmanındaki çalışma alanları günlük veri alımı 500 MB ile sınırlı olacaktır (Azure Güvenlik Merkezi tarafından toplanan güvenlik veri türleri hariç) ve veri saklama işlemi 7 günle sınırlıdır. Ücretsiz fiyatlandırma katmanı yalnızca değerlendirme amaçlıdır. Bağımsız veya Düğüm Başına fiyatlandırma katmanlarındaki çalışma alanları, 30 günden 730 güne kadar kullanıcı tarafından yapılandırılabilir saklamaya sahiptir.
 
 Per Node fiyatlandırma katmanı, izlenen VM (düğüm) başına bir saatlik ayrıntılılıkta ücretlendirir. İzlenen her düğüm için çalışma alanı, faturalandırılmayan günde 500 MB veri ayrılır. Bu ayırma çalışma alanı düzeyinde toplanır. Toplam günlük veri ayırmanın üzerinde toplanan veriler, veri aktarıcısı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı Per Node fiyatlandırma katmanındaysa, hizmetin Log Analytics kullanımı için **Insight ve Analytics** olacağını unutmayın. 
+
+> [!TIP]
+> Çalışma alanınızın **Per Node** fiyatlandırma katmanına erişimi varsa, ancak Kullandıkça Öde katmanında daha düşük maliyetli olup olmayacağını merak ediyorsanız, kolayca bir öneri almak için [aşağıdaki sorguyu kullanabilirsiniz.](#evaluating-the-legacy-per-node-pricing-tier) 
 
 Nisan 2016'dan önce oluşturulan çalışma alanları, sırasıyla 30 ve 365 günlük sabit veri saklamasına sahip orijinal **Standart** ve **Premium** fiyatlandırma katmanlarına da erişebilir. **Standart** veya **Premium** fiyatlandırma katmanlarında yeni çalışma alanları oluşturulamaz ve bir çalışma alanı bu katmanlardan taşınırsa, geri taşınamaz. 
 
@@ -434,6 +437,49 @@ Farklı Otomasyon düğümlerinin sayısını görmek için sorguyu kullanın:
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
  | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
+
+## <a name="evaluating-the-legacy-per-node-pricing-tier"></a>Eski Düğüm Başına fiyatlandırma katmanının değerlendirilmesi
+
+Eski **Düğüm başına** fiyatlandırma katmanına erişimi olan çalışma alanlarının o katmanda mı yoksa geçerli bir **Ödeme Yle** Öde veya Kapasite **Rezervasyonu** katmanında mı daha iyi olduğu, müşterilerin değerlendirmesi genellikle zordur.  Bu, Per Node fiyatlandırma katmanında izlenen düğüm başına sabit maliyet ile 500 MB/düğüm/gün veri tahsisi ile Yalnızca You-Go Öde (GB Başına) katmanındaki sindirilmiş veriler için ödeme maliyeti arasındaki dengeyi anlamayı içerir. 
+
+Bu değerlendirmeyi kolaylaştırmak için, bir çalışma alanının kullanım desenlerini temel alan en iyi fiyatlandırma katmanı için bir öneride bulunmak için aşağıdaki sorgu kullanılabilir.  Bu sorgu, son 7 gün içinde bir çalışma alanına alınan izlenen düğümlere ve verilere bakar ve her gün için hangi fiyatlandırma katmanının en uygun olacağını değerlendirir. Sorguyu kullanmak için, çalışma alanının Azure Güvenlik Merkezi'ni `workspaceHasSecurityCenter` `true` `false`mi yoksa (isteğe bağlı olarak) organizaiton'unuzun aldığı Per Node ve Per GB fiyatlarını güncelleyerek mi yoksa (isteğe bağlı olarak) mı kullandığını belirtmeniz gerekir. 
+
+```kusto
+// Set these paramaters before running query
+let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
+let PerNodePrice = 15.; // Enter your price per node / month 
+let PerGBPrice = 2.30; // Enter your price per GB 
+// ---------------------------------------
+let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+union withsource = tt * 
+| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| extend computerName = tolower(tostring(split(Computer, '.')[0]))
+| where computerName != ""
+| summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
+| summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
+| join (
+    Usage 
+    | where TimeGenerated > ago(8d)
+    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where IsBillable == true
+    | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
+    | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
+    | summarize DataGB=sum(Quantity)/1000., NonSecurityDataGB=sum(NonSecurityData)/1000., SecurityDataGB=sum(SecurityData)/1000. by day=bin(StartTime, 1d)  
+) on day
+| extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
+| extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             DataGB * PerGBPrice)
+| extend OverageGB = iff(workspaceHasSecurityCenter, 
+             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay, 0.))
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
+             iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
+| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, Recommendation // Comment this line to see details
+| sort by day asc
 ```
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama yüksek olduğunda bir uyarı oluşturma

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0d55bafc513ef7553952ee2096ea32db65d6205d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 555da74da65f3b1897a276cf819a263334cfa053
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673764"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999055"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanızda bir kural oluşturun ve bildirimler ayarlayın
 
@@ -34,11 +34,11 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce Azure [IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlayın ve [IoT Central uygulamanıza simüle edilmiş bir aygıt ekleyin](./quick-create-pnp-device.md) ve çalışmak için **MXChip IoT DevKit** aygıt şablonu oluşturmaya hızlı bir şekilde başlayın.
+Başlamadan önce Azure [IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlayın ve [IoT Central uygulamanıza simüle edilmiş bir aygıt ekleyin](./quick-create-simulated-device.md) ve çalışmak için **MXChip IoT DevKit** aygıt şablonu oluşturmaya hızlı bir şekilde başlayın.
 
 ## <a name="create-a-rule"></a>Kural oluşturma
 
-Bir telemetri kuralı oluşturmak için aygıt şablonunda en az bir telemetri değeri içermesi gerekir. Bu öğretici sıcaklık ve nem telemetri gönderir bir simüle **MXChip IoT DevKit** cihaz kullanır. Bu aygıt şablonunu eklediniz ve [IoT Central uygulama hızlı başlatmanıza benzetilen bir benzetim aygıtı oluşturdunuz.](./quick-create-pnp-device.md) Kural, cihaz tarafından bildirilen sıcaklığı izler ve 70 derecenin üzerine çıktığında bir e-posta gönderir.
+Bir telemetri kuralı oluşturmak için aygıt şablonunda en az bir telemetri değeri içermesi gerekir. Bu öğretici sıcaklık ve nem telemetri gönderir bir simüle **MXChip IoT DevKit** cihaz kullanır. Bu aygıt şablonunu eklediniz ve [IoT Central uygulama hızlı başlatmanıza benzetilen bir benzetim aygıtı oluşturdunuz.](./quick-create-simulated-device.md) Kural, cihaz tarafından bildirilen sıcaklığı izler ve 70 derecenin üzerine çıktığında bir e-posta gönderir.
 
 1. Sol bölmede **Kurallar'ı**seçin.
 

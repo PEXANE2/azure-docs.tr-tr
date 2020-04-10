@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 9339fff820c0a0d915258ce3a0bc5371242ad50d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6aac3f1bb29ccfab0de4cb0a807ca0831a62af7e
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892841"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991561"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Cassandra'dan veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -69,7 +69,7 @@ Aşağıdaki özellikler Cassandra bağlantılı hizmet için desteklenir:
 | connectVia | Veri deposuna bağlanmak için kullanılacak [Tümleştirme Çalışma Süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 
 >[!NOTE]
->Şu anda SSL kullanarak Cassandra bağlantısı desteklenmez.
+>Şu anda TLS kullanarak Cassandra bağlantısı desteklenmez.
 
 **Örnek:**
 

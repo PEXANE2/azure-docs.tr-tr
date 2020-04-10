@@ -5,24 +5,24 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c8968eb72b29b004d94e25433da65d3262287147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1907eb7cde482927ee8e6b0a2522158f05c1808f
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367151"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010945"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Otomasyon'da runbook yürütme
 
 Runbook'lar içlerinde tanımlanan mantığa göre yürütülür. Bir runbook kesilirse, runbook başında yeniden başlatılır. Bu davranış, geçici sorunlar oluşursa yeniden başlatılmasını destekleyen runbook'lar yazmanızı gerektirir.
 
-Azure Otomasyonu'nda bir runbook başlatmak bir iş oluşturur. İş, runbook'un tek bir yürütme örneğidir. Her iş, Azure aboneliğinize bağlantı kurarak Azure kaynaklarına erişebilir. İş, yalnızca bu kaynaklara genel buluttan erişilebiliyorsa veri merkezinizdeki kaynaklara erişebilir.
+Azure Otomasyonu'nda bir runbook başlatmak, runbook'un tek bir yürütme örneği olan bir iş oluşturur. Her iş, Azure aboneliğinize bağlantı kurarak Azure kaynaklarına erişebilir. İş, yalnızca bu kaynaklara genel buluttan erişilebiliyorsa veri merkezinizdeki kaynaklara erişebilir.
 
 Azure Otomasyon, runbook yürütme sırasında her işi çalıştıracak bir işçi atar. Çalışanlar birçok Azure hesabı tarafından paylaşılırken, farklı Otomasyon hesaplarındaki işler birbirinden izole edilir. İş isteğinizi hangi işçi hizmetleri üzerinde kontrol edinebilirsiniz.
 
 Azure portalında runbook listesini görüntülediğinizde, her runbook için başlatılan her işin durumunu gösterir. Azure Otomasyon, iş günlüklerini en fazla 30 gün boyunca saklar. 
 
-Aşağıdaki [diyagram, PowerShell runbook'ları,](automation-runbook-types.md#powershell-runbooks)Grafik çalışma [kitapları](automation-runbook-types.md#graphical-runbooks)ve [PowerShell İş Akışı runbook'ları](automation-runbook-types.md#powershell-workflow-runbooks)için bir runbook işinin yaşam döngüsünü gösterir.
+Aşağıdaki diyagram [PowerShell runbook'lar,](automation-runbook-types.md#powershell-runbooks) [grafik runbook'lar](automation-runbook-types.md#graphical-runbooks)ve [PowerShell İş Akışı runbook'ları](automation-runbook-types.md#powershell-workflow-runbooks)için bir runbook işinin yaşam döngüsünü gösterir.
 
 ![İş Durumları - PowerShell İş Akışı](./media/automation-runbook-execution/job-statuses.png)
 

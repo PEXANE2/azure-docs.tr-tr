@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
-ms.openlocfilehash: 0bfae10d3b3b491c3662385055b23cc585a6e24d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcd8e400b978b2139de7a9f53b87cf6ec04e7484
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471168"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992003"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak MySQL'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -65,7 +65,7 @@ Tipik bir bağlantı `Server=<server>;Port=<port>;Database=<database>;UID=<usern
 
 | Özellik | Açıklama | Seçenekler | Gerekli |
 |:--- |:--- |:--- |:--- |
-| SSLMode | Bu seçenek, mysql'e bağlanırken sürücünün SSL şifreleme ve doğrulama kullanıp kullanmadığını belirtir. Örneğin.`SSLMode=<0/1/2/3/4>`| ÖZÜRLÜ (0) / TERCIH EDILEN (1) **(Varsayılan)** / GEREKLİ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Hayır |
+| SSLMode | Bu seçenek, sürücünün MySQL'e bağlanırken TLS şifreleme ve doğrulama kullanıp kullanmadığını belirtir. Örneğin.`SSLMode=<0/1/2/3/4>`| ÖZÜRLÜ (0) / TERCIH EDILEN (1) **(Varsayılan)** / GEREKLİ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Hayır |
 | UseSystemTrustStore | Bu seçenek, sistem güven deposundan mı yoksa belirli bir PEM dosyasından mı CA sertifikası kullanacağımı belirtir. Örneğin `UseSystemTrustStore=<0/1>;`| Etkin (1) / Devre Dışı (0) **(Varsayılan)** | Hayır |
 
 **Örnek:**

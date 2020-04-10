@@ -8,17 +8,17 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: de6e08534722deccb8be11248dd8af3ca2e66739
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983228"
+ms.locfileid: "80991629"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Yeni yönetilen hizmet teklifi oluşturma
 
 > [!IMPORTANT]
-> Yönetilen hizmet tekliflerinizi Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izin verilene kadar, tekliflerinizi yönetmek [için Azure Marketi'ne yönetilen bir hizmet teklifini yayımla'daki](../../lighthouse/how-to/publish-managed-services-offers.md) yönergeleri izleyin.
+> Yönetilen Hizmet tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izin verilene kadar, bulut iş ortağı portalındaki tekliflerinizi yönetmek için lütfen [Azure Marketine Yönetilen Hizmet Teklifi Yayımla'daki](../../lighthouse/how-to/publish-managed-services-offers.md) yönergeleri izleyin.
 
 Yönetilen Hizmet, [Azure Deniz Feneri](../../lighthouse/overview.md) senaryolarını etkinleştirmeye yardımcı olur. Bir müşteri Yönetilen Hizmet teklifini kabul ettiğinde, Azure temsilci [kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)için kaynaklara binebilir.
 

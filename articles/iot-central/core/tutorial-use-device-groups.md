@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 758ac037fcd224d02f62239b3408b41b50390147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58fc71ab05c34e8acd252e7a1984c55996d1b3a7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77167292"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80999031"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry"></a>Öğretici: Cihaz telemetrisini analiz etmek için aygıt gruplarını kullanma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce [Azure IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlamalı ve [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-pnp-device.md) gerekmektedir ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmaya hızlı bir şekilde başlamalısınız.
+Başlamadan önce [Azure IoT Merkezi oluştur uygulamasını](./quick-deploy-iot-central.md) tamamlamalı ve [IoT Central uygulamanıza simüle edilmiş bir aygıt eklemeniz](./quick-create-simulated-device.md) gerekmektedir ve çalışmak için **MXChip IoT DevKit** aygıt şablonunu oluşturmaya hızlı bir şekilde başlamalısınız.
 
 ## <a name="create-simulated-devices"></a>Benzetimli aygıtlar oluşturma
 

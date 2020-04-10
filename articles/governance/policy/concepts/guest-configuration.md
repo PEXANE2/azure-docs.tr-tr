@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetlemeyi öğrenin
 description: Azure İlke'nin sanal makinelerdeki ayarları denetlemek için Konuk Yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 889e99e94b2c81a6654fcbe7851e93c40163a0c6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985329"
+ms.locfileid: "80998851"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk Yapılandırması'nı anlayın
 
@@ -91,6 +91,13 @@ Windows Server Nano Server hiçbir sürümde desteklenmez.
 
 Azure'daki Konuk Yapılandırma kaynak sağlayıcısıyla iletişim kurmak için **makineler, 443**bağlantı noktasındaki Azure veri merkezlerine giden erişim gerektirir. Azure'da giden trafiğe izin vermeyen özel bir sanal ağ kullanıyorsanız, özel durumları [Ağ Güvenliği Grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kurallarıyla yapılandırın.
 "GuestAndHybridManagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) Konuk Yapılandırma hizmetine başvurmak için kullanılabilir.
+
+## <a name="azure-managed-identity-requirements"></a>Azure yönetilen kimlik gereksinimleri
+
+Uzantıyı sanal makinelere ekleyen **DeployIfNotExists** ilkeleri, yoksa yönetilen kimlik atanan bir sistemi de etkinleştirir.
+
+> [!WARNING]
+> Sistem yönetilen kimlik atanan etkinleştirmek ilkeleri için kapsamda sanal makinelere kullanıcı atanan yönetilen kimlik etkinleştirme kaçının. Atanan kullanıcı kimliği değiştirilir ve makine yanıt vermemiş olabilir.
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk Yapılandırma tanımı gereksinimleri
 

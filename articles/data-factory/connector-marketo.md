@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 74d56d553c4049a98b4401c66b27ae33e31da5c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a16d559a96c88a864ef809d40d798b99746230
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927128"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80992105"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak Marketo'dan veri kopyalama (Önizleme)
 
@@ -37,7 +37,7 @@ Marketo'daki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabil
 Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 >[!NOTE]
->Bu Marketo konektörü Marketo REST API üzerine inşa edilmiştir. Marketo'nun hizmet tarafında [eşzamanlı istek sınırı](https://developers.marketo.com/rest-api/) olduğunu unutmayın. "REST API'yi kullanmaya çalışırken hata: '20' sn (606)" veya "REST API'yi kullanmaya çalışırken hata: Eşzamanlı erişim sınırı '10' ulaşıldı (615)" ile aşıldı Maksimum oran sınırı '100' ile aşıldıysa, eşzamanlı kopyalama etkinliğini azaltmayı düşünün hizmete istek sayısını azaltın.
+>Bu Marketo konektörü Marketo REST API üzerine inşa edilmiştir. Marketo'nun hizmet tarafında [eşzamanlı istek sınırı](https://developers.marketo.com/rest-api/) olduğunu unutmayın. "REST API'yi kullanmaya çalışırken hata: '20' sn (606)" veya "REST API'yi kullanmaya çalışırken "Hata: Eşzamanlı erişim sınırı '10' ulaşıldı (615)" ile aşıldı max oran sınırı '100' ile aşıldıysa, hizmete yönelik istek sayısını azaltmak için eşzamanlı kopyalama etkinliğini azaltmayı düşünün.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -56,8 +56,8 @@ Marketo bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 | clientId | Marketo hizmetinizin müşteri kimliği.  | Evet |
 | clientSecret | Marketo hizmetinin müşteri sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | SSL üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | TLS üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 

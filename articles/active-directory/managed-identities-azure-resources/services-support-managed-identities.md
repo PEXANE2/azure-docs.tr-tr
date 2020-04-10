@@ -4,18 +4,18 @@ description: Azure kaynakları ve Azure AD kimlik doğrulaması için yönetilen
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 04/03/2020
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656042"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991288"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -109,7 +109,7 @@ Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Böl
 Azure Logic Apps için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
 - [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Kaynak Yöneticisi şablonu](/azure/app-service/overview-managed-identity)
+- [Azure Kaynak Yöneticisi şablonu](https://docs.microsoft.com/azure/logic-apps/logic-apps-azure-resource-manager-templates-overview)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -270,6 +270,9 @@ Azure Kaynak Yöneticisi'ne erişimi yapılandırmak için aşağıdaki listeye 
 | Azure Kamu | `https://*.asazure.usgovcloudapi.net` | ![Kullanılabilir][check] |
 | Azure Almanya | `https://*.asazure.cloudapi.de` | ![Kullanılabilir][check] |
 | Azure Çin 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![Kullanılabilir][check] |
+
+> [!Note]
+> Microsoft Power BI de [yönetilen kimlikleri destekler.](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)
 
 
 [check]: media/services-support-managed-identities/check.png "Kullanılabilir"

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278720"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010231"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Redis için Azure Önbelleği SSS
 Redis için Azure Önbelleği için sık sorulan soruların, desenlerin ve en iyi uygulamaların yanıtlarını öğrenin.
@@ -54,7 +54,7 @@ Aşağıdaki SSS'ler, Redis için Azure Önbelleği ile ilgili temel kavramları
 * [Redis veritabanları nedir?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Güvenlik SSS'leri
-* [Redis'e bağlanmak için SSL olmayan bağlantı noktasını ne zaman etkinleştirmeliyim?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [Redis'e bağlanmak için TLS/SSL olmayan bağlantı noktasını ne zaman etkinleştirmeliyim?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Üretim SSS'leri
 * [Bazı üretim en iyi uygulamaları nelerdir?](#what-are-some-production-best-practices)
@@ -112,7 +112,7 @@ Redis için her Azure Önbelleği, farklı **boyut**düzeyleri, **bant genişli�
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Redis performansı için Azure Önbelleği
-Aşağıdaki tablo, IaaS `redis-benchmark.exe` VM'den Redis bitiş noktası için Azure Önbelleği'ne karşı çeşitli standart ve premium önbellekboyutlarını sınarken gözlenen maksimum bant genişliği değerlerini gösterir. SSL iş çıkışı için redis-benchmark, Redis uç noktası için Azure Önbelleğine bağlanmak için stunnel ile birlikte kullanılır.
+Aşağıdaki tablo, IaaS `redis-benchmark.exe` VM'den Redis bitiş noktası için Azure Önbelleği'ne karşı çeşitli standart ve premium önbellekboyutlarını sınarken gözlenen maksimum bant genişliği değerlerini gösterir. TLS iş çıkışı için redis-benchmark, Redis bitiş noktası için Azure Önbelleğine bağlanmak için stunnel ile birlikte kullanılır.
 
 >[!NOTE] 
 >Bu değerler garanti edilmez ve bu sayılar için SLA yoktur, ancak tipik olmalıdır. Uygulamanız için doğru önbellek boyutunu belirlemek için kendi uygulamanızı yüklemeniz gerekir.
@@ -196,7 +196,7 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze bağl�
   * Uygulama için tek bir ConnectionMultiplexer örneği kullanın. [ConnectionMultiplexer sınıfını kullanarak önbelleğe bağlan'da](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)gösterildiği gibi, Bir Bağlantı özelliği tarafından döndürülen tek bir örnek oluşturmak için LazyConnection kullanabilirsiniz.
   * `ConnectionMultiplexer.ClientName` Özelliği tanılama amacıyla bir uygulama örneği benzersiz adı olarak ayarlayın.
   * Özel `ConnectionMultiplexer` iş yükleri için birden çok örnek kullanın.
-      * Uygulamanızda değişen bir yük varsa bu modeli takip edebilirsiniz. Örnek:
+      * Uygulamanızda değişen bir yük varsa bu modeli takip edebilirsiniz. Örneğin:
       * Büyük tuşları ile başa çıkmak için bir multiplexer olabilir.
       * Küçük tuşları ile başa çıkmak için bir multiplexer olabilir.
       * Bağlantı zaman ları için farklı değerler ayarlayabilir ve kullandığınız her ConnectionMultiplexer için mantığı yeniden deneyebilirsiniz.
@@ -244,7 +244,7 @@ Redis için [Azure Önbelleğinde desteklenmeyen Redis komutlarında](cache-conf
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis komut satırı araçları SSL bağlantı noktasıyla çalışmaz, ancak Redis makalesi [için Azure Önbelleği ile Redis komut satırı aracının nasıl kullanılacağı](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) nasıI yönergeleri izleyerek araçları SSL bağlantı noktasına güvenli bir şekilde bağlamak gibi bir yardımcı program `stunnel` kullanabilirsiniz.
+> Redis komut satırı araçları TLS bağlantı noktasıyla çalışmaz, ancak Redis makalesi [için Azure Önbelleği ile Redis komut satırı aracının nasıl kullanılacağı](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool) yla ilgili yönergeleri izleyerek araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak gibi bir yardımcı program `stunnel` kullanabilirsiniz.
 >
 >
 
@@ -281,15 +281,15 @@ Redis Veritabanları, aynı Redis örneğindeki verilerin mantıksal bir ayrım�
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>Redis'e bağlanmak için SSL olmayan bağlantı noktasını ne zaman etkinleştirmeliyim?
-Redis sunucusu yerel olarak SSL'yi desteklemez, ancak Redis için Azure Önbelleği desteklemez. Redis için Azure Önbelleğine bağlanıyorsanız ve istemciniz StackExchange.Redis gibi SSL'yi destekliyorsa, SSL'yi kullanmalısınız.
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>Redis'e bağlanmak için TLS/SSL olmayan bağlantı noktasını ne zaman etkinleştirmeliyim?
+Redis sunucusu TLS'yi yerel olarak desteklemez, ancak Redis için Azure Önbelleği desteklemez. Redis için Azure Önbellek'e bağlanıyorsanız ve istemciniz StackExchange.Redis gibi TLS'leri destekliyorsa, TLS kullanmanız gerekir.
 
 >[!NOTE]
->Redis örnekleri için yeni Azure Önbelleği varsayılan olarak SSL olmayan bağlantı noktası devre dışı bırakılır. İstemciniz SSL'yi desteklemiyorsa, Redis makalesi [için Azure Önbelleğindeki Önbelleği Yapılandır'ın](cache-configure.md) [Erişim bağlantı noktaları](cache-configure.md#access-ports) bölümündeki yönergeleri izleyerek SSL olmayan bağlantı noktasını etkinleştirmeniz gerekir.
+>TLS olmayan bağlantı noktası, Redis örnekleri için yeni Azure Önbelleği için varsayılan olarak devre dışı bırakılır. Müşteriniz TLS'yi desteklemiyorsa, Redis makalesi [için Azure Önbelleğindeki Önbelleği Yapılandır'ın](cache-configure.md) [Access bağlantı noktaları](cache-configure.md#access-ports) bölümündeki yönergeleri izleyerek TLS olmayan bağlantı noktasını etkinleştirmeniz gerekir.
 >
 >
 
-Redis gibi `redis-cli` Redis araçları SSL bağlantı noktası ile çalışmaz, `stunnel` ancak Redis Preview Release blog gönderisi için [Duyuru ASP.NET Oturum Devlet Sağlayıcısı'ndaki](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) yönergeleri izleyerek araçları SSL bağlantı noktasına güvenli bir şekilde bağlamak gibi bir yardımcı program kullanabilirsiniz.
+Redis gibi `redis-cli` Redis araçları TLS bağlantı noktasıyla çalışmaz, `stunnel` ancak Redis Preview Release blog gönderisi için [Duyuru ASP.NET Oturum Devlet Sağlayıcısı'ndaki](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) yönergeleri izleyerek araçları TLS bağlantı noktasına güvenli bir şekilde bağlamak gibi bir yardımcı program kullanabilirsiniz.
 
 Redis araçlarını indirme yle ilgili talimatlar için [Redis komutlarını nasıl çalıştırabilirim bölümüne bakın.](#cache-commands)
 
@@ -312,7 +312,7 @@ Redis araçlarını indirme yle ilgili talimatlar için [Redis komutlarını nas
 * Sisteminizi, yama ve arıza nedeniyle bağlantı hatalarını işleyebilir şekilde [geliştirin.](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)
 
 #### <a name="performance-testing"></a>Performansı test etme
-* Kendi perf testlerinizi yazmadan önce olası bir iş için bir his almak için kullanarak `redis-benchmark.exe` başlayın. `redis-benchmark` SSL'yi desteklemediği için, testi çalıştırmadan önce [SSL olmayan bağlantı noktasını Azure portalı üzerinden etkinleştirmeniz](cache-configure.md#access-ports) gerekir. Örneğin, [önbelleğimin performansını nasıl kıyaslayabilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* Kendi perf testlerinizi yazmadan önce olası bir iş için bir his almak için kullanarak `redis-benchmark.exe` başlayın. `redis-benchmark` TLS'yi desteklemediği için, testi çalıştırmadan önce [TLS'siz bağlantı noktasını Azure portalı üzerinden etkinleştirmeniz](cache-configure.md#access-ports) gerekir. Örneğin, [önbelleğimin performansını nasıl kıyaslayabilirim ve test edebilirim?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * Sınama için kullanılan VM istemcisi, Redis örneğiniz için Azure Önbelleğiile aynı bölgede olmalıdır.
 * Onlar daha iyi donanım alabildikleri ve en iyi sonuçları vermeleri gerektiğinden, müşteriniz için Dv2 VM Serisi kullanmanızı öneririz.
 * Seçtiğiniz istemci VM'nin test ettiğiniz önbellek kadar en az bilgi işlem ve bant genişliği özelliğine sahip olduğundan emin olun.
@@ -381,7 +381,7 @@ Bu bilgiler göz önüne alındığında, müşterilerin IOCP ve WORKER iş par�
 
 Bu ayarı yapılandırma:
 
-* [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) yöntemini kullanarak bu ayarı programlı olarak değiştirmenizi `global.asax.cs`öneririz. Örnek:
+* [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) yöntemini kullanarak bu ayarı programlı olarak değiştirmenizi `global.asax.cs`öneririz. Örneğin:
 
 ```cs
 private readonly int minThreads = 200;

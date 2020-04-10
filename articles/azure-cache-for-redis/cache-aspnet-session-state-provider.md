@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 25cef95e2d01012506148f03be45104e455e1fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530283"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010911"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure için Redis Cache için ASP.NET Oturum Durumu Sağlayıcısı
 
@@ -82,10 +82,10 @@ Yorumlanan bölüm, her öznitelik için özniteliklerin ve örnek ayarların bi
 Öznitelikleri Microsoft Azure portalındaki önbellek bıçağınızdaki değerlerle yapılandırın ve diğer değerleri istediğiniz gibi yapılandırın. Önbellek özelliklerinize erişim le ilgili talimatlar [için](cache-configure.md#configure-azure-cache-for-redis-settings)bkz.
 
 * **ana bilgisayar** – önbellek bitiş noktanızı belirtin.
-* **bağlantı noktası** – ssl ayarlarına bağlı olarak SSL olmayan bağlantı noktasınızı veya SSL bağlantı noktasınızı kullanın.
+* **bağlantı noktası** – TLS ayarlarına bağlı olarak TLS/SSL olmayan bağlantı noktasınızı veya TLS/SSL bağlantı noktasınızı kullanın.
 * **accessKey** – önbelleğiniz için birincil veya ikincil anahtarı kullanın.
-* **ssl – ssl** ile önbellek/istemci iletişimini güvence altına almak istiyorsanız doğru; aksi takdirde yanlış. Doğru bağlantı noktasını belirttiğinden emin olun.
-  * SSL olmayan bağlantı noktasın yeni önbellekler için varsayılan olarak devre dışı bırakılmıştır. SSL bağlantı noktasını kullanmak için bu ayarın doğru olduğunu belirtin. SSL olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, önbellek konusunu [Yapılandır'daki](cache-configure.md) [Erişim Bağlantı Noktaları](cache-configure.md#access-ports) bölümüne bakın.
+* **ssl** – TLS ile önbellek/istemci iletişimini güvence altına almak istiyorsanız doğrudur; aksi takdirde yanlış. Doğru bağlantı noktasını belirttiğinden emin olun.
+  * TLS olmayan bağlantı noktası, yeni önbellekler için varsayılan olarak devre dışı bırakılır. TLS bağlantı noktasını kullanmak için bu ayarın doğru olduğunu belirtin. TLS olmayan bağlantı noktasını etkinleştirme hakkında daha fazla bilgi için, önbellek konusunu [Yapılandır'daki](cache-configure.md) [Erişim Bağlantı Noktaları](cache-configure.md#access-ports) bölümüne bakın.
 * **throwOnError** – bir hata varsa bir özel durum atılması istiyorsanız doğru, ya da işlemin sessizce başarısız olmasını istiyorsanız yanlış. Statik Microsoft.Web.Redis.RedisSessionStateProvider.LastException özelliğini denetleyerek bir hata olup olmadığını denetleyebilirsiniz. Varsayılan değer doğrudur.
 * **retryTimeoutInMilliseconds** – Başarısız işlemler milisaniye cinsinden belirtilen bu aralıkta yeniden denener. İlk yeniden deneme 20 milisaniye sonra gerçekleşir ve yeniden denemetimeoutInMilliseconds aralığı sona erene kadar her saniye oluşur. Bu aralıktan hemen sonra, işlem son bir kez yeniden denendir. İşlem hala başarısız olursa, throwOnError ayarına bağlı olarak özel durum arayana geri atılır. Varsayılan değer 0'dır, bu da yeniden deneme yapılmadığı anlamına gelir.
 * **databaseId** – Önbellek çıktısı verileri için hangi veritabanının kullanılacağını belirtir. Belirtilmemişse, 0'ın varsayılan değeri kullanılır.

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 17404388b2b6c3fee1c6ab666f7233a66817f642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082862"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010520"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Anahtar Kasası için Azure Olay Izgara olay şeması (önizleme)
 
@@ -25,13 +25,13 @@ Azure Anahtar Kasası hesabı aşağıdaki olay türlerini oluşturur:
 | Olay tam adı | Olay görüntü adı | Açıklama |
 | ---------- | ----------- |---|
 | Microsoft.KeyVault.CertificateNewVersionCreated | Sertifika Yeni Sürüm Oluşturuldu | Yeni bir sertifika veya yeni sertifika sürümü oluşturulduğunda tetiklenir. |
-| Microsoft.KeyVault.CertificateNearExpiry | Son Kullanma Tarihine Yakın Sertifika | Sertifikanın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.CertificateNearExpiry | Son Kullanma Tarihine Yakın Sertifika | Sertifikanın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Olay son kullanma tarihinden 30 gün önce tetiklenir.) |
 | Microsoft.KeyVault.CertificateExpired | Sertifikanın Süresi Doldu | Sertifikanın süresi dolduğunda tetiklenir. |
 | Microsoft.keyvault.keynewversionCreated | Anahtar Yeni Sürüm Oluşturuldu | Yeni bir anahtar veya yeni anahtar sürümü oluşturulduğunda tetiklenir. |
-| Microsoft.KeyVault.KeyNearExpiry | Son Kullanma Tarihine Yakın Anahtar | Anahtarın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.KeyNearExpiry | Son Kullanma Tarihine Yakın Anahtar | Anahtarın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Olay son kullanma tarihinden 30 gün önce tetiklenir.) |
 | Microsoft.KeyVault.KeyExpired | Anahtar Süresi Doldu | Bir anahtarın süresi dolduğunda tetiklenir. |
 | Microsoft.keyvault.secretnewversionCreated | Gizli Yeni Sürüm Oluşturuldu | Yeni bir gizli veya yeni gizli sürüm oluşturulduğunda tetiklenir. |
-| Microsoft.KeyVault.SecretNearExpiry | Sona Erme Tarihine Yakın Gizli | Bir sırrın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Varsayılan değer, son kullanma tarihinden 30 gün öncedir.) |
+| Microsoft.KeyVault.SecretNearExpiry | Sona Erme Tarihine Yakın Gizli | Bir sırrın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Olay son kullanma tarihinden 30 gün önce tetiklenir.) |
 | Microsoft.KeyVault.SecretExpired | Gizli Süresi Doldu | Bir sırrın süresi dolduğunda tetiklenir. |
 
 ## <a name="event-examples"></a>Olay örnekleri

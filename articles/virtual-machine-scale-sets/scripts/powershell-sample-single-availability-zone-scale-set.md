@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell Örnekleri - Tek bölgeli ölçek kümesi
 description: Bu betik, tek bir Kullanılabilirlik Alanı’nda Windows Server 2016 çalıştıran bir sanal makine ölçek kümesi oluşturur.
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: sample
 ms.date: 04/05/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: a9b3547844d0b2dcca58a95d04c9cb81d32fa52c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 21d83b3e39a2002725731c04f1727a0e50af335a
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76276425"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81008599"
 ---
 # <a name="create-a-single-zone-virtual-machine-scale-set-with-powershell"></a>PowerShell ile tek bölgeli sanal makine ölçek kümesi oluşturma
 Bu betik, tek bir Kullanılabilirlik Alanı’nda Windows Server 2016 çalıştıran bir sanal makine ölçek kümesi oluşturur. Betiği çalıştırdıktan sonra sanal makineye RDP üzerinden erişebilirsiniz.

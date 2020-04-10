@@ -12,12 +12,12 @@ ms.date: 08/30/2019
 ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3569d0404f6c0c7f78344ba53733ba2c0c43d979
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0c807390f043527aa721e9c1c2a9269ff0dee6b9
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880814"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990982"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Oturum açın ve bir iOS veya macOS uygulamasından Microsoft Graph'ı arayın
 
@@ -837,8 +837,3 @@ Oturum açmanızdan sonra, uygulama Microsoft Graph `/me` bitiş noktasından d�
 ## <a name="get-help"></a>Yardım alın
 
 Bu [öğreticiyle](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options) veya Microsoft kimlik platformunda sorun yaşıyorsanız Yardım ve desteği ziyaret edin.
-
-Microsoft kimlik platformlarını geliştirmemize yardımcı olun. Kısa bir iki soruluk anketi tamamlayarak bize ne düşündüğünüzü söyleyin.
-
-> [!div class="nextstepaction"]
-> [Microsoft kimlik platformu anketi](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyKrNDMV_xBIiPGgSvnbQZdUQjFIUUFGUE1SMEVFTkdaVU5YT0EyOEtJVi4u)

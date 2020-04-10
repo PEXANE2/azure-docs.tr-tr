@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 6c7c041565f6376e7f8b8b84f5076b30c1eec7bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2821ee637b2562b5287dd3d59cf943b3dcb7ef97
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278122"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010894"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Redis için Premium Azure Önbelleği için Sanal Ağ Desteği nasıl yapılandırılır?
 Redis için Azure Önbellek, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek tekliflerine sahiptir. VNet, buluttaki özel bir ağdır. Redis örneği için bir Azure Önbelleği bir VNet ile yapılandırıldığında, genel olarak ele alınamaz ve yalnızca VNet içindeki sanal makinelerden ve uygulamalardan erişilebilir. Bu makalede, Redis örneği için birinci sınıf bir Azure Önbelleği için sanal ağ desteğinin nasıl yapılandırılabildiği açıklanmaktadır.
@@ -118,7 +118,7 @@ Dokuz giden bağlantı noktası gereksinimleri vardır. Bu aralıklarda giden is
 
 #### <a name="geo-replication-peer-port-requirements"></a>Coğrafi çoğaltma eş bağlantı noktası gereksinimleri
 
-Azure Sanal Ağlar'daki önbellekler arasında coğrafi çoğaltma kullanıyorsanız, önerilen yapılandırmanın hem gelen hem de giden yol tariflerindeki tüm alt ağ için 15000-15999 bağlantı noktalarının engelini kaldırmak olduğunu, böylece tüm çoğaltma bileşenlerinin alt ağda, gelecekteki bir coğrafi hata durumunda bile birbirleriyle doğrudan iletişim kurabilir.
+Azure Sanal Ağlar'daki önbellekler arasında coğrafi çoğaltma kullanıyorsanız, önerilen yapılandırmanın hem gelen hem de giden yönlerdeki tüm alt ağ için 15000-15999 bağlantı noktalarının engelini kaldırmak olduğunu, böylece alt ağdaki tüm çoğaltma bileşenlerinin gelecekteki bir coğrafi hata durumunda bile birbirleriyle doğrudan iletişim kurabileceğini unutmayın.
 
 #### <a name="inbound-port-requirements"></a>Gelen bağlantı noktası gereksinimleri
 
@@ -142,9 +142,9 @@ Sekiz gelen bağlantı noktası aralığı gereksinimleri vardır. Bu aralıklar
 Redis için Azure Önbelleği için başlangıçta sanal ağda karşılanmayan ağ bağlantısı gereksinimleri vardır. Redis için Azure Önbelleği, sanal ağ içinde kullanıldığında aşağıdaki öğelerin tüminin düzgün çalışmasını gerektirir.
 
 * Dünya çapında Azure Depolama uç noktalarına giden ağ bağlantısı. Buna, Redis için Azure Önbelleği ile aynı bölgede bulunan uç noktaların yanı sıra **diğer** Azure bölgelerinde bulunan depolama bitiş noktaları da dahildir. Azure Depolama uç noktaları aşağıdaki DNS etki alanları altında çözüme kavuşturulmaktadır: *table.core.windows.net,* *blob.core.windows.net,* *queue.core.windows.net*ve *file.core.windows.net.* 
-* *ocsp.msocsp.com,* *mscrl.microsoft.com*ve *crl.microsoft.com*giden ağ bağlantısı. Bu bağlantı, SSL işlevselliğini desteklemek için gereklidir.
+* *ocsp.msocsp.com,* *mscrl.microsoft.com*ve *crl.microsoft.com*giden ağ bağlantısı. Bu bağlantı TLS/SSL işlevselliğini desteklemek için gereklidir.
 * Sanal ağ için DNS yapılandırması, önceki noktalarda belirtilen tüm uç noktaları ve etki alanlarını çözebilme yeteneğine sahip olmalıdır. Bu DNS gereksinimleri, sanal ağ için geçerli bir DNS altyapısının yapılandırılmasını ve bakımının sağlanmasıyla karşılanabilir.
-* Aşağıdaki DNS etki alanları altında çözümleyen aşağıdaki Azure İzleme uç noktalarına giden ağ bağlantısı: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net azglobal-black.azglobal.metrics.nsatc.net , shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
+* Aşağıdaki DNS etki alanları altında çözümleyen aşağıdaki Azure İzleme uç noktalarına giden ağ bağlantısı: shoebox2-black.shoebox2.metrics.nsatc.net, north-prod2.prod2.metrics.nsatc.net, azglobal-black.azglobal.metrics.nsatc.net, shoebox2-red.shoebox2.metrics.nsatc.net, east-prod2.prod2.metrics.nsatc.net, azglobal-red.azglobal.metrics.nsatc.net.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Önbelleğimin sanal ağ üzerinde çalıştığını nasıl doğrulayabilirim?
 
@@ -157,7 +157,7 @@ Bağlantı noktası gereksinimleri önceki bölümde açıklandığı şekilde y
 
 - [Reboot](cache-administration.md#reboot) Önbellek düğümlerinin tümünün yeniden başlatılAcağını. Gerekli önbellek bağımlılıklarının tümüne ulaşılamazsa [(Gelen bağlantı noktası gereksinimlerinde](cache-how-to-premium-vnet.md#inbound-port-requirements) ve [Giden bağlantı noktası gereksinimlerinde](cache-how-to-premium-vnet.md#outbound-port-requirements)belirtildiği gibi), önbellek başarıyla yeniden başlatılamaz.
 - Önbellek düğümleri yeniden başlatıldıktan sonra (Azure portalındaki önbellek durumu tarafından bildirilen) aşağıdaki testleri gerçekleştirebilirsiniz:
-  - önbellek uç noktasını (bağlantı noktası 6380 kullanarak) önbellekle aynı VNET içinde olan bir makineden [tcping](https://www.elifulkerson.com/projects/tcping.php)kullanarak ping. Örnek:
+  - önbellek uç noktasını (bağlantı noktası 6380 kullanarak) önbellekle aynı VNET içinde olan bir makineden [tcping](https://www.elifulkerson.com/projects/tcping.php)kullanarak ping. Örneğin:
     
     `tcping.exe contosocache.redis.cache.windows.net 6380`
     
@@ -180,7 +180,7 @@ Aşağıdaki bağlantı dizesine benzer IP adresini kullanmaktan kaçının:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False`
 
-DNS adını çözemiyorsanız, bazı istemci kitaplıkları `sslHost` StackExchange.Redis istemcisi tarafından sağlanan yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örnek:
+DNS adını çözemiyorsanız, bazı istemci kitaplıkları `sslHost` StackExchange.Redis istemcisi tarafından sağlanan yapılandırma seçeneklerini içerir. Bu, sertifika doğrulama için kullanılan ana bilgisayar adını geçersiz kılmanızı sağlar. Örneğin:
 
 `10.128.2.84:6380,password=xxxxxxxxxxxxxxxxxxxx,ssl=True,abortConnect=False;sslHost=[mycachename].redis.windows.net`
 
@@ -220,13 +220,13 @@ Mümkünse, aşağıdaki yapılandırmayı kullanmanız önerilir:
 
 Bu adımların birleşik etkisi, alt ağ düzeyi UDR'nin ExpressRoute zorunlu tünellemeden önce geldiği ve böylece Redis için Azure Önbelleğinden giden Internet erişiminin sağlanmasıdır.
 
-ExpressRoute'u kullanarak şirket içi bir uygulamadan Redis için Bir Azure Önbelleğine bağlanmak performans nedenlerinden dolayı tipik bir kullanım senaryosu değildir (Redis istemcileri için en iyi performans Azure Önbelleği Redis için Azure Önbelleği ile aynı bölgede olmalıdır) .
+ExpressRoute'u kullanarak şirket içi bir uygulamadan Redis için Bir Azure Önbelleğine bağlanmak, performans nedenlerinden dolayı tipik bir kullanım senaryosu değildir (Redis istemcileri için en iyi performans Azure Önbelleği için Redis için Azure Önbelleği, Redis için Azure Önbelleği ile aynı bölgede olmalıdır).
 
 >[!IMPORTANT] 
 >UDR'de tanımlanan rotalar, ExpressRoute yapılandırması tarafından reklamı yapılan rotalardan önce gelmek için yeterince özel **olmalıdır.** Aşağıdaki örnek, geniş 0.0.0.0/0 adres aralığını kullanır ve bu nedenle, daha spesifik adres aralıkları kullanılarak rota reklamları tarafından yanlışlıkla geçersiz kılınabilir.
 
 >[!WARNING]  
->Redis için Azure Önbelleği, genel bakış **yolundan özel eşleme yoluna doğru yanlış bir şekilde çapraz reklam veren**ExpressRoute yapılandırmalarıyla desteklenmez. Genel olarak yapılandırılan ExpressRoute yapılandırmaları, büyük bir Microsoft Azure IP adres aralığı kümesi için Microsoft'tan rota reklamları alır. Bu adres aralıkları özel bakış yolunda yanlış bir şekilde çapraz olarak duyurulursa, sonuç olarak Redis örneğinin alt ağındaki Azure Önbelleğinden gelen tüm giden ağ paketleri müşterinin şirket içi ağına yanlış bir şekilde zorla tünel kazılmış olur. Altyapı. Bu ağ akışı Redis için Azure Önbelleğini kırar. Bu sorunun çözümü, özel bakan yolu için kamu bakan yolu çapraz reklam yolları durdurmaktır.
+>Redis için Azure Önbelleği, genel bakış **yolundan özel eşleme yoluna doğru yanlış bir şekilde çapraz reklam veren**ExpressRoute yapılandırmalarıyla desteklenmez. Genel olarak yapılandırılan ExpressRoute yapılandırmaları, büyük bir Microsoft Azure IP adres aralığı kümesi için Microsoft'tan rota reklamları alır. Bu adres aralıkları özel bakış yolunda yanlış bir şekilde çapraz olarak duyurulursa, sonuç olarak Redis örneğinin alt ağındaki Azure Önbelleğinden gelen tüm giden ağ paketleri, müşterinin şirket içi ağ altyapısına yanlış şekilde zorla tünel kazılmış olur. Bu ağ akışı Redis için Azure Önbelleğini kırar. Bu sorunun çözümü, özel bakan yolu için kamu bakan yolu çapraz reklam yolları durdurmaktır.
 
 
 Kullanıcı tanımlı rotalardaki arka plan bilgileri bu [genel bakışta](../virtual-network/virtual-networks-udr-overview.md)mevcuttur.

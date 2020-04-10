@@ -2,24 +2,23 @@
 title: Toplu İşlem için Azure Güvenlik Taban Çizgisi
 description: Toplu İşlem için Azure Güvenlik Taban Çizgisi
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 02/28/2020
+ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a9569c1f5de797c77f447b5df15e85a57e8be84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472937"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011642"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Toplu İşlem için Azure Güvenlik Taban Çizgisi
 
 Toplu İşlem için Azure Güvenlik Taban Çizgisi, dağıtımınızın güvenlik duruşunu geliştirmenize yardımcı olacak öneriler içerir.
 
-Bu hizmetlerin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
+Bu hizmetin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
 
 Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)görün.
 
@@ -30,7 +29,6 @@ Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https:/
 ### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Sanal Ağınızdaki Ağ Güvenlik Grupları veya Azure Güvenlik Duvarı'nı kullanarak kaynakları koruyun
 
 **Yönerge**: Azure Toplu Iş havuzu(lar)ı sanal ağ içinde dağıtın. Havuz bilgi işlem düğümlerinin diğer sanal makinelerle veya şirket içi bir ağla güvenli bir şekilde iletişim kurmasına izin vermek için, havuzu bir Azure sanal ağının alt ağında sağlayabilirsiniz. Ayrıca, Havuzunuzu sanal ağ içinde dağıtmak, tek tek düğümlerin ağ arabirimlerinin (NIC) yanı sıra alt ağı güvenli hale getirmek için kullanılan ağ güvenlik grubu (NSG) üzerinde denetim sağlar. NSG'yi, Internet'te yalnızca güvenilen IP(ler)/konumlardan gelen trafiğe izin verecek şekilde yapılandırın.
-
 
 Sanal Ağ içinde Azure Toplu Birleştirme Havuzu oluşturma:
 
@@ -44,16 +42,13 @@ https://docs.microsoft.com/azure/batch/batch-virtual-network
 
 **Kılavuz**: Toplu Iş havuzunuzla ilişkili sanal ağ/ ağ güvenlik grubu (NSG) ile ilgili Azure Güvenlik Merkezi'ni ve ağ koruma önerilerini düzeltin. Toplu Iş havuzunuzu korumak için kullanılan NSG akış günlüklerini etkinleştirin ve trafik denetimi için günlükleri bir Azure Depolama Hesabına gönderin. Ayrıca NSG akış günlüklerini bir Azure Log Analytics çalışma alanına gönderebilir ve Azure bulutunuzdaki trafik akışıhakkında öngörüler sağlamak için Azure Trafik Analizi'ni kullanabilirsiniz. Azure Trafik Analitiği'nin bazı avantajları, ağ etkinliğini görselleştirebilme ve etkin noktaları belirleyebilme, güvenlik tehditlerini belirleyebilme, trafik akışı desenlerini anlama ve ağ yanlış yapılandırmalarını saptabilme yeteneğidir.
 
-
 NSG Akış Günlükleri Nasıl Etkinleştirilir:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-
 Trafik Analizi ni etkinleştirme ve kullanma:
 
 https://docs.microsoft.com/azure/network-watcher/traffic-analytics
-
 
 Azure Güvenlik Merkezi tarafından sağlanan Ağ Güvenliğini Anlayın:
 
@@ -65,7 +60,7 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 ### <a name="13-protect-critical-web-applications"></a>1.3: Kritik Web Uygulamalarını Koruyun
 
-**Kılavuz**: Geçerli değildir, Benchmark Azure Uygulama Hizmeti veya IaaS örneklerinde çalışan web uygulamaları için tasarlanmıştır.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -75,11 +70,9 @@ https://docs.microsoft.com/azure/security-center/security-center-network-recomme
 
 **Kılavuz :** DDoS saldırılarına karşı korunmak için Azure Toplu İşlem havuzunuzu koruyan sanal ağda Azure DDoS (dağıtılmış hizmet reddi) Standart korumayı etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimi reddetmek için Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı kullanın.
 
-
 DDoS koruması nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı Anlayın:
 
@@ -93,7 +86,6 @@ https://docs.microsoft.com/azure/security-center/security-center-alerts-service-
 
 **Yönerge**: Azure Toplu İş havuzunuzu korumak için kullanılan ağ güvenlik grubunda (NSG) akış günlüklerini etkinleştirin ve trafik denetimi için günlükleri bir Azure Depolama Hesabı'na gönderin.
 
-
 NSG Akış Günlükleri Nasıl Etkinleştirilir:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
@@ -106,22 +98,17 @@ https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-loggin
 
 **Yönlendirme**: Uyumluluk amacıyla gerekliyse, Azure Marketi'nden, yük denetimi yetenekleriyle izinsiz giriş algılama sistemleri (IDS) ve izinsiz giriş önleme sistemleri (IPS) işlevlerini destekleyen bir ağ sanal cihazı seçin.
 
-
 Yük denetimine dayalı izinsiz giriş algılama ve/veya önleme bir gereklilik değilse, tehdit istihbaratına sahip Azure Güvenlik Duvarı kullanılabilir. Azure Güvenlik Duvarı tehdit zekası tabanlı filtreleme, bilinen kötü amaçlı IP adreslerine ve etki alanlarındaki trafiği uyarabilir ve reddedebilir. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından kaynaklanmaktadır.
 
-
 Azure Toplu Havuz düğümlerinizle aynı sanal ağda herkese açık bir IP adresiyle Azure Güvenlik Duvarı'nı dağıtın. Internet'teki güvenilen konumlar ile bireysel havuz düğümlerinizin özel IP adresleri arasında ağ adresi çevirisi (NAT) kurallarını yapılandırın. Azure Güvenlik Duvarı'nda, Tehdit İstihbaratı altında, bilinen kötü amaçlı IP adreslerine ve etki adlarına/gelen trafiği uyarmak ve engellemek için "Uyarı ve reddet" yapılatın. IP adresleri ve etki alanları Microsoft Threat Intelligence akışından elde edilir ve yalnızca en yüksek güven kayıtları dahildir. 
-
 
 Sanal Ağ içinde Azure Toplu Birleştirme Havuzu oluşturma:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
 
-
 Azure Güvenlik Duvarı nasıl dağıtılır:
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
-
 
 Azure Marketi:
 
@@ -143,7 +130,6 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 **Kılavuz**: Ağ güvenlik gruplarındaki ağ erişim denetimlerini veya Azure Toplu Iş havuzunuzun (lar) ilişkili Azure Güvenlik Duvarlarını tanımlamak için sanal ağ hizmeti etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında servis etiketi adını (örn. ApiManagement) belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz. Microsoft, hizmet etiketinin kapsadığı adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
 
-
 Hizmet etiketlerini anlama ve kullanma:
 
 https://docs.microsoft.com/azure/virtual-network/service-tags-overview
@@ -155,8 +141,6 @@ https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Ağ Aygıtları için Standart Güvenlik Yapılandırmalarını Koruyun
 
 **Yönerge**: Azure Toplu İş havuzunuzla ilişkili ağ kaynakları için Azure İlkesi ile standart güvenlik yapılandırmaları tanımlayın ve uygulayın. Azure Toplu Iş havuzlarınızın ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.Batch" ve "Microsoft.Network" ad alanlarında Azure İlkesi takma adlarını kullanın.
-
-
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
@@ -170,22 +154,17 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Kılavuz**: Ağ hizmet grupları (NSG'ler) ve Azure toplu iş havuzlarınızla ilişkili ağ güvenliği ve trafik akışıyla ilgili diğer kaynaklar için etiketlerkullanın. Tek tek NSG kuralları için, bir ağa/aktan trafiğin alınmasına izin veren kurallar için iş gereksinimini ve/veya süresini (vb.) belirtmek için "Açıklama" alanını kullanın.
 
-
 Tüm kaynakların etiketlerle oluşturulduğundan emin olmak ve varolan etiketlenmemiş kaynakları size bildirmek için etiketlemeyle ilgili "Etiket ve değeri gerektir" gibi yerleşik Azure ilke tanımlarından herhangi birini kullanın.
 
-
 Azure PowerShell veya Azure CLI'yi, etiketlerine dayalı kaynaklara bakmak veya eylemler gerçekleştirmek için kullanabilirsiniz.
-
 
 Etiketler oluşturma ve kullanma:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-
 Sanal ağ nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/virtual-network/quick-create-portal
-
 
 NSG nasıl oluşturulur:
 
@@ -223,8 +202,6 @@ Azure Monitor'da uyarı oluşturma:https://docs.microsoft.com/azure/azure-monito
 
 **Kılavuz**: Küme aygıtları tarafından oluşturulan güvenlik verilerini toplamak için Azure Toplu İş hesabından Azure Monitor'a aktarılır. Çevredeki tehditleri algılamak ve yanıtlamak için özel sorgulardan yararlanın.  Azure Toplu Iş Düzeyi düzeyi izleme için, iş, görev, düğüm ve havuzlar da dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Toplu İş API'lerini kullanın.
 
-
-
 Azure Toplu İş hesabından Azure Monitor'a nasıl binilir:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -237,14 +214,11 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Kılavuz**: Azure Toplu Hesap düzeyi izleme için, Azure Monitor özelliklerini kullanarak her Toplu hesabı izleyin. Azure Monitor, havuzlar, işler ve görevler gibi Toplu Iş hesabı düzeyinde kapsama giren kaynaklar için ölçümler ve isteğe bağlı tanılama günlükleri toplar. Toplu Iş hesabınızdaki etkinlikleri izlemek ve sorunları tanılamak için bu verileri el ile veya programlı olarak toplayın ve tüketin.
 
-
 Azure Toplu Iş düzeyi izleme için, iş, görev, düğüm ve havuzlar da dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Azure Toplu İş API'lerini kullanın.
-
 
 Azure Toplu Iş Düzeyi izleme ve günlüğe kaydetme nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Toplu kaynak düzeyinde izlemeyi anlayın:
 
@@ -258,14 +232,11 @@ https://docs.microsoft.com/azure/batch/monitoring-overview#batch-resource-monito
 
 **Yönlendirme**: Azure Monitor, Azure Toplu İş hesabınızdaki kaynaklar için ölçümler ve tanılama günlükleri toplar. Azure Toplu İş hesabınızı izlemek ve sorunları tanılamak için bu verileri çeşitli yollarla toplayın ve tüketin. Bir metrik belirli bir değere ulaştığında bildirimleri almak için metrik uyarıları da yapılandırabilirsiniz.
 
-
 Gerekirse, yerel işletim sistemi günlüklerine erişmek için Güvenli Kabuk (SSH) veya Uzak Masaüstü Protokolü (RDP) aracılığıyla bireysel havuz düğümlerinize bağlanabilirsiniz.
-
 
 Azure Toplu İş hesabınızdan tanılama günlükleri nasıl toplanır:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics#batch-diagnostics
-
 
 Azure Toplu Iş havuzu düğümlerinize uzaktan nasıl bağlanabilirsiniz:
 
@@ -279,11 +250,9 @@ https://docs.microsoft.com/azure/batch/batch-api-basics#error-handling
 
 **Kılavuz**: Azure Monitor'a Dahili Azure Toplu Hesabı. Kullanılan Azure Günlük Analizi çalışma alanının kuruluşunuzun uyumluluk yönetmeliklerine göre günlük saklama süresi ne zaman ayarlandığından emin olun
 
-
 Azure Toplu İşlem izleme ve günlüğe kaydetme nasıl yapılandırılır:
 
 https://docs.microsoft.com/azure/batch/monitoring-overview
-
 
 Azure Günlük Analizi çalışma alanı bekletme süresi nasıl yapılandırılabilen:
 
@@ -297,7 +266,6 @@ https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage
 
 **Yönerge**: Belirli bir metnin değeri belirli bir eşiği geçtiğinde tetikleyen Azure Toplu Iş metrik uyarıları oluşturun.
 
-
 Azure Toplu Iş metrik uyarıları nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/batch/batch-diagnostics
@@ -309,7 +277,6 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Anormal Etkinlik Uyarıları Etkinleştir
 
 **Yönerge**: Belirli bir metnin değeri belirli bir eşiği geçtiğinde tetikleyen Azure Toplu Iş metrik uyarıları oluşturun.
-
 
 Azure Toplu Iş metrik uyarıları nasıl yapılandırılabilen:
 
@@ -351,19 +318,15 @@ https://docs.microsoft.com/azure/batch/batch-diagnostics
 
 **Yönerge**: Azure Toplu İş havuzunun yanı sıra oluşturduğunuz diğer hesapların sağlanması sırasında oluşturulan yerel yönetim hesabının kaydını koruyun. Ayrıca, Azure Etkin Dizin (AAD) tümleştirmesi kullanılıyorsa, AAD'de açıkça atanması gereken ve bu nedenle sorgulanabilen yerleşik roller vardır. Yönetim gruplarına üye hesapları bulmak için geçici sorgular gerçekleştirmek için AAD PowerShell modüllerini kullanın.
 
-
 Ayrıca, Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi önerilerini de kullanabilirsiniz.
-
 
 Nasıl PowerShell ile AAD bir dizin rolü almak için:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-
 PowerShell ile AAD'de dizin rolü ne kadar çok şey elde edilir:
 
 https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
-
 
 Azure Güvenlik Merkezi ile kimlik ve erişim nasıl izlenir:
 
@@ -377,7 +340,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Yol gösterici**: Azure Toplu İş havuzu nu oluştururken, yerel makine hesapları oluşturma seçeneği sunulur. Değiştirilebilen varsayılan parola yoktur, ancak Güvenli Kabuk (SSH) ve Uzak Masaüstü Protokolü (RDP) erişimi için farklı parolalar belirtebilirsiniz. Azure Toplu Birleştirme Havuzu yapılandırıldıktan sonra, Azure portalındaki tek tek düğümler için veya Azure Kaynak Yöneticisi API aracılığıyla rasgele bir kullanıcı oluşturabilirsiniz.
 
-
 Belirli bir bilgi işlem düğümüne kullanıcı ekleme:
 
 https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
@@ -390,14 +352,11 @@ https://docs.microsoft.com/rest/api/batchservice/computenode/adduser
 
 **Kılavuz**: Azure Toplu İş Uygulamaları için Kimlik Doğrulamasını Azure Etkin Dizini ile tümleştirin. Özel yönetim hesaplarının kullanımı yla ilgili ilke ler ve yordamlar oluşturun.
 
-
 Ayrıca, Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi önerilerini de kullanabilirsiniz.
-
 
 Azure Active Directory ile Toplu Iş uygulamalarının kimliğinin doğrulanması:
 
 https://docs.microsoft.com/azure/batch/batch-aad-auth
-
 
 Azure Güvenlik Merkezi ile kimlik ve erişim nasıl izlenir:
 
@@ -418,13 +377,12 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 ### <a name="35-use-multifactor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Tüm Azure Active Directory tabanlı erişim için Çok Faktörlü Kimlik Doğrulama'yı kullanın.
 
 **Kılavuz**: Azure Toplu İş Uygulamaları için Kimlik Doğrulamasını Azure Etkin Dizini (AAD) ile tümleştirin. AAD çok faktörlü kimlik doğrulamasını (MFA) etkinleştirin ve Azure Güvenlik Merkezi Kimlik ve Erişim Yönetimi önerilerini izleyin.
- 
 
+ 
 
 Azure'da MFA nasıl etkinleştirilir:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
-
 
 Azure Güvenlik Merkezi'nde kimlik ve erişim nasıl izlenir:
 
@@ -438,11 +396,9 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Yönlendirme**: Azure Toplu İş kaynaklarınızda oturum açmak ve yapılandırmak üzere yapılandırılan çok faktörlü kimlik doğrulama (MFA) ile PAW'ları (ayrıcalıklı erişim iş istasyonları) kullanın.
 
-
 Ayrıcalıklı Erişim İş İstasyonları hakkında bilgi edinin:
 
 https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
-
 
 Azure'da MFA nasıl etkinleştirilir:
 
@@ -456,11 +412,9 @@ https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getst
 
 **Kılavuz**: Azure Toplu İş Uygulamaları için Azure Toplu İş Dizini (AAD) ile tümleşik kimlik doğrulaması varsa, çevrede şüpheli veya güvenli olmayan etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Active Directory güvenlik raporlarını kullanın. Kimlik ve erişim etkinliğini izlemek için Azure Güvenlik Merkezi'ni kullanın.
 
-
 Riskli etkinlikler için işaretlenen Azure AD kullanıcılarını nasıl tanımlarım:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
-
 
 Azure Güvenlik Merkezi'nde kullanıcıların kimlik ve erişim etkinliğini izleme:
 
@@ -474,8 +428,6 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Kılavuz**: Azure Toplu İş Uygulamaları için Azure Toplu İş Dizini ile tümleşik kimlik doğrulaması varsa, Yalnızca IP adresi aralıkları veya ülke/bölgelerinin belirli mantıksal gruplandırmalarından erişime izin vermek için Koşullu Erişim Adlandırılmış Konumlar'ı kullanabilirsiniz.
 
-
-
 Azure'da Adlandırılmış Konumlar nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
@@ -488,11 +440,9 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 **Rehberlik**: Merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory 'i (AAD) kullanın ve Azure Toplu İş Uygulamaları için Kimlik Doğrulama'yı AAD ile tümleştirin. AAD, istirahatte ve aktarım sırasında veriler için güçlü şifreleme kullanarak verileri korur. AAD ayrıca kullanıcı kimlik bilgilerini tuzlar, iş lerle ve güvenli bir şekilde saklar.
 
-
 AAD örneğini oluşturma ve yapılandırma:
 
 https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
-
 
 AAD ile Toplu iş uygulamalarının doğrulaması:
 
@@ -506,7 +456,6 @@ https://docs.microsoft.com/azure/batch/batch-aad-auth
 
 **Rehberlik**: Azure Active Directory (AAD), eski hesapları keşfetmeye yardımcı olmak için günlükler sağlar. Ayrıca, grup üyeliklerini, kurumsal uygulamalara erişimi ve rol atamalarını verimli bir şekilde yönetmek için Azure Kimlik Erişim İncelemelerini kullanabilirsiniz. Kullanıcıların erişimi, yalnızca doğru kullanıcıların sürekli erişime sahip olduğundan emin olmak için düzenli olarak gözden geçirilebilir.
 
-
 Azure Kimlik Erişim İncelemeleri nasıl kullanılır:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
@@ -518,7 +467,6 @@ https://docs.microsoft.com/azure/active-directory/governance/access-reviews-over
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Devre Dışı Bırakılan Hesaplara Erişim Denemelerini İzle
 
 **Kılavuz**: Azure Active Directory kullanıcı hesapları için Tanılama Ayarları oluşturun, denetim günlüklerini ve oturum açma günlüklerini Azure Log Analytics çalışma alanına gönderin. Azure Log Analytics çalışma alanı içinde istediğiniz Uyarıları yapılandırın.
-
 
 Azure Etkinlik Günlükleri Azure Monitör'e nasıl entegre eleştirilir:
 
@@ -532,16 +480,13 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integ
 
 **Kılavuz :** Kullanıcı kimlikleri ile ilgili algılanan şüpheli eylemlere otomatik yanıtları yapılandırmak için Azure Active Directory (AAD) Risk Algılamaları ve Kimlik Koruması özelliğini kullanın. Ayrıca, daha fazla araştırma için Azure Sentinel'e veri sindirebilirsiniz.
 
-
 AAD riskli oturum açma nasıl görüntülenebilir:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-
 Kimlik Koruması risk ilkelerinin nasıl yapılandırılabilen ve etkinleştirilir:
 
 https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
-
 
 Azure Sentinel'e nasıl binilir:
 
@@ -553,7 +498,11 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 ### <a name="313-divprovide-microsoft-with-access-to-relevant-customer-data-during-support-scenariosbrdiv"></a>3.13: <div>Destek senaryoları sırasında Microsoft'a ilgili müşteri verilerine erişim sağlama<br></div>
 
-**Rehberlik**: Mevcut değil; Müşteri Kilit Kutusu henüz Azure Toplu İş için desteklenmedi. Müşteri Lockbox desteklenen hizmetler listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+**Rehberlik**: Mevcut değil; Müşteri Kilit Kutusu henüz Azure Toplu İş için desteklenmedi.
+ 
+Müşteri Lockbox desteklenen hizmetler listesi:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+
+
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -567,7 +516,6 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Yönerge**: Hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için etiketleri kullanın.
 
-
 Etiketler oluşturma ve kullanma:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -580,11 +528,9 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Rehberlik**: Geliştirme, test ve üretim için ayrı abonelikler ve/veya yönetim grupları uygulayın. Azure Toplu Havuzlar sanal ağ/alt ağ ile ayrılmalı, uygun şekilde etiketlenmelidir ve bir ağ güvenlik grupları (NSG) ile güvenli hale edilmelidir. Azure Toplu İşlem verileri güvenli bir Azure Depolama Hesabı içinde yer almalıdır.
 
-
 Sanal Ağ içinde Azure Toplu Birleştirme Havuzu oluşturma:
 
 https://docs.microsoft.com/azure/batch/batch-virtual-network
-
 
 Azure Depolama Hesapları nasıl güvenli hale ilir:
 
@@ -598,17 +544,13 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Kılavuz :** Azure Toplu İş Havuzunuzla ilişkili ve hassas bilgiler içeren Azure Depolama Hesapları(lar) için, Etiketler'i kullanarak bunları hassas olarak işaretleyin ve bunları Azure en iyi uygulamalarıyla güvence altına alın.
 
-
 Azure Depolama veya bilgi işlem kaynakları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
 
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Azure Depolama Hesapları nasıl güvenli hale ilir:
 
@@ -622,13 +564,11 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Rehberlik**: Tüm hassas bilgileri geçiş sırasında şifreleyin. Microsoft Azure kaynakları TLS 1.2'yi varsayılan olarak görüşür. Azure Toplu Toplu Havuzlarınıza veya veri depolarınıza (Azure Depolama Hesapları) bağlanan tüm istemcilerin TLS 1,2 veya daha büyük bir anlaşma sağlayabilmesini sağlayın.
 
-
 Azure Toplu İş verilerinizi içeren Depolama Hesabına erişmek için HTTPS'nin gerekli olduğundan emin olun.
-
 
 Toplu Taşıma sırasında Azure Depolama Hesabı Şifrelemesini Anlayın:
 
-https://docs.microsoft.com/azure/storage/blobs/security-recommendations
+https://docs.microsoft.com/azure/storage/common/storage-security-guide#encryption-in-transit
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
@@ -638,17 +578,13 @@ https://docs.microsoft.com/azure/storage/blobs/security-recommendations
 
 **Kılavuz**: Azure Toplu İş Havuzunuzla ilişkili ve hassas bilgiler içeren Azure Depolama Hesapları(lar) için, etiketleri kullanarak bunları hassas olarak işaretleyin ve bunları Azure en iyi uygulamalarıyla güvence altına alın.
 
-
 Azure Depolama veya bilgi işlem kaynakları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
 
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
 https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
 
 Azure Depolama Hesapları nasıl güvenli hale ilir:
 
@@ -662,11 +598,9 @@ https://docs.microsoft.com/azure/storage/common/storage-security-guide
 
 **Rehberlik**: Toplu İş Hesabı, Toplu Havuz(lar) ve Depolama Hesapları gibi Azure kaynaklarının yönetim düzlemine erişimi denetlemek için Azure Active Directory(AAD) Role tabanlı erişim denetimini (RBAC) kullanın.
 
-
 Azure RBAC'ı anlayın:
 
 https://docs.microsoft.com/azure/role-based-access-control/overview
-
 
 Azure'da RBAC nasıl yapılandırılmaz:
 
@@ -680,11 +614,7 @@ https://docs.microsoft.com/azure/role-based-access-control/role-assignments-port
 
 **Yönlendirme**: Azure Depolama veya bilgi işlem kaynakları için veri tanımlama, sınıflandırma ve kayıp önleme özellikleri henüz kullanılamıyor. Uyumluluk amacıyla gerekirse üçüncü taraf çözümlerini uygulayın.
 
-
-
 Microsoft tarafından yönetilen temel platform için Microsoft, tüm müşteri içeriğini hassas olarak ele almakta ve müşteri verilerinin kaybolmasına ve açığa çıkmasına karşı korunmak için büyük çaba sarf eder. Microsoft, Azure içindeki müşteri verilerinin güvenli kalmasını sağlamak için sağlam veri koruma denetimleri ve yetenekleri paketi uygulamıştır ve bunları sürdürmektedir.
-
-
 
 Azure'da müşteri verilerinin korunmasını anlayın:
 
@@ -698,8 +628,6 @@ https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 **Yönerge**: Azure Toplu İş hesabınızla ilişkili depolama hesapları için, Microsoft'un şifreleme anahtarlarını yönetmesine izin vermeniz önerilir, ancak gerekirse kendi anahtarlarınızı yönetme seçeneğiniz vardır.
 
-
-
 Azure Depolama Hesapları için şifreleme anahtarlarını yönetme:
 
 https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
@@ -712,17 +640,11 @@ https://docs.microsoft.com/azure/storage/common/storage-encryption-keys-portal
 
 **Yönerge**: Azure Toplu İş hesaplarınızla/havuzlarınızla ilgili veya ilişkili kritik Azure kaynaklarında ne zaman değişiklikler yapılacağına ilişkin uyarılar oluşturmak için Azure Etkinlik Günlüğü ile Azure Monitörünü kullanın.
 
-
-
 Tüm CRUD işlemlerini havuz verilerine karşı izlemek ve günlüğe kaydetmek için Azure Toplu Birleştirme Havuzu ile ilişkili Depolama Hesapları için Tanılama Ayarlarını yapılandırın.
-
-
 
 Azure Etkinlik Günlüğü etkinlikleri için uyarılar oluşturma:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
-
-
 
 Azure Depolama Hesabı için ek günlüğe kaydetme/denetlemeyi etkinleştirme:
 
@@ -740,7 +662,6 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **Kılavuz**: Azure Toplu Birleştirme düğümleri için güvenlik açığı yönetimi çözümlerini yönetmeksizin sorumlusunuz.
 
-
 İsteğe bağlı olarak, Rapid7, Qualys veya başka bir güvenlik açığı yönetim platformu aboneliğiniz varsa, Toplu havuz düğümlerine güvenlik açığı değerlendirme aracılarını el ile yükleyebilir ve düğümleri ilgili portal üzerinden yönetebilirsiniz.
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
@@ -751,6 +672,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **Kılavuz :** Microsoft, temel Azure Toplu Havuz düğümü görüntülerini korumak ve güncelleştirmek için. Azure Toplu Birleştirme Düğümü düğümlerinin işletim sisteminin, otomatik güncelleştirmeleri etkinleştirme, düğümleri izleme veya periyodik yeniden başlatmalar gerçekleştirme gerektirebilecek küme ömrü boyunca yamalı kalmasını sağlayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Evet
 
 **Sorumluluk**: Paylaşılan
@@ -758,6 +680,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Otomatik Üçüncü Taraf Yazılım Yama Yönetimi Çözümü Dağıt
 
 **Kılavuz :** Azure Toplu Birleştirme düğümlerinin üçüncü taraf uygulamalarının, otomatik güncelleştirmeleri etkinleştirme, düğümleri izleme veya periyodik yeniden başlatma lar gerçekleştirme gerektirebilecek küme ömrü boyunca yamalı kalmasını sağlayın.
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -787,19 +710,15 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 **Yönerge**: Aboneliğinizdeki tüm kaynakları (bilgi işlem, depolama, ağ vb.) sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın. Kiracınızda uygun (okuma) izinlere sahip olduğundan ve aboneliklerinizdeki tüm Azure aboneliklerinin yanı sıra kaynakları sıralayabildiğinizden emin olun.
 
+Kaynak Grafiği aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Azure Kaynak Yöneticisi (ARM) kaynaklarının oluşturulması ve kullanılması önerilir.
 
-Azure Kaynak Grafiği Gezgini aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Olarak Azure Kaynak Yöneticisi (ARM) kaynaklarının oluşturulması ve kullanılması önerilir.
-
-
-Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:
+Azure Graph ile sorgu oluşturma:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
 
 Azure Aboneliklerinizi görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
-
 
 Azure RBAC'ı anlayın:
 
@@ -813,7 +732,6 @@ https://docs.microsoft.com/azure/role-based-access-control/overview
 
 **Yönerge**: Meta verileri mantıksal olarak taksonomi olarak düzenlemek için meta veriler veren Azure kaynaklarına etiketler uygulayın.
 
-
 Etiketler oluşturma ve kullanma:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
@@ -826,21 +744,15 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 
 **Rehberlik**: Varlıkları düzenlemek ve izlemek için etiketlemeyi, yönetim gruplarını ve uygun olduğu durumlarda ayrı abonelikleri kullanın. Envanteri düzenli olarak uzlaştırın ve yetkisiz kaynakların abonelikten zamanında silindiğinden emin olun.
 
-
-
 Ek Azure abonelikleri oluşturma:
 
 https://docs.microsoft.com/azure/billing/billing-create-subscription
-
-
 
 Yönetim Grupları nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
-
-
-Etiketler nasıl oluşturulur ve kullanılır:
+Nasıl oluşturmak ve kullanıcı Etiketleri:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
@@ -851,6 +763,7 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 ### <a name="64-maintain-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Onaylanan Azure kaynaklarının ve yazılım başlıklarının envanterini koruyun.
 
 **Yönerge**: İşlem kaynakları için onaylanmış Azure kaynaklarının ve onaylı yazılımların listesini tanımlayın
+
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -863,14 +776,12 @@ https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tag
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-
 Aboneliğinizdeki kaynakları sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın. Ortamda bulunan tüm Azure kaynaklarının onaylandığından emin olun.
-
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
+Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -880,6 +791,7 @@ Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:https://docs.microsoft.com/az
 
 **Kılavuz**: Azure Toplu Birleştirme düğümleri için, onaylanmamış yazılım uygulamaları için küme düğümlerini izlemek için bir üçüncü taraf çözümü uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -887,6 +799,7 @@ Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:https://docs.microsoft.com/az
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Onaylanmamış Azure Kaynaklarını ve Yazılım Uygulamalarını Kaldırma
 
 **Kılavuz**: Azure Toplu Birleştirme düğümleri için, onaylanmamış yazılım uygulamaları için küme düğümlerini izlemek için bir üçüncü taraf çözümü uygulayın.
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -896,6 +809,7 @@ Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:https://docs.microsoft.com/az
 
 **Kılavuz**: Azure Toplu Birleştirme düğümleri için, yetkisiz yazılımın yürütülmesini önlemek için bir üçüncü taraf çözümü uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -904,15 +818,13 @@ Azure Kaynak Grafiği Gezgini ile sorgu oluşturma:https://docs.microsoft.com/az
 
 **Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkesini kullanın:
 
-
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -922,6 +834,7 @@ Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.mic
 
 **Kılavuz**: Azure Toplu Birleştirme düğümleri için, yetkisiz dosya türlerinin yürütülmesini önlemek için bir üçüncü taraf çözümü uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -930,8 +843,8 @@ Azure İlkesi ile belirli bir kaynak türü nasıl reddedilecek:https://docs.mic
 
 **Yönerge**: "Microsoft Azure Yönetimi" Uygulaması için "Erişimi engelle" yapılandırmayı yaparak kullanıcıların Azure Kaynak Yöneticisi ile etkileşim edebilmelerini sınırlamak için Azure Koşullu Erişim'i kullanın.
 
-
 Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapılandırma:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
@@ -942,6 +855,7 @@ Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapıla
 **Rehberlik**: Geçerli değil,
 
 Azure Toplu İş havuzlarının kullanıcılarının (yönetici olmayanlar) işleri çalıştırmak için tek tek düğümlere erişmelerine gerek olmadığından, bu Azure Toplu İş için geçerli değildir. Küme yöneticisi zaten tüm düğümlere kök erişimi vardır.
+
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -963,11 +877,9 @@ Azure Toplu İş havuzlarının kullanıcılarının (yönetici olmayanlar) işl
 
 **Yönerge**: Azure Toplu Iş birimi hesaplarınızın ve havuzlarınızın yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.Batch" ad alanında Azure İlkesi takma adlarını kullanın.
 
-
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
-
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
@@ -990,14 +902,15 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 **Yönlendirme**: Toplu Iş hesabınız ve havuzlarınızla ilgili Azure kaynakları (sanal ağlar, alt ağlar, Azure Güvenlik Duvarları, Azure Depolama Hesapları vb.) için güvenli ayarlar uygulamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın. Özel ilkeler oluşturmak için aşağıdaki ad alanlarından Azure İlkesi Takma Adları'nı kullanabilirsiniz:
 
 - Microsoft.Batch
-- Microsoft.Storage
-- Microsoft.Network
 
+- Microsoft.Storage
+
+- Microsoft.Network
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
 Azure İlke Efektlerini Anlama:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -1015,11 +928,9 @@ Azure İlke Efektlerini Anlama:https://docs.microsoft.com/azure/governance/polic
 
 **Kılavuz**: Azure Toplu İş hesaplarınız, havuzlarınız veya ilgili kaynaklarınız için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos'unu kullanın.
 
-
 Azure DevOps'lerde kod depolama:
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
-
 
 Azure Depobelgeleri:
 
@@ -1033,11 +944,9 @@ https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 **Kılavuz**: Azure Toplu Toplu Havuzlarınız için özel resimler kullanıyorsanız, resimlere yalnızca yetkili kullanıcıların erişebilmesini sağlamak için Rol tabanlı erişim denetimini (RBAC) kullanın.
 
-
 Azure'da RBAC'ı anlayın:
 
 https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles
-
 
 Azure'da RBAC nasıl yapılandırılmaz:
 
@@ -1051,8 +960,6 @@ https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-rol
 
 **Yönerge**: Azure Toplu İşlemle ilgili kaynak yapılandırmalarını uyarmak, denetlemek ve uygulamak için yerleşik Azure İlkesi tanımlarını kullanın.  Azure Toplu İş hesaplarınız ve havuzlarınız için özel ilkeler oluşturmak için "Microsoft.Batch" ad alanında Azure İlkesi takma adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve ardışık hatlar geliştirin.
 
-
-
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
@@ -1065,6 +972,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Kılavuz :** Azure Toplu Havuz düğümlerinizin işletim sistemleri için istenen durumu korumak için üçüncü taraf bir çözüm uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -1073,12 +981,16 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Yönerge**: Azure Toplu İşlem örneğinizin yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.Batch" ad alanında Azure İlkesi takma adlarını kullanın. Azure Toplu İş için özel olarak oluşturulan yerleşik ilkeleri veya Azure Toplu İş'i tarafından kullanılan kaynakları da kullanabilirsiniz:
 
-- Alt ağlar bir Ağ Güvenlik Grubu -Depolama Hesapları ile ilişkili olmalıdır sanal ağ hizmeti bitiş noktası kullanmalıdır
+- Alt ağlar bir Ağ Güvenlik Grubu ile ilişkilendirilmelidir
+
+-Depolama Hesapları sanal ağ hizmeti bitiş noktası kullanmalıdır
+
 - Toplu iş hesaplarındaki tanılama günlükleri etkinleştirilmeli
 
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
@@ -1089,6 +1001,7 @@ Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.
 
 **Kılavuz :** Azure Toplu Havuz düğümlerinizin işletim sistemlerinin durumunu izlemek için üçüncü taraf bir çözüm uygulayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -1097,16 +1010,13 @@ Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.
 
 **Yönlendirme**: Azure Anahtar Kasası, Azure Depolama Hesapları'nda havuz depolama anahtarlarının yönetilmesi için Azure Toplu İşlem dağıtımları ile kullanılabilir.
 
-
 Azure Yönetilen Kimliklerle nasıl tümleştirilir:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-
 Azure Anahtar Kasası nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
-
 
 Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız:
 
@@ -1119,6 +1029,7 @@ https://docs.microsoft.com/azure/key-vault/managed-identity
 ### <a name="712-securely-and-automatically-manage-identities"></a>7.12: Kimlikleri güvenli ve otomatik olarak yönetin
 
 **Kılavuz**: Kullanılabilir değil, Yönetilen Hizmet Kimliği Azure Toplu İş tarafından desteklenmiyor
+
 
 **Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
@@ -1142,6 +1053,7 @@ Kimlik Bilgisi Tarayıcı nasıl kurulturur:https://secdevtools.azurewebsites.ne
 
 **Kılavuz :** Windows işletim sistemleri söz konusu olduğunda bireysel Azure Toplu iş havuzu düğümlerinizde Windows Defender'ı kullanın veya Linux kullanıyorsanız kendi kötü amaçlı yazılımdan koruma çözümünüzü sağlayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -1150,9 +1062,7 @@ Kimlik Bilgisi Tarayıcı nasıl kurulturur:https://secdevtools.azurewebsites.ne
 
 **Yönlendirme**: Azure hizmetlerini destekleyen temel ana bilgisayarda (örneğin, Azure Toplu İş) Microsoft Kötü Amaçlı Yazılımdan Koruma etkindir, ancak müşteri içeriğinde çalışmaz.
 
-
 Uygulama Hizmeti, Veri Gölü Depolama, Blob Depolama vb. gibi bilgi işlem dışı Azure kaynaklarına yüklenen dosyaları önceden tarayabilirsiniz. Microsoft bu gibi durumlarda müşteri verilerine erişemez.
-
 
 Azure Bulut Hizmetleri ve Sanal Makineler için Microsoft Kötü Amaçlı Yazılımdan Koruma'yı anlayın:
 
@@ -1166,6 +1076,7 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 **Kılavuz :** Windows işletim sistemleri durumunda bireysel Azure Toplu iş havuzu düğümlerinizde Windows Defender'ı kullanın ve otomatik güncelleştirmenin etkin olduğundan emin olun. Linux kullanıyorsanız kendi kötü amaçlı yazılımdan koruma çözümünüzü sağlayın.
 
+
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
 **Sorumluluk**: Müşteri
@@ -1177,7 +1088,6 @@ https://docs.microsoft.com/azure/security/fundamentals/antimalware
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Düzenli Otomatik Yedekleme'leri Sağlayın
 
 **Kılavuz**: Azure Toplu Toplu Havuz veri deposu için bir Azure Depolama Hesabı kullanırken, uygun artıklık seçeneğini (LRS,ZRS, GRS, RA-GRS) seçin. 
-
 
 Azure Depolama Hesapları için depolama artıklığı nasıl yapılandırılmaz:
 
@@ -1191,11 +1101,9 @@ https://docs.microsoft.com/azure/storage/common/storage-redundancy
 
 **Kılavuz**: Azure Toplu Toplu Havuz veri deposu için bir Azure Depolama Hesabı kullanırken, uygun artıklık seçeneğini (LRS,ZRS, GRS, RA-GRS) seçin.  Azure Toplu İşlem dağıtımınızın herhangi bir bölümü için Azure Key Vault kullanıyorsanız, anahtarlarınızın yedekolduğundan emin olun.
 
-
 Azure Depolama Hesapları için depolama artıklığı nasıl yapılandırılmaz:
 
 https://docs.microsoft.com/azure/storage/common/storage-redundancy
-
 
 Azure'da anahtar kasa sıyrık anahtarlarını yedekleme:
 
@@ -1209,11 +1117,9 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 
 **Kılavuz**: Azure Depolama Hesapları veya Azure Toplu İşlem uygulamanızla ilgili başka bir kaynak için kendi anahtarlarınızı yönetiyorsanız, yedeklenmiş anahtarların düzenli olarak geri yüklemesini test edin.
 
-
 Azure'da anahtar kasa sıyrık anahtarlarını yedekleme:
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
-
 
 PowerShell ile Müşteri Yönetilen Anahtar nasıl geri yüklenir:
 
@@ -1226,7 +1132,6 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Yedeklerin ve Müşteri Yönetilen Anahtarların Korunmasını Sağlayın
 
 **Kılavuz**: Azure Key Vault, Azure Toplu Toplu Havuz Depolama Hesapları ile ilgili anahtarları tutmak için kullanılıyorsa, yanlışlıkla veya kötü amaçlı silmeye karşı anahtarları korumak için Azure Key Vault'ta Yumuşak Silme'yi etkinleştirin.
-
 
 Azure Anahtar Kasası'nda Yumuşak Silme nasıl etkinleştirilir:
 
@@ -1243,8 +1148,6 @@ https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 ### <a name="101-create-incident-response-guide"></a>10.1: Olay yanıt kılavuzu oluşturma
 
 **Rehberlik**: Personelin rollerini ve olay işleme/yönetim aşamalarını tanımlayan yazılı olay müdahale planlarının olduğundan emin olun.
-
-
 
 Azure Güvenlik Merkezi'nde İş Akışı Otomasyonları nasıl yapılandırılabilen:
 
@@ -1276,8 +1179,6 @@ NIST'in yayınına bakın: BT Planları ve Yetenekleri için Test, Eğitim ve Eg
 
 **Kılavuz :** Microsoft Güvenlik Yanıt Merkezi (MSRC), verilerinize yasadışı veya yetkisiz bir taraf tarafından erişildiğini tespit ederse, güvenlik olayı iletişim bilgileri Microsoft tarafından sizinle iletişim kurmak için kullanılır.
 
-
-
 Azure Güvenlik Merkezi Güvenlik Kişisi nasıl ayarlanır:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
@@ -1290,11 +1191,9 @@ https://docs.microsoft.com/azure/security-center/security-center-provide-securit
 
 **Kılavuz**: Sürekli Dışa Aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışa aktarın. Sürekli Dışa Aktarma, uyarı ve önerileri el ile veya sürekli olarak dışa aktarmanıza olanak tanır. Uyarıları Azure Sentinel'e aktarmak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz.
 
-
 Sürekli dışa aktarma nasıl yapılandırılabilen:
 
 https://docs.microsoft.com/azure/security-center/continuous-export
-
 
 Uyarıları Azure Sentinel'e nasıl aktarın:
 
@@ -1307,8 +1206,6 @@ https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Güvenlik uyarılarına yanıtı otomatikleştirin
 
 **Yönerge**: Güvenlik uyarıları ve önerileri nde "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek için Azure Güvenlik Merkezi'ndeki İş Akışı Otomasyonu özelliğini kullanın.
-
-
 
 İş Akışı Otomasyonu ve Mantık Uygulamaları nasıl yapılandırılabilen:
 
@@ -1327,8 +1224,6 @@ https://docs.microsoft.com/azure/security-center/workflow-automation
 **Kılavuz**: Penetrasyon Testlerinizin Microsoft ilkelerini ihlal etmediğini sağlamak için lütfen Microsoft Etkileşim Kuralları'na uyun:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1.
-
-
 
 Microsoft'un stratejisi ve Red Teaming ve Microsoft yönetilen bulut altyapısı, hizmetleri ve uygulamalarına karşı canlı site penetrasyon testi nin uygulanması hakkında daha fazla bilgiyi burada bulabilirsiniz: 
 

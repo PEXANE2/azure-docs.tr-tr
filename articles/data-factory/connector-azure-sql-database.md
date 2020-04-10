@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437789"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011710"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure SQL Veritabanı'ndaki verileri kopyalama ve dönüştürme
 
@@ -493,7 +493,7 @@ BEGIN
 END
 ```
 
-**Seçenek 2:** Ayrıca [kopyalama etkinliği içinde depolanan yordamı çağırmayı](#invoke-a-stored-procedure-from-a-sql-sink)da seçebilirsiniz. Bu yaklaşım, büyük ölçekli upsert için uygun olmayan kopyalama etkinliğinde varsayılan yaklaşım olarak toplu ekleme kullanmak yerine kaynak tablodaki her satırı çalıştırAr.
+**Seçenek 2:** Ayrıca [kopyalama etkinliği içinde depolanan yordamı çağırmayı](#invoke-a-stored-procedure-from-a-sql-sink)da seçebilirsiniz. Bu yaklaşım, kopyalama etkinliğinde varsayılan `writeBatchSize` yaklaşım olarak toplu ekleme kullanmak yerine kaynak tablodaki her bir toplu işlemi (özellik tarafından yönetilir şekilde) çalıştırır.
 
 ### <a name="overwrite-the-entire-table"></a>Tüm tablonun üzerine yazma
 
@@ -508,10 +508,7 @@ CopyScript özelliğini **preCopyScript** kopyalama etkinliği lavabosunda yapı
 
 ## <a name="invoke-a-stored-procedure-from-a-sql-sink"></a><a name="invoke-a-stored-procedure-from-a-sql-sink"></a>SQL lavabodan depolanan yordamı çağırma
 
-Verileri Azure SQL Veritabanı'na kopyaladiğinizde, kullanıcı tarafından belirtilen bir depoyordamsını ek parametrelerle yapılandırabilir ve çağırabilirsiniz. Depolanan yordam özelliği [tablo değerindeki parametrelerden](https://msdn.microsoft.com/library/bb675163.aspx)yararlanır.
-
-> [!TIP]
-> Depolanan yordamı çağırmak, büyük ölçekli kopya için önermediğimiz toplu bir işlem kullanmak yerine veri satırını satır satır işler. [Azure SQL Veritabanına veri yüklemek için en iyi uygulamadan](#best-practice-for-loading-data-into-azure-sql-database)daha fazla bilgi edinin.
+Verileri Azure SQL Veritabanı'na kopyaladiğinizde, kaynak tablonun her bir partisinde ek parametreleriçeren kullanıcı tarafından belirtilen bir depoyordamyı yapılandırabilir ve çağırabilirsiniz. Depolanan yordam özelliği [tablo değerindeki parametrelerden](https://msdn.microsoft.com/library/bb675163.aspx)yararlanır.
 
 Yerleşik kopyalama mekanizmaları amaca hizmet etmiyorsa depolanan yordamı kullanabilirsiniz. Kaynak verilerin hedef tabloya son ekinden önce ek işleme uygulamak istediğinizde buna bir örnektir. Bazı ekstra işleme örnekleri, sütunları birleştirmek, ek değerleraramak ve birden fazla tabloya eklemek istediğinizde verilebilir.
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278044"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010928"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis için Premium Azure Önbelleği için Redis kümeleme sini yapılandırma
 Redis için Azure Önbellek, kümeleme, kalıcılık ve sanal ağ desteği gibi Premium katman özellikleri de dahil olmak üzere önbellek boyutu ve özellikleri seçiminde esneklik sağlayan farklı önbellek tekliflerine sahiptir. Bu makalede, Redis örneğinde birinci sınıf bir Azure Önbelleğinde kümelemenin nasıl yapılandırılabildiği açıklanmaktadır.
@@ -125,7 +125,7 @@ Kümeleme etkin olmayan bir önbelleğe bağlanırken kullandığınız aynı [u
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>Önbelleğimin tek tek kırıklarına doğrudan bağlanabilir miyim?
 Kümeleme protokolü, istemcinin doğru parça bağlantıları kurması gerekir. Yani müşteri sizin için doğru yapmalıdır. Bununla birlikte, her parça, topluca önbellek örneği olarak bilinen bir birincil/yineleme önbellek çiftinden oluşur. GitHub'daki Redis deposunun [kararsız](https://redis.io/download) dalındaki redis-cli yardımcı programını kullanarak bu önbellek örneklerine bağlanabilirsiniz. Bu `-c` sürüm, anahtarla başlatıldığında temel desteği uygular. Daha fazla bilgi için Redis [https://redis.io](https://redis.io) küme [öğreticisinde](https://redis.io/topics/cluster-tutorial) [kümeyle oynama](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster) bilgisine bakın.
 
-SSL olmayanlar için aşağıdaki komutları kullanın.
+TLS olmayanlar için aşağıdaki komutları kullanın.
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,7 +133,7 @@ SSL olmayanlar için aşağıdaki komutları kullanın.
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-ssl için `1300N` `1500N`değiştirin.
+TLS için `1300N` , `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Daha önce oluşturulmuş bir önbellek için kümeoluşturmayı yapılandırabilir miyim?
 Evet. Öncelikle önbelleğinizin premium olduğundan emin olun, değilse ölçekle. Ardından, küme etkinleştirme seçeneği de dahil olmak üzere küme yapılandırma seçeneklerini görebilmeniz gerekir. Önbellek oluşturulduktan sonra veya kümeleme özelliğini ilk kez etkinleştirdikten sonra küme boyutunu değiştirebilirsiniz.

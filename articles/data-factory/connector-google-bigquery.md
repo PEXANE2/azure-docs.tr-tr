@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fe6b494398337dd49bd8f0fe53b24666412a1b0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929417"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991595"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Google BigQuery'deki verileri kopyalama
 
@@ -37,7 +37,7 @@ Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sa�
 >[!NOTE]
 >Bu Google BigQuery bağlayıcısı BigQuery API'lerinin üzerine inşa edilmiştir. BigQuery'nin gelen isteklerin maksimum oranını sınırladığını ve proje başına uygun kotaları uyguladığını unutmayın, [Kotalar & Limitler - API isteklerine](https://cloud.google.com/bigquery/quotas#api_requests)bakın. Hesaba çok fazla eşzamanlı istek tetiklemediğinden emin olun.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -99,7 +99,7 @@ Aşağıdaki özellikler Google BigQuery bağlantılı hizmet için desteklenir.
 |:--- |:--- |:--- |
 | e-posta | ServiceAuthentication için kullanılan hizmet hesabı e-posta kimliği. Yalnızca Kendi kendine barındırılan Tümleştirme Çalışma Süresi'nde kullanılabilir.  | Hayır |
 | keyFilePath | Hizmet hesabı e-posta adresinin kimliğini doğrulamak için kullanılan .p12 anahtar dosyasına tam yol. | Hayır |
-| güvenilirCertPath | SSL üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca Kendi barındırılan Tümleştirme Çalışma Süresi'nde SSL kullandığınızda ayarlanabilir. Varsayılan değer, tümleştirme çalışma süresiyle yüklü cacerts.pem dosyasıdır.  | Hayır |
+| güvenilirCertPath | TLS üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca KENDI barındırılan Tümleştirme Çalışma Süresi'nde TLS kullandığınızda ayarlanabilir. Varsayılan değer, tümleştirme çalışma süresiyle yüklü cacerts.pem dosyasıdır.  | Hayır |
 | useSystemTrustStore | Sistem güven deposundan veya belirtilen bir .pem dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
 
 **Örnek:**

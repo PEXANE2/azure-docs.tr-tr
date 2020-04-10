@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 1f6404da163e075b63a99a1d8474cdba4e064b06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdb2dc283287bf83410f1846aca11f233e93d01b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930892"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990863"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Xero'dan veri kopyalama
 
@@ -55,8 +55,8 @@ Xero bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 | consumerKey | Xero uygulamasıyla ilişkili tüketici anahtarı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
 | privateKey | Xero özel uygulamanız için oluşturulan .pem dosyasından özel [anahtar,](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)bkz. Kullanarak **512 numbits ile privatekey.pem** `openssl genrsa -out privatekey.pem 512`oluşturmak için not; 1024 desteklenmez. Unix satır uçları(\n) dahil olmak üzere .pem dosyasındaki tüm metni ekleyin, aşağıdaki örneğe bakın.<br/><br/>Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
 | useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| useHostVerification | SSL üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde sunucunun sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | TLS üzerinden bağlanırken sunucunun ana bilgisayar adı ile eşleşecek şekilde sunucunun sertifikasında ana bilgisayar adının gerekli olup olmadığını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | TLS üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 

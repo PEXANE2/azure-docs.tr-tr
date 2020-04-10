@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 4129f1a89575c9a0e7cd6a0090168df659356c1b
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885115"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991016"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API'lerini çağıran bir web API'sı: Kod yapılandırması
 
@@ -214,7 +214,7 @@ class MsalAuthHelper {
 
 On-adına (OBO) akışı downstream web API aramak için bir belirteç elde etmek için kullanılır. Bu akışta, web API'niz istemci uygulamasından kullanıcı tarafından yetkialan izinleri içeren bir taşıyıcı belirteci alır ve ardından bu belirteci downstream web API'yi aramak için başka bir erişim belirteciyle değiştirir.
 
-Python web API'sinin istemciden alınan taşıyıcı belirteci doğrulamak için bazı ara yazılımlar kullanması gerekir. Web API'si daha sonra yöntemi arayarak MSAL Python kitaplığını [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) kullanarak akış aşağı API'ye erişim belirteci elde edebilir. MSAL Python ile bu akışı gösteren bir örnek henüz mevcut değildir.
+Python web API'sinin istemciden alınan taşıyıcı belirteci doğrulamak için bazı ara yazılımlar kullanması gerekir. Web API'si daha sonra yöntemi arayarak MSAL Python kitaplığını [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) kullanarak akış aşağı API'ye erişim belirteci elde edebilir. Bu API'yi kullanma örneği için, [GitHub'daki microsoft kimlik doğrulama-kitaplık-for-python test koduna](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)bakın. Ayrıca, orta katman uygulaması gereksinimini atlayan bir yaklaşım için aynı depodaki [53.](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)
 
 ---
 

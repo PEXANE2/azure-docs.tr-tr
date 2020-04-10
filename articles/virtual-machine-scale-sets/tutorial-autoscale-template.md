@@ -1,19 +1,19 @@
 ---
 title: Öğretici - Azure şablonları ile bir ölçek kümesini otomatik ölçeklendirme
 description: CPU talepleri arttıkça ve azaldıkça, sanal makine ölçek kümesini otomatik olarak ölçeklendirmek için Azure Resource Manager şablonlarının nasıl kullanılacağını öğrenin
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: tutorial
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: f9b60ca31765ac52f4693e4efaac09af2ec2f293
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 02fe74a2dad7da655969c5c9523c696657425e49
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80062762"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011319"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:

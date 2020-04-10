@@ -4,12 +4,12 @@ description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 7c5c9173704535b1e34ffde5867bd512e3e02ed8
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657385"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989536"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: Triyaj Dağıtılmış Uygulamalar
 
@@ -155,7 +155,25 @@ web uygulamalarını ASP.NET için alternatif bir yöntem, koddaki baş harfleri
 
 # <a name="java"></a>[Java](#tab/java)
 
-Application Insights Java SDK 2.5.0 ile başlayarak, dosyanıza `<RoleName>` `ApplicationInsights.xml` örneğin.
+**Java aracısı**
+
+[Java aracısı 3.0](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent) için bulut rol adı aşağıdaki gibi ayarlanır:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "roleName": "my cloud role name"
+    }
+  }
+}
+```
+
+Ayrıca, ortam değişkenini ```APPLICATIONINSIGHTS_ROLE_NAME```kullanarak bulut rol adını da ayarlayabilirsiniz.
+
+**Java SDK**
+
+SDK kullanıyorsanız, Application Insights Java SDK 2.5.0 ile başlayarak, dosyanıza `<RoleName>` `ApplicationInsights.xml` ekleyerek bulut rol adını belirtebilirsiniz, örneğin.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>

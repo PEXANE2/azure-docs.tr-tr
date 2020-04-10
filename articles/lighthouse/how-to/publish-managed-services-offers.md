@@ -1,21 +1,21 @@
 ---
-title: Azure Marketi'nde yönetilen bir hizmet teklifi yayınlama
-description: Müşterilerin Azure temsilcikaynak yönetimine dahil ettiği yönetilen bir hizmet teklifini nasıl yayınlayacağınızı öğrenin.
+title: Azure Marketi'nde Yönetilen Hizmet teklifi yayınlama
+description: Müşterileri Azure temsilcikaynak yönetimine dahil eden yönetilen bir Hizmet teklifini nasıl yayınlayacağınızı öğrenin.
 ms.date: 04/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4791b1d2ae233b0cc7aad33dd5b15b6ea94b2018
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 247f711188fa10de19cece27f164fdfa71612d1b
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984563"
+ms.locfileid: "80991918"
 ---
-# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketi'nde yönetilen bir hizmet teklifi yayınlama
+# <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketi'nde Yönetilen Hizmet teklifi yayınlama
 
 > [!IMPORTANT]
-> 14 Nisan 2020'den itibaren Yönetilen Hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [yeni yönetilen hizmet teklifleri oluşturun'daki](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) yönergeleri izleyin.
+> 13 Nisan 2020'den itibaren Yönetilen Hizmet tekliflerinizi İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [yeni bir Yönetilen Hizmet teklifi oluştur'daki](../../marketplace/partner-center-portal/create-new-managed-service-offer.md) yönergeleri izleyin.
 
-Bu makalede, [Bulut İş Ortağı Portalı'nı](https://cloudpartner.azure.com/)kullanarak Azure [Marketi'nde](https://azuremarketplace.microsoft.com) genel veya özel yönetilen bir hizmet teklifini nasıl yayınlayacağınızı öğreneceksiniz. Teklifi satın alan müşteriler, [Azure temsilci kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için yerleşik aboneliklere ve kaynak gruplarına binebilir.
+Bu makalede, [Bulut İş Ortağı Portalı'nı](https://cloudpartner.azure.com/)kullanarak Azure [Marketi'nde](https://azuremarketplace.microsoft.com) genel veya özel Yönetilen Hizmet teklifini nasıl yayınlayacağınızı öğreneceksiniz. Teklifi satın alan müşteriler, [Azure temsilci kaynak yönetimi](../concepts/azure-delegated-resource-management.md)için yerleşik aboneliklere ve kaynak gruplarına binebilir.
 
 ## <a name="publishing-requirements"></a>Yayımlama gereksinimleri
 
@@ -28,7 +28,7 @@ Microsoft İş Ortağı Ağı (MPN) Kimliğiniz, müşteri etkileşimleri üzeri
 > [!NOTE]
 > Azure Marketi'nde bir teklif yayınlamak istemiyorsanız, Azure Kaynak Yöneticisi şablonlarını kullanarak müşterilere el ile binebilirsiniz. Daha fazla bilgi için, [Azure temsilcili kaynak yönetimine](onboard-customer.md)giden bir müşteriye bakın.
 
-Yönetilen Hizmetler teklifini yayımlamak, Azure Marketi'nde başka türde bir teklif yayınlamaya benzer. Genel yayımlama süreci hakkında bilgi edinmek için [Azure Marketi ve AppSource Yayımlama Kılavuzu'na](../../marketplace/marketplace-publishers-guide.md)bakın. Ayrıca [ticari pazar sertifikasyonu ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)( özellikle [Yönetilen Hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü) gözden geçirmelisiniz.
+Yönetilen Hizmet teklifini yayımlamak, Azure Marketi'nde başka türde bir teklif yayınlamaya benzer. Genel yayımlama süreci hakkında bilgi edinmek için [Azure Marketi ve AppSource Yayımlama Kılavuzu'na](../../marketplace/marketplace-publishers-guide.md)bakın. Ayrıca [ticari pazar sertifikasyonu ilkelerini](https://docs.microsoft.com/legal/marketplace/certification-policies)( özellikle [Yönetilen Hizmetler](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) bölümünü) gözden geçirmelisiniz.
 
 Bir müşteri teklifinizi ekledikten sonra, bir veya daha fazla abonelik veya kaynak grubuna temsilci atayabilir ve bu grup azure [temsilci kaynak yönetimi için geçerli](#the-customer-onboarding-process)olacaktır.
 

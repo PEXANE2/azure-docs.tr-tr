@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f465fe4bb69bc5ae81db6c78df51bf5133de1b60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c7690390936a05dd472796eb6f50f582f652e35
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929297"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80990858"
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Impala'dan veri kopyalama
 
@@ -37,7 +37,7 @@ Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sa�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,10 +55,10 @@ Aşağıdaki özellikler Impala bağlantılı hizmet için desteklenir.
 | authenticationType | Kullanılacak kimlik doğrulama türü. <br/>İzin verilen değerler **Anonim**, **SASLUsername**ve **Kullanıcı AdıAndPassword**vardır. | Evet |
 | kullanıcı adı | Impala sunucusuna erişmek için kullanılan kullanıcı adı. SASLUsername kullandığınızda varsayılan değer anonimdir.  | Hayır |
 | password | UsernameAndPassword'i kullandığınızda kullanıcı adına karşılık gelen parola. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
-| sağlarSsl | Sunucuya bağlantıların SSL kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
-| güvenilirCertPath | SSL üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca Kendi barındırılan Tümleştirme Çalışma Süresi'nde SSL kullandığınızda ayarlanabilir. Varsayılan değer, tümleştirme çalışma süresiyle yüklü cacerts.pem dosyasıdır.  | Hayır |
+| sağlarSsl | Sunucuya bağlantıların TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
+| güvenilirCertPath | TLS üzerinden bağlandığınızda sunucuyu doğrulamak için kullanılan güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca KENDI barındırılan Tümleştirme Çalışma Süresi'nde TLS kullandığınızda ayarlanabilir. Varsayılan değer, tümleştirme çalışma süresiyle yüklü cacerts.pem dosyasıdır.  | Hayır |
 | useSystemTrustStore | Sistem güven deposundan veya belirli bir PEM dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
-| allowHostNameCNMismatch | SSL üzerinden bağlandığınızda sunucunun ana bilgisayar adı ile eşleşecek şekilde CA tarafından verilmiş bir SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
+| allowHostNameCNMismatch | TLS üzerinden bağlandığınızda sunucunun ana bilgisayar adı ile eşleşecek ŞEKILDE CA tarafından verilmiş bir TLS/SSL sertifika adı gerekip gerekmediğini belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
 | izinSelfSignedServerCert | Sunucudan kendi imzalı sertifikalara izin verip vermemeyi belirtir. Varsayılan değer **false** şeklindedir.  | Hayır |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma süresi.](concepts-integration-runtime.md) [Önkoşullar](#prerequisites) bölümünden daha fazla bilgi edinin. Belirtilmemişse, varsayılan Azure Tümleştirme Çalışma Süresini kullanır. |Hayır |
 

@@ -3,27 +3,23 @@ title: Uygulama Öngörüleri için açıklama yayımla | Microsoft Dokümanlar
 description: Uygulama Öngörüleri'ndeki metrik kaşif grafiklerinize dağıtım veya yapı işaretçileri ekleyin.
 ms.topic: conceptual
 ms.date: 07/01/2019
-ms.openlocfilehash: e0e2a106b276110e13b3c68889e4d1d349ba73a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ad773ca6a7102ac718d43dfbbf6a4f834e681a0
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666522"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010755"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Uygulama Öngörüleri'nde metrik grafiklerdeki ek açıklamalar
 
-[Metrikler Gezgini](../../azure-monitor/app/metrics-explorer.md) grafiklerinde ek açıklamalar, yeni bir yapıyı veya diğer önemli olayları nereye dağıttığınızı gösterir. Ek açıklamalar, değişikliklerinizin uygulamanızın performansı üzerinde herhangi bir etkisi olup olmadığını görmenizi kolaylaştırır. [Azure Ardışık Hatları](https://docs.microsoft.com/azure/devops/pipelines/tasks/) oluşturma sistemi tarafından otomatik olarak oluşturulabilirler. PowerShell'den oluşturarak istediğiniz etkinliği işaretlemek için ek açıklamalar da oluşturabilirsiniz.
-
-> [!NOTE]
-> Bu makale, amortismana küçümilen **klasik ölçümler deneyimini**yansıtır. Ek açıklamalar yalnızca şu anda klasik deneyimde ve **[çalışma kitaplarında](../../azure-monitor/app/usage-workbooks.md)** mevcuttur. Geçerli ölçümler deneyimi hakkında daha fazla bilgi edinmek için [Azure Ölçümleri Gezgini'nin Gelişmiş özelliklerine](../../azure-monitor/platform/metrics-charts.md)bakın.
-
-![Ek açıklamalar örneği](./media/annotations/0-example.png)
+Ek açıklamalar, yeni bir yapıyı veya diğer önemli olayları nereye dağıttığınızı gösterir. Ek açıklamalar, değişikliklerinizin uygulamanızın performansı üzerinde herhangi bir etkisi olup olmadığını görmenizi kolaylaştırır. [Azure Ardışık Hatları](https://docs.microsoft.com/azure/devops/pipelines/tasks/) oluşturma sistemi tarafından otomatik olarak oluşturulabilirler. PowerShell'den oluşturarak istediğiniz etkinliği işaretlemek için ek açıklamalar da oluşturabilirsiniz.
 
 ## <a name="release-annotations-with-azure-pipelines-build"></a>Azure Pipelines yapısıyla açıklama açıklamaları
 
 Sürüm ek açıklamaları, Azure DevOps'un bulut tabanlı Azure Bulut Hatları hizmetinin bir özelliğidir.
 
 ### <a name="install-the-annotations-extension-one-time"></a>Ek Açıklamalar uzantısını yükleme (bir kez)
+
 Sürüm ek açıklamaları oluşturabilmek için Visual Studio Marketplace'te bulunan birçok Azure DevOps uzantısından birini yüklemeniz gerekir.
 
 1. [Azure DevOps](https://azure.microsoft.com/services/devops/) projenizde oturum açın.
@@ -74,11 +70,26 @@ Azure Ardışık Hatları sürüm şablonlarınızın her biri için ayrı bir A
 1. Şablonu kaydetmek için ana sürüm şablonu penceresinde **Kaydet'i** seçin.
 
 ## <a name="view-annotations"></a>Ek açıklamaları görüntüle
-Şimdi, yeni bir sürüm dağıtmak için sürüm şablonunu her kullandığınızda, Uygulama Öngörüleri'ne bir ek açıklama gönderilir. Ek **açıklamalar, Metrics Explorer'daki**grafiklerde görünür.
 
-İstekçi, kaynak denetim dalı, sürüm ardışık hattı ve ortam dahil olmak üzere sürümle ilgili ayrıntıları açmak için herhangi bir ek açıklama işaretçisini (açık gri ok) seçin.
 
-![Sürüm ek açıklama işaretçisi seçin.](./media/annotations/8-release.png)
+   > [!NOTE]
+   > Sürüm ek açıklamaları şu anda Uygulama Öngörüleri Ölçümleri bölmesinde kullanılamıyor
+
+Şimdi, yeni bir sürüm dağıtmak için sürüm şablonunu her kullandığınızda, Uygulama Öngörüleri'ne bir ek açıklama gönderilir. Ek açıklamalar aşağıdaki konumlarda görüntülenebilir:
+
+Sürüm ek açıklamalarını el ile oluşturabilme özelliğine de sahip olduğunuz kullanım bölmesi:
+
+![Saat belirli bir süre içinde görüntülenen kullanıcı ziyaretlerinin sayısıyla bar grafiğinin ekran görüntüsü. Sürüm ek açıklamaları, grafiğin üzerinde, bir sürümün oluştuğu zamanı gösteren yeşil onay işaretleri olarak görünür](./media/annotations/usage-pane.png)
+
+Görselleştirmenin x ekseni boyunca zamanı gösterdiği günlük tabanlı çalışma kitabı sorgusunda.
+
+![Çalışma kitapları bölmesinin ekran görüntüsü ve zaman serisi günlük tabanlı sorgu ve ek açıklamalar görüntülendi](./media/annotations/workbooks-annotations.png)
+
+Çalışma kitabınızdaki ek açıklamaları etkinleştirmek için **Gelişmiş Ayarlar'a** gidin ve **ek açıklamaları göster'i**seçin.
+
+![Gelişmiş Ayarlar menüsünün sözcüklerle birlikte ekran görüntüsü, etkinleştirmek için ayarın yanındaki onay işaretiyle vurgulanan ek açıklamaları gösterir.](./media/annotations/workbook-show-annotations.png)
+
+İstekçi, kaynak denetim dalı, sürüm ardışık hattı ve ortam dahil olmak üzere sürümle ilgili ayrıntıları açmak için herhangi bir ek açıklama işaretçisini seçin.
 
 ## <a name="create-custom-annotations-from-powershell"></a>PowerShell'den özel ek açıklamalar oluşturun
 Azure DevOps'leri kullanmadan istediğiniz işlemden ek açıklamalar oluşturmak için GitHub'dan [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell komut dosyasını kullanabilirsiniz. 

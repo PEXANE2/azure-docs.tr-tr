@@ -1,19 +1,19 @@
 ---
 title: Azure portalında otomatik ölçek sanal makine ölçeği kümeleri
 description: Azure portalında sanal makine ölçeği kümeleri için otomatik ölçek lendirme kuralları nasıl oluşturulur?
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: ecd80f49f0161c8bbc6ab7309f2af89e2ded1fe9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 1915b144aec5a5447504c70d18dbf420d255a08e
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278192"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010299"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure portalında ayarlanan sanal makine ölçeğini otomatik olarak ölçeklendirin
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır.
@@ -96,7 +96,7 @@ VM örneklerinin sayısını ve durumunu görmek için, ölçek kümesi penceres
 
 
 ## <a name="autoscale-based-on-a-schedule"></a>Zamanlamaya dayalı otomatik ölçeklendirme
-Önceki örnekler, CPU kullanımı gibi temel ana bilgisayar ölçümleri ile ayarlanmış bir ölçeği otomatik olarak ölçeklendirin. Zamanlamaları temel alan otomatik ölçeklendirme kuralları da oluşturabilirsiniz. Bu zamanlama tabanlı kurallar, temel çalışma saatleri gibi uygulama talebinde beklenen artıştan önce VM örneklerinin sayısını otomatik olarak ölçeklendirmenize ve daha az beklediğiniz bir anda örnek sayısını otomatik olarak ölçeklendirmenize olanak sağlar hafta sonu gibi talep.
+Önceki örnekler, CPU kullanımı gibi temel ana bilgisayar ölçümleri ile ayarlanmış bir ölçeği otomatik olarak ölçeklendirin. Zamanlamaları temel alan otomatik ölçeklendirme kuralları da oluşturabilirsiniz. Bu zamanlama tabanlı kurallar, temel çalışma saatleri gibi uygulama talebinde beklenen artıştan önce VM örneklerinin sayısını otomatik olarak ölçeklendirmenize ve hafta sonu gibi daha az talep beklediğiniz bir anda örnek sayısını otomatik olarak ölçeklendirmenize olanak sağlar.
 
 1. Ölçek kümesi penceresinin sol tarafındaki menüden **Ölçekleme'yi** seçin. Önceki örneklerde oluşturulan varolan otomatik ölçeklendirme kurallarını silmek için çöp kutusu simgesini seçin.
 

@@ -1,21 +1,21 @@
 ---
 title: Azure sanal makine ölçek kümeleriyle otomatik ölçeklendirmeye genel bakış
 description: Performansa veya sabit bir zamanlamaya göre ayarlanan Azure sanal makine ölçeğini otomatik olarak ölçeklendirmenin farklı yolları hakkında bilgi edinin
-author: cynthn
+author: ju-shim
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: cynthn
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb96be187502afcccfd3fb2c88f709facfbc3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278135"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010350"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleriyle otomatik ölçeklendirmeye genel bakış
 Azure sanal makine ölçeği kümesi, uygulamanızı çalıştıran VM örneklerinin sayısını otomatik olarak artırabilir veya azaltabilir. Bu otomatik ve elastik davranış, uygulamanızın performansını izlemek ve optimize etmek için yönetim ek yüküazaltır. Olumlu bir müşteri deneyimi için kabul edilebilir performansı tanımlayan kurallar oluşturursunuz. Bu tanımlanan eşikler karşılandığında, otomatik ölçek kuralları ölçek kümenizin kapasitesini ayarlamak için harekete geçer. Ayrıca, belirli zamanlarda ölçek kümenizin kapasitesini otomatik olarak artıracak veya azaltacak olayları zamanlayabilirsiniz. Bu makalede, hangi performans ölçümlerinin kullanılabilir olduğu ve otomatik ölçeklendirmenin hangi eylemleri gerçekleştirebileceğine genel bir bakış sunulmaktadır.
@@ -34,7 +34,7 @@ VM örneklerinizden edinilebilen yerleşik ana bilgisayar ölçümlerini içeren
 
 Konak tabanlı ölçümleri kullanan otomatik ölçeklendirme kuralları aşağıdaki araçlarla oluşturulabilir:
 
-- [Azure portalında](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure şablonu](tutorial-autoscale-template.md)

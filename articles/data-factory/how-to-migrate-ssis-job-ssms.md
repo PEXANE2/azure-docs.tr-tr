@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: c65fbd9bbd83db9c7c8ec0e9041d08372243b72f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887651"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80989451"
 ---
-# <a name="migrate-on-premises-ssis-jobs-to-azure-data-factory"></a>Şirket içi SSIS işlerini Azure Veri Fabrikası'na geçirin
+# <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent işlerini SSMS ile ADF'ye geçirin
 
 Şirket [içi SQL Server Integration Services (SSIS) iş yüklerini ADF'de SSIS'e aktarırken,](scenario-ssis-migration-overview.md)SSIS paketleri geçtikten sonra, SQL Server Integration Services Package iş adım türüne sahip SQL Server Agent işlerinin toplu geçişini, SQL Veri Fabrikası (ADF) ardışık hatlarına/etkinlikleri/zamanlama tetikleyicilerine SQL Management Studio (SSMS) **SSIS İş Geçişi Sihirbazı**üzerinden gerçekleştirebilirsiniz.
 

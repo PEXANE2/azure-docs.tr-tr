@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 1d6fa75beabdc36750525310008add9594562228
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887121"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991782"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -86,6 +86,7 @@ Uyarıları yapılandırmak için:
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Veri yolu yukarı ve benim yük dengeleyici VIP için kullanılabilir mi?
+<details><summary>Genişlet</summary>
 
 VIP kullanılabilirlik ölçümü, bölgedeki veri yolunun durumunu, Sanal Bilgilerinizin bulunduğu bilgi işlem ana bilgisayara açıklar. Metrik, Azure altyapısının durumunun bir yansımasıdır. Ölçümü aşağıdakiler için kullanabilirsiniz:
 - Hizmetinizin harici kullanılabilirliğini izleme
@@ -113,9 +114,11 @@ VIP kullanılabilirliği aşağıdaki nedenlerden dolayı başarısız olur:
 Tanılama amacıyla, Veri [Yolu Kullanılabilirlik ölçüm'üni sistem durumu sondası durumuyla birlikte](#vipavailabilityandhealthprobes)kullanabilirsiniz.
 
 Çoğu senaryo için toplama olarak **Ortalama'yı** kullanın.
+</details>
 
 #### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP'min arka uç örnekleri sondalara yanıt veriyor mu?
-
+<details>
+  <summary>Genişlet</summary>
 Sistem durumu durumu ölçümü, yük bakiyecinizin sistem durumu sondasını yapılandırdığınızda uygulama dağıtımınızın durumunu sizin tarafından yapılandırılmış olarak açıklar. Yük dengeleyicisi, yeni akışların nereye gönderilen yeri belirlemek için sistem durumu sondasının durumunu kullanır. Sistem durumu sondaları bir Azure altyapı adresinden kaynaklanır ve VM'nin konuk işletim sistemi içinde görülebilir.
 
 Standart Yük Dengeleyici kaynaklarınız için sağlık sondası durumunu almak için:
@@ -127,9 +130,11 @@ Sağlık sondaları aşağıdaki nedenlerden dolayı başarısız olabilir:
 - Sondanıza Ağ Güvenlik Grubu, VM'nin konuk işletim sistemi güvenlik duvarı veya uygulama katmanı filtreleri tarafından izin verilmez.
 
 Çoğu senaryo için toplama olarak **Ortalama'yı** kullanın.
+</details>
 
 #### <a name="how-do-i-check-my-outbound-connection-statistics"></a>Giden bağlantı istatistiklerimi nasıl kontrol edebilirim? 
-
+<details>
+  <summary>Genişlet</summary>
 SNAT bağlantıları [ölçümü, giden akışlar](https://aka.ms/lboutbound)için başarılı ve başarısız bağlantıların hacmini açıklar.
 
 Sıfırdan büyük bir başarısız bağlantı hacmi SNAT bağlantı noktası tükenmesini gösterir. Bu hatalara neyin neden olabileceğini belirlemek için daha fazla araştırmanız gerekir. SNAT bağlantı noktası tükenmesi giden bir [akış](https://aka.ms/lboutbound)kurmak için bir başarısızlık olarak tezahür eder. İş yerindeki senaryoları ve mekanizmaları anlamak ve SNAT bağlantı noktası nın tükenmesini önlemek için nasıl azaltılamayı ve tasarım yapılacağını öğrenmek için giden bağlantılar hakkındaki makaleyi gözden geçirin. 
@@ -141,10 +146,12 @@ SNAT bağlantı istatistiklerini almak için:
 ![SNAT bağlantısı](./media/load-balancer-standard-diagnostics/LBMetrics-SNATConnection.png)
 
 *Şekil: Yük Dengeleyici SNAT bağlantı sayısı*
+</details>
 
 
 #### <a name="how-do-i-check-my-snat-port-usage-and-allocation"></a>SNAT bağlantı noktası kullanımımı ve tahsisatımı nasıl kontrol edebilirim?
-
+<details>
+  <summary>Genişlet</summary>
 SNAT Kullanım ölçümü, bir internet kaynağı ile bir arka uç VM veya yük dengeleyicisinin arkasında olan ve ortak IP adresi olmayan sanal makine ölçeği kümesi arasında kaç tane benzersiz akış oluşturulduğunu gösterir. Bunu SNAT Ayırma ölçümü ile karşılaştırarak, hizmetinizin SNAT tükenmesi ve bunun sonucunda oluşan giden akış hatası olup olmadığını belirleyebilirsiniz. 
 
 Ölçümleriniz [giden akış](https://aka.ms/lboutbound) hatası riskini gösteriyorsa, makaleye başvurun ve hizmet durumunu sağlamak için bunu azaltmak için adımlar atın.
@@ -166,9 +173,11 @@ SNAT bağlantı noktası kullanımını ve tahsisini görüntülemek için:
 ![Arka uç örneğine göre SNAT kullanımı](./media/load-balancer-standard-diagnostics/snat-usage-split.png)
 
 *Şekil: Arka uç örneğine göre TCP SNAT bağlantı noktası kullanımı*
+</details>
 
 #### <a name="how-do-i-check-inboundoutbound-connection-attempts-for-my-service"></a>Hizmetim için gelen/giden bağlantı girişimlerini nasıl kontrol edebilirim?
-
+<details>
+  <summary>Genişlet</summary>
 SYN paketleri ölçümü, belirli bir ön uçla ilişkilendirilen [(giden akışlar](https://aka.ms/lboutbound)için) gelen veya gönderilen TCP SYN paketlerinin hacmini açıklar. Bu metriğin hizmetinize tcp bağlantı girişimlerini anlamak için kullanabilirsiniz.
 
 Çoğu senaryo için toplama olarak **Toplam'ı** kullanın.
@@ -176,10 +185,12 @@ SYN paketleri ölçümü, belirli bir ön uçla ilişkilendirilen [(giden akış
 ![SYN bağlantısı](./media/load-balancer-standard-diagnostics/LBMetrics-SYNCount.png)
 
 *Şekil: Yük Dengeleyici SYN sayısı*
+</details>
 
 
 #### <a name="how-do-i-check-my-network-bandwidth-consumption"></a>Ağ bant genişliği tüketimimi nasıl kontrol edebilirim? 
-
+<details>
+  <summary>Genişlet</summary>
 Bayt lar ve paket sayaçları ölçümü, hizmetiniz tarafından her ön uç için gönderilen veya alınan bayt ve paketlerin hacmini açıklar.
 
 Çoğu senaryo için toplama olarak **Toplam'ı** kullanın.
@@ -193,9 +204,11 @@ Bayt veya paket sayısı istatistiklerini almak için:
 ![Bayt sayısı](./media/load-balancer-standard-diagnostics/LBMetrics-ByteCount.png)
 
 *Şekil: Yük Dengeleyici bayt sayısı*
+</details>
 
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Yük dengeleyici dağıtımımı nasıl tanılarım?
-
+<details>
+  <summary>Genişlet</summary>
 TEK bir grafikte VIP kullanılabilirliği ve sistem durumu sondası ölçümlerinin bir birleşimini kullanarak sorunu nerede arayacağınızı belirleyebilir ve sorunu çözebilirsiniz. Azure'un doğru çalıştığından güvence alabilir ve yapılandırmanın veya uygulamanın temel neden olduğunu kesin olarak belirlemek için bu bilgileri kullanabilirsiniz.
 
 Azure'un sağladığınız yapılandırmaya göre dağıtımınızın durumunu nasıl gördüğünü anlamak için sistem durumu sondası ölçümlerini kullanabilirsiniz. Sağlık sondalarına bakmak, bir nedeni izlemede veya belirlemede her zaman harika bir ilk adımdır.
@@ -211,6 +224,7 @@ Grafik aşağıdaki bilgileri görüntüler:
 - Mor izlemeyle gösterilen sağlık sondası durumu (DIP kullanılabilirliği), grafiğin başında yüzde 0'dır. Sağlık sondası durumunun (DIP kullanılabilirliği) sağlıklı hale geldiği ve müşterinin dağıtımının yeni akışları kabul ettiği yeşil vurgular la çevrelenmiş alan.
 
 Grafik, müşterilerin başka sorunlar oluşup oluşmadığını tahmin etmek veya destek sormak zorunda kalmadan dağıtımı kendi başlarına gidermelerine olanak tanır. Sistem durumu sondaları bir yanlış yapılandırma veya başarısız bir uygulama nedeniyle başarısız olduğundan hizmet kullanılamadı.
+</details>
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Kaynak durumu durumu
 

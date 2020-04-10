@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 7f001a0d443e4ec668aedaabb7505884163bf37e
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666780"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80998340"
 ---
-# <a name="partial-term-search-and-patterns-with-special-characters---azure-cognitive-search-wildcard-regex-patterns"></a>Özel karakterlere sahip kısmi süreli arama ve desenler - Azure Bilişsel Arama (joker karakter, regex, desenler)
+# <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi süreli arama ve özel karakterler (joker karakter, regex, desenler) ile desenler
 
 *Kısmi terim araması,* bir dizenin ilk, son veya iç kısımları gibi terim parçalarından oluşan sorguları ifade eder. *Desen,* bazen sorgunun bir parçası olan tire veya kesikler gibi özel karakterlerle parçaların bir birleşimi olabilir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
 
 Dizin desen eşleştirme için gerekli biçimde terimler yoksa kısmi arama sorunlu olabilir. Dizin oluşturmanın metin çözümleme aşamasında, varsayılan standart çözümleyici kullanılarak, özel karakterler atılır, bileşik ve bileşik dizeleri ayrılır, hiçbir eşleşme bulununca desen sorguları başarısız olur. Örneğin, bu içerik `+1 (425) 703-6214`dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
 
-Çözüm, kısmi terimleri ve desenleri destekleyebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dize yi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
+Çözüm, kısmi terimler ve desenlerle eşleşebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dizeyi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da kısmi arama nedir
 
@@ -64,7 +64,7 @@ Desenlerde veya özel karakterlerde arama yapmanız gerektiğinde, varsayılan �
   "type": "Edm.String",
   "retrievable": true,
   "searchable": true,
-  "analyzer": "my_customanalyzer"
+  "analyzer": "my_custom_analyzer"
 },
 ```
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler ve UDF'lerle çalışma
 description: Bu makalede, Azure Cosmos DB'de depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler gibi kavramlar tanıtıştır.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.author: mjbrown
+ms.date: 04/09/2020
+ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 23a14e7590eca6f63c92acdf6336ffaef8b54381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065903"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010554"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler
 
@@ -69,7 +69,7 @@ Depolanan yordamlar ve tetikleyiciler her zaman bir Azure Cosmos kapsayıcısın
 
 Tüm Azure Cosmos DB işlemleri belirtilen zaman aşımı süresi içinde tamamlanmalıdır. Bu kısıtlama JavaScript işlevleri için geçerlidir - depolanan yordamlar, tetikleyiciler ve kullanıcı tanımlı işlevler. Bir işlem bu süre içinde tamamlanmazsa, işlem geri alınır.
 
-JavaScript işlevlerinizin zaman sınırı içinde bitmesini sağlayabilir veya toplu yürütme/devam yürütme için devam tabanlı bir model uygulayabilirsiniz. Zaman sınırlarını işlemek için depolanan yordamların ve tetikleyicilerin geliştirilmesini kolaylaştırmak için, Azure Cosmos kapsayıcısının altındaki tüm işlevler (örneğin, öğelerin oluşturulması, okunması, güncelleştirilmesi ve silinmesi) işlemin bu işlemin uygulanıp uygulanmayacağını gösteren bir boolean değeri döndürür Tam. Bu değer yanlışsa, komut dosyası yapılandırılan değerden daha fazla zaman veya sağlanan iş tükettiği için yordamın yürütmeyi tamamlaması gerektiğinin bir göstergesidir. İlk kabul edilmeyen mağaza işleminden önce sıraya girilen işlemler, depolanan yordam zamanında tamamlanırsa ve daha fazla istek sıraya girmezse tamamlanagaranti edilir. Bu nedenle, komut dosyasının denetim akışını yönetmek için JavaScript'in geri arama kuralını kullanarak işlemler birer birer sıralanmalıdır. Komut dosyaları sunucu tarafında yürütüldolduğundan, bunlar kesinlikle yönetilir. Yürütme sınırlarını sürekli olarak ihlal eden komut dosyaları etkin olmayabilir ve yürütülemez ve yürütme sınırlarını onurlandırmak için yeniden oluşturulmalıdır.
+JavaScript işlevlerinizin zaman sınırı içinde bitmesini sağlayabilir veya toplu yürütme/devam yürütme için devam tabanlı bir model uygulayabilirsiniz. Zaman sınırlarını işlemek için depolanan yordamların ve tetikleyicilerin geliştirilmesini kolaylaştırmak için, Azure Cosmos kapsayıcısının altındaki tüm işlevler (örneğin, öğelerin oluşturulması, okunması, güncelleştirilmesi ve silinmesi) işlemin tamamlanıp tamamlanmayacağını gösteren bir boolean değeri döndürür. Bu değer yanlışsa, komut dosyası yapılandırılan değerden daha fazla zaman veya sağlanan iş tükettiği için yordamın yürütmeyi tamamlaması gerektiğinin bir göstergesidir. İlk kabul edilmeyen mağaza işleminden önce sıraya girilen işlemler, depolanan yordam zamanında tamamlanırsa ve daha fazla istek sıraya girmezse tamamlanagaranti edilir. Bu nedenle, komut dosyasının denetim akışını yönetmek için JavaScript'in geri arama kuralını kullanarak işlemler birer birer sıralanmalıdır. Komut dosyaları sunucu tarafında yürütüldolduğundan, bunlar kesinlikle yönetilir. Yürütme sınırlarını sürekli olarak ihlal eden komut dosyaları etkin olmayabilir ve yürütülemez ve yürütme sınırlarını onurlandırmak için yeniden oluşturulmalıdır.
 
 JavaScript işlevleri de [sağlanan iş verme kapasitesine](request-units.md)tabidir. JavaScript işlevleri kısa bir süre içinde çok sayıda istek birimi kullanabilir ve sağlanan iş birimi kapasitesi sınırına ulaşılırsa hız sınırı sınırlı olabilir. Bu veritabanı işlemleri istemciden aynı işlemleri yürütme biraz daha az pahalı olmasına rağmen komut dosyaları veritabanı işlemleri yürütme harcanan iş sonuna ek olarak ek iş elde etme kullanır unutmayın.
 
@@ -90,7 +90,7 @@ Azure Cosmos DB, bir Azure Cosmos öğesinde işlem gerçekleştirerek çağrıl
 
 ## <a name="user-defined-functions"></a><a id="udfs"></a>Kullanıcı tanımlı işlevler
 
-SQL API sorgu dili sözdizimini genişletmek ve özel iş mantığını kolayca uygulamak için kullanıcı tanımlı işlevler (UDF'ler) kullanılır. Bunlar yalnızca sorgular içinde çağrılabilir. UDF'lerin bağlam nesnesine erişimi yoktur ve yalnızca JavaScript'i hesaplamak için kullanılır. Bu nedenle, UDF'ler ikincil yinelemeler üzerinde çalıştırılabilir. Örnekler için, [kullanıcı tanımlı işlevler](how-to-write-stored-procedures-triggers-udfs.md#udfs) makalesi nasıl yazılır makalesine bakın.
+SQL API sorgu dili sözdizimini genişletmek ve özel iş mantığını kolayca uygulamak için [kullanıcı tanımlı işlevler](sql-query-udfs.md) (UDF'ler) kullanılır. Bunlar yalnızca sorgular içinde çağrılabilir. UDF'lerin bağlam nesnesine erişimi yoktur ve yalnızca JavaScript'i hesaplamak için kullanılır. Bu nedenle, UDF'ler ikincil yinelemeler üzerinde çalıştırılabilir. Örnekler için, [kullanıcı tanımlı işlevler](how-to-write-stored-procedures-triggers-udfs.md#udfs) makalesi nasıl yazılır makalesine bakın.
 
 ## <a name="javascript-language-integrated-query-api"></a><a id="jsqueryapi"></a>JavaScript dil tümleşik sorgu API
 

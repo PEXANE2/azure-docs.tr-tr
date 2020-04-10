@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/09/2020
 ms.author: sstein
-ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607545"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011455"
 ---
 # <a name="sql-database-release-notes"></a>SQL Veritabanı sürüm notları
 
@@ -27,7 +27,6 @@ Bu makalede, şu anda genel önizlemede olan SQL Veritabanı özellikleri listel
 | Özellik | Ayrıntılar |
 | ---| --- |
 | Yeni Fsv2 serisi ve M serisi donanım nesilleri| Bilgi için Donanım [nesillerini](sql-database-service-tiers-vcore.md#hardware-generations)görün.|
-| [Azure özel bağlantısı](https://azure.microsoft.com/updates/private-link-now-available-in-preview/)| Private Link, Azure ağındaki verileri tutarak ağ mimarisini basitleştirir ve Azure'daki uç noktalar arasındaki bağlantıyı güvence altına alarak internete maruz kalmamayı ortadan kaldırır. Private Link ayrıca Azure'da kendi hizmetlerinizi oluşturmanıza ve oluşturmanıza olanak tanır. |
 | Tek veritabanları ve elastik havuzlar ile hızlandırılmış veritabanı kurtarma | Daha fazla bilgi için [bkz.](sql-database-accelerated-database-recovery.md)|
 |Yaklaşık Sayı Farklı|Bilgi için [bkz.](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing)|
 |Rowstore'da Toplu İşlem Modu (uyumluluk düzeyi 150 altında)|Daha fazla bilgi için [Rowstore'daki Toplu İşlem Modu'na](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)bakın.|

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
-ms.openlocfilehash: b01dcad71747da6b7aa770e3993cb82892ae55fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d536b706db85603624e0fa2362df7c537958f6f2
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929448"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991612"
 ---
 # <a name="copy-data-from-google-adwords-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Google AdWords'ten veri kopyalama
 
@@ -55,7 +55,7 @@ Aşağıdaki özellikler Google AdWords bağlantılı hizmet için desteklenir:
 | clientSecret | Yenileme belirteci elde etmek için kullanılan google uygulamasının istemci sırrı. Bu alanı Güvenli String olarak işaretlemeyi seçip ADF'de güvenli bir şekilde depolamayı veya parolayı Azure Key Vault'ta depolamayı ve ADF'nin veri kopyalama gerçekleştirirken etkinlik çekmesine izin verebilirsiniz - [Key Vault'taki Mağaza kimlik numaralarından](store-credentials-in-key-vault.md)daha fazla bilgi edinin. | Hayır |
 | e-posta | ServiceAuthentication için kullanılan ve yalnızca kendi barındırılan IR'de kullanılabilen servis hesabı e-posta kimliği.  | Hayır |
 | keyFilePath | Hizmet hesabı e-posta adresini doğrulamak için kullanılan ve yalnızca kendi barındırılan IR'de kullanılabilen .p12 anahtar dosyasına giden tam yol.  | Hayır |
-| güvenilirCertPath | SSL üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de SSL kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
+| güvenilirCertPath | TLS üzerinden bağlanırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren .pem dosyasının tam yolu. Bu özellik yalnızca kendi barındırılan IR'de TLS kullanırken ayarlanabilir. Varsayılan değer, IR ile yüklü cacerts.pem dosyasıdır.  | Hayır |
 | useSystemTrustStore | Sistem güven deposundan veya belirli bir PEM dosyasından CA sertifikası kullanıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
 
 **Örnek:**

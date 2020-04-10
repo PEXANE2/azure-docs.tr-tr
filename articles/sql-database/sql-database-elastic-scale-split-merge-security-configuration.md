@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a916645f153f73a98e7fc5d4046bdf557e8acf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ea0fd252d1792d4c40cc6d7869f4ba57edc1ad
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823523"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011370"
 ---
 # <a name="split-merge-security-configuration"></a>Birleştirme güvenlik yapılandırması
 
@@ -26,7 +26,7 @@ Bölme/Birleştirme hizmetini kullanmak için güvenliği doğru şekilde yapıl
 
 Sertifikalar iki şekilde yapılandırılır. 
 
-1. [SSL Sertifikasını Yapılandırmak için](#to-configure-the-ssl-certificate)
+1. [TLS/SSL Sertifikasını Yapılandırmak için](#to-configure-the-tlsssl-certificate)
 2. [İstemci Sertifikalarını Yapılandırmak İçin](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Sertifika almak için
@@ -49,26 +49,26 @@ Bu seçenekler kullanılamıyorsa, **kendi imzalı sertifikalar**oluşturabilirs
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
 * WDK'yı [Windows 8.1'den alın: Kitleri ve araçları indirin](https://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
-## <a name="to-configure-the-ssl-certificate"></a>SSL sertifikasını yapılandırmak için
+## <a name="to-configure-the-tlsssl-certificate"></a>TLS/SSL sertifikasını yapılandırmak için
 
-İletişimi şifrelemek ve sunucunun kimliğini doğrulamak için bir SSL sertifikası gereklidir. Aşağıdaki üç senaryodan en uygununu seçin ve tüm adımları uygulayın:
+İletişimi şifrelemek ve sunucunun kimliğini doğrulamak için TLS/SSL sertifikası gereklidir. Aşağıdaki üç senaryodan en uygununu seçin ve tüm adımları uygulayın:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Yeni bir kendi imzalı sertifika oluşturma
 
 1. [Kendi İmzalı Sertifika Oluşturma](#create-a-self-signed-certificate)
-2. [Kendi İmzalı SSL Sertifikası için PFX dosyası oluşturma](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-ssl-certificate-to-cloud-service)
-4. [Hizmet Yapılandırma Dosyasında SSL Sertifikasını Güncelleştirme](#update-ssl-certificate-in-service-configuration-file)
-5. [İthalat SSL Belgelendirme Yetkilisi](#import-ssl-certification-authority)
+2. [Kendi İmzalı TLS/SSL Sertifikası için PFX dosyası oluşturma](#create-pfx-file-for-self-signed-tlsssl-certificate)
+3. [TLS/SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-tlsssl-certificate-to-cloud-service)
+4. [Hizmet Yapılandırma Dosyasında TLS/SSL Sertifikasını Güncelleştir](#update-tlsssl-certificate-in-service-configuration-file)
+5. [İthalat TLS/SSL Belgelendirme Yetkilisi](#import-tlsssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Sertifika deposundan varolan bir sertifikayı kullanmak için
-1. [Sertifika Deposundan SSL Belgesi İhracatı](#export-ssl-certificate-from-certificate-store)
-2. [SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-ssl-certificate-to-cloud-service)
-3. [Hizmet Yapılandırma Dosyasında SSL Sertifikasını Güncelleştirme](#update-ssl-certificate-in-service-configuration-file)
+1. [Sertifika Deposundan TL/SSL Sertifikası İhraç](#export-tlsssl-certificate-from-certificate-store)
+2. [TLS/SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-tlsssl-certificate-to-cloud-service)
+3. [Hizmet Yapılandırma Dosyasında TLS/SSL Sertifikasını Güncelleştir](#update-tlsssl-certificate-in-service-configuration-file)
 
 ### <a name="to-use-an-existing-certificate-in-a-pfx-file"></a>PFX dosyasında varolan bir sertifikayı kullanmak için
-1. [SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-ssl-certificate-to-cloud-service)
-2. [Hizmet Yapılandırma Dosyasında SSL Sertifikasını Güncelleştirme](#update-ssl-certificate-in-service-configuration-file)
+1. [TLS/SSL Sertifikasını Bulut Hizmetine Yükleyin](#upload-tlsssl-certificate-to-cloud-service)
+2. [Hizmet Yapılandırma Dosyasında TLS/SSL Sertifikasını Güncelleştir](#update-tlsssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>İstemci sertifikalarını yapılandırmak için
 Hizmete istekleri doğrulamak için istemci sertifikaları gereklidir. Aşağıdaki üç senaryodan en uygununu seçin ve tüm adımları uygulayın:
@@ -102,7 +102,7 @@ Meta veri deposunda depolanan kimlik bilgilerini şifrelemek için bir sertifika
 
 ### <a name="use-a-new-self-signed-certificate"></a>Yeni bir kendi imzalı sertifika kullanma
 1. [Kendi İmzalı Sertifika Oluşturma](#create-a-self-signed-certificate)
-2. [Kendi İmzalı Şifreleme Sertifikası için PFX dosyası oluşturma](#create-pfx-file-for-self-signed-ssl-certificate)
+2. [Kendi İmzalı Şifreleme Sertifikası için PFX dosyası oluşturma](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Şifreleme Sertifikasını Bulut Hizmetine Yükleme](#upload-encryption-certificate-to-cloud-service)
 4. [Hizmet Yapılandırma Dosyasında Şifreleme Sertifikasını Güncelleştirme](#update-encryption-certificate-in-service-configuration-file)
 
@@ -186,7 +186,7 @@ Desteklenen diğer değerler için IIS'deki Dinamik IP Güvenliği belgelerine b
 ## <a name="operations-for-configuring-service-certificates"></a>Hizmet sertifikalarını yapılandırma işlemleri
 Bu konu yalnızca başvuru içindir. Aşağıda belirtilen yapılandırma adımlarını izleyin:
 
-* SSL sertifikasını yapılandırma
+* TLS/SSL sertifikasını yapılandırma
 * İstemci sertifikalarını yapılandırma
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
@@ -204,7 +204,7 @@ Yürütmek:
 * -n hizmet URL'si ile. Joker karakterler ("CN=*.cloudapp.net") ve alternatif adlar ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") desteklenir.
 * -e sertifika son kullanma tarihi ile güçlü bir parola oluşturun ve istendiğinde belirtin.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Kendi imzalı SSL sertifikası için PFX dosyası oluşturma
+## <a name="create-pfx-file-for-self-signed-tlsssl-certificate"></a>Kendi imzalı TLS/SSL sertifikası için PFX dosyası oluşturma
 Yürütmek:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
@@ -214,24 +214,24 @@ Aşağıdaki seçeneklerle parola girin ve ardından sertifika ihracını girin:
 * Evet, özel anahtarı dışa aktarma
 * Tüm genişletilmiş özellikleri dışa aktarma
 
-## <a name="export-ssl-certificate-from-certificate-store"></a>Sertifika deposundan SSL sertifikası ihracı
+## <a name="export-tlsssl-certificate-from-certificate-store"></a>Sertifika deposundan TLS/SSL sertifikası ihracı
 * Sertifika yı bulma
 * Eylemler -tüm görevler> > Dışa Aktarma'yı tıklatın...
 * Bir . Bu seçenekleri ile PFX dosyası:
   * Evet, özel anahtarı dışa aktarma
   * Mümkünse tüm sertifikaları sertifika yoluna ekleyin *Tüm genişletilmiş özellikleri dışa aktarma
 
-## <a name="upload-ssl-certificate-to-cloud-service"></a>SSL sertifikasını bulut hizmetine yükleme
-Varolan veya oluşturulan sertifikayı yükleyin. SSL anahtar çifti ile PFX dosyası:
+## <a name="upload-tlsssl-certificate-to-cloud-service"></a>TLS/SSL sertifikasını bulut hizmetine yükleyin
+Varolan veya oluşturulan sertifikayı yükleyin. TLS anahtar çifti ile PFX dosyası:
 
 * Özel anahtar bilgilerini koruyan parolayı girin
 
-## <a name="update-ssl-certificate-in-service-configuration-file"></a>Hizmet yapılandırma dosyasında SSL sertifikasını güncelleştirme
+## <a name="update-tlsssl-certificate-in-service-configuration-file"></a>Hizmet yapılandırma dosyasında TLS/SSL sertifikasını güncelleştirme
 Bulut hizmetine yüklenen sertifikanın parmak izi ile hizmet yapılandırma dosyasında aşağıdaki ayarın parmak izi değerini güncelleştirin:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>SSL belgelendirme yetkilisini içe aktarma
+## <a name="import-tlsssl-certification-authority"></a>TLS/SSL belgelendirme yetkilisini içe aktarma
 Hizmetle iletişim kuracak tüm hesap/makinede aşağıdaki adımları izleyin:
 
 * Çift tıklayın. Windows Gezgini'nde CER dosyası
@@ -248,7 +248,7 @@ Yalnızca istemci sertifikası tabanlı kimlik doğrulaması desteklenir ve diğ
 <Setting name="SetupWebserverForClientCertificates" value="false" />
 ```
 
-Ardından, CA sertifikası ayarında SSL sertifikasıyla aynı parmak izini kopyalayın:
+Ardından, CA sertifikası ayarında TLS/SSL sertifikasıyla aynı parmak izini kopyalayın:
 
 ```xml
 <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
@@ -411,7 +411,7 @@ Bulut hizmetine yüklenen sertifikanın parmak izi ile hizmet yapılandırma dos
 ```
 
 ## <a name="common-certificate-operations"></a>Yaygın sertifika işlemleri
-* SSL sertifikasını yapılandırma
+* TLS/SSL sertifikasını yapılandırma
 * İstemci sertifikalarını yapılandırma
 
 ## <a name="find-certificate"></a>Sertifika yı bulma
@@ -432,16 +432,16 @@ Bulut hizmetine yüklenen sertifikanın parmak izi ile hizmet yapılandırma dos
 ## <a name="export-certificate"></a>Sertifikayı dışarı aktarma
 Sertifika **Verme**Sihirbazında:
 
-1. **İleri**'ye tıklayın.
+1. **İleri**’ye tıklayın.
 2. **Evet'i**seçin, ardından **özel anahtarı dışa aktarın.**
-3. **İleri**'ye tıklayın.
+3. **İleri**’ye tıklayın.
 4. İstenilen çıktı dosya biçimini seçin.
 5. İstenilen seçenekleri kontrol edin.
 6. **Parolayı Denetle.**
 7. Güçlü bir parola girin ve onaylayın.
-8. **İleri**'ye tıklayın.
+8. **İleri**’ye tıklayın.
 9. Sertifikanın depolandığı bir dosya adı yazın veya göz atın (. PFX uzantısı).
-10. **İleri**'ye tıklayın.
+10. **İleri**’ye tıklayın.
 11. **Son**'a tıklayın.
 12. **Tamam**'a tıklayın.
 
@@ -452,7 +452,7 @@ Sertifika Alma Sihirbazında:
    
    * Yalnızca geçerli kullanıcı altında çalışan işlemler hizmete erişecekse **Geçerli Kullanıcı'yı** seçin
    * Bu bilgisayardaki diğer işlemler hizmete erişecekse **Yerel Makine'yi** seçin
-2. **İleri**'ye tıklayın.
+2. **İleri**’ye tıklayın.
 3. Bir dosyadan içe aktarıyorsanız, dosya yolunu onaylayın.
 4. Bir . PFX dosyası:
    1. Özel anahtarı koruyan parolayı girin
@@ -477,7 +477,7 @@ Sertifika Alma Sihirbazında:
 7. Tamamlandıktan sonra, listedeki yeni girişten sertifika parmak izini kopyalayın.
 
 ## <a name="other-security-considerations"></a>Diğer güvenlik konuları
-Bu belgede açıklanan SSL ayarları, HTTPS bitiş noktası kullanıldığında hizmet ve istemcileri arasındaki iletişimi şifreler. Veritabanı erişimi ve diğer hassas bilgiler iletişimde yer alabilmesi için bu önemlidir. Ancak, hizmetin Microsoft Azure aboneliğinizde meta veri depolaması için sağladığınız Microsoft Azure SQL veritabanındaki dahili tablolarında kimlik bilgileri de dahil olmak üzere dahili durumunu sürdürüldünü unutmayın. Bu veritabanı, hizmet yapılandırma dosyanızda aşağıdaki ayarın bir parçası olarak tanımlanmıştır (. CSCFG dosyası): 
+Bu belgede açıklanan TLS ayarları, HTTPS bitiş noktası kullanıldığında hizmet ve istemcileri arasındaki iletişimi şifreler. Veritabanı erişimi ve diğer hassas bilgiler iletişimde yer alabilmesi için bu önemlidir. Ancak, hizmetin Microsoft Azure aboneliğinizde meta veri depolaması için sağladığınız Microsoft Azure SQL veritabanındaki dahili tablolarında kimlik bilgileri de dahil olmak üzere dahili durumunu sürdürüldünü unutmayın. Bu veritabanı, hizmet yapılandırma dosyanızda aşağıdaki ayarın bir parçası olarak tanımlanmıştır (. CSCFG dosyası): 
 
 ```xml
 <Setting name="ElasticScaleMetadata" value="Server=…" />

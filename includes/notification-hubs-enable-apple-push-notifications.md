@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: bf2596f5a8e287799285f97f3d1be9f3fe10f644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9e8574ea2d7222871c7f065383e6c0c62057dd3
+ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77123263"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "81007844"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Sertifika imzalama isteği dosyasını oluşturma
 
@@ -74,11 +74,21 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 
 4. **Sertifikalar'da, Tanımlayıcılar & Profiller** sayfasında, **Tanımlayıcılar**altında, yeni oluşturduğunuz App ID satır öğesini bulun ve **Uygulama Kimliği Yapılandırma ekranınızı düzenle** ekranını görüntülemek için satırını seçin.
 
-5. Denetlenen **Push Bildirimleri** seçeneğine gidin ve ardından sertifikayı oluşturmak için **Yapılandır'ı** seçin.
+## <a name="creating-a-certificate-for-notification-hubs"></a>Bildirim Hub'ları için Sertifika Oluşturma
+Bildirim merkezinin **APNS**ile çalışmasını sağlamak için bir sertifika gereklidir. Bu iki şekilde yapılabilir:
+
+1. Doğrudan Bildirim Hub'ına yüklenebilen bir **.p12** oluşturun.  
+2. [Belirteç tabanlı kimlik doğrulaması](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification) *(yeni yaklaşım)* için kullanılabilecek bir **.p8** oluşturun.
+
+Yeni [yaklaşımın, APNS için Belirteç tabanlı (HTTP/2) kimlik doğrulamasında](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-http2-token-authentification)belgelenen bir dizi avantajı (sertifika kullanmayla karşılaştırıldığında) vardır. Ancak, her iki yaklaşım için de adımlar sağlanmıştır. 
+
+### <a name="option-1-creating-a-p12-push-certificate-that-can-be-uploaded-directly-to-notification-hub"></a>SEÇENEK 1: Doğrudan Bildirim Hub'ına yüklenebilen bir .p12 push sertifikası oluşturma
+
+1. Denetlenen **Push Bildirimleri** seçeneğine gidin ve ardından sertifikayı oluşturmak için **Yapılandır'ı** seçin.
 
     ![Uygulama Kimliğini Düzenle sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-6. **Apple Push Notification hizmeti SSL Sertifikaları** penceresi görüntülenir. **Geliştirme SSL Sertifikası** bölümünün altındaki **Sertifika Oluştur** düğmesini seçin.
+2. **Apple Push Notification hizmeti SSL Sertifikaları** penceresi görüntülenir. **Geliştirme SSL Sertifikası** bölümünün altındaki **Sertifika Oluştur** düğmesini seçin.
 
     ![Uygulama Kimliği için sertifika oluştur düğmesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
@@ -87,9 +97,9 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
     > [!NOTE]
     > Bu öğretici geliştirme sertifikası kullanır. Aynı işlem üretim sertifika kaydedildiğinde de kullanılır. Bildirimleri gönderirken aynı sertifika türünü kullandığınızdan kesinlikle emin olun.
 
-1. **Dosya yı seçin,** CSR dosyasını ilk görevden kaydettiğiniz konuma göz atın ve ardından yüklemek için sertifika adını çift tıklatın. Daha sonra **Devam** seçeneğini belirleyin.
+3. **Dosya yı seçin,** CSR dosyasını ilk görevden kaydettiğiniz konuma göz atın ve ardından yüklemek için sertifika adını çift tıklatın. Daha sonra **Devam** seçeneğini belirleyin.
 
-1. Portal sertifikayı oluşturduktan sonra **İndir** düğmesini seçin. Sertifikayı kaydedin ve kaydedildiği yeri hatırlayın.
+4. Portal sertifikayı oluşturduktan sonra **İndir** düğmesini seçin. Sertifikayı kaydedin ve kaydedildiği yeri hatırlayın.
 
     ![Oluşturulan sertifika indirme sayfası](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -100,14 +110,14 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
     > [!NOTE]
     > Varsayılan olarak, indirilen geliştirme sertifikası **aps_development.cer**olarak adlandırılır.
 
-1. İndirilen **aps_development.cer** bildirim sertifikasına çift tıklayın. Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
+5. İndirilen **aps_development.cer** bildirim sertifikasına çift tıklayın. Bu eylem yeni sertifikayı Anahtar Zinciri’ne aşağıdaki resimde gösterildiği gibi yüklenir:
 
     ![Yeni sertifikanın gösterildiği anahtarlık erişim sertifikaları listesi](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
     > [!NOTE]
     > Sertifikanızdaki ad farklı olsa da, ad **Apple Development iOS Push Services**ile önceden belirlenmiş olacaktır.
 
-1. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. **Dışa Aktar'ı**seçin, dosyayı adlandırın, **.p12** biçimini seçin ve sonra **Kaydet'i**seçin.
+6. Anahtar Zinciri Erişimi’nde **Sertifikalar** kategorisinde oluşturduğunuz yeni bildirim sertifikasına sağ tıklayın. **Dışa Aktar'ı**seçin, dosyayı adlandırın, **.p12** biçimini seçin ve sonra **Kaydet'i**seçin.
 
     ![Sertifikayı p12 biçiminde dışarı aktarma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
@@ -115,6 +125,45 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 
     > [!NOTE]
     > .p12 dosya adınız ve konumunuz bu öğreticide görünenden farklı olabilir.
+
+### <a name="option-2-creating-a-p8-certificate-that-can-be-used-for-token-based-authentication"></a>SEÇENEK 2: Belirteç tabanlı kimlik doğrulama için kullanılabilecek bir .p8 sertifikası oluşturma
+
+1. Aşağıdaki ayrıntılara dikkat edin:
+
+    - **Uygulama Kimliği Öneki** (bu bir **Takım Kimliğidir)**
+    - **Paket Kimliği**
+    
+2. Geri **Sertifikalar, Tanımlayıcılar & Profiller**, **Tuşları**tıklatın .
+
+   > [!NOTE]
+   > **APNS**için yapılandırılan bir anahtarınız varsa, oluşturulduktan hemen sonra indirdiğiniz .p8 sertifikasını yeniden kullanabilirsiniz. Eğer öyleyse, **3** ile **5**arasında adımları yoksayabilirsiniz.
+
+3. Yeni **+** bir tuş oluşturmak için düğmeye (veya **bir tuş oluştur** düğmesini) tıklatın.
+4. Uygun bir **Anahtar Adı** değeri sağlayın, ardından Apple Push **Bildirimleri hizmetini (APN)** seçeneğini denetleyin ve ardından **Devam**et'i ve ardından bir sonraki ekranda **Kaydol'u** tıklatın.
+5. **Karşıdan Yükleme'yi** tıklatın ve sonra **.p8** dosyasını *(AuthKey_* önceden belirlenmiş) güvenli bir yerel dizine taşıyın, ardından **Bitti'yi**tıklatın.
+
+   > [!NOTE] 
+   > .p8 dosyanızı güvenli bir yerde sakladığınızdan (ve yedekleme kaydettiğinizden) emin olun. Anahtarınızı indirdikten sonra, sunucu kopyası kaldırıldığıiçin yeniden indirilemez.
+  
+6. **Tuşlar'da,** yeni oluşturduğunuz tuşa (veya bunun yerine kullanmayı seçtiyseniz varolan bir tuşa) tıklayın.
+7. **Anahtar Kimliği** değerine dikkat edin.
+8. .p8 sertifikanızı [**Visual Studio Code**](https://code.visualstudio.com) gibi seçtiğiniz uygun bir uygulamada açın ve ardından anahtar değerine dikkat edin. Bu **-----BEGIN PRIVATE KEY-----** ve **-----END PRIVATE KEY-----** arasındaki değerdir.
+
+    ```
+    -----BEGIN PRIVATE KEY-----
+    <key_value>
+    -----END PRIVATE KEY-----
+    ```
+
+    > [!NOTE]
+    > Bu, **Bildirim Hub'ını**yapılandırmak için daha sonra kullanılacak **belirteç değeridir.** 
+
+Bu adımların sonunda, [bildirim hub'ınızı APN'ler bilgileriyle yapılandırın'](#configure-your-notification-hub-with-apns-information)da daha sonra kullanılmak üzere aşağıdaki bilgilere sahip olmalısınız:
+
+- **Takım Kimliği** (bkz. adım 1)
+- **Paket kimliği** (bkz. adım 1)
+- **Anahtar Kimliği** (bkz. adım 7)
+- **Belirteç değeri** yani .p8 tuşu değeri (bkz. adım 8)
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>Uygulama için bir sağlama profili oluşturun
 
@@ -153,13 +202,18 @@ Bir iOS uygulamasına anında iletme bildirimleri göndermek için uygulamanız�
 
 ## <a name="create-a-notification-hub"></a>Bildirim hub’ı oluşturma
 
-Bu bölümde, bir bildirim hub'ı oluşturur ve daha önce oluşturduğunuz .p12 push sertifikasını kullanarak APN'lerle kimlik doğrulaması yapılandırabilirsiniz. Önceden oluşturduğunuz bir bildirim hub'ı kullanmak istiyorsanız, adım 5'e atlayabilirsiniz.
+Bu bölümde, bir bildirim hub'ı oluşturur ve .p12 push sertifikası veya belirteç tabanlı kimlik doğrulamasını kullanarak APN'lerle kimlik doğrulamayı yapılandırabilirsiniz. Önceden oluşturduğunuz bir bildirim hub'ı kullanmak istiyorsanız, adım 5'e atlayabilirsiniz.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](notification-hubs-portal-create-new-hub.md)]
 
 ## <a name="configure-your-notification-hub-with-apns-information"></a>Bildirim merkezinizi APN bilgileriyle yapılandırma
 
-1. **Bildirim Hizmetleri** bölümünde **Apple (APNS)** seçeneğini belirleyin.
+**Bildirim Hizmetleri**altında, **Apple 'ı (APNS)** seçin ve bildirim [hub'ları için sertifika oluşturma](#creating-a-certificate-for-notification-hubs) bölümünde daha önce seçtiğiniz yaklaşımı temel alan uygun adımları izleyin.  
+
+> [!NOTE]
+> Uygulama Için **Üretim** **Modunu** yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız kullanın.
+
+### <a name="option-1-using-a-p12-push-certificate"></a>SEÇENEK 1: .p12 itme sertifikası kullanma
 
 1. **Sertifika**’yı seçin.
 
@@ -169,10 +223,23 @@ Bu bölümde, bir bildirim hub'ı oluşturur ve daha önce oluşturduğunuz .p12
 
 1. Gerekirse, doğru parolayı belirtin.
 
-1. **Korumalı alan** modunu seçin. Yalnızca uygulamanızı mağazadan satın alan kullanıcılara anında iletme bildirimleri göndermek istiyorsanız **Üretim** modunu kullanın.
+1. **Korumalı alan** modunu seçin.
 
     ![Azure portal'da APNs sertifikasını yapılandırma](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
 
 1. **Kaydet'i**seçin.
+
+### <a name="option-2-using-token-based-authentication"></a>OPTION 2: Belirteç tabanlı kimlik doğrulamayı kullanma
+
+1. **Token'ı**seçin.
+1. Daha önce edindiğiniz aşağıdaki değerleri girin:
+
+    - **Anahtar Kimliği**
+    - **Paket Kimliği**
+    - **Takım Kimliği**
+    - **Belirte -ci** 
+
+1. **Sandbox'ı** seçin
+1. **Kaydet'i**seçin. 
 
 Bildirim hub'ınızı artık APN'lerle yapılandırıldınız. Ayrıca, uygulamanızı kaydetmek ve anında iletme bildirimleri göndermek için bağlantı dizelerine de sahipsiniz.

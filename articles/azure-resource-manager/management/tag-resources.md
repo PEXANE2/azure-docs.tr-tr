@@ -3,18 +3,21 @@ title: Mantıksal kuruluş için kaynakları, kaynak gruplarını ve abonelikler
 description: Faturalandırma ve yönetme için Azure kaynaklarını düzenlemek için etiketlerin nasıl uygulanacağı gösterin.
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 44759db59ef7e7556c8fbfca3bbc58ef84796198
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548489"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010809"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanın
 
 Etiketleri Azure kaynaklarınıza, kaynak gruplarınıza ve aboneliklerinize mantıksal olarak taksonomi olarak düzenlemek için uygularsınız. Her etiket bir ad ve bir değer çiftinden oluşur. Örneğin, "Ortam" adını ve "Üretim" değerini üretimdeki tüm kaynaklara uygulayabilirsiniz.
 
 Etiketleme stratejisinin nasıl uygulanacağı yla ilgili öneriler için [Kaynak adlandırma ve etiketleme karar kılavuzuna](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)bakın.
+
+> [!IMPORTANT]
+> Etiket adları büyük/küçük harf duyarsızdır. Etiket değerleri büyük/küçük harf duyarlıdır.
 
 [!INCLUDE [Handle personal data](../../../includes/gdpr-intro-sentence.md)]
 

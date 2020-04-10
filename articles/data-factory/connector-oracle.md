@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 534e5c913685eeac92022f6694ea31b24816da5d
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422496"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011659"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Oracle'dan kopyalayın
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -37,6 +37,7 @@ Oracle veritabanından desteklenen herhangi bir lavabo veri deposuna verileri ko
 Özellikle, bu Oracle bağlayıcı destekler:
 
 - Oracle veritabanının aşağıdaki sürümleri:
+    - Oracle 19c R1 (19.1) ve üzeri
     - Oracle 18c R1 (18.1) ve üzeri
     - Oracle 12c R1 (12.1) ve üzeri
     - Oracle 11g R1 (11.1) ve üzeri
@@ -84,9 +85,9 @@ Oracle bağlantısında şifrelemeyi etkinleştirmek için iki seçeneğiniz var
 
 -   Oracle sunucu tarafında **Triple-DES Şifreleme (3DES) ve Gelişmiş Şifreleme Standardı (AES)** kullanmak için Oracle Advanced Security'ye (OAS) gidin ve şifreleme ayarlarını yapılandırın. Ayrıntılar için bu [Oracle belgelerine](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759)bakın. Oracle Uygulama Geliştirme Çerçevesi (ADF) bağlayıcısı, Oracle'a bağlantı kurarken OAS'da yapılandırdığınız şifreleme yöntemini kullanmak için otomatik olarak görüşür.
 
--   **SSL**kullanmak için:
+-   **TLS**kullanmak için:
 
-    1.  SSL sertifika bilgilerini alın. SSL sertifikanızın Seçkin Kodlama Kuralları (DER) kodlanmış sertifika bilgilerini alın ve çıktıyı kaydedin (sertifikayı başlatın ----- ... Sertifikayı -----) metin dosyası olarak sonolarak.
+    1.  TLS/SSL sertifika bilgilerini alın. TLS/SSL sertifikanızın Seçkin Kodlama Kuralları (DER) kodlanmış sertifika bilgilerini alın ve çıktıyı kaydedin (sertifikaya ----- ... Sertifikayı -----) metin dosyası olarak sonolarak.
 
         ```
         openssl x509 -inform DER -in [Full Path to the DER Certificate including the name of the DER Certificate] -text

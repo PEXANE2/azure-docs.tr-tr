@@ -5,12 +5,12 @@ author: markfussell
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.author: mfussell
-ms.openlocfilehash: 876980bd6a59bace9ab4e490358964d19fa52c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56df6e28940eb15597a3d6bccca3f85e5f690f89
+ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77586096"
+ms.lasthandoff: 04/09/2020
+ms.locfileid: "80991663"
 ---
 # <a name="azure-service-fabric-application-design-best-practices"></a>Azure Hizmet Kumaşı uygulama tasarımı en iyi uygulamalar
 
@@ -58,8 +58,8 @@ Maliyetlerden tasarruf edin ve kullanılabilirliği artırın:
 ## <a name="how-to-work-with-reliable-services"></a>Güvenilir Hizmetlerle Nasıl ÇalışUlur?
 Service Fabric Reliable Services, kolayca vatansız ve stateful hizmetler oluşturmanıza olanak sağlar. Daha fazla bilgi [için Güvenilir Hizmetler'e giriş](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-introduction)e bakın.
 - Her zaman stateless ve `RunAsync()` stateful hizmetler ve stateful `ChangeRole()` hizmetler için yöntem de [iptal belirteci](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-lifecycle#stateful-service-primary-swaps) onur. Bunu yapmazsanız, Service Fabric servisinizin kapatıp kapamadığını bilmez. Örneğin, iptal jetonuna uymazsanız, çok daha uzun uygulama yükseltme süreleri oluşabilir.
--   [İletişim dinleyicilerini](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) zamanında açın ve kapatın ve iptal jetonları onurlandırın.
--   Eşitleme kodunu asla async koduyla karıştırmayın. Örneğin, async aramalarınızda kullanmayın. `.GetAwaiter().GetResult()` Arama yığını *boyunca async* kullanın.
+-    [İletişim dinleyicilerini](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-communication) zamanında açın ve kapatın ve iptal jetonları onurlandırın.
+-    Eşitleme kodunu asla async koduyla karıştırmayın. Örneğin, async aramalarınızda kullanmayın. `.GetAwaiter().GetResult()` Arama yığını *boyunca async* kullanın.
 
 ## <a name="how-to-work-with-reliable-actors"></a>Güvenilir Aktörlerle Nasıl ÇalışUlur?
 Hizmet Kumaş Güvenilir Aktörler kolayca stateful, sanal aktörler oluşturmanıza olanak sağlar. Daha fazla bilgi [için, Güvenilir Aktörler giriş](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-actors-introduction)bakın.
@@ -77,7 +77,7 @@ Hizmet Kumaş Güvenilir Aktörler kolayca stateful, sanal aktörler oluşturman
 Hizmet çağrılarına [uygulama günlüğe kaydetme](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) konusunda ayrıntılı bilgi olun. Hizmetlerin birbirini aradığı senaryoları tanılamanıza yardımcı olur. Örneğin, B çağrıları C'yi aradığında, arama her yerde başarısız olabilir. Yeterli günlüğe kaydetmeniz yoksa, hataları tanılamak zordur. Hizmetler arama birimleri nedeniyle çok fazla günlüğe kaydediliyorsa, en azından hataları ve uyarıları günlüğe kaydedin.
 
 ## <a name="iot-and-messaging-applications"></a>IoT ve mesajlaşma uygulamaları
-[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya Azure Etkinlik [Hub'larından](https://docs.microsoft.com/azure/event-hubs/)gelen iletileri okurken [ServiceFabricProcessor'i](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/ServiceFabricProcessor)kullanın. ServiceFabricProcessor, etkinlik merkezi bölümlerinden okuma durumunu korumak için Service Fabric Reliable Services ile bütünleşir `IEventProcessor::ProcessEventsAsync()` ve yöntem le hizmetlerinize yeni iletiler getirir.
+[Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) veya Azure Etkinlik [Hub'larından](https://docs.microsoft.com/azure/event-hubs/)gelen iletileri okurken [ServiceFabricProcessor'i](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/ServiceFabricProcessor)kullanın. ServiceFabricProcessor, etkinlik merkezi bölümlerinden okuma durumunu korumak için Service Fabric Reliable Services ile bütünleşir `IEventProcessor::ProcessEventsAsync()` ve yöntem le hizmetlerinize yeni iletiler getirir.
 
 
 ## <a name="design-guidance-on-azure"></a>Azure'da tasarım kılavuzu

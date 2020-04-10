@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
-ms.openlocfilehash: 4b8cfed883ffef780de2e82e3f309e97bcb5515c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4301a55e3f5ea5b445ef1540ee59d1b5c28ca0ed
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278252"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81010826"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Redis için Azure Cache zaman aşımı sorunlarını giderme
 
@@ -82,7 +82,7 @@ Olası kök nedenlerini araştırmak için aşağıdaki adımları kullanabilirs
    - CPU [önbellek performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucuda CPU bağlanıp bağlanmadığınızı kontrol edin. Redis CPU bağlıyken gelen istekler bu isteklerin zaman alabına neden olabilir. Bu durumu gidermek için, yükü premium önbellekteki birden çok parçaya dağıtabilir veya daha büyük bir boyuta veya fiyatlandırma katmanına yükseltebilirsiniz. Daha fazla bilgi için [Sunucu tarafındaki bant genişliği sınırlaması'na](cache-troubleshoot-server.md#server-side-bandwidth-limitation)bakın.
 1. Sunucuda işlenmesi uzun zaman alan komutlar var mı? Redis sunucusunda işlenmesi uzun zaman alan uzun süreli komutlar zaman ayarı yapabilir. Uzun süren komutlar hakkında daha fazla bilgi [için, Uzun süren komutlara](cache-troubleshoot-server.md#long-running-commands)bakın. Redis-cli istemcisini veya [Redis Konsolunu](cache-configure.md#redis-console)kullanarak Redis örneği için Azure Önbelleğinize bağlanabilirsiniz. Ardından, beklenenden daha yavaş istekolup olmadığını görmek için [SLOWLOG](https://redis.io/commands/slowlog) komutunu çalıştırın. Redis Server ve StackExchange.Redis, daha az büyük istek yerine birçok küçük istek için optimize edilebistir. Verilerinizi daha küçük parçalara bölmek burada bazı şeyleri geliştirebilir.
 
-    Redis-cli ve stunnel kullanarak önbelleğinizin SSL bitiş noktasına bağlanma hakkında daha fazla bilgi için, [Redis Preview Release için Oturum Devlet Sağlayıcısı ASP.NET duyuran](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blog yazısına bakın.
+    Redis-cli ve stunnel kullanarak önbelleğinizin TLS/SSL bitiş noktasına bağlanma hakkında daha fazla bilgi için, [Redis Preview Release için Oturum Devlet SağlayıcısıASP.NET duyuran](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)blog gönderisine bakın.
 1. Yüksek Redis sunucu yükü zaman adabına neden olabilir. `Redis Server Load` [Önbellek performans ölçümünü](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)izleyerek sunucu yükünü izleyebilirsiniz. 100 sunucu yükü (maksimum değer) redis sunucusunun meşgul olduğunu, boşta kalmadan istekleri ni işlemediğini belirtir. Belirli isteklerin tüm sunucu kapasitesini alıp almamalarını görmek için, önceki paragrafta açıklandığı gibi SlowLog komutunu çalıştırın. Daha fazla bilgi için Yüksek CPU kullanımı / Sunucu Yükü'ne bakın.
 1. İstemci tarafında ağ blip'ine neden olabilecek başka bir olay var mıydı? Sık karşılaşılan olaylar şunlardır: istemci örneklerinin sayısını yukarı veya aşağı ölçeklendirme, istemcinin yeni bir sürümünü dağıtma veya otomatik ölçeklendirme etkin. Testlerimizde, otomatik ölçeklendirme veya yukarı/aşağı ölçeklendirmenin giden ağ bağlantısının birkaç saniye liğine kaybolmasına neden olabileceğini bulduk. StackExchange.Redis kodu bu tür olaylara karşı dayanıklıdır ve yeniden bağlanır. Yeniden bağlanma sırasında, kuyruktaki tüm istekler zaman dışında olabilir.
 1. Önbelleğe gelen birkaç küçük istekten önce zaman lanmış büyük bir istek var mıydı? Hata iletisindeki parametre, `qs` istemciden sunucuya kaç istek gönderildiğini gösterir, ancak bir yanıtı işlememiş. StackExchange.Redis tek bir TCP bağlantısı kullandığından ve aynı anda yalnızca bir yanıtı okuyabildiği için bu değer büyümeye devam edebilir. İlk işlem zamanlanmış olsa bile, sunucuya veya sunucudan daha fazla verinin gönderilmesini durdurmaz. Diğer istekler, büyük istek tamamlanana kadar engellenir ve zaman alacaktır. Bir çözüm, önbelleğinizin iş yükünüz için yeterince büyük olmasını ve büyük değerleri daha küçük parçalara bölmesini sağlayarak zaman ayırma olasılığını en aza indirmektir. Başka bir olası çözüm istemcinizde `ConnectionMultiplexer` nesnelerin bir havuz kullanmak ve `ConnectionMultiplexer` yeni bir istek gönderirken en az yüklü seçin. Birden çok bağlantı nesnesi arasında yükleme, tek bir zaman anındiğer isteklerin de zaman alamasına neden olmasını önleymelidir.

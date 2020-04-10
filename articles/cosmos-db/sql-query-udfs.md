@@ -1,27 +1,38 @@
 ---
 title: Azure Cosmos DB'de kullanıcı tanımlı işlevler (UDF' ler)
 description: Azure Cosmos DB'de Kullanıcı tanımlı işlevler hakkında bilgi edinin.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/09/2020
+ms.author: tisande
+ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
+ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69614323"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81011132"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB'de kullanıcı tanımlı işlevler (UDF' ler)
 
 SQL API, kullanıcı tarafından tanımlanan işlevler (UDF' ler) için destek sağlar. Skaler UDF'ler ile sıfır veya birçok bağımsız değişkeni geçebilir ve tek bir bağımsız değişken sonucu döndürebilirsiniz. API yasal JSON değerleri olduğu için her argüman denetler.  
 
-API, UDF'leri kullanarak özel uygulama mantığını desteklemek için SQL sözdizimini genişletir. UDF'leri SQL API'ye kaydedebilir ve bunları SQL sorgularında referans verebilirsiniz. Aslında, UDFs zarif sorguları aramak için tasarlanmıştır. Sonuç olarak, UDF'lerin depolanan yordamlar ve tetikleyiciler gibi diğer JavaScript türleri gibi bağlam nesnesine erişimi yoktur. Sorgular salt okunur ve birincil veya ikincil yinelemelerde çalıştırılabilir. UDF'ler, diğer JavaScript türlerinin aksine, ikincil yinelemeler üzerinde çalışacak şekilde tasarlanmıştır.
+## <a name="udf-use-cases"></a>UDF kullanım örnekleri
 
-Aşağıdaki örnek, Cosmos veritabanında bir madde kapsayıcısı altında bir UDF kaydeder. Örnek, adı `REGEX_MATCH`. İki JSON dize değerini `input` `pattern`kabul eder ve ,ilkinin JavaScript'in `string.match()` işlevini kullanarak ikinci deseninde eşleşip eşleşmeyemeyişece sini denetler.
+API, UDF'leri kullanarak özel uygulama mantığını desteklemek için SQL sözdizimini genişletir. UDF'leri SQL API'ye kaydedebilir ve bunları SQL sorgularında referans verebilirsiniz. Depolanan yordamların ve tetikleyicilerin aksine, UDF'ler salt okunur.
+
+UDF'leri kullanarak Azure Cosmos DB'nin sorgu dilini genişletebilirsiniz. UDF'ler, sorgunun projeksiyonundaki karmaşık iş mantığını ifade etmenin harika bir yoludur.
+
+Ancak, şu anda UDF'lerden kaçınmanızı öneririz:
+
+- Azure Cosmos DB'de eşdeğer [bir sistem işlevi](sql-query-system-functions.md) zaten mevcut. Sistem fonksiyonları her zaman eşdeğer UDF daha az RU kullanır.
+- UDF, sorgunuzun yan `WHERE` tümcesindeki tek filtredir. UDF'ler dizin kullanmadığı için UDF'nin değerlendirilmesi için belgelerin yüklenmesi gerekir. `WHERE` Dizin kullanan ek filtre etelerinin udf ile birlikte birleştirilmesi, yan tümcede UDF tarafından işlenen belge sayısını azaltacaktır.
+
+Bir sorguda aynı UDF'yi birden çok kez kullanmanız gerekiyorsa, UDF'yi bir kez değerlendirmek için JOIN ifadesini kullanmanıza izin veren, ancak birçok kez başvuruda bulunan bir [alt sorguda](sql-query-subquery.md#evaluate-once-and-reference-many-times)UDF'ye başvurmanız gerekir.
 
 ## <a name="examples"></a>Örnekler
+
+Aşağıdaki örnek, Cosmos veritabanında bir madde kapsayıcısı altında bir UDF kaydeder. Örnek, adı `REGEX_MATCH`. İki JSON dize değerini `input` `pattern`kabul eder ve ,ilkinin JavaScript'in `string.match()` işlevini kullanarak ikinci deseninde eşleşip eşleşmeyemeyişece sini denetler.
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
