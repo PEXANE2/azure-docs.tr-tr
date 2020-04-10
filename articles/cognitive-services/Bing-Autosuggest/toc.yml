@@ -26,10 +26,8 @@
           href: quickstarts/ruby.md
     - name: İstemci kitaplığı
       items:
-        - name: 'C#'
-          href: quickstarts/csharp-sdk.md
-        - name: Başlayın
-          href: quickstarts/go-sdk.md
+        - name: Bing Otomatik Öneri istemci kitaplıkları
+          href: ./quickstarts/client-libraries.md
 - name: Öğreticiler
   items:
     - name: Tek sayfalı web uygulaması

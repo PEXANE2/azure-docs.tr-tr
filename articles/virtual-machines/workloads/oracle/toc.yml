@@ -4,7 +4,7 @@
       href: oracle-overview.md
     - name: Azure VM’lerinde çözümler
       href: oracle-vm-solutions.md
-    - name: OCI ile çözümler - Önizleme
+    - name: OCI ile çözümler
       href: oracle-oci-overview.md
 - name: Hızlı Başlangıçlar
   items:
@@ -32,7 +32,7 @@
       href: oracle-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Azure ve OCI bağlantısı - Önizleme
+    - name: Azure ve OCI bağlantısı
       href: configure-azure-oci-networking.md
 - name: Kaynaklar
   items:

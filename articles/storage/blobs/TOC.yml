@@ -4,6 +4,8 @@
   items:
     - name: Azure Blob depolama nedir?
       href: storage-blobs-overview.md
+    - name: Çekirdek depolama hizmetlerini karşılaştırın
+      href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
 - name: Blob depolama
   items:

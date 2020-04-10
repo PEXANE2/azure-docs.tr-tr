@@ -85,7 +85,7 @@
           href: deployment-tutorial-pipeline.md
     - name: Gelişmiş şablonlar
       items:
-        - name: Şablon başvurusunu kullanma
+        - name: Şablon başvurusu kullanma
           href: template-tutorial-use-template-reference.md
         - name: Birden çok örnek oluşturma
           displayName: 'iteration,copy'
@@ -291,6 +291,8 @@
           href: template-functions-array.md
         - name: Karşılaştırma işlevleri
           href: template-functions-comparison.md
+        - name: Tarih işlevleri
+          href: template-functions-date.md
         - name: Dağıtım işlevleri
           href: template-functions-deployment.md
         - name: Mantıksal işlevler

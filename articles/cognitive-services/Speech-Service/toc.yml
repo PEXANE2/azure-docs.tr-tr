@@ -113,6 +113,8 @@
       items:
         - name: Metin okuma nedir?
           href: text-to-speech.md
+        - name: Metin okuma temelleri
+          href: text-to-speech-basics.md
     - name: Hızlı Başlangıç
       items:
         - name: Konuşmayı hoparlöre sentezleme
@@ -545,6 +547,8 @@
       href: sovereign-clouds.md
     - name: Fiyatlandırma ve limitler
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
+    - name: Fiyatlandırma hesaplayıcı
+      href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Şifreleme

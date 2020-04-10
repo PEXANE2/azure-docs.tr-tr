@@ -71,7 +71,11 @@
           href: ../expressroute/cross-network-connectivity.md?toc=%2fazure%2fvirtual-network%2ftoc.json
         - name: Eşleme
           href: virtual-network-peering-overview.md
-        - name: Azure hizmetleri için sanal ağ
+    - name: Azure hizmetleri için tümleştirme
+      items:
+        - name: Hizmet uç noktaları
+          href: virtual-network-service-endpoints-overview.md
+        - name: Ayrılmış hizmet dağıtma
           href: virtual-network-for-azure-services.md
     - name: IP hizmetleri
       items:
@@ -91,8 +95,6 @@
           href: application-security-groups.md
         - name: Hizmet etiketleri
           href: service-tags-overview.md
-        - name: Hizmet uç noktaları
-          href: virtual-network-service-endpoints-overview.md
         - name: Hizmet uç noktası ilkeleri
           href: virtual-network-service-endpoint-policies-overview.md
         - name: Kubernetes ağ ilkeleri

@@ -480,6 +480,8 @@
       items:
         - name: Değişiklik akışına genel bakış
           href: change-feed.md
+        - name: Değişiklik akışı tasarımı desenleri
+          href: change-feed-design-patterns.md
         - name: Değişiklik akışını okuma
           href: read-change-feed.md
         - name: Değişiklik akışı işlemcisi
@@ -1033,6 +1035,8 @@
       items:
         - name: İzleyici Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Sunucu tarafı gecikme süresini izleme
+          href: monitor-server-side-latency.md
         - name: Tanılama günlükleriyle izleme
           href: cosmosdb-monitor-resource-logs.md
         - name: Kontrol düzlemi günlüklerini denetleme
@@ -1155,7 +1159,7 @@
     - name: Sorgu kopya kağıdı
       href: query-cheat-sheet.md
     - name: SQL oyun alanı
-      href: 'https://aka.ms/cosmos-db-playground'
+      href: 'https://www.documentdb.com/sql/demo'
     - name: SSS
       href: faq.md
     - name: Teknik incelemeler

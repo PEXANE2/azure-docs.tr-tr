@@ -1,141 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Storage Belgeleri
+### YamlMime:Hub
+title: Azure Depolama belgeleri
+summary: Azure Depolama, nesne, dosya, disk, kuyruk ve tablo depolamayı içerir. Ayrıca karma depolama çözümlerine yönelik hizmetler ve verileri aktarma, paylaşma ve yedekleme hizmetleri de vardır.
+brand: azure
 metadata:
-  title: 'Azure Depolama Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
-  description: 'Azure Depolama, yüksek oranda kullanılabilir, güvenli, dayanıklı, ölçeklenebilir ve yedekli depolama sağlayan, Microsoft tarafından yönetilen bir bulut hizmetidir. Azure Depolama; Azure Blobları, Azure Data Lake Storage Gen2, Azure Dosyaları, Azure Kuyrukları ve Azure Tabloları hizmetlerini kapsar.'
-  services: storage
-  author: tamram
-  manager: twooley
+  title: Azure Depolama belgeleri
+  description: Azure Depolama belgeleri merkez sayfası. Bulut ve hibrit depolama çözümlerine yönelik hizmetlere ve verileri aktarma, paylaşma ve yedekleme hizmetlerine işaret eder.
   ms.service: storage
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 06/27/2018
-  ms.author: tamram
-abstract:
-  description: 'Azure Depolama, yüksek oranda kullanılabilir, güvenli, dayanıklı, ölçeklenebilir ve yedekli bulut depolama sağlayan, Microsoft tarafından yönetilen bir hizmettir. Azure Depolama; Azure Blobları (nesneler), Azure Data Lake Storage Gen2, Azure Dosyaları, Azure Kuyrukları ve Azure Tabloları hizmetlerini kapsar. Hızlı başlangıç yönergelerimiz ve öğreticilerimizden yararlanarak Azure Depolama’dan nasıl yararlanabileceğimizi öğrenin.'
-sections:
-  - title: 5 Dakikalık Hızlı Başlangıçlar
+  ms.topic: hub-page
+  author: twooley
+  ms.author: twooley
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 5f599c7cc608a5e6a6246ed82c8f7b48e427dd66
+  ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 04/09/2020
+  ms.locfileid: "80985346"
+highlightedContent:
+  items:
+  - title: Çekirdek depolama hizmetlerine giriş
+    itemType: concept
+    url: /azure/storage/common/storage-introduction?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Depolama hesabı türleri hakkında daha fazla bilgi edinin
+    itemType: concept
+    url: /azure/storage/common/storage-account-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Depolama hesabı oluşturma
+    itemType: how-to-guide
+    url: /azure/storage/common/storage-account-create?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Veri yedekliliği hakkında bilgi edinin
+    itemType: concept
+    url: /azure/storage/common/storage-redundancy?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - title: Verileri Azure’a aktarma
+    itemType: concept
+    url: /azure/storage/common/storage-choose-data-transfer-solution?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+additionalContent:
+  sections:
+  - title: Bulut depolama çözümleri
     items:
-      - type: paragraph
-        text: Bu hızlı başlangıç ipuçlarını inceleyerek Azure Depolama ile çalışmayı öğrenin.
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/portal.svg
-              text: Portal
-          - image:
-              src: media/index/logo_powershell.svg
-              text: PowerShell
-          - image:
-              src: media/index/cli.svg
-              text: Azure CLI
-          - image:
-              src: media/index/logo_net.svg
-          - image:
-              src: media/index/logo_java.svg
-          - image:
-              src: media/index/logo_python.svg
-          - image:
-              src: media/index/logo_nodejs.svg
-        rows:
-          - title: Depolama hesabı oluştur
-            values:
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
-              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-          - title: Blob hızlı başlangıçları
-            values:
-              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-              - href: /azure/storage/blobs/storage-quickstart-blobs-java
-              - href: /azure/storage/blobs/storage-quickstart-blobs-python
-              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-          - title: Data Lake Storage Gen2
-            values:
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-  - title: Adım Adım Öğreticiler
+    - title: Uygulamalarınız için nesne depolama
+      links:
+      - url: /azure/storage/blobs/storage-blobs-introduction
+        text: Yapılandırılmamış veriler için depolama hakkında bilgi edinin (Blob depolama)
+      - url: /rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs
+        text: Blok, ekleme ve sayfa bloblarını anlama
+      - url: /azure/storage/blobs/
+        text: Daha fazla göster >
+    - title: Büyük veri analizi için depolama
+      links:
+      - url: /azure/storage/blobs/data-lake-storage-introduction
+        text: Kurumsal veri gölleri için depolama hakkında bilgi edinin (Data Lake Storage)
+      - url: /azure/storage/blobs/data-lake-storage-data-scenarios
+        text: Büyük verileri işlemeye yönelik seçenekleri ve araçları anlama
+    - title: Bulutta barındırılan dosya paylaşımları
+      links:
+      - url: /azure/storage/files/storage-files-introduction
+        text: Çekirdek Azure Depolama platformu (Azure Dosyalar) tarafından sunulan dosya paylaşımlarını kullanma
+      - url: /azure/azure-netapp-files/azure-netapp-files-introduction
+        text: NetApp ONTAP tarafından sunulan birimleri kullanma (Azure NetApp Files)
+    - title: IaaS iş yükleri için disk depolama
+      links:
+      - url: /azure/virtual-machines/windows/managed-disks-overview
+        text: Azure VM’ler için blok düzeyinde depolama birimleri hakkında bilgi edinin
+      - url: /azure/virtual-machines/windows/disks-types
+        text: Kullanılabilir disk türlerini anlayın
+      - url: /azure/virtual-machines/windows/attach-managed-disk-portal
+        text: VM’ye yeni bir disk ekleme - Windows
+      - url: /azure/virtual-machines/linux/attach-disk-portal
+        text: VM’ye veri diski bağlama - Linux
+    - title: Zaman uyumsuz ileti sıraya alma için depolama
+      links:
+      - url: /azure/storage/queues/storage-queues-introduction
+        text: Kuyruklar için Azure Depolama çözümü (Kuyruk depolama) hakkında bilgi edinin
+      - url: /azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted
+        text: Kuyruk depolamayı ve Service Bus kuyruklarını karşılaştırma
+      - url: /azure/storage/queues/
+        text: Daha fazla göster >
+    - title: Yapılandırılmış NoSQL verileri için depolama
+      links:
+      - url: /azure/storage/tables/table-storage-overview
+        text: Yapılandırılmış NoSQL verilerini bulutta depolama (Tablo depolama ve Cosmos DB)
+      - url: /azure/cosmos-db/table-support
+        text: Tablo depolama ve Cosmos DB Tablo API’sini karşılaştırma
+      - url: /azure/storage/tables/
+        text: Daha fazla göster >
+  - title: Karma depolama çözümleri
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Bloblar
-            html: <p>Görüntü verilerini buluta yükleme ve orada işleme</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Bulutta görüntü verilerini karşıya yükleme ve kullanma</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Blob’ları işlemek için Azure İşlevleri’ni tetikleme</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Uygulama verilerinin güvenliğini sağlama</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Depolamayı izleme ve sorun giderme</a></li></ul><p>Uygulamanızı yüksek kullanılabilirlik için tasarlama</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Uygulama verilerinizi yüksek oranda kullanılabilir hale getirme</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Birincil bölgedeki okuma verilerindeki bir hatanın benzetimini yapma</a></li></ul>
-          - title: Data Lake Storage Gen2
-            html: '<p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">Azure Databricks kullanarak verileri ayıklama, dönüştürme ve yükleme</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">Spark kullanarak DataBricks ile Azure Data Lake Storage Gen2 verilerine erişme</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme</a></p>'
-  - title: Örnekler
+    - title: Şirket içi dosya paylaşımını buluta genişletme
+      links:
+      - url: /azure/storage/files/storage-sync-files-planning
+        text: Azure dosya paylaşımlarını Windows dosya sunucusu ile eşitleme (Azure FileSync)
+      - url: /azure/storage/files/storage-sync-files-deployment-guide
+        text: Azure Dosya Eşitleme’yi dağıtma
+      - url: /azure/storage/files/
+        text: Daha fazla göster >
+    - title: Çevrimiçi veri aktarımı (şirket içinden Azure’a)
+      links:
+      - url: /azure/databox-online/data-box-gateway-overview
+        text: Verileri Azure’a sorunsuzca aktarma (Data Box Gateway)
+      - url: /azure/databox-online/data-box-edge-overview
+        text: Azure’a aktarmadan önce verileri yerel olarak işleme (Azure Stack Edge)
+      - url: /azure/databox-online/
+        text: Daha fazla göster >
+    - title: Yüksek performanslı bilgi işlem (HPC) iş yükleri için dosya önbelleğe alma
+      links:
+      - url: /azure/hpc-cache/hpc-cache-overview
+        text: Tam olarak yönetilen bir dosya önbelleğe alma hizmeti kullanma (Azure HPC Önbelleği)
+      - url: /azure/avere-vfxt/avere-vfxt-overview
+        text: Azure’da şirket içi NAS’yi önbelleğe alma (Azure için Avere vFXT)
+      - url: /azure/fxt-edge-filer/fxt-overview
+        text: Şirket içi önbelleğe alma gereci dağıtma (Azure FXT Edge Filer)
+  - title: Veri işlemleri
     items:
-      - type: paragraph
-        text: Genel yönetim görevleri için betikler bulun.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Bloblar</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">Dosyalar</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">Kuyruklar</a>'
-          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Bloblar</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">Dosyalar</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">Kuyruklar</a>'
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-  - title: Microsoft Learn ile becerilerinizi geliştirin
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure'daki verilere giriş
-            href: /learn/modules/intro-to-data-in-azure/
-            image:
-              src: /learn/achievements/intro-to-data-in-azure.svg
-              href: //learn/modules/intro-to-data-in-azure/
-          - title: "\_Azure'da veri depolama yaklaşımı seçme"
-            href: /learn/modules/choose-storage-approach-in-azure/
-            image:
-              src: /learn/achievements/choose-storage-approach-in-azure.svg
-              href: /learn/modules/choose-storage-approach-in-azure/
-          - title: Azure Storage hesabı oluşturma
-            href: /learn/modules/create-azure-storage-account/
-            image:
-              src: /learn/achievements/create-azure-storage-account.svg
-              href: /learn/modules/create-azure-storage-account/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-storage">Daha fazla etkileşimli öğrenme içeriği...</a>
-  - title: Ücretsiz Pluralsight Video Eğitimi
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure’da .NET ile geliştirme
-            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
-          - title: Azure’da Node.js ile geliştirme
-            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
-  - title: Başvuru
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Komut Satırı
-            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-          - title: REST
-            html: '<p><a href="/rest/api/storageservices">Bloblar, Kuyruklar, Tablolar ve Dosyalar API’si</a></p><p><a href="/rest/api/storagerp">Depolama Kaynak Sağlayıcısı API’si</a></p><p><a href="/rest/api/storageimportexport">Hizmeti İçeri/Dışarı Aktarma API’si</a></p>'
+    - title: Azure’a çevrimdışı toplu aktarım
+      links:
+      - url: /azure/databox/data-box-disk-overview
+        text: < 40 TB veri aktarımı (Data Box Disk)
+      - url: /azure/databox/data-box-overview
+        text: 40-500 TB veri aktarımı (Data Box)
+      - url: /azure/databox/data-box-heavy-overview
+        text: '> 500 TB veri aktarımı (Data Box Heavy)'
+      - url: /azure/databox/
+        text: Daha fazla göster >
+    - title: Küçük veri kümelerini aktarma (çevrimiçi)
+      links:
+      - url: /azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        text: AzCopy komut satırı aracını kullanma
+      - url: /azure/storage/blobs/storage-quickstart-blobs-storage-explorer
+        text: Azure Depolama Gezgini GUI tabanlı aracı kullanma
+    - title: Maliyetleri denetleme
+      links:
+      - url: /azure/storage/blobs/storage-blob-storage-tiers
+        text: Uygun maliyetli bir şekilde blob verilerini katmanlama (sık erişimli, seyrek erişimli, arşiv)
+    - title: Verilerinizi paylaşma
+      links:
+      - url: /azure/data-share/
+        text: Müşteriler ve iş ortakları ile veri paylaşma (Azure Veri Paylaşımı)
+      - url: /azure/data-share/supported-data-stores
+        text: Paylaşım için desteklenen veri depoları
+      - url: /azure/data-share/
+        text: Daha fazla göster >
+    - title: Verileri yedekleme
+      links:
+      - url: /azure/backup/quick-backup-vm-portal
+        text: VM’leri yedekleme (Azure Backup)
+      - url: /azure/backup/tutorial-backup-azure-files
+        text: Azure dosya paylaşımlarını yedekleme (önizleme)
+      - url: /azure/backup/
+        text: Daha fazla göster >

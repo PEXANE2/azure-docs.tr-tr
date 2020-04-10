@@ -161,8 +161,13 @@
         - name: Kod tabanlı izleme
           items:
             - name: ASP.NET Çekirdeği
-              displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
-              href: app/asp-net-core.md
+              items:
+                - name: ASP.NET Core Uygulama İzleme
+                  displayname: 'Core, .NET Core, services.add, dotnetcore, c#, csharp'
+                  href: app/asp-net-core.md
+                - name: ILogger
+                  displayname: 'ilogger, logging, log'
+                  href: app/ilogger.md
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
@@ -172,9 +177,6 @@
             - name: .NET Konsolu
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
-            - name: ILogger
-              displayname: 'ilogger, logging, log'
-              href: app/ilogger.md
             - name: Java
               items:
                 - name: Web uygulamaları
@@ -220,8 +222,12 @@
               href: app/api-custom-events-metrics.md
             - name: ASP.NET sorunlarını giderme
               href: app/asp-net-troubleshoot-no-data.md
+            - name: Application Insights’ı kaldırma
+              href: app/remove-application-insights.md
         - name: Kodsuz izleme
           items:
+            - name: Tüm ortamlar - Java (önizleme)
+              href: app/java-in-process-agent.md
             - name: Azure VM ve ölçek kümesi
               href: app/azure-vm-vmss-apps.md
             - name: Azure App Service

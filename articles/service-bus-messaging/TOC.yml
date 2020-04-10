@@ -213,6 +213,8 @@
     - name: Sorun giderme
       items:
         - name: Sorun giderme kılavuzu
+          href: service-bus-troubleshooting-guide.md
+        - name: Mesajlaşma özel durumları
           href: service-bus-messaging-exceptions.md
         - name: Kaynak Yöneticisi özel durumları
           href: service-bus-resource-manager-exceptions.md
