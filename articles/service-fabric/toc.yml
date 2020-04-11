@@ -145,8 +145,6 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (önizleme)
               href: service-fabric-docker-compose.md
-            - name: Kaynak idaresi
-              href: service-fabric-resource-governance.md
         - name: Reliable Services
           items:
             - name: Reliable Services özelliğine genel bakış
@@ -193,6 +191,8 @@
               href: service-fabric-reliable-actors-notes-on-actor-type-serialization.md
         - name: Konuk yürütülebilir dosyaları
           href: service-fabric-guest-executables-introduction.md
+        - name: Kaynak idaresi
+          href: service-fabric-resource-governance.md
     - name: Uygulamalar ve hizmetler
       items:
         - name: Uygulama modeli
@@ -408,8 +408,6 @@
           items:
             - name: Docker Compose (önizleme)
               href: service-fabric-docker-compose.md
-            - name: Kapsayıcılar ve hizmetler için kaynak idaresi
-              href: service-fabric-resource-governance.md
             - name: Hacim ve günlüğe kaydetme sürücüleri
               href: service-fabric-containers-volume-logging-drivers.md
             - name: Kapsayıcı günlüklerini görüntüleme
