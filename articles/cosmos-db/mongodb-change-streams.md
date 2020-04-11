@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
-ms.openlocfilehash: ecfa98241f74aac43a827b645a6ed877624d643d
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437818"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114157"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sındaki akışları değiştirme
 
@@ -26,7 +26,8 @@ Azure Cosmos DB'nin MongoDB için API'sinde akış desteğini [değiştir,](chan
 Değişiklik akışları kullanırken aşağıdaki sınırlamalar geçerlidir:
 
 * Ve `operationType` `updateDescription` özellikleri henüz çıktı belgesinde desteklenmez.
-* `insert`, `update`, ve `replace` işlem türleri şu anda desteklenir. Silme işlemi veya diğer olaylar henüz desteklenmez.
+* `insert`, `update`, ve `replace` işlem türleri şu anda desteklenir. 
+* Silme işlemi veya diğer olaylar henüz desteklenmez.
 
 Bu sınırlamalar nedeniyle, önceki örneklerde gösterildiği gibi $match aşaması, $project aşaması ve fullDocument seçenekleri gereklidir.
 

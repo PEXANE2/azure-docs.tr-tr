@@ -1,17 +1,17 @@
 ---
-title: Eski Log Analytics uyarılarından API'yi yeni Azure Uyarıları API'sine dönüştürme
+title: Yeni Azure Uyarıları API'sine geçiş
 description: Eski kaydedilmiş Arama tabanlı Log Analytics Alert API'ye genel bakış ve uyarı kurallarını yeni ScheduledQueryRules API'ye geçiş yapma süreci ve ortak müşteri endişelerini gideren ayrıntılar.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.subservice: alerts
-ms.openlocfilehash: c1ca85ba9c79f828b5ddcf0d640cfe7f8b6e097c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7950b3f584c36b68a4eff66b05e83ba94c1ec1dd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249444"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114359"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Günlük Uyarıları için API tercihini değiştirme
 

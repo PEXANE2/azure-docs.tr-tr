@@ -9,12 +9,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 02/20/2020
 ms.reviewer: ''
-ms.openlocfilehash: 39747ac0a7133562bed526f44e30bf4a656127c0
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 7b3a223ca504bff380afad54afda73880717814f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673600"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115380"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database"></a>Azure SQL Veritabanı ile Ortak Güvenlik Gereksinimlerini Ele Almak Için Oyun Kitabı
 
@@ -89,14 +89,14 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 
 - Bir Azure AD kiracıoluşturun ve insan kullanıcıları temsil edecek [kullanıcılar oluşturun](../active-directory/fundamentals/add-users-azure-active-directory.md) ve uygulamaları, hizmetleri ve otomasyon araçlarını temsil edecek [hizmet ilkeleri](../active-directory/develop/app-objects-and-service-principals.md) oluşturun. Hizmet ilkeleri, Windows ve Linux'taki hizmet hesaplarına eşdeğerdir. 
 
-- Grup ataması yoluyla kaynakların kaynaklarının erişim haklarını Azure REKLAM ilkelerine atama: Azure REKLAM grupları oluşturun, gruplara erişim izni ver ve gruplara tek tek üyeler ekleyin. Veritabanınızda, Azure REKLAM gruplarınızı eşleyen içerdiği veritabanı kullanıcıları oluşturun. İzinleri veritabanının içine atamak için, kullanıcıları uygun izinlerle veritabanı rollerine koyun.
+- Grup ataması yoluyla kaynakların kaynaklarının erişim haklarını Azure REKLAM ilkelerine atama: Azure REKLAM grupları oluşturun, gruplara erişim izni ver ve gruplara tek tek üyeler ekleyin. Veritabanınızda, Azure REKLAM gruplarınızı eşleyen içerdiği veritabanı kullanıcıları oluşturun. İzinleri veritabanına atamak için, Azure REKLAM gruplarınızla ilişkili kullanıcıları uygun izinlerle veritabanı rollerine koyun.
   - Makaleleri görün, [Azure Active Directory kimlik doğrulamasını SQL ile yapılandırın ve yönetin](sql-database-aad-authentication-configure.md) ve [SQL ile kimlik doğrulama için Azure AD'yi kullanın.](sql-database-aad-authentication.md)
   > [!NOTE]
   > Yönetilen bir durumda, ana veritabanında Azure AD ilkelerine eşleyen oturum açmalar da oluşturabilirsiniz. Bkz. [CREATE Gİrİş (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 
 - Azure AD gruplarını kullanmak, izin yönetimini ve hem grup sahibini basitleştirir hem de kaynak sahibi gruba üye ekleyebilir/kaldırabilir. 
 
-- SQL DB sunucuları için Azure AD yöneticisi için ayrı bir grup oluşturun.
+- Her SQL DB sunucusu için Azure AD yöneticileri için ayrı bir grup oluşturun.
 
   - Makaleye bakın, [Azure SQL Veritabanı sunucunuz için bir Azure Etkin Dizin yöneticisi sağlama](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server).
 
@@ -108,7 +108,7 @@ Merkezi kimlik yönetimi aşağıdaki avantajları sunar:
 > [!NOTE]
 > - Azure AD kimlik doğrulaması Azure SQL denetim günlüklerinde kaydedilir, ancak Azure AD oturum açma günlüklerinde kaydedilmez.
 > - Azure'da verilen RBAC izinleri Azure SQL DB izinleri için geçerli değildir. Bu tür izinler, sql DB'de varolan SQL izinleri kullanılarak el ile oluşturulmalı/eşlenmelidir.
-> - İstemci tarafındaki Azure AD kimlik doğrulaması için internete veya Kullanıcı Tanımlı Rota (UDR) üzerinden VNet'e erişim gerekir.
+> - İstemci tarafında, Azure AD kimlik doğrulaması için Internet'e veya Kullanıcı Tanımlı Rota (UDR) üzerinden VNet'e erişim gerekir.
 > - Azure AD erişim belirteci istemci tarafında önbelleğe alınmış ve kullanım ömrü belirteç yapılandırmasına bağlıdır. Makaleye bakın, [Azure Etkin Dizini'nde yapılandırılabilir belirteç ömürleri](../active-directory/develop/active-directory-configurable-token-lifetimes.md)
 > - Azure AD Kimlik Doğrulama sorunlarıyla ilgili sorun giderme kılavuzu için aşağıdaki bloga bakın:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
@@ -213,7 +213,7 @@ SQL kimlik doğrulaması, kullanıcı adı ve parola kullanarak Azure SQL Verita
 
 ## <a name="access-management"></a>Erişim yönetimi
 
-Erişim yönetimi, yetkili kullanıcıların Azure SQL Veritabanı'na erişimini ve ayrıcalıklarını denetleme ve yönetme işlemidir.
+Erişim yönetimi (Yetkilendirme olarak da adlandırılır), yetkili kullanıcıların Azure SQL Veritabanı'na erişimini ve ayrıcalıklarını denetleme ve yönetme işlemidir.
 
 ### <a name="implement-principle-of-least-privilege"></a>En az ayrıcalık ilkesini uygulayın
 
@@ -225,7 +225,7 @@ En az ayrıcalık ilkesi, kullanıcıların görevlerini tamamlamak için gereke
 
 Yalnızca gerekli görevleri tamamlamak için gerekli [izinleri](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine) atayın:
 
-- SQL Veri Düzleminde: 
+- SQL Veritabanlarında: 
     - Parçalı izinleri ve kullanıcı tanımlı veritabanı rollerini (veya MI'deki sunucu rollerini) kullanın: 
         1. Gerekli rolleri oluşturma
             - [ROL OLUŞTUR](https://docs.microsoft.com/sql/t-sql/statements/create-role-transact-sql)
@@ -294,7 +294,7 @@ Görevlerin Ayrılması olarak da adlandırılan Görevlerin Ayrılması, hassas
   - Yönetilen bir durumda sunucu genelindeki görevler (yeni oturum açmalar, veritabanları oluşturma) için Sunucu rolleri oluşturun. 
   - Veritabanı düzeyindeki görevler için Veritabanı Rolleri oluşturun.
 
-- Belirli hassas görevler için, görevleri kullanıcılar adına yürütmek için sertifika tarafından imzalanmış özel depolanmış yordamlar oluşturmayı düşünün. 
+- Belirli hassas görevler için, görevleri kullanıcılar adına yürütmek için sertifika tarafından imzalanmış özel depolanmış yordamlar oluşturmayı düşünün. Dijital olarak imzalanmış depolanmış yordamların önemli bir avantajı, yordam değiştirilirse, yordamın önceki sürümüne verilen izinlerin hemen kaldırılmasıdır.
   - Örnek: [Öğretici: Depolanan Yordamları Sertifikayla İmzalama](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Veri sahibi ve güvenlik sahibi arasında Görev Ayrımını etkinleştirmek için Azure Anahtar Kasası'nda müşteri tarafından yönetilen anahtarlarla Saydam Veri Şifreleme (TDE) uygulayın. 
@@ -303,7 +303,7 @@ Görevlerin Ayrılması olarak da adlandırılan Görevlerin Ayrılması, hassas
 - Bir DBA'nın son derece hassas kabul edilen verileri görememesi ve DBA görevlerini hala yapabilmesini sağlamak için, her zaman rol ayrımıyla Şifrelenmiş'i kullanabilirsiniz. 
   - Makalelere bakın, [Her Zaman Şifrelenmiş Anahtar Yönetimine Genel Bakış](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted), Rol Ayrımı ile Anahtar Sağlama ve Rol [Ayırma](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-always-encrypted-keys-using-powershell#KeyProvisionWithRoles) [ile Sütun Yöneticisi Anahtar Döndürme](https://docs.microsoft.com/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell#column-master-key-rotation-with-role-separation). 
 
-- En azından sistemi kullanılamaz hale getirebilecek büyük maliyetler ve çabalar olmadan mümkün olmadığı durumlarda, aşağıdakiler gibi telafi edici kontroller aracılığıyla tavizler verilebilir ve azaltılabilir: 
+- Her Zaman Şifrelenmiş kullanımının mümkün olmadığı durumlarda, ya da en azından sistemi kullanılamaz hale getirebilecek büyük maliyetler ve çabalar olmadan, aşağıdaki ler gibi telafi edici kontroller aracılığıyla tavizler verilebilir ve azaltılabilir: 
   - Süreçlere insan müdahalesi. 
   - Denetim izleri – Denetim hakkında daha fazla [Audit critical security events](#audit-critical-security-events)bilgi için bkz.
 
@@ -315,17 +315,17 @@ Görevlerin Ayrılması olarak da adlandırılan Görevlerin Ayrılması, hassas
 
 - İzinler tam olarak gerekli izinlerle eşleştiğinde yerleşik rolleri kullanın ( birden çok yerleşik roldeki tüm izinlerin birleşmesi %100 eşleşmeye yol açıyorsa, aynı anda birden çok rol atayabilirsiniz. 
 
-- Yerleşik roller çok fazla izin veya yetersiz izin verdiğinde özel roller oluşturun ve kullanın. 
+- Yerleşik roller çok fazla izin verdiğinde veya yetersiz izinverdiğinde kullanıcı tarafından tanımlanan roller oluşturun ve kullanın. 
 
 - Rol atamaları, T-SQL'deki SQL Agent Job adımları içinde veya RBAC rolleri için Azure PIM'yi kullanarak, Dinamik Görev Ayrımı (DSD) olarak da bilinen geçici olarak da yapılabilir. 
 
-- DBA'ların şifreleme anahtarlarına veya anahtar depolarına erişimi olmadığından ve anahtarlara erişimi olan Güvenlik Yöneticilerinin veritabanına erişimin olmadığından emin olun. 
+- DKA'ların şifreleme anahtarlarına veya anahtar depolarına erişimi olmadığından ve anahtarlara erişimi olan Güvenlik Yöneticilerinin veritabanına erişime sahip olmadığından emin olun. [Genişletilebilir Anahtar Yönetimi 'nin (EKM)](https://docs.microsoft.com/sql/relational-databases/security/encryption/extensible-key-management-ekm) kullanımı bu ayrımın sağlanmasını kolaylaştırabilir. [Azure Anahtar Kasası](https://azure.microsoft.com/services/key-vault/) EKM'i uygulamak için kullanılabilir. 
 
 - Güvenlikle ilgili eylemler için her zaman bir Denetim izi olduğundan emin olun. 
 
 - Kullanılan izinleri görmek ve PowerShell üzerinden bunların alıntılar ve kümülasyonlarına dayalı özel bir rol oluşturmak için yerleşik RBAC rollerinin tanımını alabilirsiniz.
 
-- db_owner veritabanı rolünün herhangi bir üyesi Saydam Veri Şifreleme (TDE) gibi güvenlik ayarlarını değiştirebildiği veya SLO'yu değiştirebildiği için, bu üyeliğe özenle verilmelidir. Ancak, db_owner ayrıcalıkları gerektiren birçok görev vardır. DB seçeneklerini değiştirme gibi herhangi bir veritabanı ayarını değiştirme gibi görev. Denetim herhangi bir çözümde önemli bir rol oynar.
+- db_owner veritabanı rolünün herhangi bir üyesi Saydam Veri Şifreleme (TDE) gibi güvenlik ayarlarını değiştirebileceğinden veya SLO'yu değiştirebildiği için, bu üyeliğe özenle verilmelidir. Ancak, db_owner ayrıcalıkları gerektiren birçok görev vardır. DB seçeneklerini değiştirme gibi herhangi bir veritabanı ayarını değiştirme gibi görev. Denetim herhangi bir çözümde önemli bir rol oynar.
 
 - Bir db_owner izinlerini kısıtlamak ve bu nedenle yönetim hesabının kullanıcı verilerini görüntülemesini engellemek mümkün değildir. Bir veritabanında son derece hassas veriler varsa, her zaman şifrelenmiş db_owners veya başka bir DBA'nın bu verileri görüntülemesini güvenli bir şekilde önlemek için kullanılabilir.
 
@@ -436,11 +436,11 @@ Hangi verilerin hassas olduğunu ve hassas verilerin bellekte şifrelenip şifre
 
 - Verilerdeki hesaplamaların (eşitlik) desteklenmesi gerekiyorsa deterministik şifrelemeyi kullanın. Aksi takdirde, rasgele şifreleme kullanın. Düşük entropi veri kümeleri veya genel olarak bilinen dağıtıma sahip veri kümeleri için deterministik şifreleme kullanmaktan kaçının. 
 
-- İzniniz olmadan verilerinize yasal olarak erişen üçüncü taraf konusunda endişeleriniz varsa, anahtarlara ve verilere erişimi olan tüm uygulama ve araçların Microsoft Azure Bulutu dışında düz metin olarak çalıştırdığından emin olun. Anahtarlara erişim olmadan, şifrelemeyi atlamadıkları sürece üçüncü tarafın verilerin şifresini çözmesinin bir yolu yoktur.
+- Üçüncü tarafların izniniz olmadan verilerinize yasal olarak erişmelerinden endişe ediyorsanız, anahtarlara ve verilere erişimi olan tüm uygulama ve araçların Microsoft Azure Bulutu dışında düz metin olarak çalıştırdığından emin olun. Anahtarlara erişim olmadan, şifrelemeyi atlamadıkları sürece üçüncü tarafın verilerin şifresini çözmesinin bir yolu yoktur.
 
 - Her zaman Şifreli kolayca anahtarlara (ve korunan verilere) geçici erişim verilmesi desteklemez. Örneğin, DBA'nın hassas ve şifrelenmiş veriler üzerinde bazı temizleme işlemleri yapmasına izin vermek için anahtarları Bir DBA ile paylaşmanız gerekiyorsa. DBA'dan verilere erişimi iptal etmenin güvenilirliğini geri almanın tek yolu, hem sütun şifreleme anahtarlarını hem de pahalı bir işlem olan verileri koruyan sütun ana anahtarlarını döndürmektir. 
 
-- Şifreli sütunlarda düz metin değerlerine erişmek için, kullanıcının CMK'yı tutan anahtar deposunda yapılandırılan sütunları koruyan CMK'ya erişmesi gerekir. Kullanıcı da **VIEW ANY COLUMN MASTER ANAHTAR TANıMı** olması ve HERHANGI BIR SÜTUN ŞIFRELEME ANAHTAR TANıMı veritabanı izinleri **görüntülemek** gerekir.
+- Şifreli sütunlarda düz metin değerlerine erişmek için, kullanıcının CMK'yı tutan anahtar deposunda yapılandırılan sütunları koruyan Sütun Ana Anahtarına (CMK) erişmesi gerekir. Kullanıcı da **VIEW ANY COLUMN MASTER ANAHTAR TANıMı** olması ve HERHANGI BIR SÜTUN ŞIFRELEME ANAHTAR TANıMı veritabanı izinleri **görüntülemek** gerekir.
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Şifreleme yoluyla uygulama kullanıcılarının hassas verilere erişimini kontrol etme
 

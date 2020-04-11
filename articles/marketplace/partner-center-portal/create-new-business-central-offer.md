@@ -1,22 +1,22 @@
 ---
-title: Ticari Pazar Yeri'nde yeni bir Dynamics 365 Business Central teklifi oluşturun
-description: Microsoft İş Ortağı Merkezi'ndeki Ticari Pazar Portalı'nı kullanarak Azure Marketi, AppSource veya Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla listeleme veya satış için yeni bir Dynamics 365 Business Central teklifi oluşturma.
+title: Microsoft ticari pazarda yeni bir Dynamics 365 Business Central teklifi oluşturun
+description: Microsoft İş Ortağı Merkezi'ndeki ticari pazar portalını kullanarak Azure Marketi, Microsoft AppSource veya Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla listelemek veya satmak için yeni bir Dynamics 365 Business Central teklifi nasıl oluşturulur?
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 908d0fb9d494ec048e6b254f91ec1faf56b47c90
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.date: 04/09/2020
+ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529408"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115275"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Yeni dynamics 365 Business Central teklifi oluşturun
 
-Bu konu, yeni bir Dynamics 365 Business Central teklifinin nasıl oluşturulabildiğini açıklar. [Microsoft Dynamics 365 Business Central,](https://dynamics.microsoft.com/business-central) finans, operasyonlar, tedarik zinciri, CRM ve proje yönetimi ve elektronik ticaret gibi çok çeşitli iş süreçlerini işleyen bir kurumsal kaynak planlama (ERP) sistemidir. Premium paketler aynı zamanda klasik dağıtım modelini ve imalatı nı da destekler. Dynamics 365 Business Central için tüm teklifler belgelendirme sürecimizden geçmelidir.
+Bu makalede, yeni bir Dynamics 365 Business Central teklifi nasıl oluşturulacak açıklanmaktadır. [Microsoft Dynamics 365 Business Central,](https://dynamics.microsoft.com/business-central) finans, operasyonlar, tedarik zinciri, CRM ve proje yönetimi ve elektronik ticaret gibi çok çeşitli iş süreçlerini işleyen bir kurumsal kaynak planlama (ERP) sistemidir. Premium paketler aynı zamanda klasik dağıtım modelini ve imalatı nı da destekler. Dynamics 365 Business Central için tüm teklifler belgelendirme sürecimizden geçmelidir.
 
 Dynamics 365 Business Central teklifleri oluşturmaya başlamak için, ilk önce [Bir İş Ortağı Merkezi hesabı oluşturduğunuzdan](./create-account.md) ve seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açtığınızı sağlayın.
 
@@ -113,16 +113,14 @@ Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayr�
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-Teklif listesi sayfası, teklifinizin listeleneceği dilleri görüntüler. Şu anda, **İngilizce (AMERIKA Birleşik Devletleri)** tek seçenektir.
-
-Her dil/pazar için pazar ayrıntıları (teklif adı, açıklama, resim, vb.) tanımlamanız gerekir. Bu bilgileri sağlamak için dil/pazar adını seçin.
+Teklif listesi sayfası, teklifinizin ayrıntılarını (ad, açıklama, resimler, vb.) tanımladığınız yerdir.
 
 > [!NOTE]
-> Teklif listesi içeriği (açıklama, belge, ekran görüntüsü, kullanım koşulları, vb.) "Bu uygulama yalnızca [İngilizce olmayan dilde] ifadesiyle başladığı sürece İngilizce olması gerekmez." Teklif listesi içeriğinde kullanılandan başka bir dilde içerik sunmak için yararlı bir *bağlantı URL'si* sağlamak da kabul edilebilir.
+> Teklif listesi ayrıntılarını yalnızca tek bir dilde sağlayabilirsiniz. Teklif açıklaması "Bu uygulama yalnızca [İngilizce olmayan dilde] kullanılabilir" cümlesiyle başladığı sürece İngilizce olması gerekmez. Teklif listesi içeriğinde kullanılandan başka bir dilde içerik sunmak için bir *Yardım bağlantısı URL'si* sağlamak da kabul edilebilir.
 
 ### <a name="name"></a>Adı
 
-Buraya girdiğiniz ad, teklif listenizin başlığı olarak müşterilere gösterilir. Bu alan, teklifi oluşturduğunuzda **Teklif takma adı** için girdiğiniz metinle önceden doldurulmuştur, ancak bu değeri değiştirebilirsiniz. Bu ad ticari marka olabilir (ve ticari marka veya telif hakkı sembolleri içerebilir). Ad 50 karakterden fazla olamaz ve herhangi bir emoji içeremez.
+Buraya girdiğiniz ad, teklif listenizin başlığı olarak müşterilere gösterilir. Bu alan, teklifi oluşturduğunuzda Teklif **takma adı** için girdiğiniz metinle önceden doldurulmuştur, ancak bu değeri değiştirebilirsiniz. Bu ad ticari marka olabilir (ve ticari marka veya telif hakkı sembolleri içerebilir). Ad 50 karakterden fazla olamaz ve herhangi bir emoji içeremez.
 
 ### <a name="short-description"></a>Kısa açıklama
 
@@ -169,23 +167,23 @@ Müşterilerin teklifinizi pazarda bulmasına yardımcı olmak için isteğe ba�
 
 Müşterilerinize uygulamanızın belirli ürünlerle çalıştığını bildirmek istiyorsanız, buraya en fazla üç ürün adı girin.
 
-### <a name="support-urls"></a>Destek URL'leri
+### <a name="helpprivacy-urls"></a>Yardım/Gizlilik URL'leri
 
 Bu bölüm, müşterilerin teklifiniz hakkında daha fazla bilgi edinmelerine yardımcı olacak bağlantılar sağlamanıza olanak tanır.
 
 #### <a name="help-link"></a>Yardım bağlantısı
 
-Müşterilerin teklifiniz hakkında daha fazla bilgi edinebileceği URL'yi girin.
+Müşterilerin teklifiniz hakkında daha fazla bilgi edinebileceği URL'yi girin. **Yardım bağlantınız** **Destek URL'nizle** aynı olamaz (aşağıda açıklanmıştır).
 
-#### <a name="privacy-policy-url"></a>Gizlilik ilkesi URL'si
+#### <a name="privacy-policy-link"></a>Gizlilik politikası bağlantısı
 
 Kuruluşunuzun gizlilik politikasına URL girin. Uygulamanızın gizlilik yasalarına ve yönetmeliklerine uygun olmasını sağlamaktan ve geçerli bir gizlilik politikası sağlamaktan siz sorumlusunuz.
 
-### <a name="contacts"></a>Kişiler
+### <a name="contact-information"></a>İletişim Bilgileri
 
 Bu bölümde, bir **Destek kişi** ve mühendislik **kişi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortaklarına sağlanabilir.
 
-Destek **iletişim** bölümünde, CSP iş ortaklarının teklifiniz için destek bulabilecekleri **Destek URL'sini** de sağlamanız gerekir.
+Destek **iletişim** bölümünde, CSP iş ortaklarının teklifiniz için destek bulabilecekleri **Destek URL'sini** de sağlamanız gerekir. Destek URL'niz **Yardım bağlantınızla**aynı olamaz.
 
 ### <a name="supporting-documents"></a>Destekleyici belgeler
 
@@ -193,15 +191,7 @@ Burada teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en a
 
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
-Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
-
-#### <a name="store-logos"></a>Mağaza logoları
-
-Teklifinizin logosunu iki boyutta sağlayın: **Küçük (48 x 48)** ve **Büyük (216 x 216)**.
-
-#### <a name="hero"></a>Kahraman
-
-Kahraman görüntüsü isteğe bağlıdır. Bir tane sağlarsanız, 815 x 290 piksel ölçmeniz gerekir.
+Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır. Teklif logonuzu iki boyutta yükleyin: **Küçük (48 x 48)** ve **Büyük (216 x 216)**.
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
@@ -350,7 +340,11 @@ Bir sonraki bölüme geçmeden önce **Kaydet'i** unutmayın!
 
 ### <a name="test-drive-marketplace-listings"></a>Test sürüşü pazar yeri listeleri
 
-**Test sürüşü** sekmesinin altında bulunan **Market giriş** seçeneği, test sürücünüzün kullanılabildiği dilleri görüntüler. Şu anda **İngilizce (ABD)** mevcut tek yerdir. Test sürüşü deneyimini açıklayan bilgileri girmek için dil adını seçin.
+**Test sürüşü** sekmesinin altında bulunan **Market giriş** seçeneği, test sürüşü deneyimiyle ilgili ayrıntıları tanımladığınız yerdir.
+
+> [!NOTE]
+> Test sürüşü giriş ayrıntılarını yalnızca tek bir dilde sağlayabilirsiniz. Teklif açıklaması "Bu uygulama yalnızca [İngilizce olmayan dilde] kullanılabilir" cümlesiyle başladığı sürece İngilizce olması gerekmez. Ayrıca, test sürücüsü giriş içeriğinde kullanılandan başka bir dilde içerik sunmak için bir *Yardım bağlantısı URL'si* sağlamak da kabul edilebilir.
+
 
 - **Açıklama** (gerekli): Test sürüşünüzü, gösterilecek leri, kullanıcının deney yapacağı hedefleri, araştırılacak özellikleri ve kullanıcının teklifinizi alıp almayacağını belirlemesine yardımcı olacak ilgili bilgileri açıklayın. Bu alana en fazla 3.000 metin karakteri girilebilir. 
 

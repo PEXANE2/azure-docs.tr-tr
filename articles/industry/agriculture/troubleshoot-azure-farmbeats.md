@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 74522502f5405b56a3a604f20a695de83ef3c3a5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886492"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113500"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
 Bu makalede, ortak Azure FarmBeats sorunlarına çözümler sağlar. Ek yardım için [Destek](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) Forumu'muza farmbeatssupport@microsoft.combaşvurun veya bize e-posta gönderin.
 
 > [!NOTE]
-  > Nisan ayında FarmBeats'i yüklediyseniz ve işleriniz boş bir hata iletisiyle başarısız oluyorsa, yüklemeniz acil durum, sağlık ve diğer kritik ihtiyaçlara yönelik olan tüm kaynaklar nedeniyle toplu iş kotası tahsis edilmemiş olabilir. Toplu İşlem hesabına tahsis edilecek VM'leri istemeniz gerekir.
+  > Nisan ayında FarmBeats'i yüklediyseniz ve işleriniz boş bir hata iletisiyle başarısız oluyorsa, yüklemenize kritik sağlık ve güvenlik kuruluşları için destek önceliklerini belirlemek için toplu iş kotası tahsis edilmemiş olabilir. Daha fazla bilgi için [buraya](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) bakın. İşleri başarılı bir şekilde çalıştırmak için Toplu İşlemler hesabına tahsis edilmesi için VM'lerin istenmesi gerekir.
 
 ## <a name="install-issues"></a>Yükleme sorunları
 
@@ -45,7 +45,9 @@ Aşağıdaki ayrıntılar la bize ulaşın:
 - Dağıtım hatası için günlük dosyasını eklemek için aşağıdaki adımları izleyin:
 
     1. Azure portalındaki **Kaynak Grubu'na** gidin.
+
     2. Sol taraftaki **Ayarlar** bölümünde **Dağıtımlar'ı** seçin.
+
     3. **Başarısız'ı**gösteren her dağıtım için ayrıntılara doğru seçim yapın ve dağıtım ayrıntılarını indirin. Bu dosyayı postaya takın.
 
 ## <a name="sensor-telemetry"></a>Sensör telemetri

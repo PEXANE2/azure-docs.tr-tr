@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75354641"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115132"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Akış Analizi'nde zaman işlemeyi anlama
 
@@ -96,7 +96,7 @@ Erken varış penceresi denilen başka bir kavram fark etmiş olabilirsiniz, ge�
 
 Azure Akış Analizi her zaman tam sonuç ürettiğini garanti ettiği için, **iş başlangıç saatini** giriş süresi olarak değil, yalnızca işin ilk çıktı zamanı olarak belirtebilirsiniz. İş başlangıç saati, pencerenin tamamının sadece pencerenin ortasından değil, işlenmesi için gereklidir.
 
-Akış Analizi daha sonra başlangıç saatini sorgu belirtiminden türeter. Ancak, giriş olay komisyoncusu yalnızca varış saatine göre dizine eklenmiştir, çünkü sistem başlangıç olay saatini varış saatine çevirmek zorundadır. Sistem, giriş olay aracısındaki bu noktadan olayları işlemeye başlayabilir. Erken gelen pencere sınırı ile çeviri basittir. 5 dakika erken gelen pencere hariç etkinlik zamanı başlıyor. Bu hesaplama aynı zamanda sistemin varış saatinden 5 dakika daha fazla olay süresine sahip olarak görülen tüm olayları düşürdükleri anlamına gelir.
+Akış Analizi daha sonra başlangıç saatini sorgu belirtiminden türeter. Ancak, giriş olay komisyoncusu yalnızca varış saatine göre dizine eklenmiştir, çünkü sistem başlangıç olay saatini varış saatine çevirmek zorundadır. Sistem, giriş olay aracısındaki bu noktadan olayları işlemeye başlayabilir. Erken gelen pencere sınırı ile çeviri basittir. Bu başlangıç olay süresi eksi 5 dakika erken gelen penceredir. Bu hesaplama aynı zamanda sistemin varış saatinden 5 dakika daha yüksek bir olay süresine sahip olarak görülen tüm olayları düşüreceği anlamına gelir.
 
 Bu kavram, nereden çıktı almaya başlarsanız başlayın, işlemin yinelenebilir olmasını sağlamak için kullanılır. Böyle bir mekanizma olmadan, diğer birçok akış sisteminin iddia ettikleri gibi tekrarlanabilirliği garanti etmek mümkün olmaz.
 

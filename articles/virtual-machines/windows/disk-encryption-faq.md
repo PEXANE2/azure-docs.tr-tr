@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a4ab59ab5b988b54333c419ced7fa852da531eaa
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8ef791759a33d08aaff068b0dd2634e5f21bb1b6
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984342"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114985"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows sanal makineler için Azure Disk Şifreleme SSS
 
@@ -64,7 +64,7 @@ Azure Disk Şifreleme, işletim sistemi diski, veri diskleri ve müşteri taraf�
 
 - Gereksinimleriniz yukarıdaki ve uçtan uca şifrelemeyi içeriyorsa, Azure Disk Şifreleme'yi kullanın. 
 - Gereksinimleriniz yalnızca verileri müşteri tarafından yönetilen anahtarla şifrelemeyi içeriyorsa, [sunucu tarafı şifrelemesini müşteri tarafından yönetilen anahtarlarla](disk-encryption.md)kullanın. Bir diski hem Azure Disk Şifrelemesi hem de Depolama sunucu tarafı şifrelemesiyle müşteri yönetilen anahtarlarla şifreleyemezsiniz.
-_ [Windows için desteklenmeyen senaryolarda](disk-encryption-windows.md#unsupported-scenarios)çağrılan bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla Sunucu tarafı şifrelemeyi](disk-encryption.md)düşünün. 
+- [Windows için desteklenmeyen senaryolarda](disk-encryption-windows.md#unsupported-scenarios)çağrılan bir senaryo kullanıyorsanız, [müşteri tarafından yönetilen anahtarlarla Sunucu tarafı şifrelemeyi](disk-encryption.md)düşünün. 
 - Kuruluşunuzun ilkesi, azure tarafından yönetilen bir anahtarla içeriği istirahatte şifrelemenize izin veriyorsa, herhangi bir işlem gerekmez - içerik varsayılan olarak şifrelenir. Yönetilen diskler için depolama içindeki içerik varsayılan olarak platform tarafından yönetilen anahtarla Sunucu tarafı şifrelemesiyle şifrelenir. Anahtar Azure Depolama hizmeti tarafından yönetilir. 
 
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Sırları veya şifreleme anahtarlarını nasıl döndürebilirim?

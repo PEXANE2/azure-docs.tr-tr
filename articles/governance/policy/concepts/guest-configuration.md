@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetlemeyi öğrenin
 description: Azure İlke'nin sanal makinelerdeki ayarları denetlemek için Konuk Yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9e8486af2a9b7ab9e18b8c16f08e51759d1123d7
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 4a2989badc099a199bf21f7e020ca8e6256ddaf0
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998851"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113428"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk Yapılandırması'nı anlayın
 
@@ -26,32 +26,11 @@ Makine içindeki ayarları denetlemek için [sanal makine uzantısı](../../../v
 
 ### <a name="limits-set-on-the-extension"></a>Uzantıda belirlenen sınırlar
 
-Uzantının makine içinde çalışan uygulamaları etkilemesini sınırlamak için, Konuk Yapılandırması'nın CPU kullanımının %5'inden fazlasını aşmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
+Uzantının makine içinde çalışan uygulamaları etkilemesini sınırlamak için, Konuk Yapılandırması'nın CPU'nun %5'inden fazlasını aşmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Konuk Yapılandırma kaynak sağlayıcısını kaydedin
 
-Konuk Yapılandırmasını kullanabileniz için kaynak sağlayıcısını kaydetmeniz gerekir. Portal dan veya PowerShell üzerinden kayıt olabilirsiniz. Konuk Yapılandırma ilkesinin atanması portal üzerinden yapılırsa kaynak sağlayıcısı otomatik olarak kaydedilir.
-
-### <a name="registration---portal"></a>Kayıt - Portal
-
-Kaynak sağlayıcısını Azure portalı üzerinden Konuk Yapılandırması için kaydetmek için aşağıdaki adımları izleyin:
-
-1. Azure portalını başlatın ve **Tüm hizmetlere**tıklayın. **Abonelikleri**arayın ve seçin.
-
-1. Konuk Yapılandırması'nı etkinleştirmek istediğiniz aboneliği bulun ve tıklayın.
-
-1. **Abonelik** sayfasının sol menüsünde **Kaynak sağlayıcıları**tıklatın.
-
-1. **Microsoft.GuestConfiguration'ı**bulana kadar filtre uygulayın veya kaydırın, ardından aynı satırda **Kaydol'u** tıklatın.
-
-### <a name="registration---powershell"></a>Kayıt - PowerShell
-
-PowerShell aracılığıyla Konuk Yapılandırması için kaynak sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın:
-
-```azurepowershell-interactive
-# Login first with Connect-AzAccount if not using Cloud Shell
-Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
-```
+Konuk Yapılandırmasını kullanabileniz için kaynak sağlayıcısını kaydetmeniz gerekir. [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) [portalı](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)üzerinden kaydolabilirsiniz. Konuk Yapılandırma ilkesinin atanması portal üzerinden yapılırsa kaynak sağlayıcısı otomatik olarak kaydedilir.
 
 ## <a name="validation-tools"></a>Doğrulama araçları
 
@@ -89,7 +68,7 @@ Windows Server Nano Server hiçbir sürümde desteklenmez.
 
 ## <a name="guest-configuration-extension-network-requirements"></a>Konuk Yapılandırma Uzantısı ağ gereksinimleri
 
-Azure'daki Konuk Yapılandırma kaynak sağlayıcısıyla iletişim kurmak için **makineler, 443**bağlantı noktasındaki Azure veri merkezlerine giden erişim gerektirir. Azure'da giden trafiğe izin vermeyen özel bir sanal ağ kullanıyorsanız, özel durumları [Ağ Güvenliği Grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kurallarıyla yapılandırın.
+Azure'daki Konuk Yapılandırma kaynak sağlayıcısıyla iletişim kurmak için **makineler, 443**bağlantı noktasındaki Azure veri merkezlerine giden erişim gerektirir. Azure'daki bir ağ giden trafiğe izin vermiyorsa, özel durumları [Ağ Güvenlik Grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kurallarıyla yapılandırın.
 "GuestAndHybridManagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) Konuk Yapılandırma hizmetine başvurmak için kullanılabilir.
 
 ## <a name="azure-managed-identity-requirements"></a>Azure yönetilen kimlik gereksinimleri
@@ -101,7 +80,7 @@ Uzantıyı sanal makinelere ekleyen **DeployIfNotExists** ilkeleri, yoksa yönet
 
 ## <a name="guest-configuration-definition-requirements"></a>Konuk Yapılandırma tanımı gereksinimleri
 
-Konuk Yapılandırma tarafından çalıştırılanan her denetim iki ilke tanımı, bir **DeployIfNotExists** tanımı ve bir **AuditIfNotExists** tanımı gerektirir. **DeployIfNotExists** tanımı, [doğrulama araçlarını](#validation-tools)desteklemek için makineyi Konuk Yapılandırma aracısı ve diğer bileşenlerle birlikte hazırlamak için kullanılır.
+Konuk Yapılandırma tarafından çalıştırılanan her denetim iki ilke tanımı, bir **DeployIfNotExists** tanımı ve bir **AuditIfNotExists** tanımı gerektirir. 
 
 **DeployIfNotExists** ilke tanımı aşağıdaki öğeleri doğrular ve düzeltir:
 
@@ -112,24 +91,24 @@ Konuk Yapılandırma tarafından çalıştırılanan her denetim iki ilke tanım
 
 **DeployIfNotExists** ataması uyumlu değilse, bir [düzeltme görevi](../how-to/remediate-resources.md#create-a-remediation-task) kullanılabilir.
 
-**DeployIfNotExists** ataması Uyumlu olduğunda, **AuditIfNotExists** ilkesi ataması yapılandırma atamasının Uyumlu olup olmadığını veya uyumlu olmadığını belirlemek için yerel doğrulama araçlarını kullanır. Doğrulama aracı, sonuçları Konuk Yapılandırma istemcisine sağlar. İstemci sonuçları Konuk Uzantısı'na iletir ve bu da onları Konuk Yapılandırma kaynak sağlayıcısı aracılığıyla kullanılabilir hale getirir.
+**DeployIfNotExists** ataması Uyumlu olduğunda, **AuditIfNotExists** ilke ataması konuk atamanın Uyumlu olup olmadığını belirler. Doğrulama aracı, sonuçları Konuk Yapılandırma istemcisine sağlar. İstemci sonuçları Konuk Uzantısı'na iletir ve bu da onları Konuk Yapılandırma kaynak sağlayıcısı aracılığıyla kullanılabilir hale getirir.
 
 Azure İlkesi, **Uyumluluk** düğümündeki uyumluluğu bildirmek için Konuk Yapılandırma kaynak sağlayıcıları **nasiasıdurumunu** kullanır. Daha fazla bilgi için [uyumluluk verilerini alma](../how-to/get-compliance-data.md)bilgisine bakın.
 
 > [!NOTE]
 > **AuditIfNotExists** ilkesinin sonuçları döndürmesi için **DeployIfNotExists** ilkesi gereklidir. **DeployIfNotExists**olmadan, **AuditIfNotExists** ilkesi "0/0" kaynaklarını durum olarak gösterir.
 
-Konuk Yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılacak tanımları gruplandırma girişimine dahildir. Yerleşik girişim _ \[Preview\]_ : Audit Password güvenlik ayarları linux ve Windows makineleri içinde 18 ilkeler içerir. Windows için altı **DeployIfNotExists** ve **AuditIfNotExists** çifti ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı, yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
+Konuk Yapılandırması için tüm yerleşik ilkeler, atamalarda kullanılacak tanımları gruplandırma girişimine dahildir. Yerleşik girişim _ \[\]Preview_ : Audit Password security in Linux ve Windows makineleri 18 ilke içerir. Windows için altı **DeployIfNotExists** ve **AuditIfNotExists** çifti ve Linux için üç çift vardır. [İlke tanımı](definition-structure.md#policy-rule) mantığı, yalnızca hedef işletim sisteminin değerlendirildiğini doğrular.
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Endüstri taban çizgilerini izleyerek işletim sistemi ayarlarını denetleme
 
-Azure İlkesi'nde kullanılabilen girişimlerden biri, Microsoft'un "taban çizgisini" takiben sanal makinelerdeki işletim sistemi ayarlarını denetleme olanağı sağlar. Tanım, _ \[Önizleme\]: Azure güvenlik temel ayarlarıyla eşleşmeyan Denetim Windows VM'leri,_ Active Directory Group İlke'deki ayarlara dayalı tam bir denetim kuralları kümesi içerir.
+Azure İlkesi'ndeki bir girişim, işletim sistemi ayarlarını bir "temel" izleyerek denetleme olanağı sağlar. Tanım, _ \[Önizleme\]: Azure güvenlik taban çizgisi ayarlarıyla eşleşmeyan Denetim Windows VM'leri,_ Active Directory Group İlke'yi temel alan bir kural kümesi içerir.
 
-Ayarların çoğu parametre olarak kullanılabilir. Bu işlev, ilkeyi kuruluş gereksinimlerinizle uyumlu hale getirmek veya politikayı endüstri düzenleyici standartları gibi üçüncü taraf bilgileriyle eşlemek için denetlenenleri özelleştirmenize olanak tanır.
+Ayarların çoğu parametre olarak kullanılabilir. Parametreler denetlenenleri özelleştirmenize olanak sağlar. Politikayı gereksinimlerinizle hizalayın veya politikayı endüstri düzenleyici standartları gibi üçüncü taraf bilgileriyle eşleyin.
 
-Bazı parametreler bir karşıcı değer aralığını destekler. Örneğin, Maksimum Parola Yaşı parametresi, makine sahiplerine esneklik sağlamak için bir aralık işleci kullanılarak ayarlanabilir. Kullanıcıların parolalarını değiştirmelerini gerektiren etkili Grup İlkesi ayarının 70 günden fazla olmaması, ancak bir günden az olmaması gerektiğini denetleyebilirsiniz. Parametre için bilgi balonu açıklandığı gibi, bu iş ilkesi etkin denetim değeri yapmak için, "1,70" değerini ayarlayın.
+Bazı parametreler bir karşıcı değer aralığını destekler. Örneğin, Maksimum Parola Yaşı ayarı etkili Grup İlkesi ayarını denetleyebilir. "1,70" aralığı, kullanıcıların parolalarını en az 70 günde bir, ancak en az bir günde bir değiştirmeleri gerektiğini doğrular.
 
-İlkeyi Azure Kaynak Yöneticisi dağıtım şablonu kullanarak atarsanız, bu ayarları kaynak denetiminden yönetmek için bir parametre dosyası kullanabilirsiniz. Her iade belgelerinde yapılan açıklamalarla Denetim ilkelerinde yapılan değişiklikleri yönetmek için Git gibi bir araç kullanmak, bir atamanın neden beklenen değerin bir istisnası olması gerektiğine ilişkin kanıtlar.
+İlkeyi Azure Kaynak Yöneticisi dağıtım şablonu kullanarak atarsanız, özel durumları yönetmek için bir parametre dosyası kullanın. Dosyaları Git gibi bir sürüm kontrol sistemine iade edin. Dosya değişiklikleri yle ilgili yorumlar, bir atamanın neden beklenen değerin bir istisnası olduğuna kanıt sağlar.
 
 #### <a name="applying-configurations-using-guest-configuration"></a>Konuk Yapılandırması'nı kullanarak yapılandırmaları uygulama
 
@@ -162,7 +141,7 @@ Bu başarılı olmazsa, istemci günlüklerini toplamak sorunları tanılamaya y
 
 #### <a name="windows"></a>Windows
 
-Windows makinelerindeki günlük dosyalarından bilgi almak için Azure VM Run Komutu özelliğini kullanmak için aşağıdaki örnek PowerShell komut dosyası yararlı olabilir. Daha fazla bilgi için Bkz. [Windows VM'nizde Çalıştır Komutu ile PowerShell komut dosyalarını çalıştırın.](../../../virtual-machines/windows/run-command.md)
+[Azure VM Run Komutu'nu](../../../virtual-machines/windows/run-command.md)kullanarak günlük dosyalarından bilgi alın , aşağıdaki örnek PowerShell komut dosyası yararlı olabilir.
 
 ```powershell
 $linesToIncludeBeforeMatch = 0
@@ -173,7 +152,7 @@ Select-String -Path $logPath -pattern 'DSCEngine','DSCManagedEngine' -CaseSensit
 
 #### <a name="linux"></a>Linux
 
-Linux makinelerindeki günlük dosyalarından bilgi almak için Azure VM Run Komutu özelliğini kullanmak için aşağıdaki örnek Bash komut dosyası yararlı olabilir. Daha fazla bilgi için, [Run Komutu ile Linux VM'nizde Shell komutlarını çalıştır](../../../virtual-machines/linux/run-command.md)
+[Azure VM Run Komutu'nu](../../../virtual-machines/linux/run-command.md)kullanarak günlük dosyalarından bilgi yakalayın , aşağıdaki örnek Bash komut dosyası yararlı olabilir.
 
 ```Bash
 linesToIncludeBeforeMatch=0
@@ -184,7 +163,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="guest-configuration-samples"></a>Konuk Yapılandırma örnekleri
 
-İlke Konuk Yapılandırması yerleşik girişimleri için kaynak aşağıdaki konumlarda mevcuttur:
+Konuk Yapılandırma yerleşik ilke örnekleri aşağıdaki konumlarda mevcuttur:
 
 - [Yerleşik ilke tanımları - Konuk Yapılandırması](../samples/built-in-policies.md#guest-configuration)
 - [Dahili girişimler - Konuk Yapılandırması](../samples/built-in-initiatives.md#guest-configuration)
@@ -192,6 +171,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Konuk Yapılandırmauyumluluk görünümünden](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) her ayarın ayrıntılarını nasıl görüntüleyin
 - [Azure İlkesi örneklerindeki](../samples/index.md)örnekleri gözden geçirin.
 - [Azure İlkesi tanımı yapısını](definition-structure.md) gözden geçirin.
 - [İlkenin etkilerini anlama](effects.md) konusunu gözden geçirin.

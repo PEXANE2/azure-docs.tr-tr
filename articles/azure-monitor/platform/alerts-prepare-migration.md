@@ -1,17 +1,17 @@
 ---
-title: Mantıksal uygulamalarınızı ve runbook'larınızı güncelleyerek Azure Monitörü'ne klasik uyarılar geçişine hazırlanın
+title: Uyarılar geçişi için uygulamaları & runbook'ları güncelleştirme
 description: Gönüllü geçişe hazırlanmak için web hook'larınızı, mantık uygulamalarınızı ve runbook'larınızı nasıl değiştirip değiştirebilirsiniz öğrenin.
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 9219e105acb98424939030af76b526d475585619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f31fcc07bed0287c2f86ca4fe52bf02a2a1d2a71
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665601"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114420"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>Mantıksal uygulamalarınızı ve runbook'larınızı klasik uyarı kurallarının geçişine hazırlama
 
@@ -43,7 +43,7 @@ Webhook yük alanlarını klasik biçimden yeni biçime eşlemek için aşağıd
 
 |  |Klasik uyarılar  |Yeni metrik uyarılar |
 |---------|---------|---------|
-|Uyarı etkinleştirildi mi yoksa çözüldü mü?    | **durum**       | **data.status** |
+|Uyarı etkinleştirildi mi yoksa çözüldü mü?    | **Durum**       | **data.status** |
 |Uyarı hakkında bağlamsal bilgiler     | **Bağlam**        | **data.context**        |
 |Uyarının etkinleştirildiği veya çözüldüğü saat damgası     | **context.timestamp**       | **data.context.timestamp**        |
 | Uyarı kuralı kimliği | **context.id** | **data.context.id** |

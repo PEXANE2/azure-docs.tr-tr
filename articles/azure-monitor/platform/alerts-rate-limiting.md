@@ -1,17 +1,17 @@
 ---
-title: SMS, e-postalar, Azure Uygulaması anında iletme bildirimleri ve webhook'lar için hız sınırlaması
+title: SMS, e-postalar, anında iletme bildirimleri için hız sınırlaması
 description: Azure'un bir eylem grubundan olası SMS, e-posta, Azure Uygulaması push veya webhook bildirimlerinin sayısını nasıl sınırladıklarını anlayın.
 author: dkamstra
 ms.author: dukek
 ms.topic: conceptual
 ms.date: 3/12/2018
 ms.subservice: alerts
-ms.openlocfilehash: 066fcac24571c8e982784a3845a010525ff9088a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61e6cc22171815b15b865dd6ed5670bd9c446ead
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665536"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114323"
 ---
 # <a name="rate-limiting-for-voice-sms-emails-azure-app-push-notifications-and-webhook-posts"></a>Ses, SMS, e-postalar, Azure Uygulaması anında iletme bildirimleri ve webhook gönderileri için hız sınırlaması
 Hız sınırlaması, belirli bir telefon numarasına, e-posta adresine veya cihaza çok fazla gönderildiğinde oluşan bildirimlerin askıya alınmasıdır. Hız sınırlaması, uyarıların yönetilebilir ve işlenebilir olmasını sağlar.

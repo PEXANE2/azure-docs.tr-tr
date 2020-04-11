@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: faafc1e12f0703c38b4e602700b1e775bf13a061
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.date: 04/09/2020
+ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998340"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114978"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi süreli arama ve özel karakterler (joker karakter, regex, desenler) ile desenler
 
-*Kısmi terim araması,* bir dizenin ilk, son veya iç kısımları gibi terim parçalarından oluşan sorguları ifade eder. *Desen,* bazen sorgunun bir parçası olan tire veya kesikler gibi özel karakterlerle parçaların bir birleşimi olabilir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
+*Kısmi terim araması,* tüm terim yerine yalnızca başlangıç, orta veya dönem sonu (bazen önek, ek ek veya sonek sorguları olarak adlandırılır) olabilir terim parçaları oluşan sorguları ifade eder. *Desen,* genellikle tire veya çizgi çizgiler gibi sorgu dizesinin bir parçası olan özel karakterlerle birlikte parçaların bir birleşimi olabilir. Yaygın kullanım örnekleri, telefon numarasının, URL'nin, kişilerin veya ürün kodlarının veya bileşik sözcüklerin bölümlerinin sorgulanmasıdır.
 
-Dizin desen eşleştirme için gerekli biçimde terimler yoksa kısmi arama sorunlu olabilir. Dizin oluşturmanın metin çözümleme aşamasında, varsayılan standart çözümleyici kullanılarak, özel karakterler atılır, bileşik ve bileşik dizeleri ayrılır, hiçbir eşleşme bulununca desen sorguları başarısız olur. Örneğin, bu içerik `+1 (425) 703-6214`dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
+Dizin beklenen biçimde terimler yoksa kısmi ve desen arama sorunlu olabilir. Dizin oluşturmanın [sözlü çözümleme aşamasında](search-lucene-query-architecture.md#stage-2-lexical-analysis) (varsayılan standart çözümleyici varsayılarak), özel karakterler atılır, bileşik ve bileşik dizeleri bölünür ve beyaz boşluk silinir; bunların tümü, eşleşme bulunamayınca desen sorgularının başarısız lığa neden olabilir. Örneğin, bu içerik `+1 (425) 703-6214` dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
 
 Çözüm, kısmi terimler ve desenlerle eşleşebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dizeyi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
 
@@ -27,21 +27,21 @@ Dizin desen eşleştirme için gerekli biçimde terimler yoksa kısmi arama soru
 
 Azure Bilişsel Arama'da kısmi arama ve desen şu formlarda kullanılabilir:
 
-+ [Önek arama](query-simple-syntax.md#prefix-search), `search=cap*`örneğin , "Cap'n Jack's Waterfront Inn" veya "Gacc Capital" ile eşleşen. Önek araması için basit sorgu sözdizimini kullanabilirsiniz.
++ [Önek arama](query-simple-syntax.md#prefix-search), `search=cap*`örneğin , "Cap'n Jack's Waterfront Inn" veya "Gacc Capital" ile eşleşen. Önek aramaiçin basit sorgu sözdizimini veya tam Lucene sorgu sözdizimini kullanabilirsiniz.
 
-+ [Joker karakter araması](query-lucene-syntax.md#bkmk_wildcard) veya soneki de dahil olmak üzere katışılmış bir dize veya parçaları arayan [normal ifadeler.](query-lucene-syntax.md#bkmk_regex) Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir. 
++ [Joker karakter araması](query-lucene-syntax.md#bkmk_wildcard) veya katışılmış bir dize deseni veya parçalarını arayan [Normal ifadeler.](query-lucene-syntax.md#bkmk_regex) Joker karakter ve normal ifadeler tam Lucene sözdizimini gerektirir. Sonek ve dizin sorguları normal bir ifade olarak formüle edilir.
 
-  Kısmi süreli aramanın bazı örnekleri şunlardır: "Alfasayısal" terimi verilen sonek sorgusunda, eşleşme bulmak için joker karakter`search=/.*numeric.*/`araması () kullanırsınız. URL parçası gibi karakterleri içeren kısmi bir terim için kaçış karakterleri eklemeniz gerekebilir. JSON'da, bir `/` ileri eğik `\`çizgi geriye doğru eğik çizgi ile kaçar. Bu nedenle, `search=/.*microsoft.com\/azure\/.*/` URL parçası "microsoft.com/azure/" için sözdizimidir.
+  Kısmi süreli aramanın bazı örnekleri şunlardır: "Alfasayısal" terimi verilen sonek sorgusunda, eşleşme bulmak için joker karakter`search=/.*numeric.*/`araması () kullanırsınız. URL parçası gibi iç karakterleri içeren kısmi bir terim için kaçış karakterleri eklemeniz gerekebilir. JSON'da, bir `/` ileri eğik `\`çizgi geriye doğru eğik çizgi ile kaçar. Bu nedenle, `search=/.*microsoft.com\/azure\/.*/` URL parçası "microsoft.com/azure/" için sözdizimidir.
 
 Belirtildiği gibi, yukarıdaki tüm dizin standart çözümleyici sağlamaz desen eşleştirme, elverişli bir biçimde dizeleri içerir gerektirir. Bu makaledeki adımları izleyerek, bu senaryoları desteklemek için gerekli içeriğin bulunduğundan emin olabilirsiniz.
 
-## <a name="solving-partial-search-problems"></a>Kısmi arama sorunlarını çözme
+## <a name="solving-partialpattern-search-problems"></a>Kısmi/desen arama sorunlarını çözme
 
-Desenlerde veya özel karakterlerde arama yapmanız gerektiğinde, varsayılan çözümleyiciyi daha basit belirteç verme kuralları altında çalışan ve tüm dizeyi koruyan özel bir çözümleyiciyle geçersiz kılabilir. Bir adım geri alarak, yaklaşım şu na benzer:
+Parçalar, desenler veya özel karakterler üzerinde arama yapmanız gerektiğinde, varsayılan çözümleyiciyi daha basit belirteç verme kuralları altında çalışan ve tüm dizeyi koruyan özel bir çözümleyiciyle geçersiz kılabilir. Bir adım geri alarak, yaklaşım şu na benzer:
 
 + Dize bozulmamış bir sürümünü depolamak için bir alan tanımlayın (çözümlenmiş ve çözümlenmemiş metin istediğinizi varsayarak)
-+ Önceden tanımlanmış bir çözümleyici seçin veya sağlam bir dize çıkarmak için özel bir çözümleyici tanımlayın
-+ Çözümleyiciyi alana atama
++ Önceden tanımlanmış bir çözümleyici seçin veya analiz edilmeyen sağlam bir dize çıkarmak için özel bir çözümleyici tanımlayın
++ Özel çözümleyiciyi alana atama
 + Dizin oluşturma ve test edin
 
 > [!TIP]
@@ -222,6 +222,10 @@ Senaryonuzu destekleyen çözümleyiciler ve alan tanımları içeren bir dizin 
 + [Test Analyzer](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) bir [çözümleyici seçin](#choose-an-analyzer)tanıtıldı. Terimlerin nasıl belirteçleştirilebildiğini anlamak için çeşitli çözümleyiciler kullanarak dizininizdeki dizelerin bazılarını test edin.
 
 + [Arama Belgeleri,](https://docs.microsoft.com/rest/api/searchservice/search-documents) joker karakter ve normal ifadeler için [basit sözdizimi](query-simple-syntax.md) veya [tam Lucene sözdizimini](query-lucene-syntax.md) kullanarak bir sorgu isteğinin nasıl oluşturulabildiğini açıklar.
+
+  "+1 (425) 703-6214" üzerinde eşleşme bulmak için "3-6214" sorgusu gibi kısmi terim sorguları için `search=3-6214&queryType=simple`basit sözdizimini kullanabilirsiniz: .
+
+  "Alfanümerik" üzerinde eşleşme bulmak için "sayısal" veya "sayısal" sorgusu gibi ek ve sonek sorguları için Lucene sözdiziminin tamamını ve normal bir ifadeyi kullanın:`search=/.*num.*/&queryType=full`
 
 ## <a name="tips-and-best-practices"></a>İpuçları ve en iyi yöntemler
 

@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 02/17/2020
-ms.openlocfilehash: 12aa11aa5064b3a0a2ff18f88161f44f37208aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/11/2020
+ms.openlocfilehash: be6f0cd734d31f43557b49f8e9314e925b383899
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240689"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113959"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Öğretici: RDS PostgreSQL'i DMS kullanarak PostgreSQL için Azure DB'ye geçirin
 
@@ -49,7 +49,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
 * [PostgreSQL topluluk sürümü](https://www.postgresql.org/download/) 9.5, 9.6 veya 10'u indirin ve yükleyin. Kaynak PostgreSQL Server sürümü 9.5.11, 9.6.7, 10 veya daha sonra olmalıdır. Daha fazla bilgi için, [makaleye](https://docs.microsoft.com/azure/postgresql/concepts-supported-versions)bkz.
 
-    Ayrıca, RDS PostgreSQL sürümü PostgreSQL sürümü için Azure Veritabanı ile eşleşmelidir. Örneğin, RDS PostgreSQL 9.5.11.5, 9.6.7 sürümüne değil, yalnızca PostgreSQL 9.5.11 için Azure Veritabanı'na geçiş yapabilir.
+   Ayrıca, PostgreSQL sürümü için hedef Azure Veritabanı'nın RDS PostgreSQL sürümüne eşit veya daha sonra olması gerektiğini de unutmayın. Örneğin, RDS PostgreSQL 9.6 yalnızca PostgreSQL 9.6, 10 veya 11 için Azure Veritabanı'na geçiş yapabilir, ancak PostgreSQL 9.5 için Azure Veritabanı'na geçiremez.
 
 * [PostgreSQL için Azure Veritabanı](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal) örneği veya [PostgreSQL için Azure Veritabanı örneği oluşturun - Hyperscale (Citus)](https://docs.microsoft.com/azure/postgresql/quickstart-create-hyperscale-portal). PgAdmin kullanarak PostgreSQL Server'a nasıl bağlanılabağlana ilgili ayrıntılı bilgi için belgenin bu [bölümüne](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal#connect-to-the-postgresql-server-using-pgadmin) bakın.
 * [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) veya [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)kullanarak şirket içi kaynak sunucularınıza site bağlantısı sağlayan Azure Kaynak Yöneticisi dağıtım modelini kullanarak Azure Veritabanı Geçiş Hizmeti için bir Microsoft Azure Sanal Ağı oluşturun. Sanal ağ oluşturma hakkında daha fazla bilgi için [Sanal Ağ Belgeleri'ne](https://docs.microsoft.com/azure/virtual-network/)ve özellikle adım adım ayrıntılarıiçeren hızlı başlangıç makalelerini görün.
@@ -100,7 +100,7 @@ Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Örnek:
+    Örneğin:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql

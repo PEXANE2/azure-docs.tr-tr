@@ -4,17 +4,17 @@ description: Azure Depolama, verilerinizi bulutta kalıcı hale gelmeden önce o
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 03/12/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f8f6f40f8ce8297b3cbfe6b3afcbf10df4db6572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409839"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113269"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Veriler için Azure Depolama şifrelemesi
 
@@ -34,7 +34,7 @@ Azure Depolama şifrelemesinin altında yatan şifreleme modülleri hakkında da
 
 ## <a name="about-encryption-key-management"></a>Şifreleme anahtarı yönetimi hakkında
 
-Varsayılan olarak, bir depolama hesabındaki veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Verilerinizin şifrelemesi için Microsoft tarafından yönetilen anahtarlara güvenebilir veya şifrelemeyi kendi anahtarlarınızla yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınızla yönetmeyi seçerseniz, iki seçeneğiniz var:
+Yeni bir depolama hesabındaki veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Verilerinizin şifrelemesi için Microsoft tarafından yönetilen anahtarlara güvenebilir veya şifrelemeyi kendi anahtarlarınızla yönetebilirsiniz. Şifrelemeyi kendi anahtarlarınızla yönetmeyi seçerseniz, iki seçeneğiniz var:
 
 - Blob depolama ve Azure Dosyaları'ndaki verileri şifrelemek ve çözmek için kullanmak üzere Azure Key Vault ile *müşteri tarafından yönetilen* bir anahtar belirtebilirsiniz. <sup>1,2</sup> Müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için Azure [Depolama şifrelemesini yönetmek için Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları kullan'a](encryption-customer-managed-keys.md)bakın.
 - Blob depolama işlemlerinde *müşteri tarafından sağlanan* bir anahtar belirtebilirsiniz. Blob depolama sına karşı okuma veya yazma isteği nde bulunma isteğinde bulunduğu bir istemci, blob verilerinin nasıl şifrelendiği ve şifresinin çözülmesi üzerinde ayrıntılı denetim isteğine bir şifreleme anahtarı ekleyebilir. Müşteri tarafından sağlanan anahtarlar hakkında daha fazla bilgi için [bkz.](encryption-customer-provided-keys.md)
@@ -47,8 +47,7 @@ Aşağıdaki tablo, Azure Depolama şifrelemesi için anahtar yönetim seçenekl
 |    Azure Depolama hizmetleri desteklendi    |    Tümü                                                |    Blob depolama, Azure Dosyaları<sup>1,2</sup>                                                                                                               |    Blob depolama                                                                  |
 |    Anahtar depolama                         |    Microsoft anahtar mağazası    |    Azure Key Vault                                                                                                                              |    Azure Anahtar Kasası veya başka bir anahtar mağazası                                                                 |
 |    Anahtar döndürme sorumluluğu         |    Microsoft                                          |    Müşteri                                                                                                                                     |    Müşteri                                                                      |
-|    Anahtar kullanımı                           |    Microsoft                                          |    Azure portalı, Depolama Kaynak Sağlayıcısı REST API, Azure Depolama yönetim kitaplıkları, PowerShell, CLI        |    Azure Depolama REST API (Blob depolama), Azure Depolama istemci kitaplıkları    |
-|    Anahtar erişimi                          |    Yalnızca Microsoft                                     |    Microsoft, Müşteri                                                                                                                    |    Yalnızca müşteri                                                                 |
+|    Anahtar kontrolü                          |    Microsoft                                     |    Müşteri                                                                                                                    |    Müşteri                                                                 |
 
 <sup>1</sup> Sıra depolama alanıyla müşteri tarafından yönetilen anahtarları kullanmayı destekleyen bir hesap oluşturma hakkında bilgi [için](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)bkz.<br />
 <sup>2</sup> Tablo depolama alanıyla müşteri tarafından yönetilen anahtarları kullanmayı destekleyen bir hesap oluşturma hakkında bilgi [için](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)bkz.

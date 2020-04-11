@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 23fa1a2a0b035d04334c51c02411de6de70f2cad
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79453655"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115054"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Aktarılıverileri kullanarak sunucuları değerlendirin
 
@@ -126,22 +126,8 @@ Aşağıdaki tabloda doldurulacak dosya alanları özetlenebilir:
 **Ağ Giriş** | Hayır | Sunucu tarafından alınan veriler, saniyede MB olarak.
 **Ağ Çıkış girişi** | Hayır | Sunucu tarafından saniyede MB olarak aktarılan veriler.
 **Firmware türü** | Hayır | Sunucu firmware. Değerler "BIOS" veya "UEFI" olabilir.
-**Sunucu türü** | Hayır | Değerler "Fiziksel" veya "Sanal" olabilir.
-**Hiper Yönetici** | Hayır | Bir makinenin üzerinde çalışan hipervizör. <br/> Değerler "VMware", "Hyper-V", "Xen", "AWS", "GCP" veya "Other" olabilir.
-**Hypervisor sürüm numarası** | Hayır | Hipervizör versiyonu.
-**Sanal makine kimliği** | Hayır | VM tanımlayıcısı. Bu, VMware vCenter VM'nin **InstanceUUid** değeri veya **Hyper-V için Hyper-V VM** Kimliği'dir.
-**Sanal makine yöneticisi kimliği** | Hayır | Bu VMWare vCenter için **InstanceUUid** değeridir. Hyper-V için gerekli değil.
 **MAC adresi**| Hayır | Sunucu MAC adresi.
-**BIOS KİmLİğİ** | Hayır | Sunucu BIOS Kimliği.
-**Özel sunucu kimliği** | Hayır | Yerel, benzersiz sunucu kimliği şirket içinde. <br/> Alınan sunucuyu yerel kimlikle izlemek için kullanışlıdır.
-**Uygulama 1 adı** | Hayır | Sunucuda çalışan iş yükünün adı.<br/>Şablona [sütunlar ekleyerek](#add-multiple-applications) daha fazla uygulama için ayrıntı ekleyebilirsiniz. En fazla beş uygulama ekleyebilirsiniz.
-**Uygulama 1 türü** | Hayır | Sunucuda çalışan iş yükü türü
-**Uygulama 1 sürümü** | Hayır | Sunucuda çalışan iş yükünün sürümü.
-**Uygulama 1 lisans süresi doldu** | Hayır | İş yükünün lisans süresinin dolması (varsa).
-**İş birimi** | Hayır | Sunucunun ait olduğu iş birimi.
-**İşletme sahibi** | Hayır | İş birimi sahibi.
-**İşletme başvuru adı** | Hayır | Uygulamanın ait olduğu uygulamanın adı.
-**Konum** | Hayır | Sunucunun bulunduğu veri merkezi.
+
 
 ### <a name="add-operating-systems"></a>İşletim sistemleri ekleme
 
@@ -159,19 +145,6 @@ Değerlendirme belirli işletim sistemi adlarını tanır. Belirttiğiniz herhan
 - Disk 2 okuma iş
 - Disk 2 yazma iş
 
-### <a name="add-multiple-applications"></a>Birden çok uygulama ekleme
-
-Şablon, tek bir uygulama için alanlar sağlar. En fazla beş uygulama için benzer sütunlar ekleyebilirsiniz.  
-
-Örneğin, ikinci bir uygulama için tüm alanları belirtmek için aşağıdaki sütunları ekleyin:
-
-- Uygulama 2 adı
-- Uygulama 2 türü
-- Uygulama 2 sürümü
-- Uygulama 2 lisans süresi doldu
-
-> [!NOTE]
-> Uygulama bilgileri, şirket içi çevrenizi geçiş için değerlendirmede yararlıdır. Ancak, Azure Geçir Sunucusu Değerlendirmesi şu anda uygulama düzeyinde değerlendirme yapmaz veya bir değerlendirme oluştururken uygulamaları dikkate almaz.
 
 ## <a name="import-the-server-information"></a>Sunucu bilgilerini alma
 

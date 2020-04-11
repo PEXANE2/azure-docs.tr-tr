@@ -1,5 +1,5 @@
 ---
-title: Otomatik ML denemeleri oluşturun
+title: Otomatik ML denemeleri oluşturma
 titleSuffix: Azure Machine Learning
 description: Otomatik makine öğrenimi sizin için bir algoritma seçer ve dağıtıma hazır bir model oluşturur. Otomatik makine öğrenimi denemelerini yapılandırmak için kullanabileceğiniz seçenekleri öğrenin.
 author: cartacioS
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618547"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115409"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,24 +43,27 @@ Denemenize başlamadan önce, çözdüğünen makine öğrenimi problemini belir
 
 Otomatik makine öğrenimi, otomasyon ve aparat işlemi sırasında aşağıdaki algoritmaları destekler. Bir kullanıcı olarak algoritmayı belirtmenize gerek yoktur.
 
+> [!NOTE]
+> Otomatik ML oluşturulan modellerinizi bir [ONNX modeline](concept-onnx.md)dışa aktarmayı planlıyorsanız, yalnızca * ile gösterilen algoritmalar ONNX biçimine dönüştürülebilir. [Modelleri ONNX'e dönüştürme](concept-automated-ml.md#use-with-onnx)hakkında daha fazla bilgi edinin. <br> <br> Ayrıca, ONNX'in şu anda yalnızca sınıflandırma ve regresyon görevlerini desteklediğini unutmayın. 
+
 Sınıflandırma | Regresyon | Zaman Serileri Tahmini
 |-- |-- |--
-[Lojistik Regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
-[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)
-[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)|[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[Lineer SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
-[Destek Vektör Sınıflandırması (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
-[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
-[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
-[DNN Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
-[DNN Lineer Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Sade Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|[Hızlı Doğrusal Regresör](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Otomatik ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
-[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|[Online Gradyan İniş Regresörü](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Peygamber](https://facebook.github.io/prophet/docs/quick_start.html)
+[Lojistik Regresyon](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)* | [Elastik Ağ](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)* | [Elastik Net](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
+[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)* |[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)*|[Hafif GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#classification)* |[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)* |[Degrade Artırma](https://scikit-learn.org/stable/modules/ensemble.html#regression)
+[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#decision-trees)* |[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)* |[Karar Ağacı](https://scikit-learn.org/stable/modules/tree.html#regression)
+[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)* |[K En Yakın Komşular](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[Lineer SVC](https://scikit-learn.org/stable/modules/svm.html#classification)* |[LARS Kement](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)* |[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[Destek Vektör Sınıflandırması (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)* |[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)* |[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
+[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)* |[Rastgele Orman](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
+[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)* |[Son derece randomize ağaçlar](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* |[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)* | [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
+[DNN Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier) |[DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
+[DNN Lineer Sınıflandırıcı](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor) |[Lineer Regresör](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
+[Naif Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)* |[Hızlı Doğrusal Regresör](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.fastlinearregressor?view=nimbusml-py-latest)|[Otomatik ARIMA](https://www.alkaline-ml.com/pmdarima/modules/generated/pmdarima.arima.auto_arima.html#pmdarima.arima.auto_arima)
+[Stokhastik Gradyan İniş (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)* |[Online Gradyan İniş Regresörü](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.onlinegradientdescentregressor?view=nimbusml-py-latest)|[Peygamber](https://facebook.github.io/prophet/docs/quick_start.html)
 |[Ortalama Perceptron Sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.averagedperceptronbinaryclassifier?view=nimbusml-py-latest)||TahminTCN
-|[Lineer SVM Sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)||
+|[Lineer SVM Sınıflandırıcı](https://docs.microsoft.com/python/api/nimbusml/nimbusml.linear_model.linearsvmbinaryclassifier?view=nimbusml-py-latest)* ||
 
 Deneme `task` türünü belirtmek `AutoMLConfig` için oluşturucudaki parametreyi kullanın.
 

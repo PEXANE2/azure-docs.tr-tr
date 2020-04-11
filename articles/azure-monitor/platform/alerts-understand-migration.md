@@ -1,17 +1,17 @@
 ---
-title: Azure Monitor uyarıları için gönüllü geçiş aracının nasıl çalıştığını anlama
+title: Azure Monitör uyarıları için geçiş aracını anlama
 description: Uyarılar geçiş aracının nasıl çalıştığını ve sorunları giderme sorunlarını anlayın.
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8cc77d13567910797cd519ac193b848f3ea434da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d31c856e17348c23ad61130869af6ae440d3050d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274820"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114316"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Geçiş aracının nasıl çalıştığını anlama
 

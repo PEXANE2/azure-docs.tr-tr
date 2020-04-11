@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8608aaab7bb8b6d10e67f27678c17f20a6c243da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370846"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115017"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Hizmetleri - Yönetici kılavuzu
 Bir üniversitenin bulut kaynaklarını yöneten Bilgi Teknolojisi (BT) yöneticileri genellikle okullarının laboratuvar hesabını kurmakla yükümlüdür. Bir laboratuvar hesabı kurulduktan sonra, yöneticiler veya eğitimciler laboratuvar hesabında bulunan sınıf laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarının üst düzey bir genel bakışı ve bunları oluşturma kılavuzu sağlanmaktadır.
@@ -156,6 +156,9 @@ Bir sınıf laboratuvarının bulunduğu konum aşağıdaki etkenlere göre değ
        
     **Hiçbir** VNet baktı ve [laboratuvar yaratıcıları laboratuvar konumunu seçmek için izin verildiğinde,](https://docs.microsoft.com/azure/lab-services/classroom-labs/allow-lab-creator-pick-lab-location)laboratuvar oluşturucu tarafından seçilebilir konumlar kullanılabilir kapasiteye göre bağlıdır.
 
+> [!NOTE]
+> Bir bölge için yeterli VM kapasitesi olduğundan emin olmak için, önce laboratuvar hesabı üzerinden veya laboratuvar oluştururken kapasite istemeniz önemlidir.
+
 Genel kural, kaynağın bölgesini kullanıcılarına en yakın olana ayarlamaktır. Sınıf laboratuvarları için bu, öğrencilerinize en yakın sınıf laboratuarıoluşturmak anlamına gelir. Öğrencilerin tüm dünyada bulunduğu çevrimiçi kurslar için, merkezi bir şekilde bulunan bir sınıf laboratuvarı oluşturmak için en iyi kararınızı kullanmanız gerekir. Veya bir sınıfı öğrencilerinizin bölgesine göre birden çok sınıf laboratuvarına bölün.
 
 ### <a name="shared-image-gallery"></a>Paylaşılan resim galerisi
@@ -169,7 +172,7 @@ Yöneticiler veya laboratuvar oluşturucuları bir sınıf laboratuvarı oluştu
 | ---- | ----- | ------ | ------------- |
 | Küçük| <ul><li>2 Çekirdek</li><li>3,5 GB RAM</li> | [Standard_A2_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut en iyi komut satırı için uygundur, web tarayıcısı açılış, düşük trafik web sunucuları, küçük ve orta veritabanları. |
 | Orta | <ul><li>4 Çekirdek</li><li>7 GB RAM</li> | [Standard_A4_v2](https://docs.microsoft.com/azure/virtual-machines/av2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygun uyrdu. |
-| Orta (İç içe sanallaştırma) | <ul><li>4 Çekirdek</li><li>16 GB RAM</li></ul> | [Standard_DC4s_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygun uyrdu.  Bu boyut iç içe sanallaştırmayı da destekler. |
+| Orta (İç içe sanallaştırma) | <ul><li>4 Çekirdek</li><li>16 GB RAM</li></ul> | [Standard_D4s_v3](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#dsv3-series) | Bu boyut, ilişkisel veritabanları, bellek içi önbelleğe alma ve analiz için en uygun uyrdu.  Bu boyut iç içe sanallaştırmayı da destekler. |
 | Büyük | <ul><li>8 Çekirdek</li><li>32 GB RAM</li></ul>  | [Standard_DC8_v2](https://docs.microsoft.com/azure/virtual-machines/dcv2-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Bu boyut, daha hızlı CPU'lar, daha iyi yerel disk performansı, büyük veritabanları, büyük bellek önbellekleri gerektiren uygulamalar için en uygunudur.  Bu boyut iç içe sanallaştırmayı da destekler. |
 | Küçük GPU (Görselleştirme) | <ul><li>6 Çekirdek</li><li>56 GB RAM</li>  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Bu boyut en iyi uzaktan görselleştirme, akış, oyun, OpenGL ve DirectX gibi çerçeveleri kullanarak kodlama için uygundur. |
 | Küçük GPU (İşlem) | <ul><li>6 Çekirdek</li><li>56 GB RAM</li></ul>  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Bu boyut en iyi Yapay Zeka ve Derin Öğrenme gibi bilgisayar yoğun uygulamalar için uygundur. |

@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jonbeck
-ms.openlocfilehash: 4b36f456f70eb79cff1f615c7c136b8fe4b1b3d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22826c32dc2aee0e580ec0b2a05c7eb8f08b7570
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78226715"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115321"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>Genel amaçlı sanal makine boyutları
 
@@ -32,7 +32,7 @@ Genel amaçlı VM boyutları dengeli CPU-bellek oranı sağlar. Test ve gelişti
 
 - [B serisi patlanabilir](sizes-b-series-burstable.md) VM'ler, web sunucuları, küçük veritabanları ve geliştirme ve test ortamları gibi CPU'nun tam performansına sürekli olarak ihtiyaç duymayan iş yükleri için idealdir. Bu iş yükleri genellikle burstable performans gereksinimleri vardır. B-Serisi, bu müşterilere, VM temel performansından daha az ını kullanırken VM örneğinin kredi oluşturmasına olanak tanıyan fiyat bilinçli temel performansıyla Bir VM boyutu satın alma olanağı sağlar. VM kredi biriktirdiğinde, uygulamanız daha yüksek CPU performansı gerektirdiğinde VM CPU'nun %100'üne kadarını kullanarak VM'nin taban çizgisinin üzerine çıkabilir.
 
-- [Dav4 ve Dasv4 serisi,](dav4-dasv4-series.md) AMD'nin 2.35Ghz EPYC<sup>TM</sup> 7452 işlemcisini 256 MB L3 önbelleğe sahip çok iş parçacıklı bir yapılandırmada kullanan ve bu L3 önbelleğinin 8 GB'ını genel amaçlı iş yüklerini çalıştırmak için müşteri seçeneklerini artıran her 8 çekirdekte kullanan yeni boyutlardır. Dav4 serisi ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
+- [Dav4 ve Dasv4 serisi,](dav4-dasv4-series.md) AMD'nin 2.35Ghz EPYC<sup>TM</sup> 7452 işlemcisini, genel amaçlı iş yüklerini çalıştırmak için müşteri seçeneklerini artıran her 8 çekirdekte 8 MB'a ithaf ederek 256 MB L3 önbelleğine kadar 256 MB L3 önbelleğine sahip çok iş parçacığı yapılandırmasında kullanan yeni boyutlardır. Dav4 serisi ve Dasv4 serisi, D & Dsv3 serisi ile aynı bellek ve disk yapılandırmalarına sahiptir.
 
 - [DCv2 serisi,](dcv2-series.md) genel bulutta işlenirken verilerinizin ve kodlarınızın gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisine sahip en son nesil Intel XEON E-2288G İşlemci tarafından desteklenen bir cihazdır. Intel Turbo Boost Teknolojisi ile bu makineler 5.0GHz'e kadar çıkabiliyor. DCv2 serisi örnekleri, müşterilerin kullanımdayken kodlarını ve verilerini korumak için güvenli enklav tabanlı uygulamalar oluşturmasına olanak tanır.
 

@@ -3,12 +3,12 @@ title: Bölümleme Servisi Kumaş hizmetleri
 description: Service Fabric'in stateful hizmetlerinin nasıl bölümlenebildiğini açıklar. Bölümler yerel makinelerde veri depolamasağlar, böylece veri ve bilgi işlem birlikte ölçeklenebilir.
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 1f3ee2196bad8b8a0c992ed498d40b4cf5820f2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4edfaa74fe109c688cad733d16031e87fff1e46f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258622"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115157"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Partition Service Fabric güvenilir hizmetleri
 Bu makalede, Azure Hizmet Kumaşı güvenilir hizmetlerini bölümlemenin temel kavramlarına giriş sağlanmaktadır. Makalede kullanılan kaynak kodu [GitHub'da](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)da mevcuttur.
@@ -25,7 +25,7 @@ Gerçekten iki tür devletsiz hizmet çözümleri vardır. Bunlardan ilki, örne
 
 Her iki durumda da, bir devletsiz hizmet bölümleme çok nadir bir senaryodur - ölçeklenebilirlik ve kullanılabilirlik normalde daha fazla örnek ekleyerek elde edilir. Durum dışı hizmet örnekleri için birden çok bölümü göz önünde bulundurmak istediğiniz tek zaman, özel yönlendirme isteklerini karşılamanız gerektiği zamandır.
 
-Örnek olarak, belirli bir aralıkta olan kullanıcılara yalnızca belirli bir hizmet örneği tarafından sunulması gereken bir durum düşünün. Bir diğer örnek de, gerçekten bölümlenmiş bir arka uç (örn. kırık bir SQL veritabanı) olduğunda ve hangi hizmet örneğinin veritabanına yazılması gerektiğini denetlemek istediğinizde veya arka uçta kullanılan aynı bölümleme bilgilerini gerektiren devletsiz hizmet. Bu tür senaryolar da farklı şekillerde çözülebilir ve mutlaka hizmet bölümleme gerektirmez.
+Örnek olarak, belirli bir aralıkta olan kullanıcılara yalnızca belirli bir hizmet örneği tarafından sunulması gereken bir durum düşünün. Bir hizmeti ne zaman bölümlere alabildiğinizin bir başka örneği de, gerçekten bölümlenmiş bir arka uca sahip olduğunuzda (örn. kırık bir SQL veritabanı) ve hangi hizmet örneğinin veritabanı na yazılması gerektiğini denetlemek veya arka uçta kullanılan aynı bölümleme bilgilerini gerektiren devletsiz hizmet içinde diğer hazırlık işlerini gerçekleştirmek tir. Bu tür senaryolar da farklı şekillerde çözülebilir ve mutlaka hizmet bölümleme gerektirmez.
 
 Bu gözden geçirmenin geri kalanı devlet hizmetlerine odaklanır.
 
@@ -348,9 +348,6 @@ Biz kelimenin tam anlamıyla mektup başına bir bölüm olmasını istediğiniz
     ![Tarayıcı ekran görüntüsü](./media/service-fabric-concepts-partitioning/samplerunning.png)
 
 Örneğin tüm kaynak kodu [GitHub'da](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)mevcuttur.
-
-## <a name="reliable-services-and-actor-forking-subprocesses"></a>Güvenilir Hizmetler ve Aktör forking alt süreçleri
-Service Fabric, güvenilir hizmetleri ve daha sonra güvenilir aktörlerin alt süreçlerini desteklemez. Neden desteklenmeyen [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) bir örnek desteklenmeyen bir alt işlem kaydetmek için kullanılamaz ve iptal belirteçleri sadece kayıtlı işlemlere gönderilir; alt işlemler üst işlem iptal jetonu aldıktan sonra kapanmadığında yükseltme hataları gibi her türlü soruna neden olabilir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Service Fabric kavramları hakkında bilgi için aşağıdakibilgilere bakın:

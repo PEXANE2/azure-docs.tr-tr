@@ -3,12 +3,12 @@ title: Kapsayıcılar ve hizmetler için kaynak idaresi
 description: Azure Hizmet Kumaşı, kapsayıcıların içinde veya dışında çalışan hizmetler için kaynak sınırları belirtmenize olanak tanır.
 ms.topic: conceptual
 ms.date: 8/9/2017
-ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11ca6e29829d911717a829b3e4dee0a190856a52
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772389"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115140"
 ---
 # <a name="resource-governance"></a>Kaynak idaresi
 
@@ -31,7 +31,8 @@ Bu iki ölçüm için [Cluster Resource Manager](service-fabric-cluster-resource
 * Küme bu iki ölçüme göre [parçalanabilir.](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * [Bir küme açıklanırken,](service-fabric-cluster-resource-manager-cluster-description.md)arabelleğe alan kapasite bu iki ölçüm için ayarlanabilir.
 
-[Dinamik yük raporlaması](service-fabric-cluster-resource-manager-metrics.md) bu ölçümler için desteklenmez ve bu ölçümler için yükler oluşturma zamanında tanımlanır.
+> [!NOTE]
+> [Dinamik yük raporlaması](service-fabric-cluster-resource-manager-metrics.md) bu ölçümler için desteklenmez; bu ölçümler için yükler oluşturma zamanında tanımlanır.
 
 ## <a name="resource-governance-mechanism"></a>Kaynak yönetim mekanizması
 

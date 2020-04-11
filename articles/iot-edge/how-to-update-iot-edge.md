@@ -5,16 +5,16 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/07/2020
+ms.date: 04/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4a7c27beeb7208efcf6687e49193c8d3b68f5300
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce69593c1df0039d64f89e79124af1150409eff7
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77186505"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113313"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge güvenlik daemon'ını ve çalışma zamanını güncelleştirme
 
@@ -56,7 +56,7 @@ Windows aygıtlarında, güvenlik daemon'unu güncelleştirmek için PowerShell 
 
 Update-IoTEdge komutunu çalıştırmak, iki çalışma zamanı kapsayıcı görüntüsüyle birlikte güvenlik daemonu'nu aygıtınızdan kaldırır ve güncelleştirir. Config.yaml dosyası cihazda ve Moby konteyner motorundan gelen verilerde tutulur (Windows kapsayıcıları kullanıyorsanız). Yapılandırma bilgilerini saklamak, güncelleştirme işlemi sırasında aygıtınız için bağlantı dizesi veya Aygıt Sağlama Hizmeti bilgilerini yeniden sağlamanız gerekmediğiniz anlamına gelir.
 
-Güvenlik daemon'unun belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerinden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, yerel `-OfflineInstallationPath` dosya konumunu işaret etmek için parametreyi kullanın. Örnek:
+Güvenlik daemon'unun belirli bir sürümüne güncelleştirmek istiyorsanız, [IoT Edge sürümlerinden](https://github.com/Azure/azure-iotedge/releases)hedeflemek istediğiniz sürümü bulun. Bu sürümde **Microsoft-Azure-IoTEdge.cab** dosyasını indirin. Ardından, yerel `-OfflineInstallationPath` dosya konumunu işaret etmek için parametreyi kullanın. Örneğin:
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux> -OfflineInstallationPath <absolute path to directory>
@@ -120,6 +120,35 @@ Dağıtımınızda belirli etiketler kullanıyorsanız (örneğin, mcr.microsoft
 
 1. **Gözden Geçir + oluştur'** seçeneğini seçin, dağıtımı gözden geçirin ve **Oluştur'u**seçin.
 
+## <a name="update-offline-or-to-a-specific-version"></a>Çevrimdışı veya belirli bir sürüme güncelleştirme
+
+Bir aygıtı çevrimdışı güncelleştirmek veya en son sürüm yerine IoT Edge'in belirli bir sürümüne `-OfflineInstallationPath` güncelleştirmek istiyorsanız, bunu parametreyle yapabilirsiniz.
+
+Bir IoT Edge aygıtını güncelleştirmek için iki bileşen kullanılır:
+
+* Yükleme yönergelerini içeren bir PowerShell komut dosyası
+* IoT Edge güvenlik daemon (iotedged), Moby konteyner motoru ve Moby CLI içeren Microsoft Azure IoT Edge kabini
+
+1. Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
+
+2. Yüklemek istediğiniz sürümü bulun ve sürüm notlarının **Varlıklar** bölümünden Aşağıdaki dosyaları IoT aygıtınıza indirin:
+
+   * IoTEdgeSecurityDaemon.ps1
+   * 1.0.9 veya daha yeni sürümlerden Microsoft-Azure-IoTEdge-amd64.cab veya 1.0.8 ve üzeri sürümlerden Microsoft-Azure-IoTEdge.cab.
+
+   Microsoft-Azure-IotEdge-arm32.cab, yalnızca test amacıyla 1.0.9'dan itibaren de kullanılabilir. IoT Edge şu anda Windows ARM32 aygıtlarında desteklenmemektedir.
+
+   PowerShell komut dosyasını kullandığınız .cab dosyasıyla aynı sürümden kullanmanız önemlidir, çünkü işlevsellik her sürümdeki özellikleri destekleyecek şekilde değişir.
+
+3. İndirdiğiniz .cab dosyasında mimari sonek varsa, dosyayı sadece **Microsoft-Azure-IoTEdge.cab**olarak yeniden adlandırın.
+
+4. Çevrimdışı bileşenlerle güncelleştirmek için [PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) komut dosyasının yerel kopyasını nokta kaynağı na göre yapın. Ardından, komutun `-OfflineInstallationPath` bir `Update-IoTEdge` parçası olarak parametreyi kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Update-IoTEdge -OfflineInstallationPath <path>
+   ```
+
 ## <a name="update-to-a-release-candidate-version"></a>Sürüm adayı sürümüne güncelleştirme
 
 Azure IoT Edge, IoT Edge hizmetinin yeni sürümlerini düzenli olarak yayımlar. Her kararlı sürümden önce, bir veya daha fazla sürüm adayı (RC) sürümü vardır. RC sürümleri sürüm için planlanan tüm özellikleri içerir, ancak yine de sınama ve doğrulama yoluyla devam etmektedir. Yeni bir özelliği erken test etmek istiyorsanız, bir RC sürümü yükleyebilir ve GitHub üzerinden geri bildirim sağlayabilirsiniz.
@@ -128,14 +157,7 @@ Sürüm adayı sürümleri, aynı numaralandırma sözleşmesini izler, ancak so
 
 IoT Edge aracısı ve hub modülleri, aynı kuralla etiketlenmiş RC sürümlerine sahiptir. Örneğin, **mcr.microsoft.com/azureiotedge-hub:1.0.7-rc2.**
 
-Önizlemeler olarak, sürüm adayı sürümleri normal yükleyicilerin hedef aldığı en son sürüm olarak dahil değildir. Bunun yerine, test etmek istediğiniz RC sürümü için varlıkları el ile hedeflemeniz gerekir. Çoğunlukla, bir RC sürümüne yükleme veya güncelleme, Windows aygıtları için bir fark dışında IoT Edge'in diğer belirli bir sürümünü hedeflemeyle aynıdır. 
-
-Bir sürüm adayında, Windows aygıtındaki IoT Edge güvenlik daemon'u yüklemenize ve yönetmenize olanak tanıyan PowerShell komut dosyası, en son genel olarak kullanılabilen sürümden farklı işlevselliğe sahip olabilir. RC için IoT Edge .cab dosyasını indirmeye ek olarak, **IotEdgeSecurityDaemon.ps1** komut dosyasını da indirin. İndirilen komut dosyasını geçerli kaynakta çalıştırmak için [nokta kaynağını](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) kullanın. Örnek: 
-
-```powershell
-. <path>\IoTEdgeSecurityDaemon.ps1
-Update-IoTEdge -OfflineInstallationPath <path>
-```
+Önizlemeler olarak, sürüm adayı sürümleri normal yükleyicilerin hedef aldığı en son sürüm olarak dahil değildir. Bunun yerine, test etmek istediğiniz RC sürümü için varlıkları el ile hedeflemeniz gerekir. Çoğunlukla, bir RC sürümüne yükleme veya güncelleme, IoT Edge'in diğer belirli bir sürümünü hedeflemeyle aynıdır.
 
 Bir IoT Edge aygıtını güvenlik daemonunun veya çalışma zamanı modüllerinin belirli bir sürümüne nasıl güncelleştireceğimi öğrenmek için bu makaledeki bölümleri kullanın.
 

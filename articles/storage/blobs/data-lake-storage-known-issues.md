@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f69f17dc9d0cab2491a2c7f37b5bd082cc96b2d6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 204b5dd4661b34aae8b76d65505a65e20f293f0f
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985431"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115336"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2 ile bilinen sorunlar
 
@@ -112,8 +112,8 @@ ALAK'lar henüz desteklenmedi.
 
 Bir kapsayıcıya [anonim okuma erişimi](storage-manage-access-to-resources.md) verilmişse, ALAK'ların o kapsayıcı veya o kapsayıcıdaki dosyalar üzerinde hiçbir etkisi yoktur.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-adls-gen2"></a>Windows Azure Depolama Blob (WASB) sürücüsü (ADLS Gen2 ile desteklenmez)
+## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Depolama Blob (WASB) sürücüsü (Veri Gölü Depolama Gen2 ile desteklenmez)
 
-Şu anda, WASB sürücüsü - yalnızca Blob API ile çalışmak üzere tasarlanmıştır - birkaç yaygın senaryoda sorunlarla karşılaşır, yani, bir ad alanı etkin depolama hesabı için bir istemci olduğunda. Multi-Protocol Access 'in (MPA) bu sorunları da azaltmayacağını unutmayın. 
+Şu anda, yalnızca Blob API ile çalışmak üzere tasarlanmış WASB sürücüsü, birkaç yaygın senaryoda sorunlarla karşılaşır. Özellikle, hiyerarşik ad alanı etkin depolama hesabına istemci olduğunda. Veri Gölü Depolama'daki çoklu protokol erişimi bu sorunları azaltmaz. 
 
-Şimdilik (ve büyük olasılıkla öngörülebilir bir gelecek) WASB sürücüsünü istemci olarak kullanan müşterileri ad alanı etkin bir depolama hesabına desteklemeyiz. Bunun yerine Hadoop ortamınızda [Azure Blob Dosya Sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmayı tercih etmenizi öneririz. Hadoop şube-3'ten daha önceki bir sürümle şirket içi Hadoop ortamından geçmeye çalışıyorsanız, siz ve kuruluşunuz için doğru yolda sizinle iletişim ebilebilmemiz için lütfen bir Azure Destek bileti açın.
+Şimdilik (ve büyük olasılıkla öngörülebilir bir gelecek) wasb sürücüsünü istemci olarak kullanan müşterileri hiyerarşik ad alanı etkin leştirilmiş bir depolama hesabına desteklemeyiz. Bunun yerine, Hadoop ortamınızda [Azure Blob Dosya Sistemi (ABFS)](data-lake-storage-abfs-driver.md) sürücüsünü kullanmayı tercih etmenizi öneririz. Hadoop şube-3'ten daha önceki bir sürümle şirket içi Hadoop ortamından geçmeye çalışıyorsanız, siz ve kuruluşunuz için doğru yolda sizinle iletişim ebilebilmemiz için lütfen bir Azure Destek bileti açın.

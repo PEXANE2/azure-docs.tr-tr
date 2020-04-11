@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: 5ddbb58837fbda0f14a07186d5a3053055954454
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677443"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113567"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -88,7 +88,7 @@ Bkz. [Azure Güvenlik Duvarı Fiyatlandırması.](https://azure.microsoft.com/pr
 
 Azure PowerShell *anlaşma bulma* ve *ayırma* yöntemlerini kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -172,17 +172,11 @@ Hayır. Azure Güvenlik Duvarı'nın /26'dan büyük bir alt ağa ihtiyacı yokt
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>Güvenlik duvarı çıktımı nasıl artırabilirim?
 
-Azure Güvenlik Duvarı'nın ilk iş verme kapasitesi 2,5 - 3 Gbps'dir ve 30 Gbps'ye kadar ölçeklenir. CPU kullanımına ve çıktıya göre ölçeklendirilir. Güvenlik duvarınızın üretim kapasitesini artırmak için Destek'e başvurun.
+Azure Güvenlik Duvarı'nın ilk iş verme kapasitesi 2,5 - 3 Gbps'dir ve 30 Gbps'ye kadar ölçeklenir. CPU kullanımına ve iş başına göre otomatik olarak ölçeklendirilir.
 
 ## <a name="how-long-does-it-take-for-azure-firewall-to-scale-out"></a>Azure Güvenlik Duvarı'nın ölçeklendirmesi ne kadar sürer?
 
-Azure Güvenlik Duvarı'nın ölçeklendirmesi beş ila yedi dakika sürer. Daha hızlı otomatik ölçeklendirme gerektiren patlamalar varsa, güvenlik duvarınızın ilk üretim kapasitesini artırmak için Destek'e başvurun.
-
-Güvenlik duvarı otomatik ölçeğini test ettiğinizde aşağıdaki noktalar dikkate alınmalıdır:
-
-- Tek TCP akış performansı 1,4 Gbps ile sınırlıdır. Bu nedenle, bir performans testinin birden çok TCP akışı oluşturması gerekir.
-- Performans araçları, ölçeklenmiş arka uç Güvenlik Duvarı örneklerine bağlanmak için sürekli olarak yeni bağlantılar kurmalıdır. Test başlangıçta bir kez bağlantılar kurarsa, bunlar yalnızca başlangıç arka uç örnekleriyle bağlanır. Güvenlik duvarı ölçeklendirilse bile, bağlantılar ilk örneklerle ilişkili olduğundan, herhangi bir artış performansı görmezsiniz.
-
+Azure Güvenlik Duvarı, ortalama iş ortası veya CPU tüketimi %60 olduğunda kademeli olarak ölçeklenir. Ölçeklendirme 5-7 dakika sürer. Performans testi yaparken, en az 10 ila 15 dakika test ettiğinizden emin olun ve yeni oluşturulan Güvenlik Duvarı düğümlerinden yararlanmak için yeni bağlantılar başlatın.
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Güvenlik Duvarı varsayılan olarak Active Directory'ye erişime izin veriyor mu?
 

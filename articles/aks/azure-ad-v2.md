@@ -5,12 +5,12 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 03/24/2020
-ms.openlocfilehash: 27abdfe28e2594c98778b51532fbd22f95bfa3ac
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b121830192a2b88185bbbbc9a92934e51b32a61c
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984717"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114657"
 ---
 # <a name="integrate-azure-ad-in-azure-kubernetes-service-preview"></a>Azure AD'yi Azure Kubernetes Hizmetine Entegre Edin (Önizleme)
 
@@ -98,12 +98,12 @@ Yukarıdaki komut üç düğüm AKS kümesi oluşturur, ancak kümeyi oluşturan
 Bir grup oluşturduktan ve üye olarak kendinizi (ve başkalarını) ekledikten sonra, aşağıdaki komutu kullanarak kümeyi Azure AD grubuyla güncelleştirebilirsiniz
 
 ```azurecli-interactive
-az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks update -g MyResourceGroup -n MyManagedCluster [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 Alternatif olarak, önce bir grup oluşturup üye eklerseniz, aşağıdaki komutu kullanarak Azure REKLAM grubunu oluşturma zamanında etkinleştirebilirsiniz,
 
 ```azurecli-interactive
-az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id1,id2>] [--aad-tenant-id <id>]
+az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad [--aad-admin-group-object-ids <id>] [--aad-tenant-id <id>]
 ```
 
 Bir Azure AD v2 kümesinin başarılı bir şekilde oluşturulması, yanıt gövdesinde aşağıdaki bölüme sahiptir

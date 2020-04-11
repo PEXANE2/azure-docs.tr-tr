@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 2a00405a2100c3e565ca4f8ea4149540a5199b43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77651415"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115082"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
 
@@ -69,7 +69,7 @@ Bu makale, bu örnek senaryoda açıklandığı gibi şirket içi bir dosya sist
    | -------- | -------- | ----- | ----------- |
    | **Bağlantı Adı** | Evet | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
    | **Kök klasörü** | Evet | <*kök-klasör-adı*> | Örneğin, dosya sisteminizin kök klasörü, şirket içi veri ağ geçidinin yüklendiği bilgisayara yerel bir klasör veya bilgisayarın erişebileceği bir ağ paylaşımı klasörü gibi şirket içi veri ağ geçidinizi yüklediyseniz. <p>Örneğin, `\\PublicShare\\DropboxFiles` <p>Kök klasör, dosyayla ilgili tüm eylemler için göreli yollar için kullanılan ana üst klasördür. |
-   | **Kimlik Doğrulama Türü** | Hayır | <*auth tipi*> | Dosya sisteminizin kullandığı kimlik doğrulama türü ( örneğin, **Windows** |
+   | **Kimlik Doğrulama Türü** | Hayır | <*auth tipi*> | Dosya sisteminizin kullandığı kimlik doğrulama türü: **Windows** |
    | **Username** | Evet | <*etki alanı*>\\<*kullanıcı adı*> | Dosya sisteminizin bulunduğu bilgisayarın kullanıcı adı |
    | **Parola** | Evet | <*şifreniz*> | Dosya sisteminizin bulunduğu bilgisayarın şifresi |
    | **Ağ geçidi** | Evet | <*yüklü ağ geçidi adı*> | Daha önce yüklenmiş ağ geçidinizin adı |

@@ -1,15 +1,15 @@
 ---
-title: Sanal Makineler, Bulut Hizmetleri ve Web Uygulamalarında otomatik ölçeklere genel bakış
+title: VM'lerde, Bulut Hizmetlerinde ve Web Uygulamalarında otomatik ölçeklendirme
 description: Microsoft Azure'da otomatik ölçeklendirme. Sanal Makineler, Sanal makine Ölçeği setleri, Bulut Hizmetleri ve Web Uygulamaları için geçerlidir.
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75364382"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114133"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Sanal Makineler, Cloud Services ve Web Apps için otomatik ölçeklendirmeye genel bakış
 Bu makalede, Microsoft Azure otomatik ölçeknesinin ne olduğu, avantajları ve kullanmaya nasıl başlanolduğu açıklanmaktadır.  
@@ -91,8 +91,8 @@ Buna karşılık, dikey ölçekleme farklıdır. Aynı sayıda VM tutar, ancak V
 ## <a name="methods-of-access"></a>Erişim yöntemleri
 Otomatik ölçeklendirmeyi
 
-* [Azure portalında](../../azure-monitor/platform/autoscale-get-started.md)
-* [Powershell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [Azure portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Platformlar arası Komut Satırı Arabirimi (CLI)](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure İzleyici REST API'si](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 

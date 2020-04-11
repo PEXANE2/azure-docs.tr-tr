@@ -1,27 +1,27 @@
 ---
-title: Arama kutusuna öneri ekleme ve otomatik tamamlama
+title: Arama kutusuna otomatik tamamlama ve öneriler ekleme
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama'da, bir arama kutusunu tamamlanmış terimler veya tümceciklerle dolduran istekler oluşturarak ve istekler oluşturarak, Azure Bilişsel Arama'da önceden sorgu lama eylemlerini etkinleştirin.
+description: Azure Bilişsel Arama'da, bir arama kutusunu tamamlanmış terimler veya tümceciklerle otomatik olarak tamamlayan istekler oluşturarak ve istekler oluşturarak Azure Bilişsel Arama'da istediğiniz gibi arama sorgu eylemlerini etkinleştirin. Önerilen eşleşmeleri de döndürebilirsiniz.
 manager: nitinme
-author: mrcarter8
-ms.author: mcarter
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
-ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 64c4e65ca7b69c7d61c706b48591ac19be3bfcf5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.topic: conceptual
+ms.date: 04/10/2020
+ms.openlocfilehash: d6c1819366fede0b1e81e43bc92ed56af93b39fd
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72792518"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114955"
 ---
 # <a name="add-suggestions-or-autocomplete-to-your-azure-cognitive-search-application"></a>Azure Bilişsel Arama uygulamanıza öneri veya otomatik tamamlama ekleme
 
 Bu makalede, [öneriyi](https://docs.microsoft.com/rest/api/searchservice/suggestions) nasıl kullanacağınızı ve istediğiniz gibi arama davranışlarını destekleyen güçlü bir arama kutusu oluşturmak için [otomatik tamamlamayı](https://docs.microsoft.com/rest/api/searchservice/autocomplete) öğrenin.
 
-+ *Öneriler,* siz yazarken oluşturulan ve her önerinin şimdiye kadar yazdığınız dizinle eşleşen dizinden tek bir sonuç olduğu önerilen sonuçlardır. 
++ *Öneriler,* siz yazarken, her önerinin şimdiye kadar yazdıklarınla eşleşen dizinden tek bir sonuç veya arama belgesi olduğu arama sonuçları oluşturur. 
 
-+ *Otomatik tamamlama* kullanıcının şu anda yazmakta olduğu sözcüğü veya tümceciği "bitirir". Sonuçları döndürmek yerine, sonuçları döndürmek için yürütebileceğiniz bir sorgu tamamlar. Önerilerde olduğu gibi, sorgudaki tamamlanmış bir sözcük veya tümcecik dizindeki bir eşleşmeye göre yapılır. Hizmet, dizinde sıfır sonuç döndüren sorgular sunmuyor.
++ *Otomatik tamamlama* sözcüğü veya tümceciği "bitirerek" sorgular oluşturur. Sonuçları döndürmek yerine, sonuçları döndürmek için yürütebileceğiniz bir sorgu tamamlar. Önerilerde olduğu gibi, sorgudaki tamamlanmış bir sözcük veya tümcecik dizindeki bir eşleşmeye göre yapılır. Hizmet, dizinde sıfır sonuç döndüren sorgular sunmuyor.
 
 Bu özellikleri değerlendirmek için Örnek Kodu **DotNetHowToAutocomplete'de** indirebilir ve çalıştırabilirsiniz. Örnek kod, [NYCJobs demo verileriyle](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)doldurulmuş önceden oluşturulmuş bir dizini hedefler. NYCJobs dizini, öneriler veya otomatik tamamlama kullanmak için bir gereklilik olan Bir [Önerici yapısı](index-add-suggesters.md)içerir. Hazırlanan dizin bir sanal hizmet barındırılan kullanabilirsiniz veya NYCJobs örnek çözüm bir veri yükleyici kullanarak [kendi dizini doldurmak.](#configure-app) 
 

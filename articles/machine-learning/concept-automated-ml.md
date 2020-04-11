@@ -10,21 +10,18 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 02/28/2020
-ms.openlocfilehash: c8864e00be9f491d87478c253286070b9334a26e
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383200"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115205"
 ---
 # <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenmesi nedir?
 
 Otomatik makine öğrenimi, aynı zamanda otomatik ML olarak anılacaktır, zaman alıcı otomatikleme sürecidir, makine öğrenme modeli geliştirme yinelemeli görevleri. Bu veri bilim adamları, analistler ve geliştiriciler yüksek ölçekli, verimlilik ve verimlilik ile ML modelleri oluşturmak için tüm model kalitesini sürdürürken sağlar. Otomatik ML, Microsoft Research [bölümümüzden](https://arxiv.org/abs/1705.05355)bir atılıma dayanmaktadır.
 
 Geleneksel makine öğrenimi modeli geliştirme kaynak yoğun, üretmek ve modelleri düzinelerce karşılaştırmak için önemli etki alanı bilgisi ve zaman gerektiren. Otomatik makine öğrenimi ile, üretime hazır ML modellerini büyük bir kolaylık ve verimlilikle elde etmek için gereken süreyi hızlandıracaksınız.
-
- 
-
 
 ## <a name="when-to-use-automated-ml"></a>Otomatik ML ne zaman kullanılır
 
@@ -139,9 +136,13 @@ Sıralanmış topluluk başlatma ile [Caruana topluluk seçim algoritması](http
 
 Otomatik makine öğreniminde varsayılan topluluk ayarlarını değiştirmenin [nasıl yapılacağını](how-to-configure-auto-train.md#ensemble) görün.
 
-## <a name="use-with-onnx-in-c-apps"></a>C# uygulamalarında ONNX ile kullanın
+## <a name="use-with-onnx"></a>ONNX ile kullanın
 
-Azure Machine Learning ile, bir Python modeli oluşturmak ve ONNX biçimine dönüştürmek için otomatik ML'yi kullanabilirsiniz. ONNX çalışma süresi C#'ı destekler, böylece C# uygulamalarınızda otomatik olarak oluşturulmuş modeli yeniden kodlamaya veya REST uç noktalarının sunduğu ağ gecikmelerinden herhangi birini kullanmaya gerek kalmadan kullanabilirsiniz. [Bu Jupyter dizüstü bilgisayarda](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)bu akış bir örnek deneyin.
+Azure Machine Learning ile, bir Python modeli oluşturmak ve ONNX biçimine dönüştürmek için otomatik ML'yi kullanabilirsiniz. Modeller ONNX formatında olduktan sonra, çeşitli platformlarda ve cihazlarda çalıştırılabilir. [ONNX ile ML modellerini hızlandırma](concept-onnx.md)hakkında daha fazla bilgi edinin.
+
+[Bu Jupyter dizüstü bilgisayar örneğinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ONNX biçimine nasıl dönüştürileceksiniz bakın. [ONNX'te hangi algoritmaların desteklenildiği](how-to-configure-auto-train.md#select-your-experiment-type)öğrenin.
+
+ONNX çalışma süresi c#'ı da destekler, böylece C# uygulamalarınızda otomatik olarak oluşturulmuş modeli yeniden kodlamaya veya REST uç noktalarının tanıttığına gerek kalmadan kullanabilirsiniz. [ONNX çalışma zamanı C# API ile ONNX modellerini çıkartma](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)hakkında daha fazla bilgi edinin. 
 
 ## <a name="automated-ml-in-azure-machine-learning"></a>Azure Makine Öğreniminde Otomatik ML
 
@@ -151,7 +152,7 @@ Azure Machine Learning, otomatik ML ile çalışmak için iki deneyim sunar
 
 * Sınırlı/no kod deneyimi müşterileri için Azure Machine Learning stüdyosu[https://ml.azure.com](https://ml.azure.com/)  
 
-Aşağıdaki, her deneyimde desteklenen yüksek düzeyotomatik ML yeteneklerini özetler.
+Aşağıda, her deneyimde desteklenen üst düzey otomatik ML yetenekleri özetlenir.
 
 <a name="parity"></a>
 

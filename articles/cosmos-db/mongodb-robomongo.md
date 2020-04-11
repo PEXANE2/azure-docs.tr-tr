@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 627849acb902a721c80b98adbd16103b4729591b
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548808"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114184"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle Robo 3T kullanma
 
@@ -31,7 +31,7 @@ Cosmos hesabınızı Robo 3T bağlantı yöneticisine eklemek için aşağıdaki
 1. Azure Cosmos DB'nin API MongoDB ile yapılandırılan Cosmos hesabınıza ait bağlantı bilgilerini [buradaki](connect-mongodb-account.md)yönergeleri kullanarak alın.
 
     ![Bağlantı string blade ekran görüntüsü](./media/mongodb-robomongo/connectionstringblade.png)
-2. *Robomongo.exe* çalıştırın
+2. *Robomongo* uygulamasını çalıştırın.
 
 3. Bağlantılarınızı yönetmek için **Dosya'nın** altındaki bağlantı düğmesini tıklatın. Ardından, **Bağlantı Ayarları** penceresini açacak **Olan MongoDB Bağlantıları** penceresinde **Oluştur'u** tıklatın.
 

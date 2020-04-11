@@ -17,12 +17,12 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6e0c697f9ab9796feade9b4d5c2a64794f3980b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73612790"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113365"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Etkin Dizin portalında rapor sağlama (önizleme)
 
@@ -90,38 +90,19 @@ Daha ayrıntılı bilgi almak için liste görünümünde bir öğe seçin.
 
 ## <a name="filter-provisioning-activities"></a>Filtre sağlama faaliyetleri
 
-Bildirilen verileri sizin için çalışan bir düzeye daraltmak için, aşağıdaki varsayılan alanları kullanarak sağlama verilerini filtreleyebilirsiniz. Filtrelerdeki değerlerin kiracınıza bağlı olarak dinamik olarak doldurulur olduğunu unutmayın. Örneğin, kiracınızda herhangi bir oluşturma olayı yoksa, oluşturmak için bir filtre seçeneği olmaz.
+Sağlama verilerinizi filtreleyebilirsiniz. Bazı filtre değerleri kiracınıza göre dinamik olarak doldurulur. Örneğin, kiracınızda herhangi bir oluşturma olayı yoksa, oluşturmak için bir filtre seçeneği olmaz.
+Varsayılan görünümde aşağıdaki filtreleri seçebilirsiniz:
 
 - Kimlik
-- Eylem
-- Kaynak sistemi
-- Hedef sistem
-- Durum
 - Tarih
+- Durum
+- Eylem
 
 
-![Filtrele](./media/concept-provisioning-logs/filter.png "Filtre")
+![Filtrele](./media/concept-provisioning-logs/default-filter.png "Filtre")
 
 **Kimlik** filtresi, önem verdiğiniz adı veya kimliği belirtmenizi sağlar. Bu kimlik bir kullanıcı, grup, rol veya başka bir nesne olabilir. Nesnenin adına veya kimliğine göre arama yapabilirsiniz. Kimlik senaryoya göre değişir. Örneğin, Bir nesneyi Azure AD'den SalesForce'a sağlarken, Kaynak Kimliği Azure AD'deki kullanıcının nesne kimliği, TargetID ise Salesforce'taki kullanıcının kimliğidir. İş Günü'nden Etkin Dizine geçerken, Kaynak Kimlik, İş Günü çalışanı çalışan kimliğidir. Kullanıcı adının Kimlik sütununda her zaman bulunamayabileceğini unutmayın. Her zaman bir kimlik olacak. 
 
-**Kaynak Sistem** filtresi, kimliğin nereden sağlandığınızı belirtmenize olanak tanır. Örneğin, Azure AD'den ServiceNow'a bir nesne rirken Kaynak sistem Azure AD'dir. 
-
-**Hedef Sistem** filtresi, kimliğin nereye sağlandığınızı belirtmenize olanak tanır. Örneğin, Azure AD'den ServiceNow'a bir nesne rirken Hedef Sistem ServiceNow'dur. 
-
-**Durum** filtresi şunları seçmenizi sağlar:
-
-- Tümü
-- Başarılı
-- Hata
-- Atlandı
-
-**Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
-
-- Oluşturma 
-- Güncelleştirme
-- Sil
-- Devre Dışı Bırak
-- Diğer
 
 **Tarih** filtresi, döndürülen veriler için bir zaman çerçevesi tanımlamanıza olanak sağlar.  
 Olası değerler şunlardır:
@@ -135,7 +116,35 @@ Olası değerler şunlardır:
 Özel bir zaman dilimi seçtiğinizde, bir başlangıç tarihi ve bitiş tarihi yapılandırabilirsiniz.
 
 
-Varsayılan alanlara ek olarak, seçildiğinde, filtrenize aşağıdaki alanları da ekleyebilirsiniz:
+**Durum** filtresi şunları seçmenizi sağlar:
+
+- Tümü
+- Başarılı
+- Hata
+- Atlandı
+
+
+
+**Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
+
+- Oluştur 
+- Güncelleştir
+- Sil
+- Devre Dışı Bırak
+- Diğer
+
+Buna ek olarak, varsayılan görünümün filtrelerine aşağıdaki filtreleri de ayarlayabilirsiniz:
+
+- İş Kimliği
+- Döngü Kimliği
+- Kimliği Değiştir
+- Kaynak Kimliği
+- Hedef Kimliği
+- Uygulama
+
+
+![Bir alan seçin](./media/concept-provisioning-logs/add-filter.png "Bir alan seçin")
+
 
 - **İş Kimliği** - Benzersiz bir İş Kimliği, sağlama yı etkinleştirdiğiniz her uygulamayla ilişkilidir.   
 
@@ -144,8 +153,13 @@ Varsayılan alanlara ek olarak, seçildiğinde, filtrenize aşağıdaki alanlar�
 - **Kimlik Değiştirme** - Sağlama olayı için benzersiz tanımlayıcı. Sağlama olayını aramak için bu kimliği destekleyerek paylaşabilirsiniz.   
 
 
+- **Kaynak Sistem** - Kimliğin nereden sağlandığınızı belirtmenizi sağlar. Örneğin, Azure AD'den ServiceNow'a bir nesne rirken Kaynak sistem Azure AD'dir. 
 
-  
+- **Hedef Sistem** - Kimliğin nereye sağlandığınızı belirtmenizi sağlar. Örneğin, Azure AD'den ServiceNow'a bir nesne rirken Hedef Sistem ServiceNow'dur. 
+
+- **Uygulama** - Yalnızca belirli bir dize içeren bir görüntü adı olan uygulamaların kayıtlarını göstermenizi sağlar.
+
+ 
 
 ## <a name="provisioning-details"></a>Sağlama ayrıntıları 
 

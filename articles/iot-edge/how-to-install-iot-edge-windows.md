@@ -7,14 +7,14 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 80ce962ac6977fcce2455c8e2ef29af448a44075
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133152"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113454"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows'a Azure IoT Edge çalışma zamanını yükleme
 
@@ -78,7 +78,7 @@ Bu örnek, Windows kapsayıcıları ile el ile yükleme gösterir:
 
 1. Henüz yapmadıysanız, yeni bir IoT Edge aygıtı kaydettirin ve **aygıt bağlantı dizesini**alın. Daha sonra bu bölümde kullanmak üzere bağlantı dizesini kopyalayın. Aşağıdaki araçları kullanarak bu adımı tamamlayabilirsiniz:
 
-   * [Azure portalında](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
@@ -139,33 +139,45 @@ Bu yükleme seçenekleri hakkında daha fazla bilgi için, bu makaleyi okumaya d
 
 ## <a name="offline-or-specific-version-installation"></a>Çevrimdışı veya belirli sürüm yüklemesi
 
-Yükleme sırasında iki dosya indirilir:
+Yükleme sırasında üç dosya indirilir:
 
-* IoT Edge güvenlik daemon (iotedged), Moby konteyner motoru ve Moby CLI içeren Microsoft Azure IoT Edge kabin.
-* Visual C++ yeniden dağıtılabilir paket (VC çalışma zamanı) MSI
+* Yükleme yönergelerini içeren bir PowerShell komut dosyası
+* IoT Edge güvenlik daemon (iotedged), Moby konteyner motoru ve Moby CLI içeren Microsoft Azure IoT Edge kabini
+* Visual C++ yeniden dağıtılabilir paket (VC çalışma zamanı) yükleyici
 
-Cihazınız yükleme sırasında çevrimdışı olacaksa veya IoT Edge'in belirli bir sürümünü yüklemek istiyorsanız, bu dosyalardan birini veya her ikisini de önceden aygıta indirebilirsiniz. Yükleme zamanı geldiğinde, yükleme komut dosyasını indirilen dosyaları içeren dizine yönlendirin. Yükleyici önce bu dizini denetler ve sonra yalnızca bulunamayan bileşenleri karşıdan yükler. Tüm dosyalar çevrimdışı olarak kullanılabilse, internet bağlantısı olmadan yükleyebilirsiniz.
+Cihazınız yükleme sırasında çevrimdışı olacaksa veya IoT Edge'in belirli bir sürümünü yüklemek istiyorsanız, bu dosyaları önceden aygıta indirebilirsiniz. Yükleme zamanı geldiğinde, yükleme komut dosyasını indirilen dosyaları içeren dizine yönlendirin. Yükleyici önce bu dizini denetler ve sonra yalnızca bulunamayan bileşenleri karşıdan yükler. Tüm dosyalar çevrimdışı olarak kullanılabilse, internet bağlantısı olmadan yükleyebilirsiniz.
 
-Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
+IoT Edge'i güncelleştirmek için çevrimdışı yükleme yolu parametresini de kullanabilirsiniz. Daha fazla bilgi için Bkz. [IoT Edge güvenlik daemon ve çalışma süresini güncelleştirin.](how-to-update-iot-edge.md)
 
-Çevrimdışı bileşenlerle yüklemek için, `-OfflineInstallationPath` parametreyi Deploy-IoTEdge komutunun bir parçası olarak kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+1. Önceki sürümlerle birlikte en son IoT Edge yükleme dosyaları için [Azure IoT Edge sürümlerine](https://github.com/Azure/azure-iotedge/releases)bakın.
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
-```
+2. Yüklemek istediğiniz sürümü bulun ve sürüm notlarının **Varlıklar** bölümünden Aşağıdaki dosyaları IoT aygıtınıza indirin:
 
->[!NOTE]
->Parametre, `-OfflineInstallationPath` sağlanan dizinde **Microsoft-Azure-IoTEdge.cab** adlı bir dosya arar. IoT Edge sürüm 1.0.9-rc4 ile başlayarak, biri AMD64 aygıtları ve diğeri ARM32 için olmak üzere iki adet .cab dosyası kullanılabilir. Aygıtınız için doğru dosyayı indirin ve ardından mimari soneki kaldırmak için dosyayı yeniden adlandırın.
+   * IoTEdgeSecurityDaemon.ps1
+   * 1.0.9 veya daha yeni sürümlerden Microsoft-Azure-IoTEdge-amd64.cab veya 1.0.8 ve üzeri sürümlerden Microsoft-Azure-IoTEdge.cab.
 
-Komut `Deploy-IoTEdge` IoT Edge bileşenlerini yükler ve ardından aygıtı `Initialize-IoTEdge` IoT Hub aygıt kimliği ve bağlantısıyla sağlamak için komuta devam etmeniz gerekir. Komutu doğrudan çalıştırın ve IoT Hub'dan bir bağlantı dizesi sağlayın veya Aygıt Sağlama Hizmeti ile aygıtları otomatik olarak nasıl sağlayabileceğinizi öğrenmek için önceki bölümdeki bağlantılardan birini kullanın.
+   Microsoft-Azure-IotEdge-arm32.cab, yalnızca test amacıyla 1.0.9'dan itibaren de kullanılabilir. IoT Edge şu anda Windows ARM32 aygıtlarında desteklenmemektedir.
 
-```powershell
-. {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-Initialize-IoTEdge
-```
+   PowerShell komut dosyasını kullandığınız .cab dosyasıyla aynı sürümden kullanmanız önemlidir, çünkü işlevsellik her sürümdeki özellikleri destekleyecek şekilde değişir.
 
-Ayrıca Update-IoTEdge komutu ile çevrimdışı yükleme yolu parametresini de kullanabilirsiniz.
+3. İndirdiğiniz .cab dosyasında mimari sonek varsa, dosyayı sadece **Microsoft-Azure-IoTEdge.cab**olarak yeniden adlandırın.
+
+4. İsteğe bağlı olarak, Visual C++ yeniden dağıtılabilir için bir yükleyici indirin. Örneğin, PowerShell komut dosyası bu sürümü kullanır: [vc_redist.x64.exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Yükleyiyi IoT aygıtınızdaki IoT Edge dosyalarıyla aynı klasöre kaydedin.
+
+5. Çevrimdışı bileşenlerle yüklemek için [PowerShell](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) komut dosyasının yerel kopyasını nokta kaynağı na sahip olur. Ardından, komutun `-OfflineInstallationPath` bir `Deploy-IoTEdge` parçası olarak parametreyi kullanın ve dosya dizinine mutlak yolu sağlayın. Örneğin,
+
+   ```powershell
+   . <path>\IoTEdgeSecurityDaemon.ps1
+   Deploy-IoTEdge -OfflineInstallationPath <path>
+   ```
+
+   Dağıtım komutu, sağlanan yerel dosya dizininde bulunan tüm bileşenleri kullanır. .cab dosyası veya Visual C++ yükleyicisi eksikse, bunları karşıdan yüklemeyi dener.
+
+6. Aygıtınızı `Initialize-IoTEdge` IoT Hub'da bir kimlikle sağlamak için komutu çalıştırın. El ile sağlama için bir aygıt bağlantı dizesi sağlayın veya önceki [otomatik sağlama](#option-2-install-and-automatically-provision) bölümünde açıklanan yöntemlerden birini seçin.
+
+   Cihazınız çalıştırdıktan `Deploy-IoTEdge`sonra yeniden başlatıldıysa, çalışmadan `Initialize-IoTEdge`önce PowerShell komut dosyasını yeniden kaynak olarak göredir.
+
+Çevrimdışı yükleme seçeneği hakkında daha fazla bilgi için, [tüm yükleme parametreleri](#all-installation-parameters)hakkında bilgi edinmek için ileri ye atlayın.
 
 ## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
 

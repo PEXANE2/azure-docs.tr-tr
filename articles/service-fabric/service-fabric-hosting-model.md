@@ -5,12 +5,12 @@ author: harahma
 ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: 69c7edb08693937aad5a658e0b22b00cd2a81647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282399"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115049"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Hizmet Kumaşı barındırma modeli
 Bu makalede, Azure Hizmet Kumaşı tarafından sağlanan uygulama barındırma modellerine genel bir bakış sağlanır ve **Paylaşılan İşlem** ve Özel **İşlem** modelleri arasındaki farkları açıklar. Dağıtılan bir uygulamanın Hizmet Dokusu düğümünde nasıl göründüğünü ve hizmetin yinelemeleri (veya örnekleri) ile hizmet barındırıcı işlemi arasındaki ilişkiyi açıklar.
@@ -168,6 +168,10 @@ Hizmet kumaş bölüm **P1** çoğaltma için 'MultiTypeServicePackage' aktivasy
 
 
 Önceki örnekte, 'MyCodePackageA' hem 'MyServiceTypeA' hem de 'MyServiceTypeB' kaydediyorsa ve 'MyCodePackageB' yoksa, gereksiz *CodePackage* running yok diye düşünebilirsiniz. Bu doğru olsa da, bu uygulama modeli Özel İşlem barındırma modeli ile uyumlu değildir. Amaç her yinelemeyi kendi özel işlemine koymaksa, her iki *ServiceTypes'ı* da aynı *CodePackage'dan*kaydetmeniz gerekmez. Bunun yerine, her *ServiceType'ı* kendi *ServicePackage'ına*koymanız yeterlidir.
+
+### <a name="reliable-services-and-actor-forking-subprocesses"></a>Güvenilir Hizmetler ve Aktör forking alt süreçleri
+
+Service Fabric, güvenilir hizmetleri ve daha sonra güvenilir aktörlerin alt süreçlerini desteklemez. Neden desteklenmeyen [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) bir örnek desteklenmeyen bir alt işlem kaydetmek için kullanılamaz ve iptal belirteçleri sadece kayıtlı işlemlere gönderilir; alt işlemler üst işlem iptal jetonu aldıktan sonra kapanmadığında yükseltme hataları gibi her türlü soruna neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bir uygulamayı paketle][a4] ve dağıtmaya hazır hale getirin.

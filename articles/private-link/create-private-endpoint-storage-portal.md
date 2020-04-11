@@ -7,20 +7,17 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8c76333d5a2be8a2c589dbe54389b023fef34854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252522"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115102"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure Özel Uç Noktasını kullanıp depolama hesabına özel olarak bağlanma
 Azure Private Endpoint, Azure'daki Özel Bağlantı'nın temel yapı taşıdır. Sanal makineler (VM'ler) gibi Azure kaynaklarının Özel Bağlantı kaynaklarıyla özel olarak iletişim kurmasını sağlar.
 
 Bu Quickstart'ta, Azure portalını kullanarak Özel Bitiş Noktası olan bir depolama hesabı olan bir Azure sanal ağında Nasıl VM oluşturacağınızı öğreneceksiniz. Ardından, Depolama Hesabına VM'den güvenli bir şekilde erişebilirsiniz.
-
-> [!NOTE]
-> Özel uç nokta(lar) aynı alt ağda hizmet bitiş noktaları ile birlikte izin verilmez!
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

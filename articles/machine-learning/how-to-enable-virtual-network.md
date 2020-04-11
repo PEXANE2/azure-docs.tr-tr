@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80607608"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115288"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,6 +43,11 @@ Bu makalede, gelişmiş *güvenlik ayarları*hakkında ayrıntılı bilgi sağla
 + Bilgi işlem kaynaklarınızla kullanmak üzere önceden varolan bir sanal ağ ve alt ağ.
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Çalışma alanınız için bir depolama hesabı kullanma
+
+> [!WARNING]
+> Azure Machine Learning tasarımcısını kullanan veri bilimcileriniz varsa, sanal ağ daki bir depolama hesabından verileri görselleştirerken bir hata alırlar. Aşağıdaki metin aldıkları hatadır:
+>
+> __Hata: Bu veri kümesinin profili çıkılamıyor. Bunun nedeni, verilerinizin sanal bir ağın arkasında depolanmış olması veya verilerinizin profili desteklememesi olabilir.__
 
 Sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için aşağıdaki adımları kullanın:
 
@@ -510,7 +515,7 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için Azure [Güvenlik 
 
 1. Çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'nin adını bulmak için aşağıdaki yöntemlerden birini kullanın:
 
-    __Azure portalı__
+    __Azure portal__
 
     Çalışma alanınızın genel bakış bölümünden, __Kayıt Defteri__ değeri Azure Kapsayıcı Kayıt Defteri'ne bağlantılar bağlar.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 554508b1bf784e306cd12a4a601f908e06320933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a644e211cc933ca686f0bd6a13b0d2ba8ae20162
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154971"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114105"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Rollerin geri dönüştürülmesine neden olan yaygın sorunlar
 Bu makalede, dağıtım sorunlarının bazı yaygın nedenleri tartışılır ve bu sorunları çözmenize yardımcı olacak sorun giderme ipuçları sağlar. Bir uygulamada bir sorunun var olduğunun bir göstergesi, rol örneğinin başlatılamaması veya başlatma, meşgul ve durdurma durumları arasında geçiş yaptığı dır.
@@ -58,7 +58,7 @@ Uygulama paketinizi `DiagnosticsConnectionString` Azure'a dağıtmadan önce aya
   Microsoft Visual Studio için Azure Araçları'nı kullanarak uygulamanızı geliştiriyorsanız, bu değeri ayarlamak için özellik sayfalarını kullanabilirsiniz.
 
 ## <a name="exported-certificate-does-not-include-private-key"></a>Dışa aktarılan sertifikaözel anahtar içermez
-SSL altında bir web rolü çalıştırmak için, dışa aktarılan yönetim sertifikanızın özel anahtarı içerdiğinden emin olmalısınız. Sertifikayı dışa aktarmak için *Windows Sertifika Yöneticisi'ni* kullanıyorsanız, özel anahtar seçeneğini **Dışa Aktar'a** **Evet'i** seçtiğinizden emin olun. Sertifika, şu anda desteklenen tek biçim olan PFX biçiminde dışa aktarılmalıdır.
+TLS altında bir web rolü çalıştırmak için, dışa aktarılan yönetim sertifikanızın özel anahtarı içerdiğinden emin olmalısınız. Sertifikayı dışa aktarmak için *Windows Sertifika Yöneticisi'ni* kullanıyorsanız, özel anahtar seçeneğini **Dışa Aktar'a** **Evet'i** seçtiğinizden emin olun. Sertifika, şu anda desteklenen tek biçim olan PFX biçiminde dışa aktarılmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bulut hizmetleri için daha fazla [sorun giderme makalelerini](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) görüntüleyin.

@@ -5,28 +5,30 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: d3f8e52b4582c9467ae3ec61ee984771b801fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93677b3e473ab825665fed5590ac345a8cfcc300
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264784"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113443"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Güvenlik Duvarı kural işleme mantığı
-Azure Güvenlik Duvarı'nda NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kurallar kural türüne göre işlenir. 
+Azure Güvenlik Duvarı'nda NAT kurallarını, ağ kurallarını ve uygulama kurallarını yapılandırabilirsiniz. Kural koleksiyonları öncelik sırasına göre kural türüne göre işlenir, daha düşük sayılar 100'den 65.000'e kadar daha yüksek sayılara doğru ilerler. Kural toplama adı yalnızca harflere, sayılara, alt çizerlere, dönemlere veya tirelere sahip olabilir. Bir harf veya sayı ile başlamalı ve bir harf, sayı veya alt puan ile bitmelidir. En büyük ad uzunluğu 80 karakterdir.
+
+Kural toplama öncelikli numaralarınızı başlangıçta 100 artışhalinde (100, 200, 300 vb.) birden fazla alan alabilmeniz en iyisidir, böylece gerekirse daha fazla kural koleksiyonu eklemek için yer edin.
 
 > [!NOTE]
 > Tehdit istihbaratı tabanlı filtrelemeni etkinleştiriyorsanız, bu kurallar en yüksek önceliğe kadar dır ve her zaman önce işlenir. Tehdit-istihbarat filtreleme, yapılandırılan kurallar işlenmeden önce trafiği reddedebilir. Daha fazla bilgi için Azure [Güvenlik Duvarı tehdit istihbaratı tabanlı filtreleme](threat-intel.md)ye bakın.
 
-## <a name="outbound"></a>Giden
+## <a name="outbound-connectivity"></a>Giden bağlantı
 
 ### <a name="network-rules-and-applications-rules"></a>Ağ kuralları ve uygulama kuralları
 
 Ağ kurallarını ve uygulama kurallarını yapılandırırsanız, ağ kuralları uygulama kurallarından önce öncelik sırasına göre uygulanır. Kurallar sona eriyor. Bu nedenle, bir eşleşme bir ağ kuralında bulunursa, başka kural işlenmez.  Ağ kuralı eşleşmesi yoksa ve protokol HTTP, HTTPS veya MSSQL ise, paket uygulama kuralları tarafından öncelik sırasına göre değerlendirilir. Hala eşleşme bulunamazsa, paket altyapı kuralı [koleksiyonuna](infrastructure-fqdns.md)göre değerlendirilir. Ardından hala eşleşme yoksa paket varsayılan olarak reddedilir.
 
-## <a name="inbound"></a>Gelen
+## <a name="inbound-connectivity"></a>Gelen bağlantı
 
 ### <a name="nat-rules"></a>NAT kuralları
 

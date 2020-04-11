@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: b8f55b0693b7ffdf10516cfb19b67ccc5a94dc5a
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d10b6c52310da3d799a7fe78c83284960318f82e
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742902"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115239"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Bitiş Noktası nedir?
 
@@ -55,7 +55,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Özel Bağlantı Hizmeti** (Kendi hizmetiniz)   |  Microsoft.Network/privateLinkServices       | empty |
 |**Azure SQL Veritabanı** | Microsoft.Sql/sunucular    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/sunucular    |  Sql Server (sqlServer)        | 
-|**Azure Storage**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Sıra (sıra, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Depolama**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Sıra (sıra, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Veri Gölü Dosya Sistemi Gen2 (dfs, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseHesapları | Sql, MongoDB, Cassandra, Gremlin, Tablo|
 |**PostgreSQL için Azure Veritabanı -Tek sunucu** | Microsoft.DBforPostgreSQL/sunucular   | postgresqlServer |
@@ -73,7 +73,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Event Grid** | Microsoft.EventGrid/konular  | konu başlığı |
 |**Azure Event Grid** | Microsoft.EventGrid/etki alanları | etki alanı |
 |**Azure WebApps** | Microsoft.Web/siteler    | Site |
-|**Azure Makine Öğrenimi** | Microsoft.MachineLearningServices/çalışma alanları  | çalışma alanı |
+|**Azure Machine Learning** | Microsoft.MachineLearningServices/çalışma alanları  | çalışma alanı |
   
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktalarının ağ güvenliği 
@@ -113,7 +113,7 @@ Bağlantı dizesinin bir parçası olarak tam nitelikli bir etki alanı adı (FQ
 > [!IMPORTANT]
 > Ortak uç noktaları çözmek için etkin olarak kullanılan bir bölgeyi geçersiz kılmak önerilmez. Kaynaklara yapılan bağlantılar, DNS'nin genel DNS'ye iletilmesi olmadan doğru şekilde çözülemez. Sorunları önlemek için farklı bir etki alanı adı oluşturun veya aşağıdaki her hizmet için önerilen adı izleyin. 
  
-Azure hizmetleri için, aşağıdaki tabloda açıklandığı gibi önerilen bölge adlarını kullanın:
+Azure hizmetleri için, aşağıdaki tabloda açıklandığı gibi bölge adlarını kullanın:
 
 |Özel Bağlantı kaynak türü   |Subresource  |Bölge adı  |
 |---------|---------|---------|

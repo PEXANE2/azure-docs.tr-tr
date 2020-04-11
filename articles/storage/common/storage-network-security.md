@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 77ad8579f31ce900a67e2ba3ddc53a5b034b6d42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7120ba2cf71c9af5373b830d04d0b67952922887
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454678"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81113518"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -60,7 +60,7 @@ Varsayılan olarak, depolama hesapları herhangi bir ağ üzerindeki istemcilerd
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -144,7 +144,7 @@ Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracıs�
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için sanal ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -252,7 +252,7 @@ IP ağ kurallarına yalnızca **genel internet** IP adresleri için izin verilir
    > IP ağ kurallarının depolama hesabıyla aynı Azure bölgesinden gelen istekler üzerinde hiçbir etkisi yoktur. Aynı bölge isteklerine izin vermek için [Sanal ağ kurallarını](#grant-access-from-a-virtual-network) kullanın.
 
   > [!NOTE]
-  > Depolama hesabıyla aynı bölgede dağıtılan hizmetler, iletişim için özel Azure IP adreslerini kullanır. Bu nedenle, belirli Azure hizmetlerine erişimi, genel gelen IP adresi aralığına göre kısıtlayamazsınız.
+  > Depolama hesabıyla aynı bölgede dağıtılan hizmetler, iletişim için özel Azure IP adreslerini kullanır. Bu nedenle, belirli Azure hizmetlerine erişimi, genel giden IP adres aralığına göre kısıtlayamazsınız.
 
 Depolama güvenlik duvarı kurallarının yapılandırması için yalnızca IPV4 adresleri desteklenir.
 
@@ -268,7 +268,7 @@ ExpressRoute'u [ExpressRoute](/azure/expressroute/expressroute-introduction) bin
 
 Azure portalı, PowerShell veya CLIv2 aracılığıyla depolama hesapları için IP ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -407,7 +407,7 @@ Bazı durumlarda, ağ sınırı dışından okunan tanılama günlüklerine ve �
 
 Ağ kuralı özel durumlarını Azure portalı, PowerShell veya Azure CLI v2 üzerinden yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
