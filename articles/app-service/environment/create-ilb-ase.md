@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b7fa447e8564fcbf77702f1d3d474cceb48705c5
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057408"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81114631"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Dahili Yük Dengeleyici Uygulaması Servis Ortamı Oluşturma ve Kullanma 
 
@@ -60,6 +60,9 @@ ILB ASE oluşturmak için:
 
     ![ASE oluşturma](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
+> [!NOTE]
+> App Service Environment adı en fazla 37 karakter olmalıdır.
+
 6. Ağ'ı Seçin
 
 7. Sanal Ağ seçin veya oluşturun. Burada yeni bir VNet oluşturursanız, 192.168.250.0/23 adres aralığı ile tanımlanır. Farklı bir adres aralığına veya ASE'den farklı bir kaynak grubunda bir VNet oluşturmak için Azure Sanal Ağ oluşturma portalını kullanın. 
@@ -69,6 +72,7 @@ ILB ASE oluşturmak için:
     ![ASE ağ][1]
 
 7. **Gözden Geçir'i ve Oluştur'u** seçin ve ardından **Oluştur'u**seçin.
+
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>ILB ASE'de uygulama oluşturma ##
 
@@ -126,7 +130,7 @@ ILB ASE'nizi bir WAF aygıtıyla nasıl yapılandırılabildiğiniz hakkında da
 
 Mayıs 2019'dan önce yapılan ILB'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanızı gerektiriyordu. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifika yüklemenizi de istediler. Ayrıca, eski bir ILB ASE ile Bu ILB ASE uygulamaları ile Kudu konsoluna tek oturum açamaz. DNS'yi eski bir ILB ASE için yapılandırırken, etki alanı nız sonekiyle eşleşen bir bölgede Joker A kaydını ayarlamanız gerekir. 
 
-## <a name="get-started"></a>Kullanmaya başlayın ##
+## <a name="get-started"></a>başlarken ##
 
 * ASE’leri kullanmaya başlamak için bkz. [App Service ortamlarına giriş][Intro]. 
 

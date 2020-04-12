@@ -2,21 +2,21 @@
 title: Synapse SQL havuzu oluşturma ve sorgulama (Azure portalı)
 description: Azure portalını kullanarak bir Synapse SQL havuzu oluşturma ve sorgula
 services: synapse-analytics
-author: XiaoyuMSFT
+author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 05/28/2019
-ms.author: xiaoyul
+ms.author: Kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 9605d20fa6a1480b24d7b64963aa9579ed3b5a11
+ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80631344"
+ms.lasthandoff: 04/10/2020
+ms.locfileid: "81115174"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak bir Synapse SQL havuzu oluşturma ve sorgula
 
@@ -33,7 +33,7 @@ Azure portalını kullanarak Azure Synapse Analytics'te (eski adıyla SQL DW) bi
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
@@ -114,7 +114,7 @@ Artık bu IP adresini kullanarak SQL sunucusuna ve SQL havuzlarına bağlanabili
 
 SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra sunucuya bağlanırken tam adı kullanırsınız.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. Sol menüden **Azure Synapse Analytics'i** seçin ve **Azure Synapse Analytics** sayfasında niçin istediğinizi seçin.
 
