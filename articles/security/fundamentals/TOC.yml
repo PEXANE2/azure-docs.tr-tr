@@ -85,9 +85,9 @@
     - name: Veritabanı güvenliği
       items:
         - name: Genel Bakış
-          href: database-security-overview.md
+          href: ../../sql-database/sql-database-security-overview.md
         - name: En iyi uygulamalar
-          href: database-best-practices.md
+          href: ../../sql-database/sql-database-security-best-practice.md
         - name: Güvenlik denetim listesi
           href: database-security-checklist.md
     - name: Depolama güvenliği kılavuzu
@@ -115,6 +115,8 @@
       href: log-audit.md
     - name: Güvenlik yönetimi ve izleme
       href: management-monitoring-overview.md
+    - name: Uzaktan yönetimi geliştirme
+      href: management.md
     - name: İşletimsel güvenlik
       items:
         - name: Genel Bakış

@@ -124,6 +124,8 @@
               href: groups-create-rule.md
             - name: Dinamik grup kuralları söz dizimi
               href: groups-dynamic-membership.md
+            - name: Üyelik kuralını doğrulama
+              href: groups-dynamic-rule-validation.md
             - name: Grup üyeliği türünü değiştirme
               href: groups-change-type.md
     - name: Lisans atama

@@ -1037,6 +1037,8 @@
           href: monitor-cosmos-db.md
         - name: Sunucu tarafı gecikme süresini izleme
           href: monitor-server-side-latency.md
+        - name: İstek birimi kullanımını izleme
+          href: monitor-request-unit-usage.md
         - name: Tanılama günlükleriyle izleme
           href: cosmosdb-monitor-resource-logs.md
         - name: Kontrol düzlemi günlüklerini denetleme
