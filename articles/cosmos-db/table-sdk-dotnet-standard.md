@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 48fd85e27feb3d0c7f7f722dbbd502be55684385
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7c6829d858e36b55f079f8ee03e431f67995e66
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76771583"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272585"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Tablo .NET Standart API: Notları indirin ve yayınla
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "76771583"
 |---|---|
 |**SDK indir**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
 |**Örnek**|[Cosmos DB Tablo API .NET Örnek](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
-|**Quickstart**|[Quickstart](create-table-dotnet.md)|
+|**Hızlı Başlangıç**|[Hızlı Başlangıç](create-table-dotnet.md)|
 |**Öğretici**|[Öğretici](tutorial-develop-table-dotnet.md)|
 |**Geçerli desteklenen çerçeve**|[Microsoft .NET Standart 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 |**Rapor Sorunu**|[Rapor Sorunu](https://github.com/Azure/azure-cosmos-table-dotnet/issues)|
@@ -41,6 +41,9 @@ ms.locfileid: "76771583"
 
 ## <a name="release-notes-for-100-series"></a>1.0.0 serisi için yayın notları
 1.0.0 serisi [Microsoft.Azure.DocumentDB.Core'a](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)bağımlı dır.
+
+### <a name="107"></a><a name="1.0.7"/>1.0.7
+* App.config üzerinden seçilebilen SourceLevels.Off'a Tablo SDK varsayılan izleme düzeyini ayarlayarak performans geliştirme
 
 ### <a name="105"></a><a name="1.0.5"/>1.0.5
 * Cosmos DB Tablo API ile iletişim kurmak için Rest Executor'ı kullanmak için TableClientConfiguration altında yeni config tanıtın

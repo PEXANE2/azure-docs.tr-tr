@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 8af6b3a451d20bcc9cab3fa4adb9643f82b85e49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3e35b6d19905e3c5262dfea3e52511510c9ffe
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288827"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252971"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Müşteri Katılımı için Dynamics 365 için müşteri yönetimi yapılandırın
 
@@ -180,6 +180,7 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
     ![Bağlantı ayrıntıları - varış noktası](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-lead-destination.png)
 
 4. Dynamics **365 Instance URL'sini** sağlayın. `https://contoso.crm4.dynamics.com`
+
 5. **Kimlik Doğrulama**yöntemini, Azure Etkin Dizini'ni veya Office 365'i seçin. 
 6. Azure Etkin Dizin'i seçtiyseniz, **Uygulama (istemci) kimliğini** (örnek: `23456052-aaaa-bbbb-8662-1234df56788f`), **Dizin Kimliği** (örnek: `12345678-8af1-4asf-1234-12234d01db47`) ve **İstemci sırrı** (örnek: ) `1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc=`sağlayın.
 
@@ -188,6 +189,13 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
 7. Office 365'i seçtiyseniz, **Kullanıcı** adını `contoso@contoso.onmicrosoft.com`(örnek: ) `P@ssw0rd`ve Parola 'yı (örnek: ).
 
     ![Bağlantı ayrıntıları - Kullanıcı adı](./media/commercial-marketplace-lead-management-instructions-dynamics/connection-details-authentication.png)
+
+8. **Kişi e-postası** - Şirketinizde yeni bir müşteri adayı geldiğinde e-posta bildirimleri alması gereken kişiler için e-posta sağlayın. Birden çok e-postayı yarı kolon ile ayırarak sağlayabilirsiniz.
+9. **Tamam'ı**seçin.
+
+Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
+
+![Müşteri adayı yönetimi - bağlantı ayrıntıları depolama hesabı](./media/commercial-marketplace-lead-management-instructions-dynamics/dynamics-connection-details.png)
 
 >[!Note]
 >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.

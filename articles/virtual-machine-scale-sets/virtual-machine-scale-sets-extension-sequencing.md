@@ -1,18 +1,18 @@
 ---
 title: Azure sanal makine ölçek kümeleriyle uzantı sıralamasını kullanma
 description: Sanal makine ölçeği kümelerine birden fazla uzantı dağıtırken uzantı sağlamayı nasıl sıralayın öğrenin.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: manayar
-ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 737040699dd62d722b9a9ad4d8915ccb270c2d06
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278064"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273758"
 ---
 # <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Sanal makine ölçek kümelerinde sıra uzantısı sağlama
 Azure sanal makine uzantıları dağıtım sonrası yapılandırma ve yönetim, izleme, güvenlik ve daha fazlası gibi özellikler sağlar. Üretim dağıtımları genellikle istenen sonuçları elde etmek için VM örnekleri için yapılandırılan birden çok uzantının bir birleşimini kullanır.

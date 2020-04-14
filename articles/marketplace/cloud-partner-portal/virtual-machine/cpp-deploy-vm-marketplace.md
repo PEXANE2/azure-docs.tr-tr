@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 7d5269cf8865faeb65356bc8fd3eea087cb7653c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e39f1c70cd94c14b12e54817941ea9106aacfdd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273877"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Azure Marketi'nden sanal bir makine dağıtma
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
 
 Bu makalede, sağlanan Azure PowerShell komut dosyasını kullanarak azure marketinden önceden yapılandırılmış bir sanal makinenin (VM) nasıl dağıtılancayakadar dağıtılanınca açıklanmıştır.  Bu komut dosyası aynı zamanda VM'deki WinRM HTTP ve HTTPS uç noktalarını da ortaya çıkarır.  Komut dosyası, [Azure Anahtar Kasası için Oluşturma sertifikalarında](./cpp-create-key-vault-cert.md)açıklandığı gibi Azure Key Vault'a zaten yüklenen bir sertifikanız olmasını gerektirir. 
 
@@ -26,16 +29,16 @@ Hızlı başlatma Azure VM dağıtım şablonu, çevrimiçi dosya [azuredeployme
 
 |  **Parametre**        |   **Açıklama**                                 |
 |  -------------        |   ---------------                                 |
-| newStorageAccountName | Depolama hesabının adı                       |
+| newStorageAccountName    | Depolama hesabının adı                       |
 | dnsNameForPublicIP    | Kamu IP için DNS Adı. Küçük olmalı.    |
-| adminUserName         | Yöneticinin kullanıcı adı                          |
-| adminPassword         | Yöneticinin şifresi                          |
+| adminUserName            | Yöneticinin kullanıcı adı                          |
+| adminPassword            | Yöneticinin şifresi                          |
 | imagePublisher        | Görüntü yayıncısı                                   |
 | imageTeklif            | Resim teklifi                                       |
-| görüntüSKU              | Görüntü SKU                                         |
+| görüntüSKU                | Görüntü SKU                                         |
 | vmSize                | VM boyutu                                    |
 | vmName                | VM'nin adı                                    |
-| vaultName             | Anahtar kasasının adı                             |
+| vaultName                | Anahtar kasasının adı                             |
 | vaultResourceGroup    | Anahtar kasasının kaynak grubu                   |
 | sertifikaUrl        | Örneğin KeyVault sürümü de dahil olmak üzere sertifikanın URL'si`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 47702959474a352a8e13710ec850f789dee4d517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278170"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273469"
 ---
 # <a name="common-sas-url-issues-and-fixes"></a>Sık karşılaşılan SAS URL sorunları ve düzeltmeleri
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Ortak SAS URL sorunları ve düzeltmeler](https://aka.ms/AzureSAS_URL_FAQ) yönergeleriizleyin.
 
 Aşağıdaki tablo, paylaşılan erişim imzalarıyla çalışırken karşılaşılan bazı yaygın sorunları (çözümünüz için yüklenen VHD'leri tanımlamak ve paylaşmak için kullanılır) ve önerilen çözümlerle birlikte listeler.
 

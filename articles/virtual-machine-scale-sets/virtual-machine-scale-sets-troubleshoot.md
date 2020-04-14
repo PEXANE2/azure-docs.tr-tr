@@ -1,20 +1,20 @@
 ---
 title: Sanal Makine Ölçek Setleri ile Otomatik Ölçek Sorun Giderme
 description: Sanal Makine Ölçek Setleri ile otomatik ölçek sorun giderme. Karşılaşılan tipik sorunları ve bunları nasıl çözeceğinizi anlayın.
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: windows
 ms.topic: conceptual
 ms.date: 11/16/2017
-ms.author: manayar
-ms.openlocfilehash: 923967a902f611ce845fbdc096fd2c02e681bb6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76272424"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273384"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Sanal Makine Ölçek Kümeleriyle otomatik ölçeklendirme sorunlarını giderme
 **Sorun** – Sanal makine ölçek kümelerini kullanarak Azure Kaynak Yöneticisi'nde bir otomatik ölçeklendirme altyapısı oluşturdunuz https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale - örneğin, bunun gibi bir şablon dağıtarak: – ölçek kurallarınız tanımlandı ve vm'lere ne kadar yük koyarsanız koyun, otomatik ölçeklendirme yapmaz.

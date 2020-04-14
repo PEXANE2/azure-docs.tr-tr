@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71193523a83987de2440d8c70c133c29dde4fe91
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70813782"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257887"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C için Azure IoT cihazı SDK
 
@@ -21,7 +21,7 @@ ms.locfileid: "70813782"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Taşınabilirliği en üst düzeye çıkarmak için C için Azure IoT aygıtı SDK ANSI C (C99) ile yazılır. Bu özellik, özellikle disk ve bellek ayak izini en aza indirmenin öncelikli olduğu birden çok platform ve cihazda çalışmak için kitaplıkları uygun hale getirir.
+Taşınabilirliği en üst düzeye çıkarmak için C için Azure IoT aygıtı SDK ANSI C (C99) ile yazılır. Bu özellik, özellikle disk ve bellek ayak izini en aza indirmenin öncelikli olduğu birden çok platform ve cihazda çalışmak için kitaplıkları çok uygun hale getirir.
 
 SDK'nın test edildiği çok çeşitli platformlar vardır (ayrıntılar [için IoT aygıt kataloğuna](https://catalog.azureiotsolutions.com/) bakın). Bu makalede, Windows platformunda çalışan örnek kodun gözden geçirmeleri yer alsa da, bu makalede açıklanan kod desteklenen platformlar aralığında aynıdır.
 
@@ -73,13 +73,13 @@ Artık örnek kaynak koduna sahip olduğunuza göre, yapmanız gereken bir sonra
 
 IoT hub'ınızı yönetmenize yardımcı olacak birkaç açık kaynak aracı vardır.
 
-* [Aygıt gezgini](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)adı verilen bir Windows uygulaması.
+* [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer)adında bir Windows uygulaması.
 
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)adı verilen bir çapraz platform Görsel Stüdyo Kodu uzantısı.
 
 * Bir çapraz platform Python CLI [Azure CLI için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension)denir.
 
-Bu öğretici grafik *aygıt gezgini* aracını kullanır. VS Kodu'nda geliştirildiyseniz *VS Kodu için Azure IoT Araçlarını* kullanabilirsiniz. Bir CLI aracı kullanmayı tercih ederseniz, *Azure CLI 2.0 aracı için IoT uzantısını* da kullanabilirsiniz.
+Bu öğretici grafik *aygıt gezgini* aracını kullanır. VS Kodu'nda geliştirildiyseniz *VS Kodu için Azure IoT Araçlarını* kullanabilirsiniz. Bir CLI aracı kullanmayı tercih *ederseniz, Azure CLI 2.0 aracı için IoT uzantısını* da kullanabilirsiniz.
 
 Aygıt gezgini aracı, IoT Hub'da aygıt ekleme dahil olmak üzere çeşitli işlevleri gerçekleştirmek için Azure IoT hizmet kitaplıklarını kullanır. Aygıt gezgini aracını aygıt eklemek için kullanıyorsanız, aygıtınız için bir bağlantı dizesi elde elabilirsiniz. Örnek uygulamaları çalıştırmak için bu bağlantı dizesine ihtiyacınız vardır.
 

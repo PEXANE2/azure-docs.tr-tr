@@ -12,19 +12,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/21/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 007e8d87c670376ad334c1c4e58fd93995930b78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 25d911869c95baba6ac9db3b893292e702e9c0e9
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616247"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273214"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP iş yükü için SAP ASE Azure Sanal Makineler DBMS dağıtımı
 
-Bu belgede, Azure IaaS'da SAP ASE dağıtılırken göz önünde bulundurulması gereken birkaç farklı alanı kapsamaktadır. Bu belgenin ön koşulu olarak, Azure belgelerinde [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımı](dbms_guide_general.md) için gerekli hususları ve SAP iş [yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzları okumuş olmalısınız. Bu belge, Linux ve Windows İşletim Sistemleri üzerinde çalışan SAP ASE'yi kapsar. Azure'da desteklenen minimum sürüm SAP ASE 16.0 Patch Level 2'dir.  SAP'nin en son sürümünü ve en son Yama Düzeyini dağıtması önerilir.  Minimum SAP ASE 16.3 Patch Level 7 önerilir.  SAP'nin en son sürümü [Hedefli ASE 16.0 Yayın Çizelgesi ve CR listesi Bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bulunabilir.
+Bu belgede, Azure IaaS'da SAP ASE dağıtılırken göz önünde bulundurulması gereken birkaç farklı alanı kapsamaktadır. Bu belgenin ön koşulu olarak, Azure belgelerinde [SAP iş yükü için Azure Sanal Makineler DBMS dağıtımı](dbms_guide_general.md) için gerekli hususları ve SAP iş [yükündeki](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)diğer kılavuzları okumuş olmalısınız. Bu belge, Linux ve Windows İşletim Sistemleri üzerinde çalışan SAP ASE'yi kapsar. Azure'da desteklenen minimum sürüm SAP ASE 16.0.02 'dir (Sürüm 16 Destek Paketi 2). SAP'nin en son sürümünü ve en son Yama Düzeyini dağıtması önerilir.  Minimum SAP ASE 16.0.03.07 (Sürüm 16 Destek Paketi 3 Patch Level 7) önerilir.  SAP'nin en son sürümü [Hedefli ASE 16.0 Yayın Çizelgesi ve CR listesi Bilgileri](https://wiki.scn.sap.com/wiki/display/SYBASE/Targeted+ASE+16.0+Release+Schedule+and+CR+list+Information)bulunabilir.
 
 Sap uygulamaları veya yükleme ortamı konumu ile sürüm desteği hakkında ek bilgiler, bu konumlarda SAP Ürün Kullanılabilirlik Matrisi'nin yanı sıra bulunur:
 
@@ -84,7 +84,7 @@ Aşağıda verilen örnekler açıklayıcı amaçlar içindir ve bireysel ihtiya
 | --- | --- | --- | --- |
 | VM Tipi | E4s_v3 (4 vCPU/32 GB RAM) | E4s_v3 (4 vCPU/32 GB RAM) | --- |
 | Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.3 PL 7 veya üstü | 16.3 PL 7 veya üstü | --- |
+| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
 | # veri cihazları | 4 | 4 | ---|
 | # günlük cihazlar | 1 | 1 | --- |
 | # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
@@ -105,7 +105,7 @@ Daha küçük bir SAP Business Suite sistemi gibi 250 GB – 750 GB arasında bi
 | --- | --- | --- | --- |
 | VM Tipi | E16s_v3 (16 vCPU/128 GB RAM) | E16s_v3 (16 vCPU/128 GB RAM) | --- |
 | Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.3 PL 7 veya üstü | 16.3 PL 7 veya üstü | --- |
+| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
 | # veri cihazları | 8 | 8 | ---|
 | # günlük cihazlar | 1 | 1 | --- |
 | # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
@@ -125,7 +125,7 @@ Daha büyük bir SAP Business Suite sistemi gibi 750 GB – 2000 GB arasında bi
 | --- | --- | --- | --- |
 | VM Tipi | E64s_v3 (64 vCPU/432 GB RAM) | E64s_v3 (64 vCPU/432 GB RAM) | --- |
 | Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.3 PL 7 veya üstü | 16.3 PL 7 veya üstü | --- |
+| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
 | # veri cihazları | 16 | 16 | ---|
 | # günlük cihazlar | 1 | 1 | --- |
 | # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
@@ -146,7 +146,7 @@ Daha büyük bir küresel olarak kullanılan SAP Business Suite sistemi gibi 2 T
 | --- | --- | --- | --- |
 | VM Tipi | M Serisi (1,0 - 4,0 TB RAM)  | M Serisi (1,0 - 4,0 TB RAM) | --- |
 | Hızlandırılmış Ağ | Etkinleştirme | Etkinleştirme | ---|
-| SAP ASE sürümü | 16.3 PL 7 veya üstü | 16.3 PL 7 veya üstü | --- |
+| SAP ASE sürümü | 16.0.03.07 veya üstü | 16.0.03.07 veya üstü | --- |
 | # veri cihazları | 32 | 32 | ---|
 | # günlük cihazlar | 1 | 1 | --- |
 | # geçici cihazlar | 1 | 1 | SAP BW iş yükü için daha fazla |
@@ -203,7 +203,7 @@ SAP Yazılım sağlama Yöneticisi (SWPM), yükleme sırasında veritabanını �
 
 ## <a name="sap-ase-on-azure-deployment-checklist"></a>Azure dağıtım denetim listesinde SAP ASE
  
-- SAP ASE 16.3 PL7 veya üzeri dağıtma
+- SAP ASE 16.0.03.07 veya üzeri dağıtma
 - Hata Yöneticisi ve SAPHostAgent'ın en son sürümü nerelerine ve düzeltme elerine güncelleştirin
 - Windows 2019, Suse 15.1 veya Redhat 7.6 veya üzeri gibi en son sertifikalı işletim sistemi üzerinde dağıtma
 - SAP Sertifikalı VM'leri kullanın – Es_v3 veya x-large sistemler de dahil olmak üzere yüksek bellekli Azure VM SK'ları M Serisi VM SK'ler önerilir
@@ -277,7 +277,7 @@ SAP ASE için DBA Kokpit hakkında daha fazla bilgiyi aşağıdaki SAP Notları'
 
 
 ## <a name="useful-links-notes--whitepapers-for-sap-ase"></a>SAP ASE için yararlı bağlantılar, notlar & teknik incelemeler
-[Sybase ASE 16.3 PL7 Dokümantasyon](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) için başlangıç sayfası çeşitli belgelere bağlantılar verir:
+[SAP ASE 16.0.03.07 Dokümantasyon](https://help.sap.com/viewer/product/SAP_ASE/16.0.3.7/en-US) için başlangıç sayfası, aşağıdaki belgelerin hangi belgelere ait olduğu çeşitli belgelere bağlantılar verir:
 
 - SAP ASE Öğrenme Yolculuğu - Yönetim & İzleme
 - SAP ASE Öğrenme Yolculuğu - Yükleme & Yükseltme
@@ -303,11 +303,11 @@ Diğer yararlı SAP destek notları şunlardır:
 Diğer bilgiler 
 
 - [SAP Adaptif Server Enterprise'da SAP Uygulamaları](https://community.sap.com/topics/applications-on-ase)
-- [Sybase bilgi merkezi](http://infocenter.sybase.com/help/index.jsp) 
+- [SAP ASE bilgi merkezi](http://infocenter.sybase.com/help/index.jsp) 
+- [3. DR Düğüm Kurulumu ile SAP ASE Her Zaman](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)
 
 Aylık bülten SAP [destek notu #2381575](https://launchpad.support.sap.com/#/notes/2381575) aracılığıyla yayınlanır 
 
-[Sybase ASE Her zaman 3 DR Düğüm Kurulum ile](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199) 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Azure'daki MAKALE SAP iş yüklerini kontrol edin: planlama ve dağıtım denetim listesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)

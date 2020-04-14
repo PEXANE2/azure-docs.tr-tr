@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: ad56041f853d030e3a286610fe4872bffecaee12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a64dee6da521764a38fc60bee06545f6a561c297
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444673"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257716"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Laboratuvar oluşturucuları tarafından kullanılabilen Market görüntülerini belirtin
 Laboratuvar sahibi olarak laboratuvar oluşturucuların laboratuvar hesabında laboratuvar oluşturmak için kullanacağı Market görüntülerini belirtebilirsiniz. 
@@ -50,6 +50,19 @@ Aynı anda birden çok görüntüyü devre dışı kılmış için, resim adlar�
 Devre dışı bırakılmış bir görüntüyü etkinleştirmek için **, ... (elips)** son sütunda ve **görüntüyü etkinleştir'i**seçin. Alternatif olarak, resim adından önce onay kutusunu seçin ve araç çubuğunda **seçili görüntüleri etkinleştir'i** seçin. 
 
 Aynı anda birden çok görüntüyü devre dışı kılmış olmak için, resim adlarının önünde onay kutularını seçin ve araç çubuğunda **seçili görüntüleri etkinleştir'i** seçin. 
+
+## <a name="enable-images-at-the-time-of-lab-creation"></a>Laboratuvar oluşturma sırasında görüntüleri etkinleştirme
+Laboratuvar oluşturulduca daha fazla görüntü etkinleştirebilirsiniz: 
+
+1. **Laboratuvar hesabı sahibi** kimlik bilgilerini kullanarak Azure Lab Hizmetleri web [sitesinde](https://labs.azure.com) oturum açın
+2. Varsayılan sanal makine görüntüsünü veya aşağı ok'u seçin. 
+3. **Daha fazla görüntü seçeneği etkinleştir'i**seçin. 
+
+    ![Daha fazla görüntü seçeneği etkinleştirme](../media/specify-marketplace-images/enable-more-images-menu.png)
+4. Seçtiğiniz görüntüleri etkinleştirmek için önceki bölümdeki yönergeleri izleyin. 
+5. Önceki adımda seçtiğiniz görüntüleri görmek için **Yeni laboratuvar** penceresini kapatıp yeniden açmanız gerekebilir. 
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:

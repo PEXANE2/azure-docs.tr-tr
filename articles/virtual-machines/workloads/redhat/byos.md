@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 825d26307f2b462d51b143b88127e229508f2f25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ab578b4b688c02c9150dfb23fce53fbb82df405
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264602"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273180"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux Azure'da kendi aboneliğinizi getirin Gold Images
 
@@ -120,7 +120,7 @@ Aşağıdaki yönergeler, Azure CLI'yi kullanarak bir RHEL VM için ilk dağıt�
 1. VM'nize SSH ve entitledolmayan bir görüntüye sahip olduğunuzu doğrulayın. Bu adımı yapmak `sudo yum repolist`için çalıştırın. RHEL 8 için. `sudo dnf repolist` Çıktı, VM'yi Red Hat'e kaydettirmek için Abonelik Yöneticisi'ni kullanmanızı ister.
 
 >[!NOTE]
->RHEL `dnf` 8'de `yum` ve değiştirilebilir. Daha fazla bilgi için [RHEL 8 yönetici kılavuzuna](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/installing-software-with-yum_configuring-basic-system-settings)bakın.
+>RHEL `dnf` 8'de `yum` ve değiştirilebilir. Daha fazla bilgi için [RHEL 8 yönetici kılavuzuna](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/packaging_and_distributing_software/index)bakın.
 
 ## <a name="use-the-red-hat-gold-images-from-powershell"></a>PowerShell'den Red Hat Gold Görüntülerini Kullanın
 
@@ -214,6 +214,7 @@ Azure Disk Şifrelemesi'ni uygulamak için adımlar için [Linux VM'lerinde](../
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Red Hat Cloud Access hakkında daha fazla bilgi [Red Hat genel bulut belgeleri](https://access.redhat.com/public-cloud) mevcuttur
 - Bulut Erişimi için adım adım kılavuzlar ve program ayrıntıları için [Red Hat Cloud Access belgelerine](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)bakın.
 - Red Hat Update Altyapısı hakkında daha fazla bilgi edinmek için [Azure Red Hat Update Infrastructure](./redhat-rhui.md)'a bakın.
 - Azure'daki tüm Red Hat resimleri hakkında daha fazla bilgi edinmek için [belgeler sayfasına](./redhat-images.md)bakın.

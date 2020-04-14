@@ -3,7 +3,7 @@ title: Azure CDN'deki dosyaları sıkıştırarak performansı artırın | Micro
 description: Dosyalarınızı Azure CDN'de sıkıştırarak dosya aktarım hızını nasıl artıracağınızı ve sayfa yükleme performansını nasıl artıracağınızı öğrenin.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: magattus
-ms.openlocfilehash: 9f185f58e1d33a3985777cb22bc7578f9f2c4541
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593794"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253773"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN’de dosyaları sıkıştırarak performansı geliştirme
 Dosya sıkıştırma, dosyanın sunucudan gönderilmeden önce boyutunu azaltarak dosya aktarım hızını artırmak ve sayfa yükleme performansını artırmak için basit ve etkili bir yöntemdir. Dosya sıkıştırma bant genişliği maliyetlerini azaltabilir ve kullanıcılarınız için daha duyarlı bir deneyim sağlar.
@@ -139,7 +139,7 @@ Bu profiller yalnızca gzip sıkıştırma kodlamayı destekler. Bir profil biti
 Aşağıdaki tablolar her senaryo için Azure CDN sıkıştırma davranışını açıklar:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Sıkıştırma devre dışı bırakılır veya dosya sıkıştırma için uygun değildir
-| İstemci tarafından istenen biçim (Kabul Etme-Kodlama üstbilgisi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye CDN yanıtı | &nbsp; &nbsp; Notlar&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| İstemci tarafından istenen biçim (Kabul Etme-Kodlama üstbilgisi aracılığıyla) | Önbelleğe alınmış dosya biçimi | İstemciye CDN yanıtı | &nbsp; &nbsp; Notlar&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Sıkıştırılmış |Sıkıştırılmış |Sıkıştırılmış | |
 | Sıkıştırılmış |Sıkıştırılmamış |Sıkıştırılmamış | |

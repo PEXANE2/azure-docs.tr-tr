@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
-ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632558"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263480"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure Veritabanı'nda kullanıcı oluşturma
 
@@ -92,4 +92,4 @@ MySQL sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcılar
 
 Yeni kullanıcıların makinelerinin IP adreslerinin bağlantı kurmasını sağlamak için güvenlik duvarını açın: Azure portalını veya [Azure CLI'yi](howto-manage-firewall-using-cli.md) [kullanarak MySQL güvenlik duvarı kuralları için Azure Veritabanı oluşturun ve yönetin.](howto-manage-firewall-using-portal.md)
 
-Kullanıcı hesabı yönetimi ile ilgili daha fazla bilgi için, [Kullanıcı hesabı yönetimi,](https://dev.mysql.com/doc/refman/5.7/en/user-account-management.html) [GRANT Sözdizimi](https://dev.mysql.com/doc/refman/5.7/en/grant.html)ve Ayrıcalıklar için MySQL ürün [belgelerine](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)bakın.
+Kullanıcı hesabı yönetimi ile ilgili daha fazla bilgi için, [Kullanıcı hesabı yönetimi,](https://dev.mysql.com/doc/refman/5.7/en/access-control.html) [GRANT Sözdizimi](https://dev.mysql.com/doc/refman/5.7/en/grant.html)ve Ayrıcalıklar için MySQL ürün [belgelerine](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html)bakın.

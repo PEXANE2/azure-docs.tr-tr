@@ -1,53 +1,95 @@
 ---
-title: Azure iş ortağı ve müşteri kullanımı atıf | Azure Marketi
-description: Azure Marketi çözümleri için müşteri kullanımının nasıl izleyebilirsiniz
+title: Ticari Pazar ortağı ve müşteri kullanımı atıf
+description: Azure Marketi çözümleri için müşteri kullanımını izlemeye genel bir bakış alın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 9/23/2019
+ms.date: 04/13/2020
 ms.author: dsindona
-ms.openlocfilehash: 2895944dea6417949488076186135680523e19db
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874979"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256612"
 ---
-# <a name="azure-partner-customer-usage-attribution"></a>Azure iş ortağı müşteri kullanımı ilişkilendirmesi
+# <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Pazar ortağı ve müşteri kullanımı atıf
 
-Azure için bir yazılım ortağı olarak, çözümleriniz Azure bileşenlerigerektirir veya doğrudan Azure altyapısına dağıtılmalı. İş ortağı çözümlerini dağıtan ve kendi Azure kaynaklarını tedarik eden müşteriler, dağıtımın durumu hakkında görünürlük elde etmekte zorlanabilir ve Azure büyümesi üzerindeki etkiyi optik olarak ele alabilir. Daha yüksek bir görünürlük düzeyi eklediğinizde, Microsoft satış ekipleriyle hizalanır ve Microsoft iş ortağı programları için kredi kazanırsınız.
+Müşteri kullanımı ilişkilendirme, çözümünüzü çalıştırmak üzere dağıtılan müşteri aboneliklerinde çalışan Azure kaynaklarını iş ortağı olarak sizinle ilişkilendirmek için kullanılan bir yöntemdir. Bu ilişkilendirmeleri dahili Microsoft sistemlerinde oluşturmak, yazılımınızı çalıştıran Azure ayak izine daha fazla görünürlük sağlar. Bu izleme özelliğini benimsediğinizde, Microsoft satış ekipleriyle hizalanır ve Microsoft iş ortağı programları için kredi kazanırsınız.
 
-Microsoft artık iş ortaklarının yazılımlarının Azure'daki müşteri dağıtımlarının Azure kullanımını daha iyi izlemelerine yardımcı olacak bir yöntem sunuyor. Yeni yöntem, Azure hizmetlerinin dağıtımını düzenlemek için Azure Kaynak Yöneticisi'ni kullanır.
+İlişkilendirmeyi Azure Marketi, Quickstart deposu, özel GitHub depoları ve dayanıklı IP (uygulama geliştirme gibi) oluşturan 1:1 müşteri etkileşimleri aracılığıyla oluşturabilirsiniz.
 
-Microsoft iş ortağı olarak, Azure kullanımını müşteri adına sağladığınız tüm Azure kaynaklarıyla ilişkilendirebilirsiniz. İlişkilendirmeyi Azure Marketi, Quickstart deposu, özel GitHub depoları ve bire bir müşteri etkileşimi aracılığıyla oluşturabilirsiniz. Müşteri kullanımı atıf üç dağıtım seçeneğini destekler:
+Müşteri kullanımı atıf üç dağıtım seçeneğini destekler:
 
 - Azure Kaynak Yöneticisi şablonları: İş ortakları, iş ortağının yazılımını çalıştırmak için Azure hizmetlerini dağıtmak için Kaynak Yöneticisi şablonlarını kullanabilir. İş ortakları, Azure çözümlerinin altyapısını ve yapılandırmasını tanımlamak için bir Kaynak Yöneticisi şablonu oluşturabilir. Kaynak Yöneticisi şablonu, sizin ve müşterilerinizin çözümünüzü yaşam döngüsü boyunca dağıtmanızı sağlar. Kaynaklarınızın tutarlı bir durumda dağıtıldığınızdan emin olabilirsiniz.
 - Azure Kaynak Yöneticisi API'leri: İş ortakları, Kaynak Yöneticisi şablonu dağıtmak veya Doğrudan Azure hizmetlerini sağlamak için API çağrıları oluşturmak için Doğrudan Kaynak Yöneticisi API'lerini arayabilir.
-- Terraform: İş ortakları, Bir Kaynak Yöneticisi şablonu dağıtmak veya Azure hizmetlerini doğrudan dağıtmak için Terraform gibi bulut orkestratörlerini kullanabilir.
+- Terraform: İş ortakları, Bir Kaynak Yöneticisi şablonu dağıtmak veya Azure hizmetlerini doğrudan dağıtmak için Terraform'u kullanabilir.
 
-Müşteri kullanımı atıf yeni dağıtım içindir ve zaten dağıtılan varolan kaynakları etiketlemeyi desteklemez.
-
-[Azure Uygulaması:](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)Azure Marketi'nde yayınlanan çözüm şablonu teklifinde müşteri kullanımı atıfı gereklidir.
-
+>[!IMPORTANT]
+>- Müşteri kullanımı atıfı, sistem entegratörlerinin, yönetilen hizmet sağlayıcılarının veya Azure'da çalışan yazılımları dağıtmak ve yönetmek üzere tasarlanmış araçların çalışmalarını izlemek için tasarlanmamıştır.
+>
+>- Müşteri kullanımı atıf yeni dağıtımlar içindir ve zaten dağıtılan varolan kaynakları etiketlemeyi desteklemez.
+>
+>- Azure Marketi'nde yayınlanan [Azure Uygulaması](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) teklifleri için müşteri kullanımı atıfsı gereklidir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
+## <a name="create-guids"></a>GUID'ler oluşturma
+
+GUID, 32 hexadecimal basamaklı benzersiz bir başvuru tanımlayıcıs›r. İzleme için GUID'ler oluşturmak için bir GUID jeneratörü kullanmanız gerekir. Azure Depolama ekibi, size doğru biçimde bir GUID e-postagönderebilen ve farklı izleme sistemlerinde yeniden kullanılabilen bir [GUID jeneratör formu](https://aka.ms/StoragePartners) oluşturmuştur.
+
+> [!NOTE]
+> GUID'inizi oluşturmak için [Azure Depolama'nın GUID jeneratör formunu](https://aka.ms/StoragePartners) kullanmanız önerilir. Daha fazla bilgi için [SSS](#faq)bölümüne bakın.
+
+Her ürün için her teklif ve dağıtım kanalı için benzersiz bir GUID oluşturmanızı öneririz. Raporlamanın bölünmesini istemiyorsanız, ürünün birden çok dağıtım kanalı için tek bir GUID kullanmayı tercih edebilirsiniz.
+
+Bir ürünü bir şablon kullanarak dağıtıyorsanız ve hem Azure Marketi'nde hem de GitHub'da kullanılabilirse, iki farklı GUIDS oluşturabilir ve kaydedebilirsiniz:
+
+- Azure Marketinde Ürün A
+- Ürün A GitHub üzerinde
+
+Raporlama, Microsoft İş Ortağı Ağ Kimliği ve GUID tarafından yapılır.
+
+Ayrıca, ek GUID'leri kaydederek ve planların bir teklifin türevleri olduğu planlar arasında GUID'leri değiştirerek kullanımı daha ayrıntılı bir düzeyde de izleyebilirsiniz.
+
+## <a name="register-guids"></a>GUID'leri kaydettirin
+
+GUI'ler, müşteri kullanımı yla ilişkilendirilmesini sağlamak için İş Ortağı Merkezi'ne kaydedilmelidir.
+
+Şablonunuza veya kullanıcı aracınıza bir GUID ekledikten ve GUID'i İş Ortağı Merkezi'ne kaydettirdikten sonra, gelecekteki dağıtımlar izlenir.
+
+1. [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard)oturum açın.
+
+1. Ticari bir [pazar yayıncısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
+
+   * İş ortaklarının [Partner Center'da bir profili olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekmektedir. Teklifi Azure Marketi veya AppSource'da listele etmeniz tavsiye ediliyor.
+   * Ortaklar birden fazla GUID kaydedebilir.
+   * İş ortakları, pazar yeri olmayan çözüm şablonları ve teklifleri için GUI'ler kaydedebilir.
+
+1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarlarını**seçin.
+
+1. Hesap **ayarları sayfasında** **İzleme GUID ekle'yi seçin.**
+
+1. **GUID** kutusuna, izleme GUID'inizi girin. **Pid öneki** olmadan sadece GUID'i girin. **Açıklama** kutusuna teklif adınızı veya açıklamanızı girin.
+
+1. Birden fazla GUID kaydetmek için, **İzleme GUID ekle'yi** yeniden seçin. Sayfada ek kutular görünür.
+
+1. **Kaydet'i**seçin.
+
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
-Kaynak Yöneticisi şablonları kullanılarak müşterinin aboneliğinde birçok iş ortağı çözümü dağıtılır. Azure Marketi'nde, GitHub'da veya Quickstart olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı ilişkilendirmesini etkinleştirmek için şablonunuzu değiştirme işlemi doğrudan olmalıdır.
+Azure Kaynak Yöneticisi şablonları kullanılarak birçok iş ortağı çözümü dağıtılır. Azure Marketi'nde, GitHub'da veya Quickstart olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı ilişkilendirmesini etkinleştirmek için şablonunuzu değiştirme işlemi doğrudan devam eder.
 
-Çözüm Şablonları oluşturma ve yayımlama hakkında daha fazla bilgi için bkz.
+> [!NOTE]
+> Çözüm Şablonları oluşturma ve yayımlama hakkında daha fazla bilgi için bkz.
+> * [İlk Kaynak Yöneticisi şablonunuzu oluşturun ve dağıtın.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
+>* [Azure Uygulama teklifi.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
+>* Video: [Azure Marketi için Çözüm Şablonları Oluşturma ve Yönetilen Uygulamalar.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
-* [İlk Kaynak Yöneticisi şablonunuzu oluşturun ve dağıtın.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
-* [Azure Uygulama teklifi.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
-* Video: [Azure Marketi için Çözüm Şablonları Oluşturma ve Yönetilen Uygulamalar.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
-
-
-## <a name="add-a-guid-to-your-template"></a>Şablonunuza GUID ekleme
 
 Genel olarak benzersiz bir tanımlayıcı (GUID) eklemek için, ana şablon dosyasında tek bir değişiklik yaparsınız:
 
-1. Önerilen yöntemi kullanarak [bir GUID oluşturun](#create-guids) ve [GUID'i kaydedin.](#register-guids-and-offers)
+1. Önerilen yöntemi kullanarak [bir GUID oluşturun](#create-guids) ve [GUID'i kaydedin.](#register-guids)
 
 1. Kaynak Yöneticisi şablonu açın.
 
@@ -96,7 +138,7 @@ Müşteri kullanımı ilişkilendirmesini etkinleştirmek için, API çağrılar
 
 ![Örnek GUID biçimi](media/marketplace-publishers-guide/tracking-sample-guid-for-lu-2.PNG)
 
-> [!Note]
+> [!NOTE]
 > Dize biçimi önemlidir. Pid **öneki** dahil değilse, verileri sorgulamak mümkün değildir. Farklı SDK'lar farklı şekilde izler. Bu yöntemi uygulamak için, tercih ettiğiniz Azure SDK'sı için destek ve izleme yaklaşımını gözden geçirin.
 
 #### <a name="example-the-python-sdk"></a>Örnek: Python SDK
@@ -105,7 +147,7 @@ Python için **config** özniteliğini kullanın. Özniteliği yalnızca bir Use
 
 ![Bir kullanıcı aracısına öznitelik ekleme](media/marketplace-publishers-guide/python-for-lu.PNG)
 
-> [!Note]
+> [!NOTE]
 > Her istemci için öznitelik ekleyin. Küresel statik yapılandırma yok. Her istemcinin izlediğinden emin olmak için bir istemci fabrikasını etiketleyebilirsiniz. Daha fazla bilgi için [GitHub'daki](https://github.com/Azure/azure-cli/blob/7402fb2c20be2cdbcaa7bdb2eeb72b7461fbcc30/src/azure-cli-core/azure/cli/core/commands/client_factory.py#L70-L79)bu istemci fabrika örneğine bakın.
 
 #### <a name="tag-a-deployment-by-using-the-azure-powershell"></a>Azure PowerShell'i kullanarak dağıtımı etiketleme
@@ -143,50 +185,6 @@ Dağıtımlarını Terraform üzerinden müşteri kullanımı atıfları tarafı
 
 * Guid oluşturma (GUID her Teklif veya SKU için eklenmelidir)
 * *partner_id* değerini GUID'e ayarlamak için Azure Sağlayıcılarını güncelleştirin (GUID'i "pid-" ile önceden düzeltmeyin, gerçek GUID'e ayarlayın)
-
-## <a name="create-guids"></a>GUID'ler oluşturma
-
-GUID, 32 hexadecimal basamaklı benzersiz bir başvuru numarasıdır. İzleme için GUID'ler oluşturmak için bir GUID jeneratörü kullanmanız gerekir. Azure Depolama ekibi, size doğru biçimde bir GUID e-postagönderebilen ve farklı izleme sistemlerinde yeniden kullanılabilen bir [GUID jeneratör formu](https://aka.ms/StoragePartners) oluşturmuştur.
-
-> [!Note]
-> GUID'inizi oluşturmak için [Azure Depolama'nın GUID jeneratör formunu](https://aka.ms/StoragePartners) kullanmanız önerilir. Daha fazla bilgi için [SSS](#faq)bölümüne bakın.
-
-Her ürün için her teklif ve dağıtım kanalı için benzersiz bir GUID oluşturmanızı öneririz. Raporlamanın bölünmesini istemiyorsanız, ürünün birden çok dağıtım kanalı için tek bir GUID kullanmayı tercih edebilirsiniz.
-
-Bir ürünü bir şablon kullanarak dağıtıyorsanız ve hem Azure Marketi'nde hem de GitHub'da kullanılabilirse, 2 farklı GUIDS oluşturabilir ve kaydedebilirsiniz:
-
-*   Azure Marketinde Ürün A
-*   Ürün A GitHub üzerinde
-
-Raporlama, iş ortağı değeri (Microsoft İş Ortağı Kimliği) ve GUID'ler tarafından yapılır.
-
-Ayrıca, SKU'ların bir teklifin varyantları olduğu SKU gibi daha ayrıntılı bir düzeyde GUID'leri de izleyebilirsiniz.
-
-## <a name="register-guids-and-offers"></a>GUID'leri ve teklifleri kaydedin
-
-GUI'ler müşteri kullanımı ilişkilendirmesini etkinleştirmek için kaydedilmelidir.
-
-Şablon GUID'ler için tüm kayıtlar Ortak Merkezi içinde yapılır.
-
-GUID'i şablonunuza veya kullanıcı aracısına ekledikten ve GUID'i İş Ortağı Merkezi'ne kaydettirdikten sonra tüm dağıtımlar izlenir.
-
-1. Ticari bir [pazar yayıncısı](https://aka.ms/JoinMarketplace)olarak kaydolun.
-
-   * İş ortaklarının [Partner Center'da bir profili olması](https://docs.microsoft.com/azure/marketplace/become-publisher)gerekmektedir. Teklifi Azure Marketi veya AppSource'da listele etmeniz tavsiye ediliyor.
-   * Ortaklar birden fazla GUID kaydedebilir.
-   * İş ortakları, Pazar Yeri olmayan çözüm şablonları ve teklifleri için bir GUID kaydedebilir.
-
-1. [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard)oturum açın.
-
-1. Sağ üst köşede, ayarlar dişli simgesini seçin ve ardından **Geliştirici ayarlarını**seçin.
-
-1. Hesap **ayarları sayfasında** **İzleme GUID ekle'yi seçin.**
-
-1. **GUID** kutusuna, izleme GUID'inizi girin. **Pid öneki** olmadan sadece GUID'i girin. **Açıklama** kutusuna teklif adınızı veya açıklamanızı girin.
-
-1. Birden fazla GUID kaydetmek için, **İzleme GUID ekle'yi** yeniden seçin. Sayfada ek kutular görünür.
-
-1. **Kaydet'i**seçin.
 
 
 ## <a name="verify-the-guid-deployment"></a>GUID dağıtımını doğrulama
@@ -277,7 +275,7 @@ Müşteri kullanımı atfını nasıl ayarlanız gerektiği gibi genel olarak Ma
 
 1. Sonraki sayfada, gerekli değerleri girin.
 
-   > [!Important]
+   > [!IMPORTANT]
    > Olay **başlık** kutusuna **ISV Kullanım İzleme'yi**girin. Sorununuzu ayrıntılı olarak açıklayın.
 
    ![Olay başlığı için ISV Kullanım İzleme'yi girin](media/marketplace-publishers-guide/guid-dev-center-help-hd%201.png)
@@ -315,11 +313,11 @@ Evet, bir müşteri veya uygulama ortağı şablonu özelleştirebilir ve GUID'i
 
 **GitHub gibi Microsoft'a ait olmayan bir depodan dağıtılan şablonları izleyebilir miyim?**
 
-Evet, şablon dağıtıldığında GUID olduğu sürece, kullanım izlenir. İş ortaklarının, Azure Marketi dışında dağıtım için kullanılan GUID'leri kaydetmek için İş Merkezi'ndeki ticari pazar kaydında bir profile sahip olması gerekir.
+Evet, şablon dağıtıldığında GUID olduğu sürece, kullanım izlenir. Ortaklar yine de GUID'lerini kaydettirmelidir.
 
 **Müşteri de raporlama alıyor mu?**
 
-Müşteriler Azure portalında tek tek kaynakları veya müşteri tanımlı kaynak gruplarını izleyebilir.
+Müşteriler Azure portalında tek tek kaynakları veya müşteri tanımlı kaynak gruplarını izleyebilir. Müşteriler GUID tarafından kırılan kullanımı görmezler.
 
 **Bu metodoloji Dijital Kayıt Ortağı'na (DPOR) benzer mi?**
 

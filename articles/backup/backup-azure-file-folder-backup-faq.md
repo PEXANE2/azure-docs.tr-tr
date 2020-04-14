@@ -3,12 +3,12 @@ title: Dosya ve klasörleri yedekleme - sık sorulan sorular
 description: Azure Yedekleme ile dosya ve klasörleri yedekleme yle ilgili sık sorulan soruları giderer.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421317"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254759"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
 
@@ -22,7 +22,7 @@ Windows Server makinelerini, System Center DPM'i ve Microsoft Azure Yedekleme su
 
 ### <a name="how-long-are-vault-credentials-valid"></a>Kasa kimlik bilgileri ne kadar süre geçerlidir?
 
-Kasa kimlik bilgilerinin süresi 48 sonra dolar. Kimlik bilgileri dosyasının süresi doluyorsa, dosyayı Azure portalından yeniden indirin.
+Kasa kimlik bilgileri 10 gün sonra sona erer. Kimlik bilgileri dosyasının süresi doluyorsa, dosyayı Azure portalından yeniden indirin.
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>Hangi sürücülerden dosya ve klasörleri yedekleyebilirim?
 
@@ -185,7 +185,6 @@ Orijinal makinenin aynı parolasına (kayıt sırasında sağladığınız) sahi
 | --- | --- | --- |
 | Kaybetti |Kullanılabilir |Mars aracısını, orijinal makinenin kaydı sırasında sağladığınız parolayla başka bir makineye yükleyebilir ve kaydedebilirsiniz. **Kurtarma Seçeneği'ni** > geri yüklemenizi gerçekleştirmek için**başka bir konum** seçin. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)bakın.
 | Kaybetti |Kaybetti |Verileri kurtarmak mümkün değil veya veri kullanılamıyor |
-
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal edersem ne olur?
 

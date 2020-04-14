@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b469c098db4f8d90147b491bcb54bd55d326b03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4e8b544ea3daeb23b22f3864beb21ba9d3f342f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080317"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255626"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure sanal makine depolama alanı yapılandırmaları
 
@@ -72,7 +72,7 @@ RAID'in altında çok sayıda Azure VHD biriktirmek, Bir IOPS ve depolama iş bi
 Ayrıca boyutlandırma veya VM için karar verirken genel VM G/Ç iş bilgililiğini de aklınızda bulundurun. Genel VM depolama iş liği makalede belgelenmiştir [Bellek optimize sanal makine boyutları.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory)
 
 ## <a name="linux-io-scheduler-mode"></a>Linux I/O Zamanlayıcı modu
-Linux birkaç farklı G/Ç zamanlama moduna sahiptir. Linux satıcıları ve SAP aracılığıyla ortak öneri, cfq modundan **noop** (çok sıralı olmayan) veya **(çok** sıralı) moduna disk birimleri için **G/Ç** zamanlayıcı modunu yeniden yapılandırmaktır. Ayrıntılar [SAP Note #1984787'da](https://launchpad.support.sap.com/#/notes/1984787)başvurulmaktadır. 
+Linux birkaç farklı G/Ç zamanlama moduna sahiptir. Linux satıcıları ve SAP aracılığıyla ortak öneri, **mq-deadline** veya **kyber** modundan **noop** (çok sıralı olmayan) veya **(çok** sıralı) modu na kadar disk birimleri için G/Ç zamanlayıcı modunu yeniden yapılandırmaktır. Ayrıntılar [SAP Note #1984787'da](https://launchpad.support.sap.com/#/notes/1984787)başvurulmaktadır. 
 
 
 ## <a name="solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines"></a>Azure M Serisi sanal makineler için Premium Depolama ve Azure Yazma Hızlandırıcısı ile çözümler

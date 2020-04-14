@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 7c799c4a56ee5fc2074e4d644bdbcbc6d2b1ca5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2a4bb107309894a7180e0a4585cdba6f04d1bee
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288759"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273044"
 ---
 # <a name="windows-remote-management-over-https"></a>HTTPS üzerinden Windows Uzak Yönetimi
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
 
 Bu bölümde, PowerShell ile uzaktan yönetilebilmek ve dağıtılabilmek için Azure barındırılan, Windows tabanlı bir VM'nin nasıl yapılandırılabildiği açıklanmaktadır.  PowerShell remotingini etkinleştirmek için hedef VM'nin bir Windows Uzaktan Yönetimi (WinRM) HTTPS bitiş noktasını ortaya çıkarması gerekir.  PowerShell remoting hakkında daha fazla bilgi için, [Uzaktan Kumanda komutları çalıştırın](https://docs.microsoft.com/powershell/scripting/learn/remoting/running-remote-commands)bakın.  WinRM hakkında daha fazla bilgi için [Windows Remote Management'a](https://docs.microsoft.com/windows/desktop/WinRM/portal)bakın.
 

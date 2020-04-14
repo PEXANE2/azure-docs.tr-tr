@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408482"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255337"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor tarafından neler izlenir?
 Bu makalede, Azure Monitor tarafından izlenen farklı uygulamalar ve hizmetler açıklanmaktadır. 
@@ -31,7 +31,7 @@ Temel öngörüler ve çözümler Azure Monitor'un bir parçası olarak kabul ed
 | [Ağlar için Azure Monitörü (önizleme)](insights/network-insights-overview.md) | Tüm ağ kaynağınız için sistem durumu ve ölçümlerin kapsamlı bir görünümünü sağlar. Gelişmiş arama özelliği, yalnızca web sitenizin adını arayarak web sitenizi barındıran kaynağı tanımlama gibi senaryoları etkinleştirerek kaynak bağımlılıklarını belirlemenize yardımcı olur. |
 [Kaynak Grupları için Azure Monitörü (önizleme)](insights/resource-group-insights.md) |  Tek tek kaynaklarınızın karşılaştığı sorunları üçleme ve tanılama, bir bütün olarak kaynak grubunun sağlık ve performansı yla ilgili bağlam sunar. |
 | [Depolama için Azure Monitörü (önizleme)](insights/storage-insights-overview.md) | Azure Depolama hizmetleri performansınızın, kapasitenizin ve kullanılabilirliğinin birleşik bir görünümünü sunarak Azure Depolama hesaplarınızın kapsamlı bir şekilde izlenmesini sağlar. |
-| [VM'ler için Azure Monitör (önizleme)](insights/container-insights-overview.md) | Azure sanal makinelerinizi (VM) ve sanal makine ölçek kümelerinizi ölçekte izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. |
+| [VM'ler için Azure Monitör](insights/container-insights-overview.md) | Azure sanal makinelerinizi (VM) ve sanal makine ölçek kümelerinizi ölçekte izler. İşlemlerini ve diğer kaynaklarla dış işlemlere olan bağımlılıklarını izleyerek Windows ve Linux VM'lerinizin performansını ve sistem durumunu analiz eder. |
 
 ### <a name="core-solutions"></a>Çekirdek çözümleri
 
@@ -39,7 +39,7 @@ Temel öngörüler ve çözümler Azure Monitor'un bir parçası olarak kabul ed
 
 | Çözüm | Açıklama |
 |:---|:---|
-| [Aracı durumu](insights/solution-agenthealth.md) | Log Analytics aracılarının sistem durumunu ve yapılandırmasını analiz edin. |
+| [Ajan sağlığı](insights/solution-agenthealth.md) | Log Analytics aracılarının sistem durumunu ve yapılandırmasını analiz edin. |
 | [Uyarı yönetimi](platform/alert-management-solution.md) | System Center Operations Manager, Nagios veya Zabbix'ten toplanan uyarıları analiz edin. |
 | [Hizmet Eşlemesi](insights/service-map.md) | Windows ve Linux sistemlerindeki uygulama bileşenlerini otomatik olarak keşfeder ve hizmetler arasındaki iletişimi eşler. |
 
@@ -143,7 +143,7 @@ Aşağıdaki tabloda Azure hizmetleri ve topladıkları veriler Azure Monitor'da
 |Kaynak Grafiği | Hayır | Hayır | Hayır |  |
 |Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende Arama - Bing tarafından | Hayır | Hayır | Hayır |  |
-|Ara | Evet | Evet | Hayır |  |
+|Arama | Evet | Evet | Hayır |  |
 |Service Bus | Evet | Evet | Hayır |  |
 |Service Fabric | Hayır | Evet | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için gereken aracı.  |
 |Kayıt Portalı | Hayır | Hayır | Hayır |  |
@@ -178,10 +178,10 @@ Aşağıdaki tablodaki hizmetler ve çözümler, Azure Monitor tarafından topla
 | [Azure Bilgi Koruması](https://docs.microsoft.com/azure/information-protection/) | Belgeleri ve e-postaları sınıflandırın ve isteğe bağlı olarak koruyun. [Azure Bilgi Koruması için Merkezi raporlamaya](https://docs.microsoft.com/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)bakın. |
 | [Azure Güvenlik Merkezi](/azure/security-center/) | Güvenlik olaylarını toplayın ve analiz edin ve tehdit analizi yapın. [Azure Güvenlik Merkezi'nde Veri toplama](/azure/security-center/security-center-enable-data-collection) |
 | [Azure Sentinel](/azure/sentinel/) | Office 365 ve Amazon Web Services Cloud Trail gibi farklı kaynaklara bağlanır. Bkz. [Veri kaynaklarını bağla.](/azure/sentinel/connect-data-sources) |
-| [Anahtar Kasası Analizi](insights/azure-key-vault.md) | Azure Key Vault AuditEvent günlüklerini analiz edin. |
+| [Key Vault Analytics](insights/azure-key-vault.md) | Azure Key Vault AuditEvent günlüklerini analiz edin. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Günlükleri Azure Monitor'a göndermek için tanılama ayarı oluşturun. Bkz. [Günlük verilerini Intune'da depolamaya, olay merkezlerine veya günlük analitiğine gönder (önizleme)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
 | Ağ  | [Ağ Performans Monitörü](insights/network-performance-monitor.md) - Ağ bağlantısını ve performansını hizmet ve uygulama uç noktalarına kadar izleyin.<br>[Azure Uygulama Ağ Geçidi](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) - Azure Application Gateway'deki günlükleri ve ölçümleri analiz edin.<br>[Trafik Analizi](/azure/network-watcher/traffic-analytics) - Azure bulutunuzdaki trafik akışı hakkında öngörüler sağlamak için Ağ İzleyiciağ güvenlik grubunu (NSG) akış günlüğelerini analiz eder. |
-| [Ofis 365](insights/solution-office-365.md) | Office 365 ortamınızı izleyin. Azure Sentinel aracılığıyla geliştirilmiş onboarding sürümü ile güncelleştirilmiş sürüm. |
+| [Office 365](insights/solution-office-365.md) | Office 365 ortamınızı izleyin. Azure Sentinel aracılığıyla geliştirilmiş onboarding sürümü ile güncelleştirilmiş sürüm. |
 | [SQL Analytics](insights/azure-sql.md) | Azure SQL veritabanlarının, esnek havuzların ve yönetilen örneklerin performansını ölçekte ve birden çok abonelikte izleyin. |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub aygıtlarının sistem durumunu ve kullanımını izleyin. |
 | [System Center Operations Manager](https://docs.microsoft.com/system-center/scom) | Yönetim gruplarını Azure Monitor'a bağlayarak Operasyon Yöneticisi aracılarından veri toplayın. [Bkz. İşlem Yöneticisini Azure Monitörüne Bağla](platform/om-agents.md)<br> [Operasyon Yöneticisi Değerlendirmesi](insights/scom-assessment.md) çözümü ile Sistem Merkezi Operasyon Yöneticisi yönetim grubunuzun risk ve sağlığını değerlendirin. |

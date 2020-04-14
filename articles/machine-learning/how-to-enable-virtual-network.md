@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ca4bf1b0043a2c73851eab48ff8b9b6b7a987b72
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115288"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257258"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -546,7 +546,7 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için Azure [Güvenlik 
     > [!IMPORTANT]
     > Depolama hesabınız, bilgi işlem kümeniz ve Azure Kapsayıcı Kayıt Defteri'nin tümü sanal ağın aynı alt ağında olmalıdır.
     
-    Daha fazla bilgi için [güncelleştirme()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-) yöntemi başvurusuna bakın.
+    Daha fazla bilgi için [güncelleştirme()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) yöntemi başvurusuna bakın.
 
 1. Azure Machine Learning çalışma alanınız için Özel Bağlantı kullanıyorsanız ve çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'ni sanal bir ağa koyduysanız, aşağıdaki Azure Kaynak Yöneticisi şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın Özel Bağlantı üzerinden ACR ile iletişim kurmasını sağlar.
 

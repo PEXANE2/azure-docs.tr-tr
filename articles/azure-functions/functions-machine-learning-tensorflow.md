@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: c64d87b2430cc1d733a67bbc1e803590a37b1714
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9d25e2e32f09cc681d85d5adffe53f1237d7200c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78190781"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255507"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Öğretici: Python ve TensorFlow ile Azure İşlerinde makine öğrenimi modellerini uygulayın
 
@@ -79,7 +79,7 @@ Python venv paketini Linux dağıtımınıza yüklemediyse aşağıdaki komutu �
 sudo apt-get install python3-venv
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
 cd start
@@ -153,8 +153,10 @@ Azure İşlevlerinde işlev projesi, her biri belirli bir tetikleyiciye yanıt v
 
 İşlevin `classify` içeriğini temel almak için işlevi değiştirmek için, Azure Özel Görme Hizmeti ile eğitilmiş ve dışa aktarılan önceden oluşturulmuş bir TensorFlow modeli kullanırsınız. Daha önce klonladığınız örneğin *kaynaklar* klasöründe bulunan model, bir görüntüyü köpek veya kedi içermediğine göre sınıflandırın. Daha sonra projenize bazı yardımcı kodlar ve bağımlılıklar eklersiniz.
 
+Özel Vizyon Hizmeti'nin ücretsiz katmanını kullanarak kendi modelinizi oluşturmak için [örnek proje deposundaki](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)yönergeleri izleyin.
+
 > [!TIP]
-> Özel Vizyon Hizmeti'nin ücretsiz katmanını kullanarak kendi modelinizi oluşturmak istiyorsanız, [örnek proje deposundaki](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)yönergeleri izleyin.
+> TensorFlow modelinizi işlev uygulamasından bağımsız olarak barındırmak istiyorsanız, bunun yerine modelinizi içeren bir dosya paylaşımını Linux işlev uygulamanıza monte edebilirsiniz. Daha fazla bilgi edinmek [için Azure CLI kullanarak Python işlev uygulamasına dosya paylaşımı nı dağıt 'a](./scripts/functions-cli-mount-files-storage-linux.md)bakın.
 
 1. *Başlangıç* klasöründe, model dosyalarını sınıflandırma klasörüne kopyalamak için aşağıdaki komutu *çalıştırın.* Komuta eklediğinden `\*` emin olun. 
 
@@ -164,7 +166,7 @@ Azure İşlevlerinde işlev projesi, her biri belirli bir tetikleyiciye yanıt v
     cp ../resources/model/* classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\model\* classify
@@ -188,7 +190,7 @@ Azure İşlevlerinde işlev projesi, her biri belirli bir tetikleyiciye yanıt v
     cp ../resources/predict.py classify
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
     
     ```powershell
     copy ..\resources\predict.py classify
@@ -272,7 +274,7 @@ Başka bir web uygulamasından işlev bitiş noktasını çağırmak için depon
     python -m http.server
     ```
     
-    # <a name="powershell"></a>[Powershell](#tab/powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```powershell
     py -m http.server
@@ -315,3 +317,4 @@ Ayrıca bkz:
 
 - [Visual Studio Code'u kullanarak işlevi Azure'a dağıtın.](https://code.visualstudio.com/docs/python/tutorial-azure-functions)
 - [Azure Fonksiyonları Python Geliştirici Kılavuzu](./functions-reference-python.md)
+- [Azure CLI'yi kullanarak Python işlev uygulamasına dosya paylaşımı nı montaj](./scripts/functions-cli-mount-files-storage-linux.md)

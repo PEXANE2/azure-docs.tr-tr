@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 326b79e1aca6fa82b3275249401c755428a8b71d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878570"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258669"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166'yı Azure IoT Hub'ına bağlayın
 
@@ -327,6 +327,17 @@ Aşağıdaki sonuçları gördüğünüzde örnek uygulama başarıyla çalış�
 * MXChip IoT DevKit'in LED'i yanıp sönüyor.
 
 ![Seri monitör çıkışı](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/result-serial-output.png)
+
+> [!NOTE]
+> LED'in yanıp sönmediği, Azure portalının cihazdan gelen verileri göstermediği, ancak OLED ekranının Çalışan olarak gösterdiği **aygıt...** olarak gösterdiği sınama sırasında bir hatayla karşılaşabilirsiniz. Azure portalında sorunu gidermek için IoT hub'ındaki aygıta gidin ve aygıta bir ileti gönderin. VS Code'daki seri monitörde aşağıdaki yanıtı görürseniz, aygıttan doğrudan iletişimin yönlendirici düzeyinde engellenmesi mümkündür. Bağlanan aygıtlar için yapılandırılan güvenlik duvarı ve yönlendirici kurallarını denetleyin. Ayrıca, giden bağlantı noktası 1833 açık olduğundan emin olun.
+> 
+> HATA: mqtt_client.c (ln 454): Hata: bitiş noktasına bağlantı açma hatası  
+> BİlGİ: >>>Bağlantı durumu: bağlantısı kesildi  
+> HATA: tlsio_mbedtls.c (ln 604): Altta yatan IO açık başarısız oldu  
+> HATA: mqtt_client.c (ln 1042): Hata: io_open başarısız oldu  
+> HATA: iothubtransport_mqtt_common.c (ln 2283): atcsliothub.azure-devices.net adrese bağlanan hata.  
+> BİlGİ: >>>Yeniden bağlanın.  
+> BİlGİ: IoThub Sürüm: 1.3.6  
 
 ### <a name="view-the-telemetry-received-by-azure-iot-hub"></a>Azure IoT Hub tarafından alınan telemetriyi görüntüleme
 

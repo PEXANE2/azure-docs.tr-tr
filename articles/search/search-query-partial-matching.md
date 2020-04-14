@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: db60a864ff29ff9eccdcfbdc0bd63587375d4bbd
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81114978"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262885"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Kısmi süreli arama ve özel karakterler (joker karakter, regex, desenler) ile desenler
 
@@ -22,6 +22,9 @@ ms.locfileid: "81114978"
 Dizin beklenen biçimde terimler yoksa kısmi ve desen arama sorunlu olabilir. Dizin oluşturmanın [sözlü çözümleme aşamasında](search-lucene-query-architecture.md#stage-2-lexical-analysis) (varsayılan standart çözümleyici varsayılarak), özel karakterler atılır, bileşik ve bileşik dizeleri bölünür ve beyaz boşluk silinir; bunların tümü, eşleşme bulunamayınca desen sorgularının başarısız lığa neden olabilir. Örneğin, bu içerik `+1 (425) 703-6214` dizinde gerçekte `"1"`bulunmadığından, `"6214"`(belirteç , `"3-62"` , `"425"` `"703"`) gibi bir telefon numarası sorguda gösterilmez. 
 
 Çözüm, kısmi terimler ve desenlerle eşleşebilmeniz için gerekirse boşluklar ve özel karakterler de dahil olmak üzere tam bir dizeyi koruyan bir çözümleyici çağırmaktır. Bozulmamış bir dize için ek bir alan oluşturma nın yanı sıra içerik koruyucu bir çözümleyici kullanmak çözümün temelidir.
+
+> [!TIP]
+> Postacı ve REST API'leri biliyor musunuz? Bu makalede açıklanan kısmi terimleri ve özel karakterleri sorgulamak için [sorgu örnekleri koleksiyonunu indirin.](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da kısmi arama nedir
 
@@ -74,6 +77,7 @@ Tam süreli belirteçler üreten bir çözümleyici seçerken, aşağıdaki çö
 
 | Analyzer | Davranışlar |
 |----------|-----------|
+| [dil analizörleri](index-add-language-analyzers.md) | Bileşik sözcüklerde veya dizelerde, sesli harflerdeki mutasyonlarda ve fiil formlarında tireleri korur. Sorgu desenleri tire içeriyorsa, bir dil çözümleyicisi kullanmak yeterli olabilir. |
 | [Anahtar kelime](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) | Tüm alanın içeriği tek bir terim olarak belirtilir. |
 | [Boşluk](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceAnalyzer.html) | Yalnızca beyaz alanlarda ayırır. Tire veya diğer karakterleri içeren terimler tek bir belirteç olarak kabul edilir. |
 | [özel analizör](index-add-custom-analyzers.md) | (önerilir) Özel bir çözümleyici oluşturmak, hem belirteç ve belirteç filtresini belirtmenize olanak tanır. Önceki çözümleyiciler olduğu gibi kullanılmalıdır. Özel bir çözümleyici, hangi belirteçleri ve belirteç filtreleri kullanmak için seçmenizi sağlar. <br><br>Önerilen kombinasyon, [küçük harf belirteç filtresine](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/LowerCaseFilter.html)sahip anahtar kelime [tokenizeridir.](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordTokenizer.html) Kendi başına, önceden tanımlanmış [anahtar kelime çözümleyici](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) sorguları başarısızlığa neden olabilir herhangi bir büyük harfli metin, küçük harf değildir. Özel bir çözümleyici, küçük harf belirteç filtresi eklemek için bir mekanizma sağlar. |
@@ -151,7 +155,9 @@ Postacı gibi bir web API test aracı kullanıyorsanız, belirteç çıktısın�
 
 ### <a name="use-built-in-analyzers"></a>Yerleşik çözümleyicileri kullanma
 
-Yerleşik veya önceden tanımlanmış çözümleyiciler, dizinde `analyzer` ek yapılandırma gerektirmeden alan tanımının özelliğinde adlarıyla belirtilebilir. Aşağıdaki örnek, çözümleyiciyi `whitespace` bir alana nasıl ayarlayacağınızı gösterir. Kullanılabilir yerleşik çözümleyiciler hakkında daha fazla bilgi [için, Önceden Tanımlanmış çözümleyiciler listesine](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)bakın. 
+Yerleşik veya önceden tanımlanmış çözümleyiciler, dizinde `analyzer` ek yapılandırma gerektirmeden alan tanımının özelliğinde adlarıyla belirtilebilir. Aşağıdaki örnek, çözümleyiciyi `whitespace` bir alana nasıl ayarlayacağınızı gösterir. 
+
+Diğer senaryolar ve diğer yerleşik çözümleyiciler hakkında daha fazla bilgi edinmek için [Önceden Tanımlanmış çözümleyiciler listesine](https://docs.microsoft.com/azure/search/index-add-custom-analyzers#predefined-analyzers-reference)bakın. 
 
 ```json
     {

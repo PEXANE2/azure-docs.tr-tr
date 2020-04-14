@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: e5353797aaa7d40e1b6a95685b79cb3fe99f5ecd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94be2e5d3c2c941ab17401a743ea86acbe8b6252
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277659"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273809"
 ---
 # <a name="virtual-machine-offer-settings-tab"></a>Sanal makine Teklif Ayarları sekmesi
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
 
 Sanal makineler için **Yeni Teklif** sayfası Teklif **Ayarları**adlı ilk sekmede açılır.  
 

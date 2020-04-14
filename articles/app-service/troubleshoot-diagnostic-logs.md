@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 433f8fa36f17f7cb145261273586a684658acda5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280475"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272534"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure Uygulama Hizmeti'ndeki uygulamalar için tanılama günlüğe kaydetmeyi etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -105,9 +105,9 @@ Her iki günlük türü de App Service dosya sisteminde depolanır. En fazla 50 
 
 ## <a name="add-log-messages-in-code"></a>Kodda günlük iletileri ekleme
 
-Uygulama kodunuzda, günlük iletilerini uygulama günlüklerine göndermek için olağan günlük olanaklarını kullanırsınız. Örnek:
+Uygulama kodunuzda, günlük iletilerini uygulama günlüklerine göndermek için olağan günlük olanaklarını kullanırsınız. Örneğin:
 
-- ASP.NET uygulamaları, bilgileri uygulama tanılama günlüğüne günlüğe kaydetmek için [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örnek:
+- ASP.NET uygulamaları, bilgileri uygulama tanılama günlüğüne günlüğe kaydetmek için [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) sınıfını kullanabilir. Örneğin:
 
     ```csharp
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
@@ -135,12 +135,12 @@ Günlükleri gerçek zamanlı olarak akışyapmadan önce, istediğiniz günlük
 az webapp log tail --name appname --resource-group myResourceGroup
 ```
 
-Hatalar gibi belirli olayları filtrelemek için **--Filtre** parametresini kullanın. Örnek:
+Hatalar gibi belirli olayları filtrelemek için **--Filtre** parametresini kullanın. Örneğin:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 ```
-HTTP gibi belirli günlük türlerine filtre uygulayın, **--Yol** parametresini kullanın. Örnek:
+HTTP gibi belirli günlük türlerine filtre uygulayın, **--Yol** parametresini kullanın. Örneğin:
 
 ```azurecli-interactive
 az webapp log tail --name appname --resource-group myResourceGroup --path http
@@ -188,7 +188,7 @@ Aşağıdaki tablodesteklenen günlük türlerini ve açıklamaları gösterir:
 | AppServiceHTTPLogs | Evet | Evet | Web sunucusu günlükleri |
 | AppServiceEnvironmentPlatformLogs | Evet | Evet | Uygulama Hizmet Ortamı: ölçekleme, yapılandırma değişiklikleri ve durum günlükleri|
 | AppServiceAuditLogs | Evet | Evet | FTP ve Kudu üzerinden giriş etkinliği |
-| AppServiceFileAuditLogs | Tba | Evet | FTP ve Kudu ile dosya değişiklikleri |
+| AppServiceFileAuditLogs | Evet | TBD | FTP ve Kudu ile dosya değişiklikleri |
 | AppServiceAppLogs | Tba | Java SE & Tomcat | Uygulama günlükleri |
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Sonraki adımlar

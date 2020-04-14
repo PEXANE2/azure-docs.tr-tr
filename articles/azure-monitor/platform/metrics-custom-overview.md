@@ -7,34 +7,51 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e104877ef641a87eac4ba19bb3342c6e029bf80c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 099ab150cde763551c2ad10a4e9159909ccff4dd
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294590"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270715"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitör'de özel ölçümler
 
-Azure'da kaynakları ve uygulamaları dağıttıkça, performansları ve sağlık durumları hakkında bilgi edinmek için telemetri toplamaya başlamak isteyebilirsiniz. Azure, bazı ölçümleri kutunun dışında kullanıma sunar. Bu ölçümlerstandart veya platform olarak adlandırılır. Ancak, doğaları sınırlı. Daha derin öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz.
+Azure'da kaynakları ve uygulamaları dağıttıkça, performansları ve sağlık durumları hakkında bilgi edinmek için telemetri toplamaya başlamak isteyebilirsiniz. Azure, bazı ölçümleri kutunun dışında kullanıma sunar. Bu [ölçümlerstandart veya platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)olarak adlandırılır. Ancak, doğaları sınırlı. Daha derin öngörüler sağlamak için bazı özel performans göstergeleri veya işletmeye özgü ölçümler toplamak isteyebilirsiniz.
 Bu **özel** ölçümler, Azure kaynaklarınızla çalışan bir aracı veya hatta dışarıdan gelen bir izleme sistemi olan ve doğrudan Azure Monitor'a gönderilen uygulama telemetriniz aracılığıyla toplanabilir. Azure Monitor'da yayımlandıktan sonra, Azure kaynaklarınız ve uygulamalarınız için özel ölçümlere Azure tarafından yayılan standart ölçümlerle birlikte göz atabilir, sorgulayabilir ve uyarıda bulunabilirsiniz.
 
-## <a name="send-custom-metrics"></a>Özel ölçümler gönderme
+## <a name="methods-to-send-custom-metrics"></a>Özel ölçümler gönderme yöntemleri
+
 Özel ölçümler Azure Monitor'a çeşitli yöntemlerle gönderilebilir:
 - Azure Application Insights SDK'yı kullanarak uygulamanızı enstrüman edin ve Azure Monitor'a özel telemetri gönderin. 
 - [Azure VM'](collect-custom-metrics-guestos-resource-manager-vm.md)nizde Windows Azure Diagnostics (WAD) uzantısını, [sanal makine ölçek setine,](collect-custom-metrics-guestos-resource-manager-vmss.md) [klasik VM'](collect-custom-metrics-guestos-vm-classic.md)ye veya [klasik Bulut Hizmetlerine](collect-custom-metrics-guestos-vm-cloud-service-classic.md) yükleyin ve Azure Monitor' a performans sayaçları gönderin. 
 - Azure Linux VM'nize [InfluxData Telegraf aracısını](collect-custom-metrics-linux-telegraf.md) yükleyin ve Azure Monitor çıktı eklentisini kullanarak ölçümler gönderin.
 - Özel ölçümleri doğrudan Azure Monitor REST `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` [API'sine](../../azure-monitor/platform/metrics-store-custom-rest-api.md)gönderin.
 
+## <a name="pricing-model"></a>Fiyatlandırma modeli
+
+Standart ölçümleri (platform ölçümleri) Azure Monitörü ölçümleri deposuna yutmanın bir maliyeti yoktur. Azure Monitor ölçüm leri deposuna alınan özel ölçümler, mbyte başına faturalandırılır ve her özel metrik veri noktası 8 bayt boyutunda olarak yazılır. Tüm yutulan ölçümler 90 gün boyunca saklanır.
+
+Metrik sorgular, standart API çağrılarının sayısına göre ücretlendirilir. Standart API çağrısı, 1.440 veri noktasını analiz eden bir çağrıdır (1.440 aynı zamanda günlük metrik başına depolanabilen toplam veri noktası sayısıdır). Bir API çağrısı 1.440'tan fazla veri noktasını analiz ederse, birden çok standart API çağrısı olarak sayılır. Bir API çağrısı 1.440'tan az veri noktasını analiz ederse, birden az API çağrısı olarak sayılır. Standart API çağrılarının sayısı her gün hesaplanır ve günlük analiz edilen toplam veri noktası sayısı 1.440'a bölünür.
+
+Azure [Monitor fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)özel ölçümler ve metrik sorgular için özel fiyat ayrıntıları mevcuttur.
+
+> [!NOTE]  
+> Uygulama Öngörüleri SDK aracılığıyla Azure Monitor'a gönderilen ölçümler, yutulan günlük verileri olarak faturalandırılır ve yalnızca Uygulama Öngörüleri özelliği [Özel metrik boyutlarda uyarı yı etkinleştir](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) özelliği seçilirse ek ölçüm ücretlerine tabi olacaktır. [Bölgenizdeki Application Insights fiyatlandırma modeli](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) ve [fiyatları](https://azure.microsoft.com/pricing/details/monitor/)hakkında daha fazla bilgi edinin.
+
+> [!NOTE]  
+> Özel ölçümler ve metrik sorguları için faturalandırmanın ne zaman etkinleştirilecek lerine ilişkin ayrıntılar için [Azure Monitor fiyatlandırma sayfasını](https://azure.microsoft.com/pricing/details/monitor/) kontrol edin. 
+
+## <a name="how-to-send-custom-metrics"></a>Özel ölçümler nasıl gönderilir?
+
 Azure Monitor'a özel ölçümler gönderdiğinde, bildirilen her veri noktası veya değeri aşağıdaki bilgileri içermelidir.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 Azure Monitor'a özel ölçümler göndermek için, metriyi gönderen **varlığın,** talebin Taşıyıcı üstbilgisinde geçerli bir Azure Etkin Dizin (Azure AD) belirteci gerekir. Geçerli bir taşıyıcı belirteci edinmenin desteklenen birkaç yolu vardır:
 1. [Azure kaynakları için yönetilen kimlikler.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) VM gibi bir Azure kaynağına kimlik verir. Yönetilen Hizmet Kimliği (MSI), kaynaklara belirli işlemleri yürütmek için izin vermek üzere tasarlanmıştır. Bir örnek, kaynağın kendisi hakkında ölçümler yontmasını sağlamaktır. Bir kaynak veya MSI' ye başka bir kaynakta **İzleme Ölçümleri Yayımcısı** izinleri verilebilir. Bu izinle, MSI diğer kaynaklar için de ölçümler yatabilir.
 2. [Azure AD Hizmet Sorumlusu.](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) Bu senaryoda, bir Azure AD uygulaması veya hizmeti, bir Azure kaynağı hakkında ölçümler oluşturmak için izinler atanabilir.
 İsteğin kimliğini doğrulamak için Azure Monitor, Azure AD ortak anahtarlarını kullanarak uygulama belirteci doğrular. Varolan **İzleme Ölçümleri Yayımcısı** rolü zaten bu izne sahiptir. Azure portalında kullanılabilir. Hizmet ilkesi, hangi kaynaklar için özel ölçümler yayan kaynaklara bağlı olarak, gerekli kapsamda **İzleme Ölçümleri Yayımcısı** rolü verilebilir. Örnekler bir abonelik, kaynak grubu veya belirli bir kaynaktır.
 
-> [!NOTE]  
+> [!TIP]  
 > Özel ölçümler yatsın diye bir Azure AD belirteci istediğinizde, belirteç için `https://monitoring.azure.com/`istenen hedef kitlenin veya kaynağın . '/''
 
 ### <a name="subject"></a>Özne
@@ -42,8 +59,7 @@ Bu özellik, özel ölçümiçin bildirilen Hangi Azure kaynak kimliğini yakala
 
 > [!NOTE]  
 > Bir kaynak grubunun veya aboneliğin kaynak kimliğine karşı özel ölçümler yarayamayapamazsınız.
->
->
+
 
 ### <a name="region"></a>Bölge
 Bu özellik, metrik leri yaydığınız kaynağın hangi Azure bölgesinde dağıtılmış olduğunu yakalar. Ölçümler, kaynağın dağıtıldığı bölgeyle aynı Azure Monitor bölgesel bitiş noktasına yayılmalıdır. Örneğin, Batı ABD'de dağıtılan bir VM için özel ölçümler WestUS bölgesel Azure Monitor bitiş noktasına gönderilmelidir. Bölge bilgileri, API çağrısının URL'sinde de kodlanır.
@@ -84,7 +100,7 @@ Azure Monitor tüm ölçümleri bir dakikalık parçalı aralıklarla depolar. B
 * **Sum**: Dakika boyunca tüm numune ve ölçümlerden gözlenen tüm değerlerin toplamı.
 * **Sayım**: Dakika içinde alınan numune ve ölçüm sayısı.
 
-Örneğin, belirli bir dakika içinde uygulamanızda 4 oturum açma işlemi varsa, her biri için ortaya çıkan ölçülen gecikmeler aşağıdaki gibi olabilir:
+Örneğin, belirli bir dakika içinde uygulamanızda dört oturum açma işlemi varsa, her biri için ortaya çıkan ölçülen gecikmeler aşağıdaki gibi olabilir:
 
 |İşlem 1|İşlem 2|İşlem 3|İşlem 4|
 |---|---|---|---|

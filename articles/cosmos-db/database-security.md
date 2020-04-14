@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: c92f045f2c8d4443d596697596363bda3d0df975
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 8a0ef4c5abcd4c4137a878adf6a7fff9e80c2764
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985295"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273520"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
@@ -66,8 +66,8 @@ Her birini ayrıntılı olarak inceleyelim.
 |Genel çoğaltma|Azure Cosmos DB, tek bir düğmeyi tıklatarak verilerinizi Azure'un dünya çapındaki veri merkezlerinden herhangi birine çoğaltmanızı sağlayan anahtar teslim küresel dağıtım sunar. Genel çoğaltma, tüm dünyada küresel olarak ölçeklendirmenize ve verilerinize düşük gecikmeli erişim sağlamanıza olanak tanır.<br><br>Güvenlik bağlamında, genel çoğaltma bölgesel hatalara karşı veri koruması sağlar.<br><br>[Verileri küresel olarak dağıtma](distribute-data-globally.md) bölümünde daha fazlasını öğrenin.|
 |Bölgesel yük devretme|Verilerinizi birden fazla veri merkezinde çoğalttınızsa, bölgesel bir veri merkezi çevrimdışı olursa Azure Cosmos DB işlemlerinizi otomatik olarak devraşar. Verilerinizin çoğaltıldığı bölgeleri kullanarak öncelikle başarısız bölgelerin listesini oluşturabilirsiniz. <br><br>[Azure Cosmos DB'deki Bölgesel Arızalar hakkında](high-availability.md)daha fazla bilgi edinin.|
 |Yerel çoğaltma|Azure Cosmos DB, tek bir veri merkezi içinde bile yüksek kullanılabilirlik için verileri otomatik olarak çoğaltır ve size [tutarlılık düzeyleri](consistency-levels.md)seçeneği sunar. Bu çoğaltma, tüm tek bölge hesapları ve tüm çok bölgeli hesaplar için rahat tutarlılığa sahip %99,99 [kullanılabilirlik SLA'sını](https://azure.microsoft.com/support/legal/sla/cosmos-db) ve tüm çok bölgeli veritabanı hesaplarında %99,999 okuma kullanılabilirliğini garanti eder.|
-|Otomatik çevrimiçi yedeklemeler|Azure Cosmos veritabanları düzenli olarak yedeklenir ve coğrafi yedek deposunda depolanır. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)hakkında daha fazla bilgi edinin.|
-|Silinen verileri geri yükleme|Otomatik çevrimiçi yedeklemeler, olaydan 30 gün sonrasına kadar yanlışlıkla silmiş olabileceğiniz verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme hakkında](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) daha fazla bilgi edinin|
+|Otomatik çevrimiçi yedeklemeler|Azure Cosmos veritabanları düzenli olarak yedeklenir ve coğrafi yedek deposunda depolanır. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md)hakkında daha fazla bilgi edinin.|
+|Silinen verileri geri yükleme|Otomatik çevrimiçi yedeklemeler, olaydan 30 gün sonrasına kadar yanlışlıkla silmiş olabileceğiniz verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme hakkında](online-backup-and-restore.md) daha fazla bilgi edinin|
 |Hassas verileri koruma ve yalıtma|Yeniliklerde listelenen bölgelerdeki tüm veriler? şimdi istirahatte şifrelenir.<br><br>Kişisel veriler ve diğer gizli veriler belirli bir kapsayıcıya yalıtılabilir ve okuma-yazma veya salt okunur erişim belirli kullanıcılarla sınırlı olabilir.|
 |Saldırılar için monitör|Denetim [günlüğü ve etkinlik günlüklerini](logging.md)kullanarak, normal ve anormal etkinlik için hesabınızı izleyebilirsiniz. Kaynaklarınızda hangi işlemlerin gerçekleştirilmediğini, işlemi kimin başlattığını, işlemin ne zaman gerçekleştiğini, işlemin durumunu ve bu tabloyu izleyen ekran görüntüsünde gösterildiği gibi çok daha fazlasını görüntüleyebilirsiniz.|
 |Saldırılara yanıt verme|Olası bir saldırıyı bildirmek için Azure desteğiyle iletişime geçtikten sonra, 5 adımlık bir olay yanıt süreci başlatıldı. 5 adımlı işlemin amacı, bir sorun algılandıktan ve bir soruşturma başlatıldıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olan en kısa sürede geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik Yanıtı](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)hakkında daha fazla bilgi edinin.|

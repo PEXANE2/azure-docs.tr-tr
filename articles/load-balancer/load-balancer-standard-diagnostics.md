@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 951f24ad06014f6d95f10c91e1bad8e99bbbc736
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9003d35ce2eea18aa912a866802b026bb923aa08
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991782"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272704"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -37,8 +37,8 @@ Azure Yük Dengeleyici, Azure portalındaki Azure Ölçümleri aracılığıyla 
 
 | Ölçüm | Kaynak türü | Açıklama | Önerilen toplama |
 | --- | --- | --- | --- |
-| Veri yolu kullanılabilirliği (VIP kullanılabilirliği)| Genel ve dahili yük dengeleyicisi | Standart Yük Dengeleyicisi, vm'nizi destekleyen SDN yığınına kadar bir bölgenin içinden yük dengeleyicisinin ön ucuna kadar veri yolunu sürekli olarak uygular. Sağlıklı örnekler kaldığı sürece, ölçüm uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçüm uygulamanız için görünmezdir ve diğer işlemleri engellemez.| Ortalama |
-| Sağlık sondası durumu (DIP kullanılabilirliği) | Genel ve dahili yük dengeleyicisi | Standart Yük Dengeleyici, uygulama uç noktanızın durumunu yapılandırma ayarlarınıza göre izleyen dağıtılmış bir sistem durumu yoklama hizmeti kullanır. Bu metrik, yük dengeleyici havuzundaki her örnek bitiş noktasının toplu veya bitiş noktası başına filtrelenmiş görünümünü sağlar. Yük Dengeleyici'nin, sağlık sondası yapılandırmanızda belirtildiği gibi uygulamanızın durumunu nasıl gördüğünü görebilirsiniz. |  Ortalama |
+| Veri yolu kullanılabilirliği | Genel ve dahili yük dengeleyicisi | Standart Yük Dengeleyicisi, vm'nizi destekleyen SDN yığınına kadar bir bölgenin içinden yük dengeleyicisinin ön ucuna kadar veri yolunu sürekli olarak uygular. Sağlıklı örnekler kaldığı sürece, ölçüm uygulamanızın yük dengeli trafiğiyle aynı yolu izler. Müşterilerinizin kullandığı veri yolu da doğrulanır. Ölçüm uygulamanız için görünmezdir ve diğer işlemleri engellemez.| Ortalama |
+| Sağlık sondası durumu | Genel ve dahili yük dengeleyicisi | Standart Yük Dengeleyici, uygulama uç noktanızın durumunu yapılandırma ayarlarınıza göre izleyen dağıtılmış bir sistem durumu yoklama hizmeti kullanır. Bu metrik, yük dengeleyici havuzundaki her örnek bitiş noktasının toplu veya bitiş noktası başına filtrelenmiş görünümünü sağlar. Yük Dengeleyici'nin, sağlık sondası yapılandırmanızda belirtildiği gibi uygulamanızın durumunu nasıl gördüğünü görebilirsiniz. |  Ortalama |
 | SYN (senkronize) paketleri | Genel ve dahili yük dengeleyicisi | Standart Yük Dengeleyici, İletim Kontrol Protokolü (TCP) bağlantılarını sonlandırmaz veya TCP veya UDP paket akışlarıyla etkileşimde lmaz. Akışlar ve el sıkışmaları her zaman kaynak ve VM örneği arasındadır. TCP iletişim kuralı senaryolarınızı daha iyi gidermek için, kaç TCP bağlantı denemesi yapıldığını anlamak için SYN paketleri sayaçlarını kullanabilirsiniz. Metrik, alınan TCP SYN paketlerinin sayısını bildirir.| Ortalama |
 | SNAT bağlantıları | Genel yük dengeleyici |Standart Yük Dengeleyicisi, Genel IP adresi ön uça kılık değiştiren giden akış sayısını bildirir. Kaynak ağ adresi çevirisi (SNAT) bağlantı noktaları tükenmez bir kaynaktır. Bu metrik, uygulamanızın giden kaynaklı akışlar için SNAT'ye ne kadar yoğun güvendiğinin bir göstergesi olabilir. Başarılı ve başarısız giden SNAT akışları için sayaçlar rapor edilir ve giden akışlarınızın durumunu gidermek ve anlamak için kullanılabilir.| Ortalama |
 | Tahsis edilmiş SNAT bağlantı noktaları | Genel yük dengeleyici | Standart Yük Dengeleyicisi, arka uç örneği başına ayrılan SNAT bağlantı noktası sayısını bildirir | Ortalama. |
@@ -85,13 +85,13 @@ Uyarıları yapılandırmak için:
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 
-#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Veri yolu yukarı ve benim yük dengeleyici VIP için kullanılabilir mi?
+#### <a name="is-the-data-path-up-and-available-for-my-load-balancer-frontend"></a>Veri yolu yukarı ve benim Yük Dengeleyici Frontend için kullanılabilir mi?
 <details><summary>Genişlet</summary>
 
-VIP kullanılabilirlik ölçümü, bölgedeki veri yolunun durumunu, Sanal Bilgilerinizin bulunduğu bilgi işlem ana bilgisayara açıklar. Metrik, Azure altyapısının durumunun bir yansımasıdır. Ölçümü aşağıdakiler için kullanabilirsiniz:
+Veri yolu kullanılabilirlik ölçümü, bölgedeki veri yolunun durumunu, Sanal M'lerinizin bulunduğu bilgi işlem ana bilgisayara açıklar. Metrik, Azure altyapısının durumunun bir yansımasıdır. Ölçümü aşağıdakiler için kullanabilirsiniz:
 - Hizmetinizin harici kullanılabilirliğini izleme
 - Daha derine inin ve hizmetinizin dağıtıldığı platformun sağlıklı olup olmadığını veya konuk işletim sisteminizin veya uygulama örneğinizin sağlıklı olup olmadığını anlayın.
-- Bir olayın hizmetinizle mi yoksa temel veri düzlemiyle mi ilişkili olduğunu yalıtın. Bu ölçümü sağlık sondası durumuyla ("DIP kullanılabilirliği") karıştırmayın.
+- Bir olayın hizmetinizle mi yoksa temel veri düzlemiyle mi ilişkili olduğunu yalıtın. Bu ölçümü sistem durumu sondası durumuyla karıştırmayın ("Arka Uç Örneği kullanılabilirliği").
 
 Standart Yük Dengeleyici kaynaklarınız için Veri Yolu Kullanılabilirliğini almak için:
 1. Doğru yük dengeleyici kaynağının seçildiğinden emin olun. 
@@ -107,7 +107,7 @@ Metrik, etkin, bant içi bir ölçüm tarafından oluşturulur. Bölge içinde b
 
 Dağıtımınızın ön ucu ve kuralıyla eşleşen bir paket düzenli aralıklarla oluşturulur. Bölgeden, arka uç havuzundaki VM'nin bulunduğu ana bilgisayara geçer. Yük dengeleyici altyapısı, diğer tüm trafikte olduğu gibi aynı yük dengeleme ve çeviri işlemlerini gerçekleştirir. Bu sonda, yük dengeli bitiş noktanızda bant içindedir. Sonda, arka uç havuzunda sağlıklı bir VM'nin bulunduğu işlem ana bilgisayar adabına geldikten sonra, hesaplama ana bilgisayarı sondalama hizmetine yanıt verir. VM'niz bu trafiği görmüyor.
 
-VIP kullanılabilirliği aşağıdaki nedenlerden dolayı başarısız olur:
+Datapath kullanılabilirliği kullanılabilirliği aşağıdaki nedenlerden dolayı başarısız olur:
 - Dağıtımınızın arka uç havuzunda kalan sağlıklı VM'leri yoktur. 
 - Altyapı kesintisi meydana geldi.
 
@@ -116,7 +116,7 @@ Tanılama amacıyla, Veri [Yolu Kullanılabilirlik ölçüm'üni sistem durumu s
 Çoğu senaryo için toplama olarak **Ortalama'yı** kullanın.
 </details>
 
-#### <a name="are-the-back-end-instances-for-my-vip-responding-to-probes"></a>VIP'min arka uç örnekleri sondalara yanıt veriyor mu?
+#### <a name="are-the-backend-instances-for-my-load-balancer-responding-to-probes"></a>Yük Dengeleyicimin Arka Uç Örnekleri sondalara yanıt veriyor mu?
 <details>
   <summary>Genişlet</summary>
 Sistem durumu durumu ölçümü, yük bakiyecinizin sistem durumu sondasını yapılandırdığınızda uygulama dağıtımınızın durumunu sizin tarafından yapılandırılmış olarak açıklar. Yük dengeleyicisi, yeni akışların nereye gönderilen yeri belirlemek için sistem durumu sondasının durumunu kullanır. Sistem durumu sondaları bir Azure altyapı adresinden kaynaklanır ve VM'nin konuk işletim sistemi içinde görülebilir.
@@ -209,19 +209,19 @@ Bayt veya paket sayısı istatistiklerini almak için:
 #### <a name="how-do-i-diagnose-my-load-balancer-deployment"></a><a name = "vipavailabilityandhealthprobes"></a>Yük dengeleyici dağıtımımı nasıl tanılarım?
 <details>
   <summary>Genişlet</summary>
-TEK bir grafikte VIP kullanılabilirliği ve sistem durumu sondası ölçümlerinin bir birleşimini kullanarak sorunu nerede arayacağınızı belirleyebilir ve sorunu çözebilirsiniz. Azure'un doğru çalıştığından güvence alabilir ve yapılandırmanın veya uygulamanın temel neden olduğunu kesin olarak belirlemek için bu bilgileri kullanabilirsiniz.
+Tek bir grafikte Veri Yolu Kullanılabilirliği ve Sistem Durumu Durum ölçümlerinin bir birleşimini kullanarak sorunu nerede arayacağınızı belirleyebilir ve sorunu çözebilirsiniz. Azure'un doğru çalıştığından güvence alabilir ve yapılandırmanın veya uygulamanın temel neden olduğunu kesin olarak belirlemek için bu bilgileri kullanabilirsiniz.
 
 Azure'un sağladığınız yapılandırmaya göre dağıtımınızın durumunu nasıl gördüğünü anlamak için sistem durumu sondası ölçümlerini kullanabilirsiniz. Sağlık sondalarına bakmak, bir nedeni izlemede veya belirlemede her zaman harika bir ilk adımdır.
 
-Bunu bir adım daha ileri götürebilir ve Azure'un belirli dağıtımınızdan sorumlu olan temel veri düzleminin durumunu nasıl gördüğünü anlamak için VIP kullanılabilirlik ölçümlerini kullanabilirsiniz. Her iki ölçütü birleştirdiğinizde, bu örnekte gösterildiği gibi hatanın nerede olabileceğini yalıtabilirsiniz:
+Bunu bir adım daha ileri götürebilir ve Azure'un belirli dağıtımınızdan sorumlu olan temel veri düzleminin durumunu nasıl görüntülediğinizhakkında bilgi edinmek için Veri Yolu kullanılabilirlik ölçümlerini kullanabilirsiniz. Her iki ölçütü birleştirdiğinizde, bu örnekte gösterildiği gibi hatanın nerede olabileceğini yalıtabilirsiniz:
 
 ![Veri Yolu Kullanılabilirliği ve Sistem Durumu ölçümlerini birleştirme](./media/load-balancer-standard-diagnostics/lbmetrics-dipnvipavailability-2bnew.png)
 
 *Şekil: Veri Yolu Kullanılabilirliği ve Sistem Durumu ölçümlerinin birleştirilmesi*
 
 Grafik aşağıdaki bilgileri görüntüler:
-- VM'lerinizi barındıran altyapı grafiğin başında ve yüzde 0'da kullanılamadı. Daha sonra, altyapı sağlıklı ydı ve VM'lere ulaşılabildi ve arka uca birden fazla VM yerleştirildi. Bu bilgiler, daha sonra yüzde 100 olan veri yolu kullanılabilirliği (VIP kullanılabilirliği) için mavi izleme ile gösterilir. 
-- Mor izlemeyle gösterilen sağlık sondası durumu (DIP kullanılabilirliği), grafiğin başında yüzde 0'dır. Sağlık sondası durumunun (DIP kullanılabilirliği) sağlıklı hale geldiği ve müşterinin dağıtımının yeni akışları kabul ettiği yeşil vurgular la çevrelenmiş alan.
+- VM'lerinizi barındıran altyapı grafiğin başında ve yüzde 0'da kullanılamadı. Daha sonra, altyapı sağlıklı ydı ve VM'lere ulaşılabildi ve arka uca birden fazla VM yerleştirildi. Bu bilgiler, daha sonra yüzde 100 olan veri yolu kullanılabilirliği için mavi izleme ile gösterilir. 
+- Mor iz ile gösterilen sağlık sondası durumu grafiğin başında yüzde 0'dır. Sağlık sondası durumunun sağlıklı hale geldiği ve müşterinin dağıtımının yeni akışları kabul ettiği yeşil alan, yeşil vurgular.
 
 Grafik, müşterilerin başka sorunlar oluşup oluşmadığını tahmin etmek veya destek sormak zorunda kalmadan dağıtımı kendi başlarına gidermelerine olanak tanır. Sistem durumu sondaları bir yanlış yapılandırma veya başarısız bir uygulama nedeniyle başarısız olduğundan hizmet kullanılamadı.
 </details>

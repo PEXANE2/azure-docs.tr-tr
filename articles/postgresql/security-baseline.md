@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f83cee2fb1435252f34d1a64f531b5befef66ffb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4034759dc4f20649c15236b057e348966d72409e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289699"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261169"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>PostgreSQL Tek Sunucu için Azure Veritabanı için Azure Güvenlik Taban Çizgisi
 
@@ -134,7 +134,7 @@ PostgreSQL için Azure Veritabanı için hizmet etiketi kullanımını anlayın:
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint nasıl oluşturulur:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -908,7 +908,7 @@ Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız
 
 **Kılavuz**: PostgreSQL sunucusu için Azure Veritabanı, veritabanlarına erişmek için Azure Active Directory kimlik doğrulamasını (önizlemede) destekler.  PostgreSQL sunucusu için Azure Veritabanı oluştururken, yönetici bir kullanıcı için kimlik bilgileri sağlarsınız. Bu yönetici ek veritabanı kullanıcıları oluşturmak için kullanılabilir.  
 
-PostgreSQL sunucusu için Azure Veritabanınıza erişmek için kullanılan Azure Sanal Makineler veya Azure Uygulama Hizmeti'nde çalışan web uygulamaları için, Azure Veritabanı için kimlik bilgilerini depolamak ve almak için Yönetilen Hizmet Kimliğini Azure Key Vault ile birlikte kullanın PostgreSQL sunucusu. Key Vault Soft Delete etkin olduğundan emin olun.
+PostgreSQL sunucusu için Azure Veritabanınıza erişmek için kullanılan Azure Sanal Makineler veya Azure Uygulama Hizmeti'nde çalışan web uygulamaları için, PostgreSQL sunucusu için Azure Veritabanı kimlik bilgilerini depolamak ve almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. Key Vault Soft Delete etkin olduğundan emin olun.
 
 Azure Etkin Dizini'nde (AD) otomatik olarak yönetilen bir kimlikle Azure hizmetlerine yönetilen kimlik sağlamak için Yönetilen Kimlikler'i kullanın. Yönetilen Kimlikler, anahtarınızda herhangi bir kimlik belgesi olmadan Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlere kimlik doğrulamanızı sağlar.
 

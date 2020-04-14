@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
-ms.openlocfilehash: 5263d24c411ef8de4187c2fd750013374d779f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f13e4066137e0d76612040d9f6e5ff3d0aa399c8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277948"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273911"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>VHD'lerinizden bir VM dağıtma
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin hareketli yönetimine İş Ortağı Merkezi'ne başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine teknik varlıklarınızı oluştur'daki](https://aka.ms/AzureVMTechAsset) yönergeleri izleyin.
 
 Bu bölümde, Azure tarafından dağıtılan bir sanal sabit diskten (VHD) sanal makine (VM) nasıl dağıtılanın açıklanır.  Gerekli araçları listeler ve bunları bir kullanıcı VM görüntüsü oluşturmak için nasıl kullanılacağını listeler ve ardından PowerShell komut dosyalarını kullanarak Azure'a dağıtır.
 

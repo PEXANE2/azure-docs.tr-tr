@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 18de50473e3dd6ca8ddda9575a247e00530032e8
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 11f52df683b7a85a8ad5163bbede33d786897452
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115409"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257275"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -197,7 +197,7 @@ Birincil metrik, en iyi duruma getirmek için model eğitimi sırasında kullan�
 
 Her otomatik makine öğrenimi deneyinde, verileriniz farklı ölçeklerde bulunan özelliklere duyarlı *belirli* algoritmalara yardımcı olmak için [otomatik olarak ölçeklendirilir ve normalleştirilir.](concept-automated-ml.md#preprocess)  Ancak, eksik değerler imputation, kodlama ve dönüşümler gibi ek featurization etkinleştirebilirsiniz. [Ne featurization dahil olduğu hakkında daha fazla bilgi edinin.](how-to-use-automated-ml-for-ml-models.md#featurization)
 
-Denemelerinizi yapılandırırken, gelişmiş ayarı `featurization`etkinleştirebilirsiniz. Aşağıdaki tabloda [ `AutoMLConfig` sınıfta](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)featurization için kabul edilen ayarları gösterir.
+Denemelerinizi yapılandırırken, gelişmiş ayarı `featurization`etkinleştirebilirsiniz. Aşağıdaki tablo, [AutoMLConfig sınıfında](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)featurization için kabul edilen ayarları gösterir.
 
 |Featurization Yapılandırma | Açıklama |
 | ------------- | ------------- |

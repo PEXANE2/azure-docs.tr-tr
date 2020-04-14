@@ -5,29 +5,31 @@ author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
 ms.devlang: php
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 04/13/2020
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c73fb55e485d0c92d27eac2ac197a81337b9d5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 208f4f7b4c2d8562d5237a40f52e4774ea5c5606
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016808"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272483"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Azure Uygulama Hizmetinde PHP'yi yapılandırma
 
 ## <a name="introduction"></a>Giriş
 
-Bu kılavuz, [Azure Uygulama Hizmeti'ndeki](https://go.microsoft.com/fwlink/?LinkId=529714)web uygulamaları, mobil arka uçlar ve API uygulamaları için yerleşik PHP çalışma süresini nasıl yapılandırabileceğinizi, özel bir PHP çalışma süresi sağladığınız ve uzantıları etkinleştirmenizi gösterir. Uygulama Hizmetini kullanmak için [ücretsiz deneme sürümüne]kaydolun. Bu kılavuzdan en iyi şekilde haberdar olmak için öncelikle App Service'de bir PHP uygulaması oluşturmanız gerekir.
+Bu kılavuz, [Azure Uygulama Hizmeti'ndeki](https://go.microsoft.com/fwlink/?LinkId=529714)web uygulamaları ve API uygulamaları için yerleşik PHP çalışma süresini nasıl yapılandırabileceğinizi, özel bir PHP çalışma süresi sağladığınız ve uzantıları etkinleştirmenizi gösterir. Uygulama Hizmetini kullanmak için [ücretsiz deneme sürümüne]kaydolun. Bu kılavuzdan en iyi şekilde haberdar olmak için öncelikle App Service'de bir PHP uygulaması oluşturmanız gerekir.
 
 ## <a name="how-to-change-the-built-in-php-version"></a>Nasıl yapılır: Yerleşik PHP sürümünü değiştirme
 
-Varsayılan olarak, PHP 5.6 yüklenir ve bir Uygulama Hizmeti uygulaması oluşturduğunuzda hemen kullanılabilir. Kullanılabilir sürüm revizyonunu, varsayılan yapılandırmasını ve etkin uzantıları görmenin en iyi yolu [phpinfo()] işlevini çağıran bir komut dosyası dağıtmaktır.
+Bir web uygulaması oluştururken, PHP'nin yapılandırılacak sürümünü seçebilirsiniz. Şu [anda](https://github.com/Azure/app-service-linux-docs/blob/master/Runtime_Support/php_support.md) desteklenen sürümler hakkında güncel bilgiler için App Service'de PHP'ye bakın.
 
-PHP 7.0 ve PHP 7.2 sürümleri de mevcuttur, ancak varsayılan olarak etkinleştirilir. PHP sürümünü güncelleştirmek için aşağıdaki yöntemlerden birini izleyin:
+Uygulamanızın mevcut çalışma zamanı sürümünü denetlemek için [phpinfo()] işlevini çağıran bir komut dosyası dağıtabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+PHP sürümünü güncelleştirmek için aşağıdaki yöntemlerden birini izleyin:
+
+### <a name="azure-portal"></a>Azure portal
 
 1. [Azure portalında](https://portal.azure.com) uygulamanıza göz atın ve **Yapılandırma** sayfasına gidin.
 
@@ -49,7 +51,7 @@ Azure Komut Satırı Arabirimini kullanmak için [Bilgisayarınıza Azure CLI](h
 
 2. Uygulama için PHP sürümünü ayarlayın.
 
-        az webapp config set --php-version {5.6 | 7.0 | 7.1 | 7.2} --name {app-name} --resource-group {resource-group-name}
+        az webapp config set --php-version {5.6 | 7.2 | 7.3} --name {app-name} --resource-group {resource-group-name}
 
 3. PHP sürümü artık ayarlandı. Bu ayarları onaylayabilirsiniz:
 
@@ -79,7 +81,7 @@ Yerleşik PHP çalışma zamanı için, aşağıdaki adımları izleyerek yapıl
 
 1. Uygulamanıza anahtar `PHP_INI_SCAN_DIR` ve değerle Uygulama Ayarı ekleme`d:\home\site\ini`
 1. Dizinde `settings.ini` Kudu&lt;Console (http:// site&gt;adı .scm.azurewebsite.net) kullanarak bir dosya oluşturun. `d:\home\site\ini`
-1. Bir `php.ini` dosyada `settings.ini` kullanacağınız sözdizimini kullanarak dosyaya yapılandırma ayarları ekleyin. Örneğin, `curl.cainfo` ayarı bir `*.crt` dosyaya doğrultmak ve 'wincache.maxfilesize' ayarını 512K olarak ayarlamak istiyorsanız, dosyanız `settings.ini` bu metni içerir:
+1. Bir `php.ini` dosyada `settings.ini` kullanacağınız sözdizimini kullanarak dosyaya yapılandırma ayarları ekleyin. Örneğin, `curl.cainfo` ayarı bir `*.crt` dosyaya doğrultmak ve 'wincache.maxfilesize' ayarını 512 `settings.ini` K olarak ayarlamak istiyorsanız, dosyanız bu metni içerir:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"

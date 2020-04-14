@@ -5,17 +5,20 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2a1022c6d041bf645b43dfed391a489de30b2fce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df94cba1f77ae3ea8cf595e7c651af7a69108bb6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288572"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255983"
 ---
 <a name="api-prerequisites"></a>API Ön Koşulları
 ================
+
+> [!NOTE]
+> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Bulut İş Ortağı Portal API'lerini kullanmanız için gereken iki programatik varlık vardır: bir hizmet yöneticisi ve Bir Azure Etkin Dizin (Azure AD) erişim belirteci.
 
@@ -41,7 +44,7 @@ Hizmet ilkesini eklemek için aşağıdaki adımları kullanın:
 3. **Tür** açılır tarihinden **Hizmet Sorumlusu'nu** seçin ve aşağıdaki ayrıntıları ekleyin:
 
 -   Hizmet sorumlusu için bir Friendly `spAccount` **Name,** örneğin.
--   **Başvuru Kimliği**. Bu tanımlayıcıyı bulmak için [Azure Portalı'na](https://portal.azure.com)gidin , **Azure Active Directory'yi**tıklatın, **Uygulama kayıtlarını**seçin ve uygulamanızı tıklatın.
+-   **Başvuru Kimliği**. Bu tanımlayıcıyı bulmak için [Azure portalına](https://portal.azure.com)gidin , **Azure Active Directory'yi**tıklatın, **Uygulama kayıtlarını**seçin ve uygulamanızı tıklatın.
 -   Azure AD kiracınız için **Dizin Kimliği**olarak da bilinen Kiracı **Kimliği.** Bu tanımlayıcıyı Azure Etkin Dizin sayfasında, **Özellikler** [altında, Azure portalında](https://portal.azure.com)bulabilirsiniz.
 -   Hizmet ana nesnenizin **Nesne Kimliği.** Bu tanımlayıcıyı Azure portalından alabilirsiniz. Azure **Active Directory'ye**gidin, **Uygulama kayıtlarını**seçin, uygulamanızı tıklayın ve **yerel dizinde Yönetilen uygulama**altında uygulama adını tıklayın. Ardından, Nesne Kimliğini bulmak için **Özellikler** sayfasına gidin. Uygulamanızdaki ilk Nesne Kimliğini değil, yönetilen uygulamadaki Nesne Kimliğini aldığınızdan emin olun.
 -   RBAC için kullanılacak hesapla ilişkili **rol.**

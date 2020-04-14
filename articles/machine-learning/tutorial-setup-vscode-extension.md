@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 02/24/2020
-ms.openlocfilehash: 583071ee22e4fb9cffc741520b1583790002a5bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/13/2020
+ms.openlocfilehash: 731ab18346ac9f100862174312c2c9950026f1eb
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77604839"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272941"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension"></a>Azure Machine Learning Visual Studio Code uzantısını ayarlama
 
@@ -70,36 +70,36 @@ Artık azure'da hesap kimlik bilgilerinizle oturum açtıysanız, bir makine ö�
 1. Komut paleti genişlettiğinde, istemleri izleyin.
 
     1. Azure aboneliğinizi seçin.
-    1. **Yeni bir Azure ML çalışma alanı oluştur'u** seçin
-    1. **TensorFlow Tek Düğüm Eğitimi** iş türünü seçin.
-    1. Eğitmek `train.py` için komut dosyası olarak girin. Bu, el yazısı yla yazılmış basamakgörüntülerini kategorilere ayıran bir makine öğrenme modelinin kodunu içeren dosyadır.
-    1. Çalıştırmak için gereksinimler olarak aşağıdaki paketleri belirtin.
-
-        ```text
-        pip: azureml-defaults; conda: python=3.6.2, tensorflow=1.15.0
-        ```
+    1. Ortamlar listesinden, **Conda bağımlılıkları dosyasını**seçin.
+    1. Conda bağımlılıkları dosyasına göz atmak için **Enter** tuşuna basın. Bu dosya, komut dosyanızı çalıştırmak için gereken bağımlılıkları içerir. Bu durumda, bağımlılıklar dosyası `env.yml` `mnist-vscode-docs-sample` dizin içindeki dosyadır.
+    1. Eğitim komut dosyası dosyası dosyasına göz atmak için **Enter** tuşuna basın. Bu, el yazısı yla yazılmış basamakgörüntülerini kategorilere ayıran bir makine öğrenme modelinin kodunu içeren dosyadır. Bu durumda, modeli eğitmek için komut `train.py` dosyası `mnist-vscode-docs-sample` dizinin içindeki dosyadır.
 
 1. Bu noktada, metin düzenleyicisinde aşağıdakine benzer bir yapılandırma dosyası görüntülenir. Yapılandırma, modeli ve önceki adımda belirtilen Python bağımlılıklarını eğitmek için kodu içeren dosya gibi eğitim işini çalıştırmak için gereken bilgileri içerir.
 
     ```json
     {
-        "workspace": "WS01311608",
-        "resourceGroup": "WS01311608-rg1",
+        "workspace": "WS04131142",
+        "resourceGroup": "WS04131142-rg1",
         "location": "South Central US",
-        "experiment": "WS01311608-exp1",
+        "experiment": "WS04131142-exp1",
         "compute": {
-            "name": "WS01311608-com1",
+            "name": "WS04131142-com1",
             "vmSize": "Standard_D1_v2, Cores: 1; RAM: 3.5GB;"
         },
         "runConfiguration": {
-            "filename": "WS01311608-com1-rc1",
-            "condaDependencies": [
-                "python=3.6.2",
-                "tensorflow=1.15.0"
-            ],
-            "pipDependencies": [
-                "azureml-defaults"
-            ]
+            "filename": "WS04131142-com1-rc1",
+            "environment": {
+                "name": "WS04131142-env1",
+                "conda_dependencies": [
+                    "python=3.6.2",
+                    "tensorflow=1.15.0",
+                    "pip"
+                ],
+                "pip_dependencies": [
+                    "azureml-defaults"
+                ],
+                "environment_variables": {}
+            }
         }
     }
     ```

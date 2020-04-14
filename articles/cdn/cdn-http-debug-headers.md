@@ -3,7 +3,7 @@ title: Azure CDN kuralları altyapısı için X-EC Hata Ayıklama HTTP üstbilgi
 description: X-EC hata ayıklama önbelleği önbilgisi üstbilgisi, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu başlıklar Verizon'a özgü.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: magattus
-ms.openlocfilehash: dec753d7c891d226aa2e6d3efa993d8d24adfbaa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593832"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260505"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN kuralları altyapısı için X-EC Hata Ayıklama HTTP üstbilgisi
 Hata ayıklama önbellek istek `X-EC-Debug`üstbilgisi, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu başlıklar, **Verizon ürünlerinden Azure CDN Premium'a** özeldir.

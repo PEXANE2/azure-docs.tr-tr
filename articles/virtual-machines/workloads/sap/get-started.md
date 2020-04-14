@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/07/2020
+ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86c5f572ba66845467a7e3f4412b8da8368fe772
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811257"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273231"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure'u kullanın
 
@@ -110,6 +110,7 @@ Azure hizmetlerinin SAP bileşenlerine entegrasyonu hakkında bilgi için bkz:
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+- 04/13/2020: SAP iş yükü için [SAP ASE Azure Sanal Makineler DBMS dağıtımında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase) SAP ASE sürüm numaralarının tam olarak doğru olması
 - 04/07/2020: Bulut-netconfig-azure yönergelerini netleştirmek için [Azure'da SLES'te Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) Değişiklik
 - 04/06/2020: NetApp [TR-4435'e](https://www.netapp.com/us/media/tr-4746.pdf) yapılan başvuruları kaldırmak için [SLES'teki Azure NetApp Dosyaları ile Azure VM'lerde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) ve [RHEL'deki Azure NetApp Dosyaları ile SAP HANA ölçeğinde standby düğümlü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) SAP HANA ölçeğindeki değişiklikler [(TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)ile değiştirildi)
 - 31/03/2020: Çizgili hacimler oluştururken şerit boyutunu nasıl belirteceğinize ilişkin talimatlar eklemek için [SLES'teki Azure VM'lerde SAP HANA'nın Yüksek kullanılabilirlik durumu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) ve [RHEL'deki Azure VM'lerde SAP HANA'nın yüksek kullanılabilirliği](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel)
@@ -173,11 +174,6 @@ Azure hizmetlerinin SAP bileşenlerine entegrasyonu hakkında bilgi için bkz:
 - 10/11/2019: Ultra disk depolama yapılandırmalarında değişiklikler ve [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) ANF'nin kullanıma sunulması
 - 10/01/2019: Daha fazla netlik elde etmek [için SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleşim gruplarının](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) grafik değişikliği
 - 10/01/2019: /hana/shared için yüksek kullanılabilir NFS payı yla ilgili ifadeleri düzeltmek için [Azure'daki SAP HANA altyapı yapılandırmalarında ve işlemlerinde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) değişiklik. 
-- 28.09.2019: SBD'yi RHEL kümelerinde desteklenmez olarak açıklığa kavuşturmak için [Azure'da Red Hat Enterprise Linux'ta Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) Değişiklik  
-- 17.09.2019: NETWeaver Planlama ve Dağıtım Kılavuzunda SAP için VM Extension ile ilgili terimleri birleştirilmesi nde değişiklik  
-- 22.08.2019: Özel rol oluşturma url'lerini güncellemek için [Azure'da SUSE Linux Enterprise Server'da Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) Değişiklikler  
-- 08/16/2019: Azure'da [Red Hat Enterprise Linux'ta Pacemaker Kurulumu'nda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-pacemaker) yapılan değişiklikler, müşterilere Azure çit aracısının yeni sürümüne güncelleniyorsa, özel roldeki eylemleri güncelleştirmelerini hatırlatmak için  
-- 15.08.2019: [SAP HANA Azure sanal makine depolama yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) Ultra diskin Genel Kullanılabilirliğini yansıtacak değişiklikler (eski adıyla Ultra SSD)
-- 08/01/2019: [Azure'da SUSE Linux Enterprise Server'da Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) Yapılan Değişiklikler, SLES 15 için özel değişiklikleri entegre etmek için 
+
 
 

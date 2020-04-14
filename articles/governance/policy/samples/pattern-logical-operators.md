@@ -1,14 +1,14 @@
 ---
 title: 'Desen: İlke tanımındaki mantıksal işleçler'
 description: Bu Azure İlkesi deseni, mantıksal işleçlerin ilke tanımında nasıl kullanılacağına örnek olarak sunulur.
-ms.date: 01/31/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 8e57efaea81848c6b2d0188dbf3f91e06ed74c67
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 691383b1f8ae34bbd51ce7f4f9310980e3c66537
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77172852"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272517"
 ---
 # <a name="azure-policy-pattern-logical-operators"></a>Azure İlkesi deseni: mantıksal işleçler
 
@@ -38,6 +38,18 @@ Bu ilke tanımı, bir adlandırma deseni için kaynakları değerlendirir. Bir k
 :::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-2.json" range="7-21" highlight="2,3,9":::
 
 Bu **policyRule.if** bloğu da tek bir **allOf**içerir, ancak her koşul mantıksal **işleç** ile sarılır. Mantıksal **olmayan** işleci içinde koşullu önce değerlendirir ve daha sonra tüm yan tümcedoğru veya yanlış olup olmadığını belirlemek için **değil** değerlendirir. **Her** iki mantıksal işleç de doğru değerlendirmek, ilke etkisi tetikler.
+
+## <a name="sample-3-combining-logical-operators"></a>Örnek 3: Mantıksal işleçleri birleştirme
+
+Bu ilke tanımı, izlemenin etkin olup olmadığını veya izlemenin başarılı bir durumda olup olmadığını görmek için Java Spring hesaplarını değerlendirir.
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json":::
+
+### <a name="sample-3-explanation"></a>Örnek 3: Açıklama
+
+:::code language="json" source="~/policy-templates/patterns/pattern-logical-operators-3.json" range="6-28" highlight="3,8":::
+
+Bu **ilke Kuralı.if** bloğu hem **allOf'u** hem de **tüm** mantıksal işleçleri içerir. **AnyOf** mantıksal işleci, dahil edilen bir koşul doğru olduğu sürece doğru değerlendirir. _Türü_ **allOf**özünde olduğu gibi, her zaman doğru değerlendirmek gerekir. **AnyOf'daki** _koşullardan_ biri ve türü doğruysa, ilke efekti tetikler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

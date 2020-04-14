@@ -3,7 +3,7 @@ title: Azure CDN bitiş noktası oluşturma | Microsoft Dokümanlar
 description: Bu makalede, gelişmiş ayarlar da dahil olmak üzere yeni bir Azure İçerik Teslim Ağı (CDN) bitiş noktası nasıl oluşturulacak gösterilmektedir.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: afd9599dd1e396dea6975c397688e4b97371fd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593928"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254024"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN bitiş noktası oluşturma
 Bu makalede, varolan bir CDN profilinde bir [Azure İçerik Teslim Ağı (CDN)](cdn-overview.md) bitiş noktası oluşturmak için tüm ayarları açıklanmaktadır. Bir profil ve bitiş noktası oluşturduktan sonra, müşterilerinize içerik sunmaya başlayabilirsiniz. Profil ve bitiş noktası oluşturmaya hızlı bir başlangıç için [Bkz. Hızlı Başlangıç: Azure CDN profili ve bitiş noktası oluşturun.](cdn-create-new-endpoint.md)

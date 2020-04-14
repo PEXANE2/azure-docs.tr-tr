@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: d4fc8762e25825b21637b16b751d57a0dcbf369e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288810"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273095"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>Sanal makine Test Sürüşü sekmesi
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
 
 **Yeni Teklif** sayfasının **Test Sürüşü** sekmesi, potansiyel müşterilerinize, standart laştırılmış bir senaryoda gösterilen, ürününüzün temel özelliklerinin ve avantajlarının uygulamalı, kendi kendine yönlendirilmiş bir gösterisini sunmanıza olanak tanır.  Test Sürüşü, Test Sürüşü'ni destekleyen teklif türleri için isteğe bağlı bir özelliktir.  Test Sürüşü, destekleyici varlıkların düzgün bir şekilde uygulanmasını gerektirir.  Daha fazla bilgi için [Azure Marketi Test Sürüşü](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)makalesine bakın.  <!--TD: Replace with migrated version of Test Drive article! -->
 

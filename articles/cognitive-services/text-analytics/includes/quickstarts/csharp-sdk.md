@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 64eb19e43223c1953a7244f8fd29c48d085f1e96
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2fa2e40ba2a7fe84b6df57bfb711d01332b8f523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80116872"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81275364"
 ---
 <a name="HOLTop"></a>
 
@@ -44,7 +44,7 @@ Visual Studio IDE'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturun
 
 #### <a name="version-30-preview"></a>[Sürüm 3.0-önizleme](#tab/version-3)
 
-**Çözüm Gezgini'ndeki** çözüme sağ tıklayarak ve **NuGet Paketlerini Yönet'i**seçerek istemci kitaplığını yükleyin. Seçili **Gözat'ı**açan paket yöneticisinde, ön `Azure.AI.TextAnalytics` **yayına ekle**seçeneğini işaretleyin ve '' yı arayın. Sürümü `1.0.0-preview.3`seçin ve sonra **yükleyin.** [Paket Yöneticisi Konsolu'nu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
+**Çözüm Gezgini'ndeki** çözüme sağ tıklayarak ve **NuGet Paketlerini Yönet'i**seçerek istemci kitaplığını yükleyin. Seçili **Gözat'ı**açan paket yöneticisinde, ön `Azure.AI.TextAnalytics` **yayına ekle**seçeneğini işaretleyin ve '' yı arayın. Sürümü `1.0.0-preview.4`seçin ve sonra **yükleyin.** [Paket Yöneticisi Konsolu'nu](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
 
 > [!TIP]
 > Tüm hızlı başlangıç kodu dosyasını aynı anda görüntülemek ister misiniz? Bu hızlı başlatmada kod örneklerini içeren [GitHub'da](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs)bulabilirsiniz. 
@@ -63,6 +63,7 @@ Visual Studio IDE'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturun
 *program.cs* dosyasını açın ve `using` aşağıdaki yönergeleri ekleyin:
 
 ```csharp
+using Azure;
 using System;
 using System.Globalization;
 using Azure.AI.TextAnalytics;
@@ -73,7 +74,7 @@ Uygulamanın `Program` sınıfında, kaynağınızın anahtarı ve bitiş noktas
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 ```csharp
-private static readonly TextAnalyticsApiKeyCredential credentials = new TextAnalyticsApiKeyCredential("<replace-with-your-text-analytics-key-here>");
+private static readonly AzureKeyCredential credentials = new AzureKeyCredential("<replace-with-your-text-analytics-key-here>");
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
@@ -87,7 +88,6 @@ static void Main(string[] args)
     SentimentAnalysisExample(client);
     LanguageDetectionExample(client);
     EntityRecognitionExample(client);
-    EntityPIIExample(client);
     EntityLinkingExample(client);
     KeyPhraseExtractionExample(client);
 
@@ -121,14 +121,13 @@ Uygulama yöntemini `Main` değiştirin. Burada çağrılan yöntemleri daha son
 
 Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan ve metni tek dizeleri veya toplu iş olarak kabul eden işlevler sağlayan bir `TextAnalyticsClient` nesnedir. API'ye eşzamanlı veya eşzamanlı olarak metin gönderebilirsiniz. Yanıt nesnesi, gönderdiğiniz her belgenin çözümleme bilgilerini içerir. 
 
-Sürüm `3.0-preview`kullanıyorsanız, istemciyi çeşitli varsayılan `TextAnalyticsClientOptions` ayarlarla (örneğin varsayılan dil veya ülke ipucu) başlatmayı isteğe bağlı bir örnek kullanabilirsiniz. Azure Etkin Dizin belirteci kullanarak da kimlik doğrulaması yapabilirsiniz. 
+Hizmetin sürümünü `3.0-preview` kullanıyorsanız, istemciyi çeşitli varsayılan `TextAnalyticsClientOptions` ayarlarla (örneğin varsayılan dil veya ülke ipucu) başlatmayı isteğe bağlı bir örnek kullanabilirsiniz. Azure Etkin Dizin belirteci kullanarak da kimlik doğrulaması yapabilirsiniz. 
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-* [Yaklaşım analizi](#sentiment-analysis)
+* [Duygusallık analizi](#sentiment-analysis)
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık Tanıma](#named-entity-recognition-ner)
-* [Kişisel bilgileri algılama](#detect-personal-information)
 * [Varlık bağlama](#entity-linking)
 * [Anahtar tümcecik çıkarma](#key-phrase-extraction)
 
@@ -264,7 +263,6 @@ Language: English
 
 > [!NOTE]
 > Sürümde `3.0-preview`yeni:
-> * Varlık tanıma artık metindeki kişisel bilgileri algılama olanağı nı içerir.
 > * Varlık bağlantısı artık varlık tanımadan ayrılmış bir durumdur.
 
 
@@ -293,33 +291,6 @@ Named Entities:
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
                 Length: 9,      Score: 0.80
 ```
-
-## <a name="detect-personal-information"></a>Kişisel bilgileri algılama
-
-Daha önce oluşturduğunuz istemciyi alan, `EntityPIIExample()` `RecognizePiiEntities()` işlevini çağıran ve sonuçları yineleyen yeni bir işlev oluşturun. Önceki işleve benzer `Response<IReadOnlyCollection<CategorizedEntity>>` şekilde döndürülen nesne algılanan varlıkların listesini içerir. Bir hata varsa, bir `RequestFailedException`.
-
-```csharp
-static void EntityPIIExample(TextAnalyticsClient client)
-{
-    string inputText = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-    var response = client.RecognizePiiEntities(inputText);
-    Console.WriteLine("Personally Identifiable Information Entities:");
-    foreach (var entity in response.Value)
-    {
-        Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
-    }
-}
-```
-
-### <a name="output"></a>Çıktı
-
-```console
-Personally Identifiable Information Entities:
-        Text: 123-12-1234,      Category: U.S. Social Security Number (SSN),    Sub-Category:
-                Length: 11,     Score: 0.85
-```
-
 
 ## <a name="entity-linking"></a>Varlık bağlama
 

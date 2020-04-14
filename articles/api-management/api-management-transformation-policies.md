@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 81b7fb687bb6ef88d1ed436923d0e5ff7561c22b
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 27bb6abb7ae8eae46bc4dea3708270ecb4b731a6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803254"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260913"
 ---
 # <a name="api-management-transformation-policies"></a>API Management dönüştürme ilkeleri
 Bu konu, aşağıdaki API Yönetimi ilkeleri için bir başvuru sağlar. İlkeler ekleme ve yapılandırma hakkında bilgi için [API Yönetimi'ndeki İlkeler'e](https://go.microsoft.com/fwlink/?LinkID=398186)bakın.
@@ -214,7 +214,7 @@ or
 ```
 
 > [!NOTE]
-> Arka uç varlıklar yönetim [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)üzerinden yönetilebilir.
+> Arka uç varlıklar yönetim [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)üzerinden yönetilebilir.
 
 ### <a name="example"></a>Örnek
 
@@ -269,7 +269,7 @@ Bu örnekte ilke, kullanıcıKimliği sorgu dizesini bölüm anahtarı olarak ku
 |Adı|Açıklama|Gerekli|Varsayılan|
 |----------|-----------------|--------------|-------------|
 |taban-url|Yeni arka uç hizmet tabanı URL'si.|Biri `base-url` var `backend-id` olmalı ya da orada olmalı.|Yok|
-|arka uç kimliği|Arka uçtan yola giden tanımlayıcı. (Arka uç varlıkları [API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)üzerinden yönetilir.)|Biri `base-url` var `backend-id` olmalı ya da orada olmalı.|Yok|
+|arka uç kimliği|Arka uçtan yola giden tanımlayıcı. (Arka uç varlıkları [API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend) ve [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)üzerinden yönetilir.)|Biri `base-url` var `backend-id` olmalı ya da orada olmalı.|Yok|
 |sf-partition-key|Yalnızca arka uç Bir Service Fabric hizmeti olduğunda ve 'backend-id' kullanılarak belirtildiğinde uygulanabilir. Ad çözümleme hizmetinden belirli bir bölümü çözmek için kullanılır.|Hayır|Yok|
 |sf-çoğaltma türü|Yalnızca arka uç Bir Service Fabric hizmeti olduğunda ve 'backend-id' kullanılarak belirtildiğinde uygulanabilir. İsteğin bir bölümün birincil veya ikincil yinelemesine gitmesi gerekiyorsa denetimleri. |Hayır|Yok|
 |sf-çözüm-durum|Yalnızca arka uç Service Fabric hizmeti olduğunda geçerlidir. Service Fabric backend'e yapılan çağrının yeni çözünürlükle tekrarlanması gerekip gerekmediğini belirleyen durum.|Hayır|Yok|

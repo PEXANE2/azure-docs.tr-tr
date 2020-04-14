@@ -7,20 +7,23 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: dc106ecf40367172f28c0f339bbcce8bddb50a34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278084"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81274030"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Azure Anahtar Kasası için sertifikalar oluşturun
 
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
+
 Bu makalede, Azure tarafından barındırılan bir sanal makineye (VM) Windows Uzaktan Yönetimi (WinRM) bağlantısı oluşturmak için gereken kendi imzalı sertifikaların nasıl sağlandığı açıklanmaktadır. Bu işlem üç adımdan oluşur:
 
-1.  Güvenlik sertifikasını oluşturun. 
-2.  Bu sertifikayı depolamak için Azure Anahtar Kasası'nı oluşturun. 
-3.  Sertifikaları bu anahtar kasasına saklayın. 
+1.    Güvenlik sertifikasını oluşturun. 
+2.    Bu sertifikayı depolamak için Azure Anahtar Kasası'nı oluşturun. 
+3.    Sertifikaları bu anahtar kasasına saklayın. 
 
 Bu çalışma için yeni veya varolan bir Azure kaynak grubu kullanabilirsiniz.  Eski yaklaşım aşağıdaki açıklama kullanılır.
 

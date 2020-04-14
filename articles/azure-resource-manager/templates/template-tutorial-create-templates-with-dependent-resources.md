@@ -2,19 +2,19 @@
 title: Bağımlı kaynaklarla şablon
 description: Birden fazla kaynakla bir Azure Resource Manager şablonu oluşturmayı ve Azure portalı kullanarak dağıtmayı öğrenin
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5db2fb34a6d9330e745a9b4d1f5fed538e96c557
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239311"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260802"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Öğretici: Bağımlı kaynaklarla ARM şablonları oluşturma
 
-Birden çok kaynak dağıtmak ve dağıtım sırasını yapılandırmak için bir Azure Kaynak Yöneticisi (ARM) şablonu oluşturmayı öğrenin. Şablonu oluşturduktan sonra Azure portaldan Cloud Shell kullanarak dağıtacaksınız.
+Birden çok kaynak dağıtmak ve dağıtım sırasını yapılandırmak için bir Azure Kaynak Yöneticisi (ARM) şablonu oluşturmayı öğrenin. Şablonu oluşturduktan sonra, şablonu Azure portalındaki Bulut Kabuğu'nu kullanarak dağıtmış olursunuz.
 
 Bu öğreticide bir depolama hesabı, bir sanal makine, bir sanal ağ ve ek birkaç bağımlı kaynak oluşturacaksınız. Kaynakların bazıları başka bir kaynak var olana kadar dağıtılamaz. Örneğin depolama hesabı ve ağ arabirimi oluşturulmadan sanal makineyi oluşturamazsınız. Bu ilişkiyi, kaynakların birini diğer kaynaklara bağımlı hale getirerek tanımlarsınız. Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Daha fazla bilgi için [bkz.](./define-resource-dependency.md)
 
@@ -39,6 +39,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```console
     openssl rand -base64 32
     ```
+
     Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için [Bkz. Öğretici: Azure Anahtar Kasası'nı ARM şablon dağıtımına entegre edin.](./template-tutorial-use-key-vault.md) Ayrıca parolanızı üç ayda bir güncelleştirmenizi öneririz.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
@@ -51,6 +52,7 @@ Azure QuickStart Şablonları, ARM şablonları için bir depodur. Sıfırdan bi
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
+
 3. Dosyayı açmak için **Aç**’ı seçin.
 4. Dosyanın bir kopyasını **azuredeploy.json**adıyla yerel bilgisayarınıza kaydetmek için **Dosya**>**Yı Kaydet'i** seçin.
 
@@ -67,33 +69,43 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
     ![Visual Studio Code Azure Resource Manager şablonları](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
-    Şablonun tanımladığı beş kaynak vardır:
+    Şablon tarafından tanımlanan altı kaynak vardır:
 
-   * `Microsoft.Storage/storageAccounts`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageHesapları**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
+     Şablonu özelleştirmeden önce şablon başvuruyu gözden geçirmek yararlıdır.
 
-2. İlk kaynağı genişletin. Bir depolama hesabıdır. Kaynak tanımını [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın.
+1. İlk kaynağı genişletin. Bir depolama hesabıdır. Kaynak tanımını [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın.
 
     ![Visual Studio Code Azure Resource Manager şablonları depolama hesabı tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
-3. İkinci kaynağı genişletin. Kaynak türü `Microsoft.Network/publicIPAddresses` şeklindedir. Kaynak tanımını [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses) ile karşılaştırın.
+1. İkinci kaynağı genişletin. Kaynak türü `Microsoft.Network/publicIPAddresses` şeklindedir. Kaynak tanımını [şablon başvurusu](/azure/templates/microsoft.network/publicipaddresses) ile karşılaştırın.
 
     ![Visual Studio Code Azure Resource Manager şablonları genel IP adresi tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Dördüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/networkInterfaces` şeklindedir:
 
-    ![Visual Studio Code Azure Kaynak Yöneticisi şablonları](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+1. Üçüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/networkSecurityGroups` şeklindedir. Kaynak tanımını [şablon başvurusu](/azure/templates/microsoft.network/networksecuritygroups) ile karşılaştırın.
 
-    dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. Kaynak, iki farklı kaynağa bağımlıdır:
+    ![Visual Studio Code Azure Kaynak Yöneticisi ağ güvenliği grup tanımını şablonlar](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+
+1. Dördüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/virtualNetworks` şeklindedir:
+
+    ![Visual Studio Code Azure Kaynak Yöneticisi sanal ağ şablonları bağlı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+
+    dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar.  Bu kaynak başka bir kaynağa bağlıdır:
+
+    * `Microsoft.Network/networkSecurityGroups`
+
+1. Elli kaynağı genişletin. Kaynak türü `Microsoft.Network/networkInterfaces` şeklindedir. Kaynak, iki farklı kaynağa bağımlıdır:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
 
-5. Beşinci kaynağı genişletin. Bu kaynak bir sanal makinedir. İki farklı kaynağa bağımlıdır:
+1. Altıncı kaynağı genişletin. Bu kaynak bir sanal makinedir. İki farklı kaynağa bağımlıdır:
 
     * `Microsoft.Storage/storageAccounts`
     * `Microsoft.Network/networkInterfaces`
@@ -106,27 +118,17 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+1. Bulut Kabuğu'nu açmak ve gözden geçirilmiş şablonu yüklemek için [şablonu dağıt'taki](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) yönergeleri izleyin.
 
-Şablonları dağıtmak için birçok yöntem vardır.  Bu öğreticide Azure portaldan Cloud Shell'i kullanacaksınız.
-
-1. [Cloud Shell](https://shell.azure.com)'de oturum açın.
-1. Cloud Shell'in sol üst köşesinden **PowerShell**'i ve ardından **Onayla**'yı seçin.  Bu öğreticide PowerShell'i kullanacaksınız.
-1. Cloud Shell'de **Dosya yükle**'yi seçin:
-
-    ![Azure portal Cloud shell dosya karşıya yükleme](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-1. Öğreticide daha önce kaydettiğiniz şablonu seçin. Varsayılan ad **azuredeploy.json** olur.  Aynı dosya adına sahip bir dosyanız varsa bildirim gösterilmeden eski dosyanın üzerine yazılır.
-
-    Dosyaların başarıyla yüklendiğini doğrulamak için isteğe bağlı olarak **ls $HOME** komutunu ve **cat $HOME/azuredeploy.json** komutunu kullanabilirsiniz.
-
-1. Cloud Shell'de aşağıdaki PowerShell komutlarını çalıştırın. Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
+1. Şablonu dağıtmak için aşağıdaki PowerShell komut dosyasını çalıştırın.
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     $adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
     $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
     $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS label prefix"
+    $resourceGroupName = "${projectName}rg"
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment `
@@ -135,14 +137,19 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+
     Write-Host "Press [ENTER] to continue ..."
     ```
 
 1. Yeni oluşturulan sanal makineyi listelemek için aşağıdaki PowerShell komutunu çalıştırın:
 
     ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $resourceGroupName = "${projectName}rg"
+    $vmName = "SimpleWinVM"
+
+    Get-AzVM -Name $vmName -ResourceGroupName $resourceGroupName
+    
     Write-Host "Press [ENTER] to continue ..."
     ```
 

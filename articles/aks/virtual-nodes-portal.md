@@ -4,12 +4,12 @@ description: Podları çalıştırmak için sanal düğümler kullanan bir Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 696821e12e963292107cad5b22f00a9816a94b25
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616419"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259128"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portalında sanal düğümler kullanmak için bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturun ve yapılandırma
 
@@ -66,7 +66,7 @@ Sanal Düğümler işlevselliği büyük ölçüde ACI'ın özellik kümesine ba
 * [Ana bilgisayar takma adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
 * ACI exec için [argümanlar](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) sanal düğüm e poddağıtmaz
-* [Windows Server düğümleri (şu anda AKS önizlemede)](windows-container-cli.md) sanal düğümlerin yanında desteklenmez. Bir AKS kümesinde Windows Server düğümlerine gerek kalmadan Windows Server kapsayıcılarını zamanlamak için sanal düğümler kullanabilirsiniz.
+* Sanal düğümler Linux bölmelerinin zamanlamasını destekler. Windows Server kapsayıcılarını ACI'ye zamanlamak için açık kaynak [Sanal Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını el ile yükleyebilirsiniz. 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

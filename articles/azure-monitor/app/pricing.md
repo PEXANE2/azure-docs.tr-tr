@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: b782477fd29b34eda70813fc2aff29157f02acb3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275951"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271123"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -28,6 +28,8 @@ Uygulama Öngörüleri için fiyatlandırmanın nasıl çalıştığı yla ilgil
 
 [Çok adımlı web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücrete tabidir. Çok adımlı web testleri, bir dizi eylem gerçekleştiren web testleridir. Tek bir sayfanın *ping testleri* için ayrı bir ücret alınmaz. Ping testlerinden ve çok adımlı testlerden telemetri, uygulamanızdaki diğer telemetriler ile aynı ücrete alınır.
 
+Özel metrik boyutlarda [uyarıyı etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) seçeneği, ek toplama öncesi ölçümlerin oluşturulmasına neden olabileceğinden ek maliyetler de oluşturabilir. Uygulama Öngörüleri'nde günlük tabanlı ve önceden toplanmış ölçümler ve Azure Monitor özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında daha fazla bilgi edinin.
+
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Uygulamanızı yönetmek için maliyetleri tahmin etme
 
 Henüz Uygulama Öngörüleri kullanmıyorsanız, Uygulama Öngörüleri'ni kullanmanın maliyetini tahmin etmek için [Azure Monitor fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/?service=monitor) kullanabilirsiniz. Arama kutusuna "Azure Monitörü" girerek ve ortaya çıkan Azure Monitor kutucuğuna tıklayarak başlayın. Sayfayı Azure Monitor'a kaydırın ve Tür açılır sayfasından Uygulama Öngörüleri'ni seçin.  Burada ayda toplamayı beklediğiniz GB veri sayısını girebilirsiniz, bu nedenle soru, Uygulama Öngörüleri'nin uygulamanızı izleme de ne kadar veri toplayacak olduğudur.
@@ -42,7 +44,7 @@ Uyarlanabilir örneklemeyi desteklemeyen SDK'lar için, web sunucunuzdan ve web 
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Benzer müşterilerin ne topladığıhakkında bilgi edinin
 
-Uygulama Öngörüleri için Azure İzleme Fiyatlandırması hesaplayıcısında, "Uygulama etkinliğine dayalı veri hacmini tahmin edin" işlevini etkinleştiriyorsanız, uygulamanızla ilgili girdiler sağlayabilirsiniz (aylık istekler ve sayfa görünümleri, istemci tarafı telemetritoplamak) ve daha sonra hesap makinesi benzer uygulamalar tarafından toplanan verilerin ortanca ve yüzde 90 yüzdelik miktarını size söyleyecektir. Bu uygulamalar, Uygulama Öngörüleri yapılandırmaaralığını kapsar (örneğin, bazıları varsayılan [örneklemeye](../../azure-monitor/app/sampling.md)sahiptir, bazılarının örneklemesi yoktur vb.), bu nedenle örneklemeyi kullanarak ortanca düzeyin çok altında yutturtuğunuz veri hacmini azaltma denetimine sahipsiniz. Ama bu, diğer benzer müşterilerin ne gördüğünü anlamak için bir başlangıç noktasıdır.
+Uygulama Öngörüleri için Azure İzleme Fiyatlandırması hesaplayıcısında, "Uygulama etkinliğine dayalı veri hacmini tahmin et" işlevini etkinleştiriseniz, uygulamanız hakkında girişler sağlayabilirsiniz (müşteri tarafı telemetrisini toplarsanız, aylık istekler ve sayfa görünümleri). Bu uygulamalar, Uygulama Öngörüleri yapılandırmaaralığını kapsar (örneğin, bazıları varsayılan [örneklemeye](../../azure-monitor/app/sampling.md)sahiptir, bazılarının örneklemesi yoktur vb.), bu nedenle örneklemeyi kullanarak ortanca düzeyin çok altında yutturtuğunuz veri hacmini azaltma denetimine sahipsiniz. Ama bu, diğer benzer müşterilerin ne gördüğünü anlamak için bir başlangıç noktasıdır.
 
 ## <a name="understand-your-usage-and-estimate-costs"></a>Kullanımınızı ve tahmini maliyetlerinizi anlama
 
@@ -176,7 +178,7 @@ Uygulama Öngörülerini gözden geçirin Veri alma eğilimini ve tanımlayacak 
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Daily Cap için uyarılar oluşturma
 
-Application Insights Daily Cap, yutulan veri hacimleri uyarı düzeyine veya günlük kapak düzeyine ulaştığında Azure etkinliğinde bir olay oluşturur.  Bu [etkinlik günlüğü olaylarını temel alan bir uyarı oluşturabilirsiniz.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal) Bu olayların sinyal adları şunlardır:
+Uygulama Öngörüleri Günlük Kapağı, yutulan veri hacimleri uyarı düzeyine veya günlük kapak düzeyine ulaştığında Azure etkinlik günlüğünde bir olay oluşturur.  Bu [etkinlik günlüğü olaylarını temel alan bir uyarı oluşturabilirsiniz.](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log#create-with-the-azure-portal) Bu olayların sinyal adları şunlardır:
 
 * Uygulama Öngörüleri bileşeni günlük kap uyarı eşiğine ulaşıldı
 
@@ -216,7 +218,7 @@ Uygulama Öngörüleri kaynağınızdan bekletmeyi değiştirmek için **Kullan�
 
 ![Günlük telemetri hacim kapağını ayarlama](./media/pricing/pricing-005.png)
 
-Bekletme, `retentionInDays` parametre kullanılarak [PowerShell kullanılarak programlı olarak](powershell.md#set-the-data-retention) da ayarlanabilir. Ayrıca, veri saklamayı 30 güne ayarlarsanız, parametreyi `immediatePurgeDataOn30Days` kullanarak eski verilerin hemen tasfiyesini tetikleyebilirsiniz ve bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Kaynak Yöneticisi aracılığıyla ortaya çıkarır ve çok dikkatli kullanılmalıdır. Veri hacmi kapağının günlük sıfırlama süresi, parametreyi `dailyQuotaResetTime` ayarlamak için Azure Kaynak Yöneticisi kullanılarak yapılandırılabilir.
+Bekletme, `retentionInDays` parametre kullanılarak [PowerShell kullanılarak programlı olarak](powershell.md#set-the-data-retention) da ayarlanabilir. Bekletme indirildiğinde, en eski verilerin kaldırılmasından önce birkaç günlük yetkisiz kullanım süresi vardır. Veri saklamayı 30 güne ayarlarsanız, parametreyi `immediatePurgeDataOn30Days` kullanarak eski verilerin hemen tasfiyesini tetikleyebilirsiniz ve bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Kaynak Yöneticisi aracılığıyla ortaya çıkarır ve çok dikkatli kullanılmalıdır. Veri hacmi kapağının günlük sıfırlama süresi, parametreyi `dailyQuotaResetTime` ayarlamak için Azure Kaynak Yöneticisi kullanılarak yapılandırılabilir.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights'ı kullanarak veri aktarım ücretleri
 
@@ -228,7 +230,7 @@ Application Insights'a veri göndermek veri bant genişliği ücretlerine neden 
 
 ## <a name="disable-daily-cap-e-mails"></a>Günlük kapak e-postalarını devre dışı
 
-**Kullanım ve tahmini maliyetler** bölmesinde, Uygulama Öngörüleri kaynağınızın **Yapılandırma** bölümü altında, günlük birim kapağı e-postaları devre dışı kalmak için **Günlük Kap'ı**seçin. Kapak ulaşıldığında ve ayarlanabilir bir uyarı düzeyine ulaşıldığında e-posta göndermek için ayarlar vardır. Günlük kapak hacmiyle ilgili tüm e-postaları devre dışı kalmak isterseniz, her iki kutunun da onayın dansı silin.
+**Kullanım ve tahmini maliyetler** bölmesinde, Uygulama Öngörüleri kaynağınızın **Yapılandırma** bölümü altında, günlük birim kapağı e-postaları devre dışı kalmak için **Günlük Kap'ı**seçin. Kapak ulaşıldığında ve ayarlanabilir bir uyarı düzeyine ulaşıldığında e-posta göndermek için ayarlar vardır. Günlük kapak hacmiyle ilgili tüm e-postaları devre dışı kılmış olmak istiyorsanız, her iki kutuyu da kaldırın.
 
 ## <a name="legacy-enterprise-per-node-pricing-tier"></a>Eski Enterprise (Düğüm Başına) fiyatlandırma katmanı
 
@@ -282,7 +284,7 @@ Bu katman yalnızca Operasyon Yönetimi Paketi aboneliği olan müşteriler içi
   * Uygulamanız **roleInstance'ı** özel bir değere ayarlamak için SDK kullanıyorsa, varsayılan olarak, düğüm sayısını belirlemek için aynı değer kullanılır.
   * İstemci makinelerinden veya mobil cihazlardan çalışan bir uygulamayla yeni bir SDK sürümü kullanıyorsanız, düğüm sayısı büyük bir sayı döndürebilir (çok sayıda istemci makinesi veya mobil cihaz nedeniyle).
 
-## <a name="automation"></a>Automation
+## <a name="automation"></a>Otomasyon
 
 Azure Kaynak Yönetimi'ni kullanarak fiyatlandırma katmanını ayarlamak için bir komut dosyası yazabilirsiniz. [Nasıl olduğunu öğrenin](powershell.md#price).
 

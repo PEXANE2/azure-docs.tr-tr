@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 49ef78ac5a7d58d86583d91bf072f0f3131796fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109400"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257768"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Azure Lab Hizmetlerini kullanarak doğal dil işlemede derin öğrenmeye odaklanan bir laboratuvar kurun
 Bu makalede, Azure Laboratuvar Hizmetleri'ni kullanarak doğal dil işlemede (NLP) derin öğrenmeye odaklanmış bir laboratuvar nasıl kurulabileceğinizi gösterilmektedir. Doğal dil işleme (NLP), çeviri, konuşma tanıma ve diğer dil anlama özelliklerine sahip bilgisayarlara olanak tanıyan bir yapay zeka (AI) biçimidir.  
@@ -39,7 +39,7 @@ Yeni bir laboratuvar oluşturmak ve aşağıdaki ayarları uygulamak için [bu �
 | Laboratuvar ayarları | Değer/talimatlar | 
 | ------------ | ------------------ |
 | Sanal makine (VM) boyutu | Küçük GPU (İşlem). Bu boyut, Yapay Zeka ve Derin Öğrenme gibi bilgi işlem yoğun ve ağ yoğun uygulamalar için en uygun uyrmuştur. |
-| VM görüntü | [Linux (Ubuntu) için Veri Bilimi Sanal Makine.](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) Bu görüntü, makine öğrenimi ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu resimdeki yüklü araçların tam listesini görüntülemek için aşağıdaki makaleye bakın: [DSVM'de neler yer alıyor?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
+| VM görüntü | [Linux (Ubuntu) için Veri Bilimi Sanal Makine.](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) Bu görüntü, makine öğrenimi ve veri bilimi için derin öğrenme çerçeveleri ve araçları sağlar. Bu resimdeki yüklü araçların tam listesini görüntülemek için aşağıdaki makaleye bakın: [DSVM'de neler yer alıyor?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
 | Uzak masaüstü bağlantısını etkinleştirme | Etkinleştirmek. <p>Bu ayarı etkinleştirmek, öğretmenlerin ve öğrencilerin Uzak Masaüstü (RDP) kullanarak Sanal Makinelerine (VM) bağlanmalarına olanak sağlar.</p><p>**Önemli**: RDP zaten Linux görüntü için Veri Bilimi Sanal Makine yüklü ve yapılandırılmıştır. Sonuç olarak, öğretmenler/öğrenciler herhangi bir ek adım olmadan RDP üzerinden VM'lere bağlanabilirler. Ayrıca, grafik masaüstüne bağlanmanız gerekiyorsa, bu görüntü de sanal makineye [x2Go server](https://wiki.x2go.org/doku.php/doc:newtox2go) yüklü. Öğrenciler x2Go istemcisini yerel makinelerine yüklemeli ve bağlanmak için istemciyi kullanmalıdır. Daha fazla bilgi için aşağıdaki kılavuzlara bakın: <ul><li>[Linux için Veri Bilimi Sanal Makine nasıl erişilir](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[RDP ve GUI paketlerini yüklemek için şablon VM'ye bağlanın](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
 Linux görüntü için Veri Bilimi Sanal Makine gerekli derin öğrenme çerçeveleri ve araçları sınıf bu tür için gerekli sağlar. Sonuç olarak, şablon makinesi oluşturulduktan sonra, daha fazla özelleştirmeniz gerekmez. Öğrencilerin kullanması için yayınlanabilir. Şablonu laboratuvarda yayınlamak için şablon **sayfasındayayım** düğmesini seçin.  

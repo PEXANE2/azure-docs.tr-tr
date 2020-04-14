@@ -14,19 +14,19 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: a71dbd1b38ff58ccf1eb7a4d50daad5b24922e2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e42917237f3b114881655d88a017c2c4366612b3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022758"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254572"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Toplu Iş çözümlerini başlatmak için Visual Studio proje şablonlarını kullanma
 
 Toplu İşlem için **İş Yöneticisi** ve **Görev İşlemci Görsel Stüdyosu şablonları,** işlem yoğun iş yüklerinizi en az çabayla Toplu İşlem'de uygulamanıza ve çalıştırmanıza yardımcı olacak kod sağlar. Bu belge, bu şablonları açıklar ve bunların nasıl kullanılacağı nasıI rehberlik sağlar.
 
 > [!IMPORTANT]
-> Bu makalede yalnızca bu iki şablon için geçerli olan bilgiler açıklanır ve Toplu İşlem hizmetine ve bununla ilgili temel kavramlara aşina olduğunuzu varsayar: havuzlar, bilgi işlem düğümleri, iş ve görevler, iş yöneticisi görevleri, çevre değişkenleri ve diğer ilgili Bilgi. Geliştiriciler için Azure Toplu İş ve [Toplu İş Temelleri'nde](batch-api-basics.md)daha fazla bilgi bulabilirsiniz. [Basics of Azure Batch](batch-technical-overview.md)
+> Bu makalede yalnızca bu iki şablon için geçerli olan bilgiler açıklanır ve Toplu İşlem hizmetini ve bununla ilgili temel kavramları bildiğinizi varsayar: havuzlar, bilgi işlem düğümleri, iş ve görevler, iş yöneticisi görevleri, çevre değişkenleri ve diğer ilgili bilgiler. Geliştiriciler için Azure Toplu İş ve [Toplu İş Temelleri'nde](batch-api-basics.md)daha fazla bilgi bulabilirsiniz. [Basics of Azure Batch](batch-technical-overview.md)
 > 
 > 
 
@@ -215,7 +215,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Depolama kimlik bilgileri**
 
-Genellikle, (a) çoğu iş yöneticisinin bağlantılı depolama hesabına açıkça erişmesi gerekmedığından ve (b) bağlı depolama hesabı genellikle tüm görevlere iş için ortak ortam ayarı. Bağlantılı depolama hesabını ortak ortam ayarları üzerinden sağlayamıyorsanız ve iş yöneticisi bağlantılı depolamaya erişim gerektiriyorsa, bağlantılı depolama kimlik bilgilerini aşağıdaki gibi sağlamanız gerekir:
+Genellikle, (a) çoğu iş yöneticisinin bağlı depolama hesabına açıkça erişmesi gerekmedığından ve (b) bağlı depolama hesabı genellikle iş için ortak bir ortam ayarı olarak tüm görevlere sağlandığından, istemcinin iş yöneticisi görevine bağlı depolama hesabı kimlik bilgilerini sağlaması gerekmez. Bağlantılı depolama hesabını ortak ortam ayarları üzerinden sağlayamıyorsanız ve iş yöneticisi bağlantılı depolamaya erişim gerektiriyorsa, bağlantılı depolama kimlik bilgilerini aşağıdaki gibi sağlamanız gerekir:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -361,7 +361,7 @@ Run() uygulamanızın şu larına erişimi vardır:
 
 **Görev hatası**
 
-Hata durumunda, bir özel durum atarak Çalıştır() yönteminden çıkabilirsiniz, ancak bu, görev çıkış kodunun denetiminde üst düzey özel durum işleyicisini bırakır. Çıkış kodunu, örneğin tanılama amacıyla farklı hata türlerini ayırt edebilmeniz için denetlemeniz gerekiyorsa veya bazı hata modları işi sonlandırmalı ve diğerleri sona erdirmemelidir, o zaman sıfır olmayan bir döndürme ile Çalıştır() yönteminden çıkmalısınız çıkış kodu. Bu, görev çıkış kodu olur.
+Hata durumunda, bir özel durum atarak Çalıştır() yönteminden çıkabilirsiniz, ancak bu, görev çıkış kodunun denetiminde üst düzey özel durum işleyicisini bırakır. Çıkış kodunu, örneğin tanılama amacıyla veya bazı hata modlarının işi sonlandırması ve diğerlerinin sona erdirmemesi gerektiğinden, farklı hata türlerini ayırt edebilmeniz için denetlemeniz gerekiyorsa, sıfır olmayan bir çıkış kodu döndürerek Çalıştır() yönteminden çıkmanız gerekir. Bu, görev çıkış kodu olur.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Görev İşlemcisi şablonundaki çıkış kodları ve özel durumlar
 Çıkış kodları ve özel durumlar, bir programı çalıştırmanın sonucunu belirlemek için bir mekanizma sağlar ve programın yürütülmesiyle ilgili sorunları belirlemeye yardımcı olabilir. Görev İşlemcisi şablonu, bu bölümde açıklanan çıkış kodlarını ve özel durumlarını uygular.
@@ -444,7 +444,7 @@ Toplu Iş çözümü geliştirmede yararlı bir diğer araç da [Azure Toplu Dos
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
 [process_exitcode]: https://msdn.microsoft.com/library/system.diagnostics.process.exitcode.aspx
 [vs_gallery]: https://visualstudiogallery.msdn.microsoft.com/
-[vs_gallery_templates]: https://go.microsoft.com/fwlink/?linkid=820714
+[vs_gallery_templates]: https://github.com/Azure/batch-extension-templates
 [vs_find_use_ext]: https://msdn.microsoft.com/library/dd293638.aspx
 
 [diagram01]: ./media/batch-visual-studio-templates/diagram01.png

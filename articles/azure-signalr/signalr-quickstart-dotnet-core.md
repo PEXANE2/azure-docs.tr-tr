@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: zhshang
-ms.openlocfilehash: 022780f2b37c8bed49c81774d443b69bae41e5e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f87625fe4f56b369f2bf4aade3ef5424084b6fe8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73476753"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254895"
 ---
 # <a name="quickstart-create-a-chat-room-by-using-signalr-service"></a>Quickstart: SignalR Hizmetini kullanarak sohbet odası oluşturun
 
@@ -95,7 +95,7 @@ Bu bölümde, Projenize [Gizli Yönetici aracını](https://docs.microsoft.com/a
     Bu gizli Yapılandırma API ile erişilir. Bir kolon (:) desteklenen tüm platformlarda Configuration API ile yapılandırma adı üzerinde çalışır. [Ortama göre Yapılandırma'ya](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)bakın. 
 
 
-4. *yalnızca* ASP.NET Core `ConfigureServices` 2 yöntemini `services.AddSignalR().AddAzureSignalR()` arayarak Azure SinyalR Hizmetini kullanma yöntemini Startup.cs açın ve güncelleştirme:
+4. *Startup.cs* dosyasını açın ve `services.AddSignalR().AddAzureSignalR()` yöntemini çağırarak `ConfigureServices` yöntemini Azure SignalR Hizmeti’ni kullanacak şekilde güncelleştirin:
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -104,7 +104,6 @@ Bu bölümde, Projenize [Gizli Yönetici aracını](https://docs.microsoft.com/a
         services.AddSignalR().AddAzureSignalR();
     }
     ```
-    Core 3+ ASP.NET için yöntem için `ConfigureServices` değişiklik gerekmez.
 
     Bir parametreyi `AddAzureSignalR()`geçerek, bu kod SignalR Service kaynak bağlantı dizesi için varsayılan yapılandırma anahtarını kullanır. Varsayılan yapılandırma anahtarı *Azure:SignalR:ConnectionString'* tir.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 95f6befa7e97984ad64a3ffb2a9b91d343945cbb
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 32ad34bcfb42bf8fc45ba7fdb7fba5e797ee6106
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "81000667"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262443"
 ---
 # <a name="fuzzy-search-to-correct-misspellings-and-typos"></a>Yazım hatalarını ve yazım hatalarını düzeltmek için bulanık arama
 
@@ -71,7 +71,7 @@ Azure Bilişsel Arama'da, terim ve mesafenin (en fazla 2) yanı sıra, sorguda a
 > [!NOTE]
 > Sorgu işleme sırasında bulanık sorgular [sözlü çözümleme](search-lucene-query-architecture.md#stage-2-lexical-analysis)den geçmez. Sorgu girişi doğrudan sorgu ağacına eklenir ve terimlergrafiği oluşturmak üzere genişletilir. Yapılan tek dönüşüm daha düşük kasadır.
 
-## <a name="how-to-test-fuzzy-search"></a>Bulanık arama nasıl test edilebilir?
+## <a name="testing-fuzzy-search"></a>Bulanık aramayı test etme
 
 Basit sınama için, sorgu ifadesi üzerinden yineleiçin [Arama gezgini](search-explorer.md) veya [Postacı](search-get-started-postman.md) öneririz. Her iki araç da etkileşimlidir, bu da bir terimin birden çok varyantını hızlı bir şekilde atabileceğiniz ve geri gelen yanıtları değerlendirebileceğiniz anlamına gelir.
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6fe15fb18d8865911363a4696e44dd7fe1d90c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fdbc2a11bd963057b465a629757f2be51ae4061
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277812"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273860"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>VM resminiz için paylaşılan erişim imzası URI'yi alın
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek [için VM görüntünüz için paylaşılan erişim imzası URI'yi alın'daki](https://aka.ms/GetSASURI) yönergeleri izleyin.
 
 Yayımlama işlemi sırasında, SUK'larınizle ilişkili her sanal sabit disk (VHD) için tek tip bir kaynak tanımlayıcısı (URI) sağlamanız gerekir. Microsoft'un sertifika işlemi sırasında bu VHD'lere erişmesi gerekir. Bu makalede, her VHD için paylaşılan erişim imzası (SAS) URI nasıl oluşturacağı açıklanmaktadır. Bu URI'yi Bulut İş Ortağı Portalı'ndaki **SKUs** sekmesine gireceksiniz.
 

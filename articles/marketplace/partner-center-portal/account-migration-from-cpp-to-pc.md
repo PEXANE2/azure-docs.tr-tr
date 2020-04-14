@@ -1,18 +1,18 @@
 ---
-title: Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi - Azure için Ticari Pazar
-description: Hesabınızı NIçin CPP'den İş Merkezi'ne geçirin. - Azure için Ticari Pazar
+title: Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi - Azure için ticari pazar
+description: Hesabınızı NIçin CPP'den İş Merkezi'ne geçirin. - Azure için ticari pazar
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4aa336183d25a524246a2036fb95e0a7657b84f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279819"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262307"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi
 
@@ -79,4 +79,4 @@ Pazar yeri tekliflerinizi yayınlamak, onaylamak veya yönetmek için yardıma i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ticari Pazar Hesabınızı İş Ortağı Merkezi'nde yönetin](./manage-account.md)
+- [İş Ortağı Merkezi'nde ticari pazar hesabınızı yönetme](./manage-account.md)

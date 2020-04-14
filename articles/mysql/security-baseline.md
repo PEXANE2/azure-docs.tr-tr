@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 362b35af191c1caebeb30149ce060a5366182ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cffefb294aaeeb4d66358ceae72c98becd04cc58
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289426"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261967"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>MySQL için Azure Veritabanı için Azure Güvenlik Taban Çizgisi
 
@@ -134,7 +134,7 @@ MySQL için Azure Veritabanı için Hizmet Etiketi kullanımını anlayın:https
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/
 
 Azure Blueprint nasıl oluşturulur:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
@@ -904,7 +904,7 @@ Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız
 
 **Yönerge**: MySQL örneği için Azure Veritabanı, veritabanlarına erişmek için Azure Active Directory kimlik doğrulamasını (önizlemede) destekler.  MySQL örneği için Azure Veritabanı oluştururken, yönetici bir kullanıcı için kimlik bilgileri sağlarsınız. Bu yönetici ek veritabanı kullanıcıları oluşturmak için kullanılabilir.  
 
-Azure Uygulama Hizmeti'nde çalışan Azure Sanal Makineleri veya MySQL örnekleri için Azure Veritabanınıza erişmek için kullanılan web uygulamaları için, MySQL için Azure Veritabanı kimlik bilgilerini depolamak ve almak için Azure Anahtar Kasası ile birlikte Yönetilen Hizmet Kimliğini kullanın Örnek. Key Vault Soft Delete etkin olduğundan emin olun.
+Azure Uygulama Hizmeti'nde çalışan Azure Sanal Makineler veya MySQL örnekleri için Azure Veritabanınıza erişmek için kullanılan web uygulamaları için, MySQL örneği için Azure Veritabanı için kimlik bilgilerini depolamak ve almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. Key Vault Soft Delete etkin olduğundan emin olun.
 
 Azure Etkin Dizini'nde (AD) otomatik olarak yönetilen bir kimlikle Azure hizmetlerine yönetilen kimlik sağlamak için Yönetilen Kimlikler'i kullanın. Yönetilen Kimlikler, anahtarınızda herhangi bir kimlik belgesi olmadan Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlere kimlik doğrulamanızı sağlar.
 

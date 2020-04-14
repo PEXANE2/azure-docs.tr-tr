@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 1298d5fe1d7407e836f454c2130a913dde6f8eec
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755153"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257156"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure'da Linux Veri Bilimi Sanal Makine ile veri bilimi
 
@@ -29,7 +29,7 @@ Bu izbarada, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri k
 Linux DSVM kullanamadan önce aşağıdaki ön koşullara sahip olmalısınız:
 
 * **Azure aboneliği.** Azure aboneliği almak için [bkz.](https://azure.microsoft.com/free/)
-* [**Linux Veri Bilimi Sanal Makine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu). Sanal makine sağlama hakkında bilgi için, [Linux Veri Bilimi Sanal Makine Hükmü'ne](linux-dsvm-intro.md)bakın.
+* [**Linux Veri Bilimi Sanal Makine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Sanal makine sağlama hakkında bilgi için, [Linux Veri Bilimi Sanal Makine Hükmü'ne](linux-dsvm-intro.md)bakın.
 * [**X2Go**](https://wiki.x2go.org/doku.php) bilgisayarınızda açık bir XFCE oturumu ile yüklü. Daha fazla bilgi için [X2Go istemcisini yükleyin ve yapılandırın.](linux-dsvm-intro.md#x2go)
 * Daha yumuşak bir kaydırma deneyimi için, DSVM Firefox web `gfx.xrender.enabled` tarayıcısında, `about:config`bayrağı . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca ayar `mousewheel.enable_pixel_scrolling` `False`düşünün. [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
 * **Azure Machine Learning hesabı**. Zaten hesabınız yoksa, [Azure Machine Learning ana sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.

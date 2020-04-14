@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: f511a60b533d6d1e0b1ae8847d0ee0fb6be3500c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a36c411b9ababc42adb51d82a316df4252c01e24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288844"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252187"
 ---
 # <a name="configure-lead-management-using-an-azure-table"></a>Azure Tablosu'nu kullanarak müşteri adayı yönetimini yapılandırma
 
@@ -66,12 +66,12 @@ Azure tablosuna yeni bir müşteri adayı eklendiğinde otomatik olarak e-posta 
 
    ![Akışlarım **+ Zamanlanmış - boştan**](./media/commercial-marketplace-lead-management-instructions-azure-table/ms-flow-scheduled-from-blank.png)
 
-5.  Yapı'da, aralık için "1" ve sıklık için "saat" için her seçiyi *yinele'nin* altında *zamanlanmış bir akış* penceresi oluşturun. Ayrıca, isterseniz akışı bir isim verin. **Oluştur'u**seçin.
+5.    Yapı'da, aralık için "1" ve sıklık için "saat" için her seçiyi *yinele'nin* altında *zamanlanmış bir akış* penceresi oluşturun. Ayrıca, isterseniz akışı bir isim verin. **Oluştur'u**seçin.
 
-    >[!Note]
-    >Bu örnek1 saatlik bir aralık kullansa da, iş gereksinimleriniz için en iyi aralığı ve sıklığı seçebilirsiniz.
+>[!Note]
+>Bu örnek1 saatlik bir aralık kullansa da, iş gereksinimleriniz için en iyi aralığı ve sıklığı seçebilirsiniz.
 
-    ![Zamanlanmış bir akış oluşturun.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
+![Zamanlanmış bir akış oluşturun.](./media/commercial-marketplace-lead-management-instructions-azure-table/build-scheduled-flow.png)
 
 6. **+ Yeni adım**’ı seçin.
 7. "Geçmiş zamanı al" için *bir eylem* penceresi seçin ve ardından Eylemler altında geçmiş **zamanı al'ı** seçin.
@@ -92,23 +92,17 @@ Sonraki adım kümesinde, Azure tablonuza bağlanır ve yeni müşteri adayları
 
 9. Geçmiş zaman adımını al'dan sonra **+ Yeni adımını**seçin ve ardından eylem penceresi *seç'te* "Varlıkları al" seçeneğini arayın.
 10. **Eylemler**altında, **varlıkları al (Azure Tablo Depolama) seçeneğini**belirleyin.
-11. Azure **Tablo Depolama** penceresinde, aşağıdaki alanlar için bilgi sağlayın ve **Oluştur:'ı**seçin:
+11.    Azure **Tablo Depolama** penceresinde, aşağıdaki alanlar için bilgi sağlayın ve **Oluştur:'ı**seçin:
+* *Bağlantı Adı* - bu akış ve Azure Tablosu arasında kurduğunuz bağlantı için anlamlı bir ad sağlayın.
+* *Depolama Hesabı Adı* - Azure tablonuz için depolama hesabının adını sağlayın. Bunu depolama hesabının **Erişim anahtarları** sayfasında bulabilirsiniz.
+* *Paylaşılan Depolama Anahtarı* - Azure tablonuz için mağaza hesabınız için anahtar değerini sağlayın. Bunu depolama hesabının **Erişim anahtarları** sayfasında bulabilirsiniz.
+    ![Azure Tablo depolama.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
-    * *Bağlantı Adı* - bu akış ve Azure Tablosu arasında kurduğunuz bağlantı için anlamlı bir ad sağlayın.
-    * *Depolama Hesabı Adı* - Azure tablonuz için depolama hesabının adını sağlayın. Bunu depolama hesabının **Erişim anahtarları** sayfasında bulabilirsiniz.
-    * *Paylaşılan Depolama Anahtarı* - Azure tablonuz için mağaza hesabınız için anahtar değerini sağlayın. Bunu depolama hesabının **Erişim anahtarları** sayfasında bulabilirsiniz.
+Oluştur'u tıklattıktan sonra *varlıkları al* penceresi görürsünüz. Burada **gelişmiş seçenekleri göster'i** seçin ve aşağıdaki alanlar için bilgi sağlayın:
+* *Tablo* - Azure Tablo Depolama alanınızın adını seçin (Azure tablosunu nasıl yapılandıracağınıza ilişkin yönergelerin 6. adımından). Bir sonraki ekran yakalama, bu örnek için "marketplaceleads" tablosu seçildiğinde istemi gösterir.
+    ![Azure Tablo varlıkları olsun.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-        ![Azure Tablo depolama.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
-
-    Oluştur'u tıklattıktan sonra *varlıkları al* penceresi görürsünüz. Burada **gelişmiş seçenekleri göster'i** seçin ve aşağıdaki alanlar için bilgi sağlayın:
-
-       * *Tablo* - Azure Tablo Depolama alanınızın adını seçin (Azure tablosunu nasıl yapılandıracağınıza ilişkin yönergelerin 6. adımından). Bir sonraki ekran yakalama, bu örnek için "marketplaceleads" tablosu seçildiğinde istemi gösterir.
-
-            ![Azure Tablo varlıkları olsun.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
-
-        * *Filtre Sorgusu* - Bu alanı seçin ve bu işlevi alana yapıştırın:`Timestamp gt datetime'@{body('Get_past_time')}'`
-
-            ![Azure Tablo varlıkları olsun - Filtre Querry.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
+* *Filtre Sorgusu* - Bu alanı seçin ve bu `Timestamp gt datetime'@{body('Get_past_time')}'` ![işlevi alana yapıştırın: Azure Tablosu varlıkları olsun - Filtre Sorgusu.](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
 12. Azure tablosuna bağlantıyı ayarlamayı tamamladığınızda, Azure tablosunu yeni müşteri adayları için tarayabilmek için bir koşul eklemek için **Yeni adım'ı** seçin. 
 
@@ -178,7 +172,10 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
 1. **Teklifiniz** için Teklif kurulum sayfasına gidin.
 2. Müşteri Adayı Yönetimi bölümü altında **Bağlan'ı** seçin.
 3. Bağlantı ayrıntıları açılır penceresinde, **Müşteri Adayı Hedefi**için Azure **Tablosu'nu** seçin ve Depolama hesabı **bağlantı dizesi** alanına daha önceki adımları izleyerek oluşturduğunuz Azure depolama hesabından bağlantı dizesine yapıştırın.
-4. **Kaydet'i**seçin. 
+4. **Kişi e-postası** - Şirketinizde yeni bir müşteri adayı geldiğinde e-posta bildirimleri alması gereken kişiler için e-posta sağlayın. Birden çok e-postayı yarı kolon ile ayırarak sağlayabilirsiniz.
+5. **Tamam**’ı seçin.
+
+Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
 
 >[!Note]
 >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.

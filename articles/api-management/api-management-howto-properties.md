@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4362d0875ac2c20fc6963d404f86898a12387dad
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75834307"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260930"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Yönetimi ilkelerinde adlandırılmış değerler nasıl kullanılır?
 
@@ -59,7 +59,7 @@ Adlandırılmış değerler, edebi dizeleri ve [ilke ifadeleri](/azure/api-manag
 
 Adlandırılmış değer oluşturulduktan sonra, üzerine tıklayarak onu düzenleme yapabilirsiniz. Adlandırılmış değer adını değiştirirseniz, adı geçen değere başvuran tüm ilkeler yeni adı kullanmak üzere otomatik olarak güncelleştirilir.
 
-REST API'sini kullanarak adlandırılmış bir değeri düzenleme hakkında bilgi için, [REST API'sini kullanarak adlandırılmış bir değer düzenle'ye](/rest/api/apimanagement/2019-01-01/property?patch)bakın.
+REST API'sini kullanarak adlandırılmış bir değeri düzenleme hakkında bilgi için, [REST API'sini kullanarak adlandırılmış bir değer düzenle'ye](/rest/api/apimanagement/2019-12-01/property?patch)bakın.
 
 ## <a name="to-delete-a-named-value"></a>Adlandırılmış bir değeri silmek için
 
@@ -68,7 +68,7 @@ Adlandırılmış bir değeri silmek için, silmek için adlandırılmış değe
 > [!IMPORTANT]
 > Adlandırılmış değer herhangi bir ilke tarafından başvurulursa, adı geçen değeri kullanan tüm ilkelerden kaldırana kadar başarıyla silemezsiniz.
 
-REST API'yi kullanarak adlandırılmış bir değeri silme hakkında bilgi için [bkz.](/rest/api/apimanagement/2019-01-01/property/delete)
+REST API'yi kullanarak adlandırılmış bir değeri silme hakkında bilgi için [bkz.](/rest/api/apimanagement/2019-12-01/property/delete)
 
 ## <a name="to-search-and-filter-named-values"></a>Adlandırılmış değerleri aramak ve filtrelemek için
 

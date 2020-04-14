@@ -2,17 +2,17 @@
 title: Standart Azure CDN'de HTTPS'yi zorlamak için bir kural altyapısı kullanın | Microsoft Dokümanlar
 description: Azure CDN'nin belirli içerik türlerinin teslimini engelleme, önbelleğe alma ilkesi tanımlama ve HTTP üstbilgileri değiştirme dahil olmak üzere HTTP isteklerini nasıl işleyeceğini özelleştirmek için Microsoft Standart Azure İçerik Teslim Ağı 'nın (Azure CDN) kural altyapısını kullanın. Bu makalede, kullanıcıları HTTPS'ye yönlendirmek için nasıl bir kural oluşturabilirsiniz öğrenin.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 91a442573139bf4fdd09978290bf2380c8bcb97e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171582"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259943"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için Standart kurallar altyapısını ayarlama
 

@@ -1,22 +1,22 @@
 ---
-title: İş Ortağı Merkezi'nde Ticari Pazar Yeri hesabı nasıl yönetilir?
-description: İş Ortağı Merkezi'nde bir Ticari Pazar Yeri hesabını nasıl yönetebilirsiniz öğrenin.
+title: İş Ortağı Merkezi'nde ticari bir pazar hesabı nasıl yönetilir?
+description: İş Ortağı Merkezi'nde ticari bir pazar hesabını nasıl yöneteceğinızı öğrenin.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 6d3952c38703d8102a45c4117e3c59e3fa464957
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50ea56a8c743636f9fdd9105e5b07a868e71d3d0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275824"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262936"
 ---
-# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>İş Ortağı Merkezi'nde Ticari Market hesabınızı yönetme
+# <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>İş Ortağı Merkezi'ndeki ticari pazar hesabınızı yönetme
 
-Bir İş [Ortağı Merkezi hesabı oluşturduktan](./create-account.md)sonra, Hesabınızı ve tekliflerinizi [Ticari Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)kullanarak yönetebilirsiniz.
+Bir İş [Ortağı Merkezi hesabı oluşturduktan](./create-account.md)sonra, hesabınızı ve tekliflerinizi [ticari pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)kullanarak yönetebilirsiniz.
 
 Bu makalede, İş Ortağı Merkezi hesabınızı nasıl yöneteceğiniz ve şunları yapacağımız hakkında bilgi vereceğiz:
 
@@ -40,7 +40,7 @@ Bunu daha önce yapmadıysanız, İş Ortağı Merkezi hesabınızın [hesap aya
 
 ### <a name="open-developer-settings"></a>Geliştirici ayarlarını açma
 
-Hesap ayarları, İş Ortağı Merkezi'ndeki [Ticari Pazar Panosu'nun](https://partner.microsoft.com/dashboard/commercial-marketplace) sağ üst köşesinde yer alır. Dişli simgesini (gösterge tablosunun sağ üst köşesine yakın) seçin ve ardından **Geliştirici ayarlarını**seçin.
+Hesap ayarları, İş Ortağı Merkezi'ndeki [ticari pazar panonunuzun](https://partner.microsoft.com/dashboard/commercial-marketplace) sağ üst köşesinde yer alır. Dişli simgesini (gösterge tablosunun sağ üst köşesine yakın) seçin ve ardından **Geliştirici ayarlarını**seçin.
 
 ![İş Ortağı Merkezi'nde hesap ayarları menüsü](./media/dashboard-developer-settings.png)
 
@@ -67,7 +67,7 @@ Publisher Kimlikleri bölümünde, **Symantec Kimliğinizi,** Satıcı **Kimliğ
 Ödeme hesabı, satışlarınızdan elde edilen gelirin gönderildiği banka hesabıdır. Bu banka hesabı, Ortak Merkezi hesabınızı kaydettiğiniz aynı ülkede olmalıdır.
 
 Ödeme hesabınızı kurmak için Microsoft **Hesabınızı ilişkilendirmeniz**gerekir:
-1. İş Ortağı Merkezi'ndeki [Commercial Marketplace genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) gidin.
+1. İş Ortağı Merkezi'ndeki [ticari pazara genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) gidin.
 2. Profil bölümünde, **Microsoft Hesabınızı Ilişkilendir'i**seçin.
 3. İstendiğinde, Microsoft Hesabınızla (MSA) oturum açın. Bu hesap zaten başka bir İş Ortağı Merkezi hesabıyla ilişkilendirilemez.
 4. Ödeme hesabınızın kurulumunu tamamlamak için, İş Ortağı Merkezi'nden tamamen oturum açın ve ardından Microsoft Hesabınızla (iş hesabınız yerine) oturum açın.
@@ -126,8 +126,8 @@ Her ürün için her teklif ve dağıtım kanalı için benzersiz bir GUID oluş
 
 Bir ürünü bir şablon kullanarak dağıtıyorsanız ve hem Azure Marketi'nde hem de GitHub'da kullanılabilirse, 2 farklı GUIDS oluşturabilir ve kaydedebilirsiniz:
 
-*   Azure Marketinde Ürün A
-*   Ürün A GitHub üzerinde
+*    Azure Marketinde Ürün A
+*    Ürün A GitHub üzerinde
 
 Raporlama, iş ortağı değeri (Microsoft İş Ortağı Kimliği) ve GUID'ler tarafından yapılır. GuiD'leri, teklifiniz dahilindeki her plana hizalayarak daha ayrıntılı bir düzeyde de izleyebilirsiniz.
 
@@ -308,7 +308,7 @@ Azure Active Directory (AD), Cloud Solution Provider (CSP), Denetim Masası Sat�
 
 ## <a name="manage-tenants"></a>Kiracıları yönetme
 
-Bu belgeler de "iş hesabınız" olarak da adlandırılan Azure Etkin Dizin (AD) kiracısı, Azure portalında ayarlanan kuruluşunuzun bir temsilidir ve dahili bilgileriniz için Microsoft bulut hizmetlerinin belirli bir örneğini yönetmenize yardımcı olur ve dış kullanıcılar. Kuruluşunuz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, sizin için bir Azure AD kiracısı kuruldu.
+Bu belgeler de "iş hesabınız" olarak da adlandırılan Azure Etkin Dizin (AD) kiracısı, kuruluşunuzun Azure portalında ayarlanmış bir temsilidir ve dahili ve harici kullanıcılarınız için Microsoft bulut hizmetlerinin belirli bir örneğini yönetmenize yardımcı olur. Kuruluşunuz Azure, Microsoft Intune veya Office 365 gibi bir Microsoft bulut hizmetine abone olduysa, sizin için bir Azure AD kiracısı kuruldu.
 
 İş Ortağı Merkezi ile kullanmak üzere birden çok kiracı ayarlayabilirsiniz. İş Ortağı Merkezi hesabında **Yönetici** rolü ne olursa olsun, Azure AD kiracılarını hesaptan ekleme ve kaldırma seçeneğine sahip olan herhangi bir kullanıcı.  
 

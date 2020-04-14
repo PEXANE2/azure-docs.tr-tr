@@ -7,17 +7,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: b0ed430098203c5c1a0d00eb7bf17da1be0000cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f20beced7d977668d12c06375ceb8a2554c6d335
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278101"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273435"
 ---
 # <a name="configure-the-azure-hosted-vm"></a>Azure barındırılan VM'yi yapılandırma
 
-Bu makalede, Azure'da barındırılan sanal bir makinenin (VM) nasıl boyutlandırılabildiğini, güncelleştirilmeye ve genelleştirilene açıklanmaktadır.  Bu adımlar, VM'nizi Azure Marketi'nden dağıtılacak şekilde hazırlamak için gereklidir.
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin hareketli yönetimine İş Ortağı Merkezi'ne başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine teknik varlıklarınızı oluştur'daki](https://aka.ms/AzureVMTechAsset) yönergeleri izleyin.
 
+Bu makalede, Azure'da barındırılan sanal bir makinenin (VM) nasıl boyutlandırılabildiğini, güncelleştirilmeye ve genelleştirilene açıklanmaktadır.  Bu adımlar, VM'nizi Azure Marketi'nden dağıtılacak şekilde hazırlamak için gereklidir.
 
 ## <a name="sizing-the-vhds"></a>VHD'lerin boyutlandırılması
 

@@ -2,17 +2,17 @@
 title: Verizon Premium kuralları motor özellikleri nden Azure CDN | Microsoft Dokümanlar
 description: Verizon Premium kuralları motor özelliklerinden Azure CDN için başvuru belgeleri.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 9177ac544c83305ae95ad681d3dc9f84ac64ea36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 373e7838327d11b1b54278ee0c16c6e6ae554b0b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247585"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253501"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-features"></a>Verizon Premium kuralları motor özelliklerinden Azure CDN
 
@@ -846,7 +846,7 @@ Normalde, bir varlığın maksimum yaş süresi sona erdiğinde, POP başlangı�
 
 POP böyle bir yeniden validasyon çalışırken başlangıç sunucusuyla bağlantı kuramıyorsa, bu Internal Max-Bayat özelliği pop'un artık eskimiş varlığa hizmet etmeye devam edip edemeyeceğini ve ne kadar süreyle hizmet verebileceğini denetler.
 
-Bu zaman aralığının, başarısız yeniden validasyon gerçekleştiğinde değil, varlığın maksimum yaşının dolduğunda başladığını unutmayın. Bu nedenle, bir varlığın başarılı bir yeniden validasyon olmadan sunulabileceği maksimum süre, maksimum yaş artı maksimum bayat kombinasyonutarafından belirtilen süredir. Örneğin, bir kıymet en fazla 30 dakika ve maksimum 15 dakika olan bir maksimum eskisaatle saat 9:00'da önbelleğe alınmışsa, 9:44'te başarısız bir yeniden doğrulama denemesi son kullanıcının eski önbelleğe alınmış kıymeti almasına neden olurken, 9:46'daki başarısız bir yeniden doğrulama denemesi 504 Ağ Geçidi Zaman Sonu alan son kullanıcı.
+Bu zaman aralığının, başarısız yeniden validasyon gerçekleştiğinde değil, varlığın maksimum yaşının dolduğunda başladığını unutmayın. Bu nedenle, bir varlığın başarılı bir yeniden validasyon olmadan sunulabileceği maksimum süre, maksimum yaş artı maksimum bayat kombinasyonutarafından belirtilen süredir. Örneğin, bir kıymet en fazla 30 dakikalık ve en yüksek 15 dakikalık bir tarihle 9:00'da önbelleğe alınmışsa, 9:44'te başarısız bir yeniden doğrulama denemesi son kullanıcının eski önbelleğe alınmış kıymeti almasına neden olurken, 9:46'da başarısız bir yeniden doğrulama denemesi son kullanıcının 504 Ağ Geçidi Zaman Ayarı almasına neden olur.
 
 Bu özellik için yapılandırılan herhangi bir `Cache-Control: must-revalidate` değer, kaynak sunucusundan alınan üstbilgi veya `Cache-Control: proxy-revalidate` üstbilgi tarafından geçersiz yapılır. Bu üstallardan biri bir varlık başlangıçta önbelleğe alındığı zaman başlangıç sunucusundan alınırsa, POP eski önbelleğe alınmış bir varlığa hizmet etmez. Böyle bir durumda, varlığın maksimum yaş aralığı sona erdiğinde POP kaynağıyla yeniden doğrulayamıyorsa, POP 504 Ağ Geçidi Zaman Aşımı hatası döndürür.
 
@@ -1240,7 +1240,7 @@ URL yeniden yönlendirmesi yalnızca 3xx yanıt kodları için geçerlidir.
 
 İsteğe Bağlı Üstbilgi Değeri seçeneği alfasayısal karakterleri, tırnak işaretlerini ve boşlukları destekler.
 
-#### <a name="authentication"></a>Kimlik doğrulaması
+#### <a name="authentication"></a>Kimlik Doğrulaması
 
 Bu özellik, Belirteç Tabanlı Kimlik Doğrulama tarafından korunan içerik için yetkisiz bir taleme yanıt verirken WWW-Authenticate üstbilgisini ekleme özelliğini destekler. WWW-Authenticate üstbilgisi yapılandırmanızda "temel" olarak ayarlanmışsa, yetkisiz kullanıcıdan hesap kimlik bilgileri istenir.
 

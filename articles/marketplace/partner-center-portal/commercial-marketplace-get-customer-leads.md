@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275909"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252678"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizden müşteri adayları
 
@@ -133,11 +133,11 @@ Azure Blob müşteri adayı hedefi artık desteklenmez, bu nedenle teklifiniz ta
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Marketplace'ten bir e-posta aldım, crm'imde neden müşteri adayı bulamıyorum?
 
-Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedeniyle, .edu etki alanından kişisel bilgi verisi geçirmiyoruz. aka.ms/marketplacepublishersupport üzerinden destek bileti gönderin.
+Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedenleriyle, .edu etki alanından özel tanımlayıcı bilgiler geçirmeyiz. aka.ms/marketplacepublishersupport üzerinden destek bileti gönderin.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Azure Tablosu'nu müşteri adayı olarak yapılandırıldım, müşteri adaylarını nasıl görüntüleyebilirim?
 
-Azure Portalı'ndan Azure Tablosu'nda depolanan müşteri adayı verilerine erişebilir veya Azure depolama hesabınızın tablo verilerini görüntülemek için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz.
+Azure portalından Azure Tablosu'nda depolanan müşteri adayı verilerine erişebilir veya Azure depolama hesabınızın tablo verilerini görüntülemek için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Azure Tablosu'nu müşteri adayım olarak yapılandırıldım, Market tarafından yeni bir müşteri adayı gönderildiğinde bilgilendirilebilir miyim?
 
@@ -149,13 +149,17 @@ Evet, [buradaki](./commercial-marketplace-lead-management-instructions-azure-tab
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Benim kurşun hedef ile ilgili bir sorun vardı ve bazı yol cevapsız. Bunları bana bir e-posta yla göndertebilir miyim?
 
-Kişisel Bilgiler (Özel Tanımlanabilir Bilgiler) ilkeleri nedeniyle, müşteri adayı bilgilerini güvenli olmayan e-posta yoluyla paylaşamayız.
+Özel tanımlanabilir bilgi ilkeleri nedeniyle, müşteri adayı bilgilerini güvenli olmayan e-posta yoluyla paylaşamayız.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Müşteri adayım olarak Azure Tablosu'nu yapılandırıldım, ne kadara mal olur?
 
 Kurşun gen verileri düşüktür (hemen hemen tüm yayıncılar için 1 GB <). Maliyet, bir ay içinde 1.000 müşteri adayı alınırsa, yaklaşık 50 sente mal olacak. Depolama fiyatlandırması hakkında daha fazla bilgi için [bkz.](https://azure.microsoft.com/pricing/details/storage/)
 
 Sorunuz hala yanıtlanmamışsa, aka.ms/marketplacepublishersupport aracılığıyla Destek'e başvurun, ardından **'teklif oluşturma'** → **teklif türünü** → **'müşteri adayı yönetimi yapılandırması'** seçeneğini belirleyin. 
+
+### <a name="i-am-receiving-email-notifications-when-new-customer-leads-are-received-how-can-i-configure-who-to-receive-these-emails"></a>Yeni müşteri müşteri adayları geldiğinde e-posta bildirimleri alıyorum. Bu e-postaları kimin alacağını nasıl yapılandırabilirim?
+
+İş Ortağı Merkezi'ndeki teklifinize erişin ve **Teklif kurulum** sayfasına gidin -> Müşteri **Adayı Yönetimi** -> **Düzenle.** **İletişim e-postası** alanı altındaki e-posta adreslerini güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

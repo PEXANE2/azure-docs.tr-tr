@@ -3,7 +3,7 @@ title: Twilio (.NET) telefon görüşmesi nasıl yapılır | Microsoft Dokümanl
 description: Azure'daki Twilio API hizmetiyle nasıl telefon görüşmesi yapacağınızı ve SMS mesajı göndermeyi öğrenin. .NET'te yazılan kod örnekleri.
 services: ''
 documentationcenter: .net
-author: georgewallace
+author: mimckitt
 editor: ''
 ms.assetid: 789185ad-69dc-4e9e-a936-42e0a25315c8
 ms.service: cloud-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
-ms.author: gwallace
-ms.openlocfilehash: 27b4f3cdd8f622a97cfc0853f79bb77d76673dcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: df1f5e1c21c28fa8c1fcdef6b2278fb92014a3b1
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69636146"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272568"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure'daki bir web rolünde Twilio'su kullanarak telefon görüşmesi yapma
 Bu kılavuz, Azure'da barındırılan bir web sayfasından arama yapmak için Twilio'nun nasıl kullanılacağını gösterir. Ortaya çıkan uygulama, kullanıcıdan aşağıdaki ekran görüntüsünde gösterildiği gibi verilen numara ve iletiyle birlikte bir arama yapmalarını ister.
@@ -150,14 +150,14 @@ Arama yapılır ve Twilio bitiş noktası, API sürümü ve arama durumu görün
 TwiML hakkında daha fazla [https://www.twilio.com/docs/api/twiml][twiml]bilgi bulabilirsiniz. Say &lt;&gt; ve diğer Twilio fiilleri hakkında [https://www.twilio.com/docs/api/twiml/say][twilio_say]daha fazla bilgiyi .
 
 ## <a name="next-steps"></a><a id="nextsteps"></a>Sonraki adımlar
-Bu kod, Azure'daki ASP.NET bir web rolünde Twilio'u kullanarak temel işlevleri göstermek için sağlanmıştır. Üretimde Azure'a dağıtılamadan önce, daha fazla hata işleme veya diğer özellikler eklemek isteyebilirsiniz. Örnek:
+Bu kod, Azure'daki ASP.NET bir web rolünde Twilio'u kullanarak temel işlevleri göstermek için sağlanmıştır. Üretimde Azure'a dağıtılamadan önce, daha fazla hata işleme veya diğer özellikler eklemek isteyebilirsiniz. Örneğin:
 
 * Web formu kullanmak yerine, telefon numaralarını depolamak ve metin aramak için Azure Blob depolama alanını veya Azure SQL Veritabanı örneğini kullanabilirsiniz. Azure'da Blobs kullanma hakkında daha fazla bilgi için [.NET'te Azure Blob depolama hizmetini nasıl kullanacağınız bilgisini][howto_blob_storage_dotnet]öğrenin. SQL Veritabanı'nı kullanma hakkında daha fazla bilgi için [.NET uygulamalarında Azure SQL Veritabanı'nın nasıl kullanılacağına][howto_sql_azure_dotnet]bakın.
 * Twilio hesap kimliği ve kimlik doğrulama belirteci, formunuzdaki değerleri zor kodlamak yerine dağıtımınızın yapılandırma ayarlarından almak için kullanabilirsiniz. `RoleEnvironment.getConfigurationSettings` `RoleEnvironment` Sınıf hakkında daha fazla bilgi için [Microsoft.WindowsAzure.ServiceRuntime Namespace'e][azure_runtime_ref_dotnet]bakın.
 * Twilio Güvenlik Yönergeleri'ni [https://www.twilio.com/docs/security][twilio_docs_security]okuyun.
 * Twilio hakkında daha [https://www.twilio.com/docs][twilio_docs]fazla bilgi edinin.
 
-## <a name="see-also"></a><a name="seealso"></a>Ayrıca bakınız
+## <a name="see-also"></a><a name="seealso"></a>Ayrıca bkz.
 * [Azure'dan Ses ve SMS özellikleri için Twilio nasıl kullanılır?](twilio-dotnet-how-to-use-for-voice-sms.md)
 
 [twilio_console]: https://www.twilio.com/console

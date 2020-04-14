@@ -4,16 +4,19 @@ description: Azure Kubernetes Hizmeti'nde (AKS) sistem düğümü havuzları olu
 services: container-service
 ms.topic: article
 ms.date: 04/06/2020
-ms.openlocfilehash: ef5400f19f68fd2da45776d220e17777f58e46e6
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986323"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259077"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) sistem düğümü havuzlarını yönetme
 
-Azure Kubernetes Hizmeti'nde (AKS), aynı yapılandırmadaki düğümler düğüm *havuzlarında*gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM'leri içerir. Sistem düğümü havuzları ve kullanıcı düğümü havuzları AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğümü havuzları CoreDNS gibi temel sistem hizmetlerini barındırıyor. Kullanıcı düğümü havuzları, uygulamaya özel bölmelerinizi yerleştirdiğiniz yerdir. Her AKS kümesi en az bir düğüm ile en az bir sistem düğümü havuzu içermelidir. AKS kümeniz için tek bir sistem düğüm havuzu çalıştırıyorsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz. 
+Azure Kubernetes Hizmeti'nde (AKS), aynı yapılandırmadaki düğümler düğüm *havuzlarında*gruplandırılır. Düğüm havuzları, uygulamalarınızı çalıştıran temel VM'leri içerir. Sistem düğümü havuzları ve kullanıcı düğümü havuzları AKS kümeleriniz için iki farklı düğüm havuzu modudur. Sistem düğüm havuzları CoreDNS ve tünel başı gibi kritik sistem bölmelerini barındırmanın birincil amacına hizmet eder. Kullanıcı düğümü havuzları, uygulama bölmelerinizi barındırmanın birincil amacına hizmet eder. Ancak, AKS kümenizde yalnızca bir havuz olmasını istiyorsanız, uygulama bölmeleri sistem düğümü havuzlarında zamanlanabilir. Her AKS kümesi en az bir düğüm ile en az bir sistem düğümü havuzu içermelidir. 
+
+> [!Important]
+> Bir üretim ortamında AKS kümeniz için tek bir sistem düğüm havuzu çalıştırıyorsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

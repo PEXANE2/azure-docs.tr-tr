@@ -7,12 +7,12 @@ ms.reviewer: prvavill
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 9b8b1b40e972d7719ef2cf495ed12cb4ed3478fd
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ee42f45d8c96e908061142b5a8e6b2e5cee21993
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479376"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262069"
 ---
 # <a name="monitor-azure-data-explorer-using-resource-health-preview"></a>Kaynak Durumu 'ni kullanarak Azure Veri Gezgini'ni izleme (Önizleme)
 
@@ -44,7 +44,7 @@ Bir kaynağın durumu, kullanılabilir, kullanılamayan ve bilinmeyen aşağıda
 
 ### <a name="unavailable"></a>Kullanılamaz
 
-**Kullanılamayan'ın** sistem durumu, Azure Veri Gezgini kaynağınızda sorgular ve alım için kullanılamamasına neden olan devam eden bir sorun olduğunu gösterir. Örneğin, Azure Veri Gezgini kaynağınızdaki düğümler beklenmedik bir şekilde yeniden başlatılmış olabilir. Azure Veri Gezgini kaynağınız bu durumda uzun bir süre kalırsa, [desteğe]()başvurun.
+**Kullanılamayan'ın** sistem durumu, Azure Veri Gezgini kaynağınızda sorgular ve alım için kullanılamamasına neden olan devam eden bir sorun olduğunu gösterir. Örneğin, Azure Veri Gezgini kaynağınızdaki düğümler beklenmedik bir şekilde yeniden başlatılmış olabilir. Azure Veri Gezgini kaynağınız bu durumda uzun bir süre kalırsa desteğe başvurun.
 
 ![Kullanılamaz](media/monitor-with-resource-health/unavailable.png)
 

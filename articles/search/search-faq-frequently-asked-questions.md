@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fee74cb6ec5acd5fa0f171eab9769a833f04ad66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/10/2020
+ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72792905"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262460"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Bilişsel Arama - sık sorulan sorular (SSS)
 
@@ -24,16 +24,6 @@ ms.locfileid: "72792905"
 ### <a name="how-is-azure-cognitive-search-different-from-full-text-search-in-my-dbms"></a>Azure Bilişsel Arama'nın DBMS'imdeki tam metin aramasından farkı nedir?
 
 Azure Bilişsel Arama birden çok veri kaynağını, [birçok dil için dil analizini,](https://docs.microsoft.com/rest/api/searchservice/language-support)ilginç ve sıradışı veri girişleri için özel [analizi,](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)puanlama profilleri aracılığıyla arama sıralaması [denetimlerini](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)ve typeahead, hit vurgulama ve yönlü gezinme gibi kullanıcı deneyimi özelliklerini destekler. Eşanlamlılar ve zengin sorgu sözdizimi gibi diğer özellikleri de içerir, ancak bunlar genellikle ayırt edici özellikler değildir.
-
-### <a name="what-is-the-difference-between-azure-cognitive-search-and-elasticsearch"></a>Azure Bilişsel Arama ile Elasticsearch arasındaki fark nedir?
-
-Müşteriler arama teknolojilerini karşılaştırırken sık sık Azure Bilişsel Arama'nın Elasticsearch ile karşılaştırıldığında nasıl olduğu yla ilgili ayrıntıları sorar. Arama uygulama projeleri için Elastik Arama yerine Azure Bilişsel Arama'yı seçen müşteriler genellikle bunu, önemli bir görevi kolaylaştırdığımız veya diğer Microsoft teknolojileriyle yerleşik tümleştirmeye ihtiyaç duyduklarımız için yapar:
-
-+ Azure Bilişsel Arama, yeterli artıklık (okuma erişimi için 2 yineleme, okuma yazma için üç yineleme) ile birlikte sağlandığında %99,9 hizmet düzeyi anlaşmalarına (SLA) sahip tam olarak yönetilen bir bulut hizmetidir.
-+ Microsoft'un [Doğal dil işlemcileri,](https://docs.microsoft.com/rest/api/searchservice/language-support) önde gelen dil bilimsel analizleri sunar.  
-+ [Azure Bilişsel Arama dizinleyicileri,](search-indexer-overview.md) başlangıç ve artımlı dizin oluşturma için çeşitli Azure veri kaynaklarını tarayabilir.
-+ Sorgu veya dizin oluşturma birimlerindeki dalgalanmalara hızlı yanıt vermek istiyorsanız, Azure portalında [kaydırıcı denetimlerini](search-manage.md#scale-up-or-down) kullanabilir veya parça yönetimini doğrudan atlayarak bir [PowerShell komut dosyası](search-manage-powershell.md)çalıştırabilirsiniz.  
-+ [Puanlama ve ayar özellikleri,](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) arama sıralaması puanlarını tek başına arama motorunun sağlayabileceğinden daha fazla etkilemek için araçlar sağlar.
 
 ### <a name="can-i-pause-azure-cognitive-search-service-and-stop-billing"></a>Azure Bilişsel Arama hizmetini duraklatabilir ve faturalandırmayı durdurabilir miyim?
 

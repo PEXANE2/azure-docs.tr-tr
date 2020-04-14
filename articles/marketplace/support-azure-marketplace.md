@@ -1,5 +1,5 @@
 ---
-title: Azure Marketi ve AppSource desteği | Azure
+title: Ticari pazar için destek | Azure
 description: Azure Marketi ve AppSource için destek bilgileri ve bağlantıları
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 3/19/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cb08e11910bc0afdd4b2f454582612395cbd50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284934"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81252243"
 ---
 # <a name="support-for-the-marketplace"></a>Pazar Yeri Desteği  
 Burada Market için destek seçenekleri nin bir listesi vardır.  
@@ -47,7 +47,7 @@ Onboarding ve başlarken sorunlar için Microsoft [marketplace publisher desteğ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure [Marketi ve AppSource Publisher Guide sayfasını](https://docs.microsoft.com/azure/marketplace/)ziyaret edin.
-* [İş Ortağı Merkezi'ndeki Ticari Pazar Programı Için Destek](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)hakkında daha fazla bilgi edinin.
+* Ticari [pazar yayıncısı kılavuzu sayfasını](https://docs.microsoft.com/azure/marketplace/)ziyaret edin.
+* [İş Ortağı Merkezi'ndeki ticari pazar programı desteği](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support)hakkında daha fazla bilgi edinin.
 
 ---

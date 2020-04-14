@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 567dc83e36020ef9af328f52dae89ef37b6e4908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 156a405d93aeac27f27fe617e1a5485044309846
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277730"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273826"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Sanal makine Pazar yeri sekmesi
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
 
 **Yeni Teklif** sayfasının **Pazar sekmesi,** potansiyel müşterilerinize pazarlama, satış ve yasal bilgi ve anlaşmaları sağlamanızı ve pazardan oluşturulan müşteri adaylarını yönetmenize olanak tanır. Bu uzun form dört bölüme ayrılmıştır: **Genel Bakış**, **Pazarlama Eserler**, **Kurşun Yönetimi**, ve **Yasal**.
 
@@ -33,7 +36,7 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 | **Uzun Özet\***          | Çözümün amacı veya işlevi.  Maksimum uzunluğu 256 karakter. |
 | **Açıklama\***           | Çözümün açıklaması.  Maksimum uzunluğu 3000 karakter, basit HTML biçimlendirme destekler. |
 | **Microsoft CSP Bayi kanalı\*** | Bulut Çözüm Sağlayıcıları (CSP) iş ortağı kanal tercihi artık kullanılabilir.  Microsoft CSP iş ortağı kanalları aracılığıyla teklifinizi pazarlama hakkında daha fazla bilgi için lütfen [Bulut Çözüm Sağlayıcıları'na](../../cloud-solution-providers.md) bakın. |
-| **Pazarlama Tanımlayıcısı\***  | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir.  Örnek: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
+| **Pazarlama Tanımlayıcısı\***  | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir.  Örneğin: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Abonelik IYT'lerini Önizleme\*** | Bir ila 100 abonelik tanımlayıcıları previewers ekleyin. Bu beyaz listedeki abonelikler, yayınlanmadan önce, yayınlanmadan önce teklife erişebilir. |
 | **Faydalı Linkler**          | Belgelere URL'ler, sürüm notları, SSS'ler vb. ekleyin. |
 | **Önerilen Kategoriler\*** | Birincil ve ikincil kategori (isteğe bağlı) dahil olmak üzere en fazla iki (2) kategori seçin. Her birincil ve/veya ikincil kategori için en fazla iki (2) alt kategori seçin. Hiçbir alt kategori seçili değilse, sunduğunuz öneri yalnızca seçili kategoride bulunabilir olacaktır. |
@@ -52,7 +55,7 @@ Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır. Gerek
 |  ---------                |     ---------------                                                          |
 | *Logo*  |  |
 | **Küçük\***                 | 40x40 piksel .ico bit map                                                      |
-| **Orta\***                | 90x90 piksel .ico bit map                                                      |
+| **Medium\***                | 90x90 piksel .ico bit map                                                      |
 | **Büyük\***                 | 115x115 piksel .ico bit haritası                                                   |
 | **Geniş\***                  | 255x115 piksel .ico bit haritası                                                    |
 | **Kahraman**                  | 815x290 bit haritası.  İsteğe bağlı, ancak bir kez kahraman simgesi yüklendiğinde silinemez. |

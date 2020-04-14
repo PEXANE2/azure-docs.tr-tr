@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
-ms.openlocfilehash: fb568400cb60f108303909353bfa703e98ab6157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af42476f9d04f7f2bfc275c731b02aa5a9b8ecf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286430"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273163"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Azure sanal makine görüntüsünü önceden doğrulamak için kendi kendine test eden bir istemci oluşturma
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
 
 Kendi kendine test API tüketen bir istemci hizmeti oluşturmak için bir kılavuz olarak bu makaleyi kullanın. Sanal makineyi (VM) en son Azure Marketi yayımlama gereksinimlerini karşıladığından emin olmak için kendi kendini test eden API'yi önceden doğrulamak için kullanabilirsiniz. Bu istemci hizmeti, Microsoft sertifikası için teklifinizi göndermeden önce bir VM'yi test etmenizi sağlar.
 
@@ -219,7 +222,7 @@ Aşağıdaki ekran yakalama kıvırma çağrısından JSON sonuçlarını göste
 
 Uygulamanızı oluşturmak istediğiniz Azure AD kiracısını seçmek için aşağıdaki adımları kullanın.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Üst menü çubuğunda hesabınızı seçin ve Dizin listesinin altında, başvurunuzu kaydetmek istediğiniz Aktif Dizin kiracısını seçin. Veya Global abonelik filtresini görmek için **Dizin + Abonelik** simgesini seçin. Aşağıdaki ekran yakalama bu filtrenin bir örneğini gösterir.
 
    ![Abonelik filtresini seçin](./media/stclient-subscription-filter.png)

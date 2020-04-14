@@ -1,6 +1,6 @@
 ---
-title: Microsoft AppSource ve Azure Marketi'nde Yayımlama Seçeneğinizi Belirleyin
-description: Bu makalede, uygulamaların Microsoft AppSource ve Azure Marketplace'te nasıl yayımlanacaklarını anlamaya çalışan uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
+title: Ticari pazarda yayımlama seçeneğinizi belirleyin
+description: Bu makalede, uygulamaların ticari pazarda nasıl yayımlandırılabildiğini anlamaya çalışan uygunluk ölçütleri ve yayımlama gereksinimleri açıklanmaktadır.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,18 +8,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: dsindona
-ms.openlocfilehash: 4c41fcbb8766feb68db7d60d591e914a6ba0aea2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84d5c351f3997fe5430ea1ce517c2dca13203c03
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349532"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261695"
 ---
 # <a name="determine-your-publishing-option"></a>Yayımlama seçeneğinizi belirleme
 
 Teklifiniz için seçtiğiniz yayımlama seçeneği, hem uygunluk gereksinimleri hem de ticari pazar daki GTM avantajlarıyla doğrudan ilgilidir. Daha da önemlisi, yayımlama seçeneği nin ve teklif türünün seçimi, kullanıcıların ticari pazar teklifinizle nasıl etkileşimde bulunacağını tanımlar.
 
-Teklifinizi yapılandırmak için aşağıdaki temel ticari pazar kavramlarını anlamanız gerekir: yayın seçenekleri, teklif türleri ve yapılandırması ve teklifinizin ticari pazarda nasıl ve nerede sunulacağını yönetecek eylem çağrıları Storefronts.
+Teklifinizi yapılandırmak için aşağıdaki temel ticari pazar kavramlarını anlamanız gerekir: yayımlama seçenekleri, teklif türleri ve yapılandırması ve teklifinizin ticari pazar vitrinlerinde nasıl ve nerede sunulacağını yönetecek eylem çağrıları.
 
 ![Microsoft ticari pazar vitrinleri ve yayımlama seçenekleri](./media/marketplace-publishers-guide/storefronts_options_table.png)
 

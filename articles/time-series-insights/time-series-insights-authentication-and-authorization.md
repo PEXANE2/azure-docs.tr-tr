@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: ff5f7a80e2dcedb1795bae14ee9140c2842303a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 373fc2829e599d0989b59c6386757c8f5f3e1d66
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76984599"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251733"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API’si için kimlik doğrulaması ve yetkilendirme
 
@@ -102,9 +102,9 @@ Bu bölümde, Zaman Serisi Öngörüleri GA ve Önizleme API'lerine karşı sorg
 > [!TIP]
 > REST API'leri nasıl tüketileyeceğiniz, HTTP isteklerini nasıl yapacağınız ve HTTP yanıtlarını nasıl işleyeceğiniz hakkında daha fazla bilgi edinmek için [Azure REST API Başvurusu'nu](https://docs.microsoft.com/rest/api/azure/) okuyun.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
-[Zaman Serisi Öngörüleri REST API'lerine](https://docs.microsoft.com/rest/api/time-series-insights/)karşı kimlik doğrulaması yapılan sorguları gerçekleştirmek için, seçtiğiniz bir REST istemcisi (Postacı, JavaScript, C#) kullanılarak [Yetkilendirme üstbilgisinde](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) geçerli bir OAuth 2.0 taşıyıcı belirteci geçilmelidir. 
+[Zaman Serisi Öngörüleri REST API'lerine](https://docs.microsoft.com/rest/api/time-series-insights/)karşı kimlik doğrulaması yapılan sorguları gerçekleştirmek için, seçtiğiniz bir REST istemcisi (Postacı, JavaScript, C#) kullanılarak [Yetkilendirme üstbilgisinde](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) geçerli bir OAuth 2.0 taşıyıcı belirteci geçilmelidir. 
 
 > [!TIP]
 > Zaman Serisi Öngörüleri API'leri ile grafik ve grafiklerin yanı sıra [JavaScript İstemci SDK'sını](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) programlı bir şekilde kullanarak kimlik doğrulaması yapmayı öğrenmek için barındırılan Azure Time Series Insights [istemciSi SDK örnek görselleştirmesini](https://tsiclientsample.azurewebsites.net/) okuyun.

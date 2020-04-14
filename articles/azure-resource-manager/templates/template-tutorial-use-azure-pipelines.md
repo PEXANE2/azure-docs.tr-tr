@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b117861a528b6983876d28d5b343ea88c2bcadc0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75921632"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260692"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli entegrasyonu
 
@@ -46,7 +46,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-github-repository"></a>GitHub deposu hazırlama
 
-GitHub, Kaynak Yöneticisi şablonları da dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar [için Azure DevOps tarafından desteklenen depolara](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)bakın.
+GitHub, Kaynak Yöneticisi şablonları da dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar [için Azure DevOps tarafından desteklenen depolara](/azure/devops/pipelines/repos/?view=azure-devops)bakın.
 
 ### <a name="create-a-github-repository"></a>GitHub deposu oluşturma
 
@@ -212,7 +212,7 @@ Projeleri Azure'a dağıtmak için kullanılan bir hizmet bağlantısı oluştur
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. Ad, boru hattı YAML dosyasında belirttiğiniz addır.  Bir depolama hesabı nın oluşturulduğunu göreceksiniz.  Depolama hesabı adı **depo**ile başlar.
 1. Açmak için depolama hesabı adını seçin.
 1. **Özellikleri**seçin. **Çoğaltma** yerel **olarak yedekli depolama (LRS)** olduğuna dikkat edin.
@@ -260,4 +260,4 @@ GitHub deposunu ve Azure DevOps projesini de silmek isteyebilirsiniz.
 Bu eğitimde, bir Azure Kaynak Yöneticisi şablonu dağıtmak için bir Azure DevOps ardışık hattı oluşturursunuz. Azure kaynaklarını birden fazla bölgede dağıtma ve güvenli dağıtım uygulamalarını kullanma hakkında bilgi edinmek için bkz.
 
 > [!div class="nextstepaction"]
-> [Güvenli dağıtım uygulamaları kullanma](./deployment-manager-tutorial.md)
+> [Güvenli dağıtım uygulamalarını kullanma](./deployment-manager-tutorial.md)

@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a9c6897937b73786367accc33e985a268907226
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70067463"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258754"
 ---
 # <a name="transform-and-protect-your-api"></a>API’nizi dönüştürme ve koruma
 
@@ -112,9 +112,9 @@ Bu bölümde, API’lerin HTTP yanıt gövdesinde görüntülenen özgün URL’
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci ** &lt;giden&gt; ** öğenin içine yerleştirin.
+5.  İmleci ** &lt;&gt; giden** öğenin içine yerleştirin ve sağ üst köşedeki **Ekle ilkesi** düğmesini tıklatın.
 6.  Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ Gövdedeki dizeyi bul ve değiştir** seçeneğine tıklayın.
-7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu (**\<giden\>** öğesinde) değiştirin. Örnek:
+7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu (**\<giden\>** öğesinde) değiştirin. Örneğin:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 

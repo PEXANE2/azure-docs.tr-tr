@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: c6062ec008a7a12c720cf28c2d79531e805ebba0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984444"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261763"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure Files,](storage-files-introduction.md) bulutta endüstri standardı Sunucu İleti Bloğu [(SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutveya Windows, Linux ve macOS'un şirket içi dağıtımlarına eş zamanlı olarak monte edebilirsiniz. Ayrıca, verilerin kullanıldığı yere yakın hızlı erişim için Azure Dosya Eşitlemeyi'ni kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -217,7 +217,7 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 * <a id="ad-aad-smb-files"></a>
 **Depolama hesabımda ve AD etki alanı bilgilerimde AD kimlik doğrulamasını etkinleştirip etkinleştirdiğimi nasıl kontrol edebilirim?**
 
-    Azure Dosyaları AD Kimlik Doğrulaması'nın depolama hesabınızda etkinleştirilip etkinleştirilen ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) verilen yönergelere başvurabilirsiniz.
+    Azure Dosyaları AD Kimlik Doğrulaması'nın depolama hesabınızda etkinleştirilip etkinleştirilen ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) verilen yönergelere başvurabilirsiniz.
     
 * <a id="encryption-at-rest"></a>
 **Azure dosya paylaşımımın istirahatte şifrelendiğinden nasıl emin olabilirim?**  

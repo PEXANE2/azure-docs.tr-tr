@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 673fe1f31f6a8602225e7cde3bf1eb4c3b28b8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b80325594eedb87293c31de3236bb4690eb89e05
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278153"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273027"
 ---
 # <a name="configure-winrm-after-virtual-machine-creation"></a>Sanal makine oluşturulduktan sonra WinRM'i yapılandırın
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
 
 Bu makalede, WinRM'i HTTPS üzerinden etkinleştirmek için varolan Azure barındırılan sanal makinenin (VM) nasıl yapılandırılabildiğini açıklanmaktadır.  Bu yapılandırma yalnızca Windows tabanlı VM'ler için geçerlidir ve aşağıdaki iki adımlı işlemi gerektirir:
 
@@ -26,8 +29,8 @@ Bu makalede, WinRM'i HTTPS üzerinden etkinleştirmek için varolan Azure barın
 
 HTTPS protokolü üzerindeki WinRM, Azure Marketi'nde sunulan önceden yapılandırılmış Windows VM'lerinde varsayılan olarak etkinleştirilmeyen 5986 bağlantı noktasını kullanır. Bu protokolü etkinleştirmek için, [Azure portalı](https://portal.azure.com)ile ağ güvenlik grubuna (NSG) yeni bir kural eklemek için aşağıdaki adımları kullanın.  NSG'ler hakkında daha fazla bilgi için [Güvenlik Grupları'na](https://docs.microsoft.com/azure/virtual-network/security-overview)bakın.
 
-1.  Bıçak Sanal **makineleri **   <>*vm-name* >   **> Ayarlar / Ağ**gidin.
-2.  Özelliklerini görüntülemek için NSG adını (bu örnekte **testvm11002)** tıklatın:
+1. Bıçak Sanal **makineleri **   <>*vm-name* >   **> Ayarlar / Ağ**gidin.
+2. Özelliklerini görüntülemek için NSG adını (bu örnekte **testvm11002)** tıklatın:
 
     ![Ağ güvenlik grubu özellikleri](./media/nsg-properties.png)
  

@@ -5,17 +5,19 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/14/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4fc77407ae1c5854d3fe977da5a81f4226bf5305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93b2ca700a987b86aedfdae55d58540c8ffe84ed
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280482"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255882"
 ---
-<a name="retrieve-operations"></a>İşlemleri alma
-===================
+# <a name="retrieve-operations"></a>İşlemleri alma
+
+> [!NOTE]
+> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Teklifteki tüm işlemleri alır veya belirtilen operationId için belirli bir işlem alır. İstemci, çalışan işlemleri filtrelemek için sorgu parametrelerini kullanabilir.
 
@@ -28,21 +30,18 @@ Teklifteki tüm işlemleri alır veya belirtilen operationId için belirli bir i
 ```
 
 
-<a name="uri-parameters"></a>URI parametreleri
---------------
+## <a name="uri-parameters"></a>URI parametreleri
 
 |  **Adı**          |      **Açıklama**                                                                                           | **Veri türü** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
 |  publisherId       |  Yayımcı tanımlayıcısı, örneğin`Contoso`                                                                   |  Dize       |
 |  offerId           |  Teklif tanımlayıcısı                                                                                              |  Dize       |
 |  operationId       |  Teklifteki işlemi benzersiz olarak tanımlayan GUID. OperationId bu API kullanılarak alınabilir ve [ayrıca Yayımlama teklifi](./cloud-partner-portal-api-publish-offer.md) API'si gibi uzun süren herhangi bir işlem için yanıtın HTTP üstbilgisinde döndürülür.  |   Guid   |
-|  filtrelenmişDurum    | Bu API tarafından döndürülen koleksiyondaki `running`duruma göre (örneğin) filtrelemek için kullanılan isteğe bağlı sorgu parametresi.  |   Dize |
-|  api-sürümü       | API'nin en son sürümü                                                                                           |    Tarih      |
+|  api-sürümü       | API'nin en son sürümü |    Tarih      |
 |  |  |  |
 
+## <a name="header"></a>Üst bilgi
 
-<a name="header"></a>Üst bilgi
-------
 
 |  **Adı**          |  **Değer**           |
 |  ---------------   | -------------------- |
@@ -51,8 +50,7 @@ Teklifteki tüm işlemleri alır veya belirtilen operationId için belirli bir i
 |  |  |
 
 
-<a name="body-example"></a>Gövde örneği
-------------
+## <a name="body-example"></a>Gövde örneği
 
 ### <a name="response"></a>Yanıt
 
@@ -167,25 +165,35 @@ Teklifteki tüm işlemleri alır veya belirtilen operationId için belirli bir i
                     ],
                 "previewLinks": [],
                 "liveLinks": [],
-                "notificationEmails": "jondoe@contoso.com"
-            } 
+            }
         }
     ]
 ```
-
 
 ### <a name="response-body-properties"></a>Yanıt gövde özellikleri
 
 |  **Adı**                    |  **Açıklama**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | İşlemi benzersiz olarak tanımlayan GUID                                                       |
-|  submissionType              | Teklif için bildirilen işlem türünü tanımlar, örneğin`Publish/GGoLive`      |
+|  submissionType              | Teklif için bildirilen işlem türünü tanımlar, örneğin`Publish/GoLive`      |
 |  createdDateTime             | Operasyonun oluşturulduğu UTC tarih saati                                                       |
 |  lastActionDateTime          | Operasyonda son güncelleştirmenin yapıldığı UTC tarih saati                                       |
 |  durum                      | Operasyonun durumu, ya `not started` \| `running` \| `failed` \| `completed`. Aynı anda yalnızca `running` bir işlem durumu olabilir. |
 |  error                       | Başarısız işlemler için hata iletisi                                                               |
 |  |  |
 
+### <a name="response-step-properties"></a>Yanıt adım özellikleri
+
+|  **Adı**                    |  **Açıklama**                                                                                  |
+|  --------------------        |  ------------------------------------------------------------------------------------------------ |
+| tahminiTimeFrame | Bu işlemin tahmini süresi |
+| id | Adım işlemi için benzersiz tanımlayıcı |
+| açıklama | Adımın açıklaması |
+| stepName | Adım için dostça isim |
+| durum | Adımın durumu, ya `notStarted` \| `running` \| `failed` \|`completed` |
+| sayısı | Adım sırasında karşılaşılan bildirimler veya uyarılar. Dize dizileri |
+| progressPercentage | Adımın ilerlemesini gösteren 0'dan 100'e kadar bir yarım |
+| | |
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 

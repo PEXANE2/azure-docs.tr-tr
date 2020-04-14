@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2020
 ms.author: damaerte
-ms.openlocfilehash: d4d59642f638e7b1221c35a4bb281923571d5066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37005a722d4a1962b4f6e1ddb8bb1c7a1229d28a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297596"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273299"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Bulut Uyp'ta dosyaları devam etti
 Bulut Kabuğu, oturumlar arasında dosyaları sürdürmek için Azure Dosya depolamasını kullanır. İlk başlangıçta Bulut Shell, oturumlar arasında kalıcı dosyalar için yeni veya varolan bir dosya paylaşımını ilişkilendirmenizi ister.
@@ -50,7 +50,7 @@ Gelişmiş seçeneği kullanarak, varolan kaynakları ilişkilendirebilirsiniz. 
 Depolama kurulum istemi göründüğünde, ek seçenekleri görüntülemek için **gelişmiş ayarları göster'i** seçin. Yerel olarak yedekli depolama (LRS), coğrafi yedekli depolama (GRS) ve bölge yedekli depolama (ZRS) hesapları için doldurulan depolama seçenekleri filtresi. 
 
 > [!NOTE]
-> DESTEK dosya paylaşımınız için ek esneklik için GRS veya ZRS depolama hesaplarının kullanılması önerilir. Hangi fazlalık türü hedeflerinize ve fiyat tercihinize bağlıdır. [Azure Depolama hesapları için çoğaltma seçenekleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+> DESTEK dosya paylaşımınız için ek esneklik için GRS veya ZRS depolama hesaplarının kullanılması önerilir. Hangi fazlalık türü hedeflerinize ve fiyat tercihinize bağlıdır. [Azure Depolama hesapları için çoğaltma seçenekleri hakkında daha fazla bilgi edinin.](../storage/common/storage-redundancy.md)
 
 ![Kaynak grup ayarı](media/persisting-shell-storage/advanced-storage.png)
 
@@ -169,5 +169,5 @@ Not: Bir dosyada bir işlev tanımlamanız ve PowerShell cmdlets'ten aramanız g
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Bulut Kabuğu Hızlı Başlat](quickstart.md) <br>
-[Microsoft Azure Dosyaları depolama hakkında bilgi edinin](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
+[Microsoft Azure Dosyaları depolama hakkında bilgi edinin](../storage/files/storage-files-introduction.md) <br>
 [Depolama etiketleri hakkında bilgi edinin](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

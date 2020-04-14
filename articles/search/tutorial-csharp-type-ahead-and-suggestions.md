@@ -1,23 +1,23 @@
 ---
-title: Otomatik tamamlama ve öneriler üzerine C# eğitimi
+title: Otomatik tamamlama ve öneriler
 titleSuffix: Azure Cognitive Search
 description: Bu öğretici, açılır listeyi kullanan kullanıcılardan arama terimi girdisi toplamanın bir yolu olarak otomatik tamamlama ve önerileri gösterir. Mevcut bir otel projesi üzerine inşa edilmiştir.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 02/10/2020
-ms.openlocfilehash: 8f244d64fe33a1529cf66314515bbe16e05ccffb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 03/12/2020
+ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77121540"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259774"
 ---
-# <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# öğretici: Otomatik tamamlama ve öneriler ekleme - Azure Bilişsel Arama
+# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# öğretici: Otomatik tamamlama ve öneriler ekleme - Azure Bilişsel Arama
 
-Bir kullanıcı arama kutunuza yazmaya başladığında otomatik tamamlamayı (önceden yazma ve öneriler) nasıl uygulayacağınızı öğrenin. Bu eğitimde, öndeki yazı sonuçlarını ve öneri sonuçlarını ayrı ayrı göstereceğiz, ardından daha zengin bir kullanıcı deneyimi oluşturmak için bunları birleştirme yöntemini göstereceğiz. Bir kullanıcı, kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç anahtar yazmak zorunda kalabilir. Bu öğretici, [C# Tutorial: Search sonuçları pagination - Azure Bilişsel Arama](tutorial-csharp-paging.md) öğretici oluşturulan sayfalama projesi üzerine inşa edilmiştir.
+Bir kullanıcı arama kutusuna yazmaya başladığında otomatik tamamlamayı (önceden yazma sorguları ve önerilen belgeler) nasıl uygulayacağınızı öğrenin. Bu öğreticide, otomatik olarak tamamlanan sorguları ve öneri sonuçlarını ayrı ayrı göstereceğiz, ardından daha zengin bir kullanıcı deneyimi oluşturmak için bunları birleştirme yöntemini göstereceğiz. Bir kullanıcı, kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmak zorunda kalabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
@@ -28,9 +28,9 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
+Bu öğretici bir serinin parçasıdır ve C# Tutorial oluşturulan sayfalama projesi üzerine inşa: [Arama sonuçları pagination - Azure Bilişsel Arama](tutorial-csharp-paging.md).
 
-[C# Tutorial: Arama sonuçları pagination var - Azure Bilişsel Arama](tutorial-csharp-paging.md) projesi up ve çalışıyor. Bu proje, önceki öğreticide tamamladığınız kendi sürümünüz olabilir veya GitHub'dan yükleyebilir: [İlk uygulamayı oluşturun.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
+Alternatif olarak, bu özel öğretici için çözümü indirebilir ve çalıştırabilirsiniz: [3-add-typeahead](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead).
 
 ## <a name="add-suggestions"></a>Öneri ekle
 

@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/02/2018
 ms.author: dsindona
-ms.openlocfilehash: 8ae1dcbeff6e14e6f1f7cd44ae3a0a68bd379b56
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 988121effb35949cce442ba9458789105e88feec
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387351"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273452"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>VHD oluşturma sırasında sık karşılaşılan sorunlar (SSS)
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [VHD SSS Oluştur'daki](https://aka.ms/VHDcreationIssues) yönergeleri izleyin.
 
 Aşağıdaki sık sorulan sorular (SSS) sanal sabit disk (VHD) ve Sanal makine (VM) VM teklifleri için oluşturulması sırasında karşılaşılan sık karşılaşılan sorunları kapsamaktadır. 
 

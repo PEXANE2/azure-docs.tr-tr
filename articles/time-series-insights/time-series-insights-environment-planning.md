@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85910ee5467ecc9f4fe3c1a8bc13110b6f218e5c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314819"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272721"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Öngörüleri GA ortamınızı planlayın
 
@@ -79,9 +79,7 @@ Azure portalında ortamın yapılandırma sayfasındaki iki mod arasında beklet
 
 ### <a name="environment-planning"></a>Çevre planlama
 
-Time Series Insights ortamınızı planlamak için odaklanılabilmeniz gereken ikinci alan giriş kapasitesidir. Giriş kapasitesi, dakika başına ayırmanın bir türevidir.
-
-Azaltma açısından bakıldığında, paket boyutu 32 KB olan bir girişli veri paketi, her biri 1 KB boyutunda 32 olay olarak kabul edilir. İzin verilen maksimum olay boyutu 32 KB'dir. 32 KB'den büyük veri paketleri kesilir.
+Time Series Insights ortamınızı planlamak için odaklanılabilmeniz gereken ikinci alan giriş kapasitesidir. Günlük giriş depolama ve etkinlik kapasitesi dakikada 1-KB bloklarda ölçülür. İzin verilen maksimum paket boyutu 32 KB'dir. 32 KB'den büyük veri paketleri kesilir.
 
 Bir S1 veya S2 SKU'nun kapasitesini tek bir ortamda 10 üniteye yükseltebilirsiniz. S1 ortamından S2'ye geçiş yapamazsınız. Bir S2 ortamından S1'e geçiş yapamazsınız.
 

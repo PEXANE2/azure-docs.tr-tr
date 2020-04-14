@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76513890"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272959"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımlama
 
-Video Indexer otomatik dil tanımlama (LID), hangi otomatik olarak ses ten konuşulan dil içeriği tanımlama ve baskın tanımlanmış dilde transkripsiyonu için medya dosyası gönderme işlemidir destekler. Şu anda LID İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Portekizce (Brezilyaca) destekler. 
+Video Indexer otomatik dil tanımlama (LID), hangi otomatik olarak ses ten konuşulan dil içeriği tanımlama ve baskın tanımlanmış dilde transkripsiyonu için medya dosyası gönderme işlemidir destekler. 
+
+Şu anda LID destekler: İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Portekizce (Brezilyaca). 
+
+Aşağıdaki [Yönergeler ve sınırlamalar](#guidelines-and-limitations) bölümünü gözden geçirin.
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Dizin oluşturmada otomatik dil tanımlama seçimi
 
@@ -49,7 +53,10 @@ Model baskın dil öznitelik olarak `sourceLanguage` (kök / video / anlayışla
 
 ## <a name="guidelines-and-limitations"></a>Yönergeler ve sınırlamalar
 
-* Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır.
+* Otomatik dil tanımlama (LID) aşağıdaki dilleri destekler: 
+
+    İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Portekizce (Brezilyaca).
+* Video Indexer Arapça (Modern Standart ve Levanten), Hintçe ve Korece'yi desteklese de, bu diller LID'de desteklenmez.
 * Ses yukarıda desteklenen liste dışında diller içeriyorsa, sonuç beklenmeyen.
 * Video Indexer yeterince yüksek bir güven ile`>0.6`dil tanımlayamıyorsa ( ), geri dönüş dili İngilizce'dir.
 * Karışık dillerses içeren dosya için geçerli bir destek yoktur. Ses karışık diller içeriyorsa, sonuç beklenmeyen bir durumdur. 

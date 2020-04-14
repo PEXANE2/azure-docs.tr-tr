@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: dsindona
-ms.openlocfilehash: 0225069179e0d7d94a983c5161976a5c1933fac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1e001b9cafff83a3f9bf546d6903cc4a4f450f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80278204"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273503"
 ---
 # <a name="certify-your-vm-image"></a>VM görüntünüzü sertifikasına
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
 
 Sanal makinenizi (VM) oluşturup dağıttıktan sonra, Azure Marketi sertifikası için VM görüntüsünü test etmeli ve göndermeniz gerekir. Bu makalede, Azure *Sertifikalı Sertifika Test Aracı'nı*nereden alacağınızı, VM resminizi onaylamak için bu aracı nasıl kullanacağınızı ve doğrulama sonuçlarını VH'lerinizin bulunduğu Azure kapsayıcısına nasıl yükleyebileceğiniz açıklanmaktadır. 
 

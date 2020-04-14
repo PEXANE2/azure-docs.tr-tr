@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 0994e1af8ca6deccbe6224625a5320fb195a10a1
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586496"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256017"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics iş zekası ortakları
 
@@ -37,7 +37,7 @@ Azure Synapse içindeki Synapse SQL havuzunun tamamını veri ambarı çözümü
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Herkesin kullanabileceği veri görselleştirme uygulamasıyla içgörü bulmayı yönlendirin. Qlik Sense ile kuruluşunuzdaki herkes kolayca esnek, etkileşimli görselleştirmeler oluşturabilir ve anlamlı kararlar alabilir. |[Ürün sayfası](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/) |
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense, bir işletmenin verileri analiz etmek ve görselleştirmek için ihtiyaç duyduğu araçlarla birlikte gelen tam bir İş Zekası yazılımıdır: yüksek performanslı bir analitik veritabanı, birden fazla kaynağa katılma yeteneği, basit veri çıkarma (ETL) ve web tabanlı veri görselleştirme. Bugün SiSense BI ve Analytics ile büyük veri kümelerini analiz etmeye ve görselleştirmeye başlayın. |[Ürün sayfası](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau'nun self servis analitiği, düz dosyalardan veritabanlarına kadar pek çok veri türünde herkesin verilerini görmesine ve anlamasına yardımcı olur. Tableau'da synapse SQL havuzuna hem canlı verileri hem de bellek içi analitiği destekleyen yerel ve optimize edilmiş bir bağlayıcı vardır. |[Ürün sayfası](https://www.tableau.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
-| ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Karar Paketi)**<br>Targit Decision Suite, gerçek zamanlı panolar, self servis analitik, kullanıcı dostu raporlama, çarpıcı mobil özellikler ve basit veri bulma teknolojisi sunan BI ve Analytics platformlarını tek ve uyumlu bir çözümde sunar. Targit şirketlere harekete geçme cesareti veriyor. |[Ürün sayfası](https://www.targit.com/en/software/deployment/targitonazure)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Karar Paketi)**<br>Targit Decision Suite, gerçek zamanlı panolar, self servis analitik, kullanıcı dostu raporlama, çarpıcı mobil özellikler ve basit veri bulma teknolojisi sunan BI ve Analytics platformlarını tek ve uyumlu bir çözümde sunar. Targit şirketlere harekete geçme cesareti veriyor. |[Ürün sayfası](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
 | ![Sarı yüzgeçli](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sarı yüzgeçli**<br>Yellowfin, BARC tarafından özel Raporlama ve Panolar için en çok puan alan Cloud BI satıcısıdır; BI Anketi. Synapse SQL havuzuna bağlanın, ardından ödüllü işbirlikçi BI ve konum zekası özellikleriyle güzel raporlar ve panolar oluşturun ve paylaşın. |[Ürün sayfası](https://www.yellowfinbi.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

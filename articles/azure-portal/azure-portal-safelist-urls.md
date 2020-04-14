@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 01/29/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5bba7296a05cfbb72698a991ece1ef298689bd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76900663"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255058"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>Güvenlik duvarınızda veya proxy sunucunuzda Azure portalı URL'lerini güvenli listeleyin
 
@@ -80,13 +80,3 @@ Azure portalı için güvenli liste listesi için URL uç noktaları, kuruluşun
 > Bu uç noktalara trafik, HTTP (80) ve HTTPS (443) için standart TCP bağlantı noktalarını kullanır.
 >
 >
-## <a name="next-steps"></a>Sonraki adımlar
-
-IP adreslerini güvenli bir şekilde listelememi mi gerekiyor? Bulutunuzun Microsoft Azure veri merkezi IP aralıklarının listesini indirin:
-
-* [Dünya](https://www.microsoft.com/download/details.aspx?id=56519)
-* [ABD Hükümeti](https://www.microsoft.com/download/details.aspx?id=57063)
-* [Almanya](https://www.microsoft.com/download/details.aspx?id=57064)
-* [Çin](https://www.microsoft.com/download/details.aspx?id=57062)
-
-Diğer Microsoft hizmetleri bağlantı için ek URL'ler ve IP adresleri kullanır. Microsoft 365 hizmetleri için ağ bağlantısını optimize etmek [için](/office365/enterprise/set-up-network-for-office-365)bkz.

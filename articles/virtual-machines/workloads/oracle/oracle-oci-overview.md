@@ -3,7 +3,7 @@ title: Microsoft Azure'u Oracle Cloud Altyapısıyla tümleştirin | Microsoft D
 description: Microsoft Azure'da çalışan Oracle uygulamalarını Oracle Cloud Infrastructure (OCI) veritabanlarıyla bütünleştiren çözümler hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/16/2020
-ms.author: rogirdh
+ms.author: mimckitt
 ms.custom: ''
-ms.openlocfilehash: b5d5ebda850163989e6ef1af94ec623d2d758f07
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 178fb805f4bfc0762ce7e4a320752e5afa00cef5
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878298"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271871"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Microsoft Azure ve Oracle Bulut Altyapılarını entegre eden Oracle uygulama çözümleri
 
@@ -55,6 +55,7 @@ Bulutlar arası bağlantı aşağıdaki bölgelerle sınırlıdır:
 * Azure Uk South (uksouth) & OCI Londra (Uk South)
 * Azure Canada Central (canadacentral) & OCI Toronto (Kanada Güneydoğu)
 * Azure Batı Avrupa (westeurope) & OCI Amsterdam (Hollanda Kuzeybatı)
+* Azure Japonya Doğu (japaneast) & OCI Tokyo (Japonya Doğu)
 
 ## <a name="networking"></a>Ağ
 

@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 02/04/2020
+ms.date: 04/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1e4f72300752c93659db4edd4610464dbebf2503
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 73244a635bbf14efcf33f1b978db14e9e2589581
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77014428"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271072"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights Önizleme nedir?
 
@@ -49,22 +49,22 @@ Aşağıdaki resimde tipik bir IoT veri akışı gösterilmektedir.
 
 IoT peyzaj üretim, otomotiv, enerji, kamu hizmetleri, akıllı binalar ve danışmanlık da dahil olmak üzere endüstri segmentleri çeşitli yayılan müşterileri ile çeşitlidir. Bu geniş kapsamlı endüstriyel IoT pazarında, büyük ölçekli IoT verilerini hedefleyen kapsamlı analitik sağlayan bulut ait çözümler hala gelişmektedir. 
 
-Azure Time Series Öngörüleri, zaman serisi verilerinin bağlamsallaştırılması için zengin semantik modelleme, varlık tabanlı öngörüler ve keşfedilmek için sınıfının en iyisi kullanıcı deneyimi ile anahtar teslimi, uçtan uca IoT analitik çözümü sağlayarak bu pazar gereksinimini giderir, eğilim, anomali tespiti ve operasyonel istihbarat. 
+Azure Time Series Öngörüleri, zaman serisi verilerinin bağlamsallaştırılması için zengin semantik modelleme, varlık tabanlı öngörüler ve keşif, trend, anormallik tespiti ve operasyonel zeka için sınıfının en iyisi kullanıcı deneyimi yle anahtar teslimi, uçtan uca IoT analitik çözümü sağlayarak bu pazar gereksinimini giderir. 
 
 İnteraktif veri arama yeteneklerimizle birlikte zengin bir operasyonel analiz platformu olarak, IoT varlıklarından toplanan verilerden daha fazla değer elde etmek için Time Series Insights'ı kullanabilirsiniz. Önizleme teklifi destekler: 
 
 * Sıcak ve soğuk analitikiçeren çok katmanlı depolama çözümü, müşterilere, on yıllardır süren geçmiş veriler üzerinden etkileşimli analizler için verileri sıcak ve soğuk arasında yönlendirme seçeneği sunar. 
 
-    *   Daha kısa zaman aralığı verileri üzerinde sık ve çok sayıda sorgu gerçekleştirmek için son derece etkileşimli sıcak analitik çözümü 
-    *   Azure Depolama'yı temel alan ölçeklenebilir, performans ve maliyet en iyi duruma getirilmiş zaman serisi veri gölü, müşterilerin yıllar süren zaman serisi verilerini saniyeler içinde eğilimlemesine olanak tanır. 
+    *    Daha kısa zaman aralığı verileri üzerinde sık ve çok sayıda sorgu gerçekleştirmek için son derece etkileşimli sıcak analitik çözümü 
+    *    Azure Depolama'yı temel alan ölçeklenebilir, performans ve maliyet en iyi duruma getirilmiş zaman serisi veri gölü, müşterilerin yıllar süren zaman serisi verilerini saniyeler içinde eğilimlemesine olanak tanır. 
 
 * Varlıklardan ve aygıtlardan türetilen ve ham sinyallerle ilişkili etki alanını ve meta verileri açıklayan anlamsal model desteği.
 
-* Geçmiş zaman serisi verilerini müşteriye ait Azure Depolama hesabında depolamak için esnek analiz platformu, böylece müşterilerin IoT verilerine sahip olmasını sağlar. Veriler, tahmine dayalı analitik, makine öğrenimi ve Spark gibi tanıdık teknolojiler kullanılarak yapılan diğer özel hesaplamalar da dahil olmak üzere çeşitli veri senaryolarında bağlantı ve interop sağlayan açık kaynak Apache Parke formatında depolanır, Databricks ve Jupyter.
+* Geçmiş zaman serisi verilerini müşteriye ait Azure Depolama hesabında depolamak için esnek analiz platformu, böylece müşterilerin IoT verilerine sahip olmasını sağlar. Veriler, tahmine dayalı analitik, makine öğrenimi ve Spark, Databricks ve Jupyter gibi tanıdık teknolojiler kullanılarak yapılan diğer özel hesaplamalar da dahil olmak üzere çeşitli veri senaryolarında bağlantı ve interop sağlayan açık kaynak Apache Parke formatında depolanır.
 
-* Varlık tabanlı veri öngörülerini zengin, geçici veri analitiği ile interpolasyon, skaler ve toplu işlevler, kategorik değişkenler, dağılım çizimleri ve zaman kaydırma süresi desteğiyle birleştiren gelişmiş sorgu API'leri ve kullanıcı deneyimine sahip zengin analitik derinlemesine analiz için seri sinyalleri.
+* Varlık tabanlı veri öngörülerini zengin, geçici veri analitiği ile interpolasyon, skaler ve toplu işlevler, kategorik değişkenler, dağılım çizimleri ve zaman kaydırma zaman serileri için destekle birleştiren gelişmiş sorgu API'leri ve kullanıcı deneyimine sahip zengin analitik.
 
-*   Kurumsal IoT müşterilerimizin ölçek, performans, güvenlik ve güvenilirlik ihtiyaçlarını desteklemek için kurumsal sınıf platformu.
+*    Kurumsal IoT müşterilerimizin ölçek, performans, güvenlik ve güvenilirlik ihtiyaçlarını desteklemek için kurumsal sınıf platformu.
 
 * Uçtan uca analiz için genişletilebilirlik ve tümleştirme desteği. Time Series Insights, çeşitli veri senaryoları için genişletilebilir bir analiz platformu sağlar. Time Series Insights Power BI konektörü, müşterilerin Bi ve zaman serisi analizlerini tek bir cam bölmede birleşik bir şekilde görüntülemek için Time Series Insights'ta yaptıkları sorguları doğrudan Power BI'ye almalarını sağlar.
 

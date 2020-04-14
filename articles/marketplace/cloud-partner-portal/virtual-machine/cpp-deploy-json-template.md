@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 2db8c05d086c7b4e8537a1c17b1ca84eedb19857
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277880"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273928"
 ---
-# <a name="virtual-hard-disk-deployment-template"></a>Sanal sabit disk dağıtım şablonu 
+# <a name="virtual-hard-disk-deployment-template"></a>Sanal sabit disk dağıtım şablonu
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
 
 Aşağıdaki Azure Kaynak Yöneticisi şablonu, yerel sanal sabit diskten (VHD) oluşturulan yeni bir Azure sanal makine (VM) örneğini tanımlar.  Bu şablon, bir [kullanıcı VHD'den bir Azure VM dağıt'](./cpp-deploy-vm-user-image.md)ı makalesinde kullanılır. 
 

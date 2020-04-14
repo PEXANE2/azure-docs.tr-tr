@@ -3,12 +3,12 @@ title: Kaynakları düzenlemek için yönetim grupları oluşturma - Azure Yöne
 description: Portalı, Azure PowerShell'i ve Azure CLI'yi kullanarak birden çok kaynağı yönetmek için Azure yönetim gruplarını nasıl oluşturup oluşturabilirsiniz öğrenin.
 ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a06679432d795b5b7854af8dc66b468841978e9c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436525"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273197"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma
 
@@ -20,7 +20,7 @@ Dizinde oluşturulan ilk yönetim grubunun tamamlanması 15 dakika kadar sürebi
 
 Kiracıdaki herhangi bir Azure REKLAM kullanıcısı, yönetim grubu yazma izni olmadan bir yönetim grubu oluşturabilir.  Bu yeni yönetim grubu Kök Yönetim Grubu'nun bir çocuğu olacak ve yaratıcısına bir "Sahip" rol ataması verilecektir. Yönetim grubu hizmeti, rol atamalarının kök düzeyinde gerekli olmaması için bu yeteneğe izin verir. Oluşturulduğunda hiçbir kullanıcının Kök Yönetim Grubu'na erişimi yoktur.  Azure AD Global Yöneticilerinin yönetim gruplarını kullanmaya başlamasını engellememek için, ilk yönetim gruplarının kök düzeyinde oluşturulmasına izin veririz.      
 
-Portal, PowerShell veya Azure CLI'yi kullanarak yönetim grubu oluşturabilirsiniz. Şu anda, yönetim grupları oluşturmak için Kaynak Yöneticisi şablonlarını kullanamazsınız.
+Portal, [Kaynak Yöneticisi şablonu,](../../azure-resource-manager/templates/deploy-to-tenant.md#create-management-group)PowerShell veya Azure CLI'yi kullanarak yönetim grubu oluşturabilirsiniz.
 
 ### <a name="create-in-portal"></a>Portalda oluştur
 

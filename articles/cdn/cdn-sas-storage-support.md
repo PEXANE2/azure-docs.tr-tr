@@ -3,7 +3,7 @@ title: Azure CDN'yi SAS ile kullanma | Microsoft Dokümanlar
 description: Azure CDN, özel depolama kapsayıcılarına sınırlı erişim sağlamak için Paylaşılan Erişim İmzası'nın (SAS) kullanımını destekler.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: magattus
-ms.openlocfilehash: e7a170eaf74531cf4bd8c28aafaa5873f2459d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: c2580aa4ee22996c1bf0fe5c86064a6543450071
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69982423"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260182"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Azure CDN'yi SAS ile kullanma
 
@@ -39,7 +39,7 @@ Bir SAS belirteci oluşturduktan sonra, URL'nize ekleyerek `?sv=<SAS token>` blo
 
 `https://<account name>.blob.core.windows.net/<container>/<file>?sv=<SAS token>`
  
-Örnek:
+Örneğin:
  ```
 https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
@@ -60,7 +60,7 @@ Bu seçenek en basit seçenektir ve Azure CDN'den başlangıç sunucusuna geçir
    
    Ortaya çıkan CDN bitiş noktası URL'si aşağıdaki biçime sahiptir:`https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
-   Örnek:   
+   Örneğin:   
    ```
    https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -91,7 +91,7 @@ Bu seçenek yalnızca **Verizon profillerinden Azure CDN Premium** için kullan�
 
 2. Yeni kural etkin hale geldikten sonra, URL'de SAS belirteci kullanıp kullanmadığına bakılmaksızın herkes CDN bitiş noktasındaki belirtilen kapsayıcıdaki dosyalara erişebilir. Burada biçimidir:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
-   Örnek:   
+   Örneğin:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
        
 
@@ -106,7 +106,7 @@ Azure CDN güvenlik belirteç kimlik doğrulamasını kullanmak için Verizon pr
    Güvenlik belirteci uç noktası URL'si aşağıdaki biçime sahiptir:   
    `https://<endpoint hostname>.azureedge.net/<container>/<file>?<security_token>`
  
-   Örnek:   
+   Örneğin:   
    ```
    https://sasstoragedemo.azureedge.net/container1/demo.jpg?a4fbc3710fd3449a7c99986bkquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
@@ -135,7 +135,7 @@ SAS parametreleri Azure CDN tarafından görülemediğinden, Azure CDN teslim da
 
 | SAS parametre adı | Açıklama |
 | --- | --- |
-| Başlangıç | Azure CDN'nin blob dosyasına erişmeye başlayabileceğiniz süre. Saat çarpıklık nedeniyle (bir saat sinyali farklı bileşenler için farklı zamanlarda geldiğinde), varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika önce bir süre seçin. |
+| Başlat | Azure CDN'nin blob dosyasına erişmeye başlayabileceğiniz süre. Saat çarpıklık nedeniyle (bir saat sinyali farklı bileşenler için farklı zamanlarda geldiğinde), varlığın hemen kullanılabilir olmasını istiyorsanız 15 dakika önce bir süre seçin. |
 | End | Azure CDN'nin artık blob dosyasına erişemeyeceği zaman. Azure CDN'de önceden önbelleğe alınmış dosyalara hala erişilebilir. Dosyanın son kullanma süresini denetlemek için Azure CDN güvenlik belirteci üzerinde uygun son kullanma süresini ayarlayın veya kıymeti temize çıkarın. |
 | İzin verilen IP adresleri | İsteğe bağlı. **Verizon'dan Azure CDN**kullanıyorsanız, bu parametreyi [Verizon Edge Server IP Aralıkları'ndan Azure CDN'de](/azure/cdn/cdn-pop-list-api)tanımlanan aralıklara ayarlayabilirsiniz. **Akamai'den Azure CDN**kullanıyorsanız, IP adresleri statik olmadığından IP aralıkları parametresini ayarlayamazsınız.|
 | İzin verilen protokoller | Protokol(ler) hesabı SAS ile yapılan bir istek için izin verdi. HTTPS ayarı önerilir.|

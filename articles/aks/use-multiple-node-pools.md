@@ -4,16 +4,16 @@ description: Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok dü�
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 26fd541552ee203216af5a08d948644d82061191
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984921"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259094"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
-Azure Kubernetes Hizmeti'nde (AKS), aynı yapılandırmadaki düğümler düğüm *havuzlarında*gruplandırılır. Bu düğüm havuzları, uygulamalarınızı çalıştıran temel VM'leri içerir. Varsayılan düğüm *havuzu*oluşturan bir AKS kümesi oluşturduğunuzda ilk düğüm sayısı ve boyutları (SKU) tanımlanır. Farklı bilgi işlem veya depolama talepleri olan uygulamaları desteklemek için ek düğüm havuzları oluşturabilirsiniz. Örneğin, bilgi işlem yoğun uygulamalar veya yüksek performanslı SSD depolama erişimi için GPU'lar sağlamak için bu ek düğüm havuzlarını kullanın.
+Azure Kubernetes Hizmeti'nde (AKS), aynı yapılandırmadaki düğümler düğüm *havuzlarında*gruplandırılır. Bu düğüm havuzları, uygulamalarınızı çalıştıran temel VM'leri içerir. Bir [aks][use-system-pool]kümesi oluşturduğunuzda ilk düğüm sayısı ve boyutları (SKU) tanımlanır ve bu küme düğümü havuzu oluşturulur. Farklı bilgi işlem veya depolama talepleri olan uygulamaları desteklemek için ek *kullanıcı düğüm havuzları*oluşturabilirsiniz. Sistem düğüm havuzları CoreDNS ve tünel başı gibi kritik sistem bölmelerini barındırmanın birincil amacına hizmet eder. Kullanıcı düğümü havuzları, uygulama bölmelerinizi barındırmanın birincil amacına hizmet eder. Ancak, AKS kümenizde yalnızca bir havuz olmasını istiyorsanız, uygulama bölmeleri sistem düğümü havuzlarında zamanlanabilir. Kullanıcı düğümü havuzları, uygulamaya özel bölmelerinizi yerleştirdiğiniz yerdir. Örneğin, bilgi işlem yoğun uygulamalar veya yüksek performanslı SSD depolama erişimi için GPU'lar sağlamak için bu ek kullanıcı düğümü havuzlarını kullanın.
 
 > [!NOTE]
 > Bu özellik, birden çok düğüm havuzu oluşturma ve yönetme konusunda daha yüksek denetim sağlar. Sonuç olarak, oluşturma/güncelleme/silme için ayrı komutlar gereklidir. Daha önce yönetilen `az aks create` `az aks update` Cluster API üzerinden küme işlemleri veya kullanılan ve kontrol düzlemi ve tek bir düğüm havuzu değiştirmek için tek seçenek vardı. Bu özellik, agentPool API aracılığıyla aracı havuzları için ayrı bir `az aks nodepool` işlem kümesi ni ortaya çıkarır ve tek bir düğüm havuzunda işlemleri yürütmek için komut kümesinin kullanılmasını gerektirir.
@@ -29,7 +29,8 @@ Azure CLI sürüm 2.2.0 veya daha sonra yüklenmiş ve yapılandırılan gerekir
 Birden çok düğüm havuzunu destekleyen AKS kümeleri oluştururken ve yönetirken aşağıdaki sınırlamalar geçerlidir:
 
 * [Azure Kubernetes Hizmetinde (AKS) Kotalara, sanal makine boyutu kısıtlamalarına ve bölge kullanılabilirliğine][quotas-skus-regions]bakın.
-* Varsayılan olarak ilk düğüm havuzunu sistem düğümü havuzunu silemezsiniz.
+* AKS kümesinde yerini alacak başka bir sistem düğüm havuzuna sahip seniz, sistem düğüm havuzlarını silebilirsiniz.
+* Sistem havuzları en az bir düğüm içermelidir ve kullanıcı düğümü havuzları sıfır veya daha fazla düğüm içerebilir.
 * AKS kümesi birden fazla düğüm havuzları kullanmak için Standart SKU yük dengeleyici kullanmanız gerekir, özellik Temel SKU yük dengeleyicileri ile desteklenmez.
 * AKS kümesi düğümler için sanal makine ölçek kümeleri kullanmalıdır.
 * Düğüm havuzunun adı yalnızca küçük alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğümü havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
@@ -37,6 +38,9 @@ Birden çok düğüm havuzunu destekleyen AKS kümeleri oluştururken ve yöneti
 * Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümleri kontrol düzlemi için ayarlanan sürüm le eşleşmelidir. Bu, küme her düğüm havuzu işlemleri kullanılarak sağlandıktan sonra güncelleştirilebilir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
+
+> [!Important]
+> Bir üretim ortamında AKS kümeniz için tek bir sistem düğüm havuzu çalıştırıyorsanız, düğüm havuzu için en az üç düğüm kullanmanızı öneririz.
 
 Başlamak için, tek bir düğüm havuzu olan bir AKS kümesi oluşturun. Aşağıdaki örnek, *eastus* bölgesinde *myResourceGroup* adlı bir kaynak grubu oluşturmak için [az grubu oluşturma][az-group-create] komutunu kullanır. *MyAKSCluster* adlı bir AKS kümesi daha sonra [az aks oluşturma][az-aks-create] komutu kullanılarak oluşturulur. *1.15.7'nin* *kubernetes sürümü,* bir düğüm havuzunun sonraki adımda nasıl güncelleştirilebildiğini göstermek için kullanılır. [Desteklenen Kubernetes sürümünü][supported-versions]belirtebilirsiniz.
 
@@ -753,6 +757,8 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+[Sistem düğüm havuzları][use-system-pool]hakkında daha fazla bilgi edinin.
+
 Bu makalede, bir AKS kümesinde birden çok düğüm havuzu oluşturmayı ve nasıl yönetileceğinizi öğrendiniz. Düğüm havuzları arasında bölmeleri nasıl denetleyiş hakkında daha fazla bilgi için [AKS'deki gelişmiş zamanlayıcı özellikleri için en iyi uygulamalara][operator-best-practices-advanced-scheduler]bakın.
 
 Windows Server kapsayıcı düğüm havuzları oluşturmak ve kullanmak için [bkz.][aks-windows]
@@ -788,3 +794,4 @@ Windows Server kapsayıcı düğüm havuzları oluşturmak ve kullanmak için [b
 [tag-limitation]: ../azure-resource-manager/resource-group-using-tags.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
+[use-system-pool]: use-system-pools.md

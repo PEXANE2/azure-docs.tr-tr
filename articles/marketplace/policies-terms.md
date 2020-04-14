@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/10/2020
 ms.author: dsindona
-ms.openlocfilehash: a370b7b21d25f117e44d613d060dd8cdd060c062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2fdf40dde287a65548f1db04d34ed3cf67d0374
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336255"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262171"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>Ticari pazar politikaları ve koşulları
 
@@ -21,9 +21,9 @@ ms.locfileid: "80336255"
 
 Ticari pazarda teklifleri yayınlamaya olan ilginiz için teşekkür ederiz. Dünya çapındaki müşterileri memnun eden ve işinizi kurmanıza yardımcı olan zengin bir bulut çözümleri kaynağı ve iş teklifleri oluşturmak için sizinle ortaklık kurmaya kararlıyız.
 
-Pazardaki teklifler politika ve koşullarımıza uygun olmalıdır. İyi bir müşteri deneyimi sağlamak ve iş ortaklarına başarılı olmak için bir fırsat sağlamak için bu politika ve koşulları zaman zaman güncelleriz. Politikalarımız veya koşullarımız hakkında geri bildiriminiz varsa, lütfen [Azure Marketi ve AppSource forumunda](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)yorum yaparak bize bildirin.
+Pazardaki teklifler politika ve koşullarımıza uygun olmalıdır. İyi bir müşteri deneyimi sağlamak ve iş ortaklarına başarılı olmak için bir fırsat sağlamak için bu politika ve koşulları zaman zaman güncelleriz. Politikalarımız veya koşullarımız hakkında geri bildiriminiz varsa, lütfen [Azure Marketi ve Microsoft AppSource forumunda](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)yorum yaparak bize bildirin.
 
-## <a name="policies-and-terms"></a>İlkeler ve şartlar
+## <a name="policies-and-terms"></a>İlkeler ve koşullar
 
 * [Ticari market sertifikasyon ilkeleri](https://docs.microsoft.com/legal/marketplace/certification-policies)
 
@@ -35,6 +35,6 @@ Pazardaki teklifler politika ve koşullarımıza uygun olmalıdır. İyi bir mü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [Marketi ve AppSource yayımlama kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.
+Ticari [pazar yayınlama kılavuzu](./marketplace-publishers-guide.md) sayfasını ziyaret edin.
 
 ---

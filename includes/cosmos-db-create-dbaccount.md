@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
 ms.custom: include file
-ms.openlocfilehash: bfce10b0c9c55012c3ba2fb25121b28157f203b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672054"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81274725"
 ---
 1. Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azure.com/) gidin. **Azure Cosmos DB**’yi arayın ve seçin.
 
@@ -32,9 +32,8 @@ ms.locfileid: "78672054"
     |Konum|Kullanıcılarınıza en yakın bölge|Azure Cosmos DB hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın olan konumu kullanın.|
     |Hesap Türü|Üretim veya Üretim Dışı|Hesap üretim iş yükü için kullanılacaksa **Üretim'i** seçin. Hesabın üretim dışı olarak kullanılması, örneğin geliştirme, test, QA veya evreleme için kullanılacaksa **Üretim Dışı'yı** seçin. Bu, Portal deneyimini etkileyen ancak temel Azure Cosmos DB hesabını etkilemeyen bir Azure kaynak etiketi ayarıdır. Bu değeri istediğiniz zaman değiştirebilirsiniz.|
 
-
-> [!NOTE]
-> Azure aboneliği başına en fazla bir ücretsiz katman Azure Cosmos DB hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Ücretsiz katman indirimini uygulama seçeneğini görmüyorsanız, bu abonelikteki başka bir hesabın zaten ücretsiz katmanla etkinleştirilmiş olduğu anlamına gelir.
+    > [!NOTE]
+    > Azure aboneliği başına en fazla bir ücretsiz katman Azure Cosmos DB hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Ücretsiz katman indirimini uygulama seçeneğini görmüyorsanız, bu abonelikteki başka bir hesabın zaten ücretsiz katmanla etkinleştirilmiş olduğu anlamına gelir.
    
    ![Azure Cosmos DB için yeni hesap sayfası](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-new-account-detail.png)
 

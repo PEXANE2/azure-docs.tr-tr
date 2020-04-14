@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5fae45ee513dddf002995ce9c37c6b6565f50c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284596"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258397"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK'larını anlama ve kullanma
 
@@ -45,15 +45,15 @@ Microsoft Azure IoT aygıt SDK'ları, Azure IoT Hub hizmetlerine bağlanan ve bu
 
 .NET için Azure IoT Hub cihazı SDK: 
 
-* [Nuget'ten](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)indirin.  Ad alanı, IoT Hub Aygıt İstemlerini (DeviceClient, ModuleClient) içeren Microsoft.Azure.Devices.Clients.Clients'tir.
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-csharp)
+* [NuGet'den](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/)indirin.  Ad alanı, IoT Hub Aygıt İstemlerini (DeviceClient, ModuleClient) içeren Microsoft.Azure.Devices.Clients.Clients'tir.
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices?view=azure-dotnet)
 * [Modül referansı](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet)
 
 C için Azure IoT Hub cihazı SDK (ANSI C - C99):
 
 * [apt-get, MBED, Arduino IDE veya iOS'tan yükleyin](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-c)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-c)
 * [C Cihazını Derleme SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/readme.md#compiling-the-c-device-sdk)
 * [API başvurusu](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [Modül referansı](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
@@ -64,21 +64,21 @@ C için Azure IoT Hub cihazı SDK (ANSI C - C99):
 Java için Azure IoT Hub cihazı SDK: 
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-device-sdk) projesine ekle
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-java)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-java)
 * [API başvurusu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device)
 * [Modül referansı](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)
 
 Node.js için Azure IoT Hub cihazı SDK: 
 
 * [npm'den yükleyin](https://www.npmjs.com/package/azure-iot-device)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-node)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-node)
 * [API başvurusu](https://docs.microsoft.com/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest)
 * [Modül referansı](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
 
 Python için Azure IoT Hub aygıtı SDK: 
 
 * [pip'ten yükleyin](https://pypi.org/project/azure-iot-device/)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-python)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-python)
 * [API başvurusu](https://docs.microsoft.com/python/api/azure-iot-device)
 
 iOS için Azure IoT Hub cihazı SDK: 
@@ -93,31 +93,31 @@ Azure IoT hizmeti SDK'ları, aygıtları ve güvenliği yönetmek için Doğruda
 
 .NET için Azure IoT Hub hizmeti SDK:
 
-* [Nuget'ten](https://www.nuget.org/packages/Microsoft.Azure.Devices/)indirin.  Ad alanı, IoT Hub Hizmet İstemcilerini (RegistryManager, Service Clients) içeren Microsoft.Azure.Devices'tir.
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-csharp)
+* [NuGet'den](https://www.nuget.org/packages/Microsoft.Azure.Devices/)indirin.  Ad alanı, IoT Hub Hizmet İstemcilerini (RegistryManager, Service Clients) içeren Microsoft.Azure.Devices'tir.
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-csharp)
 * [API başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices)
 
 Java için Azure IoT Hub hizmeti SDK: 
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projesine ekle
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-java)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-java)
 * [API başvurusu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.service)
 
 Node.js için Azure IoT Hub hizmeti SDK: 
 
 * [NPM'den indirin](https://www.npmjs.com/package/azure-iothub)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-node)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-node)
 * [API başvurusu](https://docs.microsoft.com/javascript/api/azure-iothub/?view=azure-iot-typescript-latest)
 
 Python için Azure IoT Hub hizmeti SDK: 
 
 * [Pip'ten indirin](https://pypi.python.org/pypi/azure-iot-hub/)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-python/tree/master)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 C için Azure IoT Hub hizmeti SDK: 
 
-* [apt-get, MBED, Arduino IDE veya Nuget'ten indirin](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-c)
+* [apt-get, MBED, Arduino IDE veya NuGet'den](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) indirin
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-c)
 
 iOS için Azure IoT Hub hizmeti SDK: 
 
@@ -134,30 +134,30 @@ iOS için Azure IoT Hub hizmeti SDK:
 C#için Azure Sağlama cihazı ve hizmet SDK'ları:
 
 * Cihaz [SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Client/) ve [Hizmet SDK'dan](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet'den indirin.
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-csharp/)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-csharp/)
 * [API başvurusu](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.provisioning.client?view=azure-dotnet)
 
 C için Azure Sağlama cihazı ve hizmet SDK'ları:
 
 * [apt-get, MBED, Arduino IDE veya iOS'tan yükleyin](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md#packages-and-libraries)
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
 * [API başvurusu](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
 Java için Azure Sağlama cihazı ve hizmet SDK'ları:
 
 * [Maven](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md#for-the-service-sdk) projesine ekle
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning)
 * [API başvurusu](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.provisioning.device?view=azure-java-stable)
 
 Node.js için Azure Sağlama cihazı ve hizmet SDK'ları:
 
-* [Kaynak kodu](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning)
 * [API başvurusu](https://docs.microsoft.com/javascript/api/overview/azure/iothubdeviceprovisioning?view=azure-node-latest)
 * [NPM'den Cihaz SDK](https://badge.fury.io/js/azure-iot-provisioning-device) ve [Servis SDK'yı](https://badge.fury.io/js/azure-iot-provisioning-service) İndirin
 
 Python için Azure Sağlama cihazı ve hizmet SDK'ları:
 
-* [Kaynak kodu](https://github.com/Azure/azure-iot-device)
+* [Kaynak kod](https://github.com/Azure/azure-iot-sdk-python)
 * [Cihaz SDK](https://pypi.org/project/azure-iot-device/) ve [Servis SDK'yı](https://pypi.org/project/azure-iothub-provisioningserviceclient/) pip'ten indirin
 
 ## <a name="next-steps"></a>Sonraki adımlar

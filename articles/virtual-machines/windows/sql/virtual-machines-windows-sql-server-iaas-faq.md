@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249743"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270834"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure'da Windows sanal makineleri üzerinde çalıştırılan SQL Server için sık sorulan sorular
 
@@ -53,9 +53,17 @@ Bu makalede, [Azure'da Windows Sanal Makinelerde SQL Server'ı](https://azure.mi
 
    Evet, PowerShell kullanarak. PowerShell kullanarak SQL Server VM'leri dağıtma hakkında daha fazla bilgi için [SQL Server sanal makinelerini Azure PowerShell ile nasıl sağsanız bulabilirsiniz.](virtual-machines-windows-ps-sql-create.md)
 
-1. **SQL Server VM'min genelleştirilmiş bir Azure SQL Server Marketplace görüntüsünü oluşturabilir ve VM'leri dağıtmak için kullanabilir miyim?**
+1. **SQL Server'ı Azure VM'de nasıl genelleştirebilir ve yeni VM'ler dağıtmak için nasıl kullanabilirim?**
 
-   Evet, ancak daha sonra portalda SQL Server VM'nizi yönetmek ve otomatik düzeltme ve otomatik yedekleme gibi özellikleri kullanmak için [her SQL Server VM'yi SQL Server VM kaynak sağlayıcısına kaydetmeniz](virtual-machines-windows-sql-register-with-resource-provider.md) gerekir. Kaynak sağlayıcısına kaydolurken, her SQL Server VM için lisans türünü belirtmeniz gerekir. 
+   Bir Windows Server VM dağıtabilir (üzerinde SQL Server yüklü olmadan) ve SQL Server'ı Azure VM'de (Windows) SQL Server yükleme ortamıyla genelleştirmek için [SQL sysprep](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) işlemini kullanabilirsiniz. [Yazılım güvencesine](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) sahip müşteriler yükleme ortamlarını [Toplu Lisans Lama Merkezi'nden](https://www.microsoft.com/Licensing/servicecenter/default.aspx)edinebilirler. Yazılım güvencesi olmayan müşteriler, istenilen baskıya sahip bir Marketplace SQL Server VM görüntüsündeki kurulum ortamını kullanabilir.
+
+   Alternatif olarak, SQL Server'ı Azure VM'de genelleştirmek için SQL Server görüntülerinden birini azure marketini kullanın. Kendi resminizi oluşturmadan önce kaynak görüntüdeki aşağıdaki kayıt defteri anahtarını silmeniz gerektiğini unutmayın. Aksi takdirde başarısız durumda SQL Server kurulum bootstrap klasörü ve / veya SQL IaaS uzantısı şişkinlik neden olabilir.
+
+   Kayıt Defteri Anahtar yolu:  
+   `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
+
+   > [!NOTE]
+   > Özel genelleştirilmiş görüntülerden dağıtılanlar da dahil olmak üzere tüm SQL Server Azure VM'lerinin uyumluluk gereksinimlerini karşılamak ve otomatik düzeltme ve otomatik yedekleme gibi isteğe bağlı özellikleri kullanmak üzere [bir SQL VM başvuru sağlayıcısına kaydolmasını](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) öneririz. Ayrıca, her SQL Server VM için [lisans türünü belirtmenize](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) de olanak sağlar.
 
 1. **SQL Server VM dağıtmak için kendi VHD'mi kullanabilir miyim?**
 
@@ -117,13 +125,13 @@ Bu makalede, [Azure'da Windows Sanal Makinelerde SQL Server'ı](https://azure.mi
    Pasif SQL Server örneği istemcilere SQL Server verileri sunmaz veya etkin SQL Server iş yüklerini çalıştırmaz. Yalnızca birincil sunucuyla eşitlemek ve pasif veritabanını sıcak bir bekleme durumunda korumak için kullanılır. Etkin SQL Server iş yüklerini çalıştıran istemcilere raporlar veya ürün koşullarında belirtilenler dışında herhangi bir iş gerçekleştirmek gibi veriler sunuyorsa, ücretli lisanslı bir SQL Server örneği olmalıdır. İkincil örnekte aşağıdaki aktiviteye izin verilir: veritabanı tutarlılık denetimleri veya CheckDB, tam yedeklemeler, işlem günlüğü yedeklemeleri ve kaynak kullanım verilerini izleme. Ayrıca, her 90 günde bir kısa olağanüstü durum kurtarma testi süreleri için birincil ve ilgili olağanüstü durum kurtarma örneğini aynı anda çalıştırabilirsiniz.
    
 
-1. **Distaster Recovery (DR) avantajını hangi senaryolar kullanabilir?**
+1. **Hangi senaryolar Olağanüstü Durum Kurtarma (DR) avantajını kullanabilir?**
 
    [Lisans kılavuzu,](https://aka.ms/sql2019licenseguide) Olağanüstü Durum Kurtarma Avantajı'ndan yararlanılabilen senaryolar sağlar. Ürün Koşullarınıza bakın ve daha fazla bilgi için lisans kişilerinizle veya hesap yöneticinizle konuşun.
 
 1. **Hangi abonelikler Olağanüstü Durum Kurtarma (DR) avantajını destekler?**
 
-   Sabit bir avantaj olarak Yazılım Güvencesi eşdeğer abonelik hakları sunan kapsamlı programlar DR avantajını destekler. Buna dahildir. ancak, Açık Değer (OV), Açık Değer Aboneliği (OVS), Kurumsal Sözleşme (EA), Kurumsal Abonelik Sözleşmesi (EAS) ve Sunucu ve Bulut Kaydı (SCE) ile sınırlı değildir. [Ürün koşullarına](https://www.microsoft.com/licensing/product-licensing/products) bakın ve daha fazla bilgi için lisans kişilerinizle veya acocunt yöneticinizle konuşun. 
+   Sabit bir avantaj olarak Yazılım Güvencesi eşdeğer abonelik hakları sunan kapsamlı programlar DR avantajını destekler. Buna dahildir. ancak, Açık Değer (OV), Açık Değer Aboneliği (OVS), Kurumsal Sözleşme (EA), Kurumsal Abonelik Sözleşmesi (EAS) ve Sunucu ve Bulut Kaydı (SCE) ile sınırlı değildir. [Ürün koşullarına](https://www.microsoft.com/licensing/product-licensing/products) bakın ve daha fazla bilgi için lisans kişilerinizle veya hesap yöneticinizle konuşun. 
 
    
  ## <a name="resource-provider"></a>Kaynak sağlayıcısı

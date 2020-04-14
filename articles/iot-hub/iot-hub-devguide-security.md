@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d37320ad6e8caf3300756466eabe8de29a339c4a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272064"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258295"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub’a erişimi denetleme
 
@@ -57,7 +57,7 @@ IoT Hub uç noktalarından herhangi biri sine erişmek için uygun izinlere sahi
 > [!NOTE]
 > Ayrıntılı bilgi için [izinlere](#iot-hub-permissions) bakın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure IoT Hub, bir belirteci paylaşılan erişim ilkeleri ve kimlik kayıt defteri güvenlik kimlik bilgileri ile doğrulayarak uç noktalara erişim izni verir.
 
@@ -91,7 +91,7 @@ HTTPS, **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek 
 
 Kullanıcı adı (DeviceId büyük/küçük harf duyarlıdır):`iothubname.azure-devices.net/DeviceId`
 
-Parola [(Aygıt gezgini](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aracı, CLI uzantı komutu [az iot hub oluşturma-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)veya [Visual Studio Code için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile bir SAS belirteci oluşturabilirsiniz):
+Parola (CLI uzantı komutu [az iot hub oluşturma-sas-belirteci](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)veya [Visual Studio Code için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile bir SAS belirteci oluşturabilirsiniz):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -277,7 +277,7 @@ Aygıt1 için tüm işlevlere erişim sağlayan sonuç şu şekilde olacaktır:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> [Aygıt gezgini](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aracı, CLI uzantı komutu [az iot hub oluşturma-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)veya Visual [Studio Code için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile bir SAS belirteci oluşturmak mümkündür.
+> CLI uzantı komutu [az iot hub oluşturma-sas-token](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token)veya [Visual Studio Code için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile bir SAS belirteci oluşturmak mümkündür.
 
 ### <a name="use-a-shared-access-policy"></a>Paylaşılan erişim ilkesini kullanma
 

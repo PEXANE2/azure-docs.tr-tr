@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/02/2020
+ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: efd8386f464bfdf2ac27d3be07e6572dc27952e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163599"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269950"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -70,9 +70,9 @@ Aşağıdaki liste, Video Indexer video ve ses modellerini kullanarak videoları
 
 ### <a name="audio-insights"></a>Ses öngörüleri
 
-* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır. Dil güvenle tanımlanamazsa, Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için [Dil tanımlama modeline](language-identification-model.md)bakın.
+* **Ses transkripsiyonu**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunmaktadır.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır. Dil güvenle tanımlanamazsa, Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için [Dil tanımlama modeline](language-identification-model.md)bakın.
 * **Çok dilli konuşma tanımlama ve transkripsiyon** (önizleme): Sesten farklı segmentlerde konuşulan dili otomatik olarak tanımlar. Medya dosyasının her bir bölümünü yazıya geçirilmeye gönderir ve transkripsiyonla tek bir leştirilmiş transkripsiyonla birleştirir. Daha fazla bilgi için, [çoklu dil içeriğini otomatik olarak tanımlayın ve yazıya döktü.](multi-language-identification-transcription.md)
-* **Ses transkripsiyonu**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunmaktadır.
 * **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
 * **İki kanal işleme**: Otomatik ayrı transkript algılar ve tek zaman çizelgesi ile birleştirir.
 * **Gürültü azaltma**: Telefon ses veya gürültülü kayıtları temizler (Skype filtrelerine dayalı).

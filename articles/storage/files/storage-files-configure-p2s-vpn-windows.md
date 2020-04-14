@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5f12b77f5baa1a3b06a093aac7267c65a038881e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061009"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273486"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Azure Dosyaları ile kullanılmak üzere Windows'da Bir Noktaya Sayfa (P2S) VPN'i yapılandırma
 445 bağlantı noktasını açmadan Azure dosya paylaşımlarınızı SMB üzerinden SMB'ye monte etmek için Bir Yerden Kullanıma (P2S) VPN bağlantısını kullanabilirsiniz. Bir Noktadan Siteye VPN bağlantısı, Azure ile tek bir istemci arasındaki VPN bağlantısıdır. Azure Dosyaları ile Bir P2S VPN bağlantısı kullanmak için, bağlanmak isteyen her istemci için bir P2S VPN bağlantısının yapılandırılması gerekir. Şirket içi ağınızdan Azure dosya paylaşımlarınıza bağlanması gereken çok sayıda istemciniz varsa, her istemci için Site'den Siteye (S2S) VPN bağlantısı yerine kullanabilirsiniz. Daha fazla bilgi için Bkz. [Azure Dosyaları ile kullanılmak üzere Siteden Siteye VPN Yapılandır'](storage-files-configure-s2s-vpn.md)a bakın.
@@ -31,7 +31,7 @@ Makalede, Windows'ta (Windows istemcisi ve Windows Server) Bir Noktaya Sayfa VPN
 ## <a name="deploy-a-virtual-network"></a>Sanal ağ dağıtma
 Azure dosya paylaşımınıza ve diğer Azure kaynaklarına şirket içi bir Giriş VPN üzerinden erişmek için bir sanal ağ veya VNet oluşturmanız gerekir. Otomatik olarak oluşturacağınız P2S VPN bağlantısı, şirket içi Windows makineniz ile bu Azure sanal ağı arasında bir köprüdür.
 
-Aşağıdaki PowerShell üç alt ağa sahip bir Azure sanal ağı oluşturur: biri depolama hesabınızın hizmet bitiş noktası için, diğeri depolama hesabınızın özel bitiş noktası için, depolama hesabına şirket içinde oluşturmadan erişmek için gereklidir değişebilecek depolama hesabının genel IP'si ve VPN hizmetini sağlayan sanal ağ ağ ağ geçidiniz için özel yönlendirme. 
+Aşağıdaki PowerShell, üç alt ağa sahip bir Azure sanal ağı oluşturur: biri depolama hesabınızın hizmet bitiş noktası, biri depolama hesabınızın özel bitiş noktası için, bu ağ hesabının genel IP'si için özel yönlendirme oluşturmadan şirket içinde erişmek için gereklidir ve diğeri de VPN hizmetini sağlayan sanal ağ ağ geçidiniz için. 
 
 Çevreniz `<region>`için `<resource-group>`uygun `<desired-vnet-name>` değerleri değiştirmeyi ve değiştirmeyi unutmayın.
 
@@ -79,7 +79,7 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
 ```
 
 ## <a name="create-root-certificate-for-vpn-authentication"></a>VPN kimlik doğrulaması için kök sertifika oluşturma
-Şirket içi Windows makinelerinizden gelen VPN bağlantılarının sanal ağınıza erişmek için kimlik doğrulaması yapabilmesi için iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve istemci sertifikası, kök sertifikası ile imzalanabilir. Aşağıdaki PowerShell kök sertifikasını oluşturur; istemci sertifikası, Azure sanal ağ ağ ağ geçidiağdan gelen bilgilerle oluşturulduktan sonra oluşturulur. 
+Şirket içi Windows makinelerinizden gelen VPN bağlantılarının sanal ağınıza erişmek için kimlik doğrulaması yapabilmesi için iki sertifika oluşturmanız gerekir: sanal makine ağ geçidine sağlanacak bir kök sertifika ve kök sertifikasıyla imzalanacak bir istemci sertifikası. Aşağıdaki PowerShell kök sertifikasını oluşturur; istemci sertifikası, Azure sanal ağ ağ ağ geçidiağdan gelen bilgilerle oluşturulduktan sonra oluşturulur. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -138,7 +138,7 @@ $vpnName = "<desired-vpn-name-here>"
 $publicIpAddressName = "$vpnName-PublicIP"
 
 $publicIPAddress = New-AzPublicIpAddress `
-    -ResourceGroupName $resourceGroupName ` 
+    -ResourceGroupName $resourceGroupName `
     -Name $publicIpAddressName `
     -Location $region `
     -Sku Basic `
@@ -242,7 +242,7 @@ foreach ($session in $sessions) {
         -ArgumentList `
             $mypwd, `
             $vpnTemp, `
-            $virtualNetworkName
+            $virtualNetworkName `
         -ScriptBlock { 
             $mypwd = $args[0] 
             $vpnTemp = $args[1]
@@ -267,7 +267,7 @@ foreach ($session in $sessions) {
 
             Add-VpnConnection `
                 -Name $virtualNetworkName `
-                -ServerAddress $vpnProfile.VpnServer ` 
+                -ServerAddress $vpnProfile.VpnServer `
                 -TunnelType Ikev2 `
                 -EncryptionLevel Required `
                 -AuthenticationMethod MachineCertificate `

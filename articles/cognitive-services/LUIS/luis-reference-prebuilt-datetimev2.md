@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 01/07/2020
+ms.date: 04/13/2020
 ms.author: diberry
-ms.openlocfilehash: 30132983f37323e798efd330f5cc8f15c0a9d2b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33f8b787119e1c5d6d1a1bb28c94d9791a1c048e
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270730"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272619"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>BIR LUIS uygulaması için DatetimeV2 önceden oluşturulmuş varlık
 
@@ -145,7 +145,7 @@ Aşağıdaki söyleyiş ve kısmi JSON yanıtı aşağıda gösterilmiştir.
 
 |Özellik adı|Özellik açıklaması|
 |--|--|
-|Timex|[ISO 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) ve TimeML dilini kullanarak ek açıklama için TIMEX3 özniteliklerini izleyen TIMEX biçiminde ifade edilen saat, tarih veya tarih aralığı. Bu ek açıklama [TIMEX yönergelerinde](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)açıklanmıştır.|
+|Timex|[ISO 8601 standardını](https://en.wikipedia.org/wiki/ISO_8601) ve TimeML dilini kullanarak ek açıklama için TIMEX3 özniteliklerini izleyen TIMEX biçiminde ifade edilen saat, tarih veya tarih aralığı.|
 |mod|gibi değerin nasıl kullanılacağını açıklamak `before` `after`için kullanılan terim .|
 |type|Aşağıdaki öğelerden biri olabilir alt türü: `datetime` `date`, `time` `daterange`, `timerange` `datetimerange`, `duration` `set`, , , .|
 |value|**Isteğe bağlı.** Yyyy-MM-dd (tarih), HH:mm:ss (zaman) yyyy-MM-dd HH:mm:ss (datetime) biçiminde bir tarih nesnesi. `duration`Ise, `type` değer saniye sayısıdır (süre) <br/> Yalnızca , `type` `datetime` `date`, `time`veya 'süresi ise kullanılır.|

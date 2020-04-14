@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9b59181f7c1b24a7bc00ab579bbe67a70f499c92
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 087cdafe8b819e4929e1608ed7e00be2c1169414
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755386"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263103"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Salesforce için müşteri adayı yönetimini yapılandırma
 
@@ -64,11 +64,15 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
 
 1. Bağlantı ayrıntıları açılır penceresinde, **Müşteri Adayı Hedef** için `oid` **Salesforce'u** seçin ve Kuruluş **tanımlayıcıalanına** daha önceki adımları izleyerek oluşturduğunuz web'den müşteri adayı formuna yapıştırın.
 
-1. **Kaydet'i**seçin. 
+1. **Kişi e-postası** - Şirketinizde yeni bir müşteri adayı geldiğinde e-posta bildirimleri alması gereken kişiler için e-posta sağlayın. Birden çok e-postayı yarı kolon ile ayırarak sağlayabilirsiniz.
 
-    >[!Note]
-    >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.
+1. **Tamam**’ı seçin.
 
-    ![Bağlantı ayrıntıları - Bir müşteri adayı hedef seçin](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
 
-    ![Bağlantı ayrıntıları - Bir müşteri adayı hedef seçin](./media/commercial-marketplace-lead-management-instructions-salesforce/connection-details.png)
+>[!Note]
+>Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.
+
+![Bağlantı ayrıntıları - Bir müşteri adayı hedef seçin](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
+
+![Bağlantı ayrıntıları - Bir müşteri adayı hedef seçin](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

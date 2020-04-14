@@ -4,20 +4,23 @@ description: Bu makalede, kapsayıcılar oluşturmanıza, dosyaları kopyalaman�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: fbdb447905ae43fe92693dfe45c1add710f76355
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73685f124f93bb541f33b3b70727d90ce22b3cdd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933591"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263446"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>AzCopy ve Blob depolama ile veri aktarımı
 
 AzCopy, depolama hesaplarına, depo hesaplarına veya bunlar arasında verileri kopyalamak için kullanabileceğiniz bir komut satırı yardımcı programıdır. Bu makalede, Blob depolama ile çalışan örnek komutları içerir.
+
+> [!TIP]
+> Bu makaledeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
 
 ## <a name="get-started"></a>Kullanmaya başlayın
 
@@ -31,9 +34,6 @@ AzCopy'yi indirmek ve depolama hizmetine yetki kimlik bilgilerini sağlama yolla
 > Örneğin: `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`.
 
 ## <a name="create-a-container"></a>Bir kapsayıcı oluşturma
-
-> [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
 
 Bir kapsayıcı oluşturmak için [azcopy make](storage-ref-azcopy-make.md) komutunu kullanabilirsiniz. Bu bölümdeki örneklerde `mycontainer`.
 
@@ -57,10 +57,16 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Dizinin içeriğini yükleme 
 > * Belirli dosyaları yükleme
 
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
-
 > [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
+> İsteğe bağlı bayraklar kullanarak yükleme işleminde değişiklik yapabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyaları Append Blobs veya Page Blobs olarak yükleyin.|**--blob tipi**=\[BlockBlob PageBlob\|\|AppendBlob\]|
+> |Belirli bir erişim katmanına (arşiv katmanı gibi) yükleyin.|**--block-blob-tier**=\[\|None\|\|Hot Cool Arşiv\]|
+> |Dosyaları otomatik olarak dekomprese edin.|**--dekompresör**=\[gzip\|deflate\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
@@ -71,10 +77,6 @@ Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'C:\myDirectory\myTextFile.txt' 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt'` |
 
 Dosya yolunun veya dosya adının herhangi bir yerine joker karakter simgesi (*) kullanarak dosya yükleyebilirsiniz. Örneğin: `'C:\myDirectory\*.txt'`, `C:\my*\*.txt`veya .
-
-> [!NOTE]
-> Varsayılan olarak AzCopy blok blobs olarak veri yükler. Dosyalarını Append Blobs veya Page Blobs `--blob-type=[BlockBlob|PageBlob|AppendBlob]`olarak yüklemek için bayrağı kullanın.
-> AzCopy varsayılan olarak hesap erişim katmanıdevralmak için verilerinizi yükler. Dosyaları belirli bir [erişim katmanına](../blobs/storage-blob-storage-tiers.md)yüklemek `--block-blob-tier=[Hot|Cool|Archive]`için bayrağı kullanın.
 
 ### <a name="upload-a-directory"></a>Dizin yükleme
 
@@ -152,13 +154,19 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Dizinin içeriğini indirin
 > * Belirli dosyaları karşıdan yükleme
 
+> [!TIP]
+> İsteğe bağlı bayraklar kullanarak indirme işlemini ayarlayabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyaları otomatik olarak dekomprese edin.|**--dekompresör**=\[gzip\|deflate\]|
+> |Kopyayla ilgili günlük girişlerinizin ne kadar ayrıntılı olmasını istediğinizi belirtin.|**--günlük seviyesi**=\[\|UYARI HATASI\|BİlGİlerİ\|YOK\]|
+> |Hedefteki çakışan dosyaların ve lekelerin üzerine yazıp yazılmayı ve nasıl yazarak yazacaklarını belirtin.|**--overwrite**=\[\|true\|false ifSourceNewer\|istemi\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
+
 > [!NOTE]
 > Bir `Content-md5` blob'un özellik değeri karma içeriyorsa, AzCopy indirilen veriler için bir MD5 karmasını hesaplar ve blob'un `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular. Bu değerler eşleşmiyorsa, bu davranışı ekleyerek `--check-md5=NoCheck` veya `--check-md5=LogOnly` kopyalama komutuna ekleyerek geçersiz kılmadığınız sürece karşıdan yükleme başarısız olur.
-
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
-
-> [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
 
 ### <a name="download-a-file"></a>Dosya indirme
 
@@ -245,12 +253,18 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Kapsayıcıyı başka bir depolama hesabına kopyalama
 > * Tüm kapsayıcıları, dizinleri ve dosyaları başka bir depolama hesabına kopyalama
 
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
+Bu örnekler, hiyerarşik ad alanı olan hesaplarla da çalışır. [Veri Gölü Depolama'daki çoklu protokol erişimi,](../blobs/data-lake-storage-multi-protocol-access.md) bu hesaplarda`blob.core.windows.net`aynı URL sözdizimini () kullanmanıza olanak tanır.
 
 > [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
-
- Bu örnekler, hiyerarşik ad alanı olan hesaplarla da çalışır. [Veri Gölü Depolama'daki çoklu protokol erişimi,](../blobs/data-lake-storage-multi-protocol-access.md) bu hesaplarda`blob.core.windows.net`aynı URL sözdizimini () kullanmanıza olanak tanır. 
+> İsteğe bağlı bayraklar kullanarak kopyalama işleminizde değişiklik yapabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyaları Apend Blobs veya Page Blobs olarak kopyalayın.|**--blob tipi**=\[BlockBlob PageBlob\|\|AppendBlob\]|
+> |Belirli bir erişim katmanına (arşiv katmanı gibi) kopyalayın.|**--block-blob-tier**=\[\|None\|\|Hot Cool Arşiv\]|
+> |Dosyaları otomatik olarak dekomprese edin.|**--dekompresör**=\[gzip\|deflate\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
 
 ### <a name="copy-a-blob-to-another-storage-account"></a>Blob'u başka bir depolama hesabına kopyalama
 
@@ -306,10 +320,16 @@ Yerel bir dosya sisteminin içeriğini bir blob kapsayıcısıyla eşitleyebilir
 > [!NOTE]
 > Yanlışlıkla silmeleri önlemek için, bayrağı kullanmadan önce [yumuşak](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) `--delete-destination=prompt|true` silme özelliğini etkinleştirdiğinizden emin olun.
 
-Ayrıntılı başvuru dokümanları için [azcopy senkronizasyonuna](storage-ref-azcopy-sync.md)bakın.
-
 > [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
+> İsteğe bağlı bayraklar kullanarak eşitleme işlemini değiştirebilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |İndirme de MD5'in ne kadar kesin olarak doğrulanması gerektiğini belirtin.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
+> |Bir desene dayalı dosyaları hariç tut.|**--dışlama-yol**|
+> |Eşitleme yle ilgili günlük girişlerinizin ne kadar ayrıntılı olmasını istediğinizi belirtin.|**--günlük seviyesi**=\[\|UYARI HATASI\|BİlGİlerİ\|YOK\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-sync.md#options)bakın.
 
 ### <a name="update-a-container-with-changes-to-a-local-file-system"></a>Yerel dosya sisteminde değişiklik olan bir kapsayıcıyı güncelleştirme
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b55c351927a56afce697d07f41bfbe668144d68d
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475525"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273316"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -22,6 +22,54 @@ Bu makalede, Azure Machine Learning sürümleri hakkında bilgi edinin.  SDK ba�
 
 Bilinen hatalar ve geçici geçici işler hakkında bilgi edinmek için [bilinen sorunların listesine](resource-known-issues.md) bakın.
 
+## <a name="2020-04-13"></a>2020-04-13
+
+### <a name="azure-machine-learning-sdk-for-python-v130"></a>Python v1.3.0 için Azure Machine Learning SDK
+
++ **Hata düzeltmeleri ve iyileştirmeler**
+  + **azureml-automl-core**
+    + Eğitim sonrası operasyonlar etrafında ek telemetri eklendi.
+    + 100'den uzun bir dizi için koşullu karetoplamı (CSS) eğitimini kullanarak otomatik ARIMA eğitimini hızlandırAr. Kullanılan uzunluğun TimeSeriesInternal sınıfında ki sabit ARIMA_TRIGGER_CSS_TRAINING_LENGTH w/in /src/azureml-automl-core/azureml/automl/core/shared/constants.py adresinde depolanır
+    + Tahmin çalıştırmalarının kullanıcı günlüğe kaydetmesi geliştirildi, şimdi şu anda hangi aşamanın çalıştığına ilişkin daha fazla bilgi günlükte gösterilecektir
+    + Target_rolling_window_size daha az değerlere ayarlanacak şekilde ayarlanmasına izin verilmeyen 2
+  + **azureml-automl-runtime**
+    + Yinelenen zaman damgaları bulunduğunda gösterilen hata iletisi geliştirildi.
+    + İzin verilmeyen target_rolling_window_size daha az sonra 2 değerleri olarak ayarlanacak.
+    + Gecikme imputasyon hatası düzeltildi. Sorun, bir diziyi mevsimsel olarak ayrıştırmak için gereken gözlem sayısının yetersizliğinden kaynaklanıyordu. "Mevsimsizleştirilmiş" veriler, gecikme uzunluğunu belirlemek için kısmi bir otokorelasyon işlevini (PACF) hesaplamak için kullanılır.
+    + Featurization config tarafından görevleri tahmin etmek için etkin sütun amacı featurization özelleştirme. Görevleri tahmin etmek için sütun amacı olarak Sayısal ve Kategorik artık desteklenir.
+    + Featurization config tarafından görevleri tahmin etmek için etkin damla sütun featurization özelleştirme.
+    + Featurization config tarafından görevleri tahmin etmek için etkin imputization özelleştirme. Hedef sütun ve ortalama, ortanca, most_frequent ve eğitim verileri için sabit değer imputasyonu için sabit değer imputasyonu artık desteklenir.
+  + **azureml-contrib-pipeline-steps**
+    + ParallelRunConfig'e geçirilecek dize işlem adlarını kabul etme
+  + **azureml-core**
+    +  Çevre nesnesinin bir kopyasını oluşturmak için Environment.clone(new_name) API eklendi
+    +  Environment.docker.base_dockerfile dosya yolunu kabul eder. Bir dosyayı çözebilirse, içerik base_dockerfile ortam özelliğine okunur
+    + Kullanım alanı Çevre'de el ile bir değer belirlediğinde base_image ve base_dockerfile için birbirini dışlayan değerleri otomatik olarak sıfırlayın.docker
+    +  Dataset: unicode karakter içeren veri yolu varsa sabit veri kümesi indirme hatası
+    +  Dataset: Azure Machine Learning Compute'daki minimum disk alanı gereksinimine uymak için geliştirilmiş veri kümesi bağlama önbelleğe alma mekanizması, düğümü kullanılamaz hale getirmenizi ve işin iptal edilmesine neden olur
+    + Ortamın kullanıcı tarafından mı yoksa AzureML tarafından mı yönetildiğini gösteren RSection user_managed bayrağı eklendi.
+    + Dataset: Zaman dizisi tabanlı veri erişimine erişimi hızlandırmak için kullanılan bir zaman dizisi veri kümesine pandalar veri çerçevesi olarak erişdiğinizde zaman aralığı sütununa bir dizin ekleriz.  Daha önce, dizin zaman damgası sütunu ile aynı ad verildi, hangi gerçek zaman damgası sütunu ve dizin hakkında kullanıcıları kafa karıştırıcı. Sütun olarak kullanılmaması gerektiğinden, artık dizine belirli bir ad vermiyoruz. 
+  + **azureml-dataprep**
+    + Egemen bulutta veri kümesi kimlik doğrulama sorunu düzeltildi
+    + Azure `Dataset.to_spark_dataframe` PostgreSQL veri mağazalarından oluşturulan veri kümeleri için hata düzeltildi
+  + **azureml-interpret**
+    + Yerel önem değerleri seyrekse görselleştirmeye global puanlar eklendi
+    + Yorumlama-topluluk 0.9'u kullanmak için azureml-yorumlama ile güncelleştirildi.*
+    + Seyrek değerlendirme verilerine sahip açıklama indirme ile ilgili sorun düzeltildi
+    + AutoML'de açıklama nesnesinin seyrek biçimieklendi
+  + **azureml-boru hattı-çekirdek**
+    + Destek ComputeInstance boru hatlarında işlem hedefi olarak
+  + **azureml-train-automl-client**
+    + Eğitim sonrası operasyonlar etrafında ek telemetri eklendi.
+    + Erken durdurmada gerileme düzeltildi
+    + Giriş verileri için geçerli bir tür olarak deprecated azureml.dprep.Dataflow.
+    +  Varsayılan AutoML deneme zaman dilimini 6 güne değiştirme.
+  + **azureml-train-automl-runtime**
+    + Eğitim sonrası operasyonlar etrafında ek telemetri eklendi.
+    + seyrek automl e2e desteği eklendi
+  + **azureml-opendatasets**
+    + Servis monitörü için ek telemetri eklendi.
+    + Stabiliteyi artırmak için blob için ön kapıyı etkinleştirin 
 ## <a name="2020-03-23"></a>2020-03-23
 
 ### <a name="azure-machine-learning-sdk-for-python-v120"></a>Python v1.2.0 için Azure Machine Learning SDK

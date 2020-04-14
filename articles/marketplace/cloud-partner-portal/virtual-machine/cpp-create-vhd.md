@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 2014a775edd4e24f5d302d863d0b69d83009b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99d2bc95c1dd837bfc3bcabcead28777b7e6f746
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277999"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273945"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Azure uyumlu bir VHD oluşturma
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin hareketli yönetimine İş Ortağı Merkezi'ne başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine teknik varlıklarınızı oluştur'daki](https://aka.ms/AzureVMTechAsset) yönergeleri izleyin.
 
 Bu makalede, Azure Marketi'ndeki sanal makine (VM) teklifi için sanal bir sabit disk (VHD) oluşturmak için gereken adımlar ayrıntılı olarak anlatılmalıdır.  Ayrıca, Uzak Masaüstü Protokolü 'nü (RDP) kullanma, VM için bir boyut seçme, en son Windows güncelleştirmelerini yükleme ve VHD görüntüsünü genelleme gibi çeşitli yönleriyle ilgili en iyi uygulamaları da içerir.  Aşağıdaki bölümler de daha çok windows tabanlı VHD'lere odaklanılabı; Linux tabanlı VHD'ler oluşturma hakkında daha fazla bilgi için [Azure tarafından onaylanan dağıtımlar hakkında Linux'a](../../../virtual-machines/linux/endorsed-distros.md)bakın. 
 
@@ -26,9 +29,9 @@ Bu makalede, Azure Marketi'ndeki sanal makine (VM) teklifi için sanal bir sabit
 VM görüntünüz için vhd işletim sistemi, Windows Server veya SQL Server içeren Azure onaylı bir temel görüntüye dayanmalıdır.
 Başlamak için, Microsoft Azure portalında bulunan aşağıdaki resimlerden birinden bir VM oluşturun:
 
--   Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
--   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
--   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
+-    Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2012 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), [2008 R2 SP1](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview))
+-    [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
+-    [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Kurumsal, Standart, Web)
 
 > [!TIP]
 > Geçerli Azure portalını veya PowerShell'i kullanıyorsanız, 8 Eylül 2014 tarihinde ve daha sonra yayınlanan Windows Server görüntüleri onaylanır.

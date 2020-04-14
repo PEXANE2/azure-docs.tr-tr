@@ -3,7 +3,7 @@ title: Azure tanı günlükleri | Microsoft Dokümanlar
 description: Müşteri Azure CDN için günlük çözümlemesini etkinleştirebilir.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: magattus
-ms.openlocfilehash: 86696ed6715b4e43a9d02232c013eb64feb61f67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 35d028a38e6ac19f270abcc8708a532b3749eb39
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67594201"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254810"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure tanılama günlükleri
 
@@ -51,7 +51,7 @@ Tanılama günlükleri hakkında daha fazla bilgi için [Tanılama Günlükleri'
 
 CDN çekirdek analitiği ile günlüğe kaydetmeyi etkinleştiren aşağıdaki adımları izleyin:
 
-[Azure portalında](https://portal.azure.com)oturum açın. İş akışınız için CDN'yi etkinleştirmediyseniz, devam etmeden önce [bir Azure CDN profili ve bitiş noktası oluşturun.](cdn-create-new-endpoint.md)
+[Azure Portal](https://portal.azure.com) oturum açın. İş akışınız için CDN'yi etkinleştirmediyseniz, devam etmeden önce [bir Azure CDN profili ve bitiş noktası oluşturun.](cdn-create-new-endpoint.md)
 
 1. Azure portalında **CDN profiline**gidin.
 
@@ -445,7 +445,7 @@ Tüm günlükler JSON biçiminde depolanır ve her girişte aşağıdaki şemaya
 
 * [Azure Tanılama günlükleri](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Azure CDN ek portalı üzerinden temel analitik](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Azure Monitör günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Azure İzleyici günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Azure Günlük Analizi REST API](https://docs.microsoft.com/rest/api/loganalytics)
 
 

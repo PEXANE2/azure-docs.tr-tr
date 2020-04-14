@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f07f6a27e78ee4df8c64a09918758d02c28c6d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76898797"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260947"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Yönetimi'nde etkinlikleri Azure Etkinlik Hub'larına kaydetme
 Azure Event Hubs, bağlı cihazlarınız ve uygulamalarınız tarafından üretilen oldukça büyük miktardaki verileri işleyip analiz edebilmeniz için saniye başına milyonlarca olayı işleyebilen ileri düzeyde ölçeklenebilir bir veri alım sistemidir. Olay Hub'ları bir olay ardışık alanı için "ön kapı" görevi görür ve veriler bir olay hub'ına toplandıktan sonra, herhangi bir gerçek zamanlı analiz sağlayıcısı veya toplu işleme/depolama bağdaştırıcıları kullanılarak dönüştürülebilir ve depolanabilir. Event Hubs olay akışı üretimlerini bu olayların tüketilmesinden ayırır, böylece olay tüketicileri olaylara kendi zamanlamalarında erişebilir.
@@ -30,9 +30,9 @@ Bu makale, Azure [API Yönetimini Olay Hub'ları videosuyla tümleştir'e](https
 Etkinlik Hub'ına ve Olay Hub'ına olay hub'ı gönderip almanız gereken bağlantı dizelerini nasıl oluşturabileceğinize ilişkin ayrıntılı adımlar için Azure [portalını kullanarak etkinlik hub'ları ad alanı ve etkinlik hub'ı oluştur'a](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)bakın.
 
 ## <a name="create-an-api-management-logger"></a>API Yönetimi kaydedici oluşturma
-Artık bir Olay Hub'ınız olduğuna göre, bir sonraki adım, olayları Olay Hub'ına günlüğe kaydedebilmek için API Yönetimi hizmetinizde bir [Logger'ı](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger) yapılandırmaktır.
+Artık bir Olay Hub'ınız olduğuna göre, bir sonraki adım, olayları Olay Hub'ına günlüğe kaydedebilmek için API Yönetimi hizmetinizde bir [Logger'ı](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger) yapılandırmaktır.
 
-API Yönetimi [kaydediciler, API Yönetimi REST API](https://aka.ms/apimapi)kullanılarak yapılandırılır. Ayrıntılı istek örnekleri için [Loggers'ın nasıl oluşturulabildiğini](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate)görün.
+API Yönetimi [kaydediciler, API Yönetimi REST API](https://aka.ms/apimapi)kullanılarak yapılandırılır. Ayrıntılı istek örnekleri için [Loggers'ın nasıl oluşturulabildiğini](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)görün.
 
 ## <a name="configure-log-to-eventhubs-policies"></a>Günlük-olay hub'ları ilkelerini yapılandırma
 
@@ -65,7 +65,7 @@ Güncelleştirilmiş ilke yapılandırmasını kaydetmek için **Kaydet'i** tık
   * [EventProcessorHost bulunan iletiler alma](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
   * [Event Hubs programlama kılavuzu](../event-hubs/event-hubs-programming-guide.md)
 * API Yönetimi ve Olay Hub'ları entegrasyonu hakkında daha fazla bilgi edinin
-  * [Logger varlık başvurusu](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger)
+  * [Logger varlık başvurusu](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger)
   * [log-to-eventhub ilke başvurusu](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
   * [API'lerinizi Azure API Yönetimi, Etkinlik Hub'ları ve Moesif ile izleme](api-management-log-to-eventhub-sample.md)  
 * [Azure Uygulama Öngörüleri ile tümleştirme](api-management-howto-app-insights.md) hakkında daha fazla bilgi edinin

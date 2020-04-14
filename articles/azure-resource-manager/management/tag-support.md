@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: b8b1c0b738bb8b94ee53433141f1ae3dbbb3f942
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982336"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255036"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediği açıklanmaktadır. **Destekler etiketleri** etiketli sütun, kaynak türünün etiket için bir özelliği olup olmadığını gösterir. Maliyet raporunda **Etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmeyeceğini gösterir. Maliyetleri Maliyet Yönetimi maliyet [analizinde,](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) Azure [fatura faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)etiketlere göre görüntüleyebilirsiniz.
@@ -96,6 +96,7 @@ Kaynak sağlayıcı ad alanına atla:
 > - [Microsoft.HybridData](#microsofthybriddata)
 > - [Microsoft.Hydra](#microsofthydra)
 > - [Microsoft.ImportExport](#microsoftimportexport)
+> - [Microsoft.Insights](#microsoftinsights)
 > - [Microsoft.Intune](#microsoftintune)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
@@ -1201,6 +1202,33 @@ Kaynak sağlayıcı ad alanına atla:
 > | ------------- | ----------- | ----------- |
 > | Işleri | Evet | Evet |
 
+## <a name="microsoftinsights"></a>Microsoft.Insights
+
+> [!div class="mx-tableFixed"]
+> | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
+> | ------------- | ----------- | ----------- |
+> | actionGroups | Evet | Evet |
+> | activityLogAlerts | Evet | Evet |
+> | uyarı kuralları | Evet | Evet |
+> | otomatik ölçeklendirme ayarları | Evet | Evet |
+> | Bileşen | Evet | Evet |
+> | bileşenler / linkedStorageAccounts | Hayır | Hayır |
+> | bileşenleri / ProactiveDetectionConfigs | Hayır | Hayır |
+> | tanıAyarları | Hayır | Hayır |
+> | guestDiagnosticSettings | Evet | Evet |
+> | guestDiagnosticSettingsAssociation | Evet | Evet |
+> | logprofiles | Evet | Evet |
+> | metricAlerts | Evet | Evet |
+> | privateLinkScopes | Evet | Evet |
+> | privateLinkScopes / privateEndpointConnections | Hayır | Hayır |
+> | privateLinkScopes / scopedResources | Hayır | Hayır |
+> | queryPacks | Evet | Evet |
+> | queryPacks / sorgular | Hayır | Hayır |
+> | scheduledQueryRules | Evet | Evet |
+> | webtestleri | Evet | Evet |
+> | çalışma kitapları | Evet | Evet |
+> | çalışma kitabı şablonları | Evet | Evet |
+
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
@@ -1454,7 +1482,7 @@ Kaynak sağlayıcı ad alanına atla:
 > | uygulamaGüvenlikGrupları | Evet | Evet |
 > | azureFirewallFqdnEtiketler | Hayır | Hayır |
 > | azureFirewalls | Evet | Hayır |
-> | burcuHosts | Evet | Evet |
+> | burcuHosts | Evet | Hayır |
 > | bgpServiceTopluluklar | Hayır | Hayır |
 > | Bağlantı | Evet | Evet |
 > | ddosCustomPolicies | Evet | Evet |
@@ -1484,14 +1512,14 @@ Kaynak sağlayıcı ad alanına atla:
 > | frontdoorWebApplicationFirewallPolicies | Evet, ancak sınırlı [(aşağıdaki nota](#frontdoor)bakın) | Evet |
 > | getDnsResourceReference | Hayır | Hayır |
 > | internalNotify | Hayır | Hayır |
-> | yükDengeleyiciler | Evet | Hayır |
+> | yükDengeleyiciler | Evet | Evet |
 > | yerelAğ Ağ Geçitleri | Evet | Evet |
 > | natGateways | Evet | Evet |
 > | ağNiyet Politikaları | Evet | Evet |
 > | ağArayüzler | Evet | Evet |
 > | ağProfilleri | Evet | Evet |
 > | ağSecurityGroups | Evet | Evet |
-> | ağ Watchers | Evet | Hayır |
+> | ağ Watchers | Evet | Evet |
 > | ağWatchers / bağlantıMonitörler | Evet | Hayır |
 > | ağWatchers / flowLogs | Hayır | Hayır |
 > | ağ Watchers / lensler | Evet | Hayır |
@@ -1524,8 +1552,8 @@ Kaynak sağlayıcı ad alanına atla:
 > | virtualNetworkGateways | Evet | Evet |
 > | sanalAğlar | Evet | Evet |
 > | virtualNetworkTaps | Evet | Evet |
-> | sanalWans | Evet | Evet |
-> | vpnAğ Geçitleri | Evet | Hayır |
+> | sanalWans | Evet | Hayır |
+> | vpnAğ Geçitleri | Evet | Evet |
 > | vpnSiteler | Evet | Evet |
 > | webApplicationFirewallPolitikalar | Evet | Evet |
 
@@ -1821,7 +1849,7 @@ Kaynak sağlayıcı ad alanına atla:
 > [!div class="mx-tableFixed"]
 > | Kaynak türü | Etiketleri destekler | Maliyet raporunda etiket |
 > | ------------- | ----------- | ----------- |
-> | Ad alanları | Evet | Hayır |
+> | Ad alanları | Evet | Evet |
 > | namespaces / yetkilendirme kuralları | Hayır | Hayır |
 > | ad alanları / disasterrecoveryconfigs | Hayır | Hayır |
 > | ad alanları / eventgridfilters | Hayır | Hayır |

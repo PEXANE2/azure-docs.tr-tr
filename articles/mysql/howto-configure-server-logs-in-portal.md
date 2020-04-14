@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 0261ff7ca8a60dc5fd986a64b9944f9cb9f101e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 59faf63312bd7cc657f8b96ca3110707ea997c02
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062492"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273622"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portalından yavaş sorgu günlüklerini yapılandırma ve erişim
 
@@ -23,7 +23,7 @@ Bu makaledeki adımlar, [MySQL sunucusu için Azure Veritabanı'na](quickstart-c
 ## <a name="configure-logging"></a>Günlük işlemlerini yapılandırma
 MySQL yavaş sorgu günlüğüne erişimi yapılandırın. 
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. MySQL sunucusu için Azure Veritabanınızı seçin.
 
@@ -32,11 +32,15 @@ MySQL yavaş sorgu günlüğüne erişimi yapılandırın.
 
 4. Sunucu parametrelerini görmek **için, günlükleri etkinleştirmek ve günlük parametrelerini yapılandırmak için buraya tıklayın'ı**seçin.
 
-5. Ayarlamanız gereken parametreleri değiştirin. Bu oturumda yaptığınız tüm değişiklikler mor renkte vurgulanır. 
+5. **slow_query_log'ı** **A**
 
-   Parametreleri değiştirdikten sonra **Kaydet'i**seçin. Veya değişikliklerinizi atabilirsiniz.
+6. log_output kullanarak günlükleri çıktının nerede **yapılacağına**seçin. Günlükleri hem yerel depolama alanına hem de Azure MonitörÜ Tanı Günlüklerine göndermek için **Dosya'yı**seçin. 
 
-   ![Sunucu Parametreleri seçeneklerinin ekran görüntüsü](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
+7. Gereken diğer parametreleri değiştirin. 
+
+8. **Kaydet'i**seçin. 
+
+   :::image type="content" source="./media/howto-configure-server-logs-in-portal/3-save-discard.png" alt-text="Yavaş sorgu günlüğü parametrelerinin ekran görüntüsü ve kaydedin.":::
 
 Sunucu **Parametreleri** sayfasından, sayfayı kapatarak günlükler listesine dönebilirsiniz.
 

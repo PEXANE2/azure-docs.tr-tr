@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 272188b50fe59435031a4a2fb9c252f3f358bb6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535740"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270902"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Dosyalarını kullanarak ana bilgisayar havuzu için FSLogix profil kapsayıcısı oluşturma
 
@@ -45,7 +45,7 @@ Ana bilgisayar havuzu için bir FSLogix profil kapsayıcısı oluşturmadan önc
 
 Başlamak için bir Azure NetApp Files hesabı açmanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. Hesabınızın katkıda bulunan veya yönetici izinleri olduğundan emin olun.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Hesabınızın katkıda bulunan veya yönetici izinleri olduğundan emin olun.
 
 2. Azure Bulut Kabuğu'nu açmak için arama çubuğunun sağındaki **Azure Bulut Kabuğu simgesini** seçin.
 
@@ -117,9 +117,6 @@ Bundan sonra, Etkin Dizin bağlantısına katılmanız gerekir.
     - **SMB Server (Computer Account) Öneki**için, bilgisayar hesabı adına eklemek istediğiniz dizeyi girin.
     - **Kullanıcı adı**için, etki alanı birleştirme gerçekleştirmek için izinleri ile hesabın adını girin.
     - **Parola**için hesabın parolasını girin.
-
-  >[!NOTE]
-  >[Etkin Dizin bağlantısına katıl'da](create-fslogix-profile-container.md#join-an-active-directory-connection) oluşturduğunuz bilgisayar hesabının, **Bilgisayar** veya **işletmenizin ilgili OU**altında etki alanı denetleyicinizde göründüğünü doğrulamak en iyi yöntemdir.
 
 ## <a name="create-a-new-volume"></a>Yeni bir birim oluşturma
 

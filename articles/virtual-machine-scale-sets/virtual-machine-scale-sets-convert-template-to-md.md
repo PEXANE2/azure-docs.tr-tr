@@ -2,19 +2,19 @@
 title: Yönetilen disk kullanmak üzere bir ölçek kümesi şablonu dönüştürme
 description: Azure Kaynak Yöneticisi sanal makine ölçeği şablonu şablonu yönetilen disk ölçeği kümesi şablonuna dönüştürün.
 keywords: sanal makine ölçek kümeleri
-author: mayanknayar
+author: mimckitt
 tags: azure-resource-manager
 ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 5/18/2017
-ms.author: manayar
-ms.openlocfilehash: 4ab5c48c6673a2353c70fe808d09aa15675e0424
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278120"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81270664"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Ölçek kümesi şablonu yönetilen disk ölçeği kümesi şablonuna dönüştürme
 
@@ -119,7 +119,7 @@ Yönetilen veya yönetilmeyen diskkullanılıp kullanılmayacağı için ölçek
 
 ## <a name="data-disks"></a>Veri diskleri
 
-Yukarıdaki değişikliklerle, ölçek kümesi işletim sistemi diski için yönetilen diskleri kullanır, ancak veri diskleri ne olacak? Veri diskleri eklemek için "storageProfile" altında "dataDisks" özelliğini "osDisk" ile aynı düzeyde ekleyin. Özelliğin değeri, her biri "lun" (VM'deki veri diski başına benzersiz olması gereken), "createOption" ("boş" şu anda desteklenen tek seçenektir) ve "diskSizeGB" (gigabaytlarda diskin boyutu; 0 ve 1024'ten az) aşağıdaki örnekte olduğu gibi:
+Yukarıdaki değişikliklerle, ölçek kümesi işletim sistemi diski için yönetilen diskleri kullanır, ancak veri diskleri ne olacak? Veri diskleri eklemek için "storageProfile" altında "dataDisks" özelliğini "osDisk" ile aynı düzeyde ekleyin. Özelliğin değeri, her biri "lun" (VM'deki veri diski başına benzersiz olması gereken) özelliklere sahip olan JSON nesne listesidir, "createOption" ("boş" şu anda desteklenen tek seçenektir) ve "diskSizeGB" (gigabaytlarda diskin boyutu; 0'dan büyük ve 1024'ten az olmalıdır) aşağıdaki örnekte olduğu gibi:
 
 ```
 "dataDisks": [

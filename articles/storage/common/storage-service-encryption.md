@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f112a4523bc5af9ecae57e93dfb90795d3fe9c50
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ff9191c0994d4e26da69e1c4ceaf7ef6c93e9960
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113269"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253161"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Veriler için Azure Depolama şifrelemesi
 
@@ -45,7 +45,7 @@ Aşağıdaki tablo, Azure Depolama şifrelemesi için anahtar yönetim seçenekl
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Şifreleme/şifre çözme işlemleri    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
 |    Azure Depolama hizmetleri desteklendi    |    Tümü                                                |    Blob depolama, Azure Dosyaları<sup>1,2</sup>                                                                                                               |    Blob depolama                                                                  |
-|    Anahtar depolama                         |    Microsoft anahtar mağazası    |    Azure Key Vault                                                                                                                              |    Azure Anahtar Kasası veya başka bir anahtar mağazası                                                                 |
+|    Anahtar depolama                         |    Microsoft anahtar mağazası    |    Azure Key Vault                                                                                                                              |    Müşterinin kendi anahtar mağazası                                                                 |
 |    Anahtar döndürme sorumluluğu         |    Microsoft                                          |    Müşteri                                                                                                                                     |    Müşteri                                                                      |
 |    Anahtar kontrolü                          |    Microsoft                                     |    Müşteri                                                                                                                    |    Müşteri                                                                 |
 

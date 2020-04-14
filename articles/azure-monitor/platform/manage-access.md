@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 1e559309b8e8d9768ca2f79dabfb01ec6086a961
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/10/2019
+ms.openlocfilehash: b8d7f995997b828c2323b3e6934b97354c2f8c8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348716"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255252"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor'da günlük verilerine ve çalışma alanlarına erişimi yönetme
 
@@ -27,7 +27,7 @@ Bu makalede, günlüklere erişimin nasıl yönetilenve bunları içeren çalı�
 
 Azure portalından veya Azure PowerShell ile çalışma alanında yapılandırılan [erişim denetim modunu](design-logs-deployment.md) görüntüleyebilirsiniz.  Desteklenen yöntemlerden birini kullanarak bu ayarı değiştirebilirsiniz:
 
-* Azure portalında
+* Azure portal
 
 * Azure PowerShell
 
@@ -91,7 +91,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 }
 ```
 
-### <a name="using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanma
+### <a name="using-a-resource-manager-template"></a>Resource Manager şablonu kullanma
 
 Bir Azure Kaynak Yöneticisi şablonundaki erişim modunu yapılandırmak için, çalışma alanındaki **access'i etkinleştirenLogAccessUsingOnlyResourcePermissions** özelliğini aşağıdaki değerlerden birine ayarlayın.
 
@@ -273,7 +273,7 @@ Yalnızca _SecurityBaseline_ tablosuna erişimi olan bir rol oluşturmak için a
 
  Özel günlükler, özel günlükler ve HTTP Veri Toplayıcı API'sı gibi veri kaynaklarından oluşturulur. Günlük türünü belirlemenin en kolay yolu, [günlük şemasında Özel Günlükler](../log-query/get-started-portal.md#understand-the-schema)altında listelenen tabloları denetlemektir.
 
- Şu anda tek tek özel günlüklere erişim izni veremezsin, ancak tüm özel günlüklere erişim izni verebilirsiniz. Tüm özel günlüklere erişimi olan bir rol oluşturmak için aşağıdaki eylemleri kullanarak özel bir rol oluşturun:
+ Tek tek özel günlüklere erişim izni veremezsin, ancak tüm özel günlüklere erişim izni verebilirsiniz. Tüm özel günlüklere erişimi olan bir rol oluşturmak için aşağıdaki eylemleri kullanarak özel bir rol oluşturun:
 
 ```
 "Actions":  [
@@ -282,6 +282,9 @@ Yalnızca _SecurityBaseline_ tablosuna erişimi olan bir rol oluşturmak için a
     "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
 ],
 ```
+Özel günlüklere erişimi yönetmek için alternatif bir yaklaşım, bunları bir Azure kaynağına atamak ve kaynak bağlamı paradigmasını kullanarak erişimi yönetmektir. Bu yöntemi kullanmak için, veriler [HTTP Veri Toplayıcı API'sı](data-collector-api.md)aracılığıyla Log Analytics'e yutulduğunda [x-ms-AzureResourceId](data-collector-api.md#request-headers) üstbilgisine belirterek kaynak kimliğini eklemeniz gerekir. Kaynak kimliği geçerli olmalı ve bu kimlik için erişim kuralları uygulanmalıdır. Günlükler alındıktan sonra, burada açıklandığı gibi, kaynağa okuma erişimi olanlar erişebilir.
+
+Bazen özel günlükler, belirli bir kaynakla doğrudan ilişkili olmayan kaynaklardan gelir. Bu durumda, bu günlüklere erişimi yönetmek için bir kaynak grubu oluşturun. Kaynak grubu herhangi bir ücrete tabi değildir, ancak özel günlüklere erişimi denetlemek için geçerli bir kaynak kimliği verir. Örneğin, belirli bir güvenlik duvarı özel günlükler gönderiyorsa, "MyFireWallLogs" adlı bir kaynak grubu oluşturun ve API isteklerinin "MyFireWallLogs" kaynak kimliğini içerdiğinden emin olun. Güvenlik duvarı günlük kayıtları na sonra yalnızca MyFireWallLogs'a veya tam çalışma alanına erişimi olan kullanıcılara erişilebilir.          
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
 

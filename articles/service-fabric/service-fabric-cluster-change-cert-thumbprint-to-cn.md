@@ -3,12 +3,12 @@ title: Sertifika ortak adını kullanmak için kümeyi güncelleştirme
 description: Hizmet Kumaşı kümesini sertifika parmak izlerini kullanmaktan sertifika ortak adını kullanmaya nasıl değiştirebilirsiniz öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1926b0501766eb0a5fe086ceada0c9bf45e3dcf6
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610208"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81272636"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Kümeyi sertifika parmak izinden ortak ada değiştirme
 Hiçbir iki sertifika aynı parmak izine sahip olamaz, bu da küme sertifikası rollover veya yönetimi zorlaştırır. Ancak, birden çok sertifika aynı ortak ada veya özneye sahip olabilir.  Dağıtılan bir kümeyi sertifika parmak izlerini kullanmaktan sertifika ortak adlarını kullanmaya geçmek sertifika yönetimini çok daha basit hale getirir. Bu makalede, sertifika parmak izi yerine sertifika ortak adını kullanmak için çalışan bir Hizmet Dokusu kümesini nasıl güncelleştirileştirileştirilir.
@@ -20,12 +20,12 @@ Hiçbir iki sertifika aynı parmak izine sahip olamaz, bu da küme sertifikası 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-a-certificate"></a>Sertifika alın
-İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)sertifika alın.  Sertifikanın ortak adı kümenin ana bilgisayarı olmalıdır.  Örneğin, "myclustername.southcentralus.cloudapp.azure.com".  
+İlk olarak, bir [sertifika yetkilisinden (CA)](https://wikipedia.org/wiki/Certificate_authority)sertifika alın.  Sertifikanın ortak adı, sahip olduğunuz ve bir etki alanı kayıt şirketinden satın aldığınız özel etki alanı için olmalıdır. Örneğin, "azureservicefabricbestpractices.com"; Microsoft çalışanı olmayanlar MS etki alanları için sertifika sağlayamamaktadır, bu nedenle LB veya Trafik Yöneticinizin DNS adlarını sertifikanız için ortak adlar olarak kullanamazsınız ve özel etki alanınızın Azure'da çözülebilmesi için bir [Azure DNS Bölgesi](https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns) sağlamanız gerekir. Ayrıca, portalınızın kümenizin özel etki alanı diğer adını yansıtmasını istiyorsanız, sahip olduğunuz özel etki alanınızı kümenizin "yönetimiBitiş Noktası" olarak bildirmek isteyeceksiniz.
 
 Test amacıyla, ücretsiz veya açık sertifika yetkilisinden CA imzalı sertifika alabilirsiniz.
 
 > [!NOTE]
-> Azure portalında Hizmet Kumaşı kümesi dağıtılırken oluşturulanlar da dahil olmak üzere kendi imzalı sertifikalar desteklenmez.
+> Azure portalında Hizmet Kumaşı kümesi dağıtılırken oluşturulanlar da dahil olmak üzere kendi imzalı sertifikalar desteklenmez. 
 
 ## <a name="upload-the-certificate-and-install-it-in-the-scale-set"></a>Sertifikayı yükleyin ve ölçek kümesine yükleyin
 Azure'da, Bir Hizmet Kumaşı kümesi sanal makine ölçeği kümesinde dağıtılır.  Sertifikayı anahtar kasasına yükleyin ve ardından kümenin üzerinde çalışan sanal makine ölçeğine yükleyin.

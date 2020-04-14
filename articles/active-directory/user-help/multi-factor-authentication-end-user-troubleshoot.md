@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 1703853f42b52dccc80fdfadaa09b67e18a19db8
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632908"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81271701"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>İki faktörlü doğrulama ve iş veya okul hesabınızla ilgili sık karşılaşılan sorunlar
 
@@ -65,6 +65,7 @@ Cihaz sinyali ve Internet bağlantınız olduğundan emin olun | Telefon görü�
 Kapatın Rahatsız etmeyin | Mobil cihazınız için **rahatsız etmeyin** özelliğini hiç açmadığınızdan emin olun. Bu özellik açık olduğunda, bildirimlerin mobil cihazınızda sizi uyarmasına izin verilmez. Bu özelliği nasıl kapatacağınız la ilgili talimatlar için mobil cihazınızın kılavuzuna bakın.
 Telefon numaralarının engelini kaldırma | Abd'de, Microsoft'tan gelen sesli aramalar aşağıdaki numaralardan gelir: +1 (866) 539 4191, +1 (855) 330 8653 ve +1 (877) 668 6536.
 Pil ile ilgili ayarlarınızı kontrol edin | Bu yüzeyde biraz garip görünüyor, ancak daha az kullanılan uygulamaların arka planda etkin kalmasını önlemek için pil optimizasyonunuzu ayarladıysanız, bildirim sisteminiz büyük olasılıkla etkilenmiştir. Bu sorunu gidermek için kimlik doğrulama uygulamanız ve mesajlaşma uygulamanız için pil optimizasyonunu kapatın ve ardından hesabınızda yeniden oturum açmayı deneyin.
+Üçüncü taraf güvenlik uygulamalarını devre dışı | Bilinmeyen arayanları en aza indirmek için kısa mesajları veya telefon görüşmelerini koruyan bir uygulamanız varsa, doğrulama kodunun alınmasını engelleyebilir. Telefonunuzdaki üçüncü taraf güvenlik uygulamalarını devre dışı bırakmayı deneyin ve ardından başka bir doğrulama kodu gönderilmesini isteyin.
 
 ## <a name="im-not-getting-prompted-for-my-second-verification-information"></a>İkinci doğrulama bilgilerim için istenmem
 

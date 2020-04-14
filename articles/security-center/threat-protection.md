@@ -1,5 +1,5 @@
 ---
-title: Azure Güvenlik Merkezi'nde tehdit koruması
+title: Azure Güvenlik Merkezi’nde tehdit koruması
 description: Bu konu, Azure Güvenlik Merkezi'nin tehdit koruması özellikleri tarafından korunan kaynakları açıklar
 services: security-center
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435341"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263463"
 ---
-# <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde tehdit koruması
+# <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi’nde tehdit koruması
 
 Güvenlik Merkezi ortamınızın herhangi bir alanında bir tehdit algıladığında, bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda yanıt olarak bir mantık uygulamasını tetikleme seçeneğini açıklar.
 
@@ -159,19 +159,20 @@ Daha fazla bilgi için bkz.
 
 
 
-
 ## <a name="threat-protection-for-azure-storage"></a>Azure Depolama için tehdit koruması<a name="azure-storage"></a>
 
-> [!NOTE]
-> Bu hizmet ABD devlet bulutlarında kullanılabilir, ancak başka egemen veya Azure devlet bulutu bölgesi yoktur.
+Depolama için Gelişmiş Tehdit Koruması, depolama hesaplarına erişmek veya depolama hesaplarından yararlanmak için olağandışı ve zararlı olabilecek girişimleri algılar. Bu koruma katmanı, bir güvenlik uzmanı olmanızı gerektirmeden tehditleri ele almanızı sağlar ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
 
-Depolama için Gelişmiş Tehdit Koruması (şu anda yalnızca Blob depolama için kullanılabilir) depolama hesaplarına erişmek veya bunlardan yararlanmak için olağandışı ve zararlı olabilecek girişimleri algılar. Bu koruma katmanı, bir güvenlik uzmanı olmanızı gerektirmeden tehditleri ele almanızı sağlar ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
+Azure Depolama için gelişmiş tehdit koruması şu anda yalnızca [Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. 
+
+Bu hizmet tüm genel bulutlarda ve ABD devlet bulutlarında kullanılabilir, ancak başka egemen veya Azure resmi bulut bölgeleri yoktur.
+
+Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için [Azure Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
 Daha fazla bilgi için bkz.
 
 * [Azure Depolama için Gelişmiş Tehdit Koruması nasıl etkinleştirilir?](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure Depolama için tehdit koruması uyarıları listesi](alerts-reference.md#alerts-azurestorage)
-
 
 > [!TIP]
 > [Bu blog gönderisindeki](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)yönergeleri izleyerek Azure Depolama uyarılarını simüle edebilirsiniz.

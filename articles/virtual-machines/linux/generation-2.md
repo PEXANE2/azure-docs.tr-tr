@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: b68179caed4df5efd3696d7d6a3739a1e07a3c80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267306"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81273537"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure'da nesil 2 VM desteği
 
@@ -53,7 +53,7 @@ Nesil 2 VM'ler aşağıdaki Market görüntülerini destekler:
 * SUSE Linux Kurumsal Sunucu 12 SP4
 * Ubuntu Server 16.04, 18.04, 19.04, 19.10 
 * RHEL 8.1, 8.0, 7.7, 7.6, 7.5, 7.4, 7.0
-* Cent İşletim Sistemi 8.0, 7.7, 7.6, 7.5, 7.4
+* Cent İşletim Sistemi 8.1, 8.0, 7.7, 7.6, 7.5, 7.4
 * Oracle Linux 7.7, 7.7-CI
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Şirket içi ve Azure oluşturma 2 VM'ler
@@ -96,7 +96,7 @@ Azure şu anda şirket içi Hyper-V'nin nesil 2 VM'ler için desteklediği bazı
 
 Azure portalında veya Azure CLI'de, UEFI önyüklemesini destekleyen bir Market görüntüsünden nesil 2 VM'ler oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 Aşağıda, Azure portalında nesil 2 (Gen2) VM oluşturma adımları verilmiştir.
 
