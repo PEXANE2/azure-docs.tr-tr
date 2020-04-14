@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: f7177a95bdd585ff2822c9ac8c94a85d12f9259b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cfe450972acda3affbea6cbe3d262bc4b1956dc9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69900358"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262868"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Bant genişliği orta veya yüksek olduğunda büyük veri kümeleri için veri aktarımı
  
@@ -73,7 +73,7 @@ Aşağıdaki tablolar, önerilen seçenekler için anahtar yetenekleri farklıl�
 |    Şifreleme                       |    AES 128-bit                  |    AES 256 bit                                   |    AES 256 bit                           |    AES 128-bit                         |
 |    Donanım                         |     Microsoft sağlanan          |    Microsoft sağlanan                            |    Microsoft sağlanan                    |    Müşteri sağlanan                   |
 |    Ağ arabirimi                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III                    |
-|    İş ortağı tümleştirmesi              |    Bazıları                         |    [Yüksek](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Yüksek](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Bazıları                                |
+|    İş ortağı tümleştirmesi              |    Bazıları                         |    [Yüksek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                          |    [Yüksek](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureExpressPod)                                  |    Bazıları                                |
 |    Sevkiyat                         |    Microsoft yönetilen            |    Microsoft yönetilen                             |    Microsoft yönetilen                     |    Müşteri yönetimi                    |
 | Veri taşınırken kullanma         |Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Bir ticaret sınırı içinde|Coğrafi sınırların ötesinde, örneğin ABD'den AB'ye|
 |    Fiyatlandırma                          |    [Fiyatlandırma](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [Fiyatlandırma](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |

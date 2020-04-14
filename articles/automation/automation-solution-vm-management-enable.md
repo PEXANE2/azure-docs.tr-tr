@@ -5,19 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4f4b0805e2a9247aff881a9e34b0bd1cd4c6ca27
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550415"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261389"
 ---
 # <a name="enable-azure-startstop-vms-solution"></a>Azure Başlat/Durdur VM çözümlerini etkinleştirme
 
 Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalışma alanına mesai dışı çözüm sırasında Start/Stop VM'leri eklemek için aşağıdaki adımları gerçekleştirin. Onboarding işlemini tamamladıktan sonra, çözümü özelleştirmek için değişkenleri yapılandırın.
 
 >[!NOTE]
->Bu çözümü Klasik VM'lerle kullanmak için varsayılan olarak oluşturulmayan bir Klasik RunAs hesabına ihtiyacınız vardır. Klasik RunAs hesabı oluşturma yönergeleri [için, Klasik Run-As Hesapları'na](automation-create-standalone-account.md#classic-run-as-accounts)bakın.
+>Bu çözümü Klasik VM'lerle kullanmak için varsayılan olarak oluşturulmayan bir Klasik Çalıştır Hesabı gerekir. Klasik Çalıştır Hesabı oluşturma yönergeleri için [bkz.](automation-create-standalone-account.md#create-a-classic-run-as-account)
 >
 
 ## <a name="enable-solution"></a>Çözümü etkinleştirme

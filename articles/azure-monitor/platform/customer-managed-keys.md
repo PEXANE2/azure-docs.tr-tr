@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 04/08/2020
-ms.openlocfilehash: 5b99e2f31d82630e2adc138c11485201a617af81
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.date: 04/12/2020
+ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892334"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260879"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitör müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -95,8 +95,7 @@ Yordam şu anda UI'de desteklenmez ve sağlama işlemi REST API üzerinden gerç
 Örneğin:
 
 ```rst
-GET
-https://management.azure.com/subscriptions/<subscriptionId>/resourcegroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 Authorization: Bearer eyJ0eXAiO....
 ```
 
@@ -106,8 +105,8 @@ Aşağıdaki yöntemlerden birini kullanarak belirteci edinebilirsiniz:
 
 1. [Uygulama kayıtları](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) yöntemini kullanın.
 2. Azure portalında
-    1. "Geliştirici aracı (F12) "Azure portalına gidin
-    1. "Batch?api-version" örneklerinden birinde "İstek Başlıkları" altında yetkilendirme dizesini arayın. Bu gibi görünüyor: "yetkilendirme: Taşıyıcı \<belirteç\>". 
+    1. "Geliştirici aracı" (F12) varken Azure portalına gidin
+    1. "Batch?api-version" örneklerinden birinde "İstek Başlıkları" altında yetkilendirme dizesini arayın. Bu gibi görünüyor: "yetkilendirme: Taşıyıcı eyJ0eXAiO ....". 
     1. Aşağıdaki örneklere göre API çağrınıza kopyalayın ve ekleyin.
 3. Azure REST dokümantasyon sitesine gidin. Herhangi bir API'de "Deneyin" tuşuna basın ve Taşıyıcı belirteci'ni kopyalayın.
 
@@ -115,29 +114,52 @@ Aşağıdaki yöntemlerden birini kullanarak belirteci edinebilirsiniz:
 
 Bu yapılandırma yordamındaki bazı işlemler, hızlı bir şekilde tamamlanamadığından eş senkronize olarak çalıştırın. Eşzamanlı işlem yanıtı, kabul edildiğinde başlangıçta bir HTTP durum kodu 200 (Tamam) ve *Azure-AsyncOperation* özelliğine sahip üstbilgi döndürür:
 ```json
-"Azure-AsyncOperation": "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview"
+"Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
 *Azure-AsyncOperation* üstbilgi değerine GET isteği göndererek eşzamanlı işlemin durumunu kontrol edebilirsiniz:
 ```rst
-GET "https://management.azure.com/subscriptions/ subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-İşlemden gelen yanıtın gövdesi işlem hakkında bilgi içerir ve *Durum* özelliği durumunu gösterir. Bu yapılandırma yordamındaki eşzamanlı işlemler ve durumları şunlardır:
+Yanıt, işlem ve *Durumu*hakkında bilgi içerir. Aşağıdakilerden biri olabilir:
 
-***Küme* kaynağı oluşturma**
-* ProvisioningAccount -- ADX kümesi temin de 
-* Başarılı -- ADX küme sağlama tamamlandı
+Operasyon devam ediyor
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "InProgress", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+}
+```
 
-**Anahtar Kasanıza izin verme**
-* Güncelleme -- Anahtar tanımlayıcı ayrıntıları güncelleştirmesi devam ediyor
-* Başarılı -- Güncelleştirme tamamlandı
+İşlem tamamlandı
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Succeeded", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+}
+```
 
-**Log Analytics çalışma alanlarını ilişkilendirme**
-* Bağlama -- Çalışma alanı kümesi neşrisi devam ediyor
-* Başarılı -- Dernek tamamlandı
-
+İşlem başarısız oldu
+```json
+{
+    "id": "Azure-AsyncOperation URL value from the GET operation",
+    "name": "operation-id", 
+    "status" : "Failed", 
+    "startTime": "2017-01-06T20:56:36.002812+00:00",
+    "endTime": "2017-01-06T20:56:56.002812+00:00",
+    "error" : { 
+        "code": "error-code",  
+        "message": "error-message" 
+    }
+}
+```
 
 ### <a name="subscription-whitelisting"></a>Abonelik beyaz listesi
 
@@ -149,6 +171,8 @@ CMK özelliği erken erişim özelliğidir. *Küme* kaynakları oluşturmayı pl
 ### <a name="storing-encryption-key-kek"></a>Şifreleme anahtarının saklanması (KEK)
 
 Zaten oluşturmanız gereken bir Azure Anahtar Kasası oluşturun veya kullanın veya veri şifreleme için kullanılacak bir anahtar içe aktarın. Azure Anahtar Kasası, anahtarınızı ve verilerinize Erişimi Azure Monitor'da korumak için kurtarılabilir olarak yapılandırılmalıdır. Bu yapılandırmayı Key Vault'unuzdaki özelliklerin altında doğrulayabilirsiniz, hem *Yumuşak silme* hem de *Temizleme koruması* etkinleştirilmelidir.
+
+![Yumuşak silme ve temizleme koruma ayarları](media/customer-managed-keys/soft-purge-protection.png)
 
 Bu ayarlar CLI ve PowerShell üzerinden kullanılabilir:
 - [Geçici Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -189,11 +213,10 @@ Kimlik oluşturma zamanında *Küme* kaynağına atanır.
 
 **Yanıt**
 
-Kabul edildiğinde 200 Tamam ve üstbilgi.
->[!Important]
-> Özelliğin erken erişim döneminde, ADX kümesi el ile birlikte verilir. AdX kümesinin sağlanmasının tamamlanması bir süre olsa da, sağlama durumunu iki şekilde denetleyebilirsiniz:
-> 1. Yanıttan *Azure-AsyncOperation* URL değerini kopyalayın ve [eşzamanlı işlemlerde](#asynchronous-operations-and-status-check) işlem durumu denetimi için kullanın
-> 2. *Küme* kaynağına GET isteği gönderin ve *provisioningState* değerine bakın. Bu hükmünde alma ve tamamlandığında *Başarılı* iken *Provisioning Hesabıdır.*
+200 Tamam ve üstbilgi.
+Özelliğin erken erişim döneminde, ADX kümesi el ile birlikte verilir. AdX kümesinin sağlanmasının tamamlanması bir süre olsa da, sağlama durumunu iki şekilde denetleyebilirsiniz:
+1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [eşzamanlı işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+2. *Küme* kaynağına GET isteği gönderin ve *provisioningState* değerine bakın. Bu hükmünde alma ve tamamlandığında *Başarılı* iken *Provisioning Hesabıdır.*
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Azure Monitor veri deposu (ADX kümesi) sağlama
 
@@ -205,7 +228,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Daha sonraki adımlarda ayrıntılarına ihtiyacınız olacağından yanıtı kopyalayın ve kaydedin
+> Sonraki adımlardaki ayrıntılara ihtiyacınız olacağından yanıtı kopyalayın ve kaydedin.
 
 **Yanıt**
 
@@ -260,11 +283,11 @@ Anahtar Tanımlayıcı ayrıntılarıyla *Cluster* kaynak KeyVaultProperties'i g
 
 Bu Kaynak Yöneticisi isteği eşzamanlı işlemdir.
 
->[!Warning]
+> [!Warning]
 > *Kimlik,* *sku*, *KeyVaultProperties* ve *konum*içeren *Küme* kaynak güncelleştirmesinde tam bir gövde sağlamanız gerekir. *KeyVaultProperties* ayrıntılarının eksik kümesi *kaynaktan* anahtar tanımlayıcısı kaldırılır ve [anahtar iptaline](#cmk-kek-revocation)neden olur.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -290,11 +313,10 @@ Content-type: application/json
 
 **Yanıt**
 
-Kabul edildiğinde 200 Tamam ve üstbilgi.
->[!Important]
-> Anahtar tanımlayıcısının yayılmasının tamamlanması birkaç dakika sürer. Sağlama durumunu iki şekilde denetleyebilirsiniz:
-> 1. Yanıttan *Azure-AsyncOperation* URL değerini kopyalayın ve [eşzamanlı işlemlerde](#asynchronous-operations-and-status-check) işlem durumu denetimi için kullanın
-> 2. *Küme* kaynağına GET isteği gönderin ve *KeyVault Properties* özelliklerine bakın. En son güncellenen Anahtar tanımlayıcı ayrıntılarınız yanıt olarak geri dönmelidir.
+200 Tamam ve üstbilgi.
+Anahtar tanımlayıcısının yayılmasının tamamlanması birkaç dakika sürer. Sağlama durumunu iki şekilde denetleyebilirsiniz:
+1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [eşzamanlı işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+2. *Küme* kaynağına GET isteği gönderin ve *KeyVault Properties* özelliklerine bakın. En son güncellenen Anahtar tanımlayıcı ayrıntılarınız yanıt olarak geri dönmelidir.
 
 Anahtar tanımlayıcı güncelleştirmesi tamamlandığında *Küme* kaynağındaki GET isteğine verilen yanıt aşağıdaki gibi görünmelidir:
 
@@ -330,8 +352,6 @@ Anahtar tanımlayıcı güncelleştirmesi tamamlandığında *Küme* kaynağınd
 ### <a name="workspace-association-to-cluster-resource"></a>*Kaynak Kümeleme* için çalışma alanı ilişkilendirme
 Uygulama Öngörüleri CMK yapılandırması için bu adım için Ek içeriği izleyin.
 
-Bu Kaynak Yöneticisi isteği eşzamanlı işlemdir.
-
 Bu işlemi gerçekleştirmek için hem çalışma alanınız hem de *Küme* kaynağınız için 'yazma' izinleriniz olması gerekir:
 
 - Çalışma alanında: Microsoft.OperationalInsights/workspaces/write
@@ -345,7 +365,7 @@ Bu işlemi gerçekleştirmek için hem çalışma alanınız hem de *Küme* kayn
 Bu Kaynak Yöneticisi isteği eşzamanlı işlemdir.
 
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2019-08-01-preview 
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -358,15 +378,13 @@ Content-type: application/json
 
 **Yanıt**
 
-Kabul edildiğinde 200 Tamam ve üstbilgi.
->[!Important]
-> Tamamlanması 90 dakikaya kadar işlem görebilir. Çalışma alanlarınıza alınan veriler, yönetilen anahtarınızla ancak başarılı bir çalışma alanı ilişkilendirmeden sonra şifrelenerek depolanır.
-> Çalışma alanı ilişkilendirme durumunu denetlemek için, yanıttan *Azure-AsyncOperation* URL değerini kopyalayın ve [eşzamanlı işlemlerde](# asynchronous-operations-and-status-check) işlem durumu denetimi için kullanın
-
-[Çalışma Alanlarınıza](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) GET isteği göndererek çalışma alanınızla ilişkili *Küme* kaynağını denetleyebilirsiniz – Yanıtı alın ve gözlemleyin. *ClusterResourceId* *küme* kaynak kimliğiüzerinde gösterir.
+200 Tamam ve üstbilgi.
+Yutulan veriler, ilişkilendirme işleminden sonra yönetilen anahtarınızla şifrelenir ve işlemin tamamlanması 90 dakika kadar sürebilir. Çalışma alanı ilişkilendirme durumunu iki şekilde denetleyebilirsiniz:
+1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [eşzamanlı işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+2. Çalışma [Alanları](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) Gönder – İstek alın ve yanıtı gözlemleyin, ilişkili çalışma alanı "özellikler" altında bir clusterResourceId'ye sahip olacaktır.
 
 ```rest
-GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
 **Yanıt**
@@ -455,7 +473,7 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 - Bir kaynak grubu için tüm *Küme* kaynaklarını alın:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -492,7 +510,7 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 - Abonelik için tüm *Cluster* kaynaklarını alın:
 
   ```rst
-  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2019-08-01-preview
+  GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
@@ -503,8 +521,7 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 - *Küme* kaynağınızı silin -- Silme işlemi yanlışlıkla veya kasıtlı olsun, Küme kaynağınızın, verilerinizin ve ilişkili çalışma alanlarının 14 gün içinde kurtarılmasına izin vermek için bir yumuşak silme işlemi gerçekleştirilir. *Küme* kaynak adı yumuşak silme döneminde ayrılmış kalır ve bu ada sahip yeni bir küme oluşturamazsınız. Yumuşak silme döneminden sonra *Cluster* kaynağınız ve verileriniz kurtarılamaz. İlişkili çalışma alanları *Küme* kaynağından çıkarılmaz ve yeni veriler paylaşılan Depolama'ya alınır ve Microsoft anahtarıyla şifrelenir.
 
   ```rst
-  DELETE
-  https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+  DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
@@ -540,8 +557,10 @@ Bu kaynak, Anahtar Kasanız ve bileşenleriniz arasında ara kimlik bağlantıs�
 
 **Oluştur**
 
+Bu Kaynak Yöneticisi isteği eşzamanlı işlemdir.
+
 ```rst
-PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 Content-type: application/json
 
@@ -562,10 +581,10 @@ Content-type: application/json
 
 **Yanıt**
 
-202 Kabul edildi. Bu, eşzamanlı işlemler için standart bir Kaynak Yöneticisi yanıtıdır.
-
->[!Important]
-> Bu alt ADX kümenin sağlanması tamamlamak için birkaç dakika sürer. *Cluster* kaynağında GET REST API çağrısı nı gerçekleştirirken ve *provisioningState* değerine bakarken sağlama durumunu doğrulayabilirsiniz. Bu provizyon ve tamamlandığında "Başarılı" iken *ProvisioningAccount* olduğunu.
+200 Tamam ve üstbilgi.
+Özelliğin erken erişim döneminde, ADX kümesi el ile birlikte verilir. AdX kümesinin sağlanmasının tamamlanması bir süre olsa da, sağlama durumunu iki şekilde denetleyebilirsiniz:
+1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [eşzamanlı işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
+2. *Küme* kaynağına GET isteği gönderin ve *provisioningState* değerine bakın. Bu hükmünde alma ve tamamlandığında *Başarılı* iken *Provisioning Hesabıdır.*
 
 ### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Bileşenleri kullanarak bileşeni *küme* kaynağıyla ilişkilendirme - API [Oluştur veya Güncelleştir](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate)
 
@@ -579,7 +598,7 @@ Bu işlemi gerçekleştirmek için hem bileşeninizde hem de *Küme* kaynağın�
 > ADX kümesinin sağlanmış olduğunu doğrulamak için Cluster *kaynağını* execute REST API'sını alın ve *provisioningState* değerinin *Başarılı*olup olmadığını denetleyin.
 
 ```rst
-GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
+GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
@@ -614,7 +633,7 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Sonraki adımlarda ihtiyacınız olacağı için "ilke kimliği" değerini kopyalayın ve saklayın.
+> Sonraki adımlarda ihtiyacınız olacağıiçin yanıtı kopyalayın ve saklayın.
 
 **Bir bileşeni ilişkilendirme**
 

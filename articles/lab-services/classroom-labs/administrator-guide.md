@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7ce7ef15f0bf13182e4799fb640e83136d0d4695
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 55e319ba8aecb9205c00dda4a400e37f7c010649
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115017"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257785"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Hizmetleri - Yönetici kılavuzu
 Bir üniversitenin bulut kaynaklarını yöneten Bilgi Teknolojisi (BT) yöneticileri genellikle okullarının laboratuvar hesabını kurmakla yükümlüdür. Bir laboratuvar hesabı kurulduktan sonra, yöneticiler veya eğitimciler laboratuvar hesabında bulunan sınıf laboratuvarları oluşturur. Bu makalede, söz konusu Azure kaynaklarının üst düzey bir genel bakışı ve bunları oluşturma kılavuzu sağlanmaktadır.
@@ -59,7 +59,7 @@ Aşağıdaki liste, birden fazla laboratuvar hesabının yararlı olabileceği s
     
     Bir laboratuvar hesabı ayarladığınızda, laboratuvar hesabının altındaki *tüm* sınıf laboratuvarları için geçerli olan ilkeler ayarlarsınız, örneğin:
     - Sınıf laboratuvarının erişebileceği paylaşılan kaynaklara sahip Azure sanal ağı. Örneğin, sanal ağ içinde paylaşılan veri kümesine erişmeniz gereken bir sınıf laboratuarları kümeniz olabilir.
-    - Sınıf laboratuvarları VM'ler oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Marketplace görüntüsü [için Veri Bilimi VM'sine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) erişmeniz gereken bir sınıf laboratuvarı setiniz olabilir. 
+    - Sınıf laboratuvarları VM'ler oluşturmak için kullanabileceği sanal makine (VM) görüntüleri. Örneğin, Linux Marketplace görüntüsü [için Veri Bilimi VM'sine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) erişmeniz gereken bir sınıf laboratuvarı setiniz olabilir. 
     
     Birbirinden benzersiz ilke gereksinimleri olan sınıf laboratuvarlarınız varsa, bu sınıf laboratuvarlarını ayrı ayrı yönetmek için ayrı laboratuvar hesapları oluşturmak yararlı olabilir.
 

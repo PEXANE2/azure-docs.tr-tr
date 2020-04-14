@@ -3,7 +3,7 @@ title: Azure sanal makinesine izleme & tanılama ekleme
 description: Azure tanılama uzantısı içeren yeni bir Windows sanal makinesi oluşturmak için Azure Kaynak Yöneticisi şablonu kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
-author: sbtron
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2017
-ms.author: saurabh
+ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2490c3de60e0deac6a1a4ddc5abc95cb46e240b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74073837"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258839"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM ve Azure Kaynak Yöneticisi şablonlarıyla izleme ve tanılama kullanma
 Azure TanıLama Uzantısı, Windows tabanlı bir Azure sanal makinede izleme ve tanılama özellikleri sağlar. Uzantıyı Azure Kaynak Yöneticisi şablonunun bir parçası olarak ekleyerek bu özellikleri sanal makinede etkinleştirebilirsiniz. Sanal makine şablonunun bir parçası olarak herhangi bir uzantı dahil etme hakkında daha fazla bilgi için [VM Uzantılı Azure Kaynak Yöneticisi Şablonları Yazma](../windows/template-description.md#extensions) bölümüne bakın. Bu makalede, windows sanal makine şablonuna Azure Tanılama uzantısını nasıl ekleyebileceğiniz açıklanmaktadır.  
@@ -62,7 +62,7 @@ Basit bir Kaynak Yöneticisi tabanlı Sanal Makine için, uzantı yapılandırma
 ]
 ```
 
-Başka bir yaygın kuralı, uzantı yapılandırmasını sanal makinenin kaynak düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımla, uzantı ile ad *ve* *tür* değerleri yle sanal makine arasında hiyerarşik bir ilişki açıkça belirtmeniz gerekir. Örnek: 
+Başka bir yaygın kuralı, uzantı yapılandırmasını sanal makinenin kaynak düğümü altında tanımlamak yerine şablonun kök kaynakları düğümüne eklemektir. Bu yaklaşımla, uzantı ile ad *ve* *tür* değerleri yle sanal makine arasında hiyerarşik bir ilişki açıkça belirtmeniz gerekir. Örneğin: 
 
 ```json
 "name": "[concat(variables('vmName'),'Microsoft.Insights.VMDiagnosticsSettings')]",
@@ -84,7 +84,7 @@ Sanal Makine Ölçeği için ayarlar uzantıları yapılandırma *VirtualMachine
 *protectedSettings'teki* (bazen özel yapılandırma olarak da adlandırılır) özellikleri ayarlanabilir, ancak ayarlandıktan sonra geri okunamaz. *ProtectedSettings'in* yalnızca yazma özelliği, tanılama verilerinin yazıldığı depolama hesabı anahtarı gibi sırları depolamayı kullanışlı hale getirir.    
 
 ## <a name="specifying-diagnostics-storage-account-as-parameters"></a>Tanılama depolama hesabını parametreler olarak belirtme
-Yukarıdaki tanılama uzantısı json snippet tanılama verilerinin depolandığı tanılama depolama hesabını belirtmek için iki paratanılama *varalamaStorageAccountName* ve *mevcut diagnosticsStorageResourceGroup* varsayar. Tanılama depolama hesabını bir parametre olarak belirtmek, tanılama depolama hesabını farklı ortamlarda değiştirmeyi kolaylaştırır, örneğin test için farklı bir tanılama depolama hesabı ve sizin için farklı bir tanılama depolama hesabı kullanmak isteyebilirsiniz üretim dağıtımı.  
+Yukarıdaki tanılama uzantısı json snippet tanılama verilerinin depolandığı tanılama depolama hesabını belirtmek için iki paratanılama *varalamaStorageAccountName* ve *mevcut diagnosticsStorageResourceGroup* varsayar. Tanılama depolama hesabını bir parametre olarak belirtmek, tanılama depolama hesabını farklı ortamlarda değiştirmeyi kolaylaştırır, örneğin test için farklı bir tanılama depolama hesabı ve üretim dağıtımınız için farklı bir tanılama depolama hesabı kullanmak isteyebilirsiniz.  
 
 ```json
 "existingdiagnosticsStorageAccountName": {
@@ -101,7 +101,7 @@ Yukarıdaki tanılama uzantısı json snippet tanılama verilerinin depolandığ
 }
 ```
 
-Sanal makine için kaynak grubundan farklı bir kaynak grubunda tanılama depolama hesabı belirtmek en iyi yöntemdir. Bir kaynak grubu kendi ömrü ne kadar bir dağıtım birimi olarak kabul edilebilir, sanal bir makine dağıtılabilir ve yeni yapılandırmagüncelleştirmeleri yapıldıkça yeniden dağıtılabilir, ancak tanılama verilerini aynı depolama hesabında depolamaya devam etmek isteyebilirsiniz bu sanal makine dağıtımları. Depolama hesabının farklı bir kaynakta olması, depolama hesabının çeşitli sanal makine dağıtımlarından gelen verileri kabul etmesini sağlayarak çeşitli sürümlerdeki sorunları gidermenizi kolaylaştırır.
+Sanal makine için kaynak grubundan farklı bir kaynak grubunda tanılama depolama hesabı belirtmek en iyi yöntemdir. Bir kaynak grubu kendi ömrü ne kadar bir dağıtım birimi olarak kabul edilebilir, sanal bir makine dağıtılabilir ve yeni yapılandırmagüncelleştirmeleri yapıldıkça yeniden dağıtılabilir, ancak tanılama verilerini bu sanal makine dağıtımları arasında aynı depolama hesabında depolamaya devam etmek isteyebilirsiniz. Depolama hesabının farklı bir kaynakta olması, depolama hesabının çeşitli sanal makine dağıtımlarından gelen verileri kabul etmesini sağlayarak çeşitli sürümlerdeki sorunları gidermenizi kolaylaştırır.
 
 > [!NOTE]
 > Visual Studio'dan bir windows sanal makine şablonu oluşturursanız, varsayılan depolama hesabı sanal makine VHD'nin yüklendiği aynı depolama hesabını kullanacak şekilde ayarlanabilir. Bu, VM'nin ilk kurulumlarını basitleştirmek içindir. Şablonu parametre olarak geçirilebilen farklı bir depolama hesabı kullanmak için yeniden eşitleyin. 

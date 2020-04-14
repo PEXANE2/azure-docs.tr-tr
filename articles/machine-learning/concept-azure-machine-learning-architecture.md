@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: f779781eee81bf85f6420e5bae6b0feb62680b8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064181"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257343"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning nasıl çalışır: Mimari ve kavramlar
 
@@ -62,7 +62,7 @@ Azure Machine Learning için bu araçları kullanın:
             * [Yapılandırmayı çalıştır](#run-configurations)
             * [Anlık Görüntü](#snapshots)
             * [Git izleme](#github-tracking-and-integration)
-            * [Günlüğe Kaydetme](#logging)
+            * [Günlüğe kaydetme](#logging)
     * [ML işlem hatları](#ml-pipelines)
     * [Modeller](#models)
         * [Ortamlar](#environments)
@@ -127,7 +127,7 @@ Kaynak dizininin yerel bir Git deposu olduğu bir eğitim çalışması başlatt
 
 Daha fazla bilgi [için Azure Machine Learning için Git tümleştirmesi'ne](concept-train-model-git-integration.md)bakın.
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Çözümünüzü geliştirirken, rasgele ölçümleri günlüğe kaydetmek için Python komut dosyanızdaki Azure Machine Learning Python SDK'yı kullanın. Çalıştırmadan sonra, çalıştırmanın dağıtmak istediğiniz modeli üretip üretmediğini belirlemek için ölçümleri sorgula.
 
@@ -187,7 +187,7 @@ Daha fazla bilgi için aşağıdaki makalelere bakın:
 * [Tahmincilerile ML modellerini eğitin.](how-to-train-ml-models.md)
 * [Azure Machine Learning ile Pytorch derin öğrenme modellerini ölçekte eğitin.](how-to-train-pytorch.md)
 * [Azure Machine Learning ile TensorFlow modellerini ölçekte eğitin ve kaydedin.](how-to-train-tensorflow.md)
-* [Azure Machine Learning ile Chainer modellerini ölçekte eğitin ve kaydedin.](how-to-train-chainer.md)
+* [Azure Machine Learning ile Chainer modellerini ölçekte eğitin ve kaydedin.](how-to-train-ml-models.md)
 
 ### <a name="endpoints"></a>Uç Noktalar
 

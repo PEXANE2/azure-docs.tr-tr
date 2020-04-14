@@ -1,5 +1,5 @@
 ---
-title: Microsoft Ticari Pazar SSS
+title: Microsoft ticari pazar SSS
 description: Azure Marketi ve Microsoft AppSource ile ilgili sık sorulan soruların yanıtları
 author: qianw211
 ms.service: marketplace
@@ -7,20 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/4/2019
 ms.author: dsindona
-ms.openlocfilehash: ae5c691375d52bc7da7a877f5b2e0c2ca52cc87e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288470"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262035"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Ticari Pazar Yeri SSS'leri
+# <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari market hakkında SSS
 
-Azure Marketi ve Microsoft AppSource ile ilgili sık sorulan soruların yanıtları.
+Ticari pazar hakkında sık sorulan soruların yanıtları.
 
 ## <a name="faq-for-customers"></a>Müşteriler için SSS
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketi ve Microsoft AppSource hakkında bilmeniz gerekenler
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Ticari pazar hakkında bilmeniz gerekenler
 
 **Azure Marketi nedir?**
 
@@ -168,11 +168,11 @@ Evet, Kurumsal Sözleşme (EA) müşterileri için, kayıt yöneticisi kayıttak
 
 **Ticari pazar yeri satın alımlarında hangi ödeme yöntemleri desteklenir?**
 
-Müşteriler kredi kartlarını kullanarak Azure Marketi ve Microsoft AppSource'tan teklif satın alabilir. Mevcut bir Azure aboneliğiniz varsa, Azure Marketi'nden yapılan satın alma işlemleri nde hesapta yapılandırılan ödeme yöntemi kullanılır ve ayrı bir satır öğesi yle aynı faturada görünür. Bazı teklifler Azure'un parasal taahhüdünü tüketir, ancak ticari pazar daki alışverişlerin çoğu Kurumsal Sözleşme taahhütlerini aşağı çekmez, ancak Azure altyapı tüketimi bunu sağlar.
+Müşteriler kredi kartlarını kullanarak ticari pazardan teklif satın alabilirsiniz. Mevcut bir Azure aboneliğiniz varsa, Azure Marketi'nden yapılan satın alma işlemleri nde hesapta yapılandırılan ödeme yöntemi kullanılır ve ayrı bir satır öğesi yle aynı faturada görünür. Bazı teklifler Azure'un parasal taahhüdünü tüketir, ancak ticari pazar daki alışverişlerin çoğu Kurumsal Sözleşme taahhütlerini aşağı çekmez, ancak Azure altyapı tüketimi bunu sağlar.
 
 **Hesabımdaki Azure abonelik kredilerini veya parasal taahhüt fonlarını Azure Market tekliflerine uygulayabilir miyim?**
 
-Belirli Azure Marketi teklifleri Azure abonelik kredilerini veya parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tam listesi için [Azure parasal taahhüdü](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) sayfasına bakın. Bu teklifler BYOL veya BYOS seçeneklerini içermez. Diğer tüm Azure Marketi teklifleri Azure abonelik kredilerini veya parasal taahhüdü kullanamaz: ücretsiz bir aylık deneme kredisi, aylık MSDN kredileri, Azure promosyonlarından alınan krediler, parasal taahhüt bakiyeleri ve sağlanan diğer ücretsiz krediler gibi Azure.
+Belirli Azure Marketi teklifleri Azure abonelik kredilerini veya parasal taahhüt fonlarını kullanabilir. Bu programa katılan ürünlerin tam listesi için [Azure parasal taahhüdü](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) sayfasına bakın. Bu teklifler BYOL veya BYOS seçeneklerini içermez. Diğer tüm Azure Marketi teklifleri, Ücretsiz bir aylık deneme kredisi, aylık MSDN kredileri, Azure promosyonlarından alınan krediler, parasal taahhüt bakiyeleri ve Azure'dan sağlanan diğer ücretsiz krediler gibi Azure abonelik kredilerini veya parasal taahhüdü kullanamaz.
 
 **Toplu Lisans indirimleri Azure Marketi satın alımları için geçerli midir?**
 
@@ -258,12 +258,12 @@ Evet, bir müşterinin aynı tekliften aynı anda iki plan sahibi olması mümk�
 
 **İade ve plan değişikliği ilkeleri vitrine göre farklılık gösterir mi?**
 
-Hayır, iş ilkeleri Azure Marketi ve Microsoft AppSource genelinde tutarlıdır. Bulut Çözüm Sağlama programındaki bir iş ortağı tarafından yeniden satılırsa, iş ortağı müşterileri için farklı bir ilke uygulayabilir.
+Hayır, iş politikaları ticari pazarda tutarlıdır. Bulut Çözüm Sağlama programındaki bir iş ortağı tarafından yeniden satılırsa, iş ortağı müşterileri için farklı bir ilke uygulayabilir.
 
 
 ## <a name="faq-for-publishers"></a>Yayıncılar için SSS
 
-### <a name="what-you-need-to-know-about-azure-marketplace-and-microsoft-appsource"></a>Azure Marketi ve Microsoft AppSource hakkında bilmeniz gerekenler
+### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Ticari pazar hakkında bilmeniz gerekenler
 
 **Azure Marketi nedir?**
 
@@ -347,7 +347,7 @@ Teklifi tamamladıktan ve bir müşteri adayı hedef belirledikten sonra, giriş
 
 **Azure Marketi, yayıncıların hangi ülkelerden/bölgelerden satış satması için kullanılabilir?**
 
-Aşağıdaki ülkelerde/bölgelerde bulunan yayıncılar şu anda Azure Marketi'nde satış yapabilir: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Beyaz Rusya, Belçika, Benin, Bolivya, Bosna-Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Çad, Şili, Kolombiya, Komorlar, Kongo, Kongo (DRC), Kosta Rika, Cote D'Ivore, Hırvatistan, Kıbrıs, ÇekCumhuriyeti Danimarka, Dominikcumhuriyeti, Dominik Cumhuriyeti, Ekvador, Mısır, El Salvador, Eritre, Estonya, Etiyopya, Fiji Adaları, Finlandiya, Fransa, Gürcistan, Almanya, Gana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong SAR, Macaristan, İzlanda, Hindistan, Endonezya, Irak, İrlanda, İsrail, İtalya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya, Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberya, Lihtenştayn, Litvanya, Lüksemburg, Madagaskar, Malawi, Malezya, Mali, Malta, Mauritius, Moğolistan, Meksika, Malta, Mauritius, Moğolistan, Meksika Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz, Katar, Romanya, Rusya, Ruanda, Suudi Arabistan, Senegal, Sırbistan, Sierra Leone, Singapur, Slovakya, Slovenya, Somali, Güney Afrika, İspanya, Sri Lanka, İsveç, İsviçre, Tacikistan, Tanzanya, Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Türkiye, Türkmenistan, Uganda Ukrayna, Birleşik Arap Emirlikleri, Eyaletler, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya ve Zimbabve.
+Aşağıdaki ülkelerde/bölgelerde bulunan yayıncılar şu anda Azure Marketi'nde satış yapabilir: Afganistan, Arnavutluk, Cezayir, Angola, Antigua ve Barbuda, Arjantin, Ermenistan, Avustralya, Avusturya, Azerbaycan, Bahreyn, Bangladeş, Beyaz Rusya, Belçika, Benin, Bolivya, Bosna-Hersek, Botsvana, Brezilya, Bulgaristan, Burkina Faso, Burundi, Kamboçya, Kamerun, Kanada, Orta Afrika Cumhuriyeti, Çad, Şili, Kolombiya, Komorlar, Kongo, Kongo (DRC), Kosta Rika, Fildişi Sahili, Hırvatistan, Kıbrıs, Çek Cumhuriyeti, Danimarka, Dominik, Dominik Cumhuriyeti, Ekvador, Mısır, El Estonya, Salvador Etiyopya, Fiji Adaları, Finlandiya, Fransa, Gürcistan, Almanya, Gana, Yunanistan, Guatemala, Gine, Haiti, Honduras, Hong Kong SAR, Macaristan, İzlanda, Hindistan, Endonezya, Irak, İrlanda, İsrail, İtalya, Jamaika, Japonya, Ürdün, Kazakistan, Kenya Kore (Güney), Kuveyt, Laos, Letonya, Lübnan, Liberya, Lihtenştayn, Litvanya, Lüksemburg, Madagaskar, Malavi, Malezya, Mali, Malta, Mauritius, Meksika, Monako, Moğolistan, Karadağ , Fas, Mozambik, Nepal, Hollanda, Yeni Zelanda, Nikaragua, Nijer, Nijerya, Norveç, Umman, Pakistan, Panama, Paraguay, Peru, Filipinler, Polonya, Portekiz, Katar, Romanya, Rusya, Ruanda, Suudi Arabistan, Senegal, Sırbistan, Sierra Leone, Singapur, Slovakya, Slovenya, Somali, Güney Afrika, İspanya, Sri Lanka, İsveç, İsviçre, Tacikistan, Tanzanya, Tayland, Timor-Leste, Togo, Tonga, Trinidad ve Tobago, Tunus, Tunus, Türkiye, Türkmenistan, Uganda, Ukrayna, Birleşik Arap Emirlikleri, İngiltere, Amerika Birleşik Devletleri, Uruguay, Özbekistan, Venezuela, Vietnam, Zambiya,
 
 **Azure Marketi'nden bir girişi nasıl silebilirim?**
 
@@ -372,8 +372,8 @@ Daha fazla bilgi için [teklif silme](./cloud-partner-portal/manage-offers/cpp-d
 
 *O365 Uygulamaları:*
 
-1.  Dev <https://sellerdashboard.microsoft.com> Hesabınızla oturum açın.
-1.  Eklentiyi geri çekin.
+1.    Dev <https://sellerdashboard.microsoft.com> Hesabınızla oturum açın.
+1.    Eklentiyi geri çekin.
 
     > [!NOTE]
     > Uygulamalar 90 gün sonra varolan bir listeden kaybolur.
@@ -422,7 +422,7 @@ Azure Marketi satın alma işleminizle ilgili faturalandırma ve abonelik sorunl
 
 **Yayımlama veya yönetim soruları sunma ile kiminle iletişim kuracağım?**
 
-Sık sorulan sorularla ilgili güncel kaynak ve belgeler için [Azure Marketi Yayımcı Kılavuzu'nu](marketplace-publishers-guide.md) ziyaret edin. Ayrıca, [İş Ortağı Merkezi'nde Microsoft Destek](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)ile bir bilet günlüğe kaydedebilirsiniz.
+Sık sorulan sorularla ilgili güncel kaynak ve belgeler için [ticari pazar yayıncıkılavuzunu](marketplace-publishers-guide.md) ziyaret edin. Ayrıca, [İş Ortağı Merkezi'nde Microsoft Destek](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953)ile bir bilet günlüğe kaydedebilirsiniz.
 
 ### <a name="azure-marketplace-for-publishers"></a>Yayıncılar için Azure Marketi
 
@@ -473,7 +473,7 @@ Evet, destek bileti yoluyla isteğiniz üzerine, uygun gördüğünüz takdirde 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [Marketi ve AppSource Publisher kılavuzu](/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
+Ticari [pazar yayıncısı kılavuzu](/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
 
 
-[Azure portalında]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com

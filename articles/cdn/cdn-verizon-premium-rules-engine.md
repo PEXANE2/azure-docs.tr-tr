@@ -2,17 +2,17 @@
 title: Azure CDN ile HTTP davranışını geçersiz kılma - Verizon Premium kuralları motoru
 description: Kurallar altyapısı, belirli içerik türlerinin teslimini engellemek, önbelleğe alma ilkesi tanımlamak ve HTTP üstbilgilerini değiştirmek gibi HTTP isteklerinin Verizon Premium'dan Azure CDN tarafından nasıl işlendiğini özelleştirmenize olanak tanır.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74082951"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253484"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Verizon Premium kuralları altyapısından Azure CDN'yi kullanarak HTTP davranışını geçersiz kılma
 

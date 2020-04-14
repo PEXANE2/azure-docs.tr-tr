@@ -1,7 +1,7 @@
 ---
-title: Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
+title: Hata ayıklama & ML boru hatlarının sorun giderme
 titleSuffix: Azure Machine Learning
-description: Python için Azure Machine Learning SDK'da makine öğrenimi boru hatlarını ayıklama ve sorun giderme. Ardışık hatlar geliştirmek için yaygın tuzaklar ve komut dosyalarınızı uzaktan yürütme den önce ve sırasında hata ayıklamanıza yardımcı olacak ipuçlarını öğrenin. Makine öğrenimi ardışık hatlarınızı etkileşimli olarak hata ayıklamak için Visual Studio Code'u nasıl kullanacağınızı öğrenin.
+description: Python'daki Azure Machine Learning ardışık hatlarınızı hataayıkedin. Ardışık hatlar geliştirmek için yaygın tuzaklar ve komut dosyalarınızı uzaktan yürütme den önce ve sırasında hata ayıklamanıza yardımcı olacak ipuçlarını öğrenin. Makine öğrenimi ardışık hatlarınızı etkileşimli olarak hata ayıklamak için Visual Studio Code'u nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: b68efbb64e9634ade001373e8cd9d61355bf786f
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80388993"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257228"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Makine öğrenmesi işlem hatlarında hata ayıklama ve sorun giderme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Aşağıdaki bölümler, boru hatları inşa ederken sık karşılaşılan tuzak
 
 ### <a name="testing-scripts-locally"></a>Komut dosyalarını yerel olarak test etme
 
-Bir ardışık işlem aygıtındaki en yaygın hatalardan biri, ekli bir komut dosyasının (veri temizleme komut dosyası, puanlama komut dosyası, vb.) beklendiği gibi çalışmaması veya Azure Makinesi'ndeki çalışma alanınızda hata ayıklamanın zor olduğu uzak bilgi işlem bağlamında çalışma zamanı hataları içermesidir. Öğrenme stüdyosu. 
+Bir ardışık işlem aygıtındaki en yaygın hatalardan biri, ekli bir komut dosyasının (veri temizleme komut dosyası, puanlama komut dosyası, vb.) beklendiği gibi çalışmaması veya Azure Machine Learning stüdyosundaki çalışma alanınızda hata ayıklamanın zor olduğu uzak bilgi işlem bağlamında çalışma zamanı hataları içermesidir. 
 
 Ardışık hatlar yerel olarak çalıştırılamaz, ancak komut dosyalarını yerel makinenizde veya izne çalıştırmak, bilgi işlem ve ortam oluşturma işlemini beklemek zorunda kalmadığınız için hata ayıklama işlemini daha hızlı ayıklamanızı sağlar. Bunu yapmak için bazı geliştirme çalışmaları gereklidir:
 
@@ -50,7 +50,7 @@ Yerel ortamınızda çalışacak bir komut dosyası kurulumunuz olduğunda, hata
 
 ### <a name="debugging-scripts-from-remote-context"></a>Komut dosyalarını uzak bağlamdan hata ayıklama
 
-Komut dosyalarını yerel olarak test etmek, bir ardışık yapı oluşturmaya başlamadan önce büyük kod parçalarını ve karmaşık mantığı hata ayıklamanın harika bir yoludur, ancak bir noktada büyük olasılıkla gerçek ardışık hatlar çalışır durumdayken komut hatalarını ayıklamanız gerekir, özellikle de oluşan davranışı tanılarken boru hattı adımları arasındaki etkileşim sırasında. JavaScript kodunu `print()` nasıl hata ayıklayacağınıza benzer şekilde, uzaktan yürütme sırasında nesne durumunu ve beklenen değerleri görebilmeniz için adım komut dosyalarınızdaki ifadelerin liberal kullanımını öneririz.
+Komut dosyalarını yerel olarak test etmek, bir ardışık yapı oluşturmaya başlamadan önce büyük kod parçalarını ve karmaşık mantığı ayıklamanın harika bir yoludur, ancak bir noktada büyük olasılıkla gerçek ardışık hatlar çalışır ken komut hataayıklama nız gerekir, özellikle de satır adı adımları arasındaki etkileşim sırasında oluşan davranışı tanılarken. JavaScript kodunu `print()` nasıl hata ayıklayacağınıza benzer şekilde, uzaktan yürütme sırasında nesne durumunu ve beklenen değerleri görebilmeniz için adım komut dosyalarınızdaki ifadelerin liberal kullanımını öneririz.
 
 Günlük dosyası `70_driver_log.txt` şunları içerir: 
 

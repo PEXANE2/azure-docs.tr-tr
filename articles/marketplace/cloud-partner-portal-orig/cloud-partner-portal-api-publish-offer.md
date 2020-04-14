@@ -5,23 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 4163bf5727c327d559b81db42f99684aa0cc8d5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 960d5facb53f20719045c5fdbe2179f549aca3f2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280533"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255949"
 ---
-<a name="publish-an-offer"></a>Teklif yayımlama
-================
+# <a name="publish-an-offer"></a>Teklif yayımlama
+
+> [!NOTE]
+> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Belirtilen teklif için yayımlama işlemini başlatır. Bu arama uzun süren bir işlemdir.
 
   `POST  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/publish?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI parametreleri
+## <a name="uri-parameters"></a>URI parametreleri
 --------------
 
 |  **Adı**      |    **Açıklama**                               |  **Veri türü** |
@@ -31,8 +33,7 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu arama uzun süren bi
 |  api-sürümü   | API'nin en son sürümü                        |   Tarih         |
 |  |  |
 
-
-<a name="header"></a>Üst bilgi
+## <a name="header"></a>Üst bilgi
 ------
 
 |  **Adı**        |    **Değer**          |
@@ -42,7 +43,7 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu arama uzun süren bi
 |  |  |
 
 
-<a name="body-example"></a>Gövde örneği
+## <a name="body-example"></a>Gövde örneği
 ------------
 
 ### <a name="request"></a>İstek
@@ -66,14 +67,20 @@ Belirtilen teklif için yayımlama işlemini başlatır. Bu arama uzun süren bi
 
 ### <a name="response"></a>Yanıt
 
-   `Operation-Location: /api/operations/contoso$56615b67-2185-49fe-80d2-c4ddf77bb2e8$2$preview?api-version=2017-10-31`
+#### <a name="migrated-offers"></a>Geçirilen teklifler
+
+`Location: /api/publishers/contoso/offers/contoso-offer/operations/56615b67-2185-49fe-80d2-c4ddf77bb2e8?api-version=2017-10-31`
+
+#### <a name="non-migrated-offers"></a>Geçirilmeyen teklifler
+
+`Location: /api/operations/contoso$contoso-offer$2$preview?api-version=2017-10-31`
 
 
 ### <a name="response-header"></a>Yanıt Üst Bilgisi
 
 |  **Adı**             |    **Değer**                                                                 |
 |  -------------------- | ---------------------------------------------------------------------------- |
-| Operasyon-Konum    | İşlemin geçerli durumunu belirlemek için sorgulanabilen URL.    |
+| Konum    | Bu işlemin durumunu almak için göreli yol     |
 |  |  |
 
 

@@ -2,17 +2,17 @@
 title: Verizon Premium kuralları motor maç koşulları azure CDN | Microsoft Dokümanlar
 description: Verizon Premium kuralları motor maç koşulları ndan Azure İçerik Teslim Ağı için başvuru belgeleri.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: magattus
-ms.openlocfilehash: 1660dca34b2f128ef5889145fcdeed0d2523b9bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: e2361590118668f2cdf22c4a29534b16790b90e4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593211"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253450"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Verizon Premium kuralları motor maç koşulları Azure CDN
 
@@ -165,10 +165,10 @@ CDN Origin eşleşmesi koşulu, aşağıdaki koşulların her ikisi de karşıla
 Önemli bilgiler:
 
 - CIDR gösterimini kullanın.
-- Her birini tek bir boşlukla sınırlandırarak birden çok IP adresi ve/veya IP adresi bloğu belirtin. Örnek:
+- Her birini tek bir boşlukla sınırlandırarak birden çok IP adresi ve/veya IP adresi bloğu belirtin. Örneğin:
   - **IPv4 örneği**: 1.2.3.4 10.20.30.40 adresten gelen isteklerle 1.2.3.4 veya 10.20.30.40 ile eşleşir.
   - **IPv6 örneği**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 her iki adresten gelen isteklerle eşleşir 1:2:3:4:5:6:7:8 veya 10:20:30:40:50:60:70:80.
-- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örnek:
+- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örneğin:
   - **IPv4 örneği**: 5.5.5.64/26, 5.5.5.64 ile 5.5.5.127 adreslerinden gelen tüm isteklerle eşleşir.
   - **IPv6 örneği**: 1:2:3:/48 adreslerinden gelen tüm isteklerle eşleşir 1:2:3:0:0:0:0 0 ile 1:2:3:ffff:ffff:ffff:ffff:ffff.ffff.
 - Önbellek ayarlarının izlenme biçimi nedeniyle, bu eşleşme koşulu aşağıdaki özelliklerle uyumsuzdur:
@@ -993,7 +993,7 @@ Belirtilen sorgu dize parametresini içeren istekleri tanımlar. Bu parametre, b
 
 - Normal ifadeye bir ters eğik \^çizgi eklemek için çift kaçış özel normal ifade karakterleri (örneğin, $.+).
 
-   Örnek:
+   Örneğin:
 
    Değer | Olarak yorumlanır 
    ------|---------------

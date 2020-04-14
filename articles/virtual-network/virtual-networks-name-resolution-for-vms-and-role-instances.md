@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d7d0699718642a7eb9f85b2e8a86623092c34365
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010571"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262205"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -88,6 +88,7 @@ Ters DNS tüm ARM tabanlı sanal ağlarda desteklenir. Sanal makinelerin IP adre
 * Form \[vmname\].internal.cloudapp.net FQDNs ileri arama sanal makineye atanan IP adresine çözülecektir.
 * Sanal ağ bir kayıt sanal ağı olarak Azure [DNS özel bölgelere](../dns/private-dns-overview.md) bağlıysa, ters DNS sorguları iki kayıt döndürer. Bir kayıt formu \[vmname\]olacaktır . [priatednszonename] ve diğer form \[vmname\]olacaktır .internal.cloudapp.net
 * Ters DNS araması, diğer sanal ağlara bakSa bile belirli bir sanal ağa kapsamlıdır. Eşli sanal ağlarda bulunan sanal makinelerin IP adresleri için Ters DNS sorguları (PTR sorguları) NXDOMAIN döndürecek.
+* Sanal ağdaki ters DNS işlevini kapatmak istiyorsanız, [Bunu Azure DNS özel bölgelerini](../dns/private-dns-overview.md) kullanarak ters arama bölgesi oluşturarak ve bu bölgeyi sanal ağınıza bağlayarak yapabilirsiniz. Örneğin, sanal ağınızın IP adres alanı 10.20.0.0/16 ise boş bir özel DNS bölgesi 20.10.in-addr.arpa oluşturabilir ve sanal ağa bağlayabilirsiniz. Bölgeyi sanal ağınıza bağlarken bağlantıdaki otomatik kaydı devre dışı bırakmalısınız. Bu bölge sanal ağ için varsayılan ters arama bölgelerini geçersiz kılar ve bu bölge boş olduğundan, ters DNS sorgularınız için NXDOMAIN alırsınız. Özel bir DNS bölgesi oluşturma ve sanal ağa nasıl bağlayabilirsiniz hakkında ayrıntılı bilgi için [Hızlı Başlangıç kılavuzumuza](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) bakın.
 
 > [!NOTE]
 > Ters DNS araması yapmak istiyorsanız, sanal ağ üzerinden bir ters arama bölgesi (in-addr.arpa) [Azure DNS özel bölgeleri](../dns/private-dns-overview.md) oluşturabilir ve birden çok sanal ağa bağlayabilirsiniz. Ancak sanal makineler için ters DNS kayıtlarını el ile yönetmeniz gerekir.

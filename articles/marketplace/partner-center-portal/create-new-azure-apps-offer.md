@@ -1,5 +1,5 @@
 ---
-title: Ticari Pazar'da yeni bir Azure Uygulamaları teklifi oluşturun
+title: Ticari pazarda yeni bir Azure Uygulamaları teklifi oluşturun
 description: Microsoft İş Ortağı Merkezi'ndeki Ticari Pazar Portalı'nı kullanarak Azure Marketi, AppSource veya Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla listeleme veya satış için yeni bir Azure Apps teklifi oluşturma.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 0ff1bbd976273a7d0cbfb22effebdf45c84d2f41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277253"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262273"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -93,7 +93,7 @@ Azure uygulamanızı yönetmenize yardımcı olmak için aşağıdaki komut dosy
 
 Geliştirme ortamınıza aşağıdaki araçları eklemenizi öneririz:
 
-* [Azure Storage Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * Aşağıdaki uzantıları ile [Görsel Studio Kodu:](https://code.visualstudio.com/)
     * Uzantı: [Azure Kaynak Yöneticisi Araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     * Uzantısı: [Güzelleştirmek](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
@@ -103,7 +103,7 @@ Kullanılabilir araçları Azure Geliştirici [Araçları](https://azure.microso
 
 ## <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
-Azure uygulama teklifi oluşturmadan önce, öncelikle [bir İş Ortağı Merkezi hesabı oluşturmanız](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve Seçili Genel **Bakış** sekmesiyle Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açmanız gerekir.
+Azure uygulama teklifi oluşturmadan önce, öncelikle [bir İş Ortağı Merkezi hesabı oluşturmanız](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ve seçili Genel **Bakış** sekmesiyle ticari [pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açmanız gerekir.
 
 >[!Note]
 >Bir teklif yayımlandıktan sonra, Ortak Merkezi'nde yapılan teklife yönelik yapılan lar yalnızca yeniden yayımlandıktan sonra sistemde ve vitrinlerde güncellenir.  Lütfen değişiklik yapıldıktan sonra teklifi yayınlanmak üzere gönderdiğinden emin olun.

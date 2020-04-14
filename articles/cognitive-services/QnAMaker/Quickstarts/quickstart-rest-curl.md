@@ -1,16 +1,16 @@
 ---
 title: "Quickstart: Bilgi tabanını yönetmek için cURL & REST'i kullanın - QnA Maker"
 description: Bu hızlı başlangıç, REST API'lerini kullanarak bilgi tabanınızı nasıl oluşturabileceğinizi, yayımlayacağınızı ve sorgulayacağınızı gösterir.
-ms.date: 02/27/2020
+ms.date: 04/13/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: quickstart
-ms.openlocfilehash: 00ec52fe20fb0e6a976f3e7142386e835713c98c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: facc45ab8f916181f7eeceb65c5102a60ae7d7e9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78851198"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261712"
 ---
 # <a name="quickstart-use-curl-and-rest-to-manage-knowledge-base"></a>Quickstart: Bilgi tabanını yönetmek için cURL ve REST'i kullanın
 
@@ -21,9 +21,9 @@ Bu hızlı başlangıç, bilgi tabanınızı oluşturma, yayımlama ve sorgulama
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [cURL](https://curl.haxx.se/)geçerli sürümü . [CURL belgelerinde](https://curl.haxx.se/docs/manpage.html)belirtilen quickstarts'da çeşitli komut satırı anahtarları kullanılır.
-* [Bir QnA Maker kaynağınız](../How-To/set-up-qnamaker-service-azure.md)olmalıdır. Anahtar ve kaynak adınızı almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin. Kaynak adı bitiş noktası URL'sinin ilk bölümüdür:
+* Anahtar ve kaynak adını kullanmak için bir [QnA Maker kaynağına](../How-To/set-up-qnamaker-service-azure.md)sahip olmalısınız. Kaynak oluşturma sırasında kaynak **adı** girdiniz, ardından anahtar sizin için oluşturuldu. Kaynak adı bitiş noktanızın alt etki alanı olarak kullanılır. Anahtar ve kaynak adınızı almak için Azure portalındaki kaynağınız için **Hızlı Başlat'ı** seçin. Kaynak adı bitiş noktası URL'sinin ilk alt etki alanıdır:
 
-    `https://REPLACE-WITH-YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
+    `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com/qnamaker/v4.0`
 
 > [!CAUTION]
 > Aşağıdaki BASH örnekleri `\` satır devamı karakterini kullanır. Konsol veya terminal farklı bir satır devam karakteri kullanıyorsa, bu karakteri kullanın.

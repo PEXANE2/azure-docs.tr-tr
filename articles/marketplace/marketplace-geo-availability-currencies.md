@@ -1,22 +1,22 @@
 ---
-title: Coğrafi kullanılabilirlik ve Para Birimi Desteği | Azure
-description: Azure Marketi ve AppSource'da coğrafi kullanılabilirlik
+title: Coğrafi kullanılabilirlik ve para birimi desteği | Azure
+description: Ticari pazarda coğrafi kullanılabilirlik
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 79965180d897b91afc1fb1a27e777e385108d2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288436"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262018"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Coğrafi kullanılabilirlik ve para birimi desteği
 
-Azure Marketi ve AppSource teklifleri, müşterinin fatura adresitarafından tanımlandığı şekilde 141 coğrafyada satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ISO 3166 iki basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenir.
+Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 coğrafyada satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ISO 3166 iki basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenir.
 
 |   Ülke/Bölge Adı               |   ISO-2   |   Para birimi   |
 |-------------------------------------|-----------|--------------|

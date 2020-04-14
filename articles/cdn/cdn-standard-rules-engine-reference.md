@@ -2,19 +2,19 @@
 title: Azure CDN için standart kurallar motoru başvurusu | Microsoft Dokümanlar
 description: Azure İçerik Teslim Ağı (Azure CDN) için Standart kurallar altyapısındaki eşleşme koşulları ve eylemler için başvuru belgeleri.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: aa401150ee7a0f02e809ad702b8247e18081c8a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 6d4fa4451c3db3d6f2a506eabd5676d18b0219f4
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74171555"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259910"
 ---
-# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kurallar motoru başvurusu
+# <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN için standart kural altyapısı başvurusu
 
 Azure İçerik Teslim Ağı (Azure CDN) için [Standart kurallar altyapısında,](cdn-standard-rules-engine.md) bir kural bir veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, Azure CDN için Standart kurallar altyapısında bulunan eşleşme koşulları ve özelliklerinin ayrıntılı açıklamalarını sağlar.
 

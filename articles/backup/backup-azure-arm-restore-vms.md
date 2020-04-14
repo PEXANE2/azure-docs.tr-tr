@@ -4,12 +4,12 @@ description: Azure portalını kullanarak bir kurtarma noktasından bir Azure sa
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 3c3c8a7bd47ae03a013ddfadffabaa16fd04412b
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b9cdb187aa3b8750bead8e81ad6d0ee50dcb3d6c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677543"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81254929"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portalında Azure VM verileri nasıl geri yüklenir?
 
@@ -28,8 +28,6 @@ Azure Yedekleme, VM'yi geri yüklemenin çeşitli yollarını sağlar.
 
 > [!NOTE]
 > Azure VM'de belirli dosya ve klasörleri de kurtarabilirsiniz. [Daha fazla bilgi edinin](backup-azure-restore-files-from-vm.md).
->
-> Azure VM'ler için Azure Yedekleme'nin [en son sürümünü](backup-instant-restore-capability.md) çalıştırıyorsanız (Anında Geri Yükleme olarak bilinir), anlık görüntüler yedi güne kadar saklanır ve yedekleme verileri kasaya gönderilmeden önce anlık görüntülerden bir VM geri yükleyebilirsiniz. Son yedi güne ait bir yedeklemeden bir VM geri yüklemek istiyorsanız, kasadan değil, anlık görüntüden geri yüklemek daha hızlıdır.
 
 ## <a name="storage-accounts"></a>Depolama hesapları
 

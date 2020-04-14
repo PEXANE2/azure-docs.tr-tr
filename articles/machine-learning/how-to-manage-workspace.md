@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38b0895b0d6eddcf63c082d3df205f4d9de9d50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b4b64bcca57e1dc98cdba10626597532ae1461c
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297057"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269746"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portalında Azure Machine Learning çalışma alanlarını oluşturma ve yönetme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -24,7 +24,7 @@ Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure p
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
-Çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+Çalışma alanı oluşturmak için bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
 1. Azure aboneliğinizin kimlik bilgilerini kullanarak [Azure portalında](https://portal.azure.com/) oturum açın. 
 
@@ -51,7 +51,7 @@ Bu makalede, [Azure Machine Learning](overview-what-is-azure-ml.md)için Azure p
     ![Çalışma alanınızı yapılandırın](./media/how-to-manage-workspace/select-edition.png)
 
 1. Çalışma alanını yapılandırmayı **bitirdiğinizde, Gözden Geçir + Oluştur'u**seçin.
-2. Ayarları gözden geçirin ve ek değişiklikler veya düzeltmeler yapın. Ayarlarla doyduğunda **Oluştur'u**seçin.
+2. Ayarları gözden geçirin ve ek değişiklikler veya düzeltmeler yapın. Ayarlardan memnun olduğunuzda **Oluştur'u**seçin.
 
    > [!Warning] 
    > Çalışma alanınızı bulutta oluşturmak birkaç dakika sürebilir.
@@ -90,6 +90,8 @@ Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş ö
 
 ## <a name="find-a-workspace"></a><a name="view"></a>Çalışma alanı bulma
 
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+
 1. En üst arama alanında **Machine Learning**yazın.  
 
 1. **Makine Öğrenimi'ni**seçin.
@@ -102,9 +104,9 @@ Düşük kod deneyimleri ve gelişmiş güvenlik özellikleri gibi gelişmiş ö
 
 ## <a name="delete-a-workspace"></a>Çalışma alanını silme
 
-Silmek istediğiniz çalışma alanının üst kısmındaki Sil düğmesini kullanın.
+Azure [portalında,](https://portal.azure.com/)silmek istediğiniz çalışma alanının üst **Delete** kısmındasil'i seçin.
 
-  ![Sil düğmesi](./media/how-to-manage-workspace/delete-workspace.png)
+:::image type="content" source="./media/how-to-manage-workspace/delete-workspace.png" alt-text="Çalışma alanını sil":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

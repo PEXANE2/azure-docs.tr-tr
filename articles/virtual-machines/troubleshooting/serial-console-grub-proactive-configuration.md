@@ -3,8 +3,8 @@ title: Azure Seri Konsol proaktif GRUB yapılandırması| Microsoft Dokümanlar
 description: Azure sanal makinelerinde tek kullanıcı ve kurtarma modu erişimine izin veren çeşitli dağıtımlarda GRUB'u yapılandırın.
 services: virtual-machines-linux
 documentationcenter: ''
-author: vilibert
-manager: spogge
+author: mimckitt
+manager: vashan
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
-ms.author: vilibert
-ms.openlocfilehash: a154ab4742f0d0d7acae0376bcf894bc2b62b4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74186935"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262902"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktif GRUB ve sysrq erişimi nizi sağlamak size çok fazla zaman kazandırabilir
 
@@ -98,7 +98,7 @@ Bu makalede, GRUB'un kullanıma sunulması konusunda çeşitli Linux dağıtıml
 Sysrq tuşu varsayılan olarak bazı yeni Linux dağıtımlarında etkindir, ancak diğerlerinde yalnızca belirli SysRq işlevleri için değerleri kabul etmek üzere yapılandırılabilir.
 Eski dağıtımlarda tamamen devre dışı bırakılmış olabilir.
 
-SysRq özelliği, kilitlenmiş veya asılı bir VM'yi doğrudan Azure Seri Konsolu'ndan yeniden başlatmak için yararlıdır, Ayrıca GRUB menüsüne erişmede yardımcı olur, alternatif olarak başka bir portal penceresinden vm başlatmak veya ssh oturumu geçerli konsol bağlantınızı bırakabilir böylece GRUB menüsünü görüntülemek için kullanılan GRUB Zaman Aşımı süresi doluyor.
+SysRq özelliği, kırılan veya asılı vm'yi doğrudan Azure Seri Konsolu'ndan yeniden başlatmak için yararlıdır, ayrıca GRUB menüsüne erişmede yardımcı olur, alternatif olarak başka bir portal penceresinden vm'yi yeniden başlatmak veya ssh oturumu geçerli konsol bağlantınızı bırakabilir ve böylece GRUB menüsünü görüntülemek için kullanılan GRUB Zaman aşımı süresi sona erer.
 VM, çekirdek parametresi için 1 değerini kabul etmek üzere yapılandırılmalıdır, bu da sysrq veya 128'in tüm işlevlerini sağlar, bu da yeniden başlatma/poweroff
 
 

@@ -3,7 +3,7 @@ title: Azure CDN kuralları altyapısı için HTTP değişkenleri | Microsoft Do
 description: HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini almanıza olanak sağlar.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: magattus
-ms.openlocfilehash: 53ad0c516547e17801bd57c2fd6b0d1704383797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67593811"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253705"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN kuralları altyapısı için HTTP değişkenleri
 HTTP değişkenleri, HTTP isteği ve yanıt meta verilerini alabildiğiniz araçları sağlar. Bu meta veriler daha sonra bir isteği veya yanıtı dinamik olarak değiştirmek için kullanılabilir. HTTP değişkenlerinin kullanımı aşağıdaki kurallar motoru özellikleriyle sınırlıdır:

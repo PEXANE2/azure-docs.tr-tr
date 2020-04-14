@@ -3,7 +3,7 @@ title: Azure sanal makinelerde Oracle çözümleri | Microsoft Dokümanlar
 description: Desteklenen yapılandırmalar ve Microsoft Azure'daki Oracle sanal makine görüntülerinin sınırlamaları hakkında bilgi edinin.
 services: virtual-machines-linux
 documentationcenter: ''
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 tags: azure-resource-management
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/23/2019
-ms.author: rogirdh
-ms.custom: seodec18
-ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 0a2374a4c3526b77a25f9fa8faa94c9cb0d4c4ea
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74806958"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263242"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Oracle VM görüntüleri ve bunların Microsoft Azure'da dağıtımı
 
@@ -128,13 +128,13 @@ Oracle Destek notu [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/Doc
 
 İlgili bilgiler için bk. **madde 860340.1'** e <https://support.oracle.com>bakınız.
 
-* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server'da dinamik bir küme kullanmak ve azure'da tek bir genel yük dengeli bitiş noktası aracılığıyla ortaya çıkarmak istediğinizi varsayalım. Bu, yönetilen sunucuların her biri için sabit bir bağlantı noktası numarası kullandığınız (bir aralıktan dinamik olarak atanmamış) ve yöneticinin izlediği makinelerden daha fazla yönetilen sunucu başlatmadığınız sürece yapılabilir. Diğer bir süre, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden daha fazla Oracle WebLogic Sunucusunun başlatılmasıyla sonuçlanırsa (diğer bir deyişle, birden çok Oracle WebLogic Server örneğinin aynı sanal makineyi paylaştığı yer), o zaman bu örneklerden birden fazlası için mümkün değildir. Oracle WebLogic Sunucuları belirli bir bağlantı noktası numarasına bağlamak için. Sanal makinedeki diğerleri başarısız oluyor.
+* **Dinamik kümeleme ve yük dengeleme sınırlamaları.** Oracle WebLogic Server'da dinamik bir küme kullanmak ve azure'da tek bir genel yük dengeli bitiş noktası aracılığıyla ortaya çıkarmak istediğinizi varsayalım. Bu, yönetilen sunucuların her biri için sabit bir bağlantı noktası numarası kullandığınız (bir aralıktan dinamik olarak atanmamış) ve yöneticinin izlediği makinelerden daha fazla yönetilen sunucu başlatmadığınız sürece yapılabilir. Diğer bir süre, sanal makine başına birden fazla yönetilen sunucu yoktur). Yapılandırmanız, sanal makinelerden daha fazla Oracle WebLogic Sunucusunun başlatılmasıyla sonuçlanırsa (diğer bir deyişle, birden çok Oracle WebLogic Server örneğinin aynı sanal makineyi paylaştığı yer), Oracle WebLogic Sunucularının bu örneklerinden birden fazlasının belirli bir bağlantı noktası numarasına bağlanması mümkün değildir. Sanal makinedeki diğerleri başarısız oluyor.
 
-   Yönetici sunucuyu yönetilen sunucularına benzersiz bağlantı noktası numaralarını otomatik olarak atayacağınız şekilde yapılandırırsanız, Azure tek bir ortak bağlantı noktasından birden çok özel bağlantı noktasına eşlemeyi desteklemediği için, bunun için gerekli olduğu gibi yük dengelemesi mümkün değildir Yapılandırma.
-* **Sanal bir makinede Oracle WebLogic Server birden fazla örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse, aynı sanal makinede birden çok Oracle WebLogic Server örneği çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta ölçekli bir sanal makinede, Oracle WebLogic Server'ın iki örneğini çalıştırmayı seçebilirsiniz. Ancak, oracle WebLogic Server'ın birden çok örneğini çalıştıran tek bir sanal makine kullandıysanız, mimarinize tek puan hata yapmaktan kaçınmanızı öneririz. En az iki sanal makine kullanarak daha iyi bir yaklaşım olabilir ve her sanal makine daha sonra Oracle WebLogic Server birden fazla örnekleri çalıştırabilir. Oracle WebLogic Server'ın her örneği hala aynı kümenin bir parçası olabilir. Ancak, Azure yük dengeleyicisi yük dengeli sunucuların benzersiz cihazlar arasında dağıtılmasını gerektirdiğinden, aynı sanal makine içinde bu tür Oracle WebLogic Server dağıtımları tarafından ortaya çıkarılan uç noktaları yüklemek için Azure'u kullanmak şu anda mümkün değildir sanal makineler.
+   Yönetici sunucuyu yönetilen sunucularına benzersiz bağlantı noktası numaralarını otomatik olarak atayacağı şekilde yapılandırırsanız, Azure bu yapılandırma için gerekli olduğu gibi tek bir ortak bağlantı noktasından birden çok özel bağlantı noktasına eşlemeyi desteklemediği için yük dengelemesi mümkün değildir.
+* **Sanal bir makinede Oracle WebLogic Server birden fazla örneği.** Dağıtımınızın gereksinimlerine bağlı olarak, sanal makine yeterince büyükse, aynı sanal makinede birden çok Oracle WebLogic Server örneği çalıştırmayı düşünebilirsiniz. Örneğin, iki çekirdek içeren orta ölçekli bir sanal makinede, Oracle WebLogic Server'ın iki örneğini çalıştırmayı seçebilirsiniz. Ancak, oracle WebLogic Server'ın birden çok örneğini çalıştıran tek bir sanal makine kullandıysanız, mimarinize tek puan hata yapmaktan kaçınmanızı öneririz. En az iki sanal makine kullanarak daha iyi bir yaklaşım olabilir ve her sanal makine daha sonra Oracle WebLogic Server birden fazla örnekleri çalıştırabilir. Oracle WebLogic Server'ın her örneği hala aynı kümenin bir parçası olabilir. Ancak, Azure yük dengeleyicisi yük dengeli sunucuların benzersiz sanal makineler arasında dağıtılmasını gerektirdiğinden, şu anda aynı sanal makine içinde bu tür Oracle WebLogic Server dağıtımları tarafından ortaya çıkarılan uç noktaları yüklemek için Azure'u kullanmak mümkün değildir.
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK sanal makine görüntüleri
-* **JDK 6 ve 7 son güncellemeler.** Azure, Java'nın en son genel, desteklenen sürümünü (şu anda Java 8) kullanmanızı öneririz, ancak JDK 6 ve 7 görüntülerini de kullanılabilir hale getirir. Bu, JDK 8'e yükseltilmeye henüz hazır olmayan eski uygulamalar için tasarlanmıştır. Önceki JDK görüntülerindeki güncelleştirmeler artık genel kullanıma sunulmasa da, Oracle ile microsoft ortaklığı göz önüne alındığında, Azure tarafından sağlanan JDK 6 ve 7 görüntüleri, normalde Oracle tarafından sunulan daha yeni bir genel olmayan güncelleştirme yi içermeyi amaçlamaktadır. yalnızca Oracle'ın desteklenen müşterilerinden oluşan seçkin bir grup. JDK görüntülerinin yeni sürümleri, JDK 6 ve 7'nin güncellenmiş sürümleriyle zaman içinde kullanıma sunulacaktır.
+* **JDK 6 ve 7 son güncellemeler.** Azure, Java'nın en son genel, desteklenen sürümünü (şu anda Java 8) kullanmanızı öneririz, ancak JDK 6 ve 7 görüntülerini de kullanılabilir hale getirir. Bu, JDK 8'e yükseltilmeye henüz hazır olmayan eski uygulamalar için tasarlanmıştır. Önceki JDK görüntülerine yönelik güncelleştirmeler artık genel kullanıma sunulmamış olsa da, Oracle ile microsoft ortaklığı göz önüne alındığında, Azure tarafından sağlanan JDK 6 ve 7 görüntüleri, normalde Oracle tarafından yalnızca oracle'ın desteklenen belirli bir grup müşterisine sunulan daha yeni bir genel olmayan güncelleştirme içerecek şekilde tasarlanmıştır. JDK görüntülerinin yeni sürümleri, JDK 6 ve 7'nin güncellenmiş sürümleriyle zaman içinde kullanıma sunulacaktır.
 
    JDK 6 ve 7 görüntülerinde bulunan JDK ve bunlardan türetilen sanal makineler ve görüntüler yalnızca Azure'da kullanılabilir.
 * **64 bit JDK.** Oracle WebLogic Server sanal makine görüntüleri ve Azure tarafından sağlanan Oracle JDK sanal makine görüntüleri hem Windows Server hem de JDK'nın 64 bit sürümlerini içerir.

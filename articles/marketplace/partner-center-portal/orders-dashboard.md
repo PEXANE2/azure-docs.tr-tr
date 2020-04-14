@@ -7,21 +7,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d0db6553a774a69bb8a55538cbd2b4a333be9316
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281417"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261270"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari Pazar analizinde sipariş panosu
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde sipariş panosu
 
 Bu makale, İş Ortağı Merkezi'ndeki **Siparişler panosu** hakkında bilgi sağlar. Bu pano, siparişlerinizle ilgili bilgileri grafiksel ve indirilebilir biçimde görüntüler.
 
 İş Ortağı Merkezi analiz araçlarındaki **Siparişler panosuna** erişmek için Commercial Marketplace altında **[Analiz panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** açın.
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
 
 ## <a name="orders-dashboard"></a>Siparişler panosu
 
@@ -36,7 +36,7 @@ Bu makale, İş Ortağı Merkezi'ndeki **Siparişler panosu** hakkında bilgi sa
 - [Sipariş ayrıntıları tablosu](#order-details-table)
 
 > [!NOTE]
-> Analitik raporların Bulut İş Ortağı Portalı'nda (CPP) nasıl görüntülenmesi ile İş Ortağı Merkezi'ndeki yeni Ticari Pazar programı arasında farklar vardır. Belirli bir yol, CPP'deki **Satıcı Öngörüleri'nin,** kullanıma dayalı teklifler ve kullanıma dayalı olmayan tekliflere ilişkin verileri görüntüleyen **Siparişler & Kullanım** sekmesine sahip olmasıdır. Ortak Merkezi'nde, **Siparişler** sayfasının SaaS Teklifleri için ayrı bir sekmesi vardır.
+> Analitik raporların Bulut İş Ortağı Portalı'nda (CPP) nasıl görüntülenmesi ile İş Ortağı Merkezi'ndeki yeni ticari pazar programı arasında farklar vardır. Belirli bir yol, CPP'deki **Satıcı Öngörüleri'nin,** kullanıma dayalı teklifler ve kullanıma dayalı olmayan tekliflere ilişkin verileri görüntüleyen **Siparişler & Kullanım** sekmesine sahip olmasıdır. Ortak Merkezi'nde, **Siparişler** sayfasının SaaS Teklifleri için ayrı bir sekmesi vardır.
 
 ## <a name="order-dashboard-details"></a>Pano ayrıntılarını sipariş edin
 
@@ -124,10 +124,10 @@ Grafiği görüntülemek için seçtiğiniz ölçütler ve **Ayrıntılı Sipari
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi Ticari Pazarı'nda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik bölümüne](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri için, [Ticari Pazar analitiğinde Özet panosuna](./summary-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [Ticari Pazar analitiğinde Kullanım panosuna](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [Ticari Pazar analitiğinde Müşteri panosuna](./customer-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [Commercial Marketplace analitiğinde İndirme panosuna](./downloads-dashboard.md)bakın.
-- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [Commercial Marketplace analitiğinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
-- Ticari Pazar yeri analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
+- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri için, [ticari pazar analizinde Özet panosuna](./summary-dashboard.md)bakın.
+- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım panosuna](./usage-dashboard.md)bakın.
+- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri panosuna](./customer-dashboard.md)bakın.
+- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme panosuna](./downloads-dashboard.md)bakın.
+- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [ticari pazar analizinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
+- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.

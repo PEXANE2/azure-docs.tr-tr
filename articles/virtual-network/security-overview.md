@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 8f3497f113981ae563023750ad8979c88c640f5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80123346"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269882"
 ---
 # <a name="network-security-groups"></a>Ağ güvenlik grupları
 <a name="network-security-groups"></a>
 
-Ağ güvenlik grupları ile bir Azure sanal ağı içindeki Azure kaynaklarına gelen ve bu kaynaklardan giden ağ trafiğini filtreleyebilirsiniz. Ağ güvenlik grupları, farklı Azure kaynaklarına gelen ya da bu kaynaklardan dışarı giden ağ trafiğine izin veren veya bu trafiği reddeden güvenlik kuralları içerir. Sanal ağ dağıtımı ve ağ güvenlik grubu ataması için uygun olan Azure kaynakları hakkında bilgi için bkz. [Azure hizmetleri için sanal ağ tümleştirmesi](virtual-network-for-azure-services.md). Her kural için kaynak, hedef, bağlantı noktası ve protokol belirtebilirsiniz.
+Azure sanal ağındaki ağ trafiğine ve Azure kaynaklarına filtre sağlamak için Azure ağ güvenlik grubunu kullanabilirsiniz. Ağ güvenlik grubu, gelen ağ trafiğine veya çeşitli Azure kaynaklarına gelen ağ trafiğine izin veren veya bunları reddeden [güvenlik kuralları](#security-rules) içerir. Her kural için kaynak, hedef, bağlantı noktası ve protokol belirtebilirsiniz.
+Bu makalede, ağ güvenlik grubu kuralının özellikleri, uygulanan [varsayılan güvenlik kuralları](#default-security-rules) ve artırılmış güvenlik kuralı oluşturmak için değiştirebileceğiniz kural özellikleri [açıklanmaktadır.](#augmented-security-rules)
 
-Bu makalede, ağ güvenlik gruplarını daha etkili bir şekilde kullanmanıza yardımcı olmak için gereken kavramlar açıklanır. Daha önce bir ağ güvenlik grubu oluşturmadıysanız deneyim edinmek için hızlı [öğreticiyi](tutorial-filter-network-traffic.md) tamamlayabilirsiniz. Ağ güvenlik grupları ve yönetimi hakkında bilginiz varsa bkz. [Ağ güvenlik gruplarını yönetme](manage-network-security-group.md). İletişim sorunları yaşıyorsanız ve ağ güvenlik gruplarıyla ilgili sorunları gidermeniz gerekiyorsa bkz. [Sanal makine ağ trafiği filtresi sorunlarını tanılama](diagnose-network-traffic-filter-problem.md). [Ağ güvenlik grubu akış günlüklerini](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) etkinleştirerek bir ağ güvenlik grubu ile ilişkilendirilmiş kaynaklara gelen ve bu kaynaklardan giden ağ trafiğini analiz edebilirsiniz.
-
-## <a name="security-rules"></a>Güvenlik kuralları
+## <a name="security-rules"></a><a name="security-rules"></a>Güvenlik kuralları
 
 Bir ağ güvenlik grubunda Azure abonelik [limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) dahilinde sıfır veya istenen sayıda kural bulunabilir. Her bir kural aşağıdaki özellikleri belirtir:
 
@@ -46,7 +45,7 @@ Akışı etkinleştiren bir güvenlik kuralını kaldırdığınızda mevcut ba�
 
 Bir ağ güvenlik grubu içinde sınırlı sayıda güvenlik kuralı oluşturabilirsiniz. Ayrıntılar için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) makalesini inceleyin.
 
-### <a name="default-security-rules"></a>Varsayılan güvenlik kuralları
+### <a name="default-security-rules"></a><a name="default-security-rules"></a>Varsayılan güvenlik kuralları
 
 Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan kuralları ekler:
 
@@ -94,7 +93,7 @@ Azure, oluşturduğunuz tüm ağ güvenlik gruplarına aşağıdaki varsayılan 
  
 Varsayılan kuralları kaldıramazsınız ancak daha yüksek önceliğe sahip kurallar oluşturarak onları geçersiz kılabilirsiniz.
 
-### <a name="augmented-security-rules"></a>Genişletilmiş güvenlik kuralları
+### <a name="augmented-security-rules"></a><a name="augmented-security-rules"></a>Artırılmış güvenlik kuralları
 
 Genişletilmiş güvenlik kuralları, sanal ağlar için güvenlik tanımını daha basit hale getirerek daha az sayıda kuralla daha geniş çaplı ve karmaşık ağ güvenlik ilkesi tanımlamanızı sağlar. Birden fazla bağlantı noktası ile birden fazla açık IP adresini ve aralığını bir araya getirerek tek ve anlaşılması kolay bir güvenlik kuralı oluşturabilirsiniz. Genişletilmiş kuralları bir kuralın kaynak, hedef ve bağlantı noktası alanlarında kullanabilirsiniz. Güvenlik kuralı tanımınızın bakımını kolaylaştırmak için genişletilmiş güvenlik kurallarını [hizmet etiketleri](service-tags-overview.md) veya [uygulama güvenlik gruplarıyla](#application-security-groups) bir arada kullanabilirsiniz. Bir kuralda belirtebileceğiniz adres, aralık ve bağlantı noktası sayısının sınırları vardır. Ayrıntılar için [Azure limitleri](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) makalesini inceleyin.
 
@@ -170,4 +169,8 @@ Bir ağ arabirimi için [geçerli güvenlik kurallarını](virtual-network-netwo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ağ güvenlik grubu oluşturmayı](tutorial-filter-network-traffic.md) öğrenin.
+* Hangi Azure kaynaklarının sanal ağa dağıtılabildiği ve bunlarla ilişkili ağ güvenlik gruplarının olması hakkında bilgi edinmek için Azure [hizmetleri için Sanal ağ tümleştirmesi](virtual-network-for-azure-services.md) hakkında bilgi edinin
+* Daha önce bir ağ güvenlik grubu oluşturmadıysanız deneyim edinmek için hızlı [öğreticiyi](tutorial-filter-network-traffic.md) tamamlayabilirsiniz. 
+* Ağ güvenlik grupları ve yönetimi hakkında bilginiz varsa bkz. [Ağ güvenlik gruplarını yönetme](manage-network-security-group.md). 
+* İletişim sorunları yaşıyorsanız ve ağ güvenlik gruplarıyla ilgili sorunları gidermeniz gerekiyorsa bkz. [Sanal makine ağ trafiği filtresi sorunlarını tanılama](diagnose-network-traffic-filter-problem.md). 
+* Bağlı bir ağ güvenlik grubu olan kaynaklara ağ trafiğini analiz etmek için [ağ güvenliği grubu akış günlüğünü](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nasıl etkinleştireceğiz öğrenin.

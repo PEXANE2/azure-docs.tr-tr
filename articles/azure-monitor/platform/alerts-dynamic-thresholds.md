@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 9345138e948d84e0ea3c804dbd7a4b3c21daca2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668154"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261083"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Monitörde Dinamik Eşiklere Sahip Metrik Uyarılar
 
@@ -61,7 +61,7 @@ Aşağıdaki üç koşuldan birinde tetiklenecek uyarıyı seçebilirsiniz:
 
 ## <a name="what-do-the-advanced-settings-in-dynamic-thresholds-mean"></a>Dinamik Eşikler'deki gelişmiş ayarlar ne anlama gelir?
 
-**Başarısız Dönemler** - Dinamik Eşikler, sistemin bir uyarı yıkması için belirli bir zaman penceresi içinde gereken en az sapma sayısı olan "Uyarıyı tetiklemek için sayı ihlalleri" yapılandırmanızı da sağlar (varsayılan zaman penceresi 20 dakika içinde dört sapmadır). Kullanıcı, başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne hakkında uyarı verileceğini seçebilir. Bu yetenek, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örnek:
+**Başarısız Dönemler** - Dinamik Eşikler, sistemin bir uyarı yıkması için belirli bir zaman penceresi içinde gereken en az sapma sayısı olan "Uyarıyı tetiklemek için sayı ihlalleri" yapılandırmanızı da sağlar (varsayılan zaman penceresi 20 dakika içinde dört sapmadır). Kullanıcı, başarısız dönemleri yapılandırabilir ve başarısız dönemleri ve zaman penceresini değiştirerek ne hakkında uyarı verileceğini seçebilir. Bu yetenek, geçici ani artışlar tarafından oluşturulan uyarı gürültüsünü azaltır. Örneğin:
 
 Sorun 20 dakika boyunca sürekli olduğunda, 5 dakikalık belirli bir periyotta art arda 4 kez bir uyarıyı tetiklemek için aşağıdaki ayarları kullanın:
 
@@ -93,7 +93,8 @@ Bir uyarı kuralı ilk oluşturulduğunda, grafikte görünen eşikler saat veya
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Bir uyarıyı tetiklemek için ne kadar veri gerekir?
 
-Yeni bir kaynağınız varsa veya metrik verileriniz eksikse, Dinamik Eşikler üç gün veya doğru eşikleri sağlamak için 30 metrik veri örneği kullanılabilir olmadan önce uyarıları tetiklemez.
+Yeni bir kaynağınız varsa veya metrik verileriniz eksikse, Dinamik Eşikler üç günden önce uyarıları tetiklemez ve doğru eşikleri sağlamak için en az 30 metrik veri örneği kullanılabilir.
+Yeterli metrik veriye sahip varolan kaynaklar için Dinamik Eşikler uyarıları hemen tetikleyebilir.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamik Eşikler en iyi uygulamalar
 

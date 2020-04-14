@@ -4,12 +4,12 @@ description: Azure portalını kullanarak Azure Blockchain Hizmeti için Blockch
 ms.date: 03/30/2020
 ms.topic: article
 ms.reviewer: ravastra
-ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 08f5a4a807087afce13dd4a6e96c0e9dd0a36103
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529608"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260607"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -28,11 +28,11 @@ Blockchain Veri Yöneticisi örneğini yapılandırmak için şunları
 
 ## <a name="create-instance"></a>Örnek oluşturma
 
-Blockchain Veri Yöneticisi örneği, bir Azure Blockchain Hizmeti hareket düğümünü bağlar ve izler. Yalnızca işlem düğümüne erişimi olan kullanıcılar bir bağlantı oluşturabilir. Bir örnek, işlem düğümündeki tüm ham blok ve ham hareket verilerini yakalar.
+Blockchain Veri Yöneticisi örneği, bir Azure Blockchain Hizmeti hareket düğümünü bağlar ve izler. Yalnızca işlem düğümüne erişimi olan kullanıcılar bir bağlantı oluşturabilir. Bir örnek, işlem düğümündeki tüm ham blok ve ham hareket verilerini yakalar. Blockchain Data Manager, web3.eth [getBlock](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#getblock) ve [getTransaction](https://web3js.readthedocs.io/en/v1.2.0/web3-eth.html#gettransaction) sorgularından döndürülen bilgilerin bir üst kümesi olan **rawblockAndTransactionMsg** iletisi yayınlar.
 
 Giden bağlantı blockchain verilerini Azure Olay Grid'e gönderir. Örneği oluştururken tek bir giden bağlantıyı yapılandırırsınız. Blockchain Veri Yöneticisi, belirli bir Blockchain Veri Yöneticisi örneği için birden çok Olay Izgara Konu giden bağlantıları destekler. Blockchain verilerini tek bir hedefe gönderebilir veya blockchain verilerini birden çok hedefe gönderebilirsiniz. Başka bir hedef eklemek için, örne ek giden bağlantılar eklemeniz gerekiyor.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Blockchain Veri Yöneticisi'ne bağlanmak istediğiniz Azure Blockchain Hizmeti üyesine gidin. **Blockchain Veri Yöneticisi'ni**seçin.
 1. **Ekle'yi**seçin.
 

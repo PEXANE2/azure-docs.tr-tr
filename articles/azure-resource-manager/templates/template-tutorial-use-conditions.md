@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f88f141257e8e614f62c7441c313002b5735116d
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 8f51c65489efeed1fa18e70bd75e7370a9e59903
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239185"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260673"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarında kullanma koşulu
 
@@ -55,23 +55,25 @@ Bu makaleyi tamamlamak için gerekenler:
 Azure QuickStart Şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
 1. Visual Studio Code'dan **Dosya**>**Aç Dosya'yı**seçin.
-2. **Dosya adı**’na şu URL’yi yapıştırın:
+1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-3. Dosyayı açmak için **Aç**’ı seçin.
-4. Şablonun tanımladığı beş kaynak vardır:
+1. Dosyayı açmak için **Aç**’ı seçin.
+1. Şablon tarafından tanımlanan altı kaynak vardır:
 
-   * `Microsoft.Storage/storageAccounts`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageHesapları**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
-     Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyanın bir kopyasını **azuredeploy.json**adıyla yerel bilgisayarınıza kaydetmek için **Dosya**>**Yı Kaydet'i** seçin.
+    Şablonu özelleştirmeden önce şablon başvuruyu gözden geçirmek yararlıdır.
+
+1. Dosyanın bir kopyasını **azuredeploy.json**adıyla yerel bilgisayarınıza kaydetmek için **Dosya**>**Yı Kaydet'i** seçin.
 
 ## <a name="modify-the-template"></a>Şablonu değiştirme
 
@@ -83,12 +85,12 @@ Var olan şablonda iki değişiklik yapın:
 Değişiklik yapmak için aşağıdaki adımları izleyin:
 
 1. **azuredeploy.json** dosyasını Visual Studio Code ile açın.
-2. Şablonun tamamında üç **değişkeni ('storageAccountName')** **parametreleri ('storageAccountName')** ile değiştirin.
-3. Aşağıdaki değişken tanımını kaldırın:
+1. Şablonun tamamında üç **değişkeni ('storageAccountName')** **parametreleri ('storageAccountName')** ile değiştirin.
+1. Aşağıdaki değişken tanımını kaldırın:
 
     ![Kaynak Yöneticisi şablon kullanım durumu diyagramı](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
 
-4. Şablona aşağıdaki iki parametreyi ekleyin:
+1. Parametreler bölümünün başına aşağıdaki iki parametreekleyin:
 
     ```json
     "storageAccountName": {
@@ -103,11 +105,13 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
     },
     ```
 
+    Visual Studio Code'da şablonu biçimlendirmek için **[ALT]+[SHIFT]+F** tuşuna basın.
+
     Güncelleştirilmiş parametre tanımı şu şekilde görünür:
 
     ![Resource Manager kullanım koşulu](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-parameters.png)
 
-5. Depolama hesabı tanımının başına aşağıdaki satırı ekleyin.
+1. Depolama hesabı tanımının başına aşağıdaki satırı ekleyin.
 
     ```json
     "condition": "[equals(parameters('newOrExisting'),'new')]",
@@ -118,7 +122,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
     Güncelleştirilmiş depolama hesabı tanımı şu şekilde görünür:
 
     ![Resource Manager kullanım koşulu](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-6. Aşağıdaki değer ile sanal makine kaynak **tanımıdepolamaUri** özelliğini güncelleştirin:
+1. Aşağıdaki değer ile sanal makine kaynak **tanımıdepolamaUri** özelliğini güncelleştirin:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -126,20 +130,25 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
     Farklı bir kaynak grubu altındaki var olan bir depolama hesabını kullandığınızda bu değişiklik gereklidir.
 
-7. Değişiklikleri kaydedin.
+1. Değişiklikleri kaydedin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Bulut kabuğunu açmak ve gözden geçirilmiş şablonu yüklemek için [şablonu dağıt'taki](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) yönergeleri izleyin ve ardından şablonu dağıtmak için aşağıdaki PowerShell komut dosyasını çalıştırın.
+Bulut [Kabuğu'nu](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) açmak ve gözden geçirilmiş şablonu yüklemek için şablonu dağıt'taki yönergeleri izleyin ve ardından şablonu dağıtmak için aşağıdaki PowerShell komut dosyasını çalıştırın.
+
+> [!IMPORTANT]
+> Depolama hesabı adının Azure’da benzersiz olması gerekir. Adın yalnızca küçük harfleri veya sayıları olmalıdır. En fazla 24 karakter olabilir. Depolama hesabı adı, "depo" eklenen proje adıdır. Proje adının ve oluşturulan depolama hesabı adının depolama hesabı adı gereksinimlerini karşıladığından emin olun.
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$storageAccountName = Read-Host -Prompt "Enter the storage account name"
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
 $vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
+
+$resourceGroupName = "${projectName}rg"
+$storageAccountName = "${projectName}store"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
@@ -150,6 +159,8 @@ New-AzResourceGroupDeployment `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!NOTE]
@@ -159,11 +170,15 @@ New-AzResourceGroupDeployment `
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için Bulut kabuğunu açmak için **Dene'yi** seçin. PowerShell komut dosyasını yapıştırmak için kabuk bölmesini sağ tıklatın ve ardından **Yapıştır'ı**seçin.
+Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için Bulut Kabuğu'nu açmak için **Deneyin'i** seçin. PowerShell komut dosyasını yapıştırmak için kabuk bölmesini sağ tıklatın ve ardından **Yapıştır'ı**seçin.
 
 ```azurepowershell-interactive
-$resourceGroupName = Read-Host -Prompt "Enter the same resource group name you used in the last procedure"
+$projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"
+$resourceGroupName = "${projectName}rg"
+
 Remove-AzResourceGroup -Name $resourceGroupName
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

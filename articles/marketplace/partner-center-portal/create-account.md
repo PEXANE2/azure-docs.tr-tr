@@ -1,22 +1,22 @@
 ---
-title: İş Ortağı Merkezi'nde Ticari Pazar Yeri hesabı oluşturma
-description: İş Ortağı Merkezi'nde Ticari Pazar Yeri hesabı oluşturmayı öğrenin.
+title: İş Ortağı Merkezi'nde ticari bir pazar hesabı oluşturma
+description: İş Ortağı Merkezi'nde ticari bir pazar hesabı oluşturmayı öğrenin.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
 ms.date: 03/10/2020
-ms.openlocfilehash: 82caf46905c0b76deae524d8b172d70b436361d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281366"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261746"
 ---
-# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>İş Ortağı Merkezi'nde Ticari Pazar Yeri hesabı oluşturma
+# <a name="create-a-commercial-marketplace-account-in-partner-center"></a>İş Ortağı Merkezi'nde ticari bir pazar hesabı oluşturma
 
-Tekliflerinizi Azure [Marketi](https://azuremarketplace.microsoft.com/) veya [AppSource'da](https://appsource.microsoft.com/)yayınlamak için İş Ortağı Merkezi'ndeki Ticari Pazar programında bir hesap oluşturmanız gerekir. Bu makalede, Bir İş Ortağı Merkezi hesabının nasıl oluşturulacağını ve Commercial Marketplace programına nasıl yeni yayıncılar ekleyeceğiniz ele alacağız.
+Tekliflerinizi Azure [Marketi'nde](https://azuremarketplace.microsoft.com/) veya [Microsoft AppSource'da](https://appsource.microsoft.com/)yayınlamak için İş Ortağı Merkezi'ndeki ticari pazar programında bir hesap oluşturmanız gerekir. Bu makalede, Bir İş Ortağı Merkezi hesabının nasıl oluşturulacağını ve Commercial Marketplace programına nasıl yeni yayıncılar ekleyeceğiniz ele alacağız.
 
 >[!IMPORTANT]
 >[Bulut İş Ortağı Portalı'nda (CPP)](https://cloudpartner.azure.com) İş Ortağı Merkezi'ne taşınmış bir hesabınız varsa, yeni bir hesap oluşturmanız gerekmez. Daha fazla bilgi için [CPP'den taşınan Yayıncılar'a](#publishers-moving-from-cpp) bakın.
@@ -75,7 +75,7 @@ Yayıncı profil bilgilerinizi doğruladıktan sonra, hüküm ve koşulları kab
 
 Kaydolduktan sonra Ticari Pazara Genel Bakış sayfasına alınırsınız. **Ticari Pazar** yeri sol navigasyon çubuğunda görüntülenir. **Ayarlar** > **İş Ortağı Ayarları** > **Programları'nı**seçerseniz, Commercial Marketplace'in kayıtlı olarak listelenmiş olduğunu görürsünüz.
 
-Partner Center'da Ticari Pazar Yeri hesabı oluşturduğunuz için teşekkür ederiz! Yardım için Commercial [Marketplace Genel Bakış'a](./commercial-marketplace-overview.md)bakın. Yayımcı ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
+Partner Center'da Ticari Pazar Yeri hesabı oluşturduğunuz için teşekkür ederiz! Yardım için ticari [pazara genel bakışa](./commercial-marketplace-overview.md)bakın. Yayıncılar ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ## <a name="create-an-account-using-existing-microsoft-partner-center-enrollments"></a>Varolan Microsoft İş Ortağı Merkezi kayıtlarını kullanarak hesap oluşturma
 
@@ -119,7 +119,7 @@ Oturum açtıktan sonra hesabınızı ayarlamayı bitirmek için aşağıdaki ad
 
 Kaydolduktan sonra Ticari Pazara Genel Bakış sayfasına alınırsınız. **Ticari Pazar** yeri sol navigasyon çubuğunda görüntülenir. **Ayarlar** > **İş Ortağı Ayarları** > **Programları'nı**seçerseniz, Commercial Marketplace'in kayıtlı olarak listelenmiş olduğunu görürsünüz.
 
-Partner Center'da hesap oluşturduğunuz için teşekkür ederiz! Yardım için Commercial [Marketplace Genel Bakış'a](./commercial-marketplace-overview.md)bakın. Yayımcı ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
+Partner Center'da hesap oluşturduğunuz için teşekkür ederiz! Yardım için ticari [pazara genel bakışa](./commercial-marketplace-overview.md)bakın. Yayıncılar ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ### <a name="enrolled-in-a-developer-program"></a>Geliştirici programına kaydoldu
 
@@ -143,13 +143,13 @@ Oturum açtıktan sonra hesabınızı ayarlamayı bitirmek için aşağıdaki ad
 
 Kaydolduktan sonra Ticari Pazara Genel Bakış sayfasına alınırsınız. **Ticari Pazar** yeri sol navigasyon çubuğunda görüntülenir. **Ayarlar** > **Geliştirici Ayarları** > **Programları'nı**seçerseniz, Commercial Marketplace'in kayıtlı olarak listelenmiş olduğunu görürsünüz.
 
-Partner Center'da hesap oluşturduğunuz için teşekkür ederiz! Yardım için Commercial [Marketplace Genel Bakış'a](./commercial-marketplace-overview.md)bakın. Yayımcı ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
+Partner Center'da hesap oluşturduğunuz için teşekkür ederiz! Yardım için ticari [pazara genel bakışa](./commercial-marketplace-overview.md)bakın. Yayıncılar ekleme konusunda yardım için [bkz.](#add-new-publishers-to-the-commercial-marketplace-program)
 
 ## <a name="publishers-moving-from-cpp"></a>CPP'den taşınan yayıncılar
 
 Hesabınız [Bulut İş Ortağı Portalı'ndan (CPP)](https://cloudpartner.azure.com)geçirilmişse, yeni bir İş Ortağı Merkezi hesabı oluşturmanız gerekmez. Yeni İş Ortağı Merkezi hesabınıza e-posta ve mevcut CPP hesabınızda oturum açtıktan sonra bir banner bildiriminde özelleştirilmiş bir bağlantı almış olmalısınız.
 
-Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni İş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, İş Ortağı Merkezi'ndeki [Ticari Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
+Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni İş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, İş Ortağı Merkezi'ndeki [ticari pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
 
 Yayımlama sözleşmesi ve şirket profil bilgileri, daha önce ayarlanmış hesap ödeme profili bilgileri, kullanıcı hesapları ve izinleri ve CPP hesabınızla ilişkili etkin tekliflerle birlikte yeni İş Ortağı Merkezi hesabınıza taşınır.
 
@@ -170,7 +170,7 @@ Aynı Azure Etkin Dizin kiracısından başka bir kullanıcı aşağıdaki adım
 4. Yayımcıyla ilişkilendirmek istediğiniz MPN Kimliğini seçin.
 5. Formdaki **yayımcı ayrıntılarını** güncelleştirin.
 
-   1. **Yayımcı Adı**: Teklifle birlikte Azure Marketi veya AppSource'da görüntülenecek ad.
+   1. **Yayımcı Adı**: Teklifle birlikte ticari pazarda görüntülenecek ad.
    1. **PublisherID**: Yayımcınızı benzersiz olarak tanımlamak için Ortak Merkezi tarafından kullanılan bir tanımlayıcıdır. Bu alan için varsayılan, sistemde `PublisherID` varolan ve benzersiz olan ve yeniden kullanılamayacak bir alanla eşlenir ve bu nedenle bu alanın güncellenmesi gerekir.
    1. **İletişim bilgileri**: Gerektiğinde iletişim bilgilerini güncelleyin.
 
@@ -178,4 +178,4 @@ Aynı Azure Etkin Dizin kiracısından başka bir kullanıcı aşağıdaki adım
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Ticari Pazar Hesabınızı İş Ortağı Merkezi'nde yönetin](./manage-account.md)
+- [İş Ortağı Merkezi'nde ticari pazar hesabınızı yönetme](./manage-account.md)

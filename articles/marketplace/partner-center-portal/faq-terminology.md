@@ -1,20 +1,20 @@
 ---
-title: İş Ortağı Merkezi'nde Ticari Pazar analitiği için sık sorulan sorular ve terminoloji
-description: Commercial Marketplace analitiği hakkında sık sorulan soruları nasıl ele alabildiğini öğrenin. Analitik terminolojisi için bir veri sözlüğü içerir.
+title: İş Ortağı Merkezi'nde ticari pazar analitiği için sık sorulan sorular ve terminoloji
+description: Ticari pazar yeri analitiği hakkında sık sorulan soruları nasıl ele alabildiğini öğrenin. Analitik terminolojisi için bir veri sözlüğü içerir.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: d53ae01fb302382ca5bc2d31e729e153aea6c838
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286090"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81251835"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Ticari Pazar yeri analitiği için sık sorulan sorular ve terminoloji
+# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Ticari pazar analizi için sık sorulan sorular ve terminoloji
 
 Bu makalede, İş Ortağı Merkezi'nde analitik iletilerle ilgili sık sorulan sorular ele aldaki ve ayrıca analitik terminoloji sözlüğü de verilmektedir.
 
@@ -29,18 +29,18 @@ Bu bölümde, İş Ortağı Merkezi'nde **Bulunan Analitik Yok henüz** iletiler
 Bu iletiyi neden alasınız:
 
 - Şu anda pazarda yayınlanan teklifler için hiçbir satın alma bulunmamaktadır. Bu, tekliflerinizin pazarda canlı olduğu ve ürün görüntüleme sayfalarındamüşterilerden görünüm ler kazandığı anlamına gelebilir, ancak müşteriler bunları satın almak ve dağıtmak için henüz harekete geçmemiş olabilir.
-- Teklifinizin yayınlanması sürecinde olabilir ve henüz yayınlanmadı. Sadece canlı teklifler müşteriler tarafından elde edilebilir. Tekliflerinizin durumunu kontrol etmek için [Analiz panosunda](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)genel bakışa bakın. Daha fazla bilgi için, [Ticari Pazar analizinde Özet Panosu'na](./summary-dashboard.md)bakın.
+- Teklifinizin yayınlanması sürecinde olabilir ve henüz yayınlanmadı. Sadece canlı teklifler müşteriler tarafından elde edilebilir. Tekliflerinizin durumunu kontrol etmek için [Analiz panosunda](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)genel bakışa bakın. Daha fazla bilgi için [ticari pazar analizinde Özet Panosu'na](./summary-dashboard.md)bakın.
 - Teklifleriniz, yalnızca liste teklifleri olan ve pazardaki müşteriler tarafından satın alınamayan **Bana Ulaşın**olarak listelenebilir. Bu teklifler müşteri adayları oluştursa ve sizinle paylaşılsa da, satın alınamadıkları için bu teklifler için siparişler oluşturulmaz. Teklif giriş türünü kontrol etmek için kurulum sayfasına gidin.
 
 **Analitik verilerim olduğunu biliyorum, ancak aşağıdaki ileti görünüyor:**
 
 ![Verilen tarih aralığı için veri yok](./media/analytics-faq-data-range.png)
 
-Bu iletiyi alıyorsanız, bu analiz verilerine sahip olduğunuz, ancak seçtiğiniz tarih aralığı için veri olmadığı anlamına gelir. 2010 yılından bu yana herhangi bir veriyi görüntülemek için farklı bir tarih aralığı veya özel tarih aralığı seçin. Daha fazla bilgi için, [Ticari Pazar analizinde Özet Panosu'nun](./summary-dashboard.md)Tarih Aralığı bölümüne bakın.
+Bu iletiyi alıyorsanız, bu analiz verilerine sahip olduğunuz, ancak seçtiğiniz tarih aralığı için veri olmadığı anlamına gelir. 2010 yılından bu yana herhangi bir veriyi görüntülemek için farklı bir tarih aralığı veya özel tarih aralığı seçin. Daha fazla bilgi için, [ticari pazar analizinde Özet Panosu'nun](./summary-dashboard.md)Tarih Aralığı bölümüne bakın.
 
 ## <a name="dictionary-of-data-terms"></a>Veri terimleri sözlüğü
 
-| Öznitelik Adı | Reports | Tanım|
+| Öznitelik Adı | Raporlar | Tanım|
 |---|---|---|
 | Azure Lisans Türü | Müşteri, Sipariş | Müşteriler tarafından Azure satın almak için kullanılan lisans sözleşmesi türü. Kanal olarak da bilinir |
 | Azure Lisans Türü: Bulut Çözüm Sağlayıcısı | Müşteri, Sipariş | Son müşteri, Azure ve Market teklifinizi, satıcınız olarak görev yapan Bulut Çözüm Sağlayıcısı aracılığıyla satın alıyor.|
@@ -96,10 +96,10 @@ Bu iletiyi alıyorsanız, bu analiz verilerine sahip olduğunuz, ancak seçtiği
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi Ticari Pazarı'nda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik bölümüne](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri için, [Ticari Pazar analitiğinde Özet Panosu'na](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [Ticari Pazar analitiğinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [Ticari Pazar analitiğinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [Ticari Pazar analitiğinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [Ticari Pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
-- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [Commercial Marketplace analitiğinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.
+- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
+- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
+- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
+- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
+- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
+- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
+- Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görmek için, [ticari pazar analizinde Derecelendirmeler ve incelemeler panosuna](./ratings-reviews.md)bakın.

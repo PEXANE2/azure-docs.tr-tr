@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 7237bb7e0538ba1a9b6333ccb6589efe657a247d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f91ee5654b4add37d3cce4f875be1f9c2b398ab9
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74423955"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259502"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM'ler ve fiziksel sunucular için sorun giderme çoğaltma sorunları
 
@@ -30,7 +30,7 @@ Bağlı ve düzgün çalıştığından ve işlem sunucusuyla ilişkili kaynak m
 
 ## <a name="step-2-troubleshoot-connectivity-and-replication-issues"></a>Adım 2: Bağlantı ve çoğaltma sorunlarını giderme
 
-İlk ve devam eden çoğaltma hataları genellikle kaynak sunucu ile işlem sunucusu arasındaki veya işlem sunucusu ile Azure arasındaki bağlantı sorunlarından kaynaklanır. 
+İlk ve devam eden çoğaltma hataları genellikle kaynak sunucu ile işlem sunucusu arasındaki veya işlem sunucusu ile Azure arasındaki bağlantı sorunlarından kaynaklanır.
 
 Bu sorunları çözmek [için, bağlantı ve çoğaltma sorun giderme.](vmware-physical-azure-troubleshoot-process-server.md#check-connectivity-and-replication)
 
@@ -96,7 +96,7 @@ Sorunu gidermek için, kaynak VM'den Config Server'a ağ bağlantısını doğru
 4. Kaynak Makine'de, hata ayrıntıları için konumdaki günlükleri inceleyin:
 
        C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
-    
+
 ### <a name="process-server-with-no-heartbeat-error-806"></a>Sinyal atamı olmayan işlem sunucusu [hata 806]
 Process Server'dan (PS) sinyal atamı yoksa, aşağıdakileri kontrol edin:
 1. PS VM çalışır durumda
@@ -116,7 +116,7 @@ Sorunu gidermek için, hizmet durumunu doğrulamak için aşağıdaki adımları
 2. Yönetici ayrıcalıklarına sahip bir hesabı kullanarak Ana Hedef VM'de oturum açın.
     - Svagents hizmetinin çalıştığını doğrulayın. Çalışıyorsa, hizmeti yeniden başlatın
     - Hata ayrıntıları için konumdaki günlükleri kontrol edin:
-        
+
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
 3. Ana hedefi yapılandırma sunucusuna kaydetmek için **%PROGRAMDATA%\ASR\Agent**klasörüne gidin ve komut isteminde aşağıdakileri çalıştırın:
    ```
@@ -132,38 +132,38 @@ Sorunu gidermek için, hizmet durumunu doğrulamak için aşağıdaki adımları
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Hata Kimliği 78144 - Son 'XXX' dakikasında VM için uygulama tutarlı kurtarma noktası yok
 
-VSS yükleme hatası davranışlarını işlemek için mobilite aracısı [9.23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) & [9.27](site-recovery-whats-new.md#update-rollup-39) sürümlerinde geliştirmeler yapılmıştır. Sorun giderme VSS hataları hakkında en iyi rehberlik için en son sürümlerde olduğunuzdan emin olun.
+VSS yükleme hatası davranışlarını işlemek için mobilite aracısı [9.23](vmware-physical-mobility-service-overview.md#mobility-service-agent-version-923-and-higher) & [9.27](site-recovery-whats-new.md#update-rollup-39) sürümlerinde geliştirmeler yapılmıştır. Sorun giderme VSS hataları hakkında en iyi rehberlik için en son sürümlerde olduğunuzdan emin olun.
 
 En sık karşılaşılan sorunlardan bazıları aşağıda listelenmiştir
 
-#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Neden 1: SQL sunucusunda bilinen sorun 2008/2008 R2 
+#### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Neden 1: SQL sunucusunda bilinen sorun 2008/2008 R2
 **Nasıl düzeltilir** : SQL server 2008/2008 R2 ile bilinen bir sorun vardır. Lütfen bu KB makalesine bakın [Azure Site Kurtarma Aracısı veya diğer bileşen dışı VSS yedekleme sql server 2008 R2 barındıran bir sunucu için başarısız](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Neden 2: Azure Site Kurtarma işleri, AUTO_CLOSE DB'li SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız olur 
-**Nasıl düzeltilir** : Bkz. Kb [makale](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Neden 2: Azure Site Kurtarma işleri, AUTO_CLOSE DB'li SQL Server örneklerinin herhangi bir sürümünü barındıran sunucularda başarısız olur
+**Nasıl düzeltilir** : Bkz. Kb [makale](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser)
 
 
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Neden 3: SQL Server 2016 ve 2017'de bilinen sorun
-**Nasıl düzeltilir** : Bkz. Kb [makale](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) 
+**Nasıl düzeltilir** : Bkz. Kb [makale](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component)
 
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>VSS ile ilgili sorunlar nedeniyle daha fazla neden:
 
 Daha fazla sorun gidermek için, hata için tam hata kodunu almak için kaynak makinedeki dosyaları denetleyin:
-    
+
     C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\Application Data\ApplicationPolicyLogs\vacp.log
 
 Dosyadaki hataları bulma nasıl?
 Bir editörde vacp.log dosyasını açarak "vacpError" dizesini arayın
-        
+
     Ex: vacpError:220#Following disks are in FilteringStopped state [\\.\PHYSICALDRIVE1=5, ]#220|^|224#FAILED: CheckWriterStatus().#2147754994|^|226#FAILED to revoke tags.FAILED: CheckWriterStatus().#2147754994|^|
 
 Yukarıdaki örnekte **2147754994** aşağıda gösterildiği gibi hata hakkında söyler hata kodudur
 
-#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazar yüklü değil - Hata 2147221164 
+#### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS yazar yüklü değil - Hata 2147221164
 
 *Nasıl düzeltilir*: Uygulama tutarlılığı etiketi oluşturmak için Azure Site Kurtarma Microsoft Birim Gölge kopyalama Hizmeti (VSS) kullanır. Uygulama tutarlılığı anlık görüntülerini almak için çalışması için bir VSS Sağlayıcısı yükler. Bu VSS Sağlayıcısı bir hizmet olarak yüklenir. VSS Sağlayıcı hizmetinin yüklenmemesi durumunda, uygulama tutarlılığı anlık oluşturma hata id 0x80040154 "Sınıf kayıtlı değil" ile başarısız olur. </br>
-[VSS yazar yükleme sorun giderme için makaleye](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın 
+[VSS yazar yükleme sorun giderme için makaleye](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) bakın
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS yazar devre dışı bırakılır - Hata 2147943458
 
@@ -178,12 +178,13 @@ Yukarıdaki örnekte **2147754994** aşağıda gösterildiği gibi hata hakkınd
 
 ####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS Provider NOT_REGISTERED - Hata 2147754756
 
-**Nasıl düzeltilir**: Uygulama tutarlılığı etiketi oluşturmak için Azure Site Kurtarma Microsoft Birim Gölge kopyalama Hizmeti (VSS) kullanır. Azure Site Kurtarma VSS Sağlayıcısı hizmetinin yüklü olup olmadığını denetleyin. </br>
+**Nasıl düzeltilir**: Uygulama tutarlılığı etiketi oluşturmak için Azure Site Kurtarma Microsoft Birim Gölge kopyalama Hizmeti (VSS) kullanır.
+Azure Site Kurtarma VSS Sağlayıcısı hizmetinin yüklü olup olmadığını denetleyin. </br>
 
 - Sağlayıcı yüklemesini aşağıdaki komutları kullanarak yeniden deneyin:
 - Varolan sağlayıcıyı kaldırın: C:\Program Files (x86)\Microsoft Azure Site Kurtarma\aracı\InMageVSSProvider_Uninstall.cmd
 - Yeniden yükleme: C:\Program Files (x86)\Microsoft Azure Site Kurtarma\InMageVSSProvider_Install.cmd
- 
+
 VSS Sağlayıcı hizmetinin başlangıç türünün **Otomatik**olarak ayarlı olduğunu doğrulayın.
     - Aşağıdaki hizmetleri yeniden başlatın:
         - VSS hizmeti

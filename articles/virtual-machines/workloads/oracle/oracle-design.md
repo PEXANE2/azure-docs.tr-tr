@@ -3,7 +3,7 @@ title: Azure'da bir Oracle veritabanı tasarla ve uygula | Microsoft Dokümanlar
 description: Azure ortamınızda bir Oracle veritabanı tasarlayın ve uygulayın.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: romitgirdhar
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
-ms.author: rogirdh
-ms.openlocfilehash: c2c2d1a9affe13d485bfeef52c781ed259b53bc8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: 41e1720dfeaa98a9d0bc2227c58083ce769b06e0
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70100123"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263412"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure'da bir Oracle veritabanı tasarlama ve uygulama
 
@@ -46,14 +46,14 @@ Aşağıdaki tabloda, şirket içi uygulama ile Oracle veritabanının Azure uyg
 > 
 > |  | **Şirket içi uygulama** | **Azure uygulaması** |
 > | --- | --- | --- |
-> | **Ağ Oluşturma** |LAN/WAN  |SDN (yazılım tanımlı ağ)|
+> | **Ağ** |LAN/WAN  |SDN (yazılım tanımlı ağ)|
 > | **Güvenlik grubu** |IP/bağlantı noktası kısıtlama araçları |[Ağ Güvenlik Grubu (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Esnek -lik** |MTBF (hatalar arasındaki ortalama süre) |MTTR (ortalama iyileşme süresi)|
 > | **Planlı bakım** |Yama/yükseltmeler|[Kullanılabilirlik kümeleri](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (Azure tarafından yönetilen yama/yükseltmeler) |
 > | **Kaynak** |Ayrılmış  |Diğer istemcilerle paylaşılır|
 > | **Bölgeler** |Veri merkezleri |[Bölge çiftleri](https://docs.microsoft.com/azure/virtual-machines/windows/regions#region-pairs)|
 > | **Depolama** |SAN/fiziksel diskler |[Azure tarafından yönetilen depolama](https://azure.microsoft.com/pricing/details/managed-disks/?v=17.23h)|
-> | **Ölçeklendirme** |Dikey ölçek |Yatay ölçeklendirme|
+> | **Ölçek** |Dikey ölçek |Yatay ölçeklendirme|
 
 
 ### <a name="requirements"></a>Gereksinimler

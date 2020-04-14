@@ -2,17 +2,17 @@
 title: Azure CDN için Standart kurallar altyapısındaki koşulları eşleştirin | Microsoft Dokümanlar
 description: Azure İçerik Dağıtım Ağı (Azure CDN) için Standart kurallar altyapısındaki eşleşme koşulları için başvuru belgeleri.
 services: cdn
-author: mdgattuso
+author: asudbring
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: magattus
-ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74900186"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259944"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için Standart kurallar altyapısındaki koşulları eşleştirin
 
@@ -110,7 +110,7 @@ IP Eşleşmesi Değil | IP adresi (boşluk ayrılmış)
 - Birden çok IP adresi ve IP adresi bloğu belirtmek için, değerler arasında tek bir boşluk kullanın:
   - **IPv4 örneği**: *1.2.3.4 10.20.30.40* adresten gelen isteklerle 1.2.3.4 veya 10.20.30.40 ile eşleşir.
   - **IPv6 örneği**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* her iki adresten gelen isteklerle eşleşir 1:2:3:4:5:6:7:8 veya 10:20:30:40:50:60:70:80.
-- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örnek:
+- IP adresi bloğu sözdizimi, bir ileri eğik çizgi ve önek boyutu ardından temel IP adresidir. Örneğin:
   - **IPv4 örneği**: *5.5.5.64/26, 5.5.5.64* ile 5.5.5.127 adreslerinden gelen tüm isteklerle eşleşir.
   - **IPv6 örneği**: *1:2:3:/48* adreslerinden gelen tüm isteklerle eşleşir 1:2:3:0:0:0:0 0 ile 1:2:3:ffff:ffff:ffff:ffff:ffff.ffff.
 

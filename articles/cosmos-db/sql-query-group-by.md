@@ -4,14 +4,14 @@ description: Azure Cosmos DB için GROUP BY yan tümcesi hakkında bilgi edinin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 04/10/2020
 ms.author: tisande
-ms.openlocfilehash: e41e81457421bfe27e3c0313fc06e39e6df4cdce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819099"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261610"
 ---
 # <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'deki GROUP BY yan tümcesi
 
@@ -52,6 +52,12 @@ GROUP BY yan tümcesi, sorgunun sonuçlarını bir veya daha fazla belirtilen ö
 - Diğer ad özellikleri veya diğer adlama sistemi işlevleri (diğer adı SELECT yan tümcesi içinde hala izin verilir)
 - Alt sorgular
 - Toplam sistem işlevleri (bunlara yalnızca SELECT yan tümcesinde izin verilir)
+
+Toplu sistem işlevi ve alt sorgusu `GROUP BY` olan sorgular desteklenmez. Örneğin, aşağıdaki sorgu desteklenmez:
+
+```sql
+SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
+```
 
 ## <a name="examples"></a>Örnekler
 

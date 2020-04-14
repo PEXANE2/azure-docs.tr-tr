@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 245a0b18187ff1c1b226e94b03374f2c071e51c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2812b535c7aef7987db7106bfa6b07e15a1b61c7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76314836"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263395"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Zaman Serisi Öngörüleri'nde gecikme süresini azaltmak için azaltmayı izleyin ve azaltın
 
@@ -30,7 +30,7 @@ Ortamınızı çözümlemek istediğiniz veri miktarı için düzgün bir şekil
 - Ayrılan giriş hızınızı aşabilecek eski verileri içeren bir olay kaynağı ekleyin (Zaman Serisi Öngörüleri'nin yetişmeniz gerekir).
 - Bir ortama daha fazla olay kaynağı ekleyerek ek olaylardan (ortamınızın kapasitesini aşabilir) bir artışa neden olabilir.
 - Büyük miktarda tarihi olayı bir etkinlik kaynağına iterek gecikmeyle sonuçlanır (Zaman Serisi Öngörüleri'nin yetişmesi gerekir).
-- Telemetri ile referans verilerini birleştirerek daha büyük olay boyutuna yol açacak. Azaltma açısından bakıldığında, paket boyutu 32 KB olan bir girişli veri paketi, her biri 1 KB boyutunda 32 olay olarak kabul edilir. İzin verilen maksimum olay boyutu 32 KB'dir; 32 KB'den büyük veri paketleri kesilir.
+- Telemetri ile referans verilerini birleştirerek daha büyük olay boyutuna yol açacak. İzin verilen maksimum paket boyutu 32 KB'dir; 32 KB'den büyük veri paketleri kesilir.
 
 ## <a name="video"></a>Video
 

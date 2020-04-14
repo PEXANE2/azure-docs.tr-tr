@@ -3,7 +3,7 @@ title: PowerShell ile Azure CDN'yi yönetin | Microsoft Dokümanlar
 description: Azure CDN'yi yönetmek için Azure PowerShell cmdlets'i nasıl kullanacağınızı öğrenin.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: fb6f57a5-6e26-4847-8fd9-b51fb05a79eb
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: magattus
-ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: 22602a1ea64e3dbca34d0c366cf6aa0dc6f35662
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74286654"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260556"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell ile Azure CDN'yi yönetme
 PowerShell, Azure CDN profillerinizi ve uç noktalarınızı yönetmek için en esnek yöntemlerden birini sağlar.  PowerShell'i etkileşimli olarak veya yönetim görevlerini otomatikleştirmek için komut dosyaları yazarak kullanabilirsiniz.  Bu öğretici, Azure CDN profillerinizi ve uç noktalarınızı yönetmek için PowerShell ile gerçekleştirebileceğiniz en yaygın görevlerden birkaçını gösterir.

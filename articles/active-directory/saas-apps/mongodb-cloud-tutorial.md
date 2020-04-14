@@ -15,18 +15,18 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7792ab2dc9fe7386accab96b0fb00aa93e6e4196
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d3d33634a8e6c3f7fd311ab70ab04f2839672191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668982"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261151"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Öğretici: MongoDB Cloud ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
 Bu eğitimde, MongoDB Bulutu'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edileceksiniz öğreneceksiniz. MongoDB Cloud'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* MongoDB Bulutu'na erişimi olan Azure AD'de denetim.
+* MongoDB Cloud, MongoDB Atlas, MongoDB Topluluğu, Üniversite ve Destek'e erişimi olan Azure AD'de denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla MongoDB Cloud'da otomatik olarak oturum açabilmelerini etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
@@ -146,11 +146,11 @@ Bu bölümde, B.Simon'ın MongoDB Bulut'a erişim izni vererek Azure tek oturum 
 
 ## <a name="configure-mongodb-cloud-sso"></a>MongoDB Bulut SSO'su yapılandır
 
-**MongoDB Cloud** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'leri Azure portalından [MongoDB Cloud destek ekibine](https://support.mongodb.com/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**MongoDB Cloud** tarafında tek oturum açma yapılandırmak için Azure portalından kopyalanan uygun URL'lere ihtiyacınız olacak ve MongoDB Bulut Kuruluşunuz için Federasyon Uygulamasını yapılandırmanız gerekir. [MongoDB Bulut Dokümanları'ndaki](https://docs.atlas.mongodb.com/security/federated-authentication/index.html)talimatları izleyin. Herhangi bir sorunla karşılaşırsanız, yardım için [MongoDB Cloud destek ekibiyle](https://support.mongodb.com/) iletişime geçebilirsiniz.
 
 ### <a name="create-mongodb-cloud-test-user"></a>MongoDB Bulut test kullanıcıoluşturma
 
-Bu bölümde, Britta Simon adlı bir kullanıcı MongoDB Cloud oluşturulur. MongoDB Cloud, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. MongoDB Cloud'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
+Bu bölümde, MongoDB Cloud'da B.Simon adında bir kullanıcı oluşturulur. MongoDB Cloud, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. MongoDB Cloud'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -165,6 +165,8 @@ Erişim Paneli'ndeki MongoDB Bulut döşemesini tıklattığınızda, SSO'yu kur
 - [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure'da MongoDB Atlas'a kaydolun](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/mongodb.mongodb_atlas_azure_08082019?tab=Overview)
 
 - [Azure AD ile MongoDB Bulutu'nun deneyin](https://aad.portal.azure.com/)
 

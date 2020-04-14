@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: 418be090e7ff78ec0089c115c9884ffeffdda871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284024"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257462"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -84,7 +84,7 @@ Burada tek bir mantık uygulaması çalıştırmak için sınırları şunlardı
 
 | Adı | Sınır | Notlar |
 | ---- | ----- | ----- |
-| Eşpara birimini tetikleme | - Eşzamanlılık denetimi kapatıldığında sınırsız <p><p>- Eşzamanlılık denetimi açık olduğunda varsayılan sınır olan 25,denetimi açtıktan sonra geri alınamaz. Varsayılan değeri 1 ile 50 arasında bir değere değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalıştırılabilen en yüksek mantık uygulaması örneksayısını açıklar. <p><p>**Not**: Eşzamanlılık açık olduğunda, SplitOn sınırı [dizileri ayırmak](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 arasında bir değere dahil olarak değiştirmek [Trigger instances sequentially](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)için [bkz.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) |
+| Eşpara birimini tetikleme | - Eşzamanlılık denetimi kapatıldığında sınırsız <p><p>- Eşzamanlılık denetimi açık olduğunda varsayılan sınır olan 25,eşzamanlılığı etkinleştirdikten sonra geri alamazsınız. Varsayılan değeri 1 ile 50 arasında bir değere değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalıştırılabilen en yüksek mantık uygulaması örneksayısını açıklar. <p><p>**Not**: Eşzamanlılık açık olduğunda, SplitOn sınırı [dizileri ayırmak](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Varsayılan sınırı 1 ile 50 arasında bir değere dahil olarak değiştirmek [Trigger instances sequentially](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)için [bkz.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) |
 | Maksimum bekleme çalıştırmaları | - Eşzamanlılık olmadan, en az bekleme çalıştırma sayısı 1 iken, en büyük sayı 50'dir. <p><p>- Eşzamanlılık ile, en az bekleme çalıştırma sayısı 10 artı eşzamanlı çalıştırma sayısıdır (tetik eşzamanlılık). Maksimum sayıyı 100'e kadar kapsamlı olarak değiştirebilirsiniz. | Bu sınır, mantık uygulamanız zaten en yüksek eşzamanlı örnekleri çalıştırırken çalıştırmak için beklenebilir mantık uygulaması örneklerinin en yüksek sayısını açıklar. <p><p>Varsayılan sınırı değiştirmek için [bkz.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs) |
 | Foreach dizi öğeleri | 100.000 | Bu sınır, "her biri için" bir döngü işleyebilir dizi öğeleri nin en yüksek sayısını açıklar. <p><p>Daha büyük dizileri filtrelemek için [sorgu eylemini](logic-apps-perform-data-operations.md#filter-array-action)kullanabilirsiniz. |
 | Foreach eşzamanlılık | Eşzamanlılık denetimi kapatıldığında varsayılan sınır 20'dir. Varsayılan değeri 1 ile 50 arasında bir değere değiştirebilirsiniz. | Bu sınır, aynı anda veya paralel olarak çalıştırılabilen en yüksek "her" döngü yineleme sayısıdır. <p><p>Varsayılan sınırı 1 ile 50 arasında bir değere dahil olarak değiştirmek için bkz: ["her biri için" eşzamanlılık sınırını değiştir](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) veya ["her biri için" döngüleri sırayla çalıştır.](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each) |
@@ -166,6 +166,8 @@ Bazı bağlayıcı işlemleri eşzamanlı aramalar yapar veya webhook isteklerin
 | İfade değerlendirme limiti | 131.072 karakter | `@concat()`, `@base64()`, `@string()` ifadeler bu sınırdan daha uzun olamaz. |
 | URL karakter sınırı isteyin | 16.384 karakter |
 |||
+
+<a name="retry-policy-limits"></a>
 
 #### <a name="retry-policy"></a>Yeniden deneme ilkesi
 

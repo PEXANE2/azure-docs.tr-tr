@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning tasarımcısında örnek veri kümelerini kullanma
+title: Tasarımcı için örnek veriler
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısına dahil olan örnek veri kümeleri hakkında daha fazla bilgi edinin.
+description: Azure Machine Learning tasarımcısı ile kullanılabilen örnek veri kümeleri hakkında daha fazla bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: sample
 author: likebupt
 ms.author: keli19
 ms.date: 03/03/2020
-ms.openlocfilehash: 943e23aa9d83df33bbe636ce7aee62e6e5a2950e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b19c1ed5aa556a2cfb633ac6fbc0cf9f95d0337f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037299"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81256986"
 ---
-# <a name="use-the-sample-datasets-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında örnek veri kümelerini kullanma (önizleme)
+# <a name="sample-datasets-in-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısında örnek veri kümeleri (önizleme)
 
 Azure Machine Learning tasarımcısında (önizleme) yeni bir ardışık iş parçası oluşturduğunuzda, varsayılan olarak bir dizi örnek veri kümesi dahil edilir. Bu örnek veri kümeleri, tasarımcı ana sayfasındaki örnek ardışık hatlar tarafından kullanılır. 
 
@@ -37,7 +37,7 @@ Azure Machine Learning tasarımcısında (önizleme) yeni bir ardışık iş par
 |Alman Kredi Kartı UCI veri seti|UCI Statlog (Alman Kredi Kartı) veri seti ([Statlog+German+Credit+Data](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))), german.data dosyasını kullanarak.<br/>Veri kümesi, bir dizi öznitelik tarafından açıklanan kişileri düşük veya yüksek kredi riskleri olarak sınıflandırılır. Her örnek bir kişiyi temsil eder. Sayısal ve kategorik 20 özellik ve ikili etiket (kredi risk değeri) vardır. Yüksek kredi riski girişleri etiketi = 2, düşük kredi riski girişleri etiketi = 1 var. Düşük risk örneğini yüksek olarak sınıflandırmanın maliyeti 1'dir, yüksek risk örneğini düşük olarak sınıflandırmanın maliyeti 5'tir.|
 |IMDB Film Başlıkları|Dataset, Twitter tweetlerinde derecelendirilen filmler hakkında bilgi içerir: IMDB film kimliği, film adı, tür ve yapım yılı. Veri setinde 17K film vardır. Veri seti "S. " adlı kağıtta tanıtıldı. Dooms, T. De Pessemier ve L. Martens. MovieTweetings: Twitter'dan Toplanan Bir Film Derecelendirme Dataset. Tavsiye Sistemleri için Crowdsourcing ve İnsan Hesaplama Çalıştayı, RecSys 2013'te CrowdRec."|
 |Film Reytingleri|Dataset, Movie Tweetings veri kümesinin genişletilmiş bir sürümüdür. Dataset, Twitter'daki iyi yapılandırılmış tweetlerden çıkarılan filmler için 170K derecelendirmeye sahiptir. Her örnek bir tweet temsil eder ve bir tuple: kullanıcı kimliği, IMDB film kimliği, derecelendirme, zaman damgası, bu tweet için sık sayısı ve bu tweet retweets sayısı. Dataset, Tavsiye Sistemleri Mücadelesi 2014 için A. Said, S. Dooms, B. Loni ve D. Tikk tarafından kullanıma sunulmuştur.|
-|Hava Durumu Dataset|NOAA'dan saatlik kara tabanlı hava gözlemleri[(201304 ile 201310 verileri birleştirilmiştir).](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)<br/>Hava durumu verileri, Nisan-Ekim 2013 dönemini kapsayan havaalanı hava istasyonlarından yapılan gözlemleri kapsamaktadır. Tasarımcıya yüklemeden önce, veri kümesi aşağıdaki gibi işlenmiştir:    <br/> - Hava istasyonu işleri ilgili hava alanı işleri işlemişti    <br/> - En işlek 70 havaalanıyla ilişkili olmayan hava istasyonları filtrelendi    <br/> - Tarih sütunu ayrı Yıl, Ay ve Gün sütunlarına bölündü    <br/> - Aşağıdaki sütunlar seçildi: AirportID, Yıl, Ay, Gün, Saat Zone, SkyCondition, Görünürlük, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsiucelsius, DewPointFarenheit, DewPointFarenheit, DewPointCelsius, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
+|Hava Durumu Dataset|NOAA'dan saatlik kara tabanlı hava gözlemleri[(201304 ile 201310 verileri birleştirilmiştir).](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)<br/>Hava durumu verileri, Nisan-Ekim 2013 dönemini kapsayan havaalanı hava istasyonlarından yapılan gözlemleri kapsamaktadır. Tasarımcıya yüklemeden önce, veri kümesi aşağıdaki gibi işlenmiştir:    <br/> - Hava istasyonu işleri ilgili hava alanı işleri işlemişti    <br/> - En işlek 70 havaalanıyla ilişkili olmayan hava istasyonları filtrelendi    <br/> - Tarih sütunu ayrı Yıl, Ay ve Gün sütunlarına bölündü    <br/> - Aşağıdaki sütunlar seçildi: AirportID, Yıl, Ay, Gün, Saat, TimeZone, SkyCondition, Görünürlük, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointFarenheit, RelativeHumidity, WindSpeed, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, Altimeter|
 |Vikipedi SP 500 Veri Seti|Veriler Wikipedia'danhttps://www.wikipedia.org/) türetilmiştir ( her S&P 500 şirketinin makaleleri temel alınca, XML verileri olarak depolanır.    <br/>Tasarımcıya yüklemeden önce, veri kümesi aşağıdaki gibi işlenmiştir:    <br/> - Her şirket için metin içeriğini ayıklama    <br/> - Wiki biçimlendirmeyi kaldırma    <br/> - Alfanümerik olmayan karakterleri kaldırın    <br/> - Tüm metni küçük harfe dönüştürün    <br/> - Bilinen şirket kategorileri eklendi    <br/>Bazı şirketler için bir makalebulunamadı, bu nedenle kayıt sayısının 500'den az olduğunu unutmayın.|
 
 ## <a name="next-steps"></a>Sonraki adımlar

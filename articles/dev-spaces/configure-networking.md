@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Azure Kubernetes Hizmetlerinde Azure Dev Alanları çalıştırmak için ağ gereksinimlerini açıklar
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, CNI, kubenet, SDN, ağ
-ms.openlocfilehash: 82d046aa36fe9caf6337aa7f58ca0db525062283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e344576caf276ae7cb5fe00395c84810a4e7d32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240565"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262052"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Azure Dev Alanları için ağ geliştirmeyi farklı ağ topolojilerinde yapılandırın
 
@@ -20,9 +20,9 @@ Azure Geliştirme Alanları, varsayılan ağ yapılandırmasıyla Azure Kubernet
 
 ## <a name="virtual-network-or-subnet-configurations"></a>Sanal ağ veya alt ağ yapılandırmaları
 
-AKS kümenizde, AKS kümeniziçin girişi veya çıkış trafiğini kısıtlamak için farklı bir sanal ağ veya alt ağ yapılandırması olabilir. Örneğin, kümeniz Azure Güvenlik Duvarı gibi bir güvenlik duvarının arkasında olabilir veya ağ trafiğini kısıtlamak için Ağ Güvenlik Grupları veya özel roller kullanabilirsiniz.
+AKS kümenizde, AKS kümeniziçin girişi veya çıkış trafiğini kısıtlamak için farklı bir sanal ağ veya alt ağ yapılandırması olabilir. Örneğin, kümeniz Azure Güvenlik Duvarı gibi bir güvenlik duvarının arkasında olabilir veya ağ trafiğini kısıtlamak için Ağ Güvenlik Grupları veya özel roller kullanabilirsiniz. [GitHub'daki Azure Dev Spaces örnek deposunda][sample-repo]örnek bir ağ yapılandırması bulabilirsiniz.
 
-Azure Dev Spaces'in *Giriş ve Çıkış* ağ trafiği nin yanı sıra Yalnızca *Giriş* trafiği için belirli gereksinimleri vardır. AKS kümenizin trafiğini kısıtlayan sanal ağ veya alt ağ yapılandırması olan bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces'in düzgün bir şekilde çalışır.
+Azure Dev Spaces'in *Giriş ve Çıkış* ağ trafiği nin yanı sıra Yalnızca *Giriş* trafiği için belirli gereksinimleri vardır. AKS kümenizin trafiğini kısıtlayan sanal ağ veya alt ağ yapılandırmasına sahip bir AKS kümesinde Azure Dev Spaces kullanıyorsanız, Azure Dev Spaces'in düzgün çalışması için yalnızca aşağıdaki giriş ve giriş ve çıkış trafiğini izlemeniz gerekir.
 
 ### <a name="ingress-and-egress-network-traffic-requirements"></a>Giriş ve çıkış ağ trafik gereksinimleri
 
@@ -73,7 +73,7 @@ Azure Dev Spaces, AKS'de çalışan hizmetleriniz için uç noktaları ortaya ç
 * *Özel* bir bitiş noktası, özel IP adresine sahip bir giriş denetleyicisi dağıtLar. Özel bir IP adresiyle, kümenizin yük dengeleyicisi yalnızca kümenin sanal ağının içinden erişilebilir. Yük dengeleyicisinin özel IP adresi kümenin DNS'sinde kaydedilir, böylece kümenin sanal ağındaki hizmetlere URL kullanılarak erişilebilir. Bu URL'yi `azds list-uris`.
 * Bitiş noktası seçeneği için *hiçbirinin* ayarlanması, hiçbir giriş denetleyicisinin dağıtılmasına neden olur. Giriş denetleyicisi dağıtılmadan, [Azure Dev Spaces yönlendirme özellikleri][dev-spaces-routing] çalışmaz. İsteğe bağlı olarak, yönlendirme yeteneklerinin yeniden çalışmasını sağlayacak [traefik][traefik-ingress] veya [NGINX][nginx-ingress]kullanarak kendi giriş denetleyici çözümünüzü uygulayabilirsiniz.
 
-Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Alanları'nı etkinleştirirken *-e* veya *uç nokta* kullanın. Örnek:
+Uç nokta seçeneğinizi yapılandırmak için, kümenizde Azure Dev Alanları'nı etkinleştirirken *-e* veya *uç nokta* kullanın. Örneğin:
 
 > [!NOTE]
 > Bitiş noktası seçeneği, Azure CLI sürüm 2.2.0 veya sonraki sürümlerini çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
@@ -109,4 +109,5 @@ Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygul
 [endpoint-options]: #using-different-endpoint-options
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md
+[sample-repo]: https://github.com/Azure/dev-spaces/tree/master/advanced%20networking
 [team-quickstart]: quickstart-team-development.md

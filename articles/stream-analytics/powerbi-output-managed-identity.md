@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/10/2020
-ms.openlocfilehash: 8a7dfd7c690d79d8430f7c33a25b38949dbd06c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31a5195038ef25acadc08e2acbedf8471b25833c
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086334"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261423"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Azure Akış Analizi işinizi Power BI için doğrulamak için Yönetilen Kimliği kullanın
 
@@ -160,7 +160,7 @@ Akış Analizi işi oluşturulduğuna göre, bir Power BI çalışma alanına er
 ### <a name="use-the-power-bi-ui"></a>Power BI UI'ı kullanma
 
    > [!Note]
-   > UI'yi kullanarak Stream Analytics işini Power BI çalışma alanınıza eklemek için, Power BI yönetici portalındaki **Geliştirici ayarlarında** hizmet temel erişimini de etkinleştirmeniz gerekir. Bkz. Daha fazla bilgi için [bir hizmet müdürüyle başlayın.](https://docs.microsoft.com/power-bi/developer/embed-service-principal#get-started-with-a-service-principal)
+   > UI'yi kullanarak Stream Analytics işini Power BI çalışma alanınıza eklemek için, Power BI yönetici portalındaki **Geliştirici ayarlarında** hizmet temel erişimini de etkinleştirmeniz gerekir. Bkz. Daha fazla bilgi için [bir hizmet müdürüyle başlayın.](https://docs.microsoft.com/power-bi/developer/embed-service-principal)
 
 1. Çalışma alanının erişim ayarlarına gidin. Daha fazla ayrıntı için bu makaleye bakın: [Çalışma alanınıza erişim verin.](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces#give-access-to-your-workspace)
 

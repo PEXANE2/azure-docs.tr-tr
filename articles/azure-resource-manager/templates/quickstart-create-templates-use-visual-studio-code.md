@@ -2,15 +2,15 @@
 title: Şablon oluşturma - Visual Studio Code
 description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
 author: mumian
-ms.date: 03/04/2019
+ms.date: 04/13/2020
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a0c80f18e9cd09b765804aaddbd178b4b3e32a9d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984461"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255099"
 ---
 # <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Quickstart: Visual Studio Code kullanarak ARM şablonları oluşturma
 
@@ -18,7 +18,7 @@ Azure Kaynak Yöneticisi (ARM) şablonları oluşturmak ve bunları yeniden olu�
 
 Bu hızlı başlatmada, bir depolama hesabı dağıtın:
 
-![kaynak yöneticisi şablonu quickstart visual studio kod diyagramı](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+![Kaynak Yöneticisi şablonu hızlı başlat görsel stüdyo kodu diyagramı](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
@@ -86,21 +86,19 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Şablonları dağıtmak için birçok yöntem vardır. Azure Bulut kabuğu bu hızlı başlatmada kullanılır. Bulut kabuğu hem Azure CLI'yi hem de Azure PowerShell'i destekler. CLI ve PowerShell arasında seçim yapmak için sekme seçiciyi kullanın.
+Şablonları dağıtmak için birçok yöntem vardır. Azure Cloud Shell bu hızlı başlatmada kullanılır. Bulut Kabuğu hem Azure CLI'yi hem de Azure PowerShell'i destekler. CLI ve PowerShell arasında seçim yapmak için sekme seçiciyi kullanın.
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-1. [Azure Bulutu kabuğunda](https://shell.azure.com) oturum açın
+1. Azure Bulut [Kabuğunda](https://shell.azure.com) Oturum Aç
 
 2. Sol üst köşedeki **PowerShell** veya **Bash**(CLI) seçeneğini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
-    ![Azure portal Cloud shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+    ![Azure portalı Cloud Shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure portalı Bulut kabuğu PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
+    ![Azure portalı Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
 
     ---
 
@@ -108,11 +106,11 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
-    ![Azure portal Cloud shell dosya karşıya yükleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+    ![Azure portalı Cloud Shell yükleme dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure portal Cloud shell dosya karşıya yükleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    ![Azure portalı Cloud Shell yükleme dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
 
     ---
 
@@ -122,14 +120,14 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
-    ![Azure portal Cloud Shell dosya listeleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+    ![Azure portalı Cloud Shell liste dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure portal Cloud Shell dosya listeleme](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    ![Azure portalı Cloud Shell liste dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
 
     ---
-4. Cloud Shell’den aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin.
+4. Bulut Kabuğu'ndan aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin. Kaynak grubu adı oluşturmak için kullanılan bir proje adı sağlayın.  Kaynak grubu adı **rg** eklenen proje adıdır.
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -140,7 +138,8 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
     read location &&
     resourceGroupName="${projectName}rg" &&
     az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -152,6 +151,7 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
 
     New-AzResourceGroup -Name $resourceGroupName -Location "$location"
     New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -162,11 +162,11 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
-    ![Azure portal Cloud Shell şablon dağıtımı](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+    ![Azure portalı Cloud Shell dağıtma şablonu](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    ![Azure portal Cloud Shell şablon dağıtımı](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    ![Azure portalı Cloud Shell dağıtma şablonu](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
 
     ---
 
@@ -181,7 +181,8 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
     read resourceGroupName &&
     echo "Enter the Storage Account name:" &&
     read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
+    echo "Press [ENTER] to continue ..."
     ```
 
     # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
@@ -190,6 +191,7 @@ Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` de
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
     Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     ---
@@ -202,12 +204,12 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 1. Azure portalından sol menüden **Kaynak grubunu** seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
-3. Kaynak grubu adını seçin.  Kaynak grubundaki toplam altı kaynak görüyor olmalısınız.
+3. Kaynak grubu adını seçin. Kaynak grubu adı **rg** eklenen proje adıdır. Kaynak grubunda bir depolama hesabı kaynağı görürsünüz.
 4. Üst menüden **kaynak grubunu sil'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıcın ana odak noktası, Visual Studio Code kullanarak Azure Hızlı Başlangıç şablonlarındaki mevcut bir şablon düzenlemektir. Ayrıca, Azure Bulutu kabuğundan CLI veya PowerShell'i kullanarak şablonu nasıl dağıtabileceğinizi de öğrendiniz. Azure Hızlı Başlangıç şablonlarındaki şablonlar size ihtiyacınız olan her şeyi sağlamayabilir. Şablon geliştirme hakkında daha fazla bilgi edinmek için yeni başlangıç eğitimi serimize bakın:
+Bu hızlı başlangıcın ana odak noktası, Visual Studio Code kullanarak Azure Hızlı Başlangıç şablonlarındaki mevcut bir şablon düzenlemektir. Ayrıca, Azure Bulut Shell'den CLI veya PowerShell'i kullanarak şablonu nasıl dağıtabileceğinizi de öğrendiniz. Azure Hızlı Başlangıç şablonlarındaki şablonlar size ihtiyacınız olan her şeyi sağlamayabilir. Şablon geliştirme hakkında daha fazla bilgi edinmek için yeni başlangıç eğitimi serimize bakın:
 
 > [!div class="nextstepaction"]
 > [Başlangıç öğretileri](./template-tutorial-create-first-template.md)

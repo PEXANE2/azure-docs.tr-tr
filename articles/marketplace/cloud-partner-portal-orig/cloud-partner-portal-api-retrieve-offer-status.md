@@ -5,24 +5,25 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 09/13/2018
+ms.date: 04/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 2f5211716145d6c05bbfb0132c4a6ba2f9cceabe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280516"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255931"
 ---
-<a name="retrieve-offer-status"></a>Teklif durumunu alma 
-=====================
+# <a name="retrieve-offer-status"></a>Teklif durumunu alma
+
+> [!NOTE]
+> Bulut İş Ortağı Portalı API'leri İş Ortağı Merkezi ile entegre edilmiştir ve teklifleriniz İş Ortağı Merkezi'ne geçtikten sonra çalışmaya devam edecektir. Entegrasyon küçük değişiklikler sunar. Kodunuzu İş Ortağı Merkezi'ne geçişten sonra çalışmaya devam etmesini sağlamak için [Bulut İş Ortağı Portalı API Başvurusu'nda](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview) listelenen değişiklikleri gözden geçirin.
 
 Teklifin geçerli durumunu alır.
 
   `GET  https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>/status?api-version=2017-10-31`
 
-<a name="uri-parameters"></a>URI parametreleri
---------------
+## <a name="uri-parameters"></a>URI parametreleri
 
 |  **Adı**       |   **Açıklama**                            |  **Veri türü** |
 |  -------------  |  ------------------------------------------  |  ------------  |
@@ -32,8 +33,8 @@ Teklifin geçerli durumunu alır.
 |  |  |
 
 
-<a name="header"></a>Üst bilgi
-------
+## <a name="header"></a>Üst bilgi
+
 
 |  Adı           |  Değer               |
 |  -------------  | -------------------  |
@@ -41,9 +42,8 @@ Teklifin geçerli durumunu alır.
 |  Yetkilendirme  | `Bearer YOUR_TOKEN`  |
 |  |  |
 
+## <a name="body-example"></a>Gövde örneği
 
-<a name="body-example"></a>Gövde örneği
-------------
 
 ### <a name="response"></a>Yanıt
 
@@ -115,8 +115,7 @@ Teklifin geçerli durumunu alır.
       ],
       "previewLinks": [],
       liveLinks": [],
-      "notificationEmails": "jdoe@contoso.com"
-  } 
+  }
 ```
 
 
@@ -136,9 +135,8 @@ Teklifin geçerli durumunu alır.
 |  işlemYüzdesi    | Adımın yüzde tamamlanması                                                              |
 |  önizlemeLinkler         | *Şu anda uygulanmıyor*                                                                    |
 |  liveLinks            | *Şu anda uygulanmıyor*                                                                    |
-|  bildirimE-postalar   | İşlemin ilerlemesi hakkında bilgilendirilecek e-posta adreslerinin virgülle ayrılmış listesi        |
+|  bildirimE-postalar   | Ortak Merkezi'ne geçirilen teklifler için amortismana uğradı. Geçirilen tekliflere ait bildirim e-postaları Hesap ayarlarındaki Satıcı iletişim bilgileri altında belirtilen e-postaya gönderilir.<br><br>Geçirilmeyen teklifler için, işlemin ilerlemesi hakkında bilgilendirilecek e-posta adreslerinin virgülden ayrılmış listesi        |
 |  |  |
-
 
 ### <a name="response-status-codes"></a>Yanıt durum kodları
 
@@ -148,7 +146,6 @@ Teklifin geçerli durumunu alır.
 |  400     | `Bad/Malformed request`- Hata yanıt gövdesi daha fazla bilgi içerebilir.                 |
 |  404     | `Not found`- Belirtilen varlık yok.                                                |
 |  |  |
-
 
 ### <a name="offer-status"></a>Teklif durumu
 
@@ -162,7 +159,6 @@ Teklifin geçerli durumunu alır.
 |  İptal edildi                    | Teklif sunumu iptal edildi.                           |
 |  Başarısız                      | Teklif gönderme başarısız oldu.                                 |
 |  |  |
-
 
 ### <a name="step-status"></a>Adım Durumu
 

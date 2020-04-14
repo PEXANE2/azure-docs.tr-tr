@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 03/19/2020
+ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 927696d029bf1b8742dc0001e03799322f368191
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546918"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261729"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -99,10 +99,8 @@ Windows Sanal Masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağ
 |catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
 |kms.core.windows.net|1688|Windows etkinleştirme|Internet|
 
-
-
 >[!IMPORTANT]
->Bu URL'lerin açılması, güvenilir bir Windows Sanal Masaüstü dağıtımı için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca Windows Sanal Masaüstü sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetler için URL içermez.
+>Hizmet sorunlarını önlemek için çoğu durumda URL yerine servis etiketlerini kullanmanızı öneririz. Bu URL'lerin engelini kaldırmak, güvenilir bir Windows Sanal Masaüstü dağıtımı için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca Windows Sanal Masaüstü sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetler için URL içermez.
 
 Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL'ler listelenemeniz gerekir:
 
@@ -142,7 +140,7 @@ Aşağıdaki Uzak Masaüstü istemcileri Windows Sanal Masaüstü'nü destekler:
 
 * [Windows Masaüstü](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
-* [Macos](connect-macos.md)
+* [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
 * [Android (Önizleme)](connect-android.md)
 

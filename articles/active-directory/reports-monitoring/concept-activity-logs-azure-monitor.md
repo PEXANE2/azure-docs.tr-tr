@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 595c87d2b8182c9044baeb2662e34871d9e52c52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991254"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261032"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Denetimi'nde Azure REKLAM etkinliği günlükleri
 
@@ -98,12 +98,13 @@ Olaylar yaklaşık beş dakikalık aralıklarla toplanır ve bu zaman aralığı
 
 Örneğin 100.000’den fazla kullanıcısı olan büyük bir kiracıda saniyede yaklaşık 18 olay oluşur ve bu da beş dakikada bir 5400 olay yapar. Denetim günlükleri olay başına 2 KB boyutunda olduğundan toplam veri boyutu 10,8 MB olur. Bu nedenle bu beş dakikalık süre için 43 ileti gönderilir. 
 
-Aşağıdaki tabloda Batı ABD bölgesinde yer alan temel bir olay hub'ı için olay verileri hacmine göre yaklaşık aylık maliyet hesabı gösterilmiştir. Uygulamanızın veri hacmine göre daha doğru bir yaklaşık değer hesaplamak için [Olay hub'ı fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/details/event-hubs/) kullanın.
+Aşağıdaki tablo, kullanıcı oturum açma davranışı gibi birçok faktöre göre kiracıdan kiracıya değişebilen olay verilerinin hacmine bağlı olarak, Batı ABD'deki temel bir etkinlik merkezi için aylık tahmini maliyetleri içerir. Uygulamanız için beklediğiniz veri hacminin doğru bir tahminini hesaplamak için [Olay Hub'ları fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/details/event-hubs/)kullanın.
 
 | Günlük kategorisi | Kullanıcı sayısı | Saniye başına olay sayısı | Beş dakikalık aralık başına olay sayısı | Aralık başına boyut | Aralık başına ileti sayısı | Aylık ileti sayısı | Aylık maliyet (tahmini) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | Denetim | 100.000 | 18 | 5400 | 10,8 MB | 43 | 371.520 | $10,83 |
 | Denetim | 1000 | 0.1 | 52 | 104 KB | 1 | 8640 | $10,80 |
+| Oturum açma işlemleri | 100.000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | 23.9 dolar |  
 | Oturum açma işlemleri | 1000 | 178 | 53.400 | 106,8&nbsp;MB | 418 | 3.611.520 | $11,06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure Monitörü maliyet hususlarını kaydeder

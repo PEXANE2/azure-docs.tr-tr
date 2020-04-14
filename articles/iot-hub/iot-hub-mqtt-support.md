@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 2b200692610302bb135982e5419dcda36d5cfe60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ccfaa57b8e8fdea325bed908ffe8815b09d0d15
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271167"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257802"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT protokolünü kullanarak IoT hub'ınızla iletişim kurun
 
@@ -118,7 +118,7 @@ Bir aygıt Aygıtı SDK'ları kullanamıyorsa, bağlantı noktası 8883'teki MQT
 
   SAS belirteçlerinin nasıl üretilenhakkında daha fazla bilgi [için, IoT Hub güvenlik belirteçlerini kullanmanın](iot-hub-devguide-security.md#use-sas-tokens-in-a-device-app)aygıt bölümüne bakın.
 
-  Test ederken, görsel stüdyo kodu için çapraz platform [Azure IoT Araçlarını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya Kendi kodunuza kopyalayıp yapıştırabileceğiniz bir SAS belirteci oluşturmak için [Aygıt Gezgini](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer) aracını da kullanabilirsiniz:
+  Test ederken, görsel stüdyo kodu için çapraz platform [Azure IoT Araçlarını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya kendi kodunuza kopyalayıp yapıştırabileceğiniz bir SAS belirteci oluşturmak için CLI uzantı komutu [az iot hub'ı](/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-generate-sas-token) da kullanabilirsiniz:
 
 ### <a name="for-azure-iot-tools"></a>Azure IoT Araçları için
 
@@ -129,16 +129,6 @@ Bir aygıt Aygıtı SDK'ları kullanamıyorsa, bağlantı noktası 8883'teki MQT
 3. **Son kullanma tarihini** ayarlayın ve 'Enter' tuşuna basın.
   
 4. SAS belirteci oluşturulur ve panoya kopyalanır.
-
-### <a name="for-device-explorer"></a>Aygıt Gezgini için
-
-1. **Aygıt Gezgini'nde** **Yönetim** sekmesine gidin.
-
-2. **SAS Belirteci'ni** tıklatın (sağ üstte).
-
-3. **SASTokenForm'da** **DeviceID** açılır durumda cihazınızı seçin. **TTL'nizi**ayarlayın.
-
-4. Belirtecinizi oluşturmak için **Oluştur'u** tıklatın.
 
    Oluşturulan SAS belirteci aşağıdaki yapıya sahiptir:
 
@@ -286,7 +276,7 @@ client.connect(iot_hub_name+".azure-devices.net", port=8883)
 
 ## <a name="sending-device-to-cloud-messages"></a>Aygıttan buluta iletigönderme
 
-Başarılı bir bağlantı yaptıktan sonra, bir aygıt IoT `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` Hub'a **Konu Adı**kullanarak veya olarak ileti gönderebilir. Öğe, `{property_bag}` aygıtın url kodlanmış biçimde ek özelliklere sahip iletiler göndermesini sağlar. Örnek:
+Başarılı bir bağlantı yaptıktan sonra, bir aygıt IoT `devices/{device_id}/messages/events/` `devices/{device_id}/messages/events/{property_bag}` Hub'a **Konu Adı**kullanarak veya olarak ileti gönderebilir. Öğe, `{property_bag}` aygıtın url kodlanmış biçimde ek özelliklere sahip iletiler göndermesini sağlar. Örneğin:
 
 ```text
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -359,7 +349,7 @@ Aşağıdaki sıra, aygıtın IoT Hub'daki aygıt ikizinde bildirilen özellikle
 
 3. Hizmet daha sonra, konuyla ilgili `$iothub/twin/res/{status}/?$rid={request id}`olarak bildirilen özellikler koleksiyonu için yeni ETag değerini içeren bir yanıt iletisi gönderir. Bu yanıt iletisi, istekle aynı **istek kimliğini** kullanır.
 
-İstek iletisi gövdesi, bildirilen özellikler için yeni değerler içeren bir JSON belgesi içerir. JSON belgedeki her üye güncellenir veya aygıt ikizinin belgesine ilgili üyeyi ekler. Üye, `null`üyeyi içeren nesneden siler. Örnek:
+İstek iletisi gövdesi, bildirilen özellikler için yeni değerler içeren bir JSON belgesi içerir. JSON belgedeki her üye güncellenir veya aygıt ikizinin belgesine ilgili üyeyi ekler. Üye, `null`üyeyi içeren nesneden siler. Örneğin:
 
 ```json
 {
@@ -397,7 +387,7 @@ Daha fazla bilgi için [Device ikizleri geliştirici kılavuzuna](iot-hub-devgui
 
 ## <a name="receiving-desired-properties-update-notifications"></a>İstenilen özellikleri güncelleme bildirimlerini alma
 
-Bir aygıt bağlandığında, IoT Hub, çözüm `$iothub/twin/PATCH/properties/desired/?$version={new version}`arka uç tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirimler gönderir. Örnek:
+Bir aygıt bağlandığında, IoT Hub, çözüm `$iothub/twin/PATCH/properties/desired/?$version={new version}`arka uç tarafından gerçekleştirilen güncelleştirmenin içeriğini içeren konuya bildirimler gönderir. Örneğin:
 
 ```json
 {

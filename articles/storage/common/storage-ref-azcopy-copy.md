@@ -4,16 +4,16 @@ description: Bu makalede, azcopy copy komutu için referans bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 431372b930269c3dfa6bdc6e8b2fe4d291a8162e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78933795"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81253348"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -169,6 +169,8 @@ Kova adına joker karakter simgesi (*) kullanarak bir kova alt kümesini kopyala
 
 ## <a name="options"></a>Seçenekler
 
+**--yedekleme**                               Yüklemeler için Windows'un SeBackupPrivilege'ını veya indirmeler için SeRestorePrivilege'ı etkinleştirerek, AzCopy'nin dosya sistemi izinlerinden bağımsız olarak tüm dosyaları okumasını görmesine ve tüm izinleri geri yüklemesine olanak sağlar. AzCopy çalıştıran hesabın zaten bu izinlere sahip olması (örn. yönetici haklarına sahip veya 'Yedek Operatörler' grubunun bir üyesidir). Bu bayrağın yaptığı tek şey, hesabın zaten sahip olduğu ayrıcalıkları etkinleştirmektir.
+
 **--blob tipi** dize Hedefteki blob türünü tanımlar. Bu, blob'ları yüklemek ve hesaplar arasında kopyalama yaparken kullanılır (varsayılan 'Algılama'). Geçerli değerler 'Algıla', 'BlockBlob', 'PageBlob', ve 'AppendBlob'u içerir. Hesaplar arasında kopyalama yaparken, 'Algıla' değeri AzCopy'nin hedef blob türünü belirlemek için kaynak blob türünü kullanmasına neden olur. Bir dosya yüklerken, 'Algıla' dosyanın dosya uzantısına dayalı bir VHD veya VHDX dosyası olup olmadığını belirler. Dosya bir VHD veya VHDX dosyasıe eter sayılsa, AzCopy dosyayı bir sayfa blob'u olarak ele alar. (varsayılan "Algılama")
 
 **--block-blob-tier** string Upload blok blobs doğrudan seçtiğiniz [erişim katmanına.](../blobs/storage-blob-storage-tiers.md) (varsayılan 'Yok'). Geçerli değerler 'Yok', 'Sıcak', 'Cool' ve 'Arşiv' içerir. 'Yok' veya hiçbir katman geçirilirse, blob depolama hesabının katmanını devralır.
@@ -222,6 +224,12 @@ Kova adına joker karakter simgesi (*) kullanarak bir kova alt kümesini kopyala
 **--sayfa-blob katmanlı** string Bu blob katmanını kullanarak Azure Depolama'ya sayfa yükleme sayfası blob. (varsayılan "Yok")
 
 **--koruma-son-değiştirilmiş-zaman**          Yalnızca hedef dosya sistemi olduğunda kullanılabilir.
+
+**--koruma-smb-izinleri** dizesi False varsayılan olarak. Farkında kaynaklar (Windows ve Azure Dosyaları) arasında Kobİ AÇ'ları korur. İndirmeler için, yeni SahibiazCopy çalıştıran kullanıcı olmayacak izinleri geri yüklemek için `--backup` de bayrağı kullanmanız gerekir. Bu bayrak, yalnızca dosya filtresi belirtilmediği sürece (örn. `include-pattern`hem dosyalar hem de klasörler için geçerlidir).
+
+**--varsayılan olarak false-smb-info dizekoruyun.** Kobİ'lere duyarlı kaynaklar (Windows ve Azure Dosyaları) arasındaki Kobİ özellik bilgilerini (son yazma süresi, oluşturma süresi, öznitelik bitleri) korur. Yalnızca Azure Dosyaları tarafından desteklenen öznitelik bitleri aktarılır; diğerleri göz ardı edilecektir. Bu bayrak, yalnızca dosya filtresi belirtilmediği sürece (örn. dahil deseni) hem dosyalar hem de klasörler için geçerlidir. Klasörler için aktarılan bilgiler, klasörler için hiçbir zaman korunamayan Son Yazma Süresi dışında dosyalar için olanbilgilerle aynıdır.
+
+**--koruma-sahibi**                       Yalnızca veri indirirken ve yalnızca `--preserve-smb-permissions` kullanıldığında bir etkisi vardır. Doğruysa (varsayılan), Dosya Sahibi ve Grubu karşıdan yüklemelerde korunur. Bu bayrak yanlış olarak `--preserve-smb-permissions` ayarlanırsa, yine de ALA'ları korur, ancak Sahibi ve Grubu AzCopy çalıştıran kullanıcıya dayalı olacaktır.
 
 **--put-md5**                             Her dosyanın bir MD5 karma sını oluşturun ve karmayı hedef blob veya dosyanın İçerik-MD5 özelliği olarak kaydedin. (Varsayılan olarak karma oluşturulmadı.) Yalnızca yükleme yaparken kullanılabilir.
 

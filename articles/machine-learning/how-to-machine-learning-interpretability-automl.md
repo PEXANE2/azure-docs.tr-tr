@@ -1,5 +1,5 @@
 ---
-title: Otomatik makine öğrenmesinde model birlikte çalışabilirliği
+title: Otomatik makine öğreniminde explanability
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK'yı kullanırken otomatik ML modelinizin özelliğin önemini nasıl belirlediği ve öngörülerde nasıl öngörüde bulunabildiğini öğrenin.
 services: machine-learning
@@ -8,20 +8,19 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
-ms.reviewer: trbye
 ms.date: 03/11/2020
-ms.openlocfilehash: e2465a2df3fab736c8f118911da14ef23c8aec86
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: ecf7cde1a7f804ef1c43b21ac5c1d2a488660590
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437291"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257173"
 ---
-# <a name="model-interpretability-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde model birlikte çalışabilirliği
+# <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Yorumlanabilirlik: otomatik makine öğreniminde model açıklamaları
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu makalede, Azure Machine Learning'de otomatik makine öğrenimi (ML) için yorumlanabilirlik özelliklerini nasıl etkinleştirdiğinizi öğreneceksiniz. Otomatik ML, tasarlanmış özelliğin önemini anlamanıza yardımcı olur. 
+Bu makalede, Azure Machine Learning'de otomatik makine öğrenimi (ML) için nasıl açıklama alacağınızı öğreneceksiniz. Otomatik ML, tasarlanmış özelliğin önemini anlamanıza yardımcı olur. 
 
 Varsayılan olarak 1.0.85'ten `model_explainability=True` sonra tüm SDK sürümleri. SDK sürüm 1.0.85 ve önceki sürümlerde `AutoMLConfig` kullanıcıların model yorumlanabilirliğini kullanabilmek için nesneyi ayarlamaları `model_explainability=True` gerekir. 
 

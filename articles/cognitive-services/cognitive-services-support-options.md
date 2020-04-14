@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637116"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81258447"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Bilişsel Hizmetler desteği ve geri bildirim seçenekleri
 
@@ -59,10 +59,7 @@ Aramanızın içeriği nerede? `{search keywords}` Bu kapsamlı aramaları uygun
 
 Stack Overflow'daki arama kutusuyla ilgili sorununuzu bulamıyorsanız, yeni bir soru gönderin. Stack Overflow geliştirme ile ilgili sorular için tercih edilen kanaldır. Stack Overflow topluluğunun üyeleri ve Microsoft ekip üyeleri, sorunlarınızı çözmenize yardımcı olmak için doğrudan yer almaktadır.
 
- Soruyu formüle ederken aşağıdaki etiketlerden birini kullanın:
-
- - [Microsoft Bilişsel](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
- - [Azure Bilişsel Hizmetler](https://stackoverflow.com/questions/tagged/azure-cognitive-services)
+[Burada](https://go.microsoft.com/fwlink/?linkid=2126464)bir soru gönderin . Sorunuz için uygun etiketi kullanın, bu nedenle soruyu göreceğinizden eminiz.
 
 > [!TIP]
 > Stack Overflow'daki aşağıdaki gönderiler, soru oluşturma ve kaynak kodu ekleme hakkında ipuçları içerir. Bu yönergeleri izleyerek, topluluk üyelerinin sorunuza hızlı bir şekilde değerlendirme ve yanıt verme şanslarını artırabilir:

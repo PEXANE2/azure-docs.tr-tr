@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 249710aa34ff99e7c4755e7df7228d3006f15e31
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 05aed032eeb3a3cd925a718516ba9c8ffb87f65e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668975"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261117"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Öğretici: Nitro Productivity Suite ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -37,7 +37,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek i�
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
 * Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Nitro Productivity Suite tek oturum açma (SSO) aboneliği ni sağladı.
+* Bir Nitro Verimlilik Suite [Enterprise abonelik.](https://www.gonitro.com/pricing)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -78,40 +78,56 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
 1. Azure [portalında,](https://portal.azure.com/) **Nitro Productivity Suite** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
 1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. **SAML İmza Sertifikası** bölümünde:
+
+    a. **Sertifikayı bulun (Base64)** ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
+
+    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
+    
+1. Nitro **Productivity Suite'i Kur** bölümünde:
+
+    a. Giriş URL'sinin yanındaki kopya **simgesine** tıklayın
+    
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
+    
+1. Nitro [Admin portalında,](https://admin.gonitro.com/) **Kurumsal Ayarlar** sayfasında **Tek Oturum Açma** bölümünü bulun ve **Kurulum SAML SSO** düğmesini tıklayın.
+
+    a. **Giriş URL'sini** yukarıdaki adımdan **URL'ye kaydedin.**
+    
+    a. **X509 İmzalama Sertifikası** alanında yukarıdaki önceki adımdan **Sertifikayı (Base64)** yükleyin.
+    
+    a. **Gönder'i** tıklatın
+    
+    a. **Tek Oturum Aç'ı Etkinleştir'i** tıklatın
+
+
+1. **SAML sayfasıyla tek oturum açma'da** [Azure portalına](https://portal.azure.com/)dönün, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
 1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
+    a. Tanımlayıcı **metin** kutusunda, [Nitro Admin portalından](https://admin.gonitro.com/) **SAML Entity ID** alanını kopyalayıp yapıştırın. Aşağıdaki desen olmalıdır:`urn:auth0:gonitro-prod:<ENVIRONMENT>`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
+    b. **Yanıtla URL** metin kutusunda, [Nitro Admin portalından](https://admin.gonitro.com/) **ACS URL** alanını kopyalayıp yapıştırın. Aşağıdaki desen olmalıdır:`https://gonitro-prod.eu.auth0.com/login/callback?connection=<ENVIRONMENT>`
 
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
     Oturum **Açma URL** metin kutusuna URL'yi yazın:`https://sso.gonitro.com/login`
 
-    > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Nitro Productivity Suite Müşteri destek ekibine](https://www.gonitro.com/support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+1. Kaydet’e tıklayın.
 
 1. Nitro Productivity Suite uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, Nitro Productivity Suite uygulaması, aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Buna ek olarak, Nitro Productivity Suite uygulaması, aşağıdaki tabloda gösterildiği gibi, SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler önceden doldurulmuş, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
     | Adı  |  Kaynak Özniteliği|
-    | ---------------| --------------- | --------- |
+    | ---------------| --------------- |
     | çalışanNumarası |  user.objectid |
 
-1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
-    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
-
-1. Nitro **Productivity Suite'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
-
-    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.

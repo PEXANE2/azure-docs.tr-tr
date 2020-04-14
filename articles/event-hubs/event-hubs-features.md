@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 76ab92285cace284c187109ca48c6634777ebbc0
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398309"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261916"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs'ın özellikleri ve terminolojisi
 
@@ -45,7 +45,7 @@ Bir olay hub'ına veri gönderen herhangi bir varlık bir olay üreticisi veya *
 
 Bir etkinliği AMQP 1.0, Kafka 1.0 (ve sonrası) veya HTTPS üzerinden yayınlayabilirsiniz. Olay Hub'ları, .NET istemcilerinden bir olay hub'ına olayları yayımlamak için [istemci kitaplıkları ve sınıfları](event-hubs-dotnet-framework-api-overview.md) sağlar. Diğer çalışma zamanları ve platformlar için [Apache Qpid](https://qpid.apache.org/) gibi herhangi bir AMQP 1.0 istemcisi kullanabilirsiniz. Olayları ayrı ayrı veya toplu olarak yayımlayabilirsiniz. Tek bir yayının (olay veriörneği) tek bir olay veya toplu iş olup olmadığına bakılmaksızın 1 MB sınırı vardır. Bu eşikten daha büyük olayları yayımlama bir hatayla sonuçlanır. Yayımcıların olay hub'ındaki bölümleri bilmemesi ve yalnızca bir *bölüm anahtarı* (sonraki bölümde açıklanmıştır) ya da kimliklerini SAS belirteci üzerinden belirtmeleri en iyi yöntemdir.
 
-AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. Oturum başlatılırken AMQP’nin ağ maliyetleri daha yüksektir, ancak HTTPS her istek için ek SSL yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
+AMQP veya HTTPS kullanma seçimi kullanım senaryosuna bağlıdır. AMQP, taşıma düzeyi güvenliği (TLS) veya SSL/TLS’ye ek olarak kalıcı bir çift yönlü yuva oluşturulmasını gerektirir. AMQP, oturumu niçin başlatmada daha yüksek ağ maliyetlerine sahiptir, ancak HTTPS her istek için ek TLS ek yükü gerektirir. Daha sık yayımcılar için AMQP daha yüksek performans sunar.
 
 ![Event Hubs](./media/event-hubs-features/partition_keys.png)
 

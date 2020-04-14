@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: fc9db23f7733f97ca207e834d4543fbdb1b9db5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e888e0606b7a9bcd9a7a94c28455d705c5f1bec
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275834"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255490"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -22,7 +22,7 @@ Portalda metrik sayımlar sunulduğunda, örneklemedikkate alınarak yeniden nor
 
 * Üç farklı örnekleme türü vardır: uyarlanabilir örnekleme, sabit oranlı örnekleme ve yutma örneklemesi.
 * Uyarlanabilir örnekleme, Uygulama Öngörüleri ASP.NET ve ASP.NET Temel Yazılım Geliştirme Kitleri'nin (SDK) en son sürümlerinde varsayılan olarak etkinleştirilir. Ayrıca [Azure Fonksiyonları](https://docs.microsoft.com/azure/azure-functions/functions-overview)tarafından kullanılır.
-* Sabit oranlı örnekleme, ASP.NET, ASP.NET Core, Java ve Python için Application Insights SDK'larının son sürümlerinde kullanılabilir.
+* Sabit oranlı örnekleme, ASP.NET, ASP.NET Core, Java (hem aracı hem de SDK) ve Python için Application Insights SDK'larının son sürümlerinde kullanılabilir.
 * Yutma örneklemesi Application Insights hizmet bitiş noktasında çalışır. Yalnızca başka bir örnekleme geçerli olmadığında geçerlidir. SDK telemetrinizi örnekalırsa, yutma örneklemesi devre dışı bırakılır.
 * Web uygulamaları için, özel olayları günlüğe kaydederseniz ve bir dizi olayın birlikte tutulduğundan veya atıldığından emin olmanız gerekiyorsa, olayların aynı `OperationId` değere sahip olması gerekir.
 * Analytics sorguları yazarsanız, [örneklemeyi dikkate almalısınız.](../../azure-monitor/log-query/aggregations.md) Özellikle, kayıtları saymak yerine kullanmalısınız. `summarize sum(itemCount)`
@@ -33,7 +33,7 @@ Aşağıdaki tablo, her SDK için kullanılabilir örnekleme türlerini ve uygul
 | Uygulama Öngörüleri SDK | Adaptif örnekleme destekli | Sabit oranlı örnekleme destekli | Yutma örneklemesi desteklendi |
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme etkin değilse |
-| ASP.NET Core | [Evet (varsayılan olarak)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme etkin değilse |
+| ASP.NET Çekirdeği | [Evet (varsayılan olarak)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme etkin değilse |
 | Azure İşlevleri | [Evet (varsayılan olarak)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme etkin değilse |
 | Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme etkin değilse |
 | Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme etkin değilse |
@@ -306,7 +306,29 @@ Metrics Explorer'da, istek ve özel durum sayıları gibi oranlar, örnekleme or
 
 ### <a name="configuring-fixed-rate-sampling-for-java-applications"></a>Java uygulamaları için sabit oranlı örneklemenin yapılandırılması
 
-Varsayılan olarak Java SDK'da örnekleme etkin değildir. Şu anda yalnızca sabit oranlı örneklemeyi destekler. Java SDK'da uyarlanabilir örnekleme desteklenmez.
+Varsayılan olarak Java aracısı ve SDK'da örnekleme etkinleştirilir. Şu anda yalnızca sabit oranlı örneklemeyi destekler. Uyarlanabilir örnekleme Java'da desteklenmez.
+
+#### <a name="configuring-java-agent"></a>Java Aracısı Yapılandırma
+
+1. [Uygulamaları indir-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+
+1. Örneklemeyi etkinleştirmek için `ApplicationInsights.json` dosyanıza aşağıdakileri ekleyin:
+
+```json
+{
+  "instrumentationSettings": {
+    "preview": {
+      "sampling": {
+        "fixedRate": {
+          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
+        }
+      }
+    }
+  }
+}
+```
+
+#### <a name="configuring-java-sdk"></a>Java SDK'nın yapılandırılması
 
 1. Web uygulamanızı en son [Application Insights Java SDK](../../azure-monitor/app/java-get-started.md)ile indirin ve yapılandırın.
 
@@ -534,7 +556,7 @@ Yaklaşık doğruluğu büyük ölçüde yapılandırılan örnekleme yüzdesi b
 
 * SDK örnekleme gerçekleştirmiyorsa, belirli bir birimin üzerindeki herhangi bir telemetri için otomatik olarak yutma örneklemesi oluşabilir. Bu yapılandırma, örneğin SDK veya Java SDK ASP.NET eski bir sürümünü kullanıyorsanız çalışır.
 * Geçerli ASP.NET veya ASP.NET Core SDK'ları (Azure'da veya kendi sunucunuzda barındırılan) kullanıyorsanız, varsayılan olarak uyarlanabilir örnekleme alırsınız, ancak yukarıda açıklandığı gibi sabit oranlı olarak geçiş yapabilirsiniz. Sabit oranlı örnekleme ile tarayıcı SDK, ilgili örneklerle otomatik olarak senkronize olur. 
-* Geçerli Java SDK'sını kullanıyorsanız, sabit `ApplicationInsights.xml` oranlı örneklemeyi açmak için yapılandırabilirsiniz. Örnekleme varsayılan olarak kapatılır. Sabit oranlı örnekleme ile tarayıcı SDK ve sunucu, ilgili örneklerle otomatik olarak senkronize olur.
+* Geçerli Java aracısını kullanıyorsanız, sabit oranlı örneklemeyi açmak `ApplicationInsights.json` için `ApplicationInsights.xml`(Java SDK için, yapılandırmak için) yapılandırabilirsiniz. Örnekleme varsayılan olarak kapatılır. Sabit oranlı örnekleme ile tarayıcı SDK ve sunucu, ilgili örneklerle otomatik olarak senkronize olur.
 
 *Her zaman görmek istediğim bazı nadir olaylar vardır. Örnekleme modüllerini nasıl geçebilirim?*
 

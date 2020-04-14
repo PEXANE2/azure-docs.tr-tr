@@ -5,20 +5,23 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a0131cf94759fc529a52ea33d5392a60c5ef30c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33359883df86091120295b93618a13476e428d2f
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281604"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262761"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS bitiş noktasını kullanarak müşteri adayı yönetimini yapılandırma
 
-Müşteri İlişkileri Yönetimi (CRM) sisteminiz Azure Marketi ve AppSource müşteri adaylarını almak için İş Ortağı Merkezi'nde açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için MS Akışı'nda bir HTTPS bitiş noktası kullanabilirsiniz. HTTPS bitiş noktası yla, bu müşteri adayları e-posta bildirimi olarak gönderilebilir veya MS Flow tarafından desteklenen bir Müşteri İlişkileri Yönetimi (CRM) sistemine yazılabilir. Bu makaledeki yönergeler, Müşteri Adayı Yönetimi > **HTTPS Endpoint URL** alanı için yayın portalına gireceğiniz HTTP POST URL'sini oluşturacak Microsoft Flow'u kullanarak yeni bir akış oluşturmak için temel süreç boyunca size yol açacaktır. Ayrıca, çevrimiçi bulunabilir [Postman](https://www.getpostman.com/downloads/) adlı bir araç yardımıyla akışınızı test edebilirsiniz nasıl talimatlar dahildir.
+>[!Note]
+>Bu talimatlarda kullanılan Power Automate konektörü, Power Automate için ücretli bir abonelik gerektirir. Bu belgedeki talimatları takip etmeden önce lütfen bunu açıklayın.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow'u kullanarak akış oluşturma
+Müşteri İlişkileri Yönetimi (CRM) sisteminiz Azure Marketi ve AppSource müşteri adaylarını almak için İş Ortağı Merkezi'nde açıkça desteklenmiyorsa, bu müşteri adaylarını işlemek için Power Automate'de bir HTTPS bitiş noktası kullanabilirsiniz. HTTPS bitiş noktası yla, bu müşteri adayları e-posta bildirimi olarak gönderilebilir veya Power Automate tarafından desteklenen bir Müşteri İlişkileri Yönetimi (CRM) sistemine yazılabilir. Bu makaledeki talimatlar, Lider Yönetimi > **HTTPS Endpoint URL** alanı için yayın portalına gireceğiniz HTTP POST URL'sini oluşturacağınız Power Automate'i kullanarak yeni bir akış oluşturmak için temel süreçte size yol açacaktır. Ayrıca, çevrimiçi bulunabilir [Postman](https://www.getpostman.com/downloads/) adlı bir araç yardımıyla akışınızı test edebilirsiniz nasıl talimatlar dahildir.
+
+## <a name="create-a-flow-using-power-automate"></a>Power Automate kullanarak akış oluşturma
 
 1. [Akış](https://flow.microsoft.com/) web sayfasını açın. **Oturum Aç'ı**seçin veya zaten bir hesabınız yoksa, ücretsiz Akış hesabı oluşturmak için **ücretsiz Kaydol'u** seçin.
 
@@ -168,7 +171,7 @@ Her şeyin beklendiği gibi, [postman](https://app.getpostman.com/app/download/w
 
    ![Akışımı test edin](./media/commercial-marketplace-lead-management-instructions-https/test-my-flow.png)
 
-4. HTTP POST URL'sini MS Flow'da oluşturduğunuz akıştan istek *URL'sini girin*diyor.
+4. HTTP POST URL'sini Power Automate'de oluşturduğunuz akıştan, istek URL'sini girin yazan akıştan *yapıştırın.*
 
    ![HTTP POST URL'sini yapıştır](./media/commercial-marketplace-lead-management-instructions-https/paste-http-post-url.png)
 
@@ -202,7 +205,10 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
 1. **Teklifiniz** için Teklif kurulum sayfasına gidin.
 2. Müşteri Adayı Yönetimi bölümü altında **Bağlan'ı** seçin.
 3. Bağlantı ayrıntıları açılır penceresinde, **Müşteri Adayı Hedefi** için HTTPS Bitiş **Noktası'nı** seçin ve HTTPS bitiş **noktası URL** alanına daha önceki adımları izleyerek oluşturduğunuz akıştan HTTP POST URL'sine yapıştırın.
-4. **Kaydet'i**seçin. 
+4. **Kişi e-postası** - Şirketinizde yeni bir müşteri adayı geldiğinde e-posta bildirimleri alması gereken kişiler için e-posta sağlayın. Bir semicolon ile ayırarak birden çok e-posta sağlayabilir.
+5. **Tamam'ı**seçin.
+
+Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
 
 >[!Note] 
 >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir.
@@ -213,5 +219,5 @@ Müşteri adayları oluşturulduğunda, Microsoft, yapılandırılan CRM sistemi
 
 ![Bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
 
-![Bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-https/connection-details-1.png)
+![Bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
 

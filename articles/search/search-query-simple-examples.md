@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3a801af7b97954510139a009a6d1344b281cf056
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656416"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261814"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da basit bir sorgu oluşturma
 
 Azure Bilişsel Arama'da, [basit sorgu sözdizimi,](query-simple-syntax.md) tam metin arama sorgularını bir dizin karşısında yürütmek için varsayılan sorgu arasını çağırır. Bu ayrıştırıcı hızlıdır ve tam metin arama, filtrelenmiş ve yönlü arama ve coğrafi arama gibi yaygın senaryoları işler. 
 
-Bu makalede, basit sözdizimini göstermek için örnekler kullanırız.
+Bu makalede, bir Arama `search=` [Belgeleri](https://docs.microsoft.com/rest/api/searchservice/search-documents) işleminin parametresini dolduran basit sözdizimini göstermek için örnekler kullanırız.
 
 Alternatif bir sorgu sözdizimi [Full Lucene,](query-lucene-syntax.md)bulanık ve joker karakter arama gibi daha karmaşık sorgu yapıları destekleyen, işlemek için ek zaman alabilir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler [için](search-query-lucene-examples.md)bkz.
 

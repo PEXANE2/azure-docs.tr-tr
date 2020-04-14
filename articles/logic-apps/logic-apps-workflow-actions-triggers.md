@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 01/19/2020
-ms.openlocfilehash: 18e9c9d330ffb8cc4e284fc649cff0840ec2c82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e14cc00d1bd716b3e4880e585b05447d2e55e2b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270374"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81257445"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps'ta tetikleme ve eylem türleri için Şema başvuru kılavuzu
 
@@ -73,7 +73,7 @@ Her tetikleyici türü, tetikleyicinin davranışını tanımlayan farklı bir a
 
 | Tetikleyici türü | Açıklama | 
 |--------------|-------------| 
-| [**HTTP Kı.,**](#http-trigger) | Herhangi bir bitiş noktasını denetler veya *anketler.* Bu uç nokta, "202" asynchronous deseni kullanarak veya bir dizi döndürerek belirli bir tetikleyici sözleşmeye uygun olmalıdır. | 
+| [**HTTP**](#http-trigger) | Herhangi bir bitiş noktasını denetler veya *anketler.* Bu uç nokta, "202" asynchronous deseni kullanarak veya bir dizi döndürerek belirli bir tetikleyici sözleşmeye uygun olmalıdır. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Mantık uygulamanız için çağrılabilir bir bitiş noktası oluşturur, ancak belirtilen URL'yi kaydolmak veya kaydını iptal etmek için çağırır. |
 | [**Yineleme**](#recurrence-trigger) | Yangınlar tanımlı bir zamanlamaya göre. Bu tetikleyiciyi ateşlemek için gelecekteki bir tarih ve saat ayarlayabilirsiniz. Sıklığa bağlı olarak, iş akışınızı çalıştırmak için saatleri ve günleri de belirtebilirsiniz. | 
 | [**İstek**](#request-trigger)  | Mantık uygulamanız için çağrılabilir bir uç nokta oluşturur ve "manuel" tetikleyici olarak da bilinir. Örneğin, [bkz: ARAMA, tetikleyici veya http uç noktaları ile yuva iş akışları.](../logic-apps/logic-apps-http-endpoint.md) | 
@@ -821,8 +821,8 @@ Sık kullanılan bazı eylem türleri şunlardır:
 | [**Oluşturmak**](#compose-action) | Çeşitli türleri olabilir girişlerden tek bir çıktı oluşturur. | 
 | [**JavaScript Kodunu Çalıştır**](#run-javascript-code) | Belirli ölçütlere uyan JavaScript kod parçacıklarını çalıştırın. Kod gereksinimleri ve daha fazla bilgi için [bkz.](../logic-apps/logic-apps-add-run-inline-code.md) |
 | [**İşlev**](#function-action) | Azure İşi çağırır. | 
-| [**HTTP Kı.,**](#http-action) | HTTP bitiş noktasını çağırır. | 
-| [**Birleştir**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirtilen bir sınırlayıcı karakterle ayırır. | 
+| [**HTTP**](#http-action) | HTTP bitiş noktasını çağırır. | 
+| [**Katılın**](#join-action) | Bir dizideki tüm öğelerden bir dize oluşturur ve bu öğeleri belirtilen bir sınırlayıcı karakterle ayırır. | 
 | [**Ayrışdırık JSON**](#parse-json-action) | JSON içeriğindeki özelliklerden kullanıcı dostu jetonlar oluşturur. Daha sonra, mantık uygulamanıza belirteçleri ekleyerek bu özelliklere başvuruda bulunabilirsiniz. | 
 | [**Sorgu**](#query-action) | Bir koşula veya filtreye dayalı olarak başka bir dizideki öğelerden bir dizi oluşturur. | 
 | [**Yanıt**](#response-action) | Gelen bir çağrı veya isteğe yanıt oluşturur. | 
@@ -2407,11 +2407,17 @@ Tetikleyici veya eylem tanımında `operationOptions` özellik ile tetikleyicile
 
 Varsayılan olarak, mantık uygulaması iş akışı örneklerinin tümü aynı anda (eşzamanlı veya paralel olarak) çalışır. Bu davranış, her tetikleyici örneği önceki etkin iş akışı örneği çalışan bitmeden önce yangınları anlamına gelir. Ancak, aynı anda çalışan örnek sayısı varsayılan [sınırı](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)vardır. Aynı anda çalışan iş akışı örneklerinin sayısı bu sınıra ulaştığında, diğer yeni örneklerin çalışmasını beklemesi gerekir. Bu sınır, arka uç sistemlerinin aldığı istek sayısını denetlemeye yardımcı olur.
 
-Varsayılan sınırı değiştirmek için, kod görünümü düzenleyicisini veya Logic Apps Designer'ı kullanabilirsiniz, çünkü `runtimeConfiguration.concurrency.runs` tasarımcı aracılığıyla eşzamanlılık ayarını değiştirmek, temel tetikleyici tanımındaki özelliği ekler veya güncelleştirir veya günceller. Bu özellik, paralel olarak çalışabilen en fazla iş akışı örneği sayısını denetler. Eşzamanlılık denetimini etkinleştirmek istediğinizde göz önünde bulundurulması gereken bazı noktalar şunlardır:
+Tetikleyicinin eşzamanlılık denetimini açtığınızda, tetikleyici örnekleri [varsayılan sınıra](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)paralel olarak çalışır. Bu varsayılan eşzamanlılık sınırını değiştirmek için, kod görünümü düzenleyicisini veya Logic Apps Designer'ı kullanabilirsiniz, çünkü tasarımcı aracılığıyla eşzamanlılık ayarını değiştirmek, temel tetikleyici tanımındaki `runtimeConfiguration.concurrency.runs` özelliği ekler veya günceller ve bunun tersi. Bu özellik, paralel olarak çalışabilen en fazla yeni iş akışı örneği sayısını denetler.
+
+Tetikleyicide eşzamanlılık etkinleştirmek istediğinizde göz önünde bulundurulması gereken bazı noktalar şunlardır:
 
 * Eşzamanlılık etkinleştirildiğinde, [dizileri ayırmak](#split-on-debatch)için [SplitOn sınırı](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) önemli ölçüde azalır. Madde sayısı bu sınırı aşarsa, SplitOn özelliği devre dışı bırakılır.
 
-* Eşzamanlılık etkinken, uzun süren bir mantık uygulaması örneği yeni mantık uygulaması örneklerinin bekleme durumuna girmesine neden olabilir. Bu durum, Azure Mantık Uygulamalarının yeni örnekler oluşturmasını engeller ve eşzamanlı çalıştırma sayısı belirtilen maksimum eşzamanlı çalıştırma sayısından az olsa bile gerçekleşir.
+* Eşzamanlılık denetimini etkinleştirdikten sonra eşzamanlılığı devre dışı kalamazsınız.
+
+* Eşzamanlılık etkinleştirildiğinde, [dizileri ayırmak](#split-on-debatch)için [SplitOn sınırı](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits) önemli ölçüde azalır. Madde sayısı bu sınırı aşarsa, SplitOn özelliği devre dışı bırakılır.
+
+* Eşzamanlılık etkinleştirildiğinde, uzun süren bir mantık uygulaması örneği yeni mantık uygulaması örneklerinin bekleme durumuna girmesine neden olabilir. Bu durum, Azure Mantık Uygulamalarının yeni örnekler oluşturmasını engeller ve eşzamanlı çalıştırma sayısı belirtilen maksimum eşzamanlı çalıştırma sayısından az olsa bile gerçekleşir.
 
   * Bu durumu bölmek için, hala çalışan ilk örnekleri iptal *edin.*
 

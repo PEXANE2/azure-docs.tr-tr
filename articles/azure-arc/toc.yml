@@ -1,21 +1,23 @@
 - name: Azure Arc Belgeleri
   href: index.yml
 - name: Genel Bakış
-  expanded: true
   items:
     - name: Sunucular için Azure Arc nedir?
       href: ./servers/overview.md
-- name: Azure Arc’a bağlanma
-  expanded: true
+- name: Nasıl yapılır kılavuzları
   items:
-    - name: Makineleri Azure portalından Azure Arc’a bağlama
-      href: ./servers/onboard-portal.md
-    - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
-      href: ./servers/onboard-service-principal.md
-    - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
-      href: ./servers/onboard-dsc.md
-- name: Aracıyı yönetme
-  href: ./servers/manage-agent.md
+    - name: Azure Arc’a bağlanma
+      items:
+        - name: Makineleri Azure portalından Azure Arc’a bağlama
+          href: ./servers/onboard-portal.md
+        - name: Hizmet sorumlusu kullanarak makineleri büyük ölçekte bağlama
+          href: ./servers/onboard-service-principal.md
+        - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
+          href: ./servers/onboard-dsc.md
+    - name: Yönetme
+      items:
+        - name: Aracıyı yönetme
+          href: ./servers/manage-agent.md
 - name: Başvuru
   items:
     - name: Azure Bağlı Makine Aracısı CLI arabirimi

@@ -4,12 +4,12 @@ description: Azure Kaynak Yöneticisi şablonlarını sürekli olarak nasıl olu
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 303edac9221b2a58986129388e33c84c3817d96e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369371"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81255082"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli entegrasyonu
 
@@ -44,7 +44,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-github-repository"></a>GitHub deposu hazırlama
 
-GitHub, Kaynak Yöneticisi şablonları da dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar [için Azure DevOps tarafından desteklenen depolara](/azure/devops/pipelines/repos/?view=azure-devops#supported-repository-types)bakın.
+GitHub, Kaynak Yöneticisi şablonları da dahil olmak üzere proje kaynak kodunuzu depolamak için kullanılır. Desteklenen diğer depolar [için Azure DevOps tarafından desteklenen depolara](/azure/devops/pipelines/repos/?view=azure-devops)bakın.
 
 ### <a name="create-a-github-repository"></a>GitHub deposu oluşturma
 
@@ -202,7 +202,7 @@ Projeleri Azure'a dağıtmak için kullanılan bir hizmet bağlantısı oluştur
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. Ad, boru hattı YAML dosyasında belirttiğiniz addır.  Bir depolama hesabı nın oluşturulduğunu göreceksiniz.  Depolama hesabı adı **depo**ile başlar.
 1. Açmak için depolama hesabı adını seçin.
 1. **Özellikleri**seçin. **Çoğaltma** yerel **olarak yedekli depolama (LRS)** olduğuna dikkat edin.
