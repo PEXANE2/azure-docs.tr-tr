@@ -214,6 +214,8 @@
       items:
         - name: Konuşma çevirisi nedir?
           href: speech-translation.md
+        - name: Konuşma çevirisi temel bilgileri
+          href: speech-translation-basics.md
     - name: Hızlı Başlangıç
       items:
         - name: Konuşmayı metne çevirme
