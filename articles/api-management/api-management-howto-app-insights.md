@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 12aeea8393a00d7d2662c826f847265bdbdc0119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48a83fad3395f6ecf06fb1f1ba95aa1b06a53431
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75442722"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259145"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management'ı Azure Application Insights ile Tümleştirme
 
@@ -51,7 +51,7 @@ Azure Uygulama Öngörülerini kullanabilmeniz için önce hizmetin bir örneği
     ![App Insights logger](media/api-management-howto-app-insights/apim-app-insights-logger-2.png)  
 
 > [!NOTE]
-> Sahnenin arkasında, API Yönetimi örneğinde Uygulama İstatistikleri örneğinin Enstrümantasyon Anahtarını içeren bir [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/logger/createorupdate) varlığı oluşturulur.
+> Sahnenin arkasında, API Yönetimi örneğinde Uygulama İstatistikleri örneğinin Enstrümantasyon Anahtarını içeren bir [Logger](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate) varlığı oluşturulur.
 
 ## <a name="enable-application-insights-logging-for-your-api"></a>API'niz için Uygulama Öngörüleri günlüğe kaydetmeyi etkinleştirin
 
@@ -70,7 +70,7 @@ Azure Uygulama Öngörülerini kullanabilmeniz için önce hizmetin bir örneği
 > Gövde alanının **Ilk baytlarında** varsayılan değer **0'ın** geçersiz kılınması API'lerinizin performansını önemli ölçüde azaltabilir.
 
 > [!NOTE]
-> Sahnenin arkasında, API düzeyinde 'applicationinsights' adlı bir [Tanılama](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/diagnostic/createorupdate) varlığı oluşturulur.
+> Sahnenin arkasında, API düzeyinde 'applicationinsights' adlı bir [Tanılama](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/diagnostic/createorupdate) varlığı oluşturulur.
 
 | Ayar adı                        | Değer türü                        | Açıklama                                                                                                                                                                                                                                                                                                                                      |
 |-------------------------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

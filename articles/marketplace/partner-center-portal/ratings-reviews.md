@@ -1,5 +1,5 @@
 ---
-title: İş Ortağı Merkezi'nde Ticari Pazar analizinde Derecelendirmeler ve İncelemeler panosu
+title: İş Ortağı Merkezi'nde ticari pazar analizinde Derecelendirmeler ve İncelemeler panosu
 description: Azure Marketi ve AppSource'taki teklifleriniz için müşteri geri bildirimlerinin konsolide görünümüne nasıl erişebilirsiniz öğrenin.
 author: dsindona
 ms.author: dsindona
@@ -7,21 +7,21 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2995cd2a97329aa8b7947145150c6a3501346fdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275671"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262426"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Commercial Marketplace analitiğinde derecelendirmeler ve incelemeler panosu
+# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Ticari pazar analizinde derecelendirmeler ve incelemeler panosu
 
 Bu makale, İş Ortağı Merkezi'ndeki Derecelendirme & değerlendirmeleri panosu hakkında bilgi sağlar. Bu pano, Azure Marketi ve AppSource'daki teklifler için müşteri geri bildirimlerinin konsolide görünümünü görüntüler.
 
 İş Ortağı Merkezi analiz araçlarındaki **Derecelendirme & değerlendirmeleri panosuna** erişmek için Commercial Marketplace altında **[Analiz](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** panosunu açın.
 
 >[!NOTE]
-> Analitik terminolojinin ayrıntılı tanımları [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+> Analitik terminolojinin ayrıntılı tanımları [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
 
 ## <a name="ratings--reviews"></a>Derecelendirmeler & değerlendirmeleri
 
@@ -57,10 +57,10 @@ Derecelendirme ler & değerlendirmeleri özet bölümü seçili bir tarih aralı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş Ortağı Merkezi Ticari Pazarı'nda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki Ticari Pazar Için Analitik bölümüne](./analytics.md)bakın.
-- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri için, [Ticari Pazar analitiğinde Özet Panosu'na](./summary-dashboard.md)bakın.
-- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [Ticari Pazar analitiğinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
-- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [Ticari Pazar analitiğinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
-- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [Ticari Pazar analitiğinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
-- Son 30 gün içinde indirme isteklerinizin bir listesi için, [Ticari Pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
-- Ticari Pazar yeri analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, Ticari Pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.
+- İş Ortağı Merkezi ticari pazarda bulunan analiz raporlarına genel bir bakış için, [İş Ortağı Merkezi'ndeki ticari pazar için Analytics'e](./analytics.md)bakın.
+- Teklifiniz için pazar daki etkinliği özetleyen toplam verilerin grafikleri, eğilimleri ve değerleri [için, ticari pazar analizinde Özet Pano'ya](./summary-dashboard.md)bakın.
+- Siparişleriniz hakkında grafiksel ve indirilebilir bir biçimde bilgi için, [ticari pazar analizinde Siparişler Panosu'na](./orders-dashboard.md)bakın.
+- Sanal Makine (VM) kullanım ve ölçülü fatura ölçümleri için, [ticari pazar analizinde Kullanım Panosu'na](./usage-dashboard.md)bakın.
+- Büyüme eğilimleri de dahil olmak üzere müşterileriniz hakkında ayrıntılı bilgi için [ticari pazar analizinde Müşteri Panosu'na](./customer-dashboard.md)bakın.
+- Son 30 gün içinde indirme isteklerinizin bir listesi için, [ticari pazar analizinde İndirme Panosu'na](./downloads-dashboard.md)bakın.
+- Ticari pazar analitiği hakkında sık sorulan sorular ve kapsamlı bir veri terimleri sözlüğü [için, ticari pazar analitiği için sık sorulan sorular ve terminolojiye](./faq-terminology.md)bakın.

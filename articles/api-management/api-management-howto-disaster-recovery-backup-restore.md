@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: apimpm
-ms.openlocfilehash: f9758678708338a284a35b45f7f9dd43b9a9017c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e74d7dcf8764d167e0080c9d7cca5573bd69ef1d
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335951"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261015"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management'ta hizmet yedekleme ve geri yükleme işlevlerini kullanarak acil durumda kurtarma
 
@@ -55,7 +55,7 @@ Azure Kaynak Yöneticisi'ni kullanarak kaynaklarda yaptığınız tüm görevler
 
 ### <a name="create-an-azure-active-directory-application"></a>Azure Etkin Dizin uygulaması oluşturma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. API Yönetimi hizmet örneğini içeren aboneliği kullanarak Azure Etkin **Dizini'ndeki** **Uygulama kayıtları** sekmesine (Azure Active Directory > Manage/App kayıtları) gidin.
 
     > [!NOTE]
@@ -131,7 +131,7 @@ Değiştir `{tenant id}` `{application id}`, `{redirect uri}` ve aşağıdaki y�
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Yedekleme ve geri yükleme işlemlerini çağırma
 
-REST API'ler [Api Yönetim Hizmeti - Yedekleme](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup) ve [Api Yönetim Hizmeti - Geri Yükleyin.](/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+REST API'ler [Api Yönetim Hizmeti - Yedekleme](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup) ve [Api Yönetim Hizmeti - Geri Yükleyin.](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 Aşağıdaki bölümlerde açıklanan "yedekleme ve geri yükleme" işlemlerini çağırmadan önce, REST aramanız için yetkilendirme isteği üstbilgisini ayarlayın.
 

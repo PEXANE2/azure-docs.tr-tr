@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure otomasyonu, DSC, powershell, istenilen durum yapılandırması, güncelleme yönetimi, değişiklik izleme, envanter, runbooks, python, grafik, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411221"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261240"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (önizleme)
 
@@ -54,7 +54,7 @@ Windows ve Linux işletim sisteminin aşağıdaki sürümleri Azure Bağlantıl�
 - CentOS Linux 7
 - SUSE Linux Kurumsal Sunucu (SLES) 15
 - Kırmızı Şapka Kurumsal Linux (RHEL) 7
-- Amazon Linux 7
+- Amazon Linux 2
 
 >[!NOTE]
 >Windows için Connected Machine aracısının bu önizleme sürümü yalnızca İngilizce dilini kullanacak şekilde yapılandırılan Windows Server'ı destekler.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: cec1d3e07800dd3093ca79a87cafcf5fceafbf2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77209197"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260964"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure İşlev Uygulamalarını Azure API Management'a API olarak aktarma
 
@@ -118,7 +118,7 @@ Bir Azure İşlev Uygulaması içeri aktarıldığında aşağıdakiler otomatik
 * İşlev Uygulaması'nın içinde apim-{ adı ile*Azure API Yönetimi hizmet örneği adı*},
 * Oluşturulan ana bilgisayar anahtarını içeren Azure*İşlevi Uygulaması örnek adı*}-key adı { ile Azure API Yönetimi örneği içinde adlandırılmış değer.
 
-4 Nisan 2019'dan sonra oluşturulan API'ler için ana bilgisayar anahtarı, API Management'tan İşlev Uygulamasına http isteklerinde bir üstbilgide geçirilir. Eski API'ler [sorgu parametresi](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)olarak ana bilgisayar anahtarını geçer. Bu davranış, İşlev `PATCH Backend` Uygulamasıile ilişkili *Backend* varlığındaki [REST API çağrısı](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) yla değiştirilebilir.
+4 Nisan 2019'dan sonra oluşturulan API'ler için ana bilgisayar anahtarı, API Management'tan İşlev Uygulamasına http isteklerinde bir üstbilgide geçirilir. Eski API'ler [sorgu parametresi](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)olarak ana bilgisayar anahtarını geçer. Bu davranış, İşlev `PATCH Backend` Uygulamasıile ilişkili *Backend* varlığındaki [REST API çağrısı](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) yla değiştirilebilir.
 
 > [!WARNING]
 > Azure İşlev Uygulaması ana bilgisayar anahtarının veya Azure API Management adlandırılmış değerinin kaldırılması veya değiştirilmesi, hizmetler arasındaki iletişimin kopmasına neden olur. Değerler otomatik olarak eşitlenmez.

@@ -3,7 +3,7 @@ title: Sorgu dizeleri ile Azure CDN önbelleğe alma davranışını denetleme -
 description: Azure CDN sorgu dizesi önbelleğe alma, bir web isteği sorgu dizesi içerdiğinde dosyaların önbelleğe nasıl önbelleğe alınır denetler. Bu makalede, Azure CDN standart ürünlerinde sorgu dize önbelleğe açıklanır.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: magattus
-ms.openlocfilehash: 6471241527dd9b594eaaca20ebc75cacb27f8f72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: allensu
+ms.openlocfilehash: a0df9cecc4ccd09db3f6b07fa6fd4c5283753aa2
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083038"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260216"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Sorgu dizeleri ile Azure CDN önbelleğe alma davranışını denetleme - standart katman
 > [!div class="op_single_selector"]

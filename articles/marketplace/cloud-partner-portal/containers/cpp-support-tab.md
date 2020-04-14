@@ -7,14 +7,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 8124828c565f344387ae946a1fa6e61a84675b81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279972"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269933"
 ---
 # <a name="container-support-tab"></a>Konteyner Desteği sekmesi
+
+> [!IMPORTANT]
+> 13 Nisan 2020'den itibaren Azure Kapsayıcı tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Kapsayıcısı Oluştur teklifinde](https://aka.ms/CreateContainerOffer) yönergeleri izleyin.
 
 Teklifiniz için teknik ve kullanıcı destek kaynakları sağlamak için **Yeni Teklif** sayfasının **Destek** sekmesini kullanın.  Destek formunda aşağıdaki giriş alanları sağlanmaktadır: **Engineering Contact**, **Customer Support**ve **Support Urls**. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
 

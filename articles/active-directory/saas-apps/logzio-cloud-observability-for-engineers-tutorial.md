@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Logz.io ile Azure Active Directory tek oturum açma (SSO) entegrasyonu - Mühendisler için Bulut Gözlemlenebilirliği | Microsoft Dokümanlar'
-description: Azure Active Directory ile Logz.io - Mühendisler için Bulut Gözlemlenebilirliği arasında tek oturum açma yı nasıl yapılandırılabildiğini öğrenin.
+title: 'Öğretici: azure Active Directory tek oturum açma (SSO) entegrasyonu ile Logz.io - Azure AD Tümleştirmesi | Microsoft Dokümanlar'
+description: Azure Etkin Dizin ve Logz.io - Azure AD Tümleştirmesi arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 04/08/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de1c929ffa790d2abe3a1922cecc2175cd7a8e12
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: e192a8e97e82ba26ffa7527cb12219aeaf2a80cd
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385483"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81259468"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---cloud-observability-for-engineers"></a>Öğretici: Logz.io ile Azure Active Directory tek oturum açma (SSO) entegrasyonu - Mühendisler için Bulut Gözlemlenebilirliği
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-logzio---azure-ad-integration"></a>Öğretici: Logz.io ile Azure Active Directory tek oturum açma (SSO) tümleştirmesi - Azure AD Tümleştirmesi
 
-Bu eğitimde, Logz.io - Mühendisler için Bulut Gözlemlenebilirliği ve Azure Etkin Dizin (Azure AD) ile nasıl entegre edileceksiniz. Logz.io - Mühendisler için Bulut Gözlemlenebilirliği'ni Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
+Bu eğitimde, azure etkin dizinle (Azure AD) Logz.io - Azure AD Tümleştirmesi'ni nasıl entegre edeceğinizi öğreneceksiniz. Logz.io - Azure AD Tümleştirmesi'ni Azure AD ile entegre ettiğinizde şunları yapabilirsiniz:
 
-* Mühendisler için Logz.io - Bulut Gözlemlenebilirliği'ne erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla mühendisler için Bulut Gözlemlenebilirliği Logz.io otomatik olarak oturum açabilmelerini etkinleştirin.
+* Azure AD'de Logz.io erişimi olan denetim - Azure AD Tümleştirmesi.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla otomatik olarak oturum Logz.io - Azure AD Entegrasyonu'na sahip olmasını etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
@@ -37,44 +37,44 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek i�
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
 * Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Logz.io - Mühendisler için Bulut Gözlemlenebilirliği tek oturum açma (SSO) aboneliği sağladı.
+* Logz.io - Azure AD Tümleştirmesi tek oturum açma (SSO) aboneliği sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Logz.io - Mühendisler için Bulut Gözlemlenebilirliği **IDP'nin** başlattığı SSO'ya destek veriyor
-* Logz.io yapılandırdıktan sonra - Mühendisler için Bulut Gözlemlenebilirliği, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* Logz.io - Azure AD Tümleştirmesi **IDP** tarafından başlatılan SSO'ya destek
+* Logz.io - Azure AD Tümleştirmesini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
-## <a name="adding-logzio---cloud-observability-for-engineers-from-the-gallery"></a>Logz.io Ekleme - Galeriden Mühendisler için Bulut Gözlemlenebilirliği
+## <a name="adding-logzio---azure-ad-integration-from-the-gallery"></a>Galeriden Logz.io Ekleme - Azure AD Tümleştirmesi
 
-mühendisler için bulut gözlemlenebilirliği Logz.io azure AD'ye entegrasyonunu yapılandırmak için, galeriden mühendisler için Logz.io - Bulut Gözlemlenebilirliğini yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD Logz.io tümleştirmesini yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Logz.io - Azure AD Tümleştirmesi eklemeniz gerekir.
 
 1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
 1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
-1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Mühendisler için Logz.io - Bulut Gözlemlenebilirliği** yazın.
-1. Sonuçlar panelinden **Mühendisler için Logz.io - Bulut Gözlemlenebilirliğini** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Logz.io - Azure AD Tümleştirmesi** yazın.
+1. Sonuç panelinden **Logz.io - Azure AD Tümleştirmesini** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---cloud-observability-for-engineers"></a>Logz.io için Azure AD oturum açma işlemlerini yapılandırma ve test etme - Mühendisler için Bulut Gözlemlenebilirliği
+## <a name="configure-and-test-azure-ad-single-sign-on-for-logzio---azure-ad-integration"></a>Logz.io için Azure AD oturumunu yapılandırma ve test Logz.io - Azure AD Tümleştirme
 
-Azure AD SSO'Logz.io - **B.Simon**adlı bir test kullanıcısı kullanarak Mühendisler için Bulut Gözlemlenebilirliği ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında Logz.io - Mühendisler için Bulut Gözlemlenebilirliği arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO'Logz.io - Azure AD Tümleştirmesi'ni **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, bir Azure REKLAM kullanıcısı ile Logz.io - Azure AD Tümleştirmesi'ndeki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO'yu mühendisler için Bulut Gözlemlenebilirliği Logz.io ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Logz.io - Azure AD Tümleştirmesi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
     1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
     1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[Mühendisler SSO için bulut gözlemlenebilirlik Logz.io yapılandırın](#configure-logzio-cloud-observability-for-engineers-sso)** - uygulama tarafında tek oturum açma ayarlarını yapılandırmak için.
-    1. **[Mühendisler test kullanıcısı için bulut gözlemlenebilirliği Logz.io oluşturun](#create-logzio-cloud-observability-for-engineers-test-user)** - Logz.io'da B.Simon'Un bir muadili olması - Mühendisler için kullanıcının Azure AD gösterimine bağlı Bulut Gözlemlenebilirliği.
+1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[Logz.io -Azure AD Tümleştirme SSO-](#configure-logzio-azure-ad-integration-sso)** yapılandırın.
+    1. Logz.io'daki B.Simon'Un bir muadili olan azure AD **[Tümleştirmesi -](#create-logzio-azure-ad-integration-test-user)** kullanıcının Azure AD gösterimine bağlı azure AD Entegrasyonu- Logz.io oluşturun.
 1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. Azure [portalında](https://portal.azure.com/), **Logz.io - Mühendisler için Bulut Gözlemlenebilirliği** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Azure [portalında](https://portal.azure.com/), **Logz.io - Azure AD Tümleştirme** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
 1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
 1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
@@ -87,13 +87,13 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://logzio.auth0.com/login/callback?connection=CONNECTION-NAME`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. İletişim Logz.io - Engineers Client destek ekibinin bu değerleri alması [için Bulut Gözlemlenebilirliği.](mailto:help@logz.io) Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Logz.io - Azure AD Tümleştirme İstemci destek ekibine](mailto:help@logz.io) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Logz.io - Mühendisler için Bulut Gözlemlenebilirliği uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
+1. Logz.io - Azure AD Tümleştirme uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
     ![image](common/default-attributes.png)
 
-1. Yukarıdakilere ek olarak, Logz.io - Mühendisler için Bulut Gözlemlenebilirliği uygulaması, saml yanıtında aşağıda gösterilen birkaç özniteliğin daha geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
+1. Yukarıdakilere ek olarak, Logz.io - Azure AD Tümleştirme uygulaması, saml yanıtında aşağıda gösterilen birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
     | Adı |  Kaynak Özniteliği|
     | ---------------| --------- |
@@ -105,7 +105,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Mühendisler için Bulut Gözlemi Logz.io - **Bulut Gözlemlenebilirliği** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. Kurulum **Logz.io - Azure AD Tümleştirmesi** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
     ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
@@ -123,10 +123,10 @@ Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluştur
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'Un mühendisler için bulut gözlemlenebilirliği Logz.io erişim sağlayarak Azure oturum açma özelliğini kullanmasını sağlayacaksınız.
+Bu bölümde, B.Simon'ın Logz.io - Azure AD Tümleştirmesine erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
 1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
-1. Uygulamalar listesinde, mühendisler **için Logz.io - Bulut Gözlemlenebilirliğini**seçin.
+1. Uygulamalar listesinde **Logz.io - Azure AD Tümleştirmesini**seçin.
 1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -139,19 +139,19 @@ Bu bölümde, B.Simon'Un mühendisler için bulut gözlemlenebilirliği Logz.io 
 1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-logzio-cloud-observability-for-engineers-sso"></a>Mühendisler SSO için bulut gözlemlenebilirlik Logz.io yapılandırın
+## <a name="configure-logzio-azure-ad-integration-sso"></a>Azure AD Tümleştirme SSOLogz.io yapılandırma
 
-Logz.io tek oturum açma **- Mühendisler için Bulut Gözlemlenebilirliği** tarafını yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından Logz.io - [Mühendisler için Bulut Gözlemlenebilirliği destek ekibine](mailto:help@logz.io)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+Logz.io - Azure AD **Tümleştirme** tarafında tek oturum açma yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından [Logz.io - Azure AD Tümleştirme destek ekibine](mailto:help@logz.io)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
-### <a name="create-logzio-cloud-observability-for-engineers-test-user"></a>Mühendisler test kullanıcısı için bulut gözlemlenebilirliği Logz.io oluşturun
+### <a name="create-logzio-azure-ad-integration-test-user"></a>Azure AD Tümleştirme test kullanıcıLogz.io oluşturma
 
-Bu bölümde, Logz.io Britta Simon adında bir kullanıcı oluşturursunuz - Mühendisler için Bulut Gözlemlenebilirliği. Logz.io ile çalışın [- Mühendisler için Bulut Gözlemlenebilirliği destek ekibi,](mailto:help@logz.io) kullanıcıları Logz.io - Mühendisler için Bulut Gözlemlenebilirliği platformuna ekleyin. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Logz.io - Azure AD Tümleştirmesinde Britta Simon adında bir kullanıcı oluşturursunuz. Logz.io - Azure AD Tümleştirme platformuna kullanıcıları eklemek için [Logz.io - Azure AD Tümleştirme destek ekibiyle](mailto:help@logz.io) çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ## <a name="test-sso"></a>Test SSO 
 
 Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim Paneli'ndeki mühendisler için Bulut Gözlemlenebilirliği Logz.io tıkladığınızda, SSO'yu kurduğunuz Mühendisler için bulut gözlemlenebilirliği Logz.io otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Erişim Paneli'ndeki Logz.io - Azure REKLAM Tümleştirme döşemesini tıklattığınızda, SSO'yu ayarladığınız Logz.io - Azure AD Tümleştirmesi'nde otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
@@ -161,9 +161,9 @@ Erişim Paneli'ndeki mühendisler için Bulut Gözlemlenebilirliği Logz.io tık
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Logz.io deneyin - Azure AD ile Mühendisler için Bulut Gözlemlenebilirliği](https://aad.portal.azure.com/)
+- [Logz.io deneyin - Azure AD ile Azure AD Tümleştirmesi](https://aad.portal.azure.com/)
 
 - [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [Logz.io nasıl korunur - Gelişmiş görünürlüğe ve kontrollere sahip Mühendisler için Bulut Gözlemlenebilirliği](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Logz.io nasıl korunur - Gelişmiş görünürlük ve denetimlerle Azure REKLAM Tümleştirmesi](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 

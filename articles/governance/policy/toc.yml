@@ -31,9 +31,6 @@
     - name: Etiket idaresini yönetme
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
-    - name: Uygulamalı Laboratuvarlar - Azure İlkesi'ni inceleme
-      displayName: 'create, policy, training, learn'
-      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Örnekler
   items:
     - name: Dizin oluşturma

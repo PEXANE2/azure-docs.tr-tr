@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/01/2019
-ms.openlocfilehash: b0154401a9233a6ea85a8e8c06ee14fcc918b2b6
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 02b64d77a4fb1af25e1022de3ac8e4775f916d9e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657108"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261780"
 ---
 # <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Kafka için TLS şifreleme ve kimlik doğrulaması ayarlama
 
@@ -22,8 +22,9 @@ Bu makalede, Apache Kafka istemcileri ve Apache Kafka brokerları arasında daha
 > [!Important]
 > Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: Bir Java istemcisi ve bir konsol istemcisi. TLS'yi `ProducerConsumer.java` hem üretmek hem de tüketmek için yalnızca Java istemcisi kullanabilir. Konsol üreticisi `console-producer.sh` istemci TLS ile çalışmıyor.
 
-> [!Note] 
+> [!Note]
 > SÜRÜM 1.1 ile HDInsight Kafka konsol üreticisi SSL desteklemiyor.
+
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka broker kurulumu
 
 Kafka TLS broker kurulumu dört HDInsight kümesi VM'yi aşağıdaki şekilde kullanır:
@@ -136,7 +137,7 @@ Yapılandırma değişikliğini tamamlamak için aşağıdaki adımları yapın:
 
     ![Ambari'de kafka ssl yapılandırma özelliklerinin düzenlenmesi](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. server.properties dosyasına yeni yapılandırma özellikleri ekleyin.
+1. HDI sürüm 3.6 için Ambari UI'ye gidin ve **Advanced kafka-env** ve **kafka-env şablon özelliği** altında aşağıdaki yapılandırmaları ekleyin.
 
     ```bash
     # Configure Kafka to advertise IP addresses instead of FQDN
@@ -151,7 +152,7 @@ Yapılandırma değişikliğini tamamlamak için aşağıdaki adımları yapın:
     echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-1. Ambari yapılandırma UI'sine gidin ve yeni özelliklerin **Advanced kafka-env** ve **kafka-env şablon özelliği** altında ortaya çıkıp olmadığını doğrulayın.
+1. Burada bu değişiklikler ile Ambari yapılandırma UI gösteren ekran görüntüsü.
 
     HDI sürüm 3.6 için:
 
@@ -159,10 +160,9 @@ Yapılandırma değişikliğini tamamlamak için aşağıdaki adımları yapın:
 
     HDI sürüm 4.0 için:
 
-     ![Ambari dört kafka-env şablon özelliği düzenleme](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)   
+     ![Ambari dört kafka-env şablon özelliği düzenleme](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env-four.png)
 
 1. Tüm Kafka brokerlarını yeniden başlatın.
-1. Hem üreticilerin hem de tüketicilerin 9093 bağlantı noktası üzerinde çalıştığını doğrulamak için yönetici istemciyi üretici ve tüketici seçenekleriyle başlatın.
 
 ## <a name="client-setup-without-authentication"></a>İstemci kurulumu (kimlik doğrulaması olmadan)
 
@@ -208,13 +208,15 @@ Bu adımlar aşağıdaki kod parçacıklarında ayrıntılı olarak açıklanmak
     keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
     ```
 
-1. Dosyayı `client-ssl-auth.properties`oluşturun. Aşağıdaki satırları olmalıdır:
+1. İstemci `client-ssl-auth.properties` makinesinde dosyayı oluşturun (hn1) . Aşağıdaki satırları olmalıdır:
 
     ```config
     security.protocol=SSL
     ssl.truststore.location=/home/sshuser/ssl/kafka.client.truststore.jks
     ssl.truststore.password=MyClientPassword123
     ```
+
+1. Hem üreticilerin hem de tüketicilerin 9093 bağlantı noktası üzerinde çalıştığını doğrulamak için yönetici istemciyi üretici ve tüketici seçenekleriyle başlatın. Konsol üreticisi/tüketicisi kullanarak kurulumu doğrulamak için gereken adımlar için lütfen aşağıdaki [Doğrulama](apache-kafka-ssl-encryption-authentication.md#verification) bölümüne bakın.
 
 ## <a name="client-setup-with-authentication"></a>İstemci kurulumu (kimlik doğrulama ile)
 
@@ -278,17 +280,24 @@ Her adımın ayrıntıları aşağıda verilmiştir.
     scp ca-cert sshuser@HeadNode1_Name:~/ssl/ca-cert
     ```
 
-1. İmzalı sertifikaile istemci mağazası oluşturun ve ca cert'i keystore ve truststore'a aktarın:
+    1. İstemci makinesinde oturum açın (bekleme kafası düğümü) ve ssl dizinine gidin.
 
     ```bash
-    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
-    
-    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass MyClientPassword123 -keypass MyClientPassword123 -noprompt
+    ssh sshuser@HeadNode1_Name
+    cd ssl
     ```
 
-1. Dosya `client-ssl-auth.properties`oluşturma. Aşağıdaki satırları olmalıdır:
+1. İmzalı sertifikaile istemci mağazası oluşturun ve istemci makinesindeki anahtar deposuna ve truststore'a ca sertifikasını aktarın (hn1):
+
+    ```bash
+    keytool -keystore kafka.client.truststore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -alias CARoot -import -file ca-cert -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    
+    keytool -keystore kafka.client.keystore.jks -import -file client-cert-signed -storepass "MyClientPassword123" -keypass "MyClientPassword123" -noprompt
+    ```
+
+1. İstemci `client-ssl-auth.properties` makinesinde (hn1) bir dosya oluşturun. Aşağıdaki satırları olmalıdır:
 
     ```bash
     security.protocol=SSL
@@ -300,6 +309,8 @@ Her adımın ayrıntıları aşağıda verilmiştir.
     ```
 
 ## <a name="verification"></a>Doğrulama
+
+Bu adımları istemci makinesinde çalıştırın.
 
 > [!Note]
 > HDInsight 4.0 ve Kafka 2.1 yüklüyse, kurulumunuzu doğrulamak için konsol üreticisini/tüketicilerini kullanabilirsiniz. Değilse, 9092 portundaki Kafka üreticisini çalıştırın ve konuya mesaj gönderin ve TLS kullanan 9093 portundaki Kafka tüketicisini kullanın.

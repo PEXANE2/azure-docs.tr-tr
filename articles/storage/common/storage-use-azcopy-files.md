@@ -4,15 +4,15 @@ description: AzCopy ve dosya depolama ile veri aktarımı.
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8aa0e5304825b3f016694a40b3fc1e176518237a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f5733009424c60f2b9c48e68d70bbc29ad7095
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77526697"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81263378"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile veri aktarımı 
 
@@ -20,16 +20,16 @@ AzCopy, bir depolama hesabına veya bir depolama hesabından blobveya dosya kopy
 
 Başlamadan önce, AzCopy'yi indirmek ve aracı tanımak için [AzCopy makalesine başlayın'](storage-use-azcopy-v10.md) a bakın.
 
+> [!TIP]
+> Bu makaledeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
+
 ## <a name="create-file-shares"></a>Dosya paylaşımları oluşturma
 
 Bir dosya paylaşımı oluşturmak için [azcopy make](storage-ref-azcopy-make.md) komutunu kullanabilirsiniz. Bu bölümdeki örnek, . `myfileshare`
 
-> [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
-
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>'` |
+| **Sözdizimi** | `azcopy make 'https://<storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>'` |
 | **Örnek** | `azcopy make 'https://mystorageaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 Ayrıntılı başvuru dokümanları için [azcopy make](storage-ref-azcopy-make.md)adresine bakın.
@@ -46,13 +46,20 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Dizinin içeriğini yükleme
 > * Belirli bir dosyayı yükleme
 
+> [!TIP]
+> İsteğe bağlı bayraklar kullanarak yükleme işleminde değişiklik yapabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyalarla birlikte erişim denetim listelerini (ALA'lar) kopyalayın.|**--korumak-smb-izinleri**=\[\|doğru yanlış\]|
+> |Dosyalarla birlikte Kobİ özellik bilgilerini kopyalayın.|**--preserve-smb-info**=\[\|doğru yanlış\]|
+> |Dosyaları Append Blobs veya Page Blobs olarak yükleyin.|**--blob tipi**=\[BlockBlob PageBlob\|\|AppendBlob\]|
+> |Belirli bir erişim katmanına (arşiv katmanı gibi) yükleyin.|**--block-blob-tier**=\[\|None\|\|Hot Cool Arşiv\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
+
 > [!NOTE]
 > AzCopy, dosyanın md5 karma kodunu otomatik olarak hesaplamaz ve depolamaz. AzCopy'nin bunu yapmasını istiyorsanız, bayrağı `--put-md5` her kopyalama komutuna eklayın. Bu şekilde, dosya indirildiğinde, AzCopy indirilen veriler için bir MD5 karma sını hesaplar ve dosyanın `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular.
-
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
-
-> [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
 
@@ -134,13 +141,19 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Dizinin içeriğini indirin
 > * Belirli dosyaları karşıdan yükleme
 
+> [!TIP]
+> İsteğe bağlı bayraklar kullanarak indirme işlemini ayarlayabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyalarla birlikte erişim denetim listelerini (ALA'lar) kopyalayın.|**--korumak-smb-izinleri**=\[\|doğru yanlış\]|
+> |Dosyalarla birlikte Kobİ özellik bilgilerini kopyalayın.|**--preserve-smb-info**=\[\|doğru yanlış\]|
+> |Dosyaları otomatik olarak dekomprese edin.|**--dekompresör**=\[gzip\|deflate\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
+
 > [!NOTE]
 > Bir `Content-md5` dosyanın özellik değeri karma içeriyorsa, AzCopy indirilen veriler için bir MD5 karma sını hesaplar ve dosyanın `Content-md5` özelliğinde depolanan MD5 karmasının hesaplanan karmayla eşleştiğini doğrular. Bu değerler eşleşmiyorsa, bu davranışı ekleyerek `--check-md5=NoCheck` veya `--check-md5=LogOnly` kopyalama komutuna ekleyerek geçersiz kılmadığınız sürece karşıdan yükleme başarısız olur.
-
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
-
-> [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
 
 ### <a name="download-a-file"></a>Dosya indirme
 
@@ -214,37 +227,44 @@ Bu bölümde aşağıdaki örnekler yer almaktadır:
 > * Dosya paylaşımını başka bir depolama hesabına kopyalama
 > * Tüm dosya paylaşımlarını, dizinleri ve dosyaları başka bir depolama hesabına kopyalama
 
-Ayrıntılı başvuru dokümanları için [azcopy kopyasına](storage-ref-azcopy-copy.md)bakın.
-
 > [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
+> İsteğe bağlı bayraklar kullanarak kopyalama işleminizde değişiklik yapabilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |Dosyalarla birlikte erişim denetim listelerini (ALA'lar) kopyalayın.|**--korumak-smb-izinleri**=\[\|doğru yanlış\]|
+> |Dosyalarla birlikte Kobİ özellik bilgilerini kopyalayın.|**--preserve-smb-info**=\[\|doğru yanlış\]|
+> |Dosyaları Apend Blobs veya Page Blobs olarak kopyalayın.|**--blob tipi**=\[BlockBlob PageBlob\|\|AppendBlob\]|
+> |Belirli bir erişim katmanına (arşiv katmanı gibi) kopyalayın.|**--block-blob-tier**=\[\|None\|\|Hot Cool Arşiv\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-copy.md#options)bakın.
 
 ### <a name="copy-a-file-to-another-storage-account"></a>Dosyayı başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
+| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<file-path><SAS-token>'` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer/myTextFile.txt?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D'` |
 
 ### <a name="copy-a-directory-to-another-storage-account"></a>Dizini başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-path><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="copy-a-file-share-to-another-storage-account"></a>Dosya paylaşımını başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Tüm dosya paylaşımlarını, dizinleri ve dosyaları başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
+| **Sözdizimi** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<SAS-token>' --recursive'` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ## <a name="synchronize-files"></a>Dosyaları eşitle
@@ -258,10 +278,16 @@ Bir dosya paylaşımının içeriğini başka bir dosya paylaşımıyla eşitley
 
 `--delete-destination` Bayrağı AzCopy olarak `true` ayarlarsanız, bir istem sağlamadan dosyaları siler. AzCopy bir dosyayı silmeden önce bir istem `--delete-destination` görünmesini `prompt`istiyorsanız, bayrağı ' ya ayarlayın.
 
-Ayrıntılı başvuru dokümanları için [azcopy senkronizasyonuna](storage-ref-azcopy-sync.md)bakın.
-
 > [!TIP]
-> Bu bölümdeki örnekler, yol bağımsız değişkenlerini tek tırnak ('') ile kaplar. Windows Komut Uyruşu (cmd.exe) hariç tüm komut kabuklarında tek tırnak işareti kullanın. Windows Komut Uyruşu (cmd.exe) kullanıyorsanız, yol bağımsız değişkenlerini tek tırnak ('') yerine çift tırnak ("") içeren bir şekilde içine çekin.
+> İsteğe bağlı bayraklar kullanarak eşitleme işlemini değiştirebilirsiniz. İşte birkaç örnek.
+>
+> |Senaryo|Bayrak|
+> |---|---|
+> |İndirme de MD5'in ne kadar kesin olarak doğrulanması gerektiğini belirtin.|**--check-md5**=\[NoCheck\|\|LogOnly\|FailIfDifferent FailIfDifferentOrMissing\]|
+> |Bir desene dayalı dosyaları hariç tut.|**--dışlama-yol**|
+> |Eşitleme yle ilgili günlük girişlerinizin ne kadar ayrıntılı olmasını istediğinizi belirtin.|**--günlük seviyesi**=\[\|UYARI HATASI\|BİlGİlerİ\|YOK\]|
+> 
+> Tam liste için [seçeneklere](storage-ref-azcopy-sync.md#options)bakın.
 
 ### <a name="update-a-file-share-with-changes-to-another-file-share"></a>Başka bir dosya paylaşımında yapılan değişikliklerle dosya paylaşımını güncelleştirme
 
@@ -269,7 +295,7 @@ Bu komutta görünen ilk dosya paylaşımı kaynaktır. İkincisi hedef.
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **Sözdizimi** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Örnek** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
 ### <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Başka bir dosya paylaşımında dizin değişikliği olan bir dizini güncelleştirme
@@ -278,8 +304,19 @@ Bu komutta görünen ilk dizin kaynaktır. İkincisi hedef.
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name>?<SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
+| **Sözdizimi** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name>/<directory-name><SAS-token>' --recursive` |
 | **Örnek** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+### <a name="update-a-file-share-to-match-the-contents-of-a-share-snapshot"></a>Bir dosya paylaşımını paylaşım anlık görüntüsünün içeriğiyle eşleşecek şekilde güncelleştirme
+
+Bu komutta görünen ilk dosya paylaşımı kaynaktır. URI'nin sonunda, enstantanenin `&sharesnapshot=` **DateTime** değerini izleyen dizeyi tamamla. 
+
+|    |     |
+|--------|-----------|
+| **Sözdizimi** | `azcopy sync 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>&sharesnapsot<snapshot-ID>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
+| **Örnek** | `azcopy sync 'https://mysourceaccount.file.core.windows.net/myfileShare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D&sharesnapshot=2020-03-03T20%3A24%3A13.0000000Z' 'https://mydestinationaccount.file.core.windows.net/myfileshare?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
+
+Paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek [için Azure Dosyaları için paylaşım anlık görüntülerine genel bakış bölümüne](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

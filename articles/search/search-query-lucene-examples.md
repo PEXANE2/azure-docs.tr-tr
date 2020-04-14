@@ -9,21 +9,21 @@ tags: Lucene query analyzer syntax
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3c54f864b5bd562fdc0a84b2903198704032b360
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: bc691299f38d562aee5c08a89e10372331663f8e
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998495"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262817"
 ---
 # <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-cognitive-search"></a>"Tam" Lucene arama sözdizimini (Azure Bilişsel Arama'da gelişmiş sorgular) kullanın
 
 Azure Bilişsel Arama için sorguoluştururken, özel ve gelişmiş sorgu tanımlarını formüle etmek için varsayılan [basit sorgu arasını](query-simple-syntax.md) Azure Bilişsel Arama'daki daha geniş [Lucene Query Parser](query-lucene-syntax.md) ile değiştirebilirsiniz. 
 
-Lucene arayıcı, alan kapsamı sorguları, bulanık ve önek joker karakter arama, yakınlık araması, terim artırma ve düzenli ifade araması gibi karmaşık sorgu yapılarını destekler. Ek güç, biraz daha uzun yürütme süresi beklemeniz için ek işlem gereksinimleriyle birlikte gelir. Bu makalede, tam sözdizimini kullanırken kullanılabilir sorgu işlemlerini gösteren örnekler arasında adım atabilirsiniz.
+Lucene arayıcı, alan kapsamı sorguları, bulanık arama, infix ve soneki joker karakter arama, yakınlık araması, terim artırma ve düzenli ifade araması gibi karmaşık sorgu yapılarını destekler. Ek güç, biraz daha uzun yürütme süresi beklemeniz için ek işlem gereksinimleriyle birlikte gelir. Bu makalede, tam sözdizimini kullanırken kullanılabilir sorgu işlemlerini gösteren örnekler arasında adım atabilirsiniz.
 
 > [!Note]
-> Tam Lucene sorgu sözdizimi aracılığıyla etkinleştirilen özel sorgu yapılarının çoğu [metin çözümlenmez,](search-lucene-query-architecture.md#stage-2-lexical-analysis)bu da köklendirme veya lemmatizasyon beklerseniz şaşırtıcı olabilir. Sözlü çözümleme yalnızca tam terimler (dönem sorgusu veya tümcecik sorgusu) üzerinde gerçekleştirilir. Eksik terimleri olan sorgu türleri (önek sorgusu, joker karakter sorgusu, regex sorgusu, bulanık sorgu) doğrudan sorgu ağacına eklenir ve çözümleme aşamasını atlar. Tamamlanmamış sorgu terimlerinde gerçekleştirilen tek dönüşüm, düşürmedir. 
+> Tam Lucene sorgu sözdizimi aracılığıyla etkinleştirilen özel sorgu yapılarının çoğu [metin çözümlenmez,](search-lucene-query-architecture.md#stage-2-lexical-analysis)bu da köklendirme veya lemmatizasyon beklerseniz şaşırtıcı olabilir. Sözlü çözümleme yalnızca tam terimler (dönem sorgusu veya tümcecik sorgusu) üzerinde gerçekleştirilir. Eksik terimleri olan sorgu türleri (önek sorgusu, joker karakter sorgusu, regex sorgusu, bulanık sorgu) doğrudan sorgu ağacına eklenir ve çözümleme aşamasını atlar. Kısmi sorgu terimlerinde gerçekleştirilen tek dönüşüm, düşürmedir. 
 >
 
 ## <a name="formulate-requests-in-postman"></a>Postacı'daki istekleri formüle edin

@@ -3,7 +3,7 @@ title: Azure VM boyutları - En iyi iletişimi en iyi duruma getirin | Microsoft
 description: Azure'daki sanal makineler için kullanılabilen farklı bilgi işlem optimize boyutları listeler. VCPUs, veri diskleri ve NIC'lerin sayısı nın yanı sıra bu serideki boyutlar için depolama verime ve ağ bant genişliği hakkındaki bilgileri listeler.
 services: virtual-machines
 documentationcenter: ''
-author: jonbeck7
+author: mimckitt
 manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: d709d621341ef14ec158ed5af1c2df4297d66b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mimckitt
+ms.openlocfilehash: e08d593f641c42f9ad605fda013206e70a34e52f
+ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77493637"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81269644"
 ---
 # <a name="compute-optimized-virtual-machine-sizes"></a>Optimize edilmiş sanal makine boyutlarını hesaplama
 
@@ -31,7 +31,7 @@ Fsv2 serisi, saat başına daha düşük bir liste fiyatıyla, vCPU başına Azu
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)

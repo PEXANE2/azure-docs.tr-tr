@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 04/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 9b0e0b39b7ac7d7834c9cdcbd79ba45b024c823a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992020"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262392"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için PowerShell'i kullanın (önizleme)
 
@@ -270,15 +270,14 @@ Bir istem `-Force` olmadan dosyayı kaldırmak için parametre kullanabilirsiniz
 
 ## <a name="manage-access-permissions"></a>Erişim izinlerini yönetme
 
-Dosya sistemlerinin, dizinlerin ve dosyaların erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz.
+Dosya sistemlerinin, dizinlerin ve dosyaların erişim izinlerini alabilir, ayarlayabilir ve güncelleştirebilirsiniz. Bu izinler erişim denetim listelerinde (ALA'lar) yakalanır.
 
 > [!NOTE]
 > Komutları yetkilendirmek için Azure Active Directory'yi (Azure AD) kullanıyorsanız, güvenlik yöneticinizin [Depolama Blob Veri Sahibi rolüne](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)atandığından emin olun. ACL izinlerinin nasıl uygulandığı ve bunları değiştirmenin etkileri hakkında daha fazla bilgi edinmek için [Azure Veri Gölü Depolama Gen2'de Erişim denetimine](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)bakın.
 
-### <a name="get-permissions"></a>İzinalma
+### <a name="get-an-acl"></a>Bir ACL alın
 
 `Get-AzDataLakeGen2Item`Cmdlet kullanarak bir dizin veya dosyanın ACL alın.
-
 
 Bu örnek, bir **dosya sisteminin** ACL'sini alır ve acl'yi konsola yazdırır.
 
@@ -311,7 +310,7 @@ Aşağıdaki resim, bir dizinin ACL'sini aldıktan sonra çıktıyı gösterir.
 
 Bu örnekte, sahibi olan kullanıcı izinleri okumuş, yazar ve yürütemiştir. Sahip olan grup yalnızca izinleri okudu ve çalıştırıyor. Erişim denetimi listeleri hakkında daha fazla bilgi için [Azure Veri Gölü Depolama Gen2'deki Erişim denetimine](data-lake-storage-access-control.md)bakın.
 
-### <a name="set-or-update-permissions"></a>İzinleri ayarlama veya güncelleştirme
+### <a name="set-an-acl"></a>Bir ACL ayarlama
 
 Sahibi `set-AzDataLakeGen2ItemAclObject` kullanıcı, sahip grubu veya diğer kullanıcılar için bir ACL oluşturmak için cmdlet kullanın. Daha sonra, `Update-AzDataLakeGen2Item` ACL işlemek için cmdlet kullanın.
 
@@ -359,7 +358,7 @@ Aşağıdaki resim, bir dosyanın ACL'sini ayarladıktan sonra çıktıyı göst
 Bu örnekte, sahibi kullanıcı ve sahip grubu yalnızca okuma ve yazma izinleri var. Diğer tüm kullanıcıların yazma ve yürütme izinleri vardır. Erişim denetimi listeleri hakkında daha fazla bilgi için [Azure Veri Gölü Depolama Gen2'deki Erişim denetimine](data-lake-storage-access-control.md)bakın.
 
 
-### <a name="set-permissions-on-all-items-in-a-file-system"></a>Dosya sistemindeki tüm öğelerde izinleri ayarlama
+### <a name="set-acls-on-all-items-in-a-file-system"></a>Dosya sistemindeki tüm öğelerin ALA'larını ayarlama
 
 Bir dosya `Get-AzDataLakeGen2Item` sistemindeki `-Recurse` tüm dizin `Update-AzDataLakeGen2Item` ve dosyaların ACL'sini ayarlamak için cmdlet ile birlikte parametreyi kullanabilirsiniz. 
 
@@ -370,6 +369,41 @@ $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
 Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
 ```
+### <a name="add-or-update-an-acl-entry"></a>ACL girişi ekleme veya güncelleme
+
+Önce ACL'yi al. Ardından, bir `set-AzDataLakeGen2ItemAclObject` ACL girişi eklemek veya güncellemek için cmdlet'i kullanın. ACL `Update-AzDataLakeGen2Item` işlemek için cmdlet kullanın.
+
+Bu örnek, bir kullanıcı için bir **dizinde** ACL oluşturur veya güncelleştirir.
+
+```powershell
+$filesystemName = "my-file-system"
+$dirname = "my-directory/"
+$acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname).ACL
+$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
+```
+
+### <a name="remove-an-acl-entry"></a>ACL girişini kaldırma
+
+Bu örnek, varolan bir ACL'den bir girişi kaldırır.
+
+```powershell
+$id = "xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+# Create the new ACL object.
+[Collections.Generic.List[System.Object]]$aclnew =$acl
+
+foreach ($a in $aclnew)
+{
+    if ($a.AccessControlType -eq "User"-and $a.DefaultScope -eq $false -and $a.EntityId -eq $id)
+    {
+        $aclnew.Remove($a);
+        break;
+    }
+}
+Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $aclnew
+```
+
 <a id="gen1-gen2-map" />
 
 ## <a name="gen1-to-gen2-mapping"></a>Gen1 ' den Gen2 Haritalama

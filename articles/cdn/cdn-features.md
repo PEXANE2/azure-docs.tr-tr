@@ -3,7 +3,7 @@ title: Compare Azure Content Delivery Network (CDN) ürün özelliklerini karş�
 description: Her Azure Content Delivery Network (CDN) ürününün desteklediği özellikler hakkında bilgi edinin.
 services: cdn
 documentationcenter: ''
-author: mdgattuso
+author: asudbring
 manager: danielgi
 editor: mdgattuso
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2019
-ms.author: magattus
+ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0ee4ee722c781b8ee64c426d7b63aa9f680373b0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982251"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81260522"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN ürün özelliklerini karşılaştırın
 

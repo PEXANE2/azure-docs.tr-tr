@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/02/2019
-ms.openlocfilehash: c9c69bb475c943003f78a69df1142653c3d5249e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c6a3ac701442fb30e471bcc2c8f317e3988980f7
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288385"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261984"
 ---
 # <a name="microsoft-commercial-marketplace-roadmap"></a>Microsoft ticari pazar yol haritası
 
@@ -29,7 +29,7 @@ Bir yetenek canlı olduğunda, yol haritasından kaldırılır. Pazara eklenen i
 
 * [Pazar Yeri + CSP Güncelleme Blog](https://aka.ms/marketplacemarchupdateblog)
 * [Teklifleri CSP kanalında yayımla (ISV)](https://aka.ms/publishtocsp)
-* [Resell Marketplace teklifleri (CSP)](hhttps://aka.ms/marketplaceincsp)
+* [Resell Marketplace teklifleri (CSP)](https://aka.ms/marketplaceincsp)
 * [Standart Sözleşme](https://aka.ms/standardcontract)
 * [SaaS Karşılama API](https://aka.ms/saasapiv2)
 * [Pazar Yeri Geos ve Para Birimleri](https://aka.ms/marketplacegeos)
