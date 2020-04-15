@@ -63,6 +63,8 @@
               href: add-users-administrator.md
             - name: B2B kullanıcıları ekleyen bilgi çalışanları
               href: add-users-information-worker.md
+            - name: İç kullanıcıları B2B’ye davet etme
+              href: invite-internal-users.md
             - name: Google federasyonu
               href: google-federation.md
             - name: Bir kerelik geçiş kodu kimlik doğrulaması

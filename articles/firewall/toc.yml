@@ -20,6 +20,9 @@
     - name: IP Grupları ile dağıtma
       displayName: Resource Manager
       href: quick-create-ipgroup-template.md
+    - name: Birden çok adres ile dağıtma
+      displayName: Resource Manager
+      href: quick-create-multiple-ip-template.md
 - name: Örnekler
   items:
     - name: Azure PowerShell

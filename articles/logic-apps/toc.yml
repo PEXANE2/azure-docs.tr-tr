@@ -105,6 +105,8 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: Sorun giderme hataları
           href: logic-apps-diagnosing-failures.md
+        - name: 429 hatalarını veya bant genişliği azaltma sorunlarını ele alma
+          href: handle-throttling-problems-429-errors.md
     - name: Azure sanal ağlarına erişme
       items:
         - name: Tümleştirme hizmeti ortamı oluşturma - Azure portalı

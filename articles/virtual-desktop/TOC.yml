@@ -50,6 +50,8 @@
           href: create-host-pools-user-profile.md
         - name: Azure NetApp Files kullanma
           href: create-fslogix-profile-container.md
+        - name: Azure Dosyalar’ı ve Azure AD DS’yi kullanma
+          href: create-profile-container-adds.md
     - name: Konak havuzu ayarlarını yapılandırma
       items:
         - name: RDP özellikleri

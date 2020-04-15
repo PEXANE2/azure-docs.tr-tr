@@ -17,7 +17,11 @@
 - name: Kavramlar
   items:
     - name: Uzaktan çalışma
-      href: work-remotely-support.md
+      items:
+        - name: Uzaktan çalışmaya yönelik destek
+          href: ../networking/working-remotely-support.md?toc=%2fazure%2fexpressroute%2ftoc.json
+        - name: Uzak kullanıcılar için hibrit bağlantı
+          href: work-remotely-support.md
     - name: Bağlantı modelleri
       href: expressroute-connectivity-models.md
     - name: Bağlantı hatları ve eşleme

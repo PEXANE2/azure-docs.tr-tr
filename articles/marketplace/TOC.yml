@@ -1,11 +1,11 @@
-- name: Azure Market ve AppSource belgeleri
+- name: Ticari market belgeleri
   href: index.yml
   items:
-    - name: Azure Market ve AppSource yol haritası
+    - name: Ticari market yol haritası
       href: ./marketplace-roadmap.md
-    - name: Azure Market ilkeleri ve koşulları
+    - name: Ticari market ilkeleri ve koşulları
       href: ./policies-terms.md
-    - name: Azure Market ve AppSource genel bakış bilgileri ve avantajları
+    - name: Ticari markete genel bakış ve sunulan avantajlar
       href: ./marketplace-publishers-guide.md
       items:
         - name: 'Bir market, iki vitrin'
@@ -15,7 +15,7 @@
           items:
             - name: Müşteri adayı yönetimi
               href: ./lead-management-for-cloud-marketplace.md
-            - name: Azure Market'te işlem yapma
+            - name: Ticari markette işlem yapma
               href: ./marketplace-commercial-transaction-capabilities-and-considerations.md
             - name: Özel Teklifler
               href: ./private-offers.md
@@ -66,7 +66,7 @@
               href: ./preferred-solutions.md
             - name: Tümleşik çözümler
               href: ./integrated-solutions.md
-        - name: Azure Market ve AppSource desteği
+        - name: Ticari market desteği
           href: ./support-azure-marketplace.md
           items:
             - name: Market hakkında SSS
@@ -78,6 +78,8 @@
   items:
     - name: İş Ortağı Merkezi'ne Bulut İş Ortağı Portalı geçişi
       href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
+    - name: Geçiş hakkında SSS
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-faq.md
     - name: Portal Turu
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -427,12 +429,10 @@
           href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
     - name: Destek alma
       href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-- name: İş Ortağı Merkezi'nde Ticari Market Portalı
+- name: İş Ortağı Merkezi’nde ticari market
   items:
-    - name: Genel Bakış
-      items:
-        - name: Ticari Market nedir?
-          href: ./partner-center-portal/commercial-marketplace-overview.md
+    - name: Ticari markete genel bakış
+      href: ./partner-center-portal/commercial-marketplace-overview.md
     - name: Hesap Yönetimi
       items:
         - name: Yeni bir İş Ortağı Merkezi hesabı oluşturma
@@ -453,6 +453,30 @@
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Ekleme için API
               href: ./partner-center-portal/azure-app-apis.md
+        - name: Azure Kapsayıcısı teklifleri
+          items:
+            - name: Teknik varlıkları hazırlama
+              href: ./partner-center-portal/create-azure-container-technical-assets.md
+            - name: Azure Kapsayıcısı teklifi oluşturma
+              href: ./partner-center-portal/create-azure-container-offer.md
+        - name: Sanal Makine teklifi
+          items:
+            - name: Azure Sanal Makine teklifi oluşturma
+              href: ./partner-center-portal/azure-vm-create-offer.md
+            - name: Azure VM teknik varlığı oluşturma
+              items:
+                - name: Azure VM teknik varlığı oluşturma
+                  href: ./partner-center-portal/create-azure-vm-technical-asset.md
+                - name: Azure VM teknik varlığı oluşturma hakkında SSS
+                  href: ./partner-center-portal/common-issues-during-vhd-creation.md
+                - name: Azure VM görüntüsünü onaylama
+                  href: ./partner-center-portal/azure-vm-image-certification.md
+                - name: SAS URI’si
+                  items:
+                    - name: SAS URI'si alma
+                      href: ./partner-center-portal/get-sas-uri.md
+                    - name: SAS URI’si hakkında SSS
+                      href: ./partner-center-portal/common-sas-uri-issues.md
         - name: Danışmanlık hizmetleri
           items:
             - name: Ön koşullar
@@ -539,7 +563,7 @@
       href: ./partner-center-portal/support.md
     - name: İş Ortağı Merkezi Analizi
       items:
-        - name: Ticari Market için analiz
+        - name: Ticari market için analiz
           href: ./partner-center-portal/analytics.md
         - name: Özet panosu
           href: ./partner-center-portal/summary-dashboard.md
