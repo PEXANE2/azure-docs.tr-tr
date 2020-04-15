@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 description: ISO 27001 Paylaşılan Hizmetler şema örneğinin genel bakış bilgileri ve mimarisi. Bu şema örneği, müşterilerin belirli ISO 27001 denetimlerini değerlendirmesine yardımcı olur.
-ms.date: 01/13/2020
+ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "75922536"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381568"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 
@@ -21,7 +21,7 @@ ISO 27001 Paylaşılan Hizmetler şema örneği, ISO 27001 onayı almaya yardım
 ISO 27001 Paylaşılan Hizmetler şema örneği Azure'da temel bir altyapı dağıtır. Bu altyapı kuruluşlar tarafından Sanal Veri Merkezi (VDC) yaklaşımı temelinde birden çok iş yükünü barındırmak için kullanılabilir.
 VDC, Microsoft'un en büyük kurumsal müşterileriyle kullandığı başarısı kanıtlanmış bir dizi referans mimarisi, otomasyon aracı ve etkileşim modelidir. Paylaşılan Hizmetler şema örneği aşağıda gösterilen tümüyle yerel bir Azure VDC ortamını temel alır.
 
-![ISO 27001 Paylaşılan Hizmetler şema örneği tasarımı](../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png)
+:::image type="content" source="../../media/sample-iso27001-shared/iso27001-shared-services-blueprint-sample-design.png" alt-text="ISO 27001 Paylaşılan Hizmetler şema örneği tasarımı" border="false":::
 
 Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kullanıma hazır bir paylaşılan hizmetler altyapısı sağlamak için kullanılan çeşitli Azure hizmetlerinden oluşur. Bu ortam şunlardan oluşur:
 

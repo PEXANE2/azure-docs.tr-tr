@@ -3,22 +3,26 @@ title: Azure Maliyet Yönetimi ile AWS tümleştirmesini ayarlama
 description: Bu makale, AWS Maliyet ve Kullanım raporu ile Azure Maliyet Yönetimi tümleştirmesini ayarlama ve yapılandırma adımlarında size yol gösterecektir.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: matrive
-ms.openlocfilehash: c0f6f18abf7c05cf5ae6dcaa31a57974ecfca806
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3b1efabbf5f05c05ef939ee8713829fbd49f483
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79203092"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878995"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS Maliyet ve Kullanım raporu tümleştirmesini ayarlama ve yapılandırma
 
 Amazon Web Services (AWS) Maliyet ve Kullanım raporu (CUR) tümleştirmesi sayesinde AWS harcamalarınızı Azure Maliyet Yönetimi ile izleyebilir ve denetleyebilirsiniz. Bu tümleştirme, hem Azure hem de AWS harcamalarınızı Azure portalından izlemenizi ve denetlemenizi sağlar. Bu makalede maliyetleri analiz etmek ve bütçeleri gözden geçirmek için Azure Maliyet Yönetimi'ni kullanabilmeniz için tamamlamanız gereken tümleştirme ve yapılandırma adımları anlatılmaktadır.
 
 Maliyet Yönetimi, rapor tanımlarını almak ve rapor GZIP CSV dosyalarını indirmek için AWS erişimi kimlik bilgilerinizi kullanarak bir S3 demetinde depolanan AWS Maliyet ve Kullanım raporunuzu işler.
+
+AWS rapor tümleştirmesini ayarlama hakkında daha fazla bilgi edinmek için [Maliyet Yönetimi’nde AWS Bağlayıcılarını ayarlama](https://www.youtube.com/watch?v=Jg5KC1cx5cA) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+
+>[!VIDEO https://www.youtube.com/embed/Jg5KC1cx5cA]
 
 ## <a name="create-a-cost-and-usage-report-in-aws"></a>AWS'de Maliyet ve Kullanım raporu oluşturma
 

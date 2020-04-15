@@ -3,16 +3,16 @@ title: Azure EA sözleşmeleri ve düzeltmeleri
 description: Bu makalede Azure EA sözleşmeleri ve düzeltmelerinin Azure EA portalı kullanımınızı nasıl etkilediği açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/04/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5198bd240f0c4e23910504fd039d64a73ddb41c9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b007e98f37246d17679761fd601ed76fd9fb875
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78301429"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586236"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA sözleşmeleri ve düzeltmeleri
 
@@ -168,7 +168,7 @@ Bir CPP SKU siparişi oluşturduysanız, siparişin içeriği belirli bir veri m
 
 Kredilerin satın alınma şekli, belirli bir sınıftaki makinelerin ay içindeki kullanım miktarına göre hesaplanır. Örneğin ABD Doğu 2 bölgesinde yılda 70 A2 VM satın aldıysanız bunu EA Portal'da tam olarak satın aldığınız şekilde görmezsiniz.
 
-Aylık makineler, ayda 744 saat çalışan birimler olarak hesaplanır. Bu süreyi saate çevirecek olursak 70 çarpı 744 eşittir ayda 52.080 A2 VM satın almış olursunuz. EA Portal Kullanım Özeti A2 VM'ler 100 saatlik artışlarla gösterildiğinden aylık 520,8 (52.080/100) "Dahil Edilen Birim" kredi ve ay içinde o ana kadar tüketilmiş olan birim sayısını görürsünüz. Ay içinde kullanılan birim sayısı aylık dahil edilen birim sayısını geçmediği sürece kullanım ücreti sıfır görünmelidir.
+Aylık makineler, ayda 744 saat çalışan birimler olarak hesaplanır. Bu süreyi saate çevirecek olursak 70 çarpı 744 eşittir ayda 52.080 A2 VM satın almış olursunuz. EA Portal Kullanım Özetinde A2 VM'ler 100 saatlik artışlarla gösterildiğinden aylık 520,8 (52.080/100) "Dahil Edilen Birim" kredi ve ay içinde o ana kadar tüketilmiş olan birim sayısını görürsünüz. Ay içinde kullanılan birim sayısı aylık dahil edilen birim sayısını geçmediği sürece kullanım ücreti sıfır görünmelidir.
 
 Farklı makine türleri farklı ölçüm birimleri kullanır. Örneğin D3 ve D4 gibi VM'ler Kullanım Özeti raporunda 10 Saatlik ölçüm birimi kullanır ve bunlardan 70 adet satın aldığınızda aylık 5208 dahil edilen birim (52.080/10) görünür.
 

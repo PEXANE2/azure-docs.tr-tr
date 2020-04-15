@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 description: Bu makale bulut yatırımlarınızdan en iyi şekilde yararlanmanıza, maliyetlerinizi azaltmanıza ve paranızın nereye harcandığını değerlendirmenize yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 4941c1be8fd20dfa88e3ac36bfa30af77a2b1be1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80157220"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874594"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Azure Maliyet Yönetimi ile bulut yatırımınızı iyileştirme
 
@@ -36,6 +36,10 @@ Kuruluşunuzun maliyetleri başarılı bir şekilde yönetebilmesi için aşağ�
 ### <a name="key-principles"></a>Temel ilkeler
 
 Kuruluşunuzun bulut maliyeti yönetiminde başarılı olmasını sağlamak için aşağıdaki ilkeleri kullanın.
+
+Daha fazla bilgi edinmek için [Maliyet Yönetimi başarı için planlama](https://www.youtube.com/watch?v=dVuwITdSAZ4) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+
+>[!VIDEO https://www.youtube.com/embed/dVuwITdSAZ4]
 
 #### <a name="planning"></a>Planlama
 
@@ -125,7 +129,7 @@ Kuruluşunuzun maliyetlerinin zaman içinde nasıl değiştiğini takip edin. Ha
 
 Kaynaklarınızı maliyetleri dikkate alarak düzenleyin. Abonelik ve kaynak grubu oluştururken ilgili maliyetlerden sorumlu olan ekipleri düşünün. Raporlamanın şirketiniz için uygun olduğundan emin olun. Abonelikler ve kaynak grupları, kuruluş genelindeki harcamaların düzenlenmesi ve atanması için uygun demetler sunar. Etiketler, maliyetleri atamak için uygun bir yöntem sunar. Etiketleri filtre olarak kullanabilirsiniz. Ayrıca bunları veri analizi ve maliyet inceleme aşamalarında gruplama ölçütü olarak da kullanabilirsiniz. Kurumsal Anlaşma müşterileri, departman oluşturabilir ve abonelikleri departmanların altına yerleştirebilir. Azure'daki maliyet tabanlı düzen, kuruluşunuzdaki ilgili kişilerin ekipleri tarafından yapılan harcamaların azaltılmasından sorumlu tutulmasını sağlar.
 
-Kuruluşunuzda ölçeklenebilir kaynak etiketlemeyi zorunlu tutmak amacıyla kullanabileceğiniz araçları anlamak için [Azure Maliyet Yönetimi ile etiket ilkelerini gözden geçirme](https://www.youtube.com/watch?v=nHQYcYGKuyw) videosunu izleyin.
+Kuruluşunuzda ölçeklenebilir kaynak etiketlemeyi zorunlu tutmak amacıyla kullanabileceğiniz araçları anlamak için [Azure Maliyet Yönetimi ile etiket ilkelerini gözden geçirme](https://www.youtube.com/watch?v=nHQYcYGKuyw) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
 

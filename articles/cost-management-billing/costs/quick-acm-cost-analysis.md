@@ -3,17 +3,17 @@ title: Hızlı Başlangıç - Maliyet analiziyle Azure maliyetlerini keşfetme
 description: Bu hızlı başlangıç, Azure kurumsal maliyetlerinizi keşfetmek ve analiz etmek için maliyet analizini kullanmanıza yardımcı olur.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/07/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 53e1ef2f5e4faecd3ab2dee1350f3e9087df8e9d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155962"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874509"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Hızlı Başlangıç: Maliyet analiziyle maliyetleri araştırma ve analiz etme
 
@@ -45,7 +45,7 @@ Maliyetlerinizi maliyet analizinde incelemek için Azure portalında kapsamı a�
 
 Veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için seçtiğiniz kapsam Maliyet Yönetimi’nin tamamında kullanılır. Kapsamları kullandığınızda, birden çok kapsam seçemezsiniz. Bunun yerine, diğerlerinin toplandığı büyük bir kapsam seçer ve iç içe yerleştirilmiş kapsamları ihtiyacınıza göre daraltırsınız. Bazı kullanıcılar birden fazla iç içe yerleştirilmiş kapsamı içine alan tek bir üst kapsama erişim iznine sahip olmayabileceğinden bu yaklaşımı anlamak önemlidir.
 
-Maliyet Analizi’nin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için [Azure portalında Maliyet Yönetimi’ni kullanma](https://www.youtube.com/watch?v=mfxysF-kTFA) videosunu izleyin.
+Maliyet Analizi’nin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için [Azure portalında Maliyet Yönetimi’ni kullanma](https://www.youtube.com/watch?v=mfxysF-kTFA) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/mfxysF-kTFA]
 
@@ -145,6 +145,10 @@ Herhangi bir görünümde tam veri kümesini görüntüleyebilirsiniz. Sunulan v
 
 ## <a name="understanding-grouping-and-filtering-options"></a>Gruplandırma ve filtreleme seçeneklerini anlama
 
+Maliyet analizinde birçok gruplandırma ve filtreleme seçeneği vardır. Gruplandırma ve filtreleme seçenekleriyle ilgili bir video izlemek istiyorsanız [Maliyet Yönetimi boyutlara ve etiketlere göre raporlama](https://www.youtube.com/watch?v=2Vx7V17zbmk) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+
+>[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
+
 Aşağıdaki tabloda en yaygın kullanılan gruplandırma ve filtreleme seçenekleri ile bunları ne zaman kullanmanız gerektiği listelenmiştir.
 
 | Özellik | Kullanılması gereken durumlar | Notlar |
@@ -178,7 +182,7 @@ Terimler hakkında daha fazla bilgi için bkz. [Azure kullanımı ve ücretleri 
 
 Özelleştirilmiş görünümleri kaydetmek ve başkalarıyla paylaşmak için maliyet analizini Azure portalı panosuna sabitleyebilir veya maliyet analizi bağlantısını kopyalayabilirsiniz.
 
-Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde görünümleri paylaşma ve kaydetme](https://www.youtube.com/watch?v=kQkXXj-SmvQ) videosunu izleyin.
+Portalı kullanarak kuruluşunuzda maliyet bilgilerini paylaşma hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde görünümleri paylaşma ve kaydetme](https://www.youtube.com/watch?v=kQkXXj-SmvQ) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/kQkXXj-SmvQ]
 

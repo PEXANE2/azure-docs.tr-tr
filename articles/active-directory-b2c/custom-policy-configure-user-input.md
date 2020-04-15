@@ -1,58 +1,55 @@
 ---
-title: Özel ilkelere talep ekleme ve kullanıcı girdisi özelleştirme
+title: Özel ilkelerde talepler ekleme ve Kullanıcı girişini özelleştirme
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C'deki kaydolma veya kaydolma yolculuğuna kullanıcı girişini nasıl özelleştirip talep ekleyin öğrenin.
+description: Kullanıcı girişini özelleştirmeyi ve Azure Active Directory B2C kaydolma veya oturum açma yolculuğuna talepler ekleme hakkında bilgi edinin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/17/2020
+ms.date: 03/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85f2ab6f8c3e5edda027e44eeda13a3279a88321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: 56a3478f1c0dbc05eba07a5109f5bb6ba89b79d0
+ms.sourcegitcommit: 72c2da0def8aa7ebe0691612a89bb70cd0c5a436
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473685"
+ms.lasthandoff: 03/10/2020
+ms.locfileid: "79079889"
 ---
-#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeler kullanarak talep ekleme ve kullanıcı girdilerini özelleştirme
+#  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Bu makalede, Azure Active Directory B2C'deki (Azure AD B2C) kayıt yolculuğunuz sırasında yeni bir öznitelik toplarsınız. Kullanıcıların şehrini elde eder, açılır olarak yapılandıracak ve sağlanıp sağlanmadığını tanımlarsınız.
+Bu makalede, kayıt seyahatinizi Azure Active Directory B2C (Azure AD B2C) sırasında yeni bir öznitelik topladığınızda. Kullanıcıların şehrini alacak, açılan olarak yapılandıracaksınız ve sağlanması gerekip gerekmediğini tanımlayacaksınız.
 
-> [!NOTE]
-> Bu örnek, yerleşik iddia 'şehir' kullanır. Bunun yerine, desteklenen [Azure AD B2C yerleşik özniteliklerden](user-profile-attributes.md) birini veya özel bir öznitelik seçebilirsiniz. Özel bir öznitelik kullanmak [için, ilkenizde özel öznitelikleri etkinleştirin.](custom-policy-custom-attributes.md) Farklı bir yerleşik veya özel öznitelik kullanmak için, 'şehir'i seçtiğiniz öznitelikle (örneğin yerleşik öznitelik *işiBaşlığı* veya *extension_loyaltyId*gibi özel bir öznitelik gibi değiştirin.  
+Kayıt veya oturum açma Kullanıcı yolculuğu kullanarak kullanıcılarınızla ilk verileri toplayabilirsiniz. Ek talepler, daha sonra bir profil düzenleme Kullanıcı yolculuğu kullanılarak toplanabilir. Azure AD B2C her zaman doğrudan kullanıcıdan etkileşimli olarak bilgi toplar, kimlik deneyimi çerçevesi [kendi kendine onaylanan teknik profilini](self-asserted-technical-profile.md)kullanır. Bu örnekte şunları yapabilirsiniz:
 
-Kaydolma veya kaydolma kullanıcı yolculuğunu kullanarak kullanıcılarınızdan ilk verileri toplayabilirsiniz. Ek talepler daha sonra bir profil düzenleme kullanıcı yolculuğu kullanılarak toplanabilir. Azure AD B2C bilgileri doğrudan kullanıcıdan etkileşimli olarak toplayınca, Kimlik Deneyimi Çerçevesi [kendi kendine öne süren teknik profilini](self-asserted-technical-profile.md)kullanır. Bu örnekte, şunları
+1. "Şehir" talebi tanımlayın.
+1. Kullanıcıdan şehrini sorun.
+1. Şehri Azure AD B2C dizinindeki Kullanıcı profiline kalıcı hale getirin.
+1. Her oturum açma üzerinde Azure AD B2C dizininden şehir talebini okuyun.
+1. Oturum açtıktan veya kaydolduktan sonra şehri bağlı olan taraf uygulamanıza döndürün.  
 
-1. Bir "şehir" iddiası tanımlayın. 
-1. Kullanıcıdan kendi şehirlerini isteyin.
-1. Azure AD B2C dizinindeki kullanıcı profiline şehri devam edin.
-1. Her oturum açmada Azure AD B2C dizininden şehir iddiasını okuyun.
-1. Oturum açtıktan veya kaydolduktan sonra şehri güvenen parti başvurunuza iade edin.  
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
+[Özel ilkelerle çalışmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın. Kaydolma ve oturum açma için sosyal ve yerel hesaplarla çalışan bir özel ilkenize sahip olmanız gerekir.
 
-[Özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın. Sosyal ve yerel hesaplarla kaydolmak ve oturum açmak için çalışan bir özel politikanız olmalıdır.
+## <a name="define-a-claim"></a>Talep tanımlama
 
-## <a name="define-a-claim"></a>Bir talep tanımlama
+Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici bir şekilde depolanmasını sağlar. [Talep şeması](claimsschema.md) , taleplerinizi bildirdiğiniz yerdir. Talebi tanımlamak için aşağıdaki öğeler kullanılır:
 
-Talep, Azure AD B2C ilke yürütmesi sırasında geçici bir veri depolama sağlar. [İddia şeması,](claimsschema.md) iddialarınızı beyan ettiğiniz yerdir. Talebi tanımlamak için aşağıdaki öğeler kullanılır:
+- **DisplayName** -kullanıcıya yönelik etiketi tanımlayan bir dize.
+- [Veri türü](claimsschema.md#datatype) -talebin türü.
+- **Userhelptext** -kullanıcının nelerin gerekli olduğunu anlamasına yardımcı olur.
+- [Userınputtype](claimsschema.md#userinputtype) -metin kutusu, radyo seçimi, açılan liste veya birden çok seçim gibi giriş denetiminin türü.
 
-- **DisplayName** - Kullanıcıya bakan etiketi tanımlayan bir dize.
-- [DataType](claimsschema.md#datatype) - Talebin türü.
-- **UserHelpText** - Kullanıcının ne gerektiğini anlamasını sağlar.
-- [UserInputType](claimsschema.md#userinputtype) - Metin kutusu, radyo seçimi, açılır liste veya birden çok seçim gibi giriş denetimi türü.
+İlkenizin uzantıları dosyasını açın. Örneğin, <em>**`TrustFrameworkExtensions.xml`**`SocialAndLocalAccounts/`</em>.
 
-İlkinizin uzantılar dosyasını açın. Örneğin, <em> `SocialAndLocalAccounts/` </em>.
-
-1. [BuildingBlocks](buildingblocks.md) öğesini arayın. Öğe yoksa, ekleyin.
-1. [ClaimsSchema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
-1. Şehir iddiasını **ClaimsSchema** öğesine ekleyin.  
+1. [Buildingblocks](buildingblocks.md) öğesi için arama yapın. Öğe yoksa, ekleyin.
+1. [Claimsschema](claimsschema.md) öğesini bulun. Öğe yoksa, ekleyin.
+1. Bir şehir talebini **Claimsschema** öğesine ekleyin.  
 
 ```xml
 <ClaimType Id="city">
@@ -69,13 +66,13 @@ Talep, Azure AD B2C ilke yürütmesi sırasında geçici bir veri depolama sağl
 
 ## <a name="add-a-claim-to-the-user-interface"></a>Kullanıcı arabirimine talep ekleme
 
-Aşağıdaki teknik profiller, kullanıcının girdi sağlaması beklenirken çağrılan kendi [kendine ileri](self-asserted-technical-profile.md)edilir:
+Aşağıdaki teknik [profiller, bir](self-asserted-technical-profile.md)kullanıcının giriş sağlaması beklendiğinde çağrılır:
 
-- **LocalAccountSignWithLogonEmail** - Yerel hesap kayıt akışı.
-- **SelfAsserted-Social** - Federe hesap ilk kez kullanıcı oturum açma.
-- **SelfAsserted-ProfileUpdate** - Profil akışını edin.
+- **Localaccountsignupwithlogonemail** -yerel hesap kaydolma akışı.
+- **Selfasted-sosyal** -Federasyon hesabı ilk kez Kullanıcı oturum açma.
+- **Selfasserted-ProfileUpdate** -profil akışını Düzenle.
 
-Kayıt sırasında şehir talebini toplamak için, `LocalAccountSignUpWithLogonEmail` teknik profile çıktı talebi olarak eklenmelidir. Uzantı dosyasındaki bu teknik profili geçersiz kılın. Taleplerin ekranda sunulduğu sırayı denetlemek için çıktı taleplerinin tüm listesini belirtin. İddia **Sağlayıcıları** öğesini bulun. Aşağıdaki gibi yeni bir ClaimsProviders ekleyin:
+Kaydolma sırasında şehir talebini toplamak için, `LocalAccountSignUpWithLogonEmail` teknik profiline bir çıkış talebi olarak eklenmelidir. Uzantı dosyasındaki bu teknik profili geçersiz kılın. Taleplerin ekranda sunulduğu sırayı denetlemek için tüm çıkış talepleri listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -98,7 +95,7 @@ Kayıt sırasında şehir talebini toplamak için, `LocalAccountSignUpWithLogonE
 <ClaimsProvider>
 ```
 
-Federe bir hesapla ilk oturum dan sonra şehir talebini tahsil etmek için, `SelfAsserted-Social` teknik profile çıktı talebi olarak eklenmelidir. Yerel ve federe hesap kullanıcılarının profil verilerini daha sonra edinebilmeleri `SelfAsserted-ProfileUpdate` için çıktı talebini teknik profile ekleyin. Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Taleplerin ekranda sunulduğu sırayı denetlemek için çıktı taleplerinin tüm listesini belirtin. İddia **Sağlayıcıları** öğesini bulun. Aşağıdaki gibi yeni bir ClaimsProviders ekleyin:
+Bir Federasyon hesabıyla ilk oturum açtıktan sonra şehir talebini toplamak için, `SelfAsserted-Social` teknik profiline bir çıkış talebi olarak eklenmelidir. Yerel ve Federal hesap kullanıcılarının profil verilerini daha sonra düzenleyebilmeleri için, `SelfAsserted-ProfileUpdate` teknik profiline çıkış talebini ekleyin. Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. Talepler ekranda sunulan sırayı denetlemek için çıkış taleplerinin tamamının listesini belirtin. **Claimsproviders** öğesini bulun. Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
   <DisplayName>Self Asserted</DisplayName>
@@ -125,12 +122,12 @@ Federe bir hesapla ilk oturum dan sonra şehir talebini tahsil etmek için, `Sel
 </ClaimsProvider>
 ```
 
-## <a name="read-and-write-a-claim"></a>Bir iddiayı okuma ve yazma
+## <a name="read-and-write-a-claim"></a>Talep okuma ve yazma
 
-Aşağıdaki teknik profiller, Azure Active Directory'ye veri okuyup yazan [Active Directory teknik profilleridir.](active-directory-technical-profile.md)  
-Kullanıcı `PersistedClaims` profiline veri yazmak `OutputClaims` ve ilgili Active Directory teknik profillerindeki kullanıcı profilindeki verileri okumak için kullanın.
+Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [Teknik profillerdir Active Directory](active-directory-technical-profile.md).  
+Kullanıcı profiline veri yazmak `OutputClaims` ve ilgili Active Directory teknik profillerinin içindeki kullanıcı profilinden veri okumak için `PersistedClaims` kullanın.
 
-Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. İddia **Sağlayıcıları** öğesini bulun.  Aşağıdaki gibi yeni bir ClaimsProviders ekleyin:
+Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. **Claimsproviders** öğesini bulun.  Yeni bir ClaimsProviders şu şekilde ekleyin:
 
 ```xml
 <ClaimsProvider>
@@ -170,9 +167,9 @@ Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. İddia **Sağlayı
 </ClaimsProvider>
 ```
 
-## <a name="include-a-claim-in-the-token"></a>Belirteci bir talep ekleme 
+## <a name="include-a-claim-in-the-token"></a>Belirtece bir talep ekleyin 
 
-Şehir talebini güvenilen taraf uygulamasına geri döndürmek <em> `SocialAndLocalAccounts/` </em> için, dosyaya bir çıktı talebi ekleyin. Çıktı talebi, başarılı bir kullanıcı yolculuğundan sonra belirteciiçine eklenir ve uygulamaya gönderilir. Bir çıktı talebi olarak şehir eklemek için güvenilen parti bölümündeki teknik profil öğesini değiştirin.
+Şehir talebini bağlı olan taraf uygulamasına geri döndürmek için <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> dosyasına bir çıkış talebi ekleyin. Çıkış talebi, başarılı bir Kullanıcı yolculuğuna sonra belirtece eklenir ve uygulamaya gönderilir. Şehri çıkış talebi olarak eklemek için bağlı olan taraf bölümündeki teknik profil öğesini değiştirin.
  
 ```xml
 <RelyingParty>
@@ -195,21 +192,21 @@ Uzantı dosyasındaki bu teknik profilleri geçersiz kılın. İddia **Sağlayı
 </RelyingParty>
 ```
 
-## <a name="test-the-custom-policy"></a>Özel ilkeyi test edin
+## <a name="test-the-custom-policy"></a>Özel ilkeyi test etme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD kiracınızı içeren dizin seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından **Uygulama kayıtlarını**arayın ve seçin.
-4. **Kimlik Deneyimi Çerçevesi'ni**seçin.
-5. **Özel İlke Yükle'yi**seçin ve ardından değiştirdiğiniz iki ilke dosyasını yükleyin.
-2. Yüklediğiniz kaydolma veya kaydolma ilkesini seçin ve **Şimdi Çalıştır** düğmesini tıklatın.
-3. Bir e-posta adresi kullanarak kaydolmalısınız.
+1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+2. Üst menüdeki **Dizin + abonelik** filtresini SEÇIP Azure AD kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
+3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
+4. **Kimlik deneyimi çerçevesini**seçin.
+5. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz iki ilke dosyasını karşıya yükleyin.
+2. Karşıya yüklediğiniz kaydolma veya oturum açma ilkesini seçin ve **Şimdi Çalıştır** düğmesine tıklayın.
+3. Bir e-posta adresi kullanarak kaydolabilirsiniz.
 
-Kayıt ekranı aşağıdaki ekran görüntüsüne benzer olmalıdır:
+Kaydolma ekranı aşağıdaki ekran görüntüsüne benzer görünmelidir:
 
-![Değiştirilmiş kayıt seçeneğinin ekran görüntüsü](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
+![Değiştirilen kaydolma seçeneğinin ekran görüntüsü](./media/custom-policy-configure-user-input/signup-with-city-claim-dropdown-example.png)
 
-Başvurunuza geri gönderilen `city` belirteç, talebi içerir.
+Uygulamanıza geri gönderilen belirteç `city` talebi içerir.
 
 ```json
 {
@@ -237,5 +234,5 @@ Başvurunuza geri gönderilen `city` belirteç, talebi içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- IEF referansındaki [ClaimsSchema](claimsschema.md) öğesi hakkında daha fazla bilgi edinin.
-- [Özel profil edit ilkesinde özel öznitelikleri](custom-policy-custom-attributes.md)nasıl kullanacağınızı öğrenin.
+- IEF başvurusunda [Claimsschema](claimsschema.md) öğesi hakkında daha fazla bilgi edinin.
+- Özel [bir profil düzenleme ilkesinde özel öznitelikleri nasıl kullanacağınızı](custom-policy-custom-attributes.md)öğrenin.

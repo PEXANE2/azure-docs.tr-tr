@@ -3,16 +3,16 @@ title: Azure EA portalı erişim sorunlarını giderme
 description: Bu makalede, Azure EA portalında Azure Kurumsal Anlaşma (EA) ile ilişkili olarak oluşabilen bazı sorunlar açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 3bf1c10e28ef9e3e4008968c9dbaef576bccdb5f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: ee8363a76db93f0c2bd4734151e3d250de5402fc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411543"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586197"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA portalı erişim sorunlarını giderme
 

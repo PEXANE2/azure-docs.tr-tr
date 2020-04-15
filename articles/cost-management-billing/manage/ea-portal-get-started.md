@@ -3,16 +3,16 @@ title: Azure Enterprise Portal'ı kullanmaya başlama
 description: Bu makalede Azure Kurumsal Anlaşma (Azure EA) müşterilerinin Azure Enterprise Portal'ı nasıl kullanacağı açıklanmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 5b84cbf4ae7065f13442852cfbf646aa49771e1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: da63960b312bde6ae8aafb659ef08ef2f52600cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272419"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586296"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Azure Enterprise Portal'ı kullanmaya başlama
 
@@ -111,7 +111,7 @@ Bildirim ilgili kişisi kayıtla ilgili kullanım bildirimlerini alır.
 
 Hizmetinizi etkinleştirmek için başlangıçtaki kuruluş yöneticisi [Azure Enterprise Portal](https://ea.azure.com)'ı açar ve davet e-postasındaki e-posta adresini kullanarak oturum açar.
 
-Kuruluş yöneticisi olarak belirlendiyseniz, etkinleştirme e-postasını almanız gerekmez. [Azure Enterprise Portal](https://ea.azure.com)'a giderek iş, okul veya Microsoft hesabı e-posta adresinizle ve parolanızla oturum açabilirsiniz.
+Kuruluş yöneticisi olarak belirlendiyseniz etkinleştirme e-postasını almanız gerekmez. [Azure Enterprise Portal](https://ea.azure.com)'a giderek iş, okul veya Microsoft hesabı e-posta adresinizle ve parolanızla oturum açabilirsiniz.
 
 Birden fazla kaydınız varsa etkinleştirilecek bir kayıt seçin. Varsayılan olarak, yalnızca etkin kayıtlar gösterilir. Kayıt geçmişini görüntülemek için, Azure Enterprise Portal'ın sağ üst köşesindeki **Etkin** seçeneğinin işaretini kaldırın.
 

@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: de558ddad37e1621c633d26fff51d1506c237577
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 030ae5dcac85a88309b317be1edfab11d0da051a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155928"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80878468"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Öğretici: Önerilerle maliyetleri iyileştirme
 
 Azure Maliyet Yönetimi, Azure Danışmanı ile birlikte çalışarak maliyet iyileştirme önerileri sunar. Azure Danışmanı boşta olan ve az kullanılan kaynakları belirleyerek verimliliği iyileştirmenize ve geliştirmenize yardımcı olur. Bu öğretici bir örnek üzerinden az kullanılan Azure kaynaklarını belirleme ve maliyetleri azaltmak için gerekli eylemleri gerçekleştirme konusunda size yol gösterecektir.
 
-Danışman kullanarak maliyetlerinizi iyileştirme hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde bulut yatırımlarını iyileştirme](https://www.youtube.com/watch?v=cSNPoAb-TNc) videosunu izleyin.
+Danışman kullanarak maliyetlerinizi iyileştirme hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi’nde bulut yatırımlarını iyileştirme](https://www.youtube.com/watch?v=cSNPoAb-TNc) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

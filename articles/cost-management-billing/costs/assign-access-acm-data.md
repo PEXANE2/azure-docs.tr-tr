@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi verilerine erişim atama
 description: Bu makalede farklı erişim kapsamları için Azure Maliyet Yönetimi verilerine izin atama adımları gösterilmektedir.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/19/2020
+ms.date: 04/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 56090798defd9209c3587aa701c88db6958d1b97
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b3ede4dcc4df8bf10ce24b3d74dc5af0424de5a
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065818"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879114"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Maliyet Yönetimi verilerine erişim atama
 
@@ -21,9 +21,9 @@ Azure Kurumsal Anlaşmalarına sahip olan kullanıcıların Azure Maliyet Yönet
 
 Kullanıcının veri birleştirmesi sağlamak ve maliyet bilgilerine erişimi denetlemek için seçtiği kapsam Maliyet Yönetimi’nin tamamında kullanılır. Kullanıcılar, kapsamları kullanırken çoklu seçim yapmaz. Bunun yerine alt kapsamların birleşerek oluşturduğu daha geniş bir kapsam seçer ve görüntülemek istedikleri verileri filtreler. Bazı kişilerin alt kapsamların toplandığı üst kapsama erişmemesi gerektiğinden veri birleştirme önemlidir.
 
-Azure rol tabanlı erişim denetimi ile maliyetleri ve ücretleri görüntüleme erişimi atama hakkında bilgi edinmek için [Azure Maliyet Yönetimi ile erişim atama](https://www.youtube.com/watch?v=J997ckmwTa8) videosunu izleyin.
+Azure rol tabanlı erişim denetimi ile maliyetleri ve ücretleri görüntüleme erişimi atama hakkında bilgi edinmek için [Maliyet Yönetimi erişimi denetleme](https://www.youtube.com/watch?v=_uQzQ9puPyM) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
->[!VIDEO https://www.youtube.com/embed/J997ckmwTa8]
+>[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
 ## <a name="cost-management-scopes"></a>Maliyet Yönetimi kapsamları
 

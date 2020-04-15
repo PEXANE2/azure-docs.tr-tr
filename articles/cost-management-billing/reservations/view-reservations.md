@@ -5,77 +5,53 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 03/31/2020
 ms.author: banders
-ms.openlocfilehash: 5c9d9074e4b8d0d9e36417daee4d58c1d9b28b64
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199254"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633847"
 ---
-# <a name="view-azure-reservations-in-the-azure-portal"></a>Azure portalında Azure rezervasyonlarını görüntüleme
+# <a name="view-azure-reservations"></a>Azure rezervasyonlarını görüntüleme
 
-Abonelik türünüze ve izinlerinize bağlı olarak, Azure için rezervasyonları görüntülemenin birkaç yolu vardır.
+Satın alınan rezervasyonu Azure portalından görüntüleyip yönetebilirsiniz.   
 
-## <a name="view-purchased-reservations"></a>Satın alınan rezervasyonları görüntüleme
+## <a name="permissions-to-view-a-reservation"></a>Rezervasyonu görüntüleme izinleri
 
-Varsayılan olarak, bir rezervasyon satın aldığınızda siz ve hesap yöneticisi rezervasyonu görüntüleyebilirsiniz. Siz ve hesap yöneticisi, rezervasyon siparişinde ve rezervasyonda otomatik olarak Sahip rolünü alır. Diğer kişilerin rezervasyonu görüntülemesine izin vermek için bu kişileri, Rezervasyon siparişinde veya rezervasyonda **Sahip** veya **Okuyucu** olarak eklemeniz gerekir.
+Rezervasyonu görüntüleyip yönetmek için bu rezervasyon üzerinde okuyucu veya sahip iznine ihtiyaç duyarsınız. Rezervasyon satın aldığınızda varsayılan olarak siz ve hesap yöneticisi, rezervasyon siparişinde ve rezervasyonda otomatik olarak Sahip rolünü alır. Diğer kişilerin rezervasyonu görüntülemesine izin vermek için bu kişileri, Rezervasyon siparişinde veya rezervasyonda **Sahip** veya **Okuyucu** olarak eklemeniz gerekir. Rezervasyonu faturalamak için sağlanan aboneliğe birini eklemek, bu kişiyi otomatik olarak rezervasyona eklemez. 
 
 Daha fazla bilgi için bkz. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 
-Bir rezervasyonu Sahip veya Okuyucu olarak görüntülemek için,
+## <a name="view-reservation-and-utilization-in-azure-portal"></a>Azure portalda rezervasyonu ve kullanımı görüntüleme
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-2. **Rezervasyonlar** araması yapın.
-    ![Azure portalı aramasını gösteren ekran görüntüsü](./media/view-reservations/portal-reservation-search.png)  
-3. Listede, Sahip veya Okuyucu rolüne sahip olduğunuz tüm rezervasyonlar gösterilir. Her rezervasyon, bilinen son kullanım yüzdesini gösterir.  
-    ![Rezervasyon listesini gösteren örnek](./media/view-reservations/view-reservations.png)
-4. Bir rezervasyon seçin ve son beş güne ait kullanım eğilimini görüntüleyin.  
-    ![Rezervasyon kullanım eğilimini gösteren örnek](./media/view-reservations/reservation-utilization.png)
-5. Ayrılmış Örnek kullanımı API’sini kullanarak ve [Microsoft Azure Consumption Insights Power BI içerik paketi](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) ile de [rezervasyon kullanımını](/power-bi/service-connect-to-azure-consumption-insights) alabilirsiniz.
+Bir rezervasyonu Sahip veya Okuyucu olarak görüntülemek için
 
-Bir rezervasyonun kapsamını değiştirmeniz, rezervasyonu bölmeniz veya bir rezervasyonu kimin yönetebileceğini değiştirmeniz gerekirse bkz. [Azure Rezervasyonlarını Yönetme](manage-reserved-vm-instance.md).
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+2. [Rezervasyonlar](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)’a gidin.
+3. Listede, Sahip veya Okuyucu rolüne sahip olduğunuz tüm rezervasyonlar gösterilir. Her rezervasyon, bilinen son kullanım yüzdesini gösterir.
+4. Kullanım geçmişini ve ayrıntılarını görmek için kullanım yüzdesine tıklayın. Aşağıdaki videoda bulunan ayrıntılara bakın.
+   > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4sYwk] 
 
-## <a name="view-reservation-transactions-for-enterprise-enrollments"></a>Kurumsal kayıtlar için rezervasyon işlemlerini görüntüleme
+## <a name="get-reservations-and-utilization-using-apis-powershell-cli"></a>API’ler, PowerShell ve CLI’yı kullanarak rezervasyonları ve kullanımı alma
 
- İş ortağı tarafından yönetilen bir Kurumsal kaydınız varsa, Kurumsal Anlaşma portalında **Raporlar**’a giderek rezervasyonları görüntüleyin. Diğer Kurumsal kayıtlar için Kurumsal Anlaşma portalında ve Azure portalında rezervasyonları görüntüleyebilirsiniz. Rezervasyon işlemlerini görüntülemek için bir Kurumsal Anlaşma yöneticisi olmanız gerekir.
+Aşağıdaki kaynakları kullanarak tüm rezervasyonların yer aldığı listeyi edinin
+- [API: Rezervasyon Siparişi - Liste](/rest/api/reserved-vm-instances/reservationorder/list)
+- [PowerShell: Rezervasyon Siparişi - Liste](/powershell/module/azurerm.reservations/get-azurermreservationorder)
+- [CLI: Rezervasyon Siparişi - Liste](/cli/azure/reservations/reservation-order#az-reservations-reservation-order-list)
 
-Azure portalında rezervasyon işlemlerini görüntülemek için,
+Ayrılmış Örnek kullanımı API’sini kullanarak da [rezervasyon kullanımını](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) elde edebilirsiniz. 
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **Maliyet Yönetimi + Faturalama** araması yapın.
+## <a name="see-reservations-and-utilization-in-power-bi"></a>Power BI’da rezervasyonları ve kullanımı görme
 
-    ![Azure portalı aramasını gösteren ekran görüntüsü](./media/view-reservations/portal-cm-billing-search.png)
-
-1. **Rezervasyon işlemleri**’ni seçin.
-1. Sonuçları filtrelemek için **Zaman aralığı**, **Tür** veya **Açıklama** seçeneğini belirleyin.
-1. **Uygula**’yı seçin.
-
-    ![Rezervasyon işlemlerinin sonuçlarını gösteren ekran görüntüsü](./media/view-reservations/portal-billing-reservation-transaction-results.png)
-
-Bir API kullanarak verileri almak için bkz. [Kurumsal müşteriler için Ayrılmış Örnek işlem ücretlerini alma](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges).
+Power BI kullanıcılarına yönelik iki seçenek vardır
+- İçerik Paketi: Rezervasyon satın alımları ve kullanım verileri [Tüketim İçgörüleri Power BI içerik paketinde](/power-bi/desktop-connect-azure-cost-management) bulunur. Bu içerik paketini kullanarak istediğiniz raporları oluşturun. 
+- Maliyet yönetimi uygulaması: Daha fazla özelleştirebileceğiniz önceden oluşturulmuş raporlar için [Maliyet Yönetimi Uygulaması](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)’nı kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure rezervasyonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-
-- [Azure rezervasyonları nedir?](save-compute-costs-reservations.md)
-- [Azure rezervasyonlarını yönetme](manage-reserved-vm-instance.md)
-
-Hizmet planı satın alma:
-
-- [Cosmos DB ayrılmış kapasitesi için ö ödeme yapma](../../cosmos-db/cosmos-db-reserved-capacity.md)
-- [Azure SQL Veritabanı ayrılmış kapasitesi ile SQL Veritabanı işlem kaynakları için ön ödeme yapma](../../sql-database/sql-database-reserved-capacity.md)
-- [Azure Ayrılmış VM Örnekleri ile Sanal Makinelere ön ödeme yapma](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-
-Yazılım planı satın alma:
-
-- [Azure Ayırmaları ile Red Hat yazılım planları için ön ödeme yapma](../../virtual-machines/linux/prepay-rhel-software-charges.md)
-- [Azure Ayırmaları ile SUSE yazılım planları için ön ödeme yapma](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Kullanımı anlama:
-
+- [Azure Rezervasyonları’nı yönetin](manage-reserved-vm-instance.md).
 - [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
 - [Kurumsal kaydınız için rezervasyon kullanımını anlama](understand-reserved-instance-usage-ea.md)
 - [CSP abonelikleri için rezervasyon kullanımını anlama](https://docs.microsoft.com/partner-center/azure-reservations)

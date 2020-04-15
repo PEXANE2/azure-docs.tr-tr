@@ -3,16 +3,16 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/03/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9fbc2ffcf1158f436c060817f8f25152f839c3e0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
+ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79037263"
+ms.lasthandoff: 04/06/2020
+ms.locfileid: "80743882"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -494,6 +494,12 @@ Aşağıdaki hizmetler ayrıca faturalandırılır:
 - Visual Studio Enterprise (Yıllık)
 - Visual Studio Professional (Aylık)
 - Visual Studio Professional (Yıllık)
+
+## <a name="what-to-expect-after-change-of-channel-partner"></a>Kanal iş ortağı değişikliğinden sonra neler beklemelisiniz?
+
+Kanal iş ortağı değişikliği (COCP) ayın ortasında olursa, müşteri önceki ilişkili iş ortağı altındaki kullanımlar için bir fatura, yeni iş ortağı altındaki kullanımlar için de başka bir fatura alır.
+
+Faturalar, fatura dönemi sona erdikten sonraki ay yayınlanır. Faturalama sıklığı aylık ise, Eylül ayının faturası her iki iş ortağı için de Ekim ayında yayınlanır. Fatura dönemi üç aylık veya yıllık ise müşteri, önceki ilişkili iş ortağıyla ilgili dönemdeki kullanımlara yönelik bir fatura alır. Diğer faturalar faturalama sıklığına göre yeni iş ortağı için oluşturulur.
 
 ## <a name="azure-marketplace-for-ea-customers"></a>EA müşterileri için Azure Market
 

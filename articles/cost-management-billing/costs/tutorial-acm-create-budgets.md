@@ -3,17 +3,17 @@ title: 'Öğretici: Azure bütçesi oluşturma ve yönetme'
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f7c1ac65026fd366be1003842ff70a78b9082339
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 82094fadf7b11d97b0e9e74d9ba897baed16ee01
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80155945"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80874288"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
@@ -25,7 +25,7 @@ Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay,
 
 Bu öğreticideki örnekler, Azure Kurumsal Anlaşma (EA) aboneliği için bütçe oluşturma ve düzenleme konusunda size yol gösterecektir.
 
-Azure harcamalarınızı izleme amacıyla bütçe oluşturma konusunda bilgi edinmek için [Azure portalını kullanarak aboneliklere bütçe uygulama](https://www.youtube.com/watch?v=UrkHiUx19Po) videosunu izleyin.
+Azure harcamalarınızı izleme amacıyla bütçe oluşturma konusunda bilgi edinmek için [Azure portalını kullanarak aboneliklere bütçe uygulama](https://www.youtube.com/watch?v=UrkHiUx19Po) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/UrkHiUx19Po]
 
@@ -38,11 +38,32 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bütçeler, farklı Azure hesabı türleri için desteklenir. Desteklenen hesap türlerinin tam listesini görüntülemek için, bkz. [Maliyet Yönetimi verilerini anlama](understand-cost-mgt-data.md). Bütçeleri görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
+Bütçeler, aşağıdaki Azure hesap türleri ve kapsamlar için desteklenir:
+
+- Azure Rol Tabanlı Erişim Denetimi kapsamları
+    - Yönetim grupları
+    - Abonelik
+- Kurumsal Anlaşma kapsamları
+    - Fatura hesabı
+    - Bölüm
+    - Kayıt hesabı
+- Bireysel anlaşmalar
+    - Fatura hesabı
+- Microsoft Müşteri Sözleşmesi kapsamları
+    - Fatura hesabı
+    - Faturalama profili
+    - Fatura bölümü
+    - Müşteri
+- AWS kapsamları
+    - Dış hesap
+    - Dış abonelik
+
+
+Bütçeleri görüntülemek için Azure hesabınızda en azından okuma yetkisine sahip olmanız gerekir.
 
 Yeni bir aboneliğiniz varsa hemen bir bütçe oluşturamaz veya diğer Maliyet Yönetimi özelliklerini kullanamazsınız. Maliyet Yönetimi özelliklerini kullanabilmek için 48 saat kadar beklemeniz gerekebilir.
 
-Azure EA aboneliklerinde bütçeleri görüntülemek için okuma yetkisine sahip olmanız gerekir. Bütçe oluşturmak ve yönetmek için katkıda bulunan izninizin olması gerekir. EA abonelikleri ve kaynak grupları için ayrı bütçeler oluşturabilirsiniz. Ancak EA ödeme hesapları için bütçe oluşturamazsınız.
+Azure EA aboneliklerinde bütçeleri görüntülemek için okuma yetkisine sahip olmanız gerekir. Bütçe oluşturmak ve yönetmek için katkıda bulunan izninizin olması gerekir.
 
 Aşağıdaki Azure izinleri veya kapsamları abonelik başına kullanıcı ve grup tarafından bütçe oluşturulması için desteklenir. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 
@@ -58,7 +79,7 @@ Maliyet Yönetimi verilerine izin atama hakkında daha fazla bilgi için bkz. [M
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Azure portalında bütçe oluşturma
 
-Aylık, üç aylık veya yıllık dönem için bir Azure abonelik bütçesi oluşturabilirsiniz. Azure portalındaki gezinti içeriği, abonelik veya yönetim grubu için bütçe oluşturma durumunuzu belirler.
+Aylık, üç aylık veya yıllık dönem için bir Azure abonelik bütçesi oluşturabilirsiniz.
 
 Bütçe oluşturmak veya görüntülemek için, Azure portalında istediğiniz kapsamı açın ve menüden **Bütçeler**'i seçin. Örneğin **Abonelikler**'e gidin, listeden bir abonelik belirleyin ve menüden **Bütçeler**'i seçin. Bütçeler içindeyken yönetim grubu gibi farklı bir kapsama geçiş yapmak için **Kapsam** düğmesini kullanın. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 
@@ -110,15 +131,11 @@ Bütçe maliyet değerlendirmeleri, gerçek maliyeti temel alır. Amorti edilen 
 
 Bir abonelik veya kaynak grubu kapsamı için bütçe oluşturma veya düzenleme aşamasında eylem grubu çağıracak şekilde yapılandırabilirsiniz. Bütçe eşiğinize ulaşıldığında eylem grubu çeşitli eylemler gerçekleştirebilir. Eylem Grupları şu anda yalnızca abonelik ve kaynak grubu kapsamları için desteklenmektedir. Eylem Grupları hakkında daha fazla bilgi için bkz. [Azure portalında eylem grubu oluşturma ve yönetme](../../azure-monitor/platform/action-groups.md). Eylem gruplarıyla bütçe tabanlı otomasyon kullanma hakkında daha fazla bilgi için bkz. [Azure bütçeleri ile maliyetleri yönetme](../manage/cost-management-budget-scenario.md).
 
-
-
 Eylem grubu oluşturmak veya güncelleştirmek için bütçe oluşturma veya düzenleme aşamasında **Eylem gruplarını yönet**'i seçin.
 
 ![Eylem gruplarını yönet seçeneğini gösteren bütçe oluşturma örneği](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
-
 Ardından eylem grubunu oluşturmak için **Eylem grubu ekle**'yi seçin.
-
 
 ![Eylem grubu ekle kutusunun görüntüsü](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
 

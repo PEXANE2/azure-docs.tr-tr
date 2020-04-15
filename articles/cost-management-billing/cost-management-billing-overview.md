@@ -8,12 +8,12 @@ ms.date: 01/24/2020
 ms.topic: overview
 ms.service: cost-management-billing
 ms.custom: ''
-ms.openlocfilehash: 3314d00651fc5e0473d84710803671f2ad45f005
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2f96208ff3f9664d82bfc1d9ddf9bc5b9aec37c3
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79474535"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80879097"
 ---
 # <a name="what-is-azure-cost-management-and-billing"></a>Azure Maliyet Yönetimi ve Faturalandırma nedir?
 
@@ -67,7 +67,7 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 ## <a name="understand-azure-cost-management"></a>Azure Maliyet Yönetimi’ni anlama
 Maliyet yönetimi, işlerinizle ilişkili maliyetleri etkili bir şekilde planlama ve denetleme işlemidir. Maliyet yönetimi görevleri normalde finans, yönetim ve uygulama takımları tarafından gerçekleştirilir. Azure Maliyet Yönetimi + Faturalandırma, kuruluşların maliyet planlaması yapmasını sağlar. Ayrıca, maliyetleri etkili bir şekilde analiz etmeye ve bulut harcamalarını iyileştirmek için gerçekleştirilecek eylemlere de katkı sağlar. Kuruluş olarak maliyet yönetimine nasıl yaklaşmak gerektiği hakkında daha fazla bilgi edinmek için, [Azure Maliyet Yönetimi en iyi yöntemleri](./costs/cost-mgt-best-practices.md) makalesini gözden geçirin.
 
-Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için [Azure Maliyet Yönetimi'ne genel bakış videosunu](https://www.youtube.com/watch?v=el4yN5cHsJ0) izleyin.
+Azure Maliyet Yönetimi'nin Azure'da tasarruf sağlamanıza nasıl yardımcı olacağı hakkında bilgi edinmek için [Azure Maliyet Yönetimi'ne genel bakış videosunu](https://www.youtube.com/watch?v=el4yN5cHsJ0) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
@@ -93,7 +93,7 @@ Maliyet yönetimi verilerine erişmek veya bu verileri incelemek için dış sis
 
 [Cloudyn](./cloudyn/overview.md) Maliyet Yönetimi ile ilgili bir Azure hizmeti ve 2020’nin sonunda kullanımdan kaldırılacak. Mevcut Cloudyn özellikleri mümkün olduğunca doğrudan Azure portalıyla tümleştiriliyor. Şu anda yeni müşteri eklenmiyor ama ürün tümüyle kullanımdan kaldırılana kadar ürünün desteği devam edecek.
  
-İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlar hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=15DzKPMBRxM) izleyin.
+İşletmenizin ihtiyaçlarına göre Azure Maliyet Yönetimi veya Cloudyn kullanmanız gereken durumlar hakkında daha fazla bilgi edinmek için [Azure Maliyet Yönetimi ve Cloudyn videosunu](https://www.youtube.com/watch?v=15DzKPMBRxM) izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
  
 >[!VIDEO https://www.youtube.com/embed/15DzKPMBRxM]
 

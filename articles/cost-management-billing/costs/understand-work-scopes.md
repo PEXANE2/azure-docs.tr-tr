@@ -3,17 +3,17 @@ title: Azure Maliyet Yönetimi kapsamlarını anlama ve bunlarla çalışma
 description: Bu makale, Azure'da sunulan faturalandırma ve kaynak yönetimi kapsamlarını anlamanıza ve bu kapsamları Maliyet Yönetimi ile API'lerde kullanmanıza yardımcı olmayı amaçlamaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 02/12/2020
+ms.date: 04/06/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: bbed4209d26fe32f95b93b2c7411e1ab74f03ede
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ebae9d1c66a721926ca07b21059ec57b05b99a0f
+ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80131368"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80877941"
 ---
 # <a name="understand-and-work-with-scopes"></a>Kapsamları anlama ve bunlarla çalışma
 
@@ -26,6 +26,10 @@ _Kapsam_, Azure AD kullanıcılarının hizmetlere eriştiği ve bunları yönet
 - Maliyet ve ilke idaresi gibi bulut hizmetleri
 
 Kapsamlar; faturalandırma verilerini yönetmenizi, ödemelere özgü rollere sahip olmanızı, faturaları görüntülemenizi ve genel hesap yönetimi işlemlerini yaptığınız yerdir. Faturalama ve hesap rolleri, kaynak yönetimi için kullanılan ve [Azure RBAC](../../role-based-access-control/overview.md) kullanan kapsamlardan ayrı yönetilir. Erişim denetimi farklılıkları dahil olmak üzere ayrı kapsamların amacını net bir şekilde belirlemek için _faturalama kapsamları_ ve _RBAC kapsamları_ şeklinde kullanılır.
+
+Kapsamlar hakkında daha fazla bilgi edinmek için [Maliyet Yönetimi hiyerarşileri ayarlama](https://www.youtube.com/watch?v=n3TLRaYJ1NY) videosunu izleyin. Diğer videoları izlemek için [Maliyet Yönetimi YouTube kanalını](https://www.youtube.com/c/AzureCostManagement) ziyaret edin.
+
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
 
 ## <a name="how-cost-management-uses-scopes"></a>Maliyet Yönetimi kapsamları nasıl kullanır?
 
@@ -71,7 +75,7 @@ Maliyet Yönetimi Katkıda Bulunanı, önerilen en düşük ayrıcalıklı rold�
 
 Kayıt olarak da adlandırılan Kurumsal Anlaşma (EA) ödeme hesapları iki kapsama sahiptir:
 
-- [**Ödeme hesabı**](../manage/view-all-accounts.md): Bir EA kaydını temsil eder. Faturalar bu kapsamda oluşturulur. Market ve rezervasyonlar gibi kullanım tabanlı olmayan satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Bunlar departmanlarda veya kayıt hesaplarında temsil edilmez.
+- [**Ödeme hesabı**](../manage/view-all-accounts.md): Bir EA kaydını temsil eder. Faturalar bu kapsamda oluşturulur. Market ve rezervasyonlar gibi kullanım tabanlı olmayan satın alma işlemleri yalnızca bu kapsamda kullanılabilir. Bunlar departmanlarda veya kayıt hesaplarında temsil edilmez. Rezervasyon kullanımı, diğer tüm kullanımlarla birlikte tek tek kaynaklara uygulanır. Kullanım, faturalama hesabındaki aboneliklerde toplanır. Her kaynağa ayrılan rezervasyon maliyetlerini görmek için, maliyet analizinde **İtfa edilen maliyet** görünümüne geçin.
 
     Kaynak türü: `Microsoft.Billing/billingAccounts (accountType = Enrollment)`
 - **Departman**: İsteğe bağlı kayıt hesapları gruplaması.

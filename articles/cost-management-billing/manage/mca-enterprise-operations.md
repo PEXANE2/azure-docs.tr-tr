@@ -5,14 +5,14 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: 6692bb8f323e42edfe546e15620442881f99032d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 01a7b81794342871ae8eadc090e61bbac0876c03
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78272194"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586163"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>Microsoft Müşteri Sözleşmesi için ödeme hesabınızda Kurumsal Anlaşma görevlerini tamamlama
 
@@ -92,7 +92,7 @@ Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, kullanıcılara Azure ab
 Aşağıdaki değişiklikler Microsoft Müşteri Sözleşmesi'ne yenilenmiş olan Kurumsal Anlaşmanın bölüm yöneticileri için geçerlidir.
 
 - Kurumsal Anlaşma kaydınızdaki her bölüm için bir fatura bölümü oluşturulur. Kuruluşunuzdaki bölümleri yönetmek için fatura bölümlerini kullanacaksınız. Fatura bölümleri hakkında daha fazla bilgi edinmek için [fatura bölümlerini anlama](../understand/mca-overview.md#invoice-sections) konusuna bakın.
-- Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, diğerlerine Azure aboneliği oluşturma izni vermek için fatura bölümünde Azure aboneliği oluşturma rolünü kullanacaksınız.
+- Kurumsal Anlaşma kaydında oluşturulan hesaplar gibi, başkalarına Azure aboneliği oluşturma izni vermek için fatura bölümünde Azure aboneliği oluşturma rolünü kullanacaksınız.
 - Kuruluşunuzun faturalamasını yönetmek için Azure EA portalı yerine Azure portalını kullanacaksınız.
 
 Yeni ödeme hesabında size aşağıdaki roller verilir:
@@ -111,7 +111,7 @@ Fatura bölümünüze erişim sağlamayı öğrenmek için bkz. [Azure portalın
 
 ### <a name="create-a-new-account-in-your-department"></a>Bölümünüzde yeni hesap oluşturma
 
-Bölümünüz için oluşturulan fatura bölümü üzerinde kullanıcılara Azure aboneliği oluşturucu rolü atayın. Rol atama hakkında daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
+Bölümünüz için oluşturulan fatura bölümünde kullanıcılara Azure aboneliği oluşturucu rolü atayın. Rol atama hakkında daha fazla bilgi için bkz. [Azure portalındaki faturalandırma rollerini yönetme](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal)
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>Bölümlerinizdeki hesaplar için ücretleri görüntüleme
 

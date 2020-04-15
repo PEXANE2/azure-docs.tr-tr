@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 04/01/2020
 ms.author: banders
-ms.openlocfilehash: f31d8638e8672feafc1ab822acecb78ec0a48b11
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 28fff2a24f703e0cff967bdde29a7b1238e197ee
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202782"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586144"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure'daki Azure Kurumsal Anlaşma yönetici rollerini anlama
 
@@ -46,18 +46,18 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 
 ## <a name="organization-structure-and-permissions-by-role"></a>Role göre kuruluş yapısı ve izinleri
 
-|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okunur)|Hesap Sahibi|
-|---|---|---|---|---|---|
-|Kuruluş Yöneticilerini görüntüleme|✔|✔|✘|✘|✘|
-|Kuruluş Yöneticileri ekleme veya kaldırma|✔|✘|✘|✘|✘|
-|Bildirim İlgili Kişilerini görüntüleme<sup>4</sup> |✔|✔|✘|✘|✘|
-|Bildirim İlgili Kişilerini ekleme veya kaldırma<sup>4</sup> |✔|✘|✘|✘|✘|
-|Bölümler oluşturma ve yönetme |✔|✘|✘|✘|✘|
-|Bölüm Yöneticilerini görüntüleme|✔|✔|✔|✔|✘|
-|Bölüm Yöneticileri ekleme veya kaldırma|✔|✘|✔|✘|✘|
-|Kayıttaki Hesapları görüntüleme |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|
-|Kayda Hesaplar ekleme ve Hesap Sahibini değiştirme|✔|✘|✔<sup>5</sup>|✘|✘|
-|Abonelikler ve abonelik izinleri oluşturma ve yönetme|✘|✘|✘|✘|✔|
+|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okunur)|Hesap Sahibi| İş Ortağı|
+|---|---|---|---|---|---|---|
+|Kuruluş Yöneticilerini görüntüleme|✔|✔|✘|✘|✘|✔|
+|Kuruluş Yöneticileri ekleme veya kaldırma|✔|✘|✘|✘|✘|✘|
+|Bildirim İlgili Kişilerini görüntüleme<sup>4</sup> |✔|✔|✘|✘|✘|✔|
+|Bildirim İlgili Kişilerini ekleme veya kaldırma<sup>4</sup> |✔|✘|✘|✘|✘|✘|
+|Bölümler oluşturma ve yönetme |✔|✘|✘|✘|✘|✘|
+|Bölüm Yöneticilerini görüntüleme|✔|✔|✔|✔|✘|✔|
+|Bölüm Yöneticileri ekleme veya kaldırma|✔|✘|✔|✘|✘|✘|
+|Kayıttaki Hesapları görüntüleme |✔|✔|✔<sup>5</sup>|✔<sup>5</sup>|✘|✔|
+|Kayda Hesaplar ekleme ve Hesap Sahibini değiştirme|✔|✘|✔<sup>5</sup>|✘|✘|✘|
+|Abonelikler ve abonelik izinleri oluşturma ve yönetme|✘|✘|✘|✘|✔|✘|
 
 - <sup>4</sup> Bildirim ilgili kişilerine Azure Kurumsal Anlaşma ile ilgili e-posta iletişimleri gönderilir.
 - <sup>5</sup> Görev, bölümünüzdeki hesaplarla sınırlıdır.
@@ -65,14 +65,14 @@ Aşağıdaki bölümlerde her bir rolün sınırlamaları ve özellikleri açık
 
 ## <a name="usage-and-costs-access-by-role"></a>Role göre kullanım ve maliyet erişimi
 
-|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okunur) |Hesap Sahibi|
-|---|---|---|---|---|---|
-|Parasal taahhüt dahil kredi bakiyesini görüntüleme|✔|✔|✘|✘|✘|
-|Bölüm harcaması kotalarını görüntüleme|✔|✔|✘|✘|✘|
-|Bölüm harcaması kotalarını ayarlama|✔|✘|✘|✘|✘|
-|Kuruluşun Kurumsal Anlaşma fiyat listesini görüntüleme|✔|✔|✘|✘|✘|
-|Kullanım ve maliyet ayrıntılarını görüntüleme|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|
-|Azure portalında kaynakları yönetme|✘|✘|✘|✘|✔|
+|Görevler| Kuruluş Yöneticisi|Kuruluş Yöneticisi (salt okunur)|Bölüm Yöneticisi|Bölüm Yöneticisi (salt okunur) |Hesap Sahibi| İş Ortağı|
+|---|---|---|---|---|---|---|
+|Parasal taahhüt dahil kredi bakiyesini görüntüleme|✔|✔|✘|✘|✘|✔|
+|Bölüm harcaması kotalarını görüntüleme|✔|✔|✘|✘|✘|✔|
+|Bölüm harcaması kotalarını ayarlama|✔|✘|✘|✘|✘|✘|
+|Kuruluşun Kurumsal Anlaşma fiyat listesini görüntüleme|✔|✔|✘|✘|✘|✔|
+|Kullanım ve maliyet ayrıntılarını görüntüleme|✔|✔|✔<sup>6</sup>|✔<sup>6</sup>|✔<sup>7</sup>|✔|
+|Azure portalında kaynakları yönetme|✘|✘|✘|✘|✔|✘|
 
 - <sup>6</sup> Enterprise Portal’da **DA ücretleri görüntüleme** ilkesinin Kuruluş Yöneticisi tarafından etkinleştirilmesini gerektirir. Bölüm Yöneticisi daha sonra bölüme ait maliyet ayrıntılarını görebilir.
 - <sup>7</sup> Enterprise Portal’da **AO ücretleri görüntüleme** ilkesinin Kuruluş Yöneticisi tarafından etkinleştirilmesini gerektirir. Hesap Sahibi daha sonra hesaba ait maliyet ayrıntılarını görebilir.
