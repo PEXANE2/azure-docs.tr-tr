@@ -1,5 +1,5 @@
 ---
-title: IoT için Azure Güvenlik Merkezi için özelleştirilebilir güvenlik uyarı kılavuzu| Microsoft Dokümanlar
+title: Özelleştirilebilir güvenlik uyarıları
 description: IoT özellikleri ve hizmetleri için Azure Güvenlik Merkezi'ni kullanarak özelleştirilebilir güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,24 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 32d79267559480de8ec91e5e66196bfd57e01cf1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3b39d70c60a4c9701d0a8bafde17b241fe01cc46
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299582"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311631"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT için Azure Güvenlik Merkezi güvenlik uyarıları
 
 Azure Güvenlik Merkezi IoT, kötü amaçlı etkinlikler konusunda sizi uyarmak için gelişmiş analitik ve tehdit istihbaratını kullanarak IoT çözümünüzü sürekli olarak analiz eder.
 
-Uyarıların benzersiz kuruluş dağıtımınızda ve ortamınızda potansiyel uzlaşmanın en etkili göstergeleri olarak hareket etmesini sağlamak için beklenen aygıt davranışı hakkındaki bilginize dayalı özel uyarılar oluşturmanızı öneririz. 
+Uyarıların benzersiz kuruluş dağıtımınızda ve ortamınızda potansiyel uzlaşmanın en etkili göstergeleri olarak hareket etmesini sağlamak için beklenen aygıt davranışı hakkındaki bilginize dayalı özel uyarılar oluşturmanızı öneririz.
 
 IoT uyarıları için Azure Güvenlik Merkezi'nin aşağıdaki listesi, beklenen IoT Hub'ınıza ve/veya aygıt davranışınıza bağlı olarak sizin tarafından tanımlanabilir. Her uyarının nasıl özelleştirilenhakkında daha fazla bilgi için [bkz.](quickstart-create-custom-alerts.md)
 
-## <a name="iot-hub-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir IoT Hub uyarıları 
-
-
+## <a name="iot-hub-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir IoT Hub uyarıları
 
 | Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
 |---|---|---|---|---|
@@ -51,7 +49,7 @@ IoT uyarıları için Azure Güvenlik Merkezi'nin aşağıdaki listesi, beklenen
 | Düşük      | Özel uyarı - yetkisiz işlem sayısı izin verilen aralığın dışında  | IoT Hub     | Belirli bir zaman penceresindeki yetkisiz işlemlerin miktarı, şu anda yapılandırılmış ve izin verilen aralığın dışındadır.|
 |
 
-## <a name="agent-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir aracı uyarıları 
+## <a name="agent-alerts-available-for-customization"></a>Özelleştirme için kullanılabilir aracı uyarıları
 
 | Severity | Uyarı adı | Veri kaynağı | Açıklama | Önerilen düzeltme|
 |---|---|---|---|---|

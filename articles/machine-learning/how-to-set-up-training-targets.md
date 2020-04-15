@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 24c0d9955a857e8bbc1e1c09e600031a7541026c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296957"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383416"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -152,32 +152,19 @@ Bu senaryo için Azure Veri Bilimi Sanal Makinesi'ni (DSVM) Azure VM olarak kull
     > [!WARNING]
     > Azure Machine Learning yalnızca Ubuntu çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya varolan bir VM seçtiğinizde, Ubuntu kullanan bir VM seçmeniz gerekir.
 
-1. **Ekle**: Varolan bir sanal makineyi bilgi işlem hedefi olarak eklemek için, sanal makine için tam nitelikli alan adı (FQDN), kullanıcı adı ve parola sağlamanız gerekir. Örnekte, fqdn>'ı VM'nin ortak FQDN'si veya genel IP adresiyle değiştirin. \< Kullanıcı \<adı> \<ve parola> VM için SSH kullanıcı adı ve parolaile değiştirin.
+1. **Ekle**: Varolan bir sanal makineyi bilgi işlem hedefi olarak eklemek için, sanal makine için kaynak kimliği, kullanıcı adı ve parola sağlamanız gerekir. VM'nin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grubu adı ve VM adı kullanılarak oluşturulabilir:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
-    > [!IMPORTANT]
-    > Aşağıdaki Azure bölgeleri, VM'nin genel IP adresini kullanarak sanal bir makine nin eklenmesini desteklemez. Bunun yerine, `resource_id` VM'nin Azure Kaynak Yöneticisi Kimliğini parametreyle kullanın:
-    >
-    > * ABD Doğu
-    > * ABD Batı 2
-    > * ABD Orta Güney
-    >
-    > VM'nin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grubu adı `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`ve VM adı kullanılarak oluşturulabilir: .
-
-
+ 
    ```python
    from azureml.core.compute import RemoteCompute, ComputeTarget
 
    # Create the compute config 
    compute_target_name = "attach-dsvm"
-   attach_config = RemoteCompute.attach_configuration(address='<fqdn>',
-                                                    ssh_port=22,
-                                                    username='<username>',
-                                                    password="<password>")
-   # If in US East, US West 2, or US South Central, use the following instead:
-   # attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
-   #                                                 ssh_port=22,
-   #                                                 username='<username>',
-   #                                                 password="<password>")
+   
+   attach_config = RemoteCompute.attach_configuration(resource_id='<resource_id>',
+                                                   ssh_port=22,
+                                                   username='<username>',
+                                                   password="<password>")
 
    # If you authenticate with SSH keys instead, use this code:
    #                                                  ssh_port=22,
@@ -211,16 +198,7 @@ Azure HDInsight, büyük veri analitiği için popüler bir platformdur. Platfor
     
     Küme oluşturulduktan sonra, küme adı \<> küme için sağladığınız \<ad olan ana bilgisayar adı küme adı>-ssh.azurehdinsight.net ile bağlanın. 
 
-1. **Ekle**: Bir HDInsight kümesini bilgi işlem hedefi olarak eklemek için, HDInsight kümesinin ana bilgisayar adını, kullanıcı adını ve parolasını sağlamanız gerekir. Aşağıdaki örnekte, çalışma alanınıza bir küme eklemek için SDK kullanır. Örnekte, küme \<adı> kümenizin adı ile değiştirin. Kullanıcı \<adı> \<ve parola> kümeiçin SSH kullanıcı adı ve parolasıyla değiştirin.
-
-    > [!IMPORTANT]
-    > Aşağıdaki Azure bölgeleri, kümenin genel IP adresini kullanarak bir HDInsight kümesinin eklenmesini desteklemez. Bunun yerine, `resource_id` parametre ile kümenin Azure Kaynak Yöneticisi Kimliğini kullanın:
-    >
-    > * ABD Doğu
-    > * ABD Batı 2
-    > * ABD Orta Güney
-    >
-    > Kümenin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grubu adı `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`ve küme adı kullanılarak oluşturulabilir: .
+1. **Ekle**: Bir HDInsight kümesini bilgi işlem hedefi olarak eklemek için, HDInsight kümesi için kaynak kimliği, kullanıcı adı ve parola sağlamanız gerekir. HDInsight kümesinin kaynak kimliği, aşağıdaki dize biçimi kullanılarak abonelik kimliği, kaynak grup adı ve HDInsight küme adı kullanılarak oluşturulabilir:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
    ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -228,15 +206,11 @@ Azure HDInsight, büyük veri analitiği için popüler bir platformdur. Platfor
 
    try:
     # if you want to connect using SSH key instead of username/password you can provide parameters private_key_file and private_key_passphrase
-    attach_config = HDInsightCompute.attach_configuration(address='<clustername>-ssh.azurehdinsight.net', 
+
+    attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
                                                           ssh_port=22, 
                                                           username='<ssh-username>', 
                                                           password='<ssh-pwd>')
-    # If you are in US East, US West 2, or US South Central, use the following instead:
-    # attach_config = HDInsightCompute.attach_configuration(resource_id='<resource_id>',
-    #                                                      ssh_port=22, 
-    #                                                      username='<ssh-username>', 
-    #                                                      password='<ssh-pwd>')
     hdi_compute = ComputeTarget.attach(workspace=ws, 
                                        name='myhdi', 
                                        attach_configuration=attach_config)

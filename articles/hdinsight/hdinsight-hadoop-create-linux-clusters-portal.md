@@ -1,19 +1,19 @@
 ---
 title: Web tarayıcısı, Azure HDInsight kullanarak Apache Hadoop kümeleri oluşturun
-description: Bir web tarayıcısı ve Azure portalı kullanarak HDInsight için Linux'ta Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümelerini nasıl oluşturacağınızhakkında bilgi edinin.
+description: HDInsight'ta Apache Hadoop, Apache HBase, Apache Storm veya Apache Spark kümeleri oluşturmayı öğrenin. Web tarayıcısını ve Azure portalını kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/19/2020
-ms.openlocfilehash: bcc71b7244ba3498b2fcde023d372e67f41d6117
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623254"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313819"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portalını kullanarak HDInsight'ta Linux tabanlı kümeler oluşturun
 
@@ -31,7 +31,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Üst menüden **+ Kaynak oluştur'u**seçin.
 
@@ -51,7 +51,7 @@ Temel **Bilgiler** sekmesinden aşağıdaki bilgileri sağlayın:
 |Kaynak grubu|Açılan listeden, varolan kaynak grubunuzu seçin veya **yeni oluştur'u**seçin.|
 |Küme adı|Genel olarak benzersiz bir ad girin.|
 |Bölge|Açılan listeden, kümenin oluşturulduğu bir bölge seçin.|
-|Küme türü|Liste açmak için **küme türünü seçin'i** seçin. Listeden istediğiniz küme türünü seçin. HDInsight kümeleri çeşitli türlerde gelir. Bunlar, kümenin ayarlı olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur.|
+|Küme türü|Liste açmak için **küme türünü seç'i** tıklatın. Listeden aranan küme türünü seçin. HDInsight kümeleri farklı türlerde gelir. Bunlar, kümenin ayarlı olduğu iş yüküne veya teknolojiye karşılık gelir. Birden çok türü birleştiren bir küme oluşturmak için desteklenen bir yöntem yoktur.|
 |Sürüm|Açılan listeden bir **sürüm**seçin. Ne seçeceğinizi bilmiyorsanız varsayılan sürümü kullanın. Daha fazla bilgi için bkz. [HDInsight küme sürümleri](hdinsight-component-versioning.md).|
 |Küme oturum açma kullanıcı adı|Kullanıcı adı sağlayın, varsayılan **yönetici**.|
 |Küme oturum açma parolası|Parolayı girin.|
@@ -81,7 +81,7 @@ Temel **Bilgiler** sekmesinden aşağıdaki bilgileri sağlayın:
 
 ### <a name="metastore-settings"></a>Metastore Ayarları
 
-İsteğe bağlı: Apache Hive, Apache Oozie ve/veya Apache Ambari meta verilerini kümenin dışında kaydetmek için varolan bir SQL Veritabanı belirtin. Metastore için kullanılan Azure SQL Veritabanı, Azure HDInsight da dahil olmak üzere diğer Azure hizmetlerine bağlantı sağlar. Bir metastore oluşturduğunuzda, tire veya tire içeren bir veritabanına ad vermeyin. Bu karakterler küme oluşturma işleminin başarısız olması için neden olabilir.
+İsteğe bağlı: Apache Hive, Apache Oozie ve veya Apache Ambari meta verilerini kümenin dışında kaydetmek için varolan bir SQL Veritabanı belirtin. Metastore için kullanılan Azure SQL Veritabanı, Azure HDInsight da dahil olmak üzere diğer Azure hizmetlerine bağlantı sağlar. Bir metastore oluşturduğunuzda, tire veya tire içeren bir veritabanına ad vermeyin. Bu karakterler küme oluşturma işleminin başarısız olması için neden olabilir.
 
 **Sonraki'ni seçin: Bir** sonraki sekmeye ilerlemek için Güvenlik + ağ >>.
 
@@ -158,25 +158,7 @@ HDInsight kümeleri oluştururken sorun yaşarsanız bkz. [erişim denetimi gere
 
 Bir HDInsight kümesini başarıyla oluşturdunuz. Şimdi kümenizle nasıl çalışacağınızı öğrenin.
 
-### <a name="apache-hadoop-clusters"></a>Apaçi Hadoop kümeleri
-
 * [HDInsight ile Apache Hive'ı kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight ile MapReduce'ı kullanın](hadoop/hdinsight-use-mapreduce.md)
-
-### <a name="apache-hbase-clusters"></a>Apache HBase kümeleri
-
 * [HDInsight'ta Apache HBase ile başlayın](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [HDInsight'ta Apache HBase için Java uygulamaları geliştirin](hbase/apache-hbase-build-java-maven-linux.md)
-
-### <a name="apache-storm-clusters"></a>Apaçi Fırtına kümeleri
-
 * [HDInsight'ta Apache Storm için Java topolojileri geliştirin](storm/apache-storm-develop-java-topology.md)
-* [HDInsight'ta Apache Storm'da Python bileşenlerini kullanma](storm/apache-storm-develop-python-topology.md)
-* [HDInsight'ta Apache Storm ile topolojileri dağıtın ve izleyin](storm/apache-storm-deploy-monitor-topology-linux.md)
-
-### <a name="apache-spark-clusters"></a>Apache Kıvılcım kümeleri
-
 * [Scala'yı kullanarak bağımsız bir uygulama oluşturma](spark/apache-spark-create-standalone-application.md)
-* [Apache Livy'yi kullanarak işleri Apache Spark kümesinde uzaktan çalıştırın](spark/apache-spark-livy-rest-interface.md)
-* [BI ile Apache Spark: HDInsight'ta Spark'ı BI araçlarıyla kullanarak etkileşimli veri analizi gerçekleştirin](spark/apache-spark-use-bi-tools.md)
-* [Machine Learning ile Apache Spark: Gıda denetimi sonuçlarını tahmin etmek için HDInsight'ta Kıvılcım'ı kullanın](spark/apache-spark-machine-learning-mllib-ipython.md)

@@ -11,17 +11,33 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: fb11d1bdcf8145d4e78285833789b41c92b0ce4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0116c1cfe61b49f2d5aff46fab9cadc0e423ecc
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064871"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310170"
 ---
 # <a name="configure-ip-firewall-rules-for-an-azure-event-hubs-namespace"></a>Azure Etkinlik Hub'ları ad alanı için IP güvenlik duvarı kurallarını yapılandırma
 Varsayılan olarak, İstek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece, Olay Hub'ları ad alanlarına internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
 
 Bu özellik, Azure Etkinlik Hub'larına yalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Ekspres Rotası][express-route]ile Etkinlik Hub'ları kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden gelen trafiğe izin vermek için bir güvenlik duvarı **kuralı** oluşturabilirsiniz. 
+
+>[!WARNING]
+> IP filtrelemesini etkinleştirmek, diğer Azure hizmetlerinin Etkinlik Hub'larıyla etkileşimkurmasını engelleyebilir.
+>
+> Sanal Ağlar uygulandığında güvenilen Microsoft hizmetleri desteklenmez.
+>
+> Sanal Ağlarla çalışmayan yaygın Azure senaryoları (listenin **ayrıntılı** olmadığını unutmayın) -
+> - Azure Stream Analytics
+> - Azure Olay Izgarasıyla Tümleştirme
+> - Azure IoT Hub Rotaları
+> - Azure IoT Aygıt Gezgini
+>
+> Aşağıdaki Microsoft hizmetlerinin sanal ağda olması gerekir
+> - Azure Web Apps
+> - Azure İşlevleri
+
 
 ## <a name="ip-firewall-rules"></a>IP güvenlik duvarı kuralları
 IP güvenlik duvarı kuralları Olay Hub'ları ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Olay Hub'ları ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
@@ -49,7 +65,7 @@ Bu bölümde, Olay Hub'ları ad alanı için IP güvenlik duvarı kuralları olu
 
 Aşağıdaki Kaynak Yöneticisi şablonu, varolan bir Olay Hub'ları ad alanına IP filtresi kuralı eklemeyi sağlar.
 
-Template parameters:
+Şablon parametreleri:
 
 - **ipMask,** CIDR gösteriminde tek bir IPv4 adresi veya IP adresi bloğudur. Örneğin, CIDR gösteriminde 70.37.104.0/24, 70.37.104.0 ile 70.37.104.255 arasında 256 IPv4 adresini temsil eder ve 24 aralık için önemli öneek bitlerinin sayısını gösterir.
 

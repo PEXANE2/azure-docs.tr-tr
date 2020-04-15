@@ -1,22 +1,22 @@
 ---
-title: 'Öğretici: Portalda SSL sonlandırma yapılandırma - Azure Uygulama Ağ Geçidi'
-description: Bu eğitimde, bir uygulama ağ geçidini nasıl yapılandırabileceğinizi ve Azure portalını kullanarak SSL sonlandırma sertifikası eklemeyi öğrenirsiniz.
+title: 'Öğretici: TLS sonlandırmaişlemini portalda yapılandırın - Azure Uygulama Ağ Geçidi'
+description: Bu eğitimde, bir uygulama ağ geçidini nasıl yapılandırabileceğinizi ve Azure portalını kullanarak TLS sonlandırma sertifikası eklemeyi öğrenirsiniz.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: b4278fc6d44f32921713681cb094b659901cc87c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74012318"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312384"
 ---
-# <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak SSL sonlandırma ile bir uygulama ağ geçidini yapılandırma
+# <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak TLS sonlandırma ile bir uygulama ağ geçidini yapılandırın
 
-Arka uç sunucuları için sanal makineler kullanan SSL sonlandırma sertifikasına sahip bir [uygulama ağ geçidini](overview.md) yapılandırmak için Azure portalını kullanabilirsiniz.
+Arka uç sunucuları için sanal makineler kullanan TLS sonlandırma sertifikasına sahip bir [uygulama ağ geçidini](overview.md) yapılandırmak için Azure portalını kullanabilirsiniz.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -265,4 +265,4 @@ Bu örnekte, iIS'yi sanal makinelere yalnızca Azure'un uygulama ağ geçidini b
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Application Gateway SSL desteği hakkında daha fazla bilgi edinin](ssl-overview.md)
+> [Application Gateway TLS desteği hakkında daha fazla bilgi edinin](ssl-overview.md)

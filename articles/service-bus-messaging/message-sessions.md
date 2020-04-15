@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 4df6396d156c3fe1b75e3cac3d3f4aad7f23553a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e22641e9d4f9959c26cd2043ea2acd7e260e0f0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660674"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314049"
 ---
 # <a name="message-sessions"></a>İleti oturumları
 Microsoft Azure Hizmet Veri Servisi oturumları, ilgili iletilerin sınırsız dizilerinin ortak ve sıralı şekilde işlenmesini sağlar. Oturumlar ilk olarak, ilk çıkışta (FIFO) ve istek yanıt kalıplarında kullanılabilir. Bu makalede, Hizmet Veri Servisi kullanırken bu desenleri uygulamak için oturumları nasıl kullanılacağını gösterir. 
@@ -68,7 +68,7 @@ Oturum alıcısı tarafından tutulan oturum *kilidi, gözetleme kilidi* kapatma
 
 ### <a name="message-session-state"></a>İleti oturumu durumu
 
-İş akışları yüksek ölçekli, yüksek kullanılabilirlikli bulut sistemlerinde işlendiğinde, belirli bir oturumla ilişkili iş akışı işleyicisi beklenmeyen hatalardan kurtarabilmeli ve farklı bir işlem veya makine de kısmen tamamlanmış çalışmaya devam edebilmelidir nerede iş başladı.
+İş akışları yüksek ölçekli, yüksek kullanılabilirlikli bulut sistemlerinde işlendiğinde, belirli bir oturumla ilişkili iş akışı işleyicisinin beklenmeyen hatalardan kurtarabilmesi ve çalışmanın başladığı farklı bir işlem veya makinede kısmen tamamlanmış çalışmaya devam edebilmesi gerekir.
 
 Oturum durumu tesisi, aracı içinde bir ileti oturumunun uygulama tanımlı bir ek açıklamasını sağlar, böylece oturum yeni bir işlemci tarafından satın alınınca bu oturuma göre kaydedilen işlem durumu anında kullanılabilir hale gelir.
 
@@ -78,7 +78,7 @@ Oturum durumunu, SetState'i ve [GetState'i](/dotnet/api/microsoft.servicebus.mes
 
 Oturum durumu, oturumdaki tüm iletiler tüketilse bile temizlenmedikçe **(null**returning) sürece kalır.
 
-Bir kuyruk veya abonelikteki tüm varolan oturumlar Java API'sındaki **SessionBrowser** yöntemi ve .NET istemcisindeki QueueClient ve [SubscriptionClient'daki](/dotnet/api/microsoft.azure.servicebus.queueclient) [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) ile numaralandırılabilir.
+Bir kuyruk veya abonelikteki tüm varolan oturumlar Java API'sındaki **SessionBrowser** yöntemi ve .NET Framework istemcisinde QueueClient ve [SubscriptionClient'daki](/dotnet/api/microsoft.servicebus.messaging.queueclient) [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient) [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) ile numaralandırılabilir.
 
 Bir sırada veya abonelikte tutulan oturum durumu, o varlığın depolama kotasına doğru sayılır. Uygulama bir oturumla tamamlandığında, dış yönetim maliyetini önlemek için uygulamanın korunan durumunu temizlemesi önerilir.
 

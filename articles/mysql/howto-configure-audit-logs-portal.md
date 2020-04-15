@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 188ef3a1b9777c37f8557a69e19887638a973611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062538"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380298"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portalında MySQL için Azure Veritabanı için denetim günlüklerini yapılandırma ve erişim
 
@@ -30,7 +30,7 @@ Bu nasıl yapılacağını kılavuzunda adım atmak için şunları yapmanız ge
 
 Denetim günlüğe kaydetmeyi etkinleştirin ve yapılandırın.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. MySQL sunucusu için Azure Veritabanınızı seçin.
 
@@ -69,4 +69,5 @@ Denetim günlüğe kaydetmeyi etkinleştirin ve yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MySQL için Azure Veritabanı'ndaki [denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin.
+- MySQL için Azure Veritabanı'ndaki [denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin
+- [Azure CLI'de](howto-configure-audit-logs-cli.md) denetim günlüklerini nasıl yapılandırılamayı öğrenin

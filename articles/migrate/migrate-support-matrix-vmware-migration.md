@@ -3,12 +3,12 @@ title: Azure Geçişi'nde VMware geçişi desteği
 description: Azure Geçişi'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 9d8dc4dadc975a0fb69ea207f6062b72231460ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269516"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314003"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -47,7 +47,7 @@ Hangi yöntemi kullanmak istediğinizi anlamak için [bu makaleyi](server-migrat
 **Azure için gerekli değişiklikler** | Bazı VM'ler Azure'da çalıştırabilmeleri için değişiklik gerektirebilir. Azure Geçiş, aşağıdaki işletim sistemleri için bu değişiklikleri otomatik olarak yapar:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> - Linux Kurumsal Sunucu 12 SP1+<br/> - Ubuntu 14.04LTS, 16.04LTS, 18.04LTS<br/> - Debian 7, 8<br/><br/> Diğer işletim sistemleri için, geçiş yapmadan önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağını anlatan yönergeler içerir.
 **Linux önyükleme** | /boot özel bir bölüm üzerindeyse, işletim sistemi diskinde yer almalı ve birden çok diske yayılmamalıdır.<br/> /boot kök (/) bölümünün bir parçasıysa, '/' bölümü işletim sistemi diskinde olmalı ve diğer disklere yayılmamalıdır.
 **UEFI önyükleme** | UEFI önyüklemeli VM'ler geçiş için desteklenmez.
-**Disk boyutu** | 2 TB işletim sistemi diski; Veri diskleri için 4 TB.
+**Disk boyutu** | 2 TB işletim sistemi diski; Veri diskleri için 8 TB.
 **Disk sınırları** |  VM başına 60 diske kadar.
 **Şifreli diskler/birimler** | Şifreli disklere/birimlere sahip VM'ler geçiş için desteklenmez.
 **Paylaşılan disk kümesi** | Desteklenmiyor.

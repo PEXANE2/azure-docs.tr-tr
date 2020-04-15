@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 3237fe7d87ad058f255d1c77cb6d814bcd1c292e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: b4e1ef4fbc3ade38b55fc06f8e4e9a119938581b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262256"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383896"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows’ta Azure Dosyalar sorunlarını giderme
 
@@ -324,6 +324,30 @@ Hata 'Sistem hatası 1359 oluştu. Bir iç hata' sayısal bir karakterle başlay
 Şu anda, aad DS'nizi aşağıdaki kurallarla birlikte geçerli olan yeni bir etki alanı DNS adını kullanarak yeniden dağıtmayı düşünebilirsiniz:
 - Adlar sayısal bir karakterle başlayamaz.
 - İsimler 3 ila 63 karakter uzunluğunda olmalıdır.
+
+## <a name="unable-to-mount-azure-files-with-ad-credentials"></a>AZURE Dosyalarını AD kimlik bilgileriyle monte edilemiyor 
+
+### <a name="self-diagnostics-steps"></a>Kendi kendine tanılama adımları
+İlk olarak, Azure Dosyaları AD Kimlik [Doğrulaması'nı etkinleştirmek](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable)için dört adımı da izlediğinden emin olun.
+
+İkinci olarak, [Azure dosya paylaşımını depolama hesabı anahtarıyla montajı](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)deneyin. Montajı başaramadıysanız, istemci çalışma ortamını doğrulamanıza yardımcı olmak, Azure Dosyaları için erişim hatasına neden olacak uyumsuz istemci yapılandırmasını algılamak, kendi kendine düzeltme konusunda ön yazı yönergesi verir ve tanılama izlerini toplamak için [AzFileDiagnostics.ps1'i](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) indirin.
+
+Üçüncü olarak, AD kullanıcı oturum açmış ile AD yapılandırmatemel denetimleri bir dizi yapmak için Debug-AzStorageAccountAuth cmdlet çalıştırabilirsiniz. Bu cmdlet [AzFilesHybrid v0.1.2 + sürümünde](https://github.com/Azure-Samples/azure-files-samples/releases)desteklenir. Bu cmdlet'i, hedef depolama hesabında sahibi izni olan bir AD kullanıcısıyla çalıştırmanız gerekir.  
+```PowerShell
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGroupName $ResourceGroupName -Verbose
+```
+Cmdlet aşağıdaki denetimleri sırayla gerçekleştirir ve hatalar için kılavuz sağlar:
+1. CheckPort445Connectivity: Port 445'in Kobİ bağlantısı için açıldığını kontrol edin
+2. CheckDomainJoined: istemci makine ad katıldı etki alanı olduğunu doğrulamak
+3. CheckADObject: oturum açmış kullanıcının AD etki alanında depolama hesabıyla ilişkili geçerli bir gösterimi olduğunu onaylayın
+4. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bilet almak için girişimi 
+5. CheckADObjectPasswordIsCorrect: depolama hesabını temsil eden AD kimliğinde yapılandırılan parolanın depolama hesabı nın kaldırım anahtarıyla eşleştirdiğinden emin olun
+6. CheckSidHasAadUser: AD'de oturum açan kullanıcının Azure AD ile senkronize edilep eşitlenmediğini kontrol edin
+
+Daha iyi sorun giderme kılavuzu sağlamak için bu tanılama cmdlet'i genişletme üzerinde aktif olarak çalışıyoruz.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun.
 Hala yardıma ihtiyacınız varsa, sorunuzun hızla çözülmesi için [desteğe başvurun.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)

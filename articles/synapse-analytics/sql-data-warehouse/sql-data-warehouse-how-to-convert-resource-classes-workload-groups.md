@@ -7,20 +7,23 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 04/14/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8cee874106598c7d81b923d7dd32ba91902d9326
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745180"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383635"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Kaynak Sınıflarını İş Yükü Gruplarına Dönüştürme
 
 İş yükü grupları, sistem kaynaklarını yalıtmak ve içeren bir mekanizma sağlar.  Ayrıca, iş yükü grupları, içinde çalışan istekler için yürütme kuralları belirlemenize olanak tanır.  Sorgu zaman ekme yürütme kuralı, kaçak sorguların kullanıcı müdahalesi olmadan iptal edilmesine olanak tanır.  Bu makalede, varolan bir kaynak sınıfının nasıl alınır ve benzer bir yapılandırmaya sahip bir iş yükü grubu nasıl oluşturulur.  Ayrıca, isteğe bağlı bir sorgu zaman alakart kuralı eklenir.
+
+> [!NOTE]
+> İş yükü gruplarını ve kaynak sınıflarını aynı anda kullanma kılavuzu için [İş Yükü Sınıflandırması](sql-data-warehouse-workload-classification.md) kavramı belgesinde [sınıflandırıcılarla karıştırma kaynak sınıfı atamalarına](sql-data-warehouse-workload-classification.md#mixing-resource-class-assignments-with-classifiers) bakın.
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>Varolan kaynak sınıfı yapılandırmasını anlama
 
@@ -86,4 +89,6 @@ SELECT request_id, [label], classifier_name, group_name, command
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [İş Yükü Yalıtımı](sql-data-warehouse-workload-isolation.md)
-- [İş Yükü Grubu bağlantısı oluşturma](quickstart-configure-workload-isolation-tsql.md)
+- [İş Yükü Grubu Oluşturma](quickstart-configure-workload-isolation-tsql.md)
+- [İş YÜKÜ SINIFI (Transact-SQL) OLUŞTUR](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
+- [İş YÜKÜ GRUBU OLUŞTUR (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)

@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: cff1b3b79b34d3f0bed27a2ea50799185958a8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477856"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383644"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Etkinlik Hub'larını Azure Özel Bağlantısıyla Tümleştir (Önizleme)
 Azure Özel Bağlantı Hizmeti, Azure Hizmetleri'ne (örneğin, Azure Etkinlik Hub'ları, Azure Depolama ve Azure Cosmos DB) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal **ağınızdaki özel** bir bitiş noktası üzerinden erişmenizi sağlar.
@@ -45,7 +45,7 @@ Bir Etkinlik Hub'ı ad alanını Azure Özel Bağlantısıyla tümleştirmek iç
 ### <a name="steps"></a>Adımlar
 Zaten bir Olay Hub'ları ad alanınız varsa, aşağıdaki adımları izleyerek özel bir bağlantı bağlantısı oluşturabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Arama **çubuğunda, olay hub'larını**yazın.
 3. Özel bir bitiş noktası eklemek istediğiniz listeden **ad alanını** seçin.
 4. **Ayarlar'ın**altındaki **Ağ** sekmesini seçin.
@@ -151,6 +151,32 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 (Get-AzResource -ResourceId $namespaceResource.ResourceId -ExpandProperties).Properties
 
 
+```
+
+### <a name="configure-the-private-dns-zone"></a>Özel DNS Bölgesini yapılandırma
+Olay Hub'ları etki alanı için özel bir DNS bölgesi oluşturun ve sanal ağla bir ilişkilendirme bağlantısı oluşturun:
+
+```azurepowershell-interactive
+$zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
+                            -Name "privatelink.servicebus.windows.net" 
+ 
+$link  = New-AzPrivateDnsVirtualNetworkLink -ResourceGroupName $rgName `
+                                            -ZoneName "privatelink.servicebus.windows.net" `
+                                            -Name "mylink" `
+                                            -VirtualNetworkId $virtualNetwork.Id  
+ 
+$networkInterface = Get-AzResource -ResourceId $privateEndpoint.NetworkInterfaces[0].Id -ApiVersion "2019-04-01" 
+ 
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) { 
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) { 
+        Write-Host "$($ipconfig.properties.privateIPAddress) $($fqdn)"  
+        $recordName = $fqdn.split('.',2)[0] 
+        $dnsZone = $fqdn.split('.',2)[1] 
+        New-AzPrivateDnsRecordSet -Name $recordName -RecordType A -ZoneName "privatelink.servicebus.windows.net"  `
+                                -ResourceGroupName $rgName -Ttl 600 `
+                                -PrivateDnsRecords (New-AzPrivateDnsRecordConfig -IPv4Address $ipconfig.properties.privateIPAddress)  
+    } 
+}
 ```
 
 ## <a name="manage-private-endpoints-using-azure-portal"></a>Azure portalLarını kullanarak özel uç noktaları yönetme

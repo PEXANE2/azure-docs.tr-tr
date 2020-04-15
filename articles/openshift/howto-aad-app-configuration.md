@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: a2eade6c5a9c826d28d435a09861ba58463ae8c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6c4fb5caf746650f95872d50afe31e5693422be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280540"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382907"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Red Hat OpenShift için Azure Active Directory tümleştirmesi
 
@@ -25,13 +25,13 @@ Azure [portalında,](https://portal.azure.com)kiracınızın portalın sağ üst
 
 ![Sağ](./media/howto-create-tenant/tenant-callout.png) üstte kiracı nın listelendiği portalın ekran görüntüsü Yanlış kiracı görüntüleniyorsa, sağ üstteki kullanıcı adınızı tıklatın, ardından **Dizin Değiştir'i**tıklatın ve **Tüm Dizinler** listesinden doğru kiracıyı seçin.
 
-Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Directory global yönetici kullanıcıoluşturun.
+Azure Red Hat OpenShift kümenizde oturum açmak için yeni bir Azure Active Directory 'Sahibi' kullanıcısı oluşturun.
 
 1. [Kullanıcılar-Tüm kullanıcılar](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) blade gidin.
 2. **Kullanıcı** bölmesini açmak için **+Yeni kullanıcıyı** tıklatın.
 3. Bu kullanıcı için bir **Ad** girin.
 4. Oluşturduğunuz **User name** kiracının adını temel alan ve `.onmicrosoft.com` sonunda eklenen bir Kullanıcı adı oluşturun. Örneğin, `yourUserName@yourTenantName.onmicrosoft.com`. Bu kullanıcı adını yazın. Kümenizde oturum açabilmek için buna ihtiyacınız olacak.
-5. Dizin rol bölmesini açmak için **Dizin rolünü** tıklatın ve **Genel Yönetici'yi** seçin ve ardından bölmenin altındaki **Tamam'ı** tıklatın.
+5. Dizin rol bölmesini açmak için **Dizin rolünü** tıklatın ve **Sahibi'ni** seçin ve ardından bölmenin altındaki **Tamam'ı** tıklatın.
 6. **Kullanıcı** bölmesinde **Parolayı Göster'i** tıklatın ve geçici parolayı kaydedin. İlk kez oturum açtıktan sonra sıfırlamanız istenir.
 7. Bölmenin alt kısmında, kullanıcıyı oluşturmak için **Oluştur'u** tıklatın.
 

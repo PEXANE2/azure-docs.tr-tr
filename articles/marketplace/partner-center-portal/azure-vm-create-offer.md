@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 706a8c554dafbf792471729929d6e6484dfa35ae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266090"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383795"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure sanal makine teklifi oluşturma
 
@@ -116,9 +116,9 @@ Devam etmeden önce **taslağı Kaydet'i** seçin.
 
 Bu sayfa, teklifinizi pazarda, uygulama sürümünüzde ve teklifinizi destekleyen yasal sözleşmelerde gruplandırmak için kullanılan kategorileri ve sektörleri tanımlamanıza olanak tanır.
 
-### <a name="category"></a>Kategori
+### <a name="categories"></a>Kategoriler
 
-En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılır. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın. Sanal makine teklifleri Azure Marketi'nde **Bilgi İşlem** kategorisi altında görünür.
+En az bir ve en fazla beş kategori seçin. Bu kategoriler, teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılır. Teklif açıklamasında, teklifinizin bu kategorileri nasıl desteklediğini açıklayın. Sanal makine teklifleri Azure Marketi'nde **Bilgi İşlem** kategorisi altında görünür.
 
 ### <a name="legal"></a>Yasal Bildirim
 
@@ -234,7 +234,6 @@ Müşterilerin destek ekibinize ulaşabileceği destek web sitesini sağlayın.
 
 - Azure Global destek web sitesi
 - Azure Devlet destek web sitesi
-- vb.
 
 ### <a name="partner-support-contact"></a>İş ortağı destek kişisi
 
@@ -389,6 +388,8 @@ Her plan en az bir pazarda mevcut olmalıdır. Bu planın satın alınabileceği
 
 Planınız için fiyatları Abd Doları (USD) olarak belirlediyseniz ve başka bir pazar konumu eklediyseniz, yeni piyasa fiyatı geçerli döviz kurlarına göre hesaplanacaktır. Her zaman yayınlamadan önce her piyasa için fiyat gözden geçirin. Değişikliklerinizi kaydettikten sonra **İhracat fiyatları (xlsx)** bağlantısını kullanarak fiyatları gözden geçirin.
 
+Bir pazarı kaldırdığınızda, etkin dağıtımları kullanan müşteriler yeni dağıtımlar oluşturamaz veya varolan dağıtımlarını ölçeklendiremez. Varolan dağıtımlar etkilenmez.
+
 #### <a name="pricing"></a>Fiyatlandırma
 
 **Lisans modeli** – Bu plan için fiyatlandırmayı yapılandırmak için **Kullanım tabanlı aylık faturalı planı** seçin veya müşterilerin bu planı mevcut lisanslarıyla kullanmalarına izin vermek için kendi **lisansınızı getirin.**
@@ -421,7 +422,7 @@ Her planı herkes tarafından görülebilecek veya yalnızca önceden seçilmiş
 
 #### <a name="hide-plan"></a>Planı gizle
 
-Sanal makinenizbaşka bir çözüm şablonu veya yönetilen uygulama aracılığıyla başvurulduğunda yalnızca dolaylı olarak kullanılacaksa, sanal makinenizi yayımlamak veya teklif etmek için bu kutuyu seçin, ancak bu kutuyu doğrudan arayan ve doğrudan tarayan müşterilerden gizleyin.
+Sanal makineniz başka bir çözüm şablonu veya yönetilen uygulama aracılığıyla başvurulduğunda yalnızca dolaylı olarak kullanılacaksa, sanal makinenizi yayımlamak için bu kutuyu seçin, ancak bu kutuyu doğrudan arayan ve doğrudan gezen müşterilerden gizleyin.
 
 > [!NOTE]
 > Gizli planlar önizleme bağlantılarını desteklemez.
@@ -430,7 +431,7 @@ Devam etmeden önce **taslağı Kaydet'i** seçin.
 
 ### <a name="technical-configuration"></a>Teknik yapılandırma
 
-Bu planla ilişkili görüntüleri ve diğer teknik özellikleri sağlayın.
+Bu planla ilişkili görüntüleri ve diğer teknik özellikleri sağlayın. Ayrıntılar için [bkz.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-technical-assets)
 
 > [!NOTE]
 > Plan **kurulumu** sekmesindeki başka bir plandaki paketleri yeniden kullanmak üzere bu planı yapılandırırsanız bu sekme gösterilmez.
@@ -459,7 +460,7 @@ Dağıtılan bir sanal makinede ortak veya özel bağlantı noktalarını açın
 
 #### <a name="vm-images"></a>VM Görüntüleri
 
-Sanal makine görüntüleri için bir disk sürümü ve SAS URI sağlayın. Her VM görüntü için en fazla 16 veri diski ekleyin. Belirli bir gönderimde plan başına yalnızca bir yeni resim sürümü sağlayın. Bir resim yayımlandıktan sonra onu düzenleyebilirsiniz, ancak silebilirsiniz. Sürümü silerken, kullanıcılarınızın silinen sürümün yeni bir örneğini dağıtmasını engeller.
+Sanal makine görüntüleri için bir disk sürümü ve SAS URI sağlayın. Her VM görüntü için en fazla 16 veri diski ekleyin. Belirli bir gönderimde plan başına yalnızca bir yeni resim sürümü sağlayın. Bir resim yayımlandıktan sonra onu düzenleyebilirsiniz, ancak silebilirsiniz. Sürümü silerken, hem yeni hem de varolan kullanıcıların silinen sürümün yeni bir örneğini dağıtmasını engeller.
 
 - **Disk sürümü,** sağladığınız görüntünün sürümüdür.
 - **SAS URI,** Azure Depolama'da işletim sistemi VHD'yi depoladığınız konumdur.

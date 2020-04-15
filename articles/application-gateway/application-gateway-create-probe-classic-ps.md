@@ -7,17 +7,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75966810"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312545"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell'i kullanarak Azure Uygulama Ağ Geçidi (klasik) için özel bir sonda oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenli Soketkatmanı (SSL) boşaltmasını yapılandırmak istiyorsanız, [Bkz. SSL boşaltma için bir uygulama ağ geçidi yapılandırın.](application-gateway-ssl.md)
+Daha önce Güvenli Soketkatmanı (SSL) boşaltma olarak bilinen Aktarım Katmanı Güvenliği'ni (TLS) yapılandırmak istiyorsanız, [TLS boşaltma için bir uygulama ağ geçidini yapılandırma'ya](application-gateway-ssl.md)bakın.
 
 İç yük dengeleyiciyle kullanacağınız uygulama ağ geçidi yapılandırmak istiyorsanız, bkz. [İç yük dengeleyici (ILB) ile uygulama ağ geçidi oluşturma](application-gateway-ilb.md).
 

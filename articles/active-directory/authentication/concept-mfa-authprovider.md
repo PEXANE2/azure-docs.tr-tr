@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a275e5ab394b54960a2340848152741762b28f8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf50a8f58978a010fe3d8228ace8579fcf52eb38
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269377"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309896"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Çok Faktörlü Kimlik Doğrulama Sağlayıcısı ne zaman kullanılır?
+
+> [!IMPORTANT]
+> 1 Eylül 2018 tarihinden itibaren yeni auth sağlayıcıları oluşturulamaz. Varolan auth sağlayıcıları kullanılmaya ve güncelliğe devam edebilir, ancak geçiş artık mümkün değildir. Çok faktörlü kimlik doğrulama, Azure AD Premium lisanslarında bir özellik olarak kullanılabilir durumda olmaya devam edecektir.
 
 İki adımlı doğrulama, Azure Active Directory’ye sahip genel yöneticiler ve Office 365 kullanıcıları için varsayılan olarak kullanılabilir durumdadır. Ancak, [gelişmiş özelliklerden](howto-mfa-mfasettings.md) yararlanmak isterseniz Azure Multi-Factor Authentication’ın (MFA) tam sürümünü satın almanız gerekir.
 
 Azure Çok Faktörlü Auth Sağlayıcısı, **lisansı olmayan**kullanıcılar için Azure Çok Faktörlü Kimlik Doğrulama tarafından sağlanan özelliklerden yararlanmak için kullanılır.
-
-> [!NOTE]
-> 1 Eylül 2018 tarihinden itibaren yeni auth sağlayıcıları oluşturulamaz. Varolan auth sağlayıcıları kullanılmaya ve güncelliğe devam edebilir, ancak geçiş artık mümkün değildir. Çok faktörlü kimlik doğrulama, Azure AD Premium lisanslarında bir özellik olarak kullanılabilir durumda olmaya devam edecektir.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Azure MFA SDK ile ilgili uyarılar
 

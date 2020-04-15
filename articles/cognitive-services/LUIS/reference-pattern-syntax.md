@@ -1,25 +1,19 @@
 ---
 title: Desen sözdizimi başvurusu - LUIS
-titleSuffix: Azure Cognitive Services
 description: Dil Anlama (LUIS) uygulamalarında kullanıcı söyleyişlerinden önemli verileri ayıklamak için varlıklar oluşturun. Çıkarılan veriler istemci uygulaması tarafından kullanılır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/09/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc24667f43dfedc032f52c40fc5f8fe5c80bad70
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219736"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382155"
 ---
 # <a name="pattern-syntax"></a>Desen söz dizimi
 
-Desen sözdizimi bir sözcük için bir şablondur. Şablon, eşleştirmek istediğiniz sözcükleri ve varlıkların yanı sıra göz ardı etmek istediğiniz sözcükleri ve noktalama işaretlerini içermelidir. Bu normal bir ifade **değildir.**
+Desen sözdizimi bir sözcük için bir şablondur. Şablon, eşleştirmek istediğiniz sözcükleri ve varlıkların yanı sıra göz ardı etmek istediğiniz sözcükleri ve [noktalama işaretlerini](luis-reference-application-settings.md#punctuation-normalization) içermelidir. Bu normal bir ifade **değildir.**
 
 > [!CAUTION]
 > Desenler yalnızca makinede öğrenilen varlık ebeveynlerini içerir, alt bileşenleri değil.

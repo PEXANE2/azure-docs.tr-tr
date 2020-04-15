@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.date: 04/14/2020
+ms.openlocfilehash: 18f8b0732e4af0229ff225d9c3b423e27bf342a8
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409853"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382793"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve atoklama kılavuzu
 
@@ -31,13 +31,13 @@ Eşleme veri akışları tasarlarken, yapılandırma panelindeki veri önizleme 
 
  Bu bilgileri, veri akışınızın farklı boyutlu veri kaynaklarına karşı performansını tahmin etmek için kullanabilirsiniz. Daha fazla bilgi için [bkz.](concepts-data-flow-monitoring.md)
 
-![Veri Akışını İzleme](media/data-flow/mon003.png "Veri Akış Monitörü 3")
+![Veri Akışı İzleme](media/data-flow/mon003.png "Veri Akış Monitörü 3")
 
  Ardışık hata ayıklama çalıştırmaları için, genel performans hesaplamalarınızda yaklaşık bir dakikalık küme kurulum süresi, sıcak bir küme için gereklidir. Varsayılan Azure Tümleştirme Çalışma Süresini başlangıç olarak başlıyorsanız, döndürme süresi yaklaşık 5 dakika sürebilir.
 
 ## <a name="increasing-compute-size-in-azure-integration-runtime"></a>Azure Tümleştirme Çalışma Süresi'nde işlem boyutunu artırma
 
-Daha fazla çekirdekiçeren Tümleştirme Çalışma Süresi, Spark bilgi işlem ortamlarında düğüm sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar.
+Daha fazla çekirdekiçeren Tümleştirme Çalışma Süresi, Spark bilgi işlem ortamlarında düğüm sayısını artırır ve verilerinizi okumak, yazmak ve dönüştürmek için daha fazla işlem gücü sağlar. ADF Veri Akışları, bilgi işlem altyapısı için Spark'ı kullanır. Kıvılcım ortamı, bellek için optimize edilmiş kaynaklar da çok iyi çalışır.
 * İşlem hızınızın giriş hızınızdan daha yüksek olmasını **istiyorsanız, Bilgi İşlem En İyi Duruma Getirilmiş** kümeyi deneyin.
 * Bellekte daha fazla veri önbelleğe almak istiyorsanız **Bellek En İyi Duruma Getirilmiş** kümeyi deneyin. Bellek optimize compute Optimize daha çekirdek başına daha yüksek bir fiyat puanı vardır, ancak büyük olasılıkla daha hızlı dönüşüm hızları neden olur.
 
@@ -49,7 +49,11 @@ Tümleştirme Çalışma Zamanı'nı nasıl oluşturabilirsiniz hakkında daha f
 
 Varsayılan olarak, hata ayıklama yı açmak, her veri fabrikası için otomatik olarak oluşturulan varsayılan Azure Tümleştirme çalışma süresini kullanır. Bu varsayılan Azure IR, Genel İşlem özelliklerini kullanarak sekiz çekirdek, dört sürücü düğümü ve dört işçi düğümü için ayarlanır. Daha büyük verilerle test ederken, hata ayıklama kümenizin boyutunu daha büyük yapılandırmalara sahip bir Azure IR oluşturarak artırabilir ve hata ayıklama'yı açtığınızda bu yeni Azure IR'sini seçebilirsiniz. Bu, ADF'ye veri önizlemesi ve veri akışlarıyla birlikte veri hata ayıklama için bu Azure IR'sini kullanmasını emredecektir.
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse"></a>Azure SQL Veritabanı ve Azure SQL Veri Ambarı için optimizasyon
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>TTL ile küme işlem başlatma süresini azaltın
+
+Azure IR'de Veri Akışı Özellikleri altında, fabrikanız için küme bilgi işlem kaynakları havuzunu yükseltmenize olanak tanıyan bir özellik vardır. Bu havuzla, yürütme için sırayla veri akışı etkinlikleri gönderebilirsiniz. Havuz kurulduktan sonra, sonraki her işin isteğe bağlı Kıvılcım kümesinin işinizi yürütmesi 1-2 dakika sürer. Kaynak havuzunun ilk kurulumu yaklaşık 6 dakika sürer. Kaynak havuzunu canlı (TTL) ayarında tutmak istediğiniz süreyi belirtin.
+
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>Azure SQL Veritabanı ve Azure SQL Veri Ambarı Synapse için optimizasyon
 
 ### <a name="partitioning-on-source"></a>Kaynakta bölümleme
 

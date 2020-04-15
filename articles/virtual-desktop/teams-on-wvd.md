@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cfec30e56b0fd523896cbc1a7e84e92f639075a8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 15a4c9b16b102310fd02f8db3a4fb93cff84882b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879063"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314060"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual masaüstünde Microsoft Ekipleri'ni kullanma
 
@@ -67,3 +67,7 @@ Ekipler masaüstü uygulamasını makine başına yükleme yi kullanarak dağıt
 
       > [!NOTE]
       > ALLUSER=1 ayarlı MSI ayarlı Takımlar yüklerseniz, otomatik güncelleştirmeler devre dışı bırakılır. Takımları ayda en az bir kez güncellediğinden emin olmamızı öneririz.
+      
+### <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Ana bilgisayar havuzu için Uzak Masaüstü Protokolü özelliklerini özelleştirme
+Çok monitör deneyimi gibi bir ana bilgisayar havuzunun Uzak Masaüstü Protokolü (RDP) özelliklerini özelleştirmek, Mikrofon ve ses yönlendirmesini etkinleştirmek, kullanıcılarınız için gereksinimlerine göre en iyi deneyimi sunmanıza olanak tanır. **Set-RdsHostPool** cmdlet'teki **-CustomRdpProperty** parametresini kullanarak Windows Sanal Masaüstü'ndeki RDP özelliklerini özelleştirebilirsiniz.
+Desteklenen özelliklerin ve bunların varsayılan değerlerinin tam listesi için [desteklenen RDP dosya ayarlarına](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) bakın.

@@ -1,5 +1,5 @@
 ---
-title: IoT Edge için IoT güvenlik modülü için Azure Güvenlik Merkezi'ni anlama| Microsoft Dokümanlar
+title: IoT Edge için güvenlik modülü
 description: IoT Edge için IoT güvenlik modülü için Azure Güvenlik Merkezi'nin mimarisini ve yeteneklerini anlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 148c68234a937efde554ef00a6014cdc1a350f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0eb68f517c4c5b04dd4f92dd1a804dcf5ad24362
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71315900"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310636"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge güvenlik modülü
 
@@ -36,7 +36,7 @@ Bkz. Daha fazla bilgi edinmek için [aracınızı yapılandırın.](how-to-agent
 IoT Edge için Azure Güvenlik Merkezi IoT güvenlik modülü aşağıdaki özellikleri sunar:
 
 - Temel İşletim Sistemi (Linux) ve IoT Edge Konteyner sistemlerinden ham güvenlik olayları toplar.
-  
+
   Kullanılabilir güvenlik veri toplayıcıları hakkında daha fazla bilgi edinmek [için IoT aracı yapılandırması için Azure Güvenlik Merkezi'ne](how-to-agent-configuration.md) bakın.
 
 - IoT Edge dağıtım bildirimlerinin analizi.
@@ -52,7 +52,7 @@ Modülün İşletim Sistemini ve diğer IoT Edge modüllerini izlemesi için ayr
 
 ## <a name="module-supported-platforms"></a>Modül destekli platformlar
 
-IoT Edge için Azure Güvenlik Merkezi IoT güvenlik modülü şu anda yalnızca Linux için kullanılabilir. 
+IoT Edge için Azure Güvenlik Merkezi IoT güvenlik modülü şu anda yalnızca Linux için kullanılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

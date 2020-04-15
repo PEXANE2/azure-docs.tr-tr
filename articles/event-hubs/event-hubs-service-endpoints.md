@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 6de51c23bd6358a6f54fe3baf9e9b256047d4ab5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: abd7940551f7a8182364475b0cf50b60afb5e1b7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064888"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313788"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Etkinlik Hub'ları ile Sanal Ağ hizmeti uç noktalarını kullanma
 
@@ -25,6 +25,22 @@ Olay Hub'larının [Sanal Ağ (VNet) Hizmet Bitiş Noktaları][vnet-sep] ile tü
 En az bir sanal ağ alt ağ hizmeti bitiş noktasına bağlı olarak yapılandırıldıktan sonra, ilgili Olay Hub'ları ad alanı artık sanal ağlarda her yerden gelen trafiği kabul etmez. Sanal ağ açısından bakıldığında, Olay Hub'larının ad alanını hizmet bitiş noktasına bağlama, sanal ağ alt ağından ileti hizmetine yalıtılmış bir ağ tünelini yapılandırır. 
 
 Sonuç, ileti hizmeti bitiş noktasının genel BIR IP aralığında olmasına rağmen, alt ağa ve ilgili Olay Hub'larına bağlı iş yükleri arasındaki özel ve yalıtılmış bir ilişkidir. Bu davranışın bir istisnası vardır. Varsayılan olarak bir hizmet bitiş noktasıetkinleştirmek, sanal ağile ilişkili [IP güvenlik duvarındaki](event-hubs-ip-filtering.md) `denyall` kuralı etkinleştirir. Olay Hub ortak bitiş noktasına erişimi etkinleştirmek için IP güvenlik duvarına belirli IP adresleri ekleyebilirsiniz. 
+
+>[!WARNING]
+> Sanal Ağlar tümleştirmesi uygulamak, diğer Azure hizmetlerinin Etkinlik Hub'larıyla etkileşimkurmasını engelleyebilir.
+>
+> Sanal Ağlar uygulandığında güvenilen Microsoft hizmetleri desteklenmez.
+>
+> Sanal Ağlarla çalışmayan yaygın Azure senaryoları (listenin **ayrıntılı** olmadığını unutmayın) -
+> - Azure Stream Analytics
+> - Azure Olay Izgarasıyla Tümleştirme
+> - Azure IoT Hub Rotaları
+> - Azure IoT Aygıt Gezgini
+>
+> Aşağıdaki Microsoft hizmetlerinin sanal ağda olması gerekir
+> - Azure Web Apps
+> - Azure İşlevleri
+
 
 > [!IMPORTANT]
 > Sanal ağlar, Etkinlik Hub'larının **standart** ve **özel** katmanlarında desteklenir. **Temel** katmanda desteklenmiyor.
@@ -35,7 +51,7 @@ Sıkı ve bölümlere ayrılmış güvenlik gerektiren ve sanal ağ alt ağları
 
 TCP/IP üzerinden HTTPS taşıyanlar da dahil olmak üzere bölmeler arasındaki herhangi bir anlık IP rotası, ağ katmanındaki güvenlik açıklarından yararlanma riski taşır. Mesajlaşma hizmetleri, iletilerin taraflar arasında geçiş sırasında diske bile yazıldığı yalıtımlı iletişim yolları sağlar. Her ikisi de aynı Olay Hub'ları örneğine bağlı olan iki farklı sanal ağdaki iş yükleri, iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir ve ilgili ağ yalıtım sınır bütünlüğü korunur.
  
-Bu, güvenliğe duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmedikleri, aynı zamanda artık mesajlaşmayı güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için kullanabileceği anlamına gelir. HTTPS ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabileceklerden daha güvenlidir.
+Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmekle birlikte, artık https ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim modlarında ulaşılabileceklerden daha güvenli güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşmayı kullanabileceği anlamına gelir.
 
 ## <a name="bind-event-hubs-to-virtual-networks"></a>Olay hub'larını sanal ağlara bağlama
 
@@ -75,7 +91,7 @@ Bu bölümde, sanal ağ hizmeti bitiş noktası eklemek için Azure portalını 
 
 Aşağıdaki Kaynak Yöneticisi şablonu, varolan bir Olay Hub'ları ad alanına sanal ağ kuralı eklemeyi sağlar.
 
-Template parameters:
+Şablon parametreleri:
 
 * **namespaceName**: Olay Hub'ları ad alanı.
 * **vnetRuleName**: Oluşturulacak Sanal Ağ kuralının adı.

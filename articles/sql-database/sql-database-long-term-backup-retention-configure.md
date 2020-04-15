@@ -1,6 +1,6 @@
 ---
-title: Uzun süreli yedek saklamayı yönetme
-description: Otomatik yedeklemeleri SQL Azure depolama alanında nasıl depolayıp geri yükleyin
+title: 'Tek veritabanı: Uzun vadeli yedekleme tutma yönetme'
+description: Azure Portalı ve PowerShell'i kullanarak Azure depolama alanında (10 yıla kadar) azure depolama alanında tek veya havuza edilmiş bir veritabanıiçin otomatik yedeklemeleri nasıl depolayıp geri yükleyin
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 08/21/2019
-ms.openlocfilehash: a560f4f1399792a7b150b37c3c048ccc0079b98d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74420795"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380930"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Veritabanı'nı uzun süreli yedekleme bekletme yönetme
 

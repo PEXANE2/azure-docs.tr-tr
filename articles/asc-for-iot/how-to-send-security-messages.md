@@ -1,5 +1,5 @@
 ---
-title: Güvenlik iletilerinizi IoT için Azure Güvenlik Merkezi'ne gönderin| Microsoft Dokümanlar
+title: Aygıt güvenlik iletileri gönderme
 description: IoT için Azure Güvenlik Merkezi'ni kullanarak güvenlik iletilerinizi nasıl göndereceğinizi öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 8bbbd8248c7418b667e34389cb47bd3f6b4f06ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4877493982671b1b5db686715ef854f25c2966ea
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76963827"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310990"
 ---
 # <a name="send-security-messages-sdk"></a>Güvenlik mesajları Gönder SDK
 
-Bu nasıl yapılacak kılavuzu, ioT aracısı için bir Azure Güvenlik Merkezi kullanmadan cihazınızın güvenlik iletilerini toplamayı ve göndermeyi seçtiğinizde Azure Güvenlik Merkezi IoT hizmet özelliklerini açıklar ve nasıl yapılacağını açıklar.  
+Bu nasıl yapılacak kılavuzu, ioT aracısı için bir Azure Güvenlik Merkezi kullanmadan cihazınızın güvenlik iletilerini toplamayı ve göndermeyi seçtiğinizde Azure Güvenlik Merkezi IoT hizmet özelliklerini açıklar ve nasıl yapılacağını açıklar.
 
-Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz: 
+Bu kılavuzda şunların nasıl yapıldığını öğrenirsiniz:
+
 > [!div class="checklist"]
 > * Azure IoT C SDK'yı kullanarak güvenlik iletileri gönderme
 > * Azure IoT C# SDK'yı kullanarak güvenlik iletileri gönderme
 > * Azure IoT Python SDK'yı kullanarak güvenlik iletileri gönderme
 > * Azure IoT Düğümü.js SDK'yı kullanarak güvenlik iletileri gönderme
 > * Azure IoT Java SDK'yı kullanarak güvenlik iletileri gönderme
-
 
 ## <a name="azure-security-center-for-iot-capabilities"></a>IoT özellikleri için Azure Güvenlik Merkezi
 
@@ -42,6 +42,7 @@ Azure Güvenlik Merkezi IoT, gönderilen veriler [Azure Güvenlik Merkezi IoT ş
 ## <a name="security-message"></a>Güvenlik iletisi
 
 Azure Güvenlik Merkezi IoT için aşağıdaki ölçütleri kullanarak bir güvenlik iletisi tanımlar:
+
 - İleti Azure IoT SDK ile gönderildiyse
 - İleti [güvenlik iletisi şemasına uyuyorsa](https://aka.ms/iot-security-schemas)
 - İleti göndermeden önce bir güvenlik iletisi olarak ayarlanmışsa
@@ -49,10 +50,10 @@ Azure Güvenlik Merkezi IoT için aşağıdaki ölçütleri kullanarak bir güve
 Her güvenlik iletisi, gönderenin , `AgentId` `AgentVersion`, `MessageSchemaVersion` ve güvenlik olaylarının listesini içeren meta verileri içerir.
 Şema, etkinlik türlerini de içeren güvenlik iletisinin geçerli ve gerekli özelliklerini tanımlar.
 
->[!Note]
-> Şemaya uymayan gönderilen iletiler yoksayılır. Göz ardı edilen iletiler şu anda depolanmadığından veri göndermeişlemini başlatmadan önce şemayı doğruladığından emin olun. 
+> [!NOTE]
+> Şemaya uymayan gönderilen iletiler yoksayılır. Göz ardı edilen iletiler şu anda depolanmadığından veri göndermeişlemini başlatmadan önce şemayı doğruladığından emin olun.
 
->[!Note]
+> [!NOTE]
 > Azure IoT SDK kullanılarak güvenlik iletisi olarak ayarlanamayan iletiler, IoT için Azure Güvenlik Merkezi'ne yönlendirilmez.
 
 ## <a name="valid-message-example"></a>Geçerli ileti örneği
@@ -89,62 +90,63 @@ Güvenlik iletisi olarak ayarlanıp gönderildikten sonra, bu ileti IoT için Az
 ]
 ```
 
-## <a name="send-security-messages"></a>Güvenlik iletileri gönderme 
+## <a name="send-security-messages"></a>Güvenlik iletileri gönderme
 
 Azure [IoT C aygıtı SDK,](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview) [Azure IoT C# cihazı SDK,](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)Azure [IoT Düğümü.js SDK](https://github.com/Azure/azure-iot-sdk-node), [Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)veya [Azure IoT Java SDK'yı](https://github.com/Azure/azure-iot-sdk-java)kullanarak, IoT aracısı için Azure Güvenlik Merkezi'ni *kullanmadan* güvenlik iletileri gönderin.
 
-IoT için Azure Güvenlik Merkezi tarafından işlenmek üzere aygıtlarınızdan gelen aygıt verilerini göndermek için, ioT işleme ardışık için Azure Güvenlik Merkezi'ne doğru yönlendirme için iletileri işaretlemek için aşağıdaki API'lerden birini kullanın. 
+IoT için Azure Güvenlik Merkezi tarafından işlenmek üzere aygıtlarınızdan gelen aygıt verilerini göndermek için, ioT işleme ardışık için Azure Güvenlik Merkezi'ne doğru yönlendirme için iletileri işaretlemek için aşağıdaki API'lerden birini kullanın.
 
-Doğru üstbilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti](https://aka.ms/iot-security-schemas)şeması için Azure Güvenlik Merkezi'ne de uygun olmalıdır. 
+Doğru üstbilgiyle işaretlenmiş olsa bile gönderilen tüm veriler, [IoT ileti](https://aka.ms/iot-security-schemas)şeması için Azure Güvenlik Merkezi'ne de uygun olmalıdır.
 
-### <a name="send-security-message-api"></a>Güvenlik iletisi API gönder 
+### <a name="send-security-message-api"></a>Güvenlik iletisi API gönder
 
-**Güvenlik iletileri GÖNDER** API'si şu anda C ve C#, Python, Node.js ve Java'da kullanılabilir.  
+**Güvenlik iletileri GÖNDER** API'si şu anda C ve C#, Python, Node.js ve Java'da kullanılabilir.
 
 #### <a name="c-api"></a>C API
 
 ```c
 bool SendMessageAsync(IoTHubAdapter* iotHubAdapter, const void* data, size_t dataSize) {
- 
+
     bool success = true;
     IOTHUB_MESSAGE_HANDLE messageHandle = NULL;
- 
+
     messageHandle = IoTHubMessage_CreateFromByteArray(data, dataSize);
- 
+
     if (messageHandle == NULL) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubMessage_SetAsSecurityMessage(messageHandle) != IOTHUB_MESSAGE_OK) {
         success = false;
         goto cleanup;
     }
- 
+
     if (IoTHubModuleClient_SendEventAsync(iotHubAdapter->moduleHandle, messageHandle, SendConfirmCallback, iotHubAdapter) != IOTHUB_CLIENT_OK) {
         success = false;
         goto cleanup;
     }
- 
+
 cleanup:
     if (messageHandle != NULL) {
         IoTHubMessage_Destroy(messageHandle);
     }
- 
+
     return success;
 }
- 
+
 static void SendConfirmCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback) {
     if (userContextCallback == NULL) {
         //error handling
         return;
     }
- 
+
     if (result != IOTHUB_CLIENT_CONFIRMATION_OK){
         //error handling
     }
 }
 ```
+
 #### <a name="c-api"></a>C# API’si
 
 ```cs
@@ -157,6 +159,7 @@ private static async Task SendSecurityMessageAsync(string messageContent)
     await client.SendEventAsync(securityMessage);
 }
 ```
+
 #### <a name="nodejs-api"></a>Düğüm.js API
 
 ```typescript
@@ -194,7 +197,7 @@ function SendSecurityMessage(messageContent)
 
 Python API'sini kullanmak için [azure-iot-device](https://pypi.org/project/azure-iot-device/)paketini yüklemeniz gerekir.
 
-Python API'sını kullanırken, benzersiz aygıtı veya modül bağlantı dizesini kullanarak güvenlik iletisini modül veya aygıt aracılığıyla gönderebilirsiniz. Aşağıdaki Python komut dosyası örneğini bir aygıtla kullanırken, **IoTHubDeviceClient'ı**ve bir modülle **IoTHubModuleClient'ı**kullanın. 
+Python API'sını kullanırken, benzersiz aygıtı veya modül bağlantı dizesini kullanarak güvenlik iletisini modül veya aygıt aracılığıyla gönderebilirsiniz. Aşağıdaki Python komut dosyası örneğini bir aygıtla kullanırken, **IoTHubDeviceClient'ı**ve bir modülle **IoTHubModuleClient'ı**kullanın.
 
 ```python
 from azure.iot.device.aio import IoTHubDeviceClient, IoTHubModuleClient
@@ -224,8 +227,8 @@ public void SendSecurityMessage(string message)
 }
 ```
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
 - IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
 - [Hizmeti](quickstart-onboard-iot-hub.md) etkinleştirme

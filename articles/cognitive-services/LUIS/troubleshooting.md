@@ -1,22 +1,15 @@
 ---
 title: Sık sorulan sorular (SSS) - LUIS
-titleSuffix: Azure Cognitive Services
 description: Bu makale, Dil Anlama (LUIS) hakkında sık sorulan soruların yanıtlarını içerir.
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-services: cognitive-services
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219714"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382178"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Dil Anlama Sık Sorulan Sorular (SSS)
 
@@ -59,7 +52,10 @@ LUIS uygulamanızı programlı olarak güncellemek için [Yazma API'sini](https:
 Bkz. [varlıklar](luis-concept-entity-types.md) ve [veri ayıklama.](luis-concept-data-extraction.md)
 
 ### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Örnek bir söyleyiş varyasyonları noktalama dahil mi?
-Ya niyete örnek söyleyiş olarak farklı varyasyonları ekleyin veya noktalama işaretlerini [yok saymak için sözdizimi](luis-concept-patterns.md#pattern-syntax) ile örnek söyleyiş deseni ekleyin.
+Aşağıdaki çözümlerden birini kullanın:
+* [Noktalama işaretlerini](luis-reference-application-settings.md#punctuation-normalization) yoksay
+* Niyete örnek olarak farklı varyasyonlar ekleyin
+* Noktalama işaretlerini [yoksaymak için sözdizimi](luis-concept-patterns.md#pattern-syntax) ile örnek söyleyiş deseni ekleyin.
 
 ### <a name="does-luis-currently-support-cortana"></a>LUIS şu anda Cortana'yı destekliyor mu?
 
@@ -68,11 +64,11 @@ Cortana önceden oluşturulmuş uygulamalar 2017 yılında amortismana uğradı.
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>LUIS uygulamasının sahipliğini nasıl aktarım?
 Bir LUIS uygulamasını farklı bir Azure aboneliğine aktarmak için, LUIS uygulamasını dışa aktarın ve yeni bir hesap kullanarak içe aktarın. Onu çağıran istemci uygulamasındaLUIS uygulama kimliğini güncelleştirin. Yeni uygulama orijinal uygulamadan biraz farklı LUIS puanları döndürebilir.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık, özel varlığım yerine örnek bir sözcükte etiketlenir. Bunu nasıl düzeltebilirim? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Önceden oluşturulmuş bir varlık, özel varlığım yerine örnek bir sözcükte etiketlenir. Bunu nasıl düzeltebilirim?
 
-LUIS portalında, metni ayıklamak istediğiniz tam varlık için etiketleyebilirsiniz. LUIS portalı doğru varlık tahminini göstermiyorsa, daha fazla sözcük eklemeniz ve varlığı metin içinde etiketlemeniz veya tanımlayıcı (özellik gibi) eklemeniz gerekebilir. 
+LUIS portalında, metni ayıklamak istediğiniz tam varlık için etiketleyebilirsiniz. LUIS portalı doğru varlık tahminini göstermiyorsa, daha fazla sözcük eklemeniz ve varlığı metin içinde etiketlemeniz veya tanımlayıcı (özellik gibi) eklemeniz gerekebilir.
 
-### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Bir uygulama veya sürüm dosyası almaya çalıştım ama bir hata var, ne oldu? 
+### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Bir uygulama veya sürüm dosyası almaya çalıştım ama bir hata var, ne oldu?
 
 [Sürüm alma hataları](luis-how-to-manage-versions.md#import-errors)hakkında daha fazla bilgi edinin.
 
@@ -82,7 +78,7 @@ LUIS portalında, metni ayıklamak istediğiniz tam varlık için etiketleyebili
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Ortak çalışanlara Azure Etkin Dizin (Azure AD) veya Rol tabanlı erişim denetimi (RBAC) ile LUIS'e nasıl erişim sağlarım?
 
-Ortak çalışanlara nasıl erişim sağlayacağınızı öğrenmek için [Azure Etkin Dizin kaynakları](luis-how-to-collaborate.md#azure-active-directory-resources) ve Azure Etkin [Dizin kiracı sıcaä](luis-how-to-collaborate.md#azure-active-directory-tenant-user) ına bakın. 
+Ortak çalışanlara nasıl erişim sağlayacağınızı öğrenmek için [Azure Etkin Dizin kaynakları](luis-how-to-collaborate.md#azure-active-directory-resources) ve Azure Etkin [Dizin kiracı sıcaä](luis-how-to-collaborate.md#azure-active-directory-tenant-user) ına bakın.
 
 <a name="luis-endpoint"></a>
 
@@ -92,7 +88,7 @@ Ortak çalışanlara nasıl erişim sağlayacağınızı öğrenmek için [Azure
 
 Fiyatlandırma katmanınız için saniyede yapılan hareketleri veya aylık hareketleri aştığınızda 403 ve 429 hata durum kodları alırsınız. Fiyatlandırma katmanınızı artırın veya Dil Anlama [kapsayıcılarını](luis-container-howto.md)kullanın.
 
-Tüm bu ücretsiz 1000 uç nokta sorgularını kullandığınızda veya fiyatlandırma katmanınızın aylık işlem kotası aşıldığında, bir HTTP 403 hata durum kodu alırsınız. 
+Tüm bu ücretsiz 1000 uç nokta sorgularını kullandığınızda veya fiyatlandırma katmanınızın aylık işlem kotası aşıldığında, bir HTTP 403 hata durum kodu alırsınız.
 
 Bu hatayı gidermek [için, fiyatlandırma katmanınızı](luis-how-to-azure-subscription.md#change-pricing-tier) daha yüksek bir katmana değiştirmeniz veya [yeni bir kaynak oluşturmanız](get-started-portal-deploy-app.md#create-the-endpoint-resource) ve [uygulamanıza atamanız](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)gerekir.
 
@@ -105,23 +101,23 @@ Bu hatanın çözümleri şunlardır:
 
 Fiyatlandırma katmanınız için saniyede yapılan hareketleri veya aylık hareketleri aştığınızda 403 ve 429 hata durum kodları alırsınız. Fiyatlandırma katmanınızı artırın veya Dil Anlama [kapsayıcılarını](luis-container-howto.md)kullanın.
 
-Bu durum kodu, saniyedeki işlemleriniz fiyatlandırma katmanınızı aştığında döndürülür.  
+Bu durum kodu, saniyedeki işlemleriniz fiyatlandırma katmanınızı aştığında döndürülür.
 
 Çözümler şunlardır:
 
 * En yüksek katmanda değilseniz [fiyatlandırma katmanınızı artırabilirsiniz.](luis-how-to-azure-subscription.md#change-pricing-tier)
 * Kullanımınız en yüksek fiyatlandırma katmanını aşarsa, önlerinde yük dengeleyicisi bulunan daha fazla Dil Bilgisi kaynağı ekleyin. Kubernetes veya Docker Compose ile [Dil Anlama konteynerbu](luis-container-howto.md) nda yardımcı olabilir.
-* Bu durum kodunu aldığınızda kendi başınıza uyguladığınız [bir yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) istemci uygulama isteklerinizi kapılayabilirsiniz. 
+* Bu durum kodunu aldığınızda kendi başınıza uyguladığınız [bir yeniden deneme ilkesiyle](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) istemci uygulama isteklerinizi kapılayabilirsiniz.
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Bitiş noktası sorgum beklenmeyen sonuçları döndürdü. Ne yapmalıyım?
 
-Beklenmeyen sorgu tahmin sonuçları, yayımlanan modelin durumuna bağlıdır. Modeli düzeltmek için modeli değiştirmeniz, eğitmeniz ve yeniden yayımlamanız gerekebilir. 
+Beklenmeyen sorgu tahmin sonuçları, yayımlanan modelin durumuna bağlıdır. Modeli düzeltmek için modeli değiştirmeniz, eğitmeniz ve yeniden yayımlamanız gerekebilir.
 
 Modeli düzeltmek aktif [öğrenme](luis-how-to-review-endpoint-utterances.md)ile başlar.
 
 Tüm eğitim verilerini kullanmak için uygulama sürüm [ayarları API'sini](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) güncelleyerek deterministik olmayan eğitimi kaldırabilirsiniz.
 
-Diğer ipuçları için [en iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin. 
+Diğer ipuçları için [en iyi uygulamaları](luis-concept-best-practices.md) gözden geçirin.
 
 ### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>LUIS neden sözcüklerin etrafında veya ortasındaki sorguya boşluk ekler?
 LUIS [kültüre](luis-language-support.md#tokenization)dayalı söyleyiş [tokenizes](luis-glossary.md#token) . Hem özgün değer hem de belirteç değeri [veri ayıklama](luis-concept-data-extraction.md#tokenized-entity-returned)için kullanılabilir.
@@ -145,7 +141,7 @@ Bitiş noktası kotasını görmek için PowerShell komutunu kullanabilirsiniz:
 
 ```powershell
 Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
-``` 
+```
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Benim LUIS uygulaması dün çalışıyordu ama bugün 403 hata alıyorum. Uygulamayı değiştirmedim. Nasıl düzeltebilirim?
 Luis uç noktası anahtarı oluşturmak ve uygulamaya atamak için bu [yönergeleri](#how-do-i-create-and-assign-a-luis-endpoint-key) izleyin. Ardından, [yeni bitiş noktası anahtarını kullanmak](luis-concept-keys.md)için istemci uygulamanın HTTP isteğini bitiş noktasına değiştirmeniz gerekir. Farklı bir bölgede yeni bir kaynak oluşturduysanız, HTTP istemci isteğinin bölgesini de değiştirin.
@@ -186,7 +182,7 @@ Toplu [İşlem testi](luis-tutorial-batch-testing.md) öğreticisine bakın.
 
 Bkz. [Aynı uygulamanın kopyaları arasındaki Tahmin farklılıkları.](luis-concept-prediction-score.md#review-intents-with-similar-scores)
 
-### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Uygulamamda değişiklik yaptıktan sonra bazı söyleyişler yanlış niyete gidiyor. Sorun rastgele yok gibi görünüyor. Nasıl düzeltebilirim? 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Uygulamamda değişiklik yaptıktan sonra bazı söyleyişler yanlış niyete gidiyor. Sorun rastgele yok gibi görünüyor. Nasıl düzeltebilirim?
 
 [Tüm verilerle Tren'e](luis-how-to-train.md#train-with-all-data)bakın.
 
@@ -202,27 +198,27 @@ Azure'da kiracı, bir hizmetle ilişkili istemciyi veya kuruluşu temsil eder. *
 
 
 ### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Uygulamama neden benim aparat ettiğimden daha fazla uç nokta anahtarı atanmıştır?
-Her LUIS uygulaması, son nokta listesinde kolaylık sağlamak için yazma/başlangıç anahtarına sahiptir. Bu anahtar, LUIS'i deneyebilmeniz için yalnızca birkaç uç nokta isabetine izin verir.  
+Her LUIS uygulaması, son nokta listesinde kolaylık sağlamak için yazma/başlangıç anahtarına sahiptir. Bu anahtar, LUIS'i deneyebilmeniz için yalnızca birkaç uç nokta isabetine izin verir.
 
 UYGULAMANIZ LUIS genel kullanıma sunulmadan önce (GA) varsa, aboneliğinizdeki LUIS uç nokta anahtarları otomatik olarak atanır. Bu GA geçiş kolaylaştırmak için yapıldı. Azure portalındaki yeni LUIS uç nokta anahtarları otomatik olarak LUIS'e _atanmez._
 
 ## <a name="key-management"></a>Anahtar yönetimi
 
-### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hangi anahtara ihtiyacım olduğunu, nereden aldığımı ve onunla ne yaptığımı nasıl bileceğim? 
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Hangi anahtara ihtiyacım olduğunu, nereden aldığımı ve onunla ne yaptığımı nasıl bileceğim?
 
-Yazarlık anahtarı ile tahmin çalışma zamanı anahtarı arasındaki farklar hakkında bilgi edinmek için [LUIS'teki yazma ve sorgu tahmin bitiş noktası](luis-concept-keys.md) anahtarlarına bakın. 
+Yazarlık anahtarı ile tahmin çalışma zamanı anahtarı arasındaki farklar hakkında bilgi edinmek için [LUIS'teki yazma ve sorgu tahmin bitiş noktası](luis-concept-keys.md) anahtarlarına bakın.
 
-### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Kotanın dışında kalma konusunda bir hata maldım. Nasıl düzeltebilirim? 
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Kotanın dışında kalma konusunda bir hata maldım. Nasıl düzeltebilirim?
 
 Daha fazla bilgi edinmek için HTTP durum kodu [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) ve [429'u](#i-received-an-http-429-error-status-code-how-do-i-fix-it) düzeltin.
 
-### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Daha fazla uç nokta sorgusu ele almam gerekiyor. Bunu nasıl yapabilirim? 
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Daha fazla uç nokta sorgusu ele almam gerekiyor. Bunu nasıl yapabilirim?
 
 Daha fazla bilgi edinmek için HTTP durum kodu [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) ve [429'u](#i-received-an-http-429-error-status-code-how-do-i-fix-it) düzeltin.
 
 ### <a name="i-created-an-authoring-key-but-it-isnt-showing-in-the-luis-portal-what-happened"></a>Bir yazma anahtarı oluşturdum ama LUIS portalında görünmüyor. Ne oldu?
 
-Yazma tuşları, [yazma anahtar deneyimine geçtikten](luis-migration-authoring.md)sonra LUIS portalında mevcuttur.  
+Yazma tuşları, [yazma anahtar deneyimine geçtikten](luis-migration-authoring.md)sonra LUIS portalında mevcuttur.
 
 ## <a name="app-management"></a>Uygulama yönetimi
 
@@ -266,28 +262,28 @@ Yazma/başlangıç anahtarına ayda yalnızca 1000 uç nokta sorgusu na izin ver
 
 ### <a name="my-luis-bot-isnt-working-what-do-i-do"></a>Luis botum çalışmıyor. Ne yapmalıyım?
 
-İlk sorun, sorun LUIS ile ilgili veya LUIS ara dışında olur ya da izole etmektir. 
+İlk sorun, sorun LUIS ile ilgili veya LUIS ara dışında olur ya da izole etmektir.
 
 #### <a name="resolve-issue-in-luis"></a>LUIS'teki sorunu çözümle
 [Luis uç noktasından](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)LUIS için aynı söyleyiş pass . Bir hata alırsanız, hata artık döndürülene kadar LUIS'teki sorunu çözümle. Sık karşılaşılan hatalar şunlardır:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`- Bu sorun, yazarlık anahtarından [bitiş noktası anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz veya [hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir. 
+* `Out of call volume quota. Quota will be replenished in <time>.`- Bu sorun, yazarlık anahtarından [bitiş noktası anahtarına](luis-how-to-azure-subscription.md) değiştirmeniz veya [hizmet katmanlarını](luis-how-to-azure-subscription.md#change-pricing-tier)değiştirmeniz gerektiğini gösterir.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Azure Bot Hizmeti'nde sorunu giderme
 
 Azure Bot Hizmetini kullanıyorsanız ve sorun **Web Sohbetindeki** `Sorry, my bot code is having an issue`Test'in iade ettiğiyse günlüklerinizi kontrol edin:
 
 1. Azure portalında, botuniçin, **Bot yönetimi** bölümünden **Yapı'yı**seçin.
-1. Çevrimiçi kod düzenleyicisini açın. 
+1. Çevrimiçi kod düzenleyicisini açın.
 1. Üst, mavi navigasyon çubuğunda, bot adını (sağdaki ikinci öğe) seçin.
 1. Ortaya çıkan açılır **listede, Kudu Konsolu Aç'ı**seçin.
-1. **LogFiles'ı**seçin, ardından **Uygulama'yı**seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hata görmüyorsanız, **LogFiles**altındaki tüm günlük dosyalarını gözden geçirin. 
+1. **LogFiles'ı**seçin, ardından **Uygulama'yı**seçin. Tüm günlük dosyalarını gözden geçirin. Uygulama klasöründe hata görmüyorsanız, **LogFiles**altındaki tüm günlük dosyalarını gözden geçirin.
 1. C# gibi derlenmiş bir dil kullanıyorsanız projenizi yeniden oluşturmayı unutmayın.
 
-> [!Tip] 
-> Konsol paketleri de yükleyebilir. 
+> [!Tip]
+> Konsol paketleri de yükleyebilir.
 
-#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework ile yerel makinede hata ayıklarken sorunu giderin. 
+#### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Bot Framework ile yerel makinede hata ayıklarken sorunu giderin.
 
 Bir botun yerel hata ayıklama hakkında daha fazla bilgi için bir [bot hata ayıklama](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0)bakın.
 
@@ -303,19 +299,19 @@ Bir LUIS şablonu seçerseniz ve şablon bölmesinde **Seç** düğmesini seçer
 
 ## <a name="api-programming-strategies"></a>API Programlama Stratejileri
 
-### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Bir kaynağın LUIS bölgesini programlı olarak nasıl edinebilirim? 
+### <a name="how-do-i-programmatically-get-the-luis-region-of-a-resource"></a>Bir kaynağın LUIS bölgesini programlı olarak nasıl edinebilirim?
 
-C# veya Node.Js kullanarak bölgeyi programlı olarak [bulmak](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) için LUIS örneğini kullanın. 
+C# veya Node.Js kullanarak bölgeyi programlı olarak [bulmak](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/find-region) için LUIS örneğini kullanın.
 
 ## <a name="luis-service"></a>LUIS hizmeti
 
 ### <a name="is-language-understanding-luis-available-on-premises-or-in-private-cloud"></a>Dil Anlama (LUIS) şirket içinde mi yoksa özel bulutta mı kullanılabilir?
 
-Evet, sayaç kullanımına gerekli bağlantıvarsa, bu senaryolar için LUIS [kapsayıcısını](luis-container-howto.md) kullanabilirsiniz. 
+Evet, sayaç kullanımına gerekli bağlantıvarsa, bu senaryolar için LUIS [kapsayıcısını](luis-container-howto.md) kullanabilirsiniz.
 
 ## <a name="migrating-to-the-next-version"></a>Bir sonraki sürüme geçiş
 
-### <a name="how-do-i-migrate-to-preview-v3-api"></a>V3 API önizlemesine nasıl geçirebilirim? 
+### <a name="how-do-i-migrate-to-preview-v3-api"></a>V3 API önizlemesine nasıl geçirebilirim?
 
 [LUIS uygulamaları için API v2 ile v3 Geçiş kılavuzuna](luis-migration-api-v3.md) bakın
 
@@ -325,7 +321,7 @@ Build 2019 Konferansı'nda aşağıdaki özellikler yayınlandı:
 
 * [V3 API geçiş kılavuzuönizlemesi](luis-migration-api-v3.md)
 * [Geliştirilmiş analiz panosu](luis-how-to-use-dashboard.md)
-* [Geliştirilmiş önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md) 
+* [Geliştirilmiş önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md)
 * [Dinamik liste varlıkları](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
 * [Dış varlıklar](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 

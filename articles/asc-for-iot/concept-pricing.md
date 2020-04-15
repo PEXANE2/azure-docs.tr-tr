@@ -1,5 +1,5 @@
 ---
-title: IoT maliyetleri için Azure Güvenlik Merkezi'ni anlayın| Microsoft Dokümanlar
+title: Fiyatlandırma ve ilişkili maliyetler
 description: IoT için Azure Güvenlik Merkezi ile ilişkili maliyetler ve bunları nasıl denetlenenler hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
-ms.openlocfilehash: dc9dcbfd00b5205fa5c66e334b30c76d549d8a42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71348511"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311574"
 ---
 # <a name="pricing-and-associated-costs"></a>Fiyatlandırma ve ilişkili maliyetler
 
@@ -34,13 +34,11 @@ IoT fiyatlandırma modeli için Azure Güvenlik Merkezi iki bölümden oluşur v
 
 - İleti ile maliyet - IoT Edge veya yaprak aygıtlardan gelen güvenlik iletilerine dayalı gelişmiş güvenlik özellikleri.
 
-
 Daha fazla bilgi için [Güvenlik Merkezi fiyatlandırması'na](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
 ## <a name="associated-costs"></a>İlişkili maliyetler
 
 Azure Güvenlik Merkezi ioT için doğrudan fiyatlandırmanın bir parçası olmayan ilişkili maliyetlere sahiptir:
-
 
 - Log Analytics depolama maliyetleri
 
@@ -50,9 +48,9 @@ Ayarlarınızı değiştirmek için:
 
 1. IoT Hub'ı açın.
 
-2. **Güvenlik**Altında , **Genel Bakış'ı**tıklatın.
+1. **Güvenlik**Altında , **Genel Bakış'ı**tıklatın.
 
-3. **Ayarlar**'a tıklayın.
+1. **Ayarlar**'a tıklayın.
 
 Aşağıdaki tablo, ilişkili maliyetlerin ve her seçeneğin sonuçlarının bir özetini sağlar.
 
@@ -64,8 +62,8 @@ Aşağıdaki tablo, ilişkili maliyetlerin ve her seçeneğin sonuçlarının bi
 |
 
 >[!Important]
-> Devre dışı bırakmanın, IoT güvenlik özelliği kullanılabilirliği için Azure Güvenlik Merkezi'ne ciddi etkileri vardır. 
-  
+> Devre dışı bırakmanın, IoT güvenlik özelliği kullanılabilirliği için Azure Güvenlik Merkezi'ne ciddi etkileri vardır.
+
 | Devre dışı bırakma | Etkileri |
 | --- | --- |
 | _İkiz meta veri toplama_ | [Özel uyarıları](quickstart-create-custom-alerts.md) devre dışı |
@@ -74,7 +72,6 @@ Aşağıdaki tablo, ilişkili maliyetlerin ve her seçeneğin sonuçlarının bi
 | _Ham cihaz güvenlik olaylarını depolama_ | Aygıt işletim sistemi taban çizgisi önerileriyle ilgili ayrıntılar kullanılamıyor |
 | | [Uyarı](concept-security-alerts.md) ve [tavsiye](concept-recommendations.md) soruşturmaları ile ilgili ayrıntılar mevcut değil |
 |
-
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

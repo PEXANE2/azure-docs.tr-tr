@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ad821036047dcf46821b2b2722e3dd17f8e318c2
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: cb2302637efb16fc31bd420bf8c4ead19d7f598d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80386133"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81385000"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure Virtual WAN'ı kullanabilmek için kullanıcının hub'a sahip olması ve SD-WAN/VPN aygıtlarıyla konuşması gerekiyor mu?
 
@@ -131,6 +131,8 @@ Evet. Bkz. [Fiyatlandırma](https://azure.microsoft.com/pricing/details/virtual-
 
 * Virtual Hub'a bağlanan ExpressRoute devreleri nedeniyle ExpressRoute ağ geçidiniz varsa, ölçek birim fiyatı için ödeme yapardınız. ER'deki her ölçek birimi 2 Gbps'dir ve her bağlantı birimi VPN Bağlantı ünitesi ile aynı oranda ücretlendirilir.
 
+* Hub'a bağlı Spoke VNET'lerin varsa, Spoke VNETs'deki izleme ücretleri hala geçerlidir. 
+
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>İlk iş ortağı listenizde yer almayan yeni iş ortakları nasıl eklenir?
 
 Tüm sanal WAN API'leri açık API'dir. Teknik fizibiliteyi değerlendirmek için belgelerin üzerinden geçebilirsiniz. Herhangi bir sorunuz varsa, azurevirtualwan@microsoft.combir e-posta gönderin. İdeal bir iş ortağı, IKEv1 veya IKEv2 IPsec bağlantısına yönelik sağlanabilen bir cihaza sahip olandır.
@@ -149,7 +151,7 @@ Bir VNet'i sanal WAN'ınızdan farklı bir bölgeye bağlayabilirsiniz.
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Sanal bir hub'a bağlı kollu VNet'ler birbirleriyle iletişim kurabilir mi (V2V Transit)?
 
-Evet. Standart Sanal WAN, Vnet'lerin bağlı olduğu Virtual WAN hub'ı aracılığıyla Vnet'e geçişli bağlantı sağlar. Sanal WAN terminolojisinde, bu yolları tek bir bölgedeki Sanal Wan Hub'ına bağlı VNet'ler için "yerel Sanal WAN VNet geçişi" ve iki veya daha fazla farklı sanal WAN Hub üzerinden bağlanan VNet'ler için "küresel Sanal WAN VNet geçişi" olarak adlandırıyoruz. Bölge. VNet transit, genel önizleme sırasında 3 Gbps'ye kadar iş elde etmeyi destekler. Küresel geçiş GA gittiğinde iş lenecektir.
+Evet. Standart Sanal WAN, Vnet'lerin bağlı olduğu Virtual WAN hub'ı aracılığıyla Vnet'e geçişli bağlantı sağlar. Sanal WAN terminolojisinde, bu yolları tek bir bölgedeki Sanal Wan Hub'a bağlı VNet'ler için "yerel Sanal WAN VNet geçişi" ve iki veya daha fazla bölgede birden fazla Sanal WAN Hub'ı aracılığıyla bağlanan VNet'ler için "küresel Virtual WAN VNet geçişi" olarak adlandırıyoruz. VNet transit, genel önizleme sırasında 3 Gbps'ye kadar iş elde etmeyi destekler. Küresel geçiş GA gittiğinde iş lenecektir.
 
 NOT: Şu anda V2V transit önizleme başlatılacak yönlendirme öğelerini tetiklemek için sanal hub'da bir VPN GW'sinin dağıtılmasını gerektirir. Bu VPN GW V2V geçiş yolu için kullanılmaz. Bu bilinen bir sınırlamadır ve V2V GA sırasında kaldırılacaktır. V2V geçiş işlevselliği için gerekli olmadığı için vpn ağ geçidini tam olarak başlatıldıktan sonra hub(lar)taki VPN Ağ Geçidi'ni silebilirsiniz. 
 

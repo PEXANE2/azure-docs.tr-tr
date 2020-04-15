@@ -4,14 +4,14 @@ description: Azure Uygulama Yapılandırması'nı kullanarak Bahar Önyükleme u
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 01/21/2020
+ms.date: 04/13/2020
 ms.author: lcozzens
-ms.openlocfilehash: 489bc0234580e8df8dcc85c1d3cc0add547818b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78944334"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309066"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Bahar Önyükleme uygulamasına özellik bayrakları ekleme
 
@@ -103,7 +103,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 1. Uygulamanızın `resources` dizinine gidin ve `bootstrap.properties`açın.  Dosya yoksa, dosyayı oluşturun. Aşağıdaki satırı dosyaya ekleyin.
 
     ```properties
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. Config mağazanızın Uygulama Yapılandırma portalında `Access keys` kenar çubuğundan seçim yapın. Salt okunur tuşlar sekmesini seçin. Birincil bağlantı dizesinin değerini kopyalayın.
@@ -283,7 +283,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     mvn spring-boot:run
     ```
 
-1. Bir tarayıcı penceresi açın ve yerel olarak barındırılan bir `https://localhost:8080`web uygulaması için varsayılan URL'ye gidin: .
+1. Tarayıcı penceresi açın ve URL'ye `http://localhost:8080/welcome`gidin: .
 
     ![Quickstart uygulaması yerel başlatmak](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f454b0296a3463d7346c2945b21162e5a38c0eb7
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e22871114f260417e8a1514546c88ec4541064a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652518"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309740"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Birleşik güvenlik bilgi kaydını etkinleştirme (önizleme)
 
@@ -89,7 +89,7 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmaya çal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorlama](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorlama](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Çok Faktörlü Kimlik Doğrulama ve SSPR için kullanılabilir yöntemler](concept-authentication-methods.md)
 

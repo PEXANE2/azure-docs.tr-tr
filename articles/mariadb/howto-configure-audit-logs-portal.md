@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: d31b7531e00199ea63c7b057dacff1b67d7cedc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/13/2020
+ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528940"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382961"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portalında denetim günlüklerini yapılandırma ve erişim
 
@@ -30,7 +30,7 @@ Bu nasıl yapılacağını kılavuzunda adım atmak için şunları yapmanız ge
 
 Denetim günlüğe kaydetmeyi etkinleştirin ve yapılandırın.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. MariaDB sunucusu için Azure Veritabanınızı seçin.
 
@@ -69,4 +69,5 @@ Denetim günlüğe kaydetmeyi etkinleştirin ve yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- MariaDB için Azure Veritabanı'ndaki [denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin.
+- MariaDB için Azure Veritabanı'ndaki [denetim günlükleri](concepts-audit-logs.md) hakkında daha fazla bilgi edinin
+- [Azure CLI'de](howto-configure-audit-logs-cli.md) denetim günlüklerini nasıl yapılandırılamayı öğrenin

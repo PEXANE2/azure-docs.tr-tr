@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: ea65956a73874b717ecab25d83ed25b59f2ada55
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f70c24c91e048270696b244bb9775cb24f0ef30d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257258"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383469"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -484,6 +484,21 @@ Komut tarafından `body.json` başvurulan dosyanın içeriği aşağıdaki JSON 
 > Şu anda, varolan bir küme üzerinde bir __ekleme__ işlemi gerçekleştirirken yük dengeleyicisini yapılandıramazsınız. Önce kümeeklemeniz ve sonra yük dengeleyicisini değiştirmek için bir güncelleştirme işlemi gerçekleştirmeniz gerekir.
 
 AKS ile iç yük dengeleyicisini kullanma hakkında daha fazla bilgi için azure [Kubernetes Hizmeti ile dahili yük dengeleyicisini kullan'a](/azure/aks/internal-lb)bakın.
+
+## <a name="use-azure-container-instances-aci"></a>Azure Kapsayıcı Örnekleri (ACI) kullanma
+
+Azure Kapsayıcı Örnekleri, bir model dağıtılırken dinamik olarak oluşturulur. Azure Machine Learning'in sanal ağ içinde ACI oluşturmasını sağlamak için dağıtım tarafından kullanılan alt ağ için __alt ağ delegasyonu__ etkinleştirmeniz gerekir.
+
+Çalışma alanınızda sanal ağdaki ACI'yi kullanmak için aşağıdaki adımları kullanın:
+
+1. Sanal abunuzda alt ağ delegasyonu etkinleştirmek için Ekle'deki bilgileri kullanın [veya bir alt ağ delegasyonu](../virtual-network/manage-subnet-delegation.md) makalesinden kaldırın. Sanal ağ oluştururken temsilciliği etkinleştirebilir veya varolan bir ağa ekleyebilirsiniz.
+
+    > [!IMPORTANT]
+    > Temsilciyi etkinleştirirken, `Microsoft.ContainerInstance/containerGroups` __hizmet değerine Temsilci alt ağı__ olarak kullanın.
+
+2. [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)kullanarak modeli `vnet_name` dağıtın, `subnet_name` kullanın ve parametreleri. Bu parametreleri, temsilciliği etkinleştirdiğiniz sanal ağ adı ve alt ağına ayarlayın.
+
+
 
 ## <a name="use-azure-firewall"></a>Azure Güvenlik Duvarı'nı kullanma
 

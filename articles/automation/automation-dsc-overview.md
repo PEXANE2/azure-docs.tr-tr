@@ -1,5 +1,5 @@
 ---
-title: Durum Yapılandırmasına genel bakış
+title: Azure Otomasyon Durumu Yapılandırması yapılandırmaya genel bakış
 description: Azure Otomasyon Durumu Yapılandırmasına (DSC), terimlerine ve bilinen sorunlara genel bakış
 keywords: powershell dsc, istenilen durum yapılandırması, powershell dsc azure
 services: automation
@@ -10,12 +10,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 02e540c9ac2654be97ff247749d1ed18573cfc24
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010265"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383182"
 ---
 # <a name="state-configuration-overview"></a>Durum Yapılandırmasına genel bakış
 
@@ -123,6 +123,7 @@ Azure ExpressRoute kullanıcıları, bu dosyanın her ayın ilk haftasında Azur
 - Azure Otomasyon Durumu Yapılandırmasında DSC kullanmaya başlamak için [bkz.](automation-dsc-getting-started.md)
 - Düğümlere nasıl bindirilir öğrenince Azure [Otomasyon Durumu Yapılandırması tarafından yönetilen Yerleşik makinelere](automation-dsc-onboarding.md)bakın.
 - DSC yapılandırmalarını hedef düğümlerine atayabilmeniz için derleme hakkında bilgi edinmek için [bkz.](automation-dsc-compile.md)
-- PowerShell cmdlet başvurusu için Azure [Otomasyon Durumu Yapılandırma cmdlets'e](/powershell/module/azurerm.automation/#automation)bakın.
+- PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.
 - Fiyatlandırma bilgileri için Azure [Otomasyon Durumu Yapılandırma fiyatlandırması'na](https://azure.microsoft.com/pricing/details/automation/)bakın.
 - Sürekli dağıtım ardışık bir şekilde Azure Otomasyon Durumu Yapılandırmasını kullanma örneğini görmek için, [Azure Otomasyon Durumu Yapılandırması ve Chocolatey kullanarak Sürekli dağıtım](automation-dsc-cd-chocolatey.md)bölümüne bakın.

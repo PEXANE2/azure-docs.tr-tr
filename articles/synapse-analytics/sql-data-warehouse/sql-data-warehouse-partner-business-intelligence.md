@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a026cc241eb372e15f2600e52ec53a46efb1024
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256017"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313701"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure Synapse Analytics iş zekası ortakları
 
@@ -38,6 +38,7 @@ Azure Synapse içindeki Synapse SQL havuzunun tamamını veri ambarı çözümü
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>SiSense, bir işletmenin verileri analiz etmek ve görselleştirmek için ihtiyaç duyduğu araçlarla birlikte gelen tam bir İş Zekası yazılımıdır: yüksek performanslı bir analitik veritabanı, birden fazla kaynağa katılma yeteneği, basit veri çıkarma (ETL) ve web tabanlı veri görselleştirme. Bugün SiSense BI ve Analytics ile büyük veri kümelerini analiz etmeye ve görselleştirmeye başlayın. |[Ürün sayfası](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>Tableau'nun self servis analitiği, düz dosyalardan veritabanlarına kadar pek çok veri türünde herkesin verilerini görmesine ve anlamasına yardımcı olur. Tableau'da synapse SQL havuzuna hem canlı verileri hem de bellek içi analitiği destekleyen yerel ve optimize edilmiş bir bağlayıcı vardır. |[Ürün sayfası](https://www.tableau.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (Karar Paketi)**<br>Targit Decision Suite, gerçek zamanlı panolar, self servis analitik, kullanıcı dostu raporlama, çarpıcı mobil özellikler ve basit veri bulma teknolojisi sunan BI ve Analytics platformlarını tek ve uyumlu bir çözümde sunar. Targit şirketlere harekete geçme cesareti veriyor. |[Ürün sayfası](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
+| ![Düşünce Spotu](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**Düşünce Spotu**<br>Dünyanın en yenilikçi işletmeleri, C-suite yöneticisinden ön cephe çalışanlarına kadar organizasyonlarındaki her kişiyi veri odaklı öngörüleri hızla ortaya çıkarabilme becerisiyle güçlendirmek için ThoughtSpot'u kullanıyor. ThoughtSpot ile iş adamları milyarlarca veri satırını anında analiz etmek için basit bir arama yazabilir ve güvenilir, ilgili öngörüleri sormayı düşünmedikleri binlerce soruya yanıt olarak kendilerine itilen yapay zekadan yararlanabilirler. ThoughtSpot, herhangi bir iş adamının kullanabileceği kadar basittir, ancak hız, güvenlik veya yönetimden ödün vermeden en büyük, en karmaşık kurumsal verileri bile işleyecek kadar güçlüdür. Bu nedenle Walmart, 7-11, BT, Daimler, Exxon, Hulu, Royal Bank of Canada, Bank of the West ve Nationwide Building Society gibi müşteriler, karar verme kültürlerini ve analist firması Gartner'ı dönüştürmek için ThoughtSpot'a yöneldiler ve 2020 Magic Quadrant'ta ThoughtSpot'u Lider ilan ettiler. Öngörüleri her konuşmanın ve her kararın bir parçası haline getirerek, ThoughtSpot daha gerçek odaklı bir dünya yaratmada verilerin rolünü yeniden canlandırıyor. |[Ürün sayfası](https://www.thoughtspot.com)<br>|
 | ![Sarı yüzgeçli](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sarı yüzgeçli**<br>Yellowfin, BARC tarafından özel Raporlama ve Panolar için en çok puan alan Cloud BI satıcısıdır; BI Anketi. Synapse SQL havuzuna bağlanın, ardından ödüllü işbirlikçi BI ve konum zekası özellikleriyle güzel raporlar ve panolar oluşturun ve paylaşın. |[Ürün sayfası](https://www.yellowfinbi.com/)<br> [Azure Market](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

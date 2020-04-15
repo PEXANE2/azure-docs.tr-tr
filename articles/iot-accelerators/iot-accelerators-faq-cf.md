@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c84452ff71fa34a65b2e56ec753b68bf551c7e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73826271"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313595"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Connected Factory çözüm hızlandırıcısı için sık sorulan sorular
 
@@ -76,7 +76,7 @@ Simülasyon VM'de oturum açma yalnızca [depodaki](https://github.com/Azure/azu
 1. Hangi kapsayıcıların etkin olup `docker ps`olduğunu kontrol etmek için çalıştırın: .
 1. Tüm simülasyon kaplarını durdurmak `./stopsimulation`için çalıştırın: .
 1. Tüm simülasyon kaplarını başlatmak için:
-    * **IOTHUB_CONNECTIONSTRING**adı olan bir kabuk değişkeni dışa aktarma. `<name of your deployment>.config.user` Dosyadaki **IotHubOwnerConnectionString** ayarının değerini kullanın. Örnek:
+    * **IOTHUB_CONNECTIONSTRING**adı olan bir kabuk değişkeni dışa aktarma. `<name of your deployment>.config.user` Dosyadaki **IotHubOwnerConnectionString** ayarının değerini kullanın. Örneğin:
 
         ```sh
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -125,7 +125,7 @@ Alternatif olarak SSH üzerinden VM'de oturum açın ve günlük dosyalarını �
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Simülasyonun buluta veri gönderip göndermedığını nasıl kontrol edebilirim?
 
-[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) veya [Azure IoT CLI Uzantılı izleme olayları](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-hub-monitor-events) komutuyla, IoT Hub'a gönderilen verileri belirli aygıtlardan inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT hub'ı bağlantı dizesini bilmeniz gerekir. Bkz. [Çözümüm tarafından kullanılan IoT hub'ının bağlantı dizesini nasıl bulabilirim?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) veya [Azure IoT CLI Uzantılı izleme olayları](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) komutuyla, IoT Hub'a gönderilen verileri belirli aygıtlardan inceleyebilirsiniz. Bu araçları kullanmak için, dağıtımınızdaki IoT hub'ı bağlantı dizesini bilmeniz gerekir. Bkz. [Çözümüm tarafından kullanılan IoT hub'ının bağlantı dizesini nasıl bulabilirim?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Yayımcı aygıtlarından biri tarafından gönderilen verileri inceleyin:
 

@@ -85,8 +85,6 @@
   items:
     - name: TLS desteği
       href: iot-hub-tls-support.md
-    - name: TLS 1.0 ve 1.1’in kullanımdan kaldırılması
-      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Sanal ağ desteği
       href: virtual-network-support.md
     - name: İleti zenginleştirmelerine genel bakış
@@ -444,6 +442,8 @@
           href: iot-hub-operations-monitoring.md
         - name: Tanılama ayarlarına geçirme
           href: iot-hub-migrate-to-diagnostics-settings.md
+        - name: TLS 1.0 ve 1.1’in kullanımdan kaldırılması
+          href: iot-hub-tls-deprecating-1-0-and-1-1.md
 - name: Kaynaklar
   items:
     - name: Destek ve yardım seçenekleri

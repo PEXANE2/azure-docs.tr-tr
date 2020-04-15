@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Geliştirme Alanları'nı etkinleştirirken ve kullanırken sık karşılaşılan sorunları nasıl gidereceğinizi ve nasıl çözeceğinizi öğrenin
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
-ms.openlocfilehash: c12dfd385962d8dd7de8239a0d4ecd46746499c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9fcf14bf42fc843a126fea269038087ee7fb0c6c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239776"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382056"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces sorun giderme
 
@@ -52,13 +52,13 @@ Denetleyiciyi yeniden oluşturmak CLI veya Visual Studio'dan yapılabilir. Örne
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Denetleyici ad uzunluğu nedeniyle başarısız oluşturma
 
-Azure Dev Spaces denetleyicisi adı 31 karakterden uzun olamaz. Bir AKS kümesinde Dev Spaces'i etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinizin adı 31 karakteri aşarsa, bir hata alırsınız. Örnek:
+Azure Dev Spaces denetleyicisi adı 31 karakterden uzun olamaz. Bir AKS kümesinde Dev Spaces'i etkinleştirdiğinizde veya bir denetleyici oluşturduğunuzda denetleyicinizin adı 31 karakteri aşarsa, bir hata alırsınız. Örneğin:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Bu sorunu gidermek için alternatif bir ada sahip bir denetleyici oluşturun. Örnek:
+Bu sorunu gidermek için alternatif bir ada sahip bir denetleyici oluşturun. Örneğin:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -95,7 +95,7 @@ Bu sorunu gidermek için Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli
 
 ### <a name="error-unable-to-reach-kube-apiserver"></a>Hata "Kube-apiserver'a ulaşılamıyor"
 
-Azure Dev Spaces AKS kümenizin API sunucusuna bağlanamayınca bu hatayı görebilirsiniz. 
+Azure Dev Spaces AKS kümenizin API sunucusuna bağlanamayınca bu hatayı görebilirsiniz.
 
 AKS küme API sunucunuza erişim kilitlenmişse veya AKS kümeniz için etkin [leştirilmiş API sunucusu yetkili IP adresi aralıkları](../aks/api-server-authorized-ip-ranges.md) varsa, [bölgenize dayalı ek aralıklara izin](https://github.com/Azure/dev-spaces/tree/master/public-ips)vermek için kümenizi [oluşturmanız](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) veya [güncelleştirmeniz](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) gerekir.
 
@@ -162,7 +162,7 @@ Hem Miğfer komutlarını hem de Dev Spaces komutlarını aynı AKS kümesine ka
 
 Azure Geliştirme Alanları, projenizdeki belirli bir _Dockerfile'ı_ işaret etmek üzere yapılandırılabilir. Azure Dev Spaces kapsayıcılarınızı oluşturmayı beklediğiniz _Dockerfile'ı_ kullanmıyor gibi görünüyorsa, Azure Dev Spaces'e hangi Dockerfile'ı kullanacağınızı açıkça söylemeniz gerekebilir. 
 
-Bu sorunu gidermek için, Azure Dev Spaces'in projenizde oluşturduğu _azds.yaml_ dosyasını açın. *Yapılandırmaları güncelleştirin: geliştirin: inşa:* kullanmak istediğiniz Dockerfile'ı işaret etmek için dockerfile. Örnek:
+Bu sorunu gidermek için, Azure Dev Spaces'in projenizde oluşturduğu _azds.yaml_ dosyasını açın. *Yapılandırmaları güncelleştirin: geliştirin: inşa:* kullanmak istediğiniz Dockerfile'ı işaret etmek için dockerfile. Örneğin:
 
 ```yaml
 ...
@@ -209,7 +209,7 @@ install:
 
 Hizmet kodunuz başlatıldığında bu hatayı görebilirsiniz. Nedeni genellikle kullanıcı kodundadır. Daha fazla tanılama bilgisi almak için, hizmetinizi başlatırken daha ayrıntılı günlüğe kaydetmeyi etkinleştirin.
 
-Komut satırından, daha `--verbose` ayrıntılı günlüğe kaydetmeyi etkinleştirmek için kullanın. Ayrıca bir çıktı biçimi `--output`kullanarak belirtebilirsiniz. Örnek:
+Komut satırından, daha `--verbose` ayrıntılı günlüğe kaydetmeyi etkinleştirmek için kullanın. Ayrıca bir çıktı biçimi `--output`kullanarak belirtebilirsiniz. Örneğin:
 
 ```cmd
 azds up --verbose --output json
@@ -271,6 +271,113 @@ Bu sorunu gidermek için, değiştirmeye çalıştığınız Kubernetes hizmetin
 * *Durdur'u*tıklatın.
 * İsteğe bağlı olarak, *Başlangıç türünü* Devre *Dışı Bırakılmış*olarak ayarlayarak devre dışı kullanabilirsiniz.
 * *Tamam*'a tıklayın.
+
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Hata "pod için bulunan AzureAssignedIdentity yok:azds/azds-webhook-deployment-\<id\> atanmış durumda"
+
+[Yönetilen bir kimlik](../aks/use-managed-identity.md) ve pod [yönetilen kimlikyüklü](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) bir AKS kümesinde Azure Dev Spaces ile bir hizmet çalıştırırken, işlem *grafik yükleme* adımından sonra askıda kalabilir. *Azds* ad alanında *azds-enjektör-webhook* incelerseniz, bu hatayı görebilirsiniz.
+
+Azure Dev Spaces kümenizde çalıştırılan hizmetler, kümenin dışındaki Azure Dev Spaces arka uç hizmetleriyle konuşmak için kümenin yönetilen kimliğini kullanır. Pod yönetilen kimlik yüklendiğinde, ağ kuralları kümenizde yüklü bir [Düğüm Yönetilen Kimlik (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)yönetilen kimlik bilgileri için yönetilen kimlik bilgileri için tüm çağrıları yönlendirmek için kümedüğümüzerinde yapılandırılır. Bu NMI DaemonSet arama bölmesini tanımlar ve pod'un istenen yönetilen kimliğe erişmek için uygun şekilde etiketlendiğini sağlar. Azure Dev Spaces, bir kümenin pod yönetilen kimliği yüklü olup olmadığını algılayamaz ve Azure Dev Spaces hizmetlerinin kümenin yönetilen kimliğine erişmesine izin vermek için gerekli yapılandırmayı gerçekleştiremez. Azure Dev Spaces hizmetleri kümenin yönetilen kimliğine erişmek üzere yapılandırılmadığından, NMI DaemonSet yönetilen kimlik için Bir AAD belirteci edinmelerine ve Azure Dev Spaces arka uç hizmetleriyle iletişim kuramamasına izin vermez.
+
+Bu sorunu gidermek için, yönetilen kimliğe erişmek için *Azds-enjektör-webhook* için bir [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) uygulayın ve Azure Dev Spaces tarafından enstrümantelenen bölmeleri güncelleyin.
+
+*webhookException.yaml* adlı bir dosya oluşturun ve aşağıdaki YAML tanımını kopyalayın:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: azds
+spec:
+  PodLabels:
+    azds.io/uses-cluster-identity: "true"
+```
+
+Yukarıdaki dosya *azds-enjektör-webhook*için bir *AzurePodIdentityException* nesnesi oluşturur. Bu nesneyi dağıtmak `kubectl`için:
+
+```cmd
+kubectl apply -f webhookException.yaml
+```
+
+Azure Dev Spaces tarafından işlenen kimliğe erişmek için kullanılan bölmeleri güncelleştirmek için, `kubectl` aşağıdaki YAML tanımındaki ad *alanını* güncelleştirin ve her dev alanı için uygulamak için kullanın.
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzurePodIdentityException
+metadata:
+  name: azds-infrastructure-exception
+  namespace: myNamespace
+spec:
+  PodLabels:
+    azds.io/instrumented: "true"
+```
+
+Alternatif olarak, *AzureIdentity* ve *AzureIdentityBinding* nesneleri oluşturabilir ve AKS kümesi tarafından oluşturulan yönetilen kimliğe erişmek için Azure Dev Spaces tarafından araçlandırılan alanlarda çalışan iş yüklerinin pod etiketlerini güncelleştirebilirsiniz.
+
+Yönetilen kimliğin ayrıntılarını listelemek için AKS kümeniz için aşağıdaki komutu çalıştırın:
+
+```azurecli
+az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
+```
+
+Yukarıdaki komut, yönetilen kimlik için *clientId* ve *resourceId* çıktıları. Örneğin:
+
+```json
+{
+  "clientId": "<clientId>",
+  "resourceId": "/subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>"
+}
+```
+
+*AzureIdentity* nesnesi oluşturmak için *clusteridentity.yaml* adlı bir dosya oluşturun ve önceki komuttan yönetilen kimliğinizin ayrıntılarıyla güncelleştirilen aşağıdaki YAML tanımını kullanın:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentity
+metadata:
+  name: my-cluster-mi
+spec:
+  type: 0
+  ResourceID: /subscriptions/<subid>/resourcegroups/<resourcegroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<name>
+  ClientID: <clientId>
+```
+
+*AzureIdentityBinding* nesnesi oluşturmak için *clusteridentitybinding.yaml* adlı bir dosya oluşturun ve aşağıdaki YAML tanımını kullanın:
+
+```yaml
+apiVersion: "aadpodidentity.k8s.io/v1"
+kind: AzureIdentityBinding
+metadata:
+  name: my-cluster-mi-binding
+spec:
+  AzureIdentity: my-cluster-mi
+  Selector: my-label-value
+```
+
+AzureIdentity ve `kubectl` *AzureIdentityBinding* nesnelerini dağıtmak için şunları kullanın: *AzureIdentityBinding*
+
+```cmd
+kubectl apply -f clusteridentity.yaml
+kubectl apply -f clusteridentitybinding.yaml
+```
+
+AzureIdentity ve *AzureIdentityBinding* nesnelerini dağıttıktan sonra, *aadpodidbinding: etiket değerim* etiketiyle tüm iş yükleri kümenin yönetilen kimliğine erişebilir. *AzureIdentityBinding* Bu etiketi ekleyin ve herhangi bir dev alanında çalışan tüm iş yüklerini yeniden dağıtın. Örneğin:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+        aadpodidbinding: my-label-value
+    spec:
+      [...]
+```
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces ile Visual Studio ve Visual Studio Code kullanarak sık karşılaşılan sorunlar
 
@@ -338,7 +445,7 @@ Bu sorunu düzeltmek için:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Yetkilendirme hatası "Microsoft.DevSpaces/register/action"
 
-Azure Dev Alanlarını yönetmek için Azure aboneliğinizde *Sahip veya* *Katılımcı* erişimine ihtiyacınız vardır. Dev Spaces'i yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *Sahip* veya *Katılımcı* erişiminiz yoksa, bir yetkilendirme hatası görebilirsiniz. Örnek:
+Azure Dev Alanlarını yönetmek için Azure aboneliğinizde *Sahip veya* *Katılımcı* erişimine ihtiyacınız vardır. Dev Spaces'i yönetmeye çalışıyorsanız ve ilişkili Azure aboneliğine *Sahip* veya *Katılımcı* erişiminiz yoksa, bir yetkilendirme hatası görebilirsiniz. Örneğin:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -497,7 +604,7 @@ Bu sorunu düzeltmek için:
 
 [AKS kümenizdeki sertifikaları döndürdükten](../aks/certificate-rotation.md)sonra, bazı `azds space list` `azds up` işlemler gibi ve başarısız olur. Ayrıca, kümenizdeki sertifikaları döndürdükten sonra Azure Dev Spaces denetleyicinizdeki sertifikaları yenilemeniz gerekir.
 
-Bu sorunu gidermek için, *kubeconfig* sonra `az aks get-credentials` `azds controller refresh-credentials` komutu çalıştırarak güncelleştirilmiş sertifikaları olduğundan emin olun. Örnek:
+Bu sorunu gidermek için, *kubeconfig* sonra `az aks get-credentials` `azds controller refresh-credentials` komutu çalıştırarak güncelleştirilmiş sertifikaları olduğundan emin olun. Örneğin:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

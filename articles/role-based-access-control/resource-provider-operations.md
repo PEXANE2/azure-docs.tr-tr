@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548314"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383743"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri
 
@@ -1506,7 +1506,7 @@ Azure hizmeti: Klasik dağıtım modeli sanal makine
 > | Eylem | Microsoft.ClassicCompute/operations/read | Operasyon listesini alır. |
 > |  | **operationStatuses** |  |
 > | Eylem | Microsoft.ClassicCompute/operationStatuses/read | Kaynağın çalışma durumunu okur. |
-> |  | **quotas** |  |
+> |  | **Kota -larını** |  |
 > | Eylem | Microsoft.ClassicCompute/quotas/read | Abonelik için kotayı alın. |
 > |  | **resourceTypes/skus** |  |
 > | Eylem | Microsoft.ClassicCompute/resourceTypes/skus/read | Desteklenen kaynak türleri için Sku listesini alır. |
@@ -1599,7 +1599,7 @@ Azure hizmeti: Klasik dağıtım modeli sanal ağ
 > | Eylem | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/operationStatuses/read | Ağ güvenlik grubu güvenlik kurallarıiçin çalışma durumunu okur. |
 > |  | **Işlem** |  |
 > | Eylem | Microsoft.ClassicNetwork/operations/read | Klasik ağ işlemleri alın. |
-> |  | **quotas** |  |
+> |  | **Kota -larını** |  |
 > | Eylem | Microsoft.ClassicNetwork/kotalar/okuma | Abonelik için kotayı alın. |
 > |  | **ayrılmışIps** |  |
 > | Eylem | Microsoft.ClassicNetwork/reservedIps/read | Ayrılmış Ips alır |
@@ -1693,7 +1693,7 @@ Azure hizmeti: Klasik dağıtım modeli depolama
 > | Eylem | Microsoft.ClassicStorage/osPlatformImages/oku | İşletim sistemi platformu görüntüsünü alır. |
 > |  | **publicImages** |  |
 > | Eylem | Microsoft.ClassicStorage/publicImages/read | Genel sanal makine görüntüsünü alır. |
-> |  | **quotas** |  |
+> |  | **Kota -larını** |  |
 > | Eylem | Microsoft.ClassicStorage/quotas/read | Abonelik için kotayı alın. |
 > |  | **depolamaHesapları** |  |
 > | Eylem | Microsoft.ClassicStorage/storageAccounts/read | Depolama hesabını verilen hesapla döndürün. |
@@ -5180,7 +5180,7 @@ Azure hizmeti: [Key Vault](../key-vault/index.yml)
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
-Azure hizmeti: [Azure Veri Gezgini](../data-explorer/index.yml)
+Azure hizmeti: [Azure Veri Gezgini](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Eylem Türü | İşlem | Açıklama |

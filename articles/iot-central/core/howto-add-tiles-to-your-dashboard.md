@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 49b41715d95a5f210e6e70faf09aa016d1478728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75e5a28f7ec56750432e74ee48ba68491a5e481
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158817"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310292"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
@@ -74,7 +74,7 @@ Aşağıdaki tablo, Azure IoT Central'daki kutucukların kullanımını özetley
 | İçerik | Uygulama ve cihaz seti panoları |İşaretle destekli döşemeler, başlık ve açıklama metnini görüntüleyen tıklanabilir kutucuklardır. Bu döşemeyi, kullanıcının uygulamanızla ilgili bir URL'de gezinmesini sağlamak için bağlantı döşemesi olarak da kullanabilirsiniz.|
 | Görüntü | Uygulama ve cihaz seti panoları |Resim döşemeleri özel bir resim görüntüler ve tıklanabilir. Panoya grafik eklemek ve isteğe bağlı olarak bir kullanıcının uygulamanızla alakalı bir URL'de gezinmesini sağlamak için resim döşemesini kullanın.|
 | Etiketle | Uygulama panoları |Etiket döşemeleri panoda özel metin görüntüler. Metnin boyutunu seçebilirsiniz. Panoya bu tür açıklamalar, iletişim bilgileri veya yardım la ilgili bilgileri eklemek için etiket döşemesi kullanın.|
-| Eşleme | Uygulama ve cihaz seti panoları |Harita kutucukları bir haritada aygıtın konumunu ve durumunu görüntüler. Örneğin, bir aygıtın nerede olduğunu ve fanı açık olup olmadığını görüntüleyebilirsiniz.|
+| Eşleme | Uygulama ve cihaz panoları |Harita kutucukları bir aygıtın konumunu haritada görüntüler. Ayrıca, bir aygıtın konum geçmişinin en fazla 100 noktasını görüntüleyebilirsiniz. Örneğin, bir aygıtın son bir hafta içinde bulunduğu yerin örneklenmiş bir rotasını görüntüleyebilirsiniz.|
 | Çizgi Grafiği | Uygulama ve cihaz panoları |Çizgi grafiği döşemeleri, bir aygıt için belirli bir süre için toplam ölçüm grafiği görüntüler. Örneğin, bir aygıtın son bir saatteki ortalama sıcaklığını ve basıncını gösteren bir çizgi grafiği görüntüleyebilirsiniz.|
 | Çubuk Grafiği | Uygulama ve cihaz panoları |Çubuk grafik döşemeleri, bir aygıt için belirli bir süre için toplam ölçümlerin grafiğini görüntüler. Örneğin, bir aygıtın son bir saatteki ortalama sıcaklığını ve basıncını gösteren bir çubuk grafiği görüntüleyebilirsiniz.|
 | Pasta Grafiği | Uygulama ve cihaz seti panoları |Pasta grafiği döşemeleri, bir aygıt için belirli bir süre için toplam ölçümlerin grafiğini görüntüler.|

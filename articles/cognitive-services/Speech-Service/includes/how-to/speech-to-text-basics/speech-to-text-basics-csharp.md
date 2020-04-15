@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1dfbe026b7f30344d49cc2d49881c885227019d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80501970"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314216"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -83,7 +83,7 @@ using var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
 ## <a name="recognize-speech"></a>Konuşma tanıma
 
-C# için Konuşma SDK'sının [Recognizer sınıfı,](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotne) konuşma tanıma için kullanabileceğiniz birkaç yöntemi ortaya çıkarır.
+C# için Konuşma SDK'sının [Recognizer sınıfı,](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer?view=azure-dotnet) konuşma tanıma için kullanabileceğiniz birkaç yöntemi ortaya çıkarır.
 
 * Tek çekim tanıma (async) - Engellemesiz (asynchronous) modda tanıma gerçekleştirir. Bu tek bir söyleyiş tanıyacaktır. Tek bir söyleyninin sonu, sonunda sessizlik dinleyerek veya en fazla 15 saniyelik ses işlenene kadar belirlenir.
 * Sürekli tanıma (async) - Asynchronously sürekli tanıma işlemi başlatır. Kullanıcı olaylara kaydolur ve çeşitli uygulama durumunu işler. Eşzamanlı sürekli tanımayı durdurmak için. [`StopContinuousRecognitionAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync?view=azure-dotnet)

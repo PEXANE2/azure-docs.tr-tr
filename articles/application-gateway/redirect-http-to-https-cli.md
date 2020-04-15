@@ -1,23 +1,23 @@
 ---
 title: CLI kullanarak HTTP-HTTPS yeniden yönlendirme
 titleSuffix: Azure Application Gateway
-description: Azure CLI kullanarak uygulama ağ geçidi oluşturma ve SSL sonlandırma sertifikası eklemeyi öğrenin.
+description: Azure CLI'yi kullanarak bir uygulama ağ geçidi oluşturmayı ve TLS sonlandırma sertifikası eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 41b2fb754f1d6ead3a7475ca146ab99758aa8134
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246868"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312153"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Azure CLI'yi kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir uygulama ağ geçidi oluşturun
 
-Azure CLI'yi, SSL sonlandırma sertifikası içeren bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz.
+TLS/SSL sonlandırma sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI'yi kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz.
 
 Bu makalede şunları öğreneceksiniz:
 

@@ -1,26 +1,26 @@
 ---
-title: Azure Uygulama Ağ Geçidi ile uçlardan uca SSL'yi yapılandırma
-description: Bu makalede, PowerShell kullanarak Azure Application Gateway ile uçlardan uca SSL'nin nasıl yapılandırılabildiğini açıklamaktadır.
+title: Azure Uygulama Ağ Geçidi ile uçlardan uca TLS yapılandırın
+description: Bu makalede, PowerShell kullanarak Azure Uygulama Ağ Geçidi ile uçuca TLS nasıl yapılandırılanın açıklanmaktadır
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 7ba273cddb6cf41872c4db1c34560c104b992787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72286460"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312508"
 ---
-# <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway’i PowerShell ile kullanarak uçtan uca SSL yapılandırma
+# <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>PowerShell ile Uygulama Ağ Geçidi'ni kullanarak TLS'yi sonuna kadar yapılandır
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Application Gateway, trafiğin uçtan uca şifrelemesini destekler. Uygulama Ağ Geçidi, uygulama ağ geçidindeki SSL bağlantısını sonlandırır. Ağ geçidi daha sonra yönlendirme kurallarını trafiğe uygular, paketi yeniden şifreler ve tanımlanan yönlendirme kurallarına göre paketi uygun arka uç sunucusuna iletir. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler.
+Azure Application Gateway, trafiğin uçtan uca şifrelemesini destekler. Uygulama Ağ Geçidi, uygulama ağ geçidindeki TLS/SSL bağlantısını sonlandırır. Ağ geçidi daha sonra yönlendirme kurallarını trafiğe uygular, paketi yeniden şifreler ve tanımlanan yönlendirme kurallarına göre paketi uygun arka uç sunucusuna iletir. Web sunucusundan alınan herhangi bir yanıt, son kullanıcıya dönerken aynı süreci izler.
 
-Uygulama Ağ Geçidi özel SSL seçeneklerini tanımlamayı destekler. Ayrıca aşağıdaki protokol sürümlerinin devre dışı bırakılmasını destekler: **TLSv1.0**, **TLSv1.1 , ve TLSv1.2**, ayrıca hangi şifre lerin kullanılacağını ve tercih sırasını tanımlar. **TLSv1.2** Yapılandırılabilir SSL seçenekleri hakkında daha fazla bilgi edinmek için [SSL ilkesine genel bakış alabilme](application-gateway-SSL-policy-overview.md)bilgisini edinin.
+Uygulama Ağ Geçidi özel TLS seçeneklerini tanımlamayı destekler. Ayrıca aşağıdaki protokol sürümlerinin devre dışı bırakılmasını destekler: **TLSv1.0**, **TLSv1.1 , ve TLSv1.2**, ayrıca hangi şifre lerin kullanılacağını ve tercih sırasını tanımlar. **TLSv1.2** Yapılandırılabilir TLS seçenekleri hakkında daha fazla bilgi edinmek için [TLS ilkesine genel bakış](application-gateway-SSL-policy-overview.md)alabilme bilgisini edinin.
 
 > [!NOTE]
 > SSL 2.0 ve SSL 3.0 varsayılan olarak devre dışı bırakılır ve etkinleştirilemez. Güvenli olmadıkları kabul edilir ve Uygulama Ağ Geçidi ile kullanılamazlar.
@@ -29,22 +29,22 @@ Uygulama Ağ Geçidi özel SSL seçeneklerini tanımlamayı destekler. Ayrıca a
 
 ## <a name="scenario"></a>Senaryo
 
-Bu senaryoda, PowerShell ile uçlardan uca SSL kullanarak bir uygulama ağ geçidi oluşturmayı öğrenirsiniz.
+Bu senaryoda, PowerShell ile uçlardan uca TLS kullanarak bir uygulama ağ geçidi oluşturmayı öğrenirsiniz.
 
 Bu senaryo şunları yapacaktır:
 
 * **appgw-rg**adında bir kaynak grubu oluşturun.
 * Adres alanı **10.0.0.0/16**olan **appgwvnet** adında bir sanal ağ oluşturun.
 * **Appgwsubnet** ve **appsubnet**adlı iki alt ağ oluşturun.
-* SSL protokol sürümlerini ve şifreleme paketlerini sınırlayan uçlardan uca SSL şifrelemesini destekleyen küçük bir uygulama ağ geçidi oluşturun.
+* TLS protokol sürümlerini ve şifreleme paketlerini sınırlayan uçlardan uca TLS şifrelemesini destekleyen küçük bir uygulama ağ geçidi oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bir uygulama ağ geçidi ile uçlardan uca SSL yapılandırmak için ağ geçidi için bir sertifika gereklidir ve arka uç sunucular için sertifikalar gereklidir. Ağ geçidi sertifikası, SSL protokol belirtimi uyarınca simetrik bir anahtar türetmek için kullanılır. Simetrik anahtar daha sonra ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. Ağ geçidi sertifikasının Kişisel Bilgi Alışverişi (PFX) biçiminde olması gerekir. Bu dosya biçimi, trafiğin şifreleme ve şifre çözme gerçekleştirmek için uygulama ağ geçidi tarafından gerekli olan özel anahtarı dışa aktarmanızı sağlar.
+Bir uygulama ağ geçidi ile uçlardan uca TLS yapılandırmak için ağ geçidi için bir sertifika gereklidir ve arka uç sunucular için sertifikalar gereklidir. Ağ geçidi sertifikası, TLS protokol belirtimi uyarınca simetrik bir anahtar türetmek için kullanılır. Simetrik anahtar daha sonra ağ geçidine gönderilen trafiği şifrelemek ve şifresini çözmek için kullanılır. Ağ geçidi sertifikasının Kişisel Bilgi Alışverişi (PFX) biçiminde olması gerekir. Bu dosya biçimi, trafiğin şifreleme ve şifre çözme gerçekleştirmek için uygulama ağ geçidi tarafından gerekli olan özel anahtarı dışa aktarmanızı sağlar.
 
-Uçlardan uca SSL şifrelemesi için, arka uç uygulama ağ geçidi tarafından açıkça izin verilmelidir. Arka uç sunucularının ortak sertifikasını uygulama ağ geçidine yükleyin. Sertifikanın eklenmesi, uygulama ağ geçidinin yalnızca bilinen arka uç örnekleriyle iletişim kurmasını sağlar. Bu, uçlardan uca iletişimi daha da güvence altına alar.
+Uçlardan uca TLS şifrelemesi için, arka uç uygulama ağ geçidi tarafından açıkça izin verilmelidir. Arka uç sunucularının ortak sertifikasını uygulama ağ geçidine yükleyin. Sertifikanın eklenmesi, uygulama ağ geçidinin yalnızca bilinen arka uç örnekleriyle iletişim kurmasını sağlar. Bu, uçlardan uca iletişimi daha da güvence altına alar.
 
 Yapılandırma işlemi aşağıdaki bölümlerde açıklanmıştır.
 
@@ -154,20 +154,20 @@ Tüm yapılandırma öğeleri uygulama ağ geçidi oluşturmadan önce ayarlanı
    ```
 
    > [!NOTE]
-   > Bu örnek, SSL bağlantısı için kullanılan sertifikayı yapılandırır. Sertifikanın .pfx biçiminde olması ve parolanın 4 ila 12 karakter olması gerekir.
+   > Bu örnek TLS bağlantısı için kullanılan sertifikayı yapılandırır. Sertifikanın .pfx biçiminde olması ve parolanın 4 ila 12 karakter olması gerekir.
 
-6. Uygulama ağ geçidi için HTTP dinleyicisini oluşturun. Kullanmak üzere ön uç IP yapılandırması, bağlantı noktası ve SSL sertifikası atayın.
+6. Uygulama ağ geçidi için HTTP dinleyicisini oluşturun. Kullanmak üzere ön uç IP yapılandırmasını, bağlantı noktasını ve TLS/SSL sertifikasını atayın.
 
    ```powershell
    $listener = New-AzApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-7. SSL özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı yükleyin.
+7. TLS özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı yükleyin.
 
    > [!NOTE]
-   > Varsayılan sonda, ortak anahtarı arka uçTAKI IP adresindeki *varsayılan* SSL bağlayıcısından alır ve aldığı ortak anahtar değerini burada sağladığınız ortak anahtar değeriyle karşılaştırır. 
+   > Varsayılan sonda, ortak anahtarı arka uçTAKI IP adresindeki *varsayılan* TLS bağlayıcısından alır ve aldığı ortak anahtar değerini burada sağladığınız ortak anahtar değeriyle karşılaştırır. 
    > 
-   > Arka uçta ana bilgisayar üstbilgilerini ve Sunucu Adı Göstergesi (SNI) kullanıyorsanız, alınan ortak anahtar trafiğin aktığı amaçlanan site olmayabilir. Şüpheniz varsa, *varsayılan* https://127.0.0.1/ SSL bağlama için hangi sertifikanın kullanıldığını onaylamak için arka uç sunucularını ziyaret edin. Bu bölümdeki istekteki ortak anahtarı kullanın. HTTPS bağlamalarında ana bilgisayar başlıkları ve SNI kullanıyorsanız ve el ile tarayıcı isteğinden https://127.0.0.1/ arka uç sunuculara yanıt ve sertifika almıyorsanız, bunlar üzerinde varsayılan bir SSL bağlama ayarlamanız gerekir. Bunu yapmazsanız, sondalar başarısız olur ve arka uç beyaz listeye alınmaz.
+   > Arka uçta ana bilgisayar üstbilgilerini ve Sunucu Adı Göstergesi (SNI) kullanıyorsanız, alınan ortak anahtar trafiğin aktığı amaçlanan site olmayabilir. Şüpheniz varsa, *varsayılan* https://127.0.0.1/ TLS bağlama için hangi sertifikanın kullanıldığını onaylamak için arka uç sunucularını ziyaret edin. Bu bölümdeki istekteki ortak anahtarı kullanın. HTTPS bağlamalarında ana bilgisayar başlıkları ve SNI kullanıyorsanız ve el ile tarayıcı isteğinden https://127.0.0.1/ arka uç sunuculara yanıt ve sertifika almıyorsanız, bunlara varsayılan TLS bağlama ayarlamanız gerekir. Bunu yapmazsanız, sondalar başarısız olur ve arka uç beyaz listeye alınmaz.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -176,7 +176,7 @@ Tüm yapılandırma öğeleri uygulama ağ geçidi oluşturmadan önce ayarlanı
    > [!NOTE]
    > Önceki adımda sağlanan sertifika, arka uçta bulunan .pfx sertifikasının ortak anahtarı olmalıdır. Talep, Kanıt ve Akıl Yürütme (CER) biçiminde arka uç sunucusuna yüklenen sertifikayı (kök sertifikası değil) dışa aktarın ve bu adımda kullanın. Bu adım, uygulama ağ geçidi ile arka ucunu beyaz listeler.
 
-   Uygulama Ağ Geçidi v2 SKU kullanıyorsanız, kimlik doğrulama sertifikası yerine güvenilir bir kök sertifikası oluşturun. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile sona SSL'ye Genel Bakış:](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)
+   Uygulama Ağ Geçidi v2 SKU kullanıyorsanız, kimlik doğrulama sertifikası yerine güvenilir bir kök sertifikası oluşturun. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile UCa TLS Genel Bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku)bakın:
 
    ```powershell
    $trustedRootCert01 = New-AzApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
@@ -209,7 +209,7 @@ Tüm yapılandırma öğeleri uygulama ağ geçidi oluşturmadan önce ayarlanı
     > [!NOTE]
     > Test amacıyla 1 örnek sayısı seçilebilir. İki örnek altında herhangi bir örnek sayısının SLA tarafından karşılanmadığını ve bu nedenle önerilmediğini bilmek önemlidir. Küçük ağ geçitleri üretim amaçlı değil, dev testi için kullanılacaktır.
 
-11. Uygulama ağ geçidinde kullanılacak SSL ilkesini yapılandırın. Uygulama Ağ Geçidi, SSL protokol sürümleri için minimum sürüm ayarlama yeteneğini destekler.
+11. Uygulama ağ geçidinde kullanılacak TLS ilkesini yapılandırın. Uygulama Ağ Geçidi, TLS protokol sürümleri için minimum sürüm ayarlama olanağını destekler.
 
     Aşağıdaki değerler tanımlanabilecek protokol sürümlerinin bir listesidir:
 
@@ -247,7 +247,7 @@ Arka uç sertifikasının süresi dolmuşsa, yeni bir sertifika uygulamak için 
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
    
-2. Yeni sertifika kaynağını,.sertifikanın ortak anahtarını içeren ve uygulama ağ geçidinde SSL sonlandırma için dinleyiciye eklenen sertifikanın aynısı olan .cer dosyasından ekleyin.
+2. Yeni sertifika kaynağını,.sertifikanın ortak anahtarını içeren ve uygulama ağ geçidinde TLS sonlandırma için dinleyiciye eklenen sertifikanın aynısı olan .cer dosyasından ekleyin.
 
    ```powershell
    Add-AzApplicationGatewayAuthenticationCertificate -ApplicationGateway $gw -Name 'NewCert' -CertificateFile "appgw_NewCert.cer" 
@@ -300,9 +300,9 @@ Kullanılmayan süresi dolmuş bir sertifikayı HTTP Ayarları'ndan kaldırmak i
    ```
 
    
-## <a name="limit-ssl-protocol-versions-on-an-existing-application-gateway"></a>Varolan bir uygulama ağ geçidinde SSL protokol sürümlerini sınırlandırın
+## <a name="limit-tls-protocol-versions-on-an-existing-application-gateway"></a>Varolan bir uygulama ağ geçidinde TLS protokol sürümlerini sınırlandırın
 
-Önceki adımlar, uçtan uca SSL içeren bir uygulama oluşturmanız ve belirli SSL protokol sürümlerini devre dışı bırakmanız için sizi zora sokalmıştır. Aşağıdaki örnek, varolan bir uygulama ağ geçidindeki belirli SSL ilkelerini devre dışı kalmaktadır.
+Önceki adımlar, uçtan uca TLS içeren bir uygulama oluşturmanız ve belirli TLS protokol sürümlerini devre dışı bırakmanız için sizi harekete geçirmiştir. Aşağıdaki örnek, varolan bir uygulama ağ geçidindeki belirli TLS ilkelerini devre dışı kalmaktadır.
 
 1. Güncelleştirmek için uygulama ağ geçidini alın.
 
@@ -310,14 +310,14 @@ Kullanılmayan süresi dolmuş bir sertifikayı HTTP Ayarları'ndan kaldırmak i
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Bir SSL ilkesi tanımlayın. Aşağıdaki örnekte, **TLSv1.0** ve **TLSv1.1** devre dışı bırakılmış olup, **aes\_\_\_\_\_128\_GCM SHA256,\_** **AES\_256\_\_\_GCM\_SHA384 İle\_TLS ECDHE ECDSA\_** ve **\_AES\_\_\_128 GCM SHA256\_ile\_ciper** süitleri sadece izin verilenler arasındadır.
+2. TLS ilkesi tanımlayın. Aşağıdaki örnekte, **TLSv1.0** ve **TLSv1.1** devre dışı bırakılmış olup, **aes\_\_\_\_\_128\_GCM SHA256,\_** **AES\_256\_\_\_GCM\_SHA384 İle\_TLS ECDHE ECDSA\_** ve **\_AES\_\_\_128 GCM SHA256\_ile\_ciper** süitleri sadece izin verilenler arasındadır.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw
 
    ```
 
-3. Son olarak, ağ geçidini güncelleştirin. Bu son adım uzun süren bir görevdir. Bu yapıldığında, uçlardan uca SSL uygulama ağ geçidi üzerinde yapılandırılır.
+3. Son olarak, ağ geçidini güncelleştirin. Bu son adım uzun süren bir görevdir. Bu yapıldığında, uçlardan uca TLS uygulama ağ geçidi üzerinde yapılandırılır.
 
    ```powershell
    $gw | Set-AzApplicationGateway

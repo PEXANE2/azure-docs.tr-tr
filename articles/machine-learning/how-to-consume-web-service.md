@@ -1,7 +1,7 @@
 ---
 title: Web hizmeti olarak dağıtılan model için istemci oluşturma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning modeliyle bir model dağıtıldığında oluşturulan bir web hizmetini nasıl tükettiğinizi öğrenin. Web hizmeti bir REST API ortaya çıkarır. Seçtiğiniz programlama dilini kullanarak bu API için istemciler oluşturun.
+description: Azure Machine Learning'den bir model dağıtıldığında oluşturulan bir web hizmeti bitiş noktasını nasıl çağıracaklarınız öğrenin. Bitiş noktası, modelle çıkarım yapmak için çağırabileceğiniz bir REST API'sini ortaya çıkarır. Seçtiğiniz programlama dilini kullanarak bu API için istemciler oluşturun.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,21 +9,21 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/07/2020
+ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: a86b8ddb59719db9bdaffea44aecd5428ad16834
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0222b63323c4e546628d790fabb881eba006494e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282673"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383388"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Azure Machine Learning modelini web hizmeti olarak dağıtmak, REST API'si oluşturur. Bu API'ye veri gönderebilir ve model tarafından döndürülen öngörüyü alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak web hizmeti için istemci oluşturmayı öğrenin.
+Azure Machine Learning modelini web hizmeti olarak dağıtmak, REST API bitiş noktası oluşturur. Bu bitiş noktasına veri gönderebilir ve model tarafından döndürülen tahmini alabilirsiniz. Bu belgede, C#, Go, Java ve Python kullanarak web hizmeti için istemci oluşturmayı öğrenin.
 
-Bir görüntüyü Azure Kapsayıcı Örneklerine, Azure Kubernetes Hizmetine veya alan tarafından programlanabilir geçit dizilerine (FPGA) dağıttığınızda bir web hizmeti oluşturursunuz. Kayıtlı modellerden ve puanlama dosyalarından görüntüler oluşturursunuz. [Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)kullanarak bir web hizmetine erişmek için kullanılan URI'yi alırsınız. Kimlik doğrulama etkinse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK'yı da kullanabilirsiniz.
+Yerel ortamınıza, Azure Kapsayıcı Örneklerine, Azure Kubernetes Hizmetine veya alan tarafından programlanabilir geçit dizilerine (FPGA) bir model dağıttığınızda bir web hizmeti oluşturursunuz. [Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)kullanarak web hizmetine erişmek için kullanılan URI'yi alırsınız. Kimlik doğrulama etkinse, kimlik doğrulama anahtarlarını veya belirteçlerini almak için SDK'yı da kullanabilirsiniz.
 
 Makine öğrenme web hizmeti kullanan bir istemci oluşturmak için genel iş akışı:
 
@@ -174,6 +174,17 @@ Web hizmeti, tek bir istekte birden çok veri kümesini kabul edebilir. Bir dizi
 ### <a name="binary-data"></a>İkili veriler
 
 Hizmetinizde ikili veri desteğini etkinleştirme hakkında bilgi için [Ikili verilere](how-to-deploy-and-where.md#binary)bakın.
+
+> [!TIP]
+> İkili veri desteğietkinleştirme, dağıtılan model tarafından kullanılan score.py dosyasında gerçekleşir. İstemciden programlama dilinizin HTTP işlevini kullanın. Örneğin, aşağıdaki parçacık bir JPG dosyasının içeriğini bir web hizmetine gönderir:
+>
+> ```python
+> import requests
+> # Load image data
+> data = open('example.jpg', 'rb').read()
+> # Post raw data to scoring URI
+> res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'application/> octet-stream'})
+> ```
 
 ### <a name="cross-origin-resource-sharing-cors"></a>Orijinler arası kaynak paylaşımı (CORS)
 

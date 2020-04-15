@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 1d684957939c5cb83aae05962c1694f7a8d8da23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 317d12f6d5dee92d998266d4e9b6d52e6ef9c7a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272402"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381391"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Apache Ambari REST API'yi kullanarak HDInsight kümelerini yönetme
 
@@ -21,25 +21,25 @@ ms.locfileid: "79272402"
 
 Azure HDInsight'ta Apache Hadoop kümelerini yönetmek ve izlemek için Apache Ambari REST API'yi nasıl kullanacağınızı öğrenin.
 
-## <a name="what-is-apache-ambari"></a><a id="whatis"></a>Apaçi Ambari nedir
+## <a name="what-is-apache-ambari"></a>Apaçi Ambari nedir
 
 [Apache Ambari,](https://ambari.apache.org) [REST API'leri](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)tarafından desteklenen kullanımı kolay bir web Kullanıcı Arabirimi sağlayarak Hadoop kümelerinin yönetimini ve izlenmesini kolaylaştırır.  Ambari varsayılan olarak Linux tabanlı HDInsight kümeleri ile sağlanır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* **HDInsight'ta hadoop kümesi.** [Linux'ta HDInsight ile başlayın](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
+* HDInsight'ta hadoop kümesi. [Linux'ta HDInsight ile başlayın](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 
-* **Bash Ubuntu üzerinde Windows 10 .**  Bu makaledeki örnekler, Windows 10'daki Bash kabuğunu kullanır. Yükleme adımları [için Windows 10 için Linux Yükleme Kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) için Windows Alt Sistemi'ne bakın.  Diğer [Unix kabukları](https://www.gnu.org/software/bash/) da çalışacaktır.  Örnekler, bazı küçük değişiklikler ile, bir Windows Komut ustem üzerinde çalışabilir.  Alternatif olarak, Windows PowerShell'i kullanabilirsiniz.
+* Windows 10'da Ubuntu'da Bash.  Bu makaledeki örnekler, Windows 10'daki Bash kabuğunu kullanır. Yükleme adımları [için Windows 10 için Linux Yükleme Kılavuzu](https://docs.microsoft.com/windows/wsl/install-win10) için Windows Alt Sistemi'ne bakın.  Diğer [Unix kabukları](https://www.gnu.org/software/bash/) da çalışacaktır.  Örnekler, bazı küçük değişiklikler ile, bir Windows Komut ustem üzerinde çalışabilir.  Veya Windows PowerShell'i kullanabilirsiniz.
 
-* **jq**, bir komut satırı JSON işlemci.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* jq, bir komut satırı JSON işlemci.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
-* **Windows PowerShell**.  Alternatif olarak, [Bash](https://www.gnu.org/software/bash/)kullanabilirsiniz.
+* Windows PowerShell.  Ya da [Bash'i](https://www.gnu.org/software/bash/)kullanabilirsin.
 
-## <a name="base-uri-for-ambari-rest-api"></a>Ambari Rest API için Temel URI
+## <a name="base-uniform-resource-identifier-for-ambari-rest-api"></a>Ambari Rest API için Temel Tekdüzen Kaynak Tanımlayıcısı
 
  HDInsight'taki `https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`Ambari REST API'nin temel Tekdüzen Kaynak Tanımlayıcısı `CLUSTERNAME` (URI), kümenizin adıdır.  ÜRB'lerde küme adları **büyük/küçük harf duyarlıdır.**  URI'nin`CLUSTERNAME.azurehdinsight.net`tam nitelikli alan adı (FQDN) bölümündeki küme adı büyük/küçük harf duyarsız olsa da, URI'deki diğer olaylar büyük/küçük harf duyarlıdır.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 HDInsight'ta Ambari'ye bağlanmak IÇIN HTTPS gerekiyor. Yönetici hesap adını (varsayılan **yöneticidir)** ve küme oluşturma sırasında sağladığınız parolayı kullanın.
 
@@ -48,6 +48,7 @@ Kurumsal Güvenlik Paketi kümeleri `admin`için, bunun yerine, `username@domain
 ## <a name="examples"></a>Örnekler
 
 ### <a name="setup-preserve-credentials"></a>Kurulum (Kimlik bilgilerini koru)
+
 Her örnek için yeniden girmemek için kimlik bilgilerinizi koruyun.  Küme adı ayrı bir adımda korunur.
 
 **A. Bash**  
@@ -64,9 +65,10 @@ $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
 ### <a name="identify-correctly-cased-cluster-name"></a>Doğru örneklenmiş küme adını tanımlama
-Küme adının gerçek gövdesi, kümenin nasıl oluşturulduğuna bağlı olarak beklediğiniz den farklı olabilir.  Buradaki adımlar gerçek kasayı gösterir ve sonraki tüm örnekler için bir değişkende saklar.
 
-Küme adınız ile değiştirmek `CLUSTERNAME` için aşağıdaki komut dosyalarını edin. Sonra komutu girin. (FQDN için küme adı büyük/küçük harf duyarlı değildir.)
+Küme adının gerçek gövdesi beklediğinizden farklı olabilir.  Buradaki adımlar gerçek kasayı gösterir ve daha sonraki tüm örnekler için bir değişkende saklar.
+
+Küme adınız ile değiştirmek `CLUSTERNAME` için aşağıdaki komut dosyalarını edin. Sonra komutu girin. (FQDN'nin küme adı büyük/küçük harf duyarlı değildir.)
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -99,9 +101,9 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.Clusters.health_report
 ```
 
-### <a name="get-the-fqdn-of-cluster-nodes"></a><a name="example-get-the-fqdn-of-cluster-nodes"></a>Küme düğümlerinin FQDN'sini alın
+### <a name="get-the-fqdn-of-cluster-nodes"></a>Küme düğümlerinin FQDN'sini alın
 
-HDInsight ile çalışırken, bir küme düğümünün tam nitelikli etki alanı adını (FQDN) bilmeniz gerekebilir. Aşağıdaki örnekleri kullanarak kümedeki çeşitli düğümler için FQDN'yi kolayca alabilirsiniz:
+Küme düğümünün tam nitelikli etki alanı adını (FQDN) bilmeniz gerekebilir. Aşağıdaki örnekleri kullanarak kümedeki çeşitli düğümler için FQDN'yi kolayca alabilirsiniz:
 
 **Tüm düğümler**  
 
@@ -159,13 +161,13 @@ $respObj = ConvertFrom-Json $resp.Content
 $respObj.host_components.HostRoles.host_name
 ```
 
-### <a name="get-the-internal-ip-address-of-cluster-nodes"></a><a name="example-get-the-internal-ip-address-of-cluster-nodes"></a>Küme düğümlerinin iç IP adresini alma
+### <a name="get-the-internal-ip-address-of-cluster-nodes"></a>Küme düğümlerinin iç IP adresini alma
 
-Bu bölümdeki örneklerle döndürülen IP adreslerine internet üzerinden doğrudan erişilemez. Bunlara yalnızca HDInsight kümesini içeren Azure Sanal Ağı'nda erişilebilirler.
+Bu bölümdeki örneklerle döndürülen IP adreslerine internet üzerinden doğrudan erişilmemektedir. Bunlara yalnızca HDInsight kümesini içeren Azure Sanal Ağı'nda erişilebilir.
 
 HDInsight ve sanal ağlarla çalışma hakkında daha fazla bilgi [için HDInsight için sanal ağ planı'na](hdinsight-plan-virtual-network-deployment.md)bakın.
 
-IP adresini bulmak için küme düğümlerinin dahili tam nitelikli alan adını (FQDN) bilmeniz gerekir. FQDN'ye sahip olduktan sonra ana bilgisayarın IP adresini alabilirsiniz. Aşağıdaki örnekler, tüm ana bilgisayar düğümlerinin FQDN'si için önce Ambari sorgusunu, ardından her ana bilgisayariçin Ambari sorgusu.
+IP adresini bulmak için küme düğümlerinin dahili tam nitelikli alan adını (FQDN) bilmeniz gerekir. FQDN'ye sahip olduktan sonra ana bilgisayarın IP adresini alabilirsiniz. Aşağıdaki örnekler, tüm ana bilgisayar düğümlerinin FQDN'si için ambari sorgusunu ilk kez sorgular. Ardından Ambari'yi her ana bilgisayarın IP adresi için sorgular.
 
 ```bash
 for HOSTNAME in $(curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts" | jq -r '.items[].Hosts.host_name')
@@ -183,7 +185,7 @@ foreach($item in $respObj.items) {
     $hostName = [string]$item.Hosts.host_name
     $hostInfoResp = Invoke-WebRequest -Uri "$uri/$hostName" `
         -Credential $creds -UseBasicParsing
-    $hostInfoObj = ConvertFrom-Json $hostInfoResp 
+    $hostInfoObj = ConvertFrom-Json $hostInfoResp
     $hostIp = $hostInfoObj.Hosts.ip
     "$hostName <--> $hostIp"
 }
@@ -191,7 +193,7 @@ foreach($item in $respObj.items) {
 
 ### <a name="get-the-default-storage"></a>Varsayılan depolama alanını alın
 
-Bir HDInsight kümesi oluşturduğunuzda, küme için varsayılan depolama alanı olarak bir Azure Depolama Hesabı veya Veri Gölü Depolama sı kullanmanız gerekir. Küme oluşturulduktan sonra bu bilgileri almak için Ambari'yi kullanabilirsiniz. Örneğin, HDInsight dışındaki kapsayıcıya veri okumak/yazmak istiyorsanız.
+HDInsight kümeleri varsayılan depolama alanı olarak bir Azure Depolama Hesabı veya Veri Gölü Depolama sı kullanmalıdır. Küme oluşturulduktan sonra bu bilgileri almak için Ambari'yi kullanabilirsiniz. Örneğin, HDInsight dışındaki kapsayıcıya veri okumak/yazmak istiyorsanız.
 
 Aşağıdaki örnekler kümeden varsayılan depolama yapılandırmasını alır:
 
@@ -253,7 +255,7 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 > [!NOTE]  
 > [Azure PowerShell](/powershell/azure/overview) tarafından sağlanan [Get-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/get-azhdinsightcluster) cmdlet de kümenin depolama bilgilerini döndürür.
 
-### <a name="get-all-configurations"></a><a name="get-all-configurations"></a>Tüm yapılandırmaları alın
+### <a name="get-all-configurations"></a>Tüm yapılandırmaları alın
 
 Kümeniz için kullanılabilen yapılandırmaları alın.
 
@@ -267,7 +269,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-Bu örnek, kümeye yüklenen bileşenler için geçerli yapılandırmayı *(etiket* değeriyle tanımlanan) içeren bir JSON belgesi döndürür. Aşağıdaki örnek, Bir Kıvılcım küme türünden döndürülen verilerden bir alıntıdır.
+Bu örnek, yüklü bileşenler için geçerli yapılandırmayı içeren bir JSON belgesi ni döndürür. *Etiket* değerine bakın. Aşağıdaki örnek, Bir Kıvılcım küme türünden döndürülen verilerden bir alıntıdır.
 
 ```json
 "jupyter-site" : {
@@ -305,10 +307,11 @@ Bu örnek, `livy2-conf` bileşen için geçerli yapılandırmayı içeren bir JS
 1. Oluştur. `newconfig.json`  
    Değiştirin ve aşağıdaki komutları girin:
 
-   * İstediğin `livy2-conf` bileşeni değiştirin.
+   * Yeni `livy2-conf` bileşenle değiştirin.
    * Tüm `INITIAL` `tag` [yapılandırmaları al'dan](#get-all-configurations)alınan gerçek değerle değiştirin.
 
-     **A. Bash**  
+     **A. Bash**
+
      ```bash
      curl -u admin:$password -sS -G "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/configurations?type=livy2-conf&tag=INITIAL" \
      | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
@@ -326,11 +329,11 @@ Bu örnek, `livy2-conf` bileşen için geçerli yapılandırmayı içeren bir JS
      $resp.Content | C:\HD\jq\jq-win64 --arg newtag "version$unixTimeStamp" '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
      ```
 
-     Jq, HDInsight'tan alınan verileri yeni bir yapılandırma şablonuna dönüştürmek için kullanılır. Özellikle, bu örnekler aşağıdaki eylemleri gerçekleştirmek:
+     Jq, HDInsight'tan alınan verileri yeni bir yapılandırma şablonuna dönüştürmek için kullanılır. Özellikle, bu örnekler aşağıdaki eylemleri yapmak:
 
    * "Sürüm" dizesi ve 'de `newtag`depolanan tarih' dizesini içeren benzersiz bir değer oluşturur.
 
-   * İstenilen yeni yapılandırma için bir kök belge oluşturur.
+   * Yeni yapılandırma için bir kök belge oluşturur.
 
    * `.items[]` Dizinin içeriğini alır ve **desired_config** öğesinin altına ekler.
 
@@ -382,11 +385,11 @@ Bu örnek, `livy2-conf` bileşen için geçerli yapılandırmayı içeren bir JS
     $resp.Content
     ```  
 
-    Bu **komutlar, newconfig.json** dosyasının içeriğini yeni istenen yapılandırma olarak kümeye gönderir. İstek bir JSON belgesidöndürür. Bu belgedeki **sürümTag** öğesi gönderdiğiniz sürümle eşleşmelidir ve **configs** nesnesi istediğiniz yapılandırma değişikliklerini içerir.
+    Bu **komutlar, newconfig.json** dosyasının içeriğini yeni yapılandırma olarak kümeye gönderir. İstek bir JSON belgesidöndürür. Bu belgedeki **sürümTag** öğesi gönderdiğiniz sürümle eşleşmelidir ve **configs** nesnesi istediğiniz yapılandırma değişikliklerini içerir.
 
 ### <a name="restart-a-service-component"></a>Hizmet bileşenini yeniden başlatma
 
-Bu noktada, Ambari web UI'sine bakarsanız, Spark hizmetinin yeni yapılandırmanın etkili olabilmesi için yeniden başlatılması gerektiğini belirtir. Hizmeti yeniden başlatmak için aşağıdaki adımları kullanın.
+Bu noktada, Ambari web UI, yeni yapılandırmanın etkili olabilmesi için Spark hizmetinin yeniden başlatılması gerektiğini belirtir. Hizmeti yeniden başlatmak için aşağıdaki adımları kullanın.
 
 1. Spark2 hizmetiiçin bakım modunu etkinleştirmek için aşağıdakileri kullanın:
 

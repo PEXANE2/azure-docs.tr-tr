@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 9398820c88120400d97fbaf8cb0da100c2bdbf81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 82c516eeac6d3e88ca7b6ac1c97ebb638ba27979
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261763"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383924"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Dosyalar hakkında sık sorulan sorular (SSS)
 [Azure Files,](storage-files-introduction.md) bulutta endüstri standardı Sunucu İleti Bloğu [(SMB) protokolü](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)aracılığıyla erişilebilen tam yönetilen dosya paylaşımları sunar. Azure dosya paylaşımlarını bulutveya Windows, Linux ve macOS'un şirket içi dağıtımlarına eş zamanlı olarak monte edebilirsiniz. Ayrıca, verilerin kullanıldığı yere yakın hızlı erişim için Azure Dosya Eşitlemeyi'ni kullanarak Windows Server makinelerinde Azure dosya paylaşımlarını önbelleğe alabilirsiniz.
@@ -199,16 +199,6 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 
     Hayır, Linux VM'lerinden kimlik doğrulaması desteklenmez.
 
-* <a id="ad-multiple-forest"></a>
-**Azure Files AD kimlik doğrulaması, birden çok orman kullanarak bir REKLAM ortamıyla tümleştirmeyi destekliyor mu?**    
-
-    Azure Files AD kimlik doğrulaması yalnızca depolama hesabının kayıtlı olduğu AD etki alanı hizmetinin ormanıyla tümleşir. Başka bir AD ormanından kimlik doğrulamasını desteklemek için, ortamınızın orman güveninin düzgün şekilde yapılandırılması gerekir. Azure Dosyaları'nın bir AD etki alanı hizmetine kaydolması, kimlik doğrulama için AD'de bir kimlik (bilgisayar veya hizmet oturum açma hesabı) oluşturduğu normal bir dosya sunucusuyla çoğunlukla aynıdır. Tek fark, depolama hesabının kayıtlı SPN etki alanı soneki ile eşleşmeyen "file.core.windows.net" ile sona ermesidir. Farklı etki alanı soneki nedeniyle birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkesinizde herhangi bir güncelleştirme gerekip gerekip gerekip gerekip gerekip gerekmeden görmek için etki alanı yöneticinize danışın.
-
-* <a id=""></a>
-**Azure Dosyaları AD kimlik doğrulaması (önizleme) için hangi bölgeler kullanılabilir?**
-
-    Ayrıntılar için [AD bölgesel kullanılabilirliğine](storage-files-identity-auth-active-directory-enable.md#regional-availability) bakın.
-
 * <a id="ad-aad-smb-afs"></a>
 **Azure Dosya Eşitleme tarafından yönetilen dosya paylaşımlarında Azure Dosyaları Azure AD DS kimlik doğrulaması veya Etkin Dizin (AD) kimlik doğrulaması (önizleme) kullanabilir miyim?**
 
@@ -218,7 +208,7 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 **Depolama hesabımda ve AD etki alanı bilgilerimde AD kimlik doğrulamasını etkinleştirip etkinleştirdiğimi nasıl kontrol edebilirim?**
 
     Azure Dosyaları AD Kimlik Doğrulaması'nın depolama hesabınızda etkinleştirilip etkinleştirilen ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account) verilen yönergelere başvurabilirsiniz.
-    
+
 * <a id="encryption-at-rest"></a>
 **Azure dosya paylaşımımın istirahatte şifrelendiğinden nasıl emin olabilirim?**  
 
@@ -243,6 +233,37 @@ Bu makalede, Azure Dosyaları özellikleri ve işlevleri yle ilgili sık sorulan
 **Azure Dosyaları hangi veri uyumluluk ilkelerini destekler?**  
 
    Azure Dosyaları, Azure Depolama'daki diğer depolama hizmetlerinde kullanılan aynı depolama mimarisinin üzerinde çalışır. Azure Dosyaları, diğer Azure depolama hizmetlerinde kullanılan aynı veri uyumluluk ilkelerini uygular. Azure Depolama veri uyumluluğu hakkında daha fazla bilgi için [Azure Depolama uyumluluk tekliflerine](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)başvurabilir ve [Microsoft Güven Merkezi'ne](https://microsoft.com/trustcenter/default.aspx)gidebilirsiniz.
+   
+### <a name="ad-authentication"></a>AD Kimlik Doğrulaması
+* <a id=""></a>
+**Azure Files Azure AD kimlik doğrulaması Linux VM'lerini destekliyor mu?**
+
+    Hayır, Linux VM'lerinden kimlik doğrulaması desteklenmez.
+
+* <a id="ad-multiple-forest"></a>
+**Azure Files AD kimlik doğrulaması, birden çok orman kullanarak bir REKLAM ortamıyla tümleştirmeyi destekliyor mu?**    
+
+    Azure Files AD kimlik doğrulaması yalnızca depolama hesabının kayıtlı olduğu AD etki alanı hizmetinin ormanıyla tümleşir. Başka bir AD ormanından kimlik doğrulamasını desteklemek için, ortamınızın orman güveninin düzgün şekilde yapılandırılması gerekir. Azure Dosyaları'nın bir AD etki alanı hizmetine kaydolması, kimlik doğrulama için AD'de bir kimlik (bilgisayar veya hizmet oturum açma hesabı) oluşturduğu normal bir dosya sunucusuyla çoğunlukla aynıdır. Tek fark, depolama hesabının kayıtlı SPN etki alanı soneki ile eşleşmeyen "file.core.windows.net" ile sona ermesidir. Farklı etki alanı soneki nedeniyle birden çok orman kimlik doğrulamasını etkinleştirmek için DNS yönlendirme ilkesinizde herhangi bir güncelleştirme gerekip gerekip gerekip gerekip gerekip gerekmeden görmek için etki alanı yöneticinize danışın.
+
+* <a id=""></a>
+**Azure Dosyaları AD kimlik doğrulaması (önizleme) için hangi bölgeler kullanılabilir?**
+
+    Ayrıntılar için [AD bölgesel kullanılabilirliğine](storage-files-identity-auth-active-directory-enable.md#regional-availability) bakın.
+
+* <a id="ad-aad-smb-afs"></a>
+**Azure Dosya Eşitlemi tarafından yönetilen dosya paylaşımlarında Azure Dosyaları Etkin Dizin (AD) kimlik doğrulaması (önizleme) kullanılabilir miyim?**
+
+    Evet, Azure dosya eşitlemi tarafından yönetilen bir dosya paylaşımında AD kimlik doğrulamasını etkinleştirebilirsiniz. Yerel dosya sunucularında dizin/dosya NTFS AK'larında yapılan değişiklikler Azure Dosyalarına veya tam tersi olarak katmanlanır.
+
+* <a id="ad-aad-smb-files"></a>
+**Depolama hesabımda ve AD etki alanı bilgilerimde AD kimlik doğrulamasını etkinleştirip etkinleştirdiğimi nasıl kontrol edebilirim?**
+
+    Azure Dosyaları AD Kimlik Doğrulaması'nın depolama hesabınızda etkinleştirilip etkinleştirilen ve AD etki alanı bilgilerini almak için [burada](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) verilen yönergelere başvurabilirsiniz.
+
+* <a id="ad-aad-smb-files"></a>
+**AD'deki depolama hesabımı temsil etmek için bir bilgisayar hesabı veya hizmet oturum açma hesabı oluşturmanın bir farkı var mı?**
+
+    Bir [bilgisayar hesabı](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (varsayılan) veya bir hizmet oturum [açma hesabı](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) oluşturmanın, kimlik doğrulamanın Azure Dosyaları ile nasıl çalışacağı yla ilgili hiçbir farkı yoktur. Bir depolama hesabını AD ortamınızda kimlik olarak nasıl temsil edeceğimiz konusunda kendi seçiminizi yapabilirsiniz. Join-AzStorageAccountForAuth cmdlet'te ayarlanan varsayılan DomainAccountType bilgisayar hesabıdır. Ancak, AD ortamınızda yapılandırılan parola son kullanma tarihi bilgisayar veya hizmet oturum açma hesabı için farklı olabilir ve [bunu AD'deki depolama hesabı kimliğinizin parolasını güncelleştirmek](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password)için dikkate almanız gerekir.
 
 ## <a name="on-premises-access"></a>Şirket içi erişim
 

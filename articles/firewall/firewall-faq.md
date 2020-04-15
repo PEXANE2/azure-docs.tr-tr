@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: victorh
-ms.openlocfilehash: af66da115e228efe39e4cd5dda3c494b71428676
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113567"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383065"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -72,9 +72,9 @@ Web Uygulama Güvenlik Duvarı (WAF), web uygulamalarınızın ortak açıklarda
 
 Azure Güvenlik Duvarı hizmeti ağ güvenlik grubu işlevselliğini tamamlar. Birlikte, daha iyi "derinlemesine savunma" ağ güvenliği sağlar. Ağ güvenlik grupları, her abonelikteki sanal ağlardaki kaynaklarla trafiği sınırlamak için dağıtılmış ağ katmanı trafiği filtresi sağlar. Azure Güvenlik Duvarı, farklı abonelikler ve sanal ağlar da ağ ve uygulama düzeyinde koruma sağlayan, hizmet olarak tamamen durumlu, merkezi bir ağ güvenlik duvarıdır.
 
-## <a name="are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet"></a>Ağ Güvenlik Grupları (NSG'ler) Azure Güvenlik Duvarı alt ağında desteklenir mi?
+## <a name="are-network-security-groups-nsgs-supported-on-the-azurefirewallsubnet"></a>AzureFirewallSubnet'te Ağ Güvenlik Grupları (NSG'ler) desteklendi mi?
 
-Azure Güvenlik Duvarı, NIC düzeyindeNG'lere sahip platform koruması (görüntülenemiyor) dahil olmak üzere birden çok koruma katmanına sahip yönetilen bir hizmettir.  Azure Güvenlik Duvarı alt ağına alt ağ düzeyinde NSG'ler gerekmez ve hizmet kesintisi olmaması nı sağlamak için devre dışı bırakılır.
+Azure Güvenlik Duvarı, NIC düzeyindeNG'lere sahip platform koruması (görüntülenemiyor) dahil olmak üzere birden çok koruma katmanına sahip yönetilen bir hizmettir.  AzureFirewallSubnet'te alt ağ düzeyindeNG'ler gerekmez ve hizmet kesintisi olmaması nı sağlamak için devre dışı bırakılır.
 
 ## <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Hizmet bitiş noktalarımla Azure Güvenlik Duvarı'nı nasıl ayarlarım?
 

@@ -1,21 +1,14 @@
 ---
 title: Etiket varlık örneği söyleyiş
-titleSuffix: Azure Cognitive Services
 description: LUIS portalının kasıtlı ayrıntı sayfasında, makinede öğrenilen bir varlığı örnek bir sözcükte alt bileşenlerle nasıl etiketleyeceğiz öğrenin.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/16/2019
-ms.author: diberry
-ms.openlocfilehash: 5499e8362e1107a18b997a6a485e11343c328d0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ea5fbea902c9694d9a8a6a8a5bffcf5e7234bbbd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898367"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382412"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Örnek bir sözle etiket makinesi öğrenilen varlık
 
@@ -72,7 +65,7 @@ Varlık paleti önceki etiketleme deneyimine bir alternatif sunar. Bir varlıkla
 
 ## <a name="labeling-subcomponents-of-a-machine-learned-entity"></a>Makine öğrenilen varlığın alt bileşenlerini etiketleme
 
-Varlıklardaki alt bileşenler, üst düzey varlıklarla aynı şekilde etiketlenir. Metin seçilirken, açılır pencerede bulunan varlıklar metnin göründüğü bağlamla görelidir. Örneğin, 5 düzeyli bir makine öğrenilen varsanız ve 1. 3. düzey bileşenlerin bağlamı. Metni diğer varlıklarla etiketlemek için **etiketseçeneğini başka bir varlık** seçeneği olarak etiketleyin'i seçin.
+Varlıklardaki alt bileşenler, üst düzey varlıklarla aynı şekilde etiketlenir. Metin seçilirken, açılır pencerede bulunan varlıklar metnin göründüğü bağlamla görelidir. Örneğin, 5 düzeyli bir makine öğrenilen varsanız ve 1. Metni diğer varlıklarla etiketlemek için **etiketseçeneğini başka bir varlık** seçeneği olarak etiketleyin'i seçin.
 
 > [!div class="mx-imgBorder"]
 > ![Makine de öğrenilen varlık için varlık paleti](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
@@ -88,6 +81,10 @@ Varlık rolleri varlık paleti kullanılarak etiketlenir.
 1. **Varlık denetçisine**geçin ve varolan bir rolü seçin veya yeni bir rol oluşturun.
 1. Örnek sözcük metninde, metni varlık rolüyle etiketle.
 
+## <a name="labeling-for-punctuation"></a>Noktalama işaretleri için etiketleme
+
+Noktalama işaretleri için etiketlemeniz gerekmez. Noktalama işaretlerinin söyleyiş tahminlerini etkip etkilemeyeceklerini denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
+
 ## <a name="unlabel-entities"></a>Etiketlenmemiş varlıklar
 
 Varlığı netiketini çıkarmak için metnin altındaki varlık adını seçin ve **Etiketi Künye'yi**seçin. Etiketini kaldırmaya çalıştığınız varlık alt bileşenleri etiketlediyse, önce alt bileşenlerin etiketlenmemiş olması gerekir.
@@ -96,7 +93,7 @@ Varlığı netiketini çıkarmak için metnin altındaki varlık adını seçin 
 
 Etiketleme sırasında bir hata yaparsanız, varlık paleti hızlı düzenleme sağlayan kolay bir araçtır. Örneğin, bir varlık etiketi yanlışlıkla fazladan bir sözcüğü kapsıyorsa ve alt bileşenleri zaten etiketlemişse, gerekli daha kısa sözcük açıklarını fırçalamak için varlık paletini kullanabilirsiniz.
 
-Örnek:
+Örneğin:
 
 1. Pizza Türü alt bileşeni ekstra bir yanlış kelime içeren "peynirli pizza" yayılan - "ile"
 

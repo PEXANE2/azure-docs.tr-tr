@@ -5,16 +5,16 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 44ca8f721967b90be283f867f8656344ec3f1906
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 80881d96d713f3dc4127c94fd324e925e3c68792
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673406"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382927"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Özel bir kapsayıcı kullanarak Linux üzerinde işlev oluşturma
 
-Bu öğreticide, Linux temel görüntüsünü kullanarak Python kodunu Azure Fonksiyonları'na özel bir Docker kapsayıcısı olarak oluşturur ve dağıtabilirsiniz. İşlevleriniz belirli bir dil sürümü gerektirdiğinde veya yerleşik görüntü tarafından sağlanmayan belirli bir bağımlılığa veya yapılandırmaya sahipse genellikle özel bir görüntü kullanırsınız.
+Bu öğreticide, linux temel görüntüsünü kullanarak kodunuzu özel bir Docker kapsayıcısı olarak Azure İşlevleri olarak oluşturur ve dağıtAbilirsiniz. İşlevleriniz belirli bir dil sürümü gerektirdiğinde veya yerleşik görüntü tarafından sağlanmayan belirli bir bağımlılığa veya yapılandırmaya sahipse genellikle özel bir görüntü kullanırsınız.
 
 [Linux'ta barındırılan ilk işlevinizi oluştur'da](functions-create-first-azure-function-azure-cli-linux.md)açıklandığı gibi varsayılan bir Azure Uygulama Hizmeti kapsayıcısı da kullanabilirsiniz. Azure İşlevleri için desteklenen temel [görüntüler, Azure İşlevleri temel resimleri repo'da](https://hub.docker.com/_/microsoft-azure-functions-base)bulunur.
 

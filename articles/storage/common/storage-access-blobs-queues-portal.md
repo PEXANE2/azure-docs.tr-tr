@@ -6,26 +6,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 602be49ef0c60274f1cd016c4f8e870cf033ec7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e556e21238db5de7dddce13ea912dae30723fe8c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75866905"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383672"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Blob veya sıra verilerine erişmek için Azure portalını kullanma
 
 [Azure portalını](https://portal.azure.com)kullanarak blob veya sıra verilerine erişdiğinizde, portal kapakların altında Azure Depolama'ya isteklerde bulunmaktadır. Azure Depolama'ya bir istek, Azure REKLAM hesabınızı veya depolama hesabı erişim anahtarını kullanarak yetkilendirilebilir. Portal hangi yöntemi kullandığınızı gösterir ve uygun izinlere sahipseniz ikisi arasında geçiş yapmanızı sağlar.  
 
+Azure portalında tek bir blob yükleme işlemine nasıl yetki verebileceğinizi de belirtebilirsiniz. Varsayılan olarak portal, bir blob yükleme işlemini yetkilendirmek için zaten kullandığınız yöntemi kullanır, ancak bir blob yüklediğinizde bu ayarı değiştirme seçeneğiniz vardır.
+
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Blob veya sıra verilerine erişmek için gereken izinler
 
 Azure portalındaki blob veya sıra verilerine erişimi nasıl yetkilendirmek istediğinize bağlı olarak, belirli izinlere ihtiyacınız vardır. Çoğu durumda, bu izinler rol tabanlı erişim denetimi (RBAC) aracılığıyla sağlanır. RBAC hakkında daha fazla bilgi için [bkz.](../../role-based-access-control/overview.md)
 
-### <a name="account-access-key"></a>Hesap erişim anahtarı
+### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullanma
 
 Hesap erişim anahtarıyla blob ve kuyruk verilerine erişmek için, RBAC action **Microsoft.Storage/storageAccounts/listkeys/action'ı**içeren bir RBAC rolünüz olması gerekir. Bu RBAC rolü yerleşik veya özel bir rol olabilir. **Microsoft.Storage/storageAccounts/listkeys/action'ı** destekleyen yerleşik roller şunlardır:
 
@@ -36,9 +38,9 @@ Hesap erişim anahtarıyla blob ve kuyruk verilerine erişmek için, RBAC action
 Azure portalında blob veya sıra verilerine erişmeye çalıştığınızda, portal önce **Microsoft.Storage/storageAccounts/listkeys/action**ile bir rol atanmış olup olmadığınızı denetler. Bu eylemle bir rol atanmışsa, portal blob ve sıra verilerine erişmek için hesap anahtarını kullanır. Bu eylemle size bir rol atanmamışsa, portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
 > [!NOTE]
-> Klasik abonelik yöneticisi rolleri Hizmet Yöneticisi ve Ortak Yönetici, Azure Kaynak Yöneticisi [Sahibi](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. Bu yönetim rollerinden birine sahip bir kullanıcının hesap anahtarıyla blob ve sıra verilerine erişebilmeleri **için,** **Microsoft.Storage/storageAccounts/listkeys/action**dahil olmak üzere Tüm Eylemleri Sahibi rolü içerir. Daha fazla bilgi için [Klasik abonelik yöneticisi rolleri'ne](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)bakın.
+> Klasik abonelik yöneticisi rolleri Hizmet Yöneticisi ve Ortak Yönetici, Azure Kaynak Yöneticisi [Sahibi](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. Bu yönetim rollerinden birine sahip bir kullanıcının hesap anahtarıyla blob ve sıra verilerine erişebilmeleri **için,** **Microsoft.Storage/storageAccounts/listkeys/action**dahil olmak üzere Tüm Eylemleri Sahibi rolü içerir. Daha fazla bilgi için [Bkz. Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure REKLAM yöneticisi rolleri.](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)
 
-### <a name="azure-ad-account"></a>Azure AD hesabı
+### <a name="use-your-azure-ad-account"></a>Azure REKLAM hesabınızı kullanma
 
 Azure AD hesabınızı kullanarak Azure portalındaki blob veya sıra verilerine erişmek için aşağıdaki ifadelerin her ikisi nin de sizin için doğru olması gerekir:
 
@@ -54,7 +56,7 @@ Blob veya sıra verilerinize erişimi destekleyen yerleşik roller şunlardır:
 - [Depolama Blob Veri Okuyucu](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Blobs için salt okunur izinleri.
 - [Depolama Sırası Veri Katılımcısı](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Kuyruklar için okuma/yazma/silme izinleri.
 - [Depolama Sırası Veri Okuyucu :](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)Kuyruklar için salt okunur izinler.
-    
+
 Özel roller, yerleşik roller tarafından sağlanan aynı izinlerin farklı birleşimlerini destekleyebilir. Özel RBAC rolleri oluşturma hakkında daha fazla bilgi için [Azure kaynakları için Özel rolleri](../../role-based-access-control/custom-roles.md) görün ve Azure kaynakları için rol [tanımlarını anlayın.](../../role-based-access-control/role-definitions.md)
 
 Klasik abonelik yöneticisi rolü olan sıraları listeleme desteklenmez. Kuyrukları listelemek için, bir kullanıcının onlara Azure Kaynak Yöneticisi **Reader** rolü, **Depolama Sırası Veri Okuyucu** rolü veya Depolama Sırası Veri **Katılımcısı** rolünü atamış olması gerekir.
@@ -74,7 +76,7 @@ Bir kapsayıcıya veya kuyruğa gidince, Azure portalı şu anda hesap erişim a
 
 Bu bölümdeki örnekler bir kapsayıcıya ve bloblarına erişirken gösterir, ancak bir kuyruğa ve iletilerine erişirken veya kuyrukları listelerken portal aynı iletiyi görüntüler.
 
-### <a name="account-access-key"></a>Hesap erişim anahtarı
+### <a name="authenticate-with-the-account-access-key"></a>Hesap erişim anahtarıyla kimlik doğrulaması
 
 Hesap erişim anahtarını kullanarak kimlik doğrulaması yapacaksanız, portalda kimlik doğrulama yöntemi olarak belirtilen **Access Key'i** görürsünüz:
 
@@ -86,7 +88,7 @@ Azure AD hesabını kullanmaya geçmek için resimde vurgulanan bağlantıyı t�
 
 Azure AD hesabınızda bunları görüntüleme izni yoksa listede leke görünmediğini unutmayın. Kimlik doğrulama için erişim anahtarını yeniden kullanmak için **anahtar bağlantısına erişmek** için Switch'e tıklayın.
 
-### <a name="azure-ad-account"></a>Azure AD hesabı
+### <a name="authenticate-with-your-azure-ad-account"></a>Azure REKLAM hesabınızla kimlik doğrulaması
 
 Azure AD hesabınızı kullanarak kimlik doğrulaması yapacaksanız, portalda kimlik doğrulama yöntemi olarak belirtilen **Azure AD Kullanıcı Hesabı'nı** görürsünüz:
 
@@ -97,6 +99,19 @@ Hesap erişim anahtarını kullanmaya geçmek için resimde vurgulanan bağlant�
 ![Hesap anahtarına erişiminiz yoksa gösterilen hata](media/storage-access-blobs-queues-portal/auth-error-access-key.png)
 
 Hesap anahtarlarına erişiminiz yoksa listede lekelerin görünmediğini unutmayın. Azure AD hesabınızı yeniden kimlik doğrulaması için kullanmak için **Azure AD Kullanıcı Hesabına Geçiş** bağlantısını tıklatın.
+
+## <a name="specify-how-to-authorize-a-blob-upload-operation"></a>Blob yükleme işlemine nasıl yetki verilenleri belirtin
+
+Azure portalından bir blob yüklediğinizde, bu işlemi hesap erişim anahtarıyla mı yoksa Azure AD kimlik bilgilerinizle mi doğrulayıp yetkilendirmeyebileceğinizi belirtebilirsiniz. Varsayılan olarak, portal geçerli kimlik doğrulama yöntemini belirleyin'de gösterildiği gibi geçerli [kimlik doğrulama yöntemini](#determine-the-current-authentication-method)kullanır.
+
+Blob yükleme işlemine nasıl yetki verilebildiğini belirtmek için aşağıdaki adımları izleyin:
+
+1. Azure portalında, bir blob yüklemek istediğiniz kapsayıcıya gidin.
+1. Ardından **Yükle** düğmesini seçin.
+1. Blob için gelişmiş özellikleri görüntülemek için **Gelişmiş** bölümü genişletin.
+1. Kimlik **Doğrulama Türü** alanında, aşağıdaki resimde gösterildiği gibi Azure AD hesabınızı kullanarak mı yoksa hesap erişim anahtarıyla mı yükleme işlemini yetkilendirmek istediğinizi belirtin:
+
+    :::image type="content" source="media/storage-access-blobs-queues-portal/auth-blob-upload.png" alt-text="Blob yüklemede yetkilendirme yöntemini nasıl değiştireceğini gösteren ekran görüntüsü":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

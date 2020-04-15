@@ -1,14 +1,14 @@
 ---
 title: Dinamik planlar oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler ve güvenli ve dinamik planlar oluşturmak için bunları nasıl kullanacağınız hakkında bilgi edinin.
-ms.date: 03/12/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36735d71b746301819e5079aba1697b55fe5e183
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677576"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383606"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -28,8 +28,7 @@ REST API aracılığıyla, parametreler planın kendisi üzerinde oluşturulabil
 
 ### <a name="using-securestring-and-secureobject-parameters"></a>secureString ve secureObject parametrelerini kullanma
 
-Kaynak Yöneticisi _şablonu yapı,_ **secureString** ve **secureObject** türlerinin parametrelerini desteklerken, Azure Planları her birinin bir Azure Anahtar Kasası ile bağlanmasını gerektirir.
-Bu güvenlik önlemi, Blueprint ile birlikte sırları depolamanın güvensiz bir şekilde uygulanmasını önler ve güvenli desenlerin istihdamını teşvik eder. Azure Blueprints, bir Kaynak Yöneticisi _şablonu ekskayında_güvenli parametrenin eklenmesini algılayarak bu güvenlik önlemini destekler. Hizmet daha sonra algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında ister:
+Kaynak Yöneticisi _şablonu yapı,_ **secureString** ve **secureObject** türlerinin parametrelerini desteklerken, Azure Planları her birinin bir Azure Anahtar Kasası ile bağlanmasını gerektirir. Bu güvenlik önlemi, Blueprint ile birlikte sırları depolamanın güvensiz bir şekilde uygulanmasını önler ve güvenli desenlerin istihdamını teşvik eder. Azure Blueprints, bir Kaynak Yöneticisi _şablonu ekskayında_güvenli parametrenin eklenmesini algılayarak bu güvenlik önlemini destekler. Hizmet daha sonra algılanan güvenli parametre başına aşağıdaki Key Vault özellikleri için atama sırasında ister:
 
 - Anahtar Vault kaynak kimliği
 - Anahtar Vault gizli adı
@@ -62,11 +61,11 @@ Planın tanımında tanımlanan bir parametre **değeristatik parametre**olarak 
 
 1. Parametre seçenekleri olan plana eklenen yapılar, **Parametreler** sütununda **doldurulan Y parametrelerinin X'ini** görüntüler. Yapı parametrelerini yeniden diziletmek için yapı satırına tıklayın.
 
-   ![Plan tanımındaki plan parametreleri](../media/parameters/parameter-column.png)
+   :::image type="content" source="../media/parameters/parameter-column.png" alt-text="Plan tanımındaki plan parametreleri" border="false":::
 
 1. **Yapıyı Edit** sayfası, tıklanan yapıya uygun değer seçeneklerini görüntüler. Yapıdaki her parametrenin bir başlığı, değer kutusu ve onay kutusu vardır. Kutuyu statik bir **parametre**yapmak için işaretlenmemiş olarak ayarlayın. Aşağıdaki örnekte, yalnızca _Konum,_ işaretlenmeden ve _Kaynak Grubu Adı_ denetlenirken statik bir **parametredir.**
 
-   ![Bir plan artifakı üzerindeki statik parametreleri planla](../media/parameters/static-parameter.png)
+   :::image type="content" source="../media/parameters/static-parameter.png" alt-text="Bir plan artifakı üzerindeki statik parametreleri planla" border="false":::
 
 #### <a name="setting-static-parameters-from-rest-api"></a>REST API'den statik parametreleri ayarlama
 
@@ -177,7 +176,7 @@ Statik parametrenin tersi dinamik bir **parametredir.** Bu parametre planda tan�
 
 1. Plan **Atama** sayfasında, **Artefakt parametreleri** bölümünü bulun. En az bir **dinamik parametreye** sahip her yapı, yapıyı ve yapılandırma seçeneklerini görüntüler. Planı atamadan önce parametrelere gerekli değerleri sağlayın. Aşağıdaki örnekte, _Ad_ plan atamasını tamamlamak için tanımlanması gereken dinamik bir **parametredir.**
 
-   ![Plan ataması sırasında plan dinamik parametresi](../media/parameters/dynamic-parameter.png)
+   :::image type="content" source="../media/parameters/dynamic-parameter.png" alt-text="Plan ataması sırasında plan dinamik parametresi" border="false":::
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>REST API'den dinamik parametrelerin ayarlanması
 

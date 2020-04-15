@@ -2,13 +2,13 @@
 title: 'Quickstart: LUIS portalında yeni bir uygulama oluşturun'
 description: Bu hızlı başlangıçta, bir uygulamanın temel bölümlerini, niyetlerini ve varlıklarını ve luis portalında örnek bir sözle test emebilirsiniz.
 ms.topic: quickstart
-ms.date: 03/24/2020
-ms.openlocfilehash: f0c8f0c77f832e049dfc494f82e90edb61a8cb2a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/14/2020
+ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244623"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382577"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Quickstart: LUIS portalında yeni bir uygulama oluşturun
 
@@ -88,11 +88,10 @@ Aşağıdaki 15 örnek söyleyiyi niyete `FindForm` ekleyin.
 Tasarım olarak, bu örnek ifadeler aşağıdaki şekillerde değişir:
 
 * söyleyiş uzunluğu
-* noktalama işareti
+* [Noktalama](luis-reference-application-settings.md#punctuation-normalization)
 * kelime seçimi
 * verb tense (is, was, will be)
 * sözcük sırası
-
 
 
 ## <a name="create-a-regular-expression-entity"></a>Düzenli bir ifade varlığı oluşturma

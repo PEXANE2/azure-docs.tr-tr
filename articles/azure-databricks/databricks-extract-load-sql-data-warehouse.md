@@ -1,6 +1,6 @@
 ---
 title: Öğretici - Azure Databricks'i kullanarak ETL işlemlerini gerçekleştirin
-description: Bu eğitimde, Veri Gölü Depolama Gen2'den Azure Veri Tuğlaları'na nasıl veri ayıklanın, verileri dönüştürecek ve verileri Azure SQL Veri Ambarı'na yükleyin.
+description: Bu eğitimde, Veri Gölü Depolama Gen2'den Azure Databricks'e nasıl veri ayıklanın, verileri dönüştürecek ve verileri Azure Synapse Analytics'e nasıl yükleyin öğrenin.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,22 +8,22 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: 8819b79a105b7a654a34e47c5ba9b3d351a1d926
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239407"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382732"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Öğretici: Azure Databricks'i kullanarak verileri ayıklayın, dönüştürün ve yükleyin
 
-Bu eğitimde, Azure Databricks'i kullanarak bir ETL (verileri ayıklama, dönüştürme ve yükleme) işlemi gerçekleştirebilirsiniz. Azure Veri Gölü Depolama Gen2'den Azure Veri Tuğlaları'na veri ayıklar, Azure Veri Tuğlaları'ndaki verilerde dönüşümler çalıştırır ve dönüştürülmüş verileri Azure SQL Veri Ambarı'na yüklersiniz.
+Bu eğitimde, Azure Databricks'i kullanarak bir ETL (verileri ayıklama, dönüştürme ve yükleme) işlemi gerçekleştirebilirsiniz. Azure Veri Gölü Depolama Gen2'den Azure Veri Tuğlaları'na veri ayıklar, Azure Databricks'teki verilerde dönüşümler çalıştırır ve dönüştürülmüş verileri Azure Synapse Analytics'e yüklersiniz.
 
-Bu öğreticideki adımlarda, verileri Azure Databricks'e aktarmak üzere Azure Databricks için SQL Veri Ambarı bağlayıcısı kullanılır. Bu bağlayıcı da, Azure Databricks kümesiyle Azure SQL Veri Ambarı arasında aktarılan veriler için geçici depolama alanı olarak Azure Blob Depolama'yı kullanır.
+Bu öğreticideki adımlar, verileri Azure Databricks'e aktarmak için Azure Databricks için Azure Synapse bağlayıcısını kullanır. Bu bağlayıcı, bir Azure Veri Tuğlası kümesi ile Azure Sinaps'ı arasında aktarılan veriler için geçici depolama alanı olarak Azure Blob Depolama'yı kullanır.
 
 Aşağıdaki şekilde uygulama akışı gösterilmektedir:
 
-![Veri Gölü Deposu ve SQL Veri Ambarı ile Azure Veri Tuğlaları](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Veri Gölü Deposu ve SQL Veri Ambarı ile Azure Veri Tuğlaları")
+![Veri Gölü Deposu ve Azure Synapse ile Azure Veri Tuğlaları](./media/databricks-extract-load-sql-data-warehouse/databricks-extract-transform-load-sql-datawarehouse.png "Veri Gölü Deposu ve Azure Synapse ile Azure Veri Tuğlaları")
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -35,7 +35,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Bir hizmet ilkesi oluşturun.
 > * Azure Veri Gölü Depolama Gen2 hesabından veri ayıklayın.
 > * Azure Databricks'te verileri dönüştürün.
-> * Verileri Azure SQL Veri Ambarı'na yükleyin.
+> * Verileri Azure Synapse'ye yükleyin.
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
@@ -47,9 +47,9 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 Bu öğreticiye başlamadan önce bu görevleri tamamlayın:
 
-* Bir Azure SQL veri ambarı oluşturun, sunucu düzeyinde bir güvenlik duvarı kuralı oluşturun ve sunucu yöneticisi olarak sunucuya bağlanın. Bkz. [Hızlı Başlangıç: Azure portalında bir Azure SQL veri ambarı oluşturun ve sorgula.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
+* Azure Synapse oluşturun, sunucu düzeyinde bir güvenlik duvarı kuralı oluşturun ve sunucu yöneticisi olarak sunucuya bağlanın. Bkz. [Hızlı Başlangıç: Azure portalını kullanarak bir Synapse SQL havuzu oluşturun ve sorgulayın.](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)
 
-* Azure SQL veri ambarı için bir ana anahtar oluşturun. Bkz. [Veritabanı ana anahtarı oluştur.](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)
+* Azure Sinapsiçin bir ana anahtar oluşturun. Bkz. [Veritabanı ana anahtarı oluştur.](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)
 
 * Azure Blob depolama hesabı ve bu hesabın içinde bir kapsayıcı oluşturun. Ayrıca, depolama hesabına erişmek için erişim anahtarını alın. [Bkz. Hızlı Başlangıç: Azure portalı ile yükleme, indirme ve liste lekeleri.](../storage/blobs/storage-quickstart-blobs-portal.md)
 
@@ -63,9 +63,9 @@ Bu öğreticiye başlamadan önce bu görevleri tamamlayın:
 
       Hizmet ilkesini belirli bir dosya veya dizinle ilişkilendirmek için bir erişim denetim listesi (ACL) kullanmayı tercih ederseniz, [Azure Veri Gölü Depolama Gen2'de Access denetimine](../storage/blobs/data-lake-storage-access-control.md)başvurun.
 
-   * Makalenin bölümünde [oturum açmak için Al değerleri](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) adımlarını gerçekleştirirken, kiracı kimliğini, uygulama kimliğini ve gizli değerleri bir metin dosyasına yapıştırın. Yakında bunlara ihtiyacın olacak.
+   * Makalenin bölümünde [oturum açmak için Al değerleri](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) adımlarını gerçekleştirirken, kiracı kimliğini, uygulama kimliğini ve gizli değerleri bir metin dosyasına yapıştırın.
 
-* [Azure portalında](https://portal.azure.com/)oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="gather-the-information-that-you-need"></a>İhtiyacınız olan bilgileri toplama
 
@@ -73,7 +73,7 @@ Bu öğreticinin ön koşulları nın tamamladığından emin olun.
 
    Başlamadan önce, şu bilgi öğelerine sahip olmalısınız:
 
-   :heavy_check_mark: Azure SQL Veri ambarınızın veritabanı adı, veritabanı sunucu adı, kullanıcı adı ve parolası.
+   :heavy_check_mark: Azure Synapse'nizin veritabanı adı, veritabanı sunucu adı, kullanıcı adı ve şifresi.
 
    :heavy_check_mark: Blob depolama hesabınızın erişim anahtarı.
 
@@ -316,11 +316,11 @@ Ham örnek veri **small_radio_json.json** dosyası bir radyo istasyonu için din
    +---------+----------+------+--------------------+-----------------+
    ```
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı’na veri yükleme
+## <a name="load-data-into-azure-synapse"></a>Verileri Azure Synapse'ye yükleme
 
-Bu bölümde, dönüştürülen verileri Azure SQL Veri Ambarı'na yüklersiniz. Bir veri çerçevesini doğrudan SQL veri ambarında tablo olarak yüklemek için Azure Veri Ambarı bağlayıcısını kullanırsınız.
+Bu bölümde, dönüştürülmüş verileri Azure Synapse'ye yüklersiniz. Bir veri çerçevesini doğrudan Synapse Spark havuzunda tablo olarak yüklemek için Azure Databricks için Azure Synapse bağlayıcısını kullanırsınız.
 
-Daha önce de belirtildiği gibi, SQL Veri Ambarı bağlayıcısı, Azure Veri Tuğlaları ve Azure SQL Veri Ambarı arasında veri yüklemek için geçici depolama alanı olarak Azure Blob depolamasını kullanır. Bu nedenle, depolama hesabına bağlanmak için kullanılacak yapılandırmayı sağlayarak başlarsınız. Bu makalenin ön koşullarının bir parçası olarak hesabı zaten oluşturmuş olmalısınız.
+Daha önce de belirtildiği gibi, Azure Synapse bağlayıcısı Azure Veri Tuğlaları ve Azure Synapse arasında veri yüklemek için geçici depolama alanı olarak Azure Blob depolamasını kullanır. Bu nedenle, depolama hesabına bağlanmak için kullanılacak yapılandırmayı sağlayarak başlarsınız. Bu makalenin ön koşullarının bir parçası olarak hesabı zaten oluşturmuş olmalısınız.
 
 1. Azure Databricks'ten Azure Depolama hesabına erişmek için yapılandırmayı sağlayın.
 
@@ -330,7 +330,7 @@ Daha önce de belirtildiği gibi, SQL Veri Ambarı bağlayıcısı, Azure Veri T
    val blobAccessKey =  "<access-key>"
    ```
 
-2. Azure Veri Tuğlaları ve Azure SQL Veri Ambarı arasında veri taşınırken kullanılacak geçici bir klasör belirtin.
+2. Verileri Azure Databricks ve Azure Synapse arasında hareket ettirirken kullanılacak geçici bir klasör belirtin.
 
    ```scala
    val tempDir = "wasbs://" + blobContainer + "@" + blobStorage +"/tempDirs"
@@ -343,10 +343,10 @@ Daha önce de belirtildiği gibi, SQL Veri Ambarı bağlayıcısı, Azure Veri T
    sc.hadoopConfiguration.set(acntInfo, blobAccessKey)
    ```
 
-4. Azure SQL Veri Ambarı örneğine bağlanmak için değerleri sağlayın. Ön koşul olarak bir SQL veri ambarı oluşturmuş olmalısınız. **dwServer**için tam nitelikli sunucu adını kullanın. Örneğin, `<servername>.database.windows.net`.
+4. Azure Synapse örneğine bağlanmak için değerleri sağlayın. Bir ön koşul olarak bir Azure Synapse Analytics hizmeti oluşturmuş olmalısınız. **dwServer**için tam nitelikli sunucu adını kullanın. Örneğin, `<servername>.database.windows.net`.
 
    ```scala
-   //SQL Data Warehouse related settings
+   //Azure Synapse related settings
    val dwDatabase = "<database-name>"
    val dwServer = "<database-server-name>"
    val dwUser = "<user-name>"
@@ -357,7 +357,7 @@ Daha önce de belirtildiği gibi, SQL Veri Ambarı bağlayıcısı, Azure Veri T
    val sqlDwUrlSmall = "jdbc:sqlserver://" + dwServer + ":" + dwJdbcPort + ";database=" + dwDatabase + ";user=" + dwUser+";password=" + dwPass
    ```
 
-5. Dönüştürülmüş veri çerçevesini yüklemek için aşağıdaki snippet'i çalıştırın, **sütunlar df olarak yeniden adlandırıldı,** bir SQL veri ambarında tablo olarak. Bu kod parçacığı SQL veritabanında **SampleTable** adlı bir tablo oluşturur.
+5. Azure Sinaps'ta tablo olarak **ColumnsDF olarak yeniden adlandırılan**dönüştürülmüş veri çerçevesini yüklemek için aşağıdaki snippet'i çalıştırın. Bu kod parçacığı SQL veritabanında **SampleTable** adlı bir tablo oluşturur.
 
    ```scala
    spark.conf.set(
@@ -368,9 +368,9 @@ Daha önce de belirtildiği gibi, SQL Veri Ambarı bağlayıcısı, Azure Veri T
    ```
 
    > [!NOTE]
-   > Bu örnek, `forward_spark_azure_storage_credentials` SQL Veri Ambarı'nın bir Erişim Anahtarı kullanarak blob depolamadan verilere erişmesine neden olan bayrağı kullanır. Bu, desteklenen tek kimlik doğrulama yöntemidir.
+   > Bu örnek, `forward_spark_azure_storage_credentials` Azure Synapse'nin bir Erişim Anahtarı kullanarak blob depolamadan verilere erişmesine neden olan bayrağı kullanır. Bu, desteklenen tek kimlik doğrulama yöntemidir.
    >
-   > Azure Blob Depolama'nız belirli sanal ağlarla sınırlıysa, SQL Veri Ambarı [Erişim Anahtarları yerine Yönetilen Hizmet Kimliği](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)gerektirir. Bu hata "Bu istek bu işlemi gerçekleştirmek için yetkili değildir neden olur."
+   > Azure Blob Depolama'nız belirli sanal ağlarla sınırlıysa, Azure Synapse [Erişim Anahtarları yerine Yönetilen Hizmet Kimliği](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)gerektirir. Bu hata "Bu istek bu işlemi gerçekleştirmek için yetkili değildir neden olur."
 
 6. SQL veritabanına bağlanın ve **SampleTable**adında bir veritabanı gördüğünüzden doğrulayın.
 
@@ -398,7 +398,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Azure Databricks’te not defteri oluşturma
 > * Veri Gölü Depolama Gen2 hesabından veri ayıklama
 > * Azure Databricks'te verileri dönüştürme
-> * Azure SQL Veri Ambarı’na veri yükleme
+> * Verileri Azure Synapse'ye yükleme
 
 Azure Event Hubs kullanarak Azure Databricks'e gerçek zamanlı veri akışı yapmayı öğrenmek için sonraki öğreticiye ilerleyin.
 

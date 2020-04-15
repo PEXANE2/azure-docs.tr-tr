@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak SSL sonlandırma
+title: PowerShell kullanarak TLS sonlandırma
 titleSuffix: Azure Application Gateway
-description: Azure PowerShell kullanarak uygulama ağ geçidi oluşturma ve SSL sonlandırma sertifikası eklemeyi öğrenin.
+description: Azure PowerShell'i kullanarak bir uygulama ağ geçidi oluşturmayı ve TLS sonlandırma sertifikası eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bd625982ebd051b92df2f66515fd5b0d0612303
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075072"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311931"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Azure PowerShell kullanarak SSL sonlandırma ile bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-tls-termination-using-azure-powershell"></a>Azure PowerShell'i kullanarak TLS sonlandırma ile bir uygulama ağ geçidi oluşturma
 
-Azure PowerShell’i arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [SSL sonlandırma](ssl-overview.md) sertifikası bulunan bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir. 
+Azure PowerShell'i, arka uç sunucuları için [sanal makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan [TLS/SSL sonlandırma](ssl-overview.md) sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir. 
 
 Bu makalede şunları öğreneceksiniz:
 

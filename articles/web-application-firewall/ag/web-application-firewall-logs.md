@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 1b807908c9fb54ecf15de6d44a04760659196a31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb1af86e04c0b4ba0b59398161fa111fd8065042
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75980965"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310061"
 ---
 # <a name="diagnostic-logs-for-azure-web-application-firewall"></a>Azure Web Uygulaması Güvenlik Duvarı için tanılama günlükleri
 
@@ -101,7 +101,7 @@ Erişim günlüğü, yalnızca önceki adımlarda açıklandığı gibi, her Uyg
 |alınan Baytlar     | Alınan paketin boyutu, baytlar halinde.        |
 |gönderen Bayt| Gönderilen paketin boyutu, baytlar halinde.|
 |zaman Alınmıştır| Bir isteğin işlenmesi ve yanıtın gönderilmesi için gereken süre (milisaniye cinsinden). Bu, Uygulama Ağ Geçidi'nin bir HTTP isteğinin ilk baytını aldığı andan yanıt gönderme işleminin bittiği zamana kadar olan aralık olarak hesaplanır. Zaman Alınan alanın genellikle istek ve yanıt paketlerinin ağ üzerinden seyahat ettiği zamanı içerdiğini unutmayın. |
-|sslEtkin| Arka uç havuzlarına iletişimin SSL kullanıp kullanmadığı. Geçerli değerler avesi ve kapalıdır.|
+|sslEtkin| Arka uç havuzlarına iletişimin TLS/SSL kullanıp kullanmadığı. Geçerli değerler avesi ve kapalıdır.|
 |konak| İsteğin arka uç sunucusuna gönderildiği ana bilgisayar adı. Arka uç ana bilgisayar adı geçersiz kılınıyorsa, bu ad bunu yansıtır.|
 |originalHost| İsteğin istemciden Uygulama Ağ Geçidi tarafından alındığı ana bilgisayar adı.|
 ```json
@@ -144,9 +144,9 @@ Uygulama Ağ Geçidi ve WAF v2 için günlükleri biraz daha fazla bilgi göster
 |alınan Baytlar     | Alınan paketin boyutu, baytlar halinde.        |
 |gönderen Bayt| Gönderilen paketin boyutu, baytlar halinde.|
 |zaman Alınmıştır| Bir isteğin işlenmesi ve yanıtın gönderilmesi için gereken süre (milisaniye cinsinden). Bu, Uygulama Ağ Geçidi'nin bir HTTP isteğinin ilk baytını aldığı andan yanıt gönderme işleminin bittiği zamana kadar olan aralık olarak hesaplanır. Zaman Alınan alanın genellikle istek ve yanıt paketlerinin ağ üzerinden seyahat ettiği zamanı içerdiğini unutmayın. |
-|sslEtkin| Arka uç havuzlarına iletişimin SSL kullanıp kullanmadığı. Geçerli değerler avesi ve kapalıdır.|
-|sslŞifre| SSL iletişimi için kullanılan şifreleme paketi (SSL etkinse).|
-|sslProtokol| SSL protokolü kullanılıyor (SSL etkinse).|
+|sslEtkin| Arka uç havuzlarına iletişim olup olmadığını TLS kullanılır. Geçerli değerler avesi ve kapalıdır.|
+|sslŞifre| TLS iletişimi için kullanılan şifreleme paketi (TLS etkinse).|
+|sslProtokol| TLS protokolü kullanılıyor (TLS etkinse).|
 |serverRouted| Uygulama ağ geçidinin isteği yollayan arka uç sunucusu.|
 |Serverstatus| Arka uç sunucusunun HTTP durum kodu.|
 |serverResponseLatency| Yanıtın arka uç sunucusundan gecikmesi.|

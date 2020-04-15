@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 7e05458214732a1835dd73b85dad871683ef5bbe
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: acfca3f41cc8bf69572843c3f035a67e8df9e0fe
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743127"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313604"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse Analytics sürüm notları
 
@@ -40,18 +40,13 @@ SQL havuzunuza hangi sürümün uygulandığını doğrulamak için tanımlanan 
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
-## <a name="march-2020"></a>Mart 2020
-
-| Hizmet iyileştirmeleri                                         | Ayrıntılar                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) - SQL Server Veri Araçları (SSDT)** | Bu sürüm aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> - Maddeleştirilmiş Görünüm (MV) tarafından başvurulan tablonun değiştirilmesinin, MV'ler için desteklenmeyen Alter View deyimleri oluşturulmasına neden olduğu bir sorunu çözümledi<br/><br/> - Satır Düzeyi Güvenlik nesneleri veritabanında veya projede bulunduğunda Şema Karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyinde güvenlik nesneleri şu anda SSDT için desteklenmez.  <br/><br/> - SQL Server Object Explorer zaman dışarı eşiği veritabanında çok sayıda nesne listelerken zaman ayarı önlemek için artırıldı<br/><br/> - SQL Server Object Explorer'ın, nesne gezginini doldururken kararsızlığı azaltmak ve performansı artırmak için veritabanı nesnelerinin listesini alma şekli optimize edilebiyi |
-
-## <a name="february-2020"></a>Şubat 2020
+## <a name="april-2020"></a>Nisan 2020
 
 | Hizmet iyileştirmeleri | Ayrıntılar |
 | --- | --- |
 |**Veritabanı uyumluluk düzeyi (Önizleme)**| Bu sürümle, kullanıcılar artık Synact-SQL altyapısının belirli bir sürümünün Transact-SQL dilini ve sorgu işleme davranışlarını almak için bir veritabanının uyumluluk düzeyini ayarlayabilir. Daha fazla bilgi için [bkz. sys.database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) ve [Veritabanı Kapsamı Nı Değiştir Yapılandırması.](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
 |**Sp_describe_undeclared_parameters**| Kullanıcıların bir Transact-SQL toplu iş aktüel olmayan parametreler hakkında meta verileri görmenize izin verin. Daha fazla bilgi için [sp_describe_undeclared_parameters.](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)|
+|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) - SQL Server Veri Araçları (SSDT)** | Bu sürüm, SSDT için aşağıdaki geliştirmeleri ve düzeltmeleri içerir: </br> </br> - Maddeleştirilmiş Görünüm (MV) tarafından başvurulan tablonun değiştirilmesinin, MV'ler için desteklenmeyen Alter View deyimleri oluşturulmasına neden olduğu bir sorunu çözümledi<br/><br/> - Satır Düzeyi Güvenlik nesneleri veritabanında veya projede bulunduğunda Şema Karşılaştırma işleminin başarısız olmamasını sağlamak için bir değişiklik uygulandı. Satır düzeyinde güvenlik nesneleri şu anda SSDT için desteklenmez.  <br/><br/> - SQL Server Object Explorer zaman dışarı eşiği veritabanında çok sayıda nesne listelerken zaman ayarı önlemek için artırıldı<br/><br/> - SQL Server Object Explorer'ın, nesne gezginini doldururken kararsızlığı azaltmak ve performansı artırmak için veritabanı nesnelerinin listesini alma şekli optimize edilebiyi |
 
 ## <a name="january-2020"></a>Ocak 2020
 

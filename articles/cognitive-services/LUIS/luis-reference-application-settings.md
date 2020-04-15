@@ -1,26 +1,20 @@
 ---
 title: Uygulama ayarları - LUIS
-titleSuffix: Azure Cognitive Services
 description: Azure Bilişsel Hizmetler dil anlama uygulamaları nın uygulama ayarları uygulama ve portalda depolanır.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/12/2019
-ms.author: diberry
-ms.openlocfilehash: d1ead09f6248a6ad14646371aa70b42b57cf8e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78270815"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382196"
 ---
 # <a name="application-settings"></a>Uygulama ayarları
 
 Bu uygulama ayarları [dışa aktarılan](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) uygulamada depolanır ve REST API'leri ile [güncelleştirilir.](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) Uygulama sürüm ayarlarınızı değiştirmek, uygulama eğitim durumunuzu eğitimsiz olarak sıfırlar.
+
+Aksama ve noktalama [kavramları](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) öğrenin.
 
 |Ayar|Varsayılan değer|Notlar|
 |--|--|--|
@@ -183,3 +177,7 @@ Aşağıdaki noktalama işaretleri ile `NormalizePunctuation` kaldırılır doğ
 |`}`|
 |`+`|
 |`¡`|
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* Aksama ve noktalama [kavramları](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) öğrenin.

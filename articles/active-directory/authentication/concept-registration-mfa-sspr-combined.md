@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cb5aca128679b21072a2a3daa503dc43a8e2885
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78942886"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309926"
 ---
 # <a name="combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydı (önizleme)
 
@@ -96,7 +96,7 @@ Aşağıda, kullanıcıların güvenlik bilgilerini kaydetmeleri veya yenilemele
 
 Kayıt zorlandığında, kullanıcılara hem Çok Faktörlü Kimlik Doğrulama hem de SSPR ilkeleriyle uyumlu olması gereken en az yöntem sayısı gösterilir, en yüksekten en az güvenliye kadar.
 
-Örnek:
+Örneğin:
 
 - SSPR için bir kullanıcı etkinleştirilir. SSPR ilkesi sıfırlamak için iki yöntem gerekti ve mobil uygulama kodu, e-posta ve telefon etkinleştirildi.
    - Bu kullanıcının iki yöntem kaydetmesi gerekir.
@@ -139,7 +139,7 @@ Daha önce Çok Faktörlü Kimlik Doğrulama için kullanılabilecek en az bir y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorlama](howto-mfa-userdevicesettings.md#manage-authentication-methods)
+[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorlama](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
 
 [Kiracınızda birleşik kaydı etkinleştirme](howto-registration-mfa-sspr-combined.md)
 

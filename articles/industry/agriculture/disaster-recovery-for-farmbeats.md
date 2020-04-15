@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: fbda28ce588aad5f6bc0d89de60069c4220fa523
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266181"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313100"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats için felaket kurtarma
 
@@ -34,7 +34,7 @@ FarmBeats, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights*
 
 ## <a name="restore-service-from-online-backup"></a>Çevrimiçi yedeklemeden hizmeti geri yükleme
 
-FarmBeats dağıtımınız için yukarıda belirtilen veri depolarının her biri için saklanan failover'ı başlatabilir ve depolanan verileri kurtarabilirsiniz. Azure depolama ve Cosmos DB verilerini kurtardıktan sonra, Azure eşleştirilmiş bölgede başka bir FarmBeats dağıtımı oluşturun ve ardından yeni dağıtımı, geri yüklenen veri depolarından (örneğin Azure Depolama ve Cosmos DB) aşağıdaki adımları kullanarak verileri kullanacak şekilde yapılandırın:
+FarmBeats dağıtımınız için yukarıda belirtilen veri depolarının her biri için depolanan failover'ı başlatabilir ve depolanan verileri kurtarabilirsiniz. Azure depolama ve Cosmos DB verilerini kurtardıktan sonra, Azure eşleştirilmiş bölgede başka bir FarmBeats dağıtımı oluşturun ve ardından yeni dağıtımı, geri yüklenen veri depolarından (örneğin Azure Depolama ve Cosmos DB) aşağıdaki adımları kullanarak verileri kullanacak şekilde yapılandırın:
 
 1. [Cosmos DB’yi yapılandırma](#configure-cosmos-db)
 2. [Depolama Hesabını Yapılandırma](#configure-storage-account)
@@ -45,18 +45,18 @@ FarmBeats dağıtımınız için yukarıda belirtilen veri depolarının her bir
 Geri yüklenen Cosmos DB'nin erişim anahtarını kopyalayın ve yeni FarmBeats Datahub Key Vault'u güncelleyin.
 
 
-  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/keyvault-secrets.png)
+  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-secrets.png)
 
 > [!NOTE]
 > Geri yüklenen Cosmos DB'nin URL'sini kopyalayın ve yeni FarmBeats Datahub App Service Configuration'da güncelleyin. Artık yeni FarmBeats dağıtımında Cosmos DB hesabını silebilirsiniz.
 
-  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/northeu-ehub-api-configuration.png)
+  ![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/configuration.png)
 
 ### <a name="configure-storage-account"></a>Depolama Hesabını Yapılandırma
 
 Geri yüklenen depolama hesabının erişim anahtarını kopyalayın ve yeni FarmBeats Datahub Key Vault'ta güncelleyin.
 
-![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/keyvault-7udqm-secrets.png)
+![Olağanüstü Durum Kurtarma](./media/disaster-recovery-for-farmbeats/key-vault-7-secrets.png)
 
 >[!NOTE]
 > Yeni FarmBeats Toplu VM config dosyasında Depolama Hesabı adını güncelleştirin.

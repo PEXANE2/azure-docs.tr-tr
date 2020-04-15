@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544499"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312463"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Uygulama Ağ Geçidi hakkında sık sorulan sorular
 
@@ -28,11 +28,11 @@ Azure Application Gateway, hizmet olarak bir uygulama teslim denetleyicisi (ADC)
 
 ### <a name="what-features-does-application-gateway-support"></a>Application Gateway hangi özellikleri destekler?
 
-Uygulama Ağ Geçidi otomatik ölçekleme, SSL boşaltma ve uçtan uca SSL, bir web uygulama güvenlik duvarı (WAF), çerez tabanlı oturum afinite, URL yol tabanlı yönlendirme, çok siteli barındırma ve diğer özellikleri destekler. Desteklenen özelliklerin tam listesi için [bkz.](application-gateway-introduction.md)
+Uygulama Ağ Geçidi otomatik ölçekleme, TLS boşaltma ve uçtan uca TLS, bir web uygulama güvenlik duvarı (WAF), çerez tabanlı oturum afinite, URL yol tabanlı yönlendirme, çok siteli barındırma ve diğer özellikleri destekler. Desteklenen özelliklerin tam listesi için [bkz.](application-gateway-introduction.md)
 
 ### <a name="how-do-application-gateway-and-azure-load-balancer-differ"></a>Uygulama Ağ Geçidi ve Azure Yük Dengeleyicisi'nin farkı nedir?
 
-Uygulama Ağ Geçidi, yalnızca web trafiğiyle (HTTP, HTTPS, WebSocket ve HTTP/2) çalıştığı anlamına gelen bir katman 7 yük dengeleyicisidir. SSL sonlandırma, çerez tabanlı oturum yakınlığı ve yük dengeleme trafiği için yuvarlak robin gibi yetenekleri destekler. Yük Dengeleyici yük-4 katmanı (TCP veya UDP) de trafik dengeler.
+Uygulama Ağ Geçidi, yalnızca web trafiğiyle (HTTP, HTTPS, WebSocket ve HTTP/2) çalıştığı anlamına gelen bir katman 7 yük dengeleyicisidir. TLS sonlandırma, çerez tabanlı oturum yakınlığı ve yük dengeleme trafiği için yuvarlak robin gibi yetenekleri destekler. Yük Dengeleyici yük-4 katmanı (TCP veya UDP) de trafik dengeler.
 
 ### <a name="what-protocols-does-application-gateway-support"></a>Application Gateway hangi protokolleri destekler?
 
@@ -216,7 +216,7 @@ Hayır.
 
 Uygulama Ağ Geçidi v2 şu anda IPv6'yı desteklemiyor. Yalnızca IPv4 kullanarak çift yığın VNet'te çalışabilir, ancak ağ geçidi alt ağı yalnızca IPv4 olmalıdır. Uygulama Ağ Geçidi v1 çift yığın VNets desteklemez. 
 
-## <a name="configuration---ssl"></a>Yapılandırma - SSL
+## <a name="configuration---tls"></a>Yapılandırma - TLS
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway hangi sertifikaları destekler?
 
@@ -255,13 +255,13 @@ Application Gateway aşağıdaki şifre paketlerini destekler.
 - TLS_RSA_WITH_3DES_EDE_CBC_SHA
 - TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA
 
-SSL seçeneklerini özelleştirme hakkında daha fazla bilgi için Uygulama [Ağ Geçidi'ndeki SSL ilke sürümlerini ve şifreleme paketlerini yapılandırın.](application-gateway-configure-ssl-policy-powershell.md)
+TLS seçeneklerini özelleştirme hakkında daha fazla bilgi için, [Uygulama Ağ Geçidi'ndeki TLS ilke sürümlerini ve şifreleme paketlerini yapılandırın'](application-gateway-configure-ssl-policy-powershell.md)a bakın.
 
 ### <a name="does-application-gateway-support-reencryption-of-traffic-to-the-backend"></a>Uygulama Ağ Geçidi, trafiğin arka uçta yeniden şifrelenmesini destekliyor mu?
 
-Evet. Uygulama Ağ Geçidi, trafiği arka uca yeniden şifreleyen SSL boşaltma ve uçtan uca SSL'yi destekler.
+Evet. Uygulama Ağ Geçidi, trafiği arka uca yeniden şifreleyen TLS boşaltma ve uçtan uca TLS'yi destekler.
 
-### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>SSL protokol sürümlerini denetlemek için SSL ilkesini yapılandırabilir miyim?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>TLS protokol sürümlerini denetlemek için TLS ilkesini yapılandırabilir miyim?
 
 Evet. Uygulama Ağ Geçidi'ni TLS1.0, TLS1.1 ve TLS1.2'yi reddecek şekilde yapılandırabilirsiniz. Varsayılan olarak, SSL 2.0 ve 3.0 zaten devre dışı bırakılmıştır ve yapılandırılamaz.
 
@@ -278,9 +278,9 @@ Evet. Uygulama Ağ Geçidi'nde, [şifre paketlerini yapılandırabilirsiniz.](ap
 
 Uygulama Ağ Geçidi arka uç yönetimi için SHA256 kullanır.
 
-### <a name="how-many-ssl-certificates-does-application-gateway-support"></a>Application Gateway kaç SSL sertifikasını destekler?
+### <a name="how-many-tlsssl-certificates-does-application-gateway-support"></a>Application Gateway kaç TLS/SSL sertifikasını destekler?
 
-Uygulama Ağ Geçidi 100 SSL'ye kadar sertifikayı destekler.
+Application Gateway 100 TLS/SSL'ye kadar sertifikayı destekler.
 
 ### <a name="how-many-authentication-certificates-for-backend-reencryption-does-application-gateway-support"></a>Geri uç yeniden şifrelemesi için kaç kimlik doğrulama sertifikası Application Gateway destekletir?
 
@@ -288,7 +288,7 @@ Uygulama Ağ Geçidi en fazla 100 kimlik doğrulama sertifikasıdestekler.
 
 ### <a name="does-application-gateway-natively-integrate-with-azure-key-vault"></a>Uygulama Ağ Geçidi Azure Anahtar Kasası ile yerel olarak tümleşir mi?
 
-Evet, Application Gateway v2 SKU Key Vault'u destekler. Daha fazla bilgi için [Key Vault sertifikalarıile SSL sonlandırma'ya](key-vault-certs.md)bakın.
+Evet, Application Gateway v2 SKU Key Vault'u destekler. Daha fazla bilgi [için, Key Vault sertifikaları ile TLS sonlandırma](key-vault-certs.md)bakın.
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com ve .net siteleri için HTTPS dinleyicilerini nasıl yapılandırıyorum? 
 
@@ -338,7 +338,7 @@ Evet. Uygulama ağ geçidinin dağıtıldığı sanal ağda DDoS korumasını et
 
 ### <a name="what-is-an-ingress-controller"></a>Giriş Denetleyici nedir?
 
-Kubernetes kümeiçinde `deployment` `service` dahili olarak bir bölme grubu ortaya çıkarmak için kaynak oluşturulmasıve kaynak sağlar. Aynı hizmeti harici olarak ortaya [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) çıkarmak için, yük dengeleme, SSL sonlandırma ve ad tabanlı sanal barındırma sağlayan bir kaynak tanımlanır.
+Kubernetes kümeiçinde `deployment` `service` dahili olarak bir bölme grubu ortaya çıkarmak için kaynak oluşturulmasıve kaynak sağlar. Aynı hizmeti dışarıdan ortaya çıkarmak [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) için yük dengeleme, TLS sonlandırma ve ad tabanlı sanal barındırma sağlayan bir kaynak tanımlanır.
 Bu `Ingress` kaynağı karşılamak için, kaynaklardaki `Ingress` değişiklikleri dinleyen ve yük dengeleyici ilkelerini yapılandıran bir Giriş Denetleyicisi gereklidir.
 
 Uygulama Ağ Geçidi Giriş Denetleyicisi, [Azure Uygulama Ağ Geçidi'nin](https://azure.microsoft.com/services/application-gateway/) AKS kümesi olarak da bilinen Bir [Azure Kubernetes Hizmeti](https://azure.microsoft.com/services/kubernetes-service/) için giriş olarak kullanılmasına olanak tanır.

@@ -4,12 +4,12 @@ description: Azure kaynak günlükleri için desteklenen hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: de102c5dc4104aafc44b87b14aeea0b30cb7c083
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248820"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380514"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak Günlükleri için desteklenen hizmetler, şemalar ve kategoriler
 
@@ -54,8 +54,8 @@ Kaynak tanılama günlükleri için şema kaynak ve günlük kategorisine bağl�
 | Azure Batch |[Azure Toplu Günlüğe Kaydetme](../../batch/batch-diagnostics.md) |
 | MySQL için Azure Veritabanı | [MySQL tanı günlükleri için Azure Veritabanı](../../mysql/concepts-server-logs.md#diagnostic-logs) |
 | PostgreSQL için Azure Veritabanı | [PostgreSQL günlükleri için Azure Veritabanı](../../postgresql/concepts-server-logs.md#diagnostic-logs) |
-| Azure Veri Gezgini | [Azure Veri Gezgini günlükleri](../../data-explorer/using-diagnostic-logs.md) |
-| Bilişsel hizmetler | [Azure Bilişsel Hizmetler için Günlük](../../cognitive-services/diagnostic-logging.md) |
+| Azure Veri Gezgini | [Azure Veri Gezgini günlükleri](/azure/data-explorer/using-diagnostic-logs) |
+| Bilişsel Hizmetler | [Azure Bilişsel Hizmetler için Günlük](../../cognitive-services/diagnostic-logging.md) |
 | Container Kayıt Defteri | [Azure Kapsayıcı Kayıt Defteri için Günlüğe Kaydetme](../../container-registry/container-registry-diagnostics-audit-logs.md) |
 | Content Delivery Network | [CDN için Azure Günlükleri](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB Günlüğü](../../cosmos-db/logging.md) |
@@ -74,9 +74,9 @@ Kaynak tanılama günlükleri için şema kaynak ve günlük kategorisine bağl�
 | DDOS Koruması | [Azure DDoS Koruma Standardına Yönetme](../../virtual-network/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure'da Gömülü Power BI için Günlüğe Kaydetme](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Yedekleme için Veri Modeli](../../backup/backup-azure-reports-data-model.md)|
-| Search |[Arama Trafiği Analitiğini etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Arama |[Arama Trafiği Analitiğini etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Servis Veri Servisi günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
-| SQL Database | [Azure SQL Veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
+| SQL Veritabanı | [Azure SQL Veritabanı günlüğü](../../sql-database/sql-database-metrics-diag-logging.md) |
 | Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
 | Traffic Manager | [Trafik Yöneticisi Günlük şema](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | Sanal Ağlar | Şema mevcut değil. |

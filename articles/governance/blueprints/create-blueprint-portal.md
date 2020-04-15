@@ -3,12 +3,12 @@ title: 'Quickstart: Portalda bir plan oluşturma'
 description: Bu hızlı başlangıçta, Azure portalı üzerinden yapı tadilleri oluşturmak, tanımlamak ve dağıtmak için Azure Planları'nı kullanırsınız.
 ms.date: 03/25/2020
 ms.topic: quickstart
-ms.openlocfilehash: 457f4f9c53f45077129b291c904bc1580b6d965e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd50b1833f16d364a4494483fcccfee017bb982b
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282061"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381901"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Portalda bir plan tanımlayın ve atayın
 
@@ -28,7 +28,7 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    Veya, doğrudan bir plan oluşturmak için **Başlangıç** sayfasından **Oluştur'u** seçin.
 
-   ![Blueprint tanımları sayfasından bir plan oluşturma](./media/create-blueprint-portal/create-blueprint-button.png)
+   :::image type="content" source="./media/create-blueprint-portal/create-blueprint-button.png" alt-text="Blueprint tanımları sayfasından bir plan oluşturma" border="false":::
 
 1. Yerleşik planlar listesinin en üstündeki karttan **boş planla Başlat'ı** seçin.
 
@@ -48,10 +48,10 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. Bu yapıyı plana eklemek için **Ekle'yi** seçin.
 
-   ![Bir plan artifakı için rol ataması](./media/create-blueprint-portal/add-role-assignment.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment.png" alt-text="Bir plan artifakı için rol ataması" border="false":::
 
    > [!NOTE]
-   > Çoğu yapıt, parametreleri destekler. Plan oluşturma sırasında değer atanan bir parametre statik bir *parametredir.* Plan ataması sırasında parametre atanmışsa, dinamik bir *parametredir.* Daha fazla bilgi için bkz. [Şema parametreleri](./concepts/parameters.md).
+   > Çoğu yapıt, parametreleri destekler. Plan oluşturma sırasında değer atanan bir parametre statik bir _parametredir._ Plan ataması sırasında parametre atanmışsa, dinamik bir _parametredir._ Daha fazla bilgi için bkz. [Şema parametreleri](./concepts/parameters.md).
 
 1. Abonelik düzeyinde bir ilke ataması ekleyin:
 
@@ -144,11 +144,11 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. Bu yapıyı plana eklemek için **Ekle'yi** seçin.
 
-   ![Plan artifakı için Kaynak Yöneticisi şablonu](./media/create-blueprint-portal/add-resource-manager-template.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-resource-manager-template.png" alt-text="Plan artifakı için Kaynak Yöneticisi şablonu" border="false":::
 
 1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Her yapının **Parametreler** sütununda **doldurulan _y_ parametrelerinin _x'i_ ** olduğuna dikkat edin. Dinamik parametreler şemanın her atamasında ayarlanır.
 
-   ![Tamamlanmış plan tanımı](./media/create-blueprint-portal/completed-blueprint.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint.png" alt-text="Tamamlanmış plan tanımı" border="false":::
 
 1. Artık tüm planlanan yapılar eklendiğiniz için sayfanın altındaki **Taslak'ı Kaydet'i** seçin.
 
@@ -174,13 +174,13 @@ Uyumluluk için standart desen tanımlamanın ilk adımı kullanılabilir durumd
 
    1. Eklenecek bir kullanıcıyı, uygulamayı veya grubu arayın ve seçin. Yapıt, bu şemanın tüm atamalarında aynı statik parametreyi kullanır.
 
-   e. Bu yapıyı plana eklemek için **Ekle'yi** seçin.
+   1. Bu yapıyı plana eklemek için **Ekle'yi** seçin.
 
-   ![Plan artifakı için ikinci rol ataması](./media/create-blueprint-portal/add-role-assignment-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/add-role-assignment-2.png" alt-text="Plan artifakı için ikinci rol ataması" border="false":::
 
 1. Tamamladığınız şema aşağıdakine benzer olmalıdır. Yeni eklenen rol atamasının **doldurulan 1 parametreden 1'ini**gösterdiğine dikkat edin. Yani statik bir parametre.
 
-   ![Tamamlanan plan için ikinci tanım](./media/create-blueprint-portal/completed-blueprint-2.png)
+   :::image type="content" source="./media/create-blueprint-portal/completed-blueprint-2.png" alt-text="Tamamlanan plan için ikinci tanım" border="false":::
 
 1. Güncelleştirildikten sonra **Taslağı Kaydet'i** seçin.
 
@@ -219,10 +219,10 @@ Bir plan yayımlandıktan sonra, bir aboneye atanabilir. Oluşturduğunuz planı
 
    1. Sayfanın altındaki **Oluştur'u** seçin.
 
-   ![Plan atama aboneliği için abonelik oluşturma](./media/create-blueprint-portal/assignment-create-subscription.png)
+      :::image type="content" source="./media/create-blueprint-portal/assignment-create-subscription.png" alt-text="Plan atama aboneliği için abonelik oluşturma" border="false":::
 
-   > [!IMPORTANT]
-   > Yeni abonelik, **Oluştur'u**seçtikten hemen sonra oluşturulur.
+      > [!IMPORTANT]
+      > Yeni abonelik, **Oluştur'u**seçtikten hemen sonra oluşturulur.
 
    > [!NOTE]
    > Seçtiğiniz her abonelik için bir atama oluşturulur. Seçili aboneliklerin geri kalanında değişiklik zorlamadan daha sonraki bir zamanda tek bir abonelik atamada değişiklik yapabilirsiniz.
@@ -235,7 +235,7 @@ Bir plan yayımlandıktan sonra, bir aboneye atanabilir. Oluşturduğunuz planı
 
 1. **Atamayı Kilitle** seçeneği için varsayılan **Kilitleme** ayarını değiştirmeyin. Daha fazla bilgi için [Blueprints kaynak kilitleme'ye](./concepts/resource-locking.md)bakın.
 
-   ![Atama için kilitleme ve yönetilen kimlikler](./media/create-blueprint-portal/assignment-locking-mi.png)
+   :::image type="content" source="./media/create-blueprint-portal/assignment-locking-mi.png" alt-text="Atama için kilitleme ve yönetilen kimlikler" border="false":::
 
 1. **Yönetilen Kimlik**altında , **atanan Sistemin**varsayılan bırakın.
 
@@ -266,7 +266,7 @@ Plan bir aboneye atandığı için, dağıtımın ilerlemesini doğrulayın:
 
 1. Planlar listesinde, daha önce atadığınız planı sağ tıklatın ve **atama ayrıntılarını görüntüle'yi**seçin.
 
-   ![Atanan planlar sayfasından atama ayrıntılarını görüntüleme](./media/create-blueprint-portal/view-assignment-details.png)
+   :::image type="content" source="./media/create-blueprint-portal/view-assignment-details.png" alt-text="Atanan planlar sayfasından atama ayrıntılarını görüntüleme" border="false":::
 
 1. Blueprint **atama** sayfasında, tüm yapıtların başarıyla dağıtıldığını ve dağıtım sırasında hata olmadığını doğrulayın. Hatalar oluştuysa, neyin yanlış gittiğini belirlemek için adımlar için [Sorun Giderme planlarına](./troubleshoot/general.md) bakın.
 

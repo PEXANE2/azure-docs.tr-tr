@@ -1,23 +1,23 @@
 ---
 title: 'Öğretici: İnteraktif Sorgu ile ETL işlemleri - Azure HDInsight'
-description: Öğretici - Ham bir CSV veri setinden veri ayıklamayı, HDInsight'taki İnteraktif Sorgu'yu kullanarak nasıl dönüştüreceğinizi ve ardından Apache Sqoop'u kullanarak dönüştürülmüş verileri Azure SQL veritabanına nasıl yükleyeceğinizi öğrenin.
+description: Öğretici - Ham bir CSV veri kümesinden nasıl veri ayıklamayı öğrenin. HDInsight'ta İnteraktif Sorgu'u kullanarak dönüştürün. Ardından, Apache Sqoop'u kullanarak dönüştürülmüş verileri Azure SQL veritabanına yükleyin.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.date: 07/02/2019
-ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 07/02/2019
+ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73494154"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313738"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight'ta Etkileşimli Sorgu'u kullanarak verileri ayıklayın, dönüştürün ve yükleyin
 
-Bu eğitimde, herkese açık uçuş verilerinden oluşan ham bir CSV veri dosyasını alır, HDInsight küme depolamasına aktarır ve Azure HDInsight'ta Etkileşimli Sorgu'yu kullanarak verileri dönüştürür. Veriler dönüştürüldükten sonra, [Apache Sqoop'u](https://sqoop.apache.org/)kullanarak bu verileri Azure SQL veritabanına yüklersiniz.
+Bu öğreticide, herkese açık uçuş verilerinden oluşan ham bir CSV veri dosyasını indirebilirsiniz. HDInsight küme depolamasına aktarın ve Azure HDInsight'ta Etkileşimli Sorgu'yu kullanarak verileri dönüştürün. Veriler dönüştürüldükten sonra, [Apache Sqoop'u](https://sqoop.apache.org/)kullanarak bu verileri Azure SQL veritabanına yüklersiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -46,7 +46,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
    | --- | --- |
    | Yıl Filtresi |2019 |
    | Dönem Filtresi |Ocak |
-   | Alanlar |Yıl, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
+   | Alanlar |`Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay`. |
 
 3. **Download** (İndir) seçeneğini belirleyin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
@@ -60,7 +60,7 @@ Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yo
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Devam etmek için evet veya hayır girmeniz istenirse, komut istemine evet yazın ve enter tuşuna basın. Siz yazarken metin pencerede görünmez.
+    İstenirse devam etmek için evet veya hayır girin. Siz yazarken metin pencerede görünmez.
 
 2. Karşıya yükleme tamamlandıktan sonra SSH kullanarak kümeye bağlanın. HDInsight kümesinin adını `CLUSTERNAME` değiştirerek aşağıdaki komutu düzenleme. Ardından aşağıdaki komutu girin:
 
@@ -283,13 +283,13 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     GO
     ```
 
-    Tabloda verilerin listesini görürsünüz. Tablo, şehir adını ve bu şehre ait ortalama uçuş gecikme süresini içerir. 
+    Tabloda verilerin listesini görürsünüz. Tablo, şehir adını ve bu şehre ait ortalama uçuş gecikme süresini içerir.
 
     Tsql yardımcı programından çıkmak için `exit` yazın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Öğreticiyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, verileriniz Azure Storage’da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır.
+Öğreticiyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile verileriniz Azure Depolama'da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Kullanılmamış olsa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Küme ücretleri depolama ücretlerinden kat kat daha fazla olduğundan, kümeleri kullanılmadıklarında silmek ekonomik açıdan mantıklıdır.
 
 Bir kümeyi silmek için bkz: [Tarayıcınızı, PowerShell'i veya Azure CLI'yi kullanarak bir HDInsight kümesini sil.](../hdinsight-delete-cluster.md)
 
@@ -298,4 +298,4 @@ Bir kümeyi silmek için bkz: [Tarayıcınızı, PowerShell'i veya Azure CLI'yi 
 Bu eğitimde, ham bir CSV veri dosyasını aldınız, HDInsight küme depolamasına aktardın ve azure HDInsight'ta Etkileşimli Sorgu'yu kullanarak verileri dönüştürdün.  Apache Hive Warehouse Konektörü hakkında bilgi edinmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Apache Spark ve Apache Hive'ı Hive Depo Konektörüyle bütünleştirin](./apache-hive-warehouse-connector.md)
+> [Apache Spark ve Apache Hive'ı Hive Depo Konektörüyle bütünleştirin](./apache-hive-warehouse-connector.md)

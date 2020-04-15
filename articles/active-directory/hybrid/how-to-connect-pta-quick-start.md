@@ -1,5 +1,5 @@
 ---
-title: Azure AD Pass-through Kimlik Doğrulama - Hızlı başlangıç | Microsoft Dokümanlar
+title: Azure AD Geçiş Kimlik Doğrulaması - Quickstart | Microsoft Dokümanlar
 description: Bu makalede, Azure Etkin Dizin (Azure AD) Geçiş Kimlik Doğrulaması ile nasıl başlatılanın.
 services: active-directory
 keywords: Azure AD Connect Pass-through Authentication, yükleme Active Directory, Azure AD, SSO, Tek Oturum açma için gerekli bileşenler
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/15/2019
+ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc45033cdf1bdaa6d4ecd6ab58cc7f90ff9c1ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80331426"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312864"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory Pass-through Authentication: Hızlı başlangıç
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory Pass-through Authentication: Quickstart
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>Azure AD Geçiş Kimlik Doğrulaması dağıtma
 
@@ -66,9 +66,14 @@ Aşağıdaki ön koşulların yerinde olduğundan emin olun.
      | **8080** (isteğe bağlı) | Kimlik doğrulama aracıları, bağlantı noktası 443 kullanılamıyorsa, 8080 portu üzerinden her on dakikada bir durumlarını bildirir. Bu durum Azure AD portalında görüntülenir. Port 8080 kullanıcı oturum açma için _kullanılmaz._ |
      
      Güvenlik duvarınız kuralları oluşturan kullanıcılara göre zorluyorsa, bu bağlantı noktalarını ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafiğe açın.
-   - Güvenlik duvarınız veya proxy'niz DNS'nin beyaz listeye alınmasına izin veriyorsa, ** \*beyaz** liste bağlantıları .msappproxy.net ve ** \*.servicebus.windows.net.** Değilse, haftalık olarak güncelleştirilen [Azure veri merkezi IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişin.
+   - Güvenlik duvarınız veya proxy'niz DNS'nin beyaz listeye alınmasına izin veriyorsa, ** \*.msappproxy.net** ve ** \*.servicebus.windows.net**bağlantılarını ekleyin. Değilse, haftalık olarak güncelleştirilen [Azure veri merkezi IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişin.
    - Kimlik Doğrulama Aracılarınızın ilk kayıt için **login.windows.net** ve **login.microsoftonline.com** erişimi gerekir. Bu URL'ler için de güvenlik duvarınızı açın.
    - Sertifika doğrulama için aşağıdaki URL'lerin engelini kaldırın: **mscrl.microsoft.com:80,** **crl.microsoft.com:80,** **ocsp.msocsp.com:80**ve **\.www microsoft.com:80.** Bu URL'ler diğer Microsoft ürünleriyle sertifika doğrulama için kullanıldığından, bu URL'lerin engelini kaldırmış olabilirsiniz.
+
+### <a name="azure-government-cloud-prerequisite"></a>Azure Kamu bulutön koşulu
+Adım 2 ile Azure AD Connect üzerinden Geçiş Kimlik Doğrulaması etkinleştirmeden önce, Azure portalından PTA aracısının en son sürümünden indirin.  Aracınızın **x.x.xxx.x** veya daha sonraki sürümler olduğundan emin olmanız gerekir.  Aracınızın doğrulama için [yükseltme kimlik doğrulama aracılarına](how-to-connect-pta-upgrade-preview-authentication-agents.md) bakın
+
+Aracının en son sürümünden sonra, Azure AD Connect üzerinden Geçiş Kimlik Doğrulaması'nı yapılandırmak için aşağıdaki yönergeleri uygulayın.
 
 ## <a name="step-2-enable-the-feature"></a>Adım 2: Özelliği etkinleştirme
 
@@ -114,8 +119,8 @@ Geçiş Kimlik Doğrulaması'nı bir üretim ortamında dağıtmayı planlıyors
 Birden çok Geçiş Kimlik Doğrulama Aracısı yüklemek, Kimlik Doğrulama Aracıları arasında yüksek kullanılabilirlik sağlar, ancak belirleyici yük dengelemesini sağlar. Kiracınız için kaç Kimlik Doğrulama Aracısı'na ihtiyacınız olduğunu belirlemek için, kiracınızda görmeyi beklediğiniz en yüksek ve ortalama oturum açma istekleri yükünü göz önünde bulundurun. Bir ölçüt olarak, tek bir Kimlik Doğrulama Aracısı standart 4 çekirdekli işlemci, 16 GB RAM sunucusunda saniyede 300 ila 400 kimlik doğrulaması işleyebilir.
 
 Ağ trafiğini tahmin etmek için aşağıdaki boyutlandırma kılavuzunu kullanın:
-- Her istek (0,5K + 1K * num_of_agents) bayt taşıma yükü boyutuna sahiptir; örneğin, Azure AD'den Kimlik Doğrulama Aracısı'na gelen veriler. Burada "num_of_agents", kiracınızda kayıtlı Kimlik Doğrulama Aracılarının sayısını gösterir.
-- Her yanıtın yük boyutu 1K baytdır; örneğin, Kimlik Doğrulama Aracısı'ndan Azure AD'ye kadar olan veriler.
+- Her isteğin taşıma yükü boyutu (0,5K + 1K * num_of_agents) bayt, yani Azure AD'den Kimlik Doğrulama Aracısı'na veri. Burada "num_of_agents", kiracınızda kayıtlı Kimlik Doğrulama Aracılarının sayısını gösterir.
+- Her yanıtın yük boyutu 1K bayt, yani Kimlik Doğrulama Aracısı'ndan Azure AD'ye kadar olan verilerdir.
 
 Çoğu müşteri için, yüksek kullanılabilirlik ve kapasite için toplam üç Kimlik Doğrulama Aracısı yeterlidir. Oturum açma gecikmesini iyileştirmek için etki alanı denetleyicilerinize yakın Kimlik Doğrulama Aracıları yüklemeniz gerekir.
 

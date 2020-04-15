@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: anavin
-ms.openlocfilehash: 26d8ee34c735cab8f1033a9aad897ec0b1bed524
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0c2d9757f3652b0f83b8c36d89c855f7a92fdd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65952688"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383859"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Genel IP adresi ön eki oluşturma, değiştirme veya silme
 
@@ -41,7 +41,7 @@ Genel IP adresi önekleri bir ücrete sahiptir. Ayrıntılar için [fiyatlandır
 ## <a name="create-a-public-ip-address-prefix"></a>Genel IP adresi öneki oluşturma
 
 1. Portalın üst, sol köşesinde + **Kaynak oluştur'u**seçin.
-2. *Marketi Ara* kutusuna genel ip adresi *önekini* girin. Arama sonuçlarında **Genel IP adresi öneki** göründüğünde, bunu seçin.
+2. *Marketi Ara* kutusuna genel ip *önekini* girin. Arama sonuçlarında **Genel IP adresi öneki** göründüğünde, bunu seçin.
 3. **Genel IP adresi öneki**altında **Oluştur'u**seçin.
 4. **Genel IP adresi öneki oluştur**altında aşağıdaki ayarlar için değerleri girin veya seçin , ardından **Oluştur'u**seçin:
 

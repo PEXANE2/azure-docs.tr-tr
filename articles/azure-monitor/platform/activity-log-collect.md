@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/24/2020
-ms.openlocfilehash: 4265f6050b237cb40afeddfc228ade9be06be039
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.date: 04/14/2020
+ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396766"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382864"
 ---
 # <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>Azure Monitör'de Azure Etkinliği oturumlarını toplama ve analiz
 [Azure Etkinliği günlüğü,](platform-logs-overview.md) Azure'da gerçekleşen abonelik düzeyi olaylarına ilişkin bilgi sağlayan bir platform [günlüğüdür.](platform-logs-overview.md) Azure portalındaki Etkinlik günlüğünü görüntüleyebilmenize ekolarak, Azure Monitor'un ek özelliklerini etkinleştirmek için günlük analitiği çalışma alanına gönderecek şekilde yapılandırmanız gerekir. Bu makalede, bu yapılandırmanın nasıl gerçekleştirilişini ve Etkinlik günlüğünün Azure depolama ve etkinlik merkezlerine nasıl gönderilen açıklar.
@@ -25,7 +25,8 @@ Günlük Analizi çalışma alanında Etkinlik Günlüğü'nün toplanması aşa
 - Etkinlik günlük girişlerini 90 günden uzun süre saklayın.
 - Birden çok Azure aboneliğinden ve kiracıdan gelen günlük girişlerini birlikte analiz için tek bir konumda birleştirin.
 
-
+> [!IMPORTANT]
+> Kiracılar arasında günlükleri toplamak [Azure Deniz Feneri](/azure/lighthouse)gerektirir.
 
 ## <a name="collecting-activity-log"></a>Toplama Etkinlik günlüğü
 Etkinlik günlüğü, [Azure portalında görüntülenmek](activity-log-view.md)için otomatik olarak toplanır. Günlük Analizi çalışma alanında toplamak veya Azure depolama veya etkinlik hub'ları göndermek için bir [tanılama ayarı](diagnostic-settings.md)oluşturun. Bu, tüm platform günlükleri için tutarlı hale kaynak günlükleri tarafından kullanılan aynı [yöntemdir.](platform-logs-overview.md)  

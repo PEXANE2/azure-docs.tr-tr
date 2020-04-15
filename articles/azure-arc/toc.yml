@@ -18,7 +18,3 @@
       items:
         - name: Aracıyı yönetme
           href: ./servers/manage-agent.md
-- name: Başvuru
-  items:
-    - name: Azure Bağlı Makine Aracısı CLI arabirimi
-      href: ./servers/azcmagent-reference.md

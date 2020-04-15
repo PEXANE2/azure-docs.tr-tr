@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 4c265cb0cdc665ef52f4dc6e69440e83c22db449
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460986"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382756"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden kopyalama
 
-Bu makalede, Azure Veri Gezgini'ne veya [Azure Veri Gezgini'nden](../data-explorer/data-explorer-overview.md)veri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğine genel bir bakış sunan [kopya etkinliğine genel bakış](copy-activity-overview.md) makalesiüzerine kuruludur.
+Bu makalede, Azure Veri Gezgini'ne veya [Azure Veri Gezgini'nden](/azure/data-explorer/data-explorer-overview)veri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğine genel bir bakış sunan [kopya etkinliğine genel bakış](copy-activity-overview.md) makalesiüzerine kuruludur.
 
 >[!TIP]
->Azure Veri Fabrikası ve Genel Olarak Azure Veri Gezgini tümleştirmesi için Azure [Veri Gezgini'ni Azure Veri Fabrikası ile tümleştir'den](../data-explorer/data-factory-integration.md)daha fazla bilgi edinin.
+>Azure Veri Fabrikası ve Genel Olarak Azure Veri Gezgini tümleştirmesi için Azure [Veri Gezgini'ni Azure Veri Fabrikası ile tümleştir'den](/azure/data-explorer/data-factory-integration)daha fazla bilgi edinin.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -47,7 +47,7 @@ Azure Veri Gezgini bağlayıcısı ile aşağıdakileri yapabilirsiniz:
 ## <a name="getting-started"></a>Başlarken
 
 >[!TIP]
->Azure Veri Gezgini bağlayıcısının bir bölümü için Azure [Veri Fabrikası'nı kullanarak Azure Veri Gezgini'ne verileri](../data-explorer/data-factory-load-data.md) kopyala'ya ve [veritabanından Azure Veri Gezgini'ne toplu kopya bölümüne](../data-explorer/data-factory-template.md)bakın.
+>Azure Veri Gezgini bağlayıcısının bir bölümü için Azure [Veri Fabrikası'nı kullanarak Azure Veri Gezgini'ne verileri](/azure/data-explorer/data-factory-load-data) kopyala'ya ve [veritabanından Azure Veri Gezgini'ne toplu kopya bölümüne](/azure/data-explorer/data-factory-template)bakın.
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,7 +63,7 @@ Azure Veri Gezgini bağlayıcısı hizmet temel kimlik doğrulamasını kullanı
     - Uygulama anahtarı
     - Kiracı Kimliği
 
-2. Hizmet sorumlusuna Azure Veri Gezgini'nde doğru izinleri verin. Bkz. Roller ve izinler ve izinleri yönetme hakkında ayrıntılı bilgi için [Azure Veri Gezgini veritabanı izinlerini yönetin.](../data-explorer/manage-database-permissions.md) Genel olarak şunları belirtmelisiniz:
+2. Hizmet sorumlusuna Azure Veri Gezgini'nde doğru izinleri verin. Bkz. Roller ve izinler ve izinleri yönetme hakkında ayrıntılı bilgi için [Azure Veri Gezgini veritabanı izinlerini yönetin.](/azure/data-explorer/manage-database-permissions) Genel olarak şunları belirtmelisiniz:
 
     - **Kaynak olarak,** veritabanınıza en azından **Veritabanı görüntüleyici** rolünü verir
     - **Lavabo olarak,** veritabanınıza en azından **Veritabanı alma** rolü vermek

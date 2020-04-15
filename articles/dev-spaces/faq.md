@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Geliştirme Alanları ile ilgili sık sorulan bazı soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
-ms.openlocfilehash: f3ac6ec3c3ddbe8ff508befba2eb4a8423e66f07
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998725"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381989"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Geliştirme Alanları hakkında sık sorulan sorular
 
@@ -79,7 +79,7 @@ Projenizi hazırlamak için Visual Studio'yu kullanırken, hizmetiniz için giri
 
 ## <a name="can-i-use-pod-managed-identities-with-azure-dev-spaces"></a>Azure Dev Spaces ile bölme yönetilen kimlikleri kullanabilir miyim?
 
-Şu anda Azure Dev Spaces, Azure Dev Spaces etkinken AKS kümelerinde [pod yönetilen kimlikleri][aks-pod-managed-id] kullanmayı desteklememektedir. Pod yönetilen kimlikleriniz yüklüyse ve onu kaldırmak istiyorsanız, [kaldır notları'nda][aks-pod-managed-id-uninstall]daha fazla ayrıntı bulabilirsiniz.
+Evet, Azure Dev Spaces etkinleştirilmiş aks kümelerinde [pod yönetilen kimlikleri][aks-pod-managed-id] kullanabilirsiniz, ancak bölme yönetilen kimliklerle kümenizde Azure Dev Spaces'i etkinleştirdikten sonra ek yapılandırma [adımları][dev-spaces-pod-managed-id-steps] vardır. Pod yönetilen kimlikleriniz yüklüyse ve onu kaldırmak istiyorsanız, [kaldır notları'nda][aks-pod-managed-id-uninstall]daha fazla ayrıntı bulabilirsiniz.
 
 ## <a name="can-i-use-azure-dev-spaces-with-multiple-microservices-in-an-application"></a>Azure Dev Alanları'nı bir uygulamada birden çok mikro hizmetle kullanabilir miyim?
 
@@ -98,6 +98,7 @@ Visual Studio'da, Azure Dev Spaces üzerinden hata ayıklama için .NET Core ç�
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
+[dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
 [dev-spaces-routing]: how-dev-spaces-works-routing.md#how-routing-works
 [ingress-nginx]: how-to/ingress-https-nginx.md#configure-a-custom-nginx-ingress-controller

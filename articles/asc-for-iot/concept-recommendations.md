@@ -1,5 +1,5 @@
 ---
-title: IoT güvenlik önerileri için Azure Güvenlik Merkezi'ni anlayın| Microsoft Dokümanlar
+title: Güvenlik önerileri
 description: IoT için Azure Güvenlik Merkezi'nde güvenlik önerileri kavramı ve bunların nasıl kullanıldığı hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,22 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
-ms.openlocfilehash: a8de821abcedf6bb9a331852a2c0af9b6439667a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 213595ac69efc90ec855b2891641e1f00bd1ba92
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303588"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311555"
 ---
 # <a name="security-recommendations"></a>Güvenlik önerileri
 
-Azure Güvenlik Merkezi IoT, Azure kaynaklarınızı ve IoT aygıtlarınızı tarar ve saldırı yüzeyinizi azaltmak için güvenlik önerileri sunar. Güvenlik önerileri uygulanabilir ve müşterilerin güvenlik en iyi uygulamalarına uymalarına yardımcı olmayı amaçlamaktadır.
+Azure Güvenlik Merkezi IoT, Azure kaynaklarınızı ve IoT aygıtlarınızı tarar ve saldırı yüzeyinizi azaltmak için güvenlik önerileri sunar.
+Güvenlik önerileri uygulanabilir ve müşterilerin güvenlik en iyi uygulamalarına uymalarına yardımcı olmayı amaçlamaktadır.
 
 Bu makalede, IoT Hub ve/veya IoT aygıtlarınızda tetiklenebilecek önerilerin bir listesini bulacaksınız.
 
 ## <a name="recommendations-for-iot-devices"></a>IoT cihazları için öneriler
 
-Cihaz önerileri, cihaz güvenlik duruşunu iyileştirmek için öngörüler ve öneriler sağlar. 
+Cihaz önerileri, cihaz güvenlik duruşunu iyileştirmek için öngörüler ve öneriler sağlar.
 
 | Severity | Adı                                                      | veri kaynağı | Açıklama                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Operasyonel öneriler, güvenlik aracıyapılandırmasını geliştirmek için �
 
 ## <a name="recommendations-for-iot-hub"></a>IoT Hub için öneriler
 
-Öneri uyarıları, ortamınızın güvenlik duruşunu iyileştirmek için eylemler için öngörü ve öneriler sağlar.  
+Öneri uyarıları, ortamınızın güvenlik duruşunu iyileştirmek için eylemler için öngörü ve öneriler sağlar.
 
 | Severity | Adı                                                     | veri kaynağı | Açıklama                                                                                                                                                                                                             |
 |----------|----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

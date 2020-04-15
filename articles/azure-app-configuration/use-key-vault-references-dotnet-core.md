@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 01/21/2020
+ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: eceb4a9d4e0cc84166280f30b094b82088f53a4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4641c50f0579e2a8db514df58c0401eb2173d793
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475315"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309043"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Öğretici: Key Vault referanslarını ASP.NET Core uygulamasında kullanma
 
@@ -82,7 +82,7 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama Yapılandırmasına Anahtar Kasa sı başvurusu ekleme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve ardından hızlı başlatmada oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynakları**seçin ve ardından hızlı başlatmada oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
 
 1. **Configuration Explorer'ı**seçin.
 
@@ -132,7 +132,7 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
     setx AZURE_TENANT_ID <tenantId-of-your-service-principal>
     ```
 
-    #### <a name="powershell"></a>[Powershell](#tab/powershell)
+    #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
     ```PowerShell
     $Env:AZURE_CLIENT_ID = <clientId-of-your-service-principal>
@@ -160,14 +160,12 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 1. Aşağıdaki komutu çalıştırarak gerekli NuGet paketlerine bir başvuru ekleyin:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.KeyVault
     dotnet add package Azure.Identity
     ```
 
 1. *Program.cs*açın ve aşağıdaki gerekli paketlere başvurular ekleyin:
 
     ```csharp
-    using Microsoft.Azure.KeyVault;
     using Azure.Identity;
     ```
 

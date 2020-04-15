@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure otomasyonu, DSC, powershell, istenilen durum yapılandırması, güncelleme yönetimi, değişiklik izleme, envanter, runbooks, python, grafik, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: a441b80e4d7dd9604aa2ca69da320e462859a486
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261240"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81308779"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (önizleme)
 
@@ -143,7 +143,7 @@ Windows ve Linux için Azure Bağlantılı Makine aracı paketini aşağıda lis
 >[!NOTE]
 >Bu önizleme sırasında, Ubuntu 16.04 veya 18.04 için uygun olan tek bir paket piyasaya sürüldü.
 
-Windows ve Linux için Azure Bağlantılı Makine aracısı, gereksinimlerinize bağlı olarak el ile veya otomatik olarak en son sürüme yükseltilebilir. Daha fazla bilgi için [buraya](manage-agent.md) bakın
+Windows ve Linux için Azure Bağlantılı Makine aracısı, gereksinimlerinize bağlı olarak el ile veya otomatik olarak en son sürüme yükseltilebilir. Daha fazla bilgi için [buraya](manage-agent.md)bakın.
 
 ### <a name="agent-status"></a>Aracı durumu
 

@@ -1,14 +1,14 @@
 ---
 title: Portaldan varolan bir atamayı güncelleştirme
 description: Azure Planları'ndaki portaldan varolan bir plan atamasını güncelleştirme mekanizması hakkında bilgi edinin.
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.topic: how-to
-ms.openlocfilehash: 2c1a24399d8fa1529665bfa60d1b889a84a29a60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264667"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381798"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Varolan bir plan ataması güncelleştirme
 
@@ -26,18 +26,18 @@ Bir plan atandığında, atama güncelleştirilebilir. Varolan bir atamayı gün
 
 1. Planlar listesinde, plan atamasını sol tıklatın. Ardından **Atamayı Güncelleştir** düğmesini tıklatın VEYA plan atamasını sağ tıklatın ve **Atamayı Güncelleştir'i**seçin.
 
-   ![Varolan bir plan ataması güncelleştirme](../media/update-existing-assignments/update-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="Varolan bir plan ataması güncelleştirme" border="false":::
 
 1. **Plan Ata** sayfası, özgün atamadaki tüm değerlerle önceden doldurulmuş olarak yüklenir.
    Plan tanımı **sürümünü,** Kilit **Atama** durumunu ve plan tanımında bulunan dinamik parametrelerden herhangi birini değiştirebilirsiniz. Değişiklik yapıldığında **Atla'yı** tıklatın.
 
 1. Güncelleştirilmiş atama ayrıntıları sayfasında yeni duruma bakın. Bu örnekte, atamaya **Kilitleme'yi** ekledik.
 
-   ![Varolan bir plan ataması güncelleştirildi - kilit modu değiştirildi](../media/update-existing-assignments/updated-assignment.png)
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="Varolan bir plan ataması güncelleştirildi - kilit modu değiştirildi" border="false":::
 
 1. Açılan işlemi kullanarak diğer **Atama işlemleri** yle ilgili ayrıntıları keşfedin. Seçili atama işlemi yle **Yönetilen kaynaklar** güncelleştirmeleri tablosu.
 
-   ![Plan atamasının atama işlemleri](../media/update-existing-assignments/assignment-operations.png)
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="Plan atamasının atama işlemleri" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>Atamaları güncelleştirme kuralları
 

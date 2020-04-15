@@ -7,20 +7,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c0c0ab84e60335f58ac075459b95cfabb9135ac
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278010"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311955"
 ---
 # <a name="renew-application-gateway-certificates"></a>Uygulama Ağ Geçidi sertifikalarını yenileme
 
-Bir noktada, uygulama ağ geçidinizi SSL şifrelemesi için yapılandırıyorsanız, sertifikalarınızı yenilemeniz gerekir.
+Bir noktada, uygulama ağ geçidinizi TLS/SSL şifrelemesi için yapılandırıyorsanız sertifikalarınızı yenilemeniz gerekir.
 
 Azure portalı, Azure PowerShell veya Azure CLI'yi kullanarak bir dinleyiciyle ilişkili bir sertifikayı yenileyebilirsiniz:
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
 Portaldan bir dinleyici sertifikası yenilemek için uygulama ağ geçidi dinleyicilerinize gidin. Yenilenmesi gereken bir sertifikaya sahip dinleyiciyi tıklatın ve ardından **Seçili Sertifikayı Yenile veya Yeniden Lendir'i**tıklatın.
 
@@ -62,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Uygulama Ağ Geçidi ile SSL Boşaltma'yı nasıl yapılandıracağımıöğrenmek için [bkz.](application-gateway-ssl-portal.md)
+AZURE Uygulama Ağ Geçidi ile TLS Boşaltma'yı nasıl yapılandıracağımı öğrenmek için [TLS Boşaltmayı Yapılandırma](application-gateway-ssl-portal.md)

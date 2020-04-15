@@ -1,6 +1,6 @@
 ---
-title: Yedeklemeleri 10 yıla kadar saklayın
-description: Azure SQL Veritabanı'nın tam veritabanı yedeklemelerini 10 yıla kadar nasıl depolamayı desteklediğini öğrenin.
+title: Uzun süreli yedek saklama
+description: Azure SQL Veritabanı'nın uzun süreli saklama ilkesi yle tam veritabanı yedeklemelerini 10 yıla kadar nasıl depolamayı desteklediğini öğrenin.
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: 15a2d58d2fc14c370c41d5454d62c74a5b66ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77499973"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380754"
 ---
-# <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Azure SQL Veritabanı yedeklemelerini 10 yıla kadar saklama
+# <a name="azure-sql-database-long-term-retention"></a>Azure SQL Veritabanı uzun süreli bekletme
 
-Birçok uygulama, Azure SQL Veritabanı [otomatik yedeklemeleri](sql-database-automated-backups.md)tarafından sağlanan 7-35 gün boyunca veritabanı yedeklemelerini korumanızı gerektiren düzenleyici, uyumluluk veya diğer iş amaçlarına sahiptir. Uzun süreli bekletme (LTR) özelliğini kullanarak, belirtilen SQL veritabanı tam yedeklemelerini 10 yıla kadar okuma erişimi coğrafi yedekdepolamayla Azure Blob depolama alanında depolayabilirsiniz. Daha sonra yeni bir veritabanı olarak herhangi bir yedekleme geri yükleyebilirsiniz. Azure Depolama artıklığı hakkında daha fazla bilgi için Bkz. [Azure Depolama artıklığı.](../storage/common/storage-redundancy.md)
+Birçok uygulama, Azure SQL Veritabanı [otomatik yedeklemeleri](sql-database-automated-backups.md)tarafından sağlanan 7-35 gün boyunca veritabanı yedeklemelerini korumanızı gerektiren düzenleyici, uyumluluk veya diğer iş amaçlarına sahiptir. Uzun süreli bekletme (LTR) özelliğini kullanarak, belirtilen SQL veritabanı tam yedeklemelerini 10 yıla kadar okuma erişimi coğrafi yedekdepolamayla Azure Blob depolama alanında depolayabilirsiniz. Daha sonra yeni bir veritabanı olarak herhangi bir yedekleme geri yükleyebilirsiniz. Azure Depolama artıklığı hakkında daha fazla bilgi için Bkz. [Azure Depolama artıklığı.](../storage/common/storage-redundancy.md) 
+
+Tek ve birleştirilmiş veritabanları için uzun süre bekletme etkinleştirilebilir ve Azure SQL Veritabanı yönetilen örnekleri için sınırlı genel önizlemededir. 
 
 > [!NOTE]
-> LTR, tek ve havuzlu veritabanları için etkinleştirilebilir. Yönetilen Örnekler'deki örnek veritabanları için henüz kullanılamıyor. 35 gün sonra LTR'ye alternatif olarak [yalnızca kopyaveritabanı yedeklemelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) zamanlamak için SQL Aracısı işlerini kullanabilirsiniz.
-> 
+> 35 gün sonra LTR'ye alternatif olarak [yalnızca kopyaveritabanı yedeklemelerini](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) zamanlamak için SQL Aracısı işlerini kullanabilirsiniz.
+
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Veritabanı uzun süreli saklama nasıl çalışır?
 
@@ -74,6 +76,16 @@ Yukarıdaki ilkeyi değiştirir ve W=0 (haftalık yedekleme yok) ayarlarsanız, 
 
 > [!NOTE]
 > Özgün birincil veritabanı, başarısızolmaya neden olan bir kesintiden kurtarıldığında, yeni bir ikincil veritabanı na dönüşecektir. Bu nedenle, yedekleme oluşturma devam etmez ve varolan LTR ilkesi birincil yeniden olana kadar etkili olmayacaktır. 
+
+## <a name="managed-instance-support"></a>Yönetilen Örnek desteği
+
+Azure SQL Veritabanı yönetilen örnekleri ile uzun vadeli yedekleme bekletme kullanarak aşağıdaki sınırlamalar vardır:
+
+- **Sınırlı genel önizleme** - Bu önizleme yalnızca EA ve CSP abonelikleri için kullanılabilir ve sınırlı kullanılabilirlik durumuna bağlıdır.  
+- [**Yalnızca PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) - Şu anda Azure portal desteği yok. LTR PowerShell kullanılarak etkinleştirilmelidir. 
+
+Kayıt istemek için, destek konusu **Yedekleme, Geri Yükleme ve İş sürekliliği / Uzun vadeli yedekleme tutma**altında bir Azure destek [bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun.
+
 
 ## <a name="configure-long-term-backup-retention"></a>Uzun süreli yedek saklama yapılandırma
 

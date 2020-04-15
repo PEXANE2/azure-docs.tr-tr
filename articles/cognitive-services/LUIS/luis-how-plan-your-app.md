@@ -1,22 +1,14 @@
 ---
 title: Uygulamanızı planlayın - LUIS
-titleSuffix: Azure Cognitive Services
 description: İlgili uygulama niyetlerini ve varlıklarını anahatlatın ve ardından Dil Anlama Akıllı Hizmetleri'nde (LUIS) uygulama planlarınızı oluşturun.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/20/2019
-ms.author: diberry
-ms.openlocfilehash: 6a155f4c43da03ccdc40d289742918973aa6da7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74326786"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382301"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Luis uygulama şemanızı konu etki alanı ve veri çıkarma ile planlayın
 
@@ -44,7 +36,7 @@ Genel kullanıcı niyetini belirlemeniz gerekmiyorsa, tüm örnek kullanıcı s�
 
 ## <a name="create-example-utterances-for-each-intent"></a>Her amaç için örnek söyleyişler oluşturma
 
-Öncelikle, her amaç için çok fazla söyleyiş oluşturmaktan kaçının. Niyetleri belirledikten sonra, niyet başına 15-30 örnek sözcük oluşturun. Her söyleyiş daha önce sağlanan söyleyişlerden farklı olmalıdır. Genel sözcük sayısı, sözcük seçimi, fiil zaman ve noktalama işaretleri arasında iyi bir çeşitlilik vardır.
+Öncelikle, her amaç için çok fazla söyleyiş oluşturmaktan kaçının. Niyetleri belirledikten sonra, niyet başına 15-30 örnek sözcük oluşturun. Her söyleyiş daha önce sağlanan söyleyişlerden farklı olmalıdır. Genel sözcük sayısı, sözcük seçimi, fiil zaman ve [noktalama işaretleri](luis-reference-application-settings.md#punctuation-normalization)arasında iyi bir çeşitlilik vardır.
 
 Daha fazla bilgi için, [LUIS uygulamaları için iyi söyleyiş anlama](luis-concept-utterance.md)bakın.
 

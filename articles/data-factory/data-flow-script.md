@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: 92421125ecb5f4336922c6e6b4508fcdaf92be6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246407"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313905"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı komut dosyası (DFS)
 
@@ -139,6 +139,11 @@ derive1 sink(allowSchemaDrift: true,
 ```
 
 ## <a name="script-snippets"></a>Komut dosyası parçacıkları
+
+Komut dosyası parçacıkları, veri akışları arasında paylaşmak için kullanabileceğiniz paylaşılabilir Veri Akışı Komut Dosyası kodu. Aşağıdaki videoda komut dosyası parçacıklarının nasıl kullanılacağı ve veri akışı grafiklerinin arkasındaki komut dosyasının bölümlerini kopyalamak ve yapıştırmak için Veri Akışı Komut Dosyası'nı kullanma hakkında aşağıdaki bilgiler verilmiştir:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
+
 
 ### <a name="aggregated-summary-stats"></a>Toplu özet istatistikleri
 Veri akışınıza "SummaryStats" adı verilen bir Toplu dönüştürme ekleyin ve ardından varolan SummaryStats'ın yerine komut dosyanızdaki toplam işlev için aşağıdaki koda yapıştırın. Bu, veri profili özet istatistikleri için genel bir desen sağlar.

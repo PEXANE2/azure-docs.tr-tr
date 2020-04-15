@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 6abb4f632535f1bda7e9f337f111ba372a624f2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55373f71c78b6d45b9c78c52dea61a37b89b4a00
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239612"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383054"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>HDInsight'ta Apache Kafka ile Azure Kubernetes Hizmetini Kullanma
 
@@ -163,7 +163,7 @@ Bu noktada Kafka ve Azure Kubernetes Service, gözlenen sanal ağlar üzerinden 
     * `var topic = 'mytopic'`: `mytopic` Bu uygulamanın kullandığı Kafka konusunun adını değiştirin.
     * `var brokerHost = '176.16.0.13:9092`: `176.16.0.13` Kümeniz için broker ana bilgisayarlarından birinin dahili IP adresiyle değiştirin.
 
-        Kümedeki broker ana bilgisayarlarının (işçi düğümleri) iç IP adresini bulmak için [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-internal-ip-address-of-cluster-nodes) belgesine bakın. Alan adı ile başlayan girişlerden birinin IP `wn`adresini seçin.
+        Kümedeki broker ana bilgisayarlarının (işçi düğümleri) iç IP adresini bulmak için [Apache Ambari REST API](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-internal-ip-address-of-cluster-nodes) belgesine bakın. Alan adı ile başlayan girişlerden birinin IP `wn`adresini seçin.
 
 4. Dizindeki `src` bir komut satırından, bağımlılıkları yükleyin ve dağıtım için bir görüntü oluşturmak için Docker'ı kullanın:
 

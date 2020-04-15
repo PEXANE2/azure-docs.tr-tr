@@ -3,18 +3,18 @@ title: Azure Uygulama Yapılandırması ile otomatik VM dağıtımı hızlı ba�
 description: Bu hızlı başlangıç, Azure Uygulama Yapılandırma deposunu dağıtmak için Azure PowerShell modülü ve Azure Kaynak Yöneticisi şablonlarının nasıl kullanılacağını gösterir. Ardından, bir VM dağıtmak için mağazadaki değerleri kullanın.
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 03/05/2020
+ms.date: 04/14/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: c45f6855c33dff2790ced306fd7f049b98dd1387
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79126390"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309106"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Quickstart: Uygulama Yapılandırması ve Kaynak Yöneticisi şablonu yla otomatik VM dağıtımı
 
@@ -152,6 +152,9 @@ Azure Kaynak Yöneticisi şablonu kullanarak bir Uygulama Yapılandırma mağaza
 ## <a name="deploy-vm-using-stored-key-values"></a>Depolanan anahtar değerlerini kullanarak VM dağıtma
 
 Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablonu kullanarak bir VM dağıtmaya hazırsınız. Şablon, oluşturduğunuz **windowsOsVersion** ve **diskSizeGB** tuşlarına başvurur.
+
+> [!WARNING]
+> ARM şablonları, Özel Bağlantı etkinleştirilmiş bir Uygulama Yapılandırma mağazasında ki tuşlara başvuru yapamaz.
 
 1. Aşağıdaki json kodunu *azuredeploy.json*adlı yeni bir dosyaya kopyalayıp yapıştırın veya dosyayı [Azure Quickstart şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)indirin.
 
@@ -423,13 +426,13 @@ Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablo
    |storageAccountName|VM ile ilişkili bir depolama hesabı için benzersiz bir ad.|
    |domainNameLabel|Benzersiz bir etki alanı adı.|
 
-1. PowerShell pencerenizde, Azure Uygulama Yapılandırma mağazasını dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametre dosya yolunu değiştirmeyi unutmayın.
+1. PowerShell pencerenizde VM'yi dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametre dosya yolunu değiştirmeyi unutmayın.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
+       -ResourceGroupName "<your resource group>"
+       -TemplateFile "<path to azuredeploy.json>" `
+       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
 Tebrikler! Azure Uygulama Yapılandırmasında depolanan yapılandırmaları kullanarak bir VM dağıttınız.

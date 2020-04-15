@@ -1,5 +1,5 @@
 ---
-title: IoT için Azure Güvenlik Merkezi Nedir | Microsoft Dokümanlar
+title: Hizmete genel bakış
 description: IoT özellikleri ve hizmetleri için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin ve Azure Güvenlik Merkezi'nin IoT için kapsamlı IoT güvenliğini nasıl sağladığını öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 1c85f0205f568f065a7959a9b33890b2117e45a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4601de6ee495def43d1267131193762ea482d2a
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462233"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310915"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi’ne giriş
 
-Güvenlik yönetimini bir araya edin ve karma bulut iş yükleri ve Azure IoT çözümünüz genelinde uçtan uca tehdit algılama ve çözümlemesini etkinleştirin. 
+Güvenlik yönetimini bir araya edin ve karma bulut iş yükleri ve Azure IoT çözümünüz genelinde uçtan uca tehdit algılama ve çözümlemesini etkinleştirin.
 
 ## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT aygıtlarından Azure bulutuna kadar tüm IoT çözümünüzü güvenli hale
 
 Sorunsuz aracısız çözümümüzden birini seçin veya aracı tabanlı kapsamlı güvenlikten yararlanın, IoT için Azure Güvenlik Merkezi, IoT varlıklarınızdaki her cihaz, IoT Edge ve IoT Hub için tehdit önleme ve analiz sağlar.
 
-Milyarlarca yeni cihaz internete bağlandığı ve günlük yaşantımıza ve işlerimize entegre olduğu için, güvenlik operasyon ekipleriniz güvenlik stratejilerinin her yeni saldırı yüzeyini kapsayacak kadar hızlı bir şekilde gelişmesini sağlamalıdır. Diğer tüm sistem gibi, IoT çözümünüzü kapsamlı bir şekilde güvence altına almak için, uygulamanın her aşamasında koruma gerektirir. 
+Milyarlarca yeni cihaz internete bağlandığı ve günlük yaşantımıza ve işlerimize entegre olduğu için, güvenlik operasyon ekipleriniz güvenlik stratejilerinin her yeni saldırı yüzeyini kapsayacak kadar hızlı bir şekilde gelişmesini sağlamalıdır. Diğer tüm sistem gibi, IoT çözümünüzü kapsamlı bir şekilde güvence altına almak için, uygulamanın her aşamasında koruma gerektirir.
 
-Azure Güvenlik Merkezi IoT, birleşik görünürlük ve denetim, uyarlanabilir tehdit önleme ve akıllı tehdit algılama ve yanıt sağlayarak, şirket içinde, Azure'da ve diğer iş yüklerinde akıllı tehdit algılama ve yanıt sağlayarak karma iş yükü korumayı kolaylaştırır Bulut. 
+Azure Güvenlik Merkezi IoT, birleşik görünürlük ve denetim, uyarlanabilir tehdit önleme ve akıllı tehdit algılama ve yanıt sağlayarak, kenarda, şirket içinde, Azure'da ve diğer bulutlarda çalışan iş yüklerinde akıllı tehdit algılama ve yanıt sağlayarak karma iş yükü korumayı kolaylaştırır.
 
 ![IoT için Azure Güvenlik Merkezi mimarisi](./media/architecture/azure-iot-security-architecture.png)
 
 ### <a name="unified-visibility-and-control"></a>Birleşik görünürlük ve kontrol
 
-Azure IoT çözümünüz de dahil olmak üzere tüm şirket içi ve bulut iş yüklerinde güvenliğin birleşik bir görünümünü elde edin. Güvenlik standartlarına ve geliştirilmiş güvenlik duruşuna uygunluğu sağlamak için iş yüklerinizde (Yaprak aygıtlar, Microsoft Edge aygıtları, IoT Hub) güvenlik ilkeleri uygulayın. 
+Azure IoT çözümünüz de dahil olmak üzere tüm şirket içi ve bulut iş yüklerinde güvenliğin birleşik bir görünümünü elde edin. Güvenlik standartlarına ve geliştirilmiş güvenlik duruşuna uygunluğu sağlamak için iş yüklerinizde (Yaprak aygıtlar, Microsoft Edge aygıtları, IoT Hub) güvenlik ilkeleri uygulayın.
 
 ### <a name="adaptive-threat-prevention"></a>Adaptif tehdit önleme
 
@@ -57,4 +57,3 @@ Bu genel bakışta, Azure Güvenlik Merkezi'nin IoT özellikleri ve hizmetleri h
 - [Çözümünüzü tanımlayın](quickstart-configure-your-solution.md)
 - [IoT SSS için Azure Güvenlik Merkezi](resources-frequently-asked-questions.md)
 - [IoT uyarıları için Azure Güvenlik Merkezi](concept-security-alerts.md)
-

@@ -1,6 +1,6 @@
 ---
-title: CLI kullanarak SSL sonlandırma - Azure Uygulama Ağ Geçidi
-description: Azure CLI kullanarak uygulama ağ geçidi oluşturma ve SSL sonlandırma sertifikası eklemeyi öğrenin.
+title: CLI kullanarak TLS sonlandırma - Azure Uygulama Ağ Geçidi
+description: Azure CLI'yi kullanarak bir uygulama ağ geçidi oluşturmayı ve TLS sonlandırma sertifikası eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246606"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311969"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI'yi kullanarak SSL sonlandırma ile bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Azure CLI'yi kullanarak TLS sonlandırma ile bir uygulama ağ geçidi oluşturma
 
-Azure CLI'yi, [SSL sonlandırma](ssl-overview.md)sertifikası içeren bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Arka uç sunucuları için [sanal makine ölçeği kümesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+[TLS sonlandırma](ssl-overview.md)sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI'yi kullanabilirsiniz. Arka uç sunucuları için [sanal makine ölçeği kümesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 1cfa2ab1d8bf096b1821f7473d9808801b47c547
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70014b5ab37a07e01eaa2db3d729b7d8af520842
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371175"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311770"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi'ndeki yenilikler nelerdir?
 
@@ -33,7 +33,7 @@ Azure Application Gateway sürekli olarak güncelleştirilir. En son gelişmeler
 |Daha fazla ölçüm |Uygulama Ağ Geçidi v2 SKU: [Zamanlama ile ilgili ölçümler,](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)Arka uç yanıt durumu, Alınan Baytlar, Baytlar gönderildi, İstemci TLS protokolü ve Geçerli bilgi işlem birimlerinizi izlemenize yardımcı olmak için aşağıdaki yeni ölçümleri ekledik. [Uygulama Ağ Geçidi V2 SKU tarafından desteklenen Ölçümlere](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)bakın. |Ağustos 2019 |
 |WAF özel kuralları |Uygulama Ağ Geçidi WAF_v2 artık özel kurallar oluşturmayı destekler. Bkz. [Uygulama Ağ Geçidi özel kuralları.](custom-waf-rules-overview.md) |Haziran 2019 |
 |Otomatik ölçekleme, bölge artıklığı, statik VIP desteği GA |Otomatik ölçekleme, bölge artıklığını destekleyen v2 SKU için genel kullanılabilirlik, performansı artırır, statik VIP'ler, Key Vault, Header yeniden yazın. Bkz. [Uygulama Ağ Geçidi otomatikleştirme belgeleri.](application-gateway-autoscaling-zone-redundant.md) |Nisan 2019 |
-|Anahtar Vault entegrasyonu |Uygulama Ağ Geçidi artık HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault (genel önizleme) ile tümleştirmeyi destekler. [Key Vault sertifikaları ile SSL sonlandırma](key-vault-certs.md)bakın. |Nisan 2019 |
+|Anahtar Vault entegrasyonu |Uygulama Ağ Geçidi artık HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault (genel önizleme) ile tümleştirmeyi destekler. [Key Vault sertifikaları ile TLS sonlandırma bakın.](key-vault-certs.md) |Nisan 2019 |
 |Üstbilgi CRUD/Rewrites     |Şimdi HTTP üstbilgi yeniden yazabilirsiniz. Bkz. Öğretici: Bir uygulama ağ geçidi oluşturun ve daha fazla bilgi için [HTTP üstbilgilerini yeniden yazın.](tutorial-http-header-rewrite-powershell.md)|Aralık 2018|
 |WAF yapılandırma ve dışlama listesi     |WAF'ınızı yapılandırmanıza ve yanlış pozitif leri azaltmanıza yardımcı olacak daha fazla seçenek ekledik. Daha fazla bilgi için [Bkz. Web uygulaması güvenlik duvarı isteği boyut sınırları ve dışlama listeleri.](application-gateway-waf-configuration.md)|Aralık 2018|
 |Otomatik ölçekleme, bölge artıklığı, statik VIP desteği      |v2 SKU ile Otomatik Ölçekleme, geliştirilmiş performans ve daha fazlası gibi birçok iyileştirme vardır. Azure [Uygulama Ağ Geçidi nedir?](overview.md)|Eylül 2018|

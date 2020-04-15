@@ -1,5 +1,5 @@
 ---
-title: IoT güvenlik aracımimarisi için Azure Güvenlik Merkezi'ni anlama| Microsoft Dokümanlar
+title: Güvenlik aracısı mimarisi
 description: IoT için Azure Güvenlik Merkezi'nde kullanılan aracılar için güvenlik aracımimarisini anlayın.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 998aeab197931a75579fc39b28e3a248b85fc57b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68596915"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310678"
 ---
 # <a name="security-agent-reference-architecture"></a>Güvenlik aracısı başvuru mimarisi
 
@@ -38,9 +38,9 @@ Güvenlik aracıları aşağıdaki özellikleri destekler:
 
 - **Azureiotsecurity** modülü ikizi kullanarak uzaktan yapılandırın. Daha fazla bilgi için [bkz.](how-to-agent-configuration.md)
 
-Azure Güvenlik Merkezi IoT Güvenlik aracıları açık kaynak proje olarak geliştirilmiştir ve GitHub'dan edinilebilir: 
+Azure Güvenlik Merkezi IoT Güvenlik aracıları açık kaynak proje olarak geliştirilmiştir ve GitHub'dan edinilebilir:
 
-- [IoT C tabanlı aracı için Azure Güvenlik Merkezi](https://github.com/Azure/Azure-IoT-Security-Agent-C) 
+- [IoT C tabanlı aracı için Azure Güvenlik Merkezi](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [IoT C# tabanlı aracı için Azure Güvenlik Merkezi](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
 ## <a name="agent-supported-platforms"></a>Aracı destekli platformlar

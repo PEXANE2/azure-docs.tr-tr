@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 12/12/2019
+ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: c88f5a4dd4f2997ce01b1f6a3ae192c62f530e76
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011438"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383826"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Bir kimliğe erişim izinleri atama
 
@@ -98,7 +98,7 @@ NTFS izinlerini ayarlamak için icacls'in nasıl kullanılacağı hakkında daha
 
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Komut isteminden dosya paylaşımını montaj
 
-Azure dosya paylaşımını monte etmek için Windows **net kullanım** komutunu kullanın. Aşağıdaki örnekte yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Dosya paylaşımlarını montaj hakkında daha fazla bilgi için bkz. Windows [ile Azure dosya paylaşımı nı kullan.](../articles/storage/files/storage-how-to-use-files-windows.md)
+Azure dosya paylaşımını monte etmek için Windows **net kullanım** komutunu kullanın. Aşağıdaki örnekte yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Dosya paylaşımlarını montaj hakkında daha fazla bilgi için bkz. Windows [ile Azure dosya paylaşımı nı kullan.](../articles/storage/files/storage-how-to-use-files-windows.md) 
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -123,7 +123,7 @@ Aşağıdaki resimde gösterildiği gibi, izin vermiş olduğunuz Azure AD kimli
 
 ![Kullanıcı kimlik doğrulaması için Azure AD oturum açma ekranLarını gösteren ekran görüntüsü](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Azure dosya paylaşımını monte etmek için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğinizi doğruladığıiçin depolama hesabı anahtarını, AD kimlik bilgilerini veya Azure AD kimlik bilgilerini sağlamanız gerekmez. Ad veya Azure AD DS ile kimlik doğrulama için tek oturum açma deneyimi desteklenir.
+Azure dosya paylaşımını monte etmek için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğinizi doğruladığıiçin depolama hesabı anahtarını, AD kimlik bilgilerini veya Azure AD kimlik bilgilerini sağlamanız gerekmez. Ad veya Azure AD DS ile kimlik doğrulama için tek oturum açma deneyimi desteklenir. AD kimlik bilgileriyle montajsorunlarıyla karşılaştıysanız, kendi kendine tanılama kılavuzu için [Windows'daki Sorun Giderme Azure Dosyaları sorunlarını](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) denetleyin.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

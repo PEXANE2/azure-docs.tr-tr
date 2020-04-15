@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0f024bac535ed792d8480c991e470cf5d85932b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2afeae937d56a84c39167ad55a57c86f2623e52d
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247429"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382717"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -50,18 +50,25 @@ Bölgesel kesintiler oldukça yaygındır ve Azure Cosmos DB veritabanınızın 
 
 - Tek bölgeli hesaplar, bölgesel bir kesinti sonrasında kullanılabilirliğini kaybedebilir. Her zaman en az **iki bölge** (tercihen, en az iki yazma bölgesi) cosmos hesabınızla her zaman yüksek kullanılabilirlik sağlamak için ayarlamanız önerilir.
 
-- **Tek yazma lı çok bölgeli hesaplar (bölge kesintisi yazma):**
-  - Yazma bölgesi kesintisi sırasında Cosmos hesabı, Azure Cosmos hesabında **otomatik olarak başarısız** lığa izin verildiğinde ikinci bir bölgeyi otomatik olarak yeni birincil yazma bölgesi olarak tanıtacaktır. Etkinleştirildiğinde, başarısızlık belirttiğiniz bölge önceliği sırasına göre başka bir bölgeye gelir.
-  - Müşteriler ayrıca el **ile başarısız** olmayı ve cosmos yazma uç nokta URL'lerini kendileri inşa edilmiş bir aracı kullanarak izlemeyi de seçebilirler. Karmaşık ve gelişmiş sistem durumu izleme gereksinimleri olan müşteriler için, yazma bölgesinde bir hata olması durumunda bu durum azaltılmış RTO sağlayabilir.
-  - Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri [çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar çakışma akışını okuyabilir, çakışmaları uygulamaya özgü mantığa göre çözebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir.
-  - Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra, okuma bölgesi olarak otomatik olarak kullanılabilir hale gelir. Yazma bölgesi olarak kurtarılan bölgeye geri dönebilirsiniz. [Azure CLI veya Azure portalını](how-to-manage-database-account.md#manual-failover)kullanarak bölgeler arasında geçiş yapabilirsiniz. Yazma bölgesini değiştirmeden önce, sırasında veya sonrasında **veri veya kullanılabilirlik kaybı yoktur** ve uygulamanız son derece kullanılabilir olmaya devam etmektedir.
+### <a name="multi-region-accounts-with-a-single-write-region-write-region-outage"></a>Tek yazma lı çok bölgeli hesaplar (bölge kesintisi yazma)
 
-- **Tek yazma lı çok günlükli hesaplar (okuma bölgesi kesintisi):**
-  - Okuma bölgesi kesintisi sırasında, bu hesaplar okuma ve yazma için son derece kullanılabilir olmaya devam edecektir.
-  - Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı işaretlenir. [Azure Cosmos DB SDK'lar](sql-api-sdk-dotnet.md) okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
-  - Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner.
-  - Okuma bölgesi kesintisini işlemek için uygulama kodunuzda değişiklik gerekmez. Sonuç olarak, etkilenen bölge yeniden çevrimiçi olduğunda, daha önce etkilenen okuma bölgesi geçerli yazma bölgesiyle otomatik olarak eşitlenir ve okuma isteklerini sunmak için yeniden kullanılabilir olacaktır.
-  - Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin hem başarısız olması hem de yeniden katılması sırasında, okuma tutarlılık garantileri Cosmos DB tarafından onurlandırılamaya devam eder.
+- Yazma bölgesi kesintisi sırasında Cosmos hesabı, Azure Cosmos hesabında **otomatik olarak başarısız** lığa izin verildiğinde ikinci bir bölgeyi otomatik olarak yeni birincil yazma bölgesi olarak tanıtacaktır. Etkinleştirildiğinde, başarısızlık belirttiğiniz bölge önceliği sırasına göre başka bir bölgeye gelir.
+- Daha önce etkilenen bölge yeniden çevrimiçi olduğunda, bölge başarısız olduğunda çoğaltılmamış olan tüm yazma verileri [çakışma akışı](how-to-manage-conflicts.md#read-from-conflict-feed)aracılığıyla kullanılabilir hale getirilir. Uygulamalar çakışma akışını okuyabilir, çakışmaları uygulamaya özgü mantığa göre çözebilir ve güncelleştirilmiş verileri uygun şekilde Azure Cosmos kapsayıcısına geri yazabilir.
+- Daha önce etkilenen yazma bölgesi kurtarıldıktan sonra, okuma bölgesi olarak otomatik olarak kullanılabilir hale gelir. Yazma bölgesi olarak kurtarılan bölgeye geri dönebilirsiniz. [PowerShell, Azure CLI veya Azure portalını](how-to-manage-database-account.md#manual-failover)kullanarak bölgeler arasında geçiş yapabilirsiniz. Yazma bölgesini değiştirmeden önce, sırasında veya sonrasında **veri veya kullanılabilirlik kaybı yoktur** ve uygulamanız son derece kullanılabilir olmaya devam etmektedir.
+
+> [!IMPORTANT]
+> Üretim iş yükleri için kullanılan Azure Cosmos hesaplarını otomatik **olarak başarısız olmasını sağlamak**için yapılandırmanız önerilir. El ile hata, hata sırasında veri kaybı olmadığından emin olmak için tutarlılık denetimini tamamlamak için ikincil ve birincil yazma bölgesi arasında bağlantı gerektirir. Birincil bölge kullanılamıyorsa, bu tutarlılık denetimi tamamlanamaz ve el ile başarısız olur, bu da yazma kullanılabilirliği kaybına neden olur.
+
+### <a name="multi-region-accounts-with-a-single-write-region-read-region-outage"></a>Tek yazma lı çok bölgeli hesaplar (bölge kesintisini okuyun)
+
+- Okuma bölgesi kesintisi sırasında, üç veya daha fazla okunan bölgeyle herhangi bir tutarlılık düzeyi veya güçlü tutarlılık kullanan Cosmos hesapları okuma ve yazma için son derece kullanılabilir olmaya devam edecektir.
+- Etkilenen bölgenin bağlantısı otomatik olarak kesilir ve çevrimdışı işaretlenir. [Azure Cosmos DB SDK'lar](sql-api-sdk-dotnet.md) okuma çağrılarını tercih edilen bölge listesindeki bir sonraki kullanılabilir bölgeye yönlendirir.
+- Tercih edilen bölge listesindeki bölgelerin hiçbiri kullanılabilir durumda değilse çağrılar otomatik olarak geçerli yazma bölgesine döner.
+- Okuma bölgesi kesintisini işlemek için uygulama kodunuzda değişiklik gerekmez. Etkilenen okuma bölgesi yeniden çevrimiçi olduğunda, otomatik olarak geçerli yazma bölgesiyle eşitlenir ve okuma isteklerini sunmak için yeniden kullanılabilir olacaktır.
+- Sonraki okumalar kurtarılan bölgeye yönlendirilir ve bunun için uygulamanızın kodunda değişiklik yapılması gerekmez. Daha önce başarısız olan bir bölgenin hem başarısız olması hem de yeniden katılması sırasında, okuma tutarlılık garantileri Cosmos DB tarafından onurlandırılamaya devam eder.
+
+> [!IMPORTANT]
+> İki veya daha az okuma bölgesiyle güçlü tutarlılık kullanan Azure Cosmos hesapları, okuma bölgesi kesintisi sırasında yazma kullanılabilirliğini kaybeder, ancak kalan bölgeler için okuma kullanılabilirliğini korur.
 
 - Azure bölgesinin kalıcı olarak geri kazanılabildiği nadir ve talihsiz bir olayda bile, çok bölgeli Cosmos hesabınız *Güçlü* tutarlılıkla yapılandırılırsa veri kaybı olmaz. Kalıcı olarak geri kazanılamayan bir yazma bölgesi, sınırlı bayatlık tutarlılığı ile yapılandırılan çok bölgeli bir Cosmos hesabı olması durumunda, olası veri kaybı penceresi K=100.000 güncelleştirmeve T=5 dakikanın bulunduğu bayatlık penceresiyle *(K* veya *T)* sınırlıdır. Oturum, tutarlı önek ve nihai tutarlılık düzeyleri için, olası veri kaybı penceresi en fazla 15 dakika ile sınırlıdır. Azure Cosmos DB için RTO ve RPO hedefleri hakkında daha fazla bilgi için [Tutarlılık düzeyleri ve veri dayanıklılığı](consistency-levels-tradeoffs.md#rto) hakkında bilgi
 
@@ -112,12 +119,12 @@ Aşağıdaki tablo, çeşitli hesap yapılandırmalarının yüksek kullanılabi
 > [!NOTE]
 > Çok bölgeli bir Azure Cosmos hesabı için Kullanılabilirlik Bölgesi desteğini etkinleştirmek için, hesabın çok büyük yazmaları etkinleştirilmiş olması gerekir.
 
-Yeni veya varolan Azure Cosmos hesaplarına bölge eklerken bölge artıklığını etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge artıklığını etkinleştirmek `isZoneRedundant` `true` için bayrağı belirli bir konuma ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki powershell snippet "Güneydoğu Asya" bölgesi için bölge artıklığı sağlar:
+Yeni veya varolan Azure Cosmos hesaplarına bölge eklerken bölge artıklığını etkinleştirebilirsiniz. Azure Cosmos hesabınızda bölge artıklığını etkinleştirmek `isZoneRedundant` `true` için bayrağı belirli bir konuma ayarlamanız gerekir. Bu bayrağı konumlar özelliği içinde ayarlayabilirsiniz. Örneğin, aşağıdaki PowerShell parçacığı "Güneydoğu Asya" bölgesi için bölge artıklığını sağlar:
 
 ```powershell
 $locations = @(
     @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" },
-    @{ "locationName"="East US"; "failoverPriority"=1 }
+    @{ "locationName"="East US"; "failoverPriority"=1; "isZoneRedundant"= "true" }
 )
 ```
 
@@ -143,7 +150,7 @@ Azure Cosmos hesabı oluştururken Azure portalını kullanarak Kullanılabilirl
 
 - Tek yazma lı bir bölgeyle yapılandırılan çok bölgeli Cosmos hesapları için [Azure CLI veya Azure portalı kullanılarak otomatik olarak başarısız](how-to-manage-database-account.md#automatic-failover)olmasını etkinleştirin. Otomatik arızayı etkinleştirdikten sonra, bölgesel bir felaket olduğunda, Cosmos DB otomatik olarak hesabınızda başarısız olur.  
 
-- Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanamayabilir. Uygulama testinizin veya olağanüstü durum kurtarma (DR) matkaplarınızın bir parçası olarak, uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesap için otomatik arızayı geçici olarak devre dışı kalarak, [Azure CLI veya Azure portalını kullanarak manuel başarısızlığı](how-to-manage-database-account.md#manual-failover)başlatın ve ardından uygulamanızın başarısız olmasını izleyin. Tamamlandıktan sonra, birincil bölgeye geri başarısız olabilir ve hesap için otomatik hata yı geri yükleyebilirsiniz.
+- Azure Cosmos hesabınız yüksek oranda kullanılabilir olsa bile, uygulamanız yüksek oranda kullanılabilir kalacak şekilde doğru şekilde tasarlanamayabilir. Uygulama testinizin veya olağanüstü durum kurtarma (DR) matkaplarınızın bir parçası olarak, uygulamanızın uçtan uca yüksek kullanılabilirliğini test etmek için, hesap için otomatik arızayı geçici olarak devre dışı, [PowerShell, Azure CLI veya Azure portalını kullanarak manuel başarısızlığı](how-to-manage-database-account.md#manual-failover)başlatın ve ardından uygulamanızın başarısız olmasını izleyin. Tamamlandıktan sonra, birincil bölgeye geri başarısız olabilir ve hesap için otomatik hata yı geri yükleyebilirsiniz.
 
 - Genel olarak dağıtılan bir veritabanı ortamında, bölge çapında bir kesintinin varlığında tutarlılık düzeyi ile veri dayanıklılığı arasında doğrudan bir ilişki vardır. İş sürekliliği planınızı geliştirirken, uygulamanın rahatsız edici bir olaydan sonra tamamen iyileşmesi için kabul edilebilir maksimum zamanı anlamanız gerekir. Bir uygulamanın tam olarak kurtarılması için gereken süre, kurtarma süresi hedefi (RTO) olarak bilinir. Ayrıca, uygulamanın yıkıcı bir olaydan sonra kurtarma yaparken kaybetmeyi tolere edebileceği en son veri güncelleştirmelerinin en uzun süresini anlamanız gerekir. Kaybetmeyi göze alabileceğiniz güncelleştirme süresi kurtarma noktası hedefini (RPO) olarak bilinir. Azure Cosmos DB için RPO ve RTO'yu görmek için [Tutarlılık düzeylerine ve veri dayanıklılığına](consistency-levels-tradeoffs.md#rto) bakın
 

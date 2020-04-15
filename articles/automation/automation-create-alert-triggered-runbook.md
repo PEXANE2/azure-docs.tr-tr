@@ -5,16 +5,19 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: df28116c588ed77f02c78a42a85feb91ca339e7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5eb330cd6e5d02432298a5b58e84ae7d24ee7e
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366709"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383315"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Otomasyonu runbook'u tetiklemek için uyarı kullanma
 
 Azure'daki çoğu hizmetiçin taban düzeyinde ölçümleri ve günlükleri izlemek için [Azure Monitor'u](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) kullanabilirsiniz. [Eylem gruplarını](../azure-monitor/platform/action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) kullanarak veya uyarıları temel alarak görevleri otomatikleştirmek için klasik uyarıları kullanarak Azure Otomasyon runbook'larını arayabilirsiniz. Bu makalede, uyarıları kullanarak bir runbook yapılandırma ve çalıştırmak nasıl gösterir.
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="alert-types"></a>Uyarı türleri
 
@@ -45,7 +48,7 @@ Uyarıları ile Otomasyon kullanmak için, runbook geçirilen uyarı JSON yük y
 
 Bu örnekte bir VM'den gelen bir uyarı kullanır. VM verilerini yükten alır ve vm'yi durdurmak için bu bilgileri kullanır. Bağlantı, runbook'un çalıştırıldığı Otomasyon hesabında ayarlanmalıdır. Runbook'ları tetiklemek için uyarıları kullanırken, tetiklenen runbook'taki uyarının durumunu denetlemek önemlidir. Runbook, uyarı nın durumu her değiştirdiğinde tetikler. Uyarılar birden çok durumu vardır, en `Activated` `Resolved`yaygın iki durum ve . Runbook'unuzun birden fazla kez çalışmadığından emin olmak için runbook mantığınızda bu durumu denetleyin. Bu makaledeki örnek, yalnızca `Activated` uyarıların nasıl arayacağını gösterir.
 
-Runbook, VM'ye karşı yönetim eylemini gerçekleştirmek için Azure ile kimlik doğrulaması yapmak için **AzureRunAsConnection** [Run As hesabını](automation-create-runas-account.md) kullanır.
+Runbook, VM'ye karşı yönetim eylemini gerçekleştirmek için Azure ile kimlik doğrulaması yapmak için `AzureRunAsConnection` [Çalıştır hesabını](automation-create-runas-account.md) kullanır.
 
 **Stop-AzureVmInResponsetoVMAlert**adlı bir runbook oluşturmak için bu örneği kullanın. PowerShell komut dosyasını değiştirebilir ve birçok farklı kaynakla kullanabilirsiniz.
 
@@ -139,13 +142,13 @@ Runbook, VM'ye karşı yönetim eylemini gerçekleştirmek için Azure ile kimli
                     throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
                 }
                 Write-Verbose "Authenticating to Azure with service principal." -Verbose
-                Add-AzureRMAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
+                Add-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Verbose
                 Write-Verbose "Setting subscription to work against: $SubId" -Verbose
-                Set-AzureRmContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
+                Set-AzContext -SubscriptionId $SubId -ErrorAction Stop | Write-Verbose
 
                 # Stop the Resource Manager VM
                 Write-Verbose "Stopping the VM - $ResourceName - in resource group - $ResourceGroupName -" -Verbose
-                Stop-AzureRmVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
+                Stop-AzVM -Name $ResourceName -ResourceGroupName $ResourceGroupName -Force
                 # [OutputType(PSAzureOperationResponse")]
             }
             else {
@@ -170,7 +173,7 @@ Runbook, VM'ye karşı yönetim eylemini gerçekleştirmek için Azure ile kimli
 
 Uyarılar, uyarı tarafından tetiklenen eylem koleksiyonları olan eylem gruplarını kullanır. Runbook'lar, eylem gruplarıyla kullanabileceğiniz birçok eylemden sadece biridir.
 
-1. Otomasyon Hesabınızda İzleme **altında** **Uyarılar'ı** seçin.
+1. Otomasyon hesabınızda, İzleme altında **Uyarılar'ı** seçin. **Monitoring**
 1. **+ Yeni uyarı kuralı**'nı seçin.
 1. **Kaynak**altında **Seç'i** tıklatın. **Kaynak** seç sayfasında uyarı için VM'nizi seçin ve **Bitti'yi**tıklatın.
 1. **Koşul**altında **koşul ekle'yi** tıklatın. Kullanmak istediğiniz sinyali seçin, örneğin **Yüzde CPU** ve **Bitti'yi**tıklatın.
@@ -195,3 +198,5 @@ Uyarılar, uyarı tarafından tetiklenen eylem koleksiyonları olan eylem grupla
 * Runbook'u başlatmanın farklı yolları hakkında ayrıntılı bilgi [için](automation-starting-a-runbook.md)bkz.
 * Etkinlik günlüğü uyarısı nasıl oluşturulacak öğrenmek için [bkz.](../azure-monitor/platform/activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)
 * Neredeyse gerçek zamanlı bir uyarı oluşturmayı öğrenmek için azure [portalında bir uyarı kuralı oluşturma'ya](../azure-monitor/platform/alerts-metric.md?toc=/azure/azure-monitor/toc.json)bakın.
+* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.

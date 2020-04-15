@@ -6,39 +6,39 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/22/2019
-ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72901522"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383040"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 genel bakış
 
-Azure HDInsight, Azure'da açık kaynak kodlu Apache Hadoop ve Apache Spark analitiği için kurumsal müşteriler arasında en popüler hizmetlerden biridir. HDInsight 4.0, Apache Hadoop bileşenlerinin bulut dağılımıdır. Bu makalede en güncel Azure HDInsight sürümü hakkında bilgiler verilmekte ve yükseltme yöntemleri anlatılmaktadır.
+Azure HDInsight, Apache Hadoop ve Apache Spark için kurumsal müşteriler arasında en popüler hizmetlerden biridir. HDInsight 4.0, Apache Hadoop bileşenlerinin bulut dağılımıdır. Bu makalede en güncel Azure HDInsight sürümü hakkında bilgiler verilmekte ve yükseltme yöntemleri anlatılmaktadır.
 
 ## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0'daki yenilikler nelerdir?
 
-### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 ve LLAP
+### <a name="apache-hive-30-and-low-latency-analytical-processing"></a>Apache Hive 3.0 ve düşük gecikmeli analitik işleme
 
-Apache Hive düşük gecikmeli analitik işleme (LLAP), uzak bulut depolamadaki veriler üzerinde hızlı SQL sorgu sonuçları sunmak için kalıcı sorgu sunucularını ve bellek içi önbelleği kullanır. Hive LLAP, Hive sorgularını parçalar halinde yürüten bir dizi kalıcı daemon'lardan faydalanır. LLAP üzerinde sorgu yürütme LLAP kullanılmayan Hive ile benzerdir ve çalışan görevleri kapsayıcıların değil LLAP daemon'larının içinde çalışır.
+Apache Hive düşük gecikmeli analitik işleme (LLAP) kalıcı sorgu sunucuları ve bellek içi önbelleğe kullanır. Bu işlem, uzak bulut depolama veri hızlı SQL sorgu sonuçları sağlar. Hive LLAP, Hive sorgularının parçalarını çalıştıran kalıcı daemons kümesi kullanır. LLAP üzerinde sorgu yürütme LLAP kullanılmayan Hive ile benzerdir ve çalışan görevleri kapsayıcıların değil LLAP daemon'larının içinde çalışır.
 
 Hive LLAP hizmetinin avantajları şunlardır:
 
-* Performans ve ölçeklenebilirlikten ödün vermeden karmaşık birleşimler, alt sorgular, pencereleme işlevleri, sıralama, kullanıcı tanımlı işlevler ve karmaşık toplamalar gibi ayrıntılı SQL analiz işlemlerini gerçekleştirme becerisi.
+* Performans tan ve adaptasyondan ödün vermeden derin SQL analizleri yapma becerisi. Karmaşık birleştirmeler, alt sorgular, pencereleme işlevleri, sıralama, kullanıcı tanımlı işlevler ve karmaşık toplamalar gibi.
 
 * Etkileşimli sorguların verilerin hazırlandığı depolama alanındaki verilerle gerçekleştirilerek analitik işlem için verilerin depolamadan başka bir altyapıya taşınması ihtiyacınız ortadan kaldırma.
 
-* Sorgu sonuçlarını önbelleğe alarak önceden hesaplanan sorgu sonuçlarının yeniden kullanılmasıyla sorgu için gerekli küme görevlerinin çalıştırılması için gerekli sürenin ve kaynakların azaltılması.
+* Önbelleğe alma sorgusu sonuçları, önceden hesaplanmış sorgu sonuçlarının yeniden kullanılmasını sağlar. Bu önbellek, sorgu için gereken küme görevlerini çalıştırmak için harcanan zamandan ve kaynaklarından tasarruf sağlar.
 
 ### <a name="hive-dynamic-materialized-views"></a>Hive dinamik gerçekleştirilmiş görünümleri
 
-Hive artık veri ambarlarında sorgu işleme süreçlerini hızlandırmak için kullanılan dinamik gerçekleştirilmiş görünümleri veya ilgili özetlerin önceden hesaplanmasını desteklemektedir. Gerçekleştirilmiş görünümler yerel Hive ortamında depolanabilir ve LLAP hızlandırmasından sorunsuz bir şekilde faydalanabilir.
+Kovan şimdi dinamik materyalize görünümleri veya ilgili özetlerin önceden hesaplanmasını destekler. Görünümler, veri ambarlarında sorgu işlemeyi hızlandırır. Gerçekleştirilmiş görünümler yerel Hive ortamında depolanabilir ve LLAP hızlandırmasından sorunsuz bir şekilde faydalanabilir.
 
 ### <a name="hive-transactional-tables"></a>Hive işlem tabloları
 
-HDI 4.0, Hive ambarında bulunan işlem tabloları için bölünmezlik, tutarlılık, bağımsızlık ve kalıcılık (ACID) uyumluluğu gerektiren Apache Hive 3 bileşenine sahiptir. ACID uyumluluğuna sahip tablolar ve tablo verileri için erişim ve yönetim Hive tarafından gerçekleştirilir. Oluşturma, alma, güncelleştirme ve silme (CRUD) tablolarındaki verilerin İyileştirilmiş Satır Sütunu (ORC) dosya biçiminde olması gerekir ancak yalnızca ekleme yapılabilen tablolar tüm dosya biçimlerini destekler.
+HDI 4.0 Apache Hive 3 içerir. Kovan 3, Kovan ambarında yaşayan işlem tabloları için atomiklik, tutarlılık, izolasyon ve dayanıklılık uyumluluğu gerektirir. ACID uyumluluğuna sahip tablolar ve tablo verileri için erişim ve yönetim Hive tarafından gerçekleştirilir. Oluşturma, alma, güncelleştirme ve silme (CRUD) tablolarındaki veriler Optimize Edilmiş Satır Sütunu (ORC) dosya biçiminde olmalıdır. Yalnızca ekle tabloları tüm dosya biçimlerini destekler.
 
 * ACID v2 hem depolama biçimi hem de yürütme altyapısı alanında performans geliştirmelerine sahiptir.
 
@@ -56,7 +56,7 @@ HDI 4.0, Hive ambarında bulunan işlem tabloları için bölünmezlik, tutarlı
 
 ### <a name="apache-spark"></a>Apache Spark
 
-Apache Spark, güncelleştirilebilir tabloları ve ACID işlemlerini Hive Warehouse Connector ile alır. Hive Warehouse Connector, tam işlevlere erişmek için Hive işlem tablolarını Spark'ta dış tablo olarak kaydetmenize izin verir. Önceki sürümler yalnızca tablo bölümü değiştirmeyi destekliyordu. Hive Warehouse Connector ayrıca okuma ve yazmaları işlem akışına dönüştürmek ve Spark'tan Hive tablosu akışı gerçekleştirmek için Streaming DataFrames desteği sunar.
+Apache Spark, güncelleştirilebilir tabloları ve ACID işlemlerini Hive Warehouse Connector ile alır. Hive Warehouse Connector, tam işlevlere erişmek için Hive işlem tablolarını Spark'ta dış tablo olarak kaydetmenize izin verir. Önceki sürümler yalnızca tablo bölümü değiştirmeyi destekliyordu. Kovan Ambarı Bağlayıcısı, Akış Veri Çerçevelerini de destekler.  Bu işlem, Spark'tan işlemsel ve akışlı Kovan tablolarına okur ve yazar.
 
 Spark yürütücüleri doğrudan Hive LLAP daemon'larına bağlanarak verileri işlemsel bir şekilde alabilir ve bu sayede verilerin denetimi Hive'da kalır.
 
@@ -67,7 +67,7 @@ HDInsight 4.0'da Apache Spark şu senaryoları destekler:
 * Hive akış tablosundaki değişiklik akışında bir Spark akış işi çalıştırma.
 * Doğrudan bir Spark Yapılandırılmış Akış işinden ORC dosyası oluşturma.
 
-Artık Hive işlem tablolarına yanlışlıkla doğrudan Spark'tan erişmeye çalışma ve bunun sonucunda tutarsız sonuçlar, yinelenen veriler veya veri bozulmasıyla karşı karşıya kalma konusunda endişelenmenize gerek yok. HDInsight 4.0'da, Kıvılcım tabloları ve Hive tabloları ayrı Metastore'larda saklanır. Hive Data Warehouse Connector ile Hive işlem tablolarını açıkça Spark dış tabloları olarak kaydedebilirsiniz.
+Artık yanlışlıkla Doğrudan Spark'tan Hive işlem tablolarına erişmeye çalışma konusunda endişelenmenize gerek yok. Tutarsız sonuçlar, yinelenen veriler veya veri bozulması ile sonuçlanır. HDInsight 4.0'da, Kıvılcım tabloları ve Hive tabloları ayrı Metastore'larda saklanır. Hive Data Warehouse Connector ile Hive işlem tablolarını açıkça Spark dış tabloları olarak kaydedebilirsiniz.
 
 [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) hakkında daha fazla bilgi edinin.
 
@@ -83,9 +83,9 @@ HDI 4.0 sürümünde bulunan Apache Oozie 4.3.1'de aşağıdaki değişiklikler 
 
 ## <a name="how-to-upgrade-to-hdinsight-40"></a>HDInsight 4.0'a yükseltme
 
-Tüm ana sürümlerde olduğu gibi son sürümü üretim ortamına uygulamadan önce bileşenlerinizi ayrıntılı bir testten geçirmeniz önemlidir. HDInsight 4.0 yükseltme işlemine başlamanız için kullanılabilir, ancak HDInsight 3.6 kazara aksilikleri önlemek için varsayılan seçenektir.
+Üretim ortamında en son sürümü uygulamadan önce bileşenlerinizi iyice test edin. HDInsight 4.0 yükseltme işlemine başlamak için kullanılabilir. HDInsight 3.6, kazara aksilikleri önlemek için varsayılan seçenektir.
 
-HDInsight'ın önceki sürümlerinden HDInsight 4.0'a kadar desteklenen bir yükseltme yolu yoktur. Metastore ve blob veri biçimleri değiştiğinden, HDInsight 4.0 önceki sürümlerle uyumlu değildir. Yeni HDInsight 4.0 ortamınızı mevcut üretim ortamınızdan ayrı tutmanız önemlidir. HDInsight 4.0'ı geçerli ortamınıza dağıtırsanız, Metastore'uniz yükseltilir ve geri alınamaz.  
+HDInsight'ın önceki sürümlerinden HDInsight 4.0'a kadar desteklenen bir yükseltme yolu yoktur. Metastore ve blob veri biçimleri değiştiğinden, 4.0 önceki sürümlerle uyumlu değildir. Yeni HDInsight 4.0 ortamınızı mevcut üretim ortamınızdan ayrı tutmanız önemlidir. HDInsight 4.0'ı mevcut ortamınıza dağıtırsanız, Metastore'unuzun kalıcı olarak yükseltilir.  
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -93,8 +93,8 @@ HDInsight'ın önceki sürümlerinden HDInsight 4.0'a kadar desteklenen bir yük
 * HDInsight 4.0, Apache Storm'u desteklemiyor.
 * Kovan Görünümü artık HDInsight 4.0'da kullanılamıyor.
 * Apache Zeppelin'deki Shell yorumlayıcısı Spark ve Etkileşimli Sorgu kümelerinde desteklenmez.
-* Spark-LLAP kümesinde LLAP özelliğini *devre dışı* bırakamazsınız. LLAP özelliğini yalnızca kapatabilirsiniz.
-* Azure Data Lake Storage Gen2, Juypter notebook'larını Spark kümesine kaydedemez.
+* Spark-LLAP kümesinde LLAP özelliğini *devre dışı* bırakamazsınız. Yalnızca LLAP'yi kapatabilirsiniz.
+* Azure Veri Gölü Depolama Gen2, Bir Kıvılcım kümesinde Jupyter dizüstü bilgisayarları kaydedemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

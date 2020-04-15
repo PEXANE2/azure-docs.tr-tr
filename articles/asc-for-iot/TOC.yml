@@ -14,7 +14,7 @@
     - name: IoT için Azure Güvenlik Merkezi’ni kullanmaya başlama
       href: getting-started.md
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: iot-hub-integration.md
         - name: Güvenlik aracıları
           href: security-agents.md

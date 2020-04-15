@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd33d23a506bd86b9651af3d4c3bbca01673a7a4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705335"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312091"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>Azure portalını kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir uygulama ağ geçidi oluşturma
 
-Azure portalını, SSL sonlandırma sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz.
+AZURE portalını TLS sonlandırma sertifikasıiçeren bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz.
 
 Bu makalede şunları öğreneceksiniz:
 

@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 01/30/2020
 ms.author: victorh
-ms.openlocfilehash: f56929e14aef34f675139782328ed5c559df12c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198641"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312361"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Bir uygulama ağ geçidini dahili yük dengeleyicisi (ILB) uç noktası ile yapılandırma
 
 Azure Uygulama Ağ Geçidi, Internet'e bakan bir VIP ile veya Internet'e maruz kalmamış dahili bir uç noktayla yapılandırılabilir. Dahili uç nokta, ön uç için özel bir IP adresi kullanır ve bu adres *dahili yük dengeleyicisi (ILB) uç noktası*olarak da bilinir.
 
-Ön uçözel IP adresi kullanarak ağ geçidini yapılandırmak, Internet'e maruz olmayan şirket içi uygulamalar için yararlıdır. Ayrıca, Internet'e maruz kalmayan ancak yine de round-robin yük dağıtımı, oturum yapışkanlığı veya Güvenli Soketkatmanı (SSL) sonlandırma gerektiren bir güvenlik sınırında olan çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de yararlıdır.
+Ön uçözel IP adresi kullanarak ağ geçidini yapılandırmak, Internet'e maruz olmayan şirket içi uygulamalar için yararlıdır. Ayrıca, Internet'e maruz kalmayan ancak daha önce Güvenli Soket katmanı (SSL), sonlandırma olarak bilinen round-robin yük dağıtımı, oturum yapışkanlığı veya Aktarım Katmanı Güvenliği (TLS) gerektiren bir güvenlik sınırında olan çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de yararlıdır.
 
 Bu makale, Azure portalını kullanarak bir uygulama ağ geçidini ön uçözel IP adresiyle yapılandırma adımları boyunca size yol gösterilmektedir.
 

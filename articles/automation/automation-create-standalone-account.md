@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f06480767b697dca8fe41e484c02aefc58f040bf
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261339"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383314"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -92,11 +92,11 @@ Otomasyon hesabı başarıyla oluşturulduğunda bazı kaynaklar sizin için oto
 | AzureRunAsCertificate |Otomasyon hesabı oluşturulduğunda veya varolan bir hesap için PowerShell komut dosyası kullanılarak otomatik olarak oluşturulan bir sertifika kıymeti. Sertifika, Azure ile kimlik doğrulaması yaparak Azure Kaynak Yöneticisi kaynaklarını runbook'lardan yönetebilirsiniz. Bu sertifikanın bir yıllık kullanım ömrü vardır. |
 | AzureRunAsConnection |Otomasyon hesabı oluşturulduğunda veya varolan bir hesap için PowerShell komut dosyası kullanılarak otomatik olarak oluşturulan bir bağlantı varlığı. |
 
-## <a name="create-a-classic-run-as-account"></a>Klasik Run-As hesabı oluşturma
+## <a name="create-a-classic-run-as-account"></a>Hesap Olarak Klasik Çalıştır Oluşturma
 
-Bir Azure Otomasyon hesabı oluşturduğunuzda, Klasik Çalıştır-İş hesapları artık oluşturulmaz. Klasik Run-As hesabına hala ihtiyacınız varsa, lütfen aşağıdaki adımları gerçekleştirin.
+Bir Azure Otomasyon hesabı oluşturduğunuzda, Klasik Çalıştır Hesapları artık varsayılan olarak oluşturulmaz. Hala bir Klasik Çalıştır Hesabı gerekiyorsa:
 
-1. Otomasyon **Hesabı** sayfanızdan **Hesap Ayarları**altında Hesap **Olarak Çalıştır'ı** seçin.
+1. Otomasyon hesabınızdan **Hesap Ayarları**altında Hesap **Olarak Çalıştır'ı** seçin.
 2. **Hesap Olarak Azure Klasik Çalıştır'ı**seçin.
 3. Klasik Çalıştır Hesabı Oluşturma'ya devam etmek için **Oluştur'u** tıklatın.
 
@@ -105,5 +105,6 @@ Bir Azure Otomasyon hesabı oluşturduğunuzda, Klasik Çalıştır-İş hesapla
 * Grafik yazma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu'nda Grafik yazma'ya](automation-graphical-authoring-intro.md)bakın.
 * PowerShell runbook'ları ile başlamak için [ilk PowerShell runbook'uma](automation-first-runbook-textual-powershell.md)bakın.
 * PowerShell iş akışı runbook'larına başlamak için [ilk PowerShell iş akışı çalışma kitabıma](automation-first-runbook-textual.md)bakın.
-* Python2 runbook'larını kullanmaya başlamak için bkz. [İlk Python2 runbook'um](automation-first-runbook-textual-python2.md).
-
+* Python 2 runbook'ları ile başlamak için [ilk Python2 runbook'uma](automation-first-runbook-textual-python2.md)bakın.
+* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.

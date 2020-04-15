@@ -1,28 +1,20 @@
 ---
 title: Tahmin puanları - LUIS
-titleSuffix: Azure Cognitive Services
 description: Tahmin puanı, luis API hizmetinin kullanıcı nın söyleyiş lerine dayalı tahmin sonuçları için sahip olduğu güven derecesini gösterir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.author: diberry
-ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74280817"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382372"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Tahmin puanları, amaç ve varlıklar için tahmin doğruluğunu gösterir
 
 Tahmin puanı, LUIS'in kullanıcı söyleyiş lerinin tahmin sonuçları için sahip olduğu güven derecesini gösterir.
 
-Tahmin puanı sıfır (0) ile bir (1) arasındadır. Luis skoruna bir örnek 0.99'dur. Düşük güven puanına örnek olarak 0,01'dir. 
+Tahmin puanı sıfır (0) ile bir (1) arasındadır. Luis skoruna bir örnek 0.99'dur. Düşük güven puanına örnek olarak 0,01'dir.
 
 |Puan değeri|Güvenilirlik|
 |--|--|
@@ -33,11 +25,11 @@ Tahmin puanı sıfır (0) ile bir (1) arasındadır. Luis skoruna bir örnek 0.9
 
 ## <a name="top-scoring-intent"></a>En çok puan lama niyeti
 
-Her söyleyiş tahmini bir üst puanlama niyet döndürür. Bu tahmin, tahmin puanlarının sayısal bir karşılaştırmasIdır. 
+Her söyleyiş tahmini bir üst puanlama niyet döndürür. Bu tahmin, tahmin puanlarının sayısal bir karşılaştırmasIdır.
 
 ## <a name="proximity-of-scores-to-each-other"></a>Puanların birbirine yakınlığı
 
-En iyi 2 puan aralarında çok küçük bir fark olabilir. LUIS, en yüksek skoru geri almaktan başka bir yakınlık göstermiyor.  
+En iyi 2 puan aralarında çok küçük bir fark olabilir. LUIS, en yüksek skoru geri almaktan başka bir yakınlık göstermiyor.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Tüm niyetler için tahmin puanını iade etme
 
@@ -74,9 +66,11 @@ Tahmin puanları, 0-1 aralığının üzerinde _görünarak_ üslü gösterimi `
 |--|--|
 |9.910309E-07|.0000009910309|
 
-## <a name="punctuation"></a>Noktalama işaretleri
+<a name="punctuation"></a>
 
-Noktalama işaretlerini kullanma veya yok sayma hakkında [daha fazla bilgi edinin.](luis-concept-utterance.md#punctuation-marks) 
+## <a name="application-settings"></a>Uygulama ayarları
+
+Aksama ve noktalama işaretlerinin tahmin puanlarını nasıl etkilediğini denetlemek için [uygulama ayarlarını](luis-reference-application-settings.md) kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

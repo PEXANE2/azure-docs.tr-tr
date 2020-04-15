@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 0e4214466a2650df833cebd704577114b8818690
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9e81efd826c78bfa1af5624272ae9b190cb54348
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259703"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313849"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolama alanında SQL veritabanına veri kopyalama
 Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki ardışık işlem, Azure Blob depolamasından azure SQL veritabanına verileri kopyalar. Bu öğreticideki yapılandırma düzeni, dosya tabanlı bir veri deposundan ilişkisel bir veri deposuna kopyalama için geçerlidir. Kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
@@ -199,11 +199,11 @@ Bu adımda, önceki adımda yayımladığınız işlem hattını el ile tetikler
 
 1. Soldaki **İzleyici** sekmesine gidin. El ile tetikleme tarafından tetiklenmiş bir işlem hattı çalıştırması görürsünüz. Etkinlik ayrıntılarını görüntülemek ve ardışık hattı yeniden çalıştırmak için **PIPELINE NAME** sütununaltındaki bağlantıları kullanabilirsiniz.
 
-    ![İşlem hattı çalıştırmalarını izleme](./media/tutorial-copy-data-portal/monitor-pipeline.png)
+    [![İzleme boru hattı çalışır](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png)](./media/tutorial-copy-data-portal/monitor-pipeline-inline-and-expended.png#lightbox)
 
 1. Ardışık hatlar çalışmasıyla ilişkili etkinlik çalıştırmalarını görmek için **PIPELINE NAME** sütunundaki **CopyPipeline** bağlantısını seçin. Bu örnekte, yalnızca bir etkinlik vardır, bu nedenle listede yalnızca bir giriş görürsünüz. Kopyalama işlemi yle ilgili ayrıntılar için **ACTIVITY NAME** sütunundaki **Ayrıntılar** bağlantısını (gözlük simgesi) seçin. Tüm **ardışık hatlar,** Pipeline Runs görünümüne geri dönmek için en üstte çalışır. Görünümü yenilemek için **Yenile**’yi seçin.
 
-    ![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-portal/view-activity-runs.png)
+    [![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
 1. SQL veritabanında **emp** tablosuna iki satır daha eklendiğinden emin olun.
 
@@ -243,7 +243,7 @@ Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacak
 
 1. Tetiklenen işlem hattı çalıştırmalarını görmek için sol taraftaki **İzleyici** sekmesine gidin.
 
-    ![Tetiklenen işlem hattı çalıştırmaları](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)   
+    [![Tetiklenen işlem hattı çalıştırmaları](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/triggered-pipeline-runs-inline-and-expended.png#lightbox)
 
 1. **Pipeline Runs** görünümünden Tetikleyici **Çalışır** görünümüne geçmek için pencerenin sol tarafındaki **Tetik Çalışır'ı** seçin.
 

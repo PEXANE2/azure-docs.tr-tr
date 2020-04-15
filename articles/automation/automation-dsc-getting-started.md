@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2c33fbed6c547897847c79cc1260d2bdc9ec6b17
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: eb285d15814f1105462c414541657d43b5371d98
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010333"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383233"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırması ile başlayın
 
@@ -59,7 +59,7 @@ Düğümleri nasıl atadığınıza bağlı **olarak, Web Sunucusu** Windows Öz
         }
     }
     ```
-1. Dosyayı `TestConfig.ps1` olarak kaydedin.
+1. Dosyayı **TestConfig.ps1**olarak kaydedin.
 
 Bu yapılandırma, her düğüm bloğunda, **Web-Server** özelliğinin varlığını veya yokluğunu sağlayan [WindowsFeature kaynağında](/powershell/scripting/dsc/reference/resources/windows/windowsfeatureresource)bir kaynak çağırır.
 
@@ -105,7 +105,7 @@ Yapılandırmaları derleme hakkında daha fazla bilgi için Bkz. [DSC Yapıland
    ![Derleme düğmesini vurgulayan TestConfig yapılandırma sayfasının ekran görüntüsü](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
-> Azure Otomasyonu'nda bir yapılandırma derlediğinizde, oluşturulan düğüm yapılandırma MOF'lerini çekme sunucusuna otomatik olarak dağır.
+> Azure Otomasyonu'nda bir yapılandırma derlediğinizde, oluşturulan düğüm yapılandırmaM'daki MOF dosyalarını çekme sunucusuna otomatik olarak dağır.
 
 ## <a name="viewing-a-compilation-job"></a>Derleme işini görüntüleme
 
@@ -123,7 +123,7 @@ Bir derlemeye başladıktan sonra, **Yapılandırma** sayfasındaki **Derleme İ
 
 ## <a name="viewing-node-configurations"></a>Düğüm yapılandırmalarını görüntüleme
 
-Derleme işinin başarıyla tamamlanması, bir veya daha fazla yeni düğüm yapılandırması oluşturur. Düğüm yapılandırması, çekme sunucusuna dağıtılan ve bir veya daha fazla düğüm tarafından çekilmeye ve uygulanmaya hazır bir MOF belgesidir. **Durum yapılandırması (DSC)** sayfasında Otomasyon hesabınızdaki düğüm yapılandırmalarını görüntüleyebilirsiniz. Düğüm yapılandırması *ConfigurationName*formu ile bir ad vardır. *DüğümAdı*.
+Derleme işinin başarıyla tamamlanması, bir veya daha fazla yeni düğüm yapılandırması oluşturur. Düğüm yapılandırması, çekme sunucusuna dağıtılan ve bir veya daha fazla düğüm tarafından çekilmeye ve uygulanmaya hazır bir MOF belgesidir. **Durum yapılandırması (DSC)** sayfasında Otomasyon hesabınızdaki düğüm yapılandırmalarını görüntüleyebilirsiniz. Düğüm yapılandırmasının formu `ConfigurationName.NodeName`olan bir adı vardır.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Solda, Tüm **kaynakları** ve ardından Otomasyon hesabınızın adını tıklatın.
@@ -134,7 +134,7 @@ Derleme işinin başarıyla tamamlanması, bir veya daha fazla yeni düğüm yap
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırması ile yönetim için bir Azure VM'ye binme
 
-Azure VM'leri (Hem Klasik hem de Kaynak Yöneticisi), şirket içi VM'leri, Linux makinelerini, AWS VM'leri ve şirket içi fiziksel makineleri yönetmek için Azure Otomasyon Durumu Yapılandırmasını kullanabilirsiniz. Bu makalede, yalnızca Azure Kaynak Yöneticisi VM'leri yerleşik olarak nasıl atabildiğinizi öğrenirsiniz. Diğer makine türlerine binme hakkında daha fazla bilgi için Azure [Otomasyon Durumu Yapılandırması tarafından yönetilen Onboarding makineleri](automation-dsc-onboarding.md)bölümüne bakın.
+Azure VM'leri (hem klasik hem de Kaynak Yöneticisi), şirket içi VM'leri, Linux makinelerini, AWS VM'leri ve şirket içi fiziksel makineleri yönetmek için Azure Otomasyon Durumu Yapılandırmasını kullanabilirsiniz. Bu makalede, yalnızca Azure Kaynak Yöneticisi VM'leri yerleşik olarak nasıl atabildiğinizi öğrenirsiniz. Diğer makine türlerine binme hakkında daha fazla bilgi için Azure [Otomasyon Durumu Yapılandırması tarafından yönetilen Onboarding makineleri](automation-dsc-onboarding.md)bölümüne bakın.
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırması tarafından yönetim için bir Azure Kaynak Yöneticisi VM'de
 

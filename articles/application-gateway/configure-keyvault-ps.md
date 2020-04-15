@@ -1,5 +1,5 @@
 ---
-title: Key Vault sertifikaları ile SSL sonlandırma yapılandırma - PowerShell
+title: TlS sonlandırmaişlemini Key Vault sertifikalarıyla yapılandırın - PowerShell
 titleSuffix: Azure Application Gateway
 description: HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Azure Uygulama Ağ Geçidi'ni Key Vault ile nasıl entegre edebileceğinizi öğrenin.
 services: application-gateway
@@ -8,20 +8,20 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
-ms.openlocfilehash: 15e10d34120ab5475f241235bbebeb0c7689ca14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1979f759f5a1b037adfd7b67a7be50cbba0f596f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371220"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312208"
 ---
-# <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell'i kullanarak SSL sonlandırmaişlemini Key Vault sertifikalarıyla yapılandırın
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Azure PowerShell'i kullanarak TLS sonlandırmaişlemini Key Vault sertifikalarıyla yapılandırın
 
-[Azure Key Vault,](../key-vault/key-vault-overview.md) sırları, anahtarları ve SSL sertifikalarını korumak için kullanabileceğiniz platform tarafından yönetilen gizli bir mağazadır. Azure Application Gateway, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Bu destek Uygulama Ağ Geçidi v2 SKU ile sınırlıdır.
+[Azure Key Vault,](../key-vault/key-vault-overview.md) sırları, anahtarları ve TLS/SSL sertifikalarını korumak için kullanabileceğiniz platform tarafından yönetilen gizli bir mağazadır. Azure Application Gateway, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Bu destek Uygulama Ağ Geçidi v2 SKU ile sınırlıdır.
 
-Daha fazla bilgi için [Key Vault sertifikalarıile SSL sonlandırma'ya](key-vault-certs.md)bakın.
+Daha fazla bilgi [için, Key Vault sertifikaları ile TLS sonlandırma](key-vault-certs.md)bakın.
 
-Bu makalede, anahtar kasanızı SSL sonlandırma sertifikaları için uygulama ağ geçidinizle tümleştirmek için azure PowerShell komut dosyasının nasıl kullanılacağı gösterilmektedir.
+Bu makalede, tls/SSL sonlandırma sertifikaları için anahtar kasanızı uygulama ağ geçidinizle tümleştirmek için azure PowerShell komut dosyasının nasıl kullanılacağı gösterilmektedir.
 
 Bu makalede, Azure PowerShell modülü sürümü 1.0.0 veya sonrası gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). Bu makaledeki komutları çalıştırmak için, çalıştırarak `Connect-AzAccount`Azure ile bir bağlantı oluşturmanız da gerekir.
 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> SSL sonlandırmanın düzgün çalışması için -EnableSoftDelete bayrağı kullanılmalıdır. [Key Vault soft-delete'i Portal üzerinden](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)yapılandırıyorsanız, bekletme süresi varsayılan değer olan 90 gün olarak tutulmalıdır. Uygulama Ağ Geçidi henüz farklı bir bekletme süresini desteklemez. 
+> DÜZGÜN çalışması için -EnableSoftDelete bayrağı TLS sonlandırma için kullanılmalıdır. [Key Vault soft-delete'i Portal üzerinden](../key-vault/key-vault-ovw-soft-delete.md#soft-delete-behavior)yapılandırıyorsanız, bekletme süresi varsayılan değer olan 90 gün olarak tutulmalıdır. Uygulama Ağ Geçidi henüz farklı bir bekletme süresini desteklemez. 
 
 ### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
@@ -102,7 +102,7 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-ssl-certificate-to-your-key-vault"></a>SSL sertifikasını anahtar kasanıza doğru işaretle
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>TLS/SSL sertifikasını anahtar kasanıza doğru tarayın
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[SSL sonlandırma hakkında daha fazla bilgi edinin](ssl-overview.md)
+[TLS sonlandırma hakkında daha fazla bilgi edinin](ssl-overview.md)

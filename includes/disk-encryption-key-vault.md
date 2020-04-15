@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: f2133524f57576c4646de9d4bf7f37b573a77e6d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 6f7f319d2ebb4cd39933addf04f249df02d7819f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80813803"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314107"
 ---
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 Az keyvault kullanarak bir anahtar atlama oluşturun Azure CLI komutu, [Yeni-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell komutu, [Azure portalı](https://portal.azure.com)veya [Kaynak Yöneticisi şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) [oluşturun.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)
 
 >[!WARNING]
-> Şifreleme sırlarının bölgesel sınırları aşmamasını sağlamak için Azure Disk Şifrelemesi, Anahtar Kasası ve VM'lerin aynı bölgede ve aynı abonelikte birlikte bulunmasını gerektirir. Şifrelenecek VM'ler ile aynı bölgede bulunan bir Anahtar Kasası oluşturun ve kullanın. 
+> Anahtar kasanız ve VM'leriniz aynı abonelikte olmalıdır. Ayrıca, şifreleme sırlarının bölgesel sınırları aşmamasını sağlamak için Azure Disk Şifrelemesi, Anahtar Kasası ve VM'lerin aynı bölgede birlikte bulunmasını gerektirir. Şifrelenecek VM'ler ile aynı abonelik te ve bölgede bulunan bir Anahtar Kasası oluşturun ve kullanın. 
 
 Her Key Vault'un benzersiz bir adı olmalıdır. Aşağıdaki örneklerde benzersiz-keyvault-adınızı> anahtar kasanızın adı ile <değiştirin.
 

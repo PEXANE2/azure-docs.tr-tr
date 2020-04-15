@@ -1,28 +1,28 @@
 ---
-title: PowerShell kullanarak SSL boşaltma - Azure Uygulama Ağ Geçidi
-description: Bu makalede, Azure klasik dağıtım modelini kullanarak SSL boşaltma ile bir uygulama ağ geçidi oluşturmak için yönergeler sağlar
+title: PowerShell kullanarak TLS boşaltma - Azure Uygulama Ağ Geçidi
+description: Bu makalede, Azure klasik dağıtım modelini kullanarak TLS boşaltma ile bir uygulama ağ geçidi oluşturmak için yönergeler sağlar
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: c456a0856adb0d36349b5f96ba0ab8bab3eec5c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ead16b61784b8073d50b7e0e6079805a1e48e9b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74047912"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312335"
 ---
-# <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>Klasik dağıtım modelini kullanarak SSL boşaltma için bir uygulama ağ geçidini yapılandırma
+# <a name="configure-an-application-gateway-for-tls-offload-by-using-the-classic-deployment-model"></a>Klasik dağıtım modelini kullanarak TLS boşaltma için bir uygulama ağ geçidini yapılandırma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](application-gateway-ssl-portal.md)
+> * [Azure portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-ssl-arm.md)
 > * [Azure klasik PowerShell](application-gateway-ssl.md)
 > * [Azure CLI](application-gateway-ssl-cli.md)
 
-Azure Application Gateway, web grubunda maliyetli SSL şifre çözme görevlerinin oluşmasından kaçınmak için Güvenli Yuva Katmanı (SSL) oturumunu sonlandırmak amacıyla yapılandırılabilir. SSL yük boşaltımı ön uç sunucusunun kurulumunu ve web uygulamasının yönetimini de basitleştirir.
+Azure Uygulama Ağ Geçidi, web çiftliğinde pahalı TLS şifre çözme görevleriniönlemek için ağ geçidindeki güvenli soketkatmanı (SSL) olarak bilinen Aktarım Katmanı Güvenliğini (TLS) sonlandıracak şekilde yapılandırılabilir. TLS boşaltma da ön uç sunucu kurulumu ve web uygulamasının yönetimini kolaylaştırır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -30,10 +30,10 @@ Azure Application Gateway, web grubunda maliyetli SSL şifre çözme görevlerin
 2. Geçerli bir alt ağla çalışan bir sanal ağa sahip olduğunuzu doğrulayın. Ağ geçidi hiçbir sanal makinenin veya bulut dağıtımının kullanmadığından emin olun. Uygulama ağ geçidi tek başına bir sanal ağ alt ağında olmalıdır.
 3. Uygulama ağ geçidini kullanmak üzere yapılandırdığınız sunucuların var olması veya sanal ağda veya genel bir IP adresi veya sanal IP adresi (VIP) atanmış olarak oluşturulan uç noktaları olmalıdır.
 
-Bir uygulama ağ geçidinde SSL boşaltmayapılandırmak için listelenen sırada aşağıdaki adımları tamamlayın:
+TLS boşaltmayı bir uygulama ağ geçidinde yapılandırmak için, listelenen sırada aşağıdaki adımları tamamlayın:
 
 1. [Uygulama ağ geçidi oluşturma](#create-an-application-gateway)
-2. [SSL sertifikalarını yükleme](#upload-ssl-certificates)
+2. [TLS/SSL sertifikalarını yükleme](#upload-tlsssl-certificates)
 3. [Ağ geçidini yapılandırma](#configure-the-gateway)
 4. [Ağ geçidi yapılandırmasını ayarlama](#set-the-gateway-configuration)
 5. [Ağ geçidini başlatma](#start-the-gateway)
@@ -55,7 +55,7 @@ Ağ geçidinin oluşturulduğunu doğrulamak için `Get-AzureApplicationGateway`
 Get-AzureApplicationGateway AppGwTest
 ```
 
-## <a name="upload-ssl-certificates"></a>SSL sertifikalarını yükleme
+## <a name="upload-tlsssl-certificates"></a>TLS/SSL sertifikalarını yükleme
 
 PFX formatındaki sunucu sertifikasını uygulama ağ geçidine yüklemek için girin. `Add-AzureApplicationGatewaySslCertificate` Sertifika adı kullanıcı tarafından seçilen bir addır ve uygulama ağ geçidi içinde benzersiz olmalıdır. Bu sertifika, uygulama ağ geçidindeki tüm sertifika yönetimi işlemlerinde bu adla anılır.
 
@@ -95,12 +95,12 @@ Değerler şunlardır:
 * **Arka uç sunucu havuzu**: Arka uç sunucuların IP adresleri listesi. Listelenen IP adresleri sanal ağ alt ağına ait olmalı veya genel bir IP veya VIP adresi olmalıdır.
 * **Arka uç sunucu havuzu ayarları**: Her havuzda bağlantı noktası, protokol ve çerez tabanlı yakınlık gibi ayarlar bulunur. Bu ayarlar bir havuza bağlıdır ve havuzdaki tüm sunuculara uygulanır.
 * **Ön uç bağlantı noktası**: Bu bağlantı noktası, uygulama ağ geçidinde açılan ortak bağlantı noktasıdır. Bu bağlantı noktasında trafik olursa arka uç sunuculardan birine yönlendirilir.
-* **Dinleyici**: Dinleyicinin bir ön uç bağlantı noktası, bir protokolü (Http veya Https; bu değerler büyük/küçük harf duyarlıdır) ve SSL sertifika adı (bir SSL boşaltma yapılandırıyorsanız) vardır.
+* **Dinleyici**: Dinleyicinin bir ön uç bağlantı noktası, bir protokol (Http veya Https; bu değerler büyük/ssl sertifika adı (TLS boşaltma yı yapılandırıyorsa) vardır.
 * **Kural**: Kural dinleyiciyi ve arka uç sunucu havuzunu bağlar ve trafiği belirli bir dinleyiciye çarptığında yönlendirecek arka uç sunucu havuzunu tanımlar. Şu anda yalnızca *temel* kural desteklenmektedir. *Temel* kural hepsini bir kez deneme yöntemiyle yük dağıtımıdır.
 
 **Ek yapılandırma notları**
 
-SSL sertifikaları yapılandırmada **HttpListener**’daki protokol **Https** (küçük/büyük harf duyarlı) ile değiştirilmelidir. **SslCert** öğesini [Upload SSL sertifikaları](#upload-ssl-certificates) bölümünde kullanılan değer kümesiyle **HttpListener'a** ekleyin. Ön uç bağlantı noktası **443**olarak güncellenmelidir.
+TLS/SSL sertifikaları yapılandırması **için, HttpListener'daki** protokol **Https** (büyük/küçük harf duyarlı) olarak değiştirilmelidir. [TlS/SSL sertifikaları yükle](#upload-tlsssl-certificates) bölümünde kullanılan aynı ada ayarlanan değerle **SslCert** öğesini **HttpListener'a** ekleyin. Ön uç bağlantı noktası **443**olarak güncellenmelidir.
 
 **Çerez tabanlı yakınlığı etkinleştirmek için**: İstemci oturumundan gelen bir isteğin her zaman web çiftliğinde aynı VM'ye yönlendirilmesini sağlamak için bir uygulama ağ geçidi ni yapılandırabilirsiniz. Bunu gerçekleştirmek için, ağ geçidinin trafiği uygun şekilde yönlendirmesine izin veren bir oturum çerezi ekleyin. Tanımlama bilgisi temelli benzeşimi etkinleştirmek için, **CookieBasedAffinity**’yi **BackendHttpSetting** öğesindeki **Enabled**’a ayarlayın.
 

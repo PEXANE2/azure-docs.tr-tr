@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: efa2885ce0534c5d78bb08bbf24da59850f6ea22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a171dc795e685655b5a3c73d088d3963c2aaa4ae
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075186"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312313"
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends-such-as-app-service"></a>Uygulama hizmeti gibi çok kiracılı arka uçlar için Uygulama Ağ Geçidi desteği
 
@@ -30,9 +30,9 @@ Application Gateway kullanıcılara, arka ucun ana bilgisayar adına göre istek
 
 Ana bilgisayar geçersiz kılma özelliği HTTP [ayarlarında](https://docs.microsoft.com/azure/application-gateway/configuration-overview#http-settings) tanımlanır ve kural oluşturma sırasında herhangi bir arka uç havuzuna uygulanabilir. Çok kiracılı arka uçlar için ana bilgisayar üstbilgisini ve SNI uzantısını geçersiz kılmanın aşağıdaki iki yolu desteklenir:
 
-- Ana bilgisayar adını, HTTP ayarlarına açıkça girilen sabit bir değere ayarlama yeteneği. Bu özellik, ana bilgisayar üstbilgisinin, belirli HTTP ayarlarının uygulandığı arka uç havuzuna yapılan tüm trafik için bu değere geçersiz kılınmasını sağlar. Uçtan uca SSL kullanılırken, geçersiz kılınan bu ana bilgisayar adı SNI uzantısında kullanılır. Bu özellik, bir arka uç havuz eksede gelen müşteri ana bilgisayar üstbilgisinden farklı bir ana bilgisayar üstbilgi beklediği senaryolara olanak tanır.
+- Ana bilgisayar adını, HTTP ayarlarına açıkça girilen sabit bir değere ayarlama yeteneği. Bu özellik, ana bilgisayar üstbilgisinin, belirli HTTP ayarlarının uygulandığı arka uç havuzuna yapılan tüm trafik için bu değere geçersiz kılınmasını sağlar. TLS'nin sonuna kadar kullanıldığında, bu geçersiz konak adı SNI uzantısında kullanılır. Bu özellik, bir arka uç havuz eksede gelen müşteri ana bilgisayar üstbilgisinden farklı bir ana bilgisayar üstbilgi beklediği senaryolara olanak tanır.
 
-- Arka uç havuz üyelerinin IP veya FQDN'sinden ana bilgisayar adını elde etme yeteneği. HTTP ayarları, tek bir arka uç havuzu üyesinden ana bilgisayar adı türetme seçeneğiyle yapılandırılırsa, arka uç havuzu üyesinin FQDN'sinden ana bilgisayar adını dinamik olarak seçme seçeneği de sağlar. Uçtan uca SSL kullanılırken, bu ana bilgisayar adı FQDN’den türetilir ve SNI uzantısında kullanılır. Bu özellik, bir arka uç havuzunun Azure web uygulamaları gibi iki veya daha fazla çok kiracılı PaaS hizmetine sahip olabileceği ve her üyeye istek ana bilgisayar üstbilgisinin FQDN'sinden türetilen ana bilgisayar adını içebileceği senaryolar sağlar. Bu senaryoyu uygulamak için, http ayarlarında arka [uç adresinden ana bilgisayar adını seç](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) adlı bir anahtar kullanırız ve bu anahtar, orijinal istekteki ana bilgisayar üstbilgisini arka uç havuzunda belirtilene dinamik olarak geçersiz kılar.  Örneğin, arka uç havuzunuz FQDN "contoso11.azurewebsites.net" ve "contoso22.azurewebsites.net" içeriyorsa, özgün isteğin ana bilgisayar üstbilgisi contoso.com veya contoso11.azurewebsites.net veya contoso22.azurewebsites.net istek uygun arka uç sunucusuna gönderildiğinde. 
+- Arka uç havuz üyelerinin IP veya FQDN'sinden ana bilgisayar adını elde etme yeteneği. HTTP ayarları, tek bir arka uç havuzu üyesinden ana bilgisayar adı türetme seçeneğiyle yapılandırılırsa, arka uç havuzu üyesinin FQDN'sinden ana bilgisayar adını dinamik olarak seçme seçeneği de sağlar. TlS uçtan uca kullanıldığında, bu ana bilgisayar adı FQDN'den türetilmiştir ve SNI uzantısında kullanılır. Bu özellik, bir arka uç havuzunun Azure web uygulamaları gibi iki veya daha fazla çok kiracılı PaaS hizmetine sahip olabileceği ve her üyeye istek ana bilgisayar üstbilgisinin FQDN'sinden türetilen ana bilgisayar adını içebileceği senaryolar sağlar. Bu senaryoyu uygulamak için, http ayarlarında arka [uç adresinden ana bilgisayar adını seç](https://docs.microsoft.com/azure/application-gateway/configuration-overview#pick-host-name-from-back-end-address) adlı bir anahtar kullanırız ve bu anahtar, orijinal istekteki ana bilgisayar üstbilgisini arka uç havuzunda belirtilene dinamik olarak geçersiz kılar.  Örneğin, arka uç havuzunuz FQDN "contoso11.azurewebsites.net" ve "contoso22.azurewebsites.net" içeriyorsa, contoso.com olan orijinal isteğin ana bilgisayar üstbilgisi, istek uygun arka uç sunucusuna gönderildiğinde contoso11.azurewebsites.net veya contoso22.azurewebsites.net geçersiz kılınacaktır. 
 
   ![web uygulaması senaryosu](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -40,11 +40,11 @@ Bu özellik sayesinde müşteriler, HTTP ayarları ve özel araştırmalardaki s
 
 ## <a name="special-considerations"></a>Özel hususlar
 
-### <a name="ssl-termination-and-end-to-end-ssl-with-multi-tenant-services"></a>SSL sonlandırma ve çok kiracıhizmetleri ile Sona SSL sonuna kadar
+### <a name="tls-termination-and-end-to-end-tls-with-multi-tenant-services"></a>TLS fesih ve çok kiracıhizmetleri ile TLS sonuna kadar
 
-Hem SSL sonlandırma hem de uçuçsA SSL şifrelemesi çok kiracılı hizmetlerle desteklenir. Uygulama ağ geçidindeki SSL sonlandırma için, uygulama ağ geçidi dinleyicisine eklenmesi için SSL sertifikası nın eklenmesi gerekir. Ancak, SSL'nin sona ermesi durumunda, Azure Uygulaması hizmeti web uygulamaları gibi güvenilir Azure hizmetleri, uygulama ağ geçidinde arka uçların beyaz listeye alınmasını gerektirmez. Bu nedenle, kimlik doğrulama sertifikaları eklemenize gerek yoktur. 
+Hem TLS sonlandırma hem de uca TLS şifrelemesi çok kiracılı hizmetlerle desteklenir. Uygulama ağ geçidinde TLS sonlandırma için, uygulama ağ geçidi dinleyicisine eklenmesi için TLS sertifikası nın eklenmesi gerekmektedir. Ancak, TLS'nin sona ermesi durumunda, Azure Uygulaması hizmeti web uygulamaları gibi güvenilir Azure hizmetleri, uygulama ağ geçidinde arka uçların beyaz listeye alınmasını gerektirmez. Bu nedenle, kimlik doğrulama sertifikaları eklemenize gerek yoktur. 
 
-![sonuna kadar SSL](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
+![UÇUCA TLS](./media/application-gateway-web-app-overview/end-to-end-ssl.png)
 
 Yukarıdaki resimde, Uygulama hizmeti arka uç olarak seçildiğinde kimlik doğrulama sertifikaları eklemezorunluluğu olmadığına dikkat edin.
 

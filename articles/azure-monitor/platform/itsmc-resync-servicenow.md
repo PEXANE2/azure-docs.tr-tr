@@ -6,19 +6,19 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 9d32b66b7e3ab27012ee671ba8d70735dce73884
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274282"
+ms.locfileid: "81313677"
 ---
 # <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow eşitleme sorunları el ile nasıl düzeltilir?
 
-Azure Monitor, üçüncü taraf BT Hizmet Yönetimi (ITSM) sağlayıcılarına bağlanabilir. ServiceNow bu sağlayıcılardan biridir. 
+Azure Monitor, üçüncü taraf BT Hizmet Yönetimi (ITSM) sağlayıcılarına bağlanabilir. ServiceNow bu sağlayıcılardan biridir.
 
 Güvenlik nedeniyle ServiceNow ile bağlantınız için kullanılan kimlik doğrulama belirtecinizi yenilemeniz gerekebilir.
-Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki eşitleme işlemini kullanın: 
+Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki eşitleme işlemini kullanın:
 
 
 1. En üst arama başlığında çözümü arayın ve ilgili çözümleri seçin

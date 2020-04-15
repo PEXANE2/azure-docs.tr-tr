@@ -3,20 +3,20 @@ title: Azure Ön Kapı - Sık Sorulan Sorular
 description: Bu sayfa, Azure Ön Kapı hakkında sık sorulan soruların yanıtlarını sağlar
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: sohamnchatterjee
 ms.service: frontdoor
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/08/2019
-ms.author: sharadag
-ms.openlocfilehash: 0fe5d245d629c731a47ca5441afd2a3388a22de4
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/13/2020
+ms.author: sohamnc
+ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878026"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313765"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Ön Kapı için sık sorulan sorular
 
@@ -159,7 +159,11 @@ Eylül 2019'dan sonra oluşturulan tüm Ön Kapı profilleri varsayılan minimum
 
 ### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Ön Kapı tarafından desteklenen mevcut şifreleme paketleri nelerdir?
 
-Azure Ön Kapı tarafından desteklenen mevcut şifreleme paketleri şunlardır:
+TLS1.2 için aşağıdaki şifre paketleri desteklenir
+
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+
+TLS1.0/1.1 özellikli özel etki alanları kullanırken aşağıdaki şifre paketleri desteklenir:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384

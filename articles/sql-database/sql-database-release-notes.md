@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/14/2020
 ms.author: sstein
-ms.openlocfilehash: b677fd7fe2b14e1c42443478a887ddfa2481dfbf
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7d922aa0727ad28054d050a29039951d3f04985f
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011455"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383380"
 ---
 # <a name="sql-database-release-notes"></a>SQL Veritabanı sürüm notları
 
@@ -49,6 +49,7 @@ Bu makalede, şu anda genel önizlemede olan SQL Veritabanı özellikleri listel
 | <a href="https://aka.ms/managed-instance-aadlogins">Örnek düzeyinde Azure AD sunucu ilkeleri (oturum açmalar)</a> | <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">DıŞ Sağlayıcı deyiminden CREATE Gİrİşİ'ni</a> kullanarak sunucu düzeyinde oturum açmalar oluşturun. |
 | [İşlemsel Çoğaltma](sql-database-managed-instance-transactional-replication.md) | Tablolarınızdaki değişiklikleri Yönetilen Örnekler, Tek Veritabanları veya SQL Server örneklerine yerleştirilen diğer veritabanlarına çoğaltmaveya diğer Yönetilen Örnekler veya SQL Server örneğinde bazı satırlar değiştirildiğinde tablolarınızı güncelleştirin. Bilgi için bkz. [Azure SQL Veritabanı yönetilen örnek veritabanında çoğaltmayı yapılandırma.](replication-with-sql-database-managed-instance.md) |
 | Tehdit algılama |Bilgi için bkz: [Azure SQL Veritabanı yönetilen örneğinde tehdit algılamayı yapılandırma.](sql-database-managed-instance-threat-detection.md)|
+| Uzun süreli yedek saklama | Bilgi için bkz: [Azure SQL Veritabanı yönetilen örneğinde uzun vadeli yedekleme bekletme](sql-database-managed-instance-long-term-backup-retention-configure.md)yapılandırma. | 
 
 ---
 
@@ -167,7 +168,7 @@ Veritabanı arası Hizmet Aracısı iletişim kutuları, hizmet katmanı işlemi
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Azure AD oturum açma türlerinin kişileştirilmesi desteklenmiyor
 
 AAD ilkelerini kullanarak `EXECUTE AS USER` veya `EXECUTE AS LOGIN` aşağıdaki kimliğin kullanılması desteklenmez:
--   Diğer adlar aad kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
+-    Diğer adlar aad kullanıcıları. Bu durumda `15517`aşağıdaki hata döndürülür.
 - AAD uygulamaları veya hizmet ilkelerine dayalı AAD girişleri ve kullanıcıları. Bu durumda `15517` aşağıdaki hatalar döndürülür ve `15406`.
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querysp_send_db_mail'da desteklenmeyen parametre

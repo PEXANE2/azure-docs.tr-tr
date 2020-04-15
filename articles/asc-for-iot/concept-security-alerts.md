@@ -1,5 +1,5 @@
 ---
-title: IoT için Azure Güvenlik Merkezi için güvenlik uyarı kılavuzu| Microsoft Dokümanlar
+title: Yerleşik & özel uyarılar listesi
 description: IoT özellikleri ve hizmetleri için Azure Güvenlik Merkezi'ni kullanarak güvenlik uyarıları ve önerilen düzeltme hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 7a319baeba3d34f3d3056ce9b42f2e733b5a874f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74a6adbd2415cfcf7d5d48cff01d189cfd8b73a5
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78296142"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311480"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT için Azure Güvenlik Merkezi güvenlik uyarıları
 
@@ -32,11 +32,9 @@ Bu makalede, IoT Hub ve/veya IoT aygıtlarınızda tetiklenebilecek yerleşik uy
 Yerleşik uyarılara ek olarak, IoT için Azure Güvenlik Merkezi, beklenen IoT Hub'ı ve/veya aygıt davranışına dayalı özel uyarılar tanımlamanıza olanak tanır.
 Daha fazla ayrıntı için [özelleştirilebilir uyarılara](concept-customizable-security-alerts.md)bakın.
 
-
-
 ## <a name="built-in-alerts-for-iot-devices"></a>IoT aygıtları için yerleşik uyarılar
 
-| Adı | Severity | veri kaynağı | Açıklama | Önerilen düzeltme adımları|                  
+| Adı | Severity | veri kaynağı | Açıklama | Önerilen düzeltme adımları|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Yüksek** önem derecesi|  |  |  |
 |   İkili Komut Satırı   | Yüksek | Aracı | LA Linux ikilisi çağrıldı/komut satırından yürütüldü algılandı. Bu işlem yasal etkinlik veya cihazınızın gizliliğinin ihlal olduğunu gösteren bir gösterge olabilir.|   Bu komutu çalıştıran kullanıcıyla gözden geçirin ve bunun yasal olarak aygıtta çalışması beklenen bir şey olup olmadığını kontrol edin. Değilse, bilgi güvenliği ekibinize uyarıyı artırın. |
@@ -52,7 +50,7 @@ Daha fazla ayrıntı için [özelleştirilebilir uyarılara](concept-customizabl
 |  Fairware ransomware benzer davranış tespit  | Orta | Aracı       | Ana bilgisayar verilerinin analizi kullanılarak algılanan şüpheli konumlara uygulanan rm -rf komutlarının yürütülmesi. rm -rf dosyaları özyinelemeli olarak sildiği için, normalde yalnızca ayrı klasörlerde kullanılır. Bu durumda, büyük miktarda veri kaldırabilecek bir konumda kullanılıyor. Fairware ransomware bu klasörde rm -rf komutları yürütmek için bilinir. |Komutu çalıştıran kullanıcıyla bu, aygıtta görmeyi beklediğiniz yasal etkinlikti. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |  Ransomware benzer davranış tespit  | Orta | Aracı       | Kullanıcıların kendi sistemine veya kişisel dosyalarına erişmesini engelleyebilecek ve erişim kazanmak için fidye ödemesi talep eden bilinen fidye yazılımına benzer dosyaların yürütülmesi.|Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |   Kripto sikke madenci konteyner görüntü tespit | Orta                   | Aracı       | Konteyner bilinen dijital para madenciliği görüntüleri çalışan algılama. |  1. Bu davranış amaçlanmamışsa, ilgili kapsayıcı görüntüsünü silin.<br> 2. Docker daemon'a güvenli olmayan bir TCP soketi aracılığıyla erişilemediğinden emin olun.<br> 3. Bilgi güvenliği ekibine uyarıyı artırın.|
-|  Kripto sikke madenci görüntü  | Orta| Aracı       | Normalde dijital para birimi madenciliği ile ilişkili bir işlemin yürütülmesi algılandı.| Bu, aygıtta yasal bir etkinlik olup olmadığını komutu çalıştıran kullanıcıyla doğrulayın. Değilse, bilgi güvenliği ekibine uyarıyı artırın.| 
+|  Kripto sikke madenci görüntü  | Orta| Aracı       | Normalde dijital para birimi madenciliği ile ilişkili bir işlemin yürütülmesi algılandı.| Bu, aygıtta yasal bir etkinlik olup olmadığını komutu çalıştıran kullanıcıyla doğrulayın. Değilse, bilgi güvenliği ekibine uyarıyı artırın.|
 |   Nohup komutunun şüpheli kullanımı algılandı | Orta | Aracı       | Ana bilgisayarda nohup komutunun şüpheli kullanımı algılandı. Kötü niyetli aktörler genellikle geçici bir dizinden nohup komutunu çalıştırarak çalıştırılabilirlerinin arka planda çalışmasına izin verir. Bu komutun geçici bir dizinde bulunan dosyalarda çalıştırDığını görmek beklenmiyor veya olağan bir davranış. |Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |   Useradd komutunun şüpheli kullanımı algılandı  | Orta      | Aracı       | Aygıtta algılanan useradd komutunun şüpheli kullanımı. |Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |  TCP sokettarafından maruz Docker daemon  | Orta | Aracı | Makine günlükleri, Docker daemon'unuzun (dockerd) bir TCP soketi ortaya çıkardığını gösterir. Varsayılan olarak, Docker yapılandırması, bir TCP soketi etkinleştirildiğinde şifreleme veya kimlik doğrulaması kullanmaz. Varsayılan Docker yapılandırması, ilgili bağlantı noktasına erişimi olan herkes tarafından Docker daemon'una tam erişim sağlar.|Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
@@ -60,7 +58,7 @@ Daha fazla ayrıntı için [özelleştirilebilir uyarılara](concept-customizabl
 |  Bilinen kötü amaçlı bir kaynaktan dosya karşıdan yüklemeleri algılandı   | Orta  | Aracı       |  Bilinen bir kötü amaçlı yazılım kaynağından dosya indirilir.|Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |   htaccess dosya erişimi algılandı | Orta                       | Aracı       | Ana bilgisayar verilerinin analizi, bir htaccess dosyasının olası manipülasyonunu algılandı. Htaccess, temel yeniden yönlendirme işlevselliği ve temel parola koruması gibi daha gelişmiş işlevler de dahil olmak üzere Apache Web yazılımını çalıştıran bir web sunucusunda birden çok değişiklik yapmanızı sağlayan güçlü bir yapılandırma dosyasıdır. Kötü niyetli aktörler genellikle kalıcılık kazanmak için tehlikeye makinelerde htaccess dosyalarını değiştirmek. |Bunun ev sahibinde beklenen yasal etkinlik olduğunu doğrulayın. Değilse, bilgi güvenliği ekibinize uyarıyı artırın.|
 |  Bilinen saldırı aracı  | Orta                                   | Aracı       | Genellikle kötü niyetli kullanıcılarla ilişkili bir araç bir şekilde diğer makinelere saldıran algılandı. |Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.|
-|  IoT aracısı, modül ikiz yapılandırmasını ayrışdırmayı denedi ve başaramadı | Orta  | Aracı       | IoT güvenlik aracısı için Azure Güvenlik Merkezi, yapılandırma nesnesindeki tür uyuşmazlıkları nedeniyle modül ikiz yapılandırmasını ayrıştıramadı|Modül ikiz yapılandırmanızı IoT aracı yapılandırma şemasına karşı doğrulayın, tüm uyuşmazlıkları düzeltin. 
+|  IoT aracısı, modül ikiz yapılandırmasını ayrışdırmayı denedi ve başaramadı | Orta  | Aracı       | IoT güvenlik aracısı için Azure Güvenlik Merkezi, yapılandırma nesnesindeki tür uyuşmazlıkları nedeniyle modül ikiz yapılandırmasını ayrıştıramadı|Modül ikiz yapılandırmanızı IoT aracı yapılandırma şemasına karşı doğrulayın, tüm uyuşmazlıkları düzeltin.
 |  Yerel ev sahibi keşif tespit  | Orta | Aracı       | Normalde ortak Linux bot keşif ile ilişkili bir komutun yürütülmesi algılandı. |Yasal bir kullanıcı tarafından yürütüldünden şüpheleninen komut satırını gözden geçirin. Değilse, bilgi güvenliği ekibinize uyarıyı artırın.
 |  Komut dosyası yorumlayıcısı ve dosya uzantısı arasındaki uyuşmazlık  | Orta | Aracı       | Komut dosyası yorumlayıcısı ile giriş olarak sağlanan komut dosyası dosyasının uzantısı arasındaki uyuşmazlık algılandı. Bu tür uyuşmazlıklar genellikle saldırgan komut dosyası yürütmeleri ile ilişkilidir. |Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.
 |  Olası arka kapı algılandı  | Orta | Aracı |Şüpheli bir dosya indirildi ve ardından aboneliğinizdeki bir ana bilgisayarda çalıştırıldı. Bu tür bir etkinlik genellikle bir arka kapı kurulumu ile ilişkilidir. |Bu, aygıtta görmeyi beklediğiniz yasal etkinlikse, komutu çalıştıran kullanıcıyla gözden geçirin. Değilse, bilgi güvenliği ekibine uyarıyı artırın.

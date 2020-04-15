@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475183"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312044"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Uygulama Ağ Geçidi'ni ve Web Uygulaması Güvenlik Duvar'ı v1'den v2'ye geçirin
 
@@ -36,7 +36,7 @@ Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 
 * Yeni v2 ağ geçidiyeni genel ve özel IP adreslerine sahiptir. Varolan v1 ağ geçidiyle ilişkili IP adreslerini sorunsuz bir şekilde v2'ye taşımak mümkün değildir. Ancak, varolan (tahsis edilmemiş) bir genel veya özel IP adresini yeni v2 ağ geçidine ayırabilirsiniz.
 * V1 ağ geçidinizin bulunduğu sanal ağınızdaki başka bir alt ağ için bir IP adres alanı sağlamanız gerekir. Komut dosyası, v1 ağ geçidi olan varolan alt ağlarda v2 ağ geçidi oluşturamaz. Ancak, varolan alt ağ zaten bir v2 ağ geçidi varsa, yeterli IP adresi alanı olması koşuluyla çalışmaya devam edebilir.
-* Bir SSL yapılandırmasını geçirmek için v1 ağ geçidinizde kullanılan tüm SSL sertifikalarını belirtmeniz gerekir.
+* TLS/SSL yapılandırmasını geçirmek için v1 ağ geçidinizde kullanılan tüm TLS/SSL sertifikalarını belirtmeniz gerekir.
 * V1 ağ geçidiniz için FIPS modu etkinleştirilmişse, yeni v2 ağ geçidinize geçirilmez. FIPS modu v2'de desteklenmez.
 * v2 IPv6'yı desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilemiyor. Komut dosyasını çalıştırın, tamamlanmamış olabilir.
 * v1 ağ geçidinde yalnızca özel bir IP adresi varsa, komut dosyası yeni v2 ağ geçidi için ortak bir IP adresi ve özel bir IP adresi oluşturur. v2 ağ geçitleri şu anda yalnızca özel IP adreslerini desteklemiyor.
@@ -101,7 +101,7 @@ Betiği çalıştırmak için:
 
    * **subnetAddressRange: [String]: Gerekli** - Bu, yeni v2 ağ geçidinizi içeren yeni bir alt ağ geçidi için ayırdığınız (veya ayırmak istediğiniz) IP adresi alanıdır. Bu, CIDR gösteriminde belirtilmelidir. Örneğin: 10.0.0.0/24. Bu alt ağı önceden oluşturmanız gerekmez. Komut dosyası yoksa sizin için oluşturur.
    * **appgwName: [String]: İsteğe bağlı**. Bu, yeni Standard_v2 veya WAF_v2 ağ geçidinin adı olarak kullanacağınız bir dizedir. Bu parametre sağlanmazsa, varolan v1 ağ geçidinizin adı eklenmiş *_v2* sonekiyle birlikte kullanılır.
-   * **sslCertificates: [PSApplicationGatewaySslCertificate]: İsteğe bağlı**.  V1 ağ geçidinizden SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülle ayrılmış bir listesi yeni v2 ağ geçidine yüklenmelidir. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılan SSL sertifikalarınızın her biri için, burada `New-AzApplicationGatewaySslCertificate` gösterilen komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. SSL Cert dosyanıza ve parolanıza giden yola ihtiyacınız vardır.
+   * **sslCertificates: [PSApplicationGatewaySslCertificate]: İsteğe bağlı**.  V1 ağ geçidinizdeki TLS/SSL sertifikalarını temsil etmek için oluşturduğunuz PSApplicationGatewaySslCertificate nesnelerinin virgülden ayrılmış bir listesi yeni v2 ağ geçidine yüklenmelidir. Standart v1 veya WAF v1 ağ geçidiniz için yapılandırılan TLS/SSL sertifikalarınızın her biri için, burada `New-AzApplicationGatewaySslCertificate` gösterilen komut aracılığıyla yeni bir PSApplicationGatewaySslCertificate nesnesi oluşturabilirsiniz. TLS/SSL Cert dosyanıza ve şifrenize giden yola ihtiyacınız vardır.
 
      Bu parametre yalnızca v1 ağ geçidiniz veya WAF'ınız için yapılandırılan HTTPS dinleyicileriniz yoksa isteğe bağlıdır. En az bir HTTPS dinleyici kurulumunuz varsa, bu parametreyi belirtmeniz gerekir.
 

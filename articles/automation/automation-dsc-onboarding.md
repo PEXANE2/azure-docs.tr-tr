@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: c718b9a66b378044618c8c52eec3a1a498ace83c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80410944"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383196"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırması ile yönetim için onboarding makineleri
 
@@ -39,6 +39,9 @@ Buluttan makine yapılandırmasını yönetmeye hazır değilseniz, Azure Otomas
 > Yüklü Azure VM İstenen Durum Yapılandırması uzantısı sürümü 2,70'ten büyükse, Azure VM'leri Azure Otomasyon Durumu Yapılandırması ile yönetmek ek ücrete dahil değildir. Daha fazla bilgi için [**Otomasyon fiyatlandırma sayfasına**](https://azure.microsoft.com/pricing/details/automation/)bakın.
 
 Bu makalenin aşağıdaki bölümleri, yukarıda listelenen makinelerde Azure Otomasyon Durumu Yapılandırması'na nasıl binebileceğinizi açıklayınız.
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="onboarding-azure-vms"></a>Azure VM'lere Binme
 
@@ -280,15 +283,15 @@ Meta yapılandırmalar için proxy desteği, Windows PowerShell DSC motoru olan 
 PowerShell DSC LCM varsayılanları kullanım durumunuzla eşleşirse ve makinedeki makinelerin hem azure otomasyon durumu yapılandırmasından çekilmesini hem de Azure Otomasyon Durumu Yapılandırmasına rapor etmesini istiyorsanız, gerekli DSC metayapılandırmalarını Azure Otomasyon cmdlets'ini kullanarak daha basit bir şekilde oluşturabilirsiniz.
 
 1. PowerShell konsolunu veya VSCode'u yerel ortamınızdaki bir makinede yönetici olarak açın.
-2. Azure Kaynak Yöneticisi'ne bağlanma`Connect-AzAccount`
+2. [Connect-AzAccount'ı](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount?view=azps-3.7.0)kullanarak Azure Kaynak Yöneticisi'ne bağlanın.
 3. Düğümleri ayarladığınız Otomasyon hesabından, yerleşik olarak kullanmak istediğiniz makineler için PowerShell DSC metayapılandırmalarını indirin.
 
    ```powershell
    # Define the parameters for Get-AzAutomationDscOnboardingMetaconfig using PowerShell Splatting
    $Params = @{
-       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation Account
-       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation Account where you want a node on-boarded to
-       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the meta configuration will be generated for
+       ResourceGroupName = 'ContosoResources'; # The name of the Resource Group that contains your Azure Automation account
+       AutomationAccountName = 'ContosoAutomation'; # The name of the Azure Automation account where you want a node on-boarded to
+       ComputerName = @('web01', 'web02', 'sql01'); # The names of the computers that the metaconfiguration will be generated for
        OutputFolder = "$env:UserProfile\Desktop\";
    }
    # Use PowerShell splatting to pass parameters to the Azure Automation cmdlet being invoked
@@ -296,7 +299,7 @@ PowerShell DSC LCM varsayılanları kullanım durumunuzla eşleşirse ve makined
    Get-AzAutomationDscOnboardingMetaconfig @Params
    ```
 
-1. Artık **dscMetaConfigs**adlı bir klasörolmalıdır , onboard (bir yönetici olarak) için makineler için PowerShell DSC metayapılandırmaları içeren.
+1. Artık makineler için PowerShell DSC metayapılandırmalarını içeren bir **DscMetaConfigs** klasörüne sahip olmalısınız (yönetici olarak).
 
     ```powershell
     Set-DscLocalConfigurationManager -Path $env:UserProfile\Desktop\DscMetaConfigs
@@ -325,7 +328,7 @@ Bir makineyi Azure Otomasyon Durumu Yapılandırması'nda DSC düğümü olarak 
 
 - **DSC LCM değerlerinde değişiklikler.** Düğümilk kaydı sırasında belirlenen [PowerShell DSC LCM değerlerini](/powershell/scripting/dsc/managing-nodes/metaConfig4) değiştirmeniz gerekebilir, örneğin. `ConfigurationMode` Şu anda, bu DSC aracı değerlerini yalnızca yeniden kayıt yoluyla değiştirebilirsiniz. Bir özel durum düğüme atanan Düğüm Yapılandırma değeridir. Bunu doğrudan Azure Automation DSC'de değiştirebilirsiniz.
 
-Bu belgede açıklanan onboarding yöntemlerinden herhangi birini kullanarak düğümü başlangıçta kaydettiğiniz şekilde yeniden kaydedebilirsiniz. Yeniden kaydetmeden önce Azure Otomasyon Durumu Yapılandırması'ndan bir düğümü niçin kaldırmanız gerekmez.
+Bu belgede açıklanan onboarding yöntemlerinden herhangi birini kullanarak düğümü başlangıçta kaydettiğiniz gibi yeniden kaydedebilirsiniz. Yeniden kaydetmeden önce Azure Otomasyon Durumu Yapılandırması'ndan bir düğümü niçin kaldırmanız gerekmez.
 
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure sanal makinede sorun giderme
 
@@ -347,6 +350,7 @@ Sorun giderme hakkında daha fazla bilgi için [Azure Otomasyonu İstenen Durum 
 
 - Başlamak için Azure [Otomasyon Durumu Yapılandırması'na başlarken](automation-dsc-getting-started.md)bkz.
 - DSC yapılandırmalarını hedef düğümlerine atayabilmeniz için derleme hakkında bilgi edinmek için [bkz.](automation-dsc-compile.md)
-- PowerShell cmdlet başvurusu için Azure [Otomasyon Durumu Yapılandırma cmdlets'e](/powershell/module/az.automation#automation)bakın.
+- PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.
 - Fiyatlandırma bilgileri için Azure [Otomasyon Durumu Yapılandırma fiyatlandırması'na](https://azure.microsoft.com/pricing/details/automation/)bakın.
 - Sürekli bir dağıtım ardışık yapısında Azure Otomasyon Durumu Yapılandırması'nı kullanma örneği için [bkz.](automation-dsc-cd-chocolatey.md)

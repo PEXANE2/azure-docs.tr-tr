@@ -1,5 +1,5 @@
 ---
-title: Azure Kapsayıcı teknik varlıklarınızı hazırlayın
+title: Azure VM teknik varlık oluşturma
 description: Bu makalede, Azure Marketi'nde bir kapsayıcı teklifini yapılandırma adımları ve gereksinimleri açıklanmaktadır.
 author: anbene
 ms.author: mingshen
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 62c77681accb19183b5e8aa3ae8d80c225b2d284
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 262129084be5c6a68bfd8d8708c9a10fbb606144
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266025"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383739"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Azure Kapsayıcı teknik varlıklarınızı hazırlayın
+# <a name="create-an-azure-vm-technical-asset"></a>Azure VM teknik varlık oluşturma
 
 > [!IMPORTANT]
 > Azure Konteyner tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izne gelene kadar, lütfen Tekliflerinizi yönetmek için Bulut İş Ortağı Portalı için [Konteyner teknik varlıklarınızı hazırlayın](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) yönergeleri izleyin.

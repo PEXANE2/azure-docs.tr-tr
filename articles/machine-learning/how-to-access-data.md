@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 97aa446636ea3131246a06f69f74b5868abff608
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668654"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383435"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure depolama hizmetlerine bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,7 +73,7 @@ Datastores şu anda bağlantı bilgilerinin aşağıdaki matriste listelenen dep
 Bir çalışma alanı oluşturduğunuzda, bir Azure blob kapsayıcısı ve Azure dosya paylaşımı otomatik olarak çalışma alanına kaydedilir. Adlandırılmışlar `workspaceblobstore` ve `workspacefilestore`sırasıyla. `workspaceblobstore`çalışma alanı yapılarını ve makine öğrenimi deneme günlüklerinizi depolamak için kullanılır. `workspacefilestore`bilgi işlem örneği ile yetkilendirilen defterleri ve R komut dosyalarını [depolamak](https://docs.microsoft.com/azure/machine-learning/concept-compute-instance#accessing-files)için kullanılır. Kapsayıcı `workspaceblobstore` varsayılan veri deposu olarak ayarlanır.
 
 > [!IMPORTANT]
-> Azure Machine Learning tasarımcısı (önizleme), tasarımcı ana sayfasında bir örneği açtığınızda **azureml_globaldatasets** otomatik olarak adlı bir veri deposu oluşturur. Bu veri deposu yalnızca örnek veri kümeleri içerir. Lütfen **do not** bu veri mağazanı herhangi bir gizli veri erişimi için kullanmayın!
+> Azure Machine Learning tasarımcısı (önizleme), tasarımcı ana sayfasında bir örneği açtığınızda **azureml_globaldatasets** otomatik olarak adlı bir veri deposu oluşturur. Bu veri deposu yalnızca örnek veri kümeleri içerir. Lütfen **do not** bu veri mağazanı herhangi bir gizli veri erişimi için kullanmayın.
 > ![Tasarımcı örnek veri kümeleri için otomatik oluşturulan veri deposu](media/how-to-access-data/datastore-designer-sample.png)
 
 <a name="access"></a>
@@ -94,7 +94,7 @@ Tüm kayıt yöntemleri [`Datastore`](https://docs.microsoft.com/python/api/azur
 `register()` Yöntemi doldurmak için ihtiyacınız olan bilgileri [Azure portalında](https://portal.azure.com)bulabilirsiniz.
 Sol bölmede **Depolama Hesapları'nı** seçin ve kaydetmek istediğiniz depolama hesabını seçin. **Genel Bakış** sayfası hesap adı, kapsayıcı ve dosya paylaşım adı gibi bilgiler sağlar. 
 
-* Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için **Ayarlar** bölmesindeki **Hesap Anahtarları'na** gidin. 
+* Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için **Ayarlar** bölmesindeki **Access tuşlarına** gidin. 
 
 * Kiracı kimliği ve istemci kimliği gibi hizmet temel öğeleri için **Uygulama kayıtlarınıza** gidin ve hangi uygulamayı kullanmak istediğinizi seçin. İlgili **Genel Bakış** sayfası bu öğeleri içerir.
 
@@ -107,13 +107,13 @@ Aşağıdaki örnekler, bir Azure blob kapsayıcısının, Azure dosya paylaşı
 
 Azure blob kapsayıcısını veri deposu olarak [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)kaydetmek için .
 
-Aşağıdaki kod veri deposunu `blob_datastore_name` `ws` oluşturur ve çalışma alanına kaydeder. Bu veri deposu, `my-container-name` sağlanan hesap `my-account-name` anahtarını kullanarak depolama hesabındaki blob kapsayıcısına erişir.
+Aşağıdaki kod veri deposunu `blob_datastore_name` `ws` oluşturur ve çalışma alanına kaydeder. Bu veri deposu, `my-container-name` sağlanan hesap `my-account-name` erişim anahtarını kullanarak depolama hesabındaki blob kapsayıcısına erişir.
 
 ```Python
 blob_datastore_name='azblobsdk' # Name of the datastore to workspace
 container_name=os.getenv("BLOB_CONTAINER", "<my-container-name>") # Name of Azure blob container
 account_name=os.getenv("BLOB_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("BLOB_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 blob_datastore = Datastore.register_azure_blob_container(workspace=ws, 
                                                          datastore_name=blob_datastore_name, 
@@ -126,13 +126,13 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
 
 Azure dosya paylaşımını veri deposu olarak [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)kaydetmek için . 
 
-Aşağıdaki kod veri deposunu `file_datastore_name` `ws` oluşturur ve çalışma alanına kaydeder. Bu veri deposu, `my-fileshare-name` sağlanan hesap `my-account-name` anahtarını kullanarak depolama hesabındaki dosya paylaşımına erişir.
+Aşağıdaki kod veri deposunu `file_datastore_name` `ws` oluşturur ve çalışma alanına kaydeder. Bu veri deposu, `my-fileshare-name` sağlanan hesap `my-account-name` erişim anahtarını kullanarak depolama hesabındaki dosya paylaşımına erişir.
 
 ```Python
 file_datastore_name='azfilesharesdk' # Name of the datastore to workspace
 file_share_name=os.getenv("FILE_SHARE_CONTAINER", "<my-fileshare-name>") # Name of Azure file share container
 account_name=os.getenv("FILE_SHARE_ACCOUNTNAME", "<my-account-name>") # Storage account name
-account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account key
+account_key=os.getenv("FILE_SHARE_ACCOUNT_KEY", "<my-account-key>") # Storage account access key
 
 file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      datastore_name=file_datastore_name, 
@@ -181,7 +181,7 @@ Azure Machine Learning stüdyosunda birkaç adımda yeni bir veri deposu oluştu
   
 Formu doldurmak için ihtiyacınız olan bilgileri [Azure portalında](https://portal.azure.com)bulabilirsiniz. Sol bölmede **Depolama Hesapları'nı** seçin ve kaydetmek istediğiniz depolama hesabını seçin. **Genel Bakış** sayfası hesap adı, kapsayıcı ve dosya paylaşım adı gibi bilgiler sağlar. 
 
-* Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için **Ayarlar** bölmesindeki **Hesap Anahtarları'na** gidin. 
+* Hesap anahtarı veya SAS belirteci gibi kimlik doğrulama öğeleri için **Ayarlar** bölmesindeki **Access tuşlarına** gidin. 
 
 * Kiracı kimliği ve istemci kimliği gibi hizmet temel öğeleri için **Uygulama kayıtlarınıza** gidin ve hangi uygulamayı kullanmak istediğinizi seçin. İlgili **Genel Bakış** sayfası bu öğeleri içerir. 
 

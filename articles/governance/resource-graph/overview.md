@@ -3,16 +3,16 @@ title: Azure Kaynak Grafiği'ne Genel Bakış
 description: Azure Kaynak Grafiği hizmetinin, abonelikler ve kiracılar arasında kaynakların ölçek olarak karmaşık şekilde sorgulanmasına nasıl olanak sağladığını anlayın.
 ms.date: 03/02/2020
 ms.topic: overview
-ms.openlocfilehash: 38ead7be09e038b19c390acd9f10e1c0ccf9d858
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240061"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381527"
 ---
 # <a name="what-is-azure-resource-graph"></a>Azure Kaynak Grafı nedir?
 
-Azure Kaynak Grafiği, azure'da belirli bir abonelik kümesinde ölçekte sorgu yapma olanağı yla verimli ve performanslı kaynak araması sağlayarak Azure Kaynak Yönetimi'ni genişletmek üzere tasarlanmış bir hizmettir, böylece Ortam. Bu sorgular aşağıdaki özellikleri sağlar:
+Azure Kaynak Grafiği, ortamınızı etkin bir şekilde yönetebilmeniz için belirli bir abonelik kümesinde ölçekte sorgu yapma olanağıyla verimli ve performanslı kaynak araması sağlayarak Azure Kaynak Yönetimi'ni genişletmek üzere tasarlanan bir hizmettir. Bu sorgular aşağıdaki özellikleri sağlar:
 
 - Karmaşık filtreleme, gruplandırma ve kaynak özelliklerine göre sıralama ile kaynakları sorgulama özelliği.
 - Yönetişim gereksinimlerine dayalı kaynakları yinelemeli olarak keşfetme becerisi.
@@ -50,7 +50,7 @@ Kaynak Grafiği daha sonra veritabanını güncelleştirir. Kaynak Grafiği de d
 
 Azure Kaynak Grafiği'nin ne olduğunu daha iyi anladığınıza göre, sorguların nasıl oluşturulabildiğini öğrenelim.
 
-Azure Kaynak Grafiği'nin sorgu dilinin Azure Veri Gezgini tarafından kullanılan [Kusto sorgu dilini](../../data-explorer/data-explorer-overview.md) temel alan bir dil olduğunu anlamak önemlidir.
+Azure Kaynak Grafiği'nin sorgu dilinin Azure Veri Gezgini tarafından kullanılan [Kusto sorgu dilini](/azure/data-explorer/data-explorer-overview) temel alan bir dil olduğunu anlamak önemlidir.
 
 Önce, Azure Kaynak Grafiği ile kullanılabilecek işlemler ve işlevler hakkında ayrıntılar için, bkz. [Kaynak Grafiği sorgu dili](./concepts/query-language.md).
 Kaynakları göz atmak için, bkz, [kaynakları keşfedin](./concepts/explore-resources.md).

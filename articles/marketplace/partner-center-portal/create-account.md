@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: guide
-ms.date: 03/10/2020
-ms.openlocfilehash: 4c635d285f83e8e9c4c5547a9ee983686c507819
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: d62d05cdbda86af3c3a38757877624e87f6d1719
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261746"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383768"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>İş Ortağı Merkezi'nde ticari bir pazar hesabı oluşturma
 
@@ -100,7 +100,7 @@ Hesap bilgilerinizin elinizin altında olduğundan emin olun.
 
 Microsoft İş Ortağı Ağı'na zaten kaydolduysanız, hesabınızı doğrudan İş Ortağı Merkezi'nden oluşturmak için bu bölümü kullanın.
 
-Şirketinizin iş e-posta hesabı etki alanını yeni İş Ortağı Merkezi hesabınıza bağlamak için Microsoft İş Ortağı Ağı hesabınızla [İş Ortağı Merkezi'nde](https://partner.microsoft.com/) oturum açın. Şirket çalışanlarınız bu hesapları ilişkilendirerek iş hesabı kullanıcı adları ve parolalarıyla Ortak Merkezi'nde oturum açabilir.
+Şirketinizin iş e-posta hesabı etki alanını yeni İş Ortağı Merkezi hesabınıza bağlamak için Microsoft İş Ortağı Ağı hesabınızla [İş Ortağı Merkezi'nde](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın. Şirket çalışanlarınız bu hesapları ilişkilendirerek iş hesabı kullanıcı adları ve parolalarıyla Ortak Merkezi'nde oturum açabilir.
 
 >[!NOTE]
 >Şirketinizin zaten bir İş Ortağı Merkezi iş hesabı olup olmadığını, nasıl yeni bir iş hesabı oluşturup oluşturmayacağınızı veya İş Ortağı Merkezi ile kullanmak üzere birden çok iş hesabı nın nasıl ayarlanamayacağını kontrol etmek [için, şirket iş hesabınızı ve İş Ortağı Merkezinizi ziyaret edin.](./company-work-accounts.md)
@@ -130,7 +130,7 @@ Partner Center'da hesap oluşturduğunuz için teşekkür ederiz! Yardım için 
 >
 >Bireysel hesaplar, kendi başlarına çalışan tek geliştiriciler içindir. Şirket hesapları kuruluşlar ve işletmeler içindir. Şirket hesapları, ek işlevsellik içeren uygulamalar göndermenize erişim sağlar. Şirketiniz için hesap açma yetkisine sahip olduğunuzu doğrulamak için kayıt olduktan sonra şirket hesapları için daha fazla doğrulama yapmamız gerekir. Bu doğrulama birkaç günden birkaç haftaya kadar sürebilir ve genellikle şirketinize bir telefon görüşmesi içerir. Her iki hesap türü de uygulama, eklenti ve hizmet göndermenize olanak tanır. Daha fazla bilgi için [Hesap türlerine, konumlara ve ücretlere](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees)bakın.
 
-Aynı hesap altında Ticari Pazar Yeri programına kaydolmak için Microsoft İş Ortağı Merkezi hesabınızla [İş Ortağı Merkezi'nde](https://partner.microsoft.com/) oturum açın. Aynı hesabı kullanarak Commercial Marketplace'e kaydolarak, Partner Center'ın sol navigasyon menüsünde hem mevcut program kayıtlarınızı hem de Commercial Marketplace'i görebilirsiniz.
+Aynı hesap altında Ticari Pazar Yeri programına kaydolmak için Microsoft İş Ortağı Merkezi hesabınızla [İş Ortağı Merkezi'nde](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın. Aynı hesabı kullanarak Commercial Marketplace'e kaydolarak, Partner Center'ın sol navigasyon menüsünde hem mevcut program kayıtlarınızı hem de Commercial Marketplace'i görebilirsiniz.
 
 Oturum açtıktan sonra hesabınızı ayarlamayı bitirmek için aşağıdaki adımları kullanın:
 

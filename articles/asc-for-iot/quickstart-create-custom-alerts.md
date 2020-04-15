@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlatma: IoT için Azure Güvenlik Merkezi için özel uyarılar oluşturma'
+title: 'Quickstart: Özel uyarılar oluşturma'
 description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi için özel aygıt uyarılarını anlayın, oluşturun ve atayın.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,19 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: 063e5c9e7d75fd1c07d148c265b1fe64eee3cbc8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78303537"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310842"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Quickstart: Özel uyarılar oluşturma
 
+Özel güvenlik gruplarını ve uyarıları kullanarak, IoT çözümünüzde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinden ve kategorik aygıt bilgilerinden tam olarak yararlanır.
 
-Özel güvenlik gruplarını ve uyarıları kullanarak, IoT çözümünüzde daha iyi güvenlik sağlamak için uçtan uca güvenlik bilgilerinden ve kategorik aygıt bilgilerinden tam olarak yararlanır. 
-
-## <a name="why-use-custom-alerts"></a>Neden özel uyarılar kullanıyorsun? 
+## <a name="why-use-custom-alerts"></a>Neden özel uyarılar kullanıyorsun?
 
 IoT cihazlarınızı en iyi siz biliyorsunuz.
 
@@ -40,8 +39,8 @@ Güvenlik grupları, mantıksal aygıt gruplarını tanımlamanızı ve güvenli
 Bu gruplar, belirli donanıma sahip aygıtları, belirli bir konumda dağıtılan aygıtları veya özel gereksinimlerinize uygun başka bir grubu temsil edebilir.
 
 Güvenlik grupları **SecurityGroup**adlı bir aygıt çift etiket özelliği tarafından tanımlanır. Varsayılan olarak, IoT Hub'daki her IoT çözümcünün **varsayılan**adlı bir güvenlik grubu bulunuyor. Bir aygıtın güvenlik grubunu değiştirmek için **SecurityGroup** özelliğinin değerini değiştirin.
- 
-Örnek:
+
+Örneğin:
 
 ```
 {
@@ -61,26 +60,24 @@ Güvenlik grupları **SecurityGroup**adlı bir aygıt çift etiket özelliği ta
   "version": 4,
   "tags": {
     "SecurityGroup": "default"
-  }, 
+  },
 ```
 
-Aygıtlarınızı mantıksal kategorilere gruplandırmak için güvenlik gruplarını kullanın. Grupları oluşturduktan sonra, en etkili uçtan uca IoT güvenlik çözümü için onları seçtiğiniz özel uyarılara atayın. 
+Aygıtlarınızı mantıksal kategorilere gruplandırmak için güvenlik gruplarını kullanın. Grupları oluşturduktan sonra, en etkili uçtan uca IoT güvenlik çözümü için onları seçtiğiniz özel uyarılara atayın.
 
 ## <a name="customize-an-alert"></a>Bir uyarıyı özelleştirme
 
-1. IoT Hub'ınızı açın. 
-2. **Güvenlik** bölümünde **Özel uyarıları** tıklatın. 
-3. Özelleştirmeyi uygulamak istediğiniz bir güvenlik grubu seçin. 
-4. **Özel uyarı ekle'yi**tıklatın.
-5. Açılır listeden özel bir uyarı seçin. 
-6. Gerekli özellikleri edin, **Tamam'ı**tıklatın.
-7. **KAYDET'i**tıklattığınızdan emin olun. Yeni uyarıyı kaydetmeden, IoT Hub'ı bir sonraki kapattığınızda uyarı silinir.
+1. IoT Hub'ınızı açın.
+1. **Güvenlik** bölümünde **Özel uyarıları** tıklatın.
+1. Özelleştirmeyi uygulamak istediğiniz bir güvenlik grubu seçin.
+1. **Özel uyarı ekle'yi**tıklatın.
+1. Açılır listeden özel bir uyarı seçin.
+1. Gerekli özellikleri edin, **Tamam'ı**tıklatın.
+1. **KAYDET'i**tıklattığınızdan emin olun. Yeni uyarıyı kaydetmeden, IoT Hub'ı bir sonraki kapattığınızda uyarı silinir.
 
- 
 ## <a name="alerts-available-for-customization"></a>Özelleştirme için kullanılabilir uyarılar
 
-Azure Güvenlik Merkezi IoT, özel gereksinimlerinize göre özelleştirilebilen çok sayıda uyarı sunar. Uyarı nın önem derecesi, veri kaynağı, açıklama ve önerilen düzeltme adımlarımız için [özelleştirilebilir uyarı tablosunu](concept-customizable-security-alerts.md) gözden geçirin. 
-
+Azure Güvenlik Merkezi IoT, özel gereksinimlerinize göre özelleştirilebilen çok sayıda uyarı sunar. Uyarı nın önem derecesi, veri kaynağı, açıklama ve önerilen düzeltme adımlarımız için [özelleştirilebilir uyarı tablosunu](concept-customizable-security-alerts.md) gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

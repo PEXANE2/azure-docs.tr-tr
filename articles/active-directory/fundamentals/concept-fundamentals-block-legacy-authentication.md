@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63271567e70955f6dfb0b10a5c882b6dce9545ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55ce0233fdefb8360376e94c0baafabe4c62ced7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74932495"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81309205"
 ---
 # <a name="blocking-legacy-authentication"></a>Eski kimlik doğrulamayı engelleme
  
@@ -31,11 +31,11 @@ Bugün, tüm ödün veren oturum açma girişimlerinin çoğu eski kimlik doğru
 
 Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamaları olup olmadığını ve bunun genel dizininizi nasıl etkilediğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullanmadığınızı anlamak için kullanılabilir.
 
-1. Azure Active Directory > Oturum Açma > Azure portalına gidin.
-1. Sütunlar > İstemci Uygulaması'na tıklayarak gösterilmezse İstemci Uygulaması sütununa ekleyin.
-1. İstemci Uygulamasına göre filtre uygulayın > sunulan tüm Diğer İstemci seçeneklerini kontrol edin ve Uygula'yı tıklatın.
-1. Duruma göre filtre > Başarı'yı ve Uygula'yı tıklatın. 
-1. Tarih filtresini kullanarak gerekirse tarih aralığınızı genişletin.
+1.  **Azure portalı** > **Azure Active Directory** > **Oturum Açma'ya**gidin.
+1. > **Sütunlar**  **İstemci Uygulaması'na**tıklayarak gösterilmezse **İstemci Uygulaması** sütununa ekleyin.
+1. Sunulan tüm Eski Kimlik **Doğrulama İstemleri** seçeneklerini kontrol> **Istemci Uygulamasına**   göre filtreleyin.
+1. **Durum** > **Başarısına**göre filtrele. 
+1. **Tarih** filtresini kullanarak gerekirse tarih aralığınızı genişletin.
 
 Filtreleme yalnızca seçilen eski kimlik doğrulama protokolleri tarafından yapılan başarılı oturum açma denemelerini gösterir. Her bir oturum açma girişimine tıkladığınızda ek ayrıntılar gösterecektir. Tek bir veri satırı seçtikten sonra Temel Bilgiler sekmesi altındaki İstemci Uygulaması sütunu veya İstemci Uygulaması alanı hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir. Bu günlükler, hangi kullanıcıların hala eski kimlik doğrulamasına bağlı olduğunu ve kimlik doğrulama isteklerini gerçekleştirmek için hangi uygulamaların eski protokolleri kullandığını gösterir. Bu günlüklerde görünmeyen ve eski kimlik doğrulaması kullanmadığı doğrulanan kullanıcılar için Koşullu Erişim ilkesi uygulayın veya Temel ilkesini etkinleştirin: yalnızca bu kullanıcılar için eski kimlik doğrulamasını engelleyin.
 
@@ -62,7 +62,7 @@ Office 2013 Windows istemcilerini veya daha eskilerini kullanıyorsanız, Office
 
 Office 2010, modern kimlik doğrulamasını desteklemez. Office 2010'a sahip tüm kullanıcıları Office'in daha yeni bir sürümüne yükseltmeniz gerekir. Varsayılan olarak eski kimlik doğrulamasını engellediğimiz için Office 2016'ya veya daha sonrasına yükseltmenizi öneririz.
 
-MacOS kullanıyorsanız, Office for Mac 2016 veya sonraki bir süreye yükseltmenizi öneririz. Yerel posta istemcisini kullanıyorsanız, macos sürüm 10.14 veya daha sonra tüm cihazlarda olması gerekir.
+macOS kullanıyorsanız, Mac 2016 veya sonrası office'e yükseltmenizi öneririz. Yerel posta istemcisini kullanıyorsanız, macOS sürüm 10.14 veya daha sonra tüm cihazlarda olması gerekir.
 
 ### <a name="step-3-exchange-and-sharepoint"></a>Adım 3: Exchange ve SharePoint
 

@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: e0c1a93ef663762bec199abc5aa7eabbc821168d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5af6aec2267384c37f664522d075bf26c632e7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77654962"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382875"
 ---
 # <a name="availability-alerts"></a>Kullanılabilirlik uyarıları
 
@@ -33,6 +33,9 @@ Uyarılar artık varsayılan olarak otomatik olarak etkinleştirilir, ancak uyar
 2. İstenilen önem düzeyini, kural açıklamasını ve en önemlisi - bu uyarı kuralı için kullanmak istediğiniz bildirim tercihlerine sahip eylem grubu.
 
    ![Kaydedin'den sonra edin](./media/availability-alerts/set-action-group.png)
+
+> [!NOTE]
+> Bu deneyim le oluşturulan kullanılabilirlik uyarıları devlet tabanlıdır. Bu, uyarı ölçütleri karşılandığında site nin kullanılamadığı algılandığında tek bir uyarı nın oluşturulduğu anlamına gelir. Uyarı ölçütleri bir sonraki değerlendirmede site hala kapalıysa, bu yeni bir uyarı oluşturmaz. Bu nedenle, siteniz bir saat boyunca kapanmışsa ve bir e-posta uyarısı ayarlamışsanız, yalnızca site çöktüğunda bir e-posta ve site geri geldiğinde bir sonraki e-posta alırsınız. Sitenin hala kullanılamadığına dair sürekli uyarılar almazsınız.
 
 ### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Hataları bildiren Y konumlarının X'i hakkında uyarı
 

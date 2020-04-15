@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/14/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e097173712693754baab99912301c98ee336f64f
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: bfe8aa088538663ac3e64f5913ff031e6160b045
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877924"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382651"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -228,12 +228,11 @@ Bu role sahip kullanıcılar Azure Active Directory'deki tüm yönetim özellikl
 
 ### <a name="global-reader"></a>[Küresel Okuyucu](#global-reader-permissions)
 
-Bu roldeki kullanıcılar Microsoft 365 hizmetlerinde ayarları ve yönetim bilgilerini okuyabilir, ancak yönetim eylemlerinde görev alamaz. Global okuyucu, Global yöneticinin salt okunur muadilidir. Planlama, denetimler veya soruşturmalar için Global yönetici yerine Global okuyucu atayın. Global Yönetici rolünü atamadan işin yapılmasını kolaylaştırmak için Exchange Administrator gibi diğer sınırlı yönetici rolleriyle birlikte Global okuyucuyu kullanın. Global okuyucu, Microsoft 365 yönetici merkezi, Exchange yönetici merkezi, Takımlar yönetici merkezi, Güvenlik merkezi, Uyumluluk merkezi, Azure AD yönetici merkezi ve Aygıt Yönetimi yönetici merkezi ile çalışır.
+Bu roldeki kullanıcılar Microsoft 365 hizmetlerinde ayarları ve yönetim bilgilerini okuyabilir, ancak yönetim eylemlerinde görev alamaz. Global okuyucu, Global yöneticinin salt okunur muadilidir. Planlama, denetimler veya soruşturmalar için Global yönetici yerine Global okuyucu atayın. Global Yönetici rolünü atamadan işin yapılmasını kolaylaştırmak için Exchange Administrator gibi diğer sınırlı yönetici rolleriyle birlikte Global okuyucuyu kullanın. Global okuyucu, Microsoft 365 yönetici merkezi, Exchange yönetici merkezi, SharePoint yönetici merkezi, Takımlar yönetici merkezi, Güvenlik merkezi, Uyumluluk merkezi, Azure AD yönetici merkezi ve Aygıt Yönetimi yönetici merkezi ile çalışır.
 
 > [!NOTE]
 > Küresel okuyucu rolü şu anda birkaç sınırlamaları vardır -
 >
->- SharePoint yönetici merkezi - SharePoint yönetici merkezi Global okuyucu rolünü desteklemez. [Microsoft 365 yönetici merkezinde](https://admin.microsoft.com/Adminportal/Home#/homepage)Yönetici Merkezleri altında sol bölmede 'SharePoint' görmezsiniz.
 >- [OneDrive yönetici merkezi](https://admin.onedrive.com/) - OneDrive yönetici merkezi Global okuyucu rolünü desteklemez.
 >- [Azure AD portalı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - Global okuyucu, kurumsal bir uygulamanın sağlama modunu okuyamaz.
 >- [M365 yönetici merkezi](https://admin.microsoft.com/Adminportal/Home#/homepage) - Global okuyucu müşteri kilit kutusu isteklerini okuyamaz. M365 Yönetici Merkezi'nin sol bölmesinde **Destek** altında **Müşteri kilit kutusu istekleri** sekmesini bulamazsınız.

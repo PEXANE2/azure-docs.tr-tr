@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 60d936d9c2785e4723cdc09e55927fe13af8d8a1
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: bb4b654bd0b3591ebaa1bd217020095319a4938c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892317"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381907"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -53,7 +53,7 @@ Azure Güvenlik Duvarı, değişen ağ trafiği akışlarıyla başa çıkmak i�
 
 ## <a name="application-fqdn-filtering-rules"></a>Uygulama FQDN filtreleme kuralları
 
-Giden HTTP/S trafiğini veya Azure SQL trafiğini (önizleme) joker kartlar da dahil olmak üzere tam nitelikli alan adları (FQDN) belirli bir listeyle sınırlandırabilirsiniz. Bu özellik SSL sonlandırma gerektirmez.
+Giden HTTP/S trafiğini veya Azure SQL trafiğini (önizleme) joker kartlar da dahil olmak üzere tam nitelikli alan adları (FQDN) belirli bir listeyle sınırlandırabilirsiniz. Bu özellik TLS sonlandırma gerektirmez.
 
 ## <a name="network-traffic-filtering-rules"></a>Ağ trafiği filtreleme kuralları
 
@@ -116,7 +116,7 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Kullanılabilirlik bölgeleri yalnızca dağıtım sırasında yapılandırılabilir.|Kullanılabilirlik bölgeleri yalnızca dağıtım sırasında yapılandırılabilir. Güvenlik duvarı dağıtıldıktan sonra Kullanılabilirlik Bölgelerini yapılandıramazsınız.|Bu tasarım gereğidir.|
 |Gelen bağlantılarda SNAT|DNAT'ye ek olarak, güvenlik duvarı genel IP adresi (gelen) üzerinden yapılan bağlantılar, güvenlik duvarı özel IP'lerinden birine sayılmaktadır. Simetrik yönlendirmeyi sağlamak için bugün bu gereksinim (Aktif/Etkin NPA'lar için de geçerlidir.|HTTP/S'nin orijinal kaynağını korumak için [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) üstbilgilerini kullanmayı düşünün. Örneğin, güvenlik duvarının önünde [Azure Ön Kapı](../frontdoor/front-door-http-headers-protocol.md#front-door-to-backend) veya Azure Uygulama Ağ [Geçidi](../application-gateway/rewrite-http-headers.md) gibi bir hizmet kullanın. Ayrıca, Azure Ön Kapı'nın bir parçası olarak WAF'ı ve güvenlik duvarına zincir ekleyebilirsiniz.
 |SQL FQDN filtreleme desteği yalnızca proxy modunda (port 1433)|Azure SQL Veritabanı, Azure SQL Veri Ambarı ve Azure SQL Yönetilen Örnek için:<br><br>Önizleme sırasında, SQL FQDN filtreleme yalnızca proxy modunda desteklenir (bağlantı noktası 1433).<br><br>Azure SQL IaaS için:<br><br>Standart olmayan bağlantı noktaları kullanıyorsanız, uygulama kurallarında bu bağlantı noktalarını belirtebilirsiniz.|Yeniden yönlendirme modunda KI SQL için (Azure içinden bağlanıyorsanız varsayılan), bunun yerine Azure Güvenlik Duvarı ağ kurallarının bir parçası olarak SQL hizmet etiketini kullanarak erişime filtre uygulayabilirsiniz.
-|TCP bağlantı noktası 25'te giden trafiğe izin verilmiyor| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. Bağlantı noktası 25 öncelikle kimlik doğrulamamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için [Azure'da giden SMTP bağlantısı sorunlarıyla](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)ilgili daha fazla Sorun Giderme sorunu görün. Ancak, sanal makinelerin aksine, bu işlevselliği Azure Güvenlik Duvarı'nda etkinleştirmek şu anda mümkün değildir.|SMTP sorun giderme makalesinde belgelenmiş olarak e-posta göndermek için önerilen yöntemi izleyin. Veya, varsayılan rotanızdan güvenlik duvarına giden SMTP erişimine ihtiyaç olan sanal makineyi hariç tinler. Bunun yerine, giden erişimi doğrudan Internet'e yapılandırın.
+|TCP bağlantı noktası 25'te giden trafiğe izin verilmiyor| TCP bağlantı noktası 25 kullanan giden SMTP bağlantıları engellendi. Bağlantı noktası 25 öncelikle kimlik doğrulamamış e-posta teslimi için kullanılır. Bu, sanal makineler için varsayılan platform davranışıdır. Daha fazla bilgi için [Azure'da giden SMTP bağlantısı sorunlarıyla](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)ilgili daha fazla Sorun Giderme sorunu görün. Ancak, sanal makinelerin aksine, bu işlevselliği Azure Güvenlik Duvarı'nda etkinleştirmek şu anda mümkün değildir. Not: Kimlik doğrulaması 25'ten başka bir bağlantı noktası üzerinden smtp (port 587) veya SMTP'ye izin vermek için, smtp denetimi şu anda desteklenmediğinden, bir ağ kuralını değil, bir uygulama kuralını yapılandırdığınızdan emin olun.|SMTP sorun giderme makalesinde belirtildiği gibi e-posta göndermek için önerilen yöntemi izleyin. Veya, varsayılan rotanızdan güvenlik duvarına giden SMTP erişimine ihtiyaç olan sanal makineyi hariç tinler. Bunun yerine, giden erişimi doğrudan internete yapılandırın.
 |Etkin FTP desteklenmiyor|Etkin FTP, FTP PORT komutunu kullanarak FTP sıçrama saldırılarına karşı korunmak için Azure Güvenlik Duvarı'nda devre dışı bırakılır.|Bunun yerine Pasif FTP kullanabilirsiniz. Güvenlik duvarında TCP bağlantı noktaları 20 ve 21'i hala açıkça açmanız gerekir.
 |SNAT bağlantı noktası kullanım ölçümü %0'ı gösterir|Azure Güvenlik Duvarı SNAT bağlantı noktası kullanım ölçümü, SNAT bağlantı noktaları kullanıldığında bile %0 kullanım gösterebilir. Bu durumda, güvenlik duvarı sistem durumu ölçümünün bir parçası olarak metrik kullanmak yanlış bir sonuç sağlar.|Bu sorun giderilmiş ve Mayıs 2020 için üretime rollout hedeflenmiştir. Bazı durumlarda, güvenlik duvarı yeniden dağıtımı sorunu giderir, ancak tutarlı değildir. Ara geçici çözüm olarak, *yalnızca durum=bozulmuş*, *durum=sağlıksız*için değil aramak için güvenlik duvarı durumu durumunu kullanın. Port tükenmesi *bozulmuş*olarak gösterecektir. Güvenlik duvarı sağlığını etkilemek için daha fazla ölçüm olduğunda *sağlıklı değil,* gelecekteki kullanım için ayrılmıştır.
 |DNAT, Zorunlu Tünelleme özelliğiyle desteklenmiyor|Zorunlu Tünelleme etkinleştirilmiş olan güvenlik duvarları, asimetrik yönlendirme nedeniyle Internet'ten gelen erişimi destekleyemez.|Bu asimetrik yönlendirme nedeniyle tasarım gereğidir. Gelen bağlantıların dönüş yolu, bağlantının kurulduğunu görmeyen şirket içi güvenlik duvarından geçer.

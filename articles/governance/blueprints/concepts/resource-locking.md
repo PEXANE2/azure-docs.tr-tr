@@ -3,12 +3,12 @@ title: Kaynak kilitlemeyi anlama
 description: Bir plan atarken kaynakları korumak için Azure Planları'ndaki kilitleme seçenekleri hakkında bilgi edinin.
 ms.date: 03/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9c4e2f4c6fd8f5fb574002217ca71d1e7d130ff7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 94ed8efd0d6c654cba129dfc69fbfe5add7a0824
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676743"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383603"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Planları'nda kaynak kilitlemeyi anlama
 
@@ -103,7 +103,7 @@ Atama kaldırıldığında, Azure Planları tarafından oluşturulan kilitler ka
 
 Bir RBAC [reddet atamaları](../../../role-based-access-control/deny-assignments.md) reddet eylem bir plan atama sırasında yapı kaynaklarına uygulanır atama **Yalnızca Oku** veya **Silmem** seçeneği seçti. Reddet eylemi, plan atamasının yönetilen kimliği tarafından eklenir ve yalnızca aynı yönetilen kimlikle yapı kaynaklarından kaldırılabilir. Bu güvenlik önlemi kilitleme mekanizmasını zorlar ve Azure Planları dışındaki plan kilidinin kaldırılmasını önler.
 
-![Kaynak grubunda plan reddi ataması](../media/resource-locking/blueprint-deny-assignment.png)
+:::image type="content" source="../media/resource-locking/blueprint-deny-assignment.png" alt-text="Kaynak grubunda plan reddi ataması" border="false":::
 
 Her modun [reddet atama özellikleri](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) aşağıdaki gibidir:
 

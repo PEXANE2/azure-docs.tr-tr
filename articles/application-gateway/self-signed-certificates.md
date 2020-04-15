@@ -8,18 +8,18 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 0547f254a64cecc7072ee9ff79eb50204b34bc17
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548856"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311935"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Özel kök CA ile Azure Uygulama Ağ Geçidi kendi imzalı sertifika oluşturun
 
-Application Gateway v2 SKU, arka uç sunucularına izin vermek için Güvenilir Kök Sertifikalarının kullanımını tanıtmaktadır. Bu, v1 SKU'da gerekli olan kimlik doğrulama sertifikalarını kaldırır. *Kök sertifika,* X.509 kodlu bir Base-64 sertifikasıdır.( CER) arka uç sertifika sunucusundan root sertifikası biçimlendirin. Sunucu sertifikasını veren kök sertifika yetkilisini (CA) tanımlar ve sunucu sertifikası daha sonra SSL iletişimi için kullanılır.
+Application Gateway v2 SKU, arka uç sunucularına izin vermek için Güvenilir Kök Sertifikalarının kullanımını tanıtmaktadır. Bu, v1 SKU'da gerekli olan kimlik doğrulama sertifikalarını kaldırır. *Kök sertifika,* X.509 kodlu bir Base-64 sertifikasıdır.( CER) arka uç sertifika sunucusundan root sertifikası biçimlendirin. Sunucu sertifikasını veren kök sertifika yetkilisini (CA) tanımlar ve sunucu sertifikası TLS/SSL iletişimi için kullanılır.
 
-Uygulama Ağ Geçidi, tanınmış bir CA (örneğin, GoDaddy veya DigiCert) tarafından imzalanmışsa, varsayılan olarak web sitenizin sertifikasına güvenir. Bu durumda kök sertifikayı açıkça yüklemeniz gerekmez. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile SSL sonlandırma ve bitiş sonu SSL Genel Bakış](ssl-overview.md)bakın. Ancak, bir geliştirme/test ortamınız varsa ve doğrulanmış ca imzalı bir sertifika satın almak istemiyorsanız, kendi özel CA'nızı oluşturabilir ve onunla kendi imzalı sertifikanızı oluşturabilirsiniz. 
+Uygulama Ağ Geçidi, tanınmış bir CA (örneğin, GoDaddy veya DigiCert) tarafından imzalanmışsa, varsayılan olarak web sitenizin sertifikasına güvenir. Bu durumda kök sertifikayı açıkça yüklemeniz gerekmez. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile TLS sonlandırma ve bitiş uca TLS Genel Bakış](ssl-overview.md)bakın. Ancak, bir geliştirme/test ortamınız varsa ve doğrulanmış ca imzalı bir sertifika satın almak istemiyorsanız, kendi özel CA'nızı oluşturabilir ve onunla kendi imzalı sertifikanızı oluşturabilirsiniz. 
 
 > [!NOTE]
 > Kendi imzalı sertifikalar varsayılan olarak güvenilir değildir ve bunlar bakımı zor olabilir. Ayrıca, onlar güçlü olmayabilir eski karma ve şifre suit kullanabilirsiniz. Daha iyi güvenlik için, tanınmış bir sertifika yetkilisi tarafından imzalanmış bir sertifika satın alın.
@@ -125,15 +125,15 @@ CSR, sertifika talep ederken CA'ya verilen ortak bir anahtardır. CA, bu özel i
    - fabrikam.crt
    - fabrikam.key
 
-## <a name="configure-the-certificate-in-your-web-servers-ssl-settings"></a>Sertifikayı web sunucunuzun SSL ayarlarında yapılandırma
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Sertifikayı web sunucunuzun TLS ayarlarında yapılandırın
 
-Web sunucunuzda, fabrikam.crt ve fabrikam.key dosyalarını kullanarak SSL'yi yapılandırın. Web sunucunuz iki dosya yıyıtamamıyorsa, OpenSSL komutlarını kullanarak bunları tek bir .pem veya .pfx dosyasıyla birleştirebilirsiniz.
+Web sunucunuzda, fabrikam.crt ve fabrikam.key dosyalarını kullanarak TLS yapılandırın. Web sunucunuz iki dosya yıyıtamamıyorsa, OpenSSL komutlarını kullanarak bunları tek bir .pem veya .pfx dosyasıyla birleştirebilirsiniz.
 
 ### <a name="iis"></a>IIS
 
 Sertifika alma ve IIS'de sunucu sertifikası olarak yükleme ile ilgili talimatlar için [bkz.](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server)
 
-SSL bağlama yönergeleri için, [IIS 7'de SSL nasıl ayarlanır.](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
+TLS bağlama yönergeleri için, [IIS 7'de SSL nasıl ayarlanır.](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1)
 
 ### <a name="apache"></a>Apache
 
@@ -151,9 +151,9 @@ Aşağıdaki yapılandırma, Apache'de [SSL için yapılandırılan](https://cwi
 
 ### <a name="nginx"></a>NGINX
 
-Aşağıdaki yapılandırma, SSL yapılandırması ile örnek bir [NGINX sunucu bloğudur:](https://nginx.org/docs/http/configuring_https_servers.html)
+Aşağıdaki yapılandırma, TLS yapılandırması ile örnek bir [NGINX sunucu bloğudur:](https://nginx.org/docs/http/configuring_https_servers.html)
 
-![SSL ile NGINX](media/self-signed-certificates/nginx-ssl.png)
+![TLS ile NGINX](media/self-signed-certificates/nginx-ssl.png)
 
 ## <a name="access-the-server-to-verify-the-configuration"></a>Yapılandırmayı doğrulamak için sunucuya erişin
 
@@ -232,7 +232,7 @@ $probe = Get-AzApplicationGatewayProbeConfig `
 
 ## Add the configuration to the HTTP Setting and don't forget to set the "hostname" field
 ## to the domain name of the server certificate as this will be set as the SNI header and
-## will be used to verify the backend server's certificate. Note that SSL handshake will
+## will be used to verify the backend server's certificate. Note that TLS handshake will
 ## fail otherwise and might lead to backend servers being deemed as Unhealthy by the probes
 
 Add-AzApplicationGatewayBackendHttpSettings `
@@ -272,5 +272,5 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama Ağ Geçidi'ndeki SSL\TLS hakkında daha fazla bilgi edinmek için, [Uygulama Ağ Geçidi ile SSL sonlandırma genel bakışı ve sonuna kadar SSL'ye](ssl-overview.md)bakın.
+Uygulama Ağ Geçidi'nde SSL\TLS hakkında daha fazla bilgi edinmek için, [Uygulama Ağ Geçidi ile TLS sonlandırma genel bakış ve uca TLS](ssl-overview.md)bakın.
 

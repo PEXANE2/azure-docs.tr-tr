@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ca742483bc8977327003ee18e9716ef9c43ebfe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d905be7c4a922a1a7eb3d1318be28da896e8a7e9
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251728"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312016"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Azure PowerShell'i kullanarak HTTP ile HTTPS yeniden yönlendirmesi ile bir uygulama ağ geçidi oluşturma
 
-Azure PowerShell'i, SSL sonlandırma sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz. 
+Azure PowerShell'i TLS/SSL sonlandırma sertifikasına sahip bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Yönlendirme kuralı, HTTP trafiğini uygulama ağ geçidinizdeki HTTPS bağlantı noktasına yönlendirmek için kullanılır. Bu örnekte, uygulama ağ geçidinin arka uç havuzu için iki sanal makine örneği içeren sanal bir [makine ölçeği kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) de oluşturursunuz. 
 
 Bu makalede şunları öğreneceksiniz:
 

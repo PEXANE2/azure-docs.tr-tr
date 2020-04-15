@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 085933f9a74ee37779ce63ce499d89ea53a9f7d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 767d87efcf94d720159dcf3b9dc42981ec957ef0
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198948"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381405"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>HDInsight'ta Apache Hadoop kümelerinin kullanılabilirliği ve güvenilirliği
 
@@ -33,7 +33,7 @@ HDInsight kümesindeki düğümler Azure Sanal Makineleri kullanılarak uygulan�
 
 Hadoop hizmetlerinin yüksek kullanılabilirliğini sağlamak için HDInsight iki baş düğümü sağlar. Her iki kafa düğümü de etkindir ve HDInsight kümesi içinde aynı anda çalışır. Apache HDFS veya Apache Hadoop YARN gibi bazı hizmetler, herhangi bir anda tek bir baş düğümüüzerinde yalnızca 'etkin' dir. HiveServer2 veya Hive MetaStore gibi diğer hizmetler aynı anda her iki baş düğümlerinde de etkindir.
 
-Kümenizdeki farklı düğüm türleri için ana bilgisayar adlarını elde etmek için lütfen [Ambari REST API'sini](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes)kullanın.
+Kümenizdeki farklı düğüm türleri için ana bilgisayar adlarını elde etmek için lütfen [Ambari REST API'sini](hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes)kullanın.
 
 > [!IMPORTANT]  
 > Sayısal değeri düğümün birincil mi yoksa ikincil mi olduğuyla ilişkilendirme. Sayısal değer yalnızca her düğüm için benzersiz bir ad sağlamak için bulunur.

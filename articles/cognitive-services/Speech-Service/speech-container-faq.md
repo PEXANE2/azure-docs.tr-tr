@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/14/2020
 ms.author: aahi
-ms.openlocfilehash: 4d597b872cf31a823f314d9f3c67c9f45201c542
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258482"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383093"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapları sık sorulan sorular (SSS)
 
@@ -379,7 +379,7 @@ Doktor farklı bir bağlantı noktasını ortaya çıkarmamı söylüyor, ki ben
 <b>15 saniye uzunluğundaki sesi &lt;işlemek için toplu olmayan API'leri nasıl alabilirim?</b>
 </summary>
 
-**Cevap:** Bu etkileşimli modda. Dikte veya konuşma kullanıyorsanız, bu bir sorun değildir.
+**Cevap:** `RecognizeOnce()` Etkileşimli modda yalnızca 15 saniyeye kadar ses işler, çünkü mod, konuşmaların kısa olmasının beklendiği Konuşma Komutu için tasarlanmıştır. Dikte veya `StartContinuousRecognition()` konuşma için kullanıyorsanız, 15 saniye sınırı yoktur.
 
 
 <br>

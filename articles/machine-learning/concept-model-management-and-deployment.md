@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: f5aaf8adf33d27f8ebb99c8ca3a873d958632a4f
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616840"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314304"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning ile model yönetimi, dağıtım ve izleme
 
@@ -124,6 +124,16 @@ Modeli bir web hizmeti olarak dağıtmak için aşağıdaki öğeleri sağlaman�
 
 Daha fazla bilgi için [bkz.](how-to-deploy-and-where.md)
 
+#### <a name="controlled-rollout"></a>Kontrollü kullanıma
+
+Azure Kubernetes Hizmetine dağıtılırken, aşağıdaki senaryoları etkinleştirmek için denetimli kullanıma hazır layabilirsiniz:
+
+* Dağıtım için bitiş noktasının birden çok sürümü oluşturma
+* Trafiği bitiş noktasının farklı sürümlerine yönlendirerek A/B testi gerçekleştirin.
+* Bitiş noktası yapılandırmasında trafik yüzdesini güncelleştirerek bitiş noktası sürümleri arasında geçiş yapabilirsiniz.
+
+Daha fazla bilgi için [ML modellerinin kontrollü ürün lansmanına](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)bakın.
+
 #### <a name="iot-edge-devices"></a>IoT Edge cihazları
 
 **Azure IoT Edge modülleri**aracılığıyla IoT aygıtlı modelleri kullanabilirsiniz. IoT Edge modülleri, aygıtta çıkarım veya model puanlaması sağlayan bir donanım aygıtına dağıtılır.
@@ -136,12 +146,20 @@ Microsoft Power BI, veri analitiği için makine öğrenimi modellerini kullanma
 
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>Uçten uca ML yaşam döngüsünü yakalamak için gereken yönetim verilerini yakalama
 
-Azure ML, tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sağlar. Daha ayrıntılı şekilde belirtmek gerekirse:
+Azure ML, meta verileri kullanarak tüm ML varlıklarınızın uçtan uca denetim izini izleme olanağı sağlar.
 
 - Azure ML, kodunuzu hangi depo / şube / commit gelen bilgileri izlemek için [Git ile tümleştirir.](how-to-set-up-training-targets.md#gitintegration)
-- [Azure ML Datasets,](how-to-create-register-datasets.md) verileri izlemenize, profilini ve sürüm verilerini izlemenize yardımcı olur. 
+- [Azure ML Datasets,](how-to-create-register-datasets.md) verileri izlemenize, profilini ve sürüm verilerini izlemenize yardımcı olur.
+- [Yorumlanabilirlik,](how-to-machine-learning-interpretability.md) modellerinizi açıklamanızı, mevzuata uygunluğu karşılamanızı ve modellerin belirli bir girdi için bir sonuca nasıl vardığını anlamanızı sağlar.
 - Azure ML Run geçmişi, bir modeli eğitmek için kullanılan kodun, verilerin ve hesaplamaların anlık görüntüsünü depolar.
 - Azure ML Model Kayıt Defteri, modelinizle ilişkili tüm meta verileri yakalar (hangi denemeyle onu eğittir, dağıtımları sağlıklıysa nerede dağıtılıyorsa onu eğittir).
+- [Azure Olay Grid ile tümleştirme,](concept-event-grid-integration.md) ML yaşam döngüsündeki olaylara göre hareket etmenizi sağlar. Örneğin, model kaydı, dağıtım, veri kayması ve eğitim (çalıştır) olayları.
+
+> [!TIP]
+> Modeller ve veri kümeleri hakkındaki bazı bilgiler otomatik olarak yakalanırken, __etiketleri__kullanarak ek bilgiler ekleyebilirsiniz. Çalışma alanınızda kayıtlı modelleri ve veri kümelerini ararken, etiketleri filtre olarak kullanabilirsiniz.
+>
+> Bir veri kümesini kayıtlı bir modelle ilişkilendirme isteğe bağlı bir adımdır. Bir modeli kaydederken bir veri kümesine başvurma hakkında bilgi için [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model(class)?view=azure-ml-py) sınıfı başvurusuna bakın.
+
 
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML yaşam döngüsündeki olayları bildirin, otomatikleştirin ve uyarı verin
 Azure ML, ML yaşam döngüsündeki olayları bildirmek ve otomatikleştirmek için kullanılabilecek önemli olayları Azure EventGrid'e yayımlar. Daha fazla bilgi için lütfen [bu belgeye](how-to-use-event-grid.md)bakın.
@@ -157,7 +175,7 @@ Daha fazla bilgi için [model veri toplamayı nasıl etkinleştirin.](how-to-ena
 
 ## <a name="retrain-your-model-on-new-data"></a>Modelinizi yeni veriler üzerinde yeniden eğitin
 
-Genellikle, yeni bilgiler aldığınızda modelinizi güncellemek, hatta sıfırdan yeniden eğitmek isteyebilirsiniz. Bazen, yeni veri almak etki alanının beklenen bir parçasıdır. Diğer zamanlarda, veri [kümelerinde veri kaydırma (önizleme)](how-to-monitor-datasets.md)algılatırken, model performansı belirli bir sensörde yapılan değişiklikler, mevsimsel etkiler gibi doğal veri değişiklikleri veya diğer özelliklerle olan ilişkileri değişen özellikler gibi şeyler karşısında bozulabilir. 
+Genellikle, yeni bilgiler aldığınızda modelinizi doğrulamak, güncellemek veya hatta sıfırdan yeniden eğitmek isteyebilirsiniz. Bazen, yeni veri almak etki alanının beklenen bir parçasıdır. Diğer zamanlarda, veri [kümelerinde veri kaydırma (önizleme)](how-to-monitor-datasets.md)algılatırken, model performansı belirli bir sensörde yapılan değişiklikler, mevsimsel etkiler gibi doğal veri değişiklikleri veya diğer özelliklerle olan ilişkileri değişen özellikler gibi şeyler karşısında bozulabilir. 
 
 "Yeniden eğitilip eğitileyim gerektiğini nasıl bileceğim?" diye evrensel bir cevap yok. ancak Azure ML etkinlik ve izleme araçları daha önce tartışılan otomasyon için iyi bir başlangıç noktalarıdır. Yeniden eğitmeye karar verdikten sonra şunları yapmalısın: 
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
-ms.openlocfilehash: 7e6b8ea702d28fcd2747115710a8b1a8ec2bb1b2
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f048c7d89da0ab75c321cd8e3932ea97c7ed09c
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270528"
+ms.locfileid: "81310022"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için ağ hizmeti
 
@@ -69,6 +69,14 @@ az vmss create \
 
 >[!NOTE]
 > Ölçek kümesi oluşturulduktan sonra, arka uç bağlantı noktası yük dengeleyicisinin sistem durumu sondası tarafından kullanılan bir yük dengeleme kuralı için değiştirilemez. Bağlantı noktasını değiştirmek için, Azure sanal makine ölçeği kümesini güncelleştirerek sistem durumu sondasını kaldırabilir, bağlantı noktasını güncelleyebilir ve sistem durumu sondasını yeniden yapılandırabilirsiniz. 
+
+Yük dengeleyici ve sanal makine ölçek kümeleri hakkında daha fazla bilgi için [Azure'daki Sanal ağlara ve sanal makinelere](../../articles/virtual-machines/windows/network-overview.md)bakın.
+
+Aşağıdaki yöntemler, varolan bir Azure yük dengeleyicisi ile ayarlanmış sanal makine ölçeğini dağıtmak için kullanılabilir.
+
+* [Azure portalını kullanarak mevcut bir Azure Yük Dengeleyicisi ile ayarlanmış sanal makine ölçeğini yapılandırın.](../../articles/load-balancer/configure-vm-scale-set-portal.md)
+* [Azure PowerShell'i kullanarak mevcut bir Azure Yük Bakiyeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](../../articles/load-balancer/configure-vm-scale-set-powershell.md)
+* [Azure CLI'yi kullanarak mevcut bir Azure Yük Dengeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](../../articles/load-balancer/configure-vm-scale-set-cli.md)
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Bir Application Gateway’e başvuran bir ölçek kümesi oluşturma
 Bir uygulama ağ geçidi kullanan bir ölçek kümesi oluşturmak için, bu ARM şablonu yapılandırmasında olduğu gibi ölçek kümenizin ipConfigurations bölümündeki uygulama ağ geçidinin arka uç adres havuzuna başvurun:

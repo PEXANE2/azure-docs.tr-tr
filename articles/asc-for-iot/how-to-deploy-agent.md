@@ -1,5 +1,5 @@
 ---
-title: IoT aracısı için Azure Güvenlik Merkezi'ni seçin ve dağıtın| Microsoft Dokümanlar
+title: Güvenlik aracılarını seçme ve dağıtma
 description: IoT aygıtlarında IoT güvenlik aracıları için Azure Güvenlik Merkezi'ni nasıl seçip dağıtıladığını öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3b514c79be87cd136375b4853226426965f4185
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75770025"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311211"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT aygıtınızda bir güvenlik aracısı seçme ve dağıtma
 
@@ -29,7 +29,8 @@ Daha fazla bilgi için [Güvenlik aracısı başvuru mimarisine](security-agent-
 
 Aracılar açık kaynak projeleri olarak geliştirilmiştir ve iki farklı tatta mevcuttur: <br> [C](https://aka.ms/iot-security-github-c), ve [C#](https://aka.ms/iot-security-github-cs).
 
-Bu makalede şunları öğreneceksiniz: 
+Bu makalede şunları öğreneceksiniz:
+
 > [!div class="checklist"]
 > * Güvenlik aracısı tatlarını karşılaştırın
 > * Desteklenen aracı platformlarını keşfedin
@@ -37,9 +38,9 @@ Bu makalede şunları öğreneceksiniz:
 
 ## <a name="understand-security-agent-options"></a>Güvenlik aracısı seçeneklerini anlama
 
-Her Azure Güvenlik Merkezi ioT güvenlik aracısı flavor aynı özellik kümesini sunar ve benzer yapılandırma seçeneklerini destekler. 
+Her Azure Güvenlik Merkezi ioT güvenlik aracısı flavor aynı özellik kümesini sunar ve benzer yapılandırma seçeneklerini destekler.
 
-C tabanlı güvenlik aracısı daha düşük bellek ayak izine sahiptir ve daha az kullanılabilir kaynağa sahip aygıtlar için ideal bir seçimdir. 
+C tabanlı güvenlik aracısı daha düşük bellek ayak izine sahiptir ve daha az kullanılabilir kaynağa sahip aygıtlar için ideal bir seçimdir.
 
 |     | C tabanlı güvenlik aracısı | C# tabanlı güvenlik aracısı |
 | --- | ----------- | --------- |
@@ -59,20 +60,19 @@ C tabanlı güvenlik aracısı daha düşük bellek ayak izine sahiptir ve daha 
 
 ## <a name="security-agent-installation-guidelines"></a>Güvenlik aracısı yükleme yönergeleri
 
-**Windows**için : Install SecurityAgent.ps1 komut dosyası bir Administrator PowerShell penceresinden yürütülmelidir. 
+**Windows**için : Install SecurityAgent.ps1 komut dosyası bir Administrator PowerShell penceresinden yürütülmelidir.
 
 **Linux**için : InstallSecurityAgent.sh süperkullanıcı olarak çalıştırılmalıdır. Yükleme komutunu "sudo" ile öne kaldırmanızı öneririz.
 
-
-## <a name="choose-an-agent-flavor"></a>Bir ajan lezzet seçin 
+## <a name="choose-an-agent-flavor"></a>Bir ajan lezzet seçin
 
 Doğru aracıyı seçmek için IoT aygıtlarınız hakkındaki aşağıdaki soruları yanıtlayın:
 
-- _Windows Server_ veya _Windows IoT Core_kullanıyor musunuz? 
+- _Windows Server_ veya _Windows IoT Core_kullanıyor musunuz?
 
     [Windows için C# tabanlı bir güvenlik aracısı dağıtın.](how-to-deploy-windows-cs.md)
 
-- X86 mimarisine sahip bir Linux dağıtımı mı kullanıyorsunuz? 
+- X86 mimarisine sahip bir Linux dağıtımı mı kullanıyorsunuz?
 
     [Linux için C tabanlı bir güvenlik aracısı dağıtın.](how-to-deploy-linux-c.md)
 
@@ -90,10 +90,10 @@ Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 
 |IoT aracısı için Azure Güvenlik Merkezi |İşletim Sistemi |Mimari |
 |--------------|------------|--------------|
-|C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64, ARMv7|
-|C|Debian 9 |   x64, x86|
-|C#|Ubuntu 16.04    |x64|
+|C|Ubuntu 16.04 |    x64|
+|C|Ubuntu 18.04 |    x64, ARMv7|
+|C|Debian 9 |    x64, x86|
+|C#|Ubuntu 16.04     |x64|
 |C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    x64|
@@ -102,6 +102,6 @@ Aşağıdaki liste, şu anda desteklenen tüm platformları içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için aracı yapılandırması için nasıl yapIlenler kılavuzuna devam edin. 
+Yapılandırma seçenekleri hakkında daha fazla bilgi edinmek için aracı yapılandırması için nasıl yapIlenler kılavuzuna devam edin.
 > [!div class="nextstepaction"]
 > [Aracı yapılandırma nasıl yol gösterin](./how-to-agent-configuration.md)

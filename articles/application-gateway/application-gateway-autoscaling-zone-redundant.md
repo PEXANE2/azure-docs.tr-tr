@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 4cd2969f9a56c96af2b2c6db216f6829a080260c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7feb0f00c5431048d19d4ad6cb3860f6eb8ed052
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371271"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312699"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Otomatik ölçeklendirme ve Alanlar arası yedekli Application Gateway v2 
 
@@ -26,16 +26,16 @@ Yeni v2 SKU aşağıdaki geliştirmeleri içerir:
   Bölge artıklığı yalnızca Azure Bölgeleri'nin kullanılabildiği yerlerde kullanılabilir. Diğer bölgelerde, diğer tüm özellikler desteklenir. Daha fazla bilgi için [Azure'daki Kullanılabilirlik Bölgeleri nelerdir?](../availability-zones/az-overview.md#services-support-by-region)
 - **Statik VIP**: Application Gateway v2 SKU sadece statik VIP türünü destekler. Bu, uygulama ağ geçidiyle ilişkili VIP'nin yeniden başlatmadan sonra bile dağıtımın yaşam döngüsü için değişmemesini sağlar.  v1'de statik bir VIP yoktur, bu nedenle uygulama ağ geçidi aracılığıyla Uygulama Hizmetleri'ne alan adı yönlendirmesi için IP adresi yerine uygulama ağ geçidi URL'sini kullanmanız gerekir.
 - **Üstbilgi Yeniden Yazma**: Uygulama Ağ Geçidi, http istek ve yanıt üstbilgilerini v2 SKU ile eklemenize, kaldırmanıza veya güncelleştirmenize olanak tanır. Daha fazla bilgi için, [Uygulama Ağ Geçidi ile HTTP üstbilgilerini yeniden yazma](rewrite-http-headers.md)
-- **Key Vault Tümleştirmesi**: Application Gateway v2, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Daha fazla bilgi için [Key Vault sertifikalarıile SSL sonlandırma'ya](key-vault-certs.md)bakın.
+- **Key Vault Tümleştirmesi**: Application Gateway v2, HTTPS özellikli dinleyicilere bağlı sunucu sertifikaları için Key Vault ile tümleştirmeyi destekler. Daha fazla bilgi [için, Key Vault sertifikaları ile TLS sonlandırma](key-vault-certs.md)bakın.
 - **Azure Kubernetes Hizmet Giriş Denetleyicisi**: Uygulama Ağ Geçidi v2 Giriş Denetleyicisi, Azure Uygulama Ağ Geçidi'nin AKS Kümesi olarak bilinen Azure Kubernetes Hizmeti (AKS) için giriş olarak kullanılmasını sağlar. Daha fazla bilgi için [bkz: Uygulama Ağ Geçidi Giriş Denetleyicisi nedir?](ingress-controller-overview.md)
-- **Performans geliştirmeleri**: v2 SKU, Standart/WAF SKU ile karşılaştırıldığında 5 kata kadar daha iyi SSL boşaltma performansı sunar.
+- **Performans geliştirmeleri**: v2 SKU, Standart/WAF SKU'ya kıyasla 5 kata kadar daha iyi TLS boşaltma performansı sunar.
 - **Daha hızlı dağıtım ve güncelleştirme süresi** V2 SKU, Standart/WAF SKU ile karşılaştırıldığında daha hızlı dağıtım ve güncelleme süresi sağlar. Bu, WAF yapılandırma değişikliklerini de içerir.
 
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
-sku Standard_v2 ve WAF_v2 aşağıdaki bölgelerde mevcuttur: Kuzey Orta ABD, Güney Orta ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, İngiltere Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu , Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Merkez, Kore Güney, İngiltere Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
+sku Standard_v2 ve WAF_v2 şu bölgelerde mevcuttur: Kuzey Orta ABD, Güney Orta ABD, Batı ABD, Batı ABD 2, Doğu ABD, Doğu ABD 2, Orta ABD, Kuzey Avrupa, Batı Avrupa, Güneydoğu Asya, Fransa Orta, İngiltere Batı, Japonya Doğu, Japonya Batı, Avustralya Doğu, Avustralya Güneydoğu, Brezilya Güney, Kanada Orta, Kanada Doğu, Doğu Asya, Kore Orta, Kore Güney , İngiltere Güney, Orta Hindistan, Batı Hindistan, Güney Hindistan.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -77,7 +77,7 @@ Toplam fiyat = $148.8 + $297.6 = $446.4
 
 **Örnek 2**
 
-Bir Uygulama Ağ Geçidi standard_v2, sıfır minimum örnekle bir ay süreyle sağlanır ve bu süre zarfında ortalama 8,88 Mbps veri aktarımı olan 25 yeni SSL bağlantısı/sn alır. Bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
+Bir Uygulama Ağ Geçidi standard_v2, minimum örnekleri sıfır olan bir ay süreyle sağlanmaktadır ve bu süre zarfında ortalama 8,88 Mbps veri aktarımı olan 25 yeni TLS bağlantısı/sn alır. Bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
 
 Sabit fiyat = 744(saat) * $0.20 = $148.8
 
@@ -105,7 +105,7 @@ Bu durumda, trafik olmamasına rağmen beş örneğin tamamı için faturalandı
 
 **Örnek 4**
 
-Bir Uygulama Ağ Geçidi standard_v2, en az beş örnekle bir ay süreyle sağlanmıştır, ancak bu sefer ortalama 125 mbps veri aktarımı ve saniyede 25 SSL bağlantısı vardır. Trafik olmadığını ve bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
+Bir Uygulama Ağ Geçidi standard_v2 en az beş örnekle bir ay süreyle sağlanmaktadır, ancak bu kez ortalama 125 mbps veri aktarımı ve saniyede 25 TLS bağlantı vardır. Trafik olmadığını ve bağlantıların kısa ömürlü olduğunu varsayarsak, fiyatınız:
 
 Sabit fiyat = 744(saat) * $0.20 = $148.8
 
@@ -117,7 +117,7 @@ Bu durumda, tam beş örnek için faturalandırılır, artı yedi Kapasite Birim
 
 **Örnek 5**
 
-Bir Uygulama Ağ Geçidi WAF_v2 bir ay süreyle sağlanmaktadır. Bu süre zarfında, 25 yeni SSL bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır ve saniyede 80 istekte bulunmaz. Bağlantıların kısa ömürlü olduğunu ve uygulama için bilgi işlem birimi hesaplamasının işlem birimi başına 10 RPS'yi desteklediğini varsayarsak, fiyatınız şu olacaktır:
+Bir Uygulama Ağ Geçidi WAF_v2 bir ay süreyle sağlanmaktadır. Bu süre zarfında, 25 yeni TLS bağlantısı/sn, ortalama 8,88 Mbps veri aktarımı alır ve saniyede 80 istekte bulunmaz. Bağlantıların kısa ömürlü olduğunu ve uygulama için bilgi işlem birimi hesaplamasının işlem birimi başına 10 RPS'yi desteklediğini varsayarsak, fiyatınız şu olacaktır:
 
 Sabit fiyat = 744(saat) * $0.36 = $267.84
 
@@ -152,8 +152,8 @@ Aşağıdaki tablo, her SKU ile kullanılabilir özellikleri karşılaştırır.
 | Trafik yeniden yönlendirme                               | &#x2713; | &#x2713; |
 | Web Uygulaması Güvenlik Duvarı (WAF)                    | &#x2713; | &#x2713; |
 | WAF özel kuralları                                  |          | &#x2713; |
-| Güvenli Yuva Katmanı (SSL) sonlandırma            | &#x2713; | &#x2713; |
-| Uçuça SSL şifreleme                         | &#x2713; | &#x2713; |
+| Aktarım Katmanı Güvenliği (TLS)/Güvenli Soket katmanı (SSL) sonlandırma            | &#x2713; | &#x2713; |
+| Uçuça TLS şifreleme                         | &#x2713; | &#x2713; |
 | Oturum benzeşimi                                  | &#x2713; | &#x2713; |
 | Özel hata sayfaları                                | &#x2713; | &#x2713; |
 | WebSocket desteği                                 | &#x2713; | &#x2713; |
@@ -167,7 +167,7 @@ Aşağıdaki tablo, her SKU ile kullanılabilir özellikleri karşılaştırır.
 
 |Fark|Ayrıntılar|
 |--|--|
-|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için, [Uygulama Ağ Geçidi ile SSL sonuna kadar Genel Bakış](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)bakın.|
+|Kimlik doğrulama sertifikası|Desteklenmiyor.<br>Daha fazla bilgi için, [Uygulama Ağ Geçidi ile UCa TLS Genel Bakış](ssl-overview.md#end-to-end-tls-with-the-v2-sku)bakın.|
 |Aynı alt ağda Standard_v2 ve Standart Uygulama Ağ Geçidi'ni karıştırma|Desteklenmiyor|
 |Uygulama Ağ Geçidi alt netinde Kullanıcı Tanımlı Rota (UDR)|Desteklenen (belirli senaryolar). Önizlemede.<br> Desteklenen senaryolar hakkında daha fazla bilgi için Bkz. [Uygulama Ağ Geçidi yapılandırmagenel bakışı.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)|
 |Gelen bağlantı noktası aralığı için NSG| - Standard_v2 SKU için 65200 - 65535<br>- Standart SKU için 65503 - 65534.<br>Daha fazla bilgi için [SSS](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet)bölümüne bakın.|

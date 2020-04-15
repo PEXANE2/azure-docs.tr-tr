@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 48d98d6fef896f9288be88824a62fa1c8179217f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7155a3fa9481ef5f2da62d85d4a932ad5e8e8ab1
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276900"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382519"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure İşlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirin
 
@@ -33,7 +33,7 @@ Azure İşlevler dağıtımı genellikle şu kaynaklardan oluşur:
 | Uygulama [Öngörüleri](../azure-monitor/app/app-insights-overview.md) bileşeni | İsteğe bağlı    | [Microsoft.Insights/components](/azure/templates/microsoft.insights/components)         |   |
 | Bir [barındırma planı](./functions-scale.md)                                             | İsteğe bağlı<sup>1</sup>    | [Microsoft.Web/serverfarms](/azure/templates/microsoft.web/serverfarms)                 |   |
 
-<sup>1.1.2</sup> Barındırma planı yalnızca işlev uygulamanızı [Premium planda](./functions-premium-plan.md) (önizlemede) veya [Bir Uygulama Hizmeti planında](../app-service/overview-hosting-plans.md)çalıştırmayı seçtiğinizde gereklidir.
+<sup>1.1.2</sup> Barındırma planı yalnızca işlev uygulamanızı [Premium planda](./functions-premium-plan.md) veya Bir Uygulama [Hizmeti planında](../app-service/overview-hosting-plans.md)çalıştırmayı seçtiğinizde gereklidir.
 
 > [!TIP]
 > Gerekli olmamakla birlikte, uygulamanız için Uygulama Öngörüleri yapılandırmanız önerilir.
@@ -111,7 +111,7 @@ Buna ek olarak, enstrümantasyon anahtarının `APPINSIGHTS_INSTRUMENTATIONKEY` 
 
 Barındırma planının tanımı değişir ve aşağıdakilerden biri olabilir:
 * [Tüketim planı](#consumption) (varsayılan)
-* [Premium plan](#premium) (önizlemede)
+* [Premium planı](#premium)
 * [Uygulama Hizmeti planı](#app-service-plan)
 
 ### <a name="function-app"></a>İşlev uygulaması
@@ -647,9 +647,9 @@ Bir işlev uygulaması, uygulama ayarları ve kaynak denetim seçenekleri de dah
 
 Şablonunuzu dağıtmak için aşağıdaki yollardan birini kullanabilirsiniz:
 
-* [Powershell](../azure-resource-manager/templates/deploy-powershell.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure portalında](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure portal](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure düğmesine dağıt

@@ -2,7 +2,7 @@
 title: IoT için Azure Güvenlik Merkezi belgeleri
 summary: IoT için Azure Güvenlik Merkezi IoT cihazları için tehditlere karşı kapsamlı koruma sağlayan Azure tabanlı bir bulut güvenliği hizmetidir.
 metadata:
-  title: IoT için Azure Güvenlik Merkezi belgeleri
+  title: Belgeler
   description: Azure tabanlı bir bulut güvenliği hizmeti olan IoT için Azure Güvenlik Merkezi’nin IoT cihazlarına yönelik tehditlere karşı nasıl kapsamlı koruma sağladığını öğrenin.
   services: service
   ms.service: asc-for-iot
@@ -11,12 +11,12 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/23/2019
-  ms.openlocfilehash: 251cb6efab940993c6242bc921855d9a4a98819f
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: f5b399ad604918f7644b90e7b5f852bb27c46be0
+  ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74554152"
+  ms.lasthandoff: 04/14/2020
+  ms.locfileid: "81310978"
 landingContent:
 - title: IoT için Azure Güvenlik Merkezi hakkında
   linkLists:
@@ -40,7 +40,7 @@ landingContent:
     links:
     - text: IoT için Azure Güvenlik Merkezi’ni kullanmaya başlama
       url: getting-started.md
-    - text: IoT Hub’ı
+    - text: IoT Hub
       url: iot-hub-integration.md
     - text: Güvenlik aracıları
       url: security-agents.md

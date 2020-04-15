@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 4/3/2020
-ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6a1d2f6079280002c868702a6547c8fd359a7c21
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657071"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81310117"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -138,6 +138,8 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa otomatik 
 |SQL veri eşitleme|Hub ve üye veritabanları arasında yapılandırılabilir bir zamanlamada çalışan veya el ile gerçekleştirilen eşitleme|
 |Belirli veritabanı meta verilerini değiştirme|Yeni veritabanı etiketleri ekleme.<br>Maksimum vCores, min vCores veya otomatik duraklatma gecikme değiştirme.|
 |SQL Server Management Studio (SSMS)|18.1'den önce SSMS sürümlerini kullanmak ve sunucudaki herhangi bir veritabanı için yeni bir sorgu penceresi açmak, aynı sunucudaki otomatik duraklatılmış veritabanını devam ettirir. Bu davranış, SSMS sürüm 18.1 veya daha sonra kullanıyorsanız oluşmaz.|
+
+Yukarıda listelenen işlemlerden herhangi birini gerçekleştiren izleme, yönetim veya diğer çözümler otomatik olarak devam ı tetikler.
 
 Otomatik başlatma, veritabanının çevrimiçi olmasını gerektiren bazı hizmet güncelleştirmelerinin dağıtımı sırasında da tetiklenir.
 

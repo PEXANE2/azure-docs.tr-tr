@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure İlkesi Konuk Yapılandırma ilkesini nasıl oluşturabilirsiniz öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24069ff6518c4244026378e48216d4568fffeb8a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365476"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313974"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -73,7 +73,11 @@ DSC kavramları ve terminolojisi hakkında genel bir bakış için [PowerShell D
 
 ### <a name="how-guest-configuration-modules-differ-from-windows-powershell-dsc-modules"></a>Konuk Yapılandırma modülleri Windows PowerShell DSC modüllerinden nasıl farklıdır?
 
-Konuk Yapılandırma bir makineyi denetlediğinde, ilk olarak doğru durumda olup olmadığını belirlemek için çalışır. `Test-TargetResource` İşlev tarafından döndürülen boolean değeri, Konuk Atama için Azure Kaynak Yöneticisi durumunun Uyumlu/Uyumlu olmaması gerektiğini belirler. Daha sonra `Get-TargetResource` sağlayıcı, her ayarın geçerli durumunu döndürmek için çalışır, böylece hem makinenin neden uyumlu olmadığı yla ilgili ayrıntılar kullanılabilir, hem de geçerli durumu uyumlu olduğunu onaylamak için kullanılabilir.
+Konuk Yapılandırma bir makineyi denetlediğinde:
+
+1. Aracı önce `Test-TargetResource` yapılandırmanın doğru durumda olup olmadığını belirlemek için çalışır.
+1. İşlev tarafından döndürülen boolean değeri, Konuk Atama için Azure Kaynak Yöneticisi durumunun Uyumlu/Uyumlu olmaması gerektiğini belirler.
+1. Sağlayıcı, `Get-TargetResource` her ayarın geçerli durumunu döndürmek için çalışır, böylece hem makinenin neden uyumlu olmadığı ve geçerli durumunun uyumlu olduğunu onaylamak için ayrıntılar kullanılabilir.
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource gereksinimleri
 
@@ -102,6 +106,25 @@ return @{
     reasons = $reasons
 }
 ```
+
+Nedenler özelliği de gömülü bir sınıf olarak kaynak için şema MOF eklenmelidir.
+
+```mof
+[ClassVersion("1.0.0.0")] 
+class Reason
+{
+    [Read] String Phrase;
+    [Read] String Code;
+};
+
+[ClassVersion("1.0.0.0"), FriendlyName("ResourceName")]
+class ResourceName : OMI_BaseResource
+{
+    [Key, Description("Example description")] String Example;
+    [Read, EmbeddedInstance("Reason")] String Reasons[];
+};
+```
+
 ### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
 Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketinin .zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Kaynak Yöneticisi şablonundaki konuk atama adı aynı olmalıdır.
@@ -134,7 +157,7 @@ Bu yapılandırma yalnızca pakete erişmek ve hizmetle iletişim kurmamak için
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>Windows için özel bir Konuk Yapılandırma denetim ilkesi oluşturarak adım adım
 
-Bir DSC yapılandırması oluşturun. Aşağıdaki PowerShell komut dosyası örneği **AuditBitLocker**adlı bir yapılandırma oluşturur, **PsDscResources** kaynak modüllerini içeri aktarır ve çalışan bir hizmet için denetim için `Service` kaynağı kullanır. Yapılandırma komut dosyası bir Windows veya macOS makinesinden yürütülebilir.
+Denetim ayarları için bir DSC yapılandırması oluşturun. Aşağıdaki PowerShell komut dosyası örneği **AuditBitLocker**adlı bir yapılandırma oluşturur, **PsDscResources** kaynak modüllerini içeri aktarır ve çalışan bir hizmet için denetim için `Service` kaynağı kullanır. Yapılandırma komut dosyası bir Windows veya macOS makinesinden yürütülebilir.
 
 ```powershell
 # Define the DSC configuration and import GuestConfiguration
@@ -160,7 +183,7 @@ Komut `Node AuditBitlocker` teknik olarak gerekli değildir, ancak varsayılan `
 
 MOF derlendikten sonra, destekleyen dosyalar birlikte paketlenmelidir. Tamamlanan paket, Azure İlkesi tanımlarını oluşturmak için Konuk Yapılandırma tarafından kullanılır.
 
-Cmdlet `New-GuestConfigurationPackage` paketi oluşturur. Windows içeriği `New-GuestConfigurationPackage` oluştururken cmdlet parametreleri:
+Cmdlet `New-GuestConfigurationPackage` paketi oluşturur. Yapılandırmanın ihtiyaç duyduğu modüller ' de `$Env:PSModulePath`kullanılabilir olmalıdır. Windows içeriği `New-GuestConfigurationPackage` oluştururken cmdlet parametreleri:
 
 - **Adı**: Konuk Yapılandırma paket adı.
 - **Yapılandırma**: Derlenmiş DSC yapılandırma belgesi tam yol.
@@ -176,7 +199,7 @@ New-GuestConfigurationPackage `
 
 Yapılandırma paketini oluşturduktan sonra ancak Azure'da yayımlamadan önce, paketi iş istasyonunuzdan veya CI/CD ortamınızdan sınatabilirsiniz. GuestConfiguration cmdlet, `Test-GuestConfigurationPackage` Azure makinelerinde kullanılan la aynı aracıyı geliştirme ortamınızda içerir. Bu çözümü kullanarak, faturalı bulut ortamlarına bırakmadan önce yerel olarak tümleştirme sınama yapabilirsiniz.
 
-Aracı aslında yerel ortamı değerlendirdiğinden, çoğu durumda denetim yapmayı planladığınız aynı işletim sistemi platformunda Test-cmdlet çalıştırmanız gerekir.
+Aracı aslında yerel ortamı değerlendirdiğinden, çoğu durumda denetim yapmayı planladığınız aynı işletim sistemi platformunda Test-cmdlet çalıştırmanız gerekir. Testte yalnızca içerik paketinde yer alan modüller kullanılır.
 
 Cmdlet `Test-GuestConfigurationPackage` parametreleri:
 

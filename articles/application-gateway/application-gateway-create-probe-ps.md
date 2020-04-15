@@ -8,17 +8,17 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74075269"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312580"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure Kaynak Yöneticisi için PowerShell'i kullanarak Azure Uygulama Ağ Geçidi için özel bir sonda oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](application-gateway-create-probe-portal.md)
+> * [Azure portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
@@ -91,7 +91,7 @@ Uygulama ağ geçidini oluşturmadan önce tüm yapılandırma öğelerini ayarl
 |---|---|
 | **Ağ geçidi IP yapılandırması** | Uygulama ağ geçidi için IP yapılandırması.|
 | **Arka uç havuzu** | Web uygulamasını barındıran uygulama sunucularına ait IP adresleri, FQDN'ler veya NIC'ler havuzu|
-| **Sağlık sondası** | Arka uç havuzu üyelerinin durumunu izlemek için kullanılan özel bir sonda|
+| **Durum yoklaması** | Arka uç havuzu üyelerinin durumunu izlemek için kullanılan özel bir sonda|
 | **HTTP ayarları** | Bağlantı noktası, protokol, çerez tabanlı yakınlık, sonda ve zaman ayarı gibi ayarlar topluluğu.  Bu ayarlar, trafiğin arka uç havuzu üyelerine nasıl yönlendirildiğini belirler|
 | **Frontend bağlantı noktası** | Uygulama ağ geçidinin trafiği dinlediği bağlantı noktası|
 | **Dinleyici** | Bir protokol, frontend IP yapılandırması ve ön uç bağlantı noktasının birleşimi. Gelen istekleri dinleyen budur.
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ziyaret ederek SSL boşaltma yapılandırmayı öğrenin: [SSL Boşaltmayı yapılandırın](application-gateway-ssl-arm.md)
+Ziyaret ederek TLS boşaltmayapılandırmayı öğrenin: [TLS Boşaltmayı yapılandırın](application-gateway-ssl-arm.md)
 
