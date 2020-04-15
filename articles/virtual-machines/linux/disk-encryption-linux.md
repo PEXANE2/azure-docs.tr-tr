@@ -8,19 +8,19 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d860b557c5c2d6b73fad53cdf84ee8b32182d1ee
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985465"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313618"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 
 
 Linux sanal makineler için Azure Disk Şifreleme (VM'ler), işletim sistemi diskinin ve veri disklerinin tam disk şifrelemesini sağlamak için Linux'un DM-Crypt özelliğini kullanır. Ayrıca, EncryptFormatAll özelliğini kullanırken geçici kaynak diskinin şifrelemesini sağlar.
 
-Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol ve yönetmenize yardımcı olmak için [Azure Key Vault ile tümleşiktir.](disk-encryption-key-vault.md) Hizmete genel bir bakış için [Windows VM'leri için Azure Disk Şifreleme'ye](disk-encryption-overview.md)bakın.
+Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol ve yönetmenize yardımcı olmak için [Azure Key Vault ile tümleşiktir.](disk-encryption-key-vault.md) Hizmete genel bir bakış için [Linux VM'leri için Azure Disk Şifrelemesi'ne](disk-encryption-overview.md)bakın.
 
 Disk şifrelemeyi yalnızca [desteklenen VM boyutlarının ve işletim sistemlerinin](disk-encryption-overview.md#supported-vms-and-operating-systems)sanal makinelerine uygulayabilirsiniz. Ayrıca aşağıdaki ön koşulları karşılamanız gerekir:
 

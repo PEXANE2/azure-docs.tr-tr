@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 7107f45253c4f13b3378489726bf5034e104fa30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed7bbbf55956d655115b94c8ac46432b3e36c49b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62095991"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312640"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI'yi kullanarak bir uygulama ağ geçidi oluşturma
 
-Azure Application Gateway, bir katman 7 yük dengeleyicidir. Bulutta veya şirket içinde olmalarından bağımsız olarak, farklı sunucular arasında yük devretme ile HTTP istekleri için performans amaçlı yönlendirme sağlar. Uygulama ağ geçidi aşağıdaki uygulama teslim özelliklerine sahiptir: HTTP yük dengeleme, çerez tabanlı oturum yakınlığı ve Secure Sockets Layer (SSL) boşaltma, özel sistem sondaları ve çoklu site desteği.
+Azure Application Gateway, bir katman 7 yük dengeleyicidir. Bulutta veya şirket içinde olmalarından bağımsız olarak, farklı sunucular arasında yük devretme ile HTTP istekleri için performans amaçlı yönlendirme sağlar. Uygulama ağ geçidi aşağıdaki uygulama teslim özelliklerine sahiptir: HTTP yük dengeleme, çerez tabanlı oturum yakınlığı ve Daha önce Güvenli Soketler Katmanı (SSL), boşaltma, özel sağlık probları ve çoklu site desteği olarak bilinen Taşıma Katmanı Güvenliği (TLS).
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Ön koşul: Azure CLI'yi yükleyin
 
@@ -135,7 +135,7 @@ Web uygulamanız önceden belirtilen adımlarda arka uç havuzuyla tanımlandıy
 
 [Özel bir sistem durumu sondası oluştur'u](application-gateway-create-probe-portal.md) ziyaret ederek özel sistem sondaları oluşturmayı öğrenin
 
-SSL Boşaltma'yı nasıl yapılandıracağınızı ve [SSL Boşaltmayı Yapılandırma'yı](application-gateway-ssl-arm.md) ziyaret ederek web sunucularınızdaki pahalı SSL şifre çözmeyi nasıl kaldıracağınızı öğrenin
+TLS Boşaltma'yı nasıl yapılandıracağınızı ve [TLS Boşaltmayı Yapılandırma'yı](application-gateway-ssl-arm.md) ziyaret ederek pahalı TLS şifre çözmeyi web sunucularınızdan nasıl kaldıracağınızı öğrenin
 
 <!--Image references-->
 

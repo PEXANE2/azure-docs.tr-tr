@@ -1,22 +1,22 @@
 ---
-title: Ticari Pazar'da yeni bir SaaS teklifi oluşturun
-description: Microsoft İş Ortağı Merkezi'ndeki Ticari Pazar Portalı'nı kullanarak Azure Marketi, AppSource veya Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla listeleme veya satış için hizmet olarak yeni bir Yazılım (SaaS) teklifi nasıl oluşturulur?
+title: Microsoft ticari pazarı için yeni bir SaaS teklifi oluşturun
+description: Microsoft AppSource, Azure Marketplace veya Microsoft İş Ortağı Merkezi'ndeki Microsoft ticari pazar programı kullanarak Bulut Çözüm Sağlayıcısı (CSP) programı aracılığıyla listeleme veya satış için hizmet olarak yeni bir Yazılım (SaaS) teklifi nasıl oluşturulur?
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/28/2020
-ms.openlocfilehash: 3f2201db4b78ba61ba15608a676a8b9f8f5e612a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/13/2020
+ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286209"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314083"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturma
 
-Hizmet Olarak Yazılım (SaaS) teklifleri oluşturmaya başlamak için, ilk önce [Bir İş Ortağı Merkezi hesabı oluşturduğunuzdan](./create-account.md) ve seçilen Genel **Bakış** sekmesiyle Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açtığınızı sağlayın.
+Hizmet Olarak Yazılım (SaaS) teklifleri oluşturmaya başlamak için, önce [bir İş Ortağı Merkezi hesabı oluşturduğunuzdan](./create-account.md) ve seçilen Genel **Bakış** sekmesiyle Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açtığınızı sağlayın.
 
 ![İş Ortağı Merkezi'nde Ticari Pazar panosu](./media/new-offer-overview.png)
 
@@ -82,6 +82,7 @@ Microsoft üzerinden satış yapmak daha iyi müşteri bulma ve satın alma sağ
 - Daha kapsamlı gereksinimler için [SaaS Teklif Yayın Kılavuzu'na](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)bakın.
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS fiyatlandırma ve faturaseçenekleri
+
 Yayıncının Azure aboneliğinde çalışan SaaS çözümleriyle, müşteriler tarafından ödenen lisans ücretleri, yazılımın dağıtıldığı altyapının maliyetini içerir. Azure altyapı kullanımı doğrudan iş ortağı nız tarafından yönetilir ve faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayıncılar, Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmalarına dahil etmelidir. 
 
 SaaS, tarifeli faturalandırma hizmetini kullanarak kullanıcı başına sabit bir ücrete veya tüketim ücretlerine dayalı aylık veya yıllık faturalandırma desteği sunar. Microsoft'un ticari pazarı, yayıncıların fiyatları belirlediği, Microsoft faturalarını müşterilerini ve Microsoft'un bir ajans ücreti tutarken yayımcıya gelir ödediği bir ajans modeli üzerinde çalışır.
@@ -109,16 +110,19 @@ Bir pazar yeri girişi oluşturarak Microsoft ile işletmenizi tanıtın. Teklif
 
 - **Potansiyel müşterilerin bu giriş teklifiyle nasıl etkileşimde bulunmasını istiyorsunuz?**
 
-##### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
+#### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
+
 [Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)yoluyla deneme alabilecekleri geçerli bir URL *(http* veya *https*ile başlayan) sağlayarak müşterilere teklifinizi ücretsiz olarak listeleyebilirsiniz.  Örneğin, `https://contoso.com/saas-app`
 
-##### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
+#### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
+
 [Azure Active Directory (Azure AD) kullanarak tek tıklamayla kimlik doğrulama](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide#using-azure-active-directory-to-enable-trials)yoluyla deneme alabilecekleri geçerli bir URL *(http* veya *https*ile başlayan) sağlayarak müşterilere teklifinizi ücretsiz deneme sürümüyle listele.  Örneğin: `https://contoso.com/trial/saas-app`. Teklif listesi ücretsiz denemeler oluşturulur, yönetilir ve hizmetiniz tarafından yapılandırılır ve Microsoft tarafından yönetilen abonelikleri yoktur.
 
 > [!NOTE]
 > Uygulamanızın deneme bağlantınız aracılığıyla alacağı belirteçler, yalnızca uygulamanızdaki hesap oluşturmayı otomatikleştirmek için Azure AD aracılığıyla kullanıcı bilgilerini elde etmek için kullanılabilir. Microsoft Hesapları (MSA), bu belirteç kullanılarak kimlik doğrulaması için desteklenmez.
 
-##### <a name="contact-me"></a>Bana ulaşın
+#### <a name="contact-me"></a>Bana ulaşın
+
 Müşteri İlişkileri Yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşteriden bilgilerini paylaşmak için izin istenecektir. Bu müşteri bilgileri, teklif inizi buldukları teklif adı, kimlik ve pazar yeri kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM'nizi yapılandırma hakkında daha fazla bilgi için [müşteri adayı yönetimini bağla'ya](#connect-lead-management)bakın.
 
 ## <a name="example-marketplace-offer-listing"></a>Örnek market teklifi listesi
@@ -127,16 +131,16 @@ Müşteri İlişkileri Yönetimi (CRM) sisteminizi bağlayarak müşteri iletiş
 
 ## <a name="enable-a-test-drive"></a>Test sürüşü etkinleştirme
 
-Test sürüşü, potansiyel müşterilere teklifinizi 'satın almadan önce deneme' seçeneği sunarak, dönüşümün artması ve yüksek nitelikli müşteri adaylarının üretilmesiyle sonuçlanan harika bir yoldur. [Test sürücüleri hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+Test sürüşü, potansiyel müşterilere teklifinizi 'satın almadan önce deneme' seçeneği sunarak, dönüşümün artması ve yüksek nitelikli müşteri adaylarının üretilmesiyle sonuçlanan harika bir yoldur. Daha fazla bilgi için bkz: [Müşterilerinizin teklifinizi test etmesine izin](./test-drive.md)verin.
 
 - **Test sürücüsü (onay** kutusu) etkinleştirme
 
 Test sürüşü etkinleştirerek, müşterilerin teklifinizi belirli bir süre boyunca denemeleri için bir gösteri ortamı yapılandırmanız istenir. 
 
-#### <a name="test-drive-resources"></a>Test sürüşü kaynakları
-- [Test Sürüşü Teknik En İyi Uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [Test Drive Pazarlama En İyi Uygulamalar](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Test Sürüşüne Genel Bakış Bir Çağrı Cihazı](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+### <a name="test-drive-resources"></a>Test sürüşü kaynakları
+
+- [Test Drive pazarlama en iyi uygulamaları](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)- [Test Drive teknik en iyi uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Test Sürüşüne genel bakış (PDF indir)](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
 ## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlayın
 
@@ -299,7 +303,7 @@ Bir sonraki bölüme geçmeden önce **Kaydetmeyi** unutmayın.
 
 - **Önizleme Hedef Kitlesi Tanımlayın: İsteğe bağlı bir açıklamayla birlikte satır başına tek bir AAD/MSA hesabı e-postası ekleyin.**
 
-Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak için mevcut Microsoft Hesabı (MSA) veya Azure Active Directory hesapları için bir CSV dosyası yüklerken el ile on (10) e-posta adresi veya yirmi (20) kadar ekleyin. Bu hesapları ekleyerek, teklifinizi pazar yerinde (ler) yayınlanmadan önce önizleme erişimine izin verilecek bir hedef kitle tanımlıyorsunuz. Teklifiniz zaten yayındaysa, teklifinizdeki değişiklikleri veya güncellemeleri test etmek için bir önizleme hedef kitlesi tanımlayabilirsiniz.
+Canlı yayımlamadan önce teklifinizi doğrulamaya yardımcı olmak için mevcut Microsoft Hesabı (MSA) veya Azure Active Directory hesapları için el ile 10 e-posta adresi veya csv dosyası yüklerken 20'ye kadar e-posta adresi ekleyin. Bu hesapları ekleyerek, teklifinizi pazar yerinde (ler) yayınlanmadan önce önizleme erişimine izin verilecek bir hedef kitle tanımlıyorsunuz. Teklifiniz zaten yayındaysa, teklifinizdeki değişiklikleri veya güncellemeleri test etmek için bir önizleme hedef kitlesi tanımlayabilirsiniz.
 
 > [!NOTE]
 > Önizleme kitlesi özel bir hedef kitleden farklıdır. Önizleme kitlesi, pazarlarda canlı olarak yayınlanmadan _önce_ teklifinize erişebilir. Ayrıca, bir plan oluşturmayı ve planı yalnızca özel bir hedef kitle nin kullanımına sunmayı da seçebilirsiniz. Plan **listeleme** sekmesinde, **Bu özel plan** onay kutusu ile özel bir hedef kitle tanımlayabilirsiniz. Ardından, Azure Kiracı tanımlarını kullanarak 20.000'e kadar müşteriden oluşan özel bir hedef kitle tanımlayabilirsiniz.
@@ -364,7 +368,7 @@ Teklifinizdeki her plan için ücretsiz deneme sürümünü yapılandırma olana
 ![Bir ay ücretsiz deneme onay kutusu](./media/free-trial-enable.png)
 
 >[!Note]
->İşleme edilebilir teklifiniz ücretsiz bir deneme sürümüyle yayımlandıktan sonra bu plan için devre dışı tutulamaz. Planı yeniden oluşturmak zorunda kalmamak için ilk yayımlama için bu ayarın doğru olduğundan emin olun.
+>İşlenebilir teklifiniz ücretsiz bir deneme sürümüyle yayımlandıktan sonra, bu plan için devre dışı tutulamaz. Planı yeniden oluşturmak zorunda kalmamak için ilk yayımlama için bu ayarın doğru olduğundan emin olun.
 
 Şu anda ücretsiz deneme sürümüne katılan müşteri abonelikleri hakkında `isFreeTrial`bilgi edinmek için, doğru veya yanlış olarak işaretlenecek yeni API özelliğini kullanın. Daha fazla bilgi için [SaaS Get Abonelik API'sine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)bakın.
 
@@ -377,7 +381,7 @@ Teklifinizdeki her plan için ücretsiz deneme sürümünü yapılandırma olana
 
 Her plan en az bir pazarda mevcut olmalıdır. Bu planı kullanıma açmak istediğiniz herhangi bir pazar konumu için onay kutusunu seçin. Microsoft'un satışları sizin adınıza havale ettiği ve vergi yi kullandığı "Vergi Havalesi" ülkeleri seçmek için bir arama kutusu ve düğmesi yardımcı olur.
 
-Planınız için fiyatları Abd Doları (USD) olarak belirlediyseniz ve başka bir piyasa konumu eklediyseniz, yeni piyasa fiyatı geçerli döviz kurlarına göre hesaplanacaktır. Her zaman yayınlamadan önce her pazar için fiyat gözden geçirmelisiniz. Fiyatlandırma, değişikliklerinizi kaydettikten sonra "İhracat fiyatları (xlsx)" bağlantısı kullanılarak gözden geçirilebilir.
+Planınız için fiyatları Abd Doları (USD) olarak belirlediyseniz ve başka bir piyasa konumu eklediyseniz, yeni piyasa fiyatı geçerli döviz kurlarına göre hesaplanacaktır. Yayımlamadan önce her piyasanın fiyatını gözden geçirin. Fiyatlandırma, değişikliklerinizi kaydettikten sonra "İhracat fiyatları (xlsx)" bağlantısı kullanılarak gözden geçirilebilir.
 
 #### <a name="pricing"></a>Fiyatlandırma
 
@@ -418,7 +422,7 @@ Planınızı yalnızca seçtiğiniz kısıtlı hedef kitle tarafından özel ve 
 
 Bu özel plana erişimi olan hedef kitleyi atayın. Erişim, atanan her kiracı kimliğinin açıklamasını ekleme seçeneğiyle birlikte kiracı kimlikleri kullanılarak atanır. Bir .csv elektronik tablo dosyası içe aktarıyorsanız en fazla 10 kiracı id'si veya 20.000 müşteri kiracı sıyrık sı eklenebilir.
 
-Kiracı, guid (Genel Olarak Benzersiz Tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen bir kimliği olan bir kuruluşun temsilidir. Kuruluş veya uygulama geliştirici Microsoft'la bir ilişki oluşturduğunda, örneğin Azure'a, Microsoft Intune'a veya Microsoft 365'e kaydolduğunda kuruluşun veya uygulama geliştiricinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir alan adı URL'si kullanarak kuruluşunuzun [https://www.whatismytenantid.com](https://www.whatismytenantid.com)kiracı kimliğine de bakabilirsiniz: .
+Kiracı, guid (Genel Olarak Benzersiz Tanımlayıcı, kaynakları tanımlamak için kullanılan 128 bitlik bir tamsayı numarası) olarak temsil edilen bir kimliği olan bir kuruluşun temsilidir. Kuruluş veya uygulama geliştiricisi Microsoft ile bir ilişki oluşturduğunda (örneğin, Azure, Microsoft Intune veya Microsoft 365'e kaydolurken) bir kuruluşun veya uygulama geliştiricisinin aldığı özel bir Azure AD örneğidir. Her Azure AD kiracısı benzersizdir ve diğer Azure AD kiracılarından ayrıdır. Kiracıyı denetlemek için, uygulamanızı yönetirken kullanmak istediğiniz hesapla Azure portalında oturum açın. Bir kiracınız varsa, otomatik olarak bu kiracıda oturum açar ve kiracı adını doğrudan hesap adınızın altında görebilirsiniz. Adınızı, e-postanızı, dizininizi/kiracı kimliğinizi (GUID) ve etki alanınızı görmek için, Azure portalının sağ üst kısmında bulunan hesap adınızın üzerine gelin. Hesabınız birden çok kiracıyla ilişkiliyse, kiracılar arasında geçiş yapabileceğiniz bir menüyü açmak için hesap adınızı seçebilirsiniz. Her kiracının kendi kiracı kimliği vardır. Ayrıca, bir alan adı URL'si kullanarak kuruluşunuzun [https://www.whatismytenantid.com](https://www.whatismytenantid.com)kiracı kimliğine de bakabilirsiniz: .
 
 SaaS özel bir hedef kitleyi tanımlamak için kiracı tanımlarını sunarken, diğer teklif türleri Azure Abonelik i'lerini (guid olarak da temsil edilen) kullanabilir.
 
@@ -429,19 +433,15 @@ SaaS özel bir hedef kitleyi tanımlamak için kiracı tanımlarını sunarken, 
 
 ![Notlarla örnek pazar planı girişi](./media/marketplace-plan.svg)
 
-## <a name="test-drive"></a>Test sürüşü
-
-[!INCLUDE [Test drive content](./includes/commercial-marketplace-test-drive.md)]
-
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>Bulut Çözüm Sağlayıcısı (CSP) Bayi Kitlesi
 
 Teklifinizi CSP programında kullanıma sunmayı seçmek, Bulut Çözüm Sağlayıcılarının ürününüzü müşterilerine birlikte sunulan bir çözümün parçası olarak satmasına olanak tanır. Daha fazla bilgi için [Bulut Çözüm Sağlayıcıları'na](https://go.microsoft.com/fwlink/?linkid=2111109)bakın.
 
 ## <a name="publish"></a>Yayımlama
 
-Teklifin gerekli tüm bölümlerini tamamladıktan sonra, portalın sağ üst köşesinde **yayımla'yı** seçin. **Gözden Geçirme ve yayımlama** sayfasına yeniden yönlendirileceksiniz.
+Teklifin gerekli tüm bölümlerini tamamladıktan sonra, portalın sağ üst köşesinde **yayımla'yı** seçin. **İnceleme ve yayımlama** sayfasına yönlendirileceksiniz.
 
-#### <a name="submit-offer-to-preview"></a>Teklifönizlemeye gönderme
+### <a name="submit-offer-to-preview"></a>Teklifönizlemeye gönderme
 
 Bu teklifi ilk kez yayımlıyorsanız, şunları yapabilirsiniz:
 

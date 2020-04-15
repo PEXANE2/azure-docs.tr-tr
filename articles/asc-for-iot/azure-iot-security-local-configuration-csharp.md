@@ -1,5 +1,5 @@
 ---
-title: C# için IoT güvenlik aracısı yerel yapılandırma dosyası için Azure Güvenlik Merkezi'ni anlama | Microsoft Dokümanlar
+title: Güvenlik aracısı yerel yapılandırması (C#)
 description: C# için güvenlik aracısı yerel yapılandırma dosyası olan IoT güvenlik hizmeti için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74664208"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81311672"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Yerel yapılandırma dosyasını anlama (C# aracısı)
-
 
 Azure Güvenlik Merkezi ioT güvenlik aracısı için yerel bir yapılandırma dosyasından yapılandırmalar kullanır.
 
@@ -35,18 +34,21 @@ C# güvenlik aracısı birden çok yapılandırma dosyası kullanır:
 - **Authentication.config** - Kimlik doğrulamayla ilgili yapılandırma (kimlik doğrulama ayrıntıları dahil).
 - **SecurityIotInterface.config** - IoT ile ilgili yapılandırmalar.
 
-Yapılandırma dosyaları varsayılan yapılandırmayı içerir. Temsilcilik yapılandırması aracı yükleme sırasında doldurulur ve aracı yeniden başlatıldığında yapılandırma dosyasında değişiklikler yapılır. 
+Yapılandırma dosyaları varsayılan yapılandırmayı içerir. Temsilcilik yapılandırması aracı yükleme sırasında doldurulur ve aracı yeniden başlatıldığında yapılandırma dosyasında değişiklikler yapılır.
 
 ## <a name="configuration-file-location"></a>Yapılandırma dosyası konumu
+
 Linux için:
+
 - İşletim sistemi yapılandırma dosyaları. `/var/ASCIoTAgent`
 
 Windows için:
-- İşletim sistemi yapılandırma dosyaları güvenlik aracısının dizininde yer alır. 
+
+- İşletim sistemi yapılandırma dosyaları güvenlik aracısının dizininde yer alır.
 
 ### <a name="generalconfig-configurations"></a>General.config yapılandırmaları
 
-| Yapılandırma Adı | Olası değerler | Ayrıntılar | 
+| Yapılandırma Adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
 | agentId | GUID | Aracı benzersiz tanımlayıcı |
 | readRemoteConfigurationTimeout | TimeSpan | IoT Hub'dan uzak yapılandırma alma süresi. Aracı, yapılandırmayı belirtilen süre içinde getiremezse, işlem zaman dolacaktır.|
@@ -61,6 +63,7 @@ Windows için:
 | varsayılanEventEventPriority | "Yüksek", "Düşük", "Kapalı" | Varsayılan olay önceliği. |
 
 ### <a name="generalconfig-example"></a>General.config örneği
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <General>
@@ -80,7 +83,7 @@ Windows için:
 
 ### <a name="authenticationconfig"></a>Kimlik Doğrulama.config
 
-| Yapılandırma adı | Olası değerler | Ayrıntılar | 
+| Yapılandırma adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
 | Modulename | string | Güvenlik modülü kimliğinin adı. Bu ad, aygıttaki modül kimlik adına karşılık getirmelidir. |
 | deviceId | string | Aygıtın kimliği (Azure IoT Hub'ında kayıtlı olarak). || schedulerInterval | TimeSpan dizesi | Dahili zamanlayıcı aralığı. |
@@ -94,6 +97,7 @@ Windows için:
 |
 
 ### <a name="authenticationconfig-example"></a>Authentication.config örneği
+
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
 <Authentication>
@@ -108,14 +112,16 @@ Windows için:
   <add key="registrationId" value="d1"/>
 </Authentication>
 ```
+
 ### <a name="securityiotinterfaceconfig"></a>GüvenlikIotInterface.config
 
-| Yapılandırma Adı | Olası değerler | Ayrıntılar | 
+| Yapılandırma Adı | Olası değerler | Ayrıntılar |
 |:-----------|:---------------|:--------|
 | Transporttype | "Ampq" "Mqtt" | IoT Hub taşıma türü. |
 |
 
 ### <a name="securityiotinterfaceconfig-example"></a>SecurityIotInterface.config örnek
+
 ```XML
 <ExternalInterface>
   <add key="facadeType"  value="Microsoft.Azure.Security.IoT.Agent.Common.SecurityIoTHubInterface, Security.Common" />
@@ -124,6 +130,7 @@ Windows için:
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 - IoT hizmetine [Genel Bakış](overview.md) için Azure Güvenlik Merkezi'ni okuyun
 - IoT [Mimarisi](architecture.md) için Azure Güvenlik Merkezi hakkında daha fazla bilgi edinin
 - IoT [hizmeti](quickstart-onboard-iot-hub.md) için Azure Güvenlik Merkezi'ni etkinleştirme

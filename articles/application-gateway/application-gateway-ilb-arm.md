@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74179326"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312414"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Dahili yük dengeleyicisi (ILB) ile bir uygulama ağ geçidi oluşturma
 
-Azure Application Gateway İnternet’e yönelik bir VIP veya İnternet’e sunulmamış iç yük dengeleyici uç noktası olarak da bilinen iç uç nokta ile yapılandırılabilir. Ağ geçidini bir ILB ile yapılandırma İnternet’e sunulmamış iç iş kolu uygulamaları için kullanışlıdır. Güvenlik sınırı içinde bulunan, İnternet’e sunulmamış ancak hala hepsini bir kez deneme yük dağıtımı, oturum sürekliliği veya Güvenli Yuva Katmanı (SLL) sonlandırması gerektiren çok katmanlı uygulamalar içindeki hizmetler ve katmanlar için de kullanışlıdır.
+Azure Application Gateway İnternet’e yönelik bir VIP veya İnternet’e sunulmamış iç yük dengeleyici uç noktası olarak da bilinen iç uç nokta ile yapılandırılabilir. Ağ geçidini bir ILB ile yapılandırma İnternet’e sunulmamış iç iş kolu uygulamaları için kullanışlıdır. Ayrıca, Internet'e maruz kalmayan ancak daha önce Güvenli Soket katmanı (SSL), sonlandırma olarak bilinen round-robin yük dağıtımı, oturum yapışkanlığı veya Aktarım Katmanı Güvenliği (TLS) gerektiren bir güvenlik sınırında bulunan çok katmanlı bir uygulamadaki hizmetler ve katmanlar için de yararlıdır.
 
 Bu makale, ILB ile uygulama ağ geçidi yapılandırma adımlarında size yol gösterir.
 

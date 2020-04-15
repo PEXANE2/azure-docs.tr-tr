@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 8d43851a6a546bd23881c4d0a72185ca03e63092
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983628"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314353"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi'nde Azure Web Uygulaması Güvenlik Duvarı
 
@@ -28,9 +28,9 @@ Aşağıda listelenen TÜM WAF özellikleri bir WAF Politikası içinde bulunmak
 
 ![Uygulama Ağ Geçidi WAF diyagramı](../media/ag-overview/waf1.png)
 
-Uygulama Ağ Geçidi bir uygulama teslim denetleyicisi (ADC) olarak çalışır. Güvenli Soket katmanı (SSL) sonlandırma, çerez tabanlı oturum yakınlığı, round-robin yük dağıtımı, içerik tabanlı yönlendirme, birden çok web sitesini barındırma olanağı ve güvenlik geliştirmeleri sunar.
+Uygulama Ağ Geçidi bir uygulama teslim denetleyicisi (ADC) olarak çalışır. Daha önce Güvenli Soket katmanı (SSL), sonlandırma, çerez tabanlı oturum yakınlığı, round-robin yük dağıtımı, içerik tabanlı yönlendirme, birden çok web sitesini barındırma olanağı ve güvenlik geliştirmeleri olarak bilinen Taşıma Katmanı Güvenliği (TLS) sunar.
 
-Uygulama Ağ Geçidi güvenlik geliştirmeleri SSL ilke yönetimi ve uçlardan uca SSL desteği içerir. Uygulama güvenliği, WAF'ın Application Gateway'e entegrasyonu yla güçlendirilir. Bu kombinasyon, web uygulamalarınızı sık karşılaşılan güvenlik açıklarına karşı korur. Ayrıca, yönetilmesi kolay bir merkezi konum sağlar.
+Uygulama Ağ Geçidi güvenlik geliştirmeleri TLS ilke yönetimi ve uçlardan uca TLS desteğini içerir. Uygulama güvenliği, WAF'ın Application Gateway'e entegrasyonu yla güçlendirilir. Bu kombinasyon, web uygulamalarınızı sık karşılaşılan güvenlik açıklarına karşı korur. Ayrıca, yönetilmesi kolay bir merkezi konum sağlar.
 
 ## <a name="benefits"></a>Yararları
 

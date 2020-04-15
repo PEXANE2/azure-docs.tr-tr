@@ -5,19 +5,19 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/28/2019
-ms.openlocfilehash: 6f4efd9a316b92f17f89cea66a7c81e84ac3cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 9bdf7360ce00637b0eed3de7a3349da8656a3ed0
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72991343"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314170"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Apache Ambari web Kullanıcı Arabirimi, JobHistory, NameNode, Apache Oozie ve diğer Kullanıcı Aralarına erişmek için SSH tünellerini kullanın
 
-HDInsight kümeleri Apache Ambari web UI'ye Internet üzerinden erişim sağlar, ancak bazı özellikler bir SSH tüneli gerektirir. Örneğin, Apache Oozie hizmetiiçin web UI'ye SSh tüneli olmadan internet üzerinden erişilemez.
+HDInsight kümeleri, Apache Ambari web UI'ye Internet üzerinden erişim sağlar. Bazı özellikler için SSH tüneli gerekir. Örneğin, Apache Oozie web UI'ye SSH tüneli olmadan internet üzerinden erişilemez.
 
 ## <a name="why-use-an-ssh-tunnel"></a>Neden bir SSH tüneli kullanın?
 
@@ -31,7 +31,7 @@ Aşağıdaki Web UI'leri bir SSH tüneli gerektirir:
 * Oozie web UI
 * HBase Master ve Günlükleri UI
 
-Kümenizi özelleştirmek için Komut Dosyası Eylemleri'ni kullanıyorsanız, yüklediğiniz ve bir web hizmetini ortaya çıkaran hizmetler veya yardımcı programlar bir SSH tüneli gerektirir. Örneğin, Komut Dosyası Eylemi kullanarak Hue'yu yüklerseniz, Hue web Web Web Web'e erişmek için bir SSH tüneli kullanmanız gerekir.
+Bir web hizmetini ortaya çıkaran Komut Dosyası Eylemleri ile yüklenen hizmetler için Bir SSH tüneli gerekir. Komut Dosyası Eylemi ile yüklenen ton, web Web Arama Sürümü'ne erişmek için bir SSH tüneli gerektirir.
 
 > [!IMPORTANT]  
 > Sanal ağ üzerinden HDInsight'a doğrudan erişiminiz varsa, SSH tünelleri kullanmanız gerekmez. Sanal ağ üzerinden HDInsight'a doğrudan erişme örneği için, [şirket içi ağ belgenize HDInsight'ı bağlayın'](connect-on-premises-network.md) a bakın.
@@ -64,14 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Bu komut, trafiği yerel bağlantı noktası 9876'ya, SSH üzerinden kümeye ileten bir bağlantı oluşturur. Seçenekler şunlardır:
 
-* **D 9876** - Tünelden trafiği yönlendirir yerel liman.
-* **C** - Web trafiği çoğunlukla metin olduğundan, tüm verileri sıkıştırın.
-* **2** - SSH'yi yalnızca protokol sürüm 2'yi denemeye zorlar.
-* **s** - Sessiz modu.
-* **T** - Bir bağlantı noktasını ilettiğiniz için sözde tty tahsisatını devre dışı bırak.
-* **n** - StDIN okumasını engelleyin, çünkü sadece bir bağlantı noktasını iletiyorsunuz.
-* **N** - Bir bağlantı noktasını sadece ilettiğiniz için uzaktan kumandayı yürütmeyin.
-* **f** - Arka planda çalıştırın.
+    |Seçenek |Açıklama |
+    |---|---|
+    |D 9876|Tünelin içinden trafiği sağlayan yerel bağlantı noktası.|
+    |C|Web trafiği çoğunlukla metin olduğundan, tüm verileri sıkıştırın.|
+    |2|SSH'yi yalnızca protokol sürüm 2'yi denemeye zorlar.|
+    |q|Sessiz mod.|
+    |T|Bir bağlantı noktasını ilettiğiniz için sözde tty tahsisatını devre dışı bırak.|
+    |n|Sadece bir bağlantı noktası ilettiğiniz için STDIN'in okunmasını engelleyin.|
+    |N|Bir bağlantı noktasını sadece ilettiğiniz için uzaktan kumandayı yürütmeyin.|
+    |f|Arka planda koş.|
 
 Komut bittikten sonra, yerel bilgisayardaki 9876 numaralı bağlantı noktasına gönderilen trafik küme kafa düğümüne yönlendirilir.
 

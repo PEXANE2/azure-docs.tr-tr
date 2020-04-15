@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 1a4ae0701174278203023c156a86aad8feb1ca4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: d68f7dc6368c2b3de7f26f2946c5fb47237a820d
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240614"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313926"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>HDInsight ile verilere erişimi kısıtlamak için Azure Depolama Paylaşılan Erişim İmzaları kullanma
 
@@ -27,8 +27,6 @@ HDInsight, kümeyle ilişkili Azure Depolama hesaplarındaki verilere tam erişi
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği.
-
 * Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](./hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
 
 * Varolan [bir depolama kapsayıcısı.](../storage/blobs/storage-quickstart-blobs-portal.md)  
@@ -41,7 +39,7 @@ HDInsight, kümeyle ilişkili Azure Depolama hesaplarındaki verilere tam erişi
 
 * C# kullanıyorsanız, Visual Studio sürüm 2013 veya daha yüksek olmalıdır.
 
-* Depolama hesabınız için [URI şeması.](./hdinsight-hadoop-linux-information.md#URI-and-scheme) Bu, `wasb://` Azure Depolama, `abfs://` Azure Veri Gölü Depolama `adl://` Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Azure Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`. Ayrıca bakınız, [güvenli aktarım.](../storage/common/storage-require-secure-transfer.md)
+* Depolama hesabınız için [URI şeması.](./hdinsight-hadoop-linux-information.md#URI-and-scheme) Bu şema `wasb://` Azure Depolama, `abfs://` Azure Veri Gölü `adl://` Depolama Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Azure Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`. Ayrıca bakınız, [güvenli aktarım.](../storage/common/storage-require-secure-transfer.md)
 
 * Paylaşılan Erişim İmzası eklemek için varolan bir HDInsight kümesi. Değilse, bir küme oluşturmak ve küme oluşturma sırasında Paylaşılan Erişim İmzası eklemek için Azure PowerShell'i kullanabilirsiniz.
 
@@ -56,11 +54,11 @@ HDInsight, kümeyle ilişkili Azure Depolama hesaplarındaki verilere tam erişi
 
 Paylaşılan Erişim İmzalarının iki biçimi vardır:
 
-* Ad hoc: SAS'ın başlangıç saati, son kullanma tarihi ve izinlerinin tümü SAS URI'de belirtilir.
+* `Ad hoc`: SAS'ın başlangıç saati, son kullanma süresi ve izinlerinin tümü SAS URI'de belirtilir.
 
-* Depolanan erişim ilkesi: Depolanan erişim ilkesi, bir kaynak kapsayıcısı üzerinde blob kapsayıcısı gibi tanımlanır. Bir veya daha fazla paylaşılan erişim imzasının kısıtlamalarını yönetmek için bir ilke kullanılabilir. Bir SAS'ı depolanmış bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, depolanan erişim ilkesi için tanımlanan kısıtlamaları (başlangıç saati, son kullanma süresi ve izinler) devralır.
+* `Stored access policy`: Depolanan erişim ilkesi, bir kaynak kapsayıcısı üzerinde blob kapsayıcısı gibi tanımlanır. Bir veya daha fazla paylaşılan erişim imzasının kısıtlamalarını yönetmek için bir ilke kullanılabilir. Bir SAS'ı depolanmış bir erişim ilkesiyle ilişkilendirdiğinizde, SAS, depolanan erişim ilkesi için tanımlanan kısıtlamaları (başlangıç saati, son kullanma süresi ve izinler) devralır.
 
-İki form arasındaki fark, bir anahtar senaryo için önemlidir: iptal. SAS bir URL'dir, bu nedenle SAS'ı alan herkes, kimden istediği ne olursa olsun, bu url'yi kullanabilir. Bir SAS herkese açık olarak yayınlanırsa, dünyadaki herkes tarafından kullanılabilir. Dağıtılan bir SAS, dört şeyden biri olana kadar geçerlidir:
+İki form arasındaki fark, bir anahtar senaryo için önemlidir: iptal. SAS bir URL'dir, bu nedenle SAS'ı alan herkes bunu kullanabilir. Kimin istediği önemli değil. Bir SAS herkese açık olarak yayınlanırsa, dünyadaki herkes tarafından kullanılabilir. Dağıtılan bir SAS, dört şeyden biri olana kadar geçerlidir:
 
 1. SAS'ta belirtilen son kullanma süresine ulaşılır.
 
@@ -82,7 +80,7 @@ Paylaşılan Erişim İmzaları hakkında daha fazla bilgi için Bkz. [SAS model
 
 ## <a name="create-a-stored-policy-and-sas"></a>Depolanmış bir ilke ve SAS oluşturma
 
-Her yöntemin sonunda üretilen SAS belirteci kaydedin. Belirteç aşağıdakilere benzer:
+Her yöntemin sonunda üretilen SAS belirteci kaydedin. Belirteç aşağıdaki çıktıya benzer:
 
 ```output
 ?sv=2018-03-28&sr=c&si=myPolicyPS&sig=NAxefF%2BrR2ubjZtyUtuAvLQgt%2FJIN5aHJMj6OsDwyy4%3D
@@ -205,7 +203,7 @@ Dosyayı `SASToken.py` açın `storage_account_name`ve `storage_account_key`varo
 
 Hata iletisini `ImportError: No module named azure.storage` `pip install --upgrade azure-storage` alırsanız yürütmeniz gerekebilir.
 
-### <a name="using-c"></a>C# kullanma
+### <a name="using-c"></a>C kullanma\#
 
 1. Çözümü Visual Studio'da açın.
 
@@ -213,21 +211,20 @@ Hata iletisini `ImportError: No module named azure.storage` `pip install --upgra
 
 3. **Ayarlar'ı** seçin ve aşağıdaki girişler için değerler ekleyin:
 
-   * StorageConnectionString: Depolanmış bir ilke ve SAS oluşturmak istediğiniz depolama hesabının bağlantı dizesi. Biçim, depolama `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` hesabınızın adının olduğu ve `mykey` depolama hesabınızın anahtarı nın bulunduğu yerde olmalıdır.
-
-   * ContainerName: Erişimi kısıtlamak istediğiniz depolama hesabındaki kapsayıcı.
-
-   * SASPolicyName: Depolanan ilke oluşturmak için kullanılacak ad.
-
-   * FileToUpload: Kapsayıcıya yüklenen bir dosyaya giden yol.
+    |Öğe |Açıklama |
+    |---|---|
+    |DepolamaBağlantı String|Depolanmış bir ilke ve SAS oluşturmak istediğiniz depolama hesabının bağlantı dizesi. Biçim, depolama `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` `myaccount` hesabınızın adının olduğu ve `mykey` depolama hesabınızın anahtarı nın bulunduğu yerde olmalıdır.|
+    |ContainerName|Erişimi kısıtlamak istediğiniz depolama hesabındaki kapsayıcı.|
+    |SASPolicyName|Oluşturulacak depolanan ilke için kullanılacak ad.|
+    |FileToUpload|Kapsayıcıya yüklenen bir dosyaya giden yol.|
 
 4. Projeyi çalıştırın. SAS ilke belirteci, depolama hesabı adı ve kapsayıcı adını kaydedin. Bu değerler, depolama hesabını HDInsight kümenizle ilişkilendirirken kullanılır.
 
 ## <a name="use-the-sas-with-hdinsight"></a>HDInsight ile SAS'ı kullanın
 
-Bir HDInsight kümesi oluştururken, birincil depolama hesabı belirtmeniz gerekir ve isteğe bağlı olarak ek depolama hesapları belirtebilirsiniz. Depolama ekleme bu yöntemlerin her ikisi de depolama hesapları ve kullanılan kapsayıcılar tam erişim gerektirir.
+BIR HDInsight kümesi oluştururken, birincil depolama hesabı belirtmeniz gerekir. Ek depolama hesapları da belirtebilirsiniz. Depolama ekleme bu yöntemlerin her ikisi de depolama hesapları ve kullanılan kapsayıcılar tam erişim gerektirir.
 
-Kapsayıcıya erişimi sınırlamak için Paylaşılan Erişim İmzası kullanmak için kümeiçin **çekirdek site** yapılandırmasına özel bir giriş ekleyin. Girişi PowerShell kullanarak veya Ambari kullanarak küme oluşturma sonrasında küme oluşturma sırasında ekleyebilirsiniz.
+Kapsayıcı erişimini sınırlamak için Paylaşılan Erişim İmzası kullanın. Küme için çekirdek **site** yapılandırmasına özel bir giriş ekleyin. Girişi PowerShell kullanarak veya Ambari kullanarak küme oluşturma sonrasında küme oluşturma sırasında ekleyebilirsiniz.
 
 ### <a name="create-a-cluster-that-uses-the-sas"></a>SAS kullanan bir küme oluşturma
 

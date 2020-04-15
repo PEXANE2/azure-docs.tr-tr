@@ -3,16 +3,16 @@ title: Gelişmiş sorgu örnekleri
 description: Sütunlarla çalışma, kullanılan etiketleri listeleme ve kaynakları normal ifadelerle eşleştirme gibi bazı gelişmiş sorguları çalıştırmak için Azure Kaynak Grafiği'ni kullanın.
 ms.date: 03/20/2020
 ms.topic: sample
-ms.openlocfilehash: 98e80d0977ec23cba8b8c497373b6e89b52d430e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3d0e7a9be37f9baf471584ee3fe26c52d13b3084
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80130517"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81381499"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Gelişmiş Kaynak Grafiği sorgu örnekleri
 
-Azure Kaynak Grafiği ile sorguları anlamanın il adımı, [Sorgu Dili](../concepts/query-language.md)’nin temel bir anlayışıdır. [Azure Veri Gezgini](../../../data-explorer/data-explorer-overview.md)’ne önceden aşina değilseniz, aradığınız kaynaklar için isteklerin nasıl oluşturulacağını anlamak üzere temelleri gözden geçirmeniz önerilir.
+Azure Kaynak Grafiği ile sorguları anlamanın il adımı, [Sorgu Dili](../concepts/query-language.md)’nin temel bir anlayışıdır. [Azure Veri Gezgini](/azure/data-explorer/data-explorer-overview)’ne önceden aşina değilseniz, aradığınız kaynaklar için isteklerin nasıl oluşturulacağını anlamak üzere temelleri gözden geçirmeniz önerilir.
 
 Aşağıdaki gelişmiş sorguları inceleyeceğiz:
 

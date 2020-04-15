@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3202c2fbfedfce0b0b52be94b1e0d165a6e72546
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 992075378737552e890bd2d6fed3c519e6c62aa7
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481322"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81312944"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Uygulama Proxy bağlayıcılarınızın ve uygulamalarınızın yüksek kullanılabilirliği ve yük dengelemesi
 
@@ -40,16 +40,12 @@ Bağlayıcılar, bağlantılarını yüksek kullanılabilirlik ilkelerine göre 
 1. İstemci aygıtındaki bir kullanıcı, Application Proxy aracılığıyla yayınlanan şirket içi bir uygulamaya erişmeye çalışır.
 2. İstek, hangi Uygulama Proxy hizmeti örneğinin isteği alması gerektiğini belirlemek için bir Azure Yük Dengeleyicisi'nden geçer. Bölge başına, isteği kabul etmek için kullanılabilir onlarca örnek vardır. Bu yöntem, hizmet örnekleri arasında trafiği eşit dağıtmaya yardımcı olur.
 3. İstek [Servis Otobüsü'ne](https://docs.microsoft.com/azure/service-bus-messaging/)gönderilir.
-4. Servis Veri Servisi, bağlantının bağlayıcı grubunda daha önce varolan bir bağlayıcı kullanıp kullanmayın denetler. Bu öyleyse, bağlantıyı yeniden kullanır. Bağlantıyla henüz hiçbir bağlayıcı eşleşmezse, sinyal vermek için rasgele kullanılabilir bir bağlayıcı seçer. Konektör daha sonra Servis Veri Servisi'nden isteği alır.
-
+4. Servis Veri Servisi sinyalleri kullanılabilir bir konektöre bağlanır. Konektör daha sonra Servis Veri Servisi'nden isteği alır.
    - Adım 2'de, istekler farklı Uygulama Proxy hizmet örneklerine gider, bu nedenle bağlantıların farklı bağlayıcılarla yapılma olasılığı daha yüksektir. Sonuç olarak, konektörler grup içinde neredeyse eşit olarak kullanılır.
-
-   - Bağlantı yalnızca bağlantı kırılırsa veya 10 dakikalık bir boşta kalan süre oluşursa yeniden kurulur. Örneğin, bir makine veya konektör hizmeti yeniden başlatıldığında veya ağ kesintisi olduğunda bağlantı bozulabilir.
-
 5. Bağlayıcı isteği uygulamanın arka uç sunucusuna geçirir. Daha sonra uygulama yanıtı bağlayıcıya geri gönderir.
 6. Bağlayıcı, isteğin geldiği hizmet örneğine giden bir bağlantı açarak yanıtı tamamlar. Sonra bu bağlantı hemen kapatılır. Varsayılan olarak, her bağlayıcı 200 eşzamanlı giden bağlantılarla sınırlıdır.
 7. Yanıt daha sonra hizmet örneğinden istemciye geri aktarılır.
-8. Aynı bağlantıdan sonraki istekler, bu bağlantı kopana veya 10 dakika boşta kalana kadar yukarıdaki adımları yineler.
+8. Aynı bağlantıdan sonraki istekler yukarıdaki adımları yineler.
 
 Bir uygulama genellikle birçok kaynağa sahiptir ve yüklendiğinde birden çok bağlantı açar. Her bağlantı, bir hizmet örneğine tahsis olmak için yukarıdaki adımlardan geçer, bağlantı daha önce bir bağlayıcıyla eşleşmiyorsa yeni bir kullanılabilir bağlayıcı seçin.
 

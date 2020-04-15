@@ -4,12 +4,12 @@ description: ASP.NET Core ve Console uygulamalarına sahip Azure Application Ins
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0f40c1c1a8ee7f20c769a62e9746da43face4cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 33effe9cfec6d766d573617ff03b58564e5b34d1
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276385"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313653"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>.NET Core ILogger günlükleri için ApplicationInsightsLoggerProvider
 
@@ -213,7 +213,7 @@ Eski sağlayıcıyı kullanmaya devam edebilirsiniz. (Yalnızca ana sürüm değ
 - ASP.NET Core (2.0 ve sonrası) olarak, [günlük sağlayıcıları etkinleştirmek](https://github.com/aspnet/Announcements/issues/255) için önerilen yolu kendi içinde iLoggingBuilder uzantısı yöntemleri kullanarak **Program.cs.**
 
 > [!Note]
-> Yeni sağlayıcı, NETSTANDARD2.0 veya daha yenisini hedefleyen uygulamalar için kullanılabilir. Uygulamanız .NET Core 1.1 gibi eski .NET Core sürümlerini hedefliyorsa veya .NET Framework'u hedefliyorsa, eski sağlayıcıyı kullanmaya devam edin.
+> Yeni sağlayıcı, NETSTANDARD2.0 veya daha yenisini hedefleyen uygulamalar için kullanılabilir. [Microsoft.ApplicationInsights.AspNet SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) sürüm 2.14.0'dan itibaren ,.NET Framework NET461 veya sonraki uygulamaları hedefleyen uygulamalar için yeni sağlayıcı da kullanılabilir. Uygulamanız .NET Core 1.1 gibi eski .NET Core sürümlerini hedefliyorsa veya .NET Framework'u NET46'dan daha az hedefliyorsa, eski sağlayıcıyı kullanmaya devam edin.
 
 ## <a name="console-application"></a>Konsol uygulaması
 

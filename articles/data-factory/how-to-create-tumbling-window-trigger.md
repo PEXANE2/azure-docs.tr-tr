@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: f9e31b8f0fce1af8408b80afb1049dae8c8ecf1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673704"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380123"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
 Bu makalede, yuvarlanan bir pencere tetikleyicioluşturmak, başlatmak ve izlemek için adımlar sağlar. Tetikleyiciler ve desteklenen türler hakkında genel bilgi için [Bkz.](concepts-pipeline-execution-triggers.md)
@@ -97,7 +97,7 @@ Aşağıdaki tablo, yuvarlanan bir pencere tetikleyicisinin tekrarı ve zamanlam
 | **Türü** | Tetikleyicinin türü. Tür sabit değer "TumblingWindowTrigger"tır. | Dize | "Yuvarlanan Pencere Tetikleme" | Evet |
 | **runtimeState** | Tetikleyici çalışma zamanının geçerli durumu.<br/>**Not**: Bu \<öğe sadece> okunur. | Dize | "Başladı", "Durduruldu", "Devre Dışı" | Evet |
 | **Frekans** | Tetikleyicinin yinelendiği frekans birimini (dakika veya saat) temsil eden dize. Başlangıç **Saati** tarih değerleri **sıklık** değerinden daha ayrıntılıysa, pencere sınırları hesaplandığında **başlangıç Saati** tarihleri dikkate alınır. Örneğin, **frekans** değeri saatlikse ve **başlangıç Saati** değeri 2017-09-01T10:10:10Z ise, ilk pencere (2017-09-01T10:10:10Z, 2017-09-01T11:10:10Z) olur. | Dize | "dakika", "saat"  | Evet |
-| **Aralığı** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **aralık** 3 ve **sıklık** "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Not**: Minimum pencere aralığı 15 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Evet |
+| **Aralığı** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin, **aralık** 3 ve **sıklık** "saat" ise, tetikleyici her 3 saatte bir yinelenir. <br/>**Not**: Minimum pencere aralığı 5 dakikadır. | Tamsayı | Pozitif bir tamsayı. | Evet |
 | **startTime**| Geçmişte olabilir ilk olay. İlk tetikleme aralığı (**startTime**, **startTime** + **aralığıdır).** | DateTime | DateTime değeri. | Evet |
 | **endTime**| Geçmişte olabilir son olay. | DateTime | DateTime değeri. | Evet |
 | **Gecikme** | Pencere için veri işlemenin başlatılmasını geciktirmek için gereken süre. Ardışık hatlar, beklenen yürütme süresi artı **gecikme**miktarından sonra başlatılır. **Gecikme,** tetikleyicinin yeni bir çalıştırmayı tetiklemeden önce son zamanı ne kadar beklediğini tanımlar. **Gecikme** pencere **başlangıç Zamanını**değiştirmez. Örneğin, 00:10:00 **gecikme** değeri 10 dakikalık bir gecikme anlamına gelir. | Timespan<br/>(hh:mm:ss)  | Varsayılan değerin 00:00:00 olduğu bir zaman önce değeri. | Hayır |

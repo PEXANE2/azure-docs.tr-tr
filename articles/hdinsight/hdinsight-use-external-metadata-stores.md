@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
-ms.openlocfilehash: 0cadf3930008868fe223e6e1024a2d14d17d8131
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657118"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81313958"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight’ta dış meta veri depolarını kullanma
 
@@ -63,7 +63,7 @@ HDInsight, üretim kümeleri için önerilen özel meta store'ları da destekler
 
 HDInsight kümesi için özel bir Hive metastore'u kurmadan önce varolan bir Azure SQL Veritabanı oluşturun veya varolun.  Daha fazla bilgi için [Bkz. Quickstart: Azure SQL DB'de tek bir veritabanı oluşturun.](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)
 
-Azure SQL Veritabanı güvenlik duvarı kurallarını Azure hizmetlerinin ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın. **Sunucu güvenlik duvarını**ayarla'yı seçerek Azure portalında bu seçeneği etkinleştirin. Ardından, Azure SQL Veritabanı sunucusu veya veritabanı için **bu sunucuya erişmek için Azure hizmetlerine ve kaynaklarına İzin Ver'in** altında **ON'u** seçin. Daha fazla bilgi için IP [güvenlik duvarı kuralı oluştur ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+Küme oluşturulurken, HDInsight hizmetinin harici metastore'a bağlanması ve kimlik bilgilerinizi doğrulaması gerekir. Azure SQL Veritabanı güvenlik duvarı kurallarını Azure hizmetlerinin ve kaynaklarının sunucuya erişmesine izin verecek şekilde yapılandırın. **Sunucu güvenlik duvarını**ayarla'yı seçerek Azure portalında bu seçeneği etkinleştirin. Ardından, Genel **Ağ erişimini Reddet'in**altında **Hayır'ı** ve Azure SQL Veritabanı sunucusu veya veritabanı için **bu sunucuya erişmek için Azure hizmetlerine ve kaynaklarına İzin Ver'in** altında **Evet'i** seçin. Daha fazla bilgi için IP [güvenlik duvarı kuralı oluştur ve yönetme](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
 ![sunucu güvenlik duvarı düğmesini ayarlama](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/25/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6482040f0d50f08f04ea87384a99af556f694075
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 913bc16f7408acebb0e65359e8845ce0f6a3a2f4
+ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478804"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81314258"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -74,7 +74,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 
 ### <a name="global-commercial-azure"></a>Küresel ticari Azure
 
-| **Hizmet sağlayıcı** | **Microsoft Azure** | **Ofis 365**  | **Konumlar** |
+| **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365**  | **Konumlar** |
 | --- | --- | --- | --- |
 | **[AARNet](https://www.aarnet.edu.au/network-and-services/connectivity-services/azure-expressroute)** |Destekleniyor |Destekleniyor |Melbourne, Sidney |
 | **[Airtel](https://www.airtel.in/business/#/)** | Destekleniyor | Destekleniyor | Madras2, Madras2 |
@@ -94,7 +94,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **Çin Mobil Uluslararası** |Destekleniyor |Destekleniyor | Singapur |
 | **China Telecom Global** |Destekleniyor |Destekleniyor |Hong Kong |
 | **Çin Unicom Global** |Destekleniyor |Destekleniyor | Singapur2 |
-| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Destekleniyor |Destekleniyor |Chicago, Dallas, Montreal, Toronto, Washington DC |
+| **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Destekleniyor |Destekleniyor |Chicago, Dallas, Montreal, Toronto, Vancouver, Washington DC |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Destekleniyor |Destekleniyor |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londra, Londra2, Newport, New York, Osaka, Paris, Silikon Vadisi, Silikon Vadisi2, Singapur2, Tokyo, Washington DC |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Destekleniyor |Destekleniyor |Chicago, Silikon Vadisi, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Destekleniyor |Destekleniyor |Chicago, Denver, Los Angeles, New York, Silikon Vadisi, Silikon Vadisi2, Washington DC, Washington DC2 |
@@ -174,7 +174,7 @@ Azure ulusal bulutları birbirinden ve genel ticari Azure'dan izole edilmiştir.
 
 ### <a name="us-government-cloud"></a>ABD bulutu
 
-| **Hizmet sağlayıcı** | **Microsoft Azure** | **Ofis 365** | **Konumlar** |
+| **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365** | **Konumlar** |
 | --- | --- | --- | --- |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Destekleniyor |Destekleniyor |Chicago, Phoenix, Silikon Vadisi, Washington DC |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Destekleniyor |Destekleniyor |New York, Phoenix, San Antonio, Washington DC |
@@ -185,7 +185,7 @@ Azure ulusal bulutları birbirinden ve genel ticari Azure'dan izole edilmiştir.
 
 ### <a name="china"></a>Çin
 
-| **Hizmet sağlayıcı** | **Microsoft Azure** | **Ofis 365** | **Konumlar** |
+| **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365** | **Konumlar** |
 | --- | --- | --- | --- |
 | **China Telecom** |Destekleniyor |Desteklenmiyor |Pekin, Pekin2, Şangay, Şangay2 |
 | **Çin Unicom** | Destekleniyor | Desteklenmiyor | Pekin2 |
@@ -195,7 +195,7 @@ Daha fazla öğrenmek için, bkz. [Çin’de ExpressRoute](http://www.windowsazu
 
 ### <a name="germany"></a>Almanya
 
-| **Hizmet sağlayıcı** | **Microsoft Azure** | **Ofis 365** | **Konumlar** |
+| **Hizmet sağlayıcı** | **Microsoft Azure** | **Office 365** | **Konumlar** |
 | --- | --- | --- | --- |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Destekleniyor |Desteklenmiyor |Frankfurt |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Destekleniyor |Desteklenmiyor |Frankfurt |

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: dc78f105d353a9a17af4b33dfc806eed91e7c6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ac5997cfdb097c2c13b2a964f3cf8e276229f123
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063212"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380237"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure Ağ MSP ortakları hakkında
 
@@ -32,17 +32,17 @@ Azure Ağ MSP iş ortakları tarafından sunulan yönetilen bulut ağ hizmetleri
 | ---| ---| ---| ---|
 |[ANS Group İngiltere](https://www.ans.co.uk/)|[Azure Yönetilen Svc + ANS Glass 10wk uygulaması](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/ans_group.glassms)|||||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)||[Aryaka Azure Connect](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.cloudconnect_azure_19?tab=Overview)|[Aryaka Azure Sanal WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/aryaka.aryaka_azure_virtual_wan?tab=Overview) | | |
-|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Ağ Dönüşüm Danışmanlığı: 1-İnsan Kaynakları Değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|||||
+|[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|[Ağ Dönüşüm Danışmanlığı: 1-İnsan Kaynakları Değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/bt-americas-inc.network-transformation-consulting)|[BT Cloud Connect Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bt-americas-inc.bt-cca-lh-001?tab=Overview)||||
 |[Birlikte evrim](https://www.coevolve.com/services/azure-networking-services/)|||[Yönetilen VMware SD-WAN Sanal Kenar](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/coevolveptylimited1581027739259.managed-vmware-sdwan-edge?tab=Overview)|||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|[Azure'da ağ optimizasyonu: 2-saat Değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/colttechnologyservices.azure_networking)|||||
 |[NTT Verileri](https://us.nttdata.com/en/digital/cloud-transformation)|[Yönetilen Hizmetler: 10 haftalık Uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/nttdata-2932930.managed_service)|||||
-|[Equinix](https://www.equinix.com/)|[Bulut Optimize EDILMIŞ WAN Katılımı: 4 günlük değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.cloud_optimized_wan_workshop)|[ExpressRoute Bağlantı Stratejisi: 3 günlük Atölye](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/equinix.eps_expressroute)||||
+|[Equinix](https://www.equinix.com/)|[Bulut Optimize EDILMIŞ WAN Atölyesi](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.cloudoptimizedwan?tab=Overview)|[ExpressRoute Bağlantı Stratejisi Çalıştayı](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/equinix.expressroutestrategy?tab=Overview)||||
 |[IIJ](https://www.iij.ad.jp/biz/cloudex/)|[ExpressRoute uygulaması: 1-İnsan Kaynakları Brifingi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxm_consulting)|[ExpressRoute: 2-Wk Uygulama](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/internet_initiative_japan_inc.iij_cxmer_consulting)||||
 |[ınfosys](https://www.infosys.com/services/microsoft-cloud-business/pages/index.aspx)|[Azure için Infosys Integrated+](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/infosysltd.infosys-integrate-for-azure?tab=Overview)|||||
 |[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/support-your-cloud-strategy/)|[Azure Ağ Değerlendirmesi - 5 Gün](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/interxionhq.inxn_azure_networking_assessment)|||||
 |[Liquid Telecom](https://liquidcloud.africa/azure-networking)|[Buluta Hazırlık - 2 Saat Değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/liquidtelecommunicationsoperationslimited.liquid_cloud_readiness_assessment)|||||
-|[Macquarie Telekom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud Services Consult: 2-hr Workshop](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/macquariecloudservices.clear_for_takeoff_consulting_service)||[Macquarie Cloud tarafından SD-WAN Sanal Kenar Yükleme](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
-|[Oncore Bulut Hizmetleri]( https://www.oncore.cloud/services/ue-for-expressroute/)||[Azure ExpressRoute için UniversalEdge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
+|[Macquarie Telekom](https://macquariecloudservices.com/azure-managed-services/)|[Macquarie Cloud tarafından Azure Yönetilen Hizmetler](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.managed_services?tab=Overview)||[Macquarie Cloud tarafından SD-WAN Sanal Kenar Yükleme](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/macquariecloudservices.nanaged_network_services?tab=Overview)|||
+|[Oncore Bulut Hizmetleri]( https://www.oncore.cloud/services/ue-for-expressroute/)|[Kurumsal Bulut Vakıflar: Atölye (~ 10 gün)](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/oncore_cloud_services-4944214.oncore_cloud_onboard_201810)|[Azure ExpressRoute için UniversalEdge](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oncore_cloud_services-4944214.universaledge_for_expressroute?tab=Overview)||||
 |[Orixcom]( https://www.orixcom.com/cloud-solutions/)||[Orixcom Yönetilen ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_managed_expressroute?tab=Overview)|[Orixcom SD-WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/orixcom.orixcom_sd_wan?tab=Overview)|||
 |[Softbank]( https://www.softbank.jp/biz/nw/nwp/cloud_access/direct_access_for_az/)|[Azure Ağ Danışmanlık Hizmeti: 1-Wk Değerlendirmesi](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_nw_msp_service_azure); [Azure Değerlendirme Hizmeti: 1Hafta](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/sbmpn.softbank_msp_service_azure_01?tab=Overview&pub_source=email&pub_status=success)|||||
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure Geçişi: 3 Haftalık Değerlendirme](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||

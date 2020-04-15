@@ -2,13 +2,13 @@
 title: 'Öğretici: Desenler - LUIS'
 description: Bu öğreticide daha az örnek açıklama sağlarken, amaç ve varlık tahminini artırmak için desenleri kullanın. Desen, varlıkları ve yoksayılabilir metni tanımlamak için sözdizimini içeren bir şablon sözcük örneği olarak sağlanır.
 ms.topic: tutorial
-ms.date: 04/01/2020
-ms.openlocfilehash: 10f0ade45dedb3413887cc4b4dea89e857c1bde7
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/14/2020
+ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545982"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380780"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Öğretici: Tahminleri geliştirmek için ortak desen şablonu oluşturma biçimleri ekleyin
 
@@ -198,7 +198,7 @@ Doğru amacın puan yüzdesini bir sonraki en yüksek puandan bir miktar daha y�
 Bu ikinci tarayıcı penceresini açık bırakın. Öğreticinin sonraki bölümlerinde kullanacaksınız.
 
 ## <a name="template-utterances"></a>Konuşma şablonları
-İnsan Kaynakları konu etki alanının doğası nedeniyle, kuruluşlardaki çalışan ilişkileri hakkında birkaç ortak soru yolu vardır. Örnek:
+İnsan Kaynakları konu etki alanının doğası nedeniyle, kuruluşlardaki çalışan ilişkileri hakkında birkaç ortak soru yolu vardır. Örneğin:
 
 |Konuşmalar|
 |--|
@@ -214,7 +214,7 @@ Bu amaç için bazı konuşma şablonu örnekleri şunlardır:
 |`Who does {Employee} report to[?]`|Değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
 |`Who reports to {Employee}[?]`|Değiştirilebilir`{Employee}`<br>Yoksay`[?]`|
 
-`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı `[?]`sözdizimi, işaretleri sözcüklerveya isteğe bağlı noktalama. LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
+`{Employee}` söz dizimi, varlığın konuşma şablonu içindeki konumunu ve hangi varlık olduğunu belirtir. İsteğe bağlı `[?]`sözdizimi, işaretleri sözcüklerveya isteğe bağlı [noktalama.](luis-reference-application-settings.md#punctuation-normalization) LUIS konuşmayı eşleştirir ve parantez içindeki isteğe bağlı metni yoksayar.
 
 Sözdizimi normal bir ifade gibi görünse de, normal bir ifade değildir. Yalnızca küme ayracı `{}` ve köşeli ayraç `[]` söz dizimi desteklenir. İki düzeye kadar iç içe yerleştirme yapılabilir.
 
