@@ -310,34 +310,36 @@
         - name: Dağıtım nereye ve nasıl yapılır?
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: Azure Kubernetes Service
-          displayName: 'aks, aad, authentication, azure active directory'
-          href: how-to-deploy-azure-kubernetes-service.md
-        - name: Azure Container Instances
-          displayName: aci
-          href: how-to-deploy-azure-container-instance.md
-        - name: IoT Edge
-          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
-        - name: FPGA çıkarımı
-          href: how-to-deploy-fpga-web-service.md
-        - name: GPU çıkarımı
-          href: how-to-deploy-inferencing-gpus.md
-        - name: Azure App Service
-          displayName: web app
-          href: how-to-deploy-app-service.md
-        - name: Azure İşlevleri
-          displayName: functions app
-          href: how-to-deploy-functions.md
-        - name: İşlem örnekleri
-          href: how-to-deploy-local-container-notebook-vm.md
-        - name: Özel Docker görüntüsü kullanma
-          href: how-to-deploy-custom-docker-image.md
-        - name: Mevcut modelleri kullanma
-          displayName: publish existing model
-          href: how-to-deploy-existing-model.md
+        - name: Dağıtım senaryoları
+          items:
+            - name: Azure ML işlem örnekleri
+              href: how-to-deploy-local-container-notebook-vm.md
+            - name: Azure Kubernetes Service
+              displayName: 'aks, aad, authentication, azure active directory'
+              href: how-to-deploy-azure-kubernetes-service.md
+            - name: Azure Container Instances
+              displayName: aci
+              href: how-to-deploy-azure-container-instance.md
+            - name: GPU çıkarımı
+              href: how-to-deploy-inferencing-gpus.md
+            - name: Azure App Service
+              displayName: web app
+              href: how-to-deploy-app-service.md
+            - name: Azure İşlevleri
+              displayName: functions app
+              href: how-to-deploy-functions.md
+            - name: Azure IoT Edge cihazları
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+            - name: FPGA çıkarımı
+              href: how-to-deploy-fpga-web-service.md
+            - name: Özel Docker görüntüleri
+              href: how-to-deploy-custom-docker-image.md
+            - name: Azure ML dışındaki modeller
+              displayName: publish existing model
+              href: how-to-deploy-existing-model.md
         - name: Sorun giderme ve hata ayıklama
           href: how-to-troubleshoot-deployment.md
-        - name: İstemciler oluşturma
+        - name: Hizmet uç noktası çağırma
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: Modelleri izleme

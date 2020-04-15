@@ -114,12 +114,6 @@
               href: index-add-language-analyzers.md
             - name: Özel çözümleyici ekleme
               href: index-add-custom-analyzers.md
-        - name: Typeahead
-          items:
-            - name: Öneri oluşturucu oluşturma
-              href: index-add-suggesters.md
-            - name: Öneri veya otomatik tamamlama ekleme
-              href: search-autocomplete-tutorial.md
         - name: Eş anlamlılar
           items:
             - name: Eş anlamlı ekleme
@@ -204,6 +198,8 @@
               href: cognitive-search-custom-skill-python.md
             - name: Örnek - Azure İşlevleri
               href: cognitive-search-create-custom-skill-example.md
+            - name: Örnek - Azure Form Tanıma
+              href: cognitive-search-custom-skill-form.md
             - name: Örnek - Kapsayıcılar
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tasarım ipuçları
@@ -230,6 +226,14 @@
           href: search-query-lucene-examples.md
         - name: Parçalı terimler ve özel karakterler
           href: search-query-partial-matching.md
+        - name: Belirsiz arama
+          href: search-query-fuzzy.md
+        - name: “Yazdıkça arama” otomatik tamamlama
+          items:
+            - name: Öneri oluşturucu oluşturma
+              href: index-add-suggesters.md
+            - name: Öneri veya otomatik tamamlama ekleme
+              href: search-autocomplete-tutorial.md
         - name: Power Apps’ten sorgulama
           href: search-howto-powerapps.md
         - name: Söz dizimi başvurusu
