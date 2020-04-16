@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: banders
-ms.openlocfilehash: 1f44b0a0e2278bfcfbbf7cde1a3605fe334eaa3f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886526"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81382805"
 ---
 # <a name="buy-a-reservation"></a>Ayırma satın alma
 
@@ -67,7 +67,7 @@ Azure portalından, API’lerden, PowerShell’den ve CLI’dan rezervasyon sat�
 - [Redis için Azure Önbelleği](../../azure-cache-for-redis/cache-reserved-pricing.md)
 - [Cosmos DB](../../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Databricks](prepay-databricks-reserved-capacity.md)
-- [Veri Gezgini](../../data-explorer/pricing-reserved-capacity.md)
+- [Veri Gezgini](/azure/data-explorer/pricing-reserved-capacity)
 - [Disk Depolama](../../virtual-machines/linux/disks-reserved-capacity.md)
 - [Ayrılmış Konak](../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md)
 - [Yazılım planları](../../virtual-machines/linux/prepay-suse-software-charges.md)

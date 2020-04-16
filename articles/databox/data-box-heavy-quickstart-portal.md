@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15140ef392d8108b59bf50c396e529dc15951232
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76514417"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410906"
 ---
 ::: zone target = "docs"
 
@@ -39,11 +39,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 ### <a name="for-service"></a>Hizmet için
 
-Başlamadan önce aşağıdakilerden emin olun:
-
-- Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
-- Data Box hizmeti için kullandığınız abonelik [Microsoft Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Bulut Çözümü Sağlayıcısı (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) veya [Microsoft Azure Sponsorluğu](https://azure.microsoft.com/offers/ms-azr-0036p/) olmalıdır.
-- Data Box Heavy siparişi oluşturmak için abonelik üzerinde sahip veya katkıda bulunan erişimine sahip olmanız gerekir.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Cihaz için
 
@@ -57,7 +53,6 @@ Başlamadan önce aşağıdakilerden emin olun:
     - 40 Gb/sn kablonun cihaz tarafındaki ucunun QSFP+ olması gerekir.
     - 10 GB/sn kablo için, bir ucu 10 G kabloya bağlanan bir SFP+ kablo ve cihaza takılan uç için QSFP+’dan SFP+’ya bağdaştırıcı (veya QSA bağdaştırıcısı) gerekir.
 - Güç kabloları, cihazın arkasındaki bir tepside bulunur.
-
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 

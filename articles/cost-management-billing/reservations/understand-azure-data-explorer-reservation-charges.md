@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: ab107a0afe8be1d95de8dafb21f239e6da733271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a418841d91ab6b8fe5457f3fd64d91306fe08dfe
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199339"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383120"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-data-explorer"></a>Rezervasyon indiriminin Azure Veri Gezgini'ne nasıl uygulandığını anlama
 
@@ -65,7 +65,7 @@ Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği olu�
 
 Azure rezervasyonları hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Veri Gezgini ayrılmış kapasitesi ile Azure Veri Gezgini işlem kaynakları için önceden ödeme yapın](../../data-explorer/pricing-reserved-capacity.md)  
+* [Azure Veri Gezgini ayrılmış kapasitesi ile Azure Veri Gezgini işlem kaynakları için önceden ödeme yapın](/azure/data-explorer/pricing-reserved-capacity)  
 * [Azure rezervasyonları nedir?](save-compute-costs-reservations.md)  
 * [Azure ayırmalarını yönetme](manage-reserved-vm-instance.md)  
 * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](understand-reserved-instance-usage.md)
