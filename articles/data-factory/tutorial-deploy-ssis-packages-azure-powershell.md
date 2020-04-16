@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 0eb3a3d6c988746c1174398005463d25911c11e1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ada3762b6daae86033903f72ad9865ca66904ead
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336139"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418652"
 ---
 # <a name="set-up-an-azure-ssis-ir-in-azure-data-factory-by-using-powershell"></a>PowerShell'i kullanarak Azure Veri Fabrikası'nda Azure-SSIS IR'si ayarlama
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğretici, Azure Veri Fabrikası'nda Azure-SQL Sunucu Tümleştirme Hizmetleri Tümleştirme Çalışma Süresini (Azure-SSIS IR) nasıl yükselteceklerini gösterir. Azure-SSIS IR, şu şekilde dağıtılan paketleri çalıştırmayı destekler:
 * Azure SQL Veritabanı sunucu örneği veya yönetilen bir örnek (proje dağıtım modeli) tarafından barındırılan bir SSIS kataloğu (SSISDB).
@@ -49,7 +51,7 @@ Bu öğreticide şunları yapacaksınız:
 - (İsteğe bağlı) Azure SQL Veritabanı sunucusu. Henüz bir veritabanı sunucunuz yoksa, başlamadan önce Azure portalında bir tane oluşturun. Azure Veri Fabrikası da bu veritabanı sunucusunda SSISDB oluşturur. Veritabanı sunucusunu tümleştirme çalışma zamanı ile aynı Azure bölgesinde oluşturmanız önerilir. Bu yapılandırma, tümleştirme çalışma zamanının Azure bölgelerinden geçmeden SSISDB’ye yürütme günlüklerini yazmasına olanak tanır. 
     - Seçilen veritabanı sunucusuna bağlı olarak, SSISDB sizin adınıza tek bir veritabanı, elastik bir havuzun parçası veya yönetilen bir örnek olarak oluşturulabilir ve ortak bir ağda veya sanal ağa katılarak erişilebilir. SSISDB'yi barındıracak veritabanı sunucusu türünü seçmede kılavuz için [bkz.](../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-a-sql-database-single-database-elastic-pool-and-managed-instance) 
     
-      IP güvenlik duvarı veya sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu veya SSISDB'yi barındıracak özel bir bitiş noktası olan yönetilen bir örnek kullanıyorsanız veya kendi kendine barındırılan bir IR yapılandırmadan şirket içi verilere erişmeye ihtiyaç duyuyorsanız, Azure-SSIS IR'nize bir sanal ağ. Daha fazla bilgi için bkz. [sanal ağda Azure-SSIS IR oluştur.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+      IP güvenlik duvarı veya sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu veya SSISDB'yi barındırmak için özel bir bitiş noktası olan yönetilen bir örnek kullanıyorsanız veya kendi kendine barındırılan bir IR yapılandırmadan şirket içi verilere erişmeye ihtiyaç duyuyorsanız, Azure-SSIS IR'nizi sanal bir ağa katılın. Daha fazla bilgi için bkz. [sanal ağda Azure-SSIS IR oluştur.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
     - Veritabanı sunucusu **için Azure hizmetlerine Erişime İzin Ver** ayarının etkinleştirildiğinden onaylayın. Bu ayar, IP güvenlik duvarı kurallarına veya sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu veya SSISDB'yi barındıracak özel bir bitiş noktası olan yönetilen bir örnek kullandığınızda geçerli değildir. Daha fazla bilgi için bkz. [Azure SQL veritabanınızın güvenliğini sağlama](../sql-database/sql-database-security-tutorial.md#create-firewall-rules). PowerShell kullanarak bu ayarı etkinleştirmek için [Bkz. Yeni-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule).
     - İstemci makinesinin IP adresini veya istemci makinesinin IP adresi de dahil olmak üzere bir dizi IP adresini veritabanı sunucusunun güvenlik duvarı ayarlarındaki istemci IP adres listesine ekleyin. Daha fazla bilgi için bkz. [Azure SQL Veritabanı'nda sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları yapılandırma](../sql-database/sql-database-firewall-configure.md).
     - Sunucu yönetici kimlik bilgilerinizle SQL kimlik doğrulaması veya veri fabrikanızın yönetilen kimliğiyle Azure Active Directory (Azure AD) kimlik doğrulaması kullanarak veritabanı sunucusuna bağlanabilirsiniz. Azure AD kimlik doğrulaması için, veri fabrikanızın yönetilen kimliğini veritabanı sunucusuna erişim izinleri olan bir Azure REKLAM grubuna eklemek için [bkz.](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)

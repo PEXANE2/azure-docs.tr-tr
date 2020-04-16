@@ -10,14 +10,16 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 23accddcc468eb841eb7c217ec17a893db214cb6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439258"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409461"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory’de Hive etkinliğini kullanarak Azure Sanal Ağ’daki verileri dönüştürme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, Azure portalını kullanarak Azure Sanal Ağ’daki bir HDInsight kümesinde Hive Etkinliği ile verileri dönüştüren bir Data Factory işlem hattı oluşturursunuz. Bu öğreticide aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -166,7 +168,7 @@ Bu bölümde iki Bağlı Hizmet oluşturup dağıtacaksınız:
     2. **Tümleştirme çalışma zamanı aracılığıyla bağlan** için **MySelfHostedIR** seçeneğini belirleyin.
     3. **Depolama hesabı adı** için Azure depolama hesabınızı seçin. 
     4. Depolama hesabı bağlantısını test etmek için **Bağlantıyı sına**’ya tıklayın.
-    5. **Kaydet**'e tıklayın.
+    5. **Kaydet**’e tıklayın.
    
         ![Azure Blob Depolama hesabını belirtme](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 

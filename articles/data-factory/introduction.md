@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: e23268d21b01435aa71d4f471afc6d37ee9e9c1d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 327aadbc2996e91ef0f7639da86a647ddd42247c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73672696"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410936"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Büyük veri dünyasında ham ve düzensiz veriler genellikle ilişkisel, ilişkisel olmayan ve diğer depolama sistemlerinde depolanır. Ancak, ham veriler kendi başlarına analiz uzmanlarına, veri bilimcilerine veya iş karar mekanizmalarına anlamlı bilgiler sağlamak için uygun bağlama veya anlama sahip değildir. 
 
@@ -108,14 +110,14 @@ Değişkenler, geçici değerleri depolamak için ardışık hatlar içinde kull
 Burada keşfetmek için önemli bir sonraki adım belgeleri şunlardır:
 
 - [Veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md)
-- [Boru hatları ve faaliyetleri](concepts-pipelines-activities.md)
+- [İşlem hatları ve etkinlikler](concepts-pipelines-activities.md)
 - [Tümleştirme çalışma zamanı](concepts-integration-runtime.md)
 - [Veri Akışlarını Haritalama](concepts-data-flow-overview.md)
 - [Azure portalındaki Data Factory kullanıcı arabirimi](quickstart-create-data-factory-portal.md)
 - [Azure portalındaki Veri Kopyalama aracı](quickstart-create-data-factory-copy-data-tool.md)
-- [Powershell](quickstart-create-data-factory-powershell.md)
+- [PowerShell](quickstart-create-data-factory-powershell.md)
 - [.NET](quickstart-create-data-factory-dot-net.md)
 - [Python](quickstart-create-data-factory-python.md)
-- [Geri kalanı](quickstart-create-data-factory-rest-api.md)
+- [REST](quickstart-create-data-factory-rest-api.md)
 - [Azure Resource Manager şablonu](quickstart-create-data-factory-resource-manager-template.md)
  

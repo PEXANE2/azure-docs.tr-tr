@@ -14,14 +14,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: c41efc1cbccf546d803e1131405907bf37dcf00c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 91962b578f9620384af86d25a33ba35830abb285
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75496560"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418635"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Azure-SSIS tümleştirme çalışma süresini sağlama
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğretici, Azure Veri Fabrikası'nda bir Azure-SQL Server Tümleştirme Hizmetleri (SSIS) tümleştirme çalışma zamanı (IR) sağlamak için Azure portalını kullanmak için adımlar sağlar. Azure-SSIS IR şunları destekler:
 
@@ -117,7 +119,7 @@ Veri fabrikanız oluşturulduktan sonra, Azure portalında genel bakış sayfas�
 
    1. **Paradan Tasarruf**etmek için, tümleştirme çalışma süreniz için Azure Karma Avantajı seçeneğini seçin: **Evet** veya **Hayır**. Hibrit kullanımla maliyet tasarrufundan yararlanmak için Yazılım Güvencesi ile kendi SQL Server lisansınızı getirmek istiyorsanız **Evet'i** seçin. 
 
-   1. **Sonraki'ni**seçin. 
+   1. **İleri**’yi seçin. 
 
 1. SQL **Ayarları** bölümünde aşağıdaki adımları tamamlayın. 
 

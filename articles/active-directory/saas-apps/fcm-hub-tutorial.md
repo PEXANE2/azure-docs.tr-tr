@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/25/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee1ea7d2623d6315007257218ddfc4e6ce445e65
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 5abc1e093dc7d4e8da823227dc3e3caa556e37e4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668912"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406841"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fcm-hub"></a>Öğretici: FCM HUB ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -92,7 +92,16 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     > [!NOTE]
     > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Size atanan hesap yöneticisine başvurun veya değeri almak için [FCM HUB Müşteri destek ekibine](mailto:fcmssoadmin@us.fcm.travel) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’i seçin.
+
+1. Talebi **Yönet** sayfasında, **Kullanıcı Öznitelikleri & Talepler** bölümünde şu özel öznitelikleri ekleyin:
+   - **Adı**: PortalID
+   - **Kaynak**: Öznitelik
+   - **Kaynak Özniteliği**: PortalID, FCM tarafından sağlanan değer
+
+1. **SAML İmza Sertifikası** bölümünde, aşağıdaki ayarları seçmek veya girmek için edit seçeneğini kullanın ve sonra **Kaydet'i**seçin:
+   - **İmzalama Seçeneği**: SAML yanıtını imzala
+   - **İmza Algoritması**: SHA-256
 
 1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 

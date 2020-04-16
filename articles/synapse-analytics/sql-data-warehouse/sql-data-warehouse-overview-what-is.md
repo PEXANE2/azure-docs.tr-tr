@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 397eb6fbfea88b0eab0648275fc59764505f7d42
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633101"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416020"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (eski adıyla SQL DW) nedir?
 
-Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse, anında BI ve makine öğrenimi ihtiyaçları için verileri yutmak, hazırlamak, yönetmek ve sunmak için bu iki dünyayı birleşik bir deneyimle bir araya getiriyor
+Azure Synapse, kurumsal veri depolama ve Büyük Veri analitiğini bir araya getiren bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse, anında BI ve makine öğrenimi ihtiyaçları için verileri yutmak, hazırlamak, yönetmek ve sunmak için bu iki dünyayı birleşik bir deneyimle bir araya getirir.
 
 Azure Synapse'nin dört bileşeni vardır:
 
@@ -27,11 +27,13 @@ Azure Synapse'nin dört bileşeni vardır:
   - SQL havuzu (DWU başına ödeme)
   - İsteğe bağlı SQL (işlenen TB başına ödeme) – (Önizleme)
 - Kıvılcım: Derinentegre Apache Spark (Önizleme)
-- Veri Tümleştirmesi: Karma veri tümleştirmesi (Önizleme)
+- Synapse Pipelines: Karma veri entegrasyonu (Önizleme)
 - Stüdyo: Birleşik kullanıcı deneyimi.  (Önizleme)
 
 > [!NOTE]
 > Azure Synapse'nin önizleme özelliklerine erişmek için [buradan](https://aka.ms/synapsepreview)erişim isteyin. Microsoft tüm istekleri ni triyaj ve en kısa sürede yanıt verecektir.
+>
+> Azure [Synapse önizleme belgelerini](../overview-what-is.md)görüntüleyin.
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse'de Synapse SQL havuzu
 

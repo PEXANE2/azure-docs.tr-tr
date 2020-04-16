@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a9b49f75ad377a9377a2311ed16c17ca3d749e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2bb5dd845b03bd94f0a94db50c01b804cf6f55c2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67092586"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407095"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rstudio-connect"></a>Öğretici: RStudio Connect ile Azure Active Directory entegrasyonu
 
@@ -158,9 +158,9 @@ IdPAttributeProfile = azure
 SSOInitiated = IdPAndSP
 ```
 
-Sunucu **Adresinizi** `Server.Address` değerde, **Uygulama Federasyonu Metaveri Url'sini** de değerde saklayın. `SAML.IdPMetaData`
+Sunucu **Adresinizi** `Server.Address` değerde, **Uygulama Federasyonu Metaveri Url'sini** de değerde saklayın. `SAML.IdPMetaData` Bu örnek yapılandırmanın şifrelenmemiş bir HTTP bağlantısı kullandığını, Azure AD'nin ise şifreli bir HTTPS bağlantısı nın kullanılmasını gerektirdiğini unutmayın. RStudio Connect'in önünde [ters proxy](https://docs.rstudio.com/connect/admin/proxy/) kullanabilir veya Doğrudan [HTTPS'yi kullanacak](https://docs.rstudio.com/connect/admin/appendix/configuration/#HTTPS)şekilde RStudio Connect'i yapılandırabilirsiniz. 
 
-Yapılandırmayla ilgili sorun yaşıyorsanız, [RStudio Connect Yönetici Kılavuzu'nu](https://docs.rstudio.com/connect/admin/authentication.html#authentication-saml) okuyabilir veya yardım için [RStudio destek ekibine](mailto:support@rstudio.com) e-posta gönderebilirsiniz.
+Yapılandırmayla ilgili sorun yaşıyorsanız, [RStudio Connect Yönetici Kılavuzu'nu](https://docs.rstudio.com/connect/admin/authentication/saml/) okuyabilir veya yardım için [RStudio destek ekibine](mailto:support@rstudio.com) e-posta gönderebilirsiniz.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 

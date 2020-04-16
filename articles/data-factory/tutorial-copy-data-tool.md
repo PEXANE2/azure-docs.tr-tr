@@ -12,18 +12,20 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
-ms.openlocfilehash: 52ed43277eef84de826d2f4fa41ba860211a1531
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be9395b908461b54b607fff32747ca0d9f20f45c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78970007"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418669"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Verileri Azure Blob depolamasından Kopyaveri aracını kullanarak SQL Veritabanına kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Veri Fabrikası hizmetinin sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](tutorial-copy-data-tool.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Ardından, Azure Blob depolamasundaki verileri SQL Veritabanı'na kopyalayan bir ardışık iş aktonu oluşturmak için Veri Kopyala aracını kullanırsınız.
 
@@ -99,7 +101,7 @@ Bu adımları gerçekleştirerek Blob depolamanızı ve SQL Veritabanınızı ö
 
 1. **Sürüm** bölümünde **V2**'yi seçin.
 1. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanız tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
 
@@ -132,7 +134,7 @@ Bu adımları gerçekleştirerek Blob depolamanızı ve SQL Veritabanınızı ö
 
     b. Sonraki adıma geçmek için **İleri**'ye tıklayın.
 
-1. Dosya **biçimi ayarları** sayfasında, İlk satır için onay kutusunu *üstbilgi olarak*etkinleştirin. Aracın sütun ve satır sınırlayıcıları otomatik olarak algıladığını unutmayın. **Sonraki'ni**seçin. Ayrıca verileri önizleyebilir ve bu sayfadaki giriş verilerinin şemasını görüntüleyebilirsiniz.
+1. Dosya **biçimi ayarları** sayfasında, İlk satır için onay kutusunu *üstbilgi olarak*etkinleştirin. Aracın sütun ve satır sınırlayıcıları otomatik olarak algıladığını unutmayın. **İleri**’yi seçin. Ayrıca verileri önizleyebilir ve bu sayfadaki giriş verilerinin şemasını görüntüleyebilirsiniz.
 
     ![Dosya biçimi ayarları](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. **Hedef veri deposu** sayfasında aşağıdaki adımları tamamlayın:

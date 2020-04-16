@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1a73894e2003ae742f329adcda51cf21ceeacb31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
+ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991169"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407147"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: ASP.NET Core web uygulamasına Microsoft ile oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azure Etkin Dizin (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarında nasıl oturum açabileceğini öğrenmek için bir kod örneği kullanırsınız. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azu
 >    - **Url'leri Yeniden**Yönlendirme'de, ekle `https://localhost:44321/signin-oidc`ve **Kaydet'i**seçin.
 >    - Gelişmiş **ayarlar** **bölümünde, Giriş URL'sini** ' ye `https://localhost:44321/signout-oidc`ayarla.
 >    - **Örtük onay**'ın altında **Kimlik belirteçleri**'ni işaretleyin.
->    - **Kaydet'i**seçin.
+>    - **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Adım 1: Uygulamanızı Azure portalında yapılandırın

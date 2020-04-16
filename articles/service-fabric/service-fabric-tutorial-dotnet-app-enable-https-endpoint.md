@@ -4,12 +4,12 @@ description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hiz
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 0e8b79a88fc173674caa0ca65e394e21d58d5f2f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: aafe2e7c89f6d4a90806378e9cf25c81f51feb60
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756088"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411175"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -156,27 +156,42 @@ Ayrıca, Kestrel’in konuyu kullanarak sertifikayı `Cert:\LocalMachine\My` dep
 Yerel dağıtım `localhost` söz konusu olduğunda kimlik doğrulama özel durumlarını önlemek için "CN=localhost" kullanılmasının tercih edildiğini unutmayın.
 
 ```csharp
-private X509Certificate2 GetHttpsCertificateFromStore()
+private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
 {
     using (var store = new X509Store(StoreName.My, StoreLocation.LocalMachine))
     {
-        store.Open(OpenFlags.ReadOnly);
+        store.Open(OpenFlags.OpenExistingOnly | OpenFlags.ReadOnly);
         var certCollection = store.Certificates;
-        var currentCerts = certCollection.Find(X509FindType.FindBySubjectDistinguishedName, "CN=<your_CN_value>", false);
+        var matchingCerts = new X509Certificate2Collection();
+    
+    foreach (var enumeratedCert in certCollection)
+    {
+      if (StringComparer.OrdinalIgnoreCase.Equals(subjectCommonName, enumeratedCert.GetNameInfo(X509NameType.SimpleName, forIssuer: false))
+        && DateTime.Now < enumeratedCert.NotAfter
+        && DateTime.Now >= enumeratedCert.NotBefore)
+        {
+          matchingCerts.Add(enumeratedCert);
+        }
+    }
+
+        if (matchingCerts.Count == 0)
+    {
+        throw new Exception($"Could not find a match for a certificate with subject 'CN={subjectCommonName}'.");
+    }
         
-        if (currentCerts.Count == 0)
-                {
-                    throw new Exception("Https certificate is not found.");
-                }
-        
-        return currentCerts[0];
+        return matchingCerts[0];
     }
 }
+
+
 ```
 
-## <a name="give-network-service-access-to-the-certificates-private-key"></a>Sertifikanın özel anahtarına AĞ HİZMETİ erişimi verme
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>SERTIFIKANIN özel anahtarına NETWORK SERVICE erişimi ver
 
 Önceki adımlardan birinde sertifikayı geliştirme bilgisayarındaki `Cert:\LocalMachine\My` deposuna aktarmıştınız.  Şimdi, hizmeti çalıştıran hesaba açıkça (NETWORK SERVICE, varsayılan olarak) sertifikanın özel anahtarına erişim verin. Bu adımı el ile (certlm.msc aracını kullanarak) yapabilirsiniz, ancak hizmet bildiriminin **SetupEntryPoint'inde** [bir başlangıç komut dosyası yapılandırarak](service-fabric-run-script-at-service-startup.md) bir PowerShell komut dosyasını otomatik olarak çalıştırmak daha iyidir.
+
+>[!NOTE]
+> Service Fabric, son nokta sertifikalarını parmak izine veya özne ortak adına göre bildirmeyi destekler. Bu durumda, çalışma zamanı bağlamayı ve ACL sertifikanın hizmetin olarak çalıştırdığı kimlik için özel anahtarını ayarlar. Çalışma süresi ayrıca değişiklikler/yenilemeler için sertifikayı izler ve ilgili özel anahtarı buna göre yeniden acl olarak yineler.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Hizmet kurulumu giriş noktasını yapılandırma
 

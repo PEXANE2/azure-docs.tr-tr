@@ -7,16 +7,20 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76156735"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415918"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Veri Fabrikası ve Azure Veri Paylaşımı'nı kullanarak veri tümleştirmesi
 
-Müşteriler modern veri ambarı ve analiz projelerine girişirken, yalnızca daha fazla veri değil, aynı zamanda veri mülklerinde daha fazla görünürlük gerektirir. Bu atölye, Azure Veri Fabrikası ve Azure Veri Paylaşımı'ndaki geliştirmelerin Azure'da veri tümleştirmesini ve yönetimini nasıl basitleştirttişe ne kadar önemse deiçine giriyor. Kodsuz ETL/ELT'yi etkinleştirmekten verileriniz üzerinde kapsamlı bir görünüm oluşturmaya kadar, Azure Veri Fabrikası'ndaki geliştirmeler veri mühendislerinize işletmenize güvenle daha fazla veri ve dolayısıyla daha fazla değer getirme leri için güç verecektir. Azure Veri Paylaşımı, iş paylaşımına yönetimli bir şekilde iş yapmanıza olanak tanır.
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Müşteriler modern veri ambarı ve analiz projelerine girişirken, yalnızca daha fazla veri değil, aynı zamanda veri mülklerinde daha fazla görünürlük gerektirir. Bu atölye, Azure Veri Fabrikası ve Azure Veri Paylaşımı'ndaki geliştirmelerin Azure'da veri tümleştirmesini ve yönetimini nasıl basitleştirttişe ne kadar önemse deiçine giriyor. 
+
+Kodsuz ETL/ELT'yi etkinleştirmekten verileriniz üzerinde kapsamlı bir görünüm oluşturmaya kadar, Azure Veri Fabrikası'ndaki geliştirmeler veri mühendislerinize işletmenize güvenle daha fazla veri ve dolayısıyla daha fazla değer getirme leri için güç verecektir. Azure Veri Paylaşımı, iş paylaşımına yönetimli bir şekilde iş yapmanıza olanak tanır.
 
 Bu atölyede, Azure Sql veritabanından (SQL DB) azure veri gölü deposu gen2 (ADLS gen2) verilerini almak için Azure Veri Fabrikası'nı (ADF) kullanırsınız. Verileri göle indirgedikten sonra, veri akışlarını, veri fabrikasının yerel dönüşüm hizmetini eşleme yoluyla dönüştürecek ve azure Synapse Analytics'e (eski adıyla SQL DW) dönüştüreceksiniz. Ardından, Azure Veri Paylaşımı'nı kullanarak tabloyu dönüştürülmüş verilerle ve bazı ek verilerle paylaşırsınız. 
 
@@ -392,7 +396,7 @@ Bir veri paylaşımı oluşturduktan sonra şapkaları değiştirip *veri tüket
 
 1. **Anlık Görüntü Çizelgesi'ni** denetleyin ve *Yinelenen* Düşüş'ü kullanarak verilerinizin saatlik yenilenmesini yapılandırın.  
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
     Artık etkin bir veri paylaşımınız var. Veri paylaşımı oluştururken veri sağlayıcısı olarak görebileceğiniz leri gözden geçirmenizi sağlar. 
 

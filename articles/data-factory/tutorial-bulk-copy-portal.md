@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/27/2020
-ms.openlocfilehash: 5108335c0b5d0a51559653d51bfe6154237731f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 04469fa1bd0473710d9fa0bf0190c6459f1f8a07
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78162663"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418788"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu öğretici, **Azure SQL Veritabanı'ndan Azure Synapse Analytics'e (eski adıyla SQL DW) birkaç tablo kopyalamayı**gösterir. Aynı düzeni diğer kopyalama senaryolarında da uygulayabilirsiniz. Örneğin, SQL Server/Oracle'dan Azure SQL Veritabanı/Azure Synapse Analytics'e (eski adıyla SQL DW)/Azure Blob'a tablo kopyalamak, Blob'dan Azure SQL Veritabanı tablolarına farklı yollar kopyalamak.
 
@@ -79,7 +81,7 @@ Bu ayarı doğrulamak ve açmak için, Azure > Güvenlik Duvarları ve sanal ağ
  
    Azure veri fabrikasının adı **genel olarak benzersiz**olmalıdır. Ad alanı için aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, adınızADFTutorialBulkCopyDF). Data Factory yapıtlarını adlandırma kuralları için [Data Factory - Adlandırma Kuralları](naming-rules.md) makalesine bakın.
   
-       `Data factory name “ADFTutorialBulkCopyDF” is not available`
+       `Data factory name "ADFTutorialBulkCopyDF" is not available`
 1. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin. 
 1. Kaynak **Grubu**için aşağıdaki adımlardan birini yapın:
      

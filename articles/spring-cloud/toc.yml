@@ -18,8 +18,6 @@
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: Öğreticiler
   items:
-    - name: Java Spring uygulamasını dağıtım için hazırlama
-      href: spring-cloud-tutorial-prepare-app-deployment.md
     - name: Yapılandırma Sunucunuzu ayarlama
       href: spring-cloud-tutorial-config-server.md
     - name: Uygulamanızı el ile ölçeklendirme
@@ -44,6 +42,8 @@
       href: disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
+    - name: Java Spring uygulamasını dağıtım için hazırlama
+      href: spring-cloud-tutorial-prepare-app-deployment.md
     - name: 'Azure Spring Cloud uygulamasını başlatma, durdurma ve silme'
       href: spring-cloud-howto-start-stop-delete.md
     - name: Hazırlık ortamını ayarlama
