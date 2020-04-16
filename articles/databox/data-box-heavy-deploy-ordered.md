@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70241399"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415157"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Öğretici: Azure Data Box Heavy sipariş etme
 
@@ -41,17 +41,9 @@ Başlamadan önce aşağıdakilerden emin olun:
 - Zeminden başka bir yere kurulursa, cihaza bir asansör veya rampa ile erişiminiz olmalıdır. Cihaz yaklaşık olarak ~500 lb ağırlığındadır.
 - Bu ayak izine sahip bir cihaza uyum sağlayabilecek kullanılabilir bir ağ bağlantısına yakın olan veri merkezindeki düz bir yerinizin olduğundan emin olun.
 
-
 ### <a name="for-service"></a>Hizmet için
 
-Başlamadan önce aşağıdakilerden emin olun:
-- Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
-- Data Box hizmeti için kullandığınız aboneliğin aşağıdaki türlerden birinde olduğundan emin olun:
-    - Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
-    - Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
-    - Microsoft Azure Sponsorluğu. [Azure sponsorluğu programı](https://azure.microsoft.com/offers/ms-azr-0036p/) hakkında daha fazla bilgi edinin.
-
-- Data Box Heavy siparişi oluşturmak için, abonelik üzerinde sahip veya katkıda bulunan erişimine sahip olduğunuzdan emin olun.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Cihaz için
 
