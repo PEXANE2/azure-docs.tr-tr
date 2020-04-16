@@ -18,22 +18,22 @@
     - name: Rol tabanlı erişim denetimini yönetme
       href: automation-role-based-access-control.md
       displayName: RBAC
-    - name: Azure Otomasyonu’nda Azure AD kullanarak Azure’a kimlik doğrulaması yapma
+    - name: Azure’da kimlik doğrulaması yapmak için Azure AD’yi kullanma
       href: automation-use-azure-ad.md
-    - name: Azure Otomasyonu’nu kullanarak Office 365 hizmetlerini yönetme
+    - name: Office 365 hizmetlerini yönetme
       href: manage-office-365.md
-    - name: AWS ile kimlik doğrulamasını yapılandırma
+    - name: Amazon Web Services ile Azure Otomasyonu runbook kimlik doğrulaması
       href: automation-config-aws-account.md
     - name: Azure Otomasyonu’nda güvenli varlıkları şifreleme
       href: automation-secure-asset-encryption.md
-    - name: Otomasyon Hesabınızı başka bir Aboneliğe taşıma
+    - name: Otomasyon Hesabınızı başka bir aboneliğe taşıma
       href: how-to/move-account.md
-    - name: Otomasyon Hizmetleri’nin eklenmesini otomatikleştirme
+    - name: Otomasyon hizmetlerinin eklenmesini otomatikleştirme
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
     - name: Azure Otomasyonu verilerini yönetme
       href: automation-managing-data.md
       displayName: backup
-    - name: Log Analytics Çalışma Alanı Eşlemeleri için Desteklenen Bölgeler
+    - name: Log Analytics çalışma alanı eşlemeleri için desteklenen bölgeler
       href: how-to/region-mappings.md
     - name: Sorun giderme
       items:
@@ -42,6 +42,9 @@
           displayName: troubleshoot
 - name: Süreç Otomasyonu
   items:
+    - name: Azure Otomasyonu’nda runbook yürütme
+      href: automation-runbook-execution.md
+      displayName: 'fair share, activity log'
     - name: Karma Runbook Çalışanına Genel Bakış
       href: automation-hybrid-runbook-worker.md
     - name: Runbook galerisi
@@ -111,9 +114,6 @@
             - name: Runbook çıkışı
               href: automation-runbook-output-and-messages.md
               displayName: 'message streams, progress records, preference'
-            - name: Runbook işini izleme
-              href: automation-runbook-execution.md
-              displayName: 'fair share, activity log'
             - name: Grafik runbook'larında hata işleme
               href: automation-runbook-graphical-error-handling.md
         - name: Karma Runbook Çalışanı
@@ -278,18 +278,15 @@
         - name: Durum Yapılandırması ile sunucuları istenen duruma göre yapılandırma ve kaymaları yönetme
           href: tutorial-configure-servers-desired-state.md
           displayName: 'DSC, compliance'
-        - name: Makineleri yönetim için hazırlama
-          href: automation-dsc-onboarding.md
-          displayName: 'DSC, state configuration'
-        - name: DSC yapılandırmaları derleme
+        - name: DSC yapılandırmalarını derleme
           href: automation-dsc-compile.md
           displayName: 'state configuration, composite resources, configurationData'
         - name: Uyumlu olmayan DSC sunucularını düzeltme
           href: automation-dsc-remediate.md
           displayName: 'state configuration, DSC, remediate'
-        - name: Bileşik Kaynakları kullanarak DSC Yapılandırmaları oluşturma
+        - name: Bileşik kaynakları kullanarak DSC yapılandırmaları oluşturma
           href: compose-configurationwithcompositeresources.md
-        - name: Chocolatey kullanarak sürekli dağıtım
+        - name: Chocolatey kullanarak sürekli dağıtım sağlama
           href: automation-dsc-cd-chocolatey.md
           displayName: 'dsc, state configuration'
         - name: Durum Yapılandırması raporlama verilerini Azure İzleyici günlüklerine iletme
@@ -297,12 +294,12 @@
           displayName: DSC
     - name: Sorun giderme
       items:
-        - name: Ekleme
+        - name: Sorun giderme ekleme
           href: troubleshoot/onboarding.md
           displayName: troubleshoot
         - name: State Configuration (DSC) sorunlarını giderme
           href: troubleshoot/desired-state-configuration.md
-          displayName: 'Desired State Configuration, troubleshoot'
+          displayName: 'state configuration, DSC, troubleshoot'
     - name: Başvuru
       items:
         - name: Topluluk Çözümleri
