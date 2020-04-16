@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 824244c0c3247e5a218c1551dd95de6e1d6e1007
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478260"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419230"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Azure Etkinlik Hub'larına etkinlik göndermek veya bu etkinliklerden (azure-mesajlaşma-eventhub'lar) almak için Java'yı kullanın
 Bu hızlı başlangıç, **azure-messaging-eventhubs** Java paketini kullanarak bir etkinlik hub'ına olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir.
@@ -48,7 +48,7 @@ Etkinlik Hub'ları için Java istemci kitaplığı [Maven Merkezi Deposu'nda](ht
 
 ### <a name="write-code-to-send-messages-to-the-event-hub"></a>Olay hub'ına ileti göndermek için kod yazma
 
-Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Adlı `SimpleSend`bir sınıf ekleyin ve sınıfa aşağıdaki kodu ekleyin:
+Aşağıdaki örnek için önce en sevdiğiniz Java geliştirme ortamında bir konsol/kabuk uygulaması için yeni bir Maven projesi oluşturun. Adlı `Sender`bir sınıf ekleyin ve sınıfa aşağıdaki kodu ekleyin:
 
 ```java
 import com.azure.messaging.eventhubs.*;

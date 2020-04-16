@@ -13,18 +13,20 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 04/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 682c35e1510834d8958b2ed6765d6fe530432ebd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: ad757e3d65d3094ca6883d747404906a871ed850
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262154"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419349"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Quickstart: PowerShell'i kullanarak bir Azure veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-powershell.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu hızlı başlangıç, PowerShell kullanarak bir Azure veri fabrikası oluşturma işlemini açıklar. Bu veri fabrikasında oluşturduğunuz ardışık işlem, verileri azure blob depolamasında bir klasörden başka bir klasöre **kopyalar.** Azure Data Factory kullanarak verileri **dönüştürme** hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](transform-data-using-spark.md).
 

@@ -11,14 +11,16 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e63180a3c4b8de06ab9e26afc8fff322188291cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74913511"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418992"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory’de Databricks Not Defteri etkinliği ile bir Databricks not defteri çalıştırma
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, databricks iş kümesine göre bir Databricks not defteri yürüten Azure Data Factory işlem hattı oluşturmak için Azure portalını kullanırsınız. Bu işlem ayrıca yürütme sırasında Databricks not defterine Azure Data Factory parametrelerini geçirir.
 
@@ -71,7 +73,7 @@ Bu özelliğe yönelik on bir dakikalık bir giriş ve tanıtım için, aşağı
 1.  **Konum** için, veri fabrikasının konumunu seçin.
 
     Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Data Factory tarafından kullanılan veri depoları (Azure Depolama ve Azure SQL Veritabanı) ve işlemler (HDInsight gibi) başka bölgelerde olabilir.
-1.  **Oluştur'u**seçin.
+1.  **Oluştur**’u seçin.
 
 
 1.  Oluşturma işlemi tamamlandıktan sonra, **Veri fabrikası** sayfasını görürsünüz. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.

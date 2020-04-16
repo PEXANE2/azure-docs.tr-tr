@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 290ddf9a99d421bbf6303675fd544e81b637d070
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75439307"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419281"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server’daki birden fazla tablodan Azure SQL veritabanı’na artımlı olarak veri yükleme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, değişim verileri şirket içi SQL Server’daki birden çok tablodan Azure SQL Veritabanına yükleyen bir Azure veri fabrikası işlem hattı oluşturacaksınız.    
 
@@ -177,7 +179,7 @@ Azure SQL veritabanınızda iki depolanmış yordam ve iki veri türü oluşturm
 
 Yolculuğu kolaylaştırmak için, delta verilerini bir tablo değişkeni üzerinden aktaran bu Saklı Yordamları doğrudan kullanır ız ve ardından hedef depoda birleştirileştiririz. Tablo değişkeninde "büyük" delta satırı sayısının (100'den fazla) depolanmasını beklemediğini zedilen dikkatli olun.  
 
-Çok sayıda delta satırını hedef depoda birleştirmeniz gerekiyorsa, tüm delta verilerini önce hedef depodaki geçici bir "evreleme" tablosuna kopyalamak için kopyalama etkinliği kullanmanızı ve ardından tabloyu kullanmadan kendi depolanan yordamınızı oluşturmanızı öneririz değişken "evreleme" tablosundan "son" tabloya birleştirmek için. 
+Çok sayıda delta satırını hedef depoda birleştirmeniz gerekiyorsa, önce tüm delta verilerini hedef depodaki geçici bir "evreleme" tablosuna kopyalamak için kopyalama etkinliği kullanmanızı ve ardından tablo değişkenini kullanarak "evreleme" tablosundan "son" tabloya birleştirmeden kendi depolanmış yordamınızı oluşturmanızı öneririz. 
 
 
 ```sql

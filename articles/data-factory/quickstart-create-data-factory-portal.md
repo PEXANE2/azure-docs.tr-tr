@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 02/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 0afb0ddb65a4f27463e2bb5c1b9441d248c34415
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f7a70454e395f5f9d39266e0777749e1fcbef68e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240761"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419366"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı başlatma: Azure Veri Fabrikası UI'sini kullanarak veri fabrikası oluşturma
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-portal.md)
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu hızlı başlangıçta, Azure Data Factory UI kullanarak veri fabrikasını oluşturma ve izleme işlemi açıklanır. Bu veri fabrikasında oluşturduğunuz işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre *kopyalar*. Azure Data Factory kullanarak verileri *dönüştürme* hakkında bir öğretici için bkz. [Öğretici: Spark kullanarak verileri dönüştürme](tutorial-transform-data-spark-portal.md).
 
@@ -62,7 +64,7 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 
    Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. İlişkili veri depoları (Azure Depolama ve Azure SQL Veritabanı gibi) ve Veri Fabrikası'nın kullandığı hesaplamalar (Azure HDInsight gibi) diğer bölgelerde çalıştırılabilir.
 
-1. **Oluştur'u**seçin. Oluşturma tamamlandıktan sonra, **Veri Fabrikası** sayfasına gitmek **için kaynağa** git'i seçin. 
+1. **Oluştur**’u seçin. Oluşturma tamamlandıktan sonra, **Veri Fabrikası** sayfasına gitmek **için kaynağa** git'i seçin. 
 
 1. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
    
