@@ -9,14 +9,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 34972e70039fef17161bdef66f64278cbabf908f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d0b49b73ef6b67653fbf32db1174880a51d432d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130794"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412957"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory Hakkında SSS
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Bu makalede, Azure Veri Fabrikası hakkında sık sorulan soruların yanıtları verilmektedir.  
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir? 
@@ -146,7 +149,7 @@ Denetim akışları, zincirleme etkinlikleri, dallanma, ardışık düzen düzey
 Data Factory kavramları hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Veri kümeleri ve bağlı hizmetler](concepts-datasets-linked-services.md)
-- [Boru hatları ve faaliyetleri](concepts-pipelines-activities.md)
+- [İşlem hatları ve etkinlikler](concepts-pipelines-activities.md)
 - [Tümleştirme çalışma zamanı](concepts-integration-runtime.md)
 
 ## <a name="what-is-the-pricing-model-for-data-factory"></a>Veri Fabrikası için fiyatlandırma modeli nedir?

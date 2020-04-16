@@ -7,14 +7,16 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 94f7277c1b741fb5ef6d2807fabbb266c0109415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086916"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81412960"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Veri akışı dönüşümüne genel bakışharitalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aşağıda, veri akışının eşlemesinde şu anda desteklenen dönüşümlerin bir listesi verilmiştir. Yapılandırma ayrıntılarını öğrenmek için her dönüşüme tıklayın.
 
@@ -26,7 +28,7 @@ Aşağıda, veri akışının eşlemesinde şu anda desteklenen dönüşümlerin
 | [Türetilmiş sütun](data-flow-derived-column.md) | Şema değiştirici | yeni sütunlar oluşturun veya veri akışı ifade dilini kullanarak varolan alanları değiştirin. | 
 | [Var](data-flow-exists.md) | Birden fazla giriş/çıkış | Verilerinizin başka bir kaynakta mı yoksa akışta mı var olup olmadığını denetleyin. | 
 | [Filtrele](data-flow-filter.md) | Satır değiştiricisi | Bir koşula göre bir satırı filtreleyin. |
-| [Düzleştir](data-flow-flatten.md) | Şema değiştirici |  Dizi değerlerini JSON gibi hiyerarşik yapıların içindeki dizi değerlerini alın ve tek tek satırlara dönüştürün. |
+| [Düzleştirme](data-flow-flatten.md) | Şema değiştirici |  Dizi değerlerini JSON gibi hiyerarşik yapıların içindeki dizi değerlerini alın ve tek tek satırlara dönüştürün. |
 | [Katıl](data-flow-join.md) | Birden fazla giriş/çıkış |  İki kaynakveya akıştan gelen verileri birleştirin. |
 | [Arama](data-flow-lookup.md) | Birden fazla giriş/çıkış | Başka bir kaynaktan gelen başvuru verileri. |
 | [Yeni dal](data-flow-new-branch.md) | Birden fazla giriş/çıkış | Aynı veri akışına karşı birden çok işlem kümesi ve dönüşüm uygulayın. |

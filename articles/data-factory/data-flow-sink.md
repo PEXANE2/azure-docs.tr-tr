@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 8941c097fbb2d05c3a28be87d216b7a2679ebc68
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: a728ec6f261b82d563aeb4a8f5c98bbd546f4400
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804903"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413225"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Veri akışını nakışlamada lavabo dönüşümü
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Verilerinizi dönüştürdükten sonra, verileri nizi bir hedef veri kümesine batırabilirsiniz. Her veri akışı en az bir lavabo dönüşümü gerektirir, ancak dönüşüm akışınızı tamamlamak için gerektiği kadar lavaboya yazabilirsiniz. Ek lavabolara yazmak için, yeni dallar ve koşullu bölmeler aracılığıyla yeni akışlar oluşturun.
 

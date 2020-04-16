@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.openlocfilehash: 971871c28bd1b38b134c04b0334fbe99d1d655c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96b23696164514ad2f16de72f0f76aa237ffce2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440179"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415832"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP İş Ambarı'ndaki verileri kopyalama
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, SAP İş Ambarı'ndan (BW) Open Hub üzerinden Azure Veri Gölü Depolama Gen2'ye verileri kopyalamak için Azure Veri Fabrikası'nın nasıl kullanılacağı gösterilmektedir. Verileri diğer [desteklenen lavabo veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)kopyalamak için benzer bir işlem kullanabilirsiniz.
 
@@ -68,7 +69,7 @@ Azure portalında veri fabrikanıza gidin. Veri Fabrikası Kullanıcı Çağrı 
 
    3. Ayarları doğrulamak için **Test bağlantısını** seçin ve ardından **Bitir'i**seçin.
 
-   4. Yeni bir bağlantı oluşturulur. **Sonraki'ni**seçin.
+   4. Yeni bir bağlantı oluşturulur. **İleri**’yi seçin.
 
 5. Hub **Hedeflerini Seç** sayfasında SAP BW'nizde bulunan Açık Hub Hedefleri'ne göz atın. Verileri kopyalamak için OHD'yi seçin ve sonra **İleri'yi**seçin.
 
@@ -191,7 +192,7 @@ Veri fabrikasında **Başlatalım** sayfasında, yerleşik şablonu kullanmak i�
 
       3. **Blob** oluşturma eylemi ekleyin. **Klasör yolu** ve **Blob adı için,** daha önce *HighWatermarkBlobContainer+HighWatermarkBlobDirectory* ve *HighWatermarkBlobName'de*yapılandırdığınız değerleri kullanın.
 
-      4. **Kaydet'i**seçin. Ardından, Veri Fabrikası ardışık alanında kullanmak üzere **HTTP POST URL** değerini kopyalayın.
+      4. **Kaydet**’i seçin. Ardından, Veri Fabrikası ardışık alanında kullanmak üzere **HTTP POST URL** değerini kopyalayın.
 
 4. Veri Fabrikası ardışık hatlar parametrelerini sağladıktan sonra, yapılandırmayı doğrulamak için bir çalıştırma yı çağırmak için **Hata Ayıklama** > **Bitiş'i** seçin. Veya, tüm değişiklikleri yayımlamak için **Yayımla'yı** seçin ve ardından çalıştırmayı yürütmek için **tetikleyici ekle'yi** seçin.
 

@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d6d0a5cdf4b33ba290042627f0ceaf4cf73a375c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76169318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403435"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Hızlı Başlangıç: REST API ve Java kullanarak bir görüntüdeki yüzleri algılama
 
-Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Java ile Azure Yüz REST API'sini kullanırsınız.
+Bu hızlı başlangıçta, görüntüdeki insan yüzlerini algılamak için Java içeren Azure Yüz REST API'sini kullanırsınız.
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
@@ -154,7 +154,7 @@ Aşağıdaki kodu içeren **ana** yöntemi ekleyin. Uzak görüntüdeki yüz bil
 
 ## <a name="run-the-app"></a>Uygulamayı çalıştırma
 
-Kodu derle ve çalıştır. Başarılı bir yanıt, Yüz verilerini konsol penceresinde kolayca okunabilir JSON formatında görüntüler. Örnek:
+Kodu derle ve çalıştır. Başarılı bir yanıt, Yüz verilerini konsol penceresinde kolayca okunabilir JSON formatında görüntüler. Örneğin:
 
 ```json
 [{

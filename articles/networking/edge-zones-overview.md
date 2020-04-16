@@ -7,16 +7,16 @@ ms.service: vnf-manager
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: ganesr
-ms.openlocfilehash: 2f2311adc231eac4260e26f0d5d1f2115f43d2eb
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: aaa849633591bfd34a9fca026c820ec2f9137844
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618713"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410849"
 ---
 # <a name="about-azure-edge-zones---preview"></a>Azure Kenar Bölgeleri Hakkında - Önizleme
 
-Azure Kenar Bölgeleri, Microsoft Azure'dan kullanıcıya yakın veri işleme sağlayan bir teklif ailesidir. Düşük gecikme süresi ve yüksek iş verme gereksinimlerini gidermek için VM'leri, kapsayıcıları ve diğer belirli Azure hizmetlerini Kenar Bölgeleri'ne dağıtabilirsiniz.
+Azure Kenar Bölgeleri, Microsoft Azure'dan kullanıcıya yakın veri işleme sağlayan bir teklif ailesidir. Düşük gecikme süresi ve yüksek iş verme gereksinimlerini gidermek için VM'leri, kapsayıcıları ve diğer seçili Azure hizmetlerini Kenar Bölgeleri'ne dağıtabilirsiniz.
 
 Kenar Bölgeleri için tipik kullanım durumu senaryoları şunlardır:
 

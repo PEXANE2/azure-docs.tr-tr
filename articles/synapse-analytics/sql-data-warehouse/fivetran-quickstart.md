@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b4742f48ee9ad0db60e21dd53c5c0f447c1ded67
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8f164232a3b1782511758f93a9e9b8d17d3714d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348929"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414281"
 ---
 # <a name="quickstart-fivetran-with-data-warehouse"></a>Quickstart: Veri ambarı ile Fivetran 
 
@@ -26,7 +26,7 @@ Bu hızlı başlangıç, SQL Havuzu ile birlikte sağlanan bir Azure Synapse Ana
 
 1. Veri ambarınıza bağlanmak için kullandığınız tam nitelikli sunucu adını ve veritabanı adını bulun.
     
-    Bu bilgileri bulmak için yardıma ihtiyacınız varsa, [bkz.](sql-data-warehouse-connect-overview.md)
+    Bu bilgileri bulmak için yardıma ihtiyacınız varsa, [bkz.](../sql/connect-overview.md)
 
 2. Kurulum sihirbazında, veritabanınızı doğrudan mı yoksa Bir SSH tüneli kullanarak mı bağlayıp bağlamayyacağınızı seçin.
 
@@ -75,9 +75,9 @@ Bu hızlı başlangıç, SQL Havuzu ile birlikte sağlanan bir Azure Synapse Ana
     Daha fazla bilgi için [bellek ve eşzamanlılık sınırları ve](memory-concurrency-limits.md) kaynak [sınıfları](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)hakkında bilgi edinin.
 
 
-## <a name="sign-in-to-fivetran"></a>Fivetran'da oturum açın
+## <a name="connect-from-fivetran"></a>Fivetran'dan bağlan
 
-Fivetran'da oturum açabilmek için veri ambarınıza erişmek için kullandığınız kimlik bilgilerini girin: 
+Fivetran hesabınızdan veri ambarınıza bağlanmak için, veri ambarınıza erişmek için kullandığınız kimlik bilgilerini girin: 
 
 * Ana bilgisayar (sunucu adınız).
 * Bağlantı noktası.

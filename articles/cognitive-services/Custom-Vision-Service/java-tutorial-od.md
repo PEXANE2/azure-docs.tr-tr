@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 02/25/2020
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 78db95240974d1c9ca07546f8237eca2b564ecb2
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 086e67d1058443a6f4afd615f2d2725aaf19a259
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77616318"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403817"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>Hızlı Başlangıç: Java için Özel Görüntü İşleme SDK’sı ile nesne algılama projesi oluşturma
 
@@ -109,7 +109,7 @@ Günlüğe kaydetme ve tahmin sonuçları için konsol çıkışını görüntü
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kodda nesne algılama işleminin her adımının nasıl uygulanabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir. Sonraki kılavuzda görüntü sınıflandırma konusu üstünde durulur ancak temel ilkeleri nesne algılamaya benzer.
+Şimdi nesne algılama işleminin her adımının kod olarak nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesini yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir. Aşağıdaki eğitim kılavuzu görüntü sınıflandırması ile ilgilidir, ancak ilkeleri nesne algılama ya benzer.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

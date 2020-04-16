@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: f8391818ebf13afb3b07eead55133aadde6158f0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0c2e18146666de8d36eb462bf972ef2e3722216a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170098"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403881"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-go-sdk"></a>Quickstart: Custom Vision Go SDK ile bir görüntü sınıflandırma projesi oluşturun
 
@@ -163,7 +163,7 @@ Tahmin uç noktasına bir görüntü göndermek ve tahmini almak için dosyanın
     testImageData, _ := ioutil.ReadFile(path.Join(sampleDataDirectory, "Test", "test_image.jpg"))
     results, _ := predictor.ClassifyImage(ctx, *project.ID, iteration_publish_name, ioutil.NopCloser(bytes.NewReader(testImageData)), "")
 
-    for _, prediction := range *results.Predictions {
+    for _, prediction := range *results.Predictions    {
         fmt.Printf("\t%s: %.2f%%", *prediction.TagName, *prediction.Probability * 100)
         fmt.Println("")
     }
@@ -199,7 +199,7 @@ Ardından test görüntüsünün (**<base_image_url>/Images/Test/** yolunda bulu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kodda görüntü sınıflandırma işleminin her adımının nasıl uygulanabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir.
+Şimdi nesne algılama işleminin her adımının kod olarak nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesini yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

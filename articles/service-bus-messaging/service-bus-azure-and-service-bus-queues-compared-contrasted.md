@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: 8379b7f48e7e494370f3fdba81676d34821d7b6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ffa98e511053edc75fd0e6f25f7b0e21ee9ddda0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75563386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414528"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Servis Veri Servisi sıraları - karşılaştırıldığında ve karşıt
 Bu makalede, Microsoft Azure tarafından bugün sunulan iki tür kuyruk arasındaki farkları ve benzerlikleri çözümlenetürü: Depolama kuyrukları ve Hizmet Veri Servisi kuyrukları. Bu bilgileri kullanarak, ilgili teknolojileri karşılaştırabilir ve karşılaştırabilir ve hangi çözümün ihtiyaçlarınızı en iyi karşıladığına daha bilinçli bir karar verebilirsiniz.
@@ -57,7 +57,7 @@ Hangi kuyruk teknolojisinin belirli bir çözüm amacına uyduğunu belirlerken,
     - [Uygulamadan kimlik doğrulaması yapma](authenticate-application.md)
 * Kuyruk boyutunuz 80 GB'ın üzerine çıkmayacaktır.
 * AMQP 1.0 standart tabanlı ileti protokolünü kullanmak istiyorsunuz. AMQP hakkında daha fazla bilgi için [Servis Veri Servisi AMQP Genel Bakış'a](service-bus-amqp-overview.md)bakın.
-* Sıra tabanlı noktadan noktaya iletişimden, her biri bir kısmının veya tamamının bağımsız kopyalarını alan ek alıcıların (abonelerin) sorunsuz entegrasyonunu sağlayan bir ileti alışverişi desenine nihai bir geçiş öngörebilirsiniz sıraya gönderilen iletiler. İkincisi, Service Bus tarafından yerel olarak sağlanan yayımlama/abone etme özelliğianlamına gelir.
+* Sıra tabanlı noktadan noktaya iletişimden, her biri kuyruğa gönderilen iletilerin veya tüm iletilerin bağımsız kopyalarını alan ek alıcıların (abonelerin) sorunsuz bir şekilde tümleştirilmesini sağlayan bir ileti alışverişi desenine nihai bir geçiş öngörebilirsiniz. İkincisi, Service Bus tarafından yerel olarak sağlanan yayımlama/abone etme özelliğianlamına gelir.
 * İleti çözümünüz, ek altyapı bileşenlerini oluşturmanıza gerek kalmadan "En Çok At-Most-Once" teslim garantisini destekleyebilmeli.
 * İletileri toplu halde yayımlayabilmek ve kullanabilmek istersiniz.
 
@@ -73,7 +73,7 @@ Bu bölümde, Depolama kuyrukları ve Servis Veri Servisi kuyrukları tarafında
 | Teslimat garantisi |**En az-bir kez** |**En Az-Once** (PeekLock alma modunu kullanarak - bu varsayılan) <br/><br/>**En Çok At** (ReceiveAndDelete alma modunu kullanarak) <br/> <br/> Çeşitli Alma [modları](service-bus-queues-topics-subscriptions.md#receive-modes) hakkında daha fazla bilgi edinin  |
 | Atomik operasyon desteği |**Hayır** |**Evet**<br/><br/> |
 | Davranışı alma |**Engellenmez**<br/><br/>(yeni bir ileti bulunmazsa hemen tamamlar) |**Zaman anına sahip/zaman alamadan engelleme**<br/><br/>(uzun yoklama veya ["Kuyruklu yıldız tekniği"](https://go.microsoft.com/fwlink/?LinkId=613759)sunuyor)<br/><br/>**Engellenmez**<br/><br/>(sadece .NET yönetilen API'nin kullanımı yoluyla) |
-| Push tarzı API |**Hayır** |**Evet**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) ve **OnMessage** oturumları .NET API. |
+| Push tarzı API |**Hayır** |**Evet**<br/><br/>[QueueClient.OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) ve [MessageSessionHandler.OnMessage](/dotnet/api/microsoft.servicebus.messaging.messagesessionhandler.onmessage#Microsoft_ServiceBus_Messaging_MessageSessionHandler_OnMessage_Microsoft_ServiceBus_Messaging_MessageSession_Microsoft_ServiceBus_Messaging_BrokeredMessage__) oturumları .NET API. |
 | Alma modu |**Peek & Kiralama** |**Peek & Kilidi**<br/><br/>**Sil& Alma** |
 | Özel erişim modu |**Kira tabanlı** |**Kilit tabanlı** |
 | Kiralama/Kilitleme süresi |**30 saniye (varsayılan)**<br/><br/>**7 gün (maksimum)** [(UpdateMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.updatemessage) API'sini kullanarak ileti kiralamayı yenileyebilir veya yayınlayabilirsiniz.) |**60 saniye (varsayılan)**<br/><br/>[Yenile Kilidi](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.renewlock#Microsoft_ServiceBus_Messaging_BrokeredMessage_RenewLock) API'sini kullanarak ileti kilidini yenileyebilirsiniz. |
@@ -85,7 +85,7 @@ Bu bölümde, Depolama kuyrukları ve Servis Veri Servisi kuyrukları tarafında
 * Depolama kuyruklarında iletiler genellikle ilk ilk çıkış, ancak bazen sıra dışı olabilir; örneğin, bir iletinin görünürlük zaman aşımı süresi sona erdiğinde (örneğin, bir istemci uygulamasının işleme sırasında çökmesinin bir sonucu olarak). Görünürlük süresi sona erdiğinde, başka bir çalışanın sırayı bozması için sırada yine görünür hale gelir. Bu noktada, yeni görünen ileti, başlangıçta sonra sıralanmış bir iletiden sonra kuyruğa (yeniden sıradan çıkmak üzere) yerleştirilebilir.
 * Servis Veri Servisi kuyruklarında garantili FIFO deseni, ileti oturumlarının kullanılmasını gerektirir. Peek **& Kilit** modunda alınan bir iletiyi işlerken uygulamanın çökmesi durumunda, bir sonraki sıra alıcısı bir ileti oturumunu kabul ederse, süresi dolan (TTL) süresi dolduktan sonra başarısız iletiyle başlar.
 * Depolama kuyrukları, hatalar, yük tesviyesi ve bina işlemi iş akışları için ölçeklenebilirliği ve toleransı artırmak için uygulama bileşenlerini ayrıştma gibi standart sıraya alma senaryolarını desteklemek üzere tasarlanmıştır.
-* Servis Veri Aracı oturumları bağlamında ileti işleme ile ilgili tutarsızlıklar, oturumun ileti sırasını işleme ilerlemesine göre uygulamanın durumunu depolamak için oturum durumu kullanılarak ve ilgili işlemler kullanılarak önlenebilir alınan iletileri yerleşme ve oturum durumunu güncelleştirme. Bu tür bir tutarlılık özelliği bazen diğer satıcının ürünlerinde *Tam Olarak-Bir Kez İşleme* olarak etiketlenir, ancak işlem hataları açıkça iletilerin yeniden teslim edilmesine neden olur ve bu nedenle terim tam olarak yeterli değildir.
+* Hizmet Veri Mesi oturumları bağlamında ileti işleme ile ilgili tutarsızlıklar, oturumun ileti sırasını işleme ilerlemesine göre uygulamanın durumunu depolamak için oturum durumu kullanılarak ve alınan iletileri yerleşme ve oturum durumunu güncelleştirme yle ilgili işlemler kullanılarak önlenebilir. Bu tür bir tutarlılık özelliği bazen diğer satıcının ürünlerinde *Tam Olarak-Bir Kez İşleme* olarak etiketlenir, ancak işlem hataları açıkça iletilerin yeniden teslim edilmesine neden olur ve bu nedenle terim tam olarak yeterli değildir.
 * Depolama kuyrukları, hem geliştiriciler hem de operasyon ekipleri için kuyruklar, tablolar ve BLOB'lar arasında tek düzenve tutarlı bir programlama modeli sağlar.
 * Servis Veri Servisi kuyrukları, tek bir kuyruk bağlamında yerel hareketler için destek sağlar.
 * Service Bus tarafından desteklenen **Alma ve Sil** modu, daha düşük teslim güvencesi karşılığında ileti işlem sayısını (ve ilişkili maliyeti) azaltma olanağı sağlar.
@@ -175,7 +175,7 @@ Bu bölümde, Depolama kuyrukları ve Servis Veri Servisi sıraları tarafından
 
 | Karşılaştırma Kriterleri | Depolama kuyrukları | Service Bus kuyrukları |
 | --- | --- | --- |
-| Kimlik doğrulaması |**Simetrik anahtar** |**Simetrik anahtar** |
+| Kimlik Doğrulaması |**Simetrik anahtar** |**Simetrik anahtar** |
 | Güvenlik modeli |SAS belirteçleri aracılığıyla yetkin erişim. |Sas |
 | Kimlik sağlayıcı federasyonu |**Hayır** |**Evet** |
 

@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 127db8a484b9624586dea70c44af3bc84b3fc84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73673780"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414478"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Zamanlamada ardışık hatlar hattını çalıştıran bir tetikleyici oluşturma
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bu makalede, zamanlama tetikleyicisi ve zamanlama tetikleyicisi oluşturma, başlatma ve izleme adımları hakkında bilgi verilmektedir. Diğer tetikleyici türleri [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md)
 
 Zamanlama tetikleyicisi oluştururken, tetikleyici için bir zamanlama (başlangıç tarihi, yineleme, bitiş tarihi vb.) belirtir ve bir ardışık sözcülükle ilişkilendirin. İşlem hatları ve tetikleyiciler çoka çok ilişkisine sahiptir. Birden çok tetikleyici tek bir işlem hattını başlatabilir. Tek bir tetikleyici birden fazla işlem hattını başlatabilir.
@@ -314,7 +316,7 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 | **startTime** | Bir Tarih-Saat değeri. Basit zamanlamalar için **startTime** özelliğinin değeri ilk oluşum için geçerli olur. Karmaşık zamanlamalar için tetikleyici belirtilen **startTime** değerinden önce başlamaz. |
 | **endTime** | Tetikleyicinin bitiş tarihi ve saati. Tetikleyici belirtilen bitiş tarihi ve saatinden sonra yürütülmez. Bu özelliğin değeri geçmişte olamaz. Bu özellik isteğe bağlıdır. |
 | **timeZone** | Saat dilimi. Şu anda yalnızca UTC saat dilimi desteklenmektedir. |
-| **yineleme** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
+| **Yineleme** | Tetikleyici için yinelenme kurallarını belirten bir yinelenme nesnesi. recurrence nesnesi şu öğeleri destekler: **frequency**, **interval**, **endTime**, **count** ve **schedule**. Bir yinelenme nesnesi tanımlanırken **frequency** öğesi gereklidir. Yinelenme nesnesinin diğer öğeleri isteğe bağlıdır. |
 | **Frekans** | Tetikleyicinin yineleneceği sıklık birimi. “Minute”, “hour”, “day”, “week” ve “month” değerleri desteklenir. |
 | **Aralığı** | Tetikleyicinin çalışma sıklığını belirten **frequency** değerinin aralığını gösteren bir pozitif tamsayı. Örneğin **interval** değeri 3, **frequency** değeri de "week" ise tetikleyici 3 haftada bir yinelenir. |
 | **Zamanlama** | Tetikleyicinin yinelenme zamanlaması. **frequency** değeri belirtilen bir tetikleyici, yinelenmesini bir yinelenme zamanlamasına göre değiştirir. **schedule** özelliği, yinelenme için dakika, saat, haftanın günü, ayın günü ve hafta numarası tabanlı değişiklikleri içerir.
@@ -324,11 +326,11 @@ Aşağıdaki tabloda bir tetikleyicinin yinelenmesi ve zamanlanmasıyla ilgili a
 
 | JSON özelliği | Tür | Gerekli | Varsayılan değer | Geçerli değerler | Örnek |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Dize | Evet | None | ISO-8601 Tarih-Saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **yineleme** | Nesne | Evet | None | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **startTime** | Dize | Evet | Hiçbiri | ISO-8601 Tarih-Saatleri | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **Yineleme** | Nesne | Evet | Hiçbiri | Yinelenme nesnesi | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **Aralığı** | Sayı | Hayır | 1 | 1-1.000 | `"interval":10` |
-| **endTime** | Dize | Evet | None | Gelecekteki bir zamanı temsil eden Tarih-Saat değeri. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
-| **Zamanlama** | Nesne | Hayır | None | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+| **endTime** | Dize | Evet | Hiçbiri | Gelecekteki bir zamanı temsil eden Tarih-Saat değeri. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **Zamanlama** | Nesne | Hayır | Hiçbiri | Zamanlama nesnesi | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime özelliği
 Aşağıdaki tabloda **startTime** özelliğinin bir tetikleyici çalıştırmasını nasıl denetlediği gösterilmektedir:
@@ -401,4 +403,4 @@ Bu bölümde yinelenme zamanlaması örnekleri sağlanmış ve **schedule** nesn
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#triggers)
+Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#trigger-execution)

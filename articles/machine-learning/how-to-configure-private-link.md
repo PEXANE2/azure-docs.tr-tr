@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4f39ff5726c23db32c7b039335f406641ee090cb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754248"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411194"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure Özel Bağlantısını Yapılandırma (Önizleme)
 
@@ -47,8 +47,7 @@ Bir şablon dağıtırken aşağıdaki bilgileri sağlamanız gerekir:
 * Çalışma alanı sürümü (Temel veya Kurumsal)
 * Çalışma alanı için yüksek gizlilik ayarları etkinleştirilmeliyse
 * Müşteri tarafından yönetilen bir anahtarla çalışma alanı için şifreleme etkinve anahtar için ilişkili değerler etkinleştirilmelidir
-* Sanal Ağ adı ve alt ağı
-* Alt ağ adı
+* Sanal Ağ ve Subnet adı, şablon yeni sanal ağ ve alt ağ yaratacak
 
 Şablon gönderildikten ve sağlama tamamlandıktan sonra, çalışma alanınızı içeren kaynak grubu Özel Bağlantı ile ilgili üç yeni yapı türü içerir:
 

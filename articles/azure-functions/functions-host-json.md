@@ -3,12 +3,12 @@ title: Azure İşlevler için host.json başvurusu 2.x
 description: V2 çalışma zamanı ile Azure İşlemeleri ana bilgisayar.json dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a861d500f0b8cc31b8312d6c955916ab741b649
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878264"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405478"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevler 2.x ve sonrası için host.json başvurusu 
 
@@ -141,7 +141,7 @@ Bu [ayar, günlüğe kaydetmenin](#logging)bir alt nedenidir.
 Tam JSON yapısı için önceki [örnek host.json dosyasına](#sample-hostjson-file)bakın.
 
 > [!NOTE]
-> Günlük örneklemesi, bazı yürütmelerin Application Insights izleme bıçağında görünmemesi nedeniyle olabilir. Günlük örneklemesini önlemek `samplingExcludedTypes: "Request"` için `applicationInsights` değere ekleyin.
+> Günlük örneklemesi, bazı yürütmelerin Application Insights izleme bıçağında görünmemesi nedeniyle olabilir. Günlük örneklemesini önlemek `excludedTypes: "Request"` için `samplingSettings` değere ekleyin.
 
 | Özellik | Varsayılan | Açıklama |
 | --------- | --------- | --------- | 
@@ -166,8 +166,8 @@ Tam JSON yapısı için önceki [örnek host.json dosyasına](#sample-hostjson-f
 | minSamplingYüzdesi | 0.1 | Örnekleme yüzdesi değiştiğinden, bu özellik izin verilen minimum örnekleme yüzdesini belirler. |
 | maxSamplingYüzdesi | 0.1 | Örnekleme yüzdesi değiştiğinden, bu özellik izin verilen maksimum örnekleme yüzdesini belirler. |
 | movingAverageRatio | 1.0 | Hareketli ortalamanın hesaplanmasında, en son değere atanan ağırlık. 1'e eşit veya daha az bir değer kullanın. Daha küçük değerler algoritmayı ani değişikliklere karşı daha az tepkiverir. |
-| dışlanmışTürleri | null | Örneklenmeyi istemediğiniz türlerin yarı nokta noktalı sınırlı bir listesi. Tanınan türler şunlardır: Bağımlılık, Olay, Özel Durum, PageView, İstek, İzleme. Belirtilen türlerin tüm örnekleri aktarılır; belirtilmeyen türler örneklenir. |
-| dahilTürleri | null | Örneklenmek istediğiniz türlerin yarı kolonlu sınırlı listesi; boş bir liste tüm türleri ima eder. Burada listelenen `excludedTypes` geçersiz kılma türlerinde listelenen tür. Tanınan türler şunlardır: Bağımlılık, Olay, Özel Durum, PageView, İstek, İzleme. Belirtilen türlerin tüm örnekleri aktarılır; belirtilmeyen türler örneklenir. |
+| dışlanmışTürleri | null | Örneklenmeyi istemediğiniz türlerin yarı nokta noktalı sınırlı bir listesi. Tanınan türleri `Dependency`şunlardır: `PageView` `Request`, `Event` `Exception` `Trace`, , , , ve . Belirtilen türlerin tüm örnekleri aktarılır; belirtilmeyen türler örneklenir. |
+| dahilTürleri | null | Örneklenmek istediğiniz türlerin yarı kolonlu sınırlı listesi; boş bir liste tüm türleri ima eder. Burada listelenen `excludedTypes` geçersiz kılma türlerinde listelenen tür. Tanınan türleri `Dependency`şunlardır: `PageView` `Request`, `Event` `Exception` `Trace`, , , , ve . Belirtilen türörnekleri örneklenir; belirtilmeyen veya ima edilen türler örnekleme yapılmadan iletilir. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>uygulamaInsights.httpAutoCollectionOptions
 

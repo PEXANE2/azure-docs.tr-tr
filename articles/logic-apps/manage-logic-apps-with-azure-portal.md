@@ -8,13 +8,13 @@ ms.author: ladolan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/06/2020
-ms.openlocfilehash: a35f34ed27299077dca78630511ea3c291caff60
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.date: 04/13/2020
+ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804981"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415942"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Azure portalında mantık uygulamalarını yönetme
 
@@ -177,6 +177,46 @@ Mantık uygulamanızı semeniz iş akışı örneklerinizi şu şekilde etkiler:
    ![Mantık uygulamalarınızı silmek için onaylayın](./media/manage-logic-apps-with-azure-portal/delete-confirmation-multiple-logic-apps.png)
 
    Azure portalı, ana Azure araç çubuğunda, işleminizin başarılı olup olmadığını veya başarısız olup olmadığını doğrulayan bir bildirim gösterir.
+
+<a name="manage-logic-app-versions"></a>
+
+## <a name="manage-logic-app-versions"></a>Mantık uygulaması sürümlerini yönetme
+
+Mantıksal uygulamalarınızın sürüm kontrolü için Azure portalını kullanabilirsiniz. Mantık uygulamanızın sürüm geçmişini bulabilir ve önceki sürümleri tanıtabilirsiniz.
+
+<a name="find-version-history"></a>
+
+### <a name="find-and-view-previous-versions"></a>Önceki sürümleri bulma ve görüntüleme
+
+1. Azure [portalında, yönetmek istediğiniz mantık uygulamasını bulun.](#find-logic-app)
+
+1. Mantık uygulamanızın menüsünde, **Geliştirme Araçları**altında, **Sürümler'i**seçin.
+
+   ![Mantık uygulamanızın menüsünde "Geliştirme Araçları" altında "Sürümler"i seçin](./media/manage-logic-apps-with-azure-portal/logic-apps-menu-versions.png)
+
+1. Listeden yönetmek için mantık uygulamanızın **Sürümünü** seçin. Listeye filtre lemek için arama çubuğuna **Sürüm** tanımlayıcısını girebilirsiniz.
+
+1. Geçmiş **sürüm** sayfasında, önceki sürümün ayrıntılarını salt okunur modunda görürsünüz. Logic Apps **Tasarımcısı** ve **Kod görüntüleme** modları arasında seçim yapabilirsiniz.
+
+   ![Kod görünümü ve Logic uygulamaları tasarımcı görünümü ile mantık uygulaması için Geçmiş sürüm sayfası](./media/manage-logic-apps-with-azure-portal/history-version.png)
+
+<a name="promote-previous-versions"></a>
+
+### <a name="promote-previous-versions"></a>Önceki sürümleri tanıtma
+
+1. Mantık uygulamanızın sürüm geçmişinde, [tanıtmak istediğiniz sürümü bulun ve seçin.](#find-version-history)
+
+1. Geçmiş **sürüm** **sayfasında, Tanıt'ı**seçin.
+
+   ![Mantık uygulamasının sürüm geçmişinde düğmeyi tanıtın](./media/manage-logic-apps-with-azure-portal/promote-button.png)
+
+1. Açılan **Logic Apps Designer** sayfasında, gerektiğinde tanıtımını yaptığınız sürümü edin. **Tasarımcı** ve Kod **görünüm** modları arasında geçiş yapabilirsiniz. **Parametreleri,** **Şablonları**ve **Bağlayıcıları**da güncelleştirebilirsiniz.
+
+   ![Önceki sürümü tanıtmak için Logic Apps Designer sayfası](./media/manage-logic-apps-with-azure-portal/promote-page.png)
+
+1. Önceki sürümün tanıtımını yapmak ve güncelleştirmeleri kaydetmek için **Kaydet'i**seçin. (Veya değişikliklerinizi iptal etmek için **At'ı**seçin .) 
+
+   Mantık [uygulamanızın sürüm geçmişini](#find-version-history) yeniden görüntülediğinizde, tanıtılan sürüm listenin en üstünde görünür ve yeni bir tanımlayıcıya sahiptir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

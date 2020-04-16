@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaş küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz kumaş ayarları ve kumaş yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 3eb558c7d0745ada43696fd4189a7ac663867849
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c2e280af814a3e10ad84c5ba07fc376868fcd851
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753988"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416254"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Özelleştirebileceğiniz Hizmet Kumaşı kümenizin çeşitli kumaş ayarları açıklanmaktadır. Azure'da barındırılan kümeler için, ayarları [Azure portalı](https://portal.azure.com) üzerinden veya Azure Kaynak Yöneticisi şablonu kullanarak özelleştirebilirsiniz. Daha fazla bilgi için [bkz.](service-fabric-cluster-config-upgrade-azure.md) Bağımsız kümeler için *ClusterConfig.json* dosyasını güncelleştirerek ve kümenizde yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz: [Bağımsız bir kümenin yapılandırmasını yükseltin.](service-fabric-cluster-config-upgrade-windows-server.md)

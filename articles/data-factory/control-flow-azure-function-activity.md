@@ -11,15 +11,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: ffb610634399594788afcb9b600ba00c6803dfdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77207034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415318"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Azure İşlevi etkinliği
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Azure İşlevi etkinliği, Veri Fabrikası ardışık bir ardışık alanda [Azure İşlevlerini](../azure-functions/functions-overview.md) çalıştırmanızı sağlar. Bir Azure İşlevi çalıştırmak için, bağlantılı bir hizmet bağlantısı ve yürütmeyi planladığınız Azure İşi'ni belirten bir etkinlik oluşturmanız gerekir.
 
 Bu özelliğin sekiz dakikalık tanıtımı ve gösterimi için aşağıdaki videoyu izleyin:

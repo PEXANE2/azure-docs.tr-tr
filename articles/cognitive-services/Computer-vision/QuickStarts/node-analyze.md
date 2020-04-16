@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-javascript-september2018, seo-javascript-october2019
-ms.openlocfilehash: 98fb7eab52c710d9008aafefc50c2d00979d3350
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2c667c1b7e20127751b63b6c393c4909c610e0d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973841"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404650"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-with-nodejs"></a>Quickstart: Node.js ile Computer Vision REST API kullanarak uzak bir görüntü analiz
 
@@ -178,7 +178,7 @@ Artık gerekli değilse dosyayı silin ve sonra npm `request` paketini kaldırı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Görüntü analiz etmek, ünlüleri ve önemli yerleri algılamak, küçük resim oluşturmak ve yazdırılan ve el yazısı metinleri ayıklamak için kullanılan Görüntü İşleme API'lerini keşfedin. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
+Ardından, bir görüntüyü çözümlemek, ünlüleri ve simgeleri algılamak, küçük resim oluşturmak ve yazdırılan ve el yazısıyla yazılmış metinleri ayıklamak için kullanılan BilgisayarLı Vizyon API'lerini keşfedin.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API’sini keşfetme](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

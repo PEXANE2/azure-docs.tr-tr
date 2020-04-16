@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6bd360b2075c337e3ed3d69d84368d16571a9335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcef0574e16e0b4d28755716c32670b00c65af14
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536063"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406100"
 ---
 # <a name="my-first-graphical-runbook"></a>İlk grafik runbook uygulamam
 
 > [!div class="op_single_selector"]
 > * [Grafik](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell İş Akışı](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 > 
@@ -100,7 +100,7 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretimde çalıştırılabilm
 1. Runbook işine ait Akışlar bölmesini açmak için **Tüm Günlükler**’e tıklayın. Yalnızca çıkış `Hello World` akışında görmeniz gerekir. 
 
     Runbook onlara yazıyorsa, Akışlar bölmesinin verbose ve hata akışları gibi bir runbook işi için diğer akışları gösterebileceğini unutmayın.
-1. **MyFirstRunbook-Graphical** sayfasına dönmek için Akışlar bölmesini ve İş bölmesini kapatın.
+1. MyFirstRunbook-Graphical sayfasına dönmek için Akışlar bölmesini ve İş bölmesini kapatın.
 1. Runbook'un tüm işlerini görüntülemek **için, Kaynaklar**altında **İşler'i** seçin. İşler sayfası, runbook'unuzun oluşturduğu tüm işleri listeler. İşi yalnızca bir kez çalıştırdığınızdan, yalnızca bir iş listelenmiş olarak görmeniz gerekir.
 1. Runbook'u başlattığınızda görüntülediğiniz aynı İş bölmesini açmak için iş adını tıklatın. Runbook için oluşturulan herhangi bir işin ayrıntılarını görüntülemek için bu bölmeyi kullanın.
 
@@ -126,7 +126,7 @@ Artık abonelik kimliğini tutmak için bir değişkeniniz olduğuna göre, runb
 >[!NOTE]
 >PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`diğer adlar . Bu diğer adların grafik çalışma kitaplarınız için kullanılamadığını unutmayın. Grafik çalışma kitabı yalnızca `Connect-AzAccount`kendisini kullanabilir.
 
-1. Runbook'unuza gidin ve **MyFirstRunbook-Graphical** sayfasında **Edit'i** seçin.
+1. Runbook'unuza gidin ve MyFirstRunbook-Graphical sayfasında **Edit'i** seçin.
 1. Artık girişe `Write Hello World to output` ihtiyacın yok. Elipsleri tıklatın ve **Sil'i**seçin.
 1. Kitaplık denetiminde, **VARLıKLAR'ı,** ardından **Bağlantıları**genişletin. Tuvale Ekle'yi seçerek `AzureRunAsConnection` **tuvale**ekleyin.
 1. Yeniden `AzureRunAsConnection` adlandırmak `Get Run As Connection`için.
@@ -141,7 +141,7 @@ Artık abonelik kimliğini tutmak için bir değişkeniniz olduğuna göre, runb
 
    * **Veri kaynağı** -- **Etkinlik çıktısını**seçin.
    * Veri kaynak listesi -- **Otomasyon Bağlantısı Al'ı**seçin.
-   * **Alan yolu** `ApplicationId`-- yazın. Etkinlik birden çok özelliği olan bir nesne çıktıları, alan yolu için özelliğin adını belirtirsiniz.
+   * **Alan yolu** `ApplicationId`-- yazın. Etkinlik birden çok özelliği olan bir nesne çıktılarından dolayı alan yolu için özelliğin adını belirliyorsunuz.
 
 1. **CERTIFICATETHUMBPRINT'i**ve Parametre Değeri sayfasında aşağıdaki ayarları yapın ve ardından **Tamam'ı**tıklatın.
 
@@ -185,7 +185,7 @@ Artık abonelik kimliğini tutmak için bir değişkeniniz olduğuna göre, runb
 
 Runbook'unuz şu anda cmdlet için `Start-AzVM` belirlediğiniz kaynak grubunda VM'yi başlatır. Runbook başlatıldığında hem ad hem de kaynak grubu belirtirseniz runbook daha kullanışlı olacaktır. Bu işlevselliği sağlamak için runbook'a giriş parametreleri ekleyelim.
 
-1. **MyFirstRunbook-Graphical** bölmesine **tıklayarak** grafik düzenleyicisini açın.
+1. MyFirstRunbook-Graphical sayfasında **Edit'e** tıklayarak grafik düzenleyicisini açın.
 1. **Giriş ve çıktıyı** seçin ve runbook Giriş Parametre bölmesini açmak için **giriş ekleyin.**
 1. Sağlanan alanlarda aşağıdaki ayarları yapın ve sonra **Tamam'ı**tıklatın.
    * **Ad** -- `VMName`belirtin.
@@ -243,7 +243,7 @@ Artık runbook'u yalnızca zaten başlatılmazsa VM'yi başlatmaya çalışacak 
 1. İlk `Write-Output` denetim için **Parametreler'i** tıklatın ve **Başlatılan VM'yi Bildirmek**için **Etiket** değerini değiştirin.
 1. **InputObject**için, **PowerShell ifadesi** **için Veri kaynağı** `$VMName successfully started.`değiştirin ve ifade yazın.
 1. İkinci `Write-Output` denetimde Parametreler'i **tıklatın** ve **VM Start Failed'ü bildirmek**için **Etiket** değerini değiştirin.
-1. **InputObject**için, **PowerShell ifadesi** **için Veri kaynağı** `$VMName could not start.`değiştirin ve ifade yazın.
+1. **InputObject**için, **PowerShell ifadesi** **için Veri kaynağı** `$VMName could not start`değiştirin ve ifade yazın.
 1. ve. `Start-AzVM` için `Notify VM Started` bağlantılar oluşturun `Notify VM Start Failed`
 1. Bağlantıseçin `Notify VM Started` ve **uygula koşulunu** doğru olarak değiştirin.
 1. Durum **ifadesi**için `$ActivityOutput['Start-AzVM'].IsSuccessStatusCode -eq $true`, yazın. Bu `Write-Output` denetim artık yalnızca VM başarıyla başlarsa çalışır.
@@ -259,3 +259,5 @@ Artık runbook'u yalnızca zaten başlatılmazsa VM'yi başlatmaya çalışacak 
 * Grafik yazma hakkında daha fazla bilgi edinmek için [Azure Otomasyonu'nda Grafik yazma'ya](automation-graphical-authoring-intro.md)bakın.
 * PowerShell runbook'ları ile başlamak için [ilk PowerShell runbook'uma](automation-first-runbook-textual-powershell.md)bakın.
 * PowerShell İş Akışı runbook'larına başlamak için [ilk PowerShell iş akışı çalışma kitabıma](automation-first-runbook-textual.md)bakın.
+* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.

@@ -11,15 +11,17 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: 9a1923057bc318869f491791520aacb4d0d17591
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/15/2020
+ms.openlocfilehash: ecfdf2a11f31c18064be9a607f2bb3938d26e661
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346627"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414909"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Azure-SSIS IR için proxy olarak kendi barındırılan bir IR'yi yapılandırma
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, SQL Server Integration Services (SSIS) paketlerinin Azure Veri Fabrikası'ndaki azure-SSIS Tümleştirme Çalışma Zamanında (Azure-SSIS IR) üzerinde nasıl çalıştırılacakve proxy olarak yapılandırılan kendi kendine barındırılan tümleştirme çalışma süresi (kendi kendine barındırılan IR) açıklanmaktadır. 
 
@@ -52,7 +54,7 @@ Son olarak, kendi barındırılan IR'nin en son sürümünün yanı sıra ek sü
 
 Bunu daha önce yapmadıysanız, Azure-SSIS IR'nizin kurulduğu aynı veri fabrikasında Azure Blob depolama alanına bağlı bir hizmet oluşturun. Bunu yapmak için [bkz.](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-portal#create-a-linked-service) Aşağıdakileri yapmayı unutmayın:
 - **Veri Deposu**için **Azure Blob Depolama'yı**seçin.  
-- **Tümleştirme çalışma süresi yle**Bağlan'da, Azure Blob Depolama alanınız için erişim kimlik bilgilerini almak için varsayılan Azure IR'sini kullandığımıziçin **Otomatik ÇözümlemeRuntime'ınızı** (Azure-SSIS IR'niz veya kendi barındırılan IR'niz hariç) seçeneğini belirleyin  
+- **Tümleştirme çalışma süresi yle**Bağlan'da, Azure Blob Depolama alanınız için erişim kimlik bilgilerini almak için varsayılan Azure IR'sini kullandığımıziçin **AutoResolveIntegrationRuntime** 'ı (Azure-SSIS IR'niz veya kendi barındırılan IR'niz hariç) seçeneğini belirleyin.
 - **Kimlik Doğrulama yöntemi için**Hesap **tuşu,** **SAS URI**veya Hizmet **Sorumlusu'ni**seçin.  
 
     >[!TIP]
@@ -171,7 +173,7 @@ Güçlü şifreleme/daha güvenli ağ protokolü (TLS 1.2) kullanmanız ve kendi
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-- Şu anda yalnızca Açık Veritabanı Bağlantısı (ODBC)/OLEDB/Flat File kaynaklarına sahip veri akışı görevleri desteklenmektedir. 
+- Şu anda yalnızca Açık Veritabanı Bağlantısı (ODBC)/OLEDB/Flat File kaynakları veya OLEDB hedefi olan veri akışı görevleri desteklenmektedir. 
 - Yalnızca *Hesap anahtarı*, *Paylaşılan Erişim İmzası (SAS) URI*veya Hizmet *Sorumlusu* kimlik doğrulaması ile yapılandırılan Azure Blob depolamasına bağlı hizmetler şu anda desteklenir.
 - OLEDB Kaynak'ta *Parametre Haritalama* henüz desteklenmedi. Geçici çözüm olarak, lütfen *AccessMode* olarak *Değişkenden SQL* Komutu'nu kullanın ve değişkenlerinizi/parametrelerinizi bir SQL komutuna eklemek için *Expression'ı* kullanın. Bir örnek olarak, genel önizleme kapsayıcımızın *SelfHostedIRProxy/Sınırlamalar* klasöründe bulunan *ParameterMappingSample.dtsx* paketine bakın. Azure Depolama Gezgini'ni kullanarak, yukarıdaki SAS URI'yi girerek genel önizleme kabımıza bağlanabilirsiniz.
 

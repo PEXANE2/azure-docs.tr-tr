@@ -4,15 +4,15 @@ description: Model verilerinin eşzamanlı yenilenmesini kodlamak için Azure An
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6457f062a40e60a491220fcf977585e8b07445b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5f6cec8b7fd1169a4f04649fcaf7bb7ada33833
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273712"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406279"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API ile zaman uyumsuz yenileme
 
@@ -56,7 +56,7 @@ Temel URL kullanılarak, kaynaklar ve işlemler aşağıdaki parametrelere göre
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Tüm aramalar, Yetkilendirme üstbilgisinde geçerli bir Azure Etkin Dizini (OAuth 2) belirteciyle doğrulanmalıdır ve aşağıdaki gereksinimleri karşılamalıdır:
 
@@ -208,8 +208,8 @@ Burada başlamak için bir C # kodu örneği, [GitHub RestApiSample](https://git
 
 ### <a name="to-use-the-code-sample"></a>Kod örneğini kullanmak için
 
-1.  Kopyaya veya repo'yu indirin. RestApiSample çözümlerini açın.
-2.  Hat **istemcisini bulun. BaseAddress = ...** ve [temel URL'nizi](#base-url)sağlayın.
+1.    Kopyaya veya repo'yu indirin. RestApiSample çözümlerini açın.
+2.    Hat **istemcisini bulun. BaseAddress = ...** ve [temel URL'nizi](#base-url)sağlayın.
 
 Kod örneği [hizmet temel](#service-principal) kimlik doğrulaması kullanır.
 
@@ -217,9 +217,9 @@ Kod örneği [hizmet temel](#service-principal) kimlik doğrulaması kullanır.
 
 Bkz. [Hizmet yöneticisi oluştur - Azure portalı](../active-directory/develop/howto-create-service-principal-portal.md) ve Bir hizmet yöneticisinin nasıl ayarlanıp Azure AS'de gerekli izinleri atayacağım hakkında daha fazla bilgi için sunucu yöneticisi [rolüne bir hizmet yöneticisi](analysis-services-addservprinc-admins.md) ekleyin. Adımları tamamladıktan sonra aşağıdaki ek adımları tamamlayın:
 
-1.  Kod örneğinde, **string yetkilisi = ... ,** kuruluşunuzun kiracı kimliğiyle **değiştirin.**
-2.  Yorum/yorum suz böylece ClientCredential sınıf güven nesnesi anlık olarak kullanılır. \<App ID> \<ve App Key> değerlerine güvenli bir şekilde erişilmesini sağlayın veya hizmet ilkeleri için sertifika tabanlı kimlik doğrulamasını kullanın.
-3.  Örnek uygulamayı çalıştırın.
+1.    Kod örneğinde, **string yetkilisi = ... ,** kuruluşunuzun kiracı kimliğiyle **değiştirin.**
+2.    Yorum/yorum suz böylece ClientCredential sınıf güven nesnesi anlık olarak kullanılır. \<App ID> \<ve App Key> değerlerine güvenli bir şekilde erişilmesini sağlayın veya hizmet ilkeleri için sertifika tabanlı kimlik doğrulamasını kullanın.
+3.    Örnek uygulamayı çalıştırın.
 
 
 ## <a name="see-also"></a>Ayrıca bkz.

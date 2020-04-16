@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad2032497b4b01476389428f5a2ef4a3961a1c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481254"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406725"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy'sinde Joker karakter uygulamaları
 
@@ -116,7 +116,7 @@ Joker karakter uygulaması [MyApps panelinde](https://myapps.microsoft.com)sadec
 
 ### <a name="kerberos-constrained-delegation"></a>Kerberos kısıtlı delegasyon
 
-[SSO yöntemi olarak kerberos kısıtlı delegasyon (KCD)](application-proxy-configure-single-sign-on-with-kcd.md)kullanan uygulamalar için, SSO yöntemi için listelenen SPN de bir joker gerekebilir. Örneğin, SPN olabilir: `HTTP/*.adventure-works.com`. Yine de tek tek SPN'lerin arka uç sunucularınızda `http://expenses.adventure-works.com and HTTP/travel.adventure-works.com`yapılandırılması gerekir (örneğin, ).
+[SSO yöntemi olarak kerberos kısıtlı delegasyon (KCD)](application-proxy-configure-single-sign-on-with-kcd.md)kullanan uygulamalar için, SSO yöntemi için listelenen SPN de bir joker gerekebilir. Örneğin, SPN olabilir: `HTTP/*.adventure-works.com`. Yine de tek tek SPN'lerin arka uç sunucularınızda `HTTP/expenses.adventure-works.com and HTTP/travel.adventure-works.com`yapılandırılması gerekir (örneğin, ).
 
 ## <a name="scenario-1-general-wildcard-application"></a>Senaryo 1: Genel joker karakter uygulaması
 

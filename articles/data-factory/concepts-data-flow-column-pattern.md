@@ -7,14 +7,16 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e1c0eb1c4f1fc74e56db8f83f1bab6406ec5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065530"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415542"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Veri akışını eşlemede sütun desenlerini kullanma
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Çeşitli eşleme veri akışı dönüşümleri, sabit kodlu sütun adları yerine desenleri temel alan şablon sütunlarına başvurmanızı sağlar. Bu eşleşme *sütun desenleri*olarak bilinir. Tam alan adları gerektirmek yerine sütunları ad, veri türü, akış veya konuma göre eşleşecek desenler tanımlayabilirsiniz. Sütun desenleri yararlı olduğu iki senaryo vardır:
 

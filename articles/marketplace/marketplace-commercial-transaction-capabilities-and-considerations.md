@@ -1,40 +1,41 @@
 ---
-title: Pazar Yeri Ticari İşlem Yetenekleri ve Dikkat Edilmesi Gerekenler | Azure
-description: Bu makalede, bir teklif türü için Transact fiyatlandırma, faturalama, faturalama ve ödeme hususlaraçıklanır.
-services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
+title: Microsoft ticari pazar işlem özellikleri
+description: Bu makalede, Microsoft ticari pazar işlem seçeneği için fiyatlandırma, faturalama, faturalama ve ödeme hususları açıklanmaktadır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: de93a3c48e0b0aceb447e54e11190f487d1aa2d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80279836"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415267"
 ---
-# <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Ticari market işlem özellikleri ve dikkat edilmesi gereken noktalar
+# <a name="commercial-marketplace-transact-capabilities"></a>Ticari pazar işlem yetenekleri
 
-Bu makale, ticari pazar için aşağıdaki ticaret le ilgili konuları kapsamaktadır
+Bu makalede, Microsoft ticari pazar için aşağıdaki ticaret ile ilgili konular kapsar:
 
-* Pazar yeri yayımlama seçenekleri
+* Farklı yayımlama seçenekleri için işlem sorumluluğu
 * İşlemgenel genel bakış
 * Transact fatura modelleri
 * İşlem etüt gereksinimleri
 
-## <a name="marketplace-publishing-options"></a>Pazar yeri yayımlama seçenekleri
+## <a name="transactions-by-publishing-option"></a>Yayımlama seçeneğiile yapılan işlemler
 
-Aşağıdaki yayımlama seçenekleri ticari pazar yayıncıları tarafından kullanılabilir.
+Yayımcı veya Microsoft, ticari pazardaki teklifler için yazılım lisans hareketlerini yönetmekten sorumludur. Teklifiniz için seçtiğiniz yayımlama seçeneği, hareketi kimin yöneteceğini belirler. Bkz. Her yayımlama seçeneğinin kullanılabilirliği ve açıklamaları için [yayımlama seçeneğinizi belirleyin.](./determine-your-listing-type.md#choose-a-publishing-option)
 
-### <a name="list--trial-publishing-options"></a>Deneme yayımlama seçeneklerini & listele
+### <a name="list-trial-and-byol-publishing-options"></a>Liste, deneme ve BYOL yayımlama seçenekleri
 
-Yayıncılar, tanıtım ve kullanıcı edinme amacıyla liste, deneme sürümü ve BYOL yayımlama seçeneklerinden yararlanabilir. Bu seçeneklerle Microsoft, yayımcının yazılım lisans işlemlerine doğrudan katılmaz ve ilişkili işlem ücreti yoktur. Yayıncılar, sipariş, karşılama, ölçüm, faturalama, faturalama, ödeme ve tahsilat dahil ancak bunlarla sınırlı olmamak üzere yazılım lisansı işleminin tüm yönlerini desteklemekten sorumludur. Liste ve deneme yayımlama seçenekleriyle yayıncılar, müşteriden toplanan yayıncı yazılım lisans lama ücretlerinin %100'ünü saklar. 
+Varolan ticaret yeteneklerine sahip yayıncılar, tanıtım ve kullanıcı edinme amacıyla kendi lisansınızı (BYOL) yayımlama seçeneklerini seçebilir. Bu seçeneklerle Microsoft, yayımcının yazılım lisans işlemlerine doğrudan katılmaz ve ilişkili işlem ücreti yoktur. Yayıncılar, sipariş, karşılama, ölçüm, faturalama, faturalama, ödeme ve tahsilat dahil ancak bunlarla sınırlı olmamak üzere yazılım lisansı işleminin tüm yönlerini desteklemekten sorumludur. Liste ve deneme yayımlama seçenekleriyle yayıncılar, müşteriden toplanan yayıncı yazılım lisans lama ücretlerinin %100'ünü saklar.
 
 ### <a name="transact-publishing-option"></a>İşleme yayımlama seçeneği
 
-Liste ve deneme yayımlama seçeneklerine ek olarak, işlem yayımlama seçeneği yayıncılar tarafından kullanılabilir. Bu, Microsoft'un genel olarak kullanılabilen ticaret özelliklerinden yararlanır ve Microsoft'un bulut pazarı işlemlerini yayımcı adına barındırmasına olanak tanır.
+İşleme yayımlama seçeneği Microsoft ticaret özelliklerinden yararlanır ve keşif ve değerlendirmeden satın alma ve uygulamaya kadar uçtan uca bir deneyim sağlar. İşleme teklifleri, Microsoft'un yayımcı adına bulut pazarı işlemlerini barındırmasına olanak tanıyan, varolan bir Microsoft aboneliği veya kredi kartına göre faturalandırılır.
+
+İş Ortağı Merkezi'nde yeni bir teklif oluştururken işlem seçeneğini seçersiniz. **Kurulum ayrıntıları**altındaki **Teklif kurulum** sayfasında "Evet, Microsoft üzerinden satmak ve benim adıma Microsoft ana bilgisayar hareketlerini yapmak istiyorum" seçeneğini belirleyin. Bu seçenek, yalnızca teklif türünüz için işlem varsa gösterir.
 
 ## <a name="transact-general-overview"></a>İşlemgenel genel bakış
 
@@ -42,43 +43,39 @@ Microsoft, işlem yayımlama seçeneğini kullanırken, üçüncü taraf yazıl�
 
 Transact yayımlama seçeneği şu anda aşağıdaki teklif türleri için desteklenir: Sanal Makineler, Azure Uygulamaları ve SaaS Uygulamaları.
 
-
-![[Azure Marketinde Kurumsal Fırsatları Niçin Aktaran]](./media/marketplace-publishers-guide/Transact-enterprise-deals.png)
-
 ### <a name="billing-infrastructure-costs"></a>Altyapı maliyetlerini faturalandırma
 
-**Sanal Makineler ve Azure uygulamaları için**
+**Sanal Makineler ve Azure Uygulamaları için**
 
-Sanal Makineler ve Azure Uygulamaları için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine fatura edilir.  Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasındaki yazılım sağlayıcısının lisans ücretlerinden ayrı olarak sunulur.
+Sanal Makineler ve Azure Uygulamaları için Azure altyapı kullanım ücretleri müşterinin Azure aboneliğine fatura edilir. Altyapı kullanım ücretleri fiyatlandırılır ve müşterinin faturasındaki yazılım sağlayıcısının lisans ücretlerinden ayrı olarak sunulur.
 
-**SaaS uygulamaları için**
+**SaaS Uygulamaları için**
 
-SaaS Apps için yayımcının Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba katması gerekir.  Bu müşteri için sabit bir ücret olarak temsil edilir. Azure altyapı kullanımı yönetilir ve doğrudan iş ortağına faturalandırılır.  Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez.  Yayıncılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmalarına dahil etmeyi tercih eder.  Yazılım lisans ücretleri ölçülü veya tüketime dayalı değildir.
+SaaS Apps için yayımcının Azure altyapı kullanım ücretlerini ve yazılım lisanslama ücretlerini tek bir maliyet öğesi olarak hesaba katması gerekir.  Bu müşteri için sabit bir ücret olarak temsil edilir. Azure altyapı kullanımı yönetilir ve doğrudan iş ortağına faturalandırılır. Gerçek altyapı kullanım ücretleri müşteri tarafından görülmez. Yayıncılar genellikle Azure altyapı kullanım ücretlerini yazılım lisans fiyatlandırmalarına dahil etmeyi tercih eder. Yazılım lisans ücretleri ölçülü veya tüketime dayalı değildir.
 
 ## <a name="transact-billing-models"></a>Transact fatura modelleri
 
 Kullanılan işlem seçeneğine bağlı olarak, yayıncının yazılım lisans ücretleri aşağıdaki gibi sunulabilir:  
 
-* Ücretsiz: Yazılım lisansları için ücretsizdir. 
+* Ücretsiz: Yazılım lisansları için ücretsizdir.
 
-* Kendi lisansınızı getirin (BYOL): Yazılım lisansları için geçerli olan tüm ücretler doğrudan yayıncı ve müşteri arasında yönetilir. Microsoft yalnızca Azure altyapı kullanım ücretlerinden geçer. (Yalnızca Sanal Makineler ve Azure Uygulamaları.)
+* Kendi lisansınızı getirin (BYOL): Yazılım lisansları için geçerli olan tüm ücretler doğrudan yayıncı ve müşteri arasında yönetilir. Microsoft yalnızca Azure altyapı kullanım ücretlerinden geçer. Bu yalnızca Sanal Makineler ve Azure Uygulamaları için geçerlidir.
 
 * Kullandıkça Öde: Yazılım lisans ücretleri, kullanılan Azure altyapısına dayalı olarak saat başına, çekirdek başına (vCPU) fiyatlandırma oranı olarak sunulur. Bu yalnızca Sanal Makineler ve Azure Uygulamaları için geçerlidir.
 
-* Abonelik fiyatlandırması: Yazılım lisans ücretleri aylık veya yıllık, yinelenen ücret olarak sabit oranlı veya koltuk başına faturalandırılır. Bu yalnızca SaaS Uygulamaları ve Azure Uygulamaları - Yönetilen Uygulamalar için geçerlidir.
+* Abonelik fiyatlandırması: Yazılım lisans ücretleri aylık veya yıllık, yinelenen ücret olarak sabit oranlı veya koltuk başına faturalandırılır. Bu, yalnızca SaaS Uygulamaları ve Azure Uygulamaları - Yönetilen Uygulamalar için geçerlidir.
 
 * Ücretsiz yazılım deneme: 30 gün veya 90 gün boyunca yazılım lisansları için ücretsizdir.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ücretsiz ve getir-your-own-lisans (BYOL) fiyatlandırma
 
-Ücretsiz veya kendi lisansını getir işlem teklifi yayımlarken, Microsoft yazılım lisans ücretleriniz için satış işlemini kolaylaştırmada rol oynamaz. Liste ve deneme yayımlama seçenekleri gibi, yayıncı yazılım lisans ücretlerinin %100'ünü tutar. 
+Ücretsiz veya kendi lisansını getir işlem teklifi yayımlarken, Microsoft yazılım lisans ücretleriniz için satış işlemini kolaylaştırmada rol oynamaz. Liste ve deneme yayımlama seçenekleri gibi, yayıncı yazılım lisans ücretlerinin %100'ünü tutar.
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Gidilen ödeme ve abonelik (site tabanlı) fiyatlandırması
 
 Microsoft, istediğiniz kadar öde veya abonelik işlemi teklifi yayımlarken, yazılım lisansı satın alma işlemlerini, iadeleri ve geri iadeleri işlemek için teknoloji ve hizmetler sağlar. Bu senaryoda, yayımcı Microsoft'a bu amaçlar için aracı olarak hareket etmesi için yetki verebilmiştir. Yayımcı, Microsoft'un yazılım lisanslama işlemini kolaylaştırmasına izin verirken, satıcı, sağlayıcı, dağıtıcı ve lisansveren olarak atanmasını sağlar.
 
-Microsoft, hem Microsoft'un ticari Pazarı'nın hem de yayıncının son kullanıcı lisans sözleşmesinin hüküm ve koşullarına tabi olarak müşterilerin yayımcı yazılımlarını sipariş etmesini, lisanslanmasını ve kullanmasını sağlar. Yayıncılar, son kullanıcı lisans sözleşmelerini sağlamalı veya teklifi oluştururken [Standart Sözleşme'yi](https://docs.microsoft.com/azure/marketplace/standard-contract) seçmelidir.
-
+Microsoft, hem Microsoft'un ticari Pazarı'nın hem de yayıncının son kullanıcı lisans sözleşmesinin hüküm ve koşullarına tabi olarak müşterilerin yayımcı yazılımlarını sipariş etmesini, lisanslanmasını ve kullanmasını sağlar. Yayıncılar, son kullanıcı lisans sözleşmelerini sağlamalı veya teklifi oluştururken [Standart Sözleşme'yi](./standard-contract.md) seçmelidir.
 
 ### <a name="free-software-trials"></a>Özgür yazılım denemeleri
 
@@ -204,7 +201,7 @@ Abonelik veya You-Go Olarak Öde fiyatlandırma modelleri seçildiğinde, Micros
 
 * Müşteriler genellikle Kurumsal Sözleşme'yi veya kredi kartı etkinleştirilmiş kullandıkça öde sözleşmesini kullanarak satın satın almazlar. Anlaşma türü faturalama, faturalama, tahsilat ve ödeme zamanlamasını belirler.
 
->[!NOTE] 
+>[!NOTE]
 >İşleme yayıncılık seçeneğine ilişkin tüm raporlama ve öngörülere, İş Ortağı Merkezi'nin Bulut İş Ortağı Portalı veya Analytics bölümünün Öngörüler bölümünden ulaşabilirsiniz.
 
 #### <a name="billing-questions-and-support"></a>Faturalama soruları ve desteği
@@ -219,15 +216,14 @@ Farklı teklif türleri için işlem gereksinimleri bu bölümde ele alınmışt
 
 ### <a name="requirements-for-all-offer-types"></a>Tüm teklif türleri için gereksinimler
 
-- Teklifin fiyatlandırma modeline bakılmaksızın, işlem yayımlama seçeneği için bir Microsoft hesabı ve mali bilgiler gereklidir.
-- Zorunlu finansal bilgiler ödeme hesabı ve vergi profilini içerir.
+* Teklifin fiyatlandırma modeline bakılmaksızın, işlem yayımlama seçeneği için bir Microsoft hesabı ve mali bilgiler gereklidir.
+* Zorunlu finansal bilgiler ödeme hesabı ve vergi profilini içerir.
 
-Bu hesapların ayarlanması hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)
-
+Bu hesapları ayarlama hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account)
 
 ### <a name="requirements-for-specific-offer-types"></a>Belirli teklif türleri için gereksinimler
 
-İşleme yayımlama seçeneği yalnızca aşağıdaki pazar teklifi türleri ile kullanılabilir: 
+İşleme yayımlama seçeneği yalnızca aşağıdaki pazar teklifi türleri ile kullanılabilir:
 
 **Sanal Makine** 
 

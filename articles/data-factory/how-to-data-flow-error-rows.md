@@ -8,14 +8,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: makromer
-ms.openlocfilehash: 3fe3403ad06d82ba5ccd33d2718bf0e5eff64490
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73166544"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414367"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Veri Fabrikası eşleme veri akışlarında SQL kesilme hata satırlarını işleme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri akışlarını eşleme kullanırken Veri Fabrikası'nda sık karşılaşılan bir senaryo, dönüştürülmüş verilerinizi bir Azure SQL veritabanına yazmaktır. Bu senaryoda, karşı önlemeniz gereken yaygın bir hata koşulu olası sütun kesilmesidir. Hedef dize sütununa sığmayacak sütunların günlüğe kaydedilmesini sağlayarak veri akışınızın bu senaryolarda devam etmesini sağlamak için aşağıdaki adımları izleyin.
 

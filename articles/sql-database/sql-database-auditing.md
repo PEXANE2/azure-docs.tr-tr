@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 682735e1189333c2455863b8fde8e57d815111ba
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387708"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411858"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL Denetimi
 
@@ -81,7 +81,7 @@ Aşağıdaki bölümde Azure portalını kullanarak denetim yapılandırması a�
 2. SQL veritabanı/sunucu bölmenizde Güvenlik başlığı altında **Denetime** gidin.
 3. Bir sunucu denetim ilkesi ayarlamayı tercih ederseniz, veritabanı denetim sayfasındasunucu **ayarlarını görüntüle** bağlantısını seçebilirsiniz. Daha sonra sunucu denetim ayarlarını görüntüleyebilir veya değiştirebilirsiniz. Sunucu denetim ilkeleri, bu sunucudaki varolan ve yeni oluşturulan tüm veritabanları için geçerlidir.
 
-    ![Gezinti bölmesi][2]
+    ![Gezinti bölmesi](./media/sql-database-auditing-get-started/2_auditing_get_started_server_inherit.png)
 
 4. Veritabanı düzeyinde denetimi etkinleştirmeyi tercih ederseniz, **Denetim'i** **ON'a**geçirin. Sunucu denetimi etkinse, veritabanı tarafından yapılandırılan denetim sunucu denetimiyle yan yana bulunur.
 
@@ -94,7 +94,7 @@ Aşağıdaki bölümde Azure portalını kullanarak denetim yapılandırması a�
 Denetim günlüklerini bir depolama hesabına yapılandırmak için **Depolama** ve Açık **Depolama ayrıntılarını**seçin. Günlüklerin kaydedilen Azure depolama hesabını seçin ve ardından bekletme dönemini seçin. Ardından **Tamam**'a tıklayın. Bekletme döneminden eski günlükler silinir.
 
 - Bekletme süresi için varsayılan değer 0 'dir (sınırsız bekletme). Denetim için depolama hesabını yapılandırırken **Depolama ayarlarında** **Bekletme (Günler)** kaydırıcısını taşıyarak bu değeri değiştirebilirsiniz.
-  - Bekletme süresini 0'dan (sınırsız saklama) başka bir değere değiştirirseniz, saklamanın yalnızca bekletme değeri değiştirildikten sonra yazılan günlükler için geçerli olacağını lütfen unutmayın (bekletme sınırsız olarak ayarlanan dönemde yazılan günlükler korunur, sonra bile bekletme etkindir).
+  - Bekletme süresini 0'dan (sınırsız bekletme) başka bir değere değiştirirseniz, saklamanın yalnızca bekletme değeri değiştirildikten sonra yazılan günlükler için geçerli olacağını (bekletme sınırsız olarak ayarlanan dönemde yazılan günlükler, bekletme etkinleştirildikten sonra bile korunur).
 
   ![depolama hesabı](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
@@ -164,7 +164,7 @@ Bir Azure depolama hesabına denetim günlükleri yazmayı seçtiyseniz, günlü
 
 - Azure [portalını](https://portal.azure.com)kullanın.  İlgili veritabanını açın. Veritabanının **Denetim** sayfasının üst kısmında denetim **günlüklerini görüntüle'yi**tıklatın.
 
-    ![Gezinti bölmesi][7]
+    ![Gezinti bölmesi](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
 
     **Denetim kayıtları** açılır ve bu kayıtlar dan görünüm elde edebilirsiniz.
 
@@ -172,14 +172,14 @@ Bir Azure depolama hesabına denetim günlükleri yazmayı seçtiyseniz, günlü
   - **Denetim Kaynağı'nı**değiştirerek sunucu *denetim ilkesi* tarafından oluşturulan denetim kayıtları ile veritabanı *denetim ilkesi* arasında geçiş yapabilirsiniz.
   - **Yalnızca SQL enjeksiyonları** onay kutusunun denetim kayıtlarını göster'i işaretleyerek yalnızca SQL enjeksiyonla ilgili denetim kayıtlarını görüntüleyebilirsiniz.
 
-       ![Gezinti bölmesi][8]
+       ![Gezinti bölmesi]( ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png)
 
 - Denetim günlüğü verilerini tabular biçiminde döndürmek için sistem işlevini **sys.fn_get_audit_file** (T-SQL) kullanın. Bu işlevi kullanma hakkında daha fazla bilgi için [sys.fn_get_audit_file'](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)a bakın.
 
 - SQL Server Management Studio'da **Denetim Dosyalarını Birleştir'i** kullanın (SSMS 17 ile başlayarak):
     1. SSMS menüsünden **Dosya** > **Aç** > **Birleştirme Denetim Dosyaları'nı**seçin.
 
-        ![Gezinti bölmesi][9]
+        ![Gezinti bölmesi](./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png)
     2. **Denetim Dosyaları Ekle** iletişim kutusu açılır. Denetim dosyalarını yerel bir diskten birleştirip birleştirmeyeceğinizi veya Azure Depolama'dan içeri aktarıp aktarmayacağını seçmek için **Ekle** seçeneklerinden birini seçin. Azure Depolama bilgilerinizi ve hesap anahtarınızı sağlamanız gerekir.
 
     3. Birleştirilecek tüm dosyalar eklendikten sonra birleştirme işlemini tamamlamak için **Tamam'ı** tıklatın.
@@ -220,10 +220,10 @@ Coğrafi olarak çoğaltılan veritabanlarında, birincil veritabanında denetim
 
 1. Açık **Depolama Ayrıntıları**. Depolama **Erişim Anahtarı** kutusunda **İkincil'i**seçin ve **Tamam'ı**tıklatın. Ardından denetim yapılandırma sayfasının üst kısmında **Kaydet'i** tıklatın.
 
-    ![Gezinti bölmesi][5]
+    ![Gezinti bölmesi](./media/sql-database-auditing-get-started/5_auditing_get_started_storage_key_regeneration.png)
 2. Depolama yapılandırma sayfasına gidin ve birincil erişim anahtarını yeniden oluşturun.
 
-    ![Gezinti bölmesi][6]
+    ![Gezinti bölmesi](./media/sql-database-auditing-get-started/6_auditing_get_started_regenerate_key.png)
 3. Denetim yapılandırma sayfasına geri dön, depolama erişim anahtarını ikincilden birincile çevir ve sonra **Tamam'ı**tıklatın. Ardından denetim yapılandırma sayfasının üst kısmında **Kaydet'i** tıklatın.
 4. Depolama yapılandırma sayfasına geri dön ve ikincil erişim anahtarını yeniden oluşturun (bir sonraki anahtarın yenileme döngüsüne hazırlık olarak).
 
@@ -268,15 +268,3 @@ Azure [Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) şa
 
 > [!NOTE]
 > Bağlantılı örnekler harici bir genel depoda dır ve garanti olmaksızın 'olduğu gibi' sağlanır ve herhangi bir Microsoft destek programı/hizmeti kapsamında desteklenmez.
-
-<!--Image references-->
-[1]: ./media/sql-database-auditing-get-started/1_auditing_get_started_settings.png
-[2]: ./media/sql-database-auditing-get-started/2_auditing_get_started_server_inherit.png
-[3]: ./media/sql-database-auditing-get-started/3_auditing_get_started_turn_on.png
-[4]: ./media/sql-database-auditing-get-started/4_auditing_get_started_storage_details.png
-[5]: ./media/sql-database-auditing-get-started/5_auditing_get_started_storage_key_regeneration.png
-[6]: ./media/sql-database-auditing-get-started/6_auditing_get_started_regenerate_key.png
-[7]: ./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png
-[8]: ./media/sql-database-auditing-get-started/8_auditing_get_started_blob_audit_records.png
-[9]: ./media/sql-database-auditing-get-started/9_auditing_get_started_ssms_1.png
-[10]: ./media/sql-database-auditing-get-started/10_auditing_get_started_ssms_2.png 

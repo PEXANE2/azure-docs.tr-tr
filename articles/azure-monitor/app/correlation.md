@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 6ceace1ee93fab8c0a46ed4a67850fc87a5cdad2
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 2e862410e2bf12e09e1a6388bbb6f7105b5b2edf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991237"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405261"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Uygulama Öngörülerinde Telemetri korelasyon
 
@@ -314,7 +314,7 @@ Zaman içinde .NET, telemetri ve tanılama günlüklerini ilişkilendirmek için
 
 Ancak bu yöntemler otomatik dağıtılmış izleme desteğine olanak sağlamadı. `DiagnosticSource`otomatik çapraz makine korelasyonuna destek vedestekler. .NET kitaplıkları, http gibi taşıma yoluyla korelasyon bağlamının otomatik olarak makineler arası yayılmasını destekler `DiagnosticSource` ve sağlar.
 
-[İzleme](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) faaliyetlerinin `DiagnosticSource` temellerini açıklar.
+[İzleme](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) faaliyetlerinin `DiagnosticSource` temellerini açıklar.
 
 ASP.NET Core 2.0, HTTP üstbilgilerinin çıkarılmasını ve yeni etkinliklerin başlatılmasını destekler.
 

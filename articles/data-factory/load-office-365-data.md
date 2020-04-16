@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3422176ed89b7f575c11cc40e5be8420da0018b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443918"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415809"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Office 365'ten veri yükleme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, _Office 365'teki_Veri Fabrikası yük verilerini Azure Blob depolama alanına nasıl kullanacağınızı gösterilmektedir. Verileri Azure Veri Gölü Gen1 veya Gen2'ye kopyalamak için benzer adımları izleyebilirsiniz. Genel olarak Office 365'ten veri kopyalama yla ilgili [Office 365 bağlayıcı makalesine](connector-office-365.md) bakın.
 
@@ -38,7 +40,7 @@ Bu makalede, _Office 365'teki_Veri Fabrikası yük verilerini Azure Blob depolam
     * **Sürüm**: **V2**seçin.
     * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Veri Gölü Deposu, Azure Depolama, Azure SQL Veritabanı ve benzeri bilgileri içerir.
 
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz:
    
    ![Data factory giriş sayfası](./media/load-office-365-data/data-factory-home-page.png)
@@ -97,7 +99,7 @@ Bu makalede, _Office 365'teki_Veri Fabrikası yük verilerini Azure Blob depolam
 
 5. Özellikler penceresinin **Bağlantı sekmesine** gidin. Bağlı hizmet metin kutusunun yanındaki **+ Yeni** seçeneğini belirleyin.
 
-6. Yeni Bağlantılı Hizmet penceresinde, ad olarak "AzureStorageLinkedService" girin, kimlik doğrulama yöntemleri açılır listesinden "Hizmet Sorumlusu" seçeneğini belirleyin, Hizmet Bitiş Noktası, Kiracı, Hizmet asıl kimliği ve Hizmet ana anahtarını doldurun ve ardından Kaydet'i seçin bağlantılı hizmeti dağıtın.  Azure Blob Depolama için hizmet temel kimlik doğrulaması nasıl ayarlanır için [buraya](connector-azure-blob-storage.md#service-principal-authentication) bakın.
+6. Yeni Bağlantılı Hizmet penceresinde, ad olarak "AzureStorageLinkedService" girin, kimlik doğrulama yöntemleriaçılır listesinden "Hizmet Sorumlusu" seçeneğini belirleyin, Hizmet Bitiş Noktası, Kiracı, Hizmet asıl kimliği ve Hizmet ana anahtarını doldurun ve ardından bağlantılı hizmeti dağıtmak için Kaydet'i seçin.  Azure Blob Depolama için hizmet temel kimlik doğrulaması nasıl ayarlanır için [buraya](connector-azure-blob-storage.md#service-principal-authentication) bakın.
 
     ![Yeni Blob bağlantılı hizmet](./media/load-office-365-data/configure-blob-linked-service.png)
 

@@ -1,16 +1,16 @@
 ---
-title: Azure Otomasyonunda Grafik Yazma
+title: Azure Otomasyonunda Grafik yazma
 description: Grafik yazma, kodla çalışmadan Azure Otomasyonu için runbook'lar oluşturmanıza olanak tanır. Bu makalede, grafik yazarlık ve grafik runbook oluşturmaya başlamak için gerekli tüm ayrıntıları bir giriş sağlar.
 services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 09afca7eaf385795baf9c4a3c94232622527e357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf8ced05066923c94e80628651d8983560601d69
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501002"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406042"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Otomasyonunda Grafik yazma
 
@@ -395,7 +395,7 @@ Sonraki etkinlik, `Connect-AzAccount`runbook'ta kullanılmak üzere doğrulanmı
 >[!NOTE]
 >PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`diğer adlar . Bu diğer adların grafik çalışma kitaplarınız için kullanılamadığını unutmayın. Grafik çalışma kitabı yalnızca `Connect-AzAccount` kendisini kullanabilir.
 
-Parametre alanları **APPLICATIONID**, **CERTIFICATETHUMBPRINT**ve **TENANTID**için, etkinlik birden çok özelliği olan bir nesne çıktığından, Alan yolu için özelliğin adını belirtin. Aksi takdirde, runbook yürütüldüğünde, kimlik doğrulaması yapmaya çalışırken başarısız olur. Run As hesabıyla runbook'unuzun kimliğini doğrulamak için en az ihtiyacınız olan budur.
+Parametre alanları **APPLICATIONID**, **CERTIFICATETHUMBPRINT**ve **TENANTID**için, etkinlik birden çok özelliğe sahip bir nesne çıktığından, alan yolu için özelliğin adını belirtin. Aksi takdirde, runbook yürütüldüğünde, kimlik doğrulaması yapmaya çalışırken başarısız olur. Run As hesabıyla runbook'unuzun kimliğini doğrulamak için en az ihtiyacınız olan budur.
 
 Bazı aboneler, Azure klasik dağıtımını veya Azure Kaynak Yöneticisi kaynaklarını yönetmek için bir [Azure AD kullanıcı hesabı](automation-create-aduser-account.md) kullanarak bir Otomasyon hesabı oluşturur. Bu aboneler için geriye dönük uyumluluğu korumak için, runbook'unuzda kullanılacak kimlik doğrulama mekanizması, kimlik bilgisi `Add-AzureAccount` [kıymetine](automation-credentials.md)sahip cmdlettir. Varlık, Azure hesabına erişimi olan bir Active Directory kullanıcısını temsil eder.
 
@@ -441,3 +441,5 @@ Runbook'un Yayımlanmış sürümüne geri döndürme seçeneğiniz var. Bu işl
 * Grafik çalışma kitaplarıyla başlamak için [ilk grafik çalışma kitabıma](automation-first-runbook-graphical.md)bakın.
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi için [Azure Otomasyon runbook türlerine](automation-runbook-types.md)bakın.
 * Otomasyon Çalıştır'ı Kullanarak kimlik doğrulaması yapmak için Azure [Çalıştır'ı Hesap Olarak Yapılandır'a](automation-sec-configure-azure-runas-account.md)bakın.
+* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.

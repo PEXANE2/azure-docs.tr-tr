@@ -12,18 +12,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/02/2020
-ms.openlocfilehash: 06428d4a9c4a4178212d16d42b8b3adffb5c9718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6d29f73716b04699e0cd250396df7f7d744d4c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250279"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415239"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri SFTP sunucusundan ve SFTP sunucusuna kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-sftp-connector.md)
 > * [Geçerli sürüm](connector-sftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, sftp sunucusundan ve sftp sunucusuna verilerin nasıl kopyalanış edilebildiğini özetler. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
@@ -45,7 +46,7 @@ Bu SFTP bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -287,7 +288,7 @@ Aşağıdaki özellikler, biçim tabanlı kopyalama `storeSettings` lavabosunda 
 | type                     | Altındaki `storeSettings` tür özelliği **SftpWriteSettings**olarak ayarlanmalıdır. | Evet      |
 | copyBehavior             | Kaynak dosya tabanlı bir veri deposundan dosya olduğunda kopyalama davranışını tanımlar.<br/><br/>İzin verilen değerler şunlardır:<br/><b>- Koruma Hiyerarşisi (varsayılan)</b>: Hedef klasördeki dosya hiyerarşisini korur. Kaynak dosyanın kaynak klasöre göreli yolu, hedef dosyanın hedef klasöre göreli yolu ile aynıdır.<br/><b>- FlattenHiyerarşiy</b>: Kaynak klasördeki tüm dosyalar hedef klasörün ilk düzeyindedir. Hedef dosyaların otomatik olarak oluşturulmuş adları vardır. <br/><b>- Birleştirme Dosyaları</b>: Kaynak klasördeki tüm dosyaları tek bir dosyayla birleştirir. Dosya adı belirtilirse, birleştirilen dosya adı belirtilen addır. Aksi takdirde, otomatik olarak oluşturulmuş bir dosya adıdır. | Hayır       |
 | maxConcurrentConnections | Veri deposuna aynı anda bağlanacak bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlamak istediğinizde belirtin. | Hayır       |
-| useTempFileRename | Geçici dosya(lar) ve yeniden adlandırma ya da doğrudan hedef klasör/dosya konumuna yazmak yüklemek için olup olmadığını belirtin. Varsayılan olarak, ADF önce geçici dosya(lar) sonra yükleme tamamlandıktan sonra dosya yeniden adlandırmayapmak, amacıyla 1) aynı dosyaya başka bir işlem yazma varsa bozuk dosya ile sonuçlanan çakışma yazmak önlemek ve 2) sırasında dosyanın özgün sürümü olduğundan emin olun tüm transfer. SFTP sunucunuz yeniden adlandırma işlemini desteklemiyorsa, bu seçeneği devre dışı kaldırın ve hedef dosyaya eşzamanlı yazma nız olmadığından emin olun. Bu tablonun altındaki sorun giderme ipucuna bakın. | Hayır. Varsayılan değer doğrudur. |
+| useTempFileRename | Geçici dosya(lar) ve yeniden adlandırma ya da doğrudan hedef klasör/dosya konumuna yazmak yüklemek için olup olmadığını belirtin. Varsayılan olarak, ADF önce geçici dosya(lar) sonra yükleme tamamlandıktan sonra dosya yeniden adlandırma yapmak, amacıyla 1) aynı dosyaya başka bir işlem yazma varsa bozuk dosya ile sonuçlanan çakışma yazmak önlemek ve 2) dosyanın özgün sürümü tüm aktarım sırasında olduğundan emin olun. SFTP sunucunuz yeniden adlandırma işlemini desteklemiyorsa, bu seçeneği devre dışı kaldırın ve hedef dosyaya eşzamanlı yazma nız olmadığından emin olun. Bu tablonun altındaki sorun giderme ipucuna bakın. | Hayır. Varsayılan değer doğrudur. |
 | operationTimeout | SFTP sunucusuna her yazma isteği nden önceki bekleme süresi zaman ları doluyor. Varsayılan değer 60 dkdır (01:00:00).|Hayır |
 
 >[!TIP]

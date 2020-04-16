@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/13/2019
-ms.openlocfilehash: 56cc7425eea184cd26010cde48e42e38b27e68a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6975c876bb31e36b7b6268d284f747fd51803d63
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893289"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415464"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Amazon Basit Depolama Hizmeti'nden veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-amazon-simple-storage-service-connector.md)
 > * [Geçerli sürüm](connector-amazon-simple-storage-service.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Amazon Basit Depolama Servisi (Amazon S3) verileri kopyalamak için nasıl özetliyor. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

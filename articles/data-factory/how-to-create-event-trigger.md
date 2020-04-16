@@ -11,14 +11,15 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d697fb8afe3e92dfe54eb5d89a2ef59425cb0cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443932"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414924"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Bir olaya yanıt olarak bir ardışık hatlar hattını çalıştıran bir tetikleyici oluşturma
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Veri Fabrikası ardışık hatlarınızda oluşturabileceğiniz olay tabanlı tetikleyiciler açıklanmaktadır.
 
@@ -104,4 +105,4 @@ Bu bölümde olay tabanlı tetikleyici ayarları örnekleri verilmektedir.
 | **Blob yolu ile biter** | `foldername/file.txt` | Herhangi bir kapsayıcının `file.txt` altındaki `foldername` klasörde adı geçen bir blob için olayları alır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#triggers)
+Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#trigger-execution)

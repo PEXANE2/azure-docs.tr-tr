@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2579748d9c68512e51fe46ec70084c30d06953bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278772"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405622"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker'ı dağıtma
 
@@ -30,9 +30,27 @@ Karma Runbook Worker özelliği aşağıdaki dağılımları destekler:
 * Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS ve 18.04 (x86/x64)
 * SUSE Linux Enterprise Server 11 ve 12 (x86/x64)
 
+## <a name="supported-runbook-types"></a>Desteklenen runbook türleri
+
+Linux Hybrid Runbook Workers, Azure Otomasyonu'nda runbook türlerinin tam kümesini desteklemez.
+
+Aşağıdaki runbook türleri bir Linux Karma İşçi üzerinde çalışır:
+
+* Piton 2
+* PowerShell
+
+  > [!NOTE]
+  > PowerShell runbook'lar PowerShell Core'un Linux makinesine yüklenmesini gerektirir. Nasıl yükleyirin öğrenmek için [Linux'a PowerShell Core yükleme'ye](/powershell/scripting/install/installing-powershell-core-on-linux) bakın.
+
+Aşağıdaki runbook türleri Bir Linux Karma İşçisi üzerinde çalışmaz:
+
+* PowerShell İş Akışı
+* Grafik
+* Grafiksel PowerShell İş Akışı
+
 ## <a name="installing-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker yükleme
 
-Linux bilgisayarınıza bir Karma Runbook Çalışanı yüklemek ve yapılandırmak için, rolü el ile yüklemek ve yapılandırmak için basit bir işlemi izlersiniz. Azure Log Analytics çalışma alanınızda **Otomasyon Karma İşçi** çözümünün etkinleştirilmesi ve ardından bilgisayarı çalışan olarak kaydedip bir gruba eklemek için bir dizi komut çalıştırmanız gerekiyor.
+Linux bilgisayarınıza bir Karma Runbook Çalışanı yüklemek ve yapılandırmak için basit bir el ile işlemi izleyin. Azure Log Analytics çalışma alanınızda Otomasyon Karma İşçi çözümünün etkinleştirilmesi ve ardından bilgisayarı çalışan olarak kaydedip bir gruba eklemek için bir dizi komut çalıştırmanız gerekiyor.
 
 Bir Linux Hybrid Runbook Worker için minimum gereksinimler şunlardır:
 
@@ -56,9 +74,9 @@ Bir Linux Hybrid Runbook Worker için minimum gereksinimler şunlardır:
 
 Devam etmeden önce, Otomasyon hesabınızın bağlı olduğu Log Analytics çalışma alanına dikkat edin. Ayrıca Otomasyon hesabınız için birincil anahtarı da not edin. Otomasyon hesabınızı seçerek, çalışma alanı kimliği için **Çalışma Alanı'nı** seçerek ve birincil anahtar için **Anahtarlar'ı** seçerek her ikisini de Azure portalından bulabilirsiniz. Karma Runbook Worker için ihtiyacınız olan bağlantı noktaları ve adresler hakkında bilgi [için](automation-hybrid-runbook-worker.md#network-planning)bkz.
 
-1. Aşağıdaki yöntemlerden birini kullanarak Azure'da **Otomasyon Karma İşçisi** çözümünün etkinleştirin:
+1. Aşağıdaki yöntemlerden birini kullanarak Azure'da Otomasyon Karma İşçisi çözümünün etkinleştirin:
 
-   * [Azure Monitörünü Ekle çözümleriyle çalışma alanınıza](../log-analytics/log-analytics-add-solutions.md)yordamı kullanarak aboneliğinize **Otomasyon Karma İşçi** çözümünü ekleyin.
+   * [Azure Monitörünü Ekle çözümleriyle çalışma alanınıza](../log-analytics/log-analytics-add-solutions.md)yordamı kullanarak aboneliğinize Otomasyon Karma İşçi çözümünü ekleyin.
    * Aşağıdaki cmdlet'i çalıştırın:
 
         ```azurepowershell-interactive
@@ -79,36 +97,18 @@ Devam etmeden önce, Otomasyon hesabınızın bağlı olduğu Log Analytics çal
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. Komut tamamlandıktan sonra, Azure portalındaki **Karma İşçi Grupları** sayfası yeni grubu ve üye sayısını gösterir. Bu varolan bir grupsa, üye sayısı artımlanır. **Hibrit İşçi Grupları** sayfasındaki listeden grubu seçebilir ve **Karma İşçi** ler döşemesini seçebilirsiniz. Karma **İşçiler** sayfasında, listelenen grubun her üyesini görürsünüz.
+1. Komut tamamlandıktan sonra, Azure portalındaki Karma İşçi Grupları sayfası yeni grubu ve üye sayısını gösterir. Bu varolan bir grupsa, üye sayısı artımlanır. Hibrit İşçi Grupları sayfasındaki listeden grubu seçebilir ve **Karma İşçi** ler döşemesini seçebilirsiniz. Karma İşçiler sayfasında, listelenen grubun her üyesini görürsünüz.
 
 > [!NOTE]
-> Azure VM için Linux için Azure Monitor sanal makine uzantısını kullanıyorsanız, otomatik yükseltme sürümleri Nin Karma Runbook Worker'ı sorunlara yol açabileceğinden yanlış ayarı `autoUpgradeMinorVersion` yapmanızı öneririz. Uzantıyı el ile yükseltmeyi öğrenmek için [Azure CLI dağıtımına ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)bakın.
+> Azure VM için Linux için Azure Monitor sanal makine uzantısını kullanıyorsanız, otomatik yükseltme sürümlerinin Karma Runbook Worker'ın sorunlara yol açabileceğinden yanlış ayarı `autoUpgradeMinorVersion` yapmanızı öneririz. Uzantıyı el ile yükseltmeyi öğrenmek için [Azure CLI dağıtımına](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)bakın.
 
 ## <a name="turning-off-signature-validation"></a>İmza doğrulamayı kapatma
 
-Varsayılan olarak, Linux Hybrid Runbook Workers imza doğrulama gerektirir. İmzalanmamış bir runbook'u bir çalışana karşı çalıştırıyorsanız, "İmza doğrulama başarısız oldu" yazan bir hata görürsünüz. İmza doğrulaması kapatmak için aşağıdaki komutu çalıştırın. İkinci parametreyi günlük analizi çalışma alanı kimliğinizle değiştirin.
+Varsayılan olarak, Linux Hybrid Runbook Workers imza doğrulama gerektirir. İmzalanmamış bir runbook'u bir çalışana `Signature validation failed` karşı çalıştırıyorsanız, bir hata görürsünüz. İmza doğrulaması kapatmak için aşağıdaki komutu çalıştırın. İkinci parametreyi Log Analytics çalışma alanı kimliğinizle değiştirin.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
  ```
-
-## <a name="supported-runbook-types"></a>Desteklenen runbook türleri
-
-Linux Hybrid Runbook Workers, Azure Otomasyonu'nda runbook türlerinin tam kümesini desteklemez.
-
-Aşağıdaki runbook türleri bir Linux Karma İşçi üzerinde çalışır:
-
-* Piton 2
-* PowerShell
-
-  > [!NOTE]
-  > PowerShell runbook'lar PowerShell Core'un Linux makinesine yüklenmesini gerektirir. Nasıl yükleyirin öğrenmek için [Linux'a PowerShell Core yükleme'ye](/powershell/scripting/install/installing-powershell-core-on-linux) bakın.
-
-Aşağıdaki runbook türleri Bir Linux Karma İşçisi üzerinde çalışmaz:
-
-* PowerShell İş Akışı
-* Grafik
-* Grafiksel PowerShell İş Akışı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

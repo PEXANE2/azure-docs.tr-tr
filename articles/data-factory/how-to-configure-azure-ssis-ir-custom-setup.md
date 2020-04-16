@@ -11,15 +11,17 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 03/27/2020
-ms.openlocfilehash: d6252b7a0ecce553bc3a1519055375fd4cd034f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 3aabf68b6763e5815a03021cb02683d509c26190
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336201"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415065"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Azure-SSIS Tümleştirme Çalışma Süresi için kurulumu özelleştirme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure-SSIS IR'nizin kurulumu veya yeniden yapılandırılması sırasında kendi adımlarınızı eklemek için bir arabirim sağlar. 
 
@@ -32,7 +34,7 @@ Azure-SSIS IR'nizde özel kurulumlar yapabilirsiniz:
 Hem ücretsiz, lisanssız bileşenleri hem de ücretli, lisanslı bileşenleri ekspres ve standart özel kurulumlarla yükleyebilirsiniz. Bağımsız bir yazılım satıcısıysanız (ISV), [bkz.](how-to-develop-azure-ssis-ir-licensed-components.md)
 
 > [!IMPORTANT]
-> Azure-SSIS IR'nin v2 serisi düğümleri özel kurulum için uygun olmadığından, bunun yerine v3 serisi düğümleri kullanın. V2 serisi düğümleri zaten kullanıyorsanız, mümkün olan en kısa sürede v3 serisi düğümlere geçin.
+> Gelecekteki geliştirmelerden yararlanmak için Azure-SSIS IR'niz için özel kurulumla v3 veya daha sonraki düğüm serilerini kullanmanızı öneririz.
 
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
@@ -72,7 +74,7 @@ Azure-SSIS IR'nizi özelleştirmek için aşağıdaki öğelere ihtiyacınız va
 
    a. Altında **(Yerel ve Bağlı)**, **Sağ tıkla Depolama Hesapları**ve sonra Azure depolama ya **bağlan'ı**seçin.
 
-      ![Azure Depolama'ya bağlanma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
+      ![Azure Depolama’ya bağlanma](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image1.png)
 
    b. **Bir depolama hesabı adı ve anahtarı kullan'ı seçin**ve sonra **İleri'yi**seçin.
 

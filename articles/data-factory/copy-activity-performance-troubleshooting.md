@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421031"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414136"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Sorun giderme kopyalama etkinliği performansı
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'nda kopya etkinliği performansı sorunu nasıl giderilir özetlenir. 
 
@@ -140,7 +142,7 @@ Kopyalama performansı beklentinizi karşılamadığında, Azure Tümleştirme �
 
   - Veri fabrikanıza > genel bakış sayfanıza > Azure portalında Kendi kendine barındırılan IR'nin CPU ve bellek kullanım eğilimini kontrol edin. CPU kullanımı yüksek veya kullanılabilir bellek düşükse [IR'yi ölçeklendirmeyi/çıkarmayı](create-self-hosted-integration-runtime.md#high-availability-and-scalability) düşünün.
 
-  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örnek:
+  - Varsa bağlayıcıya özel veri yükleme en iyi uygulama benimseyin. Örneğin:
 
     - [Oracle,](connector-oracle.md#oracle-as-source) [Netezza,](connector-netezza.md#netezza-as-source) [Teradata,](connector-teradata.md#teradata-as-source)SAP [HANA,](connector-sap-hana.md#sap-hana-as-source) [SAP Table](connector-sap-table.md#sap-table-as-source)ve [SAP Open Hub'dan](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source)veri kopyalarken, verileri paralel olarak kopyalamak için veri bölme seçenekleri etkinleştirin.
 

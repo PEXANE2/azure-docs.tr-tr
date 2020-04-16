@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: 94013b735f70358d0c49512e6d90cd1d03e78d5f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 18cf714ba7ee0a2bf5251c6e109bf997ba6834af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705726"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403627"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Özel Vizyon Düğümü.js SDK ile nesne algılama projesi oluşturma
 
@@ -233,7 +233,7 @@ Uygulamanın çıkışı konsolda görüntülenmelidir. Ardından test görünt�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kodda nesne algılama işleminin her adımının nasıl uygulanabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir. Sonraki kılavuzda görüntü sınıflandırma konusu üstünde durulur ancak temel ilkeleri nesne algılamaya benzer.
+Şimdi nesne algılama işleminin her adımının kod olarak nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesini yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir. Aşağıdaki eğitim kılavuzu görüntü sınıflandırması ile ilgilidir, ancak ilkeleri nesne algılama ya benzer.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

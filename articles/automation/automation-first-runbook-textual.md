@@ -6,18 +6,18 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/24/2018
 ms.topic: conceptual
-ms.openlocfilehash: a5a1cad3179063f75a5d9a19567624180b5793a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b103437ab30c05ddab88b7a8a723cd2b4b1d5f6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367270"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405902"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>İlk PowerShell İş Akışı runbook uygulamam
 
 > [!div class="op_single_selector"]
 > * [Grafik](automation-first-runbook-graphical.md)
-> * [Powershell](automation-first-runbook-textual-powershell.md)
+> * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell İş Akışı](automation-first-runbook-textual.md)
 > * [Python](automation-first-runbook-textual-python2.md)
 
@@ -79,7 +79,7 @@ Kodu doğrudan runbook'a yazabilir veya Kitaplık denetiminden cmdlets, runbook 
 1. Tek etkin seçeneği test etmekle testi başlatmak için **Başlat'ı** tıklatın.
 1. [Runbook işinin](automation-runbook-execution.md) oluşturulduğunu ve durumunun bölmede görüntülendiğini unutmayın.
 
-   İş durumu , `Queued`işin buluttaki bir runbook çalışanının kullanılabilir olmasını beklediğini belirten olarak başlar. Durum, bir `Starting` işçinin işi talep etmesiyle değişir. Son olarak, `Running` durum runbook gerçekten çalıştırmaya başladığında olur.
+   İş durumu, işin buluttaki bir runbook çalışanının kullanılabilir olmasını beklediğini belirten Sıraya olarak başlar. Durum, bir işçi işi talep ettiğinde Başlangıç olarak değişir. Son olarak, runbook gerçekten çalışmaya başladığında durum Çalışma olur.
 
 1. Runbook işi tamamlandığında, Test bölmesi çıktısını görüntüler. Bu durumda, görüyorsunuz `Hello World`.
 
@@ -107,7 +107,7 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretimde çalıştıramadan �
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
 
-1. Runbook durumu gösterdiğinde `Completed` **Çıktı'yı**tıklatın. İletinizi `Hello World` görebileceğiniz Çıktı sayfası açılır.
+1. Runbook durumu Tamamlandı'yı gösterdiğinde **Çıktı'yı**tıklatın. İletinizi `Hello World` görebileceğiniz Çıktı sayfası açılır.
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)
 
@@ -117,7 +117,7 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretimde çalıştıramadan �
 
    ![İş Özeti](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. **MyFirstRunbook** sayfasına dönmek için Akışlar bölmesini ve İş bölmesini kapatın.
+1. MyFirstRunbook sayfasına dönmek için Akışlar bölmesini ve İş bölmesini kapatın.
 1. Bu runbook'un İşler sayfasını açmak için **Kaynaklar** altında **İşler'i** tıklatın. Bu sayfa, runbook tarafından oluşturulan tüm işleri listeler. İşi yalnızca bir kez çalıştırdığınızdan, yalnızca bir iş listelenmiş olarak görmeniz gerekir.
 
    ![İşler](media/automation-first-runbook-textual/runbook-control-job-tile.png)
@@ -126,12 +126,12 @@ Oluşturduğunuz runbook hala Taslak modundadır. Üretimde çalıştıramadan �
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>5. Adım- Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme
 
-Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar faydalı bir şey yapmadı. Bu runbook’un Azure kaynaklarını yönetmesini istiyorsunuz. Abonelik kimlik bilgilerini kullanarak kimlik doğrulaması yapmadıkça bunu yapamaz. Kimlik doğrulama `Connect-AzAccount` cmdlet kullanır.
+Runbook uygulamanızı test ettiniz ve yayımladınız, ancak şu ana kadar faydalı bir şey yapmadı. Bu runbook’un Azure kaynaklarını yönetmesini istiyorsunuz. Abonelik kimlik bilgilerini kullanarak kimlik doğrulaması yapmadıkça bunu yapamaz. Kimlik doğrulama, [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) cmdlet'i kullanır.
 
 >[!NOTE]
 >PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`diğer adlar . Bu cmdlets'i kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleyebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncellemeniz gerekebilir.
 
-1. **MyFirstRunbook-Workflow** sayfasına gidin ve **Düzenleme'yi**tıklatarak metin düzenleyicisini açın.
+1. MyFirstRunbook-Workflow sayfasına gidin ve **Düzenleme'yi**tıklatarak metin düzenleyicisini açın.
 2. `Write-Output` Satırı silin.
 3. İmleci ayraçlar arasında boş bir satıra getirin.
 4. Otomasyon Çalıştır hesabınızla kimlik doğrulamasını işleyen aşağıdaki kodu yazın veya kopyalayın ve yapıştırın.
@@ -213,6 +213,8 @@ Runbook'unuzun çalışma defterinde kodladığınız VM'yi başlatması gerekir
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Dil referansı ve öğrenme modülleri de dahil olmak üzere PowerShell hakkında daha fazla bilgi için [PowerShell Dokümanları'na](https://docs.microsoft.com/powershell/scripting/overview)bakın.
+* PowerShell cmdlet referansı için [Az.Automation'a](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+)bakın.
 * Grafik çalışma kitaplarıyla başlamak için [ilk grafik çalışma kitabıma](automation-first-runbook-graphical.md)bakın.
 * PowerShell runbook'ları ile başlamak için [ilk PowerShell runbook'uma](automation-first-runbook-textual-powershell.md)bakın.
 * Runbook türleri ve bunların avantajları ve sınırlamaları hakkında daha fazla bilgi edinmek için [Azure Otomasyon runbook türlerine](automation-runbook-types.md)bakın.

@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: 9b13920252b3a5626fd192c6e899154efd31a3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b23f46a418f2663531cc121f00b83d00d84e48d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893234"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415456"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Azure Data Factory'yi kullanarak MongoDB için Azure Cosmos DB'nin API'sinden API'sine veri kopyalama (SQL API)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makale, MongoDB için Azure Cosmos DB API’sinden veri kopyalamak (veya buna kopyalamak) için Azure Data Factory’deki Kopyalama Etkinliğini kullanmayı özetler. Makale, Azure [Veri Fabrikası'ndaki Kopyalama Etkinliği'ne](copy-activity-overview.md)dayanmaktadır ve bu da Kopyalama Etkinliğine genel bir genel bakış sunar.
 
@@ -35,7 +37,7 @@ MongoDB konektörü için Azure Cosmos DB'nin API'sini şu şekilde kullanabilir
 - Azure Cosmos DB'ye **ekleme** veya **yükseltme**olarak yazın.
 - JSON belgelerini olduğu gibi içe aktarın ve dışa aktarın veya verileri bir tabular veri kümesinden kopyalayın veya kopyalayın. Örnekler arasında bir SQL veritabanı ve csv dosyası yer almaktadır. Belgeleri JSON dosyalarına veya başka bir Azure Cosmos DB koleksiyonundan veya başka bir Azure Cosmos DB koleksiyonundan olduğu gibi kopyalamak için JSON belgelerini içe veya dışa aktarmaya bakın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

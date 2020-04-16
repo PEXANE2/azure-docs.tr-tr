@@ -3,14 +3,14 @@ title: Sistem le atanmış MI ile Hizmet Kumaşı uygulaması dağıtma
 description: Bu makalede, bir Azure Hizmet Kumaşı uygulamasına sistem tarafından atanan yönetilen bir kimliği nasıl atadığınızı gösterir
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: d5a14722363d642957904f9c7c699d3cf1d66c0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614834"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415646"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>Sistem tarafından atanmış yönetilen kimlikle Hizmet Kumaşı uygulamasını dağıtma (önizleme)
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>Sistem tarafından atanmış yönetilen kimlikle Hizmet Kumaşı uygulamasını dağıtma
 
 Azure Hizmet Dokusu uygulamaları için yönetilen kimlik özelliğine erişmek için öncelikle kümedeki Yönetilen Kimlik Belirteç Hizmeti'ni etkinleştirmeniz gerekir. Bu hizmet, Yönetilen kimliklerini kullanarak Service Fabric uygulamalarının kimlik doğrulamalarından ve onlar adına erişim belirteçleri almaktan sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **Sistem** bölümünün altında, diğer sistem hizmetlerinin yanında **kumaş:/System/ManagedIdentityTokenService** adı altında çalışan Service Fabric Explorer'da görebilirsiniz.
 

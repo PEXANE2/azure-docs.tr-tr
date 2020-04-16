@@ -12,14 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 5f0eada5184f2c8e36b0deb5a9d27a8a9230776d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382756"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410771"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne veya Azure Veri Gezgini'nden kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Gezgini'ne veya [Azure Veri Gezgini'nden](/azure/data-explorer/data-explorer-overview)veri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopya etkinliğine genel bir bakış sunan [kopya etkinliğine genel bakış](copy-activity-overview.md) makalesiüzerine kuruludur.
 

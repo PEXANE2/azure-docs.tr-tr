@@ -11,14 +11,16 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.openlocfilehash: be2e389a0f103983a566a3f74d201e5589d84586
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926731"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414593"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Azure Veri Tuğlaları'nda bir Python etkinliği çalıştırarak verileri dönüştürme
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 [Veri Fabrikası ardışık dizisindeki](concepts-pipelines-activities.md) Azure Veri Tuğlaları Python Etkinliği, Azure Veri Tuğlaları kümenizde bir Python dosyasını çalıştırAr. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır.Azure Databricks, Apache Spark'ı çalıştırmak için yönetilen bir platformdur.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 570d55c8523e1c1deca3242a8841b0cc34322786
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f28f2bcf5d04c9a6354b8135bd39546b9d8b9bf3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053884"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404293"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator nedir?
 
@@ -38,7 +38,7 @@ Aşağıda bir yazılım geliştirme uzmanının veya ekibinin Content Moderator
 
 ## <a name="what-it-includes"></a>Neleri içerir
 
-Content Moderator hizmeti hem REST çağrıları hem de .NET SDK'sı ile sunulan çeşitli web hizmeti API'lerinden oluşur. Ayrıca hizmete yardımcı olmak veya denetleme işlevinde ince ayar yapmak için insanlar tarafından gerçekleştirilen inceleme hizmeti de sunar.
+Content Moderator hizmeti hem REST çağrıları hem de .NET SDK'sı ile sunulan çeşitli web hizmeti API'lerinden oluşur. Ayrıca, insan gözden geçirenlerin hizmete yardımcı olmasını ve ılımlılık işlevini geliştirmesine veya ince ayar yapmasına olanak tanıyan Gözden Geçirme aracını da içerir.
 
 ## <a name="moderation-apis"></a>Yönetim API’leri
 
@@ -58,18 +58,18 @@ Aşağıdaki tabloda farklı ılımlılık API türleri açıklanmaktadır.
 
 ## <a name="review-apis"></a>API’leri inceleme
 
-İnceleme API'leri, ılımlılık ardışıklığınızı insan gözden geçirenlerle tümleştirmenize izin sağlar. [İnceleme aracıyla](#the-review-tool) (aşağıda) döngüdeki insan iş akışlarını oluşturmak ve otomatikleştirmek için [İşler,](review-api.md#jobs) [İncelemeler](review-api.md#reviews)ve [İş Akışı](review-api.md#workflows) işlemlerini kullanın.
+İnceleme API'leri, ılımlılık ardışıklığınızı insan gözden geçirenlerle tümleştirmenize izin sağlar. [İnceleme aracıyla](#review-tool) (aşağıda) döngüdeki insan iş akışlarını oluşturmak ve otomatikleştirmek için [İşler,](review-api.md#jobs) [İncelemeler](review-api.md#reviews)ve [İş Akışı](review-api.md#workflows) işlemlerini kullanın.
 
 > [!NOTE]
 > İş Akışı API'si henüz .NET SDK'da mevcut değildir, ancak REST bitiş noktası yla kullanılabilir.
 
 ![İçerik Moderatör üe'leri için blok diyagramı](images/content-moderator-rev-api.png)
 
-## <a name="the-review-tool"></a>İnceleme aracı
+## <a name="review-tool"></a>Gözden geçirme aracı
 
 İçerik Moderatör hizmeti, insan moderatörlerin işlemesi için içerik incelemelerini barındıran web tabanlı [İnceleme aracını](Review-Tool-User-Guide/human-in-the-loop.md)da içerir. İnsan girişi hizmeti eğitmez, ancak hizmetin ve insan inceleme ekiplerinin birleştirilmiş çalışması, geliştiricilerin verimlilik ve doğruluk arasında doğru dengeyi sağlamasına olanak tanır. İnceleme aracı, çeşitli İçerik Moderatör kaynakları için kullanıcı dostu bir ön uç da sağlar.
 
-![Content Moderator insan inceleme aracı giriş sayfası](images/homepage.PNG)
+![İçerik Moderatör İnceleme aracı ana sayfası](images/homepage.PNG)
 
 ## <a name="data-privacy-and-security"></a>Veri gizliliği ve güvenliği
 

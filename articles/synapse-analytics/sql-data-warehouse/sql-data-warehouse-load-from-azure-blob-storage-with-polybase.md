@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c93dab2f6086b10e1e8d75c4fc3334a95c3fcafa
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 118653efc8829ac5ef6287bb36fb5595cff1147b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633268"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416120"
 ---
-# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso perakende verilerini Synapse SQL veri ambarına yükleyin
+# <a name="load-contoso-retail-data-to-synapse-sql"></a>Contoso perakende verilerini Synapse SQL'e yükleyin 
 
 Bu eğitimde, Contoso perakende verilerinden iki tabloyu Synapse SQL veri ambarına yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğrenirsiniz.
 
@@ -221,7 +221,7 @@ GO
 
 ### <a name="load-the-data-into-new-tables"></a>Verileri yeni tablolara yükleme
 
-Azure blob depolamadan verileri veri ambarı tablosuna yüklemek için [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini kullanın. [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md) ile yükleme, oluşturduğunuz güçlü bir şekilde yazılan harici tablolardan yararlanır. Verileri yeni tablolara yüklemek için tablo başına bir CTAS deyimi kullanın.
+Azure blob depolamadan verileri veri ambarı tablosuna yüklemek için [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) deyimini kullanın. [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) ile yükleme, oluşturduğunuz güçlü bir şekilde yazılan harici tablolardan yararlanır. Verileri yeni tablolara yüklemek için tablo başına bir CTAS deyimi kullanın.
 
 CTAS yeni bir tablo oluşturur ve onu seçili bir deyimin sonuçlarıyla doldurur. CTAS, yeni tabloyu seçifadenin sonuçlarıyla aynı sütunlara ve veri türlerine sahip olacak şekilde tanımlar. Harici bir tablodaki tüm sütunları seçerseniz, yeni tablo dış tablodaki sütunların ve veri türlerinin bir kopyası olur.
 

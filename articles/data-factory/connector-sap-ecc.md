@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad26fca94527864af10bb0051336c372ea65b3e0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74931169"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413791"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP ECC'deki verileri kopyalama
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, SAP Enterprise Central Component (ECC) verilerini kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Daha fazla bilgi için [bkz.](copy-activity-overview.md)
 
@@ -61,7 +62,7 @@ Genellikle SAP ECC, SAP Ağ Geçidi aracılığıyla OData hizmetleri aracılı�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -146,7 +147,7 @@ Aşağıdaki özellikler kopyalama etkinliğinin `source` bölümünde desteklen
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
 | `type` | Kopyalama `type` etkinliği `source` bölümünün özelliği `SapEccSource`' ye göre ayarlanmalıdır. | Evet |
-| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örnek:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC bağlayıcısı verileri birleştirilmiş URL'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için Bkz. [OData URL bileşenleri.](https://www.odata.org/documentation/odata-version-3-0/url-conventions/) | Hayır |
+| `query` | Verileri filtrelemek için OData sorgu seçenekleri. Örneğin:<br/><br/>`"$select=Name,Description&$top=10"`<br/><br/>SAP ECC bağlayıcısı verileri birleştirilmiş URL'den kopyalar:<br/><br/>`<URL specified in the linked service>/<path specified in the dataset>?<query specified in the copy activity's source section>`<br/><br/>Daha fazla bilgi için Bkz. [OData URL bileşenleri.](https://www.odata.org/documentation/odata-version-3-0/url-conventions/) | Hayır |
 
 ### <a name="example"></a>Örnek
 

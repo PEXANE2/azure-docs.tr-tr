@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b097ce3781a77a8c5e8a94b9c2bf0977f3efcfd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481339"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406823"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD Uygulama Proxy bağlayıcılarını anlama
 
@@ -153,12 +153,17 @@ Güvenli bir hizmet sağlamak için, bağlayıcıların hizmete doğru kimlik do
 
 Kullanılan sertifikalar Uygulama Proxy hizmetine özgür. İlk kayıt sırasında oluşturulurlar ve bağlayıcılar tarafından birkaç ayda bir otomatik olarak yenilenirler.
 
+İlk başarılı sertifika yenilemesinden sonra Azure AD Application Proxy Bağlayıcı hizmeti (Ağ Hizmeti), eski sertifikayı yerel makine deposundan kaldırma iznine sahip değildir. Sertifikanın süresi dolduysa veya artık hizmet tarafından kullanılmayacaksa, sertifikayı güvenle silebilirsiniz.
+
+Sertifika yenilemeile ilgili sorunları önlemek için, bağlayıcıdan [belgelenen hedeflere](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment) ağ iletişiminin etkin olduğundan emin olun.
+
 Bir bağlayıcı hizmete birkaç ay bağlı değilse, sertifikaları eski olabilir. Bu durumda, kaydı tetiklemek için konektörü kaldırın ve yeniden yükleyin. Aşağıdaki PowerShell komutlarını çalıştırabilirsiniz:
 
 ```
 Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
+Sertifikayı doğrulama ve sorunları giderme hakkında daha fazla bilgi edinmek [için Uygulama Proxy güven sertifikası için Makineyi Doğrula ve arka uç bileşenleri desteğine](application-proxy-connector-installation-problem.md#verify-machine-and-backend-components-support-for-application-proxy-trust-certificate)bakın.
 
 ## <a name="under-the-hood"></a>Başlık altında
 

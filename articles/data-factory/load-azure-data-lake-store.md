@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443988"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415857"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gölü Depolama Gen1'e yükleyin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 [Azure Veri Gölü Depolama Gen1](../data-lake-store/data-lake-store-overview.md) (daha önce Azure Veri Gölü Deposu olarak da bilinir) büyük veri analitik iş yükleri için kurumsal çapında hiper ölçekli bir depodur. Veri Gölü Depolama Gen1, herhangi bir boyut, tür ve yutma hızına ait verileri yakalamanızı sağlar. Veriler operasyonel ve araştırmacı analizler için tek bir yerde yakalanır.
 
@@ -58,7 +60,7 @@ Bu makalede, Amazon S3 verileri Veri _Gölü Depolama Gen1 içine yüklemek_içi
     * **Sürüm**: **V2**seçin.
     * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Veri Gölü Depolama Gen1, Azure Depolama, Azure SQL Veritabanı ve benzeri içerir.
 
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-data-into-azure-data-lake-store/data-factory-home-page.png)
@@ -88,7 +90,7 @@ Bu makalede, Amazon S3 verileri Veri _Gölü Depolama Gen1 içine yüklemek_içi
    
       ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
-   4. Yeni bir bağlantı göreceksiniz. **Sonraki'ni**seçin.
+   4. Yeni bir bağlantı göreceksiniz. **İleri**’yi seçin.
    
    ![Amazon S3 hesabını belirtin](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
    
@@ -108,7 +110,7 @@ Bu makalede, Amazon S3 verileri Veri _Gölü Depolama Gen1 içine yüklemek_içi
 
    1. **Data Lake Store hesap adı**için Veri Gölü Depolama Gen1 hesabınızı seçin.
    2. **Kiracı'yı**belirtin ve Bitiş'i seçin.
-   3. **Sonraki'ni**seçin.
+   3. **İleri**’yi seçin.
    
    > [!IMPORTANT]
    > Bu iznizde, Veri Gölü Depolama Gen1 hesabınızın kimliğini doğrulamak için Azure kaynakları için yönetilen bir kimlik kullanırsınız. [Bu yönergeleri](connector-azure-data-lake-store.md#managed-identity)izleyerek MSI'a Veri Gölü Depolama Gen1'de uygun izinleri verdiğinden emin olun.

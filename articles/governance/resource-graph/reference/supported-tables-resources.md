@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve Değişiklik Geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 04/06/2020
+ms.date: 04/15/2020
 ms.topic: reference
-ms.openlocfilehash: 85cab92981568f5ea3770e1102c3480ae4f3e638
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677062"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415148"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -392,7 +392,6 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 - microsoft.storagesyncint/storagesyncservices
 - microsoft.storsimple/managers
 - microsoft.streamanalytics/streamingjobs
-- microsoft.support/supporttickets
 - microsoft.synapse/çalışma alanları
 - microsoft.synapse/çalışma alanları/bigdatapools
 - microsoft.synapse/çalışma alanları/sqlpools

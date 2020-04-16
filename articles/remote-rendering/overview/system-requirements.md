@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: c239f7062dc39492a0cf63ac3aadbaf94acbf032
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680446"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411123"
 ---
 # <a name="system-requirements"></a>Sistem gereksinimleri
 
@@ -45,7 +45,7 @@ Doğru H265 codec yüklü olsa da, codec DLs güvenlik özellikleri codec başla
 
 ## <a name="devices"></a>Cihazlar
 
-Azure Uzaktan İşleme şu anda yalnızca **HoloLens 2** ve Windows masaüstü UWP'yi hedef aygıt olarak destekler.
+Azure Uzaktan İşleme şu anda yalnızca **HoloLens 2** ve Windows masaüstünü hedef aygıt olarak destekler. Platform [sınırlamaları](../reference/limits.md#platform-limitations) bölümüne bakın.
 
 Yeni sürümlerde gecikme gecikmesinde önemli iyileştirmeler olduğundan, en son HEVC codec'ini kullanmak önemlidir. Cihazınızda hangi sürümün yüklü olduğunu kontrol etmek için:
 

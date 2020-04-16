@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 6e2a90b8f81b9b945905ee98beb1686c54a62e8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063750"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411141"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırın
 
@@ -231,7 +231,7 @@ Bu özellik şu anda yalnızca yeni hesaplar için kullanılabilir.
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Müşteri tarafından yönetilen anahtarlar yedeklemeyi nasıl etkiler?
 
-Azure Cosmos DB, hesabınızda depolanan verilerin [düzenli ve otomatik yedeklemelerini](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) alır. Bu işlem, şifrelenmiş verileri yedekler. Geri yüklenen yedeklemeyi kullanmak için yedekleme sırasında kullandığınız şifreleme anahtarı gereklidir. Bu, iptal yapılmadığı ve yedekleme sırasında kullanılan anahtarın sürümünün yine de etkinleştirileceği anlamına gelir.
+Azure Cosmos DB, hesabınızda depolanan verilerin [düzenli ve otomatik yedeklemelerini](./online-backup-and-restore.md) alır. Bu işlem, şifrelenmiş verileri yedekler. Geri yüklenen yedeklemeyi kullanmak için yedekleme sırasında kullandığınız şifreleme anahtarı gereklidir. Bu, iptal yapılmadığı ve yedekleme sırasında kullanılan anahtarın sürümünün yine de etkinleştirileceği anlamına gelir.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Şifreleme anahtarını nasıl iptal edebilirim?
 

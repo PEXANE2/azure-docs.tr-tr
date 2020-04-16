@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 36cc63721fe003934aabfb3ae2a03a4113937ca4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3a2317554f02dc1f1198d8019bbfdb50e3cc71c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409762"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>VMware VM'ler/fiziksel sunucular için ölçekte olağanüstü durum kurtarma yı ayarlama
 
@@ -210,7 +210,7 @@ Aşağıdaki gibi başarısız olmak için önceden hazırlayabilirsiniz:
 Büyük ölçekli bir başarısızlık çalıştırmak için aşağıdakileri öneririz:
 
 1. İş yükü başarısızlığına yönelik kurtarma planları oluşturun.
-    - Her kurtarma planı en fazla 50 makinenin arızasını tetikleyebilir.
+    - Her kurtarma planı en fazla 100 makinenin arızasını tetikleyebilir.
     - Kurtarma planları hakkında [daha fazla bilgi edinin.](recovery-plan-overview.md)
 2. Azure'daki tüm el ile görevleri otomatikleştirmek için kurtarma planlarına Azure Otomasyon runbook komut dosyaları ekleyin. Tipik görevler arasında yük dengeleyicilerinin yapılandırılması, DNS'nin güncellenmesi vb. yer alır. [Daha fazlasını öğrenin](site-recovery-runbook-automation.md)
 2. Başarısız olmadan önce, Windows makinelerini Azure ortamına uyacak şekilde hazırlayın. [Arıza sınırları,](#plan-azure-subscriptions-and-quotas) uyumlu makineler için daha yüksektir. Runbook'lar hakkında [daha fazla bilgi edinin.](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010)

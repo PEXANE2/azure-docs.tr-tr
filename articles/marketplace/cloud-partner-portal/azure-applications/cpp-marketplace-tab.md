@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 94bbfb16a967a97b1ee6f6d51a5f55bc8ba13227
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6113759cc68d07af4c22edf03b3274d92dcbe780
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281774"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416305"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure uygulaması Market sekmesi
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, teklif için bir vitrin oluşturmak için kullanılacak ay
 | **Özet\***      | Teklifin kısa özeti. Maksimum uzunluk 100 karakterdir.           |
 | **Uzun Özet\*** | Teklifin daha uzun özeti (özetle aynı olabilir). Maksimum uzunluk 256 karakterdir.           |
 | **Açıklama\***  | Teklifin açıklaması. Maksimum uzunluk 3000 karakterdir. &gt; &lt;P, em,&gt; &lt;ul&gt;, li &lt;&gt;, &lt;ol&gt; ve üstbilgi etiketleri de dahil olmak üzere &lt;basit HTML biçimlendirmeye izin verilir.  |
-| **Pazarlama Tanımlayıcısı\*** | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir. Hizmetiniz için kısa ve samimi bir pazarlama tanımlayıcısı seçin. Bu teklif için pazar URL'lerinde kullanılacaktır. Örneğin, yayıncı kimliğiniz "contoso" ise ve pazarlama tanımlayıcınız "sampleApp" ise, Azure Market'teki teklifinizin URL'sihttps://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp  
+| **Pazarlama Tanımlayıcısı\*** | Bu teklifle ilişkilendirilen benzersiz bir URL, genellikle kuruluş ve çözüm adınızı, maksimum uzunluk 50 karakteri içerir. Hizmetiniz için kısa ve samimi bir pazarlama tanımlayıcısı seçin. Bu teklif için pazar URL'lerinde kullanılacaktır. Örneğin, yayıncı kimliğiniz "contoso" ise ve pazarlama tanımlayıcınız "sampleApp" ise, Azure Market'teki teklifinizin URL'si`https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  
 | **Abonelik IYT'lerini Önizleme\*** | Bir den 100'e kadar abonelik tanımlayıcıları previewers ekleyin. Beyaz listedeki bu abonelikler, yayınlanmadan önce, yayınlanmadan önce önizlemede kullanılabilirken teklifinize erişebilir.          |
 | **Faydalı Linkler**    | İsteğe bağlı olarak, teklifinizin kullanıcıları için destek, dokümantasyon, forum, vb. gibi çeşitli kaynaklara bağlantılar sağlayabilirsiniz.  Belgelerinize en az bir bağlantı eklemeniz önerilir.            |
 | **Önerilen Kategoriler (Max 5)\*** | Bir ila beş kategori seçin. Seçili kategoriler, teklifinizi Azure Marketi ve Azure Portalı'nda bulunan ürün kategorilerine haritalamak için kullanılır. Bunlar gözatma sayfalarında ve ürün ayrıntıları sayfanızda gösterilir. |
@@ -50,7 +50,7 @@ Aşağıdaki tabloda pazarlama yapıları açıklanmaktadır.
 |      Alan         |    Açıklama    |
 |  ---------------   |  ---------------  |
 | **Küçük\***        | Küçük logo: PNG formatında 40x40 piksel     |
-| **Orta\***       | Orta logo: PNG formatında 90x90 piksel    |
+| **Medium\***       | Orta logo: PNG formatında 90x90 piksel    |
 | **Büyük\***        | Büyük logo: PNG formatında 115x115 piksel   |
 | **Geniş\***         | Geniş logo: PNG formatında 255x115 piksel    |
 | **Kahraman**           | İsteğe bağlı kahraman logosu: PNG formatında 815x290 piksel. **Not:** Kahraman simgesi yüklendikten sonra silinemez. |

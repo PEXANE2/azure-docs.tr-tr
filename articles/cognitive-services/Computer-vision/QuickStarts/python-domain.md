@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9fa9d414b89c7229b0577faad778f6cc8b87fa99
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8aa49b044abcbd65a67a854a9da85cbc1471cda6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244827"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404440"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Hızlı Başlangıç: Görüntü İşleme’de REST API’sini ve Python’ı kullanarak etki alanı modelini kullanma
 
@@ -203,7 +203,9 @@ Artık gerekli değilse her iki örnek için dosyayı silin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan bir Python uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
+Ardından, optik karakter tanıma (OCR) gerçekleştirmek için Computer Vision kullanan bir Python uygulamasını keşfedin; akıllı kırpılmış küçük resimler oluşturun; görüntülerdeki görsel özellikleri algılar, kategorilere ayırın, etiketler ve tanımlayın.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si Python Öğreticisi](../Tutorials/PythonTutorial.md)
+
+* Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.

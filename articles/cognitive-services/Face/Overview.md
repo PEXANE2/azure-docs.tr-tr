@@ -7,22 +7,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c433d99fd96e99d418fd5500c1075e68dfb1742c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 6714a0c4b967d80ad683ef023b5811423bdcb022
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80053590"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403462"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face hizmeti nedir?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Bilişsel Hizmetler Yüz hizmeti, görüntülerdeki insan yüzlerini algılamak, tanımak ve analiz etmek için kullanılan algoritmalar sağlar. İnsan yüz bilgilerini işleme yeteneği birçok farklı yazılım senaryolarında önemlidir. Örnek senaryolar güvenlik, doğal kullanıcı arabirimi, görüntü içeriği analizi ve yönetimi, mobil uygulamalar ve robotiktir.
+Azure Bilişsel Hizmetler Yüz hizmeti, görüntülerdeki insan yüzlerini algılayan, tanıyan ve analiz eden algoritmalar sağlar. İnsan yüz bilgilerini işleme yeteneği birçok farklı yazılım senaryolarında önemlidir. Örnek senaryolar arasında güvenlik, doğal kullanıcı arabirimi, görüntü içeriği analizi ve yönetimi, mobil uygulamalar ve robotik sayılabilir.
 
-Face hizmeti birkaç farklı işlev sağlar. Her işlev aşağıdaki bölümlerde özetlenmiştir. Onlar hakkında daha fazla bilgi edinmek için okumaya devam edin.
+Face hizmeti, her biri aşağıdaki bölümlerde özetlenen birkaç farklı işlev sağlar.
 
 ## <a name="face-detection"></a>Yüz algılama
 
@@ -69,7 +69,7 @@ Bir veritabanı oluşturup eğitdikten sonra, algıya yeni bir yüzle gruba kar�
 
 Kişi tanımlama hakkında daha fazla bilgi için [Yüz tanıma](concepts/face-recognition.md) kavramları kılavuzuna veya API başvuru [belgelerini](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) tanımla'ya bakın.
 
-## <a name="use-containers"></a>Kapsayıcıları kullanma
+## <a name="containers"></a>Kapsayıcılar
 
 Verilerinize daha yakın standart bir Docker kapsayıcısı yükleyerek yüzleri algılamak, tanımak ve tanımlamak için [Yüz kapsayıcısını kullanın.](face-how-to-install-containers.md)
 

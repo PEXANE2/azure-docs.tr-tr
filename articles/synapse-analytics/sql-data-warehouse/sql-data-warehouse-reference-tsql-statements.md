@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: edae17c2686e3b9cae3f75ad3b6a8a2354e9d3ef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 90da0931b950fe18c079534c48693cae651e978e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80745495"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411585"
 ---
 # <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Synapse SQL havuzunda desteklenen T-SQL deyimleri
 
@@ -131,4 +131,4 @@ Synapse SQL havuzunda desteklenen T-SQL deyimleri için belgelere bağlantılar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla başvuru bilgisi için [Synapse SQL havuzundaki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)ve [Synapse SQL havuzundaki Sistem görünümlerine](sql-data-warehouse-reference-tsql-system-views.md)bakın.
+Daha fazla başvuru bilgisi için [Synapse SQL havuzundaki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)ve [Synapse SQL havuzundaki Sistem görünümlerine](../sql/reference-tsql-system-views.md)bakın.

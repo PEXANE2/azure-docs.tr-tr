@@ -11,25 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 8aaca40961b1294336b236305ecdffcc92c5a4d9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408165"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
 Bu makalede, SQL Analytics veritabanınıza bağlanma konusunda sık karşılaşılan sorun giderme teknikleri listelanmaktadır.
-
-- [Hizmet kullanılabilirliğini denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
-- [Duraklatılmış veya ölçeklendirilen işlemleri denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
-- [Güvenlik duvarı ayarlarını denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
-- [Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-your-vnetservice-endpoint-settings)
-- [En son sürücüleri denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-for-the-latest-drivers)
-- [Bağlantı dizenizi denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-your-connection-string)
-- [Aralıklı bağlantı sorunları](sql-data-warehouse-troubleshoot-connectivity.md#intermittent-connection-issues)
-- [Genel hata iletileri](sql-data-warehouse-troubleshoot-connectivity.md#common-error-messages)
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetleme
 

@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 822fab5c00501d415c3c184587141e869523e417
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78945388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414407"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Veritabanı ve Veri Ambarı ağ erişim denetimleri
 
@@ -29,7 +29,7 @@ ms.locfileid: "78945388"
 
 [Azure portalından](sql-database-single-database-get-started.md)yeni bir Azure SQL Server oluşturduğunuzda, sonuç *biçimi, yourservername.database.windows.net*genel bir bitiş noktasıdır.
 
-Ortak bitiş noktası üzerinden SQl Veritabanına erişime seçici olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
+Ortak bitiş noktası üzerinden SQL Veritabanına erişime seçici olarak izin vermek için aşağıdaki ağ erişim denetimlerini kullanabilirsiniz:
 - Azure Hizmetlerine İzin Ver: A)'ya ayarlandığında, Azure sınırındaki diğer kaynaklar (örneğin bir Azure Sanal Makinesi) SQL Veritabanı'na erişebilir
 
 - IP güvenlik duvarı kuralları: Belirli bir IP adresinden (örneğin şirket içi makinelerden) bağlantılara açıkça izin vermek için bu özelliği kullanın
@@ -59,10 +59,10 @@ Azure SQL Server oluşturulduktan sonra bu ayarı güvenlik duvarı bölmesi ara
 Çoğu durumda, **ON** ayarı çoğu müşterinin istediğinden daha müsamahakârdır. Bu ayarı **OFF** olarak ayarlamak ve daha kısıtlayıcı IP güvenlik duvarı kuralları veya Sanal Ağ güvenlik duvarı kurallarıyla değiştirmek isteyebilirler. Bunu yapmak, Azure'da VM'lerde çalışan ve VNet'inizin bir parçası olmayan ve dolayısıyla bir Azure IP adresi üzerinden Sql Veritabanı'na bağlanan aşağıdaki özellikleri etkiler.
 
 ### <a name="import-export-service"></a>İthalat İhracat Hizmeti
-Dışa Aktarma Hizmeti çalışmıyor Azure hizmetlerine IZIN ver, KAPALI olarak ayarlanmış **sunucuya erişin.** Ancak, bir Azure [VM'den sqlpackage.exe'yi el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFx API'sini kullanarak dışa aktarmayı doğrudan kodunuzda gerçekleştirerek sorunu çözebilirsiniz.
+**Azure hizmetlerine erişime izin** **ver,' in OFF**olarak ayarlanmasında Dışa Aktarma Hizmeti çalışmıyor. Ancak, bir Azure [VM'den sqlpackage.exe'yi el ile çalıştırarak veya](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) DACFx API'sini kullanarak dışa aktarmayı doğrudan kodunuzda gerçekleştirerek sorunu çözebilirsiniz.
 
 ### <a name="data-sync"></a>Data Sync
-**Azure hizmetlerine izin vererek sunucu kümesine erişim için** İzin verme özelliğini kullanmak için, **Hub** veritabanını barındıran bölge için Sql **hizmet etiketinden** [IP adresleri eklemek](sql-database-server-level-firewall-rule.md) için tek tek güvenlik duvarı kuralı girişleri oluşturmanız gerekir.
+The Data eşitleme özelliğini, **KAPALı**olarak ayarlanmış **Azure hizmetlerine erişime izin verme** özelliğini kullanmak için, **Hub** veritabanını barındıran bölge için Sql **hizmet etiketinden** [IP adresleri eklemek](sql-database-server-level-firewall-rule.md) için tek tek güvenlik duvarı kuralı girişleri oluşturmanız gerekir.
 Hub **ve** **Üye** veritabanlarını barındıran mantıksal sunuculara bu sunucu düzeyinde güvenlik duvarı kuralları nı ekleyin (farklı bölgelerde olabilir)
 
 Batı ABD bölgesi için Sql hizmet etiketine karşılık gelen IP adreslerini oluşturmak için aşağıdaki PowerShell komut dosyasını kullanın

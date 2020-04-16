@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01dd03eb0ed17fc43e62c8f749dfa2de78e38f69
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a1354bc74d13e02e5e0982a8f5d98b01fab67b4b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74974589"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404764"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-java"></a>Quickstart: Computer Vision REST API ve Java kullanarak bir küçük resim oluşturun
 
-Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden küçük resim oluşturursunuz. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Computer Vision, ilgi alanını akıllıca belirlemek ve o bölgeye dayalı kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
+Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir görüntüden küçük resim oluşturacaksınız. Giriş görüntüsünün en boy oranından farklı olabilen bir yükseklik ve genişlik belirtirsiniz. Computer Vision, ilgi alanını akıllıca belirlemek ve o bölgeye dayalı kırpma koordinatları oluşturmak için akıllı kırpma kullanır.
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) bir hesap oluşturun.
 
@@ -161,7 +161,9 @@ Küçük resmin görüntü verilerini temsil eden ikili veri halinde başarılı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan bir Java Swing uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
+Optik karakter tanıma (OCR) gerçekleştirmek için Computer Vision kullanan bir Java Swing uygulamasını keşfedin; akıllı kırpılmış küçük resimler oluşturun; görüntülerdeki görsel özellikleri algılar, kategorilere ayırın, etiketler ve tanımlayın.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si Java Öğreticisi](../Tutorials/java-tutorial.md)
+
+* Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.

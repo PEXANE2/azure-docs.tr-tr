@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 81f8577592f1d53627bc09a2f9ace8c060ad4660
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668861"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415818"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Veri Fabrikası ile Azure Veri Gölü Depolama Gen1'den Gen2'ye verileri kopyalama
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Veri Gölü Depolama Gen2, [Azure Blob depolamaalanına](../storage/blobs/storage-blobs-introduction.md)dahil edilmiş büyük veri analitiğine adanmış bir dizi özelliktir. Hem dosya sistemi hem de nesne depolama paradigmalarını kullanarak verilerinizi arabirim de kullanabilirsiniz.
 
@@ -53,7 +55,7 @@ Bu makalede, Azure Veri Gölü Depolama Gen1'deki verileri Azure Veri Gölü Dep
     * **Sürüm**: **V2**seçin.
     * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. 
 
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -65,7 +67,7 @@ Bu makalede, Azure Veri Gölü Depolama Gen1'deki verileri Azure Veri Gölü Dep
 1. **Başlat** sayfasında, kopya veri aracını başlatmak için **Veri Kopyala'yı** seçin. 
 
    ![Veri araç döşemesi kopyalama](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. **Özellikler** sayfasında, **Görev adı** alanı için **CopyFromADLSGen1ToGen2'yi** belirtin. **Sonraki'ni**seçin.
+2. **Özellikler** sayfasında, **Görev adı** alanı için **CopyFromADLSGen1ToGen2'yi** belirtin. **İleri**’yi seçin.
 
     ![Özellikler sayfası](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. Kaynak **veri deposu** sayfasında + **Yeni bağlantı oluştur'u**seçin.
@@ -82,7 +84,7 @@ Bu makalede, Azure Veri Gölü Depolama Gen1'deki verileri Azure Veri Gölü Dep
   
    b. Ayarları doğrulamak için **Test bağlantısını** seçin. Ardından **Son**’u seçin.
   
-   c. Yeni bir bağlantı oluşturulduğunu görüyorsunuz. **Sonraki'ni**seçin.
+   c. Yeni bir bağlantı oluşturulduğunu görüyorsunuz. **İleri**’yi seçin.
    
    > [!IMPORTANT]
    > Bu gezinmede, Azure Veri Gölü Depolama Gen1'inizin kimliğini doğrulamak için Azure kaynakları için yönetilen bir kimlik kullanırsınız. Yönetilen kimliğe Azure Veri Gölü Depolama Gen1'de uygun izinleri vermek için [aşağıdaki yönergeleri](connector-azure-data-lake-store.md#managed-identity)izleyin.
@@ -93,7 +95,7 @@ Bu makalede, Azure Veri Gölü Depolama Gen1'deki verileri Azure Veri Gölü Dep
 
     ![Girdi dosyasını veya klasörünü seçin](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. **Kopya dosyaları özyinelemeli** ve **İkili kopyalama** seçeneklerini seçerek kopyalama davranışını belirtin. **Sonraki'ni**seçin.
+7. **Kopya dosyaları özyinelemeli** ve **İkili kopyalama** seçeneklerini seçerek kopyalama davranışını belirtin. **İleri**’yi seçin.
 
     ![Çıktı klasörünü belirtin](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     

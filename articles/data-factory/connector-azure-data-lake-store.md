@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: a8ba8b212a504a8f8e4e29fbd50126189998e81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61bb8fe950de8cd9be91bc76bd24aa0151f3fb79
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415408"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Azure Veri Depolama Gen1'e veya Azure Veri Gölü Depolama Gen1'den kopyalama
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Veri Fabrikası sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-datalake-connector.md)
 > * [Geçerli sürüm](connector-azure-data-lake-store.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Gölü Depolama Gen1'e ve bu verilerden nasıl kopyalanır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
@@ -45,7 +47,7 @@ Bu Azure Veri Gölü Depolama Gen1 bağlayıcısı aşağıdaki etkinlikler içi
 > [!IMPORTANT]
 > Kendi kendine barındırılan tümleştirme çalışma zamanını kullanarak verileri kopyalarsanız, şirket `<ADLS account name>.azuredatalakestore.net` güvenlik `login.microsoftonline.com/<tenant>/oauth2/token` duvarını giden trafiğin bağlantı noktasına ve 443 bağlantı noktasına girmesine izin verecek şekilde yapılandırın. İkincisi, erişim belirteci almak için tümleştirme çalışma zamanının iletişim kurması gereken Azure Güvenlik Belirteci Hizmetidir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 > [!TIP]
 > Azure Veri Gölü Deposu bağlayıcısının nasıl kullanılacağına bir göz atmak için, [verileri Azure Veri Gölü Deposu'na Yükle'ye](load-azure-data-lake-store.md)bakın.

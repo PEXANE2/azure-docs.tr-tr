@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/09/2020
-ms.openlocfilehash: d37b4648c0a37f16fe5c9d8794bd78417c5780ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7844340553809e1429097a9dda70f6bdb3e075
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257895"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414182"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Etkinlik performans optimizasyonu özelliklerini kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'nda yararlanabileceğiniz kopyalama etkinliği optimizasyonu özellikleri özetlenmektedir.
 
@@ -134,7 +136,7 @@ Hazırlama özelliğini etkinleştirdiğinizde, önce veriler kaynak veri deposu
 
 ![Aşamalı kopya](media/copy-activity-performance/staged-copy.png)
 
-Bir evreleme deposu kullanarak veri hareketini etkinleştirdiğinizde, verileri kaynak veri deposundan geçici veya evreleme veri deposuna taşımadan önce verilerin sıkıştırılıp sıkıştırılmamasını isteyip istemediğiniz ve verileri geçici veya evrelemeden taşımadan önce desıkıştırılmanızı isteyip istemediğinizbelirtebilirsiniz veri deposuna veri deposu.
+Bir hazırlama deposu kullanarak veri hareketini etkinleştirdiğinizde, verileri kaynak veri deposundan geçici veya evreleme veri deposuna taşımadan önce verilerin sıkıştırılıp sıkıştırılmamasını isteyip istemediğiniz ve verileri geçici veya hazırlama veri deposundan lavabo veri deposuna taşımadan önce desıkıştırılıp debebileceğinizi belirtebilirsiniz.
 
 Şu anda, farklı Self barındırılan IRs üzerinden bağlı iki veri deposu arasındaki verileri kopyalayamaz, ne ile ne de aşamalı kopya olmadan. Bu tür bir senaryo için, kaynaktan evrelemesonra da evrelemeden lavaboya kopyalamak için iki açık zincirlenmiş kopyalama etkinliği yapılandırabilirsiniz.
 
@@ -187,7 +189,7 @@ Aşağıda, önceki tabloda açıklanan özelliklere sahip bir kopyalama etkinli
 İki adıma göre ücretlendirilirsiniz: kopyalama süresi ve kopya türü.
 
 * Bir bulut veri deposundan başka bir bulut veri deposuna veri kopyalama sırasında evreleme kullandığınızda, her iki aşamada da Azure tümleştirme çalışma süresi yle güçlendirilmiştir, [adım 1 ve adım 2] x [bulut kopyalama birim fiyatı] için kopya süresi nin toplamı ücretlendirilirsiniz.
-* Bir şirket içi veri deposundan bulut veri deposuna veri kopyalama, kendi kendine barındırılan tümleştirme çalışma süresi tarafından yetkilendirilmiş bir aşama olan karma kopya sırasında evreleme kullandığınızda, [karma kopyalama süresi] x [karma kopyalama birim fiyatı] + [bulut kopyalama süresi] için ücretlendirilirsiniz x [bulut kopyalama birim fiyatı].
+* Bir şirket içi veri deposundan bulut veri deposuna veri kopyalama, kendi kendine barındırılan bir tümleştirme çalışma süresi tarafından yetkilendirilmiş bir aşama olan karma kopya sırasında evreleme kullandığınızda, [karma kopyalama süresi] x [karma kopya birim fiyatı] + [bulut kopyalama süresi] x [bulut kopyalama birim fiyatı] için ücretlendirilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kopyalama etkinliği makalelerini görün:

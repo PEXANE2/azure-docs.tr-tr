@@ -10,14 +10,16 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: cf3bb7e6733ef55a85d0b4ae26a4ce05059a8fb9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887187"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414071"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Tümleştirme Çalışma Süresi oluşturma ve yapılandırma
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Tümleştirme Çalışma Süresi (IR), Azure Veri Fabrikası tarafından farklı ağ ortamlarında veri tümleştirme özellikleri sağlamak için kullanılan bilgi işlem altyapısıdır. IR hakkında daha fazla bilgi için [Tümleştirme çalışma zamanı'na](concepts-integration-runtime.md)bakın.
 
 Azure IR, veri hareketini yerel olarak gerçekleştirmek ve HDInsight gibi hizmetleri hesaplamak için veri dönüştürme etkinlikleri göndermek için tam olarak yönetilen bir bilgi işlem sağlar. Azure ortamında barındırılır ve ortak ağ ortamındaki kaynaklara genel olarak erişilebilen uç noktalarıyla bağlanmayı destekler.

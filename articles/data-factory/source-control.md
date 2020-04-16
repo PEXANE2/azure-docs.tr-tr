@@ -11,14 +11,15 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2108f2f9098fe6da8ee4666b30605bed14164484
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130863"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414713"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Veri Fabrikası'nda kaynak denetimi
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası kullanıcı arabirimi deneyimi (UX) görsel yazarlık için iki deneyime sahiptir:
 
@@ -187,7 +188,7 @@ Bir veri fabrikasıyla ilişkili her Azure Repos Git deposunun bir işbirliği d
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımlama dalını yapılandırmak için - yani Kaynak Yöneticisi şablonlarının `publish_config.json` kaydedildiği dal - işbirliği dalındaki kök klasörüne bir dosya ekleyin. Veri Fabrikası bu dosyayı okur, alanı `publishBranch`arar ve sağlanan değerle birlikte yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
+Yayımlama dalını yapılandırmak için - yani Kaynak Yöneticisi şablonlarının `publish_config.json` kaydedildiği dal - işbirliği dalındaki kök klasörüne bir dosya ekleyin. Veri Fabrikası bu dosyayı okur, alanı `publishBranch`arar ve sağlanan değerle birlikte yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örneğin:
 
 ```json
 {
@@ -231,7 +232,7 @@ Yayımlama dalı ve bekleyen değişikliklerin doğru olduğunu onayladığını
 Genellikle her ekip üyesinin fabrikayı güncelleştirme izinlerine sahip olmasını istemezsiniz. Aşağıdaki izin ayarları önerilir:
 
 *   Tüm ekip üyelerinin veri fabrikasına izinleri okumuş olması gerekir.
-*   Yalnızca belirli bir kişi kümesinin fabrikada yayımlamasına izin verilmelidir. Bunu yapmak için, fabrikada **Veri Fabrikası katılımcısıfatıne** sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için [Azure Veri Fabrikası'nın Rolleri ve izinlerine](concepts-roles-permissions.md)bakın.
+*   Yalnızca belirli bir kişi kümesinin fabrikada yayımlamasına izin verilmelidir. Bunu yapmak için, fabrikanın içinde olduğu kaynak grubunda **Veri Fabrikası katılımcısıfatıne** sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için [Azure Veri Fabrikası'nın Rolleri ve izinlerine](concepts-roles-permissions.md)bakın.
    
 İşbirliği şubesine doğrudan check-in'lere izin vermemek önerilir. Bu kısıtlama, her iade [özelliği daloluşturma'da](source-control.md#creating-feature-branches)açıklanan bir çekme isteği gözden geçirme sürecinden geçeceği için hataları önlemeye yardımcı olabilir.
 

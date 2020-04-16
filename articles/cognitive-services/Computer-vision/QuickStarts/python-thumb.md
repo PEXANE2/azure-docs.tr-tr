@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21d8659e13506777f6045272f68c69dd63f09cf5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244690"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404339"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python kullanarak bir küçük resim oluşturun
 
@@ -93,7 +93,9 @@ Bu hızlı başlangıcı [myBinder'da](https://mybinder.org)bir Jupyter dizüst�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, küçük resim oluşturma özelliği hakkında daha ayrıntılı bilgi edinin.
+Ardından, optik karakter tanıma (OCR) gerçekleştirmek için Computer Vision kullanan bir Python uygulamasını keşfedin; akıllı kırpılmış küçük resimler oluşturun; görüntülerdeki görsel özellikleri algılar, kategorilere ayırın, etiketler ve tanımlayın.
 
 > [!div class="nextstepaction"]
-> [Küçük resimler oluşturma](../concept-generating-thumbnails.md)
+> [Görüntü İşleme API'si Python Öğreticisi](../Tutorials/PythonTutorial.md)
+
+* Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.

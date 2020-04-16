@@ -2,13 +2,13 @@
 title: Güvenilir Koleksiyonlar ile çalışma
 description: Azure Hizmet Kumaşı uygulamasında Güvenilir Koleksiyonlarla çalışmak için en iyi uygulamaları öğrenin.
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.openlocfilehash: 4a1f48d9523e5d753c222f0526e210a30e1927e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/10/2020
+ms.openlocfilehash: 94836a37a62e3eeffb94d891980cc02694bd973e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645982"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409799"
 ---
 # <a name="working-with-reliable-collections"></a>Güvenilir Koleksiyonlar ile çalışma
 Service Fabric, Güvenilir Koleksiyonlar aracılığıyla .NET geliştiricileri için özel bir programlama modeli sunar. Özellikle, Hizmet Kumaş güvenilir sözlük ve güvenilir kuyruk sınıfları sağlar. Bu sınıfları kullandığınızda, durumunuz (ölçeklenebilirlik için), çoğaltılır (kullanılabilirlik için) ve bir bölüm içinde (ACID semantics için) işlenir. Güvenilir bir sözlük nesnesinin tipik kullanımına bakalım ve gerçekte ne yaptığını görelim.
@@ -50,6 +50,19 @@ Yukarıdaki kodda, CommitAsync çağrısı işlemin tüm işlemlerini işler. Ö
 
 CommitAsync çağrılmazsa (genellikle bir özel durum atıldığından), ITransaction nesnesi atılır. Kaydedilmemiş bir ITransaction nesnesini devre dışı bırakırken, Service Fabric yerel düğümün günlük dosyasına iptal bilgilerini ekler ve ikincil yinelemelerin hiçbirine gönderilmesi gerekmez. Ve sonra, işlem yoluyla manipüle edilen anahtarlarla ilişkili kilitler serbest bırakılır.
 
+## <a name="volatile-reliable-collections"></a>Uçucu Güvenilir Koleksiyonlar 
+Örneğin çoğaltılmış önbellek gibi bazı iş yüklerinde, zaman zaman veri kaybı tolere edilebilir. Verilerin diske kalıcılığından kaçınmak, Güvenilir Sözlüklere yazarken daha iyi gecikmelere ve iş aralarına izin verebilir. Kalıcılık eksikliği için tradeoff çoğunluk kaybı oluşursa, tam veri kaybı oluşacak olmasıdır. Çoğunluk kaybı nadir bir olay olduğundan, artan performans bu iş yükleri için nadir veri kaybı olasılığına değer olabilir.
+
+Şu anda, geçici destek yalnızca Güvenilir Sözlükler ve Güvenilir Kuyruklar için kullanılabilir ve Güvenilir Eşzamanlı Kuyruklar için kullanılamaz. Geçici koleksiyonları kullanıp kullanmayacağınıza karar vermek için lütfen [Uyarılar](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections) listesine bakın.
+
+Hizmetinizde geçici desteği etkinleştirmek ```HasPersistedState``` için, ```false```hizmet türü bildirimindeki bayrağı ( aşağıdaki gibi) ayarlayın:
+```xml
+<StatefulServiceType ServiceTypeName="MyServiceType" HasPersistedState="false" />
+```
+
+>[!NOTE]
+>Varolan kalıcı hizmetler geçici hale getirilemez ve bunun tersi de geçerlidir. Bunu yapmak isterseniz, varolan hizmeti silmeniz ve ardından hizmeti güncelleştirilmiş bayrakla dağıtmanız gerekir. Bu, ```HasPersistedState``` bayrağı değiştirmek istiyorsanız tam veri kaybına maruz kalmak istediğiniz anlamına gelir. 
+
 ## <a name="common-pitfalls-and-how-to-avoid-them"></a>Ortak tuzaklar ve nasıl önlemek için
 Artık güvenilir koleksiyonların dahili olarak nasıl çalıştığını anladığınıza göre, bunların bazı yaygın yanlış kullanımlarına bir göz atalım. Aşağıdaki koda bakın:
 
@@ -60,7 +73,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
    // & sends the bytes to the secondary replicas.
    await m_dic.AddAsync(tx, name, user);
 
-   // The line below updates the property’s value in memory only; the
+   // The line below updates the property's value in memory only; the
    // new value is NOT serialized, logged, & sent to secondary replicas.
    user.LastLogin = DateTime.UtcNow;  // Corruption!
 
@@ -87,13 +100,13 @@ Burada ortak bir hata gösteren başka bir örnektir:
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> user = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
    if (user.HasValue)
    {
-      // The line below updates the property’s value in memory only; the
+      // The line below updates the property's value in memory only; the
       // new value is NOT serialized, logged, & sent to secondary replicas.
       user.Value.LastLogin = DateTime.UtcNow; // Corruption!
       await tx.CommitAsync();
@@ -110,7 +123,7 @@ Aşağıdaki kod, güvenilir bir koleksiyondaki bir değeri güncelleştirmenin 
 ```csharp
 using (ITransaction tx = StateManager.CreateTransaction())
 {
-   // Use the user’s name to look up their data
+   // Use the user's name to look up their data
    ConditionalValue<User> currentUser = await m_dic.TryGetValueAsync(tx, name);
 
    // The user exists in the dictionary, update one of their properties.
@@ -124,7 +137,7 @@ using (ITransaction tx = StateManager.CreateTransaction())
       // In the new object, modify any properties you desire
       updatedUser.LastLogin = DateTime.UtcNow;
 
-      // Update the key’s value to the updateUser info
+      // Update the key's value to the updateUser info
       await m_dic.SetValue(tx, name, updatedUser);
       await tx.CommitAsync();
    }
@@ -138,7 +151,7 @@ Aşağıdaki UserInfo türü, yukarıda belirtilen önerilerden yararlanarak de�
 
 ```csharp
 [DataContract]
-// If you don’t seal, you must ensure that any derived classes are also immutable
+// If you don't seal, you must ensure that any derived classes are also immutable
 public sealed class UserInfo
 {
    private static readonly IEnumerable<ItemId> NoBids = ImmutableList<ItemId>.Empty;
@@ -200,7 +213,7 @@ Ayrıca, hizmet kodu bir defada bir yükseltme etki alanı yükseltilir. Bu nede
 
 Alternatif olarak, genellikle iki yükseltme olarak adlandırılan gerçekleştirebilirsiniz. İki aşamalı yükseltme ile hizmetinizi V1'den V2'ye yükseltirsiniz: V2, yeni şema değişikliğiyle nasıl başa çıkacağını bilen kodu içerir, ancak bu kod yürütülmez. V2 kodu V1 verilerini okuduğunda, üzerinde çalışır ve V1 verileri yazar. Daha sonra, yükseltme tüm yükseltme etki alanlarında tamamlandıktan sonra, bir şekilde çalışan V2 örneklerine yükseltmenin tamamladığını işaret edebilirsiniz. (Bunu sinyal vermenin bir yolu bir yapılandırma yükseltmesi yapmaktır; bu iki aşamalı bir yükseltme yapar.) Şimdi, V2 örnekleri V1 verilerini okuyabilir, V2 verilerine dönüştürebilir, üzerinde çalışabilir ve V2 verisi olarak yazabilir. Diğer örnekler V2 verilerini okuduğunda, dönüştürmelerine gerek yoktur, sadece üzerinde çalışırlar ve V2 verilerini yazarlar.
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="next-steps"></a>Sonraki adımlar
 İleriye uyumlu veri sözleşmeleri oluşturma hakkında bilgi edinmek için [bkz.](https://msdn.microsoft.com/library/ms731083.aspx)
 
 Veri sözleşmelerini sürümleme konusunda en iyi uygulamaları öğrenmek için [bkz.](https://msdn.microsoft.com/library/ms731138.aspx)

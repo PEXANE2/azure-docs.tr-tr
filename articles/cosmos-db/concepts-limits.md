@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: b24d7db679bb9cb9dacd5e1db8e6410b883548cc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652183"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415703"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -70,7 +70,7 @@ Azure portalı, Azure PowerShell, Azure CLI ve Azure Kaynak Yöneticisi şablonl
 > [!NOTE]
 > Bölgesel arızalar yalnızca tek bölge için geçerli dir. Hesaplar yazar. Çok bölgeli yazma hesapları, yazma bölgesini değiştirme konusunda herhangi bir sınırlama gerektirmez veya yoktur.
 
-Cosmos DB düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır. Yedekleme bekletme aralıkları ve pencerelerhakkında ayrıntılı bilgi için [Azure Cosmos DB'de Çevrimiçi yedekleme ve isteğe bağlı veri geri yüklemesi 'ne](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)bakın.
+Cosmos DB düzenli aralıklarla verilerinizin yedeklerini otomatik olarak alır. Yedekleme bekletme aralıkları ve pencerelerhakkında ayrıntılı bilgi için [Azure Cosmos DB'de Çevrimiçi yedekleme ve isteğe bağlı veri geri yüklemesi 'ne](online-backup-and-restore.md)bakın.
 
 ## <a name="per-account-limits"></a>Hesap başına limitler
 

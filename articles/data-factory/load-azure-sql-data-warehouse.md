@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: dc6d8c9da749e7ee60713f4357dc6d46051d89f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1943c16c678d0783b99a0f16c25fa72137defc8a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131285"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415882"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Azure SQL Veri Ambarı’na yükleme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 [Azure SQL Veri Ambarı,](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, ölçeklendirilebilen bir veritabanıdır. SQL Veri Ambarı, kurumsal veri ambarı iş yükleri için en iyi duruma getirilmiş büyük ölçüde paralel işleme (MPP) mimarisi üzerine kurulmuştur. Depolamayı ölçeklendirme ve bağımsız olarak hesaplama esnekliğiile bulut elastikiyeti sunar.
 
@@ -59,7 +61,7 @@ Bu makalede, _Azure SQL Veritabanından Azure SQL Veri Ambarı'na veri yüklemek
     * **Sürüm**: **V2**seçin.
     * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. Bu veri depoları Azure Veri Gölü Deposu, Azure Depolama, Azure SQL Veritabanı ve benzeri bilgileri içerir.
 
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz:
 
    ![Data factory giriş sayfası](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)

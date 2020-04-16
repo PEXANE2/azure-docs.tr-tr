@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 40a7406ea91c95daad2f180b9d0f4620cdbbf454
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875937"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406984"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulama ve yetkilendirme hata kodları
 
@@ -27,6 +27,49 @@ Azure Etkin Dizin (Azure AD) güvenlik belirteç hizmetinden (STS) döndürülen
 > Bu bilgiler geçicidir ve değiştirilebilir. Bir sorunuz mu var ya da aradığınızı bulamıyor musunuz? Bir GitHub sorunu oluşturun veya [geliştiricilerin](active-directory-develop-help-support.md) yardım ve destek almanın diğer yolları hakkında bilgi edinmeleri için Destek ve Yardım seçeneklerini görün.
 >
 > Bu belge geliştirici ve yönetici kılavuzu için sağlanır, ancak istemcinin kendisi tarafından asla kullanılmamalıdır. Hata kodları, uygulamalarını yaparken geliştiriciye yardımcı olmak amacıyla daha ayrıntılı hata iletileri sağlamak için herhangi bir zamanda değiştirilebilir. Metin veya hata kodu numaralarına bağımlı olan uygulamalar zaman içinde bozulur.
+
+## <a name="handling-error-codes-in-your-application"></a>Uygulamanızda hata kodlarını işleme
+
+[OAuth2.0 spec](https://tools.ietf.org/html/rfc6749#section-5.2) hata yanıtı `error` bölümünü kullanarak kimlik doğrulama sırasında hataları işlemek için nasıl rehberlik sağlar. 
+
+Örnek bir hata yanıtı aşağıda veda edebilirsiniz:
+
+```json
+{
+  "error": "invalid_scope",
+  "error_description": "AADSTS70011: The provided value for the input parameter 'scope' is not valid. The scope https://example.contoso.com/activity.read is not valid.\r\nTrace ID: 255d1aef-8c98-452f-ac51-23d051240864\r\nCorrelation ID: fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7\r\nTimestamp: 2016-01-09 02:02:12Z",
+  "error_codes": [
+    70011
+  ],
+  "timestamp": "2016-01-09 02:02:12Z",
+  "trace_id": "255d1aef-8c98-452f-ac51-23d051240864",
+  "correlation_id": "fb3d2015-bc17-4bb9-bb85-30c5cf1aaaa7", 
+  "error_uri":"https://login.microsoftonline.com/error?code=70011"
+}
+```
+
+| Parametre         | Açıklama    |
+|-------------------|----------------|
+| `error`       | Oluşan hata türlerini sınıflandırmak için kullanılabilecek ve hatalara tepki vermek için kullanılması gereken bir hata kodu dizesi. |
+| `error_description` | Bir geliştiricinin kimlik doğrulama hatasının temel nedenini belirlemesine yardımcı olabilecek belirli bir hata iletisi. Kodunuzdaki bir hataya tepki vermek için bu alanı asla kullanmayın. |
+| `error_codes` | Tanılamada yardımcı olabilecek STS'ye özgü hata kodlarının listesi.  |
+| `timestamp`   | Hatanın oluştuğu saat. |
+| `trace_id`    | Tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
+| `correlation_id` | Bileşenler arasında tanılamada yardımcı olabilecek istek için benzersiz bir tanımlayıcı. |
+| `error_uri` |  Hata hakkında ek bilgi içeren hata arama sayfasına bağlantı.  Bu yalnızca geliştirici kullanımı içindir, kullanıcılara sunmayın.  Yalnızca hata arama sistemi hata hakkında ek bilgilere sahipolduğunda mevcut - tüm hata ek bilgiler sağlanmış değil.|
+
+Alan `error` birkaç olası değere sahiptir - belirli hatalar (örneğin, `authorization_pending` aygıt kodu [akışında)](v2-oauth2-device-code.md)ve bunlara nasıl tepki vereceğiniz hakkında daha fazla bilgi edinmek için protokol dokümantasyon bağlantılarını ve OAuth 2.0 özelliklerini gözden geçirin.  Bazı yaygın olanlar burada listelenir:
+
+| Hata Kodu         | Açıklama        | İstemci Eylemi    |
+|--------------------|--------------------|------------------|
+| `invalid_request`  | Eksik gerekli parametre gibi protokol hatası. | İsteği düzeltin ve yeniden gönderin.|
+| `invalid_grant`    | Kimlik doğrulama materyalinin bazıları (auth kodu, yenileme belirteci, erişim belirteci, PKCE zorluğu) geçersiz, ayrıayrı, eksik veya başka bir şekilde kullanılamaz | Yeni bir yetkilendirme `/authorize` kodu almak için bitiş noktasına yeni bir istek deneyin.  Uygulamanın protokolleri kullanımını gözden geçirmeyi ve doğrulamayı düşünün. |
+| `unauthorized_client` | Kimliği doğrulanan istemci, bu yetkilendirme hibe türünü kullanma yetkisine izin vermez. | Bu genellikle istemci uygulaması Azure AD'de kayıtlı değilse veya kullanıcının Azure AD kiracısına eklenmediğinde oluşur. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir. |
+| `invalid_client` | İstem kimlik doğrulaması başarısız oldu.  | İstemci kimlik bilgileri geçerli değil. Düzeltmek için, uygulama yöneticisi kimlik bilgilerini güncelleştirir.   |
+| `unsupported_grant_type` | Yetkilendirme sunucusu yetkilendirme hibe türünü desteklemez. | İstekteki hibe türünü değiştirin. Bu tür hatalar yalnızca geliştirme sırasında ortaya çıkmalıdır ve ilk sınama sırasında algılanmalıdır. |
+| `invalid_resource` | Hedef kaynak yok, Azure AD bulamadığı veya doğru şekilde yapılandırılamadığı için geçersizdir. | Bu, varsa kaynağın kiracıda yapılandırılmadığını gösterir. Uygulama, kullanıcıdan uygulamayı yüklemesi ve Azure AD'ye eklemesi için talimat isteyebilir.  Geliştirme sırasında, bu genellikle istenen kapsam adına yanlış kurulum testi kiracı veya bir yazım hatası gösterir. |
+| `interaction_required` | İstek kullanıcı etkileşimi gerektirir. Örneğin, ek bir kimlik doğrulama adımı gereklidir. | Kullanıcının gerekli zorlukları tamamlayabilmesi için isteği aynı kaynakla etkileşimli olarak yeniden deneyin.  |
+| `temporarily_unavailable` | Sunucu geçici olarak isteği işlemek için çok meşgul. | İsteği yeniden deneyin. İstemci uygulaması, geçici bir durum nedeniyle yanıtının geciktiğini kullanıcıya açıklayabilir. |
 
 ## <a name="lookup-current-error-code-information"></a>Güncel hata kodu bilgilerini arama
 Hata kodları ve iletiler değiştirilebilir.  En güncel bilgiler için, AADSTS hata açıklamalarını, düzeltmeleri ve önerilen bazı geçici geçici işleri bulmak için `https://login.microsoftonline.com/error` sayfaya bir göz atın.  

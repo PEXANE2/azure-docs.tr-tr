@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 446e579a7205f0e785d7e940c1dbdd36cff8f370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416275"
 ---
 <a name="web-analytics"></a>Web Analizi
 =============
@@ -40,7 +40,7 @@ Kendi kampanyanızı oluşturmanın iki yolu vardır.
 
 1. URL'nize kampanyanın ne olduğunu ve bu müşterilerin hangi sayfadan/olaydan geldiğini açıklayan sorgu parametresi **mktcmpid'i** ekleyin.
 
-Örneğin şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign>
+Örneğin şunları kullanabilirsiniz:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign```
 
 1. (Gelişmiş): URL'de desteklenen genel kampanya kişilerimizden birini kullanın. Kullanmanız gereken ek ref etiketleri ile uyumlu olmak istiyoruz, bu nedenle bu ek etiketleri otomatik olarak tanımak için kuralı destekliyoruz:
     
@@ -49,14 +49,14 @@ Kendi kampanyanızı oluşturmanın iki yolu vardır.
     3. **ref**
     4. **src**
 
-Örneğin şunları kullanabilirsiniz:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign>
+Örneğin şunları kullanabilirsiniz:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=NewCampaign```
 
 Müşterinin geldiği yer (e-posta, blog, sosyal medya kaynağı, vb.) gibi kampanya için trafiği yönlendiren birden fazla kaynağı daha fazla belirlemek için bu kampanya kimliklerinin birden fazla sının bir birleşimine sahip olmayı seçebilirsiniz.
 
-Örnek:
+Örneğin:
 
-1. Bülten referrer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter>
-2. LinkedIn referrer:<https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn>
+1. Bülten referrer:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=newsletter```
+2. LinkedIn referrer:```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?mktcmpid=NewCampaign&src=LinkedIn```
 
 ### <a name="ensuring-campaigns-pass-through-all-your-pages"></a>**Kampanyaların tüm sayfalarınızdan geçmesini sağlama**
 
@@ -64,13 +64,13 @@ Kampanyalarınızın, trafiği yönlendirdiğiniz ve müşterileri pazara gönde
 
 Örnek aşağıda verilmiştir:
 
-1. Pazarlama çalışanı, şirketin\'açılış sayfasına <https://contoso.com>trafik çekmek için Google'dan reklam satın alır. Bu açılış sayfasında \"gider\" benim ürün <https://appsource.com>bağlantısı deneyin .
+1. Pazarlama çalışanı, şirketin\'açılış sayfasına ```https://contoso.com```trafik çekmek için Google'dan reklam satın alır. Bu açılış sayfasında \"gider\" benim ürün ```https://appsource.com```bağlantısı deneyin .
 2. Bir kullanıcı reklamı tıklar ve\'şirketinin açılış sayfasına iner.
     1.  Sevk URL = google.com
-    2.  Açılış Sayfası URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
+    2.  Açılış Sayfası URL =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. Kullanıcı benim ürün \"\" bağlantısını deneyin tıklar ve AppSource gider.
-    1. Başvuru URL =<https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName>
-    2. Açılış Sayfası URL'si (**Bu URL'nin\_utm kampanyasına ve utm\_kaynağının bu URL'ye eklenmediğinden emin olun**) = [ https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm\_kampanyası=MyCampaignAdName&utm\_kaynak=MySourceAdName](https://appsource.microsoft.com/product/dynamics-365/contoso.offername?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName)
+    1. Başvuru URL =```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
+    2. Açılış Sayfası URL'si (**Bu URL'nin\_utm kampanyasına sahip olduğundan ve bu URL'ye utm\_kaynağının eklenmiştir)**=```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>Kampanyanın başarısı nasıl değerlendirilir?
 -----------------------------------------

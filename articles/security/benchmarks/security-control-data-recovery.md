@@ -1,19 +1,18 @@
 ---
 title: Azure Güvenlik Denetimi - Veri Kurtarma
-description: Güvenlik Denetimi Veri Kurtarma
+description: Azure Güvenlik Denetimi Veri Kurtarma
 author: msmbaldwin
-manager: rkarlin
 ms.service: security
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/14/2020
 ms.author: mbaldwin
-ms.custom: security-recommendations
-ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: security-benchmark
+ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75934503"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408580"
 ---
 # <a name="security-control-data-recovery"></a>Güvenlik Denetimi: Veri Kurtarma
 
@@ -27,9 +26,7 @@ Tüm sistem verilerinin, yapılandırmalarının ve sırların düzenli olarak o
 
 Azure Yedekleme'yi etkinleştirin ve yedekleme kaynağını (Azure VM'ler, SQL Server veya Dosya Paylaşımları) ve istenen sıklık ve bekletme süresini yapılandırın.
 
-Azure Yedekleme nasıl etkinleştirilir:
-
-https://docs.microsoft.com/azure/backup/
+- [Azure Yedekleme nasıl etkinleştirilir?](https://docs.microsoft.com/azure/backup/)
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Komple sistem yedeklemelerini gerçekleştirin ve müşteri yönetilen anahtarları yedekleme
 
@@ -39,13 +36,9 @@ https://docs.microsoft.com/azure/backup/
 
 Azure Yedekleme'yi ve vm(ler'i) ve istenen sıklık ve bekletme sürelerini etkinleştirin. Azure Key Vault'ta müşteri yönetilen anahtarları yedekle.
 
-Azure Yedekleme nasıl etkinleştirilir:
+- [Azure Yedekleme nasıl etkinleştirilir?](https://docs.microsoft.com/azure/backup/)
 
-https://docs.microsoft.com/azure/backup/
-
-Azure'da anahtar kasa sıyrık anahtarlarını yedekleme:
-
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+- [Azure'da anahtar kasa sıyrık anahtarlarını yedekleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Müşteri yönetilen anahtarlar dahil tüm yedeklemeleri doğrulayın
 
@@ -53,15 +46,11 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvau
 |--|--|--|
 | 9.3 | 10.3 | Müşteri |
 
-Azure Yedekleme'deki içeriğin düzenli olarak veri geri yüklenmesini gerçekleştirebilme özelliğini sağlayın. Gerekirse, yalıtılmış vlan için geri yükleme test edin. Yedeklenen müşteri yönetilen anahtarlarının test geri yüklemesi.
+Azure Yedekleme'deki içeriğin düzenli olarak veri geri yüklenmesini gerçekleştirebilme özelliğini sağlayın. Yedeklenen müşteri yönetilen anahtarlarının test geri yüklemesi.
 
-Azure Virtual Machine yedeklemesinden dosyaları kurtarma:
+- [Azure Virtual Machine yedeklemesinden dosyaları kurtarma](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm)
 
-https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm
-
-Azure'da anahtar kasa sıtuşlarını geri yükleme:
-
-https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+- [Azure'da anahtar kasa sıtuşlarını geri yükleme](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
 ## <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Yedeklerin ve müşteri yönetilen anahtarlarının korunmasını sağlayın
 
@@ -69,12 +58,17 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 |--|--|--|
 | 9.4 | 10.4 | Müşteri |
 
-Şirket içi yedekleme için, beklemedeyken şifreleme özelliği Azure'a yedekleme yaparken sağladığınız parola kullanılarak sağlanır. Azure VM'leri için, veriler Depolama Hizmeti Şifrelemesi (SSE) kullanılarak beklemedeyken şifrelenir. Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault'ta Soft-Delete'i etkinleştirebilirsiniz.
+Şirket içi yedekleme için, beklemedeyken şifreleme özelliği Azure'a yedekleme yaparken sağladığınız parola kullanılarak sağlanır. Azure VM'leri için, veriler Depolama Hizmeti Şifrelemesi (SSE) kullanılarak beklemedeyken şifrelenir. Yedeklemeleri ve müşteri yönetilen anahtarları korumak için rol tabanlı erişim denetimini kullanın.  
 
-Anahtar Kasasında Soft-Delete nasıl etkinleştirilir:
+Anahtarları yanlışlıkla veya kötü amaçlı silmeye karşı korumak için Key Vault'ta Yumuşak Silme ve temizleme korumasını etkinleştirin.  Yedeklemeleri depolamak için Azure Depolama kullanılıyorsa, blobs veya blob anlık görüntüleri silindiğinde verilerinizi kaydetmek ve kurtarmak için yumuşak silme'yi etkinleştirin. 
 
-https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+- [Azure RBAC'ı Anlayın](https://docs.microsoft.com/azure/role-based-access-control/overview)
+
+- [Key Vault'ta Soft-Delete ve Temizleme koruması nasıl etkinleştirilir?](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+
+- [Azure Depolama blobları için geçici silme](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki güvenlik denetimine bakın: [Olay Yanıtı](security-control-incident-response.md)
+- Sonraki Güvenlik Denetimine Bakın: [Olay Yanıtı](security-control-incident-response.md)

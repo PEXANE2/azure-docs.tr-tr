@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: cb1444261a2ba4810f4fddb3d7aa3bc172f09654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278876"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405795"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Karma Runbook Worker'ı kullanarak veri merkezinizdeki veya bulutunuzdaki kaynakları otomatikleştirin
 
@@ -20,23 +20,23 @@ Aşağıdaki resim bu işlevselliği göstermektedir:
 
 ![Karma Runbook Çalışanına genel bakış](media/automation-hybrid-runbook-worker/automation.png)
 
-Her Karma Runbook Çalışanı, aracıyı yüklediğinizde belirttiğiniz karma runbook worker grubunun bir üyesidir. Bir grup tek bir aracı içerebilir, ancak yüksek kullanılabilirlik için bir gruba birden çok aracı yükleyebilirsiniz. Her makine, bir Otomasyon Hesabı'na rapor bildiren bir Karma İşçi barındırabilir.
+Her Karma Runbook Çalışanı, aracıyı yüklediğinizde belirttiğiniz karma runbook worker grubunun bir üyesidir. Bir grup tek bir aracı içerebilir, ancak yüksek kullanılabilirlik için bir gruba birden çok aracı yükleyebilirsiniz. Her makine, bir Otomasyon hesabına rapor bildiren bir Karma İşçi barındırabilir.
 
-Bir Karma Runbook Çalışanı'nda bir runbook başlattığınızda, üzerinde çalıştığı grubu belirtirsiniz. Gruptaki her çalışan, kullanılabilir iş olup olmadığını görmek için Azure Otomasyonu'nu yoklar. Bir iş varsa, işi alan ilk işçi alır. İş sırasının işlem süresi Karma alt donanım profiline ve yüküne bağlıdır. Belirli bir işçiyi belirtemezsiniz. Karma Runbook Çalışanları, Azure kum kutularının sahip olduğu sınırların çoğunu paylaşmaz. Disk alanı, bellek veya ağ yuvalarında aynı sınırlara sahip değildirler. Karma Runbook Çalışanları yalnızca Karma Runbook Worker'ın kendisindeki kaynaklarla sınırlıdır. Buna ek olarak, Karma Runbook Çalışanları Azure ve Zimdiye'nin yaptığı 180 dakikalık [adil paylaşım](automation-runbook-execution.md#fair-share) süresi sınırını paylaşmaz. Azure ve Karma Runbook Çalışanları için hizmet sınırları hakkında daha fazla bilgi edinmek için iş [sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) sayfasına bakın.
+Bir Karma Runbook Çalışanı'nda bir runbook başlattığınızda, üzerinde çalıştığı grubu belirtirsiniz. Gruptaki her çalışan, kullanılabilir iş olup olmadığını görmek için Azure Otomasyonu'nu yoklar. Bir iş varsa, işi alan ilk işçi alır. İş sırasının işlem süresi Karma alt donanım profiline ve yüküne bağlıdır. Belirli bir işçiyi belirtemezsiniz. Karma Runbook Çalışanları, Azure kum kutularının sahip olduğu sınırların çoğunu paylaşmaz. Disk alanı, bellek veya ağ yuvalarında aynı sınırlara sahip değildirler. Karma Runbook Çalışanları yalnızca Karma Runbook Worker'ın kendisindeki kaynaklarla sınırlıdır. Buna ek olarak, Karma Runbook Çalışanları Azure ve zimtbox'larının sahip olduğu 180 dakikalık [adil paylaşım](automation-runbook-execution.md#fair-share) süresi sınırını paylaşmaz. Azure ve Karma Runbook Çalışanları için hizmet sınırları hakkında daha fazla bilgi edinmek için iş [sınırlarına](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)bakın.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Karma Runbook Worker yükleme
 
-Karma Runbook Worker yükleme işlemi işletim sistemi bağlıdır. Aşağıdaki tablo, yükleme için kullanabileceğiniz yöntemlere bağlantılar içerir.
-
-Bir Windows Karma Runbook Worker yüklemek ve yapılandırmak için iki yöntem kullanabilirsiniz. Önerilen yöntem, bir Windows bilgisayarını yapılandırma işlemini tamamen otomatikleştirmek için bir Otomasyon runbook kullanmaktır. İkinci yöntem, rolü el ile yüklemek ve yapılandırmak için adım adım yordamı takip etmektir. Linux makineleri için aracıyı makineye yüklemek için bir Python komut dosyası çalıştırın.
+Karma Runbook Worker yükleme işlemi işletim sistemine bağlıdır. Aşağıdaki tabloda dağıtım türleri tanımlanmektedir.
 
 |İşletim Sistemi  |Dağıtım türleri  |
 |---------|---------|
-|Windows     | [Powershell](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
+Önerilen yükleme yöntemi, bir Windows bilgisayarını yapılandırma işlemini tamamen otomatikleştirmek için bir Otomasyon runbook kullanmaktır. İkinci yöntem, rolü el ile yüklemek ve yapılandırmak için adım adım yordamı izlemektir. Linux makineleri için aracıyı makineye yüklemek için bir Python komut dosyası çalıştırın.
+
 > [!NOTE]
-> İstenilen Durum Yapılandırması (DSC) ile Karma Runbook Worker rolünü destekleyen sunucularınızın yapılandırmasını yönetmek için bunları DSC düğümleri olarak eklemeniz gerekir. DSC ile yönetim için bunları onboarding hakkında daha fazla bilgi için, [Azure Automation DSC tarafından yönetimi için Onboarding makineleri](automation-dsc-onboarding.md)bakın.
+> İstenilen Durum Yapılandırması (DSC) ile Karma Runbook Worker rolünü destekleyen sunucularınızın yapılandırmasını yönetmek için sunucuları DSC düğümleri olarak eklemeniz gerekir. DSC ile yönetim için bunları onboarding hakkında daha fazla bilgi için, [Azure Automation DSC tarafından yönetimi için Onboarding makineleri](automation-dsc-onboarding.md)bakın.
 >
 >Güncelleştirme Yönetimi [çözümlüğünü](automation-update-management.md)etkinleştiriseniz, Azure Log Analytics çalışma alanınıza bağlı tüm bilgisayarlar, bu çözümde yer alan runbook'ları desteklemek üzere otomatik olarak Karma Runbook Çalışanı olarak yapılandırılır. Ancak, bilgisayar Otomasyon hesabınızda zaten tanımlanmış olan Hibrit İşçi gruplarına kayıtlı değildir. Bilgisayar, hem çözüm hem de Karma Runbook İşçi grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon runbook kitaplarını desteklemek için Otomasyon hesabınızdaki Bir Karma Runbook İşçisi grubuna eklenebilir. Bu işlev, Hybrid Runbook Worker'ın 7.2.12024.0 sürümüne eklendi.
 
@@ -44,44 +44,38 @@ Karma Runbook Worker dağıtmaya başlamadan önce [ağınızı planlamak için 
 
 Bilgisayar, hem çözüm hem de Karma Runbook İşçi grup üyeliği için aynı hesabı kullandığınız sürece Otomasyon runbook kitaplarını desteklemek için Otomasyon hesabınızdaki Bir Karma Runbook İşçisi grubuna eklenebilir. Bu işlev Karma Runbook Çalışanının 7.2.12024.0 sürümüne eklenmiştir.
 
-## <a name="remove-a-hybrid-runbook-worker"></a>Karma Runbook İşçisi Kaldırma
+## <a name="a-nameremove-a-hybrid-runbook-workerremove-a-hybrid-runbook-worker-from-an-on-premises-computer"></a><a name="remove-a-hybrid-runbook-worker">Karma Runbook İşçisi'ni şirket içi bilgisayardan kaldırma
 
-Bir gruptan bir veya daha fazla Karma Runbook Çalışanı kaldırabilir veya gereksinimlerinize bağlı olarak grubu kaldırabilirsiniz. Karma Runbook Worker'ı şirket içi bilgisayardan kaldırmak için aşağıdaki adımları kullanın:
+Windows ve Linux için bu bölümde açıklandığı gibi, bir Karma Runbook İşçisi'ni şirket içi bir bilgisayardan kaldırabilirsiniz.
+
+### <a name="remove-the-worker-on-windows"></a>Windows'da çalışan kaldırma
 
 1. Azure portalında Otomasyon hesabınıza gidin.
-2. **Hesap Ayarları** **altında, Anahtarlar'ı** seçin ve **URL** ve Birincil **Erişim Anahtarı**değerlerini not alın. Bir sonraki adım için bu bilgilere ihtiyacınız var.
+2. **Hesap Ayarları** **altında, Anahtarlar'ı** seçin ve **URL** ve Birincil **Erişim Anahtarı**değerlerini not alın.
 
-### <a name="windows"></a>Windows
-
-Administrator modunda bir PowerShell oturumu açın ve aşağıdaki komutu çalıştırın. Kaldırma işleminin ayrıntılı bir günlüğü için **-Verbose** anahtarını kullanın.
-
-```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
-```
-
-Karma İşçi grubunuzun eski makineleri kaldırmak için `machineName` isteğe bağlı parametreyi kullanın.
+3. Administrator modunda bir PowerShell oturumu açın ve URL'niz ve birincil erişim anahtar değerlerinizle aşağıdaki komutu çalıştırın. Kaldırma `Verbose` işleminin ayrıntılı bir günlüğü için parametreyi kullanın. Karma İşçi grubunuzun eski makineleri kaldırmak için `machineName` isteğe bağlı parametreyi kullanın.
 
 ```powershell-interactive
 Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
 ```
 
-### <a name="linux"></a>Linux
+### <a name="remove-the-worker-on-linux"></a>Linux'ta çalışanı kaldırın
 
-Workspaceid'i `ls /var/opt/microsoft/omsagent` almak için Karma Runbook Worker'daki komutu kullanabilirsiniz. Dizinde klasörün adının çalışma alanı kimliği olduğu bir klasör vardır.
+Çalışma alanı kimliğini `ls /var/opt/microsoft/omsagent` almak için Karma Runbook İşçisi'ndeki komutu kullanabilirsiniz. Çalışma alanı kimliğiyle birlikte adlandırılmış bir klasör oluşturulur.
 
 ```bash
 sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
 ```
 
 > [!NOTE]
-> Bu kod, Microsoft İzleme Aracısını bilgisayardan kaldırmaz, yalnızca Karma Runbook Worker rolünün işlevselliğini ve yapılandırmasını kaldırır.
+> Bu kod, Microsoft İzleme Aracısını bilgisayardan kaldırmaz. Yalnızca Karma Runbook Worker rolünün işlevselliğini ve yapılandırmasını kaldırır.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Karma Çalışanı grubunu kaldırma
 
-Bir grubu kaldırmak için, önce daha önce gösterilen yordamı kullanarak grubun üyesi olan her bilgisayardan Karma Runbook İşçisini kaldırmanız gerekir. Ardından, grubu kaldırmak için aşağıdaki adımları kullanın:
+Karma Runbook Worker grubunu kaldırmak için öncelikle Grubun üyesi olan her bilgisayardan Karma Runbook İşçisi'ni kaldırmanız gerekir. Ardından grubu kaldırmak için aşağıdaki adımları kullanın:
 
 1. Azure portalında Otomasyon hesabını açın.
-2. **Proses Otomasyonu**altında, **Karma işçi gruplarını**seçin. Silmek istediğiniz grubu seçin. Bu grubun özellikleri sayfası görüntülenir.
+2. **Proses Otomasyonu**altında **Karma işçi gruplarını** seçin. Silmek istediğiniz grubu seçin. Bu grubun özellikleri sayfası görüntülenir.
 
    ![Özellikler sayfası](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
 
@@ -108,7 +102,7 @@ Hibrit Runbook Worker rolünün Otomasyon ile iletişim kurması için aşağıd
 * US Gov Virginia'nın Genel URL'si: *.azure-automation.us
 * Aracı hizmeti:\<https://\>çalışma alanıId .agentsvc.azure-automation.net
 
-Özel durumları tanımlarken listelenen adreslerin kullanılması önerilir. IP adresleri için Microsoft [Azure Veri Merkezi IP Aralıklarını](https://www.microsoft.com/en-us/download/details.aspx?id=56519)indirebilirsiniz. Bu dosya haftalık olarak güncellenir ve şu anda dağıtılan aralıklara ve IP aralıklarında yapılacak değişikliklere sahiptir.
+Özel durumları tanımlarken listelenen adreslerin kullanılması önerilir. IP adresleri için [Microsoft Azure Veri Merkezi IP Aralıklarını](https://www.microsoft.com/en-us/download/details.aspx?id=56519)indirebilirsiniz. Bu dosya haftalık olarak güncellenir ve şu anda dağıtılan aralıklara ve IP aralıklarında yapılacak değişikliklere sahiptir.
 
 Belirli bir bölge için tanımlanmış bir Otomasyon hesabınız varsa, iletişimi o bölgesel veri merkeziyle sınırlandırabilirsiniz. Aşağıdaki tablo her bölge için DNS kaydısağlar:
 
@@ -152,5 +146,4 @@ Karma Runbook Worker'ın gerektirdiği standart adres ve bağlantı noktaların�
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Çalışma kitaplarınızı şirket içi veri merkezinizdeki veya diğer bulut ortamınızdaki işlemleri otomatikleştirmek için nasıl yapılandırılabildiğini öğrenmek için, [Karma Runbook Çalışanı'ndaki runbook'lara](automation-hrw-run-runbooks.md)bakın.
-* Karma Runbook Çalışanlarınızı nasıl sorun gidereceklerini öğrenmek için [Bkz.](troubleshoot/hybrid-runbook-worker.md#general)
-
+* Karma Runbook Çalışanlarınızı nasıl gidererinizi öğrenmek için, [Sorun Giderme Karma Runbook Çalışanları'na](troubleshoot/hybrid-runbook-worker.md#general)bakın.

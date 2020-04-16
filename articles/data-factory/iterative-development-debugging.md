@@ -10,14 +10,15 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 3a771181f8f2785339cbc47e0a0234b9c4e39adc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49e406f0730189439bb1c2529b23d8ad6d760a2f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926842"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411523"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası, Veri Fabrikası ardışık hatlarını yinelemeli olarak geliştirmenize ve hata ayıklamanıza olanak tanır.
 

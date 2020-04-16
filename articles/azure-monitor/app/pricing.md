@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9ecd0ffd76650efff3a4c9f877522cba6f28d080
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 0225484de06ae4e595f1dcbcdd520f4e0e4d53f5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271123"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405384"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights için kullanımı ve maliyetleri yönetme
 
@@ -28,7 +28,7 @@ Uygulama Öngörüleri için fiyatlandırmanın nasıl çalıştığı yla ilgil
 
 [Çok adımlı web testleri](../../azure-monitor/app/availability-multistep.md) ek bir ücrete tabidir. Çok adımlı web testleri, bir dizi eylem gerçekleştiren web testleridir. Tek bir sayfanın *ping testleri* için ayrı bir ücret alınmaz. Ping testlerinden ve çok adımlı testlerden telemetri, uygulamanızdaki diğer telemetriler ile aynı ücrete alınır.
 
-Özel metrik boyutlarda [uyarıyı etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) seçeneği, ek toplama öncesi ölçümlerin oluşturulmasına neden olabileceğinden ek maliyetler de oluşturabilir. Uygulama Öngörüleri'nde günlük tabanlı ve önceden toplanmış ölçümler ve Azure Monitor özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında daha fazla bilgi edinin.
+Özel metrik boyutlarda [uyarıyı etkinleştirme](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) seçeneği, ek toplama öncesi ölçümlerin oluşturulmasına neden olabileceğinden ek maliyetler de oluşturabilir. Uygulama Öngörüleri'nde günlük tabanlı ve önceden toplanmış ölçümler ve Azure Monitor özel ölçümleri için [fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/) hakkında [daha fazla bilgi edinin.](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics)
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Uygulamanızı yönetmek için maliyetleri tahmin etme
 
@@ -218,7 +218,9 @@ Uygulama Öngörüleri kaynağınızdan bekletmeyi değiştirmek için **Kullan�
 
 ![Günlük telemetri hacim kapağını ayarlama](./media/pricing/pricing-005.png)
 
-Bekletme, `retentionInDays` parametre kullanılarak [PowerShell kullanılarak programlı olarak](powershell.md#set-the-data-retention) da ayarlanabilir. Bekletme indirildiğinde, en eski verilerin kaldırılmasından önce birkaç günlük yetkisiz kullanım süresi vardır. Veri saklamayı 30 güne ayarlarsanız, parametreyi `immediatePurgeDataOn30Days` kullanarak eski verilerin hemen tasfiyesini tetikleyebilirsiniz ve bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Kaynak Yöneticisi aracılığıyla ortaya çıkarır ve çok dikkatli kullanılmalıdır. Veri hacmi kapağının günlük sıfırlama süresi, parametreyi `dailyQuotaResetTime` ayarlamak için Azure Kaynak Yöneticisi kullanılarak yapılandırılabilir.
+Bekletme indirildiğinde, en eski verilerin kaldırılmasından önce birkaç günlük yetkisiz kullanım süresi vardır.
+
+Bekletme, `retentionInDays` parametre kullanılarak [PowerShell kullanılarak programlı olarak](powershell.md#set-the-data-retention) da ayarlanabilir. Veri saklamayı 30 güne ayarlarsanız, parametreyi `immediatePurgeDataOn30Days` kullanarak eski verilerin hemen tasfiyesini tetikleyebilirsiniz ve bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu temizleme işlevi yalnızca Azure Kaynak Yöneticisi aracılığıyla ortaya çıkarır ve çok dikkatli kullanılmalıdır. Veri hacmi kapağının günlük sıfırlama süresi, parametreyi `dailyQuotaResetTime` ayarlamak için Azure Kaynak Yöneticisi kullanılarak yapılandırılabilir.
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights'ı kullanarak veri aktarım ücretleri
 

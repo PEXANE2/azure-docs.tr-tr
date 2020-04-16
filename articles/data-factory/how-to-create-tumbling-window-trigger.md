@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 2a634c81273c26722d53610a13e362e5e453f7e9
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380123"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414424"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Atlayan pencerede işlem hattı çalıştıran bir tetikleyici oluşturma
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bu makalede, yuvarlanan bir pencere tetikleyicioluşturmak, başlatmak ve izlemek için adımlar sağlar. Tetikleyiciler ve desteklenen türler hakkında genel bilgi için [Bkz.](concepts-pipeline-execution-triggers.md)
 
 Atlayan pencere tetikleyicileri, durumu korurken belirtilen bir başlangıç zamanından itibaren periyodik bir zaman aralığında başlatılan bir tetikleyici türüdür. Atlayan pencereler sabit boyutlu, çakışmayan ve bitişik zaman aralıkları dizisidir. Yuvarlanan pencere tetikleyicisi, bir ardışık pencere ile bire bir ilişkiye sahiptir ve yalnızca tekil bir ardışık pencere hattına başvurur.
@@ -229,5 +231,5 @@ Azure portalındaki tetikleyici çalıştırmaları ve ardışık hatlar denetim
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#triggers)
+* Tetikleyiciler hakkında ayrıntılı bilgi [için, Bkz. Boru Hattı yürütme ve tetikleyiciler.](concepts-pipeline-execution-triggers.md#trigger-execution)
 * [Atlayan pencere tetikleyici bağımlılığı oluşturma](tumbling-window-trigger-dependency.md)

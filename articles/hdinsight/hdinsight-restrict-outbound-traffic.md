@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 6e0c98cffef06fb6d6345fc2b23bbc22715909b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3432f981df3f666d6276eee4564ef33000faa6b1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410888"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Güvenlik Duvarı'nı kullanarak Azure HDInsight kümeleri için giden ağ trafiğini yapılandırma
 
@@ -82,7 +82,7 @@ Kümenin önemli iletişimleri göndermesine ve almasını sağlayan bir uygulam
 
    ![Başlık: Uygulama kuralı toplama ayrıntılarını girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Güvenlik duvarını ağ kurallarıyla yapılandırma
 
@@ -117,7 +117,7 @@ HDInsight kümenizi doğru şekilde yapılandırmak için ağ kurallarını olu�
 
    ![Başlık: Uygulama kuralı koleksiyonunu girin](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 ### <a name="create-and-configure-a-route-table"></a>Rota tablosu oluşturma ve yapılandırma
 
@@ -221,7 +221,7 @@ Genel bitiş noktası (`https://CLUSTERNAME.azurehdinsight.net`) veya ssh`CLUSTE
 #### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS bağımlılıkları
 
 > [!Important]
-> Aşağıdaki liste sadece en önemli FQDNs birkaç verir. [Bu dosyada](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA yapılandırmak için FQDNs tam listesini alabilirsiniz.
+> Aşağıdaki liste sadece en önemli FQDNs birkaç verir. [Bu dosyada](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA'nızı yapılandırmak için ek FQDN'ler (çoğunlukla Azure Depolama ve Azure Hizmet Veri Mes'leri) alabilirsiniz.
 
 | **Uç Nokta**                                                          |
 |---|

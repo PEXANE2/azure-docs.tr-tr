@@ -6,17 +6,17 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 03/10/2020
-ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437668"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410866"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
-Ağ güvenliği grupları (NSG'ler) için Azure HDInsight hizmet etiketleri, sağlık ve yönetim hizmetleri için IP adresleri gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olur. [Hizmet etiketleri,](../virtual-network/security-overview.md#service-tags) NSG'lerinizdeki [yönetim IP adreslerinin](hdinsight-management-ip-addresses.md) her birini girmeden belirli IP adreslerinden gelen trafiğe izin vermek için alternatif bir yöntem sağlar.
+Ağ güvenliği grupları (NSG'ler) için Azure HDInsight hizmet etiketleri, sağlık ve yönetim hizmetleri için IP adresleri gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olur. [Hizmet etiketleri,](../virtual-network/security-overview.md#service-tags) NSG'lerinizde [yönetim IP adreslerinin](hdinsight-management-ip-addresses.md) her birini girmeden belirli IP'lerden gelen gelen trafiğe izin verir.
 
 HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya varolan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
 
@@ -46,13 +46,13 @@ Bu etiket, HDInsight'ın kullanılabildiği tüm bölgeler için sağlık ve yö
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Bölgesel HDInsight hizmet etiketlerini kullanma
 
-Daha kısıtlayıcı izinlere ihtiyacınız olduğundan genel etiket seçeneği çalışmazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. Kümenizin oluşturulduğu bölgeye bağlı olarak bir, iki veya üç geçerli hizmet etiketi olabilir.
+Daha kısıtlayıcı izinlere ihtiyacınız olduğundan genel etiket seçeneği işe yaramazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. Kümenizin oluşturulduğu bölgeye bağlı olarak birden çok hizmet etiketi olabilir.
 
 Bölgeniz için hangi hizmet etiketlerini ekleyeceğinizi öğrenmek için makalenin aşağıdaki bölümlerini okuyun.
 
 ### <a name="use-a-single-regional-service-tag"></a>Tek bir bölgesel hizmet etiketi kullanma
 
-Bölgesel hizmet etiketleri kullanmayı tercih ediyorsanız ve kümeniz bu tabloda listelenen bölgelerden birinde bulunuyorsa, ağ güvenlik grubunuza yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
+Kümeniz bu tabloda listelenen bir bölgede bulunuyorsa, NSG'nize yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
@@ -80,13 +80,13 @@ Bölgesel hizmet etiketleri kullanmayı tercih ediyorsanız ve kümeniz bu tablo
 
 ### <a name="use-multiple-regional-service-tags"></a>Birden çok bölgesel hizmet etiketi kullanma
 
-Bölgesel hizmet etiketleri kullanmayı tercih ediyorsanız, ancak kümenizin oluşturulduğu bölge önceki tabloda listelenmediyse, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Birden fazla kullanma gereksinimi, çeşitli bölgeler için kaynak sağlayıcılarının düzenlenmesindeki farklılıklardan kaynaklanmaktadır.
+Kümenizin oluşturulduğu bölge önceki tabloda listelenmemişse, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Birden fazla kullanma gereksinimi, çeşitli bölgeler için kaynak sağlayıcılarının düzenlenmesindeki farklılıklardan kaynaklanır.
 
 Geri kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
 
 #### <a name="group-1"></a>Grup 1
 
-Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet `HDInsight.WestUS` etiketlerine ve `HDInsight.EastUS` listelenen bölgesel hizmet etiketine ek olarak izin verin. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
+Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet `HDInsight.WestUS` etiketlerini ve `HDInsight.EastUS`. Ayrıca, bölgesel hizmet etiketi listelenmiştir. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
 
 Örneğin, kümeniz `East US 2` bölgede oluşturulduysa, ağ güvenlik grubunuza aşağıdaki hizmet etiketlerini eklemeniz gerekir:
 

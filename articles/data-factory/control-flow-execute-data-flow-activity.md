@@ -9,14 +9,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 03/16/2020
-ms.openlocfilehash: 115cb3e499117457629e130b6432a1cbc2224edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79463059"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415325"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Veri Akışı etkinliği
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri akışlarını eşleme yoluyla verileri dönüştürmek ve taşımak için Veri Akışı etkinliğini kullanın. Veri akışlarına yeniyseniz, [Bkz. Veri Akışı Haritalama](concepts-data-flow-overview.md)
 
@@ -159,7 +161,7 @@ Bu lavaboda kullanılan 'source1' adlı bir kaynaktan okunan satır `@activity('
 
 Veri Fabrikası tarafından desteklenen denetim akışı etkinliklerine bakın: 
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

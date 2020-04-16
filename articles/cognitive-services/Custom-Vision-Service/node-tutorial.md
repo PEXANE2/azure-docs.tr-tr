@@ -8,14 +8,14 @@ manager: daauld
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: areddish
-ms.openlocfilehash: f1c0d8f72fe59ff9a8c0fdba86d97ea588a9a808
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 2a7da34238af6d1936c680cd5a063e9ad49ee889
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403612"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>Quickstart: Özel Vizyon Düğüm.js SDK ile bir görüntü sınıflandırma projesi oluşturun
 
@@ -176,7 +176,7 @@ Ardından test görüntüsünün (**<base_image_url>/Images/Test/** yolunda bulu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık kodda görüntü sınıflandırma işleminin her adımının nasıl uygulanabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesi yürütür ama modelinizin daha doğru olmasını sağlamak için çoğunlukla birden çok kez eğitmeniz ve test etmeniz gerekecektir.
+Şimdi nesne algılama işleminin her adımının kod olarak nasıl yapılabileceğini gördünüz. Bu örnek tek bir eğitim yinelemesini yürütür, ancak genellikle modelinizi daha doğru hale getirmek için birden çok kez eğitmeniz ve test etmeniz gerekir.
 
 > [!div class="nextstepaction"]
 > [Modeli test etme ve yeniden eğitme](test-your-model.md)

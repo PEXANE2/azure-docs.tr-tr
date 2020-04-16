@@ -3,14 +3,14 @@ title: Kullanıcı tarafından atanan yönetilen bir kimlikle uygulamayı dağı
 description: Bu makalede, kullanıcı tarafından atanan yönetilen bir kimlikle Service Fabric uygulamasını nasıl dağıtabileceğinizi gösterir
 ms.topic: article
 ms.date: 12/09/2019
-ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9aef81db7a455b72c83cf96898a0c228f1c382fd
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610344"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415638"
 ---
-# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Kullanıcı Tarafından Atanan Yönetilen Kimlikle Hizmet Kumaşı uygulamasını dağıtma (önizleme)
+# <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity"></a>Kullanıcı Tarafından Atanan Yönetilen Kimlikle Hizmet Kumaşı uygulamasını dağıtma
 
 Yönetilen kimliğe sahip bir Hizmet Dokusu uygulamasını dağıtmak için uygulamanın genellikle Azure Kaynak Yöneticisi şablonuyla Azure Kaynak Yöneticisi aracılığıyla dağıtılması gerekir. Azure Kaynak Yöneticisi aracılığıyla Hizmet Dokusu uygulamasının nasıl dağıtılancaya kadar dağıtılabildiğim hakkında daha fazla bilgi [için](service-fabric-application-arm-resource.md)bkz.
 

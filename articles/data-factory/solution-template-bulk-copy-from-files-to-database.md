@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: ae250c7d15801789ad22955845cfa535ed91f2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 070b708f204006bc1ba90c4c3676696291fde902
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75921149"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414863"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Dosyalardan veritabanına toplu kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, verileri Azure Veri Gölü Depolama Gen2'den Azure Synapse Analytics / Azure SQL Veritabanı'na toplu olarak kopyalamak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır.
 

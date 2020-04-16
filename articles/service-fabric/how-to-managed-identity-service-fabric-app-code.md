@@ -1,16 +1,16 @@
 ---
 title: Bir uygulamayla yönetilen kimliği kullanma
-description: Azure Hizmetleri'ne erişmek için Azure Hizmet Dokusu uygulama kodunda yönetilen kimlikler nasıl kullanılır? Bu özellik genel önizleme aşamasındadır.
+description: Azure Hizmetleri'ne erişmek için Azure Hizmet Dokusu uygulama kodunda yönetilen kimlikler nasıl kullanılır?
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75610327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415611"
 ---
-# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinasıl kullanılır (önizleme)
+# <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinasıl kullanılır?
 
 Service Fabric uygulamaları, Azure Etkin Dizin tabanlı kimlik doğrulamasını destekleyen diğer Azure kaynaklarına erişmek için yönetilen kimliklerden yararlanabilir. Bir uygulama, sistem tarafından atanmış veya kullanıcı tarafından atanmış olabilecek kimliğini temsil eden bir [erişim belirteci](../active-directory/develop/developer-glossary.md#access-token) alabilir ve kendisini başka bir hizmete doğrulamak için 'taşıyıcı' belirteci olarak kullanabilir - [korumalı kaynak sunucusu](../active-directory/develop/developer-glossary.md#resource-server)olarak da bilinir. Belirteç, Hizmet Dokusu uygulamasına atanan kimliği temsil eder ve yalnızca bu kimliği paylaşan Azure kaynaklarına (SF uygulamaları dahil) verilir. Yönetilen kimliklerin ayrıntılı bir açıklamasının yanı sıra sistem tarafından atanan ve kullanıcı tarafından atanan kimlikler arasındaki ayrım için [yönetilen kimliğe genel bakış](../active-directory/managed-identities-azure-resources/overview.md) belgelerine bakın. Bu makale boyunca yönetilen kimlik etkinleştirilmiş Hizmet Dokusu uygulamasını [istemci uygulaması](../active-directory/develop/developer-glossary.md#client-application) olarak adlandıracağız.
 
@@ -24,19 +24,18 @@ Service Fabric uygulamaları, Azure Etkin Dizin tabanlı kimlik doğrulamasını
 Yönetilen kimlik için etkinleştirilen kümelerde, Hizmet Dokusu çalışma süresi, uygulamaların erişim belirteçleri elde etmek için kullanabileceği yerel bir ana bilgisayar bitiş noktasını ortaya çıkarır. Bitiş noktası kümenin her düğümünde kullanılabilir ve bu düğümdeki tüm varlıklar tarafından erişilebilir. Yetkili arayanlar bu bitiş noktasını arayarak ve bir kimlik doğrulama kodu sunarak erişim belirteçleri edinebilirler; kod, her farklı hizmet kodu paketi etkinleştirme için Hizmet Dokusu tarafından oluşturulur ve bu hizmet kodu paketini barındıran işlemin ömrüne bağlıdır.
 
 Özellikle, yönetilen kimlik etkin Hizmet Kumaşı hizmetinin ortamı aşağıdaki değişkenlerle tohumlanacaktır:
-- 'MSI_ENDPOINT': yol, API sürümü ve bu hizmetin yönetilen kimliğine karşılık gelen parametrelerle birlikte localhost bitiş noktası
-- 'MSI_SECRET': opak bir dize olan ve geçerli düğümdeki hizmeti benzersiz bir şekilde temsil eden bir kimlik doğrulama kodu
-
-> [!NOTE]
-> 'MSI_ENDPOINT' ve 'MSI_SECRET' adları, yönetilen kimliklerin önceki atamasını ("Yönetilen Hizmet Kimliği") ifade eder ve şimdi de amortismana uyrabilir. Adlar, yönetilen kimlikleri destekleyen diğer Azure hizmetleri tarafından kullanılan eşdeğer ortam değişken adları ile de tutarlıdır.
+- 'IDENTITY_ENDPOINT': hizmetin yönetilen kimliğine karşılık gelen yerel ana bilgisayar bitiş noktası
+- 'IDENTITY_HEADER': geçerli düğümdeki hizmeti temsil eden benzersiz bir kimlik doğrulama kodu
+- 'IDENTITY_SERVER_THUMBPRINT' : Hizmet kumaş ı yönetilen kimlik sunucusunun parmak izi
 
 > [!IMPORTANT]
-> Uygulama kodu 'MSI_SECRET' ortam değişkeninin değerini hassas veriler olarak dikkate almalıdır - günlüğe kaydedilmemeli veya başka bir şekilde dağıtılmamalıdır. Kimlik doğrulama kodunun yerel düğüm dışında veya hizmeti barındıran işlem sona erdikten sonra bir değeri yoktur, ancak Hizmet Kumaşı hizmetinin kimliğini temsil eder ve bu nedenle erişim belirteciyle aynı önlemlerle tedavi edilmelidir.
+> Uygulama kodu 'IDENTITY_HEADER' ortam değişkeninin değerini hassas veri olarak dikkate almalıdır - günlüğe kaydedilmemeli veya başka bir şekilde dağıtılmamalıdır. Kimlik doğrulama kodunun yerel düğüm dışında veya hizmeti barındıran işlem sona erdikten sonra bir değeri yoktur, ancak Hizmet Kumaşı hizmetinin kimliğini temsil eder ve bu nedenle erişim belirteciyle aynı önlemlerle tedavi edilmelidir.
 
 Bir belirteç elde etmek için istemci aşağıdaki adımları gerçekleştirir:
-- yönetilen kimlik bitiş noktasını (MSI_ENDPOINT değeri) API sürümü ve belirteç için gerekli olan kaynak (hedef kitle) ile bir araya getirmek tarafından bir URI oluşturur
-- belirtilen URI için get http isteği oluşturur
-- istek için üstbilgi olarak kimlik doğrulama kodunu (MSI_SECRET değeri) ekler
+- yönetilen kimlik bitiş noktasını (IDENTITY_ENDPOINT değeri) API sürümü ve belirteç için gerekli olan kaynak (hedef kitle) ile bir araya getirmek tarafından bir URI oluşturur
+- belirtilen URI için get http(ler) isteği oluşturur
+- uygun sunucu sertifikası doğrulama mantığı ekler
+- istek için üstbilgi olarak kimlik doğrulama kodunu (IDENTITY_HEADER değeri) ekler
 - isteği gönderir
 
 Başarılı bir yanıt, ortaya çıkan erişim belirteci temsil eden bir JSON yükü yanı sıra onu açıklayan meta veri içerir. Başarısız bir yanıt da hata bir açıklama içerecektir. Hata işleme ile ilgili ek ayrıntılar için aşağıya bakın.
@@ -44,19 +43,22 @@ Başarılı bir yanıt, ortaya çıkan erişim belirteci temsil eden bir JSON y�
 Erişim belirteçleri Çeşitli düzeylerde (düğüm, küme, kaynak sağlayıcı hizmeti) Service Fabric tarafından önbelleğe alınacaktır, bu nedenle başarılı bir yanıt, belirteci kullanıcı uygulamasının isteğine yanıt olarak doğrudan verildiği anlamına gelmez. Belirteçler kullanım ömürlerinden daha kısa bir süre için önbelleğe alınacaktır ve böylece geçerli bir jeton alacağı garanti edilir. Uygulama kodunun kendisine edindığı herhangi bir erişim belirteçlerini önbelleğe alması önerilir; önbelleğe alma anahtarı izleyiciyi içermelidir (bir türetme). 
 
 
+> [!NOTE]
+> Kabul edilen tek API sürümü `2019-07-01-preview`şu anda ve değişebilir.
+
 Örnek istek:
 ```http
-GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
+GET 'https://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://vault.azure.net/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
 burada:
 
 | Öğe | Açıklama |
 | ------- | ----------- |
 | `GET` | Son noktadan veri almak istediğinizi belirten HTTP fiili. Bu durumda, bir OAuth erişim belirteci. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | MSI_ENDPOINT ortam değişkeni üzerinden sağlanan Service Fabric uygulamaları için yönetilen kimlik bitiş noktası. |
+| `https://localhost:2377/metadata/identity/oauth2/token` | IDENTITY_ENDPOINT ortam değişkeni üzerinden sağlanan Servis Kumaşı uygulamaları için yönetilen kimlik bitiş noktası. |
 | `api-version` | Yönetilen Kimlik Belirteç Hizmeti'nin API sürümünü belirten bir sorgu dize parametresi; şu anda kabul `2019-07-01-preview`edilen tek değerdir ve değiştirilebilir. |
-| `resource` | Hedef kaynağın App ID URI'sini gösteren bir sorgu dize parametresi. Bu, verilen belirteci `aud` (hedef kitle) iddiası olarak yansıtılacaktır. Bu örnek, App ID URI https olan Azure Key Vault'a erişmek için bir belirteç talep ediyor:\//keyvault.azure.com/. |
-| `Secret` | Arayan kişinin kimliğini doğrulamak için Hizmet Kumaşı Yönetilen Kimlik Belirteci Hizmeti tarafından gerekli olan BIR HTTP istek üstbilgi alanı. Bu değer, sf çalışma süresi tarafından MSI_SECRET ortam değişkeni üzerinden sağlanır. |
+| `resource` | Hedef kaynağın App ID URI'sini gösteren bir sorgu dize parametresi. Bu, verilen belirteci `aud` (hedef kitle) iddiası olarak yansıtılacaktır. Bu örnek, App ID URI https olan Azure Key Vault'a erişmek için bir belirteç ister:\//vault.azure.net/. |
+| `Secret` | Arayan kişinin kimliğini doğrulamak için Hizmet Kumaşı Yönetilen Kimlik Belirteci Hizmeti tarafından gerekli olan BIR HTTP istek üstbilgi alanı. Bu değer, sf çalışma zamanı tarafından IDENTITY_HEADER ortam değişkeni üzerinden sağlanır. |
 
 
 Örnek yanıt:
@@ -67,7 +69,7 @@ Content-Type: application/json
     "token_type":  "Bearer",
     "access_token":  "eyJ0eXAiO...",
     "expires_on":  1565244611,
-    "resource":  "https://keyvault.azure.com/"
+    "resource":  "https://vault.azure.net/"
 }
 ```
 burada:
@@ -124,20 +126,33 @@ namespace Azure.ServiceFabric.ManagedIdentity.Samples
         /// <returns>Access token</returns>
         public static async Task<string> AcquireAccessTokenAsync()
         {
-            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("MSI_ENDPOINT");
-            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("MSI_SECRET");
+            var managedIdentityEndpoint = Environment.GetEnvironmentVariable("IDENTITY_ENDPOINT");
+            var managedIdentityAuthenticationCode = Environment.GetEnvironmentVariable("IDENTITY_HEADER");
+            var managedIdentityServerThumbprint = Environment.GetEnvironmentVariable("IDENTITY_SERVER_THUMBPRINT");
+            // Latest api version, 2019-07-01-preview is still supported.
+            var managedIdentityApiVersion = Environment.GetEnvironmentVariable("IDENTITY_API_VERSION");
             var managedIdentityAuthenticationHeader = "secret";
-            var managedIdentityApiVersion = "2019-07-01-preview";
             var resource = "https://management.azure.com/";
 
             var requestUri = $"{managedIdentityEndpoint}?api-version={managedIdentityApiVersion}&resource={HttpUtility.UrlEncode(resource)}";
 
             var requestMessage = new HttpRequestMessage(HttpMethod.Get, requestUri);
             requestMessage.Headers.Add(managedIdentityAuthenticationHeader, managedIdentityAuthenticationCode);
+            
+            var handler = new HttpClientHandler();
+            handler.ServerCertificateCustomValidationCallback = (httpRequestMessage, cert, certChain, policyErrors) =>
+            {
+                // Do any additional validation here
+                if (policyErrors == SslPolicyErrors.None)
+                {
+                    return true;
+                }
+                return 0 == string.Compare(cert.GetCertHashString(), managedIdentityServerThumbprint, StringComparison.OrdinalIgnoreCase);
+            };
 
             try
             {
-                var response = await new HttpClient().SendAsync(requestMessage)
+                var response = await new HttpClient(handler).SendAsync(requestMessage)
                     .ConfigureAwait(false);
 
                 response.EnsureSuccessStatusCode();

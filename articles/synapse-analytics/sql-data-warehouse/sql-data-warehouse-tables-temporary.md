@@ -10,13 +10,12 @@ ms.subservice: ''
 ms.date: 04/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 64490bbd44066389186a59e851045b6becbe7acc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 56d8ab81fcf9200fec2cfb4a741724b8f79db820
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632478"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408038"
 ---
 # <a name="temporary-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda geçici tablolar
 Bu makalede, geçici tablolar kullanmak için temel kılavuz içerir ve oturum düzeyi geçici tabloların ilkelerini vurgular. 
@@ -30,8 +29,15 @@ Geçici tablolar yalnızca oluşturuldukları oturum tarafından görülebilir v
 
 Geçici tablolar, sonuçları uzak depolama yerine yerel depolama alanına yazıldığından performans avantajı sunar.
 
-## <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
-Geçici tablolar, tablo adınızı bir `#`.  Örnek:
+Geçici tablolar, özellikle ara sonuçların geçici olduğu dönüşüm sırasında verileri işlerken yararlıdır. SQL Analytics ile oturum düzeyinde geçici tablolar bulunur.  Yalnızca oluşturuldukları oturumda görülebilirler. Bu nedenle, oturum oturumu kapatıldığında otomatik olarak bırakılırlar. 
+
+## <a name="temporary-tables-in-sql-pool"></a>SQL havuzunda geçici tablolar
+
+SQL havuzu kaynağında, sonuçları uzak depolama yerine yerel depolama alanına yazıldığından geçici tablolar bir performans avantajı sunar.
+
+### <a name="create-a-temporary-table"></a>Geçici tablo oluşturma
+
+Geçici tablolar, tablo adınızı bir `#`.  Örneğin:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -89,7 +95,7 @@ GROUP BY
 ,        st.[has_filter]
 )
 ;
-``` 
+```
 
 > [!NOTE]
 > `CTAS`güçlü bir komutdur ve işlem günlüğü alanının kullanımında verimli olmanın avantajına sahiptir. 
@@ -226,5 +232,6 @@ SQL havuzu geçici tablolar uygularken birkaç sınırlama uygular.  Şu anda, y
 Ayrıca, geçici tablolarda görünümler oluşturulamaz.  Geçici tablolar yalnızca karma veya yuvarlak robin dağılımı ile oluşturulabilir.  Çoğaltılan geçici tablo dağıtımı desteklenmez. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Tablo geliştirme hakkında daha fazla bilgi edinmek için [Tabloya Genel Bakış'a](sql-data-warehouse-tables-overview.md)bakın.
+
+Tablo geliştirme hakkında daha fazla bilgi edinmek için [SQL Analytics kaynakları makalesini kullanarak Tasarım tabloları'na](sql-data-warehouse-tables-overview.md) bakın.
 

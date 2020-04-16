@@ -11,12 +11,12 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce2fe66888893d82debcc412bb16752914d8a190
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011115"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416210"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak kullanımı ve sorgu etkinliğini izleme
 
@@ -56,14 +56,14 @@ Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. 
 
 T-SQL üzerinden SQL Analytics'i izlerken programlı bir deneyim için, hizmet dinamik yönetim görünümleri (DMV) kümesi sağlar. Bu görünümler, iş yükünüzle ilgili performans sorunlarını etkin olarak giderirken ve tanımlarken yararlıdır.
 
-SQL Analytics'in sağladığı DMV listesini görüntülemek için bu [belgelere](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)bakın.
+Synapse SQL için geçerli olan DMV listesini görüntülemek için bu [belgelere](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs)bakın. 
 
-## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri
+## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri 
 
 Hem ölçümler hem de günlükler Azure Monitor'a, özellikle [Azure Monitor günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine ihraç edilebilir ve [günlük sorguları](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)aracılığıyla programlanabilir. SQL Analytics için günlük gecikmesi yaklaşık 10-15 dakikadır. Gecikme gecikmesini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki Nasıl Yap'ı kullanma kılavuzları, veri ambarınızı izlerken ve yönetirken sık karşılaşılan senaryoları ve kullanım durumlarını açıklar:
+Aşağıdaki Nasıl Yap'lı kılavuzu, veri ambarınızı izlerken ve yönetirken sık karşılaşılan senaryoları ve kullanım durumlarını açıklar:
 
 - [Veri ambarı iş yükünüzü DMV'lerle izleme](sql-data-warehouse-manage-monitor.md)

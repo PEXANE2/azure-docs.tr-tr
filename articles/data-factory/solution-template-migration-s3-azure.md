@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d799f84cb3ac3ca911a5669041b0a25394a7ff
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927321"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414770"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Verileri Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye geçirin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Amazon S3'ten Azure Veri Gölü Depolama Gen2'ye yüz milyonlarca dosyadan oluşan petabaytlarca veriyi geçirmek için şablonları kullanın. 
 
@@ -71,7 +73,7 @@ Bu şablon *(şablon adı: AWS S3'ten Azure Veri Gölü Depolama Gen2'ye*kadar o
 
     > [!NOTE]
     > Masa adı s3_partition_control_table.
-    > Denetim tablosunun şeması PartitionPrefix ve SuccessOrFailure, PartitionPrefix S3'te Amazon S3'teki klasör ve dosyaları ada göre filtrelemek için önek ayarı dır ve SuccessOrFailure her bölümü kopyalama durumudur: 0 bu bölümün sahip olduğu anlamına gelir Azure'a kopyalanmamıştır ve 1 bu bölümün Azure'a başarıyla kopyalandığı anlamına gelir.
+    > Denetim tablosunun şeması PartitionPrefix and SuccessOrFailure'dır, PartitionPrefix, Amazon S3'teki klasör leri ve dosyaları ada göre filtrelemek için S3'teki önek ayarıdır ve SuccessOrFailure her bölümü kopyalama durumudur: 0 bu bölümün Azure'a kopyalanmadığı anlamına gelir ve 1 bu bölümün başarıyla Azure'a kopyalandığı anlamına gelir.
     > Denetim tablosunda tanımlanan 5 bölüm vardır ve her bölümü kopyalamanın varsayılan durumu 0'dır.
 
     ```sql
@@ -132,7 +134,7 @@ Bu şablon *(şablon adı: AWS S3'ten Azure Veri Gölü Depolama Gen2'ye*kadar o
 
     > [!NOTE]
     > Tablo adı s3_partition_delta_control_table.
-    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve SuccessOrFailure, PartitionPrefix S3'teki klasör leri ve dosyaları ada göre filtrelemek için önek ayarıdır, JobRunTime kopyalama işleri çalıştırıldığında tarih saati değeridir ve SuccessOrFailure her bölümü kopyalama durumu: 0, bu bölümün Azure'a kopyalanmadığı anlamına gelir ve 1 bu bölümün Azure'a başarıyla kopyalandığı anlamına gelir.
+    > Denetim tablosunun şeması PartitionPrefix, JobRunTime ve SuccessOrFailure'dır, PartitionPrefix S3'teki klasörleri ve dosyaları Amazon S3'teki klasör ve dosyaları ada göre filtrelemek için önek ayardır, JobRunTime kopyalama işleri çalıştırıldığında tarih saati değeridir ve SuccessOrFailure her bölümü kopyalama durumudur: 0 bu bölüm Azure'a kopyalanmamıştır ve 1 bu bölüm Azure'a başarıyla kopyalandığı anlamına gelir.
     > Denetim tablosunda tanımlanan 5 bölüm vardır. JobRunTime için varsayılan değer, tek seferlik geçmiş veri geçişinin başladığı zaman olabilir. ADF kopyalama etkinliği, bu tarihten sonra en son değiştirilen AWS S3'teki dosyaları kopyalar. Her bölümü kopyalamanın varsayılan durumu 1'dir.
 
     ```sql

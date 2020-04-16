@@ -11,14 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 3313c9c362a9b82cf7ed8db63479aaa5cf0c777e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73683251"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409068"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Güncelleştirme Kaynağı etkinliğini kullanarak Azure Machine Learning modellerini güncelleştirme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bu makale, ana Azure Veri Fabrikası - Azure Machine Learning tümleştirme makalesini tamamlamaktadır: [Azure Machine Learning ve Azure Veri Fabrikası'nı kullanarak tahmine dayalı ardışık hatlar oluşturun.](transform-data-using-machine-learning.md) Bunu zaten yapmadıysanız, bu makaleyi okumadan önce ana makaleyi gözden geçirin.
 
 ## <a name="overview"></a>Genel Bakış

@@ -15,12 +15,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64919112"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407012"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect eşitleme ile nesne eşitleme sorunlarını giderme
 Bu makalede, sorun giderme görevi kullanarak nesne eşitleme ile sorun giderme sorunları için adımlar sağlar. Azure Active Directory (Azure AD) Connect'te sorun giderme nin nasıl çalıştığını görmek için [bu kısa videoyu](https://aka.ms/AADCTSVideo)izleyin.
@@ -61,11 +61,6 @@ Bu bölümün geri kalanı, görev tarafından döndürülen belirli sonuçları
 UserPrincipalName (UPN)/Alternatif Giriş Kimliği soneki Azure AD Kiracısı ile doğrulanmadığında, Azure Etkin Dizin, UPN soneklerini varsayılan etki alanı adı "onmicrosoft.com" ile değiştirir.
 
 ![Azure AD UPN'nin yerini alır](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>UPN Soneki'nin bir federe etki alanından başka bir federe etki alanına değiştirilmesi
-Azure Active Directory, UserPrincipalName (UPN)/Alternatif Oturum Açma Kimliği sonekinin bir federe etki alanından başka bir federe etki alanına eşitlenmesine izin vermez. Bu, Azure AD Kiracısı ile doğrulanan ve Kimlik Doğrulama Türüne Federe olarak sahip olan etki alanları için geçerlidir.
-
-![Federe bir etki alanından diğerine UPN senkronizasyonu yok](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Azure AD Kiracı DirSync Özelliği 'SynchronizeUpnForManagedUsers' devre dışı bırakılır
 Azure AD KiracıSı DirSync Özelliği 'SynchronizeUpnForManagedUsers' devre dışı bırakıldığında, Azure Active Directory yönetilen kimlik doğrulaması olan lisanslı kullanıcı hesapları için UserPrincipalName/Alternatif Giriş Kimliği'nde eşitleme güncelleştirmesine izin vermez.

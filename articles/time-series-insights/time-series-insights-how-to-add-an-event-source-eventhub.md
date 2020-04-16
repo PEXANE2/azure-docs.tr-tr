@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: c3b06289ba6ce98d4307a8255981ecdba069fdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 021ac5fccf4d694895ab9941bd46dd2388f49af9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905401"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407452"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights ortamınıza etkinlik merkezi etkinlik kaynağı ekleme
 
@@ -50,11 +50,11 @@ Etkinlik merkezinize yeni bir tüketici grubu eklemek için:
 
 1. Tüketici **grupları** sayfasına, **Ad**için yeni bir benzersiz değer girin.  Zaman Serisi Öngörüleri ortamında yeni bir olay kaynağı oluştururken bu aynı adı kullanın.
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-new-event-source"></a>Yeni bir etkinlik kaynağı ekleme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Mevcut Time Series Öngörüleri ortamınızı bulun. Sol menüde **Tüm kaynakları**seçin ve ardından Time Series Öngörüleri ortamınızı seçin.
 
@@ -107,7 +107,7 @@ Etkinlik merkezinize yeni bir tüketici grubu eklemek için:
 
 1. Etkinlik merkezinize eklediğiniz özel Time Series Insights tüketici grubu adını ekleyin.
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
    Etkinlik kaynağı oluşturulduktan sonra, Time Series Insights otomatik olarak ortamınıza veri akışı başlar.
 

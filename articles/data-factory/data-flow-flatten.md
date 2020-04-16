@@ -7,14 +7,16 @@ ms.review: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: b19aae8ab6730936a826f5bb069bfdb7d696cdfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80246645"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413688"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Veri akışını haritalamada düzdönüşüm
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 JSON gibi hiyerarşik yapıların içindeki dizi değerlerini almak ve bunları tek tek satırlara dönüştürmek için düzleştir dönüşümlerini kullanın. Bu işlem denormalization olarak bilinir.
 
@@ -66,7 +68,7 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 
 | Unroll tarafından | Kökünü aç | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.customers | None | ad <br> customer = goods.customer |
+| goods.customers | Hiçbiri | ad <br> customer = goods.customer |
 
 #### <a name="output"></a>Çıktı
 
@@ -84,7 +86,7 @@ Düzleştirmek dönüşümüne aşağıdaki örnekler için aşağıdaki JSON ne
 
 | Unroll tarafından | Kökünü aç | Yansıtma |
 | --------- | ----------- | ---------- |
-| goods.orders.shipped.orderItems | None | ad <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> yer = konum |
+| goods.orders.shipped.orderItems | Hiçbiri | ad <br> orderId = goods.orders.orderId <br> itemName = goods.orders.shipped.orderItems.itemName <br> itemQty = goods.orders.shipped.orderItems.itemQty <br> yer = konum |
 
 #### <a name="output"></a>Çıktı
 

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 524ae203a311d538431205bf8c6498de45aeb4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d64c8460f5653f28b96396025f29ea13af15c8c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280312"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416316"
 ---
 # <a name="configure-lead-management-for-dynamics-crm-online"></a>Dynamics CRM çevrimiçi için müşteri adayı yönetimini yapılandırma
 
@@ -63,7 +63,7 @@ Dinamikler CRM için Azure Etkin Dizini yapılandırmak için aşağıdaki adım
 4.  Uygulama adını girin.
 5.  Türü **için, Web uygulaması / API**seçin.
 6.  Bir URL sağlayın. Bu alan müşteri adayları için gerekli değildir, ancak bir uygulama oluşturmak için gereklidir.
-7. **Oluştur'u**seçin.
+7. **Oluştur**’u seçin.
 8.  Başvurunuz kayıtlı olduğuna göre, **Özellikler'i** seçin ve ardından **Uygulama Kimliği'ni kopyala'yı**seçin. Bu bağlantı bilgilerini Bulut İş Ortağı Portalı'nda kullanırsınız.
 9.  Özellikler'de, uygulamayı Çok kiracılı olarak ayarlayın ve ardından **Kaydet'i**seçin.
 
@@ -139,7 +139,7 @@ Son adım, oluşturduğunuz Kullanıcının müşteri adaylarını yazmasını s
 
 ## <a name="wrap-up"></a>Sarın
 
-Oluşturulan hesap bilgilerini Bulut İş Ortağı Portalı'na ekleyerek müşteri adayı yönetimi için Dynamics CRM yapılandırmayı bitirin. Örnek:
+Oluşturulan hesap bilgilerini Bulut İş Ortağı Portalı'na ekleyerek müşteri adayı yönetimi için Dynamics CRM yapılandırmayı bitirin. Örneğin:
 
 -   **Azure Active Directory** - **Application Id** (örnek: *23456052-aaaa-bbbb-8662-1234df56788f ),* **Dizin Kimliği** (örnek: *12345678-8af1-4asf-- 1234-12234d01db47*), ve **Uygulama Anahtarı** (örnek: *1234ABCDEDFRZ/G/FdY0aUABCEDcqhbLn/ST122345nBc= ).*
--   **Office 365** - **Url** *https://contoso.crm4.dynamics.com*(örnek: ), **Kullanıcı Adı** (örnek: *contoso\@contoso.onmicrosoft.com*), ve **Şifre** (örnek: *P\@ssw0rd*).
+-   **Office 365** - **Url** **`https://contoso.crm4.dynamics.com`**(örnek: ), **`contoso\@contoso.onmicrosoft.com`** Kullanıcı **Adı** (örnek: ), ve **Parola** (örnek: *P\@ssw0rd*).

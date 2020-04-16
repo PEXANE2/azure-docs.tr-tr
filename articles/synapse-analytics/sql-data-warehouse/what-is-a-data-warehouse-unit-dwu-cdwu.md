@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62cf1f369cbde372e82e7c3ffe26473f09668bc7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80742547"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408061"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri Ambarı Birimleri (DWUs)
 
@@ -32,7 +32,7 @@ Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyeti
 
 Daha yüksek performans için veri ambarı birimlerinin sayısını artırabilirsiniz. Daha az performans için veri ambarı birimlerini azaltın. Depolama ve hesaplama maliyetleri ayrıca faturalandırılır, yani veri ambarı birimlerini değiştirmek depolama maliyetlerini etkilemez.
 
-Veri ambarı birimlerinin performansı şu iş yükü ölçümlerini temel alar:
+Veri ambarı birimlerinin performansı şu veri ambarı iş yükü ölçümlerini temel alar:
 
 - Standart bir SQL havuzu sorgusunun çok sayıda satırı tarayıp karmaşık bir toplama gerçekleştirmesi ne kadar hızlı olabilir. Bu işlem G/Ç ve CPU yoğundur.
 - SQL havuzu, Azure Depolama Blobs veya Azure Veri Gölü'nden ne kadar hızlı veri alabilir. Bu işlem ağ ve CPU yoğundur.
@@ -46,21 +46,37 @@ Artan DWUs:
 
 ## <a name="service-level-objective"></a>Hizmet Düzeyi Hedefi
 
+Hizmet Düzeyi Hedefi (SLO), veri ambarınızın maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2'nin hizmet düzeyleri, örneğin DW2000c gibi bilgi işlem veri ambarı birimlerinde (cDWU) ölçülür. Gen1 hizmet düzeyleri DWUs cinsinden ölçülür, örneğin DW2000.
+
 Hizmet Düzeyi Hedefi (SLO), SQL havuzunuzun maliyet ve performans düzeyini belirleyen ölçeklenebilirlik ayarıdır. Gen2 SQL havuzunun hizmet düzeyleri, dw2000c gibi veri ambarı birimlerinde (DWU) ölçülür.
 
-T-SQL'de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini belirler.
+> [!NOTE]
+> Azure SQL Veri Ambarı Gen2, 100 cDWU'ya kadar düşük bilgi işlem katmanlarını desteklemek için ek ölçek özellikleri ekledi. Şu anda Gen1'de daha düşük bilgi işlem katmanları gerektiren varolan veri ambarları, şu anda ek ücret ödemeden kullanılabilen bölgelerde Gen2'ye yükseltilebilir.  Bölgeniz henüz desteklenmiyorsa, desteklenen bir bölgeye yükseltmeyapmaya devam edebilirsiniz. Daha fazla bilgi [için Gen2'ye Yükseltme'ye](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)bakın.
+
+T-SQL'de SERVICE_OBJECTIVE ayarı, SQL havuzunuzun hizmet düzeyini ve performans katmanını belirler.
 
 ```sql
 CREATE DATABASE mySQLDW
-( EDITION = 'Datawarehouse'
+(Edition = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="capacity-limits"></a>Kapasite sınırları
+## <a name="performance-tiers-and-data-warehouse-units"></a>Performans Katmanları ve Veri Ambarı Birimleri
+
+Her performans katmanı, veri ambarı birimleri için biraz farklı bir ölçü birimi kullanır. Bu fark, ölçek birimi doğrudan faturalandırmaya çevrildiği için faturaya yansıtılır.
+
+- Gen1 veri ambarları Veri Ambarı Birimleri (DWUs) cinsinden ölçülür.
+- Gen2 veri ambarları bilgi işlem veri ambarı birimlerinde (cDWUs) ölçülür.
+
+Hem DWUs'lar hem de cDWUs'lar, veri ambarını kullanmanız gerekmediğinde hesaplamayı yukarı veya aşağı ölçekleme ve hesaplamayı duraklatmayı destekler. Bu işlemlerin hepsi isteğe bağlı. Gen2, performansı artırmak için bilgi işlem düğümlerinde yerel bir disk tabanlı önbellek kullanır. Sistemi ölçeklediğinizde veya duraklattığınızda, önbellek geçersiz kılınır ve böylece en iyi performans elde edilmeden önce önbellek ısınması dönemi gerekir.  
 
 Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda veri ambarı birimi sağlayan bir [Veritabanı İşlem Birimi (DTU)](../../sql-database/sql-database-service-tiers-dtu.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kotası vardır. Daha fazla bilgi için [iş yükü yönetimi kapasite sınırlarına](sql-data-warehouse-service-capacity-limits.md#workload-management)bakın.
+
+## <a name="capacity-limits"></a>Kapasite sınırları
+
+Her SQL sunucusunun (örneğin, myserver.database.windows.net) belirli sayıda veri ambarı birimi sağlayan bir [Veritabanı İşlem Birimi (DTU)](../../sql-database/sql-database-what-is-a-dtu.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) kotası vardır. Daha fazla bilgi için [iş yükü yönetimi kapasite sınırlarına](../sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#workload-management)bakın.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Kaç veri ambarı birimine ihtiyacım var
 
@@ -113,23 +129,23 @@ DWUs'ları değiştirmek için:
 
 2. **Ölçek**altında, DWU ayarını değiştirmek için kaydırıcıyı sola veya sağa taşıyın.
 
-3. **Kaydet**'e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
+3. **Kaydet**’e tıklayın. Bir onay iletisi görüntülenir. Onaylamak için **evet**’e, iptal etmek için **hayır**’a tıklayın.
 
-### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-DWUs'ları değiştirmek için [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet'i kullanın. Aşağıdaki örnek, sunucu MyServer'da barındırılan MySQLDW veritabanı için dw1000c hizmet düzeyi hedefini ayarlar.
+DWUs'ları değiştirmek için [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell cmdlet'i kullanın. Aşağıdaki örnek, sunucu MyServer'da barındırılan MySQLDW veritabanı için hizmet düzeyi hedefini DW1000 olarak ayarlar.
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Daha fazla bilgi için [SQL Veri Ambarı için PowerShell cmdlets'e](sql-data-warehouse-reference-powershell-cmdlets.md) bakın
+Daha fazla bilgi için [SQL Veri Ambarı için PowerShell cmdlets'e](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) bakın
 
 ### <a name="t-sql"></a>T-SQL
 
-T-SQL ile geçerli DWU ayarlarını görüntüleyebilir, ayarları değiştirebilir ve ilerlemeyi denetleyebilirsiniz.
+T-SQL ile geçerli DWUayar'ı görüntüleyebilir, ayarları değiştirebilir ve ilerlemeyi denetleyebilirsiniz.
 
 DWUs'u değiştirmek için:
 
@@ -152,12 +168,12 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000c
+        "requestedServiceObjectiveName": DW1000
     }
 }
 ```
 
-Daha fazla REST API örneği [için, SQL Veri Ambarı için REST API'leri'ne](sql-data-warehouse-manage-compute-rest-api.md)bakın.
+Daha fazla REST API örneği [için, SQL Veri Ambarı için REST API'leri'ne](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)bakın.
 
 ## <a name="check-status-of-dwu-changes"></a>DWU değişikliklerinin durumunu denetleme
 
@@ -170,14 +186,13 @@ Azure portalı ile ölçeklendirme işlemleri için veritabanı durumunu denetle
 DWU değişikliklerinin durumunu denetlemek için:
 
 1. Mantıksal SQL Veritabanı sunucunuzla ilişkili ana veritabanına bağlanın.
+2. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönderin.
 
-1. Veritabanı durumunu denetlemek için aşağıdaki sorguyu gönderin.
-
-    ```sql
-    SELECT    *
-    FROM      sys.databases
-    ;
-    ```
+```sql
+SELECT    *
+FROM      sys.databases
+;
+```
 
 1. İşlem durumunu denetlemek için aşağıdaki sorguyu gönderme
 

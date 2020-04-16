@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 933a175213afd81c81eb237a2b2dd4c3e24e3315
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 12f91633834ee98582eaad886b48eb8619378265
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633148"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411667"
 ---
 # <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te Synapse SQL havuzu için tasarım kararları ve kodlama teknikleri 
  Bu makalede, Azure Sinaps'taki bir SQL havuzu için önemli tasarım kararlarını, önerileri ve kodlama tekniklerini daha iyi anlamanıza yardımcı olacak ek kaynaklar bulacaksınız.
@@ -23,7 +23,7 @@ ms.locfileid: "80633148"
 ## <a name="key-design-decisions"></a>Önemli tasarım kararları
 Aşağıdaki makaleler, Azure Synapse'deki SQL havuzu özelliğini kullanarak dağıtılmış bir veri ambarı geliştirmeye yönelik kavramları ve tasarım kararlarını vurgular:
 
-* [Bağlantı](sql-data-warehouse-connect-overview.md)
+* [Bağlantı](../sql/connect-overview.md)
 * [Eşzamanlılık](resource-classes-for-workload-management.md)
 * [Hareket](sql-data-warehouse-develop-transactions.md)
 * [kullanıcı tanımlı şemalar](sql-data-warehouse-develop-user-defined-schemas.md)

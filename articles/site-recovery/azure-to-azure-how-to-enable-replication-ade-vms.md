@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bbb02df782439d934e96e7c16f28b9c11cc01fe
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75772236"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408632"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Şifreleme özellikli sanal makineleri başka bir Azure bölgesine çoğaltma
 
 Bu makalede, Azure Disk Şifrelemesi (ADE) etkinleştirilmiş Azure VM'leri bir Azure bölgesinden diğerine nasıl çoğaltılacağınız açıklanmaktadır.
 
 >[!NOTE]
-> Site Kurtarma şu anda Windows ve Linux işletim sistemleri çalıştıran VM'ler için Azure Active Directory (AAD) ile ve olmadan ADE'yi destekler.  ADE 1.1 çalıştıran makinelerde (AAD olmadan) VM'ler yönetilen diskler kullanıyor olmalıdır. Yönetilmeyen disklere sahip VM'ler desteklenmez. ADE 0.1'den (AAD ile) 1.1'e geçerseniz, 1.1'i etkinleştirdikten sonra çoğaltmayı devre dışı bırakıp VM için çoğaltmayı etkinleştirmeniz gerekir.
+> Site Kurtarma şu anda Windows işletim sistemleri çalıştıran VM'ler için Azure Active Directory (AAD) ile ve olmadan ADE'yi destekler. Linux işletim sistemleri için, yalnızca AAD olmadan ADE'yi destekliyoruz. Ayrıca, ADE 1.1 çalıştıran makineler (AAD olmadan) Için, VM'ler yönetilen diskler kullanıyor olmalıdır. Yönetilmeyen disklere sahip VM'ler desteklenmez. ADE 0.1'den (AAD ile) 1.1'e geçerseniz, 1.1'i etkinleştirdikten sonra çoğaltmayı devre dışı bırakıp VM için çoğaltmayı etkinleştirmeniz gerekir.
 
 
 ## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Gerekli kullanıcı izinleri

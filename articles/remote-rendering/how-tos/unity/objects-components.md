@@ -5,16 +5,16 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 872f0e60943a674e5febf269dcb5b09fd08d77c9
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: a34276c73211c1d9bea291f449cbc7041a3e78a2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681161"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409867"
 ---
-# <a name="interact-with-unity-game-objects-and-components"></a>Unity oyun nesneleri ve bileşenleri ile etkileşim
+# <a name="interact-with-unity-game-objects-and-components"></a>Unity oyun nesneleri ve bileşenleriyle etkileşim kurma
 
-Azure Uzaktan İşleme (ARR) çok sayıda nesne için optimize edilmiştir (bkz. [Sınırlar).](../../reference/limits.md) Ana bilgisayarda büyük ve karmaşık hiyerarşileri yönetmek mümkün olsa da, bunların hepsini düşük güçlü cihazlarda Unity'de çoğaltmak mümkün değildir.
+Azure Uzaktan İşleme (ARR) çok sayıda nesne için optimize edilmiştir [(bkz. Sınırlamalar).](../../reference/limits.md) Ana bilgisayarda büyük ve karmaşık hiyerarşileri yönetmek mümkün olsa da, bunların hepsini düşük güçlü cihazlarda Unity'de çoğaltmak mümkün değildir.
 
 Bu nedenle, bir model ana bilgisayara yüklendiğinde, Azure Uzaktan İşleme istemci aygıtındaki (ağ trafiğine neden olacak) model yapısı hakkındaki bilgileri yansıtmaktadır, ancak Unity'deki nesneleri ve bileşenleri çoğaltmaz. Bunun yerine, gerekli Unity oyun nesnelerini ve bileşenlerini el ile talep etmenizi bekler, böylelikle genel yükü gerçekte gerekenlerle sınırlandırabilirsiniz. Bu şekilde istemci tarafı performansı üzerinde daha fazla denetime sahip olabilirsiniz.
 
@@ -121,5 +121,5 @@ if (cutplane != null)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Birlik için Uzaktan İşleme'yi Ayarlama](unity-setup.md)
+* [Unity için Remote Rendering’i ayarlama](unity-setup.md)
 * [Öğretici: Unity içinde uzak varlıklarla çalışma](../../tutorials/unity/working-with-remote-entities.md)

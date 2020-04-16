@@ -11,14 +11,16 @@ ms.author: sawinark
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
-ms.openlocfilehash: 70367a38fbf7b59486e2eaaf6c05634aa7575869
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2359b378b1f54cf6e03218f819b3a7c5740ba596
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260715"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416398"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS Integration Runtime için Azure Active Directory kimlik doğrulamasını etkinleştirme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, Azure Veri Fabrikanız (ADF) için yönetilen kimlikle Azure Etkin Dizin (Azure AD) kimlik doğrulaması nasıl etkinleştirilebilirsiniz ve geleneksel kimlik doğrulama yöntemleri (SQL kimlik doğrulama gibi) yerine nasıl kullanacağınızı gösterir:
 
@@ -26,7 +28,7 @@ Bu makalede, Azure Veri Fabrikanız (ADF) için yönetilen kimlikle Azure Etkin 
 
 - Azure-SSIS IR'de SSIS paketlerini çalıştırırken çeşitli Azure kaynaklarına bağlanın.
 
-ADF'nizin yönetilen kimliği hakkında daha fazla bilgi için [Veri Fabrikası için Yönetilen identiy'e](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)bakın.
+ADF'nizin yönetilen kimliği hakkında daha fazla bilgi için [Veri Fabrikası için Yönetilen kimliğe](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)bakın.
 
 > [!NOTE]
 >-  Bu senaryoda, ADF'niz için yönetilen kimliği içeren Azure AD kimlik doğrulaması yalnızca SSIS IR'nizin oluşturulmasında ve sonraki başlangıç işlemlerinde kullanılır ve bu da ssisdb'ye bağlanır. SSIS paket yürütmeleri için, SSIS IR'niz SSISDB sağlama sırasında oluşturulan tam olarak yönetilen hesaplarla SQL kimlik doğrulamasını kullanarak SSISDB'ye bağlanmaya devam eder.
@@ -63,7 +65,7 @@ Varolan bir Azure REKLAM grubunu kullanabilir veya Azure AD PowerShell'i kullana
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  ADF'nizin yönetilen kimliğini gruba ekleyin. Başlıca Yönetilen Kimlik Nesnekimliği 'ni almak [için Veri Fabrikası için Yönetilen identiy](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) makalesini takip edebilirsiniz (örn. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ancak bu amaçla Yönetilen Kimlik Uygulama Kimliği kullanmayın).
+3.  ADF'nizin yönetilen kimliğini gruba ekleyin. Ana Yönetilen Kimlik Nesne kimliği almak [için Veri Fabrikası için Yönetilen kimliği](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) (örn. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc) makaleyi takip edebilirsiniz, ancak bu amaçla Yönetilen Kimlik Uygulama Kimliği'ni kullanmayın).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -198,7 +200,7 @@ Azure-SSIS IR'nizi PowerShell ile birlikte sağlamak için aşağıdaki leri yap
 
 1.  [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modüllerini yükleyin.
 
-2.  Komut dosyanızda parametre `CatalogAdminCredential` ayarlamayın. Örnek:
+2.  Komut dosyanızda parametre `CatalogAdminCredential` ayarlamayın. Örneğin:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

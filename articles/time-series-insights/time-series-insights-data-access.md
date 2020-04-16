@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/10/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1c8f14bb1bca082a9d887e5d6d88aec213448c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254358"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407540"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -27,8 +27,8 @@ Bu makalede, iki tür Azure Zaman Serisi Öngörüleri Önizleme erişim ilkeler
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights'ta oturum açın
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
-1. Time Series Insights ortamınızı bulun. `Time Series` **Arama** kutusuna girin. Arama sonuçlarında **Zaman Serisi Ortamı'nı** seçin.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Time Series Insights ortamınızı bulun. `Time Series` **Arama** kutusuna girin. Arama sonuçlarında **Zaman Serisi Ortamları'nı** seçin.
 1. Listeden Zaman Serisi Görüşleri ortamınızı seçin.
 
 ## <a name="grant-data-access"></a>Veri erişim izni verme

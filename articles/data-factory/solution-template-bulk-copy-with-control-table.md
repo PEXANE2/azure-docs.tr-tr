@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/14/2018
-ms.openlocfilehash: 3a42d7da21cfb2e3066fbdd81b27c82155d8456f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6d634d9a32ae1728e1122d863ddabd94f73ee27
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75439973"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414838"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu olan bir veritabanından toplu kopya
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Oracle Server, Netezza, Teradata veya SQL Server'daki bir veri ambarından Azure SQL Veri Ambarı'na veri kopyalamak için birden çok tablodan büyük miktarda veri yüklemeniz gerekir. Genellikle, tek bir tablodan paralel olarak birden çok iş parçacığı olan satırları yükleyebilmeniz için verilerin her tabloda bölümlenmesi gerekir. Bu makalede, bu senaryolarda kullanılacak bir şablon açıklanmaktadır.
 

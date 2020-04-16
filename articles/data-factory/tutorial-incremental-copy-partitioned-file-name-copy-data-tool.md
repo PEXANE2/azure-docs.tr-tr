@@ -13,14 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 3/17/2020
-ms.openlocfilehash: 50e82362f39da2d3f3ecfad2de1ed07b68f8a6a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cc089a1efc3f5960a8bca8a36063bb1019bbcc6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501608"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81409390"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Veri Kopyalama aracını kullanarak zaman bölümlenmiş dosya adına göre yeni dosyaları artımlı olarak kopyalayın
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu öğreticide, Azure portalını kullanarak bir veri fabrikası oluşturursunuz. Ardından, Azure Blob depolamadan Azure Blob depolamasına zaman bölümlenmiş dosya adını temel alan yeni dosyaları artımlı olarak kopyalayan bir ardışık kaynak oluşturmak için Verileri Kopyala aracını kullanırsınız.
 
@@ -76,7 +78,7 @@ Bu adımları gerçekleştirerek Blob depolama nızı öğreticiye hazırlayın.
 
 5. **Sürüm** bölümünde **V2**'yi seçin.
 6. **Konum** bölümünde veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikanız tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka konumlarda ve bölgelerde olabilir.
-7. **Oluştur'u**seçin.
+7. **Oluştur**’u seçin.
 8. Oluşturma işlemi tamamlandıktan sonra **Data Factory** giriş sayfası görüntülenir.
 9. Azure Data Factory kullanıcı arabirimini (UI) ayrı bir sekmede açmak için **Yazar ve İzleyici** kutucuğunu seçin.
 
@@ -99,7 +101,7 @@ Bu adımları gerçekleştirerek Blob depolama nızı öğreticiye hazırlayın.
 
     d. **Yineleme**altında, **1 Saat(ler)** girin.
 
-    e. **Sonraki'ni**seçin.
+    e. **İleri**’yi seçin.
 
     Data Factory kullanıcı arabirimi, belirtilen görev adına sahip bir işlem hattı oluşturur.
 
@@ -139,7 +141,7 @@ Bu adımları gerçekleştirerek Blob depolama nızı öğreticiye hazırlayın.
 
     ![Çıktı dosyasını veya klasörünü seçin](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/output-file-name.png)
 
-    c. **İleri**'ye tıklayın.
+    c. **İleri**’ye tıklayın.
 
     ![Çıktı dosyasını veya klasörünü seçin](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/click-next-after-output-folder.png)
 7. **Ayarlar** sayfasında **İleri**’yi seçin.

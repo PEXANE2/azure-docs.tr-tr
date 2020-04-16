@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 4fbb3e83692ec058c03b22654e82d4093fe3541d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 9f3a1c3455aadfbd243cdc6ab2920849c8558841
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756575"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414638"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik
 
@@ -243,9 +243,9 @@ Azure Veri Tuğlaları Azure Machine Learning ardışık hatlarında kullanılab
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 
-TLS'yi Azure Machine Learning mikro hizmetleri arasında dahili iletişimi sağlamak ve puanlama bitiş noktasına harici çağrıları güvence altına almak için kullanabilirsiniz. Tüm Azure Depolama erişimi de güvenli bir kanal üzerinden gerçekleşir.
+Azure Machine Learning, çeşitli Azure Machine Learning mikro hizmetleri arasında dahili iletişimi sağlamak için TLS kullanır. Tüm Azure Depolama erişimi de güvenli bir kanal üzerinden gerçekleşir.
 
-Daha fazla bilgi için Azure [Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın'a](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)bakın.
+Puanlama uç noktasına harici aramaları güvenli hale getirmek için Azure Machine Learning TLS kullanır. Daha fazla bilgi için Azure [Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın'a](https://docs.microsoft.com/azure/machine-learning/how-to-secure-web-service)bakın.
 
 ### <a name="using-azure-key-vault"></a>Azure Anahtar Kasası Kullanma
 

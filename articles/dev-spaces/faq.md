@@ -5,16 +5,20 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Azure Geliştirme Alanları ile ilgili sık sorulan bazı soruların yanıtlarını bulun
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s '
-ms.openlocfilehash: 1fd176084cd0737a290e037ed19af510fcab3e78
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381989"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414305"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Geliştirme Alanları hakkında sık sorulan sorular
 
 Bu, Azure Dev Alanları hakkında sık sorulan soruları gideriyor.
+
+## <a name="what-versions-of-kubernetes-are-supported-for-azure-dev-spaces"></a>Azure Dev Alanları için Kubernetes'in hangi sürümleri desteklenir?
+
+Azure Dev Spaces, [AKS'deki Kubernetes'in şu anda desteklenen tüm genel kullanılabilirlik (GA) sürümlerini][aks-supported-k8s]destekler.
 
 ## <a name="which-azure-regions-currently-provide-azure-dev-spaces"></a>Şu anda hangi Azure bölgeleri Azure Geliştirme Alanları sağlar?
 
@@ -89,6 +93,10 @@ Visual Studio [Code'da, tek bir çalışma alanında ayrı projeler açmak][vs-c
 
 Visual Studio'da, Azure Dev Spaces üzerinden hata ayıklama için .NET Core çözümlerini yapılandırmak mümkündür.
 
+## <a name="can-i-use-azure-dev-spaces-with-a-service-mesh"></a>Azure Dev Spaces'i hizmet örgüsüyle kullanabilir miyim?
+
+Şu anda, [Istio][istio] veya [Linkerd][linkerd]gibi hizmet meshes ile Azure Dev Spaces kullanamazsınız. Azure Dev Alanları'nı ve hizmet örgüsi aynı AKS kümesinde çalıştırabilirsiniz, ancak hem Azure Dev Spaces'i hem de aynı ad alanında bir hizmet örgüsü etkinleştiremezsiniz.
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
@@ -97,6 +105,7 @@ Visual Studio'da, Azure Dev Spaces üzerinden hata ayıklama için .NET Core ç�
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities
 [aks-pod-managed-id-uninstall]: https://github.com/Azure/aad-pod-identity#uninstall-notes
 [aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
+[aks-supported-k8s]: ../aks/supported-kubernetes-versions.md#list-currently-supported-versions
 [bike-sharing]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [dev-spaces-pod-managed-id-steps]: troubleshooting.md#error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state
 [dev-spaces-prep]: how-dev-spaces-works-prep.md
@@ -105,6 +114,8 @@ Visual Studio'da, Azure Dev Spaces üzerinden hata ayıklama için .NET Core ç�
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-nginx]: how-to/ingress-https-nginx.md#configure-the-nginx-ingress-controller-to-use-https
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https
+[istio]: https://istio.io/
+[linkerd]: https://linkerd.io/
 [quickstart-cli]: quickstart-cli.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [vs-code-multi-root-workspaces]: https://code.visualstudio.com/docs/editor/multi-root-workspaces

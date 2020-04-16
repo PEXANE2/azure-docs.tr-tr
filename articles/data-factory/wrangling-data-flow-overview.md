@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 8f91ed926c733b211443805722b6817b1ce005b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77048353"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81408967"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Çekişmeli veri akışları nelerdir?
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Kuruluşların her gün büyümeye devam eden karmaşık verilerin doğru analizi için veri hazırlama ve çekişme ler yapmaları gerekir. Kuruluşların verileri çeşitli iş süreçlerinde kullanabilmesi ve değer verme süresini kısaltması için veri hazırlama gereklidir.
 
@@ -44,7 +46,7 @@ Herhangi bir aykırılıkları, anormallikleri kaldırmak ve hızlı analitik i�
 | -- | -- | --|
 | [Azure Blob Depolama](connector-azure-blob-storage.md) | CSV, Parke | Hesap Anahtarı |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Hizmet Sorumlusu |
-| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | CSV, Parke | Hesap Anahtarı, Servis Sorumlusu |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parke | Hesap Anahtarı, Servis Sorumlusu |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | - | SQL kimlik doğrulaması |
 | [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL kimlik doğrulaması |
 

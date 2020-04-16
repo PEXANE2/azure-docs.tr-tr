@@ -9,16 +9,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: 9ae07e2a471cc417b467092a2616a5a0cdafb1fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260819"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414125"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema eşleme
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası kopyalama etkinliğinin, veri kopyasını çalıştırırken kaynak verilerden verileri batırmaya kadar şema eşleme ve veri türü eşlemenasıl yaptığı açıklanmaktadır.
 
@@ -278,11 +279,7 @@ Kopyalama etkinliği, aşağıdaki 2 adımlı yaklaşımla bağme türleri eşle
 1. Yerel kaynak türlerinden Azure Veri Fabrikası geçici veri türlerine dönüştürme
 2. Azure Veri Fabrikası geçici veri türlerinden yerel lavabo türüne dönüştürme
 
-Her bağlayıcı konusundaki "Veri türü eşleme" bölümünde yerel türile geçici tür arasındaki eşlemi bulabilirsiniz.
-
-### <a name="supported-data-types"></a>Desteklenen veri türleri
-
-Veri Fabrikası aşağıdaki geçici veri türlerini destekler: Veri kümesi [yapısı](concepts-datasets-linked-services.md#dataset-structure-or-schema) yapılandırmasında tür bilgilerini yapılandırırken aşağıdaki değerleri belirtebilirsiniz:
+Kopyalama etkinliği aşağıdaki ara veri türlerini destekler: 
 
 * Bayt[]
 * Boole

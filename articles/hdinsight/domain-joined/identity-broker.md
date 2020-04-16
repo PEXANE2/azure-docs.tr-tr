@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: f14cbef2ab568962601b3a407fa979e8f982598d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75483017"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81410875"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için Kimlik Aracısı 'nı (önizleme) kullanma
 
@@ -38,7 +38,7 @@ ID Broker, herhangi bir parola sağlamadan Çok Faktörlü Kimlik Doğrulama'yı
 
 ID Broker etkinleştirilmiş bir ESP kümesi oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. BIR ESP kümesi için temel oluşturma adımlarını izleyin. Daha fazla bilgi için [esp ile hdinsight kümesi oluşturma'ya](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)bakın.
 1. **HDInsight ID Aracısını Etkinleştir'i**seçin.
 
@@ -55,6 +55,14 @@ HDInsight [IntelliJ eklentisi](https://docs.microsoft.com/azure/hdinsight/spark/
 ID Aracıcısı etkinleştirildikten sonra, etki alanı hesapları olan SSH senaryoları için Azure AD DS'de depolanan bir parola karmasına ihtiyacınız vardır. Etki alanına katılan bir VM'ye SSH `kinit` veya komutu çalıştırmak için bir parola sağlamanız gerekir. 
 
 SSH kimlik doğrulaması, karmanın Azure AD DS'de kullanılabilir olmasını gerektirir. Yalnızca yönetim senaryoları için SSH'yi kullanmak istiyorsanız, yalnızca bulutlara özel bir hesap oluşturabilir ve bunu kümeye göre SSH'de kullanabilirsiniz. Diğer kullanıcılar, Parola karmasını Azure AD DS'de kullanılabilir hale vermeden Ambari veya HDInsight araçlarını (IntelliJ eklentisi gibi) kullanmaya devam edebilir.
+
+## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets ID Broker kurulumu ile HDInsight ağ geçidine bağlanmak için OAuth'u kullanıyor
+
+Kimlik aracısı kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirteci'ni edinmek için güncelleştirilebilir. Belirteci aşağıdaki bilgilerle elde etmek için bu [belgedeki](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) adımları izleyebilirsiniz:
+
+*   OAuth kaynak uri:https://hib.azurehdinsight.net 
+* AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
+*   İzin: (isim: Cluster.ReadWrite, id:8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74978041"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81403733"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları bildirmek için Bir IoT aygıtıyla Özel Görme'yi kullanın
 
-Bu örnek uygulama, görsel durumları algılamak için kameralı bir cihazı eğitmek için Custom Vision'ın nasıl kullanılacağını göstermektedir. Bu algılama senaryosunu, Custom Vision hizmetinden dışa aktarılan bir ONNX modelini kullanarak bir IoT aygıtında çalıştırabilirsiniz.
+Bu örnek uygulama, görsel durumları algılamak için kameralı bir cihazı eğitmek için Custom Vision'ın nasıl kullanılacağını göstermektedir. Bu algılama senaryosunu bir IoT aygıtında dışa aktarılan bir ONNX modelini kullanarak çalıştırabilirsiniz.
 
-Görsel bir durum görüntünün içeriğini açıklar: boş bir oda veya insanlarla dolu bir oda, boş bir garaj yolu veya kamyonlu bir garaj yolu, ve saire. Aşağıdaki resimde, uygulamanın kameranın önüne bir muz veya elma yerleştirildiğinde algılayıp algılayıp algılanıncagörebilirsiniz.
+Görsel bir durum görüntünün içeriğini açıklar: boş bir oda veya insanlarla dolu bir oda, kamyonlu boş bir garaj yolu, ve saire. Aşağıdaki resimde, uygulamanın kameranın önüne bir muz veya elma yerleştirildiğinde algılayıp algılayıp algılanıncagörebilirsiniz.
 
 ![Kamera önünde meyve etiketleme bir UI animasyon](./media/iot-visual-alerts-tutorial/scoring.gif)
 
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 * Azure'da bir [IoT Hub kaynağı oluşturmanız](https://ms.portal.azure.com/#create/Microsoft.IotHub) da gerekir.
 * [Visual Studio 2015 veya sonrası](https://www.visualstudio.com/downloads/)
 * İsteğe bağlı olarak, Windows 10 IoT Core sürüm 17763 veya daha yüksek çalıştıran bir IoT aygıtı. Uygulamayı doğrudan bilgisayarınızdan da çalıştırabilirsiniz.
-   * Raspberry Pi 2 ve 3 için Windows 10'u doğrudan IoT Dashboard uygulamasından ayarlayabilirsiniz. DrangonBoard gibi diğer aygıtlar için [eMMC yöntemini](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)kullanarak yanıp sönmeniz gerekir. Yeni bir aygıt kurmak için yardıma ihtiyacınız varsa, [bkz.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)
+   * Raspberry Pi 2 ve 3 için Windows 10'u doğrudan IoT Dashboard uygulamasından ayarlayabilirsiniz. DrangonBoard gibi diğer aygıtlar için [eMMC yöntemini](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup#flashing-with-emmc-for-dragonboard-410c-other-qualcomm-devices)kullanarak yanıp sönmeniz gerekir. Yeni bir aygıt kurma konusunda yardıma ihtiyacınız varsa, [bkz.](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)
 
 ## <a name="about-the-visual-alerts-app"></a>Görsel Uyarılar uygulaması hakkında
 
@@ -92,7 +92,7 @@ Bir model ayarlamak için uygulamayı Yakalama Eğitim **Görüntüleri** durumu
 * Uygulamayı BILGISAYARda çalıştırıyorsanız, UI'nin sağ üst köşesindeki düğmeyi kullanın.
 * Uygulamayı bir IoT aygıtında çalıştırıyorsanız, `EnterLearningMode` aygıttaki yöntemi IoT Hub üzerinden arayın. Azure portalındaki IoT Hub menüsündeki aygıt girişinden veya [IoT Hub Aygıt Gezgini](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)gibi bir araçla arayabilirsiniz.
  
-Uygulama **Yakalama Eğitim Görüntüleri** durumuna girdiğinde, hedef görüntü sayısına ulaşana kadar saniyede yaklaşık iki görüntü yakalar. Varsayılan olarak, bu 30 görüntüdür, ancak istenen sayıyı IoT Hub `EnterLearningMode` yöntemine bağımsız değişken olarak geçirerek bu parametreyi ayarlayabilirsiniz. 
+Uygulama **Yakalama Eğitim Görüntüleri** durumuna girdiğinde, hedef görüntü sayısına ulaşana kadar saniyede yaklaşık iki görüntü yakalar. Varsayılan olarak, hedef 30 görüntüdür, ancak istenen sayıyı IoT Hub `EnterLearningMode` yöntemine bağımsız değişken olarak geçirerek bu parametreyi ayarlayabilirsiniz. 
 
 Uygulama görüntüleri yakalarken, kamerayı algılamak istediğiniz görsel durum türlerine (örneğin, boş bir oda, insanlarla dolu bir oda, boş bir masa, oyuncak kamyonlu bir masa vb.) maruz bırakmalısınız.
 

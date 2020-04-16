@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: e0e98b87cf3612bf01f90f806ea64ef06d08c60a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 27503defa23b2a35e767156139228aa2e177652f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255337"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405172"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor tarafından neler izlenir?
 Bu makalede, Azure Monitor tarafından izlenen farklı uygulamalar ve hizmetler açıklanmaktadır. 
@@ -205,7 +205,6 @@ Farklı uygulama ve hizmetlerin izlenmesi için başka çözümler mevcuttur, an
 | [İsteğe Bağlı Değerlendirmeler](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | Şirket içi, karma ve bulut Microsoft teknoloji ortamlarınızın kullanılabilirliğini, güvenliğini ve performansını değerlendirin ve optimize edin. |
 | [SQL sistem durumu denetimi](insights/sql-assessment.md) | SQL Server ortamlarınızın risk ve sağlık durumunu değerlendirin.  |
 | [Kablo Verileri](insights/wire-data.md) | Log Analytics aracısı ile Windows'a bağlı ve Linux'a bağlı bilgisayarlardan toplanan konsolide ağ ve performans verileri. |
-
 
 ## <a name="third-party-integration"></a>Üçüncü taraf entegrasyonu
 

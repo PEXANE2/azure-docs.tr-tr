@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a042897ecbe35935c1832a53f523eb0597ebafc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654236"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81407277"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS'ta Azure Active Directory sertifikası tabanlı kimlik doğrulama
 
@@ -27,7 +27,7 @@ iOS aygıtları, aşağıdakilere bağlanırken aygıtlarında bir istemci serti
 
 Bu özelliğin yapılandırılması, mobil cihazınızdaki belirli postalara ve Microsoft Office uygulamalarına bir kullanıcı adı ve parola kombinasyonu girme gereksinimini ortadan kaldırır.
 
-Bu konu, Office 365 Enterprise, Business, Education, US Government, China ve Almanya planlarında kiracı kullanıcılar için cba'yı bir iOS (Android) cihazında yapılandırmak için gereksinimleri ve desteklenen senaryoları sağlar.
+Bu konu, Office 365 Enterprise, Business, Education, US Government, China ve Germany planlarında kiracı kullanıcıları için cba'yı bir iOS aygıtında yapılandırmak için gereksinimleri ve desteklenen senaryoları sağlar.
 
 Bu özellik, Office 365 ABD Hükümeti Savunması ve Federal planlarında önizlemede kullanılabilir.
 

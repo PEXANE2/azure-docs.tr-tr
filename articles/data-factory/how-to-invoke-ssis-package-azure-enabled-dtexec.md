@@ -11,14 +11,17 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: 006d4fa9ed09170a423e796e893b817e079e861b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261949"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414320"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>Azure özellikli dtexec yardımcı programıyla SQL Server Entegrasyon Hizmetleri paketlerini çalıştırın
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Bu makalede, Azure özellikli dtexec (AzureDTExec) komut istem yardımcı programı açıklanmaktadır. Azure Veri Fabrikası'ndaki Azure-SSIS Tümleştirme Çalışma Süresi'nde (IR) SQL Server Integration Services (SSIS) paketlerini çalıştırmak için kullanılır.
 
 Geleneksel dtexec yardımcı programı SQL Server ile birlikte gelir. Daha fazla bilgi için [dtexec yardımcı programı'na](https://docs.microsoft.com/sql/integration-services/packages/dtexec-utility?view=sql-server-2017)bakın. SSIS paketlerini şirket içinde çalıştırmak için ActiveBatch ve Control-M gibi üçüncü taraf orkestratörler veya zamanlayıcılar tarafından sık sık çağrılır. 

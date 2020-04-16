@@ -4,12 +4,12 @@ description: Azure CLI kullanarak mevcut bir Azure sanal ağına Linux Service F
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: f5788f07dd4a4f03a95efaea4b741cd64c930ac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9026e46f2fd386892af5a3d8f4ec8d7e0c9f649
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251778"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411018"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bir Linux Hizmeti Kumaş kümesini Azure sanal ağına dağıtma
 
@@ -31,8 +31,17 @@ Aşağıdaki yordamlar yedi düğümlü Hizmet Kumaş kümesi oluşturur. Azure�
 
 Aşağıdaki Resource Manager şablonu dosyalarını indirin:
 
+Ubuntu 16.04 LTS için:
+
 * [AzureDeploy.json][template]
 * [AzureDeploy.Parameters.json][parameters]
+
+Ubuntu 18.04 LTS için:
+
+* [AzureDeploy.json][template2]
+* [AzureDeploy.Parameters.json][parameters2]
+
+İki şablon arasındaki fark **vmImageSku** özniteliği "18.04-LTS" olarak ayarlanan ve her düğümün **typeHandlerVersion** 1.1 olarak ayarlanan olmasıdır.
 
 Bu şablon, sanal ağa yedi sanal makine ve üç düğüm türünden oluşan güvenli bir küme dağıtMaktadır.  Diğer örnek şablonlar [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates)'da bulunabilir. [AzureDeploy.json][template] aşağıdakiler dahil bir grup kaynak dağıtır.
 
@@ -42,7 +51,7 @@ Bu şablon, sanal ağa yedi sanal makine ve üç düğüm türünden oluşan gü
 
 * üç düğüm türü
 * birincil düğüm türünde beş düğüm (şablon parametrelerinde yapılandırılabilir), diğer düğüm türlerinin her birinde bir düğüm
-* İşletim sistemi: Ubuntu 16.04 LTS (şablon parametrelerinde yapılandırılabilir)
+* İşletim Sistemi: (Ubuntu 16.04 LTS / Ubuntu 18.04 LTS) (şablon parametrelerinde yapılandırılabilir)
 * sertifikanın güvenliğinin sağlanması (şablon parametrelerinde yapılandırılabilir)
 * [DNS hizmeti](service-fabric-dnsservice.md) etkin
 * Bronz [dayanıklılık düzeyi](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) (şablon parametrelerinde yapılandırılabilir)
@@ -70,7 +79,7 @@ Başka bir uygulama bağlantı noktası gerekiyorsa, gelen trafiğe izin vermek 
 
 ## <a name="set-template-parameters"></a>Şablon parametrelerini ayarlama
 
-[AzureDeploy.Parameters][parameters] parametre dosyası, kümenin ve ilişkili kaynakların dağıtılması için kullanılan birçok değeri bildirir. Dağıtımınız için değiştirmeniz gerekebilecek bazı parametreler:
+**AzureDeploy.Parameters** dosyası, kümeyi ve ilişkili kaynakları dağıtmak için kullanılan birçok değeri bildirir. Dağıtımınız için değiştirmeniz gerekebilecek bazı parametreler:
 
 |Parametre|Örnek değer|Notlar|
 |---|---||
@@ -86,7 +95,7 @@ Başka bir uygulama bağlantı noktası gerekiyorsa, gelen trafiğe izin vermek 
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Sanal ağı ve kümeyi dağıtma
 
-Ardından, ağ topolojisini ayarlayın ve Service Fabric kümesini dağıtın. [AzureDeploy.json][template] Resource Manager şablonu Service Fabric için bir sanal ağ (VNET) ve bir alt ağ oluşturur. Şablon tarafından sertifika güvenliği etkin bir küme de dağıtılır.  Üretim kümeleri için küme sertifikası olarak bir sertifika yetkilisinden (CA) alınan bir sertifika kullanın. Test kümelerinin güvenliğinin sağlanması için otomatik olarak imzalanan bir sertifika kullanılabilir.
+Ardından, ağ topolojisini ayarlayın ve Service Fabric kümesini dağıtın. **AzureDeploy.json** Resource Manager şablonu Service Fabric için bir sanal ağ (VNET) ve bir alt ağ oluşturur. Şablon tarafından sertifika güvenliği etkin bir küme de dağıtılır.  Üretim kümeleri için küme sertifikası olarak bir sertifika yetkilisinden (CA) alınan bir sertifika kullanın. Test kümelerinin güvenliğinin sağlanması için otomatik olarak imzalanan bir sertifika kullanılabilir.
 
 Bu makaledeki şablon, küme sertifikasını tanımlamak için sertifika parmak izini kullanan bir küme dağıdır.  Hiçbir iki sertifika aynı parmak izine sahip olamaz ve bu da sertifika yönetimini zorlaştırır. Dağıtılan bir kümeyi sertifika parmak izlerini kullanmaktan sertifika ortak adlarını kullanmaya geçmek sertifika yönetimini çok daha basit hale getirir.  Sertifika yönetimi için sertifika ortak adlarını kullanmak için kümeyi nasıl güncelleştireceğinizi öğrenmek için, [ortak ad yönetimini sertifikalamak için değişiklik kümesini](service-fabric-cluster-change-cert-thumbprint-to-cn.md)okuyun.
 
@@ -163,3 +172,5 @@ Bu makaledeki şablon, küme sertifikasını tanımlamak için sertifika parmak 
 
 [template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.json
 [parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-3-NodeTypes-Secure/AzureDeploy.Parameters.json
+[template2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.json
+[parameters2]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Ubuntu-1804-3-NodeTypes-Secure/AzureDeploy.Parameters.json

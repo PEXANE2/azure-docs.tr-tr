@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6cb9dadc107c6907f1ccb28a876270e577f10395
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74977310"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81405037"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Quickstart: Computer Vision REST API ve cURL kullanarak bir küçük resim oluşturun
 
@@ -28,23 +28,6 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 - [cURL](https://curl.haxx.se/windows)’niz olmalıdır.
 - Görüntü İşleme için bir abonelik anahtarınız olması gerekir. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)ücretsiz bir deneme anahtarı alabilirsiniz. Veya Computer Vision'a abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin.
-
-## <a name="get-thumbnail-request"></a>Küçük Resim Alma isteği
-
-[Küçük Resim Alma yöntemi](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) ile, bir görüntünün küçük resmini oluşturabilirsiniz.
-
-Örneği çalıştırmak için aşağıdaki adımları uygulayın:
-
-1. Aşağıdaki kodu bir düzenleyicinin içine kopyalayın.
-1. `<Subscription Key>` değerini geçerli abonelik anahtarınızla değiştirin.
-1. `<File>` değerini küçük resmin kaydedileceği yol ve dosya adı ile değiştirin.
-1. Gerekirse İstek URL’sini (`https://westcentralus.api.cognitive.microsoft.com/vision/v2.1`) abonelik anahtarlarınızı aldığınız konumu kullanacak şekilde değiştirin.
-1. İsteğe bağlı olarak, analiz edilecek görüntüyü (`{\"url\":\"...`) değiştirin.
-1. cURL yüklü bir bilgisayarda bir komut penceresi açın.
-1. Kodu pencereye yapıştırıp komutu çalıştırın.
-
->[!NOTE]
->REST çağrınızda abonelik anahtarlarınızı almak için kullandığınız konumu kullanmanız gerekir. Örneğin, güvenlik anahtarlarınızı westus konumundan aldıysanız, aşağıdaki URL’de "westcentralus" değerini "westus" olarak değiştirin.
 
 ## <a name="create-and-run-the-sample-command"></a>Örnek komutu oluşturma ve çalıştırma
 

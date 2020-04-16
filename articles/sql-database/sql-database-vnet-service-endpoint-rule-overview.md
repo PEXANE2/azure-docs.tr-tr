@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4faead13c10171c31e76fe2dd59be32a93a12f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414389"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Veritabanı sunucuları için sanal ağ hizmeti uç noktalarını ve kurallarını kullanma
 
@@ -64,6 +64,7 @@ Yalnızca gerekli yetenek alt kümesine sahip tek bir özel rol oluşturmak içi
 
 > [!NOTE]
 > Bazı durumlarda Azure SQL Veritabanı ve VNet alt ağı farklı aboneliklerdedir. Bu gibi durumlarda aşağıdaki yapılandırmaları sağlamanız gerekir:
+>
 > - Her iki abonelik de aynı Azure Etkin Dizin kiracısında olmalıdır.
 > - Kullanıcı, hizmet uç noktalarını etkinleştirme ve verilen Sunucuya bir VNet alt ağı ekleme gibi işlemleri başlatmak için gerekli izinlere sahiptir.
 > - Her iki aboneliğin de Microsoft.Sql sağlayıcısının kayıtlı olması gerekir.
@@ -134,7 +135,7 @@ PolyBase genellikle Azure Depolama hesaplarından Azure SQL Veri Ambarı'na veri
    > [!NOTE]
    > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, öncelikle bu [kılavuzu](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)kullanarak **v2'ye yükseltmeniz** gerekir.
    > - Azure Veri Gölü Depolama Gen2 ile ilgili bilinen sorunlar için lütfen bu [kılavuza](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)bakın.
-    
+
 1. Depolama hesabınız **altında, Access Control (IAM)** düğmesine gidin ve **rol ataması ekle'yi**tıklatın. Depolama **Blob Veri Katılımcısı** RBAC rolünü, adım 1'de olduğu gibi Azure Active Directory 'e (AAD) kaydettiğiniz Azure SQL Veri Ambarınızı barındıran Azure SQL Sunucunuza atayın.
 
    > [!NOTE]
@@ -235,7 +236,7 @@ Azure SQL Veritabanı ile ilgili belirli Sanal Ağ hizmeti bitiş noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure portalında][http-azure-portal-link-ref-477t]oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
 
 2. ARAMA ve **SQL sunucuları**seçin, sonra sunucu seçin. **Güvenlik**altında, **Güvenlik Duvarları ve sanal ağları**seçin.
 
@@ -264,6 +265,7 @@ Azure SQL Veritabanı ile ilgili belirli Sanal Ağ hizmeti bitiş noktası *tür
 
 > [!NOTE]
 > Aşağıdaki durumlar veya durumlar kurallara uygulanır:
+>
 > - **Hazır:** Başlattığınız işlemin Başarılı olduğunu gösterir.
 > - **Başarısız oldu:** Başlattığınız işlemin Başarısız olduğunu gösterir.
 > - **Silindi:** Yalnızca Sil işlemi için geçerlidir ve kuralın silindiğini ve artık geçerli olmadığını gösterir.

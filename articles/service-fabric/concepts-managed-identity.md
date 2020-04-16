@@ -4,14 +4,14 @@ description: Service Fabric ile Azure için Yönetilen kimlikleri kullanma hakk�
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 06ebcfdf3d6a3815908752153acb09437d745d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76986759"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415106"
 ---
-# <a name="using-managed-identities-for-azure-with-service-fabric-preview"></a>Hizmet Kumaşı ile Azure için Yönetilen kimlikleri kullanma (Önizleme)
+# <a name="using-managed-identities-for-azure-with-service-fabric"></a>Hizmet Kumaşı ile Azure için Yönetilen kimlikleri kullanma
 
 Bulut uygulamaları oluşturmak, çeşitli hizmetlere kimlik doğrulama için kodunuzdaki kimlik bilgilerini, geliştirici iş istasyonunda veya kaynak denetiminde yerel olarak kaydetmeden güvenli bir şekilde yönetmektir. *Azure için yönetilen kimlikler,* Azure Etkin Dizini'ndeki (Azure AD) tüm kaynaklarınız için bu sorunu, Azure AD içinde otomatik olarak yönetilen kimlikler sağlayarak çözer. Anahtarı Atlama da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen herhangi bir hizmetin kimliğini, kodunuzda depolanan herhangi bir kimlik belgesi olmadan kullanabilirsiniz.
 
@@ -47,7 +47,7 @@ Hizmet Kumaşı için yönetilen kimlikler yalnızca Azure tarafından dağıtı
 
 Bir uygulamanın sistem tarafından atanan kimliği bu uygulamaya özgüdür; kullanıcı tarafından atanan kimlik, birden çok uygulamaya atanabilecek bağımsız bir kaynaktır. Bir uygulama içinde, tek bir kimlik (sistem atanmış veya kullanıcı tarafından atanmış olsun) uygulamanın birden çok hizmetine atanabilir, ancak her hizmete yalnızca bir kimlik atanabilir. Son olarak, bir hizmete bu özelliğe erişebilmek için açıkça bir kimlik atanması gerekir. Sonuç olarak, bir uygulamanın kimliklerinin kurucu hizmetlerle eşlenemeuygulamasının yalıtımına izin verir — bir hizmet yalnızca eşlenen kimliği kullanabilir.  
 
-Şu anda, aşağıdaki senaryolar bu önizleme özelliği için desteklenir:
+Şu anda, aşağıdaki senaryolar bu özellik için desteklenir:
 
 - Bir veya daha fazla hizmet ve bir veya daha fazla atanmış kimlikiçeren yeni bir uygulama dağıtma
 
@@ -57,12 +57,7 @@ Aşağıdaki senaryolar desteklenmez veya önerilmez; bu eylemlerin engellenmeye
 
 - Bir uygulamaya atanan kimlikleri kaldırma veya değiştirme; değişiklik yapmak zorundaysanız, önce yeni bir kimlik ataması eklemek ve daha sonra daha önce atanmış bir atamayı kaldırmak için ayrı dağıtımlar gönderin. Bir kimliğin varolan bir uygulamadan kaldırılması, uygulamanızı yükseltilemez bir durumda bırakmak da dahil olmak üzere istenmeyen etkilere sahip olabilir. Bir kimliğin kaldırılması gerekiyorsa, uygulamanın tamamen silinebilir; bu uygulama ile ilişkili sistem atanmış kimlik (eğer öyleyse) siler ve uygulamaya atanan kullanıcı tarafından atanan kimlikler ile herhangi bir çağrışım kaldıracaktır unutmayın.
 
-- Yönetilen kimlikler için Hizmet Kumaşı desteği şu anda [AzureServiceTokenProvider'a](../key-vault/service-to-service-authentication.md)entegre edilmez; tümleştirme, yönetilen kimlik özelliği için önizleme döneminin sonuna kadar elde edilecektir.
-
->
-> [!NOTE]
->
-> Bu özellik önizlemede. Sık sık değişikliklere maruz kalabilir ve üretim dağıtımları için uygun olmayabilir.
+- Yönetilen kimlikler için Hizmet Kumaşı desteği şu anda [AzureServiceTokenProvider'a](../key-vault/service-to-service-authentication.md)entegre edilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

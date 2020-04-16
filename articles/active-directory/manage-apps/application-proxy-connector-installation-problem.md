@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466e1ce0efbdec3f5475634f3857d02554d93d98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d773e6302edf0b799e6dfccc702750a9cc74f60
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049140"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406694"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Uygulama Ara Sunucusu Aracı Bağlayıcısı’nı yüklerken sorun oluşuyor
 
@@ -50,20 +50,69 @@ Bağlayıcının yüklenmesi başarısız olduğunda, kök neden genellikle aşa
 
 3.  Bir tarayıcı açın (ayrı sekme) ve `https://login.microsoftonline.com`aşağıdaki web sayfasına gidin: , bu sayfaya giriş yapabileceğinizden emin olun.
 
-## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>Uygulama Proxy güven sertifikası için Makine ve arka uç bileşenleri desteği doğrulayın
+## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Uygulama Proxy güven sertifikası için Makine ve arka uç bileşenleri desteğini doğrulayın
 
-**Amaç:** Konektör makinesi, arka uç proxy ve güvenlik duvarının bağlayıcı tarafından gelecekteki güven için oluşturulan sertifikayı destekleyebilir doğrulayın.
+**Amaç:** Konektör makinesinin, arka uç proxy'sinin ve güvenlik duvarının bağlayıcı tarafından gelecekteki güven için oluşturulan sertifikayı destekleyip sertifikanın geçerli olduğunu doğrulayın.
 
 >[!NOTE]
 >Konektör, TLS1.2 tarafından desteklenen bir SHA512 sertifikası oluşturmaya çalışır. Makine veya arka uç güvenlik duvarı ve proxy TLS1.2 desteklemiyorsa, yükleme başarısız olur.
 >
 >
 
-**Sorunu gidermek için:**
+**Gerekli ön koşulları gözden geçirin:**
 
 1.  Makinenin TLS1.2'yi desteklediğini doğrulayın – 2012 R2'den sonraki tüm Windows sürümleri TLS 1.2'yi desteklemelidir. Konektör makineniz 2012 R2 veya önceki bir sürümüne aitse, makineye aşağıdaki KB'lerin takıldıklarından emin olun:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Ağ yöneticinize başvurun ve arka uç proxy'sinin ve güvenlik duvarının giden trafik için SHA512'yi engellemediğini doğrulamak isteyin.
+
+**İstemci sertifikasını doğrulamak için:**
+
+Geçerli istemci sertifikasının parmak izini doğrulayın. Sertifika deposu %ProgramData%\microsoft\Microsoft AAD Application Proxy Bağlayıcısı\Config\TrustSettings.xml adresinde bulunabilir
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<ConnectorTrustSettingsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CloudProxyTrust>
+    <Thumbprint>4905CC64B2D81BBED60962ECC5DCF63F643CCD55</Thumbprint>
+    <IsInUserStore>false</IsInUserStore>
+  </CloudProxyTrust>
+</ConnectorTrustSettingsFile>
+```
+
+İşte olası **IsInUserStore** değerleri ve anlamları şunlardır:
+
+- **false** - Müşteri sertifikası Register-AppProxyConnector komutu tarafından başlatılan yükleme veya kayıt sırasında oluşturuldu. Yerel makinenin sertifika deposundaki kişisel konteynerde saklanır. 
+
+Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
+
+1. **çalıştır certlm.msc**
+2. Yönetim konsolunda Kişisel konteyneri genişletin ve Sertifikalar'a tıklayın
+3. **connectorregistrationca.msappproxy.net** tarafından verilen sertifikayı bulma
+
+- **true** - Otomatik olarak yenilenen sertifika, Ağ Hizmetinin kullanıcı sertifikası deposundaki kişisel kapsayıcıda depolanır. 
+
+Sertifikayı doğrulamak için aşağıdaki adımları izleyin:
+
+1. Karşıdan yükleme [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. [Paketten PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) ayıklayın ve yüksek bir komut istemi **nden psexec -i -u "nt authority\network service" cmd.exe** çalıştırın.
+3. Yeni ortaya çıkan komut istemi nde **certmgr.msc** çalıştırın
+2. Yönetim konsolunda Kişisel konteyneri genişletin ve Sertifikalar'a tıklayın
+3. **connectorregistrationca.msappproxy.ne tarafından verilen sertifikayı bulun
+
+**İstemci sertifikasını yenilemek için:**
+
+Bir bağlayıcı hizmete birkaç ay bağlı değilse, sertifikaları eski olabilir. Sertifika yenileme nin başarısız olması, süresi dolmuş bir sertifikaya yol açar. Bu, konektör hizmetinin çalışmayı durdurmasını sağlar. Olay 1000 bağlayıcının yönetici günlüğüne kaydedilir:
+
+"Bağlayıcı yeniden kayıt başarısız oldu: Bağlayıcı güven sertifikasısüresi doldu. Connector'ın çalıştırdığı bilgisayarda PowerShell cmdlet Register-AppProxyConnector'u çalıştırın ve Konektörünüze yeniden kaydedin."
+
+Bu durumda, kaydı tetiklemek için konektörü kaldırın ve yeniden yükleyin veya aşağıdaki PowerShell komutlarını çalıştırabilirsiniz:
+
+```
+Import-module AppProxyPSModule
+Register-AppProxyConnector
+```
+
+Register-AppProxyConnector komutu hakkında daha fazla bilgi edinmek için lütfen [Azure AD Application Proxy bağlayıcısı için katılımsız bir yükleme komut dosyası oluşturun](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell)
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Yöneticinin konektörü yüklemek için kullanıldığını doğrulayın
 

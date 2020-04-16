@@ -11,14 +11,16 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 1c2db107302e4851641ef430db61ec9b29ee151f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c85a652cde840336c51e1a5b5459f9dc591e0be
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187474"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414680"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS tümleştirme çalışma zamanında paket yürütme sorun giderme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, SSIS tümleştirme çalışma zamanında SQL Server Integration Services (SSIS) paketlerini yürülürken bulabileceğiniz en yaygın hatalar yer almaktadır. Hataları çözmek için olası nedenleri ve eylemleri açıklar.
 
@@ -144,7 +146,7 @@ Self-Hosted tümleştirme çalışma sürenizin yüklü olduğundan ve başlatı
 
 Paketinizdeki OLE DB konektörleriniz tarafından kullanılan ilgili sağlayıcının Self-Hosted tümleştirme çalışma makinesine düzgün şekilde yüklendiğinden emin olun. Daha fazla [ayrıntı, ADF'de Azure-SSIS IR için bir proxy olarak Kendi Kendine Barındırılan IR'yi Yapılandır'da](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) bulunabilir
 
-### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hata iletisi: "Evreleme görev hatası: ErrorCode: 2906, ErrorMessage: Paket yürütme başarısız oldu., Çıkış: {"OperationErrorMessages": "Hata: System.IO.FileLoadException: Dosya veya derleme 'Microsoft.WindowsAzure.Storage, Sürüm=..., yükleyemedi Kültür=nötr, PublicKeyToken=31bf3856ad364e35' veya bağımlılıklarından biri. Bulunan derlemenin bildirim tanımı derleme başvurusuyla eşleşmiyor.' ..."
+### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hata iletisi: "Evreleme görev hatası: ErrorCode: 2906, ErrorMessage: Package yürütme başarısız oldu., Çıkış: {"OperationErrorMessages": "Hata: System.IO.FileLoadException: Dosya veya derleme 'Microsoft.WindowsAzure.Storage, Sürüm =..., Culture=neutral, PublicKeyToken=31bf3856ad364e35' veya bağımlılıklarından biri yüklendi. Bulunan derlemenin bildirim tanımı derleme başvurusuyla eşleşmiyor.' ..."
 
 Olası nedenlerden biri, Self-Hosted tümleştirme çalışma sürenizin düzgün şekilde yüklenmemesi veya yükseltilmemesidir. En son Kendi kendine barındırılan tümleştirme çalışma süresini indirmenizi ve yeniden yüklemenizi öneririz. Oluştur'da daha fazla ayrıntı bulunabilir [ve kendi kendine barındırılan tümleştirme çalışma süresini yapılandırın](create-self-hosted-integration-runtime.md#installation-best-practices)
 

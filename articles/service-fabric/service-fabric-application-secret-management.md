@@ -5,12 +5,12 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 4a489993f982993d5703a9b46d42fffaa6134038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259064"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414507"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>Service Fabric uygulamalarında şifrelenmiş sırları yönetme
 Bu kılavuz, Service Fabric uygulamasında sırları yönetme adımlarında size yol göstersin. Sırlar, depolama bağlantı dizeleri, parolalar veya düz metinde işlenmemesi gereken diğer değerler gibi hassas bilgiler olabilir.
@@ -57,6 +57,11 @@ Sırlar, başvuru bildiriminde bir sertifika belirtilmek suretiyle Hizmet Kumaş
   </Certificates>
 </ApplicationManifest>
 ```
+> [!NOTE]
+> SecretsCertificate belirten bir uygulama etkinleştirdikten sonra, Hizmet Kumaşeşleşen sertifikayı bulur ve başvurunun tam izinler altında sertifikanın özel anahtarına çalıştığını gösteren kimliği verir. Service Fabric ayrıca değişiklik sertifikasını izler ve izinleri buna göre yeniden uygular. Ortak ada göre bildirilen sertifikalar için değişiklikleri algılamak için, Service Fabric tüm eşleşen sertifikaları bulan ve önbelleğe alınmış bir parmak izi listesiyle karşılaştıran periyodik bir görev çalıştırır. Yeni bir parmak izi algılandığında, bu konuya göre bir sertifikanın yenilendiği anlamına gelir. Görev, kümenin her düğümünde dakikada bir kez çalışır.
+>
+> SecretsCertificate konu tabanlı bildirimlere izin verirken, şifrelenmiş ayarların istemcideki ayarı şifrelemek için kullanılan anahtar çiftine bağlı olduğunu unutmayın. Özgün şifreleme sertifikasının (veya eşdeğerinin) özne tabanlı bildirimle eşleştiğinden ve ilgili özel anahtarı da dahil olmak üzere, uygulamayı barındırabilecek kümenin her düğümüne yüklendiğinden emin olmalısınız. Özne tabanlı bildirimle eşleşen ve özgün şifreleme sertifikasıyla aynı anahtar çiftinden oluşturulmuş tüm zaman geçerliliği sertifikaları eşdeğerolarak kabul edilir.
+>
 
 ### <a name="inject-application-secrets-into-application-instances"></a>Uygulama sırlarını uygulama örneklerine enjekte edin
 İdeal olarak, farklı ortamlara dağıtım mümkün olduğunca otomatik olmalıdır. Bu, bir yapı ortamında gizli şifreleme gerçekleştirerek ve uygulama örnekleri oluştururken şifrelenmiş sırları parametre olarak sağlayarak gerçekleştirilebilir.

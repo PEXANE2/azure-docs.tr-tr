@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 114c632d43dbb254222def2437fbffc22ec84688
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672456"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414242"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -404,7 +404,7 @@ Hesap için istediğiniz kadar bölge ekleyebilir ve bir hata önceliği sağlay
 
 ### <a name="is-the-table-api-enabled-for-backups"></a>Yedeklemeler için Tablo API'si etkin mi?
 
-Evet, Tablo API yedeklemeler için Azure Cosmos DB platformundan yararlanır. Yedeklemeler otomatik olarak yapılır. Daha fazla bilgi için [Azure Cosmos DB ile Çevrimiçi yedekleme ve geri yükleme](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)ye bakın.
+Evet, Tablo API yedeklemeler için Azure Cosmos DB platformundan yararlanır. Yedeklemeler otomatik olarak yapılır. Daha fazla bilgi için [Azure Cosmos DB ile Çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md)ye bakın.
 
 ### <a name="does-the-table-api-index-all-attributes-of-an-entity-by-default"></a>Tablo API varsayılan olarak bir varlığın tüm özniteliklerini dizine yapar mı?
 
@@ -761,7 +761,7 @@ Hayır, sstableloader desteklenmiyor.
 ### <a name="does-cassandra-api-provide-full-backups"></a>Cassandra API tam yedekleme sağlıyor mu?
 
 Azure Cosmos DB, bugün tüm API'lerde dört saatlik aralıklarla alınan iki ücretsiz tam yedekleme sağlar. Bu, bir yedekleme zamanlaması ve diğer şeyler ayarlamanız gerekmez.
-Bekletme ve sıklığı değiştirmek istiyorsanız, bir [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) destek talebine e-posta gönderin veya yükseltin. Yedekleme yeteneği hakkında bilgi [Otomatik çevrimiçi yedekleme ve Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) makalesi ile geri yükleme sağlanır.
+Bekletme ve sıklığı değiştirmek istiyorsanız, bir [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) destek talebine e-posta gönderin veya yükseltin. Yedekleme yeteneği hakkında bilgi [Otomatik çevrimiçi yedekleme ve Azure Cosmos DB](online-backup-and-restore.md) makalesi ile geri yükleme sağlanır.
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Bir bölge çökerse Cassandra API hesabı nasıl başarısız olur?
 

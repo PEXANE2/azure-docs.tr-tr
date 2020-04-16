@@ -1,58 +1,36 @@
 ---
-title: AppsSource mağaza için AppSource teklif yayın kılavuzu | Azure Marketi
-description: Office 365, Dynamics 365, Power BI ve Power Apps için AppSource mağazasına uygulama yayınlamak için adım adım kılavuz ve uygulama denetim listeleri yayımlama
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
+title: Microsoft AppSource için teklif yayımlama kılavuzu
+description: Office 365, Dynamics 365, Power BI ve Power Apps için Microsoft AppSource'a uygulama yayımlamak için adım adım kılavuz ve yayımlama denetim listeleri
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8421bd8e019b64ecc44a5b771c942d27f2e0a98
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286651"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415753"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365, Dynamics 365, Güç Uygulamaları ve Power BI Teklif Yayın Kılavuzu
+# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365, Dynamics 365, Power Apps ve Power BI teklif yayın kılavuzu
 
-AppSource mağazası, Dynamics 365, Office 365, Power BI ve Power Apps'ı geliştiren veya genişleten teklifler içerir. Bu ürünlerin her biri, yayımlama sürecinde size rehberlik edecek özel belgelere sahiptir. Her teklif türü için daha ayrıntılı bağlantılar için aşağıya bakın. 
+Microsoft AppSource, Dynamics 365, Office 365, Power BI ve Power Apps'ı geliştiren veya genişleten teklifler içerir. Bu ürünlerin her biri, yayımlama sürecinde size rehberlik edecek özel belgelere sahiptir. Her teklif türü için yayımlama işlemleri ne bağlantılar ve yönergeler için aşağıya bakın.
 
-AppSource, "Şimdi Al", "Bana Ulaşın" ve "Hemen Deneyin" eylem çağrısıyla ödeme yaptı, listelendi ve deneme teklifleri sundu. 
+AppSource, "Şimdi Alın", "Benimle İletişim kurun" ve "Hemen Deneyin" çağrılarıyla ödeme yaptı, listelendi ve deneme teklifleri sundu.
 
-## <a name="product-specific-guides"></a>Ürüne Özel Kılavuzlar
+## <a name="product-specific-guides"></a>Ürüne özel kılavuzlar
 
-### <a name="office-365"></a>Office 365
-
-[Yayımlama sürecini ve yönergeleri](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) gözden geçirme
-
-### <a name="power-apps"></a>Power Apps
-
-Müşterilerin [appsource'da uygulamanızı](https://powerapps.microsoft.com/blog/appsource-test-drive/) nasıl test edebileceği hakkında bilgi edinin.
-
-### <a name="power-bi"></a>Power BI
-
-[Yayımlama işlemini ve yönergeleri gözden geçirin.](https://docs.microsoft.com/power-bi/developer/office-store)
-
-### <a name="dynamics-365"></a>Dynamics 365
-
-#### <a name="dynamics-365-for-finance-and-operations"></a>Finans ve Operasyon için Dynamics 365
-Enterprise Edition için bina yaparken, [yayımlama sürecini ve yönergeleri](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) gözden geçirin
-
-Teklifin Bulut İş Ortağı Portalı'nda nasıl yayınlayacağına yönelik [Finans ve Operasyonlar için Dynamics 365'e](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) bakın.
-
-### <a name="dynamics-365-for-customer-engagement"></a>Müşteri Etkileşimi için Dynamics 365
-[Yayımlama işlemini ve yönergeleri gözden geçirin.](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)
-
-Teklifin Bulut İş Ortağı Portalı'nda nasıl yayınlayacağına yönelik [Müşteri Katılımı teklifi için Dynamics 365'e](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) bakın.
+| **Ürün**    | **Yayımlama kılavuzu**  |
+| :------------------- | :-------------------|
+| Office 365 | [Yayımlama sürecini ve yönergeleri](/office/dev/store/submit-to-the-office-store) gözden geçirme |
+| Dynamics 365 Business Central | İş Ortağı Merkezi'nde bir teklif yayınlamak için [bkz.](./partner-center-portal/create-new-business-central-offer.md) Cloud İş Ortağı Portalı artık Dynamics 365 Business Central tekliflerinin oluşturulmasını ve yönetimini desteklemez. |
+| Finans ve Operasyon için Dynamics 365 | Enterprise Edition için bina yaparken, [yayımlama işlemini ve yönergeleri gözden geçirin.](/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)<br/>İş Ortağı Merkezi'nde bir teklif yayınlamak [için](./partner-center-portal/create-new-operations-offer.md)bkz. Cloud İş Ortağı Portalı artık Dynamics 365 for Finance and Operations tekliflerinin oluşturulmasını ve yönetimini desteklememektedir. |
+| Müşteri Etkileşimi için Dynamics 365 | [Yayımlama işlemini ve yönergeleri gözden geçirin.](/dynamics365/customer-engagement/developer/publish-app-appsource)<br/>İş Ortağı Merkezi'nde bir teklif yayınlamak [için, Müşteri Katılımı & PowerApps teklifi için yeni bir Dynamics 365 oluştur'a](./partner-center-portal/create-new-customer-engagement-offer.md)bakın. Cloud İş Ortağı Portalı artık Dynamics 365 for Finance and Operations tekliflerinin oluşturulmasını ve yönetimini desteklememektedir. |
+| Power Apps | [AppSource'ta müşterilerin uygulamanızı test](https://powerapps.microsoft.com/blog/appsource-test-drive/)etmesini nasıl izin verebilirsiniz öğrenin. |
+| Power BI | [Yayımlama işlemini ve yönergeleri gözden geçirin.](/power-bi/developer/office-store) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğer bunu yapmadıysanız, 
-
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
-
-Cloud Partner Portal'a kaydolduysanız ve çalışıyorsanız, 
-
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
+Bunu zaten yapmadıysanız, [İş Ortağı Merkezi'nde ticari bir pazar hesabı oluşturun.](./partner-center-portal/create-account.md)

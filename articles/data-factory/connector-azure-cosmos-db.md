@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
-ms.openlocfilehash: 7096b429145a54b5a09fe38eb8099c4ff24ac452
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0aa70333454b327a0ca76beef2985062ce56715
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243620"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415377"
 ---
 # <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Cosmos DB'deki (SQL API) verileri kopyalama ve dönüştürme
 
@@ -24,7 +24,11 @@ ms.locfileid: "79243620"
 > * [Sürüm 1](v1/data-factory-azure-documentdb-connector.md)
 > * [Geçerli sürüm](connector-azure-cosmos-db.md)
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Bu makalede Azure Cosmos DB’den (SQL API) ve Azure Cosmos DB'ye veri kopyalamak için Azure Data Factory’nin Kopya Etkinliğini kullanma ve Azure Cosmos DB’deki (SQL API) verileri dönüştürmek için Veri Akışı’nı kullanma işlemleri açıklanır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
+
+
 
 >[!NOTE]
 >Bu bağlayıcı yalnızca Cosmos DB SQL API'yi destekler. MongoDB API için Azure [Cosmos DB'nin MongoDB için API'si için bağlayıcıya](connector-azure-cosmos-db-mongodb-api.md)bakın. Diğer API türleri artık desteklenmiyor.
@@ -48,7 +52,7 @@ Veri Fabrikası, Azure Cosmos DB'ye yazarken en iyi performansı sağlamak için
 > [!TIP]
 > [Veri Geçişi videosu,](https://youtu.be/5-SRNiC_qOU) Azure Blob depolamadan Azure Cosmos DB'ye veri kopyalama adımlarında size yol sunar. Videoda, genel olarak Azure Cosmos DB'ye veri sindirilmesi için performans ayarı hususları da açıklanmaktadır.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

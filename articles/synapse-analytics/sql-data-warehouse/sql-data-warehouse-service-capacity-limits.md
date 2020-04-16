@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: fbdf0fda51ae35fac4f3f8ae45bfcd788fc406ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583526"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413997"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics (eski adıyla SQL DW) kapasite sınırları
 
@@ -27,7 +27,7 @@ Azure Synapse'nin çeşitli bileşenleri için izin verilen maksimum değerler.
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | [Veri Ambarı Birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek bir SQL havuzu (veri ambarı) birimi için Max DWU | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Veri Ambarı Birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54,000<br></br>Varsayılan olarak, her SQL sunucusunda (örneğin, myserver.database.windows.net) DW5000c'ye kadar izin veren 54.000 DTU Kotası vardır. Bu kota yalnızca bir güvenlik sınırıdır. [Destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* seçerek kotanızı artırabilirsiniz.  DTU ihtiyaçlarınızı hesaplamak için 7,5'i gereken toplam DWU ile çarpın veya 9,5'i gereken toplam cDWU ile çarpın. Örnek:<br></br>DW6000 x 7.5 = 45.000 DUS<br></br>DW5000c x 9.5 = 47.500 DUS.<br></br>Geçerli DTU tüketiminizi portaldaki SQL sunucu seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
+| [Veri Ambarı Birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54,000<br></br>Varsayılan olarak, her SQL sunucusunda (örneğin, myserver.database.windows.net) DW5000c'ye kadar izin veren 54.000 DTU Kotası vardır. Bu kota yalnızca bir güvenlik sınırıdır. [Destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* seçerek kotanızı artırabilirsiniz.  DTU ihtiyaçlarınızı hesaplamak için 7,5'i gereken toplam DWU ile çarpın veya 9,5'i gereken toplam cDWU ile çarpın. Örneğin:<br></br>DW6000 x 7.5 = 45.000 DUS<br></br>DW5000c x 9.5 = 47.500 DUS.<br></br>Geçerli DTU tüketiminizi portaldaki SQL sunucu seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
 | Veritabanı bağlantısı |Maksimum Eşzamanlı açık oturumlar |1024<br/><br/>Eşzamanlı açık oturumların sayısı seçilen DWU'ya göre değişir. DWU600c ve üzeri maksimum 1024 açık oturumu destekler. DWU500c ve altında, 512 maksimum eşzamanlı açık oturum sınırını destekler. Unutmayın, aynı anda yürütülebilir sorgu sayısı sınırları vardır. Eşzamanlılık sınırı aşıldığında, istek işlenmeyi beklediği bir iç kuyruğa girer. |
 | Veritabanı bağlantısı |Hazırlanan ifadeler için maksimum bellek |20 MB |
 | [İş yükü yönetimi](resource-classes-for-workload-management.md) |Maksimum eşzamanlı sorgular |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülür ve kalan sorgular sıraya alınır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi](memory-concurrency-limits.md) ayarı düşürüldüğünde eşzamanlı sorgu sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütmehakkında daha fazla bilgi için [eşzamanlı lık maksimumları](memory-concurrency-limits.md) makalesine bakın. |
@@ -42,7 +42,7 @@ Azure Synapse'nin çeşitli bileşenleri için izin verilen maksimum değerler.
 | Tablo |Maksimum boyut |Sütun mağaza tabloları için sınırsız boyut. <br>Diske sıkıştırılmış rowstore tabloları için 60 TB. |
 | Tablo |Veritabanı başına tablolar | 100.000 |
 | Tablo |Tablo başına sütunlar |1024 sütun |
-| Tablo |Sütun başına bayt |Sütun [veri türüne](sql-data-warehouse-tables-data-types.md)bağlıdır. Karakter veri türleri için MAX Limit, sayfa dışında (satır taşma) depolama alanında en fazla 2 GB depolayabilir.  Char veya varchar limiti gibi Unicode olmayan karakterler bir veri sayfasında 8000, nchar veya nvarchar limiti gibi Unicode karakterleri bir veri sayfasında 4000'dir.  Performansı artırmak için veri sayfası depolama boyutlarını kullanın. |
+| Tablo |Sütun başına bayt |Sütun [veri türüne](sql-data-warehouse-tables-data-types.md)bağlıdır. Limit, char veri türleri için 8000, nvarchar için 4000 veya MAX veri türleri için 2 GB'dır. |
 | Tablo |Satır başına bayt, tanımlanmış boyut |8060 bayt<br/><br/>Satır başına bayt sayısı, sayfa sıkıştırmalı SQL Server için olduğu gibi hesaplanır. SQL Server gibi, değişken **uzunluktasütunların** satır dışına itilmesini sağlayan satır taşma depolama sı desteklenir. Değişken uzunluk satırları satır dışına itildiğinde, ana kayıtta yalnızca 24 baytlık kök depolanır. Daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/ms186981.aspx) |
 | Tablo |Tablo başına bölümler |15.000<br/><br/>Yüksek performans için, iş gereksinimlerinizi desteklerken ihtiyacınız olan bölüm sayısını en aza indirmenizi öneririz. Bölüm sayısı arttıkça, Veri Tanım Dili (DDL) ve Veri Düzenleme Dili (DML) işlemlerinin yükü büyür ve performansın düşmesine neden olur. |
 | Tablo |Bölüm sınır değeri başına karakterler. |4000 |
@@ -54,7 +54,7 @@ Azure Synapse'nin çeşitli bileşenleri için izin verilen maksimum değerler.
 | İstatistikler |İstatistik nesnesi başına sütunlar. |32 |
 | İstatistikler |Tablo başına sütunlar üzerinde oluşturulan istatistikler. |30,000 |
 | Saklı Yordamlar |Maksimum yuvalama seviyesi. |8 |
-| Görüntüle |Görünüm başına sütunlar |1,024 |
+| Görünüm |Görünüm başına sütunlar |1,024 |
 ||||
 
 ## <a name="loads"></a>Yükler

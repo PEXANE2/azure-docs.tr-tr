@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 09569be88daa6295834e58da6b51656d0438bed4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 2171bbaea065ce1ab3a8d90f32e6ea6dc1f1e821
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270936"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404233"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Öğretici: Video ve transkript denetimi
 
@@ -227,7 +227,7 @@ Video denetimi işinin sonucu (Bkz. [video denetimine hızlı başlangıç](vide
 
 ## <a name="create-a-human-review"></a>İnsan incelemesi oluşturma
 
-Denetleme işlemi videodaki anahtar karelerin listesini ve ses parçalarının transkriptini döndürür. Sonraki adım, insan denetleyiciler için Content Moderator inceleme aracında bir inceleme oluşturmaktır. `Program.cs` dosyasında `ProcessVideo()` yöntemine döndüğünüzde, `CreateVideoReviewInContentModerator()` yöntemine yapılan çağrıyı görürsünüz. Bu yöntem `VideoReviewAPI.cs` içinde yer alan `videoReviewApi` sınıfındadır ve aşağıda gösterilmiştir.
+Denetleme işlemi videodaki anahtar karelerin listesini ve ses parçalarının transkriptini döndürür. Bir sonraki adım, insan moderatörler için İçerik Moderatör İnceleme aracında bir inceleme oluşturmaktır. `Program.cs` dosyasında `ProcessVideo()` yöntemine döndüğünüzde, `CreateVideoReviewInContentModerator()` yöntemine yapılan çağrıyı görürsünüz. Bu yöntem `VideoReviewAPI.cs` içinde yer alan `videoReviewApi` sınıfındadır ve aşağıda gösterilmiştir.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -299,7 +299,7 @@ Transkript elinizin altında olduğundan, taranır ve incelemede kullanılır. �
 
 ### <a name="parse-the-transcript-for-captions"></a>Açıklamalı alt yazılar için transkripti ayrıştırma
 
-Ardından, VTT biçimindeki transkripti açıklamalı alt yazılar ve zaman damgaları için ayrıştırın. İnceleme aracı, video inceleme ekranının Transkript Sekmesinde bu açıklamalı alt yazıları görüntüler. Zaman damgaları açıklamalı alt yazıları ilgili video kareleriyle eşleştirmekte kullanılır.
+Ardından, VTT biçimindeki transkripti açıklamalı alt yazılar ve zaman damgaları için ayrıştırın. İnceleme aracı bu altyazıları video inceleme ekranında Transkript Sekmesinde görüntüler. Zaman damgaları açıklamalı alt yazıları ilgili video kareleriyle eşleştirmekte kullanılır.
 
 [!code-csharp[TextScreen2](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=528-567)]
 

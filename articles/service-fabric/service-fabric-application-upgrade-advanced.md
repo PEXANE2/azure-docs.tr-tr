@@ -2,13 +2,13 @@
 title: Gelişmiş Uygulama Yükseltme Konuları
 description: Bu makalede, Bir Hizmet Kumaşı uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele al.)
 ms.topic: conceptual
-ms.date: 1/28/2020
-ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.date: 03/11/2020
+ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422804"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414495"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Hizmet Kumaş uygulama yükseltme: Gelişmiş konular
 
@@ -18,7 +18,7 @@ Yayımlanmış bir uygulamaya yükseltmenin bir parçası olarak yeni bir hizmet
 
 Benzer şekilde, hizmet türleri yükseltmenin bir parçası olarak bir uygulamadan kaldırılabilir. Ancak, kaldırılacak hizmet türünün tüm hizmet örnekleri yükseltmeye devam etmeden önce kaldırılmalıdır [(bkz.](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)
 
-## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Stateless hizmeti planlanan kapalı kalma süresi sırasında bağlantı düşmelerini önleyebilirsiniz (önizleme)
+## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Planlanan hizmet kapalı kalma süresi sırasında bağlantı düşüşlerini önleyebilirsiniz
 
 Uygulama/küme yükseltmesi veya düğüm devre dışı bırakma gibi planlı durum dışı örnek düşüş süreleri için, açıkolan uç nokta nın, örnek kapatıldıktan sonra kaldırılması nedeniyle bağlantılar bırakılabilir ve bu da zorunlu bağlantı kapatmalarına neden olur.
 

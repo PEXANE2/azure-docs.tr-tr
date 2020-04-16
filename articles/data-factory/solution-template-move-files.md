@@ -11,19 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b36eb2615e98ee8ea7751c836fd43e81a5a0f4e2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74941961"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414755"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Veri Fabrikası ile dosyaları taşıma
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, dosyaları dosya tabanlı mağazalar arasında bir klasörden diğerine taşımak için kullanabileceğiniz bir çözüm şablonu açıklanmaktadır. Bu şablonu kullanmanın yaygın senaryolarından biri: Dosyalar sürekli olarak kaynak mağazanızın iniş klasörüne bırakılır. Bir zamanlama tetikleyicisi oluşturarak, ADF ardışık alanı bu dosyaları düzenli aralıklarla kaynaktan hedef depoya taşıyabilir.  ADF ardışık almanın "hareketli dosyaları" elde etme yolu, dosyaları iniş klasöründen almak, her birini hedef depodaki başka bir klasöre kopyalamak ve aynı dosyaları kaynak depodaki iniş klasöründen siler.
 
 > [!NOTE]
-> Bu şablonun klasörleri taşımak yerine dosyaları taşımak için tasarladığını unutmayın.  Yalnızca bir klasör yolu içermesini sağlamak için veri kümesini değiştirerek klasörü taşımak ve ardından bir klasörü temsil eden aynı veri kümesine başvurmak için kopyalama etkinliğini ve etkinliği silmek istiyorsanız, çok dikkatli olmanız gerekir. Bunun nedeni, kopyalama işlemi ile silme işlemi arasında klasöre yeni dosyaların gelmediğinden emin olmak zorunda olduğunuziçindir. Kopyalama etkinliğinizin kopyalama işini tamamladığı ancak Silme etkinliğine bakılmadığını niçin klasöre gelen yeni dosyalar varsa, Delete etkinliği kopyalanmamış olan bu yeni gelen dosyayı silebilir tüm klasörü silerek henüz hedef.
+> Bu şablonun klasörleri taşımak yerine dosyaları taşımak için tasarladığını unutmayın.  Yalnızca bir klasör yolu içermesini sağlamak için veri kümesini değiştirerek klasörü taşımak ve ardından bir klasörü temsil eden aynı veri kümesine başvurmak için kopyalama etkinliğini ve etkinliği silmek istiyorsanız, çok dikkatli olmanız gerekir. Bunun nedeni, kopyalama işlemi ile silme işlemi arasında klasöre yeni dosyaların gelmediğinden emin olmak zorunda olduğunuziçindir. Kopyalama etkinliğinizin kopyalama işini tamamladığı ancak Silme etkinliğine bakılmadığını niçin klasöre gelen yeni dosyalar varsa, Delete etkinliği henüz tüm klasörü silerek hedefe kopyalanmamış olan bu yeni gelen dosyayı silebilir.
 
 ## <a name="about-this-solution-template"></a>Bu çözüm şablonu hakkında
 

@@ -1,21 +1,21 @@
 ---
-title: Öğretici - Azure Bahar Bulutu'nda dağıtım için Java Spring uygulaması hazırlayın
-description: Bu eğitimde, Azure Bahar Bulutu'na dağıtım için bir Java Bahar uygulaması hazırlayabilirsiniz.
+title: Nasıl Kullanılır - Azure Bahar Bulutu'nda dağıtım için Java Spring uygulaması hazırlama
+description: Bu konuda, Azure Bahar Bulutu'na dağıtım için bir Java Bahar uygulaması hazırlarsınız.
 author: bmitchell287
 ms.service: spring-cloud
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 49ebfec131c8b9fa7b8535163c03eb7cb692790d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78200031"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81414455"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Bahar Bulutu'nda dağıtım için java spring uygulaması hazırlama
 
-Bu hızlı başlangıç, varolan bir Java Bahar uygulamasını Azure Bahar Bulutu'na dağıtım için nasıl hazırlayacağımı gösterir. Azure İlkbahar Bulutu, doğru şekilde yapılandırılırsa, Java Bahar Bulutu uygulamanızı izlemek, ölçeklendirmek ve güncellemek için güçlü hizmetler sağlar.
+Bu konu, varolan bir Java Bahar uygulamasının Azure Bahar Bulutu'na dağıtım için nasıl hazırlanacağını gösterir. Azure İlkbahar Bulutu, doğru şekilde yapılandırılırsa, Java Bahar Bulutu uygulamanızı izlemek, ölçeklendirmek ve güncellemek için güçlü hizmetler sağlar.
 
 Diğer örnekler, POM dosyası yapılandırıldığında bir uygulamanın Azure İlkbahar Bulutu'na nasıl dağıtılanınca açıklanır. 
 * [Azure portalını kullanarak Uygulamayı Başlat](spring-cloud-quickstart-launch-app-portal.md)
@@ -225,7 +225,7 @@ Pom.xml dosyanızın bağımlılıklar bölümüne aşağıdaki `spring-cloud-st
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Azure Bahar Bulutu'na dağıtım için Java Spring uygulamanızı nasıl yapılandırabileceğinizi öğrendiniz. Config Server örneğini nasıl ayarlayabilirsiniz öğrenmek için bir sonraki öğreticiye devam edin.
+Bu konuda, Azure Bahar Bulutu'na dağıtım için Java Spring uygulamanızı nasıl yapılandırabileceğinizi öğrendiniz. Config Server örneğini nasıl ayarlayatılabildiğini öğrenmek için aşağıdaki makaleye bakın.
 
 > [!div class="nextstepaction"]
 > [Config Server örneğini nasıl ayarlayatılamayı öğrenin](spring-cloud-tutorial-config-server.md)

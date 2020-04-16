@@ -8,26 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: fafc5234da3e6dfecdae2c8b2e2ba80cbed20b5c
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 29944311c2215ebcc46ff3752004092bdeb9a9c8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80244810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81404404"
 ---
-# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-20-and-21-rest-api-and-python"></a>Quickstart: Computer Vision 2.0 ve 2.1 REST API ve Python kullanarak basılı ve el yazısıyla metin ayıklama
+# <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Quickstart: Computer Vision REST API ve Python kullanarak basılı ve el yazısı metin ayıklama
 
 Bu hızlı başlangıçta, Computer Vision REST API'yi kullanarak bir resimden basılı ve/veya el yazısıyla metin ayıklayacaktır. Toplu [İşlem Sonucu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) [Nuyöntemleriyle,](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) görüntüdeki metni algılayabilir ve tanınan karakterleri makine tarafından okunabilir bir karakter akışına ayıklayabilirsiniz. API, her metin satırı için hangi tanıma modelinin kullanılacağını belirler, böylece hem basılı hem de el yazısı metiniçeren görüntüleri destekler.
 
-Computer Vision 2.0 ve 2.1 ile karşılaştırıldığında, Computer Vision 3.0 Public Preview şunları sağlar:
+Bu işlevsellik hem v2.1 API hem de v3.0 Genel Önizleme API'sinde kullanılabilir. v2.1 ile karşılaştırıldığında, 3.0 API vardır:
 
-* daha iyi doğruluk
-* değiştirilmiş bir çıktı biçimi
-* kelimeler için güven puanı
-* ek dil parametresi ile hem İspanyolca hem de İngilizce dil desteği
+* Geliştirilmiş doğruluk
+* Kelimeler için güven puanları
+* Ek `language` parametre ile hem İspanyolca hem de İngilizce desteği
+* Farklı bir çıktı biçimi
+
+Kullandığınız sürüm için aşağıdaki sekmeyi seçin.
 
 #### <a name="version-2"></a>[Sürüm 2](#tab/version-2)
 
@@ -833,7 +835,9 @@ Başarılı bir yanıt JSON biçiminde döndürülür. Örnek web sayfası, aşa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Optik karakter tanıma (OCR) gerçekleştirmek için Görüntü İşleme kullanan bir Python uygulaması keşfedin. Akıllı kırpılmış küçük resimler oluşturun. Buna ek olarak, bir görüntüdeki yüzler gibi görsel özellikleri algılayın, kategorilere ayırın, etiketleyin ve açıklayın. Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.
+Ardından, optik karakter tanıma (OCR) gerçekleştirmek için Computer Vision kullanan bir Python uygulamasını keşfedin; akıllı kırpılmış küçük resimler oluşturun; görüntülerdeki görsel özellikleri algılar, kategorilere ayırın, etiketler ve tanımlayın.
 
 > [!div class="nextstepaction"]
 > [Görüntü İşleme API'si Python Öğreticisi](../Tutorials/PythonTutorial.md)
+
+* Görüntü İşleme API'sini hızlı bir şekilde denemeniz için [Open API test konsolu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) konusuna bakın.

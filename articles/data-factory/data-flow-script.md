@@ -7,14 +7,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
-ms.openlocfilehash: 251507c5740af69bd0818391dd2e8f857338b6cf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313905"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81413440"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı komut dosyası (DFS)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri akışı komut dosyası (DFS), eşleme veri akışına dahil edilen dönüşümleri yürütmek için kullanılan kodlama diline benzer temel meta veridir. Her dönüşüm, işi düzgün çalıştırmak için gerekli bilgileri sağlayan bir dizi özellik tarafından temsil edilir. Komut dosyası, tarayıcı nın üst şeridindeki "komut dosyası" düğmesine tıklayarak ADF'den görünür ve değiştirilebilir.
 

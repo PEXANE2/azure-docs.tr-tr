@@ -2,16 +2,16 @@
 title: Varolan bir Hizmet Kumaşı kümesinde yönetilen kimlik desteğini yapılandırma
 description: 'Varolan bir Azure Hizmet Kumaşı kümesinde yönetilen kimlik desteğini şu şekilde etkinleştirebilirsiniz:'
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 03/11/2019
 ms.custom: sfrev
-ms.openlocfilehash: 396978546b301884087c4ea51e242258d64a6b0b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415683"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster-preview"></a>Yönetilen kimlik desteğini varolan bir Hizmet Kumaşı kümesinde yapılandırma (önizleme)
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>Varolan bir Hizmet Kumaşı kümesinde yönetilen kimlik desteğini yapılandırma
 
 Hizmet Kumaşı uygulamalarınızda [Azure kaynakları için Yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/overview.md) kullanmak için, önce kümedeki Yönetilen Kimlik *Belirteç Hizmeti'ni* etkinleştirin. Bu hizmet, Yönetilen kimliklerini kullanarak Service Fabric uygulamalarının kimlik doğrulamalarından ve onlar adına erişim belirteçleri almaktan sorumludur. Hizmet etkinleştirildikten sonra, sol bölmedeki **Sistem** bölümünün altında, kumaş adı altında çalışan Service Fabric Explorer'da **görebilirsiniz:/System/ManagedIdentityTokenService**.
 

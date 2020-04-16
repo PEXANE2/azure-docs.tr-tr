@@ -11,15 +11,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4bd667a2302136b5e12d2e4e548c9e8863715621
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81415271"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Boru Hattı etkinliğini yürütme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 İşlem Hattı Yürütme etkinliği bir Data Factory işlem hattının başka bir işlem hattını çağırmasını sağlar.
+
+
 
 ## <a name="syntax"></a>Sözdizimi
 
