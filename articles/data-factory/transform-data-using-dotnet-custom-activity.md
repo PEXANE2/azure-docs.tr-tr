@@ -10,18 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260585"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418958"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-use-custom-activities.md)
 > * [Geçerli sürüm](transform-data-using-dotnet-custom-activity.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bir Azure Veri Fabrikası ardışık hattında kullanabileceğiniz iki tür etkinlik vardır.
 
@@ -115,7 +116,7 @@ Aşağıdaki tabloda, bu faaliyete özgü özelliklerin adları ve açıklamalar
 &#42; Özellikleri `resourceLinkedService` `folderPath` ve her ikisi de belirtilmelidir veya her ikisi de atlanmalıdır.
 
 > [!NOTE]
-> Bağlantılı hizmetleri Özel Etkinlik'te referans Olarak Geçiyorsanız, Azure Anahtar Kasası etkin leştirilmiş bağlantılı hizmeti geçmek (güvenli dizeleri içermediğinden) ve kimlik bilgilerini doğrudan Key'den gizli ad kullanarak almak iyi bir güvenlik uygulamasıdır Koddan kasa. [Burada](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) AKV etkin bağlantılı hizmete başvuran, kimlik bilgilerini Key Vault'tan alan ve koddaki depolama alanına erişen bir örnek bulabilirsiniz.
+> Bağlantılı hizmetleri Özel Etkinlik'te referans Olarak Nesneleri geçiriyorsanız, Azure Key Vault özellikli bağlantılı bir hizmeti geçirmek (güvenli dizeleri içermediğinden) ve kimlik bilgilerini doğrudan Anahtar Kasa'dan koddan gizli adı kullanarak getirmek iyi bir güvenlik uygulamasıdır. [Burada](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) AKV etkin bağlantılı hizmete başvuran, kimlik bilgilerini Key Vault'tan alan ve koddaki depolama alanına erişen bir örnek bulabilirsiniz.
 
 ## <a name="custom-activity-permissions"></a>Özel etkinlik izinleri
 
@@ -309,7 +310,7 @@ Downstream etkinliklerinde stdout.txt içeriğini tüketmek istiyorsanız, "acti
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString çıktılarını alın
 
-Bu makaledeki bazı örneklerde gösterildiği gibi, *SecureString*türü olarak atanan hassas özellik değerleri, Veri Fabrikası kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Gerçek ardışık yürütme, ancak, bir *SecureString* özelliği düz `activity.json` metin olarak dosya içinde JSON olarak seriolarak. Örnek:
+Bu makaledeki bazı örneklerde gösterildiği gibi, *SecureString*türü olarak atanan hassas özellik değerleri, Veri Fabrikası kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Gerçek ardışık yürütme, ancak, bir *SecureString* özelliği düz `activity.json` metin olarak dosya içinde JSON olarak seriolarak. Örneğin:
 
 ```json
 "extendedProperties": {
@@ -344,7 +345,7 @@ Aşağıdaki tabloda Veri Fabrikası V2 Özel Etkinliği ile Veri Fabrikası sü
 |Gerekli veri kümesi      |İsteğe bağlı      |Faaliyetleri zincirlemek ve bilgi aktarmak için gerekli      |
 |Bilgileri etkinlikten özel mantığa geçirin      |ReferenceObjects (LinkedServices ve Datasets) ve ExtendedProperties (özel özellikler) aracılığıyla      |ExtendedProperties (özel özellikler), Giriş ve Çıktı Veri Kümeleri aracılığıyla      |
 |Özel mantıkla bilgi alma      |Parses activity.json, linkedServices.json ve datasets.json yürütülebilir aynı klasörde depolanır      |.NET SDK üzerinden (.NET Çerçeve 4.5.2)      |
-|Günlüğe Kaydetme      |Doğrudan STDOUT'a yazar      |.NET DLL'de Logger Uygulaması      |
+|Günlüğe kaydetme      |Doğrudan STDOUT'a yazar      |.NET DLL'de Logger Uygulaması      |
 
 Sürüm 1 (Özel) DotNet Etkinliği için yazılmış varolan .NET kodunuz varsa, Özel Etkinlik'in geçerli sürümüyle çalışabilmek için kodunuzu değiştirmeniz gerekir. Bu üst düzey yönergeleri izleyerek kodunuzu güncelleştirin:
 

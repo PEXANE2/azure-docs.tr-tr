@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 38010e3aaa2d0544dfbfe19135d25250d2b021a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e35e4eb750aa2244df920111b201d886599eaf6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929774"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419060"
 ---
 # <a name="ssis-migration-with-azure-sql-database-managed-instance-as-the-database-workload-destination"></a>Azure SQL Veritabanı ile SSIS geçişi veritabanı iş yükü hedefi olarak örnek yönetilen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Veritabanı iş yüklerini SQL Server'dan azure SQL Veritabanı yönetilen örneğe aktarırken, [Azure Veri Geçiş Hizmeti'ni](https://docs.microsoft.com/azure/dms/dms-overview)(DMS) ve Azure SQL Veritabanı [ağ topolojilerini DMS kullanarak örnek geçişleri yönetmiş](https://docs.microsoft.com/azure/dms/resource-network-topologies)olmalısınız.
 
@@ -35,7 +37,7 @@ Azure SQL Veritabanı yönetilen örnek, sql server agent gibi bir yerel, birinc
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 - [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)
-- [Azure-SSIS Tümleştirme Çalışma Süresi](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
+- [Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)
 - [Azure Veritabanı Geçiş Hizmeti](https://docs.microsoft.com/azure/dms/dms-overview)
 - [Azure SQL Veritabanı için ağ topolojileri DMS kullanarak örnek geçişleri yönetti](https://docs.microsoft.com/azure/dms/resource-network-topologies)
 - [SSIS paketlerini Azure SQL Veritabanı yönetilen örneğine geçirme](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages-managed-instance)

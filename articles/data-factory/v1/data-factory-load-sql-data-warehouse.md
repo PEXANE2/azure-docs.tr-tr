@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 079d29c241cfbbdcc991f024c07b07b378670c10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130883"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419315"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Veri Fabrikası ile Azure SQL Veri Ambarına 15 dakikanın altında 1 TB yükleyin
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "80130883"
 
 [Azure SQL Veri Ambarı,](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilen bulut tabanlı, ölçeklendirilebilen bir veritabanıdır.  Büyük ölçüde paralel işleme (MPP) mimarisi üzerine inşa edilen SQL Veri Ambarı, kurumsal veri ambarı iş yükleri için optimize edilmiştir.  Depolamayı ölçeklendirme ve bağımsız olarak hesaplama esnekliğiile bulut elastikiyeti sunar.
 
-Azure SQL Veri Ambarı ile başlarken artık **Azure Veri Fabrikası'nı**kullanmak her zamankinden daha kolay.  Azure Veri Fabrikası, bir SQL Veri Ambarını mevcut sisteminizdeki verilerle doldurmak ve SQL Veri Ambarını değerlendirirken ve analitiğinizi oluşturarak değerli zamandan tasarruf etmek için kullanılabilen, tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir Çözümleri. Azure Veri Fabrikası'nı kullanarak Azure SQL Veri Ambarı'na veri yüklemenin temel avantajları şunlardır:
+Azure SQL Veri Ambarı ile başlarken artık **Azure Veri Fabrikası'nı**kullanmak her zamankinden daha kolay.  Azure Veri Fabrikası, bir SQL Veri Ambarı'nı mevcut sisteminizdeki verilerle doldurmak ve SQL Veri Ambarı'nı değerlendirirken ve analitik çözümlerinizi oluşturarak değerli zaman kazandırmak için kullanılabilecek tam olarak yönetilen bulut tabanlı bir veri tümleştirme hizmetidir. Azure Veri Fabrikası'nı kullanarak Azure SQL Veri Ambarı'na veri yüklemenin temel avantajları şunlardır:
 
 * **Kurulumu kolay:** Komut dosyası gerektirmeden 5 adımlı sezgisel sihirbaz.
 * **Zengin veri deposu desteği:** şirket içi ve bulut tabanlı veri depolarından oluşan zengin bir dizi için yerleşik destek.
@@ -141,7 +141,7 @@ Bu makalede, Kopya Sihirbazı'nı kullanarak verileri Azure SQL Veri Ambarı'na 
 
 1. **Görev adı** için **CopyFromBlobToAzureSqlDataWarehouse** girin
 2. **Şimdi Çalıştır** seçeneğini belirleyin.   
-3. **İleri**'ye tıklayın.  
+3. **İleri**’ye tıklayın.  
 
     ![Kopya Sihirbazı - Özellikler sayfası](media/data-factory-load-sql-data-warehouse/copy-wizard-properties-page.png)
 
@@ -183,7 +183,7 @@ Bu bölümde, hedefin nasıl yapılandırılabildiğiniz gösterilmektedir: `lin
 
 ## <a name="step-4-performance-settings"></a>Adım 4: Performans ayarları
 
-**Izin polibase** varsayılan olarak denetlenir.  **İleri**'ye tıklayın.
+**Izin polibase** varsayılan olarak denetlenir.  **İleri**’ye tıklayın.
 
 ![Kopya Sihirbazı - şema eşleme sayfası](media/data-factory-load-sql-data-warehouse/performance-settings-page.png)
 

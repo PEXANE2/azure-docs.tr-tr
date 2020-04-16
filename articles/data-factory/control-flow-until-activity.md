@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b4786b612dedb065239f57e0286bafb688180dff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440364"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417955"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki etkinlik kadar
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Until etkinliği, programlama dillerindeki do-until döngü yapısıyla aynı işlevselliği sağlar. Etkinlikle ilişkilendirilmiş olan koşul doğru sonucunu verene kadar bir dizi etkinliği döngüsel olarak yürütür. Data Factory'de bitiş etkinliği için bir zaman aşımı değeri belirtebilirsiniz. 
 
 ## <a name="syntax"></a>Sözdizimi
@@ -288,7 +290,7 @@ while ($True) {
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

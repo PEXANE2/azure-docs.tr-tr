@@ -11,17 +11,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 90bab7b49f82c3c9c8954c603e8d3bda6e2dcc89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21329e3fada62036bc5b8d2bf6cdf6b3be5adad3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417402"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri bir dosya sistemine veya dosya sisteminden kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-onprem-file-system-connector.md)
 > * [Geçerli sürüm](connector-file-system.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, dosya sistemine ve dosya sisteminden verilerin nasıl kopyalanıp kopyalanılacak olduğu açıklanmıştır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

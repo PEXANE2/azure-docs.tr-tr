@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33b257e9d344fc31df072509f105d2e8fd1bd29b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9d697c11427c7ebbf811f9cc05740347c74452
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72245181"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417562"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure Disk Şifreleme (önceki sürüm)
 
@@ -27,7 +27,7 @@ Bu makalede, [Windows VM'ler için Azure Disk](disk-encryption-overview.md) Şif
   - Anahtar kasanızın şifreleme anahtarlarını yazmak için, IaaS VM'nin anahtar kasa bitiş noktasına bağlanabilmesi gerekir.
   - IaaS VM, Azure uzantı deposunu ve VHD dosyalarını barındıran bir Azure depolama hesabı barındıran bir Azure depolama bitiş noktasına bağlanabilmeli.
   -  Güvenlik ilkeniz Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/key-vault-access-behind-firewall.md)bakın.
-  - Windows'da TLS 1.0 açıkça devre dışı bırakılmışsa ve .NET sürümü 4,6 veya daha yüksek olarak güncelleştirilmeseydi, aşağıdaki kayıt defteri değişikliği ADE'nin daha yeni TLS sürümünü seçmesini sağlar:
+  - Şifrelenecek VM varsayılan protokol olarak TLS 1.2 kullanacak şekilde yapılandırılmalıdır. TLS 1.0 açıkça devre dışı bırakılmışsa ve .NET sürümü 4,6 veya daha yüksek olarak güncelleştirilmediyse, aşağıdaki kayıt defteri değişikliği ADE'nin daha yeni TLS sürümünü seçmesini sağlar:
     
         [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
         "SystemDefaultTlsVersions"=dword:00000001

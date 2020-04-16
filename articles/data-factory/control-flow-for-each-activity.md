@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: 71528385563b29ce70edf396434be0174beac105
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 35d61e896a395c3044a51780fef72d54c211a31f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80804852"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417189"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Her Etkinlik
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 ForEach Etkinliği, ardışık ardınızdaki yinelenen bir kontrol akışını tanımlar. Bu etkinlik bir koleksiyon üzerinde yinelemek için kullanılır ve bir döngüde belirtilen etkinlikleri yürütür. Bu etkinliğin döngü uygulaması, programlama dillerindeki Foreach döngü yapısına benzer.
 
 ## <a name="syntax"></a>Sözdizimi

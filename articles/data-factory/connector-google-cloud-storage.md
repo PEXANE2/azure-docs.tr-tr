@@ -10,14 +10,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: d811076e0d78ed2812681447bebe8e6e07aa33e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2ee0fc7f7b7e3ef465a43eed2bd47f33e87162b7
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892660"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417297"
 ---
 # <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Google Bulut Depolama'dan veri kopyalama
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Google Cloud Storage'daki verilerin nasıl kopyalanılacağı özetler. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

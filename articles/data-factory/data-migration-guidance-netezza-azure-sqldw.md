@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 9/03/2019
-ms.openlocfilehash: 80c9929f37b4890387a7625f04db6ce3e37f0cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0263880262da95f4d26ee8388da464e9a59efca
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74922127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416451"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Verileri şirket içi Netezza sunucusundan Azure'a geçirmek için Azure Veri Fabrikası'nı kullanın 
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Veri Fabrikası, verileri şirket içi Netezza sunucusundan Azure depolama hesabınıza veya Azure SQL Veri Ambarı veritabanınıza ölçekte geçirmek için performans, sağlam ve uygun maliyetli bir mekanizma sağlar. 
 
@@ -139,7 +141,7 @@ Her tablo, yeni veya güncelleştirilmiş satırlarını tanımlamak için farkl
 
 ### <a name="configure-a-self-hosted-integration-runtime"></a>Kendi kendine barındırılan tümleştirme çalışma süresini yapılandırma
 
-Verileri Netezza sunucusundan Azure'a aktarıyorsanız, sunucu ister şirket güvenlik duvarınızın arkasında ister sanal ağ ortamında olsun, windows makinesine veya VM'ye kendi kendine barındırılan bir IR yüklemeniz gerekir, bu da kullanılan motordur verileri taşıyın. Kendi kendine barındırılan IR'yi yüklerken, aşağıdaki yaklaşımı öneririz:
+Verileri Netezza sunucusundan Azure'a taşıyorsanız, sunucu ister şirket güvenlik duvarınızın arkasında ister sanal ağ ortamında olsun, verileri taşımak için kullanılan motor olan windows makinesine veya VM'ye kendi kendine barındırılan bir IR yüklemeniz gerekir. Kendi kendine barındırılan IR'yi yüklerken, aşağıdaki yaklaşımı öneririz:
 
 - Her Windows makinesi veya VM için 32 vCPU ve 128 GB bellek yapılandırmasıyla başlayın. Veri geçişi sırasında IR makinesinin CPU ve bellek kullanımını izlemeye devam ederek, daha iyi performans için makineyi daha fazla ölçeklendirmeniz mi yoksa maliyetten tasarruf etmek için makineyi küçültmeniz mi gerektiğini görebilirsiniz.
 
@@ -151,7 +153,7 @@ En iyi uygulama olarak, her kopyalama etkinliği için uygun bir bölüm boyutu 
 
 Bir tabloyu kopyalamak için, tek bir kopya etkinliğiyle, kendi kendine barındırılan tek bir IR makinesiyle başlayın. Tablonuzdaki `parallelCopies` veri dilimi bölümlerinin sayısına bağlı olarak ayarı kademeli olarak artırın. Kopyalama işinden elde edilen iş geleni göre, tablonun tamamının iki saat içinde Azure'a yüklenebiliyor mu olduğunu görün. 
 
-İki saat içinde Azure'a yüklenemezse ve kendi barındırılan IR düğümü ve veri deposunun kapasitesi tam olarak kullanılmazsa, ağınızın sınırına veya verilerin bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliklerinin sayısını kademeli olarak artırın Mağaza. 
+İki saat içinde Azure'a yüklenemezse ve kendi barındırılan IR düğümü ve veri deposunun kapasitesi tam olarak kullanılmazsa, ağınızın sınırına veya veri depolarının bant genişliği sınırına ulaşana kadar eşzamanlı kopyalama etkinliklerinin sayısını kademeli olarak artırın. 
 
 CPU ve bellek kullanımını kendi kendine barındırılan IR makinesinde izlemeye devam edin ve CPU ve belleğin tam olarak kullanıldığını gördüğünüzde makineyi büyütmeye veya birden fazla makineye ölçeklendirmeye hazır olun. 
 

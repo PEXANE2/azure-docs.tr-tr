@@ -11,14 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: jingwang
-ms.openlocfilehash: 6494352bf957af83b45488493bf12a094c730c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79125764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417853"
 ---
 # <a name="monitor-copy-activity"></a>Kopyalama etkinliğini izleme
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'nda kopyalama etkinliği yürütmenasıl izlenir. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
@@ -153,4 +155,4 @@ Diğer Kopyalama Etkinliği makalelerini görün:
 
 \- [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)
 
-\-[Etkinlik performansını kopyalama](copy-activity-performance.md)
+\- [Kopyalama etkinliği performansı](copy-activity-performance.md)

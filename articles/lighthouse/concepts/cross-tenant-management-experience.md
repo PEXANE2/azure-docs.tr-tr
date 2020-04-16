@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure temsilci kaynak yönetimi, kiracılar arası yönetim deneyimi sağlar.
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0ac5d62fbf6b6ee418cd4b2f2b00dfc12e05f809
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754137"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418532"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -25,11 +25,7 @@ Genellikle, bir müşteri için Azure kaynaklarını yönetmek için, hizmet sa�
 
 Azure temsilcikaynak yönetimi yle, onboarding işlemi, hizmet sağlayıcısının kiracısında, müşterinin kiracısındaki aboneliklere, kaynak gruplarına ve kaynaklara erişebilecek ve yönetebilecek kullanıcıları belirtir. Bu kullanıcılar daha sonra kendi kimlik bilgilerini kullanarak Azure portalında oturum açabilir. Azure portalında, erişebildikleri tüm müşterilere ait kaynakları yönetebilirler. Bu işlem, Azure portalındaki [Müşterilerim](../how-to/view-manage-customers.md) sayfasını ziyaret ederek veya doğrudan azure portalında veya API'ler aracılığıyla müşterinin aboneliği bağlamında çalışarak yapılabilir.
 
-Azure temsilci kaynak yönetimi, farklı kiracılardaki farklı hesaplarda oturum açmamak zorunda kalmadan birden çok müşterinin kaynaklarını yönetmesinde daha fazla esneklik sağlar. Örneğin, bir hizmet sağlayıcısının burada gösterildiği gibi farklı sorumlulukları ve erişim düzeyleri olan üç müşterisi olabilir:
-
-![Servis sağlayıcının sorumluluklarını gösteren üç müşteri kiracısı](../media/azure-delegated-resource-management-customer-tenants.jpg)
-
-Azure temsilci kaynak yönetimini kullanarak, yetkili kullanıcılar bu kaynaklara erişmek için hizmet sağlayıcısının kiracısında oturum açabilir:
+Azure temsilci kaynak yönetimi, farklı kiracılardaki farklı hesaplarda oturum açmamak zorunda kalmadan birden çok müşterinin kaynaklarını yönetmesinde daha fazla esneklik sağlar. Örneğin, bir hizmet sağlayıcısının farklı sorumlulukları ve erişim düzeyleri olan iki müşterisi olabilir. Azure temsilci kaynak yönetimini kullanarak, yetkili kullanıcılar bu kaynaklara erişmek için servis sağlayıcısının kiracısında oturum açabilir.
 
 ![Tek bir hizmet sağlayıcı kiracı aracılığıyla yönetilen müşteri kaynakları](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 

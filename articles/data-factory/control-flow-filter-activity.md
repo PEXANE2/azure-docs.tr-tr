@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 5794a2c754e2082fdf45ad689bdb89ea494541c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73679867"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417217"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda filtreleme etkinliği
 Bir giriş dizisine filtre ifadesi uygulamak için bir filtre etkinliğini ardışık düzende kullanabilirsiniz. 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -114,7 +115,7 @@ Bu örnekte, ardışık iki etkinlik vardır: **Filtre** ve **ForEach**. Filtre 
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

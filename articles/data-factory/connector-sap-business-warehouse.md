@@ -12,17 +12,18 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.openlocfilehash: 0c37d77ca73ddbe8b79351f90275a1d639757633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2f8406038be10ba3bdc207bf447fecb86a376fe8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74923730"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418074"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak SAP İş Ambarından veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-sap-business-warehouse-connector.md)
 > * [Geçerli sürüm](connector-sap-business-warehouse.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, bir SAP İş Ambarı'ndan (BW) veri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 

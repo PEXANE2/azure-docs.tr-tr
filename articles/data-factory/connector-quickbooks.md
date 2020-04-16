@@ -12,14 +12,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: ca57f4611b9eb483104d8d0b8fc5636726203195
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74927771"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416702"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak QuickBooks Online'daki verileri kopyalama (Önizleme)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, QuickBooks Online'daki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı özetlanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 

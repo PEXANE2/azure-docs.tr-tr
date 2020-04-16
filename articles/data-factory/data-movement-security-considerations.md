@@ -1,5 +1,5 @@
 ---
-title: Güvenlik konuları
+title: Güvenlikle ilgili dikkat edilmesi gerekenler
 description: Azure Veri Fabrikası'ndaki veri hareketi hizmetlerinin verilerinizin güvenliğini sağlamaya yardımcı olmak için kullandığı temel güvenlik altyapısını açıklar.
 services: data-factory
 ms.author: abnarain
@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: bee627ade4f66206cd5254fc32bc7aa9973c7bee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131306"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416462"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Veri Fabrikası'nda veri hareketi için güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Geçerli sürüm](data-movement-security-considerations.md)
+
+ [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'ndaki veri hareketi hizmetlerinin verilerinizin güvenliğini sağlamaya yardımcı olmak için kullandığı temel güvenlik altyapısı açıklanmaktadır. Veri Fabrikası yönetim kaynakları Azure güvenlik altyapısı üzerine kuruludur ve Azure tarafından sunulan tüm olası güvenlik önlemlerini kullanır.
 
@@ -143,7 +145,7 @@ Aşağıdaki tablo, karma veri hareketi için farklı kaynak ve hedef konum komb
 
 Aşağıdaki resimler, ExpressRoute ve IPSec VPN (Azure Sanal Ağı ile) kullanarak verileri şirket içi veritabanı ile Azure hizmetleri arasında taşımak için kendi barındırılan tümleştirme çalışma süresini gösterir:
 
-**Ekspres Rota**
+**ExpressRoute**
 
 ![Ağ geçidi ile ExpressRoute'u kullanma](media/data-movement-security-considerations/express-route-for-gateway.png) 
 

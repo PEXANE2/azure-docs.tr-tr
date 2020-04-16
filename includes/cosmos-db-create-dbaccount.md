@@ -6,20 +6,27 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2019
+ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 9c6ce482a4f6464008f4be0ecd94455f0239ede2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81274725"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81422331"
 ---
-1. Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azure.com/) gidin. **Azure Cosmos DB**’yi arayın ve seçin.
+1. Azure Cosmos DB hesabı oluşturmak için [Azure portalına](https://portal.azure.com/) gidin. Ana sayfanızda **Azure hizmetleri** panelinden **kaynak oluştur'u** seçin.
 
-   ![Azure portalındaki Veritabanları bölmesi](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-1.png)
+   ![Kaynak oluşturma](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
 
-1. **Ekle'yi**seçin.
+1. **Azure Cosmos DB**’yi arayın ve seçin.
+
+   ![Azure portalı kaynakları açılır](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
+
+1. **Oluştur**’u seçin.
+
+   ![Azure Cosmos DB kaynağı oluşturma](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+
 1. **Azure Cosmos DB Hesabı Oluştur** sayfasında, yeni Azure Cosmos hesabına yönelik temel ayarları girin. 
 
     |Ayar|Değer|Açıklama |
@@ -31,6 +38,7 @@ ms.locfileid: "81274725"
     |Ücretsiz Katman İndirimi Uygulayın|Uygula veya Uygula|Azure Cosmos DB ücretsiz katmanı ile ilk 400 RU/s ve 5 GB depolama alanını bir hesapta ücretsiz olarak alırsınız. [Ücretsiz katman](https://azure.microsoft.com/pricing/details/cosmos-db/)hakkında daha fazla bilgi edinin.|
     |Konum|Kullanıcılarınıza en yakın bölge|Azure Cosmos DB hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişimi sağlamak için kullanıcılarınıza en yakın olan konumu kullanın.|
     |Hesap Türü|Üretim veya Üretim Dışı|Hesap üretim iş yükü için kullanılacaksa **Üretim'i** seçin. Hesabın üretim dışı olarak kullanılması, örneğin geliştirme, test, QA veya evreleme için kullanılacaksa **Üretim Dışı'yı** seçin. Bu, Portal deneyimini etkileyen ancak temel Azure Cosmos DB hesabını etkilemeyen bir Azure kaynak etiketi ayarıdır. Bu değeri istediğiniz zaman değiştirebilirsiniz.|
+
 
     > [!NOTE]
     > Azure aboneliği başına en fazla bir ücretsiz katman Azure Cosmos DB hesabınız olabilir ve hesabı oluştururken kabul etmeniz gerekir. Ücretsiz katman indirimini uygulama seçeneğini görmüyorsanız, bu abonelikteki başka bir hesabın zaten ücretsiz katmanla etkinleştirilmiş olduğu anlamına gelir.

@@ -10,20 +10,22 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: b42a7667321215247233776eb0f2d733d67ab945
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 705b2464285b747ea7999b112733b7e99f761f22
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73684454"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419094"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure Veri Fabrikası için Azure PowerShell örnekleri
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Aşağıdaki tablo, Azure Veri Fabrikası için Azure PowerShell komut dosyalarını örnekleyen bağlantılar içerir.
 
 | |  |
 |---|---|
-|**Verileri kopyalama**||
+|**Veri kopyalama**||
 |[Azure Blob Depolama'daki bir klasörden başka bir klasöre blobs kopyalama](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, Azure Blob Depolama'daki bir klasörden aynı Blob Depolama'daki başka bir klasöre blob'ları kopyalar. |
 |[Şirket içi SQL Server'dan Azure Blob Depolama'ya verileri kopyalama](scripts/hybrid-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, şirket içi BIR SQL Server veritabanından Azure blob depolamasına verileri kopyalar. |
 |[Toplu kopya](scripts/bulk-copy-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu örnek PowerShell komut dosyası, azure SQL veritabanındaki birden çok tablodaki verileri Azure SQL veri ambarına kopyalar. |

@@ -10,14 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75690919"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419451"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Azure Veri Fabrikası'nı görsel olarak izleyin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Veri Fabrikası'nda bir ardışık hatlar oluşturup yayımladıktan sonra, bir tetikleyiciyle ilişkilendirebilir veya geçici bir çalıştırmabaşlatabilirsiniz. Tüm ardışık hatlar çalışırınızı Azure Veri Fabrikası kullanıcı deneyiminde yerel olarak izleyebilirsiniz. İzleme deneyimini açmak için, [Azure portalının](https://portal.azure.com/)veri fabrikası bıçaklarında **Monitör & Yönet** döşemesini seçin. Zaten ADF UX'deyseniz, sol kenar çubuğundaki **Monitör** simgesine tıklayın.
 

@@ -1,20 +1,20 @@
 ---
-title: Sınırlar
+title: Sınırlamalar
 description: SDK özellikleri için kod sınırlamaları
 author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 6e23c716a965cdf178c9f847900e66c141d5d7eb
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680342"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417700"
 ---
-# <a name="limits"></a>Sınırlar
+# <a name="limitations"></a>Sınırlamalar
 
-Çalışan sistemin iç ayrıntıları nedeniyle bir dizi özellik boyut veya sayım sınırlamaları vardır.
+Bazı özelliklerin boyutu, sayısı veya diğer sınırlamaları vardır.
 
 ## <a name="azure-frontend"></a>Azure Ön Uç
 
@@ -40,4 +40,13 @@ Tüm yüklenen modeller için izin verilebilen çokgen [sayısı, oturum yöneti
 |Premium| limitsiz |
 
 
+## <a name="platform-limitations"></a>Platform sınırlamaları
 
+**Windows 10 masaüstü**
+
+* Unity'den "PC Bağımsız" dağıtımı desteklenmez. Bunun yerine UWP kullanın.
+* UWP/x86 desteklenen tek UWP platformudur. UWP/x64 desteklenmez.
+
+**Hololens 2**
+
+* [PV kamera özelliğinden alınan görüntü](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) desteklenmez.

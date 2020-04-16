@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 4eed79210e3e39f82b892ac0681e161ebb59597e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421232"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418040"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Teradata Vantage'daki verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-onprem-teradata-connector.md)
 > * [Geçerli sürüm](connector-teradata.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Teradata Vantage'dan verileri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. [Kopyalama etkinliğine genel bakış](copy-activity-overview.md)üzerine inşa edin.
 
@@ -256,7 +258,7 @@ Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası verileri bö
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Büyük tablodan tam yük.                                   | **Bölüm seçeneği**: Karma. <br><br/>Yürütme sırasında, Veri Fabrikası PK sütunu otomatik olarak algılar, buna karşı bir karma uygular ve verileri bölümlere kopyalar. |
+| Büyük tablodan tam yük.                                   | **Bölüm seçeneği**: Karma. <br><br/>Yürütme sırasında, Veri Fabrikası birincil dizin sütununa otomatik olarak algılar, buna karşı bir karma uygular ve verileri bölümlere göre kopyalar. |
 | Özel bir sorgu kullanarak büyük miktarda veri yükleyin.                 | **Bölüm seçeneği**: Karma.<br>**Sorgu** `SELECT * FROM <TABLENAME> WHERE ?AdfHashPartitionCondition AND <your_additional_where_clause>`: .<br>**Partition column**: Karma bölüm uygulamak için kullanılan sütunu belirtin. Belirtilmemişse, Veri Fabrikası Teradata veri kümesinde belirttiğiniz tablonun PK sütununa otomatik olarak algılar.<br><br>Yürütme sırasında, Veri `?AdfHashPartitionCondition` Fabrikası karma bölüm mantığı ile değiştirir ve Teradata gönderir. |
 | Aralık bölümleme için eşit olarak dağıtılmış değere sahip bir tamsayı sütununa sahip olarak özel bir sorgu kullanarak büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik aralık bölümü.<br>**Sorgu** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Partition column**: Verileri bölmek için kullanılan sütunu belirtin. Noter veri türüne sahip sütuna karşı bölümleyebilirsiniz.<br>**Bölüm üst sınır** ve **bölüm alt sınır**: Yalnızca alt ve üst aralık arasında veri almak için bölüm sütununa filtre yapmak isteyip istemediğinizi belirtin.<br><br>Yürütme sırasında, Veri `?AdfRangePartitionColumnName`Fabrikası `?AdfRangePartitionUpbound`, `?AdfRangePartitionLowbound` , ve her bölüm için gerçek sütun adı ve değer aralıkları ile değiştirir ve Teradata gönderir. <br>Örneğin, alt sınır 1 ve üst sınır 80 olarak ayarlanmış bölüm sütununuzun "ID" kümesi, paralel kopya 4 olarak ayarlanmışsa, Veri Fabrikası verileri 4 bölümle alır. Onların kimliklerini [1,20], [21, 40], [41, 60], ve [61, 80], arasındadır. |
 

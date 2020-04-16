@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 02/04/2020
+ms.date: 04/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9dfe499a7d6084a23fd71ab98db472befe71fc04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10616c8003d9bbbe42cb70bd1bac4193044907c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024373"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416989"
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Parametreli URL'yi kullanarak özel görünümü paylaşma
 
@@ -29,7 +29,7 @@ Zaman Serisi Öngörüler Gezgini, deneyimdeki görünümleri doğrudan URL'den 
 
 ## <a name="environment-id"></a>Ortam Kimliği
 
-`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Veri erişimi FQDN'nin bir bileşenidir ve azure portalında ortama genel bakışın sağ üst köşesinde bulabilirsiniz. `env.timeseries.azure.com` bölümünden önce gelen her şey, bu değeri oluşturur.
+`environmentId=<guid>` parametresi hedef ortam kimliğini belirtir. Veri erişimi FQDN'nin bir bileşenidir ve azure portalında ortama genel bakışın sağ üst köşesinde bulabilirsiniz. Her şeyden önce gelen `env.timeseries.azure.com`her şey.
 
 Örnek bir ortam kimliği parametresi olarak `?environmentId=10000000-0000-0000-0000-100000000108` verilebilir.
 

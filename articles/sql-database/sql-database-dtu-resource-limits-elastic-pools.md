@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 7b7ef3b6f2d400dafb28cfb7a15cf95cbbe2c457
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 76085dc29d40944cf704dbc5efc578b3314f499a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351021"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419247"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU satın alma modelini kullanan esnek havuzlar için kaynak limitleri
 
@@ -32,6 +32,9 @@ SQL Veritabanı elastik havuzları için aşağıdaki tablolar her hizmet katman
 > Ölçeklendirme kılavuzu ve dikkat edilmesi gerekenler için [bkz.](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > Elastik havuzlarda tek tek veritabanlarının kaynak sınırları genellikle DT'ler ve hizmet katmanına dayalı havuzların dışındaki tek veritabanları için aynıdır. Örneğin, bir S2 veritabanı için en fazla eşzamanlı çalışanlar 120 işçidir. Yani, standart bir havuzda bir veritabanı için maksimum eşzamanlı işçi de 120 işçi havuzda veritabanı başına maksimum DTU 50 DTU (S2 eşdeğerdir) ise.
+
+> [!NOTE]
+> Aşağıdaki tabloların her birinde havuz başına depolama kaynak sınırı tempdb ve günlük depolama içermez.
 
 ### <a name="basic-elastic-pool-limits"></a>Temel esnek havuz sınırları
 

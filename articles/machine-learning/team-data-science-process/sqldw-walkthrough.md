@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 96d0a5b2fb59e4612107d8ccbf7285fff7576585
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418550"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Ekip Veri Bilimi Süreci iş başında: Azure Synapse Analytics'i kullanma
 Bu eğitimde, kamuya açık bir veri seti olan [NYC Taksi Gezileri](https://www.andresmh.com/nyctaxitrips/) veri seti için Azure Synapse Analytics'i kullanarak bir makine öğrenimi modeli oluşturmave dağıtma konusunda size yol alıyoruz. Yapılan ikili sınıflandırma modeli, bir bahşişin bir yolculuk için ödenip ödenmediğini tahmin eder.  Modeller çok sınıflı sınıflandırma (bir ipucu olup olmadığını) ve gerileme (ödenen ihbar tutarları için dağıtım) içerir.
@@ -84,7 +84,7 @@ Azure Synapse Analytics örneğini sağlamak için [Azure portalında bir Azure 
 
 **Visual Studio ve SQL Server Veri Araçları'nı yükleyin.** Talimatlar için, [SQL Veri Ambarı için Visual Studio 2019 ile başlarken](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-install-visual-studio.md)bakın.
 
-**Visual Studio ile Azure Synapse Analytics'inize bağlanın.** Talimatlar için, Azure SQL [Veri Ambarına Bağlan'daki](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-connect-overview.md)1 & 2 adımlarına bakın.
+**Visual Studio ile Azure Synapse Analytics'inize bağlanın.** Talimatlar için, [Azure Synapse Analytics'te SQL Analytics'e Bağlan'da](../../synapse-analytics/sql/connect-overview.md)1 & 2 adımlarına bakın.
 
 > [!NOTE]
 > **Bir ana anahtar oluşturmak**için Azure Synapse Analytics'inizde oluşturduğunuz veritabanında (bağlantı konusunun 3. adımda sağlanan sorgu yerine) aşağıdaki SQL sorgusunu çalıştırın.
@@ -126,7 +126,7 @@ Başarılı bir yürütmeden sonra, geçerli çalışma dizini *-DestDir*olarak 
 PowerShell komut dosyası ilk kez çalıştığında, Azure Synapse Analytics ve Azure blob depolama hesabınızdan bilgileri girişiniz istenir. Bu PowerShell komut dosyası ilk kez çalışmayı tamamladığında, girilen kimlik bilgileri sqldw.conf yapılandırma dosyasına bugünkü çalışma dizininde yazılmış olacaktır. Bu PowerShell komut dosyası dosyasının gelecekteki çalışması, bu yapılandırma dosyasından gerekli tüm parametreleri okuma seçeneğine sahiptir. Bazı parametreleri değiştirmeniz gerekiyorsa, bu yapılandırma dosyasını silerek ve parametreleri istendiği gibi girdikten veya *-DestDir* dizininizde SQLDW.conf dosyasını düzenleyerek parametre değerlerini değiştirerek ekrana parametre girişi yapmayı seçebilirsiniz.
 
 > [!NOTE]
-> Azure Azure Synapse Analytics'inizde zaten var olan şema adlarıyla çakışmasını önlemek için, parametreleri doğrudan SQLDW.conf dosyasından okurken, varsayılan şema olarak SQLDW.conf dosyasından şema adına 3 basamaklı bir rasgele sayı eklenir her çalışma için ad. PowerShell komut dosyası bir şema adı için sizi isteyebilir: ad kullanıcı takdirine bağlı olarak belirtilebilir.
+> Azure Azure Synapse Analytics'inizde zaten var olan şema adlarıyla çakışmasını önlemek için, parametreleri doğrudan SQLDW.conf dosyasından okurken, SQLDW.conf dosyasından şema adına her çalıştırma için varsayılan şema adı olarak 3 basamaklı bir rasgele sayı eklenir. PowerShell komut dosyası bir şema adı için sizi isteyebilir: ad kullanıcı takdirine bağlı olarak belirtilebilir.
 >
 >
 
@@ -310,7 +310,7 @@ Bu **PowerShell komut dosyası** dosyası aşağıdaki görevleri tamamlar:
 Depolama hesaplarınızın coğrafi konumu yükleme sürelerini etkiler.
 
 > [!NOTE]
-> Özel blob depolama hesabınızın coğrafi konumuna bağlı olarak, genel bir lekeden özel depolama hesabınıza veri kopyalama işlemi yaklaşık 15 dakika, hatta daha uzun sürebilir ve depolama hesabınızdan Azure'unuza veri yükleme işlemi Azure Synapse Analytics 20 dakika veya daha uzun sürebilir.
+> Özel blob depolama hesabınızın coğrafi konumuna bağlı olarak, genel bir yığından özel depolama hesabınıza veri kopyalama işlemi yaklaşık 15 dakika, hatta daha uzun sürebilir ve depolama hesabınızdan Azure Azure Synapse Analytics'inize veri yükleme işlemi 20 dakika veya daha uzun sürebilir.
 >
 >
 
@@ -330,7 +330,7 @@ Kendi verilerinizi kullanabilirsiniz. Verileriniz gerçek uygulamanızda şirket
 >
 >
 
-Bu PowerShell komut dosyası ayrıca Azure Synapse Analytics bilgilerini veri arama örnek dosyaları SQLDW_Explorations.sql, SQLDW_Explorations.ipynb ve SQLDW_Explorations_Scripts.py'ye bağlar, böylece bu üç dosya denenmeye hazırolur. PowerShell komut dosyası tamamlandıktan hemen sonra.
+Bu PowerShell komut dosyası ayrıca Azure Synapse Analytics bilgilerini veri arama örnek dosyaları SQLDW_Explorations.sql, SQLDW_Explorations.ipynb ve SQLDW_Explorations_Scripts.py'ye bağlar, böylece bu üç dosya PowerShell komut dosyası tamamlandıktan sonra anında denenmeye hazır olur.
 
 Başarılı bir yürütmeden sonra, aşağıdaki gibi ekran göreceksiniz:
 
@@ -839,7 +839,7 @@ Bu alıştırmada, Azure Synapse Analytics'teki verileri araştırdık ve tasarl
 5. Server *kullanıcı* hesabı adına SQL kullanıcı **adını**ve Server kullanıcı **hesabı parolasına** *parolayı* girin.
 7. Veritabanı **sorgu** metnini edit alanında, gerekli veritabanı alanlarını ayıklayan sorguyu (etiketler gibi tüm işlemalanları dahil) yapıştırın ve verileri istenen örnek boyutuna indirin.
 
-Doğrudan Azure Synapse Analytics veritabanından veri okuma ikili sınıflandırma denemesiörneği aşağıdaki şekildedir (şema adı ve kullandığınız tablo adlarıyla nyctaxi_trip ve nyctaxi_fare tablo adlarını değiştirmeyi unutmayın walkthrough). Benzer deneyler çok sınıflı sınıflandırma ve regresyon sorunları için oluşturulabilir.
+Doğrudan Azure Synapse Analytics veritabanından veri okuma ikili sınıflandırma denemesiörneği aşağıdaki şekildedir (şema adı ve izbölümünizde kullandığınız tablo adları ile nyctaxi_trip ve nyctaxi_fare tablo adlarını değiştirmeyi unutmayın). Benzer deneyler çok sınıflı sınıflandırma ve regresyon sorunları için oluşturulabilir.
 
 ![Azure ML Tren][10]
 
@@ -875,7 +875,7 @@ Puanlama denemesi oluşturulduğunda, sonuçları gözden geçirin ve gerektiği
 ![Azure ML Yayın][11]
 
 ## <a name="summary"></a>Özet
-Bu izblama öğreticisinde yaptıklarımızı özetlemek için, bir Azure veri bilimi ortamı oluşturdunuz, büyük bir genel veri kümesiyle çalıştınız, ekip veri bilimi sürecinden, veri toplamadan model eğitimine kadar tüm yol boyunca, Azure Machine Learning web hizmetinin dağıtımı.
+Bu izblama öğreticisinde yaptıklarımızı özetlemek için, bir Azure veri bilimi ortamı oluşturdunuz, büyük bir genel veri kümesiyle çalıştınız, ekip veri bilimi sürecinden geçirerek, veri toplamadan model eğitimine ve ardından bir Azure Machine Learning web hizmetinin dağıtımına kadar.
 
 ### <a name="license-information"></a>Lisans bilgileri
 Bu örnek gözden geçirme ve beraberindeki komut dosyaları ve IPython not defterleri Microsoft tarafından MIT lisansı altında paylaşılır. Daha fazla bilgi için GitHub'daki örnek kodun dizinindeki LICENSE.txt dosyasını kontrol edin.

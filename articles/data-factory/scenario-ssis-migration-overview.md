@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 6ad5bb26959916f60973a8c0274e17eee03aa7a1
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a588a0977a4c6dcefaaefcfdcc542fee8b15466b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419077"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>Şirket içi SSIS iş yüklerini ADF'de SSIS'e geçirin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -88,5 +90,5 @@ Kaynak SSIS paketlerinin [depolama türlerine](#four-storage-types-for-ssis-pack
 
 - [Azure'a dağıtılan SSIS paketlerini doğrulama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-validate-packages)
 - [Azure'da dağıtılan SSIS paketlerini çalıştırma](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-run-packages)
-- [Azure-SSIS Integration Runtime'ı izleme](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)
+- [Azure-SSIS Tümleştirme Çalışma Süresini İzle](https://docs.microsoft.com/azure/data-factory/monitor-integration-runtime#azure-ssis-integration-runtime)
 - [Azure'da SSIS paket yürütmelerini zamanlama](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages)

@@ -11,17 +11,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 4d729a0117c7c409d1a3e0c3fd440aed96153203
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243594"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418261"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Amazon Redshift'ten veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Geçerli sürüm](connector-amazon-redshift.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
 Bu makalede, Bir Amazon Redshift verileri kopyalamak için Azure Veri Fabrikası'nda Kopyalama Etkinliği nasıl kullanılacağı nı özetler. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
@@ -164,7 +166,7 @@ Amazon Redshift'teki verileri verimli bir şekilde bir sonraki bölümden kopyal
 
 **Örnek: Verileri Amazon Redshift'ten Azure SQL Veri Ambarı'na UNLOAD, aşamalı kopya ve PolyBase kullanarak kopyalama**
 
-Bu örnek kullanım örneği için, kopyalama etkinliği Amazon Redshift'ten Amazon S3'e "redshiftUnloadSettings"de yapılandırıldığı şekilde verileri boşaltır ve ardından "evrelemeAyarları"nda belirtildiği gibi Amazon S3'ten Azure Blob'a verileri kopyalayın, son olarak verileri SQL Verilerine yüklemek için PolyBase'i kullanın Ambar. Tüm ara biçim kopyalama etkinliği tarafından düzgün bir şekilde işlenir.
+Bu örnek kullanım örneği için, kopyalama etkinliği Amazon Redshift'ten Amazon S3'e "redshiftUnloadSettings"de yapılandırıldığı şekilde verileri boşaltır ve ardından "evrelemeAyarları"nda belirtildiği şekilde Amazon S3'ten Azure Blob'a verileri kopyalar, son olarak verileri SQL Veri Ambarı'na yüklemek için PolyBase'i kullanır. Tüm ara biçim kopyalama etkinliği tarafından düzgün bir şekilde işlenir.
 
 ![SQL DW kopya iş akışına redshift](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 

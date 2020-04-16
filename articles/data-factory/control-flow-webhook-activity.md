@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: ced2279878ee2eb361ec7338647418658e411513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4056550ae0a71138d136878fc7e3aa5f6f8f4180
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79213012"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417887"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Webhook etkinliği
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bir webhook etkinliği, özel kodunuz aracılığıyla boru hatlarının yürütülmesini denetleyebilir. Webhook etkinliği ile, müşterilerin kodu bir bitiş noktası arayabilir ve bir geri arama URL'si geçirebilirsiniz. Ardışık hat lar, bir sonraki faaliyete geçmeden önce geri arama çağrısını bekler.
 
@@ -63,11 +65,11 @@ Bir webhook etkinliği, özel kodunuz aracılığıyla boru hatlarının yürüt
 **timeout** | Etkinliğin **callBackUri** tarafından çağrılan geri aramaiçin ne kadar beklemesi. Varsayılan değer 10 dakikadır ("00:10:00"). Değerler TimeSpan biçimi *d*var. *hh*:*mm*:*ss*. | Dize | Hayır |
 **Geri arama da rapor durumu** | Kullanıcının webhook etkinliğinin başarısız durumunu bildirmesini sağlar. | Boole | Hayır |
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Webhook etkinliği aşağıdaki kimlik doğrulama türlerini destekler.
 
-### <a name="none"></a>None
+### <a name="none"></a>Hiçbiri
 
 Kimlik doğrulama gerekli değilse, kimlik doğrulama özelliğini **eklemeyin.**
 
@@ -142,7 +144,7 @@ Geri arama **özelliğinde Rapor durumunu** kullandığınızda, geri aramayı y
 
 Veri Fabrikası tarafından desteklenen aşağıdaki kontrol akışı etkinliklerine bakın:
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

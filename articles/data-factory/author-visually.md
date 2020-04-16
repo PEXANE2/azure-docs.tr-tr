@@ -10,14 +10,16 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 12/19/2019
-ms.openlocfilehash: 09d4055ba98da2dd87efc9421402f2827a87ba16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440927"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418499"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Veri Fabrikası'nda görsel yazma
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası kullanıcı arabirimi deneyimi (UX), herhangi bir kod yazmak zorunda kalmadan veri fabrikanız için kaynakları görsel olarak yazmanızı ve dağıtmanızı sağlar. Etkinlikleri bir boru hattı tuvaline sürükleyebilir, test çalıştırmaları gerçekleştirebilir, yinelemeli hata ayıklayabilir ve ardışık hatlar çalışanlarınızı dağıtabilir ve izleyebilirsiniz.
 

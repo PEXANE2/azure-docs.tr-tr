@@ -10,17 +10,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 05/31/2018
-ms.openlocfilehash: eb887a7d9081875c28964ddb1e3d1b2e609862fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c39575e8ea60a091124c633f8958ec36e8a61885
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912962"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418856"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki Spark etkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-spark.md)
 > * [Geçerli sürüm](transform-data-using-spark.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri Fabrikası [ardışık ardışık](concepts-pipelines-activities.md) ardışık spark [etkinliği, kendi veya](compute-linked-services.md#azure-hdinsight-linked-service) [isteğe bağlı](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight kümenizde bir Kıvılcım programı yürütür. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır. İsteğe bağlı bir Spark bağlantılı hizmeti kullandığınızda, Veri Fabrikası verileri işlemek için tam zamanında bir Kıvılcım kümesi oluşturur ve işleme tamamlandıktan sonra kümeyi siler. 
 

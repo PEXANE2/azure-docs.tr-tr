@@ -10,18 +10,20 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
-ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3060f7e36f9e2696194da12c3c800555103d271
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912858"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418924"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki Hadoop MapAzaltma etkinliğini kullanarak verileri dönüştürme
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-map-reduce.md)
 > * [Geçerli sürüm](transform-data-using-hadoop-map-reduce.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bir Veri Fabrikası [boru hattındaki](concepts-pipelines-activities.md) HDInsight MapReduce etkinliği, MapReduce programını kendi veya [isteğe bağlı](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight [kümenizde](compute-linked-services.md#azure-hdinsight-linked-service) çağırır. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır.
 

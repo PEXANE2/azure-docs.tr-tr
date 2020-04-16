@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5753336eeef115038de4eb0b5ade0651b1fa293e
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979161"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419468"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitör'ü kullanarak veri fabrikalarını uyarın ve izleyin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bulut uygulamaları karmaşıktır ve birçok hareketli parçaya sahiptir. İzleyiciler, uygulamalarınızın sağlıklı bir durumda çalışır durumda kalmasını sağlamaya yardımcı olacak veriler sağlar. Monitörler ayrıca olası sorunları önlemenize ve geçmiş sorunları gidermenize de yardımcı olur.
 
@@ -119,7 +121,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | **workspaceId** | Karmaşık Tür | Bir dizi metrik zaman taneleri ve bunların bekletme ilkeleri. Bu mülkün değeri boş. |
 |**Ölçüm**| Çağrılan ardışık boru hattına geçirilecek boru hattının parametre değerleri| Parametre adlarını bağımsız değişken değerleriyle eşleyen bir JSON nesnesi. |
 | **Günlük**| Karmaşık Tür| Kaynak türü için tanılama günlüğü kategorisinin adı. Bir kaynak için tanı-günlük kategorileri listesini almak için, bir GET tanılama ayarları işlemi gerçekleştirin. |
-| **category**| Dize| Bir dizi günlük kategorisi ve bunların bekletme ilkeleri. |
+| **Kategori**| Dize| Bir dizi günlük kategorisi ve bunların bekletme ilkeleri. |
 | **timeGrain** | Dize | ISO 8601 süre biçiminde yakalanan ölçümlerin parçalılığı. Özellik `PT1M`değeri, bir dakika belirtir olmalıdır. |
 | **Etkin**| Boole | Bu kaynak için metrik veya günlük kategorisinin toplanmasının etkin olup olmadığını belirtir. |
 | **Retentionpolicy**| Karmaşık Tür| Bir metrik veya günlük kategorisi için bekletme ilkesini açıklar. Bu özellik yalnızca depolama hesapları için kullanılır. |
@@ -295,7 +297,7 @@ Daha fazla bilgi için [Tanılama Ayarları'na](https://docs.microsoft.com/rest/
 |**aktiviteRunId**| Dize| Etkinlik çalıştırın kimliği çalıştırın. | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |**boru hattıRunId**| Dize| Boru hattının kimliği. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**Resourceıd**| Dize | Veri fabrikası kaynağıyla ilişkili kimlik. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `ActivityRuns`ye ayarlayın | `ActivityRuns` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `ActivityRuns`ye ayarlayın | `ActivityRuns` |
 |**Düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini ' `Informational`ye ayarlayın | `Informational` |
 |**operationName**| Dize | Durumu olan etkinliğin adı. Etkinlik başlangıç sinyali ise, özellik `MyActivity -`değeri. Etkinlik son sinyal ise, özellik `MyActivity - Succeeded`değeri. | `MyActivity - Succeeded` |
 |**pipelineName**| Dize | Boru hattının adı. | `MyPipeline` |
@@ -340,13 +342,13 @@ Daha fazla bilgi için [Tanılama Ayarları'na](https://docs.microsoft.com/rest/
 | **time** | Dize | Zaman dilimi UTC formatında `YYYY-MM-DDTHH:MM:SS.00000Z`olayın saati. | `2017-06-28T21:00:27.3534352Z` |
 |**runId**| Dize| Boru hattının kimliği. | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
 |**Resourceıd**| Dize | Veri fabrikası kaynağıyla ilişkili kimlik. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `PipelineRuns`ye ayarlayın | `PipelineRuns` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `PipelineRuns`ye ayarlayın | `PipelineRuns` |
 |**Düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini ' `Informational`ye ayarlayın | `Informational` |
 |**operationName**| Dize | Boru hattının adı ve durumu. Ardışık hatlar çalışması tamamlandıktan `Pipeline - Succeeded`sonra, özellik değeri. | `MyPipeline - Succeeded`. |
 |**pipelineName**| Dize | Boru hattının adı. | `MyPipeline` |
 |**Başlatmak**| Dize | Etkinliğin başlangıç saati zaman dilimi UTC biçiminde çalışır. | `2017-06-26T20:55:29.5007959Z`. |
 |**Son -unda**| Dize | Etkinliğin bitiş saati zaman sonu UTC biçiminde çalışır. Tanılama günlüğü bir etkinliğin başlatılamadığını ancak henüz `1601-01-01T00:00:00Z`sona ermediğini gösteriyorsa, özellik değeri .  | `2017-06-26T20:55:29.5007959Z` |
-|**durum**| Dize | Boru hattı nın son durumu. Olası özellik `Succeeded` değerleri `Failed`ve . | `Succeeded`|
+|**Durum**| Dize | Boru hattı nın son durumu. Olası özellik `Succeeded` değerleri `Failed`ve . | `Succeeded`|
 
 #### <a name="trigger-run-log-attributes"></a>Tetikleyici çalıştır günlük öznitelikleri
 
@@ -384,14 +386,14 @@ Daha fazla bilgi için [Tanılama Ayarları'na](https://docs.microsoft.com/rest/
 | **time** | Dize | Zaman dilimi UTC formatında `YYYY-MM-DDTHH:MM:SS.00000Z`olayın saati. | `2017-06-28T21:00:27.3534352Z` |
 |**triggerId**| Dize| Tetikleme nin kimliği çalıştırın. | `08587023010602533858661257311` |
 |**Resourceıd**| Dize | Veri fabrikası kaynağıyla ilişkili kimlik. | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
-|**category**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `PipelineRuns`ye ayarlayın | `PipelineRuns` |
+|**Kategori**| Dize | Tanılama günlüklerinin kategorisi. Özellik değerini ' `PipelineRuns`ye ayarlayın | `PipelineRuns` |
 |**Düzey**| Dize | Tanılama günlüklerinin düzeyi. Özellik değerini ' `Informational`ye ayarlayın | `Informational` |
 |**operationName**| Dize | Tetikleyicinin son durumu yla birlikte tetikleyicinin adı, tetikleyicinin başarılı bir şekilde çalışıp atMadığını gösterir. Sinyal başarılı olduysa, özellik `MyTrigger - Succeeded`değeri. | `MyTrigger - Succeeded` |
 |**triggerName**| Dize | Tetikleyicinin adı. | `MyTrigger` |
 |**triggerType**| Dize | Tetikleyicinin türü. Olası özellik `Manual Trigger` değerleri `Schedule Trigger`ve . | `ScheduleTrigger` |
 |**triggerOlay**| Dize | Tetikleyici olayı. | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |**Başlatmak**| Dize | Zaman dilimi UTC formatında tetiklemenin başlama saati. | `2017-06-26T20:55:29.5007959Z`|
-|**durum**| Dize | Tetikleyicinin başarılı bir şekilde ateşlenip ateşlenmediğini gösteren son durum. Olası özellik `Succeeded` değerleri `Failed`ve . | `Succeeded`|
+|**Durum**| Dize | Tetikleyicinin başarılı bir şekilde ateşlenip ateşlenmediğini gösteren son durum. Olası özellik `Succeeded` değerleri `Failed`ve . | `Succeeded`|
 
 ### <a name="log-analytics-schema"></a>Günlük Analiz şeması
 
@@ -405,7 +407,7 @@ Log Analytics şeayı Aşağıdaki istisnalar dışında Monitör'den devralır:
     | --- | --- | --- |
     | $.özellikleri. Kullanıcı Özellikleri | Kullanıcı Özellikleri | Dinamik |
     | $.özellikleri. Ek açıklama -ları | Ek Açıklamalar | Dinamik |
-    | $.özellikleri. Giriş | Giriş | Dinamik |
+    | $.özellikleri. Giriş | Girdi | Dinamik |
     | $.özellikleri. Çıkış | Çıktı | Dinamik |
     | $.özellikleri. Error.errorCode | ErrorCode | int |
     | $.özellikleri. Hata.ileti | Hata İletisi | string |
@@ -467,7 +469,7 @@ Veri fabrikanız için tanılama ayarları oluşturun veya ekleyin.
 
     ![Ayarlarınızı adlandırın ve bir günlük analizi çalışma alanı seçin](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 Birkaç dakika sonra, yeni ayar bu veri fabrikasının ayarlar listenizde görünür. Tanılama günlükleri, yeni olay verileri oluşturulur oluşturulmaz bu çalışma alanına akışı sağlar. Bir olayın yayımlandığında ve Log Analytics'te görüntülendiğinde 15 dakikaya kadar zaman alabilir.
 

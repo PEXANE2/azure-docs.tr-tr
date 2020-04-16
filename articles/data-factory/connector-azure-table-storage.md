@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: cf79a670db4e2729c6e0a5fb7112cdc6114f465a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77460748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417489"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Azure Table depolamasına ve azure tablo depolamasına kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-table-connector.md)
 > * [Geçerli sürüm](connector-azure-table-storage.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Tablo depolama alanına ve Azure Tablo depolamadan veri kopyalamak için Azure Veri Fabrikası'nda Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama Etkinliği'ne genel bir genel bakış sunan [Kopyalama Etkinliği genel bakış](copy-activity-overview.md) makalesine dayanmaktadır.
 
@@ -39,7 +41,7 @@ Desteklenen herhangi bir kaynak veri deposundan Tablo depolamasına verileri kop
 
 Özellikle, bu Azure Tablosu bağlayıcısı hesap anahtarı nı ve hizmet paylaşılan erişim imzası kimlik doğrularını kullanarak verilerin kopyalanmasına destek verir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: 3215f5952daef053c94432bc8fdef15e1775047a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "73171121"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81421817"
 ---
 VM'leri tek bir bölgeye yerleştirmek, örnekler arasındaki fiziksel mesafeyi azaltır. Bunları tek bir kullanılabilirlik bölgesine yerleştirmek de onları fiziksel olarak birbirine daha da yaklaştıracaktır. Ancak, Azure ayak izi büyüdükçe, tek bir kullanılabilirlik bölgesi birden çok fiziksel veri merkezine yayılabilir ve bu da bir ağ gecikmesinin uygulamanızı etkilemesine neden olabilir. 
 
@@ -39,6 +39,13 @@ Varolan bir kaynağı bir yakınlık yerleşim grubuna da taşıyabilirsiniz. Bi
 Kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri söz konusu olduğunda, yakınlık yerleşim grubunu tek tek sanal makineler yerine kaynak düzeyinde ayarlamanız gerekir. 
 
 Yakınlık yerleşim grubu, sabitleme mekanizması yerine bir birlikte konum kısıtlamasIdır. Kullanmak için ilk kaynağın dağıtımı ile belirli bir veri merkezine sabitlenir. Yakınlık yerleşim grubunu kullanan tüm kaynaklar durdurulduktan (ayrıldıktan) veya silindikten sonra, artık sabitlenmez. Bu nedenle, birden çok VM serisi içeren bir yakınlık yerleşim grubu kullanırken, mümkün olduğunda bir şablonda gerekli tüm türleri önceden belirtmek veya başarılı bir dağıtım şansınızı artıracak bir dağıtım dizisini izlemek önemlidir. Dağıtımınız başarısız olursa, dağıtılacak ilk boyut olarak başarısız olan VM boyutuyla dağıtımı yeniden başlatın.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Yakınlık Yerleştirme Gruplarını kullanırken neler bekleyebilirsiniz? 
+Yakınlık yerleşim grupları aynı veri merkezinde ortak konum sunar. Ancak, yakınlık yerleşim grupları ek bir dağıtım kısıtlaması temsil ettiğiiçin, ayırma hataları oluşabilir. Yakınlık yerleşim işlemi gruplarını kullanırken tahsisat hatalarını gÜ
+
+- Yakınlık yerleşim grubundaki ilk sanal makineyi istediğinizde, veri merkezi otomatik olarak seçilir. Bazı durumlarda, farklı bir sanal makine SKU için ikinci bir istek, bu veri merkezinde yoksa başarısız olabilir. Bu durumda, **overconstrainedAllocationRequest hatası döndürülür.** Bunu önlemek için, SNU'larınızı dağıtma sırasını değiştirmeyi deneyin veya her iki kaynağın da tek bir ARM şablonu kullanarak dağıtılmasını sağlar.
+-   VM örneklerini ekleyip kaldırdığınız esnek iş yüklerinde, dağıtımınızda yakınlık yerleşim grubu kısıtlaması olması, **Ayırma Hatasıyla** sonuçlanan isteğin karşılanmamasına neden olabilir. 
+- VM'lerinizi gerektiği gibi durdurmak (anlaşma yapmak) ve başlatmak elastikiyetelde etmenin başka bir yoludur. Bir VM'yi durdurduktan (anlaşma yaptığınızda) kapasite tutulmadığından, yeniden başlatma bir **TahsisAt Hatası** hatasına neden olabilir.
 
 
 ## <a name="best-practices"></a>En iyi uygulamalar 

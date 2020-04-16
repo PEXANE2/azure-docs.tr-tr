@@ -10,24 +10,25 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c456e486217886510a1fd2ef1aeabae47d35b53c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74533130"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417203"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory’deki ifadeler ve işlevler
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-functions-variables.md)
 > * [Geçerli sürüm](control-flow-expression-language-functions.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası tarafından desteklenen ifadeler ve işlevler hakkında ayrıntılar verilmektedir. 
 
 ## <a name="expressions"></a>İfadeler
 
-Tanımdaki JSON değerleri çalışma zamanında değerlendirilen gerçek veya ifadeler olabilir. Örnek:  
+Tanımdaki JSON değerleri çalışma zamanında değerlendirilen gerçek veya ifadeler olabilir. Örneğin:  
   
 ```json
 "name": "value"

@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: jingwang
-ms.openlocfilehash: 22ecac12e049e58e533cdde0078f4a25f6bb2aa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77423836"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417426"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak DB2'deki verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-onprem-db2-connector.md)
 > * [Geçerli sürüm](connector-db2.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Bir DB2 veritabanından verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 

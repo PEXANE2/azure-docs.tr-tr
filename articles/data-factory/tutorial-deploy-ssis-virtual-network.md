@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7470af23059ccd07e48050e6dc34521e299a986f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76841106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418618"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Sanal ağa katılmak için Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma süresini (IR) yapılandırma
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu öğretici, azure portalını kullanarak sanal ağa katılmak üzere bir Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma süresini (IR) yapılandırmak için temel adımlar sağlar.
 
@@ -70,7 +72,7 @@ Azure-SSIS IR'ye katılmaya çalışmadan önce sanal ağı yapılandırmak içi
 
 1. Microsoft Edge veya Google Chrome'u başlatın. Şu anda, yalnızca bu web tarayıcıları Veri Fabrikası UI'yi destekler.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. **Diğer hizmetleri**seçin. **Sanal ağlar**için filtre uygulayın ve seçin.
 

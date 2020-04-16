@@ -8,14 +8,15 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: e284060893e00ed7459edd0d1a03075c813dc5b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9a1ac831c4300c0523717fddc1fa53417068b89
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065388"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416567"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Sorun Giderme Azure Veri Fabrikası
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'nda dış denetim etkinlikleri için sık karşılaşılan sorun giderme yöntemleri incelemektedir.
 

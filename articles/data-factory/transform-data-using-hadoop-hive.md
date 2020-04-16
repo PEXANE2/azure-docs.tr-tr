@@ -11,18 +11,20 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/15/2019
-ms.openlocfilehash: b4af3f897a12c71d73962735d3fe68d95f138cef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5c917e12b1314c40763f58a7723a4df787ffa0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74912919"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418941"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki Hadoop Hive etkinliğini kullanarak verileri dönüştürme
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-hive-activity.md)
 > * [Geçerli sürüm](transform-data-using-hadoop-hive.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri Fabrikası [ardışık işletme](concepts-pipelines-activities.md) işlonundaki HDInsight Hive etkinliği, Kovan sorgularını kendi veya [isteğe bağlı](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight [kümenizde](compute-linked-services.md#azure-hdinsight-linked-service) yürütür. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır.
 

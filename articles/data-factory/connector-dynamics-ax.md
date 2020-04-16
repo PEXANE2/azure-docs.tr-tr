@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
-ms.openlocfilehash: 4acad5e2de55211b6c4492513f331c36286ed852
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75892789"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417376"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Dynamics AX'ten verileri kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Dynamics AX kaynağından verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Makale, Azure [Veri Fabrikası'ndaki Kopyalama Etkinliği'ne](copy-activity-overview.md)dayanmaktadır ve bu da Kopyalama Etkinliğine genel bir genel bakış sunar.
 
@@ -37,7 +39,7 @@ Dynamics AX'ten desteklenen herhangi bir lavabo veri deposuna veri kopyalayabili
 >[!TIP]
 >Dynamics **365 Finans ve Operasyon**verilerini kopyalamak için bu bağlayıcıyı da kullanabilirsiniz. Dynamics 365'in [OData desteği](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/odata) ve [Kimlik Doğrulama yöntemine](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page#authentication)bakın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

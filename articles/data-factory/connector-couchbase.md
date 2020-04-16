@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: ac2426bbfa074e58aa5c4a213f3ecbee20052358
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d78d533bc4a863a0a70b1dbb47bdfa85d539884f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444357"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417434"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Veri Fabrikasını kullanarak Couchbase'den veri kopyalama (Önizleme)
-
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 Bu makalede, Couchbase'deki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
 > [!IMPORTANT]

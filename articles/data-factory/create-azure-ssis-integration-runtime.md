@@ -11,14 +11,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 18555fbffbc48594793163894c010998094b3b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c3f58d42b6f311e4e238dcffe7da42afd8a5306
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336223"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416722"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Azure-SSIS tümleştirme çalışma zamanı oluşturma
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'nda bir Azure-SQL Server Integration Services (SSIS) tümleştirme çalışma süresi (IR) sağlama adımları sağlanmaktadır. Azure-SSIS IR şunları destekler:
 
@@ -78,7 +80,7 @@ Aşağıdaki tablo, Azure-SSIR IR ile ilgili olarak bir Azure SQL Veritabanı su
 | Özellik | Tek veritabanı/elastik havuz| Yönetilen örnek |
 |---------|--------------|------------------|
 | **Zamanlama** | SQL Server Agent kullanılamıyor.<br/><br/>Bkz. [Veri Fabrikası ardışık hattında bir paket yürütme zamanlama.](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages?view=sql-server-2017#activity)| Yönetilen Örnek Aracı kullanılabilir. |
-| **Kimlik doğrulaması** | Veri fabrikanızın yönetilen kimliğine sahip herhangi bir Azure REKLAM grubunu temsil eden ve **db_owner** rolüne üye olarak bulunan bir Veritabanı kullanıcısıyla birlikte bir SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL Veritabanı sunucusunda bir SSISDB örneği oluşturmak için Azure AD kimlik doğrulamasını etkinleştir.](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database) | Veri fabrikanızın yönetilen kimliğini temsil eden, içerdiği bir veritabanı kullanıcısıyla bir SSISDB örneği oluşturabilirsiniz. <br/><br/>Bkz. [Azure SQL Veritabanı yönetilen bir örnekte Bir SSISDB örneği oluşturmak için Azure AD kimlik doğrulamasını etkinleştir.](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance) |
+| **Kimlik Doğrulaması** | Veri fabrikanızın yönetilen kimliğine sahip herhangi bir Azure REKLAM grubunu temsil eden ve **db_owner** rolüne üye olarak bulunan bir Veritabanı kullanıcısıyla birlikte bir SSISDB örneği oluşturabilirsiniz.<br/><br/>Bkz. [Azure SQL Veritabanı sunucusunda bir SSISDB örneği oluşturmak için Azure AD kimlik doğrulamasını etkinleştir.](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database) | Veri fabrikanızın yönetilen kimliğini temsil eden, içerdiği bir veritabanı kullanıcısıyla bir SSISDB örneği oluşturabilirsiniz. <br/><br/>Bkz. [Azure SQL Veritabanı yönetilen bir örnekte Bir SSISDB örneği oluşturmak için Azure AD kimlik doğrulamasını etkinleştir.](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance) |
 | **Hizmet katmanı** | Azure SQL Veritabanı sunucunuzla bir Azure-SSIS IR oluşturduğunuzda, SSISDB için hizmet katmanını seçebilirsiniz. Birden çok hizmet katmanı vardır. | Yönetilen örneğinizle bir Azure-SSIS IR oluşturduğunuzda, SSISDB için hizmet katmanını seçemezsiniz. Yönetilen örneğinizdeki tüm veritabanları, bu örne ayrılan aynı kaynağı paylaşır. |
 | **Sanal ağ** | Azure-SSIS IR'niz, IP güvenlik duvarı kuralları/sanal ağ hizmeti bitiş noktalarına sahip bir Azure SQL Veritabanı sunucusu kullanıyorsanız, Azure Kaynak Yöneticisi sanal ağına katılabilir. | Azure-SSIS IR'niz, özel bitiş noktası olan yönetilen bir örnek kullanırsanız, Azure Kaynak Yöneticisi sanal ağına katılabilir. Yönetilen örneğiniz için ortak bir bitiş noktasını etkinleştirmediğinizde sanal ağ gereklidir.<br/><br/>Azure-SSIS IR'nize yönetilen örneğinizle aynı sanal ağa katılırsanız, Azure-SSIS IR'nizin yönetilen örneğinizden farklı bir alt ağda olduğundan emin olun. Azure-SSIS IR'nize yönetilen örneğinizden farklı bir sanal ağa katılırsanız, sanal ağ da bir bakış veya ağdan ağa bağlantı öneririz. Bkz. [Uygulamanızı Azure SQL Veritabanı yönetilen bir örneğe bağlayın.](../sql-database/sql-database-managed-instance-connect-app.md) |
 | **Dağıtılmış işlemler** | Bu özellik elastik işlemler yoluyla desteklenir. Microsoft Dağıtılmış Hareket Koordinatörü (MSDTC) hareketleri desteklenmez. SSIS paketleriniz dağıtılmış hareketleri koordine etmek için MSDTC kullanıyorsa, Azure SQL Veritabanı için esnek hareketlere geçiş yapmayı düşünün. Daha fazla bilgi için [bkz.](../sql-database/sql-database-elastic-transactions-overview.md) | Desteklenmiyor. |
@@ -118,7 +120,7 @@ Veri fabrikanız oluşturulduktan sonra, Azure portalında genel bakış sayfas�
 
    1. **Paradan Tasarruf**etmek için, tümleştirme çalışma süreniz için Azure Karma Avantajı seçeneğini seçin: **Evet** veya **Hayır**. Hibrit kullanımla maliyet tasarrufundan yararlanmak için Yazılım Güvencesi ile kendi SQL Server lisansınızı getirmek istiyorsanız **Evet'i** seçin.
 
-   1. **Sonraki'ni**seçin.
+   1. **İleri**’yi seçin.
 
 1. SQL **Ayarları** bölümünde aşağıdaki adımları tamamlayın.
 

@@ -11,15 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: f9dd53fded06eec169219d00993620a0f2aa2bf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678236"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417921"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda bekleme etkinliğini yürütme
 İşlem hattında Bekleme etkinliğini kullandığınızda, işlem hattı izleyen etkinlikleri yürütmeye devam etmeden önce belirtilen süre kadar bekler. 
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -101,7 +104,7 @@ Bu örnekte, ardışık iki etkinlik vardır: **Kadar** ve **Bekleyin.** Bekle e
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

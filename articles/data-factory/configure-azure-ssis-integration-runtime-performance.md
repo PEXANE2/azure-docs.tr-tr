@@ -10,14 +10,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
 manager: anandsub
-ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca88e42438c7cb48b062aa67d82053afbb9244bf
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930539"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418295"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Yüksek performans için Azure-SSIS Tümleştirme Çalışma Süresini yapılandırın
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 
 Bu makalede, yüksek performans için bir Azure-SSIS Tümleştirme Çalışma Süresi (IR) nasıl yapılandırılabilen açıklanmaktadır. Azure-SSIS IR, SQL Server Tümleştirme Hizmetleri (SSIS) paketlerini Azure'da dağıtmanıza ve çalıştırmanıza olanak tanır. Azure-SSIS IR hakkında daha fazla bilgi için [Tümleştirme çalışma zamanı](concepts-integration-runtime.md#azure-ssis-integration-runtime) makalesine bakın. Azure'da SSIS paketlerini dağıtma ve çalıştırma hakkında bilgi için [SQL Server Tümleştirme Hizmetleri iş yüklerini kaldır ve buluta kaydırın.](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)
 

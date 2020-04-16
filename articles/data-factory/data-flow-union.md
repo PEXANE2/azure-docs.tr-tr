@@ -8,14 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: adba1eb61676dbebcb356490b14b279ebe69c644
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bdf443a052ba8884a361774154f4d68cc180dfb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930155"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417836"
 ---
 # <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Veri Fabrikası eşleme veri akışı birliği dönüşümü
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Birleşim, birden çok veri akışını, Bu akışların SQL Birliği ile birleştirir. Her giriş akışındaki şemaların tümü, bir birleştirme anahtarına gerek kalmadan veri akışınızın içinde birleştirilir.
 

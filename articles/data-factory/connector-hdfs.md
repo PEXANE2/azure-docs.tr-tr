@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 2cd76afa9412e89c57cfb6c357eb164ce5d3d1c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c39c41b2d31f88fe2b19d8f20cd19e182c9214
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75830437"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417261"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak HDFS'den veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-hdfs-connector.md)
 > * [Geçerli sürüm](connector-hdfs.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, HDFS sunucusundan verilerin nasıl kopyalanış edilebisolduğu açıklanmıştır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

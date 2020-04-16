@@ -9,14 +9,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440392"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418023"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda değiştirme etkinliği
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Geçiş etkinliği, geçiş deyiminin programlama dillerinde sağladığı işlevselliği sağlar. Durum değerlendirmesiyle eşleşen bir servis talebine karşılık gelen bir dizi aktiviteyi değerlendirir.
 
@@ -331,7 +333,7 @@ $result.Error -join "`r`n"
 
 Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın: 
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

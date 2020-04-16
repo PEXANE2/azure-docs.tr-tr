@@ -10,16 +10,17 @@ ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/15/2020
 ms.author: jingwang
-ms.openlocfilehash: a0c07aaf27825254f776a03b9b9ca2cbeddca02d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250266"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417118"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Meta veri etkinliği alın
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası'ndaki herhangi bir verinin meta verilerini almak için Meta Veri Al etkinliğini kullanabilirsiniz. Bu etkinliği aşağıdaki senaryolarda kullanabilirsiniz:
 
@@ -48,12 +49,13 @@ Meta veri al etkinliği bir veri kümesini giriş olarak alır ve meta veri bilg
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Azure Blob depolama](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Dosyalar](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Dosya sistemi](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Meta veri etkinliğini bir klasöre karşı alın'ı kullanırken, verilen klasöre LIST/EXECUTE izni aldığınızdan emin olun.
 - Amazon S3 ve Google `lastModified` Cloud Storage için, kova ve anahtar için geçerlidir, ancak sanal klasör için geçerlideğildir ve `exists` kova ve anahtar için geçerlidir, ancak önek veya sanal klasör için geçerli değildir.
 - Azure Blob depolama `lastModified` için kapsayıcı ve blob için geçerlidir, ancak sanal klasör için geçerli değildir.
 - `lastModified`filtre şu anda alt öğeleri filtrelemek için geçerlidir, ancak belirtilen klasör/dosyanın kendisini filtrelemez.
@@ -64,7 +66,7 @@ Meta veri al etkinliği bir veri kümesini giriş olarak alır ve meta veri bilg
 | Bağlayıcı/Meta veri | yapı | Columncount | Var |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL Veritabanı yönetilen örneği](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Veritabanı yönetilen örnek](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
 | [Azure SQL Veri Ambarı](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 

@@ -11,17 +11,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 67ba2fadd5376997b528af4fcd2c5a666bb134a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ce26360aca8d8408135cbe89aabff4f923013b4
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443996"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416360"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki şirket içi veri depoları için kimlik bilgilerini şifreleme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Kendi kendine barındırılan tümleştirme çalışma süresine sahip bir makinede şirket içi veri depolarınızın (hassas bilgilere sahip bağlantılı hizmetler) kimlik bilgilerini şifreleyebilir ve depolayabilirsiniz. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Kimlik bilgilerini içeren bir JSON tanım dosyası <br/>[**Yeni-AzDataFactoryV2LinkedServiceEncryptedCredential**](/powershell/module/az.datafactory/New-AzDataFactoryV2LinkedServiceEncryptedCredential) cmdlet şifreli kimlik bilgileri ile bir çıkış JSON tanım dosyası üretmek için. Ardından, bağlı hizmetleri oluşturmak için güncelleştirilmiş JSON tanımını kullanın.
 

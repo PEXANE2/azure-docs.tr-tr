@@ -11,18 +11,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.author: jingwang
-ms.openlocfilehash: fc81e66e609400c6558f00ee957ccaee715bd7fa
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 55687529045e705f0a80b900b1cddaa49dba64d9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991646"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417332"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak FTP sunucusundan verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 >
 > * [Sürüm 1](v1/data-factory-ftp-connector.md)
 > * [Geçerli sürüm](connector-ftp.md)
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede FTP sunucusundan verilerin nasıl kopyalanılıp kopyalanılısA bunlar özetlenir. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

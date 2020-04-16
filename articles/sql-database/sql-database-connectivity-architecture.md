@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 6fdfbce6dce2428a8f2757b0755e6f982f02240f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256425"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419272"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL Bağlantı Mimarisi
 > [!NOTE]
@@ -45,7 +45,7 @@ Aşağıdaki adımlar, bir Azure SQL veritabanına nasıl bağlantı kurulduğun
 Azure SQL Veritabanı, bir SQL Veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
 
 - **Yönlendirme (önerilir):** İstemciler, daha az gecikme gecikmesine ve gelişmiş iş elde etme önüne geçerek doğrudan veritabanını barındıran düğüme bağlantılar kurar. Bağlantıların bu modu kullanabilmek için şunları
-   - İstemciden 11000 11999 aralığındaki bağlantı noktalarında bölgedeki tüm Azure IP adreslerine giden iletişime izin verin. Bunu yönetmeyi kolaylaştırmak için SQL için Hizmet Etiketleri'ni kullanın.  
+   - İstemciden 11000 11999 aralığındaki bağlantı noktalarında bölgedeki tüm Azure SQL IP adreslerine giden iletişime izin verin. Bunu yönetmeyi kolaylaştırmak için SQL için Hizmet Etiketleri'ni kullanın.  
    - İstemciden 1433 bağlantı noktasındaki Azure SQL Veritabanı ağ geçidi IP adreslerine giden iletişime izin verin.
 
 - **Proxy:** Bu modda, tüm bağlantılar Azure SQL Veritabanı ağ geçitleri aracılığıyla yakınlaştırılarak gecikme gecikmesi ve daha az iş ortası elde edilmesine yol açar. Bağlantıların bu modu kullanabilmesi için istemcilerin istemciden 1433 bağlantı noktasındaki Azure SQL Veritabanı ağ geçidi IP adreslerine giden iletişime izin vermeleri gerekir.

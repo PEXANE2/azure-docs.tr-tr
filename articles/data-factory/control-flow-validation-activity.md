@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: f63c78c59d7d6be3c66ea0785389eff73e3bff60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73678360"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417938"
 ---
 # <a name="validation-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda doğrulama etkinliği
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 Ardışık hatlar sisteminde doğrulama, yalnızca ekteki veri kümesi başvurusu var olduğunu, belirtilen ölçütleri karşıladığını veya zaman adedine ulaşıldığını doğruladıktan sonra yürütmeye devam etmesini sağlamak için bir doğrulama yı kullanabilirsiniz.
 
 
@@ -72,7 +74,7 @@ Minimumsize | Baytlarda bir dosyanın minimum boyutu. Değer belirtilmemişse, v
 ## <a name="next-steps"></a>Sonraki adımlar
 Veri Fabrikası tarafından desteklenen diğer kontrol akışı etkinliklerine bakın:
 
-- [If Koşulu Etkinliği](control-flow-if-condition-activity.md)
+- [If Condition Etkinliği](control-flow-if-condition-activity.md)
 - [İşlem Hattı Çalıştırma Etkinliği](control-flow-execute-pipeline-activity.md)
 - [Her Bir Etkinlik için](control-flow-for-each-activity.md)
 - [Meta Veri Alma Etkinliği](control-flow-get-metadata-activity.md)

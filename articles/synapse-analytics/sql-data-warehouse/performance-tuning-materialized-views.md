@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 6e942130d9acf803665e52498ef6a4976cc9ade7
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743180"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417034"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Gerçekleştirilmiş görünümler ile performans ayarlama
 
 Synapse SQL havuzunda bulunan önemli görünümler, karmaşık analitik sorguların sorgu değişikliği olmadan hızlı performans elde etmesi için düşük bakım yöntemi sağlar. Bu makalede, maddeleştirilmiş görünümlerin kullanılmasına ilişkin genel kılavuz açıklanmaktadır.
 
-Azure SQL Veri Ambarı'ndaki somutlaştırılmış görünümler, karmaşık analitik sorguların sorgu değişikliği olmadan hızlı performans elde etmesi için düşük bakım yöntemi sağlar. Bu makalede, maddeleştirilmiş görünümlerin kullanılmasına ilişkin genel kılavuz açıklanmaktadır.
+SQL havuzunda bulunan önemli görünümler, karmaşık analitik sorguların sorgu değişikliği olmadan hızlı performans elde etmesi için düşük bakım yöntemi sağlar. Bu makalede, maddeleştirilmiş görünümlerin kullanılmasına ilişkin genel kılavuz açıklanmaktadır.
 
 ## <a name="materialized-views-vs-standard-views"></a>Maddeleştirilmiş görünümler ve standart görünümler
 
@@ -34,7 +33,7 @@ Somutlaştırılmış görünüm, verilerini bir tablo gibi SQL havuzunda önced
 
 Standart görünümdeki gereksinimlerin çoğu yine de maddeleştirilmiş görünüm için geçerlidir. Somutlaştırılmış görünüm sözdizimi ve diğer gereksinimler hakkında ayrıntılı bilgi için SELECT [olarak CREATE MATERIALIZED VIEW](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 'a bakın
 
-| Karşılaştırma                     | Görüntüle                                         | Gerçekleştirilmiş Görünüm
+| Karşılaştırma                     | Görünüm                                         | Gerçekleştirilmiş Görünüm
 |:-------------------------------|:---------------------------------------------|:--------------------------------------------------------------|
 |Tanımı görüntüleme                 | SQL havuzunda depolanır.              | SQL havuzunda depolanır.
 |İçeriği görüntüleme                    | Görünüm her kullanıldığında oluşturulur.   | Görünüm oluşturma sırasında önceden işlenmiş ve SQL havuzunda depolanmış. Veriler temel tablolara eklendikçe güncelleştirildi.
@@ -45,7 +44,7 @@ Standart görünümdeki gereksinimlerin çoğu yine de maddeleştirilmiş görü
 
 ## <a name="benefits-of-using-materialized-views"></a>Maddeleştirilmiş görünümleri kullanmanın yararları
 
-Düzgün tasarlanmış bir materyalize görünüm aşağıdaki avantajları sağlayabilir:
+Düzgün tasarlanmış bir materyalize görünüm aşağıdaki avantajları sağlar:
 
 - JO'lar ve toplu işlevler içeren karmaşık sorgular için yürütme süresini azaltın. Sorgu ne kadar karmaşıksa, yürütme-zaman tasarrufu potansiyeli de o kadar yüksek olabilir. Bir sorgunun hesaplama maliyeti yüksek olduğunda ve ortaya çıkan veri kümesi küçük olduğunda en fazla avantaj elde edilir.  
 - SQL havuzundaki en iyi duruma getirici, sorgu yürütme planlarını geliştirmek için otomatik olarak dağıtılan önemli leştirilmiş görünümleri kullanabilir.  Bu işlem, daha hızlı sorgu performansı sağlayan kullanıcılar için saydamdır ve somutlaştırılmış görünümlere doğrudan başvuru yapmak için sorgular gerektirmez.
@@ -118,7 +117,7 @@ Somutlaştırılmış görünüm sayısını azaltmak için seçenekler:
 
 - Düşük kullanıma sahip veya artık gerekli olmayan maddeleştirilmiş görünümleri bırakın.  Devre dışı bırakılmış bir maddeleştirilmiş görünüm korunmaz, ancak yine de depolama maliyetine neden olur.  
 
-- Verileri çakışmasa bile aynı veya benzer temel tablolarda oluşturulan somutlaştırılmış görünümleri birleştirin.  Maddeleştirilmiş görünümlerin taranması, ayrı görünümlerin toplamından daha büyük bir boyut görünümüne neden olabilir, ancak görünüm bakım maliyetini azaltmalı.  Örnek:
+- Verileri çakışmasa bile aynı veya benzer temel tablolarda oluşturulan somutlaştırılmış görünümleri birleştirin.  Somutlaştırılmış görünümlerin birleştirilmesi, ayrı görünümlerin toplamından daha büyük bir boyut görünümüne neden olabilir, ancak görünüm bakım maliyeti azaltılmalıdır.  Örneğin:
 
 ```sql
 

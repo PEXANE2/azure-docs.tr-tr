@@ -11,17 +11,19 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 11/27/2018
-ms.openlocfilehash: 4a0709b4eaa8742069eecb4c39712e384645304b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57bf653aa3f421ae8897c4be661ceef589fcdc06
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74926657"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81418822"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda SQL Server Stored Yordametkinliğini kullanarak verileri dönüştürme
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-stored-proc-activity.md)
 > * [Geçerli sürüm](transform-data-using-stored-procedure.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Ham verileri öngörülere ve öngörülere dönüştürmek ve işlemek için Veri Fabrikası [ardışık hattındaki](concepts-pipelines-activities.md) veri dönüştürme etkinliklerini kullanırsınız. Depolanan Yordam Etkinliği, Veri Fabrikası'nın desteklediği dönüşüm etkinliklerinden biridir. Bu makalede, veri dönüşümü ve Veri Fabrikası'nda desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [dönüşüm veri](transform-data.md) makalesi üzerine bir temel oluşturur.
 

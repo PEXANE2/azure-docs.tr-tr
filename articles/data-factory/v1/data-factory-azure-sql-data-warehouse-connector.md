@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2df49e65603573e4a3adcdda0635982252e70b18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130810"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419332"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure SQL Veri Ambarına veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -227,7 +227,7 @@ Gereksinimler karşılanmazsa, Azure Veri Fabrikası ayarları denetler ve veri 
 Kaynak verileriniz önceki bölümde tanıtılan ölçütlere uymadığında, geçici bir evreleme Azure Blob Depolama yoluyla veri kopyalamayı etkinleştirebilirsiniz (Premium Depolama olamaz). Bu durumda, Azure Veri Fabrikası, PolyBase'in veri biçimi gereksinimlerini karşılamak için verilerüzerinde otomatik olarak dönüşümler gerçekleştirir, ardından verileri SQL Veri Ambarı'na yüklemek için PolyBase'i kullanır ve en sonunda Geçici Verilerinizi Blob depolamadan temizler. Bir evreleme Azure Blob aracılığıyla veri kopyalamanın genel olarak nasıl çalıştığına ilişkin ayrıntılar için [Aşamalı Kopya'ya](data-factory-copy-activity-performance.md#staged-copy) bakın.
 
 > [!NOTE]
-> Şirket içi bir veri deposundan PolyBase ve evreleme kullanarak Azure SQL Veri Ambarı'na veri kopyalarken, Veri Yönetimi Ağ Geçidi sürümünüz 2,4'ün altındaysa, kaynağınızı dönüştürmek için kullanılan ağ geçidi makinenizde JRE (Java Runtime Environment) gereklidir uygun biçime veri. Bu tür bağımlılıktan kaçınmak için ağ geçidinizi en sona yükseltmenizi öneririz.
+> Şirket içi bir veri deposundan PolyBase ve evreleme kullanarak Azure SQL Veri Ambarı'na veri kopyalarken, Veri Yönetimi Ağ Geçidi sürümünüz 2,4'ün altındaysa, kaynak verilerinizi uygun biçime dönüştürmek için kullanılan ağ geçidi makinenizde JRE (Java Runtime Environment) gereklidir. Bu tür bağımlılıktan kaçınmak için ağ geçidinizi en sona yükseltmenizi öneririz.
 >
 
 Bu özelliği kullanmak için, geçici blob depolama alanına sahip Azure Depolama Hesabı'na atıfta `enableStaging` `stagingSettings` bulunan bir Azure Depolama [bağlantılı hizmet](data-factory-azure-blob-connector.md#azure-storage-linked-service) oluşturun ve ardından Kopyalama Etkinliği'nin özelliklerini ve özelliklerini aşağıdaki kodda gösterildiği gibi belirtin:
@@ -295,7 +295,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 NULL değeri varsayılan değerin özel bir biçimidir. Sütun nullable ise, bu sütuniçin giriş verileri (blob) boş olabilir (giriş veri kümesinden eksik olamaz). PolyBase, Azure SQL Veri Ambarı'nda onlar için NULL ekler.
 
 ## <a name="auto-table-creation"></a>Otomatik tablo oluşturma
-SQL Server veya Azure SQL Veritabanı'ndan Azure SQL Veri Ambarı'na veri kopyalamak için Copy Sihirbazı kullanıyorsanız ve kaynak tabloya karşılık gelen tablo hedef deposunda yoksa, Veri Fabrikası otomatik olarak veri ambarındaki tabloyu oluşturabilir kaynak tablo şema kullanarak.
+SQL Server veya Azure SQL Veritabanı'ndan Azure SQL Veri Ambarı'na veri kopyalamak için Copy Sihirbazı kullanıyorsanız ve kaynak tabloya karşılık gelen tablo hedef deposunda yoksa, Veri Fabrikası kaynak tablo şemasını kullanarak veri ambarındaki tabloyu otomatik olarak oluşturabilir.
 
 Veri Fabrikası, kaynak veri deposunda aynı tablo adı ile hedef deposunda tablo oluşturur. Sütunlar için veri türleri aşağıdaki tür eşleme temel alınarak seçilir. Gerekirse, kaynak ve hedef mağazalar arasındaki uyumsuzlukları gidermek için tür dönüşümleri gerçekleştirir. Ayrıca Round Robin tablo dağılımını kullanır.
 

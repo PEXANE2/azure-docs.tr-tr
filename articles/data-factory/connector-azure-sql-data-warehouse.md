@@ -11,18 +11,27 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7fb1560fb9be809d816dde7dd69f1ec8afe5649f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422176"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417572"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Synapse Analytics'teki (eski adıyla Azure SQL Veri Ambarı) verileri kopyalama ve dönüştürme 
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Geçerli sürüm](connector-azure-sql-data-warehouse.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure Synapse Analytics'ten ve Azure Synapse Analytics'ten kopyalanması ve Azure Veri Gölü Depolama Gen2'deki verileri dönüştürmek için Veri Akışı'nı nasıl kullanacağı açıklanmaktadır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
+
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+Bu makalede, Azure Veri Ambarı'ndaki Kopyalama Etkinliği'nin Azure SQL Veri Ambarı'ndan ve Azure SQL Veri Ambarı'ndan kopyalanması ve Azure Veri Gölü Deposu Gen2'deki verileri dönüştürmek için Veri Akışı'nın nasıl kullanılacağı açıklanmaktadır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
 Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure Synapse Analytics'ten ve Azure Synapse Analytics'ten kopyalanması ve Azure Veri Gölü Depolama Gen2'deki verileri dönüştürmek için Veri Akışı'nı nasıl kullanacağı açıklanmaktadır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 
@@ -531,7 +540,7 @@ Bu özelliği kullanmak için, geçici blob depolama alanıyla Birlikte Azure de
 
 ### <a name="best-practices-for-using-polybase"></a>PolyBase kullanmak için en iyi uygulamalar
 
-Aşağıdaki bölümler, [Azure Synapse Analytics için En İyi Uygulamalar'da](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)belirtilenuygulamalara ek olarak en iyi uygulamaları sağlar.
+Aşağıdaki bölümler, [Azure Synapse Analytics için En İyi Uygulamalar'da](../synapse-analytics/sql/best-practices-sql-pool.md)belirtilenuygulamalara ek olarak en iyi uygulamaları sağlar.
 
 #### <a name="required-database-permission"></a>Gerekli veritabanı izni
 
@@ -740,7 +749,7 @@ Azure Synapse Analytics'e özgü ayarlar, lavabo dönüşümünün **Ayarlar** s
 Verileri Azure Synapse Analytics'ten veya Azure Synapse Analytics'e kopyaladiğinizde, Azure Synapse Analytics veri türlerinden Azure Veri Fabrikası geçici veri türlerine aşağıdaki eşlemeler kullanılır. Copy Activity'in kaynak şemasını ve veri türünü lavaboyla nasıl eşleştirdiğini öğrenmek için [şemaya](copy-activity-schema-and-type-mapping.md) ve veri türü haritasına bakın.
 
 >[!TIP]
->SQL DW desteklenen veri türleri ve desteklenmeyenlerin geçici çözümleri yle ilgili [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-data-types.md) makalesinde Tablo veri türlerine bakın.
+>SQL DW desteklenen veri türleri ve desteklenmeyenlerin geçici çözümleri yle ilgili [Azure Synapse Analytics](../synapse-analytics/sql/develop-tables-data-types.md) makalesinde Tablo veri türlerine bakın.
 
 | Azure Synapse Analytics veri türü    | Veri Fabrikası geçici veri türü |
 | :------------------------------------ | :----------------------------- |

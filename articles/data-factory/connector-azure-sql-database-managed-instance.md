@@ -11,14 +11,16 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 11f4005e802e2a584b21903bfead2c6b9701f065
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe803c918cbf60b8f0af76d8c9a94d022153acbb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238748"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417512"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Azure SQL Veritabanı Yönetilen Örneği'ne kopyalama
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure SQL Veritabanı Yönetilen Örneği'ne ve Bu Veritabanı'ndan veri kopyalamak için Azure Veri Fabrikası'ndaki kopyalama etkinliğinin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [Kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
@@ -47,7 +49,7 @@ Azure SQL Veritabanı Yönetilen Örnek [genel bitiş noktasına](../sql-databas
 
 Azure SQL Veritabanı Yönetilen Örnek özel bitiş noktasına erişmek için, veritabanına erişebilen, [kendi kendine barındırılan](create-self-hosted-integration-runtime.md) bir tümleştirme çalışma zamanı ayarlayın. Yönetilen örneğiyle aynı sanal ağda barındırılan tümleştirme çalışma süresini sağlarsanız, tümleştirme çalışma zamanı makinenizin yönetilen örneğinizden farklı bir alt ağda olduğundan emin olun. Kendi barındırılan tümleştirme çalışma sürenizi yönetilen örneğinizden farklı bir sanal ağda sağlarsanız, sanal ağ da sanal ağ bağlantısı için sanal ağ eşlemeyi veya sanal ağ kullanabilirsiniz. Daha fazla bilgi için bkz: [Uygulamanızı Azure SQL Veritabanı Yönetilen Örneği'ne bağlayın.](../sql-database/sql-database-managed-instance-connect-app.md)
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

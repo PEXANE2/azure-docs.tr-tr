@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 3a16a8263c80852127ca61db3c666ebf0f7f1e4c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: db55e685fb50c89eb850e1b9ee9dcf13d20fb614
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011710"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417531"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure SQL Veritabanı'ndaki verileri kopyalama ve dönüştürme
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Azure Veri Fabrikası sürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-azure-sql-connector.md)
 > * [Geçerli sürüm](connector-azure-sql-database.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Azure SQL Veritabanı'ndan ve Azure SQL Veritabanı'ndan kopyalanması ve Azure SQL Veritabanı'ndaki verileri dönüştürmek için Veri Akışı'nın nasıl kullanılacağı açıklanmaktadır. Azure Veri Fabrikası hakkında bilgi edinmek için [giriş makalesini](introduction.md)okuyun.
 

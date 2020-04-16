@@ -11,18 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a05d955be88f68b3c0db1f4a29b3f6e1155aa0d
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 730efb552ef218cc5a5ce6a984d20b4e23b364ac
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992190"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416949"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri bir HTTP bitiş noktasından kopyalama
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-http-connector.md)
 > * [Geçerli sürüm](connector-http.md)
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, http bitiş noktasından verileri kopyalamak için Azure Veri Fabrikası'nda Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Makale, Azure [Veri Fabrikası'ndaki Kopyalama Etkinliği'ne](copy-activity-overview.md)dayanmaktadır ve bu da Kopyalama Etkinliğine genel bir genel bakış sunar.
 

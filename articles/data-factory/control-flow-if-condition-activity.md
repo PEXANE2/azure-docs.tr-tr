@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: bfa308e2cc67bd14a248f3edc7b182f9a772ed98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417161"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Koşul etkinliği
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
 If Koşulu etkinliği, programlama dilerindeki If deyimiyle aynı işlevselliği sağlar. Koşul `true` sonucunu verdiğinde bir dizi etkinliği, `false` sonucu verdiğinde ise başka bir dizi etkinliği değerlendirmeye alır. 
 
 ## <a name="syntax"></a>Sözdizimi

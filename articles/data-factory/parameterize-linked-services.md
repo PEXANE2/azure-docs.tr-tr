@@ -10,14 +10,15 @@ ms.date: 12/18/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: acc7284eb607d20ca1d62b478d802be56048bc6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8fa8603f2bee7e42db0f085d78117d61bd14ce5c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440106"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81419400"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Veri Fabrikası'nda bağlantılı hizmetleri parametrenize
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Artık bağlı bir hizmeti parametreye aktarabilir ve dinamik değerleri çalışma zamanında geçirebilirsiniz. Örneğin, aynı Azure SQL Veritabanı sunucusundaki farklı veritabanlarına bağlanmak istiyorsanız, artık bağlı hizmet tanımındaki veritabanı adını parametrenize alabilirsiniz. Bu, Azure SQL veritabanı sunucusundaki her veritabanı için bağlantılı bir hizmet oluşturmanızı önler. Bağlı hizmet tanımındaki diğer özellikleri de parametrenize alabilirsiniz - örneğin, *Kullanıcı adı.*
 

@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 17b78e03e330e342e9d558dd3ca5d9071bcd3c2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2fe6b6cc7b52dda9f2beffa444f1965723ea92a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78163939"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416921"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Bir OData kaynağından kopyalama
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-odata-connector.md)
@@ -44,7 +45,7 @@ Verileri Bir OData kaynağından desteklenen herhangi bir lavabo veri deposuna k
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

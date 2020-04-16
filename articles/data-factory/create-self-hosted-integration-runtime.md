@@ -11,14 +11,16 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 3fe5a58046776d00ce68189cf724a995380869eb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887325"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416634"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma ve yapılandırma
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tümleştirme çalışma süresi (IR), Azure Veri Fabrikası'nın farklı ağ ortamlarında veri tümleştirme yetenekleri sağlamak için kullandığı bilgi işlem altyapısıdır. IR hakkında ayrıntılar [için, Tümleştirme çalışma zamanı genel görünümüne](concepts-integration-runtime.md)bakın.
 
@@ -360,7 +362,7 @@ Proxy ayarlarını görüntülemek veya güncelleştirmek istiyorsanız, kendi k
 1. **Microsoft Tümleştirme Runtime Configuration Manager'ı**açın.
 1. **Ayarlar** sekmesini seçin.
 1. **HTTP Proxy**altında, Http Proxy **ayarkutusunu ayarlamak** için **Değiştir** bağlantısını seçin.
-1. **Sonraki'ni**seçin. Daha sonra proxy ayarını kaydetmek ve tümleştirme çalışma zamanı ana bilgisayar hizmetini yeniden başlatmak için izninizi isteyen bir uyarı görürsünüz.
+1. **İleri**’yi seçin. Daha sonra proxy ayarını kaydetmek ve tümleştirme çalışma zamanı ana bilgisayar hizmetini yeniden başlatmak için izninizi isteyen bir uyarı görürsünüz.
 
 HTTP proxy'sini görüntülemek ve güncelleştirmek için configuration manager aracını kullanabilirsiniz.
 

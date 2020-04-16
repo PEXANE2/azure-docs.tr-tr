@@ -11,14 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: c700c9786f3bec4c79cae904a95deb5fd1c670b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260871"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417904"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Web etkinliği
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+
+
 Web Etkinliği bir Data Factory işlem hattından özel bir REST uç noktasını çağırmak için kullanılabilir. Etkinlik tarafından kullanılacak ve erişilecek veri kümelerini ve bağlı hizmetleri geçirebilirsiniz.
 
 > [!NOTE]
@@ -88,11 +91,11 @@ Aşağıdaki tabloJSON içeriği için gereksinimleri gösterir:
 | JSON tipi olmayan | Desteklenmeyen | Desteklenmeyen |
 ||||
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Aşağıda, web etkinliğinde desteklenen kimlik doğrulama türleri verilmiştir.
 
-### <a name="none"></a>None
+### <a name="none"></a>Hiçbiri
 
 Kimlik doğrulama gerekli değilse, "kimlik doğrulama" özelliğini içermez.
 

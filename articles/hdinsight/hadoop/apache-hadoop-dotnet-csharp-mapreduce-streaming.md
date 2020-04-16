@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 11/22/2019
-ms.openlocfilehash: 025b5c5c1e3b8543111e112202906ef6f1fdb482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 7a299ce16f6e9c7292cebf198c9c3077f8e05fcb
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74561794"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417601"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight'ta Apache Hadoop'ta MapReduce akışı yla C# kullanın
 
 HDInsight'ta Bir MapReduce çözümü oluşturmak için C# nasıl kullanılacağını öğrenin.
 
-Apache Hadoop akışı, mapreduce işlerini bir komut dosyası veya çalıştırılabilir kullanarak çalıştırmanızı sağlayan bir yardımcı programdır. Bu örnekte, .NET bir sözcük sayısı çözümü için mapper ve redüktör uygulamak için kullanılır.
+Apache Hadoop akışı, mapreduce işlerini bir komut dosyası veya çalıştırılabilir kullanarak çalıştırmanızı sağlar. Burada, .NET bir sözcük sayısı çözümü için mapper ve redüktör uygulamak için kullanılır.
 
 ## <a name="net-on-hdinsight"></a>.NET HDInsight üzerinde
 
@@ -49,12 +49,9 @@ Akış hakkında daha fazla bilgi için [Hadoop Streaming'e](https://hadoop.apac
 
 * PowerShell kullanıyorsanız, [Az Modülü](https://docs.microsoft.com/powershell/azure/overview)gerekir.
 
-* Bir SSH istemcisi (isteğe bağlı). Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
-
 * HDInsight'ta bir Apache Hadoop kümesi. [Linux'ta HDInsight ile başlayın](../hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 
-* Kümeleriniz birincil depolama için [URI düzeni.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Bu, `wasb://` Azure Depolama, `abfs://` Azure Veri Gölü Depolama `adl://` Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Azure Depolama veya Veri Gölü Depolama Gen2 için güvenli `wasbs://` aktarım etkinleştirilirse, URI sırasıyla güvenli `abfss://` [aktarım](../../storage/common/storage-require-secure-transfer.md)olur.
-
+* Kümeleriniz birincil depolama için [URI düzeni.](../hdinsight-hadoop-linux-information.md#URI-and-scheme) Bu şema `wasb://` Azure Depolama, `abfs://` Azure Veri Gölü `adl://` Depolama Gen2 veya Azure Veri Gölü Depolama Gen1 için olacaktır. Azure Depolama veya Veri Gölü Depolama Gen2 için güvenli `wasbs://` aktarım etkinleştirilirse, URI sırasıyla güvenli `abfss://` [aktarım](../../storage/common/storage-require-secure-transfer.md)olur.
 
 ## <a name="create-the-mapper"></a>Haritayı oluşturma
 
@@ -221,14 +218,16 @@ Aşağıdaki yordam, Bir SSH oturumu kullanarak MapReduce iş çalıştırmak i�
 
    Aşağıdaki liste, her parametre ve seçeneğin neyi temsil ettiğiaçıklanmaktadır:
 
-   * *hadoop-streaming.jar*: MapReduce akış işlevini içeren kavanoz dosyasını belirtir.
-   * `-files`: Bu iş için *mapper.exe* ve *reducer.exe* dosyalarını belirtir. Her `wasbs:///` `adl:///`dosyadan `abfs:///` önce , veya protokol bildirimi küme için varsayılan depolama köküne giden yoldur.
-   * `-mapper`: Mapper'ı uygulayan dosyayı belirtir.
-   * `-reducer`: Azaltıcıyı uygulayan dosyayı belirtir.
-   * `-input`: Giriş verilerini belirtir.
-   * `-output`: Çıktı dizini belirtir.
+   |Parametre | Açıklama |
+   |---|---|
+   |hadoop-streaming.jar|Akış Lı MapReduce işlevini içeren kavanoz dosyasını belirtir.|
+   |-dosyalar|Bu iş için *mapper.exe* ve *reducer.exe* dosyalarını belirtir. Her `wasbs:///` `adl:///`dosyadan `abfs:///` önce , veya protokol bildirimi küme için varsayılan depolama köküne giden yoldur.|
+   |-mapper|Haritayı uygulayan dosyayı belirtir.|
+   |-redüktör|Azaltıcıyı uygulayan dosyayı belirtir.|
+   |-giriş|Giriş verilerini belirtir.|
+   |-çıkış|Çıktı dizini belirtir.|
 
-3. MapReduce işi tamamlandıktan sonra, sonuçları görüntülemek için aşağıdaki komutu kullanın:
+1. MapReduce işi tamamlandıktan sonra, sonuçları görüntülemek için aşağıdaki komutu kullanın:
 
    ```bash
    hdfs dfs -text /example/wordcountout/part-00000

@@ -12,14 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440228"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417785"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Veri Fabrikası ile Verileri Azure Veri Gölü Depolama Gen2'ye yükleyin
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Azure Veri Gölü Depolama Gen2, [Azure Blob depolamaalanına](../storage/blobs/storage-blobs-introduction.md)yerleşik olarak büyük veri analitiğine adanmış bir dizi özelliktir. Hem dosya sistemini hem de nesne depolama paradigmalarını kullanarak verilerinizle arayüz aranızda bulunmanızı sağlar.
 
@@ -54,7 +56,7 @@ Bu makalede, _Amazon Web Hizmetleri S3 hizmetinden_ verileri _Azure Veri Gölü 
     * **Sürüm**: **V2**seçin.
     * **Konum**: Veri fabrikasının konumunu seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda ve bölgelerde olabilir. 
 
-3. **Oluştur'u**seçin.
+3. **Oluştur**’u seçin.
 4. Oluşturma tamamlandıktan sonra veri fabrikanıza gidin. Aşağıdaki resimde gösterildiği gibi **Veri Fabrikası** ana sayfasını görürsünüz: 
    
    ![Data factory giriş sayfası](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
@@ -82,7 +84,7 @@ Bu makalede, _Amazon Web Hizmetleri S3 hizmetinden_ verileri _Azure Veri Gölü 
    1. Access **Tuşu Kimliği** değerini belirtin.
    2. Gizli **Erişim Anahtarı** değerini belirtin.
    3. Ayarları doğrulamak için **Bağlantı testi**'ne tıklayın ve **Son**'u seçin.
-   4. Yeni bir bağlantı nın oluşturulduğunu göreceksiniz. **Sonraki'ni**seçin.
+   4. Yeni bir bağlantı nın oluşturulduğunu göreceksiniz. **İleri**’yi seçin.
    
       ![Amazon S3 hesabını belirtin](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       

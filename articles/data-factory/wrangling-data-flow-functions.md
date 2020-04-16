@@ -7,14 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74287038"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81417666"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Çekişmeli veri akışında dönüştürme işlevleri
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası'nda veri akışı oluşturmak, bulut ölçeğinde kodsuz çevik veri hazırlama ve çekişme yapmanızı sağlar. Wrangling veri akışı [Power Query Online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) ile tümleşir ve Power Query M işlevlerini kıvılcım yürütme yoluyla veri çekişmesi için kullanılabilir hale getirir. 
 

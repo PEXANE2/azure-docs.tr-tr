@@ -11,14 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: 4540b27a9241a14b3d1a153d11bf43900e8ae0ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec2aa5b1492534908adb55544623110242717609
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81416666"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Salesforce Service Cloud'dan kopyalayın
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin Salesforce Service Cloud'dan ve Salesforce Service Cloud'dan verileri kopyalamak için nasıl kullanılacağı açıklanmaktadır. Kopyalama [etkinliğine](copy-activity-overview.md) genel bir genel bakış sunan Kopyalama Etkinliği genel bakış makalesine dayanıyor.
 
@@ -51,7 +52,7 @@ Salesforce'un hem toplam API istekleri hem de eşzamanlı API istekleri için s�
 
 Ayrıca her iki senaryoda da "REQUEST_LIMIT_EXCEEDED" hata iletisi alabilirsiniz. Daha fazla bilgi için [Salesforce geliştirici sınırlarındaki](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf)"API istek sınırları" bölümüne bakın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -297,7 +298,7 @@ Salesforce Service Cloud'dan veri kopyalarken SOQL sorgusu veya SQL sorgusu kull
 
 ### <a name="retrieve-data-by-using-a-where-clause-on-the-datetime-column"></a>DateTime sütunundaki bir yer yan tümcesi kullanarak verileri alma
 
-SOQL veya SQL sorgusunu belirtirken, DateTime biçimi farkıyla dikkat edin. Örnek:
+SOQL veya SQL sorgusunu belirtirken, DateTime biçimi farkıyla dikkat edin. Örneğin:
 
 * **SOQL örneği**:`SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= @{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-ddTHH:mm:ssZ')} AND LastModifiedDate < @{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-ddTHH:mm:ssZ')}`
 * **SQL örneği**:`SELECT * FROM Account WHERE LastModifiedDate >= {ts'@{formatDateTime(pipeline().parameters.StartTime,'yyyy-MM-dd HH:mm:ss')}'} AND LastModifiedDate < {ts'@{formatDateTime(pipeline().parameters.EndTime,'yyyy-MM-dd HH:mm:ss')}'}`
