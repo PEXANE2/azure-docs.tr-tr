@@ -4,15 +4,15 @@ description: Azure portalını veya SQL Server Management Studio'yu kullanarak A
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: c7d53ae71ac68559877561bf9fd15fe0f341e03a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78273691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406237"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -67,7 +67,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir kullanıcı hesabı ekleme
 
-Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Güvenlik grubu ekliyorsanız `MailEnabled` özelliğini `True` olarak ayarlamanız gerekir.
+Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Güvenlik grubu ekliyorsanız `MailEnabled` özelliğini `True` olarak ayarlamanız gerekir. E-posta adresine göre `obj:groupid@tenantid`bir grup belirtirken kullanın.
 
 1. **Nesne Gezgini**'nde sunucu adınızı sağ tıklatın, sonra **Özellikler**'i tıklatın. 
 2. **Analysis Server Özellikleri** penceresinde **Güvenlik** > **Ekle**'ye tıklayın.

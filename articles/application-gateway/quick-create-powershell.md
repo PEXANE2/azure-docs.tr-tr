@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 03/05/2020
+ms.date: 04/15/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: abb38dfc342c8ff692ed1a3a05376b5dcefe8a3d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78399561"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81406222"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Hızlı başlatma: Azure PowerShell'i kullanarak Azure Uygulama Ağ Geçidi ile doğrudan web trafiği
 
@@ -99,12 +99,10 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Arka uç havuzunu oluşturma
 
-1. Uygulama `New-AzApplicationGatewayBackendAddressPool` ağ geçidi için arka uç havuzunu oluşturmak için kullanın. Arka uç havuzu şimdilik boş olacak ve bir sonraki bölümde arka uç sunucu NIC'lerini oluştururken, bunları arka uç havuzuna eklersiniz.
+1. Uygulama `New-AzApplicationGatewayBackendAddressPool` ağ geçidi için arka uç havuzunu oluşturmak için kullanın. Arka uç havuzu şimdilik boş olacak. Bir sonraki bölümde arka uç sunucu NIC'lerini oluşturduğunuzda, bunları arka uç havuzuna eklersiniz.
 2. Arka uç havuzunun ayarlarını `New-AzApplicationGatewayBackendHttpSetting`.
 
 ```azurepowershell-interactive
-$address1 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic1
-$address2 = Get-AzNetworkInterface -ResourceGroupName myResourceGroupAG -Name myNic2
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
   -Name myAGBackendPool
 $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
