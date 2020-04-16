@@ -3,20 +3,20 @@ title: Konuşma çevirisi temelleri - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşmayı çevirmek için Konuşma SDK'sını nasıl kullanacağınızı öğrenin. Bu makalede, nesne yapılandırma, desteklenen ses giriş biçimleri ve konuşma çevirisi için yapılandırma seçenekleri hakkında bilgi edineceksiniz.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 966407a1e88856c041ae453cfa1bf0ecf55da9d1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266597"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399597"
 ---
 # <a name="learn-the-basics-of-speech-translation"></a>Konuşma çevirisinin temellerini öğrenin
 

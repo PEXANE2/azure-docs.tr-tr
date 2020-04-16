@@ -10,19 +10,25 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6f8f892e7ca81881b0cc00e1708e3f05052c573c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76264212"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400156"
 ---
 # <a name="scenario-availability"></a>Senaryo Kullanılabilirliği
 
 Konuşma SDK programlama dilleri ve ortamları geniş bir yelpazede birçok senaryo özellikleri. Tüm senaryolar henüz tüm programlama dillerinde veya tüm ortamlarda kullanılamaz. Aşağıda her senaryonun kullanılabilirliği listelenmiştir.
 
 - **Konuşma Tanıma (SR), İfade Listesi, Niyet, Çeviri ve Şirket İçi kaplar**
-  - Ok bağlantısının olduğu tüm programlama dilleri/ortamları <img src="media/index/link.jpg" height="15" width="15"></img> quickstart [tabloda burada](https://aka.ms/csspeech).
+  - C++/Windows & Linux & macOS
+  - C# (Framework & .NET Core)/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - Java (Jre ve Android)
+  - JavaScript (Brower ve NodeJS)
+  - Python
+  - Swift
+  - Objective-C  
 - **Metinden Konuşmaya (TTS)**
   - C++/Windows & Linux
   - C#/Windows & UWP & Birliği
@@ -48,7 +54,7 @@ Konuşma SDK programlama dilleri ve ortamları geniş bir yelpazede birçok sena
 - **Çok cihazlı Konuşma**
   - C++/Windows
   - C# (Framework & .NET Core)/Windows
-- **Çağrı merkezi Transkripsiyonu**
+- **Çağrı Merkezi Transkripsiyon**
   - REST API ve her durumda kullanılabilir
 - **Codec Sıkıştırılmış Ses Girişi**
   - C++/Linux

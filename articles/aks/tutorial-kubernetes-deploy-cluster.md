@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 72d7d3b8a4dc2831f397326d54560358c19b9b92
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616803"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392704"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Hızlı Başlangıç: Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -33,7 +33,7 @@ Bu öğretici, Azure CLI sürümünü 2.0.53 veya daha sonra çalıştırdığı
 
 AKS kümeleri Kubernetes rol tabanlı erişim denetimlerini (RBAC) kullanabilir. Bu denetimler, kullanıcılara atanmış olan rollere göre kaynaklara erişim vermenizi sağlayabilir. Bir kullanıcıya birden çok rol atanmışsa izinler birleştirilir ve izinler tek bir ad alanına veya tüm kümeye kapsamlandırılabilir. Bir AKS kümesi oluşturduğunuzda Azure CLI varsayılan ayarlarda RBAC özelliğini otomatik olarak etkinleştirir.
 
-[az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu [önceki öğreticide][aks-tutorial-prepare-acr]oluşturuldu. Aks kümesinin diğer Azure kaynaklarıyla etkileşim kurabilmesi için, bir Azure Etkin Dizin hizmet ilkesi otomatik olarak oluşturulur, çünkü siz belirtmediğiniz için. Burada, bu hizmet sorumlusuna önceki öğreticide oluşturduğunuz Azure Kapsayıcı Kayıt Defteri (ACR) örneğinden [resim çekme hakkı verilir.][container-registry-integration]
+[az aks create][] komutunu kullanarak bir AKS kümesi oluşturun. Aşağıdaki örnek, *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı bir küme oluşturur. Bu kaynak grubu [önceki öğreticide][aks-tutorial-prepare-acr]oluşturuldu. Aks kümesinin diğer Azure kaynaklarıyla etkileşim kurabilmesi için, bir Azure Etkin Dizin hizmet ilkesi otomatik olarak oluşturulur, çünkü siz belirtmediğiniz için. Burada, bu hizmet sorumlusuna önceki öğreticide oluşturduğunuz Azure Kapsayıcı Kayıt Defteri (ACR) örneğinden [resim çekme hakkı verilir.][container-registry-integration] Daha kolay yönetim için hizmet sorumlusu yerine yönetilen bir [kimlik](use-managed-identity.md) kullanabileceğinizi unutmayın.
 
 ```azurecli
 az aks create \

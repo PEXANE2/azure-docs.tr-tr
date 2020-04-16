@@ -3,19 +3,19 @@ title: Metinden konuşmaya - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşma hizmetindeki metinden konuşmaya özelliği, uygulamalarınızın, araçlarınızın veya aygıtlarınızın metni doğal insan benzeri sentezlenmiş konuşmaya dönüştürmesini sağlar. Önceden ayarlanmış sesleri seçin veya kendi özel sesinizi oluşturun.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7c7574ee4e9f75b9b650ff63a10666c5e379fca8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131573"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399494"
 ---
 # <a name="what-is-text-to-speech"></a>Metin okuma nedir?
 
@@ -39,7 +39,7 @@ Konuşma hizmetinden metin konuşma, uygulamalarınızın, araçlarınızın vey
 
 * Konuşma Sentezi Biçimlendirme Dili (SSML) - Konuşmadan metne çıktılarını özelleştirmek için kullanılan XML tabanlı biçimlendirme dili. SSML ile, adım süresini ayarlayabilir, duraklatma ekleyebilir, telaffuzu artırabilir, konuşma hızını hızlandırabilir veya yavaşlatabilir, ses düzeyini artırabilir veya azaltabilir ve birden çok sesi tek bir belgeye atfedebilirsiniz. Bkz. [SSML](speech-synthesis-markup.md).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Metin-konuşma hizmeti [Konuşma SDK](speech-sdk.md)üzerinden kullanılabilir. Çeşitli dillerde ve platformlarda hızlı başlangıçlar olarak kullanılabilen birkaç yaygın senaryo vardır:
 

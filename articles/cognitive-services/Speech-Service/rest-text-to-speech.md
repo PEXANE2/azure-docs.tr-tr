@@ -3,19 +3,19 @@ title: Metinden konuşmaya API başvurusu (REST) - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Metinden konuşmaya REST API'yi nasıl kullanacağınızı öğrenin. Bu makalede, yetkilendirme seçenekleri, sorgu seçenekleri, bir isteği yapılandırma ve yanıt alma hakkında bilgi edineceksiniz.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 977c6ec9aa1cd6a8b8a545d123c5308bb8c51651
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.author: trbye
+ms.openlocfilehash: 77bba9433052c00df671caf73198ff75356b1c9a
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409015"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400163"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 

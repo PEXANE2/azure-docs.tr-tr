@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: e41653e4644b09cc357510223e5ee86c3806ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74806122"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402190"
 ---
 # <a name="deploy-a-custom-model"></a>Özel bir modeli dağıtma
 
@@ -42,12 +42,12 @@ Günlüğe kaydetme verileri **Endpoint > Ayrıntılar**altında indirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Konuşma SDK](speech-sdk.md) ile özel bitiş noktanızı kullanın
+* Özel [modelinizi](how-to-specify-source-language.md)buradan nasıl kullanacağınızı buradan öğrenin.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Verilerinizi hazırlayın ve test edin](how-to-custom-speech-test-data.md)
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
-* [Modelinizi eğitme](how-to-custom-speech-train-model.md)
+* [Modelinizi eğitin](how-to-custom-speech-train-model.md)
 * [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)

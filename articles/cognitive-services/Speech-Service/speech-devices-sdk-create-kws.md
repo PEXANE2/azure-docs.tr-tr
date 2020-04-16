@@ -3,19 +3,19 @@ title: Özel anahtar kelimeler oluşturma - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Cihazınız her zaman bir anahtar kelime (veya tümcecik) için dinliyor. Kullanıcı anahtar kelimeyi söylediğinde, kullanıcı konuşmayı durdurana kadar aygıt sonraki tüm sesleri buluta gönderir. Anahtar kelimenizi özelleştirmek, cihazınızı farklılaştırmanın ve markanızı güçlendirmenin etkili bir yoludur.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.author: dapine
-ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 8e67d624c77eb838f7646731bbdedd8f97f81b96
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76717011"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400068"
 ---
 # <a name="create-a-custom-keyword-using-speech-studio"></a>Speech Studio'u kullanarak özel bir anahtar kelime oluşturma
 

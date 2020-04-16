@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70012935"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398695"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Öğretici: Azure Veri Kutusu Diski Sipariş Et
 
@@ -33,12 +33,7 @@ Dağıtmadan önce, Veri Kutusu hizmeti ve Veri Kutusu Diski için aşağıdaki 
 
 ### <a name="for-service"></a>Hizmet için
 
-Başlamadan önce aşağıdakilerden emin olun:
-- Erişim kimlik bilgilerine sahip bir Microsoft Azure Storage hesabınız var.
-- Data Box hizmeti için kullandığınız aboneliğin aşağıdaki türlerden birinde olduğundan emin olun:
-    - Microsoft Kurumsal Anlaşma (EA). [EA abonelikleri](https://azure.microsoft.com/pricing/enterprise-agreement/) hakkındaki yazıları okuyun.
-    - Bulut Çözümü Sağlayıcısı (CSP). [Azure CSP programı](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) hakkında daha fazla bilgi edinin.
-- Data Box siparişi oluşturmak için, abonelik üzerinde sahip veya katkıda bulunan erişimine sahip olduğunuzdan emin olun.
+[!INCLUDE [Data Box service prerequisites](../../includes/data-box-supported-subscriptions.md)]
 
 ### <a name="for-device"></a>Cihaz için
 
@@ -103,7 +98,7 @@ Veri Kutusu Diski sipariş etmek için aşağıdaki adımları izleyin.
 
     Yönetilen diskler için belirtilen depolama hesabı, hazırlama depolama hesabı olarak kullanılır. Veri Kutusu hizmeti VHD'leri hazırlama depolama hesabına yükler ve bunları yönetilen disklere dönüştürür ve kaynak gruplarına taşır. Daha fazla bilgi için bkz. [Azure'a veri yüklemeyi doğrulama](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
-13. **İleri**'ye tıklayın.
+13. **İleri**’ye tıklayın.
 
     ![Sipariş ayrıntılarını belirtin](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 

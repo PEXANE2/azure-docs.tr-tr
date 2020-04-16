@@ -3,20 +3,20 @@ title: Metinden metne konuşma için otomatik dil algılama nasıl kullanılır?
 titleSuffix: Azure Cognitive Services
 description: Konuşma SDK metin konuşma için otomatik dil algılama destekler. Bu özelliği kullanırken, sağlanan ses verilen dil listesiyle karşılaştırılır ve en olası eşleşme belirlenir. Döndürülen değer daha sonra metin konuşma için kullanılan dil modelini seçmek için kullanılabilir.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.author: dapine
+ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5592fc3e50db892c6abb09fc2516b8e1c03f0f03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239596"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402197"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Metinden metne konuşma için otomatik dil algılama
 

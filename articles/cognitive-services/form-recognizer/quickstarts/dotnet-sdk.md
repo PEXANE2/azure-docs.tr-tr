@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b9db9daf06b59e1a26a9b03a93aff63984841862
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8d05f5ad07f9b3affba9442d6caa6e63162b813c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77118354"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399416"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>Quickstart: .NET için Form Recognizer istemci kitaplığı
 
@@ -42,7 +42,7 @@ ms.locfileid: "77118354"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-Deneme aboneliğinizden veya kaynağınızdan bir anahtar aldıktan sonra, sırasıyla ve `FORM_RECOGNIZER_KEY` sırasıyla anahtar ve `FORM_RECOGNIZER_ENDPOINT`bitiş noktası için [ortam değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
+Bir anahtar ve bitiş noktası aldıktan sonra, sırasıyla ve sırasıyla `FORM_RECOGNIZER_ENDPOINT`anahtar `FORM_RECOGNIZER_KEY` ve bitiş noktası için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 
 ### <a name="create-a-new-c-application"></a>Yeni bir C# uygulaması oluşturma
 
@@ -99,12 +99,6 @@ Aşağıdaki sınıflar Form Tanıyır SDK'nın ana işlevini işler.
 |[ExtractedPage](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.extractedpage?view=azure-dotnet-preview)| Bu sınıf, tek bir form belgesinden çıkarılan tüm verileri temsil eder.|
 
 ## <a name="code-examples"></a>Kod örnekleri
-
-<!--
-    Include code snippets and short descriptions for each task you list in the the bulleted list. Briefly explain each operation, but include enough clarity to explain complex or otherwise tricky operations.
-
-    Include links to the service's reference content when introducing a class for the first time
--->
 
 Bu kod parçacıkları, .NET için Form Recognizer istemci kitaplığı ile aşağıdaki görevleri nasıl yapacağınızı gösterir:
 
@@ -193,7 +187,7 @@ Ayrıca, hesabınızdan silmek istediğiniz özel bir model eğittiyseniz, yönt
 Bu hızlı başlangıçta, özel bir model eğitmek ve formları çözümlemek için Form Recognizer .NET istemci kitaplığını kullandınız. Ardından, daha iyi bir eğitim veri seti oluşturmak ve daha doğru modeller üretmek için ipuçları öğrenin.
 
 > [!div class="nextstepaction"]
->[Eğitim verileri kümesi oluşturma](../build-training-data-set.md)
+> [Eğitim verileri kümesi oluşturma](../build-training-data-set.md)
 
 * [Form Tanıma nedir?](../overview.md)
 * Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer)bulunabilir.

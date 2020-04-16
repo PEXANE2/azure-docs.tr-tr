@@ -3,19 +3,19 @@ title: Konuşma Sentezi Biçimlendirme Dili (SSML) - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Metin-konuşma dilinde telaffuz ve prosody kontrol etmek için Konuşma Sentezi Biçimlendirme Dili kullanma.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: dapine
-ms.openlocfilehash: 7d5dd79399b15ade90173a55aeb71dacbc61fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80365809"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399831"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma Sentezi Biçimlendirme Dili (SSML) ile sentezi geliştirin
 
@@ -145,7 +145,7 @@ speech_config.set_property_by_name(
     "SpeechServiceResponse_Synthesis_WordBoundaryEnabled", "false");
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Daha fazla bilgi <a href="https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#setproperty-string--string-" target="_blank"> `setProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>için bkz.
 
@@ -196,7 +196,6 @@ Varsayılan olarak, metinden konuşmaya hizmet, hem standart hem de nöral sesle
 Şu anda, konuşma stili ayarlamaları bu sinirsel sesler için desteklenir:
 * `en-US-AriaNeural`
 * `zh-CN-XiaoxiaoNeural`
-* `pt-BR-FranciscaNeural`
 
 Değişiklikler cümle düzeyinde uygulanır ve stil sese göre değişir. Bir stil desteklenmezse, hizmet konuşmayı varsayılan nötr konuşma stilinde döndürer.
 
@@ -214,18 +213,17 @@ Değişiklikler cümle düzeyinde uygulanır ve stil sese göre değişir. Bir s
 
 Her nöral ses için hangi konuşma stillerinin destekleniyi belirlemek için bu tabloyu kullanın.
 
-| Ses | Stil | Açıklama |
-|-------|------|-------------|
-| `en-US-AriaNeural` | `style="newscast"` | Haber anlatımı için resmi ve profesyonel bir ton ifade eder |
-| | `style="customerservice"` | Müşteri desteği için samimi ve yararlı bir ton ifade eder |
-| | `style="chat"` | Rahat ve rahat bir ton ifade eder |
-| | `style="cheerful"` | Olumlu ve mutlu bir ton ifade eder |
-| | `style="empathetic"` | Bir bakım ve anlayış duygusunu ifade eder |
-| `zh-CN-XiaoxiaoNeural` | `style="newscast"` | Haber anlatımı için resmi ve profesyonel bir ton ifade eder |
-| | `style="customerservice"` | Müşteri desteği için samimi ve yararlı bir ton ifade eder |
-| | `style="assistant"` | Dijital asistanlar için sıcak ve rahat bir ton ifade eder  |
-| | `style="lyrical"` | Duyguları melodik ve duygusal bir şekilde ifade eder |
-| `pt-BR-FranciscaNeural` | `style="cheerful"` | Olumlu ve mutlu bir ton ifade eder |
+| Ses                   | Stil                     | Açıklama                                                 |
+|-------------------------|---------------------------|-------------------------------------------------------------|
+| `en-US-AriaNeural`      | `style="newscast"`        | Haber anlatımı için resmi ve profesyonel bir ton ifade eder |
+|                         | `style="customerservice"` | Müşteri desteği için samimi ve yararlı bir ton ifade eder  |
+|                         | `style="chat"`            | Rahat ve rahat bir ton ifade eder                         |
+|                         | `style="cheerful"`        | Olumlu ve mutlu bir ton ifade eder                         |
+|                         | `style="empathetic"`      | Bir bakım ve anlayış duygusunu ifade eder               |
+| `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Haber anlatımı için resmi ve profesyonel bir ton ifade eder |
+|                         | `style="customerservice"` | Müşteri desteği için samimi ve yararlı bir ton ifade eder  |
+|                         | `style="assistant"`       | Dijital asistanlar için sıcak ve rahat bir ton ifade eder    |
+|                         | `style="lyrical"`         | Duyguları melodik ve duygusal bir şekilde ifade eder         |
 
 **Örnek**
 
@@ -263,15 +261,14 @@ Sözcükler `break` arasında duraklamalar (veya molalar) eklemek veya metinden 
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklatmanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>Zayıf</li><li>orta (varsayılan)</li><li>Güçlü</li><li>x-güçlü</li></ul> | İsteğe bağlı |
 | `time` | Saniye veya milisaniye cinsinden bir duraklamanın mutlak süresini belirtir. Geçerli değerlere `2s` örnek olarak`500` | İsteğe bağlı |
 
-| Gücü | Açıklama |
-|----------|-------------|
-| Yok veya değer sağlanmadıysa | 0 ms |
-| x-zayıf | 250 ms |
-| Zayıf | 500 ms |
-| orta | 750 ms |
-| Güçlü | 1000 ms |
-| x-güçlü | 1250 ms |
-
+| Gücü                      | Açıklama |
+|-------------------------------|-------------|
+| Yok veya değer sağlanmadıysa | 0 ms        |
+| x-zayıf                        | 250 ms      |
+| Zayıf                          | 500 ms      |
+| orta                        | 750 ms      |
+| Güçlü                        | 1000 ms     |
+| x-güçlü                      | 1250 ms     |
 
 **Örnek**
 
@@ -372,9 +369,9 @@ Bazen TTS bir sözcüğü, örneğin bir şirketi veya yabancı adı doğru bir 
 
 **Öznitelikler**
 
-| Öznitelik | Açıklama | Gerekli / İsteğe Bağlı |
-|-----------|-------------|---------------------|
-| `uri` | Harici PLS belgesinin adresi. | Gereklidir. |
+| Öznitelik | Açıklama                               | Gerekli / İsteğe Bağlı |
+|-----------|-------------------------------------------|---------------------|
+| `uri`     | Harici PLS belgesinin adresi. | Gereklidir.           |
 
 **Kullanım**
 
@@ -472,7 +469,7 @@ Prozodik öznitelik değerleri geniş bir aralıkta değişebildiği için, konu
 | Öznitelik | Açıklama | Gerekli / İsteğe Bağlı |
 |-----------|-------------|---------------------|
 | `pitch` | Metnin temel adımını gösterir. Perdeyi şu şekilde ifade edebilirsiniz:<ul><li>Mutlak bir değer, bir sayı olarak ifade "Hz" (Hertz) takip. Örneğin, 600 Hz.</li><li>"+" veya "-" ve ardından "Hz" veya "st" tarafından önce bir sayı olarak ifade edilen ve perdeyi değiştirmek için bir miktar belirten göreli bir değer. Örneğin: +80 Hz veya -2. "St", değişim ünitesinin standart diyatonik ölçekte bir tonun (yarım adım) yarısı olan yarı ton olduğunu gösterir.</li><li>Sabit bir değer:<ul><li>x-düşük</li><li>Düşük</li><li>orta</li><li>yüksek</li><li>x-yüksek</li><li>default</li></ul></li></ul>. | İsteğe bağlı |
-| `contour` | Kontur sinirsel sesler için desteklenmez. Kontur, perdedeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirtilen zaman konumlarında bir dizi hedef olarak temsil edilir. Her hedef parametre çiftleri kümeleri ile tanımlanır. Örnek: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her parametre kümesindeki ilk değer, metin süresinin yüzdesi olarak adım değişikliğinin konumunu belirtir. İkinci değer, göreli bir değer veya pitch için numaralandırma değeri kullanarak perdeyi yükseltecek `pitch`veya düşürecek tutarı belirtir (bkz. | İsteğe bağlı |
+| `contour` | Kontur sinirsel sesler için desteklenmez. Kontur, perdedeki değişiklikleri temsil eder. Bu değişiklikler, konuşma çıkışında belirtilen zaman konumlarında bir dizi hedef olarak temsil edilir. Her hedef parametre çiftleri kümeleri ile tanımlanır. Örneğin: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>Her parametre kümesindeki ilk değer, metin süresinin yüzdesi olarak adım değişikliğinin konumunu belirtir. İkinci değer, göreli bir değer veya pitch için numaralandırma değeri kullanarak perdeyi yükseltecek `pitch`veya düşürecek tutarı belirtir (bkz. | İsteğe bağlı |
 | `range` | Metnin pitch aralığını temsil eden bir değer. Tanımlamak için `range` kullanılan aynı mutlak değerleri, göreli değerleri veya numaralandırma değerlerini kullanarak ifade `pitch`edebilirsiniz. | İsteğe bağlı |
 | `rate` | Metnin konuşma hızını gösterir. Şunları ifade `rate` edebilirsiniz:<ul><li>Varsayılan çarpan olarak hareket eden bir sayı olarak ifade edilen göreli bir değer. Örneğin, *1* değeri, oranhiçbir değişiklik sonuçlanır. *0,5* değeri, oranın yarıya inilmesiyle sonuçlanır. *3* değeri, oranın üçe kaynırla sonuçlanmaktadır.</li><li>Sabit bir değer:<ul><li>x-yavaş</li><li>Yavaş</li><li>orta</li><li>Hızlı</li><li>x-hızlı</li><li>default</li></ul></li></ul> | İsteğe bağlı |
 | `duration` | Konuşma sentezi (TTS) hizmeti metni saniye veya milisaniye cinsinden okurken, süresinin dolması gereken süre. Örneğin, *2s* veya *1800ms*. | İsteğe bağlı |
@@ -614,9 +611,9 @@ SSML belgesinde yer alan tüm ses şu gereksinimleri karşılamalıdır:
 
 **Öznitelikler**
 
-| Öznitelik | Açıklama | Gerekli / İsteğe Bağlı |
-|-----------|-------------|---------------------|
-| `src` | Ses dosyasının konumunu/URL'sini belirtir. | SSML belgenizdeki ses öğesini kullanıyorsanız gereklidir. |
+| Öznitelik | Açıklama                                   | Gerekli / İsteğe Bağlı                                        |
+|-----------|-----------------------------------------------|------------------------------------------------------------|
+| `src`     | Ses dosyasının konumunu/URL'sini belirtir. | SSML belgenizdeki ses öğesini kullanıyorsanız gereklidir. |
 
 **Örnek**
 

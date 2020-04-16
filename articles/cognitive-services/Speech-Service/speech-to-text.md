@@ -3,19 +3,19 @@ title: Konuşmadan metne - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Konuşmadan metne özellik, ses akışlarının metin içine gerçek zamanlı olarak transkripsiyonu yapılmasını sağlar. Uygulamalarınız, araçlarınız veya aygıtlarınız bu metin girişinde tüketebilir, görüntüleyebilir ve işlem yapabilir. Bu hizmet metinden konuşmaya (konuşma sentezi) ve konuşma çeviri özellikleriyle sorunsuz bir şekilde çalışır.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.author: dapine
-ms.openlocfilehash: 2854f4e8d91164c8ae1f35761d6f605cae725245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: e0aea7e55381e9571b156701699f5f45315bb384
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80052644"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399688"
 ---
 # <a name="what-is-speech-to-text"></a>Konuşmayı metne dönüştürme nedir?
 

@@ -3,21 +3,21 @@ title: Özel Konuşma için veri hazırlama - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
 description: Microsoft konuşma tanımanın doğruluğunu sınarken veya özel modellerinizi eğitirken ses ve metin verilerine ihtiyacınız vardır. Bu sayfada, veri türlerini, nasıl kullanılacağını ve bunları yönetmeyi ele alıyoruz.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.author: dapine
-ms.openlocfilehash: d6e377ca4f33c0160267b23daaaaef5e07c271bb
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398694"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402135"
 ---
-# <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için veri hazırlama
+# <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
 Microsoft konuşma tanımanın doğruluğunu sınarken veya özel modellerinizi eğitirken ses ve metin verilerine ihtiyacınız vardır. Bu sayfada, veri türlerini, nasıl kullanılacağını ve bunları yönetmeyi ele alıyoruz.
 
@@ -98,7 +98,7 @@ Ses dosyalarınızı işlerken Microsoft'un metin konuşma doğruluğunun doğru
 
 Sözcük silme veya değiştirme gibi sorunları gidermek için, tanınmayı geliştirmek için önemli miktarda veri gerekir. Genellikle, yaklaşık 10 ila 1.000 saatlik ses için kelime kelime transkripsiyonları sağlaması önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
-  Örnek:
+  Örneğin:
 ```
   speech01.wav  speech recognition is awesome
   speech02.wav  the quick brown fox jumped all over the place
@@ -182,5 +182,5 @@ Telaffuzlar için ilgili veri dosyanızın doğru biçimlendirilmiş olduğundan
 
 * [Verilerinizi inceleyin](how-to-custom-speech-inspect-data.md)
 * [Verilerinizi değerlendirin](how-to-custom-speech-evaluate-data.md)
-* [Modelinizi eğitme](how-to-custom-speech-train-model.md)
+* [Modelinizi eğitin](how-to-custom-speech-train-model.md)
 * [Modelinizi dağıtın](how-to-custom-speech-deploy-model.md)

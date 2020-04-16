@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 04/19/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: e8117eb1b521dc2e3fa9eaca1316e0b9c14f0e98
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c5ea54a33ee027de0b11c59c53085b9d20ca6a3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129466"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392828"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-azure-resource-manager-template"></a>Hızlı başlatma: Azure Kaynak Yöneticisi şablonu kullanarak Bir Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -30,7 +30,7 @@ CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu hızlı başlatma,
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Kaynak Yöneticisi şablonu kullanarak bir AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Etkin Dizin hizmet ilkesi sağlarsınız. Bu kaynaklardan herhangi birini istiyorsanız, aşağıdaki bölüme bakın; aksi takdirde [AKS küme](#create-an-aks-cluster) oluşturma bölümüne atlayın.
+Kaynak Yöneticisi şablonu kullanarak bir AKS kümesi oluşturmak için bir SSH ortak anahtarı ve Azure Etkin Dizin hizmet ilkesi sağlarsınız.  Alternatif olarak, izinler için hizmet sorumlusu yerine yönetilen bir [kimlik](use-managed-identity.md) kullanabilirsiniz. Bu kaynaklardan herhangi birini istiyorsanız, aşağıdaki bölüme bakın; aksi takdirde [AKS küme](#create-an-aks-cluster) oluşturma bölümüne atlayın.
 
 ### <a name="create-an-ssh-key-pair"></a>SSH anahtar çifti oluşturma
 
@@ -48,7 +48,7 @@ SSH anahtarları oluşturma hakkında daha fazla bilgi için [Azure'da kimlik do
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller. Varsayılan olarak, bu hizmet ilkesi bir yıl için geçerlidir.
+Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller. Varsayılan olarak, bu hizmet ilkesi bir yıl için geçerlidir. Hizmet sorumlusu yerine yönetilen bir kimlik kullanabileceğinizi unutmayın. Daha fazla bilgi için [bkz.](use-managed-identity.md)
 
 ```azurecli-interactive
 az ad sp create-for-rbac --skip-assignment
@@ -82,7 +82,7 @@ Daha fazla AKS örneği için [AKS quickstart şablonları][aks-quickstart-templ
 
 1. Aşağıdaki görüntüyü seçerek Azure'da oturum açıp bir şablon açın.
 
-    [![Azure'a Dağıt](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
+    [![Azure’a dağıtma](./media/kubernetes-walkthrough-rm-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-aks%2Fazuredeploy.json)
 
 2. Aşağıdaki değerleri seçin veya girin.
 
@@ -281,7 +281,7 @@ az group delete --name myResourceGroup --yes --no-wait
 ```
 
 > [!NOTE]
-> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete].
+> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete]. Yönetilen bir kimlik kullandıysanız, kimlik platform tarafından yönetilir ve kaldırılmasını gerektirmez.
 
 ## <a name="get-the-code"></a>Kodu alma
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/20/2020
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 65fd9d06c8b25e0aff94429f8eb95bb922da330c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: b6f987eb283edea7f2d8e6b207b5b4e5b14f9120
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77505915"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393195"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid nedir?
 
@@ -32,22 +32,21 @@ Bu resim, Olay Izgara'sının kaynakları ve işleyicileri nasıl bağdaştırd�
 
 ## <a name="event-sources"></a>Olay kaynakları
 
-Kaynağın özellikleriyle ilgili tüm ayrıntılar ve ilgili makaleler için bkz. [olay kaynakları](event-sources.md). Şu anda Event Grid’e olay gönderme özelliği aşağıdaki Azure hizmetleri tarafından desteklenmektedir:
+Şu anda Event Grid’e olay gönderme özelliği aşağıdaki Azure hizmetleri tarafından desteklenmektedir:
 
-* [Azure abonelikleri (yönetim işlemleri)](event-sources.md#azure-subscriptions)
-* [Konteyner Kayıt Defteri](event-sources.md#container-registry)
-* [Özel konular](event-sources.md#custom-topics)
-* [Etkinlik Hub'ları](event-sources.md#event-hubs)
-* [IoT Hub](event-sources.md#iot-hub)
-* [Anahtar Vault (önizleme)](event-sources.md#key-vault-preview)
-* [Media Services](event-sources.md#media-services)
-* [Kaynak grupları (yönetim işlemleri)](event-sources.md#resource-groups)
-* [Service Bus](event-sources.md#service-bus)
-* [Depolama Blobu](event-sources.md#storage)
-* [Azure Haritalar](event-sources.md#maps)
-* [Uygulama Yapılandırması](event-sources.md#app-configuration)
-* [Sinyal R](event-sources.md#azure-signalr)
-* [Makine Öğrenimi](event-sources.md#azure-machine-learning)
+- [Azure Uygulama Yapılandırması](event-schema-app-configuration.md)
+- [Azure Blob Depolama](event-schema-blob-storage.md)
+- [Azure Kapsayıcı Kayıt Defteri](event-schema-container-registry.md)
+- [Azure Event Hubs](event-schema-event-hubs.md)
+- [Azure IoT Hub](event-schema-iot-hub.md)
+- [Azure Key Vault](event-schema-key-vault.md)
+- [Azure Machine Learning](event-schema-machine-learning.md)
+- [Azure Haritalar](event-schema-azure-maps.md)
+- [Azure Medya Hizmetleri](event-schema-media-services.md)
+- [Azure kaynak grupları](event-schema-resource-groups.md)
+- [Azure Service Bus](event-schema-service-bus.md)
+- [Azure SignalR](event-schema-azure-signalr.md)
+- [Azure abonelikleri](event-schema-subscriptions.md)
 
 ## <a name="event-handlers"></a>Olay işleyicileri
 
@@ -55,12 +54,12 @@ Kaynağın özellikleriyle ilgili tüm ayrıntılar ve ilgili makaleler için bk
 
 * [Azure Otomasyonu](event-handlers.md#azure-automation)
 * [Azure İşlevleri](event-handlers.md#azure-functions)
-* [Etkinlik Hub'ları](event-handlers.md#event-hubs)
+* [Event Hubs](event-handlers.md#event-hubs)
 * [Karma Bağlantılar](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
 * [Güç Otomatikleştirme (Eskiden Microsoft Akışı olarak bilinir)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Service Bus](event-handlers.md#service-bus)
-* [Sıra Depolama](event-handlers.md#queue-storage)
+* [Kuyruk Depolama](event-handlers.md#queue-storage)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>Kavramlar

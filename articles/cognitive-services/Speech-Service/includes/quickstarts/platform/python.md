@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
-ms.author: dapine
-ms.openlocfilehash: 327000173b4c5c378f60c76eb1a24bd155901671
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.author: trbye
+ms.openlocfilehash: 924532318fc6638059bbe9eef0065349463523ae
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80666905"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400864"
 ---
 Bu kılavuz, Python için [Konuşma SDK'sının](~/articles/cognitive-services/speech-service/speech-sdk.md) nasıl yüklenir olduğunu gösterir. Paket adının kendi başınızın başlamasını istiyorsanız, `pip install azure-cognitiveservices-speech`çalıştırın.
 

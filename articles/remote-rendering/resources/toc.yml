@@ -1,6 +1,10 @@
+- name: Sürüm notları
+  href: 'https://github.com/Azure/azure-remote-rendering/releases'
 - name: Araçlar
   href: tools/toc.yml
 - name: Sorun giderme
   href: troubleshoot.md
 - name: Ürün geri bildirimi sağlama
   href: 'https://feedback.azure.com/forums/928696-azure-remote-rendering'
+- name: Stack Overflow
+  href: 'https://stackoverflow.com/questions/tagged/azure-remote-rendering'

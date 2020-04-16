@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/02/2020
-ms.author: dapine
-ms.openlocfilehash: 9d4dcdfa9fd1619a74af4dfff5b12726abef059b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.author: trbye
+ms.openlocfilehash: d654b8f4b775cb90382404b2f97d4cca0c7b7a04
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272126"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400326"
 ---
 Konuşma sentezi bu temel bilgi ile, Konuşma SDK içinde ortak işlevsellik ve görevler hakkında bilgi edinmek için temelleri keşfetmeye devam edin.
 

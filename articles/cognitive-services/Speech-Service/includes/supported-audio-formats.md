@@ -1,15 +1,15 @@
 ---
-author: IEvangelist
+author: trevorbye
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/16/2020
-ms.author: dapine
-ms.openlocfilehash: 69856734e3b15886df1a3b2e876bffddbd042b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 2aec3cc96e123da57166f1c304254d520a96e156
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80374050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81400445"
 ---
 Varsayılan ses akış biçimi WAV 'dur (16kHz veya 8kHz, 16-bit ve mono PCM). WAV / PCM dışında, aşağıda listelenen sıkıştırılmış giriş biçimleri de desteklenmektedir. Aşağıda listelenen biçimleri etkinleştirmek için [ek yapılandırma](../how-to-use-codec-compressed-audio-input-streams.md) gereklidir.
 

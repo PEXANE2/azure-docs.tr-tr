@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: e91e5e2701b02ab4c705cd80117dfc7689c7d054
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: e4ac5a953b5d88d0074c3cfb7f1bd45331577238
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668446"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392797"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak bir Azure Kubernetes Hizmeti (AKS) kümesini dağıtma
 
@@ -25,7 +25,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -52,6 +52,8 @@ AKS kümesi oluşturmak için aşağıdaki adımları tamamlayın:
 5. Kimlik **Doğrulama** sayfasında, aşağıdaki seçenekleri yapılandırın:
     - **Hizmet Sorumlusu** alanını **(yeni) varsayılan hizmet ilkesiyle**bırakarak yeni bir hizmet ilkesi oluşturun. Veya varolan bir tanesini kullanmak için *Hizmet Atamasını Yapıla'yı* seçebilirsiniz. Varolan bir tane kullanıyorsanız, SPN istemci kimliğini ve sırrını sağlamanız gerekir.
     - Kubernetes rol tabanlı erişim denetimleri (RBAC) seçeneğini etkinleştirin. Bu, AKS kümenizde dağıtılan Kubernetes kaynaklarına erişim üzerinde daha ince taneli denetim sağlar.
+
+    Alternatif olarak, hizmet sorumlusu yerine yönetilen bir kimlik kullanabilirsiniz. Daha fazla bilgi için yönetilen kimlikleri n için [kullanın.](use-managed-identity.md)
 
 Varsayılan olarak, *Temel* ağ kullanılır ve kapsayıcılar için Azure Monitor etkinleştirilir. Doğrulama tamamlandığında **Gözden Geçir + oluştur'u** ve ardından **Oluştur'u** tıklatın.
 
@@ -250,7 +252,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 ```
 
 > [!NOTE]
-> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete].
+> Kümeyi sildiğinizde, AKS kümesi tarafından kullanılan Azure Active Directory hizmet sorumlusu kaldırılmaz. Hizmet sorumlusunu kaldırma adımları için bkz. [AKS hizmet sorumlusuyla ilgili önemli noktalar ve silme][sp-delete]. Yönetilen bir kimlik kullandıysanız, kimlik platform tarafından yönetilir ve kaldırılmasını gerektirmez.
 
 ## <a name="get-the-code"></a>Kodu alma
 

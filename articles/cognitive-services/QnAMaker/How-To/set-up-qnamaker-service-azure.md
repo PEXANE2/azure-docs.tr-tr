@@ -3,12 +3,12 @@ title: QnA Maker hizmeti ayarlama - QnA Maker
 description: Herhangi bir QnA Maker bilgi tabanı oluşturmadan önce Azure'da bir QnA Maker hizmeti ayarlamanız gerekir. Abonelikte yeni kaynaklar oluşturma yetkisi olan herkes bir QnA Maker hizmeti ayarlayabilir.
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 8ec57f441ba58227e45398c35c7931dc75fa658f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563a56fdb288568e7fe667fa54658400064a560f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131727"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402981"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker kaynaklarını yönetme
 
@@ -89,7 +89,7 @@ Uç nokta tuşları [QnA Maker portalından](https://qnamaker.ai)yönetilebilir.
     >[!NOTE]
     >Anahtarlarınızı açığa çıktığını düşünüyorsanız yenileyin. Bu, istemci uygulamanız veya bot kodunuzda ilgili değişiklikler gerektirebilir.
 
-### <a name="upgrade-qna-maker-sku"></a>QnA Maker SKU yükseltme
+## <a name="upgrade-qna-maker-sku"></a>QnA Maker SKU yükseltme
 
 Bilgi tabanınızda, mevcut seviyenizin ötesinde daha fazla soru ve yanıt almak istediğinizde, QnA Maker hizmet fiyatlandırma katmanınızı yükseltin.
 
@@ -103,7 +103,7 @@ QnA Maker yönetimi SKU yükseltmek için:
 
     ![QnA Maker fiyatlandırma](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-pricing-page.png)
 
-### <a name="upgrade-app-service"></a>Uygulama Hizmetini Yükseltme
+## <a name="upgrade-app-service"></a>Uygulama Hizmetini Yükseltme
 
  Bilgi tabanınızın müşteri uygulamanızdan daha fazla istek sunması gerektiğinde, Uygulama Hizmeti fiyatlandırma katmanınızı yükseltin.
 
@@ -113,7 +113,7 @@ Azure portalındaki Uygulama Hizmeti kaynağına gidin ve gerektiğinde **Ölçe
 
 ![QnA Maker Uygulama Hizmeti ölçeği](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-appservice-scale.png)
 
-### <a name="upgrade-the-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetini yükseltme
+## <a name="upgrade-the-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmetini yükseltme
 
 Çok sayıda bilgi tabanına sahip olmayı planlıyorsanız, Azure Bilişsel Arama hizmeti fiyatlandırma katmanınızı yükseltin.
 
@@ -197,7 +197,7 @@ Yayınlanan bir bilgi tabanı için QnA Maker tahmin çalışma süresine hizmet
 
 Trafik olmadığında bile tahmin bitiş noktası uygulamasını yüklü tutmak için boşta kalan uygulamayı her zaman adabına ayarlayın.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. QnA Maker kaynağınızın uygulama hizmetini arayın ve seçin. QnA Maker kaynağıyla aynı ada sahip olacak, ancak farklı bir Uygulama Hizmeti **türüne** sahip olacaktır.
 1. **Ayarları** bul ardından **Yapılandırma'yı**seçin.
 1. Yapılandırma bölmesinde **Genel ayarları**seçin, ardından **Her Zaman'ı**bulun ve değer olarak **Açık'ı** seçin.

@@ -3,19 +3,19 @@ title: 'SDK C konuşmasını kullanarak konuşma niyetlerini nasıl tanır? #'
 titleSuffix: Azure Cognitive Services
 description: Bu kılavuzda, C# için Konuşma SDK'sını kullanarak konuşmaniyetlerini nasıl tanıyacağınızı öğrenirsiniz.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.author: dapine
-ms.openlocfilehash: 5d3c77c307739f9014010a592aa496a1cc83b333
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: trbye
+ms.openlocfilehash: 41ebcb7b44ea88af06a30a611960fd8bb0ceddee
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77120049"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402214"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>C için Konuşma SDK kullanarak konuşma niyetleri tanımak için nasıl #
 

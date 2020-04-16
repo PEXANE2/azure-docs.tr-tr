@@ -3,19 +3,19 @@ title: 'Öğretici: Sesler Konuşma SDK kullanarak bot etkinleştirmek - Konuşm
 titleSuffix: Azure Cognitive Services
 description: Bu eğitimde, Microsoft Bot Framework'ü kullanarak bir Echo Bot oluşturur, Azure'a dağıtacak ve Bot-Framework Direct Line Speech kanalına kaydedeceksiniz. Ardından, Botunuzla konuşmanızı ve yanıt verdiğini duymanızı sağlayan windows için örnek bir istemci uygulaması yapılandırırsınız.
 services: cognitive-services
-author: IEvangelist
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: dapine
-ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.author: trbye
+ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397891"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399470"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: Konuşma SDK kullanarak botunuzu sesli etkinleştirin
 
@@ -56,7 +56,7 @@ Bu öğreticiyi tamamlamak için gerekenler şunlardır:
 
 - Çalışan mikrofonve hoparlörlere (veya kulaklıklara) sahip bir Windows 10 bilgisayar
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) veya üstü
-- [.NET Core SDK](https://dotnet.microsoft.com/download) sürüm 2.1 veya sonrası
+- [.NET Framework Runtime 4.6.1](https://dotnet.microsoft.com/download) veya üzeri
 - Bir Azure hesabı. [Ücretsiz kaydolun.](https://azure.microsoft.com/free/ai/)
 - [Bir GitHub](https://github.com/) hesabı
 - [Windows için Git](https://git-scm.com/download/win)
@@ -164,7 +164,7 @@ Bu noktada, kaynak grubunuzun **(SpeechEchoBotTutorial-ResourceGroup)** iki kayn
 1. Bot [Framework Emülatör](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) sürümünü 4.3.0 veya daha büyük bir şekilde yükleyin
 2. Bot Framework Emülatörü başlatın ve botunuzu açın:
    * **Dosya** -> **Açık Bot**.
-3. Botunuzun URL'sini girin. Örnek:
+3. Botunuzun URL'sini girin. Örneğin:
 
    ```
    http://localhost:3978/api/messages
@@ -221,7 +221,7 @@ Botunuzun web soketlerini kullanarak Doğrudan Hat Konuşması kanalıyla ileti�
 2. Azure **hizmetleri** gezintisinde, **Ayarlar**altında **Yapılandırma'yı**tıklatın.
 3. Genel **ayarlar** sekmesini seçin.
 4. **Web soketleri** için geçişi bulun ve **A'ya**ayarlayın.
-5. **Kaydet**'e tıklayın.
+5. **Kaydet**’e tıklayın.
 
 > [!TIP]
 > Hizmeti durdurmak veya yeniden başlatmak için Azure Uygulama Hizmeti sayfanızın üst kısmındaki denetimleri kullanabilirsiniz. Sorun giderme de kullanışlı olabilir.
@@ -267,28 +267,32 @@ Bu noktada, Azure portalında Kaynak Grubu **SpeechEchoBotTutorial-ResourceGroup
    * Daha **fazla kanal**arayın, doğrudan **satır konuşma**bulmak ve tıklatın.
    * **Doğrudan satır Konuşmasını Yapılandır**başlıklı sayfadaki metni gözden geçirin ve "Bilişsel hizmet hesabı" etiketli açılır menüyü genişletin.
    * Botunuzu konuşma aboneliği anahtarınızla ilişkilendirmek için menüden daha önce oluşturduğunuz konuşma kaynağını (örneğin, **SpeechEchoBotTutorial-Speech)** seçin.
-   * **Kaydet**'e tıklayın.
+   * **Kaydet**’e tıklayın.
 
 1. Bot **yönetimi** gezintisinden **Ayarlar'ı**tıklatın.
    * **Akış Bitiş Noktasını Etkinleştir**etiketli kutuyu işaretleyin. Bu, botunuz ve Doğrudan Hat Konuşma kanalı arasında web soketleri üzerine inşa edilmiş bir iletişim protokolü etkinleştirmek için gereklidir.
-   * **Kaydet**'e tıklayın.
+   * **Kaydet**’e tıklayın.
 
 > [!TIP]
 > Daha fazla bilgi edinmek istiyorsanız, [bkz.](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0) Bu sayfa ek bilgiler ve bilinen sorunları içerir.
 
-## <a name="build-the-windows-voice-assistant-client"></a>Windows Voice Assistant İstemcisini Oluşturun
+## <a name="run-the-windows-voice-assistant-client"></a>Windows Ses Yardımcısı İstemciyi Çalıştırma
 
-Bu adımda, Windows Voice Assistant Client'ı oluşturacaksınız. İstemci, Doğrudan Hat Konuşması kanalını kullanarak botunla iletişimi yönetmek için [Konuşma SDK'sını](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) kullanan C# bir Windows Presentation Foundation (WPF) uygulamasıdır. Özel bir istemci uygulaması yazmadan önce botunuzun etkileşimini sağlamak ve test etmek için kullanın.
+Bu adımda, Windows Voice Assistant Client'ı çalıştırın. İstemci, Doğrudan Hat Konuşması kanalını kullanarak botunla iletişimi yönetmek için [Konuşma SDK'sını](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk) kullanan C# bir Windows Presentation Foundation (WPF) uygulamasıdır. Özel bir istemci uygulaması yazmadan önce botunuzun etkileşimini sağlamak ve test etmek için kullanın. Açık kaynak, böylece ya çalıştırılabilir indirebilir ve çalıştırabilirsiniz, ya da kendiniz inşa.
 
 Windows Voice Assistant İstemci, botunuzla bağlantıyı yapılandırmanızı, metin konuşmasını görüntülemenizi, Bot-Framework etkinliklerini JSON biçiminde görüntülemenizi ve uyarlanabilir kartları görüntülemenizi sağlayan basit bir kullanıcı arabirimi içerir. Ayrıca özel anahtar kelimelerin kullanımını destekler. Bu istemciyi, botunuzla konuşmak ve sesli yanıt almak için kullanırsınız.
 
 Devam etmeden önce mikrofonunuzun ve hoparlörlerinizin etkin ve çalışır olduğundan emin olun.
 
 1. [Windows Voice Assistant İstemci](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/blob/master/clients/csharp-wpf/README.md)için GitHub deposuna gidin.
-2. Depoyu klonlamak, projeyi oluşturmak, istemciyi yapılandırmak ve istemciyi başlatmak için sağlanan yönergeleri izleyin.
-3. **Yeniden Bağlan'ı** tıklatın ve iletiyi gördüğünüzden emin olun **Mikrofon düğmesine basın veya botunuzla konuşmaya başlamak için yazın.**
-4. Hadi test edelim. Mikrofon düğmesini tıklatın ve İngilizce birkaç kelime konuşun. Siz konuşurken tanınan metin görünür. Konuşmayı bitirdiğinde, bot kendi sesiyle cevap verecektir ve "yankı" diyerek tanınan sözcükleri takip eder.
-5. Botla iletişim kurmak için metni de kullanabilirsiniz. Alt takimetini yazman. 
+1. Ya orada verilen yönergeleri izleyin
+   * çalıştırılabilir çalıştırılabilir içeren bir ZIP paketi indirmek veya
+   * depoyu klonlayarak ve projeyi oluşturarak, yürütülebilir oluşturabilirsiniz.
+
+1. İstemci uygulamasını başlatın ve yapılandırın.
+1. **Yeniden Bağlan'ı** tıklatın ve iletiyi gördüğünüzden emin olun **Mikrofon düğmesine basın veya botunuzla konuşmaya başlamak için yazın.**
+1. Hadi test edelim. Mikrofon düğmesini tıklatın ve İngilizce birkaç kelime konuşun. Siz konuşurken tanınan metin görünür. Konuşmayı bitirdiğinde, bot kendi sesiyle cevap verecektir ve "yankı" diyerek tanınan sözcükleri takip eder.
+1. Botla iletişim kurmak için metni de kullanabilirsiniz. Alt takimetini yazman. 
 
 ### <a name="troubleshooting-errors-in-windows-voice-assistant-client"></a>Windows Voice Assistant İstemci'deki sorun giderme hataları
 
@@ -425,7 +429,7 @@ Artık botta gerekli değişikliği yaptığınıza göre, bir sonraki adım bun
 2. Önceki dağıtım yapılandırmanız zaten varsayılan olarak yüklendi. **EchoBot20190805125647**yanında **Yayımla'yı** tıklatın - Web Dağıtım .
 3. **Yayımla Başarılı** İletisi Visual Studio çıkış penceresinde görünür ve "Botunhazır!" mesajıyla bir web sayfası açılır.
 4. Windows Voice Assistant Client uygulamasını açın, ayarlar düğmesine tıklayın (sağ üst vites `de-de` simgesi) ve Dil alanında hala var olduğundan emin olun.
-5. Yeni dağıtılan botunuzla yeniden bağlantı kurmak, yeni dilde konuşmak ve yeni sesle bu dilde bot yanıtı nızı duymak için [Windows Voice Assistant Client](#build-the-windows-voice-assistant-client) İstemcisini Oluştur'daki yönergeleri izleyin.
+5. Yeni dağıtılan botunuzla yeniden bağlantı kurmak, yeni dilde konuşmak ve yeni sesle bu dilde bot yanıtı nızı duymak için [Windows Voice Assistant Client'ı Çalıştır'daki](#run-the-windows-voice-assistant-client) yönergeleri izleyin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
