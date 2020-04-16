@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: f2f6be1022a7100a23f49534f2c18fc951d56284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255515"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393699"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları
 
@@ -117,8 +117,8 @@ Aşağıdaki tablo, birinci sınıf performans bloğu blob depolama ve sıcak, s
 
 |                                           | **Üstün performans**   | **Sıcak katman** | **Serin katman**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
-| **Kullanılabilir -lik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilir -lik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
 | **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
 | **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün
@@ -141,7 +141,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portalı ve powershell kullanılarak
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabının varsayılan hesap erişim katmanını değiştirme
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Azure portalında **Tüm Kaynakları**arayın ve seçin.
 
@@ -155,7 +155,7 @@ Bu bölümde, aşağıdaki senaryolar Azure portalı ve powershell kullanılarak
 
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Aşağıdaki PowerShell komut dosyası hesap katmanını değiştirmek için kullanılabilir. Değişken, `$rgName` kaynak grup adınız ile başharfe alınmalıdır. Değişken, `$accountName` depolama hesabı adınız ile başharfe bürünmelidir. 
 ```powershell
 #Initialize the following with your resource group and storage account names
@@ -169,7 +169,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>GPv2 veya Blob depolama hesabındaki bir lekenin katmanını değiştirme
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Azure portalında **Tüm Kaynakları**arayın ve seçin.
 
@@ -185,7 +185,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 Aşağıdaki PowerShell komut dosyası blob katmanını değiştirmek için kullanılabilir. Değişken, `$rgName` kaynak grup adınız ile başharfe alınmalıdır. Değişken, `$accountName` depolama hesabı adınız ile başharfe bürünmelidir. Değişken, `$containerName` kapsayıcı adınız ile başharfe alınmalıdır. Değişken, `$blobName` blob adınız ile başharfe alınmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
@@ -199,7 +199,7 @@ $storageAccount =Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountN
 $ctx = $storageAccount.Context
 
 #Select the blob from a container
-$blobs = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $context
+$blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $ctx
 
 #Change the blob’s access tier to archive
 $blob.ICloudBlob.SetStandardBlobTier("Archive")
@@ -234,7 +234,7 @@ Evet. Hesap düzeyinde ayarlanan **Erişim Katmanı** özniteliği, açık bir a
 
 **Blob veya GPv2 depolama hesabımın varsayılan erişim katmanını değiştirebilir miyim?**
 
-Evet, depolama hesabında **Access katmanı** özniteliğini ayarlayarak varsayılan hesap katmanını değiştirebilirsiniz. Hesap katmanını değiştirmek, hesapta depolanan açık bir katman kümesi olmayan tüm nesneler için geçerlidir (örneğin, **Sıcak (çıkarılan)** veya **Cool (çıkarılan)**). Hesap katmanını sıcaktan soğuğa doğru karıştırmak, yalnızca GPv2 hesaplarında belirli bir katman olmadan tüm bloblar için yazma işlemleri (10.000'de) ve cool'dan sıcak akçelere doğru hem okuma işlemleri (10.000'de) hem de Blob depolamadaki tüm lekeler için veri alma (GB başına) ücretleri ve GPv2 hesapları.
+Evet, depolama hesabında **Access katmanı** özniteliğini ayarlayarak varsayılan hesap katmanını değiştirebilirsiniz. Hesap katmanını değiştirmek, hesapta depolanan açık bir katman kümesi olmayan tüm nesneler için geçerlidir (örneğin, **Sıcak (çıkarılan)** veya **Cool (çıkarılan)**). Yalnızca GPv2 hesaplarında belirli bir katman olmadan tüm bloblar için hesap katmanını sıcaktan soğuğa (10.000'de) yapıştırmak ve hem okuma işlemleri (10.000'de) hem de Blob depolama ve GPv2 hesaplarındaki tüm lekeler için veri alma (GB başına) ücretleri ne de cool'dan sıcak ait lere yapıştırMak.
 
 **Varsayılan hesap erişim katmanımı arşiv olarak ayarlayabilir miyim?**
 

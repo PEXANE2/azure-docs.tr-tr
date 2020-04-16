@@ -5,18 +5,20 @@ description: Azure Kubernetes Hizmeti (AKS) kümesi için hizmet sorumlusu veya 
 services: container-service
 ms.topic: article
 ms.date: 03/11/2019
-ms.openlocfilehash: 0203321af32bcc2ae70b726737b85870d08be86f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 8420771e32aa792aa79a07fdf4362ad0d9b45d48
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886764"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392626"
 ---
 # <a name="update-or-rotate-the-credentials-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) kimlik bilgilerini güncelleştirme veya döndürme
 
 Varsayılan olarak, AKS kümeleri bir yıllık son kullanma süresi olan bir hizmet ilkesiyle oluşturulur. Son kullanma tarihine yaklaştıkça, hizmet ilkesini ek bir süre uzatmak için kimlik bilgilerini sıfırlayabilirsiniz. Ayrıca, kimlik bilgilerini tanımlı bir güvenlik ilkesinin parçası olarak güncelleştirmek veya döndürmek isteyebilirsiniz. Bu makalede, bir AKS kümesi için bu kimlik bilgileri nasıl güncelleştirileştirilir.
 
-[AKS kümenizi Azure Etkin Dizini ile tümleştirmiş][aad-integration]ve kümeniz için kimlik doğrulama sağlayıcısı olarak kullanabilirsiniz. Bu durumda kümeniz, AAD Server Uygulaması ve AAD İstemci Uygulaması için oluşturulan 2 kimlik daha olacak sayılsa, bu kimlik bilgilerini de sıfırlayabilirsiniz. 
+[AKS kümenizi Azure Etkin Dizini ile tümleştirmiş][aad-integration]ve kümeniz için kimlik doğrulama sağlayıcısı olarak kullanabilirsiniz. Bu durumda kümeniz, AAD Server Uygulaması ve AAD İstemci Uygulaması için oluşturulan 2 kimlik daha olacak sayılsa, bu kimlik bilgilerini de sıfırlayabilirsiniz.
+
+Alternatif olarak, hizmet sorumlusu yerine izinler için yönetilen bir kimlik kullanabilirsiniz. Yönetilen kimliklerin yönetilmesi hizmet ilkelerinden daha kolaydır ve güncelleştirmeler veya döndürmeler gerektirmez. Daha fazla bilgi için [bkz.](use-managed-identity.md)
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 

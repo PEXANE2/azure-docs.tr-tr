@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: acba378badb41324b2124b84833407da920a0e00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78190067"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392888"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor ile Azure AD B2C'yi izleyin
 
@@ -84,8 +84,8 @@ Azure AD kiracınızda **(Müşteri)** bulunan aylak, teklifiniz için aşağıd
 
 Azure Kaynak Yöneticisi şablonu ve parametre dosyalarını indirin:
 
-- [rgDelegeKaynak Yönetimi.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
-- [rgDelegeDResourceManagement.parameters.json](https://raw.githubusercontent.com/Azure/Azure-Lighthouse-samples/master/Azure-Delegated-Resource-Management/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
+- [rgDelegeKaynak Yönetimi.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
+- [rgDelegeDResourceManagement.parameters.json](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
 Ardından, parametreler dosyasını daha önce kaydettiğiniz değerlerle güncelleştirin. Aşağıdaki JSON snippet, Azure Kaynak Yöneticisi şablon parametreleri dosyasının bir örneğini gösterir. Bunun `authorizations.value.roleDefinitionId`için, *Katılımcı rolü*için [yerleşik](../role-based-access-control/built-in-roles.md) rol `b24988ac-6180-42a0-ab88-20f7382dd24c`değerini kullanın .
 
@@ -223,7 +223,7 @@ Azure portalında [tanılama ayarları oluşturmaya](../active-directory/reports
 
 Azure AD B2C etkinlik günlükleri için izleme ayarlarını yapılandırmak için:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Portal araç çubuğundaki **Dizin + Abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. **Azure Etkin Dizini'ni** seçin
 1. **İzleme** bölümünde **Tanılama ayarları**'nı seçin.
@@ -241,7 +241,7 @@ Azure AD B2C etkinlik günlükleri için izleme ayarlarını yapılandırmak iç
     | Log Analytics’e gönderme | Çalışma alanının adı. |
 
 1. **Denetim Günlükleri** ve **SignInLogs**seçin.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

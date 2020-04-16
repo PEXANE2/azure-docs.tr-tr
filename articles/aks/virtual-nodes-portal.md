@@ -4,12 +4,12 @@ description: Podları çalıştırmak için sanal düğümler kullanan bir Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 7b9127c016fff78a8867dcecbe3260becdf02c65
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 62d8fec4c5c3ff35fb46826cb7118946f66948b2
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259128"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392570"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portalında sanal düğümler kullanmak için bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturun ve yapılandırma
 
@@ -89,7 +89,7 @@ Temel **Bilgiler** sayfasında, aşağıdaki seçenekleri yapılandırın:
 
 ![AKS kümesi oluşturma ve sanal düğümleri etkinleştirme](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-Varsayılan olarak, bir Azure Etkin Dizin hizmet ilkesi oluşturulur. Bu hizmet ilkesi küme iletişimi ve diğer Azure hizmetleriyle tümleştirme için kullanılır.
+Varsayılan olarak, bir Azure Etkin Dizin hizmet ilkesi oluşturulur. Bu hizmet ilkesi küme iletişimi ve diğer Azure hizmetleriyle tümleştirme için kullanılır. Alternatif olarak, hizmet sorumlusu yerine izinler için yönetilen bir kimlik kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md)
 
 Küme, gelişmiş ağ için de yapılandırılmıştır. Sanal düğümler kendi Azure sanal ağ alt ağlarını kullanacak şekilde yapılandırılır. Bu alt ağ, AkS kümesi arasında Azure kaynaklarını bağlamak için izinler devralmıştır. Azure portalı, önceden devralmış alt ağınız yoksa, Azure sanal ağını ve alt netini sanal düğümlerle kullanmak üzere oluşturur ve yapılandırır.
 

@@ -1,20 +1,20 @@
 ---
-title: Azure Olay Izgara kaynak grubu olay şeması
+title: Olay Izgara kaynağı olarak Azure kaynak grubu
 description: Azure Olay Ağıtı ile kaynak grubu etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb52b54eb32a119a463b59e4d4f2ab30096886fa
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561702"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393261"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Kaynak grupları için Azure Olay Izgara olay şeması
+# <a name="azure-resource-group-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure kaynak grubu
 
 Bu makalede, kaynak grubu olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
@@ -28,9 +28,10 @@ Olayları programlı bir şekilde işlemek `operationName` için, değeri bakara
 
 Olay konusu, işlemin hedefi olan kaynağın kaynak kimliğidir. Bir kaynak için olayları filtrelemek için, olay aboneliği oluştururken bu kaynak kimliğini sağlayın.  Kaynak türüne göre filtre uygulayın, aşağıdaki biçimde bir değer kullanın:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Örnek komut dosyaları ve öğreticilerin listesi için [Kaynak grubu olay kaynağına](event-sources.md#resource-groups)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Kaynak grupları, Bir VM oluşturulduğunda veya bir depolama hesabının silindiği zaman gibi Azure Kaynak Yöneticisi'nden yönetim olayları yayar.
 
@@ -46,7 +47,7 @@ Kaynak grupları, Bir VM oluşturulduğunda veya bir depolama hesabının silind
 | Microsoft.Resources.ResourceWriteFailure | Oluşturma veya güncelleştirme işlemi başarısız olduğunda yükseltildi. |
 | Microsoft.Resources.ResourceWriteSuccess | Oluşturma veya güncelleştirme işlemi başarılı olduğunda yükseltilir. |
 
-## <a name="example-event"></a>Örnek olay
+### <a name="example-event"></a>Örnek olay
 
 Aşağıdaki örnek, **ResourceWriteSuccess** olayının şeasını gösterir. Aynı şema KaynakYazma Hatası ve **ResourceWriteCancel** için farklı `eventType`değerlere sahip olaylar için kullanılır. **ResourceWriteFailure**
 
@@ -230,7 +231,7 @@ Aşağıdaki örnek, **ResourceActionSuccess** olayının şeasını gösterir. 
 }]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -259,6 +260,16 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | durum | string | İşlemin durumu. |
 | subscriptionId | string | Kaynağın abonelik kimliği. |
 | tenantId | string | Kaynağın kiracı kimliği. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık  |Açıklama  |
+|---------|---------|
+| [Öğretici: Azure Olay Izgara ve Mantık Uygulamaları ile sanal makine değişikliklerini izleyin](monitor-virtual-machine-changes-event-grid-logic-app.md) | Bir mantık uygulaması sanal makinedeki değişiklikleri izler ve bu değişikliklerle ilgili e-postalar gönderir. |
+| [Azure CLI: kaynak grubu için etkinliklere abone olun](./scripts/event-grid-cli-resource-group.md)| Kaynak grubu için olaylara abone olan örnek komut dosyası. Olayları Bir WebHook'a gönderir. |
+| [Azure CLI: kaynak grubu için etkinliklere abone olun ve kaynak için filtre uygulayın](./scripts/event-grid-cli-resource-group-filter.md) | Kaynak grubu için olaylara abone olan ve olayları tek bir kaynak için filtreleyen örnek komut dosyası. |
+| [PowerShell: bir kaynak grubu için etkinliklere abone olun](./scripts/event-grid-powershell-resource-group.md) | Kaynak grubu için olaylara abone olan örnek komut dosyası. Olayları Bir WebHook'a gönderir. |
+| [PowerShell: bir kaynak grubu için etkinliklere abone olun ve kaynak için filtre uygulayın](./scripts/event-grid-powershell-resource-group-filter.md) | Kaynak grubu için olaylara abone olan ve olayları tek bir kaynak için filtreleyen örnek komut dosyası. |
+| [Kaynak Yöneticisi şablonu: kaynak aboneliği](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Azure aboneliği veya kaynak grubu için etkinliklere abone olur. Olayları Bir WebHook'a gönderir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

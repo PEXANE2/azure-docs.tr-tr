@@ -1,30 +1,30 @@
 ---
-title: Azure Olay Izgara olay hub'ları olay şeması
+title: Olay Izgara kaynağı olarak Azure Olay Hub'ları
 description: Azure Olay Ağıtı ile olay hub'ları etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9c0113687d27bf43375f298057129a5594ec0a06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561837"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393350"
 ---
-# <a name="azure-event-grid-event-schema-for-event-hubs"></a>Etkinlik hub'ları için Azure Olay Izgara olay şeması
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Olay Hub'ları
 
 Bu makalede, olay hub'ları olaylar için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Örnek komut dosyaları ve öğreticilerin listesi için [Olay Hub'ları etkinlik kaynağına](event-sources.md#event-hubs)bakın.
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
 
 ### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Bir yakalama dosyası oluşturulduğunda Olay Hub'ları **Microsoft.EventHub.CaptureFileCreated** olay türünü yayar.
 
-## <a name="example-event"></a>Örnek olay
+### <a name="example-event"></a>Örnek olay
 
 Bu örnek olay, yakalama özelliği bir dosyayı depoladığında ortaya çıkan bir olay hub'larının şemasını gösterir: 
 
@@ -53,7 +53,7 @@ Bu örnek olay, yakalama özelliği bir dosyayı depoladığında ortaya çıkan
 ]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -81,6 +81,12 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | lastSequenceNumber | integer | Kuyruktaki son sıra numarası. |
 | ilkEnqueueTime | string | Kuyruktan ilk kez. |
 | lastEnqueueTime | string | Kuyruktan son kez. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+
+|Başlık  |Açıklama  |
+|---------|---------|
+| [Öğretici: Büyük verileri veri ambarına aktarın](event-grid-event-hubs-integration.md) | Olay Hub'ları bir Yakalama dosyası oluşturduğunda, Olay Grid bir etkinlik uygulamasını işlev uygulamasına gönderir. Uygulama Yakalama dosyasını alır ve verileri bir veri ambarına geçirir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

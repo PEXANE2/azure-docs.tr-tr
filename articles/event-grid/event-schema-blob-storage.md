@@ -1,29 +1,30 @@
 ---
-title: Azure Olay Izgara lı depolama etkinliği şeması
+title: Olay Izgara kaynağı olarak Azure Blob Depolama
 description: Azure Olay Ağıt'ı ile blob depolama etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 01/17/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 71aa937536f35c9af44adb5822ce7a2bb8f3a9eb
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: cfc6e4790b67137b423cc90d93874d4914f81251
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756011"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393385"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob depolama için Azure Olay Izgara olay şeması
+# <a name="azure-blob-storage-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Blob Depolama
 
-Bu makalede, blob depolama olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
+Bu makalede, blob depolama olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın. Ayrıca, Azure Blob Depolama'yı etkinlik kaynağı olarak kullanmanız için hızlı başlangıçların ve öğreticilerin bir listesini de verir.
 
-Örnek komut dosyaları ve öğreticilerin listesi için [Depolama olay kaynağına](event-sources.md#storage)bakın.
 
 >[!NOTE]
 > Tür **StorageV2 (genel amaçlı v2)** sadece depolama hesapları, **BlockBlobStorage**ve **BlobStorage** destek olay entegrasyonu. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API'leri için etkinlikler listesi
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="list-of-events-for-blob-rest-apis"></a>Blob REST API'leri için etkinlikler listesi
 
 Bu olaylar, istemci Blob REST API'lerini arayarak bir blob oluşturduğunda, değiştirdiğinde veya sildiğinde tetiklenir.
 
@@ -35,7 +36,7 @@ Bu olaylar, istemci Blob REST API'lerini arayarak bir blob oluşturduğunda, de�
 > [!NOTE]
 > **Microsoft.Storage.BlobCreated** olayının yalnızca Bir Blok Blob tamamen işlendiğinde tetiklendiğinden emin olmak `CopyBlob`istiyorsanız, olayı , ve `PutBlob` `PutBlockList` REST API çağrıları için filtreuygulayın. Bu API **çağrıları, Microsoft.Storage.BlobCreated** olayını yalnızca veriler Bir Blok Blob'a tam olarak bağlandıktan sonra tetikler. Filtre oluşturmayı öğrenmek için [Olay Izgarası için Filtre olayları'na](https://docs.microsoft.com/azure/event-grid/how-to-filter-events)bakın.
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Veri Gölü Depolama Gen 2 REST API'leri için etkinlikler listesi
+### <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Azure Veri Gölü Depolama Gen 2 REST API'leri için etkinlikler listesi
 
 Depolama hesabında hiyerarşik bir ad alanı etkinleştiriseniz ve istemciler Azure Veri Gölü Depolama Gen2 REST API'lerini çağırırsanız, bu olaylar tetiklenir. Azure Veri Gölü Depolama Gen2 hakkında daha fazla bilgi [için](../storage/blobs/data-lake-storage-introduction.md)bkz.
 
@@ -53,7 +54,7 @@ Depolama hesabında hiyerarşik bir ad alanı etkinleştiriseniz ve istemciler A
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
+### <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
 
 Bir olay tetiklendiğinde, Olay Izgara hizmeti bitiş noktasına abone olmak için bu olayla ilgili verileri gönderir.
 
@@ -288,7 +289,7 @@ Blob depolama hesabı hiyerarşik bir ad alanı varsa, veri bu değişiklikler d
 }]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -321,6 +322,17 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | Özyinelemeli | string | `True`tüm alt dizinlerde işlemi gerçekleştirmek için; aksi `False`takdirde . <br>Yalnızca hiyerarşik ad alanına sahip blob depolama hesaplarında tetiklenen olaylar için görünür. |
 | Sequencer | string | Belirli bir blob adı için olayların mantıksal dizisini temsil eden opak bir dize değeri.  Kullanıcılar, aynı blob adındaki iki olayın göreli dizisini anlamak için standart dize karşılaştırmasını kullanabilir. |
 | depolamaTanılama | object | Azure Depolama hizmeti tarafından zaman zaman ekteki tanılama verileri. Mevcut olduğunda, olay tüketiciler tarafından göz ardı edilmelidir. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık  |Açıklama  |
+|---------|---------|
+| [Hızlı başlangıç: Blob depolama olaylarını Azure CLI ile özel bir web bitiş noktasına yönlendirin](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Blob depolama olaylarını WebHook'a göndermek için Azure CLI'nin nasıl kullanılacağını gösterir. |
+| [Quickstart: PowerShell ile Blob depolama olaylarını özel bir web bitiş noktasına yönlendirin](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Blob depolama olaylarını WebHook'a göndermek için Azure PowerShell'in nasıl kullanılacağını gösterir. |
+| [Quickstart: Azure portalı ile Blob depolama etkinlikleri oluşturun ve yönlendirin](blob-event-quickstart-portal.md) | Blob depolama olaylarını WebHook'a göndermek için portalın nasıl kullanılacağını gösterir. |
+| [Azure CLI: Blob depolama hesabı için etkinliklere abone olun](./scripts/event-grid-cli-blob.md) | Blob depolama hesabı için etkinliğe abone olan örnek komut dosyası. Olayı bir WebHook'a gönderir. |
+| [PowerShell: Blob depolama hesabı için etkinliklere abone olun](./scripts/event-grid-powershell-blob.md) | Blob depolama hesabı için etkinliğe abone olan örnek komut dosyası. Olayı bir WebHook'a gönderir. |
+| [Kaynak Yöneticisi şablonu: Blob depolama alanı ve abonelik oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Bir Azure Blob depolama hesabı dağıtır ve o depolama hesabı için olaylara abone olur. Olayları Bir WebHook'a gönderir. |
+| [Genel bakış: Blob depolama olaylarına tepki](../storage/blobs/storage-blob-event-overview.md) | Blob depolamayı Event Grid ile tümleştirmeye genel bakış. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

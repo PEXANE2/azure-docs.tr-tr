@@ -5,12 +5,12 @@ description: Azure Kubernetes Hizmeti'nde (AKS) sanal ağ kaynakları ve bağlan
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: c8aee9967e09d2ae8bec3ee170756d8d22de0fe4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 1eed6f1f82a8a91b2335760e99ea6b895d15547e
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668217"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392707"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hizmetinde ağ bağlantısı ve güvenlik için en iyi yöntemler
 
@@ -43,7 +43,7 @@ Azure CNI ağını kullandığınızda, sanal ağ kaynağı AKS kümesine ayrı 
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-AKS hizmet ana delegasyonu hakkında daha fazla bilgi için, [diğer Azure kaynaklarına Temsilci erişimine][sp-delegation]bakın.
+AKS hizmet ana delegasyonu hakkında daha fazla bilgi için, [diğer Azure kaynaklarına Temsilci erişimine][sp-delegation]bakın. Hizmet sorumlusu yerine, yönetilen kimlik atanan sistemi izinler için de kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md)
 
 Her düğüm ve bölme kendi IP adresini aldığında, AKS alt ağlarının adres aralıklarını planlayın. Alt ağ, dağıttığınız her düğüm, bölme ve ağ kaynakları için IP adresleri sağlayacak kadar büyük olmalıdır. Her AKS kümesi kendi alt ağına yerleştirilmelidir. Azure'da şirket içi veya denetlenen ağlara bağlantı sağlamak için, varolan ağ kaynaklarıyla çakışan IP adresi aralıklarını kullanmayın. Her düğümün hem kubenet hem de Azure CNI ağlarıyla çalıştığı bölme sayısı için varsayılan sınırlar vardır. Olayları veya küme yükseltmelerini ölçeklendirmek için, atanan alt ağda kullanılmak üzere ek IP adreslerine de ihtiyacınız vardır. Bu düğüm havuzları en son güvenlik düzeltme emüleklerini uygulamak için yükseltme gerektirdiğinden, Windows Server kapsayıcılarını (şu anda AKS'de önizlemede) kullanıyorsanız, bu ek adres alanı özellikle önemlidir. Windows Server düğümleri hakkında daha fazla bilgi için [AKS'deki düğüm havuzunun yükselti'ne][nodepool-upgrade]bakın.
 

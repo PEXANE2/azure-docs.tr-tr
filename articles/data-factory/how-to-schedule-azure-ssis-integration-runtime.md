@@ -13,14 +13,17 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75440311"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399524"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Bu makalede, Azure Veri Fabrikası 'nı (ADF) kullanarak Azure-SSIS Tümleştirme Çalışma Zamanı'nın (IR) başlangıç ve durdurma zamanlanması nasıl zamanlanır. Azure-SSIS IR, SQL Server Tümleştirme Hizmetleri (SSIS) paketlerini yürütmek için ayrılmış ADF bilgi işlem kaynağıdır. Azure-SSIS IR'nin çalıştırılanın bununla ilişkili bir maliyeti vardır. Bu nedenle, IR'nizi yalnızca Azure'da SSIS paketlerini yürütmeniz gerektiğinde çalıştırmak ve artık ihtiyacınız olmadığında IR'nizi durdurmak istersiniz. [IR'nizi el ile başlatmak veya durdurmak](manage-azure-ssis-integration-runtime.md)için ADF Kullanıcı Arabirimi (UI)/uygulaması veya Azure PowerShell'i kullanabilirsiniz).
 
 Alternatif olarak, IR'nizi zamanında başlatmak/durdurmak için ADF ardışık işaklerinde Web etkinlikleri oluşturabilir, örneğin günlük ETL iş yüklerinizi çalıştırmadan önce sabah başlatabilir ve yapıldıktan sonra öğleden sonra durdurabilirsiniz.  Ir'nizi başlatan ve durduran iki Web etkinliği arasında bir Execute SSIS Paketi etkinliğini de zincirleyebilirsiniz, böylece IR'niz paket yürütmenizden hemen önce/sonra isteğe bağlı olarak başlar/durur. Execute SSIS Paketi etkinliği hakkında daha fazla bilgi için [bkz.](how-to-invoke-ssis-package-ssis-activity.md)
@@ -41,7 +44,7 @@ Bu ardışık lıkları oluşturduktan ve test ettikten sonra, bir zamanlama tet
 
 Örneğin, iki tetikleyici oluşturabilirsiniz, ilki günlük olarak 6 ve ilk ardışık durumla ilişkili olarak zamanlanırken, ikincisi günlük olarak 18:00'de çalışacak ve ikinci ardışık alanla ilişkili olarak zamanlanır.  Bu şekilde, IR'niz çalışırken her gün 06:00 ile 18:00 arasında günlük ETL iş yüklerinizi çalıştırmaya hazır bir süreniz vardır.  
 
-Her gün gece yarısı çalışması planlanan ve üçüncü ardışık işlem le ilişkili üçüncü bir tetikleyici oluşturursanız, bu ardışık işlem her gün gece yarısı çalışır, paket yürütülmesinden hemen önce IR'nizi başlatır, ardından paketinizi çalıştırır ve hemen paket yürütülmesinden hemen sonra IR'nizi durdurur, böylece IR'niz boş çalışmaz.
+Her gün gece yarısı çalışması planlanan ve üçüncü boru hattıyla ilişkili üçüncü bir tetikleyici oluşturursanız, bu ardışık işlem her gün gece yarısı çalışır, paket yürütülmesinden hemen önce IR'nizi çalıştırır, ardından paketinizi çalıştırır ve paket yürütülmesinden hemen sonra IR'nizi hemen durdurur, böylece IR'niz boş çalışmaz.
 
 ### <a name="create-your-adf"></a>ADF'nizi oluşturun
 
@@ -114,7 +117,7 @@ Her gün gece yarısı çalışması planlanan ve üçüncü ardışık işlem l
     1. **Rol** **için, Katkıda Bulunan'ı**seçin. 
     2. **Erişim atamak için** **Azure AD kullanıcısı, grubu veya hizmet sorumlusunu**seçin. 
     3. **Select**için, ADF adınızı arayın ve seçin. 
-    4. **Kaydet**'e tıklayın.
+    4. **Kaydet**’e tıklayın.
     
    ![ADF Yönetilen Kimlik Rol Atama](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -160,7 +163,7 @@ Artık ardışık ardışık hatlarınız beklediğiniz gibi çalıştığına g
     4. **Yineleme**için, tetikleyici için bir cadence girin. Aşağıdaki örnekte, bir kez **Günlük.** 
     5. **Bitiş için,** **Bitiş Yok'u** seçin veya **Tarih'i**seçtikten sonra bitiş tarihi ve saati girin. 
     6. Tüm ADF ayarlarını yayımladıktan hemen sonra tetikleyiciyi etkinleştirmek için **Etkin'i** seçin. 
-    7. **Sonraki'ni**seçin.
+    7. **İleri**’yi seçin.
 
    ![Tetikleyici -> Yeni/Edit](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -227,7 +230,7 @@ Zaten bir Azure Otomasyon hesabınız yoksa, bu adımdaki yönergeleri izleyerek
     4. **Konum**için Azure Otomasyon hesabınız için bir konum seçin. 
     5. **Azure Çalıştır'ı** **Evet**olarak hesap olarak oluştur'u onaylayın. Azure Etkin Dizininizde bir hizmet ilkesi oluşturulur ve Azure aboneliğinizde bir **Katılımcı** rolü atanır.
     6. Azure panosunda kalıcı olarak görüntülemek için **panoya** Sabitle'yi seçin. 
-    7. **Oluştur'u**seçin. 
+    7. **Oluştur**’u seçin. 
 
    ![Yeni -> İzleme + Yönetim -> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
@@ -265,7 +268,7 @@ Aşağıdaki bölümde PowerShell runbook oluşturmak için adımlar sağlar. Ç
 
     1. **Ad**için, **StartStopAzureSsisRuntime**girin.
     2. **Runbook türü için** **PowerShell'i**seçin.
-    3. **Oluştur'u**seçin.
+    3. **Oluştur**’u seçin.
     
    ![Runbook düğmesi ekleme](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
@@ -364,7 +367,7 @@ Aşağıdaki bölümde PowerShell runbook oluşturmak için adımlar sağlar. Ç
     4. **Başlangıçlar**için, geçerli saati birkaç dakika geçmiş bir zaman girin. 
     5. **Yineleme**için **Yinelenen'i**seçin. 
     6. **Her Yineleme**için, **1** girin ve **Gün**seçin. 
-    7. **Oluştur'u**seçin. 
+    7. **Oluştur**’u seçin. 
 
    ![Azure SSIS IR başlangıcı için zamanlama](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     

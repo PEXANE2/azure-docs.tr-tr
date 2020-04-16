@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721515"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393170"
 ---
 # <a name="subscribe-to-events-through-portal"></a>Portal üzerinden etkinliklere abone olun
 
@@ -20,7 +20,7 @@ Bu makalede, portal üzerinden Olay Izgara abonelikleri nasıl oluşturulacak a�
 
 ## <a name="create-event-subscriptions"></a>Etkinlik abonelikleri oluşturma
 
-Desteklenen [olay kaynaklarından](event-sources.md)herhangi biri için Olay Izgara sıyrık aboneliği oluşturmak için aşağıdaki adımları kullanın. Bu makalede, Azure aboneliği için Olay Izgara aboneliği nasıl oluşturulacak gösterilmektedir.
+Desteklenen [olay kaynaklarından](overview.md#event-sources)herhangi biri için Olay Izgara sıyrık aboneliği oluşturmak için aşağıdaki adımları kullanın. Bu makalede, Azure aboneliği için Olay Izgara aboneliği nasıl oluşturulacak gösterilmektedir.
 
 1. **Tüm Hizmetler**’i seçin.
 
@@ -28,7 +28,7 @@ Desteklenen [olay kaynaklarından](event-sources.md)herhangi biri için Olay Izg
 
 1. Olay **Izgara Abonelikleri'ni** arayın ve kullanılabilir seçeneklerden seçin.
 
-   ![Search](./media/subscribe-through-portal/search.png)
+   ![Arama](./media/subscribe-through-portal/search.png)
 
 1. **+ Olay Aboneliği**'ni seçin.
 

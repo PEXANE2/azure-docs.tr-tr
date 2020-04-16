@@ -7,15 +7,14 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 0efccd2851885dad209d5548a76737c25777b891
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404052984cb99e37f7404a47f3ac374088d32d6c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372441"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393487"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Olay Izgaraile CloudEvents v1.0 şema kullanın
-
 Varsayılan olay [şemasına](event-schema.md)ek olarak, Azure Event [Grid, CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) ve [HTTP protokol bağlamanın](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)JSON uygulamasındaki olayları doğal olarak destekler. [CloudEvents](https://cloudevents.io/) olay verilerini açıklamak için açık bir [belirtimdir.](https://github.com/cloudevents/spec/blob/v1.0/spec.md)
 
 CloudEvents, yayımlama ve bulut tabanlı etkinlikler tüketmek için ortak bir olay şeması sağlayarak birlikte çalışabilirliği kolaylaştırır. Bu şema, tek tip takımlama, olayları işleme & yönlendirmenin standart yolları ve dış olay şemasını deserialize etmenin evrensel yolları sağlar. Ortak bir şema ile, daha kolay platformlar arasında iş entegre edebilirsiniz.

@@ -1,5 +1,5 @@
 ---
-title: Makine Öğrenme Algoritması Hile Sayfası
+title: Makine Öğrenme Algoritması Hile Sayfası - tasarımcı
 titleSuffix: Azure Machine Learning
 description: Yazdırılabilir Makine Öğrenme Algoritması Hile Sayfası, Azure Machine Learning tasarımcısında tahmine dayalı modeliniz için doğru algoritmayı seçmenize yardımcı olur.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 03/05/2020
-ms.openlocfilehash: 85fbb1c1d26f71903adab2eb96b0c1dd3bf74c33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accc4766f25f5d58ba2f31c153fe1c5d23413170
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78328632"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399076"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı için Makine Öğrenimi Algoritması Hile Sayfası
 
-**Azure Machine Learning Algoritmahile Sayfası,** tahmine dayalı bir analitik modeli için doğru algoritmayı seçmenize yardımcı olur.
+**Azure Machine Learning Algoritma hile sayfası,** tahmine dayalı bir analitik modeli için tasarımcıdan doğru algoritmayı seçmenize yardımcı olur.
 
 Azure Machine Learning ***sınıflandırma,*** ***tavsiye sistemleri,*** ***kümeleme,*** ***anomali algılama,*** ***gerileme***ve metin ***analizi*** ailelerinden algoritmalardan oluşan geniş bir kütüphaneye sahiptir. Her biri farklı türde makine öğrenimi sorununu ele almak üzere tasarlanmıştır.
 
@@ -38,7 +38,7 @@ Bu algoritma hile sayfasında sunulan öneriler yaklaşık kurallar-of-thumb var
 
 Her makine öğrenme algoritması kendi tarzı veya endüktif önyargı vardır. Belirli bir sorun için, birkaç algoritma uygun olabilir ve bir algoritma diğerlerinden daha uygun olabilir. Ama her zaman en uygun olduğunu önceden bilmek mümkün değildir. Bu gibi durumlarda, birkaç algoritma birlikte hile sayfasında listelenir. Uygun bir strateji bir algoritma denemek olacaktır ve sonuçlar henüz tatmin edici değilse, diğerlerini deneyin. 
 
-Azure Machine Learning algoritmaları hakkında daha fazla bilgi edinmek için [Algoritma ve modül başvurusuna](algorithm-module-reference/module-reference.md)gidin.
+Azure Machine Learning tasarımcısındaki algoritmalar hakkında daha fazla bilgi edinmek için [Algoritma ve modül başvurusuna](algorithm-module-reference/module-reference.md)gidin.
 
 ## <a name="kinds-of-machine-learning"></a>Makine öğrenimi türleri
 

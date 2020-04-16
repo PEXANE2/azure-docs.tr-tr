@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 06/12/2019
-ms.openlocfilehash: d0c60f5738bf634f9d43d6d4f0d78c1239b7ff3c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a3d2234a140d1fb2eede50e3fe2eef5575da648
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75650701"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391687"
 ---
 # <a name="view-definition-artifact-in-azure-managed-applications"></a>Azure Yönetilen Uygulamalarda tanım artifakı görüntüleme
 
@@ -20,7 +20,7 @@ Bu makalede, görünüm tanımı artifakı ve yeteneklerine genel bir bakış sa
 
 ## <a name="view-definition-artifact"></a>Tanım yapıtını görüntüleme
 
-Görünüm tanımı artifakı **viewDefinition.json** olarak adlandırılmalı ve yönetilen bir uygulama tanımı oluşturan .zip paketinde **createUiDefinition.json** ve **mainTemplate.json** ile aynı düzeyde yerleştirilmelidir. .zip paketini nasıl oluşturup yönetilen bir uygulama tanımıyayımla öğrenmek için [bkz.](publish-managed-app-definition-quickstart.md)
+Görünüm tanımı artifakı **viewDefinition.json** olarak adlandırılmalı ve yönetilen bir uygulama tanımı oluşturan .zip paketinde **createUiDefinition.json** ve **mainTemplate.json** ile aynı düzeyde yerleştirilmelidir. .zip paketini nasıl oluşturup yönetilen bir uygulama tanımıyayımla öğrenmek için [bkz.](publish-service-catalog-app.md)
 
 ## <a name="view-definition-schema"></a>Tanım şea'yı görüntüle
 

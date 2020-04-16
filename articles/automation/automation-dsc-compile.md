@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3145c7db064432e443aae5dcd503905b865ffe46
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: f7558745442ac26fc33a063ff66fe170d08487ac
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383263"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392081"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırmasında DSC yapılandırmalarını derleme
 
@@ -36,7 +36,7 @@ Yapılandırmaları Azure VM'lerinize itmek için Azure İstenen Durum Yapıland
 
 ### <a name="portal"></a>Portal
 
-1. Otomasyon hesabınızdan **Durum yapılandırması (DSC)** seçeneğini tıklatın.
+1. Otomasyon hesabınızda **Durum yapılandırması (DSC)** seçeneğini tıklatın.
 1. **Yapılandırmalar** sekmesine tıklayın, ardından derlemek için yapılandırma adını tıklatın.
 1. **Derle'i**tıklatın.
 1. Yapılandırmada parametre yoksa, derlemek isteyip istemediğiniz doğrulanır. Yapılandırmanın parametreleri varsa, parametre değerleri sağlayabilmeniz için **Derleme Yapılandırma** sı cadı açılır.
@@ -130,12 +130,12 @@ Nesneleri parametre `PSCredential` olarak geçirme hakkında bilgi için Bkz. [K
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>Azure Otomasyonu'nda yapılandırmaları derlerken ConfigurationData'yı yönetme
 
-**ConfigurationData,** PowerShell DSC kullanırken yapısal yapılandırmayı ortama özgü yapılandırmalardan ayırmanızı sağlar. Daha fazla bilgi için [PowerShell DSC'deki "Nerede"den "Ne"yi ayırmaya](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)bakın.
+`ConfigurationData`PowerShell DSC kullanırken yapısal yapılandırmayı ortama özgü herhangi bir yapılandırmadan ayırmanızı sağlayan yerleşik bir DSC parametresitir. Daha fazla bilgi için [PowerShell DSC'deki "Nerede"den "Ne"yi ayırmaya](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/)bakın.
 
 > [!NOTE]
-> Azure Otomasyon Durumu Yapılandırması'nda derleme yaparken, Azure PowerShell'de **ConfigurationData'yı** kullanabilirsiniz, ancak Azure portalında kullanamazsınız.
+> Azure Otomasyon Durumu Yapılandırması'nda derleme `ConfigurationData` yaparken, Azure PowerShell'de kullanabilirsiniz, ancak Azure portalında kullanamazsınız.
 
-Aşağıdaki örnek DSC yapılandırması **ConfigurationData'yı** `$ConfigurationData` anahtar kelimeler aracılığıyla `$AllNodes` kullanır. Ayrıca bu örnek için [xWebAdministration modülüne](https://www.powershellgallery.com/packages/xWebAdministration/) de ihtiyacınız vardır.
+Aşağıdaki örnek DSC `ConfigurationData` `$AllNodes` yapılandırmave `$ConfigurationData` anahtar kelimeler üzerinden kullanır. Ayrıca bu örnek için [xWebAdministration modülüne](https://www.powershellgallery.com/packages/xWebAdministration/) de ihtiyacınız vardır.
 
 ```powershell
 Configuration ConfigurationDataSample
@@ -198,7 +198,7 @@ Azure Otomasyonu'ndaki DSC `Get-AutomationPSCredential` yapılandırmaları, cmd
 
 Kimlik bilgilerini düğüm yapılandırmalarında güvenli tutmak (MOF yapılandırma belgeleri) düğüm yapılandırmam MOF dosyasındaki kimlik bilgilerini şifrelemeyi gerektirir. Şu anda düğüm yapılandırma MOF oluşturma sırasında düz metin kimlik bilgileri çıkmak için PowerShell DSC izni vermelidir. PowerShell DSC, Azure Automation'ın bir derleme işi aracılığıyla nesilden sonra tüm MOF dosyasını şifrelediğinin farkında değildir.
 
-PowerShell DSC'ye, yapılandırma Verilerini kullanarak oluşturulan düğüm yapılandırma moflarında kimlik bilgilerinin düz metin olarak çıktılandırılmasının sorun olmadığını söyleyebilirsiniz. DSC `PSDscAllowPlainTextPassword = $true` yapılandırmasında görünen ve kimlik bilgilerini kullanan her düğüm bloğu adı için **ConfigurationData** üzerinden geçmeniz gerekir.
+PowerShell DSC'ye, yapılandırma Verilerini kullanarak oluşturulan düğüm yapılandırma moflarında kimlik bilgilerinin düz metin olarak çıktılandırılmasının sorun olmadığını söyleyebilirsiniz. DSC `PSDscAllowPlainTextPassword = $true` `ConfigurationData` yapılandırmasında görünen ve kimlik bilgilerini kullanan her düğüm bloğu adı için geçiş yapmalısın.
 
 Aşağıdaki örnekte, Otomasyon kimlik bilgisi kıymeti kullanan bir DSC yapılandırması gösterilmektedir.
 
@@ -262,9 +262,9 @@ Bu işlemi bir geliştirici iş istasyonundan veya [Azure DevOps](https://dev.az
 
 ### <a name="import-a-node-configuration-in-the-azure-portal"></a>Azure portalında düğüm yapılandırması alma
 
-1. Otomasyon hesabınızdan, **Yapılandırma Yönetimi**altında **Durum yapılandırması (DSC)** 'yi tıklatın.
+1. Otomasyon hesabınızda, **Yapılandırma Yönetimi**altında **Durum yapılandırması (DSC)** seçeneğini tıklatın.
 1. Durum yapılandırması (DSC) sayfasında, **Yapılandırmalar** sekmesine tıklayın ve sonra **Ekle'yi**tıklatın.
-1. Alma sayfasında, yerel bilgisayarınızdaki düğüm yapılandırma dosyasına (MOF) göz atmak için **Düğüm Yapılandırma Dosyası** textbox'ının yanındaki klasör simgesini tıklatın.
+1. Alma sayfasında, yerel bilgisayarınızdaki düğüm yapılandırma MOF dosyasına göz atmak için **Düğüm Yapılandırma Dosyası** alanının yanındaki klasör simgesini tıklatın.
 
    ![Yerel dosyaya göz atın](./media/automation-dsc-compile/import-browse.png)
 

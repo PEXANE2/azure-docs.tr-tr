@@ -2,18 +2,18 @@
 title: Azure HDInsight Araçları ile PySpark etkileşimli ortam
 description: Sorgular ve komut dosyaları oluşturmak ve göndermek için Visual Studio Code için Azure HDInsight Araçlarını nasıl kullanacağınızı öğrenin.
 keywords: VScode,Azure HDInsight Araçları,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,İnteraktif Kovan,İnteraktif Sorgu
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.openlocfilehash: db2336fb79207ada24b71e0e64f0aaaab543e4da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73241546"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393670"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamı nı ayarlama
 
@@ -34,7 +34,7 @@ Ana sayfanızda sanal ortam oluşturmak için **python/pip** komutunu kullanır�
 
 2. Aşağıdaki komutu çalıştırarak **virtualenv** yükleyin.
 
-   ```
+   ```bash
    pip install virtualenv
    ```
 
@@ -44,11 +44,11 @@ Bir hata iletisi ile karşılaşırsanız, aşağıdaki komutları çalıştıra
 
    ![Python için libkrb5 paketi yükleyin](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
-```
+```bash
 sudo apt-get install libkrb5-dev
 ```
 
-```
+```bash
 sudo apt-get install python-dev
 ```
 
@@ -57,9 +57,11 @@ VS Code'u yeniden başlatın ve ardından **HDInsight: PySpark Interactive'i**ç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 ### <a name="demo"></a>Tanıtım
+
 * VS Kodu için HDInsight: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
+
 * [Visual Studio Kodu için Azure HDInsight Aracı'nı kullanma](hdinsight-for-vscode.md)
 * [Apache Spark Scala uygulamaları oluşturmak ve göndermek için IntelliJ için Azure Araç Kiti'ni kullanın](spark/apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarını SSH üzerinden uzaktan hata ayıklamak için IntelliJ için Azure Araç Kiti'ni kullanın](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)

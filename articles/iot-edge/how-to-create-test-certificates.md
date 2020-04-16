@@ -4,16 +4,16 @@ description: Test sertifikaları oluşturun ve üretim dağıtımına hazırlanm
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 02/26/2020
+ms.date: 04/14/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5afb9b7a6ba1ffb99df064c9f92780dc820b2e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 364846f6cef196f6cefa7872af48f262b387db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535995"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393813"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge cihaz özelliklerini test etmek için demo sertifikaları oluşturun
 
@@ -247,8 +247,9 @@ New-CACertsEdgeDeviceIdentity "<name>"
 
 Bu komuta geçtiğiniz ad, IoT Hub'daki IoT Edge aygıtının aygıt kimliği olacaktır.
 
-Yeni aygıt kimlik komutu, DPS'de tek tek bir kayıt oluştururken ve IoT Edge çalışma süresini yüklerken kullanacağınız iki dosya da dahil olmak üzere birkaç sertifika ve anahtar dosya oluşturur:
+Yeni aygıt kimlik komutu, DPS'de tek tek bir kayıt oluştururken ve IoT Edge çalışma süresini yüklerken kullanacağınız üç dosya da dahil olmak üzere çeşitli sertifika lar ve anahtar dosyalar oluşturur:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
@@ -262,8 +263,9 @@ Aşağıdaki komutla IoT Edge aygıt kimlik sertifikasını ve özel anahtarı o
 
 Bu komuta geçtiğiniz ad, IoT Hub'daki IoT Edge aygıtının aygıt kimliği olacaktır.
 
-Komut dosyası, DPS'de tek tek bir kayıt oluştururken ve IoT Edge çalışma süresini yüklerken kullanacağınız iki dosya da dahil olmak üzere birkaç sertifika ve anahtar dosya oluşturur:
+Komut dosyası, DPS'de tek tek bir kayıt oluştururken ve IoT Edge çalışma süresini yüklerken kullanacağınız üç dosya da dahil olmak üzere birkaç sertifika ve anahtar dosya oluşturur:
 
+* `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
@@ -290,7 +292,7 @@ IoT aygıtınızın ioT Hub ile kimlik doğrulaması yapabilmesi için aygıt se
 
 1. Sertifika oluşturma komut dosyaları ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Akış aşağı aygıt için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, sertifikaları IoT aygıtının adı ve ardından birincil veya ikincil etiketle oluşturmaktır. Örnek:
+2. Akış aşağı aygıt için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, sertifikaları IoT aygıtının adı ve ardından birincil veya ikincil etiketle oluşturmaktır. Örneğin:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -320,7 +322,7 @@ IoT aygıtınızın ioT Hub ile kimlik doğrulaması yapabilmesi için aygıt se
 
 1. Sertifika oluşturma komut dosyaları ve kök CA sertifikası olan çalışma dizinine gidin.
 
-2. Akış aşağı aygıt için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, sertifikaları IoT aygıtının adı ve ardından birincil veya ikincil etiketle oluşturmaktır. Örnek:
+2. Akış aşağı aygıt için iki sertifika (birincil ve ikincil) oluşturun. Kullanımı kolay bir adlandırma kuralı, sertifikaları IoT aygıtının adı ve ardından birincil veya ikincil etiketle oluşturmaktır. Örneğin:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

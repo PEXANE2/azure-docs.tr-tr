@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB için Azure Resource Manager şablonları
 description: Azure Cosmos DB oluşturmak ve yapılandırmak için Azure Kaynak Yöneticisi şablonlarını kullanın.
-author: TheovanKraay
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2019
-ms.author: thvankra
-ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.author: mjbrown
+ms.openlocfilehash: 1c4f1a1920d98052231eaa3a7d5c0454441c88ee
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73961848"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390872"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Resource Manager şablonları
 
@@ -23,6 +23,7 @@ Aşağıdaki tablolar, Azure Cosmos DB için Azure Kaynak Yöneticisi şablonlar
 |---|---|
 |[Azure Cosmos hesabı, veritabanı, kapsayıcı oluşturma](manage-sql-with-resource-manager.md#create-resource) | Bu şablon, paylaşılan veritabanı iş veritabanı iş tinemi ve özel iş girdisi olan bir kapsayıcı ile iki kapsayıcı ile iki bölgede bir SQL (Core) API hesabı oluşturur. İş verme değeri, şablonu güncelleştirilmiş iş sahibi özellik değeriyle yeniden göndererek güncelleştirilebilir. |
 |[Depolanmış yordam, tetikleme ve UDF içeren bir Azure Cosmos hesabı, veritabanı ve kapsayıcı oluşturun](manage-sql-with-resource-manager.md#create-sproc) | Bu şablon, bir kapsayıcı için depolanmış yordam, tetikleyici ve UDF ile iki bölgede bir SQL (Core) API hesabı oluşturur. |
+|[Varolan bir Azure Cosmos hesabı için özel bir bitiş noktası oluşturma](how-to-configure-private-endpoints.md#create-a-private-endpoint-by-using-a-resource-manager-template) |  Bu şablon, varolan bir sanal ağdaki varolan Bir Azure Cosmos SQL API hesabı için özel bir bitiş noktası oluşturur. |
 
 ## <a name="mongodb-api"></a>MongoDB API’si
 

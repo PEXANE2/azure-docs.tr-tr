@@ -2,13 +2,13 @@
 title: Bir özelliğin birden çok örneğini tanımlama
 description: Bir kaynak üzerinde özellik oluştururken birden çok kez yeniden sıralamak için Azure Kaynak Yöneticisi şablonunda kopyalama işlemini kullanın.
 ms.topic: conceptual
-ms.date: 02/13/2020
-ms.openlocfilehash: e86d38b0e5d2e39d54b3c419b6eebdcda74022db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258116"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391331"
 ---
 # <a name="property-iteration-in-arm-templates"></a>ARM şablonlarında özellik yinelemesi
 
@@ -30,7 +30,9 @@ Kopyalama öğesi aşağıdaki genel biçime sahiptir:
 ]
 ```
 
-**Ad**için, oluşturmak istediğiniz kaynak özelliğinin adını sağlayın. **Sayım** özelliği, özellik için istediğiniz yineleme sayısını belirtir.
+**Ad**için, oluşturmak istediğiniz kaynak özelliğinin adını sağlayın.
+
+**Sayım** özelliği, özellik için istediğiniz yineleme sayısını belirtir.
 
 **Giriş** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulmuş bir dizi öğe oluşturursunuz.
 
@@ -78,11 +80,7 @@ Aşağıdaki örnek, sanal `copy` bir makinede dataDisks özelliğine nasıl uyg
 }
 ```
 
-Bir özellik `copyIndex` yinelemeiçinde kullanırken, yinelemenin adını sağlamanız gerektiğine dikkat edin.
-
-> [!NOTE]
-> Özellik yinelemesi de bir ofset bağımsız değişkeni destekler. Ofset, copyIndex('dataDisks', 1 gibi yinelemenin adından sonra gelmelidir.
->
+Bir özellik `copyIndex` yinelemeiçinde kullanırken, yinelemenin adını sağlamanız gerektiğine dikkat edin. Özellik yinelemesi de bir ofset bağımsız değişkeni destekler. Ofset, copyIndex('dataDisks', 1 gibi yinelemenin adından sonra gelmelidir.
 
 Kaynak Yöneticisi dağıtım `copy` sırasında diziyi genişletir. Dizinin adı özelliğin adı olur. Giriş değerleri nesne özellikleri olur. Dağıtılan şablon şu şekilde olur:
 
@@ -111,6 +109,66 @@ Kaynak Yöneticisi dağıtım `copy` sırasında diziyi genişletir. Dizinin ad�
         }
       ],
       ...
+```
+
+Dizideki her öğeyi yineleyebildiğiniziçin dizilerle çalışırken kopyalama işlemi yararlıdır. Yinelemesayısı `length` belirtmek ve `copyIndex` dizideki geçerli diziyi almak için dizideki işlevi kullanın.
+
+Aşağıdaki örnek şablon, dizi olarak geçirilen veritabanları için bir başarısız lık grubu oluşturur.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "primaryServerName": {
+            "type": "string"
+        },
+        "secondaryServerName": {
+            "type": "string"
+        },
+        "databaseNames": {
+            "type": "array",
+            "defaultValue": [
+                "mydb1",
+                "mydb2",
+                "mydb3"
+            ]
+        }
+    },
+    "variables": {
+        "failoverName": "[concat(parameters('primaryServerName'),'/', parameters('primaryServerName'),'failovergroups')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Sql/servers/failoverGroups",
+            "apiVersion": "2015-05-01-preview",
+            "name": "[variables('failoverName')]",
+            "properties": {
+                "readWriteEndpoint": {
+                    "failoverPolicy": "Automatic",
+                    "failoverWithDataLossGracePeriodMinutes": 60
+                },
+                "readOnlyEndpoint": {
+                    "failoverPolicy": "Disabled"
+                },
+                "partnerServers": [
+                    {
+                        "id": "[resourceId('Microsoft.Sql/servers', parameters('secondaryServerName'))]"
+                    }
+                ],
+                "copy": [
+                    {
+                        "name": "databases",
+                        "count": "[length(parameters('databaseNames'))]",
+                        "input": "[resourceId('Microsoft.Sql/servers/databases', parameters('primaryServerName'), parameters('databaseNames')[copyIndex('databases')])]"
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {
+    }
+}
 ```
 
 Kaynak için birden fazla özellik belirtebilmeniz için kopyalama öğesi bir dizidir.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: f8f21405a79a6fcf70adef9815ba06a229d6954d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886985"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393100"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure’da giden bağlantılar
 
@@ -168,7 +168,7 @@ Aşağıdaki tablo, arka uç havuz boyutları katmanları için SNAT bağlantı 
 | 801-1,000 | 32 |
 
 >[!NOTE]
-> [Birden fazla ön uça](load-balancer-multivip-overview.md)sahip Standart Yük Dengeleyicisi kullanırken, her ön uç IP adresi önceki tablodaki kullanılabilir SNAT bağlantı noktası sayısını çarpar. Örneğin, her biri ayrı bir ön uç IP adresine sahip 2 yük dengeleme kuralına sahip 50 VM'lik bir arka uç havuzu, IP yapılandırması başına 2048 (2x 1024) SNAT bağlantı noktası kullanır. Birden çok ön uç için [ayrıntılara](#multife)bakın.
+> [Birden fazla ön uça](load-balancer-multivip-overview.md)sahip Standart Yük Dengeleyicisi kullanırken, her ön uç IP adresi önceki tablodaki kullanılabilir SNAT bağlantı noktası sayısını çarpar. Örneğin, her biri ayrı bir ön uç IP adresine sahip 2 yük dengeleme kuralına sahip 50 VM'lik bir arka uç havuzu, kural başına 2048 (2x 1024) SNAT bağlantı noktası kullanır. Birden çok ön uç için [ayrıntılara](#multife)bakın.
 
 Kullanılabilir SNAT bağlantı noktası sayısının doğrudan akış sayısına çevrilmediğini unutmayın. Tek bir SNAT bağlantı noktası, birden çok benzersiz hedef için yeniden kullanılabilir. Bağlantı noktaları yalnızca akışları benzersiz hale getirmek için gerekli olduğunda tüketilir. Tasarım ve azaltma kılavuzu için, bu [tükenmez kaynağın nasıl yönetilenhakkında](#snatexhaust) bölüme ve [PAT'i](#pat)açıklayan bölüme bakın.
 

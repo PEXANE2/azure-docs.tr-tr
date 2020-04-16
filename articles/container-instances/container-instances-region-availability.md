@@ -4,12 +4,12 @@ description: Farklı Azure bölgelerindeki Azure Kapsayıcı Örnekleri hizmeti 
 ms.topic: article
 ms.date: 02/19/2020
 ms.author: danlep
-ms.openlocfilehash: f429a165fe26cc9fc7aa973231f5a77163feef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c84ab7833f7c90d5d4b3c340c268fd9f75e20da9
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399392"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure bölgelerindeki Azure Kapsayıcı Örnekleri için kaynak kullanılabilirliği
 
@@ -18,7 +18,7 @@ Bu makalede, Azure bölgelerinde ve hedef işletim sisteminde Azure Kapsayıcı 
 Sunulan değerler, [bir kapsayıcı grubunun](container-instances-container-groups.md)dağıtımı başına kullanılabilen maksimum kaynaklardır. Değerler yayımı sırasında geçerlidir. 
 
 > [!NOTE]
-> Bu kaynak sınırları içinde oluşturulan kapsayıcı grupları dağıtım bölgesinde kullanılabilirlik durumuna bağlıdır. Bir bölge ağı yük altında olduğunda, örnek dağıtırken hatayla karşılaşabilirsiniz. Böyle bir dağıtım hatasını azaltmak için, örnekleri daha düşük kaynak ayarlarıyla dağıtmayı deneyin veya dağıtımınızı daha sonra deneyin.
+> Bu kaynak sınırları içinde oluşturulan kapsayıcı grupları dağıtım bölgesinde kullanılabilirlik durumuna bağlıdır. Bir bölge ağı yük altında olduğunda, örnek dağıtırken hatayla karşılaşabilirsiniz. Böyle bir dağıtım hatasını azaltmak için, örnekleri daha düşük kaynak ayarlarıyla dağıtmayı deneyin veya dağıtımınızı daha sonra veya kullanılabilir kaynaklarla farklı bir bölgede deneyin.
 
 Dağıtımlarınızdaki kotalar ve diğer sınırlamalar hakkında bilgi için [Azure Kapsayıcı Örnekleri için Kotalar ve sınırlar'a](container-instances-quotas.md)bakın.
 

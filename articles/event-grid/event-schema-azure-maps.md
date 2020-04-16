@@ -1,24 +1,26 @@
 ---
-title: Azure Olay IzgaraSı Azure Haritaları etkinlik şeması
+title: Olay Izgara kaynağı olarak Azure Haritalar
 description: Azure Etkinlik Ağıtı ile Azure Haritalar etkinlikleri için sağlanan özellikleri ve şema açıklanır
 services: event-grid
-author: femila
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 02/08/2019
-ms.author: femila
-ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77486368"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393413"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Haritalar için Azure Olay Izgara etkinliği şeması
+# <a name="azure-maps-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Haritalar
 
-Bu makalede, Azure Haritalar olaylarının özellikleri ve şeması sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](https://docs.microsoft.com/azure/event-grid/event-schema)bakın.
+Bu makalede, Azure Haritalar olaylarının özellikleri ve şeması sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](https://docs.microsoft.com/azure/event-grid/event-schema)bakın. Ayrıca, Azure Haritalar'ı etkinlik kaynağı olarak kullanmanız için hızlı başlangıçların ve öğreticilerin bir listesini de verir.
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Azure Haritalar hesabı aşağıdaki olay türlerini yayır:
 
@@ -28,7 +30,7 @@ Azure Haritalar hesabı aşağıdaki olay türlerini yayır:
 | Microsoft.Maps.GeofenceÇıktı | Alınan koordinatlar belirli bir coğrafi çitin içinden dışarıya taşındığında yükseltildi |
 | Microsoft.Maps.GeofenceResult | Duruma bakılmaksızın, geofencing sorgusu her sonuç döndürdüğünde yükseltildi |
 
-## <a name="event-examples"></a>Olay örnekleri
+### <a name="event-examples"></a>Olay örnekleri
 
 Aşağıdaki örnek, bir **GeofenceEntered** olayının şema gösterir
 
@@ -98,7 +100,7 @@ Aşağıdaki örnek **GeofenceResult** için şema göstermek
 }
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -162,6 +164,12 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | Geometri | geometriler[] |Koordinat konumunu içeren veya aramaBuffer'ın konumu etrafındaki çakışan çit geometrilerini listeler. |
 | geçersizPeriodGeofenceGeometryId | dize[]  | İsteğe göre geçersiz bir dönemde olan geofence geometri kimliği listeleri. |
 | isOlayPublished | boole | Azure Haritalar etkinlik abonesine en az bir olay yayınlanırsa, Azure Haritalar etkinlik abonesine hiçbir olay yayınlanmamışsa yanlış olur. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık  |Açıklama  |
+|---------|---------|
+| [Etkinlik Ağıt'ı kullanarak Azure Haritalar etkinliklerine tepki verme](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Haritalarını Olay Ağıtı ile tümleştirmeye genel bakış. |
+| [Öğretici: Geofence'i ayarlama](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bu öğretici, Azure Haritalar'ı kullanarak coğrafi çit oluşturmanız için temel adımlardan geçmenizi sağlar. Geofence sonuçlarını akış ve geofence sonuçlarına dayalı bir bildirim ayarlamak için Azure Event Grid'i kullanırsınız. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

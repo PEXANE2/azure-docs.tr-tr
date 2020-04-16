@@ -1,24 +1,26 @@
 ---
-title: Azure Anahtar Kasası için Azure Olay Izgara etkinliği şeması
+title: Olay Izgara kaynağı olarak Azure Anahtar Kasası
 description: Azure Olay Ağıtı ile Azure Anahtar Kasası etkinlikleri için sağlanan özellikleri ve şema açıklanır
 services: event-grid
-author: msmbaldwin
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/25/2019
-ms.author: mbaldwin
-ms.openlocfilehash: fe186e2ba8f3cafeb4d186066ba65ae036302f70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010520"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393307"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-key-vault-preview"></a>Azure Anahtar Kasası için Azure Olay Izgara olay şeması (önizleme)
+# <a name="azure-key-vault-as-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Anahtar Kasası
 
 Bu makalede, şu anda önizlemede olan [Azure Anahtar Kasası'ndaki](../key-vault/index.yml)olaylar için özellikler ve şema sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Azure Anahtar Kasası hesabı aşağıdaki olay türlerini oluşturur:
 
@@ -34,7 +36,7 @@ Azure Anahtar Kasası hesabı aşağıdaki olay türlerini oluşturur:
 | Microsoft.KeyVault.SecretNearExpiry | Sona Erme Tarihine Yakın Gizli | Bir sırrın geçerli sürümünün süresi dolmak üzereyken tetiklenir. (Olay son kullanma tarihinden 30 gün önce tetiklenir.) |
 | Microsoft.KeyVault.SecretExpired | Gizli Süresi Doldu | Bir sırrın süresi dolduğunda tetiklenir. |
 
-## <a name="event-examples"></a>Olay örnekleri
+### <a name="event-examples"></a>Olay örnekleri
 
 Aşağıdaki örnek **Microsoft.KeyVault.SecretNewVersionCreated**için şema göstermek:
 
@@ -61,7 +63,7 @@ Aşağıdaki örnek **Microsoft.KeyVault.SecretNewVersionCreated**için şema g�
 ]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -74,6 +76,12 @@ Bir olay aşağıdaki üst düzey verilere sahiptir:
 | version | string | Bu olayı tetikleyen nesnenin sürümü |
 | nbf | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z'den saniyeler önce olmayan tarih |
 | Exp | number | Bu olayı tetikleyen nesnenin 1970-01-01T00:00:00Z'den saniyeler içinde son kullanma tarihi |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık  |Açıklama  |
+|---------|---------|
+| [Azure Olay Ağıt'ı ile Anahtar Kasa etkinliklerini izleme](../key-vault/event-grid-overview.md) | Key Vault'u Olay Izgarasıyla tümleştirmeye genel bakış. |
+| [Öğretici: Olay Izgarası ile Key Vault etkinliklerini oluşturun ve izleyin](../key-vault/event-grid-tutorial.md) | Key Vault için Olay Ağı bildirimlerini nasıl ayarlayatılamayı öğrenin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

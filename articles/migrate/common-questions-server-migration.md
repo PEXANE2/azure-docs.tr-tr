@@ -3,12 +3,12 @@ title: Azure Geçir Sunucu Geçişi SSS
 description: Makineleri geçirmek için Azure Geçir Sunucusu Geçişi'ni kullanma yla ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 507cc8088bf54b1a4f4483673ec5332efcdd36c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc78d2087dcaad2922ca6b6d9c090a8decdb6e84
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127813"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393804"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Geçir Sunucusu Geçişi: Sık sorulan sorular
 
@@ -77,7 +77,7 @@ Hayır. Azure Geçiş yalnızca yönetilen disklere (Standart HDD, Premium SSD) 
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltma için Azure Geçir cihazını kullanırken çoğaltmayı nasıl azaltabilirim?  
 
-NetQosPolicy'yi kullanarak gaz yapabilirsiniz. Örnek:
+NetQosPolicy'yi kullanarak gaz yapabilirsiniz. Örneğin:
 
 NetQosPolicy'de kullanılacak AppNamePrefix "GatewayWindowsService.exe"dir. Aşağıdaki gibi bir ilke oluşturarak, cihazdan çoğaltma trafiğini daraltmak için Azure Geçir cihazı üzerinde bir ilke oluşturabilirsiniz:
  
@@ -92,6 +92,10 @@ Makineleri fiziksel sunucular olarak ele alarak geçirme, bir dizi senaryoda yar
 - Hyper-V veya VMware VM'leri geçirmek için, bazı nedenlerden dolayı [Hyper-V](tutorial-migrate-hyper-v.md)veya [VMware](server-migrate-overview.md) geçişi için standart geçiş işlemini kullanamıyorsanız. Örneğin VMware vCenter çalıştırmıyorsanız ve yalnızca ESXi ana bilgisayarlarını kullanıyorsanız.
 - Şu anda özel bulutlarda çalışan VM'leri Azure'a geçirmek için
 - Amazon Web Hizmetleri (AWS) veya Google Bulut Platformu (GCP) gibi genel bulutlarda çalışan VM'leri Azure'a geçirmek istiyorsanız.
+
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server'ımda VM'leri keşfetmek için iki (veya daha fazla) cihaz dağıttım. Ancak, VM'leri göç etmeye çalıştığımda, yalnızca cihazdan birine karşılık gelen VM'ler görüyorum.
+
+Bu iyi bir kullanım durumu olsa da, şu anda bunu destekliyoruz. Aynı VM kümesini keşfetmek için iki (veya daha fazla) cihaz dağıtmak, VM sahipliğinin iki cihaz arasında sürekli olarak sokulmaya devam ettiği bir hizmet sorununa neden olur. Bu nedenle VM'lerin göründüğünü ve kaybolduğunu görürsünüz. Bu gibi durumlarda, sorunu çözmek için bir cihazı silmeniz ve sert bir yenileme yapmanız gerekir.
 
 ## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>VMware VM'leri geçirmek için VMware vCenter'a ihtiyacım var mı?
 [VMware VM'leri](server-migrate-overview.md) VMware aracı tabanlı veya aracısız geçiş kullanarak geçirmek için, VM'lerin bulunduğu ESXi ana bilgisayarlarının vCenter Server tarafından yönetilmesi gerekir. vCenter Server'ıniz yoksa, VMware VM'leri fiziksel sunucu olarak geçirerek geçirebilirsiniz. [Daha fazla bilgi edinin](migrate-support-matrix-physical-migration.md).

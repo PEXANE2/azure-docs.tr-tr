@@ -3,12 +3,12 @@ title: Mağaza Miğferi grafikleri
 description: Azure Konteyner Kayıt Defteri'ndeki depoları kullanarak Kubernetes uygulamalarınız için Miğfer grafiklerini nasıl depolayacağız öğrenin
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 6304486ac493e235ed74f26ab4be4f843ef52513
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131475"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399385"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Miğfer grafiklerini Azure kapsayıcı kayıt defterine itme ve çekme
 
@@ -77,18 +77,21 @@ helm create hello-world
 Temel bir örnek olarak, dizin klasörünü `templates` değiştirin ve ilk olarak buradaki içeriği silin:
 
 ```console
+cd hello-world/templates
 rm -rf *
 ```
 
 Klasörde, `templates` aşağıdaki `configmap.yaml` içerikleri içeren bir dosya oluşturun:
 
-```yml
+```console
+cat <<EOF > configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: hello-world-configmap
 data:
   myvalue: "Hello World"
+EOF
 ```
 
 Bu örneği oluşturma ve çalıştırma hakkında daha fazla şey için Miğfer Dokümanlarında [Başlarken'e](https://helm.sh/docs/chart_template_guide/getting_started/) bakın.
@@ -175,7 +178,7 @@ az acr repository show \
 }
 ```
 
-Depoda depolanan grafiğin ayrıntılarını görmek için [az acr deposu show-manifests][az-acr-repository-show-manifests] komutunu çalıştırın. Örnek:
+Depoda depolanan grafiğin ayrıntılarını görmek için [az acr deposu show-manifests][az-acr-repository-show-manifests] komutunu çalıştırın. Örneğin:
 
 ```azurecli
 az acr repository show-manifests \
@@ -243,7 +246,7 @@ version: 0.1.0
 
 ### <a name="install-helm-chart"></a>Miğfer grafiğini yükle
 
-Yerel `helm install` önbelleğe çektiğiniz ve dışa aktarılan Miğfer grafiğini yüklemek için çalıştırın. *Myhelmtest*gibi bir sürüm adı belirtin veya parametreyi geçirin. `--generate-name` Örnek:
+Yerel `helm install` önbelleğe çektiğiniz ve dışa aktarılan Miğfer grafiğini yüklemek için çalıştırın. *Myhelmtest*gibi bir sürüm adı belirtin veya parametreyi geçirin. `--generate-name` Örneğin:
 
 ```console
 helm install myhelmtest ./hello-world

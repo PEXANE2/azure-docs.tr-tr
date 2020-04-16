@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/06/2020
 keywords: aro, openshift, az aro, kırmızı şapka, cli
-ms.openlocfilehash: 9488ef593cf4ec8600dcb42ea4a2cefa4fcb1446
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: f909c5870be6e394e457ad8f44ea5a253054ffe6
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998792"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398887"
 ---
 # <a name="create-access-and-manage-an-azure-red-hat-openshift-43-cluster"></a>Azure Red Hat OpenShift 4.3 Cluster oluşturma, erişme ve yönetme
 
@@ -68,7 +68,19 @@ Uzantı, `az aro` Azure CLI'yi kullanarak Azure Red Hat OpenShift kümelerini do
    aro                                0.3.0
    ...
    ```
-  
+
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat çekme sırrı (isteğe bağlı) alın
+
+Red Hat çekme sırrı, kümenizin Red Hat konteyner kayıtlarına ve ek içeriğe erişmesini sağlar. Çekme sırrı kullanmak isteğe bağlıdır, ancak önerilir.
+
+Çekme sırrınızı almak için:
+
+1. https://cloud.redhat.com/openshift/install/azure/aro-provisioned kısmına gidin.
+1. Red Hat hesabınızda oturum açın veya iş e-postanızı kullanarak yeni bir Red Hat hesabı oluşturun; hüküm ve koşulları kabul etmek.
+1. **Download pull secret'ı**seçin.
+
+*Pull-secret.txt* dosyasını güvenli bir yere kaydedin; her küme oluşturduğunuzda dosyayı kullanırsınız.
+
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>İki boş alt ağ içeren bir sanal ağ oluşturma
 
 İki boş alt ağ içeren bir sanal ağ oluşturmak için aşağıdaki adımları izleyin.
@@ -79,15 +91,7 @@ Uzantı, `az aro` Azure CLI'yi kullanarak Azure Red Hat OpenShift kümelerini do
    LOCATION=eastus        #the location of your cluster
    RESOURCEGROUP="v4-$LOCATION"    #the name of the resource group where you want to create your cluster
    CLUSTER=cluster        #the name of your cluster
-   PULL_SECRET="<optional-pull-secret>"
    ```
-   >[!NOTE]
-   > İsteğe bağlı çekme sırrı, kümenizin ek içerikle birlikte Red Hat kapsayıcı kayıtlarına erişmesini sağlar.
-   >
-   > Copy Pull Secret'a https://cloud.redhat.com/openshift/install/azure/installer-provisioned gidip tıklatarak çekme sırrınıza *erişin.*
-   >
-   > Red Hat hesabınızda oturum açmanız veya iş e-postanızla yeni bir Red Hat hesabı oluşturmanız ve şart ve koşulları kabul etmeniz gerekir.
- 
 
 2. Kümeniz için bir kaynak grubu oluşturun.
 
@@ -143,7 +147,7 @@ az aro create \
   --worker-subnet "$CLUSTER-worker" \
   --cluster-resource-group "aro-$CLUSTER" \
   --domain "$CLUSTER" \
-  --pull-secret "$PULL_SECRET"
+  --pull-secret @pull-secret.txt
 ```
 
 >[!NOTE]

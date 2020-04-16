@@ -2,13 +2,13 @@
 title: Güvenilir Koleksiyonlara Giriş
 description: Service Fabric stateful hizmetleri, yüksek kullanılabilir, ölçeklenebilir ve düşük gecikmeli bulut uygulamaları yazmanızı sağlayan güvenilir koleksiyonlar sağlar.
 ms.topic: conceptual
-ms.date: 1/3/2019
-ms.openlocfilehash: 48fa682f4c017f66911729e1f581f3aa91cdc28d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 3/10/2020
+ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75609732"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398424"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Hizmet Kumaşı'nda Güvenilir Koleksiyonlara Giriş
 
@@ -24,10 +24,9 @@ Güvenilir Koleksiyonlar ve diğer yüksek kullanılabilirlik teknolojileri (Red
 Güvenilir Koleksiyonlar **System.Collections** sınıflarının doğal evrimi olarak düşünülebilir: geliştirici için karmaşıklığı artırmadan bulut ve çoklu bilgisayar uygulamaları için tasarlanmış yeni bir koleksiyon kümesi. Bu nedenle, Güvenilir Koleksiyonlar şunlardır:
 
 * Çoğaltılır: Durum değişiklikleri yüksek kullanılabilirlik için çoğaltılır.
-* Devam eden: Veriler, büyük ölçekli kesintilere (örneğin, bir veri merkezi elektrik kesintisi) karşı dayanıklılık için diske kalıcıdır.
-* Yazmalar kalıcı olduğundan ve çoğaltıldığından, yalnızca bellekte veri kalıcı olan geçici bir ReliableDictionary, ReliableQueue veya diğer güvenilir bir koleksiyon oluşturamazsınız.
 * Asynchronous: API'ler, IO'ya maruz kalırken iş parçacıklarının engellenmemesini sağlamak için eşzamanlıdır.
 * İşlemsel: API'ler, bir hizmet içinde birden çok Güvenilir Koleksiyonu kolayca yönetebilmeniz için işlemlerin soyutlanmasını kullanır.
+* Kalıcı veya Geçici: Veriler, büyük ölçekli kesintilere (örneğin, bir veri merkezi elektrik kesintisi) karşı dayanıklılık için diske kalıcı olabilir. Bazı Güvenilir Koleksiyonlar, çoğaltılmış bellek önbelleği gibi tüm verilerin bellekte tutulduğu geçici bir modu da [(Uyarılarla)](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)destekler.
 
 Güvenilir Koleksiyonlar, uygulama durumu yla ilgili muhakeme yi kolaylaştırmak için kutunun dışında güçlü tutarlılık garantileri sağlar.
 Güçlü tutarlılık, işlemin yalnızca tüm işlemin birincil yinelemeler de dahil olmak üzere çoğunluk çoğunluğu üzerinde günlüğe kaydedildikten sonra tamamlanmasını sağlayarak elde edilir.
@@ -57,5 +56,5 @@ Bugün, **Microsoft.ServiceFabric.Data.Collections** üç koleksiyon içerir:
   * [Serileştirme ve Yükseltme](service-fabric-application-upgrade-data-serialization.md)
   * [Güvenilir Durum Yöneticisi yapılandırması](service-fabric-reliable-services-configuration.md)
 * Diğer
-  * [Güvenilir Hizmetler hızlı başlangıç](service-fabric-reliable-services-quick-start.md)
+  * [Güvenilir Hizmetler hızlı başlat](service-fabric-reliable-services-quick-start.md)
   * [Güvenilir Koleksiyonlar için geliştirici başvurusu](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

@@ -5,14 +5,14 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 04/14/2020
 ms.author: mimckitt
-ms.openlocfilehash: b1e5ad60041e9d3b902a06a4875206fa061c73e6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ee6a25ac5a4cc7de8b8340afb186d170cc147a38
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269916"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393784"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçeği otomatik işletim sistemi görüntü yükseltmeleri ayarlayın
 
@@ -109,7 +109,7 @@ GET on `/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 Özellik aboneliğiniz için kaydedildikten sonra, değişikliği Bilgi İşlem kaynak sağlayıcısına yayarak kabul işlemini tamamlayın.
 
 ```
-POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-10-01`
+POST on `/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -168,7 +168,7 @@ Otomatik işletim sistemi görüntü yükseltmesini yapılandırmak için *autom
 Aşağıdaki örnekte, bir ölçek kümesi modelinde otomatik işletim sistemi yükseltmelerinin nasıl ayarlanır:
 
 ```
-PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2018-10-01`
+PUT or PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version=2019-12-01`
 ```
 
 ```json
@@ -247,7 +247,7 @@ Azure PowerShell, Azure CLI 2.0 veya REST API'leri ile ölçeğinizde gerçekle�
 Aşağıdaki örnek, *myResourceGroup*adlı kaynak grubunda *myScaleSet* adlı ölçek kümesinin durumunu kontrol etmek için [REST API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) kullanır:
 
 ```
-GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osUpgradeHistory?api-version=2019-12-01`
 ```
 
 GET çağrısı aşağıdaki örnek çıktıya benzer özellikleri döndürür:
@@ -307,7 +307,7 @@ Aşağıdaki örnekleri kullanarak otomatik işletim sistemi yükseltme destekli
 
 ### <a name="rest-api"></a>REST API
 ```
-GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
+GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell
@@ -332,7 +332,7 @@ Orkestratörün en son görüntüyü kullanmasını beklemek istemediğiniz beli
 Tüm sanal makine ölçeği set örneklerini en son kullanılabilir görüntü işletim sistemi sürümüne taşımak için bir yuvarlanma yükseltmesi başlatmak için [Başlat OS Yükseltme](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API çağrısını kullanın. Kullanılabilir en son işletim sistemi sürümünü çalıştıran örnekler etkilenmez. Aşağıdaki örnek, *myResourceGroup*adlı kaynak grubunda *myScaleSet* adlı bir ölçek kümesinde yuvarlanan işletim sistemi yükseltmesini nasıl başlatabileceğinizi ayrıntıları:
 
 ```
-POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2018-10-01`
+POST on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/osRollingUpgrade?api-version=2019-12-01`
 ```
 
 ### <a name="azure-powershell"></a>Azure PowerShell

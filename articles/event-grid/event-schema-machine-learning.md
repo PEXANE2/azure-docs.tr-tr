@@ -1,26 +1,26 @@
 ---
-title: Azure Olay Izgara Makine Öğrenme olay şeması
+title: Olay Izgara kaynağı olarak Azure Machine Learning
 description: Azure Olay Ağıtı ile Makine Öğrenimi Çalışma Alanı etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
-author: jenns
+author: spelluru
 ms.service: event-grid
-ms.topic: reference
-ms.date: 10/18/2019
-ms.author: jenns
-ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: spelluru
+ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79202153"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393271"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Makine Öğrenimi için Azure Olay Izgara etkinliği şeması
+# <a name="azure-machine-learning-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Machine Learning
 
 Bu makalede, makine öğrenimi çalışma alanı olayları için özellikleri ve şema sağlar. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Örnek komut dosyaları ve öğreticilerin listesi için [AzureML etkinlik kaynağına](event-sources.md#azure-machine-learning)bakın.
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Azure Machine Learning aşağıdaki etkinlik türlerini yayır:
 
@@ -32,7 +32,7 @@ Azure Machine Learning aşağıdaki etkinlik türlerini yayır:
 | Microsoft.MachineLearningServices.DatasetDriftDetected | Bir Dataset drift monitörü sürüklenme algıladığında yükseltilir. |
 | Microsoft.MachineLearningServices.RunStatus Değiştirildi | Çalıştırma durumu 'başarısız' olarak değiştirildiğinde yükseltilir. |
 
-## <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
+### <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
 
 Bir olay tetiklendiğinde, Olay Izgara hizmeti bitiş noktasına abone olmak için bu olayla ilgili verileri gönderir.
 
@@ -186,10 +186,7 @@ Bu bölümde, bu verilerin her olay için nasıl görüneceğine dair bir örnek
 }]
 ```
 
-
-
-
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -260,6 +257,11 @@ Veri nesnesi her olay türü için aşağıdaki özelliklere sahiptir:
 | RunTags | object | Tamamlanan Çalıştır etiketleri. |
 | RunProperties | object | Tamamlanan Çalıştır'ın özellikleri. |
 | RunStatus | string | Run'ın durumu. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+| Başlık | Açıklama |
+| ----- | ----- |
+| [Azure Machine Learning etkinliklerini tüketin](../machine-learning/concept-event-grid-integration.md) | Azure Machine Learning'i Olay Ağı'yla tümleştirmeye genel bakış. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

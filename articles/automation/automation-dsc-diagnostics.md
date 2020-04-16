@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a75b71d43b072d366ef2fcb15bf4c901680d48fb
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383226"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392109"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Otomasyon Durumu Yapılandırması raporlama verilerini Azure Monitor günlüklerine iletme
 
@@ -87,6 +87,7 @@ Günlük Arama bölmesi, Otomasyon hesap kaynağınıza kapsamlı bir sorgu böl
 | where OperationName contains 'DSCNodeStatusData'
 | where ResultType != 'Compliant'
 ```
+
 Filtreleme ayrıntıları:
 
 * Her `DscNodeStatusData` Durum Yapılandırma düğümü için işlemleri döndürmek için filtre uygulayın.
@@ -104,7 +105,7 @@ Bir uyarı kuralı oluşturmak için, uyarıyı çağırması gereken Durum Yap�
 1. Günlük Analizi çalışma alanına Genel Bakış sayfasından **Günlükler'i**tıklatın.
 1. Sorgu alanına aşağıdaki aramayı yazarak uyarınız için bir günlük arama sorgusu oluşturun:`Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
-   Birden fazla Otomasyon hesabından veya çalışma alanınıza abonelikten günlükler ayarladıysanız, uyarılarınızı abonelik ve Otomasyon hesabına göre gruplayabilirsiniz. **DscNodeStatusData** `Resource` kayıtlarında aramada Otomasyon hesap adını alandan türetin.
+   Birden fazla Otomasyon hesabından veya çalışma alanınıza abonelikten günlükler ayarladıysanız, uyarılarınızı abonelik ve Otomasyon hesabına göre gruplayabilirsiniz. Kayıtların aranması için `Resource` otomasyon hesap adını sahadan türetin. `DscNodeStatusData`
 1. **Oluştur kuralı** ekranını açmak için sayfanın üst kısmında Yeni **Uyarı Kuralı'nı** tıklatın. 
 
 Uyarıyı yapılandırma seçenekleri hakkında daha fazla bilgi için [bkz.](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)
@@ -128,46 +129,46 @@ Bu sorgu, zaman içinde düğüm durumunun bir grafiğini görüntüler.
 
 Azure Otomasyon tanılama, Azure Monitor günlüklerinde iki kayıt kategorisi oluşturur:
 
-* Düğüm durum verileri (**DscNodeStatusData**)
-* Kaynak durumu verileri (**DscResourceStatusData**)
+* Düğüm durum verileri`DscNodeStatusData`( )
+* Kaynak durumu`DscResourceStatusData`verileri ( )
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
 | Özellik | Açıklama |
 | --- | --- |
 | TimeGenerated |Uyumluluk denetiminin çalıştırılandığı tarih ve saat. |
-| ThrottledRequests |DscNodeStatusData. |
-| Sonuç Türü |Düğümün uyumlu olup olmadığı. |
+| ThrottledRequests |`DscNodeStatusData`. |
+| Sonuç Türü |Düğümün uyumlu olup olmadığını gösteren değer. |
 | NodeName_s |Yönetilen düğümün adı. |
-| NodeComplianceStatus_s |Düğümün uyumlu olup olmadığı. |
-| DscReportStatus |Uyumluluk denetiminin başarılı çalışıp çalıştırılmayacağı. |
-| Yapılandırma Modu | Yapılandırmanın düğüme nasıl uygulandığı. Olası değerler şunlardır: <ul><li>`ApplyOnly`: DSC yapılandırmayı uygular ve hedef düğüme yeni bir yapılandırma itilmedikçe veya sunucudan yeni bir yapılandırma çekildiğinde başka bir şey yapmaz. Yeni bir yapılandırmanın ilk uygulamasından sonra, DSC önceden yapılandırılmış bir durumdan sürüklenme olup olmadığını denetlemez. `ApplyOnly` DSC, değer etkinleştirilmeden önce yapılandırmayı başarılı olana kadar uygulamaya çalışır. </li><li>`ApplyAndMonitor`: Bu varsayılan değerdir. LCM yeni yapılandırmalar uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenilen durumdan sürükleniyorsa, DSC günlüklerde tutarsızlık bildirir. `ApplyAndMonitor` DSC, değer etkinleştirilmeden önce yapılandırmayı başarılı olana kadar uygulamaya çalışır.</li><li>`ApplyAndAutoCorrect`: DSC yeni yapılandırmalar uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenilen durumdan sürükleniyorsa, DSC günlüklerde tutarsızlığı bildirir ve ardından geçerli yapılandırmayı yeniden uygular.</li></ul> |
+| NodeComplianceStatus_s |Düğüm uyumluysa belirten durum değeri. |
+| DscReportStatus |Uyumluluk denetiminin başarılı bir şekilde çalıştırılıp çalıştırılmasını gösteren durum değeri. |
+| Yapılandırma Modu | Yapılandırmayı düğüme uygulamak için kullanılan mod. Olası değerler şunlardır: <ul><li>`ApplyOnly`: DSC yapılandırmayı uygular ve hedef düğüme yeni bir yapılandırma itilmedikçe veya sunucudan yeni bir yapılandırma çekildiğinde başka bir şey yapmaz. Yeni bir yapılandırmanın ilk uygulamasından sonra, DSC önceden yapılandırılmış bir durumdan sürüklenme olup olmadığını denetlemez. `ApplyOnly` DSC, değer etkinleştirilmeden önce yapılandırmayı başarılı olana kadar uygulamaya çalışır. </li><li>`ApplyAndMonitor`: Bu varsayılan değerdir. LCM yeni yapılandırmalar uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenilen durumdan sürükleniyorsa, DSC günlüklerde tutarsızlık bildirir. `ApplyAndMonitor` DSC, değer etkinleştirilmeden önce yapılandırmayı başarılı olana kadar uygulamaya çalışır.</li><li>`ApplyAndAutoCorrect`: DSC yeni yapılandırmalar uygular. Yeni bir yapılandırmanın ilk uygulamasından sonra, hedef düğüm istenilen durumdan sürükleniyorsa, DSC günlüklerde tutarsızlığı bildirir ve ardından geçerli yapılandırmayı yeniden uygular.</li></ul> |
 | HostName_s | Yönetilen düğümün adı. |
 | IPAddress | Yönetilen düğümün IPv4 adresi. |
-| Kategori | DscNodeDurum. |
+| Kategori | `DscNodeStatus`. |
 | Kaynak | Azure Otomasyon hesabının adı. |
 | Tenant_g | Arayan için kiracıyı tanımlayan GUID. |
-| NodeId_g |Yönetilen düğümü tanımlayan GUID. |
-| DscReportId_g |Raporu tanımlayan GUID. |
-| LastSeenTime_t |Raporun en son görüntülenilen tarih ve saat. |
-| ReportStartTime_t |Raporun başlatıldıı tarih ve saat. |
-| ReportEndTime_t |Raporun tamamlandığı tarih ve saat. |
-| NumberOfResources_d |Düğüme uygulanan yapılandırmada çağrılan DSC kaynaklarının sayısı. |
-| SourceSystem | Azure Monitor günlüklerinin verileri nasıl topladığı. Azure tanılama için her zaman "Azure" |
-| ResourceId |Azure Otomasyon hesabının tanımlayıcısı. |
-| Sonuç Açıklaması | Bu operasyonun açıklaması. |
+| NodeId_g | Yönetilen düğümü tanımlayan GUID. |
+| DscReportId_g | Raporu tanımlayan GUID. |
+| LastSeenTime_t | Raporun en son görüntülenilen tarih ve saat. |
+| ReportStartTime_t | Raporun başlatıldıı tarih ve saat. |
+| ReportEndTime_t | Raporun tamamlandığı tarih ve saat. |
+| NumberOfResources_d | Düğüme uygulanan yapılandırmada çağrılan DSC kaynaklarının sayısı. |
+| SourceSystem | Azure Monitor'un verileri nasıl topladığını tanımlayan kaynak sistem. Azure `Azure` tanılama için her zaman. |
+| ResourceId |Azure Otomasyon hesabının kaynak tanımlayıcısı. |
+| Sonuç Açıklaması | Bu işlem için kaynak açıklaması. |
 | SubscriptionId | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |
 | ResourceProvider | Microsoft. Otomasyon. |
 | ResourceType | OTOMASYON HESAPLARI. |
-| CorrelationId |GUID, uyumluluk raporunun korelasyon tanımlayıcısIdır. |
+| CorrelationId | Uyumluluk raporunun korelasyon tanımlayıcısı olan bir GUID. |
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
 | Özellik | Açıklama |
 | --- | --- |
 | TimeGenerated |Uyumluluk denetiminin çalıştırılandığı tarih ve saat. |
-| ThrottledRequests |DscResourceStatusData.|
+| ThrottledRequests |`DscResourceStatusData`.|
 | Sonuç Türü |Kaynağın uyumlu olup olmadığı. |
 | NodeName_s |Yönetilen düğümün adı. |
 | Kategori | DscNodeDurum. |
@@ -185,7 +186,7 @@ Azure Otomasyon tanılama, Azure Monitor günlüklerinde iki kayıt kategorisi o
 | ErrorMessage_s |Kaynak başarısız olduysa hata iletisi. |
 | DscResourceDuration_d |DSC kaynağının saniyeler içinde çalıştırdığı saat. |
 | SourceSystem | Azure Monitor günlüklerinin verileri nasıl topladığı. Azure `Azure` tanılama için her zaman. |
-| ResourceId |Azure Otomasyon hesabını belirtir. |
+| ResourceId |Azure Otomasyon hesabının tanımlayıcısı. |
 | Sonuç Açıklaması | Bu operasyonun açıklaması. |
 | SubscriptionId | Otomasyon hesabı için Azure abonelik kimliği (GUID). |
 | ResourceGroup | Otomasyon hesabı için kaynak grubunun adı. |

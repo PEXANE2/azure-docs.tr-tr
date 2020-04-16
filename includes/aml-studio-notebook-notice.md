@@ -7,14 +7,14 @@ ms.custom: include file
 ms.topic: include
 author: peterclu
 ms.author: peterclu
-ms.date: 03/12/2020
-ms.openlocfilehash: 900eea5b7807b718274690bc34a32213bfe7ea7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 1ae0b4bda584e86bc3a25f6cd5181175fc7fa282
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204077"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81411916"
 ---
 > [!NOTE]
-> Studio'daki Notebook (önizleme) özelliği (klasik) 13 Nisan 2020'de kapatılacak. 13 Nisan'dan sonra, Not Defterleri sekmesi kaydedilmiş tüm not defterleriyle birlikte kaldırılacak. Not defterlerinizi nasıl indirebileceğinize ilişkin talimatlar için [bu makaleye](../articles/machine-learning/studio/download-notebooks-data.md)bakın.
+> Notebooks (önizleme) özelliği *13 Nisan 2020*tarihinde kaldırıldı. Not Defterleri sekmesi nin ve kullanıcı not defteri dosyalarının kaldırılması şu anda dünya çapında Azure bölgelerine yayılıyor.
       

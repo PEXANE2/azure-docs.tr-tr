@@ -3,17 +3,17 @@ title: Azure Kubernetes Service’in (AKS) hizmet sorumluları
 description: Azure Kubernetes Service’te bir küme için Azure Active Directory hizmet sorumlusu oluşturma ve yönetme
 services: container-service
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.openlocfilehash: 523f08ddbf22e175af5b0604b04d4a2460ffd634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 2c792eb4dc060e3f5d7fa2d8f2176bdd51538c43
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259428"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392734"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
-Bir AKS kümesi, Azure API’leri ile etkileşim kurmak için [Azure Active Directory (AD) hizmet sorumlusu][aad-service-principal] gerektirir. Azure yük dengeleyicisi veya kapsayıcı kayıt defteri (ACR) gibi diğer Azure kaynaklarını dinamik olarak oluşturmak ve yönetmek için hizmet sorumlusuna ihtiyaç vardır.
+Azure API'leri ile etkileşimde kalmak için BIR AKS kümesi için bir [Azure Etkin Dizin (AD) hizmet yöneticisi][aad-service-principal] veya yönetilen bir [kimlik](use-managed-identity.md)gerekir. Azure yük bakiyesi veya kapsayıcı kayıt defteri (ACR) gibi diğer Azure kaynaklarını dinamik olarak oluşturmak ve yönetmek için bir hizmet sorumlusu veya yönetilen kimlik gereklidir.
 
 Bu makalede, AKS kümeleriniz için bir hizmet sorumlusunun nasıl oluşturulacağı ve kullanılacağı gösterilmektedir.
 
@@ -95,7 +95,7 @@ Aşağıdaki bölümlerde yapmanız gereken ortak delegasyonlar ayrıntılı.
 
 Azure Kapsayıcı Kayıt Defteri'ni (ACR) kapsayıcı görüntü deponuz olarak kullanıyorsanız, AKS kümenizin görüntüleri okuması ve çekmesi için hizmet sorumlusuna izin vermeniz gerekir. Şu anda, önerilen yapılandırma bir kayıt defteri ile tümleştirmek ve hizmet sorumlusu için uygun rolü atamak için [az aks oluşturma][az-aks-create] veya [az aks güncelleştirme][az-aks-update] komutunu kullanmaktır. Ayrıntılı adımlar için Azure [Kubernetes Hizmetinden Azure Kapsayıcı Kayıt Defteri ile Kimlik Doğrulaması'na][aks-to-acr]bakın.
 
-### <a name="networking"></a>Ağ Oluşturma
+### <a name="networking"></a>Ağ
 
 Sanal ağ ve alt ağ veya genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanımını kullanabilirsiniz. Aşağıdaki rol izinlerinden birini atayın:
 

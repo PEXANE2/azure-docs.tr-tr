@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3a885f071c89ff6d9bb79d908b19c9451b4ed735
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 72a40363edf0e83eea26ee697ce992226da0db4f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383314"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392283"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Tek başına Azure Otomasyonu hesabı oluşturma
 
@@ -18,29 +18,28 @@ Bu makalede, Azure portalında nasıl bir Azure Otomasyon hesabı oluşturabilec
 
 Otomasyon hesabıyla, Azure Kaynak Yöneticisi veya klasik dağıtım modelindeki kaynakları yöneterek runbook'ların kimliğini doğrulayabilirsiniz. Bir Otomasyon Hesabı belirli bir kiracı için kaynakları tüm bölgelerde ve aboneliklerde yönetebilir.
 
-Azure portalında bir Otomasyon hesabı oluşturduğunuzda, bu hesaplar otomatik olarak oluşturulur:
+Azure portalında bir Otomasyon hesabı oluşturduğunuzda, **Çalıştır** hesabı otomatik olarak oluşturulur. Bu hesap aşağıdaki görevleri yapar:
 
-* **Hesap Olarak çalıştırın.** Bu hesap aşağıdaki görevleri yapar:
-  * Azure Etkin Dizin (Azure AD)'nde bir hizmet ilkesi oluşturur.
-  * Bir sertifika oluşturur.
-  * Azure Kaynak Yöneticisi kaynaklarını runbook'ları kullanarak yöneten Katılımcı RolüTabanlı Erişim Denetimi'ni (RBAC) atar.
+* Azure Etkin Dizin (Azure AD)'nde bir hizmet ilkesi oluşturur.
+* Bir sertifika oluşturur.
+* Azure Kaynak Yöneticisi kaynaklarını runbook'ları kullanarak yöneten Katılımcı RolüTabanlı Erişim Denetimi'ni (RBAC) atar.
 
-Sizin için oluşturulan bu hesaplarla, otomasyon ihtiyaçlarınızı desteklemek için çalışma defterleri oluşturmaya ve dağıtmaya hızlı bir şekilde başlayabilirsiniz.
+Sizin için oluşturulan bu hesapla, otomasyon ihtiyaçlarınızı desteklemek için çalışma defterleri oluşturmaya ve dağıtmaya hızlı bir şekilde başlayabilirsiniz.
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Otomasyon hesabı oluşturmak için gereken izinler
 
 Bir Otomasyon hesabı oluşturmak veya güncelleştirmek ve bu makalede açıklanan görevleri tamamlamak için aşağıdaki ayrıcalıklara ve izinlere sahip olmalısınız:
 
-* Bir Otomasyon hesabı oluşturmak için Azure AD kullanıcı hesabınızın Microsoft'un Sahibi rolüne eşdeğer izinlere sahip bir role eklenmesi **gerekir. Otomasyon** kaynakları. Daha fazla bilgi için Azure [Otomasyonunda Rol Tabanlı Erişim Denetimi'ne](automation-role-based-access-control.md)bakın.
+* Bir Otomasyon hesabı oluşturmak için Azure AD kullanıcı hesabınızın, kaynaklar için `Microsoft.Automation` Sahip rolüne eşdeğer izinlere sahip bir role eklenmesi gerekir. Daha fazla bilgi için Azure [Otomasyonunda Rol Tabanlı Erişim Denetimi'ne](automation-role-based-access-control.md)bakın.
 * Azure portalında, **Azure Active Directory** > **MANAGE** > **Kullanıcı ayarları**altında, Uygulama **kayıtları** **Evet**olarak ayarlanmışsa, Azure AD kiracınızdaki yönetici olmayan kullanıcılar [Active Directory uygulamalarını kaydedebilir.](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions) **Uygulama kayıtları** **Hayır**olarak ayarlanmışsa, bu eylemi gerçekleştiren kullanıcının Azure AD'de genel bir yönetici olması gerekir.
 
-Aboneliğin genel yönetici/yardımcı yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, Etkin Dizini'ne konuk olarak eklenirsiniz. Bu senaryoda, Bu iletiyi **Ek Otomasyon Hesabı** sayfasında görürsünüz: "Oluşturma izniniz yoktur."
+Aboneliğin genel Yönetici/Yardımcı Yönetici rolüne eklenmeden önce aboneliğin Active Directory örneğinin bir üyesi değilseniz, Etkin Dizini'ne konuk olarak eklenirsiniz. Bu senaryoda, Bu iletiyi Otomasyon Hesabı Ekle bölmesinde görürsünüz:`You do not have permissions to create.`
 
-Bir kullanıcı önce genel yönetici/yardımcı yönetici rolüne eklenirse, bunları aboneliğin Etkin Dizin örneğinden kaldırabilir ve ardından Etkin Dizini'nde tam Kullanıcı rolüne göre okuyabilirsiniz.
+Önce genel Yönetici/Yardımcı Yönetici rolüne bir kullanıcı eklenirse, kullanıcıyı aboneliğin Etkin Dizin örneğinden kaldırabilirsiniz. Kullanıcıyı Active Directory'deki Kullanıcı rolüne göre okuyabilirsiniz.
 
 Kullanıcı rollerini doğrulamak için:
 
-1. Azure portalında **Azure Etkin Dizin** bölmesine gidin.
+1. Azure portalında Azure Etkin Dizin bölmesine gidin.
 1. **Kullanıcıları ve grupları**seçin.
 1. **Tüm kullanıcıları**seçin.
 1. Belirli bir kullanıcıyı seçtikten sonra **Profil'i**seçin. Kullanıcı profili altında **Kullanıcı türü** özniteliğinin değeri **Konuk**olmamalıdır.
@@ -55,30 +54,34 @@ Azure portalında bir Azure Otomasyon hesabı oluşturmak için aşağıdaki ad�
 
    ![Azure Marketi'nde Otomasyon & Denetimi'ni arayın ve seçin](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)
 
-1. Sonraki ekranda **Oluştur'u**seçin.
+1. Bir sonraki ekranda **yeni oluştur'u**seçin.
 
    ![Otomasyon hesabı ekle](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
    > [!NOTE]
-   > Aşağıdaki iletiyi Otomasyon **Hesabı Ekle** bölmesinde görürseniz, hesabınız abonelik Yöneticileri rolünün bir üyesi ve aboneliğin yardımcı yöneticisi değildir.
+   > Aşağıdaki iletiyi Otomasyon Hesabı Ekle bölmesinde görürseniz, hesabınız abonelik Yöneticileri rolünün bir üyesi ve aboneliğin yardımcı yöneticisi değildir.
    >
    > ![Otomasyon hesap uyarısı ekle](media/automation-create-standalone-account/create-account-without-perms.png)
 
-1. Ek **Otomasyon Hesabı** bölmesinde, **Ad** kutusuna yeni Otomasyon hesabınız için bir ad girin. Bu ad seçildikten sonra değiştirilemez. *Otomasyon Hesabı adları bölge ve kaynak grubuna göre benzersizdir. Silinen Otomasyon Hesapları nın adları hemen kullanılamayabilir.*
-1. **Abonelik** kutusunda birden fazla aboneliğiniz varsa, yeni hesap için kullanmak istediğiniz aboneliği belirtin.
+1. Otomasyon Hesabı Ekle bölmesine, **Ad** alanına yeni Otomasyon hesabınızın adını girin. Seçildikten sonra bu ismi değiştiremezsin. 
+
+    > [!NOTE]
+    > Otomasyon hesap adları bölge ve kaynak grubuna göre benzersizdir. Silinen Otomasyon hesaplarının adları hemen kullanılamayabilir.
+
+1. Birden fazla aboneliğiniz varsa, yeni hesap için kullanılacak aboneliği belirtmek için **Abonelik** alanını kullanın.
 1. **Kaynak grubu**için, yeni veya varolan bir kaynak grubu girin veya seçin.
 1. **Konum**için bir Azure veri merkezi konumu seçin.
-1. Azure **Run As hesabı** için Evet **seçildiğinden** emin olun ve ardından **Oluştur'u**seçin.
+1. Azure **Run As hesabı** için Evet **seçildiğinden** emin olun ve ardından **Oluştur'u**tıklatın.
 
    > [!NOTE]
-   > Azure Çalıştır Hesabı Olarak **Oluştur'a Hayır'ı** seçerek Çalıştır hesabı oluşturmamayı seçerseniz, **Hesap Ekle** bölmesinde bir ileti görüntülenir. **Create Azure Run As account** Hesap Azure portalında oluşturulsa da, hesabın klasik dağıtım modeli aboneliğinizde veya Azure Kaynak Yöneticisi abonelik dizini hizmetinde karşılık gelen bir kimlik kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran tüm runbook'ların bu dağıtım modellerindeki kaynaklara karşı görevleri doğrulamasını ve gerçekleştirebilmelerini önler.
+   > Azure Çalıştır Hesabı Olarak **Oluştur'a Hayır'ı** seçerek Çalıştır hesabı oluşturmamayı seçerseniz, Hesap Ekle bölmesinde bir ileti görüntülenir. **Create Azure Run As account** Hesap Azure portalında oluşturulsa da, hesabın klasik dağıtım modeli aboneliğinizde veya Azure Kaynak Yöneticisi abonelik dizini hizmetinde karşılık gelen bir kimlik kimliği yoktur. Bu nedenle, Otomasyon hesabının aboneliğinizdeki kaynaklara erişimi yoktur. Bu, bu hesaba başvuran tüm runbook'ların bu dağıtım modellerindeki kaynaklara karşı görevleri doğrulamasını ve gerçekleştirebilmelerini önler.
    >
    > ![Otomasyon hesap uyarısı ekle](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
    >
    > Hizmet sorumlusu oluşturulmadı, Katılımcı rolü atanmaz.
    >
 
-1. Otomasyon hesabı oluşturma nın ilerlemesini izlemek için menüde **Bildirimler'i**seçin.
+1. Otomasyon hesabı oluşturmanın ilerlemesini izlemek için menüdeki **Bildirimler'i** seçin.
 
 ### <a name="resources-included"></a>Kaynaklar dahil
 

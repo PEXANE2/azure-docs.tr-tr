@@ -1,20 +1,20 @@
 ---
-title: Azure Olay Izgarası abonelik olay şeması
+title: Olay Izgara kaynağı olarak Azure aboneliği
 description: Azure Olay Ağıtı ile abonelik etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/12/2019
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 4994063dfc3bce88489f70969c06bf36b591f907
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa88fe4e05ac968588a65d67a2f075bcae48ba7a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60561685"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393221"
 ---
-# <a name="azure-event-grid-event-schema-for-subscriptions"></a>Abonelikler için Azure Olay Izgara olay şeması
+# <a name="azure-subscription-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure aboneliği
 
 Bu makalede, Azure abonelik olayları nın özellikleri ve şeması sağlanmaktadır.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
@@ -28,9 +28,10 @@ Olayları programlı bir şekilde işlemek `operationName` için, değeri bakara
 
 Olay konusu, işlemin hedefi olan kaynağın kaynak kimliğidir. Bir kaynak için olayları filtrelemek için, olay aboneliği oluştururken bu kaynak kimliğini sağlayın. Kaynak türüne göre filtre uygulayın, aşağıdaki biçimde bir değer kullanın:`/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Örnek komut dosyaları ve öğreticilerin listesi için [Azure abonelik olay kaynağına](event-sources.md#azure-subscriptions)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Azure abonelikleri, VM oluşturulduğunda veya bir depolama hesabının silindiği zaman gibi Azure Kaynak Yöneticisi'nden yönetim olayları yayar.
 
@@ -46,7 +47,7 @@ Azure abonelikleri, VM oluşturulduğunda veya bir depolama hesabının silindi�
 | Microsoft.Resources.ResourceWriteFailure | Oluşturma veya güncelleştirme işlemi başarısız olduğunda yükseltildi. |
 | Microsoft.Resources.ResourceWriteSuccess | Oluşturma veya güncelleştirme işlemi başarılı olduğunda yükseltilir. |
 
-## <a name="example-event"></a>Örnek olay
+### <a name="example-event"></a>Örnek olay
 
 Aşağıdaki örnek, **ResourceWriteSuccess** olayının şeasını gösterir. Aynı şema KaynakYazma Hatası ve **ResourceWriteCancel** için farklı `eventType`değerlere sahip olaylar için kullanılır. **ResourceWriteFailure**
 
@@ -230,7 +231,7 @@ Aşağıdaki örnek, **ResourceActionSuccess** olayının şeasını gösterir. 
 }]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -259,6 +260,14 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | durum | string | İşlemin durumu. |
 | subscriptionId | string | Kaynağın abonelik kimliği. |
 | tenantId | string | Kaynağın kiracı kimliği. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık |Açıklama  |
+|---------|---------|
+| [Öğretici: Olay Izgarave Microsoft Ekipleri ile Azure Otomasyonu](ensure-tags-exists-on-new-virtual-machines.md) |Bir olay gönderen sanal bir makine oluşturun. Olay, sanal makineyi etiketleyen bir Otomasyon runbook'u tetikler ve microsoft teams kanalına gönderilen bir iletiyi tetikler. |
+| [Nasıl: portal üzerinden etkinliklere abone](subscribe-through-portal.md) | Azure aboneliği için etkinliklere abone olmak için portalı kullanın. |
+| [Azure CLI: Azure aboneliği için etkinliklere abone olun](./scripts/event-grid-cli-azure-subscription.md) |Azure aboneliği için Olay Izgara aboneliği oluşturan ve olayları Bir WebHook'a gönderen örnek komut dosyası. |
+| [PowerShell: Azure aboneliği için etkinliklere abone olun](./scripts/event-grid-powershell-azure-subscription.md)| Azure aboneliği için Olay Izgara aboneliği oluşturan ve olayları Bir WebHook'a gönderen örnek komut dosyası. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

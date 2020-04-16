@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 17e474de9c221126d67cc2982ba11c6ff75e7aa3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668503"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392822"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Standart SKU yük dengeleyicisi kullanın
 
@@ -32,7 +32,7 @@ CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI
 
 Bu makalede, *Standart* SKU Azure Yük Dengeleyicisi ile bir AKS kümeniz olduğunu varsayar. AKS kümesine ihtiyacınız varsa, [Azure CLI'yi veya][aks-quickstart-cli] [Azure portalını kullanarak][aks-quickstart-portal]AKS hızlı başlat'ına bakın.
 
-Varolan bir alt ağ veya kaynak grubu kullanıyorsanız, AKS küme hizmeti ilkesinin ağ kaynaklarını yönetmek için de izin alması gerekir. Genel olarak, ağ *katılımcısı* rolünü devredilen kaynaklardaki hizmet yöneticinize atayın. İzinler hakkında daha fazla bilgi için, [aks temsilcisinin diğer Azure kaynaklarına erişimine][aks-sp]bakın.
+Varolan bir alt ağ veya kaynak grubu kullanıyorsanız, AKS küme hizmeti ilkesinin ağ kaynaklarını yönetmek için de izin alması gerekir. Genel olarak, ağ *katılımcısı* rolünü devredilen kaynaklardaki hizmet yöneticinize atayın. Hizmet sorumlusu yerine, yönetilen kimlik atanan sistemi izinler için de kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md) İzinler hakkında daha fazla bilgi için, [aks temsilcisinin diğer Azure kaynaklarına erişimine][aks-sp]bakın.
 
 ### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Temel SKU Yük Dengeleyicisinden Standart SKU'ya geçme
 
@@ -189,7 +189,7 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 
 Örnek çıktı, *AllocatedOutboundPorts* ve *IdleTimeoutInMinutes*için varsayılan değeri gösterir. *AllocatedOutboundPorts* için 0 değeri, arka uç havuz boyutuna bağlı olarak giden bağlantı noktası sayısı için otomatik atama yı kullanarak giden bağlantı noktası sayısını ayarlar. Örneğin, kümede 50 veya daha az düğüm varsa, her düğüm için 1024 bağlantı noktası ayrılır.
 
-Yukarıdaki varsayılan yapılandırmaya dayalı olarak SNAT tükenmesi ile karşılaşmayı *bekliyorsanız, ayrılan Giden Bağlantı Noktaları* veya *IdleTimeoutInMinutes* ayarını değiştirmeyi düşünün. Her ek IP adresi tahsis için 64.000 ek bağlantı noktası sağlar, ancak Azure Standart Yük Dengeleyicisi daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük bakiyesi-giden bağlantı noktalarını* ve *yük bakiyesi-boşta-zaman ayarı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örnek:
+Yukarıdaki varsayılan yapılandırmaya dayalı olarak SNAT tükenmesi ile karşılaşmayı *bekliyorsanız, ayrılan Giden Bağlantı Noktaları* veya *IdleTimeoutInMinutes* ayarını değiştirmeyi düşünün. Her ek IP adresi tahsis için 64.000 ek bağlantı noktası sağlar, ancak Azure Standart Yük Dengeleyicisi daha fazla IP adresi eklendiğinde düğüm başına bağlantı noktalarını otomatik olarak artırmaz. *Yük bakiyesi-giden bağlantı noktalarını* ve *yük bakiyesi-boşta-zaman ayarı* parametrelerini ayarlayarak bu değerleri değiştirebilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az aks update \
@@ -202,7 +202,7 @@ az aks update \
 > [!IMPORTANT]
 > Bağlantı veya ölçekleme sorunlarını önlemek için *ayrılan OutboundPorts'u* özelleştirmeden önce [gerekli kotanızı hesaplamanız][calculate-required-quota] gerekir. *Tahsis Edilen Giden Bağlantı Noktaları* için belirttiğiniz değer de 8'in bir katı olmalıdır.
 
-Küme oluştururken *yük bakiyesi-giden bağlantı noktalarını* ve *yük bakiyesi-boşta zaman ayırma* parametrelerini de kullanabilirsiniz, ancak *yük-bakiye-yönetilen-giden ip sayısı,* *yük-bakiye-giden ip sayısı*veya *yük-bakiye-giden ip-önekleri* de belirtmeniz gerekir.  Örnek:
+Küme oluştururken *yük bakiyesi-giden bağlantı noktalarını* ve *yük bakiyesi-boşta zaman ayırma* parametrelerini de kullanabilirsiniz, ancak *yük-bakiye-yönetilen-giden ip sayısı,* *yük-bakiye-giden ip sayısı*veya *yük-bakiye-giden ip-önekleri* de belirtmeniz gerekir.  Örneğin:
 
 ```azurecli-interactive
 az aks create \

@@ -1,25 +1,27 @@
 ---
-title: Azure Olay Izgara Kapsayıcı Kayıt Defteri olay şeması
+title: Olay Izgara kaynağı olarak Azure Kapsayıcı Kayıt Defteri
 description: Azure Olay Ağıt'ı ile Konteyner Kayıt Defteri etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
-ms.topic: reference
-ms.date: 03/12/2019
+ms.topic: conceptual
+ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: c5998ff428c4b6f4c1f7a4087c6ccb27d93773eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e33feb04edf42f1e2a32b9b8c8e2fd214692f31
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60345473"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393355"
 ---
-# <a name="azure-event-grid-event-schema-for-container-registry"></a>Konteyner Kayıt Defteri için Azure Olay Izgara olay şeması
+# <a name="azure-container-registry-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Kapsayıcı Kayıt Defteri
 
 Bu makalede, Kapsayıcı Kayıt Defteri olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 Azure Kapsayıcı Kayıt Defteri aşağıdaki olay türlerini yayır:
 
@@ -30,7 +32,7 @@ Azure Kapsayıcı Kayıt Defteri aşağıdaki olay türlerini yayır:
 | Microsoft.ContainerRegistry.ChartPushed | Bir Helm grafiği itildiğinde yükseltilir. |
 | Microsoft.ContainerRegistry.ChartDeleted | Bir Miğfer grafiği silindiğinde yükseltilir. |
 
-## <a name="example-event"></a>Örnek olay
+### <a name="example-event"></a>Örnek olay
 
 Aşağıdaki örnek, bir görüntünün itilen olayışeme sini gösterir: 
 
@@ -151,7 +153,7 @@ Silinen bir grafik için şema, görüntülenmiş silinmiş bir olayın şeması
 }]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -198,6 +200,12 @@ Hedef nesne aşağıdaki özelliklere sahiptir:
 | konak | string | Gelen isteklerde http ana bilgisayar üstbilgisinde belirtildiği gibi, kayıt defteri örneğinin dışarıdan erişilebilir ana adı. |
 | method | string | Olayı oluşturan istek yöntemi. |
 | Useragent | string | İsteğin kullanıcı aracısı üstbilgisi. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık |Açıklama  |
+|---------|---------|
+| [Quickstart: konteyner kayıt defteri olayları gönderme](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Kapsayıcı Kayıt Defteri etkinliklerini göndermek için Azure CLI'nin nasıl kullanılacağını gösterir. |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

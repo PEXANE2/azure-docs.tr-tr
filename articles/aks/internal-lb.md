@@ -5,12 +5,12 @@ description: Azure Kubernetes Hizmeti (AKS) ile hizmetlerinizi ortaya çıkarmak
 services: container-service
 ms.topic: article
 ms.date: 03/04/2019
-ms.openlocfilehash: 4decd66a558b031f1aaaf9c64556dae545ed05d3
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 9c2966215d07c4ddf052d30a5757a2deee2e0b5c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668421"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392785"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile dahili yük dengeleyicisi kullanın
 
@@ -25,7 +25,7 @@ Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız v
 
 Ayrıca Azure CLI sürüm 2.0.59 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
 
-Varolan bir alt ağ veya kaynak grubu kullanıyorsanız, AKS küme hizmeti ilkesiağ kaynaklarını yönetmek için izin alır. Genel olarak, ağ *katılımcısı* rolünü devredilen kaynaklardaki hizmet yöneticinize atayın. İzinler hakkında daha fazla bilgi için, [aks temsilcisinin diğer Azure kaynaklarına erişimine][aks-sp]bakın.
+Varolan bir alt ağ veya kaynak grubu kullanıyorsanız, AKS küme hizmeti ilkesiağ kaynaklarını yönetmek için izin alır. Genel olarak, ağ *katılımcısı* rolünü devredilen kaynaklardaki hizmet yöneticinize atayın. Hizmet sorumlusu yerine, yönetilen kimlik atanan sistemi izinler için kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md) İzinler hakkında daha fazla bilgi için, [aks temsilcisinin diğer Azure kaynaklarına erişimine][aks-sp]bakın.
 
 ## <a name="create-an-internal-load-balancer"></a>İç yük dengeleyici oluşturma
 

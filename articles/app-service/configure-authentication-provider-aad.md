@@ -3,14 +3,14 @@ title: Azure AD kimlik doğrulamasını yapılandırma
 description: Uygulama Hizmetiniz veya Azure İşlevler uygulamanız için kimlik sağlayıcısı olarak Azure Active Directory kimlik doğrulamasını nasıl yapılandırabilirsiniz öğrenin.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632579"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392555"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD oturum unu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
@@ -19,8 +19,7 @@ ms.locfileid: "80632579"
 Bu makalede, Azure Uygulama Hizmeti veya Azure İşlevlerini, kimlik doğrulama sağlayıcısı olarak Azure Etkin Dizini (Azure AD) kullanacak şekilde nasıl yapılandırabileceğiniz gösterilmektedir.
 
 > [!NOTE]
-> Şu anda Azure [Active Directory v2.0](../active-directory/develop/v2-overview.md) [(MSAL](../active-directory/develop/msal-overview.md)dahil) Azure Uygulama Hizmeti ve Azure İşlevleri için desteklenmez. Güncellemeler için lütfen tekrar kontrol edin.
->
+> Ekspres ayarlar akışı bir AAD V1 uygulama kaydı ayarlar. [Azure Active Directory v2.0](../active-directory/develop/v2-overview.md) [(MSAL](../active-directory/develop/msal-overview.md)dahil) kullanmak istiyorsanız, lütfen [gelişmiş yapılandırma yönergelerini](#advanced)izleyin.
 
 Uygulamanızı ve kimlik doğrulamanızı ayarlarken aşağıdaki en iyi uygulamaları izleyin:
 
@@ -50,7 +49,7 @@ Uygulamanızı ve kimlik doğrulamanızı ayarlarken aşağıdaki en iyi uygulam
 
     > [!CAUTION]
     > Bu şekilde erişimi kısıtlamak, uygulamanıza yapılan tüm aramalar için geçerlidir ve bu da birçok tek sayfalı uygulamada olduğu gibi herkese açık bir ana sayfaya sahip uygulamalar için isden edilmeyebilir. Bu tür uygulamalar için, uygulamanın oturum açmayı el ile başlatmasıyla anonim isteklere izin ver **(eylem yok)** tercih edilebilir. Daha fazla bilgi için [kimlik doğrulama akışına](overview-authentication-authorization.md#authentication-flow)bakın.
-5. **Kaydet'i**seçin.
+5. **Kaydet**’i seçin.
 
 ## <a name="configure-with-advanced-settings"></a><a name="advanced"> </a>Gelişmiş ayarlarla yapılandırma
 
@@ -74,7 +73,7 @@ Aşağıdaki adımları uygulayın:
 1. **Azure Active Directory** > **App kayıtlarını** > seçin**Yeni kayıt**.
 1. Bir uygulama sayfası **kaydol,** uygulama kaydı için bir **Ad** girin.
 1. **URI'yi Yeniden**Yönlendirme'de `<app-url>/.auth/login/aad/callback` **Web'i** seçin ve yazın. Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan **sonra, Uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** daha sonra kopyalayın.
 1. **Kimlik Doğrulaması**'nı seçin. **Örtülü hibe**kapsamında, Uygulama Hizmeti'nden OpenID Connect kullanıcı oturum açmalarına izin vermek için **kimlik belirteçlerini** etkinleştirin.
 1. (İsteğe bağlı) **Markaseçin.** **Giriş sayfası URL'sinde,** Uygulama Hizmeti uygulamanızın URL'sini girin ve **Kaydet'i**seçin.
@@ -101,7 +100,7 @@ Aşağıdaki adımları uygulayın:
     |Alan|Açıklama|
     |-|-|
     |İstemci Kimliği| Uygulama kaydının **Uygulama (istemci) kimliğini** kullanın. |
-    |İhraççı Url| Kiracı `https://login.microsoftonline.com/<tenant-id>`kimliği * \<>* uygulama kaydının **Dizin (kiracı) kimliğiyle** kullanın ve değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek ve örneğin uygun belirteç imzalama anahtarlarını ve belirteç veren talep değerini belirlemek için uygun meta verileri indirmek için kullanılır. |
+    |İhraççı Url| Kiracı `https://login.microsoftonline.com/<tenant-id>/v2.0`kimliği * \<>* uygulama kaydının **Dizin (kiracı) kimliğiyle** kullanın ve değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek ve örneğin uygun belirteç imzalama anahtarlarını ve belirteç veren talep değerini belirlemek için uygun meta verileri indirmek için kullanılır. Bölüm, `/v2.0` AAD v1 kullanarak yapılan uygulamalar için atlanabilir. |
     |İstemci Sırrı (İsteğe Bağlı)| Uygulama kaydında oluşturduğunuz istemci sırrını kullanın.|
     |İzin Verilen Belirteç Kitleleri| Bu bir bulut veya sunucu uygulamasıysa ve bir web uygulamasından kimlik doğrulama belirteçlerine izin vermek istiyorsanız, web uygulamasının **Uygulama Kimliği URI'sini** buraya ekleyin. Yapılandırılan **İstemci Kimliği** *her zaman* dolaylı olarak izin verilen bir hedef kitle olarak kabul edilir. |
 
@@ -119,7 +118,7 @@ Artık Uygulama Hizmeti uygulamanızda kimlik doğrulama için Azure Active Dire
 
     > [!NOTE]
     > Bir Microsoft Mağazası uygulaması için, bunun yerine URI olarak [SID paketini](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) kullanın.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 1. Uygulama kaydı oluşturulduktan **sonra, Uygulama (istemci) kimliğinin**değerini kopyalayın.
 1. API **izinlerini** > seçin**İzin** > **apilerim**ekleyin.
 1. Uygulama Hizmeti uygulamanız için daha önce oluşturduğunuz uygulama kaydını seçin. Uygulama kaydını görmüyorsanız, [Uygulama Hizmeti uygulamanız için Azure AD'da uygulama kaydı oluştur'da](#register) **user_impersonation** kapsamını eklediğinizden emin olun.

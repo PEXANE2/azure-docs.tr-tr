@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: e6109a87750e588b12bfc9836c5db3db55420ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133795"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393768"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux (RHEL) görüntüleri Azure'da kullanılabilir
 Azure, farklı kullanım örnekleri için çeşitli RHEL görüntüleri sunar.
@@ -76,6 +76,9 @@ rhel-byos     |rhel-lvm74| Lvm    | Linux Aracısı | Herhangi bir güncelleme k
 |             |rhel-lvm76| Lvm    | Linux Aracısı | Herhangi bir güncelleme kaynağına iliştirilmeyen RHEL 7.6 BYOS görüntüleri, RHEL primi ödemez.
 |             |rhel-lvm77| Lvm    | Linux Aracısı | Herhangi bir güncelleme kaynağına iliştirilmeyen RHEL 7.7 BYOS görüntüleri, RHEL primi ödemez.
 |             |rhel-lvm8 | Lvm    | Linux Aracısı | RHEL 8 BYOS görüntüleri (RHEL minör versiyonu görüntü sürüm değerinde gösterilir), herhangi bir güncelleştirme kaynağına iliştirilmez, BIR RHEL primi ücretlendirmez.
+
+> [!NOTE]
+> RHEL-SAP-HANA ürün teklifi Red Hat tarafından yaşamın sonu olarak kabul edilir. Varolan dağıtımlar normal şekilde çalışmaya devam eder, ancak Red Hat müşterilerin RHEL-SAP-HANA görüntülerinden SAP HANA depolarının yanı sıra HA eklentisini de içeren RHEL-SAP-HA görüntülerine geçiş yapmasını önerir. Red Hat'in SAP bulut teklifleri hakkında daha fazla bilgi için [burada.](https://access.redhat.com/articles/3751271)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure'daki Red Hat görüntüleri](./redhat-images.md)hakkında daha fazla bilgi edinin.

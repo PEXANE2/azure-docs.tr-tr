@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: dd986a7557f468b939aefe1da825c9834618047f
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76165977"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81402911"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Öğretici: Resimdeki yüzleri algılamak ve çerçeve içine almak için Android uygulaması oluşturma
 
-Bu eğitimde, görüntüdeki insan yüzlerini algılamak için Java SDK aracılığıyla Azure Face hizmetini kullanan bir Android uygulaması oluşturacaksınız. Uygulama seçili bir görüntü görüntüler ve algılanan her yüzün etrafına bir çerçeve çizer.
+Bu eğitimde, görüntüdeki insan yüzlerini algılamak için Java SDK aracılığıyla Azure Yüz hizmetini kullanan bir Android uygulaması oluşturursunuz. Uygulama seçili bir görüntü görüntüler ve algılanan her yüzün etrafına bir çerçeve çizer.
 
 Bu öğretici şunların nasıl yapıldığını gösterir:
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 - Yüz abonelik anahtarı. [Bilişsel Hizmetleri Deneyin](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ücretsiz deneme abonelik anahtarı alabilirsiniz. Veya Face hizmetine abone olmak ve anahtarınızı almak için [Bilişsel Hizmetler Oluştur hesabındaki](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) yönergeleri izleyin. Ardından, sırasıyla ve sırasıyla anahtar `FACE_SUBSCRIPTION_KEY` ve `FACE_ENDPOINT`hizmet bitiş noktası dizesi için ortam [değişkenleri oluşturun.](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)
 - [Visual Studio 2015 veya 2017](https://www.visualstudio.com/downloads/)'nin herhangi bir sürümü.
-- API düzeyi 22 veya daha sonra (Face istemci kitaplığı tarafından gereklidir) ile [Android Studio.](https://developer.android.com/studio/)
+- API düzeyi 22 veya daha sonra android [studio.](https://developer.android.com/studio/)
 
 ## <a name="create-the-android-studio-project"></a>Android Studio projesini oluşturun
 
@@ -123,7 +123,7 @@ Uygulamayı çalıştırın ve içinde yüzlerin yer aldığı bir resim bulun. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, Yüz Java SDK'yı kullanmak için temel işlemi öğrendiniz ve görüntüdeki yüzleri algılamak ve çerçevelemek için bir uygulama oluşturdunuz. Ardından, yüz algılama ayrıntıları hakkında daha fazla bilgi edinin.
+Bu eğitimde, görüntüdeki yüzleri algılamak ve çerçevelemek için bir uygulama oluşturmak için Face Java SDK'yı kullanmayı öğrendiniz. Ardından, yüz algılama ayrıntıları hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Resimdeki Yüzleri Tanıma](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

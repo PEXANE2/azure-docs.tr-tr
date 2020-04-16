@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 35025bf1592f1293b9326d643f76322b4af590c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46bceeb31fa38068c6c4f9f3a86ed556ad39effb
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501200"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393162"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Etkinlik Grid'inde sistem konuları
 Azure Olay Ağı hizmeti, bir Azure etkinlik kaynağı için ilk etkinlik aboneliği oluşturduğunuzda sistem konuları oluşturur. Şu anda, Olay Izgara Mar, 15, 2020 önce oluşturulan konu kaynakları için sistem konuları oluşturmaz. Bu tarihte veya bu tarihten sonra oluşturduğunuz tüm konu kaynakları için Olay Idamı otomatik olarak sistem konuları oluşturur. Bu makalede, Azure Olay **Grid'indeki sistem konuları** açıklanmaktadır.
@@ -38,5 +38,5 @@ Depolama hesabıyla kaynak grubunu silmeye çalıştığınızda, etkilenen kayn
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın: 
 
-- [Özel konular](event-sources.md#custom-topics)
+- [Özel konular](custom-topics.md)
 - [Etki alanları](event-domains.md)

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dsindona
-ms.openlocfilehash: 041b2133ed63a906d3fea3ab67890a0057151b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59f9fecb3d949d9cdf48719e6329b066d9eb3fc5
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285274"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393529"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Azure uygulama teknik varlıklarınızı hazırlayın
 
@@ -32,7 +32,7 @@ Hızlı Başlangıçlar, Öğreticiler ve Örnekler sağlayan aşağıdaki Azure
 
   - [Azure Quickstart şablonları](https://azure.microsoft.com/documentation/templates/)
   - [GitHub Azure Quickstart şablonları](https://github.com/azure/azure-quickstart-templates)
-  - [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+  - [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [Hizmet kataloğu uygulaması dağıtma](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
   
@@ -68,7 +68,7 @@ Azure uygulamanızı yönetmenize yardımcı olmak için aşağıdaki komut dosy
 
 Geliştirme ortamınıza aşağıdaki araçları eklemenizi öneririz:
 
-- [Azure Storage Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+- [Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 - Aşağıdaki uzantıları ile [Görsel Studio Kodu:](https://code.visualstudio.com/)
 
   - Uzantı: [Azure Kaynak Yöneticisi Araçları](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)

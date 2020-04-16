@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9a69296ddfc93fd7e8a6650df91876829631f5d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473073"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81391702"
 ---
 # <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>Quickstart: Hizmet kataloğu uygulamasını Azure portalı üzerinden dağıtma
 
-Önceki [quickstart'](publish-managed-app-definition-quickstart.md)ta yönetilen bir uygulama tanımı yayımladınız. Bu hızlı başlangıçta, bu tanımdan bir hizmet kataloğu uygulaması oluşturursunuz.
+Önceki [quickstart'](publish-service-catalog-app.md)ta yönetilen bir uygulama tanımı yayımladınız. Bu hızlı başlangıçta, bu tanımdan bir hizmet kataloğu uygulaması oluşturursunuz.
 
 ## <a name="create-service-catalog-app"></a>Hizmet kataloğu uygulaması oluşturma
 
@@ -28,11 +28,11 @@ Azure portalında aşağıdaki adımları kullanın:
 
    ![Hizmet kataloğu uygulaması ara](./media/deploy-service-catalog-quickstart/select-service-catalog.png)
 
-1. Yönetilen Uygulama hizmetinin açıklamasını görürsünüz. **Oluştur'u**seçin.
+1. Yönetilen Uygulama hizmetinin açıklamasını görürsünüz. **Oluştur**’u seçin.
 
    ![Oluştur’u seçin](./media/deploy-service-catalog-quickstart/create-service-catalog.png)
 
-1. Portal, erişiminiz olan yönetilen uygulama tanımlarını gösterir. Kullanılabilir tanımlardan, dağıtmak istediğinizi seçin. Bu hızlı başlatmada, önceki hızlı başlatmada oluşturduğunuz **Yönetilen Depolama Hesabı** tanımını kullanın. **Oluştur'u**seçin.
+1. Portal, erişiminiz olan yönetilen uygulama tanımlarını gösterir. Kullanılabilir tanımlardan, dağıtmak istediğinizi seçin. Bu hızlı başlatmada, önceki hızlı başlatmada oluşturduğunuz **Yönetilen Depolama Hesabı** tanımını kullanın. **Oluştur**’u seçin.
 
    ![Dağıtmak için tanımı seçin](./media/deploy-service-catalog-quickstart/select-definition.png)
 

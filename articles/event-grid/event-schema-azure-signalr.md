@@ -1,25 +1,26 @@
 ---
-title: Azure Olay Izgarası Azure SignalR olay şeması
+title: Olay Izgara kaynağı olarak Azure SingnalR
 description: Azure Event Grid ile Azure SinyalR etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
-author: chenyl
+author: banisadr
 ms.service: event-grid
-ms.topic: reference
-ms.date: 06/11/2019
-ms.author: chenyl
-ms.openlocfilehash: 3b072ff2b680ad6d144c7441190ab2df9870f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: conceptual
+ms.date: 04/09/2020
+ms.author: babanisa
+ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67789078"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393386"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Hizmeti için Azure Olay Izgara etkinliği şeması
 
-Bu makalede, SignalR Service olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
+Bu makalede, SignalR Service olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın. Ayrıca, Azure SignalR'ı etkinlik kaynağı olarak kullanmanız için hızlı başlangıçların ve öğreticilerin bir listesini de verir.
 
+## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
 
-## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
 SignalR Hizmeti aşağıdaki olay türlerini yayır:
 
@@ -28,7 +29,7 @@ SignalR Hizmeti aşağıdaki olay türlerini yayır:
 | Microsoft.SignalRService.ClientConnectionConnected | İstemci bağlantısı bağlandığında yükseltildi. |
 | Microsoft.SignalRService.ClientConnectionBağlantısı kesildi | İstemci bağlantısı kesildiğinde yükseltildi. |
 
-## <a name="example-event"></a>Örnek olay
+### <a name="example-event"></a>Örnek olay
 
 Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gösterir: 
 
@@ -71,7 +72,7 @@ Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gö
 }]
 ```
 
-## <a name="event-properties"></a>Olay özellikleri
+### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki üst düzey verilere sahiptir:
 
@@ -95,6 +96,12 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | Connectionıd | string | İstemci bağlantısı için benzersiz tanımlayıcı. |
 | userId | string | Talepte tanımlanan kullanıcı tanımlayıcısı. |
 | errorMessage | string | Bağlantının kesilmesine neden olan hata. |
+
+## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
+|Başlık | Açıklama |
+|---------|---------|
+| [Olay Kılavuz'u kullanarak Azure SignalR Hizmeti etkinliklerine tepki verme](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Hizmetini Olay Ağıt'ı ile tümleştirmeye genel bakış. |
+| [Azure SignalR Hizmeti etkinlikleri Etkinlik Ağılasına nasıl gönderilir?](../azure-signalr/signalr-howto-event-grid-integration.md) | Azure SignalR Hizmeti etkinliklerinin Bir uygulamaya Nasıl Gönderilebildiğini Event Grid aracılığıyla gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

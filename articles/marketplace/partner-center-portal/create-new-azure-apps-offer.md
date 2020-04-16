@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 260193b3c71e29a32e0589f50864ffcca2e9a67c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262273"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390355"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -58,7 +58,7 @@ Hızlı Başlangıçlar, Öğreticiler ve Örnekler sağlayan aşağıdaki Azure
 
     * [Azure Quickstart şablonları](https://azure.microsoft.com/documentation/templates/)
     * [GitHub Azure Quickstart şablonları](https://github.com/azure/azure-quickstart-templates)
-    * [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-managed-app-definition-quickstart)
+    * [Uygulama tanımını yayımlama](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
     * [Hizmet kataloğu uygulaması dağıtma](https://docs.microsoft.com/azure/managed-applications/deploy-service-catalog-quickstart)
 
 * Öğreticiler:

@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 144d51d08a61526ec0f183a63e1fdf5658136293
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/14/2020
+ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272337"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390305"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Hive sorgularını iyileştirme
 
-Azure HDInsight'ta, Apache Hive sorgularını çalıştırabilen birkaç küme türü ve teknoloji vardır. HDInsight kümenizi oluştururken, iş yükünüz için performansı optimize etmeye yardımcı olmak için uygun küme türünü seçin.
+Azure HDInsight'ta, Apache Hive sorgularını çalıştırabilen birkaç küme türü ve teknoloji vardır. İş yükü gereksinimleriniz için performansı optimize etmeye yardımcı olmak için uygun küme türünü seçin.
 
-Örneğin, geçici, etkileşimli sorgular için en iyi duruma getirmek için **Etkileşimli Sorgu** küme türünü seçin. Toplu işlem olarak kullanılan Hive sorguları için en iyi duruma getirmek için Apache **Hadoop** küme türünü seçin. **Spark** ve **HBase** küme türleri de Kovan sorguları çalıştırabilirsiniz. Çeşitli HDInsight küme türlerinde Hive sorgularını çalıştırma hakkında daha fazla bilgi için Azure [HDInsight'ta Apache Hive ve HiveQL nedir?](hadoop/hdinsight-use-hive.md)
+Örneğin, **etkileşimli** sorgular için `ad hoc`en iyi duruma getirmek için Etkileşimli Sorgu küme türünü seçin. Toplu işlem olarak kullanılan Hive sorguları için en iyi duruma getirmek için Apache **Hadoop** küme türünü seçin. **Spark** ve **HBase** küme türleri de Kovan sorguları çalıştırabilirsiniz. Çeşitli HDInsight küme türlerinde Hive sorgularını çalıştırma hakkında daha fazla bilgi için Azure [HDInsight'ta Apache Hive ve HiveQL nedir?](hadoop/hdinsight-use-hive.md)
 
 Hadoop küme türü HDInsight kümeleri varsayılan olarak performans için optimize edilemez. Bu makalede, sorgularınıza uygulayabileceğiniz en yaygın Hive performans optimizasyonu yöntemlerinden bazıları açıklanmaktadır.
 
 ## <a name="scale-out-worker-nodes"></a>İşçi düğümlerini ölçeklendir
 
-BIR HDInsight kümesindeki çalışan düğüm lerinin sayısını artırmak, çalışmanın daha fazla haritalayıcı ve azaltıcının paralel olarak çalıştırılmasına olanak tanır. HDInsight'ta ölçeği artırmanın iki yolu vardır:
+BIR HDInsight kümesindeki çalışan düğüm lerinin sayısını artırmak, çalışmanın paralel olarak çalıştırılması için daha fazla mapper ve redüktör kullanmasına olanak tanır. HDInsight'ta ölçeği artırmanın iki yolu vardır:
 
-* Bir küme oluşturduğunuzda, Azure portalı, Azure PowerShell veya komut satırı arabirimini kullanarak çalışan düğümlerinin sayısını belirtebilirsiniz.  Daha fazla bilgi için bkz. [HDInsight kümesi oluşturma](hdinsight-hadoop-provision-linux-clusters.md). Aşağıdaki ekran görüntüsü, Azure portalındaki alt düğüm yapılandırmasını gösterir:
+* Bir küme oluşturduğunuzda, Azure portalı, Azure PowerShell veya komut satırı arabirimini kullanarak çalışan düğüm sayısını belirtebilirsiniz.  Daha fazla bilgi için bkz. [HDInsight kümesi oluşturma](hdinsight-hadoop-provision-linux-clusters.md). Aşağıdaki ekran görüntüsü, Azure portalındaki alt düğüm yapılandırmasını gösterir:
   
     ![Azure portal küme boyutu düğümleri](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
@@ -45,10 +45,10 @@ HDInsight'ı ölçeklendirme hakkında daha fazla bilgi için [Bkz. Ölçek HDIn
 
 Tez daha hızlıçünkü:
 
-* **MapReduce motorunda tek bir iş olarak Yönlendirilmiş Asiklik Grafik (DAG) çalıştırın.** DAG, her mapper setinin bir dizi redüktör tarafından takip edilmesini gerektirir. Bu, her Hive sorgusu için birden çok MapReduce işinin kapatılmasına neden olur. Tez böyle bir kısıtlama yok ve böylece iş başlangıç yükü en aza indirmek bir iş olarak karmaşık DAG işleyebilir.
+* **MapReduce motorunda tek bir iş olarak Yönlendirilmiş Asiklik Grafik (DAG) çalıştırın.** DAG, her mapper setinin bir dizi redüktör tarafından takip edilmesini gerektirir. Bu gereksinim, her Hive sorgusu için birden çok MapReduce işinin kapatılmasına neden olur. Tez böyle bir kısıtlama yok ve bir iş başlangıç yükü en aza indirmek gibi karmaşık DAG işleyebilir.
 * **Gereksiz yazmalardan kaçınır.** MapReduce motorunda aynı Hive sorgusunu işlemek için birden çok iş kullanılır. Her MapReduce işinin çıktısı ara veriler için HDFS'ye yazılır. Tez her Hive sorgusu için iş sayısını en aza indirdiğinden, gereksiz yazmalardan kaçınabilir.
 * **Başlatma gecikmelerini en aza indirir.** Tez, başlaması gereken haritacı sayısını azaltarak ve aynı zamanda optimizasyonu geliştirerek başlangıç gecikmesini en aza indirebilir.
-* **Kapsayıcıları yeniden kullanır.** Tez mümkün olduğunda konteynerlerin başlatılmasından kaynaklanan gecikme nin azaltılmasını sağlamak için kapları yeniden kullanabilir.
+* **Kapsayıcıları yeniden kullanır.** Tez mümkün olduğunda, konteynırları çalıştırmagecikmesi azaltmak için konteynerleri yeniden kullanır.
 * **Sürekli optimizasyon teknikleri.** Geleneksel optimizasyon derleme aşamasında yapıldı. Ancak, çalışma süresi boyunca daha iyi optimizasyon sağlayan girişler hakkında daha fazla bilgi kullanılabilir. Tez, planı çalışma süresi aşamasına kadar optimize etmesini sağlayan sürekli optimizasyon teknikleri kullanır.
 
 Bu kavramlar hakkında daha fazla bilgi için [bkz.](https://tez.apache.org/)
@@ -69,8 +69,8 @@ Kovan bölümleme, ham verileri yeni dizinler halinde yeniden düzenleyerek uygu
 
 Bazı bölümleme hususlar:
 
-* **Bölüm altında yapmayın** - Yalnızca birkaç değere sahip sütunlarda bölümleme birkaç bölüme neden olabilir. Örneğin, cinsiyet bölümleme yalnızca oluşturulacak iki bölüm oluşturur (erkek ve kadın), böylece gecikme süresini en fazla yarı yarıya azaltır.
-* **Bölme üzerinde yapmayın** - Diğer aşırı, benzersiz bir değer (örneğin, userid) ile bir sütun üzerinde bir bölüm oluşturma birden çok bölüm neden olur. Çok sayıda dizin işlemek zorunda olduğu için, bölme üzerinde çok fazla strese neden olur.
+* **Bölüm altında yapmayın** - Yalnızca birkaç değere sahip sütunlarda bölümleme birkaç bölüme neden olabilir. Örneğin, cinsiyet üzerinde bölümleme yalnızca oluşturulacak iki bölüm oluşturur (erkek ve kadın), bu nedenle gecikme süresini en fazla yarı yarıya azaltın.
+* **Bölümü aşma** - Diğer uçta, benzersiz bir değere (örneğin, userid) sahip bir sütunda bir bölüm oluşturmak birden çok bölüme neden olur. Çok sayıda dizin işlemek zorunda olduğu için, bölme üzerinde çok fazla strese neden olur.
 * **Veri eğriltme kaçının** - Tüm bölümlerin eşit boyut olması için bölümleme anahtarınızı akıllıca seçin. Örneğin, *Durum* sütununda bölümleme veri dağılımı çarpık olabilir. Kaliforniya eyaleti Vermont neredeyse 30x bir nüfusa sahip olduğundan, bölüm boyutu potansiyel çarpık ve performans muazzam değişebilir.
 
 Bölüm tablosu oluşturmak için *Bölümlenmiş* yan tümceyi kullanın:
@@ -122,7 +122,7 @@ Daha fazla bilgi için [Bölümlenmiş Tablolar'a](https://cwiki.apache.org/conf
 
 ## <a name="use-the-orcfile-format"></a>ORCFile biçimini kullanma
 
-Kovan farklı dosya biçimlerini destekler. Örnek:
+Kovan farklı dosya biçimlerini destekler. Örneğin:
 
 * **Metin**: varsayılan dosya biçimi ve çoğu senaryo ile çalışır.
 * **Avro**: birlikte çalışabilirlik senaryoları için iyi çalışır.
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örnek:
+Ardından, hazırlama tablosundan ORC tablosuna veri eklersiniz. Örneğin:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -198,5 +198,5 @@ Daha fazla bilgi [için, Vektörel sorgu yürütme](https://cwiki.apache.org/con
 Bu makalede, birkaç ortak Hive sorgu optimizasyonu yöntemleri öğrendim. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [HDInsight'ta Apache Hive'ı kullanma](hadoop/hdinsight-use-hive.md)
-* [HDInsight'ta İnteraktif Sorgu'u kullanarak uçuş gecikme verilerini analiz edin](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [HDInsight'ta İnteraktif Sorgu'u kullanarak uçuş gecikme verilerini analiz edin](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [HDInsight'ta Apache Hive kullanarak Twitter verilerini analiz edin](hdinsight-analyze-twitter-data-linux.md)

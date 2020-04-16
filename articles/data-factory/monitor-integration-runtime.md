@@ -10,14 +10,17 @@ ms.date: 07/25/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 2399849b87e44c5cb70d2db987ae18d8d2d9c552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d2ea5c0b7354867086fc0cce43732f2d73c53ab
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79261144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81398958"
 ---
-# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme  
+# <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+  
 **Tümleştirme çalışma süresi,** Azure Veri Fabrikası tarafından farklı ağ ortamlarında çeşitli veri tümleştirme özellikleri sağlamak için kullanılan bilgi işlem altyapısıdır. Veri Fabrikası tarafından sunulan üç tür tümleştirme çalışma süreleri vardır:
 
 - Azure tümleştirme çalışma zamanı

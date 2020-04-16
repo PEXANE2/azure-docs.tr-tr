@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fba4dae66b5adcea6cc33e61d8cf88946e29546e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5f5987bee82dc22d3742cb5d87040930e5d2c52d
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051179"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393045"
 ---
 # <a name="self-service-password-reset-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory'de self servis parola sıfırlama ilkeleri ve kısıtlamaları
 
@@ -160,16 +160,6 @@ Başlamak için [Azure AD PowerShell modüllerini indirin ve yükleyin.](https:/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makaleler, Azure AD aracılığıyla parola sıfırlama hakkında ek bilgiler sağlar:
+SSPR'ye başlamak için [Bkz. Öğretici: Kullanıcıların Azure Active Directory self servis parola sıfırlamayı kullanarak hesaplarının kilidini açmalarını veya parolalarını sıfırlamalarını etkinleştirin.](tutorial-enable-sspr.md)
 
-* [SSPR’yi başarılı bir şekilde nasıl piyasaya çıkarabilirim?](howto-sspr-deployment.md)
-* [Parolanızı sıfırla veya değiştirin.](../user-help/active-directory-passwords-update-your-own-password.md)
-* [Self servis parola sıfırlama için kaydolun.](../user-help/active-directory-passwords-reset-register.md)
-* [Lisansla ilgili bir sorunuz mu var?](concept-sspr-licensing.md)
-* [SSPR hangi verileri kullanır ve kullanıcılarınız için hangi verileri doldurmanız gerekir?](howto-sspr-authenticationdata.md)
-* [Kullanıcılar hangi kimlik doğrulama yöntemlerini kullanabilir?](concept-sspr-howitworks.md#authentication-methods)
-* [Parola geri yazma nedir ve neden önemlidir?](howto-sspr-writeback.md)
-* [SSPR’de etkinliği nasıl bildirebilirim?](howto-sspr-reporting.md)
-* [SSPR’deki tüm seçenekler nelerdir ve ne anlama gelir?](concept-sspr-howitworks.md)
-* [Sanırım bir şey kırıldı. SSPR'yi nasıl giderebilirim?](active-directory-passwords-troubleshoot.md)
-* [Başka bir yerde ele alınmayan bir sorum var](active-directory-passwords-faq.md)
+Siz veya kullanıcılar SSPR ile ilgili sorunlar yaşıyorsanız, [Sorun Giderme self servis parola sıfırlama](active-directory-passwords-troubleshoot.md)

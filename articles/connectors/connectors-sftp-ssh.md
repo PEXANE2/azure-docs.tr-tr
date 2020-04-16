@@ -4,16 +4,16 @@ description: SSH ve Azure Mantık Uygulamaları kullanarak bir SFTP sunucusu iç
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, klam, logicappspm
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 03/7/2020
+ms.date: 04/13/2020
 tags: connectors
-ms.openlocfilehash: d4ab7425c967d3a176c0a576d0be38ece1701b8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79128400"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393627"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH ve Azure Mantık Uygulamalarını kullanarak SFTP dosyalarını izleme, oluşturma ve yönetme
 
@@ -127,7 +127,7 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlanıp k
 
    `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
 
-   Örnek:
+   Örneğin:
 
    `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
 
@@ -146,6 +146,16 @@ Tetikleyici yeni bir dosya bulduğunda, tetikleyici yeni dosyanın tamamlanıp k
    !["OpenSSH tuşunu dışa aktar" seçeneğini belirleyin](./media/connectors-sftp-ssh/export-openssh-key.png)
 
 1. Özel anahtar dosyasını `.pem` dosya adı uzantısı ile kaydedin.
+
+## <a name="considerations"></a>Dikkat edilmesi gerekenler
+
+Bu bölümde, bu bağlayıcının tetikleyicileri ve eylemleri için gözden geçirilmesi gereken hususlar açıklanmaktadır.
+
+<a name="create-file"></a>
+
+### <a name="create-file"></a>Dosya oluşturma
+
+SFTP sunucunuzda bir dosya oluşturmak için SFTP-SSH **Oluştur dosya** eylemini kullanabilirsiniz. Bu eylem dosyayı oluşturduğunda, Logic Apps hizmeti de dosyanın meta verilerini almak için Otomatik olarak SFTP sunucunuzu arar. Ancak, Mantık Uygulamaları hizmeti meta verileri almak için arama yapmadan önce yeni oluşturulan `404` dosyayı `'A reference was made to a file or folder which does not exist'`taşırsanız, bir hata iletisi alırsınız. Dosya oluşturmadan sonra dosyanın meta verilerini okumayı atlamak için, eklemek için adımları izleyin [ve tüm dosya meta **veri** özelliğini **Hayır**olarak ayarlayın.](#file-does-not-exist)
 
 <a name="connect"></a>
 
@@ -211,9 +221,27 @@ Bu tetikleyici, bir SFTP sunucusuna bir dosya eklendiğinde veya değiştirildi�
 
 <a name="get-content"></a>
 
-### <a name="sftp---ssh-action-get-content-using-path"></a>SFTP - SSH eylemi: Yolu kullanarak içerik alın
+### <a name="sftp---ssh-action-get-file-content-using-path"></a>SFTP - SSH eylemi: Yol kullanarak dosya içeriğini alın
 
-Bu eylem, içeriği Bir SFTP sunucusundaki bir dosyadan alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin karşılaması gereken bir koşul ekleyebilirsiniz. Koşul doğruysa, içeriği alan eylem çalıştırılabilir.
+Bu eylem, dosya yolunu belirterek bir SFTP sunucusundaki bir dosyadaki içeriği alır. Örneğin, önceki örnekteki tetikleyiciyi ve dosyanın içeriğinin karşılaması gereken bir koşul ekleyebilirsiniz. Koşul doğruysa, içeriği alan eylem çalıştırılabilir.
+
+<a name="troubleshooting-errors"></a>
+
+## <a name="troubleshoot-errors"></a>Sorun giderme hataları
+
+Bu bölümde, sık karşılaşılan hataların veya sorunların olası çözümleri açıklanmaktadır.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404 hatası: "Var olmayan bir dosya veya klasöre başvuru yapıldı"
+
+Bu hata, mantık uygulamanız SFTP-SSH **Oluştur dosya** eylemi aracılığıyla SFTP sunucunuzda yeni bir dosya oluşturduğunda ortaya çıkabilir, ancak yeni oluşturulan dosya, Logic Apps hizmeti dosyanın meta verilerini alamadan hemen taşınır. Mantık uygulamanız **Dosya Oluşturma** eylemini çalıştırdığında, Logic Apps hizmeti de dosyanın meta verilerini almak için Otomatik olarak SFTP sunucunuzu arar. Ancak, dosya taşınırsa, Hata iletisini `404` aldığınız için Mantık Uygulamaları hizmeti artık dosyayı bulamaz.
+
+Dosyanın taşınmasını önleyemiyor veya geciktirmiyorsanız, aşağıdaki adımları izleyerek dosya oluşturmadan sonra dosyanın meta verilerini okumayı atlayabilirsiniz:
+
+1. Dosya **oluştur** eyleminde, **yeni parametre ekle** listesini açın, tüm dosya meta veri özelliğini **al'ı** seçin ve değeri **Hayır**olarak ayarlayın.
+
+1. Bu dosya meta verilerine daha sonra ihtiyacınız olursa, **dosya meta veri** eylemini al'ı kullanabilirsiniz.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 

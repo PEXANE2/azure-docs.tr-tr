@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 243fea8fae071368a91bf482190442f15c372fc1
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271310"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390433"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure'dan Azure'a VM çoğaltma hatalarını giderme
 
@@ -404,21 +404,20 @@ VM üzerinde çoğaltmayı etkinleştirmek için, onun sağlama durumu **Başar�
 
 ### <a name="issue-1-vm-is-attached-to-a-network-thats-already-mapped-to-a-target-network"></a>Sorun 1: VM, hedef ağa zaten eşlenmiş bir ağa bağlıdır
 
-Kaynak VM sanal bir ağın parçasıysa ve aynı sanal ağdan başka bir VM zaten hedef kaynak grubunda bir ağla eşlenmişse, ağ seçimi açılır liste kutusu varsayılan olarak kullanılamaz (soluk görünür).
+Olağanüstü durum kurtarma yapılandırması sırasında, kaynak VM sanal bir ağın parçasıysa ve aynı sanal ağdan başka bir VM zaten hedef kaynak grubundaki bir ağla eşlenmişse, ağ seçimi açılır liste kutusu varsayılan olarak kullanılamaz (soluk görünür).
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png" alt-text="Ağ seçim listesi kullanılamıyor.":::
 
 ### <a name="issue-2-you-previously-protected-the-vm-and-then-you-disabled-the-replication"></a>Sorun 2: VM'yi daha önce korudunuz ve çoğaltmayı devre dışı bıraktınız
 
-VM'nin çoğaltılması devre dışı bırakış, ağ eşlemesini silmez. Eşleme, VM'nin korunduğu Kurtarma Hizmetleri kasasından silinmelidir. Kurtarma **Hizmetleri vault** > **Site Kurtarma Altyapı** > **Ağı Haritalama**gidin.
+VM'nin çoğaltılması devre dışı bırakış, ağ eşlemesini silmez. Eşleme, VM'nin korunduğu Kurtarma Hizmetleri kasasından silinmelidir. Kurtarma **Hizmetleri kasasını** seçin ve**Azure sanal makineleri** > Için**Site Kurtarma Altyapısını** >  **Yönet'e** > gidin**Ağ Eşleme.**
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png" alt-text="Ağ eşlemi silme.":::
 
-Olağanüstü durum kurtarma kurulumu sırasında yapılandırılan hedef ağ, ilk kurulumdan sonra ve VM korunduktan sonra değiştirilebilir:
+Olağanüstü durum kurtarma kurulumu sırasında yapılandırılan hedef ağ, ilk kurulumdan sonra ve VM korunduktan sonra değiştirilebilir. **Ağ eşlemini değiştirmek** için ağ adını seçin:
 
 :::image type="content" source="./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png" alt-text="Ağ eşlemesini değiştirin.":::
 
-Ağ eşleminin değiştirilmesi, aynı ağ eşlemi kullanan tüm korumalı VM'leri etkiler.
 
 ## <a name="com-or-vss-error-code-151025"></a>COM+ veya VSS (hata kodu 151025)
 

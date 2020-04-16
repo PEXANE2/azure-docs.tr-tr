@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 706ab128af4379a56223ff65fb12f29d37b524f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383271"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392114"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Otomasyon Durumu Yapılandırması ve Chocolatey kullanarak sanal makinelere sürekli dağıtım sağlayın
 
@@ -95,7 +95,7 @@ PowerShell Galerisi, Azure Otomasyon hesabınıza DSC kaynaklarını yüklemek i
 
 Azure portalına yakın zamanda eklenen başka bir teknik, yeni modülleri çekmenize veya varolan modülleri güncelleştirmenize olanak tanır. Otomasyon hesap kaynağı, Varlıklar döşemesi ve son olarak Modüller döşemesi aracılığıyla tıklayın. Galeriye Gözat simgesi, galerideki modüllerin listesini görmenizi, ayrıntılara inmenizi ve sonuçta Otomasyon hesabınıza aktarmanızı sağlar. Bu, modüllerinizi zaman zaman güncel tutmak için harika bir yoldur. Ayrıca, alma özelliği hiçbir şeyin senkronize olmadığından emin olmak için diğer modüllerle bağımlılıkları denetler.
 
-Ya da, manuel yaklaşım var. Bu yaklaşım, daha sonra yükseltmek istemiyorsanız, kaynak başına yalnızca bir kez kullanılır. PowerShell tümleştirme modüllerinin yazılması hakkında daha fazla bilgi için Azure [Otomasyonu için Tümleştirme Modülleri Yazma'ya](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)bakın.
+Daha sonra yükseltmek istemediğiniz sürece, kaynak başına yalnızca bir kez kullanılan manuel bir yaklaşım da vardır. PowerShell tümleştirme modüllerinin yazılması hakkında daha fazla bilgi için Azure [Otomasyonu için Tümleştirme Modülleri Yazma'ya](https://azure.microsoft.com/blog/authoring-integration-modules-for-azure-automation/)bakın.
 
 >[!NOTE]
 >Bir Windows bilgisayarı için PowerShell tümleştirme modülünün klasör yapısı, Azure Otomasyonu tarafından beklenen klasör yapısından biraz farklıdır. 
@@ -121,7 +121,7 @@ Ya da, manuel yaklaşım var. Bu yaklaşım, daha sonra yükseltmek istemiyorsan
     ```azurepowershell-interactive
     New-AzAutomationModule `
       -ResourceGroupName MY-AUTOMATION-RG -AutomationAccountName MY-AUTOMATION-ACCOUNT `
-      -Name MODULE-NAME –ContentLink 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
+      -Name MODULE-NAME –ContentLinkUri 'https://STORAGE-URI/CONTAINERNAME/MODULE-NAME.zip'
     ```
 
 Dahil edilen örnek, cChoco ve xNetworking için bu adımları uygular. 
@@ -196,18 +196,18 @@ Bu adımlar, çekme sunucusuna **ISVBoxConfig.isvbox** adlı yeni bir düğüm y
 
 ## <a name="step-5-create-and-maintain-package-metadata"></a>Adım 5: Paket meta verileri oluşturma ve koruma
 
-Paket deposuna koyduğunuz her paket için, bunu açıklayan bir nuspec gerekir.
-Bu nuspec derlenmeli ve NuGet sunucunuzda depolanmalıdır. Bu işlem [burada](https://docs.nuget.org/create/creating-and-publishing-a-package)açıklanmıştır. MyGet.org NuGet sunucusu olarak kullanabilirsiniz. Bu hizmeti satıyorlar, ama ücretsiz bir başlangıç SKU'su var. NuGet.org, özel paketleriniz için kendi NuGet sunucunuzu yükleme yönergelerini bulacaksınız.
+Paket deposuna koyduğunuz her paket için, bunu açıklayan bir Nuspec gerekir. NuGet sunucunuzda derlenmeli ve depolanmalıdır. Bu işlem [burada](https://docs.nuget.org/create/creating-and-publishing-a-package)açıklanmıştır. 
+
+**MyGet.org** NuGet sunucusu olarak kullanabilirsiniz. Bu hizmeti satın alabilirsiniz, ama size ücretsiz bir başlangıç SKU olduğunu. [NuGet'de,](https://www.nuget.org/)özel paketleriniz için kendi NuGet sunucunuzu yükleme yönergeleri bulacaksınız.
 
 ## <a name="step-6-tie-it-all-together"></a>Adım 6: Hepsini birbirine bağlayın
 
-Bir sürüm QA'dan geçtiğinde ve dağıtım için onaylandığı her seferde paket oluşturulur ve nuspec ve nupkg güncellenir ve NuGet sunucusuna dağıtılır. Yapılandırma (Yukarıdaki Adım 4) yeni sürüm numarasıyla aynı fikirde olacak şekilde de güncelleştirilmelidir. Daha sonra çekme sunucusuna gönderilmeli ve derlenmelidir.
+Bir sürüm QA'dan geçtiğinde ve dağıtım için onaylandığı her seferde paket oluşturulur ve nuspec ve nupkg güncellenir ve NuGet sunucusuna dağıtılır. Yapılandırma (adım 4) da yeni sürüm numarası ile kabul etmek için güncelleştirilmelidir. Daha sonra çekme sunucusuna gönderilmeli ve derlenmelidir.
 
 Bu noktadan itibaren, güncelleştirmeyi çekmek ve yüklemek için bu yapılandırmaya bağlı Olan VM'lere bağlıdır. Bu güncellemelerin her biri basittir - PowerShell'in sadece bir ya da iki satırı. Azure DevOps'ler için, bazıları bir yapıda birbirine zincirlenebilen yapı görevleriyle kapsüllenir. Bu [makalede](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) daha fazla ayrıntı sağlar. Bu [GitHub repo](https://github.com/Microsoft/vso-agent-tasks) kullanılabilir yapı görevlerini ayrıntılarıyla anlatır.
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [Azure Otomasyon DSC Genel Bakış](automation-dsc-overview.md)
-* [Azure Otomasyon DSC cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
+* [Azure Otomasyon UYC genel bakış](automation-dsc-overview.md)
 * [Azure Automation DSC ile yönetim için onboarding makineleri](automation-dsc-onboarding.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

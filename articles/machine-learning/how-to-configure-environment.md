@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: a5f46f5af723e1245afbc6bca90d25ae9036d646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10ea0002b2e99c4675f56e48a638f3c1cb87e6c0
+ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472435"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81399001"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir geliştirme ortamı nı yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -201,7 +201,7 @@ Yerel bir bilgisayar kullanıyorsanız (uzak bir sanal makine de olabilir), bir 
     pip install <new package>
     ```
 
-### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Dizüstü Bilgisayarlar
+### <a name="jupyter-notebooks"></a><a id="jupyter"></a>Jupyter Notebooks
 
 Jupyter Notebook'lar [Jupyter Projesi'nin](https://jupyter.org/)bir parçasıdır. Bunlar, canlı kodu anlatı metni ve grafiklerle harmanlayan belgeler oluşturduğunuz etkileşimli bir kodlama deneyimi sağlar. Jupyter Notebook'lar da sonuçlarınızı başkalarıyla paylaşmak için harika bir yoldur, çünkü belgedeki kod bölümlerinizin çıktısını kaydedebilirsiniz. Jupyter Notebook'ları çeşitli platformlarda yükleyebilirsiniz.
 
@@ -288,7 +288,7 @@ Azure Databricks, Azure Machine Learning ile nasıl çalışır:
 | Ayar |Uygulandığı öğe:| Değer |
 |----|---|---|
 | Küme adı |Her zaman| sizin clustername |
-| Databricks Çalışma Zamanı |Her zaman|Non-ML Çalışma Süresi 6.0 (scala 2.11, kıvılcım 2.4.3) |
+| Databricks Çalışma Zamanı |Her zaman|Non-ML Çalışma Süresi 6.5 (scala 2.11, kıvılcım 2.4.3) |
 | Python sürümü |Her zaman| 3 |
 | Işçi |Her zaman| 2 veya daha yüksek |
 | İşçi düğümü VM türleri <br>(eşzamanlı yinelemelerin maksimum # #'ını belirler) |Otomatikleştirilmiş ML<br>Sadece| Bellek optimize VM tercih |
@@ -365,7 +365,7 @@ Yapılandırma dosyasını üç şekilde oluşturabilirsiniz:
 
 * **Dosyayı indirin**: [Azure portalında](https://ms.portal.azure.com)çalışma alanınızın **Genel Bakış** bölümünden **config.json indir'i** seçin.
 
-     ![Azure portalında](./media/how-to-configure-environment/configure.png)
+     ![Azure portal](./media/how-to-configure-environment/configure.png)
 
 * **Dosyayı programlı olarak oluşturun**: Aşağıdaki kod snippet'inde, abonelik kimliği, kaynak grubu ve çalışma alanı adını sağlayarak bir çalışma alanına bağlanırsınız. Daha sonra çalışma alanı yapılandırmasını dosyaya kaydeder:
 

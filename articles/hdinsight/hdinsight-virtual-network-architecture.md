@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/14/2020
+ms.openlocfilehash: ad0e0250b32f2bdef4944e6e148be3215f3822f7
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272155"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81390216"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight sanal ağ mimarisi
 
@@ -30,11 +30,11 @@ Azure HDInsight kümelerinde farklı türde sanal makineler veya düğümler var
 | R Server kenar düğümü | R Server kenar düğümü, ssh'e sokabileceğiniz düğümü temsil eder ve daha sonra küme kaynakları arasında çalışacak şekilde koordine edilen uygulamaları çalıştırır. Kenar düğümü küme içindeki veri çözümlemesi ile katılmaz. Bu düğüm aynı zamanda R Studio Server'ı barındırarak tarayıcı kullanarak R uygulamasını çalıştırmanızı sağlar. |
 | Bölge düğümü | HBase küme türü için bölge düğümü (Veri Düğümü olarak da adlandırılır) Region Server'ı çalıştırAr. Bölge Sunucuları, HBase tarafından yönetilen verilerin bir kısmını hizmet eve getirir ve yönetir. Bilgi işlem yeteneğini ölçeklendirmek ve maliyetleri yönetmek için bölge düğümleri kümeden eklenebilir veya kaldırılabilir.|
 | Nimbus düğümü | Fırtına küme türü için Nimbus düğümü Kafa düğümüne benzer işlevsellik sağlar. Nimbus düğümü, Fırtına topolojilerinin çalışmasını koordine eden Zookeeper aracılığıyla kümedeki diğer düğümlere görevler atar. |
-| Süpervizör düğümü | Fırtına küme türü için, denetleyici düğümü Nimbus düğümü tarafından istenen işleme gerçekleştirmek için sağlanan yönergeleri yürütür. |
+| Süpervizör düğümü | Fırtına küme türü için, denetleyici düğümü işlemi yapmak için Nimbus düğümü tarafından sağlanan yönergeleri yürütür. |
 
 ## <a name="resource-naming-conventions"></a>Kaynak adlandırma kuralları
 
-Kümenizdeki düğümleri ele alırken lütfen Tam Nitelikli Alan Adları (FQDNs) kullanın. [Ambari API'yi](hdinsight-hadoop-manage-ambari-rest-api.md)kullanarak kümenizdeki çeşitli düğüm türleri için FQDN'leri alabilirsiniz. 
+Kümenizdeki düğümleri ele alırken Tam Nitelikli Alan Adları (FQDNs) kullanın. [Ambari API'yi](hdinsight-hadoop-manage-ambari-rest-api.md)kullanarak kümenizdeki çeşitli düğüm türleri için FQDN'leri alabilirsiniz.
 
 Bu FQDNs şeklinde `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`olacaktır.
 
@@ -48,7 +48,7 @@ Aşağıdaki diyagram, AZURE'da HDInsight düğümlerinin ve ağ kaynaklarının
 
 ![Azure özel VNET'te oluşturulan HDInsight varlıklarının diyagramı](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
-HDInsight bir Azure Sanal Ağına dağıtıldığında varsayılan kaynaklar, önceki tabloda belirtilen küme düğümü türlerinin yanı sıra sanal ağ ve dış ağlar arasındaki iletişimi destekleyen ağ aygıtlarını içerir.
+Azure Sanal Ağı'ndaki varsayılan kaynaklar, önceki tabloda belirtilen küme düğümü türlerini içerir. Ve sanal ağ ve dış ağlar arasındaki iletişimi destekleyen ağ aygıtları.
 
 Aşağıdaki tablo, HDInsight özel bir Azure Sanal Ağı'na dağıtıldığında oluşturulan dokuz küme düğümlerini özetler.
 
@@ -64,7 +64,7 @@ Mevcut aşağıdaki ağ kaynakları HDInsight ile kullanılan sanal ağ içinde 
 | Ağ kaynağı | Mevcut sayı | Ayrıntılar |
 | --- | --- | --- |
 |Yük dengeleyici | Üç | |
-|Ağ Arabirimleri | Dokuz | Bu değer, her düğümün kendi ağ arabirimi olduğu normal bir kümeyi temel alıntır. Dokuz arabirim, önceki tabloda belirtilen iki baş düğüm, üç zookeeper düğümleri, iki alt düğüm ve iki ağ geçidi düğümü içindir. |
+|Ağ Arabirimleri | Dokuz | Bu değer, her düğümün kendi ağ arabirimi olduğu normal bir kümeyi temel alıntır. Dokuz arabirim içindir: iki baş düğümleri, üç zookeeper düğümleri, iki işçi düğümleri ve önceki tabloda belirtilen iki ağ geçidi düğümleri. |
 |Genel IP Adresleri | iki |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>HDInsight'a bağlanmak için uç noktalar
@@ -73,7 +73,7 @@ HDInsight kümenize üç şekilde erişebilirsiniz:
 
 - Sanal ağın dışında bir HTTPS `CLUSTERNAME.azurehdinsight.net`bitiş noktası .
 - Headnode doğrudan bağlanmak için bir SSH `CLUSTERNAME-ssh.azurehdinsight.net`bitiş noktası.
-- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`içinde bir HTTPS bitiş noktası. Bu URL'deki "-int"e dikkat edin. Bu bitiş noktası, bu sanal ağdaki özel bir IP'ye çözülür ve herkese açık internetten erişilemez.
+- Sanal ağ `CLUSTERNAME-int.azurehdinsight.net`içinde bir HTTPS bitiş noktası. Bu URL'deki " "`-int`" ne dikkat edin. Bu bitiş noktası, bu sanal ağdaki özel bir IP'ye çözülür ve herkese açık internetten erişilemez.
 
 Bu üç uç nokta, her birine bir yük dengeleyicisi atanır.
 

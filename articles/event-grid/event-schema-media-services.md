@@ -1,28 +1,25 @@
 ---
-title: Medya Hizmetleri etkinlikleri için Azure Olay Izgaraşe şemaları
+title: Olay Izgara kaynağı olarak Azure Medya Hizmetleri
 description: Azure Etkinlik Ağıtı ile Medya Hizmetleri etkinlikleri için sağlanan özellikleri açıklar
 services: media-services
 documentationcenter: ''
-author: Juliako
-manager: femila
+author: spelluru
 editor: ''
-ms.service: media-services
+ms.service: event-grid
 ms.workload: ''
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
+ms.author: spelluru
+ms.openlocfilehash: d5d50bbde927efd4aee0cedd69486a52ab8c328b
 ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393743"
+ms.locfileid: "81394338"
 ---
-# <a name="azure-event-grid-schemas-for-media-services-events"></a>Medya Hizmetleri etkinlikleri için Azure Olay Izgaraşe şemaları
+# <a name="azure-media-services-as-an-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Medya Hizmetleri
 
 Bu makalede, Medya Hizmetleri olayları için şema ve özellikleri sağlar.
-
-Örnek komut dosyaları ve öğreticilerin listesi için [Medya Hizmetleri etkinlik kaynağına](../../event-grid/event-schema-subscriptions.md)bakın.
 
 ## <a name="job-related-event-types"></a>İşle ilgili etkinlik türleri
 
@@ -328,7 +325,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
 | Resultcode | string | Bağlantının reddedilmesinin nedeni. Sonuç kodları aşağıdaki tabloda listelenir. |
 
-Hata sonuç kodlarını [canlı Olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
+Hata sonuç kodlarını [canlı Olay hata kodlarında](../media-services/latest/live-event-error-codes.md)bulabilirsiniz.
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderBağlı
 
@@ -398,7 +395,7 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 | encoderPort | string | Bu derenin geldiği yerden kodlayıcının limanı. |
 | Resultcode | string | Kodlayıcının bağlantısını kesme nedeni. Bu zarif bir kopukluk veya bir hata dan olabilir. Sonuç kodları aşağıdaki tabloda listelenir. |
 
-Hata sonuç kodlarını [canlı Olay hata kodlarında](live-event-error-codes.md)bulabilirsiniz.
+Hata sonuç kodlarını [canlı Olay hata kodlarında](../media-services/latest/live-event-error-codes.md)bulabilirsiniz.
 
 Zarif kesme sonuç kodları şunlardır:
 
@@ -668,10 +665,10 @@ Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[İş durumu değişikliği etkinlikleri için kaydolun](job-state-events-cli-how-to.md)
+[İş durumu değişikliği etkinlikleri için kaydolun](../media-services/latest/job-state-events-cli-how-to.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
 - [Medya Hizmeti olaylarını içeren EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [Medya Hizmetleri etkinliklerinin tanımları](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)
-- [Canlı Etkinlik hata kodları](live-event-error-codes.md)
+- [Canlı Etkinlik hata kodları](../media-services/latest/live-event-error-codes.md)

@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 0af322d589efd48cc224c69cef8e96fb887d9868
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384226"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81393712"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Veritabanı yönetilen örnek uzun vadeli yedekleme tutma (PowerShell) yönetme
 
-Azure SQL Veritabanı yönetilen örneğinde, sınırlı bir genel önizleme özelliği olarak [uzun vadeli bir yedekleme bekletme](sql-database-long-term-retention.md#managed-instance-support) ilkesini (LTR) yapılandırabilirsiniz. Bu, veritabanı yedeklemelerini ayrı Azure Blob depolama kaplarında 10 yıla kadar otomatik olarak tutmanızı sağlar. Daha sonra PowerShell kullanarak bu yedeklemeleri kullanarak bir veritabanı kurtarabilirsiniz.
+Azure SQL Veritabanı yönetilen örneğinde, sınırlı bir genel önizleme özelliği olarak [uzun vadeli bir yedekleme bekletme](sql-database-long-term-retention.md#managed-instance-support) ilkesini (LTR) yapılandırabilirsiniz. Bu, veritabanı yedeklemelerini ayrı Azure Blob depolama kaplarında 10 yıla kadar otomatik olarak tutmanızı sağlar. Daha sonra PowerShell ile bu yedeklemeleri kullanarak bir veritabanı kurtarabilirsiniz.
 
    > [!IMPORTANT]
    > Yönetilen örnekler için LTR şu anda sınırlı önizlemededir ve ea ve CSP abonelikleri için duruma göre kullanılabilir. Kayıt talebinde bulunmak için lütfen destek konusu **Yedekleme, Geri Yükleme ve İş Sürekliliği/Uzun vadeli yedekleme tutma**altında bir [Azure destek bileti](https://azure.microsoft.com/support/create-ticket/) oluşturun. 
@@ -48,7 +48,7 @@ Aşağıdaki bölümler, uzun süreli yedekleme bekletme yapılandırmak, Yedekl
    ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
 
 > [!NOTE]
-> SManaged Instance Contributor rolü LTR yedeklemelerini silme iznine sahip değildir.
+> Yönetilen Örnek Katılımcı sıfatının LTR yedeklemelerini silme izni yoktur.
 
 RBAC izinleri *abonelik* veya kaynak *grubu* kapsamında verilebilir. Ancak, bırakılan bir örneğe ait LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmesi gerekir.
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4840b135587ae776cfb80258ce513a48a79efa43
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
+ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383342"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81392386"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Otomasyonu'ndaki bağlantı varlıkları
 
@@ -89,7 +89,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Komut dosyasını bağlantı varlığını oluşturmak için kullanabilirsiniz, çünkü Otomasyon hesabınızı oluşturduğunuzda, `AzureServicePrincipal` `AzureRunAsConnection` bağlantı varlığını oluşturmak için bağlantı türüyle birlikte varsayılan olarak birkaç küresel modülü otomatik olarak içerir. Bunu göz önünde bulundurmanız önemlidir, çünkü bir hizmete veya uygulamaya farklı bir kimlik doğrulama yöntemiyle bağlanmak için yeni bir bağlantı varlığı oluşturmaya çalışırsanız, bağlantı türü Otomasyon hesabınızda zaten tanımlanmadığından başarısız olur. [PowerShell Galerisi'nden](https://www.powershellgallery.com)özel veya modülünüz için kendi bağlantı türünüz hakkında daha fazla bilgi için [Entegrasyon Modüllerine](automation-integration-modules.md) bakın
+Komut dosyasını bağlantı varlığını oluşturmak için kullanabilirsiniz, çünkü Otomasyon hesabınızı oluşturduğunuzda, `AzureServicePrincipal` `AzureRunAsConnection` bağlantı varlığını oluşturmak için bağlantı türüyle birlikte varsayılan olarak birkaç küresel modülü otomatik olarak içerir. Bunu göz önünde bulundurmanız önemlidir, çünkü bir hizmete veya uygulamaya farklı bir kimlik doğrulama yöntemiyle bağlanmak için yeni bir bağlantı varlığı oluşturmaya çalışırsanız, bağlantı türü Otomasyon hesabınızda zaten tanımlanmadığından başarısız olur. [PowerShell Galerisi'nden](https://www.powershellgallery.com)özel veya modülünüz için kendi bağlantı türünüz hakkında daha fazla bilgi için [Entegrasyon Modüllerine](automation-integration-modules.md)bakın.
 
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Runbook veya DSC yapılandırmasında bağlantı kullanma
 
@@ -113,7 +113,7 @@ Grafik düzenleyicisinin Kitaplık bölmesindeki bağlantıya sağ tıklayarak v
 
 ![tuvale ekle](media/automation-connections/connection-add-canvas.png)
 
-Aşağıdaki resim, grafik çalışma kitabında bağlantı kullanma örneğini gösterir. Bu, metinsel bir runbook ile Çalıştır hesabının kimlik doğrulamasını kullanmak için yukarıda gösterilen örnekle aynıdır. Bu örnek, `Constant value` kimlik doğrulaması için bir bağlantı nesnesi `Get RunAs Connection` kullanan etkinlik için veri kümesini kullanır. Parametre kümesi tek bir `ServicePrincipalCertificate` nesne beklediğinden burada bir [boru hattı bağlantısı](automation-graphical-authoring-intro.md#links-and-workflow) kullanılır.
+Aşağıdaki resim, grafik çalışma kitabında bağlantı kullanma örneğini gösterir. Bu, metinsel bir runbook ile Çalıştır hesabının kimlik doğrulamasını kullanmak için yukarıda gösterildiği gibi aynı örnektir. Bu örnek, `Constant value` kimlik doğrulaması için bir bağlantı nesnesi `Get RunAs Connection` kullanan etkinlik için veri kümesini kullanır. Parametre kümesi tek bir `ServicePrincipalCertificate` nesne beklediğinden burada bir [boru hattı bağlantısı](automation-graphical-authoring-intro.md#links-and-workflow) kullanılır.
 
 ![bağlantı kurma](media/automation-connections/automation-get-connection-object.png)
 
