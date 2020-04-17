@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
-ms.openlocfilehash: 0ce813e91750db3cdfa1e651a68fbb82d593eb32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0e7c34e42d0ab68a5dab9718075f02a85322ce6c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650580"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458837"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps'ta Kurumsal Tümleştirme Paketi ile B2B kurumsal tümleştirme için AS2 iletilerini değiştirme
 
@@ -61,7 +61,7 @@ Bu makalede, varolan bir mantık uygulamasına AS2 kodlama ve kod çözme eyleml
 
 * AS2 konektörünü kullanamadan önce, ticaret ortaklarınız arasında bir AS2 [anlaşması](../logic-apps/logic-apps-enterprise-integration-agreements.md) oluşturmanız ve bu anlaşmayı entegrasyon hesabınızda saklamanız gerekir.
 
-* Sertifika yönetimi için [Azure Key Vault](../key-vault/key-vault-overview.md) kullanıyorsanız, kasa anahtarlarınızın **Şifreleme** ve **Şifre çözme** işlemlerine izin verdiğini kontrol edin. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
+* Sertifika yönetimi için [Azure Key Vault](../key-vault/general/overview.md) kullanıyorsanız, kasa anahtarlarınızın **Şifreleme** ve **Şifre çözme** işlemlerine izin verdiğini kontrol edin. Aksi takdirde, kodlama ve kod çözme eylemleri başarısız olur.
 
   Azure portalında, anahtar kasanızdaki anahtara gidin, anahtarınızın **İzin Verilen işlemlerini**gözden geçirin ve örneğin **Şifreleme** ve Şifre **Çözme** işlemlerinin seçildiğini onaylayın:
 
@@ -88,7 +88,7 @@ Bu makalede, varolan bir mantık uygulamasına AS2 kodlama ve kod çözme eyleml
    | **AS2 için** | AS2 sözleşmenizde belirtildiği şekilde ileti alıcısının tanımlayıcısı |
    |||
 
-   Örnek:
+   Örneğin:
 
    ![İleti kodlama özellikleri](./media/logic-apps-enterprise-integration-as2/as2-message-encoding-details.png)
 

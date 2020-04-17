@@ -3,12 +3,12 @@ title: İlke tanım yapısının ayrıntıları
 description: İlke tanımlarının kuruluşunuzdaki Azure kaynakları için sözleşmeler oluşturmak için nasıl kullanıldığını açıklar.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 017878c4c47a5645ea8815580d2176c7a2ff5d66
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0a7c4e05270ff242fa97b253b27a5de92895368a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314010"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461013"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -89,7 +89,7 @@ Aşağıdaki Kaynak Sağlayıcı modları şu anda önizleme sırasında destekl
 - `Microsoft.ContainerService.Data`[Azure Kubernetes Hizmeti'nde](../../../aks/intro-kubernetes.md)kabul denetleyici kurallarını yönetmek için. Bu Kaynak Sağlayıcı modunu kullanan ilkeler [EnforceRegoPolicy](./effects.md#enforceregopolicy) efektini **kullanmalıdır.**
 - `Microsoft.Kubernetes.Data`Azure'da kendi kendini yöneten AKS Engine Kubernetes kümelerini yönetmek için.
   Bu Kaynak Sağlayıcı modunu kullanan ilkeler [EnforceOPAConstraint efektini](./effects.md#enforceopaconstraint) **kullanmalıdır.**
-- `Microsoft.KeyVault.Data`[Azure Key Vault'ta](../../../key-vault/key-vault-overview.md)kasa ve sertifika yönetimi için.
+- `Microsoft.KeyVault.Data`[Azure Key Vault'ta](../../../key-vault/general/overview.md)kasa ve sertifika yönetimi için.
 
 > [!NOTE]
 > Kaynak Sağlayıcı modları yalnızca yerleşik ilke tanımlarını destekler ve önizleme sırasında girişimleri desteklemez.

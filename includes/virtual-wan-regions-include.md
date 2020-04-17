@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 757367e2b9773908b81ad35615a23b1b5c67aa3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117209"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461818"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>Jeopolitik bölge içindeki Azure bölgeleri
 
@@ -42,5 +42,5 @@ Siteden siteye tabanlı VPN bağlantısı ve Virtual WAN mimarisi aşağıdaki b
 |Coğrafi bölge | Azure bölgeleri|
 |---|---|
 | ABD bulutu | US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia, Orta US DoD, Doğu US DoD |
-| Doğu Çin | Doğu Çin, Doğu Çin2|
-| Kuzey Çin | Kuzey Çin, Kuzey Çin2 |
+| Doğu Çin | Çin Doğu2|
+| Kuzey Çin | Çin Kuzey2 |

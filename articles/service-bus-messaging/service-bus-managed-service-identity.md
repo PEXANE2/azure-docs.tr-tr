@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 89de6bf80d14ec77fe6b1f98b6e1d15c6e573fbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76756292"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461625"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Hizmet Veri Yolu kaynaklarına erişmek için Azure Etkin Dizini ile yönetilen bir kimliğin kimliğini doğrulatın
 [Azure kaynakları için yönetilen kimlikler,](../active-directory/managed-identities-azure-resources/overview.md) uygulama kodunuzu çalıştırdığınız dağıtımla ilişkili güvenli bir kimlik oluşturmanıza olanak tanıyan bir çapraz Azure özelliğidir. Daha sonra bu kimliği, uygulamanızın ihtiyaç duyduğu belirli Azure kaynaklarına erişmek için özel izinler veren erişim denetimi rolleriyle ilişkilendirebilirsiniz.
@@ -75,7 +75,7 @@ Yerleşik rollerin nasıl tanımlandığı hakkında daha fazla bilgi için [bkz
 ## <a name="enable-managed-identities-on-a-vm"></a>VM'de yönetilen kimlikleri etkinleştirme
 VM'nizden Hizmet Veri Hizmeti Veri Aracı kaynaklarını yetkilendirmek için Azure Kaynakları için yönetilen kimlikleri kullanabilmeniz için önce VM'deki Azure Kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure Kaynakları için yönetilen kimlikleri nasıl etkinleştireceklerini öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portalında](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -118,7 +118,7 @@ Bir Hizmet Veri Servisi ad alanına rol atamak için Azure portalındaki ad alan
 4.  Rol **ataması ekle** sayfasında, atamak istediğiniz Azure Hizmet Veri Yolunda'nı seçin. Ardından, rolü atamak için kaydolduğunuz hizmet kimliğini bulmak için arama yapın.
     
     ![Rol atama sayfası ekleme](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  **Kaydet'i**seçin. Rolü atadığınız kimlik, bu rolün altında listelenir. Örneğin, aşağıdaki resim, hizmet kimliğinin Azure Hizmet Verisi sahibine sahip olduğunu gösterir.
+5.  **Kaydet**’i seçin. Rolü atadığınız kimlik, bu rolün altında listelenir. Örneğin, aşağıdaki resim, hizmet kimliğinin Azure Hizmet Verisi sahibine sahip olduğunu gösterir.
     
     ![Bir role atanan kimlik](./media/service-bus-managed-service-identity/role-assigned.png)
 
@@ -140,7 +140,7 @@ Bu değişiklikleri yaptıktan sonra uygulamayı yayımlayın ve çalıştırın
 
 
 > [!NOTE]
-> - Yönetilen kimlik yalnızca Azure ortamında, Uygulama hizmetlerinde, Azure VM'lerinde ve ölçek kümelerinde çalışır. .NET uygulamaları için, Service Bus NuGet paketi tarafından kullanılan Microsoft.Azure.Services.AppAuthentication kitaplığı, bu protokol üzerinde bir soyutlama sağlar ve yerel bir geliştirme deneyimini destekler. Bu kitaplık ayrıca Visual Studio, Azure CLI 2.0 veya Active Directory Integrated Authentication'daki kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak test etmenizi sağlar. Bu kitaplıkla yerel geliştirme seçenekleri hakkında daha fazla bilgi için [,.NET'i kullanarak Azure Key Vault'a hizmet-servis kimlik doğrulaması](../key-vault/service-to-service-authentication.md)bakın.  
+> - Yönetilen kimlik yalnızca Azure ortamında, Uygulama hizmetlerinde, Azure VM'lerinde ve ölçek kümelerinde çalışır. .NET uygulamaları için, Service Bus NuGet paketi tarafından kullanılan Microsoft.Azure.Services.AppAuthentication kitaplığı, bu protokol üzerinde bir soyutlama sağlar ve yerel bir geliştirme deneyimini destekler. Bu kitaplık ayrıca Visual Studio, Azure CLI 2.0 veya Active Directory Integrated Authentication'daki kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak test etmenizi sağlar. Bu kitaplıkla yerel geliştirme seçenekleri hakkında daha fazla bilgi için [,.NET'i kullanarak Azure Key Vault'a hizmet-servis kimlik doğrulaması](../key-vault/general/service-to-service-authentication.md)bakın.  
 > 
 > - Şu anda yönetilen kimlikler App Service dağıtım yuvalarıyla çalışmıyor.
 

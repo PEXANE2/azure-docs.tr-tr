@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: ce9919a0b0f614e427c12ee3e3fbda0be46470ea
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273316"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459177"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -721,10 +721,10 @@ Azure Machine Learning artık Olay Izgara'sı için bir kaynak sağlayıcısıd�
       + Girişe özgü start_time ve/veya end_time, yalnızca zamanlanmış çalıştırmaların sonuçları döndürülür;
       + Parametre 'daily_latest_only' amortismana sokulmadı.
     + Dataset tabanlı Data Drift çıktılarını alma desteği.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + AzureML açık-model paketini AzureML yorumlamaya yeniden adlandırır ve eski paketi şimdilik geriye dönük uyumluluk için saklar.
     + AçıklamaClient'dan karşıdan yüklemede varsayılan olarak regresyon yerine sınıflandırma görevine ayarlanmış ham açıklamalarlı AutoML hatasını düzeltti.
-    + Doğrudan [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper) kullanılarak oluşturulacak [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) için destek ekleyin
+    + Doğrudan MimicWrapper kullanılarak oluşturulacak [ScoringExplainer](/python/api/azureml-interpret/azureml.interpret.scoring.scoring_explainer.scoringexplainer?view=azure-ml-py) için destek ekleyin
   + **[azureml-boru hattı-çekirdek](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Büyük Pipeline oluşturma için geliştirilmiş performans.
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
@@ -798,7 +798,7 @@ Veri bilimcilerin deneyleri daha performant bir şekilde izleyebileceği şekild
     + [supported_vmsizes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-) işlevine ek VM boyutu alanları (OS Disk, GPU sayısı) eklendi
     + Çalıştırmayı, özel ve genel IP'yi, bağlantı noktasını vb. göstermek için [list_nodes()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#list-nodes--) işlevine ek alanlar eklendi.
     + Küme oluşturma sırasında SSH bağlantı noktasını açık veya kapalı bırakmak isteyip istediğinize bağlı olarak etkin veya devre dışı bırakılabilir küme [sağlama](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--) `--remotelogin_port_public_access` sırasında yeni bir alan belirtme yeteneği. Belirtmezseniz, kümeyi bir VNet içinde dağıtıp dağıtmadığınıza bağlı olarak hizmet bağlantı noktasını akıllıca açar veya kapatır.
-  + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
+  + **azureml-explain-model**
     + Sınıflandırma senaryosundaki Açıklama çıktıları için geliştirilmiş belgeler.
     + Değerlendirme örneklerinin açıklamasına öngörülen y değerlerini yükleme özelliği eklendi. Daha kullanışlı görselleştirmelerin kilidini açar.
     + Altta yatan MimicExplainer'ı almak için MimicWrapper'a açıklayıcı özelliği eklendi.

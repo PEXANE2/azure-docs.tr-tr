@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 795d21e05ade652b52c06d597ca4c5fef85e7245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152881"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531346"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -37,11 +37,11 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Kapsayıcı Örneği'ne
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI kullanma](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Azure portalını kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com/signin/index/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Ardından, **Web Uygulaması'nı**seçin. 
 
@@ -76,6 +76,7 @@ Azure portalını kullanarak yeni bir kaynak oluşturmak için aşağıdaki adı
    * Kullanıcı adı (İsteğe Bağlı) - Bir kullanıcı adı oluşturun. 
    * Parola (İsteğe Bağlı) - Hatırlayacağınız güvenli bir parola oluşturun.
    * Resim ve etiket - Bunu`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Sürekli Dağıtım - Geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Aç** olarak ayarlayın.
    * Başlangıç komutu - Bunu`./run.sh eula=accept`
 
    > [!div class="mx-imgBorder"]

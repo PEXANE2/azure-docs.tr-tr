@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: d3e267eab056589ed38c436620dd0db185291da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1441ede9f448b3e6ffb0726c2ee92f192369e9a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77425910"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481844"
 ---
 # <a name="multitenant-applications-in-azure"></a>Azure’da Çok Müşterili Uygulamalar
 Çok kiracılı uygulama, "ayrı kiracılardaki kullanıcıların" uygulamayı kendilerine aitmiş gibi görüntülemesine olanak tanıyan paylaşılan bir kaynaktır. Çok kiracılı bir uygulamaya kendini ödünç tipik bir senaryo, farklı kiracılardan gelen uygulamanın tüm kullanıcılarının kullanıcı deneyimini özelleştirmek isteyebileceği, ancak aksi takdirde aynı temel iş gereksinimlerine sahip olduğu senaryodur. Büyük çok kiracılı uygulamalara örnek olarak Office 365, Outlook.com ve visualstudio.com verilebilir.
@@ -48,7 +48,7 @@ Azure, çok kiracılı bir sistem tasarlarken karşılaşılan temel sorunları 
 
 **Yalıtım**
 
-* SSL iletişimi olan veya olmayan Ana Bilgisayar Başlıkları tarafından Web Sitesi Kiracılarını Segment
+* TLS iletişimi olan veya olmayan Ev Sahibi Başlıklar tarafından Segment Web Sitesi Kiracıları
 * Sorgu Parametrelerine Göre Web Sitesi Kiracılarını Segment
 * İşçi Rollerinde Web Hizmetleri
   * Genellikle bir uygulamanın arka ucundaki verileri işleyen Alt Roller.
@@ -56,12 +56,12 @@ Azure, çok kiracılı bir sistem tasarlarken karşılaşılan temel sorunları 
 
 **Depolama**
 
-Azure SQL Veritabanı veya Azure Depolama hizmetleri gibi, büyük miktarlarda yapılandırılmamış verilerin depolanması için hizmetler sağlayan Tablo hizmeti ve büyük miktarda yapılandırılmamış metin veya depolama hizmetleri sağlayan Blob hizmeti gibi veri yönetimi video, ses ve görüntü gibi ikili veriler.
+Azure SQL Veritabanı veya Azure Depolama hizmetleri gibi veri yönetimi, büyük miktarlarda yapılandırılmamış verilerin depolanması için hizmetler sağlayan Tablo hizmeti ve video, ses ve görüntüler gibi büyük miktarlarda yapılandırılmamış metin veya ikili veri depolamak için hizmetler sağlayan Blob hizmeti.
 
 * SQL Veritabanı'nda kiracı başına SQL Server oturum açmalarında Çok Kiracılı Verilerin Güvenliğini Sağlama.
 * Kapsayıcı düzeyi erişim ilkesi ni belirterek Uygulama Kaynakları için Azure Tabloları'nı kullanarak, paylaşılan erişim imzalarıyla korunan kaynaklar için yeni URL'ler vermek zorunda kalmadan izinleri ayarlama olanağınız olabilir.
 * Uygulama Kaynakları için Azure Kuyrukları Azure kuyrukları genellikle kiracılar adına işlemeyi yönlendirmek için kullanılır, ancak sağlama veya yönetim için gereken işleri dağıtmak için de kullanılabilir.
-* İşi paylaşılan bir hizmete iten Uygulama Kaynakları için Hizmet Veri Hizmetleri Kuyrukları, her kiracının yalnızca bu kuyruğa itmek için yalnızca izinleri (ACS'den alınan taleplerden türetildiği gibi) sahip olduğu tek bir sıra kullanabilirsiniz, yalnızca hizmetteki alıcılar birden çok kiracıdan gelen verileri kuyruktan çekme izni.
+* İşi paylaşılan bir hizmete iten Uygulama Kaynakları Için Hizmet Veri Hizmetleri Kuyrukları, her kiracının yalnızca bu kuyruğa itmek için yalnızca izinleri (ACS'den alınan taleplerden türetildiği gibi) sahip olduğu tek bir sıra kullanabilir, yalnızca hizmetteki alıcılar birden çok kiracıdan gelen verileri kuyruktan çekme iznine sahiptir.
 
 **Bağlantı ve Güvenlik Hizmetleri**
 
@@ -74,13 +74,13 @@ Azure, kimlik doğrulamayı destekleyen ve barındırılan uygulamalarınızın 
 * Azure Sanal Ağı, Azure'da sanal özel ağları (VPN'ler) sağlamanızı ve yönetmenize ve bunları şirket içi BT altyapısına güvenli bir şekilde bağlamanıza olanak tanır.
 * Sanal Ağ Trafik Yöneticisi, ister aynı veri merkezinde ister dünyanın farklı veri merkezlerinde çalışıyor olsunlar, birden çok barındırılan Azure hizmetiüzerinden bakiye yüklemenize olanak tanır.
 * Azure Active Directory (Azure AD), bulut uygulamalarınız için kimlik yönetimi ve erişim denetimi özellikleri sağlayan modern, REST tabanlı bir hizmettir. Azure Uygulama Kaynakları Için Reklam'ı kullanmak, kimlik doğrulama ve yetkilendirme özelliklerinin kodunuzdan çıkarılabilmesine izin verirken, kullanıcıların web uygulamalarınıza ve hizmetlerinize erişmelerini doğrulamanın ve yetkilendirmenin kolay bir yolunu sağlar.
-* Azure Hizmet Veri Servisi, karmaşık güvenlik duvarı ve güvenlik gerektirmeden Azure barındırılan uygulamalar ve şirket içi uygulamalar ve hizmetler arasındaki iletişim gibi dağıtılmış ve karma uygulamalar için güvenli bir ileti ve veri akışı olanağı sağlar Altyapı. Son nokta olarak ortaya çıkan hizmetlere erişmek için Uygulama Kaynakları için Servis Veri Günü'nün kullanılması kiracıya ait olabilir (örneğin, şirket içi gibi sistem dışında barındırılabilir) veya kiracı için özel olarak sağlanan hizmetler olabilir (çünkü hassas, kiracıya özel veriler bunlar arasında dolaşır).
+* Azure Hizmet Veri Servisi, karmaşık güvenlik duvarı ve güvenlik altyapılarına gerek kalmadan Azure barındırılan uygulamalar ve şirket içi uygulamalar ve hizmetler arasındaki iletişim gibi dağıtılmış ve karma uygulamalar için güvenli bir ileti ve veri akışı olanağı sağlar. Son nokta olarak ortaya çıkan hizmetlere erişmek için Uygulama Kaynakları için Hizmet Veri Bölesini kullanmak kiracıya ait olabilir (örneğin, şirket içi gibi sistemin dışında barındırılan) veya kiracı için özel olarak sağlanan hizmetler olabilir (çünkü hassas, kiracıya özel veriler bunlar arasında seyahat eder).
 
 **Kaynakların Sağlanması**
 
 Azure, uygulama için yeni kiracılar sağlamanın çeşitli yollarını sağlar. Çok sayıda kiracıya sahip çok kiracılı uygulamalarda, self servis sağlama sağlayarak bu işlemi otomatikleştirmek genellikle gereklidir.
 
-* Çalışan rolleri, kiracı kaynakları (örneğin, yeni bir kiracı kaydolur veya iptal eder), ölçüm kullanımı için ölçümler ilerler ve belirli bir zamanlamayı izleyerek veya anahtar performans eşiklerinin aşIlmesine yanıt olarak ölçeği yönetmenize olanak sağlar Gösterge. Bu aynı rol, güncelleştirmeleri ve çözümleri yükseltmeleri dışarı itmek için de kullanılabilir.
+* Çalışan rolleri, kiracı kaynakları (örneğin, yeni bir kiracı kaydolur veya iptal eder), ölçüm kullanımı için ölçümler toplamak ve belirli bir zamanlamayı izleyerek veya önemli performans göstergelerinin eşiklerinin aşilmesine yanıt olarak ölçeği yönetmenize olanak sağlar. Bu aynı rol, güncelleştirmeleri ve çözümleri yükseltmeleri dışarı itmek için de kullanılabilir.
 * Azure Blob'lar, bilgi işlem hizmeti Paketlerini, VHD görüntülerini ve diğer kaynakları korumak için kapsayıcı düzeyinde erişim ilkeleri sağlarken, yeni kiracılar için bilgi işlem veya önceden önbaşlatmalı depolama kaynakları sağlamak için kullanılabilir.
 * Bir kiracı için SQL Veritabanı kaynaklarını sağlama seçenekleri şunlardır:
   

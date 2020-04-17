@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae3743530440c9df9094a0b9784922d2d6a3dfdf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460146"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Linux sanal makineler için Azure Disk Şifreleme SSS
 
@@ -148,7 +148,9 @@ Azure Disk Şifreleme, 256 bit lik hacim ana anahtarıyla aes-xts-plain64'ün ş
 Hayır, veriler Azure Disk Şifrelemesi kullanılarak zaten şifrelenmiş veri sürücülerinden silinmez. EncryptFormatAll'ın işletim sistemi sürücüsünün yeniden şifrelenmemiş olmasına benzer şekilde, zaten şifrelenmiş olan veri sürücüsünüksetmez. Daha fazla bilgi için [EncryptFormatAll ölçütleri'ne](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)bakın.        
 
 ## <a name="is-xfs-filesystem-supported"></a>XFS dosya sistemi desteklendi mi?
-XFS birimleri yalnızca EncryptFormatAll ile veri diski şifrelemesi için desteklenir. Bu, daha önce orada herhangi bir veri silen, hacim de yeniden olacaktır. Daha fazla bilgi için [EncryptFormatAll ölçütleri'ne](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)bakın.
+XFS işletim sistemi disklerinin şifrelemesi desteklenir.
+
+XFS veri disklerinin şifrelemesi yalnızca EncryptFormatAll parametresi kullanıldığında desteklenir. Bu, daha önce orada herhangi bir veri silen, hacim de yeniden olacaktır. Daha fazla bilgi için [EncryptFormatAll ölçütleri'ne](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)bakın.
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Şifreli bir VM'yi yedekleyebilir ve geri yükleyebilir miyim? 
 

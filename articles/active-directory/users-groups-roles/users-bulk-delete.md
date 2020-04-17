@@ -1,11 +1,11 @@
 ---
-title: Azure Etkin Dizin portalında kullanıcıları toplu silme (önizleme) | Microsoft Dokümanlar
+title: Azure Etkin Dizin portalındaki kullanıcıları toplu silme | Microsoft Dokümanlar
 description: Azure Etkin Dizini'ndeki Azure yönetici merkezinde kullanıcıları toplu olarak silme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7c47887c12c8bf9be7a0c5b11dfb3f099965cb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: beb8b4f35dc5f02e59cced05a6bcfc235d42f996
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174366"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532840"
 ---
-# <a name="bulk-delete-users-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde kullanıcıları toplu silme (önizleme)
+# <a name="bulk-delete-users-in-azure-active-directory"></a>Azure Etkin Dizini'ndeki kullanıcıları toplu silme
 
 Azure Etkin Dizin (Azure AD) portalını kullanarak, kullanıcıları toplu olarak silmek için virgülle ayrılmış değerler (CSV) dosyasını kullanarak çok sayıda üyeyi bir gruba kaldırabilirsiniz.
 
@@ -36,7 +36,7 @@ Azure Etkin Dizin (Azure AD) portalını kullanarak, kullanıcıları toplu olar
 
    ![CSV dosyası, silmek için kullanıcıların adlarını ve adlarını içerir](./media/users-bulk-delete/delete-csv-file.png)
 
-1. Toplu **silme kullanıcı (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip gönder'i tıklattığınızda, CSV dosyasının doğrulaması başlar.
+1. Toplu **silme kullanıcı** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip gönder'i tıklattığınızda, CSV dosyasının doğrulaması başlar.
 1. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 1. Dosyanız doğrulamadan geçtiğinde, kullanıcıları silen Azure toplu işlemini başlatmak için **Gönder'i** seçin.
 1. Silme işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
@@ -45,9 +45,9 @@ Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını ind
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu İşlemsonuçları sayfasında yükleme durumunu kontrol edin](./media/users-bulk-delete/bulk-center.png)
+   [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
 
 Ardından, sildiğiniz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
 

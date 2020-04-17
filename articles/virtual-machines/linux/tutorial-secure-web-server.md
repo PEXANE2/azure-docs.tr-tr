@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b51d0747a4ffa08bc230b33cd416986dda1e1908
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ac581b45f3aefe7a386f25c978bfc09adda4e39f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80154313"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460486"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Key Vault'ta depolanan TLS/SSL sertifikalarıyla Azure'daki bir Linux sanal makinesinde bir web sunucusunun güvenliğini sağlama
 Web sunucularını güvenli hale getirmek için, daha önce Güvenli Soketkatmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), web trafiğini şifrelemek için sertifika kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault'ta depolanabilir ve Azure'da Linux sanal makinelerine (VM) güvenli sertifika dağıtımına izin verir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:

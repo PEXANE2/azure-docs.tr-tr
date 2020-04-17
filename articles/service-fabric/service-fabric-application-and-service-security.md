@@ -3,12 +3,12 @@ title: Azure Service Fabric uygulama güvenliği hakkında bilgi edinin
 description: Service Fabric'te mikro hizmet uygulamalarının nasıl güvenli bir şekilde çalıştırılacaklarına genel bakış. Hizmetleri ve başlangıç komut dosyasını farklı güvenlik hesapları altında çalıştırmayı, kullanıcıların kimliğini doğrulamayı ve yetkilendirmeyi, uygulama sırlarını yönetmeyi, hizmet iletişimini nasıl sağlayacağınızı, bir API ağ geçidini nasıl kullanacağınızı ve uygulama verilerini istirahatte nasıl güvenli hale erdireceklerini öğrenin.
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: e9b4a1209838bdd5eee401b0defb01839b5cf684
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756244"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461438"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Servis Kumaşı uygulaması ve servis güvenliği
 Bir microservices mimarisi [birçok faydalar](service-fabric-overview-microservices.md)getirebilir. Ancak, mikro hizmetlerin güvenliğini yönetmek, geleneksel monolitik uygulama güvenliğini yönetmekten farklıdır ve zordur. 
@@ -99,7 +99,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [Küme güvenliği hakkında bilgi edinin](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-overview.md
+[key-vault-get-started]:../key-vault/general/overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

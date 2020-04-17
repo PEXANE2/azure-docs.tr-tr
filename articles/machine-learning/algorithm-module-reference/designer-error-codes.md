@@ -8,23 +8,25 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 12/03/2019
-ms.openlocfilehash: cda499b81a61a5b78ca86a96372640e368f90357
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/16/2020
+ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80364192"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481665"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Tasarımcı için özel durumlar ve hata kodları (önizleme)
 
 Bu makalede, makine öğrenimi ardışık alanlarınıza sorun çıkarmanıza yardımcı olmak için Azure Machine Learning tasarımcısındaki (önizleme) hata iletileri ve özel durum kodları açıklanmaktadır.
 
-Tasarımcıda bir hata iletisinin tam metnini almanın iki yolu vardır:  
+Aşağıdaki adımları izleyen tasarımcıda hata iletisini bulabilirsiniz:  
 
-- Bağlantıyı tıklatın, **Çıkış Günlüğü görüntüle**, sağ bölmede ve alta kaydırın. Ayrıntılı hata iletisi pencerenin son iki satırında görüntülenir.  
-  
-- Hataya sahip modülü seçin ve kırmızı X'i tıklatın. Yalnızca ilgili hata metni görüntülenir.
+- Başarısız modülü seçin, **Çıktılar+günlükler** sekmesine gidin, **azureml-logs** kategorisi altında **70_driver_log.txt** dosyasındaki ayrıntılı girişi bulabilirsiniz.
+
+- Ayrıntılı modül hatası **için, module_statistics** kategorisi altında error_info.json'da kontrol edebilirsiniz.
+
+Aşağıda tasarımcıdaki modüllerin hata kodları verememi yer almaktadır.
 
 ## <a name="error-0001"></a>Hata 0001  
  Veri kümesinin bir veya daha fazla belirtilen sütunu bulunamazsa özel durum oluşur.  
@@ -326,7 +328,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı planladığınız süt
 ## <a name="error-0017"></a>Hata 0017  
  Seçili bir sütun geçerli modül tarafından desteklenmeyen bir veri türü kullanırsa özel durum oluşur.  
 
- Örneğin, sütun seçiminiz, matematik işlemi için dize sütunu veya kategorik özellik sütunu olan bir puan sütunu gibi modül tarafından işlenemeyen bir veri türüne sahip bir sütun içeriyorsa, Azure Machine Learning'de bu hatayı alabilirsiniz Gerekli.  
+ Örneğin, sütun seçiminiz, matematik işlemi için dize sütunu veya kategorik bir özellik sütununun gerekli olduğu bir puan sütunu gibi modül tarafından işlenemeyen bir veri türüne sahip bir sütun içeriyorsa, Azure Machine Learning'de bu hatayı alabilirsiniz.  
 
 **Çözünürlük:**
  1. Sorun olan sütunu tanımlayın.
@@ -352,7 +354,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı planladığınız süt
 ## <a name="error-0018"></a>Hata 0018  
  Giriş veri kümesi geçerli değilse özel durum oluşur.  
 
-**Çözünürlük:** Azure Machine Learning'deki bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genel olarak, hata, bir modüle giriş olarak sağlanan verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modülün gereksinimleriyle eşleşmediğini gösterir. Örnek:  
+**Çözünürlük:** Azure Machine Learning'deki bu hata birçok bağlamda görünebilir, bu nedenle tek bir çözüm yoktur. Genel olarak, hata, bir modüle giriş olarak sağlanan verilerin yanlış sayıda sütuna sahip olduğunu veya veri türünün modülün gereksinimleriyle eşleşmediğini gösterir. Örneğin:  
 
 -   Modül bir etiket sütunu gerektirir, ancak hiçbir sütun etiket olarak işaretlenmemiştir veya henüz bir etiket sütunu seçmemiş siniz.  
   
@@ -433,7 +435,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı planladığınız süt
 ## <a name="error-0022"></a>Hata 0022  
  Giriş veri kümesinde seçili sütun sayısı beklenen sayıya eşit değilse özel durum oluşur.  
 
- Azure Machine Learning'deki bu hata, akış aşağı modülü veya işlemi belirli sayıda sütun veya girdi gerektirdiğinde ve çok az sayıda sütun veya giriş sağladığınızda oluşabilir. Örnek:  
+ Azure Machine Learning'deki bu hata, akış aşağı modülü veya işlemi belirli sayıda sütun veya girdi gerektirdiğinde ve çok az sayıda sütun veya giriş sağladığınızda oluşabilir. Örneğin:  
 
 -   Tek bir etiket sütunu veya anahtar sütun u belirtin ve yanlışlıkla birden çok sütun seçersiniz.  
   
@@ -656,7 +658,7 @@ Ayrıca, veri kümesinde bir etiket sütunu bulunması, ancak Azure Machine Lear
 
 Matchbox tavsiye cihazı, öğe özelliklerini veya kullanıcı özelliklerini kullanırken karşılanması gereken belirli gereksinimlere sahiptir.  Bu hata, girdi olarak sağladığınız bir kullanıcı veya öğe için bir özellik vektörü eksik olduğunu gösterir. Her kullanıcı veya öğe için verilerde bir özellik vektörü bulunduğundan emin olun.  
 
- Örneğin, kullanıcının yaşı, konumu veya geliri gibi özellikleri kullanarak bir öneri modeli eğittiyseniz, ancak şimdi eğitim sırasında görünmeyen yeni kullanıcılar için puanlar oluşturmak istiyorsanız, bazı eşdeğer özellikler (örn. yaş, konum ve gelir değerleri) onlar için uygun tahminler yapmak için yeni kullanıcılar için. 
+ Örneğin, kullanıcının yaşı, konumu veya geliri gibi özellikleri kullanarak bir öneri modeli eğittiyseniz, ancak şimdi eğitim sırasında görünmeyen yeni kullanıcılar için puanlar oluşturmak istiyorsanız, onlar için uygun tahminlerde bulunmak için yeni kullanıcılar için bazı eşdeğer özellikler (yaş, konum ve gelir değerleri) sağlamanız gerekir. 
 
  Bu kullanıcılar için herhangi bir özelliğiniz yoksa, uygun özellikler oluşturmak için özellik mühendisliğini göz önünde bulundurun.  Örneğin, tek tek kullanıcı yaşınız veya gelir değerleriniz yoksa, bir kullanıcı grubu için kullanılacak yaklaşık değerler oluşturabilirsiniz. 
 

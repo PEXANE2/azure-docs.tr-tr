@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545964"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461693"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -295,7 +295,7 @@ Bölüm, bu alandaki temel özellikler le ilgili ek bilgiler ve bu özellikler h
 Azure IaaS ile, sanal makinelerinizi kötü amaçlı dosyalara, reklam yazılımlarına ve diğer tehditlerden korumak için Microsoft, Symantec, Trend Micro, McAfee ve Kaspersky gibi güvenlik satıcılarının kötü amaçlı yazılımdan koruma yazılımlarını kullanabilirsiniz. Azure Bulut Hizmetleri ve Sanal Makineler için [Microsoft Kötü Amaçlı Yazılımdan Koruma,](antimalware.md) virüsleri, casus yazılımları ve diğer kötü amaçlı yazılımları tanımlamaya ve kaldırmaya yardımcı olan bir koruma yeteneğidir. Microsoft Antimalware, bilinen kötü amaçlı veya istenmeyen yazılımlar azure sistemlerinizde kendisini yüklemeye veya çalıştırmaya çalıştığında yapılandırılabilir uyarılar sağlar. Microsoft Antimalware, Azure Güvenlik Merkezi kullanılarak da dağıtılabilir
 
 ### <a name="hardware-security-module"></a>Donanım Güvenliği Modülü
-Şifreleme ve kimlik doğrulama, anahtarlar korunmadıkça güvenliği artırmaz. Kritik sırlarınızın ve anahtarlarınızın yönetimini ve güvenliğini Azure [Key Vault'ta](../../key-vault/key-vault-overview.md)saklayarak basitleştirebilirsiniz. Key Vault, anahtarlarınızı FIPS 140-2 Düzey 2 standartlarına göre onaylanmış donanım Güvenlik modüllerinde (HSM' ler) saklama seçeneği sunar. Yedekleme veya saydam veri [şifreleme](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızdan gelen tüm anahtarlar veya sırlar ile Birlikte Key Vault'ta saklanabilir. İzinler ve bu korumalı öğelere erişim [Azure Etkin Dizin](https://azure.microsoft.com/documentation/services/active-directory/)aracılığıyla yönetilir.
+Şifreleme ve kimlik doğrulama, anahtarlar korunmadıkça güvenliği artırmaz. Kritik sırlarınızın ve anahtarlarınızın yönetimini ve güvenliğini Azure [Key Vault'ta](../../key-vault/general/overview.md)saklayarak basitleştirebilirsiniz. Key Vault, anahtarlarınızı FIPS 140-2 Düzey 2 standartlarına göre onaylanmış donanım Güvenlik modüllerinde (HSM' ler) saklama seçeneği sunar. Yedekleme veya saydam veri [şifreleme](https://msdn.microsoft.com/library/bb934049.aspx) için SQL Server şifreleme anahtarlarınızın tümü, uygulamalarınızdan gelen tüm anahtarlar veya sırlar ile Birlikte Key Vault'ta saklanabilir. İzinler ve bu korumalı öğelere erişim [Azure Etkin Dizin](https://azure.microsoft.com/documentation/services/active-directory/)aracılığıyla yönetilir.
 
 ### <a name="virtual-machine-backup"></a>Sanal makine yedekleme
 [Azure Yedekleme,](../../backup/backup-overview.md) uygulama verilerinizi sıfır sermaye yatırımı ve minimum işletme maliyetiyle koruyan bir çözümdür. Uygulama hataları verilerinizi bozabilir ve insan hataları uygulamalarınıza güvenlik sorunlarına yol açabilecek hatalar alabilirsiniz. Azure Yedekleme ile Windows ve Linux çalıştıran sanal makineleriniz korunur.

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 02/19/2020
+ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 0cfe58ab0d161019d5f53d9135c65db7beff2bb4
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 790e2a148385f9da54df82f597c2ca52124dc2be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397986"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529884"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak etiketlerle form tanıyıcı modelini eğitin
 
@@ -49,7 +49,7 @@ Bu hızlı başlangıcı tamamlamak için şunları yapmış olmalısınız:
 
    İşletim sisteminiz için uygun talimatları izleyerek Docker'ı makinenize yükleyin: 
    * [Windows](https://docs.docker.com/docker-for-windows/)
-   * [Macos](https://docs.docker.com/docker-for-mac/)
+   * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
 1. `docker pull` Komutu ile örnek etiketleme aracı konteyner alın.
@@ -104,7 +104,7 @@ Alanları aşağıdaki değerlerle doldurun:
 Örnek etiketleme aracında, projeler yapılandırmalarınızı ve ayarlarınızı saklar. Yeni bir proje oluşturun ve alanları aşağıdaki değerlerle doldurun:
 
 * **Görüntü Adı** - proje görüntü adı
-* **Güvenlik Belirteci** - Bazı proje ayarları API anahtarları veya diğer paylaşılan sırlar gibi hassas değerleri içerebilir. Her proje, hassas proje ayarlarını şifrelemek/çözmek için kullanılabilecek bir güvenlik belirteci oluşturur. Sol gezinti çubuğunun alt köşesindeki vites simgesine tıklayarak Uygulama Ayarları'nda güvenlik belirteçlerini bulabilirsiniz.
+* **Güvenlik Belirteci** - Bazı proje ayarları API anahtarları veya diğer paylaşılan sırlar gibi hassas değerleri içerebilir. Her proje, hassas proje ayarlarını şifrelemek/çözmek için kullanılabilecek bir güvenlik belirteci oluşturur. Sol gezinti çubuğunun altındaki vites simgesine tıklayarak Uygulama Ayarları'nda güvenlik belirteçlerini bulabilirsiniz.
 * **Kaynak Bağlantısı** - Bu proje için kullanmak istediğiniz önceki adımda oluşturduğunuz Azure Blob Depolama bağlantısı.
 * **Klasör Yolu** - İsteğe Bağlı - Kaynak formlarınız blob kapsayıcısındaki bir klasörde bulunuyorsa, klasör adını buraya belirtin
 * **Form Recognizer Service Uri** - Form Tanıma cılız uç nokta URL'niz.
@@ -130,9 +130,9 @@ Her belgenin metin düzeni bilgilerini almak için sol **bölmedeki tüm dosyala
 Ardından, etiketler (etiketler) oluşturur ve bunları modelin tanımasını istediğiniz metin öğelerine uygularsınız.
 
 1. İlk olarak, tanımlamak istediğiniz etiketleri oluşturmak için etiketler düzenleyici bölmesini kullanın.
-  1. Yeni **+** bir etiket oluşturmak için tıklatın.
-  1. Etiket adını girin.
-  1. Etiketi kaydetmek için Enter tuşuna basın.
+   1. Yeni **+** bir etiket oluşturmak için tıklatın.
+   1. Etiket adını girin.
+   1. Etiketi kaydetmek için Enter tuşuna basın.
 1. Ana düzenleyicide, vurgulanan metin öğelerinden bir veya birden çok sözcük seçmek için tıklatın ve sürükleyin.
 1. Uygulamak istediğiniz etikete tıklayın veya ilgili klavye tuşuna basın. Numara tuşları ilk 10 etiket için anahtarlar olarak atanır. Etiket düzenleyicisi bölmesindeki yukarı ve aşağı ok simgelerini kullanarak etiketlerinizi yeniden sipariş edebilirsiniz.
     > [!Tip]
@@ -144,15 +144,30 @@ Ardından, etiketler (etiketler) oluşturur ve bunları modelin tanımasını is
     > * Etiketlenen alanlara&mdash;anahtarları yalnızca değerleri eklemeyin.
     > * Tablo verileri otomatik olarak algılanmalıdır ve son çıktı JSON dosyasında kullanılabilir. Ancak, model tablo verilerinizin tümlerini algılayamazsa, bu alanları da el ile etiketleyebilirsiniz. Tablodaki her hücreyi farklı bir etiketle etiketle. Formlarınızın farklı sayıda satıriçeren tabloları varsa, mümkün olan en büyük tabloyla en az bir formu etiketlediğinizden emin olun.
 
-
-Formlarınızın beşini etiketlemek için yukarıdaki adımları izleyin ve ardından bir sonraki adıma geçin.
-
 ![Örnek etiketleme aracının ana düzenleyici penceresi](../media/label-tool/main-editor.png)
 
+Formlarınızın en az beşini etiketlemek için yukarıdaki adımları izleyin.
+
+### <a name="specify-tag-value-types"></a>Etiket değeri türlerini belirtin
+
+İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu artıracak belirli varsayımlar yapmasına olanak tanır. Ayrıca, algılanan değerlerin son JSON çıkışında standart bir biçimde döndürülmesini de sağlar. 
+
+> [!div class="mx-imgBorder"]
+> ![Örnek etiketleme aracı ile değer türü seçimi](../media/whats-new/formre-value-type.png)
+
+Aşağıdaki değer türleri ve varyasyonlar şu anda desteklenir:
+* `string`
+    * varsayılan, `no-whitespaces``alphanumeric`
+* `number`
+    * Varsayılan`currency`
+* `date` 
+    * varsayılan, `dmy` `mdy`, ,`ymd`
+* `time`
+* `integer`
 
 ## <a name="train-a-custom-model"></a>Özel bir modeli eğitme
 
-Eğitim sayfasını açmak için sol bölmedeki Tren simgesine (tren vagonu) tıklayın. Ardından modeli eğitmeye başlamak için **Tren** düğmesini tıklatın. Eğitim süreci tamamlandıktan sonra aşağıdaki bilgileri görürsünüz:
+Eğitim sayfasını açmak için sol bölmedeki Tren simgesine tıklayın. Ardından modeli eğitmeye başlamak için **Tren** düğmesini tıklatın. Eğitim süreci tamamlandıktan sonra aşağıdaki bilgileri görürsünüz:
 
 * **Model Kimliği** - Oluşturulan ve eğitilen modelin kimliği. Her eğitim çağrısı kendi kimliği ile yeni bir model oluşturur. Bu dizeyi güvenli bir konuma kopyalayın; REST API üzerinden tahmin aramaları yapmak istiyorsanız ihtiyacınız olacak.
 * **Ortalama Doğruluk** - Modelin ortalama doğruluğu. Yeni bir model oluşturmak için ek formları etiketleyerek ve yeniden eğitim alarak model doğruluğunu artırabilirsiniz. Beş formu etiketleyerek ve gerektiğinde daha fazla form ekleyerek başlamanızı öneririz.
@@ -167,7 +182,7 @@ Eğitim bittikten sonra **Ortalama Doğruluk** değerini inceleyin. Düşükse, 
 
 ## <a name="analyze-a-form"></a>Formu analiz et
 
-Modelinizi test etmek için soldaki Tahmin (dikdörtgenler) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesi yükleyin. Ardından form için anahtar/değer tahminleri almak için sağdaki **Tahmin** düğmesini tıklatın. Araç, etiketleri sınırlayıcı kutulara uygular ve her etiketin güvenini bildirir.
+Modelinizi test etmek için soldaki Predict (ampul) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesi yükleyin. Ardından form için anahtar/değer tahminleri almak için sağdaki **Tahmin** düğmesini tıklatın. Araç, etiketleri sınırlayıcı kutulara uygular ve her etiketin güvenini bildirir.
 
 > [!TIP]
 > Ayrıca, Bir REST çağrısı ile Analyze API çalıştırabilirsiniz. Bunu nasıl yapacağınızı öğrenmek için [Python'u kullanarak etiketleri olan Train'e](./python-labeled-data.md)bakın.

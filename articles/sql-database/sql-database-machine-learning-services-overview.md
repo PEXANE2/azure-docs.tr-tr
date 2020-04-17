@@ -12,23 +12,19 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 2a2cd4bfc3d393543b41eea776f02723d94054b1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345822"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461421"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>R ile Azure SQL Veritabanı Makine Öğrenme Hizmetleri (önizleme)
 
 Machine Learning Services, veritabanı içi R komut dosyalarını yürütmek için kullanılan Azure SQL Veritabanı'nın bir özelliğidir. Bu özellik, yüksek performanslı tahmine dayalı analitik ve makine öğrenimi için Microsoft R paketlerini içerir. İlişkisel veriler, depolanan yordamlar, R deyimleri içeren T-SQL komut dosyası veya T-SQL içeren R kodu aracılığıyla R komut dosyasında kullanılabilir.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
-> [!NOTE]
-> Önizleme, **genel amaçlı** vCore tabanlı satın alma modelini ve iş açısından **kritik** hizmet katmanlarını kullanan tek veritabanları ve esnek havuzlar için kullanılabilir. Bu ilk önizlemede, **hiper ölçekli** hizmet katmanı ve **yönetilen örnek** dağıtım seçeneği desteklenmez. Şu an için yalnızca R dili desteklenmektedir. Python desteği yoktur.
->
-> Önizleme şu anda aşağıdaki bölgelerde mevcuttur: Batı Avrupa, Kuzey Avrupa, Batı ABD 2, Doğu ABD, Güney Orta ABD, Kuzey Orta ABD, Kanada Orta, Güneydoğu Asya, Hindistan Güney ve Avustralya Güneydoğu.
 
 ## <a name="what-you-can-do-with-r"></a>R ile yapabilecekler
 

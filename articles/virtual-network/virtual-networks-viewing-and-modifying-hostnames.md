@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: genlin
 manager: dcscontentpm
-editor: tysonn
 ms.assetid: c668cd8e-4e43-4d05-acc3-db64fa78d828
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: cce248e2906f4a36737388e8cc7124b1bb19fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71058669"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459160"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>Ana bilgisayar adlarını görüntüleme ve değiştirme
 Rol örneklerinizin ana bilgisayar adına başvurulmasını sağlamak için, her rol için hizmet yapılandırma dosyasındaki ana bilgisayar adının değerini ayarlamanız gerekir. Bunu, **Rol** öğesinin **vmName** özniteliğine istenen ana bilgisayar adını ekleyerek yaparsınız. **vmName** özniteliğinin değeri, her rol örneğinin ana adı için bir temel olarak kullanılır. Örneğin, **vmName** *webrole* ise ve bu rolün üç örneği varsa, örneklerin ana bilgisayar adları *webrole0,* *webrole1*ve *webrole2*olacaktır. Sanal makinenin ana bilgisayar adı sanal makine adına bağlı olarak doldurulduğundan, yapılandırma dosyasındaki sanal makineler için bir ana bilgisayar adı belirtmeniz gerekmez. Microsoft Azure hizmetini yapılandırma hakkında daha fazla bilgi için [Azure Hizmet Yapılandırma Şeması (.cscfg Dosyası)](https://msdn.microsoft.com/library/azure/ee758710.aspx)

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: bb6cb6d86933166d2427788d697d9cd38cf04bf0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768503"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460180"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Quickstart: Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde basit R komut dosyaları oluşturun ve çalıştırın (önizleme)
 
@@ -30,11 +31,8 @@ Bu hızlı başlangıçta, Azure SQL Veritabanı'nda Machine Learning Services (
 
 - Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - Sunucu düzeyinde güvenlik [duvarı kuralına](sql-database-server-level-firewall-rule.md) sahip bir [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir. [Önizleme için kaydolun](sql-database-machine-learning-services-overview.md#signup).
+- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-
-> [!NOTE]
-> Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır.
 
 Bu örnek, iyi biçimlendirilmiş bir R komut dosyasını sarmak için depolanan [yordamı sp_execute_external_script](/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) kullanır.
 
@@ -81,7 +79,7 @@ print(c(c, d))
 
    Buna benzer bir şey olmalı.
 
-    **Sonuç -ları**
+    **Sonuçlar**
 
     ```text
     STDOUT message(s) from external script:
@@ -144,7 +142,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     FROM RTestData
     ```
 
-    **Sonuç -ları**
+    **Sonuçlar**
 
     ![RTestData tablosunun içeriği](./media/sql-database-quickstart-r-create-script/select-rtestdata.png)
 
@@ -157,7 +155,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([NewColName] INT NOT NULL));
     ```
 
-    **Sonuç -ları**
+    **Sonuçlar**
 
     ![Tablodan veri döndüren R betiğinin çıktısı](./media/sql-database-quickstart-r-create-script/r-output-rtestdata.png)
 
@@ -191,7 +189,7 @@ Varsayılan olarak, [sp_execute_external_script](https://docs.microsoft.com/sql/
     WITH RESULT SETS(([Col1] CHAR(20) NOT NULL));
     ```
 
-    **Sonuç -ları**
+    **Sonuçlar**
 
     ![Giriş olarak @script kullanarak sonuçları sorgulama](./media/sql-database-quickstart-r-create-script/r-data-generated-output.png)
 
@@ -207,7 +205,7 @@ GO
 
 R `print` işlevi, sürümü **İletiler** penceresinde döndürür. Aşağıdaki örnek çıktıda, bu durumda SQL Veritabanı'nın 3.4.4 sürümünün yüklü olduğunu görebilirsiniz.
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ```text
 STDOUT message(s) from external script:
@@ -249,7 +247,7 @@ WITH result sets((
 
 Çıktı R'den geliyor `installed.packages()` ve sonuç kümesi olarak döndürülür.
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ![R içindeki yüklü paketler](./media/sql-database-quickstart-r-create-script/r-installed-packages.png)
 

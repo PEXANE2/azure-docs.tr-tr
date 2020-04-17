@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 29011760a94a05020150ceddeba4303b87c2f610
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b602660142f70fb1442977b22fce2bc1bb275cd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722195"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481920"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Pandalarla Azure blob depolamasındaki verileri keşfedin
 
@@ -35,30 +35,30 @@ Bir veri kümesini keşfetmek ve işlemek için, önce blob kaynağından yerel 
 
 1. Blob hizmetini kullanarak aşağıdaki Python kod örneğiyle azure blob'undan verileri indirin. Aşağıdaki koddaki değişkeni belirli değerlerinizle değiştirin:
 
-```python
-from azure.storage.blob import BlockBlobService
-import tables
+    ```python
+    from azure.storage.blob import BlockBlobService
+    import tables
 
-STORAGEACCOUNTNAME= <storage_account_name>
-STORAGEACCOUNTKEY= <storage_account_key>
-LOCALFILENAME= <local_file_name>
-CONTAINERNAME= <container_name>
-BLOBNAME= <blob_name>
+    STORAGEACCOUNTNAME= <storage_account_name>
+    STORAGEACCOUNTKEY= <storage_account_key>
+    LOCALFILENAME= <local_file_name>
+    CONTAINERNAME= <container_name>
+    BLOBNAME= <blob_name>
 
-#download from blob
-t1=time.time()
-blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
-blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
-t2=time.time()
-print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-```
+    #download from blob
+    t1=time.time()
+    blob_service=BlockBlobService(account_name=STORAGEACCOUNTNAME,account_key=STORAGEACCOUNTKEY)
+    blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
+    t2=time.time()
+    print(("It takes %s seconds to download "+blobname) % (t2 - t1))
+    ```
 
 1. İndirilen dosyadan verileri pandadataframe olarak okuyun.
 
-```python
-# LOCALFILE is the file path
-dataframe_blobdata = pd.read_csv(LOCALFILE)
-```
+    ```python
+    # LOCALFILE is the file path
+    dataframe_blobdata = pd.read_csv(LOCALFILENAME)
+    ```
 
 Artık verileri keşfetmeye ve bu veri setinde özellikler oluşturmaya hazırsınız.
 
@@ -67,72 +67,72 @@ Pandaları kullanarak verileri keşfetmenin birkaç yolu aşağıda verilmiştir
 
 1. Satır **ve sütun sayısını** denetleme
 
-```python
-print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
-```
+    ```python
+    print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
+    ```
 
 1. Aşağıdaki veri kümesindeki ilk veya son birkaç **satırı** **inceleyin:**
 
-```python
-dataframe_blobdata.head(10)
+    ```python
+    dataframe_blobdata.head(10)
 
-dataframe_blobdata.tail(10)
-```
+    dataframe_blobdata.tail(10)
+    ```
 
 1. Her sütunun aşağıdaki örnek kodu kullanarak içe aktarılyış edildiği **veri türünü** denetleyin
 
-```python
-for col in dataframe_blobdata.columns:
-    print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
-```
+    ```python
+    for col in dataframe_blobdata.columns:
+        print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
+    ```
 
 1. Veri kümesindeki **sütunların temel istatistiklerini** aşağıdaki gibi denetleyin
 
-```python
-dataframe_blobdata.describe()
-```
+    ```python
+    dataframe_blobdata.describe()
+    ```
 
 1. Her sütun değeri için giriş sayısına aşağıdaki gibi bakın
 
-```python
-dataframe_blobdata['<column_name>'].value_counts()
-```
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts()
+    ```
 
 1. Aşağıdaki örnek kodu kullanarak her sütundaki gerçek giriş sayısına karşılık **eksik değerleri sayma**
 
-```python
-miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
-print miss_num
-```
+    ```python
+    miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
+    print miss_num
+    ```
 
 1. Verilerde belirli bir sütun için **eksik değerleriniz** varsa, bunları aşağıdaki gibi bırakabilirsiniz:
 
-```python
-dataframe_blobdata_noNA = dataframe_blobdata.dropna()
-dataframe_blobdata_noNA.shape
-```
+    ```python
+    dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+    dataframe_blobdata_noNA.shape
+    ```
 
-Eksik değerleri değiştirmenin başka bir yolu mod işlevidir:
+    Eksik değerleri değiştirmenin başka bir yolu mod işlevidir:
 
-```python
-dataframe_blobdata_mode = dataframe_blobdata.fillna(
-    {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
-```
+    ```python
+    dataframe_blobdata_mode = dataframe_blobdata.fillna(
+        {'<column_name>': dataframe_blobdata['<column_name>'].mode()[0]})
+    ```
 
 1. Bir değişkenin dağılımını çizmek için değişken sayıda depo kutusu kullanarak bir **histogram** çizimi oluşturma
 
-```python
-dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
+    ```python
+    dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 
-np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
-```
+    np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
+    ```
 
 1. Bir dağılım çizimi kullanarak veya yerleşik korelasyon işlevini kullanarak değişkenler arasındaki **korelasyonlara** bakın
 
-```python
-# relationship between column_a and column_b using scatter plot
-plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
+    ```python
+    # relationship between column_a and column_b using scatter plot
+    plt.scatter(dataframe_blobdata['<column_a>'], dataframe_blobdata['<column_b>'])
 
-# correlation between column_a and column_b
-dataframe_blobdata[['<column_a>', '<column_b>']].corr()
-```
+    # correlation between column_a and column_b
+    dataframe_blobdata[['<column_a>', '<column_b>']].corr()
+    ```

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 9e6b451901da00243c458c06d51ba19fb64c0fdc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115054"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530462"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Aktarılıverileri kullanarak sunucuları değerlendirin
 
@@ -32,7 +32,7 @@ Bu noktalara dikkat edin:
 - Sunucu bilgilerini CSV kullanarak sunucu değerlendirmesine birden çok kez yükleyebilirsiniz.
 - Uygulama bilgilerini toplamak, şirket içi çevrenizi geçiş için değerlendirmede yararlıdır. Ancak, Sunucu Değerlendirmesi şu anda uygulama düzeyinde değerlendirme yapmaz veya bir değerlendirme oluştururken uygulamaları dikkate almaz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure Geçiş projesi ayarlayın.
 > * Sunucu bilgileriyle bir CSV dosyanı doldurun.
@@ -68,12 +68,12 @@ Yeni bir Azure Geçiş projesi ayarlamak için:
 5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
 6. **PROJE AYRINTILARInDA,** proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin. Daha fazla bilgi için:
 
-    - Desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies) Proje coğrafyası yalnızca şirket içi sanal makinelerden toplanan meta verileri depolamak için kullanılır.
+    - Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
     - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-assess-import/migrate-project.png)
 
-7. **Sonraki'ni**seçin.
+7. **İleri**’yi seçin.
 8. **Değerlendirme aracını seç'te**Azure **Geçir: Sunucu Değerlendirmesi** > **Sonraki'ni**seçin.
 
     ![Azure Geçiş değerlendirmesi oluşturma](./media/tutorial-assess-import/assessment-tool.png)

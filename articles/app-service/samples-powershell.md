@@ -6,12 +6,12 @@ ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.topic: sample
 ms.date: 03/08/2017
 ms.custom: mvc
-ms.openlocfilehash: f32db2a4dda0ceb69644b64a5c76155b448c5a28
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f289bd453f2387282402394c807fe9700151f221
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74687020"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532434"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Azure Uygulama Hizmeti için PowerShell örnekleri
 
@@ -27,7 +27,7 @@ Aşağıdaki tablo, Azure PowerShell kullanılarak oluşturulmuş PowerShell kom
 | [Bir uygulama oluşturma ve bir evreleme ortamına kod dağıtma](./scripts/powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Kod değişikliklerini evreleme için dağıtım yuvası na sahip bir Uygulama Hizmeti uygulaması oluşturur. |
 |**Uygulama yapılandırma**||
 | [Özel bir etki alanını bir uygulamaya haritalamak](./scripts/powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir Uygulama Hizmeti uygulaması oluşturur ve özel bir etki alanı adını eşler. |
-| [Özel bir SSL sertifikasını bir uygulamaya bağlama](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir Uygulama Hizmeti uygulaması oluşturur ve özel bir etki alanı adının SSL sertifikasını ona bağlar. |
+| [Özel bir TLS/SSL sertifikasını bir uygulamaya bağlama](./scripts/powershell-configure-ssl-certificate.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bir Uygulama Hizmeti uygulaması oluşturur ve tls/SSL sertifikasını özel bir etki alanı adının sertifikasına bağlar. |
 |**Uygulama ölçeklendirme**||
 | [Uygulamayı el ile ölçeklendirin](./scripts/powershell-scale-manual.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Bir Uygulama Hizmeti uygulaması oluşturur ve 2 örnek arasında ölçeklendirin. |
 | [Yüksek kullanılabilirlik mimarisine sahip bir uygulamayı dünya çapında ölçeklendirin](./scripts/powershell-scale-high-availability.md?toc=%2fpowershell%2fmodule%2ftoc.json) | İki farklı coğrafi bölgede iki Uygulama Hizmeti uygulaması oluşturur ve Azure Trafik Yöneticisi'ni kullanarak bunları tek bir uç noktadan kullanılabilir hale getirir. |

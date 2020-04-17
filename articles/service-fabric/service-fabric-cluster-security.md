@@ -4,12 +4,12 @@ description: Azure Hizmet Kumaşı kümesinin güvenlik senaryoları ve bunları
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: 5912f98f6a1c82250a66ec4d9fe39f2f69b1cc8f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80753802"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461591"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Hizmet Kumaş küme güvenlik senaryoları
 
@@ -90,7 +90,7 @@ Küme oluştururken Yönetici ve Kullanıcı istemcisi rollerini ayarlayın. Her
 
 ## <a name="x509-certificates-and-service-fabric"></a>X.509 sertifikaları ve Servis Kumaşı
 
-X.509 dijital sertifikalar genellikle istemcileri ve sunucuları doğrulamak için kullanılır. İletileri şifrelemek ve dijital olarak imzalamak için de kullanılırlar. Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X.509 sertifikalarını kullanır. X.509 dijital sertifikalar hakkında daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/ms731899.aspx) Azure'da Hizmet Kumaşı kümeleri için sertifikaları yönetmek için [Key Vault'u](../key-vault/key-vault-overview.md) kullanırsınız.
+X.509 dijital sertifikalar genellikle istemcileri ve sunucuları doğrulamak için kullanılır. İletileri şifrelemek ve dijital olarak imzalamak için de kullanılırlar. Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X.509 sertifikalarını kullanır. X.509 dijital sertifikalar hakkında daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/ms731899.aspx) Azure'da Hizmet Kumaşı kümeleri için sertifikaları yönetmek için [Key Vault'u](../key-vault/general/overview.md) kullanırsınız.
 
 Göz önünde bulundurulması gereken bazı önemli şeyler:
 

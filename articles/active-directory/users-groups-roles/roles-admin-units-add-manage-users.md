@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92d96abd343266372984918fd0c942ec1cae865f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b2b901f652564c47ca35cb0f75a69f26fa2fa71
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428309"
+ms.locfileid: "81533233"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Azure Etkin Dizini'nde bir yönetim birimindeki kullanıcıları ekleme ve yönetme
 
@@ -51,11 +51,11 @@ Kullanıcıları yönetim birimlerine iki şekilde atayabilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
 
-    $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
+    $administrativeunitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     $UserObj = Get-AzureADUser -Filter "UserPrincipalName eq 'billjohn@fabidentity.onmicrosoft.com'"
-    Add-AzureADAdministrativeUnitMember -ObjectId $administrative unitObj.ObjectId -RefObjectId $UserObj.ObjectId
+    Add-AzureADAdministrativeUnitMember -ObjectId $administrativeunitObj.ObjectId -RefObjectId $UserObj.ObjectId
 
-Yukarıdaki örnekte, cmdlet Add-AzureADAdministrativeUnitMember, kullanıcıyı yönetim birimine eklemek için kullanılır. Kullanıcının eklenecek olan Yönetim Birimi'nin nesne kimliği ve eklenecek kullanıcının nesne kimliği bağımsız değişken olarak alınır. Vurgulanan bölüm, belirli bir ortam için gerektiği gibi değiştirilebilir.
+Yukarıdaki örnekte, cmdlet Add-AzureADAdministrativeUnitMember, kullanıcıyı yönetim birimine eklemek için kullanılır. Kullanıcının eklenecek olan yönetim biriminin nesne kimliği ve eklenecek kullanıcının nesne kimliği bağımsız değişken olarak alınır. Vurgulanan bölüm, belirli bir ortam için gerektiği gibi değiştirilebilir.
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 

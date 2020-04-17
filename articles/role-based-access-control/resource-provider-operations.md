@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 16fa33999a38b21fd2016c986dd2db81f7d84051
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 274e85a914ebec31a03f1149bc4467ea142e7255
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482117"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri
 
@@ -2198,6 +2198,10 @@ Azure hizmeti: [Sanal Makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft.Compute/locations/logAnalytics/getThrottledRequests/action | Kaynak Adı, OperationName veya uygulanan Azaltma İlkesi'ne göre gruplanmış daraltılmış isteklerin toplamlarını göstermek için günlükler oluşturun. |
 > |  | **konumlar/işlemler** |  |
 > | Eylem | Microsoft.Compute/locations/operations/read | Eşzamanlı işlemin durumunu alır |
+> |  | **yerler/privateEndpointConnectionProxyAzureAsyncOperation** |  |
+> | Eylem | Microsoft.Compute/locations/privateEndpointConnectionProxyAzureAsyncOperation/read | Eşzamanlı Özel Uç Nokta Bağlantısı Proxy işleminin durumunu alın |
+> |  | **yerler/privateEndpointConnectionProxyOperationResults** |  |
+> | Eylem | Microsoft.Compute/locations/privateEndpointConnectionProxyOperationResults/read | Özel Endpoint Connection Proxy işleminin sonuçlarını alma |
 > |  | **yerler/yayıncılar** |  |
 > | Eylem | Microsoft.Compute/locations/publishers/read | Yayımcının özelliklerini alın |
 > |  | **yerler/yayıncılar/eser türleri/teklifler** |  |
@@ -2233,6 +2237,14 @@ Azure hizmeti: [Sanal Makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft.Compute/restorePointCollections/restorePoints/write | Yeni bir geri yükleme noktası oluşturur |
 > | Eylem | Microsoft.Compute/restorePointCollections/restorePoints/delete | Geri yükleme noktasını siler |
 > | Eylem | Microsoft.Compute/restorePointCollections/restorePoints/retrieveSasUris/action | Blob SAS URI'leri ile birlikte bir geri yükleme noktasının özelliklerini alın |
+> |  | **paylaşılanVMExtensions** |  |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/read | Paylaşılan VM Uzantıözelliklerini alır |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/write | Yeni bir Paylaşılan VM Uzantısı oluşturur veya varolan bir VM Uzantısını güncelleştirir |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/delete | Paylaşılan VM Uzantısını Siler |
+> |  | **paylaşılanVMExtensions/sürümleri** |  |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/versions/read | Paylaşılan VM Uzantı Sürümü özelliklerini alır |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/versions/write | Yeni bir Paylaşılan VM Uzantısı Sürümü oluşturur veya varolan bir Sürümü güncelleştirir |
+> | Eylem | Microsoft.Compute/sharedVMExtensions/versions/delete | Paylaşılan VM Uzantısı Sürümünü Siler |
 > |  | **paylaşılanVMImages** |  |
 > | Eylem | Microsoft.Compute/sharedVMImages/read | SharedVMImage özelliklerini alın |
 > | Eylem | Microsoft.Compute/sharedVMImages/write | Yeni bir SharedVMImage oluşturur veya varolan bir tanesini güncelleştirir |
@@ -2250,6 +2262,10 @@ Azure hizmeti: [Sanal Makineler](../virtual-machines/index.yml), [Sanal Makine �
 > | Eylem | Microsoft.Compute/snapshots/delete | Anlık Görüntü Silme |
 > | Eylem | Microsoft.Compute/snapshots/beginGetAccess/action | Blob erişimi için Snapshot'ın SAS URI'sini alın |
 > | Eylem | Microsoft.Compute/snapshots/endGetAccess/action | Anlık Görüntü'nün SAS URI'sini iptal edin |
+> |  | **sshPublicKeys** |  |
+> | Eylem | Microsoft.Compute/sshPublicKeys/oku | Bir SSH ortak anahtarının özelliklerini alma |
+> | Eylem | Microsoft.Compute/sshPublicKeys/write | Yeni bir SSH ortak anahtarı oluşturur veya varolan bir SSH ortak anahtarını güncelleştirir |
+> | Eylem | Microsoft.Compute/sshPublicKeys/silme | SSH ortak anahtarını siler |
 > |  | **virtualMachines** |  |
 > | Eylem | Microsoft.Compute/virtualMachines/read | Sanal makinenin özelliklerini alın |
 > | Eylem | Microsoft.Compute/virtualMachines/write | Yeni bir sanal makine oluşturur veya varolan bir sanal makineyi güncelleştirir |
@@ -3934,6 +3950,83 @@ Azure hizmeti: [Azure Cosmos DB](../cosmos-db/index.yml)
 > | Eylem | Microsoft.DocumentDB/databaseAccounts/getBackupPolicy/action | Veritabanı hesabının yedekleme ilkesini edinin |
 > | Eylem | Microsoft.DocumentDB/databaseAccounts/geri yükleme/eylem | Geri yükleme isteği gönderme |
 > | Eylem | Microsoft.DocumentDB/databaseAccounts/backup/action | Yedeklemeyi yapılandırmak için istek gönderme |
+> |  | **veritabanıAccounts/apis/databases** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Veritabanı oluşturun. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir veritabanı okuyun veya tüm veritabanlarını listeleyin. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Veritabanını silin. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/koleksiyonlar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir koleksiyon oluşturun veya güncelleyin. Yalnızca API türleri için geçerlidir: 'mongodb'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir koleksiyonu okuyun veya tüm koleksiyonları listeleyin. Yalnızca API türleri için geçerlidir: 'mongodb'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Koleksiyonu silin. Yalnızca API türleri için geçerlidir: 'mongodb'. |
+> |  | **databaseAccounts/apis/databases/collections/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'mongodb'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/koleksiyonlar/ayarlar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Koleksiyon iş kaynağını güncelleştirin. Yalnızca API türleri için geçerlidir: 'mongodb'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Koleksiyon iş kaynağını okuyun. Yalnızca API türleri için geçerlidir: 'mongodb'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/databases/collections/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/collections/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'mongodb'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/kapsayıcılar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir kapsayıcı oluşturun veya güncelleyin. Yalnızca API türleri için geçerlidir: 'sql'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir kapsayıcı yı okuyun veya tüm kapsayıcıları listeleyin. Yalnızca API türleri için geçerlidir: 'sql'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir kapsayıcıyı silin. Yalnızca API türleri için geçerlidir: 'sql'. |
+> |  | **databaseAccounts/apis/databases/containers/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'sql'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/kapsayıcılar/ayarlar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Kapsayıcı iş bürünme güncelliğini güncelleştirin. Yalnızca API türleri için geçerlidir: 'sql'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir kapsayıcı iş buzunu okuyun. Yalnızca API türleri için geçerlidir: 'sql'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/databases/containers/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/containers/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'sql'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/grafikler** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Grafik oluşturun veya güncelleyin. Yalnızca API türleri için geçerlidir: 'gremlin'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir grafik okuyun veya tüm grafikleri listeleyin. Yalnızca API türleri için geçerlidir: 'gremlin'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Grafiği silin. Yalnızca API türleri için geçerlidir: 'gremlin'. |
+> |  | **databaseAccounts/apis/databases/graphs/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'gremlin'. |
+> |  | **veritabanıAccounts/apis/databases/graphs/settings** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Grafik girdisi güncelleştirin. Yalnızca API türleri için geçerlidir: 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Grafik bölümünü okuyun. Yalnızca API türleri için geçerlidir: 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/databases/graphs/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/graphs/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/databases/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. |
+> |  | **veritabanıHesaplar/apis/veritabanları/ayarlar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Veritabanı veri tabanı veri kullanımını güncelleştirin. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Veritabanı veri tabanı veri metodlarını okuyun. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/databases/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/databases/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'sql', 'mongodb', 'gremlin'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **veritabanıAccounts/apis/keyspaces** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir anahtar alanı oluşturun. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir boşluk okuyun veya tüm anahtar alanlarını listeleyin. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir boşluk silin. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> |  | **databaseAccounts/apis/keyspaces/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> |  | **veritabanıAccounts/apis/keyspaces/settings** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir anahtar alanı iş bürünme. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir boşluk iş bilginiz okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/keyspaces/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **veritabanıHesaplar/apis/keyspaces/tablolar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo oluşturun veya güncelleyin. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir tablo okuyun veya tüm tabloları listeleyin. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tabloyu silin. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> |  | **databaseAccounts/apis/keyspaces/tables/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo iş kaynağını güncelleştirin. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo iş kaynağını okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/keyspaces/tables/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/keyspaces/tables/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'cassandra'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **veritabanıHesaplar/apis/tablolar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo oluşturun veya güncelleyin. Yalnızca API türleri için geçerlidir: 'tablo'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Bir tablo okuyun veya tüm tabloları listeleyin. Yalnızca API türleri için geçerlidir: 'tablo'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/delete | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tabloyu silin. Yalnızca API türleri için geçerlidir: 'tablo'. |
+> |  | **databaseAccounts/apis/tables/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'tablo'. |
+> |  | **veritabanıHesaplar/apis/tablolar/ayarlar** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/write | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo iş kaynağını güncelleştirin. Yalnızca API türleri için geçerlidir: 'tablo'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Tablo iş kaynağını okuyun. Yalnızca API türleri için geçerlidir: 'tablo'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
+> |  | **databaseAccounts/apis/tables/settings/operationResults** |  |
+> | Eylem | Microsoft.DocumentDB/databaseAccounts/apis/tables/settings/operationResults/read | (Amortismana uğradı. Lütfen '/apis/' segmenti olmadan kaynak yollarını kullanın) Eşzamanlı işlemin durumunu okuyun. Yalnızca API türleri için geçerlidir: 'tablo'. Yalnızca ayar türleri için geçerlidir: 'iş artışı'. |
 > |  | **veritabanıHesapları/cassandraKeyspaces** |  |
 > | Eylem | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/write | Bir Cassandra anahtar alanı oluşturun. |
 > | Eylem | Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/read | Bir Cassandra anahtar alanını okuyun veya tüm Cassandra anahtar alanlarını listele. |
@@ -5532,7 +5625,7 @@ Azure hizmeti: [Machine Learning Service](../machine-learning/index.yml)
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/yazma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) oluşturur veya güncelleştirir |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/silme | Makine Öğrenimi Hizmetleri Çalışma Alanını(lar) siler |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/listKeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı için liste sırları |
-> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/PrivateEndpointConnectionsApproval/action | Microsoft.Network sağlayıcısının Özel Bitiş Noktası kaynağına bağlantı onaylama veya reddetme |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/privateEndpointConnectionsApproval/action | Microsoft.Network sağlayıcısının Özel Bitiş Noktası kaynağına bağlantı onaylama veya reddetme |
 > |  | **çalışma alanları/hesaplamalar** |  |
 > | Eylem | Microsoft.MachineLearningServices/workspaces/computes/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) bilgi işlem kaynaklarını alır |
 > | Eylem | Microsoft.MachineLearningServices/workspaces/computes/write | Machine Learning Services Workspace(ler) adresindeki bilgi işlem kaynaklarını oluşturur veya günceller |
@@ -5542,10 +5635,90 @@ Azure hizmeti: [Machine Learning Service](../machine-learning/index.yml)
 > | Eylem | Microsoft.MachineLearningServices/workspaces/computes/start/action | Machine Learning Services Workspace'te bilgi işlem kaynağını başlatın |
 > | Eylem | Microsoft.MachineLearningServices/workspaces/computes/stop/action | Makine Öğrenimi Hizmetleri Çalışma Alanında bilgi işlem kaynağını durdurun |
 > | Eylem | Microsoft.MachineLearningServices/workspaces/computes/restart/action | Machine Learning Services Workspace'te bilgi işlem kaynağını yeniden başlatın |
+> |  | **çalışma alanları/datadriftdedektörleri** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datadriftdetectors/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) veri sürüklenme dedektörleri alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datadriftdetectors/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da veri sürüklenme dedektörleri oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datadriftdetectors/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) veri sürüklenme dedektörlerini siler |
+> |  | **çalışma alanları/veri kümeleri/kayıtlı** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/kayıtlı/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri alır |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/write | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri oluşturur veya güncelleştirir |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/delete | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümelerini siler |
+> |  | **çalışma alanları/veri setleri/kayıtlı/önizleme** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri seti önizlemesi alır |
+> |  | **çalışma alanları/veri setleri/kayıtlı/profil** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi profillerini alır |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi profilleri oluşturur veya güncelleştirir |
+> |  | **çalışma alanları/veri kümeleri/kayıtlı/şema** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi şeması alır |
+> |  | **çalışma alanları/veri kümeleri/kayıtdışı** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/yazma | Machine Learning Services Workspace(ler) 'de kayıtsız veri kümeleri oluşturur veya güncelleştirir |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/silme | Machine Learning Services Workspace(ler) 'deki kayıtdışı veri kümelerini siler |
+> |  | **çalışma alanları/veri kümeleri/kayıtsız/önizleme** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/önizleme/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi önizlemesi alır |
+> |  | **çalışma alanları/veri kümeleri/kayıtsız/profil** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/profil/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi profilleri alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/profil/yazma | Machine Learning Services Workspace(ler)'de kayıtlı olmayan veri kümeleri için veri kümesi profilleri oluşturur veya güncelleştirir |
+> |  | **çalışma alanları/veri kümeleri/kayıtsız/şema** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/şema/oku | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi şeması alır |
+> |  | **çalışma alanları/veri depoları** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datastores/oku | Machine Learning Services Workspace(ler) içinde veri depoları alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datastores/write | Machine Learning Services Workspace(ler) 'de veri depoları oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/datastores/silme | Machine Learning Services Workspace(ler) 'deki veri depolarını siler |
+> |  | **çalışma alanları/uç noktalar/ardışık işler** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde yayınlanan boru hatları ve boru hattı uç noktaları alır |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write | Machine Learning Services Workspace(ler) içinde yayımlanmış ardışık hatlar ve boru hattı uç noktaları oluşturur veya güncelleştirir |
+> |  | **çalışma alanları/ortamlar** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) ortamları alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/readSecrets/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırları ile ortamlar alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/yazma | Machine Learning Services Workspace(ler) ortamları oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/yapı/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) ortamları oluşturur |
 > |  | **çalışma alanları/olayGridFilters** |  |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/olayGridFilters/oku | Belirli bir çalışma alanı için Olay Izgara filtresi alma |
-> |  | **çalışma alanları/özellikler** |  |
-> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/özellikler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı için tüm etkinleştirilen özellikleri alır |
+> |  | **çalışma alanları/denemeler** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/denemeler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) üzerinde deneyler alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/denemeler/yazma | Machine Learning Services Workspace(ler) 'de denemeler oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/experiments/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) deneylerini siler |
+> |  | **çalışma alanları/denemeler/çalıştırmalar** |  |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/experiments/runs/submit/action | Machine Learning Services Workspace(ler) 'de komut dosyası çalışır oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) çalışır alır |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | Machine Learning Services Workspace(ler) içinde çalışır oluşturur veya günceller |
+> |  | **çalışma alanları/etiketleme** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/dışa aktarma/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde etiketleme projelerinin dışa aktarma etiketleri |
+> |  | **çalışma alanları/etiketleme/etiketler** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) 'de etiketleme projelerinin etiketlerini alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/yazma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) 'de etiketleme projelerinin etiketlerini oluşturur |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/reddetme/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'deki etiketleme projelerinin etiketlerini reddetme |
+> |  | **çalışma alanları/etiketleme/projeler** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) etiketleme projesini alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/yazma | Machine Learning Services Workspace(ler) içinde etiketleme projesi oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) etiketleme projesini siler |
+> |  | **çalışma alanları/etiketleme/projeler/özet** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/özet/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde etiketleme proje özeti alır |
+> |  | **çalışma alanları/meta veriler/yapılar** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) eser alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/yazma | Machine Learning Services Workspace(ler) 'de eserler oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) eserlerini siler |
+> |  | **çalışma alanları/meta veriler/sırlar** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/sırlar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırlarını alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta data/secrets/write | Machine Learning Services Workspace(ler)'de sırları oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/sırlar/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırları siler |
+> |  | **çalışma alanları/meta veriler/anlık görüntüler** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/okuma | Machine Learning Services Workspace(ler) içinde anlık görüntü alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/yazma | Machine Learning Services Workspace(ler)'de anlık görüntüler oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/silme | Machine Learning Services Workspace(ler)'deki anlık görüntüleri siler |
+> |  | **çalışma alanları/modeller** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/modelleri/oku | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modelleri alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/modeller/yazma | Machine Learning Services Workspace(ler)'de modeller oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/models/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modellerini siler |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/models/package/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modelleri paketleri |
+> |  | **çalışma alanları/modüller** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/modülleri/oku | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modülleri alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/modülleri/yazma | Machine Learning Services Workspace(ler) modülü oluşturur veya günceller |
+> |  | **çalışma alanları/boru hattı taslakları** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/pipelinedrafts/read | Makine Öğrenim Hizmetleri Çalışma Alanı(lar) boru hattı taslakları alır |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da boru hattı taslaklarını oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/delete | Makine ÖğrenimI Hizmetleri Çalışma Alanı(lar)'daki boru hattı taslaklarını siler |
 > |  | **çalışma alanları/privateEndpointConnectionProxies** |  |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/privateEndpointConnectionProxies/oku | Microsoft.Network sağlayıcısının Özel Bitiş Noktası kaynağına bağlantı proxy'sinin durumunu görüntüleme |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/privateEndpointConnectionProxies/write | Bağlantı proxy'sinin durumunu Microsoft.Network sağlayıcısının Özel Bitiş Noktası kaynağıyla değiştirme |
@@ -5557,104 +5730,17 @@ Azure hizmeti: [Machine Learning Service](../machine-learning/index.yml)
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/privateEndpointConnections/delete | Microsoft.Network sağlayıcısının Özel Bitiş Noktası kaynağına bağlantı silme |
 > |  | **çalışma alanları/privateLinkResources** |  |
 > | Eylem | Microsoft.MachineLearningServices/çalışma alanları/privateLinkResources/oku | Machine Learning Services Workspace(ler) belirtilen örneği için kullanılabilir özel bağlantı kaynaklarını alır |
-> |  | **çalışma alanları/datadriftdedektörleri** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datadriftdetectors/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) veri sürüklenme dedektörleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datadriftdetectors/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da veri sürüklenme dedektörleri oluşturur veya günceller |
-> |  | **çalışma alanları/veri kümeleri/kayıtlı** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/kayıtlı/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/write | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri oluşturur veya güncelleştirir |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/delete | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümelerini siler |
-> |  | **çalışma alanları/veri setleri/kayıtlı/önizleme** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/preview/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri seti önizlemesi alır |
-> |  | **çalışma alanları/veri setleri/kayıtlı/profil** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi profillerini alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/profile/write | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi profilleri oluşturur veya güncelleştirir |
-> |  | **çalışma alanları/veri kümeleri/kayıtlı/şema** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/datasets/registered/schema/read | Machine Learning Services Workspace(ler) 'de kayıtlı veri kümeleri için veri kümesi şeması alır |
-> |  | **çalışma alanları/veri kümeleri/kayıtdışı** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/yazma | Machine Learning Services Workspace(ler) 'de kayıtsız veri kümeleri oluşturur veya güncelleştirir |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/silme | Machine Learning Services Workspace(ler) 'deki kayıtdışı veri kümelerini siler |
-> |  | **çalışma alanları/veri kümeleri/kayıtsız/önizleme** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/önizleme/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi önizlemesi alır |
-> |  | **çalışma alanları/veri kümeleri/kayıtsız/profil** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/profil/okuma | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi profilleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/profil/yazma | Machine Learning Services Workspace(ler)'de kayıtlı olmayan veri kümeleri için veri kümesi profilleri oluşturur veya güncelleştirir |
-> |  | **çalışma alanları/veri kümeleri/kayıtsız/şema** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datasets/kayıtsız/şema/oku | Machine Learning Services Workspace(ler) 'de kayıtlı olmayan veri kümeleri için veri kümesi şeması alır |
-> |  | **çalışma alanları/veri depoları** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datastores/oku | Machine Learning Services Workspace(ler) içinde veri depoları alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datastores/write | Machine Learning Services Workspace(ler) 'de veri depoları oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/datastores/silme | Machine Learning Services Workspace(ler) 'deki veri depolarını siler |
-> |  | **çalışma alanları/uç noktalar/ardışık işler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde yayınlanan boru hatları ve boru hattı uç noktaları alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/endpoints/pipelines/write | Machine Learning Services Workspace(ler) içinde yayımlanmış ardışık hatlar ve boru hattı uç noktaları oluşturur veya güncelleştirir |
-> |  | **çalışma alanları/ortamlar** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) ortamları alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/readSecrets/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırları ile ortamlar alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/yazma | Machine Learning Services Workspace(ler) ortamları oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/ortamlar/yapı/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) ortamları oluşturur |
-> |  | **çalışma alanları/denemeler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/denemeler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) üzerinde deneyler alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/denemeler/yazma | Machine Learning Services Workspace(ler) 'de denemeler oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/experiments/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) deneylerini siler |
-> |  | **çalışma alanları/denemeler/çalıştırmalar** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/experiments/runs/read | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) çalışır alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/experiments/runs/write | Machine Learning Services Workspace(ler) içinde çalışır oluşturur veya günceller |
-> |  | **çalışma alanları/denemeler/çalıştırmalar/scriptRun** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/experiments/runs/scriptRun/submit/action | Machine Learning Services Workspace(ler) 'de komut dosyası çalışır oluşturur veya günceller |
-> |  | **çalışma alanları/etiketleme** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/dışa aktarma/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde etiketleme projelerinin dışa aktarma etiketleri |
-> |  | **çalışma alanları/etiketleme/etiketler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) 'de etiketleme projelerinin etiketlerini alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/yazma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) 'de etiketleme projelerinin etiketlerini oluşturur |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/etiketler/reddetme/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'deki etiketleme projelerinin etiketlerini reddetme |
-> |  | **çalışma alanları/etiketleme/projeler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) etiketleme projesini alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/yazma | Machine Learning Services Workspace(ler) içinde etiketleme projesi oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) etiketleme projesini siler |
-> |  | **çalışma alanları/etiketleme/projeler/özet** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/etiketleme/projeler/özet/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) içinde etiketleme proje özeti alır |
-> |  | **çalışma alanları/meta veriler/yapılar** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) eser alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/yazma | Machine Learning Services Workspace(ler) 'de eserler oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/yapılar/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) eserlerini siler |
-> |  | **çalışma alanları/meta veriler/sırlar** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/sırlar/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırlarını alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta data/secrets/write | Machine Learning Services Workspace(ler)'de sırları oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/sırlar/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) sırları siler |
-> |  | **çalışma alanları/meta veriler/anlık görüntüler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/okuma | Machine Learning Services Workspace(ler) içinde anlık görüntü alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/yazma | Machine Learning Services Workspace(ler)'de anlık görüntüler oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/meta veriler/anlık görüntüler/silme | Machine Learning Services Workspace(ler)'deki anlık görüntüleri siler |
-> |  | **çalışma alanları/modeller** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/modelleri/oku | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modelleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/modeller/yazma | Machine Learning Services Workspace(ler)'de modeller oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/models/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modellerini siler |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/models/package/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modelleri paketleri |
-> |  | **çalışma alanları/modüller** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/modülleri/oku | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) modülleri alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/modülleri/yazma | Machine Learning Services Workspace(ler) modülü oluşturur veya günceller |
-> |  | **çalışma alanları/boru hattı taslakları** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/pipelinedrafts/read | Makine Öğrenim Hizmetleri Çalışma Alanı(lar) boru hattı taslakları alır |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da boru hattı taslaklarını oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/pipelinedrafts/delete | Makine ÖğrenimI Hizmetleri Çalışma Alanı(lar)'daki boru hattı taslaklarını siler |
 > |  | **çalışma alanları/hizmetler** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) hizmet alır |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/okuma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) hizmet alır |
 > |  | **çalışma alanları/hizmetler/aci** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/aci/write | Machine Learning Services Workspace(ler) alanında ACI hizmetlerini oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'daki ACI hizmetlerinin anahtarlarını listeler |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aci/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) aci hizmetlerini siler |
-> |  | **çalışma alanları/hizmetler/aks/devtest** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da AKS hizmetlerini oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/dis/listkeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'deki en paçık AKS hizmetlerinin anahtarlarını listeler |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) en silik AKS hizmetlerini siler |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/devtest/score/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) puanları AKS hizmetlerini test ediyor |
-> |  | **çalışma alanları/hizmetler/aks/prod** |  |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/prod/write | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) 'nde prod AKS hizmetleri oluşturur veya günceller |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/prod/listkeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) prod AKS hizmetleri için listeleri |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/prod/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) prod AKS hizmetlerini siler |
-> | Veri Eylemi | Microsoft.MachineLearningServices/workspaces/services/aks/prod/score/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) puanları PROD AKS hizmetleri |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/aci/write | Machine Learning Services Workspace(ler) alanında ACI hizmetlerini oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/services/aci/listkeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'daki ACI hizmetlerinin anahtarlarını listeler |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/services/aci/delete | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) aci hizmetlerini siler |
+> |  | **çalışma alanları/hizmetler/aks** |  |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/aks/yazma | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da AKS hizmetlerini oluşturur veya günceller |
+> | Eylem | Microsoft.MachineLearningServices/workspaces/services/aks/listkeys/action | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar)'da AKS hizmetlerinin anahtarlarını listeler |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/aks/silme | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) aks hizmetlerini siler |
+> | Eylem | Microsoft.MachineLearningServices/çalışma alanları/hizmetler/aks/puan/eylem | Makine Öğrenimi Hizmetleri Çalışma Alanı(lar) puanları AKS hizmetleri |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -5740,6 +5826,10 @@ Azure hizmeti: [Azure Haritalar](../azure-maps/index.yml)
 > | Eylem | Microsoft.Maps/accounts/eventGridFilters/delete | Olay Izgara filtresini silme |
 > | Eylem | Microsoft.Maps/accounts/eventGridFilters/read | Olay Izgara filtresi alın |
 > | Eylem | Microsoft.Maps/accounts/eventGridFilters/write | Olay Kılavuz filtresi oluşturma veya güncelleştirme |
+> |  | **hesaplar/privateAtlases** |  |
+> | Eylem | Microsoft.Maps/accounts/privateAtlases/delete | Özel Atlası Silme |
+> | Eylem | Microsoft.Maps/accounts/privateAtlases/read | Özel Atlas alın |
+> | Eylem | Microsoft.Maps/accounts/privateAtlases/write | Özel Atlas Oluşturma veya Güncelleme |
 > |  | **Işlem** |  |
 > | Eylem | Microsoft.Haritalar/işlemler/okuma | Sağlayıcı işlemlerini okuyun |
 > |  | **hesaplar/veriler** |  |
@@ -5998,6 +6088,10 @@ Azure hizmeti: [Azure Uzamsal Çapalar](../spatial-anchors/index.yml)
 > | Eylem | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Microsoft.MixedReality/spatialAnchorsAccounts için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions** |  |
 > | Eylem | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Microsoft.MixedReality/spatialAnchorsAccounts için kullanılabilir ölçümleri alır |
+> |  | **ObjectUnderstandingAccounts** |  |
+> | Veri Eylemi | Microsoft.MixedReality/ObjectUnderstandingAccounts/yut/eylem | Model Alma İşi Oluştur |
+> |  | **ObjectUnderstandingAccounts/yut** |  |
+> | Veri Eylemi | Microsoft.MixedReality/ObjectUnderstandingAccounts/yut/oku | Model Alma İş Durumu |
 > |  | **RemoteRendering Hesapları** |  |
 > | Veri Eylemi | Microsoft.MixedReality/RemoteRenderingAccounts/convert/action | Varlık dönüştürmeyi başlat |
 > | Veri Eylemi | Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action | Oturumları başlatma |
@@ -6069,6 +6163,10 @@ Azure hizmeti: [Azure NetApp Dosyaları](../azure-netapp-files/index.yml)
 > | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/read | Yedek bir kaynak okur. |
 > | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/write | Yedek kaynak yazar. |
 > | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups/delete | Yedek bir kaynağı siler. |
+> |  | **netAppAccounts/capacityPools/volumes/MountTargets** |  |
+> | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/MountTargets/read | Montaj hedef kaynağını okur. |
+> |  | **netAppAccounts/capacityPools/volumes/ReplicationStatus** |  |
+> | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/ReplicationStatus/read | Birim Çoğaltma durumlarını okur. |
 > |  | **netAppAccounts/capacityPools/volumes/snapshots** |  |
 > | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/read | Anlık görüntü kaynağını okur. |
 > | Eylem | Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots/write | Anlık görüntü kaynağı yazar. |
@@ -6341,6 +6439,8 @@ Azure hizmeti: [Sanal Ağ](../virtual-network/index.yml), [Yük Dengeleyici](../
 > | Eylem | Microsoft.Network/loadBalancers/delete | Yük bakiyeciyi siler |
 > |  | **loadBalancers/backendAddressPools** |  |
 > | Eylem | Microsoft.Network/loadBalancers/backendAddressPools/read | Yük dengeleyici arka uç adresi havuzu tanımını alır |
+> | Eylem | Microsoft.Network/loadBalancers/backendAddressPools/write | Yük bakiyesi arka uç adres havuzu oluşturur veya varolan yük bakiyesi arka uç adres havuzugüncelleştirir |
+> | Eylem | Microsoft.Network/loadBalancers/backendAddressPools/delete | Yük bakiyesi arka uç adres havuzuni siler |
 > | Eylem | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Yük dengeleyici arka uç adres havuzuna katılır. Uyarılabilir değil. |
 > |  | **loadBalancers/frontendIPConfigurations** |  |
 > | Eylem | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Yük dengeleyici frontend IP yapılandırma tanımı alır |
@@ -6565,6 +6665,7 @@ Azure hizmeti: [Sanal Ağ](../virtual-network/index.yml), [Yük Dengeleyici](../
 > | Eylem | Microsoft.Network/privateEndpointRedirectMaps/oku | Özel Bitiş Noktası Yönlendirme Haritası Alır |
 > | Eylem | Microsoft.Network/privateEndpointRedirectMaps/write | Özel Bitiş Noktası Yönlendirme Haritası Oluşturur Veya Varolan Özel Bitiş Noktası Yönlendirme Haritasını Güncelleştirir |
 > |  | **privateEndpoints** |  |
+> | Eylem | Microsoft.Network/privateEndpoints/pushPropertiesToResource/action | NRP istemcisinden özel uç nokta özellik güncelleştirmelerini zorlama işlemi |
 > | Eylem | Microsoft.Network/privateEndpoints/read | Özel bir bitiş noktası kaynağı alır. |
 > | Eylem | Microsoft.Network/privateEndpoints/write | Yeni bir özel bitiş noktası oluşturur veya varolan özel bir bitiş noktasını güncelleştirir. |
 > | Eylem | Microsoft.Network/privateEndpoints/delete | Özel bir bitiş noktası kaynağını siler. |
@@ -6606,6 +6707,13 @@ Azure hizmeti: [Sanal Ağ](../virtual-network/index.yml), [Yük Dengeleyici](../
 > | Eylem | Microsoft.Network/routeTables/routes/read | Rota tanımı alır |
 > | Eylem | Microsoft.Network/routeTables/routes/write | Bir rota oluşturur veya varolan bir rotayı güncelleştirir |
 > | Eylem | Microsoft.Network/routeTables/routes/delete | Rota tanımını siler |
+> |  | **securityPartnerProviders** |  |
+> | Eylem | Microsoft.Network/securityPartnerProviders/read | SecurityPartnerProvider alır |
+> | Eylem | Microsoft.Network/securityPartnerProviders/write | Bir SecurityPartnerProvider oluşturur veya Varolan Bir SecurityPartnerProvider'ı Güncelleştirir |
+> | Eylem | Microsoft.Network/securityPartnerProviders/validate/action | Bir SecurityPartnerProvider'ı doğrular |
+> | Eylem | Microsoft.Network/securityPartnerProviders/updateReferences/action | SecurityPartnerProvider'daki başvuruları güncelleştir |
+> | Eylem | Microsoft.Network/securityPartnerProviders/join/action | Bir SecurityPartnerProvider'a katılır. Uyarılabilir değil. |
+> | Eylem | Microsoft.Network/securityPartnerProviders/delete | Bir SecurityPartnerProvider'ı siler |
 > |  | **serviceEndpointPolitikalar** |  |
 > | Eylem | Microsoft.Network/serviceEndpointPolicies/read | Hizmet Bitiş Noktası İlkesi Açıklaması Alır |
 > | Eylem | Microsoft.Network/serviceEndpointPolicies/write | Hizmet Bitiş Noktası İlkesi oluşturur veya varolan bir Hizmet Bitiş Noktası İlkesi güncelleştirir |
@@ -6678,6 +6786,7 @@ Azure hizmeti: [Sanal Ağ](../virtual-network/index.yml), [Yük Dengeleyici](../
 > | Eylem | Microsoft.Network/virtualNetworks/read | Sanal ağ tanımını alma |
 > | Eylem | Microsoft.Network/virtualNetworks/write | Sanal ağ oluşturur veya varolan bir sanal ağı güncelleştirir |
 > | Eylem | Microsoft.Network/virtualNetworks/silme | Sanal ağı siler |
+> | Eylem | Microsoft.Network/virtualNetworks/joinLoadBalancer/action | Sanal ağlara yük dengeleyicisi katılma |
 > | Eylem | Microsoft.Network/virtualNetworks/peer/action | Başka bir sanal ağla sanal ağa eş ler |
 > | Eylem | Microsoft.Network/virtualNetworks/join/action | Sanal ağa katılır. Uyarılabilir değil. |
 > | Eylem | Microsoft.Network/virtualNetworks/BastionHosts/action | Sanal Ağ'da Bastion Host başvurularını alır. |
@@ -7225,6 +7334,8 @@ Azure hizmeti: [Azure Monitörü](../azure-monitor/index.yml)
 > | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/AppDependencies/oku | AppDependencies tablosundaki verileri okuma |
 > |  | **çalışma alanları/sorgu/AppEvents** |  |
 > | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/AppEvents/oku | AppEvents tablosundaki verileri okuma |
+> |  | **çalışma alanları/sorgu/AppExceptions** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/AppExceptions/read | AppExceptions tablosundaki verileri okuma |
 > |  | **çalışma alanları/sorgu/ApplicationInsights** |  |
 > | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/ApplicationInsights/oku | ApplicationInsights tablosundaki verileri okuma |
 > |  | **çalışma alanları/sorgu/AppMetrics** |  |
@@ -7693,6 +7804,18 @@ Azure hizmeti: [Azure Monitörü](../azure-monitor/index.yml)
 > | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WUDOAggregatedStatus/read | WUDOAggregatedStatus tablosundaki verileri okuyun |
 > |  | **çalışma alanları/sorgu/WUDOStatus** |  |
 > | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WUDOStatus/read | WUDOStatus tablosundaki verileri okuyun |
+> |  | **çalışma alanları/sorgu/WVDCheckpoints** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDCheckpoints/oku | WVDCheckpoints tablosundaki verileri okuma |
+> |  | **çalışma alanları/sorgu/WVDConnections** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDConnections/oku | WVDConnections tablosundaki verileri okuma |
+> |  | **çalışma alanları/sorgu/WVDErrors** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDErrors/read | WVDErrors tablosundaki verileri okuma |
+> |  | **çalışma alanları/sorgu/WVDFeeds** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDFeeds/oku | WVDFeeds tablosundaki verileri okuma |
+> |  | **çalışma alanları/sorgu/WVDHostRegistrations** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDHostRegistrations/oku | WVDHostRegistrations tablosundaki verileri okuyun |
+> |  | **çalışma alanları/sorgu/WVDManagement** |  |
+> | Eylem | Microsoft.OperationalInsights/çalışma alanları/sorgu/WVDManagement/read | WVDManagement tablosundaki verileri okuma |
 > |  | **çalışma alanları/kurallar** |  |
 > | Eylem | microsoft.operationalinsights/çalışma alanları/kurallar/okuma | Tüm uyarı kurallarını alın. |
 > |  | **çalışma alanları/kaydedilmişAramalar** |  |
@@ -8492,6 +8615,7 @@ Azure hizmeti: [Azure Sentinel](../sentinel/index.yml)
 > | --- | --- | --- |
 > | Eylem | Microsoft.SecurityInsights/register/action | Azure Sentinel aboneliğini kaydeder |
 > | Eylem | Microsoft.SecurityInsights/unregister/action | Azure Sentinel aboneliğinin kaydını boşaltıyor |
+> | Eylem | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kullanıcı yetkilendirmeve lisansDenetimi |
 > |  | **Toplamalar** |  |
 > | Eylem | Microsoft.SecurityInsights/Aggregations/read | Toplu bilgi alır |
 > |  | **alertKurallar** |  |
@@ -8785,7 +8909,7 @@ Azure hizmeti: [Azure Yönetilen Uygulamalar](../azure-resource-manager/managed-
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 
-Azure hizmeti: [Azure SQL Veritabanı](../sql-database/index.yml), SQL Veri [Ambarı](../synapse-analytics/sql-data-warehouse/index.yml)
+Azure hizmeti: [Azure SQL Veritabanı](../sql-database/index.yml), SQL Veri [Ambarı](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Eylem Türü | İşlem | Açıklama |
@@ -9980,21 +10104,21 @@ Azure hizmeti: çekirdek
 > | Eylem | Microsoft.Support/register/action | Registers Destek Kaynak Sağlayıcısı |
 > | Eylem | Microsoft.Support/checkNameAvailability/action | Adın geçerli olduğunu ve kaynak türü için kullanılmadığını denetler |
 > |  | **işlem sonuçları** |  |
-> | Eylem | Microsoft.Support/operationresults/read | Operasyon Sonucunu Al |
+> | Eylem | Microsoft.Support/operationresults/read | Eşzamanlı işlemin sonucunu alır |
 > |  | **Işlem** |  |
-> | Eylem | Microsoft.Support/operations/read | Microsoft.Support kaynak sağlayıcısında kullanılabilen işlemleri listeler |
+> | Eylem | Microsoft.Support/operations/read | Microsoft.Support kaynak sağlayıcısında bulunan tüm işlemleri listeler |
 > |  | **operasyon durumu** |  |
-> | Eylem | Microsoft.Support/operationsstatus/read | İşletim Durumu Alma |
+> | Eylem | Microsoft.Support/operationsstatus/read | Eşzamanlı işlemin durumunu alır |
 > |  | **Hizmetleri** |  |
-> | Eylem | Microsoft.Support/services/read | Destek için kullanılabilen Azure hizmetlerinin listesini alır |
+> | Eylem | Microsoft.Support/services/read | Destek için kullanılabilen azure hizmetlerini listeler |
 > |  | **hizmetler/problemSınıflandırmalar** |  |
-> | Eylem | Microsoft.Support/services/problemClassifications/read | Azure hizmeti için kullanılabilir sorun sınıflandırma listesini alır |
+> | Eylem | Microsoft.Support/services/problemClassifications/read | Azure hizmeti için bir veya tüm sorun sınıflandırmalarını listeler |
 > |  | **supportTickets** |  |
-> | Eylem | Microsoft.Support/supportTickets/read | Destek Biletlerilistesini alır. |
-> | Eylem | Microsoft.Support/supportTickets/write | Destek Biletini eşzamanlı olarak oluşturur veya günceller. Teknik, Faturalama, Kotalar veya Abonelik Yönetimi konusunda bir Destek Bileti oluşturabilirsiniz. Mevcut destek biletlerinin önem derecelerini ve iletişim bilgilerini güncelleyebilirsiniz. |
+> | Eylem | Microsoft.Support/supportTickets/read | Destek biletlerinden birini veya tümlerini listeler |
+> | Eylem | Microsoft.Support/supportTickets/write | Destek bileti oluşturmayı ve güncellemeyi sağlar |
 > |  | **destekBiletler/iletişim** |  |
-> | Eylem | Microsoft.Support/supportTickets/communications/read | Destek Bilet İletişimlistesini alır |
-> | Eylem | Microsoft.Support/supportTickets/communications/write | Destek Bilet İletişimi Oluşturur |
+> | Eylem | Microsoft.Support/supportTickets/communications/read | Destek bilet iletişimlerini veya birtümlerini listeler |
+> | Eylem | Microsoft.Support/supportTickets/communications/write | Destek biletine yeni bir iletişim ekler |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 

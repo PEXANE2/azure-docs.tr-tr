@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: f15a4605d28beaf97e877f337051a2ec13148a41
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 673c6e2ed0aedcc186baf8c7e1884dd537f9567d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80235764"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459857"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Azure Stream Analytics nedir?
 
@@ -49,9 +49,9 @@ Azure Stream Analytics kullanımı kolay, esnek, güvenilir ve her boyuttaki iş
 
 ## <a name="ease-of-getting-started"></a>Başlama kolaylığı
 
-Azure Akış Analizi'ni başlatmak kolaydır. Birden çok kaynağa ve lavaboya bağlanmak için yalnızca birkaç tıklama alır ve uçtan uca bir ardışık kaynak oluşturur. Akış Analizi, geçmiş verileri almak için [Azure Event Hub'larına](/azure/event-hubs/) ve [Azure IoT](/azure/iot-hub/) Hub'ına ve azure [Blob depolama sına](/azure/storage/storage-introduction) bağlanabilir. İş girişi, arama işlemleri gerçekleştirmek için veri akışına katılabileceğiniz Azure Blob depolama veya [SQL Veritabanı'ndan](stream-analytics-use-reference-data.md#azure-sql-database) statik veya yavaş değişen başvuru verilerini de içerebilir.
+Azure Akış Analizi'ni başlatmak kolaydır. Birden çok kaynağa ve lavaboya bağlanmak için yalnızca birkaç tıklama alır ve uçtan uca bir ardışık kaynak oluşturur. Akış Analizi, geçmiş verileri almak için [Azure Event Hub'larına](/azure/event-hubs/) ve [Azure IoT](/azure/iot-hub/) Hub'ına ve azure [Blob depolama sına](/azure/storage/common/storage-introduction) bağlanabilir. İş girişi, arama işlemleri gerçekleştirmek için veri akışına katılabileceğiniz Azure Blob depolama veya [SQL Veritabanı'ndan](stream-analytics-use-reference-data.md#azure-sql-database) statik veya yavaş değişen başvuru verilerini de içerebilir.
 
-Akış Analizi, iş çıktısını [Azure Blob depolama,](/azure/storage/storage-introduction) [Azure SQL Veritabanı,](/azure/sql-database/) [Azure Veri Gölü Deposu](/azure/data-lake-store/)ve Azure [CosmosDB](/azure/cosmos-db/introduction)gibi birçok depolama sistemine yönlendirebilir. Azure HDInsight ile depolanan çıktıda toplu iş analitiği çalıştırabilir veya çıktıyı tüketim için Olay Hub'ları veya gerçek zamanlı görselleştirme için [Power BI](https://docs.microsoft.com/power-bi/) gibi başka bir hizmete gönderebilirsiniz.
+Akış Analizi, iş çıktısını [Azure Blob depolama,](/azure/storage/common/storage-introduction) [Azure SQL Veritabanı,](/azure/sql-database/) [Azure Veri Gölü Deposu](/azure/data-lake-store/)ve Azure [CosmosDB](/azure/cosmos-db/introduction)gibi birçok depolama sistemine yönlendirebilir. Azure HDInsight ile depolanan çıktıda toplu iş analitiği çalıştırabilir veya çıktıyı tüketim için Olay Hub'ları veya gerçek zamanlı görselleştirme için [Power BI](https://docs.microsoft.com/power-bi/) gibi başka bir hizmete gönderebilirsiniz.
 
 Akış Analizi çıktılarının tüm listesi için Azure [Akış Analizi'nden çıkışları anlayın](stream-analytics-define-outputs.md)bölümüne bakın.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c61ba0840b75bff10af1d802a9b90c922ef1f12f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: adb36e14bb7b772d3e28361bdc48d248bd84f41f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415881"
+ms.locfileid: "81458973"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration uzantısı işleyicisine giriş
 
@@ -73,7 +73,7 @@ Devlet Yapılandırma hizmetine bir düğüm kaydetmek için DSC Uzantısı kull
 - RegistrationKey - hizmete düğümleri kaydetmek için kullanılan paylaşılan bir sır
 - NodeConfigurationName - Sunucu rolünü yapılandırmak için hizmetten çekmek için Düğüm Yapılandırması (MOF) adı
 
-Bu bilgiler [Azure portalında](../../automation/automation-dsc-onboarding.md#onboard-vms-by-using-the-azure-portal) görülebilir veya PowerShell'i kullanabilirsiniz.
+Bu bilgiler Azure portalında görülebilir veya PowerShell'i kullanabilirsiniz.
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint

@@ -3,12 +3,12 @@ title: Yönetici kiracınızdaki temsilci değişikliklerini izleme
 description: Müşteri kiracılarından yönetici kiracınıza kadar temsilcilik etkinliğini nasıl izleyeceğinizi öğrenin.
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 322580cc3d0246f7a34e28cdae94da57fda070b5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: a4593b34311eca34e4fb68926a3820899ab3f324
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985159"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458820"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönetici kiracınızdaki temsilci değişikliklerini izleme
 
@@ -44,7 +44,7 @@ Bu geniş bir erişim düzeyi olduğundan, bu rolü tek bir kullanıcıya veya b
 
 - Bu rolü diğer otomasyon için kullanılan varolan bir hizmet ilkesine atamak yerine, yalnızca bu işlev için kullanılacak yeni bir [hizmet anahesabı oluşturun.](../../active-directory/develop/howto-create-service-principal-portal.md)
 - Bu hizmet sorumlusunun devralınan müşteri kaynaklarına erişimi olmadığından emin olun.
-- [Sertifikayı doğrulamak](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) ve [Azure Key Vault'ta güvenli bir şekilde depolamak için](../../key-vault/key-vault-best-practices.md)kullanın.
+- [Sertifikayı doğrulamak](../../active-directory/develop/howto-create-service-principal-portal.md#certificates-and-secrets) ve [Azure Key Vault'ta güvenli bir şekilde depolamak için](../../key-vault/general/best-practices.md)kullanın.
 - Erişim erişimi olan kullanıcıları hizmet ilkesi adına hareket etmek için sınırlandırın.
 
 Kök kapsam atamaları yapmak için aşağıdaki yöntemlerden birini kullanın.

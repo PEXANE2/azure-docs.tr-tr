@@ -4,12 +4,12 @@ description: Bu makale, Dil Anlama (LUIS) hakkında sık sorulan soruların yan�
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 235eba7f80778b8a60ba880616cf80f2c14ccba1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 59d9b1f21e1936b7d03293ec3d338677380a7c99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382178"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530275"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Dil Anlama Sık Sorulan Sorular (SSS)
 
@@ -322,7 +322,7 @@ Build 2019 Konferansı'nda aşağıdaki özellikler yayınlandı:
 * [V3 API geçiş kılavuzuönizlemesi](luis-migration-api-v3.md)
 * [Geliştirilmiş analiz panosu](luis-how-to-use-dashboard.md)
 * [Geliştirilmiş önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md)
-* [Dinamik liste varlıkları](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
+* [Dinamik liste varlıkları](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [Dış varlıklar](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
 
 Videolar:

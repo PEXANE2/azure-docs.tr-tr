@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: a4d7030f7a58a6252c6e596fc2c248163694a1e8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 0fb80b8a3fe9dd642b1574b35ff48b30272ce848
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80880882"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533726"
 ---
 # <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Öğretici: Microsoft kimlik platformu bitiş noktasını kullanan çok kiracılı bir daemon oluşturun
 
@@ -30,7 +30,7 @@ Bu eğitimde, uzun süren, etkileşimli olmayan bir işlemle Microsoft iş müş
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-Uygulama ASP.NET mvc uygulaması olarak oluşturulmuş. Kullanıcıları oturum açmak için OWIN OpenID Connect aracını kullanır.  
+Uygulama ASP.NET mvc uygulaması olarak oluşturulmuş. Kullanıcıları oturum açmak için OWIN OpenID Connect aracını kullanır.
 
 Bu örnekteki "daemon" bileşeni bir API denetleyicisi, `SyncController.cs`. Denetleyici çağrıldığında, müşterinin Azure Etkin Dizini (Azure AD) kiracısında microsoft graph'tan kullanıcıların listesini çeker. `SyncController.cs`web uygulamasında bir AJAX çağrısı tarafından tetiklenir. Microsoft Graph için bir erişim belirteci elde etmek [için .NET için Microsoft Kimlik Doğrulama Kitaplığı 'nı (MSAL)](msal-overview.md) kullanır.
 
@@ -109,19 +109,19 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerdeki adımları kul
    - **URI'yi Yeniden Yönlendirme (isteğe bağlı)** bölümünde, açılan kutudaki **Web'i** seçin ve aşağıdaki yönlendirme URI'lerini girin:
        - **https://localhost:44316/**
        - **https://localhost:44316/Account/GrantPermissions**
-          
+
      İkiden fazla yeniden yönlendirme ÜR'leri varsa, uygulama başarıyla oluşturulduktan sonra bunları daha sonra **Kimlik Doğrulama** sekmesinden eklemeniz gerekir.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın Genel **Bakış** **sayfasında, Uygulama (istemci) kimlik** değerini bulun ve daha sonraya kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için ihtiyacınız olacak.
 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Ardından:
    - Gelişmiş **ayarlar** **bölümünde, Giriş URL'sini** ' ye **https://localhost:44316/Account/EndSession**ayarla.
    - Gelişmiş **ayarlar** > **Örtülü hibe** **bölümünde, Erişim belirteçleri** ve **kimlik belirteçleri'ni**seçin. Bu örnek, [örtük hibe akışının](v2-oauth2-implicit-grant-flow.md) kullanıcıda oturum açmave API'yi çağırmasının etkinleştirilmesini gerektirir.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 1. **Sertifikalar & sırları** sayfasından, **İstemci sırları** bölümünde Yeni istemci **sırrını**seçin. Ardından:
 
    1. Önemli bir açıklama girin (örneğin, **uygulama sırrı**),
    1. Ya 1 yıl **içinde**anahtar bir süre seçin , **2 yıl içinde**, ya da **Asla Sona Erer**.
-   1. **Ekle** düğmesini seçin. 
+   1. **Ekle** düğmesini seçin.
    1. Anahtar değeri göründüğünde, kopyalayın ve güvenli bir konuma kaydedin. Projeyi Visual Studio'da yapılandırmak için daha sonra bu anahtara ihtiyacınız olacak. Bir daha görüntülenmeyecek veya başka yollarla alınamaz.
 1. Uygulamanın sayfaları listesinde **API izinlerini**seçin. Ardından:
    1. **İzin ekleyin** düğmesini seçin.
@@ -174,21 +174,21 @@ Bu örnek için ilgili kod aşağıdaki dosyalarda dır:
 
 ## <a name="re-create-the-sample-app"></a>Örnek uygulamayı yeniden oluşturma
 
-1. Visual Studio'da yeni bir **Visual C#** **ASP.NET Web Application (.NET Framework)** projesi oluşturun. 
+1. Visual Studio'da yeni bir **Visual C#** **ASP.NET Web Application (.NET Framework)** projesi oluşturun.
 1. Sonraki ekranda **MVC** proje şablonu seçin. Ayrıca, daha sonra bir web API denetleyicisi ekleyeceğiniz için **Web API'sı**için klasör ve temel başvurular ekleyin. Varsayılan olarak projenin seçilen kimlik doğrulama modunu bırakın: **Kimlik Doğrulama yok.**
-1. **Çözüm Gezgini** penceresindeprojeyi seçin ve **F4** tuşunu seçin. 
+1. **Çözüm Gezgini** penceresindeprojeyi seçin ve **F4** tuşunu seçin.
 1. Proje özelliklerinde, **SSL Etkin'den** **True'ya**ayarlayın. **SSL URL'deki**bilgilere dikkat edin. Azure portalında bu uygulamanın kaydını yapılandırırken buna ihtiyacınız vardır.
-1. Aşağıdaki ASP.NET OWIN ara yazılım NuGet paketlerini ekleyin: 
+1. Aşağıdaki ASP.NET OWIN ara yazılım NuGet paketlerini ekleyin:
    - Microsoft.Owin.Security.ActiveDirectory
    - Microsoft.Owin.Security.Cookies
    - Microsoft.Owin.Host.SystemWeb
    - Microsoft.IdentityModel.Protocol.Extensions
    - Microsoft.Owin.Security.OpenIdConnect
-   - Microsoft.Identity.Client 
+   - Microsoft.Identity.Client
 1. **App_Start** klasöründe:
-   1. **Startup.Auth.cs**adlı bir sınıf oluşturun. 
-   1. **Kaldır. ad** alanı adından App_Start. 
-   1. **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin.       
+   1. **Startup.Auth.cs**adlı bir sınıf oluşturun.
+   1. **Kaldır. ad** alanı adından App_Start.
+   1. **Başlangıç** sınıfının kodunu örnek uygulamanın aynı dosyasındaki kodla değiştirin.
    Tüm sınıf tanımını aldığından emin olun. Tanım, **ortak sınıf Başlangıç'tan** ortak kısmi sınıf Başlatma'ya **dönüşür.**
 1. Startup.Auth.cs **Startup.Auth.cs**olarak, Visual Studio IntelliSense tarafından önerilen ifadeleri **kullanarak** ekleyerek eksik başvuruları giderin.
 1. Projeyi sağ tıklatın, **Ekle'yi**seçin ve ardından **Sınıf'ı**seçin.
@@ -220,13 +220,13 @@ Bu proje web uygulaması ve web API projeleri vardır. Bunları Azure web sitele
 1. Web sitesi oluşturulduktan sonra, **Pano'da** bulun ve uygulama hizmetinin **Genel Bakış** ekranını açmak için seçin.
 1. Uygulama hizmetinin **Genel Bakış** sekmesinden, yayın profilini al bağlantısını seçerek **yayımlama** profilini indirin ve kaydedin. Kaynak denetiminden dağıtım gibi diğer dağıtım mekanizmalarını kullanabilirsiniz.
 1. Visual Studio'ya geçin ve sonra:
-   1. **dotnet-web-daemon-v2** projesine gidin. 
+   1. **dotnet-web-daemon-v2** projesine gidin.
    1. Çözüm Gezgini'nde projeyi sağ tıklatın ve sonra **Yayımla'yı**seçin.
    1. Alt çubukta **Profili İçe Aktar'ı** seçin ve daha önce indirdiğiniz yayımlama profilini aktarın.
 1. **Yapılandır**'ı seçin.
-1. **Bağlantı** sekmesinde, "https" kullanabilmesi için hedef URL'yi güncelleştirin. Örneğin, kullanın. [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) **Sonraki'ni**seçin.
-1. **Ayarlar** sekmesinde, Kuruluş **Kimlik Doğrulamasını Etkinleştir'in** temizolduğundan emin olun.  
-1. **Kaydet'i**seçin. Ana ekranda **Yayımla'yı** seçin.
+1. **Bağlantı** sekmesinde, "https" kullanabilmesi için hedef URL'yi güncelleştirin. Örneğin, kullanın. [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net) **İleri**’yi seçin.
+1. **Ayarlar** sekmesinde, Kuruluş **Kimlik Doğrulamasını Etkinleştir'in** temizolduğundan emin olun.
+1. **Kaydet**’i seçin. Ana ekranda **Yayımla'yı** seçin.
 
 Visual Studio projeyi yayımlar ve otomatik olarak projenin URL'sine bir tarayıcı açar. Projenin varsayılan web sayfasını görürseniz, yayın başarılı oldu.
 

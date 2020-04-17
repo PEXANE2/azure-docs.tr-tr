@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 889897cfd4dc8714ae3aea556f0924c9dbcd7825
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299423"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461727"
 ---
 # <a name="design-secure-applications-on-azure"></a>Azure'da güvenli uygulamalar tasarla
 Bu makalede, bulut için uygulamalar tasarlarken göz önünde bulundurulması gereken güvenlik etkinlikleri ve denetimleri sıyoruz. Microsoft [Güvenlik Geliştirme Yaşam Döngüsü'nün (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) gereksinimleri ve tasarım aşamalarında göz önünde bulundurulması gereken güvenlik soruları ve kavramlarıile birlikte eğitim kaynakları ele alınır. Amaç, daha güvenli bir uygulama tasarlamak için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -153,7 +153,7 @@ Uygulama tasarımının modelleştirilmesi ve [STRIDE](https://docs.google.com/v
 
 | Tehdit | Güvenlik özelliği | Potansiyel Azure platformu azaltma |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Kandırma               | Kimlik doğrulaması        | [HTTPS bağlantıları gerektirir.](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio) |
+| Kandırma               | Kimlik Doğrulaması        | [HTTPS bağlantıları gerektirir.](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio) |
 | İzinsiz Değişiklik              | Bütünlük             | SSL/TLS sertifikalarını doğrulayın. SSL/TLS kullanan uygulamalar, bağlandıkları varlıkların X.509 sertifikalarını tam olarak doğrulamalıdır. [x509 sertifikalarınızı yönetmek](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)için Azure Anahtar Kasası sertifikalarını kullanın. |
 | Tanımadığı            | İnkar etmeme       | Azure [izleme ve tanılamayı](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)etkinleştirin.|
 | Bilgileri Açıklama | Gizlilik       | Hassas verileri [istirahatte](../fundamentals/encryption-atrest.md) ve [aktarımsırasında](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)şifreleyin. |
@@ -242,7 +242,7 @@ Bu tür saldırılara karşı savunmanın en iyi yolu, kullanıcıdan satın alm
 
 Anahtarları ve kimlik bilgilerini kaybetmek sık karşılaşılan bir sorundur. Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü olan tek şey yetkisiz bir tarafın onlara erişmesidir. Saldırganlar, GitHub gibi kod depolarında depolanan anahtarları ve sırları bulmak için otomatik ve manuel tekniklerden yararlanabilirler. Anahtarları ve sırları bu genel kod depolarında veya başka bir sunucuya koymayın.
 
-Anahtarlarınızı, sertifikalarınızı, sırlarınızı ve bağlantı dizelerinizi her zaman anahtar yönetimi çözümüne koyun. Anahtarların ve sırların donanım güvenlik modüllerinde (HSM) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Anahtar Kasası](../../key-vault/key-vault-overview.md)ile bulutta size bir HSM sağlar.
+Anahtarlarınızı, sertifikalarınızı, sırlarınızı ve bağlantı dizelerinizi her zaman anahtar yönetimi çözümüne koyun. Anahtarların ve sırların donanım güvenlik modüllerinde (HSM) depolandığı merkezi bir çözüm kullanabilirsiniz. Azure, [Azure Anahtar Kasası](../../key-vault/general/overview.md)ile bulutta size bir HSM sağlar.
 
 Key Vault *gizli*bir mağazadır: uygulama sırlarını saklamak için merkezi bir bulut hizmetidir. Key Vault, uygulama sırlarını tek bir merkezi konumda tutarak ve güvenli erişim, izin kontrolü ve erişim günlüğü sağlayarak gizli verilerinizi güvende tutar.
 
@@ -273,11 +273,11 @@ Verileriniz bir veritabanında depolanıyorsa veya konumlar arasında ileri ve g
 
 Bazı şeyler yazılımınızda hiçbir zaman sabit kodlanmış olmamalıdır. Bazı örnekler ev sahibi adları veya IP adresleri, URL'ler, e-posta adresleri, kullanıcı adları, parolalar, depolama hesabı anahtarları ve diğer şifreleme anahtarlarıdır. Kodunuzda kodlama bölümleri de dahil olmak üzere kodunuzda kodlandırılabilen veya kodlanabilen ler ile ilgili gereksinimleri uygulamayı düşünün.
 
-Kodunuza yorum koyduğunuzda, hassas bilgileri kaydetmediğinizden emin olun. Buna e-posta adresiniz, parolalarınız, bağlantı dizeleriniz, uygulamanız hakkında yalnızca kuruluşunuzdaki biri tarafından bilinen bilgiler ve saldırgana uygulamanıza veya kuruluşunuza saldırmada avantaj sağlayacak her şey dahildir. .
+Kodunuza yorum koyduğunuzda, hassas bilgileri kaydetmediğinizden emin olun. Buna e-posta adresiniz, parolalarınız, bağlantı dizeleriniz, uygulamanız hakkında yalnızca kuruluşunuzdaki biri tarafından bilinen bilgiler ve saldırgana uygulamanıza veya kuruluşunuza saldırmada avantaj sağlayacak her şey dahildir.
 
 Temel olarak, geliştirme projenizdeki her şeyin dağıtıldığında herkesin bilgisi dahilinde olacağını varsayalım. Projeye her türlü hassas verileri dahil etmekten kaçının.
 
-Daha önce Azure [Key Vault'u](../../key-vault/key-vault-overview.md)tartıştık. Anahtar Kasası'nı kullanarak anahtarları ve parolaları zor kodlamak yerine parolalar gibi sırları saklayabilirsiniz. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault'u kullandığınızda, Azure web uygulamanız kaynak denetiminizde veya yapılandırmanızda herhangi bir sır depolamadan gizli yapılandırma değerlerine kolayca ve güvenli bir şekilde erişebilir. Daha fazla bilgi edinmek için [Azure Key Vault ile sunucu uygulamalarınızdaki sırları yönet'e](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)bakın.
+Daha önce Azure [Key Vault'u](../../key-vault/general/overview.md)tartıştık. Anahtar Kasası'nı kullanarak anahtarları ve parolaları zor kodlamak yerine parolalar gibi sırları saklayabilirsiniz. Azure kaynakları için yönetilen kimliklerle birlikte Key Vault'u kullandığınızda, Azure web uygulamanız kaynak denetiminizde veya yapılandırmanızda herhangi bir sır depolamadan gizli yapılandırma değerlerine kolayca ve güvenli bir şekilde erişebilir. Daha fazla bilgi edinmek için [Azure Key Vault ile sunucu uygulamalarınızdaki sırları yönet'e](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)bakın.
 
 ### <a name="implement-fail-safe-measures"></a>Arıza güvenli önlemler uygulayın
 

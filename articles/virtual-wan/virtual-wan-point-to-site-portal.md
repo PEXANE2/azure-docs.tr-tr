@@ -5,20 +5,20 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 03/18/2020
+ms.date: 04/16/2020
 ms.author: alzam
-ms.openlocfilehash: fd415e1da00f52a9a3b55c946a07a30cf841cf4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 11007bc39cb1112799c89afaf0ca670aa6760de6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060303"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482122"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Öğretici: Azure Virtual WAN'ı kullanarak Kullanıcı VPN bağlantısı oluşturun
 
 Bu öğreticide Sanal WAN kullanarak Azure'daki kaynaklarınıza bir IPsec/IKE (IKEv2) veya OpenVPN VPN bağlantısı üzerinden bağlanmayı öğreneceksiniz. Bu tür bir bağlantı, istemci bilgisayarda bir istemcinin yapılandırılmış olmasını gerektirir. Virtual WAN hakkında daha fazla bilgi için [Sanal WAN Genel Bakış](virtual-wan-about.md)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * WAN oluşturma
@@ -110,6 +110,32 @@ P2S yapılandırması, uzak istemcilerin bağlanmasına yönelik parametreleri t
 4. **Yer-iş geçidi ekle onay** kutusunu işaretleyin ve istediğiniz **Ağ Geçidi ölçeği birimini** seçin.
 
    ![yeni site](media/virtual-wan-point-to-site-portal/p2s2.jpg)
+
+Aşağıdaki tabloda kullanılabilir Ölçek **Birimleri** ile ilgili ayrıntılar gösterilmektedir
+
+| **Ölçek Birimi** | **Aktarım hızı** | **P2S Bağlantıları** |
+| --- | --- | --- |
+| 1| 500 Mbps | 500 |
+| 2| 1 Gbps | 500 |
+| 3| 1,5 Gbps | 500 |
+| 4| 2 Gbps | 1000 |
+| 5| 2,5 Gbps | 1000 |
+| 6| 3 Gbps | 1000 |
+| 7| 3,5 Gbps | 5000 |
+| 8| 4 Gbps | 5000 |
+| 9| 4,5 Gbps | 5000 |
+| 10| 5 Gbps | 5000 |
+| 11| 5,5 Gbps | 5000 |
+| 12| 6 Gbps | 5000 |
+| 13| 6,5 Gbps | 10000 |
+| 14| 7 Gbps | 10000 |
+| 15| 7,5 Gbps | 10000 |
+| 16| 8 Gbps | 10000 |
+| 17| 8,5 Gbps | 10000 |
+| 18| 9 Gbps | 10000 |
+| 19| 9,5 Gbps | 10000 |
+| 20| 10 Gbps | 10000 |
+
 5. VPN istemcilerine IP adreslerinin atanacağı **Adres havuzunu** girin.
 6. **Onayla'yı** tıklatın
 7. İşlemin tamamlanması 30 dakika kadar sürebilir.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2019
 ms.author: terrylan
-ms.openlocfilehash: c3f3c7fbaa043a03b70ab770c06e493716c70daf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b51a5f14f305afa915ec1d0fae42ca9ded6b1e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461676"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-app-service"></a>Azure Uygulama Hizmeti'ni kullanarak PaaS web ve mobil uygulamaları güvence altına almak için en iyi uygulamalar
 
@@ -36,7 +36,7 @@ App Service, kimlik sağlayıcınız için bir OAuth 2.0 hizmeti sağlar. OAuth 
 Veri erişimi için güvenlik ilkeleri uygulamak isteyen kuruluşlar için erişimi kısıtlamak zorunludur. Kullanıcılara, gruplara ve uygulamalara belirli bir kapsamda izin atamak için rol tabanlı erişim denetimi (RBAC) kullanabilirsiniz( örneğin, bilme ve en az ayrıcalık güvenlik ilkeleri gereksinimi gibi. Kullanıcılara uygulamalara erişim izni verme hakkında daha fazla bilgi edinmek için [rol tabanlı erişim denetimi nedir'e](/azure/role-based-access-control/overview)bakın.
 
 ## <a name="protect-your-keys"></a>Anahtarlarınızı koruyun
-Abonelik anahtarlarınızı kaybetmeniz in ne kadar iyi olduğu önemli değildir. Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault ile anahtarları ve sırları (kimlik doğrulama anahtarları, depolama hesap anahtarları, veri şifreleme anahtarları gibi) şifreleyebilirsiniz. PFX dosyaları ve parolaları) donanım güvenlik modülleri (HSM) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. TLS sertifikalarınızı otomatik yenileme ile yönetmek için Key Vault'u da kullanabilirsiniz. Daha fazla bilgi edinmek için [Azure Key Vault nedir'](../../key-vault/key-vault-overview.md) de bakın.
+Abonelik anahtarlarınızı kaybetmeniz in ne kadar iyi olduğu önemli değildir. Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Key Vault ile anahtarları ve sırları (kimlik doğrulama anahtarları, depolama hesap anahtarları, veri şifreleme anahtarları gibi) şifreleyebilirsiniz. PFX dosyaları ve parolaları) donanım güvenlik modülleri (HSM) tarafından korunan anahtarları kullanarak. Ek güvenlik için HSM'lerde anahtarları içeri aktarabilir veya oluşturabilirsiniz. TLS sertifikalarınızı otomatik yenileme ile yönetmek için Key Vault'u da kullanabilirsiniz. Daha fazla bilgi edinmek için [Azure Key Vault nedir'](../../key-vault/general/overview.md) de bakın.
 
 ## <a name="restrict-incoming-source-ip-addresses"></a>Gelen kaynak IP adreslerini kısıtlama
 [Uygulama Hizmet Ortamları,](../../app-service/environment/intro.md) gelen kaynak IP adreslerini ağ güvenlik grupları (NSG'ler) aracılığıyla kısıtlamanıza yardımcı olan bir sanal ağ tümleştirme özelliğine sahiptir. Azure Sanal Ağları (VNETs) bilmiyorsanız, bu özellik Azure kaynaklarınızın çoğunu erişimi kontrol ettiğiniz internet olmayan, rahatsız edici bir ağa yerleştirmenize olanak tanıyan bir özelliktir. Daha fazla bilgi için [bkz.](../../app-service/web-sites-integrate-with-vnet.md)

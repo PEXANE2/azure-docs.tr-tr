@@ -4,12 +4,12 @@ description: Contoso'nun şirket içi veri merkezlerini Azure'a geçirmek için 
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: raynew
-ms.openlocfilehash: d37bee589eb7ee2e6e30c8dcea2531dd1f063481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1805d2c7568d3104ce499c67c516c0bf94b2db7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78939194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460265"
 ---
 # <a name="contoso-migration-series"></a>Contoso geçiş serisi
 
@@ -38,9 +38,8 @@ Serideki makaleler aşağıdaki tabloda özetlenmiştir.
 [Madde 9: Bir Azure web uygulamasında ve Azure SQL Veritabanında bir uygulamayı yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Contoso, SmartHotel360 uygulamasını bir Azure web uygulamasına geçirip uygulama veritabanını Veritabanı Geçiş Yardımcısı ile birlikte Azure SQL Server örneğine geçirmektedir.     
 [Madde 10: Bir Azure web uygulamasında ve MySQL için Azure Veritabanında bir Linux uygulamasını yeniden düzenleme](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-linux-app-service-mysql) | Contoso, Linux osTicket uygulamasını sürekli teslimat için GitHub ile entegre edilmiş Azure Trafik Yöneticisi'ni kullanarak birden çok Azure bölgesinde azure web uygulamasına geçirmektedir. Contoso, uygulama veritabanını MySQL örneği için bir Azure Veritabanı'na geçirtir. 
 [Madde 11: Azure DevOps Hizmetlerinde Refactor Team Foundation Server](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-tfs-vsts) | Contoso, şirket içi Team Foundation Server dağıtımını Azure'daki Azure DevOps Hizmetleri'ne geçirmektedir.
-[Madde 12: Azure kapsayıcılarında ve Azure SQL Veritabanı'nda bir uygulamayı yeniden tasarlayın](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rearchitect-container-sql) | Contoso, SmartHotel uygulamasını Azure'a geçirmektedir. Ardından, uygulama web katmanını Azure Hizmet Dokusu'nda çalışan bir Windows kapsayıcısı ve Azure SQL Veritabanı ile veritabanı olarak yeniden yeniden yeniden bir hale yükler.
-[Madde 13: Azure'da bir uygulamayı yeniden oluşturma](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rebuild) | Contoso, Azure Uygulama Hizmeti, Azure Kubernetes Hizmeti (AKS), Azure Fonksiyonları, Azure Bilişsel Hizmetler ve Azure Cosmos DB gibi çeşitli Azure özellikleri ve hizmetleri kullanarak SmartHotel uygulamasını yeniden oluşturur.
-[Madde 14: Azure'a geçişi ölçeklendirin](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale) | Geçiş kombinasyonlarını denedikten sonra Contoso, Azure'a tam bir geçiş için ölçeklendirmeye hazırlanıyor.
+[Madde 12: Azure'da bir uygulamayı yeniden oluşturma](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rebuild) | Contoso, Azure Uygulama Hizmeti, Azure Kubernetes Hizmeti (AKS), Azure Fonksiyonları, Azure Bilişsel Hizmetler ve Azure Cosmos DB gibi çeşitli Azure özellikleri ve hizmetleri kullanarak SmartHotel uygulamasını yeniden oluşturur.
+[Madde 13: Azure'a geçişi ölçeklendirin](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale) | Geçiş kombinasyonlarını denedikten sonra Contoso, Azure'a tam bir geçiş için ölçeklendirmeye hazırlanıyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

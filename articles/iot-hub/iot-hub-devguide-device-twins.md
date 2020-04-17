@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/01/2020
-ms.openlocfilehash: 51e58de92f111c8854add613a299f2b8ccec0503
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 251c9c9717bae1728bffa48827a45d4535d66c15
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79285246"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482084"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub'da aygıt ikizlerini anlama ve kullanma
 
@@ -58,7 +58,7 @@ Aygıt ikizi, şunları içeren bir JSON belgesidir:
 
 * **Bildirilen özellikler.** Aygıt yapılandırmasını veya koşullarını eşitlemek için istenilen özelliklerle birlikte kullanılır. Aygıt uygulaması bildirilen özellikleri ayarlayabilir ve çözüm arka uç bunları okuyabilir ve sorgulayabilir.
 
-* **Aygıt kimlik özellikleri**. Aygıt ikizJSON belgesinin [kökü, kimlik kayıt defterinde](iot-hub-devguide-identity-registry.md)depolanan ilgili aygıt kimliğinden salt okunur özelliklerini içerir.
+* **Aygıt kimlik özellikleri**. Aygıt ikizJSON belgesinin [kökü, kimlik kayıt defterinde](iot-hub-devguide-identity-registry.md)depolanan ilgili aygıt kimliğinden salt okunur özelliklerini içerir. Özellikleri `connectionStateUpdatedTime` `generationId` ve dahil olmayacaktır.
 
 ![Aygıt ikiz özelliklerinin ekran görüntüsü](./media/iot-hub-devguide-device-twins/twin.png)
 
@@ -119,7 +119,7 @@ Kök nesnede aygıt kimlik özellikleri ve kapsayıcı `tags` nesneleri `reporte
 
 ### <a name="desired-property-example"></a>İstenilen özellik örneği
 
-Önceki örnekte, `telemetryConfig` istenen ve bildirilen aygıt ikizi, çözüm arka uç ve bu aygıt için telemetri yapılandırmasını senkronize etmek için aygıt uygulaması tarafından kullanılır. Örnek:
+Önceki örnekte, `telemetryConfig` istenen ve bildirilen aygıt ikizi, çözüm arka uç ve bu aygıt için telemetri yapılandırmasını senkronize etmek için aygıt uygulaması tarafından kullanılır. Örneğin:
 
 1. Çözüm arka uç istenilen yapılandırma değeri ile istenen özelliği ayarlar. Belgenin istenilen özellik kümesine sahip kısmı aşağıda veda edebilirsiniz:
 
@@ -307,7 +307,7 @@ IoT `tags`Hub, sınırın `properties/desired`boyutunu veya `properties/reported
 
 IoT Hub, aygıt ikizi istenen ve bildirilen özelliklerdeki her JSON nesnesi için son güncelleştirmenin zaman damgasını korur. Zaman damgaları UTC'dedir ve [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) biçiminde `YYYY-MM-DDTHH:MM:SS.mmmZ`kodlanır.
 
-Örnek:
+Örneğin:
 
 ```json
 {

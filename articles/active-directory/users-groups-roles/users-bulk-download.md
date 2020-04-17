@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory portalında kullanıcıların listesini (önizleme) indirin | Microsoft Dokümanlar
+title: Azure Active Directory portalındaki kullanıcıların listesini indirin | Microsoft Dokümanlar
 description: Azure Active Directory'deki Azure yönetici merkezinde kullanıcı kayıtlarını toplu olarak indirin.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 02/06/2020
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,20 +13,20 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4716ff9547f64dc6551b4d4adb0a8578da9fa83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b35163387ed4ce71f7a2019835a1d9fdbff3051
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77063841"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532670"
 ---
-# <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory portalında kullanıcıların listesini (önizleme) indirin
+# <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanıcıların listesini indirin
 
 Azure Etkin Dizin (Azure AD), toplu kullanıcı alma (oluşturma) işlemlerini destekler.
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Kullanıcı listesini Azure AD yönetici merkezinden indirmek için, Azure AD'deki bir veya daha fazla kuruluş düzeyinde yönetici rolüne atanmış bir kullanıcıyla oturum açmış olmanız gerekir. Konuk davetçi ve uygulama geliştiricisi yönetici rolleri olarak kabul edilmez.
+Kullanıcıların listesini Azure AD yönetici merkezinden indirmek için, Azure AD'de bir veya daha fazla kuruluş düzeyinde yönetici rolüne atanmış bir kullanıcıyla oturum açmış olmanız gerekir (Kullanıcı Yöneticisi gereken minimum roldür). Konuk davetçi ve uygulama geliştiricisi yönetici rolleri olarak kabul edilmez.
 
 ## <a name="to-download-a-list-of-users"></a>Kullanıcı listesini indirmek için
 
@@ -70,9 +70,9 @@ Kullanıcı listesini Azure AD yönetici merkezinden indirmek için, Azure AD'de
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-Bekleyen toplu isteklerinizin durumunu Toplu **işlem sonuçları (önizleme)** sayfasında görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu **işlem sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu İşlemsonuçları sayfasında yükleme durumunu kontrol edin](./media/users-bulk-download/bulk-center.png)
+[![](media/users-bulk-download/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-download/bulk-center.png#lightbox)
 
 ## <a name="bulk-download-service-limits"></a>Toplu indirme hizmeti sınırları
 

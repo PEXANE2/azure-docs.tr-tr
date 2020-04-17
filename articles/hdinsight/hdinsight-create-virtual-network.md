@@ -5,37 +5,37 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 6fd23e3d41dda15b1ec439c1e8b02073722b8871
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: hdinsightactive
+ms.date: 04/16/2020
+ms.openlocfilehash: 0c7791d43ffbbc13ab151362c5c3026ebbdb0d34
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272545"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531025"
 ---
 # <a name="create-virtual-networks-for-azure-hdinsight-clusters"></a>Azure HDInsight kümeleri için sanal ağlar oluşturma
 
-Bu makalede, Azure SANAL [Ağları](../virtual-network/virtual-networks-overview.md) oluşturmak ve Azure HDInsight kümeleriyle kullanılmak üzere yapılandırmak için örnekler ve kod örnekleri verilmektedir. Ağ güvenlik grupları (NSGs) oluşturma ve DNS yapılandırma ayrıntılı örnekler sunulmaktadır. 
+Bu makalede, [Azure Sanal Ağları](../virtual-network/virtual-networks-overview.md)oluşturmak ve yapılandırmak için örnekler ve kod örnekleri verilmektedir. Azure HDInsight kümelerini kullanmak için. Ağ güvenlik grupları (NSGs) oluşturma ve DNS yapılandırma ayrıntılı örnekler sunulmaktadır.
 
 Azure HDInsight ile sanal ağları kullanma hakkında arka plan bilgileri [için Azure HDInsight için sanal ağ planı'na](hdinsight-plan-virtual-network-deployment.md)bakın.
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>Kod örnekleri ve örnekler için ön koşullar
 
-Bu makaledeki kod örneklerinden herhangi birini yürütmeden önce, Ou TCP/IP ağ anlamanız gerekir. TCP/IP ağlarını bilmiyorsanız, üretim ağlarında değişiklik yapmadan önce olan birine danışın.
+Bu makaledeki kod örneklerinden herhangi birini yürütmeden önce, TCP/IP ağ larını anlayın. TCP/IP ağlarını bilmiyorsanız, üretim ağlarında değişiklik yapmadan önce birisine danışın.
 
 Bu makaledeki örnekler için diğer ön koşullar şunlardır:
 
-* PowerShell kullanıyorsanız, [AZ Modül](https://docs.microsoft.com/powershell/azure/overview)yüklemeniz gerekir.
-* Azure CLI'yi kullanmak ve henüz yüklemediyseniz, [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)bkz.
+* PowerShell kullanıyorsanız, AZ Modül'ünyüklenmesi [AZ Module](https://docs.microsoft.com/powershell/azure/overview)gerekir.
+* Azure CLI'yi kullanmak istiyorsanız ve henüz yüklemediyseniz, Bkz. [Azure CLI'yi yükle.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 > [!IMPORTANT]  
 > Bir Azure Sanal Ağı kullanarak HDInsight'ı şirket içi ağınıza bağlama konusunda adım adım kılavuz arıyorsanız, [hdinsight'ı şirket içi ağ belgenize bağlayın'a](connect-on-premises-network.md) bakın.
 
 ## <a name="example-network-security-groups-with-hdinsight"></a><a id="hdinsight-nsg"></a>Örnek: HDInsight ile ağ güvenlik grupları
 
-Bu bölümdeki örnekler, HDInsight'ın Azure yönetim hizmetleriyle iletişim kurmasını sağlayan ağ güvenliği grubu kurallarının nasıl oluşturulacak olduğunu göstermektedir. Örnekleri kullanmadan önce IP adreslerini, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde ayarlayın. Bu bilgileri [HDInsight yönetimi IP adreslerinde](hdinsight-management-ip-addresses.md)bulabilirsiniz.
+Bu bölümdeki örnekler, ağ güvenliği grubu kurallarının nasıl oluşturulacak olduğunu göstermektedir. Kurallar, HDInsight'ın Azure yönetim hizmetleriyle iletişim kurmasına olanak tanır. Örnekleri kullanmadan önce IP adreslerini, kullanmakta olduğunuz Azure bölgesiyle eşleşecek şekilde ayarlayın. Bu bilgileri [HDInsight yönetimi IP adreslerinde](hdinsight-management-ip-addresses.md)bulabilirsiniz.
 
 ### <a name="azure-resource-management-template"></a>Azure Kaynak Yönetimi şablonu
 
@@ -202,7 +202,6 @@ Gelen trafiği kısıtlayan, ancak HDInsight tarafından gerekli IP adreslerinde
 
     Bu komut tamamlandıktan sonra, SANAL Ağ'a HDInsight yükleyebilirsiniz.
 
-
 Bu adımlar yalnızca Azure bulutundaki HDInsight sağlık ve yönetim hizmetine erişimi açar. Sanal Ağ dışından HDInsight kümesine diğer erişim engellenir. Sanal ağ dışından erişimi etkinleştirmek için ek Ağ Güvenlik Grubu kuralları eklemeniz gerekir.
 
 Aşağıdaki kod, Internet'ten SSH erişiminin nasıl etkinleştirilen gösteriş olduğunu gösterir:
@@ -238,7 +237,7 @@ Sanal ağdaki özel DNS sunucusunda:
     az network nic list --resource-group RESOURCEGROUP --query "[0].dnsSettings.internalDomainNameSuffix"
     ```
 
-2. Sanal ağ için özel DNS sunucusunda, `/etc/bind/named.conf.local` dosyanın içeriği olarak aşağıdaki metni kullanın:
+1. Sanal ağ için özel DNS sunucusunda, `/etc/bind/named.conf.local` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
     ```
     // Forward requests for the virtual network suffix to Azure recursive resolver
@@ -252,7 +251,7 @@ Sanal ağdaki özel DNS sunucusunda:
 
     Bu yapılandırma, sanal ağın DNS sonekindeki tüm DNS isteklerini Azure özyinelemeli çözümleyiciye yönlendirir.
 
-2. Sanal ağ için özel DNS sunucusunda, `/etc/bind/named.conf.options` dosyanın içeriği olarak aşağıdaki metni kullanın:
+1. Sanal ağ için özel DNS sunucusunda, `/etc/bind/named.conf.options` dosyanın içeriği olarak aşağıdaki metni kullanın:
 
     ```
     // Clients to accept requests from
@@ -288,9 +287,9 @@ Sanal ağdaki özel DNS sunucusunda:
     
     * Değeri `192.168.0.1` şirket içi DNS sunucunuzun IP adresiyle değiştirin. Bu giriş, diğer tüm DNS isteklerini şirket içi DNS sunucusuna yönlendirir.
 
-3. Yapılandırmayı kullanmak için Bind'i yeniden başlatın. Örneğin, `sudo service bind9 restart`.
+1. Yapılandırmayı kullanmak için Bind'i yeniden başlatın. Örneğin, `sudo service bind9 restart`.
 
-4. Şirket içi DNS sunucusuna koşullu bir iletme ekleyin. DNS soneki için istekleri adım 1'den özel DNS sunucusuna gönderecek koşullu iletmeyi yapılandırın.
+1. Şirket içi DNS sunucusuna koşullu bir iletme ekleyin. DNS soneki için istekleri adım 1'den özel DNS sunucusuna gönderecek koşullu iletmeyi yapılandırın.
 
     > [!NOTE]  
     > Koşullu bir iletme nin nasıl ekleniş yaptığına ilişkin ayrıntılar için DNS yazılımınızın belgelerine başvurun.
@@ -351,7 +350,7 @@ Bu örnekte aşağıdaki varsayımlar yapar:
             allow-query { goodclients; };
 
             forwarders {
-            168.63.129.16;   # Azure recursive resolver         
+            168.63.129.16;   # Azure recursive resolver
             };
 
             dnssec-validation auto;
@@ -360,7 +359,7 @@ Bu örnekte aşağıdaki varsayımlar yapar:
             listen-on { any; };
     };
     ```
-    
+
    `10.0.0.0/16` Sanal ağlarınızın IP adresi aralıklarıyla ve `10.1.0.0/16` değerleri değiştirin. Bu giriş, her ağdaki kaynakların DNS sunucularından istekte bulunmasına olanak tanır.
 
     Sanal ağların DNS sonekleri için olmayan tüm istekler (örneğin, microsoft.com) Azure özyinelemeli çözümleyici tarafından işlenir.
@@ -371,7 +370,7 @@ Bu adımları tamamladıktan sonra, tam nitelikli alan adlarını (FQDN) kullana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* HDInsight'ı şirket içi bir ağa bağlanacak şekilde yapılandırmanın uçtan uca bir örneği için, [bkz.](./connect-on-premises-network.md)
+* HDInsight'ı şirket içi bir ağa bağlanmak üzere yapılandırmanın tam bir örneği için, [bkz.](./connect-on-premises-network.md)
 * Azure sanal ağlarda Apache HBase kümelerini yapılandırmak için Azure [Sanal Ağ'da HDInsight'ta Apache HBase kümeleri oluştur'a](hbase/apache-hbase-provision-vnet.md)bakın.
 * Apache HBase coğrafi çoğaltmayı yapılandırmak için [bkz.](hbase/apache-hbase-replication.md)
 * Azure sanal ağları hakkında daha fazla bilgi için [Azure Sanal Ağı'na genel bakış](../virtual-network/virtual-networks-overview.md)bilgisine bakın.

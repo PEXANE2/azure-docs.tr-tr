@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 5469c2512e133d17e4d18cebb64ab9e2a21b1f83
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81531109"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>REST API ve Python kullanarak etiketleri olan bir Form Tanıyıcı modeli eğitin
 
@@ -40,7 +40,7 @@ Tüm eğitim belgelerinin aynı formatta olduğundan emin olun. Birden çok biç
 
 Etiketli verileri kullanarak bir modeli eğitmek için alt klasördeki giriş olarak aşağıdaki dosyalara ihtiyacınız olur. Bu dosyayı nasıl oluşturacağınızı aşağıda öğreneceksiniz.
 
-* **Kaynak formları** – veri ayıklamak için formlar. Desteklenen türleri JPEG, PNG, BMP, PDF veya TIFF vardır.
+* **Kaynak formları** – veri ayıklamak için formlar. Desteklenen türleri JPEG, PNG, PDF veya TIFF vardır.
 * **OCR düzen dosyaları** - Her kaynak formdaki tüm okunabilir metnin boyutlarını ve konumlarını açıklayan JSON dosyaları. Bu verileri oluşturmak için Form Recognizer Düzen API'sini kullanırsınız. 
 * **Etiket dosyaları** - Bir kullanıcının el ile girdiği veri etiketlerini açıklayan JSON dosyaları.
 
@@ -219,7 +219,7 @@ headers = {
     'Ocp-Apim-Subscription-Key': '<subsription key>',
 }
 
-body =  {
+body =     {
     "source": source,
     "sourceFilter": {
         "prefix": prefix,
@@ -455,7 +455,7 @@ Aşağıdaki `"modelId"` adımlardaki kullanım değerini kopyalayın.
                     "#/readResults/0/lines/8/words/1"
                   ]
                 },
-                ...     
+                ...        
               ]
             }
           ]

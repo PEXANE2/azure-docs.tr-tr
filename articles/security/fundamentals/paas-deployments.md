@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0643ae792c890b65f239d9a0c16a05639dd4f8b9
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9adbe7b03283a00f78222ffdc77dca7aaadcbda0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811479"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461710"
 ---
 # <a name="securing-paas-deployments"></a>PaaS dağıtımlarının güvenliğini sağlama
 
@@ -74,7 +74,7 @@ Ağ çevresi için ilkeler ve desenler yıllardır mevcuttur. Buna karşılık, 
 Aşağıda kimlik çevresini yönetmek için en iyi uygulamalar veremistir.
 
 **En iyi uygulama**: PaaS dağıtımınızı güvence altına almak için anahtarlarınızı ve kimlik bilgilerinizi güvence altına alanın.   
-**Ayrıntı**: Anahtar ve kimlik bilgilerini kaybetmek sık karşılaşılan bir sorundur. Anahtarların ve sırların donanım güvenlik modüllerinde (HSM) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault,](../../key-vault/key-vault-overview.md) HSM'ler tarafından korunan anahtarları kullanarak kimlik doğrulama anahtarlarını, depolama hesap anahtarlarını, veri şifreleme anahtarlarını, .pfx dosyalarını ve şifreleri şifreleyerek anahtarlarınızı ve sırlarınızı korur.
+**Ayrıntı**: Anahtar ve kimlik bilgilerini kaybetmek sık karşılaşılan bir sorundur. Anahtarların ve sırların donanım güvenlik modüllerinde (HSM) depolanabileceği merkezi bir çözüm kullanabilirsiniz. [Azure Key Vault,](../../key-vault/general/overview.md) HSM'ler tarafından korunan anahtarları kullanarak kimlik doğrulama anahtarlarını, depolama hesap anahtarlarını, veri şifreleme anahtarlarını, .pfx dosyalarını ve şifreleri şifreleyerek anahtarlarınızı ve sırlarınızı korur.
 
 **En iyi uygulama**: Kaynak koduveya GitHub kimlik bilgileri ve diğer sırları koymayın.   
 **Ayrıntı**: Anahtarlarınızı ve kimlik bilgilerinizi kaybetmekten daha kötü olan tek şey, yetkisiz bir tarafın bunlara erişmehakkı sağlamasıdır. Saldırganlar, GitHub gibi kod depolarında depolanan anahtarları ve sırları bulmak için bot teknolojilerinden yararlanabilirler. Bu genel kod depolarında anahtar ve sırları koymayın.
@@ -155,7 +155,7 @@ Bu makalede, bir Azure PaaS dağıtımının güvenlik avantajları na ve bulut 
 
 - [Azure App Service](paas-applications-using-app-services.md)
 - [Azure SQL Veritabanı ve Azure SQL Veri Ambarı](paas-applications-using-sql.md)
-- [Azure Storage](paas-applications-using-storage.md)
+- [Azure Depolama](paas-applications-using-storage.md)
 - Redis için Azure Önbelleği
 - Azure Service Bus
 - Web Uygulama Güvenlik Duvarları

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 7bc637b5719da3c5f5e5607436aa7da0721f5a9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcc7c5b8fa182cace6e3dae0b1cae4cd41c5dcb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266019"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532604"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S'yi kullanarak uygulamanızı Azure Uygulama Hizmetine dağıtın
 
@@ -67,7 +67,7 @@ Uygulamanıza dağıtmak için **Uygulama Kimlik Bilgilerini** kullanmanız öne
 
 ## <a name="enforce-ftps"></a>FTPS'yi uygulayın
 
-Gelişmiş güvenlik için FTP'ye yalnızca SSL üzerinden izin vermelisiniz. FTP dağıtımını kullanmazsanız hem FTP hem de FTPS'yi devre dışı kullanabilirsiniz.
+Gelişmiş güvenlik için FTP'ye yalnızca TLS/SSL üzerinden izin vermelisiniz. FTP dağıtımını kullanmazsanız hem FTP hem de FTPS'yi devre dışı kullanabilirsiniz.
 
 Uygulamanızın [Azure portalındaki](https://portal.azure.com)kaynak sayfasında, sol daki gezinmeden **Configuration** > **General ayarlarını** seçin.
 

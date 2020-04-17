@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaşı'nda desteklenen küme sürümleri
 description: Service Fabric ekibi blogundaki en yeni sürümlere bağlantı da dahil olmak üzere Azure Hizmet Kumaşı'ndaki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
 ms.date: 03/02/2020
-ms.openlocfilehash: 1158266857f0864ed2f442edb100032c70063719
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385053"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460537"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Hizmet Kumaşı sürümleri
 
@@ -37,10 +37,10 @@ Aşağıdaki tabloda Hizmet Kumaşı sürümleri ve bunların destek bitiş tari
 | 6.3.* | 6.1.480.* |Sürüm 3.2'den daha az veya eşit |Mart 31, 2019  |
 | 6.4.* | 6.2.301.* |Sürüm 3.3'ten daha az veya eşit |Eylül 15, 2019 |
 | 6.5.* | 6.4.617.* |Sürüm 3.4'ten daha az veya eşit |1 Ağustos 2020 |
-| 7.0.466.* | 6.4.664.* |Sürüm 4.0'dan daha az veya eşit|Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.0.466.* | 6.5.* |Sürüm 4.0'dan daha az veya eşit|Geçerli sürüm, bu nedenle bitiş tarihi yok |
-| 7.0.470.* | 7.0.466.* |Sürüm 4.0'dan daha az veya eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
-
+| 7.0.466.* | 6.4.664.* |Sürüm 4.0'dan daha az veya eşit|1 Ağustos 2020  |
+| 7.0.466.* | 6.5.* |Sürüm 4.0'dan daha az veya eşit|1 Ağustos 2020 |
+| 7.0.470.* | 7.0.466.* |Sürüm 4.0'dan daha az veya eşit |1 Ağustos 2020  |
+| 7.1.409.* | 7.0.466.* |Sürüm 4.0'dan daha az veya eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Aşağıdaki tabloda desteklenen Service Fabric sürümleri için desteklenen işletim sistemleri listelenir.

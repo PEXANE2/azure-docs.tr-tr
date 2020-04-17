@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: aa0dc204a017e2d40eb3952a9ede0755127f8de2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2b84427b9aad2d18368d808fc618f3bfbe774ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970671"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460129"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>Yalıtılmış bir ağda Azure Disk Şifreleme
 
@@ -43,7 +43,7 @@ Uygulanan tüm ağ güvenliği grubu ayarları, bitiş noktasının disk şifrel
 
 Azure [AD (önceki sürüm) ile Azure Disk Şifrelemesi](disk-encryption-overview-aad.md)kullanıyorsanız, [Azure Etkin Dizin Kitaplığı'nın](../../active-directory/azuread-dev/active-directory-authentication-libraries.md) tüm dağıtımlar için el ile yüklenmesi gerekir [(yukarıda listelendirildikçe](#package-management)dağıtıma uygun paketlere ek olarak).
 
-Azure AD kimlik [bilgileriyle](disk-encryption-linux-aad.md)şifreleme etkinleştirilirken, hedef VM hem Azure Etkin Dizin uç noktalarına hem de Key Vault uç noktalarına bağlantı sağlar. Geçerli Azure Etkin Dizin kimlik doğrulama bitiş [noktaları, Office 365 URL'lerinin](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) 56 ve 59. Anahtar Vault yönergeleri, [güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/key-vault-access-behind-firewall.md)nasıl erişilene ilişkin belgelerde verilmiştir.
+Azure AD kimlik [bilgileriyle](disk-encryption-linux-aad.md)şifreleme etkinleştirilirken, hedef VM hem Azure Etkin Dizin uç noktalarına hem de Key Vault uç noktalarına bağlantı sağlar. Geçerli Azure Etkin Dizin kimlik doğrulama bitiş [noktaları, Office 365 URL'lerinin](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) 56 ve 59. Anahtar Vault yönergeleri, [güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)nasıl erişilene ilişkin belgelerde verilmiştir.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Örneği Meta veri Hizmeti 
 

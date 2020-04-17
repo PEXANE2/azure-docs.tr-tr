@@ -2,27 +2,25 @@
 title: V3 API'deki tahmin uç noktası değişiklikleri
 description: Sorgu tahmini bitiş noktası V3 API'leri değişti. Sürüm 3 uç nokta API'lerine nasıl geçirilir anlamak için bu kılavuzu kullanın.
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 9a8e8cb331dd11eebaddbcbf8f603c1148415aef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117377"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530394"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 için tahmin uç noktası değişiklikleri
 
 Sorgu tahmini bitiş noktası V3 API'leri değişti. Sürüm 3 uç nokta API'lerine nasıl geçirilir anlamak için bu kılavuzu kullanın.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 **Genel olarak kullanılabilir durum** - Bu V3 API V2 API önemli JSON istek ve yanıt değişiklikleri içerir.
 
 V3 API aşağıdaki yeni özellikleri sağlar:
 
-* [Dış varlıklar](#external-entities-passed-in-at-prediction-time)
-* [Dinamik listeler](#dynamic-lists-passed-in-at-prediction-time)
+* [Dış varlıklar](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
+* [Dinamik listeler](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
 * [Önceden oluşturulmuş varlık JSON değişiklikleri](#prebuilt-entity-changes)
 
 Tahmin bitiş noktası [isteği](#request-changes) ve [yanıtı,](#response-changes) aşağıda belirtilen yeni özellikleri desteklemek için önemli değişiklikler ekidir:
@@ -123,13 +121,11 @@ V3 API farklı sorgu dize parametreleri vardır.
 
 |Özellik|Tür|Sürüm|Varsayılan|Amaç|
 |--|--|--|--|--|
-|`dynamicLists`|array|Yalnızca V3|Gerek yok.|[Dinamik listeler,](#dynamic-lists-passed-in-at-prediction-time) LUIS uygulamasında bulunan mevcut eğitimli ve yayınlanmış bir liste varlığını genişletmenize olanak sağlar.|
-|`externalEntities`|array|Yalnızca V3|Gerek yok.|[Dış varlıklar,](#external-entities-passed-in-at-prediction-time) LUIS uygulamanıza çalışma zamanı sırasında varlıkları tanımlama ve etiketleme olanağı verir ve bu da mevcut varlıklar için özellik olarak kullanılabilir. |
+|`dynamicLists`|array|Yalnızca V3|Gerek yok.|[Dinamik listeler,](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) LUIS uygulamasında bulunan mevcut eğitimli ve yayınlanmış bir liste varlığını genişletmenize olanak sağlar.|
+|`externalEntities`|array|Yalnızca V3|Gerek yok.|[Dış varlıklar,](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) LUIS uygulamanıza çalışma zamanı sırasında varlıkları tanımlama ve etiketleme olanağı verir ve bu da mevcut varlıklar için özellik olarak kullanılabilir. |
 |`options.datetimeReference`|string|Yalnızca V3|Varsayılan yok|[DatetimeV2 mahsup](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)belirlemek için kullanılır. DatetimeReference'ın biçimi [ISO 8601'dir.](https://en.wikipedia.org/wiki/ISO_8601)|
-|`options.preferExternalEntities`|boole|Yalnızca V3|yanlış|Kullanıcının [dış varlığının (varolan varlıkla aynı ada sahip)](#override-existing-model-predictions) kullanÝlýp kullanýlmayý veya modeldeki varolan varlığın tahmin için kullanýlýp kullanýlmayý belirtir. |
+|`options.preferExternalEntities`|boole|Yalnızca V3|yanlış|Kullanıcının [dış varlığının (varolan varlıkla aynı ada sahip)](schema-change-prediction-runtime.md#override-existing-model-predictions) kullanÝlýp kullanýlmayý veya modeldeki varolan varlığın tahmin için kullanýlýp kullanýlmayý belirtir. |
 |`query`|string|Yalnızca V3|Gereklidir.|**V2' de**, tahmin edilecek söyleyiş `q` parametrededir. <br><br>**V3'te**işlevsellik `query` parametrede geçirilir.|
-
-
 
 ## <a name="response-changes"></a>Yanıt değişiklikleri
 
@@ -281,185 +277,12 @@ V3'te, varlık meta `verbose` verilerini döndürmek için bayrakla aynı sonuç
 }
 ```
 
-## <a name="external-entities-passed-in-at-prediction-time"></a>Tahmin zamanında geçirilen dış varlıklar
+<a name="external-entities-passed-in-at-prediction-time"></a>
+<a name="override-existing-model-predictions"></a>
 
-Dış varlıklar, LUIS uygulamanıza çalışma zamanı sırasında varlıkları tanımlama ve etiketleme olanağı verir ve bu da mevcut varlıklar için özellik olarak kullanılabilir. Bu, tahmin bitiş noktanıza sorgu göndermeden önce kendi ayrı ve özel varlık çıkarıcılarınızı kullanmanıza olanak tanır. Bu sorgu tahmin bitiş noktasında yapıldığından, modelinizi yeniden e-yılve yayımlamanız gerekmez.
+## <a name="extend-the-app-at-prediction-time"></a>Uygulamayı tahmin zamanında genişletme
 
-İstemci uygulaması, varlık eşleştirmesini yöneterek ve eşleşen varlığın söyleyerek konumunu belirleyerek ve bu bilgileri istekle birlikte göndererek kendi varlık çıkarıcısını sağlar.
-
-Dış varlıklar, roller, bileşik ve diğerleri gibi diğer modellere sinyal olarak kullanılırken herhangi bir varlık türünü genişletme mekanizmasıdır.
-
-Bu, yalnızca sorgu tahmini çalışma zamanında kullanılabilir veri olan bir varlık için yararlıdır. Bu tür verilere örnek olarak, kullanıcı başına sürekli veri veya belirli veriler değişir. Bir LUIS iletişim kuruluşunu, kullanıcının kişi listesindeki dış bilgilerle genişletebilirsiniz.
-
-### <a name="entity-already-exists-in-app"></a>Varlık zaten uygulamada var
-
-Dış varlık `entityName` için değeri, bitiş noktası istek POST gövdesi geçti, zaten istek yapıldığı anda eğitimli ve yayınlanan uygulamada mevcut olmalıdır. Varlık türü önemli değil, her türlü desteklenir.
-
-### <a name="first-turn-in-conversation"></a>Konuşmada ilk dönüş
-
-Bir kullanıcı aşağıdaki eksik bilgileri girer bir sohbet bot konuşma ilk söyleyerek düşünün:
-
-`Send Hazem a new message`
-
-Sohbet robotundan LUIS'e gelen istek, POST `Hazem` gövdesindeki bilgileri aktarabilir, böylece kullanıcının kişilerinden biri olarak doğrudan eşleşir.
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 5,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte dış varlığı içerir.
-
-### <a name="second-turn-in-conversation"></a>Konuşmada ikinci dönüş
-
-Sohbet bot içine bir sonraki kullanıcı söyleyerek daha belirsiz bir terim kullanır:
-
-`Send him a calendar reminder for the party.`
-
-Önceki söyleyiş, söyleyiş bir `him` referans olarak `Hazem`kullanır . Konuşma sohbet bot, POST gövdesinde, `him` varlık değeri ilk söyleyiş çıkarılan harita `Hazem`olabilir.
-
-```json
-    "externalEntities": [
-        {
-            "entityName":"contacts",
-            "startIndex": 5,
-            "entityLength": 3,
-            "resolution": {
-                "employeeID": "05013",
-                "preferredContactType": "TeamsChat"
-            }
-        }
-    ]
-```
-
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte dış varlığı içerir.
-
-### <a name="override-existing-model-predictions"></a>Varolan model tahminlerini geçersiz kılma
-
-Seçenekler `preferExternalEntities` özelliği, kullanıcı nın aynı ada sahip tahmin edilen bir varlıkla çakışan bir dış varlık gönderirse, LUIS'in geçen varlığı veya modelde var olan varlığı seçtiğini belirtir.
-
-Örneğin, sorguyu `today I'm free`göz önünde bulundurun. LUIS aşağıdaki `today` yanıt ile bir datetimeV2 olarak algılar:
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-Kullanıcı dış varlığı gönderirse:
-
-```JSON
-{
-    "entityName": "datetimeV2",
-    "startIndex": 0,
-    "entityLength": 5,
-    "resolution": {
-        "date": "2019-06-21"
-    }
-}
-```
-
-`preferExternalEntities` Ayarlanan `false`, LUIS dış varlık gönderilmemiş gibi bir yanıt döndürür.
-
-```JSON
-"datetimeV2": [
-    {
-        "type": "date",
-        "values": [
-            {
-                "timex": "2019-06-21",
-                "value": "2019-06-21"
-            }
-        ]
-    }
-]
-```
-
-`true`Ayarlanmışsa, `preferExternalEntities` LUIS aşağıdakiler dahil olmak üzere bir yanıt verir:
-
-```JSON
-"datetimeV2": [
-    {
-        "date": "2019-06-21"
-    }
-]
-```
-
-
-
-#### <a name="resolution"></a>Çözüm
-
-İsteğe _bağlı_ `resolution` özellik, dış varlıkla ilişkili meta verileri geçirmenize ve ardından yanıtta geri almanıza olanak tanıyan tahmin yanıtında geri döner.
-
-Birincil amaç, önceden oluşturulmuş varlıkları genişletmektir, ancak bu varlık türüyle sınırlı değildir.
-
-Özellik `resolution` bir sayı, bir dize, nesne veya bir dizi olabilir:
-
-* "Dallas"
-* {"text": "değer"}
-* 12345
-* ["a", "b", "c"]
-
-
-
-## <a name="dynamic-lists-passed-in-at-prediction-time"></a>Tahmin zamanında geçirilen dinamik listeler
-
-Dinamik listeler, LUIS uygulamasında bulunan mevcut eğitimli ve yayınlanmış bir liste varlığını genişletmenize olanak sağlar.
-
-Liste varlık değerlerinizin düzenli aralıklarla değişmesi gerektiğinde bu özelliği kullanın. Bu özellik, önceden eğitilmiş ve yayınlanmış bir liste varlığını genişletmenize olanak tanır:
-
-* Sorgu tahmin bitiş noktası isteği sırasında.
-* Tek bir istek için.
-
-Liste varlığı LUIS uygulamasında boş olabilir, ancak var olması gerekir. LUIS uygulamasındaki liste varlığı değiştirilmez, ancak bitiş noktasındaki tahmin yeteneği yaklaşık 1.000 öğeiçeren en fazla 2 liste içerecek şekilde genişletilir.
-
-### <a name="dynamic-list-json-request-body"></a>Dinamik liste JSON istek gövdesi
-
-Listeye eşanlamlılarla birlikte yeni bir alt liste eklemek için aşağıdaki JSON gövdesini gönderin ve `LUIS`sorgu `POST` tahmini isteğiyle metin için liste varlığını tahmin edin:
-
-```JSON
-{
-    "query": "Send Hazem a message to add an item to the meeting agenda about LUIS.",
-    "options":{
-        "timezoneOffset": "-8:00"
-    },
-    "dynamicLists": [
-        {
-            "listEntity*":"ProductList",
-            "requestLists":[
-                {
-                    "name": "Azure Cognitive Services",
-                    "canonicalForm": "Azure-Cognitive-Services",
-                    "synonyms":[
-                        "language understanding",
-                        "luis",
-                        "qna maker"
-                    ]
-                }
-            ]
-        }
-    ]
-}
-```
-
-Tahmin yanıtı, istekte tanımlandığı için, diğer tüm öngörülen varlıklarla birlikte bu liste varlığını içerir.
+Tahmin çalışma zamanında uygulamayı nasıl genişletirler hakkında [kavramlar](schema-change-prediction-runtime.md) öğrenin.
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
 

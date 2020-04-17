@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: yelevin
-ms.openlocfilehash: bc2fa02925e7f5c671085eb87ca0431d3fca7691
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587966"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461642"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel müşteri tarafından yönetilen anahtarı ayarlama
 
@@ -60,11 +60,11 @@ CMK'yı sağlamak için aşağıdaki adımları izleyin: 
     > [!NOTE]
     >  Azure Anahtar Kasası, anahtarınızı ve erişimi korumak için kurtarılabilir olarak yapılandırılmalıdır.
 
-1.  [Kurtarma seçeneklerini açın:](../key-vault/key-vault-best-practices.md#turn-on-recovery-options)
+1.  [Kurtarma seçeneklerini açın:](../key-vault/general/best-practices.md#turn-on-recovery-options)
 
-    -   Yumuşak [Silme'nin](../key-vault/key-vault-ovw-soft-delete.md) açık olduğundan emin olun.
+    -   Yumuşak [Silme'nin](../key-vault/general/overview-soft-delete.md) açık olduğundan emin olun.
 
-    -   Yumuşak silme işleminden sonra bile gizli/kasanın zorla silinmesine karşı korumak için [Temizleme korumasını](../key-vault/key-vault-ovw-soft-delete.md#purge-protection) açın.
+    -   Yumuşak silme işleminden sonra bile gizli/kasanın zorla silinmesine karşı korumak için [Temizleme korumasını](../key-vault/general/overview-soft-delete.md#purge-protection) açın.
 
 ### <a name="step-2-enable-cmk-on-your-log-analytics-workspace"></a>ADIM 2: Log Analytics çalışma alanınızda CMK'yı etkinleştirin
 

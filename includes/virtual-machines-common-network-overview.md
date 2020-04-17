@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b5d46caa80f3f0aaeeb18bd919dafccf628c5faf
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81384906"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461783"
 ---
 Azure sanal makinesi (VM) oluştururken bir [sanal ağ](../articles/virtual-network/virtual-networks-overview.md) (VNet) oluşturmanız ya da mevcut bir VNet’i kullanmanız gerekir. Sanal ağda VM’lerinize nasıl erişilmesini istediğinize de karar vermeniz gerekir. [Kaynakları oluşturmadan önce planlama yapmak](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) ve [ağ kaynaklarının sınırlarını](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) anladığınızdan emin olmak önemlidir.
 
@@ -148,24 +148,7 @@ Bu tabloda bir iç yük dengeleyici oluşturmak için kullanabileceğiniz yönte
 
 ### <a name="virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri
 
-Sanal makine ölçek kümeleri ve yük dengeleyicisi ile çalışırken aşağıdakiler göz önünde bulundurulmalıdır:
-
-* **Birden çok sanal makine ölçek kümeleri aynı yük dengeleyicikullanamaz.**
-* **Bağlantı Noktası Yönlendirme ve gelen NAT kuralları:**
-  * Her sanal makine ölçeği kümesinin gelen bir NAT kuralı olmalıdır.
-  * Yük dengeleyicisinin arka uç havuzunda ayarlanan sanal makine ölçeğini kullanırken varsayılan gelen NAT kuralları otomatik olarak oluşturulur, bu tasarım gereğidir.
-* **Yük dengeleme kuralları**:
-  * Yük dengeleyicisinin arka uç havuzunda ayarlanan sanal makine ölçeğini kullanırken varsayılan yük dengeleme kuralı otomatik olarak oluşturulur, bu tasarım gereğidir.
-* **Giden kurallar:**
-  *  Yük dengeleme kuralıyla zaten başvurulan bir arka uç havuzu için giden kural oluşturmak için, gelen yük dengeleme kuralı oluşturulduğunda portalda **"Örtülü** **giden kurallar oluşturma"** işareti yapmanız gerekir.
-
-  :::image type="content" source="./media/virtual-machines-common-network-overview/vmsslb.png" alt-text="Yük dengeleme kuralı oluşturma" border="true":::
-
-Aşağıdaki yöntemler, varolan bir Azure yük dengeleyicisi ile ayarlanmış sanal makine ölçeğini dağıtmak için kullanılabilir.
-
-* [Azure portalını kullanarak mevcut bir Azure Yük Dengeleyicisi ile ayarlanmış sanal makine ölçeğini yapılandırın.](../articles/load-balancer/configure-vm-scale-set-portal.md)
-* [Azure PowerShell'i kullanarak mevcut bir Azure Yük Bakiyeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](../articles/load-balancer/configure-vm-scale-set-powershell.md)
-* [Azure CLI'yi kullanarak mevcut bir Azure Yük Dengeleyicisi ile sanal makine ölçeği kümesini yapılandırın.](../articles/load-balancer/configure-vm-scale-set-cli.md)
+Yük dengeleyici ve sanal makine ölçek kümeleri hakkında daha fazla bilgi için Azure [sanal makine ölçek kümeleri için Ağ'a](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)bakın.
 
 ## <a name="vms"></a>VM'ler
 

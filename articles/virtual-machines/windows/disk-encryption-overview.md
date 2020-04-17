@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: b2fe7e4fbe4830567533053580880315ceface5d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546335"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458888"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM'ler için Azure Disk Şifrelemesi 
 
@@ -54,7 +54,7 @@ Azure Disk Şifrelemesi'ni etkinleştirmek için, VM'lerin aşağıdaki ağ biti
   - Anahtar kasanıza bağlanmak için bir belirteç elde etmek için, Windows VM'nin \[bir\]Azure Etkin Dizin bitiş noktasına login.microsoftonline.com bağlanabilmesi gerekir.
   - Anahtar kasanızın şifreleme anahtarlarını yazmak için Windows VM'nin anahtar kasa bitiş noktasına bağlanabilmesi gerekir.
   - Windows VM, Azure uzantı deposunu ve VHD dosyalarını barındıran bir Azure depolama hesabı barındıran bir Azure depolama bitiş noktasına bağlanabilmeli.
-  -  Güvenlik ilkeniz Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/key-vault-access-behind-firewall.md)bakın.    
+  -  Güvenlik ilkeniz Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)bakın.    
 
 
 ## <a name="group-policy-requirements"></a>Grup İlkesi gereksinimleri

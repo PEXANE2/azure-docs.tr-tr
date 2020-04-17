@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/12/2019
-ms.openlocfilehash: a6b3b1d11242434088c138460d968f39d5273e4f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/15/2020
+ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418432"
+ms.locfileid: "81461302"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Veri akışını haritalamada şema kayması
 
@@ -30,6 +30,10 @@ ms.locfileid: "81418432"
 Azure Veri Fabrikası, veri akışlarınızı yeniden derlemeye gerek kalmadan genel veri dönüştürme mantığı oluşturabilmeniz için yürütmeden yürütmeye değişen esnek şemaları doğal olarak destekler.
 
 Akışınızda şema sürüklenme kabul etmek için veri akışı mimari bir karar vermek gerekir. Bunu yaptığınızda, kaynaklardan şema değişikliklerine karşı koruyabilirsiniz. Ancak, veri akışınız boyunca sütunlarınızın ve türlerinizin erken bağlanmasını kaybedersiniz. Azure Veri Fabrikası şema sürüklenme akışlarını geç bağlayıcı akışlar olarak ele aldığında, dönüşümlerinizi oluşturduğunuzda, sürüklenen sütun adları akış boyunca şema görünümlerinde kullanılamayacaktır.
+
+Bu video, veri akışının şema kayması özelliği ile ADF'de kolayca oluşturabileceğiniz karmaşık çözümlerden bazılarına giriş sağlar. Bu örnekte, esnek veritabanı şemalarına dayalı yeniden kullanılabilir desenler oluştururuz:
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tyx7]
 
 ## <a name="schema-drift-in-source"></a>Kaynakta şema kayması
 

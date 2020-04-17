@@ -7,21 +7,31 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0684f626553946619a0db2cd895df39576bd17b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8666f51b88d2a70a2cb27e3606f24010771c8017
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255125"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460723"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure Dosya Eşitleme dağıtımı planlama
-[Azure Dosyaları](storage-files-introduction.md) iki ana şekilde dağıtılabilir: sunucusuz Azure dosya paylaşımlarını doğrudan monte ederek veya Azure Dosya Eşitlemeyi'ni kullanarak şirket içinde Azure dosya paylaşımlarını önbelleğe alarak. Hangi dağıtım seçeneğini seçtiğiniz, dağıtımınızı planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
+
+:::row:::
+    :::column:::
+        [![Azure Dosya Senkronizasyonu ile ilgili röportaj ve demo - oynamak için tıklayın!](./media/storage-sync-files-planning/azure-file-sync-interview-video-snapshot.png)](https://www.youtube.com/watch?v=nfWLO7F52-s)
+    :::column-end:::
+    :::column:::
+        Azure Dosya Eşitlemi, şirket içi bir Windows Server'da veya bulut VM'de birkaç Azure dosya paylaşımını önbelleğe alan bir hizmettir. 
+        
+        Bu makalede, Azure Dosya Eşitleme kavramları ve özellikleri tanıtılıyor. Azure Dosya Eşitlemesine aşina olduktan sonra, bu hizmeti denemek için [Azure Dosya Eşitleme dağıtım kılavuzunu](storage-sync-files-deployment-guide.md) takip etmeyi düşünün.        
+    :::column-end:::
+:::row-end:::
+
+Dosyalar [Azure dosya paylaşımlarında](storage-files-introduction.md)bulutta depolanır. Azure dosya paylaşımları iki şekilde kullanılabilir: bu sunucusuz Azure dosya paylaşımlarını (SMB) doğrudan monte ederek veya Azure dosya paylaşımlarını Azure Dosya Eşitlemeyi'ni kullanarak şirket içinde önbelleğe alarak. Hangi dağıtım seçeneğini seçtiğiniz, dağıtımınızı planlarken göz önünde bulundurmanız gereken yönleri değiştirir. 
 
 - **Azure dosya paylaşımının doğrudan bindirilebilirliği**: Azure Dosyaları Kobİ erişimi sağladığından, Windows, macOS ve Linux'ta kullanılabilen standart SMB istemcisini kullanarak Azure dosya paylaşımlarını şirket içinde veya buluta monte edebilirsiniz. Azure dosya paylaşımları sunucusuz olduğundan, üretim senaryoları için dağıtım için bir dosya sunucusu nun veya NAS aygıtının yönetilmesi gerekmez. Bu, yazılım yamaları uygulamak veya fiziksel diskleri değiştirmek zorunda olmadığınız anlamına gelir. 
 
 - **Azure dosya paylaşımını Azure Dosya Eşitleme**: Azure Dosya Eşitlemi ile şirket içi paylaşma, kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda merkezileştirmenizi sağlarken, şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu korumanızı sağlar. Azure Dosya Eşitlemi, şirket içi (veya bulut) bir Windows Server'ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. 
-
-Bu makalede, öncelikle Azure Dosya Eşitleme dağıtma için dağıtım hususları giderilmesi. Azure dosya paylaşımlarının şirket içi veya bulut istemcisi tarafından doğrudan monte edilebis olmasını planlamak [için](storage-files-planning.md)bkz.
 
 ## <a name="management-concepts"></a>Yönetim kavramları
 Azure Dosya Eşitleme dağıtımının üç temel yönetim nesnesi vardır:
@@ -234,7 +244,7 @@ Azure dosya paylaşımında doğrudan yapılan değişikliklerin eşitleme grubu
 > [!Important]  
 > Azure Dosya Eşitlemesi'ni başarıyla dağıtmak için depolama alanı hesabınızı Etkin Dizin'e katılmak gerekmez. Bu, kullanıcılar Azure dosya paylaşımını doğrudan monte ettiğinde Azure dosya paylaşımının şirket içi ALA'ları uygulamasına olanak tanıyan kesinlikle isteğe bağlı bir adımdır.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 Azure Dosya Eşitleme aracısı, Azure Dosya Eşitleme REST protokolü ve FileREST protokolü kullanılarak Depolama Eşitleme Hizmetiniz ve Azure dosya paylaşımınızla iletişim kurar ve her ikisi de her ikisi de 443 bağlantı noktası üzerinden HTTPS kullanır. SMB, Windows Server'ınız ile Azure dosya paylaşımı nız arasında veri yüklemek veya indirmek için asla kullanılmaz. Çoğu kuruluş, çoğu web sitesini ziyaret etmek için bir gereklilik olarak bağlantı noktası 443 üzerinden HTTPS trafiğine izin verdiğinden, Azure Dosya Eşitlemesi dağıtmak için genellikle özel ağ yapılandırması gerekmez.
 
 Kuruluşunuzun ilke veya benzersiz düzenleyici gereksinimlerine bağlı olarak, Azure ile daha kısıtlayıcı iletişim elabilirsiniz ve bu nedenle Azure Dosya Eşitlemesi ağ yapılandırmanız için çeşitli mekanizmalar sağlar. Gereksinimlerinize bağlı olarak şunları yapabilirsiniz:
@@ -256,11 +266,11 @@ Windows Server'daki verileri şifrelemek için genellikle Azure Dosya Eşitlemi 
 
 Dosya sisteminin altında şifreleme sağlamak için Windows Server BitLocker gelen kutusu sağlar. BitLocker, Azure Dosya Eşitlemi için tamamen saydamdır. BitLocker gibi bir şifreleme mekanizmasıkullanmanın birincil nedeni, diskleri çalan biri tarafından şirket içi veri merkezinizden gelen verilerin fiziksel olarak sızmasını önlemek ve verilerinize yetkisiz okuma/yazma gerçekleştirmek için yetkisiz bir işletim sistemi nin yan yüklenmesinin engellenmesidir. BitLocker hakkında daha fazla bilgi edinmek için [BitLocker'a genel bakış](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)bilgisini bulabilirsiniz.
 
-NTFS biriminin altında yer aldıkları için BitLocker'a benzer şekilde çalışan üçüncü taraf ürünlerin de Benzer şekilde Azure Dosya Eşitlemesi ile tamamen saydam olarak çalışması gerekir. 
+NTFS biriminin altında yer aldıkları için BitLocker'a benzer şekilde çalışan üçüncü taraf ürünlerin de Benzer şekilde Azure Dosya Eşitlemesi ile tamamen saydam çalışması gerekir. 
 
 Verileri şifrelemek için diğer ana yöntem, uygulama dosyayı kaydederken dosyanın veri akışını şifrelemektir. Bazı uygulamalar bunu yerel olarak yapabilir, ancak bu genellikle böyle değildir. Dosyanın veri akışını şifreleme yöntemine örnek olarak Azure Bilgi Koruması (AIP)/Azure Hakları Yönetimi Hizmetleri (Azure RMS)/Active Directory RMS'dir. AIP/RMS gibi bir şifreleme mekanizmasıkullanmanın birincil nedeni, dosya paylaşımınızdan verileri kopyalayan kişilerin, örneğin bir flash sürücüye kopyalamasını veya yetkisiz bir kişiye e-posta yla e-posta yla göndere girmesini önlemektir. Bir dosyanın veri akışı dosya biçiminin bir parçası olarak şifrelendiğinde, bu dosya Azure dosya paylaşımında şifrelenmeye devam eder. 
 
-Azure Dosya Eşitlemesi, dosya sisteminin üzerinde ancak dosyanın veri akışının altında yer alan NTFS Şifreli Dosya Sistemi (NTFS EFS) veya üçüncü taraf şifreleme çözümleriyle birlikte çalışmaz. 
+Azure Dosya Eşitlemesi, Dosya sistemi üzerinde ancak dosyanın veri akışının altında yer alan NTFS Şifreli Dosya Sistemi (NTFS EFS) veya üçüncü taraf şifreleme çözümleriyle birlikte çalışmaz. 
 
 ### <a name="encryption-in-transit"></a>Aktarım sırasında şifreleme
 Azure Dosya Eşitleme aracısı, Azure Dosya Eşitleme REST protokolü ve FileREST protokolü kullanılarak Depolama Eşitleme Hizmetiniz ve Azure dosya paylaşımınızla iletişim kurar ve her ikisi de her ikisi de 443 bağlantı noktası üzerinden HTTPS kullanır. Azure Dosya Eşitlemesi HTTP üzerinden şifrelenmemiş istekler göndermez. 

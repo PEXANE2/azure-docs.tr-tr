@@ -1,17 +1,14 @@
 ---
 title: Azure Geçiş SSS
 description: Azure Geçiş hizmeti yle ilgili sık sorulan soruların yanıtlarını alın.
-author: snehaamicrosoft
-ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.author: snehaa
-ms.openlocfilehash: c85c5c6e11beb0178139dad152f56f420b2ac26f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 9b71888b284fd9cc125def4758d1e3800a92acf2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78926723"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81530326"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Geçiş: Sık sorulan sorular
 
@@ -56,8 +53,7 @@ Yapmak istediğiniz şeye göre aracınızı seçin:
 
 ## <a name="which-geographies-are-supported"></a>Hangi coğrafyalar desteklenir?
 
-- **VMware VM'ler : VMware**VM'ler için Azure Geçiş [destekli coğrafyaları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) inceleyin.
-- **Hyper-V VM'ler : Hyper-V**VM'ler için Azure Geçiş [destekli coğrafyaları](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v) gözden geçirin.
+Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
 ## <a name="how-do-i-get-started"></a>Nasıl kullanmaya başlayabilirim?
 

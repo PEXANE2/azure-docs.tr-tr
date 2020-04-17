@@ -4,12 +4,12 @@ description: Azure portalını kullanan blockchain konsorsiyumu için bir Azure 
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 7d29382cdedf7e35d186c73c9d32547e10fb10d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529637"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460282"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun
 
@@ -21,7 +21,7 @@ Bu hızlı başlangıçta, Azure portalını kullanarak Azure Blockchain Hizmeti
 
 Azure Blockchain Service üyesi, özel bir konsorsiyum blockchain ağında ki blockchain düğümüdür. Bir üye sağlarken, bir konsorsiyum ağı oluşturabilir veya katılabilirsiniz. Bir konsorsiyum ağı için en az bir üyeye ihtiyacınız var. Katılımcıların ihtiyaç duyduğu blockchain üye sayısı senaryonuza bağlıdır. Konsorsiyum katılımcılarının bir veya daha fazla blockchain üyesi olabilir veya üyeleri diğer katılımcılarla paylaşabilirler. Konsorsiyumlar hakkında daha fazla bilgi için [Azure Blockchain Service konsorsiyumuna](consortium.md)bakın.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 1. **Blockchain** > **Azure Blockchain Hizmeti 'ni seçin (önizleme)**.
 
@@ -36,7 +36,7 @@ Azure Blockchain Service üyesi, özel bir konsorsiyum blockchain ağında ki bl
     Konsorsiyum | Yeni bir konsorsiyum için benzersiz bir ad girin. Bir davet yoluyla bir konsorsiyuma katılıyorsanız, katıldığınız konsorsiyumu seçin. Konsorsiyumlar hakkında daha fazla bilgi için [Azure Blockchain Service konsorsiyumuna](consortium.md)bakın.
     Adı | Azure Blockchain Hizmeti üyesi için benzersiz bir ad seçin. Blockchain üye adı yalnızca küçük harfler ivedi lik ve sayılar içerebilir. İlk karakter bir harf olmalıdır. Değer 2 ile 20 karakter uzunluğunda olmalıdır.
     Üye hesabı şifresi | Üye hesabı parolası, üyeniz için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-    Fiyatlandırma | Düğüm yapılandırması ve yeni hizmetinizin maliyeti. **Standart** ve **Temel** katmanlar arasında seçim yapmak için **Değiştir** bağlantısını seçin. *Temel* katmanı kullanmak, kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi içindir. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
+    Fiyatlandırma | Düğüm yapılandırması ve yeni hizmetinizin maliyeti. **Standart** ve **Temel** katmanlar arasında seçim yapmak için **Değiştir** bağlantısını seçin. Kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi için *Temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
     Düğüm parolası | Üyenin varsayılan hareket düğümünün parolası. Blockchain üyesinin varsayılan işlem düğümü ortak bitiş noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 
 1. Ayarlarınızı doğrulamak için **Gözden Geçir + oluştur'u** seçin. Hizmeti sağlamak için **Oluştur'u** seçin. Sağlama yaklaşık 10 dakika sürer.

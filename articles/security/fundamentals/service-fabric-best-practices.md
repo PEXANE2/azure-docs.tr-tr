@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549238"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461659"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
 Bir uygulamayı Azure'da dağıtmak hızlı, kolay ve uygun maliyetlidir. Bulut uygulamanızı üretime dağıtmadan önce, uygulamanızda güvenli kümeler uygulamak için temel ve önerilen en iyi uygulamalar listemizi inceleyin.
@@ -155,7 +155,7 @@ Service Fabric, bir kümeyi ve uygulamalarını güvence altına almak için kim
 
 Service Fabric, bir kümeyi güvenli hale getirmek ve uygulama güvenliği özellikleri sağlamak için X.509 sertifikalarını kullanır. Azure'da Hizmet Kumaşı [kümeleri için sertifikaları yönetmek](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) için Azure Key Vault'u kullanırsınız. Kümeleri oluşturan Azure kaynak sağlayıcısı, sertifikaları önemli bir kasadan çeker. Sağlayıcı, küme Azure'da dağıtıldığında sertifikaları VM'lere yükler.
 
-[Azure Anahtar Kasası,](../../key-vault/key-vault-secure-your-key-vault.md)Hizmet Kumaşı kümesi ile sertifikaları kullanan kaynak sağlayıcısı arasında bir sertifika ilişkisi vardır. Küme oluşturulduğunda, sertifika ilişkisi hakkındaki bilgiler anahtar kasasında depolanır.
+[Azure Anahtar Kasası,](../../key-vault/general/secure-your-key-vault.md)Hizmet Kumaşı kümesi ile sertifikaları kullanan kaynak sağlayıcısı arasında bir sertifika ilişkisi vardır. Küme oluşturulduğunda, sertifika ilişkisi hakkındaki bilgiler anahtar kasasında depolanır.
 
 Anahtar kasasını kurmak için iki temel adım vardır:
 1. Anahtar kasanız için özel olarak bir kaynak grubu oluşturun.
@@ -166,7 +166,7 @@ Anahtar kasasını kurmak için iki temel adım vardır:
 
     Dağıtım için anahtar kasası etkinleştirilmelidir. Bilgi işlem kaynak sağlayıcısı daha sonra sertifikaları kasadan alabilir ve VM örneklerine yükleyebilir.
 
-Anahtar kasasını nasıl ayarlayınız hakkında daha fazla bilgi edinmek için Azure [Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
+Anahtar kasasını nasıl ayarlayınız hakkında daha fazla bilgi edinmek için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
 
 ## <a name="assign-users-to-roles"></a>Kullanıcıları rollere atama
 Kümenizi temsil edecek uygulamaları oluşturduktan sonra, kullanıcılarınızı Service Fabric tarafından desteklenen rollere atayın: salt okunur ve yönetici. Azure portalını kullanarak bu rolleri atayabilirsiniz.

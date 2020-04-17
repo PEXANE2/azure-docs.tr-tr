@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff4234d9fd28e655e868108e37b09c5afe2767c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 15960caa55274f06159263c1af4a6c8280e83f4e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517135"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533503"
 ---
-# <a name="bulk-import-group-members-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde toplu alma grubu üyeleri (önizleme)
+# <a name="bulk-import-group-members-in-azure-active-directory"></a>Azure Etkin Dizini'nde toplu alma grubu üyeleri
 
 Azure Etkin Dizin (Azure AD) portalını kullanarak, toplu alma grubu üyeleri için virgülle ayrılmış değerler (CSV) dosyasını kullanarak gruba çok sayıda üye ekleyebilirsiniz.
 
@@ -30,7 +30,7 @@ Azure Etkin Dizin (Azure AD) portalını kullanarak, toplu alma grubu üyeleri i
 1. Azure AD'de**Tüm grupları** **gruplar** > seçin.
 1. Üye eklediğiniz grubu açın ve ardından **Üyeler'i**seçin.
 1. **Üyeler** sayfasında, **Üye Alma'yı**seçin.
-1. Toplu **alma grubu üyeleri (Önizleme)** sayfasında, gerekli grup üyesi özelliklerine sahip CSV dosya şablonu almak için **İndir'i** seçin.
+1. Toplu **alma grubu üyeleri** sayfasında, gerekli grup üyesi özelliklerine sahip CSV dosya şablonu almak için **İndir'i** seçin.
 
     ![Alma Üyeleri komutu grubun profil sayfasında](./media/groups-bulk-import-members/import-panel.png)
 
@@ -38,16 +38,16 @@ Azure Etkin Dizin (Azure AD) portalını kullanarak, toplu alma grubu üyeleri i
 
    ![CSV dosyası, üyelerin içe aktarması için adlar ve kisimler içerir](./media/groups-bulk-import-members/csv-file.png)
 
-1. Toplu **alma grubu üyeleri (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
+1. Toplu **alma grubu üyeleri** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandığında, toplu içe aktarma sayfası **başarıyla yüklenen Dosyayı**görüntüler. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 1. Dosyanız doğrulamadan geçtiğinde, grup üyelerini gruba aktaran Azure toplu işlemini başlatmak için **Gönder'i** seçin.
 1. Alma işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
 
 ## <a name="check-import-status"></a>Alma durumunu denetleme
 
-**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu işlem sonuçları sayfası toplu istek durumunu gösterir](./media/groups-bulk-import-members/bulk-center.png)
+[![](media/groups-bulk-import-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-import-members/bulk-center.png#lightbox)
 
 Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
 

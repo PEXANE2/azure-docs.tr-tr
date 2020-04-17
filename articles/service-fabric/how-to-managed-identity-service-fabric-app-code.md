@@ -3,12 +3,12 @@ title: Bir uygulamayla yönetilen kimliği kullanma
 description: Azure Hizmetleri'ne erişmek için Azure Hizmet Dokusu uygulama kodunda yönetilen kimlikler nasıl kullanılır?
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: cbdb1190ec3238a6accd34db3025e08c194d60b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f1f355d6add16f3b3ec25bc569f9b198a8d6778
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415611"
+ms.locfileid: "81461574"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Azure hizmetlerine erişmek için Service Fabric uygulamasının yönetilen kimliğinasıl kullanılır?
 
@@ -41,10 +41,6 @@ Bir belirteç elde etmek için istemci aşağıdaki adımları gerçekleştirir:
 Başarılı bir yanıt, ortaya çıkan erişim belirteci temsil eden bir JSON yükü yanı sıra onu açıklayan meta veri içerir. Başarısız bir yanıt da hata bir açıklama içerecektir. Hata işleme ile ilgili ek ayrıntılar için aşağıya bakın.
 
 Erişim belirteçleri Çeşitli düzeylerde (düğüm, küme, kaynak sağlayıcı hizmeti) Service Fabric tarafından önbelleğe alınacaktır, bu nedenle başarılı bir yanıt, belirteci kullanıcı uygulamasının isteğine yanıt olarak doğrudan verildiği anlamına gelmez. Belirteçler kullanım ömürlerinden daha kısa bir süre için önbelleğe alınacaktır ve böylece geçerli bir jeton alacağı garanti edilir. Uygulama kodunun kendisine edindığı herhangi bir erişim belirteçlerini önbelleğe alması önerilir; önbelleğe alma anahtarı izleyiciyi içermelidir (bir türetme). 
-
-
-> [!NOTE]
-> Kabul edilen tek API sürümü `2019-07-01-preview`şu anda ve değişebilir.
 
 Örnek istek:
 ```http

@@ -8,12 +8,12 @@ author: axisc
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: aschhab
-ms.openlocfilehash: aeb9a9730ddc61793e49c9e042906457e0068d9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82a5fbef8c307d60d82b147f04a2a687b8b0433e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624080"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459075"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Azure Hizmet Veri Servisi verilerini şifrelemek için müşteri tarafından yönetilen anahtarları Azure portalını kullanarak yapılandırma
 Azure Hizmet Veri Hizmeti Premium, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile veri şifrelemesini sağlar. Service Bus Premium verileri depolamak için Azure Depolama'ya güvenir ve varsayılan olarak Azure Depolama ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -28,9 +28,9 @@ BYOK özelliğini etkinleştirmek, ad alanınızda tek seferlik bir kurulum işl
 >   * Bu özellik Azure [Service Bus Premium](service-bus-premium-messaging.md) katmanı tarafından desteklenir. Standart katman Hizmet Veri Servisi ad alanları için etkinleştirilemez.
 >   * Şifreleme yalnızca yeni veya boş ad alanları için etkinleştirilebilir. Ad alanı veri içeriyorsa, şifreleme işlemi başarısız olur.
 
-Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault'u kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault'u kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/general/overview.md)
 
-Bu makalede, Azure portalını kullanarak müşteri tarafından yönetilen anahtarlarla anahtar kasasının nasıl yapılandırılabildiğini gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/quick-create-portal.md)
+Bu makalede, Azure portalını kullanarak müşteri tarafından yönetilen anahtarlarla anahtar kasasının nasıl yapılandırılabildiğini gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/secrets/quick-create-portal.md)
 
 > [!IMPORTANT]
 > Azure Hizmet Veri Servisi ile müşteri tarafından yönetilen anahtarları kullanmak, anahtar kasasının iki gerekli özellisini yapılandırmasını gerektirir. Bunlar: **Yumuşak Silme** ve **Temizleme etmeyin**. Azure portalında yeni bir anahtar kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, bu özellikleri varolan bir anahtar kasasında etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLI'yi kullanmanız gerekir.
@@ -47,9 +47,9 @@ Azure portalında müşteri tarafından yönetilen anahtarları etkinleştirmek 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlarla anahtar kasası ayarlama
 
-Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri yönetilen anahtarını Azure Servis Veri Veri Kurumu ad alanınızla ilişkilendirmeniz gerekir. Servis Veri Servisi yalnızca Azure Anahtar Kasası'nı destekler. Önceki bölümde **müşteri tarafından yönetilen anahtar seçeneğiyle Şifreleme'yi** etkinleştiriseniz, anahtarın Azure Anahtar Kasası'na aktarılmasını sağlamanız gerekir. Ayrıca, anahtarlar **Yumuşak Silme** ve **Temizleme anahtarı** için yapılandırılan etmeyin olmalıdır. Bu ayarlar [PowerShell](../key-vault/key-vault-soft-delete-powershell.md) veya [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
+Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri yönetilen anahtarını Azure Servis Veri Veri Kurumu ad alanınızla ilişkilendirmeniz gerekir. Servis Veri Servisi yalnızca Azure Anahtar Kasası'nı destekler. Önceki bölümde **müşteri tarafından yönetilen anahtar seçeneğiyle Şifreleme'yi** etkinleştiriseniz, anahtarın Azure Anahtar Kasası'na aktarılmasını sağlamanız gerekir. Ayrıca, anahtarlar **Yumuşak Silme** ve **Temizleme anahtarı** için yapılandırılan etmeyin olmalıdır. Bu ayarlar [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
 
-1. Yeni bir anahtar kasası oluşturmak için Azure Key Vault [Quickstart'ı](../key-vault/key-vault-overview.md)izleyin. Varolan anahtarları alma hakkında daha fazla bilgi için [anahtarlar, sırlar ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bilgi edinebilirsiniz.
+1. Yeni bir anahtar kasası oluşturmak için Azure Key Vault [Quickstart'ı](../key-vault/general/overview.md)izleyin. Varolan anahtarları alma hakkında daha fazla bilgi için [anahtarlar, sırlar ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bilgi edinebilirsiniz.
 1. Kasa oluştururken hem yumuşak silme hem de temizleme korumasını açmak için [az keyvault oluşturma](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
@@ -81,28 +81,28 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
     > [!IMPORTANT]
     > Geo felaket kurtarma ile birlikte Müşteri yönetilen anahtarı kullanmak için arıyorsanız, aşağıdaki gözden geçirin - 
     >
-    > Müşteri yönetilen anahtarla şifrelemeyi etkinleştirmek için, belirtilen Azure KeyVault'ta Hizmet Veri Yolu'nun yönetilen kimliği için bir [erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md) ayarlanır. Bu, Azure Hizmet Veri Veri Tos ad alanından Azure KeyVault'a kontrollü erişim sağlar.
+    > Müşteri yönetilen anahtarla şifrelemeyi etkinleştirmek için, belirtilen Azure KeyVault'ta Hizmet Veri Yolu'nun yönetilen kimliği için bir [erişim ilkesi](../key-vault/general/secure-your-key-vault.md) ayarlanır. Bu, Azure Hizmet Veri Veri Tos ad alanından Azure KeyVault'a kontrollü erişim sağlar.
     >
     > Bu nedenle:
     > 
     >   * Hizmet Veri Yolu ad alanı için [Coğrafi durum kurtarma](service-bus-geo-dr.md) zaten etkinse ve müşteri yönetilen anahtarını etkinleştirmek istiyorsanız, 
     >     * Eşleştirmeyi boz
-    >     * Anahtar kasasına hem birincil hem de ikincil ad alanları için yönetilen kimlik için [erişim ilkesini ayarlayın.](../key-vault/managed-identity.md)
+    >     * Anahtar kasasına hem birincil hem de ikincil ad alanları için yönetilen kimlik için [erişim ilkesini ayarlayın.](../key-vault/general/managed-identity.md)
     >     * Birincil ad alanında şifreleme ayarlayın.
     >     * Birincil ve ikincil ad alanlarını yeniden eşleştirin.
     > 
     >   * Müşteri yönetilen anahtarının zaten ayarlandığı bir Hizmet Veri Yolundan ad alanında Geo-DR'yi etkinleştirmek istiyorsanız,
-    >     * Anahtar kasasına ikincil ad alanı için yönetilen kimlik için [erişim ilkesini ayarlayın.](../key-vault/managed-identity.md)
+    >     * Anahtar kasasına ikincil ad alanı için yönetilen kimlik için [erişim ilkesini ayarlayın.](../key-vault/general/managed-identity.md)
     >     * Birincil ve ikincil ad alanlarını eşleştirin.
 
 
 ## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürme
 
-Azure Anahtar Kasaları döndürme mekanizmasını kullanarak anahtarınızı anahtar kasasında döndürebilirsiniz. Daha fazla bilgi için [bkz.](../key-vault/key-vault-key-rotation-log-monitoring.md) Etkinleştirme ve son kullanma tarihleri de anahtar döndürmeyi otomatikleştirmek için ayarlanabilir. Servis Veri Servisi yeni anahtar sürümlerialgılar ve otomatik olarak kullanmaya başlar.
+Azure Anahtar Kasaları döndürme mekanizmasını kullanarak anahtarınızı anahtar kasasında döndürebilirsiniz. Daha fazla bilgi için [bkz.](../key-vault/secrets/key-rotation-log-monitoring.md) Etkinleştirme ve son kullanma tarihleri de anahtar döndürmeyi otomatikleştirmek için ayarlanabilir. Servis Veri Servisi yeni anahtar sürümlerialgılar ve otomatik olarak kullanmaya başlar.
 
 ## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal etme
 
-Şifreleme anahtarlarına erişimi iptal etmek, verileri Servis Veri Servisi'nden temizlemez. Ancak, verilere Hizmet Veri Kurumu ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi yle veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri ve anahtar kasanızı Güvenli kasadan [anahtar kasasına](../key-vault/key-vault-secure-your-key-vault.md)güvenli hale alma hakkında daha fazla bilgi edinin.
+Şifreleme anahtarlarına erişimi iptal etmek, verileri Servis Veri Servisi'nden temizlemez. Ancak, verilere Hizmet Veri Kurumu ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi yle veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri ve anahtar kasanızı Güvenli kasadan [anahtar kasasına](../key-vault/general/secure-your-key-vault.md)güvenli hale alma hakkında daha fazla bilgi edinin.
 
 Şifreleme anahtarı iptal edildikten sonra, şifrelenmiş ad alanındaki Servis Veri Servisi çalışamaz hale gelir. Anahtara erişim etkinleştirilmişse veya silinen anahtar geri yüklenirse, şifreli Servis Veri Servisi ad alanından verilere erişebilmeniz için Servis Veri Servisi anahtarı seçer.
 
@@ -327,6 +327,6 @@ Bu adımda, Servis Veri Servisi ad alanını anahtar kasa bilgileriyle güncelle
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 - [Servis Veri Servisi'ne genel bakış](service-bus-messaging-overview.md)
-- [Key Vault'a genel bakış](../key-vault/key-vault-overview.md)
+- [Key Vault'a genel bakış](../key-vault/general/overview.md)
 
 

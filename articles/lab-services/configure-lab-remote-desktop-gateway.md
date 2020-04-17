@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: eac195babebf300aa9770d35b7b98eba29c234cf
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529416"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460996"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs'daki laboratuvarınızı uzak bir masaüstü ağ geçidi kullanacak şekilde yapılandırın
 Azure DevTest Labs'da, RDP bağlantı noktasını ortaya çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM) güvenli erişim sağlamak için laboratuarınız için uzak bir masaüstü ağ geçidi yapılandırabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişebildikleri tüm sanal makineleri görüntülemeleri ve bunlara bağlanmaları için merkezi bir yer sağlar. **Sanal Makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için açabileceğiniz makineye özgü bir RDP dosyası oluşturur. Laboratuvarınızı uzak bir masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve güvene alabilirsiniz. 
@@ -64,7 +64,7 @@ Azure işlevi isteği biçimiyle `https://{function-app-uri}/app/host/{lab-machi
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Laboratuvarda belirteç kimlik doğrulaması kullanacak şekilde yapılandırma 
 Bu bölümde, bir laboratuvarda belirteç kimlik doğrulamasını destekleyen uzak bir masaüstü ağ geçidi makinesini kullanacak şekilde nasıl yapılandırılanın gösterilmektedir. Bu bölüm, uzak bir masaüstü ağ geçidi çiftliğinin kendisini nasıl ayarlayacaklarını kapsamaz. Bu bilgiler [için,](#sample-to-create-a-remote-desktop-gateway) bu makalenin sonunda uzak bir masaüstü ağ geçidi bölümü oluşturmak için Örnek'e bakın. 
 
-Laboratuvar ayarlarını güncelleştirmeden önce, laboratuarın anahtar kasasında kimlik doğrulama belirteci döndürmek için işlevi başarıyla yürütmek için gereken anahtarı depolayın. Azure portalındaki işleviçin **Yönet** sayfasında işlev anahtar değerini alabilirsiniz. Bir sırrı önemli bir kasada nasıl kaydedebilirsiniz hakkında daha fazla bilgi için [bkz.](../key-vault/quick-create-portal.md#add-a-secret-to-key-vault) Sırrın adını daha sonra kullanmak üzere kaydedin.
+Laboratuvar ayarlarını güncelleştirmeden önce, laboratuarın anahtar kasasında kimlik doğrulama belirteci döndürmek için işlevi başarıyla yürütmek için gereken anahtarı depolayın. Azure portalındaki işleviçin **Yönet** sayfasında işlev anahtar değerini alabilirsiniz. Bir sırrı önemli bir kasada nasıl kaydedebilirsiniz hakkında daha fazla bilgi için [bkz.](../key-vault/secrets/quick-create-portal.md#add-a-secret-to-key-vault) Sırrın adını daha sonra kullanmak üzere kaydedin.
 
 Laboratuvarın anahtar kasasının kimliğini bulmak için aşağıdaki Azure CLI komutunu çalıştırın: 
 
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Aşağıdaki adımları kullanarak belirteç kimlik doğrulamasını kullanacak şekilde laboratuarı yapılandırın:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Tüm Hizmetler'i**seçin ve ardından listeden **DevTest Labs'ı** seçin.
 1. Laboratuvarlar listesinden, **laboratuvarınızı**seçin.
 1. Laboratuvarın sayfasında **Yapılandırma ve ilkeler'i**seçin.

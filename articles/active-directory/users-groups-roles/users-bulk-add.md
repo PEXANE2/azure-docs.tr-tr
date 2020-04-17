@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory portalında toplu oluşturma kullanıcıları (önizleme) | Microsoft Dokümanlar
+title: Azure Active Directory portalında toplu oluşturma kullanıcıları | Microsoft Dokümanlar
 description: Azure Etkin Dizin'deki Azure AD yönetici merkezinde kullanıcıları toplu olarak ekleme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/30/2019
+ms.date: 04/16/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a10dfffa69652ee2b75053c04b97f6492c46811e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174339"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532960"
 ---
-# <a name="bulk-create-users-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde toplu oluşturma kullanıcıları (önizleme)
+# <a name="bulk-create-users-in-azure-active-directory"></a>Azure Etkin Dizini'nde toplu oluşturma kullanıcıları
 
 Azure Etkin Dizin (Azure AD), toplu kullanıcı oluşturma ve silme işlemlerini, misafirler için toplu daveti ve kullanıcı, grup ve grup üyelerinin indirme listelerini destekler.
 
@@ -40,7 +40,7 @@ Yönetim portalında toplu olarak kullanıcı oluşturmak için, Global yönetic
 
    ![CSV dosyası oluşturmak için kullanıcıların adlarını ve adlarını içerir](./media/users-bulk-add/add-csv-file.png)
 
-1. Toplu **oluşturma kullanıcı (Önizleme)** sayfasında, CSV dosyanızı yükleyin altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
+1. Toplu **oluşturma kullanıcı** sayfasında, CSV dosyanızı yükleyin altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
 1. Dosya içeriği doğrulandıktan sonra **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 1. Dosyanız doğrulamadan geçtiğinde, yeni kullanıcıları içeri alan Azure toplu işlemini başlatmak için **Gönder'i** seçin.
 1. Alma işlemi tamamlandığında, toplu işlem iş durumu bildirimi ni görürsünüz.
@@ -49,9 +49,9 @@ Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını ind
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu İşlemsonuçları sayfasında yükleme durumunu kontrol edin](./media/users-bulk-add/bulk-center.png)
+   [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
 Ardından, oluşturduğunuz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
 

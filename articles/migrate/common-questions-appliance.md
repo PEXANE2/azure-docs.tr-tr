@@ -2,13 +2,13 @@
 title: Azure Geçiş cihazı SSS
 description: Azure Geçiş cihazı yla ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.date: 04/15/2020
+ms.openlocfilehash: 529ead1baa769ee3e71f6fcf77ef7e020ed196a6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437605"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529697"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Geçiş cihazı: Sık sorulan sorular
 
@@ -31,6 +31,15 @@ Azure Geçiş cihazı hakkında daha fazla bilgi aşağıda vereb
 
 Cihaz hakkında [daha fazla bilgi edinin.](migrate-appliance.md)
 
+## <a name="how-can-i-deploy-the-appliance"></a>Cihazı nasıl dağıtabilirim?
+
+Cihaz aşağıdaki gibi dağıtılabilir:
+
+- VMware VM'ler ve Hyper-V VM'ler için şablon kullanma (VMware için OVA şablonu veya Hyper-V için VHD).
+- Şablon kullanmak istemiyorsanız veya Azure Kamu'daysanız, cihazı PowerShell komut dosyası kullanarak VMware veya Hyper-V için dağıtabilirsiniz.
+- Fiziksel sunucular için cihazı her zaman bir komut dosyası kullanarak dağıtirsiniz.
+
+
 ## <a name="how-does-the-appliance-connect-to-azure"></a>Cihaz Azure'a nasıl bağlanır?
 
 Cihaz internet üzerinden veya Azure ExpressRoute kullanarak genel/Microsoft bakışlarıyla bağlanabilir.
@@ -45,11 +54,8 @@ Azure Geçir cihazı profilleri, performans verilerini ölçmek için sürekli o
 
 ## <a name="what-network-connectivity-is-required"></a>Hangi ağ bağlantısı gereklidir?
 
-Azure Geçiş cihazı için ağ bağlantısı gereksinimleri hakkında bilgi için aşağıdaki makalelere bakın:
 
-- **VMware değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-vmware.md#port-access)
-- **VMware aracısız geçiş**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-vmware-migration.md#agentless-ports)
-- **Hyper-V değerlendirmesi**: [URL erişimi](migrate-appliance.md#url-access) ve bağlantı [noktası erişimi](migrate-support-matrix-hyper-v.md#port-access)
+Cihazın Azure URL'lerine erişmesi gerekir. URL listesini [gözden geçirin.](migrate-appliance.md#url-access)
 
 ## <a name="what-data-does-the-appliance-collect"></a>Cihaz hangi verileri topluyor?
 

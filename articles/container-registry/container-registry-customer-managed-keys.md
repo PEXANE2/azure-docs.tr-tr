@@ -4,18 +4,18 @@ description: Azure kapsayıcı kayıt defterinizin geri kalanında şifreleme ve
 ms.topic: article
 ms.date: 03/10/2020
 ms.custom: ''
-ms.openlocfilehash: fe0736f83db2ba5b872d50bcf1262ca423de9f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2d5561998cf0b19698c8059a861a4014a171a7e7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498954"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461761"
 ---
 # <a name="encryption-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak şifreleme
 
 Görüntüleri ve diğer yapıları bir Azure kapsayıcı kayıt defterinde depoladiğinizde, Azure kayıt defteri içeriğini [hizmet tarafından yönetilen anahtarlarla](../security/fundamentals/encryption-atrest.md#data-encryption-models)otomatik olarak şifreler. Azure Key Vault'ta oluşturduğunuz ve yönettiğiniz bir anahtarı kullanarak varsayılan şifrelemeyi ek bir şifreleme katmanı ile tamamlayabilirsiniz. Bu makale, Azure CLI ve Azure portalını kullanarak adımları niçin gözden geçirmenizi kolaylaştırır.
 
-Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, [Azure Key Vault](../key-vault/key-vault-overview.md)ile tümleştirme yoluyla desteklenir. Kendi şifreleme anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya şifreleme anahtarları oluşturmak için Azure Key Vault'un API'lerini kullanabilirsiniz. Azure Key Vault ile anahtar kullanımını da denetleyebilirsiniz.
+Müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifreleme, [Azure Key Vault](../key-vault/general/overview.md)ile tümleştirme yoluyla desteklenir. Kendi şifreleme anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya şifreleme anahtarları oluşturmak için Azure Key Vault'un API'lerini kullanabilirsiniz. Azure Key Vault ile anahtar kullanımını da denetleyebilirsiniz.
 
 Bu özellik **Premium** konteyner kayıt hizmeti katmanında kullanılabilir. Kayıt defteri hizmeti katmanları ve sınırları hakkında daha fazla bilgi için [Azure Konteyner Kayıt Defteri SK'leri'ne](container-registry-skus.md)bakın.
 
@@ -176,7 +176,7 @@ Yönetilen kimliğin **Kaynak Adını** dikkate alın. Daha sonraki adımlarda b
 
 ### <a name="create-a-key-vault"></a>Bir anahtar kasası oluşturma
 
-Önemli bir kasa oluşturmak için adımlar için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/quick-create-portal.md)
+Önemli bir kasa oluşturmak için adımlar için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/secrets/quick-create-portal.md)
 
 **Basics** sekmesinde, müşteri tarafından yönetilen bir anahtar için anahtar kasaoluştururken, aşağıdaki koruma ayarlarını etkinleştirmeniz gerekir: **Yumuşak silme** ve **Temizleme koruması.** Bu ayarlar, yanlışlıkla anahtar veya anahtar silme neden olduğu veri kaybını önlemeye yardımcı olur.
 
@@ -378,7 +378,7 @@ az acr encryption rotatekey \
 
 ## <a name="revoke-key"></a>Anahtarı iptal et
 
-Anahtar kasasındaki erişim ilkesini değiştirerek veya anahtarı silerek müşteri tarafından yönetilen şifreleme anahtarını iptal edin. Örneğin, kayıt defteriniz tarafından kullanılan yönetilen kimliğin erişim ilkesini değiştirmek için [az keyvault silme ilkesi][az-keyvault-delete-policy] komutunu kullanın. Örnek:
+Anahtar kasasındaki erişim ilkesini değiştirerek veya anahtarı silerek müşteri tarafından yönetilen şifreleme anahtarını iptal edin. Örneğin, kayıt defteriniz tarafından kullanılan yönetilen kimliğin erişim ilkesini değiştirmek için [az keyvault silme ilkesi][az-keyvault-delete-policy] komutunu kullanın. Örneğin:
 
 ```azurecli
 az keyvault delete-policy \
@@ -392,7 +392,7 @@ Kayıt defteri şifreleme anahtarına erişemediğinden, anahtarın iptali tüm 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure'da dinlenilerde şifreleme](../security/fundamentals/encryption-atrest.md)hakkında daha fazla bilgi edinin.
-* Erişim ilkeleri ve [önemli bir kasaya erişimin](../key-vault/key-vault-secure-your-key-vault.md)nasıl güvenli hale ulaşılabildiğini öğrenin.
+* Erişim ilkeleri ve [önemli bir kasaya erişimin](../key-vault/general/secure-your-key-vault.md)nasıl güvenli hale ulaşılabildiğini öğrenin.
 * Azure Konteyner Kayıt Defteri için müşteri tarafından yönetilen anahtarlar hakkında geri bildirim sağlamak için [ACR GitHub sitesini](https://aka.ms/acr/issues)ziyaret edin.
 
 

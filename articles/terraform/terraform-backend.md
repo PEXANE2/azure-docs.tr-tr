@@ -3,12 +3,12 @@ title: Öğretici - Terraform durumunu Azure Depolama'da saklayın
 description: Terraform durumunu Azure Depolama'da depolamaya giriş.
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 1cc475e5070b21a7ea96585f2183c07d258acdc5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c94c66969c517bd0e51117ab7c6ed6a889149518
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75708433"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459024"
 ---
 # <a name="tutorial-store-terraform-state-in-azure-storage"></a>Öğretici: Terraform durumunu Azure Depolama'da depolama
 
@@ -67,7 +67,7 @@ Azure Depolama erişim `ARM_ACCESS_KEY` anahtarının değeriyle birlikte bir or
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Azure Depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault'ta saklayın. Ortam değişkeni daha sonra aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için [Azure Anahtar Kasası belgelerine](../key-vault/quick-create-cli.md)bakın.
+Azure Depolama hesabı erişim anahtarını daha fazla korumak için Azure Key Vault'ta saklayın. Ortam değişkeni daha sonra aşağıdakine benzer bir komut kullanılarak ayarlanabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için [Azure Anahtar Kasası belgelerine](../key-vault/secrets/quick-create-cli.md)bakın.
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)

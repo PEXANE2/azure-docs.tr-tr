@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 8ce949ac997ba7ee38cb057752d89f4b4d22388f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73838715"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459041"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Depolama hesabını başka bir bölgeye taşıma
 
@@ -51,7 +51,7 @@ Bu şablon, depolama hesabınızı açıklayan ayarlar içerir.
 
 Azure portalını kullanarak şablon uyguluyor:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. **Tüm kaynakları** seçin ve ardından depolama hesabınızı seçin.
 
@@ -63,7 +63,7 @@ Azure portalını kullanarak şablon uyguluyor:
 
    Bu zip dosyası şablonu dağıtmak için şablon ve komut dosyalarını oluşturan .json dosyalarını içerir.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell kullanarak bir şablon dışa aktarmak için:
 
@@ -109,7 +109,7 @@ Azure portalını kullanarak şablonu dağıtmak için:
 
     ![Azure Resource Manager şablon kitaplığı](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. **Oluştur'u**seçin.
+4. **Oluştur**’u seçin.
 
 5. **Düzenleyicide kendi şablonunuzu oluşturun**'u seçin.
 
@@ -139,7 +139,7 @@ Azure portalını kullanarak şablonu dağıtmak için:
     ```
     Bölge konum kodları edinmek için [Azure Konumları'na](https://azure.microsoft.com/global-infrastructure/locations/)bakın.  Bir bölgenin kodu boşluksuz bölge adıdır, **Orta ABD** = **centralus.**
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak şablonu dağıtmak için:
 
@@ -194,7 +194,7 @@ Hedef bölgede yeni bir depolama hesabı oluşturmak için şablonu dağıtın.
 
 3. Onay **kutusunun üzerinde belirtilen hüküm ve koşulları kabul** ediyorum ve ardından Satın Al düğmesini **seç** düğmesini tıklatın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. [Get-AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-2.5.0)ile hedef genel IP dağıtmak istediğiniz abonelik kimliği edinin:
 
@@ -274,9 +274,9 @@ Azure portalını kullanarak bir depolama hesabını kaldırmak için:
 
 3. **Sil'i**seçin ve onaylayın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Kaynak grubunu ve yeni depolama hesabı da dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Kaldır-AzStorageAccount](/powershell/module/az.resources/remove-azstorageaccount) komutunu kullanın:
+Kaynak grubunu ve yeni depolama hesabı da dahil olmak üzere ilişkili kaynaklarını kaldırmak için [Kaldır-AzStorageAccount](/powershell/module/az.storage/remove-azstorageaccount) komutunu kullanın:
 
 ```powershell
 Remove-AzStorageAccount -ResourceGroupName  $resourceGroup -AccountName $storageAccount

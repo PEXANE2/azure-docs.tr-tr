@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 14ff86bc47ab6de55d840c4b986c99caf2d4e99c
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545650"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482020"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -94,7 +94,7 @@ Aşağıdaki tablo, kısa bir açıklama ve her yerleşik rolün benzersiz kimli
 > | [AcrQuarantineWriter](#acrquarantinewriter) | acr karantina veri yazar | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes Hizmet Kümesi Yönetici Rolü](#azure-kubernetes-service-cluster-admin-role) | Liste küme yöneticisi kimlik bilgisi eylemi. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | [Azure Kubernetes Hizmet Kümesi Kullanıcı Rolü](#azure-kubernetes-service-cluster-user-role) | Liste küme kullanıcı kimlik bilgileri eylemi. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
-> | **Veritaban -ları** |  |  |
+> | **Veritabanları** |  |  |
 > | [Cosmos DB Hesap Okuyucu Rolü](#cosmos-db-account-reader-role) | Azure Cosmos DB hesap verilerini okuyabilir. Azure Cosmos DB hesaplarını yönetmek için [DocumentDB Hesap](#documentdb-account-contributor) Katılımcısı'na bakın. | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | [Cosmos DB Operatörü](#cosmos-db-operator) | Azure Cosmos DB hesaplarını yönetmenize olanak tanır, ancak bu hesaplardaki verilere erişmez. Hesap anahtarlarına ve bağlantı dizelerine erişimi engeller. | 230815da-be43-4aae-9cb4-875f7bd000aa |
 > | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB veritabanı veya bir hesap için bir kapsayıcı için geri yükleme isteği gönderebilir | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
@@ -168,7 +168,7 @@ Aşağıdaki tablo, kısa bir açıklama ve her yerleşik rolün benzersiz kimli
 > | [Otomasyon Runbook Operatörü](#automation-runbook-operator) | Runbook özelliklerini okuyun - runbook İşleri oluşturabilmek için. | 5fb5aef8-1081-4b8e-bb16-9d5d03855 |
 > | [Azure Bağlı Makine Onboarding](#azure-connected-machine-onboarding) | Azure Bağlantılı Makineler'de kullanılabilir. | b64e21ea-ac4e-4cdf-9dc9-5b892992bee7 |
 > | [Azure Bağlı Makine Kaynak Yöneticisi](#azure-connected-machine-resource-administrator) | Azure Bağlantılı Makineler'i okuyabilir, yazabilir, silebilir ve yeniden kullanabilir. | cd570a14-e51a-42ad-bac8-bafd67325302 |
-> | [Faturalama Okuyucusu](#billing-reader) | Faturalandırma verilerine okuma erişimi sağlar | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | [Fatura Okuyucu](#billing-reader) | Faturalandırma verilerine okuma erişimi sağlar | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | [Plan Katılımcısı](#blueprint-contributor) | Plan tanımlarını yönetebilir, ancak atamaz. | 41077137-e803-4205-871c-5a86e6a753b4 |
 > | [Blueprint Operatörü](#blueprint-operator) | Varolan yayımlanmış planları atayabilir, ancak yeni planlar oluşturamaz. Bu yalnızca atama kullanıcı tarafından atanan yönetilen bir kimlikle yapılırsa işe yarar. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [Maliyet Yönetimi Katılımcısı](#cost-management-contributor) | Maliyetleri görüntüleyebilir ve maliyet yapılandırmalarını yönetebilir (örn. bütçeler, dışa aktarma) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
@@ -2071,6 +2071,7 @@ Azure Depolama kapsayıcılarını ve lekelerini okuyun, yazın ve silin. Belirl
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Bir lekeyi silin. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Bir blob veya lekeler in listesini döndürün. |
+> | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action | Blob'u bir yoldan diğerine taşır |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Bir blob yazın. |
 > | **NotDataActions** |  |
 > | *yok* |  |
@@ -2095,6 +2096,7 @@ Azure Depolama kapsayıcılarını ve lekelerini okuyun, yazın ve silin. Belirl
       "dataActions": [
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action",
         "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
       ],
       "notDataActions": []
@@ -4099,6 +4101,7 @@ Log Analytics Katılımcısı tüm izleme verilerini okuyabilir ve izleme ayarla
 > | Microsoft.ClassicCompute/virtualMachines/uzantı/* |  |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Depolama hesaplarının erişim anahtarlarını listeler. |
 > | Microsoft.Compute/virtualMachines/extensions/* |  |
+> | Microsoft.HybridCompute/machines/extensions/write | Azure Ark uzantıları yükler veya güncelleştirir |
 > | Microsoft.Insights/alertRules/* | İstatistikler uyarı kuralları oluşturma ve yönetme |
 > | Microsoft.Insights/diagnosticSettings/* | Analysis Server için tanılama ayarını oluşturur, günceller veya okur |
 > | Microsoft.OperationalInsights/* |  |
@@ -4130,6 +4133,7 @@ Log Analytics Katılımcısı tüm izleme verilerini okuyabilir ve izleme ayarla
         "Microsoft.ClassicCompute/virtualMachines/extensions/*",
         "Microsoft.ClassicStorage/storageAccounts/listKeys/action",
         "Microsoft.Compute/virtualMachines/extensions/*",
+        "Microsoft.HybridCompute/machines/extensions/write",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Insights/diagnosticSettings/*",
         "Microsoft.OperationalInsights/*",
@@ -5515,6 +5519,7 @@ Azure Sentinel Okuyucu
 > | --- | --- |
 > | **Eylemler** |  |
 > | Microsoft.SecurityInsights/*/oku |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kullanıcı yetkilendirmeve lisansDenetimi |
 > | Microsoft.OperationalInsights/çalışma alanları/analitik/sorgu/eylem | Yeni motoru kullanarak arama yapın. |
 > | Microsoft.OperationalInsights/çalışma alanları/*/okuyun | Günlük analizi verilerini görüntüleme |
 > | Microsoft.OperationalInsights/çalışma alanları/LinkedServices/read | Verilen çalışma alanı altında bağlantılı hizmetler alın. |
@@ -5548,6 +5553,7 @@ Azure Sentinel Okuyucu
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",
         "Microsoft.OperationalInsights/workspaces/*/read",
         "Microsoft.OperationalInsights/workspaces/LinkedServices/read",
@@ -5583,6 +5589,7 @@ Azure Sentinel Yanıtlayıcı
 > | --- | --- |
 > | **Eylemler** |  |
 > | Microsoft.SecurityInsights/*/oku |  |
+> | Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action | Kullanıcı yetkilendirmeve lisansDenetimi |
 > | Microsoft.SecurityInsights/durumlarda/* |  |
 > | Microsoft.SecurityInsights/olaylar/* |  |
 > | Microsoft.OperationalInsights/çalışma alanları/analitik/sorgu/eylem | Yeni motoru kullanarak arama yapın. |
@@ -5618,6 +5625,7 @@ Azure Sentinel Yanıtlayıcı
     {
       "actions": [
         "Microsoft.SecurityInsights/*/read",
+        "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.OperationalInsights/workspaces/analytics/query/action",

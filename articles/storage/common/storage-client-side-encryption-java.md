@@ -10,12 +10,12 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8fe95a471df6ea86aad90f387088824c3c92bd3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32691e0ddcee3f5410b12f07a2fb80806345bc26
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460438"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460520"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Microsoft Azure Depolama için Java ile İstemci Tarafı Şifreleme ve Azure Anahtar Kasası
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -103,7 +103,7 @@ Toplu işlemişlemlerinde, istemci kitaplığı toplu işlem başına yalnızca 
 > Sorgu işlemlerini gerçekleştirmek için, sonuç kümesindeki tüm anahtarları çözebilecek bir anahtar çözümleyicisi belirtmeniz gerekir. Sorgu sonucu bulunan bir varlık bir sağlayıcıya çözülemez, istemci kitaplık bir hata atar. Sunucu yan projeksiyonları gerçekleştiren herhangi bir sorgu için, istemci kitaplığı seçilen sütunlara varsayılan olarak özel şifreleme meta veri özelliklerini (_ClientEncryptionMetadata1 ve _ClientEncryptionMetadata2) ekler.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
-Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Kullanıcılar Azure Key Vault'u kullanarak anahtarları ve sırları (kimlik doğrulama anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları gibi) şifreleyebilir. PFX dosyaları ve parolaları) donanım güvenlik modülleri (HSM) tarafından korunan anahtarları kullanarak. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/key-vault-overview.md)
+Azure Anahtar Kasası, bulut uygulamaları ve hizmetleri tarafından kullanılan şifreleme anahtarlarının ve gizli anahtarların korunmasına yardımcı olur. Kullanıcılar Azure Key Vault'u kullanarak anahtarları ve sırları (kimlik doğrulama anahtarları, depolama hesabı anahtarları, veri şifreleme anahtarları gibi) şifreleyebilir. PFX dosyaları ve parolaları) donanım güvenlik modülleri (HSM) tarafından korunan anahtarları kullanarak. Daha fazla bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md)
 
 Depolama istemcisi kitaplığı, anahtarları yönetmek için Azure genelinde ortak bir çerçeve sağlamak için Anahtar Kasa çekirdek kitaplığını kullanır. Kullanıcılar ayrıca Key Vault uzantıları kitaplığını kullanmanın ek avantajını da elde eder. Uzantılar kitaplığı, basit ve sorunsuz Simetrik/RSA yerel ve bulut anahtar sağlayıcılarının yanı sıra toplama ve önbelleğe alma konusunda yararlı işlevler sağlar.
 
@@ -256,4 +256,4 @@ Depolama verilerinizi şifrelemenin ek performans yüküyle sonuçladığını u
 * Java Maven paketleri için Azure Key Vault Maven Kitaplığını indirin:
   * [Çekirdek](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault-core) paketi
   * [İstemci](https://mvnrepository.com/artifact/com.microsoft.azure/azure-keyvault) paketi
-* Azure [Anahtar Kasası Belgelerini](../../key-vault/key-vault-overview.md) ziyaret edin
+* Azure [Anahtar Kasası Belgelerini](../../key-vault/general/overview.md) ziyaret edin

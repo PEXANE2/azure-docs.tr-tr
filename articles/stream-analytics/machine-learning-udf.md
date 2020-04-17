@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: 354b0eae1620c49006b350371aae38f8867c18b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 07fa72f086b676723279ee4b8efd927beb2692f0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124665"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481980"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Akış Analizini Azure Makine Öğrenimi ile Tümleştir (Önizleme)
 
@@ -31,7 +31,7 @@ Akış Analizi işinize bir işlev olarak bir makine öğrenimi modeli eklemeden
 
 3. Web hizmetinizin JSON seri leştirilmiş verileri kabul edip döndürdiğinden emin olun.
 
-4. Yüksek ölçekli üretim dağıtımları için modelinizi [Azure Kubernetes Hizmeti'nde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) dağıtın. Web hizmeti işinizden gelen istek sayısını kaldıramazsa, Stream Analytics işinizin performansı düşürülür ve bu da gecikmeyi etkiler.
+4. Yüksek ölçekli üretim dağıtımları için modelinizi [Azure Kubernetes Hizmeti'nde](../machine-learning/how-to-deploy-and-where.md#choose-a-compute-target) dağıtın. Web hizmeti işinizden gelen istek sayısını kaldıramazsa, Stream Analytics işinizin performansı düşürülür ve bu da gecikmeyi etkiler. Azure Kapsayıcı Örnekleri'nde dağıtılan modeller bugün desteklenmez, ancak önümüzdeki aylarda kullanıma sunulacaktır.
 
 ## <a name="add-a-machine-learning-model-to-your-job"></a>İşinize bir makine öğrenme modeli ekleyin
 

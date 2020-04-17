@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972853"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460741"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Azure Veri Fabrikası varlıkları oluşturmak için şablonları kullanma
 > [!NOTE]
@@ -233,7 +233,7 @@ Parametreoluşturma yla ilgili en iyi uygulamalar [için Azure Kaynak Yöneticis
 * Ayarlar ortama göre değişir (örnek: geliştirme, test ve üretim)
 * Sırlar (parolalar gibi)
 
-Şablonları kullanarak Azure Veri Fabrikası varlıklarını dağıtırken [Azure Key Vault'tan](../../key-vault/key-vault-overview.md) sırları çekmeniz gerekiyorsa, aşağıdaki örnekte gösterildiği gibi **anahtar kasasını** ve **gizli adı** belirtin:
+Şablonları kullanarak Azure Veri Fabrikası varlıklarını dağıtırken [Azure Key Vault'tan](../../key-vault/general/overview.md) sırları çekmeniz gerekiyorsa, aşağıdaki örnekte gösterildiği gibi **anahtar kasasını** ve **gizli adı** belirtin:
 
 ```JSON
 "parameters": {

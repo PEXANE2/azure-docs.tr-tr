@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ba7863d15ac0dfbebe6f14ef0d6f0daa93160b58
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380034"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533896"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Oturum açın ve Açısal tek sayfalı bir uygulamadan Microsoft Graph API'yi arayın
 
@@ -39,7 +39,7 @@ Bu öğretici, açısal tek sayfalı bir uygulamanın (SPA) nasıl yapabildiğin
 <!--start-collapse-->
 ### <a name="more-information"></a>Daha fazla bilgi
 
-Bu öğreticide oluşturulan örnek uygulama, Açısal bir SPA'nın Microsoft Graph API'sini veya Microsoft kimlik platformu bitiş noktasından belirteçleri kabul eden bir Web API'sini sorgulamasını sağlar. Açısal kütüphane için MSAL çekirdek MSAL.js kitaplığın bir sarmalayıcıolduğunu. Microsoft Azure Active Directory, Microsoft hesap kullanıcıları ve sosyal kimlik kullanıcıları (Facebook, Google ve LinkedIn gibi) kullanarak kurumsal kullanıcıların kimliğini doğrulamak için Açısal (6+) uygulamalar sağlar. Kitaplık ayrıca uygulamaların Microsoft bulut hizmetlerine veya Microsoft Graph'a erişmesini sağlar.
+Bu öğreticide oluşturulan örnek uygulama, Açısal bir SPA'nın Microsoft Graph API'sini veya Microsoft kimlik platformu bitiş noktasından belirteçleri kabul eden bir web API'sini sorgulamasını sağlar. Açısal kütüphane için MSAL çekirdek MSAL.js kitaplığın bir sarmalayıcıolduğunu. Microsoft Azure Active Directory, Microsoft hesap kullanıcıları ve sosyal kimlik kullanıcıları (Facebook, Google ve LinkedIn gibi) kullanarak kurumsal kullanıcıların kimliğini doğrulamak için Açısal (6+) uygulamalar sağlar. Kitaplık ayrıca uygulamaların Microsoft bulut hizmetlerine veya Microsoft Graph'a erişmesini sağlar.
 
 Bu senaryoda, bir kullanıcı giriş yaptıktan sonra, bir erişim belirteci istenir ve yetkilendirme üstbilgisi aracılığıyla HTTP isteklerine eklenir. Belirteç edinimi ve yenileme MSAL tarafından yürütilir.
 

@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7dd9106539b6756d74629ac663241a5b5562cefb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75437056"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461472"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute şifrelemesi
  
 ExpressRoute, ağınızla Microsoft'un ağı arasında veri geçişinin gizliliğini ve bütünlüğünü sağlamak için birkaç şifreleme teknolojilerini destekler.
 
 ## <a name="point-to-point-encryption-by-macsec-faq"></a>MACsec SSS ile noktadan noktaya şifreleme
-MACsec bir [IEEE standardıdır.](https://1.ieee802.org/security/802-1ae/) Medya Erişimi denetimi (MAC) düzeyindeki veya Ağ Katmanı 2'deki verileri şifreler. [ExpressRoute Direct](expressroute-erdirect-about.md)üzerinden Microsoft'a bağlandığınızda ağ aygıtlarınız ve Microsoft'un ağ aygıtları arasındaki fiziksel bağlantıları şifrelemek için MACsec'i kullanabilirsiniz. MACsec varsayılan olarak ExpressRoute Direct bağlantı noktalarında devre dışı bırakılır. Şifreleme için kendi MACsec anahtarınızı getirin ve [Azure Key Vault'ta](../key-vault/key-vault-overview.md)saklayın. Anahtarı ne zaman döndüreceğine siz karar verirsiniz. Aşağıdaki diğer SSS'lere bakın.
+MACsec bir [IEEE standardıdır.](https://1.ieee802.org/security/802-1ae/) Medya Erişimi denetimi (MAC) düzeyindeki veya Ağ Katmanı 2'deki verileri şifreler. [ExpressRoute Direct](expressroute-erdirect-about.md)üzerinden Microsoft'a bağlandığınızda ağ aygıtlarınız ve Microsoft'un ağ aygıtları arasındaki fiziksel bağlantıları şifrelemek için MACsec'i kullanabilirsiniz. MACsec varsayılan olarak ExpressRoute Direct bağlantı noktalarında devre dışı bırakılır. Şifreleme için kendi MACsec anahtarınızı getirin ve [Azure Key Vault'ta](../key-vault/general/overview.md)saklayın. Anahtarı ne zaman döndüreceğine siz karar verirsiniz. Aşağıdaki diğer SSS'lere bakın.
 ### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>ExpressRoute devremde BIR ExpressRoute sağlayıcısı tarafından sağlanan MACsec'i etkinleştirebilir miyim?
 Hayır. MACsec, fiziksel bir bağlantıdaki tüm trafiği tek bir tüzel kişiye (yani müşteriye) ait bir anahtarla şifreler. Bu nedenle, yalnızca ExpressRoute Direct'te kullanılabilir.
 ### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>ExpressRoute Direct bağlantı noktalarımdaki ExpressRoute devrelerinden bazılarını şifreleyebilir ve aynı bağlantı noktalarındaki diğer devreleri şifrelenmeden bırakabilir miyim? 

@@ -1,10 +1,10 @@
 ---
 title: Microsoft Güvenlik Kodu Analizi onboarding kılavuzu
 description: Bu makalede, Microsoft Güvenlik Kodu Çözümlemesi uzantısı nın yüklenmesi açıklanmaktadır
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 04/14/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6132aab98cc8145cb99cf153c64f20fbac00131c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef111817b6351277f975b9b7e454f9a89982451
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78197014"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460214"
 ---
 # <a name="onboarding-and-installing"></a>Onboarding ve yükleme
 
@@ -49,6 +49,7 @@ Aşağıdaki listeden bir İş Ortağına başvurun ve Microsoft Güvenlik Kodu 
 >**Ortak:**
 
 - Bölgeler - İletişim Bilgileri:cloudsupport@zones.com
+- Wortell – İletişim Bilgileri:info@wortell.nl
 
 ### <a name="become-a-partner"></a>Ortak Olun
 
@@ -76,7 +77,7 @@ Uzantıyı yükledikten sonra, güvenli geliştirme oluşturma görevleri görü
    - Yeni ardışık kaynak: **Yeni'yi** seçin ve yeni bir ardışık kaynak oluşturmak için ayrıntılı adımları izleyin.
    - Ardışık düzenle: Varolan bir **Edit** ardışık düzenle ve ardışık hattı düzenlemeye başlamak için Düzenle'yi seçin.
 1. Görevler **+** **Ekle** bölmesini seçin ve gidin.
-1. Listeden veya arama kutusunu kullanarak eklemek istediğiniz yapı görevini bulun. **Ekle'yi**seçin.
+1. Listeden veya arama kutusunu kullanarak eklemek istediğiniz yapı görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
 1. Yeni bir yapıyı sıraya n için sıraya girin.
    >[!NOTE]

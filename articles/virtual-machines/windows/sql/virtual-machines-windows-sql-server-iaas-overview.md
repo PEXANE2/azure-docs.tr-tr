@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4186a4ed369eb289360b74c0758e5ce3f7eca929
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75374327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482167"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Sanal Makinelerinde SQL Server nedir? (Windows)
 
@@ -38,6 +38,9 @@ SQL Server Azure sanal makineleri, önemli Windows ve SQL Server güncelleştirm
 ## <a name="automated-backups"></a>Otomatik yedeklemeler
 
 SQL Server Azure sanal makineleri, blob depolama alanında düzenli olarak veritabanınızın yedeklerini oluşturan [Otomatik Yedekleme](virtual-machines-windows-sql-automated-backup-v2.md) özelliğinden yararlanabilir. Bu tekniği el ile de kullanabilirsiniz. Daha fazla bilgi için. bkz. [SQL Server Yedekleme ve Geri Yükleme için Azure Storage’ı Kullanma](virtual-machines-windows-use-storage-sql-server-backup-restore.md).
+
+Azure, Azure VM'lerde çalışan SQL Server için kurumsal sınıf bir yedekleme çözümü de sunar. Tam olarak yönetilen bir yedekleme çözümü, her zaman kullanılabilirlik gruplarını, uzun süreli bekletme, zaman içinde noktada kurtarma ve merkezi yönetim ve izlemeyi destekler. Daha fazla bilgi için [Azure VM'de SQL Server için Azure Yedekleme'ye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database)bakın.
+  
 
 ## <a name="high-availability"></a>Yüksek kullanılabilirlik
 
@@ -138,7 +141,7 @@ Müşteri Deneyimini Geliştirme Programı (CEIP) varsayılan olarak etkindir. B
 ### <a name="storage"></a>Depolama
 * [Microsoft Azure Depolama'ya Giriş](../../../storage/common/storage-introduction.md)
 
-### <a name="networking"></a>Ağ Oluşturma
+### <a name="networking"></a>Ağ
 * [Sanal Ağa genel bakış](../../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure portalda Tam Etki Alanı Adı oluşturma](../portal-create-fqdn.md)

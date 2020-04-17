@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: f38fd7c8e14f58052912f68a277f194fd3866f2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 029743dbb44ab0ebb6ab8f695c0c966137c45107
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970572"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459806"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD ile Azure Disk Şifreleme (önceki sürüm)
 
@@ -35,7 +35,7 @@ Eski AAD parametre sözdizimini kullanarak Azure Disk Şifreleme özelliğini et
   - IaaS VM'nin anahtar kasanıza bağlanmak için bir belirteç elde etmek için \[Azure\]AD bitiş noktasına login.microsoftonline.com.
   - Anahtar kasanızın şifreleme anahtarlarını yazmak için, IaaS VM'nin anahtar kasa bitiş noktasına bağlanabilmesi gerekir.
   - IaaS VM, Azure uzantı deposunu ve VHD dosyalarını barındıran bir Azure depolama hesabı barındıran bir Azure depolama bitiş noktasına bağlanabilmeli.
-  -  Güvenlik politikanız Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/key-vault-access-behind-firewall.md)bakın.
+  -  Güvenlik politikanız Azure VM'lerinden Internet'e erişimi kısıtlıyorsa, önceki URI'yi çözebilir ve IP'lere giden bağlantıya izin verecek şekilde belirli bir kural yapılandırabilirsiniz. Daha fazla bilgi için [bir güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)bakın.
   - Windows'da, TLS 1.0 açıkça devre dışı bırakılırsa ve .NET sürümü 4,6 veya daha yüksek olarak güncelleştirilmezse, aşağıdaki kayıt defteri değişikliği Azure Disk Şifrelemesinin daha yeni TLS sürümünü seçmesini sağlar:
     
             [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]

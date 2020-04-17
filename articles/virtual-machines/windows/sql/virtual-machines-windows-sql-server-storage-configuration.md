@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93f01b3c23e08e7f432841d8a77cbe3602bff1c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243204"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482148"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
 
@@ -40,7 +40,7 @@ Sanal makineniz otomatik depolama yapılandırma ayarlarını kullanmak için a�
 
 Aşağıdaki bölümlerde, yeni SQL Server sanal makineleri için depolamanın nasıl yapılandırılabildiğini açıklanmıştır.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 SQL Server galeri görüntüsünü kullanarak Bir Azure VM sağlarken, Performans Optimize Edilmiş Depolama Yapılandırması sayfasını açmak için **SQL Server Ayarları** sekmesinde **yapılandırmayı değiştir'i** seçin. Değerleri varsayılan olarak bırakabilir veya iş yükünüze bağlı olarak gereksinimlerinize en uygun disk yapılandırmatürünü değiştirebilirsiniz. 
 
@@ -56,7 +56,7 @@ Ayrıca, diskler için önbelleğe alma yeteneğine sahipsiniz. Azure [VM'ler, P
 
 Premium SSD için disk önbelleğe alma *ReadOnly,* *ReadWrite* veya *None*olabilir. 
 
-- *ReadOnly* önbelleğe alma, Premium Depolama'da depolanan SQL Server veri dosyaları için son derece yararlıdır. *ReadOnly* önbelleğe alma düşük okuma gecikmesi, yüksek okuma IOPS ve iş çıkış gibi, okumalar, VM bellek ve yerel SSD içinde os önbellek, gerçekleştirilir getiriyor. Bu okumalar, Azure blob depolama sından alınan veri diskinden okumalardan çok daha hızlıdır. Premium depolama, önbellekten disk IOPS'ye ve iş elde etme alanına doğru sunulan okumaları saymaz. Bu nedenle, uygulanabilir daha yüksek toplam IOPS karınca elde etmek mümkün. 
+- *ReadOnly* önbelleğe alma, Premium Depolama'da depolanan SQL Server veri dosyaları için son derece yararlıdır. *ReadOnly* önbelleğe alma düşük okuma gecikmesi, yüksek okuma IOPS ve iş çıkış gibi, okumalar VM bellek ve yerel SSD içinde önbellek, gerçekleştirilir getiriyor. Bu okumalar, Azure blob depolama sından alınan veri diskinden okumalardan çok daha hızlıdır. Premium depolama, önbellekten disk IOPS'ye ve iş elde etme alanına doğru sunulan okumaları saymaz. Bu nedenle, uygulanabilir daha yüksek toplam IOPS ve iş elde etmek mümkün. 
 - Sql Server Log dosyasını barındıran diskler için *hiçbir* önbellek yapılandırması kullanılmamalıdır, çünkü günlük dosyası sırayla yazılır ve *ReadOnly* önbelleğe almadan yararlanamaz. 
 - *READWrite* önbelleği, SQL Server dosyalarını barındırmak için kullanılmamalıdır, çünkü SQL Server *ReadWrite* önbelleğiyle veri tutarlılığını desteklemez. ReadOnly blob *ReadOnly* önbelleği ve gecikmelerin atık kapasitesini yazar, *readOnly* blob önbellek katmanlarından geçerse biraz artar. 
 
@@ -142,7 +142,7 @@ Aşağıdaki tabloda, kullanılabilir üç iş yükü türü seçeneği ve bunla
 
 | İş yükü türü | Açıklama | İyileştirmeler |
 | --- | --- | --- |
-| **Genel** |Çoğu iş yükünü destekleyen varsayılan ayar |None |
+| **Genel** |Çoğu iş yükünü destekleyen varsayılan ayar |Hiçbiri |
 | **İşlemsel işlem** |Geleneksel veritabanı OLTP iş yükleri için depolama optimize eder |İz Bayrağı 1117<br/>İz Bayrağı 1118 |
 | **Veri ambarlama** |Analitik ve raporlama iş yükleri için depolamayı optimize eder |İz Bayrağı 610<br/>İz Bayrağı 1117 |
 

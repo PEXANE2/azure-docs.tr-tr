@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6919849d28573ad7388a7f2e317d2b8433f35559
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5b7a060aa2313902e4644fdd15068e06816e3f58
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399444"
+ms.locfileid: "81529901"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -92,7 +92,7 @@ Daha fazla bilgi edinmek için [REST API başvuru belgelerini](https://westus2.d
 
 Makbuz modeli için giriş gereksinimleri biraz farklıdır.
 
-* Biçim JPEG, PNG, BMP, PDF (metin veya taranmış) veya TIFF olmalıdır.
+* Biçim JPEG, PNG, PDF (metin veya taranmış) veya TIFF olmalıdır.
 * Dosya boyutu 20 MB'dan az olmalıdır.
 * Görüntü boyutları 50 x 50 piksel ile 10000 x 10000 piksel arasında olmalıdır.
 * PDF boyutları en fazla 17 x 17 inç olmalıdır, Yasal veya A3 kağıt boyutlarına karşılık gelir ve daha küçüktür.

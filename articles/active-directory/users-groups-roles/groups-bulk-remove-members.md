@@ -1,11 +1,11 @@
 ---
 title: CSV dosyası yükleyerek grup üyelerini toplu olarak kaldırma - Azure Active Directory | Microsoft Dokümanlar
-description: Azure yönetici merkezinde kullanıcıları toplu olarak ekleyin.
+description: Azure yönetici merkezinde toplu işlemlerde grup üyelerini kaldırın.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 09/11/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d384ea4749e2d0bc7edf8df7ac0508566f2f76b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e6d0752245e3864a8ad25efd5181d5cc1eec7ae
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72517098"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533282"
 ---
-# <a name="bulk-remove-group-members-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde grup üyelerini toplu olarak kaldırma (önizleme)
+# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Azure Etkin Dizini'nde grup üyelerini toplu olarak kaldırma
 
 Azure Etkin Dizin (Azure AD) portalını kullanarak, grup üyelerini toplu olarak kaldırmak için virgülle ayrılmış değerler (CSV) dosyasını kullanarak çok sayıda üyeyi gruptan kaldırabilirsiniz.
 
@@ -30,7 +30,7 @@ Azure Etkin Dizin (Azure AD) portalını kullanarak, grup üyelerini toplu olara
 1. Azure AD'de**Tüm grupları** **gruplar** > seçin.
 1. Üye kaldırdığınız grubu açın ve ardından **Üyeler'i**seçin.
 1. **Üyeler** **sayfasında, Üye Kaldır'ı**seçin.
-1. Toplu **kaldırma grubu üyeleri (Önizleme)** sayfasında, gerekli grup üye özelliklerine sahip CSV dosya şablonu almak için **İndir'i** seçin.
+1. Toplu **kaldırma grubu üyeleri** sayfasında, gerekli grup üyesi özelliklerine sahip CSV dosya şablonu almak için **İndir'i** seçin.
 
    ![Üyeleri Kaldır komutu grubun profil sayfasında](./media/groups-bulk-remove-members/remove-panel.png)
 
@@ -38,16 +38,16 @@ Azure Etkin Dizin (Azure AD) portalını kullanarak, grup üyelerini toplu olara
 
    ![CSV dosyası, üyelerin kaldırabilmek için adlar ve kisimler içerir](./media/groups-bulk-remove-members/csv-file.png)
 
-1. Toplu **kaldırmak grup üyeleri (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde,.csv dosyasının doğrulanması başlar.
+1. Toplu grup üyeleri sayfası **kaldırmak,** **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde, CSV dosyasının doğrulanması başlar.
 1. Dosya içeriği doğrulandığında, toplu içe aktarma sayfası **başarıyla yüklenen Dosyayı**görüntüler. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 1. Dosyanız doğrulamadan geçtiğinde, grup üyelerini gruptan kaldıran Azure toplu işlemini başlatmak için **Gönder'i** seçin.
 1. Kaldırma işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
 
 ## <a name="check-removal-status"></a>Kaldırma durumunu denetleme
 
-**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu işlem sonuçları sayfası toplu istek durumunu gösterir](./media/groups-bulk-remove-members/bulk-center.png)
+[![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
 Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
 

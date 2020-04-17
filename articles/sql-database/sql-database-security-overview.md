@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: 2a4c6dd3dd6f1bb2f15e31226086c73fb8e63521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80124842"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461404"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Veritabanı güvenlik özelliklerine genel bakış
 
@@ -46,7 +46,7 @@ IP güvenlik duvarı kuralları, her isteğin menşeli IP adresine dayalı olara
 > [!IMPORTANT]
 > Azure'daki veritabanlarını ve veritabanı sunucularını yönetmek, portal kullanıcı hesabınızın rol atamaları tarafından denetlenir. Bu makale hakkında daha fazla bilgi için [Azure portalında Rol tabanlı erişim denetimine](../role-based-access-control/overview.md)bakın.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kimlik doğrulama, kullanıcının iddia ettikleri kişi olduğunu kanıtlama işlemidir. Azure SQL Veritabanı iki tür kimlik doğrulamayı destekler:
 
@@ -112,11 +112,11 @@ En iyi yöntem olarak, uygulamanızın bağlantı dizesinde şifreli bir bağlan
 
 [Azure SQL Veritabanı için Saydam Veri Şifreleme (TDE),](transparent-data-encryption-azure-sql.md) verileri ham dosyalara veya yedeklemelere yetkisiz veya çevrimdışı erişimden korumaya yardımcı olmak için bir güvenlik katmanı ekler. Yaygın senaryolar arasında veri merkezi hırsızlığı veya disk sürücüleri ve yedekleme teypleri gibi donanım veya ortamın güvenli olmayan şekilde atılması yer almaktadır.TDE, uygulama geliştiricilerin varolan uygulamalarda herhangi bir değişiklik yapmalarını gerektirmeyen bir AES şifreleme algoritması kullanarak tüm veritabanını şifreler.
 
-Azure'da, yeni oluşturulan tüm SQL veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakım ve döndürme hizmeti tarafından yönetilir ve kullanıcıdan hiçbir giriş gerektirmez. Şifreleme anahtarlarının denetimini ele almayı tercih eden müşteriler, Tuşları [Azure Anahtar Kasası'nda](../key-vault/key-vault-secure-your-key-vault.md)yönetebilir.
+Azure'da, yeni oluşturulan tüm SQL veritabanları varsayılan olarak şifrelenir ve veritabanı şifreleme anahtarı yerleşik bir sunucu sertifikası tarafından korunur.  Sertifika bakım ve döndürme hizmeti tarafından yönetilir ve kullanıcıdan hiçbir giriş gerektirmez. Şifreleme anahtarlarının denetimini ele almayı tercih eden müşteriler, Tuşları [Azure Anahtar Kasası'nda](../key-vault/general/secure-your-key-vault.md)yönetebilir.
 
 ### <a name="key-management-with-azure-key-vault"></a>Azure Key Vault ile anahtar yönetimi
 
- [Şeffaf Veri Şifreleme](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) için Kendi [Anahtarınızı Getir](transparent-data-encryption-byok-azure-sql.md) (BYOK) desteği, müşterilerin [Azure'un](../key-vault/key-vault-secure-your-key-vault.md)bulut tabanlı dış anahtar yönetim sistemi olan Azure Key Vault'u kullanarak anahtar yönetimi ve döndürme ye sahip olmasını sağlar. Veritabanının anahtar kasasına erişimi iptal edilirse, veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault merkezi bir anahtar yönetim platformu sağlar, sıkı bir şekilde izlenen donanım güvenlik modüllerinden (HSM) yararlanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtarların yönetimi ile verilerin yönetimi arasında görev ayrılmasını sağlar.
+ [Şeffaf Veri Şifreleme](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) için Kendi [Anahtarınızı Getir](transparent-data-encryption-byok-azure-sql.md) (BYOK) desteği, müşterilerin [Azure'un](../key-vault/general/secure-your-key-vault.md)bulut tabanlı dış anahtar yönetim sistemi olan Azure Key Vault'u kullanarak anahtar yönetimi ve döndürme ye sahip olmasını sağlar. Veritabanının anahtar kasasına erişimi iptal edilirse, veritabanının şifresi çözülemez ve belleğe okunamaz. Azure Key Vault merkezi bir anahtar yönetim platformu sağlar, sıkı bir şekilde izlenen donanım güvenlik modüllerinden (HSM) yararlanır ve güvenlik uyumluluk gereksinimlerini karşılamaya yardımcı olmak için anahtarların yönetimi ile verilerin yönetimi arasında görev ayrılmasını sağlar.
 
 ### <a name="always-encrypted-encryption-in-use"></a>Her Zaman Şifrelenmiş (Kullanımda Şifreleme)
 

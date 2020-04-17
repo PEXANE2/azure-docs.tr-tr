@@ -8,16 +8,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: mimckitt
-ms.openlocfilehash: 59b11d22f054a98fe176e4393843606bd01cc872
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 9ae486ee522982b116af58cfb7cbfbca66a7ef4a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879488"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458752"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli"></a>Azure CLI ile sanal makineler için Key Vault nasıl ayarlanır?
 
-Azure Kaynak Yöneticisi yığınında, sırlar/sertifikalar Key Vault tarafından sağlanan kaynaklar olarak modellenir. Azure Anahtar Kasası hakkında daha fazla bilgi edinmek için [Azure Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md) Key Vault'un Azure Kaynak Yöneticisi VM'lerle kullanılabilmesi için, Key Vault'taki *EnabledForDeployment* özelliğinin gerçek olarak ayarlanması gerekir. Bu makalede, Azure CLI'yi kullanarak Azure sanal makineleri (VM' ler) ile kullanılmak üzere Key Vault'u nasıl ayarlayabileceğiniz gösterilmektedir. 
+Azure Kaynak Yöneticisi yığınında, sırlar/sertifikalar Key Vault tarafından sağlanan kaynaklar olarak modellenir. Azure Anahtar Kasası hakkında daha fazla bilgi edinmek için [Azure Anahtar Kasası nedir?](../../key-vault/general/overview.md) Key Vault'un Azure Kaynak Yöneticisi VM'lerle kullanılabilmesi için, Key Vault'taki *EnabledForDeployment* özelliğinin gerçek olarak ayarlanması gerekir. Bu makalede, Azure CLI'yi kullanarak Azure sanal makineleri (VM' ler) ile kullanılmak üzere Key Vault'u nasıl ayarlayabileceğiniz gösterilmektedir. 
 
 Bu adımları gerçekleştirmek için, en son [Azure CLI'nin](/cli/azure/install-az-cli2) [az girişi](/cli/azure/reference-index)kullanarak bir Azure hesabına yüklenmesi ve oturum açması gerekir.
 

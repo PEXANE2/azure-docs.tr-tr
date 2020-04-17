@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 43e626355feaf1e51fc840f82506c559a1859b84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77622000"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81459143"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Event Hub'ları verilerini yeniden şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırın
 Azure Etkinlik Hub'ları, Azure Depolama Hizmeti Şifrelemesi (Azure SSE) ile veri şifrelemesini sağlar. Olay Hub'ları verileri depolamak için Azure Depolama'ya güvenir ve varsayılan olarak Azure Depolama ile depolanan tüm veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. 
@@ -26,9 +26,9 @@ BYOK özelliğini etkinleştirmek, ad alanınızda tek seferlik bir kurulum işl
 > [!NOTE]
 > BYOK özelliği, tek [kiracılı kümeler için özel Etkinlik Hub'ları](event-hubs-dedicated-overview.md) tarafından desteklenir. Standart Olay Hub'ları ad alanları için etkinleştirilenemez.
 
-Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault'u kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+Anahtarlarınızı yönetmek ve anahtar kullanımınızı denetlemek için Azure Key Vault'u kullanabilirsiniz. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/general/overview.md)
 
-Bu makalede, Azure portalını kullanarak müşteri tarafından yönetilen anahtarlarla anahtar kasasının nasıl yapılandırılabildiğini gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/quick-create-portal.md)
+Bu makalede, Azure portalını kullanarak müşteri tarafından yönetilen anahtarlarla anahtar kasasının nasıl yapılandırılabildiğini gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../key-vault/secrets/quick-create-portal.md)
 
 > [!IMPORTANT]
 > Azure Etkinlik Hub'ları ile müşteri tarafından yönetilen anahtarları kullanmak, anahtar kasasının iki gerekli özellisini yapılandırmasını gerektirir. Bunlar: **Yumuşak Silme** ve **Temizleme etmeyin**. Azure portalında yeni bir anahtar kasası oluşturduğunuzda, bu özellikler varsayılan olarak etkinleştirilir. Ancak, bu özellikleri varolan bir anahtar kasasında etkinleştirmeniz gerekiyorsa, PowerShell veya Azure CLI'yi kullanmanız gerekir.
@@ -44,9 +44,9 @@ Azure portalında müşteri tarafından yönetilen anahtarları etkinleştirmek 
     ![Müşteri yönetilen anahtarını etkinleştirme](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Anahtarlarla anahtar kasası ayarlama
-Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri yönetilen anahtarını Azure Etkinlik Hub'larınız ad alanınızla ilişkilendirmeniz gerekir. Etkinlik Hub'ları yalnızca Azure Anahtar Kasası'nı destekler. Önceki bölümde **müşteri tarafından yönetilen anahtar seçeneğiyle Şifreleme'yi** etkinleştiriseniz, anahtarın Azure Anahtar Kasası'na aktarılmasını sağlamanız gerekir. Ayrıca, anahtarlar **Yumuşak Silme** ve **Temizleme anahtarı** için yapılandırılan etmeyin olmalıdır. Bu ayarlar [PowerShell](../key-vault/key-vault-soft-delete-powershell.md) veya [CLI](../key-vault/key-vault-soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
+Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşteri yönetilen anahtarını Azure Etkinlik Hub'larınız ad alanınızla ilişkilendirmeniz gerekir. Etkinlik Hub'ları yalnızca Azure Anahtar Kasası'nı destekler. Önceki bölümde **müşteri tarafından yönetilen anahtar seçeneğiyle Şifreleme'yi** etkinleştiriseniz, anahtarın Azure Anahtar Kasası'na aktarılmasını sağlamanız gerekir. Ayrıca, anahtarlar **Yumuşak Silme** ve **Temizleme anahtarı** için yapılandırılan etmeyin olmalıdır. Bu ayarlar [PowerShell](../key-vault/general/soft-delete-powershell.md) veya [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)kullanılarak yapılandırılabilir.
 
-1. Yeni bir anahtar kasası oluşturmak için Azure Key Vault [Quickstart'ı](../key-vault/key-vault-overview.md)izleyin. Varolan anahtarları alma hakkında daha fazla bilgi için [anahtarlar, sırlar ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bilgi edinebilirsiniz.
+1. Yeni bir anahtar kasası oluşturmak için Azure Key Vault [Quickstart'ı](../key-vault/general/overview.md)izleyin. Varolan anahtarları alma hakkında daha fazla bilgi için [anahtarlar, sırlar ve sertifikalar hakkında](../key-vault/about-keys-secrets-and-certificates.md)bilgi edinebilirsiniz.
 1. Kasa oluştururken hem yumuşak silme hem de temizleme korumasını açmak için [az keyvault oluşturma](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) komutunu kullanın.
 
     ```azurecli-interactive
@@ -71,10 +71,10 @@ Müşteri tarafından yönetilen anahtarları etkinleştirdikten sonra, müşter
 
 
 ## <a name="rotate-your-encryption-keys"></a>Şifreleme anahtarlarınızı döndürme
-Azure Anahtar Kasaları döndürme mekanizmasını kullanarak anahtarınızı anahtar kasasında döndürebilirsiniz. Daha fazla bilgi için [bkz.](../key-vault/key-vault-key-rotation-log-monitoring.md) Etkinleştirme ve son kullanma tarihleri de anahtar döndürmeyi otomatikleştirmek için ayarlanabilir. Olay Hub'ları hizmeti yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
+Azure Anahtar Kasaları döndürme mekanizmasını kullanarak anahtarınızı anahtar kasasında döndürebilirsiniz. Daha fazla bilgi için [bkz.](../key-vault/secrets/key-rotation-log-monitoring.md) Etkinleştirme ve son kullanma tarihleri de anahtar döndürmeyi otomatikleştirmek için ayarlanabilir. Olay Hub'ları hizmeti yeni anahtar sürümlerini algılar ve otomatik olarak kullanmaya başlar.
 
 ## <a name="revoke-access-to-keys"></a>Anahtarlara erişimi iptal etme
-Şifreleme anahtarlarına erişimi iptal etmek, verileri Olay Hub'larından temizlemez. Ancak, verilere Olay Hub'ları ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi yle veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri ve anahtar kasanızı Güvenli kasadan [anahtar kasasına](../key-vault/key-vault-secure-your-key-vault.md)güvenli hale alma hakkında daha fazla bilgi edinin.
+Şifreleme anahtarlarına erişimi iptal etmek, verileri Olay Hub'larından temizlemez. Ancak, verilere Olay Hub'ları ad alanından erişilemez. Şifreleme anahtarını erişim ilkesi yle veya anahtarı silerek iptal edebilirsiniz. Erişim ilkeleri ve anahtar kasanızı Güvenli kasadan [anahtar kasasına](../key-vault/general/secure-your-key-vault.md)güvenli hale alma hakkında daha fazla bilgi edinin.
 
 Şifreleme anahtarı iptal edildikten sonra, şifrelenmiş ad alanındaki Olay Hub'ları hizmeti çalışamaz hale gelir. Anahtara erişim etkinleştirilmişse veya silme anahtarı geri yüklenirse, şifreli Olay Hub'ları ad alanından verilere erişebilmeniz için Olay Hub'ları hizmeti anahtarı seçer.
 
@@ -423,7 +423,7 @@ BYOK şifrelemesi etkinleştirildiğinde aranacak yaygın hata kodları aşağı
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 - [Olay Hub'larına genel bakış](event-hubs-about.md)
-- [Key Vault'a genel bakış](../key-vault/key-vault-overview.md)
+- [Key Vault'a genel bakış](../key-vault/general/overview.md)
 
 
 

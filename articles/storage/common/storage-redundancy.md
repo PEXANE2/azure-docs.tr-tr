@@ -10,12 +10,12 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 1961797f37a760fe3a31dc8aa3830889965b69b5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81379934"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481934"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Depolama artıklığı
 
@@ -160,7 +160,7 @@ Aşağıdaki tablo, depolama hesabınız için hangi tür fazlalık ların etkin
 
 <sup>2</sup> Depolama hesabı türleri hakkında bilgi için [bkz.](storage-account-overview.md)
 
-Tüm depolama hesapları nın tüm verileri, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok lekeleri, ek blobs, sayfa blobs, kuyruklar, tablolar ve dosyalar gibi nesneler kopyalanır.
+Tüm depolama hesapları ve [tüm katmanlar (arşiv dahil)](../blobs/storage-blob-storage-tiers.md) için tüm veriler, depolama hesabı için artıklık seçeneğine göre kopyalanır. Blok lekeleri, ek blobs, sayfa blobs, kuyruklar, tablolar ve dosyalar gibi nesneler kopyalanır.
 
 Her artıklık seçeneğiiçin fiyatlandırma bilgileri için [Azure Depolama fiyatlandırması'na](https://azure.microsoft.com/pricing/details/storage/)bakın.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 48e2ec7f853ce94263f4e843b529609d5376ed5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424044"
+ms.locfileid: "81460605"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL içindeki SQL isteğe bağlı (önizleme) kaynaklarını kullanarak depolama dosyalarını sorgula
 
@@ -141,7 +141,7 @@ Ek bilgi için, Sorgu belirli [dosyalar](query-specific-files.md#filepath) makal
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Karmaşık türleri ve iç içe veya yinelenen veri yapıları ile çalışma
 
-[Parke](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) dosyaları gibi iç içe veya tekrarlanan veri türlerinde depolanan verilerle çalışırken sorunsuz bir deneyim sağlamak için Starlight aşağıdaki uzantıları ekledi.
+[Parke](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#nested-types) dosyaları gibi iç içe veya tekrarlanan veri türlerinde depolanan verilerle çalışırken sorunsuz bir deneyim sağlamak için, SQL isteğe bağlı olarak aşağıdaki uzantıları ekledi.
 
 #### <a name="project-nested-or-repeated-data"></a>İç içe veya yinelenen verileri projelendirin
 

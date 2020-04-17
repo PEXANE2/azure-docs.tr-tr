@@ -759,14 +759,6 @@
           items:
             - name: 1 - Verileri sorgulama
               href: tutorial-query-graph.md
-        - name: Başvuru
-          items:
-            - name: Yanıt Üst Bilgileri
-              href: gremlin-headers.md
-            - name: Sınırlar
-              href: gremlin-limits.md
-            - name: Uyumluluk
-              href: gremlin-compatibility.md
         - name: Nasıl yapılır kılavuzları
           items:
             - name: Graf verileri modellemesi
@@ -794,6 +786,14 @@
               href: powershell-samples-gremlin.md
             - name: Azure CLI kullanarak yönetme
               href: cli-samples-gremlin.md
+        - name: Başvuru
+          items:
+            - name: Yanıt Üst Bilgileri
+              href: gremlin-headers.md
+            - name: Sınırlar
+              href: gremlin-limits.md
+            - name: Uyumluluk
+              href: gremlin-compatibility.md
     - name: Tablo API’si
       items:
         - name: Genel Bakış

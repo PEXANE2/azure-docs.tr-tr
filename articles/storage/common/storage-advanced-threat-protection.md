@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: cbrooks
-ms.openlocfilehash: 4219bb471b92e7ddae72c50403f635498c90080d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: f390aececdbf9a20f191279892c1856332f2aa8e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81251699"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81482089"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>Azure Depolama için gelişmiş tehdit koruması yapılandırma
 
@@ -27,9 +27,7 @@ Hizmet, tehdit algılama için Blob Depolama'ya okuma, yazma ve silme isteklerin
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Azure Depolama için gelişmiş tehdit koruması şu anda yalnızca [Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. 
-
-Bu hizmet tüm genel bulutlarda ve ABD devlet bulutlarında kullanılabilir, ancak başka egemen veya Azure resmi bulut bölgeleri yoktur.
+Azure Depolama için gelişmiş tehdit koruması şu anda yalnızca [Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)için kullanılabilir. Gelişmiş tehdit koruması destekleyen hesap türleri genel amaçlı v2, blok blob ve Blob depolama hesapları içerir. Gelişmiş tehdit koruması tüm genel bulutlarda ve ABD devlet bulutlarında kullanılabilir, ancak diğer egemen veya Azure devlet bulut bölgelerinde kullanılamaz.
 
 Ücretsiz 30 günlük deneme sürümü de dahil olmak üzere fiyatlandırma ayrıntıları için [Azure Güvenlik Merkezi fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/security-center/)bakın.
 
@@ -62,7 +60,7 @@ Azure Güvenlik Merkezi'nde Standart katmana abone olduğunuzda, tüm depolama h
 1. Kaynak **türüne göre fiyatlandırma katmanıseç** bölümünde, **Depolama hesapları** satırında **Etkin** veya **Devre Dışı'yı**tıklatın.
 
     ![Güvenlik Merkezinde ATP'yi etkinleştirin](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
 ### <a name="template"></a>[Şablon](#tab/template)
 

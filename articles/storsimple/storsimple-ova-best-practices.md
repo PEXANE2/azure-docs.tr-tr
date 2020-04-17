@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544336"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460656"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal Dizisi ile ilgili en iyi deneyimler
 
@@ -199,7 +199,7 @@ StorSimple birimleri için ACR'ları yapılandırırken aşağıdaki en iyi uygu
 ### <a name="data-security-and-encryption"></a>Veri güvenliği ve şifreleme
 StorSimple Virtual Array'iniz, verilerinizin gizliliğini ve bütünlüğünü sağlayan veri güvenliği ve şifreleme özelliklerine sahiptir. Bu özellikleri kullanırken, aşağıdaki en iyi uygulamaları izlemeniz önerilir: 
 
-* Veriler sanal dizinizden buluta gönderilmeden önce AES-256 şifrelemesi oluşturmak için bir bulut depolama şifreleme anahtarı tanımlayın. Verileriniz başlangıçta şifrelenmişse bu anahtar gerekli değildir. Anahtar, [Azure anahtar kasası](../key-vault/key-vault-overview.md)gibi bir anahtar yönetim sistemi kullanılarak oluşturulabilir ve güvende tutulabilir.
+* Veriler sanal dizinizden buluta gönderilmeden önce AES-256 şifrelemesi oluşturmak için bir bulut depolama şifreleme anahtarı tanımlayın. Verileriniz başlangıçta şifrelenmişse bu anahtar gerekli değildir. Anahtar, [Azure anahtar kasası](../key-vault/general/overview.md)gibi bir anahtar yönetim sistemi kullanılarak oluşturulabilir ve güvende tutulabilir.
 * Depolama hesabını StorSimple Manager hizmeti üzerinden yapılandırırken, TLS modunu etkinleştirerek StorSimple aygıtınız ile bulut arasında ağ iletişimi için güvenli bir kanal oluşturduğunuzdan emin olun.
 * Değiştirilen yönetici listesine dayalı olarak erişimde yapılan değişiklikleri hesaba katmak için depolama hesaplarınız için anahtarları (Azure Depolama hizmetine erişerek) düzenli aralıklarla yeniden oluşturun.
 * Sanal dizinizdeki veriler Azure'a gönderilmeden önce sıkıştırılır ve çoğaltılır. Windows Server ana bilgisayarınızda Veri Çoğaltma rol hizmetini kullanmanızı önermiyoruz.

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14a6703b3e256d33ab3b18e1821587cc3eb293db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79382108"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458684"
 ---
 Çalıştırdığınız uygulamalar için sanal makinenizi (VM) güvende tutmanız önemlidir. Sanal Cihazlarınızın güvenliğini sağlamak, Sanal Cihazlarınıza güvenli erişimi ve verilerinizin güvenli bir şekilde depolanmasını kapsayan bir veya daha fazla Azure hizmeti ve özelliği içerebilir. Bu makalede, VM ve uygulamaları güvenli tutmanızı sağlayan bilgiler sağlar.
 
@@ -39,7 +39,7 @@ Sunucu tarafı şifreleme hakkında daha fazla bilgi edinmek için [Windows](../
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Şifrelemesi
 
-Gelişmiş [Windows VM](../articles/virtual-machines/windows/encrypt-disks.md) ve [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md) güvenliği ve uyumluluğu için Azure'daki sanal diskler şifrelenebilir. Windows VM'deki sanal diskler BitLocker kullanılarak istirahatte şifrelenir. Linux VM'lerde sanal diskler dm-crypt kullanılarak istirahatte şifrelenir. 
+Gelişmiş [Windows VM](../articles/virtual-machines/windows/disk-encryption-overview.md) ve [Linux VM](../articles/virtual-machines/linux/disk-encryption-overview.md) güvenliği ve uyumluluğu için Azure'daki sanal diskler şifrelenebilir. Windows VM'deki sanal diskler BitLocker kullanılarak istirahatte şifrelenir. Linux VM'lerde sanal diskler dm-crypt kullanılarak istirahatte şifrelenir. 
 
 Azure'da sanal diskleri şifrelemek ücretsizdir. Şifreleme anahtarları yazılım koruması kullanılarak Azure Key Vault'ta depolanır veya fips 140-2 seviye 2 standartlarına göre onaylı Donanım Güvenlik Modülleri'nde (HSM) anahtarlarınızı içe aktarabilir veya oluşturabilirsiniz. Bu şifreleme anahtarları, VM'nize bağlı sanal diskleri şifrelemek ve şifresini çözmek için kullanılır. Bu şifreleme anahtarlarının denetimini siz elde elabilirsiniz ve bunların kullanımını denetleyebilirsiniz. Azure Etkin Dizin hizmeti ilkesi, VM'ler açık ve kapalı güç ve çalıştırılırken bu şifreleme anahtarlarını vermek için güvenli bir mekanizma sağlar.
 

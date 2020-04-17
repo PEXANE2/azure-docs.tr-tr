@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c6455930f88d02e11cb0c45d29594ae40eaad9e3
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81113284"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460673"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure Dosya Eşitleme aracısı sürüm notları
 Azure Dosya Eşitleme aracısı şirket içi dosya sunucularının sağladığı esneklik, performans ve uyumluluk özelliklerinden vazgeçmeden kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda toplamanızı sağlar. Windows Server yüklemeleriniz, Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürülür. Verilere yerel olarak erişmek için Windows Server üzerinde kullanılabilen tüm protokolleri (SMB, NFS ve FTPS gibi) kullanabilirsiniz. Dünya çapında istediğiniz sayıda önbellek oluşturabilirsiniz.
@@ -63,9 +63,6 @@ Aşağıdaki sürüm notları Azure Dosya Eşitleme aracısının 10.0.0.0 sür�
 - Depolama Eşitleme Hizmeti ve/veya depolama hesabını farklı bir Azure Etkin Dizini (AAD) kiracısına taşıma desteği
     - Azure Dosya Eşitlemi artık Depolama Eşitleme Hizmeti'ni ve/veya depolama hesabını farklı bir kaynak grubuna, aboneye veya Azure AD kiracısına taşımayı destekler.
     
-- Değerlendirme aracı artık bir dönemle biten dosyaları veya dizinleri tanımlar
-    - [Değerlendirme aracı,](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet) bir dönemle biten dosyaları veya dizinleri tanımlamak için güncelleştirildi. Bir dönemle biten dosyalar veya dizinler şu anda Azure Dosya Eşitlemesi tarafından desteklenmez. [Değerlendirme aracının](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)güncelleştirilmiş sürümünü kullanmak için Azure [PowerShell modülünün](https://docs.microsoft.com/powershell/azure/install-az-ps)en son sürümünü yükleyin.
- 
 - Çeşitli performans ve güvenilirlik iyileştirmeleri
     - Sanal ağ (VNET) ve güvenlik duvarı kuralları depolama hesabında yapılandırılırsa Azure dosya paylaşımındaki değişiklik algılaması başarısız olabilir.
     - Geri çağırmayla ilişkili azaltılmış bellek tüketimi. 

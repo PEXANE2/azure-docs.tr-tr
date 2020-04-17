@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 94d3993c6a0c62a68ea77a888d3351c8fea1d935
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 29f5a48feaaafee64a20745b3cdf09726a6372ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990999"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533846"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET bir web uygulamasına Microsoft'a oturum açma ekleme
 
@@ -117,7 +117,7 @@ OpenID Connect kimlik doğrulamasını yapılandırmak için bir OWIN ara yazıl
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
-        /// Configure OWIN to use OpenIdConnect 
+        /// Configure OWIN to use OpenIdConnect
         /// </summary>
         /// <param name="app"></param>
         public void Configuration(IAppBuilder app)
@@ -182,7 +182,7 @@ Oturum açma ve imzalama yöntemlerini ortaya çıkarmak için yeni bir denetley
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve**Denetleyici** **Ekle'yi** > seçin.
 2.  **MVC (.NET sürümü) Denetleyici – Boş** girişini seçin.
-3.  **Ekle'yi**seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **HomeController** adını ve sonra **Ekle'yi**seçin.
 5.  Sınıfa OWIN başvuruları ekleyin:
 
@@ -208,7 +208,7 @@ Oturum açma ve imzalama yöntemlerini ortaya çıkarmak için yeni bir denetley
                 OpenIdConnectAuthenticationDefaults.AuthenticationType);
         }
     }
-    
+
     /// <summary>
     /// Send an OpenID Connect sign-out request.
     /// </summary>
@@ -276,7 +276,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
 
 1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından**Denetleyici** **Ekle'yi** > seçin.
 2.  **MVC {sürüm} Denetleyici – Boş** girişini seçin.
-3.  **Ekle'yi**seçin.
+3.  **Add (Ekle)** seçeneğini belirleyin.
 4.  **ClaimsController** olarak adlandırın.
 5.  Denetleyici sınıfınızın kodunu aşağıdaki kodla değiştirin. Bu sınıfa `[Authorize]` öznitelik ekler:
 
@@ -291,19 +291,19 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
         public ActionResult Index()
         {
             var userClaims = User.Identity as System.Security.Claims.ClaimsIdentity;
-    
+
             //You get the user’s first and last name below:
             ViewBag.Name = userClaims?.FindFirst("name")?.Value;
-    
+
             // The 'preferred_username' claim can be used for showing the username
             ViewBag.Username = userClaims?.FindFirst("preferred_username")?.Value;
-    
+
             // The subject/ NameIdentifier claim can be used to uniquely identify the user across the web
             ViewBag.Subject = userClaims?.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-    
+
             // TenantId is the unique Tenant Id - which represents an organization in Azure AD
             ViewBag.TenantId = userClaims?.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid")?.Value;
-    
+
             return View();
         }
     }
@@ -311,7 +311,7 @@ Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini k
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>Daha fazla bilgi
-> Öznitelik kullanımı `[Authorize]` nedeniyle, bu denetleyicinin tüm yöntemleri yalnızca kullanıcı nın kimliği doğrulanırsa yürütülebilir. Kullanıcı nın kimliği doğrulanmazsa ve denetleyiciye erişmeye çalışırsa, OWIN bir kimlik doğrulama sorunu başlatır ve kullanıcıyı kimlik doğrulamaya zorlar. Önceki kod, kullanıcının Id belirtecinde yer alan belirli kullanıcı öznitelikleriiçin talep listesine bakar. Bu öznitelik kullanıcının tam adını, kullanıcı adını ve genel kullanıcı tanımlayıcısı nesnesini içerir. Ayrıca kullanıcının kuruluşunun kimliğini temsil eden *Kiracı Kimliği* değerini de içerir. 
+> Öznitelik kullanımı `[Authorize]` nedeniyle, bu denetleyicinin tüm yöntemleri yalnızca kullanıcı nın kimliği doğrulanırsa yürütülebilir. Kullanıcı nın kimliği doğrulanmazsa ve denetleyiciye erişmeye çalışırsa, OWIN bir kimlik doğrulama sorunu başlatır ve kullanıcıyı kimlik doğrulamaya zorlar. Önceki kod, kullanıcının Id belirtecinde yer alan belirli kullanıcı öznitelikleriiçin talep listesine bakar. Bu öznitelik kullanıcının tam adını, kullanıcı adını ve genel kullanıcı tanımlayıcısı nesnesini içerir. Ayrıca kullanıcının kuruluşunun kimliğini temsil eden *Kiracı Kimliği* değerini de içerir.
 <!--end-collapse-->
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>Kullanıcının taleplerini görüntülemek için bir görünüm oluşturma
@@ -487,7 +487,7 @@ Web uygulamalarının web API'lerini nasıl arayabildiği hakkında bilgi edinin
 Microsoft kimlik platformuyla web API'lerini arayan Web uygulamaları hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Web API'lerini çağıran Web uygulamaları](scenario-web-app-sign-user-overview.md)
+> [Web API'lerini çağıran web uygulamaları](scenario-web-app-sign-user-overview.md)
 
 Microsoft Graph'ı arayarak Web uygulamaları oluşturmayı öğrenin:
 

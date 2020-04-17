@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70195657"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81460554"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Data Science Sanal Makine tabanlı ekip analizi ve Yapay AI ortamı 
 [Data Science Virtual Machine](overview.md) (DSVM), yapay zeka (AI) ve veri analitiği için önceden oluşturulmuş yazılımlarla Azure platformunda zengin bir ortam sağlar.
@@ -43,7 +43,7 @@ Bu seri, önceki konuların her biri için kılavuz ve işaretçiler sağlar. B�
 * [Rol tabanlı erişim denetimi](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [İlke ayarı ve uygulama](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
+* [Şifreleme](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
 * [Veri bulma ve yönetişim](https://docs.microsoft.com/azure/data-catalog/)
 
 Son [olarak, Azure Mimari Merkezi,](https://docs.microsoft.com/azure/architecture/) bulut tabanlı analiz altyapınızı oluşturmak ve yönetmek için ayrıntılı bir uçten uca mimari ve modeller sağlar.

@@ -5,15 +5,15 @@ services: app-service\mobile
 author: conceptdev
 ms.service: app-service-mobile
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/15/2020
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: a7e543dcad9ad1b016d1244451cd87cda5ad7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5b6389491fd91b716a05e7c57c98addb6352bd9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67440206"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461945"
 ---
 1. Aşağıdaki platformlar için istemci SDK quickstarts indirin:
     
@@ -69,23 +69,13 @@ ms.locfileid: "67440206"
    - **Düğüm.js arka uç**
     
      Node.js quickstart uygulamasını kullanacaksanız, aşağıdaki talimatları uygulayın.
-
-     1. Azure portalında Kolay **Tablolar'a**gidin, bu ekranı göreceksiniz.
-      
-        ![Düğüm Kolay Tablolar](./media/app-service-mobile-configure-new-backend/node-easy-tables.png)
-
-     2. SQL bağlantı dizesinin **Yapılandırma** sekmesine zaten eklenmiştir. Daha sonra **bunun tüm site içeriğinin üzerine yazacağını kabul ettiğim** kutusunu işaretleyin ve **TodoItem tablo oluştur** düğmesini tıklatın.
      
-        ![Düğüm Kolay Tablolar Yapılandırması](./media/app-service-mobile-configure-new-backend/node-easy-tables-configuration.png)
-
-     3. **Kolay Tablolar'da** **+ Ekle** düğmesini tıklatın.
-    
-        ![Düğüm Kolay Tablolar Ekle Düğmesi](./media/app-service-mobile-configure-new-backend/node-easy-tables-add.png)
-
-     4. Anonim `TodoItem` erişimi olan bir tablo oluşturun.
-      
-        ![Düğüm Kolay Tablolar Tablo Ekle](./media/app-service-mobile-configure-new-backend/node-easy-tables-table-add.png)
-
+        1. Yeni bir API oluşturun - Azure portalında değişiklikleri doğru yapabilir veya geliştirme ortamınızda kodu yerel olarak değiştirebilir ve ardından Azure'da yayımlayabilirsiniz. Uygulama kodunuz için tarayıcı içi düzenleme deneyimi sağlayan `App Service Editor (Preview)` alt `Development Tools` menüye tıklayın.
+        
+        2. Tıklayın `Go` ve Uygulama Hizmeti Düzenleyicisi açıldıktan sonra kaynak kodu üzerinde tam kontrole sahip siniz. NPM install komutuyla ekspres ve azure-mobile-apps paketini yüklediğinizi varsayarsak, özel API oluşturmak veya yeniden oluşturmak için WWWROOT'un altındaki api klasörünü tıklatın. Kod dosyasında değişiklik yapın ve değişiklikler otomatik olarak kaydedilir.
+        
+        3. Uygulama verilerini depolamak için kullanılan Azure SQL Veritabanı'nda tam denetime sahipsiniz. Veritabanında kolayca yeni tablolar oluşturabilirsiniz.
+ 
    - **.NET arka ucu**
     
         .NET quickstart uygulamasını kullanacaksanız, aşağıdaki talimatları uygulayın.

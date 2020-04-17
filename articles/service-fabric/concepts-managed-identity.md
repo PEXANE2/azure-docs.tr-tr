@@ -4,12 +4,12 @@ description: Service Fabric ile Azure için Yönetilen kimlikleri kullanma hakk�
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: f6f3736bed4d3d59bce08d4df3ee0aa164a0a764
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a26f188ed2f5e18bdf775cd1fb21001495ffdc89
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415106"
+ms.locfileid: "81461455"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Hizmet Kumaşı ile Azure için Yönetilen kimlikleri kullanma
 
@@ -57,7 +57,7 @@ Aşağıdaki senaryolar desteklenmez veya önerilmez; bu eylemlerin engellenmeye
 
 - Bir uygulamaya atanan kimlikleri kaldırma veya değiştirme; değişiklik yapmak zorundaysanız, önce yeni bir kimlik ataması eklemek ve daha sonra daha önce atanmış bir atamayı kaldırmak için ayrı dağıtımlar gönderin. Bir kimliğin varolan bir uygulamadan kaldırılması, uygulamanızı yükseltilemez bir durumda bırakmak da dahil olmak üzere istenmeyen etkilere sahip olabilir. Bir kimliğin kaldırılması gerekiyorsa, uygulamanın tamamen silinebilir; bu uygulama ile ilişkili sistem atanmış kimlik (eğer öyleyse) siler ve uygulamaya atanan kullanıcı tarafından atanan kimlikler ile herhangi bir çağrışım kaldıracaktır unutmayın.
 
-- Yönetilen kimlikler için Hizmet Kumaşı desteği şu anda [AzureServiceTokenProvider'a](../key-vault/service-to-service-authentication.md)entegre edilmez.
+- Yönetilen kimlikler için Hizmet Kumaşı desteği şu anda [AzureServiceTokenProvider'a](../key-vault/general/service-to-service-authentication.md)entegre edilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

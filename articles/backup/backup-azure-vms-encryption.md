@@ -3,12 +3,12 @@ title: Şifreli Azure VM'leri yedekleme ve geri yükleme
 description: Azure Yedekleme hizmetiyle şifreli Azure VM'leri nasıl yedekleyip geri yükleyin.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: a3976cc83f749b1abe00cef3f5bf867ffbc30ab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98febe9f91cb4b71d546300d4e65ade073d19e67
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206699"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81461778"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Şifreli Azure VM'yi yedekleyin ve geri yükleyin
 
@@ -30,7 +30,7 @@ Azure Yedekleme, aşağıdaki tabloda özetlendiği gibi Azure AD uygulaması yl
 **Yönetilmeyen** | Evet | Evet
 **Yönetilen**  | Evet | Evet
 
-- [ADE,](../security/azure-security-disk-encryption-overview.md)Key [Vault](../key-vault/key-vault-overview.md)ve [KEKs](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
+- [ADE,](../security/azure-security-disk-encryption-overview.md)Key [Vault](../key-vault/general/overview.md)ve [KEKs](https://docs.microsoft.com/azure/virtual-machine-scale-sets/disk-encryption-key-vault#set-up-a-key-encryption-key-kek)hakkında daha fazla bilgi edinin.
 - Azure VM disk şifrelemesi için [SSS'yi](../security/azure-security-disk-encryption-faq.md) okuyun.
 
 ### <a name="limitations"></a>Sınırlamalar

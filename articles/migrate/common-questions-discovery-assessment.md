@@ -2,13 +2,13 @@
 title: Azure Geçiş'te keşif, değerlendirme ve bağımlılık analizi ile ilgili sorular
 description: Azure Geçiş'te bulma, değerlendirme ve bağımlılık analizi yle ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 7a63271811053ee2da79f134ac117559e31b0fed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460815"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81529782"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi - Sık sorulan sorular
 
@@ -19,9 +19,16 @@ Bu makalede, Azure Geçiş'te bulma, değerlendirme ve bağımlılık çözümle
 - Sunucu [geçişi](common-questions-server-migration.md) ile ilgili sorular
 - [Azure Geçiş forumunda](https://aka.ms/AzureMigrateForum) soruları yanıtlayın
 
+
+## <a name="what-geographies-are-supported-for-discovery-and-assessment-with-azure-migrate"></a>Azure Geçiş ile hangi coğrafyalar keşif ve değerlendirme için desteklenir?
+
+Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
+
+
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Bir cihazla kaç VM keşfedebilirim?
 
 Tek bir cihaz kullanarak 10.000 VM'ye kadar VM', 5.000'e kadar Hyper-V VM ve 250'ye kadar fiziksel sunucu keşfedebilirsiniz. Daha fazla makineniz varsa, [Bir Hyper-V değerlendirmesini ölçeklendirme,](scale-hyper-v-assessment.md) [VMware değerlendirmesini ölçeklendirme](scale-vmware-assessment.md)veya [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
+
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM'min boyutu değişti. Tekrar bir değerlendirme yapabilir miyim?
 
@@ -93,7 +100,7 @@ Aracı | Çapraz kontrol yapmak istediğiniz makinelere aracı yüklemenize gere
 Ön koşullar | Ön koşulları ve dağıtım gereksinimlerini [gözden geçirin.](concepts-dependency-visualization.md#agentless-analysis) | Ön koşulları ve dağıtım gereksinimlerini [gözden geçirin.](concepts-dependency-visualization.md#agent-based-analysis)
 Log Analytics | Gerek yok. | Azure Geçir, bağımlılık görselleştirme [süslerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [Hizmet Haritası](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md#agent-based-analysis).
 Nasıl çalışır? | Bağımlılık görselleştirme için etkinleştirilen makinelerde TCP bağlantı verilerini yakalar. Keşiften sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklenen Servis Haritası aracıları, her işlem için TCP işlemleri ve gelen/giden bağlantılar hakkında veri toplar.
-Veri | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
+Veriler | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
 Görselleştirme | Tek bir sunucunun bağımlılık haritası bir saat ile 30 gün arasında görüntülenebilir. | Tek bir sunucunun bağımlılık haritası.<br/><br/> Harita yalnızca bir saatten fazla görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık haritası.<br/><br/> Gruptaki sunucuları harita görünümünden ekleyin ve kaldırın.
 Veri dışarı aktarma | Şu anda tabular biçiminde indirilemez. | Veriler Log Analytics ile sorgulanabilir.
 

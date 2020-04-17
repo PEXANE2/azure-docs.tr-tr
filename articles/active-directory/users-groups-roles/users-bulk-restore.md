@@ -1,11 +1,11 @@
 ---
-title: Azure Active Directory portalında silinen kullanıcıları toplu olarak geri yükleme (önizleme) | Microsoft Dokümanlar
+title: Azure Etkin Dizin portalında silinen kullanıcıları toplu olarak geri yükleme | Microsoft Dokümanlar
 description: Azure Etkin Dizini'ndeki Azure AD yönetici merkezinde silinen kullanıcıları toplu olarak geri yükleme
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 08/15/2019
+ms.date: 04/16/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72174235"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81532738"
 ---
-# <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Azure Etkin Dizini'nde silinen kullanıcıları toplu olarak geri yükleme (önizleme)
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Azure Etkin Dizini'nde silinen kullanıcıları toplu olarak geri yükleme
 
 Azure Etkin Dizin (Azure AD), toplu kullanıcı oluşturma ve silme işlemlerini, misafirler için toplu daveti ve kullanıcı, grup ve grup üyelerinin indirme listelerini destekler.
 
@@ -36,7 +36,7 @@ Azure Etkin Dizin (Azure AD), toplu kullanıcı oluşturma ve silme işlemlerini
 
    ![Eklemek istediğiniz kullanıcıları listelediğiniz yerel bir CSV dosyasını seçin](./media/users-bulk-restore/upload-button.png)
 
-1. Toplu **geri yükleme (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
+1. Toplu **geri yükleme** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçip **Gönder'i**tıklattığınızda, CSV dosyasının doğrulaması başlar.
 1. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 1. Dosyanız doğrulamadan geçtiğinde, kullanıcıları geri yükleyen Azure toplu işlemini başlatmak için **Gönder'i** seçin.
 1. Geri yükleme işlemi tamamlandığında, toplu işlemin başarılı olduğuna dair bir bildirim görürsünüz.
@@ -45,9 +45,9 @@ Hatalar varsa, **Toplu işlem sonuçları** sayfasındaki sonuç dosyasını ind
 
 ## <a name="check-status"></a>Durumu kontrol etme
 
-**Toplu işlem sonuçları (önizleme)** sayfasında bekleyen toplu isteklerinizin durumunu görebilirsiniz.
+Bekleyen toplu isteklerinizin durumunu Toplu işlem **sonuçları** sayfasında görebilirsiniz.
 
-   ![Toplu İşlemsonuçları sayfasında yükleme durumunu kontrol edin](./media/users-bulk-restore/bulk-center.png)
+[![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
 Ardından, geri yüklediğiniz kullanıcıların Azure portalında veya PowerShell'i kullanarak Azure REKLAM kuruluşunda bulununp var olmadığını denetleyebilirsiniz.
 

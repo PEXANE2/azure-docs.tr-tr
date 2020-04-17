@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 631a20c7bf73aa2af363fdc0019ef24cccc58f9e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 0c7566df870b3c41b1f1dd7d4a4129ff9d9d9407
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81258669"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81481733"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166'yı Azure IoT Hub'ına bağlayın
 
@@ -175,9 +175,7 @@ Geliştirme ortamını DevKit için hazırlamak için aşağıdaki adımları iz
 
     ![Azure IoT Araçlarını Yükleme](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-azure-iot-tools.png)
 
-    Veya bu doğrudan bağlantıyı kullanın:
-    > [!div class="nextstepaction"]
-    > [Azure IoT Araçları uzantı paketini yükleme](vscode:extension/vsciot-vscode.azure-iot-tools)
+    Veya bu doğrudan URL'yi kullanın:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
     > [!NOTE]
     > Azure IoT Araçları uzantı paketi, çeşitli IoT devkit aygıtlarında geliştirme ve hata ayıklama için kullanılan [Azure IoT Aygıt Çalışma Tezgahı](https://aka.ms/iot-workbench) içerir. Azure IoT Araçları uzantı paketiyle birlikte verilen [Azure IoT Hub uzantısı,](https://aka.ms/iot-toolkit)Azure IoT Hub'larını yönetmek ve bunlarla etkileşimde kullanılmak üzere kullanılır.
