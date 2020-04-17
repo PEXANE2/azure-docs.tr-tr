@@ -80,7 +80,7 @@
       maintainContext: true
 - name: Kaynaklar
   items:
-    - name: Dil ve bölge desteği
+    - name: Dil desteği
       href: language-support.md
     - name: Ücretsiz erişim anahtarı alma
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api'
