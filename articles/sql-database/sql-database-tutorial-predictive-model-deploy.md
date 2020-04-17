@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 7779db053344f99238d38d5d49762730efbc5fc4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: efcb73866c83dcc03b5db8b7b97f438fb3010511
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346313"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452817"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model dağıtma (önizleme)
 
@@ -39,8 +40,6 @@ Bu makalede, birinci ve ikinci bölümlerde geliştirdiğiniz R komut dosyaları
 [Birinci bölümde,](sql-database-tutorial-predictive-model-prepare-data.md)örnek bir veritabanını nasıl içe aktarabileceğinizi ve daha sonra Verileri R'de bir tahminmodelinin eğitimi için nasıl hazırlayacağınızı öğrendiniz.
 
 [İkinci bölümde,](sql-database-tutorial-predictive-model-build-compare.md)R'de birden fazla makine öğrenme modeli oluşturmayı ve eğitmeyi öğrendiniz ve sonra en doğru olanı seçtiniz.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 

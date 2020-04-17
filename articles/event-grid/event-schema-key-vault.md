@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 36b7b81a18c8725929ab5676b844e1ee319e287f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393307"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458258"
 ---
 # <a name="azure-key-vault-as-event-grid-source"></a>Olay Izgara kaynağı olarak Azure Anahtar Kasası
 
@@ -80,18 +80,18 @@ Bir olay aşağıdaki üst düzey verilere sahiptir:
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık  |Açıklama  |
 |---------|---------|
-| [Azure Olay Ağıt'ı ile Anahtar Kasa etkinliklerini izleme](../key-vault/event-grid-overview.md) | Key Vault'u Olay Izgarasıyla tümleştirmeye genel bakış. |
-| [Öğretici: Olay Izgarası ile Key Vault etkinliklerini oluşturun ve izleyin](../key-vault/event-grid-tutorial.md) | Key Vault için Olay Ağı bildirimlerini nasıl ayarlayatılamayı öğrenin. |
+| [Azure Olay Ağıt'ı ile Anahtar Kasa etkinliklerini izleme](../key-vault/general/event-grid-overview.md) | Key Vault'u Olay Izgarasıyla tümleştirmeye genel bakış. |
+| [Öğretici: Olay Izgarası ile Key Vault etkinliklerini oluşturun ve izleyin](../key-vault/general/event-grid-tutorial.md) | Key Vault için Olay Ağı bildirimlerini nasıl ayarlayatılamayı öğrenin. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Azure Etkinlik Izgarasına giriş için olay [ızgarası nedir'e bakın?](overview.md)
 * Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
-* Olay Grid ile Key Vault tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Olay Grid 'li Anahtar Kasasını İzleme (önizleme)](../key-vault/event-grid-overview.md)konusuna bakın.
-* Olay Grid ile Key Vault tümleştirmesi hakkında bir öğretici için, [Azure Olay Grid (önizleme) ile Anahtar Kasa bildirimlerini Al ve yanıtla'](../key-vault/event-grid-tutorial.md)ya bakın.
+* Olay Grid ile Key Vault tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Olay Grid 'li Anahtar Kasasını İzleme (önizleme)](../key-vault/general/event-grid-overview.md)konusuna bakın.
+* Olay Grid ile Key Vault tümleştirmesi hakkında bir öğretici için, [Azure Olay Grid (önizleme) ile Anahtar Kasa bildirimlerini Al ve yanıtla'](../key-vault/general/event-grid-tutorial.md)ya bakın.
 * Key Vault ve Azure Otomasyonu için ek kılavuz lar almak için bkz:
-    - [Azure Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
-    - [Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)](../key-vault/event-grid-overview.md)
-    - [Azure Olay Ağı (önizleme) ile önemli kasa bildirimlerini alma ve yanıtla](../key-vault/event-grid-tutorial.md)
+    - [Azure Anahtar Kasası nedir?](../key-vault/general/overview.md)
+    - [Azure Olay Izgarasıyla Anahtar Kasası'nı İzleme (önizleme)](../key-vault/general/event-grid-overview.md)
+    - [Azure Olay Ağı (önizleme) ile önemli kasa bildirimlerini alma ve yanıtla](../key-vault/general/event-grid-tutorial.md)
     - [Azure Otomasyonu’na genel bakış](../automation/index.yml)

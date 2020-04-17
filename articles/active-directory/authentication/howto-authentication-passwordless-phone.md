@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853e7143834a340b870b71ef1a287dab136e2783
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 3412938cfc2ad3fbec293fd33f64e114e14e6f7e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654062"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450981"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator uygulamasıyla parolasız oturum açmayı etkinleştirme (önizleme)
 
@@ -41,7 +41,7 @@ Bir kullanıcı adı girdikten sonra parola istemi görmek yerine, Microsoft Aut
 
 ### <a name="enable-the-combined-registration-experience"></a>Birleştirilmiş kayıt deneyimini etkinleştirme
 
-Parolasız kimlik doğrulama yöntemleriiçin kayıt özellikleri, birleştirilmiş kayıt önizlemesini kullanır. Birleştirilmiş kayıt önizlemesini etkinleştirmek için [birleştirilmiş güvenlik bilgileri kaydını (önizleme) etkinleştir'](howto-registration-mfa-sspr-combined.md)makaledeki adımları izleyin.
+Parolasız kimlik doğrulama yöntemlerinin kayıt özellikleri, birleştirilmiş kayıt özelliğine dayanır. Birleştirilmiş kaydı etkinleştirmek için [birleştirilmiş güvenlik bilgi kaydını etkinleştir,](howto-registration-mfa-sspr-combined.md)makaledeki adımları izleyin.
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Parolasız telefon oturum açma kimlik doğrulama yöntemlerini etkinleştirme
 

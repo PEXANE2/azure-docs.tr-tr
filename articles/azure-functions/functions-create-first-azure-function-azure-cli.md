@@ -4,12 +4,12 @@ description: Komut satırından nasıl bir işlev oluşturlayacağınızı ve ar
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1e3ce26894e9e89d196c068bd32245c8c891b2e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: eb893491310850b141a0d68cb7a74041411843a9
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255558"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457459"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Hızlı başlatma: Azure'da HTTP isteklerine yanıt veren bir işlev oluşturma
 
@@ -222,9 +222,9 @@ Bu öğeleri oluşturmak için aşağıdaki Azure CLI komutlarını kullanın. H
 
 Bunu daha önce yapmadıysanız, [az giriş](/cli/azure/reference-index#az-login) komutuyla Azure'da oturum açın:
 
-    ```azurecli
-    az login
-    ```
+```azurecli
+az login
+```
     
 [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek, `AzureFunctionsQuickstart-rg` `westeurope` bölgede adlı bir kaynak grubu oluşturur. (Genellikle `az account list-locations` kaynak grubunuzu ve kaynaklarınızı komuttan kullanılabilir bir bölgeyi kullanarak yakınınızdaki bir bölgede oluşturursunuz.)
 

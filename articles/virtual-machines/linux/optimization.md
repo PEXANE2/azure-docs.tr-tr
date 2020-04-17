@@ -6,7 +6,6 @@ services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 8baa30c8-d40e-41ac-93d0-74e96fe18d4c
 ms.service: virtual-machines-linux
@@ -16,12 +15,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: a80446317a289f27cdbbff3b2939cfe0db45748f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ff901e7d53e0814ab064867be6185709e9b6a20
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77918062"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452358"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure’da Linux VM’nizi iyileştirme
 Bir Linux sanal makine (VM) oluşturmak komut satırından veya portaldan kolaydır. Bu öğretici, Microsoft Azure platformunda performansını en iyi duruma getirmek için nasıl ayarladığınızdan emin olabileceğinizi gösterir. Bu konu bir Ubuntu Server VM kullanır, ancak [kendi resimlerinizi şablon olarak](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)kullanarak Linux sanal makine de oluşturabilirsiniz.  

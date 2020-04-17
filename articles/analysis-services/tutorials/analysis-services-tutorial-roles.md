@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: fa3a6fefce808e51c2ad1d9d18bf4766cdf689c3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0bedc88b78f2ac758d3201965425b42b69580719
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406237"
+ms.locfileid: "81454263"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>Öğretici: Sunucu yöneticisi ve kullanıcı rollerini yapılandırma
 
@@ -67,7 +67,7 @@ Kalan görevlerde sunucunuza bağlanmak ve sunucunuzu yönetmek için SSMS kulla
 
 ## <a name="add-a-user-account-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir kullanıcı hesabı ekleme
 
-Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Güvenlik grubu ekliyorsanız `MailEnabled` özelliğini `True` olarak ayarlamanız gerekir. E-posta adresine göre `obj:groupid@tenantid`bir grup belirtirken kullanın.
+Bu görevde, Azure AD'nizden sunucu yöneticisi rolüne bir kullanıcı veya grup hesabı ekleyeceksiniz. Bir güvenlik grubu belirtiyorsanız, .' `obj:groupid@tenantid`
 
 1. **Nesne Gezgini**'nde sunucu adınızı sağ tıklatın, sonra **Özellikler**'i tıklatın. 
 2. **Analysis Server Özellikleri** penceresinde **Güvenlik** > **Ekle**'ye tıklayın.

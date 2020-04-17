@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9dc4dce5a7af49529924881321b1a5080293a585
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f2584a8d4e68b7c16b3acdc29f64f0a19d83d735
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405622"
+ms.locfileid: "81457680"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker'ı dağıtma
 
@@ -76,7 +76,7 @@ Devam etmeden önce, Otomasyon hesabınızın bağlı olduğu Log Analytics çal
 
 1. Aşağıdaki yöntemlerden birini kullanarak Azure'da Otomasyon Karma İşçisi çözümünün etkinleştirin:
 
-   * [Azure Monitörünü Ekle çözümleriyle çalışma alanınıza](../log-analytics/log-analytics-add-solutions.md)yordamı kullanarak aboneliğinize Otomasyon Karma İşçi çözümünü ekleyin.
+   * [Çalışma alanınıza Azure Monitörü Ekle günlük çözümlerindeki](../log-analytics/log-analytics-add-solutions.md)yordamı kullanarak aboneliğinize Otomasyon Karma İşçi çözümünü ekleyin.
    * Aşağıdaki cmdlet'i çalıştırın:
 
         ```azurepowershell-interactive

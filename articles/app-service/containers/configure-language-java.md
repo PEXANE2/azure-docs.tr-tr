@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 970701606811cbd61a9bfebe39ff82cdc91d5693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80245846"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457901"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service için Linux Java uygulaması yapılandırma
 
@@ -230,7 +230,7 @@ Varolan bir SSL sertifikasını yüklemek ve uygulamanızın etki alanı adına 
 
 ### <a name="use-keyvault-references"></a>KeyVault Referanslarını Kullanma
 
-[Azure KeyVault,](../../key-vault/key-vault-overview.md) erişim ilkeleri ve denetim geçmişiyle merkezi leştirilmiş gizli yönetim sağlar. KeyVault'ta sırları (parolalar veya bağlantı dizeleri gibi) depolayabilir ve uygulamanızdaki bu sırlara ortam değişkenleri aracılığıyla erişebilirsiniz.
+[Azure KeyVault,](../../key-vault/general/overview.md) erişim ilkeleri ve denetim geçmişiyle merkezi leştirilmiş gizli yönetim sağlar. KeyVault'ta sırları (parolalar veya bağlantı dizeleri gibi) depolayabilir ve uygulamanızdaki bu sırlara ortam değişkenleri aracılığıyla erişebilirsiniz.
 
 İlk olarak, [Uygulamanızın Key Vault'a erişimini sağlamak](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [Uygulama Ayarında sırrınıza KeyVault göndermesi yapmak](../app-service-key-vault-references.md#reference-syntax)için talimatları izleyin. Uygulama Hizmeti terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizliye çözüldüğünü doğrulayabilirsiniz.
 
@@ -244,7 +244,7 @@ Java Key Store'daki sertifikalarla JDBC bağlantınızı şifrelemek için ek ya
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
-- [Mysql](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
 - [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
@@ -324,7 +324,7 @@ App Service Linux gelen istekleri port 80'e yönlendirir, bu nedenle uygulamanı
 
 Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyasıyla doldurmanız gerekir. Sağlanan sınıf adları ve ortak veritabanları için sürücü indirme içeren bir tablodur.
 
-| Database   | Sürücü Sınıf Adı                             | JDBC Sürücüsü                                                                      |
+| Veritabanı   | Sürücü Sınıf Adı                             | JDBC Sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("Platform Bağımsız"ı seçin) |

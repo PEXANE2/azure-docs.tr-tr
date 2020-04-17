@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f24c89a53af5e618d64b78d6001040190c1f339c
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: bfc2e256396904456a7ee0fd8b6173c00a5f53d7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618341"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456405"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell'i kullanarak Azure Key Vault ile müşteri tarafından yönetilen tuşları yapılandırın
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: PowerShell'i kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-powershell.md)
+Bu makalede, PowerShell kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: PowerShell'i kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-powershell.md)
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına kimlik atama
 
@@ -51,7 +51,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
     -EnablePurgeProtection
 ```
 
-**PowerShell** ile varolan bir anahtar kasasında Soft Delete ve **Do Sunurge'ı** etkinleştirmeyi öğrenmek için [PowerShell ile yumuşak](../../key-vault/key-vault-soft-delete-powershell.md) **silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın.
+**PowerShell** ile varolan bir anahtar kasasında Soft Delete ve **Do Sunurge'ı** etkinleştirmeyi öğrenmek için [PowerShell ile yumuşak](../../key-vault/general/soft-delete-powershell.md) **silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın.
 
 ## <a name="configure-the-key-vault-access-policy"></a>Anahtar kasa erişim ilkesini yapılandırma
 

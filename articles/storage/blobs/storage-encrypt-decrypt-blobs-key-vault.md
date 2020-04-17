@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 3f4f1f5e163dfed9f356aed538d934d0e4258790
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: c1d26fda57d665cc8d83f594f4efeebebc7bf139
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618876"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456898"
 ---
 # <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>Öğretici - Azure Key Vault kullanarak blobları şifreleyin ve şifresini çöz
 
@@ -23,7 +23,7 @@ Bu öğretici, Azure Key Vault ile istemci tarafı depolama şifrelemesinin nas�
 
 **Tahmini tamamlanma süresi:** 20 dakika
 
-Azure Anahtar Kasası hakkında genel bilgi [için](../../key-vault/key-vault-overview.md)bkz.
+Azure Anahtar Kasası hakkında genel bilgi [için](../../key-vault/general/overview.md)bkz.
 
 Azure Depolama için istemci tarafı şifreleme hakkında genel bilgi için Bkz. [Microsoft Azure Depolama için İstemci Tarafı Şifreleme ve Azure Anahtar Kasası.](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
@@ -48,7 +48,7 @@ Azure Depolama için istemci tarafı şifrelemeye genel bakış için, [Microsof
 
 ## <a name="set-up-your-azure-key-vault"></a>Azure Anahtar Kasanızı Ayarlama
 
-Bu öğreticiye devam etmek için Quickstart: Set'te özetlenen aşağıdaki adımları yapmanız ve [bir .NET web uygulamasını kullanarak Azure Key Vault'tan bir sır almanız ve ayarlamanız](../../key-vault/quick-create-net.md)gerekir:
+Bu öğreticiye devam etmek için Quickstart: Set'te özetlenen aşağıdaki adımları yapmanız ve [bir .NET web uygulamasını kullanarak Azure Key Vault'tan bir sır almanız ve ayarlamanız](../../key-vault/secrets/quick-create-net.md)gerekir:
 
 * Bir anahtar kasası oluşturma.
 * Anahtar kasasına bir anahtar veya sır ekleyin.

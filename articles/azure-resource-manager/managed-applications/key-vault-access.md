@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: f434ad6e19c89f248fec948c0a049fabb0f7c476
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5dc219747b9cc74b6c6aac8ab190ebfbe5ae9b32
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458292"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Azure Yönetilen Uygulamaları dağıtırken Anahtar Kasası gizli erişimine
 
-Dağıtım sırasında parametre olarak güvenli bir değeri (parola gibi) geçirmeniz gerektiğinde, değeri Azure [Anahtar Kasasından](../../key-vault/key-vault-overview.md)alabilirsiniz. Yönetilen Uygulamaları dağıtırken Anahtar Kasası'na erişmek **için, Appliance Resource Provider** hizmet ilkesine erişim izni vermelisiniz. Yönetilen Uygulamalar hizmeti, işlemleri çalıştırmak için bu kimliği kullanır. Dağıtım sırasında Bir Anahtar Kasasından başarıyla bir değer almak için, servis sorumlusunun Anahtar Kasası'na erişebilmesi gerekir.
+Dağıtım sırasında parametre olarak güvenli bir değeri (parola gibi) geçirmeniz gerektiğinde, değeri Azure [Anahtar Kasasından](../../key-vault/general/overview.md)alabilirsiniz. Yönetilen Uygulamaları dağıtırken Anahtar Kasası'na erişmek **için, Appliance Resource Provider** hizmet ilkesine erişim izni vermelisiniz. Yönetilen Uygulamalar hizmeti, işlemleri çalıştırmak için bu kimliği kullanır. Dağıtım sırasında Bir Anahtar Kasasından başarıyla bir değer almak için, servis sorumlusunun Anahtar Kasası'na erişebilmesi gerekir.
 
 Bu makalede, Yönetilen Uygulamalar ile çalışacak şekilde Anahtar Kasası nasıl yapılandırılabildiğini açıklanmaktadır.
 
@@ -48,7 +48,7 @@ Bu makalede, Yönetilen Uygulamalar ile çalışacak şekilde Anahtar Kasası na
 
    ![Sağlayıcı ara](./media/key-vault-access/search-provider.png)
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="reference-key-vault-secret"></a>Referans Anahtar Vault gizli
 

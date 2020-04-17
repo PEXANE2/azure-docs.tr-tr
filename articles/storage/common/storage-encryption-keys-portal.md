@@ -10,18 +10,18 @@ ms.date: 03/19/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e7878cae7bc6aabf1db58bfd63338955b9e830d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 192e58b101b824ca0cc0c732e02647838be6dc35
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478245"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456490"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırın
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, [Azure portalını](https://portal.azure.com/)kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-portal.md)
+Bu makalede, [Azure portalını](https://portal.azure.com/)kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-portal.md)
 
 ## <a name="configure-azure-key-vault"></a>Azure Key Vault'u yapılandırma
 
@@ -29,8 +29,8 @@ Azure Depolama şifrelemesi ile müşteri tarafından yönetilen anahtarların k
 
 Varolan bir anahtar kasasında bu özellikleri nasıl etkinleştireceklerini öğrenmek için aşağıdaki makalelerden birinde **yumuşak silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın:
 
-- [PowerShell ile yumuşak silme nasıl kullanılır.](../../key-vault/key-vault-soft-delete-powershell.md)
-- [CLI ile yumuşak silme nasıl kullanılır.](../../key-vault/key-vault-soft-delete-cli.md)
+- [PowerShell ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-powershell.md)
+- [CLI ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-cli.md)
 
 Azure Depolama şifrelemesi ile yalnızca 2048 bit RSA ve RSA-HSM anahtarları desteklenir. Anahtarlar hakkında daha fazla bilgi için [Azure Key Vault tuşları, sırlar ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)Key Vault **tuşlarına** bakın.
 

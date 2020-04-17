@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8d7d0baacd5f702e8f435ab440eaf0338a60f4cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a043bcc2f81214b68b166d443baead6cd230184
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500765"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457510"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Otomasyonu Hesabı Olarak Çalıştır'ı Yönet
 
@@ -464,7 +464,7 @@ Azure Otomasyonu'nun Key Vault ve Run As hesap hizmet yöneticinizin özel bir r
 * Key Vault'a izin ver.
 * Erişim ilkesini ayarlayın.
 
-PowerShell Galerisi'ndeki [Extend-AutomationRunAsRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) komut dosyasını kullanarak Run As hesap izinlerinizi Key Vault'a verebilirsiniz. Key Vault'ta izin ayarlama hakkında daha fazla bilgi için [başvurularını önemli bir kasaya erişme](../key-vault/key-vault-group-permissions-for-apps.md) iznine bakın.
+PowerShell Galerisi'ndeki [Extend-AutomationRunAsRoleAssignmentToKeyVault.ps1](https://aka.ms/AA5hugb) komut dosyasını kullanarak Run As hesap izinlerinizi Key Vault'a verebilirsiniz. Key Vault'ta izin ayarlama hakkında daha fazla bilgi için [başvurularını önemli bir kasaya erişme](../key-vault/general/group-permissions-for-apps.md) iznine bakın.
 
 ## <a name="resolving-misconfiguration-issues-for-run-as-accounts"></a>Run As hesapları için yanlış yapılandırma sorunlarını çözme
 

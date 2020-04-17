@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 81927575b99604e71f7b0920bc3a448f7796f565
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b1c985eeec9af25ec576f4e2375c417dc376f95
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067181"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452766"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell ve CLI: Azure Key Vault'tan müşteri tarafından yönetilen anahtarla Şeffaf Veri Şifrelemesini etkinleştirin
 
@@ -28,19 +28,19 @@ Bu makalede, Bir SQL Veritabanı veya Veri Ambarı'nda Saydam Veri Şifreleme (T
 - [Önerilen ama İsteğe Bağlı] TDE Koruyucu anahtar malzemesinin yerel bir kopyasını oluşturmak için bir donanım güvenlik modülü (HSM) veya yerel anahtar deposuna sahip olun.
 - Azure PowerShell'in yüklü ve çalıştırılan olması gerekir.
 - TDE için kullanmak üzere bir Azure Anahtar Kasası ve Anahtar oluşturun.
-  - [Donanım güvenlik modülü (HSM) ve Key Vault kullanma talimatları](../key-vault/key-vault-hsm-protected-keys.md)
+  - [Donanım güvenlik modülü (HSM) ve Key Vault kullanma talimatları](../key-vault/keys/hsm-protected-keys.md)
     - Anahtar kasası TDE için kullanılacak aşağıdaki özelliğe sahip olmalıdır:
-  - [yumuşak silme](../key-vault/key-vault-ovw-soft-delete.md) ve temizleme koruması
+  - [yumuşak silme](../key-vault/general/overview-soft-delete.md) ve temizleme koruması
 - Anahtar, TDE için kullanılacak aşağıdaki özniteliklere sahip olmalıdır:
    - Son kullanma tarihi yok
    - Devre dışı bırakılmadı
    - *Get,* wrap *tuşu,* *açma tuşu* işlemlerini gerçekleştirebilme
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlets için [AzureRM.Sql'e](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın.
 
-Key Vault hakkında ayrıntılı bilgi için Key [Vault'tan PowerShell talimatlarına](../key-vault/quick-create-powershell.md) bakın ve [PowerShell ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/key-vault-soft-delete-powershell.md)
+Key Vault hakkında ayrıntılı bilgi için Key [Vault'tan PowerShell talimatlarına](../key-vault/secrets/quick-create-powershell.md) bakın ve [PowerShell ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/general/soft-delete-powershell.md)
 
 > [!IMPORTANT]
 > PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
@@ -123,7 +123,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 Gerekli Komut Satırı Arabirimi sürüm 2.0 veya sonraki sürümü yüklemek ve Azure aboneliğinize bağlanmak için Azure [Çapraz Platform Komut Satırı Arabirimi 2.0'ı yükleyin ve yapılandırın.](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
-Key Vault ile ilgili ayrıntılar için [CLI 2.0 kullanarak Anahtar Kasasını Yönet](../key-vault/key-vault-manage-with-cli2.md) ve [CLI ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/key-vault-soft-delete-cli.md)
+Key Vault ile ilgili ayrıntılar için [CLI 2.0 kullanarak Anahtar Kasasını Yönet](../key-vault/general/manage-with-cli2.md) ve [CLI ile Key Vault yumuşak silme nasıl kullanılır.](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Sunucunuza Azure AD kimliği atama
 
@@ -182,7 +182,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 ## <a name="useful-powershell-cmdlets"></a>Faydalı PowerShell cmdlets
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 - TDE'yi kapatmak için [Set-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) cmdlet'i kullanın.
 
@@ -221,7 +221,7 @@ Bir sorun oluşursa aşağıdakileri denetleyin:
 
 - Anahtar kasası bulunamıyorsa, doğru abonelikte olduğunuzdan emin olun.
 
-   # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+   # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
    ```powershell
    Get-AzSubscription -SubscriptionId <SubscriptionId>

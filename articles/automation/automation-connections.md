@@ -5,18 +5,18 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a6fc2bd5cb6f5c7ae5bef9e9741fae92518d885
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457731"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Otomasyonu'ndaki bağlantı varlıkları
 
 Otomasyon bağlantı varlığı, bir runbook veya DSC yapılandırmasından harici bir hizmete veya uygulamaya bağlanmak için gereken bilgileri içerir. Bu, URL veya bağlantı noktası gibi bağlantı bilgilerine ek olarak kullanıcı adı ve parola gibi kimlik doğrulama için gereken bilgileri içerebilir. Bir bağlantının değeri, birden çok değişken oluşturmak yerine belirli bir uygulamaya bağlanmaözelliklerinin tümünü tek bir kıymette tutmaktır. Kullanıcı bir bağlantının değerlerini tek bir yerde ayarlayabilir ve bir bağlantının adını tek bir parametrede runbook'a veya DSC yapılandırmasına geçirebilirsiniz. Bir bağlantının özelliklerine `Get-AutomationConnection` etkinlikle birlikte runbook veya DSC yapılandırmasında erişilebilir.
 
-Bir bağlantı oluşturduğunuzda, bir *bağlantı türü*belirtmeniz gerekir. Bağlantı türü, bir özellik kümesini tanımlayan bir şablondur. Bağlantı, bağlantı türünde tanımlanan her özellik için değerleri tanımlar. Bağlantı türleri, tümleştirme modüllerinde Azure Otomasyonu'na eklenir veya tümleştirme modülü bir bağlantı türü içeriyorsa ve Otomasyon hesabınıza aktarılıyorsa [Azure Otomasyon API'si](/previous-versions/azure/reference/mt163818(v=azure.100)) ile oluşturulur. Aksi takdirde, bir Otomasyon bağlantı türünü belirtmek için bir meta veri dosyası oluşturmanız gerekir. Bu konuda daha fazla bilgi için [Entegrasyon Modülleri'ne](automation-integration-modules.md)bakın.
+Bir bağlantı oluşturduğunuzda, bir bağlantı türü belirtmeniz gerekir. Bağlantı türü, bir özellik kümesini tanımlayan bir şablondur. Bağlantı, bağlantı türünde tanımlanan her özellik için değerleri tanımlar. Bağlantı türleri, tümleştirme modüllerinde Azure Otomasyonu'na eklenir veya tümleştirme modülü bir bağlantı türü içeriyorsa ve Otomasyon hesabınıza aktarılıyorsa [Azure Otomasyon API'si](/previous-versions/azure/reference/mt163818(v=azure.100)) ile oluşturulur. Aksi takdirde, bir Otomasyon bağlantı türünü belirtmek için bir meta veri dosyası oluşturmanız gerekir. Bu konuda daha fazla bilgi için [Entegrasyon Modülleri'ne](automation-integration-modules.md)bakın.
 
 >[!NOTE]
 >Azure Otomasyonu'ndaki güvenli varlıklar kimlik bilgilerini, sertifikaları, bağlantıları ve şifreli değişkenleri içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak şifrelenir ve Azure Otomasyonu'nda depolanır. Bu anahtar, anahtar kasa yönetilen bir sistemde saklanır. Güvenli bir kıymeti depolamadan önce, anahtar Key Vault'tan yüklenir ve sonra varlığı şifrelemek için kullanılır. Bu işlem Azure Automation tarafından yönetilir.

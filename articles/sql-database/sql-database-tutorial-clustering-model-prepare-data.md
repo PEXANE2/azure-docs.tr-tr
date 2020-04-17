@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
-ms.openlocfilehash: 2241b69e36e3b17475dba115b8d2ae94fe2189a7
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: abe7d5ed1d4ba1308abde04aee32a3ea222456b8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345840"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452885"
 ---
 # <a name="tutorial-prepare-data-to-perform-clustering-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de kümeleme gerçekleştirmek için veri hazırlama (önizleme)
 
@@ -43,13 +44,11 @@ Bu makalede, nasıl öğreneceksiniz:
 
 [Üçüncü bölümde,](sql-database-tutorial-clustering-model-deploy.md)yeni verilere dayanarak R'de kümeleme gerçekleştirebilen bir Azure SQL veritabanında depolanmış yordamı nasıl oluşturabileceğinizi öğreneceksiniz.
 
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği - Azure aboneliğiniz yoksa başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-* Machine Learning Services özellikli Azure SQL Veritabanı Sunucusu etkindir - Genel önizleme sırasında Microsoft, mevcut veya yeni veritabanlarınız için makine öğrenimini size verebecektir. Önizleme için [Kaydolun'daki](sql-database-machine-learning-services-overview.md#signup)adımları izleyin.
+* [Machine Learning Services (R ile) özellikli Azure SQL Veritabanı](sql-database-machine-learning-services-overview.md) etkinleştirildi.
 
 * RevoScaleR paketi - Bu paketi yerel olarak yükleme seçenekleri için [RevoScaleR'a](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler?view=sql-server-2017#versions-and-platforms) bakın.
 
@@ -59,7 +58,7 @@ Bu makalede, nasıl öğreneceksiniz:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="import-the-sample-database"></a>Örnek veritabanını alma
 

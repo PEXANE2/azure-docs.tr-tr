@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a70c6ae3ebc7f5b39550508594bd4d4907e68a67
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 845a202faccbbe0a604560ac57ae30f87344b95a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667336"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451134"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>Azure Çok Faktörlü Kimlik Doğrulama dağıtımı planlama
 
@@ -103,7 +103,7 @@ Kuruluşların [adlandırılmış konumları](../conditional-access/location-con
    2. *Ülkeler/Bölgeler* kullanıyorsanız
       1. Açılan menüyü genişletin ve bu adlandırılmış konum için tanımlamak istediğiniz ülkeleri veya bölgeleri seçin.
       2. Bilinmeyen alanları dahil edip *etmemeye*karar verin. Bilinmeyen alanlar, bir ülkeye/bölgeye eşlenemez IP adresleridir.
-7. **Oluştur**’u seçin
+7. **Oluştur'u** seçin
 
 ## <a name="plan-authentication-methods"></a>Kimlik doğrulama yöntemlerini planla
 
@@ -144,7 +144,7 @@ Kullanıcıya doğrulama kodu içeren bir kısa mesaj gönderilir, kullanıcıda
 
 ## <a name="plan-registration-policy"></a>Kayıt ilkesini planla
 
-Yöneticiler, kullanıcıların yöntemlerini nasıl kaydedeceğini belirlemelidir. Kuruluşlar, Azure MFA ve self servis parola sıfırlama (SSPR) için [yeni birleştirilmiş kayıt deneyimini etkinleştirmelidir.](howto-registration-mfa-sspr-combined.md) SSPR, kullanıcıların çok faktörlü kimlik doğrulama için kullandıkları yöntemleri kullanarak parolalarını güvenli bir şekilde sıfırlamalarına olanak tanır. Şu anda genel önizlemede bulunan bu birleşik kaydı öneririz, çünkü kullanıcılar için harika bir deneyimdir ve her iki hizmet için de bir kez kayıt olabilir. SSPR ve Azure MFA için aynı yöntemleri etkinleştirmek, kullanıcılarınızın her iki özelliği de kullanmak üzere kaydolmasına olanak tanır.
+Yöneticiler, kullanıcıların yöntemlerini nasıl kaydedeceğini belirlemelidir. Kuruluşlar, Azure MFA ve self servis parola sıfırlama (SSPR) için [yeni birleştirilmiş kayıt deneyimini etkinleştirmelidir.](howto-registration-mfa-sspr-combined.md) SSPR, kullanıcıların çok faktörlü kimlik doğrulama için kullandıkları yöntemleri kullanarak parolalarını güvenli bir şekilde sıfırlamalarına olanak tanır. Bu kombine kaydı, her iki hizmet için de bir kez kayıt olma özelliğine sahip kullanıcılar için harika bir deneyim olduğu için öneririz. SSPR ve Azure MFA için aynı yöntemleri etkinleştirmek, kullanıcılarınızın her iki özelliği de kullanmak üzere kaydolmasına olanak tanır.
 
 ### <a name="registration-with-identity-protection"></a>Kimlik Koruması ile Kayıt
 

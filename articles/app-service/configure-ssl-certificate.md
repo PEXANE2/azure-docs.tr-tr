@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 4edf710e575bbb26fb0e247e59ff5c796f16226e
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 9f9fcc0b3d8dfe19961668e77da91bc9f14ff2d1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810598"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453916"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure Uygulama Hizmetinde TLS/SSL sertifikası ekleme
 
@@ -94,7 +94,7 @@ Azure'dan bir Uygulama Hizmeti Sertifikası satın aldıysanız, Azure aşağıd
 
 - GoDaddy'den satın alma işlemini halletmek.
 - Sertifikanın etki alanı doğrulamasını gerçekleştirir.
-- Sertifikayı Azure [Anahtar Kasası'nda](../key-vault/key-vault-overview.md)tutar.
+- Sertifikayı Azure [Anahtar Kasası'nda](../key-vault/general/overview.md)tutar.
 - Sertifika yenilemeyi yönetir (bkz. [sertifika yıy).](#renew-certificate)
 - Sertifikayı App Service uygulamalarında alınan kopyalarla otomatik olarak senkronize edin.
 
@@ -140,8 +140,8 @@ Anahtar **Kasa Durumu** sayfasında, yeni bir kasa oluşturmak veya varolan bir 
 | Kaynak grubu | Öneri olarak, Uygulama Hizmeti sertifikanızla aynı kaynak grubunu seçin. |
 | Konum | Uygulama Hizmeti uygulamanızla aynı konumu seçin. |
 | Fiyatlandırma katmanı | Daha fazla bilgi için [Azure Key Vault fiyatlandırma ayrıntılarına](https://azure.microsoft.com/pricing/details/key-vault/)bakın. |
-| Erişim ilkeleri| Uygulamaları ve kasa kaynaklarına izin verilen erişimi tanımlar. Daha sonra, Grant çeşitli uygulamalar [anahtar kasasına erişim](../key-vault/key-vault-group-permissions-for-apps.md)adımlarını izleyerek, bunu yapılandırabilirsiniz. |
-| Sanal Ağ Erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. [Azure Anahtar Kasası Güvenlik Duvarlarını ve Sanal Ağları Yapılandırma](../key-vault/key-vault-network-security.md) adımlarını izleyerek daha sonra yapılandırabilirsiniz |
+| Erişim ilkeleri| Uygulamaları ve kasa kaynaklarına izin verilen erişimi tanımlar. Daha sonra, Grant çeşitli uygulamalar [anahtar kasasına erişim](../key-vault/general/group-permissions-for-apps.md)adımlarını izleyerek, bunu yapılandırabilirsiniz. |
+| Sanal Ağ Erişimi | Belirli Azure sanal ağlarına kasa erişimini kısıtlayın. [Azure Anahtar Kasası Güvenlik Duvarlarını ve Sanal Ağları Yapılandırma](../key-vault/general/network-security.md) adımlarını izleyerek daha sonra yapılandırabilirsiniz |
 
 Kasayı seçtikten sonra Key **Vault Depo sayfasını** kapatın. **Adım 1: Mağaza** seçeneği başarı için yeşil bir onay işareti göstermelidir. Bir sonraki adım için sayfayı açık tutun.
 

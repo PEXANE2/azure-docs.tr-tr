@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 23dc784586e85b8cbdc816ac5f4d54556fc1ffb7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76768507"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457000"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Quickstart: Azure SQL veritabanını sorgulamak için Machine Learning Services ile R'yi kullanın (önizleme)
 
@@ -30,22 +31,19 @@ Bu hızlı başlatmada, Azure SQL veritabanına bağlanmak için Machine Learnin
 
 - Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Azure SQL veritabanı](sql-database-single-database-get-started.md)
-- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir. [Önizleme için kaydolun](sql-database-machine-learning-services-overview.md#signup).
+- R özellikli [Makine Öğrenimi Hizmetleri](sql-database-machine-learning-services-overview.md) etkindir.
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]
 > Bu makaledeki komut dosyaları Adventure **Works** veritabanını kullanmak için yazılmıştır.
 
-> [!NOTE]
-> Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini etkinleştirecek, ancak yönetilen örnek dağıtım seçeneği şu anda desteklenmez.
-
-R özellikli Machine Learning Services, veritabanı içi R komut dosyalarını yürütmek için kullanılan Azure SQL veritabanının bir özelliğidir. Daha fazla bilgi için [R Projesi'ne](https://www.r-project.org/)bakın.
+R özellikli Machine Learning Services, veritabanı içi R komut dosyalarını yürütmek için kullanılan Azure SQL Veritabanı'nın bir özelliğidir. Daha fazla bilgi için [R Projesi'ne](https://www.r-project.org/)bakın.
 
 ## <a name="get-sql-server-connection-information"></a>SQL sunucu bağlantı bilgilerini alın
 
 Azure SQL veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Gelecek yordamlar için tam nitelikli sunucu adı veya ana bilgisayar adı, veritabanı adı ve giriş bilgilerine ihtiyacınız vardır.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanlarına** veya **SQL yönetilen örnekler** sayfasına gidin.
 

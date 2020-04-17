@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aeffa0bb736f03403bf483b22775ef468bbcb2bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: f0034d06c852d4d71284093879a456d296d98715
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405475"
+ms.locfileid: "81457476"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Azure Otomasyonu İstenen Durum Yapılandırması (DSC) ile sorun giderme
 
@@ -113,7 +113,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorun, kötü veya süresi dolmuş bir sertifikadan kaynaklanır.  Daha fazla bilgi için [Bkz. Sertifika nın süresi nin dolması ve yeniden kaydedilmesi.](../automation-dsc-onboarding.md#re-register-a-node)
+Bu sorun, kötü veya süresi dolmuş bir sertifikadan kaynaklanır.  Daha fazla bilgi için [Bkz. Sertifika nın süresi nin dolması ve yeniden kaydedilmesi.](../automation-dsc-onboarding.md#re-registering-a-node)
 
 Bu sorun, ***.azure-automation.net**erişime izin vermeyen bir proxy yapılandırması da neden olabilir. Daha fazla bilgi için [bkz.](../automation-dsc-overview.md#network-planning) 
 
@@ -135,7 +135,7 @@ Başarısız DSC düğümlerini yeniden kaydetmek için aşağıda listelenen ad
 
 Üçüncü olarak, düğümden tüm bozuk veya süresi dolmuş sertifikaları kaldırın.
 
-Yükseltilmiş powershell isteminden gelen başarısız düğümde aşağıdakileri çalıştırın:
+Yükseltilmiş bir PowerShell isteminin başarısız düğümünde aşağıdakileri çalıştırın:
 
 ```powershell
 $certs = @()
@@ -279,8 +279,8 @@ Bu hata, Otomasyon hesabından ayrı bir abonelikte yaşayan bir düğümü kayd
 
 Düğümü kaydetmek için aşağıdaki adımları izleyin.
 
-* Windows - [Fiziksel/sanal Windows makineleri şirket içinde veya Azure/AWS dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboard-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure)
-* Linux - [Fiziksel/sanal Linux makineleri şirket içinde veya Azure dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboard-physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
+* Windows - [Fiziksel/sanal Windows makineleri şirket içinde veya Azure/AWS dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines)
+* Linux - [Fiziksel/sanal Linux makineleri şirket içinde veya Azure dışındaki bir bulutta.](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines)
 
 ### <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Senaryo: Hata iletisi - "Sağlama Başarısız"
 

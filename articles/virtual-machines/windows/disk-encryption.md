@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 25b8df0d8565686737b33aac16d4bf698ce43280
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 85fc6412a12963bb01782becf639f7acfc31fbe5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757217"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452087"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -34,7 +34,7 @@ Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifrelem
 
 ## <a name="customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar
 
-Şifrelemeyi yönetilen her disk düzeyinde kendi anahtarlarınızla yönetmeyi seçebilirsiniz. Müşteri tarafından yönetilen anahtarlara sahip yönetilen diskler için sunucu tarafı şifrelemesi, Azure Key Vault ile entegre bir deneyim sunar. [RSA anahtarlarınızı](../../key-vault/key-vault-hsm-protected-keys.md) Key Vault'unuza aktarabilir veya Azure Key Vault'ta yeni RSA anahtarları oluşturabilirsiniz. 
+Şifrelemeyi yönetilen her disk düzeyinde kendi anahtarlarınızla yönetmeyi seçebilirsiniz. Müşteri tarafından yönetilen anahtarlara sahip yönetilen diskler için sunucu tarafı şifrelemesi, Azure Key Vault ile entegre bir deneyim sunar. [RSA anahtarlarınızı](../../key-vault/keys/hsm-protected-keys.md) Key Vault'unuza aktarabilir veya Azure Key Vault'ta yeni RSA anahtarları oluşturabilirsiniz. 
 
 Azure yönetilen [diskler, zarf şifrelemesini](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)kullanarak şifreleme ve şifre çözme işlemlerini tamamen saydam bir şekilde işler. Verileri [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 tabanlı veri şifreleme anahtarı (DEK) kullanarak şifreler ve bu da anahtarlarınızı kullanarak korunur. Depolama hizmeti veri şifreleme anahtarları oluşturur ve RSA şifrelemekullanarak müşteri tarafından yönetilen anahtarlarla şifreler. Zarf şifreleme, anahtarlarınızı VM'lerinizi etkilemeden uyumluluk ilkelerinize göre düzenli aralıklarla döndürmenize (değiştirmenize) olanak tanır. Anahtarlarınızı döndürdüğünüzde, Depolama hizmeti veri şifreleme anahtarlarını yeni müşteri tarafından yönetilen anahtarlarla yeniden şifreler. 
 
@@ -288,7 +288,7 @@ $disk.Encryption.Type
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Müşteri tarafından yönetilen anahtarlarla şifreli diskler oluşturmak için Azure Kaynak Yöneticisi şablonlarını keşfedin](https://github.com/ramankumarlive/manageddiskscmkpreview)
-- [Azure Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
+- [Azure Anahtar Kasası nedir?](../../key-vault/general/overview.md)
 - [Müşteri tarafından yönetilen anahtarlarla makineleri çoğaltma](../../site-recovery/azure-to-azure-how-to-enable-replication-cmk-disks.md)
 - [PowerShell ile VMware VM'lerin Azure'a olağanüstü durum kurtarmasını ayarlama](../../site-recovery/vmware-azure-disaster-recovery-powershell.md#replicate-vmware-vms)
 - [PowerShell ve Azure Kaynak Yöneticisi'ni kullanarak Hyper-V V MM'ler için Azure'da olağanüstü durum kurtarma ayarlama](../../site-recovery/hyper-v-azure-powershell-resource-manager.md#step-7-enable-vm-protection)

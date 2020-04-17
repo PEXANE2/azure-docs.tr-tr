@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475217"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453566"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Windows Java uygulamasını yapılandırma
 
@@ -187,7 +187,7 @@ Varolan bir TLS/SSL sertifikasını yüklemek ve uygulamanızın etki alanı ad�
 
 ### <a name="use-keyvault-references"></a>KeyVault Referanslarını Kullanma
 
-[Azure KeyVault,](../key-vault/key-vault-overview.md) erişim ilkeleri ve denetim geçmişiyle merkezi leştirilmiş gizli yönetim sağlar. KeyVault'ta sırları (parolalar veya bağlantı dizeleri gibi) depolayabilir ve uygulamanızdaki bu sırlara ortam değişkenleri aracılığıyla erişebilirsiniz.
+[Azure KeyVault,](../key-vault/general/overview.md) erişim ilkeleri ve denetim geçmişiyle merkezi leştirilmiş gizli yönetim sağlar. KeyVault'ta sırları (parolalar veya bağlantı dizeleri gibi) depolayabilir ve uygulamanızdaki bu sırlara ortam değişkenleri aracılığıyla erişebilirsiniz.
 
 İlk olarak, [Uygulamanızın Key Vault'a erişimini sağlamak](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [Uygulama Ayarında sırrınıza KeyVault göndermesi yapmak](app-service-key-vault-references.md#reference-syntax)için talimatları izleyin. Uygulama Hizmeti terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizliye çözüldüğünü doğrulayabilirsiniz.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: ee51be1d994c3b81765266e95c48d321a2f43b14
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80989451"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455096"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent işlerini SSMS ile ADF'ye geçirin
 
@@ -35,7 +35,7 @@ Genel olarak, geçerli iş adımı türlerine sahip seçili SQL aracısı işler
 |SSIS iş adımı|SSIS paket etkinliğini yürütme|<li> Etkinliğin adı adım \<adı> olacaktır. <li> İş adımında kullanılan proxy hesabı, bu etkinliğin Windows kimlik doğrulaması olarak geçirilir. <li> İş adımında tanımlanan *32 bit çalışma süresi dışındaki* yürütme *seçenekleri* geçişte yoksayılır. <li> İş adımında tanımlanan *doğrulama* geçişte yoksayılır.|
 |schedule      |zamanlama tetikleyicisi        |Zamanlama tetikleyicisinin adı *zamanlama \<adı>için oluşturulur. * <br> <br> SQL Agent iş zamanlamasındaki aşağıdaki seçenekler geçişte göz ardı edilecektir: <li> İkinci düzey aralık. <li> *SQL Server Agent başlatıldığında otomatik olarak başlatın* <li> *CPU'lar boşta kaldığında başlayın* <li> *hafta içi* ve *hafta sonu günü*<time zone> <br> SQL Agent iş zamanlaması ADF zamanlama tetikleyicisine geçirildikten sonra farklar aşağıda verilmiştir: <li> ADF Zamanlama Tetikleyici sonraki çalıştırma, öncül tetiklenen çalıştırmanın yürütme durumundan bağımsızdır. <li> ADF Schedule Trigger yineleme yapılandırması SQL aracısı işinde Günlük frekanstan farklıdır.|
 
-- Yerel çıktı klasöründe Azure Kaynak Yöneticisi (ARM) şablonları oluşturun ve doğrudan veya daha sonra el ile veri fabrikasına dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için [Microsoft.DataFactory kaynak türlerine](https://docs.microsoft.com/azure/templates/microso.ft.datafactory/allversions)bakın.
+- Yerel çıktı klasöründe Azure Kaynak Yöneticisi (ARM) şablonları oluşturun ve doğrudan veya daha sonra el ile veri fabrikasına dağıtın. ADF Kaynak Yöneticisi şablonları hakkında daha fazla bilgi için [Microsoft.DataFactory kaynak türlerine](https://docs.microsoft.com/azure/templates/microsoft.datafactory/allversions)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

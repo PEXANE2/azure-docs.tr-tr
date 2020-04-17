@@ -4,12 +4,12 @@ description: Azure kaynak günlükleri için desteklenen hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
-ms.openlocfilehash: 8abd8767d9bb7e3c4336f6600b94f6b3f4ea48f1
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 352310a6e489a96c38e85b16e9504d8eb9be38b1
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81380514"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457255"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure Kaynak Günlükleri için desteklenen hizmetler, şemalar ve kategoriler
 
@@ -66,7 +66,7 @@ Kaynak tanılama günlükleri için şema kaynak ve günlük kategorisine bağl�
 | Express Route | Şema mevcut değil. |
 | Azure Güvenlik Duvarı | Şema mevcut değil. |
 | IoT Hub | [IoT Hub İşlemleri](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
-| Key Vault |[Azure Anahtar Kasası Günlüğü](../../key-vault/key-vault-logging.md) |
+| Key Vault |[Azure Anahtar Kasası Günlüğü](../../key-vault/general/logging.md) |
 | Kubernetes Service |[Azure Kubernetes Günlük](../../aks/view-master-logs.md#log-event-schema) |
 | Load Balancer |[Azure Load Balancer için Log Analytics](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B özel izleme şeması](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |

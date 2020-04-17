@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e3ed549e51b911452bca7d4d4a16c7ef45594a8f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582466"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451440"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Etkin Dizini'nde parolasız kimlik doğrulama dağıtımı planlama
 
@@ -67,7 +67,7 @@ Kuruluşlar, parolasız dağıtıma başlamadan önce aşağıdaki ön koşullar
 
 | Önkoşul | Doğrulayıcı uygulama | FIDO2 Güvenlik Anahtarları |
 | --- | --- | --- |
-| [Azure Çok faktörlü kimlik doğrulama ve self servis parola sıfırlama (SSPR) için birleşik kayıt](howto-registration-mfa-sspr-combined.md) etkinleştirildi (önizleme özelliği) | √ | √ |
+| [Azure Çok faktörlü kimlik doğrulama ve self servis parola sıfırlama (SSPR) için birleşik kayıt](howto-registration-mfa-sspr-combined.md) etkinleştirildi | √ | √ |
 | [Kullanıcılar Azure Çok faktörlü kimlik doğrulaması gerçekleştirebilir](howto-mfa-getstarted.md) | √ | √ |
 | [Kullanıcılar Azure Çok faktörlü kimlik doğrulama ve SSPR için kaydoldu](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Kullanıcılar mobil cihazlarını Azure Active Directory'ye kaydettirdi](../devices/overview.md) | √ |   |

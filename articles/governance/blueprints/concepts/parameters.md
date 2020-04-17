@@ -3,12 +3,12 @@ title: Dinamik planlar oluşturmak için parametreleri kullanma
 description: Statik ve dinamik parametreler ve güvenli ve dinamik planlar oluşturmak için bunları nasıl kullanacağınız hakkında bilgi edinin.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed596db2050ac788c2d98c63cb7314de473b5f4e
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e5953617d5fa27098380f3f0e95843c69800f823
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383606"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458497"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Parametreler aracılığıyla dinamik planlar oluşturma
 
@@ -41,7 +41,7 @@ Plan ataması **kullanıcı tarafından atanan yönetilen**bir kimlik kullanıyo
 > [!IMPORTANT]
 > Her iki durumda da, **Access ilkeleri** sayfasında yapılandırılan şablon dağıtımı için Anahtar Kasası'nın Azure **Kaynak Yöneticisi'ne erişimi etkinleştirme** olmalıdır. Bu özelliğin nasıl etkinleştirilen yol tarifi için [Bkz. Anahtar Kasası - Şablon dağıtımını etkinleştir.](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)
 
-Azure Key Vault hakkında daha fazla bilgi için [Key Vault Genel Bakış'a](../../../key-vault/key-vault-overview.md)bakın.
+Azure Key Vault hakkında daha fazla bilgi için [Key Vault Genel Bakış'a](../../../key-vault/general/overview.md)bakın.
 
 ## <a name="parameter-types"></a>Parametre türleri
 
@@ -234,8 +234,8 @@ Atama sırasında **dinamik parametrelerin** ayarlanması doğrudan değer giril
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Plan işlevleri](../reference/blueprint-functions.md)listesine bakın.
-- [Plan yaşam döngüsü](lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](lifecycle.md) hakkında bilgi edinin.
 - [Şema sıralama düzenini](sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](resource-locking.md) özelliğini kullanmayı öğrenin.
-- Varolan atamaları nasıl [güncelleştirini](../how-to/update-existing-assignments.md)öğrenin.
+- [Mevcut atamaları güncelleştirmeyi](../how-to/update-existing-assignments.md) öğrenin.
 - [Genel sorun giderme](../troubleshoot/general.md) adımlarıyla şema atama sorunlarını giderin.

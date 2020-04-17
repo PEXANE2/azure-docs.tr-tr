@@ -1,31 +1,26 @@
 ---
 title: Sorun giderme birleşik kayıt - Azure Active Directory
-description: Sorun giderme Azure AD Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama birleşik kayıt (önizleme)
+description: Sorun Giderme Azure AD Çok Faktörlü Kimlik Doğrulaması ve self servis parola sıfırlama kombine kaydı
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 11/21/2019
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74847397"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450947"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Sorun giderme birleşik güvenlik bilgi kaydı (önizleme)
+# <a name="troubleshooting-combined-security-information-registration"></a>Sorun giderme birleştirilmiş güvenlik bilgi kaydı
 
 Bu makaledeki bilgiler, birleştirilmiş kayıt deneyimi kullanıcıları tarafından bildirilen sorun giderme sorunları olan yöneticilere rehberlik etmek içindir.
-
-|     |
-| --- |
-| Azure Çok Faktörlü Kimlik Doğrulama ve Azure Etkin Dizin (Azure AD) self servis parola sıfırlama için birleştirilmiş güvenlik bilgi kaydı, Azure AD'nin genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.|
-|     |
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 
@@ -150,16 +145,16 @@ PowerShell penceresinde, komut dosyası ve kullanıcı dosyası konumlarını sa
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Önizleme deneyimini devre dışı
+### <a name="disable-the-updated-experience"></a>Güncelleştirilmiş deneyimi devre dışı atma
 
-Kullanıcılarınız için önizleme deneyimini devre dışı katmak için aşağıdaki adımları tamamlayın:
+Kullanıcılarınız için güncelleştirilmiş deneyimi devre dışı katmak için aşağıdaki adımları tamamlayın:
 
 1. Azure portalında kullanıcı yöneticisi olarak oturum açın.
 2. Azure **Active Directory** > **Kullanıcı ayarlarına** > gidin**Erişim paneli önizleme özellikleri için ayarları yönetin.**
 3. Kullanıcılar altında **güvenlik bilgilerini kaydetmek ve yönetmek için önizleme özelliklerini kullanabilir,** seçiciyi **Yok**olarak ayarlayabilir ve ardından **Kaydet'i**seçebilir.
 
-Kullanıcılardan artık önizleme deneyimini kullanarak kaydolması istenmez.
+Kullanıcılardan artık güncelleştirilmiş deneyimi kullanarak kaydolması istenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Self servis parola sıfırlama ve Azure Çok Faktörlü Kimlik Doğrulama için birleşik kaydın genel önizlemesi hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)
+* [Self servis parola sıfırlama ve Azure Çok Faktörlü Kimlik Doğrulama için birleşik kayıt hakkında daha fazla bilgi edinin](concept-registration-mfa-sspr-combined.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 7a2becf8cb43568383c324bb9f4f5b2e7b844268
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7da2fa2ddfbd9c71563dd8bd2e17b14c6dee62b3
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77667152"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455487"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Monitor'da Azure Key Vault Analytics çözümü
 
@@ -94,7 +94,7 @@ Key Vault **Analytics** döşemesini tıklattıktan sonra, günlüklerinizin öz
     Günlük arama sayfalarından herhangi birinde, sonuçları zamana, ayrıntılı sonuçlara ve günlük arama geçmişinize göre görüntüleyebilirsiniz. Sonuçları daraltmak için de yüzlere göre filtre uygulayabilirsiniz.
 
 ## <a name="azure-monitor-log-records"></a>Azure Monitör günlük kayıtları
-Azure Key Vault çözümü, Azure Tanılama'daki [AuditEvent günlüklerinden](../../key-vault/key-vault-logging.md) toplanan bir tür **KeyVault** türüne sahip kayıtları analiz eder.  Bu kayıtların özellikleri aşağıdaki tabloda dır:  
+Azure Key Vault çözümü, Azure Tanılama'daki [AuditEvent günlüklerinden](../../key-vault/general/logging.md) toplanan bir tür **KeyVault** türüne sahip kayıtları analiz eder.  Bu kayıtların özellikleri aşağıdaki tabloda dır:  
 
 | Özellik | Açıklama |
 |:--- |:--- |
@@ -107,7 +107,7 @@ Azure Key Vault çözümü, Azure Tanılama'daki [AuditEvent günlüklerinden](.
 | `httpStatusCode_d` |İstek tarafından döndürülen HTTP durum kodu (örneğin, *200*) |
 | `id_s` |İsteğin benzersiz kimliği |
 | `identity_claim_appid_g` | Başvuru Kimliği için GUID |
-| `OperationName` |[Azure Anahtar Kasası Günlüğe Kaydetme'de](../../key-vault/key-vault-logging.md) belgelenen işlemin adı |
+| `OperationName` |[Azure Anahtar Kasası Günlüğe Kaydetme'de](../../key-vault/general/logging.md) belgelenen işlemin adı |
 | `OperationVersion` |İstemci tarafından istenen REST API sürümü (örneğin *2015-06-01)* |
 | `requestUri_s` |İsteğin Uri |
 | `Resource` |Anahtar kasasının adı |

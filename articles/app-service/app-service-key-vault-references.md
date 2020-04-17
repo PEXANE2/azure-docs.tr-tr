@@ -6,32 +6,32 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd0a03ea76d517486bb9bda6d9628fb529166dd8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280345"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453736"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Uygulama Hizmeti ve Azure İşlevleri için Anahtar Kasa başvurularını kullanma
 
-Bu konu, herhangi bir kod değişikliği gerektirmeden Uygulama Hizmetinizdeki veya Azure İşlevler uygulamanızdaki Azure Key Vault'un sırlarıyla nasıl çalışacağınızı gösterir. [Azure Key Vault,](../key-vault/key-vault-overview.md) erişim ilkeleri ve denetim geçmişi üzerinde tam denetime sahip merkezi sırlar yönetimi sağlayan bir hizmettir.
+Bu konu, herhangi bir kod değişikliği gerektirmeden Uygulama Hizmetinizdeki veya Azure İşlevler uygulamanızdaki Azure Key Vault'un sırlarıyla nasıl çalışacağınızı gösterir. [Azure Key Vault,](../key-vault/general/overview.md) erişim ilkeleri ve denetim geçmişi üzerinde tam denetime sahip merkezi sırlar yönetimi sağlayan bir hizmettir.
 
 ## <a name="granting-your-app-access-to-key-vault"></a>Uygulamanızın Key Vault'a erişimini verme
 
 Key Vault'un sırlarını okumak için bir kasa oluşturmanız ve uygulamanıza erişim izni vermeniz gerekir.
 
-1. [Key Vault hızlı başlat'ı](../key-vault/quick-create-cli.md)izleyerek bir anahtar kasa oluşturun.
+1. [Key Vault hızlı başlat'ı](../key-vault/secrets/quick-create-cli.md)izleyerek bir anahtar kasa oluşturun.
 
 1. Uygulamanız için [sistem tarafından atanmış yönetilen](overview-managed-identity.md) bir kimlik oluşturun.
 
    > [!NOTE] 
    > Anahtar Vault başvuruları şu anda yalnızca sistem tarafından atanan yönetilen kimlikleri destekler. Kullanıcı tarafından atanan kimlikler kullanılamaz.
 
-1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault'ta](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) bir erişim ilkesi oluşturun. Bu ilkede "Get" gizli iznini etkinleştirin. Yönetilen bir kimlikle uyumlu olmadığı `applicationId` için "yetkili uygulama" veya ayarları yapılandırmayın.
+1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault'ta](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) bir erişim ilkesi oluşturun. Bu ilkede "Get" gizli iznini etkinleştirin. Yönetilen bir kimlikle uyumlu olmadığı `applicationId` için "yetkili uygulama" veya ayarları yapılandırmayın.
 
     > [!NOTE]
-    > Anahtar Vault başvuruları şu anda [ağ kısıtlamaları](../key-vault/key-vault-overview-vnet-service-endpoints.md)olan anahtar kasasında depolanan sırları çözemez.
+    > Anahtar Vault başvuruları şu anda [ağ kısıtlamaları](../key-vault/general/overview-vnet-service-endpoints.md)olan anahtar kasasında depolanan sırları çözemez.
 
 ## <a name="reference-syntax"></a>Referans sözdizimi
 

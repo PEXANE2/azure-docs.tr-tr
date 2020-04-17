@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 508eac08284f91821223a78cafdfee7b4c9c540b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81410875"
+ms.locfileid: "81457425"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için Kimlik Aracısı 'nı (önizleme) kullanma
 
@@ -56,7 +56,7 @@ ID Aracıcısı etkinleştirildikten sonra, etki alanı hesapları olan SSH sena
 
 SSH kimlik doğrulaması, karmanın Azure AD DS'de kullanılabilir olmasını gerektirir. Yalnızca yönetim senaryoları için SSH'yi kullanmak istiyorsanız, yalnızca bulutlara özel bir hesap oluşturabilir ve bunu kümeye göre SSH'de kullanabilirsiniz. Diğer kullanıcılar, Parola karmasını Azure AD DS'de kullanılabilir hale vermeden Ambari veya HDInsight araçlarını (IntelliJ eklentisi gibi) kullanmaya devam edebilir.
 
-## <a name="clinets-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>Clinets ID Broker kurulumu ile HDInsight ağ geçidine bağlanmak için OAuth'u kullanıyor
+## <a name="clients-using-oauth-to-connect-to-hdinsight-gateway-with-id-broker-setup"></a>ID Broker kurulumu ile HDInsight ağ geçidine bağlanmak için OAuth kullanan istemciler
 
 Kimlik aracısı kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istemciler, önce gerekli OAuth belirteci'ni edinmek için güncelleştirilebilir. Belirteci aşağıdaki bilgilerle elde etmek için bu [belgedeki](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) adımları izleyebilirsiniz:
 

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
-ms.openlocfilehash: ce85f45d823df42e70af53824e175968439621d3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ROBOTS: NOINDEX
+ms.openlocfilehash: ab066609bff773ceacb06be604e386eed5cdf7ec
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73819876"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453345"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Veritabanı Makine Öğrenme Hizmetleri'ne R paketi ekleme (önizleme)
 
@@ -58,7 +59,7 @@ WITH RESULT SETS((
 
 Çıktı aşağıdakine benzer olmalıdır.
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ![R içindeki yüklü paketler](./media/sql-database-machine-learning-services-add-r-packages/r-installed-packages.png)
 
@@ -119,7 +120,7 @@ r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Ve
 View(r)
 ```
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ![RTestData tablosunun içeriği](./media/sql-database-machine-learning-services-add-r-packages/r-verify-package-install.png)
 
@@ -149,7 +150,7 @@ Paket yüklendikten sonra, **sp_execute_external_script**aracılığıyla r komu
 
     **İletiler** sekmesinde aşağıdaki sonucu görürsünüz.
 
-    **Sonuç -ları**
+    **Sonuçlar**
 
     ```text
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.

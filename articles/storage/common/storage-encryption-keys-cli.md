@@ -10,18 +10,18 @@ ms.date: 04/02/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea944d4cfa3006c33f1dee3dd8e6ee6088681aa7
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 796e3b3f46bc83b776826baf6e078c696eda543b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618640"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456781"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-azure-cli"></a>Azure CLI'yi kullanarak müşteri tarafından yönetilen anahtarları Azure Anahtar Kasası ile yapılandırın
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-Bu makalede, Azure CLI kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Anahtar Kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: Azure CLI'yi kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-cli.md)
+Bu makalede, Azure CLI kullanarak müşteri tarafından yönetilen anahtarlarla bir Azure Anahtar Kasası nasıl yapılandırılanın gösterilmektedir. Azure CLI kullanarak anahtar kasası oluşturmayı öğrenmek için [Quickstart: Azure CLI'yi kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-cli.md)
 
 ## <a name="assign-an-identity-to-the-storage-account"></a>Depolama hesabına kimlik atama
 
@@ -55,7 +55,7 @@ az keyvault create \
     --enable-purge-protection
 ```
 
-Azure CLI ile varolan bir anahtar kasasında **Yumuşak Silme** ve **Temizleme'yi** etkinleştirmeyi öğrenmek için, [CLI ile yumuşak silmeyi etkinleştirme](../../key-vault/key-vault-soft-delete-cli.md)ve Temizleme **Korumasını Etkinleştirme** başlıklı bölümlere bakın. **Enabling soft-delete**
+Azure CLI ile varolan bir anahtar kasasında **Yumuşak Silme** ve **Temizleme'yi** etkinleştirmeyi öğrenmek için, [CLI ile yumuşak silmeyi etkinleştirme](../../key-vault/general/soft-delete-cli.md)ve Temizleme **Korumasını Etkinleştirme** başlıklı bölümlere bakın. **Enabling soft-delete**
 
 ## <a name="configure-the-key-vault-access-policy"></a>Anahtar kasa erişim ilkesini yapılandırma
 

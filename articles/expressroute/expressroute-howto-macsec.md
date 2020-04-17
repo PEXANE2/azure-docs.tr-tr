@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 572147ca43e9a4dea9d9601dfa1dac8ba1c97ed0
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083541"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458241"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct bağlantı noktalarında MACsec'i yapılandırın
 
@@ -47,7 +47,7 @@ Yapılandırmayı başlatmak için Azure hesabınızda oturum açın ve kullanma
     $keyVault = New-AzKeyVault -Name "your_key_vault_name" -ResourceGroupName "your_resource_group" -Location "resource_location" -EnableSoftDelete 
     ```
 
-    Zaten bir anahtar kasanız veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, varolan anahtar kasanızdaki [ **yumuşak silme** özelliğini](../key-vault/key-vault-ovw-soft-delete.md) etkinleştirmeniz çok önemlidir. Yumuşak silme etkin değilse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
+    Zaten bir anahtar kasanız veya kaynak grubunuz varsa, bunları yeniden kullanabilirsiniz. Ancak, varolan anahtar kasanızdaki [ **yumuşak silme** özelliğini](../key-vault/general/overview-soft-delete.md) etkinleştirmeniz çok önemlidir. Yumuşak silme etkin değilse, etkinleştirmek için aşağıdaki komutları kullanabilirsiniz:
 
     ```azurepowershell-interactive
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "your_existing_keyvault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"

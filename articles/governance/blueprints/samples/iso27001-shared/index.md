@@ -3,12 +3,12 @@ title: ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 description: ISO 27001 Paylaşılan Hizmetler şema örneğinin genel bakış bilgileri ve mimarisi. Bu şema örneği, müşterilerin belirli ISO 27001 denetimlerini değerlendirmesine yardımcı olur.
 ms.date: 04/15/2020
 ms.topic: sample
-ms.openlocfilehash: 9b0b49582023ee5c68fea0f21b70290a102a038a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 5a18af942e1d1088b681712f7035f57d354ecb19
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381568"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458463"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 Paylaşılan Hizmetler şema örneğine genel bakış
 
@@ -34,7 +34,7 @@ Bu ortam, ISO 27001 standartlarında güvenli, tümüyle izlenen, kurumsal kulla
   - Yönetim amacıyla kullanılan ve yalnızca giriş yığını alt ağında dağıtılmış [Azure Güvenlik Duvarı](../../../../firewall/overview.md) üzerinden erişilebilen bir atlama kutusu veya kale konağı
   - Yalnızca atlama kutusundan erişilebilen, yalnızca VPN veya [ExpressRoute](../../../../expressroute/expressroute-introduction.md) bağlantısı ve Active Directory Domain Services (ADDS) ile DNS çalıştıran iki sanal makine (şema tarafından dağıtılmaz)
   - [Azure Ağ İzleyicisi](../../../../network-watcher/network-watcher-monitoring-overview.md) ve standart DDoS korumasının kullanılması
-- Paylaşılan hizmetler ortamına dağıtılmış VM'lerin gizli dizilerini barındırmak için kullanılan [Azure Key Vault](../../../../key-vault/key-vault-overview.md) örneği
+- Paylaşılan hizmetler ortamına dağıtılmış VM'lerin gizli dizilerini barındırmak için kullanılan [Azure Key Vault](../../../../key-vault/general/overview.md) örneği
 
 Tam bu öğeler [Azure Mimari Merkezi - Referans Mimarileri](/azure/architecture/reference-architectures/)'nde yayımlanan kanıtlanmış uygulamalara dayanır.
 

@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 939798d5d9eb2843d7bbbbe74680342e4ce6ce95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: ba78267b1c6dc8f0e1bd25bb8ecdb1d8d344d03e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60702461"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453123"
 ---
 # <a name="write-advanced-r-functions-in-azure-sql-database-using-machine-learning-services-preview"></a>Machine Learning Services 'i kullanarak Azure SQL Veritabanı'na gelişmiş R işlevleri yazın (önizleme)
 
@@ -30,7 +31,7 @@ Bu makalede, R matematiksel ve yardımcı program işlevlerini SQL depolanan yor
 
 - Azure aboneliğiniz yoksa, başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle Machine Learning Services (R ile) etkin leştirilmiş bir Azure SQL veritabanına sahip olmalısınız. Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır. Önizleme için [Kaydolun'daki](sql-database-machine-learning-services-overview.md#signup)adımları izleyin.
+- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle [Machine Learning Services (R ile) özellikli Azure SQL Veritabanı'nı](sql-database-machine-learning-services-overview.md) etkinleştirmeniz gerekir.
 
 - En son [SQL Server Management Studio'yu](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. Diğer veritabanı yönetimi veya sorgu araçlarını kullanarak R komut dosyalarını çalıştırabilirsiniz, ancak bu hızlı başlatmada SSMS'i kullanırsınız.
 

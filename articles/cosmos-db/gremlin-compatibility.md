@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
-ms.openlocfilehash: 581bc813ca27067b1f27ab9866a45df3084dbbcc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75644741"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449893"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin uyumluluğu
 Azure Cosmos DB Graph [motoru, Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) geçiş adımlarını yakından takip eder, ancak farklılıklar vardır.
@@ -35,7 +35,7 @@ Azure Cosmos DB Graph [motoru, Apache TinkerPop](https://tinkerpop.apache.org/do
 
 * ***İlkel olmayan JSON türleri*** desteklenmez. Kullanın `string` `number`, `true` / `false` veya türleri. `null`değerler desteklenmez. 
 
-* ***GraphSONv3*** serializer şu anda desteklenmiyor. Bağlantı `GraphSONv2` yapılandırmasında Serializer, Reader ve Writer sınıflarını kullanın.
+* ***GraphSONv3*** serializer şu anda desteklenmiyor. Bağlantı `GraphSONv2` yapılandırmasında Serializer, Reader ve Writer sınıflarını kullanın. Azure Cosmos DB Gremlin API tarafından döndürülen sonuçlar GraphSON biçimiyle aynı biçime sahip değildir. 
 
 * **Lambda ifadeleri ve işlevleri** şu anda desteklenmiyor. `.map{<expression>}`Bu, `.by{<expression>}`, ve `.filter{<expression>}` işlevleri içerir. Daha fazla bilgi edinmek ve Gremlin adımlarını kullanarak bunları nasıl yeniden yazacağız öğrenmek için [Lambdas'a Bir Not](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas)bakın.
 

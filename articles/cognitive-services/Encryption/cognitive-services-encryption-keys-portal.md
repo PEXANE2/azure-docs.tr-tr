@@ -8,18 +8,18 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: egeaney
-ms.openlocfilehash: 22bd3afcf30b8b8ebce18b22d5419d49ec8c3b4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 04a8a8d2520376931f2bb7727c1e751b83f6315f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053600"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455283"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-the-azure-portal"></a>Azure portalını kullanarak Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırın
 
 Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault'u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Bilişsel Hizmetler kaynağı ve anahtar kasası aynı bölgede ve aynı Azure Etkin Dizini (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
-Bu makalede, [Azure portalını](https://portal.azure.com/)kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-portal.md)
+Bu makalede, [Azure portalını](https://portal.azure.com/)kullanarak müşteri tarafından yönetilen anahtarlarla azure anahtar kasası nasıl yapılandırılanın gösterilmektedir. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-portal.md)
 
 ## <a name="configure-azure-key-vault"></a>Azure Key Vault'u yapılandırma
 

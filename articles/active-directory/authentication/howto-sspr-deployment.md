@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c11521ec074b63843b873c39102b68bf185d2821
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 8bec28b98a8d2640b5a8034569d49077ce6b4177
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80676737"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450998"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Etkin Dizin self servis parola sıfırlama dağıtımı planlama
 

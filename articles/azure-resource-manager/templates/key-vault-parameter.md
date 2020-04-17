@@ -3,16 +3,16 @@ title: Şablon ile Key Vault gizli
 description: Dağıtım sırasında parametre olarak anahtar kasasından bir sırrın nasıl geçirilir olduğunu gösterir.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 08b4042c6bad83f13ebaea0f46046ea7707fd868
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460203"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458275"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değerini geçirmek için Azure Anahtar Kasası'nı kullanın
 
-Şablonunuza veya parametre dosyanıza doğrudan güvenli bir değer (parola gibi) koymak yerine, dağıtım sırasında değeri Azure [Anahtar Kasasından](../../key-vault/key-vault-overview.md) alabilirsiniz. Parametre dosyanızdaki anahtar kasasına ve gizliye başvurarak değeri alırsınız. Değer hiçbir zaman açıklanamaz çünkü yalnızca anahtar kasa kimliğine başvurursunuz. Anahtar kasası, dağıtmakta olduğunuz kaynak grubundan farklı bir abonelikte bulunabilir.
+Şablonunuza veya parametre dosyanıza doğrudan güvenli bir değer (parola gibi) koymak yerine, dağıtım sırasında değeri Azure [Anahtar Kasasından](../../key-vault/general/overview.md) alabilirsiniz. Parametre dosyanızdaki anahtar kasasına ve gizliye başvurarak değeri alırsınız. Değer hiçbir zaman açıklanamaz çünkü yalnızca anahtar kasa kimliğine başvurursunuz. Anahtar kasası, dağıtmakta olduğunuz kaynak grubundan farklı bir abonelikte bulunabilir.
 
 Bu makalede, şablon parametresi olarak hassas bir değer geçirme senaryosu na odaklanın. Sanal makine özelliğini Anahtar Kasa'daki sertifikanın URL'sine ayarlama senaryosunu kapsamaz. Bu senaryonun hızlı başlangıç şablonu için, [Azure Anahtar Kasasından Bir Sertifikayı Sanal Makine'ye](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)yükleyin'e bakın.
 
@@ -28,7 +28,7 @@ Zaten bir Anahtar Kasanız varsa, şablon dağıtımlarına izin verdiğinden em
 az keyvault update  --name ExampleVault --enabled-for-template-deployment true
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName ExampleVault -EnabledForTemplateDeployment
@@ -50,7 +50,7 @@ az keyvault create \
 az keyvault secret set --vault-name ExampleVault --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name ExampleGroup -Location centralus
@@ -76,7 +76,7 @@ az keyvault set-policy \
   --secret-permissions set delete get list
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 $userPrincipalName = "<Email Address of the deployment operator>"
@@ -91,11 +91,11 @@ Set-AzKeyVaultAccessPolicy `
 
 Önemli kasalar oluşturma ve sır ekleme hakkında daha fazla bilgi için bkz:
 
-- [CLI kullanarak bir sırrı ayarlayın ve alın](../../key-vault/quick-create-cli.md)
-- [Powershell'i kullanarak bir sırrı ayarlayın ve alın](../../key-vault/quick-create-powershell.md)
-- [Portalı kullanarak bir sırrı ayarlayın ve alın](../../key-vault/quick-create-portal.md)
-- [.NET kullanarak bir sırrı ayarlayın ve alın](../../key-vault/quick-create-net.md)
-- [Node.js kullanarak bir sırrı ayarlayın ve alın](../../key-vault/quick-create-node.md)
+- [CLI kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-cli.md)
+- [Powershell'i kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-powershell.md)
+- [Portalı kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-portal.md)
+- [.NET kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-net.md)
+- [Node.js kullanarak bir sırrı ayarlayın ve alın](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Sırlara erişim izni ver
 
@@ -135,7 +135,7 @@ Aşağıdaki yordam, minimum izinle bir rolün nasıl oluşturulup oluşturulabi
       --resource-group ExampleGroup
     ```
 
-    # <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+    # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
     ```azurepowershell-interactive
     New-AzRoleDefinition -InputFile "<path-to-role-file>"
@@ -241,7 +241,7 @@ az deployment group create \
   --parameters <parameter-file>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -375,5 +375,5 @@ Aşağıdaki şablon dinamik olarak anahtar kasa kimliğini oluşturur ve bir pa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Anahtar kasaları hakkında genel bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
+- Anahtar kasaları hakkında genel bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
 - Önemli sırlara başvurmanın tam örnekleri [için, Anahtar Kasa örneklerine](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)bakın.

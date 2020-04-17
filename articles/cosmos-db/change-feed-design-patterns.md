@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 7e6981fb57421846b491693bb6195ecef31a3773
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986310"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450360"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>Azure Cosmos DB'de özet akışı tasarım modellerini değiştirme
 
@@ -99,7 +99,7 @@ Bir bölüm anahtar değeri içinde değişiklik akışında garantili sipariş 
 
 1. Müşteri alışveriş sepetine A öğesini ekler
 2. Müşteri alışveriş sepetine B öğesini ekler
-3. Müşteri, A maddesini alışveriş sepetinden kaldırır ekler
+3. Müşteri A maddesini alışveriş sepetinden kaldırır
 4. Müşteri çıkışları ve alışveriş sepeti içeriği sevk edilir
 
 Her müşteri için geçerli alışveriş sepeti içeriğinin somutlaştırılmış görünümü korunur. Bu uygulama, bu olayların oluştukları sırayla işlendiğinden emin olmalıdır. Örneğin, sepet ödemesi A maddesi kaldırılmadan önce işlenecekse, müşterinin istenen B maddesi yerine A maddesi sevk edilmiş olması olasıdır. Bu dört olayın oluş sırasına göre işlendiğini garanti etmek için, aynı bölüm anahtar değeri içinde düşmeleri gerekir. Bölüm anahtarı olarak **kullanıcı adını** (her müşterinin benzersiz bir kullanıcı adı vardır) seçerseniz, bu olayların Azure Cosmos DB'ye yazıldıkları sırayla değişiklik akışında görüneceğini garanti edebilirsiniz.

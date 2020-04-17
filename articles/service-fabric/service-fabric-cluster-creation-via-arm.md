@@ -3,17 +3,17 @@ title: Azure Hizmet Kumaşı kümesi oluşturma
 description: Azure Kaynak Yöneticisi'ni kullanarak Azure'da güvenli bir Hizmet Dokusu kümesini nasıl ayarlayamanızı öğrenin.  Varsayılan şablonu kullanarak veya kendi küme şablonunuzu kullanarak bir küme oluşturabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: 8cf14230f3abd37d91f1ec369f597ee594876100
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 24bc80a7ab3ce61b79466cdd943c60efd367ce01
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77624122"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458309"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Azure Kaynak Yöneticisi'ni kullanarak Hizmet Dokusu kümesi oluşturma 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
-> * [Azure portalında](service-fabric-cluster-creation-via-portal.md)
+> * [Azure portal](service-fabric-cluster-creation-via-portal.md)
 >
 >
 
@@ -251,7 +251,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ### <a name="use-a-pointer-to-a-secret-uploaded-into-a-key-vault"></a>Anahtar kasasına yüklenen gizli bir işaretçi kullanma
 
-Varolan bir anahtar kasasını kullanmak için, bilgi işlem kaynak sağlayıcısının ondan sertifika almasına ve küme düğümlerine yüklemesine izin vermek için dağıtım için anahtar kasasının [etkinleştirilmesi](../key-vault/key-vault-manage-with-cli2.md#bkmk_KVperCLI) gerekir.
+Varolan bir anahtar kasasını kullanmak için, bilgi işlem kaynak sağlayıcısının ondan sertifika almasına ve küme düğümlerine yüklemesine izin vermek için dağıtım için anahtar kasasının [etkinleştirilmesi](../key-vault/general/manage-with-cli2.md#bkmk_KVperCLI) gerekir.
 
 PowerShell'i kullanarak kümeyi dağıtın:
 

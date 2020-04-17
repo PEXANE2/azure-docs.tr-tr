@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 212624b857d65297830995018603c2627f83369b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252134"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453532"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Kapsayıcı Kayıt Defteri'nden Azure Kapsayıcı Örneklerine Dağıtma
 
@@ -36,7 +36,7 @@ Aşağıdaki bölümde, bir Azure anahtar kasası ve bir hizmet sorumlusu oluşt
 
 ### <a name="create-key-vault"></a>Anahtar kasası oluşturma
 
-[Azure Key Vault](../key-vault/key-vault-overview.md) içinde henüz bir kasanız yoksa, aşağıdaki komutları kullanarak Azure CLI ile bir kasa oluşturun.
+[Azure Key Vault](../key-vault/general/overview.md) içinde henüz bir kasanız yoksa, aşağıdaki komutları kullanarak Azure CLI ile bir kasa oluşturun.
 
 Değişkeni, `RES_GROUP` anahtar kasasını oluşturmak için varolan bir kaynak `ACR_NAME` grubunun adı ve kapsayıcı kayıt defterinizin adı ile güncelleştirin. Kısaltma için, bu makaledeki komutlar kayıt defterinizin, anahtar kasanızın ve kapsayıcı örneklerinin hepsinin aynı kaynak grubunda oluşturulduğunu varsayar.
 

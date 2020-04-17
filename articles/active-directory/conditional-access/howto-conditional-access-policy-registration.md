@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f69a94e17155ff93510d09f666bce12f628274f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c8081bb8145a6654c168fb2d664e1666b32dc18
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295167"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457918"
 ---
 # <a name="conditional-access-securing-security-info-registration"></a>Koşullu Erişim: Güvenlik bilgileri kaydının güvenliğini sağlama
 
@@ -32,9 +32,9 @@ Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmaya çal
 1. **Atamalar** **altında, Kullanıcıları ve grupları**seçin ve bu politikanın uygulanmasını istediğiniz kullanıcıları ve grupları seçin.
 
    > [!WARNING]
-   > Birleştirilmiş [kayıt önizlemesi](../authentication/howto-registration-mfa-sspr-combined.md)için kullanıcılar etkinleştirilmelidir.
+   > Birleştirilmiş [kayıt](../authentication/howto-registration-mfa-sspr-combined.md)için kullanıcılar etkinleştirilmelidir.
 
-1. **Bulut uygulamaları veya eylemleri**altında, Kullanıcı **eylemlerini**seçin, **Güvenlik bilgilerini kaydet (önizleme)** seçeneğini işaretleyin.
+1. **Bulut uygulamaları veya eylemleri**altında, Kullanıcı **eylemlerini**seçin, **Güvenlik bilgilerini kaydet'i denetleyin.**
 1. **Koşullar** > **Altında Yerler**.
    1. **Evet'i**yapılandır.
    1. **Herhangi bir konum**ekle.

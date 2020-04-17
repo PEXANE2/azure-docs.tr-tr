@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1cc047ee60cf8287f32a42b878371c5fc9680b7a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 6c75b9c2feeab32c139998f617cacf540733e3bd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985754"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456354"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>Temel Azure Depolama hizmetlerine giriş
 
@@ -131,7 +131,7 @@ Azure Depolama istemci kitaplıkları, istemci kitaplığından gelen verileri k
 
 ## <a name="redundancy"></a>Yedeklilik
 
-Verilerinizin dayanıklı olduğundan emin olmak için Azure Depolama, verilerinizin birden çok kopyasını depolar. Depolama hesabınızı ayarlarken, artıklık seçeneğini seçersiniz. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](/storage-redundancy?toc=/azure/storage/blobs/toc.json).
+Verilerinizin dayanıklı olduğundan emin olmak için Azure Depolama, verilerinizin birden çok kopyasını depolar. Depolama hesabınızı ayarlarken, artıklık seçeneğini seçersiniz. Daha fazla bilgi için bkz. [Azure Depolama yedekliliği](/azure/storage/common/storage-redundancy?toc=/azure/storage/blobs/toc.json).
 
 ## <a name="transfer-data-to-and-from-azure-storage"></a>Azure Depolama'ya veri aktarma
 

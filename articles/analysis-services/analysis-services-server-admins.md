@@ -4,21 +4,21 @@ description: Bu makalede, Azure portalı, PowerShell veya REST API'lerini kullan
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f7c57a5751f2ff34abb26b7653070ce4ee5010fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 944a84405bd7e03b72b2610278f9f0e4d3cfaf38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73572617"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454246"
 ---
 # <a name="manage-server-administrators"></a>Sunucu yöneticilerini yönetme
 
 Sunucu yöneticileri, sunucunun bulunduğu kiracı için Azure Etkin Dizini'nde (Azure AD) geçerli bir kullanıcı veya güvenlik grubu olmalıdır. Sunucu yöneticilerini yönetmek için Azure portalında sunucunuz için **Analiz Hizmetleri Yöneticileri,** SSMS, PowerShell veya REST API'deki Sunucu Özellikleri'ni kullanabilirsiniz. 
 
-**Güvenlik grupları,** `MailEnabled` '' olarak `True`ayarlanmış özellikle posta yla [etkinleştirilmelidir.](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) E-posta adresine göre `obj:groupid@tenantid`bir grup belirtirken kullanın.
+Bir **güvenlik grubu**eklerken, kullanın. `obj:groupid@tenantid`
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure portalını kullanarak sunucu yöneticileri eklemek için
 

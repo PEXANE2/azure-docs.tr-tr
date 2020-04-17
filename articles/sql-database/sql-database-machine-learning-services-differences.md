@@ -12,12 +12,13 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
-ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ROBOTS: NOINDEX
+ms.openlocfilehash: 34ba75b6126024c9cd43d6fe474f7c1b62dd990f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74462120"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453158"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Azure SQL Veritabanı'ndaki Machine Learning Services (önizleme) ve SQL Server arasındaki temel farklar
 
@@ -31,7 +32,7 @@ SQL Server [genişletilebilirlik çerçevesi](https://docs.microsoft.com/sql/adv
 
 - R, SQL Veritabanı'nda desteklenen tek dildir. Python desteği yoktur.
 - R sürümü 3.4.4 olduğunu.
-- `sp_configure`Üzerinden yapılandırmaya `external scripts enabled` gerek yoktur. [Kaydolduktan](sql-database-machine-learning-services-overview.md#signup)sonra SQL veritabanınız için makine öğrenimi etkinleştirilir.
+- `sp_configure`Üzerinden yapılandırmaya `external scripts enabled` gerek yoktur.
 
 ## <a name="package-management"></a>Paket yönetimi
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d4e76f4d02b0287770243bfddf995a19f90d232
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fafe4a9ef78a92595eaae942fa5d7cbeb2c07189
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73749455"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458224"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Şifreleme sorun giderme kılavuzu
 
@@ -35,7 +35,7 @@ Uygulanan tüm ağ güvenliği grubu ayarları, bitiş noktasının disk şifrel
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Güvenlik duvarının arkasındaki Azure Key Vault
 
-Azure AD kimlik [bilgileriyle](disk-encryption-windows-aad.md#)şifreleme etkinleştirilirken, hedef VM hem Azure Etkin Dizin uç noktalarına hem de Key Vault uç noktalarına bağlantı sağlar. Geçerli Azure Etkin Dizin kimlik doğrulama bitiş [noktaları, Office 365 URL'lerinin](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) 56 ve 59. Anahtar Vault yönergeleri, [güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/key-vault-access-behind-firewall.md)nasıl erişilene ilişkin belgelerde verilmiştir.
+Azure AD kimlik [bilgileriyle](disk-encryption-windows-aad.md#)şifreleme etkinleştirilirken, hedef VM hem Azure Etkin Dizin uç noktalarına hem de Key Vault uç noktalarına bağlantı sağlar. Geçerli Azure Etkin Dizin kimlik doğrulama bitiş [noktaları, Office 365 URL'lerinin](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) 56 ve 59. Anahtar Vault yönergeleri, [güvenlik duvarının arkasındaki Azure Anahtar Kasası'na](../../key-vault/general/access-behind-firewall.md)nasıl erişilene ilişkin belgelerde verilmiştir.
 
 ### <a name="azure-instance-metadata-service"></a>Azure Örneği Meta veri Hizmeti 
 VM, yalnızca VM içinden erişilebilen, iyi bilinen, routable olmayan BIR`169.254.169.254`IP adresi () kullanan [Azure Örneği Meta veri hizmet](../windows/instance-metadata-service.md) bitiş noktasına erişebilmeli.  Bu adrese yerel HTTP trafiğini değiştiren proxy yapılandırmaları (örneğin, X-Forwarded-For üstbilgisi eklemek) desteklenmez.
@@ -63,7 +63,7 @@ Bu sorunu çözmek için, aşağıdaki dört dosyayı Bir Windows Server 2016 Ve
 
 1. Birimleri denetlemek için DiskPart'i kullanın ve sonra devam edin.  
 
-Örnek:
+Örneğin:
 
 ```
 DISKPART> list vol

@@ -5,12 +5,12 @@ services: automation
 ms.date: 4/11/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: cf82dddf281e8e6f1348884702e32330dee4781b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57378005bd668fa9c0f2aea70c411bbf911130db
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278681"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457663"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dahili Güncelleme Yönetimi, Değişiklik İzleme ve Stok çözümleri
 
@@ -18,7 +18,7 @@ Azure Otomasyonu, işletim sistemi güvenlik güncelleştirmelerini yönetmek, d
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-https://portal.azure.com adresinden Azure'da oturum açın
+Azure'da oturum https://portal.azure.comaç.
 
 ## <a name="enable-solutions"></a>Çözümleri etkinleştirme
 
@@ -82,7 +82,7 @@ Otomasyon hesabınızdan **Configuration Management**altında **Stok** veya **De
 
 Azure'da olmayan makinelerin el ile eklenmesi gerekir. Otomasyon hesabınızdan **Configuration Management**altında **Stok** veya **Değişiklik izlemeyi** seçin veya Update yönetimi altında **güncelleştir** **yönetimini güncelleştirin.**
 
-**Azure olmayan makine ekle'yi**tıklatın. Bu eylem, makinenin çözüme raporlamaya başlayabilmesi [için Microsoft İzleme Aracısını makineye nasıl yükleyip yapılandıracağınıgösteren yönergeleri](../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda System Center Operations Manager tarafından yönetilen bir makinede yatmaktaysanız, yeni bir aracı gerekli değildir, çalışma alanı bilgileri varolan aracıya girilir.
+**Azure olmayan makine ekle'yi**tıklatın. Bu eylem, makinenin çözüme raporlamaya başlayabilmesi [için Windows için Log Analytics aracısını yüklemek ve yapılandırmak için yönergeleri](../azure-monitor/platform/log-analytics-agent.md) içeren yeni bir tarayıcı penceresi açar. Şu anda System Center Operations Manager tarafından yönetilen bir makinede yatmaktaysanız, yeni bir aracı gerekmez ve çalışma alanı bilgileri varolan aracıya girilir.
 
 ## <a name="onboard-machines-in-the-workspace"></a>Çalışma alanında yerleşik makineler
 
@@ -110,7 +110,7 @@ Bir veya daha fazla makine için çözümü etkinleştirmek **için, seçili mak
 
 Aşağıdaki çözümler Bir Log Analytics çalışma alanına bağlıdır:
 
-* [Güncelleme Yönetimi](automation-update-management.md)
+* [Güncelleştirme Yönetimi](automation-update-management.md)
 * [Değişiklik İzleme](automation-change-tracking.md)
 * [Mesai saatleri dışında VM'leri Başlatma/Durdurma](automation-solution-vm-management.md)
 
@@ -150,7 +150,7 @@ Alternatif olarak, Çalışma alanınızı Otomasyon Hesabınızdan Günlük Ana
 Güncelleştirme Yönetimi'nden bir VM kaldırmak için:
 
 * Günlük Analizi çalışma alanınızda, Kapsam Yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
-* Linux için [Microsoft İzleme aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+* Windows [için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

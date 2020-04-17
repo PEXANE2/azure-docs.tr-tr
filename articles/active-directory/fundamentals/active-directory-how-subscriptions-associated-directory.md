@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f44e9a1e43da2b9ce6c817898c1722fba715c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262184"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457935"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme
 
@@ -85,7 +85,7 @@ Abonelik dizinini değiştirmek hizmet düzeyinde bir işlemdir, bu nedenle abon
 
 Bir aboneliği farklı bir dizine ilişkilendirdikten sonra, işlemleri sürdürmek için aşağıdaki görevleri yapmanız gerekebilir:
 
-- Anahtar kasanız varsa, anahtar kasa kiracı kimliğini değiştirmeniz gerekir. Daha fazla bilgi için [bkz.](../../key-vault/key-vault-subscription-move-fix.md)
+- Anahtar kasanız varsa, anahtar kasa kiracı kimliğini değiştirmeniz gerekir. Daha fazla bilgi için [bkz.](../../key-vault/general/subscription-move-fix.md)
 
 - Kaynaklar için sistem tarafından atanan Yönetilen Kimlikler kullandıysanız, bu kimlikleri yeniden etkinleştirmeniz gerekir. Kullanıcı tarafından atanan Yönetilen Kimlikler kullandıysanız, bu kimlikleri yeniden oluşturmanız gerekir. Yönetilen Kimlikler'i yeniden etkinleştirdikten veya yeniden oluşturduktan sonra, bu kimliklere atanan izinleri yeniden oluşturmanız gerekir. Daha fazla bilgi için azure [kaynakları için yönetilen kimlikler nedir?](../managed-identities-azure-resources/overview.md)
 

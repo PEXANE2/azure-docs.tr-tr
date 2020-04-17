@@ -4,15 +4,15 @@ description: Azure'daki bir Analiz Hizmetleri sunucusunda veritabanı rollerini 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 51c01869e6152d8e9357644457df11f4fcf5ec5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7e3cc2b9d35eafcb875efa167821a8e9ad80146
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78273692"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454212"
 ---
 # <a name="manage-database-roles-and-users"></a>Veritabanı rollerini ve kullanıcılarını yönetme
 
@@ -25,10 +25,9 @@ Rol izinleri şunlardır:
 *  **İşlem** - Kullanıcılar veritabanına bağlanabilir ve işlem işlemleri gerçekleştirebilir ve model veritabanı verilerini analiz edebilir.
 *  **Oku** - Kullanıcılar model veritabanı verilerine bağlanmak ve çözümlemek için bir istemci uygulamasını kullanabilir.
 
-Bir tabular model projesi oluştururken, Analiz Hizmetleri projeleri ile Visual Studio Role Manager kullanarak rolleri oluşturur ve bu rollere kullanıcı veya gruplar eklersiniz. Bir sunucuya dağıtıldığında, rolleri ve kullanıcı üyelerini eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [Tabular Model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) kullanırsınız.
+Bir tabular model projesi oluştururken, Analiz Hizmetleri projeleri ile Visual Studio Role Manager kullanarak rolleri oluşturur ve bu rollere kullanıcı veya gruplar eklersiniz. Bir sunucuya dağıtıldığında, rolleri ve kullanıcı üyelerini eklemek veya kaldırmak için SQL Server Management Studio (SSMS), [Analysis Services PowerShell cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)veya [Tabular Model Scripting Language](https://docs.microsoft.com/analysis-services/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) kullanın.
 
-**Güvenlik grupları,** `MailEnabled` '' olarak `True`ayarlanmış özellikle posta yla [etkinleştirilmelidir.](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) E-posta adresine göre `obj:groupid@tenantid`bir grup belirtirken kullanın.
-
+Bir **güvenlik grubu**eklerken, kullanın. `obj:groupid@tenantid`
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Visual Studio'da rol ve kullanıcı eklemek veya yönetmek için  
   

@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 487559aaf632a30b7efcda490f92a90d4f59b8f5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 9f2ed6ea8cc75e2ee72f15c14f3de7bb8bf8cef6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883483"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450896"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory uygulama bildirimi
 
-Uygulama bildirimi, Microsoft kimlik platformundaki bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca, uygulama nesnesini güncelleştirmek için bir mekanizma olarak da hizmet vermektedir. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Grafik API Uygulama varlık belgelerine](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)bakın.
+Uygulama bildirimi, Microsoft kimlik platformundaki bir uygulama nesnesinin tüm özniteliklerinin tanımını içerir. Ayrıca, uygulama nesnesini güncelleştirmek için bir mekanizma olarak da hizmet vermektedir. Uygulama varlığı ve şeması hakkında daha fazla bilgi için [Grafik API Uygulama varlık belgelerine](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity)bakın.
 
 Bir uygulamanın özniteliklerini Azure portalı üzerinden veya [REST API](https://docs.microsoft.com/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#application-entity) veya [PowerShell'i](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#applications)kullanarak programlı olarak yapılandırabilirsiniz. Ancak, bir uygulamanın özniteliğini yapılandırmak için uygulama bildirimini yeniden yapılandırmanız gereken bazı senaryolar vardır. Bu senaryolar şunlardır:
 
@@ -40,6 +40,20 @@ Uygulama bildirimini yapılandırmak için:
 ## <a name="manifest-reference"></a>Bildirim başvurusu
 
 Bu bölümde, uygulama bildiriminde bulunan öznitelikler açıklanmaktadır.
+
+### <a name="id-attribute"></a>id özniteliği
+
+| Anahtar | Değer türü |
+| :--- | :--- |
+| id | Dize |
+
+Dizindeki uygulama için benzersiz tanımlayıcı. Bu kimlik, herhangi bir protokol hareketinde uygulamayı tanımlamak için kullanılan tanımlayıcı değildir. Dizin sorgularında nesneye başvurmak için kullanılır.
+
+Örnek:
+
+```json
+    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
+```
 
 ### <a name="accesstokenacceptedversion-attribute"></a>accessTokenAcceptedVersion özniteliği
 
@@ -230,19 +244,7 @@ Bu yalnızca Uygulama **kayıtları (Eski)** deneyiminde kullanılabilir. [Uygul
     "optionalClaims": null,
 ```
 
-### <a name="id-attribute"></a>id özniteliği
 
-| Anahtar | Değer türü |
-| :--- | :--- |
-| id | Dize |
-
-Dizindeki uygulama için benzersiz tanımlayıcı. Bu kimlik, herhangi bir protokol hareketinde uygulamayı tanımlamak için kullanılan tanımlayıcı değildir. Dizin sorgularında nesneye başvurmak için kullanılır.
-
-Örnek:
-
-```json
-    "id": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
 
 ### <a name="identifieruris-attribute"></a>identifierUris özniteliği
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 5749b2fc58c4e1c5c75142f85a5132946714e25b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472641"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457442"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Uygulama Yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanma
 Azure Uygulama [Yapılandırması, hassas bilgileri istirahatte şifreler.](../security/fundamentals/encryption-atrest.md) Müşteri tarafından yönetilen anahtarların kullanımı, şifreleme anahtarlarınızı yönetmenize izin vererek gelişmiş veri koruması sağlar.  Yönetilen anahtar şifrelemesi kullanıldığında, App Configuration'daki tüm hassas bilgiler kullanıcı tarafından sağlanan Azure Key Vault anahtarıyla şifrelenir.  Bu, şifreleme anahtarını isteğe bağlı olarak döndürme olanağı sağlar.  Ayrıca, Uygulama Yapılandırması örneğinin anahtara erişimini iptal ederek Azure Uygulama Yapılandırması'nın hassas bilgilere erişimini iptal etme olanağı da sağlar.
@@ -20,7 +20,7 @@ Azure Uygulama [Yapılandırması, hassas bilgileri istirahatte şifreler.](../s
 Azure Uygulama Yapılandırması, Microsoft tarafından sağlanan 256 bit AES şifreleme anahtarını kullanarak hassas bilgileri istirahatte şifreler. Her Uygulama Yapılandırma örneğinin, hizmet tarafından yönetilen ve hassas bilgileri şifrelemek için kullanılan kendi şifreleme anahtarı vardır. Hassas bilgiler, anahtar değer çiftlerinde bulunan değerleri içerir.  Müşteri tarafından yönetilen anahtar özelliği etkinleştirildiğinde, App Configuration Azure Etkin Dizini ile kimlik doğrulaması yapmak için Uygulama Yapılandırması örneğine atanmış yönetilen bir kimlik kullanır. Yönetilen kimlik daha sonra Azure Key Vault'u arar ve Uygulama Yapılandırma örneği şifreleme anahtarını sarar. Sarılmış şifreleme anahtarı daha sonra depolanır ve paketlenmemiş şifreleme anahtarı App Configuration içinde bir saat önbelleğe çıkar. Uygulama Yapılandırması, App Configuration örneğinin şifreleme anahtarının paketlenmemiş sürümünü saatlik olarak yeniler. Bu, normal çalışma koşullarında kullanılabilirliği sağlar. 
 
 >[!IMPORTANT]
-> Uygulama Yapılandırması örneğine atanan kimlik artık örneğin şifreleme anahtarını açma yetkisine sahip değilse veya yönetilen anahtar kalıcı olarak silinirse, Uygulamada depolanan hassas bilgilerin şifresini çözmek artık mümkün olmayacaktır Yapılandırma örneği. Azure Key Vault'un [yumuşak silme](../key-vault/key-vault-ovw-soft-delete.md) işlevini kullanmak, şifreleme anahtarınızı yanlışlıkla silme şansını azaltır.
+> Uygulama Yapılandırması örneğine atanan kimlik artık örneğin şifreleme anahtarını açmaya yetkili değilse veya yönetilen anahtar kalıcı olarak silinirse, Uygulama Yapılandırması örneğinde depolanan hassas bilgilerin şifresini çözmek artık mümkün olmayacaktır. Azure Key Vault'un [yumuşak silme](../key-vault/general/overview-soft-delete.md) işlevini kullanmak, şifreleme anahtarınızı yanlışlıkla silme şansını azaltır.
 
 Kullanıcılar Azure Uygulama Yapılandırma örneğinde müşterinin yönetilen anahtar özelliğini etkinleştirdiklerinde, hizmetin hassas bilgilerine erişme yeteneğini denetler. Yönetilen anahtar bir kök şifreleme anahtarı olarak hizmet vermektedir. Bir kullanıcı, anahtar kasa erişim ilkesini değiştirerek Uygulama Yapılandırma örneğinin yönetilen anahtarına erişimini iptal edebilir. Bu erişim iptal edildiğinde, App Configuration bir saat içinde kullanıcı verilerinin şifresini çözme yeteneğini kaybeder. Bu noktada, Uygulama Yapılandırması örneği tüm erişim denemelerini yasaklar. Bu durum, yönetilen anahtara bir kez daha hizmet erişimi vererek kurtarılabilir.  Bir saat içinde, App Configuration kullanıcı verilerinin şifresini çözebilecek ve normal koşullarda çalışabilecek.
 

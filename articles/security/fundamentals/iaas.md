@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: fadf07f312c86f8ca15f5a97ebbe99e84bcffc89
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548240"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450046"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure'da IaaS iş yükleri için en iyi güvenlik yöntemleri
 Bu makalede, VM'ler ve işletim sistemleri için güvenlik en iyi uygulamaları açıklanmaktadır.
@@ -155,7 +155,7 @@ Azure Disk Şifrelemesi'ni kullanmak için en iyi uygulamalar şunlardır:
 **Ayrıntı**: Azure Disk Şifreleme, anahtar kasanızın şifreleme anahtarlarını oluşturur ve yazar. Anahtar kasanızda şifreleme anahtarlarını yönetmek için Azure AD kimlik doğrulaması gerekir. Bu amaçla bir Azure AD uygulaması oluşturun. Kimlik doğrulama amacıyla, istemci gizli tabanlı kimlik doğrulaması veya [istemci sertifikası tabanlı Azure AD kimlik doğrulaması](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)kullanabilirsiniz.
 
 **En iyi yöntem:** Şifreleme anahtarları için ek bir güvenlik katmanı için anahtar şifreleme anahtarı (KEK) kullanın. Anahtar kasanıza bir KEK ekleyin.   
-**Ayrıntı**: Anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet'i kullanın. Ayrıca, anahtar yönetimi için şirket içi donanım güvenlik modülünüzden (HSM) bir KEK de içe aktarabilirsiniz. Daha fazla bilgi için [Key Vault belgelerine](../../key-vault/key-vault-hsm-protected-keys.md)bakın. Bir anahtar şifreleme anahtarı belirtildiğinde, Azure Disk Şifreleme, Key Vault'a yazmadan önce şifreleme sırlarını sarmak için bu anahtarı kullanır. Bu anahtarın emanet kopyasını şirket içi anahtar yönetimi HSM'de tutmak, anahtarların yanlışlıkla silinmesine karşı ek koruma sağlar.
+**Ayrıntı**: Anahtar kasasında anahtar şifreleme anahtarı oluşturmak için [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) cmdlet'i kullanın. Ayrıca, anahtar yönetimi için şirket içi donanım güvenlik modülünüzden (HSM) bir KEK de içe aktarabilirsiniz. Daha fazla bilgi için [Key Vault belgelerine](../../key-vault/keys/hsm-protected-keys.md)bakın. Bir anahtar şifreleme anahtarı belirtildiğinde, Azure Disk Şifreleme, Key Vault'a yazmadan önce şifreleme sırlarını sarmak için bu anahtarı kullanır. Bu anahtarın emanet kopyasını şirket içi anahtar yönetimi HSM'de tutmak, anahtarların yanlışlıkla silinmesine karşı ek koruma sağlar.
 
 **En iyi yöntem**: Diskler şifrelenmeden önce [anlık görüntü](../../virtual-machines/windows/snapshot-copy-managed-disk.md) ve/veya yedekleme alın. Şifreleme sırasında beklenmeyen bir hata olursa yedeklemeler bir kurtarma seçeneği sağlar.   
 **Ayrıntı**: Yönetilen disklere sahip VM'ler şifreleme oluşmadan önce yedekleme gerektirir. Yedekleme yapıldıktan *sonra,-skipVmBackup* parametresini belirterek yönetilen diskleri şifrelemek için **Set-AzVMDiskEncryptionExtension** cmdlet'ini kullanabilirsiniz. Şifreli VM'leri yedekleme ve geri yükleme hakkında daha fazla bilgi için [Azure Yedekleme](../../backup/backup-azure-vms-encryption.md) makalesine bakın.

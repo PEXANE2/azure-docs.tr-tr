@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c3491a54682e8f2b244c0400480a69e083335f5c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 1e08e758fbba911d3391794f5bab31aaf6a5fc73
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81008399"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454688"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Veri Şifreleme-at-Rest
 
@@ -163,7 +163,7 @@ Azure Key Vault'ta müşteri tarafından yönetilen anahtarlara sahip sunucu tar
 Veri şifreleme veya şifre çözme de use kullanmak için bir anahtar elde etmek için kaynak yöneticisi hizmet örneği unwrapkey (şifre çözme için anahtar almak için) ve WrapKey (yeni bir anahtar oluştururken anahtar kasasına bir anahtar eklemek için) olması gerektiği gibi çalışacak hizmet kimliği dinlenme hizmet kimliği.
 
 >[!NOTE]
->Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için [Azure Anahtar Kasası belgelerinde](../../key-vault/key-vault-secure-your-key-vault.md)anahtar kasası sayfanıza bakın.
+>Key Vault yetkilendirmesi hakkında daha fazla ayrıntı için [Azure Anahtar Kasası belgelerinde](../../key-vault/general/secure-your-key-vault.md)anahtar kasası sayfanıza bakın.
 
 **Avantaj -ları**
 
@@ -282,7 +282,7 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Azure Veri Kataloğu               | Evet                | -                  | -                  |
 | Azure HDInsight                  | Evet                | Tümü                | -                  |
 | Azure Monitör Uygulama Öngörüleri | Evet                | Evet                | -                  |
-| Azure Monitör Günlük Analizi | Evet                | Evet                | -                  |
+| Azure Monitör Günlük Analizi      | Evet                | Evet                | -                  |
 | Azure Veri Gezgini              | Evet                | Evet                | -                  |
 | Azure Data Factory               | Evet                | Evet                | -                  |
 | Azure Data Lake Store            | Evet                | Evet, RSA 2048-bit  | -                  |
@@ -294,11 +294,12 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Virtual Machines                 | Evet                | Evet, RSA 2048-bit  | -                  |
 | Sanal Makine Ölçek Seti        | Evet                | Evet, RSA 2048-bit  | -                  |
 | SAP HANA                         | Evet                | Evet, RSA 2048-bit  | -                  |
-| App Service                      | Evet                | Evet                | -                  |
-| Otomasyon                       | Evet                | Evet                | -                  |
-| Azure Portal                     | Evet                | Evet                | -                  |
+| App Service                      | Evet                | Evet\*\*            | -                  |
+| Otomasyon                       | Evet                | Evet\*\*            | -                  |
+| Azure İşlevleri                  | Evet                | Evet\*\*            | -                  |
+| Azure Portal                     | Evet                | Evet\*\*            | -                  |
 | Logic Apps                       | Evet                | Evet                | -                  |
-| Azure Yönetilen Uygulamalar       | Evet                | Evet                | -                  |
+| Azure Yönetilen Uygulamalar       | Evet                | Evet\*\*            | -                  |
 | Service Bus                      | Evet                | Evet                | -                  |
 | Site Recovery                    | Evet                | Evet                | -                  |
 | **Veritabanları**                    |                    |                    |                    |
@@ -312,6 +313,7 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Tablo Depolama                    | Evet                | Evet                | Evet                |
 | Azure Cosmos DB                  | Evet                | Evet                | -                  |
 | Azure Databricks                 | Evet                | Evet                | -                  |
+| Azure Veritabanı Geçiş Hizmeti | Evet                | Yok\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps Services            | Evet                | -                  | Evet                |
 | Azure Repos                      | Evet                | -                  | Evet                |
@@ -344,6 +346,7 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Dosya Eşitleme                        | Evet                | Evet, RSA 2048-bit  | -                  |
 | Kuyruk Depolama                    | Evet                | Evet                | Evet                |
 | Avere vFXT                       | Evet                | -                  | -                  |
+| Redis için Azure Önbelleği            | Evet                | Yok\*              | -                  |
 | Azure NetApp Files               | Evet                | Evet                | -                  |
 | Arşiv Depolama                  | Evet                | Evet, RSA 2048-bit  | -                  |
 | StorSimple                       | Evet                | Evet, RSA 2048-bit  | Evet                |
@@ -352,6 +355,8 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Data Box Edge                    | Evet                | Evet                | -                  |
 
 \*Bu hizmet verileri kalıcı olarak devam etmez. Geçici önbellekler, varsa, bir Microsoft anahtarı ile şifrelenir.
+
+\*\*Bu hizmet, verileri kendi Key Vault, Storage Account veya Müşteri Tarafından Yönetilen Anahtarla Sunucu Tarafı Şifrelemesini zaten destekleyen diğer veri kalıcı hizmetinizde depolamayı destekler.
 
 ## <a name="conclusion"></a>Sonuç
 

@@ -7,16 +7,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: eec5b42da709ab5e79da42f11600f6ffc81d247e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 30fa6b910c0241621c2b2cdae9bb9a164f27cedb
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76279009"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454552"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma
 
-Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol etmek ve yönetmek için Azure Key Vault'u kullanır.  Anahtar kasaları hakkında daha fazla bilgi için Azure Key Vault ve [Secure anahtar kasanızı](../key-vault/key-vault-secure-your-key-vault.md) [ile işe başlayın.](../key-vault/key-vault-get-started.md)
+Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol etmek ve yönetmek için Azure Key Vault'u kullanır.  Anahtar kasaları hakkında daha fazla bilgi için Azure Key Vault ve [Secure anahtar kasanızı](../key-vault/general/secure-your-key-vault.md) [ile işe başlayın.](../key-vault/key-vault-get-started.md)
 
 Azure Disk Şifrelemesi ile kullanılmak üzere anahtar kasa oluşturma ve yapılandırma üç adım içerir:
 

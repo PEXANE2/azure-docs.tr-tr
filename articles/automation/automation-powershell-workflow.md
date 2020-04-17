@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278694"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457544"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Otomasyon runbook'ları için temel Windows PowerShell İş Akışı kavramlarını öğrenme
 
@@ -20,9 +20,12 @@ Azure Otomasyonundaki runbook'lar Windows PowerShell İş Akışları olarak uyg
 
 Bu makaledeki konular la ilgili tüm ayrıntılar için Windows [PowerShell İş Akışıyla Başlarken'e](https://technet.microsoft.com/library/jj134242.aspx)bakın.
 
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+
 ## <a name="basic-structure-of-a-workflow"></a>İş akışının temel yapısı
 
-PowerShell komut dosyasını PowerShell iş akışına dönüştürmenin ilk adımı, komut dosyasını **İş Akışı** anahtar sözcüğüyle çevrelemektir.  İş akışı, **iş akışı** anahtar sözcüğüyle başlar ve ardından parantez içinde bulunan komut dosyasının gövdesi tarafından izlenmiştir. İş akışının adı, aşağıdaki sözdiziminde gösterildiği gibi **İş Akışı** anahtar sözcüklerini izler:
+PowerShell komut dosyasını PowerShell iş akışına dönüştürmenin ilk adımı, komut dosyasını `Workflow` anahtar kelimeyle çevrelemektir.  İş `Workflow` akışı, parantez içinde bulunan komut dosyasının gövdesitarafından izlenen anahtar sözcük ile başlar. İş akışının adı, `Workflow` aşağıdaki sözdiziminde gösterildiği gibi anahtar kelimeyi izler:
 
 ```powershell
 Workflow Test-Workflow
@@ -33,7 +36,7 @@ Workflow Test-Workflow
 
 İş akışının adı Otomasyon runbook'un adı ile eşleşmelidir. Runbook içe aktarılıyorsa, dosya adı iş akışı adı yla eşleşmeli ve *.ps1*ile bitmelidir.
 
-İş akışına parametreler eklemek için, **param** anahtar sözcüklerini tıpkı bir komut dosyasında olduğu gibi kullanın.
+İş akışına parametreler eklemek için, anahtar kelimeyi `Param` tıpkı bir komut dosyasında olduğu gibi kullanın.
 
 ## <a name="code-changes"></a>Kod değişiklikleri
 
@@ -99,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-**InlineScript** etkinliği, PowerShell iş akışı yerine geleneksel PowerShell komut dosyası olarak bir veya daha fazla komut çalıştırmanız gerektiğinde kullanışlıdır.  Bir iş akışındaki komutlar işlenmek üzere Windows Workflow Foundation'a gönderilirken, bir InlineScript bloğundaki komutlar Windows PowerShell tarafından işlenir.
+Etkinlik,`InlineScript` PowerShell iş akışı yerine geleneksel PowerShell komut dosyası olarak bir veya daha fazla komut çalıştırmanız gerektiğinde yararlıdır.  Bir iş akışındaki komutlar işlenmek üzere Windows Workflow Foundation'a gönderilirken, bir InlineScript bloğundaki komutlar Windows PowerShell tarafından işlenir.
 
 InlineScript aşağıda gösterilen aşağıdaki sözdizimini kullanır.
 
@@ -154,7 +157,7 @@ InlineScript'i kullanma hakkında daha fazla bilgi için, [Bir İş Akışında 
 
 Windows PowerShell İş Akışlarının bir avantajı da bir komutlar kümesini tipik bir betikteki gibi sırayla yürütmek yerine paralel olarak gerçekleştirebilmesidir.
 
-**Paralel** anahtar sözcüğü, aynı anda çalışan birden çok komutiçeren bir komut dosyası bloğu oluşturmak için kullanabilirsiniz. Bu, aşağıda gösterilen aşağıdaki sözdizimini kullanır. Bu durumda, Etkinlik1 ve Etkinlik2 aynı anda başlar. Etkinlik3 yalnızca Hem Etkinlik1 hem de Etkinlik2 tamamlandıktan sonra başlar.
+Aynı anda `Parallel` çalışan birden çok komutiçeren bir komut dosyası bloğu oluşturmak için anahtar kelimeyi kullanabilirsiniz. Bu, aşağıda gösterilen aşağıdaki sözdizimini kullanır. Bu durumda, Etkinlik1 ve Etkinlik2 aynı anda başlar. Etkinlik3 yalnızca Hem Etkinlik1 hem de Etkinlik2 tamamlandıktan sonra başlar.
 
 ```powershell
 Parallel
@@ -189,7 +192,7 @@ Workflow Copy-Files
 }
 ```
 
-**ForEach -Paralel** yapısını, bir koleksiyondaki her öğe için komutları aynı anda işlemek için kullanabilirsiniz. Betik bloğundaki komutlar sırayla yürütülürken koleksiyondaki öğeler paralel olarak işlenir. Bu, aşağıda gösterilen aşağıdaki sözdizimini kullanır. Bu durumda, Etkinlik1 koleksiyondaki tüm öğeler için aynı anda başlar. Her öğe için Etkinlik2 Etkinlik1 tamamlandıktan sonra başlar. Etkinlik3, yalnızca tüm öğeler için Hem Etkinlik1 hem de Etkinlik2 tamamlandıktan sonra başlar. `ThrottleLimit` Paralelliği sınırlamak için parametreyi kullanırız. Çok yüksek `ThrottleLimit` bir soruna neden olabilir. `ThrottleLimit` Parametre için ideal değer ortamınızdaki birçok etkene bağlıdır. Düşük bir değerle başlamayı denemeli ve belirli durumunuziçin uygun bir değer bulana kadar farklı artan değerleri denemelisiniz.
+Bir koleksiyondaki her öğe için komutları eşzamanlı olarak işlemek için `ForEach -Parallel` yapısını kullanabilirsiniz. Betik bloğundaki komutlar sırayla yürütülürken koleksiyondaki öğeler paralel olarak işlenir. Bu, aşağıda gösterilen aşağıdaki sözdizimini kullanır. Bu durumda, Etkinlik1 koleksiyondaki tüm öğeler için aynı anda başlar. Her öğe için Etkinlik2 Etkinlik1 tamamlandıktan sonra başlar. Etkinlik3, yalnızca tüm öğeler için Hem Etkinlik1 hem de Etkinlik2 tamamlandıktan sonra başlar. `ThrottleLimit` Paralelliği sınırlamak için parametreyi kullanırız. Çok yüksek `ThrottleLimit` bir soruna neden olabilir. `ThrottleLimit` Parametre için ideal değer ortamınızdaki birçok etkene bağlıdır. Düşük bir değerle başlamayı denemeli ve belirli durumunuziçin uygun bir değer bulana kadar farklı artan değerleri denemelisiniz.
 
 ```powershell
 ForEach -Parallel -ThrottleLimit 10 ($<item> in $<collection>)
@@ -222,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>Kontrol noktaları
 
-*Denetim noktası,* değişkenlerin geçerli değerini ve bu noktaya kadar oluşturulan çıktıyı içeren iş akışının geçerli durumunun anlık görüntüsüdür. Bir iş akışı yanlışlıkla biterse veya askıya alınırsa, bir sonraki çalıştırılında iş akışının başlangıcı yerine son denetim noktasından başlar.  **Checkpoint-Workflow** etkinliğini kullanarak bir iş akışında denetim noktası ayarlayabilirsiniz. Azure Otomasyonu, diğer runbook'ların çalışmasına izin vermek için 3 saat çalışan tüm runbook'ların boşaltıldığı [adil paylaşım](automation-runbook-execution.md#fair-share)adı verilen bir özelliğe sahiptir. Sonunda, boşaltılan runbook yeniden yüklenir ve olduğunda, runbook alınan son denetim noktasından yürütme devam edecektir. Runbook'un sonunda tamamlaşacağını garanti etmek için, 3 saatten az çalışan aralıklarla denetim noktaları eklemeniz gerekir. Her çalıştırma sırasında yeni bir denetim noktası eklenirse ve runbook bir hata nedeniyle 3 saat sonra tahliye edilirse, runbook süresiz olarak devam ettirilir.
+*Denetim noktası,* değişkenlerin geçerli değerini ve bu noktaya kadar oluşturulan çıktıyı içeren iş akışının geçerli durumunun anlık görüntüsüdür. Bir iş akışı yanlışlıkla biterse veya askıya alınırsa, bir sonraki çalıştırılında iş akışının başlangıcı yerine son denetim noktasından başlar.  `Checkpoint-Workflow` Etkinlikle birlikte iş akışında bir denetim noktası ayarlayabilirsiniz. Azure Otomasyonu, diğer runbook'ların çalışmasına izin vermek için 3 saat çalışan tüm runbook'ların boşaltıldığı [adil paylaşım](automation-runbook-execution.md#fair-share)adı verilen bir özelliğe sahiptir. Sonunda, boşaltılan runbook yeniden yüklenir ve olduğunda, runbook alınan son denetim noktasından yürütme devam edecektir. Runbook'un sonunda tamamlaşacağını garanti etmek için, 3 saatten az çalışan aralıklarla denetim noktaları eklemeniz gerekir. Her çalıştırma sırasında yeni bir denetim noktası eklenirse ve runbook bir hata nedeniyle 3 saat sonra tahliye edilirse, runbook süresiz olarak devam ettirilir.
 
 Aşağıdaki örnek kodda, Etkinlik2'den sonra iş akışının sona ermesine neden olan bir özel durum oluşur. İş akışı yeniden çalıştırıldığında, son denetim noktası kümesinden hemen sonra olduğundan Etkinlik2'yi çalıştırarak başlar.
 
@@ -254,36 +257,37 @@ Workflow Copy-Files
 }
 ```
 
-Kullanıcı adı kimlik bilgileri [Askıya Alma-İş Akışı](https://technet.microsoft.com/library/jj733586.aspx) etkinliğini aradıktan sonra veya son denetim noktasından sonra kalıcı olmadığından, kimlik bilgilerini null'a ayarlamanız ve **Askıya Alma İş Akışı** veya denetim noktası çağrıldıktan sonra varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisi alabilirsiniz: *Kalıcılık verileri tamamen kaydedilemediği veya kaydedilmiş kalıcılık verileri bozulduğu için iş akışı işi sürdürülemez. İş akışını yeniden başlatmanız gerekir.*
+Kullanıcı adı kimlik bilgileri [Askıya Alma-İş Akışı](https://technet.microsoft.com/library/jj733586.aspx) etkinliğini aradıktan sonra veya son denetim noktasından sonra kalıcı olmadığından, kimlik `Suspend-Workflow` bilgilerini null'a ayarlamanız ve sonra veya denetim noktası çağrıldıktan sonra varlık deposundan yeniden almanız gerekir.  Aksi takdirde, aşağıdaki hata iletisini alabilirsiniz:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 Aşağıdaki aynı kod, PowerShell İş Akışı runbook'larınızda bunu nasıl işleyeceğinizgösterilmektedir.
 
 ```powershell
 workflow CreateTestVms
 {
-    $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-    $null = Connect-AzureRmAccount -Credential $Cred
+    $Cred = Get-AzAutomationCredential -Name "MyCredential"
+    $null = Connect-AzAccount -Credential $Cred
 
-    $VmsToCreate = Get-AzureAutomationVariable -Name "VmsToCreate"
+    $VmsToCreate = Get-AzAutomationVariable -Name "VmsToCreate"
 
     foreach ($VmName in $VmsToCreate)
         {
         # Do work first to create the VM (code not shown)
 
         # Now add the VM
-        New-AzureRmVm -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
+        New-AzVM -VM $Vm -Location "WestUs" -ResourceGroupName "ResourceGroup01"
 
         # Checkpoint so that VM creation is not repeated if workflow suspends
         $Cred = $null
         Checkpoint-Workflow
-        $Cred = Get-AzureAutomationCredential -Name "MyCredential"
-        $null = Connect-AzureRmAccount -Credential $Cred
+        $Cred = Get-AzAutomationCredential -Name "MyCredential"
+        $null = Connect-AzAccount -Credential $Cred
         }
 }
 ```
 
-> [!IMPORTANT]
-> **Add-AzureRmAccount** artık **Connect-AzureRMAccount**takma adıdır. Kitaplık öğelerinizde arama yaparken, **Connect-AzureRMAccount'u** **görmüyorsanız, Ekle-AzureRmAccount'u**kullanabilir veya modüllerinizi Otomasyon Hesabınızda güncelleyebilirsiniz.
+> [!NOTE]
+> Grafiksel olmayan PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlardır. Bu cmdlets'i kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](automation-update-azure-modules.md) en son sürümlere güncelleyebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncellemeniz gerekebilir.
+
 
 Bir hizmet sorumlusu ile yapılandırılan Bir Çalıştır Hesabı kullanarak kimlik doğrulaması kullanıyorsanız, bu gerekli değildir.
 

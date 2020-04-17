@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a7077b5e94800d93833f259fefd0cd4c168ec867
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ddcb47bfe8ba2b77efd8ff0aed52f1412107f0c5
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811450"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456507"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-importexport-service"></a>Alma/Dışa Aktarma hizmeti için Azure Anahtar Kasası'nda müşteri tarafından yönetilen anahtarları kullanma
 
 Azure İçe Aktarma/Verme, sürücüleri şifreleme anahtarı yla kilitlemek için kullanılan BitLocker anahtarlarını korur. Varsayılan olarak, BitLocker anahtarları Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için müşteri tarafından yönetilen anahtarlar da sağlayabilirsiniz.
 
-Müşteri tarafından yönetilen anahtarlar oluşturulmalı ve Azure Anahtar Kasası'nda depolanmalıdır. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
+Müşteri tarafından yönetilen anahtarlar oluşturulmalı ve Azure Anahtar Kasası'nda depolanmalıdır. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
 
 Bu makalede, [Azure portalında](https://portal.azure.com/)Alma/Dışa Aktarma hizmeti yle müşteri tarafından yönetilen anahtarların nasıl kullanılacağı gösterilmektedir.
 
@@ -33,12 +33,12 @@ Başlamadan önce şunlardan emin olun:
     - [Dosyalar için bir alma işi oluşturun.](storage-import-export-data-to-files.md)
     - [Lekeler için bir dışa aktarma işi oluşturma](storage-import-export-data-from-blobs.md)
 
-2. BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtar bulunan mevcut bir Azure Anahtar Kasası'na sahipsiniz. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/quick-create-portal.md)
+2. BitLocker anahtarınızı korumak için kullanabileceğiniz bir anahtar bulunan mevcut bir Azure Anahtar Kasası'na sahipsiniz. Azure portalını kullanarak önemli bir kasa oluşturmayı öğrenmek için [Quickstart: Azure portalını kullanarak Azure Key Vault'tan bir sır ayarlayın ve alın.](../../key-vault/secrets/quick-create-portal.md)
 
     - **Yumuşak silme** ve **temizleme yi yok** varolan Key Vault ayarlanır. Bu özellikler varsayılan olarak etkinleştirilir. Bu özellikleri etkinleştirmek için aşağıdaki makalelerden birinde **yumuşak silmeyi etkinleştirme** ve **Temizleme Korumasını Etkinleştirme** başlıklı bölümlere bakın:
 
-        - [PowerShell ile yumuşak silme nasıl kullanılır.](../../key-vault/key-vault-soft-delete-powershell.md)
-        - [CLI ile yumuşak silme nasıl kullanılır.](../../key-vault/key-vault-soft-delete-cli.md)
+        - [PowerShell ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-powershell.md)
+        - [CLI ile yumuşak silme nasıl kullanılır.](../../key-vault/general/soft-delete-cli.md)
     - Mevcut anahtar kasası 2048 boyutunda veya daha büyük bir RSA anahtarına sahip olmalıdır. Anahtarlar hakkında daha fazla bilgi için [Azure Anahtar Kasası tuşları, sırlar ve sertifikalar hakkında](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys)Key Vault **tuşlarına** bakın.
     - Anahtar kasası, verilerinizin depolama hesabıyla aynı bölgede olmalıdır.  
     - Varolan bir Azure Anahtar Kasası yoksa, aşağıdaki bölümde açıklandığı gibi satır satırda da oluşturabilirsiniz.

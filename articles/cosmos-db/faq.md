@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 4c76bcbf945c63588f8471c10deca0b5982d3562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e904f650c9fc11aab2dcb002ac68a9f19287940e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414242"
+ms.locfileid: "81449961"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -34,7 +34,7 @@ Azure Cosmos DB, geliştiriciden herhangi bir şema veya ikincil dizin gerektirm
 
 ### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Verilerime erişmek için birden çok API kullanabilir miyim?
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılan çok modelli veritabanı hizmetidir. Çoklu model, Azure Cosmos DB'nin birden çok API'yi ve birden çok veri modelini desteklediği anlamına geldiği durumlarda, farklı API'ler depolama ve tel iletişim protokolü için farklı veri biçimleri kullanır. Örneğin, SQL JSON kullanır, MongoDB BSON kullanır, Tablo EDM kullanır, Cassandra CQL kullanır, Gremlin GraphSON kullanır. Sonuç olarak, belirli bir hesaptaki verilere tüm erişim için aynı API'yi kullanmanızı öneririz.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılan çok modelli veritabanı hizmetidir. Çoklu model, Azure Cosmos DB'nin birden çok API'yi ve birden çok veri modelini desteklediği anlamına geldiği durumlarda, farklı API'ler depolama ve tel iletişim protokolü için farklı veri biçimleri kullanır. Örneğin, SQL JSON kullanır, MongoDB BSON kullanır, Tablo EDM kullanır, Cassandra CQL kullanır, Gremlin JSON biçimini kullanır. Sonuç olarak, belirli bir hesaptaki verilere tüm erişim için aynı API'yi kullanmanızı öneririz.
 
 Her API, birlikte çalışabilir Gremlin ve SQL API dışında bağımsız olarak çalışır.
 

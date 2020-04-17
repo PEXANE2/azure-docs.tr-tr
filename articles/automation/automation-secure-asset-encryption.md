@@ -1,5 +1,5 @@
 ---
-title: Azure Otomasyonu'nda güvenli varlıkları şifreleme
+title: Azure Otomasyonu’nda güvenli varlıkları şifreleme
 description: Azure Otomasyonu, birden çok şifreleme düzeyi kullanarak güvenli varlıkları korur. Varsayılan olarak, şifreleme Microsoft tarafından yönetilen anahtarlar kullanılarak yapılır. Müşteriler otomasyon hesaplarını şifreleme için müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırabilir. Bu makalede, her iki şifreleme modunun ayrıntıları ve ikisi arasında nasıl geçiş yapabileceğiniz açıklanmaktadır.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547749"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457493"
 ---
-# <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Otomasyonu'nda güvenli varlıkları şifreleme
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Otomasyonu’nda güvenli varlıkları şifreleme
 
 Azure Otomasyonu'ndaki güvenli varlıklar kimlik bilgilerini, sertifikaları, bağlantıları ve şifreli değişkenleri içerir. Bu varlıklar Azure Otomasyonu'nda birden çok şifreleme düzeyi kullanılarak korunur. Şifreleme için kullanılan üst düzey anahtara göre şifreleme için iki model vardır:
 -    Microsoft tarafından yönetilen anahtarları kullanma
@@ -32,7 +32,7 @@ Her güvenli varlık, her otomasyon hesabı için oluşturulan benzersiz bir ana
 
 Otomasyon hesabınız için güvenli varlıkların şifrelemesini kendi anahtarlarınızla yönetebilirsiniz. Otomasyon hesabı düzeyinde müşteri tarafından yönetilen bir anahtar belirttiğiniz zaman, bu anahtar Otomasyon hesabının hesap şifreleme anahtarını korumak ve bu anahtara erişimi denetlemek için kullanılır. Bu da tüm güvenli varlıkları şifrelemek ve şifresini çözmek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimleri oluşturmak, döndürmek, devre dışı kalmak ve iptal etmek için daha fazla esneklik sunar. Güvenli varlıklarınızı korumak için kullanılan şifreleme anahtarlarını da denetleyebilirsiniz.
 
-Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault'u kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz.  Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+Müşteri tarafından yönetilen anahtarları depolamak için Azure Key Vault'u kullanın. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz.  Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/general/overview.md)
 
 ## <a name="enable-customer-managed-keys-for-an-automation-account"></a>Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirme
 
@@ -192,7 +192,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+- [Azure Anahtar Kasası nedir?](../key-vault/general/overview.md)
 
 - [Azure Otomasyonu'ndaki sertifika varlıkları](shared-resources/certificates.md)
 

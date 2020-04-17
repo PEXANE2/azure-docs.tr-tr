@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69bdd2d6825427597e9030a03aae7d219361ba25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671941"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457306"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Koşullu Erişim: Bulut uygulamaları veya eylemleri
 
@@ -98,7 +98,7 @@ Office 365 (önizleme) istemci uygulamasında yer alan önemli uygulamalar:
 
 Microsoft Azure Yönetimi uygulaması, birden çok temel hizmet içerir. 
 
-   - Azure portalında
+   - Azure portal
    - Azure Kaynak Yöneticisi sağlayıcısı
    - Klasik dağıtım modeli API'leri
    - Azure PowerShell
@@ -120,7 +120,7 @@ Yöneticiler, Microsoft uygulamalarına ek olarak, Koşullu Erişim ilkelerine A
 
 ## <a name="user-actions"></a>Kullanıcı eylemleri
 
-Kullanıcı eylemleri, kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem, koşullu erişim ilkesinin, birleşik kayıt için etkinleştirilen kullanıcıların güvenlik bilgilerini kaydetmeye çalışması durumunda uygulanmasına olanak tanıyan **Kayıt güvenlik bilgileridir (önizleme).** Daha fazla bilgi makalede bulunabilir, [Kombine güvenlik bilgi kaydı (önizleme)](../authentication/concept-registration-mfa-sspr-combined.md).
+Kullanıcı eylemleri, kullanıcı tarafından gerçekleştirilebilecek görevlerdir. Şu anda desteklenen tek eylem, koşullu erişim ilkesinin, birleştirilmiş kayıt denemesi için etkinleştirilen kullanıcıların güvenlik bilgilerini kaydetmesine olanak tanıyan **Kayıt güvenlik bilgileridir.** Daha fazla bilgi makalede bulunabilir, [Kombine güvenlik bilgi kaydı](../authentication/concept-registration-mfa-sspr-combined.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

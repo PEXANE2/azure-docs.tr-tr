@@ -1,24 +1,24 @@
 ---
-title: Güvenlik bilgilerinizi (önizlemenizi) oturum açma isteminden ayarlama - Azure AD
-description: Kuruluşunuzun oturum açma sayfasından istendikten sonra, iş veya okul hesabınız için Güvenlik bilgilerinizi (önizleme) nasıl ayarlayabilirsiniz?
+title: Güvenlik bilgilerinizi oturum açma isteminden ayarlama - Azure AD
+description: Kuruluşunuzun oturum açma sayfasından istendikten sonra, iş veya okul hesabınız için Güvenlik bilgilerinizi nasıl ayarlayabilirsiniz?
 services: active-directory
 author: curtand
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 04/07/2020
 ms.author: curtand
-ms.openlocfilehash: c216dbfef99422fc49fde774dc57d5cbcc9f879a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb6b124ea0ec036cd9846652fbd9eac5f81eb560
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77063994"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81454494"
 ---
-# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi (önizlemenizi) oturum açma isteminden ayarlama
+# <a name="set-up-your-security-info-from-a-sign-in-prompt"></a>Güvenlik bilgilerinizi oturum açma isteminden ayarlama
 
 İş veya okul hesabınızda oturum açtıktan hemen sonra güvenlik bilgilerinizi ayarlamanız istenirse aşağıdaki adımları izleyebilirsiniz.
 
@@ -122,7 +122,7 @@ Güvenlik bilgileri yöntemleri hem iki faktörlü güvenlik doğrulaması hem d
 Outlook 2010 gibi bazı uygulamalar iki aşamalı doğrulamayı desteklemez. Bu destek eksikliği, kuruluşunuzda iki aşamalı doğrulama kullanıyorsanız uygulamanın çalışmayamayacağı anlamına gelir. Bu sorunu aşmak için, normal parolanızdan ayrı olarak tarayıcı olmayan her uygulamayla kullanmak üzere otomatik olarak oluşturulmuş bir parola oluşturabilirsiniz.
 
 >[!Note]
->Sihirbazda bu seçeneği görmüyorsanız, yöneticinizin bu seçeneği ayarlamadığı anlamına gelir. Bu ayarlı değilse, ancak uygulama parolalarını kullanmanız gerektiğini biliyorsanız, [Güvenlik bilgileri (önizleme) sayfasından uygulama parolalarını ayarla](security-info-app-passwords.md)adımlarını takip edebilirsiniz.
+>Sihirbazda bu seçeneği görmüyorsanız, yöneticinizin bu seçeneği ayarlamadığı anlamına gelir. Bu ayarlı değilse, ancak uygulama parolalarını kullanmanız gerektiğini biliyorsanız, [Güvenlik bilgileri sayfasından uygulama parolalarını ayarla](security-info-app-passwords.md)adımlarını takip edebilirsiniz.
 
 Uygulama parolalarını kullanırken şunları unutmamak önemlidir:
 

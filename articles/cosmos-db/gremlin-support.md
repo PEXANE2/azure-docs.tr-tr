@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 59c45497ea6d9fcb216c83060a858ee6c96f1151
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75499984"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81449978"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin grafik desteği
 Azure Cosmos DB, [Apache Tinkerpop'un](https://tinkerpop.apache.org) [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps)olarak bilinen grafik geçiş dilini destekler. Grafik varlıkları (köşeler ve kenarlar) oluşturmak, bu varlıkların içindeki özellikleri değiştirmek, sorgu ve geçiş işlemleri gerçekleştirmek ve varlıkları silmek için Gremlin dilini kullanabilirsiniz. 
@@ -46,11 +46,9 @@ Aşağıdaki tabloda Azure Cosmos DB tarafından uygulanan TinkerPop özellikler
 | Kenar özellikleri | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Kenar oluşturma, değiştirme ve silmeyi destekler |
 | Kenar özellikleri | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Kenar özelliklerini oluşturma, değiştirme ve silmeyi destekler |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin gönderme biçimi: GraphSON
+## <a name="gremlin-wire-format"></a>Gremlin tel formatı
 
-Azure Cosmos DB, Gremlin işlemlerinden sonuçları döndürürken [GraphSON biçimini](https://tinkerpop.apache.org/docs/current/reference/#graphson) kullanır. Azure Cosmos DB şu anda "GraphSONv2" sürümünü destekler. GraphSON köşeleri, kenarları ve özellikleri (tek ve birden çok değerli özellikleri) JSON kullanarak temsil etmeye yönelik standart Gremlin biçimidir.
-
-Örneğin aşağıdaki kod parçacığında Azure Cosmos DB’den *istemciye döndürülen* bir köşenin temsili gösterilir. 
+Azure Cosmos DB, Gremlin işlemlerinden sonuçları döndürerken JSON biçimini kullanır. Azure Cosmos DB şu anda JSON biçimini destekler. Örneğin, aşağıdaki parçacık, Azure Cosmos DB'den *istemciye döndürülen* bir tepe noktasının JSON temsilini gösterir:
 
 ```json
   {
@@ -89,7 +87,7 @@ Azure Cosmos DB, Gremlin işlemlerinden sonuçları döndürürken [GraphSON bi�
   }
 ```
 
-GraphSON tarafından vertices için kullanılan özellikler aşağıda açıklanmıştır:
+Vertices için JSON biçimi tarafından kullanılan özellikleri aşağıda açıklanmıştır:
 
 | Özellik | Açıklama | 
 | --- | --- | --- |

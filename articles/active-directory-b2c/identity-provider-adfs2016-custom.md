@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bfe39d9528927f995d14772e07e02b2a0528e5e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 000f63ef5f73e77eb22fb539fc6736b929ac6bcc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188537"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451576"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeler kullanarak ADFS'yi SAML kimlik sağlayıcısı olarak ekleme
 
@@ -34,7 +34,7 @@ Bu makalede, Azure Active Directory B2C (Azure AD B2C) [özel ilkeleri](custom-p
 
 Sertifikanızı Azure AD B2C kiracınızda saklamanız gerekir.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun. Üst menüdeki **Dizin + abonelik** filtresini seçin ve kiracınızı içeren dizini seçin.
 3. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından Azure **AD B2C'yi**arayın ve seçin.
 4. Genel Bakış sayfasında Kimlik **Deneyimi Çerçevesi'ni**seçin.
@@ -169,7 +169,7 @@ Artık bir düğmeniz olduğuna göre, düğmeyi bir eyleme bağlamanız gerekir
 ADFS'yi Azure AD B2C'de kimlik sağlayıcısı olarak kullanmak için, Azure AD B2C SAML meta verileriyle birlikte bir ADFS Relying Party Trust oluşturmanız gerekir. Aşağıdaki örnekte, Azure AD B2C teknik profilinin SAML meta verilerine bir URL adresi gösterilmektedir:
 
 ```
-https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadata?idptp=your-technical-profile
+https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/your-policy/samlp/metadata?idptp=your-technical-profile
 ```
 
 Aşağıdaki değerleri değiştirin:

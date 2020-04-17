@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: fa39c8f65b00283044ef31dc7577a4668b3e634b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7314559849f0b2019820ec3cb4fb10c684d330d6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127640"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458446"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps'ta tümleştirme hizmeti ortamları (ISEs) için verileri istirahatte şifrelemek için müşteri tarafından yönetilen anahtarları ayarlama
 
 Azure Logic Apps, [verileri istirahatte](../storage/common/storage-service-encryption.md)depolamak ve otomatik olarak şifrelemek için Azure Depolama'ya güvenir. Bu şifreleme verilerinizi korur ve kuruluş güvenliği ve uyumluluk taahhütlerinizi karşılamanıza yardımcı olur. Varsayılan olarak Azure Depolama, verilerinizi şifrelemek için Microsoft tarafından yönetilen anahtarları kullanır. Azure Depolama şifrelemesi hakkında daha fazla bilgi [için, veriler için Azure Depolama şifrelemesi](../storage/common/storage-service-encryption.md) ve [Beklemede Azure Veri](../security/fundamentals/encryption-atrest.md)Şifrelemesi'ne bakın.
 
-Mantıksal uygulamalarınızı barındırmak için bir [entegrasyon hizmeti ortamı (Ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Depolama tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istediğinizde, [Azure Key Vault'u](../key-vault/key-vault-overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınıza "müşteri tarafından yönetilen anahtar" denir.
+Mantıksal uygulamalarınızı barındırmak için bir [entegrasyon hizmeti ortamı (Ise)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) oluşturduğunuzda ve Azure Depolama tarafından kullanılan şifreleme anahtarları üzerinde daha fazla denetim istediğinizde, [Azure Key Vault'u](../key-vault/general/overview.md)kullanarak kendi anahtarınızı ayarlayabilir, kullanabilir ve yönetebilirsiniz. Bu özellik "Kendi Anahtarını Getir" (BYOK) olarak da bilinir ve anahtarınıza "müşteri tarafından yönetilen anahtar" denir.
 
 Bu konu, Logic Apps REST API'sini kullanarak İmKB'nizi oluştururken kullanılacak kendi şifreleme anahtarınızı nasıl ayarlayıp belirtdiğinizi gösterir. Logic Apps REST API ile Bir İmKB oluşturmak için genel adımlar için, [Bkz. Logic Apps REST API'yi kullanarak bir entegrasyon hizmet ortamı (İmKB) oluşturun.](../logic-apps/create-integration-service-environment-rest-api.md)
 
@@ -39,7 +39,7 @@ Bu konu, Logic Apps REST API'sini kullanarak İmKB'nizi oluştururken kullanıla
 
 * **Yumuşak Silme** ve **Temizleme özelliklerini** etkinleştiren Azure anahtar kasası
 
-  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için [Azure Key Vault yumuşak silme genel bakışı](../key-vault/key-vault-ovw-soft-delete.md) ve Azure Key Vault ile müşteri tarafından yönetilen anahtarları [yapılandırın.](../storage/common/storage-encryption-keys-portal.md) Azure Key Vault'ta yeniyseniz, Azure portalını kullanarak veya Azure PowerShell komutu Olan [New-AzKeyVault'u](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)kullanarak [nasıl bir anahtar kasası oluşturabileceğinizi](../key-vault/quick-create-portal.md#create-a-vault) öğrenin.
+  Bu özellikleri etkinleştirme hakkında daha fazla bilgi için [Azure Key Vault yumuşak silme genel bakışı](../key-vault/general/overview-soft-delete.md) ve Azure Key Vault ile müşteri tarafından yönetilen anahtarları [yapılandırın.](../storage/common/storage-encryption-keys-portal.md) Azure Key Vault'ta yeniyseniz, Azure portalını kullanarak veya Azure PowerShell komutu Olan [New-AzKeyVault'u](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)kullanarak [nasıl bir anahtar kasası oluşturabileceğinizi](../key-vault/secrets/quick-create-portal.md#create-a-vault) öğrenin.
 
 * Anahtar kasanızda, bu özellik değerleri yle oluşturulmuş bir anahtar:
 
@@ -225,8 +225,8 @@ Bu görev için Azure PowerShell [Set-AzKeyVaultAccessPolicy](https://docs.micro
 
    1. **Access ilkeleri** bölmesini bitirdikten sonra **Kaydet'i**seçin.
 
-Daha fazla bilgi için [bkz.](../key-vault/managed-identity.md#grant-your-app-access-to-key-vault)
+Daha fazla bilgi için [bkz.](../key-vault/general/managed-identity.md#grant-your-app-access-to-key-vault)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Anahtar Kasası](../key-vault/key-vault-overview.md) hakkında daha fazla bilgi edinin
+* [Azure Anahtar Kasası](../key-vault/general/overview.md) hakkında daha fazla bilgi edinin

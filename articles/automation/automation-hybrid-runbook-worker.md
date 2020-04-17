@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1e4470ce5ac69390cf8d361577b9ebf0013e4e51
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 861c7ffa647c8d2f37b32c359253ca991eeb314f
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405795"
+ms.locfileid: "81457714"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Karma Runbook Worker'ı kullanarak veri merkezinizdeki veya bulutunuzdaki kaynakları otomatikleştirin
 
@@ -68,7 +68,7 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 ```
 
 > [!NOTE]
-> Bu kod, Microsoft İzleme Aracısını bilgisayardan kaldırmaz. Yalnızca Karma Runbook Worker rolünün işlevselliğini ve yapılandırmasını kaldırır.
+> Bu kod, Linux için Log Analytics aracısını bilgisayardan kaldırmaz. Yalnızca Karma Runbook Worker rolünün işlevselliğini ve yapılandırmasını kaldırır.
 
 ## <a name="remove-a-hybrid-worker-group"></a>Karma Çalışanı grubunu kaldırma
 
@@ -89,7 +89,7 @@ Karma Runbook Worker grubunu kaldırmak için öncelikle Grubun üyesi olan her 
 
 ### <a name="hybrid-worker-role"></a>Hibrit İşçi rolü
 
-Karma Runbook Worker'ın Azure Otomasyonuna bağlanıp kaydolabilmesi için, bu bölümde açıklanan bağlantı noktası numarasına ve URL'lere erişimi olması gerekir. Bu erişim, Microsoft İzleme Aracısı'nın Azure Monitor günlüklerine bağlanması [için gereken bağlantı noktalarına ve URL'lere](../azure-monitor/platform/agent-windows.md) en üsttedir.
+Karma Runbook Worker'ın Azure Otomasyonuna bağlanıp kaydolabilmesi için, bu bölümde açıklanan bağlantı noktası numarasına ve URL'lere erişimi olması gerekir. Bu erişim, Log [Analytics aracısının](../azure-monitor/platform/agent-windows.md) Azure Monitor günlüklerine bağlanması için gereken bağlantı noktalarına ve URL'lere en üsttedir.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: af44f4a96567cc86c9f884cdfe5e28ff6b7bd8f3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78897682"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453888"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -128,7 +128,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 - Çağrılan `MyDbConnection` bağlantı dizesini `connectionString` bulun `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`ve değerini ' le değiştirin. _ \<Sunucu adı>_ ve _ \<db adı>_ sunucu adınız ve veritabanı adınız ile değiştirin.
 
 > [!NOTE]
-> Yeni kaydettiğiniz SqlAuthenticationProvider, daha önce yüklediğiniz AppAuthentication kitaplığı'nın üst kısmını temel alınmaktadır. Varsayılan olarak, sistem tarafından atanmış bir kimlik kullanır. Kullanıcı tarafından atanan bir kimlikyararlanmak için ek bir yapılandırma sağlamanız gerekir. Lütfen AppAuthentication kitaplığı için [bağlantı dize desteğine](../key-vault/service-to-service-authentication.md#connection-string-support) bakın.
+> Yeni kaydettiğiniz SqlAuthenticationProvider, daha önce yüklediğiniz AppAuthentication kitaplığı'nın üst kısmını temel alınmaktadır. Varsayılan olarak, sistem tarafından atanmış bir kimlik kullanır. Kullanıcı tarafından atanan bir kimlikyararlanmak için ek bir yapılandırma sağlamanız gerekir. Lütfen AppAuthentication kitaplığı için [bağlantı dize desteğine](../key-vault/general/service-to-service-authentication.md#connection-string-support) bakın.
 
 SQL Veritabanı'na bağlanmak için gereken her şey bu. Visual Studio'da hata ayıklama yaparken kodunuz, [Visual Studio'yu](#set-up-visual-studio)ayarla'da yapılandırdığınız Azure AD kullanıcısını kullanır. Uygulama Hizmeti uygulamanızın yönetilen kimliğinden bağlantıya izin vermek için daha sonra SQL Veritabanı sunucusunu kurarsınız.
 

@@ -6,15 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: peterclu
-ms.author: peterlu
-ms.date: 02/22/2020
-ms.openlocfilehash: 7fcfc7c15f94d7b569629e53534d731126172260
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+author: likebupt
+ms.author: keli19
+ms.date: 04/13/2020
+ms.openlocfilehash: c46c21b5662b924552f850f226a12c7350b4625a
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399055"
+ms.locfileid: "81458214"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı için algoritma & modül başvurusu (önizleme)
 
@@ -59,6 +59,10 @@ Algoritma seçiminde yardım için bkz.
 | Öneri | Öneri modelleri oluşturun. | [Önereni Değerlendirme](evaluate-recommender.md) <br/> [SVD Önerenini Puanlama](score-svd-recommender.md) <br/> [SVD Önerenini Eğitme](train-SVD-recommender.md) |
 | Anomali Algılama | Anomali algılama modelleri oluşturun. | [PCA Tabanlı Anomali Algılama](pca-based-anomaly-detection.md) <br/> [Tren Anomali Algılama Modeli](train-anomaly-detection-model.md) |
 
+
+## <a name="web-service"></a>Web Hizmeti
+
+Azure Machine Learning tasarımcısında gerçek zamanlı çıkarım için gerekli olan [web hizmeti modülleri](web-service-input-output.md) hakkında bilgi edinin.
 
 ## <a name="error-messages"></a>Hata iletileri
 

@@ -4,18 +4,17 @@ description: Azure Monitor tarafından toplanan izleme verileri, hafif ve geliş
 documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: tysonn
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: a1b5859341237c1b177ee8deaf636a67f4824948
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 58f542238c952088777ed9809b57dae3cdb9cf12
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666556"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457272"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitör veri platformu
 
@@ -68,11 +67,11 @@ Aşağıdaki tablo, Azure Monitor'daki Ölçümler i ve Günlükleri karşılaş
 
 | Öznitelik  | Ölçümler | Günlükler |
 |:---|:---|:---|
-| Avantajlar | Hafif ve uyarı gibi neredeyse gerçek zamanlı senaryolar yeteneğine sahip. Sorunların hızlı tespiti için idealdir. | Zengin sorgu dili ile analiz edilir. Derin analiz ve kök nedenini belirlemek için idealdir. |
-| Veri | Yalnızca sayısal değerler | Metin veya sayısal veriler |
+| Yararları | Hafif ve uyarı gibi neredeyse gerçek zamanlı senaryolar yeteneğine sahip. Sorunların hızlı tespiti için idealdir. | Zengin sorgu dili ile analiz edilir. Derin analiz ve kök nedenini belirlemek için idealdir. |
+| Veriler | Yalnızca sayısal değerler | Metin veya sayısal veriler |
 | Yapı | Örnek zaman, izlenen kaynak, sayısal değer gibi standart özellik kümesi. Bazı ölçümler, daha fazla tanım için birden çok boyut içerir. | Günlük türüne bağlı olarak benzersiz özellikler kümesi. |
 | Koleksiyon | Düzenli aralıklarla toplanır. | Olaylar oluşturulacak bir kaydı tetikledikçe ara sıra toplanabilir. |
-| Azure portalında görünüm | Ölçüm Gezgini | Log Analytics |
+| Azure portalında görüntüleme | Ölçüm Gezgini | Log Analytics |
 | Veri kaynakları şunlardır: | Azure kaynaklarından toplanan platform ölçümleri.<br>Uygulamalar Application Insights tarafından izlenir.<br>Uygulama veya API tarafından tanımlanan özel. | Uygulama ve kaynak günlükleri.<br>İzleme çözümleri.<br>Aracılar ve VM uzantıları.<br>Uygulama istekleri ve özel durumlar.<br>Azure Güvenlik Merkezi.<br>Veri Toplayıcı API. |
 
 ## <a name="collect-monitoring-data"></a>İzleme verilerini toplama

@@ -4,12 +4,12 @@ description: Azure Kapsayıcı Örnekleri için görüntüleri ve sırları güv
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87fa28cf9bdb546a5f108284023a9f787645a1fd
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76260506"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458003"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Kapsayıcı Örnekleri için güvenlik hususları
 
@@ -37,7 +37,7 @@ Genel kullanıma açık bir kapsayıcı görüntüsü güvenliği garanti etmez.
 
 ### <a name="protect-credentials"></a>Kimlik bilgilerini koruma
 
-Kapsayıcılar çeşitli kümelere ve Azure bölgelerine yayılabilir. Bu nedenle, parolalar veya belirteçler gibi oturum açma veya API erişimi için gereken kimlik bilgilerini güvence altına almanız gerekir. Yalnızca ayrıcalıklı kullanıcıların bu kapsayıcılara geçiş sırasında ve istirahatte erişebilmesini sağlayın. Tüm kimlik bilgilerini envantere çıkarın ve ardından geliştiricilerin kapsayıcı platformlar için tasarlanmış yeni ortaya çıkan sırlar yönetimi araçlarını kullanmalarını gerektirir.  Çözümünüzde şifreli veritabanları, aktarımsırasındaki sırlar için TLS şifreleme ve en az ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)bulunduğundan emin olun. [Azure Key Vault,](../key-vault/key-vault-secure-your-key-vault.md) kapsayıcı uygulamalar için şifreleme anahtarlarını ve sırlarını (sertifikalar, bağlantı dizeleri ve parolalar gibi) koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların bunlara erişebilmeleri için anahtar kasalarınıza güvenli erişim.
+Kapsayıcılar çeşitli kümelere ve Azure bölgelerine yayılabilir. Bu nedenle, parolalar veya belirteçler gibi oturum açma veya API erişimi için gereken kimlik bilgilerini güvence altına almanız gerekir. Yalnızca ayrıcalıklı kullanıcıların bu kapsayıcılara geçiş sırasında ve istirahatte erişebilmesini sağlayın. Tüm kimlik bilgilerini envantere çıkarın ve ardından geliştiricilerin kapsayıcı platformlar için tasarlanmış yeni ortaya çıkan sırlar yönetimi araçlarını kullanmalarını gerektirir.  Çözümünüzde şifreli veritabanları, aktarımsırasındaki sırlar için TLS şifreleme ve en az ayrıcalıklı [rol tabanlı erişim denetimi](../role-based-access-control/overview.md)bulunduğundan emin olun. [Azure Key Vault,](../key-vault/general/secure-your-key-vault.md) kapsayıcı uygulamalar için şifreleme anahtarlarını ve sırlarını (sertifikalar, bağlantı dizeleri ve parolalar gibi) koruyan bir bulut hizmetidir. Bu veriler hassas ve iş açısından kritik olduğundan, yalnızca yetkili uygulamaların ve kullanıcıların bunlara erişebilmeleri için anahtar kasalarınıza güvenli erişim.
 
 ## <a name="considerations-for-the-container-ecosystem"></a>Konteyner ekosistemi için dikkat edilecek hususlar
 
@@ -114,7 +114,7 @@ Herhangi bir BT ortamında olduğu gibi, şüpheli veya kötü amaçlı etkinlik
 
 * [Kapsayıcılar için Azure Monitörü,](../azure-monitor/insights/container-insights-overview.md) Azure Kubernetes Hizmeti'nde (AKS) barındırılan Kubernetes ortamlarına dağıtılan iş yüklerinizin performansını izler. Kapsayıcılar için Azure Monitör, Ölçümler API'si aracılığıyla Kubernetes'te bulunan denetleyicilerden, düğümlerden ve kapsayıcılardan bellek ve işlemci ölçümleri toplayarak performans görünürlüğü sağlar. 
 
-* [Azure Kapsayıcı İzleme çözümü,](../azure-monitor/insights/containers.md) diğer Docker ve Windows kapsayıcı ana bilgisayarlarını tek bir konumda görüntülemenize ve yönetmenize yardımcı olur. Örnek:
+* [Azure Kapsayıcı İzleme çözümü,](../azure-monitor/insights/containers.md) diğer Docker ve Windows kapsayıcı ana bilgisayarlarını tek bir konumda görüntülemenize ve yönetmenize yardımcı olur. Örneğin:
 
   * Kapsayıcılarla birlikte kullanılan komutları gösteren ayrıntılı denetim bilgilerini görüntüleyin. 
   * Docker veya Windows ana bilgisayarlarını uzaktan görüntülemek zorunda kalmadan merkezi günlükleri görüntüleyerek ve arayarak kapsayıcıları sorun giderin.  

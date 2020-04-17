@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: quickstart
 ms.date: 07/23/2019
 ms.author: lbosq
-ms.openlocfilehash: 597766774be15abdc7cb7836f2a23ef490b11926
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: c3e6524f8e43036c4b4c28c679c281c143731471
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547194"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450216"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Hızlı başlatma: Gremlin konsolu kullanarak bir Azure Cosmos DB grafik veritabanı oluşturma, sorgula ve geçiş
 
@@ -50,6 +50,7 @@ Ayrıca [Gremlin konsolunu](https://tinkerpop.apache.org/downloads.html) yüklem
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="connect-to-your-app-servicegraph"></a><a id="ConnectAppService"></a>Uygulama hizmetinize bağlanın/Grafik
+
 1. Gremlin Konsolu’nu başlatmadan önce `apache-tinkerpop-gremlin-console-3.2.5/conf` dizininde remote-secure.yaml yapılandırma dosyasını oluşturun veya değiştirin.
 2. *ana bilgisayar*, *bağlantı noktası*, *kullanıcı adı*, *parola*, *bağlantı havuzu* ve *serileştirici* değerlerini aşağıdaki tabloda tanımlanan şekilde girin:
 

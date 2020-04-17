@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eb885d0e965579b1ab2d66395f9f96eab0845bae
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 46c59e8b4e60fbe17887ea0fc375b6da758ebf50
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81266506"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81457408"
 ---
 # <a name="create-your-azure-virtual-machine-technical-assets"></a>Azure Sanal Makine teknik varlıklarınızı oluşturun
 
@@ -281,8 +281,8 @@ Aşağıdaki işlem bir Linux VM genelleştirir ve ayrı bir VM olarak yeniden d
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni Azure tabanlı VHD'nizi oluştururken zorlukla karşılaştıysanız, [VHD oluşturma sırasında sık karşılaşılan sorunlara](https://aka.ms/AzureVM_VHDCreationFAQ)bakın.
+Yeni Azure tabanlı VHD'nizi oluştururken zorlukla karşılaştıysanız, [VHD oluşturma sırasında sık karşılaşılan sorunlara](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues)bakın.
 
 Aksi durumda:.
 
-* [VM resminizi onaylamak,](https://aks.ms/CertifyVMimage) *Azure Sertifikalı Sertifikalandırma aracıiçin sertifika test aracını* nereden alacağınız ve VM resminizi onaylamak için nasıl kullanacağınız da dahil olmak üzere Azure Marketi sertifikası için vm görüntüsünü nasıl test edip gönderebileceğinizi açıklar.
+* [VM resminizi onaylamak,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/get-sas-uri) *Azure Sertifikalı Sertifikalandırma aracıiçin sertifika test aracını* nereden alacağınız ve VM resminizi onaylamak için nasıl kullanacağınız da dahil olmak üzere Azure Marketi sertifikası için vm görüntüsünü nasıl test edip gönderebileceğinizi açıklar.

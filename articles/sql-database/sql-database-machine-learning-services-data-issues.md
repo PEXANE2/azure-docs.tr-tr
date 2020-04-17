@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 0bb3abc7b7102da55c9ededcadd7a301f74065ab
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: e81cca3e20d5b6c050489e80b91d013d5e934cce
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349332"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81453208"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Azure SQL Veritabanı Makine Öğrenme Hizmetleri'nde R ve SQL verileriyle çalışma (önizleme)
 
@@ -37,7 +38,7 @@ Karşılaşabileceğiniz sık karşılaşılabilecek sorunlar şunlardır:
 
 - Azure aboneliğiniz yoksa, başlamadan önce [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle Machine Learning Services (R ile) etkin leştirilmiş bir Azure SQL veritabanına sahip olmalısınız. Genel önizleme sırasında Microsoft, varolan veya yeni veritabanınız için makine öğrenimini size verebsağlayacaktır. Önizleme için [Kaydolun'daki](sql-database-machine-learning-services-overview.md#signup)adımları izleyin.
+- Bu alıştırmalarda örnek kodu çalıştırmak için öncelikle [Machine Learning Services (R ile) özellikli Azure SQL Veritabanı'nı](sql-database-machine-learning-services-overview.md) etkinleştirmeniz gerekir.
 
 - En son [SQL Server Management Studio'yu](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) yüklediğinizden emin olun. Diğer veritabanı yönetimi veya sorgu araçlarını kullanarak R komut dosyalarını çalıştırabilirsiniz, ancak bu hızlı başlatmada SSMS'i kullanırsınız.
 
@@ -165,7 +166,7 @@ WITH RESULT SETS((
 
 Kapakların altında, üç değerden oluşan sütun tek sütunlu bir matrise dönüştürülür. Matris, R'deki bir dizinin özel bir örneği `y` olduğundan, dizi iki bağımsız değişkeni uyumlu hale getirmek için örtülü olarak tek sütunlu bir matrise zorlanır.
 
-**Sonuç -ları**
+**Sonuçlar**
 
 |Süt1|Süt2|Col3|Col4|
 |---|---|---|---|
@@ -188,7 +189,7 @@ WITH RESULT SETS(([Col1] INT));
 
 Şimdi R sonuç olarak tek bir değer döndürür.
 
-**Sonuç -ları**
+**Sonuçlar**
     
 |Süt1|
 |---|
@@ -218,7 +219,7 @@ WITH RESULT SETS((
 
 Veri çerçevesini doldurmak için R, RTestData'dan alınan öğeleri dizideki `df1`öğe sayısını eşleştirmek için gerektiği kadar yineler.
 
-**Sonuç -ları**
+**Sonuçlar**
     
 |*Süt2*|*Col3*|
 |----|----|
@@ -279,7 +280,7 @@ Bir hata alırsanız, büyük olasılıkla sorgu metninde bazı denetimler yapma
 
 Sorguyu çalıştırdıktan sonra, R'nin `str` giriş verilerini nasıl işlediğini görmek için işlevin sonuçlarını gözden geçirin.
 
-**Sonuç -ları**
+**Sonuçlar**
 
 ```text
 STDOUT message(s) from external script: 'data.frame':    37 obs. of  3 variables:

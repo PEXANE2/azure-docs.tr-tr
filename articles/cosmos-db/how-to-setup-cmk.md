@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: thweiss
 ROBOTS: noindex, nofollow
-ms.openlocfilehash: 733a85e492185e7e83922a3cc91d53c848b939a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f58887a056c8ca0cd175a44127556562338de38
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411141"
+ms.locfileid: "81450041"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Cosmos hesabınız için müşteri tarafından yönetilen anahtarları Azure Key Vault ile yapılandırın
 
@@ -23,7 +23,7 @@ Azure Cosmos hesabınızda depolanan veriler, Microsoft tarafından yönetilen a
 
 ![Müşteri verileri etrafında şifreleme katmanları](./media/how-to-setup-cmk/cmk-intro.png)
 
-Müşteri tarafından yönetilen anahtarları [Azure Anahtar Kasası'nda](../key-vault/key-vault-overview.md) depolamalı ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen her Azure Cosmos hesabı için bir anahtar sağlamanız gerekir. Bu anahtar, bu hesapta depolanan tüm verileri şifrelemek için kullanılır.
+Müşteri tarafından yönetilen anahtarları [Azure Anahtar Kasası'nda](../key-vault/general/overview.md) depolamalı ve müşteri tarafından yönetilen anahtarlarla etkinleştirilen her Azure Cosmos hesabı için bir anahtar sağlamanız gerekir. Bu anahtar, bu hesapta depolanan tüm verileri şifrelemek için kullanılır.
 
 > [!NOTE]
 > Şu anda, müşteri tarafından yönetilen anahtarlar yalnızca yeni Azure Cosmos hesapları için kullanılabilir. Bunları hesap oluşturma sırasında yapılandırmanız gerekir.
@@ -44,8 +44,8 @@ Azure Cosmos DB ile müşteri tarafından yönetilen anahtarları kullanmak, şi
 
 Bu özellikleri varolan bir Azure Anahtar Kasası örneğinde nasıl etkinleştireceklerini öğrenmek için aşağıdaki makalelerden birinde "Yumuşak silmeyi etkinleştirme" ve "Temizleme Koruması etkinleştirme" bölümlerine bakın:
 
-- [PowerShell ile yumuşak silme nasıl kullanılır?](../key-vault/key-vault-soft-delete-powershell.md)
-- [Azure CLI ile yumuşak silme nasıl kullanılır?](../key-vault/key-vault-soft-delete-cli.md)
+- [PowerShell ile yumuşak silme nasıl kullanılır?](../key-vault/general/soft-delete-powershell.md)
+- [Azure CLI ile yumuşak silme nasıl kullanılır?](../key-vault/general/soft-delete-cli.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Azure Anahtar Kasası örneğinize bir erişim ilkesi ekleme
 

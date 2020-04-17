@@ -5,7 +5,6 @@ services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -15,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89ed0bad2729a9e0983d4ef7f8a53faa4f5426ac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79415651"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456116"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Öğretici: Azure'da Windows sanal makineleri için dosyaları yedekleme ve geri yükleme
 
@@ -42,7 +41,7 @@ Veri aktarımı tamamlandığında, anlık görüntü kaldırılır ve bir kurta
 ## <a name="create-a-backup"></a>Yedekleme oluşturma
 Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluşturma. 
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Sol taraftaki menüden **Sanal makineler**'i seçin. 
 1. Listeden yedekleyeceğiniz VM'yi seçin.
 1. VM bıçağında, **İşlemler** bölümünde **Yedekleme'yi**tıklatın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.

@@ -5,7 +5,6 @@ services: virtual-network
 documentationcenter: na
 author: KumudD
 manager: carmonm
-editor: tysonn
 ms.assetid: 1f509bec-bdd1-470d-8aa4-3cf2bb7f6134
 ms.service: virtual-network
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
-ms.openlocfilehash: 1bdc485dfb352144e8a8d0fb75965cbb78288e2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64575598"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81455371"
 ---
 # <a name="virtual-appliance-scenario"></a>Sanal cihaz senaryosu
 Daha büyük Azure müşterisi arasında yaygın bir senaryo, internete açık iki katmanlı bir uygulama sağlama gereksinimi ve şirket içi bir veri merkezinden arka katmana erişime izin verme gereğidir. Bu belge, aşağıdaki gereksinimleri karşılayan iki katmanlı bir ortam dağıtmak için Kullanıcı Tanımlı Rotalar (UDR), vpn ağ geçidi ve ağ sanal cihazları kullanarak bir senaryo da size yol gösterecektir:

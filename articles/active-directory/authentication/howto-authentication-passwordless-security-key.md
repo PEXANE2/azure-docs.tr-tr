@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8574fcdff12e61f7039174ed6297d0558a66dc4
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 066ab7892bed6e7505e7ee114ff37a7850ef5c9b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653932"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81450930"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Parolasız güvenlik anahtarı oturum açma (önizleme) etkinleştirme
 
@@ -31,7 +31,7 @@ Bu belge, güvenlik anahtarı tabanlı parolasız kimlik doğrulamasını etkinl
 
 ## <a name="requirements"></a>Gereksinimler
 
-- [Azure Çok Faktörlü Kimlik Doğrulama](howto-mfa-getstarted.md)
+- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
 - [Birleşik güvenlik bilgileri kaydı önizlemesi](concept-registration-mfa-sspr-combined.md)
 - Uyumlu [FIDO2 güvenlik tuşları](concept-authentication-passwordless.md#fido2-security-keys)
 - WebAuthN Windows 10 sürüm 1809 veya daha yüksek** gerektirir
@@ -48,11 +48,11 @@ Karma Azure AD birleştirilmiş aygıtlar Windows 10 Insider Build 18945 veya da
 
 ### <a name="enable-the-combined-registration-experience"></a>Birleştirilmiş kayıt deneyimini etkinleştirme
 
-Parolasız kimlik doğrulama yöntemleriiçin kayıt özellikleri, birleştirilmiş kayıt önizlemesini kullanır. Birleştirilmiş kayıt önizlemesini etkinleştirmek için [birleştirilmiş güvenlik bilgileri kaydını (önizleme) etkinleştir'](howto-registration-mfa-sspr-combined.md)makaledeki adımları izleyin.
+Parolasız kimlik doğrulama yöntemlerinin kayıt özellikleri, birleştirilmiş kayıt özelliğine dayanır. Birleştirilmiş kaydı etkinleştirmek için [birleştirme güvenlik bilgi kaydı (önizleme)](howto-registration-mfa-sspr-combined.md)etkinleştir) makaledeki adımları izleyin.
 
 ### <a name="enable-fido2-security-key-method"></a>FIDO2 güvenlik anahtarı yöntemini etkinleştirme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. **Azure Etkin Dizin** > **Güvenliği** > Kimlik Doğrulama**yöntemlerine** > göz atın Kimlik doğrulama yöntemi ilkesi **(Önizleme)**.
 1. **FIDO2 Güvenlik Anahtarı**yöntemi altında aşağıdaki seçenekleri seçin:
    1. **Etkinleştir** - Evet veya Hayır

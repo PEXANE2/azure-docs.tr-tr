@@ -3,12 +3,12 @@ title: Azure portalında bir Service Fabric kümesi oluşturma
 description: Azure portalını ve Azure Anahtar Kasası'nı kullanarak Azure'da güvenli bir Hizmet Dokusu kümesini nasıl ayarlayamanızı öğrenin.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e2de920ce9517e156934a636559a6fd6f5a71eb5
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80754096"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81458326"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure portalını kullanarak Azure'da Hizmet Dokusu kümesi oluşturma
 > [!div class="op_single_selector"]
@@ -68,7 +68,7 @@ Uygulama gereksinimlerinizi karşılamak için bir üretim kümesi oluşturmak, 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric küme kaynağını ara
 
-[Azure portalında][azure-portal]oturum açın.
+[Azure Portal][azure-portal] oturum açın.
 Yeni bir kaynak şablonu eklemek için **kaynak oluştur'u** tıklatın. **Her Şey**altında **Markette** Hizmet Kumaş Küme şablonu arayın.
 Listeden **Hizmet Kumaş Kümesi'ni** seçin.
 
@@ -204,7 +204,7 @@ Bu noktada, yönetim kimlik doğrulaması için sertifikaları kullanan güvenli
 <!-- Links -->
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-overview.md
+[key-vault-get-started]: ../key-vault/general/overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

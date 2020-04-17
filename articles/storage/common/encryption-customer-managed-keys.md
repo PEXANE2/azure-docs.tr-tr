@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 6b5712094b9821dfa041cd5ba8617e86f7231bde
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b2755d5aa5dbaa669fa2fdd8b84596e040b5dd6b
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478009"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81456830"
 ---
 # <a name="use-customer-managed-keys-with-azure-key-vault-to-manage-azure-storage-encryption"></a>Azure Depolama şifrelemesini yönetmek için Azure Key Vault ile müşteri tarafından yönetilen anahtarları kullanın
 
 Depolama hesabınızdaki verileri korumak için kendi şifreleme anahtarınızı kullanabilirsiniz. Müşteri tarafından yönetilen bir anahtar belirttiğinizde, bu anahtar verilerinizi şifreleyen anahtarı korumak ve bu anahtara erişimi denetlemek için kullanılır. Müşteri tarafından yönetilen anahtarlar, erişim denetimlerini yönetmek için daha fazla esneklik sağlar.
 
-Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault'u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Depolama hesabı ve anahtar kasası aynı bölgede ve aynı Azure Etkin Dizin (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/key-vault-overview.md)
+Müşteri tarafından yönetilen anahtarlarınızı depolamak için Azure Key Vault'u kullanmanız gerekir. Kendi anahtarlarınızı oluşturabilir ve bunları bir anahtar kasasında saklayabilir veya anahtar oluşturmak için Azure Key Vault API'lerini kullanabilirsiniz. Depolama hesabı ve anahtar kasası aynı bölgede ve aynı Azure Etkin Dizin (Azure AD) kiracısında olmalıdır, ancak farklı aboneliklerde olabilir. Azure Anahtar Kasası hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../../key-vault/general/overview.md)
 
 ## <a name="about-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar hakkında
 

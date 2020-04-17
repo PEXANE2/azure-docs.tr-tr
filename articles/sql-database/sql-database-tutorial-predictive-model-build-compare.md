@@ -13,12 +13,13 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
-ms.openlocfilehash: 52f4347fa545df88f11878709b4061662d5faffe
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0985b37280e3cd363ba1728a5ec33b0012611ab2
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345743"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81452936"
 ---
 # <a name="tutorial-create-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Öğretici: Azure SQL Veritabanı Makine Öğrenme Hizmetleri ile R'de tahmine dayalı bir model oluşturun (önizleme)
 
@@ -36,8 +37,6 @@ Bu makalede, nasıl öğreneceksiniz:
 [Birinci bölümde,](sql-database-tutorial-predictive-model-prepare-data.md)örnek bir veritabanını nasıl içe aktarabileceğinizi ve daha sonra Verileri R'de bir tahminmodelinin eğitimi için nasıl hazırlayacağınızı öğrendiniz.
 
 [Üçüncü bölümde,](sql-database-tutorial-predictive-model-deploy.md)modeli veritabanında nasıl depoladığınızı ve ardından bir ve ikinci bölümlerde geliştirdiğiniz R komut dosyalarından depolanmış yordamlar oluşturmayı öğreneceksiniz. Depolanan yordamlar, yeni verilere dayalı öngörüler yapmak için bir SQL veritabanında çalışır.
-
-[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 

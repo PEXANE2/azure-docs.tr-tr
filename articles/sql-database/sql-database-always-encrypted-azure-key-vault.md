@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 006c780aeb3db813c8fdfb5da0b5c13fc4dcfebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
+ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067426"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81451678"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Her Zaman Şifrelenmiş: Azure Key Vault'ta hassas verileri koruyun ve şifreleme anahtarlarını saklayın
 
@@ -55,9 +55,9 @@ Bir Azure Active Directory (AAD) uygulaması ayarlayarak ve *uygulamanızın* ki
 
 Artık istemci uygulamanız yapılandırıldığına ve uygulama kimliğinize sahip olduğunuza göre, sizin ve uygulamanızın kasanın sırlarına (Her Zaman Şifrelenmiş anahtarlar) erişebilmeniz için önemli bir kasa oluşturma ve erişim politikasını yapılandırma nın zamanı gelmiştir. Yeni bir sütun ana anahtarı *oluşturmak*ve SQL Server Management Studio ile şifreleme kurmak için oluşturma , *al*, *liste*, *işaret*, *doğrulama*, *wrapKey*ve *unwrapKey* izinleri gereklidir.
 
-Aşağıdaki komut dosyasını çalıştırarak hızlı bir şekilde bir anahtar kasası oluşturabilirsiniz. Bu komutların ayrıntılı bir açıklaması ve anahtar kasası oluşturma ve yapılandırma hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/key-vault-overview.md)
+Aşağıdaki komut dosyasını çalıştırarak hızlı bir şekilde bir anahtar kasası oluşturabilirsiniz. Bu komutların ayrıntılı bir açıklaması ve anahtar kasası oluşturma ve yapılandırma hakkında daha fazla bilgi için Azure [Anahtar Kasası nedir?](../key-vault/general/overview.md)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
@@ -106,7 +106,7 @@ az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwr
 
 ## <a name="create-a-blank-sql-database"></a>Boş bir SQL veritabanı oluşturma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Kaynak** > **Veritabanı** > Oluşturma**SQL Veritabanı'na**gidin.
 3. Yeni veya varolan **bir** sunucuda **Klinik** adında boş bir veritabanı oluşturun. Azure portalında veritabanı oluşturma hakkında ayrıntılı yol tarifi için [ilk Azure SQL veritabanınıza](sql-database-single-database-get-started.md)bakın.
 
@@ -172,7 +172,7 @@ Her Zaman Şifrelenmiş sihirbaz aşağıdaki bölümleri içerir: **Sütun Seç
 
 Her hasta için **SSN** ve **Doğum Tarihi** bilgilerini şifreleyin. SSN sütununda, eşitlik aramalarını, birleşimlerini ve gruplandırmayı destekleyen deterministik şifreleme kullanılır. BirthDate sütunu, işlemleri desteklemeyen randomize şifreleme kullanır.
 
-SSN sütunu için **Şifreleme Türünü** **Deterministic** ve BirthDate sütununa **Randomize**olarak ayarlayın. **İleri**'ye tıklayın.
+SSN sütunu için **Şifreleme Türünü** **Deterministic** ve BirthDate sütununa **Randomize**olarak ayarlayın. **İleri**’ye tıklayın.
 
 ![Sütunları şifreleme](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
 
@@ -184,7 +184,7 @@ Bu öğretici, anahtarlarınızı Azure Key Vault'ta nasıl depolayacağımız g
 
 1. **Azure Anahtar Kasası'nı**seçin.
 2. Açılan listeden istenen anahtar kasasını seçin.
-3. **İleri**'ye tıklayın.
+3. **İleri**’ye tıklayın.
 
 ![Ana anahtar yapılandırması](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
