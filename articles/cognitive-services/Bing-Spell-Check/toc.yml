@@ -72,7 +72,7 @@
     - name: Bing Yazım Denetimi API’si analizleri
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Dil ve bölge desteği
+    - name: Dil desteği
       href: language-support.md
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'

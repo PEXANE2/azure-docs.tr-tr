@@ -107,7 +107,7 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: Bing Resim Arama uç noktaları
       href: image-search-endpoint.md
-    - name: Dil ve bölge desteği
+    - name: Dil desteği
       href: language-support.md
     - name: Bing Resim Arama API’si analizleri
       maintainContext: true

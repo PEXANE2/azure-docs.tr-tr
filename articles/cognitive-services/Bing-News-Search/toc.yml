@@ -97,7 +97,7 @@
       href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
     - name: Bing Haber Arama uç noktaları
       href: endpoint-news.md
-    - name: Dil ve bölge desteği
+    - name: Dil desteği
       href: language-support.md
     - name: Bing Haber Arama API'si Analizleri
       href: bing-news-stats.md

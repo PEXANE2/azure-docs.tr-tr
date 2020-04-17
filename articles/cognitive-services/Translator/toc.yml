@@ -98,7 +98,7 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: SSS
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: Dil ve bölge desteği
+        - name: Dil desteği
           href: language-support.md
         - name: Fiyatlandırma
           href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'

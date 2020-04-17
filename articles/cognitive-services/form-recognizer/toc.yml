@@ -80,5 +80,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Bölgesel kullanılabilirlik
       href: 'https://go.microsoft.com/fwlink/?linkid=2087185'
+    - name: Dil desteği
+      href: language-support.md
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

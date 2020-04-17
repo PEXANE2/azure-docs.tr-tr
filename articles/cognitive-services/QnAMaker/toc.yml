@@ -147,7 +147,7 @@
               href: Quickstarts/get-answer-from-knowledge-base-python.md
 - name: Başvuru
   items:
-    - name: Diller
+    - name: Dil desteği
       href: Overview/language-support.md
     - name: Sınırlar
       href: limits.md
