@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörülerinde Akıllı Algılama | Microsoft Dokümanla
 description: Application Insights, uygulama telemetrinizin otomatik derin analizini yapar ve sizi olası sorunlar konusunda uyarır.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: e232295f9da2a2ae8f3c6fafdd1dc33a42e92e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671809"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536803"
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights'da Akıllı Algılama
  Akıllı Algılama, web uygulamanızdaki olası performans sorunları ve arıza anormallikleri konusunda sizi otomatik olarak uyarır. Uygulamanızın [Uygulama Öngörüleri'ne](../../azure-monitor/app/app-insights-overview.md)gönderdiği telemetrinin proaktif analizini gerçekleştirir. Hata oranlarında ani bir artış veya istemci veya sunucu performansında anormal desenler varsa, bir uyarı alırsınız. Bu özellik yapılandırma gerektirmez. Uygulamanız yeterli telemetri gönderirse çalışır.
@@ -34,7 +34,7 @@ Akıllı Algılama, şu gibi çeşitli sorunları algılar ve bu konuda ilerler:
 
 * [Akıllı algılama - Arıza Anomalileri](../../azure-monitor/app/proactive-failure-diagnostics.md). Uygulamanız için beklenen başarısız istek oranını ayarlamak için makine öğrenimini kullanırız, yük ve diğer faktörlerle ilişkilidir. Arıza oranı beklenen zarfın dışına çıkarsa, bir uyarı göndeririz.
 * [Akıllı algılama - Performans Anomalileri](../../azure-monitor/app/proactive-performance-diagnostics.md). Bir işlemin yanıt süresi veya bağımlılık süresi geçmiş taban çizgisine göre yavaşlıyorsa veya yanıt süresi nde veya sayfa yükleme süresinde anormal bir desen tanımlıyorsak bildirimler alırsınız.   
-* Genel bozulmalar ve sorunlar, [Trace degredation](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)gibi , [Bellek sızıntısı](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak), Özel Durum hacmi ve [Güvenlik anti-desenlera](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack) [anormal artış](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) .
+* Genel bozulmalar ve sorunlar, [Trace bozulması](https://docs.microsoft.com/azure/azure-monitor/app/proactive-trace-severity)gibi, [Bellek sızıntısı,](https://docs.microsoft.com/azure/azure-monitor/app/proactive-potential-memory-leak)Özel Durum hacmi ve [Güvenlik anti-desenlera](https://docs.microsoft.com/azure/azure-monitor/app/proactive-application-security-detection-pack) [anormal artış](https://docs.microsoft.com/azure/azure-monitor/app/proactive-exception-volume) .
 
 (Her bildirimdeki yardım bağlantıları sizi ilgili makalelere götürür.)
 
@@ -53,7 +53,7 @@ Alternatif olarak, Azure Kaynak Yöneticisi şablonlarını kullanarak yapıland
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanı araçları, uygulamanızdaki telemetriyi incelemenize yardımcı olur:
 
-* [Metrik kaşif](../../azure-monitor/app/metrics-explorer.md)
+* [Metrik kaşif](../../azure-monitor/platform/metrics-charts.md)
 * [Arama gezgini](../../azure-monitor/app/diagnostic-search.md)
 * [Analitik - güçlü sorgu dili](../../azure-monitor/log-query/get-started-portal.md)
 

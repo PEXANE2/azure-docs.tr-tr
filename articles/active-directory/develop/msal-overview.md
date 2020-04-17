@@ -1,7 +1,7 @@
 ---
 title: MSAL hakkında bilgi edinin | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulama geliştiricilerin güvenli Web API'lerini aramak için belirteçler edinmelerini sağlar. Bu Web API'leri Microsoft Graph, diğer Microsoft APIS'leri, üçüncü taraf Web API'leri veya kendi Web API'larınız olabilir. MSAL birden çok uygulama mimarisini ve platformlarını destekler.
+description: Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulama geliştiricilerin güvenli web API'lerini aramak için belirteçler edinmelerini sağlar. Bu web API'leri Microsoft Graph, diğer Microsoft API'leri, üçüncü taraf web API'leri veya kendi web API'larınız olabilir. MSAL birden çok uygulama mimarisini ve platformlarını destekler.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c20d93c70484dc7ea800898da4309af2699c718e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89c5117e59f7856c3bd572bbea297a836b5ad589
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085744"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536225"
 ---
 # <a name="overview-of-microsoft-authentication-library-msal"></a>Microsoft Kimlik Doğrulama Kitaplığına (MSAL) Genel Bakış
-Microsoft Kimlik Doğrulama Kitaplığı (MSAL), geliştiricilerin güvenli Web API'lerine erişmek için Microsoft kimlik platformu bitiş noktasından [belirteçler](developer-glossary.md#security-token) edinmelerine olanak tanır. Bu Web API'leri Microsoft Graph, diğer Microsoft APIS'leri, üçüncü taraf Web API'leri veya kendi Web API'larınız olabilir. MSAL, birçok farklı uygulama mimarisini ve platformlarını destekleyen .NET, JavaScript, Android ve iOS için kullanılabilir.
+Microsoft Kimlik Doğrulama Kitaplığı (MSAL), geliştiricilerin güvenli web API'lerine erişmek için Microsoft kimlik platformu bitiş noktasından [belirteçler](developer-glossary.md#security-token) edinmelerine olanak tanır. Bu web API'leri Microsoft Graph, diğer Microsoft API'leri, üçüncü taraf web API'leri veya kendi web API'larınız olabilir. MSAL, birçok farklı uygulama mimarisini ve platformlarını destekleyen .NET, JavaScript, Android ve iOS için kullanılabilir.
 
 MSAL, çeşitli platformlar için tutarlı bir API ile jeton almanın birçok yolunu sunar. MSAL'ı kullanmak aşağıdaki avantajları sağlar:
 
@@ -43,7 +43,7 @@ MSAL aşağıdakiler de dahil olmak üzere birçok uygulama senaryosunda kullan�
 * [Yalnızca kimlik doğrulaması yapılan kullanıcıların erişebilmeleri için web API'nin korunması](scenario-protected-web-api-overview.md)
 * [Web API oturum açmış kullanıcı adına başka bir downstream web API arama](scenario-web-api-call-api-overview.md)
 * [Oturum açmış kullanıcı adına web API çağıran masaüstü uygulaması](scenario-desktop-overview.md)
-* [Etkileşimli olarak oturum açmış kullanıcı adına Web API'sini çağıran mobil uygulama.](scenario-mobile-overview.md)
+* [Mobil uygulama interaktif olarak oturum açmış kullanıcı adına bir web API çağıran](scenario-mobile-overview.md).
 * [Kendisi adına web API çağıran masaüstü / hizmet daemon uygulaması](scenario-daemon-overview.md)
 
 ## <a name="languages-and-frameworks"></a>Diller ve çerçeveler

@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 0a884850d57418e9daafba980d0a08dc86fc0974
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309385"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535851"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft kimlik platformu ve Örtülü hibe akışı
 
@@ -38,16 +38,16 @@ Ancak, tek sayfalık uygulamanızda kitaplık kullanmamayı ve protokol iletiler
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 örtülü hibe için uygun senaryolar
 
-OAuth2 belirtimi, örtük hibenin kullanıcı aracısı uygulamalarını etkinleştirmek için tasarlandığını beyan eder – yani, JavaScript uygulamaları bir tarayıcı içinde yürütülür. Bu tür uygulamaların belirleyici özelliği, JavaScript kodunun sunucu kaynaklarına (genellikle bir Web API'si) erişmek ve uygulama kullanıcı deneyimini buna göre güncelleştirmek için kullanılmasıdır. Gmail veya Outlook Web Erişimi gibi uygulamaları düşünün: Gelen kutunuzdan bir ileti seçtiğinizde, yeni seçimi görüntülemek için yalnızca ileti görselleştirme paneli değişirken, sayfanın geri kalanı değiştirilmemiş olarak kalır. Bu özellik, her kullanıcı etkileşiminin tam sayfa postback ve yeni sunucu yanıtının tam sayfa olarak işlenmesiyle sonuçlandığı geleneksel yönlendirme tabanlı Web uygulamalarıyla zıttır.
+OAuth2 belirtimi, örtük hibenin kullanıcı aracısı uygulamalarını etkinleştirmek için tasarlandığını beyan eder – yani, JavaScript uygulamaları bir tarayıcı içinde yürütülür. Bu tür uygulamaların belirleyici özelliği, JavaScript kodunun sunucu kaynaklarına (genellikle bir web API'si) erişmek ve uygulama kullanıcı deneyimini buna göre güncelleştirmek için kullanılmasıdır. Gmail veya Outlook Web Erişimi gibi uygulamaları düşünün: Gelen kutunuzdan bir ileti seçtiğinizde, yeni seçimi görüntülemek için yalnızca ileti görselleştirme paneli değişirken, sayfanın geri kalanı değiştirilmemiş olarak kalır. Bu özellik, her kullanıcı etkileşiminin tam sayfa postback ve yeni sunucu yanıtının tam sayfa olarak işlenmesiyle sonuçlandığı geleneksel yönlendirme tabanlı Web uygulamalarıyla zıttır.
 
-JavaScript tabanlı yaklaşımı aşırıya katan uygulamalara tek sayfalı uygulamalar veya SPA'lar denir. Fikir, bu uygulamaların yalnızca bir başlangıç HTML sayfası ve ilişkili JavaScript hizmet, sonraki tüm etkileşimleri Web API aramaları JavaScript üzerinden gerçekleştirilen tarafından tahrik ediliyor olmasıdır. Ancak, uygulama çoğunlukla postback odaklı ama zaman zaman JS çağrıları gerçekleştirir hibrid yaklaşımlar, nadir değildir - örtük akış kullanımı hakkında tartışma da bu için ilgilidir.
+JavaScript tabanlı yaklaşımı aşırıya katan uygulamalara tek sayfalı uygulamalar veya SPA'lar denir. Fikir bu uygulamalar sadece bir ilk HTML sayfası ve ilişkili JavaScript hizmet, tüm sonraki etkileşimleri web API aramaları JavaScript üzerinden gerçekleştirilen tarafından tahrik ediliyor olmasıdır. Ancak, uygulama çoğunlukla postback odaklı ama zaman zaman JS çağrıları gerçekleştirir hibrid yaklaşımlar, nadir değildir - örtük akış kullanımı hakkında tartışma da bu için ilgilidir.
 
-Yönlendirme tabanlı uygulamalar genellikle tanımlama bilgileri aracılığıyla isteklerini güvence altına alır, ancak bu yaklaşım JavaScript uygulamaları için de çalışmaz. Çerezler yalnızca oluşturuldukları etki alanına göre çalışır, Ancak JavaScript çağrıları diğer etki adlarına yönlendirilebilir. Aslında, bu sık sık olacaktır: Microsoft Graph API, Office API, Azure API çağıran uygulamaları düşünün - tüm uygulama nın sunulduğu yerden etki alanı dışında ikamet eden. JavaScript uygulamaları için büyüyen bir eğilim, üçüncü taraf Web API'lerinin iş işlevlerini uygulamak için %100'e güvenerek hiçbir geri uça sahip olmakdeğildir.
+Yönlendirme tabanlı uygulamalar genellikle tanımlama bilgileri aracılığıyla isteklerini güvence altına alır, ancak bu yaklaşım JavaScript uygulamaları için de çalışmaz. Çerezler yalnızca oluşturuldukları etki alanına göre çalışır, Ancak JavaScript çağrıları diğer etki adlarına yönlendirilebilir. Aslında, bu sık sık olacaktır: Microsoft Graph API, Office API, Azure API çağıran uygulamaları düşünün - tüm uygulama nın sunulduğu yerden etki alanı dışında ikamet eden. JavaScript uygulamaları için büyüyen bir eğilim, üçüncü taraf web API'lerine %100 güvenerek iş işlevlerini uygulamak için hiçbir geri uça sahip olmakdeğildir.
 
-Şu anda, Bir Web API'ye yapılan çağrıları korumanın tercih edilen yöntemi, her çağrıya Bir OAuth2 erişim belirtecinin eşlik ettiği OAuth2 taşıyıcı belirteci yaklaşımını kullanmaktır. Web API gelen erişim belirteci inceler ve gerekli kapsamları bulursa, istenen işlem erişim verir. Örtük akış, JavaScript uygulamalarının bir Web API'si için erişim belirteçleri elde etmesi için kullanışlı bir mekanizma sağlayarak çerezlerle ilgili olarak çok sayıda avantaj sunar:
+Şu anda, bir web API aramaları korumak için tercih edilen yöntem, her arama bir OAuth2 erişim belirteci eşlik nerede OAuth2 taşıyıcı belirteç yaklaşımı kullanmaktır. Web API gelen erişim belirteci inceler ve gerekli kapsamları bulursa, istenen operasyona erişim sağlar. Örtük akış, JavaScript uygulamalarının bir web API'si için erişim belirteçleri elde etmesi için kullanışlı bir mekanizma sağlayarak çerezlerle ilgili olarak çok sayıda avantaj sunar:
 
 * Jetonlar, çapraz menşeli aramalara gerek kalmadan güvenilir bir şekilde elde edilebilir – jetonların yerlerinin yerinden edilmeyeceğinin iade garantisi olduğu yeniden yönlendirme URI'nin zorunlu kaydı
-* JavaScript uygulamaları, hedefledikleri web AP'leri için, etki alanlarında herhangi bir kısıtlama olmadan, gereksinim duydukları kadar erişim belirteçleri elde edebilirsiniz
+* JavaScript uygulamaları, hedefledikleri web API'leri için, etki alanlarında herhangi bir kısıtlama olmadan, gereksinim duydukları kadar erişim belirteçleri elde edebilirsiniz
 * Oturum veya yerel depolama gibi HTML5 özellikleri belirteç önbelleğe alma ve ömür boyu yönetimi üzerinde tam kontrol sağlarken, tanımlama bilgileri yönetimi uygulamaya opaktır
 * Erişim belirteçleri, site ler arası istek sahteciliği (CSRF) saldırılarına açık değildir
 
@@ -59,7 +59,7 @@ Bu model, JavaScript uygulamasına erişim belirteçlerini bağımsız olarak ye
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Örtülü hibe uygulamam için uygun mu?
 
-Örtülü hibe diğer hibelere göre daha fazla risk sunar ve dikkat etmeniz gereken alanlar iyi belgelenmiştir (örneğin, [Dolaylı Akış'ta Kaynak Sahibinin Kimliğine Bürünmek için Erişim Belirteci'nin Kötüye Kullanımı][OAuth2-Spec-Implicit-Misuse] ve [OAuth 2.0 Tehdit Modeli ve Güvenlik Hususları).][OAuth2-Threat-Model-And-Security-Implications] Ancak, daha yüksek risk profili büyük ölçüde etkin kodu çalıştıran, uzak bir kaynak tarafından tarayıcıya sunulan uygulamaları etkinleştirmek için olması nedeniyle. Bir SPA mimarisi planlıyorsanız, arka uç bileşenleriniz yoksa veya JavaScript üzerinden Bir Web API'sini çağırmak istiyorsanız, belirteç edinimi için örtülü akışın kullanılması önerilir.
+Örtülü hibe diğer hibelere göre daha fazla risk sunar ve dikkat etmeniz gereken alanlar iyi belgelenmiştir (örneğin, [Dolaylı Akış'ta Kaynak Sahibinin Kimliğine Bürünmek için Erişim Belirteci'nin Kötüye Kullanımı][OAuth2-Spec-Implicit-Misuse] ve [OAuth 2.0 Tehdit Modeli ve Güvenlik Hususları).][OAuth2-Threat-Model-And-Security-Implications] Ancak, daha yüksek risk profili büyük ölçüde etkin kodu çalıştıran, uzak bir kaynak tarafından tarayıcıya sunulan uygulamaları etkinleştirmek için olması nedeniyle. Bir SPA mimarisi planlıyorsanız, arka uç bileşenleriniz yoksa veya JavaScript üzerinden bir web API'sını çağırmak istiyorsanız, belirteç edinimi için örtülü akışın kullanılması önerilir.
 
 Uygulamanız yerel bir istemciise, örtük akış pek uygun değildir. Azure AD oturum çerezinin yerel bir istemci bağlamında olmaması, uygulamanızı uzun ömürlü bir oturumu sürdürme şeklinden mahrum eder. Bu da, uygulamanızın yeni kaynaklar için erişim belirteçleri alırken kullanıcıdan sürekli olarak istekte bulunduğu anlamına gelir.
 

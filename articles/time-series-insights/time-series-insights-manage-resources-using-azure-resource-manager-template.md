@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/04/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1caa80469504d52d3103fb2776fb3e7210971690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a670e32058794daeaa233464ba7d054f45ef25e3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024407"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536327"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak Zaman Serisi Öngörüleri kaynakları oluşturun
 
@@ -43,7 +43,7 @@ Kaynak Yöneticisi şablonu, kaynak grubundaki kaynakların altyapısını ve ya
 
 ## <a name="specify-deployment-template-and-parameters"></a>Dağıtım şablonu ve parametrelerini belirtin
 
-Aşağıdaki yordam, Bir Zaman Serisi Öngörüleri ortamı oluşturan bir Azure Kaynak Yöneticisi şablonu, bir Olay Hub'ından olayları tüketecek şekilde yapılandırılan bir alt olay kaynağı ve erişim ilkelerine erişmek için PowerShell'in nasıl kullanılacağını açıklar çevre verileri. Varolan bir Olay Hub'ı belirtilmemişse, dağıtımla birlikte bir tane oluşturulur.
+Aşağıdaki yordam, Zaman Serisi Öngörüleri ortamını oluşturan bir Azure Kaynak Yöneticisi şablonu, olay merkezindeki olayları tüketecek şekilde yapılandırılan bir alt olay kaynağı ve ortamın verilerine erişim sağlayan ilkelere erişmek için PowerShell'in nasıl kullanılacağıaçıklanmaktadır. Varolan bir Olay Hub'ı belirtilmemişse, dağıtımla birlikte bir tane oluşturulur.
 
 1. Azure PowerShell ile başlarken yönergeleri izleyerek [Azure PowerShell'i yükleyin.](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
@@ -148,7 +148,7 @@ Aşağıdaki yordam, Bir Zaman Serisi Öngörüleri ortamı oluşturan bir Azure
 
 1. Yoksa yeni bir kaynak grubu oluşturun.
 
-   * Varolan bir kaynak grubunuz yoksa, Yeni Kaynak **Grubu** komutunu içeren yeni bir kaynak grubu oluşturun. Kullanmak istediğiniz kaynak grubunun adını ve konumunu sağlayın. Örnek:
+   * Varolan bir kaynak grubunuz yoksa, Yeni Kaynak **Grubu** komutunu içeren yeni bir kaynak grubu oluşturun. Kullanmak istediğiniz kaynak grubunun adını ve konumunu sağlayın. Örneğin:
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"

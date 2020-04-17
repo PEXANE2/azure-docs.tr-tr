@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: ecbed58eabd2e835d8fa202916829d1da91210e7
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991067"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536055"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Quickstart: Uygulamanın kimliğini kullanarak bir Python konsol uygulamasından bir belirteç edinin ve Microsoft Graph API'yi arayın
 
@@ -55,7 +55,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft kimlik platformuna gidin [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfası.
 > 1. **Yeni kayıt**seçin.
-> 1. Bir başvuru sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin. 
+> 1. Bir başvuru sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin.
 > 1. **Ad** bölümüne, uygulama nın kullanıcılarına görüntülenecek anlamlı bir uygulama `Daemon-console`adı girin, örneğin , uygulamayı oluşturmak için **Kaydol'u** seçin.
 > 1. Kaydedildikten sonra **Sertifikalar & Sırlar** menüsünü seçin.
 > 1. **İstemci sırları**altında , seçin **+ Yeni istemci gizli**. Bir ad verin ve **Ekle'yi**seçin. Sırrı güvenli bir yerde kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacaktır.
@@ -65,7 +65,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
 > Bu hızlı başlatmanın işe yaraması için bir istemci sırrı oluşturmanız ve Grafik API'nin **User.Read.All** uygulama iznini eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -89,7 +89,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-python-project"></a>Adım 3: Python projenizi yapılandırın
-> 
+>
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Alt klasöre gidin **1-Call-MsGraph-WithSecret"**.
 > 1. **Parametreleri.json'u** ve alanların `authority` `client_id`değerlerini ve `secret` aşağıdaki parçacıkları değiştirin:
@@ -106,7 +106,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 >
 > > [!TIP]
 > > **Uygulama (istemci) kimliği**, **Dizin (kiracı) Kimliği**değerlerini bulmak için, Azure portalındaki uygulamanın Genel **Bakış** sayfasına gidin. Yeni bir anahtar oluşturmak için **Sertifikalar & Sırlar** sayfasına gidin.
-    
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-admin-consent"></a>Adım 3: Yönetici onayı
 
@@ -212,7 +212,7 @@ if not result:
 
 > |Konumlar:| |
 > |---------|---------|
-> | `config["scope"]` | İstenilen kapsamları içerir. Gizli istemciler için bu biçim, `{Application ID URI}/.default` istenen kapsamların Azure Portalı'nda ayarlanan uygulama nesnesinde statik olarak tanımlanan kapsamlar `{Application ID URI}` olduğunu `https://graph.microsoft.com`belirtmek için benzer biçimi kullanmalıdır (Microsoft Graph için, işaret eder). Özel Web API'leri için, `{Application ID URI}` Azure Portal'ın Uygulama Kaydı'ndaki (Önizleme) **api açığa** çıkarma bölümü altında tanımlanır. |
+> | `config["scope"]` | İstenilen kapsamları içerir. Gizli istemciler için bu biçim, `{Application ID URI}/.default` istenen kapsamların Azure Portalı'nda ayarlanan uygulama nesnesinde statik olarak tanımlanan kapsamlar `{Application ID URI}` olduğunu `https://graph.microsoft.com`belirtmek için benzer biçimi kullanmalıdır (Microsoft Graph için, işaret eder). Özel web API'leri için, `{Application ID URI}` Azure Portal'ın Uygulama Kaydı'ndaki (Önizleme) **api açığa** çıkarma bölümü altında tanımlanır. |
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) bakın
 

@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: c606f6e60b1c906a0d5c29992287d126aaa37b7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77602945"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535607"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -155,14 +155,14 @@ Otomatik tetikleyiciler bir olaya yanıt olarak bir işlevi çağırır. Azure K
 ```cs
 public static void Run(
     [QueueTrigger("myqueue-items")] string myQueueItem,
-    [Blob("samples-workitems/{myQueueItem}", FileAccess.Read)] Stream myBlob,
+    [Blob("samples-workitems/{queueTrigger}", FileAccess.Read)] Stream myBlob,
     ILogger log)
 {
     log.LogInformation($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
 }
 ```
 
-Öznitelik, `QueueTrigger` `myqueue-items` kuyrukta bir kuyruk iletisi görüntülendiğinde işlevi çağırma saatini bildirir. Öznitelik, `Blob` *örnek çalışma öğeleri* kapsayıcısındaki bir blob'u okumak için sıra iletisini kullanma saatini söyler. Parametredeki işleve aktarılan sıra iletisinin `myQueueItem` içeriği, blob'un adıdır.
+Öznitelik, `QueueTrigger` `myqueue-items` kuyrukta bir kuyruk iletisi görüntülendiğinde işlevi çağırma saatini bildirir. Öznitelik, `Blob` *örnek çalışma öğeleri* kapsayıcısındaki bir blob'u okumak için sıra iletisini kullanma saatini söyler. `samples-workitems` Kapsayıcıdaki blob öğesinin adı, bağlama ifadesi olarak doğrudan sıra`{queueTrigger}`tetikleyicisinden elde edilir .
 
 [!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
@@ -829,7 +829,7 @@ Bir `ILogger` örnek tarafından oluşturulan her `Category` `Level`günlük ili
 |Uyarı     | 3 |
 |Hata       | 4 |
 |Kritik    | 5 |
-|None        | 6 |
+|Hiçbiri        | 6 |
 
 Her kategoriyi bağımsız olarak belirli [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel)bir kategoriye filtreleyebilirsiniz. Örneğin, blob tetikleme işleme için tüm günlükleri `Error` görmek isteyebilirsiniz ama sadece ve her şey için daha yüksek.
 

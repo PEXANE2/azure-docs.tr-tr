@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4a240bc62816a46bc37108777a8b081b74047738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79275717"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537432"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Monitör uygulama istatistikleri aracısı dağıtma
 
@@ -76,7 +76,7 @@ Bu seçeneklerin her biri [ayrıntılı yönergelerde](status-monitor-v2-detaile
 
 Telemetrinizi görüntüleyin:
 
-* Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
+* Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/platform/metrics-charts.md)
 * Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
 * Daha gelişmiş sorgular için [Analytics'i kullanın.](../../azure-monitor/app/analytics.md)
 * [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)

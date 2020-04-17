@@ -5,18 +5,18 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 01/04/2017
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b385136183fba5d1e64db3763453d2f4b23d4d96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80045180"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535647"
 ---
 # <a name="app-service-overview"></a>App Service’e genel bakış
 
 *Azure Uygulama Hizmeti,* web uygulamalarını, REST API'lerini ve mobil arka uçlarını barındırmak için HTTP tabanlı bir hizmettir. .NET, .NET Core, Java, Ruby, Node.js, PHP veya Python dahil en sevdiğiniz dilde geliştirebilirsiniz. Uygulamalar hem Windows hem de Linux tabanlı ortamlarda kolaylıkla çalışır ve ölçeklendirir. Linux tabanlı ortamlar için bkz. [Linux’ta App Service](containers/app-service-linux-intro.md). 
 
-Uygulama Hizmeti, uygulamanıza güvenlik, yük dengeleme, otomatik ölçekleme ve otomatik yönetim gibi microsoft Azure'un gücünü de ekler. Aynı zamanda Azure DevOps, GitHub, Docker Hub ve diğer kaynaklardan sürekli dağıtım, paket yönetimi, hazırlık ortamları, özel etki alanı ve SSL sertifikaları gibi DevOps özelliklerinden de yararlanabilirsiniz. 
+Uygulama Hizmeti, uygulamanıza güvenlik, yük dengeleme, otomatik ölçekleme ve otomatik yönetim gibi microsoft Azure'un gücünü de ekler. Ayrıca, Azure DevOps, GitHub, Docker Hub ve diğer kaynaklardan sürekli dağıtım, paket yönetimi, hazırlama ortamları, özel etki alanı ve TLS/SSL sertifikaları gibi DevOps özelliklerinden de yararlanabilirsiniz. 
 
 App Service ile kullandığınız Azure işlem kaynakları için ödeme yaparsınız. Kullandığınız işlem kaynakları, uygulamalarınızı çalıştırdığınız _Uygulama Hizmeti planı_ tarafından belirlenir. Daha fazla bilgi için Azure [Uygulama Hizmeti planlarına genel bakış](overview-hosting-plans.md)bakın.
 

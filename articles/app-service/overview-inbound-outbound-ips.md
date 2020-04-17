@@ -4,12 +4,12 @@ description: Azure Uygulama Hizmeti'nde gelen ve giden IP adreslerinin nasıl ku
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279214"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537636"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure Uygulama Hizmeti'nde gelen ve giden IP adresleri
 
@@ -23,7 +23,7 @@ ms.locfileid: "79279214"
 
 - Bir uygulamayı silin ve farklı bir kaynak grubunda yeniden oluşturun.
 - Kaynak grubu _ve_ bölge birleşimindeki son uygulamayı silin ve yeniden oluşturun.
-- Sertifika yenileme sırasında olduğu gibi varolan bir SSL bağlamayı silin (bkz. [sertifika yıyenin).](configure-ssl-certificate.md#renew-certificate)
+- Sertifika yenileme sırasında olduğu gibi varolan tls bağlamayı silme (bkz. [sertifika yı yenile](configure-ssl-certificate.md#renew-certificate)).
 
 ## <a name="find-the-inbound-ip"></a>Gelen IP'yi bulma
 
@@ -35,7 +35,7 @@ nslookup <app-name>.azurewebsites.net
 
 ## <a name="get-a-static-inbound-ip"></a>Statik gelen IP'yi alın
 
-Bazen uygulamanız için özel, statik bir IP adresi isteyebilirsiniz. Statik gelen IP adresi almak için IP tabanlı bir [SSL bağlama](configure-ssl-bindings.md#secure-a-custom-domain)yapılandırmanız gerekir. Uygulamanızı güvence altına almak için SSL işlevine gerçekten ihtiyacınız yoksa, bu bağlama için kendi imzalı bir sertifika bile yükleyebilirsiniz. IP tabanlı bir SSL bağlamada, sertifika IP adresinin kendisine bağlıdır, bu nedenle Uygulama Hizmeti bunu gerçekleştirmek için statik bir IP adresi sağlar. 
+Bazen uygulamanız için özel, statik bir IP adresi isteyebilirsiniz. Statik gelen IP adresini almak için [özel bir etki alanı sağlamanız](configure-ssl-bindings.md#secure-a-custom-domain)gerekir. Uygulamanızın güvenliğini sağlamak için TLS işlevine gerçekten ihtiyacınız yoksa, bu bağlama için kendi imzalı bir sertifika bile yükleyebilirsiniz. IP tabanlı TLS bağlamada, sertifika IP adresine bağlıdır, bu nedenle Uygulama Hizmeti bunu gerçekleştirmek için statik bir IP adresi sağlar. 
 
 ## <a name="when-outbound-ips-change"></a>Giden IP'ler değiştiğinde
 

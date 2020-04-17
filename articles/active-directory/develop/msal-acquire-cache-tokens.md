@@ -13,16 +13,16 @@ ms.date: 11/07/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77085157"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534593"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığını (MSAL) kullanarak belirteçleri edinme ve önbellek
 
-[Erişim belirteçleri, istemcilerin](access-tokens.md) Azure tarafından korunan web API'lerini güvenli bir şekilde aramasını sağlar. Microsoft Kimlik Doğrulama Kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollar bir web tarayıcısı üzerinden kullanıcı etkileşimleri gerektirir. Bazıları kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç edinme nin yolu, uygulamanın bir kamu istemcisi uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (Web Uygulaması, Web API veya Windows hizmeti gibi daemon uygulaması) olup olmadığını bağlıdır.
+[Erişim belirteçleri, istemcilerin](access-tokens.md) Azure tarafından korunan web API'lerini güvenli bir şekilde aramasını sağlar. Microsoft Kimlik Doğrulama Kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollar bir web tarayıcısı üzerinden kullanıcı etkileşimleri gerektirir. Bazıları kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç edinme nin yolu, uygulamanın bir kamu istemcisi uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (web uygulaması, web API veya Windows hizmeti gibi daemon uygulaması) olup olmadığını bağlıdır.
 
 MSAL satın alındıktan sonra bir belirteci önbelleğe alınr.  Uygulama kodu, başka yollarla bir belirteç edinmeden önce, önce sessizce (önbellekten) bir belirteç almaya çalışmalıdır.
 
@@ -63,18 +63,18 @@ MSAL bir belirteç önbelleği (veya gizli istemci uygulamaları için iki önbe
 
 ### <a name="recommended-call-pattern-for-public-client-applications"></a>Kamu istemcisi uygulamaları için önerilen çağrı deseni
 
-Uygulama kodu, önce sessizce (önbellekten) bir belirteç almaya çalışmalıdır.  Yöntem çağrısı bir "UI gerekli" hata veya özel durum döndürür, başka yollarla bir belirteç edinmeyi deneyin. 
+Uygulama kodu, önce sessizce (önbellekten) bir belirteç almaya çalışmalıdır.  Yöntem çağrısı bir "UI gerekli" hata veya özel durum döndürür, başka yollarla bir belirteç edinmeyi deneyin.
 
 Ancak, önce sessizce bir belirteç elde etmeye **çalışmamanız gereken** iki akış vardır:
 
 - kullanıcı belirteç önbelleğini kullanmayan istemci [kimlik bilgileri akışı,](msal-authentication-flows.md#client-credentials)ancak bir uygulama belirteç önbelleği. Bu yöntem, STS'ye bir istek göndermeden önce bu uygulama belirteç önbelleğini doğrulamayı dikkate alır.
-- kullanıcıoturum imzalayarak ve daha fazla kapsam için onay ını alarak uygulamanın aldığı bir kodu kullandığından, Web Apps'ta [yetkilendirme kodu akışı.](msal-authentication-flows.md#authorization-code) Bir kod hesap olarak değil, parametre olarak geçirildiği için, yöntem kodu kullanmadan önce önbelleğe bakamaz ve bu da yine de hizmete çağrı gerektirir.
+- uygulamanın kullanıcıya oturum açma ve daha fazla kapsam için onay ını alarak aldığı bir kodu kullandığı ndan, web uygulamalarında [yetkilendirme kodu akışı.](msal-authentication-flows.md#authorization-code) Bir kod hesap olarak değil, parametre olarak geçirildiği için, yöntem kodu kullanmadan önce önbelleğe bakamaz ve bu da yine de hizmete çağrı gerektirir.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Yetkilendirme Kodu akışını kullanarak Web Apps'ta önerilen çağrı deseni
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Yetkilendirme Kodu akışını kullanarak web uygulamalarında önerilen çağrı deseni
 
 [OpenID Connect yetkilendirme kodu akışını](v2-protocols-oidc.md)kullanan Web uygulamaları için denetleyicilerde önerilen desen aşağıdakileri yapmaktır:
 
-- Gizli bir istemci uygulamasını, özelleştirilmiş serileştirme yle belirteç önbelleğiyle anında leştirin. 
+- Gizli bir istemci uygulamasını, özelleştirilmiş serileştirme yle belirteç önbelleğiyle anında leştirin.
 - Yetkilendirme kodu akışını kullanarak belirteci edinme
 
 ## <a name="acquiring-tokens"></a>Belirteçlerin edinilmesi
@@ -91,8 +91,8 @@ Genel istemci uygulamaları (masaüstü veya mobil uygulama) için şunları yap
 
 ### <a name="confidential-client-applications"></a>Gizli müşteri uygulamaları
 
-Gizli istemci uygulamaları (Web Uygulaması, Web API veya Windows hizmeti gibi daemon uygulaması) için:
-- [İstemci kimlik bilgilerini kullanarak](msal-authentication-flows.md#client-credentials)kullanıcı için değil, **uygulamanın kendisi için** belirteçler edinin. Bu, belirli bir kullanıcıyı değil, kullanıcıları genel olarak işleyen araçları veya araçları eşitleme için kullanılabilir. 
+Gizli istemci uygulamaları (web uygulaması, web API veya Windows hizmeti gibi daemon uygulaması) için:
+- [İstemci kimlik bilgilerini kullanarak](msal-authentication-flows.md#client-credentials)kullanıcı için değil, **uygulamanın kendisi için** belirteçler edinin. Bu, belirli bir kullanıcıyı değil, kullanıcıları genel olarak işleyen araçları veya araçları eşitleme için kullanılabilir.
 - Kullanıcı adına BIR API çağırmak için bir web API'si için [On-behalf akışını](msal-authentication-flows.md#on-behalf-of) kullanın. Uygulama, kullanıcı iddiasına (örneğin SAML veya JWT belirteci) dayalı bir belirteç elde etmek için istemci kimlik bilgileriyle tanımlanır. Bu akış, hizmet-servis aramalarında belirli bir kullanıcının kaynaklarına erişimi gereken uygulamalar tarafından kullanılır.
 - Kullanıcı yetkilendirme isteği URL'si aracılığıyla giriş yaptıktan sonra web uygulamalarındaki [yetkilendirme kodu akışını](msal-authentication-flows.md#authorization-code) kullanarak belirteçler edinin. OpenID Connect uygulaması genellikle bu mekanizmayı kullanır ve bu mekanizma, kullanıcının Açık Kimlik'i kullanarak oturum açmasına ve ardından kullanıcı adına web API'lere erişmesini sağlar.
 

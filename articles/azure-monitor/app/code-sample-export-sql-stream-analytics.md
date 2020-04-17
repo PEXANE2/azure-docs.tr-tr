@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörülerinden SQL'e Dışa Aktarma | Microsoft Doküma
 description: Stream Analytics'i kullanarak Application Insights verilerini SÜREKLI olarak SQL'e aktarın.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 3ef0420cdab64f11b699fd4031ed2b0134f18609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663700"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536922"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Walkthrough: Stream Analytics'i kullanarak Application Insights'tan SQL'e dışa aktarma
 Bu makalede, [Sürekli Dışa Aktarma][export] ve [Azure Akış Analizi'ni](https://azure.microsoft.com/services/stream-analytics/)kullanarak telemetri verilerinizi Azure [Application Insights'tan Azure Application Insights'a][start] nasıl taşıyış gösterebilirsiniz. 
@@ -61,7 +61,7 @@ Sürekli dışa aktarma, verileri her zaman bir Azure Depolama hesabına aktarab
     ![Etkinlik türlerini seçin](./media/code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Bazı verilerin birikmesine izin verin. Arkanıza yindirin ve insanlar uygulamanızı bir süre kullansın. Telemetri gelecek ve [tanıaramada](../../azure-monitor/app/diagnostic-search.md)metrik [kaşifve](../../azure-monitor/app/metrics-explorer.md) tek tek olaylardaki istatistiksel grafikleri göreceksiniz. 
+1. Bazı verilerin birikmesine izin verin. Arkanıza yindirin ve insanlar uygulamanızı bir süre kullansın. Telemetri gelecek ve [tanıaramada](../../azure-monitor/app/diagnostic-search.md)metrik [kaşifve](../../azure-monitor/platform/metrics-charts.md) tek tek olaylardaki istatistiksel grafikleri göreceksiniz. 
    
     Ayrıca, veriler depolama alanınıza dışa aktaracaktır. 
 2. Dışa aktarılan verileri portalda inceleyin - **Gözat'ı**seçin, depolama hesabınızı seçin ve ardından **Kapsayıcılar** - veya Visual Studio'da. Visual Studio'da **Görüntü / Bulut Gezgini'ni**seçin ve Azure / Depolama'yı açın. (Bu menü seçeneğiniz yoksa, Azure SDK'yı yüklemeniz gerekir: Yeni Proje iletişim kutusunu açın ve Visual C# / Cloud / Microsoft Azure SDK'yı .NET için alın.)
@@ -240,7 +240,7 @@ Birkaç dakika sonra SQL Server Management Tools'a geri dön ve akan verileri iz
 
 
 ## <a name="related-articles"></a>İlgili makaleler:
-* [Stream Analytics kullanarak PowerBI'ye dışa aktarma](../../azure-monitor/app/export-power-bi.md )
+* [Stream Analytics kullanarak Power BI'ye dışa aktarma](../../azure-monitor/app/export-power-bi.md )
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](../../azure-monitor/app/export-data-model.md)
 * [Uygulama Öngörülerinde Sürekli İhracat](../../azure-monitor/app/export-telemetry.md)
 * [Uygulama Bilgileri](https://azure.microsoft.com/services/application-insights/)
@@ -249,7 +249,7 @@ Birkaç dakika sonra SQL Server Management Tools'a geri dön ve akan verileri iz
 
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
 [export]: ../../azure-monitor/app/export-telemetry.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md
 

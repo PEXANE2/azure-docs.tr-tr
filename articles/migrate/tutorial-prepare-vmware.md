@@ -2,14 +2,14 @@
 title: Azure Geçişi ile değerlendirme/geçiş için VMware VM'leri hazırlayın
 description: Azure Geçişi ile VMware VM'lerinin değerlendirilmesi/geçişi için nasıl hazırlanacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619421"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535273"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
@@ -17,7 +17,7 @@ Bu makale, [Azure Geçişi'ni](migrate-services-overview.md)kullanarak şirket i
 
 
 
-Bu öğretici, VMware VM'leri nasıl değerlendirip geçirteceklerini gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, VMware VM'leri nasıl değerlendirip geçirteceklerini gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure'u Azure Geçir ile çalışmaya hazırlayın.
@@ -39,7 +39,7 @@ VMware VM'leri değerlendirebilmeniz veya geçirebilmeniz için bu görevler iç
 **Azure Geçiş projesi oluşturma** | Azure hesabınız, proje oluşturmak için Katılımcı veya Sahip izinlerine ihtiyaç duyar. 
 **Kaynak sağlayıcılar kaydedin** | Azure Geçir, VMware VM'leri keşfetmek ve değerlendirmek ve Azure Geçir:Sunucu Değerlendirmesi ile Azure'a geçirmek için hafif bir Azure Geçir cihazı kullanır.<br/><br/> Cihaz kaydı sırasında, kaynak sağlayıcılar cihazda seçilen aboneye kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte Bir Katılımcı veya Sahip rolüne ihtiyacınız var.
 **Azure AD uygulamaları oluşturma** | Azure Geçiş, cihazı kaydederken Azure Etkin Dizin (Azure AD) uygulamaları oluşturur. <br/><br/> - İlk uygulama, cihazüzerinde çalışan aracılar ile Azure'da çalışan ilgili hizmetleri arasındaki iletişim için kullanılır.<br/><br/> - İkinci uygulama yalnızca aracısız VMware VM geçişi için kullanıcının aboneliğinde oluşturulan KeyVault'a erişmek için kullanılır. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Azure AD uygulamaları (Uygulama Geliştiricisi'nde kullanılabilir) rolü oluşturmak için izinlere ihtiyacınız vardır.
-**Anahtar Kasası Oluşturma** | Aracısız geçiş kullanarak VMware VM'leri geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur.<br/><br/> Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda rol atama izinlerine ihtiyacınız vardır.
+**Anahtar kasası oluşturma** | Aracısız geçiş kullanarak VMware VM'leri geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur.<br/><br/> Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda rol atama izinlerine ihtiyacınız vardır.
 
 
 
@@ -123,7 +123,7 @@ Azure Geçir'in değerlendirme ve aracısız geçiş için VM'leri bulmak için 
 Azure Geçir cihazını kurmadan ve bir sonraki öğreticide değerlendirmeye başlamadan önce, cihaz dağıtımına hazırlanın.
 
 1. [Doğrula](migrate-appliance.md#appliance---vmware) Azure Geçiş cihazı gereksinimleri.
-2. Cihazın erişmesi gereken Azure URL'lerini [gözden geçirin.](migrate-appliance.md#url-access) URL tabanlı bir güvenlik duvarı veya proxy kullanıyorsanız, gerekli URL'lere erişim sağladığından emin olun.
+2. Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet](migrate-appliance.md#government-cloud-urls) bulutlarında erişmeleri gereken Azure URL'lerini gözden geçirin.
 3. Cihazın keşif ve değerlendirme sırasında topladığı [verileri gözden geçirin.](migrate-appliance.md#collected-data---vmware)
 4. Cihaz için bağlantı noktası erişim gereksinimlerini [not](migrate-support-matrix-vmware.md#port-access) edin.
 
@@ -138,7 +138,8 @@ VMware VM'lerin [aracısız geçişi](server-migrate-overview.md) için gereksin
 2. Azure Geçir'in vCenter Server'a erişmek için ihtiyaç duyduğu [izinleri gözden geçirin.](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers)
 3. [İnceleme](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) VMware VM gereksinimleri.
 4. Azure Geçiş cihaz gereksinimlerini [gözden geçirin.](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance)
-5. URL [erişimi](migrate-appliance.md#url-access) ve [bağlantı noktası erişim](migrate-support-matrix-vmware-migration.md#agentless-ports) gereksinimlerine dikkat edin.
+5. Genel ve [devlet](migrate-appliance.md#government-cloud-urls) bulutları için gereken URL erişimine dikkat [edin.](migrate-appliance.md#public-cloud-urls)
+6. Bağlantı noktası erişim gereksinimlerini gözden [geçirin.](migrate-support-matrix-vmware-migration.md#agentless-ports)
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Aracı tabanlı VMware geçişine hazırlanın
 
@@ -150,7 +151,8 @@ VMware VM'lerin [aracı tabanlı geçişi](server-migrate-overview.md) için ger
 3. Aracı tabanlı geçiş bir çoğaltma cihazı kullanır:
     - Çoğaltma cihazı için dağıtım gereksinimlerini [gözden geçirin.](migrate-replication-appliance.md#appliance-requirements)
     - Cihaza MySQL yükleme [seçeneklerini gözden geçirin.](migrate-replication-appliance.md#mysql-installation)
-    - Çoğaltma cihazının [URL](migrate-replication-appliance.md#url-access) ve [bağlantı noktası](migrate-replication-appliance.md#port-access) erişim gereksinimlerini gözden geçirin.
+    - Gerekli URL erişimine dikkat [edin.](migrate-replication-appliance.md#url-access)
+    - Çoğaltma cihazı için [bağlantı noktası erişim](migrate-replication-appliance.md#port-access) gereksinimlerini gözden geçirin.
     
 ## <a name="next-steps"></a>Sonraki adımlar
 

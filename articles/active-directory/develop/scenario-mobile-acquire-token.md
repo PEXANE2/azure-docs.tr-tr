@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cf967525283f28d5829d80b75e40e263f7eaedef
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5750f4a5aa62b33c7d793b3e0c34f304ce1b187e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882752"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535936"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API'lerini çağıran bir mobil uygulama için belirteç alma
 
@@ -26,7 +26,7 @@ Uygulamanız korumalı web API'lerini arayabilmesi için önce bir erişim belir
 
 ## <a name="define-a-scope"></a>Kapsam tanımlama
 
-Bir belirteç isteğinde bulunduğunuzda, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın hangi verilere erişebileceğini belirler.  
+Bir belirteç isteğinde bulunduğunuzda, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın hangi verilere erişebileceğini belirler.
 
 Bir kapsamı tanımlamanın en kolay yolu, istenen web `App ID URI` API'larını kapsamla `.default`birleştirmektir. Bu tanım, Microsoft kimlik platformuna uygulamanızın portalda ayarlanan tüm kapsamları gerektirdiğini söyler.
 
@@ -41,7 +41,7 @@ let scopes = ["https://graph.microsoft.com/.default"]
 ```
 
 ### <a name="xamarin"></a>Xamarin
-```csharp 
+```csharp
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
@@ -72,13 +72,13 @@ sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
             /* No accounts or > 1 account. */
         }
     }
-});    
+});
 
 [...]
 
 // No accounts found. Interactively request a token.
 // TODO: Create an interactive callback to catch successful or failed requests.
-sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());        
+sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 ```
 
 #### <a name="ios"></a>iOS
@@ -89,22 +89,22 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 NSArray *scopes = @[@"https://graph.microsoft.com/.default"];
 NSString *accountIdentifier = @"my.account.id";
-    
+
 MSALAccount *account = [application accountForIdentifier:accountIdentifier error:nil];
-    
+
 MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] initWithScopes:scopes account:account];
 [application acquireTokenSilentWithParameters:silentParams completionBlock:^(MSALResult *result, NSError *error) {
-        
+
     if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
-        // Access token to call the Web API
+
+        // Access token to call the web API
         NSString *accessToken = result.accessToken;
     }
-        
+
     // Check the error
     if (error && [error.domain isEqual:MSALErrorDomain] && error.code == MSALErrorInteractionRequired)
     {
@@ -113,34 +113,34 @@ MSALSilentTokenParameters *silentParams = [[MSALSilentTokenParameters alloc] ini
     }
 }];
 ```
- 
+
 ```swift
 
 let scopes = ["https://graph.microsoft.com/.default"]
 let accountIdentifier = "my.account.id"
-        
+
 guard let account = try? application.account(forIdentifier: accountIdentifier) else { return }
 let silentParameters = MSALSilentTokenParameters(scopes: scopes, account: account)
 application.acquireTokenSilent(with: silentParameters) { (result, error) in
-            
+
     guard let authResult = result, error == nil else {
-                
+
     let nsError = error! as NSError
-                
+
     if (nsError.domain == MSALErrorDomain &&
         nsError.code == MSALError.interactionRequired.rawValue) {
-                    
+
             // Interactive auth will be required, call acquireToken()
             return
          }
          return
      }
-            
+
     // You'll want to get the account identifier to retrieve and reuse the account
     // for later acquireToken calls
     let accountIdentifier = authResult.account.identifier
-            
-    // Access token to call the Web API
+
+    // Access token to call the web API
     let accessToken = authResult.accessToken
 }
 ```
@@ -149,15 +149,15 @@ MSAL dönerse, `MSALErrorInteractionRequired`belirteçleri etkileşimli olarak e
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
-MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithParentViewController:viewController];
+MSALWebviewParameters *webParameters = [[MSALWebviewParameters alloc] initWithAuthPresentationViewController:viewController];
 MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParameters alloc] initWithScopes:scopes webviewParameters:webParameters];
 [application acquireTokenWithParameters:interactiveParams completionBlock:^(MSALResult *result, NSError *error) {
-    if (!error) 
+    if (!error)
     {
         // You'll want to get the account identifier to retrieve and reuse the account
         // for later acquireToken calls
         NSString *accountIdentifier = result.account.identifier;
-            
+
         NSString *accessToken = result.accessToken;
     }
 }];
@@ -165,15 +165,15 @@ MSALInteractiveTokenParameters *interactiveParams = [[MSALInteractiveTokenParame
 
 ```swift
 let viewController = ... // Pass a reference to the view controller that should be used when getting a token interactively
-let webviewParameters = MSALWebviewParameters(parentViewController: viewController)
+let webviewParameters = MSALWebviewParameters(authPresentationViewController: viewController)
 let interactiveParameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParameters)
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in
-                
+
     guard let authResult = result, error == nil else {
         print(error!.localizedDescription)
         return
     }
-                
+
     // Get access token from result
     let accessToken = authResult.accessToken
 })
@@ -207,7 +207,7 @@ catch(MsalUiRequiredException)
 
 #### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametresi vardır: `scopes`. Parametre, `scopes` belirteç gerektiren kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph içinse, her Microsoft Graph API'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvuruda, "İzinler" bölümüne gidin. 
+`AcquireTokenInteractive`yalnızca bir zorunlu parametresi vardır: `scopes`. Parametre, `scopes` belirteç gerektiren kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph içinse, her Microsoft Graph API'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvuruda, "İzinler" bölümüne gidin.
 
 Örneğin, [kullanıcının ilgili kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için "User.Read", "Contacts.Read" kapsamını kullanın. Daha fazla bilgi için [Microsoft Graph izinleri başvurusuna](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)bakın.
 
@@ -215,7 +215,7 @@ Android'de, uygulamayı oluştururken üst etkinliği kullanarak `PublicClientAp
 
 #### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET'da belirli isteğe bağlı parametreler
 
-Aşağıdaki bölümlerde isteğe bağlı parametreler MSAL.NET. 
+Aşağıdaki bölümlerde isteğe bağlı parametreler MSAL.NET.
 
 ##### <a name="withprompt"></a>WithPrompt
 
@@ -225,19 +225,19 @@ Parametre, `WithPrompt()` bir istem belirterek kullanıcıyla etkileşimi denetl
 
 Sınıf aşağıdaki sabitleri tanımlar:
 
-- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunmaya zorlar. İletişim kutusu, kullanıcının oturum yaptığı hesapları içerir. Kullanıcının farklı kimlikler arasından seçim seçmesine izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL'ı kimlik sağlayıcısına göndermeye `prompt=select_account` iter. 
-    
+- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunmaya zorlar. İletişim kutusu, kullanıcının oturum yaptığı hesapları içerir. Kullanıcının farklı kimlikler arasından seçim seçmesine izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL'ı kimlik sağlayıcısına göndermeye `prompt=select_account` iter.
+
     Sabit `SelectAccount` varsayılandır ve kullanılabilir bilgilere dayalı olarak mümkün olan en iyi deneyimi etkin bir şekilde sağlar. Kullanılabilir bilgiler hesap, kullanıcı için bir oturumun varlığı ve benzeri içerebilir. Bunu yapmak için iyi bir nedeniniz yoksa bu varsayılanı değiştirmeyin.
-- `Consent`daha önce izin verilmiş olsa bile kullanıcıdan onay istemenizi sağlar. Bu durumda, MSAL `prompt=consent` kimlik sağlayıcısına gönderir. 
+- `Consent`daha önce izin verilmiş olsa bile kullanıcıdan onay istemenizi sağlar. Bu durumda, MSAL `prompt=consent` kimlik sağlayıcısına gönderir.
 
     Kuruluş yönetiminin kullanıcıların `Consent` uygulamayı her kullandıklarında onay iletişim kutusunu görmelerini gerektirdiği güvenlik odaklı uygulamalarda sabiti kullanmak isteyebilirsiniz.
-- `ForceLogin`komut istemi gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini istemesini sağlar. 
+- `ForceLogin`komut istemi gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini istemesini sağlar.
 
     Belirteç edinimi başarısız olursa ve kullanıcının yeniden oturum açmasına izin vermek istiyorsanız, bu seçenek yararlı olabilir. Bu durumda, MSAL `prompt=login` kimlik sağlayıcısına gönderir. Bu seçeneği, kuruluş yönetiminin kullanıcının uygulamanın belirli bölümlerine her erişirinde oturum açmasını gerektirdiği güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
 - `Never`sadece .NET 4.5 ve Windows Runtime (WinRT) içindir. Bu sabit kullanıcıyı isteyaramaz, ancak gizli katıştırılmış web görünümünde depolanan çerezi kullanmaya çalışır. Daha fazla bilgi için bkz: [MSAL.NET ile web tarayıcılarını kullanma.](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)
 
     Bu seçenek başarısız `AcquireTokenInteractive` olursa, bir ui etkileşimi gerekli olduğunu bildirmek için bir özel durum atar. Sonra başka bir `Prompt` parametre kullanmanız gerekir.
-- `NoPrompt`kimlik sağlayıcısına bir istem göndermez. 
+- `NoPrompt`kimlik sağlayıcısına bir istem göndermez.
 
     Bu seçenek yalnızca Azure Etkin Dizin B2C'deki profil oluşturma ilkeleri için yararlıdır. Daha fazla bilgi için [B2C ayrıntılarına](https://aka.ms/msal-net-b2c-specificities)bakın.
 
@@ -245,7 +245,7 @@ Sınıf aşağıdaki sabitleri tanımlar:
 
 Kullanıcının `WithExtraScopeToConsent` çeşitli kaynaklara önceden onay vermesini istediğiniz gelişmiş bir senaryoda değiştirici'yi kullanın. Normalde MSAL.NET veya Microsoft kimlik platformu 2.0 ile kullanılan artımlı onayı kullanmak istemiyorsanız bu değiştirici kullanabilirsiniz. Daha fazla bilgi için [bkz.](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)
 
-Aşağıda bir kod örneği verilmiştir: 
+Aşağıda bir kod örneği verilmiştir:
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -261,7 +261,7 @@ Diğer isteğe bağlı parametreler `AcquireTokenInteractive`hakkında bilgi edi
 
 Jeton almak için protokolü doğrudan kullanmanızı önermiyoruz. Bunu yaparsanız, uygulama tek oturum açma (SSO), aygıt yönetimi ve koşullu erişim içeren bazı senaryoları desteklemez.
 
-Mobil uygulamalar için belirteçler almak için protokolü kullandığınızda, iki istekte bulunun: 
+Mobil uygulamalar için belirteçler almak için protokolü kullandığınızda, iki istekte bulunun:
 
 * Bir yetkilendirme kodu alın.
 * Kodu bir belirteçle değiştirin.

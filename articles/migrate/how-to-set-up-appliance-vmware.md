@@ -2,21 +2,26 @@
 title: VMware için bir Azure Geçiş cihazı ayarlama
 description: VMware VM'leri değerlendirmek ve geçirmek için bir Azure Geçir cihazını nasıl ayarlayamanızı öğrenin.
 ms.topic: article
-ms.date: 03/23/2020
-ms.openlocfilehash: 7a7d0007d2824abc781411f9529f9fa4ac89e55c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: b32c6a9b703e4d341fe353d6b472ea7a18adadf3
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336786"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538265"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM'ler için bir cihaz ayarlama
 
-Bu makalede, [Azure Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla değerlendirme için Azure Geçir cihazının nasıl ayarlanır ve [Azure Geçişi:Sunucu Geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) aracını kullanarak aracısız geçiş için nasıl ayarlanır.
+[Azure Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla değerlendirilmek üzere Azure Geçir cihazını ve Azure [Geçir:Sunucu Geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool) aracını kullanarak aracısız geçiş için bu makaleyi izleyin.
 
 [Azure Geçir cihazı,](migrate-appliance.md) şirket içi VMware VM'leri keşfetmek, Azure'a VM meta veri/performans verileri göndermek ve aracısız geçiş sırasında VMware VM'lerinin çoğaltılması için Azure Geçiş:Sunucu Değerlendirmesi ve Sunucu Geçişi tarafından kullanılan hafif bir cihazdır.
 
-İndirdiğiniz BIR OVA şablonu kullanarak veya PowerShell yükleme komut dosyası kullanarak VMware VM değerlendirmesi için Azure Geçir cihazını ayarlayabilirsiniz. Bu makalede, OVA şablonu kullanılarak cihazın nasıl ayarlanır şekilde ayarlanır. Komut dosyasını kullanarak cihazı kurmak istiyorsanız, bu [makaledeki](deploy-appliance-script.md)yönergeleri izleyin.
+Cihazı birkaç yöntem kullanarak dağıtabilirsiniz:
+
+- İndirilen BIR OVA şablonu kullanarak VMware VM'de ayarlayın. Bu, bu makalede açıklanan yöntemdir.
+- PowerShell yükleyici komut dosyasına sahip bir VMware VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) BIR OVA şablonu kullanarak bir VM ayarlayamıyorsanız veya Azure'da ysanız kullanılmalıdır.
+
+Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
 
 
 ## <a name="appliance-deployment-ova"></a>Cihaz dağıtımı (OVA)
@@ -62,9 +67,9 @@ Dağıtmadan önce OVA dosyasının güvenli olup olmadığını denetleyin.
 9. Ayarları gözden geçirip onayladıktan sonra **Son**’a tıklayın.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
+## <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-VM cihazının [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 
 ## <a name="configure-the-appliance"></a>Cihazı yapılandırın
@@ -119,7 +124,7 @@ Uygulamaların, rollerin ve özelliklerin keşfi ve VM'lerin bağımlılıkları
 2. **İşletim Sistemini**seçin.
 3. Kimlik bilgisi için dostça bir ad sağlayın.
 4. **Kullanıcı Adı** ve **Parola'da,** VM'lerde en az konuk erişimi olan bir hesap belirtin.
-5. **Ekle**’ye tıklayın.
+5. **Ekle**'ye tıklayın.
 
 vCenter Server ve VM kimlik bilgilerini (isteğe bağlı) belirttikten sonra, **Kaydet'i** tıklatın ve şirket içi ortamın keşfini başlatmak için keşfetmeye başlayın.
 

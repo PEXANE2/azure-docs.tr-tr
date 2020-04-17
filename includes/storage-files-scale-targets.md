@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cf9be653da2dd587b93724b6e319dc4d20686c2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76901414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536462"
 ---
 | Kaynak | Standart dosya paylaşımları | Premium dosya paylaşımları |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "76901414"
 | Maksimum nesne (dizinler ve dosyalar) ad uzunluğu | 2.048 karakter | 2.048 karakter |
 | Maksimum yol adı bileşeni (\A\B\C\D yolunda, her harf bir bileşendir) | 255 karakter | 255 karakter |
 
-\*Çoğu bölgede kullanılabilir, kullanılabilir bölgelerle ilgili ayrıntılar için [Bölgesel kullanılabilirlik](../articles/storage/files/storage-files-planning.md#regional-availability) bilgisine bakın.
+\*Standart dosya paylaşımlarında varsayılan değer 5 TiB'dir, [bkz.](../articles/storage/files/storage-files-how-to-create-large-file-share.md)

@@ -6,14 +6,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 01/30/2020
+ms.date: 04/16/2020
 ms.author: victorh
-ms.openlocfilehash: 809274aba35e9607aeacf7c6483ec3d10f899667
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: df21a2c40dd532ac1ff321638099ceee8a2b3e53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312361"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535613"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Bir uygulama ağ geçidini dahili yük dengeleyicisi (ILB) uç noktası ile yapılandırma
 
@@ -59,7 +59,7 @@ Azure'un oluşturduğunuz kaynaklar arasında iletişim kurabilmesi için sanal 
 10. **Arka uç havuzu ekle'yi**seçin.
 11. **Ad**için , *appGatewayBackendPool*yazın.
 12. **Hedefsiz arka uç havuzu ekle**için **Evet'i**seçin. Hedefleri daha sonra eklersiniz.
-13. **Ekle'yi**seçin.
+13. **Add (Ekle)** seçeneğini belirleyin.
 14. **Sonraki:Yapılandırma'yı**seçin.
 15. **Yönlendirme kuralları altında,** **kural ekle'yi**seçin.
 16. **Kural adı**için *Rrule-01*yazın.
@@ -95,8 +95,8 @@ Bunu yapmak için, siz:
    - Kaynak grubu için **Resource group** *myResourceGroupAG'ı* seçin.
    - *myVM* - **Sanal makine adı**için .
    - **Görüntü**için **Windows Server 2019 Datacenter'ı** seçin.
-   - *azureadmin* - **Kullanıcı adı**için .
-   - *Azure123456!* **Şifre**için .
+   - geçerli bir **Kullanıcı Adı**.
+   - geçerli bir **Parola**.
 5. Kalan varsayılanları kabul edin ve **Sonraki : Diskler'i**seçin.
 6. Varsayılanları kabul edin ve **Sonraki : Ağ' ı**seçin.
 7. Sanal ağ için **myVNet** öğesinin seçili olduğundan ve alt ağın **myBackendSubnet** olduğundan emin olun.

@@ -2,13 +2,13 @@
 title: Azure Geçişi'nde VMware geçişi desteği
 description: Azure Geçişi'nde VMware VM geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: bf9cc471eef31edd513358a97d2ece17015ba781
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.date: 04/15/2020
+ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314003"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538146"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -64,10 +64,12 @@ Hangi yöntemi kullanmak istediğinizi anlamak için [bu makaleyi](server-migrat
 
 
 ## <a name="agentless-azure-migrate-appliance"></a>Aracısız-Azure Geçiş cihazı 
-Aracısız geçiş, VMware VM'de dağıtılan Azure Geçiş cihazını kullanır.
+
+Aracısız [geçiş, Azure Geçiş cihazını](migrate-appliance.md)kullanır. Cihazı vCenter Server'a aktarılan BIR OVA şablonu kullanarak veya [PowerShell komut dosyası](deploy-appliance-script.md)kullanarak VMWare VM olarak dağıtabilirsiniz.
 
 - VMware için [cihaz gereksinimleri](migrate-appliance.md#appliance---vmware) hakkında bilgi edinin.
-- Cihazın erişmesi gereken [URL'ler](migrate-appliance.md#url-access) hakkında bilgi edinin.
+- Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet](migrate-appliance.md#government-cloud-urls) bulutlarında erişmesi gereken URL'ler hakkında bilgi edinin.
+- Azure Kamu'da, komut dosyasını kullanarak cihazı dağıtmanız gerekir.
 
 ## <a name="agentless-ports"></a>Aracısız bağlantı noktaları
 
@@ -123,7 +125,8 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM'ler i
 
 - VMware için [çoğaltma cihazı gereksinimleri](migrate-replication-appliance.md#appliance-requirements) hakkında bilgi edinin.
 - MySQL cihaza yüklenmelidir. Yükleme [seçenekleri](migrate-replication-appliance.md#mysql-installation)hakkında bilgi edinin.
-- Çoğaltma cihazının erişmesi gereken [URL'ler](migrate-replication-appliance.md#url-access) ve [bağlantı noktaları](migrate-replication-appliance.md#port-access) hakkında bilgi edinin.
+- Çoğaltma cihazının [genel](migrate-replication-appliance.md#url-access) ve [devlet](migrate-replication-appliance.md#azure-government-url-access) bulutlarında erişmesi gereken URL'ler hakkında bilgi edinin.
+- Çoğaltma cihazının erişmesi gereken [bağlantı noktalarını](migrate-replication-appliance.md#port-access) inceleyin.
 
 ## <a name="agent-based-ports"></a>Aracı tabanlı bağlantı noktaları
 

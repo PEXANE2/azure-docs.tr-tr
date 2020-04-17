@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
-ms.date: 03/24/2020
-ms.openlocfilehash: a4df99c45b27ad662133010422cae2e30e36e584
-ms.sourcegitcommit: 940e16ff194d5163f277f98d038833b1055a1a3e
+ms.date: 04/15/2020
+ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80247274"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535239"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Öğretici: Azure HDInsight'ta satış öngörüleri elde etmek için uçlardan uca veri ardışık bir kaynak oluşturma
 
@@ -27,23 +27,28 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure CLI. Bkz. [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* Azure CLI - en az sürüm 2.2.0. Bkz. [Azure CLI'yi yükleyin.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+
+* jq, bir komut satırı JSON işlemci.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * Azure yerleşik [rolünün](../role-based-access-control/built-in-roles.md)bir üyesi - sahibi .
 
-* Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [BI Masaüstü'nü](https://www.microsoft.com/download/details.aspx?id=45331) güçleyin.
+* Veri Fabrikası ardışık hattını tetiklemek için PowerShell kullanıyorsanız, [Az Modülü'ne](https://docs.microsoft.com/powershell/azure/overview)ihtiyacınız vardır.
+
+* Bu öğreticinin sonunda iş öngörülerini görselleştirmek için [BI Masaüstü'nü](https://aka.ms/pbiSingleInstaller) güçleyin.
 
 ## <a name="create-resources"></a>Kaynak oluşturma
 
 ### <a name="clone-the-repository-with-scripts-and-data"></a>Depoyu komut dosyaları ve verilerle klonlama
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Azure aboneliğinizde oturum açın. Azure Bulut Su Şurası'nı kullanmayı planlıyorsanız, kod bloğunun sağ üst köşesinde **deneyin'i** seçin. Else, aşağıdaki komutu girin:
 
-1. Üst menü çubuğundan Azure Bulut Kabuğu'nu açın. Cloud Shell'in size bir dosya paylaşımı oluşturması için aboneliğinizi seçin.
+    ```azurecli-interactive
+    az login
 
-   ![Azure Cloud Shell’i açma](./media/hdinsight-sales-insights-etl/hdinsight-sales-insights-etl-click-cloud-shell.png)
-
-1. **Ortam** açılır menüsünde **Bash'i**seçin.
+    # If you have multiple subscriptions, set the one to use
+    # az account set --subscription "SUBSCRIPTIONID"
+    ```
 
 1. Azure rol [sahibinin](../role-based-access-control/built-in-roles.md)bir üyesi olduğunuzdan emin olun. Hesabınızla değiştirin `user@contoso.com` ve ardından komutu girin:
 
@@ -55,29 +60,7 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
     Hiçbir kayıt döndürülmezse, üye olmazsınız ve bu öğreticiyi tamamlayamazsınız.
 
-1. Komutu girerek aboneliklerinizi listele:
-
-    ```azurecli
-    az account list --output table
-    ```
-
-    Bu proje için kullanacağınız aboneliğin kimliğine dikkat edin.
-
-1. Bu proje için kullanacağınız aboneliği ayarlayın. Gerçek `SUBSCRIPTIONID` değerle değiştirin ve komutu girin.
-
-    ```azurecli
-    subscriptionID="SUBSCRIPTIONID"
-    az account set --subscription $subscriptionID
-    ```
-
-1. Proje için yeni bir kaynak grubu oluşturun. İstenilen adla değiştirin `RESOURCEGROUP` ve komutu girin.
-
-    ```azurecli
-    resourceGroup="RESOURCEGROUP"
-    az group create --name $resourceGroup --location westus
-    ```
-
-1. [HDInsight satış istatistikleri ETL deposundan](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)bu öğretici için veri ve komut indirin.  Aşağıdaki komutu girin:
+1. [HDInsight satış istatistikleri ETL deposundan](https://github.com/Azure-Samples/hdinsight-sales-insights-etl)bu öğretici için veri ve komut indirin. Aşağıdaki komutu girin:
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
@@ -98,11 +81,19 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
     chmod +x scripts/*.sh
     ````
 
-1. Betiği yürütün. `RESOURCE_GROUP_NAME` Değiştirin `LOCATION` ve ilgili değerlerle değiştirin ve ardından komutu girin:
+1. Kaynak grubu için değişkeni ayarlayın. Varolan veya yeni bir kaynak grubunun adıyla değiştirin `RESOURCE_GROUP_NAME` ve ardından komutu girin:
 
     ```bash
-    ./scripts/resources.sh RESOURCE_GROUP_NAME LOCATION
+    resourceGroup="RESOURCE_GROUP_NAME"
     ```
+
+1. Betiği yürütün. İstenilen bir değerle değiştirin `LOCATION` ve komutu girin:
+
+    ```bash
+    ./scripts/resources.sh $resourceGroup LOCATION
+    ```
+
+    Hangi bölgeyi belirtebileceğinizden emin değilseniz, [az hesap listesi konumları](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) komutuyla aboneliğiniz için desteklenen bölgelerin listesini alabilirsiniz.
 
     Komut aşağıdaki kaynakları dağıtacak:
 
@@ -115,49 +106,26 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 Küme oluşturma yaklaşık 20 dakika sürebilir.
 
-`resources.sh` Komut dosyası aşağıdaki komutları içerir. Önceki adımda komut dosyasını zaten çalıştırdıysanız, bu komutları çalıştırmanız gerekmez.
-
-* `az group deployment create`- Bu komut, istenen yapılandırmaile belirtilen kaynakları oluşturmak için bir Azure Kaynak Yöneticisi şablonu (`resourcestemplate.json`) kullanır.
-
-    ```azurecli
-    az group deployment create --name ResourcesDeployment \
-        --resource-group $resourceGroup \
-        --template-file resourcestemplate.json \
-        --parameters "@resourceparameters.json"
-    ```
-
-* `az storage blob upload-batch`- Bu komut, satış verilerini .csv dosyalarını bu komutu kullanarak yeni oluşturulan Blob depolama hesabına yükler:
-
-    ```azurecli
-    az storage blob upload-batch -d rawdata \
-        --account-name <BLOB STORAGE NAME> -s ./ --pattern *.csv
-    ```
-
-Kümelere SSH erişimi için varsayılan `Thisisapassword1`parola. Parolayı değiştirmek istiyorsanız, `resourcesparameters.json` dosyaya gidin ve `sparksshPassword`, , `sparkClusterLoginPassword` `llapClusterLoginPassword`ve `llapsshPassword` parametreleriçin parolayı değiştirin.
+Kümelere SSH erişimi için varsayılan `Thisisapassword1`parola. Parolayı değiştirmek istiyorsanız, `./templates/resourcesparameters_remainder.json` dosyaya gidin ve `sparksshPassword`, , `sparkClusterLoginPassword` `llapClusterLoginPassword`ve `llapsshPassword` parametreleriçin parolayı değiştirin.
 
 ### <a name="verify-deployment-and-collect-resource-information"></a>Dağıtımı doğrulama ve kaynak bilgilerini toplama
 
-1. Dağıtımınızın durumunu denetlemek istiyorsanız, Azure portalındaki kaynak grubuna gidin. **Ayarlar**altında **Dağıtımlar'ı** seçin. Dağıtımınızın adını seçin. `ResourcesDeployment` Burada başarıyla dağıtılan kaynakları ve halen devam etmekte olan kaynakları görebilirsiniz.
+1. Dağıtımınızın durumunu denetlemek istiyorsanız, Azure portalındaki kaynak grubuna gidin. **Ayarlar** **altında, Dağıtımlar'ı**ve dağıtımınızı seçin. Burada başarıyla dağıtılan kaynakları ve halen devam etmekte olan kaynakları görebilirsiniz.
 
 1. Kümelerin adlarını görüntülemek için aşağıdaki komutu girin:
 
-    ```azurecli
-    sparkCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'spark')].{clusterName:name}" -o tsv)
+    ```bash
+    sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
 
-    llapCluster=$(az hdinsight list \
-        --resource-group $resourceGroup \
-        --query "[?contains(name,'llap')].{clusterName:name}" -o tsv)
-
-    echo $sparkCluster
-    echo $llapCluster
+    echo "Spark Cluster" $sparkClusterName
+    echo "LLAP cluster" $llapClusterName
     ```
 
 1. Azure depolama hesabını ve erişim anahtarını görüntülemek için aşağıdaki komutu girin:
 
     ```azurecli
-    blobStorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.blobStorageName.value')
+    blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
 
     blobKey=$(az storage account keys list \
         --account-name $blobStorageName \
@@ -171,7 +139,7 @@ Kümelere SSH erişimi için varsayılan `Thisisapassword1`parola. Parolayı de�
 1. Veri Gölü Depolama Gen2 hesabını ve erişim anahtarını görüntülemek için aşağıdaki komutu girin:
 
     ```azurecli
-    ADLSGen2StorageName=$(cat resourcesoutputs.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+    ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
 
     adlsKey=$(az storage account keys list \
         --account-name $ADLSGen2StorageName \
@@ -191,10 +159,13 @@ Bu veri fabrikası, iki faaliyetleri ile bir boru hattı olacak:
 * İlk etkinlik, veri alımını taklit etmek için Azure Blob depolamadaki verileri Veri Gölü Depolama Gen 2 depolama hesabına kopyalar.
 * İkinci etkinlik, Kıvılcım kümesindeki verileri dönüştürür. Komut dosyası, istenmeyen sütunları kaldırarak verileri dönüştürür. Ayrıca, tek bir işlemin oluşturduğu geliri hesaplayan yeni bir sütun ekler.
 
-Azure Veri Fabrikası ardışık sisteminizi ayarlamak için aşağıdaki komutu uygulayın:
+Azure Veri Fabrikası ardışık hattınızı ayarlamak için aşağıdaki komutu uygulayın.  Hala dizinde `hdinsight-sales-insights-etl` olmalısın.
 
 ```bash
-./scripts/adf.sh
+blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
+ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.adlsGen2StorageName.value')
+
+./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
 Bu komut dosyası aşağıdaki şeyleri yapar:
@@ -205,35 +176,47 @@ Bu komut dosyası aşağıdaki şeyleri yapar:
 1. Veri Gölü Depolama Gen2 ve Blob depolama hesapları için depolama anahtarları alır.
 1. İlişkili bağlantılı hizmetleri ve etkinlikleriyle birlikte bir Azure Veri Fabrikası ardışık hattı oluşturmak için başka bir kaynak dağıtımı oluşturur. Bağlı hizmetlerin depolama hesaplarına doğru şekilde erişebilmeleri için depolama anahtarlarını şablon dosyasına parametre olarak geçirir.
 
-Veri Fabrikası ardışık hattı aşağıdaki komut aracılığıyla dağıtılır:
-
-```azurecli-interactive
-az group deployment create --name ADFDeployment \
-    --resource-group $resourceGroup \
-    --template-file adftemplate.json \
-    --parameters "@adfparameters.json"
-```
-
 ## <a name="run-the-data-pipeline"></a>Veri ardışık lığını çalıştırma
 
 ### <a name="trigger-the-data-factory-activities"></a>Veri Fabrikası faaliyetlerini tetikle
 
 Oluşturduğunuz Veri Fabrikası ardışık hattındaki ilk etkinlik, verileri Blob depolamadan Veri Gölü Depolama Gen2'ye taşır. İkinci etkinlik, verilerdeki Kıvılcım dönüşümlerini uygular ve dönüştürülen .csv dosyalarını yeni bir konuma kaydeder. Tüm boru hattının tamamlanması birkaç dakika sürebilir.
 
-Ardışık lıkları tetiklemek için şunları yapabilirsiniz:
+Veri Fabrikası adını almak için aşağıdaki komutu girin:
 
-* PowerShell'deki Veri Fabrikası boru hatlarını tetikle. Gerçek `DataFactoryName` Veri Fabrikası adı ile değiştirin ve ardından aşağıdaki komutları çalıştırın:
+```azurecli
+cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
+```
+
+Ardışık mayıda tetiklemek için şunları yapabilirsiniz:
+
+* PowerShell'deki Veri Fabrikası boru hattını tetikle. Değiştirin `RESOURCEGROUP` `DataFactoryName` ve uygun değerlerle aşağıdaki komutları çalıştırın:
 
     ```powershell
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "CopyPipeline_k8z"
-    Invoke-AzDataFactoryV2Pipeline -DataFactory DataFactoryName -PipelineName "sparkTransformPipeline"
+    # If you have multiple subscriptions, set the one to use
+    # Select-AzSubscription -SubscriptionId "<SUBSCRIPTIONID>"
+
+    $resourceGroup="RESOURCEGROUP"
+    $dataFactory="DataFactoryName"
+
+    $pipeline =Invoke-AzDataFactoryV2Pipeline `
+        -ResourceGroupName $resourceGroup `
+        -DataFactory $dataFactory `
+        -PipelineName "IngestAndTransform"
+
+    Get-AzDataFactoryV2PipelineRun `
+        -ResourceGroupName $resourceGroup  `
+        -DataFactoryName $dataFactory `
+        -PipelineRunId $pipeline
     ```
+
+    İlerlemeyi `Get-AzDataFactoryV2PipelineRun` izlemek için gerektiği gibi yeniden yürütün.
 
     Veya
 
-* Veri fabrikasını açın ve **Yazar & Monitör'ü**seçin. Kopya ardışık hattını ve sonra portaldan Spark ardışık hattını tetikle. Portal üzerinden boru hatlarıtetikleme hakkında daha fazla bilgi için, [Azure Veri Fabrikası'nı kullanarak HDInsight'ta isteğe bağlı Apache Hadoop kümeleri oluştur'a](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)bakın.
+* Veri fabrikasını açın ve **Yazar & Monitör'ü**seçin. Geçitten `IngestAndTransform` boru hattını tetikle. Portal üzerinden boru hatlarıtetikleme hakkında daha fazla bilgi için, [Azure Veri Fabrikası'nı kullanarak HDInsight'ta isteğe bağlı Apache Hadoop kümeleri oluştur'a](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)bakın.
 
-Ardışık hatların çalıştırılıştını doğrulamak için aşağıdaki adımlardan birini atabilirsiniz:
+Ardışık hattın çalıştırDığını doğrulamak için aşağıdaki adımlardan birini atabilirsiniz:
 
 * Portal aracılığıyla veri fabrikanızdaki **Monitör** bölümüne gidin.
 * Azure Depolama Gezgini'nde, Veri Gölü Depolama Gen 2 depolama hesabınıza gidin. `files` Dosya sistemine gidin ve ardından klasöre `transformed` gidin ve ardışık düzende başarılı olup olmadığını görmek için içeriğini kontrol edin.
@@ -242,37 +225,48 @@ HDInsight'ı kullanarak verileri dönüştürmenin diğer yolları için [Jupyte
 
 ### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Power BI'deki verileri görüntülemek için Etkileşimli Sorgu kümesinde bir tablo oluşturma
 
-1. SCP `query.hql` kullanarak dosyayı LLAP kümesine kopyalayın. Gerçek `LLAPCLUSTERNAME` adla değiştirin ve komutu girin:
+1. SCP `query.hql` kullanarak dosyayı LLAP kümesine kopyalayın. Komutu girin:
 
     ```bash
-    scp scripts/query.hql sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
+    scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-2. LLAP kümesine erişmek için SSH'yi kullanın. Gerçek `LLAPCLUSTERNAME` adla değiştirin ve komutu girin. Dosyayı `resourcesparameters.json` değiştirmediyseniz, parola `Thisisapassword1`.
+    Hatırlatma: Varsayılan `Thisisapassword1`parola.
+
+1. LLAP kümesine erişmek için SSH'yi kullanın. Komutu girin:
 
     ```bash
-    ssh sshuser@LLAPCLUSTERNAME-ssh.azurehdinsight.net
+    ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
     ```
 
-3. Komut dosyasını çalıştırmak için aşağıdaki komutu kullanın:
+1. Komut dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-Bu komut dosyası, Etkileşimli Sorgu kümesinde Power BI'den erişebileceğiniz yönetilen bir tablo oluşturur.
+    Bu komut dosyası, Etkileşimli Sorgu kümesinde Power BI'den erişebileceğiniz yönetilen bir tablo oluşturur.
 
 ### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Satış verilerinden Güç BI panosu oluşturma
 
 1. Power BI Desktop’ı açın.
-1. **Veri Al**’ı seçin.
-1. **HDInsight İnteraktif Sorgu kümesini**arayın.
-1. Orada küme için URI yapıştırın. `https://LLAPCLUSTERNAME.azurehdinsight.net` biçiminde olmalıdır.
 
-   Veritabanı `default` için girin.
-1. Kümeye erişmek için kullandığınız kullanıcı adını ve parolayı girin.
+1. Menüden **Veri** > **Al'a gidin...**  >  **Azure**Azure > **HDInsight Etkileşimli Sorgu**.
 
-Veriler yüklendikten sonra oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları ile başlamak için aşağıdaki bağlantılara bakın:
+1. **Bağlan**’ı seçin.
+
+1. **HDInsight Interactive Query** iletişim kutusundan:
+    1. **Sunucu** metin kutusuna LLAP kümenizin adını ' `https://LLAPCLUSTERNAME.azurehdinsight.net`ın biçiminde girin.
+    1. **Veritabanı** metin kutusuna `default`girin.
+    1. **Tamam'ı**seçin.
+
+1. **AzureHive** iletişim kutusundan:
+    1. Kullanıcı **adı** metin kutusuna. `admin`
+    1. **Parola** metin kutusuna. `Thisisapassword1`
+    1. **Bağlan**’ı seçin.
+
+1. **Navigator'dan** `sales`verileri seçmek `sales_raw` ve/veya önizlemek için seçin. Veriler yüklendikten sonra oluşturmak istediğiniz panoyu deneyebilirsiniz. Power BI panoları ile başlamak için aşağıdaki bağlantılara bakın:
 
 * [Power BI tasarımcıları için panolara giriş](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Öğretici: Power BI hizmeti ile başlayın](https://docs.microsoft.com/power-bi/service-get-started)
@@ -281,9 +275,18 @@ Veriler yüklendikten sonra oluşturmak istediğiniz panoyu deneyebilirsiniz. Po
 
 Bu uygulamayı kullanmaya devam etmeyecekseniz, bunlar için ücretlendirilmemek için aşağıdaki komutu kullanarak tüm kaynakları silin.
 
-```azurecli-interactive
-az group delete -n $resourceGroup
-```
+1. Kaynak grubunu kaldırmak için komutu girin:
+
+    ```azurecli
+    az group delete -n $resourceGroup
+    ```
+
+1. Hizmet ilkesini kaldırmak için komutları girin:
+
+    ```azurecli
+    servicePrincipal=$(cat serviceprincipal.json | jq -r '.name')
+    az ad sp delete --id $servicePrincipal
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

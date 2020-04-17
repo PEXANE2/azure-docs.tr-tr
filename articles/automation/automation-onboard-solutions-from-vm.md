@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 621b429f5dc3a6b6620e4d41ad46763e1d4fa226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f33f829b6cb86cb01c848e5fc48e1618a3e00a2c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299544"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537041"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Bir Azure sanal makineden Yerleşik Güncelleme Yönetimi, İzlemeyi Değiştir ve Envanter çözümleri
 
@@ -24,38 +24,38 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 İlk olarak, VM'nizdeki çözümlerden birini veya üçünü etkinleştirin:
 
-1. Azure [portalında,](https://portal.azure.com)sol bölmeden Sanal **makineleri** seçin veya **Ana** Sayfa'dan **Sanal makineleri** arayın ve seçin.
-2. Çözüm sağlamak istediğiniz VM'yi seçin.
-3. VM sayfasında, **Operations**altında, **Yönetim Güncelleştir,** **Envanter**veya **İzlemeyi Değiştir'i**seçin. Sanal makine, Otomasyon hesabınızın konumu ne olursa olsun herhangi bir bölgede bulunabilir. Bir VM'den bir çözüme binerken, `Microsoft.OperationalInsights/workspaces/read` VM'nin bir çalışma alanına bindirilip bindirilen olup olmadığını belirlemek için izin almanız gerekir. Gerekli olan ek izinler hakkında bilgi edinmek [için, yerleşik makineler için gereken izinlere](automation-role-based-access-control.md#onboarding)bakın.
+1. Azure [portalında](https://portal.azure.com) **Sanal makineleri** seçin veya Ana Sayfa'dan **Sanal makineleri** arayın ve seçin.
+2. Bir çözümü etkinleştirmek istediğiniz VM'yi seçin.
+3. VM sayfasında, **Operations**altında, **Yönetim Güncelleştir,** **Envanter**veya **İzlemeyi Değiştir'i**seçin. Sanal makine, Otomasyon hesabınızın konumu ne olursa olsun, herhangi bir bölgede bulunabilir. Bir VM'den bir çözüme binerken, `Microsoft.OperationalInsights/workspaces/read` VM'nin bir çalışma alanına bindirilip bindirilen olup olmadığını belirlemek için izin almanız gerekir. Gerekli olan ek izinler hakkında bilgi edinmek [için, yerleşik makineler için gereken izinlere](automation-role-based-access-control.md#onboarding-permissions)bakın. Aynı anda birden çok makinede nasıl bineceğinizi öğrenmek için, [Yerleşik Güncelleme Yönetimi, İzlemeyi Değiştir ve Envanter çözümlerine](automation-onboard-solutions-from-automation-account.md)bakın.
 
-Aynı anda birden çok makinede nasıl bineceğinizi öğrenmek için, [Yerleşik Güncelleme Yönetimi, İzlemeyi Değiştir ve Envanter çözümlerine](automation-onboard-solutions-from-automation-account.md)bakın.
-
-Azure Günlük Analizi çalışma alanı ve Otomasyon hesabını seçin ve ardından çözümü etkinleştirmek için **Etkinleştir'i** seçin. Çözümün etkinleştirilmesi 15 dakika sürer.
+4. Azure Günlük Analizi çalışma alanı ve Otomasyon hesabını seçin ve ardından çözümü etkinleştirmek için **Etkinleştir'i** tıklatın. Çözümün etkinleştirilmesi 15 dakika sürer.
 
 ![Güncelleştirme Yönetimi çözümünde yerleşik](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-Diğer çözümlere gidin ve sonra **Etkinleştir'i**seçin. Log Analytics çalışma alanı ve Otomasyon hesap açılır listeleri devre dışı bırakılır, çünkü bu çözümler daha önce etkinleştirilen çözümle aynı çalışma alanı ve Otomasyon hesabını kullanır.
+5. Diğer çözümlere gidin ve sonra **Etkinleştir'i**seçin. Log Analytics çalışma alanı ve Otomasyon hesap açılır listeleri devre dışı bırakılır, çünkü bu çözümler daha önce etkinleştirilen çözümle aynı çalışma alanı ve Otomasyon hesabını kullanır.
 
 > [!NOTE]
-> **İzlemeyi değiştir** in ve **Envanter** aynı çözümü kullanın. Bu çözümlerden biri etkinleştirildiğinde, diğeri de etkinleştirilir.
+> İzlemeyi değiştir in ve Envanter aynı çözümü kullanın. Bu çözümlerden biri etkinleştirildiğinde, diğeri de etkinleştirilir.
 
 ## <a name="scope-configuration"></a>Kapsam yapılandırması
 
-Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlamak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için, Otomasyon hesabınızda, **İlgili kaynaklar**altında, **Çalışma Alanı'nı**seçin. Çalışma alanında, **Çalışma Alanı veri kaynakları**altında Kapsam **Yapılandırmaları'nı**seçin.
+Her çözüm, çözümü alan bilgisayarları hedeflemek için çalışma alanında bir kapsam yapılandırması kullanır. Kapsam yapılandırması, çözümün kapsamını belirli bilgisayarlarla sınırlamak için kullanılan bir veya daha fazla kayıtlı arama grubudur. Kapsam yapılandırmalarına erişmek için:
 
-Seçili çalışma alanında Güncelleştirme Yönetimi veya İzleme çözümlerini değiştir zaten yoksa, aşağıdaki kapsam yapılandırmaları oluşturulur:
+1. Otomasyon hesabınızda, **İlgili kaynaklar** **altında, Çalışma Alanı'nı**seçin. 
+2. Çalışma alanında, **Çalışma Alanı veri kaynakları**altında Kapsam **Yapılandırmaları'nı**seçin.
+3. Seçili çalışma alanında Güncelleştirme Yönetimi veya İzleme çözümünü değiştir zaten yoksa, aşağıdaki kapsam yapılandırmaları oluşturulur:
 
-* **MicrosoftDefaultScopeConfig-ChangeTracking**
+    * `MicrosoftDefaultScopeConfig-ChangeTracking`
+    * `MicrosoftDefaultScopeConfig-Updates`
 
-* **MicrosoftDefaultScopeConfig-Güncelleştirmeleri**
+    Seçili çalışma alanı zaten çözüme sahipse, çözüm yeniden dağıtılanmaz ve kapsam yapılandırması eklenmez.
 
-Seçili çalışma alanı zaten çözüme sahipse, çözüm yeniden dağıtılanmaz ve kapsam yapılandırması eklenmez.
-
-Yapılandırmaların herhangi birinde elipsleri (**...**) seçin ve sonra **Edit'i**seçin. Kapsamı **Düzenleme yapı** bölmesi'nde **Bilgisayar Gruplarını Seçin'i**seçin. **Bilgisayar Grupları** bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilen aramaları gösterir.
+4. Yapılandırmaların herhangi birinde elipsleri (**...**) seçin ve sonra **Edit'i**tıklatın. 
+5. Kapsamı **Düzenleme yapı** bölmesi'nde **Bilgisayar Gruplarını Seçin'i**seçin. **Bilgisayar Grupları** bölmesi, kapsam yapılandırmasını oluşturmak için kullanılan kaydedilen aramaları gösterir.
 
 ## <a name="saved-searches"></a>Kaydedilen aramalar
 
-Bir bilgisayar Güncelleştirme Yönetimi, İzlemeyi Değiştir veya Envanter çözümlerine eklendiğinde, bilgisayar çalışma alanınızdaki kayıtlı iki aramadan birine eklenir. Kaydedilen aramalar, bu çözümleri hedefleyen bilgisayarları içeren sorgulardır.
+Bir bilgisayar Güncelleştirme Yönetimi, İzlemeyi Değiştir veya Envanter çözümüne eklendiğinde, bilgisayar çalışma alanınızdaki kayıtlı iki aramadan birine eklenir. Kaydedilen aramalar, bu çözümleri hedefleyen bilgisayarları içeren sorgulardır.
 
 Çalışma alanınıza gidin. **Genel**altında, **Kaydedilmiş aramaları**seçin. Bu çözümler tarafından kullanılan kaydedilmiş iki arama aşağıdaki tabloda gösterilmiştir:
 
@@ -72,7 +72,7 @@ Grubu doldurmak için kullanılan sorguyu görüntülemek için kaydedilen arama
 
 Aşağıdaki çözümler Bir Log Analytics çalışma alanına bağlıdır:
 
-* [Güncelleme Yönetimi](automation-update-management.md)
+* [Güncelleştirme Yönetimi](automation-update-management.md)
 * [Değişiklik İzleme](automation-change-tracking.md)
 * [Mesai saatleri dışında VM'leri Başlatma/Durdurma](automation-solution-vm-management.md)
 
@@ -83,7 +83,7 @@ Bu çözümleri kaldırdıktan sonra, Otomasyon hesabınızın bağlantısını 
 > [!NOTE]
 > Azure SQL izleme çözümünün önceki sürümleri de dahil olmak üzere bazı çözümler otomasyon varlıkları oluşturmuş olabilir ve çalışma alanını bağlamadan önce kaldırılması gerekebilir.
 
-1. Azure portalından Otomasyon hesabınızı açın ve Otomasyon hesabı sayfasında soldaki **İlgili Kaynaklar** bölümünün altında Bağlantılı **çalışma alanı** seçin.
+1. Azure portalından Otomasyon hesabınızı açın ve soldaki **İlgili Kaynaklar** bölümünün altında Bağlantılı **çalışma alanını** seçin.
 
 2. Bağlantıyı Bırakma çalışma alanı sayfasında, **Bağlantıyı Çöz çalışma alanını**tıklatın.
 
@@ -112,7 +112,7 @@ Alternatif olarak, Çalışma alanınızı Otomasyon Hesabınızdan Günlük Ana
 Güncelleştirme Yönetimi'nden bir VM kaldırmak için:
 
 * Günlük Analizi çalışma alanınızda, Kapsam Yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
-* Linux için [Microsoft İzleme aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+* Windows [için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

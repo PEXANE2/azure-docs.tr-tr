@@ -3,12 +3,12 @@ title: Nasıl yapabilirim ... azure uygulama istatistikleri | Microsoft Doküman
 description: Uygulama Öngörülerinde SSS.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 5b65087c361911f0714723c315e0b7f7e9bb74e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663866"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536871"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights’ta nasıl ... yapabilirim?
 ## <a name="get-an-email-when-"></a>Bir e-posta alın zaman ...
@@ -45,7 +45,7 @@ Uyarıların iki durumu olduğundan, uyarının sona ermiş olduğunu düşünd�
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Alarmınızı görmek için [metrik gezginde](../../azure-monitor/app/metrics-explorer.md) bir grafik oluşturun:
+Alarmınızı görmek için [metrik gezginde](../../azure-monitor/platform/metrics-charts.md) bir grafik oluşturun:
 
 ![](./media/how-do-i/010-alarm.png)
 
@@ -82,7 +82,7 @@ Dikkat edilmesi gereken bazı noktalar:
 
 ## <a name="visualize-data"></a>Verileri görselleştirme
 #### <a name="dashboard-with-metrics-from-multiple-apps"></a>Birden çok uygulamadan ölçümler içeren pano
-* [Metrik](../../azure-monitor/app/metrics-explorer.md)Gezgin'de, grafiğinizi özelleştirin ve sık kullanılan olarak kaydedin. Azure panosuna sabitle.
+* [Metrik](../../azure-monitor/platform/metrics-charts.md)Gezgin'de, grafiğinizi özelleştirin ve sık kullanılan olarak kaydedin. Azure panosuna sabitle.
 
 #### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Diğer kaynaklardan ve Uygulama Öngörülerinden gelen verilerle pano
 * [Güç BI telemetri ihracat](../../azure-monitor/app/export-power-bi.md ).
@@ -159,5 +159,5 @@ Standart toplayıcıları devre dışı atabilirsiniz (örneğin, performans say
 * **Unix sunucu** - [Yükle toplandı](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>Daha fazla performans sayacı görüntülemek için
-* İlk olarak, [yeni bir grafik ekleyin](../../azure-monitor/app/metrics-explorer.md) ve sayaç sunduğumuz temel kümede olup olmadığını görmek.
+* İlk olarak, [yeni bir grafik ekleyin](../../azure-monitor/platform/metrics-charts.md) ve sayaç sunduğumuz temel kümede olup olmadığını görmek.
 * Değilse, [sayaç performans sayacı modülü tarafından toplanan kümeye ekleyin.](../../azure-monitor/app/performance-counters.md)

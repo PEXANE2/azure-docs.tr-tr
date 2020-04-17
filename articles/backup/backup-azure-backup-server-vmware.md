@@ -3,12 +3,12 @@ title: Azure Yedekleme Sunucusu ile VMware VM'leri yedekleme
 description: Bu makalede, VMware vCenter/ESXi sunucusunda çalışan VMware VM'leri yedeklemek için Azure Yedekleme Sunucusu'nun nasıl kullanılacağını öğrenin.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 951016d393b095b0329ff18861421402e0e18a1a
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80529501"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537415"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Yedekleme Sunucusu ile VMware VM'leri yedekleme
 
@@ -96,11 +96,11 @@ Kuruluşunuz içinde güvenli sınırlarınız varsa ve VMware sunucuları ile A
 
 1. Aşağıdaki metni bir .txt dosyasına kopyalayıp yapıştırın.
 
-```text
-Windows Registry Editor Version 5.00
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-"IgnoreCertificateValidation"=dword:00000001
-```
+    ```text
+    Windows Registry Editor Version 5.00
+    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+    "IgnoreCertificateValidation"=dword:00000001
+    ```
 
 2. Dosyayı **DisableSecureAuthentication.reg**adıyla Azure Yedekleme Sunucusu makinesine kaydedin.
 
@@ -130,27 +130,49 @@ Azure Yedekleme Sunucusu'nun v-Center Server/ESXi ana bilgisayarına erişmek i�
 
 ### <a name="role-permissions"></a>Rol izinleri
 
-| **vCenter 6.7 kullanıcı hesabı için ayrıcalıklar**              | **vCenter 6.5 kullanıcı hesabı için ayrıcalıklar**             |
-| --------------------------------------------------------- | -------------------------------------------------------- |
-| Datastore.Allocate Alanı                                  | Datastore.Allocate Alanı                                 |
-| Global.Log Etkinliği                                          | Global.Log Etkinliği                                         |
-| Global.Manage Özel Öznitelikleri                           | Global.Manage Özel Öznitelikleri                          |
-| Network.Ata                                            | Network.Ata                                           |
-| Kaynak. Sanal Makineyi Kaynak havuzuna atama        | Kaynak. Sanal Makineyi Kaynak havuzuna atama       |
-| VirtualMachine.Configuration.AddNewDisk                   | VirtualMachine.Configuration.AddNewDisk                  |
-| VirtualMachine.Configuration. Aygıt Ekle veya Kaldır       | VirtualMachine.Configuration. Aygıt Ekle veya Kaldır      |
-| VirtualMachine.Configuration.Advanced                     | VirtualMachine.Configuration.Advanced                    |
-| VirtualMachine.Configuration.Toggle Disk Değiştirme İzleme | VirtualMachine.Configuration.Disk Değiştirme İzleme       |
-| VirtualMachine.Configuration.Configure Host USB Aygıtı   | VirtualMachine.Configuration.Host USB Cihazı            |
-| VirtualMachine.Configuration.Query SahipSiz Dosyalar         | VirtualMachine.Configuration.Query SahipSiz Dosyalar        |
-| VirtualMachine.Configuration.Change Swapfile Yerleştirme   | VirtualMachine.Configuration.Swapfile Yerleştirme         |
-| VirtualMachine.Interaction.Power Off                      | VirtualMachine.Interaction.Power Off                     |
-| VirtualMachine.Inventory.Create Yeni                       | VirtualMachine.Inventory.Create Yeni                      |
-| VirtualMachine.Provisioning.Allow Disk Erişimi            | VirtualMachine.Provisioning.Allow Disk Erişimi           |
-| VirtualMachine.Provisioning.Allow Dosya Erişimi            | VirtualMachine.Provisioning.Allow Dosya Erişimi           |
-| VirtualMachine.Provisioning.Allow Read-only Disk Erişimi  | VirtualMachine.Provisioning.Allow Read-only Disk Erişimi |
-| VirtualMachine.Snapshot Management.Create Snapshot       | VirtualMachine.Snapshot Management.Create Snapshot      |
-| VirtualMachine.Snapshot Management.Remove Snapshot       | VirtualMachine.Snapshot Management.Remove Snapshot      |
+| vCenter 6.7 kullanıcı hesabı için ayrıcalıklar                     | vCenter 6.5 kullanıcı hesabı için ayrıcalıklar                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Datastore kümesi. Datatstore kümesini yapılandırma            | Datastore kümesi. Datatstore kümesini yapılandırma            |
+| Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
+| Datastore.Browse datastore                                   | Datastore.Browse datastore                                   |
+| Datastore.Düşük düzeyli dosya işlemleri                          | Datastore.Düşük düzeyli dosya işlemleri                          |
+| Global.Devre Dışı Yöntemleri                                       | Global.Devre Dışı Yöntemleri                                       |
+| Global.Enable yöntemleri                                        | Global.Enable yöntemleri                                        |
+| Global.Lisanslar                                              | Global.Lisanslar                                              |
+| Global.Log etkinliği                                             | Global.Log etkinliği                                             |
+| Global.Manage özel öznitelikleri                              | Global.Manage özel öznitelikleri                              |
+| Global.Set özel öznitelik                                  | Global.Set özel öznitelik                                  |
+| Host.Yerel işlemler. Sanal makine oluşturma                | Host.Yerel işlemler. Sanal makine oluşturma                |
+| Network.Ataağı                                       | Network.Ataağı                                       |
+| Kaynak. Kaynak havuzuna sanal makine atama           | Kaynak. Kaynak havuzuna sanal makine atama           |
+| vApp.Ekle sanal makine                                     | vApp.Ekle sanal makine                                     |
+| vApp.Ate kaynak havuzu                                    | vApp.Ate kaynak havuzu                                    |
+| vApp.Kayıt Dışı                                              | vApp.Kayıt Dışı                                              |
+| VirtualMachine.Configuration. Aygıt Ekle veya Kaldır          | VirtualMachine.Configuration. Aygıt Ekle veya Kaldır          |
+| Sanal makine. Configuration.Acquire disk kiralama            | Sanal makine. Configuration.Disk kiralama                     |
+| Sanal makine. Configuration.Add new disk                   | Sanal makine. Configuration.Add new disk                   |
+| Sanal makine. Configuration.Advanced yapılandırma        | Sanal makine. Configuration.Advanced                       |
+| Sanal makine. Configuration.Toggle disk değiştirme izleme   | Sanal makine. Configuration.Disk değişikliği izleme          |
+| Sanal makine. Configuration.Configure Host USB aygıtı     | Sanal makine. Configuration.Host USB aygıtı               |
+| Sanal makine. Configuration.Extend sanal disk           | Sanal makine. Configuration.Extend sanal disk           |
+| Sanal makine. Configuration.Query sahipsiz dosyaları           | Sanal makine. Configuration.Query sahipsiz dosyaları           |
+| Sanal makine. Configuration.Change Swapfile yerleşimi     | Sanal makine. Configuration.Swapfile yerleşimi            |
+| Sanal makine. Misafir Operasyonlar.Misafir Operasyon Programı Yürütme | Sanal makine. Misafir Operasyonlar.Misafir Operasyon Programı Yürütme |
+| Sanal makine. Misafir İşlemleri.Konuk Operasyon Modifikasyonları | Sanal makine. Misafir İşlemleri.Konuk Operasyon Modifikasyonları |
+| Sanal makine. Misafir İşlemleri.Misafir İşlem Sorguları    | Sanal makine. Misafir İşlemleri.Misafir İşlem Sorguları    |
+| Sanal makine . Etkileşim. Cihaz bağlantısı             | Sanal makine . Etkileşim. Cihaz bağlantısı             |
+| Sanal makine . Etkileşim. VIX API tarafından konuk işletim sistemi yönetimi | Sanal makine . Etkileşim. VIX API tarafından konuk işletim sistemi yönetimi |
+| Sanal makine . Etkileşim. Güç Kapama                      | Sanal makine . Etkileşim. Güç Kapama                      |
+| Sanal makine . Inventory.Create yeni                        | Sanal makine . Inventory.Create yeni                        |
+| Sanal makine . Stok.Kaldır                            | Sanal makine . Stok.Kaldır                            |
+| Sanal makine . Inventory.Register                          | Sanal makine . Inventory.Register                          |
+| Sanal makine . Provisioning.Allow disk erişimi             | Sanal makine . Provisioning.Allow disk erişimi             |
+| Sanal makine . Provisioning.Allow dosya erişimi             | Sanal makine . Provisioning.Allow dosya erişimi             |
+| Sanal makine . Provisioning.Salt okunur disk erişimine izin ver   | Sanal makine . Provisioning.Salt okunur disk erişimine izin ver   |
+| Sanal makine . Provisioning.Allow sanal makine indir | Sanal makine . Provisioning.Allow sanal makine indir |
+| Sanal makine . Anlık görüntü yönetimi.  Anlık görüntü oluşturma       | Sanal makine . Anlık görüntü yönetimi.  Anlık görüntü oluşturma       |
+| Sanal makine . Anlık görüntü yönetimi. Anlık Görüntü'yi Kaldırma        | Sanal makine . Anlık görüntü yönetimi. Anlık Görüntü'yi Kaldırma        |
+| Sanal makine . Anlık görüntü yönetimi. Anlık görüntüye geri dön     | Sanal makine . Anlık görüntü yönetimi. Anlık görüntüye geri dön     |
 
 <br>
 
@@ -174,8 +196,6 @@ Azure Yedekleme Sunucusu'nun v-Center Server/ESXi ana bilgisayarına erişmek i�
 | Sanal makine. Sağlama. Salt okunur disk erişimine izin verme |                                             |
 | Sanal makine. Anlık görüntü yönetimi. Anlık görüntü oluşturma       |                                             |
 | Sanal makine. Anlık görüntü yönetimi. Anlık Görüntü'yi Kaldırma       |                                             |
-
-
 
 ## <a name="create-a-vmware-account"></a>Bir VMware hesabı oluşturma
 

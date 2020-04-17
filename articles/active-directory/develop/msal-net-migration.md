@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: cccb886e13482292e8ab9afa2b34bd9dd2c3229b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f389943d284c573312473f426048f8aadb79088e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050302"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81533981"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Uygulamaları MSAL.NET'a geçirme
 
@@ -31,11 +31,11 @@ Hem .NET için Microsoft Kimlik Doğrulama Kitaplığı (MSAL.NET) hem de .NET i
 
 **MSAL.NET şimdi Microsoft kimlik platformu ile kullanmak için önerilen auth kitaplık .** ADAL.NET'da yeni özellikler uygulanmaz. Çalışmalar MSAL'ın iyileştirilmesi ne yöneliktir.
 
-Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile .NET (ADAL.NET) için Azure AD Kimlik Doğrulama Kitaplığı arasındaki farklar açıklanır ve MSAL'a geçiş yapmaya yardımcı olur.  
+Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile .NET (ADAL.NET) için Azure AD Kimlik Doğrulama Kitaplığı arasındaki farklar açıklanır ve MSAL'a geçiş yapmaya yardımcı olur.
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL ve MSAL uygulamaları arasındaki farklar
 
-Çoğu durumda, MSAL.NET ve Microsoft kimlik doğrulama kitaplıklarının en son nesli olan Microsoft kimlik platformu bitiş noktasını kullanmak istiyorsunuz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanızda oturum açan kullanıcılar için belirteçler edinirsiniz. 
+Çoğu durumda, MSAL.NET ve Microsoft kimlik doğrulama kitaplıklarının en son nesli olan Microsoft kimlik platformu bitiş noktasını kullanmak istiyorsunuz. MSAL.NET kullanarak, Azure AD (iş ve okul hesapları), Microsoft (kişisel) hesapları (MSA) veya Azure AD B2C ile uygulamanızda oturum açan kullanıcılar için belirteçler edinirsiniz.
 
 Geliştiriciler için Azure REKLAM'ı (v1.0) bitiş noktası (ve ADAL.NET) zaten biliyorsanız, [Microsoft kimlik platformu (v2.0) bitiş noktası hakkında farklı olan](active-directory-v2-compare.md)nedir?
 
@@ -53,7 +53,7 @@ MSAL.NET kullanmak için [Microsoft.Identity.Client](https://www.nuget.org/packa
 
 ADAL.NET *kaynaklar*için belirteçleri satın aldı, ancak MSAL.NET *kapsamlar*için belirteçleri edinir. Bir dizi MSAL.NET EdinmeToken geçersiz kılar kapsamları`IEnumerable<string> scopes`olarak adlandırılan bir parametre gerektirir. Bu parametre, istenen izinleri ve kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph'ın kapsamlarıdır.](/graph/permissions-reference)
 
-MSAL.NET v1.0 kaynaklarına erişmek de mümkündür. [V1.0 uygulaması için Kapsamlar'daki ayrıntılara](#scopes-for-a-web-api-accepting-v10-tokens)bakın. 
+MSAL.NET v1.0 kaynaklarına erişmek de mümkündür. [V1.0 uygulaması için Kapsamlar'daki ayrıntılara](#scopes-for-a-web-api-accepting-v10-tokens)bakın.
 
 ### <a name="core-classes"></a>Çekirdek sınıflar
 
@@ -63,7 +63,7 @@ MSAL.NET v1.0 kaynaklarına erişmek de mümkündür. [V1.0 uygulaması için Ka
 
 ### <a name="iaccount-not-iuser"></a>IAccount değil IUser
 
-ADAL.NET manipüle edilmiş kullanıcılar. Ancak, bir kullanıcı bir insan veya yazılım aracısıdır, ancak Microsoft kimlik sistemindeki bir veya daha fazla hesaba (birkaç Azure AD hesabı, Azure AD B2C, Microsoft kişisel hesapları) sahip olabilir/sahip olabilir/sahip olabilir. 
+ADAL.NET manipüle edilmiş kullanıcılar. Ancak, bir kullanıcı bir insan veya yazılım aracısıdır, ancak Microsoft kimlik sistemindeki bir veya daha fazla hesaba (birkaç Azure AD hesabı, Azure AD B2C, Microsoft kişisel hesapları) sahip olabilir/sahip olabilir/sahip olabilir.
 
 MSAL.NET 2.x artık Hesap kavramını (IAccount arabirimi üzerinden) tanımlar. Bu kesme değişikliği doğru anlambilimi sağlar: aynı kullanıcının farklı Azure REKLAM dizinlerinde birden fazla hesabı olması. Ayrıca MSAL.NET, ev hesabı bilgileri sağlandığı için konuk senaryolarında daha iyi bilgi sağlar.
 
@@ -102,13 +102,13 @@ catch(MsalUiRequiredException exception)
 ADAL.NET, talep meydan okuma özel durumları aşağıdaki şekilde ele alınır:
 
 - `AdalClaimChallengeException`bir kaynağın kullanıcıdan `AdalServiceException`daha fazla talep gerektirmesi durumunda (örneğin, iki faktörlü kimlik doğrulama) hizmet tarafından atılan bir özel durumdur (kaynaktan türeyen). Üye, `Claims` beklenen iddiaları ile bazı JSON parçası içerir.
-- Hala ADAL.NET, bu özel durum alan kamu istemci `AcquireTokenInteractive` saki uygulaması bir talep parametresi olan geçersiz kılma aramak gerekir. Bu geçersiz `AcquireTokenInteractive` kılma, gerekli olmadığı için önbelleğe bile çarpmaya çalışmaz. Bunun nedeni, önbellekteki belirteçlerin doğru talepleri olmamasıdır `AdalClaimChallengeException` (aksi takdirde bir belirteç atılmazdı). Bu nedenle, önbelleğe bakmaya gerek yoktur. OBO `ClaimChallengeException` yapan bir WebAPI'de alınabileceğini, ancak `AcquireTokenInteractive` bu Web API'yi çağıran bir kamu istemcisi uygulamasında çağrılması gerektiğini unutmayın.
+- Hala ADAL.NET, bu özel durum alan kamu istemci `AcquireTokenInteractive` saki uygulaması bir talep parametresi olan geçersiz kılma aramak gerekir. Bu geçersiz `AcquireTokenInteractive` kılma, gerekli olmadığı için önbelleğe bile çarpmaya çalışmaz. Bunun nedeni, önbellekteki belirteçlerin doğru talepleri olmamasıdır `AdalClaimChallengeException` (aksi takdirde bir belirteç atılmazdı). Bu nedenle, önbelleğe bakmaya gerek yoktur. OBO `ClaimChallengeException` yapan bir WebAPI'de alınabileceğini, ancak `AcquireTokenInteractive` bu web API'yi çağıran bir kamu istemcisi uygulamasında çağrılması gerektiğini unutmayın.
 - örnekler de dahil olmak üzere ayrıntılar için Bkz. [AdalClaimChallengeException](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Exceptions-in-ADAL.NET#handling-adalclaimchallengeexception)
 
 MSAL.NET, talep itirazı özel durumları aşağıdaki şekilde işlenir:
 
 - Bu `Claims` su yüzüne `MsalServiceException`çıktı.
-- Oluşturucu `.WithClaim(claims)` için geçerli olabilecek bir yöntem vardır. `AcquireTokenInteractive` 
+- Oluşturucu `.WithClaim(claims)` için geçerli olabilecek bir yöntem vardır. `AcquireTokenInteractive`
 
 ### <a name="supported-grants"></a>Desteklenen hibeler
 
@@ -127,13 +127,13 @@ Cihaz kodu akışı | [Web tarayıcısı olmayan cihazlar için aygıt profili](
 
 #### <a name="confidential-client-applications"></a>Gizli müşteri uygulamaları
 
-Web Uygulamaları, Web API'leri ve daemon uygulamaları için ADAL.NET ve MSAL.NET desteklenen hibeler şunlardır:
+Web uygulamaları, web API'leri ve daemon uygulamaları için ADAL.NET ve MSAL.NET desteklenen hibeler şunlardır:
 
 Uygulama Türü | İzin verme | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web Uygulaması, Web API, daemon | İstemci Kimlik Bilgileri | [ADAL.NET istemci kimlik bilgileri akışları](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET istemci kimlik bilgileri akışları](msal-authentication-flows.md#client-credentials))
+Web uygulaması, web API, daemon | İstemci Kimlik Bilgileri | [ADAL.NET istemci kimlik bilgileri akışları](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET istemci kimlik bilgileri akışları](msal-authentication-flows.md#client-credentials))
 Web API | Adına | [Hizmet ADAL.NET ile kullanıcı adına hizmet çağrıları](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET adına](msal-authentication-flows.md#on-behalf-of)
-Web App | Auth Kodu | [Web uygulamalarında yetkilendirme kodları içeren jeton edinme ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [A MSAL.NET ile web uygulamalarında yetkilendirme kodları içeren jeton edinme](msal-authentication-flows.md#authorization-code)
+Web uygulaması | Auth Kodu | [Web uygulamalarında yetkilendirme kodları içeren jeton edinme ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [A MSAL.NET ile web uygulamalarında yetkilendirme kodları içeren jeton edinme](msal-authentication-flows.md#authorization-code)
 
 ### <a name="cache-persistence"></a>Önbellek kalıcılığı
 
@@ -151,15 +151,15 @@ Yetkiyi `https://login.microsoftonline.com/common` v2.0'da kullanırsanız, kull
 
 Belirteçlerin iki sürümü vardır:
 - v1.0 belirteçleri
-- v2.0 belirteçleri 
+- v2.0 belirteçleri
 
 V1.0 uç noktası (ADAL tarafından kullanılan) sadece v1.0 belirteçleri yayan.
 
-Ancak, v2.0 bitiş noktası (MSAL tarafından kullanılan) Web API kabul belirteci sürümünü yayan. Web API'nin uygulama bildiriminin bir özelliği, geliştiricilerin belirteç tenhangi sürümün kabul edildiğini seçmelerine olanak tanır. Başvuru `accessTokenAcceptedVersion` [bildirimi](reference-app-manifest.md) başvuru belgelerine bakın.
+Ancak, v2.0 bitiş noktası (MSAL tarafından kullanılan) web API kabul ettiği belirteç sürümünü yayan. Web API'sinin uygulama bildiriminin bir özelliği, geliştiricilerin belirteç sürümünün hangi sürümünün kabul edildiğini seçmelerine olanak tanır. Başvuru `accessTokenAcceptedVersion` [bildirimi](reference-app-manifest.md) başvuru belgelerine bakın.
 
 v1.0 ve v2.0 belirteçleri hakkında daha fazla bilgi için [Azure Active Directory erişim belirteçleri](access-tokens.md)
 
-## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V1.0 belirteçlerini kabul eden bir Web API'si için kapsamlar
+## <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V1.0 belirteçlerini kabul eden bir web API'si için kapsamlar
 
 OAuth2 izinleri, v1.0 web API (kaynak) uygulamasının istemci uygulamalarına maruz kaktEttiği izin kapsamlarıdır. Bu izin kapsamları, onay sırasında istemci uygulamalarına verilebilir. [Azure Active Directory uygulama bildiriminde](active-directory-application-manifest.md)oauth2Permissions ile ilgili bölüme bakın.
 
@@ -167,7 +167,7 @@ OAuth2 izinleri, v1.0 web API (kaynak) uygulamasının istemci uygulamalarına m
 
 V1.0 belirteçlerini kabul eden bir uygulama için belirteçler elde etmek istiyorsanız https://graph.microsoft.com)(örneğin, bu `scopes` kaynak için istenen bir OAuth2 izniyle istediğiniz kaynak tanımlayıcısını daraltın olarak oluşturmanız gerekir.
 
-Örneğin, kullanıcı adına App ID URI `ResourceId`olan v1.0 Web API'sine erişmek için kullanmak istediğiniz:
+Örneğin, app id URI olan bir v1.0 web API kullanıcı `ResourceId`adına erişmek için, kullanmak istiyorum:
 
 ```csharp
 var scopes = new [] {  ResourceId+"/user_impersonation"};
@@ -180,9 +180,9 @@ ResourceId = "https://graph.microsoft.com/";
 var scopes = new [] { ResourceId + "Directory.Read", ResourceID + "Directory.Write"}
 ```
 
-#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Uyarı: V1.0 Web API'sine karşılık gelen kapsamda bir veya iki kesik varsa
+#### <a name="warning-should-you-have-one-or-two-slashes-in-the-scope-corresponding-to-a-v10-web-api"></a>Uyarı: V1.0 web API'sine karşılık gelen kapsamda bir veya iki kesik varsa
 
-Azure Kaynak Yöneticisi API'sine karşılık gelen kapsamıhttps://management.core.windows.net/)yazmak istiyorsanız , aşağıdaki kapsamı istemeniz gerekir (iki eğrmeyi not edin) 
+Azure Kaynak Yöneticisi API'sine karşılık gelen kapsamıhttps://management.core.windows.net/)yazmak istiyorsanız , aşağıdaki kapsamı istemeniz gerekir (iki eğrmeyi not edin)
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -214,29 +214,30 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ## <a name="adal-to-msal-migration"></a>ADAL'dan MSAL göçüne
 
-ADAL.NET v2.'de. X, yenileme belirteçleri, önbelleğe alarak ve ADAL 2.x tarafından sağlanan `AcquireTokenByRefreshToken` yöntemleri kullanarak bu belirteçlerin kullanımı etrafında çözümler geliştirmenize olanak sağlayan maruz kalmıştır. Bu çözümlerden bazıları şu senaryolarda kullanılmıştır:
-* Kullanıcılar adına yenileyici panolar da dahil olmak üzere eylemlerde bulunmak ta dahil olmak üzere uzun süren hizmetler, ancak kullanıcılar artık bağlı değildir. 
+ADAL.NET v2.'de. X, yenileme belirteçleri, önbelleğe alarak ve ADAL 2.x tarafından sağlanan `AcquireTokenByRefreshToken` yöntemleri kullanarak bu belirteçlerin kullanımı etrafında çözümler geliştirmenize olanak sağlayan maruz kalmıştır.
+Bu çözümlerden bazıları şu senaryolarda kullanılmıştır:
+* Kullanıcılar adına yenileyici panolar da dahil olmak üzere eylemlerde bulunmak ta dahil olmak üzere uzun süren hizmetler, ancak kullanıcılar artık bağlı değildir.
 * İstemcinin RT'yi web hizmetine getirmesini etkinleştirmek için WebFarm senaryoları (önbelleğe alma istemci tarafı, şifreli çerez değil, sunucu tarafı yapılır)
 
-MSAL.NET, güvenlik nedenleriyle yenileme belirteçlerini ortaya çıkarmaz: MSAL sizin için yenileyici belirteçleri işler. 
+MSAL.NET, güvenlik nedenleriyle yenileme belirteçlerini ortaya çıkarmaz: MSAL sizin için yenileyici belirteçleri işler.
 
 Neyse ki, MSAL.NET şimdi önceki yenileme belirteçleri (ADAL ile edinilen) içine `IConfidentialClientApplication`göç etmenizi sağlayan bir API vardır:
 
 ```csharp
 /// <summary>
-/// Acquires an access token from an existing refresh token and stores it and the refresh token into 
+/// Acquires an access token from an existing refresh token and stores it and the refresh token into
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.
-/// This method can be used in migration to MSAL from ADAL v2 and in various integration 
-/// scenarios where you have a RefreshToken available. 
+/// This method can be used in migration to MSAL from ADAL v2 and in various integration
+/// scenarios where you have a RefreshToken available.
 /// (see https://aka.ms/msal-net-migration-adal2-msal2)
 /// </summary>
-/// <param name="scopes">Scope to request from the token endpoint. 
+/// <param name="scopes">Scope to request from the token endpoint.
 /// Setting this to null or empty will request an access token, refresh token and ID token with default scopes</param>
 /// <param name="refreshToken">The refresh token from ADAL 2.x</param>
 IByRefreshToken.AcquireTokenByRefreshToken(IEnumerable<string> scopes, string refreshToken);
 ```
- 
-Bu yöntemle, daha önce kullanılan yenileme belirteci ile birlikte istediğiniz kapsamları (kaynaklar) sağlayabilirsiniz. Yenileme belirteci yeni bir belirteç için değiştirilir ve uygulamanız içine önbelleğe alınacaktır.  
+
+Bu yöntemle, daha önce kullanılan yenileme belirteci ile birlikte istediğiniz kapsamları (kaynaklar) sağlayabilirsiniz. Yenileme belirteci yeni bir belirteç için değiştirilir ve uygulamanız içine önbelleğe alınacaktır.
 
 Bu yöntem tipik olmayan senaryolar için tasarlanmıştır, ilk döküm `IConfidentialClientApplication` olmadan kolayca erişilebilir `IByRefreshToken`değildir.
 
@@ -253,7 +254,7 @@ app = ConfidentialClientApplicationBuilder.Create(clientId)
  .WithClientSecret(ClientSecret)
  .Build();
 IByRefreshToken appRt = app as IByRefreshToken;
-         
+
 AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
                                          .ExecuteAsync()
                                          .ConfigureAwait(false);

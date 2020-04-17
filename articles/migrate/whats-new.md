@@ -2,18 +2,20 @@
 title: Azure Geçiş'teki yenilikler
 description: Azure Geçiş hizmetindeki yenilikler ve en yeni güncelleştirmeler hakkında bilgi edinin.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 9767f3ea31b57d23c8a6772ff5eb6500f7550802
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127582"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535256"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Geçiş'teki yenilikler
 
 [Azure Geçiş,](migrate-services-overview.md) şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure Geçiş'teki yeni sürümler ve özellikler özetlenmiştir.
+
+
 
 ## <a name="update-march-2020"></a>Güncelleme (Mart 2020)
 
@@ -58,7 +60,7 @@ Azure Geçiş'in geçerli sürümü (Temmuz 2019'da yayımlanmış) bir dizi yen
 
 ## <a name="azure-migrate-previous-version"></a>Azure Önceki Sürümü Geçir
 
-Azure Geçiş önceki sürümünü kullanıyorsanız (yalnızca şirket içi VMware VM'lerinin değerlendirmesi desteklendi), artık geçerli sürümü kullanmanız gerekir. Önceki sürümde artık yeni Azure Geçiş projeleri oluşturamaz veya yeni keşifler gerçekleştiremezsiniz. Varolan projelere erişebilirsiniz. Bunu Azure portalında yapmak > **Tüm hizmetlerde** **Azure Geçiş'i**arayın. Azure Geçir bildirimlerinde, eski Azure Geçir projelerine erişmek için bir bağlantı vardır.
+Azure Geçiş'in önceki sürümünü kullanıyorsanız (yalnızca şirket içi VMware VM'lerin değerlendirmesi desteklendi), artık geçerli sürümü kullanmanız gerekir. Önceki sürümde artık yeni Azure Geçiş projeleri oluşturamaz veya yeni keşifler gerçekleştiremezsiniz. Varolan projelere erişebilirsiniz. Bunu Azure portalında yapmak > **Tüm hizmetlerde** **Azure Geçiş'i**arayın. Azure Geçir bildirimlerinde, eski Azure Geçir projelerine erişmek için bir bağlantı vardır.
 
 
 

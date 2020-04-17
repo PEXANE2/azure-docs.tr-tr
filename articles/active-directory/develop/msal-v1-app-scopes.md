@@ -12,14 +12,14 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d5b2ef57af112169fb39e0da7a60b095698ff504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78299839"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536191"
 ---
-# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V1.0 belirteçlerini kabul eden bir Web API'si için kapsamlar
+# <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>V1.0 belirteçlerini kabul eden bir web API'si için kapsamlar
 
 OAuth2 izinleri, geliştiriciler için bir Azure Active Directory (Azure AD) (Azure AD) web API (kaynak) uygulamasının istemci uygulamalarına maruz kalarak yaptığı izin kapsamlarıdır. Bu izin kapsamları, onay sırasında istemci uygulamalarına verilebilir. [Azure Active Directory uygulama bildirimi başvurusunda](reference-app-manifest.md#manifest-reference)ki bölüme `oauth2Permissions` bakın.
 

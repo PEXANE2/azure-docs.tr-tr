@@ -2,16 +2,16 @@
 title: Azure Geçir Sunucu Geçişi ile Hyper-V VM'leri Azure'a geçirin
 description: Azure Geçiş Sunucusu Geçişi ile şirket içi Hyper-V V MM'leri Azure'a nasıl geçirebilirsiniz öğrenin
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422691"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535358"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -19,12 +19,12 @@ Bu makalede, Azure Geçişi: Sunucu Geçişi aracıyla aracısız geçiş kullan
 
 [Azure Geçiş,](migrate-services-overview.md) şirket içi uygulamalarınızın ve iş yüklerinizin ve özel/genel bulut VM'lerinizin Azure'a keşfini, değerlendirmesini ve geçişini izlemek için merkezi bir hub sağlar. Hub, değerlendirme ve geçiş için Azure Geçiş araçlarının yanı sıra üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
-Bu öğretici, Azure Geçiş Sunucusu Değerlendirmesi ve Geçişi kullanarak Hyper-V'nin Azure'a nasıl değerlendirilip Azure'a geçirilen bir serinin üçüncüsüdür. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Azure Geçiş Sunucusu Değerlendirmesi ve Sunucu Geçişi'ni kullanarak Hyper-V'nin Azure'a nasıl değerlendirilip Azure'a geçirilen bir serinin üçüncüsüdür. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 
 > [!div class="checklist"]
 > * Azure'u ve şirket içi Hyper-V ortamınızı hazırlayın
-> * Kaynak ortamını ayarlayın ve bir çoğaltma cihazı dağıtın.
+> * Kaynak ortamını ayarlayın.
 > * Hedef ortamı ayarlayın.
 > * Çoğaltmayı etkinleştirin.
 > * Her şeyin beklendiği gibi çalıştığından emin olmak için bir test geçişi çalıştırın.
@@ -38,23 +38,28 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
 1. Hyper-V geçiş mimarisini [gözden geçirin.](hyper-v-migration-architecture.md)
-2. Geçiş için Azure ve Hyper-V'yi ayarlamak için bu [serinin ilk eğitimini tamamlayın.](tutorial-prepare-hyper-v.md) İlk öğreticide, siz:
-    - Azure'u geçiş için [hazırlayın.](tutorial-prepare-hyper-v.md#prepare-azure)
-    - Şirket içi ortamı göçe [hazırlayın.](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)
-3. Azure'a geçirmeden önce Azure Geçir: Sunucu Değerlendirmesi'ni kullanarak Hyper-V V VM'leri değerlendirmeyi denemenizi öneririz. Bunu yapmak için, bu [serinin ikinci öğretici tamamlayın.](tutorial-assess-hyper-v.md) Bir değerlendirme denemenizi öneririz, ancak VM'leri geçirmeden önce bir değerlendirme çalıştırmanız gerekmez.
-4. Azure hesabınıza Sanal Makine Katılımcısı rolü atandığından emin olun, böylece aşağıdakilere izin verebilirsiniz:
+2. [İnceleme](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Hyper-V ana bilgisayar gereksinimleri ve Hyper-V ana bilgisayarlarının erişmeleri gereken Azure URL'leri.
+3. Geçirmek istediğiniz Hyper-V VM'ler için gereksinimleri [gözden geçirin.](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) Hyper-V VM'ler [Azure VM gereksinimlerine](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements)uygun olmalıdır.
+2. Bu serinin önceki eğitimlerini tamamlamanızı öneririz. [İlk öğretici,](tutorial-prepare-hyper-v.md) geçiş için Azure ve Hyper-V'yi nasıl ayarlayabileceğinizi gösterir. İkinci öğretici, Azure Geçişi:Sunucu Değerlendirmesi'ni kullanarak geçişten önce nasıl [Hyper-V VM'leri değerlendirdiğinizi] (eğitim-değerlendirme-hiper-v.md önce nasıl değerlendirdiğinizi gösterir. 
+    > [!NOTE]
+    > Bir değerlendirme denemenizi öneririz, ancak VM'leri geçirmeden önce bir değerlendirme çalıştırmanız gerekmez.
+    > Hyper-V VM'leri geçirmek için Azure Geçiş:Sunucu Geçişi, verileri Azure Geçişi'ne düzenlemek ve çoğaltmak için Hyper-V Hosts veya cluster düğümlerinde yazılım aracıları (Microsoft Azure Site Kurtarma sağlayıcısı ve Microsoft Azure Kurtarma Hizmeti aracısı) çalıştırır. [Azure Geçiş cihazı](migrate-appliance.md) Hyper-V geçişi için kullanılmaz.
+
+3. Azure hesabınıza Sanal Makine Katılımcısı rolü atandığından emin olun, böylece aşağıdakilere izin verebilirsiniz:
 
     - Seçilen kaynak grubunda sanal makine oluşturma.
     - Seçilen sanal ağda sanal makine oluşturma.
     - Azure yönetilen bir diske yazın.
-5. [Azure ağı ayarlayın.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure'a geçiş yaptığınızda, oluşturulan Azure VM'leri, geçiş ayarlarken belirttiğiniz bir Azure ağına katılır.
+4. [Azure ağı ayarlayın.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure'a geçiş yaptığınızda, oluşturulan Azure VM'leri, geçiş ayarlarken belirttiğiniz bir Azure ağına katılır.
 
+## <a name="add-the-azure-migrateserver-migration-tool"></a>Azure Geçiş:Sunucu Geçişi aracını ekleme
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Geçir Sunucusu Geçişi aracını ekleme
+Azure Geçiş:Sunucu Geçişi aracını ekleyin.
 
-Hyper-V VM'leri değerlendirmek için ikinci öğreticiyi izlemediyseniz, bir Azure Geçir projesi ayarlamak ve projeye Azure Geçir Sunucusu Değerlendirmesi aracını eklemek için [bu yönergeleri izlemeniz](how-to-add-tool-first-time.md) gerekir.
+- [VMware VM'leri değerlendirmek](/tutorial-assess-hyper-v.md)için ikinci öğreticiyi izlediyseniz, zaten bir Azure Geçiş projesi ayarladınız ve şimdi aracı ekleyebilirsiniz.
+- İkinci öğreticiye uymadıysanız, bir Azure Geçiş projesi ayarlamak için[bu yönergeleri izleyin.](how-to-add-tool-first-time.md) Projeyi oluştururken Azure Geçiş:Sunucu Geçişi aracını eklersiniz.
 
-İkinci öğreticiyi izlediyseniz ve zaten bir Azure Geçiş projeniz varsa, Azure Geçiş: Sunucu Geçişi aracını aşağıdaki gibi ekleyin:
+Bir proje ayarladıysanız, aracı aşağıdaki gibi ekleyin:
 
 1. Azure Geçir projesinde **Genel Bakış'ı**tıklatın. 
 2. **Sunucuları Keşfet, değerlendir ve geçiş te,** **sunucuları değerlendir'i ve geçişini**tıklatın.
@@ -66,25 +71,8 @@ Hyper-V VM'leri değerlendirmek için ikinci öğreticiyi izlemediyseniz, bir Az
 
     ![Sunucu Geçişi aracı](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
-
-## <a name="set-up-the-azure-migrate-appliance"></a>Azure Geçiş cihazını ayarlama
-
-Azure Geçir Sunucusu Geçişi, verileri Azure Geçişi'nde düzenlemek ve çoğaltmak için Hyper-V Ana Bilgisayarlarında veya küme düğümlerinde bir yazılım aracısı çalıştırır ve geçiş için özel bir cihaz gerektirmez.
-
-- Azure Geçir : Sunucu Değerlendirme cihazı VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş Sunucusu Geçişi'ne gönderir.
-- Geçiş düzenleme ve veri çoğaltma Microsoft Azure Site Kurtarma sağlayıcısı ve Microsoft Azure Kurtarma Hizmeti aracısı tarafından işlenir.
-
-Cihazı kurmak için:
-- Hyper-V VM'leri değerlendirmek için ikinci öğreticiyi izlediyseniz, bu eğitim sırasında cihazı zaten kurmuşsunuzdur ve tekrar yapmanız gerekmez.
-- Bu öğreticitakip etmediyseniz, şimdi cihaz kurmak gerekir. Bunu yapmak için, siz: 
-
-    - Azure portalından sıkıştırılmış hyper-v vhd indirin.
-    - Cihazı oluşturun ve Azure Geçiş Sunucusu Değerlendirmesi'ne bağlanıp bağlanabıp bağlanabıp bağlanamayalı kontrol edin. 
-    - Cihazı ilk kez yapılandırın ve Azure Geçiş projesine kaydedin.
-
-    Cihazı kurmak için [bu makaledeki](how-to-set-up-appliance-hyper-v.md) ayrıntılı talimatları uygulayın.
-
 ## <a name="prepare-hyper-v-hosts"></a>Hyper-V ana bilgisayarlarını hazırlayın
+
 
 1. Azure > **Sunucular**projesinde , **Azure Geçir: Sunucu Geçişinde,** **Keşfet'i**tıklatın.
 2. **Discover makinelerinde** >  **Yes, with Hyper-V****makineleriniz sanallaştırıldı mı?**
@@ -111,21 +99,6 @@ Keşfedilen VM'ler Azure Geçiş Sunucusu Geçişi'nde görünene kadar kaydı n
 
 ![Keşfedilen sunucular](./media/tutorial-migrate-hyper-v/discovered-servers.png)
 
-### <a name="register-hyper-v-hosts"></a>Hyper-V ana bilgisayarlarını kaydedin
-
-İndirilen kurulum dosyasını (AzureSiteRecoveryProvider.exe) ilgili her Hyper-V ana bilgisayara yükleyin.
-
-1. Sağlayıcı kurulum dosyasını her ana bilgisayar veya küme düğümünde çalıştırın.
-2. **Microsoft Update'>** Sağlayıcı Kurulumu sihirbazında, Sağlayıcı güncelleştirmelerini denetlemek için Microsoft Update'i kullanmayı tercih edin.
-3. **Yükleme'de,** Sağlayıcı ve aracı için varsayılan yükleme konumunu kabul edin ve **Yükle'yi**seçin.
-4. Yüklemeden sonra, Kayıt Sihirbazı > **Vault Ayarları'nda** **Gözat'ı**seçin ve **Anahtar Dosyası'nda**indirdiğiniz kasa anahtar dosyasını seçin.
-5. **Proxy**Ayarları'nda, ana bilgisayarda çalışan sağlayıcının internete nasıl bağlandığını belirtin.
-    - Cihaz bir proxy sunucusunun arkasında bulunuyorsa, proxy ayarlarını belirtmeniz gerekir.
-    - Proxy adını , **http://ip-address**veya **http://FQDN**. olarak belirtin HTTPS proxy sunucuları desteklenmez.
-   
-
-6. Sağlayıcının [gerekli URL'lere](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)erişebileceğinden emin olun.
-7. **Kayıt'ta,** ana bilgisayar kaydedildikten sonra **Finish'i**tıklatın.
 
 ## <a name="replicate-hyper-v-vms"></a>Hyper-V VM'leri Çoğaltma
 

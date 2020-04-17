@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 4332755c1ee47cd648f048768307846f02503e20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0a41165a77ff5f98a6a0bb408da62cb6c4cb35f8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407052"
+ms.locfileid: "81536089"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Quickstart: Konsol uygulamasının kimliğini kullanarak bir belirteç edinin ve Microsoft Graph API'yi arayın
 
@@ -50,7 +50,7 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 > 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
 > 1. Geliştiriciler için Microsoft kimlik platformuna gidin [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfası.
 > 1. **Yeni kayıt**seçin.
-> 1. Bir başvuru sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin. 
+> 1. Bir başvuru sayfası **kaydedin,** başvurunuzun kayıt bilgilerini girin.
 > 1. **Ad** bölümüne, uygulama nın kullanıcılarına görüntülenecek anlamlı bir uygulama `Daemon-console`adı girin, örneğin , uygulamayı oluşturmak için **Kaydol'u** seçin.
 > 1. Kaydedildikten sonra **Sertifikalar & Sırlar** menüsünü seçin.
 > 1. **İstemci sırları**altında , seçin **+ Yeni istemci gizli**. Bir ad verin ve **Ekle'yi**seçin. Sırrı güvenli bir yerde kopyalayın. Kodunuzda kullanmak için ihtiyacınız olacaktır.
@@ -60,7 +60,7 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="download-and-configure-your-quickstart-app"></a>Hızlı başlangıç uygulamanızı indirin ve yapılandırın
-> 
+>
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
 > Bu hızlı başlatmanın işe yaraması için bir istemci sırrı oluşturmanız ve Grafik API'nin **User.Read.All** uygulama iznini eklemeniz gerekir.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
@@ -82,14 +82,14 @@ Bu hızlı başlatma gerektirir [.NET Core 2.2](https://www.microsoft.com/net/do
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
-    
+
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
-> 
+>
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Çözümü Visual Studio'da açın - **1-Call-MSGraph\daemon-console.sln** (isteğe bağlı).
 > 1. **Appsettings.json'u** ve alanların `ClientId`değerlerini `Tenant` ve `ClientSecret` aşağıdakileri değiştirin:
-> 
+>
 >    ```json
 >    "Tenant": "Enter_the_Tenant_Id_Here",
 >    "ClientId": "Enter_the_Application_Id_Here",
@@ -217,7 +217,7 @@ result = await app.AcquireTokenForClient(scopes)
 
 > |Konumlar:| |
 > |---------|---------|
-> | `scopes` | İstenilen kapsamları içerir. Gizli istemciler için bu biçim, `{Application ID URI}/.default` istenen kapsamların Azure Portalı'nda ayarlanan uygulama nesnesinde statik olarak tanımlanan kapsamlar `{Application ID URI}` olduğunu `https://graph.microsoft.com`belirtmek için benzer biçimi kullanmalıdır (Microsoft Graph için, işaret eder). Özel Web API'leri için, `{Application ID URI}` Azure Portal'ın Uygulama Kaydı'ndaki (Önizleme) **api açığa** çıkarma bölümü altında tanımlanır. |
+> | `scopes` | İstenilen kapsamları içerir. Gizli istemciler için bu biçim, `{Application ID URI}/.default` istenen kapsamların Azure Portalı'nda ayarlanan uygulama nesnesinde statik olarak tanımlanan kapsamlar `{Application ID URI}` olduğunu `https://graph.microsoft.com`belirtmek için benzer biçimi kullanmalıdır (Microsoft Graph için, işaret eder). Özel web API'leri için, `{Application ID URI}` Azure Portal'ın Uygulama Kaydı'ndaki (Önizleme) **api açığa** çıkarma bölümü altında tanımlanır. |
 
 Daha fazla bilgi için lütfen [başvuru belgelerine `AcquireTokenForClient` ](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplication.acquiretokenforclient?view=azure-dotnet) bakın
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e73da5e7b440a216841fffd65ca2e1b95de7a609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf47a352542be0ad4467ed420cc38f62da0d47dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480938"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534916"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Kimlik doğrulama akışları ve uygulama senaryoları
 
@@ -172,13 +172,13 @@ Daha fazla bilgi için [web API'lerini çağıran Mobil uygulamaya](scenario-mob
 
 Uygulamanızın RESTful web API'si gibi web hizmetlerini güvenli hale getirmek için Microsoft kimlik platformu bitiş noktasını kullanabilirsiniz. Korumalı web API'si, erişim belirteci kullanılarak çağrılır. Belirteç, API'nin verilerini güvence altına almak ve gelen istekleri doğrulamak için kullanılır. Bir web API'nin arayanı arayan, bir HTTP isteğinin yetkilendirme üstbilgisinde bir erişim belirteci ekler.
 
-ASP.NET veya ASP.NET Core Web API'nizi korumak istiyorsanız, erişim jetonunu doğrulamanız gerekir. Bu doğrulama için, ASP.NET JWT ara yazılımını kullanırsınız. Doğrulama ,MSAL.NET tarafından değil, .NET kitaplığı [için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
+ASP.NET veya ASP.NET Core web API'nizi korumak istiyorsanız, erişim jetonunu doğrulamanız gerekir. Bu doğrulama için, ASP.NET JWT ara yazılımını kullanırsınız. Doğrulama ,MSAL.NET tarafından değil, .NET kitaplığı [için IdentityModel uzantıları](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) tarafından yapılır.
 
 Daha fazla bilgi için [Korumalı web API'si'ne](scenario-protected-web-api-overview.md)bakın.
 
 ### <a name="a-web-api-calling-another-web-api-on-behalf-of-a-user"></a>Bir kullanıcı adına başka bir web API çağıran bir web API
 
-ASP.NET veya ASP.NET Core korumalı Web API'nizin bir kullanıcı adına başka bir web API'sını araması için uygulamanızın akış aşağı web API'sı için bir belirteç edinmesi gerekir. Bir belirteç edinmek için uygulamanız **ConfidentialClientApplication** sınıfının [AcquireTokenOnBehalfyöntemini](https://aka.ms/msal-net-on-behalf-of) çağırır. Bu tür aramalar da *hizmet-servis* çağrıları olarak adlandırılır. Diğer web API'lerini arayan web API'lerin özel önbellek serileştirmesağlaması gerekir.
+ASP.NET veya ASP.NET Core korumalı web API'nizin bir kullanıcı adına başka bir web API'sini araması için uygulamanızın alt akış web API'sı için bir belirteç edinmesi gerekir. Bir belirteç edinmek için uygulamanız **ConfidentialClientApplication** sınıfının [AcquireTokenOnBehalfyöntemini](https://aka.ms/msal-net-on-behalf-of) çağırır. Bu tür aramalar da *hizmet-servis* çağrıları olarak adlandırılır. Diğer web API'lerini arayan web API'lerin özel önbellek serileştirmesağlaması gerekir.
 
   ![Başka bir web API'si çağıran bir web API'si](media/scenarios/web-api.svg)
 
@@ -211,14 +211,14 @@ Belirteçleri edinme içeren senaryolar da OAuth 2.0 kimlik doğrulama akışlar
  </tr>
 
   <tr>
-   <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web App that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
+   <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web app that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
    <td><a href="scenario-web-app-sign-user-overview.md">Kullanıcılarda işaretleyen bir web uygulaması</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">Yetkilendirme Kodu</a></td>
    <td>İş veya okul hesapları, kişisel hesaplar ve Azure AD B2C</td>
  </tr>
 
   <tr>
-   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web App that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web app that signs in users" src="media/scenarios/web-app.svg"></a></td>
    <td><a href="scenario-web-app-call-api-overview.md">Web API'lerini çağıran bir web uygulaması</a></td>
    <td><a href="v2-oauth2-auth-code-flow.md">Yetkilendirme Kodu</a></td>
    <td>İş veya okul hesapları, kişisel hesaplar ve Azure AD B2C</td>
@@ -302,12 +302,12 @@ Aşağıdaki tablonun Windows sütununda ,NET Core'dan her bahsedildiğizaman ,.
 |Senaryo  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
 | [Tek sayfalı uygulama](scenario-spa-overview.md) <br/>[![Tek Sayfauygulaması](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
-| [Kullanıcılarda işaretleyen Web Uygulaması](scenario-web-app-sign-user-overview.md) <br/>[![Web App bu-in kullanıcıları](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
-| [Web API'lerini çağıran Web Uygulaması](scenario-web-app-call-api-overview.md) <br/> <br/>[![Web API'lerini çağıran Web Uygulaması](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python
+| [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md) <br/>[![İmzalayan kullanıcılara ait web uygulaması](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdeği | ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdeği | ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdeği
+| [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md) <br/> <br/>[![Web API'lerini çağıran web uygulaması](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python| ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python| ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>Şişe + MSAL Python
 | [Web API'lerini çağıran masaüstü uygulaması](scenario-desktop-overview.md) <br/> <br/>Web ![ [API'leri çağıran masaüstü uygulaması Aygıt kodu ![](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) akışı](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/> ![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton <br/> ![iOS / Objective C veya swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc |
 | [Web API'lerini çağıran mobil uygulama](scenario-mobile-overview.md) <br/> [![Web API'lerini çağıran mobil uygulama](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS / Objective C veya swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL. Android
 | [Daemon uygulaması](scenario-daemon-overview.md) <br/> [![Daemon uygulaması](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton
-| [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md) <br/><br/> [![Web API'larını çağıran Web API'si](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton
+| [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md) <br/><br/> [![Web API'lerini çağıran web API'si](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Çekirdeği](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Çekirdek + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>MSAL Java<br/>![MSAL Piton](media/sample-v2-code/small_logo_python.png)<br/>MSAL Piton
 
 Daha fazla bilgi için, [Işletim Sistemi / dil tarafından Microsoft destekli kitaplıklara](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)bakın.
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a6ab13dea1a1db96cbb2f2ac70b9779eca60591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5310c999cc44f0cf35f129751da7472031e6c57a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885386"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Hizmetleri (AWS) ile Azure Active Directory entegrasyonu (Eski Öğretici)
 
@@ -37,7 +37,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak isti
 ![Amazon Web Services (AWS) sonuç listesinde](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
 
 > [!NOTE]
-> Lütfen bir AWS uygulamasını tüm AWS hesaplarınıza bağlamanın tavsiye edilen yaklaşımımız olmadığını unutmayın. Bunun [yerine,](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) Birden çok AWS hesabı örneğini Azure AD'deki Birden çok AWS uygulaması örneğine yapılandırmak için bu yaklaşımı kullanmanızı öneririz. [Bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşımı yalnızca içinde çok daha az Sayıda AWS Hesabı ve Rolü varsa kullanmalısınız. [AWS](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) hesapları ve bu hesapların içindeki roller büyüdükçe bu model ölçeklenebilir değildir. Ayrıca [bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşım, Azure AD Kullanıcı Sağlama'yı kullanarak AWS Role alma işlevini kullanmaz ve bu nedenle rolleri el ile eklemeniz/güncelleştirmeniz/silmeniz gerekir. [Bu](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) yaklaşımla ilgili diğer sınırlamalar için lütfen aşağıdaki ayrıntılara bakın.
+> Lütfen bir AWS uygulamasını tüm AWS hesaplarınıza bağlamanın tavsiye edilen yaklaşımımız olmadığını unutmayın. Bunun [yerine,](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) Birden çok AWS hesabı örneğini Azure AD'deki Birden çok AWS uygulaması örneğine yapılandırmak için bu yaklaşımı kullanmanızı öneririz. Bu yaklaşımı yalnızca içinde çok daha az Sayıda AWS Hesabı ve Rolü varsa kullanmanız gerekir, bu model, AWS hesapları ve bu hesaplar içindeki roller büyüdükçe ölçeklenebilir değildir. Ayrıca bu yaklaşım, Azure AD Kullanıcı Sağlama'yı kullanarak AWS Role alma işlevini kullanmaz ve bu nedenle rolleri el ile eklemeniz/güncelleştirmeniz/silmeniz gerekir. Bu yaklaşımla ilgili diğer sınırlamalar için lütfen aşağıdaki ayrıntılara bakın.
 
 **Bu yaklaşımı aşağıdaki nedenlerle kullanmanızı önermediğimizi lütfen unutmayın:**
 
@@ -148,7 +148,7 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve Amazon Web 
 
     f. **Tamam'ı** tıklatın
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
 7. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'i** indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 

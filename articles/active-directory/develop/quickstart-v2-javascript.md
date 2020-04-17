@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: ac134dce5ad739d1d81ef0c62a6bfb04468cafff
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991118"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536106"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Kullanıcıları oturum açın ve JavaScript SPA'da bir erişim jetonu alın
 
@@ -39,7 +39,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalık uygulamanın (SPA) kişi
 > 1. Bir iş veya okul hesabı veya kişisel bir Microsoft hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 > 1. Hesabınız size birden fazla kiracıya erişim sağlıyorsa, sağ üstteki hesabı seçin ve ardından portal oturumunuzu kullanmak istediğiniz Azure Etkin Dizin (Azure AD) kiracısına ayarlayın.
 > 1. Yeni Azure [portalı - Uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs) bölmesine gidin.
-> 1. Uygulamanız için bir ad girin. 
+> 1. Uygulamanız için bir ad girin.
 > 1. **Desteklenen hesap türleri**altında, tüm kuruluş **dizininde ve kişisel Microsoft hesaplarında Hesapları**seçin.
 > 1. **Kaydol**’u seçin.
 > 1. Yeni uygulamanızı indirmek ve otomatik olarak yapılandırmak için yönergeleri izleyin.
@@ -99,7 +99,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalık uygulamanın (SPA) kişi
 >      cacheLocation: "sessionStorage", // This configures where your cache will be stored
 >      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
 >    }
->  };  
+>  };
 >
 >```
 
@@ -122,10 +122,10 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalık uygulamanın (SPA) kişi
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Adım 3: Uygulamanız yapılandırıldı ve çalışmaya hazır
-> Projenizi uygulamanızın özellikleriyle yapılandırdık. 
+> Projenizi uygulamanızın özellikleriyle yapılandırdık.
 
 > [!div renderon="docs"]
-> 
+>
 > Daha sonra, hala aynı klasörde, *graphConfig.js* `graphMeEndpoint` dosyasını `apiConfig` ve nesne için ayarlamak `graphMeEndpoint` için edin.
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -199,7 +199,7 @@ Hızlı başlatma kodu, MSAL kitaplığını niçin başlatılabildiğini de gö
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
       storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
     }
-  };  
+  };
 
 const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 ```
@@ -234,7 +234,7 @@ myMSALObj.loginPopup(loginRequest)
 
 > |Konum  |  |
 > |---------|---------|
-> | `scopes`   | (İsteğe bağlı) Oturum açma zamanında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph `[ "<Application ID URL>/scope" ]` veya özel Web API'leri için (diğer bir şey). `api://<Application ID>/access_as_user` |
+> | `scopes`   | (İsteğe bağlı) Oturum açma zamanında kullanıcı onayı için istenen kapsamları içerir. Örneğin, `[ "user.read" ]` Microsoft Graph `[ "<Application ID URL>/scope" ]` veya özel web API'leri için (diğer bir şey). `api://<Application ID>/access_as_user` |
 
 > [!TIP]
 > Alternatif olarak, geçerli sayfayı `loginRedirect` açılır pencere yerine oturum açma sayfasına yönlendirmek için yöntemi kullanmak isteyebilirsiniz.
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 > |Konum  |  |
 > |---------|---------|
-> | `scopes`   | API için erişim belirteci döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph `[ "<Application ID URL>/scope" ]` veya özel Web API'leri için (diğer bir şey). `api://<Application ID>/access_as_user`|
+> | `scopes`   | API için erişim belirteci döndürülmek istenen kapsamları içerir. Örneğin, `[ "mail.read" ]` Microsoft Graph `[ "<Application ID URL>/scope" ]` veya özel web API'leri için (diğer bir şey). `api://<Application ID>/access_as_user`|
 
 #### <a name="get-a-user-token-interactively"></a>Etkileşimli olarak kullanıcı belirteci alma
 

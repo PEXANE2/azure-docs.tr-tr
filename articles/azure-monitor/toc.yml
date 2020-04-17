@@ -318,8 +318,6 @@
               href: app/pre-aggregated-metrics-log-metrics.md
             - name: Günlük tabanlı ölçüm tanımları
               href: platform/app-insights-metrics.md
-            - name: Klasik ölçüm gezgini
-              href: app/metrics-explorer.md
         - name: Arama
           href: app/diagnostic-search.md
         - name: Profil Oluşturucu

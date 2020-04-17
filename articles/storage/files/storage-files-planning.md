@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 76a96d36387f55889b65f16ea1ca6ec07359c377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502441"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536514"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure Dosyaları](storage-files-introduction.md) iki ana şekilde dağıtılabilir: sunucusuz Azure dosya paylaşımlarını doğrudan monte ederek veya Azure Dosya Eşitlemeyi'ni kullanarak şirket içinde Azure dosya paylaşımlarını önbelleğe alarak. Hangi dağıtım seçeneğini seçtiğiniz, dağıtımınızı planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -28,7 +28,7 @@ Bu makalede, öncelikle bir Azure dosya paylaşımını doğrudan şirket içi v
 
 Azure dosya paylaşımlarını depolama hesaplarına dağıtırken şunları öneririz:
 
-- Azure dosya paylaşımlarını yalnızca diğer Azure dosya paylaşımlarıyla birlikte depolama hesaplarına dağıtma. GPv2 depolama hesapları karışık amaçlı depolama hesaplarına sahip olmaya izin vermesine rağmen, Azure dosya paylaşımları ve blob kapsayıcıları gibi depolama kaynakları depolama hesabının sınırlarını paylaştığından, kaynakları bir araya getirmek sorun gidermenizi zorlaştırabilir daha sonra performans sorunları. 
+- Azure dosya paylaşımlarını yalnızca diğer Azure dosya paylaşımlarıyla birlikte depolama hesaplarına dağıtma. GPv2 depolama hesapları karışık amaçlı depolama hesaplarına sahip olmaya izin vermesine rağmen, Azure dosya paylaşımları ve blob kapsayıcıları gibi depolama kaynakları depolama hesabının sınırlarını paylaştığından, kaynakları bir araya getirmek daha sonra performans sorunlarını gidermenizi zorlaştırabilir. 
 
 - Azure dosya paylaşımlarını dağıtırken depolama hesabının IOPS sınırlamalarına dikkat edin. İdeal olarak, dosya paylaşımlarını depolama hesaplarıyla 1:1 eşlersiniz, ancak bu, hem kuruluşunuz hem de Azure'dan çeşitli sınırlar ve kısıtlamalar nedeniyle her zaman mümkün olmayabilir. Bir depolama hesabında yalnızca bir dosya paylaşımının dağıtılması mümkün olmadığında, en büyük dosya paylaşımların aynı depolama hesabına birlikte yerleştirilmediğinden emin olmak için hangi hisselerin son derece etkin olacağını ve hangi hisselerin daha az etkin olacağını düşünün.
 
@@ -36,20 +36,20 @@ Azure dosya paylaşımlarını depolama hesaplarına dağıtırken şunları ön
 
 ## <a name="identity"></a>Kimlik
 Azure dosya paylaşımına erişmek için dosya paylaşımının kullanıcısının kimlik doğrulaması ve paylaşıma erişmek için yetkiye sahip olması gerekir. Bu işlem, dosya paylaşımına erişen kullanıcının kimliğine göre yapılır. Azure Dosyaları üç ana kimlik sağlayıcısıyla tümleşir:
-- **Müşteriye ait Active Directory** (önizleme): Azure depolama hesapları, tıpkı windows server dosya sunucusu veya NAS aygıtı gibi müşteriye ait windows server etkin dizininin etki alanına katılabilir. Etkin Dizin Etki Alanı Denetleyiciniz şirket içinde, bir Azure VM'de veya başka bir bulut sağlayıcısında VM olarak dağıtılabilir; Azure Dosyaları, DC'nizin barındırıldığı yere agnostiktir. Bir depolama hesabı etki alanına katıldıktan sonra, son kullanıcı bilgisayarlarında imzaladıkları kullanıcı hesabıyla bir dosya paylaşımı monte edebilir. AD tabanlı kimlik doğrulama, Kerberos kimlik doğrulama protokolünü kullanır.
-- **Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS)**: Azure AD DS, Azure kaynakları için kullanılabilecek Microsoft tarafından yönetilen bir Active Directory Etki Alanı Denetleyicisi sağlar. Depolama alanı hesabınızı Azure AD DS'ye katılmak, etki alanının müşteriye ait bir Active Directory'ye katılmasına benzer avantajlar sağlar. Bu dağıtım seçeneği, AD tabanlı izinler gerektiren uygulama kaldırma ve kaydırma senaryoları için en yararlıdır. Azure AD DS AD tabanlı kimlik doğrulaması sağladığından, bu seçenek Kerberos kimlik doğrulama protokolünü de kullanır.
+- **Şirket içi Active Directory Domain Services (AD DS veya şirket içi AD DS)** (önizleme): Azure depolama hesapları, tıpkı Windows Server dosya sunucusu veya NAS aygıtı gibi müşteriye ait Active Directory Domain Services'e katılabilir. Bir etki alanı denetleyiciyi şirket içinde, bir Azure VM'de veya hatta başka bir bulut sağlayıcısında VM olarak dağıtabilirsiniz; Azure Dosyaları, etki alanı denetleyicinizin barındırıldığı yere agnostiktir. Bir depolama hesabı etki alanına katıldıktan sonra, son kullanıcı bilgisayarlarında imzaladıkları kullanıcı hesabıyla bir dosya paylaşımı monte edebilir. AD tabanlı kimlik doğrulama, Kerberos kimlik doğrulama protokolünü kullanır.
+- **Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS)**: Azure AD DS, Azure kaynakları için kullanılabilecek Microsoft tarafından yönetilen bir etki alanı denetleyicisi sağlar. Depolama alanı hesabınızı Azure AD DS'ye katılmak, etki alanının müşteriye ait bir Active Directory'ye katılmasına benzer avantajlar sağlar. Bu dağıtım seçeneği, AD tabanlı izinler gerektiren uygulama kaldırma ve kaydırma senaryoları için en yararlıdır. Azure AD DS AD tabanlı kimlik doğrulaması sağladığından, bu seçenek Kerberos kimlik doğrulama protokolünü de kullanır.
 - **Azure depolama hesabı anahtarı**: Azure dosya paylaşımları bir Azure depolama hesabı anahtarıyla da monte edilebilir. Bir dosya paylaşımını bu şekilde takmak için, depolama hesabı adı kullanıcı adı olarak kullanılır ve depolama hesabı anahtarı parola olarak kullanılır. Azure dosya paylaşımını monte etmek için depolama hesabı anahtarını kullanmak etkili bir yönetici işlemidir, çünkü monte edilmiş dosya paylaşımı, ACD'leri olsa bile paylaşımdaki tüm dosya ve klasörlere tam izinverir. SMB'ye monte etmek için depolama hesabı anahtarını kullanırken, NTLMv2 kimlik doğrulama protokolü kullanılır.
 
 Şirket içi dosya sunucularından geçiş yapmak veya Windows dosya sunucuları veya NAS cihazları gibi rol yapmak üzere Azure Dosyalarında yeni dosya paylaşımları oluşturan müşteriler için, depolama alanı hesabınızı **Müşteriye ait Active Directory'ye** katılmak önerilir. Alan adının depolama alanı hesabınıza müşteriye ait bir Active Directory'ye katılması hakkında daha fazla bilgi edinmek için [Azure Dosyaları Etkin Dizini'ne genel bakış](storage-files-active-directory-overview.md)'a bakın.
 
 Azure dosya paylaşımlarınıza erişmek için depolama hesabı anahtarını kullanmayı planlıyorsanız, [Ağ](#networking) bölümünde açıklandığı gibi hizmet bitiş noktalarını kullanmanızı öneririz.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 Azure dosya paylaşımlarına depolama hesabının genel bitiş noktası üzerinden her yerden erişilebilir. Bu, bir kullanıcının oturum açma kimliği tarafından yetkilendirilen istekler gibi kimlik doğrulama isteklerinin Azure'un içinden veya dışından güvenli bir şekilde kaynaklanabileceği anlamına gelir. Birçok müşteri ortamlarında, Azure VM'lerden gelen bağlar başarılı olsa bile, şirket içi iş istasyonunuzdaki Azure dosya paylaşımının ilk yuvası başarısız olur. Bunun nedeni, birçok kuruluş ve internet servis sağlayıcıları (ISS) SMB iletişim kurmak için kullandığı bağlantı noktası, 445 engellemek olduğunu. 445 numaralı bağlantı noktasından erişime izin veren veya erişimi engelleyen ISP'lerin özetini görmek için [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)'e gidin.
 
 Azure dosya paylaşımınızın engelini kaldırmak için iki ana seçeneğiniz var:
 
-- Kuruluşunuzun şirket içi ağı için bağlantı noktası 445'in engelini kaldırın. Azure dosya paylaşımlarına yalnızca SMB 3.0 ve FileREST API gibi internet güvenli protokolleri kullanılarak ortak bitiş noktası üzerinden dışarıdan erişilebilir. Bu, kuruluşunuzun giden bağlantı noktası kurallarını değiştirmenin ötesinde gelişmiş ağ yapılandırması gerektirmediğinden, Azure dosya paylaşımınıza şirket içinde erişmenin en kolay yoludur, ancak SMB'nin eski ve yıkıntılı sürümlerini kaldırmanızı öneririz protokol, yani SMB 1.0. Bunu nasıl yapacağınızı öğrenmek için [Windows/Windows Server'ı güvence altına alma](storage-how-to-use-files-windows.md#securing-windowswindows-server) ve [Linux'u güvence altına alma](storage-how-to-use-files-linux.md#securing-linux)'ya bakın.
+- Kuruluşunuzun şirket içi ağı için bağlantı noktası 445'in engelini kaldırın. Azure dosya paylaşımlarına yalnızca SMB 3.0 ve FileREST API gibi internet güvenli protokolleri kullanılarak ortak bitiş noktası üzerinden dışarıdan erişilebilir. Bu, kuruluşunuzun giden bağlantı noktası kurallarını değiştirmenin ötesinde gelişmiş ağ yapılandırması gerektirmediğinden, Azure dosya paylaşımınıza şirket içinde erişmenin en kolay yoludur, ancak SMB protokolünün eski ve amortismana dayalı sürümlerini (SMB 1.0) kaldırmanızı öneririz. Bunu nasıl yapacağınızı öğrenmek için [Windows/Windows Server'ı güvence altına alma](storage-how-to-use-files-windows.md#securing-windowswindows-server) ve [Linux'u güvence altına alma](storage-how-to-use-files-linux.md#securing-linux)'ya bakın.
 
 - ExpressRoute veya VPN bağlantısı üzerinden Azure dosya paylaşımları erişin. Azure dosya paylaşımınıza bir ağ tüneli üzerinden erişdiğinizde, Kobİ trafiği kuruluş sınırınızdan geçmediği için Azure dosya paylaşımınızı şirket içi dosya paylaşımı gibi monte edebilirsiniz.   
 
@@ -153,7 +153,7 @@ Yeni dosya paylaşımları, seri kovasındaki tam kredi sayısıyla başlar. His
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Standart dosya paylaşımlarını 100 TiB'e kadar yayılmaya olanak sağlama
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
-#### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+#### <a name="limitations"></a>Sınırlamalar
 [!INCLUDE [storage-files-tiers-large-file-share-availability](../../../includes/storage-files-tiers-large-file-share-availability.md)]
 
 ## <a name="redundancy"></a>Yedeklilik

@@ -2,14 +2,14 @@
 title: Azure Geçiş ile makineleri fiziksel sunucu olarak Azure'a geçirin.
 description: Bu makalede, Azure Geçiş ile fiziksel makinelerin Azure'a nasıl geçirilen açıklanmıştır.
 ms.topic: tutorial
-ms.date: 02/03/2020
+ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 51ce45b091fe2d8845963953c2c50cd7be618f58
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 1824fc6c7cbc0fd0390770027f4a15d9130139de
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80297994"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535392"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure'a geçirin
 
@@ -22,12 +22,10 @@ Bu makalede, Azure Geçiş:Sunucu Geçişi aracını kullanarak makineleri fizik
 - Amazon Web Hizmetleri (AWS) veya Google Bulut Platformu (GCP) gibi genel bulutlarda çalışan VM'leri geçirin.
 
 
-[Azure Geçir,](migrate-services-overview.md) şirket içi uygulamalarınızın ve iş yüklerinizin keşfini, değerlendirmesini ve geçişini izlemek için merkezi bir hub sağlar ve VM örneklerini Azure'a bulutlar. Hub, değerlendirme ve geçiş için Azure Geçiş araçlarının yanı sıra üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
+Bu öğretici, fiziksel sunucuların nasıl değerlendirilip Azure'a geçirilen bir serinin üçüncüsüdür. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
-
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Azure Geçir Sunucusu Geçişi aracıyla Azure'u geçişe hazırlayın.
+> * Azure Geçiş:Sunucu Geçişi ile Azure'u kullanmaya hazırlanın.
 > * Geçiş yapmak istediğiniz makinelerin gereksinimlerini denetleyin ve makineleri keşfetmek ve Azure'a geçirmek için kullanılan Azure Geçir çoğaltma cihazı için bir makine hazırlayın.
 > * Azure Geçir sunucusu geçişi aracını Azure Geçir hub'ına ekleyin.
 > * Çoğaltma cihazını ayarlayın.
@@ -46,21 +44,20 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlardır:
 
-1. Geçiş mimarisini [gözden geçirin.](migrate-architecture.md)
-2. Azure hesabınıza Sanal Makine Katılımcısı rolü atandığından emin olun, böylece aşağıdakilere izin verebilirsiniz:
+Geçiş mimarisini [gözden geçirin.](migrate-architecture.md)
 
-    - Seçilen kaynak grubunda sanal makine oluşturma.
-    - Seçilen sanal ağda sanal makine oluşturma.
-    - Azure yönetilen bir diske yazın. 
 
-3. [Azure ağı ayarlayın.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure'da çoğaltma yaptığınızda, Azure VM'leri oluşturulur ve bir Azure ağına katıldığınızda geçiş ayarladiğinizde belirtirsiniz.
 
 
 ## <a name="prepare-azure"></a>Azure’u hazırlama
 
-Azure Geçiş Sunucusu Geçişi ile geçiş yapmadan önce Azure izinlerini ayarlayın.
+Sunucu Geçişi ile Azure'u geçişiçin hazırlayın.
 
-- **Proje oluşturma**: Azure hesabınızın bir Azure Geçiş projesi oluşturmak için izinlere ihtiyacı vardır. 
+**Görev** | **Şey**
+--- | ---
+**Azure Geçiş projesi oluşturma** | Azure hesabınız, proje oluşturmak için Contributer veya Owner izinlerine ihtiyaç duyar.
+**Azure hesabınız için izinleri doğrulayın** | Azure hesabınız, Bir VM oluşturmak ve Azure yönetilen bir diske yazmak için izinlere ihtiyaç duyar.
+
 
 ### <a name="assign-permissions-to-create-project"></a>Proje oluşturmak için izin atama
 
@@ -70,32 +67,51 @@ Azure Geçiş Sunucusu Geçişi ile geçiş yapmadan önce Azure izinlerini ayar
     - Ücretsiz bir Azure hesabı oluşturduysanız, aboneliğinizin sahibi sizsiniz.
     - Abonelik sahibi değilseniz, rolü atamak için sahibiyle birlikte çalışın.
 
+
+### <a name="assign-azure-account-permissions"></a>Azure hesap izinleri atama
+
+Sanal Makine Katılımcısı rolünü Azure hesabına atayın. Bu izinler sağlar:
+
+    - Seçilen kaynak grubunda sanal makine oluşturma.
+    - Seçilen sanal ağda sanal makine oluşturma.
+    - Azure yönetilen bir diske yazın. 
+
+### <a name="create-an-azure-network"></a>Azure ağı oluşturma
+
+Azure sanal ağı (VNet) [ayarlayın.](../virtual-network/manage-virtual-network.md#create-a-virtual-network) Azure'a çoğaltmayaptığınızda, Azure VM'leri oluşturulur ve geçiş ilerlerken belirttiğiniz Azure VNet'e katılır.
+
 ## <a name="prepare-for-migration"></a>Geçiş için hazırlanma
+
+Fiziksel sunucu geçişine hazırlanmak için fiziksel sunucu ayarlarını doğrulamanız ve bir çoğaltma cihazı dağıtmaya hazırlanmanız gerekir.
 
 ### <a name="check-machine-requirements-for-migration"></a>Geçiş için makine gereksinimlerini denetleme
 
 Makinelerin Azure'a geçiş gereksinimlerine uyduğunu unutmayın. 
 
 > [!NOTE]
-> Azure Geçiş Sunucusu Geçişi ile aracı tabanlı geçiş, Azure Site Kurtarma hizmetinin aracı tabanlı olağanüstü durum kurtarma özelliğiyle aynı çoğaltma mimarisine sahiptir ve kullanılan bileşenlerden bazıları aynı kod tabanını paylaşır. Bazı gereksinimler Site Kurtarma belgelerine bağlanabilir.
+> Fiziksel makineleri geçirerken, Azure Geçiş:Sunucu Geçişi, Azure Site Kurtarma hizmetinde aracı tabanlı olağanüstü durum kurtarma yla aynı çoğaltma mimarisini kullanır ve bazı bileşenler aynı kod tabanını paylaşır. Bazı içerikler Site Kurtarma belgelerine bağlanabilir.
 
 1. Fiziksel sunucu gereksinimlerini [doğrulayın.](migrate-support-matrix-physical-migration.md#physical-server-requirements)
-2. VM ayarlarını doğrulayın. Azure'da çoğaltacağınız şirket içi makineler [Azure VM gereksinimlerine](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uygun olmalıdır.
+2. Azure'da çoğaltacağınız şirket içi makinelerin [Azure VM gereksinimlerine](migrate-support-matrix-physical-migration.md#azure-vm-requirements)uygun olduğunu doğrulayın.
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Çoğaltma cihazı için bir makine hazırlayın
 
-Azure Geçir Sunucusu Geçişi, makineleri Azure'a çoğaltmak için bir çoğaltma cihazı kullanır. Çoğaltma cihazı aşağıdaki bileşenleri çalıştırın.
+Azure Geçişi:Sunucu Geçişi, makineleri Azure'a çoğaltmak için bir çoğaltma cihazı kullanır. Çoğaltma cihazı aşağıdaki bileşenleri çalıştırın.
 
 - **Yapılandırma sunucusu**: Yapılandırma sunucusu şirket içi ve Azure arasındaki iletişimi koordine eder ve veri çoğaltmayı yönetir.
 - **İşlem sunucusu**: İşlem sunucusu bir çoğaltma ağ geçidi gibi davranır. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile optimize eder ve Azure'daki bir önbellek depolama hesabına gönderir. 
 
-Başlamadan önce, çoğaltma cihazını barındıracak bir Windows Server 2016 makinesi hazırlamanız gerekir. Makine [bu gereksinimlere](migrate-replication-appliance.md)uymalıdır. Cihaz korumak istediğiniz bir kaynak makineye monte edilmemelidir.
+Aşağıdaki gibi cihaz dağıtımı için hazırlanın:
 
+- Çoğaltma cihazını barındıracak bir makine hazırlarsınız. Makine gereksinimlerini [gözden geçirin.](migrate-replication-appliance.md#appliance-requirements) Cihaz çoğaltmak istediğiniz bir kaynak makineye monte edilmemelidir.
+- Çoğaltma cihazı MySQL kullanır. Cihaza MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) gözden geçirin.
+- Çoğaltma cihazının [genel](migrate-replication-appliance.md#url-access) ve [resmi](migrate-replication-appliance.md#azure-government-url-access) bulutlara erişmesi için gereken Azure URL'lerini gözden geçirin.
+- Çoğaltma cihazı için [port] (geçiş-çoğaltma-appliance.md#port-access) erişim gereksinimlerini gözden geçirin.
 
-## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Geçir Sunucusu Geçişi aracını ekleme
+## <a name="add-the-server-migration-tool"></a>Sunucu Geçişi aracını ekleme
 
-Bir Azure Geçir projesi ayarlayın ve ardından azure geçir sunucusu geçişi aracını ekleyin.
+Bir Azure Geçiş projesi ayarlayın ve sunucu geçişi aracını ekleyin.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
@@ -106,19 +122,10 @@ Bir Azure Geçir projesi ayarlayın ve ardından azure geçir sunucusu geçişi 
 
 5. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
 6. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
-7. **Proje Ayrıntıları'nda**proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin ve **İleri'yi** tıklatın
+7. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
 
-    Bu coğrafyalardan herhangi birinde bir Azure Geçiş projesi oluşturabilirsiniz.
-
-    **Coğrafya** | **Bölge**
-    --- | ---
-    Asya | Güneydoğu Asya
-    Avrupa | Kuzey Avrupa veya Batı Avrupa
-    Amerika Birleşik Devletleri | Doğu ABD veya Batı Orta ABD
-
-    Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 8. **Değerlendirme aracını seç'te,** **şimdi için bir değerlendirme aracı ekleyerek Atla'yı** > seçin**İleri**.
 9. **Geçiş aracı seç'te**Azure **Geçir: Sunucu Geçiş İlerletmek** > **İleri'yi**seçin.
 10. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
@@ -126,7 +133,7 @@ Bir Azure Geçir projesi ayarlayın ve ardından azure geçir sunucusu geçişi 
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma cihazını ayarlama
 
-Geçişin ilk adımı çoğaltma cihazını kurmaktır. Cihazın yükleyici dosyasını indirip [hazırladığınız makinede çalıştırın.](#prepare-a-machine-for-the-replication-appliance) Cihazı yükledikten sonra Azure Geçiş Sunucusu Geçişi'ne kaydettirin.
+Geçişin ilk adımı çoğaltma cihazını kurmaktır. Cihazı fiziksel sunucu geçişi için ayarlamak için, cihaz için yükleyici dosyasını [indirip, hazırladığınız makinede çalıştırırsınız.](#prepare-a-machine-for-the-replication-appliance) Cihazı yükledikten sonra Azure Geçiş Sunucusu Geçişi'ne kaydettirin.
 
 
 ### <a name="download-the-replication-appliance-installer"></a>Çoğaltma cihazı yükleyicisini indirin
@@ -317,7 +324,7 @@ Test geçişinin beklendiği gibi çalıştığını doğruladıktan sonra, şir
 3. **Geçiret** > **Sanal makineleri kapatın ve veri kaybı olmadan planlı geçiş gerçekleştirin**, **Evet** > **Tamam'ı**seçin.
     - VM’yi kapatmak istemiyorsanız, **Hayır** seçeneğini belirleyin
 
-    Not: Fiziksel Sunucu Geçişi için öneri, yürütme penceresinin bir parçası olarak uygulamayı aşağı çekmek (uygulamaların herhangi bir bağlantıyı kabul etmesini izin vermeyin) ve geçişi başlatmaktır (Sunucunun çalışmaya devam etmesi gerekir, bu nedenle kalan değişiklikler geçiş tamamlanmadan önce eşitlenebilir)
+    Not: Fiziksel Sunucu Geçişi için öneri, yürütme penceresinin bir parçası olarak uygulamayı aşağı çekmek (uygulamaların herhangi bir bağlantıyı kabul etmesini izin vermeyin) ve geçişişlemini başlatmak (Sunucunun çalıştırılması gerekir, böylece kalan değişiklikler eşitlenebilir) geçiş tamamlanmadan önce.
 
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.
 5. İşlem bittikten sonra **Sanal Makineler** sayfasında VM’yi görüntüleyebilir ve yönetebilirsiniz.

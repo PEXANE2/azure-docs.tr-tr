@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0866db6b549bc940d2e73bccfc77b8fad19abd51
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273231"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534814"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure'u kullanın
 
@@ -110,6 +110,8 @@ Azure hizmetlerinin SAP bileşenlerine entegrasyonu hakkında bilgi için bkz:
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
+
+- 16/04/2020: Microsoft Azure'da çalışan [Azure dağıtımları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) ve [SAP sertifikaları ve yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) için desteklenen makalelerde SAP (Hybris) Ticaret Platformu için desteklenen DBMS olarak SAP HANA eklendi
 - 04/13/2020: SAP iş yükü için [SAP ASE Azure Sanal Makineler DBMS dağıtımında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase) SAP ASE sürüm numaralarının tam olarak doğru olması
 - 04/07/2020: Bulut-netconfig-azure yönergelerini netleştirmek için [Azure'da SLES'te Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) Değişiklik
 - 04/06/2020: NetApp [TR-4435'e](https://www.netapp.com/us/media/tr-4746.pdf) yapılan başvuruları kaldırmak için [SLES'teki Azure NetApp Dosyaları ile Azure VM'lerde](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) ve [RHEL'deki Azure NetApp Dosyaları ile SAP HANA ölçeğinde standby düğümlü](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) SAP HANA ölçeğindeki değişiklikler [(TR-4746](https://www.netapp.com/us/media/tr-4746.pdf)ile değiştirildi)

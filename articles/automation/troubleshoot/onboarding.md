@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae359e5210a9a11c33dd3ff9b474e28aa2548c57
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75889327"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536973"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Güncelleştirme Yönetimi, Değişiklik İzleme ve Envanter'e binerken hata giderme
 
@@ -72,7 +72,7 @@ Bu hata, sanal makinede, çalışma alanında veya kullanıcı için yanlış ve
 
 #### <a name="resolution"></a>Çözüm
 
-Sanal makineye binmek için doğru izinlere sahip olduğundan emin olun. Yerleşik [makineler için gereken izinleri](../automation-role-based-access-control.md#onboarding) gözden geçirin ve çözüme yeniden binmeye çalışın. Hata `The solution cannot be enabled on this VM because the permission to read the workspace is missing`alırsanız, `Microsoft.OperationalInsights/workspaces/read` VM'nin bir çalışma alanına bindirilip bindirilmediğinden emin olun.
+Sanal makineye binmek için doğru izinlere sahip olduğundan emin olun. Yerleşik [makineler için gereken izinleri](../automation-role-based-access-control.md#onboarding-permissions) gözden geçirin ve çözüme yeniden binmeye çalışın. Hata `The solution cannot be enabled on this VM because the permission to read the workspace is missing`alırsanız, VM'nin `Microsoft.OperationalInsights/workspaces/read` bir çalışma alanına bindirilip bindirilmediğini bulma iznine sahip olduğundan emin olun.
 
 ### <a name="scenario-onboarding-fails-with-the-message---failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Senaryo: Onboarding ileti ile başarısız - Tanılama günlüğe kaydetme için Otomasyon Hesabı yapılandırmak için başarısız oldu
 
@@ -162,7 +162,7 @@ Bunu çözmek için, bunları kullanıyorsanız Aşağıdaki çözümleri Çalı
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-Bir çözüm dağıtılırken, çeşitli ilgili kaynaklar dağıtılır. Bu kaynaklardan biri, Linux için Microsoft İzleme Aracısı Uzantısı veya Log Analytics aracısıdır. Bunlar, sanal makinenin Konuk Aracısı tarafından yüklenen ve yapılandırılan Log Analytics çalışma alanı ile iletişim kurmaktan sorumlu sanal makine uzantılarıdır, ikililerin ve diğer dosyaların daha sonra indirilmesinin daha sonra koordinasyonu amacıyla yürütmeye başladıktan sonra bindiğiniz çözüm bağlıdır.
+Bir çözüm dağıtılırken, çeşitli ilgili kaynaklar dağıtılır. Bu kaynaklardan biri, Linux için Microsoft İzleme Aracısı Uzantısı veya Log Analytics aracısıdır. Bunlar, oturum açtığınız çevrimiçi ve diğer dosyaların daha sonra karşıdan yüklenmesi amacıyla, yapılandırılan Log Analytics çalışma alanıyla iletişim kurmaktan sorumlu sanal makinenin Konuk Aracısı tarafından yüklenen Sanal Makine Uzantılarıdır.
 Genellikle bildirimler Hub'ında görünen bir bildirimden Linux yükleme hataları için MMA veya Log Analytics aracısından haberdar olursunuz. Bu bildirime tıkladığınızda, belirli hata hakkında daha fazla bilgi verir. Kaynak Grupları kaynağına ve içindeki Dağıtımlar öğesine gezinme, gerçekleşen dağıtım hataları hakkında da ayrıntılar sağlar.
 Linux için MMA veya Log Analytics aracısının yüklenmesi çeşitli nedenlerle başarısız olabilir ve bu hataları gidermek için atılacak adımlar soruna bağlı olarak değişir. Belirli sorun giderme adımları izler.
 

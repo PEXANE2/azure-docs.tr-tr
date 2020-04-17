@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259337"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535766"
 ---
 # <a name="back-up-your-app-in-azure"></a>Uygulamanızı Azure’a yedekleme
 [Azure Uygulama Hizmeti'ndeki](overview.md) Yedekleme ve Geri Yükleme özelliği, uygulama yedeklemelerini el ile veya zamanlamada kolayca oluşturmanıza olanak tanır. Yedeklemeleri belirsiz bir süreye kadar saklanacak şekilde yapılandırabilirsiniz. Varolan uygulamayı üzerine yazarak veya başka bir uygulamaya geri yükleyerek uygulamayı önceki bir durum görüntüsünü geri yükleyebilirsiniz.
@@ -28,7 +28,7 @@ Uygulama Hizmeti, aşağıdaki bilgileri kullanmak üzere uygulamanızı yapıla
 
 Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir: 
 
-- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [SQL Veritabanı](https://azure.microsoft.com/services/sql-database/)
 - [MySQL için Azure Veritabanı](https://azure.microsoft.com/services/mysql)
 - [PostgreSQL için Azure Veritabanı](https://azure.microsoft.com/services/postgresql)
 - [MySQL uygulama içi](https://azure.microsoft.com/blog/mysql-in-app-preview-app-service/)
@@ -44,8 +44,8 @@ Aşağıdaki veritabanı çözümleri yedekleme özelliği ile desteklenir:
 * Yedekleme ve Geri Yükleme özelliği, Uygulama Hizmeti planının **Standart** katmanda veya **Premium** katmanda olmasını gerektirir. Daha yüksek bir katman kullanmak için Uygulama Hizmeti planınızı ölçeklendirme hakkında daha fazla bilgi için [azure'da bir uygulamayı ölçeklendir'e](manage-scale-up.md)bakın. **Premium** katman, **Standart** katmandan daha fazla günlük yedekleme sağlar.
 * Yedeklemek istediğiniz uygulamayla aynı abonelikte bir Azure depolama hesabına ve kapsayıcıya ihtiyacınız var. Azure depolama hesapları hakkında daha fazla bilgi için Azure [depolama hesabına genel bakış'a](https://docs.microsoft.com/azure/storage/common/storage-account-overview)bakın.
 * Yedeklemeler en fazla 10 GB uygulama ve veritabanı içeriği olabilir. Yedekleme boyutu bu sınırı aşarsa, bir hata alırsınız.
-* MySQL için SSL etkin Azure Veritabanı yedeklemeleri desteklenmez. Bir yedekleme yapılandırılırsa, başarısız yedekleme alırsınız.
-* PostgreSQL için SSL etkin Azure Veritabanı yedeklemeleri desteklenmez. Bir yedekleme yapılandırılırsa, başarısız yedekleme alırsınız.
+* MYSQL için TLS etkin Azure Veritabanı yedeklemeleri desteklenmez. Bir yedekleme yapılandırılırsa, başarısız yedekleme alırsınız.
+* PostgreSQL için TLS etkinleştirilmiş Azure Veritabanı yedeklemeleri desteklenmez. Bir yedekleme yapılandırılırsa, başarısız yedekleme alırsınız.
 * Uygulama içi MySQL veritabanları herhangi bir yapılandırma olmadan otomatik olarak yedeklenir. Bağlantı dizeleri ekleme gibi uygulama içi MySQL veritabanları için el ile ayarlar yaparsanız, yedeklemeler düzgün çalışmayabilir.
 * Yedeklemeleriniz için hedef olarak güvenlik duvarı etkin bir depolama hesabı kullanmak desteklenmez. Bir yedekleme yapılandırılırsa, başarısız yedekleme alırsınız.
 

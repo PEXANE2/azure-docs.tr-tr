@@ -1,16 +1,16 @@
 ---
 title: Güvenlik
 description: Uygulama Hizmeti'nin uygulamanızın güvenliğini sağlamaya nasıl yardımcı olduğu ve uygulamanızı tehditlere karşı nasıl daha fazla kilitlenebildiğiniz hakkında bilgi edinin.
-keywords: azure uygulama hizmeti, web uygulaması, mobil uygulama, api uygulaması, fonksiyon uygulaması, güvenlik, güvenli, güvenli, uyumluluk, uyumlu, sertifika, sertifika, https, ftps, tls, güven, şifreleme, şifreleme, şifreli, ip kısıtlaması, kimlik doğrulama, yetkilendirme, authn, autho, msi, yönetilen hizmet kimliği, yönetilen kimlik, sırlar, gizli, yama, yama, yama, sürüm, izolasyon, ağ yalıtımı, ddos, mitm
+keywords: azure app hizmeti, web uygulaması, mobil uygulama, api uygulaması, fonksiyon uygulaması, güvenlik, güvenli, güvenli, uyumluluk, uyumlu, sertifika, sertifika, https, ftps, tls, güven, şifreleme, şifreleme, şifreli, ip kısıtlaması, kimlik doğrulama, yetkilendirme, authn, autho, msi, yönetilen hizmet kimliği, yönetilen kimlik, sırlar, gizli, yama, yama, yama, yamalar, sürüm, izolasyon, ağ yalıtımı, ddos, mitm
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: e28935f73511e5ad973929517658cc626b5a6ea2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535664"
 ---
 # <a name="security-in-azure-app-service"></a>Azure Uygulama Hizmetinde Güvenlik
 
@@ -31,14 +31,14 @@ Aşağıdaki bölümler, Uygulama Hizmeti uygulamanızı tehditlere karşı nas�
 
 ## <a name="https-and-certificates"></a>HTTPS ve Sertifikalar
 
-Uygulama [Hizmeti,](https://wikipedia.org/wiki/HTTPS)https ile uygulamalarınızı güvenli hale almanızı sağlar. Uygulamanız oluşturulduğunda, varsayılan etki\<alanı adı (app_name>.azurewebsites.net) https kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız,](app-service-web-tutorial-custom-domain.md)istemci tarayıcıların özel etki alanınıza güvenli HTTPS bağlantıları yapabilmesi için [uygulamayı bir SSL sertifikasıyla da güvence altına almalısınız.](configure-ssl-bindings.md) App Service tarafından desteklenen çeşitli sertifika türleri vardır:
+Uygulama [Hizmeti,](https://wikipedia.org/wiki/HTTPS)https ile uygulamalarınızı güvenli hale almanızı sağlar. Uygulamanız oluşturulduğunda, varsayılan etki\<alanı adı (app_name>.azurewebsites.net) https kullanılarak zaten erişilebilir. [Uygulamanız için özel bir etki alanı yapılandırırsanız,](app-service-web-tutorial-custom-domain.md)istemci tarayıcıların özel etki alanınıza güvenli HTTPS bağlantıları yapabilmesi için [uygulamayı bir TLS/SSL sertifikasıyla da güvenli hale](configure-ssl-bindings.md) getirmeniz gerekir. App Service tarafından desteklenen çeşitli sertifika türleri vardır:
 
 - Ücretsiz Uygulama Hizmeti Yönetilen Sertifika
 - Uygulama Hizmeti sertifikası
 - Üçüncü taraf sertifikası
 - Azure Anahtar Kasasından alınan sertifika
 
-Daha fazla bilgi için azure [uygulama hizmetinde SSL sertifikası ekle'ye](configure-ssl-certificate.md)bakın.
+Daha fazla bilgi için bkz: [Azure Uygulama Hizmeti'nde TLS/SSL sertifikası ekleyin.](configure-ssl-certificate.md)
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>Güvensiz protokoller (HTTP, TLS 1.0, FTP)
 

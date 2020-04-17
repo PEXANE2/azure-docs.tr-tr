@@ -2,13 +2,13 @@
 title: Azure Geçişi'nde Hyper-V geçişi desteği
 description: Azure Geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: 1eab96df7ee58a8170f75b41c5a2a06f033ced19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: 8ec0b72cac75518ac938faa202b28d055409e8dc
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245830"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538197"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 
@@ -23,18 +23,44 @@ Bu makalede, Azure Geçişi ile Hyper-V VM'lerin geçişine yönelik destek ayar
 
 | **Destek**                | **Şey**               
 | :-------------------       | :------------------- |
-| **Dağıtım**       | Hyper-V ana bilgisayar tek başına veya bir kümede dağıtılabilir. <br/>Azure Geçir çoğaltma yazılımının (Hyper-V Çoğaltma sağlayıcısı) Hyper-V ana bilgisayarlarına yüklenmesi gerekir.|
-| **Izin**           | Hyper-V ana bilgisayarda yönetici izinlerine ihtiyacınız vardır. |
+| **Dağıtım**       | Hyper-V ana bilgisayar tek başına veya bir kümede dağıtılabilir. <br/>Azure Geçir çoğaltma yazılımı (Hyper-V Çoğaltma sağlayıcısı) Hyper-V ana bilgisayarlarına yüklenir.|
+| **İzinler**           | Hyper-V ana bilgisayarda yönetici izinlerine ihtiyacınız vardır. |
 | **Ana bilgisayar işletim sistemi** | Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2. |
-| **URL erişimi** | Hyper-V ana bilgisayarlarındaki çoğaltma sağlayıcı yazılımının bu URL'lere erişmesi gerekir:<br/><br/> - login.microsoftonline.com: Active Directory kullanarak erişim denetimi ve kimlik yönetimi.<br/><br/> - *.backup.windowsazure.com: Çoğaltma veri aktarımı ve koordinasyonu. Hizmet URL'lerini geçirin.<br/><br/> * .blob.core.windows.net: Depolama hesaplarına veri yükleyin.<br/><br/> - dc.services.visualstudio.com: Dahili izleme için kullanılan uygulama günlüklerini yükleyin.<br/><br/> - time.windows.com: Sistem ve küresel zaman arasındaki zaman eşitleme doğrular.
 | **Bağlantı noktası erişimi** |  VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443'teki giden bağlantılar.
+
+### <a name="url-access-public-cloud"></a>URL erişimi (genel bulut)
+
+Hyper-V ana bilgisayarlarındaki çoğaltma sağlayıcı yazılımının bu URL'lere erişmesi gerekir.
+
+**URL** | **Şey**
+--- | ---
+login.microsoftonline.com | Active Directory'yi kullanarak denetime ve kimlik yönetimine erişin.
+backup.windowsazure.com | Çoğaltma veri aktarımı ve koordinasyonu.
+*.hypervrecoverymanager.windowsazure.com | Geçiş için kullanılır.
+*.blob.core.windows.net | Depolama hesaplarına veri yükleyin. 
+dc.services.visualstudio.com | Dahili izleme için kullanılan uygulama günlüklerini yükleyin.
+time.windows.com | Sistem ve genel zaman arasındaki zaman eşitleme doğrular.
+
+### <a name="url-access-azure-government"></a>URL erişimi (Azure Kamu)
+
+Hyper-V ana bilgisayarlarındaki çoğaltma sağlayıcı yazılımının bu URL'lere erişmesi gerekir.
+
+**URL** | **Şey**
+--- | ---
+login.microsoftonline.us | Active Directory'yi kullanarak denetime ve kimlik yönetimine erişin.
+backup.windowsazure.us | Çoğaltma veri aktarımı ve koordinasyonu.
+*.hypervrecoverymanager.windowsazure.us | Geçiş için kullanılır.
+*.blob.core.usgovcloudapi.net | Depolama hesaplarına veri yükleyin.
+dc.services.visualstudio.com | Dahili izleme için kullanılan uygulama günlüklerini yükleyin.
+time.nist.gov | Sistem ve genel zaman arasındaki zaman eşitleme doğrular.
+
 
 ## <a name="hyper-v-vms"></a>Hyper-V Sanal Makineleri
 
 | **Destek**                  | **Şey**               
 | :----------------------------- | :------------------- |
 | **İşletim sistemi** | Azure tarafından desteklenen tüm [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) ve [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) işletim sistemleri. |
-| **Azure için gerekli değişiklikler** | Bazı VM'ler Azure'da çalıştırabilmeleri için değişiklik gerektirebilir. Geçişyapmadan önce el ile ayarlamalar yapmanız gerekir. İlgili makaleler, bunun nasıl yapılacağını anlatan yönergeler içerir. |
+| **Azure için gerekli değişiklikler** | Bazı VM'ler Azure'da çalıştırabilmeleri için değişiklik gerektirebilir. Geçişden önce el ile ayarlamalar yapın. İlgili makaleler, bunun nasıl yapılacağını anlatan yönergeler içerir. |
 | **Linux önyükleme**                 | /boot özel bir bölüm üzerindeyse, işletim sistemi diskinde yer almalı ve birden çok diske yayılmamalıdır.<br/> /boot kök (/) bölümünün bir parçasıysa, '/' bölümü işletim sistemi diskinde olmalı ve diğer disklere yayılmamalıdır. |
 | **UEFI önyükleme**                  | Azure'da geçirilen VM otomatik olarak BIOS önyükleme VM'sine dönüştürülür. VM Windows Server 2012 ve daha sonra yalnızca çalışıyor olmalıdır. Os diskenin en fazla beş veya daha az bölümü olmalı ve işletim sistemi diskinin boyutu 300 GB'dan az olmalıdır.
   |
@@ -48,7 +74,7 @@ Bu makalede, Azure Geçişi ile Hyper-V VM'lerin geçişine yönelik destek ayar
 | **Hedef disk**                | Yalnızca yönetilen disklerle Azure VM'lerine geçiş yapabilirsiniz. |
 | **IPv6** | Desteklenmiyor.
 | **NIC takım çalışması** | Desteklenmiyor.
-| **Azure Site Kurtarma** | VM, Azure Site Kurtarma ile çoğaltma için etkinleştirildiyse, Azure Geçir Sunucusu Geçişi'ni kullanarak çoğaltma yapamazsınız.
+| **Azure Site Recovery** | VM, Azure Site Kurtarma ile çoğaltma için etkinleştirildiyse, Azure Geçir Sunucusu Geçişi'ni kullanarak çoğaltma yapamazsınız.
 | **Bağlantı Noktaları** | VM çoğaltma verilerini göndermek için HTTPS bağlantı noktası 443'teki giden bağlantılar.
 
 ## <a name="azure-vm-requirements"></a>Azure VM gereksinimleri

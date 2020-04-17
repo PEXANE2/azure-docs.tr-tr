@@ -2,14 +2,14 @@
 title: Azure Geçişi Hakkında
 description: Azure Geçiş hizmeti hakkında bilgi edinin.
 ms.topic: overview
-ms.date: 03/22/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: a9723f15d496393d27bdd227ec1121a7878b37e0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: aa999b874b6e8b0075ab905a72ff04f03cb39ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80127739"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537908"
 ---
 # <a name="about-azure-migrate"></a>Azure Geçişi Hakkında
 
@@ -40,6 +40,9 @@ Azure Geçir hub'ı bu araçları içerir.
 **Movere** | Sunucuları değerlendirin. | Movere hakkında [daha fazla bilgi edinin.](#movere)
 **Web Uygulaması Geçiş Asistanı** | Şirket içi web uygulamalarını değerlendirin ve Azure'a geçirin. |  Şirket içi web sitelerini Azure Uygulama Hizmeti'ne geçiş için değerlendirmek için Azure Uygulama Hizmeti Geçiş Yardımcısı'nı kullanın.<br/><br/> .NET ve PHP web uygulamalarını Azure'a geçirmek için Yardımcısı'nı kullanın. Azure Uygulama Hizmeti Geçiş Yardımcısı hakkında [daha fazla bilgi edinin.](https://appmigration.microsoft.com/)
 **Azure Data Box** | Çevrimdışı veri geçişi. | Büyük miktarda veriyi çevrimdışı olarak Azure'a taşımak için Azure Veri Kutusu ürünlerini kullanın. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/databox/).
+
+> [!NOTE]
+> Azure Kamu'daysanız, harici tümleşik araçlar ve ISV teklifleri Azure Geçiş projelerine veri gönderemez. Araçları bağımsız olarak kullanabilirsiniz.
 
 ## <a name="isv-integration"></a>ISV entegrasyonu
 
@@ -94,7 +97,7 @@ Azure Geçir hub'ında, değerlendirme veya geçiş için kullanmak istediğiniz
 
 Movere, tüm BT ortamlarını tek bir gün içinde doğru bir şekilde sunarak iş zekalarını artıran bir SaaS platformudur. Kuruluşlar büyüdükçe, değiştikçe ve dijital olarak optimize ettikçe, çözüm işletmelere platform, uygulama veya coğrafyadan bağımsız olarak ortamlarını görünürlük ve kontrol sahibi olmaları için ihtiyaç duydukları güveni sağlar. Movere Microsoft tarafından [satın alındı](https://azure.microsoft.com/blog/microsoft-acquires-movere-to-help-customers-unlock-cloud-innovation-with-seamless-migration-tools/) ve artık bağımsız bir teklif olarak satılamaz.  Movere, Microsoft Çözüm Değerlendirme ve Bulut Ekonomisi Programları aracılığıyla kullanılabilir. Movere hakkında [daha fazla bilgi edinin.](https://www.movere.io) 
 
-Yerleşik geçiş hizmetimiz olan Azure Geçiş'e de bakmanızı öneririz. Azure Geçiş, buluta geçişinizi kolaylaştırmak için merkezi bir hub sağlar. Hub, fiziksel ve sanal sunucular, veritabanları ve uygulamalar da dahil olmak üzere farklı iş yükleri için kapsamlı destek sunar. Uçtan uca görünürlük, keşif, değerlendirme ve geçiş boyunca kaydedilen ilerlemeyi izlemeyi kolaylaştırır. Azure ve iş ortağı ISV araçlarının yerleşik olduğu Azure Geçir, sanal ve fiziksel sunucu bulma, performansa dayalı doğru boyutlandırma, maliyet planlaması, içe aktarma tabanlı değerlendirmeler ve aracısız uygulama gibi geniş bir özelliklere sahiptir bağımlılık analizi. Başlamak için uzman yardımı arıyorsanız, Microsoft yolculuk boyunca size rehberlik edecek yetenekli [Azure Uzman Yönetilen Hizmet Sağlayıcısı'na](https://azure.microsoft.com/partners) sahiptir. [Azure Geçiş web sitesine](https://azure.microsoft.com/services/azure-migrate/)göz atın. 
+Yerleşik geçiş hizmetimiz olan Azure Geçiş'e de bakmanızı öneririz. Azure Geçiş, buluta geçişinizi kolaylaştırmak için merkezi bir hub sağlar. Hub, fiziksel ve sanal sunucular, veritabanları ve uygulamalar da dahil olmak üzere farklı iş yükleri için kapsamlı destek sunar. Uçtan uca görünürlük, keşif, değerlendirme ve geçiş boyunca kaydedilen ilerlemeyi izlemeyi kolaylaştırır. Azure ve iş ortağı ISV araçlarının yerleşik olduğu Azure Geçir, sanal ve fiziksel sunucu bulma, performansa dayalı doğru boyutlandırma, maliyet planlaması, içe aktarma tabanlı değerlendirmeler ve aracısız uygulama bağımlılık çözümlemesi gibi geniş bir özelliklere sahiptir. Başlamak için uzman yardımı arıyorsanız, Microsoft yolculuk boyunca size rehberlik edecek yetenekli [Azure Uzman Yönetilen Hizmet Sağlayıcısı'na](https://azure.microsoft.com/partners) sahiptir. [Azure Geçiş web sitesine](https://azure.microsoft.com/services/azure-migrate/)göz atın. 
  
 
 ## <a name="azure-migrate-versions"></a>Azure Geçiş sürümleri

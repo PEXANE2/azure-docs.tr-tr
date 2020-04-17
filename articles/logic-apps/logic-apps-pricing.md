@@ -3,17 +3,17 @@ title: Fiyatlandırma & faturalandırma modeli
 description: Azure Logic Apps için fiyatlandırma ve faturalandırma modelinin nasıl çalıştığına genel bakış
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
+author: jonfancey
+ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 795acd67a8d4a9f8b8b7d78799a92134f249cf8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f47c7412bdd5ada1e50d1005b8e740e3f46ffd8d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270465"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536242"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Mantık Uygulamaları için fiyatlandırma modeli
 
@@ -23,50 +23,55 @@ ms.locfileid: "79270465"
 
 ## <a name="consumption-pricing-model"></a>Tüketim fiyatlandırma modeli
 
-Genel veya "genel" Azure Mantık Uygulamaları hizmetinde çalışan yeni mantıksal uygulamalar için yalnızca kullandığınız ücretömeçlerini ödlersiniz. Bu mantık uygulamaları tüketim tabanlı bir plan ve fiyatlandırma modeli kullanır. Mantık uygulamanızda her adım bir eylemdir ve Azure Logic Apps mantık uygulamanızda çalışan tüm eylemleri ölçer.
+Genel olarak çalışan yeni mantıksal uygulamalar için , "genel", çok kiracılı Azure Logic Apps hizmeti, yalnızca kullandığınız kadar ödeme yaparsınız. Bu mantık uygulamaları tüketim tabanlı bir plan ve fiyatlandırma modeli kullanır. Mantık uygulamanızda her adım bir eylemdir ve Azure Logic Apps mantık uygulamanızda çalışan tüm eylemleri ölçer.
 
 Örneğin, eylemler şunlardır:
 
-* Tetikleyiciler, özel eylemlerdir. Tüm mantık uygulamaları ilk adım olarak bir tetikleyici gerektirir.
+* [Tetikleyiciler](#triggers), özel eylemlerdir. Tüm mantık uygulamaları ilk adım olarak bir tetikleyici gerektirir.
+
 * HTTP gibi ["yerleşik" veya yerel eylemler,](../connectors/apis-list.md#built-in) Azure İşlevlerini ve API Yönetimi'ni çağırır ve benzeri
+
 * Outlook 365, Dropbox ve benzeri [yönetilen bağlayıcılara](../connectors/apis-list.md#managed-connectors) yapılan aramalar
-* Döngüler, koşullu ifadeler ve benzeri gibi denetim akış adımları
+
+* Döngüler, koşullu ifadeler ve benzeri gibi [iş akışı eylemlerini denetleme](../connectors/apis-list.md#control-workflow)
 
 [Standart konektörler](../connectors/apis-list.md#managed-connectors) [Standart konektör fiyatıüzerinden](https://azure.microsoft.com/pricing/details/logic-apps)ücretlendirilir. Genel olarak kullanılabilir [Kurumsal konektörler](../connectors/apis-list.md#managed-connectors) [Enterprise konektör fiyatından](https://azure.microsoft.com/pricing/details/logic-apps)ücretlendirilirken, genel önizleme Kurumsal bağlayıcılar [Standart bağlayıcı fiyatıüzerinden](https://azure.microsoft.com/pricing/details/logic-apps)ücretlendirilir.
 
-[Tetikleyiciler](#triggers) ve [eylemler](#actions)için faturalandırmanın nasıl çalıştığı hakkında daha fazla bilgi edinin.
+[Tetikleyiciler](#triggers) ve [eylemler](#actions) düzeylerinde faturalandırmanın nasıl çalıştığı hakkında daha fazla bilgi edinin. Veya, sınırlar hakkında bilgi için [Azure Mantık Uygulamaları için Sınırlar ve yapılandırma'ya](logic-apps-limits-and-config.md)bakın.
 
 <a name="fixed-pricing"></a>
 
 ## <a name="fixed-pricing-model"></a>Sabit fiyatlandırma modeli
 
-[ *Bir tümleştirme hizmeti ortamı* (ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) bir Azure sanal ağındaki kaynaklara erişebilen mantık uygulamaları oluşturmanız ve çalıştırmanız için yalıtılmış bir yol sağlar. Bir İmKB içinde çalışan yeni mantık uygulamaları için, bu özellikler için sabit bir [aylık fiyat](https://azure.microsoft.com/pricing/details/logic-apps) ödenirsiniz:
+[ *Bir tümleştirme hizmeti ortamı* (ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) bir Azure sanal ağındaki kaynaklara erişebilen mantık uygulamaları oluşturmanız ve çalıştırmanız için yalıtılmış bir yol sağlar. İmKB'de çalışan mantıksal uygulamalar veri saklama maliyetlerine tabi değildir. Bir İmKB oluşturduğunuzda ve yalnızca oluşturma sırasında, farklı [fiyatlandırma oranlarına](https://azure.microsoft.com/pricing/details/logic-apps)sahip bir [İmKB düzeyi veya "SKU"](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)seçebilirsiniz:
+
+* **Premium** İmKB: Bu SKU'nun temel birimi sabit kapasiteye sahiptir, ancak daha fazla iş elde etme ihtiyacınız varsa, İmKB oluşturma sırasında veya sonrasında [daha fazla ölçek birimi ekleyebilirsiniz.](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) İmKB sınırları için Azure [Mantık Uygulamaları için Sınırlar ve yapılandırma ya](logic-apps-limits-and-config.md#integration-service-environment-ise)da yapılandırma ya da
+
+* **Geliştirici** İmKB: Bu SKU'nun ölçeklendirme yeteneği, hizmet düzeyi anlaşması (SLA) ve yayınlanmış sınırlar bulunmamaktadır. Bu SKU'yi yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi için değil.
+
+Bir İmKB'de oluşturduğunuz ve çalıştırdığınız mantıksal uygulamalar için, bu özellikler için sabit bir [aylık ücret](https://azure.microsoft.com/pricing/details/logic-apps) ödenirsiniz:
 
 * [Yerleşik](../connectors/apis-list.md#built-in) tetikleyiciler ve eylemler
 
   Bir Ise içinde, yerleşik tetikleyiciler ve eylemler **Core** etiketini görüntüler ve mantık uygulamalarınızla aynı İmKB'de çalışır.
 
-* [Standart](../connectors/apis-list.md#managed-connectors) konektörler ve [Kurumsal](../connectors/apis-list.md#enterprise-connectors) konektörler (istediğiniz kadar Kurumsal bağlantı)
+* [İstediğinizin](../connectors/apis-list.md#managed-connectors) kadar Kurumsal bağlantıya sahip olmasını sağlayan standart konektörler ve [Kurumsal](../connectors/apis-list.md#enterprise-connectors) bağlayıcılar
 
-   **İmKB** etiketini görüntüleyen Standart ve Kurumsal bağlayıcılar, mantık uygulamalarınızla aynı İmKB'de çalışır. İmKB etiketini görüntülemeyen bağlayıcılar global Logic Apps hizmetinde çalışır. Sabit aylık fiyatlandırma, bir İmKB'de çalışan mantıksal uygulamalarla kullandığınızda, genel hizmette çalışan bağlayıcılar için de geçerlidir.
+   **İmKB** etiketini görüntüleyen Standart ve Kurumsal bağlayıcılar, mantık uygulamalarınızla aynı İmKB'de çalışır. İmKB etiketini görüntülemeyin bağlayıcılar, "global", çok kiracılı Logic Apps hizmeti. Sabit aylık fiyatlandırma, bir İmKB'de çalışan mantıksal uygulamalarla kullandığınızda çok kiracılı hizmette çalışan bağlayıcılar için de geçerlidir.
 
 * [İmKB SKU'nuza](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)göre ek ücret ödemeden [entegrasyon hesabı](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) kullanımı :
 
-  * **Premium SKU**: Tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) entegrasyon hesabı
+  * **Premium** ISE SKU: Tek bir [Standart katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) entegrasyon hesabı
 
-  * **Geliştirici SKU**: Tek bir [Ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
+  * **Geliştirici** ISE SKU: Tek bir [Serbest katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) entegrasyon hesabı
 
   Her İmKB SKU toplam 5 entegrasyon hesabı ile sınırlıdır. Ek bir maliyet karşılığında, İmKB SKU'nuza göre daha fazla entegrasyon hesabınız olabilir:
 
-  * **Premium SKU**: En fazla dört Standart hesap. Ücretsiz veya Temel hesap yok.
+  * **Premium** İmKB SKU: En fazla dört Standart hesap. Ücretsiz veya Temel hesap yok.
 
-  * **Geliştirici SKU**: Ya en fazla 4 daha fazla Standart hesap, ya da en fazla 5 toplam Standart hesapları. Temel hesap yok.
+  * **Geliştirici** İmKB SKU: Ya en fazla 4 standart hesap, ya da en fazla 5 toplam Standart hesabı. Temel hesap yok.
 
-  Tümleştirme hesap sınırları hakkında daha fazla bilgi [için, Logic Apps sınırları ve yapılandırması](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)hakkında bilgi edinin. Bu konuda daha sonra [entegrasyon hesabı katmanları ve fiyatlandırma modeli](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
-
-Premium ISE SKU'yu seçerseniz, temel birim sabit kapasiteye sahiptir. Daha fazla iş elde etmek istiyorsanız, oluşturma sırasında veya sonrasında [daha fazla ölçek birimi ekleyebilirsiniz.](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) Geliştirici ISE SKU daha fazla ölçek birimleri ekleme yeteneğine sahip değildir. İmKB'de çalışan mantıksal uygulamalar veri saklama maliyetlerine tabi değildir.
-
-Fiyatlandırma oranları için [Logic Apps fiyatlandırması'na](https://azure.microsoft.com/pricing/details/logic-apps)bakın.
+  Tümleştirme hesabı sınırları hakkında daha fazla bilgi için [Azure Mantık Uygulamaları için Sınırlar ve yapılandırma ya](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)da yapılandırma ya da Bu konuda daha sonra [entegrasyon hesabı katmanları ve fiyatlandırma modeli](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
 
 <a name="connectors"></a>
 

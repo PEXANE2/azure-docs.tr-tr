@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirme ve geçişte kullanılan Azure Geçiş cihazına genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437583"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538231"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -24,6 +24,17 @@ Azure Geçir cihazı aşağıdaki senaryolarda kullanılır.
 **VMware VM aracısız geçiş** | Azure Geçir:Sunucu Geçişi | VMware VM'leri keşfedin <br/><br/> VMware VM'leri aracısız geçişle çoğaltın.
 **Hiper-V VM değerlendirmesi** | Azure Geçiş:Sunucu Değerlendirmesi | Hyper-V VM'leri Keşfedin<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
 **Fiziksel makine değerlendirmesi** |  Azure Geçiş:Sunucu Değerlendirmesi |  Fiziksel sunucuları (veya fiziksel sunucu olarak değerlendirdiğiniz VM'leri) keşfedin.<br/><br/> Değerlendirmeler için makine meta verilerini ve performans meta verilerini toplayın.
+
+## <a name="deployment-methods"></a>Dağıtım yöntemleri
+
+Cihaz birkaç yöntem kullanılarak dağıtılabilir:
+
+- Cihaz VMware VM'ler ve Hyper-V VM'ler için bir şablon kullanılarak dağıtılabilir (VMware için OVA şablonu veya Hyper-V için VHD).
+- Şablon kullanmak istemiyorsanız, powershell komut dosyası kullanarak cihazı VMware veya Hyper-V için dağıtabilirsiniz.
+- Azure Kamu'da, cihazı bir komut dosyası kullanarak dağıtmanız gerekir.
+- Fiziksel sunucular için cihazı her zaman bir komut dosyası kullanarak dağıtirsiniz.
+- İndirme bağlantılarına aşağıdaki tablolarda ulaşabilirsiniz.
+
 
 ## <a name="appliance---vmware"></a>Cihaz - VMware 
 
@@ -67,7 +78,7 @@ Aşağıdaki tablo, VMware için Azure Geçir cihaz gereksinimlerini özetler.
 **Gereksinim** | **Fiziksel** 
 --- | ---
 **Cihaz bileşenleri** | Cihaz aşağıdaki bileşenlere sahiptir: <br/><br/> - **Yönetim uygulaması**: Cihaz dağıtımı sırasında kullanıcı girişi için kullanılan bir web uygulamasıdır. Azure'a geçiş için makineleri değerlendirirken kullanılır.<br/> - **Bulma aracısı**: Aracı makine yapılandırma verilerini toplar. Azure'a geçiş için makineleri değerlendirirken kullanılır.<br/>- **Değerlendirme aracısı**: Aracı performans verilerini toplar. Azure'a geçiş için makineleri değerlendirirken kullanılır.<br/>- **Otomatik güncelleme hizmeti**: Cihaz bileşenlerini günceller (her 24 saatte bir çalışır).
-**Desteklenen dağıtım** | PowerShell yükleme komut dosyasını kullanarak özel bir fiziksel makine veya VM olarak dağıtın.
+**Desteklenen dağıtım** | PowerShell yükleme komut dosyasını kullanarak özel bir fiziksel makine veya VM olarak dağıtın. Komut dosyası portaldan indirilebilir.
 **Proje desteği** |  Bir cihaz tek bir proje ile ilişkilendirilebilir. <br/> Herhangi bir sayıda cihaz tek bir projeyle ilişkilendirilebilir.<br/> 
 **Bulma sınırları** | Bir cihaz en fazla 250 fiziksel sunucu keşfedebilir.
 **PowerShell betiği** | Komut dosyasını (AzureMigrateInstaller.ps1) portaldan sıkıştırılmış bir klasöre indirin. [Daha fazla bilgi edinin](tutorial-assess-physical.md#set-up-the-appliance). Alternatif olarak, [doğrudan indirin.](https://go.microsoft.com/fwlink/?linkid=2105112)<br/><br/> İndirme boyutu 59,7 MB'dır.
@@ -78,8 +89,10 @@ Aşağıdaki tablo, VMware için Azure Geçir cihaz gereksinimlerini özetler.
 
 Azure Geçir cihazının Internet bağlantısına ihtiyacı vardır.
 
-- Cihazı dağıttığınızda, Azure Geçir aşağıdaki tabloda özetlenen URL'lere bağlantı denetimi yapar.
+- Cihazı dağıttığınızda, Azure Geçir gerekli URL'lere bağlantı denetimi yapar.
 - Internet'e bağlanmak için URL tabanlı bir proxy kullanıyorsanız, proxy'nin URL'lere bakarken alınan CNAME kayıtlarını çözdüğünden emin olmak için bu URL'lere erişime izin vermeniz gerekir.
+
+### <a name="public-cloud-urls"></a>Genel bulut URL'leri
 
 **URL** | **Şey**  
 --- | --- |
@@ -95,6 +108,25 @@ download.microsoft.com/download | Microsoft'tan indirmelere izin verin.
 *.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com | Azure Geçiş hizmeti URL'lerine bağlanın.
 *.hypervrecoverymanager.windowsazure.com | **VMware aracısız geçiş için kullanılır**<br/><br/> Azure Geçiş hizmeti URL'lerine bağlanın.
 *.blob.core.windows.net |  **VMware aracısız geçiş için kullanılır**<br/><br/>Geçiş için depolamaya veri yükleyin.
+
+### <a name="government-cloud-urls"></a>Devlet bulut URL'leri
+
+**URL** | **Şey**  
+--- | --- |
+*.portal.azure.us  | Azure portalına gidin.
+graph.windows.net | Azure aboneliğinizde oturum açın.
+login.microsoftonline.us  | Cihazın Azure Geçiş ile iletişim kurması için Azure Active Directory (AD) uygulamaları oluşturun.
+management.usgovcloudapi.net | Azure Geçiş hizmetiyle iletişim kurması için cihazın Azure AD uygulamaları oluşturun.
+dc.services.visualstudio.com | Dahili izleme için kullanılan uygulama günlüklerini yükleyin.
+*.vault.usgovcloudapi.net | Azure Anahtar Kasası'nda sırları yönetin.
+aka.ms/* | Aka bağlantılarına erişime izin verin. Azure Geçiş cihazı güncelleştirmeleri için kullanılır.
+download.microsoft.com/download | Microsoft'tan indirmelere izin verin.
+*.servicebus.usgovcloudapi.net  | Cihaz ve Azure Geçiş hizmeti arasındaki iletişim.
+*.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Azure Geçiş hizmeti URL'lerine bağlanın.
+*.hypervrecoverymanager.windowsazure.us | **VMware aracısız geçiş için kullanılır**<br/><br/> Azure Geçiş hizmeti URL'lerine bağlanın.
+*.blob.core.usgovcloudapi.net  |  **VMware aracısız geçiş için kullanılır**<br/><br/>Geçiş için depolamaya veri yükleyin.
+*.applicationinsights.us | Tanılama izleme için Application Insights bitiş noktasına erişmek için cihazda Ağ Geçidi aracısı tarafından kullanılır.
+
 
 
 

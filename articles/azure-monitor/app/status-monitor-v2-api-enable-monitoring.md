@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8bbdc96a49fffc91f80d24a9eb0926766f86ee16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5d66c5c21f7491e3bdc6bb70f693c3b98bf62dd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671316"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536752"
 ---
 # <a name="application-insights-agent-api-enable-applicationinsightsmonitoring"></a>Uygulama Öngörüleri Aracısı API: Enable-ApplicationInsightsMonitoring
 
@@ -66,10 +66,10 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 ## <a name="parameters"></a>Parametreler
 
 ### <a name="-instrumentationkey"></a>-EnstrümantasyonAnahtar
-**Gerekli.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir enstrümantasyon anahtarı sağlamak için bu parametreyi kullanın.
+**Gereklidir.** Hedef bilgisayardaki tüm uygulamalar tarafından kullanılmak üzere tek bir enstrümantasyon anahtarı sağlamak için bu parametreyi kullanın.
 
 ### <a name="-instrumentationkeymap"></a>-EnstrümantasyonKeyMap
-**Gerekli.** Birden çok enstrümantasyon anahtarı ve her uygulama tarafından kullanılan enstrümantasyon anahtarlarının eşlemi sağlamak için bu parametreyi kullanın.
+**Gereklidir.** Birden çok enstrümantasyon anahtarı ve her uygulama tarafından kullanılan enstrümantasyon anahtarlarının eşlemi sağlamak için bu parametreyi kullanın.
 Birkaç bilgisayar için tek bir yükleme `MachineFilter`komut dosyası ayarlayarak oluşturabilirsiniz.
 
 > [!IMPORTANT]
@@ -147,7 +147,7 @@ Successfully enabled Application Insights Status Monitor
 ## <a name="next-steps"></a>Sonraki adımlar
 
   Telemetrinizi görüntüleyin:
- - Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
+ - Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/platform/metrics-charts.md)
 - Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
 - Daha gelişmiş sorgular için [Analytics'i kullanın.](../../azure-monitor/app/analytics.md)
 - [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)

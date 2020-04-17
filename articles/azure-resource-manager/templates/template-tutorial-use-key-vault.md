@@ -2,20 +2,20 @@
 title: Şablonlarda Azure Anahtar Kasası'nı kullanma
 description: Resource Manager şablonu dağıtımı sırasında parametre değerlerini güvenli bir şekilde geçirme amacıyla Azure Key Vault'u kullanmayı öğrenin
 author: mumian
-ms.date: 05/23/2019
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 440835f50d2ef9c03dabc7a66e8f162e3fa15b2f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c33ad17927dae701e4201e76b7a75690c59dc374
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260828"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536717"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: Azure Anahtar Kasası'nı ARM şablon dağıtımınızda tümleştirin
 
-Azure anahtar kasasından sırları nasıl alabildiğinizi ve bir Azure Kaynak Yöneticisi (ARM) şablonu dağıttığınızda sırları parametreler olarak nasıl geçirebilirsiniz öğrenin. Parametre değeri hiçbir zaman açıklanamaz, çünkü yalnızca anahtar kasa kimliğine başvurursunuz. Daha fazla bilgi için, [dağıtım sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](./key-vault-parameter.md)bakın.
+Azure anahtar kasasından sırları nasıl alabildiğinizi ve bir Azure Kaynak Yöneticisi (ARM) şablonu dağıttığınızda sırları parametreler olarak nasıl geçirebilirsiniz öğrenin. Parametre değeri hiçbir zaman açıklanamaz, çünkü yalnızca anahtar kasa kimliğine başvurursunuz. Statik bir kimlik veya dinamik bir kimlik kullanarak anahtar kasası sırrına başvuruyapabilirsiniz. Bu öğretici statik bir kimlik kullanır. Statik kimlik yaklaşımıyla, şablon parametre dosyasındaki anahtar kasasına başvurursunuz, şablon dosyasına değil. Her iki yaklaşım hakkında daha fazla bilgi için dağıtım [sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](./key-vault-parameter.md)bakın.
 
 Kaynak [dağıtım siparişini ayarla](./template-tutorial-create-templates-with-dependent-resources.md) öğreticisinde sanal bir makine (VM) oluşturursunuz. VM yöneticisi kullanıcı adı ve parolasını sağlamanız gerekir. Parolayı sağlamak yerine, parolayı Azure anahtar kasasında önceden saklayabilir ve ardından dağıtım sırasında anahtar kasasından parolayı almak için şablonu özelleştirebilirsiniz.
 
@@ -33,8 +33,6 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
@@ -49,7 +47,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-key-vault"></a>Anahtar kasası hazırlayın
 
-Bu bölümde, şablonunuzu dağıtırken sırrı alabilmeniz için bir anahtar kasası oluşturur ve ona bir sır eklersiniz. Anahtar kasası oluşturmanın birçok yolu vardır. Bu öğreticide, ARM şablonu dağıtmak için Azure [PowerShell'i](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)kullanıyorsunuz. Bu şablon aşağıdakileri yapar:
+Bu bölümde, şablonunuzu dağıtırken sırrı alabilmeniz için bir anahtar kasası oluşturur ve ona bir sır eklersiniz. Anahtar kasası oluşturmanın birçok yolu vardır. Bu öğreticide, ARM şablonu dağıtmak için Azure [PowerShell'i](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorials-use-key-vault/CreateKeyVault.json)kullanıyorsunuz. Bu şablon iki şey yapar:
 
 * `enabledForTemplateDeployment` Özelliği etkin bir anahtar kasa oluşturur. Şablon dağıtım işleminin anahtar kasasında tanımlanan sırlara erişemeden önce bu özellik *doğru* olmalıdır.
 * Anahtar kasasına bir sır ekler. Gizli, VM yönetici parolasını depolar.
@@ -72,14 +70,16 @@ $templateUri = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -keyVaultName $keyVaultName -adUserId $adUserId -secretValue $secretValue
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 > [!IMPORTANT]
 > * Kaynak grubu adı proje adıdır, ancak **rg** ile eklenir. [Bu öğreticide oluşturduğunuz kaynakları temizlemeyi](#clean-up-resources)kolaylaştırmak için, [bir sonraki şablonu dağıttığınızda](#deploy-the-template)aynı proje adını ve kaynak grubu adını kullanın.
 > * Gizli için varsayılan adı **vmAdminPassword**olduğunu. Şablonda kodlanmış.
-> * Şablonun sırrı alabilmesi için, anahtar kasası için "Şablon dağıtımı için Azure Kaynak Yöneticisi'ne erişimi etkinleştir" adlı bir erişim ilkesini etkinleştirmeniz gerekir. Bu ilke şablonda etkindir. Erişim ilkesi hakkında daha fazla bilgi için [bkz.](./key-vault-parameter.md#deploy-key-vaults-and-secrets)
+> * Şablonun sırrı alabilmesi için, anahtar kasası için **şablon dağıtımı için Azure Kaynak Yöneticisi'ne erişimi etkinleştir** adlı bir erişim ilkesini etkinleştirmeniz gerekir. Bu ilke şablonda etkindir. Erişim ilkesi hakkında daha fazla bilgi için [bkz.](./key-vault-parameter.md#deploy-key-vaults-and-secrets)
 
-Şablon, *keyVaultId*olarak adlandırılan bir çıkış değerine sahiptir. Sanal makineyi dağıttığınızda, daha sonra kullanmak için kimlik değerini yazın. Kaynak kimliği biçimi:
+Şablon, *keyVaultId*olarak adlandırılan bir çıkış değerine sahiptir. Bu kimliği gizli adla birlikte kullanarak daha sonra öğreticide gizli değeri alırsınız. Kaynak kimliği biçimi:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -108,13 +108,14 @@ Azure Quickstart Şablonları, ARM şablonları için bir depodur. Sıfırdan bi
     ```
 
 1. Dosyayı açmak için **Aç**’ı seçin. Senaryo, Öğretici'de kullanılan senaryoyla [aynıdır: Bağımlı kaynaklara sahip ARM şablonları oluşturun.](./template-tutorial-create-templates-with-dependent-resources.md)
-   Şablon beş kaynak tanımlar:
+   Şablon altı kaynak tanımlar:
 
-   * `Microsoft.Storage/storageAccounts`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * `Microsoft.Network/publicIPAddresses`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * `Microsoft.Network/virtualNetworks`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * `Microsoft.Network/networkInterfaces`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * `Microsoft.Compute/virtualMachines`. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageHesapları**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
    Şablonu özelleştirmeden önce şablonu temel olarak anlamanız yararlı olur.
 
@@ -128,7 +129,7 @@ Azure Quickstart Şablonları, ARM şablonları için bir depodur. Sıfırdan bi
 
 ## <a name="edit-the-parameters-file"></a>Parametre dosyasını düzenleme
 
-Şablon dosyasında değişiklik yapmanıza gerek yoktur.
+Statik Kimlik yöntemini kullanarak şablon dosyasında herhangi bir değişiklik yapmanız gerekmez. Gizli değeri alma şablon parametre dosyası yapılandırılarak yapılır.
 
 1. Visual Studio Code'da *azuredeploy.parameters.json'u* açın.
 1. Parametreyi şu şekilde güncelleştirin: `adminPassword`
@@ -145,7 +146,7 @@ Azure Quickstart Şablonları, ARM şablonları için bir depodur. Sıfırdan bi
     ```
 
     > [!IMPORTANT]
-    > **Kimlik** değerini önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliğiyle değiştirin.
+    > **Kimlik** değerini önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliğiyle değiştirin. SecretName **vmAdminPassword**olarak kodlanır.  Bkz. [Anahtar kasası hazırla.](#prepare-a-key-vault)
 
     ![Anahtar kasası ve Kaynak Yöneticisi şablonu sanal makine dağıtım parametreleri dosyalarını tümleştir](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 

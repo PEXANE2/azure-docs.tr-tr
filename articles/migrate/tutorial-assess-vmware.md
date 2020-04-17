@@ -1,21 +1,22 @@
 ---
-title: VMware VM’lerini Azure'a geçiş için değerlendirme
+title: Azure Geçiş Sunucusu Değerlendirmesi ile VMware VM'leri Değerlendirin
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak şirket içi VMware VM'lerinin Azure'a geçiş için nasıl değerlendirildiğini açıklar.
 ms.topic: tutorial
-ms.date: 03/23/2019
-ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.custom: mvc
+ms.openlocfilehash: bd9e6b5923207297b1aa70a67052a7796b901781
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548737"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535375"
 ---
-# <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Geçir Sunucu Değerlendirmesi'ni kullanarak VMware VM'leri değerlendirin
+# <a name="assess-vmware-vms-with-server-assessment"></a>Sunucu Değerlendirmesiyle VMware VM'lerini Değerlendirme
 
 Bu makalede, [Azure Geçiş:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanarak şirket içi VMware sanal makinelerini (VM'ler) nasıl değerlendirdiğinizi gösterir.
 
 
-Bu öğretici, VMware VM'lerinin nasıl değerlendirilip Azure'a geçirilen bir serinin ikinci öğreticisidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, VMware VM'lerinin nasıl değerlendirilip Azure'a geçirilen bir serinin ikinci öğreticisidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure Geçiş projesi ayarlayın.
 > * VM'leri değerlendirmek için şirket içinde çalışan bir Azure Geçiş cihazı ayarlayın.
@@ -48,13 +49,11 @@ Aşağıdaki gibi yeni bir Azure Geçiş projesi ayarlayın:
 
 1. **Başlarken**, **araç ekle'yi**seçin.
 1. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.     
-1. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin. Asya, Avrupa, Birleşik Krallık ve Amerika Birleşik Devletleri desteklenir.
-
-   Proje coğrafyası yalnızca şirket içi sanal makinelerden toplanan meta verileri depolamak için kullanılır. Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
+1. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin. Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
    ![Proje adı ve bölge için kutular](./media/tutorial-assess-vmware/migrate-project.png)
 
-1. **Sonraki'ni**seçin.
+1. **İleri**’yi seçin.
 1. **Değerlendirme aracını seç'te**Azure **Geçir: Sunucu Değerlendirmesi** > **Sonraki'ni**seçin.
 
    ![Sunucu Değerlendirme aracı için seçim](./media/tutorial-assess-vmware/assessment-tool.png)
@@ -65,12 +64,12 @@ Aşağıdaki gibi yeni bir Azure Geçiş projesi ayarlayın:
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Geçiş cihazını ayarlama
 
-Azure Geçir:Sunucu Değerlendirmesi, hafif bir Azure Geçir cihazı kullanır. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş'e gönderir.
-- Cihaz, indirilen BIR OVA şablonu kullanılarak VMware VM'de ayarlanabilir. Alternatif olarak, cihazı PowerShell yükleyici komut dosyasıyla vm veya fiziksel bir makineye ayarlayabilirsiniz.
-- Bu öğretici, OVA şablonu kullanır. Cihazı bir komut dosyası kullanarak kurmak istiyorsanız [bu makaleyi](deploy-appliance-script.md) inceleyin.
+Azure Geçir:Sunucu Değerlendirmesi, hafif bir Azure Geçir cihazı kullanır. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş'e gönderir. Cihaz çeşitli şekillerde ayarlanabilir.
+
+- İndirilen BIR OVA şablonu kullanarak VMware VM'de ayarlayın. Bu, bu öğreticide kullanılan yöntemdir.
+- PowerShell yükleyici komut dosyasına sahip bir VMware VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) BIR OVA şablonu kullanarak bir VM ayarlayamıyorsanız veya Azure Kamu'daysanız kullanılmalıdır.
 
 Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
-
 
 
 ### <a name="download-the-ova-template"></a>OVA şablonuna karşı yükleme
@@ -115,9 +114,9 @@ SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 1. **Ağ Eşleme'de,** VM'nin bağlanacağı ağı belirtin. Ağ, Azure Geçir Sunucu Değerlendirmesi'ne meta veri göndermek için internet bağlantısına ihtiyaç duyar.
 1. Ayarları gözden geçirin ve onaylayın ve ardından **Bitir'i**seçin.
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
+## <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-VM cihazının [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ### <a name="configure-the-appliance"></a>Cihazı yapılandırın
 
@@ -136,7 +135,7 @@ Cihazı ilk kez ayarlayın.
    - **Bağlantı**: Uygulama, VM'nin internet erişimi ne olduğunu denetler. VM proxy kullanıyorsa:
      - **Proxy ayarlarını**seçin ve formda http://ProxyIPAddress proxy adresini ve http://ProxyFQDNdinleme bağlantı noktasını belirtiniz veya .
      - Proxy için kimlik doğrulaması gerekiyorsa kimlik bilgilerini gerekin.
-     - Yalnızca HTTP proxy'nin desteklendiğini unutmayın.
+     - Yalnızca HTTP proxy’si desteklenir.
    - **Zaman senkronizasyonu**: Cihazın üzerindeki süre, keşfin düzgün çalışması için internet saati ile senkronize olmalıdır.
    - **Yükleme güncellemeleri**: Cihaz en son güncellemelerin yüklenmesini sağlar.
    - **Install VDDK**: Cihaz VMWare vSphere Sanal Disk Geliştirme Kiti'nin (VDDK) yüklü olduğunu kontrol eder. Yüklü değilse, VMware'den VDDK 6.7'yi indirin ve indirilen zip içeriğini cihazda belirtilen konuma çıkarın.
@@ -167,7 +166,7 @@ Cihazın VM'lerin yapılandırma ve performans verilerini keşfetmek için vCent
     - Belirli VMware nesnelerine (vCenter Server veri merkezleri, kümeler, kümeler klasörü, ana bilgisayarlar, ana bilgisayarlar klasörü veya tek tek VM'ler) bulma kapsamını genişletmek istiyorsanız, Azure Geçiş tarafından kullanılan hesabı kısıtlamak için [bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
 
 3. Cihazın vCenter Server'a bağlanabilmesini sağlamak için **Bağlantıyı Doğrula'yı** seçin.
-4. **VM'lere yönelik uygulamaları ve bağımlılıkları keşfedin'de**isteğe bağlı olarak kimlik bilgileri ekle'yi tıklatın ve kimlik **bilgilerinin**alakalı olduğu işletim sistemini ve kimlik bilgilerini kullanıcı adı ve parolabelirtin. Sonra **Ekle'yi**tıklatın.
+4. **VM'lere yönelik uygulamaları ve bağımlılıkları keşfedin'de**isteğe bağlı olarak kimlik bilgileri ekle'yi tıklatın ve kimlik **bilgilerinin**alakalı olduğu işletim sistemini ve kimlik bilgilerini kullanıcı adı ve parolabelirtin. Daha sonra **Ekle**'ye tıklayın.
 
     - [Uygulama bulma özelliği](how-to-discover-applications.md)veya [aracısız bağımlılık çözümleme özelliği](how-to-create-group-machine-dependencies-agentless.md)için kullanılacak bir hesap oluşturduysanız, isteğe bağlı olarak buraya kimlik bilgileri eklersiniz.
     - Bu özellikleri kullanmıyorsanız, bu ayarı atlayabilirsiniz.
@@ -255,7 +254,7 @@ Değerlendirilen grubun toplam depolama maliyetleri farklı depolama diskleri t�
 
 ### <a name="review-confidence-rating"></a>Güvenilirlik derecelendirmesini gözden geçirme
 
-Azure Geçir Sunucusu Değerlendirmesi, performansa dayalı bir değerlendirmeye 1 yıldızdan (en düşük) 5 yıldıza (en yüksek) bir güven derecelendirmesi atar.
+Azure Geçir Sunucusu Değerlendirmesi, performansa dayalı bir değerlendirmeye bir yıldızdan (en düşük) beş yıldıza (en yüksek) bir güven derecelendirmesi atar.
 
 ![Güvenilirlik derecelendirmesi](./media/tutorial-assess-vmware/confidence-rating.png)
 

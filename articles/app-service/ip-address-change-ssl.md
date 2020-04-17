@@ -4,12 +4,12 @@ description: SSL IP adresiniz değişecekse, uygulamanızın değişiklikten son
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
-ms.openlocfilehash: 34f35eb67cada6066e35227fcd6a0eaf425ac007
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672400"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535732"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>SSL IP adresi değişikliğine nasıl hazırlanım
 
@@ -25,7 +25,7 @@ Azure Uygulama Hizmeti uygulamanızın SSL IP adresinin değiştiğine dair bir 
 
 4.  **Ayarlar** üstbilgisinin altında, sol gezintideki **SSL ayarlarını** tıklatın.
 
-1. SSL bağlamaları bölümünde, ana bilgisayar ad kaydını seçin. Açılan düzenleyicide, **SSL Türü** açılır menüsünde **SNI SSL'yi** seçin ve **Bağlama Ekle'yi**tıklatın. İşlem başarı iletisini gördüğünüzde, varolan IP adresi serbest bırakıldı.
+1. TLS/SSL bağlamalar bölümünde, ana bilgisayar ad kaydını seçin. Açılan düzenleyicide, **SSL Türü** açılır menüsünde **SNI SSL'yi** seçin ve **Bağlama Ekle'yi**tıklatın. İşlem başarı iletisini gördüğünüzde, varolan IP adresi serbest bırakıldı.
 
 6.  **SSL bağlamaları** bölümünde, yine sertifikayla aynı ana bilgisayar ad kaydını seçin. Açılan düzenleyicide, bu kez **SSL Type** açılır menüsünde **IP Tabanlı SSL'yi** seçin ve **Bağlayıcıekle'yi**tıklatın. İşlem başarı iletisini gördüğünüzde, yeni bir IP adresi edinilmiş olursunuz.
 
@@ -45,4 +45,4 @@ Azure Uygulama Hizmeti uygulamanızın SSL IP adresinin değiştiğine dair bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliğine nasıl hazırlanacağı açıklanmıştır. Azure Uygulama Hizmeti'ndeki IP adresleri hakkında daha fazla bilgi için [Azure Uygulama Hizmeti'ndeki SSL ve SSL IP adreslerine](overview-inbound-outbound-ips.md)bakın.
+Bu makalede, Azure tarafından başlatılan bir IP adresi değişikliğine nasıl hazırlanacağı açıklanmıştır. Azure Uygulama Hizmeti'ndeki IP adresleri hakkında daha fazla bilgi için [Azure Uygulama Hizmeti'nde gelen ve giden IP adreslerine](overview-inbound-outbound-ips.md)bakın.

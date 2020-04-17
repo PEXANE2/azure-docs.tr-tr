@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1a74ec3610367193b5eee53ea0e0818901433e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46c46faf8f7ee52978ae5542ab7ebd72a41b8357
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255138"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536463"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Dosyaları ölçeklenebilirlik ve performans hedefleri
 
@@ -51,8 +51,7 @@ Bu sınırlar için [Azure depolama hesabı ölçek hedefleri](#azure-storage-ac
 ### <a name="file-share-and-file-scale-targets"></a>Dosya paylaşımı ve dosya ölçeği hedefleri
 
 > [!NOTE]
-> Standart dosya paylaşımları 5 TiB'den büyük belirli sınırlamalar ve bölgesel kısıtlamalara sahiptir.
-> Sınırlamalar, bölgesel bilgiler ve bu büyük dosya paylaşımı boyutlarını etkinleştirmek için verilen yönergeler listesi için, planlama kılavuzunun [daha büyük dosya paylaşımları bölümüne onboard bölümüne](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) bakın.
+> Standart dosya paylaşımları 5 TiB'den büyük belirli sınırlamalar vardır. Daha büyük dosya paylaşımı boyutlarını etkinleştirmek için sınırlamalar ve yönergeler listesi için, planlama kılavuzunun standart dosya paylaşımları bölümünde [daha büyük dosya paylaşımlarını etkinleştirme](storage-files-planning.md#enable-standard-file-shares-to-span-up-to-100-tib) bölümüne bakın.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
@@ -66,7 +65,7 @@ Azure Dosya Eşitlemesi sınırsız kullanım amacıyla tasarlanmıştır, ancak
 
 ### <a name="azure-file-sync-performance-metrics"></a>Azure Dosya Eşitleme performans ölçümleri
 
-Azure Dosya Eşitleme aracısı Azure dosya paylaşımlarına bağlanan bir Windows Server makinesinde çalıştığından, etkili eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel disk yapılandırması, ağ bant genişliği sunucu ve Azure depolama, dosya boyutu, toplam veri kümesi boyutu ve veri kümesindeki etkinlik arasında. Azure Dosya Eşitlemi dosya düzeyinde çalıştığından, Azure Dosya Eşitleme tabanlı bir çözümün performans özellikleri saniyede işlenen nesne (dosya ve dizinler) sayısıyla daha iyi ölçülür.
+Azure Dosya Eşitleme aracısı Azure dosya paylaşımlarına bağlanan bir Windows Server makinesinde çalıştığından, etkili eşitleme performansı altyapınızdaki bir dizi etkene bağlıdır: Windows Server ve temel disk yapılandırması, sunucu ile Azure depolama arasındaki ağ bant genişliği, dosya boyutu, toplam veri kümesi boyutu ve veri kümesindeki etkinlik. Azure Dosya Eşitlemi dosya düzeyinde çalıştığından, Azure Dosya Eşitleme tabanlı bir çözümün performans özellikleri saniyede işlenen nesne (dosya ve dizinler) sayısıyla daha iyi ölçülür.
 
 Azure Dosya Eşitleme için performans iki aşamada önemlidir:
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 4aa0cce83f9adc8c648656899ec6dc12d498e26b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1ff92b8a9477800477ebb2d79145ddaa78831f30
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77160457"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536072"
 ---
-# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Hızlı başlangıç: OpenID Connect kullanarak Bir Düğüm.js Web Uygulamasına oturum açma
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Quickstart: Bir Düğüm.js web uygulamasına OpenID Connect kullanarak oturum açma ekleme
 
 Bu hızlı başlangıçta, OpenID Connect kimlik doğrulamasını Express ile Node.js kullanılarak oluşturulmuş bir web uygulamasında nasıl ayarlayacağımı öğreneceksiniz. Örnek herhangi bir platformda çalışacak şekilde tasarlanmıştır.
 
@@ -30,7 +30,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 
 * Bir [Microsoft hesabı](https://www.outlook.com) veya [Office 365 Geliştirici Programı](/office/developer-program/office-365-developer-program)
 
-## <a name="register-your-application"></a>Uygulamanızı kaydetme 
+## <a name="register-your-application"></a>Uygulamanızı kaydetme
 1. Azure [portalında](https://portal.azure.com/) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
 1. Hesabınız birden fazla Azure AD kiracısında mevcutsa:
     - Sayfanın sağ üst köşesindeki menüden profilinizi seçin ve **ardından dizini değiştirin.**
@@ -55,7 +55,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
     - Gelişmiş **ayarlar** **bölümünde, Giriş URL'sini** ' ye `http://localhost:3000`ayarla.
     - Örtülü hibe bölümünde **gelişmiş ayarlar >,** bu örnek kullanıcıoturum açabilmesi için [Örtülü hibe akışının](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-implicit-grant-flow) etkinleştirilmesi için **kimlik belirteçlerini** kontrol edin.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 1. **Sertifikalar & sırlar** sayfasından, **İstemci sırları** bölümünde, **Yeni istemci sırrını**seçin.
     - Önemli bir açıklama girin (örneğin uygulama sırrı).
@@ -78,7 +78,7 @@ or
 
 Proje kök dizini, komutu çalıştırın:
 
-`$ npm install`  
+`$ npm install`
 
 ## <a name="configure-the-application"></a>Uygulamayı yapılandırma
 

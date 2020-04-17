@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi mevzuat uyumluluk panonuzda dinamik mevzuat uyumluluğu denetimine nasıl güncellenir? Microsoft Dokümanlar
-description: Mevzuata uygunluk paketlerinizi güncelleme (Önizleme)
+description: Mevzuata uygunluk paketlerinizi güncelleme
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4080825bbb1f6c274f5b5aafd28e8c672148b98f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159294"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537789"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard-preview"></a>Mevzuata Uygunluk panonuzdaki dinamik uyumluluk paketlerine güncelleştirme (Önizleme)
+# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>Mevzuata Uygunluk panonuzdaki dinamik uyumluluk paketlerine güncelleştirme
 
 Azure Güvenlik Merkezi, kaynaklarınızın yapılandırmasını sürekli olarak endüstri standartları, yönetmelikler ve kıyaslama gereksinimleriyle karşılaştırır. **Mevzuata uygunluk panosu,** belirli uyumluluk denetimlerini ve gereksinimlerini nasıl karşıladığınıza bağlı olarak uyumluluk duruşunuzla ilgili öngörüler sağlar.
 
@@ -28,7 +28,7 @@ Uyumluluk duruşunuzu izleyebileceğiniz bir standart [da Azure CIS 1.1.0](https
 
 Azure BDT'nin başlangıçta uyumluluk panonuzda görünen gösterimi, Güvenlik Merkezi'ne dahil olan statik bir kural kümesine dayanır.
 
-Dinamik **uyumluluk paketleri (önizleme)** özelliği yle, Güvenlik Merkezi zaman içinde endüstri standartlarının kapsamını otomatik olarak geliştirir. Uyumluluk paketleri temelde Azure İlkesi'nde tanımlanan girişimlerdir. Bunlar seçtiğiniz kapsama (abonelik, yönetim grubu vb.) atanabilir. Uyumluluk verilerinin panonuzda değerlendirme olarak eşlenmiş olduğunu görmek için, Güvenlik Politikası'ndan yönetim grubunuzun veya aboneliğinize bir uyumluluk paketi ekleyin. Bir uyumluluk paketi eklemek, düzenleyici uyumluluk girişimini seçtiğiniz kapsama etkin bir şekilde atar. Bu şekilde, yeni yayınlanan düzenleyici girişimleri panonuzda uyumluluk standartları olarak izleyebilirsiniz. Microsoft girişim için yeni içerik yayımladığında (standartta daha fazla denetimle eşleyen yeni ilkeler), ek içerik panonuzda otomatik olarak görünür.
+Dinamik **uyumluluk paketleri** özelliği ile Güvenlik Merkezi, zaman içinde endüstri standartlarının kapsamını otomatik olarak geliştirir. Uyumluluk paketleri temelde Azure İlkesi'nde tanımlanan girişimlerdir. Bunlar seçtiğiniz kapsama (abonelik, yönetim grubu vb.) atanabilir. Uyumluluk verilerinin panonuzda değerlendirme olarak eşlenmiş olduğunu görmek için, Güvenlik Politikası'ndan yönetim grubunuzun veya aboneliğinize bir uyumluluk paketi ekleyin. Bir uyumluluk paketi eklemek, düzenleyici uyumluluk girişimini seçtiğiniz kapsama etkin bir şekilde atar. Bu şekilde, yeni yayınlanan düzenleyici girişimleri panonuzda uyumluluk standartları olarak izleyebilirsiniz. Microsoft girişim için yeni içerik yayımladığında (standartta daha fazla denetimle eşleyen yeni ilkeler), ek içerik panonuzda otomatik olarak görünür.
 
 Azure BDT kıyaslama, **Azure CIS 1.1.0 (yeni)** için dinamik uyumluluk paketi, orijinal *statik* sürümü nde şunları yaparak geliştirir:
 
@@ -47,7 +47,7 @@ Aşağıdaki adımlar, Azure BDT kıyaslama v1.1.0 ile uyumluluğunuziçin dinam
 
 1. Mevzuata uygunluk duruşunu yönetmek istediğiniz abonelik veya yönetim grubunu seçin. Uyumluluk verilerinin tüm iç içe geçen kaynaklar için toplanıp izlenmesi için standardın geçerli olduğu en yüksek kapsamı seçmenizi öneririz. 
 
-1. Endüstri & düzenleyici standartları (önizleme) bölümünde, Azure CIS 1.1.0'ın yeni içerik için güncelleştirileebileceğini görürsünüz. **Şimdi Güncelleştir'i**tıklatın. 
+1. Endüstri & düzenleyici standartlar bölümünde, Azure CIS 1.1.0'ın yeni içerik için güncelleştirilebildiğinizi görürsünüz. **Şimdi Güncelleştir'i**tıklatın. 
 
 1. İsteğe bağlı olarak, **mevzuata uygunluk standartları ekle** sayfasını açmak için daha fazla standart **ekle'yi** tıklatın. Burada, **NIST SP 800-53 R4**, **SWIFT CSP CSCF-v2020**, **UKO ve UK NHS**ve Kanada **PBMM**gibi diğer uyumluluk standartları için **Azure CIS 1.1.0 (Yeni)** ve dinamik paketleri el ile arayabilirsiniz.
     

@@ -3,12 +3,12 @@ title: Özel olaylar ve ölçümler için Uygulama Öngörüleri API ' si | Micr
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, web sayfanıza veya hizmetinize birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585874"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536956"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -107,13 +107,13 @@ Düğüm.js projelerinde, yeni `new applicationInsights.TelemetryClient(instrume
 
 ## <a name="trackevent"></a>TrackOlay
 
-Uygulama Öngörüleri'nde özel bir *olay,* [Metrikler](../../azure-monitor/app/metrics-explorer.md) Gezgini'nde toplu sayım olarak ve [Tanılama Arama'da](../../azure-monitor/app/diagnostic-search.md) tek tek oluşumlar olarak görüntüleyebileceğiniz bir veri noktasıdır. (Bu MVC veya diğer çerçeve "olaylar ile ilgili değildir.")
+Uygulama Öngörüleri'nde özel bir *olay,* [Metrikler](../../azure-monitor/platform/metrics-charts.md) Gezgini'nde toplu sayım olarak ve [Tanılama Arama'da](../../azure-monitor/app/diagnostic-search.md) tek tek oluşumlar olarak görüntüleyebileceğiniz bir veri noktasıdır. (Bu MVC veya diğer çerçeve "olaylar ile ilgili değildir.")
 
 Çeşitli `TrackEvent` olayları saymak için kodunuzda çağrılar ekleyin. Kullanıcıların belirli bir özelliği ne sıklıkta seçtikleri, belirli hedeflere ne sıklıkta ulaştıkları veya belirli hata türlerini ne sıklıkta yaptıkları.
 
 Örneğin, bir oyun uygulamasında, bir kullanıcı oyunu kazandığında bir etkinlik gönderin:
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackEvent({name:"WinGame"});
@@ -257,7 +257,7 @@ Uygulama Öngörüleri'ne ölçümler göndermek için API'yi `TrackMetric(..)` 
 
 Tek bir metrik değer göndermek için:
 
-*Javascript*
+*JavaScript*
 
  ```javascript
 appInsights.trackMetric("queueLength", 42.0);
@@ -299,7 +299,7 @@ Kullanıcı ve oturum verileri sayfa görünümleriyle birlikte özellik olarak 
 
 ### <a name="custom-page-views"></a>Özel sayfa görünümleri
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackPageView("tab1");
@@ -338,7 +338,7 @@ Bunun yerine, aşağıdakileri yapabilirsiniz:
 * [TrackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) çağrısında açık bir süre `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);`ayarlayın: .
 * Sayfa görünümü zamanlama `startTrackPage` çağrıları `stopTrackPage`ve .
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 // To start timing a page:
@@ -443,7 +443,7 @@ requests
 
 Uygulama Öngörüleri'ne özel durumlar gönderin:
 
-* [Onları saymak](../../azure-monitor/app/metrics-explorer.md)için, bir sorunun sıklığının bir göstergesi olarak.
+* [Onları saymak](../../azure-monitor/platform/metrics-charts.md)için, bir sorunun sıklığının bir göstergesi olarak.
 * [Tek tek oluşumları incelemek](../../azure-monitor/app/diagnostic-search.md)için.
 
 Raporlar yığın izlerini içerir.
@@ -471,7 +471,7 @@ try {
 }
 ```
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 try
@@ -521,7 +521,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-Önemli yığın bilgilerinin çoğu zaten ayrı değişkenlere ayıklanır, ancak `details` daha fazla almak için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu beklediğiniz türe aktarmalısınız. Örnek:
+Önemli yığın bilgilerinin çoğu zaten ayrı değişkenlere ayıklanır, ancak `details` daha fazla almak için yapıyı ayırabilirsiniz. Bu yapı dinamik olduğundan, sonucu beklediğiniz türe aktarmalısınız. Örneğin:
 
 ```kusto
 exceptions
@@ -584,7 +584,7 @@ Yöntem ekime girme veya bırakma gibi tanılama olayını günlüğe kaydedin.
 Üzerindeki `message` boyut sınırı, özelliklerdeki sınırdan çok daha yüksektir.
 TrackTrace'in bir avantajı, iletiye nispeten uzun veriler koyabiliyor olmasıdır. Örneğin, POST verilerini burada kodlayabilirsiniz.  
 
-Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Ayrıca, diğer telemetriler gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
+Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Ayrıca, diğer telemetriler gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örneğin:
 
 *C#*
 
@@ -738,7 +738,7 @@ Bir web uygulamasında, kullanıcılar çerezler tarafından (varsayılan olarak
 
 Kullanıcılar uygulamanızda oturum açtıysa, tarayıcı kodunda kimlik doğrulaması yapılan kullanıcı kimliğini ayarlayarak daha doğru bir sayım elde edebilirsiniz:
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 // Called when my app has identified the user.
@@ -774,7 +774,7 @@ Uygulamanız kullanıcıları hesaplara gruplatırsa, hesap için bir tanımlay�
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[Metrics](../../azure-monitor/app/metrics-explorer.md)Explorer'da, **Kullanıcıları, Kimlik Doğrulaması**ve **Kullanıcı hesaplarını**sayan bir grafik oluşturabilirsiniz.
+[Metrics](../../azure-monitor/platform/metrics-charts.md)Explorer'da, **Kullanıcıları, Kimlik Doğrulaması**ve **Kullanıcı hesaplarını**sayan bir grafik oluşturabilirsiniz.
 
 Ayrıca, belirli kullanıcı adları ve hesapları olan istemci veri noktalarını da [arayabilirsiniz.](../../azure-monitor/app/diagnostic-search.md)
 
@@ -792,7 +792,7 @@ Metrik değerlerin doğru görüntülenemesi için, 0'dan büyük veya eşit olm
 
 Kullanabileceğiniz [özellik, özellik değerleri ve ölçümlersayısında](#limits) bazı sınırlar vardır.
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.trackEvent
@@ -1114,7 +1114,7 @@ protected void Application_Start()
 }
 ```
 
-*Javascript*
+*JavaScript*
 
 ```javascript
 appInsights.config.instrumentationKey = myKey;
@@ -1147,7 +1147,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetriBağlam
 
-TelemetriIstemci, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Bağlam özelliğine sahiptir. Normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örnek:
+TelemetriIstemci, tüm telemetri verileriyle birlikte gönderilen değerleri içeren bir Bağlam özelliğine sahiptir. Normalde standart telemetri modülleri tarafından ayarlanır, ancak bunları kendiniz de ayarlayabilirsiniz. Örneğin:
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";

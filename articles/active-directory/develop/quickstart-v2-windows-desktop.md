@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1c66779dc726c3c6366bc03282d5d3c2bdc8134a
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: a464bb8a942c449e0b17751fbea7a810711cb48d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991050"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536004"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Hızlı Başlangıç: Bir belirteç alma ve bir Windows masaüstü uygulamasından Microsoft Graph API'si çağırma
 
@@ -48,7 +48,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
 > 1. Yönlendirme **URI'lerinde** | **kamu istemcileri (mobil, masaüstü) bölümü için Önerilen Yönlendirme URI'leri,** kullanın. **https://login.microsoftonline.com/common/oauth2/nativeclient**
-> 1. **Kaydet'i**seçin.
+> 1. **Kaydet**’i seçin.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>1. Adım: Uygulamanızı Azure portalında yapılandırma
@@ -62,7 +62,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 #### <a name="step-2-download-your-visual-studio-project"></a>2. Adım: Visual Studio projenizi indirme
 
 > [!div renderon="docs"]
-> [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)  
+> [Visual Studio projesini indirin](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/msal3x.zip)
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Visual Studio 2019'u kullanarak projeyi çalıştırın.
@@ -71,7 +71,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Adım 3: Uygulamanız yapılandırıldı ve çalışmaya hazır
-> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır. 
+> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -87,7 +87,7 @@ Bu hızlı başlangıçta bir kişi, iş ve okul hesaplarında oturum açma, bir
 >    private static string ClientId = "Enter_the_Application_Id_here";
 >    private static string Tenant = "Enter_the_Tenant_Info_Here";
 >    ```
-> 
+>
 > Konumlar:
 > - `Enter_the_Application_Id_here` - kaydettiğiniz uygulamanın **Uygulama (istemci) Kimliği** değeridir.
 > - `Enter_the_Tenant_Info_Here` - aşağıdaki seçeneklerden birine ayarlanır:
@@ -152,7 +152,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(_scopes)
 
 > |Konumlar:||
 > |---------|---------|
-> | `_scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır. |
+> | `_scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -167,7 +167,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Konumlar: ||
 > |---------|---------|
-> | `scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır. |
+> | `scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir. |
 > | `firstAccount` | Önbellekteki ilk kullanıcıyı belirtir (MSAL destekleyen birden çok kullanıcı tek bir uygulama olarak). |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

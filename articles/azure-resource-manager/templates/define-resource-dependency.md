@@ -3,12 +3,12 @@ title: Kaynaklar için dağıtım sırasını ayarlama
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağın başka bir kaynağa bağımlı olarak nasıl ayarlanılabildiğini açıklar.
 ms.topic: conceptual
 ms.date: 12/03/2019
-ms.openlocfilehash: f11f79df875492a568a76f494dfffb4a163f64cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 764b718416e1185f56c7eb6b8335792a5822f212
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153293"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535477"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlama
 
@@ -18,7 +18,7 @@ Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bu
 
 ## <a name="dependson"></a>dependsOn
 
-Şablonunuzda, DependsOn öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, kaynak adlarının virgülle ayrılmış bir listesidir. Liste, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtılmadığında, Azure Kaynak Yöneticisi kaynağı otomatik olarak gerekli bağımlılıklardan kaldırır.
+Şablonunuzda, DependsOn öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı olan bir JSON dize dizisidir. Dizi [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtılmadığında, Azure Kaynak Yöneticisi kaynağı otomatik olarak gerekli bağımlılıklardan kaldırır.
 
 Aşağıdaki örnekte, yük bakiyesi, sanal ağ ve birden çok depolama hesabı oluşturan bir döngüye bağlı sanal makine ölçeği kümesi gösterilmektedir. Bu diğer kaynaklar aşağıdaki örnekte gösterilmez, ancak şablonun başka bir yerinde bulunmaları gerekir.
 

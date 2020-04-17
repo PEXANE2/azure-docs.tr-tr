@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979483"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537024"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Birden çok VM'de Güncelleştirme Yönetimi, İzlemeyi Değiştir ve Envanter çözümlerini etkinleştirme
 
@@ -33,9 +33,9 @@ Onay kutularını kullanarak, Değişiklik İzleme ve Envanter veya Güncelleme 
 Komut çubuğundan **Hizmetler'i** tıklatın ve **Izlemeyi Değiştir,** **Envanteri**veya Yönetimi **Güncelleştir'i**seçin.
 
 > [!NOTE]
-> **İzlemeyi değiştir** in ve **Stok** aynı çözümü kullanır, biri etkinleştirildiğinde diğeri de etkinleştirilir.
+> İzleme ve Envanteri Değiştir aynı çözümü kullanın. Biri etkinleştirildiğinde, diğeri de etkinleştirilir.
 
-Aşağıdaki resim Güncelleştirme Yönetimi içindir. İzlemeyi değiştir ve Envanter aynı düzene ve davranışa sahiptir.
+Aşağıdaki resim Güncelleştirme Yönetimi içindir. Değişiklik İzleme ve Envanter aynı düzene ve davranışa sahiptir.
 
 Sanal makinelerin listesi, yalnızca aynı abonelik ve konumda bulunan sanal makineleri göstermek için filtrelenir. Sanal makineleriniz üçten fazla kaynak grubundaysa, ilk üç kaynak grubu seçilir.
 
@@ -70,7 +70,7 @@ Etkinleştirmek istemediğiniz herhangi bir sanal makinenin yanındaki onay kutu
 
 Aşağıdaki çözümler Bir Log Analytics çalışma alanına bağlıdır:
 
-* [Güncelleme Yönetimi](automation-update-management.md)
+* [Güncelleştirme Yönetimi](automation-update-management.md)
 * [Değişiklik İzleme](automation-change-tracking.md)
 * [Mesai saatleri dışında VM'leri Başlatma/Durdurma](automation-solution-vm-management.md)
 
@@ -107,13 +107,13 @@ Alternatif olarak, Çalışma alanınızı Otomasyon Hesabınızdan Günlük Ana
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Birden çok makineye binerken, **etkinleştirilemez**olarak gösteren makineler olabilir. Bazı makinelerin etkinleştirilemememelerinin farklı nedenleri vardır. Aşağıdaki bölümler, gemiye binmeye çalışırken VM'de **etkinleştirilen olası** nedenleri gösterir.
+Birden fazla makineye binerken, '' olarak `Cannot enable`gösteren makineler olabilir. Bazı makinelerin etkinleştirilemememelerinin farklı nedenleri vardır. Aşağıdaki bölümlerde, gemiye `Cannot enable` binmeye çalışırken VM'deki durum için olası nedenler gösterilmektedir.
 
 ### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM farklı bir çalışma alanına\<rapor:\>' workspaceName '.  Etkinleştirmek için yapılandırmayı değiştirme
 
 **Neden**: Bu hata, onboard'da çalıştığınız VM'nin başka bir çalışma alanına rapor verdiğini gösterir.
 
-**Çözüm**: Hedeflenen Otomasyon Hesabı ve Log Analytics çalışma alanını değiştirmek için **yapılandırma olarak Kullan'ı** tıklatın.
+**Çözüm**: Hedeflenen Otomasyon hesabını ve Log Analytics çalışma alanını değiştirmek için **yapılandırma olarak Kullan'ı** tıklatın.
 
 ### <a name="vm-reports-to-a-workspace-that-is-not-available-in-this-subscription"></a>VM, bu abonelikte bulunmayan bir çalışma alanına rapor veriyor
 
@@ -148,7 +148,7 @@ Birden çok makineye binerken, **etkinleştirilemez**olarak gösteren makineler 
 Güncelleştirme Yönetimi'nden bir VM kaldırmak için:
 
 * Günlük Analizi çalışma alanınızda, Kapsam Yapılandırması `MicrosoftDefaultScopeConfig-Updates`için kaydedilen aramadan VM'yi kaldırın. Kaydedilen aramalar çalışma alanınızda **Genel** altında bulunabilir.
-* Linux için [Microsoft İzleme aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
+* Windows [için Log Analytics aracısını](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) veya [Linux için Log Analytics aracısını](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)kaldırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

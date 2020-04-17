@@ -2,21 +2,21 @@
 title: Azure Geçişi ile değerlendirme/geçiş için Hyper-V VM'leri hazırlama
 description: Azure Geçişi ile Hyper-V V VM'lerin değerlendirilmesi/geçişi için nasıl hazırlanacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 03/31/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80436211"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535307"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V V M'lerin azure'a değerlendirilmesi ve geçişi için hazırlanın
 
 Bu makalede, Azure Geçişi ile şirket içi Hyper-V V VM'lerin değerlendirilmesi için nasıl hazırlanacağı açıklanmaktadır:Sunucu Değerlendirmesi (geçir-hizmetler-genel bakış.md#azure-geçir-sunucu-değerlendirme aracı) ve Azure Geçişi ile Hyper-V V VM'lerin [geçişi:Sunucu Geçişi.](migrate-services-overview.md#azure-migrate-server-migration-tool)
 
 
-Bu öğretici, Hyper-V V MM'leri nasıl değerlendirip Azure'a geçirtilebildiğinizi gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Hyper-V V MM'leri nasıl değerlendirip Azure'a geçirtilebildiğinizi gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure'u hazırlayın. Azure hesabınız için izinler ve Azure Geçiş ile çalışmak için kaynaklar ayarlayın.
@@ -214,9 +214,11 @@ Cihazı kurduğunuzda, credssp'yi [cihazüzerinde etkinleştirerek](tutorial-ass
 Azure Geçir cihazını kurmadan ve bir sonraki öğreticide değerlendirmeye başlamadan önce, cihaz dağıtımına hazırlanın.
 
 1. Cihaz gereksinimlerini [doğrulayın.](migrate-appliance.md#appliance---hyper-v)
-2. Cihazın erişmesi gereken Azure URL'lerini [gözden geçirin.](migrate-appliance.md#url-access)
+2. Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet](migrate-appliance.md#government-cloud-urls) bulutlarında erişmeleri gereken Azure URL'lerini gözden geçirin. URL tabanlı bir güvenlik duvarı veya proxy kullanıyorsanız, gerekli URL'lere erişim sağladığından emin olun.
 3. Cihazın keşif ve değerlendirme sırasında toplayacakları verileri gözden geçirin.
-4. Cihaz için bağlantı noktası erişim gereksinimlerini [not](migrate-appliance.md#collected-data---hyper-v) edin.
+4. Cihaz için bağlantı noktası erişim gereksinimlerini [gözden geçirin.](migrate-appliance.md#collected-data---hyper-v)
+
+
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Hyper-V geçişine hazırlanın

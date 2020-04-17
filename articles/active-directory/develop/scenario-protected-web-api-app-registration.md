@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2cdf3ff45a400d4b8d0b2605bf7ddc364aff1fe6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 997dd98d35b74effe5d195f9a781fa0935286ee9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80882395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537228"
 ---
 # <a name="protected-web-api-app-registration"></a>Korumalı web API: Uygulama kaydı
 
@@ -82,9 +82,9 @@ Kapsamlar, uygulamanızın kullanıcılarına sunulan onay penceresinde de gör�
     - **Kapsam adını** seçin ve **access_as_user**girin.
     - **Kimlerin onay kullanabileceğini** seçin ve **Yöneticilerin ve kullanıcıların** seçildiğinden emin olun.
     - **Yönetici onayı ekran adını** seçin ve Kullanıcı olarak Access **TodoListService**girin.
-    - **Yönetici onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService Web API'sine erişin.**
+    - **Yönetici onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService web API'sine erişin.**
     - **Kullanıcı onayı ekran adını** seçin ve Kullanıcı olarak Access **TodoListService**girin.
-    - **Kullanıcı onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService Web API'sine erişin.**
+    - **Kullanıcı onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService web API'sine erişin.**
     - **Durum** değerini **Etkin**olarak ayarlamayı tutun.
  1. **Kapsam Ekle'yi**seçin.
 
@@ -147,7 +147,7 @@ Bu artırılmış güvenliği eklemek için:
    >
    > Ancak önceki bölümde açıklandığı gibi, web API'niz her zaman uygulamanın kiracı yönetici tarafından yetkilendirilen doğru role sahip olduğunu doğrulayabilir. API, bu doğrulamayı, erişim belirtecinin bir rol talebi olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak gerçekleştirir. Önceki JSON örneğinde, değer `access_as_application`.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

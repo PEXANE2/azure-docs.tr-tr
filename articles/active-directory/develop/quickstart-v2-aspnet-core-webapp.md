@@ -1,6 +1,6 @@
 ---
 title: Core web uygulamalarını ASP.NET Için Microsoft ile oturum açma ekleme - Microsoft kimlik platformu | Azure
-description: OpenID Connect'i kullanarak Microsoft Oturum Açma'yı ASP.NET Bir Web Uygulamasında nasıl uygulayacağınızı öğrenin
+description: OpenID Connect'i kullanarak microsoft oturum açmayı ASP.NET Core web uygulamasında nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ac53a6cf6953255f51a6b586703147c5ce2338b6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a34264870ce812da5d7e7c790a1482d90b33d06a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407147"
+ms.locfileid: "81536174"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: ASP.NET Core web uygulamasına Microsoft ile oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azure Etkin Dizin (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarında nasıl oturum açabileceğini öğrenmek için bir kod örneği kullanırsınız. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
@@ -71,15 +71,15 @@ Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azu
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Adım 3: Uygulamanız yapılandırıldı ve çalışmaya hazır
-> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır. 
+> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır.
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Adım 3: Visual Studio projenizi çalıştırın
 > 1. Zip dosyasını kök klasörü içindeki yerel bir klasöre ayıklama - örneğin, **C:\Azure-Örnekler**
-> 1. Visual Studio'da çözümü açın 
-> 1. **appsettings.json** dosyasını edin. Kaydettiğiniz uygulamanın `ClientId` Uygulama **(istemci) kimlik** değeri ile değerini bulun `ClientId` ve güncelleştirin. 
+> 1. Visual Studio'da çözümü açın
+> 1. **appsettings.json** dosyasını edin. Kaydettiğiniz uygulamanın `ClientId` Uygulama **(istemci) kimlik** değeri ile değerini bulun `ClientId` ve güncelleştirin.
 >
 >    ```json
 >    "ClientId": "Enter_the_Application_Id_here"
@@ -141,7 +141,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-Yöntem, `AddAuthentication` hizmeti tarayıcı senaryolarında kullanılan çerez tabanlı kimlik doğrulaması eklemek ve sorunu OpenID Connect'e ayarlamak için yapılandırır. 
+Yöntem, `AddAuthentication` hizmeti tarayıcı senaryolarında kullanılan çerez tabanlı kimlik doğrulaması eklemek ve sorunu OpenID Connect'e ayarlamak için yapılandırır.
 
 İçeren `.AddAzureAd` satır, uygulamanıza Microsoft kimlik platformu kimlik doğrulamasını ekler. Daha sonra Microsoft kimlik platformu bitiş noktasını kullanarak oturum açacak şekilde yapılandırılır.
 
@@ -167,4 +167,4 @@ Yöntem, `AddAuthentication` hizmeti tarayıcı senaryolarında kullanılan çer
 Yepyeni bir ASP.NET Core Web uygulamasına kimlik doğrulamanın nasıl ekleyeceğiniz, Microsoft Graph'ı ve diğer Microsoft API'lerini nasıl arayacağınız, kendi API'lerinizi nasıl arayacağınız, yetkilendirme nasıl ekleyeceğiniz, ulusal bulutlardaki kullanıcılarda nasıl oturum açacağınız veya sosyal kimliklerle ve daha fazlası dahil olmak üzere daha fazla bilgi için bu ASP.NET Core öğreticisi için GitHub repo'ya göz atın :
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web App öğretici](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core web uygulaması eğitimi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: b6a8bc083b589463b67f2e25e262b15456355d05
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383826"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536547"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Bir kimliğe erişim izinleri atama
 
@@ -31,7 +31,7 @@ Kullanıcılara paylaşım düzeyi izinleri vermek için üç Azure yerleşik ro
 Yerleşik rolleri bir kullanıcının Azure AD kimliğine paylaşım düzeyi izinleri vermek için atamak için Azure portalını, PowerShell'i veya Azure CLI'yi kullanabilirsiniz.
 
 > [!NOTE]
-> AD kimlik doğrulaması için REKLAM'ınızı kullanmayı planlıyorsanız, REKLAM kimlik bilgilerinizi Azure AD ile eşitlemeyi unutmayın. AD'den Azure AD'ye parola karma eşitleme isteğe bağlıdır. AD'den senkronize edilen Azure AD kimliğine hisse düzeyi izni verilir.
+> Kimlik doğrulaması için şirket içi AD DS'nizi kullanmayı [planlıyorsanız, AD DS kimlik bilgilerinizi Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) ile eşitlemeyi unutmayın. AD DS'den Azure AD'ye parola karma eşitleme isteğe bağlıdır. Şirket içi AD DS'nizden senkronize edilen Azure REKLAM kimliğine hisse düzeyi izni verilir.
 
 Genel öneri, bir kullanıcı ve kimlik grubunu temsil eden bir REKLAM grubuna üst düzey erişim yönetimi için hisse düzeyi iznini kullanmak ve ardından dizin/dosya düzeyinde parçalı erişim denetimi için NTFS izinlerinden yararlanmaktır. 
 
@@ -73,7 +73,7 @@ az role assignment create --role "<role-name>" --assignee <user-principal-name> 
 ## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS izinlerini Kobİ üzerinden yapılandırın 
 RBAC ile paylaşım düzeyi izinleri atadıktan sonra, kök, dizin veya dosya düzeyinde uygun NTFS izinleri atamanız gerekir. Paylaşım düzeyi izinlerini, kullanıcının paylaşıma erişip erişemeyeceğini belirleyen üst düzey kapı cısı olarak düşünün. NTFS izinleri ise, kullanıcının dizin veya dosya düzeyinde neler yapabileceğini belirlemek için daha ayrıntılı bir düzeyde hareket eder.
 
-Azure Files, NTFS temel ve gelişmiş izinlerinin tam kümesini destekler. Paylaşımı monte edip Windows File Explorer'ı kullanarak veya Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) komutunu çalıştırarak Azure dosya paylaşımındaki Dizinler ve dosyalardaki NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
+Azure Files, NTFS temel ve gelişmiş izinlerinin tam kümesini destekler. Paylaşımı monte edip Windows File Explorer'ı kullanarak veya Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) veya [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) komutunu çalıştırarak Azure dosya paylaşımındaki Dizinler ve dosyalardaki NTFS izinlerini görüntüleyebilir ve yapılandırabilirsiniz. 
 
 NTFS'yi süper kullanıcı izinleriyle yapılandırmak için, alan adı ile birleştirilmiş VM'nizden depolama hesabı anahtarınızı kullanarak payı birleştirmeniz gerekir. Komut isteminden bir Azure dosya paylaşımı oluşturmak ve NTFS izinlerini buna göre yapılandırmak için bir sonraki bölümdeki yönergeleri izleyin.
 
@@ -101,29 +101,29 @@ NTFS izinlerini ayarlamak için icacls'in nasıl kullanılacağı hakkında daha
 Azure dosya paylaşımını monte etmek için Windows **net kullanım** komutunu kullanın. Aşağıdaki örnekte yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Dosya paylaşımlarını montaj hakkında daha fazla bilgi için bkz. Windows [ile Azure dosya paylaşımı nı kullan.](../articles/storage/files/storage-how-to-use-files-windows.md) 
 
 ```
-net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
+net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>NTFS izinlerini Windows Dosya Gezgini ile yapılandırma
 Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini'ni kullanın.
 
-1. Windows Dosya Gezgini'ni açın ve dosya/dizini sağ tıklatın ve **Özellikler'i** seçin
-2. **Güvenlik** sekmesine tıklayın
-3. **Edit'e tıklayın... .** izinleri değiştirmek için düğme
-4. Mevcut kullanıcıların iznini değiştirebilir veya yeni kullanıcılara izin vermek için **Ekle...'u** tıklatabilirsiniz
-5. Yeni kullanıcı eklemek için istem penceresinde, kutuyu seçmek için **nesne adlarını girin** izni vermek istediğiniz hedef kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak için Adları **Denetle'yi** tıklatın.
-7.  **Tamam'a** tıklayın
-8.  Güvenlik sekmesinde, yeni eklenen kullanıcıya vermek istediğiniz tüm izinleri seçin
-9.  **Uygula'ya** tıklayın
+1. Windows Dosya Gezgini'ni açın ve dosya/dizin üzerine sağ tıklayın ve **Özellikler'i**seçin.
+2. **Güvenlik** sekmesini seçin.
+3. **Edit'i seçin...** izinleri değiştirmek için.
+4. Yeni kullanıcılara izin vermek için varolan kullanıcıların izinlerini değiştirebilir veya **Ekle...** seçeneğini belirleyebilirsiniz.
+5. Yeni kullanıcı eklemek için istem penceresinde, kutuyu seçmek için **nesne adlarını girin** izni vermek istediğiniz hedef kullanıcı adını girin ve hedef kullanıcının tam UPN adını bulmak için Adları **Denetle'yi** seçin.
+7.    **Tamam'ı**seçin.
+8.    **Güvenlik** sekmesinde, yeni kullanıcınıza vermek istediğiniz tüm izinleri seçin.
+9.    **Uygula**’yı seçin.
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Etki alanı birleştirilmiş VM'den dosya paylaşımı nı monte edin
 
 Aşağıdaki işlem, dosya paylaşımınızın ve erişim izinlerinizin doğru şekilde ayarlandığını ve etki alanı yla birleştirilmiş bir VM'den Azure Dosyası paylaşımına erişebileceğinizi doğrular. Hisse düzeyi RBAC rol atamasının etkin olmasının biraz zaman alacağını unutmayın. 
 
-Aşağıdaki resimde gösterildiği gibi, izin vermiş olduğunuz Azure AD kimliğini kullanarak VM'de oturum açın. Azure Dosyaları için AD kimlik doğrulamasını etkinleştirdiyseniz, AD kimlik belgesini kullanın. Azure AD DS kimlik doğrulaması için Azure AD kimlik bilgisi ile oturum açın.
+Aşağıdaki resimde gösterildiği gibi, izin vermiş olduğunuz Azure AD kimliğini kullanarak VM'de oturum açın. Azure Dosyaları için şirket içi AD DS kimlik doğrulamasını etkinleştirdiyseniz, AD DS kimlik bilgilerinizi kullanın. Azure AD DS kimlik doğrulaması için Azure AD kimlik bilgileriyle oturum açın.
 
 ![Kullanıcı kimlik doğrulaması için Azure AD oturum açma ekranLarını gösteren ekran görüntüsü](media/storage-files-aad-permissions-and-mounting/azure-active-directory-authentication-dialog.png)
 
-Azure dosya paylaşımını monte etmek için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğinizi doğruladığıiçin depolama hesabı anahtarını, AD kimlik bilgilerini veya Azure AD kimlik bilgilerini sağlamanız gerekmez. Ad veya Azure AD DS ile kimlik doğrulama için tek oturum açma deneyimi desteklenir. AD kimlik bilgileriyle montajsorunlarıyla karşılaştıysanız, kendi kendine tanılama kılavuzu için [Windows'daki Sorun Giderme Azure Dosyaları sorunlarını](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) denetleyin.
+Azure dosya paylaşımını monte etmek için aşağıdaki komutu kullanın. Yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Kimliğinizi doğruladığıiçin depolama hesabı anahtarını, şirket içi AD DS kimlik bilgilerini veya Azure AD DS kimlik bilgilerini sağlamanız gerekmez. Şirket içinde AD DS veya Azure AD DS ile kimlik doğrulama için tek oturum açma deneyimi desteklenir. AD DS kimlik bilgileriyle birlikte montaj sorunlarıyla karşılaştıysanız, kılavuz luk için [Windows'taki Azure Dosyaları sorun giderme sorunlarına](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) bakın.
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>

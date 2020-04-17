@@ -13,12 +13,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.topic: conceptual
 ms.workload: identity
-ms.openlocfilehash: e8c890a6daf2411b09162ab0072aed594820b936
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: aae1b8aa27363e8f1d3c72d3934146c47b0cf2c9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886356"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535902"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory Koşullu Erişim için geliştirici kılavuzu
 
@@ -59,12 +59,12 @@ Senaryoya bağlı olarak, kurumsal bir müşteri koşullu erişim ilkelerini ist
 
 Bazı senaryolar Koşullu Erişim işlemek için kod değişiklikleri gerektirirken, diğerleri olduğu gibi çalışır. Burada fark bazı fikir verir çok faktörlü kimlik doğrulama yapmak için Koşullu Erişim kullanarak birkaç senaryo vardır.
 
-* Tek kiracılı bir iOS uygulaması oluşturuyorsunuz ve Koşullu Erişim ilkesi uyguluyorsunuz. Uygulama bir kullanıcıda işaretler ve bir API'ye erişim istemiyor. Kullanıcı kaydolduğunda, ilke otomatik olarak çağrılır ve kullanıcının çok faktörlü kimlik doğrulaması (MFA) gerçekleştirmesi gerekir. 
+* Tek kiracılı bir iOS uygulaması oluşturuyorsunuz ve Koşullu Erişim ilkesi uyguluyorsunuz. Uygulama bir kullanıcıda işaretler ve bir API'ye erişim istemiyor. Kullanıcı kaydolduğunda, ilke otomatik olarak çağrılır ve kullanıcının çok faktörlü kimlik doğrulaması (MFA) gerçekleştirmesi gerekir.
 * Akış aşağı API'sine erişmek için orta katman hizmeti kullanan yerel bir uygulama oluşturuyorsunuz. Bu uygulamayı kullanan şirketteki bir kurumsal müşteri, akış aşağı API'sine bir ilke uygular. Son kullanıcı giriş yaptığında, yerel uygulama orta katmana erişim ister ve belirteci gönderir. Orta katman, akış aşağı API'sine erişim istemek için akış adına gerçekleştirir. Bu noktada, bir iddia "meydan okuma" orta katmana sunulur. Orta katman, zorluğu Koşullu Erişim ilkesine uyması gereken yerel uygulamaya geri gönderir.
 
 #### <a name="microsoft-graph"></a>Microsoft Graph
 
-Microsoft Graph'ın Koşullu Erişim ortamlarında uygulama yaparken özel hususları vardır. Genellikle, Koşullu Erişim mekaniği aynı şekilde olur, ancak kullanıcılarınızın gördüğü ilkeler uygulamanızın grafikten istediği temel verilere dayalı olacaktır. 
+Microsoft Graph'ın Koşullu Erişim ortamlarında uygulama yaparken özel hususları vardır. Genellikle, Koşullu Erişim mekaniği aynı şekilde olur, ancak kullanıcılarınızın gördüğü ilkeler uygulamanızın grafikten istediği temel verilere dayalı olacaktır.
 
 Özellikle, tüm Microsoft Graph kapsamları tek tek uygulanan ilkeler olabilir bazı veri kümesi temsil eder. Koşullu Erişim ilkelerine belirli veri kümeleri atandığından, Azure AD, Grafiğin kendisinden ziyade Grafik'in arkasındaki verilere dayalı Koşullu Erişim ilkelerini uygular.
 
@@ -74,13 +74,13 @@ Microsoft Graph'ın Koşullu Erişim ortamlarında uygulama yaparken özel husus
 scopes="Bookings.Read.All Mail.Read"
 ```
 
-Bir uygulama, kullanıcılarının Rezervasyon ve Değişim ile ilgili tüm politikaları yerine getirmesini bekleyebilir. Erişim izni veriyorsa, bazı kapsamlar birden çok veri kümesiyle eşlenebilir. 
+Bir uygulama, kullanıcılarının Rezervasyon ve Değişim ile ilgili tüm politikaları yerine getirmesini bekleyebilir. Erişim izni veriyorsa, bazı kapsamlar birden çok veri kümesiyle eşlenebilir.
 
 ### <a name="complying-with-a-conditional-access-policy"></a>Koşullu Erişim ilkesine uyma
 
 Birkaç farklı uygulama topolojisi için, oturum oluşturulduğunda Koşullu Erişim ilkesi değerlendirilir. Koşullu Erişim ilkesi uygulamaların ve hizmetlerin parçalı özelliklerine göre çalıştığından, çağrıldığı nokta büyük ölçüde gerçekleştirmeye çalıştığınız senaryoya bağlıdır.
 
-Uygulamanız Koşullu Erişim ilkesine sahip bir hizmete erişmeye çalıştığında, Koşullu Erişim sorunuyla karşılaşabilir. Bu zorluk, Azure AD'den gelen bir yanıtta gelen `claims` parametrede kodlanır. Bu meydan okuma parametresinin bir örneği aşağıda verilmiştir: 
+Uygulamanız Koşullu Erişim ilkesine sahip bir hizmete erişmeye çalıştığında, Koşullu Erişim sorunuyla karşılaşabilir. Bu zorluk, Azure AD'den gelen bir yanıtta gelen `claims` parametrede kodlanır. Bu meydan okuma parametresinin bir örneği aşağıda verilmiştir:
 
 ```
 claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
@@ -106,7 +106,7 @@ Aşağıdaki bölümlerde daha karmaşık olan yaygın senaryolar tartışılır
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Senaryo: Uygulama akışı adına gerçekleştirme
 
-Bu senaryoda, yerel bir uygulamanın web hizmeti/API olarak adlandırdığı durumda yürüyoruz. Buna karşılık, bu hizmet bir downstream hizmeti aramak için "adına"akışı yapar. Bizim durumumuzda, Koşullu Erişim politikamızı akış aşağı hizmetine (Web API 2) uyguladık ve sunucu/daemon uygulaması yerine yerel bir uygulama kullanıyoruz. 
+Bu senaryoda, yerel bir uygulamanın web hizmeti/API olarak adlandırdığı durumda yürüyoruz. Buna karşılık, bu hizmet bir downstream hizmeti aramak için "adına"akışı yapar. Bizim durumumuzda, Koşullu Erişim politikamızı akış aşağı hizmetine (Web API 2) uyguladık ve sunucu/daemon uygulaması yerine yerel bir uygulama kullanıyoruz.
 
 ![Akış diyagramını adına gerçekleştiren uygulama](./media/v2-conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -159,7 +159,7 @@ MSAL.js'de belirteçleri elde eden birkaç `loginPopup()` `acquireTokenSilent(..
 * `acquireTokenSilent(…)`daha sonra sessizce hiçbir koşulda UI göstermez anlamı bir erişim belirteci elde etmek için kullanılabilir.
 * `acquireTokenPopup(…)`ve `acquireTokenRedirect(…)` her ikisi de her zaman oturum açma kullanıcı arabirimi göstermek anlamına gelen bir kaynak için etkileşimli olarak bir belirteç istemek için kullanılır.
 
-Bir uygulamanın Web API'sini çağırmak için bir `acquireTokenSilent(…)`erişim jetonuna ihtiyacı olduğunda, bir . Belirteç oturumunun süresi dolmuşsa veya Koşullu Erişim ilkesine uymamız gerekiyorsa, `acquireTokenPopup()` elde `acquireTokenRedirect()` *edilen Token* işlevi başarısız olur ve uygulama kullanır veya .
+Bir uygulamanın web API'sini çağırmak için bir `acquireTokenSilent(…)`erişim belirtecine ihtiyacı olduğunda, bir . Belirteç oturumunun süresi dolmuşsa veya Koşullu Erişim ilkesine uymamız gerekiyorsa, `acquireTokenPopup()` elde `acquireTokenRedirect()` *edilen Token* işlevi başarısız olur ve uygulama kullanır veya .
 
 ![MSAL akış diyagramını kullanarak tek sayfalık uygulama](./media/v2-conditional-access-dev-guide/spa-using-msal-scenario.png)
 
@@ -175,7 +175,7 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 
 `error=interaction_required`Uygulamamızın. Uygulama daha sonra `acquireTokenPopup()` aynı `acquireTokenRedirect()` kaynakta veya üzerinde kullanabilirsiniz. Kullanıcı çok faktörlü bir kimlik doğrulaması yapmak zorunda kalır. Kullanıcı çok faktörlü kimlik doğrulamasını tamamladıktan sonra, uygulama istenen kaynak için yeni bir erişim belirteci verilir.
 
-Bu senaryoyu denemek [için, kod örneği adına JS SPA'mıza](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)bakın. Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA'ya kaydettiğiniz Koşullu Erişim ilkesini ve web API'sını kullanır. Talepler meydan okumasını nasıl düzgün bir şekilde ele alacağınızı ve Web API'nız için kullanılabilecek bir erişim belirteci elde etmeyi gösterir. Alternatif olarak, bir Açısal SPA rehberlik için genel [Açısal.js kod örneği](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) çıkış
+Bu senaryoyu denemek [için, kod örneği adına JS SPA'mıza](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/master/Microsoft.Identity.Web/README.md#handle-conditional-access)bakın. Bu kod örneği, bu senaryoyu göstermek için daha önce bir JS SPA'ya kaydettiğiniz Koşullu Erişim ilkesini ve web API'sını kullanır. Bu, talep meydan okumasını nasıl düzgün bir şekilde ele alacağınız ve web API'nız için kullanılabilecek bir erişim belirteci nin nasıl alınabileceğini gösterir. Alternatif olarak, bir Açısal SPA rehberlik için genel [Açısal.js kod örneği](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) çıkış
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

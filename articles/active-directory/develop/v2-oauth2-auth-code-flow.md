@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5241089ff3cc7826216fcadd6fd94116ee4a2c89
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309449"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535885"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 yetkilendirme kodu akışı
 
@@ -219,7 +219,7 @@ Hata yanıtları gibi görünecektir:
 
 ## <a name="use-the-access-token"></a>Erişim belirteci kullanma
 
-Artık başarılı bir şekilde bir `access_token`, web API'lerine gelen isteklerde belirteci `Authorization` üstbilgiye ekleyerek kullanabilirsiniz:
+Artık başarılı bir şekilde bir `access_token`, `Authorization` üstbilgi de ekleyerek web API'lerine isteklerde belirteç kullanabilirsiniz:
 
 > [!TIP]
 > Postacı bu isteği yürütmek! (Önce `Authorization` üstbilgi değiştir) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
@@ -232,11 +232,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>Erişim belirteciyenileme
 
-Access_tokens kısa ömürlüdür ve kaynaklara erişmeye devam etmek için süresi dolduktan sonra bunları yenilemeniz gerekir. Bunu, bitiş noktasına başka `POST` bir istek göndererek yapabilirsiniz, `refresh_token` bu kez yerine sağlayan `code` `/token`  Yenileme belirteçleri, istemcinizin zaten onay aldığı tüm izinler için geçerlidir - `scope=mail.read` bu nedenle, bir istek üzerine `scope=api://contoso.com/api/UseResource`verilen bir yenileme belirteci için yeni bir erişim belirteci istemek için kullanılabilir.  
+Access_tokens kısa ömürlüdür ve kaynaklara erişmeye devam etmek için süresi dolduktan sonra bunları yenilemeniz gerekir. Bunu, bitiş noktasına başka `POST` bir istek göndererek yapabilirsiniz, `refresh_token` bu kez yerine sağlayan `code` `/token`  Yenileme belirteçleri, istemcinizin zaten onay aldığı tüm izinler için geçerlidir - `scope=mail.read` bu nedenle, bir istek üzerine `scope=api://contoso.com/api/UseResource`verilen bir yenileme belirteci için yeni bir erişim belirteci istemek için kullanılabilir.
 
-Belirteçleri yenilemenin belirli kullanım ömürleri yoktur. Genellikle, yenileme belirteçleri yaşam sürelerini nispeten uzun. Ancak, bazı durumlarda, yenileme belirteçleri sona erer, iptal edilir veya istenen eylem için yeterli ayrıcalıkları yoksun. Uygulamanızın [belirteç verme bitiş noktası tarafından döndürülen hataları](#error-codes-for-token-endpoint-errors) doğru şekilde beklemesi ve işlemesi gerekir. 
+Belirteçleri yenilemenin belirli kullanım ömürleri yoktur. Genellikle, yenileme belirteçleri yaşam sürelerini nispeten uzun. Ancak, bazı durumlarda, yenileme belirteçleri sona erer, iptal edilir veya istenen eylem için yeterli ayrıcalıkları yoksun. Uygulamanızın [belirteç verme bitiş noktası tarafından döndürülen hataları](#error-codes-for-token-endpoint-errors) doğru şekilde beklemesi ve işlemesi gerekir.
 
-Yeni erişim belirteçleri elde etmek için kullanıldığında yeni belirteçleri iptal olmasa da, eski yenileme belirtecisini atmanız beklenir. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) diyor ki: "Yetkilendirme sunucusu MAY, bu durumda istemci eski yenileme belirteci atmak ve yeni yenileme belirteci ile değiştirmek gerekir yeni bir yenileme belirteci sorunu. Yetkilendirme sunucusu, istemciye yeni bir yenileme belirteci verdikten sonra eski yenileme belirteci iptal edebilir."  
+Yeni erişim belirteçleri elde etmek için kullanıldığında yeni belirteçleri iptal olmasa da, eski yenileme belirtecisini atmanız beklenir. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) diyor ki: "Yetkilendirme sunucusu MAY, bu durumda istemci eski yenileme belirteci atmak ve yeni yenileme belirteci ile değiştirmek gerekir yeni bir yenileme belirteci sorunu. Yetkilendirme sunucusu, istemciye yeni bir yenileme belirteci verdikten sonra eski yenileme belirteci iptal edebilir."
 
 ```
 // Line breaks for legibility only
@@ -254,7 +254,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > Postacı bu isteği yürütmeyi deneyin! (Değiştirmeyi unutmayın `refresh_token`) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
-> 
+>
 
 | Parametre     |                | Açıklama        |
 |---------------|----------------|--------------------|

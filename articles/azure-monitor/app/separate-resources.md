@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörülerinde telemetriyi ayırma
 description: Geliştirme, test ve üretim pulları için farklı kaynaklara doğrudan telemetri.
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 3580d162f4b3955a04ffcd0f13933221bfef3b65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671469"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536786"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetriyi Geliştirme, Test ve Üretimden Ayırma
 
@@ -34,7 +34,7 @@ Kod üretim aşamaları arasında ilerlerken ikey'i değiştirmeyi kolaylaştır
 
 Anahtarı, ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde ayarlayın:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -69,7 +69,7 @@ Farklı uygulama bileşenleri için telemetriyi ayırmak veya aynı bileşenin f
 
 ![Yeni, Application Insights öğesine tıklayın](./media/separate-resources/01-new.png)
 
-* **Uygulama türü,** genel bakış bıçağında gördüklerinizi ve [metrik gezginde](../../azure-monitor/app/metrics-explorer.md)bulunan özellikleri etkiler. Uygulama türünü görmüyorsanız, web sayfaları için web türlerinden birini seçin.
+* **Uygulama türü,** genel bakış bıçağında gördüklerinizi ve [metrik gezginde](../../azure-monitor/platform/metrics-charts.md)bulunan özellikleri etkiler. Uygulama türünü görmüyorsanız, web sayfaları için web türlerinden birini seçin.
 * **Kaynak grubu,** [erişim denetimi](../../azure-monitor/app/resources-roles-access-control.md)gibi özellikleri yönetmek için bir kolaylıktır. Geliştirme, test ve üretim için ayrı kaynak grupları kullanabilirsiniz.
 * **Abonelik,** Azure'daki ödeme hesabınızdır.
 * **Konum,** verilerinizi sakladığımız yerdir. Şu anda değiştirilemez. 
@@ -89,7 +89,7 @@ Uygulamanızın veri göndereceği tüm kaynakların enstrümantasyon tuşların
 ## <a name="filter-on-build-number"></a>Yapı numarasına filtre uygulayın
 Uygulamanızın yeni bir sürümünü yayımladığınızda, telemetriyi farklı yapılardan ayırmak isteyebilirsiniz.
 
-Uygulama Sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve metrik [gezgin](../../azure-monitor/app/metrics-explorer.md) sonuçlarına filtre uygulayabilmeniz için ayarlayabilirsiniz.
+Uygulama Sürümü özelliğini, [arama](../../azure-monitor/app/diagnostic-search.md) ve metrik [gezgin](../../azure-monitor/platform/metrics-charts.md) sonuçlarına filtre uygulayabilmeniz için ayarlayabilirsiniz.
 
 ![Özellik üzerinde filtreleme](./media/separate-resources/050-filter.png)
 
@@ -139,7 +139,7 @@ Uygulama sürümünü izlemek için `buildinfo.config` dosyasının Microsoft Bu
     </PropertyGroup>
 ```
 
-Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/app/metrics-explorer.md) sürüme göre filtreleyebilirsiniz.
+Yapı bilgisi mevcut olduğunda Application Insights web modülü **Uygulama sürümünü** telemetrinin her bir öğesine bir özellik olarak ekler. Bu sayede, [tanılama aramaları](../../azure-monitor/app/diagnostic-search.md) gerçekleştirirken veya [ölçümleri keşfederken](../../azure-monitor/platform/metrics-charts.md) sürüme göre filtreleyebilirsiniz.
 
 Ancak, yapı sürüm numarasının Visual Studio'daki geliştirici yapısı tarafından değil, yalnızca Microsoft Build Engine tarafından oluşturulduğuna dikkat edin.
 

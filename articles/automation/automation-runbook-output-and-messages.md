@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: 457b2d2211ea1ba5fa36cec4b7e9a214f5bcad77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92b6378b00e12f618d07798b5ce789cbd9971544
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367100"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535545"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Otomasyonu'nda runbook çıktısı ve iletileri
 
@@ -18,7 +18,7 @@ ms.locfileid: "79367100"
 
 Aşağıdaki tablo, yayınlanan runbook'lar için Azure portalındaki ve [bir runbook'un sınanma](automation-testing-runbook.md)sırasındaki davranışlarıyla her akışı kısaca açıklar. Çıktı akışı, runbook'lar arasındaki iletişim için kullanılan ana akıştır. Diğer akışlar, kullanıcıya bilgi iletmek amacıyla ileti akışları olarak sınıflandırılır. 
 
-| Akış | Açıklama | Yayımlanmış | Test |
+| Akış | Açıklama | Yayımlanmış | Test etme |
 |:--- |:--- |:--- |:--- |
 | Hata |Kullanıcıya yönelik hata iletisi. Bir özel durum aksine, runbook varsayılan olarak bir hata iletisi sonra devam eder. |İş geçmişine yazılmış |Test çıktı bölmesinde görüntülenir |
 | Hata ayıklama |Etkileşimli bir kullanıcıya yönelik iletiler. Runbooks kullanılmamalıdır. |İş geçmişine yazılmadı |Test çıktı bölmesinde görüntülenmez |
@@ -240,7 +240,7 @@ Ancak, sorun giderme için bir runbook'un ilerlemesini izlemek için bu bilgiler
 **Etkinlik düzeyinde izleme sağlamak için:**
 
 1. Azure portalında, Otomasyon hesabınızı açın.
-2. Runbook listesini açmak için **Proses Otomasyonu** bölümünde **Runbook'ları** seçin.
+2. Runbook listesini açmak için **Proses Otomasyonu** altındaki **Runbook'ları** seçin.
 3. Runbook'lar sayfasında, runbook'lar listenizden bir grafik runbook seçin.
 4. **Ayarlar**altında, **Günlüğe Kaydetme ve İzlemeyi**tıklatın.
 5. Günlük ve İzleme sayfasında, **Günlük verbose kayıtları**altında, ayrıntılı günlük etkinleştirmek için **Üzerine** tıklayın.
@@ -253,7 +253,7 @@ Ancak, sorun giderme için bir runbook'un ilerlemesini izlemek için bu bilgiler
 Azure Otomasyonu, Log Analytics çalışma alanınıza runbook iş durumu ve iş akışları gönderebilir. Azure Monitor, şunları yapmanıza olanak tanıyan günlükleri destekler:
 
 * Otomasyon işleriniz hakkında bilgi edinin.
-* Runbook iş durumunuza bağlı olarak bir e-posta veya uyarı tetikleme(örneğin, başarısız veya askıya alındı).
+* Runbook iş durumunuza bağlı olarak bir e-posta veya uyarı tetikleme (örneğin, Başarısız veya Askıya Alındı).
 * İş akışları arasında gelişmiş sorgular yazın.
 * Otomasyon hesapları daki işleri ilişkilendirin.
 * İş geçmişini görselleştirin.

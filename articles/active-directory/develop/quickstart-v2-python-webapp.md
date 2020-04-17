@@ -1,6 +1,6 @@
 ---
 title: Microsoft kimlik platformu Python web uygulamasına Microsoft ile oturum açma ekleme | Azure
-description: OAuth2'yi kullanarak Python Web Uygulamasında Microsoft Oturum Açma'yı nasıl uygulayacağınızı öğrenin
+description: OAuth2'yi kullanarak Python web uygulamasında Microsoft Oturum Açma'yı nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: abhidnya13
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev
-ms.openlocfilehash: 0affae56ef6998efe4bb370287ff3688f83f3878
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: c0220a226b2095a4ec54bc3469abee08b8b29f4c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873965"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536038"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Quickstart: Python web uygulamasına Microsoft ile oturum açma ekleme
 
@@ -62,7 +62,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 >      - Uygulamaya **Genel Bakış** sayfasında, daha sonra kullanmak üzere **Uygulama (istemci) kimlik** değerine dikkat edin.
 > 1. Menüden **Kimlik Doğrulama'yı** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin. Yönlendirme `http://localhost:5000/getAToken` **URI'leri**olarak ekleyin.
->    - **Kaydet'i**seçin.
+>    - **Kaydet**’i seçin.
 > 1. Sol **menüde, Sertifikalar & sırları** seçin ve Müşteri **Sırları** bölümünde Yeni müşteri **sırrı** tıklayın:
 >
 >      - Anahtar açıklaması yazın (örnek uygulama gizli).

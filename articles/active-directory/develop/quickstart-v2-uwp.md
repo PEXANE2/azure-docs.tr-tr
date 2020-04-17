@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: feb1fa82653a0db7b3041a4f745d0563c220bd31
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 362f6d1f4e50e1cc78c8897499b9f6593096162b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991101"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536021"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -49,7 +49,7 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 >      - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 > 1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
 > 1. Yönlendirme **URI'lerinde** | **kamu istemcileri (mobil, masaüstü)** bölümü için **https://login.microsoftonline.com/common/oauth2/nativeclient**Önerilen Yönlendirme URL'leri, kontrol edin.
-> 1. **Kaydet'i**seçin.
+> 1. **Kaydet**’i seçin.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
@@ -72,7 +72,7 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Adım 3: Uygulamanız yapılandırıldı ve çalışmaya hazır
-> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır. 
+> Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
@@ -80,7 +80,7 @@ Bu hızlı başlatma, Evrensel Windows Platformu (UWP) uygulamasının kişisel 
 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-visual-studio-project"></a>3. Adım: Visual Studio projenizi yapılandırma
-> 
+>
 > 1. Zip dosyasını diskin köküne yakın bir yerel klasöre (örneğin **C:\Azure-Samples**) ayıklayın.
 > 1. Projeyi Visual Studio'da açın. Bir UWP SDK yüklemeniz istenebilir. Bu durumda, kabul et.
 > 1. **MainPage.Xaml.cs** ve alanın değerlerini değiştirin: `ClientId`
@@ -157,7 +157,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 > |Konumlar:||
 > |---------|---------|
-> | `scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır. |
+> | `scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir. |
 
 #### <a name="get-a-user-token-silently"></a>Kullanıcı belirtecini sessizce alma
 
@@ -172,7 +172,7 @@ authResult = await App.PublicClientApp.AcquireTokenSilent(scopes, firstAccount)
 
 > |Konumlar: ||
 > |---------|---------|
-> | `scopes` | İstenen kapsamları (Microsoft Graph için `{ "user.read" }` veya özel Web API'leri için `{ "api://<Application ID>/access_as_user" }` gibi) barındırır |
+> | `scopes` | Microsoft Graph veya `{ "user.read" }` `{ "api://<Application ID>/access_as_user" }` özel web API'leri gibi istenen kapsamları içerir |
 > | `firstAccount` | Önbellekteki ilk kullanıcı hesabını belirtir (MSAL tek bir uygulamada birden çok kullanıcıyı destekler) |
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

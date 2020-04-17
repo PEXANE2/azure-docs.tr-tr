@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4e8a5d2d168b8f60b7a32a8af358c6097003de60
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1ac6347bd8e723f356da4803da54a6ea45a4a71a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261304"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535528"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyon runbook türleri
 
@@ -28,6 +28,9 @@ Belirli bir runbook için hangi türde kullanılacağını belirlerken aşağıd
 
 * Runbook'ları grafikten metin türüne veya başka bir şekilde dönüştüremezsiniz.
 * Alt runbook'lar olarak farklı türlerde runbookkullanırken sınırlamalar vardır. Daha fazla bilgi için [Azure Otomasyonu'ndaki Alt runbook'lar'a](automation-child-runbooks.md)bakın.
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="graphical-runbooks"></a>Grafik çalışma kitapları
 

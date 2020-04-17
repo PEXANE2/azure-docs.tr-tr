@@ -4,12 +4,12 @@ description: Azure Yedekleme hizmetini kullanarak Microsoft Azure Kurtarma Hizme
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: c11d73edd32c197aac2cec58eeb1cc20e5c6a339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673259"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537364"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Yedekleme hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) Aracı sıyrık larını yönetme
 
@@ -90,7 +90,7 @@ Dosya ve Klasörler yedeklemesini korumayı durdurmanın iki yolu vardır:
 
 - **Korumayı durdurun ve yedekleme verilerini koruyun.**
   - Bu seçenek, gelecekteki tüm yedekleme işlerinin korunmasını durdurur.
-  - Azure Yedekleme hizmeti, bekletme ilkesini temel alan yedeklenen kurtarma noktalarını korur.
+  - Azure Yedekleme hizmeti varolan tüm kurtarma noktalarını süresiz olarak saklar. Kurtarma noktaları, koruma sürdürülene kadar son kullanma tarihi kontrol edilmez.
   - Süresi dolmamış kurtarma noktaları için yedeklenen verileri geri yükleyebilirsiniz.
   - Korumayı sürdürmeye karar verirseniz, *yedek zamanlamayı yeniden etkinleştir* seçeneğini kullanabilirsiniz. Bundan sonra, veriler yeni bekletme ilkesine göre korunur.
 - **Korumayı durdurun ve yedekleme verilerini silin.**

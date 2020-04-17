@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: d667dd09c2276936e10cea0581e4c8d2810b2ccb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81311088"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537619"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Windows için IoT için Azure Güvenlik Merkezi C# tabanlı güvenlik aracısını dağıtma
 
@@ -135,9 +135,9 @@ Günlüğe kaydetmeyi açmak için:
      sc.exe start "ASC IoT Agent"
      ```
 
-1. Hata hakkında daha fazla bilgi için günlük dosyasını gözden geçirin.
+1. Hata hakkında daha fazla bilgi için günlük dosyasını gözden geçirin. Günlük dosyası, komut dosyasını çalıştırdığımız çalışma dizininde bulunur. 
 
-   Günlük dosya konumu:`%WinDir%/System32/IoTAgentLog.log`
+   Günlük dosya konumu:`.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

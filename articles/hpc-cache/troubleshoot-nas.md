@@ -4,14 +4,14 @@ description: NFS depolama hedefi oluştururken hataya neden olabilecek yapıland
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 03/18/2020
 ms.author: rohogue
-ms.openlocfilehash: c88ffb9e87bc0688cc87b816efaa8e101e23407c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a24530810a448a713c01efbc8933b9f22d15b3b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77652093"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536378"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>SORUN GIDERme NAS yapılandırması ve NFS depolama hedef sorunları
 
@@ -63,6 +63,9 @@ Farklı depolama sistemleri bu erişimi sağlamak için farklı yöntemler kulla
 
 Dışa aktarma kuralları kullanıyorsanız, önbelleğin önbellek alt netinden birden çok farklı IP adresi kullanabileceğini unutmayın. Tüm olası subnet IP adreslerinden erişime izin verin.
 
+> [!NOTE]
+> Varsayılan olarak, Azure HPC Önbelleği kök erişimini ezer. Ayrıntılar için [ek önbellek ayarlarını Yapılandır'ı](configuration.md#configure-root-squash) okuyun.
+
 Önbellek için doğru erişim düzeyini etkinleştirmek için NAS depolama satıcınızla birlikte çalışın.
 
 ### <a name="allow-root-access-on-directory-paths"></a>Dizin yollarında kök erişimine izin verme
@@ -100,7 +103,7 @@ Mümkünse önbelleğinizle aynı sanal ağdan bir Linux istemcisi kullanın.
 Bu komut dışa aktarımları listelemiyorsa, önbellek depolama sisteminize bağlanmada sorun olur. Dışa aktarma girişini etkinleştirmek için NAS satıcınızla birlikte çalışın.
 
 ## <a name="adjust-vpn-packet-size-restrictions"></a>VPN paket boyutu kısıtlamalarını ayarlama
-<!-- link in prereqs article -->
+<!-- link in prereqs article and configuration article -->
 
 Önbellek ve NAS aygıtınız arasında VPN varsa, VPN tam boyutlu 1500 baytlık Ethernet paketlerini engelleyebilir. NAS ve Azure HPC Önbellek örneği arasındaki büyük değişimler tamamlanmazsa, ancak daha küçük güncelleştirmeler beklendiği gibi çalışırsa bu sorunla karşı laşabilirsiniz.
 
@@ -128,7 +131,11 @@ VPN yapılandırmanızın ayrıntılarını bilmediğiniz sürece sisteminizde b
   1480 bytes from 10.54.54.11: icmp_seq=1 ttl=64 time=2.06 ms
   ```
 
-  Ping 1472 bayt ile başarısız olursa, uzak sistemin maksimum kare boyutunu düzgün bir şekilde algılaması için VPN'de MSS bağlamayı yapılandırmanız gerekebilir. Daha fazla bilgi edinmek için [VPN Ağ Geçidi IPsec/IKE parametreleri belgelerini](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) okuyun.
+  Ping 1472 bayt ile başarısız olursa, büyük olasılıkla bir paket boyutu sorunu vardır.
+
+Sorunu gidermek için, uzak sistemin maksimum kare boyutunu düzgün bir şekilde algılaması için VPN'de MSS bağlamayı yapılandırmanız gerekebilir. Daha fazla bilgi edinmek için [VPN Ağ Geçidi IPsec/IKE parametreleri belgelerini](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) okuyun.
+
+Bazı durumlarda, Azure HPC Önbelleği için MTU ayarını 1400 olarak değiştirmenin bir faydası olabilir. Ancak, önbellekte MTU'yu kısıtlarsanız, önbellekle etkileşimde olan istemciler ve arka uç depolama sistemleri için MTU ayarlarını da kısıtlamanız gerekir. Ayrıntılar için [ek Azure HPC Önbelleği ayarlarını yapılandır'ı](configuration.md#adjust-mtu-value) okuyun.
 
 ## <a name="check-for-acl-security-style"></a>ACL güvenlik stilini denetleyin
 

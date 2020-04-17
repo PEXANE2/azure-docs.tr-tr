@@ -3,12 +3,12 @@ title: Azure Application Insights ile ASP.NET Web uygulaması analizi ayarlama |
 description: Şirket içinde veya Azure'da barındırılan ASP.NET web siteniz için performans, kullanılabilirlik ve kullanıcı davranışı analizi araçlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 0843d6c04bf6fc9bab07207072990fb3fb8f1844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdd5b1131a0d2d3e2f53840d21cedce1577fde03
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77665927"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536905"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET web siteniz için Application Insights'ı ayarlama
 
@@ -56,7 +56,7 @@ Verilerin depolandığı kaynak grubunu veya konumu ayarlamak isterseniz **Ayarl
 > [!NOTE]
 > Hata ayıklama sırasında portala telemetri göndermek istemiyorsanız, uygulamanıza Application Insights SDK’sını ekleyin, ancak portalda bir kaynak yapılandırmayın. Hata ayıklama sırasında telemetri verilerini Visual Studio'da görebilirsiniz. Daha sonra bu yapılandırma sayfasına dönebilir veya uygulamanızı dağıtana kadar bekleyip [telemetriyi çalışma zamanında açabilirsiniz](../../azure-monitor/app/monitor-performance-live-website-now.md).
 
-## <a name="step-2-run-your-app"></a><a name="run"></a> 2. Adım: Uygulamanızı çalıştırma
+## <a name="step-2-run-your-app"></a><a name="run"></a>Adım 2: Uygulamanızı çalıştırın
 F5 tuşuna basarak uygulamanızı çalıştırın. Farklı sayfalar açarak telemetri verileri oluşturun.
 
 Visual Studio'da günlüğe kaydedilmiş etkinliklerin sayısını görürsünüz.
@@ -93,7 +93,7 @@ Portal, uygulamanızdan alınan telemetri görünümünde açılır.
 Daha fazla ayrıntı görmek için portalda istediğiniz kutucuğa veya grafiğe tıklayın.
 
 ## <a name="step-4-publish-your-app"></a>4. Adım: Uygulamanızı yayımlama
-Uygulamanızı IIS sunucunuza veya Azure’a yayımlayın. Her şeyin sorunsuz çalıştığından emin olmak için [Canlı Ölçümler Akışı](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream)’nı izleyin.
+Uygulamanızı IIS sunucunuza veya Azure’a yayımlayın. Her şeyin sorunsuz çalıştığından emin olmak için [Canlı Ölçümler Akışı](../../azure-monitor/app/live-stream.md)’nı izleyin.
 
 Telemetriniz, ölçümleri izleyebileceğiniz, telemetrinizi arayabildiğiniz Application Insights portalında biriker. Ayrıca, kullanımı ve performansı çözümlemek veya belirli olayları bulmak için güçlü [Kusto sorgu dilini](/azure/kusto/query/) de kullanabilirsiniz.
 
@@ -145,6 +145,6 @@ ApplicationInsights.config’de herhangi bir özelleştirme gerçekleştirdiysen
 * [Akıllı tanılama](../../azure-monitor/app/proactive-diagnostics.md): Bu testler otomatik olarak çalıştığından, bunları ayarlamak için herhangi bir şey yapmanız gerekmez. Uygulamanızda olağan dışı oranda başarısız istek olup olmadığını bildirirler.
 * [Metrik uyarılar](../../azure-monitor/app/alerts.md): Bir metrik bir eşiği geçerse sizi uyarmak için uyarılar ayarlayın. Bunları, uygulamanıza kodladığınız özel ölçümlerde ayarlayabilirsiniz.
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Otomasyon
 
 * [Application Insights kaynağı oluşturmayı otomatikleştirme](../../azure-monitor/app/powershell.md)

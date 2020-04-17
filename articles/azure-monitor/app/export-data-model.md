@@ -3,17 +3,17 @@ title: Azure Uygulama Öngörüleri Veri Modeli | Microsoft Dokümanlar
 description: JSON'da sürekli dışa aktarılan ve filtre olarak kullanılan özellikleri açıklar.
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: e4dd2310169476e54c06083fee11b2e4cccecd8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9891bea1d52c61197fa32fa5c0764df5450b563c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663884"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536854"
 ---
 # <a name="application-insights-export-data-model"></a>Uygulama Öngörüleri İhracat Veri Modeli
 Bu tablo, [Uygulama Öngörüleri](../../azure-monitor/app/app-insights-overview.md) SDK'larından portala gönderilen telemetrinin özelliklerini listeler.
 Bu özellikleri [Sürekli Dışa Aktarma'dan](export-telemetry.md)veri çıktısında görürsünüz.
-Ayrıca [Metrik Gezginve](../../azure-monitor/app/metrics-explorer.md) [Tanılama Arama'daki](../../azure-monitor/app/diagnostic-search.md)özellik filtrelerinde de görünürler.
+Ayrıca [Metrik Gezginve](../../azure-monitor/platform/metrics-charts.md) [Tanılama Arama'daki](../../azure-monitor/app/diagnostic-search.md)özellik filtrelerinde de görünürler.
 
 Dikkat edilmesi gereken noktalar:
 
@@ -127,16 +127,16 @@ Her türlü telemetriye bağlam bölümü eşlik ediyor. Bu alanların tümü he
 | context.device.roleName |string | |
 | context.device.screenResolution |string | |
 | context.device.type |string |PC, Tarayıcı, ... |
-| bağlam.location |object |Clientip'ten türetilmiştir. |
-| context.location.city |string |Biliniyorsa, clientip'ten türetilmiştir |
+| bağlam.location |object |`clientip`Türetilmiş. |
+| context.location.city |string |Türetilmiş `clientip`, biliniyorsa |
 | context.location.clientip |string |Son sekizgen 0'a anonimdir. |
 | context.location.continent |string | |
 | context.location.country |string | |
 | context.location.province |string |Eyalet veya il |
-| context.operation.id |string |Aynı işlem kimliğine sahip öğeler portalda İlgili Öğeler olarak gösterilir. Genellikle istek kimliği. |
+| context.operation.id |string |Aynı `operation id` olan öğeler portaldaki İlgili Öğeler olarak gösterilir. `request id`Genellikle. |
 | context.operation.name |string |url veya istek adı |
 | context.operation.parentId |string |İç içe ilgili öğelere izin verir. |
-| context.session.id |string |Aynı kaynaktan gelen bir operasyon grubunun kimliği. İşlem siz 30 dakikalık bir süre oturumun sona ermesinyali. |
+| context.session.id |string |`Id`aynı kaynaktan bir operasyon grubu. İşlem siz 30 dakikalık bir süre oturumun sona ermesinyali. |
 | context.session.isFirst |boole | |
 | context.user.accountAcquisitionDate |string | |
 | context.user.accountId |string | |
@@ -147,7 +147,7 @@ Her türlü telemetriye bağlam bölümü eşlik ediyor. Bu alanların tümü he
 | context.user.isAuthenticated |boole | |
 | context.user.storeRegion |string | |
 | internal.data.documentVersion |string | |
-| internal.data.id |string | Bir öğe Uygulama Öngörüleri'ne yutulduğunda atanan benzersiz kimlik |
+| internal.data.id |string | `Unique id`bir öğe Uygulama Öngörüleri'ne yutulduğunda atanan |
 
 ## <a name="events"></a>Olaylar
 [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar.
@@ -173,7 +173,7 @@ Sunucuda ve tarayıcıda [özel durumları](../../azure-monitor/app/asp-net-exce
 | basicException [0] başarısızUserCodeAssembly |string | |
 | basicException [0] handledAt |string | |
 | basicException [0] hasFullStack |boole | |
-| basicException [0] id |string | |
+| basicException [0]`id` |string | |
 | basicException [0] yöntemi |string | |
 | basicException [0] iletisi |string |Özel durum iletisi. Maksimum uzunluk 10k. |
 | basicException [0] dışExceptionMessage |string | |
@@ -210,7 +210,7 @@ TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan
 | remoteDependency [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin 4&gt; = %25. |
 | remoteDependency [0] bağımlılıkTypeName |string |HTTP, SQL, ... |
 | remoteDependency [0] durationMetric.value |number |Bağımlılık tarafından yanıt Tamamlama çağrıdan zaman |
-| remoteDependency [0] id |string | |
+| uzaktan Bağımlılık [0]`id` |string | |
 | remoteDependency [0] adı |string |Url. Maksimum uzunluk 250. |
 | remoteDependency [0] resultCode |string |HTTP bağımlılığından |
 | remoteDependency [0] başarı |boole | |
@@ -227,7 +227,7 @@ TrackDependency tarafından gönderildi. Sunucudaki [bağımlılıklara yapılan
 | --- | --- | --- |
 | istek [0] sayısı |integer |100/(örnekleme oranı).[sampling](../../azure-monitor/app/sampling.md) Örneğin: 4&gt; = 25%. |
 | istek [0] durationMetric.value |number |Yanıta gelen istekten itibaren zaman. 1e7 == 1'ler |
-| istek [0] id |string |İşlem kimliği |
+| istek [0]`id` |string |`Operation id` |
 | istek [0] adı |string |GET/POST + url tabanı.  Maksimum uzunluk 250 |
 | request [0] responseCode |integer |Istemciye gönderilen HTTP yanıtı |
 | istek [0] başarı |boole |Varsayılan == (yanıt Kodu &lt; 400) |
@@ -292,7 +292,7 @@ TrackMetric() tarafından oluşturulur.
 
 Metrik değer context.custom.metrics[0] bulunur.
 
-Örnek:
+Örneğin:
 
     {
      "metric": [ ],
@@ -318,7 +318,7 @@ Metrik değer context.custom.metrics[0] bulunur.
     }
 
 ## <a name="about-metric-values"></a>Metrik değerler hakkında
-Metrik değerler, hem metrik raporlarda hem de başka yerlerde, standart bir nesne yapısıyla bildirilir. Örnek:
+Metrik değerler, hem metrik raporlarda hem de başka yerlerde, standart bir nesne yapısıyla bildirilir. Örneğin:
 
       "durationMetric": {
         "name": "contoso.org",

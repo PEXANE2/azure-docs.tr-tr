@@ -3,12 +3,12 @@ title: Linux'ta Java web uygulaması performansını izleyin - Azure | Microsoft
 description: Uygulama Öngörüleri için CollectD eklentisi ile Java web sitenizin genişletilmiş uygulama performansı izleme.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 687f97c305bffdfb408feb314ccded4f93ac574a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77660742"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537534"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>toplanan: Application Insights Linux performans ölçümleri
 
@@ -128,6 +128,6 @@ Geçici Çözüm: Sorun Tarafından toplanan verileri hariç tut Eklentileri Yaz
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 
 

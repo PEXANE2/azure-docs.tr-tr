@@ -2,13 +2,13 @@
 title: Azure Geçir Sunucu Değerlendirmesinde Bağımlılık analizi
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak değerlendirme için bağımlılık çözümlemesi nasıl kullanılacağını açıklar.
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455647"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537755"
 ---
 # <a name="dependency-analysis"></a>Bağımlılık analizi
 
@@ -30,7 +30,7 @@ Bağımlılık çözümlemesi dağıtmak için iki seçenek vardır
 - **Agentless**: Aracısız analiz ile çapraz kontrol yapmak istediğiniz makinelere aracı yüklemenize gerek yoktur. Bu seçenek şu anda önizlemededir ve yalnızca VMware VM'leri için kullanılabilir.
 
 > [!NOTE]
-> Bağımlılık çözümlemesi Azure Kamu'da kullanılamaz.
+> Aracı tabanlı bağımlılık çözümlemesi Azure Kamu'da kullanılamaz. Aracısız bağımlılık çözümlemesi kullanabilirsiniz.
 
 ## <a name="agentless-analysis"></a>Aracısız analiz
 
@@ -68,7 +68,7 @@ Destek | Bu seçenek şu anda önizlemededir ve yalnızca VMware VM'leri için k
 Aracı | Çapraz kontrol yapmak istediğiniz makinelere aracı yüklemenize gerek yoktur. | Analiz etmek istediğiniz her şirket içi makineye kurulacak aracılar: [Microsoft İzleme aracısı (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)ve [Bağımlılık aracısı.](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent) 
 Log Analytics | Gerek yok. | Azure Geçir, bağımlılık çözümlemesi için [Azure Monitor günlüklerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [Hizmet Haritası](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır. 
 Nasıl çalışır? | Bağımlılık görselleştirme için etkinleştirilen makinelerde TCP bağlantı verilerini yakalar. Keşiften sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklenen Servis Haritası aracıları, her işlem için TCP işlemleri ve gelen/giden bağlantılar hakkında veri toplar.
-Veri | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
+Veriler | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
 Görselleştirme | Tek bir sunucunun bağımlılık haritası bir saat ile 30 gün arasında görüntülenebilir. | Tek bir sunucunun bağımlılık haritası.<br/><br/> Harita yalnızca bir saatten fazla görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık haritası.<br/><br/> Gruptaki sunucuları harita görünümünden ekleyin ve kaldırın.
 Veri dışarı aktarma | Şu anda tabular biçiminde indirilemez. | Veriler Log Analytics ile sorgulanabilir.
 

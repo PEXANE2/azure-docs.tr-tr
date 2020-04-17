@@ -10,16 +10,16 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: b3d068a8100cf78ccffac6d537fe71942239f383
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: d5b6452684757aead684356fd9bb032b90c58c4a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886169"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535834"
 ---
 # <a name="add-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio'da Bağlı Hizmetleri kullanarak Azure Etkin Dizini ekleme
 
-Azure Etkin Dizin (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için Tek Oturum Açma (SSO) veya Web API hizmetlerinde Etkin Dizin Kimlik Doğrulaması'nı destekleyebilirsiniz. Azure AD Kimlik Doğrulaması ile kullanıcılarınız web uygulamalarınıza bağlanmak için hesaplarını Azure Active Directory'den kullanabilir. Web API ile Azure AD Kimlik Doğrulaması'nın avantajları arasında, bir web uygulamasından API açığa çıkarırken gelişmiş veri güvenliği yer almaktadır. Azure AD ile, kendi hesabı ve kullanıcı yönetimiyle ayrı bir kimlik doğrulama sistemini yönetmeniz gerekmez.
+Azure Etkin Dizin (Azure AD) kullanarak, ASP.NET MVC web uygulamaları için Tek Oturum Açma (SSO) veya web API hizmetlerinde Active Directory Authentication'ı destekleyebilirsiniz. Azure AD Kimlik Doğrulaması ile kullanıcılarınız web uygulamalarınıza bağlanmak için hesaplarını Azure Active Directory'den kullanabilir. Azure AD Kimlik Doğrulaması'nın web API'si ile birlikte uygulanmasının avantajları arasında, bir web uygulamasından API açığa çıkarırken gelişmiş veri güvenliği yer almaktadır. Azure AD ile, kendi hesabı ve kullanıcı yönetimiyle ayrı bir kimlik doğrulama sistemini yönetmeniz gerekmez.
 
 Bu makale ve eşlik eden makaleler, Active Directory için Visual Studio Connected Service özelliğini kullanmanın ayrıntılarını sağlar. Bu özellik Visual Studio 2015 ve sonraki yıllarda mevcuttur.
 

@@ -3,15 +3,15 @@ title: Limitler ve yapılandırma
 description: Azure Mantık Uygulamaları için süre, iş ortası ve kapasite gibi hizmet sınırlarının yanı sıra, izin verilebilmesi IÇIN IP adresleri gibi yapılandırma değerleri
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 4359c5581d14f4a918a49cf2b91ac58561ea93d3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/17/2020
+ms.openlocfilehash: 40950be2e5caeb17d20086720a7b65c15147c2f5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257462"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535120"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -112,7 +112,7 @@ Burada tek bir mantık uygulaması tanımı için sınırları şunlardır:
 
 ### <a name="integration-service-environment-ise"></a>Entegrasyon hizmet ortamı (ISE)
 
-Premium SKU'nun iş olarak limitleri şunlardır:
+İşte [Premium Ise SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)için iş için iş göreme limitleri:
 
 | Adı | Sınır | Notlar |
 |------|-------|-------|
@@ -124,8 +124,7 @@ Premium SKU'nun iş olarak limitleri şunlardır:
 Normal işlemede bu sınırların üzerine çıkmak veya bu sınırların üzerine çıkabilecek yük testi çalıştırmak için gereksinimlerinizle ilgili yardım için [Logic Apps ekibine başvurun.](mailto://logicappsemail@microsoft.com)
 
 > [!NOTE]
-> [Geliştirici SKU'nun](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayımlanmış bir sınırı yoktur, çünkü bu SKU'nun hizmet düzeyi sözleşmesi (SLA) veya ölçekleme için yetenekleri yoktur.
-> Bu SKU'yi yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi için değil.
+> [Geliştirici ISE SKU'nun](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) yayınlanmış bir sınırı, ölçeklendirme kapasitesi ve hizmet düzeyi sözleşmesi (SLA) yoktur. Bu SKU'yi yalnızca deneme, geliştirme ve test için kullanın, üretim veya performans testi için değil.
 
 <a name="gateway-limits"></a>
 
@@ -281,12 +280,9 @@ B2B protokolleri için geçerli ileti boyutu sınırları şunlardır:
 
 ## <a name="disabling-or-deleting-logic-apps"></a>Mantık uygulamalarını devre dışı bırakma veya silme
 
-Bir mantık uygulamasını devre dışı dışı bettiğinizde, hiçbir yeni çalıştırma anında yapılmaz.
-Devam eden ve bekleyen tüm çalıştırmalar bitene kadar devam ediyor ve bu da tamamlanması zaman alabilir.
+Bir mantık uygulamasını devre dışı dışı bettiğinizde, hiçbir yeni çalıştırma anında yapılmaz. Devam eden ve bekleyen tüm çalıştırmalar bitene kadar devam ediyor ve bu da tamamlanması zaman alabilir.
 
-Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz.
-Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir.
-Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
+Mantıksal uygulamayı sildiğinizde yeni çalıştırma başlatılmaz. Devam eden ve bekleme durumunda olan tüm çalıştırmalar iptal edilir. Binlerce çalıştırma varsa iptal işleminin tamamlanması zaman alabilir.
 
 <a name="configuration"></a>
 
@@ -300,17 +296,17 @@ Azure Logic Apps'ın gelen ve giden aramalar için kullandığı IP adresleri, m
 > * **LogicAppsManagement**: Logic Apps hizmeti için gelen IP adresi önekleri temsil eder.
 > * **LogicApps**: Logic Apps hizmetinin giden IP adresi önekleri temsil eder.
 
+* [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)için, sabit veya ayrılmış IP adresleri [özel bağlayıcılar](../logic-apps/custom-connector-overview.md) ve [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)(örneğin, Azure Depolama, SQL Server, Office 365 Outlook) için kullanılamaz.
+
 * Mantık uygulamalarınızın doğrudan [HTTP](../connectors/connectors-native-http.md), HTTP [+ Swagger](../connectors/connectors-native-http-swagger.md)ve diğer HTTP istekleriyle yaptığı çağrıları desteklemek için, mantık uygulamalarınızın bulunduğu bölgelere bağlı olarak Mantık Uygulamaları hizmeti tarafından kullanılan tüm [gelen](#inbound) *ve* [giden](#outbound) IP adresleriyle güvenlik duvarınızı ayarlayın. Bu adresler bu bölümdeki **Gelen** ve **Giden** başlıklar altında görünür ve bölgeye göre sıralanır.
 
-* [Microsoft tarafından yönetilen bağlayıcıların](../connectors/apis-list.md) yaptığı çağrıları desteklemek için, mantık uygulamalarınızın bulunduğu bölgelere bağlı olarak güvenlik duvarınızı bu bağlayıcılar tarafından kullanılan *tüm* [giden](#outbound) IP adresleriyle ayarlayın. Bu adresler bu bölümdeki **Giden başlık** altında görünür ve bölgeye göre sıralanır.
+* [Yönetilen bağlayıcıların](../connectors/apis-list.md#managed-api-connectors) yaptığı aramaları desteklemek için, mantık uygulamalarınızın bulunduğu bölgelere bağlı olarak güvenlik duvarınızı bu bağlayıcılar tarafından kullanılan *tüm* [giden](#outbound) IP adresleriyle ayarlayın. Bu adresler bu bölümdeki **Giden başlık** altında görünür ve bölgeye göre sıralanır.
 
 * Entegrasyon hizmeti ortamında (İmKB) çalışan mantık uygulamaları için iletişimi etkinleştirmek [için, bu bağlantı noktalarını açtığınıza](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)emin olun.
 
 * Mantıksal uygulamalarınızda güvenlik duvarı ve güvenlik [duvarı kuralları](../storage/common/storage-network-security.md)kullanan Azure depolama hesaplarına erişmekte sorun yaşıyorsanız, erişimi [etkinleştirmek için çeşitli seçenekleriniz](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)vardır.
 
   Örneğin, mantık uygulamaları güvenlik duvarı kurallarını kullanan ve aynı bölgede bulunan depolama hesaplarına doğrudan erişemez. Ancak, [bölgenizdeki yönetilen bağlayıcılar için giden IP adreslerine](../logic-apps/logic-apps-limits-and-config.md#outbound)izin verirseniz, mantıksal uygulamalarınız Azure Tablo Depolama alanı veya Azure Sıra Depolama bağlayıcılarını kullanmanız dışında farklı bir bölgede bulunan depolama hesaplarına erişebilir. Tablo Depolama veya Sıra Depolama'nıza erişmek için, bunun yerine HTTP tetikleyicisini ve eylemlerini kullanabilirsiniz. Diğer seçenekler için, [güvenlik duvarlarının arkasındaki Access depolama hesaplarına](../connectors/connectors-create-api-azureblobstorage.md#access-storage-accounts-behind-firewalls)bakın.
-
-* Özel bağlayıcılar için [Azure Kamu](../azure-government/documentation-government-overview.md)ve Azure China [21Vianet](https://docs.microsoft.com/azure/china/)sabit veya ayrılmış IP adresleri kullanılamaz.
 
 <a name="inbound"></a>
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aff7de84f0523403f8d36c0661b3c469e18116e2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2c299d93e6f054ad7ea8d9a288ec61c36ca11cce
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265625"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537058"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-highground"></a>Öğretici: HighGround ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -83,13 +83,13 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
 1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.highground.com/`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.highground.com/`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.highground.com/svc/SSONoAuth/<companyName>`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.highground.com/svc/SSONoAuth/SAML?groupid=<company-guid>`
 
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://app.highground.com/#/login/<companyName>`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://app.highground.com/#/login/<company-slug>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [HighGround İstemci destek ekibine](https://youearnedit.freshdesk.com/support/home) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.

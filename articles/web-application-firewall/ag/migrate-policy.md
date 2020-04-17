@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/19/2019
+ms.date: 04/16/2020
 ms.author: ant
-ms.openlocfilehash: 1fac524af4b69f8e35934840643c6d3ad99fe1cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3b922b753b9696aa26ea189597589ecc5772db
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74174609"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536633"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Azure PowerShell kullanarak Web Uygulaması Güvenlik Duvarı ilkelerini geçirin
 
@@ -28,6 +28,13 @@ Geçiş komut dosyasını çalıştırmak için aşağıdaki adımları kullanı
 2. Komut dosyasını bulut kabuğu penceresine kopyalayın ve çalıştırın.
 3. Komut dosyası, Abonelik Kimliği, Kaynak Grubu adı, WAF config ile ilişkili Uygulama Ağ Geçidi adı ve oluşturmak için yeni WAF ilkesinin adını sorar. Bu girdileri girdikten sonra, komut dosyası çalışır ve yeni WAF ilkenizi oluşturur
 4. Yeni WAF ilkesini uygulama ağ geçidinizle ilişkilendirin. Portaldaki WAF ilkesine gidin ve **İlişkili Uygulama Ağ Geçitleri** sekmesini seçin. **Associate an Application Gateway**
+
+> [!NOTE]
+> Aşağıdaki koşullar varsa komut dosyası bir geçişi tamamlamaz:
+> - Tüm kural devre dışı bırakılır. Geçişi tamamlamak için, tüm kural grubunun devre dışı bırakılmadığından emin olun.
+> - *Eşitler ile* bir dışlama girişi(ler) herhangi bir işleç. Geçişi tamamlamak için, *Eşitler herhangi bir* işleç ile dışlama girişlerinin bulunmadığından emin olun.
+>
+> Daha fazla bilgi için komut dosyasındaki *Doğrulama Girdi* siişlevine bakın.
 
 ```azurepowershell-interactive
 <#PSScriptInfo

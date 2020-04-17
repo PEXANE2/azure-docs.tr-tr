@@ -3,12 +3,12 @@ title: Azure bulut hizmetleri için Uygulama Öngörüleri | Microsoft Dokümanl
 description: Application Insights ile web ve çalışan rollerinizi etkili bir şekilde izleyin
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: ce794a7bd18635fddfa30056ab2d675dc138097d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 17813d17a1c40caac5587e37e279be6376992b90
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276198"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537602"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure bulut hizmetleri için Uygulama Öngörüleri
 [Application Insights,][start] Uygulama Öngörüleri SDK'larından alınan verileri bulut hizmetlerinizdeki [Azure Tanılama](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) verileriyle birleştirerek kullanılabilirlik, performans, hatalar ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
@@ -31,7 +31,7 @@ Bu seçenek, uygulamanızı çalışma zamanında size web rolünüzdeki istekle
 
 İhtiyacın olan tek seçenek buysa, bittin. 
 
-Bir sonraki [adımlarınız, uygulamanızdan alınan ölçümleri görüntülemek](../../azure-monitor/app/metrics-explorer.md)ve [verilerinizi Analytics ile sorgulamak.](../../azure-monitor/app/analytics.md) 
+Bir sonraki [adımlarınız, uygulamanızdan alınan ölçümleri görüntülemek](../../azure-monitor/platform/metrics-charts.md)ve [verilerinizi Analytics ile sorgulamak.](../../azure-monitor/app/analytics.md) 
 
 Tarayıcıdaki performansı izlemek için [kullanılabilirlik testlerini](../../azure-monitor/app/monitor-web-app-availability.md) ayarlamak ve web sayfalarınıza kod eklemek de [isteyebilirsiniz.](../../azure-monitor/app/javascript.md)
 
@@ -165,7 +165,7 @@ Bu adım yalnızca .NET Framework'de tam SQL sorguları yakalamak istiyorsanız 
 
 1. Oluşturduğunuz Application Insights kaynaklarını açın.
 
-   Tek tek veri noktaları [Arama'da][diagnostic]görüntülenir ve toplanan veriler [Metrik Gezgin'de](../../azure-monitor/app/metrics-explorer.md)görüntülenir.
+   Tek tek veri noktaları [Arama'da][diagnostic]görüntülenir ve toplanan veriler [Metrik Gezgin'de](../../azure-monitor/platform/metrics-charts.md)görüntülenir.
 
 1. Daha fazla telemetri ekleyin (sonraki bölümlere bakın) ve canlı tanılama ve kullanım geri bildirimi almak için uygulamanızı yayınlayın. 
 
@@ -184,7 +184,7 @@ Daha fazla bilgi için bkz. [Sorun giderme][qna].
 * Windows olay günlükleri izlemeler ve özel olaylar olarak gösterilir.
 * Uygulama günlükleri, ETW günlükleri ve varsa tanılama altyapısı günlükleri izlemeler olarak görünür.
 
-Performans sayaçlarını ve olay sayısını görüntülemek için [Metrics Explorer'ı](../../azure-monitor/app/metrics-explorer.md) açın ve aşağıdaki grafiği ekleyin:
+Performans sayaçlarını ve olay sayısını görüntülemek için [Metrics Explorer'ı](../../azure-monitor/platform/metrics-charts.md) açın ve aşağıdaki grafiği ekleyin:
 
 ![Azure Tanılama verileri](./media/cloudservices/23-wad.png)
 

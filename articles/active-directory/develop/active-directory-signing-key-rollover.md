@@ -12,12 +12,12 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f3585cfa7ea6f0d8afc61e899f9641d415a2e354
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161197"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537245"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory'de anahtar devrini imzalama
 Bu makalede, güvenlik belirteçlerini imzalamak için Azure Etkin Dizini'nde (Azure AD) kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu tuşların periyodik olarak devredilmesi ve acil bir durumda hemen devredilmesi önemlidir. Azure AD kullanan tüm uygulamalar, anahtar devriişlemini programlı bir şekilde işleyebilir veya periyodik olarak el ile rollover işlemi oluşturabilmeli. Tuşların nasıl çalıştığını, rollover'ın uygulamanıza etkisini nasıl değerlendirip uygulamanızı nasıl güncelleyeceğinizveya gerektiğinde anahtar devriişlemini işlemek için periyodik manuel rollover işlemini nasıl oluşturlayacağınızı anlamak için okumaya devam edin.
@@ -146,7 +146,7 @@ Aşağıdaki adımlar, mantığın uygulamanızda düzgün çalıştığını do
 ### <a name="web-apis-protecting-resources-and-created-with-visual-studio-2013"></a><a name="vs2013"></a>Kaynakları koruyan ve Visual Studio 2013 ile oluşturulan Web API'leri
 Visual Studio 2013'te Web API şablonunu kullanarak bir web API uygulaması oluşturduysanız ve ardından **Kimlik Doğruluğunu Değiştir** menüsünden **Kurumsal Hesapları** seçtiyseniz, uygulamanızda zaten gerekli mantığa sahipsiniz.
 
-Kimlik doğrulamasını el ile yapılandırmışsanız, web API'nizi temel bilgilerini otomatik olarak güncelleştirmek üzere nasıl yapılandıracağınıöğrenmek için aşağıdaki yönergeleri izleyin.
+Kimlik doğrulamayı el ile yapılandırmışsanız, web API'nizi temel bilgilerini otomatik olarak güncellemek üzere nasıl yapılandıracağınızı öğrenmek için aşağıdaki yönergeleri izleyin.
 
 Aşağıdaki kod snippet federasyon meta veri belgesinden en son anahtarları almak ve sonra belirteci doğrulamak için [JWT Belirteç İşleyicisi](https://msdn.microsoft.com/library/dn205065.aspx) kullanın nasıl gösterir. Kod snippet, ister veritabanında, ister yapılandırma dosyasında veya başka bir yerde olsun, Azure AD'den gelecek belirteçleri doğrulamak için anahtarı kalıcı olarak kullanmak için kendi önbelleğe alma mekanizmasınızı kullanacağınızı varsayar.
 
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>Kaynakları koruyan ve Visual Studio 2012 ile oluşturulan Web uygulamaları
-Uygulamanız Visual Studio 2012'de oluşturulmuşsa, uygulamanızı yapılandırmak için büyük olasılıkla Kimlik ve Erişim Aracı'nı kullanmışolabilirsiniz. Ayrıca, [Doğrulama Veren Ad Kayıt Defteri (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)kullanıyorsanız da muhtemeldir. VINR, güvenilen kimlik sağlayıcıları (Azure AD) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlar hakkında bilgi sağlamakla yükümlüdür. VINR ayrıca, dizininizde ilişkili en son federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını kontrol ederek Web.config dosyasında depolanan önemli bilgileri otomatik olarak güncelleştirmeyi ve gerektiğinde yeni anahtarı kullanmak için uygulamayı güncelleştirin.
+Uygulamanız Visual Studio 2012'de oluşturulmuşsa, uygulamanızı yapılandırmak için büyük olasılıkla Kimlik ve Erişim Aracı'nı kullanmışolabilirsiniz. Ayrıca, [Doğrulama Veren Ad Kayıt Defteri (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)kullanıyorsanız da muhtemeldir. VINR, güvenilen kimlik sağlayıcıları (Azure AD) ve bunlar tarafından verilen belirteçleri doğrulamak için kullanılan anahtarlar hakkında bilgi sağlamakla yükümlüdür. VINR ayrıca, dizininizde ilişkili en son federasyon meta veri belgesini indirerek, yapılandırmanın en son belgeyle güncel olup olmadığını denetleyerek ve yeni anahtarı gerektiği gibi kullanmak üzere uygulamayı güncelleyerek Web.config dosyasında depolanan önemli bilgileri otomatik olarak güncelleştirmeyi kolaylaştırır.
 
 Uygulamanızı Microsoft tarafından sağlanan kod örneklerinden veya gözden geçireç belgelerinden birini kullanarak oluşturduysanız, anahtar devri mantığı zaten projenize dahildir. Aşağıdaki kodun projenizde zaten mevcut olduğunu fark edeceksiniz. Uygulamanız zaten bu mantığa sahip değilse, eklemek ve doğru çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
@@ -299,7 +299,7 @@ Yapılandırmanızı güncellemek için FedUtil'i kullanma yönergeleri:
 4. Güncelleştirme işlemini tamamlamak için **Bitir'i** tıklatın.
 
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>Web uygulamaları / API'ler kaynakları diğer kitaplıkları kullanarak veya desteklenen protokollerden herhangi birini el ile kullanarak korur
-Başka bir kitaplık kullanıyorsanız veya desteklenen protokollerden herhangi birini el ile uyguladıysanız, anahtarın OpenID Connect bulma belgesinden veya federasyon meta verilerinden alındığından emin olmak için kitaplığı veya uygulamanızı gözden geçirmeniz gerekir Belge. Bunu denetlemenin bir yolu, OpenID bulma belgesine veya federasyon meta veri belgesine yapılan aramalar için kodunuzda veya kitaplığın kodunda arama yapmaktır.
+Başka bir kitaplık kullanıyorsanız veya desteklenen protokollerden herhangi birini el ile uyguladıysanız, anahtarın OpenID Connect bulma belgesinden veya federasyon meta veri belgesinden alındığından emin olmak için kitaplığı veya uygulamanızı gözden geçirmeniz gerekir. Bunu denetlemenin bir yolu, OpenID bulma belgesine veya federasyon meta veri belgesine yapılan aramalar için kodunuzda veya kitaplığın kodunda arama yapmaktır.
 
 Bu anahtar bir yerde depolanıyorsa veya uygulamanızda kodlanmışsa, bu kılavuz belgenin sonundaki talimatlara göre el ile rollover gerçekleştirerek anahtarı el ile alabilir ve buna göre güncelleyebilirsiniz. Azure AD'nin rollover'ını artırması veya acil bir bant dışı rollover'ı olması durumunda gelecekteki aksaklıkları ve genel yükü önlemek için bu makalede ana hatlarını kullanarak otomatik rollover'ı desteklemek için **uygulamanızı geliştirmeniz önemle tavsiye edilir.**
 
@@ -308,4 +308,3 @@ Uygulamanızın komut dosyalarını indirerek ve [bu GitHub deposundaki](https:/
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>Uygulamanız otomatik rollover'ı desteklemiyorsa manuel rollover nasıl gerçekleştirilir?
 Uygulamanız otomatik rollover'ı **desteklemiyorsa,** Azure AD'nin imzalama anahtarlarını düzenli aralıklarla izleyen ve buna göre manuel rollover gerçekleştiren bir işlem oluşturmanız gerekir. [Bu GitHub deposu,](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey) bunun nasıl yapılacağını anlatan komut dosyaları ve yönergeler içerir.
-

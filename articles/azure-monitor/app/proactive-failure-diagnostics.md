@@ -4,12 +4,12 @@ description: Web uygulamanızda başarısız isteklerin hızında olağandışı
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: e1c07fca3a4eee19e56c313a889e5b86ce2b4c42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a1bce3ab86748d8247a72da3bd70e0f2e8155dbf
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671758"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536820"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Akıllı Algılama - Arıza Anomalileri
 [Uygulama Öngörüleri,](../../azure-monitor/app/app-insights-overview.md) web uygulamanız başarısız isteklerin hızında anormal bir artış görürse, sizi neredeyse gerçek zamanlı olarak otomatik olarak uyarır. Başarısız olduğu bildirilen HTTP istekleri veya bağımlılık çağrıları oranında olağandışı bir artış algılar. İstekler için, başarısız isteklerin genellikle 400 veya daha yüksek yanıt kodları vardır. Sorunu değerlendirmenize ve tanılamanıza yardımcı olmak için, uyarı ayrıntılarında hataların ve ilgili uygulama verilerinin özelliklerinin bir analizi sağlanır. Ayrıca daha fazla tanı için Application Insights portalına bağlantılar da vardır. Normal hata oranını tahmin etmek için makine öğrenimi algoritmaları kullandığından, özellik kurulum veya yapılandırma gerektirmez.
@@ -353,7 +353,7 @@ Akıllı Hata anomalilerinin algılanması, Application Insights'ın diğer benz
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu tanı araçları, uygulamanızdaki verileri incelemenize yardımcı olur:
 
-* [Metrik kaşif](../../azure-monitor/app/metrics-explorer.md)
+* [Metrik kaşif](../../azure-monitor/platform/metrics-charts.md)
 * [Arama gezgini](../../azure-monitor/app/diagnostic-search.md)
 * [Analitik - güçlü sorgu dili](../../azure-monitor/log-query/get-started-portal.md)
 

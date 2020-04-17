@@ -2,13 +2,13 @@
 title: Azure Geçiş'te Hyper-V değerlendirmesi desteği
 description: Azure Geçir Sunucu Değerlendirmesi ile Hyper-V değerlendirmesi desteği hakkında bilgi edinin
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: e8a698b110f19dff593a93a41e9d6f20eb80cdb0
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.date: 04/15/2020
+ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389010"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538180"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V değerlendirmesi için destek matrisi
 
@@ -35,7 +35,7 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin.](concepts-assessment-calcu
 | **Destek**                | **Şey**               
 | :-------------------       | :------------------- |
 | **Hyper-V konağı**       | Hyper-V ana bilgisayar tek başına veya bir kümede dağıtılabilir.<br/><br/> Hyper-V ana bilgisayar Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırabilir.<br/> Windows Server 2012 çalıştıran Hyper-V konaklarında yer alan VM'leri değerlendiremezsiniz.
-| **Izin**           | Hyper-V ana bilgisayarda Yönetici izinlerine ihtiyacınız vardır. <br/> Yönetici izinleri atamak istemiyorsanız, yerel veya etki alanı kullanıcı hesabı oluşturun ve kullanıcı hesabını bu gruplara ekleyin: Uzak Yönetim Kullanıcıları, Hyper-V Yöneticileri ve Performans Monitörü Kullanıcıları. |
+| **İzinler**           | Hyper-V ana bilgisayarda Yönetici izinlerine ihtiyacınız vardır. <br/> Yönetici izinleri atamak istemiyorsanız, yerel veya etki alanı kullanıcı hesabı oluşturun ve kullanıcı hesabını bu gruplara ekleyin: Uzak Yönetim Kullanıcıları, Hyper-V Yöneticileri ve Performans Monitörü Kullanıcıları. |
 | **PowerShell uzaktan iletişim**   | [PowerShell remoting](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7) her Hyper-V ana bilgisayarda etkinleştirilmelidir. |
 | **Hyper-V Çoğaltma**       | Hyper-V Çoğaltma kullanıyorsanız (veya aynı VM tanımlayıcıları olan birden fazla VM'inüz varsa) ve Azure Geçiş'i kullanarak hem orijinal hem de çoğaltılan VM'leri keşfederseniz, Azure Geçiş tarafından oluşturulan değerlendirme doğru olmayabilir. |
 
@@ -53,7 +53,8 @@ Değerlendirmeler hakkında [daha fazla bilgi edinin.](concepts-assessment-calcu
 Azure Geçir, keşif ve değerlendirme için [Azure Geçir cihazını](migrate-appliance.md) kullanır. Cihazı portaldan indirdiğiniz sıkıştırılmış Hyper-V VHD kullanarak veya [PowerShell komut dosyası](deploy-appliance-script.md)kullanarak dağıtabilirsiniz.
 
 - Hyper-V için [cihaz gereksinimleri](migrate-appliance.md#appliance---hyper-v) hakkında bilgi edinin.
-- Cihazın erişmesi gereken [URL'ler](migrate-appliance.md#url-access) hakkında bilgi edinin.
+- Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet](migrate-appliance.md#government-cloud-urls) bulutlarında erişmesi gereken URL'ler hakkında bilgi edinin.
+- Azure Kamu'da, komut dosyasını kullanarak cihazı dağıtmanız gerekir.
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 
@@ -71,13 +72,14 @@ Aşağıdaki tabloda değerlendirme için bağlantı noktası gereksinimleri öz
 **Gereksinim** | **Şey** 
 --- | --- 
 **Dağıtımdan önce** | Sunucu Değerlendirme aracı projeye eklenen bir Azure Geçiş projeniz olmalıdır.<br/><br/>  Şirket içi makinelerinizi keşfetmek için bir Azure Geçir cihazı kurduktan sonra bağımlılık görselleştirmesini dağıtAbilirsiniz<br/><br/> İlk kez bir [projeoluşturmayı öğrenin.](create-manage-projects.md)<br/> Varolan bir projeye nasıl bir değerlendirme aracı ekleyeceğinizi [öğrenin.](how-to-assess.md)<br/> [Hyper-V V MM'lerin](how-to-set-up-appliance-hyper-v.md)değerlendirilmesi için Azure Geçir cihazını nasıl ayarlayatıyarı nızı öğrenin.
-**Azure Kamu** | Bağımlılık görselleştirmesi Azure Kamu'da kullanılamaz.
+**Azure Devlet Kurumları** | Bağımlılık görselleştirmesi Azure Kamu'da kullanılamaz.
 **Log Analytics** | Azure Geçir, bağımlılık görselleştirme [süslerinde](../log-analytics/log-analytics-overview.md) [Hizmet Haritası](../operations-management-suite/operations-management-suite-service-map.md) çözümünü kullanır.<br/><br/> Yeni veya varolan bir Log Analytics çalışma alanını bir Azure Geçiş projesiyle ilişkilendirin. Azure Geçir projesinin çalışma alanı eklendikten sonra değiştirilemez. <br/><br/> Çalışma alanı, Azure Geçiş projesiyle aynı abonelikte olmalıdır.<br/><br/> Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde ikamet etmelidir. Diğer bölgelerdeki çalışma alanları projeyle ilişkilendirilemez.<br/><br/> Çalışma [alanı, Hizmet Haritası'nın desteklendiği](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)bir bölgede olmalıdır.<br/><br/> Günlük Analizi'nde, Azure Geçişi ile ilişkili çalışma alanı Geçiş Projesi anahtarı ve proje adı ile etiketlenir.
 **Gerekli aracılar** | Analiz etmek istediğiniz her makineye aşağıdaki aracıları yükleyin:<br/><br/> [Microsoft İzleme aracısı (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/> [Bağımlılık aracısı.](../azure-monitor/platform/agents-overview.md#dependency-agent)<br/><br/> Şirket içi makineler internete bağlı değilse, Log Analytics ağ geçidini indirmeniz ve yüklemeniz gerekir.<br/><br/> [Bağımlılık aracısını](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) ve [MMA'yı](how-to-create-group-machine-dependencies.md#install-the-mma)yükleme hakkında daha fazla bilgi edinin.
 **Log Analytics çalışma alanı** | Çalışma alanı, Azure Geçiş projesiyle aynı abonelikte olmalıdır.<br/><br/> Azure Geçir, Doğu ABD, Güneydoğu Asya ve Batı Avrupa bölgelerinde bulunan çalışma alanlarını destekler.<br/><br/>  Çalışma [alanı, Hizmet Haritası'nın desteklendiği](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites)bir bölgede olmalıdır.<br/><br/> Azure Geçir projesinin çalışma alanı eklendikten sonra değiştirilemez.
 **Maliyetler** | Hizmet Haritası çözümü, ilk 180 gün boyunca (Log Analytics çalışma alanını Azure Geçiş projesiyle ilişkilendirdiğiniz günden itibaren) herhangi bir ücrete tabi değildir)/<br/><br/> 180 günden sonra standart Log Analytics ücretleri uygulanır.<br/><br/> İlişkili Log Analytics çalışma alanında Hizmet Haritası dışında herhangi bir çözümün kullanılması, Log Analytics için [standart ücrete](https://azure.microsoft.com/pricing/details/log-analytics/) tabi olacaktır.<br/><br/> Azure Geçir projesi silindiğinde, çalışma alanı da silinmez. Proje silen projeden sonra, Hizmet Haritası kullanımı ücretsiz değildir ve her düğüm Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilir/<br/><br/>Azure Geçiş genel kullanılabilirliğinden önce oluşturduğunuz projeleriniz varsa (GA- 28 Şubat 2018), ek Hizmet Haritası ücretleri ne tabi olabilir. Yalnızca 180 gün sonra ödeme sağlamak için, GA'dan önceki mevcut çalışma alanları hala ücretli olduğundan yeni bir proje oluşturmanızı öneririz.
 **Yönetim** | Aracıları çalışma alanına kaydettiğinizde, Azure Geçiş projesi tarafından sağlanan kimlik ve anahtarı kullanırsınız.<br/><br/> Azure Geçiş dışında Günlük Analizi çalışma alanını kullanabilirsiniz.<br/><br/> İlişkili Azure Geçiş projesini silerseniz, çalışma alanı otomatik olarak silinmez. [El ile silin.](../azure-monitor/platform/manage-access.md)<br/><br/> Azure Geçiş projesini silerseniz Azure Geçir tarafından oluşturulan çalışma alanını silmeyin. Bunu yaparsanız, bağımlılık görselleştirme işlevselliği beklendiği gibi çalışmaz.
 **İnternet bağlantısı** | Makineler Internet'e bağlı değilse, log Analytics ağ geçidini yüklemeniz gerekir.
+**Azure Devlet Kurumları** | Aracı tabanlı bağımlılık çözümlemesi desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

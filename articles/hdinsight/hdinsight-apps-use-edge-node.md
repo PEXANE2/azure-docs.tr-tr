@@ -1,56 +1,58 @@
 ---
 title: Azure HDInsight'ta Apache Hadoop kümelerinde boş kenar düğümleri kullanma
-description: İstemci olarak kullanılabilen bir HDInsight kümesine boş kenar düğümü ekleme ve ardından HDInsight uygulamalarınızı test etme/barındırma.
+description: HDInsight kümesine boş kenar düğümü ekleme. İstemci olarak kullanılır ve ardından HDInsight uygulamalarınızı sınayın veya barındırır.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 01/27/2020
-ms.openlocfilehash: d7723ea63cbb9bab6adf42d7e92f84a6b8b2ab9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/16/2020
+ms.openlocfilehash: f6dea00bf3b3e8a58f42da8fd8ad59ccec2dea72
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272610"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537806"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>HDInsight'ta Apache Hadoop kümelerinde boş kenar düğümlerini kullanma
 
-HDInsight kümesine boş kenar düğümü eklemeyi öğrenin. Boş kenar düğümü, headnodes olarak yüklü ve yapılandırılmış aynı istemci araçları ile bir Linux sanal makine, ancak hiçbir [Apache Hadoop](https://hadoop.apache.org/) hizmetleri çalışıyor. Kümeye erişmek, istemci uygulamalarınızı test etmek ve istemci uygulamalarınızı barındırmak için kenar düğümlerini kullanabilirsiniz.
+HDInsight kümesine boş kenar düğümü eklemeyi öğrenin. Boş kenar düğümü, kafa düğümlerinde olduğu gibi aynı istemci araçlarının yüklenmiş ve yapılandırılan linux sanal makinesidir. Ama [Apache Hadoop](./hadoop/apache-hadoop-introduction.md) hizmetleri çalışmadan. Kümeye erişmek, istemci uygulamalarınızı test etmek ve istemci uygulamalarınızı barındırmak için kenar düğümlerini kullanabilirsiniz.
 
 Kümeyi oluştururken yeni bir kümeye varolan bir HDInsight kümesine boş kenar düğümü ekleyebilirsiniz. Boş kenar düğümü ekleme, Azure Kaynak Yöneticisi şablonu kullanılarak yapılır.  Aşağıdaki örnek, şablon kullanılarak nasıl yapıldığını gösterir:
 
-    "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "2015-03-01-preview",
-            "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "{}"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "[parameters('installScriptAction')]",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
+```json
+"resources": [
+    {
+        "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+        "type": "Microsoft.HDInsight/clusters/applications",
+        "apiVersion": "2015-03-01-preview",
+        "dependsOn": [ "[concat('Microsoft.HDInsight/clusters/',parameters('clusterName'))]" ],
+        "properties": {
+            "marketPlaceIdentifier": "EmptyNode",
+            "computeProfile": {
+                "roles": [{
+                    "name": "edgenode",
+                    "targetInstanceCount": 1,
+                    "hardwareProfile": {
+                        "vmSize": "{}"
+                    }
+                }]
+            },
+            "installScriptActions": [{
+                "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+                "uri": "[parameters('installScriptAction')]",
+                "roles": ["edgenode"]
+            }],
+            "uninstallScriptActions": [],
+            "httpsEndpoints": [],
+            "applicationType": "CustomApplication"
         }
-    ],
+    }
+],
+```
 
-Örnekte gösterildiği gibi, kenar düğümüne [Apache Hue](hdinsight-hadoop-hue-linux.md) yükleme gibi ek yapılandırma gerçekleştirmek için isteğe bağlı olarak komut [dosyası eylemi](hdinsight-hadoop-customize-cluster-linux.md) çağırabilirsiniz. Komut dosyası eylem komut dosyası web'de herkese açık olmalıdır.  Örneğin, komut dosyası Azure Depolama'da depolanıyorsa, ortak kapsayıcılar veya ortak lekeler kullanın.
+Örnekte gösterildiği gibi, isteğe bağlı olarak ek yapılandırma yapmak için bir [komut dosyası eylemi](hdinsight-hadoop-customize-cluster-linux.md) çağırabilirsiniz. [Apache Hue'yi](hdinsight-hadoop-hue-linux.md) kenar düğümüne yüklemek gibi. Komut dosyası eylem komut dosyası web'de herkese açık olmalıdır.  Örneğin, komut dosyası Azure Depolama'da depolanıyorsa, ortak kapsayıcılar veya ortak lekeler kullanın.
 
 Kenar düğümü sanal makine boyutu HDInsight küme işçi düğümü vm boyut gereksinimlerini karşılamalıdır. Önerilen işçi düğümü vm boyutları için [HDInsight'ta Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md#cluster-type)bölümüne bakın.
 
@@ -69,7 +71,7 @@ Bir kenar düğümü oluşturduktan sonra, SSH kullanarak kenar düğümüne ba�
 
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>Varolan bir kümeye kenar düğümü ekleme
 
-Bu bölümde, varolan bir HDInsight kümesine kenar düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub'da](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)bulunabilir. Kaynak Yöneticisi https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shşablonu' nda bulunan bir komut dosyası eylemi çağırır. Komut dosyası herhangi bir eylem gerçekleştirmez.  Kaynak Yöneticisi şablonundan arama komut dosyası eylemini göstermek içindir.
+Bu bölümde, varolan bir HDInsight kümesine kenar düğümü eklemek için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu [GitHub'da](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-add-edge-node/)bulunabilir. Kaynak Yöneticisi https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-add-edge-node/scripts/EmptyNodeSetup.shşablonu' nda bulunan bir komut dosyası eylemi çağırır. Komut dosyası herhangi bir eylem yapmaz.  Kaynak Yöneticisi şablonundan arama komut dosyası eylemini göstermek içindir.
 
 1. Azure'da oturum açmak ve Azure portalında Azure Kaynak Yöneticisi şablonuna açmak için aşağıdaki resmi seçin.
 
@@ -91,7 +93,7 @@ Bu bölümde, varolan bir HDInsight kümesine kenar düğümü eklemek için bir
 
 ## <a name="add-an-edge-node-when-creating-a-cluster"></a>Küme oluştururken kenar düğümü ekleme
 
-Bu bölümde, kenar düğümü olan HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu Azure [hızlı başlatma şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shşablonu' nda bulunan bir komut dosyası eylemi çağırır. Komut dosyası herhangi bir eylem gerçekleştirmez.  Kaynak Yöneticisi şablonundan arama komut dosyası eylemini göstermek içindir.
+Bu bölümde, kenar düğümü olan HDInsight kümesi oluşturmak için bir Kaynak Yöneticisi şablonu kullanırsınız.  Kaynak Yöneticisi şablonu Azure [hızlı başlatma şablonları galerisinde](https://azure.microsoft.com/documentation/templates/101-hdinsight-linux-with-edge-node/)bulunabilir. Kaynak Yöneticisi https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-hdinsight-linux-with-edge-node/scripts/EmptyNodeSetup.shşablonu' nda bulunan bir komut dosyası eylemi çağırır. Komut dosyası herhangi bir eylem yapmaz.  Kaynak Yöneticisi şablonundan arama komut dosyası eylemini göstermek içindir.
 
 1. Henüz bir HDInsight kümeniz yoksa bir HDInsight kümesi oluşturun.  Bkz. [HDInsight'ta Hadoop'u kullanmaya başlayın.](hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
@@ -119,7 +121,7 @@ Bu bölümde, kenar düğümü olan HDInsight kümesi oluşturmak için bir Kayn
 
 ## <a name="add-multiple-edge-nodes"></a>Birden çok kenar düğümü ekleme
 
-BIR HDInsight kümesine birden çok kenar düğümü ekleyebilirsiniz.  Birden çok kenar düğümleri yapılandırması yalnızca Azure Kaynak Yöneticisi Şablonları kullanılarak yapılabilir.  Bu makalenin başındaki şablon örneğine bakın.  Oluşturmak istediğiniz kenar düğümleri sayısını yansıtacak şekilde **hedefInstanceCount'ı** güncelleştirmeniz gerekir.
+BIR HDInsight kümesine birden çok kenar düğümü ekleyebilirsiniz.  Birden çok kenar düğümleri yapılandırması yalnızca Azure Kaynak Yöneticisi Şablonları kullanılarak yapılabilir.  Bu makalenin başındaki şablon örneğine bakın.  Oluşturmak istediğiniz kenar düğümleri sayısını yansıtacak şekilde **hedefInstanceCount'ı** güncelleştirin.
 
 ## <a name="access-an-edge-node"></a>Kenar düğümüne erişin
 

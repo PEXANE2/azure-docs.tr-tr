@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 043e0f3a0ff2c1c642c63a387c571b575f77cf7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0645807aa40557c163643f1393c310668518f9be
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80050831"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535153"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B işbirliği daveti ödeme
 
@@ -52,6 +52,36 @@ Davet e-postasının doğrudan bir bağlantı üzerinden tavsiye edildiği bazı
  - Bazen davet edilen kullanıcı nesnesi, ilgili kişi nesnesiyle (örneğin, Outlook kişi nesnesi) çakışması nedeniyle e-posta adresine sahip olmayabilir. Bu durumda, kullanıcının davet e-postasındakullanım URL'sini tıklatması gerekir.
  - Kullanıcı, davet edilen e-posta adresinin takma adı ile oturum açabilir. (Takma ad, bir e-posta hesabıyla ilişkili ek bir e-posta adresidir.) Bu durumda, kullanıcının davet e-postasındakullanım URL'sini tıklatması gerekir.
 
+## <a name="invitation-redemption-flow"></a>Davet itfa akışı
+
+Bir kullanıcı [davet e-postasında](invitation-email-elements.md) **daveti kabul** et bağlantısını tıklattığında, Azure AD aşağıda gösterildiği gibi kullanım akışına bağlı olarak daveti otomatik olarak kullanabilirsiniz:
+
+![Kullanım akışı diyagramını gösteren ekran görüntüsü](media/redemption-experience/invitation-redemption-flow.png)
+
+1. Kullanım işlemi, kullanıcının varolan bir kişisel [Microsoft hesabı (MSA)](https://support.microsoft.com/help/4026324/microsoft-account-how-to-create)olup olmadığını denetler.
+
+2. Bir yönetici [doğrudan federasyon](direct-federation.md)etkinleştirmişse, Azure AD kullanıcının etki alanı sonekinin yapılandırılmış bir SAML/WS-Fed kimlik sağlayıcısının etki alanıyla eşleşip eşleşmediğini denetler ve kullanıcıyı önceden yapılandırılmış kimlik sağlayıcısına yönlendirir.
+
+3. Bir yönetici [Google federasyonunu](google-federation.md)etkinleştirmişse, Azure AD kullanıcının etki alanı sonekinin gmail.com veya googlemail.com olup olmadığını denetler ve kullanıcıyı Google'a yönlendirir.
+
+4. Azure AD, kullanıcının varolan bir Azure [AD kiracısında](what-is-b2b.md#easily-add-guest-users-in-the-azure-ad-portal)var olup olmadığını belirlemek için kullanıcı tabanlı keşif gerçekleştirir.
+
+5. Kullanıcının ev **dizini** tanımlandıktan sonra, kullanıcı oturum açması için ilgili kimlik sağlayıcısına gönderilir.  
+
+6. 1 ile 4 arasında adımlar davet edilen kullanıcı için bir ev dizini bulamazsa, Azure AD davet eden kiracının misafirler için E-posta parolasını [(OTP)](one-time-passcode.md) etkinleştirip etkinleştirmediğini belirler.
+
+7. [Konuklar için bir kerelik e-posta şifresi etkinse,](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode)kullanıcıya davet edilen e-posta aracılığıyla bir parola gönderilir. Kullanıcı bu parolayı Azure AD oturum açma sayfasından alır ve girer.
+
+8. Konuklar için bir kerelik e-posta parolası devre dışı bırakılırsa, Azure AD etki alanı sonekini Microsoft tarafından tutulan bir tüketici etki alanı listesiyle karşılar. Etki alanı tüketici etki alanı listesindeki herhangi bir etki alanıyla eşleşirse, kullanıcıdan kişisel bir Microsoft hesabı oluşturması istenir. Değilse, kullanıcıdan bir [Azure AD self servis hesabı](../users-groups-roles/directory-self-service-signup.md) (viral hesap) oluşturması istenir.
+
+9. Azure AD, e-postaya erişimi doğrulayarak bir Azure AD self servis hesabı (viral hesap) oluşturmaya çalışır. Hesabın doğrulanması, e-postaya bir kod göndererek ve kullanıcının onu alıp Azure AD'ye göndermesini sağlayarak yapılır. Ancak, davet edilen kullanıcının kiracısı federe ise veya AllowEmailVerifiedUsers alanı davet edilen kullanıcının kiracısında false olarak ayarlanmışsa, kullanıcı itfayı tamamlayamaz ve akış bir hatayla sonuçlanır. Daha fazla bilgi için Sorun [Giderme Azure Etkin Dizin B2B işbirliğine](troubleshoot.md#the-user-that-i-invited-is-receiving-an-error-during-redemption)bakın.
+
+10. Kullanıcıdan kişisel bir Microsoft hesabı (MSA) oluşturması istenir.
+
+11. Doğru kimlik sağlayıcısına kimlik doğrulaması yaptıktan sonra, kullanıcı [onay deneyimini](redemption-experience.md#consent-experience-for-the-guest)tamamlamak için Azure AD'ye yönlendirilir.  
+
+Ödemenin kiracılı bir uygulama bağlantısı üzerinden gerçekleştiği tam zamanında (JIT) itfa işlemleri için 8 ile 10 arasındaki adımlar kullanılamaz. Bir kullanıcı adım 6'ya ulaşırsa ve E-posta tek seferlik parola özelliği etkinleştirilmezse, kullanıcı bir hata iletisi alır ve daveti kullanamaz. Bunu önlemek için, yöneticiler [E-posta'nın tek seferlik parolasını etkinleştirmeli](one-time-passcode.md#when-does-a-guest-user-get-a-one-time-passcode) veya kullanıcının bir davet bağlantısını tıklatmasını sağlamalıdır.
+
 ## <a name="consent-experience-for-the-guest"></a>Konuk için rıza deneyimi
 
 Bir konuk, bir ortak kuruluştaki kaynaklara erişmek için ilk kez giriş yaptığında, aşağıdaki sayfalarda yönlendirilir. 
@@ -67,8 +97,7 @@ Bir konuk, bir ortak kuruluştaki kaynaklara erişmek için ilk kez giriş yapt�
 
    ![Yeni kullanım koşullarını gösteren ekran görüntüsü](media/redemption-experience/terms-of-use-accept.png) 
 
-   > [!NOTE]
-   > **Kuruluş**ilişkileri >  **Yönetme** > Kullanım [Koşullarını](../governance/active-directory-tou.md) **görebilirsiniz.**
+   **Kuruluş**ilişkileri >  **Yönetme** > Kullanım [Koşullarını](../governance/active-directory-tou.md) **görebilirsiniz.**
 
 3. Aksi belirtilmedikçe, konuk, konuğun erişebileceği uygulamaları listeleyen Uygulamalar erişim paneline yönlendirilir.
 

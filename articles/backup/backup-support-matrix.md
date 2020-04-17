@@ -3,12 +3,12 @@ title: Azure Backup destek matrisi
 description: Azure Yedekleme hizmeti için destek ayarlarının ve sınırlamalarının bir özetini sağlar.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 120882b15dcf9f27c280984ff6d0df31e38ebb73
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878961"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537330"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Yedekleme için destek matrisi
 
@@ -90,7 +90,7 @@ Azure Yedekleme, Azure VM yedeklemeleri için gün ışığından yararlanma saa
 
 Disk deduplication desteği aşağıdaki gibidir:
 
-- Windows çalıştıran Hyper-V V VM'leri yedeklemek için DPM veya MAB'ları kullandığınızda disk çoğaltma şirket içinde desteklenir. Windows Server, VM'ye yedekleme depolama alanı olarak eklenen sanal sabit disklerde (VHD'ler) veri çoğaltma (ana bilgisayar düzeyinde) gerçekleştirir.
+- Windows çalıştıran Hyper-V V VM'leri yedeklemek için DPM veya MABS kullandığınızda disk çoğaltma şirket içinde desteklenir. Windows Server, VM'ye yedekleme depolama alanı olarak eklenen sanal sabit disklerde (VHD'ler) veri çoğaltma (ana bilgisayar düzeyinde) gerçekleştirir.
 - Çoğaltma, herhangi bir Yedekleme bileşeni için Azure'da desteklenmez. DPM ve MABS Azure'da dağıtıldığında, VM'ye bağlı depolama diskleri kopyalanamıyor.
 
 ## <a name="security-and-encryption-support"></a>Güvenlik ve şifreleme desteği

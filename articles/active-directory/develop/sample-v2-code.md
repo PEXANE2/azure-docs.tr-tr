@@ -12,12 +12,12 @@ ms.date: 07/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5596f5f40e293a7bd11ac6a5f900e05c0b8d3b0e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 15578b6adc19eb3513e0d7e1d3d2c400c9170250
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80883143"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535987"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft kimlik platformu kodu örnekleri (v2.0 bitiş noktası)
 
@@ -53,7 +53,7 @@ Aşağıdaki örnekler, kullanıcıları oturum açan web uygulamalarını göst
 
 | Platform | Yalnızca kullanıcılarda işaretler | Kullanıcılarda işaretler ve Microsoft Graph çağrıları |
 | -------- | ------------------- | --------------------------------- |
-| ![Bu resim ASP.NET Core logosunu gösterir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdek 2.2 | [ASP.NET Core WebApp'ta bulunan kullanıcılar öğretici](https://aka.ms/aspnetcore-webapp-sign-in) | ASP.NET Core [Web App](https://aka.ms/aspnetcore-webapp-call-msgraph) aynı örnek Microsoft Graph faz çağırır |
+| ![Bu resim ASP.NET Core logosunu gösterir](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Çekirdek 2.2 | [ASP.NET Core WebApp'ta bulunan kullanıcılar öğretici](https://aka.ms/aspnetcore-webapp-sign-in) | ASP.NET Core web uygulamasında aynı örnek [Microsoft Graph fazı olarak adlandırıyor](https://aka.ms/aspnetcore-webapp-call-msgraph) |
 | ![Bu resim ASP.NET logosunu gösterir](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [ASP.NET Quickstart](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-sınırlı kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-eğitim-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Bu resim Java logosunu gösterir](media/sample-v2-code/logo_java.png)  |                   | [ms-kimlik-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Bu resim Python logosunu gösterir](media/sample-v2-code/logo_python.png)  |                   | [ms-kimlik-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |

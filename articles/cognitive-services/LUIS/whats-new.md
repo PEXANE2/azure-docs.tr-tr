@@ -3,12 +3,12 @@ title: Yenilikler - Dil Anlayışı (LUIS)
 description: Bu makale, Azure Bilişsel Hizmetler Dil Anlama API'si hakkındaki haberlerle düzenli olarak güncelleştirilir.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: 562f7f8b4974363daab91991e6a8219b352432fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6334b157f68f09f2b165c6073ba63f45a0caf3c4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156013"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538027"
 ---
 # <a name="whats-new-in-language-understanding"></a>Dil Anlayışında yenilikler
 
@@ -73,8 +73,8 @@ Build 2019 Konferansı'nda aşağıdaki özellikler yayınlandı:
 * [V3 API geçiş kılavuzuönizlemesi](luis-migration-api-v3.md)
 * [Geliştirilmiş analiz panosu](luis-how-to-use-dashboard.md)
 * [Geliştirilmiş önceden oluşturulmuş etki alanları](luis-reference-prebuilt-domains.md)
-* [Dinamik liste varlıkları](luis-migration-api-v3.md#dynamic-lists-passed-in-at-prediction-time)
-* [Dış varlıklar](luis-migration-api-v3.md#external-entities-passed-in-at-prediction-time)
+* [Dinamik liste varlıkları](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [Dış varlıklar](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
 
 ## <a name="blogs"></a>Bloglar
 

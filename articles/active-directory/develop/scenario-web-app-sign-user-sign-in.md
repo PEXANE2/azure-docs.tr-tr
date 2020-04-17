@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 317ca55adb9f680dc93343a185395abad08889da
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 2ab5697ceff612e65174fdb7f9ef6137e2c8b9a5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881324"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537075"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Kullanıcılarda oturum açan web uygulaması: Oturum açma ve oturum açma
 
@@ -205,7 +205,7 @@ Kullanıcı uygulamanızda oturum aştıktan sonra, oturumunuzu oturum açmalar�
 ## <a name="sign-out"></a>Oturumu kapatma
 
 Bir web uygulamasından oturum açma, oturum açmış hesapla ilgili bilgileri web uygulamasının durumundan kaldırmaktan daha fazlasını içerir.
-Web uygulaması ayrıca, oturum u imzalamak için `logout` kullanıcıyı Microsoft kimlik platformu bitiş noktasına yönlendirmelidir. 
+Web uygulaması ayrıca, oturum u imzalamak için `logout` kullanıcıyı Microsoft kimlik platformu bitiş noktasına yönlendirmelidir.
 
 Web uygulamanız kullanıcıyı `logout` bitiş noktasına yönlendirdiğinde, bu uç nokta kullanıcının oturumunu tarayıcıdan temizler. Uygulamanız `logout` bitiş noktasına gitmediyse, kullanıcı kimlik bilgilerini tekrar girmeden uygulamanızın kimliğini yeniden doğrular. Bunun nedeni, Microsoft kimlik platformu bitiş noktası ile geçerli bir tek oturum oturumu olacak olmasıdır.
 
@@ -306,7 +306,7 @@ Python quickstart'ta, oturum açma düğmesi [şablonlar/index.html#L10](https:/
     <meta charset="UTF-8">
 </head>
 <body>
-    <h1>Microsoft Identity Python Web App</h1>
+    <h1>Microsoft Identity Python web app</h1>
     Welcome {{ user.get("name") }}!
     <li><a href='/graphcall'>Call Microsoft Graph API</a></li>
     <li><a href="/logout">Logout</a></li>

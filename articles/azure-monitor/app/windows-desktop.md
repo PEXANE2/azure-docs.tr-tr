@@ -3,12 +3,12 @@ title: Windows masaüstü uygulamaları için kullanımı ve performansı izleme
 description: Application Insights ile Windows masaüstü uygulamanızın kullanımını ve performansını analiz edin.
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 8234b9ba2c92fc64cfa8f598db99954e00caab45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670840"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537398"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasik Windows Masaüstü uygulamalarında kullanımı ve performansı izleme
 
@@ -109,6 +109,6 @@ Enstrümantasyon anahtarını `Program.cs` `Main()` ayarlayarak aşağıdaki yö
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Pano oluşturma](../../azure-monitor/app/overview-dashboard.md)
 * [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)
-* [Ölçümleri keşfetme](../../azure-monitor/app/metrics-explorer.md)
+* [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
 * [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
 

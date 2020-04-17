@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ab342dba5c8be2ff3793c0eb36926969b3e364e5
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80655652"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537296"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Önbelleği için Ön Koşullar
 
@@ -20,9 +20,6 @@ Yeni bir Azure HPC Önbelleği oluşturmak için Azure portalını kullanmadan �
 ## <a name="azure-subscription"></a>Azure aboneliği
 
 Ücretli abonelik önerilir.
-
-> [!NOTE]
-> GA sürümün ilk birkaç ayında, önbellek örneği oluşturmak için kullanılabilmesi için Azure HPC Önbellek ekibinin aboneliğinizi erişim listesine eklemesi gerekir. Bu yordam, her müşterinin önbelleklerinden yüksek kaliteli yanıt almasını sağlamaya yardımcı olur. Erişim istemek için [bu formu](https://aka.ms/onboard-hpc-cache) doldurun.
 
 ## <a name="network-infrastructure"></a>Ağ altyapısı
 
@@ -84,11 +81,11 @@ Uyumlu bir depolama hesabı oluşturmak için şu ayarları kullanın:
 * Erişim katmanı (varsayılan): **Sıcak**
 
 Önbelleğinizle aynı konumda bir depolama hesabı kullanmak iyi bir uygulamadır.
-<!-- clarify location - same region or same resource group or same virtual network? -->
 
 Ayrıca, önbellek uygulamasına Yukarıda [İzinler'de](#permissions)belirtildiği gibi Azure depolama hesabınıza erişim izni vermeniz gerekir. Önbelleğe gerekli erişim rollerini vermek için [depolama hedefleri ekle](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account) yordamını izleyin. Depolama hesabı sahibi değilseniz, sahibinin bu adımı yapmasını sorun.
 
 ### <a name="nfs-storage-requirements"></a>NFS depolama gereksinimleri
+<!-- linked from configuration.md -->
 
 Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanıyorsanız, bu gereksinimleri karşıladığından emin olun. Bu ayarları doğrulamak için depolama sisteminiz (veya veri merkeziniz) için ağ yöneticileri veya güvenlik duvarı yöneticileriyle birlikte çalışmanız gerekebilir.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 205f4a27a7903bc5a1da3fc12e3d4a02b23f58cf
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 0dc70aa67a1414c08ec70e2e034f4ab12b194c0a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80990931"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535953"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Evrensel Windows Platformu uygulamasından Microsoft Graph API'yi (XAML) arayın
 
@@ -48,7 +48,7 @@ Bu kılavuzda aşağıdaki NuGet paketi kullanVet
 
 ## <a name="set-up-your-project"></a>Projenizi ayarlama
 
-Bu bölümde, Windows Desktop .NET uygulamasını (XAML) Microsoft ile Oturum Açma ile tümleştirmek için adım adım yönergeler sağlanıyor. Ardından uygulama, Microsoft Graph API gibi belirteç gerektiren Web API'lerini sorgulayabilir.
+Bu bölümde, Windows Desktop .NET uygulamasını (XAML) Microsoft ile Oturum Açma ile tümleştirmek için adım adım yönergeler sağlanıyor. Ardından uygulama, Microsoft Graph API gibi belirteç gerektiren web API'lerini sorgulayabilir.
 
 Bu kılavuz, Grafik API'sini sorgulayan bir düğme ve oturum dan çıkma düğmesini görüntüleyen bir uygulama oluşturur. Ayrıca, aramaların sonuçlarını içeren metin kutularını da görüntüler.
 
@@ -118,7 +118,7 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl ku
         //Set the scope for API call to user.read
         string[] scopes = new string[] { "user.read" };
 
-        // Below are the clientId (Application Id) of your app registration and the tenant information. 
+        // Below are the clientId (Application Id) of your app registration and the tenant information.
         // You have to replace:
         // - the content of ClientID with the Application Id for your app registration
         // - the content of Tenant with the information about the accounts allowed to sign in in your application:
@@ -126,9 +126,9 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl ku
         //   - for any Work or School accounts, use organizations
         //   - for any Work or School accounts, or Microsoft personal account, use common
         //   - for Microsoft Personal account, use consumers
-        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";        
+        private const string ClientId = "0b8b0665-bc13-4fdc-bd72-e0227b9fc011";
 
-        public IPublicClientApplication PublicClientApp { get; } 
+        public IPublicClientApplication PublicClientApp { get; }
 
         public MainPage()
         {
@@ -153,8 +153,8 @@ Bu bölümde, Microsoft Graph API için bir belirteç almak için MSAL nasıl ku
          ResultText.Text = string.Empty;
          TokenInfoText.Text = string.Empty;
 
-         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.            
-         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false); 
+         // It's good practice to not do work on the UI thread, so use ConfigureAwait(false) whenever possible.
+         IEnumerable<IAccount> accounts = await PublicClientApp.GetAccountsAsync().ConfigureAwait(false);
          IAccount firstAccount = accounts.FirstOrDefault();
 
          try
@@ -239,7 +239,7 @@ Sonunda, `AcquireTokenSilent` yöntem başarısız olur. Hata nedenleri arasınd
        {
            var request = new System.Net.Http.HttpRequestMessage(System.Net.Http.HttpMethod.Get, url);
            // Add the token in Authorization header
-           request.Headers.Authorization = 
+           request.Headers.Authorization =
              new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
            response = await httpClient.SendAsync(request);
            var content = await response.Content.ReadAsStringAsync();
@@ -352,7 +352,7 @@ Uygulamanız için kimlik doğrulamasını yapılandırın:
 
 1. [Azure portalında](https://portal.azure.com), **Yönet**altında, **Kimlik Doğrulama'yı**seçin.
 1. Yönlendirme **URI'lerinde** | **kamu istemcileri (mobil, masaüstü)** bölümü için **https://login.microsoftonline.com/common/oauth2/nativeclient**Önerilen Yönlendirme URL'leri, kontrol edin.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 Uygulamanız için API izinlerini yapılandırın:
 

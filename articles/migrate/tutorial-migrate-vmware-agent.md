@@ -4,21 +4,19 @@ description: Azure Geçişi ile VMware VM'lerin aracı tabanlı geçişini nası
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.custom: MVC
-ms.openlocfilehash: 64873c5185660c58cd4d07d60df3d086364d6288
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6855c3e81aece0358146608b6cf179fb923c54c8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238443"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535341"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM'leri Azure'a geçir (aracı tabanlı)
 
 Bu makalede, Azure Geçiş Sunucusu Geçişi aracıyla aracı tabanlı geçiş kullanarak şirket içi VMware VM'leri Azure'a nasıl geçirilebilirsiniz.
 
-[Azure Geçiş,](migrate-services-overview.md) şirket içi uygulamalarınızın ve iş yüklerinizin ve AWS/GCP VM örneklerinin Azure'a keşfini, değerlendirmesini ve geçişini izlemek için merkezi bir hub sağlar. Hub, değerlendirme ve geçiş için Azure Geçiş araçlarının yanı sıra üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
-
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Kaynak ortamı nı ayarlayın ve aracı tabanlı geçiş için bir Azure Geçir çoğaltma cihazı dağıtın.
 > * Geçiş için hedef ortamı ayarlayın.
@@ -78,7 +76,7 @@ Azure Geçir Sunucu Değerlendirmesi ile zaten bir değerlendirme çalıştırd�
 Bir değerlendirme çalıştırmadıysanız, Azure Geçiş Sunucusu Geçişi ile geçiş yapmadan önce Azure izinlerini ayarlamanız gerekir.
 
 - **Proje oluşturma**: Azure hesabınızın bir Azure Geçiş projesi oluşturmak için izinlere ihtiyacı vardır. 
-- **Azure Geçir çoğaltma cihazını kaydedin**: Çoğaltma cihazı Azure hesabınızda bir Azure Active Directory uygulaması oluşturur ve kaydeder. Bunun için izinleri temsilciniz gerekir.
+- **Azure Geçir çoğaltma cihazını kaydedin**: Çoğaltma cihazı Azure hesabınızda bir Azure Active Directory uygulaması oluşturur ve kaydeder. Bunun için temsilci izinleri.
 - **Anahtar Kasası Oluşturma**: Azure Geçir Sunucusu Geçişi'ni kullanarak VMware VM'leri geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için kaynak grubunda bir Anahtar Kasası oluşturur. Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda rol atama izinlerine ihtiyacınız vardır. 
 
 
@@ -148,7 +146,7 @@ Hesabı aşağıdaki gibi oluşturun:
 **Görev** | **Rol/İzinler** | **Şey**
 --- | --- | ---
 **VM bulma** | En az bir salt okunur kullanıcı<br/><br/> Veri Merkezi nesnesi –> Alt Nesneye Yay, role=Read-only | Kullanıcı veri merkezi düzeyinde atandı ve bu veri merkezindeki tüm nesnelere erişimi var.<br/><br/> Erişimi kısıtlamak **için, Yayı alt nesneye** (vSphere ana bilgisayarlar, veri depoları, VM'ler ve ağlar) **Access'le erişim yok** rolünü atayın.
-**Tam çoğaltma, yük devretme, yeniden çalışma** |  Gerekli izinlere sahip bir rol (Azure_Site_Recovery) oluşturup rolü VMware kullanıcısı veya grubuna atayın<br/><br/> Veri Merkezi nesnesi –> Alt Nesneye Yay, role=Azure_Site_Recovery<br/><br/> Veri deposu -> Alan ayırma, veri deposuna göz atma, düşük düzeyli dosya işlemleri, dosyayı kaldırma, sanal makine dosyalarını güncelleştirme<br/><br/> Ağ -> Ağ ataması<br/><br/> Kaynak -> VM’yi kaynak havuzuna atama, kapalı VM’yi geçirme, açık VM’yi geçirme<br/><br/> Görevler -> Görev oluşturma, görevi güncelleştirme<br/><br/> Sanal makine -> Yapılandırma<br/><br/> Sanal makine -> Etkileşim -> soruyu yanıtlama, cihaz bağlantısı, CD ortamını yapılandırma, disket ortamını yapılandırma, kapatma, açma, VMware araçlarını yükleme<br/><br/> Sanal makine -> Envanter -> Oluşturma, kaydetme, kaydı kaldırma<br/><br/> Sanal makine -> Sağlama -> Sanal makine indirmeye izin verme, Sanal makine dosyalarını karşıya yüklemeye izin verme<br/><br/> Sanal makine -> Anlık görüntüler -> Anlık görüntüleri kaldırma | Kullanıcı veri merkezi düzeyinde atandı ve bu veri merkezindeki tüm nesnelere erişimi var.<br/><br/> Erişimi kısıtlamak **için, Yayı alt nesneye** (vSphere ana bilgisayarlar, veri depoları, VM'ler ve ağlar) **Access'le erişim yok** rolünü atayın.
+**Tam çoğaltma, yük devretme, yeniden çalışma** |  Gerekli izinlere sahip bir rol (Azure_Site_Recovery) oluşturup rolü VMware kullanıcısı veya grubuna atayın<br/><br/> Veri Merkezi nesnesi –> Alt Nesneye Yay, role=Azure_Site_Recovery<br/><br/> Veri deposu -> Alan ayırma, veri deposuna göz atma, düşük düzeyli dosya işlemleri, dosyayı kaldırma, sanal makine dosyalarını güncelleştirme<br/><br/> Ağ -> Ağ ataması<br/><br/> Kaynak -> VM’yi kaynak havuzuna atama, kapalı VM’yi geçirme, açık VM’yi geçirme<br/><br/> Görevler -> Görev oluşturma, görevi güncelleştirme<br/><br/> Sanal makine -> Yapılandırma<br/><br/> Sanal makine -> Etkileşim -> soruyu yanıtlama, cihaz bağlantısı, CD ortamını yapılandırma, disket ortamını yapılandırma, kapatma, açma, VMware araçlarını yükleme<br/><br/> Sanal makine -> Envanter -> Oluşturma, kaydetme, kaydı kaldırma<br/><br/> Sanal makine -> Sağlama -> Sanal makine indirmeye izin verme, Sanal makine dosyalarını karşıya yüklemeye izin verme<br/><br/> Sanal makine -> Anlık görüntüler -> Anlık görüntüleri kaldırma | Kullanıcı veri merkezi düzeyinde atandı ve bu veri merkezindeki tüm nesnelere erişimi var.<br/><br/> Erişimi kısıtlamak **için, Yayı alt nesneye** (vSphere ana bilgisayarlar, veri depoları, VMsa, nd ağları) **Yayı** ile Erişim Yok rolünü atayın.
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Bir hesabı Mobility hizmeti yüklemesi için hazırlama
 
@@ -191,26 +189,18 @@ VMware VM'leri değerlendirmek için öğreticiyi izlemediyseniz, bir Azure Geç
 3. **Genel Bakış** bölümünde **Sunucuları değerlendir ve geçir**’e tıklayın.
 4. **Sunucuları Keşfedin, değerlendirin ve geçirin,** **Sunucuları Değerlendir'i tıklatın ve sunucuları geçirin.**
 
-    ![Sunucuları keşfedin ve değerlendirin](./media/tutorial-migrate-vmware-agent/assess-migrate.png)
+    ! [Sunucuları keşfedin ve değerlendirin] (./media/tutorial-migrate-vmware-agent/assess-migrate.png
 
 1. **Sunucuları bul, değerlendir ve geçir** bölümünde **Araç ekle**’ye tıklayın.
 2. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.
-3. **Proje Ayrıntıları'nda**proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin ve **İleri'yi** tıklatın
+3. **Proje Ayrıntıları** bölümünde proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtip **İleri**’ye tıklayın. Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-migrate-vmware-agent/migrate-project.png)
 
-    Bu coğrafyalardan herhangi birinde bir Azure Geçiş projesi oluşturabilirsiniz.
 
-    **Coğrafya** | **Bölge**
-    --- | ---
-    Asya | Güneydoğu Asya
-    Avrupa | Kuzey Avrupa veya Batı Avrupa
-    Amerika Birleşik Devletleri | Doğu ABD veya Batı Orta ABD
-
-    Proje için belirtilen coğrafya yalnızca şirket içi VM’lerden toplanan meta verileri depolamak için kullanılır. Gerçek geçiş için herhangi bir hedef bölge seçebilirsiniz.
 4. **Değerlendirme aracını seç'te,** **şimdi için bir değerlendirme aracı ekleyerek Atla'yı** > seçin**İleri**.
 5. **Geçiş aracı seç'te**Azure **Geçir: Sunucu Geçiş İlerletmek** > **İleri'yi**seçin.
-6. **Gözden Geçir + araç ekle,** ayarları gözden geçir ve araçları **ekle'yi** tıklatın
+6. **İnceleme + araç ekleme** bölümünde ayarları gözden geçirip **Araç ekle**’ye tıklayın
 7. Aracı ekledikten sonra, Azure Geçiş projesinde görünür > **Sunucular** > **Geçiş araçları.**
 
 ## <a name="set-up-the-replication-appliance"></a>Çoğaltma cihazını ayarlama
@@ -221,7 +211,10 @@ Geçişin ilk adımı çoğaltma cihazını kurmaktır. Çoğaltma cihazı, bu b
 - **İşlem sunucusu**: İşlem sunucusu bir çoğaltma ağ geçidi gibi davranır. Çoğaltma verilerini alır; önbelleğe alma, sıkıştırma ve şifreleme ile optimize eder ve Azure'daki bir önbellek depolama hesabına gönderir. İşlem sunucusu ayrıca çoğaltmak istediğiniz VM'lere Mobilite Hizmeti aracısını yükler ve şirket içi VMware VM'lerin otomatik keşfini gerçekleştirir.
 
 
-Çoğaltma cihazını kurmak için hazırlanmış bir Açık Sanallaştırma Uygulaması (OVA) şablonu indirirsiniz. Şablonu VMware'e aktarın ve çoğaltma cihazı VM'yi oluşturursunuz. 
+Çoğaltma cihazını birkaç şekilde ayarlayabilirsiniz.
+
+- İndirilen Açık Sanallaştırma Uygulaması (OVA) şablonuyla ayarlayın. Şablonu VMware'e aktarın ve çoğaltma cihazı VM'yi oluşturursunuz. Bu, bu öğreticide kullanılan yöntemdir.
+- Bir komut dosyası yla ayarlayın.
 
 ### <a name="download-the-replication-appliance-template"></a>Çoğaltma cihazı şablonu indirin
 

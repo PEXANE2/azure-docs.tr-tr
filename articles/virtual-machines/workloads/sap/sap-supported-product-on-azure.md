@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0aaa13ff4d3331378cc17cd0cde29be43822397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460798"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538248"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir
 Bu makalede, Azure dağıtımları için hangi SAP yazılımının desteklendirilip desteklenebileceği ve gerekli işletim sistemi sürümlerinin veya DBMS sürümlerinin ne olduğu açıklanmaktadır.
@@ -34,7 +34,7 @@ Geçerli SAP yazılımınızın desteklenip desteklenmediğini ve Azure'daki SAP
 
 
 ## <a name="general-restrictions-for-sap-workload"></a>SAP iş yükü için genel kısıtlamalar
-SAP iş yükü için kullanılabilecek Azure IaaS hizmetleri x86-64 veya x64 donanımı ile sınırlıdır. SAP iş yükü için geçerli olan Sparc veya Power CPU tabanlı teklifler yoktur. IBM ana bilgisayarı veya AS400 gibi donanım mimarilerine özel işletim sistemlerinde veya HP-UX, Solaris veya AIX işletim sistemlerinin kullanıldığı işletim sistemlerinde çalışan müşteriler, DBMS dahil sap uygulamalarını aşağıdaki işletim sistemleri:
+SAP iş yükü için kullanılabilecek Azure IaaS hizmetleri x86-64 veya x64 donanımı ile sınırlıdır. SAP iş yükü için geçerli olan Sparc veya Power CPU tabanlı teklifler yoktur. Ibm ana bilgisayarı veya AS400 gibi donanım mimarilerine özel işletim sistemlerinde veya HP-UX, Solaris veya AIX işletim sistemlerinin kullanıldığı işletim sistemlerinde çalışan müşterilerin, DBMS dahil sap uygulamalarını aşağıdaki işletim sistemlerinden biriyle değiştirmeleri gerekir:
 
 - X86-64 platformu için Windows sunucusu 64bit
 - X86-64 platformu için SUSE linux 64bit
@@ -111,20 +111,20 @@ Hedeflenen Azure altyapısında çalıştırabileceğiniz belirli HANA sürümle
 
 
 ## <a name="certified-azure-vms-and-hana-large-instance-units-and-business-transaction-throughput"></a>Sertifikalı Azure VM'ler ve HANA Büyük Örnek birimleri ve iş hareketi çıktısı
-Desteklenen işletim sistemi sürümlerini, DBMS sürümlerini ve Azure altyapı birimleri için bağımlı destek SAP yazılım sürümlerini değerlendirmenin yanı sıra, bu birimleri 'SAP' biriminde ifade edilen iş işlem çıktısı ile niteleme niz gerekir Sap. Tüm SAP boyutlandırması SAPS hesaplamalarına bağlıdır. Varolan SAP sistemlerini değerlendirirken, genellikle altyapı sağlayıcınızın yardımıyla birimlerin SAPS'sini hesaplayabilirsiniz. DBMS katmanı için olduğu kadar uygulama katmanı için de. Yeni işlevselliğin oluşturulduğu diğer durumlarda, SAP ile boyutlandırma alıştırması uygulama katmanı ve DBMS katmanı için gerekli SAPS numaralarını ortaya çıkarabilir. Altyapı sağlayıcısı olarak Microsoft, NetWeaver ve/veya HANA sertifikalı farklı birimlerin SAP iş birimi karakterizasyonunu sağlamakla yükümlüdür.
+Desteklenen işletim sistemi sürümlerini, DBMS sürümlerini ve Azure altyapı birimleri için bağımlı destek SAP yazılım sürümlerini değerlendirmenin yanı sıra, bu birimleri SAP tarafından 'SAP' biriminde ifade edilen iş işlem çıktısı ile niteleme niz gerekir. Tüm SAP boyutlandırması SAPS hesaplamalarına bağlıdır. Varolan SAP sistemlerini değerlendirirken, genellikle altyapı sağlayıcınızın yardımıyla birimlerin SAPS'sini hesaplayabilirsiniz. DBMS katmanı için olduğu kadar uygulama katmanı için de. Yeni işlevselliğin oluşturulduğu diğer durumlarda, SAP ile boyutlandırma alıştırması uygulama katmanı ve DBMS katmanı için gerekli SAPS numaralarını ortaya çıkarabilir. Altyapı sağlayıcısı olarak Microsoft, NetWeaver ve/veya HANA sertifikalı farklı birimlerin SAP iş birimi karakterizasyonunu sağlamakla yükümlüdür.
 
 Azure VM'ler için bu SAPS iş ortası numaraları [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533)belgelenmiştir. Azure HANA Büyük Örnek birimleri için SAPS iş çıktısı numaraları [SAP destek notunda](https://launchpad.support.sap.com/#/notes/2316233) #2316233
 
 SAP [destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533)baktığımızda aşağıdaki açıklamalar geçerlidir:
 
-- **M-Serisi Azure VM'ler ve Mv2 Serisi Azure VM'ler için, diğer Azure VM türlerine göre farklı minimum işletim sistemi sürümleri geçerlidir.** Daha yeni işletim sistemi sürümleri gereksinimi, farklı işletim sistemi satıcılarının işletim sistemi sürümlerinde belirli Azure VM türlerinde çalışan işletim sistemlerini etkinleştirmek veya performansı optimize etmek için sağlamak zorunda olduğu değişikliklere bağlıdır ve bu VM türlerinde SAP iş yükünün iş bilgili
+- **M-Serisi Azure VM'ler ve Mv2 Serisi Azure VM'ler için, diğer Azure VM türlerine göre farklı minimum işletim sistemi sürümleri geçerlidir.** Daha yeni işletim sistemi sürümleri gereksinimi, farklı işletim sistemi satıcılarının işletim sistemi sürümlerinde belirli Azure VM türlerinde çalışan işletim sistemlerini etkinleştirmek veya bu VM türlerinde SAP iş yükünün performansını ve iş yükünü optimize etmek için sağlamak zorunda kaldığı değişikliklere dayanır
 - Farklı VM türlerini belirten iki tablo vardır. İkinci tablo, yalnızca Azure standart Depolama'yı destekleyen Azure VM türleri için SAPS iş ortasını belirtir. Notun ikinci tablosunda belirtilen birimler üzerinde DBMS dağıtımı desteklenmiyor
 
 
 ## <a name="other-sap-products-supported-on-azure"></a>Azure'da desteklenen diğer SAP ürünleri
 Genel olarak varsayım, Azure gibi hiper ölçekli bulutların durumuyla, SAP yazılımlarının çoğunun Azure'da işlevsel sorunlar olmadan çalışması gerektiğidir. Yine de ve özel bulut görselleştirmesinin tam tersi olan SAP, farklı hyerpscale bulut sağlayıcıları için farklı SAP ürünlerine yönelik desteği açıkça ifade etmektedir. Sonuç olarak, farklı SAP ürünleri için Azure desteğini gösteren farklı SAP destek notları vardır. 
 
-İş Nesneleri BI platformu için [SAP destek notu #2145537](https://launchpad.support.sap.com/#/notes/2145537) Azure'da desteklenen SAP İş Nesneleri ürünlerinin listesini verir. Listelenen veya desteklenmemiş gibi görünen ve listelenen minimum sürümlerden daha yeni olan yazılım sürümleri ve işletim sistemi sürümlerinin bileşenleri veya kombinasyonları hakkında sorular varsa, sorguladığınız bileşene karşı bir SAP destek isteği açmanız gerekir için destek.
+İş Nesneleri BI platformu için [SAP destek notu #2145537](https://launchpad.support.sap.com/#/notes/2145537) Azure'da desteklenen SAP İş Nesneleri ürünlerinin listesini verir. Listelenen veya desteklenmeyen ve listelenen minimum sürümlerden daha yeni olan yazılım sürümleri ve işletim sistemi sürümlerinin bileşenleri veya kombinasyonları hakkında sorular varsa, destek aldığınız bileşene karşı bir SAP destek isteği açmanız gerekir.
 
 İş Nesneleri Veri Hizmetleri için [SAP destek notu #22288344,](https://launchpad.support.sap.com/#/notes/2288344) Azure'da çalışan SAP Veri Hizmetleri'nin minimum desteğini açıklar. 
 
@@ -135,7 +135,12 @@ Azure Kubernetes Hizmetleri'ndeki (AKS) SAP Datahub/Vora desteği [SAP destek no
 
 SAP BPC 10.1 SP08 [desteği SAP destek notunda](https://launchpad.support.sap.com/#/notes/2451795) #2451795
 
-Azure'da SAP Hybris Commerce Platform 5.x ve 6.x desteği [Hybris Wiki'de](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) ayrıntılı olarak açıklanmaktadır
+Azure'daki SAP Hybris Ticaret Platformu desteği [Hybris Wiki'de](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud)ayrıntılı olarak açıklanmaktadır. SAP Hybris Ticaret Platformu için desteklenen DBMS olarak, bu gibi listeler:
+
+- Windows işletim sistemi platformunda SQL Server ve Oracle. SAP NetWeaver için de aynı minimum sürümler geçerlidir. Ayrıntılar için [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533) bakın
+- SAP HANA Red Hat ve SUSE Linux üzerine. SAP HANA sertifikalı VM türleri [bu belgede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)daha önce belgelenmiş olarak gereklidir. SAP (Hybris) Ticaret Platformu OLTP iş yükü olarak kabul edilir
+
+
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

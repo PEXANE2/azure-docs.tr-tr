@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 9f592c345b7cfcf5f21d816fde1fae6b8e6b98c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d920fb7815e5a9fe30d8f3b4e40f36133d83222
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73823395"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538095"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Uygulamanızı Azure SQL Veritabanı yönetilen örneğine bağlayın
 
@@ -132,6 +132,8 @@ Sorun giderme bağlantısı sorunları için aşağıdakileri gözden geçirin:
    ```
 
 - VNet eşlemesini kullanıyorsanız, [Ağ Geçidi Geçişine İzin Ver ve Uzak Ağ Geçitlerini Kullan'ı](#connect-from-on-premises-with-vnet-peering)ayarlama yönergelerini izlediğinizi emin olun.
+
+- Azure App Service barındırılan bir uygulamayı bağlamak için VNet eşlemesini kullanıyorsanız ve Yönetilen Örnek VNet'te genel bir IP adresi aralığı varsa, barındırılan uygulama ayarlarınızın giden trafiğinizin genel IP ağlarına yönlendirilmesine izin verdiğinden emin olun. [Bölgesel VNet Entegrasyonu](../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration)talimatları izleyin.
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Sürücülerin ve araçların gerekli sürümleri
 

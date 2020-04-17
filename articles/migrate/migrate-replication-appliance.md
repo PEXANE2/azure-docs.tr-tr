@@ -3,12 +3,12 @@ title: Azure Geçişi çoğaltma gereci
 description: Aracı tabanlı VMWare geçişi için Azure Geçiş çoğaltma cihazı hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 4521fce6310b319d155a2f0c418cd934be7e2cb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85641f514fc4367f02901eb1dd394cfa204c3ec4
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245869"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535222"
 ---
 # <a name="replication-appliance"></a>Çoğaltma cihazı
 
@@ -28,8 +28,11 @@ Bu [makalede, Aracı](migrate-services-overview.md#azure-migrate-server-migratio
 
 **Kullanıldığı yerler** | **Şey**
 --- |  ---
-VMware VM aracı tabanlı geçiş | Azure Geçiş hub'ından OVA şablonu indirin ve vM cihazını oluşturmak için vCenter Server'a içe aktarın.
-Fiziksel makine aracısı tabanlı geçiş | VMware altyapınız yoksa veya OVA şablonu kullanarak bir VMware VM oluşturamıyorsanız, Azure Geçiş hub'ından bir yazılım yükleyicisi indirip beyaz eşya makinesini kurmak için çalıştırın.
+**VMware VM aracı tabanlı geçiş** | Azure Geçiş hub'ından OVA şablonu indirin ve vM cihazını oluşturmak için vCenter Server'a içe aktarın.
+**Fiziksel makine aracısı tabanlı geçiş** | VMware altyapınız yoksa veya OVA şablonu kullanarak bir VMware VM oluşturamıyorsanız, Azure Geçiş hub'ından bir yazılım yükleyicisi indirip beyaz eşya makinesini kurmak için çalıştırın.
+
+> [!NOTE]
+> Azure Kamu'da dağıtım yapmaktaysanız, çoğaltma cihazını dağıtmak için yükleme dosyasını kullanın.
 
 ## <a name="appliance-requirements"></a>Cihaz gereksinimleri
 
@@ -74,7 +77,7 @@ Azure Geçiş'te karşıdan yükleme ve yükleme | Cihazı yüklediğinizde ve M
 
 ## <a name="url-access"></a>URL erişimi
 
-Çoğaltma cihazının bu URL'lere erişmesi gerekiyor.
+Çoğaltma cihazının Azure genel bulutundaki bu URL'lere erişmesi gerekir.
 
 **URL** | **Şey**
 --- | ---
@@ -84,10 +87,26 @@ Azure Geçiş'te karşıdan yükleme ve yükleme | Cihazı yüklediğinizde ve M
 \*.hypervrecoverymanager.windowsazure.com | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
 https:\//management.azure.com | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
 *.services.visualstudio.com | Telemetri amaçlı kullanılır (İsteğe bağlıdır)
-time.nist.gov | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
 time.windows.com | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVF kurulumunun bu URL'lere erişmesi gerekir. Azure Active Directory tarafından erişim denetimi ve kimlik yönetimi için kullanılırlar
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL download'u tamamlamak için
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | Cihaz kurulumunun bu URL'lere erişmesi gerekir. Azure Active Directory tarafından erişim denetimi ve kimlik yönetimi için kullanılırlar
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL download tamamlamak için. Birkaç bölgede, karşıdan yükleme CDN URL'sine yönlendirilebilir. Gerekirse CDN URL'ye de izin verildiğinden emin olun.
+
+
+## <a name="azure-government-url-access"></a>Azure Resmi URL erişimi
+
+Çoğaltma cihazının Azure Kamu'da bu URL'lere erişmesi gerekir.
+
+**URL** | **Şey**
+--- | ---
+\*.backup.windowsazure.us | Çoğaltılan veri aktarımı ve koordinasyonu için kullanılır
+\*.store.core.windows.net | Çoğaltılan veri aktarımı ve koordinasyonu için kullanılır
+\*.blob.core.windows.net | Çoğaltılan verileri depolayan depolama hesabına erişmek için kullanılır
+\*.hypervrecoverymanager.windowsazure.us | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
+https:\//management.usgovcloudapi.net | Çoğaltma yönetimi işlemleri ve koordinasyonu için kullanılır
+*.services.visualstudio.com | Telemetri amaçlı kullanılır (İsteğe bağlıdır)
+time.nist.gov | Sistem ile genel saat arasındaki saat eşitlemesini denetlemek için kullanılır.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVA ile cihaz kurulumu nun bu URL'lere erişmesi gerekir. Azure Active Directory tarafından erişim denetimi ve kimlik yönetimi için kullanılırlar.
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL download tamamlamak için. Birkaç bölgede, karşıdan yükleme CDN URL'sine yönlendirilebilir. Gerekirse CDN URL'ye de izin verildiğinden emin olun.
 
 ## <a name="port-access"></a>Bağlantı noktası erişimi
 

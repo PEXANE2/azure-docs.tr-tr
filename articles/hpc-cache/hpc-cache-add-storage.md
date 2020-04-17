@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: cecafd9209b095270e9a06ca59ffef162326efc2
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657414"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538010"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
@@ -118,8 +118,6 @@ Her ad alanı yolu için bu değerleri doldurun:
 
 * **Sanal ad alanı yolu** - Bu depolama hedefi için istemciye bakan dosya yolunu ayarlayın. Sanal ad alanı özelliği hakkında daha fazla bilgi edinmek için [toplu ad alanını yapılandır'ı](hpc-cache-namespace.md) okuyun.
 
-<!--  The virtual path should start with a slash ``/``. -->
-
 * **NFS dışa aktarma yolu** - NFS dışa aktarma yolunu girin.
 
 * **Subdirectory yolu** - Dışa aktarmanın belirli bir alt dizini takmak istiyorsanız, buraya girin. Değilse, bu alanı boş bırakın.
@@ -151,9 +149,9 @@ Bu tablo, kullanım modeli farklılıklarını özetley:
 
 | Kullanım modeli | Önbelleğe alma modu | Arka uç doğrulama | Maksimum geri yazma gecikmesi |
 | ---- | ---- | ---- | ---- |
-| Ağır, seyrek yazmaları okuyun | Okuma | Hiçbir zaman | None |
+| Ağır, seyrek yazmaları okuyun | Okuma | Hiçbir zaman | Hiçbiri |
 | %15'ten büyük yazıyor | Okuma/yazma | Hiçbir zaman | 1 saat |
-| İstemciler önbelleği atlatır | Okuma | 30 saniye | None |
+| İstemciler önbelleği atlatır | Okuma | 30 saniye | Hiçbiri |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

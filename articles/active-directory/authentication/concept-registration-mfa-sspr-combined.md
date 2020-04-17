@@ -1,26 +1,31 @@
 ---
 title: SSPR ve MFA için birleştirilmiş kayıt - Azure Active Directory
-description: Azure AD Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama kaydı (önizleme)
+description: Azure AD Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama kaydı
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/06/2020
+ms.date: 04/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26656b6dafd91d47c05c2d1f923e53f4ba790cf8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 48350bf8f0ffb8681d95f6f42f9aa93256395f9a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309926"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534695"
 ---
-# <a name="combined-security-information-registration-preview"></a>Birleşik güvenlik bilgileri kaydı (önizleme)
+# <a name="combined-security-information-registration-overview"></a>Birleşik güvenlik bilgileri kaydına genel bakış
 
 Kullanıcılar, birleştirilmiş kayıt öncesinde Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama (SSPR) için kimlik doğrulama yöntemlerini ayrı ayrı kaydetti. İnsanlar benzer yöntemler Multi-Factor Authentication ve SSPR için kullanılan ama her iki özellik için kayıt olmak zorunda karıştı. Şimdi, kombine kayıt ile, kullanıcılar bir kez kayıt ve Hem Multi-Factor Kimlik Doğrulama ve SSPR avantajlarından elde edebilirsiniz.
+
+Bu makalede, birleştirilmiş güvenlik kaydının ne olduğu sıralanır. Birleşik güvenlik kaydıyla başlamak için aşağıdaki makaleye bakın:
+
+> [!div class="nextstepaction"]
+> [Birleştirilmiş güvenlik kaydını etkinleştirme](howto-registration-mfa-sspr-combined.md)
 
 ![Bir kullanıcıiçin kayıtlı Güvenlik bilgilerini gösteren Profilim](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
@@ -28,16 +33,10 @@ Yeni deneyimi etkinleştirmeden önce, bu özelliğin işlevselliğini ve etkisi
 
 Azure AD birleşik güvenlik bilgi kaydı şu anda Azure ABD Hükümeti, Azure Almanya veya Azure China 21Vianet gibi ulusal bulutlar tarafından kullanılamaz.
 
-|     |
-| --- |
-| Çok Faktörlü Kimlik Doğrulama ve Azure Etkin Dizin (Azure AD) self servis parola sıfırlama için birleştirilmiş güvenlik bilgi kaydı, Azure AD'nin genel önizleme özelliğidir. Önizlemeler hakkında daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.|
-|     |
-
 > [!IMPORTANT]
 > Hem özgün önizleme hem de geliştirilmiş birleşik kayıt deneyimi için etkinleştirilen kullanıcılar yeni davranışı görür. Her iki deneyim için de etkinleştirilen kullanıcılar yalnızca yeni Profilim deneyimini görür. Yeni Profilim, kombine kaydın görünümü ve hissi ile uyumlu hale geldi ve kullanıcılar için sorunsuz bir deneyim sunuyor. Kullanıcılar profilimi ' ye [https://myprofile.microsoft.com](https://myprofile.microsoft.com)giderek görebilirler.
-
-> [!NOTE] 
-> Güvenlik bilgileri seçeneğine erişmeye çalışırken bir hata iletisi ile karşılaşabilirsiniz. Örneğin, "Üzgünüm, oturum açamayız". Bu durumda, web tarayıcısında üçüncü taraf tanımlama bilgilerini engelleyen herhangi bir yapılandırma veya grup ilkesi nesnesi olmadığını onaylayın. 
+>
+> Güvenlik bilgileri seçeneğine erişmeye çalışırken bir hata iletisi ile karşılaşabilirsiniz. Örneğin, "Üzgünüm, oturum açamayız". Bu durumda, web tarayıcısında üçüncü taraf tanımlama bilgilerini engelleyen herhangi bir yapılandırma veya grup ilkesi nesnesi olmadığını onaylayın.
 
 Profil sayfalarım, sayfaya erişen bilgisayarın dil ayarlarına göre yerelleştirilmiştir. Microsoft tarayıcı önbelleğinde kullanılan en son dili depolar, bu nedenle sonraki sayfalara erişme girişimleri kullanılan son dilde işlemeye devam edecektir. Önbelleği temizlerseniz, sayfalar yeniden işlenir. Belirli bir dili zorlamak istiyorsanız, URL'nin sonuna işlemek istediğiniz `<language>` dilin kodunun bulunduğu yere ekleyebilirsiniz. `?lng=<language>`
 
@@ -77,7 +76,6 @@ Azure AD'ye daha fazla kimlik doğrulama yöntemi eklemeye devam ettikçe, bu y�
 İki birleşik kayıt modu vardır: kesme ve yönetme.
 
 - **Kesme modu,** oturum açma sırasında güvenlik bilgilerini kaydettiklerinde veya yenilediklerinde kullanıcılara sunulan sihirbaz benzeri bir deneyimdir.
-
 - **Yönet modu** kullanıcı profilinin bir parçasıdır ve kullanıcıların güvenlik bilgilerini yönetmesine olanak tanır.
 
 Her iki mod için de, daha önce Çok Faktörlü Kimlik Doğrulama için kullanılabilecek bir yöntem kaydetmiş olan kullanıcıların güvenlik bilgilerine erişebilmeleri için Çok Faktörlü Kimlik Doğrulama gerçekleştirmeleri gerekir.
@@ -139,14 +137,8 @@ Daha önce Çok Faktörlü Kimlik Doğrulama için kullanılabilecek en az bir y
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Kullanıcıları kimlik doğrulama yöntemlerini yeniden kaydetmeye zorlama](howto-mfa-userdevicesettings.md#manage-user-authentication-options)
+Başlamak için [self servis parola sıfırlamayı etkinleştirmek](tutorial-enable-sspr.md) ve Azure Çok [Faktörlü Kimlik Doğrulaması'nı etkinleştirmek](tutorial-enable-azure-mfa.md)için öğreticilere bakın.
 
-[Kiracınızda birleşik kaydı etkinleştirme](howto-registration-mfa-sspr-combined.md)
+[Kiracınızda birleşik kaydı](howto-registration-mfa-sspr-combined.md) nasıl etkinleştirmek veya kullanıcıları kimlik doğrulama [yöntemlerini yeniden kaydetmeye nasıl zorlayacağınızı](howto-mfa-userdevicesettings.md#manage-user-authentication-options)öğrenin.
 
-[SSPR ve MFA kullanımı ve öngörüraporlama](howto-authentication-methods-usage-insights.md)
-
-[Çok Faktörlü Kimlik Doğrulama ve SSPR için kullanılabilir yöntemler](concept-authentication-methods.md)
-
-[Self servis parola sıfırlama yapılandırma](howto-sspr-deployment.md)
-
-[Azure Multi-Factor Authentication’ı yapılandırma](howto-mfa-getstarted.md)
+[Azure Çok Faktörlü Kimlik Doğrulama ve SSPR için kullanılabilir yöntemleri](concept-authentication-methods.md)de gözden geçirebilirsiniz.

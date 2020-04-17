@@ -4,12 +4,12 @@ description: Azure Geçiş hizmeti için destek ayarlarının ve sınırlamalar�
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: raynew
-ms.openlocfilehash: bf719f9179384ec3dca99d2429f569ef209b5daa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80127711"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535205"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Geçir destek matrisi
 
@@ -30,7 +30,7 @@ Tablo desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 
 Belirli araç desteği tabloda özetlenmiştir.
 
-**Araç** | **Değerlendirmek** | **Geçirme** 
+**Araç** | **Değerlendirmek** | **Geçiş** 
 --- | --- | ---
 Azure Geçir Sunucu Değerlendirmesi | [VMware VM'leri,](tutorial-prepare-vmware.md) [Hyper-V VM'leri](tutorial-prepare-hyper-v.md)ve [fiziksel sunucuları](tutorial-prepare-physical.md)değerlendirin. |  Kullanılamıyor (NA)
 Azure Geçişi Sunucu Geçişi | NA | [VMware VM'leri,](tutorial-migrate-vmware.md) [Hyper-V VM'leri](tutorial-migrate-hyper-v.md)ve [fiziksel sunucuları](tutorial-migrate-physical-virtual-machines.md)geçirin.
@@ -63,19 +63,18 @@ Bir proje, değerlendirme sınırlarına kadar hem VMware VM'leri hem de Hyper-V
 
 Azure Geçiş'in Azure ile çalışması için, makineleri değerlendirmeye ve geçirmeye başlamadan önce bu izinlere ihtiyacınız vardır.
 
-**Görev** | **Izin** | **Şey**
+**Görev** | **İzinler** | **Şey**
 --- | --- | ---
 Azure Geçiş projesi oluşturma | Azure hesabınız, proje oluşturmak için izinlere ihtiyaç duyar. | [VMware,](tutorial-prepare-vmware.md#assign-permissions-to-create-project) [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-create-project)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-create-project)için ayarlayın.
 Azure Geçiş cihazını kaydettirin| Azure Geçir, Makineleri Azure Geçir Sunucu Değerlendirmesi ile değerlendirmek ve Azure Geçir Sunucu Geçişi ile VMware VM'lerin [aracısız geçişini](server-migrate-overview.md) çalıştırmak için hafif bir [Azure Geçir cihazı](migrate-appliance.md) kullanır. Bu cihaz makineleri keşfeder ve Meta verileri ve performans verilerini Azure Geçiş'e gönderir.<br/><br/> Kayıt sırasında, kayıt sağlayıcıları (Microsoft.OffAzure, Microsoft.Migrate ve Microsoft.KeyVault) cihazda seçilen aboneye kaydedilir, böylece abonelik kaynak sağlayıcısıyla çalışır. Kaydolmak için, abonelikte Katılımcı veya Sahip erişimine ihtiyacınız olur.<br/><br/> **VMware**-Onboarding sırasında Azure Geçir iki Azure Etkin Dizin (Azure AD) uygulaması oluşturur. İlk uygulama, beyaz eşya aracıları ve Azure Geçiş hizmeti arasında iletişim kurar. Uygulamanın Azure kaynak yönetimi aramaları yapma veya kaynaklar için RBAC erişimine sahip olması için izinleri yoktur. İkinci uygulama, yalnızca aracısız VMware geçişi için kullanıcı aboneliğinde oluşturulan bir Azure Anahtar Kasasına erişir. Aracısız geçişte Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur. Cihazdan keşif başlatıldığında Azure Anahtar Kasası'nda (müşteri kiracısında) RBAC erişimine sahiptir.<br/><br/> **Hyper-V**-Onboarding sırasında. Azure Geçiş tek bir Azure AD uygulaması oluşturur. Uygulama, beyaz eşya aracıları ve Azure Geçiş hizmeti arasında iletişim kurar. Uygulamanın Azure kaynak yönetimi aramaları yapma veya kaynaklar için RBAC erişimine sahip olması için izinleri yoktur. | [VMware,](tutorial-prepare-vmware.md#assign-permissions-to-register-the-appliance) [Hyper-V](tutorial-prepare-hyper-v.md#assign-permissions-to-register-the-appliance)veya [fiziksel sunucular](tutorial-prepare-physical.md#assign-permissions-to-register-the-appliance)için ayarlayın.
 VMware aracısız geçiş için önemli bir kasa oluşturma | VMware VM'leri aracısız Azure Geçiş Sunucusu Geçişi ile geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur. Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda izinler (Sahip veya Katılımcı ve Kullanıcı Erişim Yöneticisi) ayarlarsınız. | İzinleri [ayarlayın.](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)
 
-## <a name="supported-geographies"></a>Desteklenen coğrafyalar
+## <a name="supported-geographies-public-cloud"></a>Desteklenen coğrafyalar (genel bulut)
 
-Birkaç coğrafyada bir Azure Geçiş projesi oluşturabilirsiniz. Yalnızca bu coğrafyalarda projeler oluşturabiliyor olsanız da, makineleri diğer hedef konumlar için değerlendirebilir veya geçirebilirsiniz. Proje coğrafyası yalnızca keşfedilen meta verileri depolamak için kullanılır.
+Genel bulutta bir dizi coğrafyada bir Azure Geçiş projesi oluşturabilirsiniz. Yalnızca bu coğrafyalarda projeler oluşturabiliyor olsanız da, makineleri diğer hedef konumlar için değerlendirebilir veya geçirebilirsiniz. Proje coğrafyası yalnızca keşfedilen meta verileri depolamak için kullanılır.
 
 **Coğrafya** | **Meta veri depolama konumu**
 --- | ---
-Azure Kamu | US Gov Virginia
 Asya Pasifik | Doğu Asya veya Güneydoğu Asya
 Avustralya | Avustralya Doğu veya Avustralya Güneydoğu
 Brezilya | Güney Brezilya
@@ -89,9 +88,13 @@ Birleşik Krallık | İngiltere Güney veya İngiltere Batı
 Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
 
- > [!NOTE]
- > Azure Genel Desteği şu anda yalnızca Azure Geçiş'in [eski sürümü](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) için kullanılabilir.
+## <a name="supported-geographies-azure-government"></a>Desteklenen coğrafyalar (Azure Kamu)
 
+**Görev** | **Coğrafya** | **Şey**
+--- | --- | ---
+Proje oluşturma | Amerika Birleşik Devletleri | Meta veriler ABD Gov Arizona, ABD Gov Virginia saklanır
+Hedef değerlendirmesi | Amerika Birleşik Devletleri | Hedef bölgeler: US Gov Arizona, US Gov Virginia/US Gov Texas
+Hedef çoğaltma | Amerika Birleşik Devletleri | Hedef bölgeler: ABD DoD Central, ABD DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware değerlendirme ve geçiş

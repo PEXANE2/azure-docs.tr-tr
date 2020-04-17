@@ -3,12 +3,12 @@ title: Azure Etkinlik Izgarasına Yayımlananması Dayanıklı İşlevler (öniz
 description: Dayanıklı Işlevler için otomatik Azure Olay Izgara yayımlamasını nasıl yapılandırıyarıştırmayı öğrenin.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 52ffcd4eb81936ffcfa61580288c60bd59ffb744
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78249755"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535494"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Etkinlik Izgarasına Yayımlananması Dayanıklı İşlevler (önizleme)
 
@@ -68,14 +68,36 @@ Artık konuya etkinlik gönderebilirsiniz.
 
 Dayanıklı Işlevler projenizde `host.json` dosyayı bulun.
 
+### <a name="durable-functions-1x"></a>Dayanıklı Fonksiyonlar 1.x
+
 Bir `eventGridTopicEndpoint` `eventGridKeySettingName` `durableTask` özellik ekleyin ve.
 
 ```json
 {
+  "durableTask": {
+    "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+    "eventGridKeySettingName": "EventGridKey"
+  }
+}
+```
+
+### <a name="durable-functions-2x"></a>Dayanıklı Fonksiyonlar 2.x
+
+Seçtiğiniz `notifications` adla `durableTask` değiştirerek `<topic_name>` dosyanın özelliğine bir bölüm ekleyin. `durableTask` Özellikler yoksa, bunları aşağıdaki örnek gibi `extensions` oluşturun:
+
+```json
+{
+  "version": "2.0",
+  "extensions": {
     "durableTask": {
-        "eventGridTopicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
-        "eventGridKeySettingName": "EventGridKey"
+      "notifications": {
+        "eventGrid": {
+          "topicEndpoint": "https://<topic_name>.westus2-1.eventgrid.azure.net/api/events",
+          "keySettingName": "EventGridKey"
+        }
+      }
     }
+  }
 }
 ```
 
@@ -132,7 +154,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = async function(context, eventGridEvent) {

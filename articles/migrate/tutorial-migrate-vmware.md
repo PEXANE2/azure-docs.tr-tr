@@ -2,14 +2,14 @@
 title: VMware VM'leri aracısız Azure Geçiş Sunucusu Geçişi'ni geçirin
 description: Azure Geçişi ile VMware VM'lerin aracısız geçişini nasıl çalıştırılacak yapılacağını öğrenin.
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 825d6ff16a1f51fa476541ee10fea5f8a1c2972e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4612c9b0ea2ef8d53b0c04f47628f3789705d833
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78304217"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535324"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM'leri Azure'a geçir (aracısız)
 
@@ -17,7 +17,7 @@ Bu makalede, Azure Geçiş Sunucusu Geçişi aracıyla aracısız geçiş kullan
 
 [Azure Geçiş,](migrate-services-overview.md) şirket içi uygulamalarınızın ve iş yüklerinizin ve AWS/GCP VM örneklerinin Azure'a keşfini, değerlendirmesini ve geçişini izlemek için merkezi bir hub sağlar. Hub, değerlendirme ve geçiş için Azure Geçiş araçlarının yanı sıra üçüncü taraf bağımsız yazılım satıcısı (ISV) teklifleri sağlar.
 
-Bu öğretici, Azure Geçiş Sunucusu Değerlendirmesi ve Geçişi kullanarak VMware VM'lerinin Azure'a nasıl değerlendirilip Azure'a geçirilenleri gösteren bir serinin üçüncüsüdür. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Azure Geçiş Sunucusu Değerlendirmesi ve Geçişi kullanarak VMware VM'lerinin Azure'a nasıl değerlendirilip Azure'a geçirilenleri gösteren bir serinin üçüncüsüdür. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * VM'leri geçiş için hazırlayın.
@@ -49,15 +49,18 @@ Bu öğreticiye başlamadan önce karşılamanız gereken ön koşullar şunlard
     - Azure'u geçiş için [hazırlayın.](tutorial-prepare-vmware.md#prepare-azure)
     - Şirket içi ortamı göçe [hazırlayın.](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)
     
-2. Azure'a geçirmeden önce VMware VM'leri Azure'a Geçire Biliyor'la değerlendirmeyi denemenizi öneririz. Değerlendirme yi ayarlamak için, bu [serinin ikinci eğitimini tamamlayın.](tutorial-assess-vmware.md) VM'leri değerlendirmek istemiyorsanız bu öğreticiyi atlayabilirsiniz. Her ne kadar bir değerlendirme denemenizi öneririz, ancak bir geçiş denemeden önce bir değerlendirme çalıştırmak zorunda değilsiniz.
+2. Azure'a geçirmeden önce VMware VM'leri Azure'a Geçire Biliyor'la değerlendirmeyi denemenizi öneririz. Değerlendirme yi ayarlamak için, bu [serinin ikinci eğitimini tamamlayın.](tutorial-assess-vmware.md) VM'leri değerlendirmek istemiyorsanız, bu öğreticiyi atlayabilirsiniz. Her ne kadar bir değerlendirme denemenizi öneririz, ancak bir geçiş denemeden önce bir değerlendirme çalıştırmak zorunda değilsiniz.
 
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Azure Geçir Sunucusu Geçişi aracını ekleme
 
-VMware VM'leri değerlendirmek için ikinci öğreticiyi izlemediyseniz, bir Azure Geçiş projesi ayarlanın ve Azure Geçiş Sunucusu Geçişi aracını seçmeniz gereken [bu yönergeleri izlemeniz](how-to-add-tool-first-time.md) gerekir. 
+Azure Geçiş:Sunucu Geçişi aracını ekleyin.
 
-İkinci öğreticiyi izlediyseniz ve zaten bir Azure Geçiş projesi ayarladıysanız, Azure Geçir Sunucusu Geçişi aracını aşağıdaki gibi ekleyin:
+- [VMware VM](/tutorial-assess-vmware.md)değerlendirmek için ikinci öğretici izlediyseniz, devam edin ve aracı ekleyebilirsiniz.
+- İkinci öğreticiye uymadıysanız, bir Azure Geçiş projesi ayarlamak için [bu yönergeleri izleyin.](how-to-add-tool-first-time.md)  Projeyi oluştururken Azure Geçiş:Sunucu Geçişi aracını eklersiniz.
+
+Bir proje ayarladıysanız, aracı aşağıdaki gibi ekleyin:
 
 1. Azure Geçir projesinde **Genel Bakış'ı**tıklatın. 
 2. **Sunucuları Keşfet, değerlendir ve geçiş te,** **sunucuları değerlendir'i ve geçişini**tıklatın.
@@ -70,19 +73,18 @@ VMware VM'leri değerlendirmek için ikinci öğreticiyi izlemediyseniz, bir Azu
 
 4. Araçlar listesinde Azure **Geçiş: Sunucu Geçişi** > **Ekle aracını** seçin
 
-    ![Sunucu Geçiş aracı](./media/tutorial-migrate-vmware/server-migration-tool.png)
+    ![Sunucu Geçişi aracı](./media/tutorial-migrate-vmware/server-migration-tool.png)
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Geçiş cihazını ayarlama
 
-Azure Geçir Sunucusu Geçişi, hafif bir VMware VM cihazı çalıştırın. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş Sunucusu Geçişi'ne gönderir. Aynı cihaz Azure Geçir Sunucusu Değerlendirmesi aracı tarafından da kullanılır.
+Azure Geçir Sunucusu Geçişi, hafif bir VMware VM cihazı çalıştırın. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş:Sunucu Geçişi'ne gönderir. Aynı cihaz, VMware VM'lerin aracısız geçişini gerçekleştirmek için Azure Geçir:Sunucu Değerlendirmesi aracı tarafından da kullanılır.
 
-VMware VM'leri değerlendirmek için ikinci öğreticiyi izlediyseniz, bu eğitim sırasında cihazı zaten kurmuşsunuzdur. Bu öğreticitakip etmediyseniz, şimdi cihaz kurmak gerekir. Bunu yapmak için, siz: 
+- [VMware VM'leri değerlendirmek için öğreticiyi](tutorial-assess-vmware.md)izlediyseniz, bu eğitim sırasında cihazı zaten kurmuşsunuzdur.
+- Bu öğreticiyi izlemediyseniz, şu yöntemlerden birini kullanarak cihazı şimdi ayarlayabilirsiniz:
+    - İndirilen BIR OVA şablonu kullanarak VMware VM'de [ayarlayın.](how-to-set-up-appliance-vmware.md)
+    - PowerShell yükleyici komut dosyasına sahip bir VMware VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) BIR OVA şablonu kullanarak bir VM ayarlayamıyorsanız veya Azure'da ysanız kullanılmalıdır.
 
-- BIR OVA şablon dosyası indirin ve vCenter Server'a aktarın.
-- Cihazı oluşturun ve Azure Geçiş Sunucusu Değerlendirmesi'ne bağlanıp bağlanabıp bağlanabıp bağlanamayalı kontrol edin. 
-- Cihazı ilk kez yapılandırın ve Azure Geçiş projesine kaydedin.
-
-Cihazı kurmak için [bu makaledeki](how-to-set-up-appliance-vmware.md) talimatları uygulayın.
+Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
 
 
 ## <a name="prepare-vms-for-migration"></a>VM'leri geçiş için hazırlama

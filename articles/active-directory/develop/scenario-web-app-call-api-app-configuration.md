@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b0f60e13ca4bc5115f9a49885c3c659ad1147fcc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 7f05d33b43df85c49a0c92b60157e2a6448325ac
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80881902"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537143"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API'lerini çağıran bir web uygulaması: Kod yapılandırması
 
@@ -253,7 +253,7 @@ public class TokenAcquisition : ITokenAcquisition
 
 ### <a name="the-tokenacquisitionbuildconfidentialclientapplication-method"></a>TokenAcquisition.BuildConfidentialClientApplication yöntemi
 
-ASP.NET Core'da, gizli istemci uygulamasını oluşturmak, `HttpContext`'deki bilgileri kullanır. İstekle `HttpContext` ilişkili `CurrentHttpContext` özellik kullanılarak erişilir. `HttpContext`web uygulamasının URL'si ve oturum açmış kullanıcı (bir' `ClaimsPrincipal`de) hakkında bilgi vardır. 
+ASP.NET Core'da, gizli istemci uygulamasını oluşturmak, `HttpContext`'deki bilgileri kullanır. İstekle `HttpContext` ilişkili `CurrentHttpContext` özellik kullanılarak erişilir. `HttpContext`web uygulamasının URL'si ve oturum açmış kullanıcı (bir' `ClaimsPrincipal`de) hakkında bilgi vardır.
 
 Yöntem `BuildConfidentialClientApplication` ayrıca ASP.NET Core yapılandırmasını da kullanır. Yapılandırmanın bir "AzureAD" bölümü vardır ve ayrıca aşağıdaki öğelerin her ikisine de bağlıdır:
 

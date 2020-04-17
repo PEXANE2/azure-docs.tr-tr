@@ -4,14 +4,14 @@ description: Yüksek performanslı bilgi işlem için bir dosya erişim hızland
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 10/30/2019
-ms.author: rohogue
-ms.openlocfilehash: 2a008d22de5df8d091e868153205697b4bb343ee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241195"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536650"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
@@ -49,22 +49,20 @@ Azure HPC Önbellek dağıtımı, finansal hizmetler şirketlerine stratejik kar
 
 Azure HPC Önbelleği şu Azure bölgelerinde kullanılabilir:
 
+| Kuzey Amerika      | Avrupa         | Asya            | Avustralya      |
+|--------------------|----------------|-----------------|----------------|
+| Doğu ABD            | Kuzey Avrupa   | Güney Kore - Orta   | Doğu Avustralya |
+| Doğu ABD 2          | Batı Avrupa    | Güneydoğu Asya  |               |
+| Orta Güney ABD | | | |
+| Batı ABD 2        | | | |
+
+[Müşteri tarafından yönetilen anahtarlar özelliği](customer-keys.md) yalnızca bu bölgelerde desteklenir:
+
 * Doğu ABD
-* Doğu ABD 2
-* Kuzey Avrupa
-* Batı Avrupa
-* Güneydoğu Asya
-* Sidney
+* Orta Güney ABD
 * Batı ABD 2
-* Güney Kore - Orta
 
 En son kullanılabilirlik bilgileri için [Azure HPC Önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
-
-## <a name="service-availability"></a>Hizmet kullanılabilirliği
-
-Azure HPC Önbelleği ile kullanacağınız her abonelik için erişim istemeniz gerekir. Bu kısıtlama, genel kullanılabilirliğin ilk aylarında hizmet kalitesinin sağlanmasına yardımcı olur.
-
-[Bu formu](https://aka.ms/onboard-hpc-cache)doldurarak erişim isteyin. Aboneliğiniz erişim listesine eklendikten sonra önbellekler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

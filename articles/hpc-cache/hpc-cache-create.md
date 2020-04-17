@@ -4,14 +4,14 @@ description: Azure HPC Önbellek örneği oluşturma
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 11/11/2019
-ms.author: rohogue
-ms.openlocfilehash: c6090d19ce530829b79dca69636c2123e2519961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.author: v-erkel
+ms.openlocfilehash: befbe2435a518b82cf5a3ab12e6129aa3ce5c22b
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129562"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537992"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC Önbelleği Oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "80129562"
 
 ![Azure portalında proje ayrıntıları sayfasının ekran görüntüsü](media/hpc-cache-create-basics.png)
 
-**Project Details'da**önbelleği barındıracak abonelik ve kaynak grubunu seçin. Aboneliğin [erişim](hpc-cache-prereqs.md#azure-subscription) listesinde olduğundan emin olun.
+**Project Details'da**önbelleği barındıracak abonelik ve kaynak grubunu seçin.
 
 **Hizmet Ayrıntıları'nda**önbellek adını ve diğer öznitelikleri ayarlayın:
 
@@ -51,6 +51,28 @@ Azure HPC Önbelleği, önbellek isabet oranlarını en üst düzeye çıkarmak 
 
 ![önbellek boyutlandırma sayfasının ekran görüntüsü](media/hpc-cache-create-capacity.png)
 
+## <a name="enable-azure-key-vault-encryption-optional"></a>Azure Anahtar Kasası şifrelemesini etkinleştirme (isteğe bağlı)
+
+Önbelleğiniz müşteri tarafından yönetilen şifreleme anahtarlarını destekleyen bir bölgedeyse, **Önbellek** ve **Etiketler** sekmeleri arasında **Disk şifreleme anahtarları** sayfası görüntülenir. Yayın saati itibariyle bu seçenek Doğu ABD, Güney Orta ABD ve Batı ABD 2'de desteklenir.
+
+Önbellek depolamanızda kullanılan şifreleme anahtarlarını yönetmek istiyorsanız, Azure Anahtar Kasası bilgilerinizi **Disk şifreleme anahtarları** sayfasında niçin sağlayabilirsiniz. Anahtar kasası aynı bölgede ve önbellekle aynı abonelikte olmalıdır.
+
+Müşteri tarafından yönetilen anahtarlara ihtiyacınız yoksa bu bölümü atlayabilirsiniz. Azure, verileri Varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifreler. Daha fazla bilgi edinmek için [Azure depolama şifrelemesini](../storage/common/storage-service-encryption.md) okuyun.
+
+> [!NOTE]
+>
+> * Önbelleği oluşturduktan sonra Microsoft tarafından yönetilen anahtarlar ile müşteri tarafından yönetilen anahtarlar arasında geçiş yapamazsınız.
+> * Önbellek oluşturulduktan sonra, anahtar kasasına erişmek için yetki vermelisiniz. Şifrelemeyi açmak için önbelleğin **Genel Bakış** sayfasında **şifrelemeyi etkinleştir** düğmesini tıklatın. Önbelleği oluşturduktan sonra 90 dakika içinde bu adımı atın.
+> * Önbellek diskleri bu yetkilendirmeden sonra oluşturulur. Bu, ilk önbellek oluşturma süresinin kısa olduğu, ancak önbelleğin erişimi yetkilendirmeden sonra on dakika veya daha uzun süre kullanılmaya hazır olmadığı anlamına gelir.
+
+Müşteri tarafından yönetilen anahtar şifreleme işleminin tam açıklaması [için Azure HPC Önbelleği için müşteri tarafından yönetilen şifreleme anahtarlarını kullan'ı](customer-keys.md)okuyun.
+
+!["Müşteri yönetilen" seçili ve anahtar kasa alanları gösteren şifreleme anahtarları sayfasının ekran görüntüsü](media/create-encryption.png)
+
+**Müşteri'yi** seçin müşteri tarafından yönetilen anahtar şifrelemesini seçti. Anahtar kasa belirtimi alanları görüntülenir. Kullanmak üzere Azure Anahtar Kasası'nı seçin, ardından bu önbellek için kullanılacak anahtarı ve sürümü seçin. Anahtar 2048 bit RSA anahtarı olmalıdır. Bu sayfadan yeni bir anahtar kasası, anahtar veya anahtar sürümü oluşturabilirsiniz.
+
+Önbelleği oluşturduktan sonra, anahtar kasa hizmetini kullanmak için yetkilendirmeniz gerekir. Ayrıntılar için [önbellekten Azure Anahtar Kasası Şifrelemesini Yetkilendirme'yi](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) okuyun.
+
 ## <a name="add-resource-tags-optional"></a>Kaynak etiketleri ekleme (isteğe bağlı)
 
 **Etiketler** sayfası, Azure HPC Önbellek örneğinize [kaynak etiketleri](https://go.microsoft.com/fwlink/?linkid=873112) eklemenize olanak tanır.
@@ -64,12 +86,15 @@ Yeni önbelleği yapılandırıldıktan sonra **Gözden Geçir + oluştur** sekm
 ![portalda önbellek oluşturma "dağıtım devam ediyor" ve "bildirimler" sayfalarının ekran görüntüsü](media/hpc-cache-deploy-status.png)
 
 Oluşturma sona erdiğinde, yeni Azure HPC Önbelleği örneğine bağlantı yla bir bildirim görüntülenir ve önbellek aboneliğinizin **Kaynaklar** listesinde görünür.
-<!-- double check on notification -->
 
 ![Azure portalındaki Azure HPC Önbelleği örneğinin ekran görüntüsü](media/hpc-cache-new-overview.png)
 
+> [!NOTE]
+> Önbelleğiniz müşteri tarafından yönetilen şifreleme anahtarlarını kullanıyorsa, önbellek dağıtım durumu tamamlanmadan önce kaynaklar listesinde görünebilir. Önbelleğin durumu **anahtar için bekler** beklemez, anahtar kasasını kullanmak için [yetki](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) verebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Önbelleğiniz **Kaynaklar** listesinde göründükten sonra, önbelleğinizin veri kaynaklarına erişimini sağlamak için depolama hedeflerini tanımlayın.
+Önbelleğiniz **Kaynaklar** listesinde göründükten sonra bir sonraki adıma geçebilirsiniz.
 
-* [Depolama hedefleri ekleme](hpc-cache-add-storage.md)
+* Önbelleğinizin veri kaynaklarına erişmesini sağlamak için [depolama hedeflerini tanımlayın.](hpc-cache-add-storage.md)
+* Müşteri tarafından yönetilen şifreleme anahtarlarını kullanıyorsanız, önbellek kurulumunuzu tamamlamak için önbelleğin genel bakış sayfasından [Azure Key Vault şifrelemesini yetkilendirmeniz](customer-keys.md#3-authorize-azure-key-vault-encryption-from-the-cache) gerekir. Depolama alanı eklemeden önce bu adımı yapmanız gerekir. Ayrıntılar için [müşteri tarafından yönetilen şifreleme anahtarlarını kullan'ı](customer-keys.md) okuyun.

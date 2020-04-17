@@ -6,12 +6,12 @@ ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
-ms.openlocfilehash: f1012f8c00de4b19bbf6206408ec1a806e09e54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77482352"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537653"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service planına genel bakış
 
@@ -32,7 +32,7 @@ Uygulama Hizmeti planının _fiyatlandırma katmanı,_ hangi App Service özelli
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Her katman, App Service özelliklerinin belirli bir alt kümesini de sağlar. Bu özellikler özel etki alanları ve SSL sertifikaları, otomatik ölçekleme, dağıtım yuvaları, yedeklemeler, Trafik Yöneticisi tümleştirmeve daha fazlasını içerir. Katman ne kadar yüksekse, o kadar çok özellik kullanılabilir. Her fiyatlandırma katmanında hangi özelliklerin destekleniyi öğrenmek için [Uygulama Hizmeti planı ayrıntılarına](https://azure.microsoft.com/pricing/details/app-service/plans/)bakın.
+Her katman, App Service özelliklerinin belirli bir alt kümesini de sağlar. Bu özellikler özel etki alanlarını ve TLS/SSL sertifikalarını, otomatik ölçekleme, dağıtım yuvalarını, yedeklemeleri, Trafik Yöneticisi tümleştirmesi ve daha fazlasını içerir. Katman ne kadar yüksekse, o kadar çok özellik kullanılabilir. Her fiyatlandırma katmanında hangi özelliklerin destekleniyi öğrenmek için [Uygulama Hizmeti planı ayrıntılarına](https://azure.microsoft.com/pricing/details/app-service/plans/)bakın.
 
 <a name="new-pricing-tier-premiumv2"></a>
 
@@ -71,11 +71,11 @@ Bu bölümde, Uygulama Hizmeti uygulamalarının nasıl faturalandırıldırıol
 - Özel işlem katmanlarında **(Temel,** **Standart,** **Premium,** **PremiumV2),** Uygulama Hizmeti planı, uygulamaların ölçeklendirildikgin VM örneklerinin sayısını tanımlar, bu nedenle Uygulama Hizmeti planındaki _her VM örneğinin_ saatlik ücreti vardır. Bu VM örnekleri, üzerinde kaç uygulama çalıştırıldığına bakılmaksızın aynı şekilde ücretlendirilir. Beklenmeyen ücretleri önlemek için [bkz.](app-service-plan-manage.md#delete)
 - **Yalıtılmış** katmanda, Uygulama Hizmet Ortamı uygulamalarınızı çalıştıran yalıtılmış çalışan sayısını tanımlar ve _her çalışansaatlik_ ücretlendirilir. Ayrıca, Uygulama Hizmeti Ortamı'nı çalıştıran işletme için saatlik taban ücret de vardır.
 
-Kullanabileceğiniz Uygulama Hizmeti özelliklerini kullandığınız için ücret lendirilmezsiniz (özel etki alanlarını, SSL sertifikalarını, dağıtım yuvalarını, yedeklemeleri yapılandırmanız vb.). İstisnalar şunlardır:
+Kullanabileceğiniz Uygulama Hizmeti özelliklerini kullandığınız için ücret lendirilmezsiniz (özel etki alanlarını, TLS/SSL sertifikalarını yapılandırma, dağıtım yuvaları, yedeklemeler vb.). İstisnalar şunlardır:
 
 - Uygulama Hizmeti Etki Alanları - Azure'dan bir tane satın aldığınızda ve her yıl yenilediğinizde ödeme yapıyorsun.
 - Uygulama Hizmet Sertifikaları - Azure'dan bir tane satın aldığınızda ve her yıl yenilediğinizde ödeme yapıyorsun.
-- IP tabanlı SSL bağlantıları - Her IP tabanlı SSL bağlantısı için saatlik ücret vardır, ancak bazı **Standart** katman veya üzeri size ücretsiz bir IP tabanlı SSL bağlantısı sağlar. SNI tabanlı SSL bağlantıları ücretsizdir.
+- IP tabanlı TLS bağlantıları - Her IP tabanlı TLS bağlantısı için saatlik ücret vardır, ancak bazı **Standart** katman veya üzeri size ücretsiz bir IP tabanlı TLS bağlantısı sağlar. SNI tabanlı TLS bağlantıları ücretsizdir.
 
 > [!NOTE]
 > Uygulama Hizmetini başka bir Azure hizmetiyle tümleştirirseniz, bu diğer hizmetlerden gelen ücretleri göz önünde bulundurmanız gerekebilir. Örneğin, uygulamanızı coğrafi olarak ölçeklendirmek için Azure Trafik Yöneticisi'ni kullanıyorsanız, Azure Trafik Yöneticisi de kullanımınıza göre sizden ücret lendirin. Azure'daki çapraz hizmet maliyetinizi tahmin etmek için [Fiyatlandırma hesaplayıcısına](https://azure.microsoft.com/pricing/calculator/)bakın. 
@@ -86,7 +86,7 @@ Kullanabileceğiniz Uygulama Hizmeti özelliklerini kullandığınız için ücr
 
 App Service planınızı dilediğiniz zaman büyütebilir veya küçültebilirsiniz. Planın fiyatlandırma katmanını değiştirmek kadar basittir. Başlangıçta düşük fiyatlandırma katmanı seçip daha fazla App Service özelliğine ihtiyaç duyduğunuzda ölçeklendirebilirsiniz.
 
-Örneğin, web uygulamanızı **Ücretsiz** Uygulama Hizmeti planında test etmeye başlayabilir ve hiçbir şey ödemeyin. Web uygulamasına [özel DNS adınızı](app-service-web-tutorial-custom-domain.md) eklemek istediğinizde, planınızı **Paylaşılan** katmana ölçeklendirmeniz gereken bir ölçeklendirmeniz gerekiyor. Daha [sonra, bir SSL bağlama oluşturmak](configure-ssl-bindings.md)istediğinizde, planınızı **Temel** katmana kadar ölçeklendirin. [Hazırlama ortamlarına](deploy-staging-slots.md)sahip olmak istediğinizde, **Standart** katmana kadar ölçeklendirin. Daha fazla çekirdek, bellek veya depolama ya da daha fazla sına ihtiyacınız olduğunda, aynı katmanda daha büyük bir VM boyutuna kadar ölçeklendirin.
+Örneğin, web uygulamanızı **Ücretsiz** Uygulama Hizmeti planında test etmeye başlayabilir ve hiçbir şey ödemeyin. Web uygulamasına [özel DNS adınızı](app-service-web-tutorial-custom-domain.md) eklemek istediğinizde, planınızı **Paylaşılan** katmana ölçeklendirmeniz gereken bir ölçeklendirmeniz gerekiyor. Daha sonra, [bir TLS bağlama oluşturmak](configure-ssl-bindings.md)istediğinizde, planınızı **Temel** katmana kadar ölçeklendirin. [Hazırlama ortamlarına](deploy-staging-slots.md)sahip olmak istediğinizde, **Standart** katmana kadar ölçeklendirin. Daha fazla çekirdek, bellek veya depolama ya da daha fazla sına ihtiyacınız olduğunda, aynı katmanda daha büyük bir VM boyutuna kadar ölçeklendirin.
 
 Aynı şey tam tersi. Daha yüksek bir seviyenin özelliklerine veya özelliklerine artık ihtiyacınız olmadığını hissettiğinizde, daha düşük bir katmana ölçeklendirebilirsiniz ve bu da size para kazandırır.
 

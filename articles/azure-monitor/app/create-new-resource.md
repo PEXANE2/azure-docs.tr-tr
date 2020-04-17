@@ -3,12 +3,12 @@ title: Yeni bir Azure Uygulama Öngörüleri kaynağı oluşturun | Microsoft Do
 description: Yeni bir canlı uygulama için Uygulama Öngörüleri izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: c1b3a6920723ad59b714cce4bd69e1b95fe1995f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132416"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537585"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
@@ -153,12 +153,12 @@ Bu komut için tam Azure CLI belgeleri ve enstrümantasyon anahtarını nasıl a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Tanılama Araması](../../azure-monitor/app/diagnostic-search.md)
-* [Ölçümleri keşfetme](../../azure-monitor/app/metrics-explorer.md)
+* [Ölçümleri keşfetme](../../azure-monitor/platform/metrics-charts.md)
 * [Analytics sorguları yazma](../../azure-monitor/app/analytics.md)
 
 <!--Link references-->
 
 [api]: ../../azure-monitor/app/api-custom-events-metrics.md
 [diagnostic]: ../../azure-monitor/app/diagnostic-search.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../../azure-monitor/platform/metrics-charts.md
 [start]: ../../azure-monitor/app/app-insights-overview.md

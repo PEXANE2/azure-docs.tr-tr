@@ -12,18 +12,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a6c9ccb3dc29865c790e5d8cc9cfc35e68f5561d
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886152"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535783"
 ---
 # <a name="supported-account-types"></a>Desteklenen hesap türleri
 
 Bu makalede, uygulamalarda hangi hesap türlerinin (bazen adlandırılmış hedef kitleler) desteklenir.
 
-<!-- This section can be in an include for many of the scenarios (SPA, Web App signing-in users, protecting a Web API, Desktop (depending on the flows), Mobile -->
+<!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
 ## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Microsoft Identity platform uygulamalarında desteklenen hesap türleri
 
@@ -44,7 +44,7 @@ Microsoft Azure genel Bulutu'nda, çoğu uygulama türü herhangi bir hedef kitl
 
 Bazı hesap türleri belirli kimlik doğrulama akışlarıyla kullanılamaz. Örneğin, masaüstü, UWP uygulamaları veya daemon uygulamalarında:
 
-- Daemon uygulamaları yalnızca Azure Active Directory kuruluşlarında kullanılabilir. Microsoft'un kişisel hesaplarını işlemek için daemon uygulamalarını kullanmaya çalışmak mantıklı değildir (yönetici onayı asla verilmez).  
+- Daemon uygulamaları yalnızca Azure Active Directory kuruluşlarında kullanılabilir. Microsoft'un kişisel hesaplarını işlemek için daemon uygulamalarını kullanmaya çalışmak mantıklı değildir (yönetici onayı asla verilmez).
 - Tümleşik Windows Kimlik Doğrulama akışını yalnızca iş veya okul hesaplarıyla (kuruluşunuzda veya herhangi bir kuruluşta) kullanabilirsiniz. Gerçekten de, Tümleşik Windows Kimlik Doğrulama etki alanı hesapları yla çalışır ve makinelerin etki alanına katılmasını veya Azure AD'nin katılmasını gerektirir. Bu akış kişisel Microsoft Hesapları için anlamlı değildir.
 - [Kaynak Sahibi Parola Hibesi](./v2-oauth-ropc.md) (Kullanıcı Adı/Parola), kişisel Microsoft hesaplarıyla kullanılamaz. Gerçekten de, kişisel Microsoft hesapları, kullanıcının her oturumda kişisel kaynaklara erişmeye onay verdiğini gerektirir. Bu nedenle, bu davranış etkileşimli olmayan akışlarla uyumlu değildir.
 - Aygıt kodu akışı henüz kişisel Microsoft hesaplarıyla çalışmaz.

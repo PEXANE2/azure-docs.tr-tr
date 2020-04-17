@@ -3,12 +3,12 @@ title: Azure Application Insights ile canlı bir ASP.NET web uygulamasını izle
 description: Yeniden dağıtmadan web sitesinin performansını izleme. Şirket içinde veya VM'lerde barındırılan ASP.NET web uygulamalarıyla çalışır.
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: 63d632df61548d15a1e0a606cf2e198207faf341
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670058"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536837"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Application Insights Codeless Attach ile çalışma zamanında enstrüman web uygulamaları
 
@@ -314,7 +314,7 @@ Derleme zamanında zaten izlenmekte olan uygulamalar için:
 
 Telemetrinizi görüntüleyin:
 
-* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../../azure-monitor/app/metrics-explorer.md)
+* Performans ve kullanımı izlemek için [ölçümleri keşfedin](../../azure-monitor/platform/metrics-charts.md)
 * Sorunların tanımlanması için [Olayları ve günlükleri arayın][diagnostic]
 * Daha gelişmiş sorgular için [analiz](../../azure-monitor/app/analytics.md)
 

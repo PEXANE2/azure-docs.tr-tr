@@ -30,6 +30,11 @@
     - name: Dizin oluşturma
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: Azure Güvenlik Karşılaştırması
+      items:
+        - name: Denetim eşlemesi
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/control-mapping.md
     - name: Kanada Federal PBMM
       items:
         - name: Genel Bakış

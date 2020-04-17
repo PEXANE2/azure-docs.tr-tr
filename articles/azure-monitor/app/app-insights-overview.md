@@ -4,12 +4,12 @@ description: Uygulama Performansı Yönetimi ve canlı web uygulamanızın kulla
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: e7cde3ca47afd4db072b734c797a42ecd5a053aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2dbebf13b8674ba4aa0c578e1138a5e279b54355
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136808"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536939"
 ---
 # <a name="what-is-application-insights"></a>Application Insights nedir?
 [Azure Monitor'un](../overview.md)bir özelliği olan Application Insights, geliştiriciler ve DevOps profesyonelleri için genişletilebilir bir Uygulama Performans Yönetimi (APM) hizmetidir. Canlı uygulamalarınızı izlemek için kullanın. Performans anormalliklerini otomatik olarak algılar ve sorunları tanılamanıza ve kullanıcıların uygulamanızla gerçekte ne yaptığını anlamanıza yardımcı olacak güçlü analiz araçları içerir.  Performansı ve kullanılabilirliği sürekli geliştirmenize yardımcı olmak amacıyla tasarlanmıştır. .NET, Node.js ve Java EE dahil olmak üzere çok çeşitli platformlarda, şirket içinde barındırılan uygulamalar için çalışır, karma veya herhangi bir genel bulut. DevOps işleminizle tümleştirilir ve çeşitli geliştirme araçlarıyla bağlantı noktaları vardır. Visual Studio App Center ile tümleştirerek mobil uygulamalardan telemetriyi izleyebilir ve çözümleyebilir.
@@ -51,18 +51,18 @@ Verilerinizi keşfetmenin birçok yolu vardır. Aşağıdaki makaleleri inceleyi
 | --- | --- |
 | [**Akıllı algılama ve el ile uyarılar**](../../azure-monitor/app/proactive-diagnostics.md)<br/>Uygulamanızın normal telemetri kalıplarına uyum sağlayan otomatik uyarılar ayarlayın ve her zamanki desenin dışında bir şey olduğunda tetikle. Belirli özel veya standart ölçüm düzeylerinde de [uyarılar](../../azure-monitor/app/alerts.md) ayarlayabilirsiniz. |![Uyarı örneği](./media/app-insights-overview/alerts-tn.png) |
 | [**Uygulama haritası**](../../azure-monitor/app/app-map.md)<br/>Önemli ölçümler ve uyarılarla uygulamanızın bileşenlerini keşfedin. |![Uygulama eşlemesi](./media/app-insights-overview/appmap-tn.png)  |
-| [**Profiler**](../../azure-monitor/app/profiler.md)<br/>Örnek isteklerinin yürütme profillerini inceleyin. |![Profil Oluşturucu](./media/app-insights-overview/profiler.png) |
+| [**Profil Oluşturucu**](../../azure-monitor/app/profiler.md)<br/>Örnek isteklerinin yürütme profillerini inceleyin. |![Profil Oluşturucu](./media/app-insights-overview/profiler.png) |
 | [**Kullanım analizi**](../../azure-monitor/app/usage-overview.md)<br/>Kullanıcıların segmentlere nasıl ayrıldığını ve nasıl elde tutulduğunu çözümleyin.|![Elde tutma aracı](./media/app-insights-overview/retention.png) |
 | [**Örnek verileri için tanılama arama**](../../azure-monitor/app/diagnostic-search.md)<br/>İstekler, özel durumlar, bağımlılık çağrıları, günlük izlemeleri ve sayfa görüntülemeleri gibi olaylarda arama yapın ve bunları filtreleyin.  |![Telemetri arama](./media/app-insights-overview/search-tn.png) |
-| [**Toplu veriler için Ölçüm Gezgini**](../../azure-monitor/app/metrics-explorer.md)<br/>İstek, hata ve özel durum oranları; yanıt süreleri, sayfa yükleme süreleri gibi toplu verileri keşfedin, filtreleyin ve bölümlere ayırın. |![Ölçümler](./media/app-insights-overview/metrics-tn.png) |
+| [**Toplu veriler için Ölçüm Gezgini**](../../azure-monitor/platform/metrics-charts.md)<br/>İstek, hata ve özel durum oranları; yanıt süreleri, sayfa yükleme süreleri gibi toplu verileri keşfedin, filtreleyin ve bölümlere ayırın. |![Ölçümler](./media/app-insights-overview/metrics-tn.png) |
 | [**Panolar**](../../azure-monitor/app/overview-dashboard.md)<br/>Birden çok kaynaktan toplanan verileri birleştirin ve başkalarıyla paylaşın. Çok bileşenli uygulamalar ve takım odasında sürekli görüntüleme için idealdir. |![Pano örneği](./media/app-insights-overview/dashboard-tn.png) |
 | [**Canlı Ölçüm Akışı**](../../azure-monitor/app/live-stream.md)<br/>Yeni bir derleme dağıttığınızda, her şeyin beklendiği gibi çalıştığından emin olmak için bu neredeyse gerçek zamanlı performans göstergelerini izleyin. |![Canlı ölçüm örneği](./media/app-insights-overview/live-metrics-tn.png) |
 | [**Analytics**](../../azure-monitor/app/analytics.md)<br/>Bu güçlü sorgulama dilini kullanarak uygulamanızın performansı ve kullanımıyla ilgili zor soruları yanıtlayın. |![Analiz örneği](./media/app-insights-overview/analytics-tn.png) |
 | [**Visual Studio**](../../azure-monitor/app/visual-studio.md)<br/>Koddaki performans verilerini görün. Yığın izlemelerinden koda gidin.|![Visual studio](./media/app-insights-overview/visual-studio-tn.png) |
-| [**Anlık görüntü hata ayıklayıcısı**](../../azure-monitor/app/snapshot-debugger.md)<br/>Dinamik işlemlerden örneklenen anlık görüntülerdeki hataları parametre değerleriyle ayıklayın.|![Visual studio](./media/app-insights-overview/snapshot.png) |
-| [**Güç BI**](../../azure-monitor/app/export-power-bi.md )<br/>Kullanım ölçümlerini diğer iş zekası verileriyle tümleştirin.| ![Power BI](./media/app-insights-overview/power-bi.png)|
+| [**Anlık görüntü hata ayıklama**](../../azure-monitor/app/snapshot-debugger.md)<br/>Dinamik işlemlerden örneklenen anlık görüntülerdeki hataları parametre değerleriyle ayıklayın.|![Visual studio](./media/app-insights-overview/snapshot.png) |
+| [**Power BI**](../../azure-monitor/app/export-power-bi.md )<br/>Kullanım ölçümlerini diğer iş zekası verileriyle tümleştirin.| ![Power BI](./media/app-insights-overview/power-bi.png)|
 | [**REST API**](https://dev.applicationinsights.io/)<br/>Ölçümleriniz ve ham verileriniz üzerinde sorgu çalıştırmak için kod yazın.| ![REST API](./media/app-insights-overview/rest-tn.png) |
-| [**Sürekli ihracat**](../../azure-monitor/app/export-telemetry.md)<br/>Ham verilerin ulaşır ulaşmaz toplu olarak depolamaya aktarılması. |![Dışarı Aktarma](./media/app-insights-overview/export-tn.png) |
+| [**Sürekli dışarı aktarma**](../../azure-monitor/app/export-telemetry.md)<br/>Ham verilerin ulaşır ulaşmaz toplu olarak depolamaya aktarılması. |![Dışarı Aktarma](./media/app-insights-overview/export-tn.png) |
 
 ## <a name="how-do-i-use-application-insights"></a>Application Insights’ı nasıl kullanabilirim?
 
@@ -87,7 +87,7 @@ Dağıttığınız her yeni [özelliğin etkinliğini ölçün.](../../azure-mon
 * Kodunuza özel telemetri yazın.
 * Bir sonraki geliştirme döngüsünü telemetrinizden edindiğiniz somut kanıtlara dayandırın.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 Application Insights, Microsoft Azure’da barındırılan birçok hizmetten biridir ve telemetri verileri analiz edilip sunulmak üzere buraya gönderilir. Bu nedenle, başka bir işlem yapmadan önce bir [Microsoft Azure](https://azure.com) aboneliğinizin olması gerekir. Kaydolmak ücretsizdir ve Application Insights’ın temel [fiyatlandırma planını](https://azure.microsoft.com/pricing/details/application-insights/) seçerseniz, uygulamanız önemli bir kullanım oranına ulaşana kadar ücret ödemezsiniz. Kuruluşunuzun zaten aboneliği varsa, Microsoft hesabınızı bu aboneliğe eklettirebilirsiniz.
 
 Hizmeti kullanmaya başlamanın birkaç yolu vardır. Sizin için en uygun yöntemi kullanarak başlayın. Diğerlerini daha sonra ekleyebilirsiniz.
@@ -130,7 +130,7 @@ Geliştirme zamanında şunlarla kullanmaya başlayın:
   * [MSDN Forumu](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Önerileriniz:
-  * [Kullanıcı Sesi](https://feedback.azure.com/forums/357324-application-insights/filters/top)
+  * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * Blog:
   * [Application Insights blogu](https://azure.microsoft.com/blog/tag/application-insights)
 

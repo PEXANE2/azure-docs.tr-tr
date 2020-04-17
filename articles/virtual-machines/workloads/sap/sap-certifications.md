@@ -13,19 +13,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/13/2020
+ms.date: 04/16/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: 43fc2e9369b9d11b1ac0205beddea01b633fb633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e803da238ebdd728e772a15b0f29ae36d401a699
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598383"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536412"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure'da çalışan SAP sertifikaları ve yapılandırmaları
 
-SAP ve Microsoft müşterileri için karşılıklı yararları olan güçlü bir ortaklık birlikte çalışma uzun bir geçmişi var. Microsoft, Microsoft Azure'un SAP iş yüklerinizi çalıştıracak en iyi platform olduğundan emin olmak için platformunu sürekli olarak güncelliyor ve yeni sertifika bilgilerini SAP'ye göndermektedir. Aşağıdaki tablolarda Azure destekli yapılandırmalar ve büyüyen SAP sertifikalarının listesi sıralanmaktadır. 
+SAP ve Microsoft müşterileri için karşılıklı yararları olan güçlü bir ortaklık birlikte çalışma uzun bir geçmişi var. Microsoft, Microsoft Azure'un SAP iş yüklerinizi çalıştıracak en iyi platform olduğundan emin olmak için platformunu sürekli olarak güncelliyor ve yeni sertifika bilgilerini SAP'ye göndermektedir. Aşağıdaki tablolarda Azure destekli yapılandırmalar ve büyüyen SAP sertifikalarının listesi sıralanmaktadır. Bu liste, resmi SAP listelerinden burada ve orada saptanabilecek genel bir listedir. Ayrıntılı verilere nasıl ulaşılır makalede belgelenir Hangi [SAP yazılımı Azure dağıtımları için desteklenir](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
 
 ## <a name="sap-hana-certifications"></a>SAP HANA sertifikaları
 Başvuru:
@@ -52,10 +52,10 @@ Başvuru:
 
 | SAP Ürün | Konuk işletim sistemi | RDBMS | Sanal Makine Türleri |
 | --- | --- | --- | --- |
-| SAP Business Suite Yazılımı | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 ds14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a D2s_v3, D2as_v4'dan D64as_v4'a, E2s_v3'den E64s_v3'a, E2as_v4 E64as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP İş Hepsi Bir | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 ds14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a D2s_v3, D2as_v4'dan D64as_v4'a, E2s_v3'den E64s_v3'a, E2as_v4 E64as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP BusinessObjects BI | Windows |Yok |A5-A11, D11 d14, DS11 ds14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a D2s_v3, D2as_v4'dan D64as_v4'a, E2s_v3'den E64s_v3'a, E2as_v4 E64as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
-| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 ds14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a D2s_v3, D2as_v4'dan D64as_v4'a, E2s_v3'den E64s_v3'a, E2as_v4 E64as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2 , M208ms_v2, M416s_v2, M416ms_v2 |
+| SAP Business Suite Yazılımı | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 d14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a, D64s_v3'a D2s_v3, D64as_v4'a D2as_v4, E64s_v3'a E2s_v3, E64as_v4'a E2as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416ms_v2, M416ms_v2, M416s_v2 |
+| SAP İş Hepsi Bir | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 d14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a, D64s_v3'a D2s_v3, D64as_v4'a D2as_v4, E64s_v3'a E2s_v3, E64as_v4'a E2as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416ms_v2, M416ms_v2, M416s_v2 |
+| SAP BusinessObjects BI | Windows |Yok |A5-A11, D11 d14, DS11 d14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a, D64s_v3'a D2s_v3, D64as_v4'a D2as_v4, E64s_v3'a E2s_v3, E64as_v4'a E2as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416ms_v2, M416ms_v2, M416s_v2 |
+| SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (yalnızca Windows ve Oracle Linux), DB2, SAP ASE |A5-A11, D11 d14, DS11 d14, DS15_v2, GS1'den GS5'e DS11_v2, D64s_v3'a, D64s_v3'a D2s_v3, D64as_v4'a D2as_v4, E64s_v3'a E2s_v3, E64as_v4'a E2as_v4, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416ms_v2, M416ms_v2, M416s_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Azure'da desteklenen diğer SAP İş Yükü
 
@@ -65,4 +65,6 @@ Başvuru:
 | SAP BPC 10.01 MS SP08 | Windows ve Linux | | Tüm NetWeaver Sertifikalı VM türleri<br /> SAP Not #2451795 |
 | SAP İş Nesneleri BI platformu | Windows ve Linux | | SAP Not #2145537 |
 | SAP Veri Hizmetleri 4.2 | | | SAP Not #2288344 |
-| SAP Hybris Ticaret Platformu 5.x ve 6.x | Windows | SQL Server, Oracle | Tüm NetWeaver sertifikalı VM türleri<br /> [Hybris Wiki](https://wiki.hybris.com/display/SUP/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Ticaret Platformu  | Windows | SQL Server, Oracle | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Ticaret Platformu  | SLES 12 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Ticaret Platformu  | RHEL 7 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |

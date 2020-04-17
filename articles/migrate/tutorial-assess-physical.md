@@ -2,21 +2,21 @@
 title: Azure'a geçiş için fiziksel sunucuları Azure'a geçiş için Azure'a Geçiş Sunucu Değerlendirmesi ile değerlendirin
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak Azure'a geçiş için şirket içi fiziksel sunucuların nasıl değerlendirildiğini açıklar.
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: c89c731712a625e5f3b7a1a7e9306f6a7480b96b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/15/2020
+ms.openlocfilehash: b36cba18bd154cd5d14e16a9f8bf85cda6bf87a8
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76990309"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535443"
 ---
-# <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure Geçiş: Sunucu Değerlendirmesi ile fiziksel sunucuları değerlendirin
+# <a name="assess-physical-servers-with-azure-migrateserver-assessment"></a>Azure Geçiş:Sunucu Değerlendirmesi ile fiziksel sunucuları değerlendirin
 
-Bu makalede, Azure Geçiş: Sunucu Değerlendirmesi aracını kullanarak şirket içi fiziksel sunucuları nasıl değerlendiracağınızı gösterilmektedir.
+Bu makalede, Azure Geçiş:Sunucu Değerlendirmesi aracını kullanarak şirket içi fiziksel sunucuları nasıl değerlendiracağınızı gösterilmektedir.
 
 [Azure Geçiş,](migrate-services-overview.md) uygulamaları, altyapıyı ve iş yüklerini Microsoft Azure'a keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olan bir araç merkezi sağlar. Hub, Azure Geçiş araçlarını ve üçüncü taraf bağımsız yazılım satıcısı (ISV) tekliflerini içerir.
 
-Bu öğretici, fiziksel sunucuların nasıl değerlendirilip Azure'a geçirilen bir serinin ikinci sidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, fiziksel sunucuların nasıl değerlendirilip Azure'a geçirilen bir serinin ikinci sidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Bir Azure Geçiş projesi ayarlayın.
 > * Fiziksel sunucuları değerlendirmek için şirket içinde çalışan bir Azure Geçiş cihazı ayarlayın.
@@ -34,8 +34,10 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 - Bu serinin ilk öğretici [tamamlayın.](tutorial-prepare-physical.md) Bunu yapmazsanız, bu öğreticideki talimatlar çalışmaz.
 - İşte ilk öğreticide ne yapman gerekirdi:
-    - Azure Geçiş için [Azure izinleri ayarlayın.](tutorial-prepare-physical.md#prepare-azure)
+    - Azure Geçiş için [Azure izinleri ayarlayın.](tutorial-prepare-physical.md)
     - Değerlendirme için [fiziksel sunucular hazırlayın.](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) Cihaz gereksinimleri doğrulanmalıdır. Ayrıca fiziksel sunucu bulma için ayarlanmış bir hesap olmalıdır. Gerekli bağlantı noktaları kullanılabilir olmalıdır ve Azure'a erişmek için gereken URL'lerden haberdar olmalısınız.
+
+
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Geçiş projesi ayarlama
@@ -49,8 +51,8 @@ Aşağıdaki şekilde yeni bir Azure Geçişi projesi oluşturun.
     ![Sunucuları keşfedin ve değerlendirin](./media/tutorial-assess-physical/assess-migrate.png)
 
 4. **Başlarken** bölümünde **Araç ekle**’ye tıklayın.
-5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.     
-6. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin. Asya, Avrupa, İngiltere ve AMERIKA Birleşik Devletleri desteklenir.
+5. **Projeyi geçir** bölümünde Azure aboneliğinizi seçin ve henüz yapmadıysanız bir kaynak grubu oluşturun.  
+6. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz coğrafyayı belirtin. Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
     - Proje coğrafyası yalnızca şirket içi sunuculardan toplanan meta verileri depolamak için kullanılır.
     - Bir geçiş çalıştırdığınızda herhangi bir hedef bölgeyi seçebilirsiniz.
@@ -58,7 +60,7 @@ Aşağıdaki şekilde yeni bir Azure Geçişi projesi oluşturun.
     ![Azure Geçiş projesi oluşturma](./media/tutorial-assess-physical/migrate-project.png)
 
 
-7. **İleri**'ye tıklayın.
+7. **İleri**’ye tıklayın.
 8. **Değerlendirme aracını seç'te**Azure **Geçir: Sunucu Değerlendirmesi** > **Sonraki'ni**seçin.
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-assess-physical/assessment-tool.png)
@@ -96,16 +98,24 @@ Cihaz için sıkıştırılmış dosyayı indirin.
 Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını kontrol edin.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. Sıkıştırılanması gereken dosya için karma oluşturmak için aşağıdaki komutu çalıştırın
+2. Sıkıştırılanan dosya için karma oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+    - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Devlet bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Karma değerleri doğrulayın:
+ 
+    - Genel bulut için (en son cihaz sürümü için):
 
-3.  En son cihaz sürümü için, oluşturulan karma bu ayarlarla eşleşmelidir.
+        **Algoritma** | **Karma değeri**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
 
-  **Algoritma** | **Karma değeri**
-  --- | ---
-  MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-  SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
+    - Azure yönetimi için (en son cihaz sürümü için):
+
+        **Algoritma** | **Karma değeri**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Geçir yükleyici komut dosyasını çalıştırma
 
@@ -116,28 +126,26 @@ Yükleyici komut dosyası aşağıdakileri yapar:
 - IIS yeniden yazılabilir bir modül indirin ve yükler. [Daha fazla bilgi edinin](https://www.microsoft.com/download/details.aspx?id=7435).
 - Azure Geçiş için kalıcı ayar ayrıntılarıyla bir kayıt defteri anahtarını (HKLM) güncelleştirir.
 - Yol altında aşağıdaki dosyaları oluşturur:
-    - **Config Files**: %ProgramData%\Microsoft Azure\Config
-    - **Günlük Dosyaları**: %ProgramData%\Microsoft Azure\Günlükler
+    - **Config Files**: %Programdata%\Microsoft Azure\Config
+    - **Günlük Dosyaları**: %Programdata%\Microsoft Azure\Günlükler
 
 Komut dosyasını aşağıdaki gibi çalıştırın:
 
-1. Sıkıştırılmış dosyayı sunucuda cihazı barındıracak bir klasöre ayıklayın.
+1. Sıkıştırılmış dosyayı sunucuda cihazı barındıracak bir klasöre ayıklayın.  Komut dosyasını varolan bir Azure Geçir cihazında bir makinede çalıştırmadığınızdan emin olun.
 2. PowerShell'i yönetim (yüksek) ayrıcalığıyla yukarıdaki sunucuda başlatın.
 3. PowerShell dizinini indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasörle değiştirin.
 4. **AzureMigrateInstaller.ps1** adlı komut dosyasını aşağıdaki komutu çalıştırarak çalıştırın:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Komut dosyası, başarılı bir şekilde bittiğinde cihaz web uygulamasını başlatacaktır.
 
-Herhangi bir sorun durumunda, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerine erişebilirsiniz.
+    - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Lütfen mevcut bir Azure Geçir ekibe Azure Geçir yükleyici komut dosyası nda yürütmeyin.
+    Komut dosyası, başarılı bir şekilde bittiğinde cihaz web uygulamasını başlatacaktır.
+
+Herhangi bir sorunla karşılaşırsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerine erişebilirsiniz.
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-Cihazın [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 
 ### <a name="configure-the-appliance"></a>Cihazı yapılandırın
@@ -173,7 +181,7 @@ Cihazı ilk kez ayarlayın.
 Şimdi, cihazdan keşfedilecek fiziksel sunuculara bağlanın ve keşfi başlatın.
 
 1. Cihazın sunucuları bulmak için kullanacağı hesap kimlik bilgilerini belirtmek için **Kimlik Bilgileri Ekle'yi** tıklatın.  
-2. **İşletim Sistemi'ni**belirtin, kimlik bilgileri, **Kullanıcı Adı** ve **Şifre** için uygun adı belirtin ve **Ekle'yi**tıklatın.
+2. Kimlik bilgileri için uygun bir ad olan **İşletim Sistemi'ni**ve kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
 Windows ve Linux sunucuları için her biri bir kimlik bilgileri kümesi ekleyebilirsiniz.
 4. **Sunucu ekle'yi**tıklatın ve sunucu ayrıntılarını belirtin- FQDN/IP adresi ve sunucuya bağlanmak için kimlik bilgilerinin dostu adı (satır başına bir giriş).
 3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, bulunabilecek sunucuların listesi gösterilir.

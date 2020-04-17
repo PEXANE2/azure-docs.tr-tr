@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 6a127510b454244b32ad481cdb32c5d2e8faf9a0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 47485d8d9007a6cf6432b7bf401c7c1c34a9863a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991186"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536140"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcıları oturum açın ve bir iOS veya macOS uygulamasından Microsoft Graph API'yi arayın
 
@@ -30,7 +30,7 @@ Bu hızlı başlangıç hem iOS hem de macOS uygulamaları için geçerlidir. Ba
 > [!NOTE]
 > **Ön koşullar**
 > * XCode 10+
-> * iOS 10+ 
+> * iOS 10+
 > * macOS 10.12+
 
 > [!div renderon="docs"]
@@ -83,7 +83,7 @@ Terminal penceresinde, indirilen kod örneğinin yer verdiği klasöre gidin ve 
 #### <a name="step-4-configure-your-project"></a>Adım 4: Projenizi yapılandırın
 
 > [!div renderon="docs"]
-> Yukarıda Seçenek 1'i seçtiyseniz, şu adımları atlayabilirsiniz. 
+> Yukarıda Seçenek 1'i seçtiyseniz, şu adımları atlayabilirsiniz.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
@@ -149,9 +149,9 @@ Terminal penceresinde, indirilen kod örneğinin yer verdiği klasöre gidin ve 
 >          </array>
 >       </dict>
 >    </array>
-> 
+>
 >    ```
-> 1. Uygulamayı çalıştırmak & oluşturun! 
+> 1. Uygulamayı çalıştırmak & oluşturun!
 
 ## <a name="more-information"></a>Daha Fazla Bilgi
 
@@ -192,7 +192,7 @@ Sonra şu kodu kullanarak MSAL'yi başlatın:
 
 ```swift
 let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
-            
+
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
 ```
@@ -209,7 +209,7 @@ Uygulamanız da aşağıdaki leri `AppDelegate`olmalıdır. Bu, kimlik doğrulam
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        
+
         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
     }
 
@@ -221,21 +221,21 @@ Uygulamanız da aşağıdaki leri `AppDelegate`olmalıdır. Bu, kimlik doğrulam
 
  ```swift
  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        
+
         guard let urlContext = URLContexts.first else {
             return
         }
-        
+
         let url = urlContext.url
         let sourceApp = urlContext.options.sourceApplication
-        
+
         MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
     }
  ```
 
-Son olarak, uygulamanızın `LSApplicationQueriesSchemes` ***Info.plist'inde*** bir `CFBundleURLTypes`girişi olmalıdır. Örnek bu dahil ile birlikte gelir. 
+Son olarak, uygulamanızın `LSApplicationQueriesSchemes` ***Info.plist'inde*** bir `CFBundleURLTypes`girişi olmalıdır. Örnek bu dahil ile birlikte gelir.
 
-   ```xml 
+   ```xml
    <key>LSApplicationQueriesSchemes</key>
    <array>
       <string>msauthv2</string>
@@ -249,10 +249,10 @@ Belirteç almak için MSAL’in iki yöntemi vardır: `acquireToken` ve `acquire
 
 #### <a name="acquiretoken-get-a-token-interactively"></a>edinmeToken: Etkileşimli bir belirteç alın
 
-Bazı durumlarda, kullanıcıların Microsoft kimlik platformuyla etkileşimde yetişmesi gerekir. Bu gibi durumlarda, son kullanıcının hesabını seçmesi, kimlik bilgilerini girmesi veya uygulamanızın izinlerini kabul etmesi gerekebilir. Örneğin, 
+Bazı durumlarda, kullanıcıların Microsoft kimlik platformuyla etkileşimde yetişmesi gerekir. Bu gibi durumlarda, son kullanıcının hesabını seçmesi, kimlik bilgilerini girmesi veya uygulamanızın izinlerini kabul etmesi gerekebilir. Örneğin,
 
 * Kullanıcılar uygulamada ilk kez oturum açtığında
-* Bir kullanıcı parolasını sıfırlarsa, kimlik bilgilerini girmeleri gerekir 
+* Bir kullanıcı parolasını sıfırlarsa, kimlik bilgilerini girmeleri gerekir
 * Uygulamanız ilk kez bir kaynağa erişim istediğinde
 * MFA veya diğer Koşullu Erişim ilkeleri gerektiğinde
 
@@ -263,19 +263,19 @@ self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* 
 
 > |Konumlar:||
 > |---------|---------|
-> | `scopes` | İstenilen kapsamları içerir (diğer bir `[ "<Application ID URL>/scope" ]` şekilde Microsoft Graph`api://<Application ID>/access_as_user` `[ "user.read" ]` için veya özel Web API'leri için ( ) |
+> | `scopes` | İstenilen kapsamları içerir (diğer bir `[ "<Application ID URL>/scope" ]` şekilde Microsoft Graph`api://<Application ID>/access_as_user` `[ "user.read" ]` için veya özel web API'leri için ( ) |
 
 #### <a name="acquiretokensilent-get-an-access-token-silently"></a>edinmeTokenSilent: Sessizce bir erişim belirteç alın
 
-Uygulamalar, kullanıcılarının her jeton istediklerinde oturum açmalarını gerektirmemelidir. Kullanıcı zaten oturum açmışsa, bu yöntem uygulamaların jeton larını sessizce istemesine olanak tanır. 
+Uygulamalar, kullanıcılarının her jeton istediklerinde oturum açmalarını gerektirmemelidir. Kullanıcı zaten oturum açmışsa, bu yöntem uygulamaların jeton larını sessizce istemesine olanak tanır.
 
 ```swift
 self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previousAccount, error) in
-            
+
    guard let account = currentAccount else {
       return
    }
-            
+
    let silentParams = MSALSilentTokenParameters(scopes: self.kScopes, account: account)
    self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 }
@@ -283,7 +283,7 @@ self.applicationContext!.getCurrentAccount(with: nil) { (currentAccount, previou
 
 > |Konumlar: ||
 > |---------|---------|
-> | `scopes` | İstenilen kapsamları içerir (diğer bir `[ "<Application ID URL>/scope" ]` şekilde Microsoft Graph`api://<Application ID>/access_as_user` `[ "user.read" ]` için veya özel Web API'leri için ( ) |
+> | `scopes` | İstenilen kapsamları içerir (diğer bir `[ "<Application ID URL>/scope" ]` şekilde Microsoft Graph`api://<Application ID>/access_as_user` `[ "user.read" ]` için veya özel web API'leri için ( ) |
 > | `account` | Bir belirteç için istenen hesap. Bu hızlı başlatma tek bir hesap uygulaması hakkındadır. Çok hesaplı bir uygulama oluşturmak istiyorsanız, belirteç isteklerini kullanmak `accountsFromDeviceForParameters:completionBlock:` ve doğru geçmek için hangi hesabı kullanacağınızı belirlemek için mantık tanımlamanız gerekir`accountIdentifier` |
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -6,12 +6,12 @@ ms.assetid: 10da5b8a-1823-41a3-a2ff-a0717c2b5c2d
 ms.topic: article
 ms.date: 10/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 79bd0a19a9bd8ebd100ed80ca0206656d73ef76c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5c1760c746aca439e19ab5727e5be02f6dbad3cb
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74672366"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535698"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Etkin bir DNS adını Azure Uygulama Hizmetine geçirme
 
@@ -129,7 +129,7 @@ FTP/S URL'sinin `<deployment-unit>.ftp.azurewebsites.windows.net`alan adına bak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel bir SSL sertifikasını Uygulama Hizmetine nasıl bağlatırmayı öğrenin.
+Özel bir TLS/SSL sertifikasını Uygulama Hizmetine nasıl bağlatırmayı öğrenin.
 
 > [!div class="nextstepaction"]
-> [SSL sertifikasını Azure Uygulama Hizmetine bağlama](configure-ssl-bindings.md)
+> [Azure Uygulama Hizmetinde TLS bağlama ile özel bir DNS adını güvenli hale](configure-ssl-bindings.md)

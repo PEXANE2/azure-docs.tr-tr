@@ -3,21 +3,25 @@ title: Hyper-V için bir Azure Geçiş cihazı ayarlama
 description: Hyper-V VM'leri değerlendirmek ve geçirmek için bir Azure Geçir cihazını nasıl ayarlayamanızı öğrenin.
 ms.topic: article
 ms.date: 03/23/2020
-ms.openlocfilehash: 80db2c1d4f5482604ca1507174b127c150f76044
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 77c13a3a8c87d116bd0863324d28669185c53c84
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336806"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538299"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM'ler için bir cihaz ayarlama
 
-Bu makalede, Azure [Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla Hyper-V VM'lerin değerlendirilmesi için Azure Geçir cihazının nasıl ayarlanır.
+Hyper-V VM'lerin Azure [Geçir:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracıyla değerlendirilmesi için Azure Geçir cihazını ayarlamak için bu makaleyi izleyin.
 
 [Azure Geçir cihazı,](migrate-appliance.md) şirket içi Hyper-V V MM'leri keşfetmek ve VM meta veri/performans verilerini Azure'a göndermek için Azure Geçiş:Sunucu Değerlendirmesi/Geçiş tarafından kullanılan hafif bir cihazdır.
 
-İndirdiğiniz Bir VHD şablonunu kullanarak veya PowerShell yükleme komut dosyası kullanarak Hyper-V VM değerlendirmesi için Azure Geçir cihazını ayarlayabilirsiniz. Bu makalede, VHD şablonu kullanılarak cihazın nasıl ayarlanır. Komut dosyasını kullanarak cihazı kurmak istiyorsanız, bu [makaledeki](deploy-appliance-script.md)yönergeleri izleyin.
+Cihazı birkaç yöntem kullanarak dağıtabilirsiniz:
 
+- İndirilen bir VHD kullanarak Hyper-V VM'de ayarlayın. Bu, bu makalede açıklanan yöntemdir.
+- PowerShell yükleyici komut dosyasına sahip bir Hyper-V VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) VHD kullanarak bir VM ayarlayamıyorsanız veya Azure Devlet'teyseniz kullanılmalıdır.
+
+Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
 
 ## <a name="appliance-deployment-vhd"></a>Cihaz dağıtımı (VHD)
 
@@ -64,8 +68,8 @@ Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını 
 3. **Klasörü**Bul'da, çıkarılan VHD'yi içeren klasörü belirtin. Ardından **İleri**’ye tıklayın.
 1. **Sanal Makine Seç'te** **İleri'yi**tıklatın.
 2. **Alma Türü Seç'te,** sanal **makineyi kopyala'yı tıklatın (yeni bir benzersiz kimlik oluşturun)**. Ardından **İleri**’ye tıklayın.
-3. **Hedef Seç'te**varsayılan ayarbırakın. **İleri**'ye tıklayın.
-4. **Depolama Klasörleri'nde**varsayılan ayarı bırakın. **İleri**'ye tıklayın.
+3. **Hedef Seç'te**varsayılan ayarbırakın. **İleri**’ye tıklayın.
+4. **Depolama Klasörleri'nde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 5. **Ağ**Seç'te, VM'nin kullanacağı sanal anahtarı belirtin. Anahtar, Azure'a veri göndermek için internet bağlantısına ihtiyaç duyar.
 6. **Özetle,** ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
 7. Sanal **Makineler>** Hyper-V Manager'da VM'yi başlatın.
@@ -73,7 +77,7 @@ Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını 
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-VM cihazının [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ## <a name="configure-the-appliance"></a>Cihazı yapılandırın
 

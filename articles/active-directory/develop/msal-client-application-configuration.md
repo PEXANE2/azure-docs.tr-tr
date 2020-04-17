@@ -13,12 +13,12 @@ ms.date: 09/27/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0262d22ae00456ce06cb8efbf995f1a093b20043
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79262899"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534474"
 ---
 # <a name="application-configuration-options"></a>Uygulama yapılandırma seçenekleri
 
@@ -106,11 +106,11 @@ Uri yönlendirme, kimlik sağlayıcısının güvenlik belirteçlerini geri gön
 ### <a name="redirect-uri-for-public-client-apps"></a>Genel istemci uygulamaları için URI'yi yeniden yönlendirme
 
 MSAL kullanan bir genel istemci uygulama geliştiricisiyseniz:
-- Masaüstü veya UWP `.WithDefaultRedirectUri()` uygulamalarında (MSAL.NET 4.1+) kullanmak istiyorsunuz. Bu yöntem, kamu istemcisi uygulamanın yeniden yönlendirme uri özelliğini, kamu istemcisi uygulamaları için önerilen varsayılan yeniden yönlendirme uri'ye ayarlar. 
+- Masaüstü veya UWP `.WithDefaultRedirectUri()` uygulamalarında (MSAL.NET 4.1+) kullanmak istiyorsunuz. Bu yöntem, kamu istemcisi uygulamanın yeniden yönlendirme uri özelliğini, kamu istemcisi uygulamaları için önerilen varsayılan yeniden yönlendirme uri'ye ayarlar.
 
-  Platform  | Yeniden Yönlendirme URI'si  
+  Platform  | Yeniden Yönlendirme URI'si
   ---------  | --------------
-  Masaüstü uygulaması (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient` 
+  Masaüstü uygulaması (.NET FW) | `https://login.microsoftonline.com/common/oauth2/nativeclient`
   UWP | değeri `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()`. Bu webauthenticationBroker.GetCurrentApplicationCallbackUri() hangi kayıt gerekir sonucu değerini ayarlayarak tarayıcı ile SSO sağlar
   .NET Core | `https://localhost`. Bu, .NET Core'un şu anda gömülü web görünümü için bir kullanıcı arabirimi olmadığından, kullanıcının etkileşimli kimlik doğrulaması için sistem tarayıcısını kullanmasını sağlar.
 
@@ -130,7 +130,7 @@ Ek Android ayrıntıları için, [Android'de Aracılı auth'a](brokered-auth.md)
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>Uri'yi gizli istemci uygulamaları için yönlendirme
 
-Web uygulamaları için yeniden yönlendirme URI (veya yanıt URI), Azure AD'nin belirteci uygulamaya geri göndermek için kullanacağı URI'dir. Bu URI, gizli uygulama bunlardan biriyse web uygulamasının/Web API'sinin URL'si olabilir. Yeniden yönlendirme URI'nin uygulama kaydına kaydedilmesi gerekir. Bu kayıt, başlangıçta yerel olarak test ettiğiniz bir uygulamayı dağıttığınızda özellikle önemlidir. Daha sonra uygulama kayıt portalına dağıtılan uygulamanın yanıt URL'sini eklemeniz gerekir.
+Web uygulamaları için yeniden yönlendirme URI (veya yanıt URI), Azure AD'nin belirteci uygulamaya geri göndermek için kullanacağı URI'dir. Bu URI, gizli uygulama bunlardan biriyse web uygulamasının/web API'sinin URL'si olabilir. Yeniden yönlendirme URI'nin uygulama kaydına kaydedilmesi gerekir. Bu kayıt, başlangıçta yerel olarak test ettiğiniz bir uygulamayı dağıttığınızda özellikle önemlidir. Daha sonra uygulama kayıt portalına dağıtılan uygulamanın yanıt URL'sini eklemeniz gerekir.
 
 Daemon uygulamaları için yeniden yönlendirme URI belirtmeniz gerekmez.
 
@@ -138,7 +138,7 @@ Daemon uygulamaları için yeniden yönlendirme URI belirtmeniz gerekmez.
 
 Bu seçenek, gizli istemci uygulaması için istemci sırrını belirtir. Bu gizli (uygulama parolası), uygulama kayıt portalı tarafından sağlanır veya PowerShell AzureAD, PowerShell AzureRM veya Azure CLI ile uygulama kaydı sırasında Azure AD'ye sağlanır.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 Diğer yapılandırma seçenekleri günlüğe kaydetmeyi ve sorun gidermeyi sağlar. Bunları nasıl kullanacağınız la ilgili ayrıntılar için [Günlük](msal-logging.md) makalesine bakın.
 

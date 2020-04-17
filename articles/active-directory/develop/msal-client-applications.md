@@ -13,22 +13,22 @@ ms.date: 04/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: d59819c0ab614b0f6cc102c7ebe8c760fb851599
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c3292a31e5f750c16933acf94509e0ad226080a
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77084127"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534321"
 ---
 # <a name="public-client-and-confidential-client-applications"></a>Kamu müşteri ve gizli müşteri uygulamaları
 Microsoft Kimlik Doğrulama Kitaplığı (MSAL), iki tür istemci tanımlar: ortak istemciler ve gizli istemciler. İki istemci türü, yetkilendirme sunucusuyla güvenli bir şekilde kimlik doğrulama ve istemci kimlik bilgilerinin gizliliğini koruma yetenekleriyle ayırt edilir. Buna karşılık, Azure AD Kimlik Doğrulama Kitaplığı (ADAL), *kimlik doğrulama bağlamı* (Azure AD bağlantısı) olarak adlandırılan içeriği kullanır.
 
-- **Gizli istemci uygulamaları** sunucularda çalışan uygulamalardır (web uygulamaları, Web API uygulamaları, hatta hizmet/daemon uygulamaları). Bunlara erişimin zor olduğu düşünülür ve bu nedenle bir uygulamayı gizli tutabilme yeteneğine sahiptirler. Gizli istemciler yapılandırma zamanı sırlarını saklayabilir. İstemcinin her örneğinin ayrı bir yapılandırması vardır (istemci kimliği ve istemci sırrı dahil). Bu değerleri son kullanıcılar için ayıklamak zordur. Web uygulaması en yaygın gizli istemcidir. İstemci kimliği web tarayıcısı üzerinden açıklanır, ancak gizli sadece arka kanalda geçirilir ve doğrudan maruz asla.
+- **Gizli istemci uygulamaları** sunucularda çalışan uygulamalardır (web uygulamaları, web API uygulamaları, hatta hizmet/daemon uygulamaları). Bunlara erişimin zor olduğu düşünülür ve bu nedenle bir uygulamayı gizli tutabilme yeteneğine sahiptirler. Gizli istemciler yapılandırma zamanı sırlarını saklayabilir. İstemcinin her örneğinin ayrı bir yapılandırması vardır (istemci kimliği ve istemci sırrı dahil). Bu değerleri son kullanıcılar için ayıklamak zordur. Web uygulaması en yaygın gizli istemcidir. İstemci kimliği web tarayıcısı üzerinden açıklanır, ancak gizli sadece arka kanalda geçirilir ve doğrudan maruz asla.
 
     Gizli istemci uygulamaları: <BR>
     ![Web](media/msal-client-applications/web-app.png) ![uygulaması Web](media/msal-client-applications/web-api.png) ![API Daemon/service](media/msal-client-applications/daemon-service.png)
 
-- **Ortak istemci uygulamaları,** aygıtlarda veya masaüstü bilgisayarlarda veya bir web tarayıcısında çalışan uygulamalardır. Uygulama sırlarını güvenli bir şekilde saklamaları için güvenilir değildir, bu nedenle web API'lerine yalnızca kullanıcı adına erişirler. (Yalnızca genel müşteri akışlarını desteklerler.) Genel müşteriler yapılandırma zamanı sırlarını tutamaz, bu yüzden müşteri sırları yoktur.
+- **Ortak istemci uygulamaları,** aygıtlarda veya masaüstü bilgisayarlarda veya bir web tarayıcısında çalışan uygulamalardır. Uygulama sırlarını güvenli bir şekilde saklamaları için güvenilir değildir, bu nedenle yalnızca kullanıcı adına web API'lerine erişirler. (Yalnızca genel müşteri akışlarını desteklerler.) Genel müşteriler yapılandırma zamanı sırlarını tutamaz, bu yüzden müşteri sırları yoktur.
 
     Genel istemci uygulamaları: <BR>
     ![Masaüstü](media/msal-client-applications/desktop-app.png) ![uygulaması Browserless](media/msal-client-applications/browserless-app.png) ![API Mobil uygulaması](media/msal-client-applications/mobile-app.png)

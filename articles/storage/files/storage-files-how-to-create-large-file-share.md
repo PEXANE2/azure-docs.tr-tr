@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c683e9847864de4e3409fb6dbd533497a5ae3cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061005"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81537687"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Büyük dosya paylaşımlarını etkinleştirme ve oluşturma
 
@@ -33,7 +33,7 @@ Bir hesapta büyük dosya paylaşımlarını etkinleştirmek geri döndürüleme
 
 ### <a name="portal"></a>Portal
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure portalında **Tüm hizmetler'i**seçin. 
 1. Kaynaklar **listesinde, Depolama Hesapları**girin. Siz yazarken, girişinize göre liste filtreler. **Depolama Hesapları**’nı seçin.
 1. Görünen **Depolama Hesapları** penceresinde **Ekle'yi**seçin.
@@ -43,7 +43,7 @@ Bir hesapta büyük dosya paylaşımlarını etkinleştirmek geri döndürüleme
     ![Portalda kaynak grubu oluşturmayı gösteren ekran görüntüsü](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
 
 1. Ardından, depolama hesabınız için bir ad girin. Bu ad Azure'da benzersiz olmalıdır. Ad da uzunluğu 3 ila 24 karakter olmalıdır ve sadece sayılar ve küçük harfler olabilir.
-1. Depolama hesabınız için bir konum seçin ve [büyük dosya paylaşımları için desteklenen çoğaltmadan biri](storage-files-planning.md#regional-availability)olduğundan emin olun.
+1. Depolama hesabınız için bir konum seçin.
 1. Çoğaltmayı **Yerel olarak yedekli depolama** veya **Bölge yedekli depolama**alanına ayarlayın.
 1. Bu alanları varsayılan değerlerinde bırakın:
 
@@ -59,7 +59,7 @@ Bir hesapta büyük dosya paylaşımlarını etkinleştirmek geri döndürüleme
 
     ![Azure portalındaki yeni bir depolama hesabında "etkin" seçeneği düğmesiyle ekran görüntüsü](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="cli"></a>CLI
 

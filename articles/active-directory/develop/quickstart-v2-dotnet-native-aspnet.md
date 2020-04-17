@@ -11,18 +11,18 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 084083a704a007e6675234883c62350d1d9a0849
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76703482"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536157"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Quickstart: Microsoft kimlik platformu tarafından korunan ASP.NET Web API'sını arayın
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Quickstart: Microsoft kimlik platformu tarafından korunan ASP.NET web API'sını arayın
 
-Bu hızlı başlangıçta, bir Web API'si ortaya çıkarır ve yalnızca kimlik doğrulaması yapılan kullanıcının erişebileceği şekilde onu korursunuz. Bu örnek, kişisel hesaplar (outlook.com, live.com ve diğerleri dahil) tarafından verilen belirteçlerin yanı sıra Microsoft kimliğiyle bütünleşmiş herhangi bir şirket veya kuruluşun iş ve okul hesaplarını kabul edebilmek için ASP.NET bir Web API'sini nasıl ifşa edebileceğimizi gösterir Platform.
+Bu hızlı başlangıçta, bir web API'si ortaya çıkarır ve yalnızca kimlik doğrulaması yapılan kullanıcının erişebileceği şekilde onu korursunuz. Bu örnek, kişisel hesaplar (outlook.com, live.com ve diğerleri dahil) tarafından verilen belirteçlerin yanı sıra Microsoft kimlik platformuyla bütünleşmiş herhangi bir şirket veya kuruluşun iş ve okul hesaplarını kabul edebilmek için ASP.NET bir web API'sini nasıl ifşa edebileceğimizi gösterir.
 
-Örnekte ayrıca, Bir Web API'sine erişmek için bir erişim jetonunu nasıl isteyebileceğinizi gösteren bir Windows Desktop uygulaması (WPF) istemcisi de bulunmaktadır.
+Örnekte ayrıca, bir web API'sine erişmek için bir erişim jetonunu nasıl isteyebileceğinizi gösteren bir Windows Desktop uygulaması (WPF) istemcisi de bulunmaktadır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -69,13 +69,13 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
      - **Kapsam adı** kullanımı için`access_as_user`
      - **Kimler izin verebilir** **için Yöneticiler ve kullanıcılar** seçeneğinin seçildiğinden emin olun
      - **admin onay görüntüleme adı** türünde`Access TodoListService as a user`
-     - **Admin rıza açıklama** türünde`Accesses the TodoListService Web API as a user`
+     - **Admin rıza açıklama** türünde`Accesses the TodoListService web API as a user`
      - **kullanıcı onayı görüntüleme adı** türünde`Access TodoListService as a user`
-     - **Kullanıcı onayı açıklama** türünde`Accesses the TodoListService Web API as a user`
+     - **Kullanıcı onayı açıklama** türünde`Accesses the TodoListService web API as a user`
      - **Durumu** **Etkin** Olarak Tutun
      - **Kapsam Ekle'yi** seçin
 
-### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Hizmet projesini kayıtlı Web API'si ile eşleşecek şekilde yapılandırın 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Hizmet projesini kayıtlı web API'sine uyacak şekilde yapılandırın
 
 1. Çözümü Visual Studio'da açın ve **ardından TodoListService** projesinin kökü altında **Web.config** dosyasını açın.
 1. Parametre değerini, `ida:ClientId` Başvuru Kayıt Portalı'na yeni kaydettiğiniz uygulamadan **müşteri kimliği (Başvuru Kimliği)** ile değiştirin.
@@ -86,7 +86,7 @@ Uygulamalarınızı el ile kaydetmek istiyorsanız, ilk adım olarak şunları y
 
    > Not: Aşağıdaki biçimi kullandığından emin olun:
    >
-   > `api://{TodoListService-Application-ID}/access_as_user` 
+   > `api://{TodoListService-Application-ID}/access_as_user`
    >
    >({TodoListService-Application-ID} TodoListService için Uygulama Kimliği temsil eden GUID olduğu yer.
 
@@ -104,11 +104,11 @@ Bu adımda, Uygulama kayıt portalına yeni bir uygulama kaydederek *TodoListCli
    - Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın Genel Bakış sayfasında, **Kimlik doğrulaması** bölümünü seçin.
    - Yönlendirme **URI'lerinde,** | **kamu istemcileri (mobil, masaüstü) bölümü için Önerilen Yönlendirme URI'leri,****https://login.microsoftonline.com/common/oauth2/nativeclient**
-   - **Kaydet'i**seçin.
+   - **Kaydet**’i seçin.
 1. **API izinleri** bölümünü seçin
    - İzin **ekle** düğmesini tıklatın ve ardından,
    - **API'lerim** sekmesini seçin.
-   - API'ler listesinde, Web `AppModelv2-NativeClient-DotNet-TodoListService API`API'sı için girdiğiniz adı veya adı seçin.
+   - API'ler listesinde, web `AppModelv2-NativeClient-DotNet-TodoListService API`API'si için girdiğiniz adı veya adı seçin.
    - Önceden denetlenmediyse **access_as_user** iznini kontrol edin. Gerekirse arama kutusunu kullanın.
    - İzin **Ekle** düğmesini seçin
 
@@ -126,12 +126,12 @@ Bu adımda, Uygulama kayıt portalına yeni bir uygulama kaydederek *TodoListCli
 
 ## <a name="pre-authorize-your-client-application"></a>Müşteri başvurunuzu ön yetkilendirme
 
-Diğer dizinlerden kullanıcıların Web API'nize erişmesine izin vermenin yollarından biri, web API'niz için *önceden izin verilen* uygulamalar listesine istemci uygulamalarından Uygulama Kimliklerini ekleyerek Web API'nize erişmeleri için ön *yetki* vermektir. Önceden yetkilendirilmiş bir istemci ekleyerek, kullanıcının Web API'nizi kullanmasına izin vermesini gerektirmezsiniz. Web Uygulamanızı ön yetkilendirmek için aşağıdaki adımları izleyin::
+Diğer dizinlerden kullanıcıların web API'nize erişmesine izin vermenin yollarından biri, istemci uygulamalarının web API'nıza erişmesine *ön yetki* vermektir ve web API'nız için önceden *izin verilen* uygulamalar listesine istemci uygulamalarından gelen Uygulama kimliklerini eklemektir. Önceden yetkilendirilmiş bir istemci ekleyerek, kullanıcının web API'nizi kullanmasına izin vermesini gerektirmezsiniz. Web Uygulamanızı ön yetkilendirmek için aşağıdaki adımları izleyin::
 
 1. Uygulama kayıt *portalına* geri dön ve **TodoListService'inizin**özelliklerini açın.
 1. **API'yi Ortaya Çıkar** bölümünde, Yetkili istemci *uygulamaları* bölümü altındaki **istemci uygulaması ekle'yi** tıklatın.
 1. *İstemci Kimliği* alanında, uygulamanın uygulama `TodoListClient` kimliğini yapıştırın.
-1. Yetkili *kapsamlar* bölümünde, bu Web API'sinin `api://<Application ID>/access_as_user`kapsamını seçin.
+1. Yetkili *kapsamlar* bölümünde, bu web API'sinin `api://<Application ID>/access_as_user`kapsamını seçin.
 1. Sayfanın altındaki **Uygulama Ekle** düğmesine basın.
 
 ## <a name="run-your-project"></a>Projenizi çalıştırma
@@ -141,7 +141,7 @@ Diğer dizinlerden kullanıcıların Web API'nize erişmesine izin vermenin yoll
 
 ## <a name="optional-restrict-sign-in-access-to-your-application"></a>İsteğe bağlı: Uygulamanızda oturum açma erişimini kısıtlama
 
-Varsayılan olarak, bu kod örneğini indirdiğinizde ve uygulamayı önceki adımları izleyerek Azure Active Directory v2 bitiş noktasını kullanacak şekilde yapılandırdığınızda, hem outlook.com, live.com ve diğerleri gibi kişisel hesaplar hem de Herhangi bir Çalışma veya okul hesabı Azure AD ile tümleşik kuruluşlar belirteçleri isteyebilir ve Web API'nıza erişebilir. 
+Varsayılan olarak, bu kod örneğini indirdiğinizde ve uygulamayı önceki adımları izleyerek Azure Active Directory v2 bitiş noktasını kullanacak şekilde yapılandırdığınızda, hem outlook.com, live.com ve diğerleri gibi kişisel hesaplar hem de Azure AD ile tümleşik kuruluşlardaki Çalışma veya okul hesapları belirteçleri isteyebilir ve web API'nıza erişebilir.
 
 Uygulamanızda kimlerin oturum açabileceğini kısıtlamak için seçeneklerden birini kullanın:
 

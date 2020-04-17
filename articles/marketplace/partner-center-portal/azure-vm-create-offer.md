@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 12dd17045715a24d1e5151b30a5e7706b0e58717
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383795"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536667"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure sanal makine teklifi oluşturma
 
@@ -296,7 +296,7 @@ Bir sonraki bölüme devam etmeden önce **taslağı Kaydet'i** seçin, Genel Ba
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
-İş Ortağı Merkezi'nde aynı teklif dahilinde farklı plan seçenekleri sunabilirsiniz. Bu planlar daha önce SUS olarak anılırdı. Bir teklif, para kazanma hedef kitlesi, Azure bulutları, özellikler veya VM görüntüleri açısından farklılık gösteren en az bir plan gerektirir.
+İş Ortağı Merkezi'nde aynı teklif dahilinde farklı plan seçenekleri sunabilirsiniz. Bu planlar daha önce SUS olarak anılırdı. Bir teklif, para kazanma hedef kitlesi, Azure bölgeleri, özellikler veya VM görüntüleri açısından farklılık gösteren en az bir plan gerektirir.
 
 Planlarınızı oluşturduktan sonra, **Plana genel bakış** sekmesi şunları gösterir:
 
@@ -322,11 +322,11 @@ Plan **Kimliği** kutusunda, bu teklifteki her plan için benzersiz bir plan kim
 
 Plan **adı** kutusuna, bu plan için bir ad girin. Müşteriler, teklifiniz içinde hangi planı seçiniz gerekip tespin edindiğinde bu adı görür. Her planın farklılıklarını açıkça gösteren benzersiz bir ad oluşturun. Örneğin, **Windows Server'ı** **kullandıkça öde**, **BYOL**, **Advanced**ve **Enterprise**planlarını kullanabilirsiniz.
 
-**Oluştur'u**seçin.
+**Oluştur**’u seçin.
 
 ### <a name="plan-setup"></a>Kurulum planı
 
-Plan türü için üst düzey yapılandırmayı, teknik yapılandırmayı başka bir plandan yeniden kullanıp kullanmadığını ve planın hangi bulutlarda kullanılabileceğini ayarlayın. Buradaki seçimleriniz, aynı plan için diğer sekmelerde hangi alanların görüntüleneceğini belirler.
+Plan türü için üst düzey yapılandırmayı, başka bir plandaki teknik yapılandırmayı yeniden kullanıp kullanmadığını ve planın hangi Azure bölgelerinde kullanılabileceğini ayarlayın. Buradaki seçimleriniz, aynı plan için diğer sekmelerde hangi alanların görüntüleneceğini belirler.
 
 #### <a name="reuse-technical-configuration"></a>Teknik yapılandırmayı yeniden kullanma
 
@@ -335,24 +335,24 @@ Aynı türden birden fazla planınız varsa ve paketler aralarında aynıysa, **
 > [!NOTE]
 > Teknik yapılandırmayı başka bir plandan yeniden kullandığınızda, tüm **Teknik yapılandırma** sekmesi bu plandan kaybolur. Gelecekte yaptığınız güncelleştirmeler de dahil olmak üzere diğer plandaki Teknik yapılandırma ayrıntıları da bu plan için kullanılacaktır. Bu plan yayımlandıktan sonra bu ayar değiştirilemez.
 
-#### <a name="cloud-availability"></a>Bulut kullanılabilirliği
+#### <a name="azure-regions"></a>Azure bölgeleri
 
-Planınız en az bir bulutta kullanılabilir hale getirilmelidir.
+Planınız en az bir Azure bölgesinde kullanılabilir hale getirilmelidir.
 
-Planınızı ticari pazar tümleştirmesi olan tüm genel Azure bölgelerindeki müşterilerin kullanımına açmak için **Azure Global** seçeneğini belirleyin. Ayrıntılar için [Bkz. Coğrafi kullanılabilirlik ve para birimi desteği.](https://aka.ms/AzureGovCurrencies)
+Planınızı ticari pazar tümleştirmesi olan tüm genel Azure bölgelerindeki müşterilerin kullanımına açmak için **Azure Global** seçeneğini belirleyin. Ayrıntılar için [Bkz. Coğrafi kullanılabilirlik ve para birimi desteği.](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)
 
-Planınızı Azure Kamu Bulutu'nda kullanılabilir hale getirmek için **Azure Kamu Bulutu** seçeneğini belirleyin. [Azure Government Cloud](https://aka.ms/WhatIsAzureGovernment) Bu, ABD federal, eyalet, yerel veya aşiret kurumlarının yanı sıra bu kuruluşlara hizmet vermeye uygun iş ortaklarından müşteriler için kontrollü erişime sahip bir devlet topluluğu bulutudur. Yayıncı olarak, bu bulut topluluğuna hizmet etmek için tüm uyumluluk denetimlerinden, güvenlik önlemlerinden ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezlerini ve ağlarını kullanır (yalnızca ABD'de bulunur).
+Planınızı [Azure Kamu](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) bölgesinde kullanılabilir hale getirmek için Azure **Kamu** seçeneğini belirleyin. Bu bölge, ABD federal, eyalet, yerel veya kabile kuruluşlarından gelen müşterilerin yanı sıra onlara hizmet vermeye uygun ortaklar için kontrollü erişim sağlar. Yayıncı olarak, uyumluluk denetimlerinden, güvenlik önlemlerinden ve en iyi uygulamalardan siz sorumlusunuz. Azure Kamu fiziksel olarak yalıtılmış veri merkezlerini ve ağlarını kullanır (yalnızca ABD'de bulunur).
 
-[Azure Kamu'da](https://aka.ms/azuregovpublish)yayımlamadan önce, belirli uç noktalar farklı olabileceğinden, planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme sürümünden](https://aka.ms/AzureGovernmentTrial)bir deneme hesabı isteyin.
+[Azure Kamu'da](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)yayımlamadan önce, belirli uç noktalar farklı olabileceğinden, planınızı ortamda test edin ve doğrulayın. Planınızı ayarlamak ve test etmek için [Microsoft Azure Kamu deneme sürümünden](https://azure.microsoft.com/global-infrastructure/government/request/)bir deneme hesabı isteyin.
 
 > [!NOTE]
-> Planınız yayınlandıktan ve belirli bir bulutta kullanılabilir hale sunulduktan sonra, bu bulutu kaldıramazsınız.
+> Planınız yayımlandıktan ve belirli bir Azure bölgesinde kullanılabilir hale geldikten sonra, bu bölgeyi kaldıramazsınız.
 
-#### <a name="azure-government-cloud-certifications"></a>Azure Kamu Bulutu sertifikaları
+#### <a name="azure-government-certifications"></a>Azure Devlet sertifikaları
 
-Bu seçenek yalnızca **Azure Kamu Bulutu** **Bulut kullanılabilirliği**altında seçilirse görünür.
+Bu seçenek yalnızca **Azure bölgeleri**altında **Azure Kamu'yı** seçerseniz görünür.
 
-Azure Kamu hizmetleri, belirli devlet yönetmeliklerine ve gereksinimlerine tabi olan verileri işler. Örneğin, FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 ve CJIS. Bu programlar ait sertifikalarınıza farkındalık getirmek için, bunları açıklayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar doğrudan programdaki girişinize bağlantılar veya kendi web sitelerinizde bunlarla uyumluluğunun açıklamalarına bağlantılar olabilir. Bu bağlantılar yalnızca Azure Kamu Bulutu müşterileri tarafından görülebilir.
+Azure Kamu hizmetleri, belirli devlet yönetmeliklerine ve gereksinimlerine tabi olan verileri işler. Örneğin, FedRAMP, NIST 800.171 (DIB), ITAR, IRS 1075, DoD L4 ve CJIS. Bu programlar ait sertifikalarınıza farkındalık getirmek için, bunları açıklayan en fazla 100 bağlantı sağlayabilirsiniz. Bunlar doğrudan programdaki girişinize bağlantılar veya kendi web sitelerinizde bunlarla uyumluluğunun açıklamalarına bağlantılar olabilir. Bu bağlantılar yalnızca Azure Kamu müşterileri tarafından görülebilir.
 
 Devam etmeden önce **taslağı Kaydet'i** seçin.
 
@@ -384,7 +384,7 @@ Bu sekmede, aşağıdakileri yapılandıracaksınız:
 
 #### <a name="markets"></a>Piyasa
 
-Her plan en az bir pazarda mevcut olmalıdır. Bu planın satın alınabileceği her pazar konumu için onay kutusunu seçin (bu pazarlardaki kullanıcılar teklifi seçilen bulutlar için tüm Azure bölgelerine dağıtmaya devam edebilir). **Vergi Havalesi** düğmesi, Microsoft'un satışları sizin adınıza havale ettiği ve vergi kullandığı ülkeleri gösterir. Çin'de yayıncılık ya **Ücretsiz** ya da kendi lisans (BYOL) **getir** planları ile sınırlıdır.
+Her plan en az bir pazarda mevcut olmalıdır. Bu planın satın alınabileceği her pazar konumu için onay kutusunu seçin (bu pazarlardaki kullanıcılar teklifi **[Plan kurulumunda](#plan-setup)** seçilen tüm Azure bölgelerine dağıtmaya devam edebilir). **Vergi Havalesi** düğmesi, Microsoft'un satışları sizin adınıza havale ettiği ve vergi kullandığı ülkeleri gösterir. Çin'de yayıncılık ya **Ücretsiz** ya da kendi lisans (BYOL) **getir** planları ile sınırlıdır.
 
 Planınız için fiyatları Abd Doları (USD) olarak belirlediyseniz ve başka bir pazar konumu eklediyseniz, yeni piyasa fiyatı geçerli döviz kurlarına göre hesaplanacaktır. Her zaman yayınlamadan önce her piyasa için fiyat gözden geçirin. Değişikliklerinizi kaydettikten sonra **İhracat fiyatları (xlsx)** bağlantısını kullanarak fiyatları gözden geçirin.
 

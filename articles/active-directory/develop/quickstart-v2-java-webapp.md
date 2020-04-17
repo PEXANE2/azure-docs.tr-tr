@@ -1,6 +1,6 @@
 ---
 title: Microsoft kimlik platformu Java web uygulaması quickstart | Azure
-description: OpenID Connect'i kullanarak Java Web Uygulamasında Microsoft Oturum Açma'yı nasıl uygulayacağınızı öğrenin
+description: OpenID Connect'i kullanarak Java web uygulamasında Microsoft Oturum Açma'yı nasıl uygulayacağınızı öğrenin
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: f3ede3ef0557c5ca425901e7404746b4e85aefcb
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: ed105ce6bd1d7d8980799049649b8d5b95dcb761
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991144"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81536123"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Quickstart: Java web uygulamasına Microsoft ile oturum açma ekleme
 
@@ -57,7 +57,7 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 > 1. Genel **Bakış** sayfasında, **uygulamanın Uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimlik** değerlerini bulun. Bu değerleri daha sonra kopyalayın.
 > 1. Menüden **Kimlik Doğrulama'yı** seçin ve ardından aşağıdaki bilgileri ekleyin:
 >    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8080/msal4jsample/secure/aad` ekleyin `https://localhost:8080/msal4jsample/graph/me` ve **Yönlendirme URI'leri**olarak ...
->    - **Kaydet'i**seçin.
+>    - **Kaydet**’i seçin.
 > 1. Menüden **Sertifikalar & sırları** seçin ve Müşteri **sırları** bölümünde, Yeni **müşteri sırrı**tıklayın:
 >
 >    - Anahtar açıklaması yazın (örneğin uygulama sırrı).
@@ -91,9 +91,9 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   Oluşturulan keystore dosyasını "kaynaklar" klasörüne koyun.
@@ -130,9 +130,9 @@ Bu örneği çalıştırmak için şunları yapmanız gerekir:
 >   Example:
 >   keytool -genkeypair -alias testCert -keyalg RSA -storetype PKCS12 -keystore keystore.p12 -storepass password
 >
->   server.ssl.key-store-type=PKCS12  
->   server.ssl.key-store=classpath:keystore.p12  
->   server.ssl.key-store-password=password  
+>   server.ssl.key-store-type=PKCS12
+>   server.ssl.key-store=classpath:keystore.p12
+>   server.ssl.key-store-password=password
 >   server.ssl.key-alias=testCert
 >   ```
 >   Oluşturulan keystore dosyasını "kaynaklar" klasörüne koyun.

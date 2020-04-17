@@ -6,12 +6,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
-ms.openlocfilehash: 3b8c2f6ec33965317d2aaa23a36b6becff11a54a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b1fc4bce988b13a9ff76fd961d524ce945876054
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75725734"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535409"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Geçişi projeleri sorunlarını giderme
 
@@ -32,7 +32,7 @@ Varolan bir Azure Geçiş projesi bulmak, Azure Geçiş'in geçerli veya eski s�
 
 ## <a name="cant-find-a-geography"></a>Coğrafya bulamıyorum.
 
-[Desteklenen coğrafyalarda](migrate-support-matrix.md#supported-geographies)bir Azure Geçiş projesi oluşturabilirsiniz. Proje coğrafyasının keşfedilen makine meta verilerini depolamak için kullanıldığını unutmayın. Makineleri başka konumlara da değerlendirebilir veya geçirebilirsiniz.
+[Genel](migrate-support-matrix.md#supported-geographies-public-cloud) ve [devlet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyalarda bir Azure Geçiş projesi oluşturabilirsiniz.
 
 ## <a name="what-are-vm-limits"></a>VM limitleri nelerdir?
 

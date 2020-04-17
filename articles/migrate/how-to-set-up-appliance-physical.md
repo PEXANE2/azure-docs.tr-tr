@@ -1,17 +1,15 @@
 ---
 title: Fiziksel sunucular için bir Azure Geçiş cihazı ayarlama
 description: Fiziksel sunucu değerlendirmesi için bir Azure Geçir cihazını nasıl ayarlayatısınız öğrenin.
-author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: b60a30e5e30ee81cbaca7d5e4691ccedac2462b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/15/2020
+ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77598179"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81538282"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Fiziksel sunucular için bir cihaz ayarlama
 
@@ -49,11 +47,24 @@ Cihaz için sıkıştırılmış dosyayı indirin.
 Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını kontrol edin.
 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
-2. VHD için karma oluşturmak için aşağıdaki komutu çalıştırın
+2. Sıkıştırılanan dosya için karma oluşturmak için aşağıdaki komutu çalıştırın:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Örnek kullanım: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  En son cihaz sürümü için, oluşturulan karma bu [ayarları](https://docs.microsoft.com/azure/migrate/tutorial-assess-physical#verify-security)eşleştirmelidir.
+    - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
+    - Devlet bulutu için örnek kullanım:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
+3.  Karma değerleri doğrulayın:
+ 
+    - Genel bulut için (en son cihaz sürümü için):
 
+        **Algoritma** | **Karma değeri**
+          --- | ---
+          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
+
+    - Azure yönetimi için (en son cihaz sürümü için):
+
+        **Algoritma** | **Karma değeri**
+          --- | ---
+          MD5 | f81c155fc4a1409901caea948713913f
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure Geçir yükleyici komut dosyasını çalıştırma
@@ -69,23 +80,23 @@ Yükleyici komut dosyası aşağıdakileri yapar:
 
 Komut dosyasını aşağıdaki gibi çalıştırın:
 
-1. Sıkıştırılmış dosyayı sunucuda cihazı barındıracak bir klasöre ayıklayın.
+1. Sıkıştırılmış dosyayı sunucuda cihazı barındıracak bir klasöre ayıklayın.  Komut dosyasını varolan bir Azure Geçir cihazında bir makinede çalıştırmadığınızdan emin olun.
 2. PowerShell'i yönetim (yüksek) ayrıcalığıyla yukarıdaki sunucuda başlatın.
 3. PowerShell dizinini indirilen sıkıştırılmış dosyadan içeriğin ayıklandığı klasörle değiştirin.
 4. **AzureMigrateInstaller.ps1** adlı komut dosyasını aşağıdaki komutu çalıştırarak çalıştırın:
-    ```
-    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
-    ```
-Komut dosyası, başarılı bir şekilde bittiğinde cihaz web uygulamasını başlatacaktır.
 
-Herhangi bir sorun durumunda, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerine erişebilirsiniz.
+    - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 ```
+    - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-Server-USGov>AzureMigrateInstaller.ps1 ```
 
-> [!NOTE]
-> Lütfen mevcut bir Azure Geçir ekibe Azure Geçir yükleyici komut dosyası nda yürütmeyin.
+    Komut dosyası, başarılı bir şekilde bittiğinde cihaz web uygulamasını başlatacaktır.
+
+Herhangi bir sorunla karşılaşırsanız, sorun giderme için C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerine erişebilirsiniz.
+
+
 
 ### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-VM cihazının gerekli [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ## <a name="configure-the-appliance"></a>Cihazı yapılandırın
 
@@ -120,7 +131,7 @@ Cihazı ilk kez ayarlayın.
 Cihazdan fiziksel sunuculara bağlanın ve keşfi başlatın.
 
 1. Cihazın sunucuları bulmak için kullanacağı hesap kimlik bilgilerini belirtmek için **Kimlik Bilgileri Ekle'yi** tıklatın.  
-2. **İşletim Sistemi'ni**belirtin, kimlik bilgileri, **Kullanıcı Adı** ve **Şifre** için uygun adı belirtin ve **Ekle'yi**tıklatın.
+2. Kimlik bilgileri için uygun bir ad olan **İşletim Sistemi'ni**ve kullanıcı adını ve parolayı belirtin. Daha sonra **Ekle**'ye tıklayın.
 Windows ve Linux sunucuları için her biri bir kimlik bilgileri kümesi ekleyebilirsiniz.
 4. **Sunucu ekle'yi**tıklatın ve sunucu ayrıntılarını belirtin- FQDN/IP adresi ve sunucuya bağlanmak için kimlik bilgilerinin dostu adı (satır başına bir giriş).
 3. **Doğrula**'ya tıklayın. Doğrulamadan sonra, bulunabilecek sunucuların listesi gösterilir.

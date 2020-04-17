@@ -2,21 +2,21 @@
 title: Azure Geçişi ile Azure'a geçiş için Hyper-V V'leri değerlendirin | Microsoft Dokümanlar
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak Azure'a geçiş için şirket içi Hyper-V V'M'lerin nasıl değerlendirildiğini açıklar.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: cb3c29e01b7917a6d639b6b2a53fc2842efc2172
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: c627902268af3a91e172223c1741dd24ea21fa92
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336768"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535460"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Azure Geçiş Sunucusu Değerlendirmesi ile Hyper-V V'leri Değerlendirin
 
 Bu makalede, [Azure Geçiş:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool) aracını kullanarak şirket içi Hyper-V V VM'leri nasıl değerlendirdiğinizi gösterilmektedir.
 
 
-Bu öğretici, Hyper-V V MM'lerin azure'a nasıl değerlendirilip geçirilenbir dizideki ikinci öğreticidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğretici, Hyper-V V MM'lerin azure'a nasıl değerlendirilip geçirilenbir dizideki ikinci öğreticidir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Azure Geçiş projesi ayarlayın.
@@ -49,14 +49,14 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 4. **Başlarken** bölümünde **Araç ekle**’ye tıklayın.
 5. **Projeyi Geçir** sekmesinde, Azure aboneliğinizi seçin ve yoksa bir kaynak grubu oluşturun.
-6. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz bölgeyi belirtin. Azure Geçiş projesi oluşturabileceğiniz bölgeleri [gözden geçirin.](migrate-support-matrix.md#supported-geographies)
+6. **Proje**Ayrıntıları'nda, proje adını ve projeyi oluşturmak istediğiniz bölgeyi belirtin. Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
 
     - Proje bölgesi yalnızca şirket içi VM'lerden toplanan meta verileri depolamak için kullanılır.
     - VM'leri geçirdiğinizde farklı bir Azure hedef bölgesi seçebilirsiniz. Tüm Azure bölgeleri geçiş hedefi için desteklenir.
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-assess-hyper-v/migrate-project.png)
 
-7. **İleri**'ye tıklayın.
+7. **İleri**’ye tıklayın.
 8. **Değerlendirme aracını seç'te**Azure **Geçir: Sunucu Değerlendirmesi** > **Sonraki'ni**seçin.
 
     ![Azure Geçiş projesi oluşturma](./media/tutorial-assess-hyper-v/assessment-tool.png)
@@ -67,9 +67,11 @@ Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Geçiş cihazını ayarlama
 
-Azure Geçir:sunucu Değerlendirmesi, hafif bir Azure Geçir cihazı kullanır. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş'e gönderir.
-- Cihaz, indirilen Hyper-V VHD kullanılarak Hyper-V VM üzerine kurulabilir. Alternatif olarak, cihazı PowerShell yükleyici komut dosyasıyla vm veya fiziksel bir makineye ayarlayabilirsiniz.
-- Bu öğretici VHD kullanır. Cihazı bir komut dosyası kullanarak kurmak istiyorsanız [bu makaleyi](deploy-appliance-script.md) inceleyin.
+
+Azure Geçir:Sunucu Değerlendirmesi, hafif bir Azure Geçir cihazı kullanır. Cihaz VM keşfi gerçekleştirir ve VM meta verilerini ve performans verilerini Azure Geçiş'e gönderir. Cihaz çeşitli şekillerde ayarlanabilir.
+
+- İndirilen Hyper-V VHD kullanarak Hyper-V VM'de ayarlayın. Bu, bu öğreticide kullanılan yöntemdir.
+- PowerShell yükleyici komut dosyasına sahip bir Hyper-V VM veya fiziksel makineüzerinde ayarlayın. [Bu yöntem,](deploy-appliance-script.md) VHD kullanarak bir VM ayarlayamıyorsanız veya Azure Devlet'teyseniz kullanılmalıdır.
 
 Cihazı oluşturduktan sonra, Azure Geçiş:Sunucu Değerlendirmesi'ne bağlanıp bağlanabildiğinizi, ilk kez yapılandırıp yapılandırıp kaydedilemediğini kontrol edin ve Azure Geçiş projesine kaydettirebilirsiniz.
 
@@ -118,16 +120,16 @@ Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını 
 3. **Klasörü Bul'da** **Sanal Makineler** klasörünü seçin. Ardından **İleri**’ye tıklayın.
 1. **Sanal Makine Seç'te** **İleri'yi**tıklatın.
 2. **Alma Türü Seç'te,** sanal **makineyi kopyala'yı tıklatın (yeni bir benzersiz kimlik oluşturun)**. Ardından **İleri**’ye tıklayın.
-3. **Hedef Seç'te**varsayılan ayarbırakın. **İleri**'ye tıklayın.
-4. **Depolama Klasörleri'nde**varsayılan ayarı bırakın. **İleri**'ye tıklayın.
+3. **Hedef Seç'te**varsayılan ayarbırakın. **İleri**’ye tıklayın.
+4. **Depolama Klasörleri'nde**varsayılan ayarı bırakın. **İleri**’ye tıklayın.
 5. **Ağ**Seç'te, VM'nin kullanacağı sanal anahtarı belirtin. Anahtar, Azure'a veri göndermek için internet bağlantısına ihtiyaç duyar. Sanal anahtar oluşturma hakkında [bilgi edinin.](https://docs.microsoft.com/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines)
 6. **Özetle,** ayarları gözden geçirin. Ardından, **Son**'a tıklayın.
 7. Sanal **Makineler>** Hyper-V Manager'da VM'yi başlatın.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
+## <a name="verify-appliance-access-to-azure"></a>Azure'a cihaz erişimini doğrulama
 
-VM cihazının [Azure URL'lerine](migrate-appliance.md#url-access)bağlanabileceğinden emin olun.
+VM cihazının [genel](migrate-appliance.md#public-cloud-urls) ve [resmi](migrate-appliance.md#government-cloud-urls) bulutlar için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ### <a name="configure-the-appliance"></a>Cihazı yapılandırın
 

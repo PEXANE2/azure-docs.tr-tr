@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: afb40d0f3681bc02351e43166fccfaafe7741128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 47daf4ecd034c390a1460610e78d4fffd9277ac7
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259285"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81535715"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Azure App Service için bir özel etki alanı adı satın alma
 
@@ -137,7 +137,7 @@ Ayrıca, Özel **Ana Bilgisayar** Adları bölümünde, Özel etki alanları say
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
 > [!NOTE]
-> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği tarayıcıya bağlı olarak bir hata veya uyarı alır. SSL bağlamayı yapılandırmak için Azure [Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak ele abakın.
+> Özel etki alanınız için **Güvenli Olmayan** etiket, henüz bir TLS/SSL sertifikasına bağlı olmadığı anlamına gelir ve tarayıcıdan özel etki alanınıza herhangi bir HTTPS isteği tarayıcıya bağlı olarak bir hata veya uyarı alır. TLS bağlamayı yapılandırmak için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını güvenli](configure-ssl-bindings.md)olarak görün.
 >
 
 Ana bilgisayar adlarını sınamak için tarayıcıda listelenen ana bilgisayar adlarına gidin. Önceki ekran görüntüsündeki örnekte, _kontoso.net_ ve _www\.kontoso.net_gezinmeyi deneyin.
@@ -168,7 +168,7 @@ Satın aldığınız etki alanının **App Service Etki Alanları** bölümünde
 **Konak adı ekle**'yi seçin.
 
 ### <a name="configure-hostname"></a>Ana bilgisayar adını yapılandırma
-**Hostname Ekle** iletişim kutusunda, App Service Etki Alanadınızın veya herhangi bir alt etki alanının tam nitelikli alan adını yazın. Örnek:
+**Hostname Ekle** iletişim kutusunda, App Service Etki Alanadınızın veya herhangi bir alt etki alanının tam nitelikli alan adını yazın. Örneğin:
 
 - kontoso.net
 - www\.kontoso.net

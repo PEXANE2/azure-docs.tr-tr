@@ -12,18 +12,18 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: e78f822a88b093992f065a509c2250e6a5c0dec2
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5252fdbbaf425662fc9725e618f8fc450b435722
+ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885574"
+ms.lasthandoff: 04/16/2020
+ms.locfileid: "81534661"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
 ## <a name="what-is-authentication"></a>Kimlik doğrulama nedir
 
-Bu makalede, korumalı web uygulamaları, web API'leri veya korumalı Web API'lerini çağıran uygulamalar oluşturmak için anlamanız gereken kimlik doğrulama kavramlarının birçoğunu kapsar. Bilmediğiniz bir terim görürseniz, temel kavramları kapsayan [sözlüğümüzünü](developer-glossary.md) veya [Microsoft kimlik platformu videolarımızı](identity-videos.md) deneyin.
+Bu makalede, korumalı web uygulamaları, web API'leri veya korumalı web API'lerini çağıran uygulamalar oluşturmak için anlamanız gereken kimlik doğrulama kavramlarının birçoğunu kapsar. Bilmediğiniz bir terim görürseniz, temel kavramları kapsayan [sözlüğümüzünü](developer-glossary.md) veya [Microsoft kimlik platformu videolarımızı](identity-videos.md) deneyin.
 
 **Kimlik doğrulama,** söylediğiniz kişi olduğunuzu kanıtlama işlemidir. Kimlik doğrulaması bazen AuthN şeklinde kısaltılabilir.
 
@@ -33,7 +33,7 @@ Uygulamalar, birden çok uygulama üzerinden kullanıcı eklemeniz veya kaldırm
 
 Azure Etkin Dizin (Azure AD), bulutta merkezi bir kimlik sağlayıcısıdır. Kimlik doğrulaması ve yetkilendirmesini ona devretmek, kullanıcının belirli bir konumda olmasını gerektiren Koşullu Erişim ilkeleri, çok faktörlü kimlik doğrulamanın kullanımı gibi senaryoların yanı sıra bir kullanıcının bir kez oturum açmasını ve aynı merkezi dizini paylaşan tüm web uygulamalarında otomatik olarak oturum açmasını sağlar. Bu özellik, Tek İşaret Açma (SSO) olarak adlandırılır.
 
-Merkezi bir kimlik sağlayıcısı, dünyanın dört bir yanında bulunan ve kuruluşun ağında oturum açmamış olan uygulamalar için daha da önemlidir. Azure AD, kullanıcıların kimliğini doğrular ve erişim belirteçleri sağlar. [Erişim belirteci,](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) yetkilendirme sunucusu tarafından verilen bir güvenlik belirtecidir. Kullanıcı ve belirteç amaçlandığı uygulama hakkında bilgi içerir; Web API'lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir.
+Merkezi bir kimlik sağlayıcısı, dünyanın dört bir yanında bulunan ve kuruluşun ağında oturum açmamış olan uygulamalar için daha da önemlidir. Azure AD, kullanıcıların kimliğini doğrular ve erişim belirteçleri sağlar. [Erişim belirteci,](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) yetkilendirme sunucusu tarafından verilen bir güvenlik belirtecidir. Kullanıcı ve belirteç amaçlandığı uygulama hakkında bilgi içerir; web API'lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir.
 
 Microsoft kimlik platformu, [OAuth 2.0](https://oauth.net/2/) ve [OpenID Connect](https://openid.net/connect/)gibi endüstri standardı protokollerin yanı sıra hızlı bir şekilde kodlamaya başlamanıza yardımcı olacak farklı platformlar için açık kaynak kitaplıkları desteğiyle, hizmet olarak kimlik sağlayarak uygulama geliştiricileri için kimlik doğrulamayı kolaylaştırır. Geliştiricilerin tüm Microsoft kimliklerini oturum açan uygulamalar oluşturmasına, Microsoft [Graph'ı,](https://developer.microsoft.com/graph/)diğer Microsoft API'lerini veya geliştiricilerin oluşturduğu API'leri arama belirteçlerini almalarına olanak tanır. Daha fazla bilgi için Microsoft [kimlik platformunun Evrimi'ne](about-microsoft-identity-platform.md)bakın.
 
@@ -70,26 +70,26 @@ Bir talep, aşağıdakiler gibi bilgiler sağlayan anahtar değer çiftlerinden 
 
 Daha ayrıntılı talep bilgileri için [erişim belirteçleri](access-tokens.md) ve [kimlik belirteçleri](id-tokens.md)bakın.
 
-Belirteci oluşturulan uygulamaya, kullanıcıda oturum açan web uygulamasına veya belirteci doğrulamak için Web API'sinin çağrılması gereken uygulamaya kalmış. Belirteç, Güvenlik Belirteci Sunucusu (STS) tarafından özel bir anahtarla imzalanır. STS ilgili ortak anahtarı yayımlar. Bir belirteci doğrulamak için uygulama, imzanın özel anahtar kullanılarak oluşturulduğunu doğrulamak için STS ortak anahtarını kullanarak imzayı doğrular.
+Belirteci oluşturulan uygulamaya, kullanıcıda oturum açan web uygulamasına veya belirteci doğrulamak için web API'sinin çağrılması gereken uygulamaya kalmış. Belirteç, Güvenlik Belirteci Sunucusu (STS) tarafından özel bir anahtarla imzalanır. STS ilgili ortak anahtarı yayımlar. Bir belirteci doğrulamak için uygulama, imzanın özel anahtar kullanılarak oluşturulduğunu doğrulamak için STS ortak anahtarını kullanarak imzayı doğrular.
 
 Belirteçler yalnızca sınırlı bir süre için geçerlidir. Genellikle STS bir çift belirteç sağlar: uygulamaya veya korumalı kaynağa erişmek için bir erişim belirteci ve erişim belirteci sona ermek üzereyken erişim belirteci yenilemek için kullanılan bir yenileme belirteci.
 
-Erişim belirteçleri, üstbilgideki taşıyıcı belirteci olarak `Authorization` bir Web API'sine aktarılır. Bir uygulama STS'ye yeni bir belirteç sağlayabilir ve kullanıcının uygulamaya erişimi iptal edilmediyse, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. İşletmeden ayrılan birinin senaryosu bu şekilde işlenir. STS yenileme belirteci aldığında, kullanıcı artık yetkili değilse başka bir geçerli erişim belirteci vermez.
+Erişim belirteçleri, üstbilgideki taşıyıcı belirteci olarak `Authorization` bir web API'sine aktarılır. Bir uygulama STS'ye yeni bir belirteç sağlayabilir ve kullanıcının uygulamaya erişimi iptal edilmediyse, yeni bir erişim belirteci ve yeni bir yenileme belirteci geri alır. İşletmeden ayrılan birinin senaryosu bu şekilde işlenir. STS yenileme belirteci aldığında, kullanıcı artık yetkili değilse başka bir geçerli erişim belirteci vermez.
 
 ### <a name="how-each-flow-emits-tokens-and-codes"></a>Her akış nasıl belirteçleri ve kodları yayır
 
 İstemcinizin nasıl oluşturulabildiğine bağlı olarak, Azure AD tarafından desteklenen kimlik doğrulama akışlarından birini (veya birkaçını) kullanabilir. Bu akışlar, yetkilendirme kodlarının yanı sıra çeşitli belirteçler (id_tokens, yenileme belirteçleri, erişim belirteçleri) üretebilir ve bunları çalışması için farklı belirteçler gerektirebilir. Bu grafik genel bir bakış sağlar:
 
-|Akış | Gerektirir | id_token | erişim belirteci | belirteci yenileme | yetkilendirme kodu | 
+|Akış | Gerektirir | id_token | erişim belirteci | belirteci yenileme | yetkilendirme kodu |
 |-----|----------|----------|--------------|---------------|--------------------|
-|[Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[Yetkilendirme kodu akışı](v2-oauth2-auth-code-flow.md) | | x | x | x | x|
 |[Örtük akış](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hibrid OIDC akışı](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Belirteç itfasını yenile](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | belirteci yenileme | x | x | x| |
 |[On-behalf-of akışı](v2-oauth2-on-behalf-of-flow.md) | erişim belirteci| x| x| x| |
 |[İstemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) | | | x (yalnızca uygulama)| | |
 
-Örtük mod üzerinden verilen belirteçler, URL üzerinden tarayıcıya geri aktarılması `response_mode` `query` nedeniyle `fragment`bir uzunluk sınırlamasına sahiptir (nerede veya).  Bazı tarayıcıların, tarayıcı çubuğuna konulabilecek ve çok uzun olduğunda başarısız olabilecek URL boyutuyla ilgili bir sınırı vardır.  Bu nedenle, bu belirteçleri yok `groups` veya `wids` iddiaları yok. 
+Örtük mod üzerinden verilen belirteçler, URL üzerinden tarayıcıya geri aktarılması `response_mode` `query` nedeniyle `fragment`bir uzunluk sınırlamasına sahiptir (nerede veya).  Bazı tarayıcıların, tarayıcı çubuğuna konulabilecek ve çok uzun olduğunda başarısız olabilecek URL boyutuyla ilgili bir sınırı vardır.  Bu nedenle, bu belirteçleri yok `groups` veya `wids` iddiaları yok.
 
 Artık temel bilgilere genel bir bakışa sahip olduğunuza göre, kimlik uygulaması modelini ve API'yi anlamak için okumaya devam edin, Azure AD'de sağlamanın nasıl çalıştığını öğrenin ve Azure AD'nin desteklediği yaygın senaryolar hakkında ayrıntılı bilgilere bağlantılar edinin.
 
@@ -126,7 +126,7 @@ Microsoft kimlik platformu:
 
 Microsoft kimlik platformunda, bir [uygulama nesnesi](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#application-object) bir uygulamayı açıklar. Dağıtım sırasında, Microsoft kimlik platformu bir dizin veya kiracı içinde bir uygulamanın somut bir örneği temsil eden bir [hizmet anabilim](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#service-principal-object)oluşturmak için bir plan olarak uygulama nesnesi kullanır. Hizmet sorumlusu, uygulamanın belirli bir hedef dizinde gerçekte neler yapabileceğini, kimlerin kullanabileceğini, hangi kaynaklara erişebileceğini ve benzeri ni tanımlar. Microsoft kimlik **platformu, onay**yoluyla bir uygulama nesnesinden bir hizmet ilkesi oluşturur.
 
-Aşağıdaki diyagram, rıza ile yönlendirilen basitleştirilmiş bir Microsoft kimlik platformu sağlama akışını gösterir. İki kiracı gösterir: A ve B. Kiracı A uygulama sahibi. Kiracı B, bir servis müdürü aracılığıyla başvuruyu anında gerçekletir.  
+Aşağıdaki diyagram, rıza ile yönlendirilen basitleştirilmiş bir Microsoft kimlik platformu sağlama akışını gösterir. İki kiracı gösterir: A ve B. Kiracı A uygulama sahibi. Kiracı B, bir servis müdürü aracılığıyla başvuruyu anında gerçekletir.
 
 ![Onay temelli basitleştirilmiş sağlama akışı](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
@@ -160,7 +160,7 @@ Aşağıdaki sıralı diyagrambu etkileşimi özetler:
 
 ### <a name="how-a-web-app-determines-if-the-user-is-authenticated"></a>Bir web uygulaması kullanıcının kimlik doğrulaması olup olmadığını nasıl belirler?
 
-Web uygulaması geliştiricileri, belirli sayfaların tamamının veya yalnızca kimlik doğrulaması gerekip gerekmediğini gösterebilir. Örneğin, ASP.NET/ASP.NET Core'da, bu denetleyici `[Authorize]` eylemlerine öznitelik eklenerek yapılır. 
+Web uygulaması geliştiricileri, belirli sayfaların tamamının veya yalnızca kimlik doğrulaması gerekip gerekmediğini gösterebilir. Örneğin, ASP.NET/ASP.NET Core'da, bu denetleyici `[Authorize]` eylemlerine öznitelik eklenerek yapılır.
 
 Bu öznitelik, ASP.NET kullanıcının kimliğini içeren bir oturum çerezinin varlığını denetlemesine neden olur. Çerez yoksa, ASP.NET kimlik doğrulamasını belirtilen kimlik sağlayıcısına yönlendirir. Kimlik sağlayıcısı Azure AD ise, web uygulaması kimlik `https://login.microsoftonline.com`doğrulamayı oturum açma iletişim kutusunu görüntüleyen 'e yönlendirir.
 
