@@ -50,7 +50,7 @@
               href: data-box-security.md
             - name: SSS
               href: data-box-faq.md
-        - name: Nasıl yapılır?
+        - name: Nasıl yapılır
           items:
             - name: Azure portalı aracılığıyla yönetme
               href: data-box-portal-admin.md
@@ -70,6 +70,8 @@
                   href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
                 - name: HDFS Mağazası’ndan
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: Azure Backup’a
+                  href: ../backup/offline-backup-azure-data-box.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
             - name: Sorun giderme
               items:
                 - name: Data Box sorunları
@@ -109,7 +111,7 @@
               href: data-box-disk-security.md
             - name: SSS
               href: data-box-disk-faq.md
-        - name: Nasıl yapılır?
+        - name: Nasıl yapılır
           items:
             - name: Azure portalı aracılığıyla yönetme
               href: data-box-portal-ui-admin.md
@@ -165,7 +167,7 @@
               href: data-box-heavy-system-requirements.md
             - name: Sınırları anlama
               href: data-box-heavy-limits.md
-        - name: Nasıl yapılır?
+        - name: Nasıl yapılır
           items:
             - name: Azure portalı aracılığıyla yönetme
               href: data-box-portal-admin.md

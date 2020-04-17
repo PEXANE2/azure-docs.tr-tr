@@ -4,9 +4,11 @@
   href: regions.md
 - name: Ağ gereksinimleri
   href: network-requirements.md
-- name: Sınırlar
+- name: Sınırlamalar
   href: limits.md
-- name: arrClient deposu (GitHub)
-  href: 'https://dev.azure.com/arrClient/arrClient/_git/arrClient'
+- name: Remote Rendering örnekleri deposu (GitHub)
+  href: 'https://github.com/Azure/azure-remote-rendering'
 - name: Azure Karma Gerçeklik Kaynak Yönetimi REST API’si
   href: 'https://docs.microsoft.com/rest/api/mixedreality/'
+- name: 'C# API belgeleri'
+  href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.RemoteRendering'

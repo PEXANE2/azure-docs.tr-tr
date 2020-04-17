@@ -41,6 +41,8 @@
           href: security-code-analysis-faq.md
         - name: YAML Yapılandırması
           href: yaml-configuration.md
+        - name: Sürümler ve yol haritası
+          href: security-code-analysis-releases.md
     - name: Microsoft Tehdit Modelleme aracı
       displayName: stride
       href: threat-modeling-tool.md

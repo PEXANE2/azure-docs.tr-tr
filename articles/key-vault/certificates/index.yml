@@ -1,0 +1,64 @@
+### YamlMime:Landing
+title: Sertifikalar
+summary: Azure Key Vault Microsoft Azure uygulamalarıyla kullanıcılarının, anahtarlarla gizli diziler üzerinde oluşturulan ve otomatik yenileme özelliği getiren sertifikaları depolamasına ve kullanmasına olanak tanır.
+metadata:
+  title: Azure Key Vault belgeleri - Sertifikalar
+  description: Azure Key Vault Microsoft Azure uygulamalarıyla kullanıcılarının, anahtarlarla gizli diziler üzerinde oluşturulan ve otomatik yenileme özelliği getiren sertifikaları depolamasına ve kullanmasına olanak tanır.
+  services: key-vault
+  ms.service: key-vault
+  ms.subservice: certificates
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  ms.date: 04/07/2020
+  ms.openlocfilehash: 78963c02d35d93b4756c12f948c5ba214fb23e90
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81423539"
+landingContent:
+- title: Sertifikalar
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Key Vault sertifikaları nelerdir?
+      url: about-certificates.md
+    - text: Key Vault sertifikalarını kullanmaya başlama
+      url: certificate-scenarios.md
+    - text: Sertifika oluşturma yöntemleri
+      url: create-certificate.md
+    - text: Sertifika oluşturmayı izleme ve yönetme
+      url: create-certificate-scenarios.md
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: Portal
+      url: quick-create-portal.md
+    - text: Python
+      url: quick-create-python.md
+    - text: Key Vault’ta sertifikayı içeri aktarma
+      url: tutorial-import-certificate.md
+- title: Anahtar Kasası hakkında daha fazla bilgi
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Anahtar Kasasına genel bakış
+      url: ../general/overview.md
+    - text: Temel kavramlar
+      url: ../general/basic-concepts.md
+    - text: Geçici silmeye genel bakış
+      url: ../general/overview-soft-delete.md
+    - text: Güvenliğe genel bakış
+      url: ../general/overview-security.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Key Vault ile sunucu uygulamalarınızdaki gizli dizileri yönetme
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

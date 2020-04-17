@@ -1,0 +1,68 @@
+### YamlMime:Landing
+title: Azure Key Vault belgeleri
+summary: Anahtar Kasası hesabınızı kullanarak bulut kaynaklarınıza, uygulamalarınıza ve çözümlerinize erişen ve bunları şifreleyen anahtarlar oluşturma ve bunları koruma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+metadata:
+  title: Azure Key Vault belgeleri
+  description: Anahtar Kasası hesabınızı kullanarak bulut kaynaklarınıza, uygulamalarınıza ve çözümlerinize erişen ve bunları şifreleyen anahtarlar oluşturma ve bunları koruma hakkında bilgi edinin. Öğreticiler, API başvuruları ve daha fazlası.
+  services: key-vault
+  ms.service: key-vault
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 5be853f9e1f9778eb767aa93497c546cb35fa0df
+  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 04/16/2020
+  ms.locfileid: "81422413"
+landingContent:
+- title: Azure Key Vault hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Anahtar Kasası nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Temel kavramlar
+      url: basic-concepts.md
+    - text: Geçici silme
+      url: overview-soft-delete.md
+    - text: Azaltma
+      url: overview-throttling.md
+- title: Öğreticiler
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web uygulamasından anahtar kasasını
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Azure Windows Sanal Makinesi ile Azure Key Vault
+      url: tutorial-net-windows-virtual-machine.md
+    - text: Python ile Key Vault - Windows
+      url: tutorial-python-windows-virtual-machine.md
+- title: Güvenlik
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Anahtar Kasanızın güvenliğini sağlama
+      url: secure-your-key-vault.md
+    - text: Güvenlik önerileri
+      url: security-recommendations.md
+    - text: Güvenlik temeli
+      url: security-baseline.md
+  - linkListType: tutorial
+    links:
+    - text: Özel bağlantı kullanma
+      url: private-link-service.md
+    - text: Yönetilen kimlik kullanma
+      url: managed-identity.md
+    - text: Erişim ilkesi kullanma
+      url: group-permissions-for-apps.md
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Key Vault ile sunucu uygulamalarınızdaki gizli dizileri yönetme
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

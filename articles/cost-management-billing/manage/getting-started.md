@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 3/30/2020
+ms.date: 04/10/2020
 ms.author: banders
-ms.openlocfilehash: 79af6f78e8e9bf93c49deafe79f6a421cbb77d1a
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475268"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81262118"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure faturasında beklenmeyen ücretlendirmeleri önleme ve maliyet yönetimi
 
@@ -193,6 +193,17 @@ Azure faturanızda, o aya ait ücretlerinizi _ölçüm_ başına değerlendirile
 CSV biçimindeki kullanım dosyasını, analiz etmek istediğiniz fatura üzerinde gösterilen _MeterName_’e göre filtreleyip ilgili ölçüme uygulanan tüm satır öğelerini görün. Satır öğesine ait _InstanceID_, ücrete neden olan Azure kaynağına karşılık gelir.
 
 Söz konusu kaynağı tanımladıktan sonra, kaynakla ilgili maliyetleri daha derin analiz etmek için Azure Maliyet Yönetimi’nde maliyet analizini kullanabilirsiniz. Maliyet analizini kullanma hakkında daha fazla bilgi için bkz. [Maliyetleri analiz etmeye başlama](../costs/quick-acm-cost-analysis.md).
+
+### <a name="review-invoiced-charges-in-cost-analysis"></a>Maliyet analizinde faturalanmış ücretleri gözden geçirme
+
+Azure portalında fatura ayrıntılarınızı görüntülemek için, analiz ettiğiniz faturayla ilişkilendirilmiş kapsamın Maliyet analizi bölümüne gidin. **Fatura ayrıntıları** görünümünü seçin. Fatura ayrıntıları, faturada göründüğü haliyle ücretleri gösterir.
+
+[![Fatura ayrıntılarını gösteren örnek](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
+
+Fatura ayrıntılarını görüntüleyerek beklenmeyen maliyetler getiren hizmeti belirleyebilir ve hangi kaynakların Maliyet analizindeki kaynakla doğrudan ilişkili olduğunu saptayabilirsiniz. Örneğin Sanal Makineler hizmetinin ücretlerini analiz etmek istiyorsanız, **Birikmiş maliyet** görünümüne gidin. Ardından ayrıntı düzeyini **Günlük** olarak ayarlayın, sonra **Hizmet adı: Sanal makineler** için ücretleri filtreleyin ve ücretleri **Kaynak**’a göre gruplandırın.
+
+[![Sanal makinelerin birikmiş maliyetlerini gösteren örnek](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
+
 
 ### <a name="identify-spikes-in-cost-over-time"></a>Zaman içindeki maliyette oluşan ani artışları belirleme
 

@@ -50,6 +50,8 @@
           href: class-type-jupyter-notebook.md
         - name: Android Studio ile mobil uygulama geliştirme
           href: class-type-mobile-dev-android-studio.md
+        - name: Büyük veri analizi
+          href: class-type-big-data-analytics.md
     - name: Laboratuvar hesabı oluşturma ve yapılandırma (laboratuvar hesabı sahibi)
       items:
         - name: Laboratuvar hesabı oluşturma ve yönetme

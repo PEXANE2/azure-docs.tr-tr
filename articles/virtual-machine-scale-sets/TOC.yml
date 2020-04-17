@@ -252,7 +252,7 @@
           href: virtual-machine-scale-sets-networking.md
         - name: Otomatik işletim sistemi yükseltmeleri
           href: virtual-machine-scale-sets-automatic-upgrade.md
-        - name: Otomatik örnek onarımları (önizleme)
+        - name: Otomatik örnek onarımları
           href: virtual-machine-scale-sets-automatic-instance-repairs.md
         - name: Örnek koruması
           href: virtual-machine-scale-sets-instance-protection.md

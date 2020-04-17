@@ -39,6 +39,8 @@
       href: analysis-services-connect.md
     - name: Yüksek kullanılabilirlik
       href: analysis-services-bcdr.md
+    - name: Uzun süre çalışan işlemler
+      href: analysis-services-long-operations.md
     - name: Desteklenen veri kaynakları
       href: analysis-services-datasource.md
 - name: Nasıl yapılır

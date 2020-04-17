@@ -1,0 +1,68 @@
+- name: Sertifikalar
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Sertifikalar hakkında
+      href: about-certificates.md
+- name: Hızlı Başlangıçlar
+  expanded: true
+  items:
+    - name: CLI
+      href: quick-create-cli.md
+    - name: PowerShell
+      href: quick-create-powershell.md
+    - name: Portal
+      href: quick-create-portal.md
+    - name: Python
+      href: quick-create-python.md
+- name: Öğreticiler
+  items:
+    - name: Sertifikayı içeri aktar
+      href: tutorial-import-certificate.md
+- name: Kavramlar
+  items:
+    - name: Key Vault sertifikalarını kullanmaya başlama
+      href: certificate-scenarios.md
+    - name: Sertifika oluşturmayı izleme ve yönetme
+      href: create-certificate-scenarios.md
+    - name: Sertifika oluşturma yöntemleri
+      href: create-certificate.md
+- name: Başvuru
+  items:
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager şablonu
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-key-vault
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Bölge kullanılabilirliği
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Hizmet Düzeyi Sözleşmesi (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Hizmet sınırlamaları
+      href: ../general/service-limits.md
+    - name: Hizmet durumu
+      href: 'https://azure.microsoft.com/status/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: Ürün Geri Bildirimi
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

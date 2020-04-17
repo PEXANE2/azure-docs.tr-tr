@@ -5,14 +5,14 @@ author: mumami
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 02/14/2020
+ms.date: 04/14/2020
 ms.author: banders
-ms.openlocfilehash: 10275bac8cd9363939f9b6f298c49d7ef08ab7bf
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: aeca9aede4c1b2d8c27de749c7e07c0153000825
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79202922"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81383178"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Kurumsal müşteriler için Raporlama API’lerine genel bakış
 Raporlama API’leri, Kurumsal Azure müşterilerinin program aracılığıyla tüketim ve faturalama verilerini tercih ettikleri veri analizi aracına almasını sağlar. Kurumsal müşteriler, üzerinde anlaşılan parasal taahhütlerde bulunmak ve Azure kaynaklarının özel fiyatlandırmasına erişim elde etmek için Azure ile [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzalamıştır.
@@ -41,7 +41,7 @@ Aşağıda açıklanan API’ler için, [AutoRest](https://github.com/Azure/Auto
 * **Ayrılmış Örnek Ayrıntıları**: [Ayrılmış Örnek kullanımı API’si](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage), Ayrılmış Örnek satın alımlarının kullanım bilgilerini döndürür. [Ayrılmış Örnek ücretleri API’si](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage), yapılan faturalama işlemlerini gösterir.
 
 ## <a name="data-freshness"></a>Veri Güncelliği
-Yukarıdaki tüm API’lerin yanıtında ETag’ler döndürülür. ETag içindeki bir değişiklik, verilerin yenilendiğini gösterir.  Aynı parametreler kullanılarak aynı API’ye yapılan sonraki çağrılarda, http isteğinin üst bilgisinde “If-None-Match” anahtarıyla birlikte yakalanan ETag’i iletin. Veriler daha fazla yenilenmediyse yanıt durum kodu "NotModified" olur ve başka bir veri döndürülmez. Her ETag değişikliği olduğunda API, gerekli dönem için tam veri kümesini döndürür.
+Yukarıdaki tüm API’lerin yanıtında ETag’ler döndürülür. ETag içindeki bir değişiklik, verilerin yenilendiğini gösterir.  Aynı parametreler kullanılarak aynı API’ye yapılan sonraki çağrılarda, http isteğinin üst bilgisinde "If-None-Match" anahtarıyla birlikte yakalanan ETag’i iletin. Veriler daha fazla yenilenmediyse yanıt durum kodu "NotModified" olur ve başka bir veri döndürülmez. Her ETag değişikliği olduğunda API, gerekli dönem için tam veri kümesini döndürür.
 
 ## <a name="helper-apis"></a>Yardımcı API’ler
  **Faturalama Dönemlerini Listele**: [Faturalama Dönemleri API’si](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods), belirtilen Kayıt için ters kronolojik sırayla tüketim verilerini içeren bir faturalama dönemleri listesini döndürür. Her Dönemin dört veri kümesi (BalanceSummary, UsageDetails, Market Ücretleri ve Fiyat Listesi) için API yoluna işaret eden bir özelliği vardır.
@@ -51,7 +51,9 @@ Yukarıdaki tüm API’lerin yanıtında ETag’ler döndürülür. ETag içinde
 |Yanıt Durum Kodu|İleti|Açıklama|
 |-|-|-|
 |200| Tamam|Hata yok|
+|400| Hatalı İstek| Geçersiz parametreler – Tarih aralıkları, Kurumsal Anlaşma numaraları vb.|
 |401| Yetkisiz| API Anahtarı bulunamadı, Geçersiz, Süresi Doldu vb.|
 |404| Kullanılamaz| Rapor uç noktası bulunamadı|
-|400| Hatalı İstek| Geçersiz parametreler – Tarih aralıkları, Kurumsal Anlaşma numaraları vb.|
+|429 | TooManyRequests | İstek kısıtlandı. <code>x-ms-ratelimit-microsoft.consumption-retry-after</code> üst bilgisinde belirtilen süre bekledikten sonra yeniden deneyin.|
 |500| Sunucu Hatası| İstek işlenirken beklenmeyen hata oluştu|
+| 503 | ServiceUnavailable | Hizmet geçici olarak kullanılamıyor. <code>Retry-After</code> üst bilgisinde belirtilen süre bekledikten sonra yeniden deneyin.|

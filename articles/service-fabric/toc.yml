@@ -133,6 +133,8 @@
           href: service-fabric-cluster-security.md
         - name: Yerleşik güvenlik denetimleri
           href: service-fabric-security-controls.md
+        - name: Service Fabric’te sertifika tabanlı kimlik doğrulaması
+          href: cluster-security-certificates.md
     - name: Terminoloji
       href: service-fabric-technical-overview.md
     - name: Uygulamalar oluşturma
@@ -145,6 +147,8 @@
               href: service-fabric-containers-overview.md
             - name: Docker Compose (önizleme)
               href: service-fabric-docker-compose.md
+            - name: Yoklamalar
+              href: probes-codepackage.md
         - name: Reliable Services
           items:
             - name: Reliable Services özelliğine genel bakış
@@ -264,6 +268,10 @@
               href: service-fabric-backup-restore-service-trigger-restore.md
             - name: Bölümü isteğe bağlı olarak yedekleme
               href: service-fabric-backup-restore-service-ondemand-backup.md
+        - name: Başlatıcı Kod Paketleri
+          href: initializer-codepackages.md
+        - name: RunToCompletion
+          href: run-to-completion.md
     - name: Kümeler
       items:
         - name: Kümelere genel bakış
@@ -316,6 +324,8 @@
               href: service-fabric-cluster-resource-manager-defragmentation-metrics.md
             - name: Küme dengeleme
               href: service-fabric-cluster-resource-manager-balancing.md
+            - name: Alt kümeleme
+              href: cluster-resource-manager-subclustering.md
             - name: Azaltma
               href: service-fabric-cluster-resource-manager-advanced-throttling.md
             - name: Hizmet taşıma
@@ -354,7 +364,7 @@
       href: service-fabric-api-management-overview.md
     - name: Uygulama Kaynağı modeli
       href: service-fabric-concept-resource-model.md
-    - name: Yönetilen Kimlik (önizleme)
+    - name: Yönetilen Kimlik
       href: concepts-managed-identity.md
     - name: Kapsayıcı deposu kimlik bilgilerini yapılandırma
       href: configure-container-repository-credentials.md
@@ -751,7 +761,7 @@
           href: service-fabric-reverse-proxy-diagnostics.md
         - name: Yerel kümenizde sorun giderme
           href: service-fabric-troubleshoot-local-cluster-setup.md
-    - name: Service Fabric uygulamaları için Yönetilen Kimlik kullanma (önizleme)
+    - name: Service Fabric uygulamaları için Yönetilen Kimlik kullanma
       items:
         - name: Küme kurulumu
           items:

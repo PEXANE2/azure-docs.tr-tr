@@ -10,7 +10,7 @@
       href: hpc-cache-namespace.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Önkoşullar
+    - name: Ön koşullar
       href: hpc-cache-prereqs.md
     - name: Önbelleği oluşturma
       href: hpc-cache-create.md
@@ -36,6 +36,8 @@
       href: hpc-cache-mount.md
     - name: Önbelleği yönetme
       href: hpc-cache-manage.md
+    - name: İsteğe bağlı ayarları yapılandırma
+      href: configuration.md
 - name: Kaynaklar
   items:
     - name: Destek bileti açma
@@ -46,5 +48,7 @@
       href: troubleshoot-nas.md
     - name: Bölgesel kesintiden kurtulma
       href: hpc-region-recovery.md
+    - name: Müşteri tarafından yönetilen şifreleme anahtarlarını kullanma
+      href: customer-keys.md
     - name: Azure HPC Önbelleği ile Azure NetApp Files'ı kullanma
       href: hpc-cache-netapp.md

@@ -581,6 +581,8 @@
       items:
         - name: Azure’da SSIS paketlerini SSDT’ten çalıştırma
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: Azure SQL Yönetilen Örneği Aracısı ile SSIS paketlerini yönetme
+          href: how-to-invoke-ssis-package-managed-instance-agent.md
         - name: SSIS paketlerini Azure'da etkinleştirilen dtexec ile çalıştırma
           href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS Paketlerini Yürütme etkinliği ile SSIS paketleri çalıştırma

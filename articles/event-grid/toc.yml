@@ -15,23 +15,23 @@
   items:
     - name: Depolama olayları
       items:
+        - name: Portal
+          href: blob-event-quickstart-portal.md
         - name: Azure CLI
           href: ../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
         - name: Azure PowerShell
           href: ../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Portal
-          href: blob-event-quickstart-portal.md
         - name: ARM şablonu
           displayName: Resource Manager
           href: blob-event-quickstart-template.md
     - name: Özel olaylar
       items:
+        - name: Portal
+          href: custom-event-quickstart-portal.md
         - name: Azure CLI
           href: custom-event-quickstart.md
         - name: PowerShell
           href: custom-event-quickstart-powershell.md
-        - name: Portal
-          href: custom-event-quickstart-portal.md
     - name: Olay işleyicisi olarak Azure İşlevleri
       href: custom-event-to-function.md
     - name: Olay işleyicisi olarak kuyruk depolama
@@ -96,10 +96,63 @@
       href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: Kavramlar
   items:
-    - name: Event Grid kavramları
+    - name: Event Grid terminolojisi
       href: concepts.md
+    - name: Özel konular
+      href: custom-topics.md
     - name: Sistem konuları
-      href: system-topics.md
+      items:
+        - name: Sisteme genel bakış konuları
+          href: system-topics.md
+        - name: Olay kaynakları
+          items:
+            - name: Azure Uygulama Yapılandırması
+              href: event-schema-app-configuration.md
+            - name: Azure Blob Depolama
+              href: event-schema-blob-storage.md
+            - name: Azure Container Registry
+              href: event-schema-container-registry.md
+            - name: Azure Event Hubs
+              href: event-schema-event-hubs.md
+            - name: Azure IoT Hub
+              href: event-schema-iot-hub.md
+            - name: Azure Key Vault
+              href: event-schema-key-vault.md
+            - name: Azure Machine Learning
+              href: event-schema-machine-learning.md
+            - name: Azure Haritalar
+              href: event-schema-azure-maps.md
+            - name: Azure Media Services
+              href: event-schema-media-services.md
+            - name: Azure kaynak grupları
+              href: event-schema-resource-groups.md
+            - name: Azure Service Bus
+              href: event-schema-service-bus.md
+            - name: Azure SignalR
+              href: event-schema-azure-signalr.md
+            - name: Azure abonelikleri
+              href: event-schema-subscriptions.md
+    - name: Olay Etki Alanları
+      href: event-domains.md
+    - name: Olay şeması biçimleri
+      items:
+        - name: Event Grid olay şeması
+          href: event-schema.md
+        - name: Bulut olay şeması
+          href: cloud-event-schema.md
+    - name: Olay işleyicileri
+      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
+      href: event-handlers.md
+    - name: Olay teslimi
+      items:
+        - name: Olay filtreleme
+          href: event-filtering.md
+        - name: Teslim ve yeniden deneme
+          href: delivery-and-retry.md
+    - name: Olağanüstü durum kurtarma
+      items:
+        - name: Coğrafi olağanüstü durum kurtarma
+          href: geo-disaster-recovery.md
     - name: Güvenlik
       items:
         - name: Kimlik Doğrulaması
@@ -108,20 +161,6 @@
           href: security-authorization.md
         - name: Ağ güvenliği
           href: network-security.md
-    - name: Teslim ve yeniden deneme
-      href: delivery-and-retry.md
-    - name: Olay filtreleme
-      href: event-filtering.md
-    - name: Olay Etki Alanları
-      href: event-domains.md
-    - name: Olay kaynakları
-      displayName: 'Azure subscriptions, Container registry, Custom topics, Event Hubs, IoT Hub, Key Vault, Media Services, Resource groups, Service Bus, Storage, Maps, App Configuration, Signal R, Machine Learning'
-      href: event-sources.md
-    - name: Olay işleyicileri
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
-      href: event-handlers.md
-    - name: Coğrafi olağanüstü durum kurtarma
-      href: geo-disaster-recovery.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Özel uç noktaları yapılandırma (önizleme)
@@ -140,8 +179,6 @@
       href: manage-event-delivery.md
     - name: Olayları filtreleme
       href: how-to-filter-events.md
-    - name: Olay teslimi izleme
-      href: monitor-event-delivery.md
     - name: Olay aboneliklerini sorgulama
       href: query-event-subscriptions.md
     - name: Portal aracılığıyla abone olma
@@ -154,10 +191,14 @@
       href: how-to-event-domains.md
     - name: İstemci tarafı yük devretmeyi uygulama
       href: custom-disaster-recovery.md
-    - name: Sorun giderme hataları
-      href: troubleshoot-errors.md
-    - name: Belirli bir konuya yönelik tanılama günlüklerini etkinleştirme
-      href: enable-diagnostic-logs-topic.md
+    - name: Sorun giderme
+      items:
+        - name: Belirli bir konuya yönelik tanılama günlüklerini etkinleştirme
+          href: enable-diagnostic-logs-topic.md
+        - name: Sorun giderme hataları
+          href: troubleshoot-errors.md
+        - name: Olay teslimi izleme
+          href: monitor-event-delivery.md
 - name: Başvuru
   items:
     - name: Azure CLI
@@ -176,35 +217,6 @@
       href: /javascript/api/overview/azure/eventgrid
     - name: Abonelik şeması
       href: subscription-creation-schema.md
-    - name: Olay şeması
-      href: event-schema.md
-      items:
-        - name: Azure abonelikleri
-          href: event-schema-subscriptions.md
-        - name: Blob depolama
-          href: event-schema-blob-storage.md
-        - name: Container Kayıt Defteri
-          href: event-schema-container-registry.md
-        - name: Event Hubs
-          href: event-schema-event-hubs.md
-        - name: IoT Hub
-          href: event-schema-iot-hub.md
-        - name: Key Vault
-          href: event-schema-key-vault.md
-        - name: Media Services
-          href: ../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json
-        - name: Kaynak grupları
-          href: event-schema-resource-groups.md
-        - name: Service Bus
-          href: event-schema-service-bus.md
-        - name: Azure Haritalar
-          href: event-schema-azure-maps.md
-        - name: Uygulama Yapılandırması
-          href: event-schema-app-configuration.md
-        - name: Azure SignalR
-          href: event-schema-azure-signalr.md
-        - name: Azure Machine Learning
-          href: event-schema-machine-learning.md
     - name: Şablon kaynakları
       items:
         - name: Olay abonelikleri

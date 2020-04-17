@@ -1,13 +1,13 @@
-- name: Azure Synapse Analytics Belgeleri
+- name: Azure Synapse (SQL DW)
   href: index.yml
+- name: Azure Synapse’e (çalışma alanları önizlemesi) geçme
+  href: ../overview-what-is.md
 - name: Genel Bakış
   items:
     - name: Azure Synapse Analytics nedir?
       href: sql-data-warehouse-overview-what-is.md
     - name: Azure Synapse Analytics mimarisi
       href: massively-parallel-processing-mpp-architecture.md
-    - name: Veri ambarı birimleri
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
     - name: Kopya kağıdı
       href: cheat-sheet.md
     - name: En iyi uygulamalar

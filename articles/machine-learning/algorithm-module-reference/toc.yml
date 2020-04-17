@@ -152,5 +152,9 @@
       href: pca-based-anomaly-detection.md
     - name: Anomali Algılama Modeli Eğitme
       href: train-anomaly-detection-model.md
+- name: Web Hizmeti
+  items:
+    - name: Web Hizmeti Girişi/Çıkışı
+      href: web-service-input-output.md
 - name: Modül hataları ve sorun giderme
   href: designer-error-codes.md

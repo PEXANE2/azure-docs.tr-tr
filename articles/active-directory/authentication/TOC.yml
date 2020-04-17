@@ -22,44 +22,38 @@
   items:
     - name: Kimlik doğrulama yöntemleri
       href: concept-authentication-methods.md
-    - name: Parolasız kimlik doğrulaması
-      href: concept-authentication-passwordless.md
-    - name: Güvenlik bilgileri kaydı
-      href: concept-registration-mfa-sspr-combined.md
-    - name: Parola sıfırlama
+    - name: Self servis parola sıfırlama
       items:
         - name: Parola sıfırlama nasıl çalışır?
           href: concept-sspr-howitworks.md
-        - name: Parola sıfırlama seçenekleri
-          href: concept-sspr-customization.md
-        - name: Parola sıfırlama ilkeleri
-          href: concept-sspr-policy.md
-        - name: Hangi lisansa ihtiyacım var?
-          href: concept-sspr-licensing.md
         - name: Şirket içi tümleştirme
           href: concept-sspr-writeback.md
+        - name: İlkeler
+          href: concept-sspr-policy.md
+        - name: Lisanslar
+          href: concept-sspr-licensing.md
     - name: Multi-Factor Authentication
       items:
         - name: MFA nasıl çalışır?
           href: concept-mfa-howitworks.md
-        - name: Kullanıcılarınıza lisans verme
-          href: concept-mfa-licensing.md
-        - name: Kimlik Doğrulama Sağlayıcısı yönetme
-          href: concept-mfa-authprovider.md
-        - name: Güvenlik kılavuzu
-          href: multi-factor-authentication-security-best-practices.md
         - name: Veri yerleşimi
           href: concept-mfa-data-residency.md
+        - name: Lisanslar
+          href: concept-mfa-licensing.md
         - name: Office 365 için MFA
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
-        - name: MFA SSS
+        - name: SSS
           href: multi-factor-authentication-faq.md
-    - name: Azure AD parola koruması
+    - name: Parolasız kimlik doğrulaması
+      href: concept-authentication-passwordless.md
+    - name: Parola koruması
       items:
         - name: Bulutta zayıf parolaları ortadan kaldırma
           href: concept-password-ban-bad.md
         - name: Şirket içinde zayıf parolaları ortadan kaldırma
           href: concept-password-ban-bad-on-premises.md
+    - name: Güvenlik bilgileri kaydı
+      href: concept-registration-mfa-sspr-combined.md
     - name: Dayanıklı erişim denetimleri
       href: concept-resilient-controls.md
 - name: Nasıl yapılır kılavuzları
@@ -68,20 +62,24 @@
       items:
         - name: Dağıtım kılavuzu
           href: howto-sspr-deployment.md
+        - name: Kullanıcı özelleştirme seçenekleri
+          href: howto-sspr-customization.md
         - name: Kimlik doğrulama verilerini önceden kaydetme
           href: howto-sspr-authenticationdata.md
         - name: Windows istemcileri için SSPR
           href: howto-sspr-windows.md
-    - name: Bulut tabanlı MFA
+    - name: Azure Multi-Factor Authentication
       items:
         - name: Dağıtım kılavuzu
           href: howto-mfa-getstarted.md
-        - name: Kullanıcı başına MFA
-          href: howto-mfa-userstates.md
-        - name: Kullanıcı ve cihaz ayarları
-          href: howto-mfa-userdevicesettings.md
         - name: Ayarları yapılandırma
           href: howto-mfa-mfasettings.md
+        - name: Kullanıcıları yapılandırma
+          href: howto-mfa-userdevicesettings.md
+        - name: Kullanıcı başına MFA’yı etkinleştirme
+          href: howto-mfa-userstates.md
+        - name: Kimlik doğrulaması sağlayıcılarını yapılandırma
+          href: concept-mfa-authprovider.md
         - name: Dizin Federasyonu
           items:
             - name: Windows Server 2016 AD FS Bağdaştırıcısı
@@ -102,28 +100,6 @@
               href: howto-mfa-nps-extension-rdg.md
             - name: VPN
               href: howto-mfa-nps-extension-vpn.md
-    - name: Güvenlik bilgileri kaydı
-      items:
-        - name: Birleşik kaydı etkinleştirme
-          href: howto-registration-mfa-sspr-combined.md
-        - name: Birleşik kayıtla ilgili sorunları giderme
-          href: howto-registration-mfa-sspr-combined-troubleshoot.md
-    - name: Azure AD parola koruması
-      items:
-        - name: Şirket içi planlama ve dağıtma
-          href: howto-password-ban-bad-on-premises-deploy.md
-        - name: Şirket içi etkinleştirme ve yapılandırma
-          href: howto-password-ban-bad-on-premises-operations.md
-        - name: Şirket içi dağıtımları izleme
-          href: howto-password-ban-bad-on-premises-monitor.md
-        - name: Şirket içi dağıtımlarda sorun giderme
-          href: howto-password-ban-bad-on-premises-troubleshoot.md
-        - name: Şirket içi hakkında SSS
-          href: howto-password-ban-bad-on-premises-faq.md
-        - name: Şirket içi aracı sürüm geçmişi
-          href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Azure AD akıllı kilitleme
-      href: howto-password-smart-lockout.md
     - name: Parolasız
       items:
         - name: Parolasız dağıtım
@@ -140,14 +116,38 @@
           href: howto-authentication-passwordless-phone.md
         - name: İş İçin Windows Hello
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+    - name: Güvenlik bilgileri kaydı
+      items:
+        - name: Birleşik kaydı etkinleştirme
+          href: howto-registration-mfa-sspr-combined.md
+        - name: Birleşik kayıtla ilgili sorunları giderme
+          href: howto-registration-mfa-sspr-combined-troubleshoot.md
+    - name: Şirket içi parola koruması
+      items:
+        - name: Planlama ve dağıtım
+          href: howto-password-ban-bad-on-premises-deploy.md
+        - name: Etkinleştirme ve yapılandırma
+          href: howto-password-ban-bad-on-premises-operations.md
+        - name: İzleme
+          href: howto-password-ban-bad-on-premises-monitor.md
+        - name: Sorun giderme
+          href: howto-password-ban-bad-on-premises-troubleshoot.md
+        - name: SSS
+          href: howto-password-ban-bad-on-premises-faq.md
+        - name: Aracı sürümü geçmişi
+          href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: SMS tabanlı kimlik doğrulaması kullanma (önizleme)
+      href: howto-authentication-sms-signin.md
+    - name: Azure AD akıllı kilitleme
+      href: howto-password-smart-lockout.md
     - name: Sertifika tabanlı kimlik doğrulaması
       items:
         - name: Sertifika yetkilendirmesine başlarken
           href: active-directory-certificate-based-authentication-get-started.md
           items:
-            - name: Android Cihazlarında CBA
+            - name: Android Cihazlarında kullanma
               href: active-directory-certificate-based-authentication-android.md
-            - name: iOS Cihazlarında CBA
+            - name: iOS Cihazlarında kullanma
               href: active-directory-certificate-based-authentication-ios.md
     - name: Raporlama
       items:

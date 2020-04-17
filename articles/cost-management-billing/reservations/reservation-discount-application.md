@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/22/2020
 ms.author: banders
-ms.openlocfilehash: fb6e7e3fe3b7b45b503dca66dc5b039a9eceb689
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5781ade7b2f3cfc7514208861de025cc84944fcd
+ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135496"
+ms.lasthandoff: 04/14/2020
+ms.locfileid: "81380644"
 ---
 # <a name="how-a-reservation-discount-is-applied"></a>Rezervasyon indiriminin uygulanması
 
@@ -39,7 +39,7 @@ Bir rezervasyon satın aldığınızda, indirim aynı boyut grubundaki özniteli
 Hizmet planları:
 
 - Ayrılmış VM Örnekleri: Rezervasyonu satın alırken **Örnek boyutu esnekliği için iyileştirilmiş**'i seçerseniz, indirim kapsamı seçtiğiniz VM boyutuna bağlı olur. Rezervasyon aynı boyut serisi grubundaki sanal makine (VM) boyutlarına uygulanır. Daha fazla bilgi için bkz. [Ayrılmış VM Örnekleriyle sanal makine boyutu esnekliği](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
-- Azure Depolama ayrılmış kapasitesi: Standart Azure Depolama hesapları için aylık 100 TiB veya 1 PiB boyutlu birimler halinde ayrılmış kapasite satın alabilirsiniz. Azure Depolama ayrılmış kapasitesi tüm bölgeler, tüm erişim katmanları (sık erişimli, seyrek erişimli veya arşiv) ve tüm çoğaltma seçenekleri (LRS, GRS veya ZRS) ile kullanılabilir.
+- Azure Depolama ayrılmış kapasitesi: Standart Azure Depolama hesapları için aylık 100 TiB veya 1 PiB boyutlu birimler halinde ayrılmış kapasite satın alabilirsiniz. Azure Depolama ayrılmış kapasitesini destekleyen bölgeler hakkında bilgi için bkz. [Blok blobu fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/). Azure Depolama ayrılmış kapasitesi tüm erişim katmanları (sık erişimli, seyrek erişimli ve arşiv) ve tüm çoğaltma yapılandırmaları (LRS, GRS veya ZRS) ile kullanılabilir.
 - SQL Veritabanı ayrılmış kapasitesi: İndirim kapsamı, seçtiğiniz performans katmanına bağlıdır. Daha fazla bilgi için bkz. [Azure rezervasyonu indiriminin nasıl uygulandığını anlama](understand-reservation-charges.md).
 - Azure Cosmos DB ayrılmış kapasitesi: İndirim kapsamı, sağlanan aktarım hızına göre değişir. Daha fazla bilgi için bkz. [Azure Cosmos DB rezervasyon indiriminin nasıl uygulandığını anlama](understand-cosmosdb-reservation-charges.md).
 

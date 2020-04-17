@@ -3,16 +3,16 @@ title: Azure Maliyet Yönetimi'ndeki yaygın maliyet analizi kullanımları
 description: Bu makale, Azure Maliyet Yönetimi'ndeki yaygın maliyet analizi görevlerinden nasıl faydalanabileceğinizi açıklamaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/31/2020
+ms.date: 04/10/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: a333cad51e6fc089e7e6994c7b89210b12686cd5
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
+ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520874"
+ms.lasthandoff: 04/13/2020
+ms.locfileid: "81261523"
 ---
 # <a name="common-cost-analysis-uses"></a>Yaygın maliyet analizi kullanımları
 
@@ -27,6 +27,17 @@ Azure hizmetine göre maliyet dökümünü görüntülemek, altyapınızın en y
 1. Görünümü **Tablo** olarak değiştirin.
 
 [![Azure hizmetine göre maliyet dökümü](./media/cost-analysis-common-uses/breakdown-by-service.png)](./media/cost-analysis-common-uses/breakdown-by-service.png#lightbox)
+
+## <a name="review-invoiced-charges-in-cost-analysis"></a>Maliyet analizinde faturalanmış ücretleri gözden geçirme
+
+Azure portalında fatura ayrıntılarınızı görüntülemek için, analiz ettiğiniz faturayla ilişkilendirilmiş kapsamın Maliyet analizi bölümüne gidin. **Fatura ayrıntıları** görünümünü seçin. Fatura ayrıntıları, faturada göründüğü haliyle ücretleri gösterir.
+
+[![Fatura ayrıntılarını gösteren örnek](./media/cost-analysis-common-uses/invoice-details.png)](./media/cost-analysis-common-uses/invoice-details.png#lightbox)
+
+Fatura ayrıntılarını görüntüleyerek beklenmeyen maliyetler getiren hizmeti belirleyebilir ve hangi kaynakların Maliyet analizindeki kaynakla doğrudan ilişkili olduğunu saptayabilirsiniz. Örneğin Sanal Makineler hizmetinin ücretlerini analiz etmek istiyorsanız, **Birikmiş maliyet** görünümüne gidin. Ardından ayrıntı düzeyini **Günlük** olarak ayarlayın, sonra **Hizmet adı: Sanal makineler** için ücretleri filtreleyin ve ücretleri **Kaynak**’a göre gruplandırın.
+
+[![Sanal makinelerin birikmiş maliyetlerini gösteren örnek](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
+
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Azure kaynağına göre maliyet dökümünü görüntüleme
 
