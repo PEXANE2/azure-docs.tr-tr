@@ -9,41 +9,33 @@
       href: whats-new.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Web portalını kullanma
+    - name: Sınıflandırıcı oluşturma
       items:
-        - name: Sınıflandırıcı oluşturma
+        - name: Web portalını kullanma
           href: getting-started-build-a-classifier.md
-        - name: Nesne algılayıcısı oluşturma
-          href: get-started-build-detector.md
-    - name: .NET SDK’sini kullanma
-      items:
-        - name: Resimleri sınıflandırma
+        - name: .NET SDK’sini kullanma
           href: csharp-tutorial.md
-        - name: Nesne algılama
-          href: csharp-tutorial-od.md
-    - name: Python SDK'yı kullanma
-      items:
-        - name: Resimleri sınıflandırma
+        - name: Python SDK'yı kullanma
           href: python-tutorial.md
-        - name: Nesne algılama
-          href: python-tutorial-od.md
-    - name: Java SDK'yı kullanma
-      items:
-        - name: Resimleri sınıflandırma
+        - name: Java SDK'yı kullanma
           href: java-tutorial.md
-        - name: Nesne algılama
-          href: java-tutorial-od.md
-    - name: Node.js SDK'yı kullanma
-      items:
-        - name: Resimleri sınıflandırma
+        - name: Node.js SDK'yı kullanma
           href: node-tutorial.md
-        - name: Nesne algılama
-          href: node-tutorial-object-detection.md
-    - name: Go SDK'yı kullanma
-      items:
-        - name: Resimleri sınıflandırma
+        - name: Go SDK'yı kullanma
           href: go-tutorial.md
-        - name: Nesne algılama
+    - name: Nesne algılayıcısı oluşturma
+      items:
+        - name: Web portalını kullanma
+          href: get-started-build-detector.md
+        - name: .NET SDK’sini kullanma
+          href: csharp-tutorial-od.md
+        - name: Python SDK'yı kullanma
+          href: python-tutorial-od.md
+        - name: Java SDK'yı kullanma
+          href: java-tutorial-od.md
+        - name: Node.js SDK'yı kullanma
+          href: node-tutorial-object-detection.md
+        - name: Go SDK'yı kullanma
           href: go-tutorial-object-detection.md
 - name: Öğreticiler
   items:
