@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: e4e4ac1b0a867130dd7b9e276db52e1ca1e72976
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062140"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641374"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure kaynakları için rol tanımlarını anlama
 
 Bir rolün nasıl çalıştığını anlamaya çalışıyorsanız veya Azure kaynakları için kendi [özel rolünüzü](custom-roles.md)oluşturuyorsanız, rollerin nasıl tanımlandığını anlamak yararlıdır. Bu makalede, rol tanımlarının ayrıntıları açıklanır ve bazı örnekler sağlar.
 
-## <a name="role-definition-structure"></a>Rol tanımı yapısı
+## <a name="role-definition"></a>Rol tanımı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca gerçekleştirilemeyen işlemleri veya temel verilerle ilgili işlemleri de listeleyebilir. Rol tanımı aşağıdaki yapıya sahiptir:
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca *rol* olarak da adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca gerçekleştirilemeyen işlemleri veya temel verilerle ilgili işlemleri de listeleyebilir. Rol tanımı aşağıdaki özelliklere sahiptir:
 
 ```
 Name
@@ -41,6 +41,20 @@ DataActions []
 NotDataActions []
 AssignableScopes []
 ```
+
+| Özellik | Açıklama |
+| --- | --- |
+| `Name` | Rolün görüntü adı. |
+| `Id` | Rolün benzersiz kimliği. |
+| `IsCustom` | Bunun özel bir rol olup olmadığını gösterir. Özel `true` roller için ayarlayın. |
+| `Description` | Rolün tanımı. |
+| `Actions` | Rolün gerçekleştirilmesine izin verdiği yönetim işlemlerini belirten bir dizi dize. |
+| `NotActions` | İzin verilenin `Actions`dışında olan yönetim işlemlerini belirten bir dizi dize. |
+| `DataActions` | Rolün bu nesne içindeki verilerinize gerçekleştirilmesine izin verdiği veri işlemlerini belirten bir dizi dize. |
+| `NotDataActions` | İzin verilenin `DataActions`dışında olan veri işlemlerini belirten bir dizi dize. |
+| `AssignableScopes` | Rolün atama için kullanılabilir olduğunu gösteren kapsamları belirten bir dizi dize. |
+
+### <a name="operations-format"></a>İşlem biçimi
 
 İşlemler, aşağıdaki biçime sahip dizeleri ile belirtilir:
 
@@ -55,6 +69,8 @@ AssignableScopes []
 | `write` | Yazma işlemlerini (PUT veya PATCH) etkinleştirir. |
 | `action` | Sanal makineleri yeniden başlatma (POST) gibi özel işlemleri etkinleştirir. |
 | `delete` | Silme işlemlerini (DELETE) etkinleştirir. |
+
+### <a name="role-definition-example"></a>Rol tanımı örneği
 
 İşte JSON formatında [Katılımcı](built-in-roles.md#contributor) rol tanımı. `Actions` altındaki joker karakter (`*`) işlemi, bu role atanan sorumlunun tüm eylemleri gerçekleştirebileceğini gösterir veya başka bir deyişle her şeyi yönetebilir. Bu, Azure yeni kaynak türleri ekledikçe gelecekte tanımlanacak eylemleri de içerir. `NotActions` altındaki işlemler `Actions` işlemlerinden çıkarılır. [Katkıda Bulunan](built-in-roles.md#contributor) rolünde, `NotActions` bu rolün kaynakları erişimi yönetme becerisini kaldırır ve kaynaklara erişim atar.
 
@@ -92,7 +108,7 @@ Kapsayıcı kimlik doğrulama yönteminin "Access Key" değil de "Azure AD Kulla
 
 Önceden, veri işlemleri için rol tabanlı erişim denetimi kullanılmadı. Veri işlemleri için yetkilendirme kaynak sağlayıcılar arasında farklılık gösterir. Yönetim işlemleri için kullanılan aynı rol tabanlı erişim denetimi yetkilendirme modeli veri işlemlerine genişletildi.
 
-Veri işlemlerini desteklemek için rol tanımı yapısına yeni veri özellikleri eklendi. Veri işlemleri `DataActions` ve `NotDataActions` özelliklerinde belirtilir. Bu veri özellikleri eklenerek, yönetim ve veri arasındaki ayrım korunur. Ayrıca joker karakter (`*`) içeren geçerli rol atamalarının aniden verilere erişim almasını da önler. Burada, `DataActions` ve `NotDataActions` özelliklerinde belirtilebilecek bazı veri işlemleri verilmiştir:
+Veri işlemlerini desteklemek için rol tanımına yeni veri özellikleri eklendi. Veri işlemleri `DataActions` ve `NotDataActions` özelliklerinde belirtilir. Bu veri özellikleri eklenerek, yönetim ve veri arasındaki ayrım korunur. Ayrıca joker karakter (`*`) içeren geçerli rol atamalarının aniden verilere erişim almasını da önler. Burada, `DataActions` ve `NotDataActions` özelliklerinde belirtilebilecek bazı veri işlemleri verilmiştir:
 
 - Kapsayıcıdaki blobların listesini okuma
 - Kapsayıcıda depolama blobu yazma

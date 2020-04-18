@@ -4,16 +4,16 @@ description: Azure Geçişi ile Hyper-V V VM'lerin değerlendirilmesi/geçişi i
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: e86e634812e9f2782a003a11b48cfecf91d95359
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535307"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641628"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V V M'lerin azure'a değerlendirilmesi ve geçişi için hazırlanın
 
-Bu makalede, Azure Geçişi ile şirket içi Hyper-V V VM'lerin değerlendirilmesi için nasıl hazırlanacağı açıklanmaktadır:Sunucu Değerlendirmesi (geçir-hizmetler-genel bakış.md#azure-geçir-sunucu-değerlendirme aracı) ve Azure Geçişi ile Hyper-V V VM'lerin [geçişi:Sunucu Geçişi.](migrate-services-overview.md#azure-migrate-server-migration-tool)
+Bu makalede, [Azure Geçişi:Sunucu Değerlendirmesi](migrate-services-overview.md#azure-migrate-server-assessment-tool)ile şirket içi Hyper-V VM'lerin değerlendirilmesi için nasıl hazırlanacağı ve [Azure Geçişi:Sunucu Geçişi](migrate-services-overview.md#azure-migrate-server-migration-tool)ile Hyper-VM'lerin geçişi açıklanmaktadır.
 
 
 Bu öğretici, Hyper-V V MM'leri nasıl değerlendirip Azure'a geçirtilebildiğinizi gösteren bir serinin ilk imasıdır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:

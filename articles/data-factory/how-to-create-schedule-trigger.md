@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.openlocfilehash: 100f95c20743f70bb4a9f2ac7e74853eab80f3e9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a0a01dad5ae86cf20d57ade845326838f8fd686a
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414478"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641460"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Zamanlamada ardışık hatlar hattını çalıştıran bir tetikleyici oluşturma
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -31,38 +31,46 @@ Aşağıdaki bölümlerde farklı şekillerde bir zamanlama tetikleyici oluştur
 Düzenli aralıklarla çalışacak bir ardışık hatlar (saatlik, günlük vb.) zamanlamak için bir **zamanlama tetikleyicisi** oluşturabilirsiniz. 
 
 > [!NOTE]
-> Bir ardışık hatlar ve zamanlama tetikleyicisi oluşturma, tetikleyiciyi ardışık alanla ilişkilendirme ve ardışık hattı çalıştırma ve izleme hakkında tam bir gözden geçirme için [Bkz. Quickstart: Veri Fabrikası Kullanıcı Arabirimi'ni kullanarak bir veri fabrikası oluşturun.](quickstart-create-data-factory-portal.md)
+> Bir ardışık hatlar ve bir zamanlama tetikleyicisi oluşturma nın tam bir walkthrough için, hangi boru hattı ile tetikleyici ilişkilendirir ve çalışır ve boru hattı izler, [Bkz. Quickstart: Veri Fabrikası Kullanıcı Arabirimi kullanarak bir veri fabrikası oluşturun.](quickstart-create-data-factory-portal.md)
 
-1. **Düzen** sekmesine geçin. 
+1. Kalem simgesiyle gösterilen **Edit** sekmesine geçin. 
 
     ![Düzen sekmesine geçin](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
-1. Menüde **Tetikleyici**'ye tıklayın ve sonra da **Yeni/Düzenle**'ye tıklayın. 
+
+1. Menüde **Tetikleyici'yi** seçin, ardından **Yeni/Edit'i**seçin. 
 
     ![Yeni tetikleyici menüsü](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
-2. **Tetikleyici Ekle** sayfasında **Tetikleyici seç...** öğesine ve sonra da **Yeni**'ye tıklayın. 
+
+1. Tetikleyici **ekle** sayfasında **tetikleyiciyi seç'i seçin...** seçeneğini belirleyin, ardından **+Yeni'yi**seçin. 
 
     ![Tetikleyici ekle - yeni tetikleyici](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. Yeni **Tetikleyici** sayfasında aşağıdaki adımları yapın: 
+
+1. Yeni **Tetikleyici** sayfasında aşağıdaki adımları yapın: 
 
     1. **Zamanlama'nın** **Tür**için seçildiğini doğrulayın. 
-    2. **Başlangıç Tarihi (UTC)** için tetikleyicinin başlangıç tarih saatini belirtin. Varsayılan olarak geçerli datetime olarak ayarlanır. 
-    3. Tetikleyici için **Yineleme** belirtin. Açılan listeden (Her dakika, Saatlik, Günlük, Haftalık ve Aylık) değerlerden birini seçin. Metin kutusuna çarpanı girin. Örneğin, tetikleyicinin her 15 dakikada bir çalışmasını istiyorsanız, **Her Dakika**'yı seçin ve metin kutusuna **15** girin. 
-    4. **Bitiş** alanı için, tetikleyici için bir bitiş tarihi belirtmek istemiyorsanız, **Bitiş Sonu'nu**seçin. Bitiş tarihi saatini belirtmek **için, Tarih'i**seçin ve bitiş tarihini belirtin ve **Uygula'yı**tıklatın. Her işlem hattı çalıştırmasının bir maliyeti vardır. Test ediyorsanız, ardışık nedenin yalnızca birkaç kez tetiklendirildiğından emin olmak isteyebilirsiniz. Öte yandan, yayımlama saatiyle bitiş saati arasında işlem hattının çalıştırılmasına yetecek kadar zaman olduğundan emin olun. Tetikleyici siz çözümü kullanıcı arabiriminde kaydettiğinizde değil ancak Data Factory'de yayımladığınızda devreye girer.
+    1. **Başlangıç Tarihi (UTC)** için tetikleyicinin başlangıç tarih saatini belirtin. Varsayılan olarak geçerli datetime olarak ayarlanır. 
+    1. Tetikleyici için **Yineleme** belirtin. Açılan listeden (Her dakika, Saatlik, Günlük, Haftalık ve Aylık) değerlerden birini seçin. Metin kutusuna çarpanı girin. Örneğin, tetikleyicinin her 15 dakikada bir çalışmasını istiyorsanız, **Her Dakika**'yı seçin ve metin kutusuna **15** girin. 
+    1. **Bitiş** alanı için, tetikleyici için bir bitiş tarihi belirtmek istemiyorsanız, **Bitiş Sonu'nu**seçin. Bitiş tarihi saatini belirtmek **için, Tarih'i**seçin ve bitiş tarihini belirtin, ardından **Tamam'ı**seçin. Her işlem hattı çalıştırmasının bir maliyeti vardır. Test ediyorsanız, ardışık nedenin yalnızca birkaç kez tetiklendirildiğından emin olmak isteyebilirsiniz. Öte yandan, yayımlama saatiyle bitiş saati arasında işlem hattının çalıştırılmasına yetecek kadar zaman olduğundan emin olun. Tetikleyici siz çözümü kullanıcı arabiriminde kaydettiğinizde değil ancak Data Factory'de yayımladığınızda devreye girer.
 
         ![Tetikleyici ayarları](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. Yeni **Tetikleyici** penceresinde, **Etkinleştirilen** seçeneği işaretleyin ve **İleri'yi**tıklatın. Tetikleyiciyi daha sonra devre dışı bırakmak için bu onay kutusunu kullanabilirsiniz. 
+
+1. Yeni **Tetikleyici** penceresinde, **Etkinleştirilen** seçenekte **Evet'i** seçin ve **ardından Tamam'ı**seçin. Tetikleyiciyi daha sonra devre dışı bırakmak için bu onay kutusunu kullanabilirsiniz. 
 
     ![Tetikleyici ayarları - İleri düğmesi](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
-5. **Yeni Tetikleyici** sayfasında uyarı iletisini gözden geçirin ve **Son**'a tıklayın.
+
+1. Yeni **Tetikleyici** penceresinde, uyarı iletisini gözden geçirin ve ardından **Tamam'ı**seçin.
 
     ![Tetikleyici ayarları - Son düğmesi](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Değişiklikleri Data Factory'de yayımlamak için **Yayımla**'ya tıklayın. Veri Fabrikası'nda değişiklik yayımlayana kadar, tetikleyici ardışık hatlar çalışır tetiklemeye başlamaz. 
+
+1. Değişiklikleri Veri Fabrikası'nda yayımlamak için **tümünü yayımla'yı** seçin. Veri Fabrikası'ndaki değişiklikleri yayımlayana kadar, tetikleyici ardışık hatlar çalışır çalışanlarını tetiklemeye başlamaz. 
 
     ![Yayımla düğmesi](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Soldaki **İzleyici** sekmesine geçin. Listeyi yenilemek için **Yenile**’ye tıklayın. Zamanlanan tetikleyici tarafından tetiklenen boru hattı çalışır bakın. **Tetikleyen** sütunundaki değerlere dikkat edin. **Tetikleyici Şimdi** seçeneğini kullanırsanız, listede manuel tetikleyici çalıştır'ı görürsünüz. 
+
+1. Soldaki **Pipeline çalışır** sekmesine geçin ve listeyi yenilemek için **Yenile'yi** seçin. Zamanlanan tetikleyici tarafından tetiklenen ardışık hatlar çalışır göreceksiniz. **Tetikleyen** sütunundaki değerlere dikkat edin. **Şimdi Tetikle** seçeneğini kullanırsanız, listede manuel tetikleyicinin çalıştırını görürsünüz. 
 
     ![Tetiklenen çalıştırmaları izleme](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
-9. **İşlem Hattı Çalıştırmaları**'nın yanındaki aşağı oka tıklayarak **Tetikleyici Çalıştırmaları** görünümüne geçin. 
+
+1. **Tetikleyici Çalıştırmaları** görünümüne geçin. 
 
     ![Tetikleme çalıştırmalarını izleme](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
@@ -112,31 +120,31 @@ Bu bölümde, zamanlama tetikleyicisi oluşturmak, başlatmak ve izlemek için A
     - Tetikleyici **Adfv2QuickStartPipeline** ardışık ile ilişkilidir. Birden çok ardışık bölümü bir tetikleyiciyle ilişkilendirmek için daha fazla **pipelineReference** bölümü ekleyin.
     - Quickstart'taki ardışık işlem iki **parametre** değeri alır: **inputPath** ve **outputPath.** Bu nedenle, bu parametreler için değerleri tetikleyiciden geçirirsiniz.
 
-2. **Set-AzDataFactoryV2Trigger** cmdlet'i kullanarak bir tetikleyici oluşturun:
+1. **Set-AzDataFactoryV2Trigger** cmdlet'i kullanarak bir tetikleyici oluşturun:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. **Tetikleyicinin durumunuget-AzDataFactoryV2Trigger** cmdlet kullanarak **durdurulduğunu** doğrulayın:
+1. **Tetikleyicinin durumunuget-AzDataFactoryV2Trigger** cmdlet kullanarak **durdurulduğunu** doğrulayın:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. **Start-AzDataFactoryV2Trigger** cmdlet kullanarak tetikleyiciyi başlatın:
+1. **Start-AzDataFactoryV2Trigger** cmdlet kullanarak tetikleyiciyi başlatın:
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Tetikleyicinin **durumunuget-AzDataFactoryV2Trigger** cmdlet kullanarak **başlatıldığından** onaylayın:
+1. Tetikleyicinin **durumunuget-AzDataFactoryV2Trigger** cmdlet kullanarak **başlatıldığından** onaylayın:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  **Get-AzDataFactoryV2TriggerRun** cmdlet'ini kullanarak Azure PowerShell'de tetikleyici çalıştırmaları alın. Tetikleyici çalıştırmaları hakkında bilgi almak için aşağıdaki komutu düzenli aralıklarla uygulayın. **TriggerRunStartedAfter** ve **TriggerRunStartedBefore** değerlerini tetikleyici tanımınızdaki değerlerle eşleştirmek için güncelleştirin:
+1.  **Get-AzDataFactoryV2TriggerRun** cmdlet'ini kullanarak Azure PowerShell'de tetikleyici çalıştırmaları alın. Tetikleyici çalıştırmaları hakkında bilgi almak için aşağıdaki komutu düzenli aralıklarla uygulayın. **TriggerRunStartedAfter** ve **TriggerRunStartedBefore** değerlerini tetikleyici tanımınızdaki değerlerle eşleştirmek için güncelleştirin:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"

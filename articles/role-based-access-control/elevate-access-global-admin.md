@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/03/2019
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1731c630cb98ac542ebcdc7aedf07f7bb63eaec0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77137453"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641360"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim Gruplarını yönetmeye erişimi artırın
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Tüm Azure aboneliklerini ve yönetim gruplarını yönetmek için erişimi yükseltme
 
 Azure Etkin Dizini'nde (Azure AD) Genel Yönetici olarak, dizininizdeki tüm aboneliklere ve yönetim gruplarına erişiminiz olmayabilir. Bu makalede, tüm aboneliklere ve yönetim gruplarına erişiminizi yükseltme yolları açıklanmaktadır.
 
@@ -30,7 +30,7 @@ Azure Etkin Dizini'nde (Azure AD) Genel Yönetici olarak, dizininizdeki tüm abo
 
 ## <a name="why-would-you-need-to-elevate-your-access"></a>Neden erişiminizi yükseltmeniz gerekiyor?
 
-Genel Yöneticiyseniz, aşağıdakileri yapmak istediğiniz zamanlar olabilir:
+Genel Yöneticiyseniz, aşağıdaki eylemleri yapmak istediğiniz zamanlar olabilir:
 
 - Bir kullanıcı erişimini kaybettiğinde Azure aboneliğine veya yönetim grubuna yeniden erişin
 - Başka bir kullanıcıya veya kendisine Azure aboneliği veya yönetim grubu üzerinde erişim verme
@@ -47,7 +47,7 @@ Kök kapsamda yapmanız gereken değişiklikleri yaptıktan sonra bu yükseltilm
 
 ![Erişimi yükseltme](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Global Yönetici için erişimi yükseltme
 
@@ -55,9 +55,7 @@ Azure portalını kullanarak Bir Global Yönetici için erişimi yükseltmek iç
 
 1. Azure [portalında](https://portal.azure.com) veya Azure [Etkin Dizin yöneticisi merkezinde](https://aad.portal.azure.com) Küresel Yönetici olarak oturum açın.
 
-1. **Azure Active Directory**'yi bulun ve seçin.
-
-   ![Azure Active Directory'yi seçin - ekran görüntüsü](./media/elevate-access-global-admin/search-for-azure-active-directory.png)
+1. **Azure Etkin Dizini**Açın.
 
 1. **Yönet**altında, **Özellikleri**seçin.
 
@@ -98,7 +96,7 @@ Root kapsamında Ki Kullanıcı Erişim Yöneticisi`/`rol atamasını kaldırmak
 
 1. Azure **kaynaklarıiçin Access yönetimini** **No'ya**geri ayarlamayı ayarlayın. Bu, kullanıcı başına bir ayar olduğundan, erişimi yükseltmek için kullanılan kullanıcıyla aynı kullanıcı olarak oturum açmış olmalısınız.
 
-    Access denetimi (IAM) bölmesindeki Kullanıcı Erişim Yöneticisi rol atamasını kaldırmaya çalışırsanız, aşağıdaki iletiyi görürsünüz. Rol atamasını kaldırmak için, geçiş ini **Hayır** olarak ayarlamanız veya Azure PowerShell, Azure CLI veya REST API'sini kullanmanız gerekir.
+    Access denetimi (IAM) bölmesindeki Kullanıcı Erişim Yöneticisi rol atamasını kaldırmaya çalışırsanız, aşağıdaki iletiyi görürsünüz. Rol atamasını kaldırmak için, geçişini **Hayır'a** geri ayarlamanız veya Azure PowerShell, Azure CLI veya REST API'sini kullanmanız gerekir.
 
     ![Kök kapsamı yla rol atamalarını kaldırma](./media/elevate-access-global-admin/iam-root-remove.png)
 
@@ -233,7 +231,7 @@ Bir kullanıcı için reddedilen atamaların tümünü kök`/`kapsamda listeleye
 
 ### <a name="remove-elevated-access"></a>Yükseltilmiş erişimi kaldırma
 
-Aradiğinizde, `elevateAccess`kendiniz için bir rol ataması oluşturursunuz, bu nedenle kullanıcı erişim yöneticisi rol atamasını`/`kök kapsamda kendiniz için kaldırmanız gerekir ( )
+Aradiğinizde, `elevateAccess`kendiniz için bir rol ataması oluşturursunuz, bu nedenle bu ayrıcalıkları iptal etmek için`/`Kullanıcı Erişim Yöneticisi rol atamasını kök kapsamda kendiniz için kaldırmanız gerekir ( ).
 
 1. Kullanıcı Erişim Yöneticisi `roleName` rolünün ad kimliğini belirlemek için Kullanıcı Erişim Yöneticisi'ne eşit olan [GET roleDefinitions'ı](/rest/api/authorization/roledefinitions/get) arayın.
 

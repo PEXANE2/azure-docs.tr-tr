@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d40d4cfe1b86448f1e8df307013905d69f203dcd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/14/2020
+ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261066"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641334"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorguda otomatik tamamlama ve önerilen sonuçları etkinleştirmek için bir önerici oluşturma
 
@@ -42,15 +42,15 @@ Dize alanları için alan başına olarak arama türü desteği etkinleştirilir
 
 ## <a name="define-a-suggester"></a>Bir önerici tanımlayın
 
-Bir önericinin birden çok özelliği olsa da, öncelikle sizin gibi bir arama deneyimi ne kadar etkinleştirdiğiniz alanlar topluluğudur. Örneğin, bir seyahat uygulaması varış noktalarında, şehirlerde ve konumlarda otomatik olarak tamamlanmasını etkinleştirmek isteyebilir. Bu nedenle, her üç alan alanları toplama gider.
+Bir önerici oluşturmak için, bir [dizin şema](https://docs.microsoft.com/rest/api/searchservice/create-index) bir ekleyin ve [her özellik ayarlayın.](#property-reference) Dizinde, bir önerici (özellikle, önerici koleksiyonunda bir önerici) olabilir. Bir önerici oluşturmak için en iyi zaman da onu kullanacak alanı tanımlayan zaman.
 
-Bir önerici oluşturmak için, bir dizin şemasına ekleyin. Bir dizin (özellikle, önerici koleksiyonunda bir önerici) bir önerici olabilir. Bir önerici alanların bir listesini alır. 
+### <a name="choose-fields"></a>Alanları seçin
 
-+ Öneriler için, tek bir sonucu en iyi temsil eden alanları seçin. Belgeler arasında ayrım yapan adlar, başlıklar veya diğer benzersiz alanlar en iyi şekilde çalışır. Alanlar benzer veya aynı değerlerden oluşuyorsa, öneriler aynı sonuçlardan oluşur ve kullanıcı hangisini tıklatacağını bilemez.
+Bir önericinin birden çok özelliği olsa da, öncelikle sizin gibi bir arama deneyimi ne kadar etkinleştirdiğiniz alanlar topluluğudur. Özellikle öneriler için, tek bir sonucu en iyi temsil eden alanları seçin. Birden çok eşleşme arasında ayrım yapan adlar, başlıklar veya diğer benzersiz alanlar en iyi şekilde çalışır. Alanlar yinelenen değerlerden oluşuyorsa, öneriler aynı sonuçlardan oluşur ve kullanıcı hangisini tıklatacağını bilmez.
 
-+ Önerici `sourceFields` listesindeki her alanın varsayılan standart Lucene çözümleyicisini (`"analyzer": null`) veya bir dil [çözümleyicisini](index-add-language-analyzers.md) (örneğin) `"analyzer": "en.Microsoft"`kullandığından emin olun. 
+Her alanın dizin oluşturma sırasında sözlü çözümleme gerçekleştiren bir çözümleyici kullandığından emin olun. Varsayılan standart Lucene çözümleyicisi`"analyzer": null`( ) veya bir dil `"analyzer": "en.Microsoft"` [çözümleyicisi](index-add-language-analyzers.md) (örneğin,) kullanabilirsiniz. 
 
-  Çözümleyici seçiminiz, alanların nasıl belirteçleştirilme ve daha sonra önceden önceden belirlenmiş olduğunu belirler. Örneğin, "içeriğe duyarlı" gibi tireli bir dize için, bir dil çözümleyicisi kullanmak şu belirteç kombinasyonlarına neden olur: "bağlam", "duyarlı", "bağlam duyarlı". Standart Lucene çözümleyicisini kullansaydınız, tireli dize mevcut olmazdı.
+Çözümleyici seçiminiz, alanların nasıl belirteçleştirilme ve daha sonra önceden önceden belirlenmiş olduğunu belirler. Örneğin, "içeriğe duyarlı" gibi tireli bir dize için, bir dil çözümleyicisi kullanmak şu belirteç kombinasyonlarına neden olur: "bağlam", "duyarlı", "bağlam duyarlı". Standart Lucene çözümleyicisini kullansaydınız, tireli dize mevcut olmazdı.
 
 > [!TIP]
 > Terimlerin nasıl belirtilmeye ve daha sonra önceden önceden belirlenmiş olduğuna ilişkin içgörü sağlamak için [Çözümleme Metni API'sini](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) kullanmayı düşünün. Bir dizin oluşturduğunuzda, yayan belirteçleri görüntülemek için bir dize üzerinde çeşitli çözümleyiciler deneyebilirsiniz.
@@ -61,7 +61,7 @@ Bir önerici oluşturmak için en iyi zaman da alan tanımı kendisi oluştururk
 
 Önceden varolan alanları kullanarak bir önerici oluşturmaya çalışırsanız, API buna izin vermez. Önekler, iki veya daha fazla karakter birleşimindeki kısmi terimlerin tüm terimlerle birlikte belirtildiğinde, dizin oluşturma sırasında oluşturulur. Varolan alanların zaten belirteçolarak verildiği göz önüne alındığında, bunları bir önericiye eklemek istiyorsanız dizini yeniden oluşturmanız gerekir. Daha fazla bilgi için Azure [Bilişsel Arama dizinini nasıl yeniden oluşturabilirsiniz.](search-howto-reindex.md)
 
-### <a name="create-using-the-rest-api"></a>REST API'sini kullanarak oluşturma
+## <a name="create-using-rest"></a>REST kullanarak oluşturma
 
 REST API'sinde, [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservice/create-index) veya [Güncelleştirme Dizini](https://docs.microsoft.com/rest/api/searchservice/update-index)aracılığıyla öneriyi ekleyin. 
 
@@ -99,7 +99,7 @@ REST API'sinde, [Dizin Oluştur](https://docs.microsoft.com/rest/api/searchservi
   }
   ```
 
-### <a name="create-using-the-net-sdk"></a>.NET SDK'yı kullanarak oluşturma
+## <a name="create-using-net"></a>.NET kullanarak oluşturma
 
 C#'da, [Bir Önerici nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)tanımlayın. `Suggesters`bir koleksiyondur, ancak yalnızca bir öğe alabilir. 
 
@@ -122,37 +122,40 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 }
 ```
 
-### <a name="property-reference"></a>Özellik başvurusu
+## <a name="property-reference"></a>Özellik başvurusu
 
 |Özellik      |Açıklama      |
 |--------------|-----------------|
 |`name`        |Önerenin adı.|
-|`searchMode`  |Strateji aday ifadeleri aramak için kullanılır. Şu anda desteklenen `analyzingInfixMatching`tek mod, tümceciklerin başında veya ortasında esnek eşleştirme gerçekleştirir.|
+|`searchMode`  |Strateji aday ifadeleri aramak için kullanılır. Şu anda desteklenen `analyzingInfixMatching`tek mod, şu anda bir dönemin başında eşleşen.|
 |`sourceFields`|Öneriler için içeriğin kaynağı olan bir veya daha fazla alanın listesi. Alanlar türünde `Edm.String` olmalı `Collection(Edm.String)`ve . Alanda bir çözümleyici belirtilmişse, [bu listeden](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) adlandırılmış bir çözümleyici olmalıdır (özel bir çözümleyici değil).<p/> En iyi uygulama olarak, yalnızca bir arama çubuğunda tamamlanmış bir dize veya açılır bırakma listesinde tamamlanmış bir dize olsun, beklenen ve uygun yanıtiçin kendilerini ödünç alanları belirtin.<p/>Bir otel adı iyi bir adaydır çünkü hassastır. Açıklamalar ve açıklamalar gibi ayrıntılı alanlar çok yoğun. Benzer şekilde, kategoriler ve etiketler gibi yinelenen alanlar daha az etkilidir. Örneklerde, birden çok alan ekleyebileceğinizi göstermek için yine de "kategori"yi ekleriz. |
 
 <a name="how-to-use-a-suggester"></a>
 
 ## <a name="use-a-suggester"></a>Önerici kullanma
 
-Bir sorguda bir önerici kullanılır. Bir önerici oluşturulduktan sonra, özelliği çağırmak için sorgu mantığınızdaki uygun API'yi arayın. 
+Bir sorguda bir önerici kullanılır. Bir önerici oluşturulduktan sonra, istediğiniz gibi arama deneyimi için aşağıdaki API'lerden birini arayın:
 
 + [Öneriler REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
 + [Otomatik tamamlama REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
 + [SuggestWithHttpMessagesAsync yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
 + [Otomatik TamamlamaWithHttpMessagesAsync yöntemi](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
-API kullanımı, Otomatik Tamamlama REST API'sine yapılan aşağıdaki çağrıda gösterilmiştir. Bu örnekten iki paket vardır. İlk olarak, tüm sorgularda olduğu gibi, işlem bir dizin belgeleri toplama karşıdır. İkinci olarak, sorgu parametreleri ekleyebilirsiniz. Birçok sorgu parametresi her iki API için de ortak olsa da, liste her biri için farklıdır.
+Bir arama uygulamasında, istemci kodu kısmi sorguyu toplamak ve eşleşmeyi sağlamak için [jQuery UI Autocomplete](https://jqueryui.com/autocomplete/) gibi bir kitaplılıklıkkullanmalıdır. Bu görev hakkında daha fazla bilgi için [bkz.](search-autocomplete-tutorial.md)
+
+API kullanımı, Otomatik Tamamlama REST API'sine yapılan aşağıdaki çağrıda gösterilmiştir. Bu örnekten iki paket vardır. İlk olarak, tüm sorgularda olduğu gibi, işlem bir dizin belgeleri koleksiyonuna karşıdır ve sorgu, bu durumda kısmi sorgu sağlayan bir **arama** parametresi içerir. İkinci olarak, isteğe **suggesterName** eklemeniz gerekir. Diziniçinde bir önerici tanımlanmamışsa, otomatik tamamlama çağrısı veya öneriler başarısız olur.
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs/autocomplete?[query parameters]  
-api-key: [admin or query key]
+POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
+{
+  "search": "minecraf",
+  "suggesterName": "sg"
+}
 ```
-
-Diziniçinde bir önerici tanımlanmamışsa, otomatik tamamlama çağrısı veya öneriler başarısız olur.
 
 ## <a name="sample-code"></a>Örnek kod
 
-+ [C# örneğinde ilk uygulamanızı oluşturun,](tutorial-csharp-type-ahead-and-suggestions.md) önerilen sorgular, otomatik tamamlama ve yönlü gezinme yi önerir. Bu kod örneği bir sandbox Azure Bilişsel Arama hizmetinde çalışır ve önceden yüklenmiş oteller dizini kullanır, bu nedenle tek yapmanız gereken uygulamayı çalıştırmak için F5 tuşuna basmaktır. Abonelik veya oturum açma gerekmez.
++ [C# (ders 3 - You-type ara) örneğinde ilk uygulamanızı oluşturun,](tutorial-csharp-type-ahead-and-suggestions.md) önerici bir yapı, önerilen sorgular, otomatik tamamlama ve yönlü gezinmeyi gösterir. Bu kod örneği bir sandbox Azure Bilişsel Arama hizmetinde çalışır ve önceden yüklenmiş oteller dizini kullanır, bu nedenle tek yapmanız gereken uygulamayı çalıştırmak için F5 tuşuna basmaktır. Abonelik veya oturum açma gerekmez.
 
 + [DotNetHowToAutocomplete](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete) hem C# hem de Java kodu içeren eski bir örnektir. Ayrıca, düşündürücü bir yapı, önerilen sorgular, otomatik tamamlama ve yönlü gezinme yi de gösterir. Bu kod örneği barındırılan [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) örnek verilerini kullanır. 
 
@@ -161,4 +164,4 @@ Diziniçinde bir önerici tanımlanmamışsa, otomatik tamamlama çağrısı vey
 İsteklerin nasıl formüle edilebildiğini görmek için aşağıdaki örneği öneririz.
 
 > [!div class="nextstepaction"]
-> [Öneriler ve otomatik tamamlama örnekleri](search-autocomplete-tutorial.md) 
+> [İstemci koduna otomatik tamamlama ve öneriler ekleme](search-autocomplete-tutorial.md) 

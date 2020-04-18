@@ -4,18 +4,18 @@ description: Azure Cosmos DB için SQL ORDER BY yan tümcesi hakkında bilgi edi
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/17/2020
 ms.author: tisande
-ms.openlocfilehash: b88184be39a41ec42f8fb304a7511073f645f1cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 70702ee4a77e8b3c46de4354f3394bca4080d837
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188743"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641389"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB'de MaddeYE GÖRE SİPARİş
 
-İsteğe bağlı ORDER BY yan tümcesi, sorgu tarafından döndürülen sonuçlar için sıralama sırasını belirtir.
+İsteğe `ORDER BY` bağlı yan tümce, sorgu tarafından döndürülen sonuçlar için sıralama sırasını belirtir.
 
 ## <a name="syntax"></a>Sözdizimi
   
@@ -31,9 +31,9 @@ ORDER BY <sort_specification>
   
    Sorgu sonucu kümesini sıralamak için bir özellik veya ifade belirtir. Sıralama sütunu ad veya özellik adı olarak belirtilebilir.  
   
-   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. ORDER BY yan tümcesindeki sıralama özelliklerinin sırası, sıralanan sonuç kümesinin organizasyonunu tanımlar. Diğer bir tarihte, sonuç kümesi ilk özelliğe göre sıralanır ve ardından sıralanan liste ikinci özelliğe göre sıralanır ve böyle devam edin.  
+   Birden çok özellik belirtilebilir. Özellik adları benzersiz olmalıdır. `ORDER BY` Yan tümcedeki sıralama özelliklerinin sırası, sıralanmış sonuç kümesinin organizasyonunu tanımlar. Diğer bir tarihte, sonuç kümesi ilk özelliğe göre sıralanır ve ardından sıralanan liste ikinci özelliğe göre sıralanır ve böyle devam edin.  
   
-   ORDER BY yan tümcesinde atıfta bulunulan özellik adları, seçili listedeki bir özelliğe veya herhangi bir belirsizlik olmaksızın FROM yan tümcesinde belirtilen koleksiyonda tanımlanan bir özelliğe karşılık gelir.  
+   `ORDER BY` Yan tümcede atıfta bulunulan özellik adları, seçili listedeki bir özelliğe veya `FROM` herhangi bir belirsizlik olmaksızın maddede belirtilen koleksiyonda tanımlanan bir özelliğe karşılık gelir.  
   
 - `<sort_expression>`  
   
@@ -45,7 +45,7 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   Belirtilen sütundaki değerlerin artan veya azalan sırada sıralanması gerektiğini belirtir. ASC en düşük değerden en yüksek değere sıralar. DESC, en yüksek değerden en düşük değere sıralar. ASC varsayılan sıralama sırasıdır. Null değerleri mümkün olan en düşük değerler olarak kabul edilir.  
+   Belirtilen sütundaki değerlerin artan veya azalan sırada sıralanması gerektiğini belirtir. `ASC`en düşük değerden en yüksek değere sıralar. `DESC`en yüksek değerden en düşük değere sıralar. `ASC`varsayılan sıralama sırasıdır. Null değerleri mümkün olan en düşük değerler olarak kabul edilir.  
   
 ## <a name="remarks"></a>Açıklamalar  
   
@@ -152,7 +152,7 @@ Sonuçlar yalnızca tanımlanmış `lastName`bir belgeyi içerir:
     ]
 ```
 
-Kapsayıcının dizin oluşturma ilkesini açıkça bir yol `lastName`içerecek şekilde güncellersek, sorgu sonuçlarına tanımlanmamış sıralama özelliğine sahip belgeler ekleriz. Bu skaler değere giden yolu (ve ötesine geçmeyi) açıkça tanımlamanız gerekir. Özelliği açıkça `?` dizine aldığınızdan `lastName` ve bunun dışında ek iç içe giden yollar olmadığından emin olmak için dizin oluşturma ilkesindeki yol tanımınızdaki karakteri kullanmanız gerekir.
+Kapsayıcının dizin oluşturma ilkesini açıkça bir yol `lastName`içerecek şekilde güncellersek, sorgu sonuçlarına tanımlanmamış sıralama özelliğine sahip belgeler ekleriz. Bu skaler değere giden yolu (ve ötesine geçmeyi) açıkça tanımlamanız gerekir. Özelliği açıkça `?` dizine aldığınızdan `lastName` ve bunun dışında ek iç içe giden yollar olmadığından emin olmak için dizin oluşturma ilkesindeki yol tanımınızdaki karakteri kullanmanız gerekir. Sorgunuz `Order By` bileşik [dizin](index-policy.md#composite-indexes)kullanıyorsa, sonuçlar her zaman sorgu sonuçlarında tanımlanmamış sıralama özelliğine sahip belgeleri içerir.
 
 Burada, sorgu sonuçlarında tanımlanmamış `lastName` görünen belgelere sahip olan belgelere sahip olmasını sağlayan bir örnek dizin oluşturma ilkesi vermiştir:
 

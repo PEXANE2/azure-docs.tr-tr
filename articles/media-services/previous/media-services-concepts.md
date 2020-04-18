@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 44d6776a367a5cb1eeb86c955f083598d417aba6
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475252"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641662"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Medya Hizmetleri kavramları 
 
@@ -111,7 +111,7 @@ Desteklenen kodlayıcılar hakkında bilgi için [Bkz. Kodlayıcılar.](media-se
 ## <a name="live-streaming"></a>Canlı Akış
 Azure Medya Hizmetleri'nde Kanal, canlı akış içeriğini işlemek için bir ardışık hattı temsil eder. Kanal canlı giriş akışlarını iki şekilde alır:
 
-* Şirket içinde canlı kodlayıcı, Kanala çok bit hızında RTMP veya Düzgün Akış (Parçalanmış MP4) gönderir. Multi-bitrate Smooth Streaming: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve Elemental çıktıaşağıdaki canlı kodlayıcılar kullanabilirsiniz. Aşağıdaki canlı kodlayıcılar çıkış RTMP: Adobe Flash Live Encoder, [Telestream Wirecast,](media-services-configure-wirecast-live-encoder.md)Teradek, Haivision ve Tricaster kodlayıcılar. Yutulan akışlar daha fazla kodlama ve kodlama olmadan Kanallar'dan geçer. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içinde canlı kodlayıcı, Kanala çok bit hızında RTMP veya Düzgün Akış (Parçalanmış MP4) gönderir. Multi-bitrate Smooth Streaming: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve Elemental çıktıaşağıdaki canlı kodlayıcılar kullanabilirsiniz. Aşağıdaki canlı kodlayıcılar çıkış RTMP: Adobe Flash Live Encoder, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Teradek, Haivision kodlayıcılar. Yutulan akışlar daha fazla kodlama ve kodlama olmadan Kanallar'dan geçer. İstendiğinde, Media Services akışı müşterilere teslim eder.
 * Tek bir bit hızı akışı (aşağıdaki biçimlerden birinde: RTMP veya Düzgün Akış (Parçalanmış MP4)) Medya Hizmetleri ile canlı kodlama gerçekleştirmek için etkinleştirilen Kanala gönderilir. Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
 ### <a name="channel"></a>Kanal
@@ -190,7 +190,7 @@ Aşamalı indirme, tüm dosya indirilmeden önce medya oynatmaya başlamanızı 
 >[!NOTE]
 >Aşamalı olarak indirilebilmeleri için şifrelenmiş varlıkların şifresini çözmeniz gerekir.
 
-Kullanıcılara aşamalı indirme URL'leri sağlamak için öncelikle bir OnDemandOrigin bulucu oluşturmanız gerekir. Yer bulucuyu oluşturmak, size varlığa temel Yolu verir. Daha sonra MP4 dosyasının adını ekleniz gerekir. Örnek:
+Kullanıcılara aşamalı indirme URL'leri sağlamak için öncelikle bir OnDemandOrigin bulucu oluşturmanız gerekir. Yer bulucuyu oluşturmak, size varlığa temel Yolu verir. Daha sonra MP4 dosyasının adını ekleniz gerekir. Örneğin:
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

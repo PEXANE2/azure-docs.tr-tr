@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 451e83fa6ab547536a4cfd85304930e749a8247f
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998389"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641614"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da arama sonuçlarıyla çalışma
 
@@ -108,10 +108,22 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-> [!IMPORTANT]
-> 15 Temmuz 2020'den sonra oluşturulan hizmetler farklı bir vurgulama deneyimi sağlayacaktır. Bu tarihten önce oluşturulan hizmetler, vurgulama davranışlarında değişmez. Bu değişiklikle, yalnızca tam tümcecik sorgusuyla eşleşen tümcecikler döndürülür. Ayrıca, vurgu için döndürülen parça boyutunu belirtmek de mümkün olacaktır.
->
-> Isabet vurgulamayı uygulayan istemci kodu yazarken, bu değişikliğin farkında olun. Tamamen yeni bir arama hizmeti oluşturmadığınız sürece bunun sizi etkilemeyeceğini unutmayın.
+### <a name="new-behavior-starting-july-15"></a>Yeni davranış (15 Temmuz'dan itibaren)
+
+15 Temmuz 2020'den sonra oluşturulan hizmetler farklı bir vurgulama deneyimi sağlayacaktır. Bu tarihten önce oluşturulan hizmetler, vurgulama davranışlarında değişmez. 
+
+Yeni davranış ile:
+
+* Yalnızca tam tümcecik sorgusuyla eşleşen tümcecikler döndürülür. Sorgu "super bowl" bu gibi olayları dönecektir:
+
+    ```html
+    '<em>super bowl</em> is super awesome with a bowl of chips'
+    ```
+  Tam ifadeyle eşleşmediği için talaş ların terim *kasesi* herhangi bir vurgulama yok.
+  
+* Vurgu için döndürülen parça boyutunu belirtmek mümkün olacaktır. Parça boyutu karakter sayısı olarak belirtilir (en fazla 1000 karakter).
+
+Isabet vurgulamayı uygulayan istemci kodu yazarken, bu değişikliğin farkında olun. Tamamen yeni bir arama hizmeti oluşturmadığınız sürece bunun sizi etkilemeyeceğini unutmayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

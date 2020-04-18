@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 04/16/2020
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: bbd2929e245fa5fc01245e7bd02e537db8d5ef36
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0676b6b183c64dcd0fb15b87de48a4afed3a0011
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536344"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641796"
 ---
 # <a name="tested-on-premises-live-streaming-encoders"></a>Şirket içinde test edilmiş canlı akış kodlayıcıları
 
@@ -57,7 +57,6 @@ RTMPS üzerinden akış yaparken güvenlik duvarı ve/veya ara sunucu ayarların
 - Telestream Wirecast (TLS 1.2 gereksinimi nedeniyle sürüm 13.0.2 veya üzeri)
 - Telestream Wirecast S (sadece RTMP desteklenir)
 - Teradek Slice 756
-- TriCaster 8000
 - VMIX
 - xStream
 - [Ffmpeg](https://www.ffmpeg.org)

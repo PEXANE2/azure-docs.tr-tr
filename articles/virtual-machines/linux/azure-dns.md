@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 3d5ecaf67dcff182c7dace474b7bda45cdfd5c58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0910b31685aa408c319b40ea23782b11724b6237
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78969313"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641721"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure'daki Linux sanal makineleri için DNS Ad Çözümleme seçenekleri
 Azure, tek bir sanal ağdaki tüm sanal makineler için varsayılan olarak DNS ad çözümlemesi sağlar. Azure'un barındırdığı sanal makinelerinizde kendi DNS hizmetlerinizi yapılandırarak kendi DNS ad çözümünüzü uygulayabilirsiniz. Aşağıdaki senaryolar, durumunuziçin uygun olanı seçmenize yardımcı olur.
@@ -35,7 +35,7 @@ Aşağıdaki tablosenaryoları ve karşılık gelen ad çözümçözümlerini g�
 Azure, herkese açık DNS adlarının çözünürlüğünün yanı sıra, sanal makineler ve aynı sanal ağdaki rol örnekleri için dahili ad çözünürlüğü sağlar. Azure Kaynak Yöneticisi'ni temel alan sanal ağlarda, DNS soneki sanal ağ da tutarlıdır; FQDN gerekli değildir. DNS adları hem ağ arabirim kartlarına (NIC' ler) hem de sanal makinelere atanabilir. Azure'un sağladığı ad çözümlemesi herhangi bir yapılandırma gerektirmese de, önceki tabloda görüldüğü gibi tüm dağıtım senaryoları için uygun bir seçim değildir.
 
 ### <a name="features-and-considerations"></a>Özellikler ve dikkat edilecek hususlar
-**Özellikler:**
+**Özellik:**
 
 * Azure'un sağladığı ad çözümlemesi için yapılandırma gerekmez.
 * Azure'un sağladığı ad çözümleme hizmeti son derece kullanılabilir. Kendi DNS sunucularınızın kümelerini oluşturmanız ve yönetmeniz gerekmez.
@@ -43,7 +43,7 @@ Azure, herkese açık DNS adlarının çözünürlüğünün yanı sıra, sanal 
 * FQDN'ye gerek kalmadan sanal ağlardaki sanal makineler arasında ad çözümlemesi sağlanır.
 * Otomatik oluşturulan adlarla çalışmak yerine dağıtımlarınızı en iyi açıklayan ana bilgisayar adlarını kullanabilirsiniz.
 
-**Dikkat edilmesi gerekenler:**
+**Husus -lar:**
 
 * Azure'un oluşturduğu DNS soneki değiştirilemez.
 * Kendi kayıtlarınızı el ile kaydedemezsiniz.
@@ -97,7 +97,7 @@ Bir Linux sanal makinesindeki geçerli ayarları kontrol etmek için , 'cat /etc
 resolv.conf dosyası otomatik olarak oluşturulur ve düzenlenmemelidir. 'Seçenekler' satırını ekleyen belirli adımlar dağılıma göre değişir:
 
 **Ubuntu** (resolvconf kullanır)
-1. Seçenekler satırını '/etc/resolveconf/resolv.conf.d/head'e ekleyin.
+1. Seçenekler satırını '/etc/resolvconf/resolv.conf.d/head'e ekleyin.
 2. Güncellemek için 'resolvconf -u' çalıştırın.
 
 **SUSE** (netconf kullanır)

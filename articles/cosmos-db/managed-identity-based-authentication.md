@@ -1,44 +1,44 @@
 ---
 title: Azure Cosmos DB verilerine erişmek için sistem tarafından atanmış yönetilen kimlik nasıl kullanılır?
-description: Azure Cosmos DB tuşlarına erişmek için Azure AD sistem tarafından atanmış yönetilen bir kimliği nasıl yapılandırabilirsiniz öğrenin. msi, yönetilen hizmet kimliği, aad, azure etkin dizini, kimlik
+description: Azure Cosmos DB'den anahtarlara erişmek için Azure Active Directory (Azure AD) sistem tarafından atanmış yönetilen kimliği (yönetilen hizmet kimliği) nasıl yapılandırabilirsiniz öğrenin.
 author: j-patrick
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: 37e5cb817db2c54a07ab04c4dcc31b1976fdf03d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 8136ad7a1fe29bc3394e959c10aafc52988c0a23
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81450063"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641199"
 ---
-# <a name="how-to-use-a-system-assigned-managed-identity-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanmış yönetilen kimlik nasıl kullanılır?
+# <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Azure Cosmos DB verilerine erişmek için sistem tarafından atanmış yönetilen kimlikleri kullanma
 
-Bu makalede, [yönetilen kimliklerden](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)yararlanarak Azure Cosmos DB tuşlarına erişmek için **sağlam, anahtarlı bir döndürme agnostik,** çözüm kuracağınız. Bu makaledeki örnekte bir Azure İşlevi kullanır. Ancak, yönetilen kimlikleri destekleyen herhangi bir hizmeti kullanarak bu çözüme ulaşabilirsiniz. 
+Bu makalede, [yönetilen kimlikleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)kullanarak Azure Cosmos DB tuşlarına erişmek için *sağlam, anahtar döndürme agnostik* bir çözüm kuracaksınız. Bu makaledeki örnekte Azure İşlevleri kullanılır, ancak yönetilen kimlikleri destekleyen tüm hizmetleri kullanabilirsiniz. 
 
-Azure Cosmos DB tuşlarını kopyalamaya gerek kalmadan Azure Cosmos DB'ye erişebilen bir Azure İşlevi oluşturmayı öğreneceksiniz. Fonksiyonu her dakika uyanmak ve bir akvaryum akvaryum mevcut sıcaklığını kaydedecektir. Zamanlayıcı tetiklenen Bir Zamanlayıcının nasıl ayarlandığını öğrenmek için [Azure'da zamanlayıcı](../azure-functions/functions-create-scheduled-function.md) makalesi tarafından tetiklenen bir işlev oluştur'a bakın.
+Azure Cosmos DB anahtarlarını kopyalamaya gerek kalmadan Azure Cosmos DB verilerine erişebilen bir işlev uygulaması oluşturmayı öğreneceksiniz. Fonksiyon uygulaması her dakika uyanır ve bir akvaryum akvaryum mevcut sıcaklığını kaydeder. Zamanlayıcı tarafından tetiklenen bir işlev uygulamasını nasıl ayarladığını öğrenmek için [Azure'da zamanlayıcı](../azure-functions/functions-create-scheduled-function.md) makalesi tarafından tetiklenen bir işlev oluştur'a bakın.
 
-Senaryoyu basitleştirmek için, eski sıcaklık belgelerinin temizlenmesi zaten yapılandırılmış bir [Time To Live](./time-to-live.md) ayarı tarafından gerçekleştirilir. 
+Senaryoyu basitleştirmek için, [Bir Time To Live](./time-to-live.md) ayarı zaten eski sıcaklık belgelerini temizlemek için yapılandırılmıştır. 
 
-## <a name="assign-a-system-assigned-managed-identity-to-an-azure-function"></a>Bir Azure İşlevine sistem tarafından atanan yönetilen kimlik atama
+## <a name="assign-a-system-assigned-managed-identity-to-a-function-app"></a>Bir işlev uygulamasına sistem tarafından atanan yönetilen kimlik atama
 
-Bu adımda, Azure İşlevinize sistem tarafından atanmış yönetilen bir kimlik atarsınız.
+Bu adımda, işlev uygulamanıza sistem tarafından atanmış yönetilen bir kimlik atarsınız.
 
 1. Azure [portalında](https://portal.azure.com/)Azure **İşlevi** bölmesi'ni açın ve işlev uygulamanıza gidin. 
 
 1. Platform **özelliklerini** > **kimlik** sekmesini açın: 
 
-   ![Kimlik Sekmesi](./media/managed-identity-based-authentication/identity-tab-selection.png)
+   ![İşlev uygulaması için Platform özelliklerini ve Kimlik seçeneklerini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/identity-tab-selection.png)
 
-1. **Kimlik** **sekmesinde** **Sistem Kimlik** durumunu açın. **Kaydet'i**seçtiğinizden emin olun ve sistem kimliğini açmak istediğinizi onaylayın. Sonunda Sistem **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
+1. **Kimlik** sekmesinde, sistem kimlik **durumunu** **açın** ve **Kaydet'i**seçin. **Kimlik** bölmesi aşağıdaki gibi görünmelidir:  
 
-   ![Sistem Kimliği açık](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
+   ![Sistem kimlik durumunu n için ayarlanmış olarak gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/identity-tab-system-managed-on.png)
 
-## <a name="grant-the-managed-identity-access-to-your-azure-cosmos-account"></a>Azure Cosmos hesabınıza yönetilen kimlik erişimi verme
+## <a name="grant-access-to-your-azure-cosmos-account"></a>Azure Cosmos hesabınıza erişim izni verme
 
-Bu adımda, Azure İşlevi'nin sistem tarafından atanan yönetilen kimliğine bir rol atarsınız. Azure Cosmos DB'de yönetilen kimliğe atayabileceğiniz birden çok yerleşik rol vardır. Bu çözüm için aşağıdaki iki rolü kullanırsınız:
+Bu adımda, işlev uygulamasının sistem tarafından atanan yönetilen kimliğine bir rol atarsınız. Azure Cosmos DB'de yönetilen kimliğe atayabileceğiniz birden çok yerleşik rol vardır. Bu çözüm için aşağıdaki iki rolü kullanırsınız:
 
 |Yerleşik rol  |Açıklama  |
 |---------|---------|
@@ -46,44 +46,44 @@ Bu adımda, Azure İşlevi'nin sistem tarafından atanan yönetilen kimliğine b
 |[Cosmos DB Hesap Okuyucu](../role-based-access-control/built-in-roles.md#cosmos-db-account-reader-role)|Azure Cosmos DB hesap verilerini okuyabilir. Okuma anahtarlarının alınmasını sağlar. |
 
 > [!IMPORTANT]
-> Azure Cosmos DB'deki RBAC desteği yalnızca uçak işlemlerini denetlemek için geçerlidir. Veri düzlemi işlemleri ana anahtarlar veya kaynak belirteçleri kullanılarak güvenlihale alınır. Daha fazla bilgi edinmek [için veri makalesine Güvenli erişim](secure-access-to-data.md) e bakın.
+> Azure Cosmos DB'de rol tabanlı erişim denetimi desteği yalnızca düzlem işlemlerini denetlemek için geçerlidir. Veri düzlemi işlemleri ana anahtarlar veya kaynak belirteçleri ile güvenlidir. Daha fazla bilgi edinmek [için veri makalesine Güvenli erişim](secure-access-to-data.md) e bakın.
 
 > [!TIP] 
-> Roller atarken, yalnızca gerekli erişimi atayın. Hizmetiniz yalnızca veri okumayı gerektiriyorsa, yönetilen kimliği **Cosmos DB Account Reader** rolüne atayın. En az ayrıcalık erişiminin önemi hakkında daha fazla bilgi [için, ayrıcalıklı hesaplar makalesinin daha düşük pozlama bölümüne](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) bakın.
+> Roller atadığınızda, yalnızca gerekli erişimi atayın. Hizmetiniz yalnızca okuma verileri gerektiriyorsa, **Cosmos DB Hesap Okuyucu** rolünü yönetilen kimliğe atayın. En az ayrıcalık erişiminin önemi hakkında daha fazla bilgi [için, ayrıcalıklı hesaplar makalesinin daha düşük pozlama bölümüne](../security/fundamentals/identity-management-best-practices.md#lower-exposure-of-privileged-accounts) bakın.
 
-Senaryonuz için sıcaklığı okuyacak ve bu verileri Azure Cosmos DB'deki bir kapsayıcıya geri yazacaksınız. Verileri yazmanız gerekdığından **DocumentDB Hesap Katılımcısı** rolünü kullanırsınız. 
+Bu senaryoda, işlev uygulaması akvaryumun sıcaklığını okur ve bu verileri Azure Cosmos DB'deki bir kapsayıcıya yazar. İşlev uygulamasının verileri yazması gerektiğinden, **DocumentDB Hesap Katılımcısı** rolünü atamanız gerekir. 
 
-1. Azure portalında oturum açın ve Azure Cosmos DB hesabınıza gidin. Erişim **Yönetimi (IAM) Bölmesini**ve ardından **Rol Atamaları** sekmesini açın:
+1. Azure portalında oturum açın ve Azure Cosmos DB hesabınıza gidin. Access **denetimi (IAM)** bölmesini ve ardından **Rol atamaları** sekmesini açın:
 
-   ![IAM Bölmesi](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
+   ![Access denetim bölmesini ve Rol atamaları sekmesini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab.png)
 
-1. + **Ekle** düğmesini seçin, ardından **rol ataması ekleyin.**
+1. Select **+ Ekle** > **rol ataması**.
 
-1. **Rol Atama Ekle** paneli sağa açılır:
+1. **Rol atama ekle** paneli sağa açılır:
 
-   ![Rol Ekle](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
+   ![Rol atama ekle bölmesini gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png)
 
-   * **Rol** - **DocumentDB Hesap Katılımcısı'nı** seçin
-   * **Erişim ata -** **Sistemi atanmış yönetilen kimlik** alt bölümünde **İşlev Uygulaması'nı**seçin.
-   * **Select** - Bölme, aboneliğinizde **Yönetilen Sistem Kimliğine**sahip tüm işlev uygulamalarıyla doldurulacaktır. Bizim durumumuzda **SummaryService** fonksiyon uygulamasını seçiyorum: 
+   * **Rolü**: **DocumentDB Hesap Katılımcısı'nı** seçin
+   * **Access'i atayın**: **Sistemi atanmış yönetilen kimlik** alt bölümünde **İşlev Uygulaması'nı**seçin.
+   * **Select**: Bölme, aboneliğinizdeki **Yönetilen Sistem Kimliğine**sahip tüm işlev uygulamalarıyla doldurulacaktır. Bu durumda, **FishTankTemperatureService** fonksiyonu uygulamasını seçin: 
 
-      ![Atama Seçin](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
+      ![Örneklerle dolu rol atama sıfatını ekle'yi gösteren ekran görüntüsü.](./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png)
 
-1. İşlev uygulamasının kimliği seçildikten sonra **Kaydet'e**tıklayın.
+1. İşlev uygulamanızı seçtikten sonra **Kaydet'i**seçin.
 
-## <a name="programmatically-access-the-azure-cosmos-db-keys-from-the-azure-function"></a>Azure İşlevi'nden Azure Cosmos DB tuşlarına programlı olarak erişin
+## <a name="programmatically-access-the-azure-cosmos-db-keys"></a>Azure Cosmos DB tuşlarına programlı olarak erişin
 
-Şimdi sistem tarafından atanmış yönetilen bir kimliğe sahip bir işlev uygulamamız var. Bu kimliğe Azure Cosmos DB izinlerinde **DocumentDB Hesap Katılımcısı** rolü verilir. Aşağıdaki işlev uygulama kodu Azure Cosmos DB tuşlarını alır, bir CosmosClient nesnesi oluşturur, sıcaklığı alır ve bunu Cosmos DB'ye kaydeder.
+Artık Azure Cosmos DB izinlerinde **DocumentDB Hesap Katılımcısı** rolüne sahip sistem tarafından atanmış yönetilen bir kimliğe sahip bir işlev uygulamamız var. Aşağıdaki işlev uygulama kodu Azure Cosmos DB anahtarlarını alır, bir CosmosClient nesnesi oluşturur, akvaryumun sıcaklığını alır ve bunu Azure Cosmos DB'ye kaydeder.
 
 Bu örnek, Azure Cosmos DB hesap anahtarlarınıza erişmek için [Liste Tuşları API'sini](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListKeys) kullanır.
 
 > [!IMPORTANT] 
-> [ **Cosmos DB Hesap Okuyucu** ](#grant-the-managed-identity-access-to-your-azure-cosmos-account) rolünü atamak istiyorsanız, yalnızca Liste Anahtarları [api'sini](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)kullanmanız gerekir. Bu yalnızca okunan anahtarları dolduracaktır.
+> [Cosmos DB Hesap Okuyucu](#grant-access-to-your-azure-cosmos-account) rolünü atamak istiyorsanız, Yalnızca Liste [Oku Tuşlarını API'yi](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/DatabaseAccounts/ListReadOnlyKeys)kullanmanız gerekir. Bu sadece okunan anahtarları dolduracaktır.
 
 Liste Anahtarları API `DatabaseAccountListKeysResult` nesnesini döndürür. Bu tür C# kitaplıklarında tanımlanmamıştır. Aşağıdaki kod bu sınıfın uygulanmasını gösterir:  
 
 ```csharp 
-namespace SummarizationService 
+namespace Monitor 
 {
   public class DatabaseAccountListKeysResult
   {
@@ -95,7 +95,7 @@ namespace SummarizationService
 }
 ```
 
-Örnek, "TemperatureRecord" adlı basit bir belge yi de kullanır ve bu belge aşağıdaki gibi tanımlanır:
+Örnek, aşağıdaki gibi tanımlanan "TemperatureRecord" adlı basit bir belge de kullanır:
 
 ```csharp
 using System;
@@ -112,7 +112,8 @@ namespace Monitor
 }
 ```
 
-Sistem tarafından atanan yönetilen kimlik belirteci almak için [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanırsınız. Kitaplık hakkında belirteç ve daha fazla bilgi almanın diğer yollarını öğrenmek [için Hizmet Kimlik Doğrulamasına Hizmet](../key-vault/general/service-to-service-authentication.md) makalesine bakın. `Microsoft.Azure.Service.AppAuthentication`
+Sistem tarafından atanan yönetilen kimlik belirteci almak için [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) kitaplığını kullanırsınız. Belirteci almanın diğer yollarını öğrenmek ve `Microsoft.Azure.Service.AppAuthentication` kitaplık hakkında daha fazla bilgi edinmek için [Hizmetten Hizmete kimlik doğrulama makalesine](../key-vault/general/service-to-service-authentication.md) bakın.
+
 
 ```csharp
 using System;
@@ -126,7 +127,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Monitor
 {
-    public static class TemperatureMonitor
+    public static class FishTankTemperatureService
     {
         private static string subscriptionId =
         "<azure subscription id>";
@@ -141,7 +142,7 @@ namespace Monitor
         private static string containerName =
         "<container to store the temperature in>";
 
-        [FunctionName("TemperatureMonitor")]
+        [FunctionName("FishTankTemperatureService")]
         public static async Task Run([TimerTrigger("0 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"Starting temperature monitoring: {DateTime.Now}");
@@ -149,20 +150,20 @@ namespace Monitor
             // AzureServiceTokenProvider will help us to get the Service Managed token.
             var azureServiceTokenProvider = new AzureServiceTokenProvider();
 
-            // In order to get the Service Managed token we need to authenticate to the Azure Resource Manager.
+            // Authenticate to the Azure Resource Manager to get the Service Managed token.
             string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
 
-            // To get the Azure Cosmos DB keys setup the List Keys API:
+            // Setup the List Keys API to get the Azure Cosmos DB keys.
             string endpoint = $"https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{accountName}/listKeys?api-version=2019-12-12";
 
-            // setup an HTTP Client and add the access token.
+            // Setup an HTTP Client and add the access token.
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
 
             // Post to the endpoint to get the keys result.
             var result = await httpClient.PostAsync(endpoint, new StringContent(""));
 
-            // Get the Result back as a DatabaseAccountListKeysResult.
+            // Get the result back as a DatabaseAccountListKeysResult.
             DatabaseAccountListKeysResult keys = await result.Content.ReadAsAsync<DatabaseAccountListKeysResult>();
 
             log.LogInformation("Starting to create the client");
@@ -187,7 +188,7 @@ namespace Monitor
 
         private static int GetTemperature()
         {
-            // fake the temperature sensor for this demo
+            // Fake the temperature sensor for this demo.
             Random r = new Random(DateTime.UtcNow.Second);
             return r.Next(0, 120);
         }
@@ -195,10 +196,10 @@ namespace Monitor
 }
 ```
 
-Azure [İşlevinizi dağıtmaya](../azure-functions/functions-create-first-function-vs-code.md)artık hazırsınız.
+Artık [işlev uygulamanızı dağıtmaya](../azure-functions/functions-create-first-function-vs-code.md)hazırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB ve Active Directory ile sertifika tabanlı kimlik doğrulama](certificate-based-authentication.md)
-* [Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama](access-secrets-from-keyvault.md)
+* [Azure Cosmos DB ve Azure Active Directory ile sertifika tabanlı kimlik doğrulama](certificate-based-authentication.md)
+* [Azure Key Vault'u kullanarak Azure Cosmos DB tuşlarını güvenli hale](access-secrets-from-keyvault.md)
 * [Azure Cosmos DB için güvenlik taban çizgisi](security-baseline.md)

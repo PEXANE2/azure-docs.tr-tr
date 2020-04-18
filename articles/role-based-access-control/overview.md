@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063045"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641786"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?
 
@@ -84,7 +84,7 @@ Azure'da [yönetim grubu](../governance/management-groups/overview.md), abonelik
 
 ![Rol ataması kapsamı](./media/overview/rbac-scope.png)
 
-Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örnek:
+Üst kapsamda verdiğiniz erişim izinleri alt kapsamlar tarafından devralınır. Örneğin:
 
 - [Sahip](built-in-roles.md#owner) rolünü yönetim grubu kapsamında bir kullanıcıya atarsanız bu kullanıcı yönetim grubundaki tüm aboneliklerde bulunan nesneleri yönetebilir.
 - [Okuyucu](built-in-roles.md#reader) rolünü bir gruba abonelik kapsamında atadığınızda grubun üyeleri aboneliğin içindeki tüm kaynak gruplarını ve kaynakları görüntüleyebilir.
@@ -139,4 +139,4 @@ Aşağıdakiler, RBAC'nin yönetim düzleminde bir kaynağa erişiminizin olup o
 - [Hızlı başlatma: Azure portalını kullanarak bir kullanıcının Azure kaynaklarına sahip olduğu erişimi görüntüleyin](check-access.md)
 - [RBAC ve Azure portalını kullanarak Azure kaynaklarına erişimi yönetme](role-assignments-portal.md)
 - [Azure'daki farklı rolleri anlama](rbac-and-directory-admin-roles.md)
-- [Kurumsal Bulut Benimsemesi: Azure'da kaynak erişimi yönetimi](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
+- [Bulut Benimseme Çerçevesi: Azure'da kaynak erişim yönetimi](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
