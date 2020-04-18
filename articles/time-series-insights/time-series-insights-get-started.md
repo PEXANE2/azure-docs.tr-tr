@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2c946c49884ef0de6843028976d4ec00ccfbcdfe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934843"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81602375"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal’da yeni Zaman Serisi Görüşleri ortamı oluşturma
 
@@ -28,7 +28,7 @@ Zaman Serisi Öngörüleri, Azure IoT Hub'larına ve Etkinlik Hub'larına akan v
 
 Ortam oluşturmak için aşağıdaki adımları izleyin:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. + **Kaynak oluştur** düğmesini seçin.
 
@@ -39,9 +39,9 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
 1. Zaman **Serisi Öngörüleri** sayfasında **Oluştur'u**seçin.
 
 1. Gerekli parametreleri doldurun. Aşağıdaki tabloda her parametre açıklanmaktadır:
-   
+
    [![Zaman Serisi Görüşleri oluşturma kaynak grubu](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
-   
+
    Ayar|Önerilen değer|Açıklama
    ---|---|---
    Ortam adı | Benzersiz bir ad | Bu [ad, zaman serisi gezginindeki](https://insights.timeseries.azure.com) ortamı temsil eder
@@ -49,7 +49,7 @@ Ortam oluşturmak için aşağıdaki adımları izleyin:
    Kaynak grubu | Yeni bir yeni oluşturma veya varolan kullanımı | Kaynak grubu, birlikte kullanılan Azure kaynakları koleksiyonudur. Varolan bir kaynak grubu (örneğin, Olay Hub'ınızı veya IoT Hub'ınızı içeren bir kaynak grubu) seçebilirsiniz. Veya bu kaynak diğer kaynaklarla ilgili değilse yeni bir kaynak yapabilirsiniz.
    Konum | Etkinlik kaynağınıza en yakın | Tercihen, bölge ve bölgeler arası bant genişliği maliyetlerinin eklenmesini ve verileri bölgeden çıkarırken gecikme gecikmesi eklenmesini önlemek amacıyla olay kaynağı verilerinizi içeren aynı veri merkezi konumunu seçin.
    Fiyatlandırma katmanı | S1 | Gerekli aktarım hızını seçin. En düşük maliyet ve başlangıç kapasitesi için S1'i seçin.
-   Kapasite | 1 | Kapasite, seçili SKU ile ilişkili giriş hızı, depolama kapasitesi ve maliyet için uygulanan çarpandır.  Oluşturduktan sonra ortam kapasitesini değiştirebilirsiniz. En düşük maliyetler için 1'lik bir kapasite seçin. 
+   Kapasite | 1 | Kapasite, seçili SKU ile ilişkili giriş hızı, depolama kapasitesi ve maliyet için uygulanan çarpandır.  Oluşturduktan sonra ortam kapasitesini değiştirebilirsiniz. En düşük maliyetler için 1'lik bir kapasite seçin.
   
 1. Sağlama işlemini başlatmak için **Oluştur'u** seçin. Birkaç dakika sürebilir.
 

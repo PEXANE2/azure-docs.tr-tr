@@ -5,12 +5,12 @@ description: Azure Kubernetes Hizmetinde (AKS) küme operatörünün bozuk para 
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 47b2d78f7dc831c4314c4215f5e0a9e17f75f0dc
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: d0d13a699d2559c6b4360c807721e0b748959382
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668370"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617524"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) gelişmiş zamanlayıcı özellikleri için en iyi uygulamalar
 
@@ -134,7 +134,7 @@ Düğüm seçicileri kullanma hakkında daha fazla bilgi için [bkz.][k8s-node-s
 
 Düğüm seçici, bölmeleri belirli bir düğüme atamanın temel yoludur. *Düğüm afiyeti*kullanılarak daha fazla esneklik mevcuttur. Düğüm yakınlığı yla, bölme bir düğümle eşleşemezse ne olacağını tanımlarsınız. Kubernetes zamanlayıcısının bir bölmeyle etiketli bir ana bilgisayarla eşleşmesini *gerektirebilirsiniz.* Veya, bir eşleşme *tercih* edebilirsiniz, ancak eşleşmiyorsa bölmenin farklı bir ana bilgisayarda zamanlanmasına izin verebilirsiniz.
 
-Aşağıdaki örnek, düğüm afiyetini *gerekli olanDuringSchedulingIgnoredDuringExecution'a*ayarlar. Bu yakınlık, Kubernetes zamanlamasının eşleşen bir etikete sahip bir düğüm kullanmasını gerektirir. Düğüm yoksa, bölmezamanlamanın devam etmesini beklemek zorundadır. Bölmenin farklı bir düğümde zamanlanmasına izin vermek için, bunun yerine *tercih edilenDuringScheduledIgnoreDuringExecution*değerini ayarlayabilirsiniz:
+Aşağıdaki örnek, düğüm afiyetini *gerekli olanDuringSchedulingIgnoredDuringExecution'a*ayarlar. Bu yakınlık, Kubernetes zamanlamasının eşleşen bir etikete sahip bir düğüm kullanmasını gerektirir. Düğüm yoksa, bölmezamanlamanın devam etmesini beklemek zorundadır. Bölmenin farklı bir düğümde zamanlanmasına izin vermek için, bunun yerine *tercih edilenDuringSchedulingIgnoreDuringExecution*değerini ayarlayabilirsiniz:
 
 ```yaml
 kind: Pod

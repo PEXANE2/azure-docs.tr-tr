@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 00f6a5f88a66f0a19943ff3a2c722ae1a9938e9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80550402"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604737"
 ---
 # <a name="how-to-query-logs-from-startstop-vms-solution"></a>Başlat/Durdur VM çözümünden günlükleri sorgulama
 
@@ -71,4 +71,4 @@ Aşağıdaki tabloda, bu çözüm tarafından toplanan iş kayıtlarına ilişki
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mesai saatleri dışında Başlat/Durdur'un çözümü önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya operasyonel süreç ve yordamlarınızı desteklemek için iş başarısız uyarıları nasıl oluşturup oluşturup oluşturmayı öğrenmek için Azure Monitor ile [günlük oluştur uyarılarını](../azure-monitor/platform/alerts-log.md) gözden geçirin.
+Mesai dışı çözüm **sırasında Başlat/Durdur VM'ler** önceden tanımlanmış bir uyarı kümesi içermez. DevOps veya operasyonel süreç ve yordamlarınızı desteklemek için iş başarısız uyarıları nasıl oluşturup oluşturup oluşturmayı öğrenmek için Azure Monitor ile [günlük oluştur uyarılarını](../azure-monitor/platform/alerts-log.md) gözden geçirin.

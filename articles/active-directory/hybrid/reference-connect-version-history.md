@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/03/2020
+ms.date: 04/17/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d2e3f8da4a05feedb8c1ab585fabcc74edbc71a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998740"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639642"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayın geçmişi
 Azure Etkin Dizin (Azure AD) ekibi, Azure AD Connect'i yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -55,6 +55,15 @@ Azure AD Connect'in tüm sürümleri otomatik yükseltme için kullanılamaz. S�
 
 ### <a name="fixed-issues"></a>Düzeltilen sorunlar
 Bu düzeltme yapısı, Grup Filtreleme özelliği etkinse ve kaynak çapa olarak mS-DS-ConsistencyGuid kullanıyorsanız, build 1.5.18.0 ile ilgili bir sorunu giderir.
+
+> [!IMPORTANT]
+> Kaynak çapa olarak mS-DS-ConsistencyGuid kullanıyorsanız ve **IN'i AD'den** klonladıysanız - Grup Katılma eşitleme kuralı ve yükseltmeyi planlıyorsanız, yükseltmenin bir parçası olarak aşağıdaki adımları tamamlayın:
+> 1. Yükseltme sırasında, yapılandırma **tamamlandığında eşitleme işlemini başlat**seçeneğini işaretleyin.
+> 2. Klonlanan birleştirme eşitleme kuralını edin ve aşağıdaki iki dönüşümü ekleyin:
+>     - Doğrudan akışı `objectGUID` `sourceAnchorBinary`.
+>     - İfade akışını `ConvertToBase64([objectGUID])` `sourceAnchor`' ya ayarlama     
+> 3. Zamanlayıcıyı kullanarak `Set-ADSyncScheduler -SyncCycleEnabled $true`etkinleştirin.
+
 
 ## <a name="15180"></a>1.5.18.0
 

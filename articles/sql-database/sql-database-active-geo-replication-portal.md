@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 601c537a51e29ae1f107127e1b83c07448eee9ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59616fb217b28a8c47d9a5d13e2f4c1b9a8f6bb3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256438"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605219"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure portalında Azure SQL Veritabanı için etkin coğrafi çoğaltmayı yapılandırın ve başarısız
 
@@ -67,7 +67,7 @@ Aşağıdaki adımlar, bir coğrafi çoğaltma ortaklığında yeni bir ikincil 
 
 1. Azure [portalında,](https://portal.azure.com)coğrafi çoğaltma ortaklığındaki birincil veritabanına göz atın.
 2. SQL Database bıçak üzerinde, **Tüm ayarları** > **coğrafi çoğaltma**seçin.
-3. **SECONDARIES** listesinde, yeni birincil olmak istediğiniz veritabanını seçin ve **Failover'ı**tıklatın.
+3. **SECONDARIES** listesinde, yeni birincil olmak istediğiniz veritabanını seçin ve **Zorla Failover'ı**tıklatın.
 
     ![Başarısızlık](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Başarısız olmaya başlamak için **Evet'i** tıklatın.

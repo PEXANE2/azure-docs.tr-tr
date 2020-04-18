@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bd9b4f46e28a28f99045319d8ac606cdcee7216
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536794"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617331"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Karma Runbook Worker dağıtma
 
@@ -144,7 +144,7 @@ Arama sonuçlarında, bilgisayarın bağlı olduğunu belirten ve hizmete rapor 
 Aracı yüklemesini ve kurulumunu tamamlamak için aşağıdaki adımları kullanın.
 
 1. Çözeltinin ajan makinesine inmesini etkinleştirin. [Çalışma alanında Yerleşik makinelere](https://docs.microsoft.com/azure/automation/automation-onboard-solutions-from-automation-account#onboard-machines-in-the-workspace)bakın.
-2. Aracının Otomasyon çözümünü doğru şaindirdığını doğrulayın. **C:\Program Files\Microsoft Monitoring Agent\Agent'da** **AzureAutomationFiles** adında bir klasörü olmalıdır. 
+2. Aracının Otomasyon çözümünü doğru şaindirdığını doğrulayın. 
 3. Karma Runbook Worker sürümünü onaylamak için **C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation'a** göz atın ve **sürüm** alt klasörüne dikkat edin.
 
 ### <a name="step-4---install-the-runbook-environment-and-connect-to-azure-automation"></a>Adım 4 - Runbook ortamını yükleyin ve Azure Otomasyonuna bağlanın

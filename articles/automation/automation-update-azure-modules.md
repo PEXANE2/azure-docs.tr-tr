@@ -5,44 +5,47 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 721bb3579fec10df88be471d67f68c0846aa9432
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: ba926ccbb069c8620259514e0a64c56957529a0f
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632120"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617473"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Azure Otomasyonu'nda Azure PowerShell modüllerini güncelleştirme
 
-Otomasyon Hesabınızdaki Azure modüllerini güncellemek için açık kaynak olarak kullanılabilen [Azure modüllerini güncelleştir](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)ini kullanmanız gerekir. Azure modüllerinizi güncellemek için **Update-AutomationAzureModulesForAccount** runbook'u kullanmaya başlamak için, GitHub'daki [Azure modüllerini güncelleştir'den](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) indirin. Daha sonra Otomasyon Hesabınıza aktarabilir veya komut dosyası olarak çalıştırabilirsiniz. Otomasyon Hesabınızda runbook'u nasıl içe aktarılaceksiniz öğrenmek için [bkz.](manage-runbooks.md#importing-a-runbook)
+Otomasyon hesabınızdaki Azure modüllerini güncellemek için açık kaynak olarak kullanılabilen [Azure modüllerini güncelleştir](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update)ini kullanmanız gerekir. Azure modüllerinizi güncellemek için **Update-AutomationAzureModulesForAccount** runbook'u kullanmaya başlamak için, GitHub'daki [Azure modüllerini güncelleştir'den](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) indirin. Daha sonra Otomasyon hesabınıza aktarabilir veya komut dosyası olarak çalıştırabilirsiniz. Otomasyon hesabınızda bir runbook'u nasıl içe aktarılaceksiniz öğrenmek için [bkz.](manage-runbooks.md#importing-a-runbook)
 
-En yaygın AzureRM PowerShell modülleri varsayılan olarak her Otomasyon hesabında sağlanır. Azure ekibi Azure modüllerini düzenli olarak güncelleştirir, bu nedenle güncel tutmak için Otomasyon hesaplarınızdaki modülleri güncellemek için [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) runbook'u kullanmak isteyeceksiniz.
+En yaygın PowerShell modülleri varsayılan olarak her Otomasyon hesabında sağlanır. Azure ekibi Azure modüllerini düzenli olarak güncelleştirir. Bu nedenle, Otomasyon hesaplarınızdaki modülleri güncel tutmak için [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) runbook'u kullanmanız gerekir.
 
-Modüller ürün grubu tarafından düzenli olarak güncelleştirilenden, dahil edilen cmdlets ile değişiklikler oluşabilir. Bu eylem, parametreyi yeniden adlandırma veya bir cmdlet'i tamamen küçümseme gibi değişiklik türüne bağlı olarak runbook'larınızı olumsuz etkileyebilir.
+Modüller ürün grubu tarafından düzenli olarak güncelleştirilenden, dahil edilen cmdlets ile değişiklikler oluşabilir. Bu değişiklikler, örneğin, bir parametreyi yeniden adlandırmaveya bir cmdlet'i tamamen küçümseme, runbook'larınızı olumsuz etkileyebilir.
 
-Runbook'larınızı ve otomatikleştirdikleri işlemleri etkilemeyi önlemek için, devam etmeden önce test edin ve doğrulayın. Bu amaca yönelik özel bir Otomasyon hesabınız yoksa, runbook'larınızın geliştirilmesi sırasında birçok farklı senaryoyu test edebilmeniz için bir hesap oluşturmayı düşünün. Bu test, PowerShell modüllerini güncelleme küçücük değişiklikler içermelidir.
+Runbook'larınızı ve otomatikleştirdikleri işlemleri etkilemeyi önlemek için, devam etmeden önce test edin ve doğrulayın. Bu amaca yönelik özel bir Otomasyon hesabınız yoksa, runbook'larınızın geliştirilmesi sırasında birçok farklı senaryoyu test edebilmeniz için bir hesap oluşturmayı düşünün. Bu sınama, PowerShell modüllerini güncellemek gibi yinelemeli değişiklikleri içermelidir.
 
-Komut dosyalarınızı yerel olarak geliştirirseniz, aynı sonuçları aldığınızdan emin olmak için test yaparken Otomasyon Hesabınızda bulunan modül sürümlerinin yerel olarak kullanılması önerilir. Sonuçlar doğrulandıktan ve gerekli değişiklikleri uyguladıktan sonra, değişiklikleri üretime taşıyabilirsiniz.
+Komut dosyalarınızı yerel olarak geliştirirseniz, aynı sonuçları aldığınızdan emin olmak için test yaparken Otomasyon hesabınızda bulunan modül sürümlerinin yerel olarak kullanılması önerilir. Sonuçlar doğrulandıktan ve gerekli değişiklikleri uyguladıktan sonra, değişiklikleri üretime taşıyabilirsiniz.
 
 > [!NOTE]
 > Yeni bir Otomasyon hesabı en son modülleri içermeyebilir.
 
 > [!NOTE]
-> Otomasyon'un kutudan sağladığı global modülleri silemezsiniz.
+> Otomasyon'un kutudan sağladığı modüller olan küresel modülleri silemezsiniz.
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. 
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Azure Modüllerinizi güncelleştirmek için bu işlemi kullanırken göz önünde bulundurulması gereken bazı hususlar şunlardır:
+Azure Modüllerinizi güncelleştirmek için bu makaleyi kullanırken göz önünde bulundurulması gereken bazı hususlar şunlardır:
 
-* Bu runbook varsayılan olarak **Azure** ve **AzureRm** modüllerinin güncelleştirilmesini destekler. Bu runbook, **Az** modüllerinin güncellenmesini de destekler. Bu [runbook](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) ile modülleri güncelleme `Az` hakkında daha fazla bilgi için Azure modüllerini güncelleştir ini gözden geçirin README. Otomasyon Hesabınızdaki `Az` modülleri kullanırken göz önünde bulundurulması gereken diğer önemli faktörler de var, daha fazla bilgi edinmek için, Bkz. Otomasyon [Hesabınızdaki Az modüllerini kullanma](az-modules.md).
+* Bu makalede açıklanan runbook varsayılan olarak Azure, AzureRM ve Az modüllerinin güncelleştirilmesini destekler. Az.Automation modüllerini bu runbook ile güncelleme hakkında daha fazla bilgi için [Azure modüllerini güncelleştir](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) ini gözden geçirin. Otomasyon hesabınızdaki Az modüllerini kullanırken göz önünde bulundurulması gereken önemli faktörler de vardır. Daha fazla bilgi için Otomasyon [hesabınızda Az modüllerini kullanma'ya](az-modules.md)bakın.
 
 * Bu runbook'u başlatmadan önce, Otomasyon hesabınızın bir [Azure Run As hesap kimlik bilgisi](manage-runas-account.md) oluşturduğundan emin olun.
 
-* Bu kodu runbook yerine normal bir PowerShell komut dosyası olarak kullanabilirsiniz: önce [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) `-Login $false` komutunu kullanarak Azure'da oturum açın, ardından komut dosyasına geçebilirsiniz.
+* Bu kodu runbook yerine normal bir PowerShell komut dosyası olarak kullanabilirsiniz: önce [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) cmdlet'i kullanarak Azure'da oturum açın, ardından komut dosyasına geçin. `-Login $false`
 
-* Egemen bulutlar üzerinde bu runbook kullanmak `AzureRmEnvironment` için, runbook doğru ortamı geçmek için parametre kullanın.  Kabul edilebilir değerler **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**ve **AzureUSGovernment'tır.** Bu değerler kullanarak `Get-AzureRmEnvironment | select Name`alınabilir. Bu parametreye bir değer aktarmazsanız, runbook varsayılan olarak Azure genel **bulutu AzureCloud**
+* Egemen bulutlar üzerinde bu runbook kullanmak `AzEnvironment` için, runbook doğru ortamı geçmek için parametre kullanın.  Kabul edilebilir değerler AzureCloud (Azure genel bulutu), AzureChinaCloud, AzureGermanCloud ve AzureUSGovernment'tır. Bu değerler kullanılarak `Get-AzEnvironment | select Name`alınabilir. Bu cmdlet'e bir değer aktarmazsanız, runbook varsayılan olarak AzureCloud'a geçer.
 
-* PowerShell Galerisi'nde mevcut olan en son sürümyerine belirli bir Azure PowerShell modülü `ModuleVersionOverrides` sürümünü kullanmak istiyorsanız, bu sürümleri **Update-AutomationAzureModulesForAccount** runbook'unun isteğe bağlı parametresine aktarın. Örneğin, [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
+* PowerShell Galerisi'nde bulunan en son modül yerine belirli bir Azure PowerShell modülü sürümünü `ModuleVersionOverrides` kullanmak istiyorsanız, bu sürümleri **Update-AutomationAzureModulesForAccount** runbook'un isteğe bağlı parametresine aktarın. Örneğin, [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) runbook'a bakın. `ModuleVersionOverrides` Parametrede belirtilmeyen Azure PowerShell modülleri PowerShell Galerisi'ndeki en son modül sürümleriyle güncelleştirilir. `ModuleVersionOverrides` Parametreye hiçbir şey aktarmazsanız, tüm modüller PowerShell Galerisi'ndeki en son modül sürümleriyle güncellenir. Bu davranış, Azure **Modüllerini Güncelleştir** düğmesiyle aynıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -4,15 +4,15 @@ description: Azure Uygulama Hizmeti'ndeki uygulamayı Azure sanal ağlarıyla t�
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/15/2020
+ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cb5747c6780da134dfb2f5ab088348b848c5f04a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 4866397af244ffb3c6aa9c7547b0a9413b10ccfd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312844"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604877"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı azure sanal ağıyla tümleştirme
 
@@ -41,8 +41,6 @@ Azure Uygulama Hizmeti'nin iki çeşidiyi vardır:
     ![Klasik VNet'i Seçin][3]
 
 Tümleştirme sırasında uygulamanız yeniden başlatılır. Tümleştirme tamamlandığında, entegre olduğunuz VNet'in ayrıntılarını görürsünüz.
-
-Uygulamanız VNet'inizle entegre edildikten sonra, Azure DNS Özel Bölgeleri olmadığı sürece VNet'inizin yapılandırıldığında aynı DNS sunucusunu kullanır. Şu anda Azure DNS Özel Bölgeleri ile VNet Tümleştirme'yi kullanamazsınız.
 
 ## <a name="regional-vnet-integration"></a>Bölgesel VNet Entegrasyonu
 
@@ -200,3 +198,4 @@ Ağ geçidi için gerekli VNet Tümleştirmesi için PowerShell'i kullanarak App
 [setp2saddresses]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal#addresspool
 [VNETRouteTables]: https://docs.microsoft.com/azure/virtual-network/manage-route-table/
 [installCLI]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest/
+[privateendpoints]: networking/private-endpoint.md

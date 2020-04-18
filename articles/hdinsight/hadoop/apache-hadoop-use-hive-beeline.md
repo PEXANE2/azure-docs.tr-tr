@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/09/2020
-ms.openlocfilehash: 426294f20dd51538920182a0e7a2915f6a47ba54
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/17/2020
+ms.openlocfilehash: 10e53b6b7b79e7d4581a1843b70b3d02778e8df5
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383566"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617805"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Beeline istemcisini Apache Hive ile kullanma
 
@@ -40,7 +40,8 @@ Bir istemciden Bir Azure Sanal Ağı üzerinden HDInsight'a bağlanırken, küme
 beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
 ```
 
-<a name="replace-headnode-fqdn-with-the-fully-qualified-domain-name-of-a-cluster-headnode-to-find-the-fully-qualified-domain-name-of-a-headnode-use-the-information-in-the-manage-hdinsight-using-the-apache-ambari-rest-api-document"></a>Küme `<headnode-FQDN>` başlığının tam nitelikli etki alanı adı ile değiştirin. Bir başlık tam nitelikli etki alanı adını bulmak [için, Apache Ambari REST API belgesini kullanarak HDInsight yönet'deki](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) bilgileri kullanın.
+Küme `<headnode-FQDN>` başlığının tam nitelikli etki alanı adı ile değiştirin. Bir başlık tam nitelikli etki alanı adını bulmak [için, Apache Ambari REST API belgesini kullanarak HDInsight yönet'deki](../hdinsight-hadoop-manage-ambari-rest-api.md#get-the-fqdn-of-cluster-nodes) bilgileri kullanın.
+
 ---
 
 ### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Kerberos kullanarak HDInsight Kurumsal Güvenlik Paketi (ESP) kümesine
@@ -84,11 +85,11 @@ beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transp
 
 ### <a name="use-beeline-with-apache-spark"></a>Apache Spark ile Beeline kullanın
 
-Apache Spark, bazen Spark Thrift sunucusu olarak da adlandırılan HiveServer2'nin kendi uygulamasını sağlar. Bu hizmet, Sorguları Hive yerine çözmek için Spark SQL kullanır ve sorgunuza bağlı olarak daha iyi performans sağlayabilir.
+Apache Spark, bazen Spark Thrift sunucusu olarak da adlandırılan HiveServer2'nin kendi uygulamasını sağlar. Bu hizmet, Hive yerine sorguları çözmek için Spark SQL kullanır. Ve sorgunuza bağlı olarak daha iyi performans sağlayabilir.
 
 #### <a name="through-public-or-private-endpoints"></a>Genel veya özel uç noktalar aracılığıyla
 
-Kullanılan bağlantı dizesi biraz farklıdır. Onu kontrol `httpPath=/hive2` altına `httpPath/sparkhive2`almak yerine. `clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümeniz için küme giriş hesabıile değiştirin. `admin` ESP kümeleri için tam UPN'yi user@domain.comkullanın (örneğin, ). Küme `password` giriş hesabının parolasıyla değiştirin.
+Kullanılan bağlantı dizesi biraz farklıdır. Bunun yerine `httpPath=/hive2` kullanır `httpPath/sparkhive2`içeren . `clustername` değerini HDInsight kümenizin adıyla değiştirin. Kümeniz için küme giriş hesabıile değiştirin. `admin` ESP kümeleri için tam UPN'yi user@domain.comkullanın (örneğin, ). Küme `password` giriş hesabının parolasıyla değiştirin.
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
@@ -118,7 +119,7 @@ Doğrudan küme kafası düğümünden veya HDInsight kümesiyle aynı Azure San
 
 * HDInsight'ta hadoop kümesi. [Linux'ta HDInsight ile başlayın](./apache-hadoop-linux-tutorial-get-started.md)bakın.
 
-* Kümenizin birincil depolama alanı için [URI düzenine](../hdinsight-hadoop-linux-information.md#URI-and-scheme) dikkat edin. Örneğin, `wasb://` Azure Depolama `abfs://` için, Azure Veri Gölü `adl://` Depolama Gen2 için veya Azure Veri Gölü Depolama Gen1 için. Azure Depolama için güvenli aktarım etkinleştirilirse, `wasbs://`URI. Daha fazla bilgi için [güvenli aktarım atarım'a](../../storage/common/storage-require-secure-transfer.md)bakın.
+* Kümenizin birincil depolama alanı için URI düzenine dikkat edin. Örneğin, `wasb://` Azure Depolama `abfs://` için, Azure Veri Gölü `adl://` Depolama Gen2 için veya Azure Veri Gölü Depolama Gen1 için. Azure Depolama için güvenli aktarım etkinleştirilirse, `wasbs://`URI. Daha fazla bilgi için [güvenli aktarım atarım'a](../../storage/common/storage-require-secure-transfer.md)bakın.
 
 * Seçenek 1: Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın. Bu belgedeki adımların çoğu, Bir SSH oturumundan kümeye Beeline kullandığınızı varsayar.
 
@@ -177,7 +178,7 @@ Bu örnek, Bir SSH bağlantısından Beeline istemcisi kullanarak dayanmaktadır
 
     Bu bilgiler, tablodaki sütunları açıklar.
 
-5. HDInsight kümesiyle sağlanan örnek verileri kullanarak **log4jLogs** adlı bir tablo oluşturmak için aşağıdaki ifadeleri girin: [(URI şemanıza](../hdinsight-hadoop-linux-information.md#URI-and-scheme)göre gerektiği gibi gözden geçirin .)
+5. HDInsight kümesiyle sağlanan örnek verileri kullanarak **log4jLogs** adlı bir tablo oluşturmak için aşağıdaki ifadeleri girin: (URI şemanıza göre gerektiği gibi gözden geçirin.)
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -244,7 +245,7 @@ Bu örnek, Bir SSH bağlantısından Beeline istemcisi kullanarak dayanmaktadır
 
 ## <a name="run-a-hiveql-file"></a>HiveQL dosyayı çalıştırma
 
-Bu önceki örnekten bir devamıdır. Bir dosya oluşturmak için aşağıdaki adımları kullanın ve ardından Beeline kullanarak çalıştırın.
+Bu örnek, önceki örnekten bir devamıdır. Bir dosya oluşturmak için aşağıdaki adımları kullanın ve ardından Beeline kullanarak çalıştırın.
 
 1. **query.hql**adlı bir dosya oluşturmak için aşağıdaki komutu kullanın:
 
@@ -300,7 +301,7 @@ Bu önceki örnekten bir devamıdır. Bir dosya oluşturmak için aşağıdaki a
 
 ## <a name="install-beeline-client"></a>Beeline istemcisi yükleme
 
-Beeline, HDInsight kümenizin baş düğümlerine dahil olsa da, bunu yerel bir makineye yüklemek isteyebilirsiniz.  Beeline'i yerel bir makineye yüklemek için aşağıdaki adımlar Linux için bir [Windows Alt Sistemi'ni](https://docs.microsoft.com/windows/wsl/install-win10)temel almaktadır.
+Beeline baş düğümleri dahil olmasına rağmen, yerel olarak yüklemek isteyebilirsiniz.  Yerel bir makine için yükleme adımları Linux için bir [Windows Alt Sistemi'ni](https://docs.microsoft.com/windows/wsl/install-win10)temel adatır.
 
 1. Paket listelerini güncelleştirin. Bash kabuğunuza aşağıdaki komutu girin:
 

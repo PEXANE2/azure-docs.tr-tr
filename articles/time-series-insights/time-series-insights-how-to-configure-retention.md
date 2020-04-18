@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 04/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 524e47e5be142b720687ad48ee9407da23284bd4
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76278609"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605061"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Zaman Serisi Öngörülerinde bekletme yapılandırma
 
@@ -34,7 +34,7 @@ Bu ayarları daha iyi anlamak için ayrıntılı bilgi [için, Zaman Serisi Öng
 
 ## <a name="configure-data-retention"></a>Veri saklamayı yapılandırma
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Mevcut Time Series Öngörüleri ortamınızı bulun. Azure portalının sol tarafındaki menüdeki **Tüm kaynakları** seçin. Zaman Serisi Görüşleri ortamınızı seçin.
 

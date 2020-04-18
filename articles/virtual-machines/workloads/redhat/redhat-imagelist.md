@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 40a715ea27be161f09dea59e57799b08406e8ca7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393768"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605474"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Red Hat Enterprise Linux (RHEL) görüntüleri Azure'da kullanılabilir
 Azure, farklı kullanım örnekleri için çeşitli RHEL görüntüleri sunar.
@@ -47,8 +47,12 @@ RHEL          | 6.7      | Ham    | Linux Aracısı |
 |             | 7.6      | Ham    | Linux Aracısı | Mayıs 2019 itibariyle varsayılan olarak EUS depolarına iliştirilmiştir.
 |             | 76-gen2  | Ham    | Linux Aracısı | Varsayılan olarak EUS depolarına eklenir.
 |             | 7.7      | Lvm    | Linux Aracısı | Varsayılan olarak EUS depolarına eklenir.
-|             | 8        | Lvm    | Linux Aracısı | RHEL 8.x görüntü ailesi
-|             | 8-gen2   | Lvm    | Linux Aracısı | Hyper-V Generation 2 - RHEL 8.x görüntü ailesi.
+|             | 8-LVM    | Lvm    | Linux Aracısı | RHEL 8.x görüntü ailesi. Düzenli depolara bağlı.
+|             | 8-lvm-gen2| Lvm    | Linux Aracısı | Hyper-V Generation 2 - RHEL 8.x görüntü ailesi. Düzenli depolara bağlı.
+|             | 8        | Lvm    | Linux Aracısı | RHEL 8.0 görüntüleri
+|             | 8-gen2   | Lvm    | Linux Aracısı | Hyper-V Generation 2 - RHEL 8.0 görüntüleri.
+|             | 8.1      | Lvm    | Linux Aracısı | RHEL 8.1 görüntüleri. Şu anda düzenli depolara bağlı.
+|             | 81gen2   | Lvm    | Linux Aracısı | Hyper-V Generation 2 - RHEL 8.1 görüntüleri. Şu anda düzenli depolara bağlı.
 RHEL-SAP      | 7.4      | Lvm    | Linux Aracısı | SAP HANA ve İş Uygulamaları için RHEL 7.4. E4S depolarına bağlı olarak, SAP ve RHEL için bir prim in yanı sıra temel işlem ücreti tahsil edilecektir.
 |             | 74sap-gen2| Lvm    | Linux Aracısı | SAP HANA ve İş Uygulamaları için RHEL 7.4. Nesil 2 görüntü. E4S depolarına bağlı olarak, SAP ve RHEL için bir prim in yanı sıra temel işlem ücreti tahsil edilecektir.
 |             | 7,5       | Lvm    | Linux Aracısı | SAP HANA ve İş Uygulamaları için RHEL 7.5. E4S depolarına bağlı olarak, SAP ve RHEL için bir prim in yanı sıra temel işlem ücreti tahsil edilecektir.

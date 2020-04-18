@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c74bea8aa1a8e2f9de47b501f9afd9540cfc61b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79d8cb4b09ef547bf1c0b01f48872ddcb4f964ee
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422917"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616544"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Key Vault geçici silmeyi PowerShell ile kullanma
 
@@ -53,7 +53,7 @@ Key Vault işlemleri, rol tabanlı erişim denetimi (RBAC) izinleri ile aşağı
 Silinmiş bir anahtar kasasının veya anahtar kasasında depolanan nesnelerin kurtarılmasına izin vermek için "yumuşak silme"yi etkinleştirirsiniz.
 
 > [!IMPORTANT]
-> Anahtar kasasında 'yumuşak silme'yi etkinleştirmek geri döndürülemez bir eylemdir. Yumuşak silme özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
+> Anahtar kasasında 'yumuşak silme'yi etkinleştirmek geri dönüşü olmayan bir eylemdir. Yumuşak silme özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
 
 ### <a name="existing-key-vault"></a>Mevcut anahtar kasası
 
@@ -269,7 +269,7 @@ Temizleme koruması açık olduğunda, silinmiş durumdaki bir kasa veya nesne, 
 
 Yalnızca yumuşak silme de etkinse temizleme korumasını etkinleştirebilirsiniz. 
 
-Kasa oluştururken hem yumuşak silme yi hem de temizleme korumasını açmak için [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet'ini kullanın:
+Kasa oluştururken hem yumuşak silme hem de temizleme korumasını açmak için [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet'ini kullanın:
 
 ```powershell
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection

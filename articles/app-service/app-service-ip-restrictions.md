@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a02c099871ce9748f4c5f604900a7c4d57bb96b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 298555da2056bc4c16d4d7b16615604f9798b91b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473532"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639279"
 ---
-# <a name="azure-app-service-access-restrictions"></a>Azure Uygulaması Hizmeti Erişim Kısıtlamaları #
+# <a name="azure-app-service-access-restrictions"></a>Azure App Service erişim kısıtlamaları
 
 Erişim kısıtlamaları, uygulamanıza ağ erişimini kontrol eden öncelikli bir sıralı izin/reddet listesi tanımlamanıza olanak tanır. Listede IP adresleri veya Azure Sanal Ağ alt ağları bulunabilir. Bir veya daha fazla giriş olduğunda, listenin sonunda bulunan örtük bir "tüm reddet" vardır.
 
@@ -74,7 +74,7 @@ Bir kuralı silmek için kuralınızdaki **...** 'u tıklatın ve sonra **Kaldı
 
 ![erişim kısıtlaması kuralını silme](media/app-service-ip-restrictions/access-restrictions-delete.png)
 
-## <a name="blocking-a-single-ip-address"></a>Tek bir IP Adresini engelleme ##
+## <a name="blocking-a-single-ip-address"></a>Tek bir IP adresini engelleme ##
 
 İlk IP Kısıtlama kuralınızı eklerken, hizmet 2147483647 önceliği olan açık bir **Reddet kuralı** ekler. Uygulamada, açık **Reddet tüm** kuralı son kural yürütülür ve açıkça izin **kuralı** kullanılarak izin verilmeyen herhangi bir IP adresine erişimi engeller.
 
@@ -125,12 +125,12 @@ management.azure.com/subscriptions/**abonelik kimliği**/kaynakGrupları/ kaynak
 }
 ```
 
-## <a name="azure-function-app-access-restrictions"></a>Azure İşlevi Uygulaması Erişim Kısıtlamaları
+## <a name="azure-functions-access-restrictions"></a>Azure İşlevler erişim kısıtlamaları
 
-Uygulama Hizmeti planlarıyla aynı işlevsellikle İşlev Uygulamaları için erişim kısıtlamaları da mevcuttur. Erişim kısıtlamalarını etkinleştirmek, izin verilmeyen IP'ler için portal kodu düzenleyicisini devre dışı bırakmaz.
+Uygulama Hizmeti planlarıyla aynı işlevsellik teki işlev uygulamaları için erişim kısıtlamaları da mevcuttur. Erişim kısıtlamalarını etkinleştirmek, izin verilmeyen IP'ler için portal kodu düzenleyicisini devre dışı bırakmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure İşlev Uygulamaları için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+[Azure İşlevleri için erişim kısıtlamaları](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
 [Hizmet bitiş noktalarıyla uygulama ağ geçidi tümleştirmesi](networking/app-gateway-with-service-endpoints.md)
 

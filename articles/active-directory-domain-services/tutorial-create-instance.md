@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 7652bacdebec19f8a5d55874cfb903e8748cef4d
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474200"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639716"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Etkin Dizin Etki Alanı Hizmetleri örneği oluşturma ve yapılandırma
 
@@ -22,7 +22,7 @@ Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS), Windows Server Acti
 
 Ağ ve eşitleme için varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir veya [bu ayarları el ile tanımlayabilirsiniz.][tutorial-create-instance-advanced] Bu öğretici, Azure portalını kullanarak bir Azure AD DS örneği oluşturmak ve yapılandırmak için varsayılan seçenekleri nasıl kullanacağınızı gösterir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Yönetilen bir etki alanı için DNS gereksinimlerini anlama
@@ -157,7 +157,7 @@ Bu parola kalıplarını oluşturma ve depolama adımları, Azure AD Connect'i k
 > [!TIP]
 > Azure AD kiracınızda şirket içi REKLAMınızdan yalnızca bulut kullanıcıları ve kullanıcıların bir birleşimi varsa, her iki adımı da tamamlamanız gerekir.
 
-Yalnızca bulutkullanıcıları hesapları için kullanıcıların Azure AD DS'yi kullanabilmeleri için parolalarını değiştirmeleri gerekir. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola işlenmelerinin Azure AD'de oluşturulmasına ve depolanmasına neden olur. Bir sonraki oturum açmada parola değişikliğini zorlayan Azure AD DS'yi kullanması gereken kiracıdaki tüm kullanıcıların parolalarının süresi dolabilir veya parolalarını el ile değiştirmelerini emredebilirsiniz. Bu öğretici için, bir kullanıcı parolası el ile değiştirelim.
+Yalnızca bulutkullanıcıları hesapları için kullanıcıların Azure AD DS'yi kullanabilmeleri için parolalarını değiştirmeleri gerekir. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola işlenmelerinin Azure AD'de oluşturulmasına ve depolanmasına neden olur. Parola değiştirilene kadar hesap Azure AD'den Azure AD DS'ye eşitlenmez. Bir sonraki oturum açmada parola değişikliğini zorlayan Azure AD DS'yi kullanması gereken kiracıdaki tüm bulut kullanıcılarının parolalarının süresi dolduğunda veya bulut kullanıcılarına parolalarını el ile değiştirmetalimatı verin. Bu öğretici için, bir kullanıcı parolası el ile değiştirelim.
 
 Bir kullanıcı parolasını sıfırlamadan önce, Azure AD kiracısının [self servis parola sıfırlama için yapılandırılması][configure-sspr]gerekir.
 

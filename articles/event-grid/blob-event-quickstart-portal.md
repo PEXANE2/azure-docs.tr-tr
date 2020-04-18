@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 11/05/2019
+ms.date: 04/16/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76844794"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605684"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Quickstart: Azure portalı ile Blob depolama olaylarını web bitiş noktasına yönlendirin
 
@@ -32,30 +32,50 @@ Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede Azure 
 
 1. Bir Blob depolaması oluşturmak için **Kaynak oluşturun**'u seçin. 
 
-   ![Kaynak oluşturma](./media/blob-event-quickstart-portal/create-resource.png)
-
 1. Kullanılabilir seçenekleri filtrelemek için **Depolama**'yı seçip **Depolama hesabı - blob, dosya, tablo, kuyruk** öğesini seçin.
 
    ![Depolama’yı seçme](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Olaylara abone olmak için, genel amaçlı v2 depolama hesabı veya bir Blob depolama hesabı oluşturun. Daha fazla bilgi için bkz. [Depolama hesabı oluşturma](../storage/common/storage-account-create.md).
+   Olaylara abone olmak için, genel amaçlı v2 depolama hesabı veya bir Blob depolama hesabı oluşturun.
+   
+1. Depolama **hesabı oluştur** sayfasında aşağıdaki adımları yapın:
+    1. Azure aboneliğinizi seçin. 
+    2. **Kaynak grubu**için yeni bir kaynak grubu oluşturun veya varolan bir tane seçin. 
+    3. Depolama hesabınızın adını girin. 
+    4. **İncele ve oluştur**’u seçin. 
 
-   ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)
+       ![Başlangıç adımları](./media/blob-event-quickstart-portal/provide-blob-values.png)    
+    5. Gözden **Geçir + oluştur** sayfasında, ayarları gözden geçirve **Oluştur'u**seçin. 
 
->[!NOTE]
-> Yalnızca depolama türü **StorageV2 (genel amaçlı v2)** ve **BlobStorage** destek olay tümleştirmedepolama hesapları. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
+        >[!NOTE]
+        > Yalnızca depolama türü **StorageV2 (genel amaçlı v2)** ve **BlobStorage** destek olay tümleştirmedepolama hesapları. **Depolama (genral amaçlı v1)** Olay Grid ile tümleştirme *desteklemez.*
 
 ## <a name="create-a-message-endpoint"></a>İleti uç noktası oluşturma
 
 Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktayı oluşturalım. Normalde, olay verileri temelinde uç nokta eylemleri gerçekleştirir. Bu hızlı başlangıcı basitleştirmek için, olay iletilerini görüntüleyin bir [önceden oluşturulmuş web uygulaması](https://github.com/Azure-Samples/azure-event-grid-viewer) dağıtırsınız. Dağıtılan çözüm bir App Service planı, App Service web uygulaması ve GitHub'dan kaynak kod içerir.
 
-1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. Azure portalında parametre değerlerini girin.
+1. Çözümü aboneliğinize dağıtmak için **Azure'a Dağıt**'ı seçin. 
 
    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+2. Özel **dağıtım** sayfasında aşağıdaki adımları yapın: 
+    1. **Kaynak grubu**için, depolama hesabı oluştururken oluşturduğunuz kaynak grubunu seçin. Kaynak grubunu silerek öğreticiyi bitirdikten sonra temizlemeniz daha kolay olacaktır.  
+    2. **Site Adı**için, web uygulaması için bir ad girin.
+    3. **Hosting planı adı**için, Web uygulamasını barındırmak için kullanmak üzere Uygulama Hizmeti planı için bir ad girin.
+    4. **Yukarıda belirtilen hüküm ve koşulları kabul ettiğim için**onay kutusunu seçin. 
+    5. **Satın al**'ı seçin. 
 
-1. Dağıtımın tamamlanması birkaç dakika sürebilir. Dağıtım başarıyla gerçekleştirildikten sonra, web uygulamanızı görüntüleyip çalıştığından emin olun. Web tarayıcısında şu adrese gidin: `https://<your-site-name>.azurewebsites.net`
+       ![Dağıtım parametreleri](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
+1. Dağıtımın tamamlanması birkaç dakika sürebilir. Portalda Uyarılar'ı (çan simgesi) seçin ve ardından **kaynak grubuna git'i**seçin. 
 
-1. Siteyi görürsünüz ancak henüz yayımlanmış olay yoktur.
+    ![Uyarı - kaynak grubuna gidin](./media/blob-event-quickstart-portal/navigate-resource-group.png)
+4. Kaynak **grubu** sayfasında, kaynaklar listesinde oluşturduğunuz web uygulamasını seçin. Bu listede Uygulama Hizmeti planını ve depolama hesabını da görürsünüz. 
+
+    ![Web sitesini seçin](./media/blob-event-quickstart-portal/resource-group-resources.png)
+5. Web uygulamanızın **Uygulama Hizmeti** sayfasında, web sitesine gitmek için URL'yi seçin. URL bu biçimde olmalıdır: `https://<your-site-name>.azurewebsites.net`.
+    
+    ![Web sitesine gidin](./media/blob-event-quickstart-portal/web-site.png)
+
+6. Siteyi gördüğünüze ancak henüz herhangi bir olay yayınlanmadığını doğrulayın.
 
    ![Yeni siteyi görüntüleme](./media/blob-event-quickstart-portal/view-site.png)
 
@@ -65,15 +85,20 @@ Blob depolamasındaki olaylara abone olmadan önce olay iletisi için uç noktay
 
 Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönderileceğini bildirmek için bir konuya abone olursunuz.
 
-1. Portalda blob depolamanızı ve ardından **Olaylar**'ı seçin.
-
-   ![Olaylar'ı seçin](./media/blob-event-quickstart-portal/select-events.png)
-
-1. Olayları görüntüleyici uygulamanıza göndermek için uç noktada bir web kancası kullanın. **Diğer Seçenekler**'i ve **Web Kancası**'nı seçin.
+1. Portalda, daha önce oluşturduğunuz Azure Depolama hesabınıza gidin. Sol menüde **Tüm kaynakları** seçin ve depolama hesabınızı seçin. 
+2. Depolama **hesabı** sayfasında, sol menüdeki **Etkinlikler'i** seçin.
+1. **Diğer Seçenekler**'i ve **Web Kancası**'nı seçin. Son nokta için bir web kancası kullanarak izleyici uygulamanıza etkinlikler gönderiyorsunuz. 
 
    ![Web kancasını seçme](./media/blob-event-quickstart-portal/select-web-hook.png)
+3. Etkinlik **Aboneliği Oluştur** sayfasında aşağıdaki adımları yapın: 
+    1. Etkinlik aboneliği için bir **ad** girin.
+    2. Bitiş Noktası türü için Web **Kancası'nı**seçin. **Web Hook** 
 
-1. Olay aboneliği, Blob depolamanızın değerleriyle doldurulmuş şekilde görünür. Web kancası uç noktası için web uygulamanızın URL'sini girin ve ana sayfa URL'sine `api/updates` ekleyin. Aboneliğinize bir ad verin. İşiniz bittiğinde **Oluştur**’u seçin.
+       ![Web kancası uç nokta türünü seçin](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
+4. **Bitiş Noktası**için, bir bitiş **noktası seçin**ve web uygulamanızın URL'sini girin ve ana sayfa URL'sine `api/updates` ekleyin (örneğin: `https://spegridsite.azurewebsites.net/api/updates`) ve ardından Seçimi **Onayla'yı**seçin.
+
+   ![Bitiş noktası seçimini onaylama](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
+5. Şimdi, **Etkinlik Aboneliği Oluştur** sayfasında, etkinlik aboneliği oluşturmak için **Oluştur'u** seçin. 
 
    ![Günlükleri seçme](./media/blob-event-quickstart-portal/create-subscription.png)
 
@@ -87,11 +112,11 @@ Event Grid’e hangi olayları izlemek istediğinizi ve olayların nereye gönde
 
 Dosya yükleyerek Blob depolaması için bir olay tetiklemiş olursunuz. Dosyanın belirli bir içeriğe sahip olmasına gerek yoktur. Bu makalede testfile.txt adlı bir dosyaya sahip olduğunuz kabul edilmektedir ancak herhangi bir dosyayı kullanabilirsiniz.
 
-1. Blob depolamanız için **Bloblar**'ı seçin.
+1. Azure portalında Blob depolama hesabınıza gidin ve **Genel Bakış** sayfasında **Kapsayıcılar'ı** seçin.
 
    ![Bloblar'ı seçin](./media/blob-event-quickstart-portal/select-blobs.png)
 
-1. **+ Kapsayıcı**'yı seçin. Kapsayıcınıza bir ad verin ve herhangi bir erişim düzeyini kullanın.
+1. **+ Kapsayıcı**'yı seçin. Kapsayıcı bir ad verin ve herhangi bir erişim düzeyi kullanın ve **Oluştur'u**seçin. 
 
    ![Kapsayıcı ekleme](./media/blob-event-quickstart-portal/add-container.png)
 
@@ -99,39 +124,15 @@ Dosya yükleyerek Blob depolaması için bir olay tetiklemiş olursunuz. Dosyan�
 
    ![Kapsayıcı seçme](./media/blob-event-quickstart-portal/select-container.png)
 
-1. Dosya yüklemek için **Yükle**'yi seçin.
+1. Dosya yüklemek için **Yükle**'yi seçin. Yükleme **blob** sayfasında, test etmek için yüklemek istediğiniz bir dosyaya göz atın ve seçin ve ardından bu sayfada **Yükle'yi** seçin. 
 
    ![Karşıya yükleme seçme](./media/blob-event-quickstart-portal/upload-file.png)
 
 1. Test dosyanıza göz atın ve yükleyin.
 
-1. Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız uç noktaya gönderdi. İleti JSON biçimindedir ve bir veya daha fazla olayı içeren bir dizi içerir. Aşağıdaki örnekte, JSON iletisi tek bir olay içeren bir dizi içerir. Web uygulamanızı görüntülediğinizde blob oluşturma olayının gönderildiğini göreceksiniz. 
+1. Olayı tetiklediniz ve Event Grid, iletiyi abone olurken yapılandırdığınız uç noktaya gönderdi. İleti JSON biçimindedir ve bir veya daha fazla olayı içeren bir dizi içerir. Aşağıdaki örnekte, JSON iletisi tek bir olay içeren bir dizi içerir. Web uygulamanızı görüntüleyin ve **bir blob oluşturulan** olayın alındığını fark edin. 
 
-   ```json
-   [{
-    "topic": "/subscriptions/{subscription-id}/resourceGroups/eventgroup/providers/Microsoft.Storage/storageAccounts/demoblob0625",
-    "subject": "/blobServices/default/containers/eventcontainer/blobs/testfile.txt",
-    "eventType": "Microsoft.Storage.BlobCreated",
-    "eventTime": "2018-06-25T22:50:41.1823131Z",
-    "id": "89a2f9da-c01e-00bb-13d6-0c599506e4e3",
-    "data": {
-      "api": "PutBlockList",
-      "clientRequestId": "41341a9b-e977-4a91-9000-c64125039047",
-      "requestId": "89a2f9da-c01e-00bb-13d6-0c5995000000",
-      "eTag": "0x8D5DAEE13C8F9ED",
-      "contentType": "text/plain",
-      "contentLength": 4,
-      "blobType": "BlockBlob",
-      "url": "https://demoblob0625.blob.core.windows.net/eventcontainer/testfile.txt",
-      "sequencer": "00000000000000000000000000001C24000000000004712b",
-      "storageDiagnostics": {
-        "batchId": "ef633252-32fd-464b-8f5a-0d10d68885e6"
-      }
-    },
-    "dataVersion": "",
-    "metadataVersion": "1"
-   }]
-   ```
+   ![Blob olay yarattı](./media/blob-event-quickstart-portal/blob-created-event.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

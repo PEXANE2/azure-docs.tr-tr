@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3e7b1a656c92e37a709b57dae463f6644003e42
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 60d0ad0a1c0a1b4d13ce4d386df22406a8ab8e51
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755196"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617622"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Koşullu Erişim: Tüm kullanıcılar için MFA gerektirir
 
@@ -41,7 +41,7 @@ Kuruluşların birçok bulut uygulaması kullanılabilir. Bu uygulamaların tüm
 
 ## <a name="create-a-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
 
-Aşağıdaki adımlar, atanan yönetim rollerinin çok faktörlü kimlik doğrulaması gerçekleştirmesini gerektirecek koşullu erişim ilkesi oluşturulmasına yardımcı olur.
+Aşağıdaki adımlar, tüm kullanıcıların çok faktörlü kimlik doğrulaması gerçekleştirmesini gerektiren bir Koşullu Erişim ilkesi oluşturulmasına yardımcı olur.
 
 1. **Azure portalında** global yönetici, güvenlik yöneticisi veya Koşullu Erişim yöneticisi olarak oturum açın.
 1. **Azure Etkin Dizin** > **Güvenliği** > **Koşullu Erişim'e**göz atın.

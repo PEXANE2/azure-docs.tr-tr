@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c98cd5d3d4d76f9455e4c036aa32a4ead20cfff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671724"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640966"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler ile Core Azure Linux web uygulamalarını profil ASP.NET
 
@@ -168,10 +168,6 @@ Aşağıdaki örneğe benzer çıktı görmeniz gerekir:
 
     ![Profiler izlerini görüntüle](./media/profiler-aspnetcore-linux/view-traces.png)
 
-## <a name="known-issues"></a>Bilinen sorunlar
-
-### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>Profil Şimdi düğmesi Linux Profiler için çalışmıyor
-App Insights profil oluşturucusu Linux sürümü, profil şimdi düğmesini kullanarak isteğe bağlı profil oluşturmayı henüz desteklemez.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

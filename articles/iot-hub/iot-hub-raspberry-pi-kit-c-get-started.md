@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67838769"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640538"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi'yi Azure IoT Hub'ına (C) bağlayın
 
@@ -160,7 +160,7 @@ BME280'i Raspberry Pi'nize başarıyla bağladıktan sonra, aşağıdaki resim g
 
 ### <a name="connect-pi-to-the-network"></a>Pi'yi ağa bağlayın
 
-Mikro USB kablosunu ve güç kaynağını kullanarak Pi'yi açın. Pi'yi kablolu ağınıza bağlamak için Ethernet kablosunu kullanın veya Pi'yi kablosuz ağınıza bağlamak için [Raspberry Pi Foundation'dan gelen talimatları](https://www.raspberrypi.org/learning/software-guide/wifi/) izleyin. Pi'niz ağa başarıyla bağlandıktan sonra, [Pi'nizin IP adresini](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)not almanız gerekir.
+Mikro USB kablosunu ve güç kaynağını kullanarak Pi'yi açın. Pi'yi kablolu ağınıza bağlamak için Ethernet kablosunu kullanın veya Pi'yi kablosuz ağınıza bağlamak için [Raspberry Pi Foundation'dan gelen talimatları](https://www.raspberrypi.org/documentation/configuration/wireless/) izleyin. Pi'niz ağa başarıyla bağlandıktan sonra, [Pi'nizin IP adresini](https://www.raspberrypi.org/documentation/remote-access/ip-address.md)not almanız gerekir.
 
 ![Kablolu ağa bağlı](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

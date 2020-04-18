@@ -7,16 +7,16 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 68423bee6096357add9b5d4b107c984ac67c9cab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81412960"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606278"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>Veri akışı dönüşümüne genel bakışharitalama
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
 Aşağıda, veri akışının eşlemesinde şu anda desteklenen dönüşümlerin bir listesi verilmiştir. Yapılandırma ayrıntılarını öğrenmek için her dönüşüme tıklayın.
 
@@ -38,6 +38,6 @@ Aşağıda, veri akışının eşlemesinde şu anda desteklenen dönüşümlerin
 | [Sırala](data-flow-sort.md) | Satır değiştiricisi | Geçerli veri akışında gelen satırları sıralama |
 | [Kaynak](data-flow-source.md) | - | Veri akışı için bir veri kaynağı |
 | [Vekil anahtar](data-flow-surrogate-key.md) | Şema değiştirici | İş dışı rasgele anahtar değeri ekleme |
-| [Birleşim](data-flow-union.md) | Birden fazla giriş/çıkış | Birden çok veri akışını dikey olarak birleştirme |
+| [Birliği](data-flow-union.md) | Birden fazla giriş/çıkış | Birden çok veri akışını dikey olarak birleştirme |
 | [Özetlemeyi açma](data-flow-unpivot.md) | Şema değiştirici | Sütunları satır değerlerine döndür |
 | [Pencere](data-flow-window.md) | Şema değiştirici |  Veri akışlarınızdaki sütunların pencere tabanlı toplayıcılarını tanımlayın. |

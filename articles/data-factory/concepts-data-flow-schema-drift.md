@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 4c510cae7ba5a952e6dc7f7cb7ae7591fe801560
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81461302"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606109"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Veri akışını haritalamada şema kayması
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Şema kayması, kaynaklarınızın genellikle meta verileri değiştirdiği bir durumdur. Alanlar, sütunlar ve türleri anında eklenebilir, kaldırılabilir veya değiştirilebilir. Şema kayması için işleme olmadan, veri akışı upstream veri kaynağı değişiklikleri için savunmasız hale gelir. Bu kaynak adlara bağlı olma eğiliminde olduğundan, gelen sütunlar ve alanlar değiştiğinde tipik ETL desenleri başarısız olur.
 

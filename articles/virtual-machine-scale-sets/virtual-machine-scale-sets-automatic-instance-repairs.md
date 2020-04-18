@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8e73ef75b3313656b45d29270d9996c3ad17c630
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538078"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603674"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
 
@@ -90,6 +90,8 @@ Sonlandırma [bildirimi](./virtual-machine-scale-sets-terminate-notification.md)
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirme
 
 Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirmek için, bu özelliğe katılmanın tüm [gereksinimlerinin](#requirements-for-using-automatic-instance-repairs) karşılandığından emin olun. Uygulama bitiş noktası, bitiş noktası yapılandırılırken istenmeyen onarımları tetiklememek için ölçek kümesi örnekleri için doğru şekilde yapılandırılmalıdır. Yeni oluşturulan ölçek kümeleri için, herhangi bir örnek onarım yalnızca yetkisiz kullanım süresi süresi bekledikten sonra gerçekleştirilir. Bir ölçek kümesinde otomatik örnek onarımını etkinleştirmek için, sanal makine ölçeği kümesi modelinde *automaticRepairsPolicy* nesnesini kullanın.
+
+Bu [hızlı başlatma şablonunu,](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-automatic-repairs-slb-health-probe) yük dengeleyici sistem sondası ve 30 dakikalık yetkisiz kullanım süresiyle etkinleştirilmiş otomatik örnek onarımları içeren sanal bir makine ölçeği ni dağıtmak için de kullanabilirsiniz.
 
 ### <a name="azure-portal"></a>Azure portal
  

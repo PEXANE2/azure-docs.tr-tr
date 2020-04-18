@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 427ab6c4e0e769ab881af0af3023d514c1b092c6
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76262495"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604608"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler 'de görev hub'ları (Azure İşlevleri)
 
@@ -35,7 +35,13 @@ Bu kaynakların tümü, düzenek, varlık veya etkinlik işlevleri çalıştır�
 
 ## <a name="task-hub-names"></a>Görev merkezi adları
 
-Görev hub'ları, aşağıdaki örnekte gösterildiği *gibi, ana bilgisayar.json* dosyasında bildirilen bir adla tanımlanır:
+Görev hub'ları, bu kurallara uygun bir adla tanımlanır:
+
+* Yalnızca alfasayısal karakterler içerir
+* Bir harfle başlar
+* En az 3 karakter uzunluğunda, maksimum uzunluğu 45 karakter
+
+Görev merkezi adı, aşağıdaki örnekte gösterildiği gibi *ana bilgisayar.json* dosyasında bildirilir:
 
 ### <a name="hostjson-functions-20"></a>host.json (Fonksiyonlar 2.0)
 
@@ -121,7 +127,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Önceki C# örneği Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Dosyadaki `function.json` görev merkezi özelliği Uygulama Ayarı ile ayarlanır:
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d9544b1f4dd5ecbf66493f26c373c5502dce68a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 466b063253ee49ab58c2685f359b4bb8a4079532
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81451099"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639690"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Azure Active Directory'de birleştirilmiş güvenlik bilgi kaydını etkinleştirme
 
@@ -47,34 +47,34 @@ Siteyi Internet Explorer'da Bölge Atama Listesi'ne yapılandırıldıysanız, a
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Birleşik kayıt için Koşullu Erişim ilkeleri
 
-Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama için ne zaman ve nasıl kaydolduklarını güvence altına almak, Koşullu Erişim ilkesindeki kullanıcı eylemleriyle artık mümkün. Bu özellik, [birleştirilmiş kayıt özelliğini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştiren kuruluşlar tarafından kullanılabilir. Bu işlevsellik, kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve SSPR'ye İk biniş sırasında güvenilir bir ağ konumu gibi merkezi bir konumdan kaydolmasını istedikleri kuruluşlarda etkinleştirilebilir. Koşullu Erişim'de güvenilir konumlar oluşturma hakkında daha fazla bilgi için, makaleye bakın [Azure Etkin Dizin Koşullu Erişim'deki konum durumu nedir?](../conditional-access/location-condition.md#named-locations)
+Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve self servis parola sıfırlama için ne zaman ve nasıl kaydolduklarını güvence altına almak, Koşullu Erişim ilkesindeki kullanıcı eylemleriyle artık mümkün. Bu özellik, [birleştirilmiş kayıt özelliğini](../authentication/concept-registration-mfa-sspr-combined.md)etkinleştiren kuruluşlar tarafından kullanılabilir. Bu işlevsellik, kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama ve SSPR'ye İk biniş sırasında güvenilir bir ağ konumu gibi merkezi bir konumdan kaydolmasını istedikleri kuruluşlarda etkinleştirilebilir.
+
+Koşullu Erişim'de güvenilir konumlar oluşturma hakkında daha fazla bilgi için, makaleye bakın [Azure Etkin Dizin Koşullu Erişim'deki konum durumu nedir?](../conditional-access/location-condition.md#named-locations)
 
 ### <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Güvenilir bir konumdan kayıt gerektiren bir ilke oluşturma
 
 Aşağıdaki ilke, birleştirilmiş kayıt deneyimini kullanarak kaydolmaya çalışan tüm seçili kullanıcılar için geçerlidir ve güvenilir ağ olarak işaretlenmiş bir konumdan bağlanmadıkları sürece erişimi engeller.
 
-![Güvenlik bilgileri kaydını denetlemek için CA ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
-
 1. Azure **portalında**Azure **Etkin Dizin** > **Güvenliği** > **Koşullu Erişimine** göz atın
-1. **Yeni ilke**'yi seçin
-1. Ad olarak, bu ilke için bir Ad girin. Örneğin, **Güvenilir Ağlarda Birleşik Güvenlik Bilgisi Kaydı**
-1. **Atamalar**altında, **Kullanıcılar ve gruplar'ı**tıklatın ve bu politikanın uygulanmasını istediğiniz kullanıcı ve grupları seçin
+1. Select **+ Yeni ilke**
+1. *Güvenilen Ağlarda Birleşik Güvenlik Bilgileri Kaydı*gibi bu ilke için bir ad girin.
+1. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin. Bu iipolitikasın uygulanmasını istediğiniz kullanıcıları ve grupları seçin ve **ardından Bitti'yi**seçin.
 
    > [!WARNING]
-   > Kullanıcıların [kombine kayıt](../authentication/howto-registration-mfa-sspr-combined.md)için etkinleştirilmesi gerekir.
+   > Kullanıcıların kombine kayıt için etkinleştirilmesi gerekir.
 
-1. **Bulut uygulamaları veya eylemleri**altında, Kullanıcı **eylemlerini**seçin, **Güvenlik bilgilerini kaydet 'i (önizleme)** işaretleyin
-1. **Koşullar** > Altında**Konumlar**
+1. **Bulut uygulamaları veya eylemleri**altında, Kullanıcı **eylemlerini**seçin. **Kayıt güvenlik bilgilerini**işaretleyin, ardından **Bitti'yi**seçin.
+
+    ![Güvenlik bilgileri kaydını denetlemek için koşullu erişim ilkesi oluşturma](media/howto-registration-mfa-sspr-combined/require-registration-from-trusted-location.png)
+
+1. **Koşullar** > **Konumları**altında, aşağıdaki seçenekleri yapılandırın:
    1. **Evet'i** Yapılandır
    1. **Herhangi bir konumu** ekle
    1. **Tüm güvenilen konumları** hariç tut
-   1. Yerler **bıçağına** tıklayın
-   1. Koşullar **bıçağına** tıklayın
-1. **Erişim denetimleri** > altında**Hibe**
-   1. **Erişimi Engelle'yi** tıklatın
-   1. Ardından **Seç'i** tıklatın
+1. *Konumlar* penceresinde **Bitti'yi** seçin ve ardından *Koşullar* penceresinde **Bitti'yi** seçin.
+1. **Access denetimleri** > altında**Hibe**, **erişimi engelle'yi**seçin, ardından **Seçin**
 1. AyarI **Etkinleştir ilkesi** **ni A'ya**
-1. Ardından **Oluştur'u** tıklatın
+1. İlkeyi sonuçlandırmak için **Oluştur'u** seçin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

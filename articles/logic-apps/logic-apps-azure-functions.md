@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 68975f21ab810398da969384db4d3bddd22f1bd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284128"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605912"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps'tan Azure işlevlerini arayın
 
@@ -101,7 +101,9 @@ Azure işlevinizi oluşturduğunuza göre, [mantıksal uygulamalara işlev eklem
 
 ## <a name="create-functions-inside-logic-apps"></a>Mantık uygulamaları içinde işlevler oluşturma
 
-Mantık Uygulama Tasarımcısı'nı kullanarak mantık uygulamanızın içinden başlayarak bir Azure işlevi oluşturabiliyor sanız, öncelikle işlevleriniz için bir kapsayıcı olan bir Azure işlev uygulamasına sahip olmalısınız. Bir işlev uygulamanız yoksa, önce bu işlev uygulamasını oluşturun. Bkz. [Azure portalında ilk işlevinizi oluşturun.](../azure-functions/functions-create-first-azure-function.md)
+Logic App Designer'daki yerleşik Azure İşlevler eylemini kullanarak doğrudan mantık uygulamanızın iş akışından Azure işlevleri oluşturabilirsiniz, ancak bu yöntemi yalnızca JavaScript'te yazılmış Azure işlevleri için kullanabilirsiniz. Diğer dilleriçin Azure portalındaki Azure İşlevler deneyimi aracılığıyla Azure işlevleri oluşturabilirsiniz. Daha fazla bilgi için bkz. Azure [portalında ilk işlevinizi oluştur.](../azure-functions/functions-create-first-azure-function.md)
+
+Ancak, herhangi bir Azure işlevi oluşturabilmeniz için, işlevleriniz için bir kapsayıcı olan bir Azure işlev uygulamasına zaten sahip olmalısınız. Bir işlev uygulamanız yoksa, önce bu işlev uygulamasını oluşturun. Bkz. [Azure portalında ilk işlevinizi oluşturun.](../azure-functions/functions-create-first-azure-function.md)
 
 1. Azure [portalında](https://portal.azure.com)mantık uygulamanızı Logic App Designer'da açın.
 
@@ -125,7 +127,7 @@ Mantık Uygulama Tasarımcısı'nı kullanarak mantık uygulamanızın içinden 
 
    1. **Kod** kutusunda, işleviniz çalışmaya devam ettikten sonra mantık uygulamanıza döndürülmesini istediğiniz yanıt ve yük de dahil olmak üzere kodunuzu işlev şablonuna ekleyin. İşiniz bittiğinde **Oluştur**’u seçin.
 
-   Örnek:
+   Örneğin:
 
    ![İşlevinizi tanımlayın](./media/logic-apps-azure-functions/add-code-function-definition.png)
 

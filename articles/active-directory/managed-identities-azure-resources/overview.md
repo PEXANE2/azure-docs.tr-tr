@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 03/25/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707b03d46615f3acfa0797d1dc0865d53ef75dc0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f599ee3303ab907c319d1f8cf3da3e427a4c4c0b
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282129"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639659"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikler nelerdir?
 
@@ -51,8 +51,12 @@ Azure kaynakları belgeleri kümesi için yönetilen kimlikler boyunca aşağıd
 - **Kullanıcı tarafından atanan yönetilen kimlik**, tek başına bir Azure kaynağı olarak oluşturulur. Bir oluşturma işlemi çerçevesinde, Azure kullanılan abonelik tarafından güvenilen Azure AD kiracısında bir kimlik oluşturur. Kimlik oluşturulduktan sonra, bir veya birden çok Azure hizmet örneğine atanabilir. Kullanıcı tarafından atanan kimliğin yaşam döngüsü, bu kimliğin atandığı Azure hizmet örneklerinin yaşam döngüsünden ayrı olarak yönetilir.
 
 Dahili olarak, yönetilen kimlikler yalnızca Azure kaynaklarıyla kullanılmak üzere kilitlenmiş özel bir türdeki hizmet ilkeleridir. Yönetilen kimlik silindiğinde, ilgili hizmet sorumlusu otomatik olarak kaldırılır.
+Ayrıca, Kullanıcı Tarafından Atanan veya Sisteme Atanan Kimlik oluşturulduğunda, Yönetilen Kimlik Kaynak Sağlayıcısı (MSRP) bu kimliğe dahili olarak bir sertifika verir. 
 
-Kodunuzda Azure AD kimlik doğrulamasını destekleyen hizmetler için erişim belirteci istemek üzere yönetilen kimlik kullanılabilir. Hizmet örneği tarafından kullanılan kimlik bilgilerinin dağıtımıyla Azure ilgilenir.
+Kodunuzda Azure AD kimlik doğrulamasını destekleyen hizmetler için erişim belirteci istemek üzere yönetilen kimlik kullanılabilir. Hizmet örneği tarafından kullanılan kimlik bilgilerinin dağıtımıyla Azure ilgilenir. 
+
+## <a name="credential-rotation"></a>Kimlik Bilgisi Döndürme
+Kimlik bilgisi döndürme, Azure kaynağını barındıran kaynak sağlayıcısı tarafından denetlenir. Kimlik bilgisinin varsayılan dönüşü her 46 günde bir gerçekleşir. Kaynak sağlayıcısının 46 günden daha uzun süre beklemesi için yeni kimlik bilgileri çağırmak kaynak sağlayıcısına kalmıştır.
 
 Aşağıdaki diyagramda yönetilen hizmet kimliklerinin Azure sanal makineleriyle (VM) nasıl çalıştığı gösterilmektedir:
 
@@ -131,15 +135,15 @@ Yönetilen kimlikleri Linux VM ile kullanmayı öğrenin:
 
 Yönetilen kimlikleri diğer Azure hizmetleri ile kullanmayı öğrenin:
 
-* [Azure Uygulama Hizmeti](/azure/app-service/overview-managed-identity)
+* [Azure App Service](/azure/app-service/overview-managed-identity)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
 * [Azure Container Registry Görevleri](../../container-registry/container-registry-tasks-authentication-managed-identity.md)
 * [Azure Event Hubs](../../event-hubs/authenticate-managed-identity.md)
 * [Azure İşlevleri](/azure/app-service/overview-managed-identity)
-* [Azure Kubernetes Servisi](/azure/aks/use-managed-identity)
+* [Azure Kubernetes Service](/azure/aks/use-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure Servis Veri Servisi](../../service-bus-messaging/service-bus-managed-service-identity.md)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure Data Factory](../../data-factory/data-factory-service-identity.md)
 
 

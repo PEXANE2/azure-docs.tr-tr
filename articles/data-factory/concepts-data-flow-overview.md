@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/28/2020
-ms.openlocfilehash: 39d1f15b771168b618bfbc4951f2036a8b95b027
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8420cba043e7fc9285b473b877f0ff10212e9fda
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418465"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605324"
 ---
 # <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Veri akışlarını haritalama, Azure Veri Fabrikası'nda görsel olarak tasarlanmış veri dönüşümleridir. Veri akışları, veri mühendislerinin kod yazmadan grafiksel veri dönüştürme mantığı geliştirmelerine olanak sağlar. Ortaya çıkan veri akışları, ölçeklenmiş Apache Spark kümelerini kullanan Azure Veri Fabrikası ardışık hatlarındaki etkinlikler olarak yürütülür. Veri akışı etkinlikleri, mevcut Veri Fabrikası zamanlama, kontrol, akış ve izleme yetenekleri aracılığıyla devreye alınabilir.
 

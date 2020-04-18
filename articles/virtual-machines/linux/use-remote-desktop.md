@@ -13,15 +13,15 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 2b1b708618c60153b8dbce69b26d832fa18b25aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2e97442d4104f52c1a76ba8cd1d81c99508bb242
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476612"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605196"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü yükleme ve yapılandırma
-Azure'daki Linux sanal makineleri (VM'ler) genellikle komut satırından güvenli bir kabuk (SSH) bağlantısı kullanılarak yönetilir. Linux'ta yeni olduğunda veya hızlı sorun giderme senaryoları için uzak masaüstünün kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux VM'niz için bir masaüstü ortamının[(xfce)](https://www.xfce.org)ve uzak masaüstünün[(xrdp)](https://www.xrdp.org)nasıl yüklenir ve yapılandırılabildiğini ayrıntıları.
+Azure'daki Linux sanal makineleri (VM'ler) genellikle komut satırından güvenli bir kabuk (SSH) bağlantısı kullanılarak yönetilir. Linux'ta yeni olduğunda veya hızlı sorun giderme senaryoları için uzak masaüstünün kullanımı daha kolay olabilir. Bu makalede, Kaynak Yöneticisi dağıtım modelini kullanarak Linux VM'niz için bir masaüstü ortamının[(xfce)](https://www.xfce.org)ve uzak masaüstünün[(xrdp)](http://xrdp.org)nasıl yüklenir ve yapılandırılabildiğini ayrıntıları.
 
 
 ## <a name="prerequisites"></a>Ön koşullar

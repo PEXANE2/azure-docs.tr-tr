@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7fcfac923da1c0daee58b10d92cbc6a6ad5e7910
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 625efcce7305cd7b1dd415a286e6b1e92682cc0a
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383416"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616841"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Model eğitimi için işlem hedeflerini ayarlama ve kullanma 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -315,7 +315,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 1. Formu doldurun. Gerekli özellikleri, özellikle **VM Ailesi**ve bilgi işlem kadar döndürmek için kullanılacak **maksimum düğümdeğerleri** sağlayın.  
 
-1. __Oluştur'u__seçin.
+1. __Oluştur__’u seçin.
 
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
@@ -425,7 +425,7 @@ Daha fazla bilgi için [ScriptRunConfig](https://docs.microsoft.com/python/api/a
 
 Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve [Machine Learning CLI uzantısını](reference-azure-machine-learning-cli.md) kullanarak çalıştırma yapılandırmaları oluşturabilir ve farklı bilgi işlem hedeflerinde çalıştırmalar gönderebilirsiniz. Aşağıdaki örnekler, varolan bir Azure Machine Learning Çalışma Alanı'na sahip `az login` olduğunuzu ve CLI komutunu kullanarak Azure'da oturum açtığınızı varsayar. 
 
-[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 ### <a name="create-run-configuration"></a>Çalıştır yapılandırması oluşturma
 

@@ -4,12 +4,12 @@ description: Azure Site Kurtarma ile ikincil bir bölgeye Azure VM'ler olağanü
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: f61f32ddc0a1cc6575907bc72522228b77552947
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 3e66d71011937c3e22c6f1537bcd448d4aa3bbf3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673800"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605517"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure bölgeleri arasında Azure VM olağanüstü durum kurtarma için destek matrisi
 
@@ -154,7 +154,7 @@ SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4) | 9.29 | Tüm [stok SUSE 12 SP
 
 **Yayınla** | **Mobilite hizmeti sürümü** | **Çekirdek sürümü** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 ve 15 SP1 | 9.32 | Tüm [stok SUSE 15 ve 15 çekirdekleri](https://wiki.microfocus.com/index.php/SUSE/SLES/Kernel_versions#SUSE_Linux_Enterprise_Server_15) desteklenir.</br></br> 4.12.14-5.5-azure için 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 ve 15 SP1 | 9.32 | Tüm stok SUSE 15 ve 15 çekirdekleri desteklenir.</br></br> 4.12.14-5.5-azure için 4.12.14-8.22-azure |
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Çoğaltılmış makineler - Linux dosya sistemi/konuk depolama
 

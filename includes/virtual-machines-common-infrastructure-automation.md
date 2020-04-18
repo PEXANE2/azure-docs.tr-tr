@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80419080"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637154"
 ---
 Azure sanal makinelerini (VM' ler) tutarlı bir ölçekte oluşturmak ve yönetmek için genellikle bir tür otomasyon istenir. Azure altyapı dağıtımı ve yönetim yaşam döngüsünü otomatikleştirmenize olanak tanıyan birçok araç ve çözüm vardır. Bu makalede, Azure'da kullanabileceğiniz bazı altyapı otomasyon araçları tanıtışlanmaktadır. Bu araçlar genellikle aşağıdaki yaklaşımlardan birine uyar:
 
@@ -125,7 +125,7 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 
 ## <a name="jenkins"></a>Jenkins
-[Jenkins,](https://www.jenkins.io) uygulamaları dağıtmaya ve sınamana ve kod teslimi için otomatik ardışık hatlar oluşturmaya yardımcı olan sürekli bir tümleştirme sunucusudur. Çekirdek Jenkins platformu genişletmek için eklentileri yüzlerce vardır, ve aynı zamanda webhooks aracılığıyla diğer birçok ürün ve çözümler ile entegre edebilirsiniz. Jenkins'i bir Azure VM'ye el ile yükleyebilir, Bir Docker kapsayıcısından Jenkins çalıştırabilir veya önceden oluşturulmuş bir Azure Marketi görüntüsünü kullanabilirsiniz.
+[Jenkins,](https://jenkins.io) uygulamaları dağıtmaya ve sınamana ve kod teslimi için otomatik ardışık hatlar oluşturmaya yardımcı olan sürekli bir tümleştirme sunucusudur. Çekirdek Jenkins platformu genişletmek için eklentileri yüzlerce vardır, ve aynı zamanda webhooks aracılığıyla diğer birçok ürün ve çözümler ile entegre edebilirsiniz. Jenkins'i bir Azure VM'ye el ile yükleyebilir, Bir Docker kapsayıcısından Jenkins çalıştırabilir veya önceden oluşturulmuş bir Azure Marketi görüntüsünü kullanabilirsiniz.
 
 Şunları nasıl yapacağınızı öğrenin:
 

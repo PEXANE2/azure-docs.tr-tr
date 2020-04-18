@@ -6,19 +6,18 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f284d4dfbe550c357f81c01fa0a66aa9878b6c1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671571"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640956"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Uygulama Öngörüleri Profiler'ı etkinleştirme veya görüntüleme sorunlarını giderme
 
 ## <a name="active-issues"></a>Etkin sorunlar
 
-* ASP.NET Core 3.x uygulamaları için profil oluşturma henüz desteklenmez.
-  * Profiler'ı kullanmanız gerekiyorsa, ASP.NET Core [için Application Insights Profiler'ı](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore)kullanmak için bir geçici çözüm vardır. Profil oluşturucu Linux için etiketlenmiştir, ancak Windows'da .NET Core 3.0+ uygulamalarıyla da çalışır. Ayrıntılar için [desteklenen sürümler'e](https://github.com/microsoft/ApplicationInsights-Profiler-AspNetCore#supported-versions)bakın.
+* ASP.NET Core 3.x uygulamaları için profil oluşturma artık Azure Uygulama Hizmetleri'nde desteklenir.
 
 ## <a name="general-troubleshooting"></a><a id="troubleshooting"></a>Genel sorun giderme
 

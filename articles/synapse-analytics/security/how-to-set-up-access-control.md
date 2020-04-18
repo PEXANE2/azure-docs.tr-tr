@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94699f2153fa8d1df3ab85c184f32792c7ae0b59
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428881"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606001"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Synapse çalışma alanınızı güvenli hale (önizleme)
 
@@ -51,8 +51,8 @@ Bu belge, yönergeleri basitleştirmek için standart adlar kullanır. Seçtiği
 - **WS1\_WSAdmins** - çalışma alanı üzerinde tam kontrole ihtiyacı olan kullanıcılar için
 - **WS1\_SparkAdmins** - çalışma alanının Kıvılcım yönleri üzerinde tam kontrole ihtiyacı olan kullanıcılar için
 - **WS1\_SQLAdmins** – çalışma alanının SQL yönleri üzerinde tam denetime ihtiyaç duyan kullanıcılar için
-- **WS1 SQLAdmins\_WS1** **\_Yöneticileri** ekleme
-- **WS1\_SparkAdmins** **WS1\_Yöneticileri** ekle
+- **WS1\_SQLAdmins WS1** **\_WSAdmins** ekleme
+- **WS1\_SparkAdmins** **WS1\_WSAdmins** ekle
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>ADIM 2: Veri Gölü Depolama Gen2 hesabınızı hazırlayın
 
@@ -89,7 +89,7 @@ Synapse çalışma alanının, ardışık hatlar çalıştırabilmesi ve sistem 
 - Azure portalını açın
 - STG1'i bul
 - CNT1'e git
-- WS1 için MSI'ın CNT1'deki **Azure Blob Veri Katılımcısı** rolüne atandığından emin olun
+- WS1 için MSI (Yönetilen Hizmet Kimliği) CNT1'deki **Azure Blob Veri Katılımcısı** rolüne atanmış olduğundan emin olun
   - Atanmış görmüyorsanız, atayın.
   - MSI çalışma alanıyla aynı ada sahiptir. Bu durumda, WS1 &quot;&quot;olacaktır.
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5e0073bd14744338ff28c9c45193f126a1bba717
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403046"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604981"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Quickstart: .NET için face istemci kitaplığı
 
@@ -126,17 +126,19 @@ Bu yöntemi `Main` yöntemde aramak isteyebilirsiniz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
 
-## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
+### <a name="declare-helper-fields"></a>Yardımcı alanları bildirme
 
-Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL, örnek görüntüler kümesine işaret edir.
+Daha sonra ekleyeceğiniz Yüz işlemlerinin birkaçı için aşağıdaki alanlar gereklidir. Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL, örnek resimlerden oluşan bir klasöre işaret emz.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
 
-İsteğe bağlı olarak, algılanan yüz(ler) verileri ayıklamak için hangi AI modelini kullanacağınızı seçebilirsiniz. Bkz. Bu seçeneklerle ilgili bilgiler için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
+Farklı tanıma modeli türlerini işaret etmek için dizeleri tanımlayın. Daha sonra, yüz algılama için hangi tanıma modelini kullanmak istediğinizi belirtebilirsiniz. Bkz. Bu seçeneklerle ilgili bilgiler için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
 
-Son Algıla işlemi bir **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL'si ve bir tanıma modeli alır.
+## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
+
+**Ana** yönteminize aşağıdaki yöntem çağrısını ekleyin. Yöntemi daha sonra tanımlarsınız. Son Algıla işlemi bir **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL'si ve bir tanıma modeli alır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
 
@@ -174,25 +176,21 @@ Aşağıdaki kod, maç ayrıntılarını konsola yazdırır:
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
 
-## <a name="create-and-train-a-person-group"></a>Kişi grubu oluşturma ve eğitme
+## <a name="identify-a-face"></a>Bir yüzü tanımlama
+
+Tanımla işlemi bir kişinin (veya birden çok kişinin) görüntüsünü alır ve görüntüdeki her yüzün kimliğini bulmaya bakar. Algılanan her yüzü, yüz özellikleri bilinen farklı **Kişi** nesnelerinin veritabanı olan **PersonGroup**ile karşılaştırır. Tanımlama işlemini yapmak için öncelikle bir **Kişi Grubu** oluşturmanız ve eğitmenniz gerekir
+
+### <a name="create-and-train-a-person-group"></a>Kişi grubu oluşturma ve eğitme
 
 Aşağıdaki kod, altı farklı **Kişi** nesnesi olan bir **Kişi Grubu** oluşturur. Her **Kişiyi** bir dizi örnek resimle ilişkilendirir ve daha sonra her kişiyi yüz özelliklerine göre tanımayı zorlar. **Kişi** ve **Kişi Grubu** nesneleri, Doğrula, Tanımla ve Grup işlemlerinde kullanılır.
 
-Bunu daha önce yapmadıysanız, sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu, örnek görüntüler kümesine işaret etmek.
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
-
-Bu bölümde daha sonra kod yüzlerden veri ayıklamak için bir tanıma modeli belirtecek ve aşağıdaki parçacık kullanılabilir modellere başvurular oluşturur. Bkz. Tanıma modelleri hakkında bilgi için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
-
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
-
-### <a name="create-persongroup"></a>Kişi Grubu Oluştur
+#### <a name="create-persongroup"></a>Kişi Grubu Oluştur
 
 Oluşturacağınız **Kişi Grubu'nun** kimliğini temsil etmek için sınıfınızın kökünde bir dize değişkeni bildirin.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
 
-Yeni bir yöntemde, aşağıdaki kodu ekleyin. Bu kod, örnek resimleriyle kişilerin adlarını ilişkilendirer.
+Yeni bir yöntemde, aşağıdaki kodu ekleyin. Bu yöntem, Tanımla işlemini gerçekleştirecektir. İlk kod bloğu, kişilerin adlarını örnek resimleriyle ilişkilendirer.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
 
@@ -200,20 +198,13 @@ Ardından, Sözlük'teki her kişi için bir **Kişi** nesnesi oluşturmak için
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
 
-### <a name="train-persongroup"></a>Tren Kişi Grubu
+#### <a name="train-persongroup"></a>Tren Kişi Grubu
 
 Görüntülerinizden yüz verilerini ayıklayıp farklı **Kişi** nesnelerine sıraladıktan sonra, **PersonGroup'u** **Kişi** nesnelerinin her biriyle ilişkili görsel özellikleri tanımlaması için eğitmeniz gerekir. Aşağıdaki kod, eşzamanlı **tren** yöntemini çağırır ve durumu konsola yazdırarak sonuçları anketler.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
 
 Bu **Kişi** grubu ve ilişkili **Kişi** nesneleri artık Doğrula, Tanımla veya Grup işlemlerinde kullanılmaya hazırdır.
-
-## <a name="identify-a-face"></a>Bir yüzü tanımlama
-
-Tanımla işlemi bir kişinin (veya birden çok kişinin) görüntüsünü alır ve görüntüdeki her yüzün kimliğini bulmaya bakar. Algılanan her yüzü, yüz özellikleri bilinen farklı **Kişi** nesnelerinin veritabanı olan **PersonGroup**ile karşılaştırır.
-
-> [!IMPORTANT]
-> Bu örneği çalıştırmak için önce Kodu Oluştur'da çalıştırmanız [ve bir kişi grubunu eğitmenniz](#create-and-train-a-person-group)gerekir. Bu&mdash;`client`bölümde kullanılan değişkenler `url`, `RECOGNITION_MODEL1` &mdash;, , ve ayrıca burada bulunmalıdır.
 
 ### <a name="get-a-test-image"></a>Test görüntüsü alın
 
@@ -225,7 +216,7 @@ Aşağıdaki kod kaynak görüntüyü alır ve resimde algılanan tüm yüzlerin
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
 
-Sonraki kod snippet Tanımla işlemini çağırır ve sonuçları konsola yazdırır. Burada, hizmet, kaynak görüntüdeki her yüzü verilen Kişi **Grubundaki**bir **Kişiyle** eşleştirmeye çalışır.
+Sonraki kod snippet **IdentifyAsync** işlemini çağırır ve sonuçları konsola yazdırır. Burada, hizmet, kaynak görüntüdeki her yüzü verilen Kişi **Grubundaki**bir **Kişiyle** eşleştirmeye çalışır. Bu, Tanım yönteminizi kapatır.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
 

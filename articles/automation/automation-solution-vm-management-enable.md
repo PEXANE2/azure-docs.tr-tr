@@ -1,20 +1,20 @@
 ---
-title: Mesai saatleri dışında başlat/durdur un çözümlemesini etkinleştirin
+title: Çalışma saatleri dışında etkinleştirme aşamasında Azure Otomasyon Başlat/Durdur VM'leri etkinleştirme
 description: Bu makalede, Azure sanal makineleriniz için Azure Otomasyon Başlat/Durdur VM çözümünüzü niçin etkinleştireceğimiz açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7b619d3c9b4b334e637d6a1c456256cb33ad5134
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2414567b74232d634fa0a34202691a8e43ae6135
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261389"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604739"
 ---
-# <a name="enable-azure-startstop-vms-solution"></a>Azure Başlat/Durdur VM çözümlerini etkinleştirme
+# <a name="enable-azure-automation-startstop-vms-solution"></a>Azure Otomasyon başlat/Durdur VM çözümlerini etkinleştirme
 
-Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalışma alanına mesai dışı çözüm sırasında Start/Stop VM'leri eklemek için aşağıdaki adımları gerçekleştirin. Onboarding işlemini tamamladıktan sonra, çözümü özelleştirmek için değişkenleri yapılandırın.
+Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalışma alanına mesai dışı çözüm **sırasında Start/Stop VM'leri** eklemek için aşağıdaki adımları gerçekleştirin. Onboarding işlemini tamamladıktan sonra, çözümü özelleştirmek için değişkenleri yapılandırın.
 
 >[!NOTE]
 >Bu çözümü Klasik VM'lerle kullanmak için varsayılan olarak oluşturulmayan bir Klasik Çalıştır Hesabı gerekir. Klasik Çalıştır Hesabı oluşturma yönergeleri için [bkz.](automation-create-standalone-account.md#create-a-classic-run-as-account)
@@ -26,9 +26,9 @@ Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalı�
 
 2. **Otomasyon Hesaplarını**arayın ve seçin.
 
-3. Otomasyon **Hesapları** sayfasında, listeden Otomasyon hesabınızı seçin.
+3. Otomasyon Hesapları sayfasında, listeden Otomasyon hesabınızı seçin.
 
-4. Otomasyon Hesabından **İlgili Kaynaklar**altında **Başlat/Durdur VM'yi** seçin. Buradan daha fazla **bilgi edinin ve çözümü etkinleştirebilirsiniz.** Zaten dağıtılan bir Başlat/Durdur VM çözümünüz varsa, **çözümü Yönet'e** tıklayarak ve listede bularak bu çözümü seçebilirsiniz.
+4. Otomasyon hesabından **İlgili Kaynaklar**altında **Başlat/Durdur VM'yi** seçin. Buradan daha fazla **bilgi edinin ve çözümü etkinleştirebilirsiniz.** Zaten dağıtılan bir Başlat/Durdur VM çözümünüz varsa, **çözümü Yönet'e** tıklayarak ve listede bularak bu çözümü seçebilirsiniz.
 
    ![Otomasyon hesabından etkinleştirme](./media/automation-solution-vm-management/enable-from-automation-account.png)
 
@@ -39,32 +39,32 @@ Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalı�
 
    ![Azure portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-6. **Çözüm Ekle** sayfası görüntülenir. Otomasyon aboneliğinize aktaramadan önce çözümü yapılandırmanız istenir.
+6. Çözüm Ekle sayfası görüntülenir. Otomasyon aboneliğinize aktaramadan önce çözümü yapılandırmanız istenir.
 
    ![VM Yönetimi Çözüm Ekle sayfası](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-7. Çözüm **Ekle** sayfasında **Çalışma Alanı'nı**seçin. Otomasyon hesabının içinde olduğu aynı Azure aboneliğine bağlı bir Günlük Analizi çalışma alanı seçin. Çalışma alanınız **yoksa, Yeni Çalışma Alanı Oluştur'u**seçin. Günlük **Analitiği çalışma alanı** sayfasında aşağıdaki adımları gerçekleştirin:
+7. Çözüm Ekle sayfasında **Çalışma Alanı'nı**seçin. Otomasyon hesabının içinde olduğu aynı Azure aboneliğine bağlı bir Günlük Analizi çalışma alanı seçin. Çalışma alanınız **yoksa, Yeni Çalışma Alanı Oluştur'u**seçin. Günlük Analitiği çalışma alanı sayfasında aşağıdaki adımları gerçekleştirin:
 
-   - "ContosoLAWorkspace" gibi yeni **Log Analytics çalışma alanı**için bir ad belirtin.
+   - **ContosoLAWorkspace**gibi yeni Log Analytics çalışma alanı için bir ad belirtin.
    - Varsayılan seçili uygun değilse, açılır listeden seçerek bağlantı kuracak bir **Abonelik** seçin.
    - **Kaynak Grubu**için yeni bir kaynak grubu oluşturabilir veya varolan bir tane seçebilirsiniz.
    - Bir **Konum** seçin.
    - Bir **Fiyatlandırma katmanı** seçin. GB **Başına (Bağımsız)** seçeneğini seçin. Azure Monitor günlükleri [fiyatlandırmayı](https://azure.microsoft.com/pricing/details/log-analytics/) güncelledi ve GB Başına katman tek seçenektir.
 
    > [!NOTE]
-   > Çözümleri etkinleştirirken Log Analytics çalışma alanı ile Otomasyon Hesabı arasında bağlantı kurma seçeneği yalnızca belirli bölgelerde desteklenmektedir.
+   > Çözümleri etkinleştirirken, bir Log Analytics çalışma alanı ve Otomasyon hesabını bağlamak için yalnızca belirli bölgeler desteklenir.
    >
-   > Desteklenen eşleme çiftleri listesi [için, Otomasyon Hesabı ve Günlük Analizi çalışma alanı için Bölge eşleme](how-to/region-mappings.md)bölümüne bakın.
+   > Desteklenen eşleme çiftleri listesi [için, Otomasyon hesabı ve Log Analytics çalışma alanı için Bölge eşleme](how-to/region-mappings.md)bölümüne bakın.
 
-8. **Log Analytics çalışma alanı** sayfasında gerekli bilgileri sağladıktan sonra **Oluştur'u**tıklatın. Bildirimler **altında** ilerlemesini menüden izleyebilirsiniz ve bu da bittiğinde **Çözüm Ekle** sayfasına geri döner.
+8. Log Analytics çalışma alanı sayfasında gerekli bilgileri sağladıktan sonra **Oluştur'u**tıklatın. Bildirimler **altında** ilerlemesini menüden izleyebilirsiniz ve bu da bittiğinde Çözüm Ekle sayfasına geri döner.
 
-9. Çözüm **Ekle** sayfasında **Otomasyon hesabını**seçin. Yeni bir Log Analytics çalışma alanı oluşturuyorsanız, bu hesapla ilişkilendirilecek yeni bir Otomasyon hesabı oluşturabilir veya log analytics çalışma alanına zaten bağlı olmayan mevcut bir Otomasyon Hesabı seçebilirsiniz. Varolan bir Otomasyon Hesabı seçin veya **Bir Otomasyon Hesabı Oluştur'u**tıklatın ve Ek **Otomasyon hesabı** sayfasında aşağıdaki bilgileri sağlayın:
+9. Çözüm Ekle sayfasında **Otomasyon hesabını**seçin. Yeni bir Log Analytics çalışma alanı oluşturuyorsanız, bu hesapla ilişkilendirilecek yeni bir Otomasyon hesabı oluşturabilir veya log Analytics çalışma alanına zaten bağlı olmayan mevcut bir Otomasyon hesabı seçebilirsiniz. Varolan bir Otomasyon hesabı seçin veya **Bir Otomasyon hesabı oluştur'u**tıklatın ve Ek Otomasyon hesabı sayfasında aşağıdaki bilgileri sağlayın:
  
    - **Ad** alanına Otomasyon hesabının adını girin.
 
      Diğer tüm seçenekler, seçilen Log Analytics çalışma alanına göre otomatik olarak doldurulur. Bu seçenekler değiştirilemez. Bu çözüme dahil olan runbook'lar için varsayılan kimlik doğrulama yöntemi, bir Azure Farklı Çalıştır hesabıdır. **Tamam'ı**tıklattıktan sonra yapılandırma seçenekleri doğrulanır ve Otomasyon hesabı oluşturulur. Bu işlemin ilerleme durumunu menüdeki **Bildirimler**’in altından izleyebilirsiniz.
 
-10. Son olarak, **Çözüm Ekle** sayfasında **Yapılandırma'yı**seçin. **Parametreler** sayfası görüntülenir.
+10. Son olarak, Çözüm Ekle sayfasında **Yapılandırma'yı**seçin. Parametreler sayfası görüntülenir.
 
     ![Çözüm için parametreler sayfası](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -85,12 +85,12 @@ Yeni veya varolan Bir Otomasyon hesabına ve bağlantılı Log Analytics çalı�
      > [!IMPORTANT]
      > Hedef Kaynak **Grubu Adları** için **&ast;** varsayılan değer bir . Bu, abonelikteki tüm VM'leri hedefler. Çözümün aboneliğinizdeki tüm VM'leri hedeflemesini istemiyorsanız, bu değerin zamanlamaları etkinleştirmeden önce kaynak grubu adları listesine güncelleştirilmesi gerekir.
 
-11. Çözüm için gereken ilk ayarları yapılandırıldıktan sonra **Parametreler** sayfasını kapatmak için **Tamam'ı** tıklatın ve **Oluştur'u**seçin. 
+11. Çözüm için gereken ilk ayarları yapılandırıldıktan sonra Parametreler sayfasını kapatmak için **Tamam'ı** tıklatın ve **Oluştur'u**seçin. 
 
 Tüm ayarlar doğrulandıktan sonra, çözüm aboneliğinize dağıtılır. Bu işlemin tamamlanması birkaç saniye sürebilir ve **bildirimler** altında ilerlemesini menüden izleyebilirsiniz.
 
 > [!NOTE]
-> Bir Azure Bulut Çözüm Sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon Hesabınızda **Paylaşılan Kaynaklar** altındaki **Değişkenler'e** gidin ve [**External_EnableClassicVMs**](automation-solution-vm-management.md#variables) değişkenini **False**olarak ayarlayın. Bu, çözümün Klasik VM kaynaklarını aramasını durdurur.
+> Bir Azure Bulut Çözüm Sağlayıcısı (Azure CSP) aboneliğiniz varsa, dağıtım tamamlandıktan sonra Otomasyon hesabınızda **Paylaşılan Kaynaklar** altındaki **Değişkenler'e** gidin ve [**External_EnableClassicVMs**](automation-solution-vm-management.md#variables) değişkenini **False**olarak ayarlayın. Bu, çözümün Klasik VM kaynaklarını aramasını durdurur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d7ba62c795e23e41a1947def77300ffe5d2cc010
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 520699b81024de9491f34263f16872428ddbd487
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262460"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618032"
 ---
 # <a name="azure-cognitive-search---frequently-asked-questions-faq"></a>Azure Bilişsel Arama - sık sorulan sorular (SSS)
 
@@ -82,6 +82,14 @@ Joker, bulanık ve regex sorguları, ancak, normal terim veya tümcecik sorgular
 Varsayılan olarak, arama sonuçları [eşleşen terimlerin istatistiksel özelliklerine](search-lucene-query-architecture.md#stage-4-scoring)göre puanlandırılır ve sonuç kümesinde yüksekten düşüke doğru sıralanır. Ancak, bazı sorgu türleri (joker karakter, önek, regex) her zaman genel belge puanına sabit bir puan ekler. Bu davranış tasarım gereğidir. Azure Bilişsel Arama, sorgu genişletme yoluyla bulunan eşleşmelerin sıralamayı etkilemeden sonuçlara dahil edilmesine izin vermek için sabit bir puan uygular.
 
 Örneğin, joker karakter aramasında "tour*" girişinin "tur", "tourettes" ve "tourmaline" üzerinde eşleşmeler ürettiğini varsayalım. Bu sonuçların doğası göz önüne alındığında, hangi terimlerin diğerlerinden daha değerli olduğu konusunda makul bir çıkarı elde etmenin bir yolu yoktur. Bu nedenle, joker karakter, önek ve regex türlerinin sorgularında sonuç alırken terim sıklıklarını yoksak. Kısmi bir girişe dayalı arama sonuçlarına, beklenmeyen olası eşleşmelere karşı önyargıdan kaçınmak için sabit bir puan verilir.
+
+## <a name="skillset-operations"></a>Skillset İşlemleri
+
+### <a name="are-there-any-tips-or-tricks-to-reduce-cognitive-services-charges-on-ingestion"></a>Yutma bilişsel hizmetler ücretleri azaltmak için herhangi bir ipucu veya püf noktaları var mı?
+
+Özellikle işlemek için milyonlarca belgeyle uğraşıyorsanız, yerleşik becerileri veya özel becerileri kesinlikle gerekli olandan daha fazla yürütmek istememeniz anlaşılabilir bir durumdur. Bunu göz önünde bulundurarak, beceri yürütmeiçin "artımlı zenginleştirme" yetenekleri ekledik. Özünde, "ara" zenginleştirme adımlarının çıktısını depolamak için kullanılacak bir önbellek konumu (blob depolama bağlantı dizesi) sağlayabilirsiniz.  Bu zenginleştirme boru hattı akıllı olmasını sağlar ve becerilerinizi değiştirdiğinizde gerekli olan sadece zenginleştirmeler uygulamak. Bu doğal olarak da boru hattı daha verimli olacak gibi dizinleme zaman tasarrufu sağlayacaktır.
+
+[Artımlı zenginleştirme](cognitive-search-incremental-indexing-conceptual.md) hakkında daha fazla bilgi edinin
 
 ## <a name="design-patterns"></a>Tasarım desenleri
 

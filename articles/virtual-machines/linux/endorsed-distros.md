@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: guybo
-ms.openlocfilehash: aebb31c825725e8b748fe52bfdf74a79074d6a52
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ed7755251feb04a5f811d6ed96b00a347fba8994
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460503"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605918"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure'da onaylanan Linux dağıtımları
 İş ortakları Azure Marketi'nde Linux görüntüleri sağlar. Onaylanan Dağıtım listesine daha da fazla tat eklemek için çeşitli Linux topluluklarıyla birlikte çalışıyoruz. Bu arada, Market'ten kullanılamayan dağıtımlar için, Create'deki yönergeleri izleyerek her zaman kendi Linux'unuzu getirebilir [ve Linux işletim sistemini içeren sanal bir sabit disk yükleyebilirsiniz.](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)
@@ -37,7 +37,7 @@ Azure Linux Aracısı Azure Marketi resimlerine önceden yüklenmiş ve genellik
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |Çekirdek olarak |Kaynak kodu: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+, 8.2+, 9, 10 |Çekirdek olarak |Paket: "waagent" altında repo olarak <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+, 7.0+ |Çekirdek olarak |Paket: "WALinuxAgent" altında repo olarak <br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
-| Red Hat Enterprise Linux |RHEL 6.7+, 7.1+, 8.0+ |Çekirdek olarak |Paket: "WALinuxAgent" altında repo olarak <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
+| Red Hat Enterprise Linux |RHEL 7.1+, 8.0+ |Çekirdek olarak |Paket: "WALinuxAgent" altında repo olarak <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Kurumsal |SAP için SLES/SLES<br>11 SP4<br>12 SP1+<br>15|Çekirdek olarak |Paket:<p> Cloud 11 [için:Araçlar](https://build.opensuse.org/project/show/Cloud:Tools) repo<br>"Python-azure-agent" altında "Genel Bulut" Modülüne dahil edilen 12<br/>Kaynak kodu: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2+ |Çekirdek olarak |Paket: [Bulutta:"python-azure-agent"](https://build.opensuse.org/project/show/Cloud:Tools) altında araçlar repo <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ ** <sup>1</sup>** |Çekirdek olarak |Paket: "walinuxagent" altında repo olarak <br/>Kaynak kodu: [GitHub](https://github.com/Azure/WALinuxAgent) |

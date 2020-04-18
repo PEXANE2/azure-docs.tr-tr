@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 71a31228602ef161158eaa05c80d50f65de98a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77133277"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641145"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Çok bit hızında akışlar oluşturmak için Azure Medya Hizmetlerini kullanırken şirket içi kodlayıcıları yapılandırma
 Bu konu, canlı etkinliklerinizi yakalamak ve daha fazla işleme için AMS kanallarına (canlı kodlama etkin olan) tek bir bit hızıyla canlı akış göndermek için kullanabileceğiniz şirket içi canlı kodlayıcıları listeler. Konu ayrıca, listelenen kodlayıcıların nasıl yapılandırılabildiğini gösteren öğreticilere de bağlanır.
@@ -32,9 +32,6 @@ Bir AMS Kanalına tek bir bitrate canlı akışı göndermek için [Haivision KB
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) kodlayıcısının ams kanalına tek bir bit hızı canlı akışı göndermek üzere nasıl yapılandırılabildiğini öğrenmek için [bkz.](media-services-configure-wirecast-live-encoder.md)
-
-## <a name="newtek-tricaster"></a>NewTek TriCaster
-[Tricaster](https://newtek.com/products/tricaster-40.html) kodlayıcısını bir AMS Kanalına tek bir bit hızı canlı akışı gönderecek şekilde yapılandırma hakkında bilgi için [bkz.](media-services-configure-tricaster-live-encoder.md)
 
 ## <a name="elemental-live"></a>Elemental Live
 Daha fazla bilgi için [Elemental Live'a](https://www.elementaltechnologies.com/products/elemental-live)bakın.

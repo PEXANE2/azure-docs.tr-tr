@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb908c4b105324e0866d53463ecd3a8a59e7e651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429895"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616899"
 ---
 # <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Taban Çizgisi
 
@@ -1175,7 +1175,7 @@ Key Vault Secrets nasıl geri yüklenir:https://docs.microsoft.com/powershell/mo
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Yedeklerin ve müşteri yönetilen anahtarlarının korunmasını sağlayın
 
-**Kılavuz**: Azure Anahtar Kasası için yumuşak silmenin etkinleştirildiğinden emin olun. Yumuşak silme, silinen anahtar kasalarının ve anahtarlar, sırlar ve sertifikalar gibi kasa nesnelerinin kurtarılmasına olanak tanır. 
+**Kılavuz**: Azure Anahtar Kasası için yumuşak silmenin etkinleştirildiğinden emin olun. Yumuşak silme, silinmiş anahtar kasalarının ve anahtarlar, sırlar ve sertifikalar gibi kasa nesnelerinin kurtarılmasına olanak tanır. 
 
 Azure Key Vault'un Yumuşak Silme nasıl kullanılır: 
 

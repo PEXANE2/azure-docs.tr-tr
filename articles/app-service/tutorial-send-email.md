@@ -4,12 +4,12 @@ description: Uygulama Hizmeti uygulamanızdan iş süreçlerini nasıl çağıra
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 44f2dfb83e96e1d8fa31ee1acf350193b954dbd8
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80892856"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604844"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Öğretici: Uygulama Hizmeti'nden e-posta gönderin ve diğer iş süreçlerini çağırın
 
@@ -199,7 +199,7 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Bu kod gösteri basitliği için yazılmıştır. Uygulamada, her istek için bir `HttpClient` nesneyi anında atmayın. [Esnek HTTP isteklerini uygulamak için IHttpClientFactory'yi kullanın](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient -http-istekleri) kılavuzu izleyin.
+> Bu kod gösteri basitliği için yazılmıştır. Uygulamada, her istek için bir `HttpClient` nesneyi anında atmayın. Esnek HTTP [isteklerini uygulamak için IHttpClientFactory'i kullan'daki](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)kılavuzu izleyin.
 
 Bu kodu Öğretici için örnek uygulamada test ediyorsanız: [Azure Uygulama Hizmeti'nde bir ASP.NET Core ve SQL Veritabanı uygulaması oluşturun](app-service-web-tutorial-dotnetcore-sqldb.md), `Todo` öğe eklendikten sonra Oluşturma [eyleminde](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)bir e-posta onayı göndermek için kullanabilirsiniz.
 

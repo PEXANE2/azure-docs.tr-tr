@@ -3,12 +3,12 @@ title: Linux için Konuk Yapılandırma ilkeleri nasıl oluşturulur?
 description: Linux için Azure İlkesi Konuk Yapılandırma ilkesini nasıl oluşturabilirsiniz öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f93aafc8f2c016218b1b7fea82558ea6ba4b4ff8
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 65e0082f87f05104e9a57ff0342cd3d2950b63e8
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365396"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617934"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkeleri nasıl oluşturulur?
 
@@ -89,7 +89,7 @@ supports:
     - os-family: unix
 ```
 
-Bu dosyayı proje `linux-path` dizininizde adı geçen bir klasöre kaydedin.
+Ad içeren bu `inspec.yml` dosyayı `linux-path` proje dizininizde adı geçen bir klasöre kaydedin.
 
 Ardından, makineyi denetlemek için kullanılan InSpec dil soyutlamasını içeren Ruby dosyasını oluşturun.
 
@@ -99,7 +99,7 @@ describe file('/tmp') do
 end
 ```
 
-Bu dosyayı dizinin içinde `controls` adı `linux-path` verilen yeni bir klasöre kaydedin.
+Bu dosyayı `linux-path.rb` adla birlikte `controls` dizinin `linux-path` içinde adı geçen yeni bir klasöre kaydedin.
 
 Son olarak, bir yapılandırma oluşturun, **GuestConfiguration** kaynak `ChefInSpecResource` modülünün içe aktarınıve InSpec profilinin adını ayarlamak için kaynağı kullanın.
 

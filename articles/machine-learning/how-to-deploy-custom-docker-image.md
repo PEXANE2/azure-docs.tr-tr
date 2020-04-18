@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
-ms.openlocfilehash: 1f11d6667c22990b3cba2079959bec6f413d5951
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80296944"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617994"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Özel Docker taban görüntüsünü kullanarak bir model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,7 +96,7 @@ Azure Machine Learning'i kullanarak modelleri zaten eğittiyseniz veya dağıtt�
 
     Aboneliğin kimliğini doğrulamak için istemleri izleyin.
 
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 2. Çalışma alanı için kapsayıcı kayıt defterini listelemek için aşağıdaki komutu kullanın. Azure `<myworkspace>` Machine Learning çalışma alanı adınızı değiştirin. Çalışma `<resourcegroup>` alanınızı içeren Azure kaynak grubuyla değiştirin:
 

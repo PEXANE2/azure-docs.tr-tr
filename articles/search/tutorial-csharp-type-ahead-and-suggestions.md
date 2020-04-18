@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 03/12/2020
-ms.openlocfilehash: 4391b565b684b74258b9c71da88600d4628b5c6f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.date: 04/15/2020
+ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81259774"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641065"
 ---
 # <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>C# öğretici: Otomatik tamamlama ve öneriler ekleme - Azure Bilişsel Arama
 
-Bir kullanıcı arama kutusuna yazmaya başladığında otomatik tamamlamayı (önceden yazma sorguları ve önerilen belgeler) nasıl uygulayacağınızı öğrenin. Bu öğreticide, otomatik olarak tamamlanan sorguları ve öneri sonuçlarını ayrı ayrı göstereceğiz, ardından daha zengin bir kullanıcı deneyimi oluşturmak için bunları birleştirme yöntemini göstereceğiz. Bir kullanıcı, kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmak zorunda kalabilir.
+Bir kullanıcı arama kutusuna yazmaya başladığında otomatik tamamlamayı (önceden yazma sorguları ve önerilen belgeler) nasıl uygulayacağınızı öğrenin. Bu öğreticide, otomatik olarak tamamlanan sorguları ve öneri sonuçlarını ayrı ayrı ve sonra birlikte göstereceğiz. Bir kullanıcı, kullanılabilir tüm sonuçları bulmak için yalnızca iki veya üç karakter yazmak zorunda kalabilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Öneri ekle
 > * Önerilere vurgulama ekleme
@@ -36,15 +36,13 @@ Alternatif olarak, bu özel öğretici için çözümü indirebilir ve çalışt
 
 Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: önerilerin açılır listesi.
 
-1. index.cshtml dosyasında **TextBoxFor** deyimini aşağıdaki şekilde değiştirin.
+1. index.cshtml dosyasında, `@id` **TextBoxFor** deyimini **azureautosuggest**olarak değiştirin.
 
     ```cs
      @Html.TextBoxFor(m => m.searchText, new { @class = "searchBox", @id = "azureautosuggest" }) <input value="" class="searchBoxSubmit" type="submit">
     ```
 
-    Burada anahtar, arama kutusunun kimliğini **azureautosuggest**olarak ayarlamış olmamızdır.
-
-2. Bu ifadeden sonra, kapanış ** &lt;/div&gt;** sonra, bu komut dosyası girin.
+2. Bu ifadeden sonra, kapanış ** &lt;/div&gt;** sonra, bu komut dosyası girin. Bu komut dosyası, önerilen sonuçların açılır listesini sunmak için açık kaynak jQuery UI kitaplığından [Otomatik Tamamlama widget'ından](https://api.jqueryui.com/autocomplete/) yararlanır. 
 
     ```javascript
     <script>
@@ -59,13 +57,11 @@ Kullanıcıya alternatifler sunmanın en basit örneğiyle başlayalım: öneril
     </script>
     ```
 
-    Bu komut dosyasını aynı kimlikle arama kutusuna bağladık. Ayrıca, aramayı tetiklemek için en az iki karakter gerekir ve ev denetleyicisinde iki sorgu parametresiyle **Eylem Öner'i** çağırırız: **vurgular** ve **bulanık**, her ikisi de bu örnekte yanlış olarak ayarlanır.
+    "Azureautosuggest" kimliği yukarıdaki komut dosyasını arama kutusuna bağlar. Widget'ın kaynak seçeneği, API Öner'i iki sorgu parametresiyle çağıran bir Öner yöntemine ayarlanmıştır: **vurgular** ve **bulanık**, her ikisi de bu örnekte yanlış olarak ayarlanmıştır. Ayrıca, aramayı tetiklemek için en az iki karakter gerekir.
 
-### <a name="add-references-to-jquery-scripts-to-the-view"></a>Görünüme jquery komut dosyalarına referansekleme
+### <a name="add-references-to-jquery-scripts-to-the-view"></a>Görünüme jQuery komut dosyasına referansekleme
 
-Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kitaplığında mevcut olduğu gibi kendimizi yazmak zorunda bir şey değildir. 
-
-1. Jquery kitaplığına erişmek için &lt;&gt; görünüm dosyasının baş bölümünü aşağıdaki kodla değiştirin.
+1. jQuery kitaplığına erişmek için &lt;&gt; görünüm dosyasının baş bölümünü aşağıdaki kodla değiştirin:
 
     ```cs
     <head>
@@ -80,7 +76,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
     </head>
     ```
 
-2. Ayrıca, _Layout.cshtml dosyasındaki **(Görünümler/Paylaşılan** klasörde) jquery'ye atıfta bulunan bir satırı kaldırmamız veya açıklama yapmamız gerekir. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut dosyası satırı nın dışına yorum yapın. Bu değişiklik, jquery için çakışan başvuruları önler.
+2. Yeni bir jQuery başvurusu sunduğumuz için, _Layout.cshtml dosyasındaki **(Görünümler/Paylaşılan** klasörde) varsayılan jQuery başvurusunu kaldırmamız veya açıklama yapmamız gerekir. Aşağıdaki satırları bulun ve gösterildiği gibi ilk komut dosyası satırı nın dışına yorum yapın. Bu değişiklik, jQuery için çakışan başvuruları önler.
 
     ```html
     <environment include="Development">
@@ -90,7 +86,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
     </environment>
     ```
 
-    Şimdi önceden tanımlanmış otomatik tamamlama jquery işlevlerini kullanabiliriz.
+    Şimdi önceden tanımlanmış Otomatik tamamlama jQuery işlevlerini kullanabiliriz.
 
 ### <a name="add-the-suggest-action-to-the-controller"></a>Denetleyiciye Öner eylemini ekleme
 
@@ -114,7 +110,8 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
                 parameters.HighlightPostTag = "</b>";
             }
 
-            // Only one suggester can be specified per index. The name of the suggester is set when the suggester is specified by other API calls.
+            // Only one suggester can be specified per index. It is defined in the index schema.
+            // The name of the suggester is set when the suggester is specified by other API calls.
             // The suggester for the hotel database is called "sg", and simply searches the hotel name.
             DocumentSuggestResult<Hotel> suggestResult = await _indexClient.Documents.SuggestAsync<Hotel>(term, "sg", parameters);
 
@@ -128,7 +125,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
 
     **Üst** parametre, kaç sonuç döndürüleceklerini belirtir (belirtilmemişse varsayılan değer 5'tir). Veri ayarlandığında yapılan olan Azure dizininde bir _önerici_ belirtilir ve bu öğretici gibi bir istemci uygulaması tarafından değil. Bu durumda, önerici "sg" olarak adlandırılır ve **HotelName** alanını arar - başka bir şey değil. 
 
-    Bulanık eşleştirme çıkışa "neredeyse ıskalama" eklenmesini sağlar. **Vurgular** parametresi doğru olarak ayarlanırsa, çıktıya kalın HTML etiketleri eklenir. Bu iki parametreyi bir sonraki bölümde doğru olarak ayarlayacaktır.
+    Bulanık eşleştirme, "neredeyse ıskalar"ın çıkışa, bir edit mesafesine kadar dahil olmasını sağlar. **Vurgular** parametresi doğru olarak ayarlanırsa, çıktıya kalın HTML etiketleri eklenir. Bu iki parametreyi bir sonraki bölümde doğru olarak ayarlayacaktır.
 
 2. Bazı sözdizimi hataları alabilirsiniz. Bu nedenle, aşağıdaki iki **sini dosyanın** en üstüne kullanarak ifadeleri ekleyin.
 
@@ -151,7 +148,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
 
 ## <a name="add-highlighting-to-the-suggestions"></a>Önerilere vurgulama ekleme
 
-**Vurgular** parametresini doğru ayarlayarak önerilerin kullanıcıya görünümünü biraz iyileştirebiliriz. Ancak, önce kalın metin görüntülemek için görünüme bazı kod eklemeniz gerekir.
+**Vurgular** parametresini doğru olarak ayarlayarak önerilerin kullanıcıya görünümünü iyileştirebiliriz. Ancak, önce kalın metin görüntülemek için görünüme bazı kod eklemeniz gerekir.
 
 1. Görünümde (index.cshtml), yukarıda girdiğiniz **azureautosuggest** komut dosyasından sonra aşağıdaki komut dosyasını ekleyin.
 
@@ -194,11 +191,11 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
 
 4. Yukarıdaki vurgulama komut dosyasında kullanılan mantık kusursuz değildir. Aynı adla iki kez görünen bir terim girerseniz, kalın sonuçlar istediğiniz gibi değildir. "Mo" yazmayı dene.
 
-    Bir geliştiricinin yanıtlaması gereken sorulardan biri, "yeterince iyi" çalışan bir komut dosyasının ne zaman olduğu ve tuhaflıklarının ne zaman ele alınması gerektiğidir. Biz bu öğretici daha fazla vurgulayarak alarak olmayacak, ama kesin bir algoritma bulmak daha fazla vurgulayarak alarak göz önünde bulundurulması gereken bir şeydir.
+    Bir geliştiricinin yanıtlaması gereken sorulardan biri, "yeterince iyi" çalışan bir komut dosyasının ne zaman olduğu ve tuhaflıklarının ne zaman ele alınması gerektiğidir. Bu öğreticide daha fazla vurgulama almayacağız, ancak kesin bir algoritma bulmak, verileriniz için etkili değilse vurgulamanın göz önünde bulundurulması gereken bir şeydir. Daha fazla bilgi için [Bkz. Hit vurgulama.](search-pagination-page-layout.md#hit-highlighting)
 
-## <a name="add-autocompletion"></a>Otomatik tamamlama ekleme
+## <a name="add-autocomplete"></a>Otomatik tamamlama ekleme
 
-Önerilerden biraz farklı olan başka bir varyasyon da otomatik tamamlamadır (bazen "ileri de yazı" olarak adlandırılır). Yine, kullanıcı deneyimini geliştirmeye geçmeden önce, en basit uygulama ile başlayacaktır.
+Önerilerden biraz farklı olan başka bir varyasyon, sorgu terimini tamamlayan otomatik tamamlamadır (bazen "ileri de yazı" olarak adlandırılır). Yine, kullanıcı deneyimini geliştirmeden önce, en basit uygulama ile başlayacaktır.
 
 1. Önceki komut dosyalarınızı izleyerek görünüme aşağıdaki komut dosyasını girin.
 
@@ -246,7 +243,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
 
     Öneriler için yaptığımız gibi otomatik tamamlama aramasında "sg" adı verilen aynı *önerici* işlevini kullandığımıza dikkat edin (bu yüzden sadece otel adlarını otomatik tamamlamaya çalışıyoruz).
 
-    Bir dizi **AutocompleteMode** ayarı vardır ve **OneTermWithContext**kullanıyoruz. Buradaki seçenekler aralığının açıklaması için [Azure Otomatik Tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) bölümüne bakın.
+    Bir dizi **AutocompleteMode** ayarı vardır ve **OneTermWithContext**kullanıyoruz. Ek seçeneklerin açıklaması için [Otomatik Tamamlama API'sine](https://docs.microsoft.com/rest/api/searchservice/autocomplete) bakın.
 
 4. Uygulamayı çalıştırın. Açılan listede görüntülenen seçenekler aralığının tek sözcük olduğuna dikkat edin. "re" ile başlayan sözcükleri yazmayı deneyin. Daha fazla harf yazdıkça seçenek sayısının nasıl azaldığına dikkat edin.
 
@@ -256,7 +253,7 @@ Yukarıdaki komut dosyasında çağrılan otomatik tamamlama işlevi jquery kita
 
 ## <a name="combine-autocompletion-and-suggestions"></a>Otomatik tamamlama ve önerileri birleştirme
 
-Otomatik tamamlama ve önerileri birleştirmek seçeneklerimizin en karmaşıkıdır ve muhtemelen en iyi kullanıcı deneyimini sağlar. İstediğimiz şey, metni otomatik olarak tamamlamak için Azure Bilişsel Arama'nın ilk tercihi olan, yazılan metinle birlikte, sıralı olarak görüntülemektir. Ayrıca, açılan liste olarak bir dizi öneri istiyoruz.
+Otomatik tamamlama ve önerileri birleştirmek seçeneklerimizin en karmaşıkıdır ve muhtemelen en iyi kullanıcı deneyimini sağlar. İstediğimiz şey, yazılmakta olan metinle birlikte, metni otomatik olarak tamamlamak için Azure Bilişsel Arama'nın ilk tercihidir. Ayrıca, açılan liste olarak bir dizi öneri istiyoruz.
 
 Genellikle "satır içi otomatik tamamlama" veya benzer bir ad olarak adlandırılan bu işlevselliği sunan kitaplıklar vardır. Ancak, bu özelliği yerel olarak uygulayacağız, böylece neler olup bittiğini görebilirsiniz. Bu örnekte önce denetleyici üzerinde çalışmaya başlayacağız.
 

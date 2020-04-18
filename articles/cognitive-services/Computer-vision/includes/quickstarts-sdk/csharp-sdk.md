@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ee4b6b4247ac1a5c988d8b455fd1d8a2bff889a9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80136003"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637137"
 ---
 <a name="HOLTop"></a>
 
@@ -133,6 +133,12 @@ Yönteme `Main` yöntem çağrısını ekleyin.
 Görüntü analizi için yeni yönteminizi tanımlayın. Analizlerinizde ayıklamak istediğiniz görsel özellikleri belirten kodu aşağıya ekleyin. Tam bir liste için **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** tamuna bakın.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+
+Özelliklerini uygulamak için Aşağıdaki kod bloklarını **AnalyzeImageUrl** yönteminize ekleyin. Sonuna bir kapanış ayracı eklemeyi unutmayın.
+
+```csharp
+}
+```
 
 ### <a name="analyze"></a>Çözümleme
 

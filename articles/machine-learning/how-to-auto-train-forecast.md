@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: d4e36c0d3838af85768453496a51ecd295c22b93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79081854"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605886"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Bir zaman serisi tahmin modelini otomatik olarak eğitin
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -205,12 +205,7 @@ fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
 
 Test veri kümesi için değerleri tahmin etmek için en iyi model yinelemesini kullanın.
 
-```python
-predict_labels = fitted_model.predict(test_data)
-actual_labels = test_labels.flatten()
-```
-
-Alternatif olarak, öngörülerin `forecast()` ne `predict()`zaman başlaması gerektiğine izin veren , yerine işlevi kullanabilirsiniz. Aşağıdaki örnekte, önce tüm değerleri `y_pred` `NaN`. Tahmin kaynağı, normalde kullanırken `predict()`olduğu gibi, bu durumda eğitim verilerinin sonunda olacaktır. Ancak, yalnızca ikinci yarısını `y_pred` `NaN`değiştirirseniz, işlev ilk yarıdaki sayısal değerleri değiştirilmemiş olarak bırakır, ancak ikinci yarıdaki `NaN` değerleri tahmin eder. İşlev hem tahmin edilen değerleri hem de hizalanmış özellikleri döndürür.
+İşlev `forecast()` yerine `predict()`kullanılmalıdır, bu öngörüler başlaması gereken zaman belirtimleri sağlayacaktır. Aşağıdaki örnekte, önce tüm değerleri `y_pred` `NaN`. Tahmin kaynağı, normalde kullanırken `predict()`olduğu gibi, bu durumda eğitim verilerinin sonunda olacaktır. Ancak, yalnızca ikinci yarısını `y_pred` `NaN`değiştirirseniz, işlev ilk yarıdaki sayısal değerleri değiştirilmemiş olarak bırakır, ancak ikinci yarıdaki `NaN` değerleri tahmin eder. İşlev hem tahmin edilen değerleri hem de hizalanmış özellikleri döndürür.
 
 Belirli bir `forecast_destination` tarihe kadar değerleri `forecast()` tahmin etmek için işlevdeki parametreyi de kullanabilirsiniz.
 

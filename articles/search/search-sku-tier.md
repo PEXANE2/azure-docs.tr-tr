@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: eb11a5cc2deef372ca91c23a8b9c82e17143c85b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547003"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617716"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -89,6 +89,8 @@ Hizmetler farklı bölgelerdeyse, giden veriler için ücretler uygulanır. Bu �
 | Belge çatlama, görüntü çıkarma | Belgelerinizden çıkarılan görüntü sayısına göre faturalandırılır. [Dizinleyici](https://docs.microsoft.com/rest/api/searchservice/create-indexer#indexer-parameters) **yapılandırmasında, imageAction** görüntü ayıklamatetikleyen parametredir. **imageAction** "none" (varsayılan) olarak ayarlanmışsa, görüntü ayıklama için ücretlendirilmezsiniz. Görüntü ayıklama oranı, Azure Bilişsel Arama'nın [fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında belgelenmiştir.|
 | [Yerleşik bilişsel beceriler](cognitive-search-predefined-skills.md) | Görevi doğrudan Bilişsel Hizmetler'i kullanarak gerçekleştirmişsiniz gibi aynı oranda faturalandırılır. |
 | Özel beceriler | Özel bir beceri sağladığınız işlevselliktir. Özel bir beceri kullanmanın maliyeti tamamen özel kodun diğer tarifeli hizmetleri çağırıp çağırmadığına bağlıdır. |
+
+[Artımlı zenginleştirme (önizleme)](cognitive-search-incremental-indexing-conceptual.md) özelliği, dizinleyicinin gelecekte becerilerinizi değiştirip zamandan ve paradan tasarruf etmenizi sağlarsa yalnızca gerekli olan bilişsel becerileri çalıştırmada daha verimli olmasını sağlayan bir önbellek sağlamanıza olanak tanır.
 
 <a name="search-units"></a>
 

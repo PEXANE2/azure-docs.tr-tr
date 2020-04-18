@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: be558c3e3a68ce6c194dcf98d8f5ff92c4c14edb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457833"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617514"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>Key Vault sertifikaları ile TLS sonlandırma
 
@@ -47,7 +47,10 @@ Key Vault ile Uygulama Ağ Geçidi tümleştirmesi üç adımlı yapılandırma 
 
 1. **Anahtar kasanızı yapılandırın**
 
-   Daha sonra varolan bir sertifikayı içe aktarır veya anahtar kasanızda yeni bir sertifika oluşturursunuz. Sertifika, uygulama ağ geçidinde çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, 64 kodlu PFX dosyası, parolasız olarak depolanan anahtar kasa sırrını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleri yle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya sır oluşturduktan sonra, kimliğin gizliye *erişmesine* izin vermek için anahtar kasasında erişim ilkeleri tanımlarsınız.
+   Daha sonra varolan bir sertifikayı içe aktarır veya anahtar kasanızda yeni bir sertifika oluşturursunuz. Sertifika, uygulama ağ geçidinde çalışan uygulamalar tarafından kullanılacaktır. Bu adımda, şifresiz, base-64 kodlu PFX dosyası olarak depolanan anahtar kasa sırrını da kullanabilirsiniz. Anahtar kasasındaki sertifika türü nesneleri yle kullanılabilen otomatik yenileme özelliği nedeniyle bir sertifika türü kullanmanızı öneririz. Bir sertifika veya sır oluşturduktan sonra, kimliğin gizliye *erişmesine* izin vermek için anahtar kasasında erişim ilkeleri tanımlarsınız.
+   
+   > [!NOTE]
+   > Uygulama ağ geçidini bir ARM şablonu aracılığıyla, Azure CLI veya PowerShell'i kullanarak veya Azure portalından dağıtılan bir Azure Uygulaması aracılığıyla dağıtıysanız, temel 64 kodlu PFX dosyası olarak anahtar kasasında depolanan SSL sertifikası **parolasız olmalıdır.** Ayrıca, [dağıtım sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasasını Kullan'daki](../azure-resource-manager/templates/key-vault-parameter.md)adımları tamamlamanız gerekir. Özellikle . `enabledForTemplateDeployment` `true`
 
 1. **Uygulama ağ geçidini yapılandırma**
 

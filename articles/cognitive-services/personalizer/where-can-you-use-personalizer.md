@@ -3,18 +3,18 @@ title: Nerede ve nasıl kullanılır - Personalizer
 description: Kişiselleştirici, deneyimi daha iyi hale getirmek, daha iyi iş sonuçları elde etmek veya üretkenliği artırmak için uygulamanızın görüntülenecek doğru öğeyi, eylemi veya ürünü seçebileceği her durumda uygulanabilir.
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: 63e66315898242beb5da59927e8d506e6f2cff78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219329"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617675"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Personalizer nerede ve nasıl kullanılır
 
 Deneyimi daha iyi hale getirmek, daha iyi iş sonuçları elde etmek veya üretkenliği artırmak için uygulamanızın görüntülemek için doğru eylemi (içeriği) seçmesi gereken her durumda Personalizer'ı kullanın.
 
-Personalizer kullanıcıgöstermek için hangi eylem (içerik) seçmek için makine öğrenme kullanır. Seçim, hizmete gönderilen verilerin miktarına, kalitesine ve dağıtımına bağlı olarak büyük ölçüde değişebilir.
+Personalizer, kullanıcıyı göstermek için hangi eylemi (içeriği) seçmek için güçlendirme öğrenmesini kullanır. Seçim, hizmete gönderilen verilerin miktarına, kalitesine ve dağıtımına bağlı olarak büyük ölçüde değişebilir.
 
 ## <a name="example-use-cases-for-personalizer"></a>Personalizer için örnek kullanım örnekleri
 
@@ -44,7 +44,7 @@ Personalizer'ı, aşağıdaki yönergeleri karşıladığınız veya uygulayabil
 |Günlük veriler|Sorun zaman içinde sürükleniyorsa (haber veya moda tercihleri gibi) en iyi kişiselleştirmenin üstünde kalmak için yeterli etkinlik vardır. Personalizer gerçek dünyadaki sürekli değişime uyum sağlayacaktır, ancak yeni desenleri keşfetmek ve yerleşmek için öğrenilecek yeterli etkinlik ve veri yoksa sonuçlar en iyi olmaz. Yeterince sık gerçekleşen bir kullanım örneği seçmelisiniz. Günde en az 500 kez meydana gelen kullanım durumlarını aramayı düşünün.|
 |Geçmiş veriler|Uygulamanız, en az 100.000 etkileşimgeçmişi biriktirecek kadar uzun süre veri saklayabilir. Bu, Personalizer çevrimdışı değerlendirmeler ve ilke optimizasyonu gerçekleştirmek için yeterli veri toplamak için izin verir.|
 
-Kişiselleştirilmiş davranışın tüm kullanıcılar arasında keşfilebilen bir şey olmadığı durumlarda **Kilikatör kullanmayın.** Örneğin, 20 olası menü öğesi listesinden ilk pizza siparişi önermek için Personalizer'ı kullanmak yararlıdır, ancak çocuk bakımı konusunda yardım isterken kullanıcıların kişi listesinden aranacak kişiler (örneğin"Büyükanne") her zaman kişiselleştirilebilir bir şey değildir kullanıcı tabanınız.
+Kişiselleştirilmiş davranışın tüm kullanıcılar arasında keşfilebilen bir şey olmadığı durumlarda **Kilikatör kullanmayın.** Örneğin, 20 olası menü öğesi listesinden ilk pizza siparişi önermek için Personalizer'ı kullanmak yararlıdır, ancak çocuk bakımı yla ilgili yardım gerektiren kişiler ("Büyükanne" gibi) kullanıcı tabanınızda kişiselleştirilebilir bir şey değildir.
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Bir web uygulamasında Personalizer nasıl kullanılır?
 
@@ -91,7 +91,7 @@ Yaygın bir kullanım bir tavsiye motoru (örneğin, belirli bir müşteri için
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Uygulamanız için içerik korumaları ekleme
 
-Uygulamanız kullanıcılara gösterilen içerikte büyük farklılıklara izin veriyorsa ve bu içeriğin bir kısmı bazı kullanıcılar için güvenli olmayabilir veya uygunsuz olabilirse, kullanıcılarınızın kabul edilemez görmesini önlemek için doğru güvenlik önlemlerinin alındığından emin olmak için önceden plan yapmalısınız Içerik. Güvenlik önlemlerini uygulamak için en iyi model:
+Uygulamanız kullanıcılara gösterilen içerikte büyük farklılıklara izin veriyorsa ve bu içeriğin bir kısmı bazı kullanıcılar için güvenli olmayabilir veya uygunsuz olabilirse, kullanıcılarınızın kabul edilemez içeriği görmesini önlemek için doğru güvenlik önlemlerinin mevcut olduğundan emin olmak için önceden plan yapmalısınız. Güvenlik önlemlerini uygulamak için en iyi model:
     * Sıralamak için eylemlerin listesini edinin.
     * İzleyiciler için uygun olmayanları filtreleyin.
     * Sadece bu uygun eylemleri sırala.

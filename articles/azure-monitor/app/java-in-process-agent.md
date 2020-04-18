@@ -3,12 +3,12 @@ title: Java uygulamalarını her ortamda izleyin - Azure Monitör Uygulama Öng�
 description: Uygulama enstrümanting olmadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritası.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5a62be45320523ee0577d56eb557a4f87a58a1cc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886866"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604571"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Uygulama Öngörüleri izleme Java kodsuz uygulama - genel önizleme
 
@@ -24,11 +24,11 @@ Yine de uygulamanızdan özel telemetri gönderebilirsiniz. 3.0 aracısı izleye
 
 **1. Aracıyı indirin**
 
-[Uygulamaları indir-agent-3.0.0-PREVIEW.2.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.2/applicationinsights-agent-3.0.0-PREVIEW.2.jar)
+[Uygulamaları indir-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
 **2. JVM'yi ajana doğru titretin**
 
-Uygulamanızın JVM args ekleyin `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.2.jar`
+Uygulamanızın JVM args ekleyin `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`
 
 Tipik JVM args içerir `-Xmx512m` ve. `-XX:+UseG1GC` Eğer bunları nereye ekleyacağınızı biliyorsanız, o zaman bunu nereye ekleyebileceğinizi zaten biliyorsunuzdemektir.
 
@@ -37,7 +37,14 @@ Uygulamanızın JVM args yapılandırma ile ek yardım için, [3.0 Önizleme bak
 **3. Aracıyı Application Insights kaynağınıza yönlendirin**
 
 Zaten bir Uygulama Öngörüleri kaynağınız yoksa, [kaynak oluşturma kılavuzundaki](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)adımları izleyerek yeni bir kaynak oluşturabilirsiniz.
-Adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturun ve aşağıdaki içerikle aynı dizine `applicationinsights-agent-3.0.0-PREVIEW.2.jar`yerleştirin:
+
+Bir ortam değişkeni ayarlayarak aracıyı Application Insights kaynağınıza yönlendirin:
+
+```
+APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
+```
+
+Veya adlı `ApplicationInsights.json`bir yapılandırma dosyası oluşturarak ve aşağıdaki `applicationinsights-agent-3.0.0-PREVIEW.3.jar`içerikle aynı dizine yerleştirerek:
 
 ```json
 {
@@ -188,7 +195,7 @@ Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 En sevdiğiniz günlük çerçevesi üzerinden özel özel durum telemetrisi gönderebilirsiniz.
 
 Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:

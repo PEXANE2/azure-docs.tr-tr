@@ -7,16 +7,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: c09a035c8994118b0fb116f357485766e05883ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1b3e3cd39edccd0952ce44d9cb050ca1d0c724ea
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418448"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605305"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve atoklama kılavuzu
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Veri Fabrikası'ndaki Veri Akışlarını Eşleme, veri dönüşümlerini ölçekte tasarlamak, dağıtmak ve düzenlemek için kodsuz bir arabirim sağlar. Veri akışlarını eşleme konusunda aşina değilseniz, [Veri Akışına Genel Bakış Eşleme'ye](concepts-data-flow-overview.md)bakın.
 

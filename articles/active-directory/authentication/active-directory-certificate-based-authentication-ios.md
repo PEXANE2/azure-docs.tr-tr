@@ -1,35 +1,32 @@
 ---
 title: iOS'ta sertifika tabanlı kimlik doğrulama - Azure Active Directory
-description: desteklenen senaryolar ve iOS aygıtlarıyla çözümlerde sertifika tabanlı kimlik doğrulamayı yapılandırma gereksinimleri hakkında bilgi edinin
+description: desteklenen senaryolar ve iOS aygıtlarıyla çözümlerde Azure Active Directory için sertifika tabanlı kimlik doğrulamasını yapılandırma gereksinimleri hakkında bilgi edinin
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 04/17/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fd8a0c3688e5056c7941d334da8caee9f21ba82
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 76c5e18a0bf84e96476eafd7ff35398049f1a492
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81407277"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639623"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS'ta Azure Active Directory sertifikası tabanlı kimlik doğrulama
 
-iOS aygıtları, aşağıdakilere bağlanırken aygıtlarında bir istemci sertifikası kullanarak Azure Active Directory'ye kimlik doğrulaması yapmak için sertifika tabanlı kimlik doğrulama (CBA) kullanabilir:
+Güvenliği artırmak için iOS aygıtları, aşağıdaki uygulamalara veya hizmetlere bağlanırken aygıtlarında istemci sertifikası kullanarak Azure Etkin Dizinin (Azure AD) kimlik doğrulaması (Azure AD) kimlik doğrulaması için sertifika tabanlı kimlik doğrulama (CBA) kullanabilir:
 
 * Microsoft Outlook ve Microsoft Word gibi Office mobil uygulamaları
 * Exchange ActiveSync (EAS) istemcileri
 
-Bu özelliğin yapılandırılması, mobil cihazınızdaki belirli postalara ve Microsoft Office uygulamalarına bir kullanıcı adı ve parola kombinasyonu girme gereksinimini ortadan kaldırır.
+Sertifikaları kullanmak, mobil cihazınızdaki belirli postalara ve Microsoft Office uygulamalarına kullanıcı adı ve parola kombinasyonu girme gereksinimini ortadan kaldırır.
 
-Bu konu, Office 365 Enterprise, Business, Education, US Government, China ve Germany planlarında kiracı kullanıcıları için cba'yı bir iOS aygıtında yapılandırmak için gereksinimleri ve desteklenen senaryoları sağlar.
-
-Bu özellik, Office 365 ABD Hükümeti Savunması ve Federal planlarında önizlemede kullanılabilir.
+Bu makalede, bir iOS aygıtında CBA yapılandırmak için gereksinimleri ve desteklenen senaryolar ayrıntıları. iOS için CBA, Azure genel bulutları, Microsoft Public Cloud, Microsoft Cloud Germany ve Microsoft Azure China 21Vianet'te kullanılabilir.
 
 ## <a name="microsoft-mobile-applications-support"></a>Microsoft mobil uygulamaları desteği
 
@@ -48,38 +45,48 @@ Bu özellik, Office 365 ABD Hükümeti Savunması ve Federal planlarında önizl
 
 ## <a name="requirements"></a>Gereksinimler
 
-Aygıt işletim sistemi sürümü iOS 9 ve üzeri olmalıdır
+iOS ile CBA kullanmak için aşağıdaki gereksinimler ve hususlar geçerlidir:
 
-Bir federasyon sunucusu yapılandırılmalıdır.
+* Aygıt işletim sistemi sürümü iOS 9 veya üzerinde olmalıdır.
+* iOS'taki Office uygulamaları için Microsoft Kimlik Doğrulayıcı gereklidir.
+* MacOS Anahtarlığı'nda ADFS sunucusunun kimlik doğrulama URL'sini içeren bir kimlik tercihi oluşturulmalıdır. Daha fazla bilgi için [bkz.](https://support.apple.com/guide/keychain-access/create-an-identity-preference-kyca6343b6c9/mac)
 
-iOS'taki Office uygulamaları için Microsoft Kimlik Doğrulayıcı gereklidir.
+Aşağıdaki Active Directory Federation Services (ADFS) gereksinimleri ve hususlar geçerlidir:
 
-Azure Etkin Dizin'in bir istemci sertifikasını iptal edebilmek için ADFS belirteci aşağıdaki iddialara sahip olmalıdır:
+* Sertifika kimlik doğrulaması için ADFS sunucusu etkinleştirilmeli ve federe kimlik doğrulaması kullanılmalıdır.
+* Sertifikanın Gelişmiş Anahtar Kullanımı (EKU) kullanması ve *Konu Alternatif Adı'ndaki (NT Asıl Adı)* kullanıcının UPN'sini içermesi gerekir.
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`(İstemci sertifikasının seri numarası)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`(İstemci sertifikasını veren in dizesi)
+## <a name="configure-adfs"></a>ADFS'yi yapılandırma
 
-Azure Etkin Dizin, ADFS belirtecinde (veya başka bir SAML belirtecinde) kullanılabilirse, bu talepleri yenileme belirtecine ekler. Yenileme belirteci nin doğrulanması gerektiğinde, bu bilgiler iptali denetlemek için kullanılır.
+Azure AD'nin istemci sertifikasını iptal edebilmek için ADFS belirteci aşağıdaki taleplere sahip olmalıdır. Azure AD, ADFS belirtecinde (veya başka bir SAML belirtecinde) kullanılabilirse bu talepleri yenileme belirtecine ekler. Yenileme belirteci nin doğrulanması gerektiğinde, bu bilgiler iptali denetlemek için kullanılır:
+
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>`- müşteri sertifikanızın seri numarasını ekleyin
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>`- istemci sertifikanızın vereni için dize ekleyin
 
 En iyi yöntem olarak, kuruluşunuzun ADFS hata sayfalarını aşağıdaki bilgilerle güncelleştirmeniz gerekir:
 
-* Microsoft Authenticator'ı iOS'a yükleme gereksinimi
+* Microsoft Authenticator'ı iOS'a yükleme gereksinimi.
 * Kullanıcı sertifikası alma yla ilgili talimatlar.
 
-Daha fazla bilgi için, [AD FS Oturum Açma Sayfalarını Özelleştirme'ye](https://technet.microsoft.com/library/dn280950.aspx)bakın.
+Daha fazla bilgi için bkz: [AD FS oturum açını sayfaya özelleştirme.](https://technet.microsoft.com/library/dn280950.aspx)
 
-Bazı Office uygulamaları (modern kimlik doğrulaması etkinleştirilmiş) isteklerinde Azure AD'ye '*istemi=giriş*' gönderir. Varsayılan olarak, Azure AD '*prompt=login*' ia' olarak ADFS'ye *'istek=giriş*' (ADFS'den U/P Auth yapmasını ister) ve '*wfresh=0*' olarak çevirir (ADFS'den SSO durumunu yoksaymasını ve yeni bir kimlik doğrulaması yapmasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirmeniz gerekir. Federe etki alanı ayarlarınızdaki '*PromptLoginBehavior*'*'ı ' Devre Dışı Bırakılmış*' olarak ayarlamanız.
-Bu görevi gerçekleştirmek için [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet'i kullanabilirsiniz:
+## <a name="use-modern-authentication-with-office-apps"></a>Office uygulamalarıyla modern kimlik doğrulamayı kullanma
 
-`Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
+Modern kimlik doğrulaması etkin `prompt=login` olan bazı Office uygulamaları, istekleri nde Azure AD'ye gönderir. Varsayılan olarak, Azure `prompt=login` AD isteği ADFS'ye çevirir `wauth=usernamepassworduri` (ADFS'den U/P `wfresh=0` Auth yapmasını ister) ve (ADFS'den SSO durumunu yoksaymasını ve yeni bir kimlik doğrulaması yapmasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure REKLAM davranışını değiştirin.
 
-## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync istemcileri desteği
+Varsayılan davranışı güncelleştirmek için, federe etki alanı ayarlarınızdaki '*PromptLoginBehavior*' 'u *Devre Dışı Bırakılmış*olarak ayarlayın. Aşağıdaki örnekte gösterildiği gibi, bu görevi gerçekleştirmek için [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet'i kullanabilirsiniz:
 
-iOS 9 veya sonraki adreste, yerel iOS posta istemcisi desteklenir. Diğer tüm Exchange ActiveSync uygulamaları için, bu özelliğin desteklenip desteklenmeip desteklenmeyip desteklenmeyip desteklenmeyip desteklenmeyini belirlemek için uygulama geliştiricinize başvurun.
+```powershell
+Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled
+```
+
+## <a name="support-for-exchange-activesync-clients"></a>Exchange ActiveSync istemcileri için destek
+
+iOS 9 veya sonraki adreste, yerel iOS posta istemcisi desteklenir. Bu özelliğin diğer tüm Exchange ActiveSync uygulamaları için desteklenip desteklenmeyip desteklenmeyip desteklenmeyip desteklenmedisini belirlemek için uygulama geliştiricinize başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ortamınızda sertifika tabanlı kimlik doğrulaması yapılandırmak istiyorsanız, talimatlar için [Android'de sertifika tabanlı kimlik doğrulamasına başlayın'a](../authentication/active-directory-certificate-based-authentication-get-started.md) bakın.
+Ortamınızda sertifika tabanlı kimlik doğrulaması yapılandırmak [için](active-directory-certificate-based-authentication-get-started.md) bkz.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-ios/ic195031.png

@@ -4,12 +4,12 @@ description: Bir Azure Kubernetes Hizmeti (AKS) kümesindeki uygulama taleplerin
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 0b94865d81afc56c24d470012c668662f003a1b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2baa64779713d0bac063e1d2c06107ba2ab291fb
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596258"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617536"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) üzerindeki uygulama taleplerini karşılamak için kümeyi otomatik olarak ölçeklendirin
 
@@ -117,6 +117,7 @@ Ayrıca küme genelindeki otomatik ölçeklendirici profilindeki varsayılan de�
 | ölçek-down-hazır olmayan-zaman          | Küçültme için uygun hale gelmeden önce hazır olmayan bir düğümün ne kadar süre gereksiz olması gerekir?         | 20 dakika    |
 | ölçek-aşağı kullanım-eşik | Kapasiteye bölünen istenen kaynakların toplamı olarak tanımlanan düğüm kullanım düzeyi, aşağıda bir düğümün küçültülme için düşünülebileceği | 0,5 |
 | maksimum zarif-sonlandırma-sn     | Küme otomatik ölçeklendirici, düğüm küçültmeye çalışırken bölme sonlandırmasını bekler saniye sayısı. | 600 saniye   |
+| denge-benzer düğüm grupları | Benzer düğüm havuzlarını algılayın ve aralarındaki düğüm sayısını dengeleyin | yanlış |
 
 > [!IMPORTANT]
 > Küme otomatik ölçeklendirici profili küme otomatik ölçekleyicikullanan tüm düğüm havuzlarını etkiler. Düğüm havuzu başına otomatik ölçeklendirici profili ayarlayamadığınızda.
@@ -144,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Kümedeki düğüm havuzlarında küme otomatik ölçeklendiricisini etkinleştirdiğinizde, bu kümeler küme otomatik ölçeklendirici profilini de kullanır. Örnek:
+Kümedeki düğüm havuzlarında küme otomatik ölçeklendiricisini etkinleştirdiğinizde, bu kümeler küme otomatik ölçeklendirici profilini de kullanır. Örneğin:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -161,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>AKS kümesi oluştururken küme otomatik ölçeklendirici profilini ayarlama
 
-Kümenizi oluştururken *küme-otomatik ölçeklendirici-profil* parametresini de kullanabilirsiniz. Örnek:
+Kümenizi oluştururken *küme-otomatik ölçeklendirici-profil* parametresini de kullanabilirsiniz. Örneğin:
 
 ```azurecli-interactive
 az aks create \

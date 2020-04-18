@@ -2,15 +2,15 @@
 title: VM uzantılarını şablonla dağıtma
 description: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtmayı öğrenin
 author: mumian
-ms.date: 03/31/2020
+ms.date: 04/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7397e9387fe3354a926ed607a9132ab6ddc7e785
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 280b4a9775346c719e82d1fef4162fa6ea666798
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477596"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616884"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantılarını dağıtma
 
@@ -23,7 +23,6 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Hızlı başlangıç şablonunu açma
 > * Şablonu düzenleme
 > * Şablonu dağıtma
-> * Dağıtımı doğrulama
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
@@ -42,29 +41,34 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell betiğini hazırlama
 
-Aşağıdaki içeriğe sahip bir PowerShell komut dosyası [GitHub'dan](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)paylaşılır:
+Sıralı PowerShell komut dosyası veya komut dosyası dosyası kullanabilirsiniz.  Bu öğretici, komut dosyası dosyasının nasıl kullanılacağını gösterir. Aşağıdaki içeriğe sahip bir PowerShell komut dosyası [GitHub'dan](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)paylaşılır:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Dosyayı kendi konumunuza yayımlamayı seçerseniz, `fileUri` şablondaki öğeyi daha sonra öğreticide güncelleştirmeniz gerekir.
+Dosyayı kendi konumunuza yayımlamayı seçerseniz, şablondaki öğeyi `fileUri` daha sonra öğreticide güncelleştirin.
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
 Azure Quickstart Şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
 1. Visual Studio Code'da **Dosya** > **Aç Dosya'yı**seçin.
-1. Dosya **adı** kutusuna aşağıdaki URL'yi yapıştırın:https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. Dosya **adı** kutusuna aşağıdaki URL'yi yapıştırın:
+
+    ```url
+    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+    ```
 
 1. Dosyayı açmak için **Aç'ı**seçin.
     Şablon beş kaynak tanımlar:
 
-   * **Microsoft.Storage/storageHesapları**. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-   * **Microsoft.Network/publicIPAddresses**. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-   * **Microsoft.Network/virtualNetworks**. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-   * **Microsoft.Network/networkInterfaces**. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-   * **Microsoft.Compute/virtualMachines**. Bkz. [şablon başvurusu](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * [**Microsoft.Storage/storageHesapları**](/azure/templates/Microsoft.Storage/storageAccounts).
+   * [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses).
+   * [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups).
+   * [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks).
+   * [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces).
+   * [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines).
 
      Şablonu özelleştirmeden önce şablonhakkında temel bir anlayış elde etmek yararlı dır.
 
@@ -77,7 +81,7 @@ Aşağıdaki içeriği kullanarak var olan şablona bir sanal makine uzantısı 
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "apiVersion": "2018-06-01",
+  "apiVersion": "2019-12-01",
   "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
   "location": "[parameters('location')]",
   "dependsOn": [
@@ -105,6 +109,14 @@ Bu kaynak tanımı hakkında daha fazla bilgi için [uzantı başvurusuna](https
 * **fileUris**: Komut dosyası dosyalarının depolandığı konumlar. Sağlanan konumu kullanmamayı seçerseniz, değerleri güncelleştirmeniz gerekir.
 * **commandToExecute**: Bu komut komut dosyasını çağırır.
 
+Satır satırkomutunu kullanmak için **fileUris'i**kaldırın ve **ToExecute komutunu** şu şekilde güncelleştirin:
+
+```powershell
+powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
+```
+
+Bu satır satırlı komut dosyası da iisstart.html içeriğini güncelleştirin.
+
 Web sunucusuna erişebilmeniz için HTTP bağlantı noktasını da açmanız gerekir.
 
 1. Şablonda **güvenlik Kuralları'nı** bulun.
@@ -130,10 +142,13 @@ Web sunucusuna erişebilmeniz için HTTP bağlantı noktasını da açmanız ger
 
 Dağıtım yordamı için, Öğretici'nin "Şablonu dağıt" bölümüne [bakın: Bağımlı kaynaklara sahip ARM şablonları oluşturun.](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) Sanal makine yöneticisi hesabı için oluşturulan bir parola kullanmanızı tavsiye ettik. Bu makalenin [Önkoşullar](#prerequisites) bölümüne bakın.
 
-## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
+Bulut Kabuğundan, VM'nin genel IP adresini almak için aşağıdaki komutu çalıştırın:
 
-1. Azure portalında VM'yi seçin.
-1. VM genel bakışta, **kopyalamak için**Tıkla'yı seçerek IP adresini kopyalayın ve ardından bir tarayıcı sekmesine yapıştırın. Varsayılan Internet Bilgi Hizmetleri (IIS) karşılama sayfası açılır:
+```azurepowershell
+(Get-AzPublicIpAddress -ResourceGroupName $resourceGroupName).IpAddress
+```
+
+IP adresini bir Web tarayıcısına yapıştırın. Varsayılan Internet Bilgi Hizmetleri (IIS) karşılama sayfası açılır:
 
 ![İnternet Bilgi Hizmetleri karşılama sayfası](./media/template-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 

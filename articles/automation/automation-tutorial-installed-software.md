@@ -7,12 +7,12 @@ ms.date: 04/11/2018
 ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
-ms.openlocfilehash: 136521799dbc928a03c339ecc1cef6fdd3d029b2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b93035fc7e315f8117516771236186f9d942a0aa
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239668"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604662"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure ve Azure harici makinelerinizde yüklü olan yazılımları keşfetme
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Azure aboneliği. Henüz bir hesabınız yoksa, [MSDN abone avantajlarınızı etkinleştirebilir](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)kaydolabilirsiniz.
-* İzleyiciyi, eylem runbook'larını ve İzleyici Görevi'ni barındıracak bir [Otomasyon Hesabı](automation-offering-get-started.md).
+* İzleyici ve eylem runbook'larını ve İzleyici Görevi'ni tutmak için bir [Otomasyon hesabı.](automation-offering-get-started.md)
 * Sisteme eklenecek bir [sanal makine](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
@@ -43,13 +43,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 Bu öğreticide ilk yapmanız gereken Değişiklik İzleme ve Stok özelliklerini etkinleştirmektir. Daha önce **Değişiklik İzleme** çözümünü etkinleştirdiyseniz bu adımı atlayabilirsiniz.
 
-Otomasyon Hesabınıza gidin ve **YAPILANDIRMA YÖNETİMİ** altında **Stok**’u seçin.
+Otomasyon hesabınıza gidin ve **Yapılandırma Yönetimi**altında **Envanter'i** seçin.
 
-Çözümü etkinleştirmek için Log Analytics çalışma alanını ve Otomasyon Hesabını seçip **Etkinleştir**’e tıklayın. Çözümün etkinleştirilmesi 15 dakika sürer.
+Log Analytics çalışma alanı ve Otomasyon hesabını seçin ve çözümü etkinleştirmek için **Etkinleştir'i** tıklatın. Çözümün etkinleştirilmesi 15 dakika sürer.
 
 ![Stok devreye alma yapılandırma başlığı](./media/automation-tutorial-installed-software/enableinventory.png)
 
-Çözümü etkinleştirmek için, kullanılacak konumu, Log Analytics çalışma alanını ve Otomasyon Hesabını yapılandırdıktan sonra **Etkinleştir**’e tıklayın. Bu alanların gri renkte olması, VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon Hesabının kullanılması gerekir.
+Çözümü etkinleştirmek için konumu, Günlük analizi çalışma alanını ve Otomasyon hesabını kullanmak ve **Etkinleştir'i**tıklatın. Bu alanların gri renkte olması VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir.
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) çalışma alanı, Stok gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için kullanılır.
 Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
@@ -62,13 +62,13 @@ Verilerin çözümlemeye hazır hale gelmesi 30 dakika ile 6 saat arasında sür
 
 ## <a name="onboard-a-vm"></a>VM ekleme
 
-Otomasyon Hesabınızda, **YAPILANDIRMA YÖNETİMİ** altında **Stok**’a gidin.
+Otomasyon hesabınızda, **Configuration Management**altında **Envanter'e** gidin.
 
-**+ Azure VM ekle**’yi seçin, bu **Sanal makineler** sayfasını açarak listeden mevcut bir VM seçmenize olanak sağlar. Eklemek istediğiniz sanal makineyi seçin. Açılan sayfada, VM’de çözümü etkinleştirmek için **Etkinleştir**’e tıklayın. Microsoft Yönetim Aracısı VM’ye dağıtılır ve aracıyı çözümü etkinleştirirken yapılandırdığınız Log Analytics çalışma alanıyla iletişim kurması için yapılandırır. Ekleme işleminin tamamlanması birkaç dakika sürebilir. Bu noktada, listeden yeni bir VM seçebilir ve başka bir VM ekleyebilirsiniz.
+**+ Azure VM ekle**’yi seçin, bu Sanal makineler sayfasını açarak listeden mevcut bir VM seçmenize olanak sağlar. Eklemek istediğiniz sanal makineyi seçin. Açılan sayfada, VM’de çözümü etkinleştirmek için **Etkinleştir**’e tıklayın. Microsoft Yönetim Aracısı VM’ye dağıtılır ve aracıyı çözümü etkinleştirirken yapılandırdığınız Log Analytics çalışma alanıyla iletişim kurması için yapılandırır. Ekleme işleminin tamamlanması birkaç dakika sürebilir. Bu noktada, listeden yeni bir VM seçebilir ve başka bir VM ekleyebilirsiniz.
 
 ## <a name="onboard-a-non-azure-machine"></a>Azure olmayan bir makine ekleme
 
-Azure olmayan makineler eklemek için, işletin sisteminize bağlı olarak [Windows](../azure-monitor/platform/agent-windows.md) veya [Linux](automation-linux-hrw-install.md) için aracıyı yükleyin. Aracı yüklendiğinde, Otomasyon Hesabınıza gidin ve **YAPILANDIRMA YÖNETİMİ** altında **Stok**’a gidin. **Makineleri Yönet**’e tıkladığınızda, Log Analytics çalışma alanınıza raporlayan çözüm etkinleştirilmemiş makinelerin bir listesini görürsünüz. Ortamınız için uygun seçeneği belirleyin.
+Azure olmayan makineler eklemek için, işletim sisteminize bağlı olarak [Windows için Log Analytics aracısını](../azure-monitor/platform/agent-windows.md) veya [Linux için Log Analytics aracısını](automation-linux-hrw-install.md)yükleyin. Aracı yüklendikten sonra Otomasyon hesabınıza gidin ve **Configuration Management**altında **Envanter'e** gidin. **Makineleri Yönet**’e tıkladığınızda, Log Analytics çalışma alanınıza raporlayan çözüm etkinleştirilmemiş makinelerin bir listesini görürsünüz. Ortamınız için uygun seçeneği belirleyin.
 
 * **Kullanılabilir tüm makinelerde etkinleştir** - Bu seçenek, çözümü şu anda Log Analytics çalışma alanınıza raporlayan tüm makinelerde etkinleştirir.
 * **tüm kullanılabilir makinelerde ve gelecekteki makinelerde etkinleştir** - Bu seçenek, çözümü Log Analytics çalışma alanınıza raporlayan tüm makinelerde ve daha sonra çalışma alanına eklenen tüm gelecek makinelerde etkinleştirir.
@@ -78,11 +78,11 @@ Azure olmayan makineler eklemek için, işletin sisteminize bağlı olarak [Wind
 
 ## <a name="view-installed-software"></a>Yüklü olan yazılımları görüntüleme
 
-Değişiklik izleme ve Stok çözümünü etkinleştirdikten sonra sonuçları **Stok** sayfasında görüntüleyebilirsiniz.
+Değişiklik İzleme ve Stok çözümü etkinleştirildikten sonra, sonuçları Stok sayfasında görüntüleyebilirsiniz.
 
-Otomasyon Hesabınızdan, **YAPILANDIRMA YÖNETİMİ** altında **Stok**’u seçin.
+Otomasyon hesabınızda, Yapılandırma **Yönetimi**altında **Envanter'i** seçin.
 
-**Stok** sayfasında **Yazılım** sekmesine tıklayın.
+Stok sayfasında **Yazılım** sekmesine tıklayın.
 
 **Yazılım** sekmesinde bulunan yazılımların listelendiği bir tablo yer alır. Yazılımlar ada ve sürüme göre gruplara ayrılmıştır.
 
@@ -95,14 +95,14 @@ Yazılım kaydının özelliklerini ve bu yazılımın yüklü olduğu makineler
 Belirli bir yazılımı veya yazılım grubunu aramak için yazılım listesinin üstünde yer alan metin kutusundan arama yapabilirsiniz.
 Filtre yazılım adı, sürümü veya yayımcı ile arama yapmanızı sağlar.
 
-Örneğin "Contoso" araması yaptığınızda adı, yayımcısı veya sürümü "Contoso" içeren tüm yazılımlar görüntülenir.
+Örneğin, **Contoso'da** arama yapmak, **Contoso'yu**içeren bir ad, yayıncı veya sürüm içeren tüm yazılımları döndürür.
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Yüklü olan yazılımların stok günlüklerinde arama yapma
 
-Stok, Azure Monitor günlüklerine gönderilen günlük verilerini oluşturur. Sorgu çalıştırarak günlüklerde arama yapmak için **Stok** penceresinin en üstünde bulunan **Log Analytics**'i seçin.
+Stok, Azure Monitor günlüklerine gönderilen günlük verilerini oluşturur. Sorguları çalıştırarak günlüklerde arama yapmak için Stok sayfasının üst kısmında **Kine analitiği'ni** seçin.
 
-Stok verileri **ConfigurationData** türü altında depolanır.
-Aşağıdaki örnek Log Analytics sorgusu Yayıncının "Microsoft Corporation" değerine eşit olduğu envanter sonuçlarını döndürür.
+Stok verileri türü `ConfigurationData`altında depolanır.
+Aşağıdaki örnek Log Analytics sorgusu, Publisher'ın **Microsoft Corporation'a**eşit olduğu stok sonuçlarını döndürür.
 
 ```loganalytics
 ConfigurationData
@@ -116,7 +116,7 @@ Azure Monitor günlüklerinde günlük dosyalarını çalıştırma ve arama hak
 ### <a name="single-machine-inventory"></a>Tek makine stoku
 
 Tek bir makinenin yazılım envanterini görmek için Azure VM kaynak sayfasından Envanter'e erişebilir veya ilgili makineye filtre takmak için Azure Monitor günlüklerini kullanabilirsiniz.
-Aşağıdaki örnek Log Analytics sorgusu, ContosoVM adlı bir makinedeki yazılımların listesini döndürür.
+Aşağıdaki örnek Log Analytics sorgusu **ContosoVM**adlı bir makinenin yazılım listesini döndürür.
 
 ```loganalytics
 ConfigurationData

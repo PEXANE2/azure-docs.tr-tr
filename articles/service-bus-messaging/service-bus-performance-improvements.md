@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: aschhab
-ms.openlocfilehash: b864f433c67d47b4b92a1d4b98693ebd42806dd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 267965ee41280a677050d1676285dda8734bc044
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259467"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606051"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus Mesajlaşması kullanarak performans geliştirmek için en iyi yöntemler
 
@@ -135,7 +135,7 @@ receiver.RegisterMessageHandler(
     new MessageHandlerOptions(e => LogErrorAsync(e.Exception))
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -159,7 +159,7 @@ receiver.OnMessageAsync(
     new OnMessageOptions
     {
         AutoComplete = false,
-        MaxConcurrentCalls = 1
+        MaxConcurrentCalls = 20
     });
 ```
 
@@ -187,7 +187,7 @@ Servis Veri Servisi, alma ve silme işlemlerine yönelik hareketleri desteklemez
 
 Varsayılan olarak, istemci 20 ms'lik bir toplu iş aralığı kullanır. İleti fabrikasını oluşturmadan önce [BatchFlushInterval][BatchFlushInterval] özelliğini ayarlayarak toplu iş aralığını değiştirebilirsiniz. Bu ayar, bu fabrika tarafından oluşturulan tüm istemcileri etkiler.
 
-Toplu işlemi devre dışı atmak için [BatchFlushInterval][BatchFlushInterval] özelliğini **TimeSpan.Zero**olarak ayarlayın. Örnek:
+Toplu işlemi devre dışı atmak için [BatchFlushInterval][BatchFlushInterval] özelliğini **TimeSpan.Zero**olarak ayarlayın. Örneğin:
 
 ```csharp
 var settings = new MessagingFactorySettings

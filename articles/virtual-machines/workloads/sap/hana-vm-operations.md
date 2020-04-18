@@ -15,19 +15,19 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07c8f84f2e37abd87953d8e4cb20b37258b25fda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920532"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606137"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure'da SAP HANA altyapı yapılandırmaları ve işlemleri
 Bu belge, Azure altyapısının yapılandırılması ve Azure yerel sanal makinelerde (VM) dağıtılan SAP HANA sistemlerinin işletimi için kılavuz sağlar. Belge ayrıca M128s VM SKU için SAP HANA ölçeklendirmeiçin yapılandırma bilgilerini de içerir. Bu belge, aşağıdaki içeriği içeren standart SAP belgelerinin yerine geçmeamacını almıştır:
 
 - [SAP yönetim kılavuzu](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [SAP kurulum kılavuzları](https://service.sap.com/instguides)
-- [SAP notları](https://sservice.sap.com/notes)
+- [SAP notları](https://service.sap.com/notes)
 
 ## <a name="prerequisites"></a>Ön koşullar
 Bu kılavuzu kullanmak için aşağıdaki Azure bileşenleri hakkında temel bilgiye ihtiyacınız vardır:
@@ -101,7 +101,7 @@ Azure [Sanal Veri Merkezi: Ağ Perspektifi](https://docs.microsoft.com/azure/arc
 
 
 >[!NOTE]
->Azure VNet [eşlemesini](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kullanarak hub VNet ile konuşan VNet arasında akan trafik ek [maliyetlere](https://azure.microsoft.com/pricing/details/virtual-network/)tabidir. Bu maliyetlere bağlı olarak, Katı bir hub ve konuşan ağ tasarımı nı çalıştırmakla VNet'i atlamak için 'sözcülere' bağlandığınız birden çok [Azure ExpressRoute Ağ Geçidi](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) çalıştırmak arasında ödün vermeyi düşünebilirsiniz. Ancak Azure ExpressRoute Ağ Geçitleri de ek [maliyetler](https://azure.microsoft.com/pricing/details/vpn-gateway/) sunar. Ayrıca, ağ trafiği günlüğe kaydetme, denetleme ve izleme için kullandığınız üçüncü taraf yazılımlar için ek maliyetlerle de karşılaşabilirsiniz. Bir tarafta VNet ile veri alışverişi maliyetlerine ve ek Azure ExpressRoute Ağ Geçitleri ve ek yazılım lisansları tarafından oluşturulan maliyetlere bağlı olarak, alt ağları yalıtım birimi olarak kullanarak bir VNet içinde mikro segmentasyona karar verebilirsiniz VNets yerine.
+>Azure VNet [eşlemesini](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) kullanarak hub VNet ile konuşan VNet arasında akan trafik ek [maliyetlere](https://azure.microsoft.com/pricing/details/virtual-network/)tabidir. Bu maliyetlere bağlı olarak, Katı bir hub ve konuşan ağ tasarımı nı çalıştırmakla VNet'i atlamak için 'sözcülere' bağlandığınız birden çok [Azure ExpressRoute Ağ Geçidi](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) çalıştırmak arasında ödün vermeyi düşünebilirsiniz. Ancak Azure ExpressRoute Ağ Geçitleri de ek [maliyetler](https://azure.microsoft.com/pricing/details/vpn-gateway/) sunar. Ayrıca, ağ trafiği günlüğe kaydetme, denetleme ve izleme için kullandığınız üçüncü taraf yazılımlar için ek maliyetlerle de karşılaşabilirsiniz. Bir tarafta VNet eşleme yoluyla veri alışverişi maliyetlerine ve ek Azure ExpressRoute Ağ Geçitleri ve ek yazılım lisansları tarafından oluşturulan maliyetlere bağlı olarak, VNet yerine alt ağları yalıtım birimi olarak kullanarak bir VNet içinde mikro segmentasyona karar verebilirsiniz.
 
 
 IP adresleri atamak için farklı yöntemlere genel bakış için [Azure'da IP adresi türleri ve ayırma yöntemlerine](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)bakın. 

@@ -5,31 +5,31 @@ services: automation
 ms.subservice: update-management
 ms.date: 02/27/2020
 ms.topic: conceptual
-ms.openlocfilehash: eaba4bf7760e150f2477ee743c797f94784b8506
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535511"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617405"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure'da Yönetim çözümlerini güncelleştir
 
-Azure Otomasyonu'ndaki Güncelleştirme Yönetimi çözümlerini, Azure'daki Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini, şirket içi ortamlarda ve diğer bulut ortamlarında yönetmek için kullanabilirsiniz. Tüm aracı makinelerinde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
+Azure Otomasyonu'ndaki **Güncelleştirme Yönetimi çözümlerini,** Azure'daki Windows ve Linux makineleriniz için işletim sistemi güncelleştirmelerini, şirket içi ortamlarda ve diğer bulut ortamlarında yönetmek için kullanabilirsiniz. Tüm aracı makinelerinde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
 Aşağıdaki yöntemleri kullanarak sanal makineler (VM'ler) için Güncelleştirme Yönetimi'ni etkinleştirebilirsiniz:
 
 - Azure [Otomasyon uyupunuzdan](automation-onboard-solutions-from-automation-account.md) bir veya daha fazla Azure makinesi ve Azure olmayan makineler için el ile.
 
-- Azure portalındaki sanal makine sayfasından tek bir Azure VM için. Bu senaryo [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM'leri için kullanılabilir.
+- Azure portalındaki Sanal makine sayfasından tek bir Azure VM için. Bu senaryo [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) ve [Windows](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) VM'leri için kullanılabilir.
 
-- Azure portalındaki **Sanal makineler** sayfasından seçerek birden çok [Azure VM'si](manage-update-multi.md) için. 
+- Azure portalındaki Sanal makineler sayfasından seçerek [birden çok Azure VM'si](manage-update-multi.md) için. 
 
 > [!NOTE]
-> Güncelleştirme Yönetimi çözümü, Bir Log Analytics çalışma alanını Otomasyon hesabınıza bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için [Azure Çalışma Alanı eşlemelerine](./how-to/region-mappings.md)bakın. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgede VM'leri yönetme yeteneğini etkilemez.
+> **Güncelleştirme Yönetimi çözümü,** Bir Log Analytics çalışma alanını Otomasyon hesabınıza bağlamayı gerektirir. Desteklenen bölgelerin kesin listesi için [Azure Çalışma Alanı eşlemelerine](./how-to/region-mappings.md)bakın. Bölge eşlemeleri, Otomasyon hesabınızdan ayrı bir bölgede VM'leri yönetme yeteneğini etkilemez.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Aboneliğinizde yeni veya varolan bir Otomasyon hesabına ve Log Analytics çalışma alanına Güncelleştirme Yönetimi çözümünüzü dağıtmanızı sağlayan bir Azure [Kaynak Yöneticisi şablonu](automation-update-management-deploy-template.md) kullanılabilir.
+Azure [Kaynak Yöneticisi şablonu,](automation-update-management-deploy-template.md) Aboneliğinizde yeni veya varolan bir Otomasyon hesabına ve Log Analytics çalışma alanına **Güncelleştirme Yönetimi çözümünüzü** dağıtmanıza yardımcı olmak için kullanılabilir.
 
 ## <a name="solution-overview"></a>Çözüme genel bakış
 
@@ -137,7 +137,7 @@ Güncelleştirme dağıtımları oluşturmak ve yönetmek için belirli izinlere
 
 Bu çözümü etkinleştirdikten sonra, Log Analytics çalışma alanınıza doğrudan bağlanan tüm Windows makineleri, bu çözümde yer alan runbook'ları desteklemek üzere otomatik olarak Karma Runbook İşçisi olarak yapılandırılır.
 
-Çözüm tarafından yönetilen her Windows makinesi, **Karma alt gruplar** bölmesinde Otomasyon hesabı için sistem **hibrit işçi grubu** olarak listelenir. Çözümler, *ana bilgisayar adı FQDN_GUID* adlandırma kuralını kullanır. Hesabınızda runbook'lar bulunan bu grupları hedef alamazsınız. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca bu yönetim çözümlerini desteklemek için tasarlanmıştır.
+Çözüm tarafından yönetilen her Windows makinesi, Karma alt gruplar bölmesinde Otomasyon hesabı için sistem hibrit işçi grubu olarak listelenir. Çözümler adlandırma `Hostname FQDN_GUID` kuralını kullanır. Hesabınızda runbook'lar bulunan bu grupları hedef alamazsınız. Denerseniz, deneme başarısız olur. Bu gruplar yalnızca bu yönetim çözümlerini desteklemek için tasarlanmıştır.
 
 Hem çözüm hem de Karma Runbook İşçigrubu üyeliği için aynı hesabı kullanıyorsanız, Otomasyon runbook kitaplarını desteklemek için Windows makinesini Otomasyon hesabınızdaki Karma Runbook İşçi grubuna ekleyebilirsiniz. Bu işlev, Karma Runbook Worker'ın 7.2.12024.0 sürümüne eklendi.
 
@@ -150,12 +150,12 @@ Sistem Merkezi Operasyon Yöneticisi yönetim grubunuz [bir Log Analytics çalı
 * MP Dağıtımını güncelleştirme
 
 > [!NOTE]
-> Günlük verilerini toplamak için yönetim grubunda yapılandırılan aracılarla bir Log Analytics çalışma alanına bağlı bir Operations Manager 1807 veya 2019 yönetim grubunuz varsa, bunları Update Management ile yönetmek için aşağıdaki kuralı geçersiz kılmanız gerekir: **IsAutoRegistrationEnabled** parametresini geçersiz kılın ve **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** kuralında **True** olarak ayarlanmıştır.
+> Günlük verilerini toplamak için yönetim grubunda yapılandırılan aracılarla bir Log Analytics çalışma alanına bağlı bir Operations Manager 1807 veya 2019 yönetim grubunuz varsa, parametreyi `IsAutoRegistrationEnabled` geçersiz kılmanız ve **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** kuralında True olarak ayarlamanız gerekir.
 
 Çözüm yönetim paketlerinin nasıl güncelleştirileştirişleri hakkında daha fazla bilgi için [bkz.](../azure-monitor/platform/om-agents.md)
 
 > [!NOTE]
-> Operations Manger aracısına sahip makinelerin Güncelleme Yönetimi tarafından tam olarak yönetilemesi için aracının Windows veya Linux için Log Analytics temsilcisine güncellenmesi gerekir. Aracıyı nasıl güncelleştirileştirin, [operasyon yöneticisi aracısını nasıl yükseltin.](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents) Operations Manager'ı kullanan ortamlarda, System Center Operations Manager 2012 R2 UR 14 veya sonraki leri çalıştırıyor olmalısınız.
+> Operations Manger agent'ına sahip makinelerin Güncelleme Yönetimi tarafından tam olarak yönetilemesi için aracının Windows için Log Analytics temsilcisine veya Linux için Log Analytics temsilcisine güncellenmesi gerekir. Aracıyı nasıl güncelleştirileştirin, [operasyon yöneticisi aracısını nasıl yükseltin.](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents) Operations Manager'ı kullanan ortamlarda, System Center Operations Manager 2012 R2 UR 14 veya sonraki leri çalıştırıyor olmalısınız.
 
 ## <a name="data-collection"></a>Veri toplama
 
@@ -249,13 +249,9 @@ Güncelleştirme Yönetimi, desteklenen Windows sistemlerini güncelleştirmek i
 Sistemleri güncelleştirmeye başlamak için Güncelleştirme Yönetimi çözümlüne etkinleştirmeniz gerekir. Çözüme yönelik önerilen ve desteklenen yöntemler şunlardır:
 
 - [Sanal bir makineden](automation-onboard-solutions-from-vm.md)
-
 - [Birden fazla makineye göz atma](automation-onboard-solutions-from-browse.md)
-
 - [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
-
 - [Azure Otomasyon runbook ile](automation-onboard-solutions.md)
-
 - [Azure Kaynak Yöneticisi şablonuyla](automation-update-management-deploy-template.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar

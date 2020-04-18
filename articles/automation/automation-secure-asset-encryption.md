@@ -9,12 +9,12 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: a82d2b6d9521ba7dd5e7b194c26ff8fe5a100871
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 594bac257c2b9739f1ece276c881348b35d2f704
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457493"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604808"
 ---
 # <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Otomasyonu’nda güvenli varlıkları şifreleme
 
@@ -58,9 +58,9 @@ Bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinl
 
 ### <a name="assign-an-identity-to-the-automation-account"></a>Otomasyon hesabına kimlik atama
 
-Otomasyon hesabıyla müşteri tarafından yönetilen anahtarları kullanmak için, Otomasyon hesabınızın müşteri tarafından yönetilen anahtarları depolayan anahtar kasasına karşı kimlik doğrulaması yapması gerekir. Azure Automation, Azure Key Vault ile hesabın kimliğini doğrulamak için yönetilen kimlikler atanmış sistemi kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için Azure [kaynakları için yönetilen kimlikler nedir?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+Otomasyon hesabıyla müşteri tarafından yönetilen anahtarları kullanmak için, Otomasyon hesabınızın müşteri tarafından yönetilen anahtarları depolayan anahtar kasasına karşı kimlik doğrulaması yapması gerekir. Azure Automation, Azure Key Vault ile hesabın kimliğini doğrulamak için yönetilen kimlikler atanmış sistemi kullanır. Yönetilen kimlikler hakkında daha fazla bilgi için Azure [kaynakları için yönetilen kimlikler nelerdir bkz.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-Yönetilen kimliği otomasyon hesabına atanan bir sistemi aşağıdaki REST API çağrısını kullanarak yapılandırın:
+Yönetilen kimliği Otomasyon hesabına atanan bir sistemi aşağıdaki REST API çağrısını kullanarak yapılandırın:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -133,7 +133,7 @@ PUT https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 ### <a name="change-the-configuration-of-automation-account-to-use-customer-managed-key"></a>Müşteri tarafından yönetilen anahtarı kullanmak için Otomasyon hesabının yapılandırmasını değiştirme
 
-Son olarak, aşağıdaki REST API çağrısını kullanarak Otomasyon hesabınızı Microsft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçirebilirsiniz:
+Son olarak, aşağıdaki REST API çağrısını kullanarak Otomasyon hesabınızı Microsoft tarafından yönetilen anahtarlardan müşteri tarafından yönetilen anahtarlara geçirebilirsiniz:
 
 ```http
 PATCH https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource-group-name/providers/Microsoft.Automation/automationAccounts/automation-account-name?api-version=2020-01-13-preview
@@ -193,9 +193,6 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için PowerShe
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Anahtar Kasası nedir?](../key-vault/general/overview.md)
-
 - [Azure Otomasyonu'ndaki sertifika varlıkları](shared-resources/certificates.md)
-
 - [Azure Otomasyonu'ndaki kimlik bilgileri varlıkları](shared-resources/credentials.md)
-
 - [Azure Otomasyonu'ndaki değişken varlıkları](shared-resources/variables.md)

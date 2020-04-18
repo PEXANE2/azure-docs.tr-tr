@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 888dc99162551482afc715f1a793614d2c866384
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 62c661f75aef77117a61be7e802562e6dde17ba5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677044"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604685"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM'leriniz için güncelleştirmeleri ve yamaları yönetme
 
@@ -19,7 +19,7 @@ Güncelleştirme Yönetimi çözümünü kullanarak sanal makineleriniz için g�
 
 Fiyatlandırma bilgisi için bkz. [Güncelleştirme Yönetimi için Otomasyon fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Güncelleştirme değerlendirmesini görüntüleme
@@ -40,13 +40,13 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="view-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimini etkinleştirdikten **sonra, Güncelleştirme yönetimi** sayfası açılır. Herhangi bir güncelleştirme eksik olarak tanımlanırsa, Eksik **güncelleştirmelerin** listesi Eksik güncelleştirmeler sekmesinde gösterilir.
+Güncelleştirme Yönetimini etkinleştirdikten sonra, Güncelleştirme yönetimi sayfası açılır. Herhangi bir güncelleştirme eksik olarak tanımlanırsa, Eksik **güncelleştirmelerin** listesi Eksik güncelleştirmeler sekmesinde gösterilir.
 
 **Bilgi bağlantısı**altında, güncelleştirme için destek makalesini açmak için güncelleştirme bağlantısını seçin. Güncelleştirme hakkında önemli bilgiler edinebilirsiniz.
 
 ![Güncelleştirme durumunu görüntüleme](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 
-Seçili güncelleştirmenin **Günlük arama** bölmesini açmak için güncellemede başka bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ortamınızda dağıtılan veya kaybolan güncelleştirmeler hakkında ayrıntılı bilgileri görüntülemek için bu sorgunuzu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
+Seçili güncelleştirmenin Günlük arama bölmesini açmak için güncellemede başka bir yere tıklayın. Günlük araması sorgusu ilgili güncelleştirmeye göre önceden tanımlanmıştır. Ortamınızda dağıtılan veya kaybolan güncelleştirmeler hakkında ayrıntılı bilgileri görüntülemek için bu sorgunuzu değiştirebilir veya kendi sorgunuzu oluşturabilirsiniz.
 
 ![Güncelleştirme durumunu görüntüleme](./media/automation-tutorial-update-management/logsearch.png)
 
@@ -58,7 +58,7 @@ Bu adımda, bir güncelleştirme dağıtımının durumunu bildirmek için bir u
 
 Otomasyon hesabınızda, **İzleme**altındaki **Uyarılar'a** gidin ve ardından Yeni **uyarı kuralını**tıklatın.
 
-Otomasyon hesabınız zaten kaynak olarak seçilmiştir. Değiştirmek **istiyorsanız, Seç'i**tıklatın. **Kaynak** seç sayfasında, kaynak türü açılır menüsüne göre Filtre'den **Otomasyon Hesapları'nı** seçin. **Filter by resource type** Otomasyon hesabınızı seçin ve **ardından Bitti'yi**tıklatın.
+Otomasyon hesabınız zaten kaynak olarak seçilmiştir. Değiştirmek **istiyorsanız, Seç'i**tıklatın. Kaynak seç sayfasında, kaynak türü açılır menüsüne **göre Filtre'den** Otomasyon **Hesapları'nı** seçin. Otomasyon hesabınızı seçin ve **ardından Bitti'yi**tıklatın.
 
 Güncelleştirme dağıtımınız için uygun sinyali seçmek için **Ekle koşulunu** tıklatın. Aşağıdaki tablo, kullanılabilir iki sinyalin ayrıntılarını gösterir.
 
@@ -85,11 +85,11 @@ Eylem **grubu adı** alanına, uyarı için bir ad ve kısa bir ad girin. Günce
 
 **Eylemler**altında, **E-posta Bildirimi**gibi eylem için bir ad girin. **Eylem Türü**için **E-posta/SMS/Push/Voice'ı**seçin. **Ayrıntılar**için, **ayrıntıları edit'i**seçin.
 
-**E-posta/SMS/Anında İletme/Ses** bölmesine bir ad girin. **E-posta** onay kutusunu seçip geçerli bir e-posta adresi girin.
+E-posta/SMS/Anında İletme/Ses bölmesine bir ad girin. **E-posta** onay kutusunu seçin ve ardından geçerli bir e-posta adresi girin.
 
 ![E-posta eylem grubu yapılandırma](./media/automation-tutorial-update-management/configure-email-action-group.png)
 
-**E-posta/SMS/Push/Voice** bölmesinde **Tamam'ı**tıklatın. Eylem **grubu ekle** bölmesinde **Tamam'ı**tıklatın.
+E-posta/SMS/Push/Voice bölmesinde **Tamam'ı**tıklatın. Eylem grubu ekle bölmesinde **Tamam'ı**tıklatın.
 
 Uyarı e-postasının konusunu özelleştirmek için, **Oluşturma kuralı**altında , **eylemleri Özelleştir**altında, **E-posta konusunu**seçin. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin. Uyarı, güncelleştirme dağıtımının ne zaman başarılı olduğunu ve güncelleştirme dağıtım çalışmasının hangi makinelerin parçası olduğunu bildirir.
 
@@ -132,7 +132,7 @@ Yeni bir VM güncelleştirme dağıtımı zamanlamak için **Güncelleştirme y�
 > Güncelleştirme dağıtımıyla birlikte eklenmesi değiştirilen güncelleştirmeleri belirtemezsiniz.
 >
 
-* **Zamanlama ayarları**: **Zamanlama Ayarları** bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
+* **Zamanlama ayarları**: Zamanlama Ayarları bölmesi açılır. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 
    Ayrıca, dağıtımın bir kez gerçekleşeceğini belirtebilir veya yinelenen bir zamanlama ayarlayabilirsiniz. **Yinelenme** bölümünde **Bir Kez**'i seçin. Varsayılanı 1 gün olarak bırakın ve **Tamam'ı**tıklatın. Bu girişler yinelenen bir zamanlama ayarlar.
 

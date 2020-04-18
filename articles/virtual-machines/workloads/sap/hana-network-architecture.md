@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 33684a6292d7e51c04f6bacc7c49ee5986dbec10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b3bc87b183803c0854542d6925af7429b593d2af
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79502405"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605165"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (Büyük Örnekler) ağ mimarisi
 
@@ -86,7 +86,7 @@ VM'ler ve HANA Büyük Örnek arasında belirleyici ağ gecikmesi sağlamak içi
 Gecikme süresini azaltmak için ExpressRoute Fast Path, HANA Large Instances'ın SAP uygulaması VM'lerini barındıran Azure sanal ağlarına özel bağlantısı için Mayıs 2019'da tanıtıldı ve piyasaya sürüldü. Şimdiye kadar kullanıma alınan çözümdeki en büyük fark, VM'ler ve HANA Büyük Örnekleri arasındaki veri akışlarının artık ExpressRoute ağ geçidinden yönlendirilen olmamasıdır. Bunun yerine, Azure sanal ağının alt ağında atanan VM'ler, ilgili kuruluş kenar yönlendiricisiyle doğrudan iletişim kurar. 
 
 > [!IMPORTANT] 
-> ExpressRoute Hızlı Yol işlevi, SAP uygulaması VM'lerini çalıştıran alt ağların HANA Büyük Örnekleri'ne bağlanan aynı Azure sanal ağında olmasını gerektirir. Doğrudan HANA Büyük Örnek birimlerine bağlı Azure sanal ağına bakan Azure sanal ağlarında bulunan Sanal Ağlarda bulunan Sanal M'ler ExpressRoute Hızlı Yol'dan yararlanmıyor. Sonuç olarak, ExpressRoute devrelerinin bir hub sanal ağına ve SAP uygulama katmanını (sözcüleri) içeren sanal ağlara bağlandığı tipik hub ve kollu sanal ağ tasarımları, ExpressRoute Fast tarafından optimizasyona bakılıyor Yol çalışmaz. Addtion olarak, ExpressRoute Hızlı Yol kullanıcı tanımlı yönlendirme kuralları (UDR) bugün desteklemez. Daha fazla bilgi için [ExpressRoute sanal ağ ağ geçidi ve FastPath'e](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)bakın. 
+> ExpressRoute Hızlı Yol işlevi, SAP uygulaması VM'lerini çalıştıran alt ağların HANA Büyük Örnekleri'ne bağlanan aynı Azure sanal ağında olmasını gerektirir. Doğrudan HANA Büyük Örnek birimlerine bağlı Azure sanal ağına bakan Azure sanal ağlarında bulunan Sanal Ağlarda bulunan Sanal M'ler ExpressRoute Hızlı Yol'dan yararlanmıyor. Sonuç olarak, ExpressRoute devrelerinin bir hub sanal ağına ve SAP uygulama katmanını (sözcüleri) içeren sanal ağlara bağlandığı tipik hub ve kollu sanal ağ tasarımları bakılırken, ExpressRoute Fast Path tarafından optimizasyon çalışmaz. Addtion olarak, ExpressRoute Hızlı Yol kullanıcı tanımlı yönlendirme kuralları (UDR) bugün desteklemez. Daha fazla bilgi için [ExpressRoute sanal ağ ağ geçidi ve FastPath'e](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways)bakın. 
 
 
 ExpressRoute Hızlı Yol'un nasıl yapılandırılabildiğini hakkında daha fazla bilgi için, sanal [ağı HANA'nın büyük örneklerine bağlayın](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-connect-vnet-express-route)belgesini okuyun.    
@@ -151,7 +151,7 @@ Bu senaryolarda geçişli yönlendirmeyi etkinleştirmenin üç yolu vardır:
 - Şirket içi konumlar ve HANA Büyük Örnek birimleri arasında veya farklı bölgelerdeki HANA Büyük Örnek birimleri arasında yönlendirmeyi etkinleştirmek için Bir Linux VM'de [IPTable kurallarını](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) kullanma. IpTable çalıştıran VM'nin HANA Büyük Örnekleri'ne ve şirket içi sanal ağa bağlanan Azure sanal ağında dağıtılması gerekir. VM'nin buna göre boyutlandırılması gerekir, böylece VM'nin ağ kullanılabilirliği beklenen ağ trafiği için yeterlidir. VM ağ bant genişliği hakkında ayrıntılı bilgi için Azure'daki Linux sanal makinelerin makale Boyutlarını kontrol [edin.](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Azure Güvenlik Duvarı,](https://azure.microsoft.com/services/azure-firewall/) şirket içi ve HANA Büyük örnek birimleri arasında doğrudan trafiği etkinleştirmek için başka bir çözüm olacaktır. 
 
-Bu çözümlerin tüm trafiği bir Azure sanal ağı üzerinden yönlendirilir ve bu nedenle trafik kullanılan yumuşak cihazlar veya Azure Ağ Güvenlik Grupları tarafından ayrıca sınırlandırılabilir, böylece belirli IP adresleri veya IP adresi şirket içi ENGELLENEBILIR veya HANA Büyük Örnekleri'ne erişmesine açıkça izin verilebilir. 
+Bu çözümlerin tüm trafiği bir Azure sanal ağı üzerinden yönlendirilir ve bu nedenle trafik kullanılan yumuşak cihazlar veya Azure Ağ Güvenlik Grupları tarafından ayrıca sınırlandırılabilir, böylece şirket içi belirli IP adresleri veya IP adresleri nin ENGELLENMESIne veya HANA Büyük Örnekleri'ne erişilmesine açıkça izin verilebilir. 
 
 > [!NOTE]  
 > Üçüncü taraf ağ cihazları veya IPTable'ları içeren özel çözümlerin uygulanması ve desteğinin Microsoft tarafından sağlanmadığını unutmayın. Destek, kullanılan bileşenin satıcısı veya entegratörü tarafından sağlanmalıdır. 
@@ -182,7 +182,7 @@ ExpressRoute Global Reach'in nasıl etkinleştirileceği hakkında daha fazla bi
 HANA Büyük Örnek doğrudan internet bağlantısı *yok.* Örnek olarak, bu sınırlama işletim sistemi görüntüsünü doğrudan işletim sistemi satıcısına kaydetme yeteneğinizi kısıtlar. Yerel SUSE Linux Enterprise Server Subscription Management Tool sunucunuz veya Red Hat Enterprise Linux Subscription Manager ile çalışmanız gerekebilir.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>VM'ler ve HANA Büyük Örneği arasında veri şifreleme
-HANA Büyük Örnek ve VM'ler arasında aktarılan veriler şifrelenmez. Ancak, tamamen HANA DBMS tarafı ile JDBC/ODBC tabanlı uygulamalar arasındaki değişim için trafiğin şifresini etkinleştirebilirsiniz. Daha fazla bilgi için [sap tarafından bu belgelere](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false)bakın.
+HANA Büyük Örnek ve VM'ler arasında aktarılan veriler şifrelenmez. Ancak, tamamen HANA DBMS tarafı ile JDBC/ODBC tabanlı uygulamalar arasındaki değişim için trafiğin şifresini etkinleştirebilirsiniz. Daha fazla bilgi için [sap tarafından bu belgelere](https://help.sap.com/viewer/102d9916bf77407ea3942fef93a47da8/1.0.11/en-US/dbd3d887bb571014bf05ca887f897b99.html)bakın.
 
 ## <a name="use-hana-large-instance-units-in-multiple-regions"></a>HANA Büyük Örnek birimlerini birden çok bölgede kullanma
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 73bbfad4c0535fa00b1aa53764eb52acb83124f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80680381"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617889"
 ---
 # <a name="network-requirements"></a>Ağ gereksinimleri
 
@@ -28,6 +28,9 @@ Tam ağ gereksinimleri, uzak sahne grafiğindeki değişikliklerin sayısı ve s
 * **İyi Wi-Fi sinyal gücüne** sahip olmak esastır. Mümkünse Wi-Fi erişim noktanıza yakın durun ve istemci aygıtınızla erişim noktaları arasındaki engelleri önleyebilirsiniz.
 * [Bölgeniz](regions.md)için her zaman **en yakın Azure veri merkezine** bağlandığınızdan emin olun. Veri merkezi ne kadar yakınsa, ağ gecikmesi de o kadar düşük olur ve bu da hologram kararlılığı üzerinde büyük bir etkiye sahiptir.
 
+> [!NOTE]
+> Aşağı bant genişliği çoğunlukla sırayla renk ve derinlik bilgileri (her ikisi de 60 Hz, stereo) arasında bölünmüş olan video akışı tarafından tüketilir.
+
 ## <a name="network-performance-tests"></a>Ağ performans testleri
 
 Ağ bağlantınızın kalitesinin Azure Uzaktan İşleme'yi çalıştırmak için yeterli olup olmadığını anlamak istiyorsanız, kullanabileceğiniz mevcut çevrimiçi araçlar vardır. Azure Uzaktan İşlem istemcisi uygulamanızı çalıştırmayı planladığınız aygıtla aynı Wi-Fi'a bağlı oldukça güçlü bir dizüstü bilgisayardan bu çevrimiçi araçları çalıştırmanızı şiddetle öneririz. Düşük güçlü uç nokta cihazlarında önemli farklılıklar gösterdiği kanıtlanan testlerin bir cep telefonu veya HoloLens2 üzerinde çalıştırılan sonuçları genellikle daha az yararlıdır. Dizüstü bilgisayarı yerleştirdiğiniz konum kabaca Azure Uzaktan İşlem istemcisi uygulamanızı çalıştıran aygıtı kullanmayı beklediğiniz yerde olmalıdır.
@@ -39,7 +42,7 @@ Size en yakın sunucuseçin ve testi çalıştırın. Sunucu Azure Uzaktan İşl
    * Azure Uzaktan İşleme için **minimum gereksinim:** Yaklaşık 40 Mbps aşağı akış ve 5 Mbps yukarı akış.
    * Azure Uzaktan İşleme için **önerilir:** Yaklaşık 100 Mbps aşağı akış ve 10 Mbps yukarı akış.
 Testi birden çok kez çalıştırmanızı ve en kötü sonuçları almanızı öneririz.
-1. **Azure veri merkezlerine gecikmeyi ölçen www.azurespeed.com gibi bir araç kullanın.** Size en yakın Azure Uzaktan İşleme tarafından desteklenen Azure veri merkezini seçin [(desteklenen bölgelere](regions.md)bakın) ve bir **gecikme testi**çalıştırın. Gördüğünüz sayılarda bir değişiklik varsa, sonuçları stabilize etmek için biraz zaman verin.
+1. **Azure veri merkezlerine gecikmeyi ölçen www.azurespeed.com gibi bir araç kullanın.** Size en yakın Olan Azure Uzaktan İşleme tarafından desteklenen Azure veri merkezini seçin [(desteklenen bölgelere](regions.md)bakın) ve bir **gecikme testi**çalıştırın. Gördüğünüz sayılarda bir değişiklik varsa, sonuçları stabilize etmek için biraz zaman verin.
    * Azure Uzaktan İşleme için **minimum gereksinim:** Gecikme sürekli olarak 100 ms'den az olmalıdır.
    * Azure Uzaktan İşleme için **önerilir:** Gecikme sürekli olarak 70 ms'den az olmalıdır.
 

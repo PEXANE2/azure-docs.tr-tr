@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 471b26ebc4bd4aecb814ec43c7eba56e3d764fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78402483"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81618068"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning"></a>Azure Machine Learning için CLI uzantısını kullanma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -35,11 +35,30 @@ CLI, Azure Machine Learning SDK'nın yerini almıyor. Otomasyona uygun yüksek p
 
 * CLI'yi kullanmak için bir Azure aboneliğiniz olması gerekir. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
+* Bu belgedeki CLI komutlarını **yerel ortamınızdan**kullanmak için [Azure CLI'ye](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ihtiyacınız vardır.
+
+    Azure Bulut [Kabuğu'nu](https://azure.microsoft.com//features/cloud-shell/)kullanıyorsanız, CLI'ye tarayıcı üzerinden erişilir ve bulutta yaşar.
 
 ## <a name="full-reference-docs"></a>Tam başvuru dokümanları
 
 Azure [CLI'nin azure-cli-ml uzantısı için tam başvuru dokümanlarını](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/?view=azure-cli-latest)bulun.
+
+## <a name="connect-the-cli-to-your-azure-subscription"></a>CLI'yi Azure aboneliğinize bağlayın
+
+> [!IMPORTANT]
+> Azure Bulut Kabuğu'nu kullanıyorsanız, bu bölümü atlayabilirsiniz. Bulut kabuğu, Azure aboneliğinizde oturum açtığınız hesabı kullanarak kimliğinizi otomatik olarak doğrular.
+
+Azure aboneliğinizi CLI'den doğrulamanın birkaç yolu vardır. En temel içinde bir tarayıcı kullanarak interaktif olarak kimlik sağlamaktır. Etkileşimli olarak kimlik doğrulaması yapmak için bir komut satırı veya terminal açın ve aşağıdaki komutu kullanın:
+
+```azurecli-interactive
+az login
+```
+
+CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, bir tarayıcı açmanız ve komut satırındaki yönergeleri izlemeniz gerekir. Yönergeler, yetkilendirme [https://aka.ms/devicelogin](https://aka.ms/devicelogin) koduna göz atma ve girmeyi içerir.
+
+[!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+
+Kimlik doğrulamanın diğer yöntemleri için [Azure CLI ile Oturum Aç'a](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)bakın.
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 

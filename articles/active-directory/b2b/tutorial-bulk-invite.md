@@ -5,38 +5,29 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 2/11/2020
+ms.date: 04/13/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c429648adeb0c81799bff2dca1650de965395a60
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77166446"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81603391"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarının toplu daveti (önizleme)
-
-|     |
-| --- |
-| Bu makalede, Azure Etkin Dizin'in genel önizleme özelliği açıklanmaktadır. Önizlemeler hakkında daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.|
-|     |
-
-> [!NOTE]
-> 22/12/2019 itibariyle Toplu davet kullanıcıları (Önizleme) özelliği geçici olarak devre dışı bırakıldı.
-> Bu özelliğin Azure portalında ne zaman yeniden etkinleştirilecek olacağı şu anda bilinen bir tarih yok. PowerShell kullanarak konuk kullanıcıları toplu olarak davet etmek için [B2B toplu davet öğreticisine](bulk-invite-powershell.md) veya [B2B kodu ve PowerShell örneklerine](code-samples.md)bakın.
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Öğretici: Azure AD B2B işbirliği kullanıcılarını toplu davet etme
 
 Şirket dışındaki ortaklarla çalışmak için Azure Active Directory (Azure AD) B2B işbirliğini kullanıyorsanız, kuruluşunuza aynı anda birden çok konuk kullanıcı davet edebilirsiniz. Bu eğitimde, dış kullanıcılara toplu davetiye göndermek için Azure portalını nasıl kullanacağınızı öğrenirsiniz. Özellikle aşağıdakileri yapın:
 
 > [!div class="checklist"]
-> * Kullanıcı bilgileri ve davet tercihleri ile virgülden ayrılmış bir değer (.csv) dosyası hazırlamak için **Toplu davet kullanıcılarını (Önizleme)** kullanma
+> * Kullanıcı bilgileri ve davet tercihleri ile virgülden ayrılmış bir değer (.csv) dosyası hazırlamak için **Toplu davet kullanıcılarını** kullanma
 > * .csv dosyasını Azure AD'ye yükleme
 > * Kullanıcıların dizine eklendiğini doğrulama
 
-Azure Etkin Dizin'iniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure Etkin Dizin'iniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -47,7 +38,7 @@ Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması 
 1. Kuruluşta Kullanıcı yöneticisi olan bir hesapla Azure portalında oturum açın.
 2. Gezinti bölmesinde Azure **Etkin Dizin'i**seçin.
 3. **Yönet**altında, **Kullanıcılar** > **Toplu davet**seçin.
-4. Toplu **davet kullanıcıları (Önizleme)** sayfasında, davet özelliklerine sahip geçerli bir .csv dosyası almak için **İndir'i** seçin.
+4. Toplu **davet kullanıcıları** sayfasında, davet özelliklerine sahip geçerli bir .csv dosyası almak için **İndir'i** seçin.
 
     ![Toplu davet indirme düğmesi](media/tutorial-bulk-invite/bulk-invite-button.png)
 
@@ -63,10 +54,10 @@ Davetleri gönderebileceğiniz iki veya daha fazla test e-posta hesabı olması 
    > **Özelleştirilmiş davet iletisinde** virgül kullanmayın, çünkü iletinin başarıyla ayrıştırılmasını engeller.
 
 6. Dosyayı kaydedin.
-7. Toplu **davet kullanıcıları (Önizleme)** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde,.csv dosyasının doğrulanması başlar. 
+7. Toplu **davet kullanıcıları** sayfasında, **csv dosyanızı yükleyin**altında, dosyaya göz atın. Dosyayı seçtiğinizde,.csv dosyasının doğrulanması başlar. 
 8. Dosya içeriği doğrulandığında, **Dosyanın başarıyla yüklendiğini**görürsünüz. Hatalar varsa, işi göndermeden önce bunları düzeltmeniz gerekir.
 9. Dosyanız doğrulamadan geçtiğinde, davetleri ekleyen Azure toplu işlemini başlatmak için **Gönder'i** seçin. 
-10. İş durumunu görüntülemek **için, her işlemin durumunu görüntülemek için burayı tıklatın'ı**seçin. Veya **Etkinlik** bölümünde **Toplu işlem sonuçlarını (Önizleme)** seçebilirsiniz. Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
+10. İş durumunu görüntülemek **için, her işlemin durumunu görüntülemek için burayı tıklatın'ı**seçin. Veya **Etkinlik** bölümünde **Toplu işlem sonuçlarını** seçebilirsiniz. Toplu işlemdeki her satır öğesi yle ilgili ayrıntılar için **# Success**, **# Failure**veya Toplam **İstek** sütunları altındaki değerleri seçin. Hatalar oluştuysa, hata nedenleri listelenir.
 
     ![Toplu işlem sonuçları örneği](media/tutorial-bulk-invite/bulk-operation-results.png)
 

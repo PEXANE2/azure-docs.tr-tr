@@ -8,12 +8,12 @@ ms.author: spelluru
 ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 8a72d20101aacaf59b4be5c4a231b132237113f3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: d90bf8efab28624672dcedb5bf53d45052dd9123
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633924"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605117"
 ---
 # <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Azure Etkinlik Hub'ları için Apache Kafka geliştirici kılavuzu
 Bu makalede, Apache Kafka uygulamalarınızı Azure Etkinlik Hub'larıyla nasıl tümleştireceğinizi açıklayan makalelere bağlantılar sağlanmaktadır. 
@@ -74,9 +74,17 @@ Belgelerimizde aşağıdaki Nasıl YapIlen Ler kılavuzuna bakın:
 | [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md) | Spark uygulamanızı gerçek zamanlı akış için Event Hub'larına bağlamanızda size yol sağlar. |
 | [Apache Flink'i bir olay hub'ına bağlama](event-hubs-kafka-flink-tutorial.md) | Apache Flink'i protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan bir etkinlik hub'ına nasıl bağlayabileceğinizi gösterir. |
 | [Apache Kafka Connect'i etkinlik merkeziyle tümleştir (Önizleme)](event-hubs-kafka-connect-tutorial.md) | Kafka Connect'i bir etkinlik merkeziyle bütünleştirme ve temel FileStreamSource ve FileStreamSink konektörlerini dağıtma konusunda size yol açar. |
-| [Akka Akışlarını bir etkinlik merkezine bağlayın](event-hubs-kafka-akka-streams-tutorial.md) | Akka Akışları'nı protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan bir etkinlik merkezine nasıl bağlayabileceğinizi gösterir. |
+| [Akka Streams’i bir olay hub’ına bağlama](event-hubs-kafka-akka-streams-tutorial.md) | Akka Akışları'nı protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan bir etkinlik merkezine nasıl bağlayabileceğinizi gösterir. |
 | [Azure Etkinlik Hub'ları ile Apache Kafka için Bahar Önyükleme Başlatıcısını Kullanma](/azure/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Apache Kafka'yı Azure Etkinlik Hub'larıyla kullanmak için Bahar Önyükleme Başlatıcısı ile oluşturulan Java tabanlı Bir Bahar Bulut Akışı Bağlayıcısı'nın nasıl yapılandırılabildiğini gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Hızlı başlatma ve öğreticiler klasörleri altında GitHub repo [azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) örnekleri gözden geçirin.
+
+Ayrıca, aşağıdaki makalelere bakın:
+
+- [Etkinlik Hub'ları için Apache Kafka sorun giderme kılavuzu](apache-kafka-troubleshooting-guide.md)
+- [Sık sorulan sorular - Apache Kafka için Etkinlik Hub'ları](apache-kafka-frequently-asked-questions.md)
+- [Etkinlik Hub'ları için Apache Kafka geçiş kılavuzu](apache-kafka-migration-guide.md)
+
+
 

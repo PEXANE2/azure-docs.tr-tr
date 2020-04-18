@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: 8aefe851708c0b8d8780d03e4364e034e783bf4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c52f2df34faf441ab70b48b11bbc393ebcecb65
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297227"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617617"
 ---
 # <a name="call-service-endpoints-over-http-or-https-from-azure-logic-apps"></a>Azure Logic Apps'tan HTTP veya HTTPS üzerinden hizmet bitiş noktalarını arama
 
@@ -59,7 +59,7 @@ Bu makalede, mantık uygulamanızın iş akışına bir HTTP tetikleyicisi veya 
 
 Bu yerleşik tetikleyici, bitiş noktası için belirtilen URL'ye BIR HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. Boş mantık uygulamanızı Logic App Designer'da açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Boş mantık uygulamanızı Logic App Designer'da açın.
 
 1. Tasarımcının arama kutusunun altında **Yerleşik'i**seçin. Arama kutusuna filtreniz olarak girin. `http` **Tetikleyiciler** listesinden **HTTP** tetikleyicisini seçin.
 
@@ -88,7 +88,7 @@ Bu yerleşik tetikleyici, bitiş noktası için belirtilen URL'ye BIR HTTP çağ
 
 Bu yerleşik eylem, bitiş noktası için belirtilen URL'ye BIR HTTP çağrısı yapar ve bir yanıt döndürür.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. Mantık uygulamanızı Logic App Designer'da açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Mantık uygulamanızı Logic App Designer'da açın.
 
    Bu örnekte ilk adım olarak HTTP tetikleyicisi kullanır.
 
@@ -140,8 +140,8 @@ HTTP isteklerinde `multipart/form-data` türü olan içeriği işlemek için, bu
 Aşağıda, temel iş akışı tanımında HTTP eyleminin JSON tanımını gösteren aynı örnek verilmiştir:
 
 ```json
-{
-   "HTTP_action": {
+"HTTP_action": {
+   "inputs": {
       "body": {
          "$content-type": "multipart/form-data",
          "$multipart": [

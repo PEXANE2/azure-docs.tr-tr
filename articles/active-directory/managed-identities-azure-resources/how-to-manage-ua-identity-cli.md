@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/15/2019
+ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e8587562ff452373fe2ee3b98fa20309e77cc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266591"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639770"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>Azure CLI'yi kullanarak kullanıcı tarafından atanan yönetilen bir kimlik oluşturun, listelenin veya silin
 
@@ -37,6 +37,12 @@ Bu makalede, Azure CLI kullanarak kullanıcı tarafından atanan yönetilen bir 
     - Azure portalından [Azure Bulut Shell'i](../../cloud-shell/overview.md) kullanın (sonraki bölüme bakın).
     - Her kod bloğunun sağ üst köşesinde bulunan "Try It" düğmesi aracılığıyla gömülü Azure Bulut Kabuğu'nu kullanın.
     - Yerel bir CLI konsolu kullanmak isterseniz [Azure CLI'nin](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.13 veya sonraki) en son sürümünü yükleyin. Kullanıcı tarafından atanan `az login`yönetilen kimliği dağıtmak istediğiniz Azure aboneliğiyle ilişkili bir hesabı kullanarak Azure'da oturum açın.
+
+
+> [!NOTE]
+> CLI kullanarak bir uygulama servivce ilkesi ni kullanırken kullanıcı izinlerini değiştirmek için, CLI'nin bazı bölümleri Grafik API'sine karşı GET isteklerini gerçekleştirirken Azure AD Graph API'deki hizmet temel ek izinlerini sağlamanız gerekir. Aksi takdirde, 'İşlemi tamamlamak için yetersiz ayrıcalıklar' iletisi alabilirsiniz. Bunu yapmak için Azure Active Directory'de Uygulama kaydına girmeniz, uygulamanızı seçmeniz, API izinlerini tıklamanız, aşağı kaydırmanız ve Azure Etkin Dizin Grafiği'ni seçmeniz gerekir. Buradan Uygulama izinlerini seçin ve ardından uygun izinleri ekleyin. 
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

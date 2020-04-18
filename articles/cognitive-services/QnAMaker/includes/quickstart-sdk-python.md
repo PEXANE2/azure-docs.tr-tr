@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 03aa3919e1da982bb8a8c235bb598f5b94df1ebf
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 13dcdec4eff72f97e1af8ecb26e32c0ef5f881fd
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986673"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81637069"
 ---
 
 Python için QnA Maker istemci kitaplığını kullanın:
@@ -40,11 +40,11 @@ pip install azure-cognitiveservices-knowledge-qnamaker
 
 ## <a name="object-model"></a>Nesne modeli
 
-Anahtarınızla bir [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.qnamakerclient?view=azure-python) nesnesi oluşturmak için bitiş noktanızla kullanın.
+Anahtarınızla bir [CognitiveServicesCredentials](https://docs.microsoft.com/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python) nesnesi oluşturun ve bir [QnAMakerClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.qn_amaker_client?view=azure-python) nesnesi oluşturmak için bitiş noktanızla kullanın.
 
-İstemci oluşturulduktan sonra, bilgi tabanınızı oluşturmak, yönetmek ve yayımlamak için [Bilgi tabanını](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) kullanın.
+İstemci oluşturulduktan sonra, bilgi tabanınızı oluşturmak, yönetmek ve yayımlamak için [Bilgi tabanını](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python) kullanın.
 
-Hemen işlemler için, bir yöntem genellikle durumu belirten bir JSON nesnesi döndürür. Uzun süren işlemler için yanıt, işlem kimliğidir. [Müşteriyi ara. Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.operations%28class%29?view=azure-python#get-details-operation-id--custom-headers-none--raw-false----operation-config-) yöntemi ile işlem kimliği [ile istek durumunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)belirlemek için .
+Hemen işlemler için, bir yöntem genellikle durumu belirten bir JSON nesnesi döndürür. Uzun süren işlemler için yanıt, işlem kimliğidir. [Müşteriyi ara. Operations.getDetails](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operationstatetype?view=azure-python) yöntemi ile işlem kimliği [ile istek durumunu](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operationstatetype?view=azure-python)belirlemek için .
 
 
 ## <a name="code-examples"></a>Kod örnekleri
@@ -82,15 +82,15 @@ Ardından, anahtarınızla birlikte bir CognitiveServicesCredentials nesnesi olu
 
 ## <a name="create-a-knowledge-base"></a>Bilgi bankası oluşturma
 
- [Bilgi bankası işlemleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python) nesnesi almak için istemci nesnesini kullanın.
+ [Bilgi bankası işlemleri](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations?view=azure-python) nesnesi almak için istemci nesnesini kullanın.
 
-Bir bilgi [bankası, CreateKbDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.createkbdto?view=azure-python) nesnesi için soru ve yanıt çiftlerini üç kaynaktan saklar:
+Bir bilgi [bankası, CreateKbDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.create_kb_dto?view=azure-python) nesnesi için soru ve yanıt çiftlerini üç kaynaktan saklar:
 
-* **Editoryal içerik**için [QnADTO nesnesini](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.qnadto?view=azure-python) kullanın.
-* **Dosyalar**için [FileDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.filedto?view=azure-python) nesnesini kullanın.
+* **Editoryal içerik**için [QnADTO nesnesini](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.qn_adto?view=azure-python) kullanın.
+* **Dosyalar**için [FileDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.file_dto?view=azure-python) nesnesini kullanın.
 * **URL'ler**için dizeleri bir listesini kullanın.
 
-[Oluşturma](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#create-create-kb-payload--custom-headers-none--raw-false----operation-config-) yöntemini arayın ve döndürülen işlem kimliğini [operations.getDetails](#get-status-of-an-operation) yöntemine geçirin.
+[Oluşturma](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#create-create-kb-payload--custom-headers-none--raw-false----operation-config-) yöntemini arayın ve döndürülen işlem kimliğini [operations.getDetails](#get-status-of-an-operation) yöntemine geçirin.
 
 [!code-python[Create a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=createkb&highlight=15)]
 
@@ -98,7 +98,7 @@ Bir bilgi tabanını başarılı bir şekilde oluşturmak için yukarıdaki kodd
 
 ## <a name="update-a-knowledge-base"></a>Bilgi bankası güncelleştirme
 
-Bilgi bankası kimliğini ve [ekleme,](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoadd?view=azure-python) [güncelleştirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtoupdate?view=azure-python)ve [güncelleştirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#update-kb-id--update-kb--custom-headers-none--raw-false----operation-config-) yöntemine DTO nesnelerini [silmek](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdtodelete?view=azure-python) içeren bir [UpdateKbOperationDTO'yu](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.updatekboperationdto?view=azure-python) geçirerek bilgi tabanını güncelleştirebilirsiniz. Güncelleştirmenin başarılı olup olmadığını belirlemek için [İşlem.getDetail](#get-status-of-an-operation) yöntemini kullanın.
+Bilgi bankası kimliğini ve [ekleme,](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.update_kb_operation_dto_add?view=azure-python) [güncelleştirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.update_kb_operation_dto_update?view=azure-python)ve [güncelleştirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#update-kb-id--update-kb--custom-headers-none--raw-false----operation-config-) yöntemine DTO nesnelerini [silmek](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.update_kb_operation_dto_delete?view=azure-python) içeren bir [UpdateKbOperationDTO'yu](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.update_kb_operation_dto?view=azure-python) geçirerek bilgi tabanını güncelleştirebilirsiniz. Güncelleştirmenin başarılı olup olmadığını belirlemek için [İşlem.getDetail](#get-status-of-an-operation) yöntemini kullanın.
 
 [!code-python[Update a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=updatekb&highlight=2)]
 
@@ -106,25 +106,25 @@ Bir bilgi tabanını [`_monitor_operation`](#get-status-of-an-operation) başar�
 
 ## <a name="publish-a-knowledge-base"></a>Bilgi bankası yayımlama
 
-Yayımlama yöntemini kullanarak bilgi tabanını [yayımlayın.](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) Bu, bilgi bankası kimliği yle başvurulan geçerli kaydedilmiş ve eğitilmiş modeli alır ve bunu bir bitiş noktasında yayımlar.
+Yayımlama yöntemini kullanarak bilgi tabanını [yayımlayın.](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#publish-kb-id--custom-headers-none--raw-false----operation-config-) Bu, bilgi bankası kimliği yle başvurulan geçerli kaydedilmiş ve eğitilmiş modeli alır ve bunu bir bitiş noktasında yayımlar.
 
 [!code-python[Publish a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=publishkb&highlight=2)]
 
 ## <a name="download-a-knowledge-base"></a>Bilgi tabanı indirin
 
-[QnADocumentsDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.qnadocumentsdto?view=azure-python)listesi olarak veritabanını indirmek için [indirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#download-kb-id--environment--custom-headers-none--raw-false----operation-config-) yöntemini kullanın. Bu yöntemin sonucu bir TSV dosyası olmadığından, bu Durum **QnA** Maker portalının Ayarlar sayfasından dışa aktarışına eşdeğer _değildir._
+[QnADocumentsDTO](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.qn_adocuments_dto?view=azure-python)listesi olarak veritabanını indirmek için [indirme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#download-kb-id--environment--custom-headers-none--raw-false----operation-config-) yöntemini kullanın. Bu yöntemin sonucu bir TSV dosyası olmadığından, bu Durum **QnA** Maker portalının Ayarlar sayfasından dışa aktarışına eşdeğer _değildir._
 
 [!code-python[Download a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=downloadkb&highlight=2)]
 
 ## <a name="delete-a-knowledge-base"></a>Bilgi bankasını silme
 
-Bilgi bankası kimliğinin bir parametresi ile [silme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak bilgi tabanını silin.
+Bilgi bankası kimliğinin bir parametresi ile [silme](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.operations.knowledgebase_operations.knowledgebaseoperations?view=azure-python#delete-kb-id--custom-headers-none--raw-false----operation-config-) yöntemini kullanarak bilgi tabanını silin.
 
 [!code-python[Delete a knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py?name=deletekb&highlight=2)]
 
 ## <a name="get-status-of-an-operation"></a>İşlemin durumunu alma
 
-Oluşturma ve güncelleştirme gibi bazı yöntemler, işlemin tamamlanmasını beklemek yerine bir [işlemin](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.models.operation%28class%29?view=azure-python) döndürülecek kadar zaman alabilir. Özgün yöntemin durumunu belirlemek için yoklama (yeniden deneme mantığıyla) için işlem kimliğini kullanın.
+Oluşturma ve güncelleştirme gibi bazı yöntemler, işlemin tamamlanmasını beklemek yerine bir [işlemin](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker.authoring.models.operation.operation?view=azure-python) döndürülecek kadar zaman alabilir. Özgün yöntemin durumunu belirlemek için yoklama (yeniden deneme mantığıyla) için işlem kimliğini kullanın.
 
 Aşağıdaki kod bloğundaki _setTimeout_ çağrısı, eşzamanlı kodu simüle etmek için kullanılır. Bunu yeniden deneme mantığıyla değiştirin.
 

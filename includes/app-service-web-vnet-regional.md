@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
-ms.openlocfilehash: 7f2b011b2de5af0e4ace9cbeb4399911d8e83b7f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312848"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604859"
 ---
 Bölgesel VNet Tümleştirme'yi kullanmak uygulamanızın şu şekilde erişimini sağlar:
 
@@ -19,7 +19,7 @@ Bölgesel VNet Tümleştirme'yi kullanmak uygulamanızın şu şekilde erişimin
 * Azure ExpressRoute bağlantılarında kaynaklar.
 * Entegre olduğunuz VNet'teki kaynaklar.
 * Azure ExpressRoute bağlantılarını içeren eşli bağlantılar arasındaki kaynaklar.
-* Özel uç noktalar - Not: DNS, Azure DNS özel bölgeleri kullanmak yerine ayrı olarak yönetilmelidir.
+* Özel uç noktalar 
 
 Aynı bölgedeki VNet'lerle VNet Tümleştirme'yi kullandığınızda, aşağıdaki Azure ağ özelliklerini kullanabilirsiniz:
 
@@ -34,7 +34,7 @@ Varsayılan olarak, uygulamanız VNet'inize yalnızca RFC1918 trafiğini yönlen
    ![Uygulama ayarını sağlama][4]
 
 1. **Tamam'ı**seçin.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 Tüm giden trafiğinizi VNet'inize yönlendirirseniz, bu trafik, entegrasyon alt ağınıza uygulanan NSG'lere ve ÜD'lere bağlıdır. Tüm giden trafiğinizi VNet'inize yönlendirdiğinizde, trafiği başka bir yere gönderecek rotalar sağlamadığınız sürece, giden adresleriniz hala uygulama özelliklerinizde listelenen giden adreslerdir.
 
@@ -50,7 +50,7 @@ Aynı bölgede VNet'lerle VNet Tümleştirmesi kullanmanın bazı sınırlamalar
 * VNets ile yalnızca uygulamayla aynı abonelikte entegre olabilirsiniz.
 * Uygulama Hizmeti planı başına yalnızca bir bölgesel VNet Tümleştirme'niz olabilir. Aynı Uygulama Hizmeti planındaki birden çok uygulama aynı VNet'i kullanabilir.
 * Bölgesel VNet Tümleştirmesi kullanan bir uygulama varken bir uygulamanın veya planın aboneliğini değiştiremezsiniz.
-* Uygulamanız Azure DNS Özel Bölgeleri'ndeki adresleri çözemez.
+* Uygulamanız Azure DNS Özel Bölgeleri'ndeki adresleri yapılandırma değişiklikleri olmadan çözemez
 
 Her plan örneği için bir adres kullanılır. Uygulamanızı beş örnekle ölçeklendirseniz, beş adres kullanılır. Atamadan sonra alt ağ boyutu değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeklere uyacak kadar büyük bir alt ağ kullanmanız gerekir. 64 adresli bir /26 önerilen boyutdur. 64 adresli bir /26, 30 örnekli bir Premium planı barındırır. Bir planı yukarı veya aşağı ölçeklendirdiğinizde, kısa bir süre için iki kat daha fazla adrese ihtiyacınız vardır.
 
@@ -83,9 +83,22 @@ Tüm giden trafiği şirket içinde yönlendirmek istiyorsanız, tüm giden traf
 
 Kenarlık Ağ Geçidi Protokolü (BGP) yolları da uygulama trafiğinizi etkiler. ExpressRoute ağ geçidi gibi bir şeyden BGP rotalarınız varsa, uygulamagiden trafiğiniz etkilenir. Varsayılan olarak, BGP rotaları yalnızca RFC1918 hedef trafiğinizi etkiler. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmışsa, tüm giden trafik BGP rotalarınızdan etkilenebilir.
 
+### <a name="azure-dns-private-zones"></a>Azure DNS Özel Bölgeler 
+
+Uygulamanız VNet'inizle entegre olduktan sonra, VNet'inizin yapılandırıldığının aynısını kullanır. Varsayılan olarak, uygulamanız Azure DNS Özel Bölgeleri ile çalışmaz. Azure DNS Özel Bölgeleri ile çalışmak için aşağıdaki uygulama ayarlarını eklemeniz gerekir:
+
+1. değeri 168.63.129.16 olan WEBSITE_DNS_SERVER 
+1. değeri 1 olan WEBSITE_VNET_ROUTE_ALL
+
+Bu ayarlar, uygulamanızın Azure DNS özel bölgelerini kullanmasını sağlamanın yanı sıra, uygulamanızdan gelen tüm çağrılarınızı VNet'inize gönderir.
+
+### <a name="private-endpoints"></a>Özel uç noktalar
+
+[Özel Bitiş Noktaları'na][privateendpoints]arama yapmak istiyorsanız, Azure DNS Özel Bölgeleri ile tümleştirmeniz veya uygulamanız tarafından kullanılan DNS sunucusundaki özel bitiş noktasını yönetmeniz gerekir. 
 
 <!--Image references-->
 [4]: ../includes/media/web-sites-integrate-with-vnet/vnetint-appsetting.png
 
 <!--Links-->
 [VNETnsg]: https://docs.microsoft.com/azure/virtual-network/security-overview/
+[privateendpoints]: https://docs.microsoft.com/azure/app-service/networking/private-endpoint

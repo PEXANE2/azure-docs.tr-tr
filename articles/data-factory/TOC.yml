@@ -553,8 +553,6 @@
           href: data-factory-service-identity.md
     - name: İzleme ve yönetme
       items:
-        - name: Görsel olarak izleme
-          href: monitor-visually.md
         - name: Azure İzleyici ile izleme
           href: monitor-using-azure-monitor.md
         - name: SDK’lar ile izleme

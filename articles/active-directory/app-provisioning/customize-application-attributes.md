@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7003899b59e409a785c3a50e89aae6674e377b4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bfee19e9cfd1def71ebad82c2210ffc10146c896
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264095"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639754"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory'deki SaaS uygulamaları için kullanıcı sağlama öznitelik eşlemelerini özelleştirme
 
@@ -143,7 +143,10 @@ SCIM RFC bir çekirdek kullanıcı ve grup şeması tanımlarken, aynı zamanda 
    4. **AppName için Öznitelik Listesini Edit'i**seçin.
    5. Öznitelik listesinin en altında, sağlanan alanlara özel öznitelik hakkında bilgi girin. Ardından **Öznitelik Ekle'yi**seçin.
 
-SCIM uygulamaları için öznitelik adı aşağıdaki örnekte gösterilen deseni izlemeli. "CustomExtensionName" ve "CustomAttribute" uygulamanızın gereksinimlerine göre özelleştirilebilir, örneğin: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute veya urn:ietf:params:scim:schemas:extension: CustomExtensionName:2.0:User.CustomAttributeName:value
+SCIM uygulamaları için öznitelik adı aşağıdaki örnekte gösterilen deseni izlemeli. "CustomExtensionName" ve "CustomAttribute" örneğin, uygulamanızın gereksinimlerine göre özelleştirilebilir:  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User:CustomAttribute 
+ * urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute  
+ * urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User.CustomAttributeName:value
 
 Bu yönergeler yalnızca SCIM özellikli uygulamalar için geçerlidir. ServiceNow ve Salesforce gibi uygulamalar SCIM kullanılarak Azure AD ile tümleşik değildir ve bu nedenle özel bir öznitelik eklerken bu özel ad alanını gerektirmezler.
 
@@ -313,7 +316,7 @@ Bu seçeneğin seçilmesi, sağlama hizmeti çalışırken tüm kullanıcıları
 - Öznitelik eşlemelerinin güncelleştirilmesi, eşitleme döngüsünün performansı üzerinde bir etkiye sahiptir. Öznitelik eşleme yapılandırmasına yapılan bir güncelleştirme, yönetilen tüm nesnelerin yeniden değerlendirilmesini gerektirir.
 - Önerilen en iyi yöntem, öznitelik haritalamalarınızda ardışık değişikliklerin sayısını en az düzeyde tutmaktır.
 - Bir uygulamaya sağlanacak bir fotoğraf özniteliği eklemek, fotoğrafı eşitlemek için biçimini belirtemediğiniz için bugün desteklenmez. [Kullanıcı Sesi'nde](https://feedback.azure.com/forums/169401-azure-active-directory) bu özelliği talep edebilirsiniz
-- Öznitelik IsSoftDeleted genellikle bir uygulama için varsayılan eşlemelerin bir parçasıdır. IsSoftdeleted dört senaryodan birinde doğru olabilir (kullanıcı uygulamadan atanmamış olması nedeniyle kapsam dışındadır, kullanıcı kapsam dışında bir kapsam filtresi karşılanamaz, kullanıcı Azure AD'de yumuşak silinmiş veya AccountEnabled özelliği yanlış olarak ayarlanmıştır kullanıcı üzerinde). 
+- Öznitelik IsSoftDeleted genellikle bir uygulama için varsayılan eşlemelerin bir parçasıdır. IsSoftdeleted dört senaryodan birinde doğru olabilir (kullanıcı uygulamadan atanmadı nedeniyle kapsam dışındadır, kullanıcı kapsam dışında dır, kapsam dışıdır, kapsam dışıdır, kullanıcı Azure AD'de yumuşak silinmiş veya AccountEnabled özelliği kullanıcı üzerinde yanlış olarak ayarlanmıştır). 
 - Azure AD sağlama hizmeti, null değerleri sağlamayı desteklemez
 
 ## <a name="next-steps"></a>Sonraki adımlar

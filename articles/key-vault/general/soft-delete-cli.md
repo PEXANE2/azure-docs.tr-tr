@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c8e4083035d87696ec44d06a62bc55ba721c6f03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae6ddac61ecbcef41704f71ed5188fc547a996a3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422931"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81616598"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Key Vault geçici silmeyi CLI ile kullanma
 
@@ -46,7 +46,7 @@ Key Vault işlemleri, rol tabanlı erişim denetimi (RBAC) izinleri ile aşağı
 Silinmiş bir anahtar kasasının veya anahtar kasasında depolanan nesnelerin kurtarılmasına izin vermek için "yumuşak silme"yi etkinleştirirsiniz.
 
 > [!IMPORTANT]
-> Anahtar kasasında 'yumuşak silme'yi etkinleştirmek geri döndürülemez bir eylemdir. Yumuşak silme özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
+> Anahtar kasasında 'yumuşak silme'yi etkinleştirmek geri dönüşü olmayan bir eylemdir. Yumuşak silme özelliği "true" olarak ayarlandıktan sonra değiştirilemez veya kaldırılamaz.  
 
 ### <a name="existing-key-vault"></a>Mevcut anahtar kasası
 

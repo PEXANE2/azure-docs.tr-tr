@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: 7e0e904b182a57a51b5d76f0acebc13bce5902b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38ed48df4d681543cc30daccf46b98635d973b89
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78944425"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639903"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Etki Alanı Hizmetleri yönetilen etki alanında nesneler ve kimlik bilgileri nasıl eşitlenir?
 
@@ -31,6 +31,8 @@ Aşağıdaki diyagram, Azure AD DS, Azure AD ve isteğe bağlı şirket içi AD 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Azure AD'den Azure AD DS'ye eşitleme
 
 Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri karmaları Azure AD'den Azure AD DS'ye tek bir şekilde eşitlenir. Bu eşitleme işlemi otomatiktir. Bu eşitleme işlemini yapılandırmanız, izlemeniz veya yönetmeniz gerekmez. İlk eşitleme, Azure AD dizinindeki nesnelerin sayısına bağlı olarak birkaç saat ile birkaç gün arasında sürebilir. İlk eşitleme tamamlandıktan sonra, parola veya öznitelik değişiklikleri gibi Azure AD'de yapılan değişiklikler otomatik olarak Azure AD DS'ye eşitlenir.
+
+Bir kullanıcı Azure AD'de oluşturulduğunda, Azure AD'de parolasını değiştirene kadar Azure AD DS ile senkronize edilmez. Bu parola değiştirme işlemi, Kerberos ve NTLM kimlik doğrulamasının parola işlenmelerinin Azure AD'de oluşturulmasına ve depolanmasına neden olur. Parola hasretleri, Azure AD DS'deki bir kullanıcının kimliğini başarıyla doğrulamak için gereklidir.
 
 Senkronizasyon işlemi tek yönlü / tasarım tarafından tek yönlüdür. Azure AD DS'deki değişikliklerin Azure AD'ye geri dönmesi yoktur. Azure AD DS yönetilen etki alanı, oluşturabileceğiniz özel OS'ler dışında büyük ölçüde salt okunur. Azure AD DS yönetilen bir etki alanında kullanıcı özniteliklerinde, kullanıcı parolalarında veya grup üyeliklerinde değişiklik yapamazsınız.
 
@@ -134,7 +136,7 @@ Azure AD DS'yi etkinleştirdiğinizde, NTLM + Kerberos kimlik doğrulaması içi
 
 Eski parola hehe'leri daha sonra Azure AD'den Azure AD tarafından yönetilen bir etki alanı için etki alanı denetleyicilerine eşitlenir. Azure AD DS'deki bu yönetilen etki alanı denetleyicilerinin diskleri istirahatte şifrelenir. Bu parola kalıpları, parolaların şirket içi AD DS ortamında depolanması na benzer şekilde bu etki alanı denetleyicilerinde depolanır ve güvenli hale gelir.
 
-Yalnızca buluta özel Azure REKLAM ortamları için, gerekli parola hashelerinin Oluşturulabilmesi ve Azure AD'de depolanabilmesi için [kullanıcıların parolalarını sıfırlamaları/değiştirmeleri gerekir.](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) Azure AD Etki Alanı Hizmetlerini etkinleştirdikten sonra Azure AD Ad'de oluşturulan tüm bulut kullanıcı hesapları için parola kalıpları oluşturulur ve NTLM ve Kerberos uyumlu biçimlerde depolanır. Bu yeni hesapların parolalarını sıfırlamaları veya değiştirmeleri gerekmez ve eski parola yongaları oluşturur.
+Yalnızca buluta özel Azure REKLAM ortamları için, gerekli parola hashelerinin Oluşturulabilmesi ve Azure AD'de depolanabilmesi için [kullanıcıların parolalarını sıfırlamaları/değiştirmeleri gerekir.](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) Azure AD Etki Alanı Hizmetlerini etkinleştirdikten sonra Azure AD Ad'de oluşturulan tüm bulut kullanıcı hesapları için parola kalıpları oluşturulur ve NTLM ve Kerberos uyumlu biçimlerde depolanır. Tüm bulut kullanıcı hesaplarının Azure AD DS ile eşitlenmeden önce parolalarını değiştirmesi gerekir.
 
 Azure AD Connect'i kullanarak şirket içi AD DS ortamından senkronize edilen karma kullanıcı hesapları için, [NTLM ve Kerberos uyumlu biçimlerde parola karmalarını eşitlemek için Azure AD Connect'i yapılandırmanız](tutorial-configure-password-hash-sync.md)gerekir.
 

@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 67e966e3b3dd274e993797ed37e17c5490d632c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416482"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606235"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Veri Fabrikası Pencere Dönüşümü
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Pencere dönüşümü, veri akışlarınızdaki sütunların pencere tabanlı toplayıcılarını tanımladığınız yerdir. İfade Oluşturucu'nda, LEAD, LAG, NTILE, CUMEDIST, RANK, vb. gibi veri veya zaman pencerelerini (SQL OVER yan tümcesi) temel alan farklı türde toplamalar tanımlayabilirsiniz. Çıktınızda bu toplamaları içeren yeni bir alan oluşturulur. İsteğe bağlı grup tabanlı alanları da ekleyebilirsiniz.
 

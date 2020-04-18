@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: c1b70aaef49cc2b993c873509dc935d71069efa2
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: cdc739c7464b3deb87faaaabfd8d657ae8c28678
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985924"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617763"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python'da eğitim çalıştırmayı başlatın, izleyin ve iptal edin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ Denemenizin çalışmasını başlatmak için aşağıdaki adımları kullanın:
     az login
     ```
     
-    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
+    [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
 1. Çalışma komut dosyanızı içeren klasöre bir çalışma alanı yapılandırması takın. Azure `myworkspace` Makine Öğrenimi çalışma alanınızla değiştirin. Çalışma `myresourcegroup` alanınızı içeren Azure kaynak grubuyla değiştirin:
 

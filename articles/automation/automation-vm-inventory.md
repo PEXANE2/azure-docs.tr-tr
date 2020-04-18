@@ -6,12 +6,12 @@ ms.subservice: change-inventory-management
 keywords: stok, otomasyon, değişiklik, izleme
 ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0627d2daa70c276535dc43b722e22e1d73b0c8d2
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844828"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617366"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Bir Azure sanal makinesini stok toplama ile yönetme
 
@@ -30,7 +30,7 @@ Bu makalede, çözümü yapılandırmak için bir VM'niz olduğunu varsayar. Bir
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Sanal makine kaynak sayfasından stok toplamayı etkinleştirme
 
@@ -53,9 +53,9 @@ Dağıtım tamamlandığında durum çubuğu kaybolur. Sistem stok verilerini to
 
 Varsayılan olarak yazılım, Windows hizmetleri ve Linux daemon'ları toplama işlemi için yapılandırılmıştır. Windows kayıt defteri ve dosya stoğunu toplamak için stok toplama ayarlarını yapılandırın.
 
-1. **Stok** görünümünde, pencerenin üst kısmındaki **Ayarları Edit** düğmesini seçin.
-2. Yeni bir toplama ayarı eklemek için **Windows Kayıt Defteri**, **Windows Dosyaları** ve **Linux Dosyaları** sekmelerini seçerek eklemek istediğiniz ayar kategorisine gidin.
-3. Uygun kategoriyi seçin ve pencerenin üst kısmında **Ekle'yi** tıklatın.
+1. Stok sayfasında, sayfanın üst kısmındaki **Ayarları Düzelt'i** tıklatın.
+2. Yeni bir koleksiyon ayarı eklemek **için, Windows Kayıt Defteri,** **Windows Dosyaları**veya Linux **Dosyaları** sekmesini seçerek eklemek istediğiniz ayar kategorisine gidin.
+3. Uygun kategoriyi seçin ve sayfanın üst kısmında **Ekle'yi** tıklatın.
 
 Aşağıdaki tablolar, çeşitli kategoriler için yapılandırılabilen her özellik hakkında bilgi sağlar.
 
@@ -72,23 +72,23 @@ Aşağıdaki tablolar, çeşitli kategoriler için yapılandırılabilen her öz
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Etkin     | Ayarın uygulanmış olup olmadığını belirler        |
-|Öğe Adı     | İzlenecek dosyanın kolay adı        |
-|Grup     | Dosyaları mantıksal bir biçimde gruplandırmaya yönelik grup adı        |
-|Yolu girin     | Dosyanın denetleneceği yol. Örneğin: “c:\temp\myfile.txt”
+|Etkin     | Ayarı uygulanırsa doğru ve aksi takdirde False.        |
+|Öğe Adı     | İzlenecek dosyanın dostu adı.        |
+|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.       |
+|Yolu girin     | Dosyayı denetleme yolu, örneğin, **c:\temp\myfile.txt**.
 
 ### <a name="linux-files"></a>Linux Dosyaları
 
 |Özellik  |Açıklama  |
 |---------|---------|
-|Etkin     | Ayarın uygulanmış olup olmadığını belirler        |
-|Öğe Adı     | İzlenecek dosyanın kolay adı        |
-|Grup     | Dosyaları mantıksal bir biçimde gruplandırmaya yönelik grup adı        |
-|Yolu girin     | Dosyanın denetleneceği yol. Örneğin: “/etc/*.conf”       |
-|Yol Türü     | İzlenecek öğenin türü için olası değerler: Dosya ve Dizin        |
-|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
-|Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
-|Bağlantılar     | Bu ayar, dizinleri dolaşırken sembolik bağlantıların nasıl ele alındığını belirler.<br> **Yoksay** - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>**İzle** - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>**Yönet** - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
+|Etkin     | Ayarı uygulanırsa doğru ve aksi takdirde False.        |
+|Öğe Adı     | İzlenecek dosyanın dostu adı.        |
+|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
+|Yolu girin     | Dosya için kontrol yolu, örneğin, **/etc/*.conf**.       |
+|Yol Türü     | İzlenecek öğetürü. Değerler Dosya ve Dizin'dir.        |
+|Özyineleme     | İzlenecek öğe ararken özyineleme kullanılıyorsa doğru ve aksi takdirde False.        |
+|Sudo Kullan     | Madde yi kontrol ederken sudo kullanılıyorsa doğru ve yanlış olur.         |
+|Bağlantılar     | Dizinler arasında geçiş yaparken sembolik bağlantıların nasıl ele alındığına işaret eden değer. Olası değerler şunlardır: <br> Yoksay - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>İzle - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>Yönet - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
 
 ## <a name="manage-machine-groups"></a>Makine gruplarını yönetme
 
@@ -104,9 +104,9 @@ Listeden bir makine grubu seçmek, Makine grupları sayfasını açar. Bu sayfa,
 
 ![Makine grubu sayfasını görüntüleme](./media/automation-vm-inventory/machine-group-page.png)
 
-Makine grubunu klonlamak için **+ Klon** düğmesini tıklatın. Burada gruba grup için yeni bir ad ve takma ad vermelisiniz. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra seçilecek makineleri önizlemek için **sorguyu doğrula'ya** basın. Grupla mutlu olduğunuzda makine grubunu oluşturmak için **Oluştur'u** tıklatın
+Makine grubunu klonlamak için **+ Klon'u** tıklatın. Gruba grup için yeni bir ad ve takma ad vermelisiniz. Tanım şu anda değiştirilebilir. Sorguyu değiştirdikten sonra, seçilecek makineleri önizlemek için **sorguyu doğrula'yı** tıklatın. Gruptan memnun olduğunuzda, makine grubunu oluşturmak için **Oluştur'u** tıklatın.
 
-Yeni bir makine grubu oluşturmak istiyorsanız, **+ Makine grubu oluşturun'u**seçin. Bu düğme, yeni grubunuzu tanımlayabileceğiniz **bir makine grubu oluştur sayfasını** açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
+Yeni bir makine grubu oluşturmak istiyorsanız, **+ Makine grubu oluşturun'u**tıklatın. Bu düğme, yeni **grubunuzu** tanımlayabileceğiniz bir makine grubu oluştur sayfasını açar. Grubu oluşturmak için **Oluştur**’a tıklayın.
 
 ![Yeni makine grubu oluşturma](./media/automation-vm-inventory/create-new-group.png)
 
@@ -115,18 +115,17 @@ Yeni bir makine grubu oluşturmak istiyorsanız, **+ Makine grubu oluşturun'u**
 Sanal makinenizi stok yönetiminden kaldırmak için:
 
 1. Azure portalının sol tarafındaki bölmeden **Log Analytics**'i ve sanal makineyi eklerken kullandığınız çalışma alanını seçin.
-2. **Log Analytics** penceresinin **Kaynak** menüsünün **Çalışma Alanı Veri Kaynakları** kategorisinden **Sanal makineler**'i seçin.
-3. Listeden bağlantısını kesmek istediğiniz sanal makineyi seçin. Sanal makinenin yanında, **OMS Bağlantısı** sütunda **Bu çalışma alanı** ifadesini içeren bir yeşil onay işareti bulunur.
+2. Günlük Analitiği sayfasında **Kaynak** menüsünü açın.
+3. **Çalışma Alanı Veri Kaynakları**altında Sanal **Makineler** seçin.
+4. Listeden bağlantısını kesmek istediğiniz sanal makineyi seçin. Sanal makinenin yanında, **OMS Bağlantısı** sütunda **Bu çalışma alanı** ifadesini içeren bir yeşil onay işareti bulunur.
 
    >[!NOTE]
-   >OMS artık Azure Monitor günlükleri olarak adlandırılır.
+   >Operations Management Suite (OMS) artık Azure Monitor günlükleri olarak adlandırılır.
    
-4. Sonraki sayfanın en üstünde **Bağlantıyı kes**'i seçin.
-5. Onay penceresinde **Evet**'i seçin.
-    Bu eylem makinenin yönetim paneli bağlantısını keser.
+5. Bir sonraki sayfanın üst kısmında **Bağlantıyı Kesme'yi**tıklatın.
+6. Onay penceresinde, makineyi yönetimden ayırmak için **Evet'i** tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Sanal makinelerinizdeki dosya ve kayıt defteri ayarlarında yapılan değişiklikleri yönetme hakkında bilgi almak için bkz. [Değişiklik İzleme çözümüyle ortamınızdaki yazılım değişikliklerini izleme](../log-analytics/log-analytics-change-tracking.md).
 * Sanal makinelerinizdeki Windows ve paket güncelleştirmelerini yönetme hakkında bilgi edinmek için [Azure'da Güncelleştirme Yönetimi çözümüne](../operations-management-suite/oms-solution-update-management.md)bakın.
-

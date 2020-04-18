@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c8606f0b7ab47d624ec66c8cda539e571cec6ce
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393049"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617657"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Mevcut NPS altyapınızı Azure Multi-Factor Authentication ile tümleştirme
 
@@ -142,6 +142,14 @@ Test hesabının başlatılmasını sağlamak için şu adımları kullanın:
 1. Bir test [https://aka.ms/mfasetup](https://aka.ms/mfasetup) hesabı ile oturum açın.
 2. Doğrulama yöntemi ayarlamak için istemleri izleyin.
 3. Test hesabı için çok faktörlü kimlik doğrulaması gerektirecek [koşullu erişim ilkesi oluşturun.](howto-mfa-getstarted.md#create-conditional-access-policy)
+
+> [!IMPORTANT]
+>
+> Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulama'ya başarıyla kaydolduğundan emin olun. Kullanıcılar daha önce yalnızca self servis parola sıfırlama (SSPR) için kaydolmuşsa, *StrongAuthenticationMethods* hesapları için etkinleştirilir. Azure Çok Faktörlü Kimlik Doğrulama, kullanıcı yalnızca SSPR'ye kaydolsa bile *Strong AuthenticationMethods* yapılandırıldıklarında uygulanır.
+>
+> SSPR ve Azure Çok Faktörlü Kimlik Doğrulaması'nı aynı anda yapılandıran birleşik güvenlik kaydı etkinleştirilebilir. Daha fazla bilgi için azure [etkin dizininde birleşik güvenlik bilgi kaydını etkinleştir'e](howto-registration-mfa-sspr-combined.md)bakın.
+>
+> Ayrıca, kullanıcıları daha önce yalnızca SSPR'yi etkinleştirdilerse [kimlik doğrulama yöntemlerini yeniden kaydetmeye de](howto-mfa-userdevicesettings.md#manage-user-authentication-options) zorlayabilirsiniz.
 
 ## <a name="install-the-nps-extension"></a>NPS uzantısını yükleme
 

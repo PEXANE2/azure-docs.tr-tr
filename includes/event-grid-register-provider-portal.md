@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: event-grid
-author: tfitzmac
+author: spelluru
 ms.service: event-grid
 ms.topic: include
-ms.date: 07/05/2018
-ms.author: tomfitz
+ms.date: 04/16/2020
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: c3677e7897498aa06d7bd547988ad4dc0326f39b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8833bb75f5f50372deda3e71c1df90bed9a20054
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67188460"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81605783"
 ---
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid kaynak sağlayıcısını etkinleştirme
 
@@ -21,9 +21,9 @@ Azure aboneliğinizde daha önce Event Grid kullanmadıysanız Event Grid kaynak
 
 Azure portalında:
 
-1. **Abonelikleri**seçin.
+1. Sol menüde **Abonelikler'i** seçin.
 1. Event Grid için kullandığınız aboneliği seçin.
-1. **Ayarlar**'ın altında **Kaynak sağlayıcıları**'nı seçin.
+1. Sol menüde Ayarlar **altında** **Kaynak sağlayıcılar'ı**seçin.
 1. **Microsoft.EventGrid** öğesini bulun.
 1. Kayıtlı değilse **Kaydol**'u seçin. 
 

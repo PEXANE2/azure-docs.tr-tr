@@ -7,16 +7,16 @@ keywords: değişiklik, izleme, otomasyon
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 89f5e00c75b6b85c9a14de02504136907cde62b5
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75420628"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604690"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Ortamınızdaki değişikliklerle ilgili sorunları giderme
 
-Bu öğreticide bir Azure sanal makinesi üzerindeki değişikliklerle ilgili sorunları gidermeyi öğreneceksiniz. Değişiklik İzleme özelliğini etkinleştirerek bilgisayarlarınızda gerçekleştirilen yazılımlar, dosyalar, Linux daemon'ları, Windows hizmetleri ve Windows kayıt defteri anahtarlarıyla ilgili değişikliklikleri izleyebilirsiniz.
+Bu öğreticide bir Azure sanal makinesi üzerindeki değişikliklerle ilgili sorunları gidermeyi öğreneceksiniz. Değişiklik İzleme'yi etkinleştirerek, bilgisayarlarınızda yazılım, dosya, Linux daemons, Windows Hizmetleri ve Windows Kayıt Defteri tuşlarındaki değişiklikleri izleyebilirsiniz.
 Bu yapılandırma değişikliklerinin tanımlanması, ortamınızdaki işletimsel sorunları belirlemenize yardımcı olabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -44,18 +44,20 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok özelliklerini etkinleştirme
 
-Bu öğreticide ilk yapmanız gereken VM'inizde Değişiklik İzleme ve Stok özelliklerini etkinleştirmektir. Daha önce bu VM için başka bir otomasyon çözümünü etkinleştirdiyseniz bu adımı atlayabilirsiniz.
+Öncelikle bu eğitim için VM'iniz için Değişiklik İzleme ve Envanter'i etkinleştirmeniz gerekir. Daha önce bu VM için başka bir otomasyon çözümünü etkinleştirdiyseniz bu adımı atlayabilirsiniz.
 
-1. Soldaki menüden **Sanal makineler**'i ve listedeki VM'lerden birini seçin
-1. Soldaki menünün **İŞLEMLER** bölümünde **Stok**'a tıklayın. **Değişiklik izleme** sayfası açılır.
+1. Sol menüde **Sanal makineleri** seçin ve listeden bir VM seçin.
+1. Sol **menüde, İşlemler**altında **Stok'u** seçin. Stok sayfası açılır.
 
-![Değişikliği etkinleştir](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) ve **Değişiklik İzleme** ekranı açılır. Konumu, Günlük analizi çalışma alanını ve Otomasyon hesabını kullanmak ve Etkinleştir'i tıklatmak için **yapılandırın.** Bu alanların gri renkte olması VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir.
+![Değişikliği etkinleştirme](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
+
+Konumu, Günlük analizi çalışma alanını ve Otomasyon hesabını kullanmak ve Etkinleştir'i tıklatmak için **yapılandırın.** Bu alanların gri renkte olması VM için etkinleştirilmiş başka bir otomasyon çözümü olduğunu gösterir ve bu durumda aynı çalışma alanı ile Otomasyon hesabının kullanılması gerekir.
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) çalışma alanı, Stok gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için kullanılır.
 Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
-Ekleme sırasında VM’ye Microsoft Monitoring Agent (MMA) ve karma çalışanı sağlanır.
-Bu aracı, VM ile iletişim kurmak ve yüklü yazılım hakkında bilgi almak için kullanılır.
+Onboarding sırasında, VM Windows için Log Analytics aracısı ve bir Karma Runbook Worker ile birlikte verilir.
+Aracı, VM ile iletişim kurmak ve yüklü yazılım lar hakkında bilgi edinmek için kullanılır.
 
 Çözümün etkinleştirilmesi 15 dakika sürebilir. Bu süre boyunca tarayıcı penceresini kapatmamanız gerekir.
 Çözüm etkinleştirildikten sonra, yüklenen yazılım lar ve VM akışlarındaki değişiklikler hakkındaki bilgiler Azure Monitor günlüklerine akar.
@@ -63,11 +65,11 @@ Verilerin çözümlemeye hazır hale gelmesi 30 dakika ile 6 saat arasında sür
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="using-change-tracking-in-azure-monitor-logs"></a>Azure Monitor günlüklerinde Denetimi Değiştirme'yi kullanma
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Azure Monitör günlüklerinde Değişiklik İzleme'yi kullanma
 
 Değişiklik izleme, Azure Monitor günlüklerine gönderilen günlük verilerini oluşturur.
-Sorgu çalıştırarak günlüklerde arama yapmak için **Değişiklik izleme** penceresinin en üstünde bulunan **Log Analytics**'i seçin.
-Değişiklik izleme verileri **ConfigurationChange** türü altında depolanır.
+Sorguları çalıştırarak günlüklerde arama yapmak için, İzleme sayfasını değiştir'in en üstündeki **Günlük Analitiği'ni** seçin.
+Değişiklik izleme verileri türü `ConfigurationChange`altında depolanır.
 Aşağıdaki örnek Log Analytics sorgusu, durdurulmuş olan tüm Windows Hizmetleri'ni döndürür.
 
 ```loganalytics
@@ -81,19 +83,18 @@ Azure Monitor günlüklerinde günlük dosyalarını çalıştırma ve arama hak
 
 Değişiklik izleme, VM üzerindeki yapılandırma değişikliklerini izlemenizi sağlar. Aşağıdaki adımlar kayıt defteri anahtarlarının ve dosyaların izlenmesini yapılandırma konusunda yol göstermektedir.
 
-Toplanıp izlenecek dosyaları ve Kayıt defteri anahtarlarını belirlemek için **Değişiklik izleme** sayfasının üst kısmından **Ayarları düzenle**'yi seçin.
+Toplanıp izlenecek dosyaları ve Kayıt defteri anahtarlarını belirlemek için Değişiklik izleme sayfasının üst kısmından **Ayarları düzenle**'yi seçin.
 
 > [!NOTE]
 > Stok ve Değişiklik izleme özellikleri aynı koleksiyon ayarlarını kullanır ve bu ayarlar çalışma alanı düzeyinde yapılandırılır.
 
-**Çalışma Alanı Yapılandırması** penceresinde izlenmesini istediğiniz Windows Kayıt Defteri anahtarlarını, Windows dosyalarını veya Linux dosyalarını aşağıdaki üç bölümde belirtilen şekilde seçin.
+Çalışma Alanı Yapılandırması sayfasında, sonraki üç bölümde belirtildiği gibi izlenecek Windows Kayıt Defteri anahtarlarını, Windows dosyalarını veya Linux dosyalarını ekleyin.
 
 ### <a name="add-a-windows-registry-key"></a>Windows Kayıt Defteri anahtarı ekleme
 
-1. **Windows Kayıt Defteri** sekmesinde **Ekle**'yi seçin.
-    **Değişiklik İzleme için Windows Kayıt Defteri Ekle** penceresi açılır.
+1. **Windows Kayıt Defteri** sekmesinde **Ekle**'yi seçin. 
 
-1. **Değişiklik İzleme için Windows Kayıt Defteri ekleme** bölümünde izlenecek anahtar bilgisini girip **Kaydet**’e tıklayın
+1. Windows Kayıt DefteriNi Değiştir İzleme sayfasına, izlemek için anahtara ait bilgileri girin ve **Kaydet'i** tıklatın
 
 |Özellik  |Açıklama  |
 |---------|---------|
@@ -104,9 +105,9 @@ Toplanıp izlenecek dosyaları ve Kayıt defteri anahtarlarını belirlemek içi
 
 ### <a name="add-a-windows-file"></a>Windows dosyası ekleme
 
-1. **Windows Dosyaları** sekmesinde **Ekle**'yi seçin. **Değişiklik İzleme için Windows Dosyası Ekle** penceresi açılır.
+1. **Windows Dosyaları** sekmesinde **Ekle**'yi seçin. 
 
-1. **Değişiklik İzleme için Windows Dosyası ekleme** bölümünde izlenecek dosya veya dizin bilgisini girip **Kaydet**’e tıklayın
+1. İzleme için Windows Dosya Ekle sayfasında, **Kaydet'i** izlemek ve tıklatmak için dosya veya dizin bilgilerini girin
 
 |Özellik  |Açıklama  |
 |---------|---------|
@@ -119,9 +120,9 @@ Toplanıp izlenecek dosyaları ve Kayıt defteri anahtarlarını belirlemek içi
 
 ### <a name="add-a-linux-file"></a>Linux dosyası ekleme
 
-1. **Linux Dosyaları** sekmesinde **Ekle**'yi seçin. **Değişiklik İzleme için Linux Dosyası Ekle** penceresi açılır.
+1. **Linux Dosyaları** sekmesinde **Ekle**'yi seçin. 
 
-1. **Değişiklik İzleme için Linux Dosyası ekleme** bölümünde izlenecek dosya veya dizin bilgisini girip **Kaydet**’e tıklayın
+1. Değişiklik İzleme için Linux Dosyaekle sayfasında, **Kaydet'i**izlemek ve tıklatmak için dosya veya dizin bilgilerini girin.
 
 |Özellik  |Açıklama  |
 |---------|---------|
@@ -133,24 +134,24 @@ Toplanıp izlenecek dosyaları ve Kayıt defteri anahtarlarını belirlemek içi
 |Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
 |Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
 |Bağlantılar     | Bu ayar, dizinleri dolaşırken sembolik bağlantıların nasıl ele alındığını belirler.<br> **Yoksay** - Sembolik bağlantıları yoksayar ve başvurulan dosyaları veya dizinleri içermez<br>**İzle** - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları veya dizinleri de içerir<br>**Yönet** - Sembolik bağlantıları izler ve döndürülen içeriğin işlenmesinde değişiklik yapılmasına olanak sağlar      |
-|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
+|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: True veya False.|
 
    > [!NOTE]
-   > “Yönet” bağlantıları seçeneği önerilmez. Dosya içeriğini alma desteklenmiyor.
+   > **Bağlantıları Yönet** seçeneği önerilmez. Dosya içeriğini alma desteklenmiyor.
 
 ## <a name="enable-activity-log-connection"></a>Etkinlik günlüğü bağlantısını etkinleştirme
 
-VM'nizdeki **Değişik izleme** sayfasında **Etkinlik Günlüğü Bağlantısını Yönetme**'yi seçin. Bu görev **Azure Etkinlik günlüğü** sayfasını açar. Değişiklik izleme özelliğini VM'nizin Azure etkinlik günlüğü verilerine bağlamak için **Bağlan**'ı seçin.
+VM'nizdeki Değişik izleme sayfasında **Etkinlik Günlüğü Bağlantısını Yönetme**'yi seçin. Bu görev Azure Etkinlik günlüğü sayfasını açar. VM'iniz için Azure etkinlik günlüğüne Değişiklik İzleme'yi bağlamak için **Bağlan'ı** tıklatın.
 
-Bu ayar etkin durumdayken VM'nizin **Özet** sayfasına gidip **Durdur**'u seçerek VM'nizi durdurun. Sorulduğunda **Evet**'i seçerek VM'yi durdurun. Serbest bırakıldıktan sonra **Başlat**'ı seçerek VM'nizi yeniden başlatın.
+Bu ayar etkin durumdayken VM'nizin Özet sayfasına gidip **Durdur**'u seçerek VM'nizi durdurun. Sorulduğunda **Evet**'i seçerek VM'yi durdurun. Serbest bırakıldıktan sonra **Başlat**'ı seçerek VM'nizi yeniden başlatın.
 
-VM'yi durdurup başlattığınızda etkinlik günlüğüne bir olay kaydedilir. **Değişiklik izleme** sayfasına dönün. Sayfanın en altındaki **Olaylar** sekmesini seçin. Bir süre sonra olaylar grafik ve tablo şeklinde gösterilir. Önceki adımda olduğu gibi her bir olayı seçerek ayrıntılı bilgileri görüntüleyebilirsiniz.
+VM'yi durdurup başlattığınızda etkinlik günlüğüne bir olay kaydedilir. Değişiklik izleme sayfasına dönün. Sayfanın en altındaki **Olaylar** sekmesini seçin. Bir süre sonra olaylar grafik ve tablo şeklinde gösterilir. Önceki adımda olduğu gibi her bir olayı seçerek ayrıntılı bilgileri görüntüleyebilirsiniz.
 
 ![Değişiklik ayrıntılarını portalda görüntüleme](./media/automation-tutorial-troubleshoot-changes/viewevents.png)
 
 ## <a name="view-changes"></a>Değişiklikleri görüntüleme
 
-Değişiklik izleme ve Stok çözümünü etkinleştirdikten sonra sonuçları **Değişiklik izleme** sayfasında görüntüleyebilirsiniz.
+Değişiklik izleme ve Stok çözümünü etkinleştirdikten sonra sonuçları Değişiklik izleme sayfasında görüntüleyebilirsiniz.
 
 VM'nizin içinde **İŞLEMLER** bölümünden **Değişiklik izleme**'yi seçin.
 
@@ -165,7 +166,7 @@ Değişiklik sekmesinde görselleştirmede gösterilen değişikliklerle ilgili 
 
 Sonuçlara bakarak hizmet ve yazılım değişiklikleri dahil olmak üzere sistemde birçok değişiklik yapıldığını görebilirsiniz. Sayfanın en üstünde bulunan filtreleri kullanarak sonuçları **Değişiklik türü** veya zaman aralığına göre filtreleyebilirsiniz.
 
-Bir **WindowsServices** değişikliğini seçtiğinizde **Değişiklik Ayrıntıları** penceresi açılır. Değişiklik ayrıntıları penceresinde değişiklik hakkında ayrıntılı bilgilerin yanı sıra değişiklik öncesi ve sonrası değerler gösterilir. Bu örnekte Yazılım Koruması hizmeti durdurulmuştur.
+Windows **Services** değişikliği'ni seçin. Bu seçim, değişiklikten önceki ve sonraki değerler le ilgili ayrıntıları gösteren Ayrıntıları Değiştir sayfasını açar. Bu örnekte Yazılım Koruması hizmeti durdurulmuştur.
 
 ![Değişiklik ayrıntılarını portalda görüntüleme](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
@@ -175,11 +176,11 @@ Azure portalda değişiklikleri görüntülemek faydalı olabilir ancak durdurul
 
 Azure portalda durdurulmuş hizmetler için bir uyarı eklemek istiyorsanız **İzleme**’ye gidin. Ardından **Paylaşılan Hizmetler** altında **Uyarılar**’ı seçin ve **+ Yeni uyarı kuralı**’na tıklayın
 
-Kaynak seçmek için **Seç'i** tıklatın. **Kaynak** seç sayfasında, kaynak türü açılır duruma göre Filtre'den **Günlük Analizi'ni** seçin. **Filter by resource type** Log Analytics çalışma alanınızı ve ardından **Bitti**'yi seçin.
+Kaynak seçmek için **Seç'i** tıklatın. Kaynak seç sayfasında, kaynak türü açılır menüsüne **göre Filtre'den** Günlük **Analizi'ni** seçin. Log Analytics çalışma alanınızı ve ardından **Bitti**'yi seçin.
 
 ![Bir kaynak seçin](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
 
-**Yapılaşı sinyali mantığı** sayfasında, tabloda **Ekle koşulunu**tıklatın, **Özel günlük aramasını**seçin. Arama sorgusu metin kutusuna aşağıdaki sorguyu girin:
+Yapılaşı sinyali mantığı sayfasında, tabloda **Ekle koşulunu**tıklatın, **Özel günlük aramasını**seçin. Arama sorgusu metin kutusuna aşağıdaki sorguyu girin:
 
 ```loganalytics
 ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
@@ -201,7 +202,7 @@ Bu sorgu, belirtilen zaman çerçevesinde W3SVC hizmeti durdurulan bilgisayarlar
 
 ![Eylem grubu ekle](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
 
-**E-posta/SMS/Anında İletme/Ses** bölmesine bir ad girin. **E-posta** onay kutusunu seçip geçerli bir e-posta adresi girin. **E-posta/SMS/Anında İletme/Ses** sayfasında **Tamam**’a tıklayın ve ardından **Eylem grubu ekle** sayfasında **Tamam**’a tıklayın.
+E-posta/SMS/Anında İletme/Ses bölmesine bir ad girin. **E-posta** onay kutusunu seçip geçerli bir e-posta adresi girin. Bölmede **Tamam'ı** tıklatın, ardından Eylem Grubu Ekle sayfasında **Tamam'ı** tıklatın.
 
 Uyarı e-postasının konusunu özelleştirmek için **Eylemleri Özelleştirin** bölümündeki **Kural oluştur**, kısmında **E-posta konusu**'nu seçin. İşleminiz bittiğinde **Uyarı kuralı oluştur**'u seçin. Bu uyarı, bir güncelleştirme dağıtımı başarılı olduğunda sizi uyarır ve güncelleştirme dağıtımı çalıştırmasının hangi makineleri kapsadığını bildirir.
 

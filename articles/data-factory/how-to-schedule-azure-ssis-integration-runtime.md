@@ -13,16 +13,16 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 39f758b779e7c4935feab2424be16b829db8e46b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399524"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81606082"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Azure Veri Fabrikası 'nı (ADF) kullanarak Azure-SSIS Tümleştirme Çalışma Zamanı'nın (IR) başlangıç ve durdurma zamanlanması nasıl zamanlanır. Azure-SSIS IR, SQL Server Tümleştirme Hizmetleri (SSIS) paketlerini yürütmek için ayrılmış ADF bilgi işlem kaynağıdır. Azure-SSIS IR'nin çalıştırılanın bununla ilişkili bir maliyeti vardır. Bu nedenle, IR'nizi yalnızca Azure'da SSIS paketlerini yürütmeniz gerektiğinde çalıştırmak ve artık ihtiyacınız olmadığında IR'nizi durdurmak istersiniz. [IR'nizi el ile başlatmak veya durdurmak](manage-azure-ssis-integration-runtime.md)için ADF Kullanıcı Arabirimi (UI)/uygulaması veya Azure PowerShell'i kullanabilirsiniz).
 

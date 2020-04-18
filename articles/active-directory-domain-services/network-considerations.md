@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: e610bf94dfdee4e2765e4fae4259f18a9f1036b5
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80408824"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81639986"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Etki Alanı Hizmetleri için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -109,10 +109,11 @@ Azure AD DS'nin kimlik doğrulama ve yönetim hizmetleri sağlaması için aşa�
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
 | 3389        | TCP      | Corpnetsaw                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızın yönetimi. |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızın yönetimi. |
-| 636         | TCP      | Herhangi biri                                | Herhangi biri         | İzin Ver  | Hayır       | Yalnızca güvenli LDAP 'yi (LDAPS) yapılandırdığınızda etkinleştirilir. |
 
 > [!WARNING]
 > Bu ağ kaynaklarını ve yapılandırmalarını el ile düzenlemeyin. Yanlış yapılandırılmış bir ağ güvenlik grubunu veya kullanıcı tanımlı bir rota tablosunu Azure AD DS'nin dağıtıldığı alt ağla ilişkilendirdiğinizde, Microsoft'un etki alanına hizmet verme ve yönetme yeteneğini bozabilirsiniz. Azure AD kiracınız ile Azure AD DS yönetilen etki alanınız arasındaki eşitleme de kesintiye uğrar.
+>
+> Güvenli LDAP kullanıyorsanız, gerekirse dış trafiğe izin vermek için gerekli TCP bağlantı noktası 636 kuralını ekleyebilirsiniz. Bu kuralın eklenmesi, ağ güvenlik grubu kurallarınızı desteklenmeyen bir duruma yerleştirmez. Daha fazla bilgi için internet [üzerinden güvenli LDAP erişimini kilitleyin](tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet)
 >
 > *AllowVnetInBound*için varsayılan kurallar , *AllowAzureLoadBalancerInBound*, *DenyAllInBound*, *AllowVnetOutBound*, *AllowInternetOutBound*, ve *DenyAllOutBound* ağ güvenlik grubu için de vardır. Bu varsayılan kuralları düzenlemayın veya silmeyin.
 >

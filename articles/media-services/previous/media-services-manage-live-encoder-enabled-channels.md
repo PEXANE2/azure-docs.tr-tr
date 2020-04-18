@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: b0569907537f91f7e84b8156dffa0f313461f6e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 6210d6ee4877c6ba84178340cf0a6610e402da31
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677014"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641114"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services aracılığıyla canlı akış gerçekleştirerek çoklu bit hızına sahip akışlar oluşturma
 
@@ -31,7 +31,7 @@ ms.locfileid: "80677014"
 Azure Medya Hizmetleri'nde (AMS) bir **Kanal,** canlı akış içeriğini işlemek için bir ardışık hattı temsil eder. **Kanal** canlı giriş akışlarını iki şekilde alır:
 
 * Şirket içi canlı kodlayıcı, Medya Hizmetleri ile canlı kodlama yı aşağıdaki biçimlerden birinde gerçekleştirebilen tek bit hızında bir akış gönderir: RTMP veya Düzgün Akış (Parçalanmış MP4). Ardından Kanal, gelen tek bit hızlı akışın çoklu bit hızlı (uyarlamalı) bir video akışına gerçek zamanlı kodlanmasını gerçekleştirir. İstendiğinde, Media Services akışı müşterilere teslim eder.
-* Şirket içinde canlı kodlayıcı, KANALA AMS ile canlı kodlama yapmak için etkinleştirilmeyen çok bit hızında **RTMP** veya **Düzgün Akış** (Parçalanmış MP4) gönderir. Yutulan akışlar başka bir işleme gerek kalmadan **Kanal**s'den geçer. Bu **yönteme geçiş**denir. Multi-bitrate Smooth Streaming: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve Elemental çıktıaşağıdaki canlı kodlayıcılar kullanabilirsiniz. Aşağıdaki canlı kodlayıcılar çıkış RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek ve Tricaster kodlayıcılar.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
+* Şirket içinde canlı kodlayıcı, KANALA AMS ile canlı kodlama yapmak için etkinleştirilmeyen çok bit hızında **RTMP** veya **Düzgün Akış** (Parçalanmış MP4) gönderir. Yutulan akışlar başka bir işleme gerek kalmadan **Kanal**s'den geçer. Bu **yönteme geçiş**denir. Multi-bitrate Smooth Streaming: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco ve Elemental çıktıaşağıdaki canlı kodlayıcılar kullanabilirsiniz. Aşağıdaki canlı kodlayıcılar çıkış RTMP: [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md), Haivision, Teradek kodlayıcılar.  Gerçek zamanlı bir kodlayıcı, gerçek zamanlı kodlama için etkinleştirilmemiş bir kanala tek bit hızlı bir akış da gönderebilir, ancak bu işlem önerilmez. İstendiğinde, Media Services akışı müşterilere teslim eder.
 
   > [!NOTE]
   > Geçiş yöntemi kullanmak, canlı akış yapmanın en ekonomik yoludur.
@@ -322,7 +322,7 @@ Aşağıdaki tablo, Kanal durumlarını faturalandırma moduyla nasıl eşleşdi
 > 
 > 
 
-## <a name="considerations"></a><a id="Considerations"></a>Husus -lar
+## <a name="considerations"></a><a id="Considerations"></a>Dikkat edilmesi gerekenler
 * **Standart** kodlama türünden bir Kanal giriş kaynağı/katkı akışı kaybı yaşadığında, kaynak video/ses hata ve sessizlik ile değiştirerek bunu telafi eder. Kanal, giriş/katkı akışı devam edene kadar bir kayrak yamaya devam edecektir. Canlı bir kanalın 2 saatten uzun süre böyle bir durumda bırakılmaması tavsiye ediyoruz. Bu noktanın ötesinde, Kanal'ın giriş yeniden bağlantı davranışı garanti edilmez, sıfırlama komutuna yanıt olarak davranışı da garanti edilmez. Kanalı durdurmanız, silmeniz ve yeni bir kanal oluşturmanız gerekir.
 * Kanal veya ilişkili programları çalışıyorken giriş protokolünü değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir giriş protokolü için farklı bir kanal oluşturmalısınız.
 * Canlı kodlayıcıyı her yeniden yapılandırdığınızda, kanaldaki **Sıfırlama** yöntemini arayın. Kanalı sıfırlamadan önce programı durdurmanız gerekir. Kanalı sırdamadıktan sonra programı yeniden başlatın.

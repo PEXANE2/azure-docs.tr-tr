@@ -10,17 +10,55 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/3/2020
+ms.date: 04/17/2020
 ms.author: raiye
-ms.openlocfilehash: 758f0e3198ef83635ead3f9bd8565cd64f9d413c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656347"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617688"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk İşletim Sistemi
 Aşağıdaki tablolar, Azure Konuk İşletim Sistemi'ne uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmelerini gösterir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk İşletim Sistemi için geçerli olup olmadığını belirlemek için bu makaleyi arayın. Güncelleştirmeler, tanıtıldıkları belirli [aile][family-explain] için her zaman ileriye taşır.
+
+## <a name="april-2020-guest-os"></a>Nisan 2020 Konuk İşletim Sistemi
+
+>[!NOTE]
+>Nisan Konuk İşletim Sistemi şu anda otomatik güncelleştirmeler için yapılandırılan Bulut Hizmeti VM'lerine dağıtılıyor. Kullanıma sunulması tamamlandığında, bu sürüm Azure portalı ve yapılandırma dosyaları üzerinden manuel güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme etekleri April Guest OS'ye dahildir. Bu liste değiştirilebilir.
+
+| Ürün Kategorisi | Veli KB Makalesi | Güvenlik Açığı Açıklaması | Konuk işletim sistemi | İlk Tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-04  |  [4550965]  |  Windows Güvenlik  | 2.97 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2.97, 3.84, 4.77 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4550971]  |  Windows Güvenlik  | 3.84 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4550970]  |  Windows Güvenlik  | 4.77 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4550929]  |  En Son Kümülatif Güncelleme(LCU)  | 5.42 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4549949]  |  En Son Kümülatif Güncelleme(LCU)  | 6.18 | Nisan 14, 2020 |
+|  Rel 20-04  |  [4540688]  |  Aylık Toplama  | 2.97 | Mar 10, 2020 |
+|  Rel 20-04  |  [4550735]  |  Servis Yığını güncelleştirmesi  | 2.97 | Mar 10, 2020 |
+|  Rel 20-04  |  [4540726]  |  Servis Yığını güncelleştirmesi  | 3.84 | Mar 10, 2020 |
+|  Rel 20-04  |  [4541510]  |  Aylık Toplama  | 3.84 | Mar 10, 2020 |
+|  Rel 20-04  |  [4541509]  |  Aylık Toplama  | 4.77 | Mar 10, 2020 |
+|  Rel 20-04  |  [4540725]  |  Servis Yığını güncelleştirmesi  | 4.77 | Mar 10, 2020 |
+|  Rel 20-04  |  [4540723]  |  Servis Yığını güncelleştirmesi  | 5.42 | Mar 10, 2020 |
+|  Rel 20-04  |  [4539571]  |  Servis Yığını güncelleştirmesi  | 6.18 | Mar 10, 2020 |
+
+[4550965]: https://support.microsoft.com/kb/4550965
+[4550905]: https://support.microsoft.com/kb/4550905
+[4550971]: https://support.microsoft.com/kb/4550971
+[4550970]: https://support.microsoft.com/kb/4550970
+[4550929]: https://support.microsoft.com/kb/4550929
+[4549949]: https://support.microsoft.com/kb/4549949
+[4540688]: https://support.microsoft.com/kb/4540688
+[4550735]: https://support.microsoft.com/kb/4550735
+[4540726]: https://support.microsoft.com/kb/4540726
+[4541510]: https://support.microsoft.com/kb/4541510
+[4541509]: https://support.microsoft.com/kb/4541509
+[4540725]: https://support.microsoft.com/kb/4540725
+[4540723]: https://support.microsoft.com/kb/4540723
+[4539571]: https://support.microsoft.com/kb/4539571
+
 
 ## <a name="march-2020-guest-os"></a>Mart 2020 Konuk İşletim Sistemi
 

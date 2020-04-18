@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 7ee219ae5ace0f0da398cc542f410d3c895c8bd4
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679991"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617858"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -38,7 +38,7 @@ Sunucunun **codec'de bulunmayan** bir hataya bağlanmayı reddetmesinin iki nede
 
 Öncelikle sistem gereksinimlerinin [Yazılım](../overview/system-requirements.md#software) bölümünde belirtildiği gibi **HEVC Video Uzantılarını** yüklediğinizden emin olun.
 
-Hala sorunlarla karşılaşırsanız, lütfen grafik kartınızın H265'i desteklediğinden ve en son grafik sürücüsünün yüklü olduğundan emin olun. Satıcıya özel bilgiler için sistem gereksinimlerinin [Geliştirme PC](../overview/system-requirements.md#development-pc) bölümüne bakın.
+Hala sorunlarla karşılaşırsanız, grafik kartınızın H265'i desteklediğinden ve en son grafik sürücüsünün yüklü olduğundan emin olun. Satıcıya özel bilgiler için sistem gereksinimlerinin [Geliştirme PC](../overview/system-requirements.md#development-pc) bölümüne bakın.
 
 **Codec yüklenir, ancak kullanılamaz:**
 
@@ -76,6 +76,14 @@ Video kalitesi ağ kalitesi veya eksik H265 video codec tarafından tehlikeye ol
 
 * Ağ sorunlarını tanımlamak için gereken [adımlara](#unstable-holograms)bakın.
 * En son grafik sürücüsünü yüklemek için [sistem gereksinimlerine](../overview/system-requirements.md#development-pc) bakın.
+
+## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>MRC ile kaydedilen video canlı deneyimin kalitesini yansıtmaz
+
+Bir video Karışık Gerçeklik Yakalama [(MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)ile Hololens kaydedilebilir. Ancak ortaya çıkan video iki nedenden dolayı canlı deneyim daha kötü kaliteye sahiptir:
+* Video kare hızı 60 Hz yerine 30 Hz olarak kapatılır.
+* Video görüntüleri geç aşama [yeniden projeksiyon](../overview/features/late-stage-reprojection.md) işleme adımından geçmez, bu nedenle video daha doğranır gibi görünür.
+
+Her ikisi de kayıt tekniğinin doğal sınırlamalarıdır.
 
 ## <a name="black-screen-after-successful-model-loading"></a>Başarılı model yüklendikten sonra siyah ekran
 

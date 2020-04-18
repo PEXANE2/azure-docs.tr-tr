@@ -1,215 +1,158 @@
 ---
 title: Şablon oluşturma - Visual Studio Code
 description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
-author: mumian
-ms.date: 04/13/2020
+author: neilpeterson
+ms.date: 03/27/2019
 ms.topic: quickstart
-ms.author: jgao
-ms.openlocfilehash: 96e57146fb6bb17cbb8bb5975371e07b66f3ec8b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.author: nepeters
+ms.openlocfilehash: 4b1ecbf3a1f6083261e87537e20d52e755b77424
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255099"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640742"
 ---
-# <a name="quickstart-create-arm-templates-by-using-visual-studio-code"></a>Quickstart: Visual Studio Code kullanarak ARM şablonları oluşturma
+# <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlatma: Visual Studio Kodu ile Azure Kaynak Yöneticisi şablonları oluşturma
 
-Azure Kaynak Yöneticisi (ARM) şablonları oluşturmak ve bunları yeniden oluşturmak için Visual Studio kodunu ve Azure Kaynak Yöneticisi Araçları uzantısını nasıl kullanacağınızı öğrenin. Uzantı olmadan Visual Studio Code'da ARM şablonları oluşturabilirsiniz, ancak uzantı şablon geliştirmeyi basitleştiren otomatik tamamlama seçenekleri sağlar. Azure çözümlerinizi dağıtma ve yönetme yle ilgili kavramları anlamak için [şablon dağıtımına genel bakış'a](overview.md)bakın.
+Visual Studio Code için Azure Kaynak Yöneticisi Araçları dil desteği, kaynak parçacıkları ve kaynak otomatik tamamlama sağlar. Bu araçlar, Azure Kaynak Yöneticisi şablonlarının oluşturulmasına ve doğrulanmasına yardımcı olur. Bu hızlı başlangıçta, uzantıyı sıfırdan bir Azure Kaynak Yöneticisi şablonu oluşturmak için kullanırsınız. Bunu yaparken ARM şablon parçacıkları, doğrulama, tamamlama lar ve parametre dosya desteği gibi uzantı özelliklerini deneyimlersiniz.
 
-Bu hızlı başlatmada, bir depolama hesabı dağıtın:
-
-![Kaynak Yöneticisi şablonu hızlı başlat görsel stüdyo kodu diyagramı](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-template-quickstart-vscode-diagram.png)
+Bu hızlı başlangıcı tamamlamak için, [Azure Kaynak Yöneticisi araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) yüklü visual studio [koduna](https://code.visualstudio.com/)ihtiyacınız vardır. Ayrıca [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) veya [Azure PowerShell modülüyüklü](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.7.0) ve kimlik doğrulaması gerekir.
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="create-an-arm-template"></a>ARM şablonu oluşturma
 
-Bu makaleyi tamamlamak için gerekenler:
+Visual Studio Code ile *azuredeploy.json*adında yeni bir dosya oluşturun ve açın. ARM `arm` şablonu oluşturmak için Azure Kaynak Yöneticisi parçacıklarını başlatan kod düzenleyicisine girin.
 
-- [Görsel Stüdyo Kodu](https://code.visualstudio.com/).
-- Resource Manager Araçları uzantısı. Yüklemek için şu adımları kullanın:
+Azure `arm!` kaynak grubu dağıtımı için kapsamlı bir şablon oluşturmak için seçin.
 
-    1. Visual Studio Code'u açın.
-    2. Uzantılar bölmesini açmak için **CTRL+SHIFT+X** tuşlarına basın
-    3. **Azure Resource Manager Araçları**’nı arayın ve sonra **Yükle**’yi seçin.
-    4. Uzantı yüklemesini tamamlamak için **Yeniden Yükle**’yi seçin.
+![Azure Kaynak Yöneticisi iskelesi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
-## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
+Bu parçacık, ARM şablonu için temel yapı taşlarını oluşturur.
 
-Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/)’ndan bir şablon açarsınız. Azure Quickstart Şablonları, ARM şablonları için bir depodur.
+![Tam iskeleli ARM şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/2.png)
 
-Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
+Visual Studio Code dil modunun *JSON'dan* *Azure Kaynak Yöneticisi Şablonu'na*dönüştüğüne dikkat edin. Uzantı, ARM şablonuna özgü doğrulama, tamamlama ve diğer dil hizmetlerini sağlayan ARM şablonlarına özgü bir dil sunucusu içerir.
 
-1. Visual Studio Code'dan **Dosya**>**Aç Dosya'yı**seçin.
-2. **Dosya adı**’na şu URL’yi yapıştırın:
+![Azure Kaynak Yöneticisi'ni Visual Studio Code dil modu olarak gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/3.png)
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-    ```
+## <a name="add-an-azure-resource"></a>Azure kaynağı ekleme
 
-3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı **azuredeploy.json** olarak yerel bilgisayarınıza kaydetmek için**Dosya Yı Kaydet'i** **seçin.**>
+Uzantı, birçok Azure kaynağı için parçacıklar içerir. Bu parçacıklar, şablon dağıtımınıza kolayca kaynak eklemek için kullanılabilir.
 
-## <a name="edit-the-template"></a>Şablonu düzenleme
+İmleci şablon **kaynakları** bloğuna yerleştirin, `storage`yazın ve *kol depolama* parçacığı seçin.
 
-Visual Studio Code'u kullanarak şablonun nasıl edinilir olduğunu `outputs` deneyimlemek için, depolama URI'sini göstermek için bölüme bir öğe daha eklersiniz.
+![ARM şablonuna eklenen bir kaynağı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/4.png)
 
-1. Bir veya birden çok çıkışı dışarı aktarılan şablona ekleyin:
+Bu eylem şablona bir depolama kaynağı ekler.
 
-    ```json
-    "storageUri": {
-      "type": "string",
-      "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-    }
-    ```
+![ARM şablonundaki Azure Depolama kaynağını gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/5.png)
 
-    Bitirdiğinizde çıkışlar bölümü şöyle görünür:
+**Sekme** tuşu, depolama hesabındayapılan yapılandırılabilir özellikleri sekmelemek için kullanılabilir.
 
-    ```json
-    "outputs": {
-      "storageAccountName": {
-        "type": "string",
-        "value": "[variables('storageAccountName')]"
-      },
-      "storageUri": {
-        "type": "string",
-        "value": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
-      }
-    }
-    ```
+![Sekme anahtarının kaynak yapılandırması nda gezinmek için nasıl kullanılabileceğini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/6.png)
 
-    Kodu kopyalayıp Visual Studio Code'un içine yapıştırdıysanız, Resource Manager Araçları uzantısının IntelliSense özelliğini denemek için **value** öğesini bir kez daha yazmayı deneyin.
+## <a name="completion-and-validation"></a>Tamamlama ve doğrulama
 
-    ![Resource Manager şablonu Visual Studio Code IntelliSense](./media/quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
+Uzantının en güçlü özelliklerinden biri, Azure şemalarıyla tümleştirilmesidir. Azure şemaları uzantıyı doğrulama ve kaynağa duyarlı tamamlama özellikleriyle sağlar. Doğrulama ve tamamlanma eylemini görmek için depolama hesabını değiştirelim. 
 
-2. Dosyayı kaydetmek için **Dosya**>**Kaydet'i** seçin.
+İlk olarak, depolama hesabı türünü '. `megaStorage` Bu eylemin geçerli bir değer `megaStorage` olmadığını belirten bir uyarı ürettiğine dikkat edin.
+
+![Geçersiz depolama yapılandırması gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/7.png)
+
+Tamamlama özelliklerini kullanmak için, `megaStorage`kaldır, imleci çift tırnak içine yerleştirin `ctrl`  +  `space`ve . Bu eylem, geçerli değerlerin bir tamamlanma listesini sunar.
+
+![Uzantılı otomatik tamamlamayı gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/8.png)
+
+## <a name="add-template-parameters"></a>Şablon parametreleri ekleme
+
+Şimdi depolama hesabı adını belirtmek için bir parametre oluşturun ve kullanın.
+
+İmlecinizi parametre bloğuna yerleştirin, bir `par`satır başı ekleyin, yazın ve sonra `arm-param-value` parçacığı seçin. Bu eylem şablona genel bir parametre ekler.
+
+![ARM şablonuna eklenen bir parametreyi gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/9.png)
+
+Parametrenin adını `storageAccountName` ve açıklamasını `Storage Account Name`güncelleştirin.
+
+![ARM şablonunda tamamlanan parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/10.png)
+
+Azure depolama hesabı adlarının en az 3 karakter uzunluğunda ve en fazla 24 karakteri vardır. Hem `minLength` de `maxLength` parametre ye ekleyin ve uygun değerleri sağlayın.
+
+![ARM şablon parametresine eklenen minLength ve maxLength'ı gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/11.png)
+
+Şimdi, depolama kaynağında, parametreyi kullanmak için ad özelliğini güncelleştirin. Bunu yapmak için geçerli adı kaldırın. ARM şablon işlevlerinin bir `[`listesini oluşturan bir çift teklif ve açılış kare ayraç girin. Listeden *parametreleri* seçin. 
+
+![ARM şablon kaynaklarında parametreleri kullanırken otomatik tamamlamayı gösteren görüntü](./media/quickstart-create-templates-use-visual-studio-code/12.png)
+
+Yuvarlak parantez içinde `'` tek bir teklif girerek şablonda tanımlanan tüm parametrelerin bir listesini üretir, bu durumda, *storageAccountName*. Parametreyi seçin.
+
+![ARM şablon uytundaki tamamlanmış parametreyi gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/13.png)
+
+## <a name="create-a-parameter-file"></a>Parametre dosyası oluşturma
+
+ARM şablon parametre dosyası, ortama özgü parametre değerlerini depolamanızı ve bu değerleri dağıtım zamanında grup olarak geçirmenize olanak tanır. Örneğin, bir test ortamına özgü değerlere sahip bir parametre dosyanız ve üretim ortamı için başka bir parametre dosyanız olabilir.
+
+Uzantı, varolan şablonlarınızdan parametre dosyası oluşturmayı kolaylaştırır. Bunu yapmak için, kod düzenleyicisindeki şablona `Select/Create Parameter File`sağ tıklayın ve .
+
+![ARM şablonundan parametre dosyası oluşturmak için sağ tıklatma işlemini gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/14.png)
+
+Parametre `New`  >  `All Parameters` dosyası için bir ad ve konum seçin > seçin.
+
+![ARM şablonundan parametre dosyası oluştururken adı gösteren resim ve dosya iletişim kutusunu kaydetme](./media/quickstart-create-templates-use-visual-studio-code/15.png)
+
+Bu eylem yeni bir parametre dosyası oluşturur ve oluşturulduğu şablonla eşler. Şablon seçilirken Visual Studio Code durum çubuğundaki geçerli şablon/parametre dosya eşlemini görebilir ve değiştirebilirsiniz.
+
+![](./media/quickstart-create-templates-use-visual-studio-code/16.png)
+
+Parametre dosyası şablona eşlenmiş olduğundan, uzantı hem şablonu hem de parametre dosyasını birlikte doğrular. Uygulamada bu doğrulamayı görmek için parametre dosyasındaki `storageAccountName` parametreye iki karakterli bir değer ekleyin ve dosyayı kaydedin.
+
+![Parametre dosyası sorunu nedeniyle geçersiz kılınan şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/17.png)
+
+ARM şablonuna geri gidin ve değerin parametre ölçütlerini karşılamadığını belirten bir hatanın yükseltildiğini fark edin.
+
+![Geçerli bir ARM şablonu gösteren resim](./media/quickstart-create-templates-use-visual-studio-code/18.png)
+
+Değeri uygun bir şeyle güncelleştirin, dosyayı kaydedin ve şablona geri gidin. Parametredeki hatanın çözüldüğüne dikkat edin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Şablonları dağıtmak için birçok yöntem vardır. Azure Cloud Shell bu hızlı başlatmada kullanılır. Bulut Kabuğu hem Azure CLI'yi hem de Azure PowerShell'i destekler. CLI ve PowerShell arasında seçim yapmak için sekme seçiciyi kullanın.
+Tümleşik Visual Studio Code `ctrl`  +  ```` ` ```` terminalini anahtar kombinasyonunu kullanarak açın ve şablonu dağıtmak için Azure CLI veya Azure PowerShell modüllerini kullanın.
 
-1. Azure Bulut [Kabuğunda](https://shell.azure.com) Oturum Aç
+# <a name="cli"></a>[CLI](#tab/CLI)
 
-2. Sol üst köşedeki **PowerShell** veya **Bash**(CLI) seçeneğini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
+```azurecli
+az group create --name arm-vscode --location eastus
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+az deployment group create --resource-group arm-vscode --template-file azuredeploy.json --parameters azuredeploy.parameters.json
+```
 
-    ![Azure portalı Cloud Shell CLI](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+```azurepowershell
+New-AzResourceGroup -Name arm-vscode -Location eastus
 
-    ![Azure portalı Cloud Shell PowerShell](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-powershell.png)
-
-    ---
-
-3. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portalı Cloud Shell yükleme dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portalı Cloud Shell yükleme dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
-
-    ---
-
-    Önceki bölümde kaydettiğiniz dosyayı seçin. Varsayılan ad **azuredeploy.json** olur. Şablon dosyasına kabuktan erişilebilir olmalıdır.
-
-    Dosyanın başarıyla yüklendiğini doğrulamak için isteğe bağlı olarak **lS** komutunu ve **cat** komutunu kullanabilirsiniz.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portalı Cloud Shell liste dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portalı Cloud Shell liste dosyası](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
-
-    ---
-4. Bulut Kabuğu'ndan aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin. Kaynak grubu adı oluşturmak için kullanılan bir proje adı sağlayın.  Kaynak grubu adı **rg** eklenen proje adıdır.
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter a project name that is used to generate resource group name:" &&
-    read projectName &&
-    echo "Enter the location (i.e. centralus):" &&
-    read location &&
-    resourceGroupName="${projectName}rg" &&
-    az group create --name $resourceGroupName --location "$location" &&
-    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
-    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-    $resourceGroupName = "${projectName}rg"
-
-    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json"
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-    Dosyayı **azuredeploy.json** dışında bir adla kaydederseniz şablon dosyasının adını güncelleştirin.
-
-    Aşağıdaki ekran görüntüsünde bir örnek dağıtım gösterilmektedir:
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ![Azure portalı Cloud Shell dağıtma şablonu](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ![Azure portalı Cloud Shell dağıtma şablonu](./media/quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
-
-    ---
-
-    Çıktı bölümündeki depolama hesabı adı ve depolama URL'si ekran görüntüsünde vurgulanmıştır. Bir sonraki adımda depolama hesabına ihtiyacınız olacak.
-
-5. Yeni oluşturulan depolama hesabını listelemek için aşağıdaki CLI komutunu çalıştırın:
-
-    # <a name="cli"></a>[CLI](#tab/CLI)
-
-    ```azurecli
-    echo "Enter the Resource Group name:" &&
-    read resourceGroupName &&
-    echo "Enter the Storage Account name:" &&
-    read storageAccountName &&
-    az storage account show --resource-group $resourceGroupName --name $storageAccountName &&
-    echo "Press [ENTER] to continue ..."
-    ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-    ```azurepowershell
-    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
-    Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
-    Write-Host "Press [ENTER] to continue ..."
-    ```
-
-    ---
-
-Azure depolama hesaplarını kullanma hakkında daha fazla bilgi edinmek için bkz. [Hızlı başlangıç: Azure portalı kullanarak blobları yükleme, indirme ve listeleme](../../storage/blobs/storage-quickstart-blobs-portal.md).
+New-AzResourceGroupDeployment -ResourceGroupName arm-vscode -TemplateFile ./azuredeploy.json -TemplateParameterFile ./azuredeploy.parameters.json
+```
+---
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
+Azure kaynaklarına artık ihtiyaç duyulmadığında, hızlı başlangıç kaynak grubunu silmek için Azure CLI veya Azure PowerShell modülünü kullanın.
 
-1. Azure portalından sol menüden **Kaynak grubunu** seçin.
-2. **Ada göre filtrele** alanına kaynak grubu adını girin.
-3. Kaynak grubu adını seçin. Kaynak grubu adı **rg** eklenen proje adıdır. Kaynak grubunda bir depolama hesabı kaynağı görürsünüz.
-4. Üst menüden **kaynak grubunu sil'i** seçin.
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli
+az group delete --name arm-vscode
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell
+Remove-AzResourceGroup -Name arm-vscode
+```
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
-
-Bu hızlı başlangıcın ana odak noktası, Visual Studio Code kullanarak Azure Hızlı Başlangıç şablonlarındaki mevcut bir şablon düzenlemektir. Ayrıca, Azure Bulut Shell'den CLI veya PowerShell'i kullanarak şablonu nasıl dağıtabileceğinizi de öğrendiniz. Azure Hızlı Başlangıç şablonlarındaki şablonlar size ihtiyacınız olan her şeyi sağlamayabilir. Şablon geliştirme hakkında daha fazla bilgi edinmek için yeni başlangıç eğitimi serimize bakın:
 
 > [!div class="nextstepaction"]
 > [Başlangıç öğretileri](./template-tutorial-create-first-template.md)

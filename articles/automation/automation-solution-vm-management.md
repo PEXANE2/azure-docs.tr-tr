@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbcd4ea174d4b6a2a45495c32f178ed1bd01bbe0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261372"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604721"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu'nda mesai dışı çözüm sırasında VM'leri başlatma/durdurma
 
@@ -106,7 +106,7 @@ Tüm üst runbook'lar parametreiçerir. `WhatIf` Parametre True olarak ayarland�
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst çalışma kitabından çağrılır. Bu runbook, Otomatik Durdurma senaryosu için kaynak başına uyarılar oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Doğru veya Yanlış  | Hedeflenen abonelik veya kaynak gruplarında VM'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> `VMList`Virgülle ayrılmış bir VM listesidir. Örneğin, `vm1, vm2, vm3`.<br> `WhatIf`yürütmeden runbook mantığının doğrulanmasını sağlar.|
-|AutoStop_Disable | None | Otomatik Durdurma uyarılarını ve varsayılan zamanlamayı devre dışı bırakır.|
+|AutoStop_Disable | Hiçbiri | Otomatik Durdurma uyarılarını ve varsayılan zamanlamayı devre dışı bırakır.|
 |AutoStop_VM_Child | WebHookData | Üst çalışma kitabından çağrılır. Uyarı kuralları klasik bir VM'yi durdurmak için bu runbook'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst çalışma kitabından çağrılır. Uyarı kuralları, bir VM'yi durdurmak için bu runbook'u çağırır.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Bulut Hizmetleri tarafından klasik VM grubunda eylem başlatma veya durdurma gerçekleştirir. |
@@ -225,11 +225,11 @@ Otomasyon hesabı ve Log Analytics çalışma alanı bu işlemin bir parçası o
 
 1. Günlük Analizi **çalışma alanlarını**arayın ve seçin.
 
-2. Günlük **Analizi çalışma alanları** sayfasında çalışma alanını seçin.
+2. Günlük Analitiği çalışma alanı sayfasında çalışma alanını seçin.
 
 3. Çalışma alanı ayarları sayfasındaki menüden **Sil'i** seçin.
 
-4. Azure Otomasyon hesap bileşenlerini saklamak istemiyorsanız, her birini el ile silebilirsiniz. Bkz. [Çözüm bileşenleri.](#solution-components)
+4. Azure Otomasyon hesap [çözüm bileşenlerini](#solution-components)saklamak istemiyorsanız, her birini el ile silebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

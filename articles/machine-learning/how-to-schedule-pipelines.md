@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: fed411ea171274513308ec3efa68da80e4d25f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77116751"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640507"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi boru hatlarını zamanlayın
 
@@ -98,6 +98,10 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 ### <a name="optional-arguments-when-creating-a-schedule"></a>Zamanlama oluştururken isteğe bağlı bağımsız değişkenler
 
 Daha önce tartışılan bağımsız değişkenlere ek olarak, bağımsız değişkeni `status` etkin olmayan bir zamanlama oluşturacak şekilde `"Disabled"` ayarlayabilirsiniz. Son olarak, ardışık ardışık alt yapının varsayılan hata davranışını geçersiz kılacak bir Boolean'ı geçirmenizi `continue_on_step_failure` sağlar.
+
+### <a name="use-azure-logic-apps-for-more-complex-workflows"></a>Daha karmaşık iş akışları için Azure Mantık Uygulamalarını kullanma
+
+Azure Logic Apps daha karmaşık iş akışlarını destekler ve Azure Machine Learning ardışık iş aktarımlarından çok daha geniş bir şekilde tümleştirilir. Daha fazla bilgi için [Logic App'ten Machine Learning ardışık hattının çalışmasını tetikle'ye](how-to-trigger-published-pipeline.md) bakın.
 
 ## <a name="view-your-scheduled-pipelines"></a>Zamanlanmış ardışık hatlarınızı görüntüleme
 

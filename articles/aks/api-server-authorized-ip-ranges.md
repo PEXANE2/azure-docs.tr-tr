@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmeti'ndeki (AKS) API sunucusuna erişmek için 
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 593f9e0b335e6f4d62c76ce92f833ff4e9143372
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 570d842409fc019d24446e091f83402f4c288d7c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126625"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81640047"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti 'nde (AKS) yetkili IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim
 
@@ -39,7 +39,7 @@ API sunucusu ve diğer küme bileşenleri hakkında daha fazla bilgi [için AKS 
 API sunucusu yetkili IP aralıkları yalnızca yeni AKS kümeleri için çalışır. [Az aks'ı][az-aks-create] kullanarak bir küme oluşturun ve yetkili IP adres aralıklarının listesini sağlamak için *--api-server-authorized-ip-ranges* parametresini belirtin. Bu IP adresi aralıkları genellikle şirket içi ağlarınız veya genel IP'leriniz tarafından kullanılan adres aralıklarıdır. Bir CIDR aralığı belirttiğiniz zaman, aralıktaki ilk IP adresiyle başlayın. Örneğin, *137.117.106.90/29* geçerli bir aralıktır, ancak *137.117.106.88/29*gibi aralıktaki ilk IP adresini belirttiğinden emin olun.
 
 > [!IMPORTANT]
-> Varsayılan olarak, kümeniz giden ağ geçidini yapılandırmak için kullanabileceğiniz [Standart SKU yük dengeleyicisini][standard-sku-lb] kullanır. Küme oluşturma sırasında API sunucusu yetkili IP aralıklarını etkinleştirdiğinizde, kümenizin genel IP'sine de belirttiğiniz aralıklara ek olarak varsayılan olarak izin verilir. *--api-server-authorized-ip-ranges*için *""* veya hiçbir değer belirtmeniz durumunda, API sunucusu yetkili IP aralıkları devre dışı bırakılır.
+> Varsayılan olarak, kümeniz giden ağ geçidini yapılandırmak için kullanabileceğiniz [Standart SKU yük dengeleyicisini][standard-sku-lb] kullanır. Küme oluşturma sırasında API sunucusu yetkili IP aralıklarını etkinleştirdiğinizde, kümenizin genel IP'sine de belirttiğiniz aralıklara ek olarak varsayılan olarak izin verilir. *--api-server-authorized-ip-ranges*için *""* veya hiçbir değer belirtmeniz durumunda, API sunucusu yetkili IP aralıkları devre dışı bırakılır. PowerShell kullanıyorsanız, herhangi bir ayrıştırma sorunu önlemek için *--api-server-authorized-ip-ranges=""* (eşit ler işareti ile) kullanın.
 
 Aşağıdaki örnek, API sunucusu yetkili IP aralıkları etkin olan *myResourceGroup* adlı kaynak grubunda *myAKSCluster* adlı tek düğümlü bir küme oluşturur. İzin verilen IP adres aralıkları *73.140.245.0/24:*
 
@@ -64,7 +64,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Standart SKU yük dengeleyicisi için giden IP'leri belirtin
 
-Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örnek:
+Bir AKS kümesi oluştururken, küme için giden IP adreslerini veya öneklerini belirtirseniz, bu adreslere veya öneklere de izin verilir. Örneğin:
 
 ```azurecli-interactive
 az aks create \
@@ -116,7 +116,7 @@ az aks update \
 
 ## <a name="disable-authorized-ip-ranges"></a>Yetkili IP aralıklarını devre dışı
 
-Yetkili IP aralıklarını devre dışı kullanabilirsiniz, [az aks güncelleştirmesini][az-aks-update] kullanın ve yetkili IP aralıklarını devre dışı kakmak için boş bir aralık belirtin. Örnek:
+Yetkili IP aralıklarını devre dışı kullanabilirsiniz, [az aks güncelleştirmesini][az-aks-update] kullanın ve yetkili IP aralıklarını devre dışı kakmak için boş bir aralık belirtin. Örneğin:
 
 ```azurecli-interactive
 az aks update \

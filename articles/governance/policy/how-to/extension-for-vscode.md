@@ -3,12 +3,12 @@ title: Visual Studio Code için Azure İlkesi uzantısı
 description: Kaynak Yöneticisi takma adlarını aramak için Visual Studio Code için Azure İlkesi uzantısını nasıl kullanacağınızı öğrenin.
 ms.date: 03/07/2020
 ms.topic: how-to
-ms.openlocfilehash: 0e9123f2975bda0d61e9d6e9bf894ecd359e6c5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e31af652f2746adbf0eda386bdb178c752f5f84
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264680"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81641016"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Visual Studio Code için Azure İlkesi uzantısını kullanma
 
@@ -121,7 +121,7 @@ Tek bir abonelikte yüzlerce veya binlerce kaynağı olan müşteriler, kaynakla
 
 ## <a name="discover-aliases-for-resource-properties"></a>Kaynak özellikleri için diğer adları bulma
 
-Bir kaynak seçildiğinde, ister arama arabirimi üzerinden ister ağaç görünümünde seçilerek, Azure İlkesi uzantısı, o kaynağı ve tüm kaynak yöneticisi özellik değerlerini temsil eden JSON dosyasını açar.
+Bir kaynak seçildiğinde, ister arama arabirimi üzerinden ister ağaç görünümünde seçilerek, Azure İlkesi uzantısı, bu kaynağı ve tüm Kaynak Yöneticisi özellik değerlerini temsil eden JSON dosyasını açar.
 
 Bir kaynak açıldıktan sonra, Kaynak Yöneticisi özellik adının veya değerinin üzerinde gezinirken varsa Azure İlkesi takma adını görüntüler. Bu örnekte, kaynak `Microsoft.Compute/virtualMachines` bir kaynak türüdür ve **properties.storageProfile.imageReference.offer** özelliği üzerinde gezinilir. Gezinme eşleşen diğer adları gösterir.
 

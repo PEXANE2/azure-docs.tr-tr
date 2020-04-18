@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 6185f0d84f27b6be89e797fc7cfb22940d8c6401
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: be4f124863da39cc9f6a61ebe054d451b438e8c3
+ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432105"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81617747"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
-Key Vault'un yumuşak silme özelliği, silinen kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır, buna yumuşak silme olarak bilinir. Özellikle, aşağıdaki senaryoları ele alıyoruz:
+Key Vault'un yumuşak silme özelliği, silinen kasaların ve kasa nesnelerinin kurtarılmasına olanak tanır. Özellikle, aşağıdaki senaryoları ele alıyoruz:
 
 - Anahtar kasasının geri kazanılabilir silinmesi için destek
 - Anahtar kasa nesnelerinin geri kazanılabilir silinmesi için destek (ör. anahtarlar, sırlar, sertifikalar)
@@ -38,7 +38,7 @@ Azure Anahtar Kasaları, Azure Kaynak Yöneticisi tarafından yönetilen izlenen
 
 Yumuşak silme etkinleştirildiğinde, silinmiş kaynaklar olarak işaretlenmiş kaynaklar belirli bir süre (varsayılan olarak 90 gün) tutulur. Hizmet ayrıca silinen nesneyi kurtarmak için bir mekanizma sağlar ve aslında silme işlemini geri alar.
 
-Yeni bir anahtar kasası oluştururken, varsayılan olarak yumuşak silme açıktır. [Azure CLI](soft-delete-cli.md) veya [Azure Powershell](soft-delete-powershell.md)üzerinden yumuşak silme olmadan bir anahtar kasası oluşturabilirsiniz. Anahtar kasasında yumuşak silme etkinleştirildiğinde devre dışı tutulamaz
+Yeni bir anahtar kasası oluştururken, varsayılan olarak yumuşak silme açıktır. [Azure CLI](soft-delete-cli.md) veya [Azure PowerShell](soft-delete-powershell.md)üzerinden yumuşak silme olmadan bir anahtar kasası oluşturabilirsiniz. Anahtar kasasında yumuşak silme etkinleştirildiğinde devre dışı tutulamaz
 
 Varsayılan bekletme süresi 90 gündür, ancak anahtar kasa oluşturma sırasında, bekletme ilkesi aralığını Azure portalı üzerinden 7 ila 90 gün arasında bir değere ayarlamak mümkündür. Temizleme koruma tutma ilkesi aynı aralığı kullanır. Ayarlandıktan sonra, bekletme ilkesi aralığı değiştirilemez.
 
@@ -46,7 +46,7 @@ Bekletme süresi geçene kadar yumuşak silinmiş anahtar kasasının adını ye
 
 ### <a name="purge-protection"></a>Temizleme koruması 
 
-Temizleme koruması isteğe bağlı bir Anahtar Kasa sıdavranışıdır ve **varsayılan olarak etkinleştirilir.** [CLI](soft-delete-cli.md#enabling-purge-protection) veya [Powershell](soft-delete-powershell.md#enabling-purge-protection)ile açılabilir.
+Temizleme koruması isteğe bağlı bir Anahtar Kasa sıdavranışıdır ve **varsayılan olarak etkinleştirilir.** [CLI](soft-delete-cli.md#enabling-purge-protection) veya [PowerShell](soft-delete-powershell.md#enabling-purge-protection)ile açılabilir.
 
 Temizleme koruması açıkken, silinen durumdaki bir kasa veya nesne bekletme süresi geçene kadar temizlenemez. Yumuşak silinmiş kasalar ve nesneler, bekletme ilkesinin izlenmesini sağlayarak kurtarılabilir. 
 
@@ -58,7 +58,7 @@ Kalıcı olarak silme, temizleme, anahtar kasa proxy kaynak üzerinde bir POST i
 
 İstisnalar şunlardır:
 - Azure aboneliği *kullanılamaz*olarak işaretlendiğinde. Bu durumda, yalnızca hizmet daha sonra fiili silme gerçekleştirebilir ve bunu zamanlanmış bir işlem olarak yapar. 
-- Tonozda --etkinleştir-temizleme koruma bayrağı etkinleştirildiğinde. Bu durumda, Key Vault, özgün gizli nesnenin nesneyi kalıcı olarak silmek için silinmesi için işaretlendiğinden itibaren 90 gün bekler.
+- Kasanın `--enable-purge-protection flag` kendisi etkinleştirildiğinde. Bu durumda, Key Vault, özgün gizli nesnenin nesneyi kalıcı olarak silmek için silinmesi için işaretlendiğinden itibaren 90 gün bekler.
 
 ### <a name="key-vault-recovery"></a>Anahtar kasa kurtarma
 
@@ -72,7 +72,7 @@ Aynı zamanda, Key Vault, önceden belirlenmiş bir bekletme aralığından sonr
 
 ### <a name="soft-delete-retention-period"></a>Yumuşak silme bekletme süresi
 
-Yumuşak silinen kaynaklar 90 gün, belirli bir süre için tutulur. Yumuşak silme bekletme aralığı sırasında aşağıdaki ler uygulanır:
+Yumuşak silinmiş kaynaklar 90 gün olarak belirli bir süre saklanır. Yumuşak silme bekletme aralığı sırasında aşağıdaki ler uygulanır:
 
 - Aboneliğiniz için yumuşak silme durumundaki tüm anahtar kasaları ve anahtar kasa nesnelerini listeleyebilir ve bunlarla ilgili silme ve kurtarma bilgilerine erişebilirsiniz.
     - Yalnızca özel izinlere sahip kullanıcılar silinen kasaları listeleyebilir. Kullanıcılarımızın silinen kasaları işlemek için bu özel izinlerle özel bir rol oluşturmalarını öneririz.
