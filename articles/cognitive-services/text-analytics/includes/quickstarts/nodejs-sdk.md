@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0cfe651a91cc16e7d4b58af67dac29fe5106a48c
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1414d86577e5aa17cb42762403b3767948c1e30c
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986596"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642911"
 ---
 <a name="HOLTop"></a>
 
@@ -61,7 +61,7 @@ npm init
 NPM `@azure/ai-text-analytics` paketlerini yükleyin:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.3
+npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 ```
 
 > [!TIP]
@@ -88,7 +88,7 @@ Adlandırılmış `index.js` bir dosya oluşturun ve aşağıdakileri ekleyin:
 ```javascript
 "use strict";
 
-const { TextAnalyticsClient, TextAnalyticsApiKeyCredential } = require("@azure/ai-text-analytics");
+const { TextAnalyticsClient, AzureKeyCredential } = require("@azure/ai-text-analytics");
 ```
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
@@ -124,7 +124,7 @@ Yanıt nesnesi, her belge için çözümleme bilgilerini içeren bir listedir.
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık tanıma](#named-entity-recognition-ner)
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümcecik çıkarma](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="client-authentication"></a>İstemci Kimlik Doğrulaması
 
@@ -133,7 +133,7 @@ Yanıt nesnesi, her belge için çözümleme bilgilerini içeren bir listedir.
 Parametre `TextAnalyticsClient` olarak anahtar ve bitiş noktası ile yeni bir nesne oluşturun.
 
 ```javascript
-const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new TextAnalyticsApiKeyCredential(key));
+const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCredential(key));
 ```
 
 #### <a name="version-21"></a>[Sürüm 2.1](#tab/version-2)
@@ -266,7 +266,6 @@ Document ID: 3 , Language: Chinese_Simplified
 
 > [!NOTE]
 > Sürümde `3.0-preview`:
-> * NER, kişisel bilgileri algılamak için ayrı yöntemler içerir. 
 > * Varlık bağlama NER'den ayrı bir istektir.
 
 Çözümlemek istediğiniz belgeyi içeren bir dizi dize oluşturun. İstemcinin `recognizeEntities()` yöntemini arayın `RecognizeEntitiesResult` ve nesneyi alın. Sonuç listesini yineleyin ve varlık adını, türünü, alt türünü, ofset,uzunluk ve skoru yazdırın.
@@ -318,40 +317,6 @@ Document ID: 1
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
         Score: 0.31
-```
-
-## <a name="using-ner-to-detect-personal-information"></a>Kişisel bilgileri algılamak için NER'i kullanma
-
-Çözümlemek istediğiniz belgeyi içeren bir dizi dize oluşturun. İstemcinin `recognizePiiEntities()` yöntemini arayın `EntitiesBatchResult` ve nesneyi alın. Sonuç listesini yineleyin ve varlık adını, türünü, alt türünü, ofset,uzunluk ve skoru yazdırın.
-
-
-```javascript
-async function entityPiiRecognition(client){
-
-    const entityPiiInput = [
-        "Insurance policy for SSN on file 123-12-1234 is here by approved."
-    ];
-    const entityPiiResults = await client.recognizePiiEntities(entityPiiInput);
-
-    entityPiiResults.forEach(document => {
-        console.log(`Document ID: ${document.id}`);
-        document.entities.forEach(entity => {
-            console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
-        });
-    });
-}
-entityPiiRecognition(textAnalyticsClient);
-```
-
-Kodunuzu konsol `node index.js` pencerenizde çalıştırın.
-
-### <a name="output"></a>Çıktı
-
-```console
-Document ID: 0
-        Name: 123-12-1234       Category: U.S. Social Security Number (SSN)     Subcategory: N/A
-        Score: 0.85
 ```
 
 ## <a name="entity-linking"></a>Varlık Bağlama

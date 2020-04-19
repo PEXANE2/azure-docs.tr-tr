@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: a0e6b5b7d5cedc821ee34bdd219ae07bb9d43199
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 31afb7bc00250887841adccc8c3cc4dc69462d55
+ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79481917"
+ms.lasthandoff: 04/18/2020
+ms.locfileid: "81642894"
 ---
 <a name="HOLTop"></a>
 
-[Referans belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) | [Örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
+[Referans belgeleri](https://aka.ms/azsdk-java-textanalytics-ref-docs) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics) | [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) | [Örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -32,14 +32,14 @@ ms.locfileid: "79481917"
 
 ### <a name="add-the-client-library"></a>İstemci kitaplığını ekleme
 
-Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. Ardından projenizin *pom.xml* dosyasına aşağıdaki bağımlılığı ekleyin. [Diğer yapı araçları için](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.3) uygulama sözdizimini çevrimiçi olarak bulabilirsiniz.
+Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. Ardından projenizin *pom.xml* dosyasına aşağıdaki bağımlılığı ekleyin. [Diğer yapı araçları için](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/1.0.0-beta.4) uygulama sözdizimini çevrimiçi olarak bulabilirsiniz.
 
 ```xml
 <dependencies>
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>1.0.0-beta.3</version>
+        <version>1.0.0-beta.4</version>
     </dependency>
 </dependencies>
 ```
@@ -50,6 +50,7 @@ Tercih ettiğiniz IDE veya geliştirme ortamında bir Maven projesi oluşturun. 
 Adlandırılmış `TextAnalyticsSamples.java`bir Java dosyası oluşturun. Dosyayı açın ve `import` aşağıdaki ifadeleri ekleyin:
 
 ```java
+import com.azure.core.credential.AzureKeyCredential;
 import com.azure.ai.textanalytics.models.*;
 import com.azure.ai.textanalytics.TextAnalyticsClientBuilder;
 import com.azure.ai.textanalytics.TextAnalyticsClient;
@@ -76,7 +77,6 @@ public static void main(String[] args) {
     sentimentAnalysisExample(client);
     detectLanguageExample(client);
     recognizeEntitiesExample(client);
-    recognizePIIEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
 }
@@ -93,7 +93,7 @@ Text Analytics istemcisi, anahtarınızı kullanarak Azure'a doğrulayan ve metn
 * [Dil algılama](#language-detection)
 * [Adlandırılmış Varlık tanıma](#named-entity-recognition-ner) 
 * [Varlık bağlama](#entity-linking)
-* [Anahtar tümcecik çıkarma](#key-phrase-extraction)
+* [Anahtar ifade ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrula
 
@@ -102,7 +102,7 @@ Metin Analizi kaynağınızın anahtarı `TextAnalyticsClient` ve bitiş noktas�
 ```java
 static TextAnalyticsClient authenticateClient(String key, String endpoint) {
     return new TextAnalyticsClientBuilder()
-        .apiKey(new TextAnalyticsApiKeyCredential(key))
+        .apiKey(new AzureKeyCredential(key))
         .endpoint(endpoint)
         .buildClient();
 }
@@ -204,34 +204,6 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 ```console
 Recognized entity: Seattle, entity category: Location, entity sub-category: GPE, score: 0.92.
 Recognized entity: last week, entity category: DateTime, entity sub-category: DateRange, score: 0.8.
-```
-
-## <a name="using-ner-to-recognize-personal-information"></a>Kişisel bilgileri tanımak için NER'i kullanma
-
-Daha önce oluşturduğunuz istemciyi alan ve `recognizePIIEntitiesExample()` `recognizePiiEntities()` işlevini çağıran yeni bir işlev oluşturun. Döndürülen `RecognizePiiEntitiesResult` nesne, başarılı `NamedEntity` olup olmadığının `errorMessage` bir listesini veya başarısız olup olmadığını içerir. 
-
-```java
-static void recognizePIIEntitiesExample(TextAnalyticsClient client)
-{
-    // The text that need be analyzed.
-    String text = "Insurance policy for SSN on file 123-12-1234 is here by approved.";
-
-    for (PiiEntity entity : client.recognizePiiEntities(text)) {
-        System.out.printf(
-            "Recognized personal identifiable information entity: %s, entity category: %s, %nentity sub-category: %s, score: %s.%n",
-            entity.getText(),
-            entity.getCategory(),
-            entity.getSubCategory(),
-            entity.getConfidenceScore());
-    }
-}
-```
-
-### <a name="output"></a>Çıktı
-
-```console
-Recognized personal identifiable information entity: 123-12-1234, entity category: U.S. Social Security Number (SSN), 
-entity sub-category: null, score: 0.85.
 ```
 
 ## <a name="entity-linking"></a>Varlık bağlama
