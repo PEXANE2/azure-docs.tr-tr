@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: diberry
-ms.openlocfilehash: 23ac98f91c989c9bedb6b91e6a7ce26dc164ac5a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2307ef6ea8940a3b3ddfb8c7539f4f809dc4c52c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987820"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733253"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 * [Python 3.6](https://www.python.org/downloads/) veya üzeri.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Genel uygulama kimliği:`df67dcdb-c37d-46af-88e1-8b97951ca1c2`
+* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
 
 ## <a name="create-luis-runtime-key-for-predictions"></a>Öngörüler için LUIS çalışma zamanı anahtarı oluşturma
 

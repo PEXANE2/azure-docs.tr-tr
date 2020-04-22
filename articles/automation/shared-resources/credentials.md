@@ -1,5 +1,5 @@
 ---
-title: Azure Otomasyonu'ndaki kimlik bilgileri varlıkları
+title: Azure Otomasyonu'nda kimlik bilgilerini yönetme
 description: Azure Otomasyonu'ndaki kimlik bilgileri varlıkları, runbook veya DSC yapılandırması tarafından erişilen kaynaklara kimlik doğrulamak için kullanılabilecek güvenlik kimlik bilgileri içerir. Bu makalede, kimlik bilgileri varlıklarının nasıl oluşturulup runbook veya DSC yapılandırmasında kullanılacağı açıklanmaktadır.
 services: automation
 ms.service: automation
@@ -9,21 +9,22 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8b63a2676690004d23094b490fea0ef150ab9cb
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 59e32087d4489cbb155a9cff7d40094c0606c0cf
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546390"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732839"
 ---
-# <a name="credential-assets-in-azure-automation"></a>Azure Otomasyonu'ndaki kimlik bilgileri varlıkları
+# <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu'nda kimlik bilgilerini yönetme
 
 Otomasyon kimlik bilgisi kıymeti, kullanıcı adı ve parola gibi güvenlik kimlik bilgilerini içeren bir nesne tutar. Runbook'lar ve DSC yapılandırmaları, kimlik doğrulaması için [PSCredential](https://docs.microsoft.com/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0) nesnesi kabul eden cmdletler kullanır. Alternatif olarak, kimlik doğrulaması gerektiren bazı `PSCredential` uygulama veya hizmetlere sağlamak için nesnenin kullanıcı adını ve parolasını ayıklayabilirler. 
 
-Azure Otomasyonu, bir kimlik bilgisinin özelliklerini güvenli bir şekilde saklar. Bir runbook veya DSC yapılandırması aracılığıyla özelliklere erişim [Get-AutomationPSCredential](#activities-used-to-access-credentials) etkinliğini kullanır.
-
 > [!NOTE]
 > Azure Otomasyonu'ndaki güvenli varlıklar kimlik bilgilerini, sertifikaları, bağlantıları ve şifreli değişkenleri içerir. Bu varlıklar, her Otomasyon hesabı için oluşturulan benzersiz bir anahtar kullanılarak şifrelenir ve Azure Otomasyonu'nda depolanır. Bu anahtar Key Vault'ta saklanır. Güvenli bir kıymeti depolamadan önce, anahtar Key Vault'tan yüklenir ve sonra varlığı şifrelemek için kullanılır.
+
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](../automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -44,13 +45,11 @@ Aşağıdaki tablodaki etkinlikler, runbook'larda ve DSC yapılandırmalarında 
 
 | Etkinlik | Açıklama |
 |:--- |:--- |
-| `Get-AutomationPSCredential` |Runbook veya DSC yapılandırmasında kullanmak üzere bir kimlik bilgisi alır. Kimlik bilgisi nesne `PSCredential` biçimindedir. |
+| `Get-AutomationPSCredential` |Runbook veya DSC yapılandırmasında kullanmak üzere bir kimlik bilgisi alır. Kimlik bilgisi nesne `PSCredential` biçimindedir. Bu faaliyete karşılık gelen cmdlet hakkında daha fazla bilgi için [Azure Otomasyon'daki Modül varlıkları'na](modules.md)bakın. |
 | [Get-Credential](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) |Kullanıcı adı ve parola istemi içeren bir kimlik bilgisi alır. |
 | [New-AzureAutomationCredential](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azureautomationcredential?view=azuresmps-4.0.0) | Kimlik bilgisi kıymeti oluşturur. |
 
-Azure Otomasyon Yazma Araç Kiti'ni kullanarak `Get-AutomationPSCredential` yerel geliştirme için cmdlet, [AzureAutomationAuthoringToolkit](https://www.powershellgallery.com/packages/AzureAutomationAuthoringToolkit/0.2.3.9)derlemesinin bir parçasıdır. Azure'un Otomasyon bağlamıyla çalışması için `Orchestrator.AssetManagement.Cmdlets`cmdlet ' in . Azure [Otomasyonunda Modülleri Yönet'e](modules.md)bakın.
-
-Kodunuzda `PSCredential` nesneleri almak [için PowerShell ISE için Microsoft Azure Otomasyon Ise eklentisini](https://github.com/azureautomation/azure-automation-ise-addon)yükleyebilirsiniz.
+Kodunuzda `PSCredential` nesneleri almak için PowerShell ISE için Microsoft Azure Otomasyon Ise eklentisini yükleyebilirsiniz. Daha fazla bilgi için [Azure Otomasyonu'ndaki Modül varlıkları'na](modules.md)bakın.
 
 ```azurepowershell
 Install-Module AzureAutomationAuthoringToolkit -Scope CurrentUser -Force
@@ -65,9 +64,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > `Get-AutomationPSCredential`'nin `Name` parametresi'ndeki değişkenleri kullanmaktan kaçınmalısınız. Bunların kullanımı, tasarım zamanında runbook'lar veya DSC yapılandırmaları ve kimlik bilgileri varlıkları arasındaki bağımlılıkların keşfini zorlaştırabilir.
 
-## <a name="python2-functions-that-access-credentials"></a>Kimlik bilgilerine erişen Python2 işlevleri
+## <a name="python-2-functions-that-access-credentials"></a>Kimlik bilgilerine erişen Python 2 işlevleri
 
-Aşağıdaki tablodaki işlev, Python2 runbook'taki kimlik bilgilerine erişmek için kullanılır.
+Aşağıdaki tablodaki işlev, Python 2 runbook'taki kimlik bilgilerine erişmek için kullanılır.
 
 | İşlev | Açıklama |
 |:---|:---|
@@ -154,9 +153,9 @@ Aşağıdaki resim, grafik çalışma kitabında bir kimlik bilgisi kullanma ör
 
 Azure Otomasyonu'ndaki DSC yapılandırmaları kimlik bilgileri `Get-AutomationPSCredential`varlıkları yla çalışabilse de, parametreler üzerinden kimlik bilgileri varlıklarından geçebilirler. Daha fazla bilgi için bkz: [Azure Automation DSC'de yapılandırmaları derleme.](../automation-dsc-compile.md#credential-assets)
 
-## <a name="using-credentials-in-python2"></a>Python2'de kimlik bilgilerini kullanma
+## <a name="using-credentials-in-python-2"></a>Python 2'de kimlik bilgilerini kullanma
 
-Aşağıdaki örnek, Python2 runbook'larında kimlik bilgilerine erişme örneğini gösterir.
+Aşağıdaki örnek, Python 2 runbook'larında kimlik bilgilerine erişme örneğini gösterir.
 
 
 ```python
@@ -175,4 +174,4 @@ print cred["password"]
 * Otomasyon için farklı kimlik doğrulama yöntemlerini anlamak için Azure [Otomasyon Güvenliği'ne](../automation-security-overview.md)bakın.
 * Grafik çalışma kitaplarıyla başlamak için [ilk grafik çalışma kitabıma](../automation-first-runbook-graphical.md)bakın.
 * PowerShell iş akışı runbook'larına başlamak için [ilk PowerShell iş akışı çalışma kitabıma](../automation-first-runbook-textual.md)bakın.
-* Python2 runbook'larını kullanmaya başlamak için bkz. [İlk Python2 runbook'um](../automation-first-runbook-textual-python2.md). 
+* Python 2 runbook'ları ile başlamak için [ilk Python 2 runbook'uma](../automation-first-runbook-textual-python2.md)bakın. 

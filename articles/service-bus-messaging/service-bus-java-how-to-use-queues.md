@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294137"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732180"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: İleti göndermek ve almak için Java ile Azure Servis Veri Servisi kuyruklarını kullanın
 
@@ -43,7 +43,7 @@ Bu eğitimde, bir Azure Hizmet Veri Yolu kuyruğuna ileti göndermek ve ileti al
 ## <a name="configure-your-application-to-use-service-bus"></a>Uygulamanızı Servis Veri Aracı'nı kullanacak şekilde yapılandırın
 Bu örneği oluşturmadan önce [Azure SDK'yı Java için][Azure SDK for Java] yüklediğinizden emin olun. 
 
-Eclipse kullanıyorsanız, Java için [Azure][Azure Toolkit for Eclipse] SDK'yı içeren Azure Araç Seti'ni Eclipse için yükleyebilirsiniz. Ardından, projenize **Java için Microsoft Azure Kitaplıkları** ekleyebilirsiniz. IntelliJ kullanıyorsanız, Bkz. [IntelliJ için Azure Araç Kitini Yükle.](/azure/java/intellij/azure-toolkit-for-intellij-installation) 
+Eclipse kullanıyorsanız, Java için [Azure][Azure Toolkit for Eclipse] SDK'yı içeren Azure Araç Seti'ni Eclipse için yükleyebilirsiniz. Ardından, projenize **Java için Microsoft Azure Kitaplıkları** ekleyebilirsiniz. IntelliJ kullanıyorsanız, Bkz. [IntelliJ için Azure Araç Kitini Yükle.](/azure/developer/java/toolkit-for-intellij/installation) 
 
 ![Eclipse projenize Java için Microsoft Azure Kitaplıkları ekleyin](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -184,7 +184,7 @@ Aşağıdaki örnek, iletilerin **PeekLock** modu (varsayılan mod değil) kulla
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Uygulama çökmelerini ve okunmayan iletileri giderme
 Service Bus, uygulamanızda gerçekleşen hataları veya ileti işlenirken oluşan zorlukları rahat bir şekilde ortadan kaldırmanıza yardımcı olmak için işlevsellik sağlar. Bir alıcı uygulaması iletiyi nedense işleyemiyorsa, **getLockToken()** üzerinden alınan iletinin kilit belirteci ile istemci nesnesi üzerinde **terk etme()** yöntemini arayabilir. Bu işlem Service Bus hizmetinin kuyruktaki iletinin kilidini açmasına ve iletiyi aynı veya başka bir kullanıcı uygulama tarafından tekrar alınabilir hale getirmesine neden olur.
 
-Sıra içinde kilitli bir iletiyle ilişkili bir zaman aşımı da vardır ve uygulama kilit süresi sona ermeden önce iletiyi işlemezse (örneğin, uygulama çöküyorsa), Servis Veri Servisi iletiyi otomatik olarak açar ve tekrar alınabilir.
+Ayrıca, sırada kilitli bir iletiyle ilişkili bir zaman aşımı da vardır ve uygulama kilit süresi sona ermeden önce iletiyi işlemezse (örneğin, uygulama çöküyorsa), Servis Veri Servisi iletiyi otomatik olarak açar ve yeniden alınmak üzere kullanılabilir hale getirir.
 
 Uygulamanın iletiyi işledikten sonra ancak **tam()** isteği verilmeden önce çökmesi durumunda, ileti yeniden başlatıldığında uygulamaya yeniden teslim edilir. Bu durum *En Az Bir Kez İşleme* olarak adlandırılır. Her ileti en az bir kez işlenir ancak belirli durumlarda aynı ileti yeniden teslim edilebilir. Senaryo yinelenen işlemeyi kabul etmiyorsa yinelenen ileti teslimine izin vermek için uygulama geliştiricilerin uygulamaya ilave bir mantık eklemesi gerekir. Bu genellikle iletinin **getMessageId** yöntemi kullanılarak elde edilir ve bu yöntem, teslim girişimleri arasında sabit kalır.
 
@@ -196,7 +196,7 @@ Artık Servis Veri Servisi kuyruklarının temellerini öğrendiğiniz için, da
 
 Daha fazla bilgi için bkz. [Java Geliştirici Merkezi](https://azure.microsoft.com/develop/java/).
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

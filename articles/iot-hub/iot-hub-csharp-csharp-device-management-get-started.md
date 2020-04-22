@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 3b37d7e049e7daabbbb4fe1a7b49feb654e8accc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 3cc74faa39b21b1ab275149db4f85de8f55fd07e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110249"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733466"
 ---
 # <a name="get-started-with-device-management-net"></a>Cihaz yönetimine başlayın (.NET)
 
@@ -64,7 +65,7 @@ Bu bölümde, C#'ı kullanarak doğrudan bir yöntem kullanarak bir aygıtta uza
 
 1. **Yeni bir proje oluştur'da** **Konsol Uygulaması (.NET Framework)** proje şablonunu bulun ve seçin ve ardından **İleri'yi**seçin.
 
-1. **Yeni projenizi yapılandırın,** *project TriggerReboot*adını ve .NET Framework sürümü 4.5.1 veya daha sonrasını seçin. **Oluştur'u**seçin.
+1. **Yeni projenizi yapılandırın,** *project TriggerReboot*adını ve .NET Framework sürümü 4.5.1 veya daha sonrasını seçin. **Oluştur**’u seçin.
 
     ![Yeni Visual C# Windows Klasik Masaüstü projesi](./media/iot-hub-csharp-csharp-device-management-get-started/create-trigger-reboot-configure.png)
 
@@ -147,7 +148,7 @@ Benzetimli aygıt uygulamasını oluşturmak için aşağıdaki adımları izley
 
 1. Visual Studio'da, zaten oluşturduğunuz TriggerReboot çözümünde**Yeni** >  **Dosya** > **Projesi'ni**seçin. **Yeni bir proje oluştur'da** **Konsol Uygulaması (.NET Framework)** proje şablonunu bulun ve seçin ve ardından **İleri'yi**seçin.
 
-1. **Yeni projenizi yapılandırın,** *projeyi SimulateManagedDevice*olarak adlandırın ve **Çözüm**için **Çözüme Ekle'yi**seçin. **Oluştur'u**seçin.
+1. **Yeni projenizi yapılandırın,** *projeyi SimulateManagedDevice*olarak adlandırın ve **Çözüm**için **Çözüme Ekle'yi**seçin. **Oluştur**’u seçin.
 
     ![Projenizi çözüme adlandırın ve ekleyin](./media/iot-hub-csharp-csharp-device-management-get-started/configure-device-app.png)
 

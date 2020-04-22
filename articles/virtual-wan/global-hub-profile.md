@@ -5,18 +5,21 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 1/31/2020
+ms.date: 4/20/2020
 ms.author: alzam
-ms.openlocfilehash: 3b7e765dbd024d46939e8989993f0c882b2a8f4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b63bb861f4df087f852bb1bf599d32100d063f7e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76965235"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733178"
 ---
 # <a name="download-a-global-or-hub-based-profile-for-user-vpn-clients"></a>Kullanıcı VPN istemcileri için genel veya hub tabanlı bir profil indirin
 
-Azure Virtual WAN uzak kullanıcılar için iki tür bağlantı sunar: Genel ve Hub tabanlı. Bir profil hakkında bilgi edinmek ve indirmek için aşağıdaki bölümleri kullanın.
+Azure Virtual WAN uzak kullanıcılar için iki tür bağlantı sunar: Genel ve Hub tabanlı. Bir profil hakkında bilgi edinmek ve indirmek için aşağıdaki bölümleri kullanın. 
+
+> [!IMPORTANT]
+> RADIUS kimlik doğrulaması yalnızca Hub tabanlı profili destekler.
 
 ## <a name="global-profile"></a>Genel profil
 

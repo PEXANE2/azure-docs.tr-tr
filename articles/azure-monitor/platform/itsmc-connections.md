@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: eb3b09c6f349024d30d68a6c970770e2a78924ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9441e7bb970508df4c002897ab726d6e683fa848
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132306"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733355"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM ürünlerini/hizmetlerini BT Servis Yönetimi Konektörü ile bağlayın
 Bu makalede, iş öğelerinizi merkezi olarak yönetmek için LOG Analytics'teki ITSM ürünün/hizmetinizle BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılabildiğini zedebilirsiniz. ITSMC hakkında daha fazla bilgi için [genel bakış](../../azure-monitor/platform/itsmc-overview.md)adabına bakın.
@@ -159,7 +159,7 @@ Karma bağlantı için dinleyici kurulumünü yapılandırmak için aşağıdaki
 
 3. Azure kimlik bilgilerinizle giriş yapın ve Karma bağlantının oluşturulduğu aboneliğinizi seçin.
 
-4. **Kaydet**'e tıklayın.
+4. **Kaydet**’e tıklayın.
 
 Karma bağlantınız başarıyla bağlandı.
 
@@ -194,7 +194,15 @@ Aşağıdaki ön koşulların karşılandığından emin olun:
     - [İstanbul için OAuth'u kur](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Helsinki için OAuth'u ayarlayın](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Cenevre için OAuth'u ayarlayın](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
-
+> [!NOTE]
+> "OAuth'u Kur" tanımının bir parçası olarak şunları öneririz:
+>
+> 1) **Yenileme belirteci ömrünü 90 güne (7.776.000 saniye) güncelleştirin:** Aşama 2'de [OAuth'u Ayarlama'nın](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_SettingUpOAuth.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696739125&sdata=Q7mF6Ej8MCupKaEJpabTM56EDZ1T8vFVyihhoM594aA%3D&reserved=0) bir parçası olarak: Son noktanın tanımından sonra [istemcilerin örne erişmeleri](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.servicenow.com%2Fbundle%2Fnewyork-platform-administration%2Fpage%2Fadminister%2Fsecurity%2Ftask%2Ft_CreateEndpointforExternalClients.html&data=02%7C01%7CNoga.Lavi%40microsoft.com%7C2c6812e429a549e71cdd08d7d1b148d8%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637208431696749123&sdata=hoAJHJAFgUeszYCX1Q%2FXr4N%2FAKiFcm5WV7mwR2UqeWA%3D&reserved=0) için bir bitiş noktası oluşturun, ServiceNow bıçak aramasisteminde System OAuth->Application Registry için tanımlanan OAuth'un adını seçin ve "Belirteç Ömrünü Tazele" alanını 7.776.000'e güncelleyin.
+> Sonunda tıklayın güncelleştirme.
+> 2) **Bağlantının canlı kalmasını sağlamak için bir dahili yordam oluşturmanızı öneririz:** Belirteci yenilemek için "Token Ömrünü Yenile"ye göre. Lütfen belirteç beklenen son kullanma süresini yenilemeden önce aşağıdaki işlemleri gerçekleştirdiğinden emin olun ("Token Ömrünü Yenile" süresinin sona ermesinden birkaç gün önce tavsiye ediyoruz):
+>
+>>  1) [ITSM konektör yapılandırması için manuel eşitleme işlemini tamamlama](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+ >> 2) Eski anahtarları güvenlik nedeniyle uzak tutmanın önerilmemesi nedeniyle eski yenileme belirteci iptal edin. ServiceNow bıçak arama "System OAuth"-> "Jetonları yönet" ve sonra OAuth adı ve son kullanma tarihine göre listeden eski belirteç seçin. "Erişimi İptal Et"->"İptal et.
 
 - Microsoft Log Analytics tümleştirmesi (ServiceNow uygulaması) için Kullanıcı Uygulamasını yükleyin. [Daha fazla bilgi edinin](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Yüklü kullanıcı uygulaması için tümleştirme kullanıcı rolü oluşturun. Entegrasyon kullanıcı rolünün nasıl oluşturulacığı ile ilgili bilgiler [burada.](#create-integration-user-role-in-servicenow-app)

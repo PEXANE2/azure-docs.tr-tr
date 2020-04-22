@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: db7c7ae9889d26479f51a7714e7e9fb04b444628
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.date: 04/20/2020
+ms.openlocfilehash: 8e0abf780589207b065b7262afb99de81e625fe8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757117"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732219"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Hive kullanarak JSON belgelerini işleme ve analiz
 
@@ -161,4 +161,3 @@ Hive'da seçtiğiniz JSON işlecinin türü senaryonuza bağlıdır. Basit bir J
 
 * [Örnek Apache log4j dosyasını analiz etmek için HDInsight'ta Apache Hadoop ile Apache Hive ve HiveQL kullanın](../hdinsight-use-hive.md)
 * [HDInsight'ta İnteraktif Sorgu'u kullanarak uçuş gecikme verilerini analiz edin](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [HDInsight'ta Apache Hive kullanarak Twitter verilerini analiz edin](../hdinsight-analyze-twitter-data-linux.md)

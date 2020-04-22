@@ -8,17 +8,19 @@ ms.author: kgremban
 ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 228e50160e5c13b2d24a504b02c4bb7e3a420a46
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: d8ea58dca8235b6dfc49c14c519dd44dabdf0592
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76772921"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733079"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Öğretici: Linux cihazları için bir Java IoT Edge modülü geliştirin
 
-İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Azure IoT Edge'de oluşturduğunuz simüle edilmiş IoT Edge aygıtını [Linux](quickstart-linux.md) quickstart'ındaki simüle edilmiş bir aygıtta kullanırsınız. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Azure IoT Edge'de oluşturduğunuz simüle edilmiş IoT Edge aygıtını [Linux](quickstart-linux.md) quickstart'ındaki simüle edilmiş bir aygıtta kullanırsınız. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >

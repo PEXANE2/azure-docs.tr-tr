@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 179a2120714460c955d1fd3e345ebcd963ae564d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453566"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733024"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Windows Java uygulamasını yapılandırma
 
@@ -318,7 +318,7 @@ Azure'un desteklenen Java Geliştirme Kiti (JDK), [Azul Systems](https://www.azu
 
 Windows için Azure Uygulama Hizmeti'ndeki yeni çalışma zamanı seçenekleri yle ana sürüm güncelleştirmeleri sağlanacaktır. Müşteriler, Uygulama Hizmeti dağıtımlarını yapılandırarak Java'nın bu yeni sürümlerini günceller ve büyük güncelleştirmenin gereksinimlerini karşılamasını test etmek ve sağlamaktan sorumludur.
 
-Desteklenen JDK'lar her yılın Ocak, Nisan, Temmuz ve Ekim aylarında üç ayda bir otomatik olarak yamalı olur. Azure'da Java hakkında daha fazla bilgi için lütfen [bu destek belgesine](https://docs.microsoft.com/azure/java/jdk/)bakın.
+Desteklenen JDK'lar her yılın Ocak, Nisan, Temmuz ve Ekim aylarında üç ayda bir otomatik olarak yamalı olur. Azure'da Java hakkında daha fazla bilgi için lütfen [bu destek belgesine](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-long-term-support)bakın.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 

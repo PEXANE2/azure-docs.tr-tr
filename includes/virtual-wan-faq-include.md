@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a2d79391832bbb5424c6d4096eb5c1a597623367
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 2b30c176cf3c9dd31ae3efa85d308b3f89bd4dbe
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81422217"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81736815"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Azure Virtual WAN'ı kullanabilmek için kullanıcının hub'a sahip olması ve SD-WAN/VPN aygıtlarıyla konuşması gerekiyor mu?
 
@@ -212,7 +212,7 @@ Sanal hub, bayrak bağlantıda 'Etkinleştirilmiş' ise öğrenilen varsayılan 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Sanal WAN'daki sanal hub, birden çok hub'dan bir rota için en iyi yolu nasıl seçer?
 
 Sanal Hub aynı rotayı birden çok uzak hub'dan öğrenirse, karar verdiği sıra aşağıdaki gibidir
-1) Rota Kaynağı a) Ağ yolları – Sanal Hub ağ geçitleri tarafından doğrudan öğrenilen VNET önekleri b) BGP c) Hub RouteTable (statik yapılandırılan rotalar) d) InterHub rotaları
+1) Rota Kaynağı a) Ağ yolları – Sanal Hub ağ geçitleri tarafından doğrudan öğrenilen VNET önekleri b) Hub RouteTable (statik olarak yapılandırılmış rotalar) c) BGP d) İnterHub yolları
 2)  Rota ölçümü : Virtual WAN, VPN üzerinden ExpressRoute'u tercih eder. ExpressRoute eş VPN eş göre daha yüksek bir ağırlık var
 3)  AS yol uzunluğu
 

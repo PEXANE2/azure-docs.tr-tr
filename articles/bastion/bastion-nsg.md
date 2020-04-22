@@ -5,14 +5,14 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: charwen
-ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0188f9bc1c7c0e8d7fed9f590d078085b175614f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087262"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732191"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimi ve Azure Bastion ile çalışma
 
@@ -32,9 +32,9 @@ Bu diyagramda:
 
 Bu bölümde, kullanıcı ile Azure Kalesi arasındaki ağ trafiği ve sanal ağınızdaki VM'leri hedeflemek için aşağıdakiler gösterilmektedir:
 
-### <a name="azurebastionsubnet"></a>AzureBastionSubnet
+### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion özellikle AzureBastionSubnet'e dağıtılır.
+Azure Bastion özellikle ***AzureBastionSubnet'e***dağıtılır.
 
 * **Giriş Trafiği:**
 
@@ -46,19 +46,11 @@ Azure Bastion özellikle AzureBastionSubnet'e dağıtılır.
    * **VM'leri hedeflemek için Çıkış Trafiği:** Azure Bastion, özel IP üzerinden hedef VM'lere ulaşır. NSG'ler, 3389 ve 22 bağlantı noktası için diğer hedef VM alt ağlarına çıkış trafiğine izin vermeli.
    * **Azure'daki diğer ortak uç noktalara çıkış Trafiği:** Azure Bastion'un Azure'daki çeşitli ortak uç noktalara bağlanabilmesi gerekir (örneğin, tanılama günlüklerini ve ölçüm günlüklerini depolamak için). Bu nedenle, Azure Bastion'un 443 **-AzureCloud** hizmet etiketine giden olması gerekir.
 
-* **Hedef VM Subnet:** Bu, RDP/SSH istediğiniz hedef sanal makineyi içeren alt ağdır.
+### <a name="target-vm-subnet"></a>Hedef VM Subnet
+Bu, RDP/SSH istediğiniz hedef sanal makineyi içeren alt ağdır.
 
    * **Azure Kalesi'nden Giriş Trafiği:** Azure Bastion, özel IP üzerinden hedef VM'ye ulaşır. RDP/SSH bağlantı noktalarının (sırasıyla 3389/22 bağlantı noktaları) hedef VM tarafında özel IP üzerinden açılması gerekir. En iyi uygulama olarak, bu kurala Azure Bastion Subnet IP adresi aralığını ekleyerek, hedef VM alt netindeki hedef VM'lerde bu bağlantı noktalarını yalnızca Bastion'un açabilmesine olanak tanır.
 
-## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet'e NSG'ler uygulayın
-
-***AzureBastionSubnet'e***bir NSG oluşturup uygularsanız, NSG'nizde aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemezseniz, NSG oluşturma/güncelleştirmesi başarısız olur:
-
-* **Düzlem bağlantısını kontrol edin:** GatewayManager'dan 443'e gelen
-* **Tanılama günlüğü ve diğerleri:** AzureCloud'a 443'ten çıkış. Bu hizmet etiketiiçindeki bölgesel etiketler henüz desteklenmez.
-* **Hedef VM:** 3389 ve 22 için Giden VirtualNetwork için
-
-Bu [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)başvuru için bir NSG kuralı örneği mevcuttur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -2,13 +2,13 @@
 title: Azure Hizmet Kumaşı'nda desteklenen küme sürümleri
 description: Service Fabric ekibi blogundaki en yeni sürümlere bağlantı da dahil olmak üzere Azure Hizmet Kumaşı'ndaki küme sürümleri hakkında bilgi edinin.
 ms.topic: troubleshooting
-ms.date: 03/02/2020
-ms.openlocfilehash: b76e498926492ce7acaa696dfe9a0299fb5573e0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.date: 04/20/2020
+ms.openlocfilehash: b68314a116b0d9da8baf5f61eeffeef2b30835c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460537"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732869"
 ---
 # <a name="supported-service-fabric-versions"></a>Desteklenen Hizmet Kumaşı sürümleri
 
@@ -41,6 +41,7 @@ Aşağıdaki tabloda Hizmet Kumaşı sürümleri ve bunların destek bitiş tari
 | 7.0.466.* | 6.5.* |Sürüm 4.0'dan daha az veya eşit|1 Ağustos 2020 |
 | 7.0.470.* | 7.0.466.* |Sürüm 4.0'dan daha az veya eşit |1 Ağustos 2020  |
 | 7.1.409.* | 7.0.466.* |Sürüm 4.0'dan daha az veya eşit |Geçerli sürüm, bu nedenle bitiş tarihi yok |
+
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 
 Aşağıdaki tabloda desteklenen Service Fabric sürümleri için desteklenen işletim sistemleri listelenir.
@@ -106,3 +107,4 @@ Aşağıdaki tabloda Service Fabric'in sürüm adları ve bunların karşılık 
 | 7.0 CU2 | 7.0.464.9590 | 7.0.464.1 |
 | 7.0 CU3 | 7.0.466.9590 | 7.0.465.1 |
 | 7.0 CU4 | 7.0.470.9590 | 7.0.469.1 |
+| 7.1 RTO | 7.1.409.9590 | 7.1.410.1 |

@@ -28,8 +28,8 @@
       href: tutorial-custom-role-cli.md
 - name: Kavramlar
   items:
-    - name: Azure kaynakları için PIM
-      href: pim-azure-resource.md
+    - name: En iyi uygulamalar
+      href: best-practices.md
     - name: Azure yönetimi için Koşullu Erişim
       href: conditional-access-azure-management.md
 - name: Nasıl yapılır kılavuzları

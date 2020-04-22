@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 67660e3e98f5a12236798d74cc61f71616e6751d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a012c3ce8f7c9e105a42d8383a502f3608c84070
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934762"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732919"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>SSH aracılığıyla IntelliJ için Azure Araç Seti ile HDInsight kümesindeki Hata Ayıklama Apache Spark uygulamalarını
 
@@ -29,7 +29,7 @@ Bu makalede, [IntelliJ için Azure Araç Kiti'nde](https://docs.microsoft.com/ja
 
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/download/#section=windows) (Topluluk sürümü ücretsizdir.).
 
-* [IntelliJ için Azure Araç Seti](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-installation).
+* [IntelliJ için Azure Araç Seti](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation).
 
 * [IntelliJ için Scala eklentisi](../spark/apache-spark-intellij-tool-plugin.md#install-scala-plugin-for-intellij-idea).
 
@@ -50,7 +50,7 @@ Bu makalede, [IntelliJ için Azure Araç Kiti'nde](https://docs.microsoft.com/ja
 
      ![Intellij Yeni Proje Kıvılcım oluşturun](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-create-projectfor-debug-remotely.png)
 
-1. **Sonraki'ni**seçin.
+1. **İleri**’yi seçin.
 
 1. Sonraki **Yeni Proje** penceresinde aşağıdaki bilgileri sağlayın:
 

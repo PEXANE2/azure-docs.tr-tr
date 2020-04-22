@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 217629ba5c386557455cc2d2b8bd47f85fa8f84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671163"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732947"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Sorun Giderme Uygulama Öngörüleri Aracısı (eski adıyla Status Monitor v2)
 
@@ -116,7 +116,7 @@ Modül `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` hakkında aş
    - Uygulama Öngörüleri SDK sürümü
    - PowerShell modülünün dosya yolları
     
-Bu cmdlet'in nasıl kullanılacağına ilgili ayrıntılı bir açıklama için [API başvurularını](status-monitor-v2-api-get-status.md) gözden geçirin.
+Bu cmdlet'in nasıl kullanılacağına ilgili ayrıntılı bir açıklama için [API başvurularını](status-monitor-v2-api-reference.md) gözden geçirin.
 
 
 ### <a name="troubleshooting-running-processes"></a>Çalışan işlemleri sorun giderme
@@ -126,7 +126,7 @@ Tüm DL'lerin yüklenip yüklenmediğinizi belirlemek için enstrümanting edile
 
 DL'leri kontrol etmek için `Get-ApplicationInsightsMonitoringStatus -InspectProcess` komutu kullanın.
 
-Bu cmdlet'in nasıl kullanılacağına ilgili ayrıntılı bir açıklama için [API başvurularını](status-monitor-v2-api-get-status.md) gözden geçirin.
+Bu cmdlet'in nasıl kullanılacağına ilgili ayrıntılı bir açıklama için [API başvurularını](status-monitor-v2-api-reference.md) gözden geçirin.
 
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>PerfView'i kullanarak ETW günlüklerini topla

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 08177165439ff7d3205e31757e5d1e28759a9836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274196"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733093"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure izleme verilerini bir olay hub'ına gönderme
 Azure Monitor, Azure'daki uygulamalar ve hizmetler için, diğer bulutlarda ve şirket içinde tam bir yığın izleme çözümü sağlar. Bu verileri çözümlemek ve farklı izleme senaryoları için kullanmak için Azure Monitor'u kullanmanın yanı sıra, ortamınızdaki diğer izleme araçlarına da göndermeniz gerekebilir. Çoğu durumda izleme verilerini harici araçlara aktarmak için en etkili yöntem [Azure Etkinlik Hub'larını](/azure/event-hubs/)kullanmaktır. Bu makalede, izleme verilerini farklı kaynaklardan bir olay merkezine nasıl aktarabileceğiniz ve ayrıntılı kılavuza bağlantılar için kısa bir açıklama sağlanmaktadır.
@@ -32,7 +32,7 @@ Herhangi bir veri kaynağı için akışı yapılandırmadan [önce, bir Olay Hu
 ## <a name="monitoring-data-available"></a>Mevcut verileri izleme
 [Azure Monitor için izleme verisi kaynakları,](data-sources.md) Azure uygulamaları için farklı veri katmanlarını ve her biri için kullanılabilir izleme verisi türlerini açıklar. Aşağıdaki tabloda bu katmanların her biri ve bu verilerin bir olay hub'ına nasıl aktarılabildiğinin açıklaması listelenir. Daha fazla ayrıntı için sağlanan bağlantıları izleyin.
 
-| Katman | Veri | Yöntem |
+| Katman | Veriler | Yöntem |
 |:---|:---|:---|
 | [Azure kiracısı](data-sources.md#azure-tenant) | Azure Active Directory denetim günlükleri | AAD kiracınızda kiracı tanılama ayarını yapılandırın. Bkz. Öğretici: Ayrıntılar için [Azure Etkin Dizin günlüğünü bir Azure etkinlik merkezine](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) aktarın. |
 | [Azure aboneliği](data-sources.md#azure-subscription) | Azure Etkinlik Günlüğü | Etkinlik Günlüğü olaylarını Olay Hub'larına aktarmak için bir günlük profili oluşturun.  Ayrıntılar için Azure Platformu Akış [günlüğe](resource-logs-stream-event-hubs.md) bakın. |
@@ -56,7 +56,7 @@ Azure Monitor ile izleme verilerinizi bir etkinlik merkezine yönlendirmeniz, ha
 | ArcSight | Hayır | ArcSight Azure Etkinlik Hub akıllı konektörü, [ArcSight akıllı konektör koleksiyonunun](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)bir parçası olarak kullanılabilir. |
 | Syslog sunucusu | Hayır | Azure Monitor verilerini doğrudan bir syslog sunucusuna aktarmak istiyorsanız, [Azure işlevini temel alan bir çözüm](https://github.com/miguelangelopereira/azuremonitor2syslog/)kullanabilirsiniz.
 | LogRhythm | Hayır| Bir olay merkezinden günlükleri toplamak için LogRhythm'i ayarlama [yönergelerine buradan](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)ulaşabilirsiniz. 
-|Logz.io | Evet | Daha fazla bilgi için, [Azure'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetmeye başlama](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)
+|Logz.io | Evet | Daha fazla bilgi için, [Azure'da çalışan Java uygulamaları için Logz.io kullanarak izleme ve günlüğe kaydetmeye başlama](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio)
 
 
 ## <a name="next-steps"></a>Sonraki Adımlar

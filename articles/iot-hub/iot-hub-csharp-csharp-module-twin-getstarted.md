@@ -8,12 +8,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 919d1e37e6066c78e83d58be4fe4667ec67e45ad
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73947678"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733385"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>IoT Hub modülü kimliği ve modül ikizi (.NET) ile başlayın
 
@@ -53,7 +54,7 @@ Bu öğreticinin sonunda iki .NET konsol uygulamanız olacak:
 
 Bu bölümde, modül ikizi tarafından raporlanan özelliklerini güncelleştiren simülasyon cihazınızda bir .NET konsol uygulaması oluşturursunuz.
 
-Başlamadan önce modül bağlantı dizenizi alın. [Azure portalında](https://portal.azure.com/)oturum açın. Hub'ınıza gidin ve **IoT Aygıtlarını**seçin. **MyFirstDevice'ı**bulun. Açmak için **myFirstDevice'ı** seçin ve ardından açmak için **MyFirstModule'i** seçin. **Modül Kimlik Ayrıntıları'nda,** aşağıdaki yordamda gerektiğinde Bağlantı **dizesini (birincil anahtar)** kopyalayın.
+Başlamadan önce modül bağlantı dizenizi alın. [Azure Portal](https://portal.azure.com/) oturum açın. Hub'ınıza gidin ve **IoT Aygıtlarını**seçin. **MyFirstDevice'ı**bulun. Açmak için **myFirstDevice'ı** seçin ve ardından açmak için **MyFirstModule'i** seçin. **Modül Kimlik Ayrıntıları'nda,** aşağıdaki yordamda gerektiğinde Bağlantı **dizesini (birincil anahtar)** kopyalayın.
 
    ![Azure portalı modül ayrıntısı](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-identity-detail.png)
 

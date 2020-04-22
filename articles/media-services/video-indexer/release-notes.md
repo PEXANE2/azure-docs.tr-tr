@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 01/07/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: f1387273f9736fea70682177d5d48dc2f141bbad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5aa7abf7aafc14e71af5618cec892ef9f843d88a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76933852"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733063"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Medya Hizmetleri Video Dizinleyici sürüm notları
 
@@ -29,6 +29,20 @@ En son gelişmelerden haberdar olmak için bu makalede, aşağıdakiler hakkınd
 * Bilinen sorunlar
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
+
+## <a name="april-2020"></a>Nisan 2020
+
+### <a name="new-widget-parameters-capabilities"></a>Yeni widget parametreleri yetenekleri
+
+**Insights** widget'ı yeni `language` `control`parametreler içerir: ve .
+
+**Player** widget'ın `locale` yeni bir parametresi vardır. Hem `locale` `language` de parametreler oyuncunun dilini kontrol eder.
+
+Daha fazla bilgi için [widget türleri](video-indexer-embed-widgets.md#widget-types) bölümüne bakın. 
+
+## <a name="new-player-skin"></a>Yeni oyuncu cilt
+
+Yeni bir oyuncu cilt güncelleştirilmiş tasarımı ile başlatılan.
 
 ## <a name="january-2020"></a>Ocak 2020
  
@@ -46,7 +60,7 @@ Farklı projelere sahip yeni bir Video Indexer GitHub, kılavuzları ve kod örn
  
 ### <a name="swagger-update"></a>Swagger güncelleştirmesi
 
-Video Indexer tek bir Video [Indexer OpenAPI Belirtimi (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)içine **kimlik doğrulamaları** ve **işlemleri** birleştirdi. Develpers [Video Indexer Geliştirici Portalı'nda](https://api-portal.videoindexer.ai/)API'ler bulabilirsiniz.
+Video Indexer tek bir Video [Indexer OpenAPI Belirtimi (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)içine **kimlik doğrulamaları** ve **işlemleri** birleştirdi. Geliştiriciler API'leri [Video Indexer Geliştirici Portalı'nda](https://api-portal.videoindexer.ai/)bulabilir.
 
 ## <a name="december-2019"></a>Aralık 2019
 
@@ -129,7 +143,7 @@ Artık İngiltere'nin güney bölgesinde bir Video Indexer ücretli hesap oluşt
 
 ### <a name="new-editorial-shot-type-insights-available"></a>Yeni Editoryal Shot Type öngörüleri mevcuttur
 
-Video çekimlerine eklenen yeni etiketler, içerik oluşturma iş akışında kullanılan yaygın editoryal ifadeler ile tanımlamak için editoryal "çekim türleri" sağlar: aşırı yakın çekim, closeup, geniş, orta, iki çekim, açık, kapalı, sol yüz ve sağ yüz (Mevcut JSON).
+Video çekimlerine eklenen yeni etiketler, içerik oluşturma iş akışında kullanılan yaygın editoryal ifadeler ile tanımlamak için editoryal "çekim türleri" sağlar: aşırı yakın çekim, closeup, geniş, orta, iki çekim, açık, kapalı, sol yüz ve sağ yüz (JSON mevcuttur).
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>Yeni Kişiler ve Konumlar varlıklar çıkarma kullanılabilir
 

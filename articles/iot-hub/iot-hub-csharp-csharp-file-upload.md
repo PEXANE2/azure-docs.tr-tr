@@ -9,12 +9,13 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: robinsh
-ms.openlocfilehash: b379f158672a9df3056acb09c63c392869a53283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 14472e84d425bf03a3c6a0c2dc558d4b8225caec
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77108700"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733408"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-net"></a>IoT Hub (.NET) ile cihazınızdan buluta dosya yükleme
 
@@ -26,7 +27,7 @@ Bu öğretici, IoT Hub'ın dosya yükleme yeteneklerini nasıl kullanacağınız
 
 * Uygulamanızın arka ucundaki dosyanın işlenmesini tetiklemek için IoT Hub dosya yükleme bildirimlerini kullanın.
 
-Bir [aygıttan IoT hub'ına](quickstart-send-telemetry-dotnet.md) hızlı başlatma ve [IoT Hub öğreticisiyle buluttan aygıta ileti gönder,IoT](iot-hub-csharp-csharp-c2d.md) Hub'ın temel aygıttan buluta ve buluttan cihaza mesajlaşma işlevselliğini gösterir. [IoT Hub öğreticisiyle Yapılandırılan İleti](tutorial-routing.md) Yönlendirmesi, Aygıttan buluta iletileri Microsoft Azure Blob depolama alanında güvenilir bir şekilde depolamanın bir yolunu açıklar. Ancak, bazı senaryolarda, aygıtlarınızın gönderdiği verileri IoT Hub'ın kabul ettiği nispeten küçük aygıttan buluta iletilerle kolayca eşleyebilirsiniz. Örnek:
+Bir [aygıttan IoT hub'ına](quickstart-send-telemetry-dotnet.md) hızlı başlatma ve [IoT Hub öğreticisiyle buluttan aygıta ileti gönder,IoT](iot-hub-csharp-csharp-c2d.md) Hub'ın temel aygıttan buluta ve buluttan cihaza mesajlaşma işlevselliğini gösterir. [IoT Hub öğreticisiyle Yapılandırılan İleti](tutorial-routing.md) Yönlendirmesi, Aygıttan buluta iletileri Microsoft Azure Blob depolama alanında güvenilir bir şekilde depolamanın bir yolunu açıklar. Ancak, bazı senaryolarda, aygıtlarınızın gönderdiği verileri IoT Hub'ın kabul ettiği nispeten küçük aygıttan buluta iletilerle kolayca eşleyebilirsiniz. Örneğin:
 
 * Resim içeren büyük dosyalar
 

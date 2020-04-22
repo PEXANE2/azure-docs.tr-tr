@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
-ms.openlocfilehash: fbfc8cc29a1584dbc9f7e4ff0b73513d85950f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281400"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733107"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Partner Center'da Ticari Pazar programına destek
 
@@ -40,7 +40,7 @@ Microsoft, çok çeşitli ürün ve hizmetler için destek sağlar. Uygun ve zam
 
 5. Diğer Microsoft yayıncılarının bilgilerinden yararlanarak sorularınızı yanıtlamak için **[Market İş Ortağı topluluk forumunu](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** seçin. 
 
-6. **Yeni destek isteği** biletini açmak için Ek **[yardım'ı](https://aka.ms/marketplacepublishersupport)** seçin.  
+6. **Yeni destek isteği** biletini açmak için Ek **[yardım'ı](https://partner.microsoft.com/support/v2/?stage=1)** seçin.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Destek bileti nasıl açılır?
 

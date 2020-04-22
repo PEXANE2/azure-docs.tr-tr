@@ -1,5 +1,5 @@
 ---
-title: Azure Otomasyonu'ndaki değişken varlıkları
+title: Azure Otomasyonu'nda değişkenleri yönetme
 description: Değişken varlıklar, Azure Otomasyonu'ndaki tüm runbook'lar ve DSC yapılandırmaları için kullanılabilen değerlerdir.  Bu makalede, değişkenlerin ayrıntıları ve hem metinsel hem de grafiksel yazarlıkta bunlarla nasıl çalışılabilenler açıklanmaktadır.
 services: automation
 ms.service: automation
@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d4a4a92feb3e1b400c0f40076148f7898c4bdef1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4778e9b2c0d3b442b214966ab69810d2f42b70b8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365822"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732757"
 ---
-# <a name="variable-assets-in-azure-automation"></a>Azure Otomasyonu'ndaki değişken varlıkları
+# <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu'nda değişkenleri yönetme
 
 Değişken varlıklar, Otomasyon hesabınızdaki tüm runbook'lar ve DSC yapılandırmaları için kullanılabilen değerlerdir. Bunları Azure portalından, PowerShell'den, bir runbook'tan veya Bir DSC yapılandırmasında yönetebilirsiniz.
 
@@ -45,11 +45,14 @@ Azure portalıile bir değişken oluşturduğunuzda, portalın değişken değer
 * Boole
 * Null
 
-Değişken, belirlenen veri türüyle sınırlı değildir. Farklı bir türde bir değer belirtmek istiyorsanız, değişkeni Windows PowerShell kullanarak ayarlamanız gerekir. Değişkenin değerini Null olarak ayarlar ve değeri [Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet veya `Set-AutomationVariable` etkinlikle ayarlamanız gerekir. `Not defined`
+Değişken, belirlenen veri türüyle sınırlı değildir. Farklı bir türde bir değer belirtmek istiyorsanız, değişkeni Windows PowerShell kullanarak ayarlamanız gerekir. Eğer belirtirseniz, `Not defined`değişkenin değeri Null olarak ayarlanır. [Değeri Set-AzAutomationVariable](https://docs.microsoft.com/powershell/module/az.automation/set-azautomationvariable?view=azps-3.5.0) cmdlet veya `Set-AutomationVariable` etkinlik ile ayarlamanız gerekir.
 
 Karmaşık bir değişken türü için değer oluşturmak veya değiştirmek için Azure portalını kullanamazsınız. Ancak, Windows PowerShell'i kullanarak herhangi bir türde bir değer sağlayabilirsiniz. Karmaşık türleri [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject)olarak alınır.
 
 Bir dizi veya karma tablo oluşturup değişkene kaydederek birden çok değeri tek bir değişkene depolayabilirsiniz.
+
+>[!NOTE]
+>VM ad değişkenleri en fazla 80 karakter olabilir. Kaynak grubu değişkenleri en fazla 90 karakter olabilir. Bkz. [Azure kaynakları için adlandırma kuralları ve kısıtlamaları.](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 
 ## <a name="powershell-cmdlets-that-create-and-manage-variable-assets"></a>Değişken varlıkları oluşturan ve yöneten PowerShell cmdlets
 
