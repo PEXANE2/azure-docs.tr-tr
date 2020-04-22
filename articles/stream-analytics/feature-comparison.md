@@ -6,16 +6,19 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: cdae6a3b7319aefa9d4f19b5d613d1afb8b6804a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3b27a50fa86916b71c84b30ecdbf45deb0ec45c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235319"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770765"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Azure Akış Analizi özellik karşılaştırması
 
 Azure Akış Analizi ile, [Azure portalı,](stream-analytics-quick-create-portal.md) [Visual Studio](stream-analytics-quick-create-vs.md)ve Visual [Studio Code'u](quick-create-vs-code.md)kullanarak bulutta ve IoT Edge'de akış çözümleri oluşturabilirsiniz. Bu makaledeki tablolar, her iki iş türü için her platform tarafından desteklenen özellikleri gösterir.
+
+> [!NOTE]
+> Visual Studio ve Visual Studio Code araçları Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya KuzeyDoğu bölgelerindeki işleri desteklemez.
 
 ## <a name="cloud-job-features"></a>Bulut iş özellikleri
 

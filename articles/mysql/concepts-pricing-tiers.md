@@ -1,17 +1,17 @@
 ---
 title: Fiyatlandırma katmanları - MySQL için Azure Veritabanı
 description: Bilgi işlem nesilleri, depolama türleri, depolama boyutu, vCore'lar, bellek ve yedekleme bekletme süreleri de dahil olmak üzere MySQL için Azure Veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: cf959112a2a717da1005be062dda3b83163d8d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0123436eab2cdfa91066a2bd0652e16896ee838a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269451"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767858"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>MySQL fiyatlandırma katmanları için Azure Veritabanı
 
@@ -51,7 +51,7 @@ Sağlama yaptığınız depolama, MySQL sunucusu için Azure Veritabanınızın 
 | IOPS | Değişken |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksimum 20.000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksimum 20.000 IOPS |
 
 > [!NOTE]
-> 16TB ve 20.000 IOPS'ye kadar depolama aşağıdaki bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Orta ABD, Güney Orta ABD, Kuzey Avrupa, Batı Avrupa, İngiltere Güney, İngiltere Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Batı, Kore Orta , Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
+> 16TB ve 20.000 IOPS'ye kadar depolama aşağıdaki bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Orta ABD, Güney Orta ABD, Kuzey Avrupa, Batı Avrupa, İngiltere Güney, İngiltere Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
 >
 > Diğer tüm bölgeler 4 TB'a kadar depolama ve 6000 IOPS'ye kadar desteği sağlar.
 >

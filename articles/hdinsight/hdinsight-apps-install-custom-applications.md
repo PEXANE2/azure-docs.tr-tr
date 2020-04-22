@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 8fe9e551a4ca7dea8f53e0f8c2975ca3d88c48f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b25e9d860f118c1b044b13e01a80aaf7a24963cf
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366266"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768240"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight'a özel Apache Hadoop uygulamalarını yükleyin
 
@@ -75,9 +75,9 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 
 **Hue**için aşağıdaki adımları kullanabilirsiniz:
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünden **Uygulamalar'ı**seçin.
 1. Özellikleri görüntülemek için listeden **ton** seçin.  
@@ -119,13 +119,13 @@ Bir uygulama yüklemesi başarısız olduysa, hata iletilerini görebilir ve bil
 
 * Apache Ambari Web UI: Yükleme komut dosyası hatanın nedeniyse, yükleme komut dosyaları yla ilgili tam günlükleri denetlemek için Ambari Web UI'yi kullanın.
 
-    Daha fazla bilgi için bkz. [Sorun giderme](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting).
+    Daha fazla bilgi için sorun [giderme komut dosyası eylemleri'ne](./troubleshoot-script-action.md)bakın.
 
 ## <a name="remove-hdinsight-applications"></a>HDInsight uygulamalarını kaldırma
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Uygulamayı yüklediğiniz kümeyi seçin.
 1. **Ayarlar** menüsünden **Uygulamalar'ı**seçin.
 1. Kaldırmak istediğiniz uygulamayı sağ tıklatın ve sonra **Sil'i**seçin.

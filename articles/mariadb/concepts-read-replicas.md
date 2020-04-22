@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 39edaa32b0695f4ab83206cd5701629f12295a0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79527920"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770120"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -73,7 +73,7 @@ Ana sunucuda varolan çoğaltma sunucuları yoksa, ana sunucu önce kendisini ç
 
 ## <a name="connect-to-a-replica"></a>Yinelemeye bağlanma
 
-Oluşturmada, yineleme ana sunucunun güvenlik duvarı kurallarını veya VNet hizmet bitiş noktasını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
+Oluşturmada, yineleme ana sunucunun güvenlik duvarı kurallarını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
 
 Yineleme, yönetici hesabını ana sunucudan devralır. Ana sunucudaki tüm kullanıcı hesapları okundu yinelemelere kopyalanır. Yalnızca ana sunucuda bulunan kullanıcı hesaplarını kullanarak okuma yinelemesine bağlanabilirsiniz.
 
@@ -126,7 +126,7 @@ Yineleme, ana bilgisayarla aynı sunucu yapılandırması kullanılarak oluştur
 > [!IMPORTANT]
 > Ana sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
 
-Güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları, yineleme oluşturulduğunda ana sunucudan yinelemeye devralınır. Daha sonra, yinelemenin kuralları bağımsızdır.
+Güvenlik duvarı kuralları ve parametre ayarları, yineleme oluşturulduğunda ana sunucudan yinelemeye devralınır. Daha sonra, yinelemenin kuralları bağımsızdır.
 
 ### <a name="stopped-replicas"></a>Durdurulan yinelemeler
 

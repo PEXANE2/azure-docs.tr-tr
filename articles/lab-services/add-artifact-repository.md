@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 04/21/2019
 ms.author: spelluru
-ms.openlocfilehash: a0dbd92533703a56f1ec2478fab8944656129247
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2bb871119bece71c705ad9621a7c76c4b5ed0bc7
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295500"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770250"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs'daki laboratuvarınıza bir yapı deposu ekleme
 DevTest Labs, VM'nin oluşturulması sırasında veya VM oluşturulduktan sonra VM'ye eklenecek bir yapı belirtmenize olanak tanır. Bu yapı, VM'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapılar, GitHub veya Azure DevOps Git deposundan yüklenen json dosyasında tanımlanır.
@@ -52,20 +52,20 @@ Laboratuvarınıza bir depo eklemek için öncelikle deponuzdan önemli bilgiler
 4. URL'yi kaydedin. URL'yi daha sonra kullanırsınız.
 5. Kişisel erişim jetonu oluşturmak için, kullanıcı hesabı açılır menüsünde **Profilim'i**seçin.
 6. Profil bilgileri sayfasında **Güvenlik'i**seçin.
-7. **Güvenlik** sekmesinde **Ekle'yi**seçin.
-8. Kişisel **erişim belirteci** sayfası oluştur'da:
-   1. Belirteç için bir **Açıklama** girin.
-   2. Sona **Erdirilecekler** listesinde **180 gün**seçin.
-   3. **Hesaplar** **listesinde, tüm erişilebilir hesapları**seçin.
-   4. Tüm **kapsamlar** seçeneğini seçin.
-   5. **Belirteç Oluştur'u**seçin.
+7. Güvenlik **> Kişisel erişim belirteçleri** sekmesinde **+ Yeni Belirteç'i**seçin.
+8. Yeni **bir kişisel erişim belirteci** sayfası oluşturun:
+   1. Belirteci için bir **Ad** girin.
+   2. **Kuruluş** listesinde, **tüm erişilebilir kuruluşları**seçin.
+   3. Sona **Erme (UTC)** listesinde **90 gün**veya özel tanımlı bir son kullanma süresi seçin.
+   4. Kapsamlar için **Tam erişim** seçeneğini seçin.
+   5. **Oluştur**’u seçin.
 9. Yeni belirteç Kişisel **Erişim Belirteçleri** listesinde görünür. **Token'i**kopyala'yı seçin ve ardından belirteç değerini daha sonra kullanmak üzere kaydedin.
 10. Laboratuvarınızı depo bölümüne bağlayın.
 
 ## <a name="use-azure-portal"></a>Azure portalı kullanma
 Bu bölümde, Azure portalındaki bir laboratuvara yapı deposu eklemek için adımlar sağlanmaktadır.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Daha Fazla Hizmet**seçin ve ardından hizmetler listesinden **DevTest Labs'ı** seçin.
 3. Laboratuvarlar listesinden, laboratuvarınızı seçin.
 4. Sol menüde **Yapılandırma ve ilkeler'i** seçin.
@@ -81,7 +81,7 @@ Bu bölümde, Azure portalındaki bir laboratuvara yapı deposu eklemek için ad
    5. **Klasör Yolları**. Yapı veya Kaynak Yöneticisi şablon tanımlarınızı içeren klon URL'sine göre en az bir klasör yolu girin. Bir alt dizini belirttiğiniz zaman, klasör yoluna ileri eğik çizgieklediğinizden emin olun.
 
         ![Depolar alanı](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)
-6. **Kaydet'i**seçin.
+6. **Kaydet**’i seçin.
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanma
 Azure Kaynak Yönetimi (Azure Kaynak Yöneticisi) şablonları, Azure'da oluşturmak istediğiniz kaynakları açıklayan JSON dosyalarıdır. Bu şablonlar hakkında daha fazla bilgi için [bkz.](../azure-resource-manager/templates/template-syntax.md)

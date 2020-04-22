@@ -7,22 +7,25 @@ ms.author: mamccrea
 ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: e3e878b4f548da64ab04eb079d51b0846cf35c57
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fe666359b9ed2773f615ff496f4032bda5e74dc2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76313884"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767760"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Hızlı başlangıç: Visual Studio Code'da Bir Azure Akışı Analizi işi oluşturun (önizleme)
 
 Bu hızlı başlangıç, Visual Studio Code için Azure Akış Analiz Araçları uzantısını kullanarak bir Azure Akışı Analizi işini nasıl oluşturup çalıştırabileceğinizi gösterir. Örnek iş, bir Azure IoT Hub aygıtından veri akışı okur. 27° üzerindeyken ortalama sıcaklığı hesaplayan ve ortaya çıkan çıktı olaylarını blob depolamasındaki yeni bir dosyaya yazan bir iş tanımlarsınız.
 
+> [!NOTE]
+> Visual Studio ve Visual Studio Code araçları Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya KuzeyDoğu bölgelerindeki işleri desteklemez.
+
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 * Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/)oluşturun.
 
-* [Azure portalında](https://portal.azure.com/)oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 * [Visual Studio Kodunu](https://code.visualstudio.com/)Yükleyin.
 
@@ -52,7 +55,7 @@ Bu hızlı başlangıç, Visual Studio Code için Azure Akış Analiz Araçları
 
 Akış Analizi işini tanımlamadan önce, daha sonra iş girişi olarak yapılandırılan verileri hazırlamanız gerekir. İşin gerektirdiği giriş verilerini hazırlamak için aşağıdaki adımları tamamlayın:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. IoT >  **Hub'ın kaynak** > **Internet'ini**seçin.**IoT Hub**
 
@@ -140,14 +143,6 @@ Akış Analizi işini tanımlamadan önce, daha sonra iş girişi olarak yapıla
    FROM Input
    HAVING Temperature > 27
    ```
-
-## <a name="test-the-query-locally-with-sample-data"></a>Sorguyu örnek verilerle yerel olarak test edin
-
-Sorguyu bulutta çalıştırmadan önce, sorgu mantığını doğrulamak için sorguyu yerel olarak yerel bir örnek veri dosyasıyla veya canlı girişten yakalanan verilerle sınayabilirsiniz.
-
-Daha fazla ayrıntı için [örnek verilerle test sorgularında](visual-studio-code-local-run.md) yönergeleri yerel olarak izleyin.
-
- ![Visual Studio Code'da örnek verilerle test](./media/vscode-local-run/localrun-localinput.gif)
 
 ## <a name="define-a-live-input"></a>Canlı giriş tanımlama
 
@@ -279,6 +274,8 @@ Artık ihtiyaç duyulmadığında, kaynak grubunu, akış işini ve ilgili tüm 
 Bu hızlı başlangıçta, Visual Studio Code'u kullanarak basit bir Stream Analytics işini dağıttınız. [Azure portalı,](stream-analytics-quick-create-portal.md) [PowerShell](stream-analytics-quick-create-powershell.md)ve [Visual Studio'yu](stream-analytics-quick-create-vs.md)kullanarak Stream Analytics işlerini de dağıtabilirsiniz.
 
 Visual Studio Code için Azure Akış Analiz Araçları hakkında bilgi edinmek için aşağıdaki makalelere devam edin:
+
+* [Visual Studio Code kullanarak örnek verilerle test Akışı Analizi sorguları](visual-studio-code-local-run.md)
 
 * [Visual Studio Code ile Azure Akış Analizi işlerini canlı girdiye karşı yerel olarak test edin](visual-studio-code-local-run-live-input.md)
 

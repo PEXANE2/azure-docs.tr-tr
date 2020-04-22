@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: d9b10341f971c0e8177043126ff8fbd4df078b86
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 89ef221fce9aed3f9e2c948e89933b8650bb4b4b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604981"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769821"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>Quickstart: .NET için face istemci kitaplığı
 
@@ -71,11 +71,11 @@ Build succeeded.
 
 Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *Program.cs* dosyasını açın. Aşağıdaki `using` yönergeleri ekleyin:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_using)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_using)]
 
 Uygulama `Main` yönteminde, kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturun.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_mainvars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_mainvars)]
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
@@ -120,39 +120,39 @@ Aşağıdaki kod parçacıkları ,NET için Yüz istemci kitaplığı ile aşağ
 
 Yeni bir yöntemde, son noktanız ve anahtarınızla istemciyi anında anons edin. Anahtarınızla bir **[ApiKeyServiceClientCredentials nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.apikeyserviceclientcredentials?view=azure-dotnet)** oluşturun ve **[faceclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_auth)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_auth)]
 
 Bu yöntemi `Main` yöntemde aramak isteyebilirsiniz.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_client)]
 
 ### <a name="declare-helper-fields"></a>Yardımcı alanları bildirme
 
 Daha sonra ekleyeceğiniz Yüz işlemlerinin birkaçı için aşağıdaki alanlar gereklidir. Sınıfınızın kökünde aşağıdaki URL dizesini tanımlayın. Bu URL, örnek resimlerden oluşan bir klasöre işaret emz.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_image_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_image_url)]
 
 Farklı tanıma modeli türlerini işaret etmek için dizeleri tanımlayın. Daha sonra, yüz algılama için hangi tanıma modelini kullanmak istediğinizi belirtebilirsiniz. Bkz. Bu seçeneklerle ilgili bilgiler için [bir tanıma modeli belirtin.](../Face-API-How-to-Topics/specify-recognition-model.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_models)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_models)]
 
 ## <a name="detect-faces-in-an-image"></a>Bir görüntüdeki yüzleri algılama
 
 **Ana** yönteminize aşağıdaki yöntem çağrısını ekleyin. Yöntemi daha sonra tanımlarsınız. Son Algıla işlemi bir **[FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet)** nesnesi, bir görüntü URL'si ve bir tanıma modeli alır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_call)]
 
 ### <a name="get-detected-face-objects"></a>Algılanan yüz nesnelerini alma
 
 Bir sonraki kod bloğunda `DetectFaceExtract` yöntem, verilen URL'deki görüntülerin üçündeki yüzleri algılar ve program belleğinde **[Algılanmış Yüz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet)** nesnelerinin bir listesini oluşturur. **[FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** değerleri listesi hangi özellikleri ayıklamak için belirtir. 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect)]
 
 ### <a name="display-detected-face-data"></a>Algılanan yüz verilerini görüntüleme
 
 Yöntemin `DetectFaceExtract` geri kalanı, algılanan her yüz için öznitelik verilerini ayrıştirır ve yazdırır. Her öznitelik özgün yüz algılama API çağrısında **[(FaceAttributeType](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet)** listesinde) ayrı olarak belirtilmelidir. Aşağıdaki kod her özniteliği işler, ancak büyük olasılıkla yalnızca bir veya birkaç kullanmanız gerekir.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_detect_parse)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_detect_parse)]
 
 ## <a name="find-similar-faces"></a>Benzer yüzleri bulma
 
@@ -162,19 +162,19 @@ Aşağıdaki kod tek bir algılanan yüz (kaynak) alır ve eşleşmeleri bulmak 
 
 İlk olarak, ikinci bir yüz algılama yöntemi tanımlayın. Karşılaştırmayapmadan önce görüntülerdeki yüzleri algılamanız gerekir ve bu algılama yöntemi karşılaştırma işlemleri için optimize edi. Yukarıdaki bölümdeki gibi ayrıntılı yüz öznitelikleri ayıklamaz ve farklı bir tanıma modeli kullanır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_face_detect_recognize)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_face_detect_recognize)]
 
 ### <a name="find-matches"></a>Eşleşmeleri bul
 
 Aşağıdaki yöntem, hedef görüntüler kümesinde ve tek bir kaynak görüntüdeki yüzleri algılar. Daha sonra, bunları karşılaştırır ve kaynak görüntüye benzer tüm hedef görüntüleri bulur.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar)]
 
 ### <a name="print-matches"></a>Baskı eşleşmeleri
 
 Aşağıdaki kod, maç ayrıntılarını konsola yazdırır:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_find_similar_print)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_find_similar_print)]
 
 ## <a name="identify-a-face"></a>Bir yüzü tanımlama
 
@@ -188,21 +188,21 @@ Aşağıdaki kod, altı farklı **Kişi** nesnesi olan bir **Kişi Grubu** oluş
 
 Oluşturacağınız **Kişi Grubu'nun** kimliğini temsil etmek için sınıfınızın kökünde bir dize değişkeni bildirin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_declare)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_declare)]
 
 Yeni bir yöntemde, aşağıdaki kodu ekleyin. Bu yöntem, Tanımla işlemini gerçekleştirecektir. İlk kod bloğu, kişilerin adlarını örnek resimleriyle ilişkilendirer.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_files)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_files)]
 
 Ardından, Sözlük'teki her kişi için bir **Kişi** nesnesi oluşturmak için aşağıdaki kodu ekleyin ve uygun resimlerden yüz verilerini ekleyin. Her **Kişi** nesnesi, benzersiz kimlik dizesi aracılığıyla aynı **Kişi Grubu** ile ilişkilidir. Değişkenleri `client`, , `url`ve `RECOGNITION_MODEL1` bu yönteme geçirmeyi unutmayın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_create)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_create)]
 
 #### <a name="train-persongroup"></a>Tren Kişi Grubu
 
 Görüntülerinizden yüz verilerini ayıklayıp farklı **Kişi** nesnelerine sıraladıktan sonra, **PersonGroup'u** **Kişi** nesnelerinin her biriyle ilişkili görsel özellikleri tanımlaması için eğitmeniz gerekir. Aşağıdaki kod, eşzamanlı **tren** yöntemini çağırır ve durumu konsola yazdırarak sonuçları anketler.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_train)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_train)]
 
 Bu **Kişi** grubu ve ilişkili **Kişi** nesneleri artık Doğrula, Tanımla veya Grup işlemlerinde kullanılmaya hazırdır.
 
@@ -214,11 +214,11 @@ Bu **Kişi** grubu ve ilişkili **Kişi** nesneleri artık Doğrula, Tanımla ve
 
 Aşağıdaki kod kaynak görüntüyü alır ve resimde algılanan tüm yüzlerin bir listesini oluşturur. Bunlar **PersonGroup'a**karşı tanımlanacak yüzlerdir.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify_sources)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify_sources)]
 
 Sonraki kod snippet **IdentifyAsync** işlemini çağırır ve sonuçları konsola yazdırır. Burada, hizmet, kaynak görüntüdeki her yüzü verilen Kişi **Grubundaki**bir **Kişiyle** eşleştirmeye çalışır. Bu, Tanım yönteminizi kapatır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_identify)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Veri geçişi için anlık görüntü alma
 
@@ -232,17 +232,17 @@ Bu örnekte, Oluştur'da oluşturduğunuz **Kişi Grubunu** geçirip bir kişi [
 
 Ardından, programınızın `Main` yönteminde aşağıdaki değişkenleri tanımlayın. Azure hesabınızın abonelik kimliğinin yanı sıra yeni (hedef) hesabınızın anahtar, bitiş noktası ve abonelik kimliği için yeni ortam değişkenleri oluşturmanız gerekir. 
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
 
 Bu örnekte, verilerinizi kopyalayabilmeniz için yeni aboneliğe ait nesneyi hedef **Kişi Grubu**&mdash;kimliği için bir değişken bildirin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
 
 ### <a name="authenticate-target-client"></a>Hedef istemciyi doğrula
 
 Ardından, ikincil Face aboneliğinizi doğrulamak için kodu ekleyin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
 
 ### <a name="use-a-snapshot"></a>Anlık görüntü kullanma
 
@@ -250,23 +250,23 @@ Anlık görüntü işlemlerinin geri kalanı bir eşzamanlı yöntem içinde yer
 
 1. İlk adım, orijinal aboneliğinizin yüz verilerini geçici bir bulut konumuna kaydeden anlık fotoğrafı **almaktır.** Bu yöntem, işlemin durumunu sorgulamak için kullandığınız bir kimliği döndürür.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
 
 1. Ardından, işlem tamamlanana kadar kimliği sorgula.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_take_wait)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
 
 1. Ardından, yüz verilerinizi hedef aboneliğinize yazmak için **uygula** işlemini kullanın. Bu yöntem, bir kimlik değeri de döndürür.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
 
 1. Yine, işlem tamamlanana kadar yeni kimliği sorgula.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_apply)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
 
 1. Son olarak, try/catch bloğunu tamamlayın ve yöntemi tamamlayın.
 
-    [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_snapshot_trycatch)]
+    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
 
 Bu noktada, yeni **PersonGroup** nesneniz orijinalindekiyle aynı veriye sahip olmalı ve yeni (hedef) Azure Yüz aboneliğinizden erişilebilmeli.
 
@@ -287,15 +287,15 @@ Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak 
 
 Bu hızlı başlangıçta bir **PersonGroup** oluşturduysanız ve onu silmek istiyorsanız, programınızda aşağıdaki kodu çalıştırın:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_persongroup_delete)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_persongroup_delete)]
 
 Silme yöntemini aşağıdaki kodla tanımlayın:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_deletepersongroup)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
 
 Ayrıca, bu hızlı başlatmada Anlık Görüntü özelliğini kullanarak verileri aktardıysanız, hedef aboneliğe kaydedilen **Kişi Grubu'nu** da silmeniz gerekir.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/Face/Program.cs?name=snippet_target_persongroup_delete)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -305,4 +305,4 @@ Bu hızlı başlangıçta, temel görevleri yapmak için .NET için Yüz kitapl�
 > [Yüz API başvurusu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)
 
 * [Yüz Tanıma hizmeti nedir?](../overview.md)
-* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/Face/Program.cs)bulunabilir.
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/Face/FaceQuickstart.cs)bulunabilir.

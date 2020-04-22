@@ -1,24 +1,16 @@
 ---
-title: 'Quickstart: Tarayıcı ile niyet alın - LUIS'
-titleSuffix: Azure Cognitive Services
+title: 'Quickstart: Tarayıcı ile tahmin sorgusu - LUIS'
 description: Bu hızlı başlangıçta, bir kullanıcının tarayıcıdaki konuşma metninden niyetini belirlemek için kullanılabilir bir genel LUIS uygulamasını kullanın.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 02/03/2020
-ms.author: diberry
-ms.openlocfilehash: e06bb4c09b3ebab25c0c0ef8ac5c51f6842f34cd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/21/2020
+ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76987963"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769979"
 ---
-# <a name="quickstart-get-intent-with-a-browser"></a>Quickstart: Bir tarayıcı ile niyet alın
+# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Quickstart: Kullanıcı metniyle tahmin çalışma süresini sorgula
 
 Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonucunu bir Web tarayıcısında görüntüleyin.
 
@@ -26,13 +18,15 @@ Bir LUIS tahmin uç noktasının ne döndüğünü anlamak için bir tahmin sonu
 
 Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
 
-* [LUIS Portal (Önizleme)](https://preview.luis.ai/)elde edilebilir kendi Dil Anlayışı (LUIS) Yazma veya Tahmin anahtarı. Bir anahtar oluşturmak için zaten bir aboneliğiniz yoksa, [ücretsiz](https://azure.microsoft.com/free/)bir hesaba kaydolabilirsiniz.
-* Genel uygulamanın kimliği: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`.
+* Dil Anlayışınız (LUIS) kaynak bilgileriniz:
+    * **Tahmin anahtarı** - LUIS [Portal](https://www.luis.ai/)elde edilebilir . Bir anahtar oluşturmak için zaten bir aboneliğiniz yoksa, [ücretsiz](https://azure.microsoft.com/free/)bir hesaba kaydolabilirsiniz.
+    * **Tahmin bitiş noktası alt etki alanı** - alt etki alanı da LUIS kaynağınızın **adıdır.**
+* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
 
 ## <a name="use-the-browser-to-see-predictions"></a>Tahminleri görmek için tarayıcıyı kullanın
 
 1. Bir web tarayıcısı açın.
-1. Kendi LUIS Yazma veya Tahmin `YOUR-KEY` anahtarınızı değiştirerek aşağıdaki tüm URL'leri kullanın. İstekler GET istekleridir ve luis Yazma veya Tahmin anahtarınızla birlikte bir sorgu dizesi parametresi olarak yetkilendirmeyi içerir.
+1. Kendi LUIS Prediction anahtarınızı değiştirerek `YOUR-KEY` aşağıdaki tüm URL'leri kullanın. İstekler GET istekleridir ve bir sorgu dizesi parametresi olarak LUIS Prediction anahtarınızla yetkilendirmeyi içerir.
 
     #### <a name="v3-prediction-request"></a>[V3 tahmin isteği](#tab/V3-1-1)
 
@@ -40,7 +34,7 @@ Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
     **GET** bitiş noktası (yuvalara göre) isteği için V3 URL'sinin biçimi:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY
     `
 
     #### <a name="v2-prediction-request"></a>[V2 tahmin isteği](#tab/V2-1-2)
@@ -48,7 +42,7 @@ Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
     **GET** bitiş noktası isteği için V2 URL'sinin biçimi:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-KEY&q=turn on all lights
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-LUIS-PREDICTION-KEY&q=turn on all lights
     `
 
 1. URL'yi bir tarayıcı penceresine yapıştırıp Enter tuşuna basın. Tarayıcıda LUIS'in `HomeAutomation.TurnOn` amacını en önemli amaç olarak ve `HomeAutomation.Operation` varlığını `on` değeriyle algıladığını gösteren bir JSON sonucu görüntülenir.
@@ -104,7 +98,7 @@ Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
     Tüm `show-all-intents=true` **niyetlerini göstermek**için sorgu dizesinin sonuna ekleyin:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-KEY&show-all-intents=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
     `
 
     ```JSON
@@ -137,7 +131,7 @@ Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
     Tüm `verbose=true` **niyetlerini göstermek**için sorgu dizesinin sonuna ekleyin:
 
     `
-    https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key={your-key}&verbose=true
+    https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true
     `
 
     ```json
@@ -173,12 +167,11 @@ Genel bir uygulamayı sorgulamak için şunları yapmanız gerekir:
     }
     ```
 
-
-<!-- FIX - is the public app getting updated for the new prebuilt domain with entities? -->
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[V3 tahmin bitiş noktası](luis-migration-api-v3.md)hakkında daha fazla bilgi edinin.
+Aşağıdakiler hakkında daha fazla bilgi edinin:
+* [V3 tahmin bitiş noktası](luis-migration-api-v3.md)
+* [Özel alt etki alanları](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]
 > [LUIS portalında uygulama oluşturma](get-started-portal-build-app.md)

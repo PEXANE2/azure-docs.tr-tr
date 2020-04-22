@@ -1,6 +1,6 @@
 ---
 title: Azure Ön Kapı - Joker karakter etki alanları için destek
-description: Bu makale, Azure Ön Kapı'nın özel etki alanları listesinde joker alan adlarını eşlemeyi ve yönetmeyi nasıl desteklediğini anlamanıza yardımcı olur
+description: Bu makale, Azure Ön Kapı'nın özel etki alanları listesinde joker alan adlarını eşlemeyi ve yönetmeyi nasıl desteklediğini anlamanıza yardımcı olur.
 services: frontdoor
 author: sharad4u
 ms.service: frontdoor
@@ -10,64 +10,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2020
 ms.author: sharadag
-ms.openlocfilehash: c568c9cc5c57098385cc7399459ec656cdbfc305
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d8a6d6f0b05b9b7fd0144959c82b6a2c9e659a3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537446"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768310"
 ---
 # <a name="wildcard-domains"></a>Joker karakter etki alanları
 
-Apeks etki alanları ve alt etki alanları dışında, bir joker alan adını ön yüz ana bilgisayarları veya Ön Kapı profilinizin özel etki alanları listenize eşleyebilirsiniz. Ön Kapı config'inizde joker karakter etki alanlarının olması, yapılandırmayı her alt etki alanını ayrı ayrı eklemek ve/veya belirtmek için yapılandırmayı değiştirmek zorunda kalmadan, bir API, uygulama veya web sitesi için birden çok alt etki alanı için trafik yönlendirme davranışını basitleştirir. Örnek olarak, joker karakter etki alanı `customer1.contoso.com` `*.contoso.com` `customer2.contoso.com`ekleyerek `customerN.contoso.com` aynı yönlendirme kuralını kullanarak , ve aynı yönlendirme kuralını kullanarak yönlendirmeyi tanımlayabilirsiniz.
+Tepe etki alanları ve alt etki alanları dışında, Azure Ön Kapı profilinizde bir joker alan adını ön uç ana bilgisayarları veya özel etki alanları listenize eşleyebilirsiniz. Azure Ön Kapı yapılandırmanızda joker karakter etki alanlarının olması, aynı yönlendirme kuralından bir API, uygulama veya web sitesi için birden çok alt etki alanı için trafik yönlendirme davranışını basitleştirir. Her alt etki alanını ayrı ayrı eklemek veya belirtmek için yapılandırmayı değiştirmeniz gerekmez. Örnek olarak, aynı yönlendirme kuralını `customer1.contoso.com`kullanarak `customer2.contoso.com`ve `customerN.contoso.com` joker karakter etki alanını `*.contoso.com`ekleyerek yönlendirmeyi tanımlayabilirsiniz.
 
-Joker karakter etki alanları desteğiyle çözülen önemli senaryolardan bazıları şunlardır:
+Joker karakter etki alanları desteğiyle geliştirilmiş önemli senaryolar şunlardır:
 
-- Artık Ön Kapınızdaki her alt etki alanında yerleşik ve sonra HTTPS'nin her alt etki alanı için bir sertifika bağlamasını etkinleştirmeniz gerekmez.
-- Bir uygulama yeni bir alt etki alanı eklerse, artık üretim Ön Kapı yapılandırmanızı değiştirmeniz gerekmez. Else, daha önce alt etki alanı ekleme, ona bir sertifika bağlama, bir web uygulaması güvenlik duvarı (WAF) ilkesi ekleyerek, farklı yönlendirme kurallarına etki alanı ekleyerek gerekli.
+- Azure Ön Kapı profilinizdeki her alt etki alanında yerleşik olmanız ve ardından HTTPS'nin her alt etki alanı için bir sertifika bağlamasını sağlamanız gerekmez.
+- Bir uygulama yeni bir alt etki alanı eklerse, artık üretimAzure Ön Kapı yapılandırmanızı değiştirmeniz gerekmez. Daha önce, alt etki alanı eklemek, bir sertifika bağlamak, bir web uygulaması güvenlik duvarı (WAF) ilkesi eklemek ve sonra farklı yönlendirme kurallarına etki alanı eklemek zorunda kaldı.
 
 > [!NOTE]
-> Şu anda joker karakter etki alanları yalnızca API, PowerShell ve CLI üzerinden desteklenir. Azure portalı üzerinden joker alan adlarını yönetme desteği kullanılamıyor.
+> Şu anda joker karakter etki alanları yalnızca API, PowerShell ve Azure CLI üzerinden desteklenir. Azure portalında joker alan adları ekleme ve yönetme desteği kullanılamaz.
 
 ## <a name="adding-wildcard-domains"></a>Joker karakter etki alanları ekleme
 
-Frontend Hosts veya Domains bölümü altında bir joker etki alanına binebilirsiniz. Alt etki alanlarında olduğu gibi, Ön Kapı da joker etki alanınız için bir CNAME eşleme olduğunu doğrular. Bu DNS eşleme, joker karakter `*.contoso.com` için CNAME eşlemini doğrulamak `contoso.azurefd.net` için `afdverify.contoso.com` `afdverify.contoso.azurefd.net` eşlenen afdverify geçici eşlemesi gibi doğrudan bir CNAME eşlemesi de olabilir (Azure DNS joker kayıtları destekler).
-
-Ayrıca, en fazla sınayan ana bilgisayarları, ön uç ana bilgisayarlarındaki joker karakter etki alanının tek düzeyalt etki alanlarını da ekleyebilirsiniz. ön uç ana bilgisayarsınırı. Bu işlevsellik, bir alt etki alanı için etki alanlarının geri kalanından (joker karakter etki alanından) farklı bir rota tanımlamak veya belirli bir alt etki alanı için farklı bir WAF ilkesine sahip olmak için gerekli olabilir. Yani, `*.contoso.com` tekrar `foo.contoso.com` etki alanı sahipliği kanıtlamak zorunda `foo.bar.contoso.com` kalmadan ekleyerek izin verecek `*.contoso.com`ama bu tek bir düzey alt etki alanı değildir. Ek `foo.bar.contoso.com` etki alanı sahipliği doğrulaması `*.bar.contosonews.com` olmadan eklemek için eklenmesi gerekir.
-
-### <a name="limitations"></a>Sınırlamalar
-
-1. Belirli bir Ön Kapı profiline joker karakter etki alanı eklenirse, aynı sıcağa başka bir Ön Kapı profiline eklenemez. 
-2. Belirli bir Ön Kapı profiline joker karakter etki alanı eklenirse, bu joker karakter etki alanının alt etki alanları Microsoft profilinden diğer Ön Kapı veya Azure CDN'sine eklenemez
-3. Joker karakter etki alanının bir alt etki alanı Ön Kapı profiline veya Microsoft profilinden bir Azure CDN'sine eklenirse, joker karakter etki alanı başka bir Ön Kapı profiline eklenemez. 
-4. İki profil (Microsoft'tan Ön Kapı veya Azure CDN) bir kök etki alanının çeşitli alt etki alanları varsa, joker karakter etki alanları profillerden hiçbirine eklenmez.
-
-## <a name="certificate-binding-for-wildcard-domains-and-its-subdomains"></a>Joker karakter etki alanları ve alt etki alanları için sertifika bağlama
-
-Joker karakter etki alanınızda HTTPS trafiğini kabul etmek için joker karakter etki alanında HTTPS'yi etkinleştirmeniz gerekir. Joker karakter etki alanı için sertifika bağlama, joker karakter sertifikası gerektirir, diğer bir süre, sertifikanın özne adı da joker karakter etki alanına sahip olmalıdır.
+Ön uç ana bilgisayarlar veya etki alanları için bölümün altına bir joker karakter etki alanı ekleyebilirsiniz. Azure Ön Kapı, alt etki alanlarında olduğu gibi joker alan adınız için CNAME kayıt eşlemesi olduğunu doğrular. Bu DNS eşleme, eşlenen gibi `*.contoso.com` doğrudan cname kayıt eşleme `contoso.azurefd.net`olabilir. Veya afdverify geçici eşleme kullanabilirsiniz. Örneğin, `afdverify.contoso.com` joker karakter `afdverify.contoso.azurefd.net` için CNAME kayıt eşlemi doğrulanır.
 
 > [!NOTE]
-> Şu anda, joker karakter etki alanları için HTTPS'yi etkinleştirmek için yalnızca kendi özel SSL sertifika seçeneğinizi kullanmak kullanılabilir. Ön Kapı yönetilen sertifikalar joker karakter etki alanları için kullanılamaz. 
+> Azure DNS joker kayıtlarını destekler.
 
-Alt etki alanları için Key Vault'unuzdan aynı joker karakter sertifikasını kullanmayı seçebilir veya alt etki alanları için Ön Kapı Yönetilen sertifikalarının kullanımı da desteklenir.
-Joker karakter etki alanı için bir alt etki alanı eklendiyse ve joker karakter etki alanı zaten ilişkili bir sertifikaya sahipse, bu alt etki alanının HTTPS'si devre dışı tutulamaz. Alt etki alanı, farklı bir Key Vault sertifikası veya Ön Kapı yönetilen sertifikası tarafından geçersiz kılınmadığı sürece, varsayılan olarak joker karakter etki alanının sertifika bağlamasını kullanır.
+Ön uç ana bilgisayarlarına, joker karakter etki alanının tek düzeyli alt etki alanlarını ön uç ana bilgisayarlarının sınırına kadar ekleyebilirsiniz. Bu işlevsellik için gerekli olabilir:
 
-## <a name="web-application-firewall-for-wildcard-domains-and-its-subdomains"></a>Joker karakter etki alanları ve alt etki alanları için Web uygulaması güvenlik duvarı
+- Bir alt etki alanı için etki alanlarının geri kalanından (joker karakter etki alanından) farklı bir rota tanımlama.
 
-WAF ilkeleri, diğer etki adlarına benzer bir joker karakter etki alanına eklenebilir. Joker karakter etki alanının alt etki alanına farklı bir WAF ilkesi uygulanabilir. Alt etki alanları için, joker alan adı ile aynı ilke olsa bile WAF ilkesinin kullanılacağını açıkça belirtmeniz gerekir. Alt etki alanları, WAF ilkesini joker karakter etki alanından otomatik olarak **devralmaz.**
+- Belirli bir alt etki alanı için farklı bir WAF ilkesine sahip olmak. Örneğin, `*.contoso.com` etki `foo.contoso.com` alanı sahipliğini yeniden kanıtlamak zorunda kalmadan eklemeye izin verir. Ancak tek bir `foo.bar.contoso.com` düzey alt etki alanı olmadığı için `*.contoso.com`izin vermez. Ek `foo.bar.contoso.com` etki alanı sahipliği doğrulaması olmadan eklemek için eklenmesi `*.bar.contosonews.com` gerekir.
 
-WAF'ın bir alt etki alanı için çalışmasını istemediğiniz bir senaryonuz varsa, yönetilen veya özel kural kümeleri olmayan boş bir WAF ilkesi oluşturabilirsiniz.
+Joker karakter etki alanlarını ve bunların alt etki alanlarını belirli sınırlamalarla ekleyebilirsiniz:
 
-## <a name="routing-rules-for-wildcard-domains-and-its-subdomains"></a>Joker karakter etki alanları ve alt etki alanları için yönlendirme kuralları
+- Azure Ön Kapı profiline joker karakter etki alanı eklenirse:
+  - Joker karakter etki alanı başka hiçbir Azure Ön Kapı profiline eklenmez.
+  - Joker karakter etki alanının birinci düzey alt etki alanları başka bir Azure Ön Kapı profiline veya Azure İçerik Dağıtım Ağı profiline eklenmez.
+- Bir Joker karakter etki alanının alt etki alanı Azure Ön Kapı profiline veya Azure İçerik Teslim Ağı profiline eklenirse, joker karakter etki alanı diğer Azure Ön Kapı profillerine eklenmez.
+- İki profil (Azure Ön Kapı veya Azure İçerik Dağıtım Ağı) bir kök etki alanının çeşitli alt etki alanına sahipse, joker karakter etki alanları profillerden hiçbirine eklenmez.
 
-Yönlendirme kuralını yapılandırırken, ön uç ana bilgisayar olarak joker karakter etki alanı seçebilirsiniz. Joker karakter etki alanı ile alt etki alanları için de farklı yol davranışınız olabilir. [Front Door'un rota eşleştirmesini nasıl yaptığı](front-door-route-matching.md)açıklandığı gibi, çalışma zamanında etki alanı için farklı yönlendirme kuralları arasında en özel eşleşme seçilir.
+## <a name="certificate-binding"></a>Sertifika bağlama
 
-> [!WARNING]
-> **Route 1**gibi iki yönlendirme kuralınız `*.foo.com/*` varsa : Backend Pool A ve **Route 2**ile eşlenen : `bar.foo.com/somePath/*` Backend Pool B'ye eşlenir ve bir istek `bar.foo.com/anotherPath/*`gelirse, ön kapı her iki rotada da eşleşme bulamayacağı için müşterileriniz arızaları görür. Bunun nedeni, [rota eşleştirme algoritmamız uyarınca,](front-door-route-matching.md)Ön Kapı'nın daha spesifik etki alanı eşleşmesine göre Route 2'yi seçmesi, ancak eşleşen yol desenleri olmadığını bulmasıdır. 
+Joker karakter etki alanınızda HTTPS trafiğini kabul etmek için joker karakter etki alanında HTTPS'yi etkinleştirmeniz gerekir. Joker karakter etki alanı için sertifika bağlama, joker karakter sertifikası gerektirir. Diğer bir zamanda, sertifikanın özne adı da joker karakter etki alanına sahip olmalıdır.
 
+> [!NOTE]
+> Şu anda, joker karakter etki alanları için HTTPS'yi etkinleştirmek için yalnızca kendi özel SSL sertifika seçeneğinizi kullanmak kullanılabilir. Azure Ön Kapı yönetilen sertifikalar joker karakter etki alanları için kullanılamaz.
+
+Aynı joker karakter sertifikasını Azure Key Vault'tan veya alt etki alanları için Azure Ön Kapı yönetilen sertifikalarından kullanmayı seçebilirsiniz.
+
+Zaten onunla ilişkili bir sertifikaya sahip bir joker alan adı için bir alt etki alanı eklenirse, alt etki alanı için HTTPS devre dışı tutulamaz. Farklı bir Key Vault veya Azure Ön Kapı yönetilen sertifika geçersiz kılmadığı sürece alt etki alanı joker karakter etki alanı için sertifika bağlama kullanır.
+
+## <a name="waf-policies"></a>WAF politikaları
+
+WAF ilkeleri, diğer etki adlarına benzer şekilde joker karakter etki adlarına eklenebilir. Joker karakter etki alanının alt etki alanına farklı bir WAF ilkesi uygulanabilir. Alt etki alanları için, joker karakter etki alanıyla aynı ilke olsa bile WAF ilkesinin kullanılacağını belirtmeniz gerekir. Alt etki alanları, WAF ilkesini joker karakter etki alanından otomatik olarak *devralmaz.*
+
+Bir WAF ilkesinin bir alt etki alanı için çalışmasını istemiyorsanız, yönetilen veya özel kural kümeleri olmayan boş bir WAF ilkesi oluşturabilirsiniz.
+
+## <a name="routing-rules"></a>Yönlendirme kuralları
+
+Yönlendirme kuralını yapılandırırken, ön uç ana bilgisayar olarak joker karakter etki alanı seçebilirsiniz. Joker karakter etki alanları ve alt etki alanları için de farklı rota davranışınız olabilir. [Azure Ön Kapı'nın rota eşleştirmesini nasıl yaptığı](front-door-route-matching.md)konusunda açıklandığı gibi, çalışma zamanında etki alanı için farklı yönlendirme kuralları arasında en özel eşleşme seçilir.
+
+> [!IMPORTANT]
+> Yönlendirme kurallarınızda eşleşen yol desenleri olması gerekir, aksi takdirde istemcileriniz hataları görür. Örneğin, Route 1 (arka`*.foo.com/*` uç havuzu A'ya eşlenmiş) ve Route 2`bar.foo.com/somePath/*` (arka uç bpool B'ye eşlenmiş) gibi iki yönlendirme kuralınız vardır. Sonra, bir istek `bar.foo.com/anotherPath/*`için geldi. Azure Ön Kapı, daha belirli bir etki alanı eşleşmesine göre Route 2'yi seçer, ancak rotalar arasında eşleşen yol desenleri bulamaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Front Door oluşturmayı](quickstart-create-front-door.md) öğrenin.
-- [Ön Kapı'ya](front-door-custom-domain.md)nasıl özel bir etki alanı ekleyeceğinizi öğrenin.
+- Azure Ön Kapı profilini nasıl [oluşturabilirsiniz](quickstart-create-front-door.md)öğrenin.
+- [Azure Ön Kapı'ya nasıl özel bir etki alanı ekleyeceğinizi](front-door-custom-domain.md)öğrenin.
 - [Özel bir etki alanında HTTPS'yi](front-door-custom-domain-https.md)nasıl etkinleştireceklerini öğrenin.

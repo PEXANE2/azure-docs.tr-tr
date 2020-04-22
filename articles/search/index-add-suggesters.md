@@ -7,17 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 1e2a837acef976b6b872c2d4002ee49d662ad594
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.date: 04/21/2020
+ms.openlocfilehash: 7eb2988628d60fa72c7d83b81a58a1e0fae5de33
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641334"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770094"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Sorguda otomatik tamamlama ve önerilen sonuçları etkinleştirmek için bir önerici oluşturma
 
-Azure Bilişsel Arama'da, "ara-you-type" bir [arama dizinine](search-what-is-an-index.md)eklenen **bir düşündürücü** yapı aracılığıyla etkinleştirilir. Önerici iki deneyimi destekler: terim veya tümcecik tamamlayan *otomatik tamamlama*ve eşleşen belgelerin kısa bir listesini döndüren *öneriler.*  
+Azure Bilişsel Arama'da, "ara-you-type" bir [arama dizinine](search-what-is-an-index.md)eklenen **bir düşündürücü** yapı aracılığıyla etkinleştirilir. Bir önerici iki deneyimi destekler: *otomatik tamamlama,* tüm dönem sorgusu için kısmi bir giriş tamamlar ve belirli bir eşleşmeye tıklamaya davet eden *öneriler.* Otomatik tamamlama bir sorgu üretir. Öneriler eşleşen bir belge üretir.
 
 [C#'daki ilk uygulamanızı](tutorial-csharp-type-ahead-and-suggestions.md) oluştur'undan sonraki ekran görüntüsü her ikisini de gösterir. Otomatik tamamlama potansiyel bir terim bekliyor, "tw" ile "in" ile bitirme. Öneriler, otel adı gibi bir alanın dizinden eşleşen bir otel arama belgesini temsil ettiği mini arama sonuçlarıdır. Öneriler için, açıklayıcı bilgiler sağlayan herhangi bir alanı yüzebilirsiniz.
 
@@ -33,27 +33,36 @@ Dize alanları için alan başına olarak arama türü desteği etkinleştirilir
 
 ## <a name="what-is-a-suggester"></a>Öneren nedir?
 
-Önerici, kısmi sorgularda eşleştirme için önekleri depolayarak ara-son sınıf davranışlarını destekleyen bir veri yapısıdır. Belirteçleştirilmiş terimlere benzer şekilde önekler, önerici alanlar koleksiyonunda belirtilen her alan için bir tane olmak üzere ters dizinlerde depolanır.
-
-Önekleri oluştururken, bir önericinin tam metin aramaiçin kullanılana benzer kendi çözümleme zinciri vardır. Ancak, tam metin aramaanalizi aksine, bir önerici sadece standart Lucene çözümleyicisi (varsayılan) veya bir [dil çözümleyicisi](index-add-language-analyzers.md)kullanan alanlar üzerinde çalışabilir. [Özel çözümleyiciler](index-add-custom-analyzers.md) veya [önceden tanımlanmış çözümleyiciler](index-add-custom-analyzers.md#predefined-analyzers-reference) (standart Lucene hariç) kullanan alanlar, kötü sonuçları önlemek için açıkça izin verilmez.
-
-> [!NOTE]
-> Çözümleyici kısıtlaması üzerinde çalışmanız gerekiyorsa, aynı içerik için iki ayrı alan kullanın. Bu, alanlardan birinin bir önericiye sahip olmasına olanak sağlarken, diğeri özel bir çözümleyici yapılandırması ile ayarlanabilir.
+Önerici, kısmi sorgularda eşleştirme için önekleri depolayarak ara-son sınıf davranışlarını destekleyen bir iç veri yapısıdır. Belirteçterimleri olduğu gibi, önekler, önerici alanlar koleksiyonunda belirtilen her alan için bir tane olmak üzere ters dizinlerde depolanır.
 
 ## <a name="define-a-suggester"></a>Bir önerici tanımlayın
 
-Bir önerici oluşturmak için, bir [dizin şema](https://docs.microsoft.com/rest/api/searchservice/create-index) bir ekleyin ve [her özellik ayarlayın.](#property-reference) Dizinde, bir önerici (özellikle, önerici koleksiyonunda bir önerici) olabilir. Bir önerici oluşturmak için en iyi zaman da onu kullanacak alanı tanımlayan zaman.
+Bir önerici oluşturmak için, bir [dizin şema](https://docs.microsoft.com/rest/api/searchservice/create-index) bir ekleyin ve [her özellik ayarlayın.](#property-reference) Bir önerici oluşturmak için en iyi zaman da onu kullanacak alanı tanımlayan zaman.
+
++ Yalnızca dize alanlarını kullanma
+
++ Varsayılan standart Lucene çözümleyicisini ( )`"analyzer": null`veya bir dil [çözümleyicisini](index-add-language-analyzers.md) (örneğin,) `"analyzer": "en.Microsoft"`sahada kullanma
 
 ### <a name="choose-fields"></a>Alanları seçin
 
-Bir önericinin birden çok özelliği olsa da, öncelikle sizin gibi bir arama deneyimi ne kadar etkinleştirdiğiniz alanlar topluluğudur. Özellikle öneriler için, tek bir sonucu en iyi temsil eden alanları seçin. Birden çok eşleşme arasında ayrım yapan adlar, başlıklar veya diğer benzersiz alanlar en iyi şekilde çalışır. Alanlar yinelenen değerlerden oluşuyorsa, öneriler aynı sonuçlardan oluşur ve kullanıcı hangisini tıklatacağını bilmez.
+Bir önericinin birkaç özelliği olsa da, öncelikle sizin gibi bir arama deneyimi ne kadar etkinleştirdiğiniz dize alanları topluluğudur. Her dizin için bir önerici vardır, bu nedenle önerici listesi hem öneriler hem de otomatik tamamlama için içerik katkıda bulunan tüm alanları içermelidir.
 
-Her alanın dizin oluşturma sırasında sözlü çözümleme gerçekleştiren bir çözümleyici kullandığından emin olun. Varsayılan standart Lucene çözümleyicisi`"analyzer": null`( ) veya bir dil `"analyzer": "en.Microsoft"` [çözümleyicisi](index-add-language-analyzers.md) (örneğin,) kullanabilirsiniz. 
+Ek içeriğin daha fazla dönem tamamlama potansiyeline sahip olması nedeniyle, daha büyük bir alan havuzundan otomatik tamamlama avantajları ndan yararlanın.
 
-Çözümleyici seçiminiz, alanların nasıl belirteçleştirilme ve daha sonra önceden önceden belirlenmiş olduğunu belirler. Örneğin, "içeriğe duyarlı" gibi tireli bir dize için, bir dil çözümleyicisi kullanmak şu belirteç kombinasyonlarına neden olur: "bağlam", "duyarlı", "bağlam duyarlı". Standart Lucene çözümleyicisini kullansaydınız, tireli dize mevcut olmazdı.
+Diğer taraftan, öneriler, alan seçiminiz seçici olduğunda daha iyi sonuçlar verir. Tek bir sonucu en iyi temsil eden alanları isteyeceğiniz şekilde, önerinin bir arama belgesi için bir proxy olduğunu unutmayın. Birden çok eşleşme arasında ayrım yapan adlar, başlıklar veya diğer benzersiz alanlar en iyi şekilde çalışır. Alanlar yinelenen değerlerden oluşuyorsa, öneriler aynı sonuçlardan oluşur ve kullanıcı hangisini tıklatacağını bilmez.
 
-> [!TIP]
-> Terimlerin nasıl belirtilmeye ve daha sonra önceden önceden belirlenmiş olduğuna ilişkin içgörü sağlamak için [Çözümleme Metni API'sini](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) kullanmayı düşünün. Bir dizin oluşturduğunuzda, yayan belirteçleri görüntülemek için bir dize üzerinde çeşitli çözümleyiciler deneyebilirsiniz.
+Her iki arama-as-you-type deneyimleri karşılamak için, otomatik tamamlama için gereken tüm alanları ekleyin, ancak sonra öneriler için sonuçları kontrol etmek için **$select**, **$top**, **$filter**ve **arama Alanları** kullanın.
+
+### <a name="choose-analyzers"></a>Çözümleyicileri seçin
+
+Çözümleyici seçiminiz, alanların nasıl belirteçleştirilme ve daha sonra önceden önceden belirlenmiş olduğunu belirler. Örneğin, "içeriğe duyarlı" gibi tireli bir dize için, bir dil çözümleyicisi kullanmak şu belirteç kombinasyonlarına neden olur: "bağlam", "duyarlı", "bağlam duyarlı". Standart Lucene çözümleyicisini kullansaydınız, tireli dize mevcut olmazdı. 
+
+Çözümleyicileri değerlendirirken, terimlerin nasıl belirteçleştirilip daha sonra önceden belirlenmiş olduğunu anlamak için [Çözümleme Metni API'sini](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) kullanmayı düşünün. Bir dizin oluşturduğunuzda, belirteç çıktısını görüntülemek için dize üzerinde çeşitli çözümleyiciler deneyebilirsiniz.
+
+[Özel çözümleyiciler](index-add-custom-analyzers.md) veya [önceden tanımlanmış çözümleyiciler](index-add-custom-analyzers.md#predefined-analyzers-reference) (standart Lucene hariç) kullanan alanlar, kötü sonuçları önlemek için açıkça izin verilmez.
+
+> [!NOTE]
+> Çözümleyici kısıtlaması üzerinde çalışmanız gerekiyorsa, örneğin belirli sorgu senaryoları için bir anahtar kelime veya ngram çözümleyicisine ihtiyacınız varsa, aynı içerik için iki ayrı alan kullanmanız gerekir. Bu, alanlardan birinin bir önericiye sahip olmasına olanak sağlarken, diğeri özel bir çözümleyici yapılandırması ile ayarlanabilir.
 
 ### <a name="when-to-create-a-suggester"></a>Ne zaman bir önerici oluşturmak için
 
@@ -161,7 +170,7 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İsteklerin nasıl formüle edilebildiğini görmek için aşağıdaki örneği öneririz.
+İsteklerin nasıl formüle ediş olduğu hakkında daha fazla bilgi edinmek için aşağıdaki makaleyi öneririz.
 
 > [!div class="nextstepaction"]
 > [İstemci koduna otomatik tamamlama ve öneriler ekleme](search-autocomplete-tutorial.md) 

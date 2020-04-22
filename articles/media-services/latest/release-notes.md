@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80582793"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769763"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -35,7 +35,13 @@ En son gelişmelerden haberdar olmak için bu makalede, aşağıdakiler hakkınd
 > [Azure portalını](https://portal.azure.com/) v3 Live [Events'i](live-events-outputs-concept.md)yönetmek, v3 [Varlıklarını](assets-concept.md)görüntülemek, API'lere erişim hakkında bilgi almak için kullanabilirsiniz. Diğer tüm yönetim görevleri için (örneğin, Dönüşümler ve İşler), [REST API,](https://aka.ms/ams-v3-rest-ref) [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
 Daha fazla bilgi için, [Medya Hizmetleri v2'den v3'e geçmek için Geçiş kılavuzuna](migrate-from-v2-to-v3.md#known-issues)bakın.
- 
+
+## <a name="april-2020"></a>Nisan 2020
+
+### <a name="improvements-in-documentation"></a>Dokümantasyondaki gelişmeler
+
+Azure Media Player dokümanları [Azure belgelerine](../azure-media-player/azure-media-player-overview.md)geçirildi.
+
 ## <a name="january-2020"></a>Ocak 2020
 
 ### <a name="improvements-in-media-processors"></a>Medya işlemcilerinde iyileştirmeler
@@ -361,4 +367,5 @@ Soru sormanın, geri bildirimde bulunabilir ve Medya Hizmetleri hakkında günce
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Genel bakış](media-services-overview.md)
+- [Medya Hizmetleri v3 Dokümantasyon güncellemeleri](docs-release-notes.md)
 - [Medya Hizmetleri v2 sürüm notları](../previous/media-services-release-notes.md)

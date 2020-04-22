@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db37a56ffbf0cb64530f8f7af38841bac72c77d4
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75931690"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767541"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight ile komut dosyası eylem geliştirme
 
@@ -26,7 +26,7 @@ Komut dosyası eylemleri aşağıdaki yöntemlerle uygulanabilir:
 
 | Komut dosyası uygulamak için bu yöntemi kullanın... | Küme oluşturma sırasında... | Çalışan bir kümede... |
 | --- |:---:|:---:|
-| Azure portalında |✓ |✓ |
+| Azure portal |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure Klasik CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -159,15 +159,15 @@ Bu örnekte, `hdfs` komut saydam olarak varsayılan küme depolama kullanır. Ba
 HDInsight, STDOUT ve STDERR'a yazılan komut dosyası çıktısını günlükler. Bu bilgileri Ambari web Kullanıcı Arama Bilgi Sini'ni kullanarak görüntüleyebilirsiniz.
 
 > [!NOTE]  
-> Apache Ambari yalnızca küme başarıyla oluşturulduğunda kullanılabilir. Küme oluşturma sırasında bir komut dosyası eylemi kullanırsanız ve oluşturma başarısız olursa, günlüğe kaydedilmiş bilgilere erişmek için [komut dosyası eylemini kullanarak HDInsight kümelerini özelleştir](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) sorun giderme bölümüne bakın.
+> Apache Ambari yalnızca küme başarıyla oluşturulduğunda kullanılabilir. Küme oluşturma sırasında bir komut dosyası eylemi kullanırsanız ve oluşturma başarısız olursa, günlüğe kaydedilmiş bilgilere erişmek için başka yollar için [sorun giderme komut dosyası eylemlerine](./troubleshoot-script-action.md) bakın.
 
-Çoğu yardımcı program ve yükleme paketleri zaten STDOUT ve STDERR'ye bilgi yazar, ancak ek günlüğe kaydetme yi de ekleyebilirsiniz. STDOUT'a metin göndermek `echo`için . Örnek:
+Çoğu yardımcı program ve yükleme paketleri zaten STDOUT ve STDERR'ye bilgi yazar, ancak ek günlüğe kaydetme yi de ekleyebilirsiniz. STDOUT'a metin göndermek `echo`için . Örneğin:
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-Varsayılan olarak, `echo` dize STDOUT gönderir. STDERR'ye yönlendirmek için `>&2` `echo`önce ekleyin. Örnek:
+Varsayılan olarak, `echo` dize STDOUT gönderir. STDERR'ye yönlendirmek için `>&2` `echo`önce ekleyin. Örneğin:
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -175,7 +175,7 @@ Varsayılan olarak, `echo` dize STDOUT gönderir. STDERR'ye yönlendirmek için 
 
 Bu, STDOUT'a yazılan bilgileri STDERR 'e (2) yönlendirir. IO yeniden yönlendirmesi hakkında [https://www.tldp.org/LDP/abs/html/io-redirection.html](https://www.tldp.org/LDP/abs/html/io-redirection.html)daha fazla bilgi için bkz.
 
-Komut dosyası eylemleri tarafından günlüğe kaydedilen bilgileri görüntüleme hakkında daha fazla bilgi için, [komut dosyası eylemini kullanarak HDInsight kümelerini özelleştir'e](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) bakın
+Komut dosyası eylemleri tarafından günlüğe kaydedilen bilgileri görüntüleme hakkında daha fazla bilgi için sorun [giderme komut dosyası eylemleri'ne](./troubleshoot-script-action.md)bakın.
 
 ### <a name="save-files-as-ascii-with-lf-line-endings"></a><a name="bps8"></a>LF satır sonlarıyla dosyaları ASCII olarak kaydetme
 
@@ -313,7 +313,7 @@ Komut dosyası dağıtmaya hazırlanırken atılacak adımlar şunlardır:
 
 Aşağıdaki yöntemleri kullanarak HDInsight kümelerini özelleştirmek için komut dosyası eylemlerini kullanabilirsiniz:
 
-* Azure portalında
+* Azure portal
 * Azure PowerShell
 * Azure Resource Manager şablonları
 * The HDInsight .NET SDK.

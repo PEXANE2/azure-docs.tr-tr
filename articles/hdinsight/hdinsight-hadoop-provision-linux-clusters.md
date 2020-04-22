@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 02/12/2020
-ms.openlocfilehash: 246ec08e9b4edb33fa49318b68cc4364534282b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6bba71ab35920027cc7296e774936c3d1deb8f92
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064658"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770308"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Apache Hadoop, Apache Spark, Apache Kafka ve daha fazlasıyla HDInsight'ta küme oluşturma
 
@@ -32,12 +32,12 @@ Aşağıdaki tablo, bir HDInsight kümesi ayarlamak için kullanabileceğiniz fa
 
 | Kümeler ile oluşturulan | Web tarayıcısı | Komut satırı | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure portalında](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Azure Kaynak Yöneticisi şablonları](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure Resource Manager şablonları](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 
 Bu makale, bir HDInsight kümesi oluşturabileceğiniz [Azure portalındaki](https://portal.azure.com)kurulumda size yol açar.
 
@@ -76,11 +76,11 @@ Azure HDInsight şu anda, her biri belirli işlevleri sağlamak için bir dizi b
 | --- | --- |
 | [Hadoop](hadoop/apache-hadoop-introduction.md) |Toplu sorgu ve depolanan verilerin analizi |
 | [HBase](hbase/apache-hbase-overview.md) |Büyük miktarda şemasız, NoSQL verisi için işleme |
-| [Etkileşimli Sorgu](./interactive-query/apache-interactive-query-get-started.md) |Etkileşimli ve daha hızlı Hive sorguları için bellek içi önbelleğe alma |
+| [Interactive Query](./interactive-query/apache-interactive-query-get-started.md) |Etkileşimli ve daha hızlı Hive sorguları için bellek içi önbelleğe alma |
 | [Kafka](kafka/apache-kafka-introduction.md) | Gerçek zamanlı veri aktaran veri ardışık hatları ve uygulamaları oluşturmak için kullanılabilecek dağıtılmış bir akış platformu |
 | [ML Services](r-server/r-server-overview.md) |Çeşitli büyük veri istatistikleri, tahmine dayalı modelleme ve makine öğrenimi yetenekleri |
 | [Spark](spark/apache-spark-overview.md) |Bellek içi işleme, etkileşimli sorgular, mikro toplu akış işleme |
-| [Fırtına](storm/apache-storm-overview.md) |Gerçek zamanlı olay işleme |
+| [Storm](storm/apache-storm-overview.md) |Gerçek zamanlı olay işleme |
 
 #### <a name="version"></a>Sürüm
 
@@ -104,7 +104,7 @@ SSH kullanıcı adı aşağıdaki kısıtlamalara sahiptir:
 * İzin verilen özel`_` karakterler: ve`@`
 * İzin verilmeyen karakterler: #;."',\/:'!*?$(){}[]<>|&--=+%~^boşluk
 * Maksimum uzunluk: 64
-* Ayrılmış adlar: hadoop, kullanıcılar, oozie, kovan, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, ipn, hcat, ams, hbase, fırtına, yönetici, yönetici, kullanıcı, user1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, yedekleme, konsol, david misafir, john, sahibi, kök, sunucu, sql, destek, support_388945a0, sys, test2, test3, user4, user5, kıvılcım
+* Ayrılmış isimler: hadoop, kullanıcılar, oozie, kovan, mapred, ambari-qa, zookeeper, tez, hdfs, sqoop, ipn, hcat, ams, hbase, storm, administrator, admin, user1, test, user2, test1, user3, admin1, 1, 123, a, actuser, adm, admin2, aspnet, backup, console, david, guest, john, owner, root, server, sql, support, support_388945a0, sys, test2, test3, user4, user1, user1, user1, user1, user1
 
 ## <a name="storage"></a>Depolama
 
@@ -169,7 +169,7 @@ Etki alanı yla birleştirilmiş HDInsight kümesi oluşturma hakkında daha faz
 
 ### <a name="tls"></a>TLS
 
-Daha fazla bilgi için Taşıma [Katmanı Güvenliği'ne](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security) bakın
+Daha fazla bilgi için Taşıma [Katmanı Güvenliği'ne](./transport-layer-security.md) bakın
 
 ### <a name="virtual-network"></a>Sanal ağ
 

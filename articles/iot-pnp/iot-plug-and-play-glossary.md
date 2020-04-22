@@ -1,20 +1,20 @@
 ---
 title: Terimler Sözlüğü - IoT Tak ve Çalıştır Önizleme | Microsoft Dokümanlar
 description: Kavramlar - IoT Tak ve Çalıştır Önizleme ile ilgili ortak terimler sözlüğü.
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f0c21626c664f2d72b534ebae7f0a257620be07d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025648"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767076"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Çalıştır Önizleme terimleri sözlüğü
 
@@ -64,7 +64,7 @@ Azure IoT gezgini, [IoT Tak ve Çalıştır aygıtlarınızla](#iot-plug-and-pla
 - Aygıt [özellikleriyle](#properties)çalışın.
 - Çağrı aygıtı [komutları.](#commands)
 
-## <a name="azure-iot-hub"></a>Azure IoT Hub’ı
+## <a name="azure-iot-hub"></a>Azure IoT Hub
 
 IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar arasındaki iki yönlü iletişim için merkezi ileti hub’ı görevi gören, yönetilen bir hizmettir. [IoT Tak ve Çalıştır aygıtları](#iot-plug-and-play-device) bir IoT hub'ına bağlanabilir. Bir IoT çözümü, şunları etkinleştirmek için bir IoT hub'ı kullanır:
 

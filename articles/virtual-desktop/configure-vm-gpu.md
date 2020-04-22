@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 941a1ff23668a3202028e8b693b57d902095b3b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78384816"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767032"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Sanal Masaüstü için grafik işleme birimi (GPU) ivmesi yapılandırma
 
@@ -88,7 +88,7 @@ Uzak Masaüstü'nin GPU hızlandırılmış kodlama kullandığını doğrulamak
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu talimatlar, tek bir oturum ana bilgisayar VM'de GPU ivmesi ile çalışmaya devam edebilirsiniz. Daha büyük bir ana bilgisayar havuzunda GPU ivmesini etkinleştirmek için bazı ek hususlar:
+Bu talimatlar, bir oturum ana bilgisayarda (bir VM) GPU ivmesi ile çalışır durumda sınız. Daha büyük bir ana bilgisayar havuzunda GPU ivmesini etkinleştirmek için bazı ek hususlar:
 
 * Sürücü yüklemesini ve birkaç VM'deki güncelleştirmeleri basitleştirmek için bir [VM uzantısı](/azure/virtual-machines/extensions/overview) kullanmayı düşünün. NVIDIA GPU'lu VM'ler için [NVIDIA GPU Sürücü Uzantısı'nı](/azure/virtual-machines/extensions/hpccompute-gpu-windows) kullanın ve AMD GPU'lu VM'ler için AMD GPU Sürücü Uzantısı'nı (yakında) kullanın.
 * Grup ilkesi yapılandırmasını birkaç VM'de basitleştirmek için Etkin Dizin Grubu İlkesi'ni kullanmayı düşünün. Etkin Dizin etki alanında Grup İlkesi dağıtma hakkında bilgi için [bkz.](https://go.microsoft.com/fwlink/p/?LinkId=620889)

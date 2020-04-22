@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e17cc4bf6f70901e3bb5d250f0a55f073ad8d99e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1e5861e802f39adecb5661bc17c22b432f137d59
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406725"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770295"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory uygulama proxy'sinde Joker karakter uygulamaları
 
@@ -48,8 +48,6 @@ Her ikisi de dahili ve harici URL'ler aşağıdaki biçimdeyse joker karakterler
 Örneğin: `http(s)://*.adventure-works.com`.
 
 İç ve dış URL'ler en iyi yöntem olarak farklı etki alanlarını kullanabilse de, aynı olmalıdır. Uygulamayı yayımlarken, URL'lerden birinin joker kartı yoksa bir hata görürsünüz.
-
-Farklı yapılandırma ayarlarına sahip ek uygulamalarınız varsa, joker karakter için ayarlanan varsayılanların üzerine yazmak için bu özel durumları ayrı uygulamalar olarak yayımlamanız gerekir. Joker karaktersiz uygulamalar her zaman joker karakter uygulamalarından önceliklidir. Yapılandırma açısından bakıldığında, bunlar "adil" düzenli uygulamalardır.
 
 Joker karakter uygulaması oluşturmak, diğer tüm uygulamalar için kullanılabilen aynı [uygulama yayımlama akışını](application-proxy-add-on-premises-application.md) temel adatır. Tek fark, URL'lere ve potansiyel olarak SSO yapılandırmasında bir joker karakter eklemenizdir.
 

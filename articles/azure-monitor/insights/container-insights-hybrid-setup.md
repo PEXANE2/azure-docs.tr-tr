@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Monitörile Karma Kubernetes kümelerini yapı
 description: Bu makalede, Azure Yığını veya diğer ortamda barındırılan Kubernetes kümelerini izlemek için kapsayıcılar için Azure Monitor'u nasıl yapılandırabileceğiniz açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 01/24/2020
-ms.openlocfilehash: 5a973e7e500906ebe833ec4cc6fd2fa8ee79c19e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6c2782fdd810403a793f6ef682d1112fadc22465
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255439"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769033"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Monitörü ile karma Kubernetes kümelerini yapılandırma
 
@@ -240,6 +240,9 @@ Bu yöntem iki JSON şablonu içerir. Şablonlardan biri izlemeyi etkinleştirme
        İzlemeyi etkinleştirdikten sonra, kümenin sistem durumu ölçümlerini görüntülemeniz yaklaşık 15 dakika sürebilir.
 
 ## <a name="install-the-chart"></a>Grafiği yükleme
+
+>[!NOTE]
+>Aşağıdaki komutlar yalnızca Helm sürüm 2 için geçerlidir. --ad parametresi kullanımı Helm sürüm 3 ile geçerli değildir.
 
 HELM grafiğini etkinleştirmek için aşağıdakileri yapın:
 

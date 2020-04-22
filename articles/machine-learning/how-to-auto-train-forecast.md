@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: be3046a343e14be4a527363751081ba3f2593cd3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9f80156f61ad82e5563f1c38764c81297f5979f2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605886"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767300"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Bir zaman serisi tahmin modelini otomatik olarak eğitin
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,13 +36,13 @@ Tahminin geleceğe ne kadar uzanması gerektiğini (tahmin ufku) ve gecikmeleri 
 
 Eğitim verilerinden çıkarılan özellikler kritik bir rol oynar. Ayrıca, otomatik ML standart ön işleme adımlarını gerçekleştirir ve mevsimsel etkileri yakalamak ve tahmine dayalı doğruluğu en üst düzeye çıkarmak için ek zaman serisi özellikleri oluşturur.
 
-## <a name="time-series-and-deep-learning-models"></a>Zaman serisi ve Derin Öğrenme modelleri
+## <a name="time-series-and-deep-learning-models"></a>Zaman serisi ve derin öğrenme modelleri
 
 
 Otomatik ML, tavsiye sisteminin bir parçası olarak kullanıcılara hem yerel zaman serileri hem de derin öğrenme modelleri sunar. Bu öğrenciler şunlardır:
-+ Peygamber
-+ Otomatik ARIMA
-+ TahminTCN
++ Peygamber (Önizleme)
++ Otomatik ARIMA (Önizleme)
++ ForecastTCN (Önizleme)
 
 Otomatik ML'nin derin öğrenmesi, tek değişkenli ve çok değişkenli zaman serileri verilerini tahmin etmenizi sağlar.
 
@@ -51,7 +51,7 @@ Derin öğrenme modellerinin üç içsel yeteneği vardır:
 1. Birden fazla giriş ve çıkışı desteklerler
 1. Uzun dizilere yayılan giriş verilerinde desenleri otomatik olarak ayıklayabilirler
 
-Daha büyük veriler göz önüne alındığında, Microsoft'un ForecastTCN'i gibi derin öğrenme modelleri, elde edilen modelin puanlarını artırabilir. 
+Daha büyük veriler göz önüne alındığında, Microsoft'un ForecastTCN'i gibi derin öğrenme modelleri, elde edilen modelin puanlarını artırabilir. Derin öğrenme için denemenizi nasıl [yapılandırıştırılamayı](#configure-a-dnn-enable-forecasting-experiment)öğrenin.
 
 Yerli zaman serisi öğrenenler de otomatik ML bir parçası olarak sağlanmaktadır. Peygamber güçlü mevsimsel etkileri ve tarihsel verilerin birkaç mevsim var zaman serisi ile en iyi çalışır. Peygamber doğru & hızlı, aykırı, eksik veri ve zaman serisi dramatik değişiklikler için sağlam. 
 
@@ -181,6 +181,17 @@ Aşağıdakiler dahil olmak üzere gelişmiş tahmin yapılandırmasının ayrı
 > Otomatik Machine Learning'de tahmin için DNN desteği Önizleme'dedir ve yerel çalıştırmalar için desteklenmez.
 
 Tahmin için DN'lerden yararlanmak için AutoMLConfig'deki parametreyi `enable_dnn` doğru ayarlamanız gerekir. 
+
+```python
+automl_config = AutoMLConfig(task='forecasting',
+                             enable_dnn=True,
+                             ...
+                             **time_series_settings)
+```
+[AutoMLConfig](#configure-and-run-experiment)hakkında daha fazla bilgi edinin.
+
+Alternatif olarak, stüdyoda `Enable deep learning` seçeneği seçebilirsiniz.
+![alternatif metin](./media/how-to-auto-train-forecast/enable_dnn.png)
 
 GPU SKU'lu bir AML İşlem kümesi ve işlem hedefi olarak en az iki düğüm kullanmanızı öneririz. DNN eğitiminin tamamlanması için yeterli zaman tanımak için, deneme zaman dilimini en az birkaç saat olarak ayarlamanızı öneririz.
 GPU'ları içeren AML bilgi işlem ve VM boyutları hakkında daha fazla bilgi [için, AML İşleme belgelerine](how-to-set-up-training-targets.md#amlcompute) ve [GPU optimize edilmiş sanal makine boyutları belgelerine](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)bakın.

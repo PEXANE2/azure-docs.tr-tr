@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
-ms.openlocfilehash: 4042fc05f278915fe72bf8fc4e6afd69a5bbb4b9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537432"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770956"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Şirket içi sunucular için Azure Monitör uygulama istatistikleri aracısı dağıtma
 
@@ -36,14 +36,14 @@ Uygulama Insights Aracısı burada https://www.powershellgallery.com/packages/Az
 - Nasıl başlayacağınız hakkında derin bir dalış için [ayrıntılı talimatlara](status-monitor-v2-detailed-instructions.md) bakın.
 
 ## <a name="powershell-api-reference"></a>PowerShell API başvurusu
-- [Devre Dışı-UygulamaInsightsİzleme](status-monitor-v2-api-disable-monitoring.md)
-- [Devre Dışı Bırakma-InstrumentationEngine](status-monitor-v2-api-disable-instrumentation-engine.md)
-- [Enable-ApplicationInsightsMonitoring](status-monitor-v2-api-enable-monitoring.md)
-- [Etkinleştirme-EnstrümantasyonMotoru](status-monitor-v2-api-enable-instrumentation-engine.md)
-- [Get-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-get-config.md)
-- [Get-ApplicationInsightsİzlemeDurumu](status-monitor-v2-api-get-status.md)
-- [Set-ApplicationInsightsMonitoringConfig](status-monitor-v2-api-set-config.md)
-- [Başlat-UygulamaInsightsMonitoringTrace](status-monitor-v2-api-start-trace.md)
+- [Devre Dışı-UygulamaInsightsİzleme](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Devre Dışı Bırakma-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Etkinleştirme-EnstrümantasyonMotoru](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+- [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
+- [Get-ApplicationInsightsİzlemeDurumu](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
+- [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
+- [Başlat-UygulamaInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
 ## <a name="troubleshooting"></a>Sorun giderme
 - [Sorun giderme](status-monitor-v2-troubleshoot.md)
@@ -64,7 +64,7 @@ Bu seçeneklerin her biri [ayrıntılı yönergelerde](status-monitor-v2-detaile
 
 - Etkinleştirmenin başarılı olduğunu nasıl doğrulayabilirim?
 
-  - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) cmdlet, etkinleştirmenin başarılı olduğunu doğrulamak için kullanılabilir.
+  - [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) cmdlet, etkinleştirmenin başarılı olduğunu doğrulamak için kullanılabilir.
   - Uygulamanızın telemetri gönderip göndermedığını hızlı bir şekilde belirlemek için [Canlı Ölçümler'i](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) kullanmanızı öneririz.
 
   - Telemetri gönderen tüm bulut rollerini listelemek için [Log Analytics'i](../log-query/get-started-portal.md) de kullanabilirsiniz:

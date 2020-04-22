@@ -2,16 +2,16 @@
 author: rothja
 ms.service: cost-management-billing
 ms.topic: include
-ms.date: 11/09/2018
+ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 2d16febd4676ca7ba763eb7bc6dcecda4608ebb5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74224576"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768763"
 ---
-#### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Anahtar hareketler (10 saniyede izin verilen maksimum işlemler, bölge başına kasa başına<sup>1):</sup>
+### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Anahtar hareketler (10 saniyede izin verilen maksimum işlemler, bölge başına kasa başına<sup>1):</sup>
 
 |Anahtar türü|HSM tuşu<br>CREATE anahtarı|HSM tuşu<br>Diğer tüm işlemler|Yazılım anahtarı<br>CREATE anahtarı|Yazılım anahtarı<br>Diğer tüm işlemler|
 |:---|---:|---:|---:|---:|
@@ -34,7 +34,8 @@ ms.locfileid: "74224576"
 > - 125 RSA 4.096 bit HSM-anahtar GET işlemleri
 > - 124 RSA 4.096 bit HSM-key GET işlemleri ve 8 RSA 2.048 bit HSM-key GET işlemleri
 
-#### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Sırlar, yönetilen depolama hesabı anahtarları ve kasa işlemleri:
+### <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Sırlar, yönetilen depolama hesabı anahtarları ve kasa işlemleri:
+
 | İşlemtürü | 10 saniyede izin verilen maksimum işlemler, bölge başına kasa başına<sup>1</sup> |
 | --- | --- |
 | Tüm işlemler |2.000 |
@@ -42,3 +43,10 @@ ms.locfileid: "74224576"
 Bu sınırlar aşıldığında azaltmanın nasıl işleyeceğiniz hakkında bilgi için [Azure Anahtar Kasası azaltma kılavuzuna](../articles/key-vault/key-vault-ovw-throttling.md)bakın.
 
 <sup>1</sup> Tüm işlem türleri için abonelik genelindeki sınır, anahtar kasa sınırı başına beş katıdır. Örneğin, abonelik başına HSM-diğer işlemler abonelik başına 10 saniye içinde 5.000 işlemle sınırlıdır.
+
+### <a name="azure-private-link-integration"></a>Azure Özel Bağlantı tümleştirmesi
+
+| Kaynak | Sınır |
+| -------- | ----- |
+| Anahtar kasası başına özel uç noktaları | 64 |
+| Abonelik başına özel uç noktaları olan anahtar kasaları | 64 |

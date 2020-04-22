@@ -15,22 +15,22 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c881d8ca4aace3275655d5bf645c4379942609
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.openlocfilehash: 564ca97210d85c5118901f30261abe3de9df1053
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389476"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770935"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco-saml-app"></a>Öğretici: Profit.co SAML Uygulaması ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
 Bu eğitimde, Profit.co SAML Uygulaması'nı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. SAML App Profit.co Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
 * SAML App'Profit.co erişimi olan Azure AD'de denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla saml uygulaması Profit.co için otomatik olarak oturum açılmasını etkinleştirin.
-* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
+* Kullanıcılarınızın Otomatik olarak oturum açarak SamL App'Profit.co Azure AD hesaplarıyla oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda, yani Azure portalında yönetin.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -43,100 +43,99 @@ Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
 Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Profit.co SAML App **IDP** başlatılan SSO destekler
+* Profit.co SAML App IDP başlatılan SSO destekler.
 
-* SAML App Profit.co yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızmalarını koruyan oturum denetimini uygulayabilirsiniz. Oturum denetimi Koşullu Erişim'den genişletir. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
+* SAML App Profit.co yapılandırdıktan sonra oturum denetimini uygulayabilirsiniz. Bu, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak sızma ve sızma larını önler. Oturum denetimi koşullu erişimden genişler. [Microsoft Cloud App Security ile oturum denetimini nasıl uygulayacağınızı öğrenin.](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)
 
-## <a name="adding-profitco-saml-app-from-the-gallery"></a>Galeriden Profit.co SAML Uygulaması ekleme
+## <a name="add-profitco-saml-app-from-the-gallery"></a>Galeriden SAML Uygulaması Profit.co ekleyin
 
 saml app Profit.co Azure AD'ye entegrasyonunu yapılandırmak için galeriden Profit.co SAML Uygulaması'nı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Bir iş veya okul hesabı veya kişisel bir Microsoft hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
-1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Kurumsal **Uygulamalar'a**gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama'yı**seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **SAML Uygulaması Profit.co** yazın.
-1. Sonuç panelinden **SAML App Profit.co** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
-
+1. Sonuç panelinden **SAML AppProfit.coi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco-saml-app"></a>Profit.co SAML Uygulaması için Azure AD oturum açma işlemlerini yapılandırma ve test Profit.co
 
-Azure AD SSO'Profit.co SAML Uygulaması ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile ilgili kullanıcı arasında Profit.co SAML Uygulaması arasında bir bağlantı ilişkisi kurmanız gerekir.
+Azure AD SSO'Profit.co SAML Uygulaması ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Profit.co SAML Uygulamasında bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bağlantılı bir ilişki kurun.
 
-Azure AD SSO'yu Profit.co SAML Uygulamasıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Profit.co SAML Uygulamasıyla yapılandırmak ve test etmek için gereken genel adımlar şunlardır:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
-    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. Azure AD oturum açma'yı B.Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
     1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
-1. **[Saml App SSOProfit.co yapılandırın](#configure-profitco-saml-app-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
-    1. Profit.co **[SAML App test kullanıcısı oluşturun](#create-profitco-saml-app-test-user)** - kullanıcının Azure AD gösterimine bağlı Profit.co SAML Uygulamasında B.Simon'ın bir muadili olması için.
-1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için **[SAML App SSOProfit.co](#configure-profitco-saml-app-sso)** yapılandırın.
+    1. Profit.co SAML App B.Simon bir meslektaşı olması için **[Profit.co SAML App test kullanıcı oluşturun.](#create-a-profitco-saml-app-test-user)** Bu karşılık, kullanıcının Azure AD gösterimine bağlıdır.
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. Saml App uygulama tümleştirme **sayfasına Profit.co** [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. **Profit.co SAML App** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun. **Tek oturum açma'yı**seçin.
 1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
-1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için kalem simgesini seçin.
 
-   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
+   ![Saml sayfasıyla tek oturum açma ekran görüntüsü, kalem simgesi vurgulanmış](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL'ler Azure ile önceden doldurulmuştür. Kullanıcının **Kaydet** düğmesini tıklatarak yapılandırmayı kaydetmesi gerekir.
+1. Temel **SAML Yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL'ler Azure'da zaten önceden doldurulmuşdurumda. Kullanıcıların **Kaydet** düğmesini seçerek yapılandırmayı kaydetmeleri gerekir.
 
-1. **SAML ile Tek Oturum** Açma sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
+1. **SAML** ile tek oturum açma'da, **SAML İmza Sertifikası** bölümünde **Kopyala** düğmesini seçin. Bu, **App Federation Metadata Url'yi** kopyalar ve bilgisayarınıza kaydeder.
 
-    ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
+    ![Kopya düğmesi vurgulanmış SAML İmza Sertifikası'nın ekran görüntüsü](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizin** > **Kullanıcıları** > **Tüm kullanıcıları**seçin.
 1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
    1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur'u**tıklatın.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** alanında gösterilen değeri yazın.
+   1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, B.Simon'ın Profit.co SAML Uygulamasına erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
+Bu bölümde, B.Simon'ın Profit.co SAML Uygulamasına erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlarsınız.
 
-1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Azure portalında **Kurumsal Uygulamalar** > **Tüm uygulamaları**seçin.
 1. Uygulamalar listesinde **SAML App Profit.co**seçin.
 1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+   ![Kullanıcılar ve gruplar vurgulanırken Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
+1. **Kullanıcı Ekle'yi**seçin. Atama **Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı ekle ile Kullanıcılar ve gruplar sayfasının ekran görüntüsü](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
-1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinden **B.Simon'ı** seçin. Ardından ekranın altındaki **Seç** düğmesini seçin.
+1. SAML iddiasında, **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ardından ekranın altındaki **Seç** düğmesini seçin.
+1. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
 ## <a name="configure-profitco-saml-app-sso"></a>SamL App SSO Profit.co yapılandır
 
-**SAML App** tarafında tek oturum açma Profit.co yapılandırmak için, [Saml App destek ekibine App](mailto:support@profit.co)Federation **Metadata Url'Profit.co** göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+Profit.co SAML App tarafında tek oturum açma yapılandırmak için, App Federation Metadata URL'sini [Profit.co SAML App destek ekibine](mailto:support@profit.co)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için yapılandırır.
 
-### <a name="create-profitco-saml-app-test-user"></a>SAML App test kullanıcısı Profit.co oluşturun
+### <a name="create-a-profitco-saml-app-test-user"></a>saml app test kullanıcısı Profit.co oluşturma
 
-Bu bölümde, Profit.co SAML App Britta Simon adlı bir kullanıcı oluşturun. Profit.co SAML App platformundaki kullanıcıları eklemek için [Profit.co SAML App destek ekibiyle](mailto:support@profit.co) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, SAML App Profit.co B.Simon adlı bir kullanıcı oluşturun. Profit.co SAML App platformundaki kullanıcıları eklemek için [Profit.co SAML App destek ekibiyle](mailto:support@profit.co) birlikte çalışın. Kullanıcıları oluşturmadan ve etkinleştirene kadar tek oturum açma kullanamazsınız.
 
-## <a name="test-sso"></a>Test SSO 
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
+Bu bölümde, Access Panel'i kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Access Paneli'ndeki Profit.co SAML Uygulama döşemesini tıklattığınızda, SSO'yu kurduğunuz Profit.co SAML Uygulamasında otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
+Access Panel'de Profit.co SAML Uygulama döşemesini seçtiğinizde, SSO'yu kurduğunuz Profit.co SAML Uygulamasında otomatik olarak oturum açmalısınız. Daha fazla bilgi için [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)e bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
@@ -145,4 +144,3 @@ Access Paneli'ndeki Profit.co SAML Uygulama döşemesini tıklattığınızda, S
 - [Microsoft Cloud App Security'de oturum denetimi nedir?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [Gelişmiş görünürlük ve kontrollerle Profit.co SAML App nasıl korunur?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

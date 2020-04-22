@@ -1,45 +1,46 @@
 ---
-title: HTTPS Bitiş Noktası | Azure Marketi
-description: Bir HTTPS bitiş noktası için müşteri adayı yönetimini yapılandırın.
+title: HTTPS bitiş noktası kullanarak müşteri adayı yönetimini yapılandırma | Azure Marketi
+description: Microsoft AppSource ve Azure Marketi müşteri adaylarını işlemek için http bitiş noktasını nasıl kullanacağınızı öğrenin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 04/21/2020
 ms.author: dsindona
-ms.openlocfilehash: cb6ef173e97a7c2bbd7d7cad5e5074b1f2d0f066
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288606"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770160"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>HTTPS bitiş noktasını kullanarak müşteri adayı yönetimini yapılandırma
 
-Azure Marketi ve AppSource müşteri adaylarını işlemek için bir HTTPS bitiş noktası kullanabilirsiniz. Bu müşteri adayları, Müşteri İlişkileri Yönetimi (CRM) sistemine yazılabilir veya e-posta bildirimi olarak gönderilebilir. Bu makalede, [Microsoft Flow](https://powerapps.microsoft.com/automate-processes/) otomasyon hizmetini kullanarak müşteri adayı yönetiminin nasıl yapılandırılacayacağı anlatılıyor.
+Microsoft AppSource ve Azure Marketi müşteri adaylarını işlemek için bir HTTPS bitiş noktası kullanabilirsiniz. Bu müşteri adayları bir Müşteri İlişkileri Yönetimi (CRM) sistemine yazılabilir veya e-posta bildirimi olarak gönderilebilir. Bu makalede, müşteri adayı yönetimini yapılandırmak için [Microsoft Power Automate](https://powerapps.microsoft.com/automate-processes/) otomasyon hizmetinin nasıl kullanılacağı açıklanmaktadır.
 
-## <a name="create-a-flow-using-microsoft-flow"></a>Microsoft Flow'u kullanarak akış oluşturma
+## <a name="create-a-flow-using-microsoft-power-automate"></a>Microsoft Power Otomatikleştir'i kullanarak akış oluşturma
 
-1. [Akış](https://flow.microsoft.com/) web sayfasını açın. Ücretsiz Akış hesabı oluşturmak için **Kaydol** veya **Ücretsiz Kaydol'u** seçin.
+1. Power [Automate](https://flow.microsoft.com/) web sayfasını açın. Ücretsiz Akış hesabı oluşturmak için **Kaydol** veya **Ücretsiz Kaydol'u** seçin.
 
-2. Oturum açın ve menü çubuğunda **akışlarım'ı** seçin.
+1. Oturum açın ve menü çubuğunda **akışlarım'ı** seçin.
+    > [!div class="mx-imgBorder"]
+    > ![Akışlarım](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-    ![Akışlarım](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
+1. Altında **+ Yeni**, seçin + **Instant—from blank**.
+    > [!div class="mx-imgBorder"]
+    > ![Sıfırdan oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-3. Boştan **+ Oluştur'u**seçin.
+1. Akışınızı adlandırın ve ardından **bu akışı nasıl tetikleyeceğinizi seçin**, http isteği **geldiğinde**seçin.
 
-    ![Sıfırdan oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
+    > [!div class="mx-imgBorder"]
+    > ![Alınan HTTP isteğini seçin](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-4. **Boştan Oluştur'u**seçin.
+1. Genişletmek için akış adımını tıklatın.
 
-    ![Sıfırdan oluştur](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank2.png)
+    > [!div class="mx-imgBorder"]
+    > ![Akış adımını genişletme](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-5. Arama **bağlayıcıları ve tetikleyiciler** alanında, İstek bağlayıcısını bulmak için "istek" yazın.
-6. **Tetikleyiciler**altında, **bir HTTP isteği aldığında**seçin. 
-
-    ![Alınan HTTP isteğini seçin](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
-
-7. **İstek Gövdesi JSON Schema'yı**yapılandırmak için aşağıdaki adımlardan birini kullanın:
+1. **İstek Gövdesi JSON Schema**yapılandırmak için aşağıdaki yöntemlerden birini kullanın:
 
    - Bu makalenin sonundaki [JSON şeasını](#json-schema) **İstek Gövdesi JSON Schema** metin kutusuna kopyalayın.
    - **Şema oluşturmak için örnek yük kullanma** öğesini seçin. Örnek **bir JSON yük metin kutusunu girin veya yapıştırın,** [JSON örneğine](#json-example)yapıştırın. Şemayı oluşturmak için **Bitti'yi** seçin.
@@ -90,6 +91,7 @@ Azure Marketi ve AppSource müşteri adaylarını işlemek için bir HTTPS biti�
    ![E-posta eylemi ekleme](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-action.png)
 
 5. Akışınızı tamamlamak için **Kaydet'i** seçin.
+
 6. İstekte bir HTTP POST URL'si oluşturulur. Bu URL'yi kopyalayın ve HTTPS bitiş noktası olarak kullanın.
 
     ![HTTP Mesaj URL](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-get-post-url.png)
@@ -100,7 +102,7 @@ Teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırdığınızd
 
 ![Dinamik içerik ekle](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-Müşteri adayları oluşturulduğunda, Microsoft, yapılandırılan CRM sistemine veya e-posta adresine yönlendirilen Akış'a müşteri adayları gönderir.
+Müşteri adayları oluşturulduğunda, Microsoft, yapılandırdığınız CRM sistemine veya e-posta adresine yönlendirilen Power Automate akışınıza müşteri adayları gönderir.
 
 ## <a name="json-schema-and-example"></a>JSON şema ve örnek
 
@@ -124,6 +126,10 @@ JSON test örneği aşağıdaki şema kullanır:
     },
     "LeadSource": {
       "id": "/properties/LeadSource",
+      "type": "string"
+    },
+    "Description": {
+      "id": "/properties/Description",
       "type": "string"
     },
     "UserDetails": {
@@ -165,23 +171,25 @@ JSON test örneği aşağıdaki şema kullanır:
 }
 ```
 
-MS Akışınızda test olarak kullanmak üzere aşağıdaki JSON örneğini kopyalayabilir ve edinebilirsiniz.
+Akışınızda test olarak kullanmak üzere aşağıdaki JSON örneğini kopyalayabilir ve edinebilirsiniz.
 
 ### <a name="json-example"></a>JSON örneği
 
 ```json
 {
-"OfferTitle": "Test Microsoft",
-"LeadSource": "Test run through MS Flow",
-"UserDetails": {
-"Company": "Contoso",
-"Country": "USA",
-"Email": "someone@contoso.com",
-"FirstName": "Some",
-"LastName": "One",
-"Phone": "16175555555",
-"Title": "Esquire"
-}
+  "UserDetails": {
+    "FirstName": "Some",
+    "LastName": "One",
+    "Email": "someone@contoso.com",
+    "Phone": "16175555555",
+    "Country": "USA",
+    "Company": "Contoso",
+    "Title": "Esquire"
+ },
+  "LeadSource": "AzureMarketplace",
+  "ActionCode": "INS",
+  "OfferTitle": "Test Microsoft",
+  "Description": "Test run through Power Automate"
 }
 ```
 

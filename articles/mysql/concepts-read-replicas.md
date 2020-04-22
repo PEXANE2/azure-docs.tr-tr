@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/16/2020
-ms.openlocfilehash: 98461928e465a103f73761afce5270234224fbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/21/2020
+ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76167341"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767878"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -45,7 +45,6 @@ Avustralya Doğu, Avustralya Güneydoğu, Orta ABD, Doğu Asya, Doğu ABD, Doğu
 
 *West US 2 geçici olarak bölgeler arası yineleme konumu olarak kullanılamaz.
 
-
 ### <a name="paired-regions"></a>Eşleştirilmiş bölgeler
 Evrensel yineleme bölgelerine ek olarak, ana sunucunuzun Azure eşleştirilmiş bölgesinde bir okuma yinelemesi oluşturabilirsiniz. Bölgenizin çiftini bilmiyorsanız, [Azure Eşli Bölgeler makalesinden](../best-practices-availability-paired-regions.md)daha fazla bilgi edinebilirsiniz.
 
@@ -71,7 +70,7 @@ Depolama [otomatik büyümek](concepts-pricing-tiers.md#storage-auto-grow)için 
 
 ## <a name="connect-to-a-replica"></a>Yinelemeye bağlanma
 
-Oluşturmada, yineleme ana sunucunun güvenlik duvarı kurallarını veya VNet hizmet bitiş noktasını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
+Oluşturmada, yineleme ana sunucunun güvenlik duvarı kurallarını devralır. Daha sonra, bu kurallar ana sunucudan bağımsızdır.
 
 Yineleme, yönetici hesabını ana sunucudan devralır. Ana sunucudaki tüm kullanıcı hesapları okundu yinelemelere kopyalanır. Yalnızca ana sunucuda bulunan kullanıcı hesaplarını kullanarak okuma yinelemesine bağlanabilirsiniz.
 
@@ -124,7 +123,7 @@ Yineleme, ana bilgisayarla aynı sunucu yapılandırması kullanılarak oluştur
 > [!IMPORTANT]
 > Ana sunucu yapılandırması yeni değerlere güncelleştirilmeden önce, çoğaltma yapılandırmasını eşit veya daha büyük bir değere güncelleştirin. Bu eylem, çoğaltmanın ana kopya üzerinde yapılan değişiklikleri yansıtmasını sağlar.
 
-Güvenlik duvarı kuralları, sanal ağ kuralları ve parametre ayarları, yineleme oluşturulduğunda ana sunucudan yinelemeye devralınır. Daha sonra, yinelemenin kuralları bağımsızdır.
+Güvenlik duvarı kuralları ve parametre ayarları, yineleme oluşturulduğunda ana sunucudan yinelemeye devralınır. Daha sonra, yinelemenin kuralları bağımsızdır.
 
 ### <a name="stopped-replicas"></a>Durdurulan yinelemeler
 

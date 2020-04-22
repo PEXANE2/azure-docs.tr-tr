@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403733"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769880"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Öğretici: Görsel durumları bildirmek için Bir IoT aygıtıyla Özel Görme'yi kullanın
 
 Bu örnek uygulama, görsel durumları algılamak için kameralı bir cihazı eğitmek için Custom Vision'ın nasıl kullanılacağını göstermektedir. Bu algılama senaryosunu bir IoT aygıtında dışa aktarılan bir ONNX modelini kullanarak çalıştırabilirsiniz.
 
-Görsel bir durum görüntünün içeriğini açıklar: boş bir oda veya insanlarla dolu bir oda, kamyonlu boş bir garaj yolu, ve saire. Aşağıdaki resimde, uygulamanın kameranın önüne bir muz veya elma yerleştirildiğinde algılayıp algılayıp algılanıncagörebilirsiniz.
+Görsel bir durum görüntünün içeriğini açıklar: boş bir oda veya insanlarla dolu bir oda, boş bir garaj yolu veya kamyonlu bir garaj yolu, ve saire. Aşağıdaki resimde, uygulamanın kameranın önüne bir muz veya elma yerleştirildiğinde algılayıp algılayıp algılanıncagörebilirsiniz.
 
 ![Kamera önünde meyve etiketleme bir UI animasyon](./media/iot-visual-alerts-tutorial/scoring.gif)
 

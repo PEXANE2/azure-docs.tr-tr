@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e5a96d2eb67937ce4eeaa1999d8168e7f5d3d926
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80130183"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770826"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -34,7 +34,7 @@ Bu sürüm hem HDInsight 3.6 hem de 4.0 için geçerlidir. HDInsight sürümü b
 ### <a name="tls-12-enforcement"></a>TLS 1.2 zorlaması
 Aktarım Katmanı Güvenliği (TLS) ve Güvenli Soket katmanı (SSL), bir bilgisayar ağı üzerinden iletişim güvenliği sağlayan şifreleme protokolleridir. [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)hakkında daha fazla bilgi edinin. HDInsight, ortak HTTS uç noktalarında TLS 1.2 kullanır, ancak TLS 1.1 geriye dönük uyumluluk için hala desteklenir. 
 
-Bu sürümle, müşteriler TLS 1.2'yi yalnızca ortak küme bitiş noktası üzerinden tüm bağlantılar için tercih edebilirler. Bunu desteklemek için, yeni özellik **minSupportedTlsVersion** tanıtıldı ve küme oluşturma sırasında belirtilebilir. Özellik ayarlanmazsa, küme hala TLS 1.0, 1.1 ve 1.2'yi destekler, bu da bugünkü davranışla aynıdır. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üzeri destekler anlamına gelir. Daha fazla bilgi için bkz: [Sanal ağ Planı - Aktarım Katmanı Güvenliği.](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security)
+Bu sürümle, müşteriler TLS 1.2'yi yalnızca ortak küme bitiş noktası üzerinden tüm bağlantılar için tercih edebilirler. Bunu desteklemek için, yeni özellik **minSupportedTlsVersion** tanıtıldı ve küme oluşturma sırasında belirtilebilir. Özellik ayarlanmazsa, küme hala TLS 1.0, 1.1 ve 1.2'yi destekler, bu da bugünkü davranışla aynıdır. Müşteriler bu özelliğin değerini "1,2" olarak ayarlayabilir, bu da kümenin yalnızca TLS 1,2 ve üzeri destekler anlamına gelir. Daha fazla bilgi için [Taşıma Katmanı Güvenliği'ne](./transport-layer-security.md)bakın.
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Disk şifreleme için kendi anahtarınızı getirin
 HDInsight'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunur. Bu disklerde ki veriler varsayılan olarak Microsoft tarafından yönetilen anahtarlarla şifrelenir. Bu sürümden başlayarak, disk şifreleme için Kendi Anahtarınızı Getirebilirsiniz (BYOK) ve Azure Key Vault'u kullanarak yönetebilirsiniz. BYOK şifreleme, ek bir ücret ödemeden küme oluşturma sırasında tek adımlı bir yapılandırmadır. HDInsight'ı Azure Key Vault ile yönetilen bir kimlik olarak kaydedin ve kümenizi oluştururken şifreleme anahtarını ekleyin. Daha fazla bilgi için [Müşteri tarafından yönetilen anahtar disk şifrelemesi'ne](https://docs.microsoft.com/azure/hdinsight/disk-encryption)bakın.

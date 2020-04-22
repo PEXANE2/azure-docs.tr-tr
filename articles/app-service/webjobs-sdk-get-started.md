@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 4976be485a9b7609c6e8d23f6b897092217663fc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4ee724ec66d5fb474f8c8a9a967cc7235fef5e85
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535681"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732620"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanmaya başlama
 
@@ -134,7 +134,7 @@ Bu bölümde, [ASP.NET Core günlük çerçevesini](/aspnet/core/fundamentals/lo
     * [Pano günlüğe kaydetmeyi](https://github.com/Azure/azure-webjobs-sdk/wiki/Queues#logs)devre dışı kılabilir. Pano eski bir izleme aracıdır ve pano günlüğü yüksek üretim senaryoları için önerilmez.
     * Varsayılan [filtreleme](webjobs-sdk-how-to.md#log-filtering)ile konsol sağlayıcısı ekler.
 
-Artık, [Azure Depolama kuyruğuna](../azure-functions/functions-bindings-storage-queue.md)gelen iletiler tarafından tetiklenen bir işlev ekleyebilirsiniz.
+Artık, Azure Depolama kuyruğuna gelen iletiler tarafından tetiklenen bir işlev ekleyebilirsiniz.
 
 ## <a name="install-the-storage-binding-extension"></a>Depolama bağlama uzantısını yükleme
 
@@ -184,7 +184,7 @@ Sürüm 3.x ile başlayarak, WebJobs SDK tarafından gerekli Depolama bağlama u
 
    Öznitelik, `QueueTrigger` '. `queue` Sıra iletisinin içeriği parametredeki yöntem koduna `message` sağlanır. Yöntemin gövdesi, tetikleyici verileri işlediğiniz yerdir. Bu örnekte, kod sadece iletiyi kaydeder.
 
-   `message` Parametre nin bir dize olması gerekyok. Ayrıca bir JSON nesnesine, bir bayt dizisine veya [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) nesnesine de bağlanabilirsiniz. [Bkz. Sıra tetikleyici kullanımı.](../azure-functions/functions-bindings-storage-queue-trigger.md#usage) Her bağlama türü (kuyruklar, blobs veya tablolar gibi) bağlayabilirsiniz parametre türleri farklı bir dizi vardır.
+   `message` Parametre nin bir dize olması gerekyok. Ayrıca bir JSON nesnesine, bir bayt dizisine veya [CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage) nesnesine de bağlanabilirsiniz. [Bkz. Sıra tetikleyici kullanımı.](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#usage) Her bağlama türü (kuyruklar, blobs veya tablolar gibi) bağlayabilirsiniz parametre türleri farklı bir dizi vardır.
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
@@ -280,7 +280,7 @@ Bu bölümde, projeyi yerel olarak oluşturur ve çalıştırın ve bir sıra il
 
    İşlevdeki `QueueTrigger` özniteliği kullandığınızdan, WeJobs SDK çalışma zamanı başlatıldığında sıra iletilerini dinler. `ProcessQueueMessage` *Sıra* adlı sırada yeni bir sıra iletisi bulur ve işlevi çağırır.
 
-   Sıra [yoklama üstel geri tepme](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)nedeniyle, iletibulmak ve işlevi çağırmak için çalışma süresi için 2 dakika kadar sürebilir. Bu bekleme süresi [geliştirme modunda](webjobs-sdk-how-to.md#host-development-settings)çalıştırılarak azaltılabilir.
+   Sıra [yoklama üstel geri tepme](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)nedeniyle, iletibulmak ve işlevi çağırmak için çalışma süresi için 2 dakika kadar sürebilir. Bu bekleme süresi [geliştirme modunda](webjobs-sdk-how-to.md#host-development-settings)çalıştırılarak azaltılabilir.
 
    Konsol çıkışı aşağıdaki gibi görünür:
 
@@ -444,7 +444,7 @@ Dağıtım sırasında, işlevlerinizi çalıştırabileceğiniz bir uygulama hi
 1. **Kuyruk** sayfasını yenileyin ve Azure'da çalışan işlev tarafından işlendiği için yeni ileti kaybolur.
 
    > [!TIP]
-   > Azure'da sınama yaparken, bir kuyruk tetikleyici işlevinin hemen çağrıldığından emin olmak için [geliştirme modunu](webjobs-sdk-how-to.md#host-development-settings) kullanın ve [sıra yoklama üstel geri çekilme](../azure-functions/functions-bindings-storage-queue-trigger.md#polling-algorithm)nedeniyle gecikmeleri önleyin.
+   > Azure'da sınama yaparken, bir kuyruk tetikleyici işlevinin hemen çağrıldığından emin olmak için [geliştirme modunu](webjobs-sdk-how-to.md#host-development-settings) kullanın ve [sıra yoklama üstel geri çekilme](/azure/azure-functions/functions-bindings-storage-queue-trigger?tabs=csharp#polling-algorithm)nedeniyle gecikmeleri önleyin.
 
 ### <a name="view-logs-in-application-insights"></a>Uygulama Öngörüleri'ndeki günlükleri görüntüleme
 

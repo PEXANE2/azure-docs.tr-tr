@@ -1,5 +1,5 @@
 ---
-title: Makine öğrenimi modellerini ve tahminlerini açıklayın
+title: Python'da ML modellerini açıklamak & yorumla
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK'yı kullanırken makine öğrenimi modelinizin özelliğin önemini nasıl belirlediği ve öngörülerde nasıl öngörülerde bulunabildiğini öğrenin.
 services: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: c1282ed16c9e3b92e7d5ec3f9969bee6fc3d917f
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81257214"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769800"
 ---
-# <a name="explain-machine-learning-models-and-predictions"></a>Makine öğrenimi modellerini ve tahminlerini açıklayın
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Python'daki ML modellerini & tahminlerini açıklamak için yorumlanabilirlik paketini kullanın
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -41,10 +41,10 @@ Desteklenen yorumlanabilirlik teknikleri ve makine öğrenimi modelleri hakkınd
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Kişisel makinenizde özellik önem değeri oluşturun 
 Aşağıdaki örnek, Azure hizmetlerine başvurmadan kişisel makinenizde yorumlanabilirlik paketinin nasıl kullanılacağını gösterir.
 
-1. `azureml-interpret` Yükleyin `azureml-interpret-contrib` ve paketler.
+1. `azureml-interpret` Yükleyin `azureml-contrib-interpret` ve paketler.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 
 2. Yerel bir Jupyter dizüstü bilgisayarda örnek bir model eğitin.

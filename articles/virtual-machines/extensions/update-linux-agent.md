@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: e4489f7c810799ca8e89565fe698f398f942b089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3b2819b33feba52c3b02f0e2104d4106bd04cbb
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251714"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770068"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Azure Linux Aracısını VM'de güncelleştirme
 
@@ -29,6 +29,8 @@ ms.locfileid: "78251714"
 - SSH kullanarak linux VM bir bağlantı.
 
 Her zaman linux dağıtım deposunda ilk bir paket için kontrol etmelisiniz. Mevcut paketin en son sürüm olmaması mümkündür, ancak otomatik güncellemeyi etkinleştirmek Linux Agent'ın her zaman en son güncellemeyi almalarını sağlayacaktır. Paket yöneticilerinden yükleme sorunlarınız varsa, dağıtım satıcısından destek almalısınız.
+
+> ! [NOT] Daha fazla bilgi için [Azure'daki Onaylı Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) bakın
 
 ## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure'da minimum sanal makine aracı desteği
 İşleme devam etmeden önce [Azure'daki sanal makine aracıları için Minimum sürüm desteğini](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) doğrulayın.

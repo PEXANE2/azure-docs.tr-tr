@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: a4c8b029b199915cce9a417430e67675a03d327f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2d6f41756d87e43ac7db9e6a8670c453920c834
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659960"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770363"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Genel Yük Dengeleyicisi'ni yükseltin
 [Azure Standart Yük Dengeleyici,](load-balancer-overview.md) bölge artıklığı sayesinde zengin bir işlevsellik kümesi ve yüksek kullanılabilirlik sunar. Yük Dengeleyici SKU hakkında daha fazla bilgi edinmek için [karşılaştırma tablosuna](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)bakın.
@@ -21,7 +21,6 @@ Yükseltmenin üç aşaması vardır:
 
 1. Yapılandırmayı geçirin
 2. Standart Yük Dengeleyicisinin arka uç havuzlarına VM ekleme
-3. Giden bağlantı için yük dengeleyicisi üzerinde giden kural oluşturma
 
 Bu makalede, yapılandırma geçişi kapsar. Arka uç havuzlarına VM eklemek, özel ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey, genel öneriler [sağlanır.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
@@ -31,17 +30,18 @@ Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 
 * Kaynak grubunda ve belirttiğiniz konumda standart bir SKU Yük Dengeleyicisi oluşturur.
 * Temel SKU Yük Dengeleyicisi'nin yapılandırmalarını yeni oluşturulan Standart Yük Dengeleyicisine sorunsuz bir şekilde kopyalar.
+* Giden bağlantı sağlayan varsayılan giden bir kural oluşturur.
 
 ### <a name="caveatslimitations"></a>Uyarılar\Sınırlamalar
 
-* Komut dosyası yalnızca Genel Yük Dengeleyici yükseltmesi destekler. Dahili Temel Yük Dengeleyici yükseltmesi için, giden bağlantı istenmiyorsa standart bir Dahili Yük Dengeleyicisi oluşturun ve giden bağlantı gerekiyorsa Bir Standart Dahili Yük Dengeleyicisi ve Standart Genel Yük Dengeleyicisi oluşturun.
+* Komut dosyası yalnızca Genel Yük Dengeleyici yükseltmesi destekler. İç Temel Yük Dengeleyici yükseltmesi için talimatlar için [bu sayfaya](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard) bakın.
 * Standart Yük Dengeleyici'nin yeni bir genel adresi vardır. Farklı SNU'lara sahip oldukları için, mevcut Temel Yük Dengeleyicisi ile ilişkili IP adreslerini sorunsuz bir şekilde Standart Yük Dengeleyicisine taşımak mümkün değildir.
 * Standart yük dengeleyicisi farklı bir bölgede oluşturulursa, eski bölgede bulunan VM'leri yeni oluşturulan Standart Yük Dengeleyicisi ile ilişkilendiremezsinuz. Bu sınırlamayı aşmak için yeni bölgede yeni bir VM oluşturduğunuzdan emin olun.
 * Yük Dengeleyicinizde ön uç IP yapılandırması veya arka uç havuzu yoksa, komut dosyasını çalıştıran bir hataya çarpma olasılığınız yüksektir. Lütfen boş olmadıklarından emin olun.
 
 ## <a name="download-the-script"></a>Komut dosyasını indirin
 
-[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)geçiş komut dosyasını indirin.
+[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)geçiş komut dosyasını indirin.
 ## <a name="use-the-script"></a>Komut dosyasını kullanma
 
 Yerel PowerShell ortamı kurulumunuza ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
@@ -103,7 +103,7 @@ Yeni oluşturulan Standart Genel Yük Dengeleyicisinin arka uç havuzlarına VM'
    
     1. Temel Yük Dengeleyicisi'nin arka uç havuzuyla eşleşen arka uç havuzunu seçin ve aşağıdaki değeri seçin: 
       - **Sanal Makine**: Temel Yük Dengeleyicisi'nin eşleşen arka uç havuzundan VM'leri aşağı indirin ve seçin.
-    1. **Kaydet'i**seçin.
+    1. **Kaydet**’i seçin.
     >[!NOTE]
     >Genel IP'leri olan VM'ler için, önce aynı IP adresinin garanti edilemediğinizde Standart IP adresleri oluşturmanız gerekir. VM'leri Temel IP'lerden ayırın ve bunları yeni oluşturulan Standart IP adresleriyle ilişkilendirin. Daha sonra, Standart Yük Dengeleyici'nin arka uç havuzuna VM eklemek için yönergeleri izleyebilirsiniz. 
 

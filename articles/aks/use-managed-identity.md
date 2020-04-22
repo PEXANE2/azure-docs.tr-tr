@@ -7,16 +7,16 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 8a150e2f197f24db5da331195290d11ad925c47e
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392646"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767602"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
 
-Şu anda, bir Azure Kubernetes Hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı) gerektirir ve Azure yük dengeleyicileri ve yönetilen diskler gibi ek kaynaklar oluşturmak için kimlik, bu kimlik yönetilen bir *kimlik* veya *hizmet ilkesi*olabilir. Bir hizmet [ilkesi](kubernetes-service-principal.md)kullanıyorsanız, sizin adınıza bir hizmet ilkesi sağlamanız gerekir veya AKS sizin adınıza bir tane oluşturur. Yönetilen kimliği kullanırsanız, bu durum AKS tarafından otomatik olarak oluşturulur. Hizmet ilkelerini kullanan kümeler, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet ilkelerini yönetmek karmaşıklık ekler, bu nedenle yönetilen kimlikleri kullanmak daha kolaydır. Aynı izin gereksinimleri hem hizmet ilkeleri hem de yönetilen kimlikler için geçerlidir.
+Şu anda, bir Azure Kubernetes Hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı) yük dengeleyicileri ve Azure'da yönetilen diskler gibi ek kaynaklar oluşturmak için bir kimlik gerektirir, bu kimlik yönetilen bir *kimlik* veya *hizmet sorumlusu*olabilir. Bir hizmet [ilkesi](kubernetes-service-principal.md)kullanıyorsanız, sizin adınıza bir hizmet ilkesi sağlamanız gerekir veya AKS sizin adınıza bir tane oluşturur. Yönetilen kimliği kullanırsanız, bu durum AKS tarafından otomatik olarak oluşturulur. Hizmet ilkelerini kullanan kümeler, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet ilkelerini yönetmek karmaşıklık ekler, bu nedenle yönetilen kimlikleri kullanmak daha kolaydır. Aynı izin gereksinimleri hem hizmet ilkeleri hem de yönetilen kimlikler için geçerlidir.
 
 *Yönetilen kimlikler* aslında hizmet ilkeleri etrafında bir sarmalayıcı ve yönetim kolaylaştırır. Daha fazla bilgi edinmek [için Azure kaynakları için yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
 

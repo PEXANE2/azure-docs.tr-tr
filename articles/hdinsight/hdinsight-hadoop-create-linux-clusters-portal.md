@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/13/2020
-ms.openlocfilehash: a5f6ac76d509a0a63c2d641f91cd91cdb2e0d19d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 88392e4e61c28d4fe821c8176242246d10e52b23
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313819"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770886"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portalını kullanarak HDInsight'ta Linux tabanlı kümeler oluşturun
 
@@ -94,7 +94,7 @@ Güvenlik **+ ağ** sekmesinden aşağıdaki bilgileri sağlayın:
 |Özellik |Açıklama |
 |---|---|
 |Kurumsal güvenlik paketi|İsteğe bağlı: Kurumsal **Güvenlik Paketini**kullanmak için onay kutusunu seçin. Daha fazla bilgi için Azure [Active Directory Etki Alanı Hizmetlerini kullanarak Kurumsal Güvenlik Paketi ile HDInsight kümesini yapılandırma'ya](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)bakın.|
-|TLS|İsteğe bağlı: Açılan listeden bir TLS sürümü seçin. Daha fazla bilgi için [Taşıma Katmanı Güvenliği'ne](./hdinsight-plan-virtual-network-deployment.md#transport-layer-security)bakın.|
+|TLS|İsteğe bağlı: Açılan listeden bir TLS sürümü seçin. Daha fazla bilgi için [Taşıma Katmanı Güvenliği'ne](./transport-layer-security.md)bakın.|
 |Sanal ağ|İsteğe bağlı: Açılan listeden varolan bir sanal ağ ve alt ağı seçin. Daha fazla bilgi için Azure [HDInsight kümeleri için sanal ağ dağıtımı planı'na](hdinsight-plan-virtual-network-deployment.md)bakın. Makale, sanal ağ için belirli yapılandırma gereksinimlerini içerir.|
 |Disk şifreleme ayarları|İsteğe bağlı: Şifreleme kullanmak için onay kutusunu seçin. Daha fazla bilgi için [Müşteri tarafından yönetilen anahtar disk şifrelemesi'ne](./disk-encryption.md)bakın.|
 |Kafka REST ara sunucusu|Bu ayar yalnızca Kafka kümesi türü için kullanılabilir. Daha fazla bilgi için REST [proxy'si kullanma'ya](./kafka/rest-proxy.md)bakın.|

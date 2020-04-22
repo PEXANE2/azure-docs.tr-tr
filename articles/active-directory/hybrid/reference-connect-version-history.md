@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 04/21/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815d3afe68003f56a5748584b322b731ef5a3dc7
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 3a03a03557fbb2e71ff79ff42fd9d9c72cd5907c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81639642"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770499"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayın geçmişi
 Azure Etkin Dizin (Azure AD) ekibi, Azure AD Connect'i yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -48,6 +48,14 @@ Azure AD Connect'in tüm sürümleri otomatik yükseltme için kullanılamaz. S�
 >
 >Azure AD Connect'i en son sürüme nasıl yükseltilir hakkında daha fazla bilgi edinmek için lütfen [bu makaleye](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) bakın.
 
+## <a name="15220"></a>1.5.22.0
+
+### <a name="release-status"></a>Yayın durumu
+20.04.2020: İndirilme için yayımlandı
+
+### <a name="fixed-issues"></a>Düzeltilen sorunlar
+Bu düzeltme yapısı, **IN'i AD- Grup Join kuralından** klonladıysanız ve **In'i AD- Grup Ortak kuralından** klonlatmadıysanız, yapı 1.5.20.0'daki bir sorunu giderir.
+
 ## <a name="15200"></a>1.5.20.0
 
 ### <a name="release-status"></a>Yayın durumu
@@ -57,12 +65,13 @@ Azure AD Connect'in tüm sürümleri otomatik yükseltme için kullanılamaz. S�
 Bu düzeltme yapısı, Grup Filtreleme özelliği etkinse ve kaynak çapa olarak mS-DS-ConsistencyGuid kullanıyorsanız, build 1.5.18.0 ile ilgili bir sorunu giderir.
 
 > [!IMPORTANT]
-> Kaynak çapa olarak mS-DS-ConsistencyGuid kullanıyorsanız ve **IN'i AD'den** klonladıysanız - Grup Katılma eşitleme kuralı ve yükseltmeyi planlıyorsanız, yükseltmenin bir parçası olarak aşağıdaki adımları tamamlayın:
+> **AD'den In'i** klonladıysanız - Grup Katılma eşitleme kuralını ve **IN'i AD'den** klonlamadıysanız - Ortak Eşitleme grubu kuralı nı ve yükseltmeyi planlıyorsanız, yükseltmenin bir parçası olarak aşağıdaki adımları tamamlayın:
 > 1. Yükseltme sırasında, yapılandırma **tamamlandığında eşitleme işlemini başlat**seçeneğini işaretleyin.
 > 2. Klonlanan birleştirme eşitleme kuralını edin ve aşağıdaki iki dönüşümü ekleyin:
 >     - Doğrudan akışı `objectGUID` `sourceAnchorBinary`.
 >     - İfade akışını `ConvertToBase64([objectGUID])` `sourceAnchor`' ya ayarlama     
 > 3. Zamanlayıcıyı kullanarak `Set-ADSyncScheduler -SyncCycleEnabled $true`etkinleştirin.
+
 
 
 ## <a name="15180"></a>1.5.18.0

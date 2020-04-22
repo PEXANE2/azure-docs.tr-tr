@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 03/30/2020
+ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: dc57978dd881532cab59150dec921df9ffa958c3
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421393"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767206"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
@@ -43,7 +43,7 @@ Daha fazla bilgi ve daha fazla Video Indexer özelliği için [genel bakış](vi
 
 ### <a name="how-do-i-get-started-with-video-indexer"></a>Video Indexer ile nasıl başlarım?
 
-Video Indexer, web tabanlı arabirimde 600 dakika ve API üzerinden 2.400 dakika sağlayan ücretsiz deneme teklifi içerir. Video [Indexer web tabanlı arabirimine giriş](https://www.videoindexer.ai/) yapabilir ve herhangi bir web kimliğini kullanarak ve bir Azure Aboneliği ayarlamaya gerek kalmadan kendiniz deneyebilirsiniz. 
+Video Indexer, web tabanlı arabirimde 600 dakika ve API üzerinden 2.400 dakika sağlayan ücretsiz deneme teklifi içerir. Video [Indexer web tabanlı arabirimine giriş](https://www.videoindexer.ai/) yapabilir ve herhangi bir web kimliğini kullanarak ve bir Azure Aboneliği ayarlamaya gerek kalmadan kendiniz deneyebilirsiniz. Video Indexer'ın nasıl kullanılacağı hakkında daha iyi bir fikir edinmek için [bu kolay giriş laboratuarını](https://github.com/Azure-Samples/media-services-video-indexer/blob/master/IntroToVideoIndexer.md) izleyin.
 
 Videoları ve ses uçlarını ölçekte dizine bağlamak için Video Indexer'ı ücretli bir Microsoft Azure aboneliğine bağlayabilirsiniz. Fiyatlandırma hakkında daha fazla bilgiyi [fiyatlandırma](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) sayfasında bulabilirsiniz.
 
@@ -61,9 +61,18 @@ Hayır, Video Indexer birden çok makine öğrenme modelinin tek bir ardışık 
 
 Video Indexer en yaygın medya biçimlerini destekler. Daha fazla ayrıntı için [Azure Media Encoder standart biçimleri](https://docs.microsoft.com/azure/media-services/latest/media-encoder-standard-formats) listesine bakın.
 
-### <a name="how-to-do-i-upload-a-media-into-video-indexer"></a>Video Dizinleyici'ye nasıl bir ortam yüklerim?
+### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>Video Dizinleyici'ye bir medya dosyasını nasıl yüklerim ve sınırlamalar nelerdir?
 
-Video Indexer web tabanlı portalında, dosya yükleme iletişim kutusunu kullanarak veya kaynak dosyayı doğrudan barındıran bir URL'yi işaret ederek bir medya dosyası yükleyebilirsiniz [(örneğe](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)bakın). iFrame veya gömme kodu kullanarak medya içeriğini barındıran herhangi bir URL çalışmaz [(örneğe](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)bakın). Video Indexer API bir URL veya bayt dizisi üzerinden giriş dosyasını belirtmenizi gerektirir. API'yi kullanan bir URL üzerinden yapılan yüklemeler 10 GB ile sınırlıdır, ancak süre sınırı yoktur. Daha fazla bilgi için lütfen bu [nasıl yapılacağınız kılavuzuna](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)bakın.
+Video Indexer web tabanlı portalında, dosya yükleme iletişim kutusunu kullanarak veya kaynak dosyayı doğrudan barındıran bir URL'yi işaret ederek bir medya dosyası yükleyebilirsiniz [(örneğe](https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/Ignite-short.mp4)bakın). iFrame veya gömme kodu kullanarak medya içeriğini barındıran herhangi bir URL çalışmaz [(örneğe](https://www.videoindexer.ai/accounts/7e1282e8-083c-46ab-8c20-84cae3dc289d/videos/5cfa29e152/?t=4.11)bakın). 
+
+Daha fazla bilgi için lütfen bu [nasıl yapılacağınız kılavuzuna](https://docs.microsoft.com/azure/media-services/video-indexer/upload-index-videos)bakın.
+
+#### <a name="limitations"></a>Sınırlamalar
+
+* Videonun adı 80 karakteri geçemez.
+* Bayt dizisini kullanarak bir video yüklerseniz, video boyutu 2 GB (ve URL kullanırken 30 GB) ile sınırlıdır. 
+
+Kapsamlı liste için [bkz.](upload-index-videos.md#uploading-considerations-and-limitations)
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Video Indexer'ın medyadan bilgi alması ne kadar sürer?
 
@@ -71,7 +80,7 @@ Video Dizinleyici API ve Video Indexer web tabanlı arabirimi kullanarak bir vid
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Video Dizinleyici ile işlemleri otomatikleştirmek için özelleştirilmiş iş akışları oluşturabilir miyim?
 
-Evet, Video Dizinleyici'yi Logic Apps, Flow ve [Azure Fonksiyonları](https://azure.microsoft.com/services/functions/)gibi sunucusuz teknolojilere entegre edebilirsiniz. Burada Video [Indexer](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)için [Mantık App](https://azure.microsoft.com/services/logic-apps/) ve [Akış](https://flow.microsoft.com/en-us/) konektörleri hakkında daha fazla bilgi bulabilirsiniz. 
+Evet, Video Dizinleyici'yi Logic Apps, Flow ve [Azure Fonksiyonları](https://azure.microsoft.com/services/functions/)gibi sunucusuz teknolojilere entegre edebilirsiniz. Burada Video [Indexer](https://azure.microsoft.com/blog/logic-apps-flow-connectors-will-make-automating-video-indexer-simpler-than-ever/)için [Mantık App](https://azure.microsoft.com/services/logic-apps/) ve [Akış](https://flow.microsoft.com/en-us/) konektörleri hakkında daha fazla bilgi bulabilirsiniz. [Video Dizinleyici Örnekleri](https://github.com/Azure-Samples/media-services-video-indexer) repo'sunda iş ortakları tarafından yapılan bazı otomasyon projelerini görebilirsiniz.
 
 ### <a name="in-which-azure-regions-is-video-indexer-available"></a>Video dizinleyicihangi Azure bölgelerinde kullanılabilir?
 
@@ -84,6 +93,12 @@ Evet. Video Indexer'da, gereksinimlerinize daha iyi uyacak şekilde kullanılabi
 Örneğin, Person modelimiz 1.000.000 ünlü tanıma yüzü out-of-the-box destekler, ama aynı zamanda bu veritabanında olmayan diğer yüzleri tanımak için eğitebilirsiniz. 
 
 Ayrıntılar için [Kişi,](customize-person-model-overview.md) [Markalar](customize-brands-model-overview.md)ve [Dil](customize-language-model-overview.md) modellerini özelleştirme yle ilgili makalelere bakın. 
+
+###  <a name="can-i-edit-the-videos-in-my-library"></a>Kitaplığımdaki videoları abilir miyim?
+
+Evet. **Projeler** sekmesine ulaşmak için kitaplık ekranından **videoyu veya** oyuncu ekranından **düzenleyicidüğmesine** basın. Yeni bir proje oluşturabilir ve kitaplığınızdan bunları birlikte düzenlemesi için daha fazla video ekleyebilirsiniz, işiniz bittikten sonra videonuzu oluşturabilir ve indirebilirsiniz. 
+
+Yeni videonuz hakkında bilgi almak istiyorsanız, Video Indexer ile dizine dizin ve istatistikleriyle kitaplığınızda görünecektir.
 
 ### <a name="what-is-the-sla-for-video-indexer"></a>Video Dizinleyici için SLA nedir?
 

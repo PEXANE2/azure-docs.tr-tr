@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 0ecb7ee7f5c7c0ebaa87eb6b32eee1926d9e294d
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547361"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768963"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure Sanal Ağlar hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure Sanal Ağa Genel Bakış.](../virtual-network/virtual-networks-overview.md)
@@ -108,7 +108,7 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
 
 <a name="required-ports"> </a> Bir API Yönetimi hizmeti örneği bir VNET'te barındırıldığında, aşağıdaki tablodaki bağlantı noktaları kullanılır.
 
-| Kaynak / Hedef Bağlantı Noktası(lar) | Yön          | Ulaşım protokolü |   [Servis Etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak / Hedef   | Amaç (*)                                                 | Sanal Ağ türü |
+| Kaynak / Hedef Bağlantı Noktası(lar) | Yön          | Ulaşım protokolü |   [Servis Etiketleri](../virtual-network/security-overview.md#service-tags) <br> Kaynak / Hedef   | Amaç\*( )                                                 | Sanal Ağ türü |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / [80], 443                  | Gelen            | TCP                | İnternet / VIRTUAL_NETWORK            | API Yönetimine müşteri iletişimi                      | Dış             |
 | * / 3443                     | Gelen            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure portalı ve Powershell için yönetim bitiş noktası         | Dış & İç  |
@@ -132,9 +132,7 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
 
 + **DNS Access : DNS**sunucuları ile iletişim için bağlantı noktası 53'te giden erişim gereklidir. VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa, DNS sunucusuna API Yönetimi barındırma alt ağlarından erişilebilmelidir.
 
-+ **Ölçümler ve Sistem Durumu İzleme**: Aşağıdaki etki alanları altında çözüme kavuşturulan Azure İzleme uç noktalarına giden ağ bağlantısı:
-
-+ **Bölgesel Hizmet Etiketleri**": Depolama, SQL ve EventHubs hizmet etiketlerine giden bağlantıya izin veren NSG kuralları, bu etiketlerin API Yönetimi örneğini içeren bölgeye karşılık gelen bölgesel sürümlerini kullanabilir (örneğin, Storage.WestUS, Batı ABD bölgesindeki bir API Yönetimi örneği için). Çok bölgeli dağıtımlarda, her bölgedeki NSG, o bölgenin hizmet etiketlerine trafik gönderilmesine izin vermelidir.
++ **Ölçümler ve Sistem Durumu İzleme**: Aşağıdaki etki alanları altında çözüme kavuşturulan Azure İzleme uç noktalarına giden ağ bağlantısı. Tabloda gösterildiği gibi, bu URL'ler Ağ Güvenlik Grupları ile kullanılmak üzere AzureMonitor hizmet etiketi altında gösterilir.
 
     | Azure Ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -142,8 +140,10 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
     | Azure Kamu  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**yeni**)</li><li>shoebox2.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3.metrics.nsatc.net (**amortismana alınacak**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
     | Azure Çin 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**yeni**)</li><li>shoebox2.metrics.nsatc.net (**amortismana alınacak)**</li><li>prod3.metrics.microsoftmetrics.com (**yeni**)</li><li>prod3.metrics.nsatc.net (**amortismana alınacak**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
 
->[!IMPORTANT]
-> DNS bölgesi **.nsatc.net** ile **.microsoftmetrics.com'a** yukarıdaki kümelerin değişimi çoğunlukla bir DNS Değişikliğidir. Kümenin IP Adresi değişmez.
+  >[!IMPORTANT]
+  > DNS bölgesi **.nsatc.net** ile **.microsoftmetrics.com'a** yukarıdaki kümelerin değişimi çoğunlukla bir DNS Değişikliğidir. Kümenin IP Adresi değişmez.
+
++ **Bölgesel Hizmet Etiketleri**: Depolama, SQL ve Olay Hub'larına giden bağlantıya izin veren NSG kuralları, bu etiketlerin API Yönetimi örneğini içeren bölgeye karşılık gelen bölgesel sürümlerini kullanabilir (örneğin, Storage.WestUS, Batı ABD bölgesinde bir API Yönetimi örneği için). Çok bölgeli dağıtımlarda, her bölgedeki NSG, o bölge ve birincil bölge için hizmet etiketlerine trafik izni vermelidir.
 
 + **SMTP Rölesi**: SMTP Rölesi için giden `smtpi-co1.msn.com` `smtpi-ch1.msn.com`ağ `smtpi-db3.msn.com` `smtpi-sin.msn.com` bağlantısı, ana bilgisayar altında çözülür , , ve`ies.global.microsoft.com`
 
@@ -151,7 +151,7 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
 
 + **Azure portalı Tanılama**: Sanal Ağ içinden API Yönetimi uzantısını kullanırken Azure portalından tanılama günlüklerinin akışını etkinleştirmek için, `dc.services.visualstudio.com` 443 no'lu bağlantı noktasına giden erişim gereklidir. Bu, uzantıyı kullanırken karşılaşabileceğiniz sorun giderme sorunlarına yardımcı olur.
 
-+ Express Route veya Network Virtual Appliance kullanarak Trafiği **Ön-Prem'e ZorLamak**: Ortak bir müşteri yapılandırması, API Yönetimi'nin devrettiği alt ağdaki tüm trafiği şirket içi bir güvenlik duvarından veya Ağ sanal cihazından akmaya zorlayan kendi varsayılan rotalarını (0.0.0.0/0) tanımlamaktır. Giden trafik şirket içinde engellenmiş olduğundan veya artık çeşitli Azure uç noktalarıyla çalışmayan tanınmaz bir adres kümesine NAT'd olduğundan, bu trafik akışı Azure API Yönetimi ile bağlantıyı her zaman kırar. Çözüm birkaç şey yapmanız gerektiğini:
++ **Express Route veya Network Virtual Appliance kullanarak Şirket İçi Güvenlik Duvarı'na Zorla Tünel**: Ortak bir müşteri yapılandırması, API Yönetimi'nin devrettiği alt ağdaki tüm trafiği şirket içi bir güvenlik duvarından veya Ağ sanal cihazından akmaya zorlayan kendi varsayılan rotalarını (0.0.0.0/0) tanımlamaktır. Giden trafik şirket içinde engellenmiş olduğundan veya artık çeşitli Azure uç noktalarıyla çalışmayan tanınmaz bir adres kümesine NAT'd olduğundan, bu trafik akışı Azure API Yönetimi ile bağlantıyı her zaman kırar. Çözüm birkaç şey yapmanız gerektiğini:
 
   * API Yönetimi hizmetinin dağıtıldığı alt ağda hizmet uç noktalarını etkinleştirin. Azure Sql, Azure Depolama, Azure EventHub ve Azure ServiceBus için [Hizmet Bitiş Noktalarının][ServiceEndpoints] etkinleştirilmesi gerekir. Uç noktaları doğrudan API Yönetimi'nin bu hizmetlere devredilen alt ağlarından etkinleştirmek, hizmet trafiği için en iyi yönlendirmeyi sağlayan Microsoft Azure omurga ağını kullanmalarına olanak tanır. Zorla tünellenmiş Api Yönetimi ile Hizmet Bitiş Noktaları kullanıyorsanız, yukarıdaki Azure hizmetleri trafiği tünele atılmaz. Diğer API Yönetimi hizmet bağımlılık trafiği tünele zorlanır ve kaybedilemez veya API Yönetimi hizmeti düzgün çalışmaz.
     

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec2791911d1461ae47d9353629d23a5d7dc30791
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424653"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770719"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure Synapse Analytics (çalışma alanı önizleme) sık sorulan sorular
 
@@ -92,7 +92,7 @@ C: Veri akışı, veri mühendislerinin kod yazmadan grafiksel veri dönüştür
 
 ## <a name="security-and-access"></a>Güvenlik ve Erişim
 
-C: Uçlardan uca tek oturum açma deneyimi, Synapse Analytics'te önemli bir kimlik doğrulama işlemidir. Tam bir AAD entegrasyonu ile kimlik üzerinden yönetmek ve geçmek şarttır.
+C: Uçlardan uca tek oturum açma deneyimi, Synapse Analytics'te önemli bir kimlik doğrulama işlemidir. Tam bir AAD entegrasyonu ile kimlik yönetimi ve geçirilmesi bir zorunluluktur.
 
 ### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>S: ADLSg2'deki dosya ve klasörlere nasıl erişebilirim?
 

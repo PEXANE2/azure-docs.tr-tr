@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0df8ac495b6aca81e46dffc248019483b1c82202
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422455"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769490"
 ---
 # <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Öğretici: SQL isteğe bağlı (önizleme) Power BI Desktop'a bağlayın & rapor oluşturun
 
@@ -24,7 +24,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 >
 > - Demo veritabanı oluşturma
 > - Rapor için kullanılan görünüm oluşturma
-> - Power BI Masaüstüne Bağlanın
+> - Power BI Desktop’a bağlanma
 > - Görünüme dayalı rapor oluşturma
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -51,7 +51,7 @@ Aşağıdaki Transact-SQL (T-SQL) komut dosyasını çalıştırarak demo verita
 
 ```sql
 -- Drop database if it exists
-IF EXISTS (SELECT * FROM sys.sysdatabases WHERE name = 'Demo')
+IF EXISTS (SELECT * FROM sys.databases WHERE name = 'Demo')
 BEGIN
     DROP DATABASE Demo
 END;

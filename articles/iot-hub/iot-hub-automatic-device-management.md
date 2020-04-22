@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub ile ölçekte otomatik cihaz yönetimi | Microsoft Dokümanlar
 description: Birden fazla IoT aygıtını ve modüllerini yönetmek için Azure IoT Hub otomatik yapılandırmalarını kullanın
-author: ChrisGMsft
+author: Philmea
 manager: bruz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 12/13/2019
-ms.author: chrisgre
-ms.openlocfilehash: 75c6b7d89e7ae540e7428afde127281aa3f15fc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: philmea
+ms.openlocfilehash: 1de7c34d8f8cbfa139212f29ca6be5d4eca64655
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271310"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767494"
 ---
 # <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>Azure portalını kullanarak otomatik IoT aygıt ve modül yönetimi
 
@@ -106,7 +106,7 @@ Her yapılandırmada en fazla beş özel ölçüm olabilir.
 
 2. **Metrik Ölçütler**için bir sorgu girin.  Sorgu, aygıt ikizi bildirilen özelliklerine dayanır.  Metrik, sorgu tarafından döndürülen satır sayısını gösterir.
 
-Örnek:
+Örneğin:
 
 ```sql
 SELECT deviceId FROM devices 
@@ -121,7 +121,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-Yapılandırılmış modülleri rapor etmek için bir metrik oluşturuyorsanız, 'den `moduleId` `devices.modules`birini seçin. Örnek:
+Yapılandırılmış modülleri rapor etmek için bir metrik oluşturuyorsanız, 'den `moduleId` `devices.modules`birini seçin. Örneğin:
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -211,7 +211,7 @@ Yapılandırmayı değiştirmek için aşağıdaki adımları kullanın:
    * Öncelik 
    * Ölçümler
 
-4. **Kaydet'i**seçin.
+4. **Kaydet**’i seçin.
 
 5. Değişikliklerin kullanıma sunulmasını izlemek için [bir yapılandırmayı İzle'deki](#monitor-a-configuration) adımları izleyin. 
 

@@ -1,17 +1,17 @@
 ---
 title: Fiyatlandırma katmanları - MariaDB için Azure Veritabanı
 description: Hesaplama nesilleri, depolama türleri, depolama boyutu, vCore'lar, bellek ve yedekleme bekletme süreleri de dahil olmak üzere MariaDB için Azure Veritabanı için çeşitli fiyatlandırma katmanları hakkında bilgi edinin.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 39af6850810fa471003cea27ed274972fb2ff046
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c057bebf94362b3b9e42db9d311e99f1e35c651
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79528039"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770125"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>MariaDB fiyatlandırma katmanları için Azure Veritabanı
 

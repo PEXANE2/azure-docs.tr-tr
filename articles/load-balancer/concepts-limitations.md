@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2020
 ms.author: allensu
-ms.openlocfilehash: a94b51e49951948974b8f42f6c89cd3c84f95d65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7a7210915920ed9ab2a5ddc47a27c2587895a57a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064289"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768259"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Yük Dengeleyici bileşenleri ve sınırlamaları
 Azure Yük Dengeleyici, çalışması için birkaç önemli bileşen içerir.  Bu bileşenler aboneliğinizde Azure portalı, Azure CLI veya Azure PowerShell üzerinden yapılandırılabilir.  
@@ -95,7 +95,7 @@ Aşağıdaki görüntüde karma tabanlı dağıtım gösterilmiştir:
 
     - yük dengeleme kuralları SNAT'ın nasıl programlanmış olduğu konusunda bilgi edinimi. Yük dengeleme kuralları protokole özgüdür. SNAT protokole özgüdür ve yapılandırma bir yan etki yaratmak yerine bunu yansıtmalıdır.
 
-    - **Birden fazla ön uç** Birden çok ön uç kullanılabilir olduğunda, tüm ön uçlar kullanılır ve her ön uç kullanılabilir SNAT bağlantı noktası sayısını çarpar. Giden bağlantılar için yüksek bir talep beklediğiniz veya zaten yüksek bir talep yaşadığınız için daha fazla SNAT bağlantı noktası istiyorsanız, aynı sanal makineye ek ön uçlar, kurallar ve arka uç havuzları yapılandırarak artımlı SNAT bağlantı noktası envanteri de ekleyebilirsiniz Kaynak.
+    - **Birden fazla ön uç** Birden çok ön uç kullanılabilir olduğunda, tüm ön uçlar kullanılır ve her ön uç kullanılabilir SNAT bağlantı noktası sayısını çarpar. Giden bağlantılar için yüksek bir talep beklediğiniz veya zaten yüksek bir talep yaşadığınız için daha fazla SNAT bağlantı noktası istiyorsanız, aynı sanal makine kaynaklarına ek ön uçlar, kurallar ve arka uç havuzları yapılandırarak artımlı SNAT bağlantı noktası envanteri de ekleyebilirsiniz.
 
     - **Giden** uç için hangi ön uç kullanılır denetim Giden bağlantılar için belirli bir ön uç için kullanılmasını istemiyorsanız, seçim yapabilir ve kontrol edebilirsiniz. Giden bağlantıları yalnızca belirli bir ön uç IP adresinden kaynaklanan kısıtlamak istiyorsanız, giden SNAT'ı giden eşlemi ifade eden kural üzerinde isteğe bağlı olarak devre dışı kullanabilirsiniz.
 
@@ -171,6 +171,8 @@ Yük dengeleyicisi hem Temel hem de Standart SUS'ları destekler. Bu SK'ler sena
 
 Tam senaryo yapılandırması SKU'ya bağlı olarak biraz farklılık gösterebilir. Yük dengeleyici belgeleri, bir makale yalnızca belirli bir SKU için geçerli olduğunda çağrır. Farkları karşılaştırmak ve anlamak için aşağıdaki tabloya bakın. Daha fazla bilgi için Azure [Standart Yük Dengeleyicisi'ne genel bakış](load-balancer-standard-overview.md)bakın.
 
+Temel Yük Dengeleyicisini Standarda yükseltmek için [bkz.](upgrade-basic-standard.md)
+
 >[!NOTE]
 > Microsoft Standart Yük Dengeleyicisi önerir.
 Tek başına VM'ler, kullanılabilirlik kümeleri ve sanal makine ölçek kümeleri yalnızca tek bir SKU'ya bağlanabilir, ikisine birden bağlanamaz. Yük Dengeleyici ve ortak IP adresi SKU, bunları genel IP adresleriyle kullandığınızda eşleşmelidir. Yük Dengeleyici ve genel IP SUS'lar mutable değildir.
@@ -207,6 +209,7 @@ Daha fazla bilgi için [Yük dengeleyici sınırlarına](https://docs.microsoft.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- Temel Yük Dengeleyicisini Standart Yük Dengeleyicisine yükseltmek için [Temel Yük Dengeleyicisini Yükselt'e](upgrade-basic-standard.md) bakın.
 - Bkz. Yük Dengeleyicisi kullanmaya başlamak için [ortak bir Standart Yük Dengeleyicisi oluşturun:](quickstart-load-balancer-standard-public-portal.md) bir tane oluşturun, özel bir IIS uzantısı yüklü VM'ler oluşturun ve Web uygulamasını VM'ler arasında yük dengesi yükleyin.
 - [Azure Yük Dengeleyicisi](load-balancer-overview.md)hakkında daha fazla bilgi edinin.
 - [Standart Yük Dengeleyicisi ve Kullanılabilirlik Bölgeleri'ni](load-balancer-standard-availability-zones.md)kullanma hakkında bilgi edinin.

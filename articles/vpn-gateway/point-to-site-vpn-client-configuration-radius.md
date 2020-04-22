@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6e1b162d17e2369b579fc1210c57e0409b0546bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69517d69a26364cf1cc950d7aaa849522decacf1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77148479"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732748"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS kimlik doğrulaması için VPN istemci yapılandırma dosyaları oluşturma ve yükleme
 
@@ -49,7 +49,7 @@ Kullanıcı adı/parola kimlik doğrulaması yapılandırdığınızda, yalnızc
 
 Azure portalını kullanarak veya Azure PowerShell'i kullanarak VPN istemci yapılandırma dosyalarını oluşturabilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalında
+#### <a name="azure-portal"></a>Azure portal
 
 1. Sanal ağ ağ geçidine gidin.
 2. **Siteye Puan yapılandırmasını**tıklatın.
@@ -114,7 +114,7 @@ Sertifika kimlik doğrulaması için yerel Windows VPN istemcisini yapılandırm
       <key>ServerAddresses</key>
         <array>
             <string>10.0.0.132</string>
-        <array>
+        </array>
       <key>SupplementalMatchDomains</key>
         <array>
             <string>TestDomain.com</string>

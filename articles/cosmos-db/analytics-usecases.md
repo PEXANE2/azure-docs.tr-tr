@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: cosmos-db
 ms.date: 09/26/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b9bac14ff47107a4b39f12989685e2e510569ba2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adf1db2d737de7004b5ab71c8e0e44d61d1da8c9
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72757069"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768507"
 ---
 # <a name="use-cases-for-built-in-analytics-with-azure-cosmos-db"></a>Azure Cosmos DB ile yerleşik analizler için kullanım örnekleri
 
@@ -37,7 +37,7 @@ Azure Cosmos DB, yerel olarak yerleşik Apache Spark ile, tek bir sistem görün
 
 Bazı durumlarda, geçmişte tamamlanan olaylar üzerinde belirli bir zamanda olduğu gibi verilere dayalı soruları yanıtlamanız gerekebilir. Örneğin, belirli bir tarihte CRM etkinlik durumlarının sayısını almak için. Raporu bir hafta önce çalıştırdıysanız, durum sayısı, o anda her etkinliğin durumlarına göre olacaktır. Bugün aynı raporu çalıştırmak size durumları bugünkü gibi olan faaliyetlerin sayısını verecektir, geçen haftadan beri değişmiş olabilir, çünkü yaşam döngülerini açıktan kapanışa kadar devam ederler. Yani, davanın yaşam döngüsünün her aşamasında anlık rapor gerekir.
 
-Geleneksel veri ambarı senaryolarında anlık görüntü kavramı mümkün değildir, çünkü veri ambarları bunu birleştirmek üzere tasarlanmıyor ve veriler yalnızca neler olduğuna dair geçerli bir görünüm sağlar. Azure Cosmos DB ile kullanıcılar, zaman yolculuğu kavramını uygulayarak, veriler üzerinde geçmişe dönük olarak analiz sorgulayıp çalıştırabilme ve verilerin tarihteki belirli bir zaman noktasına nasıl baktığını sorabilme olana sahiptir. Bu, kullanıcıların verilerin hem geçerli hem de tarihi görünümlerini kolayca görüntüleyebileceği ve üzerinde analiz çalıştırabileceği anlamına gelir.
+Azure Cosmos DB ile kullanıcılar, zaman yolculuğu kavramını uygulayarak, veriler üzerinde geçmişe dönük olarak analiz sorgulayıp çalıştırabilme ve verilerin tarihteki belirli bir zaman noktasına nasıl baktığını sorabilme olana sahiptir. Bu, kullanıcıların verilerin hem geçerli hem de tarihi görünümlerini kolayca görüntüleyebileceği ve üzerinde analiz çalıştırabileceği anlamına gelir.
 
 ## <a name="globally-distributed-machine-learning-and-ai"></a>Küresel olarak dağıtılan makine öğrenimi ve Yapay AI
 

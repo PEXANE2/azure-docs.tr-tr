@@ -7,12 +7,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: robinsh
-ms.openlocfilehash: c812e00699cd8f8cfbaf32feea1b43866ffb0990
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 78aee7829e58feede3360f30f10260903713c52f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78674366"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770075"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Öğretici: Azure IoT Hub ileti zenginleştirmelerini kullanma
 
@@ -309,7 +310,7 @@ Kaynakları, ileti yönlendirmeyi ve ileti zenginleştirmelerini oluşturmak ve 
    | rota Adı 1 | ContosoStorageRouteOrijinal |
    | rota Adı 2 | ContosoStorageRouteZenginleştirilmiş |
 
-1. **Kaydet'i**seçin. **Özel dağıtım** bölmesi görüntülenir ve şablon tarafından kullanılan tüm parametreleri gösterir. Ayarlamanız gereken tek alan **Kaynak grubudur.** Yeni bir tane oluşturun veya açılan listeden birini seçin.
+1. **Kaydet**’i seçin. **Özel dağıtım** bölmesi görüntülenir ve şablon tarafından kullanılan tüm parametreleri gösterir. Ayarlamanız gereken tek alan **Kaynak grubudur.** Yeni bir tane oluşturun veya açılan listeden birini seçin.
 
    Özel **dağıtım** bölmesinin üst yarısı buradadır. Kaynak grubunu nerede doldurduğunuzu görebilirsiniz.
 

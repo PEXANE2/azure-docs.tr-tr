@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6f22d5b2140e42f5f4b8ef5787d22b4be399c7e8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: e945fd77c2615e6f5213a9aa4fc996f0c4d2f3dd
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272534"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769995"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure Uygulama Hizmeti'ndeki uygulamalar için tanılama günlüğe kaydetmeyi etkinleştirme
 ## <a name="overview"></a>Genel Bakış
@@ -39,6 +39,9 @@ Bu makalede, tanılama günlükleri ile çalışmak için [Azure portalı](https
 
 ## <a name="enable-application-logging-windows"></a>Uygulama günlüğe kaydetmeyi etkinleştirme (Windows)
 
+> [!NOTE]
+> Blob depolama için uygulama günlüğü yalnızca Uygulama Hizmeti ile aynı bölgedeki depolama hesaplarını kullanabilir
+
 [Azure portalında](https://portal.azure.com)Windows uygulamaları için uygulama günlüğe kaydetmeyi etkinleştirmek için uygulamanıza gidin ve **Uygulama Hizmeti günlüklerini**seçin.
 
 **Uygulama Günlüğe Kaydetme (Filesystem)** veya **Uygulama Günlüğü (Blob)** veya her ikisi için **Aç'ı** seçin. 
@@ -59,7 +62,7 @@ Bu makalede, tanılama günlükleri ile çalışmak için [Azure portalı](https
 
 | Düzey | Dahil edilen kategoriler |
 |-|-|
-|**Devre dışı** | None |
+|**Devre dışı** | Hiçbiri |
 |**Hata** | Hata, Kritik |
 |**Uyarı** | Uyarı, Hata, Kritik|
 |**Bilgi** | Bilgi, Uyarı, Hata, Kritik|

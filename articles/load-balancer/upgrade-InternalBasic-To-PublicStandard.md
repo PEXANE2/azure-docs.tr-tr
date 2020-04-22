@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77659994"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770395"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Dahili Yük Dengeleyicisi Yükseltme - Giden Bağlantı Gerekli
 [Azure Standart Yük Dengeleyici,](load-balancer-overview.md) bölge artıklığı sayesinde zengin bir işlevsellik kümesi ve yüksek kullanılabilirlik sunar. Yük Dengeleyici SKU hakkında daha fazla bilgi edinmek için [karşılaştırma tablosuna](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)bakın. Standart Dahili Yük Dengeleyici giden bağlantı sağlamadığından, bunun yerine bir Standart Genel Yük Dengeleyicisi oluşturmak için bir çözüm sağlarız.
@@ -21,8 +21,7 @@ Yükseltmenin dört aşaması vardır:
 
 1. Yapılandırmayı Standart Genel Yük Dengeleyicisine geçirin
 2. Standart Genel Yük Dengeleyicisinin arka uç havuzlarına VM ekleme
-3. Giden bağlantı için Yük Dengeleyicisi'nde giden kural oluşturma
-4. Internet'ten/Internet'e karşı kaçınılması gereken Subnet/VM'ler için NSG kurallarını ayarlama
+3. Internet'ten/Internet'e karşı kaçınılması gereken Subnet/VM'ler için NSG kurallarını ayarlama
 
 Bu makalede, yapılandırma geçişi kapsar. Arka uç havuzlarına VM eklemek, özel ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey, genel öneriler [sağlanır.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
@@ -32,6 +31,7 @@ Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 
 * Kaynak grubunda ve belirttiğiniz konumda bir Standart SKU Genel Yük Dengeleyicisi oluşturur.
 * Temel SKU Dahili Yük Dengeleyicisi yapılandırmalarını yeni oluşturulan Standart Genel Yük Dengeleyicisine sorunsuz bir şekilde kopyalar.
+* Çıkış bağlantısı sağlayan giden bir kural oluşturur.
 
 ### <a name="caveatslimitations"></a>Uyarılar\Sınırlamalar
 
@@ -42,7 +42,7 @@ Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 
 ## <a name="download-the-script"></a>Komut dosyasını indirin
 
-[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)geçiş komut dosyasını indirin.
+[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0)geçiş komut dosyasını indirin.
 ## <a name="use-the-script"></a>Komut dosyasını kullanma
 
 Yerel PowerShell ortamı kurulumunuza ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
@@ -104,7 +104,7 @@ Yeni oluşturulan Standart Genel Yük Dengeleyicisinin arka uç havuzlarına VM'
    
     1. Temel Yük Dengeleyicisi'nin arka uç havuzuyla eşleşen arka uç havuzunu seçin ve aşağıdaki değeri seçin: 
       - **Sanal Makine**: Temel Yük Dengeleyicisi'nin eşleşen arka uç havuzundan VM'leri aşağı indirin ve seçin.
-    1. **Kaydet'i**seçin.
+    1. **Kaydet**’i seçin.
     >[!NOTE]
     >Genel IP'leri olan VM'ler için, önce aynı IP adresinin garanti edilemediğinizde Standart IP adresleri oluşturmanız gerekir. VM'leri Temel IP'lerden ayırın ve bunları yeni oluşturulan Standart IP adresleriyle ilişkilendirin. Daha sonra, Standart Yük Dengeleyici'nin arka uç havuzuna VM eklemek için yönergeleri izleyebilirsiniz. 
 

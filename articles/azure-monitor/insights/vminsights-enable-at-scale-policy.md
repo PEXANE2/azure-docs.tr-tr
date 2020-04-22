@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 7069f2cc96b8876f5514acfa4ba49274b61be46f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73c18d45136eea90ad29dc1bd40c4539dddc0ee6
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282945"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767261"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>Azure İlkesi'ni kullanarak VM'ler için Azure Monitörünü etkinleştirme
 
@@ -79,7 +79,7 @@ Kiracınızda Azure İlkesi'ni kullanarak VM'ler için Azure Monitörünü etkin
 - Girişimi bir kapsama atayın: yönetim grubu, abonelik veya kaynak grubu.
 - Uyumluluk sonuçlarını gözden geçirin ve düzeltin.
 
-Azure İlkesi atama hakkında daha fazla bilgi için [Azure İlkesi'ne genel bakış'a](../../governance/policy/overview.md#policy-assignment) bakın ve devam etmeden önce [yönetim gruplarına genel bakışı](../../governance/management-groups/overview.md) inceleyin.
+Azure İlkesi atama hakkında daha fazla bilgi için [Azure İlkesi'ne genel bakış'a](../../governance/policy/overview.md#assignments) bakın ve devam etmeden önce [yönetim gruplarına genel bakışı](../../governance/management-groups/overview.md) inceleyin.
 
 ### <a name="policies-for-azure-vms"></a>Azure VM'leri için İlkeler
 
@@ -121,7 +121,7 @@ Bağımsız politika (girişime dahil değildir) burada açıklanmıştır:
 
 İlke yi veya girişimi atadığınızda, atamada seçilen kapsam burada listelenen kapsam veya bunun bir alt kümesi olabilir. Örneğin, yönetim grubu (kapsam kapsamı) için değil, abonelik (ilke kapsamı) için bir atama oluşturmuş olabilirsiniz. Bu durumda, kapsama yüzdesi, kapsama kapsamındaKi VM'ler tarafından bölünmüş ilke veya girişim kapsamındaki VM'leri gösterir. Başka bir durumda, bazı VM'leri veya kaynak gruplarını veya bir aboneliği ilke kapsamından dışlamış olabilirsiniz. Boşsa, ilke veya girişim inancın bulunmadığını veya izinlerin olmadığını gösterir. Bilgiler Atama **Durumu**altında sağlanır.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. Azure portalında **Monitör'ü**seçin. 
 
@@ -206,7 +206,7 @@ Bir yönetim grubuna veya aboneye bir girişim atadıktan sonra, aşağıdaki ö
 - Açıklama
 - Tarafından atanan
 - Log Analytics çalışma alanı
-- Özel durumlar
+- Özel Durumlar
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56341affee721b3ee6676da401e03dbbca84e597
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538248"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768451"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir
 Bu makalede, Azure dağıtımları için hangi SAP yazılımının desteklendirilip desteklenebileceği ve gerekli işletim sistemi sürümlerinin veya DBMS sürümlerinin ne olduğu açıklanmaktadır.
@@ -139,6 +139,7 @@ Azure'daki SAP Hybris Ticaret Platformu desteği [Hybris Wiki'de](https://cxwiki
 
 - Windows işletim sistemi platformunda SQL Server ve Oracle. SAP NetWeaver için de aynı minimum sürümler geçerlidir. Ayrıntılar için [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533) bakın
 - SAP HANA Red Hat ve SUSE Linux üzerine. SAP HANA sertifikalı VM türleri [bu belgede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)daha önce belgelenmiş olarak gereklidir. SAP (Hybris) Ticaret Platformu OLTP iş yükü olarak kabul edilir
+- SAP (Hybris) Ticaret Platformu sürüm 1811 itibariyle SQL Azure DB
 
 
 

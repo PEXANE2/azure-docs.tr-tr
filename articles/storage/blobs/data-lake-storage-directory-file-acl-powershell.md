@@ -1,27 +1,24 @@
 ---
-title: ACD'ler & dosyalar için Azure Veri Gölü Depolama Gen2 PowerShell (önizleme)
+title: Dosyaları & Aç'lar için Azure Veri Gölü Depolama Gen2 PowerShell
 description: Hiyerarşik ad alanı (HNS) etkin leştirilmiş depolama hesaplarında dizinleri ve dosya ve dizin erişim denetim listelerini (ACL) yönetmek için PowerShell cmdlets'i kullanın.
 services: storage
 author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: b59c68e3f2edc0fbe5eee3c3861a3e5116d4fac6
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 68ffe40f93be3d10666ebad2eaa153fc9dc9687f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262392"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768023"
 ---
-# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için PowerShell'i kullanın (önizleme)
+# <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Azure Veri Gölü Depolama Gen2'deki dizinleri, dosyaları ve ACD'leri yönetmek için PowerShell'i kullanın
 
 Bu makalede, hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesaplarında dizinler, dosyalar ve izinler oluşturmak ve yönetmek için PowerShell'i nasıl kullanacağınızı gösterir. 
-
-> [!IMPORTANT]
-> Bu makalede yer alan PowerShell modülü şu anda genel önizlemededir.
 
 [Gen1'den Gen2'ye haritalama](#gen1-gen2-map) | [Geri bildirim de verin](https://github.com/Azure/azure-powershell/issues)
 
@@ -33,7 +30,7 @@ Bu makalede, hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesapların
 > * .NET Framework 4.7.2 veya daha fazla yüklü. Bkz. [İndir .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
 > * PowerShell `5.1` sürümü veya daha yüksek.
 
-## <a name="install-powershell-modules"></a>PowerShell modüllerini yükleyin
+## <a name="install-the-powershell-module"></a>PowerShell modüllerini yükleyin
 
 1. Aşağıdaki komutu kullanarak PowerShell sürümünün `5.1` yüklü veya daha yüksek olduğunu doğrulayın.    
 
@@ -43,16 +40,10 @@ Bu makalede, hiyerarşik ad alanı (HNS) etkinleştirilmiş depolama hesapların
     
    PowerShell sürümünüzü yükseltmek [için, mevcut Windows PowerShell'i Yükseltme](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) bölümüne bakın
     
-2. En son **PowershellGet** modüllerini yükleyin. Ardından PowerShell konsolu kapatın ve yeniden açın.
+2. **Az.Storage** modüllerini yükleyin.
 
    ```powershell
-   Install-Module PowerShellGet –Repository PSGallery –Force 
-   ```
-
-3. **Az.Storage** önizleme modüllerini yükleyin.
-
-   ```powershell
-   Install-Module az.storage -RequiredVersion 1.13.3-preview -Repository PSGallery -AllowClobber -AllowPrerelease -Force 
+   Install-Module Az.Storage -Repository PSGallery -Force  
    ```
 
    PowerShell modüllerinin nasıl yüklenir hakkında daha fazla bilgi için Azure [PowerShell modüllerini yükleyin](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)

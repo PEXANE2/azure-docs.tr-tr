@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b199854867c48906061cff65bad21e514456c911
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81378710"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770561"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Azure Active Directory (önizleme) kullanarak sms tabanlı kimlik doğrulaması için kullanıcıları yapılandırma ve etkinleştirme
 
@@ -40,7 +40,8 @@ Bu makaleyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyac�
 * SMS tabanlı kimlik doğrulamayı etkinleştirmek için Azure AD kiracınızda *genel yönetici* ayrıcalıklarına ihtiyacınız vardır.
 * Metin iletisi kimlik doğrulama yöntemi ilkesinde etkinleştirilen her kullanıcı, kullanmasalar bile lisanslanmalıdır. Etkinleştirilen her kullanıcı aşağıdaki Azure AD veya Microsoft 365 lisanslarından birine sahip olmalıdır:
     * [Azure AD Premium P1 veya P2][azuread-licensing]
-    * [Microsoft 365 F1 veya F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 (M365) F1 veya F3][m365-firstline-workers-licensing]
+    * [Kurumsal Mobilite + Güvenlik (EMS) E3 veya E5][ems-licensing] veya [Microsoft 365 (M365) E3 veya E5][m365-licensing]
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -161,3 +162,5 @@ Microsoft Authenticator App veya FIDO2 güvenlik anahtarları gibi parola olmada
 [office]: https://www.office.com
 [m365-firstline-workers-licensing]: https://www.microsoft.com/licensing/news/m365-firstline-workers
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
+[ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
+[m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans

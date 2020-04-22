@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/16/2020
+ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4a361f384167fa522278b9c84a7927e938c12cb8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 3ce3311fd0538109dbe9ba5ae71a17dcfd4b8abe
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534814"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769737"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure'u kullanın
 
@@ -111,6 +111,7 @@ Azure hizmetlerinin SAP bileşenlerine entegrasyonu hakkında bilgi için bkz:
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 21/04/2020: SAP (Hybris) Ticaret Platformu 1811 için desteklenen DBMS olarak SQL Azure DB eklendi ve daha sonra makalelerde Microsoft Azure'da çalışan Azure dağıtımları ve [SAP sertifikaları ve yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) için hangi SAP yazılımı [desteklenir](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)
 - 16/04/2020: Microsoft Azure'da çalışan [Azure dağıtımları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure) ve [SAP sertifikaları ve yapılandırmaları](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications) için desteklenen makalelerde SAP (Hybris) Ticaret Platformu için desteklenen DBMS olarak SAP HANA eklendi
 - 04/13/2020: SAP iş yükü için [SAP ASE Azure Sanal Makineler DBMS dağıtımında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sapase) SAP ASE sürüm numaralarının tam olarak doğru olması
 - 04/07/2020: Bulut-netconfig-azure yönergelerini netleştirmek için [Azure'da SLES'te Pacemaker Kurulumunda](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker) Değişiklik

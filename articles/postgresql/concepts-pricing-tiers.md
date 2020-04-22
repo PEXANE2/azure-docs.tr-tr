@@ -1,17 +1,17 @@
 ---
 title: Fiyatlandırma katmanları - PostgreSQL için Azure Veritabanı - Tek Sunucu
 description: Bu makalede, PostgreSQL - Single Server için Azure Veritabanı'ndaki bilgi işlem ve depolama seçenekleri açıklanmaktadır.
-author: jan-eng
-ms.author: janeng
+author: jasonwhowell
+ms.author: jasonh
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 2e5b01a271eb290229904fc98d1268760e01620d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e4e69b63e51bafe8ca0b032c22ca509f5a7e6a2
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243568"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770579"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı fiyatlandırma katmanları - Tek Sunucu
 
@@ -51,7 +51,7 @@ Sağlama yaptığınız depolama alanı, PostgreSQL sunucusu için Azure Veritab
 | IOPS | Değişken |3 IOPS/GB<br/>Min 100 IOPS<br/>Maksimum 20.000 IOPS | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maksimum 20.000 IOPS |
 
 > [!NOTE]
-> 16TB ve 20.000 IOPS'ye kadar depolama aşağıdaki bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Orta ABD, Güney Orta ABD, Kuzey Avrupa, Batı Avrupa, İngiltere Güney, İngiltere Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Batı, Kore Orta , Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
+> 16TB ve 20.000 IOPS'ye kadar depolama aşağıdaki bölgelerde desteklenir: Doğu ABD, Doğu ABD 2, Orta ABD, Batı ABD, Kuzey Orta ABD, Güney Orta ABD, Kuzey Avrupa, Batı Avrupa, İngiltere Güney, İngiltere Batı, Güneydoğu Asya, Doğu Asya, Japonya Doğu, Japonya Batı, Kore Orta, Kore Güney, Avustralya Doğu, Avustralya Güney Doğu.
 >
 > Diğer tüm bölgeler 4 TB'a kadar depolama ve 6000 IOPS'yi destekler.
 >

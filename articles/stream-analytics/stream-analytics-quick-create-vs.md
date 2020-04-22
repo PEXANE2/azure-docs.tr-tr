@@ -6,22 +6,25 @@ ms.author: mamccrea
 ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
-ms.openlocfilehash: 21dbd4128cad7df11aeb713286d868879a58519b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75431537"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81767242"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Hızlı başlangıç: Visual Studio'u kullanarak Azure Akışı Analizi işi oluşturun
 
 Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçlarını kullanarak bir Stream Analytics işi oluşturma ve çalıştırma adımları gösterilmektedir. Örnek iş, bir IoT Hub aygıtından veri akışı okur. 27° üzerindeyken ortalama sıcaklığı hesaplayan ve ortaya çıkan çıktı olaylarını blob depolamasındaki yeni bir dosyaya yazan bir iş tanımlarsınız.
 
+> [!NOTE]
+> Visual Studio ve Visual Studio Code araçları Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya KuzeyDoğu bölgelerindeki işleri desteklemez.
+
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 * Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/)oluşturun.
 
-* [Azure portalında](https://portal.azure.com/)oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 * Visual Studio 2019, Visual Studio 2015 veya Visual Studio 2013 Güncelleme 4'ü yükleyin. Enterprise (Ultimate/Premium), Professional ve Community sürümleri desteklenir. Express sürümü desteklenmez.
 
@@ -31,7 +34,7 @@ Bu hızlı başlangıçta Visual Studio için Azure Stream Analytics araçların
 
 Akış Analizi işini tanımlamadan önce, daha sonra iş girişi olarak yapılandırılan verileri hazırlamanız gerekir. İşin gerektirdiği giriş verilerini hazırlamak için aşağıdaki adımları tamamlayın:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 2. IoT >  **Hub'ın kaynak** > **Internet'ini**seçin.**IoT Hub**
 

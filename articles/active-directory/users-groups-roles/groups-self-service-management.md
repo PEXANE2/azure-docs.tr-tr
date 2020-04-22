@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e52c37e293941a767621cf56ef75f8cc83b1925
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 541deb5cf44ad5440e31641b673ed5da5b5d2b26
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298012"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768551"
 ---
 # <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Azure Active Directory'de self servis grup yönetimini ayarlama 
 
@@ -33,7 +33,7 @@ Azure portalında veya Azure AD PowerShell kullanılarak güvenlik grupları olu
 Oluşturulan gruplar | Güvenlik grubu varsayılan davranışı | Office 365 grubu varsayılan davranışı
 ------------------ | ------------------------------- | ---------------------------------
 [Azure AD PowerShell](groups-settings-cmdlets.md) | Yalnızca sahipler üye ekleyebilir<br>Access paneline katılmak için görünür ancak kullanılamıyor | Tüm kullanıcılar için katılmak için açık
-[Azure portalında](https://portal.azure.com) | Yalnızca sahipler üye ekleyebilir<br>Access paneline katılmak için görünür ancak kullanılamıyor<br>Sahip grup oluşturmada otomatik olarak atanmıyor | Tüm kullanıcılar için katılmak için açık
+[Azure portal](https://portal.azure.com) | Yalnızca sahipler üye ekleyebilir<br>Access paneline katılmak için görünür ancak kullanılamıyor<br>Sahip grup oluşturmada otomatik olarak atanmıyor | Tüm kullanıcılar için katılmak için açık
 [Erişim paneli](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Tüm kullanıcılar için katılmak için açık<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir | Tüm kullanıcılar için katılmak için açık<br>Grup oluşturulduğunda üyelik seçenekleri değiştirilebilir
 
 ## <a name="self-service-group-management-scenarios"></a>Self servis grup yönetimi senaryoları
@@ -56,6 +56,9 @@ Ayrıca, üyeleri **Azure portallarında grup sahibi olarak atayabilecek Sahiple
 
 Kullanıcılar gruplar oluşturabildiği zaman, kuruluşunuzdaki tüm kullanıcıların yeni gruplar oluşturmasına izin verilir ve varsayılan sahibi olarak bu gruplara üye ekleyebilir. Kendi gruplarını oluşturabilecek kişileri belirtemezsiniz. Kişileri yalnızca başka bir grup üyesini grup sahibi yapmak için belirtebilirsiniz.
 
+> [!NOTE]
+> Kullanıcıların bir güvenlik grubuna veya Office 365 grubuna katılmayı talep etmesi ve sahiplerinin üyelik isteklerini onaylaması veya reddetmesi için Azure Active Directory Premium (P1 veya P2) lisansı gereklidir. Azure Active Directory Premium lisansı olmadan, kullanıcılar gruplarını Erişim Paneli'nde yönetmeye devam edebilir, ancak Access Paneli'nde sahip onayı gerektiren bir grup oluşturamaz ve bir gruba katılmak için istekte bulunamaz. 
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
@@ -63,5 +66,5 @@ Bu makalelerde Azure Active Directory ile ilgili ek bilgi sağlanmıştır.
 * [Azure Active Directory grupları ile kaynaklara erişimi yönetme](../fundamentals/active-directory-manage-groups.md)
 * [Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri](groups-settings-cmdlets.md)
 * [Azure Active Directory’de Uygulama Yönetimi](../manage-apps/what-is-application-management.md)
-* [Azure Etkin Dizin nedir?](../fundamentals/active-directory-whatis.md)
+* [Azure Active Directory nedir?](../fundamentals/active-directory-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](../hybrid/whatis-hybrid-identity.md)

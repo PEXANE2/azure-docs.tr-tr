@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaş Merkezi Secrets Mağaza
 description: Bu makalede, Azure Hizmet Dokusunda Merkezi Sırlar Mağazası'nın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 11fb94a9fba40e6f2474ad64f5eb0c454be28ca0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4087e7ccdcb2281c4a08af155d35a10c66147a85
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589173"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770424"
 ---
 # <a name="central-secrets-store-in-azure-service-fabric"></a>Azure Hizmet Kumaşında Merkezi Sırlar Mağazası 
 Bu makalede, Hizmet Kumaşı uygulamalarında sır oluşturmak için Azure Hizmet Dokusu'nda Central Secrets Store'un (CSS) nasıl kullanılacağı açıklanmaktadır. CSS, parola, belirteçler ve anahtarlar gibi hassas verileri bellekte şifrelenmiş tutan yerel bir gizli depo önbelleğidir.
@@ -47,31 +47,9 @@ CSS'yi `fabricSettings` etkinleştirmek için aşağıdaki komut dosyasını kü
      ]
 ```
 ## <a name="declare-a-secret-resource"></a>Gizli bir kaynak bildirme
-Azure Kaynak Yöneticisi şablonu veya REST API'sini kullanarak gizli bir kaynak oluşturabilirsiniz.
-
-### <a name="use-resource-manager"></a>Kaynak Yöneticisi'ni Kullan
-
-Gizli kaynağı oluşturmak için Kaynak Yöneticisi'ni kullanmak için aşağıdaki şablonu kullanın. Şablon gizli bir `supersecret` kaynak oluşturur, ancak gizli kaynak için henüz bir değer ayarlı değildir.
-
-
-```json
-   "resources": [
-      {
-        "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-          }
-        }
-      ]
-```
-
-### <a name="use-the-rest-api"></a>REST API kullanma
+REST API'sini kullanarak gizli bir kaynak oluşturabilirsiniz.
+  > [!NOTE] 
+  > Küme windows kimlik doğrulaması kullanıyorsa, REST isteği güvenli olmayan HTTP kanalı üzerinden gönderilir. Öneri, güvenli uç noktaları olan X509 tabanlı bir küme kullanmaktır.
 
 REST API'sini kullanarak gizli bir `supersecret` kaynak oluşturmak `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`için BIR PUT isteğinde bulunun. Gizli bir kaynak oluşturmak için küme sertifikasına veya yönetici istemci sertifikasına ihtiyacınız var.
 
@@ -81,48 +59,6 @@ Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecre
 ```
 
 ## <a name="set-the-secret-value"></a>Gizli değeri ayarlama
-
-### <a name="use-the-resource-manager-template"></a>Kaynak Yöneticisi şablonunu kullanma
-
-Gizli değeri oluşturmak ve ayarlamak için aşağıdaki Kaynak Yöneticisi şablonunu kullanın. Bu şablon, `supersecret` `ver1`sürüm olarak gizli kaynak için gizli değeri ayarlar.
-```json
-  {
-  "parameters": {
-  "supersecret": {
-      "type": "string",
-      "metadata": {
-        "description": "supersecret value"
-      }
-   }
-  },
-  "resources": [
-    {
-      "apiVersion": "2018-07-01-preview",
-        "name": "supersecret",
-        "type": "Microsoft.ServiceFabricMesh/secrets",
-        "location": "[parameters('location')]", 
-        "dependsOn": [],
-        "properties": {
-          "kind": "inlinedValue",
-            "description": "Application Secret",
-            "contentType": "text/plain",
-        }
-    },
-    {
-      "apiVersion": "2018-07-01-preview",
-      "name": "supersecret/ver1",
-      "type": "Microsoft.ServiceFabricMesh/secrets/values",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "Microsoft.ServiceFabricMesh/secrets/supersecret"
-      ],
-      "properties": {
-        "value": "[parameters('supersecret')]"
-      }
-    }
-  ],
-  ```
-### <a name="use-the-rest-api"></a>REST API kullanma
 
 Gizli değeri ayarlamak için REST API'yi kullanmak için aşağıdaki komut dosyasını kullanın.
 ```powershell

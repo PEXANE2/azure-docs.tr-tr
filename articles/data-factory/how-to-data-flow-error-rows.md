@@ -6,14 +6,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 04/20/2020
 ms.author: makromer
-ms.openlocfilehash: 4f65421a6457d4bf4d438ce9d035d46476829da2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8225143bb75118620b45c2520bb62ea30501a617
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414367"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732697"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Veri Fabrikası eşleme veri akışlarında SQL kesilme hata satırlarını işleme
 
@@ -30,6 +30,9 @@ Veri akışlarını eşleme kullanırken Veri Fabrikası'nda sık karşılaşıl
     ![Film veri akışı 1](media/data-flow/error4.png)
     
 3. Sorun şu ki, film başlığı nın tümü yalnızca 5 karakter tutabilen bir lavabo sütununa sığmaz. Bu veri akışını çalıştırdığınızda, bunun gibi bir hata alırsınız:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+
+Bu video, veri akışınızda hata satır işleme mantığının ayarlanmasına bir örnek üzerinden geçer:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]
 
 ## <a name="how-to-design-around-this-condition"></a>Bu durum etrafında nasıl tasarlar
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5dd1c1bb2b321e617efc430ce48745c06a827305
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: f86a54b53b73da9c798564d13d659844842e6f67
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76772458"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81768713"
 ---
 # <a name="quickstart-content-moderator-client-library-for-java"></a>Quickstart: Java için İçerik Moderatör istemci kitaplığı
 
@@ -89,7 +89,7 @@ mkdir -p src/main/java
 
 Ardından yeni klasörde *ContentModeratorQuickstart.java* adında bir dosya oluşturun. Tercih ettiğiniz düzenleyici veya IDE dosyayı açın ve en üstte aşağıdaki kitaplıkları içe aktarın:
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imports)]
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -120,7 +120,7 @@ Uygulama `main` yönteminde, abonelik bitiş noktası değeri nizi ve abonelik a
 > [!NOTE]
 > Uygulamayı başlattıktan sonra ortam değişkenini oluşturduysanız, değişkene erişmek için düzenleyiciyi, IDE'yi veya bu uygulamayı çalıştıran kabuğu kapatmanız ve yeniden açmanız gerekir.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
@@ -137,42 +137,42 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 Ardından, *ContentModeratorQuickstart.java* dosyanızda **ContentModeratorQuickstart** sınıfına aşağıdaki sınıf tanımını ekleyin. Bu iç sınıf daha sonra görüntü Denetleme işleminde kullanılacaktır.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_evaluationdata)]
 
 ### <a name="iterate-through-images"></a>Görüntüler aracılığıyla yineleyin
 
 Ardından, `main` yöntemin altına aşağıdaki kodu ekleyin. Veya, 'den `main`çağrılan ayrı bir yöntemekleyebilirsiniz. Bu _kod, ImageFiles.txt_ dosyasının her satırına girer.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_iterate)]
 
 ### <a name="check-for-adultracy-content"></a>Yetişkinlere uygun/müstehcen içeriği kontrol edin
 Bu kod satırı, yetişkinlere uygun veya müstehcen içerik için verilen URL'deki resmi denetler. Bu terimler hakkında bilgi için Görüntü ılımlılığı kavramsal kılavuzuna bakın.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_ar)]
 
 ### <a name="check-for-text"></a>Metni denetleme
 Bu kod satırı görüntüyü görünür metin için denetler.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_text)]
 
 ### <a name="check-for-faces"></a>Yüzleri kontrol edin
 Bu kod satırı görüntüyü insan yüzleri için denetler.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_faces)]
 
 Son olarak, döndürülen `EvaluationData` bilgileri listede saklayın.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_storedata)]
 
 ### <a name="print-results"></a>Sonuçları yazdırma
 
 Döngüden `while` sonra, sonuçları konsola ve çıktı dosyasına yazdıran aşağıdaki kodu ekleyin, *src/main/resources/ModerationOutput.json*.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
 İfadeyi `try` kapatın ve `catch` yöntemi tamamlamak için bir deyim ekleyin.
 
-[!code-java[](~/cognitive-services-java-sdk-samples/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -205,4 +205,4 @@ Bu hızlı başlangıçta, ılımlılık görevlerini gerçekleştirmek için İ
 >[Görüntü ılımlılığı kavramları](https://docs.microsoft.com/azure/cognitive-services/content-moderator/image-moderation-api)
 
 * [Azure Content Moderator nedir?](./overview.md)
-* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/blob/master/ContentModerator/ContentModeratorQuickstart/src/main/java/ContentModeratorQuickstart.java)bulunabilir.
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java)bulunabilir.
