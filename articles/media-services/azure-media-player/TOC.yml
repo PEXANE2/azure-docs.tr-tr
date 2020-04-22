@@ -1,0 +1,48 @@
+- name: Genel Bakış
+  items:
+    - name: Azure Media Player'a genel bakış
+      href: azure-media-player-overview.md
+    - name: Sürüm notları
+      href: azure-media-player-release-notes.md
+    - name: Değişiklik günlüğü
+      href: azure-media-player-changelog.md
+- name: Hızlı Başlangıçlar
+  items:
+    - name: Azure Media Player hızlı başlangıcı
+      href: azure-media-player-quickstart.md
+- name: Öğreticiler
+  items:
+    - name: Eksiksiz Azure Media Player kurulumu
+      href: azure-media-player-full-setup.md
+- name: Kavramlar
+  items:
+    - name: Kayıttan yürütme teknolojisi
+      href: azure-media-player-playback-technology.md
+    - name: Korumalı içerik
+      href: azure-media-player-protected-content.md
+    - name: Özellik listesi
+      href: azure-media-player-feature-list.md
+    - name: URL yeniden yazıcı
+      href: azure-media-player-url-rewriter.md
+    - name: Erişilebilirlik
+      href: azure-media-player-accessibility.md
+    - name: Yazma eklentileri
+      href: azure-media-player-writing-plugins.md
+    - name: Eklenti galerisi
+      href: azure-media-player-plugin-gallery.md
+    - name: Yerelleştirme
+      href: azure-media-player-localization.md
+- name: Başvuru
+  items:
+    - name: Örnekler
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
+    - name: API
+      href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
+    - name: API yöntemleri
+      href: azure-media-player-api-methods.md
+    - name: Seçenekler
+      href: azure-media-player-options.md
+    - name: Hata kodları
+      href: azure-media-player-error-codes.md
+    - name: Bilinen sorunlar
+      href: azure-media-player-known-issues.md

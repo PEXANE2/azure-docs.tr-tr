@@ -87,7 +87,7 @@
             - name: CEF tabanlı çözümler
               href: connect-common-event-format.md
               items:
-                - name: 1. ADIM Aracıyı dağıtma
+                - name: 1. ADIM Günlük ileticisini dağıtma
                   href: connect-cef-agent.md
                 - name: 2. ADIM Güvenlik çözümünüzü yapılandırma
                   href: connect-cef-solution-config.md

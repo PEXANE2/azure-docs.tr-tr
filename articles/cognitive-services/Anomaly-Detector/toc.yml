@@ -10,12 +10,8 @@
   items:
     - name: İstemci kitaplığı
       items:
-        - name: 'C# kullanma'
-          href: quickstarts/detect-data-anomalies-csharp-sdk.md
-        - name: Python’u kullanma
-          href: quickstarts/detect-data-anomalies-python-sdk.md
-        - name: Node.js'yi kullanma
-          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+        - name: Anomali Algılayıcısı istemci kitaplıkları
+          href: ./quickstarts/client-libraries.md
     - name: REST API
       items:
         - name: 'C# kullanma'

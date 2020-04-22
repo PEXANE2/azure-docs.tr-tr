@@ -208,6 +208,8 @@
           href: how-to-connect-pta-quick-start.md
         - name: Geçişli kimlik doğrulaması hakkında SSS
           href: how-to-connect-pta-faq.md
+        - name: Azure AD Connect “Yapılandırmayın” ile PTA’yı devre dışı bırakma
+          href: how-to-connect-pta-disable-do-not-configure.md
     - name: Federasyon Hizmetlerini Yönetme
       items:
         - name: Azure AD Connect’yi federasyon ile yönetme

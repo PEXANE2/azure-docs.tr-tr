@@ -641,6 +641,10 @@
       items:
         - name: Büyük verileri işleme
           href: ../blobs/data-lake-storage-data-scenarios.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Azure hizmetleri ile tümleştirme
+          href: ../blobs/data-lake-storage-integrate-with-azure-services.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Sorgu hızlandırmayla verileri filtreleme
+          href: data-lake-storage-query-acceleration.md
         - name: Hadoop için Azure Blob Dosya Sistemi sürücüsü
           href: ../blobs/data-lake-storage-abfs-driver.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure Blob Dosya Sistemi URI'si
@@ -790,6 +794,10 @@
               href: data-lake-storage-explorer.md
             - name: Hadoop Dosya Sistemi CLI
               href: ../blobs/data-lake-storage-use-hdfs-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Sorgu
+          items:
+            - name: Sorgu hızlandırmayla veri filtreleme
+              href: data-lake-storage-query-acceleration-how-to.md
         - name: Aktarma
           items:
             - name: AzCopy
@@ -838,6 +846,8 @@
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
+        - name: Sorgu hızlandırma
+          href: query-acceleration-sql-reference.md
         - name: AzCopy v10
           items:
             - name: azcopy

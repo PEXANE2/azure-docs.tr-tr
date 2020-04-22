@@ -156,8 +156,6 @@
         - name: Tanımlayıcı ekleme
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
-        - name: V3 Authoring'e geçme
-          href: luis-migration-authoring-entities.md
         - name: REST API’ler ile
           items:
             - name: Node.js kullanarak program aracılığıyla uygulama derleme
@@ -193,6 +191,8 @@
           displayName: 'import, export'
     - name: Yayımlama
       href: luis-how-to-publish-app.md
+    - name: Sorgu tahmini çalışma zamanı
+      href: luis-get-started-get-intent-from-browser.md
     - name: Uygulama yönetme
       items:
         - name: Azure kaynakları
@@ -216,11 +216,10 @@
       items:
         - name: Geliştiriciler için
           href: developer-reference-resource.md
-        - name: Yazma API’leri
-          href: luis-migration-api-authoring.md
-        - name: V3 API'ye geçiş
+        - name: V3 Yazma API’lerine geçme
+          href: luis-migration-authoring-entities.md
+        - name: V3 Tahmin API’lerine geçme
           href: luis-migration-api-v3.md
-          displayName: 'json, response, verbose, dynamic, dynamic list object, brackets, array, role, show-all-intents,prebuilt domain, domain, external entities, "$instance",TimezoneOffset, datetimeReference, overridePredictions, override'
         - name: V2 API’ye geçiş
           href: luis-migration-api-v1-to-v2.md
     - name: Kapsayıcıları kullanma

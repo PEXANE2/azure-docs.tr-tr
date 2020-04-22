@@ -119,7 +119,11 @@
             - name: Veri bulma ve sınıflandırma
               href: sql-database-data-discovery-and-classification.md
             - name: Güvenlik açığı değerlendirmesi
-              href: sql-vulnerability-assessment.md
+              items:
+                - name: Güvenlik açığı değerlendirmesi
+                  href: sql-vulnerability-assessment.md
+                - name: VA taramalarını güvenlik duvarlarının ve sanal ağların arkasında depolama
+                  href: sql-database-vulnerability-assessment-storage.md
             - name: Gelişmiş Tehdit Koruması
               href: sql-database-threat-detection-overview.md
             - name: Güvenlik öznitelikleri

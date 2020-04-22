@@ -1,0 +1,141 @@
+- name: Genel
+  href: index.yml
+- name: Genel Bakış
+  items:
+    - name: Azure Key Vault hakkında
+      href: overview.md
+    - name: 'Anahtarlar, gizli diziler ve sertifikalar hakkında'
+      href: about-keys-secrets-certificates.md
+- name: Öğreticiler
+  items:
+    - name: Azure Sanal Makinesi
+      items:
+        - name: .NET’te Windows sanal makinesiyle Azure Key Vault’u kullanma
+          href: tutorial-net-windows-virtual-machine.md
+        - name: Python’da Windows sanal makinesiyle Azure Key Vault’u kullanma
+          href: tutorial-python-windows-virtual-machine.md
+    - name: .NET’te Azure web uygulamasıyla Azure Key Vault’u kullanma
+      href: tutorial-net-create-vault-azure-web-app.md
+- name: Kavramlar
+  items:
+    - name: Temel kavramlar
+      href: basic-concepts.md
+    - name: Güvenlik
+      items:
+        - name: Azure Key Vault güvenliği
+          href: overview-security.md
+        - name: Anahtar Kasasını kullanmanın en iyi yöntemleri - Azure Key Vault
+          href: best-practices.md
+        - name: Azure Key Vault güvenlik alanları
+          href: overview-security-worlds.md
+        - name: Ağ Güvenliği
+          href: network-security.md
+        - name: Anahtar kasasına güvenli erişim - Azure Key Vault
+          href: secure-your-key-vault.md
+        - name: Anahtar Kasası için Azure Güvenlik Temelleri
+          href: security-baseline.md
+        - name: Azure Key Vault için güvenlik önerileri
+          href: security-recommendations.md
+    - name: Bildirimler (önizleme)
+      items:
+        - name: Azure Event Grid ile izleme (önizleme)
+          href: event-grid-overview.md
+    - name: Geçici silme
+      items:
+        - name: Azure Key Vault geçici silme
+          href: overview-soft-delete.md
+    - name: 'Kimlik doğrulaması, istekler ve yanıtlar'
+      href: authentication-requests-and-responses.md
+    - name: Azure Key Vault azaltma yönergeleri
+      href: overview-throttling.md
+    - name: Azure Key Vault için sanal ağ hizmet uç noktaları - Azure Key Vault
+      href: overview-vnet-service-endpoints.md
+- name: Nasıl yapılır kılavuzları
+  items:
+    - name: Kimlik doğrulaması
+      items:
+        - name: App Service yönetilen kimlik kullanma
+          href: managed-identity.md
+        - name: Erişim denetimi ilkesi kullanma
+          href: group-permissions-for-apps.md
+    - name: Geliştirme
+      items:
+        - name: Azure Key Vault Geliştirici Kılavuzu
+          href: developers-guide.md
+        - name: Web Uygulaması gizli dizilerini kaydetme
+          href: vs-secure-secret-appsettings.md
+        - name: .NET ile hizmetten hizmete kimlik doğrulaması
+          href: service-to-service-authentication.md
+        - name: Key Vault Bağlı Hizmetini kullanma
+          href: vs-key-vault-add-connected-service.md
+    - name: İzleme ve yönetme
+      items:
+        - name: Azure Key Vault için izleme ve uyarı yapılandırma
+          href: alert.md
+        - name: Azure Key Vault’u Azure İlkesiyle tümleştirme
+          href: azure-policy.md
+        - name: Azure Key Vault günlüğü
+          href: logging.md
+        - name: Azure Event Grid ve Logic Apps aracılığıyla bildirim alma
+          href: event-grid-logicapps.md
+        - name: Azure Event Grid ve Azure Otomasyonu aracılığıyla bildirim alma
+          href: event-grid-tutorial.md
+    - name: Güvenlik
+      items:
+        - name: Azure Özel Bağlantı Hizmeti ile tümleştirme
+          href: private-link-service.md
+        - name: Güvenlik duvarının ardında Anahtar Kasası’na erişme - Azure Key Vault
+          href: access-behind-firewall.md
+    - name: Geçici silme
+      items:
+        - name: CLI ile geçici silmeyi kullanma
+          href: soft-delete-cli.md
+        - name: PowerShell ile geçici silmeyi kullanma
+          href: soft-delete-powershell.md
+    - name: Sorun giderme
+      items:
+        - name: Abonelik taşıma işlemi sonrasında anahtar kasası kiracı kimliğini değiştirme
+          href: subscription-move-fix.md
+- name: Başvuru
+  items:
+    - name: REST API hata kodları - Azure Key Vault
+      href: rest-error-codes.md
+    - name: Ortak parametreler ve üst bilgiler
+      href: common-parameters-and-headers.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: Resource Manager şablonu
+      href: /azure/templates/microsoft.keyvault/allversions
+      displayName: ARM
+- name: Kaynaklar
+  items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/browse/?products=azure-key-vault
+    - name: Fiyatlandırma
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: Bölge kullanılabilirliği
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: Hizmet Düzeyi Sözleşmesi (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: Hizmet sınırlamaları
+      href: ../general/service-limits.md
+    - name: Hizmet durumu
+      href: 'https://azure.microsoft.com/status/'
+    - name: Hizmet güncelleştirmeleri
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: Blog
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: Ürün Geri Bildirimi
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
