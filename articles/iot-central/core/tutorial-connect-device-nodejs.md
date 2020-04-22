@@ -7,20 +7,23 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: b7aebb5b9c1aa6566cedda869f97f2d1aa20df83
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.custom: mqtt
+ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673960"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758191"
 ---
-# <a name="tutorial-create-and-connect-a-nodejs-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Bir Düğüm.js istemci sebeb uygulaması oluşturun ve Azure IoT Merkezi uygulamanıza bağlayın (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Öğretici: Bir istemci uygulaması oluşturun ve Azure IoT Merkezi uygulamanıza bağlayın (Node.js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
+
 Bu öğretici, bir aygıt geliştiricisi olarak Bir Düğüm.js istemci uygulamasını Azure IoT Merkezi uygulamanıza nasıl bağlayacaklarını gösterir. Düğüm.js uygulaması bir çevre sensör cihazının davranışını simüle eder. IoT Central'da bir _aygıt şablonu_ oluşturmak için örnek bir _aygıt yetenek modeli_ kullanırsınız. Bir işleç bir aygıtla etkileşim etemesini sağlamak için aygıt şablonuna görünümler eklersiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Aygıt şablonu oluşturmak için aygıt yeteneği modelini aktarın.
@@ -325,7 +328,12 @@ Aygıtın komutlara ve özellik güncelleştirmelerine nasıl yanıt verebilece�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aygıt yeteneği modelleri ve kendi cihaz şablonlarınızı nasıl oluşturup oluşturabilirsiniz hakkında daha fazla bilgi edinmek için nasıl yapılacağınız kılavuzuna devam edin:
+Bir aygıt geliştiricisi olarak, Artık Node.js kullanarak bir aygıtın nasıl oluşturulabildiğini öğrendiğinize göre, bazı sonraki adımlar şunlardır:
+
+- Gerçek bir aygıtı IoT Central'a nasıl bağlayabilirsiniz, [MXChip IoT DevKit aygıtını Azure IoT Central uygulama](./howto-connect-devkit.md) nasıl yapılan dır makalenize bağlayın.
+- IoT Central'a cihazları nasıl kaydedebilirsiniz ve IoT Central'ın aygıt bağlantılarını nasıl güvence altına aldığı hakkında daha fazla bilgi edinmek için [Azure IoT Central'a bağlan'ı](./concepts-get-connected.md) okuyun.
+
+IoT Central öğreticileri setine devam etmek ve bir IoT Central çözümü oluşturma hakkında daha fazla bilgi edinmek isterseniz, bkz.
 
 > [!div class="nextstepaction"]
-> [Yeni bir IoT aygıt türü tanımlama](./howto-set-up-template.md)
+> [Ağ geçidi cihaz şablonu oluşturma](./tutorial-define-gateway-device-type.md)

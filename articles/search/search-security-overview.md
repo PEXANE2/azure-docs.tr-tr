@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: fe7d076fab6a70736843fc644cd56bef44a55df2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/21/2020
+ms.openlocfilehash: 4db9624fbc71e48fcc10ae1d9a1d700d301248a2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415117"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759538"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da güvenlik ve veri gizliliği
 
@@ -40,7 +40,7 @@ Standartlara uygunluk genel olarak kullanılabilir özellikler için geçerlidir
 
 | Güvenlik katmanı | Açıklama |
 |----------------|-------------|
-| Aktarım sırasında şifreleme <br>(HTTPS/SSL/TLS) | Azure Bilişsel Arama, HTTPS bağlantı noktası 443'ü dinler. Platform genelinde, Azure hizmetlerine bağlantılar şifrelenir. <br/><br/>Tüm istemciden hizmete Azure Bilişsel Arama etkileşimleri SSL/TLS 1.2 özelliklidir.  Hizmetinizin SSL bağlantıları için TLSv1.2 kullandığınızdan emin olun.|
+| Aktarım sırasında şifreleme <br>(HTTPS/SSL/TLS) | Azure Bilişsel Arama, HTTPS bağlantı noktası 443'ü dinler. Platform genelinde, Azure hizmetlerine bağlantılar şifrelenir. <br/><br/>Tüm istemciden hizmete Azure Bilişsel Arama etkileşimleri SSL/TLS 1.2 şifrelemesini kullanır. Önceki sürümler (1.0 veya 1.1) desteklenmez.|
 | Bekleme sırasında şifreleme <br>Microsoft yönetilen anahtarlar | Şifreleme, dizin oluşturma işleminde tamamen içselleştirilmiştir ve tamamlanma süresi veya dizin boyutu üzerinde ölçülebilir bir etkisi yoktur. Tam olarak şifrelenmemiş (Ocak 2018'den önce oluşturulan) bir dizin için artımlı güncelleştirmeler de dahil olmak üzere tüm dizin oluşturmada otomatik olarak oluşur.<br><br>Dahili olarak şifreleme, 256 bit [AES şifrelemesi](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)kullanılarak Azure Depolama Hizmeti Şifrelemesi'ne dayanır. [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)<br><br> Şifreleme, Microsoft tarafından dahili olarak yönetilen ve evrensel olarak uygulanan sertifikalar ve şifreleme anahtarlarıyla Azure Bilişsel Arama'ya dahilidir. Şifrelemeyi açamaz veya kapatamazsınız, kendi anahtarlarınızı yönetemez veya değiştiremezsiniz veya portaldaki veya programlı olarak şifreleme ayarlarını görüntüleyemezsiniz.<br><br>24 Ocak 2018'de duyurulan şifreleme, tüm bölgelerde ki ücretsiz katman da dahil olmak üzere tüm hizmet katmanları için geçerlidir. Tam şifreleme için, şifrelemenin oluşması için bu tarihten önce oluşturulan dizinlerin düşürülmesi ve yeniden oluşturulması gerekir. Aksi takdirde, yalnızca 24 Ocak'tan sonra eklenen yeni veriler şifrelenir.|
 | Bekleme sırasında şifreleme <br>Müşteri tarafından yönetilen anahtarlar | Müşteri tarafından yönetilen anahtarlarla şifreleme artık ocak 2019'da veya sonrasında oluşturulan arama hizmetleri için genel olarak kullanılabilir. Ücretsiz (paylaşılan) hizmetlerde desteklenmez.<br><br>Azure Bilişsel Arama dizinleri ve eşanlamlı haritalar artık Azure Key Vault'ta müşteri tarafından yönetilen anahtarlarla birlikte şifrelenebilir. Daha fazla bilgi için Azure [Bilişsel Arama'da şifreleme anahtarlarını yönet'e](search-security-manage-encryption-keys.md)bakın.<br><br>Bu özellik, varsayılan şifrelemenin yerine istirahatte değil, buna ek olarak uygulanır.<br><br>Bu özelliği etkinleştirmek dizin boyutunu artırır ve sorgu performansını düşürür. Bugüne kadarki gözlemlere dayanarak, gerçek performans dizin tanımına ve sorgu türlerine bağlı olarak değişse de, sorgu sürelerinde %30-60'lık bir artış görmeyi bekleyebilirsiniz. Bu performans etkisi nedeniyle, bu özelliği yalnızca gerçekten gerektiren dizinlerde etkinleştirmenizi öneririz.
 

@@ -3,18 +3,17 @@ title: Yazılım planları için ön ödeme - Azure Rezervasyonları
 description: Kullanabileceğiniz kadar öde maliyetleriniz üzerinden tasarruf etmek için yazılım planları için nasıl ön ödeme yapabileceğinizi öğrenin.
 author: bandersmsft
 manager: yashesvi
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: 3e05920e495dd4aa14be6c849590a37a2bafa33f
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80757239"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759291"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Azure yazılım planları için ön ödeme yapma
 
@@ -63,7 +62,7 @@ Satın aldığınız bir SUSE veya RedHat planını iptal edemez veya değiştir
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 
-Sorularınız varsa veya yardıma ihtiyacınız varsa, [bir destek isteği oluşturun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -71,7 +70,7 @@ Rezervasyonu nasıl yöneteceklerini öğrenmek için Azure [rezervasyonlarını
 
 Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure Rezervasyonları nedir?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Azure Ayırmaları nedir?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Azure’da Rezervasyonları Yönetme](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)
 - [SUSE rezervasyon indiriminin nasıl uygulandığını anlama](../../cost-management-billing/reservations/understand-suse-reservation-charges.md)
 - [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](../../cost-management-billing/reservations/understand-reserved-instance-usage.md)

@@ -8,19 +8,21 @@ ms.author: kgremban
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 4fa3fb17f4eace8d389738fb46267a097610f175
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom:
+- mvc
+- amqp
+ms.openlocfilehash: b71db71ac61e0dcd65a2546b2164610e618dab18
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76760428"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733503"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Öğretici: Windows aygıtları için c# IoT Edge modülü geliştirin
 
 C# kodunu geliştirmek ve Azure IoT Edge çalıştıran bir Windows aygıtına dağıtmak için Visual Studio'yı kullanın.
 
-İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+İş mantığınızı uygulayan kodu doğrudan IoT Edge cihazlarınıza dağıtmak için Azure IoT Edge modüllerini kullanabilirsiniz. Bu öğreticide, algılayıcı verilerini filtreleyen bir IoT Edge modülü oluşturma ve dağıtma işlemlerinin adımları açıklanmaktadır. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -67,7 +69,7 @@ Azure IoT Edge Araçları, Visual Studio'daki desteklenen tüm IoT Edge modül d
 
 1. Visual Studio 2019'u başlatın ve **Yeni Proje Oluştur'u**seçin.
 
-2. **IoT Edge'i** arayın ve **Azure IoT Edge (Windows amd64)** projesini seçin. **İleri**'ye tıklayın.
+2. **IoT Edge'i** arayın ve **Azure IoT Edge (Windows amd64)** projesini seçin. **İleri**’ye tıklayın.
 
    ![Yeni bir Azure IoT Edge projesi oluşturun](./media/tutorial-csharp-module-windows/new-project.png)
 
@@ -93,7 +95,7 @@ Dağıtım bildirimi, kapsayıcı kayıt defterinizin kimlik bilgilerini IoT Edg
 
 1. Visual Studio çözüm gezgininde **deployment.template.json** dosyasını açın.
 
-2. İstenilen $edgeAgent özelliklerinde **kayıt kimlik bilgileri** özelliğini bulun. Projeyi oluştururken sağladığınız bilgilerden kayıt defteri adresinizotomatik olarak doldurulmalı ve ardından kullanıcı adı ve parola alanları değişken adlar içermelidir. Örnek:
+2. İstenilen $edgeAgent özelliklerinde **kayıt kimlik bilgileri** özelliğini bulun. Projeyi oluştururken sağladığınız bilgilerden kayıt defteri adresinizotomatik olarak doldurulmalı ve ardından kullanıcı adı ve parola alanları değişken adlar içermelidir. Örneğin:
 
    ```json
    "registryCredentials": {

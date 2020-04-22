@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ac44661dd5a52ba19a3b2dd461aabec1ec250bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd24650c9bf0c4de155b5bfc8723cfa1fef01548
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284883"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81755402"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Etkin Dizini'nde yönetici görevine göre yönetici rolleri
 
@@ -76,9 +76,9 @@ Görev | En az ayrıcalıklı rol | Ek roller
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Geçiş kimlik doğrulaması | Genel Yönetici | 
-Tüm yapılandırmayı okuyun | Küresel okuyucu | 
-Sorunsuz tek oturum açma | Genel Yönetici | 
+Geçiş kimlik doğrulaması | Karma Kimlik Yöneticisi | 
+Tüm yapılandırmayı okuyun | Küresel okuyucu | Karma Kimlik Yöneticisi |
+Sorunsuz tek oturum açma | Karma Kimlik Yöneticisi | 
 
 ## <a name="connect-health"></a>Connect Health
 
@@ -346,7 +346,7 @@ Kullanıcı ayarlarını güncelleştirme | Genel Yönetici |
 
 Görev | En az ayrıcalıklı rol | Ek roller
 ---- | --------------------- | ----------------
-Destek bileti gönder | Hizmet Yöneticisi | Uygulama Yöneticisi, Azure Bilgi Koruma Yöneticisi, Fatura Yöneticisi, Bulut Uygulama Yöneticisi, Uyumluluk Yöneticisi, Dynamics 365 Yöneticisi, Masaüstü Analiz Yöneticisi, Exchange Administrator, Şifre Yönetici, Intune Administrator, Skype for Business Administrator, Power BI Administrator, Ayrıcalıklı Kimlik Doğrulama Yöneticisi, SharePoint Yöneticisi, Ekipler İletişim Yöneticisi, Ekipler Yöneticisi, Kullanıcı Yöneticisi, İşyeri Analiz Yöneticisi
+Destek bileti gönder | Hizmet Yöneticisi | Uygulama Yöneticisi, Azure Bilgi Koruma Yöneticisi, Fatura Yöneticisi, Bulut Uygulama Yöneticisi, Uyumluluk Yöneticisi, Dynamics 365 Administrator, Desktop Analytics Administrator, Exchange Administrator, Password Administrator, Intune Administrator, Skype for Business Administrator, Power BI Administrator, Ayrıcalıklı Kimlik Doğrulama Yöneticisi, SharePoint Administrator, Ekipler İletişim Yöneticisi, Ekipler Yöneticisi, Kullanıcı Yöneticisi, İşyeri Analizi Yöneticisi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

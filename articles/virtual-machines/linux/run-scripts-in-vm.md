@@ -2,18 +2,17 @@
 title: Azure Linux VM'de komut dosyaları çalıştırma
 description: Bu konu, sanal bir makine içinde komut dosyalarının nasıl çalıştırılabildiğini açıklar
 services: automation
-ms.service: automation
+ms.service: virtual-machines-linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: 6175ae4263aee0ecdca5b1d768438ad20352375c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67477027"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758591"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux VM'nizde komut dosyaları çalıştırın
 
@@ -68,7 +67,7 @@ Görevleri otomatikleştirmek veya sorunları gidermek için vm komutları çal�
 
 VM'lerinizde komut dosyalarını ve komutları çalıştırmak için kullanılabilen farklı özellikler hakkında daha fazla bilgi edinin.
 
-* [Özel Komut Dosyası Uzantısı](../extensions/custom-script-linux.md)
+* [Özel Betik Uzantısı](../extensions/custom-script-linux.md)
 * [Çalıştır Komutu](run-command.md)
 * [Karma Runbook Çalışanı](../../automation/automation-hybrid-runbook-worker.md)
 * [Seri konsol](serial-console.md)

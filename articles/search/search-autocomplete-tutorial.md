@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 1d8085c6056cb0d2541999c3e9c249cde3da8834
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641262"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758115"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>İstemci uygulamalarına otomatik tamamlama ve öneriler ekleme
 
@@ -22,7 +22,7 @@ You-as-type ara, kullanıcı tarafından başlatılan sorguların verimliliğini
 Azure Bilişsel Arama'da bu deneyimleri uygulamak için şunları yapmanız gerekir:
 
 + Arka tarafta bir *önerici.*
-+ İstekte Otomatik Tamamlama veya Öneriler API'sini belirten bir *sorgu.*
++ İstekte [Otomatik Tamamlama](https://docs.microsoft.com/rest/api/searchservice/autocomplete) veya [Öneriler](https://docs.microsoft.com/rest/api/searchservice/suggestions) API'sini belirten bir *sorgu.*
 + İstemci uygulamanızda ara-as-you türü etkileşimleri işlemek için bir *Web-u II denetimi.* Bu amaçla varolan bir JavaScript kitaplığını kullanmanızı öneririz.
 
 Azure Bilişsel Arama'da, otomatik olarak tamamlanan sorgular ve önerilen sonuçlar, bir önericiye kaydolduğunuz seçili alanlardan arama dizininden alınır. Bir önerici dizinin bir parçasıdır ve hangi alanların sorguyu tamamlayan, bir sonucu öneren veya her ikisini birden yapan içeriği sağlayacağını belirtir. Dizin oluşturulduğunda ve yüklendiğinde, kısmi sorgularda eşleştirme kığımızda kullanılan önekleri depolamak için dahili olarak bir önerileyici veri yapısı oluşturulur. Öneriler için, benzersiz veya en azından tekrarlayıcı olmayan uygun alanları seçmek deneyim için gereklidir. Daha fazla bilgi için [bkz.](index-add-suggesters.md)
@@ -31,7 +31,7 @@ Bu makalenin geri kalanı sorgular ve istemci kodu üzerinde odaklanmıştır. �
 
 ## <a name="set-up-a-request"></a>İstek ayarlama
 
-İsteğin öğeleri api[(Otomatik TAMAMLAMA REST](https://docs.microsoft.com/rest/api/searchservice/autocomplete) veya [Öneri REST),](https://docs.microsoft.com/rest/api/searchservice/suggestions)kısmi bir sorgu ve bir önerici içerir.
+İsteğin öğeleri arasında you-type'lar gibi arama API'lerinden biri, kısmi bir sorgu ve bir önerici yer almaktadır. Aşağıdaki komut dosyası, otomatik tamamlama REST API'sini örnek olarak kullanarak bir isteğin bileşenlerini gösterir.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -49,7 +49,7 @@ API'ler kısmi sorguya minimum uzunluk gereksinimleri empoze etmez; bir karakter
 
 Eşleşmeler, giriş dizesinde herhangi bir yerde bir terimin başlangıcındadır. "Hızlı kahverengi tilki" göz önüne alındığında, hem otomatik tamamlama hem de öneriler "the", "quick", "brown" veya "fox"un kısmi versiyonlarında eşleşir, ancak "rown" veya "öküz" gibi kısmi düzeltme terimleriyle eşleşmez. Ayrıca, her eşleşme aşağı genişletme için kapsamı ayarlar. "Hızlı br" kısmi bir sorgu "hızlı kahverengi" veya "hızlı ekmek" maç, ancak ne "kahverengi" ne de "ekmek" kendileri tarafından "hızlı" onlardan önce sürece maç olacaktır.
 
-### <a name="apis"></a>API'ler
+### <a name="apis-for-search-as-you-type"></a>You-type olarak arama için API'ler
 
 REST ve .NET SDK başvuru sayfaları için aşağıdaki bağlantıları izleyin:
 
@@ -64,12 +64,13 @@ Otomatik tamamlama ve önerileriçin yanıtlar desen için bekleyebileceğiniz �
 
 Yanıtlar istekteki parametrelere göre şekillenir. Otomatik tamamlama için, metin tamamlamanın bir veya iki terimde gerçekleşip gerçekleşmediğini belirlemek için [**otomatik tamamlamaMode'u**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) ayarlayın. Öneriler için seçtiğiniz alan yanıtın içeriğini belirler.
 
-Yanıtı daha da hassaslaştırmak için, istek üzerinde daha fazla parametre ekleyin. Aşağıdaki parametreler hem Otomatik Tamamlama hem de Öneriler için geçerlidir.
+Öneriler için, yinelenenleri veya alakasız sonuçlar gibi görünen sonuçları önlemek için yanıtı daha da hassaslaştırmanız gerekir. Sonuçları denetlemek için, istek üzerinde daha fazla parametre ekleyin. Aşağıdaki parametreler hem otomatik tamamlama hem de öneriler için geçerlidir, ancak özellikle bir önerici birden çok alan içeriyorsa, öneriler için belki de daha gereklidir.
 
 | Parametre | Kullanım |
 |-----------|-------|
-| **$select** | Birden çok **kaynak Alanınız**varsa, hangi alanın değer`$select=GameTitle`katettiğini seçmek için **$select** kullanın ( ). |
-| **$filter** | Sonuç kümesine maç ölçütleri uygulayın (`$filter=ActionAdventure`). |
+| **$select** | Bir önericide birden çok **kaynak Alanınınız** varsa, hangi alanın`$select=GameTitle`değerlere katkıda bulunabileceğini seçmek için **$select** kullanın ( ). |
+| **aramaAlanlar** | Sorguyu belirli alanlara sınırlandırın. |
+| **$filter** | Sonuç kümesine maç ölçütleri uygulayın (`$filter=Category eq 'ActionAdventure'`). |
 | **$top** | Sonuçları belirli bir sayıyla`$top=5`sınırlandırın ( ).|
 
 ## <a name="add-user-interaction-code"></a>Kullanıcı etkileşim kodu ekleme
@@ -149,6 +150,8 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
     // Call suggest API and return results
     SuggestParameters sp = new SuggestParameters()
     {
+        Select = HotelName,
+        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
         Top = 5
     };

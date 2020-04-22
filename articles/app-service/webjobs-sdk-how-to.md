@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: a1fd22772e72cba4cce3f9fa2751dc0df0e15bb9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535607"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758900"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Olay temelli arka plan işleme için Azure Web İşleri SDK'sını kullanma
 
@@ -279,7 +279,7 @@ Bu tetikleyici ve bağlama türleri sürüm 2'ye dahildir. `Microsoft.Azure.WebJ
 
 * Blob depolama
 * Kuyruk depolama
-* Table Storage
+* Tablo depolama
 
 Diğer tetikleyici ve bağlama türlerini kullanmak için, bunları içeren `Use<binding>` NuGet `JobHostConfiguration` paketini yükleyin ve nesneye bir yöntem çağırın. Örneğin, burada gösterildiği gibi `Microsoft.Azure.WebJobs.Extensions` `UseTimers` `Main` yöntemde bir Timer tetikleyicisi, yükleme ve arama yapmak istiyorsanız:
 
@@ -423,7 +423,7 @@ static async Task Main()
 }
 ```
 
-Daha fazla ayrıntı için [Olay Hub'ları bağlayıcı](../azure-functions/functions-bindings-event-hubs-output.md#hostjson-settings) makaleye bakın.
+Daha fazla ayrıntı için [Olay Hub'ları bağlayıcı](../azure-functions/functions-bindings-event-hubs-trigger.md#host-json) makaleye bakın.
 
 ### <a name="queue-storage-trigger-configuration"></a>Sıra depolama tetikleyici yapılandırması
 

@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 0a393ae8629f1742002344ee717a6719269a6722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158665"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756796"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Bir MXChip IoT DevKit cihazını Azure IoT Merkezi uygulamanıza bağlayın
+
+*Bu makale, aygıt geliştiricileri için geçerlidir.*
 
 Bu makalede, bir MXChip IoT DevKit (DevKit) aygıtını Azure IoT Merkezi uygulamasına nasıl bağlayabileceğiniz gösterilmektedir. Cihaz, IoT Central bağlantısını yapılandırmak için DevKit aygıtı için onaylı IoT Tak ve Çalıştır (önizleme) modelini kullanır.
 
@@ -104,4 +106,7 @@ Kodu gözden geçirmek veya değiştirmek ve derlemek için [Kod Örnekleri'ne](
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir DevKit aygıtını Azure IoT Merkezi uygulamanıza nasıl bağlayabileceğinizi öğrendiğinize göre, önerilen bir sonraki adım, kendi IoT aygıtınız için [özel bir aygıt şablonu oluşturmayı](./howto-set-up-template.md) öğrenmektir.
+Aygıt geliştiricisiyseniz, önerilen bazı sonraki adımlar şunlardır:
+
+- Azure [IoT Central'da Aygıt bağlantısı](./concepts-get-connected.md) hakkında bilgi edinin
+- [Azure CLI'yi kullanarak aygıt bağlantısını](./howto-monitor-devices-azure-cli.md) nasıl izleyeceğinizi öğrenin

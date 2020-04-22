@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetlemeyi öğrenin
 description: Azure İlke'nin sanal makinelerdeki ayarları denetlemek için Konuk Yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4899f6b3108cabb4e9cdd36e4b2bc5cd2f1cbd4
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1721c0f1ca7c084d636278aabc96f8dac3293038
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538044"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759085"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi'nin Konuk Yapılandırması'nı anlayın
 
@@ -20,19 +20,25 @@ Azure İlkesi, Azure kaynaklarını denetlemenin ve [düzeltmenin](../how-to/rem
 
 Şu anda, çoğu Azure İlkesi Konuk Yapılandırma ilkesi yalnızca makine içindeki ayarları denetler. Yapılandırmaları uygulamıyorlar. Özel [durum, aşağıda başvurulan](#applying-configurations-using-guest-configuration)yerleşik bir ilkedir.
 
+## <a name="resource-provider"></a>Kaynak sağlayıcısı
+
+Konuk Yapılandırmasını kullanabileniz için kaynak sağlayıcısını kaydetmeniz gerekir. Konuk Yapılandırma ilkesinin atanması portal üzerinden yapılırsa kaynak sağlayıcısı otomatik olarak kaydedilir. [Portal](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal), [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli)üzerinden el ile kaydolabilirsiniz.
+
 ## <a name="extension-and-client"></a>Uzantı ve istemci
 
 Makine içindeki ayarları denetlemek için [sanal makine uzantısı](../../../virtual-machines/extensions/overview.md) etkinleştirilir. Uzantı, geçerli ilke atamasını ve ilgili yapılandırma tanımını karşıdan yükler.
+
+> [!Important]
+> Konuk Yapılandırma uzantısı, Azure sanal makinelerinde denetim ler gerçekleştirmek için gereklidir.
+> Uzantıyı ölçekte dağıtmak için aşağıdaki ilke tanımlarını atayın:
+>   - Windows VM'lerde Konuk Yapılandırma İlkesi'ni etkinleştirmek için ön koşulları dağıtın.
+>   - Linux VM'lerde Konuk Yapılandırma Politikası'nı etkinleştirmek için ön koşulları dağıtın.
 
 ### <a name="limits-set-on-the-extension"></a>Uzantıda belirlenen sınırlar
 
 Uzantının makine içinde çalışan uygulamaları etkilemesini sınırlamak için, Konuk Yapılandırması'nın CPU'nun %5'inden fazlasını aşmasına izin verilmez. Bu sınırlama hem yerleşik hem de özel tanımlar için vardır.
 
-## <a name="register-guest-configuration-resource-provider"></a>Konuk Yapılandırma kaynak sağlayıcısını kaydedin
-
-Konuk Yapılandırmasını kullanabileniz için kaynak sağlayıcısını kaydetmeniz gerekir. [Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)veya [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) [portalı](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)üzerinden kaydolabilirsiniz. Konuk Yapılandırma ilkesinin atanması portal üzerinden yapılırsa kaynak sağlayıcısı otomatik olarak kaydedilir.
-
-## <a name="validation-tools"></a>Doğrulama araçları
+### <a name="validation-tools"></a>Doğrulama araçları
 
 Makinenin içinde, Konuk Yapılandırma istemcisi denetimi çalıştırmak için yerel araçları kullanır.
 
@@ -50,17 +56,17 @@ Denetim tamamlandığında sonuçlar Konuk Yapılandırma kaynak sağlayıcısı
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Aşağıdaki tablo, Azure görüntülerinde desteklenen işletim sisteminin listesini gösterir:
+Konuk Yapılandırma ilkeleri yeni sürümleri kapsar. Konuk Yapılandırma aracısı uyumlu değilse, Azure pazarda kullanılabilen işletim sistemlerinin eski sürümleri hariç tutulur. Aşağıdaki tablo, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesini gösterir:
 
 |Yayımcı|Adı|Sürümler|
 |-|-|-|
-|Canonical|Ubuntu Server|14.04, 16.04, 18.04|
-|Credativ|Debian|8, 9|
-|Microsoft|Windows Server|2012 Datacenter, 2012 R2 Datacenter, 2016 Datacenter, 2019 Datacenter|
+|Canonical|Ubuntu Server|14.04 ve sonrası|
+|Credativ|Debian|8 ve sonrası|
+|Microsoft|Windows Server|2012 ve sonrası|
 |Microsoft|Windows İstemcisi|Windows 10|
-|OpenLogic|CentOS|7.3, 7.4, 7.5, 7.6, 7.7|
-|Red Hat|Red Hat Enterprise Linux|7.4, 7.5, 7.6, 7.7, 7.8|
-|Suse|SLES|12 SP3|
+|OpenLogic|CentOS|7.3 ve sonrası|
+|Red Hat|Red Hat Enterprise Linux|7.4 ve sonrası|
+|Suse|SLES|12 SP3 ve sonrası|
 
 ### <a name="unsupported-client-types"></a>Desteklenmeyen istemci türleri
 

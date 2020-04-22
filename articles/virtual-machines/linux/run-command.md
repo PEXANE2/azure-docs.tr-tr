@@ -2,24 +2,24 @@
 title: Azure'da Linux VM'de kabuk komut dosyaları çalıştırma
 description: Bu konu, Run Command özelliğini kullanarak bir Azure Linux sanal makinesinde komut ların nasıl çalıştırılabildiğini açıklar
 services: automation
-ms.service: automation
+ms.service: virtual-machines
 author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 21787854590d3ca0be2cbd6e9d167de33482c787
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80fc33a93d4d83dad1e687b176b39728fc7e8807
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72597890"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758612"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-by-using-run-command"></a>Run Komutunu kullanarak Linux VM'nizde kabuk komutları çalıştırın
 
 Run Command özelliği, bir Azure Linux VM içinde kabuk komutları çalıştırmak için sanal makine (VM) aracısını kullanır. Bu komut dosyalarını genel makine veya uygulama yönetimi için kullanabilirsiniz. VM erişimini ve ağ sorunlarını hızlı bir şekilde tanılamanıza ve düzeltmenize ve VM'yi iyi bir duruma geri almanıza yardımcı olabilir.
 
-## <a name="benefits"></a>Avantajlar
+## <a name="benefits"></a>Yararları
 
 Sanal makinelerinize birden fazla şekilde erişebilirsiniz. Run Komutu, VM aracısını kullanarak sanal makinelerinizdeki komut dosyalarını uzaktan çalıştırabilir. Linux VM'leri için Azure portalı, [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)veya [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) üzerinden Çalıştır Komutu'nu kullanırsınız.
 
@@ -65,7 +65,7 @@ az vm run-command invoke -g myResourceGroup -n myVm --command-id RunShellScript 
 > [!NOTE]
 > Komutları farklı bir kullanıcı olarak `sudo -u` çalıştırmak için bir kullanıcı hesabı belirtmek için girin.
 
-## <a name="azure-portal"></a>Azure portalında
+## <a name="azure-portal"></a>Azure portal
 
 [Azure portalındaki](https://portal.azure.com) bir VM'ye gidin ve **OPERATIONS**altında **Çalıştır komutunu** seçin. VM'de çalıştırılabilen kullanılabilir komutların listesini görürsünüz.
 

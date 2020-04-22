@@ -1,25 +1,20 @@
 ---
 title: Azure'da Linux VM boyutları
 description: Azure'da Linux sanal makineleri için kullanılabilen farklı boyutları listeler.
-services: virtual-machines-linux
-documentationcenter: ''
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: da681171-f045-4c80-a5a9-d8bd47964673
-ms.service: virtual-machines-linux
+author: ju-shim
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
-ms.author: jonbeck
-ms.openlocfilehash: 46fad0dd2e39f1f563ed248458da622ad83f061e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: jushiman
+ms.openlocfilehash: 246ab6551667f54e3ef4ec8f91573d9aaa98d64c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78161125"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758397"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Azure'daki Linux sanal makinesi boyutları
 
@@ -27,7 +22,7 @@ Bu makalede, Linux uygulamalarınızı ve iş yüklerinizi çalıştırmak için
 
 | Tür | Boyutlar | Açıklama |
 |------|-------|-------------|
-| [Genel amaç](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2  | Dengeli CPU-bellek oranı. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. |
+| [Genel amaçlı](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2  | Dengeli CPU-bellek oranı. Test ve geliştirme, küçük-orta büyüklükteki veritabanları ve küçük-orta büyüklükte trafik hacmine sahip web sunucuları için idealdir. |
 | [İşlem için iyileştirilmiş](../sizes-compute.md) | Fsv2 | Yüksek CPU-bellek oranı. Orta trafik web sunucuları, ağ cihazları, toplu işlem ve uygulama sunucuları için idealdir. |
 | [Bellek için iyileştirilmiş](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, Dv2 | Yüksek bellek-CPU oranı. İlişkisel veritabanı sunucuları, orta veya büyük boyutlu önbellekler ve bellek içi analiz için idealdir.                 |
 | [Depolama için iyileştirilmiş](../sizes-storage.md) | Lsv2 | Büyük Veri, SQL, NoSQL veritabanları, veri ambarı ve büyük işlem veritabanları için yüksek disk veri girişi ve IO idealdir.  |
@@ -59,7 +54,7 @@ Azure bilgi [işlem birimlerinin (ACU)](../acu.md) Azure SK'leri genelinde bilgi
 
 Kullanılabilen farklı VM boyutları hakkında daha fazla bilgi edinin:
 
-- [Genel amaç](../sizes-general.md)
+- [Genel amaçlı](../sizes-general.md)
 - [İşlem için iyileştirilmiş](../sizes-compute.md)
 - [Bellek için iyileştirilmiş](../sizes-memory.md)
 - [Depolama için iyileştirilmiş](../sizes-storage.md)

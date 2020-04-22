@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fef1afb9748fd6f2f59b972c451d95ae1204ef70
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 8bda712523faa90f32a12fe7eecce27dccf3a55c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011642"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756627"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Toplu İşlem için Azure Güvenlik Taban Çizgisi
 
@@ -712,7 +712,7 @@ https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account
 
 Kaynak Grafiği aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Azure Kaynak Yöneticisi (ARM) kaynaklarının oluşturulması ve kullanılması önerilir.
 
-Azure Graph ile sorgu oluşturma:
+Azure Kaynak Grafiği ile sorgu oluşturma:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -877,7 +877,7 @@ Azure Toplu İş havuzlarının kullanıcılarının (yönetici olmayanlar) işl
 
 **Yönerge**: Azure Toplu Iş birimi hesaplarınızın ve havuzlarınızın yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.Batch" ad alanında Azure İlkesi takma adlarını kullanın.
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -899,7 +899,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3: Tüm Azure Kaynakları için Güvenli Yapılandırmaları Koruyun
 
-**Yönlendirme**: Toplu Iş hesabınız ve havuzlarınızla ilgili Azure kaynakları (sanal ağlar, alt ağlar, Azure Güvenlik Duvarları, Azure Depolama Hesapları vb.) için güvenli ayarlar uygulamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın. Özel ilkeler oluşturmak için aşağıdaki ad alanlarından Azure İlkesi Takma Adları'nı kullanabilirsiniz:
+**Yönlendirme**: Toplu Iş hesabınız ve havuzlarınızla ilgili Azure kaynakları (sanal ağlar, alt ağlar, Azure Güvenlik Duvarları, Azure Depolama Hesapları vb.) için güvenli ayarlar uygulamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın. Özel ilkeler oluşturmak için aşağıdaki ad alanlarından Azure İlkesi takma adlarını kullanabilirsiniz:
 
 - Microsoft.Batch
 
@@ -987,7 +987,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 - Toplu iş hesaplarındaki tanılama günlükleri etkinleştirilmeli
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

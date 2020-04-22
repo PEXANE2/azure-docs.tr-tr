@@ -4,12 +4,12 @@ description: Uygulamanız için önceden oluşturulmuş bir PHP kapsayıcısın�
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: ad121d605e521704597471b446fa79cb43dfccc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255845"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758882"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Linux PHP uygulamasını yapılandırma
 
@@ -86,7 +86,7 @@ App Service için varsayılan PHP görüntüsü Apache kullanır ve uygulamanız
 <IfModule mod_rewrite.c>
     RewriteEngine on
 
-    RewriteRule ^.*$ /public/$1 [NC,L,QSA]
+    RewriteRule ^(.*)$ /public/$1 [NC,L,QSA]
 </IfModule>
 ```
 
@@ -116,7 +116,7 @@ PHP yüklemenizde değişiklik yapmanız gerekiyorsa, aşağıdaki adımları iz
 
 PHP_INI_USER, PHP_INI_PERDIR ve PHP_INI_ALL yönergelerini özelleştirmek için [(bkz. php.ini yönergeleri),](https://www.php.net/manual/ini.list.php)uygulamanızın kök dizinine *bir .htaccess* dosyası ekleyin.
 
-*.htaccess* dosyasında `php_value <directive-name> <value>` sözdizimini kullanarak yönergeleri ekleyin. Örnek:
+*.htaccess* dosyasında `php_value <directive-name> <value>` sözdizimini kullanarak yönergeleri ekleyin. Örneğin:
 
 ```
 php_value upload_max_filesize 1000M
@@ -198,7 +198,7 @@ Değişikliklerin etkili olması için uygulamayı yeniden başlatın.
 Çalışan bir PHP uygulaması Uygulama Hizmeti'nde farklı davrantığında veya hataları varsa, aşağıdakileri deneyin:
 
 - [Günlük akışına erişin.](#access-diagnostic-logs)
-- Uygulamayı üretim modunda yerel olarak test edin. Uygulama Hizmeti, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin yerel üretim modunda beklendiği gibi çalıştığından emin olmanız gerekir. Örnek:
+- Uygulamayı üretim modunda yerel olarak test edin. Uygulama Hizmeti, Node.js uygulamalarınızı üretim modunda çalıştırır, bu nedenle projenizin yerel üretim modunda beklendiği gibi çalıştığından emin olmanız gerekir. Örneğin:
     - *Besteci.json*bağlı olarak, farklı paketler üretim modu için`require` yüklenebilir (vs). `require-dev`
     - Bazı web çerçeveleri statik dosyaları üretim modunda farklı şekilde dağıtabilir.
     - Bazı web çerçeveleri üretim modunda çalışırken özel başlangıç komut dosyaları kullanabilir.

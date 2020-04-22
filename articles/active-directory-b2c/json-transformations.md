@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/10/2019
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad8fcf578ae1c89856a9d7929af0aec813cb4082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b42c2a414333e7ed262441321a808fc45425fc3b
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187602"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756746"
 ---
 # <a name="json-claims-transformations"></a>JSON dönüşümleri iddia ediyor
 
@@ -223,6 +223,39 @@ Aşağıdaki örnekte, talep dönüştürme JSON verilerinden `id` öğeayıklar
 - Çıktı talepleri:
     - **çıkarılanTalep**: 6353399
 
+## <a name="getsingleitemfromjson"></a>GetSingleItemFromJson
+
+JSON verilerinden ilk öğeyi alır.
+
+| Öğe | DönüşümTalep Türü | Veri Türü | Notlar |
+| ---- | ----------------------- | --------- | ----- |
+| Girişİddia | inputJson | string | Öğeyi JSON verilerinden almak için talep dönüştürme tarafından kullanılan ClaimTypes. |
+| ÇıktılarTalep | anahtar | string | JSON'daki ilk element anahtarı. |
+| ÇıktılarTalep | value | string | JSON'daki ilk öğe değeri. |
+
+Aşağıdaki örnekte, talep dönüştürme JSON verilerinden ilk öğeyi (verilen ad) ayıklar.
+
+```XML
+<ClaimsTransformation Id="GetGivenNameFromResponse" TransformationMethod="GetSingleItemFromJson">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="json" TransformationClaimType="inputJson" />
+  </InputClaims>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="givenNameKey" TransformationClaimType="key" />
+    <OutputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="value" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+### <a name="example"></a>Örnek
+
+- Giriş talepleri:
+  - **inputJson**: {"givenName": "Emilty", "lastName": "Smith"}
+- Çıktı talepleri:
+  - **key**: givenName
+  - **değer**: Emilty
+
+
 ## <a name="getsinglevaluefromjsonarray"></a>GetSingleValueFromJsonArray
 
 İlk öğeyi bir JSON veri dizisinden alır.
@@ -294,3 +327,5 @@ Giriş iddiası:
   }
 }
 ```
+
+

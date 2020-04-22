@@ -1,20 +1,20 @@
 ---
-title: Anahtar Kasası için Azure Güvenlik Taban Çizgisi
-description: Anahtar Kasası için Azure Güvenlik Taban Çizgisi
+title: Anahtar Kasası için Azure Güvenlik Temelleri
+description: Anahtar Kasası için Azure Güvenlik Temelleri
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 46fa0160dd8b37e89cdd77ba8acdae294fddbefe
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 6e660c1244dd5566fbfb45a6da37d39294354ccb
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81616899"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756997"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Taban Çizgisi
+# <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Temelleri
 
 Anahtar Vault için Azure Güvenlik Taban Çizgisi, dağıtımınızın güvenlik duruşunu geliştirmenize yardımcı olacak öneriler içerir.
 
@@ -881,7 +881,7 @@ Anahtar Kasası için Tanı Ayarlarını Olay Hub'ına Dağıtma
 
 Azure Anahtar Kasası örnekleriniz için güvenli bir yapılandırma taban çizgisi olarak Azure Güvenlik Merkezi'nden gelen önerileri kullanın.
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

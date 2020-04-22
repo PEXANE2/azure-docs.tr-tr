@@ -3,12 +3,12 @@ title: Azure İşlevler için host.json başvurusu 2.x
 description: V2 çalışma zamanı ile Azure İşlemeleri ana bilgisayar.json dosyası için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7b3c9d15fc8cf3a1651c44a5656f731a7820e344
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81405478"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758843"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure İşlevler 2.x ve sonrası için host.json başvurusu 
 
@@ -216,7 +216,7 @@ Yapılandırma ayarı [Dayanıklı Fonksiyonlar için bağlamalarda](durable/dur
 
 ## <a name="eventhub"></a>eventHub
 
-Yapılandırma ayarları Event [Hub tetikleyicileri ve bağlamaları](functions-bindings-event-hubs-output.md#host-json)bulunabilir. 
+Yapılandırma ayarları Event [Hub tetikleyicileri ve bağlamaları](functions-bindings-event-hubs-trigger.md#host-json)bulunabilir. 
 
 ## <a name="extensions"></a>Uzantı -ları
 

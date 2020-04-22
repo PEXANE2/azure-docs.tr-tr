@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 1c7e18214ec175b8b21d25643098631a044da19c
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549041"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758323"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi
 
@@ -335,7 +335,7 @@ Azure İlkesi nasıl kullanılır:https://docs.microsoft.com/azure/governance/po
 
 ### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Azure Active Directory ile tek oturum açma (SSO) kullanma
 
-**Kılavuz**: Microsoft Azure, Azure Etkin Dizini'ni (AD) temel alan kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure Etkinlik Hub'ları ile Azure AD kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanız gerekmemese de. Bunun yerine, Microsoft Identity platformundan Bir OAuth 2.0 erişim jetonu isteyebilirsiniz. Belirteç istemek için kaynak https://eventhubs.azure.net/adı. Azure AD, uygulamayı çalıştıran güvenlik ilkesinin (kullanıcı, grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulama başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama daha sonra isteği Azure Olay Hub'ları kaynaklarına yetkilendirmek için erişim belirteci'ni kullanabilir.
+**Kılavuz**: Microsoft Azure, Azure Etkin Dizini'ni (AD) temel alan kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure Etkinlik Hub'ları ile Azure AD kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanız gerekmemese de. Bunun yerine, Microsoft Identity platformundan Bir OAuth 2.0 erişim jetonu isteyebilirsiniz. Belirteci istemek için kaynak adı\/https: /eventhubs.azure.net/. Azure AD, uygulamayı çalıştıran güvenlik ilkesinin (kullanıcı, grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulama başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama daha sonra isteği Azure Olay Hub'ları kaynaklarına yetkilendirmek için erişim belirteci'ni kullanabilir.
 
 Etkinlik Hub'ları kaynaklarına erişmek için Azure AD ile bir uygulamanın kimliğinin doğrulanması:https://docs.microsoft.com/azure/event-hubs/authenticate-application
 
@@ -631,7 +631,7 @@ Azure Etkinlik Günlüğü etkinlikleri için uyarılar oluşturma:https://docs.
 
 **Yönerge**: Aboneliğinizdeki tüm kaynakları (Azure Olay Hub'ları ad alanları dahil) sorgulamak ve keşfetmek için Azure Kaynak Grafiği'ni kullanın. Kiracınızda uygun (okuma) izinlere sahip olduğundan ve aboneliklerinizdeki tüm Azure aboneliklerinin yanı sıra kaynakları sıralayabildiğinizden emin olun.
 
-Azure Graph ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Azure Kaynak Grafiği ile sorgu oluşturma:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 Azure Aboneliklerinizi görüntüleme:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
@@ -779,7 +779,7 @@ Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapıla
 
 Etkinlik Hub'ları için Azure Yerleşik İlkesi ad alanı:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 Azure İlkesi nasıl yapılandırılabilen ve yönetilen:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

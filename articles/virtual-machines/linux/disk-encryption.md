@@ -2,17 +2,17 @@
 title: Azure Yönetilen Disklerin sunucu tarafı şifrelemesi - Azure CLI
 description: Azure Depolama, depolama kümeleri için kalıcı hale gelmeden önce verilerinizi istirahatte şifreleyerek korur. Yönetilen disklerinizin şifrelemesi için Microsoft tarafından yönetilen anahtarlara güvenebilir veya şifrelemeyi kendi anahtarlarınızla yönetmek için müşteri tarafından yönetilen anahtarları kullanabilirsiniz.
 author: roygara
-ms.date: 04/02/2020
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 68341de82ae15df91477947664c500caaa96a09a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 151c84424e33233cd48414875230a63df598d8e2
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81452732"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757437"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -72,7 +72,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [Azure K
 
 - Bu özellik diskiniz için etkinleştirilmişse, devre dışı kalamazsınız.
     Bu işi halletmeniz gerekiyorsa, tüm verileri müşteri tarafından yönetilen anahtarları kullanmayan tamamen farklı yönetilen bir diske [kopyalamanız](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) gerekir.
-- Sadece ["yumuşak" ve "sert" RSA boyutları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) 2048, başka anahtar lar veya boyutlarda desteklenir.
+- Sadece ["yumuşak" ve "sert" RSA boyutları](../../key-vault/keys/about-keys.md) 2048, başka anahtar lar veya boyutlarda desteklenir.
 - Sunucu tarafı şifrelemesi ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, aynı müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, aynı müşteri tarafından yönetilen anahtarlarla şifrelenmelidir.
 - Paylaşılan resim galerisinde sunucu tarafı şifrelemesi ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen özel görüntüler kullanılamaz.

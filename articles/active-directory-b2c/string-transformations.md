@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/16/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: acacba591c9b895f1bd6abfbab5d3d4a4c858d12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08107874598a68fb5ce2a1a8a98b6a81d7b94d4
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472784"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756784"
 ---
 # <a name="string-claims-transformations"></a>String talepleri dönüşümleri
 
@@ -615,13 +615,17 @@ Bir dize `claimToMatch` talebi `matchTo` ve giriş parametresi eşit olup olmad�
 | inputClaim | iddiaToMatch | string | Karşılaştırılacak olan talep türü. |
 | ınputparameter | matchTo | string | Eşleşmek için normal ifade. |
 | ınputparameter | outputClaimIfMatched | string | Dizeleri eşitse ayarlanacak değer. |
+| ınputparameter | extractGroups | boole | [İsteğe bağlı] Regex eşleşmesinin grup değerlerini ayıklayıp ayıklamayacağı belirtilir. Olası değerler: `true` `false` , veya (varsayılan). | 
 | ÇıktılarTalep | outputClaim | string | Normal ifade eşleşirse, bu çıktı `outputClaimIfMatched` talebi giriş parametresinin değerini içerir. Ya da kibrit yoksa null. |
 | ÇıktılarTalep | regexCompareResultClaim | boole | Normal ifade, eşleştirme sonucu olarak `true` veya `false` eşleçlik sonucuna göre ayarlanacak sonuç çıktısı talep türüyle eşleşir. |
+| ÇıktılarTalep| İddianın adı| string | ExtractGroups giriş parametresi doğru ayarlanmışsa, bu talep dönüştürmeden sonra üretilen talep türlerinin listesi çağrılmıştır. ClaimType adı Regex grup adı eşleşmelidir. | 
 
-Örneğin, telefon numarası normal ifade desenine bağlı olarak sağlanan telefon numarasının geçerli olup olmadığını denetler.
+### <a name="example-1"></a>Örnek 1
+
+Sağlanan telefon numarasının geçerli olup olmadığını, telefon numarası normal ifade desenine göre denetler.
 
 ```XML
-<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="setClaimsIfRegexMatch">
+<ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
   </InputClaims>
@@ -636,8 +640,6 @@ Bir dize `claimToMatch` talebi `matchTo` ve giriş parametresi eşit olup olmad�
 </ClaimsTransformation>
 ```
 
-### <a name="example"></a>Örnek
-
 - Giriş talepleri:
     - **claimToMatch**: "64854114520"
 - Giriş parametreleri:
@@ -647,6 +649,39 @@ Bir dize `claimToMatch` talebi `matchTo` ve giriş parametresi eşit olup olmad�
     - **outputClaim**: "isPhone"
     - **regexCompareResultClaim**: true
 
+### <a name="example-2"></a>Örnek 2
+
+Sağlanan e-posta adresinin geçerli olup olmadığını denetler ve e-posta takma adını döndürün.
+
+```XML
+<ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
+  <InputClaims>
+    <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
+  </InputClaims>
+  <InputParameters>
+    <InputParameter Id="matchTo" DataType="string" Value="(?&lt;mailAlias&gt;.*)@(.*)$" />
+    <InputParameter Id="outputClaimIfMatched" DataType="string" Value="isEmail" />
+    <InputParameter Id="extractGroups" DataType="boolean" Value="true" />
+  </InputParameters>
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="validationResult" TransformationClaimType="outputClaim" />
+    <OutputClaim ClaimTypeReferenceId="isEmailString" TransformationClaimType="regexCompareResultClaim" />
+    <OutputClaim ClaimTypeReferenceId="mailAlias" />
+  </OutputClaims>
+</ClaimsTransformation>
+```
+
+- Giriş talepleri:
+    - **claimToMatch**:emily@contoso.com" "
+- Giriş parametreleri:
+    - **matchTo**:`(?&lt;mailAlias&gt;.*)@(.*)$`
+    - **outputClaimIfMatched**: "isEmail"
+    - **extractGroups**: true
+- Çıktı talepleri:
+    - **outputClaim**: "isEmail"
+    - **regexCompareResultClaim**: true
+    - **mailAlias**: emily
+    
 ## <a name="setclaimsifstringsareequal"></a>SetClaimsIfStringsAreEqual
 
 Bir dize talebi `matchTo` ve giriş parametresi eşit olup olmadığını denetler `stringMatchMsg` `stringMatchMsgCode` ve çıktı taleplerini, karşılaştırma sonucu olarak `true` veya `false` temel alınacak karşılaştırma sonucunu karşılaştırma sonucuyla karşılaştırın, mevcut değer ve giriş parametreleriyle birlikte ayarlar.

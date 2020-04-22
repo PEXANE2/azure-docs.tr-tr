@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure İlkesi Konuk Yapılandırma ilkesini nasıl oluşturabilirsiniz öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: deb51cf502d26dc994bf74ef3cb0c728f624afde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b06aa0a70bfa17d67da9c6af447138f8bb9e712
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313974"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757423"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -25,6 +25,11 @@ Azure veya Azure olmayan bir makinenin durumunu doğrulamak için kendi yapılan
 
 > [!IMPORTANT]
 > Konuk Yapılandırması ile özel ilkeler bir Önizleme özelliğidir.
+>
+> Konuk Yapılandırma uzantısı, Azure sanal makinelerinde denetim ler gerçekleştirmek için gereklidir.
+> Uzantıyı ölçekte dağıtmak için aşağıdaki ilke tanımlarını atayın:
+>   - Windows VM'lerde Konuk Yapılandırma İlkesi'ni etkinleştirmek için ön koşulları dağıtın.
+>   - Linux VM'lerde Konuk Yapılandırma Politikası'nı etkinleştirmek için ön koşulları dağıtın.
 
 ## <a name="install-the-powershell-module"></a>PowerShell modüllerini yükleyin
 
@@ -176,8 +181,10 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker -out ./Config
+AuditBitLocker ./Config
 ```
+
+Proje klasöründe `config.ps1` ad içeren bu dosyayı kaydedin. `./config.ps1` Terminalde çalıştırarak PowerShell'de çalıştırın. Yeni bir mof dosyası oluşturulur.
 
 Komut `Node AuditBitlocker` teknik olarak gerekli değildir, ancak varsayılan `AuditBitlocker.mof` yerine adlı `localhost.mof`bir dosya üretir. .mof dosya adının yapılandırmayı izlemesi, ölçekte çalışırken birçok dosyayı düzenlemeyi kolaylaştırır.
 

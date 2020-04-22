@@ -7,14 +7,16 @@ ms.date: 12/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 69660152458de26e9dbcbf1f50db6ce6824351d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77027075"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759094"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge aygıtlarını Azure IoT Merkezi uygulamasına bağlama
+
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
 
 IoT Edge üç bileşenden oluşur:
 
@@ -72,4 +74,4 @@ Bir IoT Edge aygıtını ağ geçidi aygıtı olarak seçtiyseniz, ağ geçidi a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık IoT Merkezi uygulama şablonlarının ne olduğunu bildiğinize [göre, bir IoT Merkezi Uygulaması oluşturarak](quick-deploy-iot-central.md)başlayın.
+Aygıt geliştiricisiyseniz, önerilen bir sonraki adım [IoT Central'daki ağ geçidi aygıtı türleri](./tutorial-define-gateway-device-type.md)hakkında bilgi edinmektir.

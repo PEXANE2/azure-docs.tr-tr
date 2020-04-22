@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 72d7a2dd112e5e7a5105ff977e3917ccdfd7b53e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5724a9e4308f05a82df84ae6a7d5602747f5a140
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500300"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757365"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure Operasyonel Güvenlik en iyi uygulamaları
 Bu makalede, Azure'daki verilerinizi, uygulamalarınızı ve diğer varlıklarınızı korumak için bir dizi operasyonel en iyi uygulama sağlanmaktadır.
@@ -108,7 +108,7 @@ Tehditleri önlemek, algılamak ve bunlara yanıt vermek için en iyi uygulamala
 **Ayrıntı**: [Azure Sentinel'in](/azure/sentinel/overview) özelliklerini ve özelliklerini inceleyin ve bunları şirket içinde kullanmakta olduğunuz özelliklerle karşılaştırın. Kuruluşunuzun SIEM gereksinimlerini karşılıyorsa Azure Sentinel'i benimsemeyi düşünün.
 
 **En iyi uygulama**: Araştırmaya öncelik verebilmek için en ciddi güvenlik açıklarını bulun.   
-**Ayrıntı**: Azure Güvenlik Merkezi'nde yerleşik Azure ilkeleri ve girişimlerinden kaynaklanan önerileri görmek için [Azure güvenli puanınızı](../../security-center/security-center-secure-score.md) gözden geçirin. Bu öneriler, güvenlik güncelleştirmeleri, uç nokta koruması, şifreleme, güvenlik yapılandırmaları, eksik WAF, internete bağlı VM'ler ve daha birçok riskin giderilen en önemli risklerin giderilene yardımcı olur.
+**Ayrıntı**: Azure Güvenlik Merkezi'nde yerleşik Azure ilkeleri ve girişimlerinden kaynaklanan önerileri görmek için [Azure güvenli puanınızı](../../security-center/secure-score-security-controls.md) gözden geçirin. Bu öneriler, güvenlik güncelleştirmeleri, uç nokta koruması, şifreleme, güvenlik yapılandırmaları, eksik WAF, internete bağlı VM'ler ve daha birçok riskin giderilen en önemli risklerin giderilene yardımcı olur.
 
 Internet Güvenliği Merkezi (BDT) denetimlerini temel alan güvenli puan, kuruluşunuzun Azure güvenliğini dış kaynaklarla karşılaştırmanıza olanak tanır. Dış doğrulama, ekibinizin güvenlik stratejisini doğrulamaya ve zenginleştirmenize yardımcı olur.
 
@@ -116,7 +116,7 @@ Internet Güvenliği Merkezi (BDT) denetimlerini temel alan güvenli puan, kurul
 **Ayrıntı**: Güvenlik Merkezi'nde en yüksek öncelikli öğelerle başlayan [güvenlik önerilerini](../../security-center/security-center-recommendations.md) izleyin.
 
 **En iyi uygulama**: Güvenlik Merkezi uyarılarını güvenlik bilgilerinize ve olay yönetimi (SIEM) çözümüne entegre edin.   
-**Ayrıntı**: SIEM'li kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir takas merkezi olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenmiş etkinlikler, Azure Monitor üzerinden kullanılabilen günlüklerden biri olan Azure Etkinlik Günlüğü'nde yayınlanır. Azure Monitor, izleme verilerinizden herhangi birini bir SIEM aracına yönlendirmek için birleştirilmiş bir ardışık kaynak sağlar. Bkz. Güvenlik Çözümlerini Güvenlik Merkezi'nde talimatlar için [tümleştir.](../../security-center/security-center-partner-integration.md#exporting-data-to-a-siem) Azure Sentinel [kullanıyorsanız,](../../sentinel/connect-azure-security-center.md)bkz.
+**Ayrıntı**: SIEM'li kuruluşların çoğu, bir analist yanıtı gerektiren güvenlik uyarıları için merkezi bir takas merkezi olarak kullanır. Güvenlik Merkezi tarafından üretilen işlenmiş etkinlikler, Azure Monitor üzerinden kullanılabilen günlüklerden biri olan Azure Etkinlik Günlüğü'nde yayınlanır. Azure Monitor, izleme verilerinizden herhangi birini bir SIEM aracına yönlendirmek için birleştirilmiş bir ardışık kaynak sağlar. Bkz. Dışa aktarma güvenlik uyarıları ve talimatlar için [öneriler...](../../security-center/continuous-export.md#configuring-siem-integration-via-azure-event-hubs) Azure Sentinel [kullanıyorsanız,](../../sentinel/connect-azure-security-center.md)bkz.
 
 **En iyi yöntem**: Azure günlüklerini SIEM'inizle tümleştirin.   
 **Ayrıntı**: [Veri toplamak ve dışa aktarmak için Azure Monitor'u](/azure/azure-monitor/overview#integrate-and-export-data)kullanın. Bu uygulama, güvenlik olayı soruşturmasını etkinleştirmek için önemlidir ve çevrimiçi günlük tutma sınırlıdır. Azure Sentinel kullanıyorsanız, [veri kaynaklarını bağlayın'a](../../sentinel/connect-data-sources.md)bakın.

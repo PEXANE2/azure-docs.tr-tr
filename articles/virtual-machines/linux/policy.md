@@ -1,25 +1,19 @@
 ---
 title: Azure'da Linux VM'leri ile ilgili ilkelerle güvenliği uygulayın
 description: Bir Azure Kaynak Yöneticisi Linux Sanal Makine'ye ilke nasıl uygulanır?
-services: virtual-machines-linux
-documentationcenter: ''
 author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
 ms.service: virtual-machines-linux
+ms.subservice: security
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: b585b4d0aef06b01cba07ab8ef016b59f9b4f61b
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 6eb571ccc8c996a06d3bdf2dda25860df4dc930f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878927"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759372"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Azure Kaynak Yöneticisi ile Linux VM'lerine ilkeler uygulayın
 İlkeleri kullanarak, bir kuruluş kuruluş kuruluş genelinde çeşitli kuralları ve kuralları uygulayabilir. İstenilen davranışın uygulanması, kuruluşun başarısına katkıda bulunmakla birlikte riski azaltmaya yardımcı olabilir. Bu makalede, kuruluşunuzun Sanal Makineleri için istenen davranışı tanımlamak için Azure Kaynak Yöneticisi ilkelerini nasıl kullanabileceğinizi açıklıyoruz.

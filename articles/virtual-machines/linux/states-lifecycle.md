@@ -1,24 +1,19 @@
 ---
 title: Azure'da bir Linux VM'nin yaşam döngüsü ve durumları
-description: Bir Linux VM'nin Azure'daki yaşam döngüsüne genel bakış ve bir VM'nin her zaman olabileceği çeşitli durumların açıklamaları da dahil.
-services: virtual-machines-linux
-documentationcenter: ''
+description: Bir VM'nin herhangi bir zamanda olabileceği çeşitli durumların açıklamaları da dahil olmak üzere Azure'daki bir VM'nin yaşam döngüsüne genel bakış.
+services: virtual-machines
 author: shandilvarun
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 1ddd245b03d8886d686daba34a00c63ec64ffb07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1452252e6cbd7b741c14c2ea52728ba144c65a1
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74034777"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757862"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Sanal makineler yaşam döngüsü ve durumlar
 

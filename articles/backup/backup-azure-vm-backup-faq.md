@@ -4,12 +4,12 @@ description: Bu makalede, Azure Yedekleme hizmetiyle Azure VM'lerini yedeklemeyl
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 5d2f702b49e1e7aeb2ab33008556e91264b39427
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: accfc57055f70254814c889de875f5360878bcd9
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76705420"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757460"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM'lerini yedekle
 
@@ -19,7 +19,7 @@ Bu makalede, [Azure Yedekleme](backup-introduction-to-azure-backup.md) hizmetiyl
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Oluşturduğumda hangi VM görüntüleri yedekleme için etkinleştirilebilir?
 
-Bir VM oluşturduğunuzda, [desteklenen işletim sistemleri](backup-support-matrix-iaas.md#supported-backup-actions) çalıştıran VM'ler için yedeklemeyi etkinleştirebilirsiniz
+Bir VM oluşturduğunuzda, [desteklenen işletim sistemleri](backup-support-matrix-iaas.md#supported-backup-actions)çalıştıran VM'ler için yedeklemeyi etkinleştirebilirsiniz.
 
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>Yedekleme maliyeti VM maliyetine dahil mi?
 
@@ -47,7 +47,7 @@ Hayır. İsteğe bağlı yedekleme işi için bekletme aralığını belirtin. V
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Kısa süre önce bazı sanal makinelerde Azure Disk Şifrelemesi'ni etkinleştirdim. Yedeklemelerim çalışmaya devam edecek mi?
 
-Key Vault'a erişmek için Azure Yedekleme'ye izin sağlayın. Azure Yedekleme PowerShell belgelerinde **yedeklemeyi etkinleştir** bölümünde açıklandığı gibi [PowerShell'deki](backup-azure-vms-automation.md) izinleri belirtin.
+Anahtar Kasası'na erişmek için Azure Yedekleme'ye izin sağlayın. Azure Yedekleme PowerShell belgelerinde **yedeklemeyi etkinleştir** bölümünde açıklandığı gibi [PowerShell'deki](backup-azure-vms-automation.md) izinleri belirtin.
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>VM diskleri yönetilen disklere geçirmiyorum. Yedeklemelerim çalışmaya devam edecek mi?
 
@@ -65,11 +65,11 @@ Evet. Bir makine kapatıldığında yedekler çalışır. Kurtarma noktası kili
 
 Evet. **Anlık görüntü alma** durumunda yedekleme işini iptal edebilirsiniz. Anlık görüntüden veri aktarımı devam ediyorsa, bir işi iptal edemezsiniz.
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Yedekleme Hizmeti tarafından oluşturulan kaynak grubuna kilitlenmeyi etkinleştirdim (örn. `AzureBackupRG_<geo>_<number>`), yedeklerim çalışmaya devam edecek mi?
+### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>Azure Yedekleme Hizmeti tarafından oluşturulan kaynak grubunda bir kilit `AzureBackupRG_<geo>_<number>`oluşturdum (örneğin, ). Yedeklemelerim çalışmaya devam edecek mi?
 
 Azure Yedekleme Hizmeti tarafından oluşturulan kaynak grubunu kilitlerseniz, en fazla 18 geri yükleme noktası sınırı olduğu için yedeklemeler başarısız olmaya başlar.
 
-Kullanıcının, gelecekteki yedeklemeleri başarılı kılmak için kilidi kaldırması ve geri yükleme noktası koleksiyonunu bu kaynak grubundan temizlemesi, geri yükleme noktası koleksiyonunu kaldırmak için [aşağıdaki adımları izlemesi](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) gerekir.
+Kilidi kaldırın ve gelecekteki yedeklemeleri başarılı kılmak için bu kaynak grubundan geri yükleme noktası koleksiyonunu temizleyin. Geri yükleme noktası koleksiyonunu kaldırmak için [aşağıdaki adımları izleyin.](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Azure yedeklemesi standart SSD yönetilen diskleri destekliyor mu?
 
@@ -83,21 +83,25 @@ Anlık görüntüler WA özellikli diskten alınamaz. Ancak, Azure Yedekleme hiz
 
 Azure Yedekleme, WA özellikli diski yedekleyebilir, ancak yedeklemeden hariç tutabilir. Ancak, WA özellikli diskteki bilgiler yedeklenmediği için yedekleme veritabanı tutarlılığı sağlamaz. İşletim sistemi disk yedeklemesi ve WA özellikli olmayan disklerin yedeklemesini istiyorsanız, bu yapılandırmayla diskleri yedekleyebilirsiniz.
 
-15 dakikalık Bir RPO ile SAP HANA yedeklemesi için özel önizleme yapıyoruz. SQL DB yedeklemesine benzer bir şekilde oluşturulmuşve SAP HANA tarafından onaylanan üçüncü taraf çözümleri için backInt arabirimini kullanır. İlginizi çekiyorsa, Azure `AskAzureBackupTeam@microsoft.com` **VM'lerde SAP HANA'nın yedeklemesi için özel önizleme için kaydolun**konusuna e-posta gönder.
+Azure Yedekleme, SAP HANA veritabanları için 15 dakikalık bir RPO ile akış lı yedekleme çözümü sağlar. SAP HANA'nın yerel API'lerinden yararlanan yerel bir yedekleme desteği sağlamak için SAP tarafından backint sertifikasına işlenmiştir. Azure [VM'lerde SAP HANA veritabanlarını yedekleme hakkında](https://docs.microsoft.com/azure/backup/sap-hana-db-about)daha fazla bilgi edinin.
 
 ### <a name="what-is-the-maximum-delay-i-can-expect-in-backup-start-time-from-the-scheduled-backup-time-i-have-set-in-my-vm-backup-policy"></a>VM yedekleme politikamda belirlediğim zamanlanan yedekleme saatinden yedekleme başlangıç saatinde bekleyebileceğim maksimum gecikme nedir?
 
-Zamanlanan yedekleme, zamanlanan yedekleme saatinden sonraki 2 saat içinde tetiklenir. Örneğin, 100 VM'nin yedekleme başlangıç saati 02:00'de zamanlanmışsa, en fazla 04:00'te 100 VM'nin tümü yedekleme işine sahip olur. Zamanlanan yedeklemeler kesinti nedeniyle duraklatılmış ve yeniden denenmiş/yeniden denenmişse, yedekleme bu zamanlanmış iki saatlik sürenin dışında başlayabilir.
+Zamanlanan yedekleme, zamanlanan yedekleme saatinden sonraki 2 saat içinde tetiklenir. Örneğin, 100 VM'nin yedekleme başlangıç saati 02:00'de zamanlanmışsa, en geç 04:00'e kadar tüm 100 VM'nin yedekleme işi devam edecektir. Zamanlanmış yedeklemeler bir kesinti nedeniyle duraklatılmışsa ve devam ettirilmişveya yeniden denenmişse, yedekleme bu zamanlanmış iki saatlik pencerenin dışında başlayabilir.
 
-### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Günlük yedekleme noktası için izin verilen minimum bekletme aralığı nedir?
+### <a name="what-is-the-minimum-allowed-retention-range-for-a-daily-backup-point"></a>Günlük yedekleme noktası için izin verilen minimum bekletme aralığı nedir?
 
-Azure Sanal Makine yedekleme ilkesi, en az yedi gün ile 9999 güne kadar olan en az bekletme aralığını destekler. Yedi günden az olan varolan bir VM yedekleme ilkesinde yapılacak herhangi bir değişiklik, yedi günlük minimum bekletme aralığını karşılamak için bir güncelleştirme gerektirir.
+Azure Sanal Makine yedekleme ilkesi, yedi günden 9999 güne kadar minimum bekletme aralığını destekler. Yedi günden az olan varolan bir VM yedekleme ilkesinde yapılacak herhangi bir değişiklik, yedi günlük minimum bekletme aralığını karşılamak için bir güncelleştirme gerektirir.
 
-### <a name="can-i-backup-or-restore-selective-disks-attached-to-a-vm"></a>VM'ye bağlı seçici diskleri yedekleyebilir veya geri yükleyebilir miyim?
+### <a name="what-happens-if-i-change-the-case-of-the-name-of-my-vm-or-my-vm-resource-group"></a>VM'min veya VM kaynak grubumun adını değiştirirsem ne olur?
+
+VM veya VM kaynak grubunuzun kasasını (üst veya alt) değiştirirseniz, yedek madde adının durumu değişmez. Ancak, bu beklenen Azure Yedekleme davranışı. Servis talebi değişikliği yedekleme öğesinde görünmez, ancak arka uçta güncelleştirilir.
+
+### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>VM'ye bağlı seçici diskleri yedekleyebilir veya geri yükleyebilir miyim?
 
 Azure Yedekleme artık seçici disk yedeklemesini destekler ve Azure Sanal Makine yedekleme çözümlerini kullanarak geri yüklemeyi destekler.
 
-Bugün Azure Yedekleme, Sanal Makine yedekleme çözümlerini kullanarak VM'deki tüm diskleri (İşletim Sistemi ve verileri) birlikte yedeklemeyi destekler. Diski dışlama işleviyle, VM'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneğine sahip olursunuz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve uygun maliyetli bir çözüm sağlar. Her kurtarma noktası yedekleme işlemine dahil edilen disklerin verilerini içerir ve bu da geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesini geri yüklemenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yüklemek için geçerlidir.
+Azure Yedekleme bugün, Sanal Makine yedekleme çözümlerini kullanarak VM'deki tüm diskleri (işletim sistemi ve verileri) birlikte yedeklemeyi destekler. Diski dışlama işleviyle, VM'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneğine sahip olursunuz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve uygun maliyetli bir çözüm sağlar. Her kurtarma noktası yedekleme işlemine dahil edilen disklerin verilerini içerir ve bu da geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesini geri yüklemenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yüklemek için geçerlidir.
 
 Önizleme için kaydolmak için, bize yazınAskAzureBackupTeam@microsoft.com
 
@@ -121,7 +125,7 @@ Evet, diskler yönetilmeyenden yönetilmeye geçmeden önce alınan yedeklemeler
 
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>VM’yi nasıl yönetilen disklere geçirilmeden önceki bir geri yükleme noktasına geri yüklerim?
 
-Geri yükleme işlemi aynı kalır. Kurtarma noktası, VM'nin yönetilmeyen diskleri olduğu bir noktadaysa, [diskleri yönetilmeyen olarak geri yükleyebilirsiniz.](tutorial-restore-disk.md#unmanaged-disks-restore) VM yönetilen diskler sonra olsaydı, [yönetilen diskler olarak diskler yükleyebilirsiniz.](tutorial-restore-disk.md#managed-disk-restore) Sonra [bu disklerden bir VM oluşturabilirsiniz.](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)
+Geri yükleme işlemi aynı kalır. Kurtarma noktası, VM'nin yönetilmeyen diskleri olduğu bir noktadaysa, [diskleri yönetilmeyen olarak geri yükleyebilirsiniz.](tutorial-restore-disk.md#unmanaged-disks-restore) VM yönetilen diskler olsaydı, o zaman [yönetilen diskler olarak diskler yükleyebilirsiniz.](tutorial-restore-disk.md#managed-disk-restore) Sonra [bu disklerden bir VM oluşturabilirsiniz.](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk)
 
 PowerShell'de bu konuda [daha fazla bilgi edinin.](backup-azure-vms-automation.md#restore-an-azure-vm)
 
@@ -129,17 +133,17 @@ PowerShell'de bu konuda [daha fazla bilgi edinin.](backup-azure-vms-automation.m
 
 Evet. VM'yi silseniz bile kasadaki ilgili yedekleme öğesine gidebilir ve kurtarma noktasından geri yükleyebilirsiniz.
 
-### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>VM'yi aynı kullanılabilirlik kümelerine geri yükleme nasıl?
+### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>Aynı kullanılabilirlik kümelerine vm'yi nasıl geri yükleyebilirim?
 
-Yönetilen Disk Azure VM'de, kullanılabilirlik kümelerine geri dönmek, yönetilen Diskler olarak geri dönerken şablonda bir seçenek sunarak etkinleştirilir. Bu şablonda **Kullanılabilirlik kümeleri**adı verilen giriş parametresi vardır.
+Yönetilen Disk Azure VM'leri için, kullanılabilirlik kümelerine geri dönmek, yönetilen diskler olarak geri dönerken şablonda bir seçenek sağlayarak etkinleştirilir. Bu şablonda **Kullanılabilirlik kümeleri**adı verilen giriş parametresi vardır.
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>Performansları nasıl daha hızlı geri getirebiliriz?
 
-[Anlık Geri Yükleme](backup-instant-restore-capability.md) özelliği, anlık görüntülerden daha hızlı yedeklemeve anında geri yüklemelere yardımcı olur.
+[Anlık Geri Yükleme](backup-instant-restore-capability.md) özelliği, anlık görüntülerden daha hızlı yedekleme ve anında geri yükleme sağlar.
 
 ### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>Şifreli VM'nin anahtar kasa ayarlarını değiştirdiğimizde ne olur?
 
-Şifreli VM'nin KeyVault ayarlarını değiştirdikten sonra, yedeklemeler yeni ayrıntı kümesiyle çalışmaya devam eder. Ancak, değişiklikten önce bir kurtarma noktasından geri yükleme den sonra, ondan VM oluşturabilirsiniz önce bir KeyVault sırlarını geri yüklemeniz gerekir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret) bakın
+Şifreli VM'nin anahtar kasa ayarlarını değiştirdikten sonra, yedeklemeler yeni ayrıntı kümesiyle çalışmaya devam eder. Ancak, değişiklikten önce bir kurtarma noktasından geri yükleme den sonra, ondan VM oluşturabilirsiniz önce önemli bir kasada sırları geri yüklemeniz gerekir. Daha fazla bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)bakın.
 
 Gizli/anahtar roll-over gibi işlemler bu adımı gerektirmez ve geri yüklemeden sonra aynı KeyVault kullanılabilir.
 
@@ -160,10 +164,10 @@ VM, değiştirilen veya yeni ilkedeki zamanlama ve bekletme ayarları kullanıla
 
 1. Yedeklemeyi geçici olarak durdurun ve yedekleme verilerini koruyun.
 2. VM'yi hedef kaynak grubuna taşıyın.
-3. Aynı veya yeni kasada yedeklemeyi yeniden etkinleştirdi.
+3. Aynı veya yeni kasada yedeklemeyi yeniden etkinleştirin.
 
 VM'yi taşıma işleminden önce oluşturulan kullanılabilir geri yükleme noktalarından geri yükleyebilirsiniz.
 
-### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-a-same-backup-policy"></a>Aynı yedekleme ilkesiyle ilişkilendirilebilen VM sayısında bir sınır var mı?
+### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Aynı yedekleme ilkesiyle ilişkilendirilebilen VM sayısında bir sınır var mı?
 
 Evet, portaldan aynı yedekleme ilkesiyle ilişkilendirilebilen 100 VM sınırı vardır. 100'den fazla VM için, aynı zamanlamaya veya farklı zamanlamaya sahip birden çok yedekleme ilkeleri oluşturmanızı öneririz.

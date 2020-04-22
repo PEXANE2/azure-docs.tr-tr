@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: ca892b5f360f523ee2b5ff875dfb0707136a5ab5
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 4a2102f442fc176762b7d5d69f7b367a94633ef5
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383435"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758799"
 ---
 # <a name="connect-to-azure-storage-services"></a>Azure depolama hizmetlerine bağlanma
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +99,7 @@ Sol bölmede **Depolama Hesapları'nı** seçin ve kaydetmek istediğiniz depola
 * Kiracı kimliği ve istemci kimliği gibi hizmet temel öğeleri için **Uygulama kayıtlarınıza** gidin ve hangi uygulamayı kullanmak istediğinizi seçin. İlgili **Genel Bakış** sayfası bu öğeleri içerir.
 
 > [!IMPORTANT]
-> Depolama hesabınız sanal bir ağdaysa, **Yalnızca SDK üzerinden** Blob, File share, ADLS Gen 1 ve ADLS Gen 2 veri depolarının oluşturulması desteklenir. Çalışma alanınızı depolama hesabınıza erişim sağlamak için `grant_workspace_access` `True`parametreyi ' ye göre ayarlayın
+> Depolama hesabınız sanal bir ağdaysa, yalnızca **SDK üzerinden** veri depolarının oluşturulması desteklenir.
 
 Aşağıdaki örnekler, bir Azure blob kapsayıcısının, Azure dosya paylaşımının ve Azure Veri Gölü Depolama Oluşturma Oluşturma 2'nin nasıl veri deposu olarak kaydedileni gösterir. Diğer depolama hizmetleri için lütfen [geçerli `register_azure_*` yöntemlere ilişkin başvuru belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#methods)bakın.
 
@@ -121,6 +121,7 @@ blob_datastore = Datastore.register_azure_blob_container(workspace=ws,
                                                          account_name=account_name,
                                                          account_key=account_key)
 ```
+Blob kapsayıcınız sanal ağdaysa, [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false--blob-cache-timeout-none--grant-workspace-access-false--subscription-id-none--resource-group-none-)'yi kullanarak ayarlayın. `skip_validation=True`
 
 #### <a name="file-share"></a>Dosya paylaşımı
 
@@ -140,6 +141,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
                                                      account_name=account_name,
                                                      account_key=account_key)
 ```
+Dosya paylaşımınız sanal ağdaysa, [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)'yi kullanarak ayarlayın. `skip_validation=True` 
 
 #### <a name="azure-data-lake-storage-generation-2"></a>Azure Veri Gölü Depolama Oluşturma 2
 

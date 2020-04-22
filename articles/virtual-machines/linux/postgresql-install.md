@@ -1,25 +1,20 @@
 ---
 title: Linux VM'de PostgreSQL'i ayarlama
 description: Azure'daki bir Linux sanal makinesine PostgreSQL'i nasıl yükleyip yapılandırılamayı öğrenin
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 1a747363-0cc5-4ba3-9be7-084dfeb04651
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75747808"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759336"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL'i Azure'da yükleme ve yapılandırma
 PostgreSQL Oracle ve DB2 benzer gelişmiş bir açık kaynak veritabanıdır. Tam ACID uyumluluğu, güvenilir işlem işleme ve çok sürümlü eşzamanlılık denetimi gibi kurumsal kullanıma hazır özellikleri içerir. Ayrıca ANSI SQL ve SQL/MED gibi standartları da destekler (Oracle, MySQL, MongoDB ve diğerleri için yabancı veri ambalajları dahil). 12'den fazla yordam dili, GIN ve GiST dizinleri, uzamsal veri desteği ve JSON veya anahtar değeri tabanlı uygulamalar için birden fazla NoSQL benzeri özellik desteği ile son derece genişletilebilir.

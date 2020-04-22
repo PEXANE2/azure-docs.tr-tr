@@ -3,12 +3,12 @@ title: Kaynak Durumu uyarıları oluşturmak için şablon
 description: Azure kaynaklarınız kullanılamadığında sizi bilgilendiren programlı uyarılar oluşturun.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: c01934cc88dc29d0503abfafc203ab0f04bf1761
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062905"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759007"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonlarını kullanarak kaynak durumu uyarılarını yapılandırma
 
@@ -228,6 +228,9 @@ Yalnızca bir kaynak sağlıksız hale geldiğinde haberdar olmak isteyebilirsin
 ```
 
 Sağlık olaylarının dört aşaması için de bilgilendirilmek istiyorsanız, bu durumu hep birlikte kaldırabilirsiniz ve `status` uyarı özelliğinden bağımsız olarak sizi bilgilendirecektir.
+
+> [!NOTE]
+> Her "anyOf" bölümü yalnızca bir alan türü değerleri içermelidir.
 
 ### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Bilinmeyen" olayları önlemek için Kaynak Durumu uyarılarını ayarlama
 

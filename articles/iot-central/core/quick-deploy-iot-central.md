@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 0ed32a4c1272c23c9500b35e05c383eac6dea185
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80998958"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758155"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central uygulaması oluşturma
 
@@ -59,7 +59,11 @@ Hızlı bir şekilde başlamanıza yardımcı olmak için endüstriyle alakalı 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. Önerilen sonraki adım:
+Bu hızlı başlangıçta bir IoT Central uygulaması oluşturdunuz. IoT Central hakkında bilgi edinmeye devam etmek için önerilen bir sonraki adım:
 
 > [!div class="nextstepaction"]
 > [IoT Merkezi uygulamanıza benzetilen bir aygıt ekleme](./quick-create-simulated-device.md)
+
+Aygıt geliştiricisiyseniz ve bazı kodlara dalmak istiyorsanız, önerilen bir sonraki adım şudur:
+> [!div class="nextstepaction"]
+> [Azure IoT Merkezi uygulamanızda istemci uygulaması oluşturun ve bu uygulamaya bağlayın](./tutorial-connect-device-nodejs.md)

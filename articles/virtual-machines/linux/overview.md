@@ -1,23 +1,19 @@
 ---
 title: Azure'da Linux VM'lere Genel Bakış
 description: Azure'daki Linux sanal makinelerine genel bakış.
-services: virtual-machines-linux
-documentationcenter: virtual-machines-linux
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: overview
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 69a9722436aea1cf794e6e3f3ce02ec79180cff3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80159481"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759414"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure’da Linux sanal makineleri
 
@@ -51,7 +47,7 @@ Bu tabloda, kullanılabilen konumların listesini edinme yöntemlerinden bazıla
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Azure portalında |VM oluştururken listeden konum seçin. |
+| Azure portal |VM oluştururken listeden konum seçin. |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) komutunu kullanın. |
 | REST API |[List locations](https://docs.microsoft.com/rest/api/resources/subscriptions) işlemini kullanın. |
 | Azure CLI |[az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest) işlemini kullanın. |
@@ -110,7 +106,7 @@ Azure, bulut ların karşısına [çıkan](https://cloud-init.io/) ve onu destek
 * [azure-cli kullanarak Linux VM'sine disk ekleme](add-disk.md)
 * [Azure Portal’da Linux VM’sine veri diski ekleme](attach-disk-portal.md)
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 * [Sanal Ağ’a Genel Bakış](../../virtual-network/virtual-networks-overview.md)
 * [Azure'da IP adresleri](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure'da Linux VM'sine bağlantı noktalarını açma](nsg-quickstart.md)
@@ -123,5 +119,5 @@ Azure, bulut ların karşısına [çıkan](https://cloud-init.io/) ve onu destek
 
 - [Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
-- [Powershell](quick-create-powershell.md)
+- [PowerShell](quick-create-powershell.md)
 

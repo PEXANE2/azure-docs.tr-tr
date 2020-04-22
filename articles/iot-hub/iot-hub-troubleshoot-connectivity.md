@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: bed6736fda0c1815964f9017adb1e6fffa9335d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 82139eef9708ff8d76e1087c71aa5445ba898385
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77110678"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759616"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Azure IoT Hub ile bağlantı bağlantılarını izleme, tanılama ve sorun giderme
 
@@ -27,7 +28,7 @@ Aygıtlar kesildiğinde uyarı almak ve günlükler yazmak için Azure Monitor'u
 
 Aygıt bağlantı olaylarını ve hatalarını günlüğe kaydetmek için IoT Hub için tanılamayı açın. Bu günlükleri mümkün olduğunca erken açmanızı öneririz, çünkü tanılama günlükleri etkin değilse, aygıt bağlantısı kesildiğinde, sorunu gidermek için herhangi bir bilginiz olmaz.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. IoT hub'ınıza göz atın.
 
@@ -47,7 +48,7 @@ Daha fazla bilgi edinmek için [Azure IoT Hub'ının sistem durumunu izleyin ve 
 
 Aygıtlar bağlantı kesildiğinde uyarı almak için, **Bağlı aygıtlar (önizleme)** ölçümündeki uyarıları yapılandırın.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. IoT hub'ınıza göz atın.
 
@@ -69,7 +70,7 @@ Bir fabrikanın çevrimdışı olduğunu bilmeniz gerektiğinde olduğu gibi *ci
 
 Bağlı aygıtlar için tanı lama günlüklerini ve uyarılarını açtığınızda, hatalar oluştuğunda uyarılar alırsınız. Bu bölümde, bir uyarı aldığınızda sık karşılaşılan sorunlar nasıl araştırılabildiğiniz açıklanmaktadır. Aşağıdaki adımlar, tanılama günlükleriniz için Azure Monitor günlükleri ayarladığınızı varsayar.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. IoT hub'ınıza göz atın.
 

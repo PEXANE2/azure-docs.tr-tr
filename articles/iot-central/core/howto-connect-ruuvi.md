@@ -10,14 +10,16 @@ ms.custom:
 ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
-ms.openlocfilehash: e8d1c4a605e8db2e9753bb80c9712dd6c2be7b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80158274"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758944"
 ---
 # <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>Azure IoT Merkezi uygulamanıza bir RuuviTag sensörü bağlayın
+
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
 
 Bu makalede, bir çözüm oluşturucu olarak, bir RuuviTag sensörünü Microsoft Azure IoT Central uygulamanıza nasıl bağlayabileceğiniz açıklanmaktadır.
 
@@ -70,8 +72,11 @@ Simüle Edilmiş Bir RuuviTag oluşturmak için:
 1. Seçin **+ Yeni**.
 1. Benzersiz bir **Aygıt Kimliği** ve uygun bir **Aygıt adı**belirtin.  
 1. **Benzetim** li ayarı etkinleştirin.
-1. **Oluştur'u**seçin.  
+1. **Oluştur**’u seçin.  
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Bir RuuviTag'ı Azure IoT Central uygulamanıza nasıl bağlayabileceğinizi öğrendiğinize göre, önerilen bir sonraki adım, uçtan uca bir çözüm oluşturmak için [IoT Central uygulamanızı nasıl özelleştireceğimize](../retail/tutorial-in-store-analytics-customize-dashboard-pnp.md) öğrenmektir.
+Aygıt geliştiricisiyseniz, önerilen bazı sonraki adımlar şunlardır:
+
+- Azure [IoT Central'da Aygıt bağlantısı](./concepts-get-connected.md) hakkında bilgi edinin
+- [Azure CLI'yi kullanarak aygıt bağlantısını](./howto-monitor-devices-azure-cli.md) nasıl izleyeceğinizi öğrenin

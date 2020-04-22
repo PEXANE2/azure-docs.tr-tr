@@ -1,19 +1,19 @@
 ---
 title: 'Öğretici: Etiket yönetimini yönetme'
 description: Bu öğreticide, yeni ve varolan kaynaklar üzerinde bir etiket yönetim modeli oluşturmak ve uygulamak için Azure İlkesini Değiştir efektini kullanırsınız.
-ms.date: 11/25/2019
+ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75965994"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759072"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Öğretici: Azure İlkesi ile etiket yönetimini yönetme
 
 [Etiketler,](../../../azure-resource-manager/management/tag-resources.md) Azure kaynaklarınızı taksonomi olarak düzenlemenin önemli bir parçasıdır. Etiket [yönetimi için en iyi uygulamaları](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)takip ederken, etiketler iş ilkelerinizi Azure İlkesi ile uygulamak veya Maliyet Yönetimi ile maliyetleri [izlemek](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources)için temel oluşturabilir.
-Etiketleri nasıl veya neden kullanırsanız kullanın, Azure kaynaklarınızda bu etiketleri hızla eklemeniz, değiştirmeniz ve kaldırmanız önemlidir.
+Etiketleri nasıl veya neden kullanırsanız kullanın, Azure kaynaklarınızda bu etiketleri hızla eklemeniz, değiştirmeniz ve kaldırmanız önemlidir. Azure kaynağınızın etiketlemeyi destekleyip desteklemedığını görmek için [Etiket desteğine](../../../azure-resource-manager/management/tag-support.md)bakın.
 
 Azure İlkesi'nin [Değiştir](../concepts/effects.md#modify) efekti, kaynak yönetiminin hangi aşamasında olursanız olun etiketlerin yönetimine yardımcı olmak üzere tasarlanmıştır. **Değiştir:**
 

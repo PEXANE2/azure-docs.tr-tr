@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 6c50e5892aca37bac47e68a9ae17435611c99817
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80157475"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758214"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -197,7 +197,7 @@ Her Azure aboneliği, IoT çözümünüzün kapsamını etkileyebilecek varsayı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi IoT Central genel bir bakış var, burada sonraki adımlar önerilmektedir:
+Şimdi IoT Central genel bir bakış var, burada bazı önerilen sonraki adımlar şunlardır:
 
 - [IoT çözümleri oluşturmak için](../../iot-fundamentals/iot-services-and-technologies.md)kullanılabilir Azure teknolojilerini ve hizmetlerini anlayın.
 - [Azure IoT Central Kullanıcı Arabirimi](overview-iot-central-tour.md)’ni tanıma.
@@ -205,3 +205,5 @@ Her Azure aboneliği, IoT çözümünüzün kapsamını etkileyebilecek varsayı
 - [IoT Tak ve Çalıştır (önizleme)](../../iot-pnp/overview-iot-plug-and-play.md)hakkında daha fazla bilgi edinin.
 - [Azure IoT Edge aygıtını nasıl bağlayabilirsiniz](./tutorial-add-edge-as-leaf-device.md)öğrenin.
 - [Azure IoT teknolojileri ve hizmetleri](../../iot-fundamentals/iot-services-and-technologies.md)hakkında daha fazla bilgi edinin.
+
+Bir aygıt geliştiricisiyseniz ve bazı kodlara dalmak istiyorsanız, önerilen bir sonraki adım [bir istemci uygulaması oluşturmak ve Azure IoT Merkezi uygulamanıza bağlamaktır.](./tutorial-connect-device-nodejs.md)

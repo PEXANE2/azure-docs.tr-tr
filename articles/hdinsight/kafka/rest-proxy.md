@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6bf34f8fb15bf8fddb1ba398ed678d5c98b8c84f
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 265e15713f8159e370ef22a197ffe931200a88f7
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667777"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759001"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight'taki Apache Kafka kümeleriyle etkileşimkurun
 
@@ -74,7 +74,7 @@ REST proxy bitiş noktası istekleri için, istemci uygulamaları bir OAuth beli
 Kafka kümenizdeki REST proxy ile etkileşimde kalmak için aşağıdaki python kodunu kullanabilirsiniz. Kod örneğini kullanmak için aşağıdaki adımları izleyin:
 
 1. Örnek kodu Python yüklü bir makineye kaydedin.
-1. Yürütme `pip3 install adal` ve `pip install msrestazure`.
+1. Yürütme yaparak gerekli python `pip3 install msal`bağımlılıkları yükleyin.
 1. Kod bölümünü **değiştirin Bu özellikleri yapılandırın** ve ortamınız için aşağıdaki özellikleri güncelleştirin:
 
     |Özellik |Açıklama |
@@ -84,7 +84,7 @@ Kafka kümenizdeki REST proxy ile etkileşimde kalmak için aşağıdaki python 
     |İstemci Gizli Anahtarı|Güvenlik grubuna kaydettiğiniz uygulamanın sırrı.|
     |Kafkarest_endpoint|[Dağıtım bölümünde](#create-a-kafka-cluster-with-rest-proxy-enabled)açıklandığı gibi küme genel bakış özellikleri **sekmesinden** bu değeri alın. Bu aşağıdaki biçimde olmalıdır -`https://<clustername>-kafkarest.azurehdinsight.net`|
 
-1. Komut satırından, python dosyasını`python <filename.py>`
+1. Komut satırından, python dosyasını`sudo python3 <filename.py>`
 
 Bu kod aşağıdaki eylemi yapar:
 
@@ -95,13 +95,9 @@ Python'da OAuth belirteçleri alma hakkında daha fazla bilgi için [Python Auth
 
 ```python
 #Required python packages
-#pip3 install adal
-#pip install msrestazure
+#pip3 install msal
 
-import adal
-from msrestazure.azure_active_directory import AdalAuthentication
-from msrestazure.azure_cloud import AZURE_PUBLIC_CLOUD
-import requests
+import msal
 
 #--------------------------Configure these properties-------------------------------#
 # Tenant ID for your Azure Subscription
@@ -114,19 +110,24 @@ client_secret = 'password'
 kafkarest_endpoint = "https://<clustername>-kafkarest.azurehdinsight.net"
 #--------------------------Configure these properties-------------------------------#
 
-#getting token
-login_endpoint = AZURE_PUBLIC_CLOUD.endpoints.active_directory
-resource = "https://hib.azurehdinsight.net"
-context = adal.AuthenticationContext(login_endpoint + '/' + tenant_id)
+# Scope
+scope = 'https://hib.azurehdinsight.net/.default'
+#Authority
+authority = 'https://login.microsoftonline.com/' + tenant_id
 
-token = context.acquire_token_with_client_credentials(
-    resource,
-    client_id,
-    client_secret)
+# Create a preferably long-lived app instance which maintains a token cache.
+app = msal.ConfidentialClientApplication(
+    client_id , client_secret, authority,
+    #cache - For details on how look at this example: https://github.com/Azure-Samples/ms-identity-python-webapp/blob/master/app.py
+    )
 
-accessToken = 'Bearer ' + token['accessToken']
+# The pattern to acquire a token looks like this.
+result = None
 
-print(accessToken)
+result = app.acquire_token_for_client(scopes=[scope])
+
+print(result)
+accessToken = result['access_token']
 
 # relative url
 getstatus = "/v1/metadata/topics"
@@ -137,10 +138,10 @@ response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
 ```
 
-Kıvırma komutunu kullanarak AZURE for REST proxy'den nasıl bir belirteç alacağınız hakkında başka bir örneği aşağıda bulabilirsiniz. Bir belirteç `resource=https://hib.azurehdinsight.net` alırken belirtilen lere ihtiyacımız olduğuna dikkat edin.
+Kıvırma komutunu kullanarak AZURE for REST proxy'den nasıl bir belirteç alacağınız hakkında başka bir örneği aşağıda bulabilirsiniz. **Bir belirteç `scope=https://hib.azurehdinsight.net/.default` alırken belirtilen lere ihtiyacımız olduğuna dikkat edin.**
 
 ```cmd
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&scope=https://hib.azurehdinsight.net/.default' 'https://login.microsoftonline.com/<tenantid>/oauth2/v2.0/token'
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

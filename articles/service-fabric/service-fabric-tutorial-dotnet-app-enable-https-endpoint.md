@@ -4,12 +4,12 @@ description: Bu öğreticide Kestrel kullanarak bir ASP.NET Core ön uç web hiz
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: b88ecd8d169e7402d149481c22bae95e632efe26
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605297"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81757184"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Öğretici: Kestrel kullanarak bir ASP.NET Core Web API’si ön uç hizmetine HTTPS uç noktası ekleme
 
@@ -41,7 +41,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 Bu öğreticiye başlamadan önce:
 
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun
-* [Visual Studio 2019](https://www.visualstudio.com/) sürümünü 15.5 veya sonraki sürümlerle **Azure geliştirme** ve ASP.NET ve **web geliştirme** iş yükleriyle yükleyin.
+* [Visual Studio 2019](https://www.visualstudio.com/) sürümünü 16.5 veya sonraki sürümlerle **Azure geliştirme** ve ASP.NET ve **web geliştirme** iş yükleriyle yükleyin.
 * [Servis Kumaşı SDK'yı yükleyin](service-fabric-get-started.md)
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Sertifika edinme veya otomatik olarak imzalanan geliştirme sertifikası oluşturma

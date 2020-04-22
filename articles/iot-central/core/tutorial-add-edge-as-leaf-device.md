@@ -9,18 +9,20 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: bf74784998de6bbad6310c48c24d6353512bff13
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77027737"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758165"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Merkezi uygulamanıza Azure IoT Edge aygıtı ekleme
 
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
+
 Bu öğretici, Azure IoT Merkezi uygulamanıza nasıl bir Azure IoT Edge aygıtını yapılandırabileceğinizi ve ekleyeceğiniz gösterilmektedir. Öğretici, Bir IoT Edge aygıtını simüle etmek için Azure Marketplace'ten ioT Edge özellikli bir Linux sanal makinesini (VM) kullanır. IoT Edge cihazı, simüle edilmiş çevresel telemetri üreten bir modül kullanır. IoT Central uygulamanızdaki bir panoda telemetriyi görüntüleyebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * IoT Edge aygıtı için aygıt şablonu oluşturma
@@ -262,9 +264,9 @@ Telemetriyi **View IoT Edge aygıt telemetri** sayfasında görebilirsiniz:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Central'daki IoT Edge cihazlarıyla çalışmayı ve yönetmeyi öğrendiğiniz için önerilen bir sonraki adım şu:
+Bir aygıt geliştiricisi olarak, IoT Central'daki IoT Edge aygıtlarıyla çalışmayı ve nasıl yönetileceğinizi öğrendiğiniz için önerilen bir sonraki adım şudur:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Saydam ağ geçidini yapılandırma](../../iot-edge/how-to-create-transparent-gateway.md)
+> [Azure IoT Central'a bağlanın](./concepts-get-connected.md)

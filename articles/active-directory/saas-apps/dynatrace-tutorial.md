@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ba96dd2fcfb995afa6e3b1302a2c8b075abfd90
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 275215a69f97d93a1b1741a8fa8f3ca752c8c9ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968690"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-dynatrace"></a>Öğretici: Dynatrace ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -100,7 +100,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     a. **İmzalama Seçeneği** ayarı önceden doldurulmuş. Lütfen ayarları kuruluşunuza göre gözden geçirin.
 
-    b. **Kaydet**'e tıklayın.
+    b. **Kaydet**’e tıklayın.
 
     ![Communifire İmzalama seçeneği](./media/dynatrace-tutorial/tutorial-dynatrace-signing-option.png)
 
@@ -140,7 +140,7 @@ Bu bölümde, Dynatrace'e erişim izni vererek B.Simon'ın Azure tek oturum açm
 
 ## <a name="configure-dynatrace-sso"></a>Dynatrace SSO'yu yapılandırın
 
-**Dynatrace** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML** dosyasını ve azure portalından uygun kopyalanan URL'leri [Dynatrace destek ekibine](https://www.dynatrace.com/services-support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için yapılandırır.
+**Dynatrace** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML** dosyasını ve azure portalından uygun kopyalanan URL'leri [Dynatrace'e](https://www.dynatrace.com/support/help/shortlink/users-sso-hub)göndermeniz gerekir. Her iki taraftaki SAML SSO bağlantısını yapılandırmak için Dynatrace web sitesindeki talimatları takip edebilirsiniz.
 
 ### <a name="create-dynatrace-test-user"></a>Dynatrace test kullanıcısı oluşturma
 

@@ -8,14 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6f93d74653aab78e48e613ddf9252a0876548b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a99f261e1a834705d081e8197e4ae627cf1cb9f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157679"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756653"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>Azure IoT Merkezi uygulamanızda yeni bir IoT aygıt türü tanımlama
+
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
 
 Aygıt şablonu, Azure IoT Merkezi uygulamasına bağlanan bir aygıt türünün özelliklerini ve davranışlarını tanımlayan bir plandır.
 
@@ -253,18 +255,6 @@ Aygıt şablonu yayımlamak için aygıt şablonunuzu size gidin ve **Yayımla'y
 
 Aygıt şablonunu yayımladıktan sonra, bir operatör **Aygıtlar** sayfasına gidebilir ve aygıt şablonunuzu kullanan gerçek veya simüle edilmiş aygıtlar ekleyebilir. Değişiklik yaparken cihaz şablonunuzu değiştirmeye ve kaydetmeye devam edebilirsiniz. Bu değişiklikleri **Aygıtlar** sayfasının altında görüntülemek üzere işletime itmek istediğinizde, her seferinde **Yayımla'yı** seçmeniz gerekir.
 
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
-
-* Yeni bir IoT aygıt şablonu oluşturun.
-* Bulut özellikleri oluşturun.
-* Özelleştirmeler oluşturun.
-* Aygıt telemetrisi için bir görselleştirme tanımlayın.
-* Aygıt şablonunuzu yayımlayın.
-
-Sonra, şunları yapabilirsiniz:
-
-> [!div class="nextstepaction"]
-> [Cihaz bağlama](howto-connect-devkit.md)
+Aygıt geliştiricisiyseniz, önerilen bir sonraki [adım, aygıt şablonu sürümü](./howto-version-device-template.md)hakkında bilgi almaktır.

@@ -8,14 +8,19 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8178e585ecb7b1cdfd5e530f3d3406b7397f0968
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: f37b070c74abd8511fc597f9b159312d91281083
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476058"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759122"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanın
+
+*Bu makale, operatörler ve aygıt geliştiricileri için geçerlidir.*
 
 Bu makalede, aygıtlarınızı bir Azure IoT Merkezi uygulamasına bağlama seçenekleri açıklanmaktadır.
 
@@ -238,7 +243,7 @@ IoT Hub ile tüm aygıt iletişimi aşağıdaki IoT Hub bağlantı seçeneklerin
 
 Aşağıdaki tablo, Azure IoT Merkezi aygıtının IoT Hub'ın özellikleriyle nasıl eşleşiş özelliklerini özetleyerek şunları özetler:
 
-| Azure IoT Central | Azure IoT Hub’ı |
+| Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
 | Telemetri | Aygıt-bulut mesajlaşma |
 | Özellik | Aygıt ikizi bildirilen özellikler |
@@ -265,7 +270,8 @@ Aygıtlar ve Azure IoT Merkeziniz arasında değiş tokuş edilen tüm veriler �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central'da aygıt bağlantısı hakkında bilgi edindiğinize göre, önerilen sonraki adımlar şunlardır:
+Aygıt geliştiricisiyseniz, önerilen bazı sonraki adımlar şunlardır:
 
-- [DevKit aygıtı hazırlama ve bağlama](howto-connect-devkit.md)
-- [C SDK: Prove cihaz istemcisi SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [Azure CLI'yi kullanarak aygıt bağlantısını](./howto-monitor-devices-azure-cli.md) nasıl izleyeceğinizi öğrenin
+- [Azure IoT Central uygulamanızda yeni bir IoT aygıt türünü nasıl tanımlayınız](./howto-set-up-template.md) öğrenin
+- Azure [IoT Edge cihazları ve Azure IoT Central](./concepts-iot-edge.md) hakkında bilgi edinin

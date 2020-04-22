@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: e64b0a8602a4a0806ada15546972856743c38161
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 0e5a683c95e213a0fc37ec4f559e89abfecf034a
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312463"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758916"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Uygulama Ağ Geçidi hakkında sık sorulan sorular
 
@@ -72,7 +72,7 @@ v2 SKU için ortak IP kaynağını açın ve **Yapılandırma'yı**seçin. DNS a
 
 *Keep-Alive zaman sonu,* Uygulama Ağ Geçidi'nin istemciyi yeniden kullanmadan veya kapatmadan önce kalıcı bir bağlantıya başka bir HTTP isteği göndermesini ne kadar bekleyeceğini yönetir. *TCP boşta zaman alabilen* zaman alakart, herhangi bir etkinlik olmaması durumunda TCP bağlantısının ne kadar süre açık tutulabildiğini yönetir. 
 
-Uygulama Ağ Geçidi v1 SKU'daki *Keep-Alive zaman dilimi* 120 saniye, v2 SKU'da ise 75 saniye. *TCP boşta zaman sonu,* Uygulama Ağ Geçidi'nin hem v1 hem de v2 SKU'nun ön uç sanal IP'si (VIP) üzerinde 4 dakikalık bir varsayılandır. 
+Uygulama Ağ Geçidi v1 SKU'daki *Keep-Alive zaman dilimi* 120 saniye, v2 SKU'da ise 75 saniye. *TCP boşta zaman sonu,* Uygulama Ağ Geçidi'nin hem v1 hem de v2 SKU'nun ön uç sanal IP'si (VIP) üzerinde 4 dakikalık bir varsayılandır. Bu değerleri değiştiremezsiniz.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>IP veya DNS adı uygulama ağ geçidinin ömrü boyunca değişir mi?
 

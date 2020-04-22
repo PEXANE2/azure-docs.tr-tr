@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/30/2020
+ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 0bdede482b79c82e6e05b1429cb7c17399bc2277
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396077"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756616"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerindeki talep çözümleyicileri hakkında
 
@@ -90,7 +90,14 @@ Aşağıdaki bölümlerde kullanılabilir talep çözümleyicileri listelenmekte
 | {Bağlam:IPAddress} | Kullanıcı IP adresi. | 11.111.111.11 |
 | {Bağlam:KMSI} | Beni beklet onay kutusunda [oturum açıp tutmanın](custom-policy-keep-me-signed-in.md) seçili olup olmadığını gösterir. |  true |
 
-### <a name="non-protocol-parameters"></a>Protokol dışı parametreler
+### <a name="claims"></a>Talepler 
+
+| İste | Açıklama | Örnek |
+| ----- | ----------- | --------|
+| {Talep:talep türü} | İlke dosyasındaki veya üst ilke dosyasındaki ClaimsSchema bölümünde zaten tanımlanmış bir talep türünün tanımlayıcısı.  Örneğin: `{Claim:displayName}`, `{Claim:objectId}`veya . | Talep türü değeri.|
+
+
+### <a name="oauth2-key-value-parameters"></a>OAuth2 anahtar değer parametreleri
 
 OIDC veya OAuth2 isteğinin bir parçası olarak yer alan herhangi bir parametre adı, kullanıcı yolculuğundaki bir hak talebine eşlenebilir. Örneğin, uygulamadan gelen `app_session`istek, bir adı olan , veya `loyalty_number`herhangi bir özel sorgu dizesi içeren bir sorgu dize parametresi içerebilir.
 
@@ -118,6 +125,7 @@ OIDC veya OAuth2 isteğinin bir parçası olarak yer alan herhangi bir parametre
 | {SAML:AllowCreate} | SAML isteğinin `AllowCreate` `NameIDPolicy` öğesinden öznitelik değeri. | True |
 | {SAML:ForceAuthn} | SAML isteğinin `ForceAuthN` `AuthnRequest` öğesinden öznitelik değeri. | True |
 | {SAML:Sağlayıcı Adı} | SAML isteğinin `ProviderName` `AuthnRequest` öğesinden öznitelik değeri.| Contoso.com |
+| {SAML:RelayState} | Sorgu `RelayState` dize parametresi.| 
 
 ## <a name="using-claim-resolvers"></a>Talep çözümleyicilerini kullanma
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
-ms.openlocfilehash: dbd217c7135172c52a5ec7459930977960c452aa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260879"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758813"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitör müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -281,7 +281,7 @@ Anahtar Tanımlayıcı ayrıntılarıyla *Cluster* kaynak KeyVaultProperties'i g
 
 **Güncelleştir**
 
-Bu Kaynak Yöneticisi isteği eşzamanlı işlemdir.
+Bu Kaynak Yöneticisi isteği, Anahtar tanımlayıcı ayrıntılarını güncellerken, Kapasite değerini güncellerken eşzamanlı bir işlemdir.
 
 > [!Warning]
 > *Kimlik,* *sku*, *KeyVaultProperties* ve *konum*içeren *Küme* kaynak güncelleştirmesinde tam bir gövde sağlamanız gerekir. *KeyVaultProperties* ayrıntılarının eksik kümesi *kaynaktan* anahtar tanımlayıcısı kaldırılır ve [anahtar iptaline](#cmk-kek-revocation)neden olur.
@@ -314,7 +314,7 @@ Content-type: application/json
 **Yanıt**
 
 200 Tamam ve üstbilgi.
-Anahtar tanımlayıcısının yayılmasının tamamlanması birkaç dakika sürer. Sağlama durumunu iki şekilde denetleyebilirsiniz:
+Anahtar tanımlayıcısının yayılmasının tamamlanması birkaç dakika sürer. Güncelleştirme durumunu iki şekilde denetleyebilirsiniz:
 1. Yanıttan Azure-AsyncOperation URL değerini kopyalayın ve [eşzamanlı işlemler durum denetimini](#asynchronous-operations-and-status-check)izleyin.
 2. *Küme* kaynağına GET isteği gönderin ve *KeyVault Properties* özelliklerine bakın. En son güncellenen Anahtar tanımlayıcı ayrıntılarınız yanıt olarak geri dönmelidir.
 
@@ -436,13 +436,13 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 
 - Abonelik başına maksimum *Küme* kaynağı sayısı 2 ile sınırlıdır
 
-- *AdX* küme sağlamanın yerine getirildiğini doğruladıktan sonra yalnızca çalışma alanına küme kaynak ilişkilendirmesi yapılmalıdır. Bu sağlamadan önce gönderilen veriler bırakılır ve kurtarılamaz.
+- *AdX* küme sağlamanın tamamlandığını doğruladıktan sonra yalnızca çalışma alanına küme kaynak ilişkilendirmesi yapılmalıdır. Sağlama tamamlanmadan önce çalışma alanınıza gönderilen veriler bırakılır ve kurtarılamaz.
 
 - CMK şifreleme, CMK yapılandırması sonrasında yeni alınan veriler için geçerlidir. CMK yapılandırması öncesinde alınan veriler Microsoft anahtarıyla şifrelenmiş olarak kalır. CMK yapılandırması öncesinde ve sonrasında alınan verileri sorunsuz bir şekilde sorgulayabilirsiniz.
 
-- Çalışma alanı bir *Küme* kaynağıyla ilişkilendirildikten sonra, veriler anahtarınızla şifrelendiğinden ve Azure Key Vault'ta KEK'iniz olmadan erişilebilir olmadığından, *Küme* kaynağından ilişkilendirilemez.
+- CMK'nın belirli bir çalışma alanı için gerekli olmadığına karar verirken bir *Küme* kaynağından çalışma alanını ilişkilendirebilirsiniz. İlişkiyi çözme işleminden sonra yeni alınan veriler, *Cluster* kaynağıyla ilişkilendirilmeden önceki gibi paylaşılan Log Analytics depolama alanında depolanır. *Küme* kaynağınız geçerli Key Vault tuşu ile sağlanmış ve yapılandırılırsa, ilişkilendirmeden önce ve sonra yutulan verileri sorunsuz bir şekilde sorgulayabilirsiniz.
 
-- Azure Anahtar Kasası kurtarılabilir olarak yapılandırılmalıdır. Bu özellikler varsayılan olarak etkinleştirilmez ve CLI ve PowerShell kullanılarak yapılandırılmalıdır:
+- Azure Anahtar Kasası kurtarılabilir olarak yapılandırılmalıdır. Bu özellikler varsayılan olarak etkinleştirilmez ve CLI veya PowerShell kullanılarak yapılandırılmalıdır:
 
   - [Yumuşak Silme](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) açık olmalıdır
   - [Temizleme koruması,](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) yumuşak silme işleminden sonra bile gizli / kasanın zorla silinmesine karşı korunmak için açılmalıdır
@@ -470,6 +470,8 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 
 - Çalışma alanıyla ilişkili bir *Küme* kaynağını silmeye çalışırsanız, silme işlemi başarısız olur.
 
+- *Küme* kaynağı oluştururken çakışma hatası alırsanız – *Küme* kaynağınızı son 14 gün içinde silmiş olabilirsiniz ve bu kaynak bir yumuşak silme dönemindedir. *Küme* kaynak adı yumuşak silme döneminde ayrılmış kalır ve bu ada sahip yeni bir küme oluşturamazsınız. Küme *kaynağı* kalıcı olarak silindiğinde, ad yumuşak silme döneminden sonra serbest bırakılır.
+
 - Bir kaynak grubu için tüm *Küme* kaynaklarını alın:
 
   ```rst
@@ -488,6 +490,11 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
           "tenantId": "tenant-id",
           "principalId": "principal-Id"
         },
+        "sku": {
+          "name": "capacityReservation",
+          "capacity": 1000,
+          "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
+          },
         "properties": {
            "KeyVaultProperties": {
               KeyVaultUri: "https://key-vault-name.vault.azure.net",
@@ -517,8 +524,10 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
   **Yanıt**
     
   'Kaynak grubu için*küme* kaynakları' ile aynı yanıt, ancak abonelik kapsamında.
-    
-- *Küme* kaynağınızı silin -- Silme işlemi yanlışlıkla veya kasıtlı olsun, Küme kaynağınızın, verilerinizin ve ilişkili çalışma alanlarının 14 gün içinde kurtarılmasına izin vermek için bir yumuşak silme işlemi gerçekleştirilir. *Küme* kaynak adı yumuşak silme döneminde ayrılmış kalır ve bu ada sahip yeni bir küme oluşturamazsınız. Yumuşak silme döneminden sonra *Cluster* kaynağınız ve verileriniz kurtarılamaz. İlişkili çalışma alanları *Küme* kaynağından çıkarılmaz ve yeni veriler paylaşılan Depolama'ya alınır ve Microsoft anahtarıyla şifrelenir.
+
+- *Küme* kaynağındaki *kapasite rezervasyonunu* güncelleştirin -- ilişkili çalışma alanlarınızın veri hacmi değiştiğinde ve faturalandırma hususları için kapasite rezervasyon düzeyini güncelleştirmek istediğinizde, [güncelleştirme *Küme* kaynağını](#update-cluster-resource-with-key-identifier-details) izleyin ve yeni kapasite değerinizi sağlayın. Kapasite rezervasyon seviyesi günde 1.000 ila 2.000 GB aralığında ve 100 adımda olabilir. Günde 2.000 GB'dan yüksek seviye için, etkinleştirmek için Microsoft kişinize ulaşın.
+
+- *Küme* kaynağınızı silin -- silme işlemi kazara veya kasıtlı olsun, *14* gün içinde verileri de dahil olmak üzere Cluster kaynağınızın kurtarılmasına izin vermek için bir yumuşak silme işlemi gerçekleştirilir. *Küme* kaynak adı yumuşak silme döneminde ayrılmış kalır ve bu ada sahip yeni bir küme oluşturamazsınız. Yumuşak silme döneminden sonra *Küme* kaynak adı serbest bırakılır, *Cluster* kaynağınız ve verileriniz kalıcı olarak silinir ve kurtarılamaz. İlişkili herhangi bir çalışma alanı, sil işlemindeki *Cluster* kaynağından ilişkilendirilir. Yeni alınan veriler paylaşılan Log Analytics depolama alanında depolanır ve Microsoft anahtarıyla şifrelenir. Çalışma alanları ilişkisiz işlem asynchronous olduğunu.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -529,8 +538,7 @@ AEK artık yeni Anahtar Şifreleme Anahtarı (KEK) sürümünüz tarafından şi
 
   200 TAMAM
 
-- *Küme* kaynağınızı ve verilerinizi kurtarın - yumuşak silme döneminde, aynı ada ve aynı abonelikte, kaynak grubunda ve bölgede bir *Küme* kaynağı oluşturun. *Küme* kaynağınızı kurtarmak için ** *Küme* Oluştur kaynak** adımını izleyin.
-
+- *Küme* kaynağınızı ve verilerinizi kurtarın -- Son 14 gün içinde silinen bir *Küme* kaynağı yumuşak silme durumundadır ve kurtarılabilir. Bu, şu anda ürün grubu tarafından el ile gerçekleştirilir. Kurtarma istekleri için Microsoft kanalınızı kullanın.
 
 ## <a name="appendix"></a>Ek
 

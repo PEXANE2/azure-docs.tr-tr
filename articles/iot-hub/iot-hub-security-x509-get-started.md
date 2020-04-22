@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: a22808b1d7ab2b2451f50470e8da3770d07407a5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.custom: amqp
+ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985669"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81759641"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT hub’ınızda X.509 güvenliğini ayarlayın
 
@@ -86,7 +87,7 @@ X.509 cihazınızın kimliğini doğrulamak için önce aygıtı CA sertifikası
 
 Daha sonra, IoT hub'ınız için kayıtlı X.509 aygıtını simüle etmek için nasıl bir C# uygulaması oluşturacağınızı göstereceğiz. Simüle edilen cihazdan hub'ınıza sıcaklık ve nem değerleri göndereceğiz. Bu eğitimde, yalnızca cihaz uygulamasını oluşturacağız. Bu simüle aygıt tarafından gönderilen olaylara yanıt gönderecek IoT Hub hizmet uygulaması oluşturmak için okuyuculara bir alıştırma olarak bırakılır. C# uygulaması, [örnekler ve öğreticiler için test CA sertifikalarını yönetme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)adımlarını izlediğinizi varsayar.
 
-1. Visual Studio'yu açın, **yeni bir proje oluştur'u**seçin ve ardından Konsol **Uygulaması (.NET Framework)** proje şablonu'nu seçin. **Sonraki'ni**seçin.
+1. Visual Studio'yu açın, **yeni bir proje oluştur'u**seçin ve ardından Konsol **Uygulaması (.NET Framework)** proje şablonu'nu seçin. **İleri**’yi seçin.
 
 1. **Yeni projenizi yapılandırın,** *projeyi SimulateX509Device*olarak adlandırın ve ardından **Oluştur'u**seçin.
 

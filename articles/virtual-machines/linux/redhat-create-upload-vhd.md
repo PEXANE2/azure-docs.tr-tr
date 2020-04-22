@@ -1,24 +1,19 @@
 ---
 title: Azure'da kullanmak için Red Hat Enterprise Linux VHD oluşturma ve yükleme
 description: Red Hat Linux işletim sistemi içeren bir Azure sanal sabit diski (VHD) oluşturmayı ve yüklemeyi öğrenin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: gbowerman
-manager: gwallace
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 6c6b8f72-32d3-47fa-be94-6cb54537c69f
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: cc806fe0c3894174835c99493ebf2ba19a11ca28
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460469"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758646"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure'da kullanılmak üzere red hat enterprise Linux (RHEL) sanal makinesini nasıl hazırlayacağınızı öğreneceksiniz. Bu makalede ele alınan RHEL sürümleri 6.7+ ve 7.1+ şeklindedir. Bu makalede ele alınan hazırlık için hipervizörler Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware'dir. Red Hat'in Bulut Erişimi programına katılmak için uygunluk gereksinimleri hakkında daha fazla bilgi için [Red Hat'in Bulut Erişimi web sitesine](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure'da RHEL'i çalıştırmaya](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)bakın. Bina RHEL görüntülerini otomatikleştirmenin yolları için [Azure Resim Oluşturucusu'na](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)bakın.
@@ -122,7 +117,7 @@ Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL gör
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

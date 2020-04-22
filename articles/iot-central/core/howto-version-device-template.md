@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bb77d1a09cb2692765c4c834ce617d13465d4d67
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 37c7bc99881c8d1106c8464cfe18c9e63b8a1b02
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80157577"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756730"
 ---
 # <a name="create-a-new-device-template-version"></a>Yeni bir aygıt şablonu sürümü oluşturma
 
-
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
 
 Azure IoT Central, IoT Uygulamaları'nın hızlı bir şekilde geliştirilmesine olanak tanır. Aygıt özelliklerini, görünümlerini ve özelleştirmelerini ekleyerek, düzenleyerek veya silerek cihaz şablon tasarımlarınızı hızlı bir şekilde yineleyebilirsiniz. Aygıt şablonunuzu yayımladıktan sonra, aygıt yeteneği modeli modelin yanındaki kilit simgeleriyle **Yayımlanmış** olarak gösterilir. Aygıt yeteneği modelinde değişiklik yapmak için aygıt şablonunun yeni bir sürümünü oluşturmanız gerekir. Bu arada bulut özellikleri, özelleştirmeler ve görünümler, aygıt şablonu sürümü gerek kalmadan herhangi bir zamanda düzenlenebilir. Bu değişikliklerden herhangi birini kaydettikten sonra, işleç için en son değişiklikleri Aygıt Gezgini'nde görüntülemek için kullanılabilir hale getirmek için aygıt şablonuna yayımlayabilirsiniz.
 
@@ -32,7 +32,7 @@ Aygıt yeteneklerinizin belirli öğeleri, aygıt şablonunuzu ve arayüzleriniz
 1. Özelleştirmek istediğiniz aygıt şablonuna seçin.
 1. **Özelleştir** sekmesini seçin.
 1. Cihaz yetenek modelinizde tanımlanan tüm özellikler burada listelenir. Burada oluşturabileceğiniz tüm alanlar, cihazınızŞablonunuzu sürümüne gerek kalmadan cihazınızın her yerinde kaydedilebilir ve kullanılabilir. Yalnızca okunan bir şekilde değiştirmek istediğiniz alanlar varsa, bunları değiştirmek için aygıt şablonunuzu sürümoluşturmanız gerekir. Başka bir değerde yeniden yapmak ve girmek istediğiniz bir alan seçin.
-1. **Kaydet**'e tıklayın. Artık bu değerler, başlangıçta aygıt şablonunuzda kaydedilen ve uygulama genelinde kullanılacak olan her şeyi geçersiz kılar.
+1. **Kaydet**’e tıklayın. Artık bu değerler, başlangıçta aygıt şablonunuzda kaydedilen ve uygulama genelinde kullanılacak olan her şeyi geçersiz kılar.
 
 ## <a name="versioning-a-device-template"></a>Aygıt şablonu sürüm oluşturma
 
@@ -81,7 +81,4 @@ Aygıt şablonunun birden çok sürümü oluşturabilirsiniz. Zamanla, bu aygıt
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure IoT Central uygulamanızda aygıt şablonu sürümlerini kullanmayı öğrendiğinize göre, önerilen bir sonraki adım şudur:
-
-> [!div class="nextstepaction"]
-> [Telemetri kuralları nasıl oluşturulur?](tutorial-create-telemetry-rules.md)
+Bir aygıt geliştiricisiyseniz, önerilen bir sonraki adım [Azure IoT Edge aygıtları ve Azure IoT Central](./concepts-iot-edge.md)hakkında bilgi almaktır.

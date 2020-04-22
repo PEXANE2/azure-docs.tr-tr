@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 93a5bcd77bb4f42d9099cc1ddb1b5c3130c19059
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 2ddb9a9c205135707d7d96beb106074baa1ce324
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010146"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758272"
 ---
 # <a name="azure-security-baseline-for-hdinsight"></a>HDInsight için Azure Güvenlik Taban Çizgisi
 
@@ -144,7 +144,7 @@ https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags
 
 Azure Kaynak Yöneticisi şablonları, RBAC denetimleri ve ilkeleri gibi önemli ortam yapılarını tek bir plan tanımında paketleyerek büyük ölçekli Azure dağıtımlarını basitleştirmek için Azure Planları'nı da kullanabilirsiniz. Planı yeni aboneliklere ve ortamlara kolayca uygulayın ve sürüm leme yoluyla denetim ve yönetime ince ayar uygulayın.
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -704,7 +704,7 @@ https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnos
 
 Rapid7 Agent El Ile Nasıl Yüklenir:
 
-https://insightvm.help.rapid7.com/v1.0/docs/agent-installation-on-linux
+https://insightvm.help.rapid7.com/docs/install
 
 Qualys Agent El ile nasıl yüklenir:
 
@@ -774,7 +774,7 @@ https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-li
 
 Kaynak Grafiği aracılığıyla klasik Azure kaynakları keşfedilebilir, ancak ileriye dönük Olarak Azure Kaynak Yöneticisi kaynaklarının oluşturulması ve kullanılması önerilir.
 
-Azure Graph ile sorgu oluşturma:
+Azure Kaynak Grafiği ile sorgu oluşturma:
 
 https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
@@ -940,7 +940,7 @@ Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapıla
 
 **Yönerge**: HDInsight kümenizin ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ad alanında Azure İlkesi takma adlarını kullanın.
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -1034,7 +1034,7 @@ https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Yönerge**: HDInsight kümenizin yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.HDInsight" ad alanında Azure İlkesi takma adlarını kullanın.
 
-Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
+Kullanılabilir Azure İlkesi diğer adlarını görüntüleme:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 

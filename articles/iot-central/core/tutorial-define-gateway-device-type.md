@@ -9,16 +9,18 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 7bb386d39f53331e77bee4d863c431c2e3655f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79298844"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81758137"
 ---
 # <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Azure IoT Merkezi uygulamanızda yeni bir IoT ağ geçidi aygıtı türü tanımlama
 
-Bu öğretici, bir oluşturucu olarak, IoT Central uygulamanızda bir ağ geçidi aygıtı tanımlamak için ağ geçidi aygıtı şablonunu nasıl kullanacağınızı gösterir. Daha sonra ağ geçidi aygıtı üzerinden IoT Central uygulamanıza bağlanan birkaç alt akım aygıtını yapılandırırsınız. 
+*Bu makale, çözüm oluşturucular ve aygıt geliştiricileri için geçerlidir.*
+
+Bu öğretici, bir çözüm oluşturucu olarak, IoT Central uygulamanızda bir ağ geçidi aygıtı tanımlamak için ağ geçidi aygıtı şablonunu nasıl kullanacağınızı gösterir. Daha sonra ağ geçidi aygıtı üzerinden IoT Central uygulamanıza bağlanan birkaç alt akım aygıtını yapılandırırsınız. 
 
 Bu öğreticide, bir **Akıllı Bina** ağ geçidi aygıtı şablonu oluşturursunuz. **Akıllı Bina** ağ geçidi aygıtının diğer akış aşağı aygıtlarıyla ilişkileri vardır.
 
@@ -89,7 +91,7 @@ Ardından, akış aşağı aygıt şablonları için şablonlara ilişkiler ekle
 
 1. + **İlişki ekle'yi** yeniden seçin. Ekran adı olarak **Doluluk Sensörü'nü** girin ve hedef olarak **RS40 Doluluk Sensörü'nü** seçin.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ![İlişkileri gösteren Akıllı Bina ağ geçidi aygıtı şablonu](./media/tutorial-define-gateway-device-type/relationships.png)
 
@@ -105,10 +107,10 @@ Akıllı Bina ağ **geçidi aygıtı** şablonuna bulut özellikleri eklemek iç
 
     | Görünen ad      | Anlam türü | Şema |
     | ----------------- | ------------- | ------ |
-    | Son Hizmet Tarihi | None          | Tarih   |
-    | Müşteri Adı     | None          | Dize |
+    | Son Hizmet Tarihi | Hiçbiri          | Tarih   |
+    | Müşteri Adı     | Hiçbiri          | Dize |
 
-2. **Kaydet'i**seçin.
+2. **Kaydet**’i seçin.
 
 ### <a name="create-views"></a>Görünümler oluşturma
 
@@ -149,7 +151,7 @@ Benzetimli ağ geçidi aygıtı oluşturmak için:
 
 1. Yeni **+** bir aygıt eklemeye başlamak için seçin.
 
-1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur'u**seçin.
+1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 Simüle edilmiş akış aşağı aygıtları oluşturmak için:
 
@@ -157,13 +159,13 @@ Simüle edilmiş akış aşağı aygıtları oluşturmak için:
 
 1. Yeni **+** bir aygıt eklemeye başlamak için seçin.
 
-1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur'u**seçin.
+1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 1. **Aygıtlar** sayfasında, aygıt şablonları listesinde **S1 Sensörü'nü** seçin.
 
 1. Yeni **+** bir aygıt eklemeye başlamak için seçin.
 
-1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur'u**seçin.
+1. Oluşturulan **Aygıt Kimliğini** ve **Aygıt adını**koruyun. **Benzetimli** anahtarın **Açık**olduğundan emin olun. **Oluştur**’u seçin.
 
 ![Uygulamanızdaki simüle edilmiş aygıtlar](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
@@ -207,7 +209,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!NOTE]
 > VS Code tabanlı kod oluşturma şu anda IoT Central modellenen ağ geçidi aygıtları için desteklenmemektedir.
 
-Sonra, şunları yapabilirsiniz:
+Ardından, bir aygıt geliştiricisi olarak şunları öğrenebilirsiniz:
 
 > [!div class="nextstepaction"]
-> [Cihaz bağlama](tutorial-connect-device.md)
+> [Azure IoT Merkezi uygulamanıza Azure IoT Edge aygıtı ekleme](tutorial-add-edge-as-leaf-device.md)

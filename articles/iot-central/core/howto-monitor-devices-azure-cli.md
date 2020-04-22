@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 0fa1b58547e0260ec5486003cf4cb85d855de33a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
+ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310226"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81756675"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI'yı kullanarak cihaz bağlantısını izleme
 
-*Bu konu oluşturucular ve yöneticiler için geçerlidir.*
+*Bu konu aygıt geliştiricileri ve çözüm oluşturucuları için geçerlidir.*
 
 Aygıtlarınızın IoT Central'a gönderdiği iletileri görmek ve aygıt ikizindeki değişiklikleri gözlemlemek için Azure CLI IoT uzantısını kullanın. Bu aracı, aygıt bağlantısının hata ayıklanması ve gözlemlemesi ve aygıt iletilerinin buluta ulaşmayan veya iki zıt değişikliklere yanıt veremeyeceği sorunları tanılamak için kullanabilirsiniz.
 
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Şimdi Nasıl IoT Central Explorer kullanmayı öğrendim, önerilen bir sonraki adım [ioT Merkezi cihazları yönetme](howto-manage-devices.md)keşfetmektir.
+Bir aygıt geliştiricisiyseniz, önerilen bir sonraki adım [Azure IoT Central'da Aygıt bağlantısı](./concepts-get-connected.md)hakkında bilgi almaktır.
