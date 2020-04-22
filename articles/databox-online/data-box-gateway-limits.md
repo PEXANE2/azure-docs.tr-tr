@@ -8,17 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e80b03f696a78887676e9f16750055a4dcfac230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641d7410e414be2adae2a83840c90a680aedd2fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60755257"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683347"
 ---
 # <a name="azure-data-box-gateway-limits"></a>Azure Veri Kutusu Ağ Geçidi sınırları
 
 Microsoft Azure Veri Kutusu Ağ Geçidi çözümünüzü dağıtırken ve çalıştırırken bu sınırları göz önünde bulundurun. 
-
 
 ## <a name="data-box-gateway-service-limits"></a>Veri Kutusu Ağ Geçidi hizmet sınırları
 
@@ -30,7 +29,7 @@ Aşağıdaki tabloda Veri Kutusu Ağ Geçidi aygıtının sınırları açıklan
 
 | Açıklama | Değer |
 |---|---|
-|Hayır. cihaz başına dosyaların |100 milyon <br> Limit 100 milyon maksimum limit ile disk alanı her 2 TB için ~ 25 milyon dosya |
+|Hayır. cihaz başına dosyaların |100 milyon <br> Eklenen her 25 milyon dosya için (maksimum limit 100 milyon ile), 2 TB disk alanı, 8 GB RAM ve 4 cpu çekirdeği eklemeniz gerekir. |
 |Hayır. cihaz başına hisse |24 |
 |Hayır. Azure depolama kapsayıcısı başına hisse |1 |
 |Bir paylaşıma yazılan en büyük dosya boyutu|2-TB sanal aygıt için maksimum dosya boyutu 500 GB'dır. <br> Maksimum dosya boyutu, veri diskboyutu yla birlikte en fazla 5 TB'ye ulaşana kadar önceki oranda artar. |

@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b946ab6157ba63213a4c140221d36f231aa62f0d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535851"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677755"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft kimlik platformu ve Örtülü hibe akışı
 
@@ -32,9 +32,6 @@ Bu uygulamalar için (Açısal, Ember.js, React.js, vb.), Microsoft kimlik platf
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
 
 Ancak, tek sayfalık uygulamanızda kitaplık kullanmamayı ve protokol iletilerini kendiniz göndermeyi tercih ediyorsanız, aşağıdaki genel adımları izleyin.
-
-> [!NOTE]
-> Tüm Azure Etkin Dizin (Azure AD) senaryoları ve özellikleri Microsoft kimlik platformu bitiş noktası tarafından desteklenmez. Microsoft kimlik platformu bitiş noktasını kullanmanız gerekip gerekip gerekmeden karar vermek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>OAuth2 örtülü hibe için uygun senaryolar
 

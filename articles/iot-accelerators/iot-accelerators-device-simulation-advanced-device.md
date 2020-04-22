@@ -6,15 +6,18 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- mvc
+- amqp
+- mqtt
+ms.openlocfilehash: c568dddcbbf57ebd6ed5906bb83af01a84dafa41
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61449057"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683822"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
 
@@ -169,7 +172,7 @@ Her ileti türüiyi tanımlanmış bir şema olmalıdır. İleti şeması, arka 
 
 ### <a name="supported-methods"></a>Desteklenen yöntemler
 
-Benzetimli aygıtlar yöntem çağrılarına da tepki verebilir, bu durumda bazı mantık lar uygular ve bazı yanıtlar sağlarlar. Simülasyona benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve aygıt durumuyla etkileşimkurabilir. Örnek:
+Benzetimli aygıtlar yöntem çağrılarına da tepki verebilir, bu durumda bazı mantık lar uygular ve bazı yanıtlar sağlarlar. Simülasyona benzer şekilde, yöntem mantığı bir JavaScript dosyasında depolanır ve aygıt durumuyla etkileşimkurabilir. Örneğin:
 
 ```json
 "CloudToDeviceMethods": {
@@ -259,7 +262,7 @@ JavaScript dosyaları, iki parametre kabul eden bir **ana** işlev olmalıdır:
     * **deviceModel**. Örneğin, **Asansör**.
 * Önceki çağrıda işlev tarafından döndürülen değer olan bir **durum** nesnesi. Bu aygıt durumu simülasyon hizmeti tarafından korunur ve telemetri iletileri oluşturmak için kullanılır.
 
-**Ana** işlev yeni aygıt durumunu döndürür. Örnek:
+**Ana** işlev yeni aygıt durumunu döndürür. Örneğin:
 
 ```JavaScript
 function main(context, state) {

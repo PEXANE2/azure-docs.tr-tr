@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 5fec72ce5f86c1bee9ec0e978e458f5be454c8e3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e061baa8e7eb73bae0a78f4215f0d48610e85fcb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81256612"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686742"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Ticari Pazar ortağı ve müşteri kullanımı atıf
 
@@ -31,7 +31,7 @@ Müşteri kullanımı atıf üç dağıtım seçeneğini destekler:
 >
 >- Müşteri kullanımı atıf yeni dağıtımlar içindir ve zaten dağıtılan varolan kaynakları etiketlemeyi desteklemez.
 >
->- Azure Marketi'nde yayınlanan [Azure Uygulaması](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) teklifleri için müşteri kullanımı atıfsı gereklidir.
+>- Azure Marketi'nde yayınlanan [Azure Uygulaması](./partner-center-portal/create-new-azure-apps-offer.md) teklifleri için müşteri kullanımı atıfsı gereklidir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -75,7 +75,7 @@ GUI'ler, müşteri kullanımı yla ilişkilendirilmesini sağlamak için İş Or
 
 1. Birden fazla GUID kaydetmek için, **İzleme GUID ekle'yi** yeniden seçin. Sayfada ek kutular görünür.
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager şablonlarını kullanma
 Azure Kaynak Yöneticisi şablonları kullanılarak birçok iş ortağı çözümü dağıtılır. Azure Marketi'nde, GitHub'da veya Quickstart olarak kullanılabilen bir Kaynak Yöneticisi şablonunuz varsa, müşteri kullanımı ilişkilendirmesini etkinleştirmek için şablonunuzu değiştirme işlemi doğrudan devam eder.
@@ -83,7 +83,7 @@ Azure Kaynak Yöneticisi şablonları kullanılarak birçok iş ortağı çözü
 > [!NOTE]
 > Çözüm Şablonları oluşturma ve yayımlama hakkında daha fazla bilgi için bkz.
 > * [İlk Kaynak Yöneticisi şablonunuzu oluşturun ve dağıtın.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
->* [Azure Uygulama teklifi.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer)
+>* [Azure Uygulama teklifi.](./partner-center-portal/create-new-azure-apps-offer.md)
 >* Video: [Azure Marketi için Çözüm Şablonları Oluşturma ve Yönetilen Uygulamalar.](https://channel9.msdn.com/Events/Build/2018/BRK3603)
 
 

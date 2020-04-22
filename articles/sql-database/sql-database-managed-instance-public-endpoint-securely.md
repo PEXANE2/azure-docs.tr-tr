@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/08/2019
-ms.openlocfilehash: 6dfeab3530445f8f9a102f47039d15b04fdf134a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f11c19ba33ee2fbae0fef265371bedad2fe29cb7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821731"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684948"
 ---
 # <a name="use-an-azure-sql-database-managed-instance-securely-with-public-endpoints"></a>Azure SQL Veritabanı yönetilen örneklerini ortak uç noktalarıyla güvenli bir şekilde kullanma
 
@@ -35,7 +35,7 @@ Zorunlu olmasa da, genel uç nokta erişimine sahip yönetilen bir örnek için 
 
 ## <a name="secure-data-in-motion"></a>Güvenli veri hareket halinde
 
-İstemci sürücü şifrelemeyi destekliyorsa, yönetilen örnek veri trafiği her zaman şifrelenir. Yönetilen örnek le diğer Azure sanal makineleri veya Azure hizmetleri arasında gönderilen veriler Azure'un omurgasını asla bırakmaz. Yönetilen örnekle şirket içi ağ arasında bir bağlantı varsa, Microsoft'un bakışlarıyla Azure ExpressRoute'u kullanmanızı öneririz. ExpressRoute, verileri genel internet üzerinden taşımaktan kaçınmanıza yardımcı olur. Yönetilen örnek özel bağlantı için yalnızca özel eşleme kullanılabilir.
+İstemci sürücü şifrelemeyi destekliyorsa, yönetilen örnek veri trafiği her zaman şifrelenir. Yönetilen örnek le diğer Azure sanal makineleri veya Azure hizmetleri arasında gönderilen veriler Azure'un omurgasını asla bırakmaz. Yönetilen örnekle şirket içi ağ arasında bir bağlantı varsa, Azure ExpressRoute'u kullanmanızı öneririz. ExpressRoute, verileri genel internet üzerinden taşımaktan kaçınmanıza yardımcı olur. Yönetilen örnek özel bağlantı için yalnızca özel eşleme kullanılabilir.
 
 ## <a name="lock-down-inbound-and-outbound-connectivity"></a>Gelen ve giden bağlantıyı kilitleme
 

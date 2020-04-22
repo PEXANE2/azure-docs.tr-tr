@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 4e20129502e7538bd2f3354b75b33095970e1595
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411858"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685193"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL Denetimi
 
@@ -111,9 +111,6 @@ Denetim günlüklerini bir depolama hesabına yapılandırmak için **Depolama**
 ### <a name=""></a><a id="audit-log-analytics-destination">Log Analytics hedefine denetim</a>
   
 Yazma denetim günlüklerini bir Log Analytics çalışma alanına yapılandırmak için **Log Analytics (Önizleme) seçeneğini** seçin ve **Log Analytics ayrıntılarını**açın. Günlüklerin yazıldığı Log Analytics çalışma alanını seçin veya oluşturun ve **ardından Tamam'ı**tıklatın.
-    
-  > [!WARNING]
-   > Log Analytics denetiminin etkinleştirilmesi, yutma oranlarına bağlı olarak maliyete tabi olacaktır. Lütfen bu [seçeneği](https://azure.microsoft.com/pricing/details/monitor/)kullanmanın ilişkili maliyetine dikkat edin veya denetim günlüklerini bir Azure depolama hesabında depolamayı düşünün.
    
    ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 

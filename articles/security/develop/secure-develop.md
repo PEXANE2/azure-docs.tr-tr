@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9d98660230e0ab9f4edcd9a7af8a3797106dd17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255654"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685742"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulamalar geliştirirken göz önünde bulundurulması gereken güvenlik etkinlikleri ve denetimleri sıyoruz. Microsoft [Güvenlik Geliştirme Yaşam Döngüsü'nün (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) uygulama ve doğrulama aşamalarında göz önünde bulundurulması gereken güvenlik soruları ve kavramları ele alınır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -44,7 +44,7 @@ Azure Marketi, statik kod analizi gerçekleştiren ve kod incelemelerine yardım
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Uygulamanız için her girişi doğrulayın ve dezenfekte edin
 
-Uygulamanızı en yaygın web uygulaması güvenlik açıklarından korumak için tüm girdileri güvenilmeyen olarak değerlendirin. Güvenilmeyen veriler enjeksiyon saldırıları için bir araçtır. Uygulamanız için giriş, URL'deki parametreleri, kullanıcıdan gelen girişi, veritabanından veya API'den gelen verileri ve kullanıcının işleyebilir şekilde işleyebileceği her şeyi içerir. Uygulama verileri [validate](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs) herhangi bir şekilde kullanmadan önce (kullanıcıya geri görüntülemek de dahil olmak üzere) verilerin sözdizimsel ve anlamsal olarak geçerli olduğunu doğrulamalıdır.
+Uygulamanızı en yaygın web uygulaması güvenlik açıklarından korumak için tüm girdileri güvenilmeyen olarak değerlendirin. Güvenilmeyen veriler enjeksiyon saldırıları için bir araçtır. Uygulamanız için giriş, URL'deki parametreleri, kullanıcıdan gelen girişi, veritabanından veya API'den gelen verileri ve kullanıcının işleyebilir şekilde işleyebileceği her şeyi içerir. Uygulama verileri [validate](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs) herhangi bir şekilde kullanmadan önce (kullanıcıya geri görüntülemek de dahil olmak üzere) verilerin sözdizimsel ve anlamsal olarak geçerli olduğunu doğrulamalıdır.
 
 Yalnızca düzgün biçimlendirilmiş verilerin iş akışına girdiğinden emin olmak için veri akışında girişi erken doğrulayın. Veritabanınızda hatalı biçimlendirilmiş verilerin kalıcı olmasını veya akış aşağı bileşeninde bir arızayı tetiklemelerini istemezsiniz.
 

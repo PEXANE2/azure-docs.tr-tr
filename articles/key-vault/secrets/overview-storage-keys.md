@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 0b855584ef6efef574e8264f3cead79000a51b13
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1125bafa43ce1752c58d1cce0bba66a6bbd32c32
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81432014"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685428"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault ve Azure CLI ile depolama hesabı anahtarlarını yönetme
 
@@ -71,13 +71,23 @@ az login
 Key Vault'un depolama hesabınıza erişmesi için Azure CLI [az rol oluşturma](/cli/azure/role/assignment?view=azure-cli-latest) komutunu kullanın. Komuta aşağıdaki parametre değerlerini sağlayın:
 
 - `--role`: "Depolama Hesabı Anahtar Operatörü Hizmet Rolü" RBAC rolünü geçirin. Bu rol, depolama hesabınıza erişim kapsamını sınırlar. Klasik bir depolama hesabı için bunun yerine "Klasik Depolama Hesabı Anahtar Operatörü Hizmeti Rolü"ni geçirin.
-- `--assignee-object-id`: Azure genel bulutundaki Anahtar Kasası nesne kimliği olan "93c27d83-f79b-4cb2-8dd4-4aa716542e74" değerini aktarın. (Azure Devlet bulutundaki Anahtar Kasası nesne kimliğini almak için [Hizmet temel uygulama kimliğine](#service-principal-application-id)bakın.)
+- `--assignee`: Azure genelhttps://vault.azure.netbulutundaki Key Vault'un url'si olan " " değerini geçirin. (Azure Goverment bulutu için '--asingee-object-id' yerine [Hizmet temel uygulama kimliğine](#service-principal-application-id)bakın.)
 - `--scope`: Formdaki `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`depolama hesabı kaynak kimliğinizi iletin. Abonelik kimliğinizi bulmak için Azure CLI [az hesap listesi](/cli/azure/account?view=azure-cli-latest#az-account-list) komutunu kullanın; depolama hesabı adınızı ve depolama hesabı kaynak grubunu bulmak için Azure CLI [az depolama hesabı listesi](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) komutunu kullanın.
 
 ```azurecli-interactive
-az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
+az role assignment create --role "Storage Account Key Operator Service Role" --assignee 'https://vault.azure.net' --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
  ```
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Yönetilen depolama hesaplarına kullanıcı hesabınıza izin verme
 
+Key Vault erişim ilkesini güncelleştirmek ve kullanıcı hesabınıza depolama hesabı izni vermek için Azure CLI [az keyvault ayarlı ilke](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) cmdlet'i kullanın.
+
+```azurecli-interactive
+# Give your user principal access to all storage account permissions, on your Key Vault instance
+
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --storage-permissions get list delete set update regeneratekey getsas listsas deletesas setsas recover backup restore purge
+```
+
+Azure portalındaki depolama hesabı "Erişim ilkeleri" sayfasında depolama hesapları için izinlerin kullanılolmadığını unutmayın.
 ### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault Yönetilen depolama hesabı oluşturma
 
  Azure CLI [az keyvault depolama komutunu](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) kullanarak Bir Key Vault yönetilen depolama hesabı oluşturun. 90 günlük bir yenilenme süresi ayarlayın. 90 gün sonra, Key `key1` Vault aktif anahtarı yeniler `key1`ve 'den `key2` . `key1`sonra etkin anahtar olarak işaretlenir. Komuta aşağıdaki parametre değerlerini sağlayın:

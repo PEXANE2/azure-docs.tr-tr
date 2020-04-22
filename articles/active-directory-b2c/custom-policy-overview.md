@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f72aedb010301f9c7b12778432c4f10feb10f7a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f18f44208b97ab5bc8d9cd9ff01d604c62deb963
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246051"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678155"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeler
 
@@ -43,7 +43,9 @@ Bu üç tür ilke dosyası kullanılır:
 - **Uzantılar dosyası** - kiracınız için benzersiz yapılandırma değişikliklerini tutar.
 - **Güvenerek Taraf (RP) dosyası** - Doğrudan uygulama veya hizmet tarafından çağrılan tek görev odaklı dosya (Ayrıca, Güvenen Taraf olarak da bilinir). Her benzersiz görev kendi RP gerektirir ve marka gereksinimlerine bağlı olarak, sayı "uygulama toplamı x toplam kullanım örnekleri sayısı" olabilir.
 
-Azure AD B2C'deki kullanıcı akışları yukarıda gösterilen üç dosya desenini izler, ancak geliştirici yalnızca RP dosyasını görürken, Azure portalı uzantılar dosyasının arka planında değişiklikler yapar.
+Azure AD B2C'deki kullanıcı akışları yukarıda gösterilen dosya desenini takip eder, ancak geliştirici yalnızca RP dosyasını görürken, Azure portalı uzantılar dosyasının arka planında değişiklikler yapar.
+
+Üç tür ilke dosyası olmasına rağmen, yalnızca üç dosyayla sınırlı değilsiniz. Her dosya türünden birden çok dosyanız olabilir. Örneğin, Uzantılar dosyanızda değişiklik yapmak istemiyorsanız, Uzantılar dosyasını daha da genişletmek için bir Uzantı2 dosyası oluşturabilirsiniz.
 
 ## <a name="custom-policy-core-concepts"></a>Özel ilke temel kavramları
 
@@ -55,7 +57,7 @@ Azure'daki müşteri kimliği ve erişim yönetimi (CIAM) hizmeti şunları içe
 
 Azure AD B2C, kimlik görevi elde etmek için kimlik sağlayıcıları, kullanıcılar, diğer sistemler ve sırayla yerel kullanıcı dizini ile etkileşim kurar. Örneğin, bir kullanıcıoturum açın, yeni bir kullanıcı kaydedin veya bir parolayı sıfırlayın. Kimlik Deneyimi Çerçevesi ve bir ilke (kullanıcı yolculuğu veya güven çerçevesi ilkesi olarak da adlandırılır) çok partili güven belirler ve aktörleri, eylemleri, protokolleri ve tamamlanması gereken adımların sırasını açıkça tanımlar.
 
-Kimlik Deneyimi Çerçevesi, OpenID Connect, OAuth, SAML ve rest gibi standart protokol biçimlerindeki varlıklar arasında güven düzenleyen tamamen yapılandırılabilir, ilke tabanlı, bulut tabanlı bir Azure platformudur API tabanlı sistemden sisteme talep değişimleri. Çerçeve, HTML ve CSS'yi destekleyen kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
+Kimlik Deneyimi Çerçevesi, OpenID Connect, OAuth, SAML gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenleyen ve örneğin REST API tabanlı sistemden sisteme talep alışverişi gibi standart olmayan birkaç platformda güven düzenleyen tamamen yapılandırılabilir, ilke tabanlı, bulut tabanlı bir Azure platformudur. Çerçeve, HTML ve CSS'yi destekleyen kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
 
 Özel ilke bir veya hiyerarşi zincirinde birbirine başvuran daha fazla XML biçimindeki dosyadan oluşabilir. XML öğeleri, diğer öğelerin yanı sıra, talep şema, talep dönüşümleri, içerik tanımları, talep sağlayıcılar, teknik profiller ve kullanıcı yolculuğu düzenleme adımlarını tanımlar. Özel bir ilke, güvenen bir taraf tarafından çağrıldığızaman Kimlik Deneyimi Çerçevesi tarafından yürütülen bir veya birkaç XML dosyası olarak erişilebilir. Özel ilkeleri yapılandıran geliştiriciler, güvenilir ilişkileri meta veri uç noktalarını, tam talep değişimi tanımlarını içerecek şekilde dikkatli bir şekilde tanımlamalı ve her kimlik sağlayıcısının gerektirdiği sırları, anahtarları ve sertifikaları yapılandırmalıdır.
 

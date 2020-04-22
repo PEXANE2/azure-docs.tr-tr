@@ -1,31 +1,31 @@
 ---
-title: PowerShell'i kullanarak Exchange eşleme oluşturma veya değiştirme
+title: PowerShell'i kullanarak Exchange eşlemi oluşturma veya değiştirme
 titleSuffix: Azure
-description: PowerShell'i kullanarak Exchange eşleme oluşturma veya değiştirme
+description: PowerShell'i kullanarak Exchange eşlemi oluşturma veya değiştirme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 4fd7d345e5efbe6e4e86e5bb410e2df4dd917047
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23c905f148da614c7785b61b76abed191206cd90
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774412"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678659"
 ---
-# <a name="create-or-modify-an-exchange-peering-using-powershell"></a>PowerShell'i kullanarak Exchange eşleme oluşturma veya değiştirme
+# <a name="create-or-modify-an-exchange-peering-by-using-powershell"></a>PowerShell'i kullanarak Exchange eşlemi oluşturma veya değiştirme
 
 Bu makalede, PowerShell cmdlets ve Kaynak Yöneticisi dağıtım modelini kullanarak bir Microsoft Exchange bakan oluşturma nasıl açıklanmaktadır. Bu makalede, kaynağın durumunu nasıl denetlersiniz, güncelleştirebilirsiniz veya silip yok edebilirsiniz.
 
-İsterseniz, [portalı](howto-exchange-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
+İsterseniz, Azure [portalını](howto-exchange-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [Önkoşullar](prerequisites.md) ve [Exchange bakış gözden geçirin.](walkthrough-exchange-all.md)
-* Azure kaynaklarına dönüştürülmemiş microsoft ile exchange eşlemeniz varsa, [PowerShell'i kullanarak Azure kaynağına bakan eski bir Exchange'e](howto-legacy-exchange-powershell.md) bakın
+* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Exchange bakış [geçiş ini](walkthrough-exchange-all.md) gözden geçirin.
+* Microsoft ile Azure kaynaklarına dönüştürülmemiş Exchange eşlemeleri zaten varsa, [PowerShell'i kullanarak azure kaynağına bakan eski bir Exchange'i dönüştür'e](howto-legacy-exchange-powershell.md)bakın.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+### <a name="work-with-azure-powershell"></a>Azure PowerShell ile çalışın
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
 ## <a name="create-and-provision-an-exchange-peering"></a>Exchange eşleme oluşturma ve sağlama
@@ -51,8 +51,8 @@ Bu makalede, PowerShell cmdlets ve Kaynak Yöneticisi dağıtım modelini kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell kullanarak Doğrudan bir eşleme oluşturma veya değiştirme](howto-direct-powershell.md)
-* [PowerShell'i kullanarak eski bir Doğrudan bakışı Azure kaynağına dönüştürün](howto-legacy-direct-powershell.md)
+* [PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme](howto-direct-powershell.md)
+* [PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme](howto-legacy-direct-powershell.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
@@ -61,4 +61,4 @@ Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklama
 Get-Help Get-AzPeering -detailed
 ```
 
-Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.

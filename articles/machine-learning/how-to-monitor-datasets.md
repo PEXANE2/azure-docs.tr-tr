@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546375"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682715"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri sürüklenmesini (önizlemeyi) algılama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Veri kümelerinin `timeseries` özelliğini kullanmanın tam bir örneği için örnek not [defterine](https://aka.ms/azureml-tsd-notebook) veya veri [kümeleri SDK belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)bakın.
+Veri kümelerinin `timeseries` özelliğini kullanmanın tam bir örneği için örnek not [defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb) veya veri [kümeleri SDK belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)bakın.
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

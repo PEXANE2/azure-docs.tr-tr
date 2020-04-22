@@ -3,12 +3,12 @@ title: Konteyner grubunda yönetilen kimliği etkinleştirme
 description: Azure Kapsayıcı Örnekleri'nde diğer Azure hizmetleriyle kimlik doğrulaması yapabilen yönetilen bir kimliği nasıl etkinleştirebileceğinizi öğrenin
 ms.topic: article
 ms.date: 01/29/2020
-ms.openlocfilehash: 003055d5021dd8ad7c3bab6d2900298ffd13b222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 19d2ab22eea15278c7753046f9222c7856fbf5ef
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76901939"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685654"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Kapsayıcı Örnekleri ile yönetilen kimlikler nasıl kullanılır?
 
@@ -189,7 +189,7 @@ token=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=
 
 ```
 
-Şimdi anahtar kasasına kimlik doğrulamak ve bir sırrı okumak için erişim belirteci kullanın. URL'deki anahtar kasanızın adını değiştirin*https://mykeyvault.vault.azure.net/..*( . ):
+Şimdi anahtar kasasına kimlik doğrulamak ve bir sırrı okumak için erişim belirteci kullanın. URL'deki anahtar kasanızın adını değiştirin (*https:\//mykeyvault.vault.azure.net/...*):
 
 ```bash
 curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-10-01 -H "Authorization: Bearer $token"

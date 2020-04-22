@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e0427398d05cbe9f76249ec8f7c25568d566d5d
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: d9760624afec111a271ae5aa0ebbe5533d6ba8d6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654373"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680204"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android'de Azure Active Directory sertifikası tabanlı kimlik doğrulama
 
@@ -27,7 +27,7 @@ Android cihazlar, aşağıdaki lere bağlanırken cihazlarındaki istemci sertif
 
 Bu özelliğin yapılandırılması, mobil cihazınızdaki belirli postalara ve Microsoft Office uygulamalarına bir kullanıcı adı ve parola kombinasyonu girme gereksinimini ortadan kaldırır.
 
-Bu konu, Office 365 Enterprise, Business, Education, US Government, China ve Almanya planlarında kiracı kullanıcılar için cba'yı bir iOS (Android) cihazında yapılandırmak için gereksinimleri ve desteklenen senaryoları sağlar.
+Bu konu, Office 365 Enterprise, Business, Education, US Government, China ve Germany planlarında kiracı kullanıcılar için Bir Android cihazda CBA yapılandırmak için gereksinimleri ve desteklenen senaryoları sağlar.
 
 Bu özellik, Office 365 ABD Hükümeti Savunması ve Federal planlarında önizlemede kullanılabilir.
 

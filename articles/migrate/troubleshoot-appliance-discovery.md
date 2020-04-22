@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 9fbf55fbe16d958bf10541894159dade26668bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6cb83a87f2e96eb62696e5d92095ef2b8d7c7def
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677334"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Geçiş cihazını ve keşfini sorun giderme
 
@@ -41,6 +41,15 @@ Cihaz makinesi bir proxy'nin arkasındaysa bu durum olabilir.
 - Proxy'nin ihtiyacı varsa yetki kimlik bilgilerini sağladığından emin olun.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy'si kullanıyorsanız, [bu URL'leri](migrate-appliance.md#url-access) izin verenler listesine ekleyin.
 - Internet'e bağlanmak için bir engelleme proxy kullanıyorsanız, [bu adımları](https://docs.microsoft.com/azure/migrate/concepts-collector)kullanarak cihaz VM üzerine proxy sertifikası almak.
+
+## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Cihaz web uygulamasından Azure'da oturum açamıyorum
+
+Azure'da oturum açtırmak için yanlış Azure hesabını kullanıyorsanız , "Üzgünüz, ancak oturum açmanızda sorun yaşıyoruz" hatası görüntülenir. Bu hata birkaç nedenden dolayı oluşur:
+
+- Genel bulut için cihaz web uygulamasında oturum açarsanız, Devlet bulut portalı için kullanıcı hesabı kimlik bilgilerini kullanırsınız.
+- Özel bulut portalı için kullanıcı hesabı kimlik bilgilerini kullanarak devlet bulutu için cihaz web uygulamasında oturum açarsanız.
+
+Doğru kimlik bilgilerini kullandığınızdan emin olun.
 
 ##  <a name="datetime-synchronization-error"></a>Tarih/saat eşitleme hatası
 

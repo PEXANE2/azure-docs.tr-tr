@@ -2,13 +2,13 @@
 title: Azure CLI ve şablonuyla kaynakları dağıtma
 description: Kaynakları Azure'a dağıtmak için Azure Kaynak Yöneticisi'ni ve Azure CLI'yi kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
-ms.date: 03/25/2020
-ms.openlocfilehash: 241b84bc7b8c0b213e74cd7ee5f3d7668fe0d808
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282656"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685696"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>ARM şablonları ve Azure CLI ile kaynakları dağıtma
 
@@ -168,7 +168,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Genişletilmiş JSON biçimini işleme
 
-Çok satırlı dizeleri veya açıklamaları içeren bir şablon `--handle-extended-json-format` dağıtmak için anahtarı kullanmanız gerekir.  Örnek:
+Sürüm 2.3.0 veya daha büyük olan Azure CLI'yi kullanarak çok satırlı `--handle-extended-json-format` dizeleri veya açıklamaları olan bir şablon dağıtmak için anahtarı kullanmanız gerekir.  Örneğin:
 
 ```json
 {

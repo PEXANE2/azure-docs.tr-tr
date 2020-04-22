@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f45d9e1ca5b8237779fe096154c83749aa08fe
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1f0b0c0a7b666aed56ad24625c80c0a57683b998
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428439"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683265"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Azure Etkin Dizini'nde yönetim birimlerinde gruplar ekleme ve yönetme
 
 Azure Etkin Dizini'nde (Azure AD), daha ayrıntılı denetim kapsamı için bir yönetim birimine (AU) gruplar ekleyebilirsiniz.
 
-Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya hazırlanma adımları [için](roles-admin-units-manage.md#getting-started)bkz.
+Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya hazırlanma adımları [için](roles-admin-units-manage.md#get-started)bkz.
 
 ## <a name="add-groups-to-an-au"></a>AU'ya grup ekleme
 

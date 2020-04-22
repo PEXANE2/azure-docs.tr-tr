@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a0cb7957008308425d91abb3e0f828cc40301736
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064920"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683318"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
@@ -40,7 +40,7 @@ Microsoft, Azure Özel HSM hizmetini sunmak için Gemalto ile ortaklık yaptı. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>S: HSM ne için kullanılır?
 
-HSM'ler, SSL (güvenli soket katmanı), şifreleme verileri, PKI (ortak anahtar altyapısı), DRM (dijital haklar yönetimi) ve belgeleri imzalama gibi şifreleme işlevleri için kullanılan şifreleme anahtarlarını depolamak için kullanılır.
+HSM'ler, TLS (aktarım katmanı güvenliği), şifreleme verileri, PKI (ortak anahtar altyapısı), DRM (dijital haklar yönetimi) ve belgeleri imzalama gibi şifreleme işlevleri için kullanılan şifreleme anahtarlarını depolamak için kullanılır.
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>S: Özel HSM nasıl çalışır?
 
@@ -69,6 +69,7 @@ Mart 2019 sonu itibariyle, Özel HSM aşağıda listelenen 14 bölgede mevcuttur
 * Doğu ABD
 * Doğu ABD 2
 * Batı ABD
+* Batı ABD 2
 * Orta Güney ABD
 * Güneydoğu Asya
 * Doğu Asya
@@ -84,6 +85,10 @@ Mart 2019 sonu itibariyle, Özel HSM aşağıda listelenen 14 bölgede mevcuttur
 * Doğu Kanada
 * Doğu Avustralya
 * Güneydoğu Avustralya
+* İsviçre Kuzey
+* İsviçre Batı
+* US Gov Virginia
+* US Gov Texas
 
 ## <a name="interoperability"></a>Birlikte Çalışabilirlik
 
@@ -132,13 +137,13 @@ Evet. Gemalto geçiş kılavuzuna bakın.
 
 ### <a name="q-how-do-i-decide-whether-to-use-azure-key-vault-or-azure-dedicated-hsm"></a>S: Azure Key Vault'u mu yoksa Azure Özel HSM'yi mi kullanacağıma nasıl karar veririm?
 
-Azure Özel HSM, Azure'da HSM kullanan şirket içi uygulamalara geçiş yapan işletmeler için uygun seçimdir. Özel HSM'ler, en az değişiklikle bir uygulamayı geçirme seçeneği sunar. Bir Azure VM veya Web App'te çalışan uygulama kodunda şifreleme işlemleri gerçekleştirilirse, Özel HSM'yi kullanabilirler. Genel olarak, IaaS (hizmet olarak altyapı) modellerinde çalışan shrink-wrapped yazılım, Anahtarsız SSL için Uygulama ağ geçidi veya trafik yöneticisi gibi HSM'leri anahtarsız SSL, ADCS (Active Directory Certificate Services) veya belge imzalama, kod imzalama veya bir EKM (genişletilebilir anahtar yönetimi) sağlayıcısı nı kullanarak HSM'de ana anahtarla Yapılan TDE (şeffaf veritabanı şifrelemesi) ile yapılandırılan SQL Server (IaaS) için kullanılan benzer PKI araçları, araçları/uygulamaları gibi önembelgesi HSM'yi önemli bir mağaza olarak destekleyen Lerm'i kullanabilir. Azure Key Vault, "bulutta doğan" uygulamalar veya müşteri verilerinin PaaS (hizmet olarak platform) veya Office 365 Müşteri Anahtarı, Azure Bilgi Koruması gibi SaaS (hizmet olarak yazılım) senaryoları tarafından işlendiği dinlenme senaryolarında şifreleme için uygundur , Azure Disk Şifreleme, müşteri tarafından yönetilen anahtarla Azure Veri Gölü Deposu şifrelemesi, müşteri yönetilen anahtarla Azure Depolama şifrelemesi ve müşteri yönetilen anahtarla Azure SQL.
+Azure Özel HSM, Azure'da HSM kullanan şirket içi uygulamalara geçiş yapan işletmeler için uygun seçimdir. Özel HSM'ler, en az değişiklikle bir uygulamayı geçirme seçeneği sunar. Bir Azure VM veya Web App'te çalışan uygulama kodunda şifreleme işlemleri gerçekleştirilirse, Özel HSM'yi kullanabilirler. Genel olarak, IaaS (hizmet olarak altyapı) modellerinde çalışan shrink-wrapped yazılım, anahtarsız TLS, ADCS (Active Directory Certificate Services) veya belge imzalama, kod imzalama veya bir SQL Server (IaaS) ile yapılandırılan ve EKM (genişletilebilir anahtar yönetimi) sağlayıcısı nı kullanan bir HSM'de ana anahtarla yapılandırılan sql server (IaaS) için uygulama ağ geçidi veya trafik yöneticisi gibi HSM'yi anahtarsız TLS, ADCS (Active Directory Certificate Services) veya benzeri PKI araçları, araçlar/uygulamalar gibi anahtarsız bir mağaza olarak HSM'yi destekleyen ler kullanabilir. Azure Key Vault, müşteri verilerinin PaaS (hizmet olarak platform) veya Office 365 Müşteri Anahtarı, Azure Bilgi Koruması, Azure Disk Şifrelemesi, Müşteri tarafından yönetilen anahtarla Azure Depolama Azure Depolama Alanı şifrelemesi, müşteri tarafından yönetilen anahtarla Azure Depolama Alanı şifrelemesi ve müşteri tarafından yönetilen anahtarla SQL gibi senaryolar tarafından müşteri verilerinin işlendiği dinlenme senaryolarında şifreleme için uygundur.
 
 ### <a name="q-what-usage-scenarios-best-suit-azure-dedicated-hsm"></a>S: Hangi kullanım senaryoları Azure Özel HSM'ye en uygun?
 
 Azure Özel HSM geçiş senaryoları için en uygundur. Bu, şirket içi uygulamaları Zaten HSM kullanmakta olan Azure'a geçirerek gerçeklediğiniz anlamına gelir. Bu, uygulamada en az değişiklikle Azure'a geçiş yapmak için düşük sürtünme seçeneği sağlar. Azure VM veya Web App'te çalışan uygulama kodunda şifreleme işlemleri gerçekleştirilirse, Özel HSM kullanılabilir. Genel olarak, Önemli bir mağaza olarak HSM'leri destekleyen IaaS (hizmet olarak altyapı) modellerinde çalışan küçültülmüş yazılım, aşağıdakiler gibi Adanmış HSM'yi kullanabilir:
 
-* Anahtarsız SSL için uygulama ağ geçidi veya trafik yöneticisi
+* Anahtarsız TLS için uygulama ağ geçidi veya trafik yöneticisi
 * ADCS (Aktif Dizin Sertifika Hizmetleri)
 * Benzer PKI araçları
 * Belge imzalama için kullanılan araçlar/uygulamalar

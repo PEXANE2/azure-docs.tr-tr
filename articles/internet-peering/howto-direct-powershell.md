@@ -1,31 +1,31 @@
 ---
-title: PowerShell kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
+title: PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
 titleSuffix: Azure
-description: PowerShell kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
+description: PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 69031550bdab1535213c78f81426fa76e8ea62ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7639499aaef8d479c2552849b2124e709c46fd36
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680758"
 ---
-# <a name="create-or-modify-a-direct-peering-using-powershell"></a>PowerShell kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
+# <a name="create-or-modify-a-direct-peering-by-using-powershell"></a>PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme
 
-Bu makalede, PowerShell cmdlets ve Kaynak Yöneticisi dağıtım modelini kullanarak Microsoft Direct bakışoluşturma nasıl açıklanmaktadır. Bu makalede, kaynağın durumunu nasıl denetlersiniz, güncelleştirebilirsiniz veya silip yok edebilirsiniz.
+Bu makalede, PowerShell cmdlets ve Azure Kaynak Yöneticisi dağıtım modelini kullanarak Microsoft Direct bakışlarının nasıl oluşturulutamamı açıklanmaktadır. Bu makalede, kaynağın durumunu nasıl denetlersiniz, güncelleştirebilirsiniz veya silip yok edebilirsiniz.
 
-İsterseniz, [portalı](howto-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
+İsterseniz, Azure [portalını](howto-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [Önkoşulları](prerequisites.md) ve [Doğrudan bakan gözden geçirin.](walkthrough-direct-all.md)
-* Azure kaynaklarına dönüştürülmemiş olan Microsoft ile doğrudan bakışınız varsa, [PowerShell'i kullanarak eski bir Doğrudan Azure kaynağına dönüştür'e](howto-legacy-direct-powershell.md) bakın
+* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Doğrudan bakan [gözden geçirin.](walkthrough-direct-all.md)
+* Microsoft ile Azure kaynaklarına dönüştürülmemiş doğrudan bakış bağlantılarınız varsa, [powershell kullanarak bir Azure kaynağına](howto-legacy-direct-powershell.md)doğrudan bakış dönüştürme 'ye bakın.
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+### <a name="work-with-azure-powershell"></a>Azure PowerShell ile çalışın
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
 ## <a name="create-and-provision-a-direct-peering"></a>Doğrudan bir bakış oluşturma ve sağlama
@@ -50,8 +50,8 @@ Bu makalede, PowerShell cmdlets ve Kaynak Yöneticisi dağıtım modelini kullan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell'i kullanarak Exchange eşleme sini oluşturun veya değiştirin.](howto-exchange-powershell.md)
-* [PowerShell'i kullanarak Azure kaynağına bakan eski bir Exchange'i dönüştürün.](howto-legacy-exchange-powershell.md)
+* [PowerShell'i kullanarak Exchange eşlemi oluşturma veya değiştirme](howto-exchange-powershell.md)
+* [PowerShell'i kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürme](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
@@ -60,4 +60,4 @@ Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklama
 Get-Help Get-AzPeering -detailed
 ```
 
-Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.

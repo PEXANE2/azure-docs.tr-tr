@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 05698596f966f879da1affc58af0122d08d519ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79256243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683257"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Quickstart: BACPAC dosyasını Azure SQL Veritabanı'ndaki bir veritabanına aktarma
 
@@ -88,7 +88,7 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 > [!NOTE]
 > Portal veya Powershell aracılığıyla gönderilen alma/dışa aktarma isteklerini işleyen makinelerin bacpac dosyasını ve Veri Katmanı Uygulama Çerçevesi (DacFX) tarafından oluşturulan geçici dosyaları depolaması gerekir. Gerekli disk alanı aynı boyuttaki DB'ler arasında önemli ölçüde değişir ve veritabanı boyutunun 3 katına kadar sürebilir. Alma/dışa aktarma isteğini çalıştıran makinelerde yalnızca 450GB yerel disk alanı bulunur. Sonuç olarak, bazı istekler "Diskte yeterli alan yok" hatasıyla başarısız olabilir. Bu durumda, geçici çözüm yeterli yerel disk alanı olan bir makinede sqlpackage.exe çalıştırmaktır. 150 GB'dan büyük veritabanlarını içe aktarma/dışa aktarma yaparken, bu sorunu önlemek için SqlPackage'ı kullanın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
@@ -144,7 +144,8 @@ az sql db import --resource-group "<resourceGroup>" --server "<server>" --name "
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Elastik havuzda bir veritabanına alma desteklenmez. Verileri tek bir veritabanına aktarAbilir ve veritabanını esnek bir havuza taşıyabilirsiniz.
+- Elastik havuzda bir veritabanına alma desteklenmez. Verileri tek bir veritabanına aktarAbilir ve veritabanını esnek bir havuza taşıyabilirsiniz.
+- Azure hizmetlerine erişime izin ver,KAPALI olarak ayarlandığında Dışa Aktarma Hizmeti çalışmaz. Ancak, bir Azure VM'den sqlpackage.exe'yi el ile çalıştırarak veya DACFx API'sini kullanarak dışa aktarmayı doğrudan kodunuzda gerçekleştirerek sorunu çözebilirsiniz.
 
 ## <a name="import-using-wizards"></a>Sihirbazları kullanarak alma
 

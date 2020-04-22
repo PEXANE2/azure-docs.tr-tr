@@ -8,23 +8,23 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7316dba7559c4a50e94771d69ce03bac51c0f3c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9e9a9a0415a85c8b8c5fb27d911124c43a2447d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774542"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678547"
 ---
-Bir tarayıcıdan [portala](https://portal.azure.com/) gidin ve Azure hesabınızla oturum açın.
+Bir tarayıcıdan Azure [portalına](https://portal.azure.com/) gidin ve Azure hesabınızla oturum açın.
 
 Birden çok aboneliğiniz varsa ve abonelikleri değiştirmeniz gerekiyorsa:
 
-1. Profil düğmesine tıklayın ve ardından **Dizin Değiştir'i**seçin.
+1. Profil düğmesini seçin ve ardından **Dizin Değiştir'i**seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Anahtar dizini seçin](../media/choose-subscription-2.png)
+    > ![Geçiş dizini seçin](../media/choose-subscription-2.png)
 
-1. Kuruluma bakmak için kullanmak istediğiniz bir abonelik seçin.
+1. Eşleme kurulumu için kullanmak istediğiniz bir abonelik seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Abonelik seçin](../media/choose-subscription-3.png)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7eb01f3997ac4ab2e439c00f07990c51ec3e3d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bdf0cbfb91332d60516432a7a67fb10404d89113
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370357"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683845"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için İş Gününü Yapılandır
 
@@ -281,6 +281,7 @@ Bu adımda, güvenlik grubuna çalışan veriler için "etki alanı güvenliği"
     ![Etki Alanı Güvenlik İlkeleri](./media/workday-inbound-tutorial/wd_isu_06.png "Etki Alanı Güvenlik İlkeleri")  
 2. Etki **Alanı** metin kutusunda, aşağıdaki etki alanlarını arayın ve bunları filtreye tek tek ekleyin.  
    * *Dış Hesap Sağlama*
+   * *İşçi Verileri: İşçiler*
    * *İşçi Verileri: Kamu Çalışanı Raporları*
    * *Kişi Verileri: İş İletişim Bilgileri*
    * *İşçi Verileri: Tüm Pozisyonlar*
@@ -312,6 +313,7 @@ Bu adımda, güvenlik grubuna çalışan veriler için "etki alanı güvenliği"
    | ---------- | ---------- |
    | Alın ve Koyun | İşçi Verileri: Kamu Çalışanı Raporları |
    | Alın ve Koyun | Kişi Verileri: İş İletişim Bilgileri |
+   | Al | İşçi Verileri: İşçiler |
    | Al | İşçi Verileri: Tüm Pozisyonlar |
    | Al | İşçi Verileri: Güncel Personel Bilgileri |
    | Al | İşçi Verileri: İşçi Profilinde İşletme Unvanı |
@@ -451,11 +453,15 @@ Bu adımda, Azure portalında İş Günü ve Active Directory ile bağlantı kur
 
 1. Yönetici **Kimlik Bilgileri** bölümünü aşağıdaki gibi tamamlayın:
 
-   * **Yönetici Kullanıcı Adı** – Kiracı alan adı eklenen İş Günü entegrasyon sistemi hesabının kullanıcı adını girin. Bu gibi bir şey görünmelidir: **kullanıcı adı\@tenant_name**
+   * **İş Günü Kullanıcı Adı** – Kiracı alan adı eklenen İş Günü entegrasyon sistemi hesabının kullanıcı adını girin. Bu gibi bir şey görünmelidir: **kullanıcı adı\@tenant_name**
 
-   * **Yönetici şifresi –** İş Günü entegrasyon sistemi hesabının parolasını girin
+   * **İş günü şifresi –** İş Günü entegrasyon sistemi hesabının parolasını girin
 
-   * **Kiracı URL ' i –** Kiracınız için İş Günü web hizmetleri bitiş noktasına URL'yi girin. Bu değer şu https://wd3-impl-services1.workday.com/ccx/service/contoso4şekilde görünmelidir: , *contoso4'ün* doğru kiracı adınızla değiştirildiği ve *wd3-impl'in* doğru ortam dizesi ile değiştirildiği yer.
+   * **İş Günü Web Hizmetleri API URL -** Kiracınız için İş Günü web hizmetleri bitiş noktasına URL'yi girin. Bu değer şu https://wd3-impl-services1.workday.com/ccx/service/contoso4şekilde görünmelidir: , *contoso4'ün* doğru kiracı adınızla değiştirildiği ve *wd3-impl'in* doğru ortam dizesi ile değiştirildiği yer.
+
+     > [!NOTE]
+     > Url'de sürüm bilgisi belirtilmemişse, uygulama varsayılan olarak Workday Web Services v21.1 kullanır. Belirli bir İş Günü Web Hizmetleri API sürümünü kullanmak için lütfen URL biçimini kullanın:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Örnek: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
    * **Aktif Dizin Ormanı -** Etkin Dizin etki alanınızın aracıya kayıtlı olarak "Adı". Sağlama için hedef etki alanını seçmek için açılır alanı kullanın. Bu değer genellikle şöyle bir dizedir: *contoso.com*
 
@@ -472,7 +478,7 @@ Bu adımda, Azure portalında İş Günü ve Active Directory ile bağlantı kur
 
    * Test **Bağlantısı** düğmesini tıklatın. Bağlantı testi başarılı olursa, üstteki **Kaydet** düğmesini tıklatın. Başarısız olursa, iş günü kimlik bilgileri ve aracı kurulumunda yapılandırılan AD kimlik bilgilerinin geçerli olup olmadığını iki kez denetleyin.
 
-     ![Azure portalında](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * Kimlik bilgileri başarıyla kaydedildikten sonra, **Eşlemeler** bölümü Varsayılan Eşleme **İş Günü Çalışanlarını Yerinde Etkin Dizine Senkronize** Eder
 
@@ -537,7 +543,7 @@ Bu bölümde, kullanıcı verilerinin İş Günü'nden Active Directory'ye akı�
 
 1. Eşlemelerinizi kaydetmek için, Atrit-Eşleme bölümünün üst **kısmındakaydet'i** tıklatın.
 
-   ![Azure portalında](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Aşağıda, Bazı ortak ifadeler ile İş Günü ve Etkin Dizin arasında bazı örnek öznitelik eşlemeleri ve
 
@@ -607,11 +613,16 @@ Aşağıdaki bölümlerde, yalnızca buluta yönelik dağıtımlar için İş G�
 
 8. Yönetici **Kimlik Bilgileri** bölümünü aşağıdaki gibi tamamlayın:
 
-   * **Yönetici Kullanıcı Adı** – Kiracı alan adı eklenen İş Günü entegrasyon sistemi hesabının kullanıcı adını girin. Şöyle bir şey görünmelidir:username@contoso4
+   * **İş Günü Kullanıcı Adı** – Kiracı alan adı eklenen İş Günü entegrasyon sistemi hesabının kullanıcı adını girin. Şöyle bir şey görünmelidir:username@contoso4
 
-   * **Yönetici şifresi –** İş Günü entegrasyon sistemi hesabının parolasını girin
+   * **İş günü şifresi –** İş Günü entegrasyon sistemi hesabının parolasını girin
 
-   * **Kiracı URL ' i –** Kiracınız için İş Günü web hizmetleri bitiş noktasına URL'yi girin. Bu değer şu https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourcesşekilde görünmelidir: , *contoso4'ün* doğru kiracı adınızla değiştirildiği ve *wd3-impl'in* doğru ortam dizesi ile değiştirildiği yer. Bu URL bilinmiyorsa, kullanılacak doğru URL'yi belirlemek için lütfen Iş Günü tümleştirme ortağınızla veya destek temsilcinizle birlikte çalışın.
+   * **İş Günü Web Hizmetleri API URL -** Kiracınız için İş Günü web hizmetleri bitiş noktasına URL'yi girin. Bu değer şu https://wd3-impl-services1.workday.com/ccx/service/contoso4şekilde görünmelidir: , *contoso4'ün* doğru kiracı adınızla değiştirildiği ve *wd3-impl'in* doğru ortam dizesi ile değiştirildiği yer. Bu URL bilinmiyorsa, kullanılacak doğru URL'yi belirlemek için lütfen Iş Günü tümleştirme ortağınızla veya destek temsilcinizle birlikte çalışın.
+
+     > [!NOTE]
+     > Varsayılan olarak, URL'de sürüm bilgisi belirtilmemişse uygulama İş Günü Web Hizmetleri v21.1'i kullanır. Belirli bir İş Günü Web Hizmetleri API sürümünü kullanmak için lütfen URL biçimini kullanın:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
+     > Örnek: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+
 
    * **Bildirim E-postası –** E-posta adresinizi girin ve "hata olursa e-posta gönder" onay kutusunu işaretleyin.
 
@@ -737,7 +748,7 @@ Bu bölümde, geri yazma özniteliklerinin Azure AD'den İş Günü'ne akışın
 
 1. **Sağlama** sekmesinde, Sağlama **Durumunu** **A.C.** olarak ayarlayın.
 
-2. **Kaydet**'e tıklayın.
+2. **Kaydet**’e tıklayın.
 
 3. Bu işlem, İş Günü kiracısında kaç kullanıcı olduğuna bağlı olarak değişken saat sayısı alabilecek ilk eşitleme başlatılır. 
 
@@ -745,7 +756,7 @@ Bu bölümde, geri yazma özniteliklerinin Azure AD'den İş Günü'ne akışın
 
 5. İlk eşitleme tamamlandıktan sonra, aşağıda gösterildiği **gibi, Sağlama** sekmesine bir denetim özet raporu yazar.
 
-   ![Azure portalında](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>Sık Sorulan Sorular (SSS)
 
@@ -807,9 +818,13 @@ Bu işlevsellik şu anda desteklenmez. Önerilen geçici çözüm, [denetim gün
 
 Çözüm şu anda aşağıdaki İş Günü API'lerini kullanır:
 
-* Get_Workers (v21.1) işçi bilgilerini almak için
-* İş E-posta Yazma özelliği için Maintain_Contact_Information (v26.1)
-* Kullanıcı adı Yazma özelliği için Update_Workday_Account (v31.2)
+* **Yönetici Kimlik Bilgileri** bölümünde kullanılan İş Günü Web Hizmetleri **API URL** biçimi, Get_Workers için kullanılan API sürümünü belirler
+  * URL biçimi:\#\#\#\#\.https:// iş\.günü com/ccx/service/tenantName ise, API v21.1 kullanılır. 
+  * \#\#\#\#\.URL biçimi şu ise:\.https:// iş günü com/ccx/service/tenantName/Human\_Resources , sonra API v21.1 kullanılır 
+  * URL biçimi şu ise:\#\#\#\#\.\.https:// iş\_günü com/ccx/service/tenantName/Human Resources/v\# \# \. \# , belirtilen API sürümü kullanılır. (Örnek: v34.0 belirtilirse, kullanılır.)  
+   
+* İş günü E-posta Yazma özelliği Maintain_Contact_Information kullanır (v26.1) 
+* İş Günü Kullanıcı Adı Yazma özelliği Update_Workday_Account kullanır (v31.2) 
 
 #### <a name="can-i-configure-my-workday-hcm-tenant-with-two-azure-ad-tenants"></a>İş günü HCM kiracımı iki Azure AD kiracısıyla yapılandırabilir miyim?
 
@@ -848,7 +863,7 @@ Yeni bir fikir önerirken, lütfen başka birinin benzer bir özellik önerip ö
 * Denetim **Masası'na** -> git**Kaldır veya Programı Değiştir** menüsünü değiştir
 * Microsoft Azure AD Connect **Provisioning Aracısı** girişine karşılık gelen sürümü arayın
 
-  ![Azure portalında](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Microsoft, Provisioning Agent güncelleştirmelerini otomatik olarak itiyor mu?
 
@@ -1135,7 +1150,7 @@ Denetim günlüğü kayıtlarından herhangi birini tıklattığınızda, **Etki
 
   Öznitelik eşleme ifadelerinizle ilgili sorunlar varsa veya gelen İş Günü verilerinde sorunlar varsa (örneğin: gerekli öznitelikler için boş veya boş değer), bu aşamada hatanın ayrıntılarını belirten ErrorCode ile bir hata gözlemlersiniz.
 
-* **AD Dışa Aktarma** kaydı: Bu günlük kaydı, işlemde ayarlanan öznitelik değerleriyle birlikte AD hesabı oluşturma işleminin sonucunu görüntüler. Hesap oluşturma işlemiyle ilgili sorunları gidermek için günlük kaydının *Ek Ayrıntılar* bölümündeki bilgileri kullanın. Her alanın nasıl yorumlanacağına ilişkin işaretçilerle birlikte aşağıda bir örnek kayıt gösterilmiştir. "Ek Ayrıntılar" bölümünde ,"EventName" "EntryExportAdd" olarak ayarlanır, "JoiningProperty" Eşleşen Kimlik özniteliğinin değerine ayarlanır, "SourceAnchor" kayıtla ilişkili WorkdayID (WID) ve "TargetAnchor" yeni oluşturulan kullanıcının AD "ObjectGuid" özniteliğinin değeri. 
+* **AD Dışa Aktarma** kaydı: Bu günlük kaydı, işlemde ayarlanan öznitelik değerleriyle birlikte AD hesabı oluşturma işleminin sonucunu görüntüler. Hesap oluşturma işlemiyle ilgili sorunları gidermek için günlük kaydının *Ek Ayrıntılar* bölümündeki bilgileri kullanın. Her alanın nasıl yorumlanacağına ilişkin işaretçilerle birlikte aşağıda bir örnek kayıt gösterilmiştir. "Ek Ayrıntılar" bölümünde, "EventName" "EntryExportAdd" olarak ayarlanır, "JoiningProperty" Eşleşen KIMLIK özniteliğinin değerine ayarlanır, "SourceAnchor" kayıtla ilişkili WorkdayID (WID) ve "TargetAnchor" yeni oluşturulan kullanıcının AD "ObjectGuid" özniteliğinin değerine ayarlanır. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -1352,7 +1367,7 @@ Maddeye bakın [Verme ve alma sağlama yapılandırması](../app-provisioning/ex
 
 ## <a name="managing-personal-data"></a>Kişisel verileri yönetme
 
-Active Directory için İş Günü sağlama çözümü, şirket içi bir Windows sunucusuna bir sağlama aracısının yüklenmesini gerektirir ve bu aracı Windows Olay günlüğünde İş Günü'nden AD özniteliğinize bağlı olarak kişisel veriler içerebilecek günlükler oluşturur Eşleştirmeleri. Kullanıcı gizliliği yükümlülüklerine uymak için, olay günlüğünü temizlemek için bir Windows zamanlanmış görev ayarlayarak Olay günlüklerinde 48 saatten fazla veri tutulmadığından emin olabilirsiniz.
+Active Directory için İş Günü sağlama çözümü, şirket içi bir Windows sunucusuna bir sağlama aracısının yüklenmesini gerektirir ve bu aracı, Windows Olay günlüğünde, İş Gününüze ve AD öznitelik eşlemelerine bağlı olarak kişisel veriler içerebilecek günlükler oluşturur. Kullanıcı gizliliği yükümlülüklerine uymak için, olay günlüğünü temizlemek için bir Windows zamanlanmış görev ayarlayarak Olay günlüklerinde 48 saatten fazla veri tutulmadığından emin olabilirsiniz.
 
 Azure AD sağlama hizmeti, GDPR sınıflandırmasının **veri işlemcisi** kategorisine girer. Bir veri işlemcisi boru hattı olarak, hizmet önemli ortaklara ve son tüketicilere veri işleme hizmetleri sağlar. Azure AD sağlama hizmeti kullanıcı verileri oluşturmaz ve hangi kişisel verilerin toplandığı ve nasıl kullanıldığı üzerinde bağımsız bir denetime sahip değildir. Azure AD sağlama hizmetinde veri alma, toplama, analiz ve raporlama, varolan kurumsal verilere dayanır.
 

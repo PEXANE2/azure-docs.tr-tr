@@ -7,25 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 02/24/2020
-ms.openlocfilehash: 888f24e13ce67c878592068927383dd8cbfefa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 4f2e8b2a691a6b17b5ed075745d556db4e330535
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77623097"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682475"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache HBase verilerini okuyup yazmak için Apache Spark kullanma
 
-Apache HBase genellikle düşük düzeyLI API'si (tarar, alır ve koyar) veya Apache Phoenix kullanarak bir SQL sözdizimi ile sorgulanır. Apache ayrıca, HBase tarafından depolanan verileri sorgulamak ve değiştirmek için kullanışlı ve performanslı bir alternatif olan Apache Spark HBase Bağlayıcısı'nı da sağlar.
+Apache HBase genellikle düşük düzeyLI API'si (tarar, alır ve koyar) veya Apache Phoenix kullanarak bir SQL sözdizimi ile sorgulanır. Apache ayrıca Apache Spark HBase Konektörü sağlar. Bağlayıcı, HBase tarafından depolanan verileri sorgulamak ve değiştirmek için kullanışlı ve performanslı bir alternatiftir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Aynı [sanal ağda](./hdinsight-plan-virtual-network-deployment.md)dağıtılan iki ayrı HDInsight kümesi. Bir HBase ve en az Spark 2.1 (HDInsight 3.6) yüklü bir Kıvılcım. Daha fazla bilgi için, [Azure portalını kullanarak HDInsight'ta Linux tabanlı kümeler oluştur'a](hdinsight-hadoop-create-linux-clusters-portal.md)bakın.
 
-* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
-
-* Kümeleriniz birincil depolama için [URI düzeni.](hdinsight-hadoop-linux-information.md#URI-and-scheme) Bu şema, Azure Veri Gölü Depolama Gen2 için abfs:// veya Azure Veri Gölü Depolama Gen1 için adl:// için wasb:// olacaktır. Blob Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`.  Ayrıca bakınız, [güvenli aktarım.](../storage/common/storage-require-secure-transfer.md)
+* Kümeleriniz birincil depolama için URI düzeni. Bu şema Azure Blob Depolama, `abfs://` Azure Veri Gölü Depolama Gen2 veya Azure Veri Gölü Depolama Gen1 için adl:// için wasb:// olacaktır. Blob Depolama için güvenli aktarım etkinleştirilirse, URI `wasbs://`.  Ayrıca bakınız, [güvenli aktarım.](../storage/common/storage-require-secure-transfer.md)
 
 ## <a name="overall-process"></a>Genel süreç
 
@@ -152,7 +150,7 @@ Bu adımda, Apache Spark'tan Apache HBase'e şemayı eşleyen bir katalog nesnes
     |}""".stripMargin
     ```
 
-    Kod aşağıdakileri yapar:  
+    Kod aşağıdaki eylemleri yapar:  
 
      a. HBase tablosu adlı bir katalog şeması `Contacts`tanımlayın.  
      b. Satır anahtarını `key`, olarak tanımlayın ve Spark'ta kullanılan sütun adlarını HBase'de kullanılan sütun ailesi, sütun adı ve sütun türüyle eşleştirin.  

@@ -1,18 +1,18 @@
 ---
-title: Hizmet erişim jetonları alın
+title: Hizmet erişim belirteçlerini alma
 description: ARR REST API'lerine erişmek için belirteçlerin nasıl oluşturulacak larını açıklar
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 001a77734a8cedf08c5523380c1cbd00dce89f40
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80681200"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687077"
 ---
-# <a name="get-service-access-tokens"></a>Hizmet erişim jetonları alın
+# <a name="get-service-access-tokens"></a>Hizmet erişim belirteçlerini alma
 
 ARR REST API'lerine erişim yalnızca yetkili kullanıcılar için verilir. Yetkilendirmenizi kanıtlamak için, REST istekleriyle birlikte bir *erişim jetonu* göndermeniz gerekir. Bu belirteçler, bir hesap anahtarı karşılığında *Güvenli Belirteç Hizmeti* (STS) tarafından verilir. Jetonlar 24 saatlik bir **kullanım ömrüne** sahiptir ve bu nedenle kullanıcılara hizmete tam erişim hakkı verilmeden verilebilir.
 
@@ -24,7 +24,7 @@ Henüz hesabınız yoksa [bir ARR hesabı oluşturun.](create-an-account.md)
 
 ## <a name="token-service-rest-api"></a>Belirteç hizmeti REST API
 
-Erişim belirteçleri oluşturmak *için, Güvenli Belirteç Hizmeti* tek bir REST API sağlar. ARR STS hizmetinin URL'si [https://sts.mixedreality.azure.com](https://sts.mixedreality.azure.com).
+Erişim belirteçleri oluşturmak *için, Güvenli Belirteç Hizmeti* tek bir REST API sağlar. ARR STS hizmetinin URL'si https:\//sts.mixedreality.azure.com.
 
 ### <a name="get-token-request"></a>'Jeton alın' isteği
 
@@ -67,6 +67,6 @@ Komut dosyası yalnızca, kopyalayabildiğiniz & yapıştırabileceğiniz çık�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Örnek PowerShell komut dosyaları](../samples/powershell-example-scripts.md)
+* [Örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
 * [Azure Frontend API'leri](../how-tos/frontend-apis.md)
 * [Oturum yönetimi REST API](../how-tos/session-rest-api.md)

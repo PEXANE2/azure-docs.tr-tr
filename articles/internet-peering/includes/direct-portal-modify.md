@@ -8,38 +8,40 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d9ff01cf0180dae7f75d9753ba889d0caddad937
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3894bf046ed4ee3f068e43dbc5bc5b7f2a1002b4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775348"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681053"
 ---
-Bu bölümde, Doğrudan eşleme için aşağıdaki değişiklik işlemleri nasıl gerçekleştirilireaçıklanmaktadır:
+Bu bölümde, Doğrudan bakışlandırma için aşağıdaki değişiklik işlemleri nasıl gerçekleştirilir açıklanmaktadır.
 
 ### <a name="add-direct-peering-connections"></a>Doğrudan eşleme bağlantıları ekleme
-1. Üstteki **+ Bağlantı Ekle** düğmesini tıklatın ve yeni bir eşleme bağlantısı yapılandırın.
+1. + **Bağlantı Ekle** düğmesini seçin ve yeni bir karşıla bağlantı yapınız.
     > [!div class="mx-imgBorder"]
     > ![Kaynak görünümünü görüntüleme](../media/setup-direct-modify-addconnection.png)
-1. **Doğrudan eşleme Bağlantısı** formunu doldurun ve **Kaydet'i**tıklatın. Bir eşleme bağlantısı yapılandırma ile ilgili yardım için yukarıdaki "Doğrudan bir bakanlık oluşturma ve sağlama" bölümünün altındaki adımları gözden geçirin.
+
+1. **Doğrudan Eşleme Bağlantısı** formunu doldurun ve **Kaydet'i**seçin. Bir eşleme bağlantısı yapılandırma konusunda yardım için, "Doğrudan bir bakış oluşturma ve sağlama" bölümündeki adımları gözden geçirin.
     > [!div class="mx-imgBorder"]
-    > ![Kaynak görünümünü görüntüleme](../media/setup-direct-modify-savenewconnection.png)
+    > ![Doğrudan Peering Bağlantı formu](../media/setup-direct-modify-savenewconnection.png)
 
 ### <a name="remove-direct-peering-connections"></a>Doğrudan bakan bağlantıları kaldırma
 
-Bağlantıyı kaldırma şu anda portalda desteklenmez. [Microsoft'a bakan kişi.](mailto:peeringexperience@microsoft.com)
+Bir bağlantıyı kaldırmak şu anda Azure portalında desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Etkin bağlantılarda bant genişliğini yükseltme veya düşürme
-1. Değiştirmek istediğiniz bir eşleme bağlantısını tıklatın ve sonra, ... **...**  >  **Bağlantı düğmesini edin.**
+1. Değiştirmek istediğiniz bir eşleme bağlantısı seçin ve sonra **...**  >  **Bağlantıyı edin.**
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Bağlantısı Editi](../media/setup-direct-modify-editconnection.png)
-1. Bant genişliğini aşağıda gösterildiği gibi değiştirin ve ardından **Kaydet'i**tıklatın.
+    > ![Bağlantıyı ede](../media/setup-direct-modify-editconnection.png)
+
+1. Kaydırıcıyı hareket ettirerek bant genişliğini değiştirin ve ardından **Kaydet'i**seçin.
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Bağlantısı Bant Genişliğini Değiştir](../media/setup-direct-modify-editconnectionsettings.png)
+    > ![Bant genişliğini değiştirme](../media/setup-direct-modify-editconnectionsettings.png)
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4/IPv6 oturumu ekleyin.
-1. Değiştirmek istediğiniz bir eşleme bağlantısını tıklatın ve sonra, ... **...**  > Yukarıda gösterildiği gibi bağlantı düğmesini **edin.**
-1. **Oturum IPv4 öneki** veya **Oturum IPv6 öneki** bilgisi ekleyin ve **Kaydet'i**tıklatın.
+### <a name="add-ipv4-or-ipv6-session-information-on-active-connections"></a>Etkin bağlantılara IPv4 veya IPv6 oturum bilgileri ekleme
+1. Değiştirmek istediğiniz bir eşleme bağlantısı seçin ve sonra **...**  > Bağlantıyı adım 1'de gösterildiği gibi **edin.**
+1. **Oturum IPv4 öneki** veya **Oturum IPv6 öneki** bilgilerini girin ve **Kaydet'i**seçin.
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4/IPv6 oturumunu kaldırın.
-    Removing a **Session IPv4 prefix** or **Session IPv6 prefix** info is not currently supported on portal. Contact [Microsoft peering](mailto:peeringexperience@microsoft.com).
+### <a name="remove-ipv4-or-ipv6-session-information-on-active-connections"></a>Etkin bağlantılardaki IPv4 veya IPv6 oturum bilgilerini kaldırma
+Oturum **IPv4 öneki** veya **Oturum IPv6 öneki** bilgilerini kaldırma şu anda portalda desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)

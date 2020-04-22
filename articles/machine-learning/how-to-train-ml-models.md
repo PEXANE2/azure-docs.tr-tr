@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 678af1855baf52efa727444236de8a1724a7d0b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9a3c10687b92d946fccb282f2eda4af637cf2ab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79078486"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686764"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Tahminci kullanarak Azure Machine Learning ile modelleri eğitin
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,7 +80,7 @@ print(run.get_portal_url())
 >
 > Eğitim sırasında yapı oluşturmak için (model dosyaları, denetim noktaları, veri dosyaları veya `./outputs` çizilmiş resimler gibi) bunları klasöre yazın.
 >
-> Benzer şekilde, eğitim çalıştırdığınızdan herhangi bir `./logs` günlükleri klasöre yazabilirsiniz. Azure Machine Learning'in [TensorBoard tümleştirmesini](https://aka.ms/aml-notebook-tb) kullanmak için TensorBoard günlüklerinizi bu klasöre yazdığınızdan emin olun. Çalışmanız devam ederken, TensorBoard'u başlatabilir ve bu günlükleri aktarabilirsiniz.  Daha sonra, önceki çalıştırmalarınızın herhangi birinden günlükleri geri yükleyebilirsiniz.
+> Benzer şekilde, eğitim çalıştırdığınızdan herhangi bir `./logs` günlükleri klasöre yazabilirsiniz. Azure Machine Learning'in [TensorBoard tümleştirmesini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) kullanmak için TensorBoard günlüklerinizi bu klasöre yazdığınızdan emin olun. Çalışmanız devam ederken, TensorBoard'u başlatabilir ve bu günlükleri aktarabilirsiniz.  Daha sonra, önceki çalıştırmalarınızın herhangi birinden günlükleri geri yükleyebilirsiniz.
 >
 > Örneğin, *çıktılar* klasörüne yazılmış bir dosyayı uzaktan eğitim çalıştırmanızdan sonra yerel makinenize indirmek için:`run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 

@@ -3,12 +3,12 @@ title: Linux üzerinde geliştirme ortamınızı ayarlama
 description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra uygulama derlemek için hazır hale gelirsiniz.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 1048e1ccf6b9bc921daa3014ab8003fd53473461
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309126"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682616"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
 > [!div class="op_single_selector"]
@@ -265,9 +265,9 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 
 2. Service Fabric eklentisini yüklemek için**Yeni Yazılım Yüklemeye** **Yardım'ı** > seçin.
 
-3. **Birlikte çalış** kutusuna **https://dl.microsoft.com/eclipse** girin.
+3. **Kutuyla Çalışma'ya** **https\/girin: /dl.microsoft.com/eclipse**.
 
-4. **Ekle'yi**seçin.
+4. **Add (Ekle)** seçeneğini belirleyin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 

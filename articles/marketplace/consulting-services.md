@@ -6,14 +6,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/27/2020
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 987d04a4138c37d9073e5e9925f06c93d7ebb8e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 528c393983cb3d8d96dbcee9157e38ebc4f193f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281587"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685399"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketi ve AppSource için Danışmanlık Hizmetleri
 Azure Marketi ve AppSource'daki Danışmanlık Hizmetleri, Microsoft iş ortaklarına Azure ve iş hedeflerini kullanmalarını desteklemek ve genişletmek için müşterileri hizmetlerle ilişkilendirme hedefi sağlar. 
@@ -27,22 +27,22 @@ Pazar daki vitrinler, müşterilerin ihtiyaç duydukları şeyi bulmasına yard�
 
 |         |Azure Market  |Microsoft AppSource |
 |---------|---------|---------|
-|**Hedef kitle**   |**BT artıları ve bulut geliştiricileri**|**İş Kullanıcıları / Line-of-business karar vericiler**|
-|Çözüm Alaka Düzeyi     |Azure için oluşturulmuş veya Azure'da yerleşik teknik uygulamalar|D365, Power BI, O365, Azure'dan yararlanan / genişleten iş uygulamaları. (Eklenti veya Eklenti bitmiş uygulamalar)|
-|Yayımlama Seçenekleri     |Azure için bana, Deneme sürümüne, İşleme'ye veya Hizmetlere ulaşın|Dynamics 365 ve Power BI için Bana, Deneme sürümüne veya Hizmetlere Ulaşın|
+|**Hedef kitle**      |**BT artıları ve bulut geliştiricileri**|**İş Kullanıcıları / Line-of-business karar vericiler**|
+|Çözüm Alaka Düzeyi      |Azure için oluşturulmuş veya Azure'da yerleşik teknik uygulamalar|D365, Power BI, O365, Azure'dan yararlanan / genişleten iş uygulamaları. (Eklenti veya Eklenti bitmiş uygulamalar)|
+|Yayımlama Seçenekleri      |Azure için bana, Deneme sürümüne, İşleme'ye veya Hizmetlere ulaşın|Dynamics 365 ve Power BI için Bana, Deneme sürümüne veya Hizmetlere Ulaşın|
 |Ürün Deneyiminde      |Azure Yönetim Portalı|Dynamics 365, Office 365, Office İstemci Uygulamaları| 
 |Diğer      |Azure Yığını Üzerinden Şirket İçi Yayıncılık, Azure için Danışmanlık Hizmetleri, Azure için Yönetilen Hizmetler|Dinamikler ve Power BI için Danışmanlık Hizmetleri|
 
 Microsoft Dynamics 365, Power Apps ve Power BI tabanlı Danışmanlık Hizmetleri teklifleri Microsoft AppSource'da listelenebilir. Daha fazla bilgi için [Microsoft AppSource danışmanlık hizmetleri listeleme yönergelerine](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409)bakın.
 
-Microsoft Azure'u temel alan Danışmanlık Hizmetleri ve Yönetilen Hizmetler teklifleri Azure Marketi'nde listelenebilir. Daha fazla bilgi [için, azure danışmanlık hizmeti yayınlama](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) yla ilgili makalelere bakın ve Azure [Marketi'nde yönetilen bir hizmet teklifi yayımlayın.](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)
+Microsoft Azure'u temel alan Danışmanlık Hizmetleri ve Yönetilen Hizmetler teklifleri Azure Marketi'nde listelenebilir. Daha fazla bilgi [için, azure danışmanlık hizmeti yayınlama](./partner-center-portal/create-consulting-service-offer.md) yla ilgili makalelere bakın ve Azure [Marketi'nde yönetilen bir hizmet teklifi yayımlayın.](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)
 
 > [!Note]
 > Azure Marketi'ndeki danışmanlık hizmetleri, Azure teknik çözümleri ve *hizmetlerine* odaklanan **teknik hedef kitleye yönelik tekliflerden yararlanmalıdır. ** AppSource'daki danışmanlık hizmetleri, AppSource'daki danışmanlık hizmetlerini listelemek için Dynamics 365, Power BI veya Power Apps için kaliteli çözümler sunma konusundaki uzmanlıklarına yönelik tekliflerden yararlanmalıdır
 > 
 > 
 > [!TIP]
-> Azure Marketi'nde yayımlamak için, Bulut İş Ortağı Portalı'ndaki "Birincil Ürün" açılır menüsünden "Azure" seçeneğini seçerek bu seçimi yapacaksınız. AppSource'a yayımlamak için, Bulut İş Ortağı Portalı'ndaki "Birincil Ürün" açılır menüsünden "Dynamics 365", "Power BI" veya "Power Apps" seçeneğini seçerek bu seçimi yapacaksınız.
+> Azure Marketi'nde yayımlamak için, İş Ortağı Merkezi'ndeki "Birincil Ürün" açılır menüsünden "Azure" seçeneğini seçerek bu seçimi yaparsınız. AppSource'a yayımlamak için, Bu seçimi İş Ortağı Merkezi'ndeki "Birincil Ürün" açılır menüsünden "Dynamics 365", "Power BI" veya "Power Apps" seçeneğini seçerek yapacaksınız.
 
 ## <a name="eligible-partners-and-supported-countriesregions"></a>Uygun Ortaklar ve Desteklenen Ülkeler/Bölgeler
 
@@ -87,13 +87,18 @@ Ek kaynaklar ve destek:
 | Birleşik Krallık  |
 
 
-## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Marketi ve AppSource'da Danışmanlık Hizmetleri Için Nasıl Kayıt Olunur?
-Şirket bilgilerinizi pazara [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) başlayın. Yayıncılar, kayıt gereksinimlerinin tam bir kontrol listesi için [Markette Yayıncı Ol'a](https://docs.microsoft.com/azure/marketplace/become-publisher)başvurur. 
+## <a name="how-to-register-for-consulting-services-in-commercial-marketplace"></a>Ticari pazarda Danışmanlık Hizmetleri için Nasıl Kayıt Olunur?
 
-**Kayıt Tan Sonra Ne Beklenebilir?** Onboarding Ekibi, Bulut İş Ortağı Portalı (CPP) giriş bilgilerinizi içeren hoş geldin e-postası ile 1-3 iş günü içinde iletişime geçecek. [Cloud Partner Portal,](https://cloudpartner.azure.com) yayıncıların listeleme bilgilerini ve gönderimlerini gönderdiği teklif listeleme portalıdır. 
+Şirket bilgilerinizi pazara [kaydederek](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) başlayın. Yayıncılar, kayıt gereksinimlerinin tam bir kontrol listesi için [Markette Yayıncı Ol'a](https://docs.microsoft.com/azure/marketplace/become-publisher)başvurur. 
+
+<!---
+**What To Expect After Registration**
+The Onboarding Team will reach out in 1-3 business days with a welcome email, which will include your Cloud Partner Portal (CPP) login information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
 
 >[!Note]
->İş ortaklarının yayımcı olmak için yalnızca bir kez kaydolması gerekir. Hoş geldiniz e-postanızı ve Cloud Partner Portal girişinizi aldıktan sonra, yayıncıların farklı giriş türlerini yayınlamak için yeniden kaydolması gerekmez. 
+>Partners only need to register once to become a publisher. Once you receive your welcome email and Partner Center login, publishers do not need to re-register in order to publish different listing types. 
+
+--->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Yayımlama Yapıtlarınızı Hazırlayın
 Kayıt tan önce, listinansının hizmetin izinve çözümününüzü hedef müşterinize ifade etmesini sağlayacak içeriği toplamaya ve hazırlamaya başlayabilirsiniz. 
@@ -120,7 +125,7 @@ Kayıt tan önce, listinansının hizmetin izinve çözümününüzü hedef mü�
 ## <a name="publishing-process"></a>Yayımlama Süreci
 Danışmanlık hizmeti teklifinizi Azure Marketi ve AppSource'da listelemek aşağıdaki aşamaları içerir:
 
-1. **Listeleme**: [Bulut İş Ortağı Portalı](https://cloudpartner.azure.com) hesabınızda oturum açarak yeni bir teklif listesi hazırlamaya başlayın. Açılan menüden 'Yeni Teklif' ve 'Danışmanlık Hizmetleri'ni seçin. Giriş yapınızı girin ve yayınlayın.
+1. **Listeleme**: [İş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) hesabınıza giriş yaparak yeni bir teklif listesi hazırlamaya başlayın. Açılan menüden 'Yeni Teklif' ve 'Danışmanlık Hizmetleri'ni seçin. Giriş yapınızı girin ve yayınlayın.
 2. **Doğrulama**: İstek, uygunluk kriterlerini karşıladığınızdan emin olmak için gözden geçirilir. Daha sonra size danışmanlık hizmetleri teklifinizi listeleme yönergeleri göndeririz. 
 3. **Gönder**: Talimatlarda listelenen gerekli bilgileri sağlayın. Tüm içerik ve destekleyici materyaller İngilizce olarak gönderilmelidir. 
 4. **İnceleme**: Pazarlama ve editör ekibimiz gönderinizi inceler ve okunabilirlik, dilbilgisi ve etkinlik için optimize eder. 
@@ -165,7 +170,7 @@ Teklif Açıklamalarını ve Teklif Özetlerini gözden geçirerken, takım aşa
 |**Kavram Kanıtı**    |    Bir müşterinin etkileşimin sonuçları olarak ne gibi mühendislik değişikliklerini, teknik eserleri veya diğer eserleri ifade edin     | En iyi Arama Motoru Optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin        |
 |**Atölye**    |   Teklifinizin seçilen süresine bağlı olarak günlük, haftalık veya aylık ayrıntılı bir gündem ekleyin. Atölyenizin öğrenme hedeflerini veya diğer teslim edilebilirlerini ifade edin     |   En iyi Arama Motoru optimizasyonu anahtar kelimelerinizle teklif özetinizi optimize edin      |
 
-Bulut İş Ortağı Portalı içinde, [Markdown'u](/contribute/markdown-reference)kullanarak girişinize biçimlendirme ekleyebilirsiniz. Bu, girişinize parlatma eklemenize yardımcı olacak hafif bir tasarım dilidir. 
+Ortak Merkezi içinde, [Markdown](/contribute/markdown-reference)kullanarak giriş biçimlendirme ekleyebilirsiniz. Bu, girişinize parlatma eklemenize yardımcı olacak hafif bir tasarım dilidir. 
 
 **Örnek İşaret notları**
 * Kopya bloğunun başında ve sonunda * ekle - italik oluşturmak için yer yok (Ör. *içerik)*
@@ -181,9 +186,9 @@ Bulut İş Ortağı Portalı içinde, [Markdown'u](/contribute/markdown-referenc
 
 Eğer bunu yapmadıysanız, 
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
-Cloud Partner Portal'a kaydolduysanız ve çalışıyorsanız, 
+Ortak Merkezi'ne kaydolmak ve çalışmaya başlamak için, 
 
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
-- Daha fazla bilgi için [Azure ve Dynamics 365 danışmanlık hizmeti teklifine](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) bakın.
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- Bkz. daha fazla bilgi için [bir Danışmanlık hizmeti teklifi oluşturun.](./partner-center-portal/create-consulting-service-offer.md)

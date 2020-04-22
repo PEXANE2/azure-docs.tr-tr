@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 968e609772e08814a9943734d30c16bf6f5972e8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 369e3bcf4e5913f4a3ff82206d1e24a206db3f34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604721"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681302"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu'nda mesai dışı çözüm sırasında VM'leri başlatma/durdurma
 
@@ -120,7 +120,7 @@ Tüm üst runbook'lar parametreiçerir. `WhatIf` Parametre True olarak ayarland�
 Aşağıdaki tabloda Otomasyon hesabınızda oluşturulan değişkenler listeleneb.r.a. Yalnızca `External`. Değişkenleri önceden belirlenmiş `Internal` değişkenleri değiştirmek istenmeyen etkilere neden olur.
 
 > [!NOTE]
-> VM adı ve kaynak grubundaki sınırlamalar büyük ölçüde değişken boyutun bir sonucudur.
+> VM adı ve kaynak grubundaki sınırlamalar büyük ölçüde değişken boyutun bir sonucudur. [Azure Otomasyonunda Değişken varlıklara](https://docs.microsoft.com/azure/automation/shared-resources/variables)bakın.
 
 |Değişken | Açıklama|
 |---------|------------|
@@ -159,8 +159,8 @@ Bunu yapmak çakışan zamanlama eylemleri oluşturabileceğinden, tüm zamanlam
 |Schedule_AutoStop_CreateAlert_Parent | 8 saatte bir | **AutoStop_CreateAlert_Parent** runbook'u her 8 saatte bir çalıştırAn bu `External_Start_ResourceGroupNames`kitap, VM tabanlı değerleri , ve `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` değişkenlerde durdurur. Alternatif olarak, `VMList` parametreyi kullanarak virgülle ayrılmış bir VM listesi belirtebilirsiniz.|
 |Scheduled_StopVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook'u belirtilen zamanda `Stop` her günün parametresi ile çalıştırın.Değişken varlıklar tarafından tanımlanan kurallara uyarlanan tüm VM'leri otomatik olarak durdurur.İlgili **zamanlamaYı Etkinleştirin Zamanlanmış-BaşlangıçVM.**|
 |Scheduled_StartVM | Kullanıcı tanımlı, günlük | **ScheduledStopStart_Parent** runbook'u belirtilen zamanda `Start` her günün parametre değeriyle çalıştırın. Değişken varlıklar tarafından tanımlanan kurallara uyarak tüm VM'leri otomatik olarak başlatır.İlgili **zamanlamaYı Etkinleştirin Zamanlanmış-StopVM.**|
-|Sıralı-StopVM | 01:00 (UTC), her Cuma | Belirtilen zamanda her Cuma parametre `Stop` değeri ile Sequenced_Parent runbook çalışır.Sırayla (artan) uygun değişkenler tarafından tanımlanan **SequenceStop** etiketi yle tüm VM'leri durdurur. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için RunBook'lar bölümüne bakın.İlgili zamanlama, **Sequenced-StartVM**etkinleştirin.|
-|Sıralı BaşlangıçVM | 13:00 (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook'u belirtilen zamanda `Start` her Pazartesi'nin parametre değeriyle çalıştırın. Sırayla (azalan) tüm VM'leri uygun değişkenler tarafından tanımlanan **SequenceStart** etiketiyle başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için [RunBook'a](#runbooks)bakın. İlgili zamanlama, **Sequenced-StopVM**etkinleştirin.
+|Sıralı-StopVM | 01:00 (UTC), her Cuma | **Belirtilen** zamanda her Cuma parametre `Stop` değeri ile Sequenced_StopStop_Parent runbook çalışır.Sırayla (artan) uygun değişkenler tarafından tanımlanan **SequenceStop** etiketi yle tüm VM'leri durdurur. Etiket değerleri ve varlık değişkenleri hakkında daha fazla bilgi için [Runbook'lara](#runbooks)bakın.İlgili zamanlama, **Sequenced-StartVM**etkinleştirin.|
+|Sıralı BaşlangıçVM | 13:00 (UTC), her Pazartesi | **SequencedStopStart_Parent** runbook'u belirtilen zamanda `Start` her Pazartesi'nin parametre değeriyle çalıştırın. Sırayla (azalan) tüm VM'leri uygun değişkenler tarafından tanımlanan **SequenceStart** etiketiyle başlatır. Etiket değerleri ve değişken varlıklar hakkında daha fazla bilgi için [Runbook'a](#runbooks)bakın. İlgili zamanlama, **Sequenced-StopVM**etkinleştirin.
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>Klasik VM'ler ile çözeltinin kullanımı
 

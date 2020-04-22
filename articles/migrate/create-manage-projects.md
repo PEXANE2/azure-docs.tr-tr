@@ -2,13 +2,13 @@
 title: Azure Geçişi projelerini oluşturma ve yönetme
 description: Azure Geçiş'te projeleri bulun, oluşturun, yönetin ve silin.
 ms.topic: how-to
-ms.date: 02/17/2020
-ms.openlocfilehash: a49595f0580e71048239d5c5d8f4d1a66e24fe6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: f5079ed979d98f2c6f0c654c860c6f176f366497
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79269646"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676384"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Geçişi projelerini oluşturma ve yönetme
 
@@ -23,7 +23,7 @@ Azure Geçiş'i ilk kez ayarladığınızda, bir proje oluşturur ve bir değerl
 
 Zaten bir Azure Geçiş projeniz varsa ve ek bir proje oluşturmak istiyorsanız aşağıdakileri yapın:  
 
-1. Azure [portalında](https://portal.azure.com)Azure **Geçir'i**arayın.
+1. Azure [genel portalında](https://portal.azure.com) veya [Azure Resmi'nde](https://portal.azure.us) **Azure Geçiş'i**arayın.
 2. Azure Geçir panosu > **Sunucular'da**sağ üst köşede **değiştir'i** seçin.
 
    ![Azure Geçiş projesini değiştirme](./media/create-manage-projects/switch-project.png)

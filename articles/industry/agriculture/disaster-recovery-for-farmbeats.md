@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 04/13/2020
 ms.author: v-umha
-ms.openlocfilehash: d64735e683ba1133e7d381a68611d204c4068026
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1665c535d4b1fb6190ee5736b688b402f8b4a541
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313100"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683904"
 ---
 # <a name="disaster-recovery-for-farmbeats"></a>FarmBeats için felaket kurtarma
 
@@ -28,7 +28,7 @@ Aşağıdaki bölümler, Azure FarmBeats'te veri kurtarmayı nasıl yapılandır
 
 FarmBeats, verileri **Azure depolama**, **Cosmos DB** ve **Time Series Insights**olan üç Azure birinci taraf hizmetinde depolar. Bu hizmetler için eşleştirilmiş bir Azure bölgesine veri artıklığını etkinleştirmek için aşağıdaki adımları kullanın:
 
-1.  **Azure Depolama** - FarmBbeats dağıtımınızdaki her depolama hesabı için veri artıklığını etkinleştirmek için bu kılavuzu izleyin.
+1.  **Azure Depolama** - FarmBeats dağıtımınızdaki her depolama hesabı için veri artıklığını etkinleştirmek için bu kılavuzu izleyin.
 2.  **Azure Cosmos DB** - FarmBeats dağıtımınız için Cosmos DB hesabı için veri artıklığını etkinleştirmek için bu kılavuzu izleyin.
 3.  **Azure Zaman Serisi Öngörüleri (TSI) - TSI** şu anda veri artıklığı sunmuyor. Time Series Insights verilerini kurtarmak için sensör/hava durumu ortağınıza gidin ve verileri FarmBeats dağıtımına yeniden itin.
 

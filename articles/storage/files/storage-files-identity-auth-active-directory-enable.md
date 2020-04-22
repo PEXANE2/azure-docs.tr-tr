@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.author: rogarana
-ms.openlocfilehash: 8d1e1262c592f0120b191e18a5c16b97b887a6a2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44debc299054568769bfbe6cfc089cc528594274
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536548"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677068"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için Kobİ üzerinden şirket içi Active Directory Etki Alanı Hizmetleri kimlik doğrulamasını etkinleştirme
 
@@ -68,11 +68,7 @@ Azure dosya paylaşımları için AD DS kimlik doğrulamasını etkinleştirmede
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-AD DS (önizleme) içeren Azure Dosyaları kimlik doğrulaması [çoğu ortak bölgede](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
-
-Şirket içi AD DS ile Azure Dosyaları kimlik doğrulaması şu şekilde kullanılamaz:
-- Batı ABD
-
+AD DS (önizleme) içeren Azure Dosyaları kimlik doğrulaması [tüm Ortak bölgelerde ve Azure Gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 
@@ -84,13 +80,13 @@ Ardından, AD Kimlik Doğrulaması için Azure Dosyaları'nı ayarlamak için a�
 
 1. Depolama hesabınızda Azure Files AD DS kimlik doğrulamasını etkinleştirin. 
 
-1. Bir paylaşım için erişim izinlerini hedef AD kimliğiyle eşitlenmiş olan Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) atayın. 
+2. Bir paylaşım için erişim izinlerini hedef AD kimliğiyle eşitlenmiş olan Azure AD kimliğine (kullanıcı, grup veya hizmet sorumlusu) atayın. 
 
-1. Dizinler ve dosyalar için SMB üzerinden ABILEr' i yapılandırın. 
+3. Dizinler ve dosyalar için SMB üzerinden ABILEr' i yapılandırın. 
  
-1. AD DS'nize katılan bir VM'ye Azure dosya paylaşımı nı monte edin. 
+4. AD DS'nize katılan bir VM'ye Azure dosya paylaşımı nı monte edin. 
 
-1. AD DS'de depolama hesabı kimliğinizin parolasını güncelleştirin.
+5. AD DS'de depolama hesabı kimliğinizin parolasını güncelleştirin.
 
 Aşağıdaki diyagram, Azure dosya paylaşımları için SMB üzerinden Azure AD kimlik doğrulamasını etkinleştirmek için uçlardan uca iş akışını göstermektedir. 
 

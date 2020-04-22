@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Otomasyonu için bir servis talebi açtığınızda toplanacak veriler| Microsoft Dokümanlar
-description: Bu makalede, Microsoft Azure Desteği ile Azure Otomasyonu için bir servis talebi açmadan önce toplamanız gereken bazı temel bilgiler açıklanmaktadır.
+description: Bu makalede, Microsoft Azure Desteği ile Azure Otomasyonu için bir servis talebi açmadan önce toplamanız gereken bazı bilgiler açıklanmaktadır.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,46 +13,36 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: 4839ce7a0188c782656fd3a4c42cbdd116b165e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74849386"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679413"
 ---
 # <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Microsoft Azure Otomasyonu için bir servis talebi açtığınızda toplanan veriler
 
-Bu makalede, Microsoft Azure Desteği ile Azure Otomasyonu için bir servis talebi açmadan önce toplamanız gereken bazı temel bilgiler açıklanmaktadır. Bu bilgiler servis talebinin açılması için gerekli değildir. Ancak, Microsoft'un sorununuzu daha hızlı çözmenize yardımcı olabilir. Ayrıca, servis talebi açıldıktan sonra destek mühendisi tarafından bu veriler istenebilir.
+Bu makalede, Microsoft Azure Desteği ile Azure Otomasyonu için bir servis talebi açmadan önce toplamanız gereken bazı bilgiler açıklanmaktadır. Bu bilgiler servis talebinin açılması için gerekli değildir. Ancak, Microsoft'un sorununuzu daha hızlı çözmenize yardımcı olabilir. Ayrıca, servis talebi açıldıktan sonra destek mühendisi tarafından bu veriler istenebilir.
 
-## <a name="collect-more-information"></a>Daha fazla bilgi toplayın
+## <a name="basic-data"></a>Temel veriler
 
-Microsoft Azure Otomasyon Desteği için bir servis talebi açmadan önce aşağıdaki bilgileri toplamanızı öneririz.
+Bilgi Bankası madde [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)açıklanan temel verileri toplamak - Nasıl Azure Otomasyon komut dosyası tanılama yakalamak için .
 
-### <a name="basic-data-collection"></a>Temel veri toplama
-
-Aşağıdaki Bilgi Bankası makalesinde açıklanan verileri toplayın:
-
-* [4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics) Azure Otomasyon komut dosyası yla yazılmış tanılama nasıl yakalanır?
-
-## <a name="collect-data-depending-on-issue"></a>Soruna bağlı olarak veri toplama
- 
-### <a name="for-issues-that-affect-update-management-on-linux"></a>Linux'ta Güncelleme Yönetimini etkileyen sorunlar için
+## <a name="data-for-update-management-issues-on-linux"></a>Linux'ta Güncelleme Yönetimi sorunları için veriler
 
 1. KB [4034605'te](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)listelenen öğelere ek olarak aşağıdaki günlük toplama aracını çalıştırın:
 
    [OMS Linux Agent Log Collector](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)
  
-2. Aşağıdaki klasörün içeriğini sıkıştırın ve sıkıştırılmış dosyayı Azure Desteği'ne gönderin:
-
-   ``/var/opt/microsoft/omsagent/run/automationworker/``
+2. **/var/opt/microsoft/omsagent/run/automationworker/klasörünün** içeriğini sıkıştırın ve sıkıştırılan dosyayı Azure Desteği'ne gönderin.
  
-3. OMS Linux Aracısı'nın bildirdiği çalışma alanı kimliğinin güncelleştirmeler için izlenen çalışma alanıyla aynı olduğunu doğrulayın.
+3. Linux için Log Analytics aracısının bildirdiği çalışma alanı kimliğinin, güncelleştirmeler için izlenen çalışma alanı kimliğiyle aynı olduğunu doğrulayın.
 
-### <a name="for-issues-that-affect-update-management-on-windows"></a>Windows'da Güncelleştirme Yönetimi'ni etkileyen sorunlar için
+## <a name="data-for-update-management-issues-on-windows"></a>Windows'da Güncelleştirme Yönetimi sorunları için veriler
 
-[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)listelenen öğelere ek olarak, aşağıdakileri yapın:
+1. [4034605'te](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)listelenen öğeler için veri toplayın.
 
-1. Aşağıdaki olay günlüklerini EVTX biçimine dışa aktar:
+2. Aşağıdaki olay günlüklerini EVTX biçimine dışa aktar:
 
    * Sistem
    * Uygulama
@@ -60,50 +50,47 @@ Aşağıdaki Bilgi Bankası makalesinde açıklanan verileri toplayın:
    * Operations Manager
    * Microsoft-SMA/Operasyonel
 
-2. Aracının bildirdiği çalışma alanı kimliğinin, Windows Güncelleştirmeleri tarafından izlenen çalışma alanıyla aynı olduğunu doğrulayın.
+3. Aracının bildirdiği çalışma alanının kimliğinin, Windows Güncelleştirmeleri tarafından izlenen çalışma alanı kimliğiyle aynı olduğunu doğrulayın.
 
-### <a name="for-issues-that-affect-a-job"></a>Bir işi etkileyen sorunlar için
+## <a name="data-for-job-issues"></a>İş sorunları için veriler
 
-[4034605](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)listelenen öğelere ek olarak, aşağıdaki bilgileri toplamak:
+1. [4034605'te](https://support.microsoft.com/help/4034605/how-to-capture-azure-automation-scripted-diagnostics)listelenen öğeler için veri toplayın.
 
-1. **JobID** numarasını (sorun yaşayan iş için) toplayın:
+2. Sorunu olan iş için iş kimliğini toplayın:
 
-   1. Azure portalında **Otomasyon Hesapları** bıçağına gidin.
-   2. Sorun giderdiğiniz **Otomasyon Hesabı'nı** seçin.
+   1. Azure portalında Otomasyon **Hesapları'na**gidin.
+   2. Sorun giderdiğiniz Otomasyon hesabını seçin ve adını not edin.
    3. **İşler'i**seçin.
    4. Sorun giderdiğiniz işi seçin.
-   5. **İş Özeti**altında, **İş Kimliği** (GUID) arayın.
+   5. İş Özeti bölmesinde, **İş Kimliği'ndeki**GUID değerini arayın.
 
    ![İş Özeti Bölmesinde İş Kimliği](media/collect-data-microsoft-azure-automation-case/job-summary-job-id.png)
 
-2. Hesap adını toplayın:
-
-   1. Azure portalında **Otomasyon Hesapları** bıçağına gidin.
-   2. Sorun giderdiğiniz **Otomasyon Hesabı'nın** adını alın.
-
-3. Çalıştırdığınız komut dosyasının örneğini toplayın.
+3. Çalıştırdığınız komut dosyasının bir örneğini toplayın.
 
 4. Günlük dosyalarını toplayın:
 
-   1. Azure portalında **Otomasyon Hesapları** bıçağına gidin.
-   2. Sorun giderdiğiniz **Otomasyon Hesabı'nı** seçin.
+   1. Azure portalında Otomasyon **Hesapları'na**gidin.
+   2. Sorun giderdiğiniz Otomasyon hesabını seçin.
    3. **İşler'i**seçin.
    4. Sorun giderdiğiniz işi seçin.
    5. **Tüm Günlükleri**seçin.
-   6. Ortaya çıkan bıçak üzerinde, verileri toplamak.
+   6. Ortaya çıkan bölmede, verileri toplayın.
 
    ![Tüm Günlükler altında listelenen veriler](media/collect-data-microsoft-azure-automation-case/all-logs-data.png)
 
-### <a name="for-issues-that-affect-modules"></a>Modülleri etkileyen sorunlar için
+## <a name="data-for-module-issues"></a>Modül sorunları için veriler
 
-"Temel veri toplama" altındaki öğelere ek olarak, aşağıdaki bilgileri toplayın:
+Temel veri [öğelerine](#basic-data)ek olarak, aşağıdaki bilgileri toplayın:
 
 * Sorunun yeniden üretilebilmeleri için izlediğiniz adımlar.
-* Herhangi bir hata iletilerinin ekran görüntüsü.
-* Geçerli modüllerin ve sürüm numaralarının ekran görüntüsü.
+* Herhangi bir hata iletisinin ekran görüntüleri.
+* Geçerli modüllerin ve sürüm numaralarının ekran görüntüleri.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarına başvurun.
+Daha fazla yardıma ihtiyacınız varsa:
 
-Alternatif olarak, bir Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
+* [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.

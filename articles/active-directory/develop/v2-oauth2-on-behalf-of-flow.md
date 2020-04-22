@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7a91f61302b5944e69f71c3cfee2f41cd87b809f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 947286a7238e3ddf2aebe66c6ea87e0e1cf8a853
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309369"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677725"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 On-Behalf-Of akış
 
@@ -27,9 +27,7 @@ OAuth 2.0 On-Behalf-Of akışı (OBO), bir uygulamanın başka bir hizmet/web AP
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
 
 > [!NOTE]
->
-> - Microsoft kimlik platformu bitiş noktası tüm senaryoları ve özellikleri desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin. 
-> - Mayıs 2018 itibariyle, bazı örtük akış obo `id_token` akışı için kullanılamaz. Tek sayfalı uygulamalar (SPA'lar), OBO akışlarını gerçekleştirmek için bir **erişim** jetonundan orta katmangizli istemciye geçmelidir. Hangi istemcilerin OBO aramalarını gerçekleştirebileceği hakkında daha fazla bilgi için [sınırlamalar](#client-limitations)bakın.
+> Mayıs 2018 itibariyle, bazı örtük akış obo `id_token` akışı için kullanılamaz. Tek sayfalı uygulamalar (SPA'lar), OBO akışlarını gerçekleştirmek için bir **erişim** jetonundan orta katmangizli istemciye geçmelidir. Hangi istemcilerin OBO aramalarını gerçekleştirebileceği hakkında daha fazla bilgi için [sınırlamalar](#client-limitations)bakın.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
@@ -186,10 +184,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>Orta katman başvurusu için onay alma
 
-Uygulamanızın mimarisine veya kullanımına bağlı olarak, OBO akışının başarılı olmasını sağlamak için farklı stratejiler düşünebilirsiniz. Her durumda nihai amaç, istemci uygulamasının orta katman uygulamasını arayabilmesi için uygun izin verilmesini sağlamak ve orta katman uygulamasının arka uç kaynağını arama iznine sahip olmasını sağlamaktır. 
+Uygulamanızın mimarisine veya kullanımına bağlı olarak, OBO akışının başarılı olmasını sağlamak için farklı stratejiler düşünebilirsiniz. Her durumda nihai amaç, istemci uygulamasının orta katman uygulamasını arayabilmesi için uygun izin verilmesini sağlamak ve orta katman uygulamasının arka uç kaynağını arama iznine sahip olmasını sağlamaktır.
 
 > [!NOTE]
-> Daha önce Microsoft hesap sistemi (kişisel hesaplar) "Bilinen istemci uygulaması" alanını desteklemediği gibi, birleşik onay da gösteremezdi.  Bu eklenmiştir ve Microsoft kimlik platformundaki tüm uygulamalar OBO aramaları için gettign onayı için bilinen istemci uygulama yaklaşımını kullanabilir. 
+> Daha önce Microsoft hesap sistemi (kişisel hesaplar) "Bilinen istemci uygulaması" alanını desteklemediği gibi, birleşik onay da gösteremezdi.  Bu eklenmiştir ve Microsoft kimlik platformundaki tüm uygulamalar OBO aramaları için gettign onayı için bilinen istemci uygulama yaklaşımını kullanabilir.
 
 ### <a name="default-and-combined-consent"></a>/.varsayılan ve kombine rıza
 

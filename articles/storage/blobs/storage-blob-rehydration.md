@@ -4,17 +4,17 @@ description: Verilere erişebilmeniz için lekelerinizi arşiv depolamasından y
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 11/14/2019
+ms.date: 04/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614792"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684083"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından rehydrate blob verileri
 
@@ -31,15 +31,21 @@ Bir blob arşiv erişim katmanında yken çevrimdışı olarak kabul edilir ve o
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş blobu çevrimiçi katmana kopyalama
 
-Arşiv lekenizi yeniden sulamak istemiyorsanız, [Bir Kopya Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapmayı seçebilirsiniz. Üzerinde çalışabileceğiniz çevrimiçi sıcak veya serin katmanda yeni bir leke oluşturulurken orijinal lekeniz arşivde değiştirilmemiş olarak kalır. Copy Blob işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-ms-rehydrate öncelikli* özelliğistandart veya Yüksek (önizleme) olarak da ayarlayabilirsiniz.
-
-Arşiv lekeleri yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blob'unu başka bir arşiv blob'una kopyalamak desteklenmez.
+Arşiv lekenizi yeniden sulamak istemiyorsanız, [Bir Kopya Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapmayı seçebilirsiniz. Üzerinde çalışabileceğiniz çevrimiçi sıcak veya serin katmanda yeni bir leke oluşturulurken orijinal lekeniz arşivde değiştirilmemiş olarak kalır. Copy Blob işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-ms-rehydrate öncelikli* özelliğistandart veya Yüksek olarak da ayarlayabilirsiniz.
 
 Arşivden bir leke kopyalama seçilen rehydrate önceliğine bağlı olarak tamamlanması saatler sürebilir. Arka planda, **Copy Blob** işlemi, seçili hedef katmanda yeni bir çevrimiçi blob oluşturmak için arşiv kaynağı nızı okur. Yeni blob, lekeleri listelediğinizde görünür olabilir, ancak kaynak arşiv blob'dan okunan ve veriler yeni çevrimiçi hedef blob'a yazılana kadar veriler kullanılamaz. Yeni blob bağımsız bir kopya olarak ve herhangi bir değişiklik veya silme kaynak arşiv blob etkilemez.
 
+Arşiv lekeleri yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blob'unu başka bir arşiv blob'una kopyalamak desteklenmez. Aşağıdaki tablo CopyBlob'un yeteneklerini gösterir.
+
+|                                           | **Sıcak katman kaynağı**   | **Serin katman kaynağı** | **Arşiv katmanı kaynağı**    |
+| ----------------------------------------- | --------------------- | -------------------- | ------------------- |
+| **Sıcak katman hedef**                  | Destekleniyor             | Destekleniyor            | Aynı hesap içinde desteklenen; bekleyen rehidrat               |
+| **Serin katman hedefi**                 | Destekleniyor             | Destekleniyor            | Aynı hesap içinde desteklenen; bekleyen rehidrat               |
+| **Arşiv katmanı hedefi**              | Destekleniyor             | Destekleniyor            | Desteklenmeyen         |
+
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Arşivdeki lekeleri sıcak veya serin katmanlara rehydrating okuma işlemleri ve veri alma olarak ücretlendirilir. Yüksek öncelikli (önizleme) kullanmak, standart önceliğe kıyasla daha yüksek işlem ve veri alma maliyetlerine sahiptir. Yüksek öncelikli rehidrasyon faturanızda ayrı bir satır öğesi olarak ortaya çıkar. Birkaç gigabaytlık arşiv blob'u iade etmek için yüksek öncelikli bir istek 5 saatten fazla sürerse, yüksek öncelikli alma oranı ücretlendirilmez. Ancak, rehidrasyon diğer isteklere göre öncelik olarak standart alma oranları hala geçerlidir.
+Arşivdeki lekeleri sıcak veya serin katmanlara rehydrating okuma işlemleri ve veri alma olarak ücretlendirilir. Yüksek öncelik kullanımı, standart önceliğe kıyasla daha yüksek çalışma ve veri alma maliyetlerine sahiptir. Yüksek öncelikli rehidrasyon faturanızda ayrı bir satır öğesi olarak ortaya çıkar. Birkaç gigabaytlık arşiv blob'u iade etmek için yüksek öncelikli bir istek 5 saatten fazla sürerse, yüksek öncelikli alma oranı ücretlendirilmez. Ancak, rehidrasyon diğer isteklere göre öncelik olarak standart alma oranları hala geçerlidir.
 
 Arşivdeki lekelerin arşivden sıcak veya serin katmanlara kopyalanması okuma işlemleri ve veri alma olarak ücretlendirilir. Yeni blob kopyasının oluşturulması için bir yazma işlemi ücretlendirilir. Kaynak blob arşiv katmanında değiştirilmemiş kalır, çünkü bir çevrimiçi blob kopyaladığınızda erken silme ücretleri geçerli değildir. Seçilirse yüksek öncelikli alma ücretleri uygulanır.
 
@@ -52,7 +58,7 @@ Arşiv katmanındaki lekeler en az 180 gün saklanmalıdır. Arşivlenmiş lekel
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv lekesini çevrimiçi katmana rehydrate
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Azure portalında **Tüm Kaynakları**arayın ve seçin.
 
@@ -68,7 +74,8 @@ Arşiv katmanındaki lekeler en az 180 gün saklanmalıdır. Arşivlenmiş lekel
 
 1. Alttaki **Kaydet'i** seçin.
 
-![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
+![Depolama hesabı](media/storage-tiers/blob-access-tier.png)
+![katmanını değiştirme Çek rehydrate durumunu](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Aşağıdaki PowerShell komut dosyası, bir arşiv blob'unun blob katmanını değiştirmek için kullanılabilir. Değişken, `$rgName` kaynak grup adınız ile başharfe alınmalıdır. Değişken, `$accountName` depolama hesabı adınız ile başharfe bürünmelidir. Değişken, `$containerName` kapsayıcı adınız ile başharfe alınmalıdır. Değişken, `$blobName` blob adınız ile başharfe alınmalıdır. 

@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: f30ccd498b79c36c8892ae38a3e26d169249621a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4d6098b7b4de76461e924fc7d42d039046d7ce5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481108"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677162"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL Veritabanı'nda yönetilen bir örnek için bağlantı mimarisi
 
@@ -39,7 +39,7 @@ Yönetilen örnek, hizmet (PaaS) sunan bir platformdur. Microsoft, bu hizmeti te
 
 Son kullanıcılar veya uygulamalar tarafından başlatılan bazı SQL Server işlemleri, yönetilen örneklerin platformla etkileşimkurmasını gerektirebilir. Bir durumda yönetilen bir örnek veritabanı oluşturulmasıdır. Bu kaynak Azure portalı, PowerShell, Azure CLI ve REST API'si aracılığıyla ortaya çıkarır.
 
-Yönetilen örnekler, yedeklemeler için Azure Depolama, telemetri için Azure Etkinlik Hub'ları, kimlik doğrulaması için Azure Active Directory, Saydam Veri Şifreleme için Azure Key Vault (TDE) ve birkaç Azure platformu hizmeti sağlayan Azure hizmetlerine bağlıdır güvenlik ve desteklenebilirlik özellikleri. Yönetilen örnekler bu hizmetlere bağlantılar yapar.
+Yönetilen örnekler, yedeklemeler için Azure Depolama, telemetri için Azure Etkinlik Hub'ları, kimlik doğrulaması için Azure Active Directory, Saydam Veri Şifreleme için Azure Key Vault (TDE) ve güvenlik ve desteklenebilirlik özellikleri sağlayan birkaç Azure platformu hizmeti gibi Azure hizmetlerine bağlıdır. Yönetilen örnekler bu hizmetlere bağlantılar yapar.
 
 Tüm iletişimler sertifikalar kullanılarak şifrelenir ve imzalanır. İletişim kuran tarafların güvenilirliğini kontrol etmek için yönetilen örnekler, bu sertifikaları sertifika iptal listeleri aracılığıyla sürekli olarak doğrular. Sertifikalar iptal edilirse, yönetilen örnek verileri korumak için bağlantıları kapatır.
 
@@ -81,7 +81,7 @@ Bağlantılar yönetilen örnek içinde başladığında (yedeklemeler ve deneti
 > [!NOTE]
 > Yönetilen örneğin bulunduğu bölgenin içindeki Azure hizmetlerine giden trafik en iyi duruma sunulur ve bu nedenle yönetilen örnek yönetimi bitiş noktası public IP adresine uygun değildir. Bu nedenle, en sık depolama alanı için IP tabanlı güvenlik duvarı kurallarını kullanmanız gerekiyorsa, hizmetin yönetilen örnekten farklı bir bölgede olması gerekir.
 
-## <a name="service-aided-subnet-configuration"></a>Servis destekli subnet yapılandırması
+## <a name="service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması
 
 Müşteri güvenliği ve yönetilebilirlik gereksinimlerini karşılamak için Yönetilen Örnek, el kitabından hizmet destekli alt ağ yapılandırmasına geçiş yapıyor.
 
@@ -306,6 +306,7 @@ Aşağıdaki sanal ağ özellikleri şu anda Yönetilen Örnek ile desteklenmez:
 - **Microsoft peering**: Yönetilen Örnek'in bulunduğu sanal ağla doğrudan veya geçişli olarak ekspres rota devrelerine [bakan Microsoft'un](../expressroute/expressroute-faqs.md#microsoft-peering) sanal ağ içindeki Yönetilen Örnek bileşenleri ile kullanılabilirlik sorunlarına neden olmasına bağlı hizmetler arasındaki trafik akışını etkilemesini etkinleştirme. Microsoft'un zaten etkin olduğu sanal ağa Yönetilen Örnek dağıtımlarının başarısız olması beklenir.
 - **Küresel sanal ağ eşlemesi**: Azure bölgeleri genelinde [sanal ağ eşleme](../virtual-network/virtual-network-peering-overview.md) bağlantısı, [belgelenmiş yük dengeleyici kısıtlamaları](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)nedeniyle Yönetilen Örnek için çalışmıyor.
 - **AzurePlatformDNS**: Platform DNS çözünürlüğünü engellemek için AzurePlatformDNS [hizmet etiketini](../virtual-network/service-tags-overview.md) kullanmak Yönetilen Örneği kullanılamaz hale getirir. Yönetilen Örnek, motor içinde DNS çözünürlüğü için müşteri tanımlı DNS'yi desteklese de platform işlemleri için platform DNS'ye bağımlılık vardır.
+- **NAT ağ geçidi**: Belirli genel IP adresiyle giden bağlantıyı denetlemek için [Sanal Ağ NAT'ı](../virtual-network/nat-overview.md) kullanmak Yönetilen Örneği kullanılamaz hale getirir. Yönetilen Örnek hizmeti şu anda Sanal Ağ NAT ile gelen ve giden akışların birlikteliğini sağlamayan temel yük dengeleyicisinin kullanımıyla sınırlıdır.
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>[Amortismana uğradı] Hizmet destekli subnet yapılandırması olmayan ağ gereksinimleri
 

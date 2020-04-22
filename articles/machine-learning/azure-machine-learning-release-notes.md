@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: 9ed17ed0825e0011d1402efc45155755a1ecbadf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2739e960c4bc6d35ac9ad757e80ed620e5dc04f8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459177"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684659"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
@@ -825,7 +825,7 @@ Veri bilimcilerin deneyleri daha performant bir şekilde izleyebileceği şekild
 ### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Python v1.0.62 için Azure Machine Learning SDK
 
 + **Yeni özellikler**
-  + TabularDataset'teki `timeseries` özellik tanıtıldı. Bu özellik, tüm verileri belirli bir zaman aralığı veya en son veriler arasında almak gibi bir TabularDataset verisine kolay zaman damgası filtreleme olanağı sağlar. TabularDataset'teki `timeseries` özelliği öğrenmek için lütfen https://aka.ms/azureml-data belgeler veya https://aka.ms/azureml-tsd-notebook örnek bir not defteri için ziyaret edin.
+  + TabularDataset'teki `timeseries` özellik tanıtıldı. Bu özellik, tüm verileri belirli bir zaman aralığı veya en son veriler arasında almak gibi bir TabularDataset verisine kolay zaman damgası filtreleme olanağı sağlar. TabularDataset'teki `timeseries` özelliği öğrenmek için lütfen https://aka.ms/azureml-data belgeler veya https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb örnek bir not defteri için ziyaret edin.
   + TabularDataset ve FileDataset ile etkin leştirilmiş eğitim. Lütfen https://aka.ms/dataset-tutorial örnek bir not defteri için ziyaret edin.
 
   + **azureml-train-core**
@@ -1339,7 +1339,7 @@ Azure Databricks kullanan bazı müşteriler için sorunlara neden olduğu için
 + **Önizleme özellikleri**
     + Azureml-mlflow paketi[(örnek dizüstü bilgisayarlar)](https://aka.ms/azureml-mlflow-examples)aracılığıyla [MLflow](https://mlflow.org) 1.0.0 izleme ile entegrasyon.
     + Jupyter not defterini bir koşu olarak gönderin. [API Başvuru Belgeleri](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + Azureml-contrib-datadrift paketi[(örnek not defterleri)](https://aka.ms/azureml-datadrift-example)aracılığıyla [Veri Drift Dedektörü](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) Genel Önizlemesi . Veri Drift modeli doğruluğu zaman içinde bozulur üst nedenlerinden biridir. Üretimde modele sunulan veriler, modelin eğitildiği verilerden farklı olduğunda gerçekleşir. AML Veri Drift dedektörü, müşterinin veri sürüklenmesini izlemesine yardımcı olur ve sürüklenme algılandığında uyarı gönderir.
+    + Azureml-contrib-datadrift paketi[(örnek not defterleri)](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/monitor-models/data-drift)aracılığıyla [Veri Drift Dedektörü](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) Genel Önizlemesi . Veri Drift modeli doğruluğu zaman içinde bozulur üst nedenlerinden biridir. Üretimde modele sunulan veriler, modelin eğitildiği verilerden farklı olduğunda gerçekleşir. AML Veri Drift dedektörü, müşterinin veri sürüklenmesini izlemesine yardımcı olur ve sürüklenme algılandığında uyarı gönderir.
 
 + **Yeni değişiklikler**
 

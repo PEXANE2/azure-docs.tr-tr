@@ -1,6 +1,6 @@
 ---
-title: Windows Karma Runbook Worker tanıla - Azure Update Management
-description: Windows'da Güncelleştirme Yönetimi'ni destekleyen Azure Automation Karma Runbook Worker ile sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
+title: Azure Otomasyon Güncelleme Yönetimi'nde Windows güncelleştirme aracısı sorunlarını giderme
+description: Güncelleştirme Yönetimi çözümlemeyi kullanarak Windows update aracısıyla ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: ec35d11eba59ea21947e2c3cd5286bababa4eabb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76153863"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678981"
 ---
-# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Güncelleştirme Yönetimi'nde Windows Karma Runbook İşçisi durumunu anlama ve çözme
+# <a name="troubleshoot-windows-update-agent-issues"></a>Windows güncelleştirme aracısı sorunları sorun giderme
 
-Makinenizin Güncelleştirme Yönetimi'nde **Hazır'ı** göstermemenedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık.
+Güncelleştirme Yönetimi'nde makinenizin hazır (sağlıklı) olarak görünmemesinin birçok nedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık.
 
-Aşağıdaki liste, bir makinenin içinde olabileceği üç hazır durumtur:
+Bir makine için üç hazırlık durumu şunlardır:
 
-* **Hazır** - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
-* **Bağlantısız** - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* **Yapılandırılmamış** - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
+* Hazır - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
+* Bağlantısız - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* Yapılandırılmamış - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
 
 > [!NOTE]
-> Azure portalının gösterdiği yle makinenin geçerli durumu arasında küçük bir gecikme olabilir.
+> Azure portalının gösterdiği yle bir makinenin geçerli durumu arasında küçük bir gecikme olabilir.
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi başlatın
 
-Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda **Sorun Giderme Durumu Temsilcisi** sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için [çevrimdışı yönergeleri](#troubleshoot-offline) görün.
+Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda Sorun Giderme Durumu Temsilcisi sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için [çevrimdışı yönergeleri](#troubleshoot-offline) görün.
 
 ![Sanal makinelerin yönetim listesini güncelleştirme](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > Hibrit Runbook Worker'ın durumunu kontrol etmek için VM çalışıyor olmalıdır. VM çalışmıyorsa, **VM başlat** düğmesi görüntülenir.
 
-Sorun **Giderme Aracısı** sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı** seçin. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır Komutu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+Sorun Giderme Aracısı sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı** seçin. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır Komutu](../../virtual-machines/windows/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
 
 ![Sorun Giderme Durumu Güncelle Aracısı sayfası](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -86,15 +86,13 @@ Proxy ve güvenlik duvarı yapılandırmaları, Karma Runbook Worker aracısın�
 
 ### <a name="monitoring-agent-service-status"></a>Temsilci hizmet durumunu izleme
 
-Bu denetim, `HealthService`Microsoft İzleme Aracısı'nın makinede çalışıp çalışmadığını belirler.
+Bu denetim, Windows için Log Analytics`healthservice`aracısının ( ) makinede çalışıyor mu olduğunu belirler. Hizmeti sorun giderme hakkında daha fazla bilgi edinmek [için Windows için Log Analytics aracısının çalışmıyor'](hybrid-runbook-worker.md#mma-not-running)a bakın.
 
-Sorun giderme hakkında daha fazla bilgi edinmek için Microsoft [İzleme Aracısı çalışmıyor.](hybrid-runbook-worker.md#mma-not-running)
-
-Microsoft Monitoring Agent'ı yeniden yüklemek için [Microsoft İzleme Aracısını Yükle'ye bakın ve yapılandırır.](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)
+Windows için Log Analytics aracısını yeniden yüklemek [için Windows için Log Analytics aracısını yükleyin ve Windows için Log Analytics aracısını yapılandırın.](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)
 
 ### <a name="monitoring-agent-service-events"></a>Aracı servis olaylarını izleme
 
-Bu denetim, son `4502` 24 saat içinde makinedeki Azure İşlemleri Yöneticisi günlüğünde herhangi bir olayın görünüp görünmediğini belirler.
+Bu denetim, son 24 saat içinde makinedeki Azure İşlemleri Yöneticisi günlüğünde 4502 olayın görünüp görünmediğini belirler.
 
 Bu olay hakkında daha fazla bilgi edinmek için bu etkinliğin [sorun giderme kılavuzuna](hybrid-runbook-worker.md#event-4502) bakın.
 
@@ -167,9 +165,9 @@ RuleName                    : Monitoring Agent service status
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : HealthService must be running on the machine
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service (HealthService) is not running
+CheckResultMessage          : Log Analytics for Windows service (HealthService) is not running
 CheckResultMessageId        : MonitoringAgentServiceRunningCheck.Failed
-CheckResultMessageArguments : {Microsoft Monitoring Agent, HealthService}
+CheckResultMessageArguments : {Log Analytics agent for Windows, HealthService}
 
 RuleId                      : MonitoringAgentServiceEventsCheck
 RuleGroupId                 : servicehealth
@@ -177,9 +175,9 @@ RuleName                    : Monitoring Agent service events
 RuleGroupName               : VM Service Health Checks
 RuleDescription             : Event Log must not have event 4502 logged in the past 24 hours
 CheckResult                 : Failed
-CheckResultMessage          : Microsoft Monitoring Agent service Event Log (Operations Manager) does not exist on the machine
+CheckResultMessage          : Log Analytics agent for Windows service Event Log (Operations Manager) does not exist on the machine
 CheckResultMessageId        : MonitoringAgentServiceEventsCheck.Failed.NoLog
-CheckResultMessageArguments : {Microsoft Monitoring Agent, Operations Manager, 4502}
+CheckResultMessageArguments : {Log Analytics agent for Windows, Operations Manager, 4502}
 
 RuleId                      : CryptoRsaMachineKeysFolderAccessCheck
 RuleGroupId                 : permissions

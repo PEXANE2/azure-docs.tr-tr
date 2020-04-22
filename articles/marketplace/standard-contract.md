@@ -1,24 +1,24 @@
 ---
-title: Standart Sözleşme | Azure
+title: Standart Sözleşme | Azure Marketi
 description: Azure Marketi ve AppSource için Standart Sözleşme
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 00a83a1b3005043f317ed49cafa735540cd21793
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284968"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681458"
 ---
 # <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft ticari pazar için Standart Sözleşme
 
 Müşteriler için satın alma işlemini kolaylaştırmak ve yazılım satıcıları için yasal karmaşıklığı azaltmak için Microsoft, pazardaki işlemleri kolaylaştırmak için Microsoft ticari pazar yeri için standart bir sözleşme sunar. Ticari pazar yeri yayıncıları, özel hüküm ve koşulları oluşturmayerine, müşterilerin yalnızca bir kez inceleyip kabul etmeleri gereken Standart Sözleşme kapsamında yazılımlarını sunmayı seçebilirler. Standart Sözleşme burada bulunabilir: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
 
-Teklif, İş Ortağı Merkezi'nde veya Bulut İş Ortağı Portalı'nda teklif oluşturulurken teklifin hüküm ve koşulları tanımlanır. Kendi özel hüküm ve koşullarınızı sağlamak yerine Microsoft ticari pazarı için Standart Sözleşme'yi kullanmayı seçebilirsiniz.
+Teklif, İş Ortağı Merkezi'nde teklif oluşturulurken teklifin hüküm ve koşulları tanımlanır. Kendi özel hüküm ve koşullarınızı sağlamak yerine Microsoft ticari pazarı için Standart Sözleşme'yi kullanmayı seçebilirsiniz.
 
 >[!Note]
 >Microsoft ticari pazarı için Standart sözleşmeyi kullanarak bir teklif yayımladıktan sonra, kendi özel hüküm ve koşullarınızı kullanamazsınız. Bu bir "veya" senaryosudur. Çözümünüzü Standart Sözleşme kapsamında *veya* kendi hüküm ve koşullarınız altında sunarsınız. Standart Sözleşme'nin koşullarını değiştirmek isterseniz, bunu Standart Sözleşme Değişiklikleri yoluyla yapabilirsiniz.
@@ -36,7 +36,7 @@ Ticari pazar yeri yayıncıları için iki tür değişiklik vardır:
 >[!Note]
 >Bu iki değişiklik türü üst üste yığ. Özel değişikliklerle hedeflenen müşteriler, satın alma sırasında Standart Sözleşme'de evrensel değişiklik de elde edeceklerdir.
 
-Aşağıdaki teklif türleri için Microsoft ticari pazarı için Standart Sözleşme'den yararlanabilirsiniz: Azure Uygulamaları (Çözüm Şablonları ve Yönetilen Uygulamalar), Sanal Makineler, Konteynerler, Konteyner Uygulamaları, IoT Edge Modülleri ve SaaS .
+Azure Uygulamaları (Çözüm Şablonları ve Yönetilen Uygulamalar), Sanal Makineler, Kapsayıcılar, Kapsayıcı Uygulamaları, IoT Edge Modülleri ve SaaS: Aşağıdaki teklif türleri için Microsoft ticari pazarı için Standart Sözleşme'den yararlanabilirsiniz.
 
 ## <a name="customer-experience"></a>Müşteri deneyimi
 

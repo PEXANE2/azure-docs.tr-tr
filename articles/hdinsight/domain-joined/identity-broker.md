@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: fb82cec6874f8ef4f41897cc22939fe69ed02ec2
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457425"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685506"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Kimlik bilgisi yönetimi için Kimlik Aracısı 'nı (önizleme) kullanma
 
@@ -46,6 +46,46 @@ ID Broker özelliği kümeye bir ekstra VM ekler. Bu VM, Kimlik Aracısı düğ�
 
 ![Kimlik Aracısını etkinleştirme seçeneği](./media/identity-broker/identity-broker-enable.png)
 
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
+Şablonunuzun işlem profiline aşağıdaki özniteliklerle birlikte çağrılan `idbrokernode` yeni bir rol eklerseniz, küme ID aracısı düğümü etkinleştirilmiş olarak oluşturulur:
+
+```json
+.
+.
+.
+"computeProfile": {
+    "roles": [
+        {
+            "autoscale": null,
+            "name": "headnode",
+           ....
+        },
+        {
+            "autoscale": null,
+            "name": "workernode",
+            ....
+        },
+        {
+            "autoscale": null,
+            "name": "idbrokernode",
+            "targetInstanceCount": 1,
+            "hardwareProfile": {
+                "vmSize": "Standard_A2_V2"
+            },
+            "virtualNetworkProfile": {
+                "id": "string",
+                "subnet": "string"
+            },
+            "scriptActions": [],
+            "dataDisksGroups": null
+        }
+    ]
+}
+.
+.
+.
+```
+
 ## <a name="tool-integration"></a>Takım tümleştirmesi
 
 HDInsight [IntelliJ eklentisi](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#integrate-with-hdinsight-identity-broker-hib) OAuth'u destekleyecek şekilde güncellenir. Bu eklentiyi kümeye bağlanmak ve iş göndermek için kullanabilirsiniz.
@@ -62,7 +102,7 @@ Kimlik aracısı kurulumunda, ağ geçidine bağlanan özel uygulamalar ve istem
 
 *   OAuth kaynak uri:https://hib.azurehdinsight.net 
 * AppId: 7865c1d2-f040-46cc-875f-831a1ef6a28a
-*   İzin: (isim: Cluster.ReadWrite, id:8f89faa0-ffef-4007-974d-4989b39ad77d)
+*   İzin: (isim: Cluster.ReadWrite, id: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

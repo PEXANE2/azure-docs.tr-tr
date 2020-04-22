@@ -16,24 +16,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: yelevin
-ms.openlocfilehash: 54ddf6818b95a4037188ab222501ddfa69b28149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 52af688917aa531d125f83844df29a988ed7cb7e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587907"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686625"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Azure Sentinel ile tehdit avı
 
 Güvenlik tehditleri arama konusunda proaktif olmak isteyen bir araştırmacıysanız, Azure Sentinel kuruluşunuzun veri kaynaklarında güvenlik tehditlerini avlamak için güçlü avlanma arama ve sorgu araçları. Ancak sistemleriniz ve güvenlik cihazlarınız, anlamlı olaylara ayrıştırılması ve filtreleilmesi zor olabilecek dağlarda veri üretir. Güvenlik analistlerinin güvenlik uygulamalarınız tarafından algılanmayan yeni anormallikleri proaktif olarak aramalarına yardımcı olmak için, Azure Sentinel'in yerleşik avlanma sorguları, ağınızda zaten bulunan verilerdeki sorunları bulmak için doğru soruları sormanız için size yol gösteriyor. 
 
-Örneğin, yerleşik bir sorgu altyapınızda çalışan en yaygın işlemler hakkında veri sağlar - çalıştırılan her işlem hakkında bir uyarı istemezsiniz, bunlar tamamen masum olabilir, ancak zaman zaman sorguya bir göz atmak isteyebilirsiniz Olağandışı bir şey var. 
+Örneğin, yerleşik bir sorgu altyapınızda çalışan en yaygın işlemler le ilgili veriler sağlar - çalıştırılan her işlem hakkında bir uyarı istemezsiniz, bunlar tamamen masum olabilir, ancak olağandışı bir şey olup olmadığını görmek için zaman zaman sorguya bir göz atmak isteyebilirsiniz. 
 
 
 
 Azure Sentinel avı ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
-- Yerleşik sorgular: Başlangıç sayfası, başlangıç sayfanızı başlatmak ve tabloları ve sorgu dilini tanımak için önceden yüklenmiş sorgu örnekleri sağlar. Bu yerleşik avcılık sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilir, yeni sorgular ekler ve yeni algılamalar aramak ve avlanmaya nereden başlayacağınızı bulmak için bir giriş noktası sağlamak için varolan sorguları ince ayarla yeni saldırıların başlangıcı. 
+- Yerleşik sorgular: Başlangıç sayfası, başlangıç sayfanızı başlatmak ve tabloları ve sorgu dilini tanımak için önceden yüklenmiş sorgu örnekleri sağlar. Bu yerleşik avcılık sorguları, Microsoft güvenlik araştırmacıları tarafından sürekli olarak geliştirilir, yeni sorgular ekler ve yeni algılamalar aramak ve yeni saldırıların başlangıcını nereden avlayabileceğinizi bulmak için bir giriş noktası sağlamak için varolan sorguları ince ayarlayayım. 
 
 - IntelliSense ile güçlü sorgu dili: Bir sonraki seviyeye avcılık almak için gereken esneklik sağlayan bir sorgu dili üstüne inşa edilmiştir.
 
@@ -54,7 +54,7 @@ Azure Sentinel avı ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
 3. Sorgu ayrıntıları bölmesinde temel sorgunun hızlı bir incelemesini gerçekleştirin veya Sorguyu Log Analytics'te açmak için **sorgu sonucunu görüntüle'yi** tıklatın. Altta, sorgu için eşleşmeleri gözden geçirin.
 
-4.  Satıra tıklayın ve araştırılacak satırları eklemek için **yer imi** ekle'yi seçin - bunu şüpheli görünen her şey için yapabilirsiniz. 
+4.    Satıra tıklayın ve araştırılacak satırları eklemek için **yer imi** ekle'yi seçin - bunu şüpheli görünen her şey için yapabilirsiniz. 
 
 5. Ardından, ana **Avcılık** sayfasına geri dön ve tüm şüpheli etkinlikleri görmek için **Yer İşaretleri** sekmesini tıklatın. 
 
@@ -66,7 +66,7 @@ Azure Sentinel avı ile aşağıdaki özelliklerden yararlanabilirsiniz:
 
 ## <a name="query-language"></a>Sorgu dili 
 
-Azure Sentinel'de avlanmak Kusto sorgu diline dayanır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için Sorgu [Dili Başvurusu'na](https://docs.loganalytics.io/docs/Language-Reference/)bakın.
+Azure Sentinel'de avlanmak Kusto sorgu diline dayanır. Sorgu dili ve desteklenen işleçler hakkında daha fazla bilgi için Sorgu [Dili Başvurusu'na](/azure/azure-monitor/log-query/get-started-queries)bakın.
 
 ## <a name="public-hunting-query-github-repository"></a>Genel avcılık sorgusu GitHub deposu
 

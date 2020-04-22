@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 457979837b1c56eb85fc19c9a1fce5dc7df8c23b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481999"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682752"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
@@ -44,7 +44,7 @@ Bu şablon aşağıdaki Azure hizmetlerini oluşturur:
 * Azure Depolama Hesabı
 * Azure Key Vault
 * Azure Application Insights
-* Azure Container Kayıt Defteri
+* Azure Container Registry
 * Azure Machine Learning çalışma alanı
 
 Kaynak grubu hizmetleri tutan kapsayıcıdır. Çeşitli hizmetler Azure Machine Learning çalışma alanı tarafından gereklidir.
@@ -81,7 +81,9 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
 
 * Çalışma alanı için yüksek gizlilik ayarlarını etkinleştirme
 * Çalışma alanı için şifrelemeyi etkinleştirme
-* Varolan bir Azure Anahtar Kasası kullanır
+* Müşteri tarafından yönetilen anahtarları almak için varolan bir Azure Anahtar Kasası kullanır
+
+Daha fazla bilgi [için, şifrelemeye bakın.](concept-enterprise-security.md#encryption-at-rest)
 
 ```json
 {
@@ -121,7 +123,7 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
         "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
       }
     },
-    "hbi_workspace":{
+    "high_confidentiality":{
       "type": "string",
       "defaultValue": "false",
       "allowedValues": [
@@ -256,27 +258,31 @@ Aşağıdaki örnek şablon, üç ayarı olan bir çalışma alanının nasıl o
                     "keyIdentifier": "[parameters('resource_cmk_uri')]"
                   }
             },
-        "hbiWorkspace": "[parameters('hbi_workspace')]"
+        "hbiWorkspace": "[parameters('high_confidentiality')]"
       }
     }
   ]
 }
 ```
 
-Anahtar Kasası'nın kimliğini ve bu şablonun gerektirdiği URI anahtarını almak için Azure CLI'yi kullanabilirsiniz. Aşağıdaki komut, Key Vault kaynak kimliğini ve URI'yi almak için Azure CLI'yi kullanmanın bir örneğidir:
+Anahtar Kasası'nın kimliğini ve bu şablonun gerektirdiği URI anahtarını almak için Azure CLI'yi kullanabilirsiniz. Aşağıdaki komut Anahtar Vault Kimliğini alır:
 
 ```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "[id, properties.vaultUri]"
+az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 ```
 
-Bu komut, aşağıdaki metne benzer bir değer döndürür. İlk değer kimlik, ikincisi URI'dir:
+Bu `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`komut, .
 
-```text
-[
-  "/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault",
-  "https://mykeyvault.vault.azure.net/"
-]
+Müşteri yönetilen anahtarı için URI'yi almak için aşağıdaki komutu kullanın:
+
+```azurecli-interactive
+az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 ```
+
+Bu `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`komut, .
+
+> [!IMPORTANT]
+> Bir çalışma alanı oluşturulduktan sonra, gizli veri, şifreleme, anahtar kasa kimliği veya anahtar tanımlayıcıları ayarlarını değiştiremezsiniz. Bu değerleri değiştirmek için, yeni değerleri kullanarak yeni bir çalışma alanı oluşturmanız gerekir.
 
 ## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 

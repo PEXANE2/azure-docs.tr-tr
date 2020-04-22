@@ -1,20 +1,20 @@
 ---
-title: OMS Update Dağıtımlarınızı Azure'a geçirin
+title: OMS güncelleştirme Dağıtımlarınızı Azure'a geçirin
 description: Bu makalede, varolan OMS Update dağıtımlarınızı Azure'a nasıl geçirebilirsiniz
 services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 910f284eedbf50be5b58b6c18f02e50adda35e9a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75417774"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679998"
 ---
-# <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS Update Dağıtımlarınızı Azure'a geçirin
+# <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS güncelleştirme dağıtımlarınızı Azure'a geçirin
 
-Operasyon Yönetimi Paketi (OMS) portalı [amortismana sokulmaktadır.](../azure-monitor/platform/oms-portal-transition.md) Güncelleştirme Yönetimi için OMS portalında bulunan tüm işlevler Azure portalında kullanılabilir. Bu makalede, Azure portalına geçiş yapmak için ihtiyacınız olan bilgiler sağlanmaktadır.
+Operasyon Yönetimi Paketi (OMS) portalı [amortismana sokulmaktadır.](../azure-monitor/platform/oms-portal-transition.md) Güncelleme Yönetimi için OMS portalında bulunan tüm işlevler Azure Monitor günlükleri aracılığıyla Azure portalında kullanılabilir. Bu makalede, Azure portalına geçirmek için gereken bilgiler sağlanmaktadır.
 
 ## <a name="key-information"></a>Önemli bilgiler
 
@@ -23,7 +23,7 @@ Operasyon Yönetimi Paketi (OMS) portalı [amortismana sokulmaktadır.](../azure
 
 ## <a name="access-the-azure-portal"></a>Azure Portalına erişme
 
-OMS çalışma alanınızdan **Azure'da Aç'ı**tıklatın. Bu, OMS'nin kullandığı Günlük Analizi çalışma alanına yönlendirilir.
+OMS çalışma alanınızdan **Azure'da Aç'ı**tıklatın. Bu seçim, OMS'nin kullandığı Günlük Analizi çalışma alanına yönlendirin.
 
 ![Azure'da açık - OMS portalı](media/migrate-oms-update-deployments/link-to-azure-portal.png)
 
@@ -31,11 +31,13 @@ Azure portalında **Otomasyon Hesabı'nı** tıklatın
 
 ![Azure İzleyici günlükleri](media/migrate-oms-update-deployments/log-analytics.png)
 
-Otomasyon Hesabınızda, Güncelleştirme Yönetimi'ni açmak için **Yönetim'i Güncelleştir'i** tıklatın.
+Otomasyon hesabınızda, **Yönetim Güncelle'yi**tıklatın.
 
 ![Güncelleştirme Yönetimi](media/migrate-oms-update-deployments/azure-automation.png)
 
-Gelecekte doğrudan Azure portalına gidebilirsiniz, **Tüm hizmetler**altında, **Yönetim Araçları**altında **Otomasyon Hesapları'nı** seçin, uygun Otomasyon Hesabı'nı seçin ve **Yönetim'i Güncelleştir'i**tıklatın.
+Azure portalında, Tüm hizmetler altında **Otomasyon Hesapları'nı** seçin. **All services** 
+
+**Yönetim Araçları**altında, uygun Otomasyon hesabını seçin ve **Yönetim Güncelleştir'i**tıklatın.
 
 ## <a name="recreate-existing-deployments"></a>Varolan dağıtımları yeniden oluşturma
 
@@ -49,9 +51,9 @@ Yeni bir güncelleştirme dağıtımı oluşturmak için Azure portalına gidin,
 
 ![Güncelleştirmeyi zamanlama dağıtımı](media/migrate-oms-update-deployments/schedule-update-deployment.png)
 
-**Yeni Güncelleştirme Dağıtım** bölmesi açılır. Aşağıdaki tabloda açıklanan özellikler için değerleri girin ve sonra **Oluştur'u**tıklatın:
+Yeni Güncelleştirme Dağıtım bölmesi açılır. Aşağıdaki tabloda açıklanan özellikler için değerleri girin ve sonra **Oluştur'u**tıklatın:
 
-Makinelerin güncelleştirilmesi için, varolan OMS dağıtımı tarafından kullanılan kayıtlı aramayı seçin.
+**Makinelerin güncelleştirilmesi için,** varolan OMS dağıtımı tarafından kullanılan kayıtlı aramayı seçin.
 
 | Özellik | Açıklama |
 | --- | --- |
@@ -72,4 +74,4 @@ Daha önce de belirtildiği gibi, yeni dağıtımlarınız Azure portalı üzeri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure'da Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için [bkz.](automation-update-management.md)
+Azure'da Güncelleştirme Yönetimi hakkında daha fazla bilgi edinmek için Bkz. [Güncelleştirme Yönetimi.](automation-update-management.md)

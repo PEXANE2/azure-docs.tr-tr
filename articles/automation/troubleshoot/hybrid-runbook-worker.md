@@ -1,5 +1,5 @@
 ---
-title: Sorun Giderme - Azure Automation Karma Runbook İşçileri
+title: Sorun Giderme Azure OtomasyonKarma Runbook İşçileri
 description: Bu makalede, Sorun Giderme Azure Otomasyon Karma Runbook Çalışanları için bilgi sağlar.
 services: automation
 ms.service: automation
@@ -9,20 +9,23 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.openlocfilehash: 2b3bf6706e977bdb6915335dee59da3c250e7895
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80637854"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679331"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Sorun Giderme Hibrid Runbook İşçileri
 
 Bu makalede, Karma Runbook Çalışanları ile sorun giderme sorunları hakkında bilgi sağlar.
 
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](../automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+
 ## <a name="general"></a>Genel
 
-Karma Runbook Çalışanı, çalışanı kaydetmek, runbook işlerini almak ve durumu bildirmek için Otomasyon hesabınızla iletişim kuracak bir aracıya bağlıdır. Windows için bu aracı, Microsoft İzleme Aracısı (MMA) olarak da adlandırılan Windows için Log Analytics aracısıdır. Linux için, Linux için Log Analytics aracısıdır.
+Karma Runbook Çalışanı, çalışanı kaydetmek, runbook işlerini almak ve durumu bildirmek için Otomasyon hesabınızla iletişim kuracak bir aracıya bağlıdır. Windows için bu aracı, Windows için Log Analytics aracısıdır. Linux için, Linux için Log Analytics aracısıdır.
 
 ### <a name="scenario-runbook-execution-fails"></a><a name="runbook-execution-fails"></a>Senaryo: Runbook yürütme başarısız olur
 
@@ -41,10 +44,8 @@ Runbook'unuzun üç kez yürütmeye çalışmasından kısa bir süre sonra ask�
 Olası nedenler şunlardır:
 
 * Runbook'lar yerel kaynaklarla doğrulaşamaz.
-
 * Karma çalışan bir proxy veya güvenlik duvarı arkasındadır.
-
-* Karma Runbook Worker özelliğini çalıştırmak üzere yapılandırılan bilgisayar minimum donanım gereksinimlerini karşılamıyor.
+* Karma Runbook Worker'ı çalıştırmak üzere yapılandırılan bilgisayar minimum donanım gereksinimlerini karşılamıyor.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -103,20 +104,20 @@ Alt makineyi çalıştırın ve Azure Otomasyonu ile yeniden kaydedin. [Windows 
 Karma Runbook Çalışması'nda çalışan bir runbook aşağıdaki hata iletisiyle başarısız olur.
 
 ```error
-Connect-AzureRmAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
+Connect-AzAccount : No certificate was found in the certificate store with thumbprint 0000000000000000000000000000000000000000
 At line:3 char:1
-+ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
++ Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -Appl ...
 + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Connect-AzureRmAccount], ArgumentException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzureRmAccountCommand
+    + CategoryInfo          : CloseError: (:) [Connect-AzAccount], ArgumentException
+    + FullyQualifiedErrorId : Microsoft.Azure.Commands.Profile.ConnectAzAccountCommand
 ```
 #### <a name="cause"></a>Nedeni
 
-Bu hata, Hesap Olarak Çalıştır sertifikasının bulunmadığı bir Karma Runbook Çalışanı üzerinde çalışan bir runbook'ta Bir [Run As hesabı](../manage-runas-account.md) kullanmaya çalıştığınızda oluşur. Karma Runbook Çalışanları, varsayılan olarak sertifika varlığını yerel olarak almaz ve bu varlık Run As hesabıtarafından düzgün çalışması için gereklidir.
+Bu hata, Hesap Olarak Çalıştır sertifikasının bulunmadığı karma runbook Çalışanı üzerinde çalışan bir runbook'ta Run [As hesabı](../manage-runas-account.md) kullanmaya çalıştığınızda oluşur. Karma Runbook Çalışanları varsayılan olarak sertifika varlığına sahip değildir. Run As hesabı, bu varlığın düzgün çalışmasını gerektirir.
 
 #### <a name="resolution"></a>Çözüm
 
-Karma Runbook Worker'ınız bir Azure VM'siyse, Bunun yerine [Azure kaynakları için Yönetilen kimlikleri](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) kullanabilirsiniz. Bu senaryo, Gerçek Olarak Çalıştır hesabı yerine Azure VM'nin yönetilen kimliğini kullanarak Azure kaynaklarına kimlik doğrulamanızı sağlayan kimlik doğrulamasını kolaylaştırır. Karma Runbook Worker şirket içi bir makine olduğunda, Makineye Hesap Olarak Çalıştır sertifikasını yüklemeniz gerekir. Sertifikayı nasıl yükleyeriz öğrenmek için, PowerShell runbook Export-RunAsCertificateToHybridWorker [çalıştırılabilen](../automation-hrw-run-runbooks.md)adımları bir Karma Runbook Worker üzerinde runbook'larda çalıştırın.
+Karma Runbook Worker'ınız bir Azure VM'siyse, Bunun yerine [Azure kaynakları için Yönetilen kimlikleri](../automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) kullanabilirsiniz. Bu senaryo, Gerçek Olarak Çalıştır hesabı yerine Azure VM'nin yönetilen kimliğini kullanarak Azure kaynaklarına kimlik doğrulamanızı sağlayan kimlik doğrulamasını kolaylaştırır. Karma Runbook Worker şirket içi bir makine olduğunda, Makineye Hesap Olarak Çalıştır sertifikasını yüklemeniz gerekir. Sertifikayı nasıl yükleyeriz öğrenmek için, PowerShell runbook **Export-RunAsCertificateToHybridWorker** çalıştırılabilen adımları bir [Karma Runbook Worker üzerinde runbook'larda çalıştırın.](../automation-hrw-run-runbooks.md)
 
 ### <a name="scenario-error-403-during-registration-of-hybrid-runbook-worker"></a><a name="error-403-on-registration"></a>Senaryo: Karma Runbook Worker'ın kaydı sırasında hata 403
 
@@ -193,15 +194,15 @@ wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/inst
 
 Windows Karma Runbook Worker, çalışanı kaydetmek, runbook işleri almak ve durum bildirmek için Otomasyon hesabınızla iletişim kurabilmesi [için Windows'un Günlük Analizi aracısına](../../azure-monitor/platform/log-analytics-agent.md) bağlıdır. İşçinin kaydı başarısız olursa, bu bölüm bazı olası nedenleri içerir.
 
-### <a name="scenario-the-microsoft-monitoring-agent-isnt-running"></a><a name="mma-not-running"></a>Senaryo: Microsoft İzleme Aracısı çalışmıyor
+### <a name="scenario-the-log-analytics-agent-for-windows-isnt-running"></a><a name="mma-not-running"></a>Senaryo: Windows için Log Analytics aracısı çalışmıyor
 
 #### <a name="issue"></a>Sorun
 
-Hizmet, `healthservice` Hybrid Runbook Worker makinesinde çalışmıyor.
+`healthservice` Hybrid Runbook Worker makinesinde çalışmıyor.
 
 #### <a name="cause"></a>Nedeni
 
-Microsoft İzleme Aracısı hizmeti çalışmıyorsa, Karma Runbook Çalışanı'nın Azure Otomasyonu ile iletişim kurması engellenir.
+Windows için Günlük Analizi çalışmıyorsa, Karma Runbook Çalışanı Azure Otomasyonu ile iletişim kuramaz.
 
 #### <a name="resolution"></a>Çözüm
 
@@ -272,7 +273,7 @@ Bu sorun, Karma Runbook Worker'daki bozuk önbellekten kaynaklanabilir.
 
 #### <a name="resolution"></a>Çözüm
 
-Bu sorunu gidermek için, Karma Runbook Worker'da oturum açın ve aşağıdaki komut dosyasını çalıştırın. Bu komut dosyası Microsoft İzleme Aracısını durdurur, önbelleğini kaldırır ve hizmeti yeniden başlatır. Bu eylem, Karma Runbook Çalışanı'nı yapılandırmasını Azure Otomasyonu'ndan yeniden indirmeye zorlar.
+Bu sorunu gidermek için, Karma Runbook Worker'da oturum açın ve aşağıdaki komut dosyasını çalıştırın. Bu komut dosyası, Windows için Log Analytics aracısını durdurur, önbelleğini kaldırır ve hizmeti yeniden başlatır. Bu eylem, Karma Runbook Çalışanı'nı yapılandırmasını Azure Otomasyonu'ndan yeniden indirmeye zorlar.
 
 ```powershell
 Stop-Service -Name HealthService
@@ -304,8 +305,8 @@ Bu sorunu gidermek için aşağıdaki kayıt defteri anahtarını kaldırın, cm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemiyorsanız, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
-* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
-* Daha fazla yardıma ihtiyacınız varsa, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
+* [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
+* Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.

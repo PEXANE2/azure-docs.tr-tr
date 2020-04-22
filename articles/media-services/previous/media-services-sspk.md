@@ -1,6 +1,6 @@
 ---
-title: Microsoft® Sorunsuz Akış İstemci Taşıma Kitilisanslama
-description: Microsoft® Sorunsuz Akış İstemci Taşıma Kiti'ni lisanslama hakkında bilgi edinin.
+title: Microsoft&reg; Sorunsuz Akış İstemci Taşıma Kiti Lisanslama
+description: Microsoft&reg; Smooth Streaming İstemci Taşıma Kiti'ni lisanslama hakkında bilgi edinin.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 59ac3ab2e70bfa00f19bae7e551780f2b2bb8ccb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096717"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686907"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Microsoft® Sorunsuz Akış İstemci Taşıma Kitilisanslama 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Sorunsuz Akış İstemci Taşıma Kiti Lisanslama 
 ## <a name="overview"></a>Genel Bakış
 Microsoft Smooth Streaming İstemci Taşıma Kiti (kısaca**SSPK),** gömülü aygıt üreticilerine, kablo ve mobil operatörlere, içerik servis sağlayıcılarına, cep telefonu üreticilerine, bağımsız yazılım satıcılarına (ISV) ve çözüm sağlayıcılarına yardımcı olmak için, Uyumlu İçeriği Düzgün Akış biçiminde akışsağlamak için ürün ve hizmetler oluşturmaya yardımcı olmak için optimize edilmiş bir Sorunsuz Akış istemcisi uygulamasıdır. SSPK, lisans sahibi tarafından herhangi bir cihaza ve platforma taşınabilir Düzgün Akış istemcisinin aygıt ve platformdan bağımsız bir uygulamasıdır. 
 
@@ -55,13 +55,13 @@ Microsoft Smooth Streaming İstemci Taşıma Kiti, iki farklı lisans anlaşmas�
 * Düzgün Akış Lı İstemci Son Ürünleri için son kullanıcılara dağıtım hakları gerektiren aygıt üreticileri veya ISV'ler için Microsoft Düzgün Akış İstemci Taşıma Kiti **Son Ürün Lisansı** yürütülmelidir.
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-interim-product-license"></a>Microsoft Smooth Streaming İstemci Taşıma Kiti Geçici Ürün Lisansı
-Bu lisans altında, Microsoft, Sorunsuz Akış İstemci Taşıma Kiti ve diğer Sorunsuz Akış İstemci Taşıma Kiti cihaz lisans sahiplerine Düzgün Akış İstemci Geçici Ürünler geliştirmek ve dağıtmak için gerekli fikri mülkiyet hakları sunar Smooth Streaming İstemci Son Ürünleri dağıtın.
+Bu lisans altında, Microsoft, Düzgün Akış Lı İstemci Son Ürünleri dağıtan diğer Sorunsuz Akış İstemci Taşıma Kiti aygıt lisans sahiplerine Düzgün Akış Lı İstemci Geçici Ürünleri geliştirmek ve dağıtmak için düzgün akışlı istemci taşıma kiti ve gerekli fikri mülkiyet haklarını sunar.
 
 #### <a name="fee-structure"></a>Ücret yapısı
 50.000 ABD doları tek seferlik lisans ücreti, Smooth Streaming İstemci Taşıma Kiti'ne erişim sağlar. 
 
 ### <a name="microsoft-smooth-streaming-client-porting-kit-final-product-license"></a>Microsoft Smooth Streaming İstemci Taşıma Kiti Son Ürün Lisansı
-Bu lisans altında, Microsoft diğer Smooth Streaming İstemci Taşıma Kiti lisans sahiplerinden Düzgün Akış İstemci Geçici Ürünler almak ve şirket markalı Smooth Streaming Client Final dağıtmak için gerekli tüm fikri mülkiyet haklarını sunar Son kullanıcılara ürünler.
+Bu lisans altında, Microsoft, diğer Düzgün Akışlı İstemci Taşıma Kiti lisans sahiplerinden Düzgün AkışLı İstemci Geçici Ürünler almak ve şirket markalı Düzgün AkışLı İstemci Son Ürünleri son kullanıcılara dağıtmak için gerekli tüm fikri mülkiyet haklarını sunar.
 
 #### <a name="fee-structure"></a>Ücret yapısı
 Smooth Streaming Client Final Product aşağıdaki gibi bir telif modeli altında sunulmaktadır:
@@ -73,7 +73,7 @@ Smooth Streaming Client Final Product aşağıdaki gibi bir telif modeli altınd
 ## <a name="licensing-procedure-and-sspk-access"></a>Lisans Prosedürü ve SSPK erişimi
 Tüm [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) lisans sorguları için e-posta.
 
-[SSPK Dağıtım portalı,](https://microsoft.sharepoint.com/teams/SSPKDOWNLOAD/) kayıtlı Geçici lisans sahipleri tarafından erişilebilir.
+SSPK Dağıtım portalı, kayıtlı Geçici lisans sahipleri tarafından erişilebilir.
 
 Ara ve Son SSPK lisans sahipleri [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com)teknik soruları .
 

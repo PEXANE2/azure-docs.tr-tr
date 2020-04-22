@@ -4,12 +4,12 @@ description: Bu makalede, Azure sanal makinelerinin yedeklenme ve geri yüklemei
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 15e4b4c8850798fd2386cd2874b6ab58a18d5406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297399"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677350"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure sanal makinelerinde yedekleme hatalarını giderme
 
@@ -191,14 +191,15 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | **Hata kodu**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hata iletisi**: Anlık görüntü işlemi, güvenli bir ağ iletişim kanalı oluşturulamamasından dolayı başarısız oldu. | <ol><li> **Regedit.exe'yi** yükseltilmiş bir modda çalıştırarak Kayıt Defteri Düzenleyicisi'ni açın. <li> Sisteminizde bulunan .NET Framework'ün tüm sürümlerini tanımlayın. Bunlar kayıt defteri anahtarı hiyerarşisi altında mevcut **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Kayıt defteri anahtarında bulunan her bir .NET Framework için aşağıdaki anahtarı ekleyin: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
 | **Hata kodu**: ExtensionVCRedistInstallationFailure <br/> **Hata iletisi**: Visual Studio 2012 için Visual C++ Yeniden Dağıtılabilen'in yüklenememesi nedeniyle anlık görüntü işlemi başarısız oldu. | C:\Packages\Eklentileri\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion gidin ve vcredist2013_x64 yükleyin.<br/>Hizmet yüklemesine izin veren kayıt defteri anahtar değerinin doğru değere ayarlı olduğundan emin olun. Diğer bir deyişle, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver'daki** **Başlangıç** değerini **4**değil, **3** olarak ayarlayın. <br><br>Yüklemeyle ilgili hala sorunlarınız varsa, **msiexec /UNREGISTER çalıştırarak** yükleme hizmetini yeniden başlatın ve ardından **msiexec /REGISTER'ı** yükseltilmiş bir komut isteminden çalıştırın.  |
 | **Hata kodu**: UserErrorRequestRequestisallowedByPolicy <BR> **Hata iletisi**: Anlık Görüntü işlemini engelleyen VM'de geçersiz bir ilke yapılandırılır. | [Ortamınızdaki etiketleri yöneten](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags)bir Azure İlkeniz varsa , ya ilkeyi [Reddet efektinden](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [Değiştir efektine](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)değiştirmeyi düşünün ya da Kaynak grubunu Azure Yedekleme'nin gerektirdiği [adlandırma şemasına](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)göre el ile oluşturun.
+
 ## <a name="jobs"></a>İşler
 
 | Hata ayrıntıları | Geçici çözüm |
 | --- | --- |
-| İptal bu iş türü için desteklenmez: <br>İş bitene kadar bekle. |None |
+| İptal bu iş türü için desteklenmez: <br>İş bitene kadar bekle. |Hiçbiri |
 | İş iptal edilebilir bir durumda değil: <br>İş bitene kadar bekle. <br>**Veya**<br> Seçili iş iptal edilebilir durumda değildir: <br>İşin bitmesini bekle. |İş bitmek üzere. İş bitene kadar bekle.|
 | Yedekleme, devam etmediği için işi iptal edemez: <br>İptal yalnızca devam eden işler için desteklenir. Devam etmekte olan bir işi iptal etmeye çalışın. |Bu hata geçici bir durum nedeniyle olur. Bir dakika bekleyin ve iptal işlemini yeniden deneyin. |
-| Yedekleme işi iptal edemedi: <br>İş bitene kadar bekle. |None |
+| Yedekleme işi iptal edemedi: <br>İş bitene kadar bekle. |Hiçbiri |
 
 ## <a name="restore"></a>Geri Yükleme
 
@@ -206,14 +207,14 @@ Bu, anlık görüntünün Konuk yerine konak üzerinden alınmasını sağlar. Y
 | --- | --- |
 | Geri yükleme bir bulut iç hatası ile başarısız oldu. |<ol><li>Geri yüklemeye çalıştığınız bulut hizmeti, DNS ayarlarıyla yapılandırılır. Şunları kontrol edebilirsiniz: <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Üretim" Get-AzureDns -DnsAyarlar $deployment. DnsAyarlar**.<br>**Adres** yapılandırılırsa, DNS ayarları yapılandırılır.<br> <li>Geri yüklemeye çalıştığınız bulut hizmeti **ReservedIP**ile yapılandırılır ve bulut hizmetindeki varolan VM'ler durdurulur durumdadır. Bulut hizmetinin aşağıdaki PowerShell cmdlets'i kullanarak IP rezerve ettiğini kontrol edebilirsiniz: **$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Üretim" $dep. Ayrılmış IPName**. <br><li>Aşağıdaki özel ağ yapılandırmalarına sahip sanal bir makineyi aynı bulut hizmetine geri yüklemeye çalışıyorsunuz: <ul><li>Yük dengeleyici yapılandırması altında sanal makineler, iç ve dış.<li>Birden fazla ayrılmış IP'si olan sanal makineler. <li>Birden fazla NIC'li sanal makineler. </ul><li>UI'de yeni bir bulut hizmeti seçin veya özel ağ yapılandırmalarına sahip VM'ler için [geri yükleme hususlarını](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) görün.</ol> |
 | Seçili DNS adı zaten alınır: <br>Farklı bir DNS adı belirtin ve yeniden deneyin. |Bu DNS adı, genellikle **.cloudapp.net**ile biten bulut hizmeti adını ifade eder. Bu ismin benzersiz olması gerekiyor. Bu hatayı alırsanız, geri yükleme sırasında farklı bir VM adı seçmeniz gerekir. <br><br> Bu hata yalnızca Azure portalı kullanıcılarına gösterilir. Yalnızca diskleri geri yüklediği ve VM'yi oluşturmadığı için PowerShell üzerinden geri yükleme işlemi başarılı olur. Disk geri yükleme işleminden sonra VM açıkça sizin yeriniz tarafından oluşturulduğunda hata yla karşı karşıya kalınan hata. |
-| Belirtilen sanal ağ yapılandırması doğru değildir: <br>Farklı bir sanal ağ yapılandırması belirtin ve yeniden deneyin. |None |
-| Belirtilen bulut hizmeti, geri yüklenen sanal makinenin yapılandırmasıyla eşleşmeyen ayrılmış bir IP kullanıyor: <br>Ayrılmış bir IP kullanmayan farklı bir bulut hizmeti belirtin. Veya geri yüklemek için başka bir kurtarma noktası seçin. |None |
-| Bulut hizmeti, giriş uç noktalarının sayısındaki sınırına ulaşmıştır: <br>Farklı bir bulut hizmeti belirterek veya varolan bir bitiş noktası kullanarak işlemi yeniden deneyin. |None |
-| Kurtarma Hizmetleri kasası ve hedef depolama hesabı iki farklı bölgede bulunmaktadır: <br>Geri yükleme işleminde belirtilen depolama hesabının Kurtarma Hizmetleri kasanızla aynı Azure bölgesinde olduğundan emin olun. |None |
-| Geri yükleme işlemi için belirtilen depolama hesabı desteklenmez: <br>Yalnızca yerel olarak yedekli veya coğrafi olarak yedekli çoğaltma ayarlarına sahip Temel veya Standart depolama hesapları desteklenir. Desteklenen bir depolama hesabı seçin. |None |
+| Belirtilen sanal ağ yapılandırması doğru değildir: <br>Farklı bir sanal ağ yapılandırması belirtin ve yeniden deneyin. |Hiçbiri |
+| Belirtilen bulut hizmeti, geri yüklenen sanal makinenin yapılandırmasıyla eşleşmeyen ayrılmış bir IP kullanıyor: <br>Ayrılmış bir IP kullanmayan farklı bir bulut hizmeti belirtin. Veya geri yüklemek için başka bir kurtarma noktası seçin. |Hiçbiri |
+| Bulut hizmeti, giriş uç noktalarının sayısındaki sınırına ulaşmıştır: <br>Farklı bir bulut hizmeti belirterek veya varolan bir bitiş noktası kullanarak işlemi yeniden deneyin. |Hiçbiri |
+| Kurtarma Hizmetleri kasası ve hedef depolama hesabı iki farklı bölgede bulunmaktadır: <br>Geri yükleme işleminde belirtilen depolama hesabının Kurtarma Hizmetleri kasanızla aynı Azure bölgesinde olduğundan emin olun. |Hiçbiri |
+| Geri yükleme işlemi için belirtilen depolama hesabı desteklenmez: <br>Yalnızca yerel olarak yedekli veya coğrafi olarak yedekli çoğaltma ayarlarına sahip Temel veya Standart depolama hesapları desteklenir. Desteklenen bir depolama hesabı seçin. |Hiçbiri |
 | Geri yükleme işlemi için belirtilen depolama hesabı türü çevrimiçi değildir: <br>Geri yükleme işleminde belirtilen depolama hesabının çevrimiçi olduğundan emin olun. |Bu hata, Azure Depolama'daki geçici bir hata veya bir kesinti nedeniyle ortaya çıkabilir. Başka bir depolama hesabı seçin. |
-| Kaynak grubu kotası ulaşıldı: <br>Azure portalından bazı kaynak gruplarını silin veya sınırları artırmak için Azure Desteği'ne başvurun. |None |
-| Seçili alt ağ yok: <br>Varolan bir alt ağ seçin. |None |
+| Kaynak grubu kotası ulaşıldı: <br>Azure portalından bazı kaynak gruplarını silin veya sınırları artırmak için Azure Desteği'ne başvurun. |Hiçbiri |
+| Seçili alt ağ yok: <br>Varolan bir alt ağ seçin. |Hiçbiri |
 | Yedekleme hizmetinin aboneliğinizdeki kaynaklara erişim yetkisi yoktur. |Bu hatayı gidermek için, önce [yedeklenmiş diskleri geri yükle'deki](backup-azure-arm-restore-vms.md#restore-disks)adımları kullanarak diskleri geri yükleyin. Ardından, geri yüklenen [disklerden VM oluştur'da](backup-azure-vms-automation.md#restore-an-azure-vm)PowerShell adımlarını kullanın. |
 
 ## <a name="backup-or-restore-takes-time"></a>Yedekleme veya geri yükleme zaman alır
@@ -229,12 +230,12 @@ Genellikle, VM Aracısı Azure galerisinden oluşturulan VM'lerde zaten bulunur.
 #### <a name="windows-vms"></a>Windows VM'leri
 
 * [Aracı MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) dosyasını indirip yükleyin. Yüklemeyi tamamlamak için Yönetici ayrıcalıklarına ihtiyacınız vardır.
-* Klasik dağıtım modelini kullanarak oluşturulan sanal makineler için, aracının yüklü olduğunu belirtmek için [VM özelliğini güncelleştirin.](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) Bu adım, Azure Kaynak Yöneticisi sanal makineleri için gerekli değildir.
+* Klasik dağıtım modelini kullanarak oluşturulan sanal makineler için, aracının yüklü olduğunu belirtmek için [VM özelliğini güncelleştirin.](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) Bu adım, Azure Kaynak Yöneticisi sanal makineleri için gerekli değildir.
 
 #### <a name="linux-vms"></a>Linux VM'leri
 
 * Temsilcinin en son sürümünü dağıtım deposundan yükleyin. Paket adı hakkında ayrıntılı bilgi için [Linux Agent deposuna](https://github.com/Azure/WALinuxAgent)bakın.
-* Klasik dağıtım modelini kullanarak oluşturulan VM'ler için, VM özelliğini güncelleştirmek ve aracının yüklü olduğunu doğrulamak için [bu blogu kullanın.](https://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) Bu adım Kaynak Yöneticisi sanal makineler için gerekli değildir.
+* Klasik dağıtım modelini kullanarak oluşturulan VM'ler için [VM özelliğini güncelleştirin](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline#use-the-provisionguestagent-property-for-classic-vms) ve aracının yüklü olduğunu doğrulayın. Bu adım Kaynak Yöneticisi sanal makineler için gerekli değildir.
 
 ### <a name="update-the-vm-agent"></a>VM Aracısını Güncelleştir
 
@@ -273,11 +274,10 @@ VM yedekleme, temel depolama alanına anlık görüntü komutları verilmesine d
 * **Aynı bulut hizmetini birden fazla VM paylaşıyorsa, VM'leri birden çok yedekleme ilkelerine yayılTın.** Yedekleme sürelerini stagger, böylece en fazla dört VM yedekleme aynı anda başlar. İlkelerdeki başlangıç saatlerini en az bir saat ayırmaya çalışın.
 * **VM yüksek CPU veya bellekte çalışır.** Sanal makine yüksek bellek veya CPU kullanımında yüzde 90'dan fazla çalışıyorsa, anlık görüntü göreviniz sıraya alınır ve geciktirilir. Eninde sonunda zaman doluyor. Bu sorun olursa, isteğe bağlı yedeklemeyi deneyin.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 IaaS VM yedeklemesinin çalışması için konuk içinde DHCP etkinleştirilmelidir. Statik bir özel IP'ye ihtiyacınız varsa, azure portalı veya PowerShell aracılığıyla yapılandırın. VM içindeki DHCP seçeneğinin etkin olduğundan emin olun.
 PowerShell aracılığıyla statik BIR IP'yi nasıl kurabilirsiniz hakkında daha fazla bilgi edin:
 
 * [Varolan bir VM'ye statik dahili IP ekleme](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description)
 * [Ağ arabirimine atanan özel bir IP adresi için ayırma yöntemini değiştirme](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
-

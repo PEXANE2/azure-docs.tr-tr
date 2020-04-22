@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2020
+ms.date: 04/20/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: d03b053f2aa5de4a6f7874dbf4e6ccb3a305a964
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: 9a7d0530c4f03138fad3e4aaa473d54e1cfd5b0a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80992088"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686570"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönetme
 
@@ -38,8 +38,7 @@ Log Analytics için varsayılan fiyatlandırma, satın alınan veri hacmine ve i
   - İzlenen VM sayısı
   - İzlenen her VM'den toplanan veri türü 
   
-In addition to the Pay-As-You-Go model, Log Analytics has **Capacity Reservation** tiers which enable you to save as much as 25% compared to the Pay-As-You-Go price. Kapasite rezervasyon fiyatlandırması, 100 GB/gün'den başlayan bir rezervasyon satın almanızı sağlar. Rezervasyon seviyesinin üzerindeki tüm kullanımlar, Ödeme Niz-Kullan fiyatından faturalandırılır. Kapasite Rezervasyon katmanları 31 günlük bir taahhüt süresine sahiptir. Taahhüt süresi boyunca, daha yüksek bir Kapasite Rezervasyon katmanına (31 günlük taahhüt süresini yeniden başlatacak) değiştirebilirsiniz, ancak taahhüt süresi bitene kadar Daha Düşük Ödemeli Veya Daha Düşük Kapasite Rezervasyon katmanına geri dönemezsiniz. 
-Log Analytics You-You-Go Ödemesi ve Kapasite Rezervasyonu fiyatlandırması hakkında [daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/monitor/) 
+In addition to the Pay-As-You-Go model, Log Analytics has **Capacity Reservation** tiers which enable you to save as much as 25% compared to the Pay-As-You-Go price. Kapasite rezervasyon fiyatlandırması, 100 GB/gün'den başlayan bir rezervasyon satın almanızı sağlar. Rezervasyon seviyesinin üzerindeki tüm kullanımlar, Ödeme Niz-Kullan fiyatından faturalandırılır. Kapasite Rezervasyon katmanları 31 günlük bir taahhüt süresine sahiptir. Taahhüt süresi boyunca, daha yüksek bir Kapasite Rezervasyon katmanına (31 günlük taahhüt süresini yeniden başlatacak) değiştirebilirsiniz, ancak taahhüt süresi bitene kadar Daha Düşük Ödemeli Veya Daha Düşük Kapasite Rezervasyon katmanına geri dönemezsiniz. Kapasite Rezervasyonu katmanlarıiçin faturalandırma günlük olarak yapılır. Log Analytics You-You-Go Ödemesi ve Kapasite Rezervasyonu fiyatlandırması hakkında [daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 Tüm fiyatlandırma katmanlarında, veri hacmi depolanacak şekilde hazırlanırken verilerin dize gösteriminden hesaplanır. [Tüm veri türlerinde ortak](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) olan çeşitli özellikler, `_ResourceId`olay boyutunun hesaplanmasına , , `_ItemId` `_IsBillable` ve `_BilledSize`.
 
@@ -112,10 +111,14 @@ Aşağıdaki adımlar, günlük verilerinin çalışma alanınızda ne kadar sü
 3. Bölmede, gün sayısını artırmak veya azaltmak için kaydırıcıyı taşıyın ve sonra **Tamam'ı**tıklatın.  *Serbest* katmandaysanız, veri saklama süresini değiştiremeniz ve bu ayarı denetlemek için ücretli katmana yükseltmeniz gerekir.
 
     ![Çalışma alanı veri saklama ayarını değiştirme](media/manage-cost-storage/manage-cost-change-retention-01.png)
+
+Bekletme indirildiğinde, en eski verilerin kaldırılmasından önce birkaç günlük yetkisiz kullanım süresi vardır. 
     
 Bekletme, `retentionInDays` parametre kullanılarak Azure Kaynak Yöneticisi aracılığıyla da [ayarlanabilir.](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) Ayrıca, veri saklamayı 30 güne ayarlarsanız, parametreyi `immediatePurgeDataOn30Days` kullanarak eski verilerin hemen tasfiyesini tetikleyebilirsiniz ve bu da uyumlulukla ilgili senaryolar için yararlı olabilir. Bu işlevsellik yalnızca Azure Kaynak Yöneticisi aracılığıyla ortaya çıkarır. 
 
 İki veri `Usage` türü `AzureActivity` -ve - varsayılan olarak 90 gün boyunca saklanır ve bu 90 günlük saklama için herhangi bir ücret alınmaz. Bu veri türleri de veri alma ücretleri ücretsizdir. 
+
+
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
 
@@ -446,7 +449,7 @@ Eski **Düğüm başına** fiyatlandırma katmanına erişimi olan çalışma al
 Bu değerlendirmeyi kolaylaştırmak için, bir çalışma alanının kullanım desenlerini temel alan en iyi fiyatlandırma katmanı için bir öneride bulunmak için aşağıdaki sorgu kullanılabilir.  Bu sorgu, son 7 gün içinde bir çalışma alanına alınan izlenen düğümlere ve verilere bakar ve her gün için hangi fiyatlandırma katmanının en uygun olacağını değerlendirir. Sorguyu kullanmak için, çalışma alanının Azure Güvenlik Merkezi'ni `workspaceHasSecurityCenter` `true` `false`mi yoksa (isteğe bağlı olarak) organizaiton'unuzun aldığı Per Node ve Per GB fiyatlarını güncelleyerek mi yoksa (isteğe bağlı olarak) mı kullandığını belirtmeniz gerekir. 
 
 ```kusto
-// Set these paramaters before running query
+// Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your price per node / month 
 let PerGBPrice = 2.30; // Enter your price per GB 
@@ -459,6 +462,14 @@ union withsource = tt *
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join (
+    Heartbeat 
+    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where Computer != ""
+    | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
+    | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
+    | summarize ASCnodesPerDay = sum(ASCnodesPerHour)/24.  by day=bin(TimeGenerated, 1d)   
+) on day
+| join (
     Usage 
     | where TimeGenerated > ago(8d)
     | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
@@ -469,18 +480,20 @@ union withsource = tt *
 ) on day
 | extend AvgGbPerNode =  NonSecurityDataGB / nodesPerDay
 | extend PerGBDailyCost = iff(workspaceHasSecurityCenter,
-             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*nodesPerDay, 0.)) * PerGBPrice,
+             (NonSecurityDataGB + max_of(SecurityDataGB - 0.5*ASCnodesPerDay, 0.)) * PerGBPrice,
              DataGB * PerGBPrice)
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
-             max_of(DataGB - 1.0*nodesPerDay, 0.), 
+             max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
 | extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
-| project day, nodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
+| project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
 | project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
+
+Bu sorgu, kullanımın nasıl hesaplandığına ilişkin tam bir çoğaltma değildir, ancak çoğu durumda fiyatlandırma katmanı önerileri sağlamak için çalışır.  
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Veri toplama yüksek olduğunda bir uyarı oluşturma
 

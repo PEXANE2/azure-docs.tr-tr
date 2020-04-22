@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521312"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676365"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Olay Hubkaynaklarına erişimi doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere sağladığınız erişim türü üzerinde ayrıntılı denetim sağlar. SAS'ta ayarlayabildiğiniz denetimlerden bazıları şunlardır: 
@@ -22,7 +22,7 @@ Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemci
 - SAS tarafından verilen izinler. Örneğin, Olay Hub'ları ad alanı için bir SAS dinleme izni verebilir, ancak gönderme izni vermez.
 - Yalnızca geçerli kimlik bilgileri sunan istemciler bir olay merkezine veri gönderebilir.
 - İstemci başka bir istemcinin kimliğine bürünemez.
-- Bir rouge istemcisi bir olay hub'ına veri göndermesi engellenebilir.
+- Sahte bir istemcinin bir olay hub'ına veri göndermesi engellenebilir.
 
 Bu makalede, SAS kullanarak Olay Hub kaynaklarına erişim kimlik doğrulaması kapsar. SAS kullanarak Olay Hub kaynaklarına erişim **yetkisi hakkında** bilgi edinmek için [bu makaleye](authorize-access-shared-access-signature.md)bakın. 
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 55c6d374c8a3c308323c0d003726492477e33ff8
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686802"
 ---
 # <a name="develop-a-secure-web-app"></a>Güvenli web uygulaması geliştirme
 
@@ -104,7 +104,7 @@ Bu uygulama kullanılır:
 - Dağıtım için [Azure CLI.](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Konteyner kayıt defteri olarak [Docker Hub.](https://hub.docker.com/)
 
-## <a name="security-considerations"></a>Güvenlikle ilgili dikkat edilmesi gerekenler
+## <a name="security-considerations"></a>Güvenlik konuları
 
 ### <a name="network"></a>Ağ
 
@@ -803,7 +803,7 @@ Azure portalında, uygulamayı gerekli kimlik bilgilerini kullanacak şekilde ya
 Key Vault'a Azure AD yapılandırmasını ve sırlarını ekledikten sonra, kullanıcılar Azure OAuth kimlik doğrulaması kullanarak uygulamaya kimlik doğrulaması yapabilir.
 Uygulama kodunda, bu işlem Azure Etkin Dizin Kimlik Doğrulama Kitaplığı (ADAL) tarafından işlenir.
 
-Sırlar Key Vault'ta ve uygulama nın sırlara ve veritabanına erişimi olduktan sonra, uygulamahttps://GATEWAY_HASH.cloudapp.net)hizmetine ağ geçidinin başvuru URL'si (, bıçağından alabileceğiniz) üzerinden ulaşılabilir.
+Sırlar Key Vault'ta ve uygulama nın sırlara ve veritabanına erişebildiği için, uygulama hizmetine\/ağ geçidinin başvuru URL'sinden (https: /GATEWAY_HASH.cloudapp.net) ulaşılabilir.
 
 Azure AD'de oturum açtığınızda, "Kullanıcı oturum açmaya çalıştığınız dizine kayıtlı değil" yazan bir hata alırsanız, kullanıcıyı eklemeniz gerekir. Kullanıcıyı eklemek için Azure AD'nin **Kullanıcılar** sekmesine gidin ve bilgilerini girerek kullanıcıyı el ile ekleyin veya konuk kullanıcı olarak e-posta adresini **Davet Konuk** bıçağında Azure AD'ye girerek kullanıcıyı davet edin.
 
@@ -920,7 +920,7 @@ Bu çalışma alanını oluşturmak için:
 
       *Uygulama Ağ Geçidi tanılama ekleme*
 
-   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Günlük Analizi çalışma alanını seçin ve ardından toplayıp Azure Sentinel'e göndermek istediğiniz tüm ölçümleri seçin. **Kaydet'i**seçin.
+   4. **Tanılama ayarları** sayfasında, oluşturduğunuz Günlük Analizi çalışma alanını seçin ve ardından toplayıp Azure Sentinel'e göndermek istediğiniz tüm ölçümleri seçin. **Kaydet**’i seçin.
 
         ![Azure Sentinel konektör ayarları](./media/secure-web-app/sentinel-connector-settings.png)
 
@@ -978,7 +978,7 @@ Linting araçları tarafından bulunan bazı kod hatalarını düzelttindikten s
 
 ### <a name="find-and-fix-vulnerabilities-in-app-dependencies"></a>Uygulama bağımlılıklarında güvenlik açıklarını bulma ve düzeltme
 
-Uygulama bağımlılıklarını bulmak ve düzeltmek için [OWASP'nin Bağımlılık Denetimi'ni](https://www.owasp.org/index.php/OWASP_Dependency_Check)kullanabilirsiniz.
+Uygulama bağımlılıklarını bulmak ve düzeltmek için [OWASP'nin Bağımlılık Denetimi'ni](https://owasp.org/www-project-dependency-check/)kullanabilirsiniz.
 
 Güvenlik, bağımlılıkları kontrol eden benzer bir uygulamadır. [GitHub'da](https://github.com/pyupio/safety)bulabilirsiniz. Tanınmış güvenlik açığı veritabanlarında bulunan güvenlik açıkları için güvenlik taramaları.
 

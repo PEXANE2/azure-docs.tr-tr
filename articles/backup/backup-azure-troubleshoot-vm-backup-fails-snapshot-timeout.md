@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4583c02b52ab6b3a4e5056a47db096d4e34399ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248027"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677420"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Yedekleme hatası sorun giderme: Aracı veya uzantıyla ilgili sorunlar
 
@@ -142,6 +142,13 @@ Zamanlanan yedekleme işlemi daha uzun sürüyorsa, bir sonraki yedekleme yapıl
 
 Bu hata IaaS VM'den bildirilir. Sorunun temel nedenini belirlemek için Kurtarma Hizmetleri kasa ayarlarına gidin. **İzleme** bölümünde, durumu filtrelemek ve görüntülemek için **Yedekleme işleri'ni** seçin. Altta yatan hata iletisi ayrıntılarını gözden geçirmek için **Hatalar'ı** tıklatın. Hata ayrıntıları sayfasındaki önerilere göre daha fazla işlem alın.
 
+## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent - Yedekleme başarısız oldu: Bu sanal makine Azure Yedekleme tarafından (etkin olarak) korunmuyor
+
+**Hata kodu**: UserErrorBcmDatasourceNotPresent <br>
+**Hata iletisi**: Yedekleme başarısız oldu: Bu sanal makine Azure Yedekleme tarafından (etkin olarak) korunmuyor.
+
+Lütfen verilen sanal makinenin Azure Yedekleme tarafından etkin olarak (duraklama durumunda değil) korunup korunmadığını kontrol edin. Bu sorunu aşmak için, sanal makinenin etkin olduğundan emin olun ve işlemi yeniden deneyin.
+
 ## <a name="causes-and-solutions"></a>Nedenleri ve çözümleri
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Aracı VM'de yüklü, ancak yanıt vermiyor (Windows VM'ler için)
@@ -211,7 +218,7 @@ Aşağıdaki koşullar anlık görüntü görevinin başarısız olması için n
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>Kurtarma noktası kaynak grubundan kilidi kaldırma
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. Tüm **Kaynaklar seçeneğine**gidin, aşağıdaki biçimde geri yükleme`<Geo>``<number>`noktası toplama kaynak grubunu seçin AzureBackupRG_ _ .
 3. **Ayarlar** bölümünde, kilitleri görüntülemek için **Kilitler'i** seçin.
 4. Kilidi kaldırmak için elipsleri seçin ve **Sil'i**tıklatın.
@@ -240,7 +247,7 @@ Kilidi çıkardıktan sonra isteğe bağlı yedeklemeyi tetikleyin. Bu eylem, ge
 
 Kaynak grubundaki kilit nedeniyle temizlenmeyen geri yükleme noktaları koleksiyonunu el ile temizlemek için aşağıdaki adımları deneyin:
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 2. **Hub** menüsünde Tüm **kaynaklar'ı**tıklatın, VM'nizin bulunduğu yerde aşağıdaki biçimi AzureBackupRG_`<Geo>`_`<number>` ile Kaynak grubunu seçin.
 
     ![Kilidi silme](./media/backup-azure-arm-vms-prepare/resource-group.png)

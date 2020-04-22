@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Hizmetleri - Pazarda nasıl öne çıkarsınız | Azure
+title: Go-To-Market Hizmetleri - Pazarda nasıl öne çıkarsınız | Azure Marketi
 description: Markete Git Hizmetleri - Bu bölümde Azure Marketi'nde bir girişin nasıl yer aldığı açıklanmaktadır
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fe18ca41942ff58b8d9eefef3122c90980029766
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286294"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684611"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource ve Azure Marketplace'te öne çıkma
 
@@ -38,7 +38,7 @@ Puanınızı artırmak için aşağıdaki eylem öğelerini alabilirsiniz:
 Öne Çıkan Uygulamalar promosyonları arama algoritmasından ayrı olarak çalışır.
 
 >[!Note]
->Çözümünüz arama sonuçlarında doğru görünmüyorsa, Bulut İş Ortağı [Portalı'ndaki](https://cloudpartner.azure.com/)Yardım menüsünden bir destek bileti gönderin.
+>Çözümünüz arama sonuçlarında doğru görünmüyorsa, [İş Ortağı Merkezi'ndeki](https://partner.microsoft.com/)Yardım menüsünden bir destek bileti gönderin.
 
 GTM desteğiniz ayrıca, girişlerinizi ve işletmenizi daha fazla tanıtmanıza yardımcı olacak tam bir kişisel gelişim şablonları, web içeriği, eğitim ve araçlardan oluşan bir kitaplığı da içerir.
 
@@ -46,6 +46,6 @@ GTM desteğiniz ayrıca, girişlerinizi ve işletmenizi daha fazla tanıtmanıza
 
 Ticari pazar [avantajlarınız](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
 
-Teklifinizi oluşturmak ve yapılandırmak için [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com) oturum açın.
+Teklifinizi oluşturmak ve yapılandırmak için [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın.
 
 ---

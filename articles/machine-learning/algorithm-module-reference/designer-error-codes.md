@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: cc04d11475568af92ba6a617a1eb6b2b51accb45
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 38e728de22d49de760e998ddc97c5067beb3ecd1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81481665"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684691"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Tasarımcı için özel durumlar ve hata kodları (önizleme)
 
@@ -145,6 +145,7 @@ Aşağıda tasarımcıdaki modüllerin hata kodları verememi yer almaktadır.
 |Parametre "{arg_name}" değeri "{upper_boundary_parameter_name}" değerinden daha az veya eşit olmalıdır.|
 |Parametre "{arg_name}" değeri "{actual_value}" daha az veya eşit olmalıdır {upper_boundary}.|
 |Parametre "{arg_name}" değeri {actual_value} parametre "{upper_boundary_parameter_name}" değeri {upper_boundary}'den az veya eşit olmalıdır.|
+|Parametre "{arg_name}" değeri {actual_value} daha az veya {upper_boundary_meaning} değeri {upper_boundary} değerine eşit olmalıdır.|
 
 
 ## <a name="error-0008"></a>Hata 0008  
@@ -271,6 +272,7 @@ Model, özel eğitim modüllerinden herhangi biri kullanılarak eğitildiyse, e�
 |Geçersiz türünden bir öğrenci geçirilir.|
 |Learner "{arg_name}" geçersiz türü vardır.|
 |Learner "{arg_name}" geçersiz türü "{learner_type}" vardır.|
+|Geçersiz türünden bir öğrenci geçirilir. Özel durum iletisi: {exception_message}|
 
 
 ## <a name="error-0014"></a>Hata 0014  
@@ -393,6 +395,7 @@ Gruplandırma veya kategorilere ayırma için kullanmayı planladığınız süt
 |Sütundaki değerler sıralanmaz.|
 |"{col_index}" sütunundaki değerler sıralanmaz.|
 |Veri kümesi "col_index{dataset}" sütunundaki değerler sıralanmaz.|
+|"{arg_name}" bağımsız değişkenindeki değerler "{sorting_order}" sırasına göre sıralanmaz.|
 
 
 ## <a name="error-0020"></a>Hata 0020  
@@ -633,6 +636,7 @@ Ayrıca, veri kümesinde bir etiket sütunu bulunması, ancak Azure Machine Lear
 |------------------------|
 |Bağımsız değişken sonlu olmalıdır.|
 |"{arg_name}" sonlu değildir.|
+|Sütun "{column_name}" sonsuz değerleri içerir.|
 
 
 ## <a name="error-0034"></a>Hata 0034  
@@ -1492,6 +1496,18 @@ Bu hata, önceki bir işlem veri kümesini değiştirdiğinde, alt akış işlem
 |------------------------------------------------------------|
 |Verilen Dönüşüm Directory geçersizdir.|
 |Dönüşüm Dizin "{arg_name}" geçersizdir. Sebep: {neden}. Lütfen Dönüşüm dosyasını oluşturan eğitim denemesini yeniden yayın. Eğitim denemesi silindiyse, lütfen Dönüştür dosyasını yeniden oluşturun ve kaydedin.|
+|Dönüşüm Dizin "{arg_name}" geçersizdir. Sebep: {neden}. {troubleshoot_hint}|
+
+
+## <a name="error-0159"></a>Hata 0159
+ Modül modeli dizinine geçilirse özel durum oluşur. 
+
+|Özel Durum Mesajları|
+|------------------------------------------------------------|
+|Verilen ModelDirectory geçersizdir.|
+|ModelDirectory "{arg_name}" geçersizdir.|
+|ModelDirectory "{arg_name}" geçersizdir. Sebep: {neden}.|
+|ModelDirectory "{arg_name}" geçersizdir. Sebep: {neden}. {troubleshoot_hint}|
 
 
 ## <a name="error-1000"></a>Hata 1000  

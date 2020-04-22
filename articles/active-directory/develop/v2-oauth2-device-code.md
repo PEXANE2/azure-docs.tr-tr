@@ -13,21 +13,18 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 9186f633b773a243a84692c30ddc2c2261fb69ba
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 2a39dbb3676df5ed916203bdcbbc51d5a0da32a4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309402"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677844"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 cihaz yetkilendirme hibe akışı
 
-Microsoft kimlik platformu, kullanıcıların akıllı TV, IoT aygıtı veya yazıcı gibi giriş kısıtlaması olan aygıtlarda oturum açmalarına olanak tanıyan [aygıt yetkilendirme iznini](https://tools.ietf.org/html/rfc8628)destekler.  Bu akışı etkinleştirmek için, kullanıcı oturum açmamak için başka bir cihazdaki tarayıcısındaki bir web sayfasını ziyaret etti.  Kullanıcı giriş yaptıktan sonra, aygıt erişim belirteçleri alabilir ve gerektiğinde belirteçleri yenileyebilir.  
+Microsoft kimlik platformu, kullanıcıların akıllı TV, IoT aygıtı veya yazıcı gibi giriş kısıtlaması olan aygıtlarda oturum açmalarına olanak tanıyan [aygıt yetkilendirme iznini](https://tools.ietf.org/html/rfc8628)destekler.  Bu akışı etkinleştirmek için, kullanıcı oturum açmamak için başka bir cihazdaki tarayıcısındaki bir web sayfasını ziyaret etti.  Kullanıcı giriş yaptıktan sonra, aygıt erişim belirteçleri alabilir ve gerektiğinde belirteçleri yenileyebilir.
 
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
-
-> [!NOTE]
-> Microsoft kimlik platformu bitiş noktası, tüm Azure Etkin Dizin senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="protocol-diagram"></a>Protokol diyagramı
 
@@ -62,7 +59,7 @@ scope=user.read%20openid%20profile
 
 ### <a name="device-authorization-response"></a>Aygıt yetkilendirme yanıtı
 
-Başarılı bir yanıt, kullanıcının oturum açmasına izin vermek için gerekli bilgileri içeren bir JSON nesnesi olacaktır.  
+Başarılı bir yanıt, kullanıcının oturum açmasına izin vermek için gerekli bilgileri içeren bir JSON nesnesi olacaktır.
 
 | Parametre | Biçimlendir | Açıklama |
 | ---              | --- | --- |
@@ -80,11 +77,11 @@ Başarılı bir yanıt, kullanıcının oturum açmasına izin vermek için gere
 
 Aldıktan sonra `user_code` ve `verification_uri`, istemci kullanıcıya bu görüntüler, kendi cep telefonu veya PC tarayıcısı kullanarak oturum açmalarını emret.
 
-Kullanıcı kişisel bir hesapla (/ortak veya /tüketicilerde) kimlik doğrulaması yaparsa, kimlik doğrulama durumunu cihaza aktarmak için yeniden oturum açmaları istenir.  Ayrıca, verilen izinlerden haberdar olmalarını sağlamak için izin vermeleri de istenecektir.  Bu, kimlik doğrulaması için kullanılan iş veya okul hesapları için geçerli değildir. 
+Kullanıcı kişisel bir hesapla (/ortak veya /tüketicilerde) kimlik doğrulaması yaparsa, kimlik doğrulama durumunu cihaza aktarmak için yeniden oturum açmaları istenir.  Ayrıca, verilen izinlerden haberdar olmalarını sağlamak için izin vermeleri de istenecektir.  Bu, kimlik doğrulaması için kullanılan iş veya okul hesapları için geçerli değildir.
 
 Kullanıcı kimlik doğrulaması `verification_uri`yaparken, istemci istenen belirteç `/token` için bitiş noktasını yoklaması `device_code`gerekir.
 
-``` 
+```
 POST https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 Content-Type: application/x-www-form-urlencoded
 
@@ -95,21 +92,21 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | Parametre | Gerekli | Açıklama|
 | -------- | -------- | ---------- |
-| `tenant`  | Gerekli | İlk istekte kullanılan aynı kiracı veya kiracı diğer adı. | 
+| `tenant`  | Gerekli | İlk istekte kullanılan aynı kiracı veya kiracı diğer adı. |
 | `grant_type` | Gerekli | Olmalıdır`urn:ietf:params:oauth:grant-type:device_code`|
 | `client_id`  | Gerekli | İlk istekte `client_id` kullanılanla eşleşmelidir. |
 | `device_code`| Gerekli | Aygıt `device_code` yetkilendirme isteğinde döndürülen.  |
 
 ### <a name="expected-errors"></a>Beklenen hatalar
 
-Aygıt kodu akışı bir yoklama protokolüdür, bu nedenle istemcinizin kullanıcı kimlik doğrulaması tamamlanmadan önce hata almayı beklemesi gerekir.  
+Aygıt kodu akışı bir yoklama protokolüdür, bu nedenle istemcinizin kullanıcı kimlik doğrulaması tamamlanmadan önce hata almayı beklemesi gerekir.
 
 | Hata | Açıklama | İstemci Eylemi |
 | ------ | ----------- | -------------|
 | `authorization_pending` | Kullanıcı kimlik doğrulamasını tamamlamadı, ancak akışı iptal etmedi. | İsteği en az `interval` saniye sonra yineleyin. |
 | `authorization_declined` | Son kullanıcı yetkilendirme isteğini reddetti.| Yoklamayı durdurun ve kimlik doğrulaması olmayan bir duruma geri dön.  |
 | `bad_verification_code`| `/token` Bitiş noktasına `device_code` gönderilen ler tanınmadı. | İstemcinin istekte `device_code` doğruyu gönderdiğini doğrulayın. |
-| `expired_token` | En `expires_in` az saniye geçti ve kimlik doğrulaması `device_code`artık bu ile mümkün. | Yoklamayı durdurun ve kimlik doğrulamamış bir duruma geri dön. |   
+| `expired_token` | En `expires_in` az saniye geçti ve kimlik doğrulaması `device_code`artık bu ile mümkün. | Yoklamayı durdurun ve kimlik doğrulamamış bir duruma geri dön. |
 
 ### <a name="successful-authentication-response"></a>Başarılı kimlik doğrulama yanıtı
 
@@ -135,4 +132,4 @@ Başarılı bir belirteç yanıtı gibi görünecektir:
 | `id_token`   | Jwt | Özgün `scope` parametre `openid` kapsamı dahil ise verilir.  |
 | `refresh_token` | Opak dize | Orijinal `scope` parametre dahil sayılsa `offline_access`verilir.  |
 
-Yeni erişim belirteçleri elde etmek ve [OAuth Code akış belgelerinde](v2-oauth2-auth-code-flow.md#refresh-the-access-token)belgelenen aynı akışı kullanarak belirteçleri yenilemek için yenileme belirteci kullanabilirsiniz.  
+Yeni erişim belirteçleri elde etmek ve [OAuth Code akış belgelerinde](v2-oauth2-auth-code-flow.md#refresh-the-access-token)belgelenen aynı akışı kullanarak belirteçleri yenilemek için yenileme belirteci kullanabilirsiniz.

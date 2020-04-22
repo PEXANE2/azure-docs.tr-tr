@@ -3,12 +3,12 @@ title: PowerShell ile ithalat ve ihracat planları
 description: Kod olarak plan tanımlarınızla nasıl çalışacağınızı öğrenin. Dışa aktarma ve alma komutlarını kullanarak bunları paylaşın, kaynak denetimi ve yönetme.
 ms.date: 09/03/2019
 ms.topic: how-to
-ms.openlocfilehash: 98bd21aad944346a17d8bdce7fb74c0eb8be2ed7
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80677148"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686830"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>PowerShell ile plan tanımlarını alma ve ihraç etme
 
@@ -88,7 +88,7 @@ Plan tanımınızı dışa aktarma adımları basittir. Plan tanımının dışa
 
 [Dışa aktarılan](#export-your-blueprint-definition) bir plan tanımına sahip olduktan veya [gerekli klasör yapısında](#folder-structure-of-a-blueprint-definition)el ile oluşturulmuş bir plan tanımına sahip olduktan sonra, bu plan tanımını farklı bir yönetim grubuna veya aboneye aktarabilirsiniz.
 
-Yerleşik plan tanımları örnekleri için [Azure Blueprint GitHub repo'ya](https://github.com/Azure/azure-blueprints/tree/master/samples/builtins)bakın.
+Yerleşik plan tanımları örnekleri için [Azure Blueprint GitHub repo'ya](https://github.com/Azure/azure-blueprints/tree/master/samples/001-builtins)bakın.
 
 - **Ad** [gerekli]
   - Yeni plan tanımının adını belirtir
@@ -121,7 +121,7 @@ Gelişmiş plan tanımları oluşturma hakkında bilgi için aşağıdaki makale
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Plan yaşam döngüsü](../concepts/lifecycle.md)hakkında bilgi edinin.
+- [Şema yaşam döngüsü](../concepts/lifecycle.md) hakkında bilgi edinin.
 - [Statik ve dinamik parametrelerin](../concepts/parameters.md) kullanımını anlayın.
 - [Şema sıralama düzenini](../concepts/sequencing-order.md) özelleştirmeyi öğrenin.
 - [Şema kaynak kilitleme](../concepts/resource-locking.md) özelliğini kullanmayı öğrenin.

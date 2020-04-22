@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Edge Modülleri
+title: Azure Marketplace IoT Edge Modülleri
 description: Uygulama ve hizmet yayıncıları için Azure Marketi'ndeki IoT Edge Modülü Teklifi.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/22/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: aadbf33914f919e393a5ec88cf6fc0a6103911b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286158"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684331"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge modülleri
 
@@ -58,7 +58,7 @@ Microsoft Azure Marketi anlaşmalarının ve ilkelerinin tüm koşulları IoT Ed
 
 Azure Marketi'nde bir IoT Edge modülü yayınlamak için aşağıdaki ön koşulları karşılamanız gerekir:
 
-- Bulut İş Ortağı Portalına (CPP) erişim. Daha fazla bilgi için [Azure Marketi ve AppSource yayımlama kılavuzuna](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)bakın.
+- Ortak Merkezi'ne erişim. Daha fazla bilgi için [Azure Marketi ve AppSource yayımlama kılavuzuna](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)bakın.
 - IoT Edge modülünüzü bir Azure Kapsayıcı Kayıt Defteri'nde barındırın. 
 - IoT Edge modül meta verilerinizin (kapsamlı olmayan liste) gibi hazır olması: 
     - Bir başlık
@@ -71,19 +71,19 @@ Azure Marketi'nde bir IoT Edge modülü yayınlamak için aşağıdaki ön koşu
 
 **Teknik Gereksinimler**
 
-Bir IoT Edge Modülü için temel teknik gereksinimler, azure marketinde sertifikalandırılabilmesi ve yayımlanabilmesi için [IoT Edge modülü teknik varlıklarınızı hazırla'da](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets)ayrıntılı olarak açıklanmaktadır.  
+Bir IoT Edge Modülü için temel teknik gereksinimler, azure marketinde sertifikalandırılabilmesi ve yayımlanabilmesi için [IoT Edge modülü teknik varlıklarınızı hazırla'da](./partner-center-portal/create-iot-edge-module-asset.md)ayrıntılı olarak açıklanmaktadır.
 
 ## <a name="documentation-and-resources"></a>Dokümantasyon ve Kaynaklar
 
-Bulut Yayıncılık Portalı ile yeni bir IoT Edge modülü teklifi yayınlama adımları olan [Bir IoT Edge modülü teklifi oluşturun.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer)
+[Bir IoT Edge modülü teklifi oluşturun](./partner-center-portal/azure-iot-edge-module-creation.md) -- İş Ortağı Merkezi'nde yeni bir IoT Edge modülü teklifi yayınlama adımları.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Eğer bunu yapmadıysanız,
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
-Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
+İş Ortağı Merkezi'ne kaydolmak ve yeni bir teklif oluşturmaya başlamak veya mevcut bir teklif üzerinde çalışmaya başlamak,
 
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda](https://cloudpartner.azure.com/) oturum açın.
-- Bkz. [IoT Edge modülü, Bir IoT](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) Edge modülü teklifinin nasıl yayımlanabileceği hakkında bilgi için yayımlama genel görünümü sunar.
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın.
+- Bir IoT Edge modülü teklifinin nasıl yayımlanabileceği hakkında bilgi için [bir IoT Edge modülü teklifi oluşturun.](./partner-center-portal/azure-iot-edge-module-creation.md)

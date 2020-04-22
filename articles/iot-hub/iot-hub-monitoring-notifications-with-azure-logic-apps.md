@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: ad1fcb67704e79f5aef62a59604e47f477804405
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2720f9acfa308294b30f9203ba80e3f9b426e1e9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68385724"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680714"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>IoT hub'ınızı ve posta kutunuzu bağlayan Azure Logic Apps ile IoT uzaktan izleme ve bildirimler
 
@@ -22,7 +22,7 @@ ms.locfileid: "68385724"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-[Azure Logic Apps,](https://docs.microsoft.com/azure/logic-apps/) şirket içi ve bulut hizmetleri, bir veya daha fazla kuruluş ve çeşitli protokoller arasında iş akışları düzenlemenize yardımcı olabilir. Bir mantık uygulaması bir tetikleyici yle başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanabilecek bir veya daha fazla eylem izlenir. Bu esneklik, Logic Apps'ı IoT izleme senaryoları için ideal bir IoT çözümü haline getirir. Örneğin, bir aygıttan bir Aygıttan gelen telemetri verilerinin Bir IoT Hub bitiş noktasından gelmesi, verileri Azure Depolama blob'unda depolamak için mantık uygulaması iş akışları başlatabilir, veri anormallikleri konusunda uyarmak için e-posta uyarıları gönderebilir, bir aygıt arıza bildiriyorsa teknisyen ziyareti zamanlayabilir , ve saire.
+[Azure Logic Apps,](https://docs.microsoft.com/azure/logic-apps/) şirket içi ve bulut hizmetleri, bir veya daha fazla kuruluş ve çeşitli protokoller arasında iş akışları düzenlemenize yardımcı olabilir. Bir mantık uygulaması bir tetikleyici yle başlar ve ardından koşullar ve yineleyiciler gibi yerleşik denetimler kullanılarak sıralanabilecek bir veya daha fazla eylem izlenir. Bu esneklik, Logic Apps'ı IoT izleme senaryoları için ideal bir IoT çözümü haline getirir. Örneğin, bir aygıttan bir Aygıttan gelen telemetri verilerinin Bir IoT Hub bitiş noktasına gelmesi, verileri Azure Depolama blob'unda depolamak için mantık uygulaması iş akışları başlatabilir, veri anormallikleri konusunda uyarmak için e-posta uyarıları gönderebilir, bir aygıt arıza bildiriyorsa teknisyen ziyareti zamanlayabilir ve benzeri.
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
@@ -84,7 +84,7 @@ Service Bus ad alanı ve kuyruğu oluşturun. Bu konunun ilerleyen saatlerinde, 
 
    ![Azure portalında servis veri günü ad alanı oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1-create-service-bus-namespace-azure-portal.png)
 
-1. **Oluştur'u**seçin. Bir sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
+1. **Oluştur**’u seçin. Bir sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 
 ### <a name="add-a-service-bus-queue-to-the-namespace"></a>Ad alanına Hizmet Veri Servisi kuyruğu ekleme
 
@@ -124,7 +124,7 @@ IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekl
 
    ![Azure portalındaki IoT hub'ınıza bir bitiş noktası ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/3-add-iot-hub-endpoint-azure-portal.png)
 
-1. **Oluştur'u**seçin. Bitiş noktası başarıyla oluşturulduktan sonra bir sonraki adıma geçin.
+1. **Oluştur**’u seçin. Bitiş noktası başarıyla oluşturulduktan sonra bir sonraki adıma geçin.
 
 ### <a name="add-a-routing-rule"></a>Yönlendirme kuralı ekleme
 
@@ -142,7 +142,7 @@ IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekl
 
    ![Azure portalında yönlendirme kuralı ekleme](media/iot-hub-monitoring-notifications-with-azure-logic-apps/4-add-routing-rule-azure-portal.png)
 
-1. **Kaydet'i**seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
+1. **Kaydet**’i seçin. **İleti yönlendirme** bölmesini kapatabilirsiniz.
 
 ## <a name="create-and-configure-a-logic-app"></a>Mantık Uygulaması oluşturma ve yapılandırma
 
@@ -162,7 +162,7 @@ IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekl
 
    ![Azure portalında bir mantık uygulaması oluşturma](media/iot-hub-monitoring-notifications-with-azure-logic-apps/create-a-logic-app.png)
 
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 ### <a name="configure-the-logic-app-trigger"></a>Mantık uygulaması tetikleyicisini yapılandırma
 
@@ -212,7 +212,7 @@ IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekl
       [Hotmail/Outlook.com,](https://support.office.com/article/Add-your-Outlook-com-account-to-another-mail-app-73f3b178-0009-41ae-aab1-87b80fa94970) [Gmail](https://support.google.com/a/answer/176600?hl=en)ve [Yahoo Mail](https://help.yahoo.com/kb/SLN4075.html)için SMTP bilgilerini alın.
 
       > [!NOTE]
-      > Bağlantıyı kurmak için SSL'yi devre dışı bmalısınız. Bu durumda ve bağlantı kurulduktan sonra SSL'yi yeniden etkinleştirmek istiyorsanız, bu bölümün sonundaki isteğe bağlı adıma bakın.
+      > Bağlantıyı kurmak için TLS/SSL'yi devre dışı bmalısınız. Bu durumda ve bağlantı kurulduktan sonra TLS'yi yeniden etkinleştirmek istiyorsanız, bu bölümün sonundaki isteğe bağlı adıma bakın.
 
    1. **E-posta Gönder** adımında **yeni parametre** açılır ekle'den, **From**, **To**, **Subject** and **Body**'yi seçin. Seçim kutusunu kapatmak için ekranın herhangi bir yerine tıklayın veya dokunun.
 
@@ -224,7 +224,7 @@ IoT hub'ınıza Servis Veri Merkezi kuyruğu için özel bir bitiş noktası ekl
 
    1. SMTP bağlantısını kaydetmek için **Kaydet'i** seçin.
 
-1. (İsteğe bağlı) E-posta sağlayıcınızla bağlantı kurmak için SSL'yi devre dışı kaldırmanız gerekiyorsa ve yeniden etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
+1. (İsteğe bağlı) E-posta sağlayıcınızla bağlantı kurmak için TLS'yi devre dışı kaldırmanız gerekiyorsa ve yeniden etkinleştirmek istiyorsanız aşağıdaki adımları izleyin:
 
    1. Mantık **uygulama** bölmesinde, **Geliştirme Araçları**altında, **API bağlantılarını**seçin.
 

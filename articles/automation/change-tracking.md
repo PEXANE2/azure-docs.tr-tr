@@ -5,44 +5,55 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d84566c7680081561f60d4825f25a9ce19e02b24
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76844811"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682984"
 ---
-# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Değişiklik İzleme çözümü yle ortamınızdaki değişiklikleri izleme
+# <a name="track-environment-changes-with-change-tracking"></a>Değişiklik İzleme ile ortam değişikliklerini izleme
 
 Bu makale, ortamınızdaki değişiklikleri kolayca tanımlamak için İzlemeyi Değiştir çözümünü kullanmanıza yardımcı olur. Çözüm, operasyonel sorunları belirlemenize yardımcı olmak için aşağıdaki yapılandırma değişikliklerini izler:
 
 - Windows yazılımı
 - Linux yazılımı (paketler)
-
     >[!NOTE]
-    >Değişiklik İzleme yalnızca dağıtımın paket yöneticisiyle yönetilen yazılımları izler.
+    >Değişiklik İzleme yalnızca dağıtım paketi yöneticisi yle yönetilen yazılımları izler.
 
 - Windows ve Linux dosyaları
 - Windows kayıt defteri anahtarları
 - Windows hizmetleri
 - Linux daemons
 
-Yüklenen yazılım, Windows hizmetleri, Windows kayıt defteri ve dosyalarında yapılan değişiklikler ve izlenen sunucularda Linux daemon'ları işlenmek üzere buluttaki Azure Monitor hizmetine gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder. İzlemeyi Değiştir panosundaki bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
+Çözüm etkinleştirildikten sonra, Otomasyon hesabınızda **Yapılandırma Yönetimi** altında **Değişiklik İzleme'yi** seçerek izlenen bilgisayarlarınızın değişikliklerinin özetini görüntüleyebilirsiniz.
 
 > [!NOTE]
 > Azure Otomasyon Değişikliği İzleme sanal makinelerdeki değişiklikleri izler. Azure Kaynak Yöneticisi özellik değişikliklerini izlemek için Azure Kaynak Grafiği'nin [Değişiklik geçmişine](../governance/resource-graph/how-to/get-resource-changes.md)bakın.
 
-## <a name="supported-windows-operating-systems"></a>Desteklenen Windows işletim sistemleri
+Bilgisayarlarınızdaki değişiklikleri görüntüleyebilir ve ardından her olay için ayrıntıları inceleyebilirsiniz. Grafik ve değişiklik türü ve zaman aralıkları dayalı ayrıntılı bilgileri sınırlamak için grafiğin üst kısmında açılır düşüşler mevcuttur. Ayrıca, özel bir zaman aralığı seçmek için grafiğe tıklayıp sürükleyebilirsiniz. **Değişiklik Türü** aşağıdaki değerlerden biri olacak **Olaylar**, **Daemons**, **Dosyalar**, **Kayıt Defteri**, **Yazılım**, **Windows Hizmetleri**. Kategori değişikliğin türünü gösterir ve **eklenebilir**, **Değiştirilebilir**veya **Kaldırılabilir.**
+
+![Değişiklik İzleme panosunun görüntüsü](./media/change-tracking/change-tracking-dash01.png)
+
+Bir değişikliği veya olayı tıklattığınızda, bu değişiklikle ilgili ayrıntılı bilgiler ortaya çıkar. Örnekten de görebileceğiniz gibi, hizmetin başlangıç türü El Ile'den Otomatik'e değiştirildi.
+
+![değişim izleme ayrıntıları görüntüsü](./media/change-tracking/change-tracking-details.png)
+
+Yüklenen yazılım, Windows hizmetleri, Windows kayıt defteri ve dosyalarında yapılan değişiklikler ve izlenen sunucularda Linux daemon'ları işlenmek üzere buluttaki Azure Monitor hizmetine gönderilir. Alınan verilere mantık uygulanır ve bulut hizmeti verileri kaydeder. İzlemeyi Değiştir panosundaki bilgileri kullanarak, sunucu altyapınızda yapılan değişiklikleri kolayca görebilirsiniz.
+
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+
+### <a name="windows-operating-systems"></a>Windows işletim sistemleri
 
 Windows işletim sisteminin aşağıdaki sürümleri resmi olarak Windows aracısı için desteklenir:
 
 * Windows Server 2008 R2 veya sonraki sürümü
 
-## <a name="supported-linux-operating-systems"></a>Desteklenen Linux işletim sistemleri
+### <a name="linux-operating-systems"></a>Linux işletim sistemleri
 
 Aşağıdaki Linux dağıtımları resmi olarak desteklenir. Ancak, Linux aracısı listelenmemiş diğer dağıtımlarda da çalışabilir. Aksi belirtilmedikçe, listelenen her ana sürüm için tüm küçük sürümler desteklenir.
 
-### <a name="64-bit"></a>64 bit
+#### <a name="64-bit"></a>64 bit
 
 * CentOS 6 ve 7
 * Amazon Linux 2017.09
@@ -52,7 +63,7 @@ Aşağıdaki Linux dağıtımları resmi olarak desteklenir. Ancak, Linux aracı
 * Ubuntu Linux 14.04 LTS, 16.04 LTS ve 18.04 LTS
 * SUSE Linux Enterprise Server 12
 
-### <a name="32-bit"></a>32 bit
+#### <a name="32-bit"></a>32 bit
 
 * CentOS 6
 * Oracle Linux 6
@@ -60,137 +71,54 @@ Aşağıdaki Linux dağıtımları resmi olarak desteklenir. Ancak, Linux aracı
 * Debian GNU/Linux 8 ve 9
 * Ubuntu Linux 14.04 LTS ve 16.04 LTS
 
-## <a name="enable-change-tracking-and-inventory"></a><a name="onboard"></a>Değişiklik İzlemeyi ve Sayımı Etkinleştirme
-
-Değişiklikleri izlemeye başlamak için İzleme ve Stok çözümünü değiştirme'yi etkinleştirmeniz gerekir. İzleme ve Envanteri Değiştirmek için gemideki makinelere birçok yol vardır. Aşağıdaki ler, çözüme dahil etmek için önerilen ve desteklenen yollardır.
-
-* [Sanal bir makineden](automation-onboard-solutions-from-vm.md)
-* [Birden fazla makineye göz atma](automation-onboard-solutions-from-browse.md)
-* [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
-* [Azure Otomasyon runbook ile](automation-onboard-solutions.md)
-
-## <a name="configuring-change-tracking-and-inventory"></a>Değişim İzleme ve Envanterin Yapılandırılması
-
-Çözüm ekine bilgisayarları nasıl bindireceklerini öğrenmek için: [Onboarding Automation çözümleri.](automation-onboard-solutions-from-automation-account.md) Değişiklik İzleme ve Stok çözümüyle birlikte bir makineye bindikten sonra, öğeleri izleyecek şekilde yapılandırabilirsiniz. İzlemek için yeni bir dosya veya kayıt defteri anahtarı etkinleştirdiğinizde, hem İzleme yi değiştir hem de Stok için etkinleştirilir.
-
-Hem Windows hem de Linux'taki dosyalardaki değişiklikleri izlemek için dosyaların MD5'i kullanılmıştır. Tezler daha sonra son stoktan beri bir değişiklik yapIlip yapılmadığını algılamak için kullanılır.
-
-### <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzleme
-
-Azure Güvenlik Merkezi, Azure Değişiklik İzleme'ye yerleşik Dosya Bütünlüğü İzleme (FIM) ekledi. FIM yalnızca dosyaları ve kayıt defterlerini izlerken, tam Değişiklik İzleme çözümü de şunları içerir:
-
-- Yazılım değişiklikleri
-- Windows Hizmetleri
-- Linux Daemons
-
-FIM'i zaten etkinleştirdiyseniz ve tam Değişiklik İzleme çözümünü denemek istiyorsanız, aşağıdaki adımları gerçekleştirmeniz gerekir. Ayarlar bu işlem tarafından kaldırılmaz.
-
-> [!NOTE]
-> Tam Değişiklik İzleme çözümünü etkinleştirmek, daha fazla bilgi için ek ücretlere neden [olabilir,](https://azure.microsoft.com/pricing/details/automation/)bkz.
-
-1. Çalışma alanına gidip [yüklü izleme çözümleri listesinde](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)bularak izleme çözümünü kaldırın.
-2. Özet sayfasını açmak için çözümün adını tıklatın ve ardından [bir izleme çözümünü kaldır'da](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)ayrıntılı olarak belirtildiği gibi Sil'e tıklayın.
-3. Otomasyon hesabına gidip **Configuration Management**altındaki kaynak menüsünden **Değişiklik İzleme'yi** seçerek çözümü yeniden etkinleştirin.
-4. Çalışma alanı ayar ayrıntılarınızı onaylayın ve **Etkinleştir'i**tıklatın.
-
-### <a name="configure-linux-files-to-track"></a>Linux dosyalarını izlemek için yapılandırma
-
-Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
-
-1. Otomasyon Hesabınızda CONFIGURATION **MANAGEMENT**altında **İzlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
-2. **İzlemeyi Değiştir** **sayfasında, Linux Dosyalarını**seçin, ardından izlemek için yeni bir dosya eklemek için **+ Ekle'yi** tıklatın.
-3. Değişiklik **İzleme için Linux Dosyası**Ekle'ye, **Kaydet'i**izlemek ve tıklatmak için dosya veya dizin bilgilerini girin.
-
-|Özellik  |Açıklama  |
-|---------|---------|
-|Etkin     | Ayarın uygulanıp uygulanmayacağı belirlenir.        |
-|Öğe Adı     | Dosyanın dostane adı izlenecek.        |
-|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu girin     | Dosyayı denetleme yolu. Örneğin: "/etc/*.conf"       |
-|Yol Türü     | İzlenecek öğe türü, olası değerler Dosya ve Dizin'dir.        |
-|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
-|Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
-|Bağlantılar     | Bu ayar, dizinleri dolaşırken sembolik bağlantıların nasıl ele alındığını belirler.<br> **Yoksay** - Sembolik bağlantıları yoksa ve başvurulan dosyaları/dizinleri içermez.<br>**Takip et** - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları/dizinleri de içerir.<br>**Yönet** - Sembolik bağlantıları izler ve iade edilen içeriğin değiştirilmesine izin verir.     |
-|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
-
-> [!NOTE]
-> “Yönet” bağlantıları seçeneği önerilmez. Dosya içeriğini alma desteklenmiyor.
-
-### <a name="configure-windows-files-to-track"></a>Windows dosyalarını izlemek için yapılandırma
-
-Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
-
-1. Otomasyon Hesabınızda CONFIGURATION **MANAGEMENT**altında **İzlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
-2. **İzlemeyi Değiştir** sayfasında **Windows Dosyaları'nı**seçin ve ardından izlemek için yeni bir dosya eklemek için **+ Ekle'yi** tıklatın.
-3. Windows **Dosyasını Değiştir İzleme**Ekle'de, **kaydet'i**izlemek ve tıklatmak için dosyanın bilgilerini girin.
-
-|Özellik  |Açıklama  |
-|---------|---------|
-|Etkin     | Ayarın uygulanıp uygulanmayacağı belirlenir.        |
-|Öğe Adı     | Dosyanın dostane adı izlenecek.        |
-|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-|Yolu girin     | Dosyayı denetlemek için kullanılacak yol (örneğin, "c:\temp\\\*.txt")<br>"%winDir%\System32\\\*.*" gibi ortam değişkenleri de kullanabilirsiniz       |
-|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
-|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
-
-## <a name="wildcard-recursion-and-environment-settings"></a>Joker karakter, özyineleme ve ortam ayarları
-
-Yineleme, dizinler arasında izlemeyi basitleştirmek için joker karakterler ve birden çok veya dinamik sürücü adlarına sahip ortamlardaki dosyaları izlemenize olanak tanıyan ortam değişkenleri belirtmenize olanak tanır. Aşağıdaki liste, özyinelemeyi yapılandırırken bilmeniz gereken ortak bilgileri gösterir:
-
-* Joker karakterler birden çok dosyayı izlemek için gereklidir
-* Joker karakterler kullanıyorsanız, bunlar yalnızca bir yolun son segmentinde kullanılabilir. (gibi `c:\folder\*file*` veya `/etc/*.conf`)
-* Bir ortam değişkeninin geçersiz bir yolu varsa, doğrulama başarılı olur, ancak stok çalıştığında bu yol başarısız olur.
-* Yolu ayarlarken `c:\*.*` olduğu gibi genel yollardan kaçının, çünkü bu çok fazla klasörün geçmesine neden olur.
-
-## <a name="configure-file-content-tracking"></a>Dosya İçeriği izleme yapılandırma
-
-Dosya İçeriği Değişikliği İzleme ile dosya değişikliğinden önce ve sonra içeriği görüntüleyebilirsiniz. Bu, Windows ve Linux dosyaları için kullanılabilir, dosyadaki her değişiklik için, dosyanın içeriği bir depolama hesabında depolanır ve dosyayı değişiklikten önce ve sonra, satır satır veya yan yana gösterir. Daha fazla bilgi için izlenen [dosyanın içeriğini görüntüleyin.](change-tracking-file-contents.md)
-
-![dosyadaki değişiklikleri görüntüleme](./media/change-tracking-file-contents/view-file-changes.png)
-
-### <a name="configure-windows-registry-keys-to-track"></a>Windows kayıt defteri anahtarlarını izlemek için yapılandırma
-
-Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
-
-1. Otomasyon Hesabınızda CONFIGURATION **MANAGEMENT**altında **İzlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
-2. **İzlemeyi Değiştir** **sayfasında, Windows Kayıt Defteri'ni**seçin , ardından izlemek için yeni bir kayıt defteri anahtarı eklemek için **+ Ekle'yi** tıklatın.
-3. Windows **Kayıt Defteri Ni Ekle'de İzleme,** izlemek için anahtara ait bilgileri girin ve **Kaydet'i**tıklatın.
-
-|Özellik  |Açıklama  |
-|---------|---------|
-|Etkin     | Ayarın uygulanıp uygulanmayacağı belirlenir.        |
-|Öğe Adı     | İzlenecek kayıt defteri anahtarının dostu adı.        |
-|Grup     | Kayıt defteri anahtarlarını mantıksal olarak gruplandırmak için bir grup adı.        |
-|Windows Kayıt Defteri Anahtarı   | Kayıt defteri anahtarını denetleme yolu. Örneğin: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Klasörleri\Ortak Başlangıç"      |
-
 ## <a name="limitations"></a>Sınırlamalar
 
 İzlemeyi Değiştir çözümü şu anda aşağıdaki öğeleri desteklemiyor:
 
 * Windows kayıt defteri izleme için yineleme
 * Ağ dosya sistemleri
-* Farklı yükleme yöntemleri izlenmez
-* *.exe dosyaları Windows için izlenmez
+* Farklı kurulum yöntemleri
+* *Windows için **.exe** dosyaları
 
 Diğer sınırlamalar:
 
 * Geçerli uygulamada **Max Dosya Boyutu** sütunu ve değerleri kullanılmaz.
-* 30 dakikalık toplama döngüsünde 2500'den fazla dosya toplarsanız, çözüm performansı düşürülebilir.
+* 30 dakikalık bir toplama döngüsünde 2500'den fazla dosya toplarsanız, çözüm performansı düşürülebilir.
 * Ağ trafiği yüksek olduğunda, değişiklik kayıtlarının görüntülenmesi altı saat kadar sürebilir.
 * Bilgisayar kapatılırken yapılandırmayı değiştirirseniz, bilgisayar önceki yapılandırmaya ait değişiklikleri yayınlayabilir.
 
-## <a name="known-issues"></a>Bilinen Sorunlar
+## <a name="known-issues"></a>Bilinen sorunlar
 
 Değişiklik İzleme çözümü şu anda aşağıdaki sorunları yaşıyor:
 
 * Hotfix güncelleştirmeleri Windows Server 2016 Core RS3 makinelerinde toplanmaz.
 * Linux Daemons hiçbir değişiklik olmasına rağmen değişen bir durum gösterebilir. Bunun nedeni `SvcRunLevels` alanın nasıl ele geçirildiğidir.
 
+## <a name="network-requirements"></a>Ağ gereksinimleri
+
+Değişiklik İzleme özellikle aşağıdaki adresleri gerektirir. Bu adreslere iletişim 443 bağlantı noktasını kullanır.
+
+|Azure Genel  |Azure Kamu  |
+|---------|---------|
+|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
+|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>Joker karakter, özyineleme ve ortam ayarları
+
+Yineleme, dizinler arasında izlemeyi basitleştirmek için joker karakterler ve birden çok veya dinamik sürücü adlarına sahip ortamlardaki dosyaları izlemenize olanak tanıyan ortam değişkenleri belirtmenize olanak tanır. Aşağıdaki liste, özyinelemeyi yapılandırırken bilmeniz gereken ortak bilgileri gösterir:
+
+* Joker karakterler birden çok dosyayı izlemek için gereklidir.
+* Joker karakterler yalnızca bir yolun son segmentinde kullanılabilir, örneğin,\\c:\klasör dosyası* veya /etc/*.conf.
+* Bir ortam değişkeninin geçersiz bir yolu varsa, doğrulama başarılı olur, ancak Stok çalıştığında bu yol başarısız olur.
+* Bu tür bir ayar, çok fazla klasörün geçmesine neden olabileceğinden, yolu ayarlarken genel yollardan kaçının.
+
 ## <a name="change-tracking-data-collection-details"></a>Veri toplama ayrıntılarını değiştirme
 
 Aşağıdaki tabloda değişiklik türleri için veri toplama sıklığını gösterilmektedir. Her tür için geçerli durum veri anlık da en az her 24 saatte bir yenilenir:
 
-| **Türü değiştir** | **Frequency** |
+| **Türü değiştir** | **Sıklık** |
 | --- | --- |
 | Windows kayıt defteri | 50 dakika |
 | Windows dosyası | 30 dakika |
@@ -211,7 +139,7 @@ Aşağıdaki tablo, Değişiklik İzleme için makine başına izlenen madde sı
 |Hizmetler|250||
 |Daemon|250||
 
-Değişim İzleme ve Envanter kullanan bir makine için ortalama Log Analytics veri kullanımı ayda yaklaşık 40MB'dır. Bu değer yalnızca bir yaklaşımdır ve ortamınıza göre değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
+Değişim İzleme'yi kullanan bir makine için ortalama Log Analytics veri kullanımı ayda yaklaşık 40MB'dır. Bu değer yalnızca bir yaklaşımdır ve ortamınıza göre değişebilir. Sahip olduğunuz tam kullanımı görmek için ortamınızı izlemeniz önerilir.
 
 ### <a name="windows-service-tracking"></a>Windows hizmet izleme
 
@@ -249,36 +177,103 @@ Kayıt defteri anahtarlarını izlemenin amacı, üçüncü taraf kodu ve kötü
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Bilinen veya yaygın olarak kullanılan sistem DL'lerinin listesini izler; bu sistem, sistemin Truva atı sürümlerinde bırakarak insanların zayıf uygulama dizini izinlerinden yararlanmalarını önler.
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Windows işletim sistemi için etkileşimli oturum açma destek modeli Winlogon'dan etkinlik bildirimleri alabilen paketlerin listesini izler.
 
-## <a name="network-requirements"></a>Ağ gereksinimleri
+## <a name="enable-change-tracking"></a><a name="onboard"></a>Değişiklik İzlemeyi Etkinleştir
 
-Aşağıdaki adresler özellikle Değişiklik İzleme için gereklidir. Bu adreslere iletişim 443 portu üzerinden yapılır.
+Değişiklikleri izlemeye başlamak için İzleme çözümünü değiştir'i etkinleştirmeniz gerekir. İzlemeyi Değiştirmek için gemideki makinelere birçok yol vardır. Aşağıdaki ler, çözüme dahil etmek için önerilen ve desteklenen yollardır.
 
-|Azure Genel  |Azure Kamu  |
+* [Sanal bir makineden](automation-onboard-solutions-from-vm.md)
+* [Birden fazla makineye göz atma](automation-onboard-solutions-from-browse.md)
+* [Otomasyon hesabınızdan](automation-onboard-solutions-from-automation-account.md)
+* [Azure Otomasyon runbook ile](automation-onboard-solutions.md)
+
+## <a name="configure-change-tracking"></a>Değişiklik İzlemeyi Yapılandırma
+
+Bilgisayarları çözüme nasıl dahil edeceğiz öğrenmek için [bkz.](automation-onboard-solutions-from-automation-account.md) İzlemeyi Değiştir çözümüyle birlikte bir makineye sahip olduktan sonra, öğeleri izleyecek şekilde yapılandırabilirsiniz. İzlemek için yeni bir dosya veya kayıt defteri anahtarı etkinleştirdiğinizde, her iki Değişiklik İzleme için etkinleştirilir.
+
+Hem Windows hem de Linux'taki dosyalardaki değişiklikleri izlemek için dosyaların MD5'i kullanılmıştır. Tezler daha sonra son stoktan beri bir değişiklik yapIlip yapılmadığını algılamak için kullanılır.
+
+## <a name="enable-file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde Dosya Bütünlüğü İzlemeyi Etkinleştirme
+
+Azure Güvenlik Merkezi, Azure Değişiklik İzleme'ye yerleşik dosya bütünlüğü izleme (FIM) ekledi. FIM yalnızca dosyaları ve kayıt defterlerini izlerken, tam Değişiklik İzleme çözümü de şunları içerir:
+
+- Yazılım değişiklikleri
+- Windows Hizmetleri
+- Linux Daemons
+
+FIM'i zaten etkinleştirdiyseniz ve tam Değişiklik İzleme çözümünü denemek istiyorsanız, aşağıdaki adımları gerçekleştirmeniz gerekir. Ayarlar bu işlem tarafından kaldırılmaz.
+
+> [!NOTE]
+> Tam Değişiklik İzleme çözümünü etkinleştirmek, daha fazla bilgi için ek ücretlere neden [olabilir,](https://azure.microsoft.com/pricing/details/automation/)bkz.
+
+1. Çalışma alanına gidip [yüklü izleme çözümleri listesinde](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)bularak izleme çözümünü kaldırın.
+2. Özet sayfasını açmak için çözümün adını tıklatın ve ardından [bir izleme çözümünü kaldır'da](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)ayrıntılı olarak belirtildiği gibi Sil'e tıklayın.
+3. Otomasyon hesabına gidip **Yapılandırma Yönetimi**altında Değişiklik **İzleme'yi** seçerek çözümü yeniden etkinleştirin.
+4. Çalışma alanı ayar ayrıntılarınızı onaylayın ve **Etkinleştir'i**tıklatın.
+
+## <a name="configure-file-content-change-tracking"></a>Dosya içeriği değişikliği izlemeyapılandırma
+
+Dosya değişikliği izleme ile dosya değişikliğinden önce ve sonra içeriği görüntüleyebilirsiniz. Bu özellik Windows ve Linux dosyaları için kullanılabilir. Bir dosyadaki her değişiklik için, dosyanın içeriği bir depolama hesabında depolanır. Dosya değişiklikten önce ve sonra, satır veya yan yana gösterilir. Daha fazla bilgi için izlenen [dosyanın içeriğini görüntüleyin.](change-tracking-file-contents.md)
+
+![dosyadaki değişiklikleri görüntüleme](./media/change-tracking-file-contents/view-file-changes.png)
+
+## <a name="configure-windows-registry-keys-to-track"></a>Windows kayıt defteri anahtarlarını izlemek için yapılandırma
+
+Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
+
+1. Otomasyon hesabınızda, **Yapılandırma Yönetimi**altında **Izlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
+2. İzlemeyi Değiştir **sayfasında, Windows Kayıt Defteri'ni**seçin , ardından izlemek için yeni bir kayıt defteri anahtarı eklemek için **+ Ekle'yi** tıklatın.
+3. Windows **Kayıt Defteri Ni Ekle'de İzleme,** izlemek için anahtara ait bilgileri girin ve **Kaydet'i**tıklatın.
+
+|Özellik  |Açıklama  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|Etkin     | Ayarın uygulanıp uygulanmayacağı belirlenir.        |
+|Öğe Adı     | İzlenecek kayıt defteri anahtarının dostu adı.        |
+|Grup     | Kayıt defteri anahtarlarını mantıksal olarak gruplandırmak için bir grup adı.        |
+|Windows Kayıt Defteri Anahtarı   | Kayıt defteri anahtarını denetleme yolu. Örneğin: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Klasörleri\Ortak Başlangıç"      |
 
-## <a name="use-change-tracking"></a>Değişiklik İzleme'yi Kullanma
+## <a name="configure-file-tracking-on-windows"></a>Windows'da dosya izlemeyi yapılandırma
 
-Çözüm etkinleştirildikten sonra, Otomasyon hesabınızda **CONFIGURATION MANAGEMENT** altında **Değişiklik İzleme'yi** seçerek izlenen bilgisayarlarınızın değişikliklerinin özetini görüntüleyebilirsiniz.
+Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
 
-Bilgisayarlarınızdaki değişiklikleri görüntüleyebilir ve ardından her olay için ayrıntıları inceleyebilirsiniz. Grafik ve değişiklik türü ve zaman aralıkları dayalı ayrıntılı bilgileri sınırlamak için grafiğin üst kısmında açılır düşüşler mevcuttur. Ayrıca, özel bir zaman aralığı seçmek için grafiğe tıklayıp sürükleyebilirsiniz. **Değişiklik Türü** aşağıdaki değerlerden biri olacak **Olaylar**, **Daemons**, **Dosyalar**, **Kayıt Defteri**, **Yazılım**, **Windows Hizmetleri**. Kategori değişikliğin türünü gösterir ve **eklenebilir**, **Değiştirilebilir**veya **Kaldırılabilir.**
+1. Otomasyon hesabınızda, **Yapılandırma Yönetimi**altında **Izlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
+2. İzlemeyi Değiştir sayfasında **Windows Dosyaları'nı**seçin ve ardından izlemek için yeni bir dosya eklemek için **+ Ekle'yi** tıklatın.
+3. Windows **Dosyasını Değiştir İzleme**Ekle'de, **kaydet'i**izlemek ve tıklatmak için dosyanın bilgilerini girin.
 
-![Değişiklik İzleme panosunun görüntüsü](./media/change-tracking/change-tracking-dash01.png)
+|Özellik  |Açıklama  |
+|---------|---------|
+|Etkin     | Ayarı uygulanırsa doğru ve aksi takdirde False.        |
+|Öğe Adı     | Dosyanın dostane adı izlenecek.        |
+|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
+|Yolu girin     | Dosyayı denetleme yolu, örneğin, **c:\temp\\\*.txt**<br>Ayrıca, `%winDir%\System32\\\*.*`', ', ', gibi ortam değişkenleri de kullanabilirsiniz.       |
+|Özyineleme     | İzlenecek öğe ararken özyineleme kullanılıyorsa doğru ve aksi takdirde False.        |
+|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklere dosya içeriği yüklemek için doğru ve yanlış aksi.|
 
-Bir değişikliği veya olayı tıklattığınızda, bu değişiklikle ilgili ayrıntılı bilgiler ortaya çıkar. Örnekten de görebileceğiniz gibi, hizmetin başlangıç türü El Ile'den Otomatik'e değiştirildi.
+## <a name="configure-file-tracking-on-linux"></a>Linux'ta dosya izlemeyi yapılandırma
 
-![değişim izleme ayrıntıları görüntüsü](./media/change-tracking/change-tracking-details.png)
+Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımları kullanın:
+
+1. Otomasyon hesabınızda, **Yapılandırma Yönetimi**altında **Izlemeyi Değiştir'i** seçin. **Ayarları (vites** simgesi) Düzelt'i tıklatın.
+2. İzlemeyi Değiştir **sayfasında, Linux Dosyalarını**seçin, ardından izlemek için yeni bir dosya eklemek için **+ Ekle'yi** tıklatın.
+3. Değişiklik **İzleme için Linux Dosyası**Ekle'ye, **Kaydet'i**izlemek ve tıklatmak için dosya veya dizin bilgilerini girin.
+
+|Özellik  |Açıklama  |
+|---------|---------|
+|Etkin     | Ayarın uygulanıp uygulanmayacağı belirlenir.        |
+|Öğe Adı     | Dosyanın dostane adı izlenecek.        |
+|Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
+|Yolu girin     | Dosyayı denetleme yolu. Örneğin: "/etc/*.conf"       |
+|Yol Türü     | İzlenecek öğe türü, olası değerler Dosya ve Dizin'dir.        |
+|Özyineleme     | İzlenecek öğe aranırken özyinelemenin kullanılıp kullanılmadığını belirler.        |
+|Sudo Kullan     | Bu ayar, öğe denetlenirken sudonun kullanılıp kullanılmadığını belirler.         |
+|Bağlantılar     | Bu ayar, dizinleri dolaşırken sembolik bağlantıların nasıl ele alındığını belirler.<br> **Yoksay** - Sembolik bağlantıları yoksa ve başvurulan dosyaları/dizinleri içermez.<br>**Takip et** - Özyineleme sırasında sembolik bağlantıları izler ve başvurulan dosyaları/dizinleri de içerir.<br>**Yönet** - Sembolik bağlantıları izler ve iade edilen içeriğin değiştirilmesine izin verir.     |
+|Dosya içeriğini tüm ayarlar için karşıya yükleme| İzlenen değişikliklerin dosya içeriği karşıya yükleme işlemini açar veya kapatır. Kullanılabilir seçenekler: **True** veya **False**.|
+
+> [!NOTE]
+> “Yönet” bağlantıları seçeneği önerilmez. Dosya içeriğini alma desteklenmiyor.
 
 ## <a name="search-logs"></a>Arama günlükleri
 
-Portalda verilen ayrıntılara ek olarak, günlüklere karşı arama yapılabilir. İzleme yi **değiştir** sayfası açıkken, **Günlük Analizi'ni**tıklatın, bu **günlükler** sayfasını açar.
-
-### <a name="sample-queries"></a>Örnek sorgular
-
-Aşağıdaki tablo, bu çözüm tarafından toplanan değişiklik kayıtları için örnek günlük aramaları sağlar:
+Kayıt değişikliği için günlüklere karşı çeşitli aramalar yapabilirsiniz. İzleme yi değiştir sayfası açıkken, **Günlük Analizi'ni**tıklatın, bu günlükler sayfasını açar. Aşağıdaki tablo, bu çözüm tarafından toplanan değişiklik kayıtları için örnek günlük aramaları sağlar:
 
 |Sorgu  |Açıklama  |
 |---------|---------|
@@ -287,15 +282,15 @@ Aşağıdaki tablo, bu çözüm tarafından toplanan değişiklik kayıtları i�
 
 ## <a name="alert-on-changes"></a>Değişiklikler hakkında uyarı
 
-Değişiklik İzleme ve Envanter'in önemli bir özelliği, yapılandırma durumu ve karma ortamınızın yapılandırma durumundaki değişiklikleri uyarabilme yeteneğidir.
-
-Aşağıdaki örnekte, ekran görüntüsü dosyanın `C:\windows\system32\drivers\etc\hosts` bir makinede değiştirildiğini gösterir. Hosts dosyası, ana bilgisayar adlarını IP adreslerine çözmek için Windows tarafından kullanıldığından ve bağlantı sorunlarıyla veya trafiğin kötü amaçlı veya başka bir şekilde tehlikeli web sitelerine yönlendirilmesine neden olabilecek DNS'den bile önce geldiği için bu dosya önemlidir.
+Değişiklik İzleme'nin önemli bir özelliği, yapılandırma durumu ve karma ortamınızın yapılandırma durumundaki değişiklikler hakkında uyarıda dır. Aşağıdaki örnek, **C:\windows\system32\drivers\etc\hosts** dosyasının bir makinede değiştirildiğini gösterir. Windows, ana bilgisayar adlarını IP adreslerine çözümlemek için kullandığından bu dosya önemlidir. Bu işlem DNS'den önce gelir ve bağlantı sorunlarına veya trafiğin kötü amaçlı veya başka bir şekilde tehlikeli web sitelerine yönlendirilmesine neden olabilir.
 
 ![Ana bilgisayar dosya değişikliğini gösteren bir grafik](./media/change-tracking/changes.png)
 
 Bu değişikliği daha fazla analiz etmek **için, Log Analytics'i**tıklatarak Günlük aramasına gidin. Günlük aramasına giriş yaptıktan sonra, sorguyla `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`birlikte Hosts dosyasında içerik değişikliklerini arayın. Bu sorgu, tam nitelikli yolu "ana bilgisayarlar" sözcüğü içeren dosyalar için dosya içeriği değişikliğini içeren değişiklikleri arar. Ayrıca, yol bölümünü tam nitelikli formuna (örneğin) `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`değiştirerek belirli bir dosya isteyebilirsiniz.
 
-Sorgu istenen sonuçları döndürdükten sonra, uyarı oluşturma sayfasını açmak için Günlük arama deneyimindeki **Yeni uyarı kuralı** düğmesini tıklatın. Azure portalındaki **Azure Monitör'den** de bu deneyime göz atabilirsiniz. Uyarı oluşturma deneyiminde, sorgumuzu yeniden kontrol edin ve uyarı mantığını değiştirin. Bu durumda, çevredeki tüm makinelerde bir değişiklik bile algılanırsa uyarının tetiklenmesini istersiniz.
+Sorgu istenen sonuçları döndürdükten sonra, uyarı oluşturma sayfasını açmak için günlük aramasında **Yeni uyarı kuralını** tıklatın. Azure portalındaki **Azure Monitör'den** de bu deneyime göz atabilirsiniz. 
+
+Sorgunuzu yeniden denetleyin ve uyarı mantığını değiştirin. Bu durumda, çevredeki tüm makinelerde bir değişiklik bile algılanırsa uyarının tetiklenmesini istersiniz.
 
 ![Ana bilgisayar dosyasındaki değişiklikleri izlemek için değişiklik sorgusunu gösteren bir resim](./media/change-tracking/change-query.png)
 
@@ -307,7 +302,7 @@ Tüm parametreler ve mantık ayarlandıktan sonra, uyarıyı ortama uygulayabili
 
 ### <a name="alert-suggestions"></a>Uyarı önerileri
 
-Hosts dosyasında yapılan değişiklikler konusunda uyarı, Değişiklik İzleme veya Stok verileri için uyarıların iyi bir uygulaması olsa da, aşağıdaki bölümde örnek sorgularıyla birlikte tanımlanan durumlar da dahil olmak üzere, uyarı için daha birçok senaryo vardır.
+Ana bilgisayar dosyasındaki değişiklikler konusunda uyarı, Değişiklik İzleme veya Stok verileri için uyarıların iyi bir uygulaması olsa da, aşağıdaki bölümde örnek sorgularıyla birlikte tanımlanan durumlar da dahil olmak üzere, uyarı için daha birçok senaryo vardır.
 
 |Sorgu  |Açıklama  |
 |---------|---------|

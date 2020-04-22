@@ -1,39 +1,39 @@
 ---
-title: PowerShell'i kullanarak eski bir Doğrudan bakışı Azure kaynağına dönüştürün
+title: PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 titleSuffix: Azure
-description: PowerShell'i kullanarak eski bir Doğrudan bakışı Azure kaynağına dönüştürün
+description: PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: ba41f4ad8014ba3e85174b7c32e11394f0068643
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5d2a8c910c9e384e137785bc1cd491bc85c7e7a8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775023"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678469"
 ---
-# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-powershell"></a>PowerShell'i kullanarak eski bir Doğrudan bakışı Azure kaynağına dönüştürün
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-powershell"></a>PowerShell'i kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 
-Bu makalede, PowerShell cmdlets kullanarak varolan bir eski Doğrudan bakan Azure kaynağına dönüştürme nasıl açıklanmaktadır.
+Bu makalede, PowerShell cmdlets kullanarak varolan bir eski Doğrudan bir Azure kaynağına bakan dönüştürmek için nasıl açıklanmaktadır.
 
-İsterseniz, [portalı](howto-legacy-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
+İsterseniz, Azure [portalını](howto-legacy-direct-portal.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [Önkoşulları](prerequisites.md) ve [Doğrudan bakan gözden geçirin.](walkthrough-direct-all.md)
+* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Doğrudan bakan [gözden geçirin.](walkthrough-direct-all.md)
 
-### <a name="working-with-azure-powershell"></a>Azure PowerShell ile çalışma
+### <a name="work-with-azure-powershell"></a>Azure PowerShell ile çalışın
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Eski doğrudan bakışları Azure kaynağına dönüştürme
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Eski bir Azure kaynağına doğrudan bakış dönüştürme
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Azure hesabınızda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="get-legacy-direct-peering-for-conversion"></a><a name= get></a>Dönüşüm için eski Doğrudan bakış alın
-Aşağıda seattle bakan konumda eski Doğrudan bakan almak için bir örnektir
+### <a name="get-a-legacy-direct-peering-for-conversion"></a><a name= get></a>Dönüşüm için bir eski Doğrudan bakış alın
+Bu örnek, Seattle'a bakan konuma doğrudan bakan bir eskinin nasıl alındığını gösterir.
 
 ```powershell
 $legacyPeering = Get-AzLegacyPeering `
@@ -41,7 +41,7 @@ $legacyPeering = Get-AzLegacyPeering `
 $legacyPeering
 ```
 
-Aşağıda örnek bir yanıt verilmiştir:
+Aşağıda bir yanıt örneği yer alır:
 ```powershell
 Name                       :
 Sku                        : Basic_Direct_Free
@@ -79,13 +79,13 @@ ProvisionedBandwidthInMbps : 20000
 ProvisioningState          : Succeeded
 ```
 
-### <a name="convert-legacy-direct-peering"></a>Eski doğrudan eşlemi dönüştürme
+### <a name="convert-a-legacy-direct-peering"></a>Eskiye doğrudan bakmayı dönüştürme
 
 &nbsp;
 > [!IMPORTANT]
-> Eski bakışları azure kaynağına dönüştürürken değişikliklerin desteklenmediğini unutmayın. &nbsp;
+> Eski bir azure kaynağına baktığınızda, değişiklikler desteklenmez. &nbsp;
 
-Eski Doğrudan bakışları Azure kaynağına dönüştürmek için aşağıdaki komutu kullanın:
+Eski bir Azure kaynağına doğrudan bakış dönüştürmeyapmak için bu komutu kullanın:
 
 ```powershell
 $legacyPeering[0] | New-AzPeering `
@@ -94,7 +94,7 @@ $legacyPeering[0] | New-AzPeering `
 
 ```
 
-Aşağıda örnek bir yanıt verilmiştir:
+Aşağıda bir yanıt örneği yer alır:
 
 ```powershell
 Name                 : SeattleDirectPeering
@@ -112,14 +112,14 @@ Tags                 : {}
 ```
 
 ## <a name="additional-resources"></a>Ek kaynaklar
-Aşağıdaki komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
+Bu komutu çalıştırarak tüm parametrelerin ayrıntılı açıklamalarını alabilirsiniz:
 
 ```powershell
 Get-Help Get-AzPeering -detailed
 ```
 
-Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [PowerShell'i kullanarak Doğrudan bir eşleme oluşturun veya değiştirin.](howto-direct-powershell.md)
+* [PowerShell'i kullanarak Doğrudan bir eşleme oluşturma veya değiştirme](howto-direct-powershell.md)

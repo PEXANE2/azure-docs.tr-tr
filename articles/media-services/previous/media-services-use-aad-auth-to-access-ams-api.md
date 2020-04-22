@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8b38b38789edfd5a0a30fdd589849bfa345eaac9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77157865"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682040"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Azure AD kimlik doğrulaması ile Azure Media Services API’sine erişme  
 
@@ -79,7 +79,7 @@ Aşağıdaki diyagram tipik bir etkileşimli uygulama kimlik doğrulama akışı
        Kiracı bilgileri Azure portalından alınabilir. İmlecinizi sağ üst köşedeki oturum açmış kullanıcının adının üzerine yerleştirin.
    * Medya Hizmetleri kaynak URI. 
 
-       Bu URI, aynı Azure ortamında bulunan Medya Hizmetleri hesapları için https://rest.media.azure.net)de aynıdır (örneğin.
+       Bu URI, aynı Azure ortamında bulunan Medya Hizmetleri hesapları için de\/aynıdır (örneğin, https: /rest.media.azure.net).
 
    * Medya Hizmetleri (yerel) uygulama istemci kimliği.
    * Medya Hizmetleri (yerel) uygulaması URI yönlendirme.
@@ -121,7 +121,7 @@ Bir önceki şekilde, sayılar isteklerin akışını kronolojik sırada temsil 
        Kiracı bilgileri Azure portalından alınabilir. İmlecinizi sağ üst köşedeki oturum açmış kullanıcının adının üzerine yerleştirin.
    * Medya Hizmetleri kaynak URI. 
 
-       Bu URI, aynı Azure ortamında bulunan Medya Hizmetleri hesapları için de https://rest.media.azure.net)aynıdır (örneğin.
+       Bu URI, aynı Azure ortamında bulunan Medya Hizmetleri hesapları için de geçerlidir (örneğin, https:\//rest.media.azure.net).
 
    * REST Medya Hizmetleri için Kaynak URI.
 

@@ -1,31 +1,31 @@
 ---
-title: Portalı kullanarak Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştirme
+title: Azure portalını kullanarak Doğrudan bakışlamada Azure Bakış Hizmetini etkinleştirme
 titleSuffix: Azure
-description: Portalı kullanarak Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştirme
+description: Azure portalını kullanarak Doğrudan bakışlamada Azure Bakış Hizmetini etkinleştirme
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: derekol
-ms.openlocfilehash: 87a65826a338f4098ae24c33939ea7f9d4475e36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 625a17e5acff00f78c5a19725653eec629936f87
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129930"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687036"
 ---
-# <a name="enable-peering-service-on-a-direct-peering-using-the-portal"></a>Portalı kullanarak Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştirme
+# <a name="enable-azure-peering-service-on-a-direct-peering-by-using-the-azure-portal"></a>Azure portalını kullanarak Doğrudan bakışlamada Azure Bakış Hizmetini etkinleştirme
 
-Bu makalede, portalı kullanarak Doğrudan bir bakışta [Peering Service](overview-peering-service.md) etkinleştirmek için nasıl açıklanır.
+Bu makalede, Azure portalını kullanarak Doğrudan bakışda Azure [Bakış Hizmeti'nin](overview-peering-service.md) nasıl etkinleştirilen açıklanmaktadır.
 
 İsterseniz, [PowerShell](howto-peering-service-powershell.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 * Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) gözden geçirin.
-* Aboneliğinizde, PeerIng Service'i etkinleştirmek istediğiniz doğrudan bir bakış seçin. Eğer yoksa, ya eski doğrudan bakan dönüştürmek veya yeni bir Doğrudan bakan oluşturun.
-    * Eski bir Doğrudan bakışı dönüştürmek [için, portalı kullanarak eski bir doğrudan](howto-legacy-direct-portal.md)bakışı Azure kaynağına dönüştür'teki yönergeleri izleyin.
-    * Yeni bir Doğrudan eşleme oluşturmak için, Portalı kullanarak Doğrudan eşleme oluştur'daki yönergeleri izleyin [veya doğrudan bir eşleme'yi değiştirin.](howto-direct-portal.md)
+* Aboneliğinizde, Peering Service'i etkinleştirmek istediğiniz doğrudan bir bakış seçin. Eğer yoksa, ya eski doğrudan bakan dönüştürmek veya yeni bir Doğrudan bakan oluşturmak:
+    * Eski bir Doğrudan bakışı dönüştürmek [için, portalı kullanarak bir Azure kaynağına doğrudan bakan bir eskiyi dönüştür'teki](howto-legacy-direct-portal.md)yönergeleri izleyin.
+    * Yeni bir Doğrudan eşleme oluşturmak için, Portalı kullanarak Doğrudan bakış oluşturma yönergelerini izleyin [veya Doğrudan bir bakış oluşturma'yı değiştirin.](howto-direct-portal.md)
 
 ## <a name="enable-peering-service-on-a-direct-peering"></a>Doğrudan eşleme üzerinde Eşleme Hizmeti’ni etkinleştir
 
@@ -34,18 +34,18 @@ Bu makalede, portalı kullanarak Doğrudan bir bakışta [Peering Service](overv
 
 ### <a name="enable-the-direct-peering-for-peering-service"></a><a name= get></a>Peering Service için Doğrudan eşlemesini etkinleştirme
 
-Önceki adımda Doğrudan eşleme'yi açtıktan sonra, Bakma Hizmeti için etkinleştirin.
+Önceki adımda Doğrudan bir eşleçaçtıktan sonra, Onu Bakma Hizmeti için etkinleştirin.
 [!INCLUDE [peering-direct-modify](./includes/peering-service-direct-portal.md)]
 
 ## <a name="modify-a-direct-peering-connection"></a>Doğrudan eşleme bağlantısını değiştirme
 
-Bağlantı ayarlarını değiştirmeniz gerekiyorsa, Oluştur'da **Doğrudan eşleme** bölümünü [değiştir'e bakın veya portalı kullanarak Doğrudan eşleme](howto-direct-portal.md)
+Bağlantı ayarlarını değiştirmek için, Oluştur'daki "Doğrudan eşleme" bölümüne bakın [veya portalı kullanarak Doğrudan bir eşleçle değiştirin.](howto-direct-portal.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Portalı kullanarak Exchange eşlemi oluşturma veya değiştirme](howto-exchange-portal.md)
-* [Portalı kullanarak eski bir Exchange eşlemesini bir Azure kaynağına dönüştürme](howto-legacy-exchange-portal.md)
+* [Portalı kullanarak azure kaynağına bakan eski bir Exchange'i dönüştürme](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Sık sorulan sorular için [Bkz. Akran Hizmeti SSSS.'](service-faqs.md)
+Sık sorulan sorular [için, Bakma Hizmeti SSS'si'ne](service-faqs.md)bakın.

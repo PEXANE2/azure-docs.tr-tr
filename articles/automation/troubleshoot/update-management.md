@@ -1,6 +1,6 @@
 ---
-title: Azure Güncelleştirme Yönetimi ile hataları giderme
-description: Azure'daki Update Management çözümüyle ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
+title: Sorun Giderme Azure Otomasyon Güncelleme Yönetimi
+description: Azure Otomasyonu'nda Güncelleştirme Yönetimi çözümüyle ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c9ff05591c98fda8be39e32f26da484f56e0831b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984632"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678931"
 ---
-# <a name="troubleshooting-issues-with-update-management"></a>Güncelleştirme Yönetimi ile sorun giderme sorunları
+# <a name="troubleshoot-issues-with-the-update-management-solution"></a>Güncelleştirme Yönetimi çözümüyle ilgili sorun giderme sorunları
 
-Bu makalede, Güncelleştirme Yönetimi'ni kullanırken karşılaşabileceğiniz sorunların çözümleri tartışılmaktadır.
+Bu makalede, Güncelleştirme Yönetimi çözümlerini kullanırken rastlayabildiğiniz sorunlar tartışılmaktadır. Altta yatan sorunu belirlemek için Karma Runbook Worker aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme Windows update aracısı sorunları](update-agent-issues.md) ve [Sorun Giderme Linux güncelleştirme aracısı sorunları.](update-agent-issues-linux.md) Diğer onboarding sorunları için, [onboarding Sorun Giderme çözümüne](onboarding.md)bakın.
 
-Altta yatan sorunu belirlemek için Karma İşçi aracısı için bir aracı sorun giderici vardır. Sorun giderici hakkında daha fazla bilgi edinmek için [Sorun Giderme güncelleştirme aracısı sorunlarına](update-agent-issues.md)bakın. Diğer tüm sorunlar için aşağıdaki sorun giderme kılavuzunu kullanın.
+>[!NOTE]
+>Çözümü sanal bir makinede (VM) uçağa binerken sorun bulursanız, yerel makinedeki **Uygulama ve Hizmetler Günlükleri** altındaki **Operasyon Yöneticisi** günlüğünü kontrol edin. Olay kimliği 4502 ve olay ayrıntıları `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`içeren olaylar arayın.
 
-Çözümü sanal bir makinede (VM) uçağa binerken sorun bulursanız, yerel makinedeki **Uygulama ve Hizmetler Günlükleri** altındaki **Operasyon Yöneticisi** günlüğünü kontrol edin. Olay kimliği 4502 ve olay ayrıntıları `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`içeren olaylar arayın.
-
-Aşağıdaki bölümde, her biri için belirli hata iletileri ve olası çözümler vurgulanır. Diğer onboarding sorunları için, [onboarding Sorun Giderme çözümüne](onboarding.md)bakın.
+>[!NOTE]
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](../automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Senaryo: "Güncelleştirme çözümlerini etkinleştirmek için başarısız oldu" hatasını alırsınız
 
@@ -299,7 +299,7 @@ Bu hata aşağıdaki nedenlerle oluşabilir:
 
 * Farklı kaynak bilgisayar tanıları olan yinelenen bir bilgisayar adı vardır. Bu senaryo, belirli bir bilgisayar ada sahip bir VM farklı kaynak gruplarında oluşturulduğunda ve abonelikte aynı Lojistik Aracısı çalışma alanına raporlandığında oluşur.
 
-* Gemiye binen VM görüntüsü, Microsoft Monitoring Agent (MMA) yüklü sistem hazırlama (sysprep) ile hazırlanmamış klonlanmış bir makineden gelebilir.
+* Gemiye binen VM görüntüsü, Windows için Log Analytics aracısının yüklü olduğu Sistem Hazırlama (sysprep) ile hazırlanmamış klonlanmış bir makineden gelebilir.
 
 ### <a name="resolution"></a>Çözüm
 
@@ -351,17 +351,16 @@ Bu hata, güncelleştirme dağıtımına dahil olan başka bir kiracıda Azure V
 
 ### <a name="resolution"></a>Çözüm
 
-Bu öğeleri zamanlanmış almak için aşağıdaki geçici çözüm kullanın. Bir zamanlama oluşturmak için `ForUpdate` parametre ile Yeni [AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet kullanabilirsiniz. Ardından, [Yeni AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
-) cmdlet kullanın ve diğer kiracıdaki makineleri `NonAzureComputer` parametreye geçirin. Aşağıdaki örnekte, bunun nasıl yapılacağını gösterilmektedir:
+Bu öğeleri zamanlanmış almak için aşağıdaki geçici çözüm kullanın. Bir zamanlama oluşturmak için `ForUpdateConfiguration` parametre ile [Yeni-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) cmdlet kullanabilirsiniz. Daha sonra, [New-AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) cmdlet kullanın ve `NonAzureComputer` parametre için diğer kiracı makineleri geçmek. Aşağıdaki örnekte, bunun nasıl yapılacağını gösterilmektedir:
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
 
 $startTime = ([DateTime]::Now).AddMinutes(10)
 
-$s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdate
+$s = New-AzAutomationSchedule -ResourceGroupName mygroup -AutomationAccountName myaccount -Name myupdateconfig -Description test-OneTime -OneTime -StartTime $startTime -ForUpdateConfiguration
 
-New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
+New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
 
 ## <a name="scenario-unexplained-reboots"></a><a name="node-reboots"></a>Senaryo: Açıklanamayan yeniden başlatmalar
@@ -614,7 +613,7 @@ KB2267602, [Windows Defender tanım güncelleştirmesidir](https://www.microsoft
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemediyseniz, ek destek için aşağıdaki kanallardan birini deneyin.
+Sorununuzu görmüyorsanız veya sorununuzu çözemiyorsanız, ek destek için aşağıdaki kanallardan birini deneyin.
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
 * [@AzureSupport](https://twitter.com/azuresupport)Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın.

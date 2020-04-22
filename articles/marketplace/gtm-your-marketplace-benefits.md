@@ -1,18 +1,18 @@
 ---
-title: Go-To-Market Hizmetleri - ticari pazar avantajları | Azure
+title: Go-To-Market Hizmetleri - ticari pazar avantajları | Azure Marketi
 description: Kullanıma Aç Hizmetleri - Yayıncıların kullanabileceği Microsoft kaynakları bu bölümde açıklanmıştır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 02/08/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: d34fb989e7f656df93faae63ef4dc42ed0fe5abe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c8b2f5cb03c7e1777137100547fbbbaf107f0b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684547"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ticari pazar avantajlarınız
 
@@ -24,7 +24,7 @@ Teklifinizle canlı yayına çıktığınızda, Marketplace Rewards ekibi uygun 
 
 Market Ödülleri, ilk müşterilerinizi elde etmenize yardımcı olacak farkındalık etkinliklerinden başlayarak, belirli büyüme aşamanızda sizi desteklemek üzere tasarlanmıştır. Pazarda büyüdükçe, müşterileri dönüştürmenize ve anlaşmaları kapatmanıza yardımcı olmak için tasarlanmış yeni avantajların kilidini açarsınız. 
 
-Program olumlu bir geri bildirim döngüsü oluşturur: büyümenin her aşamasındaki avantajlar, işinizi Microsoft müşterilerine, Microsoft'un alanında ve Microsoft'un kanalı aracılığıyla platformunuz olarak ticari pazar. 
+Program olumlu bir geri bildirim döngüsü oluşturur: büyümenin her aşamasındaki avantajlar, işinizi Microsoft'un alanı yla ve Microsoft'un kanalı aracılığıyla platformolarak ticari pazardan yararlanarak Microsoft müşterilerine büyütmenize olanak sağlayacak şekilde tasarlanmıştır. 
 
 Avantajlarınız, teklifinizin [Liste, Deneme veya İşleme](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type#choose-a-publishing-option)olup olmadığına bağlı olarak farklılaştırılır.
 
@@ -44,7 +44,7 @@ Başlamak için adımlarınız kolaydır:
 2. Takım, pazar yeri teklifi başına "sahip" veya "birincil ilgili kişi"ye ulaşır. Bir bireyi veya düzenli olarak kontrol ettiğiniz bir takma ad girmek en iyi yöntemdir: genellikle kaybolmak gibi info@company.com diğer adlara gönderilen iletiler.
 
 >[!Note]
->Teklifiniz dört haftadan uzun süredir yayındaysa ve bir ileti almadıysanız, lütfen bulut iş ortağı portalına veya İş Ortağı Merkezi'ne bakarak, söz konusu teklifin sahibinin kuruluşunuz içinde kontrol edin. Onlar iletişim ve sonraki adımlar olmalıdır. <br> <br> Sahibini belirleyemiyorsanız veya şirket sahibi şirketinizden ayrıldıysa, 'den https://aka.ms/marketplacepublishersupportdestek bileti çıkarabilirsiniz.
+>Teklifiniz dört haftadan uzun süredir yayındaysa ve bir ileti almadıysanız, lütfen Ortağın Merkezi'ne bakarak, söz konusu teklifin sahibinin kuruluşunuz içinde kontrol edin. Onlar iletişim ve sonraki adımlar olmalıdır. <br> <br> Sahibini belirleyemiyorsanız veya şirket sahibi şirketinizden ayrıldıysa, 'den https://aka.ms/marketplacepublishersupportdestek bileti çıkarabilirsiniz.
 
 Pazarda tekliflerinizi büyüttükçe, kullanabileceğiniz etkinliklerin kapsamı da genişler. Tüm girişler, kaynakların ve en iyi uygulamaların kendi kendine hizmet e-postasının bir parçası olarak temel düzeyde optimizasyon önerileri ve promosyon alır.
 
@@ -96,7 +96,7 @@ Microsoft, Aşağıdakileri yapan yayıncılariçin Market Ödülleri avantajlar
 * pazar yeri listelerini kullanarak yasadışı faaliyetlerde bulunun.
 * ticari pazardan listeden çıkar.. 
 * tekliflerini, telif hakkı veya ticari marka yasalarını ihlal eden pazarlama veya diğer içerikleri göstermek için kullanın.
-* Azure [sponsorluk fonunu](https://azure.microsoft.com/offers/ms-azr-0036p/)kendi dahili işlemleri veya bitcoin madenciliği için kullanmak da dahil ancak bunlarla sınırlı olmamak üzere Azure sponsorluk programının politikalarını ihlal edin. 
+* Azure sponsorluk fonu'nu kendi dahili işlemleri veya Bitcoin madenciliği için kullanmak da dahil ancak bunlarla sınırlı olmamak üzere [Azure sponsorluk programının](https://azure.microsoft.com/offers/ms-azr-0036p/)politikalarını ihlal edin. 
 
 ### <a name="offer-availability"></a>Teklif Kullanılabilirliği
 
@@ -106,9 +106,7 @@ Sahte olduğu kanıtlanan işlemler, [liste, deneme, danışmanlık bölümü,](
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifinizi [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com)oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
-
-Teklifinizi [İş Ortağı Merkezi'nde](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
+Teklifinizi [İş Ortağı Merkezi'nde](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)oluşturduysanız, teklifinizi oluşturmak veya yapılandırmak için oturum açın.
 
 [Kullanabileceğiniz self-servis kaynaklarını gözden geçirin.](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)
 

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 04/14/2020
-ms.openlocfilehash: c9edbbf54696a817d0495f6890e0d796e482231f
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 04/19/2020
+ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393712"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677111"
 ---
 # <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>Azure SQL Veritabanı yönetilen örnek uzun vadeli yedekleme tutma (PowerShell) yönetme
 
@@ -36,23 +36,22 @@ Aşağıdaki bölümler, uzun süreli yedekleme bekletme yapılandırmak, Yedekl
 - Abonelik Sahibi rolü veya
 - Yönetilen Örnek Katılımcı rolü veya
 - Aşağıdaki izinleri içeren özel rol:
-
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read``` ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read```
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read```
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read`
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
 **Remove-AzSqlInstanceDatabaseLongTermRetentionBackup**için aşağıdaki rollerden birine sahip olmanız gerekir:
 
 - Abonelik Sahibi rolü veya
 - Aşağıdaki izinle özel rol:
-
-   ```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
+  - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 > [!NOTE]
 > Yönetilen Örnek Katılımcı sıfatının LTR yedeklemelerini silme izni yoktur.
 
 RBAC izinleri *abonelik* veya kaynak *grubu* kapsamında verilebilir. Ancak, bırakılan bir örneğe ait LTR yedeklemelerine erişmek için, bu örneğin *abonelik* kapsamında izin verilmesi gerekir.
 
-```Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete```
+- `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 ## <a name="create-an-ltr-policy"></a>LTR ilkesi oluşturma
 
@@ -75,7 +74,6 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
 # create LTR policy with WeeklyRetention = 12 weeks, YearlyRetention = 5 years and WeekOfYear = 16 (week of April 15). MonthlyRetention = 0 by default.
 Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
     -DatabaseName $dbName -ResourceGroupName $resourceGroup -WeeklyRetention P12W -YearlyRetention P5Y -WeekOfYear 16
-
 ```
 
 ## <a name="view-ltr-policies"></a>LTR ilkelerini görüntüleyin
@@ -86,7 +84,6 @@ Bu örnekte, ltr ilkelerinin bir örnek içinde nasıl listelenebildiğini göst
 # gets the current version of LTR policy for the database
 $ltrPolicies = Get-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceName `
     -DatabaseName $dbName -ResourceGroupName $resourceGroup
-
 ```
 
 ## <a name="clear-an-ltr-policy"></a>Bir LTR ilkesini temizleme
@@ -118,7 +115,6 @@ $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instan
 
 # only list the latest LTR backup for each database
 $ltrBackups = Get-AzSqlInstanceDatabaseLongTermRetentionBackup -Location $instance.Location -InstanceName $instanceName -OnlyLatestPerDatabase
-
 ```
 
 ## <a name="delete-ltr-backups"></a>LTR yedeklemelerini silme
@@ -142,7 +138,6 @@ Bu örnek, ltr yedeklemesinden nasıl geri yüklenirlerini gösterir. Not, bu ar
 # restore a specific LTR backup as an P1 database on the instance $instanceName of the resource group $resourceGroup
 Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId `
    -TargetInstanceName $instanceName -TargetResourceGroupName $resourceGroup -TargetInstanceDatabaseName $dbName
-
 ```
 
 > [!IMPORTANT]

@@ -8,24 +8,24 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 03c67ccf88a8c73fe04f062c6af9520115c185a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774269"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680749"
 ---
 Bu bölümde, Doğrudan eşleme için aşağıdaki değişiklik işlemleri nasıl gerçekleştirilireaçıklanmaktadır:
 
-* Doğrudan eşleme bağlantıları ekleme
-* Doğrudan bakan bağlantıları kaldırma
+* Doğrudan bakan bağlantılar ekleyin.
+* Doğrudan bakan bağlantıları kaldırın.
 * Etkin bağlantılarda bant genişliğini yükseltin veya düşürün.
-* Etkin bağlantılarda IPv4/IPv6 oturumu ekleyin.
-* Etkin bağlantılarda IPv4/IPv6 oturumunu kaldırın.
+* Etkin bağlantılara IPv4 veya IPv6 oturumları ekleyin.
+* Etkin bağlantılardaki IPv4 veya IPv6 oturumlarını kaldırın.
 
 ### <a name="add-direct-peering-connections"></a>Doğrudan eşleme bağlantıları ekleme
 
-Aşağıdaki örnekte, varolan Doğrudan eşlemelere nasıl bağlantı eklendirilir
+Bu örnekte, varolan Doğrudan eşlemelere bağlantı nasıl eklenilen açıklanmaktadır.
 
 ```powershell
 
@@ -46,7 +46,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="remove-direct-peering-connections"></a>Doğrudan bakan bağlantıları kaldırma
 
-Bağlantıyı kaldırmak şu anda PowerShell'de desteklenmez. [Microsoft'a bakan kişi.](mailto:peeringexperience@microsoft.com)
+Bağlantıyı kaldırmak şu anda PowerShell'de desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)
 
 <!--
 ```powershell
@@ -58,7 +58,7 @@ $directPeering | Update-AzPeering
 
 ### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>Etkin bağlantılarda bant genişliğini yükseltme veya düşürme
 
-Aşağıdaki örnekte, varolan doğrudan bağlantıya 10Gbps nasıl ekleyeceğiniz açıklanmaktadır.
+Bu örnekte, varolan bir Doğrudan bağlantıya 10 Gbps nasıl ekleyeceğiniz açıklanmaktadır.
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4/IPv6 oturumu ekleyin.
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>Etkin bağlantılarda IPv4 veya IPv6 oturumları ekleme
 
-Aşağıdaki örnekte, yalnızca IPv4 oturumuyla varolan doğrudan bağlantıya IPv6 oturumunun nasıl eklenilen rilmiştir. 
+Bu örnekte, yalnızca bir IPv4 oturumu olan varolan bir Doğrudan bağlantıya IPv6 oturumunun nasıl eklenilen bir şekilde eklenilen açıklanmaktadır. 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4ipv6-session-on-active-connections"></a>Etkin bağlantılarda IPv4/IPv6 oturumunu kaldırın.
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>Etkin bağlantılardaki IPv4 veya IPv6 oturumlarını kaldırma
 
-Varolan bir bağlantıdan bir IPv4/IPv6 oturumunun kaldırılması şu anda PowerShell'de desteklenmez. [Microsoft'a bakan kişi.](mailto:peeringexperience@microsoft.com)
+Varolan bir bağlantıdan bir IPv4 veya IPv6 oturumunun kaldırılması şu anda PowerShell'de desteklenmez. Daha fazla bilgi için [Microsoft'a başvurun.](mailto:peeringexperience@microsoft.com)

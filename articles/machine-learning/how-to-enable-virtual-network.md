@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 1f3c9f86072eeedbc999946d0f846fbc3b41f94d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: f94136ca6bfcb7e33415f2f44fdf4c44ef9f6a6f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641749"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682789"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -140,12 +140,13 @@ Sanal ağda bir Azure Machine Learning bilgi işlem örneği veya bilgi işlem k
 > * Çalışma alanı için Azure Depolama Hesabı(lar) sanal bir ağda da korunuyorsa, Azure Machine Learning bilgi işlem örneği veya kümesiyle aynı sanal ağda olmaları gerekir. 
 
 > [!TIP]
-> Machine Learning bilgi işlem örneği veya kümesi, sanal ağı içeren kaynak grubuna ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya küme için hizmet aşağıdaki kaynakları ayırır:
+> Machine Learning bilgi işlem örneği veya __kümesi, sanal ağı içeren kaynak grubuna__ek ağ kaynaklarını otomatik olarak ayırır. Her işlem örneği veya küme için hizmet aşağıdaki kaynakları ayırır:
 > 
 > * Bir ağ güvenlik grubu
 > * Bir genel IP adresi
 > * Bir yük dengeleyici
 > 
+> Kümeler söz konusu olduğunda, küme her ölçek0 düğüme küçültüldünde bu kaynaklar silinir (ve yeniden oluşturulur), ancak örneğin, örnek tamamen silinene kadar kaynaklar tutulur (durdurma kaynakları kaldırmaz). 
 > Bu kaynaklar, aboneliğin [kaynak kotalarıyla](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) sınırlıdır.
 
 

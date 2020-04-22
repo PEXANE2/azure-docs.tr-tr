@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 882d428d7a8a9b56408aaa68964fa1e36c7cc7c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 80bcf0d5d37a44cee2aab38161abac619542204a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277315"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684316"
 ---
 # <a name="containers-offer-publishing-guide"></a>Konteynerler Teklif Yayın Kılavuzu
 
@@ -41,9 +41,9 @@ Microsoft şu anda ücretsiz ve kendi lisansını getir (BYOL) lisans modellerin
 
 Eğer bunu yapmadıysanız, 
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
-Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
+Ortak Merkezi'ne kaydolmak için yeni bir teklif oluşturmaya veya varolan bir teklif üzerinde çalışmaya başlayın:
 
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
-- Daha fazla bilgi için [Kapsayıcılar'a](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) bakın.
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- Bkz. Daha fazla bilgi için [bir Azure kapsayıcı teklifi oluşturun.](./partner-center-portal/create-azure-container-offer.md)

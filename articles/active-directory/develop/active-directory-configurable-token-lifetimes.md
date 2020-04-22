@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b2b9dbe52a5696f21b287402fc4cbaa32b29c73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4138c4ae24ae599d4058c9fd06c33b69657fe38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263185"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680064"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Etkin Dizin'de yapılandırılabilir belirteç yaşam ömürleri (Önizleme)
 
@@ -95,14 +95,14 @@ Belirteç yaşam boyu ilkesi, belirteç yaşam alanı kuralları içeren bir ilk
 * <sup>1</sup>365 gün, bu öznitelikler için ayarlanabilecek en yüksek açık uzunluktur.
 * <sup>2.000</sup> Microsoft Teams Web istemcisinin çalıştığından emin olmak için AccessTokenLifetime'ı Microsoft Teams için 15 dakikadan fazla tutman önerilir.
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 | Özellik | Etkiledi -ğini | Varsayılan |
 | --- | --- | --- |
 | Token Max Age'i yenile (iptal bilgileri yetersiz olan federe kullanıcılar için verilir<sup>1</sup>) |Belirteçleri yenileyin (iptal bilgileri yetersiz olan federe kullanıcılar için verilir<sup>1</sup>) |12 saat |
 | Token Max Inactive Time'ı yenileyin (gizli istemciler için verilir) |Belirteçleri yenileme (gizli istemciler için verilir) |90 gün |
 | Token Max Age'i yenile (gizli müşteriler için verilir) |Belirteçleri yenileme (gizli istemciler için verilir) |İptal edilene kadar |
 
-* <sup>1.1.2</sup> İptal bilgileri yetersiz olan federe kullanıcılar arasında "LastPasswordChangeTimestamp" özniteliği eşitlenmemiş kullanıcılar yer almaktadır. AAD, eski bir kimlik bilgisine bağlı belirteçleri (değiştirilen parola gibi) ne zaman iptal edemeyeceğini doğrulayamadığından ve kullanıcının ve ilişkili belirteçlerin hala iyi olduğundan emin olmak için daha sık iade etmeleri gerektiğinden, bu kullanıcılara bu kısa Max Yaş verilir Ayakta. Bu deneyimi geliştirmek için, kiracı yöneticilerin "LastPasswordChangeTimestamp" özniteliğini eşitlediğinden emin olmaları gerekir (bu, Powershell kullanarak veya AADSync aracılığıyla kullanıcı nesnesi üzerinde ayarlanabilir).
+* <sup>1.1.2</sup> İptal bilgileri yetersiz olan federe kullanıcılar arasında "LastPasswordChangeTimestamp" özniteliği eşitlenmemiş kullanıcılar yer almaktadır. AAD, eski bir kimlik bilgisine bağlı belirteçleri (değiştirilen parola gibi) ne zaman iptal edemeyeceğini doğrulayamadığından ve kullanıcının ve ilişkili belirteçlerin hala iyi durumda olduğundan emin olmak için daha sık iade etmeleri gerektiğinden, bu kullanıcılara bu kısa Max Yaş verilir. Bu deneyimi geliştirmek için, kiracı yöneticilerin "LastPasswordChangeTimestamp" özniteliğini eşitlediğinden emin olmaları gerekir (bu, Powershell kullanarak veya AADSync aracılığıyla kullanıcı nesnesi üzerinde ayarlanabilir).
 
 ### <a name="policy-evaluation-and-prioritization"></a>İlke değerlendirmesi ve önceliklendirme
 Belirli bir uygulamaya, kuruluşunuza ve hizmet ilkelerine bir belirteç yaşam ilkesi oluşturabilir ve sonra atayabilirsiniz. Belirli bir uygulama için birden çok ilke uygulanabilir. Etkili olan belirteç yaşam ilkesi aşağıdaki kuralları izler:
@@ -243,19 +243,25 @@ Bu örnekte, kullanıcılarınızın tüm kuruluşunuz genelinde daha az sıklı
         }')
         ```
 
-    2. İlke oluşturmak için aşağıdaki komutu çalıştırın:
+    1. İlke oluşturmak için aşağıdaki komutu çalıştırın:
 
         ```powershell
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3. Yeni ilkenizi görmek ve politikanın **ObjectId'ini**almak için aşağıdaki komutu çalıştırın:
+    1. Herhangi bir boşluk kaldırmak için aşağıdaki komutu çalıştırın:
+
+        ```powershell
+        Get-AzureADPolicy -id | set-azureadpolicy -Definition @($((Get-AzureADPolicy -id ).Replace(" ","")))
+        ```
+
+    1. Yeni ilkenizi görmek ve politikanın **ObjectId'ini**almak için aşağıdaki komutu çalıştırın:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. İlkeyi güncelleştirin.
+1. İlkeyi güncelleştirin.
 
     Bu örnekte belirlediğiniz ilk ilkenin hizmetinizin gerektirdiği kadar katı olmadığına karar verebilirsiniz. Tek Faktörlü Yenileme Belirteci'nizi iki gün içinde sona erecek şekilde ayarlamak için aşağıdaki komutu çalıştırın:
 
@@ -277,13 +283,13 @@ Bu örnekte, kullanıcıların web uygulamanızda daha sık kimlik doğrulaması
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Yeni ilkenizi görmek ve **objectid**ilkesini almak için aşağıdaki komutu çalıştırın:
+    1. Yeni ilkenizi görmek ve **objectid**ilkesini almak için aşağıdaki komutu çalıştırın:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. İlkeyi hizmet müdürünüze atayın. Ayrıca hizmet müdürünün **ObjectId'ini** de almanız gerekir.
+1. İlkeyi hizmet müdürünüze atayın. Ayrıca hizmet müdürünün **ObjectId'ini** de almanız gerekir.
 
     1. Kuruluşunuzun tüm hizmet ilkelerini veya tek bir hizmet müdürünü görmek için [AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet'ini kullanın.
         ```powershell
@@ -291,7 +297,7 @@ Bu örnekte, kullanıcıların web uygulamanızda daha sık kimlik doğrulaması
         $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
         ```
 
-    2. Hizmet sorumlusunuz olduğunda, aşağıdaki komutu çalıştırın:
+    1. Hizmet sorumlusunuz olduğunda, aşağıdaki komutu çalıştırın:
         ```powershell
         # Assign policy to a service principal
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
@@ -308,13 +314,13 @@ Bu örnekte, kullanıcıların daha az sıklıkta kimlik doğrulaması gerektire
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2. Yeni ilkenizi görmek için aşağıdaki komutu çalıştırın:
+    1. Yeni ilkenizi görmek için aşağıdaki komutu çalıştırın:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. İlkeyi web API'nize atayın. Ayrıca uygulamanızın **ObjectId'ini** de almanız gerekir. Uygulamanızın **ObjectId'ini**bulmak veya [Azure portalını](https://portal.azure.com/)kullanmak için [AzureADApplication](/powershell/module/azuread/get-azureadapplication) cmdlet'ini kullanın.
+1. İlkeyi web API'nize atayın. Ayrıca uygulamanızın **ObjectId'ini** de almanız gerekir. Uygulamanızın **ObjectId'ini**bulmak veya [Azure portalını](https://portal.azure.com/)kullanmak için [AzureADApplication](/powershell/module/azuread/get-azureadapplication) cmdlet'ini kullanın.
 
     Uygulamanızın **ObjectId'ini** alın ve ilkeyi atayın:
 
@@ -337,19 +343,19 @@ Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birk
         $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2. Yeni ilkenizi görmek için aşağıdaki komutu çalıştırın:
+    1. Yeni ilkenizi görmek için aşağıdaki komutu çalıştırın:
 
         ```powershell
         Get-AzureADPolicy -Id $policy.Id
         ```
 
-2. İlkeyi bir hizmet müdürüne atayın.
+1. İlkeyi bir hizmet müdürüne atayın.
 
     Şimdi, tüm kuruluş için geçerli olan bir politikanız var. Bu 30 günlük ilkeyi belirli bir hizmet ilkesi için korumak isteyebilirsiniz, ancak kuruluş varsayılan ilkesini "iptal edilene kadar" üst sınırıyla değiştirebilirsiniz.
 
     1. Kuruluşunuzun tüm hizmet ilkelerini görmek için [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) cmdlet'ini kullanırsınız.
 
-    2. Hizmet sorumlusunuz olduğunda, aşağıdaki komutu çalıştırın:
+    1. Hizmet sorumlusunuz olduğunda, aşağıdaki komutu çalıştırın:
 
         ```powershell
         # Get ID of the service principal
@@ -359,13 +365,13 @@ Bu örnekte, öncelik sisteminin nasıl çalıştığını öğrenmek için birk
         Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
         ```
 
-3. `IsOrganizationDefault` Bayrağı false olarak ayarlayın:
+1. `IsOrganizationDefault` Bayrağı false olarak ayarlayın:
 
     ```powershell
     Set-AzureADPolicy -Id $policy.Id -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
     ```
 
-4. Yeni bir kuruluş varsayılan ilkesi oluşturun:
+1. Yeni bir kuruluş varsayılan ilkesi oluşturun:
 
     ```powershell
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"

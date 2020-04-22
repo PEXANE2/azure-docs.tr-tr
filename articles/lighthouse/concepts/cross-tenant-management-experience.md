@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure temsilci kaynak yönetimi, kiracılar arası yönetim deneyimi sağlar.
-ms.date: 04/06/2020
+ms.date: 04/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 66e2b2f7fbbae5940b576ead22a416625af3c058
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 107350cdab90751e918d4c7845776464b43abbdd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81418532"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682825"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -72,6 +72,14 @@ Görevlerin ve hizmetlerin çoğu yönetilen kiracılar arasında devredilen kay
 - Günlük analitiği: Birden çok kiracıda uzak müşteri çalışma alanlarından gelen verileri sorgula
 - Webhooks aracılığıyla hizmet sağlayıcı kiracısında Azure Otomasyon runbook'ları veya Azure Fonksiyonları gibi otomasyonu tetikleyen müşteri kiracılarında uyarılar oluşturun
 
+[Azure Ağ:](../../networking/networking-overview.md)
+
+- [Azure Sanal Ağı (VNet)](../../virtual-network/index.yml) ve sanal ağ arabirimi kartlarını (vNIC' ler) müşteri kiracıları arasında dağıtma ve yönetme
+- Müşterilerin Sanal Ağ kaynaklarını korumak için [Azure Güvenlik Duvarı'nı](../../firewall/overview.md) dağıtma ve yapılandırma
+- Müşteriler için Azure [Virtual WAN,](../../virtual-wan/virtual-wan-about.md) [ExpressRoute](../../expressroute/expressroute-introduction.md)ve [VPN Ağ Geçitleri](../../vpn-gateway/vpn-gateway-about-vpngateways.md) gibi bağlantı hizmetlerini yönetme
+- [Azure Ağ MSP Programı](../../networking/networking-partners-msp.md) için önemli senaryoları desteklemek için Azure Deniz Feneri'ni kullanın
+
+
 [Azure Politikası](../../governance/policy/index.yml):
 
 - Uyumluluk anlık görüntüleri, devredilen abonelikler içinde atanan ilkelerin ayrıntılarını gösterir
@@ -121,10 +129,6 @@ Görevlerin ve hizmetlerin çoğu yönetilen kiracılar arasında devredilen kay
 - Azure VM'leri müşteri kiracılarında sorun gidermek için önyükleme tanılama yöntemini kullanma
 - Müşteri kiracılarında seri konsollu VM'lere erişin
 - Bir VM'ye uzaktan giriş için Azure Active Directory'yi kullanamayacağınızı ve disk şifreleme için parolalar, sırlar veya şifreleme anahtarları için Bir Anahtar Kasası ile Bir VM'yi entegre edemezsiniz unutmayın
-
-[Azure Sanal Ağ](../../virtual-network/index.yml):
-
-- Müşteri kiracıları içinde sanal ağları ve sanal ağ arabirim kartlarını (vNIC'ler) dağıtma ve yönetme
 
 Destek istekleri:
 

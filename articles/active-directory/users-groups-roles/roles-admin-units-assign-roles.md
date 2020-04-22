@@ -14,18 +14,18 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a518ff070ea021726ee382169e87cca55cad36d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c900b2a363a4ff271e7a436b358ecf170daca163
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81428257"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687032"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Kapsamlı rolleri bir yönetim birimine atama
 
 Azure Etkin Dizini'nde (Azure AD), daha ayrıntılı yönetim denetimi için kullanıcıları bir veya daha fazla yönetim birimiyle (AUs) sınırlı bir kapsamla Azure REKLAM rolüne atayabilirsiniz.
 
-Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya hazırlanma adımları [için](roles-admin-units-manage.md#getting-started)bkz.
+Yönetim birimi yönetimi için PowerShell ve Microsoft Graph'ı kullanmaya hazırlanma adımları [için](roles-admin-units-manage.md#get-started)bkz.
 
 ## <a name="roles-available"></a>Kullanılabilir roller
 

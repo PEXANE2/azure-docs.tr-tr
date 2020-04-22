@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7460490dbd45862f4269d25e3910373700ec9a03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77564729"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678280"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Quickstart - Özel Bulut ortamını yapılandırma
 
@@ -26,7 +26,7 @@ Ağ Önkoşulları Gözden [Geçirin.](cloudsimple-network-checklist.md)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-private-cloud"></a>Özel Bulut oluşturma
 
@@ -159,8 +159,8 @@ Artık sanal makineler ve ilkeler ayarlamak için vCenter'da oturum açabilirsin
     ![VSphere İstemciyi Başlat](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. vCenter'a erişmek ve kullanıcı adınız ve şifrenizle oturum açın.  Varsayılan lar şunlardır:
-    * Kullanıcı adı: **CloudOwner\@cloudsimple.local**
-    * Şifre: **CloudSimple123!**  
+    * Kullanıcı adı:`CloudOwner@cloudsimple.local`
+    * Parola: `CloudSimple123!`
 
 Sonraki yordamlarda vCenter ekranları vSphere (HTML5) istemcisinden.
 

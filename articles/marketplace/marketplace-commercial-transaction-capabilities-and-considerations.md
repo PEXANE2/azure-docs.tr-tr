@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 768fa9ca2080fc9a58fb321e62d8d61a608f9564
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7a0f0b96f8140118f1c74ecbd4368aac49d7ece6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415267"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684304"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Ticari pazar işlem yetenekleri
 
@@ -202,11 +202,11 @@ Abonelik veya You-Go Olarak Öde fiyatlandırma modelleri seçildiğinde, Micros
 * Müşteriler genellikle Kurumsal Sözleşme'yi veya kredi kartı etkinleştirilmiş kullandıkça öde sözleşmesini kullanarak satın satın almazlar. Anlaşma türü faturalama, faturalama, tahsilat ve ödeme zamanlamasını belirler.
 
 >[!NOTE]
->İşleme yayıncılık seçeneğine ilişkin tüm raporlama ve öngörülere, İş Ortağı Merkezi'nin Bulut İş Ortağı Portalı veya Analytics bölümünün Öngörüler bölümünden ulaşabilirsiniz.
+>İşleme yayınlama seçeneğine ilişkin tüm raporlama ve öngörülere İş Ortağı Merkezi'nin Analytics bölümünden ulaşabilirsiniz.
 
 #### <a name="billing-questions-and-support"></a>Faturalama soruları ve desteği
 
-Daha fazla bilgi ve yasal ilkeler için [Publisher Sözleşmesi'ne](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf) (Bulut İş Ortağı Portalı'nda mevcuttur) bakın.
+Daha fazla bilgi ve yasal ilkeler için [Publisher Sözleşmesi'ne](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt) bakın (Ortak Merkezi'nde mevcuttur).
 
 Faturalandırma sorularında yardım almak için lütfen [ticari pazar yeri yayıncı desteğine](https://aka.ms/marketplacepublishersupport)başvurun.
 

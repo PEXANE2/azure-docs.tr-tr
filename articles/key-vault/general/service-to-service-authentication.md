@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d6ac5961cbecf4e81c0b6bcc25c39aad42b18416
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81429843"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686187"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET kullanarak Azure Anahtar Kasası'na servis-servis kimlik doğrulaması
 
@@ -88,7 +88,7 @@ Azure CLI'yi kullanmak için:
 
 1. Azure portalında oturum açın: Azure'da oturum açmak için *az oturum* açın.
 
-1. *Az hesap https://vault.azure.netget-access-token --kaynak *girerek erişimi doğrulayın. Bir hata alırsanız, Azure CLI'nin doğru sürümünün doğru yüklendiğinden denetleyin.
+1. *Az hesap get-access-token -kaynak https:\//vault.azure.net*girerek erişimi doğrulayın . Bir hata alırsanız, Azure CLI'nin doğru sürümünün doğru yüklendiğinden denetleyin.
 
    Azure CLI varsayılan dizine yüklenmezse, Azure CLI'nin `AzureServiceTokenProvider` yolunu bulamayan bir hata bildirimi alabilirsiniz. Azure CLI yükleme klasörünü tanımlamak için **AzureCLIPath** ortamı değişkenini kullanın. `AzureServiceTokenProvider`Gerektiğinde **Yol** ortamı değişkenine **AzureCLIPath** ortamı değişkeninde belirtilen dizini ekler.
 

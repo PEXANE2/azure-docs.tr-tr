@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: f038293b48956ac89314e426df3f5dc491954df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064214"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684708"
 ---
 # <a name="execute-r-script"></a>R Betiği yürütme
 
@@ -44,7 +44,10 @@ azureml_main <- function(dataframe1, dataframe2){
 ```
 
 ## <a name="installing-r-packages"></a>R paketlerinin yüklenmesi
-Ek R paketleri yüklemek `install.packages()` için yöntemi kullanın. CRAN deposunu belirttiğinden emin olun. Paketler her Execute **R Script** modülü için yüklenir ve diğer **Execute R Script** modülleri arasında paylaşılmaz.
+Ek R paketleri yüklemek `install.packages()` için yöntemi kullanın. Paketler her Execute **R Script** modülü için yüklenir ve diğer **Execute R Script** modülleri arasında paylaşılmaz.
+
+> [!NOTE]
+> Lütfen cran deposunu örneğin`install.packages("zoo",repos = "http://cran.us.r-project.org")`
 
 Bu örnek, Zoo'nun nasıl yüklenir:
 ```R
@@ -52,7 +55,13 @@ Bu örnek, Zoo'nun nasıl yüklenir:
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -77,7 +86,13 @@ Aşağıdaki örnek, **Execute R Script'te**bir resim dosyasının nasıl yükle
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
 
-# The entry point function can contain up to two input arguments:
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){
@@ -124,6 +139,12 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
 1. R **komut dosyası** metin kutusunda geçerli R komut dosyası yazın veya yapıştırın.
 
+    > [!NOTE]
+    > Lütfen komut dosyanızı yazarken çok dikkatli olun ve bildirilmemiş bir değişken veya alınmamış bir modül veya işlev kullanmak gibi sözdizimi hatası olmadığından emin olun. Ayrıca, bu belgenin sonunda önceden yüklenmiş paket listesine ekstra dikkat edin. Listede yer almayan paketleri kullanmak için lütfen komut dosyanıza`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    
+    > [!NOTE]
+    > X11 kitaplığı önceden yüklenmediği için "Görünüm" gibi X11 kitaplığına bağımlı işlevler desteklenmez.
+    
     Başlamanıza yardımcı olmak **için, R Script** metin kutusu, değiştirebileceğiniz veya değiştirebileceğiniz örnek kodla önceden doldurulur.
     
     ```R
@@ -131,7 +152,13 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
     # The script MUST contain a function named azureml_main
     # which is the entry point for this module.
 
-    # The entry point function can contain up to two input arguments:
+    # Please note that functions dependant on X11 library
+    # such as "View" are not supported because X11 library
+    # is not pre-installed.
+    
+    # The entry point function MUST have two input arguments.
+    # If the input port is not connected, the corresponding
+    # dataframe argument will be null.
     #   Param<dataframe1>: a R DataFrame
     #   Param<dataframe2>: a R DataFrame
     azureml_main <- function(dataframe1, dataframe2){
@@ -148,8 +175,8 @@ Tasarımcıda depolanan veri kümeleri, bu modülle yüklendiğinde otomatik ola
 
  * Komut dosyası, bu `azureml_main`modülün giriş noktası olan adlandırılmış bir işlev içermelidir.
 
- * Giriş noktası işlevi en fazla iki giriş `Param<dataframe1>` bağımsız değişkeni içerebilir: ve`Param<dataframe2>`
- 
+ * Giriş noktası işlevi iki giriş bağımsız `Param<dataframe1>` `Param<dataframe2>`değişkeni olmalıdır: ve , bu iki bağımsız değişken işlevde kullanılmadığında bile.
+
    > [!NOTE]
     > **Execute R Script** modülüne aktarılan veriler, `dataframe1` `dataframe2`Azure Machine Learning tasarımcısından farklı olan (tasarımcı başvurusu , `dataset1`olarak) `dataset2`olarak başvurulmuştür. Lütfen giriş verilerinin komut dosyanızda doğru şekilde yönlendirildiğinden emin olun.  
  
@@ -195,7 +222,14 @@ Aşağıdaki örnek, giriş verilerinin nasıl ölçeklendirilip normalleştiril
 # R version: 3.5.1
 # The script MUST contain a function named azureml_main
 # which is the entry point for this module.
-# The entry point function can contain up to two input arguments:
+
+# Please note that functions dependant on X11 library
+# such as "View" are not supported because X11 library
+# is not pre-installed.
+
+# The entry point function MUST have two input arguments.
+# If the input port is not connected, the corresponding
+# dataframe argument will be null.
 #   Param<dataframe1>: a R DataFrame
 #   Param<dataframe2>: a R DataFrame
 azureml_main <- function(dataframe1, dataframe2){

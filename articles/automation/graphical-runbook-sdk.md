@@ -1,24 +1,24 @@
 ---
-title: Azure Otomasyon Grpahical runbook SDK'ya genel bakış
-description: Bu makalede, Azure Otomasyon Grafik Runbook SDK nasıl kullanılacağı açıklanmaktadır
+title: Azure Otomasyongrafik runbook SDK'yı kullanma
+description: Bu makalede, Azure Otomasyongrafik runbook SDK nasıl kullanılacağı açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75418257"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682916"
 ---
-# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Otomasyon Grafik çalışma kitabı SDK'yı kullanma
+# <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Otomasyongrafik runbook SDK'yı kullanma
 
-[Grafik çalışma kitapları,](automation-graphical-authoring-intro.md) temel Windows PowerShell veya PowerShell İş Akışı kodunun karmaşıklığını yönetmenize yardımcı olan runbook'tur. Microsoft Azure Otomasyon Grafik Yazma SDK, geliştiricilerin Azure Otomasyon hizmetiyle kullanılmak üzere Grafik Çalışma Kitapları oluşturmasına ve bunları yönetmesine olanak tanır. Aşağıdaki kod parçacıkları, kodunuzdan grafik çalışma kitabı oluşturmanın temel akışını gösterir.
+[Grafik çalışma kitapları,](automation-graphical-authoring-intro.md) temel Windows PowerShell veya PowerShell İş Akışı kodunun karmaşıklığını yönetmenize yardımcı olur. Microsoft Azure Automation grafik yazarsi SDK, geliştiricilerin Azure Otomasyonu ile kullanılmak üzere grafik runbook'lar oluşturmasına ve bunları yönetmesine olanak tanır. Bu makalede, kodunuzdan grafik çalışma kitabı oluşturmanın temel adımları açıklanmaktadır.
 
-## <a name="pre-requisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için paketi `Microsoft.Azure.Automation.GraphicalRunbook.Model` projenize aktarın.
+Paketi `Microsoft.Azure.Automation.GraphicalRunbook.Model` projenize aktarın.
 
 ## <a name="create-a-runbook-object-instance"></a>Runbook nesne örneği oluşturma
 
@@ -89,7 +89,7 @@ var initializeRunbookVariable = runbook.AddActivity(
  });
 ```
 
-Etkinlikler `Orchestrator.GraphRunbook.Model` ad alanında aşağıdaki sınıflar tarafından uygulanır:
+Etkinlikler `Orchestrator.GraphRunbook.Model` ad alanında aşağıdaki sınıflar tarafından uygulanır.
 
 |Sınıf  |Etkinlik  |
 |---------|---------|
@@ -99,9 +99,9 @@ Etkinlikler `Orchestrator.GraphRunbook.Model` ad alanında aşağıdaki sınıfl
 |İş AkışıScriptAktivite     | Runbook bağlamında PowerShell veya PowerShell İş Akışı kodu bloğunu (runbook türüne bağlı olarak) yürütür. Bu güçlü bir araçtır, ancak aşırı kullanmayın: Kullanıcı Arabirimi bu komut dosyası bloğunu metin olarak gösterir; yürütme altyapısı sağlanan bloğu bir kara kutu olarak ele alacaktır ve temel sözdizimi denetimi dışında içeriğini çözümlemek için hiçbir girişimde bulunmaz. Tek bir PowerShell komutunu çağırmanız gerekiyorsa, CommandActivity'i tercih edin.        |
 
 > [!NOTE]
-> Sağlanan sınıflardan kendi etkinliklerinizi türetetmeyin: Azure Otomasyonu özel etkinlik türlerine sahip runbook'ları kullanamaz.
+> Verilen derslerden kendi etkinliklerinizi türetetmeyin. Azure Otomasyonu, özel etkinlik türlerine sahip runbook'ları kullanamaz.
 
-CommandActivity ve InvokeRunbookActivity parametreleri doğrudan değerler olarak değil, değer tanımlayıcıları olarak sağlanmalıdır. Değer tanımlayıcıları, gerçek parametre değerlerinin nasıl üretilmesi gerektiğini belirtir. Aşağıdaki değer tanımlayıcıları şu anda sağlanmaktadır:
+Doğrudan değerler `CommandActivity` `InvokeRunbookActivity` değil, değer tanımlayıcıları olarak ve parametreleri sağlamanız gerekir. Değer tanımlayıcıları, gerçek parametre değerlerinin nasıl üretilebildiğini belirtir. Aşağıdaki değer tanımlayıcıları şu anda sağlanmaktadır:
 
 
 |Tanımlayıcısı  |Tanım  |
@@ -115,7 +115,7 @@ CommandActivity ve InvokeRunbookActivity parametreleri doğrudan değerler olara
 |PowerShellExpressionValueDescriptor     | Etkinliği aramadan hemen önce değerlendirilecek bir serbest biçim PowerShell ifadesi belirtir.  <br/>Bu güçlü bir araçtır, ancak aşırı kullanmayın: Kullanıcı Arabirimi bu ifadeyi metin olarak gösterir; yürütme altyapısı sağlanan bloğu bir kara kutu olarak ele alacaktır ve temel sözdizimi denetimi dışında içeriğini çözümlemek için hiçbir girişimde bulunmaz. Mümkün olduğunda, daha spesifik değer tanımlayıcılarını tercih edin.      |
 
 > [!NOTE]
-> Sağlanan sınıflardan kendi değer tanımlayıcılarınızı türetetmeyin: Azure Otomasyonu, özel değer tanımlayıcı sıyrık türlerine sahip runbook'ları kullanamaz.
+> Sağlanan sınıflardan kendi değer tanımlayıcılarınızı türetetmeyin. Azure Otomasyonu, özel değer tanımlayıcı türlerine sahip runbook'ları kullanamaz.
 
 Bağlantıları bağlama etkinliklerini anında ayarlayın ve bunları runbook'a ekleyin:
 
@@ -136,10 +136,9 @@ Runbook'u dize seri hale getirmek için kullanın: `Orchestrator.GraphRunbook.Mo
 var serialized = RunbookSerializer.Serialize(runbook);
 ```
 
-Bu dize **.graphrunbook** uzantılı bir dosyaya kaydedilebilir ve bu dosya Azure Otomasyonu'na aktarılabilir.
+Bu dizeyi **.graphrunbook** uzantılı bir dosyaya kaydedebilirsiniz. İlgili runbook Azure Otomasyonu'na aktarılabilir.
 Serileştirilmiş biçim, `Orchestrator.GraphRunbook.Model.dll`'nin gelecekteki sürümlerinde değişebilir. Biz geriye dönük uyumluluk söz veriyorum: herhangi bir `Orchestrator.GraphRunbook.Model.dll` runbook eski bir sürümü ile seri leştirilmiş herhangi bir yeni sürümü tarafından deserialized olabilir. İleriye dönük uyumluluk garanti edilmez: daha yeni bir sürümle seri hale getirilen bir runbook eski sürümler tarafından deserialize edilemeyebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Otomasyonunda Grafik Çalışma Kitapları hakkında daha fazla bilgi edinmek için [bkz.](automation-graphical-authoring-intro.md)
-
+Azure Otomasyonu'nda grafik runbook'lar hakkında daha fazla bilgi edinmek için [bkz.](automation-graphical-authoring-intro.md)

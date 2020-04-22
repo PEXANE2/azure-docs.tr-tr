@@ -8,40 +8,40 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 7d7b9f847cdcc4ab4b1ff065425eebe07fb4d888
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b8869e93a7156b24d61ac555c95b9ca7f850ae34
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775218"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678532"
 ---
-1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinin altında, aşağıda gösterildiği gibi alanları doldurun.
+1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinde, burada gösterildiği gibi kutuları doldurun.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering Yapılandırma - Exchange](../media/setup-exchange-conf-tab.png)
+    > ![Eşleme sayfası Exchange eşleme türü oluşturma](../media/setup-exchange-conf-tab.png)
 
-    * **Peering türü için** *Exchange'i*seçin.
-    * *Temel Ücretsiz*olarak **SKU'yı** seçin.
-    * Eşlemeyi Azure kaynağına dönüştürmek istediğiniz yer için **Metro** konumunu seçin. Azure kaynağına dönüştürülmeyen seçili **Metro** konumunda Microsoft ile karşılaşbağlantılarınız varsa, bu bağlantılar aşağıda gösterildiği gibi **Eşler bağlantıları** bölümünde listelenir. Artık bu bakan bağlantıları Azure kaynağına dönüştürebilirsiniz.
+    * **Peering türü için** **Exchange'i**seçin.
+    * **Temel Ücretsiz**olarak **SKU'yı** seçin.
+    * Bir Azure kaynağına eşlemi dönüştürmek istediğiniz **Metro** konumunu seçin. Azure kaynağına dönüştürülmeyen seçili **Metro** konumunda Microsoft ile karşılaş bağlantılarınız varsa, bu bağlantılar gösterildiği gibi **Eşler bağlantıları** bölümünde listelenir. Artık bu bakan bağlantıları bir Azure kaynağına dönüştürebilirsiniz.
 
         > [!div class="mx-imgBorder"]
-        > ![Peering Configuration - Exchange - Eski Bağlantılar](../media/setup-exchange-legacy-conf-tab.png)
+        > ![Eşleme bağlantıları listesi](../media/setup-exchange-legacy-conf-tab.png)
 
         > [!NOTE]
-        > Eski bakan bağlantılarıiçin ayarları değiştiremezsiniz. Seçili **Metro** konumunda Microsoft ile ek eşleme bağlantıları eklemek istiyorsanız, **bunu yeni oluştur** düğmesine tıklayarak yapabilirsiniz. Bkz. Daha fazla bilgi için [portalı kullanarak Exchange eşlemi oluştur veya değiştirin.](../howto-exchange-portal.md)
+        > Eski bakan bağlantılarıiçin ayarları değiştiremezsiniz. Seçili **Metro** konumunda Microsoft ile ek eşleme bağlantıları eklemek istiyorsanız, **yeni oluştur'u**seçin. Daha fazla bilgi için [bkz.](../howto-exchange-portal.md)
         >
 
-1. Gözden **Geçir + oluştur'a**tıklayın. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığını gözlemleyin. Bu, *son doğrulamayı çalıştırırken*üstteki şeritte görüntülenir... .
+1. **İncele ve oluştur**’u seçin. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığına dikkat edin. Üstteki *şerit, son doğrulamayı çalıştıran*iletiyi görüntüler... .
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Doğrulama Sekmesi](../media/setup-direct-review-tab-validation.png)
+    > ![Eşleme Doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Validation Geçti*döndükten sonra, bilgilerinizi doğrulayın ve **Oluştur'a**tıklayarak isteğinizi gönderin. İsteğinizi değiştirmeniz gerekiyorsa, **Önceki'yi** tıklatın ve yukarıdaki adımları yineleyin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Eşleme Gönder](../media/setup-exchange-review-tab-submit.png)
-
-1. İsteği gönderdikten sonra, dağıtımı tamamlamasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Başarılı bir dağıtım aşağıdaki gibi görünür.
+1. İleti nin *Doğrulama'ya geçirilmesinden*sonra bilgilerinizi doğrulayın. **Oluştur'u**seçerek isteği gönderin. İsteğinizi değiştirmeniz gerekiyorsa, **Önceki'yi** seçin ve adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
-    > ![Akran Başarısı](../media/setup-direct-success.png)
+    > ![Akran gönderimi](../media/setup-exchange-review-tab-submit.png)
+
+1. İsteğe göndermeniz inden sonra, dağıtımın tamamlanmasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Başarılı bir dağıtım gösterildiği gibi görünür.
+
+    > [!div class="mx-imgBorder"]
+    > ![Akran başarısı](../media/setup-direct-success.png)

@@ -3,12 +3,12 @@ title: Azure Geçiş'te keşif, değerlendirme ve bağımlılık analizi ile ilg
 description: Azure Geçiş'te bulma, değerlendirme ve bağımlılık analizi yle ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 700e5318b66cdf4993a17b1dae85fb43f75ab035
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529782"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681913"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Keşif, değerlendirme ve bağımlılık analizi - Sık sorulan sorular
 
@@ -28,6 +28,10 @@ Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-a
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Bir cihazla kaç VM keşfedebilirim?
 
 Tek bir cihaz kullanarak 10.000 VM'ye kadar VM', 5.000'e kadar Hyper-V VM ve 250'ye kadar fiziksel sunucu keşfedebilirsiniz. Daha fazla makineniz varsa, [Bir Hyper-V değerlendirmesini ölçeklendirme,](scale-hyper-v-assessment.md) [VMware değerlendirmesini ölçeklendirme](scale-vmware-assessment.md)veya [fiziksel sunucu değerlendirmesini ölçeklendirme](scale-physical-assessment.md)hakkında bilgi edinin.
+
+## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Devlet'te bazı VM türlerini göremiyorum
+
+Değerlendirme ve geçiş için desteklenen VM türleri Azure Kamu konumundaki kullanılabilirlik durumuna bağlıdır. Azure Kamu'da VM türlerini [inceleyebilir ve karşılaştırabilirsiniz.](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)
 
 
 ## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM'min boyutu değişti. Tekrar bir değerlendirme yapabilir miyim?
@@ -87,7 +91,7 @@ Alma tabanlı değerlendirmeler, Bir CSV dosyası kullanılarak Azure'a Geçiş'
 Bağımlılık görselleştirmesi, daha fazla güvenle geçiş yapmak için VM gruplarını değerlendirmenize yardımcı olabilir. Bağımlılık görselleştirme, bir değerlendirme çalıştırmadan önce makine bağımlılıklarını çapraz denetler. Geride hiçbir şey kalmamasını sağlamaya yardımcı olur ve Azure'a geçiş yaptığınızda beklenmeyen kesintileri önlemeye yardımcı olur. Azure Geçir, bağımlılık görselleştirmesini etkinleştirmek için Azure Monitor'da Hizmet Haritası çözümünü kullanır. [Daha fazla bilgi edinin](concepts-dependency-visualization.md).
 
 > [!NOTE]
-> Bağımlılık görselleştirmesi Azure Kamu'da kullanılamaz.
+> Aracı tabanlı bağımlılık çözümlemesi Azure Kamu'da kullanılamaz. Aracısız bağımlılık çözümlemesi kullanabilirsiniz
 
 ## <a name="whats-the-difference-between-agent-based-and-agentless"></a>Ajan tabanlı ve aracısız arasındaki fark nedir?
 

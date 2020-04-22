@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 45a2829411ea4713df898c90be73792718160cd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255103"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681959"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Adobe Açık Kaynak Medya Çerçevesi için Microsoft Sorunsuz Akış Eklentisi Nasıl Kullanılır?  
 ## <a name="overview"></a>Genel Bakış
@@ -331,7 +331,7 @@ paket {
 OSMF dinamik eklentisi için Düzgün Akış [Strobe Media Playback (SMP)](http://osmf.org/strobe_mediaplayback.html)ile uyumludur. SMP'ye Düzgün Akış içerik oynatma eklemek için OSMF eklentisi için SS'yi kullanabilirsiniz. Bunu yapmak için, aşağıdaki adımları kullanarak HTTP yük için bir web sunucusu altında "MSAdaptiveStreamingPlugin-v1.3-osmf2.0.swf" kopyalayın:
 
 1. [Strobe Media Oynatma kurulum sayfasına](http://osmf.org/dev/2.0gm/setup.html)göz atın. 
-2. Src'yi Düzgün Akış kaynağına ayarlayın (örn.http://devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
+2. Src'yi Düzgün Akış kaynağına ayarlayın( örn.\/http: /devplatem.vo.msecnd.net/Sintel/Sintel_H264.ism/manifest) 
 3. İstediğin yapılandırma değişikliklerini yapın ve Önizleme ve Güncelleştir'i tıklatın.
    
    **Not** İçerik web sunucunuzun geçerli bir crossdomain.xml'e ihtiyacı vardır. 

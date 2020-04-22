@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
-ms.openlocfilehash: 8e5165d000ee98212b3fd76091ffbd030b6b787f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fde249f22342ed2a0c50f5fdda3bde9dc2cde183
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281553"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685734"
 ---
 # <a name="promote-your-business-with-microsoft"></a>Microsoft ile işletmenizi tanıtma
 
@@ -26,7 +26,7 @@ Pazar ortaklarının Microsoft İş Ortağı Ağı'nın (MPN) bir parçası olma
 
 Teklifinizi veya uygulamanızı tanıtmak ve daha fazla avantaj ve kaynağa erişmek için aşağıdaki tabloyu kullanın:
 
-| Avantajlar | Kaynaklar |
+| Yararları | Kaynaklar |
 |:--- |:--- |
 | Temel Avantajlarınızı Kullanın | Microsoft İş Ortağı Ağı'nın bir parçası olarak, zamandan ve paradan tasarruf etmenizi sağlayacak bir dizi temel avantaj elde elabilirsiniz. Faydaları size yardımcı olabilir <ul> <li> yeteneklerinizi güçlendirmek, </li> <li> müşterilere daha iyi hizmet ve </li> <li> tam iş potansiyelinize ulaşmak için bağlantılar oluşturun. </li> </ul> Temel avantajlar hakkında daha fazla bilgi için Temel Avantajlar ve Gereksinimler sayfasını ziyaret [edin.](https://partner.microsoft.com/membership/core-benefits#tab-content-1) |
 | Bulut Platformu Uzmanlığınızı Kazanın | Bir uzmanlık kazanmak, <ul> <li> Kendinizi diğer Microsoft iş ortakları arasında farklılaştırın. </li> <li> Pazardaki teknik uzmanlığı ve müşteri başarısını gösterin. </li> </ul> Yetkinlik, Co-Sell gibi birçok önemli ortak program için bir ön koşuldur. Daha fazla bilgi için [Bulut Platformu uzmanlığına](https://partner.microsoft.com/reach-customers/selling-with-microsoft) bakın. |
@@ -36,6 +36,6 @@ Teklifinizi veya uygulamanızı tanıtmak ve daha fazla avantaj ve kaynağa eri�
 
 Pazar daki GTM hizmetleri hakkında daha fazla bilgi edinmek [için pazara git hizmetlerine](https://partner.microsoft.com/reach-customers/gtm)gidin.
 
-Teklifinizi oluşturmak ve yapılandırmak için [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com) oturum açın.
+Teklifinizi oluşturmak veya tamamlamak için [Ortak Merkezi'nde oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 
 ---

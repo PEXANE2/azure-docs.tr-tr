@@ -4,12 +4,12 @@ description: Bu makalede, Azure Kaynak Yöneticisi kullanarak bir Azure Hizmet K
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a9f59e3e44d3302ac19c7a9e7e77beb51947ce4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481125"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682637"
 ---
 # <a name="service-fabric-application-resource-model"></a>Hizmet Kumaş uygulama kaynak modeli
 
@@ -99,7 +99,7 @@ Bu öğreticide, [Oylama örnek uygulamasını](https://github.com/Azure-Samples
 | uygulamaTypeVersion | Uygulama türünün sürümü         | 1.0.0                                                        | ApplicationManifest.xml ile eşleşmeli                 |
 | Hizmetadı            | Hizmetin adı         | Oylama ~VotingWeb                                             | ApplicationName~ServiceType biçiminde olmalıdır            |
 | serviceTypeName        | Hizmetin türü adı                | VotingWeb                                                    | ServiceManifest.xml ile eşleşmeli                 |
-| appPackageUrl          | Uygulamanın blob depolama URL'si     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob depolamasında uygulama paketinin URL'si (URL'yi ayarlama yordamı daha sonra makalede açıklanmıştır) |
+| appPackageUrl          | Uygulamanın blob depolama URL'si     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob depolamasında uygulama paketinin URL'si (URL'yi ayarlama yordamı daha sonra makalede açıklanmıştır) |
 
 ```json
 {

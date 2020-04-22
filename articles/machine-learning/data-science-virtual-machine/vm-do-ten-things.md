@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 0f42f075f5d3be4486157334403bfa7d3f1aa80c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632164"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682869"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makine'de yapabileceğiniz on şey
 
@@ -817,7 +817,7 @@ Azure Cosmos DB'ye DSVM'den erişmek için aşağıdaki ön koşul adımlarını
 1. Azure Cosmos DB Python SDK zaten DSVM yüklü. Güncelleştirmek için ```pip install pydocumentdb --upgrade``` komut isteminden çalıştırın.
 2. [Azure portalından](https://portal.azure.com)bir Azure Cosmos DB hesabı ve veritabanı oluşturun.
 3. Azure Cosmos DB Veri Geçiş Aracı'nı [Microsoft Download Center'dan](https://www.microsoft.com/download/details.aspx?id=53595) indirin ve seçtiğiniz bir dizine ayıklayın.
-4. Ortak bir [blob'da](https://cahandson.blob.core.windows.net/samples/volcano.json) depolanan JSON verilerini (yanardağ verileri) geçiş aracına aşağıdaki komut parametreleriyle birlikte Azure Cosmos DB'ye aktarın. (Azure Cosmos DB Veri Geçiş Aracı'nı yüklediğiniz dizinden dtui.exe'yi kullanın.) Kaynak ve hedef konumu şu parametrelerle girin:
+4. Ortak bir [blob'da](https://dotnet.microsoft.com/) depolanan JSON verilerini (yanardağ verileri) geçiş aracına aşağıdaki komut parametreleriyle birlikte Azure Cosmos DB'ye aktarın. (Azure Cosmos DB Veri Geçiş Aracı'nı yüklediğiniz dizinden dtui.exe'yi kullanın.) Kaynak ve hedef konumu şu parametrelerle girin:
    
     `/s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 

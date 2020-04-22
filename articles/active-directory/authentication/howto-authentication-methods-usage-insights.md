@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1730939de399cacd13c62988259904ba84ee78ff
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80654141"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680196"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>Kimlik doğrulama yöntemleri kullanımı & öngörüleri (önizleme)
 
@@ -93,6 +93,8 @@ Listenin üst kısmındaki denetimleri kullanarak, bir kullanıcı arayabilir ve
 Bu raporlarda gösterilen veriler 60 dakikaya kadar geciktirilir. Verilerinizin ne kadar yeni olduğunu belirlemek için Azure portalında "Son yenilenen" bir alan bulunur.
 
 Kullanım ve öngörü verileri, Azure Çok Faktörlü Kimlik Doğrulama etkinlik raporlarının veya Azure AD oturum açma raporunda yer alan bilgilerin yerini alamaz.
+
+Rapor şu anda dış kullanıcıları hariç tutmak için filtrelenemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

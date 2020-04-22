@@ -1,22 +1,22 @@
 ---
-title: Markete Git Hizmetleri - En iyi uygulamaları listeleme teklifi | Azure
+title: Markete Git Hizmetleri - En iyi uygulamaları listeleme teklifi | Azure Marketi
 description: Go-To-Market Hizmetleri - bu bölümde bir teklif için en iyi uygulamaları listeleme açıklanır
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 3cb625e613d8dbe9398e947925a8dc574a277614
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f5083b5f00834e65a8385835635588033bd977
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286260"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684574"
 ---
 # <a name="offer-listing-best-practices"></a>En iyi teklif listeleme deneyimleri
 
-Bu bölümdeki tablolar, pazar teklifleri oluşturmak ve ilgi çekici öneriler sunar. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Bulut Ortağı portalına](https://cloudpartner.azure.com/#insights)gidin. 
+Bu bölümdeki tablolar, pazar teklifleri oluşturmak ve ilgi çekici öneriler sunar. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Ortak Merkezi'ne](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)gidin. 
 
 ## <a name="storefront-offer-details"></a>Storefront teklif detayları
 
@@ -25,14 +25,14 @@ Bu bölümdeki tablolar, pazar teklifleri oluşturmak ve ilgi çekici öneriler 
 | Teklif Adı | Güçlü bir başlık sağlayın:<br> <ul> <li> Uygulama adınız müşterileriniz için temel değeri iletmelidir. </li> <li> Arama motoru sonuçlarında daha yüksek sıralama almak için uygulama başlığınıza arama anahtar kelimeleri ekleyin. </li> </ul> Danışmanlık hizmeti girişleri için ayarlanmış başlık biçimini izleyin:<br>[Teklif Adı: [Süre] [Teklif Türü] (örneğin, *Contoso: 2-Hafta Uygulama)* <br><br> Marka kurallarına uyun:<br>Microsoft ticari markaları ve Microsoft yazılım, ürün ve hizmetlerinin adlarına atıfta bulunduğunuzda [Microsoft Ticari Marka ve Marka Yönergeleri'ne](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx) ve ürüne özel diğer yönergelere uyun. |
 | Teklif Açıklaması | Net bir teklif açıklaması sağlayın:<br> <ul> <li> Teklifinizin değer teklifini açıklamanızın ilk birkaç cümlesinde açıkça açıklayın. </li> <li> İlk birkaç cümlenin arama motoru sonuçlarında görüntülenebileceğini unutmayın. </li> <li> Ürününüzü satmak için özelliklere ve işlevselliğe güvenmeyin. Bunun yerine, sağladığınız değere odaklanın. </li> <li> Sektöre özgü kelime dağarcığı veya fayda tabanlı ifadeler mümkün olduğunca kullanın.</li> <li> Ayrıca, Danışmanlık Hizmeti listeleri, sağladığınız profesyonel hizmeti açıkça belirtmelidir. </li></ul> Değer önermenizin temel bileşenleri aşağıdaki bilgileri içermelidir:<ul><li>Ürünün açıklaması.</li><li>Üründen yararlanan kullanıcı türü.</li><li>Müşteri ihtiyacı veya ağrı bu ürün adresleri.</li></ul> |
 
-Bu bölümdeki tablolar, pazar teklifleri oluşturmak ve ilgi çekici öneriler sunar. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Bulut Ortağı portalına](https://cloudpartner.azure.com/#insights)gidin. 
+Bu bölümdeki tablolar, pazar teklifleri oluşturmak ve ilgi çekici öneriler sunar. Pazarlama malzemelerinizi yazmak ve yapılandırmak için [Ortak Merkezi'ne](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)gidin. 
 
 ## <a name="storefront-listing-details"></a>Storefront giriş ayrıntıları
 
 | Mağaza ön ayarı | En iyi yöntem |
 |:--- |:--- |  
-| Endüstriler: Yalnızca AppSource uygulamaları ve danışmanlık hizmetleri | Teklifiniz sektöre özel gereksinimleri karşılıyorsa, sektörleri seçin: <ul><li> Teklif açıklamanızda sektöre özel yetenekleri çağırın.</li> </ul> **Not**: Maksimum seçenek sayısı teklif türüne göre değişir ve [Bulut İş Ortağı portalında](https://cloudpartner.azure.com/#insights)belirtilir. |
-| Kategoriler | Teklifinizle en iyi uyumlu kategoriler seçin:<br> <ul> <li> Müşteriler alakalı uygulamaları aramak için bunları kullandığından kategorileri dikkatle seçin. </li> <li> Teklifinizin, teklif açıklamasında kategoriye özgü gereksinimleri nasıl desteklediğini mutlaka unutmayın. </li> </ul> **Not**: Maksimum seçenek sayısı teklif türüne göre değişir ve [Bulut İş Ortağı portalında](https://cloudpartner.azure.com/#insights)belirtilir. |
+| Endüstriler: Yalnızca AppSource uygulamaları ve danışmanlık hizmetleri | Teklifiniz sektöre özel gereksinimleri karşılıyorsa, sektörleri seçin: <ul><li> Teklif açıklamanızda sektöre özel yetenekleri çağırın.</li> </ul> **Not**: Maksimum seçenek sayısı teklif türüne göre değişir ve [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)belirtilir. |
+| Kategoriler | Teklifinizle en iyi uyumlu kategoriler seçin:<br> <ul> <li> Müşteriler alakalı uygulamaları aramak için bunları kullandığından kategorileri dikkatle seçin. </li> <li> Teklifinizin, teklif açıklamasında kategoriye özgü gereksinimleri nasıl desteklediğini mutlaka unutmayın. </li> </ul> **Not**: Maksimum seçenek sayısı teklif türüne göre değişir ve [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)belirtilir. |
 | Uygulamanızın birlikte çalıştığı ürünler (3 max): Yalnızca AppSource uygulamaları | Çözümünüzün kullandığı veya genişleten ek ürünleri ve teknolojileri listelayın. Örneğin, Azure IoT Hub veya Azure Makine Öğrenimi. |
 | Arama anahtar kelimeleri (3 max) | Arama anahtar kelimeleri, iş kullanıcılarının teklifinizi ararken bulmasına yardımcı olabilir <ul> <li> Azure Marketi'nde </li> <li> AppSource üzerinde </li> <li> arama motorlarını kullanma </li> </ul> Girişinizin bu aramalarda görünmesi için şunları yapmanız gerekir: <ul> <li> Teklifiniz için en iyi üç arama anahtar kelimesini belirleyin; </li> <li> arama anahtar kelimelerini teklif özetinize ve açıklamanıza dahil edin; </li> <li> arama anahtar kelimelerini burada listeleyin. </li> </ul> |
 
@@ -89,12 +89,12 @@ Sitenizdeki AppSource veya Azure Marketi rozetinden pazardaki girişinize bağla
 
 Aşağıdaki örnek URL, önceki sorgu parametrelerinin her ikisini de içerir:`https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Parametreleri AppSource URL'nize ekleyerek, [Bulut İş Ortağı portalındaki](https://cloudpartner.azure.com/#insights)analiz panosunda kampanyanızın etkinliğini gözden geçirebilirsiniz.
+Parametreleri AppSource URL'nize ekleyerek, [Kampanyanızın](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)Etkinliğini İş Ortağı Merkezi'ndeki analitik panosunda gözden geçirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ticari pazar [avantajlarınız](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
+Ticari pazar [avantajlarınız](./gtm-your-marketplace-benefits.md)hakkında daha fazla bilgi edinin.
 
-Teklifinizi oluşturmak ve yapılandırmak için [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com) oturum açın.
+Teklifinizi oluşturmak ve yapılandırmak için [Ortak Merkezi'nde](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) oturum açın.
 
 ---

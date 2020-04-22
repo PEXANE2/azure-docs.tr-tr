@@ -5,31 +5,28 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: c9a3c88ea0c3e656adf0f8c514b418cfc07c9590
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335767"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676437"
 ---
-# <a name="manage-updates-for-multiple-machines"></a>Birden çok makine için güncelleştirmeleri yönetme
+# <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Birden fazla Azure sanal makinesi için güncelleştirmeleri yönetme
 
-Windows ve Linux sanal makineleriniz için güncelleştirmeleri ve yamaları yönetmek için Güncelleme Yönetimi çözümlerini kullanabilirsiniz. [Azure Otomasyonu](automation-offering-get-started.md) hesabınızdan şunları yapabilirsiniz:
+Windows ve Linux sanal makineleriniz için güncelleştirmeleri ve yamaları yönetmek için Azure Otomasyon Güncelleme Yönetimi'ni kullanabilirsiniz. [Azure Otomasyonu](automation-offering-get-started.md) hesabınızdan şunları yapabilirsiniz:
 
-- Yerleşik sanal makineler
-- Kullanılabilir güncelleştirmelerin durumunu değerlendirme
-- Gerekli güncelleştirmelerin zamanyüklemesini zamanlama
-- Güncelleştirme Yönetimi etkinleştirilmiş tüm sanal makinelere güncelleştirmelerin başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin
+- Sanal makine ekleme.
+- Kullanılabilir güncelleştirmelerin durumunu değerlendirme.
+- Gerekli güncelleştirmeleri yüklemeyi zamanlama.
+- Güncelleştirme Yönetimi etkinleştirilmiş tüm sanal makinelere güncelleştirmelerin başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin.
+
+Güncelleştirme Yönetimi için sistem gereksinimleri hakkında bilgi edinmek için, [Güncelleştirme Yönetimi istemci gereksinimlerine](automation-update-management.md#clients)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Güncelleştirme Yönetimi'ni kullanmak için şunları yapmanız gerekir:
-
-- Desteklenen işletim sistemlerinden birinin yüklü olduğu bir sanal makine veya bilgisayar.
-
-- Çözüme bağlı Linux VM'leri için bir güncelleştirme deposuna erişim.
-
-Güncelleştirme Yönetimi için sistem gereksinimleri hakkında bilgi edinmek için, [Güncelleştirme Yönetimi istemci gereksinimlerine](automation-update-management.md#clients)bakın.
+* Desteklenen işletim sistemlerinden birinin yüklü olduğu bir sanal makine veya bilgisayar.
+* Update Management'a bağlı Linux VM'leri için bir güncelleştirme deposuna erişim.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Azure sanal makineleri için Güncelleştirme Yönetimini etkinleştirme
 
@@ -53,25 +50,23 @@ Windows ve Linux için Log Analytics aracısının, Güncelleştirme Yönetimi i
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Otomasyon hesabınıza bağlı bilgisayarları görüntüleme
 
-Makineleriniz için Güncelleştirme Yönetimi'ni etkinleştirdikten sonra, **Bilgisayarlar'ı**seçerek makine bilgilerini görüntüleyebilirsiniz. *Makine adı,* *uyumluluk durumu,* *ortam,* *işletim sistemi türü,* *kritik ve güvenlik güncelleştirmeleri yüklü,* *diğer güncelleştirmeler yüklü*ve bilgisayarlarınız için aracı *hazırlığını güncelleştirme* hakkında bilgi görebilirsiniz.
+Makineleriniz için Güncelleştirme Yönetimi'ni etkinleştirdikten sonra, **Bilgisayarlar'ı**seçerek makine bilgilerini görüntüleyebilirsiniz. Makine adı, uyumluluk durumu, ortam, işletim sistemi türü, kritik ve güvenlik güncelleştirmeleri yüklü, diğer güncelleştirmeler yüklü ve bilgisayarlarınız için aracı hazırlığını güncelleştirme hakkında bilgi görebilirsiniz.
 
   ![Bilgisayarları görüntüle sekmesi](./media/manage-update-multi/update-computers-tab.png)
 
-Son zamanlarda Güncelleştirme Yönetimi için etkinleştirilen bilgisayarlar henüz değerlendirilmemiş olabilir. Bu bilgisayarlar için uyumluluk durumu **durumu değerlendirilmez.** Uyumluluk durumu için olası değerlerin bir listesi aşağıda vevereme durumu vereme durumu aşağıda veda edebilirsiniz:
+Son zamanlarda Güncelleştirme Yönetimi için etkinleştirilen bilgisayarlar henüz değerlendirilmemiş olabilir. Bu bilgisayarlar için uyumluluk `Not assessed`durumu . Uyumluluk durumu için olası değerlerin bir listesi aşağıda vevereme durumu vereme durumu aşağıda veda edebilirsiniz:
 
-- **Uyumlu**: Kritik veya güvenlik güncelleştirmelerini eksik olmayan bilgisayarlar.
+- `Compliant`: Kritik veya güvenlik güncelleştirmelerini eksik olmayan bilgisayarlar.
+- `Non-compliant`: En az bir kritik veya güvenlik güncelleştirmesi eksik bilgisayarlar.
+- `Not assessed`: Güncelleştirme değerlendirme verileri beklenen zaman dilimi içinde bilgisayardan alınmadı. Linux bilgisayarlar için beklenen zaman dilimi son saattir. Windows bilgisayarlariçin beklenen zaman dilimi son 12 saattir.
 
-- **Uyumlu olmayan**: En az bir kritik veya güvenlik güncelleştirmesi eksik olan bilgisayarlar.
-
-- **Değerlendirilmemiştir**: Güncelleştirme değerlendirme verileri beklenen zaman dilimi içinde bilgisayardan alınmamıştır. Linux bilgisayarlar için, beklenen zaman dilimi son bir saat içinde. Windows bilgisayarlarda beklenen zaman dilimi son 12 saattir.
-
-Aracının durumunu görüntülemek için, **temsilciye hazırlık** sütunundaki bağlantıyı seçin. Bu seçeneği **nseçilmesi, Karma İşçi** bölmesini açar ve Karma İşçi'nin durumunu gösterir. Aşağıdaki resim, uzun bir süre güncelleştirme yönetimine bağlı olmayan bir aracının bir örneğini gösterir:
+Aracının durumunu görüntülemek için, **temsilciye hazırlık** sütunundaki bağlantıyı seçin. Bu seçeneği nseçilmesi, Karma İşçi bölmesini açar ve Karma İşçi'nin durumunu gösterir. Aşağıdaki resim, uzun bir süre güncelleştirme yönetimine bağlı olmayan bir aracının bir örneğini gösterir:
 
 ![Bilgisayarları görüntüle sekmesi](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimi etkinleştirildikten sonra **Güncelleştirme yönetimi** bölmesi açılır. **Eksik güncelleştirmeler** sekmesinde eksik güncelleştirmelerin bir listesini görebilirsiniz.
+Güncelleştirme Yönetimi etkinleştirildikten sonra, Güncelleştirme Yönetimi bölmesi açılır. **Eksik güncelleştirmeler** sekmesinde eksik güncelleştirmelerin bir listesini görebilirsiniz.
 
 ## <a name="collect-data"></a>Veri toplama
 
@@ -132,7 +127,7 @@ Yeni **güncelleştirme dağıtım** bölmesinde aşağıdaki bilgileri belirtin
   - Araçlar
   - Güncelleştirmeler
 
-- **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece **Dahil Et / Dışla** sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. İçermenin nasıl işleyiş işleyiş yaptığı hakkında daha fazla bilgi için [bkz.](automation-tutorial-update-management.md#schedule-an-update-deployment)
+- **Dahil edilecek/dışlanacak güncelleştirmeler** - Böylece Dahil Et / Dışla sayfası açılır. Dahil edilecek veya dışlanacak güncelleştirmeler ayrı sekmelerdedir. İçermenin nasıl işleyiş işleyiş yaptığı hakkında daha fazla bilgi için [bkz.](automation-tutorial-update-management.md#schedule-an-update-deployment)
 
 > [!NOTE]
 > Dışlamaların kapsayıcıları geçersiz kdığını bilmek önemlidir. Örneğin, bir dışlama kuralı `*`tanımlarsanız, bunların tümü hariç olduğu için hiçbir düzeltme ekleri veya paketler yüklenmez. Dışlanmış yamalar hala makineden eksik olarak göstermektedir. Linux makineleri için bir paket dahil edildiyse ancak dışlanan bağımlı bir paket varsa, paket yüklenmez.
@@ -176,11 +171,11 @@ Dağıtımdaki bir veya daha fazla güncelleştirme başarısız olursa durum **
 
 Bir güncelleştirme dağıtımının panosunu görmek için tamamlanan dağıtımı seçin.
 
-**Güncelleştirme sonuçları** bölmesi, sanal makinenin toplam güncelleştirme sayısını ve dağıtım sonuçlarını gösterir. Sağdaki tablo, her güncelleştirmenin ve yükleme sonuçlarının ayrıntılı bir dökümünü verir. Yükleme sonuçları aşağıdaki değerlerden biri olabilir:
+Güncelleştirme sonuçları bölmesi, sanal makinenin toplam güncelleştirme sayısını ve dağıtım sonuçlarını gösterir. Sağdaki tablo, her güncelleştirmenin ve yükleme sonuçlarının ayrıntılı bir dökümünü verir. Yükleme sonuçları aşağıdaki değerlerden biri olabilir:
 
-- **Denenmedi**: Tanımlı bakım penceresine bağlı olarak yeterli zaman olmadığı için güncelleştirme yüklenmedi.
-- **Başarılı**: Güncelleştirme başarılı oldu.
-- **Başarısız**: Güncelleştirme başarısız oldu.
+- `Not attempted`: Tanımlı bakım penceresine bağlı olarak yeterli zaman olmadığı için güncelleştirme yüklenmedi.
+- `Succeeded`: Güncelleştirme başarılı oldu.
+- `Failed`: Güncelleştirme başarısız oldu.
 
 Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm günlükler**’i seçin.
 

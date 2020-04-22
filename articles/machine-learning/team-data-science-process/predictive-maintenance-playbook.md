@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 5cf3f02284777a54a9d26cad8a7f3b5b4fa6b335
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79087761"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686745"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Tahmine dayalı bakım çözümleri için Azure AI kılavuzu
 
@@ -449,6 +449,6 @@ Microsoft Azure, genel AI kavramları ve uygulamaları yla ilgili içerik ve eğ
 | [Microsoft AI YouTube Web seminerleri](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Genel |
 | [Microsoft AI Göster](https://channel9.msdn.com/Shows/AI-Show) | Genel |
 | [LearnAI@MS](https://learnanalytics.microsoft.com) | İş Ortakları |
-| [Microsoft İş Ortağı Ağı](https://learningportal.microsoft.com) | İş Ortakları |
+| [Microsoft İş Ortağı Ağı](https://partner.microsoft.com/training/training-center) | İş Ortakları |
 
 Buna ek olarak, Ücretsiz MOOCS (büyük açık online kurslar) AI Stanford ve MIT gibi akademik kurumlar tarafından online olarak sunulmaktadır, ve diğer eğitim şirketleri.

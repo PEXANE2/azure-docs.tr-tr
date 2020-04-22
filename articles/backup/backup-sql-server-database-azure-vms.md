@@ -4,12 +4,12 @@ description: Bu makalede, Azure Yedekleme ile Azure sanal makinelerde SQL Server
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5b10907738feeecbec06669175e82578f2915f92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273338"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685722"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM’lerinde SQL Server veritabanlarını yedekleme
 
@@ -59,7 +59,7 @@ Portalı kullanarak bir kural oluşturmak için:
 
   1. **Tüm Hizmetler'de** **Ağ güvenlik gruplarına** gidin ve ağ güvenlik grubunu seçin.
   2. **Ayarlar**altında **Giden güvenlik kurallarını** seçin.
-  3. **Ekle'yi**seçin. [Güvenlik kuralı ayarlarında](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)açıklandığı gibi yeni bir kural oluşturmak için gerekli tüm ayrıntıları girin. **Hedef** seçeneğinin Hizmet **Etiketi** ne zaman Hedef hizmet etiketi olarak ayarlandığından emin olun, **AzureBackup** olarak ayarlanır. **AzureBackup**
+  3. **Add (Ekle)** seçeneğini belirleyin. [Güvenlik kuralı ayarlarında](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings)açıklandığı gibi yeni bir kural oluşturmak için gerekli tüm ayrıntıları girin. **Hedef** seçeneğinin Hizmet **Etiketi** ne zaman Hedef hizmet etiketi olarak ayarlandığından emin olun, **AzureBackup** olarak ayarlanır. **AzureBackup**
   4. Yeni oluşturulan giden güvenlik kuralını kaydetmek için **Ekle'yi**tıklatın.
 
 PowerShell kullanarak bir kural oluşturmak için:
@@ -112,7 +112,7 @@ Veritabanı adlarında aşağıdaki öğeleri kullanmaktan kaçının:
 * Yarı kolon ';'
 * İleri eğik çizgi '/'
 
-Diğer ad desteklenmeyen karakterler için kullanılabilir, ancak bu karakterlerden kaçınmanızı öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN).
+Diğer ad desteklenmeyen karakterler için kullanılabilir, ancak bu karakterlerden kaçınmanızı öneririz. Daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model).
 
 >[!NOTE]
 >Adlarında "+" veya "&" gibi özel karakterlere sahip veritabanları için **Yapı koruması** işlemi desteklenmez. Veritabanı adını değiştirebilir veya bu veritabanlarını başarıyla koruyabilen **Otomatik Koruma'yı**etkinleştirebilirsiniz.

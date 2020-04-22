@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bc635addc2a5cd7d3c698f6885bec0399e28743a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e94bdd6e79ff13d8ba736e140538bae74091f727
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309665"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680083"
 ---
 # <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft kimlik platformunda OAuth 2.0 ve OpenID Connect protokolleri
 
 Endüstri standardı protokolleri, OpenID Connect ve OAuth 2.0 ile hizmet olarak kimlik için Microsoft kimlik platformu bitiş noktası. Hizmet standartlara uygun olsa da, bu protokollerin herhangi iki uygulaması arasında ince farklar olabilir. Burada bilgiler, doğrudan HTTP isteklerini göndererek ve işleyerek veya [açık kaynak kitaplıklarımızdan](reference-v2-libraries.md)birini kullanmak yerine üçüncü taraf açık kaynak kitaplığını kullanarak kodunuzu yazmayı seçerseniz yararlı olacaktır.
-
-> [!NOTE]
-> Tüm Azure REKLAM senaryoları ve özellikleri Microsoft kimlik platformu bitiş noktası tarafından desteklenmez. Microsoft kimlik platformu bitiş noktasını kullanmanız gerekip gerekip gerekmeden karar vermek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="the-basics"></a>Temel bilgiler
 
@@ -68,7 +65,7 @@ Dört `{tenant}` farklı değerden birini alabilecekleri yer:
 Bu uç noktalarla nasıl etkileşimde ebileceğinizi öğrenmek için [Protokoller](#protocols) bölümünde belirli bir uygulama türünü seçin ve daha fazla bilgi için bağlantıları izleyin.
 
 > [!TIP]
-> Azure AD'de kayıtlı herhangi bir uygulama, kişisel hesaplarda oturum açmasalar bile Microsoft kimlik platformu bitiş noktasını kullanabilir.  Bu şekilde, varolan uygulamaları, uygulamanızı yeniden oluşturmadan Microsoft kimlik platformuna ve [MSAL'a](reference-v2-libraries.md) geçirebilirsiniz.  
+> Azure AD'de kayıtlı herhangi bir uygulama, kişisel hesaplarda oturum açmasalar bile Microsoft kimlik platformu bitiş noktasını kullanabilir.  Bu şekilde, varolan uygulamaları, uygulamanızı yeniden oluşturmadan Microsoft kimlik platformuna ve [MSAL'a](reference-v2-libraries.md) geçirebilirsiniz.
 
 ## <a name="tokens"></a>Belirteçler
 

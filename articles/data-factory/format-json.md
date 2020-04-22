@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
-ms.openlocfilehash: c18d767afd3721bd6f6250058b9fbe66990133e4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417751"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686274"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Veri Fabrikası'nda JSON biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -288,6 +288,8 @@ File3.json
     "json": "record 3"
 }
 ```
+> [!NOTE]
+> JSON verilerinizi önerirken veri akışları "corrupt_record" belirten bir hata yaparsa, verilerinizin json dosyanızda tek bir belge içermesi olasıdır. "Tek belge" ayarı bu hatayı temizlemelidir.
 
 #### <a name="unquoted-column-names"></a>Tırnak içinde sütun adları
 

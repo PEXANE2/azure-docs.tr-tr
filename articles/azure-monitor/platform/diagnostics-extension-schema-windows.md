@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4c711e1b0a63fbcf978c0e4467eadaed8d91f3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c04fc82b8b04e474a656a0849177f7aa5d27b427
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79274716"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676428"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows tanılama uzantısı şeması
 Azure Tanılama uzantısı, Azure Monitor'da konuk işletim sisteminden izleme verileri ve Azure bilgi işlem kaynaklarının iş yüklerini toplayan bir aracıdır. Bu makalede, Windows sanal makinelerde ve diğer bilgi işlem kaynaklarında tanılama uzantısı yapılandırması için kullanılan şema ayrıntıları.
@@ -223,9 +223,8 @@ Tanılama yapılandırma dosyasının üst düzey öğesi.
 
 |Alt Öğe|Açıklama|  
 |-------------------|-----------------|  
-|**Datasource**|Windows Event günlükleri toplamak için. Gerekli öznitelik:<br /><br /> **ad** - Toplanacak windows olaylarını açıklayan XPath sorgusu. Örnek:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Tüm olayları toplamak için "*"|  
-
-
+|**Datasource**|Windows Event günlükleri toplamak için. Gerekli öznitelik:<br /><br /> **ad** - Toplanacak windows olaylarını açıklayan XPath sorgusu. Örneğin:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Tüm olayları toplamak için "*" |
+|**Lavabo** | 1.5 olarak eklendi. İsteğe bağlı. Lavaboları destekleyen tüm alt öğeler için tanılama verileri göndermek için bir lavabo konumuna işaret eder. Lavabo örneği Uygulama Öngörüleri veya Olay Hub'larıdır.|  
 
 
 ## <a name="logs-element"></a>Günlükleri Öğesi  

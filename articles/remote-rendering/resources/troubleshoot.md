@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: ac7e721a863414cf0617177885e0ff1c9e9a35d4
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617858"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681849"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -101,6 +101,35 @@ Bu iki adım yardımcı olmadıysa, video karelerinin istemci tarafından alın�
 **Model görünümü frustum içinde değildir:**
 
 Birçok durumda, model doğru görüntülenir ama kamera frustum dışında yer alır. Ortak bir nedeni modeli kameranın uzak kırpma düzlemi tarafından kırpılmış böylece çok off-center pivot ile ihraç edilmiş olmasıdır. Modelin sınırlayıcı kutusunu programlı olarak sorgulamaya ve kutuyu unity ile bir satır kutusu olarak görselleştirmeye veya değerlerini hata ayıklama günlüğüne yazdırmaya yardımcı olur.
+
+Ayrıca dönüştürme işlemi dönüştürülmüş model ile birlikte bir [çıkış json dosyası](../how-tos/conversion/get-information.md) oluşturur. Model konumlandırma sorunlarını hata ayıklamak `boundingBox` [için, çıktıİstatistikleri bölümündeki](../how-tos/conversion/get-information.md#the-outputstatistics-section)girişe bakmaya değer:
+
+```JSON
+{
+    ...
+    "outputStatistics": {
+        ...
+        "boundingBox": {
+            "min": [
+                -43.52,
+                -61.775,
+                -79.6416
+            ],
+            "max": [
+                43.52,
+                61.775,
+                79.6416
+            ]
+        }
+    }
+}
+```
+
+Sınırlama kutusu metre olarak, 3B alanda bir `min` ve `max` pozisyon olarak tanımlanır. Yani 1000.0'lık bir koordinat, orijinden 1 kilometre uzakta olduğu anlamına gelir.
+
+Görünmez geometriye yol açan bu sınırlayıcı kutuda iki sorun olabilir:
+* **Kutu çok off-center olabilir,** bu yüzden nesne tamamen uzak düzlem kırpma nedeniyle kırpılır. Bu `boundingBox` durumda değerleri şu şekilde `min = [-2000, -5,-5], max = [-1990, 5,5]`görünür: , burada örnek olarak x ekseninde büyük bir ofset kullanarak. Bu tür bir sorunu gidermek `recenterToOrigin` [için, model dönüştürme yapılandırmasındaki](../how-tos/conversion/configure-model-conversion.md)seçeneği etkinleştirin.
+* **Kutu ortalanmış olabilir ama büyüklük siparişleri çok büyük olabilir.** Bu, kameramodelin merkezinde başlasa da geometrisinin her yöne kırpılmış olduğu anlamına gelir. Bu `boundingBox` durumda tipik değerler şu `min = [-1000,-1000,-1000], max = [1000,1000,1000]`şekilde görünür: . Bu tür bir sorunun nedeni genellikle birim ölçekli uyuşmazlıktır. Telafi etmek için, [dönüştürme sırasında ölçekleme değeri](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) belirtin veya kaynak modeli doğru birimlerle işaretleyin. Çalışma zamanında modeli yüklerken ölçekleme kök düğümüne de uygulanabilir.
 
 **Unity render ardışık hattı render kancalarını içermez:**
 

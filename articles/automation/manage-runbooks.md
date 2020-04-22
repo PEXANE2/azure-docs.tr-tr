@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a1229ee389b41625554fb2869089b08a3cb9cb6d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80617138"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676508"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu'nda runbook'ları yönetme
 
@@ -28,7 +28,7 @@ Azure portallarından birini veya Windows PowerShell'i kullanarak Azure Otomasyo
 1. Azure portalında, Otomasyon hesabınızı açın.
 2. Merkezden, runbook listesini açmak için **Proses Otomasyonu** altındaki **Runbook'ları** seçin.
 3. **Runbook Oluştur'u**tıklatın.
-4. Runbook için bir ad girin ve [Türünü](automation-runbook-types.md)seçin. Runbook adı bir harfle başlamalı ve harfler, sayılar, alt çizgi ve tireler içerebilir.
+4. Runbook için bir ad girin ve [türünü](automation-runbook-types.md)seçin. Runbook adı bir harfle başlamalı ve harfler, sayılar, alt çizgi ve tireler içerebilir.
 5. Runbook'u oluşturmak ve düzenleyiciyi açmak için **Oluştur'u** tıklatın.
 
 ### <a name="create-a-runbook-with-powershell"></a>PowerShell ile runbook oluşturma
@@ -46,13 +46,13 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 
 Bir PowerShell komut dosyası veya PowerShell İş Akışı **(.ps1),** dışa aktarılan grafik runbook **(.graphrunbook)** veya Python2 komut dosyası (**.py)** içe aktararak Azure Otomasyonu'nda yeni bir runbook oluşturabilirsiniz.  Alma sırasında oluşturulan [runbook türünü](automation-runbook-types.md) aşağıdaki hususları dikkate alarak belirtmeniz gerekir.
 
-* İş akışı içermeyen bir **.ps1** dosyası [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) veya [PowerShell Workflow runbook'a](automation-runbook-types.md#powershell-workflow-runbooks)aktarılabilir. Bir PowerShell İş Akışı runbook içine içe aktarSanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri açıklamak için açıklamalar runbook'a dahil edilir.
+* [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) veya [PowerShell Workflow runbook'a](automation-runbook-types.md#powershell-workflow-runbooks)iş akışı içermeyen bir **.ps1** dosyasını içe aktarabilirsiniz. Bir PowerShell İş Akışı runbook içine içe aktarSanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri açıklamak için açıklamalar runbook'a dahil edilir.
 
-* PowerShell İş Akışı içeren bir **.ps1** dosyası yalnızca [PowerShell İş Akışı runbook'una](automation-runbook-types.md#powershell-workflow-runbooks)aktarılabilir. Dosya birden çok PowerShell iş akışı içeriyorsa, içe aktarma başarısız olur. Her iş akışını kendi dosyasına kaydetmeniz ve her biri ayrı ayrı içe aktarmanız gerekir.
+* [PowerShell İş Akışı çalışma kitabına](automation-runbook-types.md#powershell-workflow-runbooks)yalnızca PowerShell İş Akışı içeren bir **.ps1** dosyasını içe aktarabilirsiniz. Dosya birden çok PowerShell iş akışı içeriyorsa, içe aktarma başarısız olur. Her iş akışını kendi dosyasına kaydetmeniz ve her biri ayrı ayrı içe aktarmanız gerekir.
 
-* PowerShell İş Akışı içeren bir **.ps1** dosyası, PowerShell komut dosyası altyapısı tanıyamadığı için [PowerShell runbook'a](automation-runbook-types.md#powershell-runbooks)alınmamalıdır.
+* PowerShell komut dosyası altyapısı tanıyamadığı için PowerShell İş Akışı içeren bir **.ps1** dosyasını [PowerShell runbook'a](automation-runbook-types.md#powershell-runbooks)aktarmayın.
 
-* Bir **.graphrunbook** dosyası yalnızca yeni bir [grafik runbook'a](automation-runbook-types.md#graphical-runbooks)aktarılabilir. Yalnızca **.graphrunbook** dosyasından grafik çalışma kitabı oluşturabileceğinizi unutmayın.
+* **Bir .graphrunbook** dosyanızı yalnızca yeni bir [grafik runbook'a](automation-runbook-types.md#graphical-runbooks)aktarabilirsiniz. Yalnızca **.graphrunbook** dosyasından grafik çalışma kitabı oluşturabileceğinizi unutmayın.
 
 ### <a name="import-a-runbook-from-a-file-with-the-azure-portal"></a>Azure portalı olan bir dosyadan runbook alma
 

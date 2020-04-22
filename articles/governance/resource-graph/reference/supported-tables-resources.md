@@ -1,14 +1,14 @@
 ---
 title: Desteklenen Kaynak Yöneticisi kaynak türleri
 description: Azure Kaynak Grafiği ve Değişiklik Geçmişi tarafından desteklenen Kaynak Yöneticisi kaynak türlerinin bir listesini sağlayın.
-ms.date: 04/15/2020
+ms.date: 04/20/2020
 ms.topic: reference
-ms.openlocfilehash: 99cb2176e4b0642be1fc31d49528ebf915ea440a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 99a10e084f8ae24156c447f7abca31a8ef977720
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415148"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685471"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Kaynak Grafiği tablosu ve kaynak türü başvurusu
 
@@ -50,7 +50,11 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 - livearena.broadcast/services
 - mailjet.email/services
 - microsoft.aad/domainservices
+- microsoft.aadiam/privatelinkforazuread
 - microsoft.aadiam/kiracı
+- microsoft.aisupercomputer/accounts
+- microsoft.aisupercomputer/accounts/jobgroups
+- microsoft.aisupercomputer/accounts/jobgroups/jobs
 - microsoft.alertsmanagement/actionrules
 - microsoft.alertsmanagement/smartdetectoralertrules
 - microsoft.analysisservices/servers
@@ -63,6 +67,7 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 - microsoft.automation/automationaccounts/runbooks
 - microsoft.azconfig/configurationstores
 - microsoft.azureactivedirectory/b2cdirectories
+- microsoft.azuredata/datacontrollers
 - microsoft.azuredata/hybriddatamanagers
 - microsoft.azuredata/postgresinstances
 - microsoft.azuredata/sqlbigdataclusters
@@ -351,6 +356,7 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 - microsoft.remoteapp/collections
 - microsoft.resourcegraph/queries
 - microsoft.resources/deploymentscripts
+- microsoft.resources/templatespecs
 - microsoft.saas/uygulamalar
 - microsoft.scheduler/jobcollections
 - microsoft.search/searchservices
@@ -405,6 +411,7 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 - microsoft.visualstudio/hesap
 - microsoft.visualstudio/account/extension
 - microsoft.visualstudio/account/project
+- microsoft.vmware/arczones
 - microsoft.vmwarecloudsimple/dedicatedcloudnodes
 - microsoft.vmwarecloudsimple/dedicatedcloudservices
 - microsoft.vmwarecloudsimple/virtualmachines
@@ -454,7 +461,6 @@ Azure Kaynak Grafiği, Azure [Kaynak Yöneticisi'nin](../../../azure-resource-ma
 
 ## <a name="securityresources"></a>güvenlik kaynakları
 
-- değerlendirme meta verileri
 - microsoft.security/değerlendirmeler
 - microsoft.security/assessments/subassessments
 - microsoft.security/fiyatlandırma

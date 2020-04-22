@@ -1,6 +1,6 @@
 ---
-title: Linux Hybrid Runbook Worker tanıla - Azure Update Management
-description: Güncelleştirme Yönetimini destekleyen Linux'taki Azure Automation Hybrid Runbook Worker ile ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
+title: Azure Otomasyon Güncelleme Yönetimi'nde Linux güncelleştirme aracısı sorunlarını giderme
+description: Update Management çözümlerini kullanarak Linux Windows update aracısıyla ilgili sorunları nasıl gidereceğinizi ve gidereceğinizi öğrenin.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,36 +9,36 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e60ba71607b99f0ea97e0725ffdd0740f3e9c579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bba1c7e89a9c3bb1c9aa1567e36dd71a40f14636
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79278304"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679067"
 ---
-# <a name="understand-and-resolve-linux-hybrid-runbook-worker-health-for-update-management"></a>Güncelleme Yönetimi için Linux Hybrid Runbook Worker sağlık durumunu anlayın ve çözümleyin
+# <a name="troubleshoot-linux-update-agent-issues"></a>Sorun giderme Linux güncelleme aracısı sorunları
 
-Makinenizin Güncelleştirme Yönetimi'nde **Hazır'ı** göstermemenedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık.
+Güncelleştirme Yönetimi'nde makinenizin hazır (sağlıklı) olarak görünmemesi birçok nedeni olabilir. Güncelleştirme Yönetimi'nde, altta yatan sorunu belirlemek için bir Karma Runbook Worker aracısının durumunu denetleyebilirsiniz. Bu makalede, Azure portalından Azure makineleri için sorun giderici nin nasıl çalıştırılacak olduğu ve [çevrimdışı senaryoda](#troubleshoot-offline)Azure olmayan makinelerüzerinde nasıl çalıştırılacakaçık. 
 
 Aşağıdaki liste, bir makinenin içinde olabileceği üç hazır durumtur:
 
-* **Hazır** - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
-* **Bağlantısız** - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
-* **Yapılandırılmamış** - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
+* Hazır - Hybrid Runbook Worker dağıtılır ve en son 1 saatten daha az bir süre önce görülmüştür.
+* Bağlantısız - Hybrid Runbook Worker dağıtıldı ve en son 1 saat önce görüldü.
+* Yapılandırılmamış - Karma Runbook Worker bulunamadı veya onboarding tamamlanmadı.
 
 > [!NOTE]
-> Azure portalının gösterdiği yle makinenin geçerli durumu arasında küçük bir gecikme olabilir.
+> Azure portalının gösterdiği yle bir makinenin geçerli durumu arasında küçük bir gecikme olabilir.
 
 ## <a name="start-the-troubleshooter"></a>Sorun gidericiyi başlatın
 
-Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda **Sorun Giderme Durumu Temsilcisi** sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için çevrimdışı yönergeleri görün.
+Azure makineleri için, portaldaki **Temsilciye Hazırlık Durumunu Güncelleştir** sütunundaki **Sorun Giderme** bağlantısını tıklattığınızda Sorun Giderme Durumu Temsilcisi sayfası açılır. Azure olmayan makineler için bağlantı sizi bu makaleye getirir. Azure olmayan bir makinenin sorun gidermesini sağlamak için çevrimdışı yönergeleri görün.
 
 ![vm liste sayfası](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
-> Denetimler VM'nin çalışmasını gerektirir. VM çalışmıyorsa **VM'yi başlatmak**için bir düğme ile sunulur.
+> Denetimler VM'nin çalışmasını gerektirir. VM çalışmıyorsa, size Bir **Başlat VM** düğmesi sunulur.
 
-Sorun **Giderme Sorunu Giderme Aracısı** sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı**tıklatın. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
+Sorun Giderme Sorunu Giderme Aracısı sayfasında, sorun gidericiyi başlatmak için **Denetimleri Çalıştır'ı**tıklatın. Sorun giderici, bağımlılıkları doğrulamak için makinede bir komut dosyası çalıştırmak için [Çalıştır komutunu](../../virtual-machines/linux/run-command.md) kullanır. Sorun giderici tamamlandığında, denetimlerin sonucunu döndürür.
 
 ![Sorun Giderme sayfası](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ Tamamlandığında, sonuçlar pencerede döndürülür. Denetim bölümleri, her
 
 ### <a name="operating-system"></a>İşletim sistemi
 
-İşletim sistemi denetimi, Karma Runbook Worker'ın aşağıdaki İşletim Sistemlerinden birini çalıştırıp çalıştırmayı onaylar:
+İşletim sistemi denetimi, Karma Runbook Worker'ın aşağıdaki işletim sistemlerinden birini çalıştırıp çalıştırmayı onaylar:
 
 |İşletim sistemi  |Notlar  |
 |---------|---------|

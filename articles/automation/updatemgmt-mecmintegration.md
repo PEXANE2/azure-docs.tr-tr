@@ -1,5 +1,5 @@
 ---
-title: Configuration Manager istemcileriyle Azure Güncelleştirme Yönetimi'ni kullanma
+title: Configuration Manager istemcileriyle Azure Otomasyon Güncelleştirme Yönetimi'ni kullanma
 description: Bu makale, ConfigMgr istemcilerine yazılım güncelleştirmelerini dağıtmak için microsoft Endpoint Configuration Manager'ı bu çözümle yapılandırmanıza yardımcı olmak için tasarlanmıştır.
 services: automation
 ms.subservice: update-management
@@ -7,18 +7,18 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: f0ca836e3b53c3cce755d45b50fe168073f0bbaa
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 32a077c476d9669c3f32bd4040fdc8ff90156c19
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81618730"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678743"
 ---
 # <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Güncelleştirme Yönetimi ile güncelleştirmeleri Microsoft Endpoint Configuration Manager istemcilerine dağıtma
 
 Bilgisayarları, sunucuları ve mobil cihazları yönetmek için Microsoft Endpoint Configuration Manager'a yatırım yapmış olan müşteriler, yazılım güncelleştirme yönetimi (SUM) döngüsünün bir parçası olarak yazılım güncelleştirmelerini yönetmedeki gücüne ve olgunluğuna da güvenir.
 
-Yönetilen Windows sunucularını Configuration Manager'da yazılım güncelleştirme dağıtımları oluşturarak ve önceden evreleyerek raporlayabilir ve güncelleyebilir ve [Update Management çözümünün](automation-update-management.md)kullanımıyla tamamlanan güncelleştirme dağıtımlarının ayrıntılı durumunu alabilirsiniz. Yapılandırma Yöneticisi'ni güncelleştirme uyumluluk raporlaması için kullanıyorsanız ancak Windows sunucularınızla güncelleştirme dağıtımlarını yönetmek için değil, güvenlik güncelleştirmeleri Güncelleştirme Yönetimi çözümüyle yönetilirken Configuration Manager'a raporlamaya devam edebilirsiniz.
+Yönetilen Windows sunucularını Configuration Manager'da yazılım güncelleştirme dağıtımları oluşturarak ve önceden evreleyerek raporlayabilir ve güncelleyebilir ve [Update Management'ı](automation-update-management.md)kullanarak tamamlanmış güncelleştirme dağıtımlarının ayrıntılı durumunu alabilirsiniz. Yapılandırma Yöneticisi'ni güncelleştirme uyumluluk raporlaması için kullanıyorsanız ancak Windows sunucularınızla güncelleştirme dağıtımlarını yönetmek için değil, güvenlik güncelleştirmeleri Güncelleştirme Yönetimi çözümüyle yönetilirken Configuration Manager'a raporlamaya devam edebilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

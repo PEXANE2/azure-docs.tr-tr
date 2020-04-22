@@ -1,5 +1,5 @@
 ---
-title: Otomasyon hesabı sorun giderme
+title: Otomasyon hesabı sorunlarını giderme
 description: Azure hesabıyla ilgili sorunları nasıl gidereceğinizi ve nasıl çözeceğinizi öğrenin.
 services: automation
 author: mgoedtel
@@ -8,14 +8,14 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c66b1728144b8517f6ac444059b3a8def956c6e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80301011"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81679390"
 ---
-# <a name="automation-account-troubleshooting"></a>Otomasyon hesabı sorun giderme
+# <a name="troubleshoot-the-automation-account"></a>Otomasyon hesabının sorun giderme
 
 Bu makalede, bir Otomasyon hesabı kullandığınızda karşılaşabileceğiniz sorunların çözümleri açıklan.' Aşağıdaki bölümlerde, her biri için belirli hata iletileri ve olası çözümler vurgulanır. Otomasyon hesapları hakkında genel bilgi için [bkz.](../automation-quickstart-create-account.md)
 
@@ -45,11 +45,11 @@ Otomasyon Kaynak Sağlayıcısı'nı kaydetmek için Azure portalında aşağıd
 
 4. Kaynak sağlayıcıları listesinden, **Microsoft.Automation** kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
-5. Listede yoksa, kaynak sağlayıcı kaydı yla ilgili hataları gider'deki adımları izleyerek **Microsoft.Automation** [sağlayıcısını kaydedin.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
+5. Sağlayıcı listede yoksa, kaynak sağlayıcı kaydı için hataları çözümle'de açıklandığı gibi [kaydedin.](/azure/azure-resource-manager/resource-manager-register-provider-errors)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmediyseniz veya sorununuzu çözemediyseniz, ek destek için aşağıdaki kanallardan birini deneyin:
+Sorununuzu yukarıda görmüyorsanız veya sorununuzu çözemiyorsanız, ek destek için aşağıdaki kanallardan birini deneyin:
 
 * [Azure Forumları](https://azure.microsoft.com/support/forums/)aracılığıyla Azure uzmanlarından yanıt alın.
 * [@AzureSupport](https://twitter.com/azuresupport)Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.

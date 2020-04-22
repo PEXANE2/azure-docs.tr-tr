@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirme ve geçişte kullanılan Azure Geçiş cihazına genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 130de0824a1671fb0b0e3e980f06f4c3abc689d2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1c21f06e674871aefde1ae952a459db16feeb717
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538231"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676346"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -125,7 +125,7 @@ download.microsoft.com/download | Microsoft'tan indirmelere izin verin.
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Azure Geçiş hizmeti URL'lerine bağlanın.
 *.hypervrecoverymanager.windowsazure.us | **VMware aracısız geçiş için kullanılır**<br/><br/> Azure Geçiş hizmeti URL'lerine bağlanın.
 *.blob.core.usgovcloudapi.net  |  **VMware aracısız geçiş için kullanılır**<br/><br/>Geçiş için depolamaya veri yükleyin.
-*.applicationinsights.us | Tanılama izleme için Application Insights bitiş noktasına erişmek için cihazda Ağ Geçidi aracısı tarafından kullanılır.
+*.applicationinsights.us | Dahili izleme için kullanılan uygulama günlüklerini yükleyin.
 
 
 

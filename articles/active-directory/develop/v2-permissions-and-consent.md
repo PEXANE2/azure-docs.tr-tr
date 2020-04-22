@@ -12,19 +12,16 @@ ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: 55055f65e1b725e079b60e960837e05558ef08d6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 26bfbcb4762d889b2c56276e66e4bf8e0acb64b2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886220"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677698"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu bitiş noktasında izinler ve onay
 
 Microsoft kimlik platformuyla tümlebilen uygulamalar, kullanıcılara ve yöneticilere verilere nasıl erişilebileceği üzerinde denetim sağlayan bir yetkilendirme modeli izler. Yetkilendirme modelinin uygulanması Microsoft kimlik platformu bitiş noktasında güncelleştirildi ve bir uygulamanın Microsoft kimlik platformuyla nasıl etkileşimde olması gerektiğini değiştiriyor. Bu makalede, kapsamlar, izinler ve onay dahil olmak üzere bu yetkilendirme modelinin temel kavramları yer alıyor.
-
-> [!NOTE]
-> Microsoft kimlik platformu bitiş noktası tüm senaryoları ve özellikleri desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="scopes-and-permissions"></a>Kapsamlar ve izinler
 
@@ -66,8 +63,8 @@ _Etkili izinler,_ uygulamanızın hedef kaynağa istekte bulunmada sahip olacağ
 - Temsilci izinleri için, uygulamanızın _etkili izinleri,_ uygulamanın verildiği yetkilendirilmiş izinlerin (rıza yoluyla) ve şu anda oturum açmış kullanıcının ayrıcalıklarının en az ayrıcalıklı kesişimi olacaktır. Uygulamanızın ayrıcalıkları hiçbir zaman oturum açmış kullanıcının ayrıcalıklarından fazla olamaz. Kuruluşların içinde, oturum açmış kullanıcının ayrıcalıkları ilkeyle ya da bir veya birden çok yönetici rolü üyeliğiyle belirlenebilir. Hangi yönetici rollerinin devralınan izinlere izin verebileceğini öğrenmek için Azure [AD'da Yönetici rol izinlerine](../users-groups-roles/directory-assign-admin-roles.md)bakın.
 
    Örneğin, uygulamanızın _User.ReadWrite.All_ delegated izninin verildiğini varsayalım. Adından da anlaşıldığı gibi bu izin uygulamanıza kuruluştaki her kullanıcının profilini okuma ve güncelleştirme izni verir. Oturum açmış kullanıcının bir genel yönetici olması durumunda, uygulamanız kuruluştaki her kullanıcının profilini güncelleştirebilir. Ancak, oturum açmış kullanıcı yönetici rolünde değilse, uygulamanız yalnızca oturum açmış kullanıcının profilini güncelleyebilir. Kuruluştaki diğer kullanıcıların profillerini güncelleştiremez çünkü adına çalışma iznine sahip olduğu kullanıcı söz konusu ayrıcalıklara sahip değildir.
-  
-- Uygulama izinleri için, uygulamanızın _etkin izinleri,_ izintarafından ima edilen tüm ayrıcalıklar düzeyinde olacaktır. Örneğin, _User.ReadWrite.All_ uygulama izni olan bir uygulama kuruluştaki her kullanıcının profilini güncelleyebilir. 
+
+- Uygulama izinleri için, uygulamanızın _etkin izinleri,_ izintarafından ima edilen tüm ayrıcalıklar düzeyinde olacaktır. Örneğin, _User.ReadWrite.All_ uygulama izni olan bir uygulama kuruluştaki her kullanıcının profilini güncelleyebilir.
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect kapsamları
 
@@ -92,7 +89,7 @@ Bir uygulama [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturum
 > [!NOTE]
 > Bu izin, yenileme belirteci [(örtük akış)](v2-oauth2-implicit-grant-flow.md)sağlamayan akışlar için bile bugün tüm onay ekranlarında görünür.  Bu, istemcinin örtük akış içinde başlayıp yenibir belirteç beklendiği kod akışına geçebileceği senaryoları kapsayacak şekildedir.
 
-Microsoft kimlik platformunda (v2.0 bitiş noktasına yapılan istekler) uygulamanızın yeni belirteçleri almak için `offline_access` kapsamı açıkça istemesi gerekir. Bu, [OAuth 2.0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda, `/token` bitiş noktasından yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirteci genellikle bir saat içinde sona erer. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu `/authorize` almak için kullanıcıyı bitiş noktasına yönlendirmesi gerekir. Bu yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden kabul etmesi gerekebilir. 
+Microsoft kimlik platformunda (v2.0 bitiş noktasına yapılan istekler) uygulamanızın yeni belirteçleri almak için `offline_access` kapsamı açıkça istemesi gerekir. Bu, [OAuth 2.0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda, `/token` bitiş noktasından yalnızca bir erişim belirteci alacağınız anlamına gelir. Erişim belirteci kısa bir süre için geçerlidir. Erişim belirteci genellikle bir saat içinde sona erer. Bu noktada, uygulamanızın yeni bir yetkilendirme kodu `/authorize` almak için kullanıcıyı bitiş noktasına yönlendirmesi gerekir. Bu yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden kabul etmesi gerekebilir.
 
 Yenileme belirteçlerini alma ve kullanma hakkında daha fazla bilgi için [Microsoft kimlik platformu protokol başvurusuna](active-directory-v2-protocols.md)bakın.
 
@@ -117,7 +114,7 @@ Parametre, `scope` uygulamanın istediği yetki alan ayrılmış izinlerin liste
 Kullanıcı kimlik bilgilerini girdikten sonra, Microsoft kimlik platformu bitiş noktası *kullanıcı onayı*eşleşen bir kayıt için denetler. Kullanıcı geçmişte istenen izinlerden herhangi birini kabul etmemişse veya bir yönetici tüm kuruluş adına bu izinlere izin vermemişse, Microsoft kimlik platformu bitiş noktası kullanıcıdan istenen izinleri vermesini ister.
 
 > [!NOTE]
->Şu anda, `offline_access` ("Erişim izni vermiş olduğunuz verilere erişimi `user.read` koruyun") ve ("Oturum açın ve profilinizi okuyun") izinleri otomatik olarak bir uygulamanın ilk iznine dahil edilir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir - `offline_access` uygulamanın yerel ve web uygulamaları `user.read` için kritik `sub` olan yenileme belirteçlerine erişim sağlarken, talep temennisine erişim sağlar ve istemcinin veya uygulamanın kullanıcıyı zaman içinde doğru bir şekilde tanımlamasına ve temel kullanıcı bilgilerine erişmesine olanak tanır.  
+>Şu anda, `offline_access` ("Erişim izni vermiş olduğunuz verilere erişimi `user.read` koruyun") ve ("Oturum açın ve profilinizi okuyun") izinleri otomatik olarak bir uygulamanın ilk iznine dahil edilir.  Bu izinler genellikle uygun uygulama işlevselliği için gereklidir - `offline_access` uygulamanın yerel ve web uygulamaları `user.read` için kritik `sub` olan yenileme belirteçlerine erişim sağlarken, talep temennisine erişim sağlar ve istemcinin veya uygulamanın kullanıcıyı zaman içinde doğru bir şekilde tanımlamasına ve temel kullanıcı bilgilerine erişmesine olanak tanır.
 
 ![İş hesabı rızasını gösteren örnek ekran görüntüsü](./media/v2-permissions-and-consent/work_account_consent.png)
 
@@ -149,8 +146,8 @@ Uygulama uygulama izinleri talep ediyorsa ve yönetici bu izinleri yönetici ona
 
 ## <a name="using-the-admin-consent-endpoint"></a>Yönetici onayı bitiş noktasını kullanma
 
-> [!NOTE] 
-> Yönetici onayı bitiş noktasını kullanarak yönetici onayı verdikten sonra, yönetici onayı vermeyi tamamlamış olduğunuz ve kullanıcıların başka ek işlem gerçekleştirmelerine gerek olmadığını lütfen unutmayın. Yönetici onayı verdikten sonra, kullanıcılar tipik bir auth akışı üzerinden bir erişim belirteci alabilirsiniz ve ortaya çıkan erişim belirteci onaylayan izinlere sahip olacaktır. 
+> [!NOTE]
+> Yönetici onayı bitiş noktasını kullanarak yönetici onayı verdikten sonra, yönetici onayı vermeyi tamamlamış olduğunuz ve kullanıcıların başka ek işlem gerçekleştirmelerine gerek olmadığını lütfen unutmayın. Yönetici onayı verdikten sonra, kullanıcılar tipik bir auth akışı üzerinden bir erişim belirteci alabilirsiniz ve ortaya çıkan erişim belirteci onaylayan izinlere sahip olacaktır.
 
 Bir Şirket Yöneticisi uygulamanızı kullandığında ve yetkili bitiş noktasına yönlendirildiğinde, Microsoft kimlik platformu kullanıcının rolünü algılar ve talep ettiğiniz izinler için tüm kiracı adına onay vermek isteyip istemediklerini sorar. Ancak, bir yöneticinin tüm kiracı adına izin verdiğini proaktif olarak talep etmek istiyorsanız kullanabileceğiniz özel bir yönetici onayı bitiş noktası da vardır. Bu bitiş noktasının kullanılması, Uygulama İzinleri istemek için de gereklidir (yetkili bitiş noktası kullanılarak istenemez).
 
@@ -189,7 +186,7 @@ Kuruluşunuzun yöneticisinden izin istemeye hazır olduğunuzda, kullanıcıyı
   &state=12345
   &redirect_uri=http://localhost/myapp/permissions
   &scope=
-  https://graph.microsoft.com/calendars.read 
+  https://graph.microsoft.com/calendars.read
   https://graph.microsoft.com/mail.send
 ```
 
@@ -200,7 +197,7 @@ Kuruluşunuzun yöneticisinden izin istemeye hazır olduğunuzda, kullanıcıyı
 | `client_id` | Gerekli | Azure portalı - Uygulama [kayıtlarının](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atandığı **Uygulama (istemci) Kimliği.** |
 | `redirect_uri` | Gerekli |UYGULAMANIZIN işlemesi için yanıtın gönderilmesini istediğiniz uri'yi yeniden yönlendirin. Uygulama kayıt portalına kaydettiğiniz yönlendirme URL'lerinden biriyle tam olarak eşleşmelidir. |
 | `state` | Önerilen | Belirteç yanıtında da döndürülecek isteğe dahil edilen bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için durumu (örneğin, üzerinde oldukları sayfa veya görünüm) kullanın. |
-|`scope`        | Gerekli        | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (kullanarak) [`/.default`](#the-default-scope)veya dinamik kapsamlar olabilir.  Bu OIDC kapsamları içerebilir`openid` `profile`( `email`, , . Uygulama izinlerine ihtiyacınız varsa, `/.default` statik olarak yapılandırılan izinler listesini istemek için kullanmanız gerekir.  | 
+|`scope`        | Gerekli        | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (kullanarak) [`/.default`](#the-default-scope)veya dinamik kapsamlar olabilir.  Bu OIDC kapsamları içerebilir`openid` `profile`( `email`, , . Uygulama izinlerine ihtiyacınız varsa, `/.default` statik olarak yapılandırılan izinler listesini istemek için kullanmanız gerekir.  |
 
 
 Bu noktada, Azure AD isteği tamamlamak için bir kiracı yöneticinin oturum etmesini gerektirir. Yöneticiden `scope` parametrede istediğiniz tüm izinleri onaylaması istenir.  Statik ( )`/.default`bir değer kullandıysanız, v1.0 yönetici onayı bitiş noktası gibi çalışır ve uygulama için gerekli izinlerde bulunan tüm kapsamlar için onay ister.
@@ -253,7 +250,7 @@ Content-Type: application/json
 }
 ```
 
-Elde edilen erişim belirteci'ni KAYNAĞA HTTP isteklerinde kullanabilirsiniz. Kaynağa, uygulamanızın belirli bir görevi gerçekleştirmek için uygun izne sahip olduğunu güvenilir bir şekilde gösterir. 
+Elde edilen erişim belirteci'ni KAYNAĞA HTTP isteklerinde kullanabilirsiniz. Kaynağa, uygulamanızın belirli bir görevi gerçekleştirmek için uygun izne sahip olduğunu güvenilir bir şekilde gösterir.
 
 OAuth 2.0 protokolü ve erişim belirteçleri hakkında daha fazla bilgi için [Microsoft kimlik platformu bitiş noktası protokolü başvurusuna](active-directory-v2-protocols.md)bakın.
 
@@ -261,7 +258,7 @@ OAuth 2.0 protokolü ve erişim belirteçleri hakkında daha fazla bilgi için [
 
 `/.default` Kapsamı, uygulamalarınızı v1.0 bitiş noktasından Microsoft kimlik platformu bitiş noktasına geçirmenize yardımcı olmak için kullanabilirsiniz. Bu, uygulama kaydında yapılandırılan izinlerin statik listesini ifade eden her uygulama için yerleşik bir kapsamdır. Bir `scope` değer `https://graph.microsoft.com/.default` işlevsel olarak v1.0 uç noktalarıyla `resource=https://graph.microsoft.com` aynıdır - yani, uygulamanın Azure portalında kaydolduğu Microsoft Graph'taki kapsamları içeren bir belirteç ister.  Uri + (örneğin, `/.default` kaynak URI ise, `https://contosoApp.com`istenen kapsam olacaktır) `https://contosoApp.com/.default`kullanılarak oluşturulur.  Belirteci doğru bir şekilde istemek için ikinci bir eğik çizgi eklemeniz gereken servis talepleri için [sondaki kesikler bölümüne](#trailing-slash-and-default) bakın.
 
-/.varsayılan kapsam herhangi bir OAuth 2.0 akışında kullanılabilir, ancak [On-Behalf-Of akışı](v2-oauth2-on-behalf-of-flow.md) ve [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)ve başvuru izinlerini istemek için v2 yönetici onay bitiş noktasını kullanırken gereklidir.  
+/.varsayılan kapsam herhangi bir OAuth 2.0 akışında kullanılabilir, ancak [On-Behalf-Of akışı](v2-oauth2-on-behalf-of-flow.md) ve [istemci kimlik bilgileri akışında](v2-oauth2-client-creds-grant-flow.md)ve başvuru izinlerini istemek için v2 yönetici onay bitiş noktasını kullanırken gereklidir.
 
 > [!NOTE]
 > İstemciler statik (`/.default`) ve dinamik onayı tek bir istekte birleştiremez. Böylece, `scope=https://graph.microsoft.com/.default+mail.read` kapsam türlerinin birleşimi nedeniyle bir hataya neden olur.
@@ -301,13 +298,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki `/.default`onay açıklamalarına göre varsa ve varsa), erişim jetonu yerine bir id_token döndürür.  Bu davranış, ADAL'dan MSAL'a geçen belirli eski istemciler için vardır ve Microsoft kimlik platformu bitiş noktasını hedefleyen yeni istemciler tarafından **kullanılmamalıdır.**  
+Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki `/.default`onay açıklamalarına göre varsa ve varsa), erişim jetonu yerine bir id_token döndürür.  Bu davranış, ADAL'dan MSAL'a geçen belirli eski istemciler için vardır ve Microsoft kimlik platformu bitiş noktasını hedefleyen yeni istemciler tarafından **kullanılmamalıdır.**
 
 ### <a name="trailing-slash-and-default"></a>Sondaki eğik çizgi ve /.varsayılan
 
-Bazı kaynak URI'leri,`https://contoso.com/` belirteç `https://contoso.com`doğrulamayla ilgili sorunlara neden olabilecek bir çizgi (aksine) olabilir.  Bu, öncelikle, kaynakları URI'de son da`https://management.azure.com/`yanaşan ve belirteç istendiğinde bulunmasını gerektiren Azure Kaynak Yönetimi ( ) için bir belirteç isteğinde bulunabilir.  Böylece, için `https://management.azure.com/` bir belirteç `/.default`talep ederken `https://management.azure.com//.default` ve kullanırken , talep etmelidir - çift eğik çizgi dikkat! 
+Bazı kaynak URI'leri,`https://contoso.com/` belirteç `https://contoso.com`doğrulamayla ilgili sorunlara neden olabilecek bir çizgi (aksine) olabilir.  Bu, öncelikle, kaynakları URI'de son da`https://management.azure.com/`yanaşan ve belirteç istendiğinde bulunmasını gerektiren Azure Kaynak Yönetimi ( ) için bir belirteç isteğinde bulunabilir.  Böylece, için `https://management.azure.com/` bir belirteç `/.default`talep ederken `https://management.azure.com//.default` ve kullanırken , talep etmelidir - çift eğik çizgi dikkat!
 
-Genel olarak - belirteç veriliyor olduğunu doğruladıysanız ve belirteç bunu kabul etmesi gereken API tarafından reddediliyorsa, ikinci bir eğik çizgi eklemeyi ve yeniden denemeyi düşünün. Bu, oturum açma sunucusunun `scope` parametredeki URI'lerle eşleşen hedef kitleyle `/.default` bir belirteç yayık lığı ve sonundan kaldırılmış olması durumunda gerçekleşir.  Bu, sondaki eğik çizgiyi kaldırırsa, oturum açma sunucusu isteği yine de işler ve artık eşleşmeseler bile kaynak URI'ye karşı doğrular - bu standart değildir ve uygulamanız tarafından güvenilmemelidir.  
+Genel olarak - belirteç veriliyor olduğunu doğruladıysanız ve belirteç bunu kabul etmesi gereken API tarafından reddediliyorsa, ikinci bir eğik çizgi eklemeyi ve yeniden denemeyi düşünün. Bu, oturum açma sunucusunun `scope` parametredeki URI'lerle eşleşen hedef kitleyle `/.default` bir belirteç yayık lığı ve sonundan kaldırılmış olması durumunda gerçekleşir.  Bu, sondaki eğik çizgiyi kaldırırsa, oturum açma sunucusu isteği yine de işler ve artık eşleşmeseler bile kaynak URI'ye karşı doğrular - bu standart değildir ve uygulamanız tarafından güvenilmemelidir.
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Sorun giderme izinleri ve onayı
 

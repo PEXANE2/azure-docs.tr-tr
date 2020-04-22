@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1198d3cc7ccc0013e7c894488027d8e162470247
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76760819"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677594"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Takım Veri Bilimi Süreci iş başında - 1-TB veri setinde Azure HDInsight Hadoop Kümesi kullanma
 
@@ -434,7 +434,7 @@ Alma **Verileri** modülü için, grafikte sağlanan parametrelerin değerleri, 
 
 1. **Veri Kaynağı** için "Kovan sorgusu" seçeneğini belirleyin
 2. **Hive veritabanı sorgu** kutusunda, basit bir SELECT\_\_* FROM\_\_<veritabanı adınızı.tablo adınız> - yeterlidir.
-3. **Hcatalog server URI**: Kümeniz "abc" ise, o zaman bu basitçe:https://abc.azurehdinsight.net
+3. **Hcatalog server URI**: Kümeniz "abc" ise, o\/zaman bu basitçe: https: /abc.azurehdinsight.net
 4. **Hadoop kullanıcı hesabı adı**: Kümenin devreye alınması sırasında seçilen kullanıcı adı. (NOT Uzaktan Erişim kullanıcı adı!)
 5. **Hadoop kullanıcı hesabı şifresi**: Kümenin devreye alınması sırasında seçilen kullanıcı adının şifresi. (NOT Uzaktan Erişim şifresi!)
 6. **Çıktı verilerinin konumu**: "Azure"u seçin

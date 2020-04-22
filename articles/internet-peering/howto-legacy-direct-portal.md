@@ -1,40 +1,40 @@
 ---
-title: Portalı kullanarak eski bir Doğrudan eşlemeyi bir Azure kaynağına dönüştürme
+title: Azure portalını kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 titleSuffix: Azure
-description: Portalı kullanarak eski bir Doğrudan eşlemeyi bir Azure kaynağına dönüştürme
+description: Azure portalını kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 9900414d38bd597d08a80d15e908228c06ce06ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e49e4d5debe63b99039bbafbc14f7788367314f3
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775062"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678843"
 ---
-# <a name="convert-a-legacy-direct-peering-to-azure-resource-using-the-portal"></a>Portalı kullanarak eski bir Doğrudan eşlemeyi bir Azure kaynağına dönüştürme
+# <a name="convert-a-legacy-direct-peering-to-an-azure-resource-by-using-the-azure-portal"></a>Azure portalını kullanarak eski doğrudan bir Azure kaynağına doğrudan bakış dönüştürme
 
-Bu makalede, portalı kullanarak varolan bir eski Doğrudan'ın Azure kaynağına nasıl dönüştürülür.
+Bu makalede, Azure portalını kullanarak varolan bir eski Doğrudan'ın Azure kaynağına nasıl dönüştürülür.
 
 İsterseniz, [PowerShell](howto-legacy-direct-powershell.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
-* Yapılandırmaya başlamadan önce [Önkoşulları](prerequisites.md) ve [Doğrudan bakan gözden geçirin.](walkthrough-direct-all.md)
+* Yapılandırmaya başlamadan önce [ön koşulları](prerequisites.md) ve Doğrudan bakan [gözden geçirin.](walkthrough-direct-all.md)
 
 
-## <a name="convert-legacy-direct-peering-to-azure-resource"></a>Eski doğrudan bakışları Azure kaynağına dönüştürme
+## <a name="convert-a-legacy-direct-peering-to-an-azure-resource"></a>Eski bir Azure kaynağına doğrudan bakış dönüştürme
 
-### <a name="sign-in-to-portal-and-select-your-subscription"></a>Portalda oturum açın ve aboneliğinizi seçin
+### <a name="sign-in-to-the-portal-and-select-your-subscription"></a>Portalda oturum açın ve aboneliğinizi seçin
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="convert-legacy-direct-peering"></a><a name=create></a>Eski doğrudan eşlemi dönüştürme
+### <a name="convert-a-legacy-direct-peering"></a><a name=create></a>Eskiye doğrudan bakmayı dönüştürme
 
-**Peering** kaynağını kullanarak eski eşleme bağlantılarını dönüştürebilirsiniz.
+**Eşleme** kaynağını kullanarak eski eşleme bağlantılarını dönüştürebilirsiniz.
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Kaynağı başlatın ve temel ayarları yapılandırın
+#### <a name="launch-the-resource-and-configure-basic-settings"></a>Kaynağı başlatın ve temel ayarları yapılandırır
 [!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
 
 #### <a name="configure-connections-and-submit"></a>Bağlantıları yapılandırma ve gönderme
@@ -45,8 +45,8 @@ Bu makalede, portalı kullanarak varolan bir eski Doğrudan'ın Azure kaynağın
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'lere](faqs.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Portalı kullanarak Doğrudan bir eşleme oluşturun veya değiştirin.](howto-direct-portal.md)
+* [Portalı kullanarak Doğrudan bir bakış oluşturma veya değiştirme](howto-direct-portal.md)

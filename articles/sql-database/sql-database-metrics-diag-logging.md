@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 04/06/2020
-ms.openlocfilehash: 9c9f069ad38c65aa0bbfdcde9eef3fed32585d9e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 288d4e4d0c5faa6bb2b51451fb36bbb6d666c9eb
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80756421"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683189"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-diagnostic-telemetry"></a>Azure SQL Veritabanı tanısal telemetrinin akış dışa aktarma yapılandırma
 
@@ -26,7 +26,7 @@ Ayrıca, bu tanısal telemetriyi aktarabileceğiniz yerler ve bu seçenekler ara
 
 - [Log Analytics ve SQL Analytics](#stream-into-sql-analytics)
 - [Event Hubs](#stream-into-event-hubs)
-- [Azure Storage](#stream-into-azure-storage)
+- [Azure Depolama](#stream-into-azure-storage)
 
 ## <a name="diagnostic-telemetry-for-export-for-azure-sql-database"></a>Azure SQL Veritabanı için dışa aktarma için tanılama telemetrisi
 
@@ -126,7 +126,7 @@ Esnek bir havuz kaynağı için tanısal telemetri akışını etkinleştirmek i
 7. Elastik havuz tanıt telemetrisi için onay kutusunu seçin: **Temel** ölçümler.
    ![Elastik havuzlar için tanılamayı yapılandırın](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 
-8. **Kaydet'i**seçin.
+8. **Kaydet**’i seçin.
 9. Buna ek olarak, izlemek istediğiniz elastik havuzdaki her veritabanı için tanısal telemetri akışını sonraki bölümde açıklanan adımları izleyerek yapılandırın.
 
 > [!IMPORTANT]
@@ -155,7 +155,7 @@ Tek bir veya havuzlu veritabanı için tanılama telemetrisinin akışını etki
 8. Gelişmiş, bir dakikalık tabanlı izleme deneyimi için **Temel** ölçümler için onay kutusunu seçin.
 
    ![Tek, havuzlu veya örnek veritabanları için tanılamayı yapılandırma](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
-9. **Kaydet'i**seçin.
+9. **Kaydet**’i seçin.
 10. İzlemek istediğiniz her veritabanı için bu adımları yineleyin.
 
 > [!TIP]
@@ -191,7 +191,7 @@ Yönetilen bir örnek kaynağı için tanısal telemetri akışını etkinleşti
 
    ![Yönetilen örnek için tanılama yı yapılandırma](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
-8. **Kaydet'i**seçin.
+8. **Kaydet**’i seçin.
 9. Buna ek olarak, sonraki bölümde açıklanan adımları izleyerek izlemek istediğiniz yönetilen örnek içinde her örnek veritabanı için tanıt telemetri akışı yapılandırmak.
 
 > [!IMPORTANT]
@@ -219,7 +219,7 @@ Aşağıdaki tanısal telemetriyi toplamak için bir örnek veritabanı kaynağ�
 5. Akış tanılama verileri için bir hedef kaynak seçin: **Depolama hesabına arşivleyin,** **bir olay hub'ına akış**yapın veya Günlük **Analizi'ne gönderin.**
 6. Veritabanı tanılama telemetrisi için onay kutularını seçin: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**ve **Hatalar**.
    ![Örneğin veritabanları için tanılamayapılandırma](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
-7. **Kaydet'i**seçin.
+7. **Kaydet**’i seçin.
 8. İzlemek istediğiniz her örnek veritabanı için bu adımları yineleyin.
 
 > [!TIP]
@@ -363,7 +363,7 @@ SQL veritabanı kaynaklarınızı görüntülemek için SQL Analytics'i hiyerar�
 
 ## <a name="stream-into-event-hubs"></a>Event Hubs'a akış sağlama
 
-Azure portalındaki **bir olay hub'ına** yerleşik Akış'ı kullanarak SQL Veritabanı ölçümlerini ve kaynak günlüklerini Olay Hub'larına aktarabilirsiniz. Ayrıca PowerShell cmdlets, Azure CLI veya Azure Monitor REST API üzerinden tanılama ayarlarını kullanarak Hizmet Veri Servisi kural kimliğini etkinleştirebilirsiniz.
+Azure portalındaki **bir olay hub'ına** yerleşik Akış'ı kullanarak SQL Veritabanı ölçümlerini ve kaynak günlüklerini Olay Hub'larına aktarabilirsiniz. Ayrıca PowerShell cmdlets, Azure CLI veya Azure Monitor REST API üzerinden tanılama ayarlarını kullanarak Hizmet Veri Servisi kural kimliğini etkinleştirebilirsiniz. Olay hub'ı veritabanınız ve sunucunuzla aynı bölgede olduğundan emin olun.
 
 ### <a name="what-to-do-with-metrics-and-resource-logs-in-event-hubs"></a>Olay Hub'larında ölçümler ve kaynak günlükleriyle ne yapmalı?
 

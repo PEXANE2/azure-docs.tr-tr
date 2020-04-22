@@ -1,20 +1,21 @@
 ---
-title: Ticari pazar için destek | Azure
+title: Ticari pazar için destek | Azure Marketi
 description: Azure Marketi ve AppSource için destek bilgileri ve bağlantıları
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 3/19/2020
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b2dba23bdf07233a9945086fba2274602cb2dcf1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 2b73fee33692b65770caeea651c12e9780dba2c4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252243"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681377"
 ---
-# <a name="support-for-the-marketplace"></a>Pazar Yeri Desteği  
+# <a name="support-for-the-marketplace"></a>Pazar Yeri Desteği
+
 Burada Market için destek seçenekleri nin bir listesi vardır.  
 
 Ayrıca, sorularınızın çoğunu [C+AI Community Forum'un Marketplace kanalında](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)yanıtlayabilirsiniz.  
@@ -23,11 +24,11 @@ Ayrıca, sorularınızın çoğunu [C+AI Community Forum'un Marketplace kanalın
 
 Onboarding ve başlarken sorunlar için Microsoft [marketplace publisher desteği](https://aka.ms/marketplacepublishersupport) ile bir bilet açın.
 
-## <a name="partner-center-or-cloud-partner-portal"></a>İş Ortağı Merkezi veya Bulut İş Ortağı Portalı  
+## <a name="partner-center"></a>Ortak Merkezi   
 
 | Destek kanalı | Açıklama | Kullanılabilirlik |  
 |:--- |:--- |:--- |  
-| Yardım için, [Market Desteği'nde](https://aka.ms/marketplacepublishersupport) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | İş Ortağı Merkezi veya Bulut İş Ortağı Portalı desteği. | Destek 24x5 sağlanır. |  
+| Yardım için, [Market Desteği'nde](https://aka.ms/marketplacepublishersupport) bulunan bir olay oluştur sayfasını ziyaret edin</li> </ul> | Ortak Merkezi desteği. | Destek 24x5 sağlanır. |  
 
 ## <a name="technical"></a>Teknik  
 

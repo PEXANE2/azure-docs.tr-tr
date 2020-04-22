@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: feaa0c22ec98d170a65e5c9bee119ba3904a95cf
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: cc7a8df80e719173c7818055ab8771ddd7f73691
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80673738"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682782"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 TabularDatasets'te, bir zaman serisi özelliğini etkinleştirmek için verilerdeki bir sütundan veya yol deseni verilerinin depolanan yerden bir zaman damgası belirtebilirsiniz. Bu belirtim, zamana göre kolay ve verimli filtreleme sağlar.
 
-Zaman [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) damgası`TabularDataset` sütununuzu belirtmek ve zamana göre filtreleme yi etkinleştirmek için sınıftaki yöntemi kullanın. Daha fazla bilgi için [NOAA hava durumu verileriyle Tabular zaman serisiyle ilgili API](https://aka.ms/azureml-tsd-notebook)demosu'na bakın.
+Zaman [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) damgası`TabularDataset` sütununuzu belirtmek ve zamana göre filtreleme yi etkinleştirmek için sınıftaki yöntemi kullanın. Daha fazla bilgi için [NOAA hava durumu verileriyle Tabular zaman serisiyle ilgili API](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)demosu'na bakın.
 
 ```Python
 # create a TabularDataset with time series trait
@@ -261,7 +261,7 @@ Döşemesini seçerek bir veri kümesi seçin. (Arama çubuğunu kullanarak filt
 
 ![Veri kümesini seçin](./media/how-to-create-register-datasets/open-datasets-2.png)
 
-Veri kümesini kaydetmek için altında bir ad seçin ve kullanılabilir filtreleri kullanarak isteğe bağlı olarak verileri filtreleyin. Bu durumda, resmi tatillerde veri kümesi için, süreyi bir yıla, ülke kodunu ise yalnızca ABD'ye filtrelersiniz. **Oluştur'u**seçin.
+Veri kümesini kaydetmek için altında bir ad seçin ve kullanılabilir filtreleri kullanarak isteğe bağlı olarak verileri filtreleyin. Bu durumda, resmi tatillerde veri kümesi için, süreyi bir yıla, ülke kodunu ise yalnızca ABD'ye filtrelersiniz. **Oluştur**’u seçin.
 
 ![Veri kümesi paramlarını ayarlama ve veri kümesi oluşturma](./media/how-to-create-register-datasets/open-datasets-3.png)
 

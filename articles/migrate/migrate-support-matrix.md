@@ -2,14 +2,14 @@
 title: Azure Geçir destek matrisi
 description: Azure Geçiş hizmeti için destek ayarlarının ve sınırlamalarının bir özetini sağlar.
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/19/2020
 ms.author: raynew
-ms.openlocfilehash: 0f766bf95bb7e26d942e7dde3f315bbef6d5dc5c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 44a971894f53a3f31c068b3c3ed4912bc7e00dab
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535205"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680707"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Geçir destek matrisi
 
@@ -25,6 +25,8 @@ Tablo desteklenen bulma, değerlendirme ve geçiş senaryolarını özetler.
 **Şirket içi değerlendirme** | VMware VM'lerde, Hyper-V VM'lerde ve fiziksel sunucularda çalışan şirket içi iş yüklerini ve verileri değerlendirin. Azure Geçir Sunucu Değerlendirmesi ve Microsoft Veri Geçişi Yardımcısı'nın (DMA) yanı sıra diğer araçları ve ISV tekliflerini kullanarak değerlendirin.
 **Azure'a şirket içi geçiş** | Fiziksel sunucularda çalışan iş yüklerini ve verileri, VMware VM'leri, Hyper-V VM'leri, fiziksel sunucuları ve bulut tabanlı VM'leri Azure'a geçirin. Azure Geçir Sunucu Değerlendirmesi ve Azure Veritabanı Geçiş Hizmeti 'ni (DMS) ve diğer araçlar ve ISV tekliflerini kullanarak geçirin.
 
+> [!NOTE]
+> Şu anda ISV araçları Azure Kamu'da Azure'a Geçiş'e veri gönderemez. Tümleşik Microsoft araçlarını kullanabilir veya iş ortağı araçlarını bağımsız olarak kullanabilirsiniz.
 
 ## <a name="supported-tools"></a>Desteklenen araçlar
 
@@ -93,7 +95,7 @@ Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 **Görev** | **Coğrafya** | **Şey**
 --- | --- | ---
 Proje oluşturma | Amerika Birleşik Devletleri | Meta veriler ABD Gov Arizona, ABD Gov Virginia saklanır
-Hedef değerlendirmesi | Amerika Birleşik Devletleri | Hedef bölgeler: US Gov Arizona, US Gov Virginia/US Gov Texas
+Hedef değerlendirmesi | Amerika Birleşik Devletleri | Hedef bölgeler: ABD Gov Arizona, ABD Gov Virginia, ABD Gov Texas
 Hedef çoğaltma | Amerika Birleşik Devletleri | Hedef bölgeler: ABD DoD Central, ABD DoD East, US Gov Arizona, US Gov Iowa, US Gov Texas, US Gov Virginia
 
 

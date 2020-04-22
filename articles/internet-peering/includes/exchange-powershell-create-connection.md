@@ -8,18 +8,18 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 0014b67443797f45de51ec1bc459f71bde55cdc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f8e93cf34ac56344ff7e3d145ce8c7c3529767b7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75774438"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678673"
 ---
 Aşağıdaki örnek, Seattle'daki Equinix Internet Exchange'de exchange bağlantısının nasıl oluşturulabildiğini gösterir. Farklı bir sağlayıcı ve farklı ayarlar kullanıyorsanız, isteğinizi yaparken bu bilgileri değiştirin.
 
-PowerShell cmdlet **New-AzPeeringExchangeConnectionObject'i** kullanarak powershell bağlantı nesnelerini yeni bir eşleme isteği oluşturmak için kullanılacaktır:
+PowerShell cmdlet **New-AzPeeringExchangeConnectionObject'i** kullanarak powershell bağlantı nesnelerini oluşturun ve bu nesneleri yeni bir eşleme isteği oluşturmak için kullanılacaktır.
 
-Aşağıda bir Exchange Bağlantısı oluşturmak için bir örnek:
+Bu örnek, Exchange bağlantısının nasıl oluşturulurunu gösterir.
 
 ```powershell
 $connection1 = New-AzPeeringExchangeConnectionObject `
@@ -30,7 +30,7 @@ $connection1 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-Belirli bir eşleme konumunda artıklığa ihtiyaç duymanız durumunda başka bir bağlantı oluşturun:
+Verilen eşleme konumunda artıklığa ihtiyaç duymanız durumunda başka bir bağlantı oluşturun.
 
 ```powershell
 $connection2 = New-AzPeeringExchangeConnectionObject `
@@ -41,7 +41,7 @@ $connection2 = New-AzPeeringExchangeConnectionObject `
     -MaxPrefixesAdvertisedIPv6 2000 `
 ```
 
-PowerShell cmdlet **New-AzPeering** yeni bir Exchange bakan oluşturmak için kullanılabilir:
+PowerShell cmdlet **New-AzPeering** yeni bir Exchange bakan oluşturmak için kullanılabilir.
 
 ```powershell
 $asn = Get-AzPeerAsn
@@ -54,7 +54,7 @@ New-AzPeering `
 ```
 &nbsp;
 
-Aşağıda, istek tek bir bağlantı kullanılarak yürütüldüğünde örnek bir yanıt verilmiştir:
+Bu örnek yanıt, isteğin tek bir bağlantı kullanılarak yürütüldünzamanlarını gösterir.
 
 ```powershell
 
@@ -73,10 +73,10 @@ Tags              : {}
 ```
 
 > [!IMPORTANT]
-> Microsoft, istenen eşlemi sağlamaya `ConnectionState` başlar ve bu ilerlemeyi yansıtır.
-> İlgili adımları sağlamak için [Exchange eşleme gözden geçirme](../walkthrough-exchange-all.md) belgesine bakın.
+> Microsoft, istenen eşlemi sağlamayı `ConnectionState` başlatır ve ilerlemeyi yansıtır.
+> Sağlamayla ilgili adımlar hakkında daha fazla bilgi için [Exchange'in bakış gözden geçirmesine](../walkthrough-exchange-all.md)bakın.
 
-Aşağıda gösterildiği gibi ConnectionState'i kontrol edebilirsiniz:
+Burada gösterildiği gibi bağlantı durumunu denetleyebilirsiniz.
 
 ```powershell
 

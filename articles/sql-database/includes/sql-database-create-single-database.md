@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
-ms.openlocfilehash: c1ca87b6e7b8afb50522e73107707e15782a0a91
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 563ac8748e9d4f8a254a151814491113b9c816e6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79200489"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685158"
 ---
 Bu adımda, bir Azure SQL Veritabanı sunucusu ve AdventureWorksLT örnek verilerini kullanan tek bir veritabanı oluşturursunuz. Veritabanını Azure portal menülerini ve ekranlarını kullanarak veya Azure Bulut BulutU'nda Bir Azure CLI veya PowerShell komut dosyası kullanarak oluşturabilirsiniz.
 
@@ -28,7 +28,7 @@ Azure portalında bir kaynak grubu, SQL sunucusu ve tek bir veritabanı oluştur
    ![Azure SQL'e Ekle](../media/sql-database-single-database-get-started/sqldbportal.png)
    
 1. SELECT **SQL dağıtım seçeneği** sayfasında, **Kaynak türü**altında **Tek veritabanı** olan SQL **veritabanları** döşemesini seçin. **Ayrıntıları Göster'i**seçerek farklı veritabanları hakkında daha fazla bilgi görüntüleyebilirsiniz.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
    
    ![Tek veritabanı oluşturma](../media/sql-database-single-database-get-started/create-single-database.png)
    
@@ -106,7 +106,7 @@ location=westus2
 adminlogin=azureuser
 password=Azure1234567
 
-# Set a logical server name that is unique in the system
+# Set a logical server name that is unique to Azure DNS (<server_name>.database.windows.net)
 servername=server-$RANDOM
 
 # Set the ip address range that can access your database
@@ -157,7 +157,7 @@ az sql db create \
 
 Daha fazla Azure SQL Veritabanı Azure CLI örnekleri için [Azure CLI örneklerine](../sql-database-cli-samples.md)bakın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Windows PowerShell'i kullanarak bir Azure kaynak grubu, SQL sunucusu ve tek bir veritabanı oluşturabilirsiniz. Azure Bulut Kabuğu'nu kullanmak istemiyorsanız, [Azure PowerShell modüllerini yükleyin.](/powershell/azure/install-az-ps)
 

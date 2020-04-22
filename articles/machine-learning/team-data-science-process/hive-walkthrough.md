@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf69786f56f52874bd9358ae44a6b88b466e77f4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283426"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677470"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Ekip Veri Bilimi Süreci iş başında: Azure HDInsight Hadoop kümelerini kullanın
 Bu izlenme de, [takım veri bilimi işlemini (TDSP)](overview.md) uçtan uca bir senaryoda kullanırız. Kamuya açık [NYC Taksi Gezileri](https://www.andresmh.com/nyctaxitrips/) veri setinden verileri depolamak, keşfetmek ve özellik belirleme yapmak ve verileri aşağıdan tatmak için bir Azure [HDInsight Hadoop kümesi](https://azure.microsoft.com/services/hdinsight/) kullanıyoruz. İkili ve çok sınıflı sınıflandırma ve regresyon tahmin görevlerini işlemek için Azure Machine Learning ile verilerin modellerini oluşturuyoruz. 
@@ -721,7 +721,7 @@ Machine Learning'in Alma [Verisi][import-data] modülünde Kovan sorguları verm
 
 [Alma Verileri][import-data] modülü ve giriş parametreleri hakkında bazı ayrıntılar aşağıda verilmiştir:
 
-**HCatalog sunucu URI**: Küme adı **abc123** https://abc123.azurehdinsight.netise, o zaman kullanın: .
+**HCatalog sunucu URI**: Küme adı **abc123**ise,\/o zaman kullanın: https: /abc123.azurehdinsight.net.
 
 **Hadoop kullanıcı hesabı adı**: Küme için seçilen kullanıcı adı (uzaktan erişim kullanıcı adı değil).
 

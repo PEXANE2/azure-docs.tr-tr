@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5a6c85ebed7271655745de45694542fb359836e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78188419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678085"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeleri kullanarak Bir Azure Etkin Dizin hesabıyla kaydolma ayarlama
 
@@ -28,40 +28,8 @@ Bu makalede, Azure Active Directory B2C 'de (Azure AD B2C) [özel ilkeler](custo
 
 Azure Active [Directory B2C'deki özel ilkelerle başlayın](custom-policy-get-started.md)adımlarını tamamlayın.
 
-## <a name="register-an-application"></a>Bir uygulamayı kaydetme
 
-Belirli bir Azure AD kuruluşundan kullanıcılar için oturum açmayı etkinleştirmek için, bir uygulamayı kuruluş Azure AD kiracısına kaydetmeniz gerekir.
-
-1. [Azure portalında](https://portal.azure.com)oturum açın.
-1. Kuruluş azure AD kiracınızı içeren dizini kullandığınızdan emin olun (örneğin, contoso.com). Üst menüdeki **Dizin + abonelik filtresini** seçin ve ardından Azure AD kiracınızı içeren dizini seçin.
-1. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından **Uygulama kayıtlarını**arayın ve seçin.
-1. **Yeni kayıt**seçin.
-1. Başvurunuz için bir **Ad** girin. Örneğin, `Azure AD B2C App`.
-1. **Bu kuruluş dizinindeki Hesapların** varsayılan seçimini yalnızca bu uygulama için kabul edin.
-1. Yeniden **Yönlendirme**URI'si için **Web**değerini kabul edin ve Azure `your-B2C-tenant-name` AD B2C kiracınızın adıyla değiştirilen tüm küçük harflere aşağıdaki URL'yi girin.
-
-    ```
-    https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
-    ```
-
-    Örneğin, `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
-
-1. **Kaydol**’u seçin. Uygulama **(istemci) kimliğini** daha sonraki bir adımda kullanmak üzere kaydedin.
-1. **Sertifikalar & sırları**seçin ve ardından **Yeni istemci sırrını**seçin.
-1. Gizli için **Açıklama** girin, bir son kullanma tarihi seçin ve sonra **Ekle'yi**seçin. Daha sonraki bir adımda kullanılmak üzere sırrın **Değerini** kaydedin.
-
-## <a name="configuring-optional-claims"></a>İsteğe bağlı talepleri yapılandırma
-
-Azure AD'den `family_name` ve `given_name` talepleri almak istiyorsanız, Uygulamanız için isteğe bağlı talepleri Azure portalı kullanıcı arabirimi veya uygulama bildiriminde yapılandırabilirsiniz. Daha fazla bilgi için Azure [AD uygulamanızda isteğe bağlı talepler nasıl sağlayabileceğinize](../active-directory/develop/active-directory-optional-claims.md)bakın.
-
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Azure Active Directory**'yi bulun ve seçin.
-1. **Yönet** bölümünden **Uygulama kayıtlarını**seçin.
-1. Listede isteğe bağlı talepleri yapılandırmak istediğiniz uygulamayı seçin.
-1. **Yönet** bölümünden **Token yapılandırmasını (önizleme)** seçin.
-1. **İsteğe bağlı talep ekle'yi**seçin.
-1. Yapılandırmak istediğiniz belirteç türünü seçin.
-1. Eklemek için isteğe bağlı talepleri seçin.
-1. **Ekle**’ye tıklayın.
+[!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
@@ -75,7 +43,7 @@ Oluşturduğunuz uygulama anahtarını Azure AD B2C kiracınızda depolamanız g
 1. İlke anahtarı için bir **Ad** girin. Örneğin, `ContosoAppSecret`.  Önek `B2C_1A_` oluşturulduğunda anahtarınızın adına otomatik olarak eklenir, bu nedenle aşağıdaki bölümdeki XML'deki başvurusu *B2C_1A_ContosoAppSecret.*
 1. **Gizli**olarak, daha önce kaydettiğiniz müşteri sırrıgirin.
 1. **Anahtar kullanımı**için `Signature`.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-claims-provider"></a>Talep sağlayıcı ekleme
 

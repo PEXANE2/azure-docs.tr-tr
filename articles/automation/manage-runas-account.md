@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 341db4ffa5b2e0641572f2c9dc011e91fac6a1e9
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: 8d2c2f1e7ee10153108e54649ceba45b927b0cd2
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617316"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676637"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Otomasyonu Hesabı Olarak Çalıştır'ı Yönet
 
@@ -19,7 +19,7 @@ Azure Otomasyonundaki Run As hesapları, Azure cmdlets'i kullanarak Azure'daki k
 Bir Run as Hesabının hizmet sorumlusunun varsayılan olarak Azure AD'yi okuma izinleri yoktur. Azure AD'yi okumak veya yönetmek için izin eklemek istiyorsanız, **API izinleri**altında hizmet sorumlusundaki izinleri vermeniz gerekir. Daha fazla bilgi için [bkz.](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)
 
 >[!NOTE]
->Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
+>Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
 ## <a name="types-of-run-as-accounts"></a>Hesap Olarak Çalıştırma Türleri
 
@@ -63,12 +63,12 @@ Bir Run As hesabı oluşturmak veya güncelleştirmek için belirli ayrıcalıkl
 
 |Görev|Cmdlet  |Minimum İzinler  |İzinleri nerede ayarladığınız|
 |---|---------|---------|---|
-|Azure AD Uygulaması Oluşturma|[Yeni-AzADUygulaması](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication?view=azps-3.5.0)     | Uygulama Geliştiricirolü<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa |
-|Uygulamaya bir kimlik bilgisi ekleyin.|[Yeni-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential?view=azps-3.5.0)     | Uygulama Yöneticisi veya Genel Yönetici<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa|
-|Azure AD hizmeti ilkesi oluşturma ve alma|[Yeni-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-3.5.0)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal?view=azps-3.5.0)     | Uygulama Yöneticisi veya Genel Yönetici<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa|
-|Belirtilen asıl için RBAC rolünü atama veya alma|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment?view=azps-3.5.0)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment?view=azps-3.5.0)      | Kullanıcı Erişim Yöneticisi veya Sahibi veya aşağıdaki izinlere sahip:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Ev > Abonelikleri \<\> > abonelik adı - Erişim Denetimi (IAM)|
-|Otomasyon sertifikası oluşturma veya kaldırma|[Yeni-AzAutomationSertifikası](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate?view=azps-3.5.0)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate?view=azps-3.5.0)     | Kaynak grubundaki katılımcı         |Otomasyon hesabı kaynak grubu|
-|Bir Otomasyon bağlantısı oluşturma veya kaldırma|[Yeni-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.5.0)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection?view=azps-3.5.0)|Kaynak grubundaki katılımcı |Otomasyon hesabı kaynak grubu|
+|Azure AD Uygulaması Oluşturma|[Yeni-AzADUygulaması](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | Uygulama Geliştiricirolü<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa |
+|Uygulamaya bir kimlik bilgisi ekleyin.|[Yeni-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | Uygulama Yöneticisi veya Genel Yönetici<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa|
+|Azure AD hizmeti ilkesi oluşturma ve alma|[Yeni-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)     | Uygulama Yöneticisi veya Genel Yönetici<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>Azure REKLAM > Uygulama Kayıtlarını > Ana Sayfa|
+|Belirtilen asıl için RBAC rolünü atama veya alma|[New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](https://docs.microsoft.com/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Kullanıcı Erişim Yöneticisi veya Sahibi veya aşağıdaki izinlere sahip:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Abonelik](../role-based-access-control/role-assignments-portal.md)</br>Ev > Abonelikleri \<\> > abonelik adı - Erişim Denetimi (IAM)|
+|Otomasyon sertifikası oluşturma veya kaldırma|[Yeni-AzAutomationSertifikası](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationcertificate)     | Kaynak grubundaki katılımcı         |Otomasyon hesabı kaynak grubu|
+|Bir Otomasyon bağlantısı oluşturma veya kaldırma|[Yeni-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationconnection)|Kaynak grubundaki katılımcı |Otomasyon hesabı kaynak grubu|
 
 <sup>1</sup> Azure AD kiracınızdaki yönetici olmayan kullanıcılar, Azure AD kiracısının Kullanıcıları Kullanıcı ayarları **sayfasındaki uygulamaları kaydedebilirse** [AD uygulamalarını kaydedebilir.](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) **Yes** Uygulama kayıt ayarı **Hayır**ise, bu eylemi gerçekleştiren kullanıcı bu tabloda tanımlandığı gibi olmalıdır.
 

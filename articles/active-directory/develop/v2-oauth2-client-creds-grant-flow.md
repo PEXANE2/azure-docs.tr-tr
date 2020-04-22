@@ -12,12 +12,12 @@ ms.date: 12/17/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6021348160b338bc3a153764968f6c846a644cd1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f559dc0da8680a6cd3243b5ee12c3145244c9c2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535868"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677877"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 istemci kimlik bilgileri akışı
 
@@ -26,9 +26,6 @@ RFC 6749'da belirtilen, bazen *iki bacaklı OAuth*olarak adlandırılan [OAuth 2
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır. Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
 
 OAuth 2.0 istemci kimlik bilgileri hibe akışı, bir web hizmetinin (gizli istemci) başka bir web hizmetini ararken kimlik doğrulaması yapmak yerine, kullanıcı kimliği kullanmak yerine kendi kimlik bilgilerini kullanmasına izin verir. Bu senaryoda, istemci genellikle bir orta katman web hizmeti, bir daemon hizmeti veya bir web sitesidir. Daha yüksek bir güvence düzeyi için, Microsoft kimlik platformu arama hizmetinin bir sertifikayı (paylaşılan bir sır yerine) kimlik bilgisi olarak kullanmasına da izin verir.
-
-> [!NOTE]
-> Microsoft kimlik platformu bitiş noktası tüm Azure REKLAM senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 Daha tipik *üç bacaklı OAuth,* bir istemci uygulaması belirli bir kullanıcı adına bir kaynağa erişmek için izin verilir. İzin, kullanıcıdan uygulamaya, genellikle [onay](v2-permissions-and-consent.md) işlemi sırasında devredilir. Ancak, istemci kimlik bilgileri *(iki ayaklı OAuth)* akışında, izinler doğrudan uygulamanın kendisine verilir. Uygulama bir kaynağa bir belirteç sunduğunda, kaynak uygulamanın kullanıcıya değil, eylem gerçekleştirme yetkisine sahip olduğunu zorlar.
 

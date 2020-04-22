@@ -12,19 +12,16 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fa42bf65ea5f4469f714dda4331d3cb66156d187
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535816"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677682"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft kimlik platformu ve OpenID Connect protokolü
 
 OpenID Connect, OAuth 2.0'da bir kullanıcıyı bir web uygulamasında güvenli bir şekilde oturum açmak için kullanabileceğiniz bir kimlik doğrulama protokolüdür. Microsoft kimlik platformu bitiş noktasının OpenID Connect uygulamasını kullandığınızda, web tabanlı uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu makalede, dilden bağımsız olarak nasıl yapılacağını gösterir ve Microsoft açık kaynak kitaplıklarını kullanmadan HTTP iletilerinin nasıl gönderilip alınılacağını açıklar.
-
-> [!NOTE]
-> Microsoft kimlik platformu bitiş noktası, tüm Azure Etkin Dizin (Azure AD) senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 [OpenID Connect,](https://openid.net/specs/openid-connect-core-1_0.html) OAuth kullanarak tek oturum açma yapabilmeniz için OAuth 2.0 *yetkilendirme* protokolünü *kimlik doğrulama* protokolü olarak kullanmak üzere genişletir. OpenID Connect, istemcinin kullanıcının kimliğini doğrulamasına olanak tanıyan bir güvenlik belirteci olan *kimlik belirteci*kavramını sunar. Kimlik belirteci, kullanıcı hakkında temel profil bilgilerini de alır. OpenID Connect OAuth 2.0'ı genişletdiği için, uygulamalar bir yetkilendirme sunucusu tarafından güvenli kaynaklara erişmek için kullanılabilen *erişim belirteçlerini*güvenli bir şekilde [edinebilir.](active-directory-v2-protocols.md#the-basics) Microsoft kimlik platformu bitiş noktası, Azure AD'ye kayıtlı üçüncü taraf uygulamaların web API'leri gibi güvenli kaynaklar için erişim belirteçleri yayınlamasına da olanak tanır. Erişim belirteçleri vermek için bir uygulamanın nasıl ayarlanılabilenhakkında daha fazla bilgi için, [microsoft kimlik platformu bitiş noktasına bir uygulamayı nasıl kaydedin.](quickstart-register-app.md) Sunucuda barındırılan ve tarayıcı üzerinden erişilen bir [web uygulaması](v2-app-types.md#web-apps) oluşturuyorsanız OpenID Connect'i kullanmanızı öneririz.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure DevOps'leri Azure Geliştirme Alanları ile kullanarak sürekli tümleştirme/sürekli dağıtım ayarlamayı öğrenin
 keywords: Docker, Kubernetes, Azure, AKS, Azure Konteyner Hizmeti, konteynerler
-ms.openlocfilehash: 66ff2080ad44098757a5d9360fd3307e65f7431a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75438456"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685627"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces ile CI/CD kullanma
 
@@ -99,7 +99,7 @@ Bu dosyadan bir Ardışık Hatlar oluşturmak için:
 1. Varsayılan **sürüm**için, **etiketleri olan yapı ardışık etki alanı varsayılan dalından En Son'u**seçin.
 1. **Etiketleri** boş bırakın.
 1. Kaynak **takma adını** `drop`' a ayarlayın. **Kaynak diğer ad** değeri önceden tanımlanmış sürüm görevleri tarafından kullanılır, bu nedenle ayarlanmalıdır.
-1. **Ekle**’ye tıklayın.
+1. **Ekle**'ye tıklayın.
 1. Şimdi, aşağıda gösterildiği gibi, `drop` yeni oluşturulan yapı kaynağındaki yıldırım simgesine tıklayın:
 
     ![Açıklama artefaktı sürekli dağıtım kurulumu](../media/common/release-artifact-cd-setup.png)
@@ -131,7 +131,7 @@ Bu dosyadan bir Ardışık Hatlar oluşturmak için:
 Sürüm, tüm görevler tamamlandığında yapılır.
 
 > [!TIP]
-> Sürümyükseltme FAILED gibi bir hata iletisi ile başarısız *olursa: koşul bekleyen zamanlanmış,* [Kubernetes panosu kullanarak](../../aks/kubernetes-dashboard.md)kümebölmeleri inceleyerek deneyin. Bölmelerin görüntü "azdsexample.azurecr.io/mywebapi:122" çekmede başarısız olması gibi hata iletileriyle başlayamadığını *görürseniz: rpc hatası: kod = Bilinmeyen https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: desc = Daemon'dan hata yanıtı: Yetkisiz alın: kimlik doğrulama gerekli*, bunun nedeni kümenizin Azure Kapsayıcı Kayıt Defterinizden çekme yetkisine sahip olmaması olabilir. Azure Kapsayıcı Kayıt Defteri ön [koşulunuzdan yararlanmak için AKS kümenizi yetkilendir'i tamamladığınızdan](../../aks/cluster-container-registry-integration.md) emin olun.
+> Sürümyükseltme FAILED gibi bir hata iletisi ile başarısız *olursa: koşul bekleyen zamanlanmış,* [Kubernetes panosu kullanarak](../../aks/kubernetes-dashboard.md)kümebölmeleri inceleyerek deneyin. Bölmelerin görüntü "azdsexample.azurecr.io/mywebapi:122" çekmede başarısız gibi hata iletileri ile başlamak için başarısız olduğunu *görürseniz: rpc hatası: kod =\/Bilinmeyen desc = Daemon hata yanıtı: Al https: /azdsexample.azurecr.io/v2/mywebapi/manifests/122: yetkisiz: kimlik doğrulama gerekli*, çünkü küme Azure Konteyner Kayıt Defteri çekmek için yetkili değil olabilir. Azure Kapsayıcı Kayıt Defteri ön [koşulunuzdan yararlanmak için AKS kümenizi yetkilendir'i tamamladığınızdan](../../aks/cluster-container-registry-integration.md) emin olun.
 
 Artık GitHub çatalını dev spaces örnek uygulamalarınız için tam otomatik bir CI/CD ardışık hattınız var. Her zaman işlemek ve kod itin, yapı boru hattı inşa edecek ve özel ACR örneğine *mywebapi* ve *webfrontend* görüntüleri itin. Ardından sürüm ardışık hattı, her uygulama için Miğfer grafiğini Dev Spaces etkin kümenizdeki _dev_ alana dağıtır.
 

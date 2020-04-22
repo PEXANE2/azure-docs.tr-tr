@@ -12,19 +12,16 @@ ms.date: 04/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bdbda8bed38819ca2b4d2fb1ef3d9bf591269890
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535919"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677997"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>Microsoft kimlik platformu için uygulama türleri
 
 Microsoft kimlik platformu (v2.0) bitiş noktası, hepsi endüstri standardı protokolleri [OAuth 2.0 veya OpenID Connect'e](active-directory-v2-protocols.md)dayalı olarak çeşitli modern uygulama mimarileri için kimlik doğrulamasını destekler. Bu makalede, tercih ettiğiniz dil veya platformdan bağımsız olarak Microsoft kimlik platformunu kullanarak oluşturabileceğiniz uygulama türleri açıklanmaktadır. Bilgiler, [kodla çalışmaya başlamadan](v2-overview.md#getting-started)önce üst düzey senaryoları anlamanıza yardımcı olmak için tasarlanmıştır.
-
-> [!NOTE]
-> Microsoft kimlik platformu bitiş noktası, tüm Azure Etkin Dizin (Azure AD) senaryolarını ve özelliklerini desteklemez. Microsoft kimlik platformu bitiş noktasını kullanıp kullanmadığınızı belirlemek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="the-basics"></a>Temel bilgiler
 

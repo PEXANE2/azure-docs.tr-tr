@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
-ms.openlocfilehash: 0f86d1ad03062797764af6a0d49beacaa3458a8f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365557"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684723"
 ---
 # <a name="execute-python-script-module"></a>Python Script modüllerini çalıştırın
 
@@ -164,7 +164,7 @@ Aşağıdaki örnek, **Python Script'i Çalıştır** modülünde bir resim dosy
 # imports up here can be used to
 import pandas as pd
 
-# The entry point function can contain up to two input arguments:
+# The entry point function must have two input arguments:
 #   Param<dataframe1>: a pandas.DataFrame
 #   Param<dataframe2>: a pandas.DataFrame
 def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -217,10 +217,17 @@ Boru hattı çalışması tamamlandıktan sonra, görüntüyü modülün sağ pa
 
 5. Python **komut dosyası** metin kutusunda, geçerli Python komut dosyası yazın veya yapıştırın.
 
+    > [!NOTE]
+    > Lütfen komut dosyanızı yazarken çok dikkatli olun ve bildirilmemiş bir nesne veya alınmamış bir modül kullanmak gibi sözdizimi hatası olmadığından emin olun. Ayrıca önceden yüklenmiş modül listesine ekstra dikkat edin. Listede yer almayan modülleri almak için, ilgili paketleri komut dosyanıza
+    >  ``` Python
+    > import os
+    > os.system(f"pip install scikit-misc")
+    > ```
+    
     **Python komut dosyası** metin kutusu, yorumlarda bazı yönergeler ve veri erişimi ve çıktısı için örnek kodla önceden doldurulmuştür. Bu kodu değiştirmeniz veya değiştirmeniz gerekir. Girintinasyon ve kasa ile ilgili Python kurallarını takip etmeyi unutmayın.
 
     + Komut dosyası, bu `azureml_main` modülün giriş noktası olarak adlandırılan bir işlev içermelidir.
-    + Giriş noktası işlevi en fazla iki giriş `Param<dataframe1>` bağımsız değişkeni içerebilir: ve`Param<dataframe2>`
+    + Giriş noktası işlevi iki giriş bağımsız `Param<dataframe1>` `Param<dataframe2>`değişkeni olmalıdır: ve , bu bağımsız değişkenler komut dosyasında kullanılmadığında bile.
     + Üçüncü giriş bağlantı noktasına bağlı sıkıştırılmış dosyalar gün önce açılır `.\Script Bundle`ve Python'a `sys.path`eklenen dizinde depolanır. 
 
     Bu nedenle, zip `mymodule.py`dosyanız içeriyorsa, 'yi kullanarak `import mymodule`içeri aktarın.

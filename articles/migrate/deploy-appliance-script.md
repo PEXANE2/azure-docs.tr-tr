@@ -3,31 +3,22 @@ title: Komut dosyasıyla Azure Geçiş cihazı ayarlama
 description: Komut dosyasıyla Azure Geçiş cihazını nasıl ayarlayamanızı öğrenin
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: faed7f96ea8c1850af5523d35f9f891011a48df8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 0c4d85909bbfa623b5ad8590e973250474d9d95a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537721"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676307"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası olan bir cihaz ayarlama
 
-Bu makalede, VMware VM'ler ve Hyper-VM'ler için PowerShell yükleyici komut dosyası kullanarak [Azure Geçir cihazının](deploy-appliance.md) nasıl ayarlanır. Cihazı fiziksel sunucular için kurmak istiyorsanız, [bu makaleyi inceleyin.](how-to-set-up-appliance-physical.md)
+VMware VM'lerin ve Hyper-V VM'lerin değerlendirilmesi/geçişi için bir [Azure Geçiş cihazı](deploy-appliance.md) oluşturmak için bu makaleyi izleyin. Bir cihaz oluşturmak için bir komut dosyası çalıştırın ve Azure'a bağlanabildiğinizi doğrularsınız. 
 
+Cihazı VMware ve Hyper-V VM'ler için komut dosyası kullanarak veya Azure portalından indirdiğiniz bir şablonkullanarak dağıtabilirsiniz. İndirilen şablonu kullanarak bir VM oluşturamıyorsanız komut dosyası kullanmak yararlıdır.
 
-Cihazı birkaç yöntem kullanarak dağıtabilirsiniz:
-
-
-- VMware VM 'ler (OVA) veya Hyper-V VM'ler (VHD) için şablon kullanma.
-- Komut dosyası kullanarak. Bu, bu makalede açıklanan yöntemdir. Komut dosyası şunları sağlar:
-    - VMware VM'lerin değerlendirilmesi ve aracısız geçişi için ova şablonu kullanarak cihazı kurmaya alternatif.
-    - Hyper-V VM'lerin değerlendirilmesi ve geçişi için vhd şablonu kullanarak cihazı kurmaya alternatif.
-    - Fiziksel sunucuların (veya fiziksel sunucu olarak geçirmek istediğiniz VM'lerin) değerlendirilmesi için komut dosyası, cihazı ayarlamak için tek yöntemdir.
-    - Cihazı Azure Kamu'da dağıtmanın bir yolu.
-
-
-Cihazı oluşturduktan sonra Azure Geçiş'e bağlanabildiğinizi doğrularsınız. Daha sonra cihazı ilk kez yapılandırın ve Azure Geçiş projesine kaydettirin.
-
+- Şablon kullanmak için [VMware](tutorial-prepare-vmware.md) veya [Hyper-V](tutorial-prepare-hyper-v.md)öğreticilerini izleyin.
+- Fiziksel sunucular için bir cihaz ayarlamak için yalnızca bir komut dosyası kullanabilirsiniz. [Bu makaleyi](how-to-set-up-appliance-physical.md)izleyin.
+- Bir Azure Devlet bulutuna bir cihaz ayarlamak için [bu makaleye](deploy-appliance-script-government.md)uyun.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -55,24 +46,15 @@ Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. Sıkıştırılanması gereken dosya için karma oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-    - Devlet bulutu için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip```
+    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
+3. Oluşturulan karma değerini doğrulayın. En son cihaz sürümü için:
 
-3. Oluşturulan karma değerleri doğrulayın:
+    **Algoritma** | **Karma değeri**
+    --- | ---
+    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
 
-    - Genel bulut için (en son cihaz sürümü için):
 
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
-
-    - Azure yönetimi için (en son cihaz sürümü için):
-
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -92,15 +74,14 @@ Betiği çalıştırmak için:
 2. PowerShell'i yönetici (yüksek) ayrıcalıklarla makinede başlatın.
 3. PowerShell dizinini indirilen sıkıştırılmış dosyadan çıkarılan içeriği içeren klasörle değiştirin.
 4. **AzureMigrateInstaller.ps1**komut dosyasını aşağıdaki gibi çalıştırın:
-    - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
-    - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-VMWare-USGov>AzureMigrateInstaller.ps1 ```
+
+    ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario VMware ```
    
 5. Komut dosyası başarılı bir şekilde çalıştırdıktan sonra, cihazı kurabilmeniz için cihaz web uygulamasını başlatir. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerini gözden geçirin.
 
 ### <a name="verify-access"></a>Erişimi doğrulama
 
-Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet bulutları] için Azure URL'lerine bağlanabilmesini unutmayın (geçiş-appliance.md#government-cloud-urls).
-
+Cihazın [genel](migrate-appliance.md#public-cloud-urls) bulut için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ## <a name="set-up-the-appliance-for-hyper-v"></a>Cihazı Hyper-V için ayarlayın
 
@@ -120,24 +101,14 @@ Dağıtmadan önce sıkıştırılabilen dosyanın güvenli olup olmadığını 
 1. Dosyayı indirdiğiniz makinede yönetici komut penceresi açın.
 2. Sıkıştırılanması gereken dosya için karma oluşturmak için aşağıdaki komutu çalıştırın
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Genel bulut için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
-    - Devlet bulutu için örnek kullanım:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
+    - Örnek: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256```
 
-3. Oluşturulan karma değerleri doğrulayın:
+3. Oluşturulan karma değerleri doğrulayın. En son cihaz sürümü için:
 
-    - Genel bulut için (en son cihaz sürümü için):
-
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
-
-    - Azure yönetimi için (en son cihaz sürümü için):
-
-        **Algoritma** | **Karma değeri**
-          --- | ---
-          MD5 | 717f8b9185f565006b5aff0215ecadac
-          
+    **Algoritma** | **Karma değeri**
+    --- | ---
+    MD5 | 1e92ede3e87c03bd148e56a708cdd33f
+    SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e6de7b9f475b6542beef114b20bfdac3c
 
 ### <a name="run-the-script"></a>Betiği çalıştırın
 
@@ -156,22 +127,17 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı makinede cihazı barındıracak bir klasöre ayıklayın. Komut dosyasını varolan bir Azure Geçir cihazında bir makinede çalıştırmadığınızdan emin olun.
 2. PowerShell'i yönetici (yüksek) ayrıcalıklarla makinede başlatın.
 3. PowerShell dizinini indirilen sıkıştırılmış dosyadan çıkarılan içeriği içeren klasörle değiştirin.
-4. **AzureMigrateInstaller.ps1**komut dosyasını aşağıdaki gibi çalıştırın:
-    - Genel bulut için:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
-    - Azure Kamu için:``` PS C:\Users\Administrators\Desktop\AzureMigrateInstaller-HyperV-USGov>AzureMigrateInstaller.ps1 ```
+4. **AzureMigrateInstaller.ps1**komut dosyasını aşağıdaki gibi çalıştırın:``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1 -scenario Hyperv ```
    
 5. Komut dosyası başarılı bir şekilde çalıştırdıktan sonra, cihazı kurabilmeniz için cihaz web uygulamasını başlatir. Herhangi bir sorunla karşılaşırsanız, C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log adresindeki komut dosyası günlüklerini gözden geçirin.
 
 ### <a name="verify-access"></a>Erişimi doğrulama
 
-Cihazın [genel](migrate-appliance.md#public-cloud-urls) ve [devlet bulutları] için Azure URL'lerine bağlanabilmesini unutmayın (geçiş-appliance.md#government-cloud-urls).
-
-
+Cihazın [genel](migrate-appliance.md#public-cloud-urls) bulut için Azure URL'lerine bağlanabileceğinden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Cihazı şablonla veya fiziksel sunucularla ayarlama hakkında daha fazla bilgi edinmek için şu makaleleri inceleyin:
+Cihazı dağıttıktan sonra, cihazı ilk kez yapılandırmanız ve Azure Geçiş projesine kaydetmeniz gerekir.
 
 - [Cihazı VMware](how-to-set-up-appliance-vmware.md#configure-the-appliance)için ayarlayın.
 - [Hyper-V](how-to-set-up-appliance-hyper-v.md#configure-the-appliance)için cihazı ayarlayın.
-- Cihazı [fiziksel sunucular](how-to-set-up-appliance-physical.md)için ayarlayın.

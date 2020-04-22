@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: f577059e1ebf70e3a9dfe9e538a9d3d49d7c8e96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71200001"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686933"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>OPC Vault sertifika yönetim hizmetini oluşturun ve dağıtın
 
@@ -90,7 +90,7 @@ Başarılı dağıtımdan sonra, hizmetleri kullanmaya başlayabilirsiniz. Bkz. 
 
 Bunu yapmak için:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Hizmetin dağıtıldığı kaynak grubuna gidin.
 3. **Kaynak grubunu sil**'i seçip onaylayın.
 4. Kısa bir süre sonra, dağıtılan tüm hizmet bileşenleri silinir.
@@ -107,7 +107,7 @@ Kısa ve basit bir kaynak grubu adı kullanın. Ad, kaynakları ve hizmet URL ö
 
 ### <a name="website-name-already-in-use"></a>Zaten kullanılmakta olan web sitesi adı
 
-Web sitesinin adının zaten kullanılıyor olması mümkündür. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım komut dosyası tarafından kullanılan ana https://resourcegroupname.azurewebsites.net https://resourgroupname-service.azurewebsites.netbilgisayar adları şunlardır: ve .
+Web sitesinin adının zaten kullanılıyor olması mümkündür. Farklı bir kaynak grubu adı kullanmanız gerekir. Dağıtım komut dosyası tarafından kullanılan ana bilgisayar\/adları şunlardır: https: /resourcegroupname.azurewebsites.net ve https:\//resourgroupname-service.azurewebsites.net.
 Hizmetlerin diğer adları kısa ad karmalarının birleşimi tarafından oluşturulur ve diğer hizmetlerle çakışma olasılığı düşüktür.
 
 ### <a name="azure-ad-registration"></a>Azure AD kaydı 

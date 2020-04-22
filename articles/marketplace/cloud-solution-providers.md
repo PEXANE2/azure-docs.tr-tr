@@ -5,14 +5,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 9d7cbdd5ad551ba48f08f62237d5384aa7998fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c4c8f21234cfbf040d57c0e1c8dbecbb698d7d50
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80281672"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685919"
 ---
 # <a name="cloud-solution-providers"></a>Bulut Çözüm Sağlayıcıları
 
@@ -195,4 +195,4 @@ Azure [Marketi ve AppSource Publisher Kılavuzu'nu ziyaret edin.](https://docs.m
 
 Pazar daki GTM hizmetleri hakkında daha fazla bilgi edinmek [için pazara git hizmetleri'ne](https://partner.microsoft.com/reach-customers/gtm)bakın.
 
-Teklifinizi oluşturmak ve yapılandırmak için [İş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) veya Bulut İş Ortağı [Portalı'nda](https://cloudpartner.azure.com/) oturum açın.
+Teklifinizi oluşturmak ve yapılandırmak için [İş Ortağı Merkezi](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) veya Bulut İş Ortağı [Portalı'nda](https://cloudpartner.azure.com/) oturum açın.

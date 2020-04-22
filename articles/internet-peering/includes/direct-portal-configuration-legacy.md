@@ -8,46 +8,46 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 16909e0a5d59b0ae019d91aad00e0168b0c5f433
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75775075"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678850"
 ---
-1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinin altında, aşağıda gösterildiği gibi alanları doldurun.
+1. **Eşleme Oluştur** sayfasında, **Yapılandırma** sekmesinde, burada gösterildiği gibi kutuları doldurun.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering Yapılandırması - Doğrudan](../media/setup-direct-conf-tab.png)
+    > ![Eşleme sayfası Yapılandırma sekmesi oluşturma](../media/setup-direct-conf-tab.png)
 
-    * **Peering türü için** *Doğrudan'ı*seçin.
-    * **Microsoft ağı için** *AS8075'i*seçin. ASN 8069'u seçmeyin. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft peering](mailto:peering@microsoft.com)tarafından kullanılır.
-    * *Temel Ücretsiz*olarak **SKU'yı** seçin. Özel uygulamalar için ayrılmış olduğundan *Premium Free'yi* seçmeyin.
-    * Eşlemeyi Azure kaynağına dönüştürmek istediğiniz yer için **Metro** konumunu seçin. Azure kaynağına dönüştürülmeyen seçili **Metro** konumunda Microsoft ile karşılaşbağlantılarınız varsa, bu bağlantılar aşağıda gösterildiği gibi **Eşler bağlantıları** bölümünde listelenir. Artık bu bakan bağlantıları Azure kaynağına dönüştürebilirsiniz.
+    * **Peering türü için** **Doğrudan'ı**seçin.
+    * **Microsoft ağı için** **AS8075'i**seçin. ASN 8069'u seçmeyin. Özel uygulamalar için ayrılmıştır ve yalnızca [Microsoft peering](mailto:peering@microsoft.com)tarafından kullanılır.
+    * **Temel Ücretsiz**olarak **SKU'yı** seçin. Özel uygulamalar için ayrılmış olduğundan Premium Free'i seçmeyin.
+    * Bir Azure kaynağına eşlemi dönüştürmek istediğiniz **Metro** konumunu seçin. Azure kaynağına dönüştürülmeyen seçili **Metro** konumunda Microsoft ile karşılaş bağlantılarınız varsa, bu bağlantılar gösterildiği gibi **Eşler bağlantıları** bölümünde listelenir. Artık bu bakan bağlantıları bir Azure kaynağına dönüştürebilirsiniz.
 
         > [!div class="mx-imgBorder"]
-        > ![Peering Configuration - Doğrudan - Eski Bağlantılar](../media/setup-directlegacy-conf-tab.png)
+        > ![Eşleme bağlantıları listesi](../media/setup-directlegacy-conf-tab.png)
 
-1. Bağlantı ayarlarını değiştirmek için bant genişliğini güncelleştirmeniz gerekiyorsa, aşağıda vurgulandığı gibi bir çizginin düzenle düğmesini tıklatın.
+1. Bant genişliğini güncelleştirmeniz gerekiyorsa, bağlantı ayarlarını değiştirmek için bir satırIçin düzenle düğmesini seçin.
 
     > [!div class="mx-imgBorder"]
-    > ![Peering Configuration - Doğrudan Düzenleme](../media/setup-directlegacy-conf-tab-edit.png)
+    > ![Düzenle düğmesi](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
-    > Seçili **Metro** konumunda Microsoft ile ek eşleme bağlantıları eklemek istiyorsanız, **bunu yeni oluştur** düğmesine tıklayarak yapabilirsiniz. Bkz. Daha fazla bilgi için [portalı kullanarak Doğrudan bir bakış oluşturma veya değiştirme.](../howto-direct-portal.md)
+    > Seçili **Metro** konumunda Microsoft ile ek eşleme bağlantıları eklemek istiyorsanız, **yeni oluştur'u**seçin. Daha fazla bilgi için [bkz.](../howto-direct-portal.md)
     >
 
-1. Gözden **Geçir + oluştur'a**tıklayın. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığını gözlemleyin. Bu, *son doğrulamayı çalıştırırken*üstteki şeritte görüntülenir... .
+1. **İncele ve oluştur**’u seçin. Portalın girdiğiniz bilgilerin temel doğrulanmasını çalıştırdığına dikkat edin. Üstteki *şerit, son doğrulamayı çalıştıran*iletiyi görüntüler... .
 
     > [!div class="mx-imgBorder"]
-    > ![Eşleme Doğrulama Sekmesi](../media/setup-direct-review-tab-validation.png)
+    > ![Eşleme Doğrulama sekmesi](../media/setup-direct-review-tab-validation.png)
 
-1. *Validation Geçti*döndükten sonra, bilgilerinizi doğrulayın ve **Oluştur'a**tıklayarak isteğinizi gönderin. İsteğinizi değiştirmeniz gerekiyorsa, **Önceki'yi** tıklatın ve yukarıdaki adımları yineleyin.
-
-    > [!div class="mx-imgBorder"]
-    > ![Eşleme Gönder](../media/setup-direct-review-tab-submit.png)
-
-1. İsteği gönderdikten sonra, dağıtımı tamamlamasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Başarılı bir dağıtım aşağıdaki gibi görünür.
+1. İleti nin *Doğrulama'ya geçirilmesinden*sonra bilgilerinizi doğrulayın. **Oluştur'u**seçerek isteği gönderin. İsteğinizi değiştirmek için **Önceki'yi** seçin ve adımları yineleyin.
 
     > [!div class="mx-imgBorder"]
-    > ![Akran Başarısı](../media/setup-direct-success.png)
+    > ![Akran gönderimi](../media/setup-direct-review-tab-submit.png)
+
+1. İsteğe göndermeniz inden sonra, dağıtımın tamamlanmasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Burada gösterildiği gibi başarılı bir dağıtım görüntülenir.
+
+    > [!div class="mx-imgBorder"]
+    > ![Akran başarısı](../media/setup-direct-success.png)

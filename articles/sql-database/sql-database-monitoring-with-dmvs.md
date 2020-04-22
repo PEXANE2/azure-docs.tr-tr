@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 958dcd441d35b5c28746ff79a0b341e5aa7383a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214021"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683010"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>Dinamik yönetim görünümlerini kullanarak performansı izleme Azure SQL Veritabanı
 
@@ -604,7 +604,7 @@ Sonraki örnek, SQL veritabanınızın kaynakları nasıl kullandığı hakkınd
 
 3. Her kaynak ölçümünün ortalama ve maksimum değerleri hakkındaki bu bilgilerle, iş yükünüzün seçtiğiniz bilgi işlem boyutuna ne kadar iyi uyduğunu değerlendirebilirsiniz. Genellikle, **sys.resource_stats** ortalama değerleri hedef boyutuna karşı kullanmak için iyi bir taban çizgisi verir. Bu senin birincil ölçüm çubuğun olmalı. Örneğin, S2 işlem boyutuna sahip Standart hizmet katmanını kullanıyor olabilirsiniz. CPU ve IO okuma ve yazma için ortalama kullanım yüzdeleri yüzde 40'ın altında, ortalama işçi sayısı 50'nin altında ve ortalama oturum sayısı 200'ün altındadır. İş yükünüz S1 işlem boyutuna sığabilir. Veritabanınızın çalışana ve oturum sınırlarına uygun olup olmadığını görmek kolaydır. Bir veritabanının CPU ile ilgili olarak daha düşük bir bilgi işlem boyutuna uygun olup olmadığını görmek için, alt işlem boyutunun DTU numarasını geçerli işlem boyutunuzun DTU sayısına bölün ve sonucu 100 ile çarpın:
 
-    ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
+    `S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40`
 
     Sonuç, iki işlem boyutu arasındaki göreli performans yüzdesi farkıdır. Kaynak kullanımınız bu tutarı aşarsa, iş yükünüz alt bilgi işlem boyutuna sığabilir. Ancak, tüm kaynak kullanım değerlerine bakmanız ve veritabanı iş yükünüzün alt bilgi işlem boyutuna ne sıklıkta uyacağını yüzde olarak belirlemeniz gerekir. Aşağıdaki sorgu, bu örnekte hesapladığımız yüzde 40 eşiğe bağlı olarak kaynak boyutu başına sığdırma yüzdesini çıkar:
 

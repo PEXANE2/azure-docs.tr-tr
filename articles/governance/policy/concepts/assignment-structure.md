@@ -1,14 +1,14 @@
 ---
 title: İlke atama yapısının ayrıntıları
 description: İlke tanımlarını ve parametreleri değerlendirme kaynaklarıyla ilişkilendirmek için Azure İlkesi tarafından kullanılan ilke atama tanımını açıklar.
-ms.date: 09/23/2019
+ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: f03c654dfc4c8dfdf2bdc5103a5961b4d8ce1e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cdb2fc0c6f057ece44383f68bc79fca54507db9b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265304"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683211"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure İlkesi atama yapısı
 
@@ -20,6 +20,7 @@ Bir ilke ataması oluşturmak için JSON'u kullanırsınız. İlke ataması içi
 - açıklama
 - meta veriler
 - uygulama modu
+- hariç kapsamlar
 - ilke tanımı
 - parametreler
 
@@ -34,6 +35,7 @@ Bir ilke ataması oluşturmak için JSON'u kullanırsınız. İlke ataması içi
             "assignedBy": "Cloud Center of Excellence"
         },
         "enforcementMode": "DoNotEnforce",
+        "notScopes": [],
         "policyDefinitionId": "/subscriptions/{mySubscriptionID}/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming",
         "parameters": {
             "prefix": {
@@ -65,6 +67,10 @@ Bu özellik aşağıdaki değerlere sahiptir:
 |Devre dışı |DoNotEnforce |string |Evet |Hayır | İlke efekti kaynak oluşturma veya güncelleştirme sırasında zorlanmaz. |
 
 **EnforcementMode** bir ilke veya girişim tanımında belirtilmemişse, _Varsayılan_ değer kullanılır. [Düzeltme görevleri,](../how-to/remediate-resources.md) **enforcementMode** _DoNotEnforce_olarak ayarlansa [bile, deployIfNotExists](./effects.md#deployifnotexists) ilkeleri için başlatılabilir.
+
+## <a name="excluded-scopes"></a>Dışlanan kapsamlar
+
+Atamanın **kapsamı** tüm alt kaynak kapsayıcılarını ve alt kaynakları içerir. Bir alt kaynak kapsayıcısı veya alt kaynak tanımı uygulanmış olmamalıdır, her **notScopes**ayarlayarak değerlendirme hariç tutulabilir. Bu özellik, bir veya daha fazla kaynak kapsayıcısını veya kaynağı değerlendirmeden hariç talan etmeyi etkinleştirmek için kullanılan bir dizidir. **notScopes** ilk atama oluşturulduktan sonra eklenebilir veya güncellenebilir.
 
 ## <a name="policy-definition-id"></a>İlke tanımı kimliği
 

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 72e1d3b0ad72b1e68b88eb0550cbe839ade9d929
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74d38af4a64a184b26bd6ba1105db0d2530d8ba6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79260026"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676402"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Veri Kutunuz ve Azure Veri Kutusu Ağır'ınız için izleme ve olay günlüğü
 
@@ -24,7 +24,7 @@ Aşağıdaki tablo, Veri Kutusu veya Veri Kutusu Ağır sipariş adımlarının 
 | Veri Kutusu sipariş aşaması       | Takip ve denetim aracı                                                                        |
 |----------------------------|------------------------------------------------------------------------------------------------|
 | Sipariş oluşturma               | [RBAC üzerinden siparişte erişim denetimi ayarlama](#set-up-access-control-on-the-order)                                                    |
-| Sipariş işlendi            | [Siparişi izleme](#track-the-order) <ul><li> Azure portalında </li><li> Nakliye taşıyıcı web sitesi </li><li>E-posta bildirimleri</ul> |
+| Sipariş işlendi            | [Siparişi izleme](#track-the-order) <ul><li> Azure portal </li><li> Nakliye taşıyıcı web sitesi </li><li>E-posta bildirimleri</ul> |
 | Cihazı ayarlama              | [Etkinlik günlüklerinde](#query-activity-logs-during-setup) oturum açan aygıt kimlik bilgileri                                              |
 | Aygıta veri kopyalama        | Veri kopyalama için [ *error.xml* dosyalarını görüntüleme](#view-error-log-during-data-copy)                                                             |
 | Göndermeye hazırlama            | [Cihazdaki BOM dosyalarını](#inspect-bom-during-prepare-to-ship) veya bildirim dosyalarını inceleyin                                      |
@@ -47,7 +47,7 @@ Bir siparişe erişimi kısıtlamak için şunları yapabilirsiniz:
 - Sipariş düzeyinde bir rol atayın. Kullanıcı, yalnızca belirli Veri Kutusu sırası ile etkileşimde bulunan roller tarafından tanımlanan bu izinlere sahiptir ve başka bir şey yoktur.
 - Kaynak grubu düzeyinde bir rol atayın, kullanıcı bir kaynak grubu içindeki tüm Veri Kutusu siparişlerine erişebilir.
 
-Önerilen RBAC kullanımı hakkında daha fazla bilgi [için RBAC için en iyi uygulamalara](../role-based-access-control/overview.md#best-practice-for-using-rbac)bakın.
+Önerilen RBAC kullanımı hakkında daha fazla bilgi için [Azure RBAC için en iyi uygulamalara](../role-based-access-control/best-practices.md)bakın.
 
 ## <a name="track-the-order"></a>Siparişi izleme
 

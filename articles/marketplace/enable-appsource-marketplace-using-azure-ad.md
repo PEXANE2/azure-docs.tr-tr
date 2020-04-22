@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 45855038e60dcdc3be4f98cfdceed69df5e8c946
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2f33fc8b1bdd15b53ad9130b5cc598dd6d5ee1a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80286328"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684620"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Azure Active Directory kullanarak AppSource ve Market listesini etkinleştirme
 
@@ -87,5 +87,10 @@ Aşağıdaki eylemlerden birini desteklemek için Azure AD'yi kullanın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Marketi'ne kaydolduğunuzdan](https://azuremarketplace.microsoft.com/sell)emin olun.
-- Teklifinizi nasıl oluşturabileceğiniz veya tamamlayabileceğiniz hakkında daha fazla bilgi için [İş Ortağı Merkezi hesabının nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) öğrenin.
+Eğer bunu yapmadıysanız, 
+
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
+
+Ortak Merkezi'ne kaydolmak için yeni bir teklif oluşturmaya veya varolan bir teklif üzerinde çalışmaya başlayın:
+
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)

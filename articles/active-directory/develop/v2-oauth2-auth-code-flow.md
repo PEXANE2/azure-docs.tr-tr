@@ -12,21 +12,18 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ac630c4901c126ed883adbdc7efb03f36372e6ff
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535885"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677941"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 yetkilendirme kodu akışı
 
 OAuth 2.0 yetkilendirme kodu hibesi, web API'leri gibi korunan kaynaklara erişmek için aygıta yüklenen uygulamalarda kullanılabilir. OAuth 2.0'ın Microsoft kimlik platformu uygulamasını kullanarak mobil ve masaüstü uygulamalarınıza oturum açma ve API erişimi ekleyebilirsiniz. Bu kılavuz dilden bağımsızdır ve Azure açık kaynak kimlik doğrulama [kitaplıklarından](reference-v2-libraries.md)herhangi birini kullanmadan HTTP iletilerinin nasıl gönderilip alınılacağını açıklar.
 
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
-
-> [!NOTE]
-> Tüm Azure Active Directory senaryoları & özellikleri Microsoft kimlik platformu bitiş noktası tarafından desteklenmez. Microsoft kimlik platformu bitiş noktasını kullanmanız gerekip gerekip gerekmeden karar vermek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 OAuth 2.0 yetkilendirme kodu akışı, [OAuth 2.0 belirtiminin 4.1 bölümünde](https://tools.ietf.org/html/rfc6749)açıklanmıştır. [Web uygulamaları](v2-app-types.md#web-apps) ve [yerel olarak yüklenmiş uygulamalar](v2-app-types.md#mobile-and-native-apps)da dahil olmak üzere uygulama türlerinin çoğunda kimlik doğrulama ve yetkilendirme gerçekleştirmek için kullanılır. Akış, uygulamaların Microsoft kimlik platformu bitiş noktası tarafından güvence altına alınarak güvenilen kaynaklara erişmek için kullanılabilecek access_tokens güvenli bir şekilde edinmesini sağlar.
 

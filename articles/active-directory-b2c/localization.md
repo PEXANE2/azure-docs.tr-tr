@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e73eae4d66f4ff94a48dfa27e258f8ba8ef87633
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126764"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681409"
 ---
 # <a name="localization"></a>Yerelleştirme
 
@@ -146,65 +146,190 @@ Aşağıdaki örnekte **Yerelleştirilmiş Koleksiyonlar** öğesinin kullanım�
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Elementtype | Evet | İlkedeki bir talep türü öğesine veya kullanıcı arabirimi öğesine başvuru. `ClaimType`Olası değerler: `UxElement` `ErrorMessage`, `Predicate`, `GetLocalizedStringsTransformationClaimType`, veya . Değer, `ClaimType` StringId'de belirtildiği gibi, talep özniteliklerinden birini yerelleştirmek için kullanılır. Değer, `UxElement` StringId'de belirtildiği gibi kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Değer, `ErrorMessage` StringId'de belirtildiği gibi sistem hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `Predicate` StringId'de belirtildiği gibi [Yüklem](predicates.md) hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `InputValidation` StringId'de belirtildiği gibi [PredicateValidation](predicates.md) grup hata iletilerinden birini yerelleştirmek için kullanılır. Değer, `GetLocalizedStringsTransformationClaimType` yerelleştirilmiş dizeleri taleplere kopyalamak için kullanılır. Daha fazla bilgi için [GetLocalizedStringsTransformation talepleri dönüşümüne](string-transformations.md#getlocalizedstringstransformation) bakın  | 
+| Elementtype | Evet | Olası değerler: [ClaimsProvider](#claimsprovider), [ClaimType](#claimtype), [ErrorMessage](#errormessage), [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype), [Yüklem](#predicate), [InputValidation](#inputvalidation), veya [UxElement](#uxelement).   | 
 | Elementıd | Evet | **Eğer ElementType** `ClaimType`, `Predicate`, `InputValidation`, veya , bu öğe zaten ClaimsSchema bölümünde tanımlanan bir talep türüiçin bir başvuru içerir. |
 | StringId | Evet | **ElementType** `ClaimType`ayarlanırsa, bu öğe bir talep türü bir öznitelik için bir başvuru içerir. Olası `DisplayName`değerler: `AdminHelpText`, `PatternHelpText`, veya . Değer, `DisplayName` talep görüntüleme adını ayarlamak için kullanılır. Değer, `AdminHelpText` talep kullanıcısının yardım metin adını ayarlamak için kullanılır. Değer, `PatternHelpText` talep deseni yardım metnini ayarlamak için kullanılır. **ElementType** `UxElement`ayarlanmışsa, bu öğe bir kullanıcı arabirimi öğesinin özniteliğiiçin bir başvuru içerir. **ElementType** `ErrorMessage`ayarlanmışsa, bu öğe bir hata iletisinin tanımlayıcısını belirtir. Tanımlayıcıların tam listesi için [Yerelleştirme dize kimliklerini](localization-string-ids.md) görün. `UxElement`|
 
+## <a name="elementtype"></a>Elementtype
 
-Aşağıdaki örnekte yerelleştirilmiş bir kayıt sayfası gösterilmektedir. İlk üç **LocalizedString** değerleri talep özniteliğini ayarlar. Üçüncü devam düğmesinin değerini değiştirir. Sonuncusu hata iletisini değiştirir.
+Bir talep türüne, talep dönüşümüne veya yerelleştirilecek ilkedeki kullanıcı arabirimi öğesine öğe türü başvurusu.
 
-```XML
-<LocalizedResources Id="api.selfasserted.en">
-  <LocalizedStrings>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
-    <LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
-    <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
-   <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
-  </LocalizedStrings>
-</LocalizedResources>
-```
+| Yerelleştirmek için öğe | Elementtype | Elementıd |StringId |
+| --------- | -------- | ----------- |----------- |
+| Kimlik sağlayıcı adı |`ClaimsProvider`| | ClaimsExchange öğesinin kimliği|
+| Talep türü öznitelikleri|`ClaimType`|Talep türünün adı| Talebin yerelleştirilmesi özniteliği. Olası `AdminHelpText`değerler: `DisplayName` `PatternHelpText`, `UserHelpText`, , ve .|
+|Hata iletisi|`ErrorMessage`||Hata iletisinin kimliği |
+|Yerelleştirilmiş dizeleri taleplere kopyalar|`GetLocalizedStringsTra nsformationClaimType`||Çıktı talebinin adı|
+|Yüklem kullanıcı iletisi|`Predicate`|Yüklemin adı| Yüklemin yerelleştirilmesi özniteliği. Olası değerler: `HelpText`.|
+|Yüklem grubu kullanıcı iletisi|`InputValidation`|Yüklem öğesinin kimliği.|PredicateGroup öğesinin kimliği. Yüklem grubu, ElementId'de tanımlandığı gibi yüklem doğrulama öğesinin bir alt öğesi olmalıdır.|
+|Kullanıcı arabirimi öğeleri |`UxElement` | | Yerelleştirilecek kullanıcı arabirimi öğesinin kimliği.|
 
-Aşağıdaki örnekte, Id ile **Yüklemin** `IsLengthBetween8And64` **UserHelp Text'i** yerelleştirilmiş bir şekilde gösterilmektedir. Ve `StrongPassword`Id ile **PredicateValidation** Id `CharacterClasses` ile **PredicateGroup** yerelleştirilmiş **UserHelpText** .
+## <a name="examples"></a>Örnekler
 
-```XML
-<PredicateValidation Id="StrongPassword">
-  <PredicateGroups>
-    ...
-    <PredicateGroup Id="CharacterClasses">
-    ...
-    </PredicateGroup>
-  </PredicateGroups>
-</PredicateValidation>
+### <a name="claimsprovider"></a>İddia Sağlayıcı
 
-...
+ClaimsProvider değeri, talep sağlayıcılardan birinin görüntü adını yerelleştirmek için kullanılır. 
 
-<Predicate Id="IsLengthBetween8And64" Method="IsLengthRange">
+```xml
+<OrchestrationStep Order="2" Type="ClaimsExchange">
   ...
-</Predicate>
-...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
+  </ClaimsExchanges>
+</OrchestrationStep>
 
-
-<LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
-
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
-## <a name="set-up-localization"></a>Yerelleştirmeyi ayarlama
+Aşağıdaki örnek, talep sağlayıcılarının görüntü adlarını nasıl yerelleştirileni gösterir.
 
-Bu makalede, kullanıcı yolculukları için ilkedeki birden çok yerel alanı veya dili nasıl destekleyeceğiniz gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeleri ve koleksiyonları sağlayın ve sayfa için ContentDefinition'ı güncelleyin.
+```xml
+<LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="GoogleExchange">Google</LocalizedString>
+<LocalizedString ElementType="ClaimsProvider" StringId="LinkedInExchange">LinkedIn</LocalizedString>
+```
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>Desteklenen dillerin açık listesini ayarlama
+### <a name="claimtype"></a>Claimtype
 
-**BuildingBlocks** öğesinin altında, desteklenen dillerin listesini içeren **Yerelleştirme** öğesini ekleyin. Aşağıdaki örnek, hem İngilizce (varsayılan) hem de İspanyolca için yerelleştirme desteğinin nasıl tanımlandığını gösterir:
+ClaimType değeri, talep özniteliklerinden birini yerelleştirmek için kullanılır. 
+
+```xml
+<ClaimType Id="email">
+  <DisplayName>Email Address</DisplayName>
+  <DataType>string</DataType>
+  <UserHelpText>Email address that can be used to contact you.</UserHelpText>
+  <UserInputType>TextBox</UserInputType>
+</ClaimType>
+```
+
+Aşağıdaki örnek, e-posta talebi türünün DisplayName, UserHelpText ve PatternHelpText özniteliklerinin nasıl yerelleştirilebildiğini gösterir.
 
 ```XML
-<Localization Enabled="true">
-  <SupportedLanguages DefaultLanguage="en" MergeBehavior="ReplaceAll">
-    <SupportedLanguage>en</SupportedLanguage>
-    <SupportedLanguage>es</SupportedLanguage>
-  </SupportedLanguages>
-</Localization>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="UserHelpText">Please enter your email</LocalizedString>
+<LocalizedString ElementType="ClaimType" ElementId="email" StringId="PatternHelpText">Please enter a valid email address</LocalizedString>
+```
+
+### <a name="errormessage"></a>Hata İletisi
+
+Hata İletisi değeri, sistem hata iletilerinden birini yerelleştirmek için kullanılır. 
+
+```xml
+<TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
+  <Metadata>
+    <Item Key="RaiseErrorIfClaimsPrincipalAlreadyExists">true</Item>
+    <Item Key="UserMessageIfClaimsPrincipalAlreadyExists">You are already registered, please press the back button and sign in instead.</Item>
+  </Metadata>
+  ...
+</TechnicalProfile>
+```
+
+Aşağıdaki örnek, UserMessageIfClaimsPrincipalAlreadyExists hata iletisinin nasıl yerelleştirilebildiğini gösterir.
+
+
+```XML
+<LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
+```
+
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
+
+GetLocalizedStringsTransformationClaimType değeri, yerelleştirilmiş dizeleri taleplere kopyalamak için kullanılır. Daha fazla bilgi için [GetLocalizedStringsTransformation talepleri dönüşümüne](string-transformations.md#getlocalizedstringstransformation) bakın
+
+
+```xml
+<ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
+  <OutputClaims>
+    <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
+    <OutputClaim ClaimTypeReferenceId="message" TransformationClaimType="email_message" />
+    <OutputClaim ClaimTypeReferenceId="codeIntro" TransformationClaimType="email_code" />
+    <OutputClaim ClaimTypeReferenceId="signature" TransformationClaimType="email_signature" />
+   </OutputClaims>
+</ClaimsTransformation>
+```
+
+Aşağıdaki örnek, GetLocalizedStringsTransformation taleplerinin dönüşümünün çıktı taleplerini nasıl yerelleştirilengösterir.
+
+```xml
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_message">Thanks for verifying your account!</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_code">Your code is</LocalizedString>
+<LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
+```
+
+### <a name="predicate"></a>Yüklemi
+
+Yüklem değeri, [Yüklem](predicates.md) hata iletilerinden birini yerelleştirmek için kullanılır. 
+
+```xml
+<Predicates>
+  <Predicate Id="LengthRange" Method="IsLengthRange"  HelpText="The password must be between 6 and 64 characters.">
+    <Parameters>
+      <Parameter Id="Minimum">6</Parameter>
+      <Parameter Id="Maximum">64</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">a-z</Parameter>
+    </Parameters>
+  </Predicate>
+  <Predicate Id="Uppercase" Method="IncludesCharacters" HelpText="an uppercase letter">
+    <Parameters>
+      <Parameter Id="CharacterSet">A-Z</Parameter>
+    </Parameters>
+  </Predicate>
+</Predicates>
+```
+
+Aşağıdaki örnekte, yüklemlerin nasıl yerelleştirilen yardımcı metin gösterilmektedir.
+
+```xml
+<LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Lowercase" StringId="HelpText">a lowercase letter</LocalizedString>
+<LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
+```
+
+### <a name="inputvalidation"></a>Giriş Geçersiz Liği
+
+InputValidation [değeri, Yüklem Geçersiz lik](predicates.md) grup iletilerinden birini yerelleştirmek için kullanılır. 
+
+```xml
+<PredicateValidations>
+  <PredicateValidation Id="CustomPassword">
+    <PredicateGroups>
+      <PredicateGroup Id="LengthGroup">
+        <PredicateReferences MatchAtLeast="1">
+          <PredicateReference Id="LengthRange" />
+        </PredicateReferences>
+      </PredicateGroup>
+      <PredicateGroup Id="CharacterClasses">
+        <UserHelpText>The password must have at least 3 of the following:</UserHelpText>
+        <PredicateReferences MatchAtLeast="3">
+          <PredicateReference Id="Lowercase" />
+          <PredicateReference Id="Uppercase" />
+          <PredicateReference Id="Number" />
+          <PredicateReference Id="Symbol" />
+        </PredicateReferences>
+      </PredicateGroup>
+    </PredicateGroups>
+  </PredicateValidation>
+</PredicateValidations>
+```
+
+Aşağıdaki örnek, bir yüklem doğrulama grubu yardım metnini nasıl yerelleştirini gösterir.
+
+```XML
+<LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
+```
+
+### <a name="uxelement"></a>UxElement
+
+UxElement değeri, kullanıcı arabirimi öğelerinden birini yerelleştirmek için kullanılır. Aşağıdaki örnekte, continue ve cancel düğmelerinin nasıl yerelleştirilengösterilmektedir.
+
+```XML
+<LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
+<LocalizedString ElementType="UxElement" StringId="button_cancel">Cancel</LocalizedString>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
