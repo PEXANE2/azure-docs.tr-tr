@@ -8,13 +8,16 @@ services: iot-hub
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: dkshir
-ms.custom: security-recommendations
-ms.openlocfilehash: 0ada9a520a5be56444a1c3e746a68dbcf9275686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- security-recommendations
+- amqp
+- mqtt
+ms.openlocfilehash: 5dd09988d37982c41b761688492bd2dc3642b2db
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048454"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81728990"
 ---
 # <a name="security-recommendations-for-azure-internet-of-things-iot-deployment"></a>Azure Nesnelerin İnterneti (IoT) dağıtımı için güvenlik önerileri
 
@@ -48,7 +51,7 @@ Bu makalede yer alan önerilerden bazıları Azure Güvenlik Merkezi tarafından
 | Güvenli cihaz iletişimi | IoT Hub, 1.2 ve 1.0 sürümlerini destekleyerek Aktarım Katmanı Güvenliği (TLS) standardını kullanarak aygıtlara bağlantı sağlar. Maksimum güvenlik sağlamak için [TLS 1.2'yi](https://tools.ietf.org/html/rfc5246) kullanın. | - |
 | Güvenli servis iletişimi | IoT Hub, yalnızca TLS iletişim kuralını kullanarak [Azure Depolama](/azure/storage/) veya [Etkinlik Hub'ları](/azure/event-hubs) gibi arka uç hizmetlerine bağlanmak için uç noktalar sağlar ve şifrelenmemiş bir kanalda hiçbir uç nokta açıklanır. Bu veriler depolama veya analiz için bu arka uç hizmetlerine ulaştığında, bu hizmet için uygun güvenlik ve şifreleme yöntemlerini kullandığından ve hassas bilgileri arka uçta koruduğundan emin olun. | - |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar | ASC tarafından desteklendi |
 |-|----|--|

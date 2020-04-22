@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25eb93a01c59225b6d9e64db5d08b954adb4f8ab
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424072"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81680501"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>OPENROWSET'in isteğe bağlı SQL ile nasıl kullanılacağı (önizleme)
 
@@ -26,7 +26,7 @@ OPENROWSET şu anda SQL havuzunda desteklenmez.
 
 ## <a name="syntax"></a>Sözdizimi
 
-```
+```syntaxsql
 --OPENROWSET syntax for reading Parquet files
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , 
@@ -60,36 +60,39 @@ Sorgulama için hedef verileri içeren giriş dosyaları için iki seçeneğiniz
 
 - 'PARKE' - Parke formatında ikili dosya 
 
-'unstructured_data_path'
+**'unstructured_data_path'**
 
-Verilere giden yolu belirleyen unstructured_data_path şu şekilde yapılandırılır: '<prefix><storage_account_path>/<storage_path>' 
+Verilere giden yolu belirleyen unstructured_data_path aşağıdaki gibi yapılandırılır:  
+'\<önek\<>://\<storage_account_path>/ storage_path>'
  
  
  Aşağıda, belirli dış veri kaynağınıza bağlantı verecek ilgili depolama hesabı yollarını bulacaksınız. 
 
-| Dış Veri Kaynağı       | Ön ek | Depolama hesabı yolu                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Depolama         | https  | <storage_account>.blob.core.windows.net             |
-| Azure Veri Gölü Deposu Gen1 | https  | <storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Veri Gölü Deposu Gen2 | https  | <storage_account>.dfs.core.windows.net              |
+| Dış Veri Kaynağı       | Ön ek | Depolama hesabı yolu                                 |
+| -------------------------- | ------ | ---------------------------------------------------- |
+| Azure Blob Depolama         | https  | \<storage_account>.blob.core.windows.net             |
+| Azure Veri Gölü Deposu Gen1 | https  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
+| Azure Veri Gölü Deposu Gen2 | https  | \<storage_account>.dfs.core.windows.net              |
+||||
 
- '<storage_path>' 
+'\<storage_path>'
 
  Depolama alanınızda okumak istediğiniz klasöre veya dosyaya işaret eden bir yol belirtir. Yol bir kapsayıcıya veya klasöre işaret ederse, tüm dosyalar o kapsayıcı veya klasörden okunur. Alt klasörlerdeki dosyalar dahil edilmez. 
  
  Birden çok dosya veya klasörü hedeflemek için joker karakterlerkullanabilirsiniz. Birden fazla ardışık olmayan joker karakter kullanımına izin verilir.
-Aşağıda */csv/population*:https://sqlondemandstorage.blob.core.windows.net/csv/population'*/population*.csv' ile başlayan tüm klasörlerden *popülasyonla* başlayan tüm *csv* dosyalarını okuyan bir örnek
+Aşağıda */csv/population*ile başlayan tüm klasörlerden *popülasyon* la başlayan tüm *csv* dosyalarını okuyan bir örnek:  
+`https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
 Unstructured_data_path klasör olarak belirtirseniz, isteğe bağlı bir SQL sorgusu bu klasörden dosyaları alır. 
 
 > [!NOTE]
 > Hadoop ve PolyBase'in aksine, SQL isteğe bağlı alt klasörleri döndürmez. Ayrıca, Hadoop ve PloyBase'in aksine, SQL on-demand dosya adının altı çizili (_) veya bir dönemle (.) başladığı dosyaları döndürer.
 
-Aşağıdaki örnekte, unstructured_data_path='https://mystorageaccount.dfs.core.windows.net/webdata/', bir SQL on-demand sorgusu mydata.txt ve _hidden.txt satırları döndürecek. Mydata2.txt ve mydata3.txt'yi döndürmez çünkü bir alt klasörde bulunurlar.
+Aşağıdaki örnekte, unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, bir SQL on-demand sorgusu mydata.txt ve _hidden.txt satırları döndürecek. Mydata2.txt ve mydata3.txt'yi döndürmez çünkü bir alt klasörde bulunurlar.
 
 ![Dış tablolar için özyinelemeli veriler](./media/develop-openrowset/folder-traversal.png)
 
-[İlE ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]
+`[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
 WITH yan tümcesi, dosyalardan okumak istediğiniz sütunları belirtmenizi sağlar.
 
@@ -113,7 +116,8 @@ WITH (
     --[population] bigint
 )
 ```
-<bulk_options>
+
+**\<bulk_options>**
 
 ALAN TERMINATÖR ='field_terminator'
 

@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: f443bf3111d2ab97874bdc62ec1370d17e2fc406
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 712a0707826f97f29b015a2c5892f8d20577e41b
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68728052"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687891"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Güvenlik Çerçevesi: Giriş Doğrulama | Azaltıcı etken 
 | Ürün / Hizmet | Makale |
 | --------------- | ------- |
 | **Web Uygulaması** | <ul><li>[Güvenilmeyen stil sayfaları kullanarak tüm dönüşümler için XSLT komut dosyalarını devre dışı](#disable-xslt)</li><li>[Kullanıcı denetlenebilir içerik içerebilecek her sayfanın otomatik MIME koklamayı devre dışı bırakmasını sağlamak](#out-sniffing)</li><li>[XML Varlık Çözünürlüğünü Sertleştirme veya Devre Dışı](#xml-resolution)</li><li>[http.sys kullanan uygulamalar URL kanoniizasyon doğrulama gerçekleştirmek](#app-verification)</li><li>[Kullanıcılardan dosya kabul ederken uygun denetimlerin yerinde olduğundan emin olun](#controls-users)</li><li>[Veri erişimi için Web Application'da tür güvenliği parametrelerinin kullanıldığından emin olun](#typesafe)</li><li>[MVC toplu atama güvenlik açığını önlemek için ayrı model bağlama sınıfları veya bağlama filtresi listeleri kullanın](#binding-mvc)</li><li>[Oluşturmadan önce güvenilmeyen web çıktısını kodlama](#rendering)</li><li>[Tüm dize türü Model özelliklerinde giriş doğrulama ve filtreleme gerçekleştirin](#typemodel)</li><li>[Sanitizasyon, zengin metin düzenleyicisi gibi tüm karakterleri kabul eden form alanlarına uygulanmalıdır](#richtext)</li><li>[Dahili kodlaması olmayan lavabolara DOM öğeleri atamayın](#inbuilt-encode)</li><li>[Uygulama içindeki tüm yönlendirmelerin kapatılabileceğini veya güvenli bir şekilde yapıldığını doğrulayın](#redirect-safe)</li><li>[Denetleyici yöntemleri tarafından kabul edilen tüm dize türü parametrelerine giriş doğrulaması uygulayın](#string-method)</li><li>[Kötü normal ifadeler nedeniyle DoS'u önlemek için normal ifade işleme için üst sınır zaman anına ayarlayın](#dos-expression)</li><li>[Html.Raw'ı Razor görünümlerinde kullanmaktan kaçının](#html-razor)</li></ul> | 
-| **Database** | <ul><li>[Depolanan yordamlarda dinamik sorgular kullanmayın](#stored-proc)</li></ul> |
+| **Veritabanı** | <ul><li>[Depolanan yordamlarda dinamik sorgular kullanmayın](#stored-proc)</li></ul> |
 | **Web API** | <ul><li>[Web API yöntemlerinde model doğrulamanın yapıldığından emin olun](#validation-api)</li><li>[Web API yöntemleri tarafından kabul edilen tüm dize türü parametrelerine giriş doğrulaması uygulama](#string-api)</li><li>[Veri erişimi için Web API'sinde tür güvenliği parametrelerinin kullanıldığından emin olun](#typesafe-api)</li></ul> | 
 | **Azure Belge DB** | <ul><li>[Azure Cosmos DB için parametreli SQL sorgularını kullanma](#sql-docdb)</li></ul> | 
 | **WCF** | <ul><li>[Schema bağlama yoluyla WCF Giriş doğrulama](#schema-binding)</li><li>[Parametre Denetçileri aracılığıyla WCF- Giriş doğrulaması](#parameters)</li></ul> |
@@ -36,7 +36,7 @@ ms.locfileid: "68728052"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XSLT Güvenlik](https://msdn.microsoft.com/library/ms763800(v=vs.85).aspx), [XsltSettings.EnableScript Özellik](https://msdn.microsoft.com/library/system.xml.xsl.xsltsettings.enablescript.aspx) |
@@ -68,7 +68,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IE8 Güvenlik Bölüm V - Kapsamlı Koruma](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx)  |
@@ -137,7 +137,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [XML Entity Expansion](https://capec.mitre.org/data/definitions/197.html), [XML Hizmet Reddi Saldırıları ve Savunmaları](https://msdn.microsoft.com/magazine/ee335713.aspx), [MSXML Güvenlik Genel Bakış](https://msdn.microsoft.com/library/ms754611(v=VS.85).aspx), MSXML Kodunu [NSXMLParserDelege Protokolü Referansı](https://developer.apple.com/library/ios/#documentation/cocoa/reference/NSXMLParserDelegate_Protocol/Reference/Reference.html), [Dış BaşvurularıN Çözümü](https://msdn.microsoft.com/library/5fcwybb2.aspx) [için En İyi Uygulamalar](https://msdn.microsoft.com/library/ms759188(VS.85).aspx) |
@@ -183,7 +183,7 @@ XmlReader reader = XmlReader.Create(stream, settings);
 ```
 
 ### <a name="example"></a>Örnek
-Satır satırlı varlıkları çözmeniz gerekiyorsa ancak dış varlıkları çözmeniz gerekmiyorsa, XmlReaderSettings.XmlResolver özelliğini geçersiz kılacak şekilde ayarlayın. Örnek: 
+Satır satırlı varlıkları çözmeniz gerekiyorsa ancak dış varlıkları çözmeniz gerekmiyorsa, XmlReaderSettings.XmlResolver özelliğini geçersiz kılacak şekilde ayarlayın. Örneğin: 
 
 ```csharp
 XmlReaderSettings settings = new XmlReaderSettings();
@@ -199,7 +199,7 @@ MSXML6'da ProhibitDTD'nin varsayılan olarak doğru (DTD işlemini devre dışı
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -210,7 +210,7 @@ MSXML6'da ProhibitDTD'nin varsayılan olarak doğru (DTD işlemini devre dışı
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Sınırsız Dosya Yükleme](https://www.owasp.org/index.php/Unrestricted_File_Upload), [Dosya İmza Tablosu](https://www.garykessler.net/library/file_sigs.html) |
@@ -326,7 +326,7 @@ Dosya biçimi imza doğrulaması ile ilgili son nokta için ayrıntılar için a
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -356,21 +356,21 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Meta veri öznitelikleri](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.metadatatypeattribute), [Kamu Anahtarı Güvenlik Güvenlik Açığı Ve Azaltma](https://github.com/blog/1068-public-key-security-vulnerability-and-mitigation), ASP.NET [MVC Kitle Atama komple Kılavuzu](https://odetocode.com/Blogs/scott/archive/2012/03/11/complete-guide-to-mass-assignment-in-asp-net-mvc.aspx), [MVC kullanarak EF ile başlarken](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/implementing-basic-crud-functionality-with-the-entity-framework-in-asp-net-mvc-application#overpost) |
-| **Adımlar** | <ul><li>**Aşırı deftere nakil güvenlik açıklarına ne zaman bakmalıyım?** Aşırı deftere nakil güvenlik açıkları, model sınıflarını kullanıcı girişine bağladiğiniz her yerde oluşabilir. MVC gibi çerçeveler, Kullanıcı verilerini Düz Eski CLR Nesneleri (POCOs) dahil olmak üzere özel .NET sınıflarında temsil edebilir. MVC, kullanıcı girişiyle başa çıkmak için kullanışlı bir gösterim sağlayarak bu model sınıflarını istekten gelen verilerle otomatik olarak doldurarak doldurur. Bu sınıflar kullanıcı tarafından ayarlanmaması gereken özellikler içerdiğinde, uygulama, uygulamanın hiçbir zaman amaçlanmadığının verilerin kullanıcı denetimine izin veren aşırı deftere nakil saldırılarına karşı savunmasız olabilir. MVC model bağlama gibi, Entity Framework gibi nesne/ilişkisel haritalayıcılar gibi veritabanı erişim teknolojileri de genellikle veritabanı verilerini temsil etmek için POCO nesnelerinin kullanılmasını destekler. Bu veri modeli sınıfları, MVC'nin kullanıcı girişiyle ilgili olarak yaptığı gibi veritabanı verileriyle başa çıkmada da aynı kolaylığı sağlar. Hem MVC hem de veritabanı POCO nesneleri gibi benzer modelleri desteklediğinden, aynı sınıfları her iki amaç için de yeniden kullanmak kolay görünüyor. Bu uygulama, kaygıların ayrılmasını korumak için başarısız olur ve istenmeyen özelliklerin model bağlamaya maruz kaldığı ve aşırı deftere nakil saldırıları sağlayan ortak bir alandır.</li><li>**Filtreuygulanmamış veritabanı modeli sınıflarımı neden MVC eylemlerimiçin parametre olarak kullanmamalıyım?** Çünkü MVC model bağlama o sınıftaki her şeyi bağlar. Veriler görünümünüzde görünmese bile, kötü niyetli bir kullanıcı bu veriler dahil edilmiş bir HTTP isteği gönderebilir ve eyleminiz veritabanı sınıfının kullanıcı girişi için kabul etmesi gereken verilerin şekli olduğunu söylediği için MVC bu isteği memnuniyetle bağlar.</li><li>**Model bağlama için kullanılan şekli neden önemsemeliyim?** Aşırı geniş modeller ile ASP.NET MVC modeli bağlama kullanarak aşırı gönderme saldırılarına bir uygulama ortaya çıkarır. Aşırı deftere nakil, saldırganların uygulama verilerini geliştiricinin amaçladığı nın (örneğin, bir öğenin fiyatını veya bir hesabın güvenlik ayrıcalıklarını geçersiz kılmak gibi) değiştirmelerine olanak sağlayabilir. Uygulamalar, model bağlama yoluyla izin verecek güvenilmeyen girdi için açık bir sözleşme sağlamak için eyleme özgü bağlama modellerini (veya belirli izin verilen özellik filtresi listelerini) kullanmalıdır.</li><li>**Ayrı bağlama modelleri olması sadece kodu çoğaltma mı?** Hayır, bu endişelerin ayrılması meselesi. Veritabanı modellerini eylem yöntemlerinde yeniden kullanırsanız, bu sınıftaki herhangi bir özelliğin (veya alt özelliğin) kullanıcı tarafından http isteğinde ayarlanabileceğini söylüyorsunuz. MVC'nin yapmasını istediğiniz bu değilse, MVC'nin kullanıcı girişinden hangi verilerin gelebileceğini göstermek için bir filtre listesine veya ayrı bir sınıf şekline ihtiyacınız olur.</li><li>**Kullanıcı girişi için ayrı bağlama modellerim varsa, tüm veri ek açıklama özniteliklerimi çoğaltmam gerekir mi?** Mutlaka. Bir model bağlama sınıfında meta verilere bağlanmak için veritabanı modeli sınıfında MetadataTypeAttribute kullanabilirsiniz. MetadataTypeAttribute tarafından başvurulan tür başvuru türünün bir alt kümesi olması gerektiğini unutmayın (daha az özelliklere sahip olabilir, ancak daha fazla değil).</li><li>**Verileri kullanıcı giriş modelleri ve veritabanı modelleri arasında ileri geri taşımak can sıkıcıdır. Yansımayı kullanarak tüm özellikleri kopyalayabilir miyim? -** Evet. Bağlama modellerinde görünen tek özellik, kullanıcı girişi için güvenli olduğunu belirlediğiniz özelliklerdir. Bu iki model arasında ortak olan tüm özellikleri kopyalamak için yansımayı kullanmayı engelleyen hiçbir güvenlik nedeni yoktur.</li><li>**Ne [Bind(Exclude ="â €~")]. Bunu ayrı bağlama modelleri yerine kullanabilir miyim? -** Bu yaklaşım önerilmez. [Bind(Exclude ="â€")] kullanmak, herhangi bir yeni özelliğin varsayılan olarak bağlanabilir olduğu anlamına gelir. Yeni bir özellik eklendiğinde, tasarımın varsayılan olarak güvenli olmasını sağlamak yerine, şeyleri güvende tutmayı unutmamak için ek bir adım vardır. Geliştiricinin bu listeyi her özellik ekleninde denetlemesi risklidir.</li><li>**[Bind(Include ="â €~")] Edit işlemleri için yararlı mı? -** №. [Bind(Include ="â€")] yalnızca INSERT tarzı işlemler (yeni veri ekleme) için uygundur. UPDATE tarzı işlemler (varolan verileri gözden geçirme) için, ayrı bağlama modellerine sahip olmak veya UpdateModel veya TryUpdateModel'e izin verilen özelliklerin açık bir listesini geçmek gibi başka bir yaklaşım kullanın. Bir Edit işlemine [Bind(Include ="â€")] özniteliği eklemek, MVC'nin bir nesne örneği oluşturacağı ve yalnızca listelenen özellikleri ayarlayıp diğerlerini varsayılan değerlerinde bırakacağı anlamına gelir. Veriler kalıcı olduğunda, varsayılanlarına atlanan özellikler için değerleri sıfırlayarak, varolan varlığın tamamen yerini alır. Örneğin, Bir Düzenleme işlemindeki [Bind(Include ="â€")] özniteliğinden IsAdmin atlanırsa, bu eylem aracılığıyla adı düzenlenen herhangi bir kullanıcı IsAdmin = false 'a sıfırlanır (düzenlenen herhangi bir kullanıcı yönetici durumunu kaybeder). Belirli özelliklerin güncelleştirmelerini engellemek istiyorsanız, yukarıdaki diğer yaklaşımlardan birini kullanın. MVC aracının bazı sürümlerinin Düzenleme eylemlerinde [Bind(Include ="â€")] ile denetleyici sınıfları oluşturduğunu ve bir özelliğin listeden kaldırılmasının aşırı deftere nakil saldırılarını önleyeceğini ima ettiğini unutmayın. Ancak, yukarıda açıklandığı gibi, bu yaklaşım beklendiği gibi çalışmaz ve bunun yerine atlanan özelliklerdeki tüm verileri varsayılan değerlerine sıfırlar.</li><li>**Oluşturma işlemleri için, ayrı bağlayıcı modeller yerine [Bind(Include ="â€")] kullanan herhangi bir uyarı var mı?** Evet. İlk olarak, bu yaklaşım, tüm aşırı deftere nakil güvenlik açıklarını hafifletmek için iki ayrı yaklaşım gerektiren senaryoları edit için çalışmaz. İkinci olarak, ayrı bağlama modelleri kullanıcı girişi için kullanılan şekil ve kalıcılık için kullanılan şekil arasındaki endişeleri ayırma zorlamak, bir şey [Bind(Include ="â €")]yapmaz. Üçüncü olarak, [Bind(Include ="â €~")] sadece üst düzey özellikleri işleyebilir unutmayın; öznitelikte yalnızca alt özelliklerin bölümlerine ("Details.Name" gibi) izin veremezsiniz. Son olarak, ve belki de en önemlisi, [Bind(Include ="â €~")] kullanarak sınıf model bağlama için kullanılan her zaman hatırlanması gereken ekstra bir adım ekler. Yeni bir eylem yöntemi doğrudan veri sınıfına bağlanır ve bir [Bind(Include ="â €")] öznitelik eklemeyi unutursa, aşırı deftere nakil saldırılarına karşı savunmasız olabilir, bu nedenle [Bind(Include ="â€")] yaklaşımı varsayılan olarak biraz daha az güvenlidir. [Bind(Include ="â€")]kullanıyorsanız, veri sınıflarınız eylem yöntemi parametreleri olarak her göründüğünde bunu belirtmeyi her zaman unutmayın.</li><li>**Oluşturma işlemleri için, [Bind(Include ="â€")] özniteliğini model sınıfının kendisine koymaya ne dersin? Bu yaklaşım, her eylem yöntemine öznitelik koymayı hatırlama ihtiyacını önlemiyor mu? -** Bu yaklaşım bazı durumlarda çalışır. Model türünde (bu sınıfı kullanarak eylem parametreleri yerine) [Bind(Include ="â€")] kullanmak, her eylem yöntemine [Bind(Include ="â€")] özniteliğini eklemeyi unutmamak gerekir. Özniteliği doğrudan sınıf üzerinde kullanmak, model bağlama amacıyla bu sınıfın ayrı bir yüzey alanını etkin bir şekilde oluşturur. Ancak, bu yaklaşım yalnızca model sınıfı başına bir model bağlama şekli sağlar. Bir eylem yönteminin bir alanın model bağlamasına (örneğin, yalnızca kullanıcı rollerini güncelleyen bir yönetici eylemi) ve bu alanın model bağlamasını önlemek için gereken diğer eylemlere izin vermek gerekiyorsa, bu yaklaşım çalışmaz. Her sınıfın yalnızca bir model bağlama şekli olabilir; farklı eylemler farklı model bağlama şekilleri gerekiyorsa, bu ayrı şekilleri ya ayrı model bağlama sınıfları veya ayrı [Bind(Include ="â €")] öznitelikleri eylem yöntemleri kullanarak temsil etmek gerekir.</li><li>**Bağlayıcı modeller nelerdir? Onlar görünüm modelleri ile aynı şey mi? -** Bunlar iki ilgili kavramdır. Bağlama terimi, bir eylemin parametre listesinde kullanılan bir model sınıfına (MVC modelinden eylem yöntemine bağlanan şekil) anlamına gelir. Görünüm terimi modeli, eylem yönteminden görünüme geçen bir model sınıfı anlamına gelir. Görünüme özgü bir model kullanmak, eylem yönteminden görünüme veri aktarmak için yaygın bir yaklaşımdır. Genellikle, bu şekil model bağlama için de uygundur ve terim görünümü modeli her iki yerde de kullanılan aynı modeli başvurmak için kullanılabilir. Kesin olarak, bu yordam özellikle bağlayıcı modeller hakkında, toplu atama amaçları için önemli olan eylem, geçirilen şekil odaklanarak konuşuyor.</li></ul>| 
+| **Adımlar** | <ul><li>**Aşırı deftere nakil güvenlik açıklarına ne zaman bakmalıyım?** Aşırı deftere nakil güvenlik açıkları, model sınıflarını kullanıcı girişine bağladiğiniz her yerde oluşabilir. MVC gibi çerçeveler, Kullanıcı verilerini Düz Eski CLR Nesneleri (POCOs) dahil olmak üzere özel .NET sınıflarında temsil edebilir. MVC, kullanıcı girişiyle başa çıkmak için kullanışlı bir gösterim sağlayarak bu model sınıflarını istekten gelen verilerle otomatik olarak doldurarak doldurur. Bu sınıflar kullanıcı tarafından ayarlanmaması gereken özellikler içerdiğinde, uygulama, uygulamanın hiçbir zaman amaçlanmadığının verilerin kullanıcı denetimine izin veren aşırı deftere nakil saldırılarına karşı savunmasız olabilir. MVC model bağlama gibi, Entity Framework gibi nesne/ilişkisel haritalayıcılar gibi veritabanı erişim teknolojileri de genellikle veritabanı verilerini temsil etmek için POCO nesnelerinin kullanılmasını destekler. Bu veri modeli sınıfları, MVC'nin kullanıcı girişiyle ilgili olarak yaptığı gibi veritabanı verileriyle başa çıkmada da aynı kolaylığı sağlar. Hem MVC hem de veritabanı POCO nesneleri gibi benzer modelleri desteklediğinden, aynı sınıfları her iki amaç için de yeniden kullanmak kolay görünüyor. Bu uygulama, kaygıların ayrılmasını korumak için başarısız olur ve istenmeyen özelliklerin model bağlamaya maruz kaldığı ve aşırı deftere nakil saldırıları sağlayan ortak bir alandır.</li><li>**Filtreuygulanmamış veritabanı modeli sınıflarımı neden MVC eylemlerimiçin parametre olarak kullanmamalıyım?** Çünkü MVC model bağlama o sınıftaki her şeyi bağlar. Veriler görünümünüzde görünmese bile, kötü niyetli bir kullanıcı bu veriler dahil edilmiş bir HTTP isteği gönderebilir ve eyleminiz veritabanı sınıfının kullanıcı girişi için kabul etmesi gereken verilerin şekli olduğunu söylediği için MVC bu isteği memnuniyetle bağlar.</li><li>**Model bağlama için kullanılan şekli neden önemsemeliyim?** Aşırı geniş modeller ile ASP.NET MVC modeli bağlama kullanarak aşırı gönderme saldırılarına bir uygulama ortaya çıkarır. Aşırı deftere nakil, saldırganların uygulama verilerini geliştiricinin amaçladığı nın (örneğin, bir öğenin fiyatını veya bir hesabın güvenlik ayrıcalıklarını geçersiz kılmak gibi) değiştirmelerine olanak sağlayabilir. Uygulamalar, model bağlama yoluyla izin verecek güvenilmeyen girdi için açık bir sözleşme sağlamak için eyleme özgü bağlama modellerini (veya belirli izin verilen özellik filtresi listelerini) kullanmalıdır.</li><li>**Ayrı bağlama modelleri olması sadece kodu çoğaltma mı?** Hayır, bu endişelerin ayrılması meselesi. Veritabanı modellerini eylem yöntemlerinde yeniden kullanırsanız, bu sınıftaki herhangi bir özelliğin (veya alt özelliğin) kullanıcı tarafından http isteğinde ayarlanabileceğini söylüyorsunuz. MVC'nin yapmasını istediğiniz bu değilse, MVC'nin kullanıcı girişinden hangi verilerin gelebileceğini göstermek için bir filtre listesine veya ayrı bir sınıf şekline ihtiyacınız olur.</li><li>**Kullanıcı girişi için ayrı bağlama modellerim varsa, tüm veri ek açıklama özniteliklerimi çoğaltmam gerekir mi?** Mutlaka. Bir model bağlama sınıfında meta verilere bağlanmak için veritabanı modeli sınıfında MetadataTypeAttribute kullanabilirsiniz. MetadataTypeAttribute tarafından başvurulan tür başvuru türünün bir alt kümesi olması gerektiğini unutmayın (daha az özelliklere sahip olabilir, ancak daha fazla değil).</li><li>**Verileri kullanıcı giriş modelleri ve veritabanı modelleri arasında ileri geri taşımak can sıkıcıdır. Yansımayı kullanarak tüm özellikleri kopyalayabilir miyim? -** Evet. Bağlama modellerinde görünen tek özellik, kullanıcı girişi için güvenli olduğunu belirlediğiniz özelliklerdir. Bu iki model arasında ortak olan tüm özellikleri kopyalamak için yansımayı kullanmayı engelleyen hiçbir güvenlik nedeni yoktur.</li><li>**Ne [Bind(Exclude ="â&euro;|")]. Bunu ayrı bağlama modelleri yerine kullanabilir miyim? -** Bu yaklaşım önerilmez. [Bind(Exclude ="â&euro;|")] kullanmak, herhangi bir yeni özelliğin varsayılan olarak bağlanabilir olduğu anlamına gelir. Yeni bir özellik eklendiğinde, tasarımın varsayılan olarak güvenli olmasını sağlamak yerine, şeyleri güvende tutmayı unutmamak için ek bir adım vardır. Geliştiricinin bu listeyi her özellik ekleninde denetlemesi risklidir.</li><li>**[Bind(Include ="â&euro;|")] Edit işlemleri için yararlı mıdır? -** №. [Bind(Include ="â&euro;|")] yalnızca INSERT tarzı işlemler (yeni veri ekleme) için uygundur. UPDATE tarzı işlemler (varolan verileri gözden geçirme) için, ayrı bağlama modellerine sahip olmak veya UpdateModel veya TryUpdateModel'e izin verilen özelliklerin açık bir listesini geçmek gibi başka bir yaklaşım kullanın. Bir Edit işlemine [Bind(Include ="â&euro;()] özniteliği eklemek, MVC'nin bir nesne örneği oluşturacağı ve yalnızca listelenen özellikleri ayarlayıp diğerlerini varsayılan değerlerinde bırakacağı anlamına gelir. Veriler kalıcı olduğunda, varsayılanlarına atlanan özellikler için değerleri sıfırlayarak, varolan varlığın tamamen yerini alır. Örneğin, Bir Düzenleme işleminde İşAdmin bir [Bind(Include&euro;="â |")] özniteliği atlanırsa, bu eylem aracılığıyla adı düzenlenen herhangi bir kullanıcı IsAdmin = false 'a sıfırlanır (düzenlenen herhangi bir kullanıcı yönetici durumunu kaybeder). Belirli özelliklerin güncelleştirmelerini engellemek istiyorsanız, yukarıdaki diğer yaklaşımlardan birini kullanın. MVC aracının bazı sürümlerinin Düzenleme eylemlerinde [Bind(Include&euro;="â ()] içeren denetleyici sınıfları oluşturduğunu ve bir özelliğin listeden kaldırılmasının aşırı deftere nakil saldırılarını önleyeceğini ima ettiğini unutmayın. Ancak, yukarıda açıklandığı gibi, bu yaklaşım beklendiği gibi çalışmaz ve bunun yerine atlanan özelliklerdeki tüm verileri varsayılan değerlerine sıfırlar.</li><li>**Oluşturma işlemleri için, ayrı bağlama modelleri yerine [Bind(Include ="â&euro;|")] kullanan herhangi bir uyarı var mı?** Evet. İlk olarak, bu yaklaşım, tüm aşırı deftere nakil güvenlik açıklarını hafifletmek için iki ayrı yaklaşım gerektiren senaryoları edit için çalışmaz. İkinci olarak, ayrı bağlama modelleri, kullanıcı girişi için kullanılan şekil ile kalıcılık için kullanılan şekil arasındaki&euro;endişelerin ayrılmasını zorunlu kılmaktadır, [Bind(Include ="â (")] bir şey yapmaz. Üçüncü olarak, [Bind(Include ="â&euro;|")] yalnızca üst düzey özellikleri işleyebilir unutmayın; öznitelikte yalnızca alt özelliklerin bölümlerine ("Details.Name" gibi) izin veremezsiniz. Son olarak, ve belki de en önemlisi, [Bind(Include ="â&euro;|")] kullanarak sınıf model bağlama için kullanılan her zaman hatırlanması gereken ekstra bir adım ekler. Yeni bir eylem yöntemi doğrudan veri sınıfına bağlanır sa ve [Bind(Include&euro;="â ()] özniteliği eklemeyi unutursa, aşırı deftere nakil&euro;saldırılarına karşı savunmasız olabilir, bu nedenle [Bind(Include ="â ()] yaklaşımı varsayılan olarak biraz daha az güvenlidir. [Bind(Include ="â&euro;|")]' kullanıyorsanız, veri sınıflarınız eylem yöntemi parametreleri olarak her göründüğünde bunu belirtmeyi her zaman unutmayın.</li><li>**Oluşturma işlemleri için, [Bind(Include ="â&euro;|"] özniteliğini model sınıfının kendisine koymaya ne dersin? Bu yaklaşım, her eylem yöntemine öznitelik koymayı hatırlama ihtiyacını önlemiyor mu? -** Bu yaklaşım bazı durumlarda çalışır. Model türünde [Bind(Include ="â&euro;(")] kullanmak (bu sınıfı kullanarak eylem parametreleri yerine), her eylem yöntemine [Bind(Include ="â&euro;(")] özniteliğini eklemeyi unutmamak gerekir. Özniteliği doğrudan sınıf üzerinde kullanmak, model bağlama amacıyla bu sınıfın ayrı bir yüzey alanını etkin bir şekilde oluşturur. Ancak, bu yaklaşım yalnızca model sınıfı başına bir model bağlama şekli sağlar. Bir eylem yönteminin bir alanın model bağlamasına (örneğin, yalnızca kullanıcı rollerini güncelleyen bir yönetici eylemi) ve bu alanın model bağlamasını önlemek için gereken diğer eylemlere izin vermek gerekiyorsa, bu yaklaşım çalışmaz. Her sınıfın yalnızca bir model bağlama şekli olabilir; farklı eylemler farklı model bağlama şekilleri gerekiyorsa, bu ayrı şekilleri ayrı model bağlama sınıfları veya&euro;ayrı [Bind(Include ="â |")] öznitelikleri eylem yöntemleri kullanarak temsil etmek gerekir.</li><li>**Bağlayıcı modeller nelerdir? Onlar görünüm modelleri ile aynı şey mi? -** Bunlar iki ilgili kavramdır. Bağlama terimi, bir eylemin parametre listesinde kullanılan bir model sınıfına (MVC modelinden eylem yöntemine bağlanan şekil) anlamına gelir. Görünüm terimi modeli, eylem yönteminden görünüme geçen bir model sınıfı anlamına gelir. Görünüme özgü bir model kullanmak, eylem yönteminden görünüme veri aktarmak için yaygın bir yaklaşımdır. Genellikle, bu şekil model bağlama için de uygundur ve terim görünümü modeli her iki yerde de kullanılan aynı modeli başvurmak için kullanılabilir. Kesin olarak, bu yordam özellikle bağlayıcı modeller hakkında, toplu atama amaçları için önemli olan eylem, geçirilen şekil odaklanarak konuşuyor.</li></ul>| 
 
 ## <a name="encode-untrusted-web-output-prior-to-rendering"></a><a id="rendering"></a>Oluşturmadan önce güvenilmeyen web çıktısını kodlama
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, Web Formları, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Nasıl ASP.NET, Cross-site](https://msdn.microsoft.com/library/ms998274.aspx) [Scripting,](https://cwe.mitre.org/data/definitions/79.html) [XSS (Cross Site Scripting) Önleme Hile Sayfası](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet) çapraz site scripting önlemek için |
+| **Başvurular**              | [Nasıl ASP.NET, Cross-site](https://msdn.microsoft.com/library/ms998274.aspx) [Scripting,](https://cwe.mitre.org/data/definitions/79.html) [XSS (Cross Site Scripting) Önleme Hile Sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) çapraz site scripting önlemek için |
 | **Adımlar** | Site arası komut dosyası (genellikle XSS olarak kısaltılır), çevrimiçi hizmetler veya web'den giriş tüketen herhangi bir uygulama/bileşen için bir saldırı vektörüdür. XSS güvenlik açıkları, saldırganın güvenlik açığı olan bir web uygulaması aracılığıyla başka bir kullanıcının makinesinde komut dosyası yürütmesine izin verebilir. Kötü amaçlı komut dosyaları çerezleri çalmak ve javascript aracılığıyla bir kurbanın makinesini kurcalamak için kullanılabilir. XSS, kullanıcı girişinin doğrulanması, iyi biçimlendirilmiş olması ve bir web sayfasında işlenmeden önce kodlanması ile engellenir. Giriş doğrulama ve çıktı kodlaması Web Koruma Kitaplığı kullanılarak yapılabilir. Yönetilen kod (C\#, VB.NET, vb.) için, kullanıcı girişinin ortaya çıktığı içeriğe bağlı olarak Web Koruma (Anti-XSS) Kitaplığı'ndan bir veya daha fazla uygun kodlama yöntemi kullanın:| 
 
 ### <a name="example"></a>Örnek
@@ -392,7 +392,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Doğrulama [Ekleme](https://www.asp.net/mvc/overview/getting-started/introduction/adding-validation), [MVC Uygulamasında Model Verilerini Doğrulama](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), ASP.NET [MVC Uygulamalarınız için Kılavuz İlkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -403,7 +403,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Güvenli Olmayan Girişi Kodla](https://msdn.microsoft.com/library/ff647397.aspx#paght000003_step3), [HTML Sanitizer](https://github.com/mganss/HtmlSanitizer) |
@@ -414,7 +414,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -436,7 +436,7 @@ $('body').append(resHTML);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [OAuth 2.0 Yetkilendirme Çerçevesi - Açık Yeniden Yönetmenler](https://tools.ietf.org/html/rfc6749#section-10.15) |
@@ -447,7 +447,7 @@ $('body').append(resHTML);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC Uygulamasında Model Verilerinin Doğrulanması](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [ASP.NET MVC Uygulamalarınız için Kılavuz İlkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -458,7 +458,7 @@ $('body').append(resHTML);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, Web Formları, MVC5, MVC6  |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [VarsayılanRegexMatchTimeout Özelliği](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
@@ -476,7 +476,7 @@ $('body').append(resHTML);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -500,8 +500,8 @@ Biçimlendirme `Html.Raw()` görüntülemeniz gerekmedikçe kullanmayın. Bu yö
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Database | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Veritabanı | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -561,7 +561,7 @@ AS
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Web API'sinde Model Doğrulama](https://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
@@ -618,7 +618,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, MVC 5, MVC 6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MVC Uygulamasında Model Verilerinin Doğrulanması](https://msdn.microsoft.com/library/dd410404(v=vs.90).aspx), [ASP.NET MVC Uygulamalarınız için Kılavuz İlkeler](https://msdn.microsoft.com/magazine/dd942822.aspx) |
@@ -629,7 +629,7 @@ namespace MyApi.Controllers
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -659,7 +659,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Belge DB | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Cosmos DB'de SQL Parametreizasyonu Duyurusu](https://azure.microsoft.com/blog/announcing-sql-parameterization-in-documentdb/) |
@@ -670,7 +670,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff647820.aspx) |
@@ -681,7 +681,7 @@ myCommand.Fill(userDataset);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, NET Framework 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff647875.aspx) |

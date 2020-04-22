@@ -2,17 +2,17 @@
 title: Marketo'da müşteri adayı yönetimini yapılandırma | Azure Marketi
 description: Azure pazar yeri müşterileri için Marketo için müşteri adayı yönetimini yapılandırın.
 author: qianw211
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.author: dsindona
-ms.openlocfilehash: 04eae529efcf9509d8cd43a7629bb0b76b593cd0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 90f42954fd4d7324a7684795fca6ec302411790c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252508"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731109"
 ---
 # <a name="configure-lead-management-in-marketo"></a>Marketo'da müşteri adayı yönetimini yapılandırma
 
@@ -21,16 +21,21 @@ Bu makalede, market teklifinizden satış müşteri adaylarını işlemek için 
 ## <a name="set-up-your-marketo-crm-system"></a>Marketo CRM sisteminizi ayarlayın
 
 1. Marketo'da oturum açın.
+
 2. **Tasarım Stüdyosu'ni**seçin.
+
     ![Marketo Tasarım Stüdyosu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-1.png)
 
 3.  **Yeni Formu**Seçin.
+
     ![Marketo yeni formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-2.png)
 
 4.  Yeni Form'da gerekli alanları doldurun ve sonra **Oluştur'u**seçin.
+
     ![Marketo yeni form oluşturmak](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-3.png)
 
 5.  Alan Ayrıntıları'nda **Finish'i**seçin.
+
     ![Marketo bitiş formu](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-4.png)
 
 6.  Onayla ve Kapat.
@@ -41,7 +46,7 @@ Bu makalede, market teklifinizden satış müşteri adaylarını işlemek için 
 
 8. Marketo Embed Code aşağıdaki örneğe benzer kod görüntüler.
 
-    ```
+    ```html
     <form id="mktoForm_1179"></form>
     <script>MktoForms2.loadForm("("//app-ys12.marketo.com", "123-PQR-789", 1179);</script>
     ```
@@ -60,9 +65,10 @@ Bu makalede, market teklifinizden satış müşteri adaylarını işlemek için 
 
 ## <a name="configure-your-offer-to-send-leads-to-marketo"></a>Teklifinizi Marketo'ya müşteri adayları göndermek için yapılandırın
 
-Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırmaya hazır olduğunuzda aşağıdaki adımları izleyin: 
+Yayımlama portalındaki teklifiniz için müşteri adayı yönetimi bilgilerini yapılandırmaya hazır olduğunuzda aşağıdaki adımları izleyin: 
 
 1. **Teklifiniz** için Teklif kurulum sayfasına gidin.
+
 1. Müşteri Adayı Yönetimi bölümü altında **Bağlan'ı** seçin. 
 
     ![Müşteri adayı yönetimi - Bağlan](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
@@ -73,12 +79,13 @@ Yayımlama portalında teklifiniz için müşteri adayı yönetimi bilgilerini y
 
 4. Sunucu **Kimliği,** **Munching hesap kimliği**ve **Form Kimliği**sağlayın.
 
-    >[!Note]
-    >Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir. 
+    > [!Note]
+    > Teklifin geri kalanını yapılandırmayı bitirmeniz ve teklifiçin müşteri adayı alabilmek için yayımlamanız gerekir. 
 
 5. **Kişi e-postası** - Şirketinizde yeni bir müşteri adayı geldiğinde e-posta bildirimleri alması gereken kişiler için e-posta sağlayın. Bir semicolon ile ayırarak birden çok e-posta sağlayabilir.
+
 6. **Tamam'ı**seçin.
 
-Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
+   Bir müşteri adayı hedefine başarıyla bağlandığınızdan emin olmak için doğrulama düğmesini tıklatın. Başarılı olursa, müşteri adayı hedefinde bir test müşteri adayınız olur.
 
-![Bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)
+   ![Bağlantı ayrıntıları](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

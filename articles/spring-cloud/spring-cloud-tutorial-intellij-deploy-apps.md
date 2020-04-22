@@ -6,24 +6,23 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: dbd0313c3edca8c5a875572fe52d7ec751ba65e8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641992"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731367"
 ---
-# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>Azure Bahar Bulutu uygulamalarını dağıtmak için IntelliJ'i kullanın
+# <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ kullanarak Azure Spring Cloud uygulamalarını dağıtma
 Azure Bahar Bulutu için IntelliJ eklentisi, IntelliJ IDEA'dan uygulama dağıtımını destekler.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
 * [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA Community Edition, sürüm [2020.1]](https://www.jetbrains.com/idea/download/#section=windows)
-* Veya: IntelliJ IDEA Ultimate Edition, sürüm [2020.1]
+* [IntelliJ IDEA, Topluluk/Ultimate Edition, sürüm 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
 ## <a name="install-the-plug-in"></a>Eklentiyi yükleme
-IntelliJ **Plugins** UI'den IntelliJ IDEA 3.35.0 için Azure Araç Seti'ni yapabilirsiniz.
+IntelliJ **Plugins** UI'den IntelliJ IDEA 3.35.0 için Azure Araç Seti'ni ekleyebilirsiniz.
 
 1. IntelliJ'i başlatın.  Daha önce bir proje açtıysanız, hoş geldiniz iletişim kutusunu göstermek için projeyi kapatın. Sağ alttaki bağlantıdan **Yapıla'yı** seçin ve eklenti yapılandırma iletişim kutusunu açmak için **Eklentiler'i** tıklatın ve **diskten Eklentileri Yükle'yi**seçin.
 
@@ -52,7 +51,7 @@ Aşağıdaki yordamlar IntelliJ IDEA kullanarak bir Hello World uygulaması dağ
     ![İthalat Projesi](media/spring-cloud-intellij-howto/import-project-1.png)
 
 ## <a name="deploy-to-azure-spring-cloud"></a>Azure İlkbahar Bulutuna Dağıl
-Azure'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için [Yükleme ve oturum açma'ya](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in)bakın.
+Azure'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için [Yükleme ve oturum açma'ya](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)bakın.
 
 1. IntelliJ proje gezgininde projenizi sağ tıklatın ve **Azure** -> **Bulutu'na Azure Dağıt'ı**seçin.
 
@@ -60,7 +59,7 @@ Azure'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi 
 
 1. **Ad** alanında uygulamanın adını kabul edin. **Ad,** uygulama adını değil yapılandırmayı ifade eder. Kullanıcıların genellikle değiştirmesi gerekmez.
 1. Artifon için projeden tanımlayıcıyı kabul **edin.**
-1. **App'i seçin:**, ardından **Uygulamayı Oluştur'a tıklayın...**.
+1. **Uygulamayı Seçiniz:** ardından **Uygulamayı Oluştur'a tıklayın...**.
 
     ![Azure 2'ye Dağıt](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
@@ -98,6 +97,6 @@ Günlükleri almak için:
 
     ![Akış günlüğü çıktısı](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="see-also"></a>Ayrıca bkz.
-* [IntelliJ kullanarak Azure App Service için Merhaba Dünya web uygulaması oluşturma](https://docs.microsoft.com/azure/java/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)
-* [Azure Bahar Bulutu'nda dağıtım için java spring uygulaması hazırlama](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment) 
+## <a name="next-steps"></a>Sonraki adımlar
+* [Azure Bahar Bulutu için Bahar uygulamasını hazırlayın](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [IntelliJ için Azure Araç Seti hakkında daha fazla bilgi edinin](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

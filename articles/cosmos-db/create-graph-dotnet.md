@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
-ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: bf453587b354b5db3f3ef1a80f974bcb8f8f4e14
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240194"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730029"
 ---
 # <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlatma: Azure Cosmos DB Gremlin API hesabını kullanarak bir .NET Framework veya Core uygulaması oluşturun
 
@@ -118,7 +118,7 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 1. Hesabınızın URI ve BIRINCIL ANAHTARINI kopyaladıktan sonra, bunları uygulamayı çalıştıran yerel makinede yeni bir ortam değişkenine kaydedin. Ortam değişkenini ayarlamak için bir komut istemi penceresi açın ve aşağıdaki komutu çalıştırın. > Your_Azure_Cosmos_account_URI <ve> değerleri Your_Azure_Cosmos_account_PRIMARY_KEY <emin olun.
 
    ```console
-   setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
+   setx EndpointUrl "<your Azure Cosmos account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 

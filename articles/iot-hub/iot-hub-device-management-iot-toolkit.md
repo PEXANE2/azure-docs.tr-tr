@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75911927"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688091"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub aygıt yönetimi için Visual Studio Kodu için Azure IoT Araçlarını kullanma
 
@@ -48,7 +48,7 @@ Geliştirme makinenizde çeşitli yönetim seçenekleriyle Visual Studio Code i�
 * Etkin bir Azure aboneliği.
 * Aboneliğiniz altında bir Azure IoT hub'ı.
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [VS Kodu için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya [Visual Studio Code bu bağlantıyı açın.](vscode:extension/vsciot-vscode.azure-iot-tools)
+* [VS Kodu için Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) veya bu URL'yi`vscode:extension/vsciot-vscode.azure-iot-tools`kopyalayın ve bir tarayıcı penceresine yapıştırın: .
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>IoT hub'ınıza erişmek için oturum açın
 

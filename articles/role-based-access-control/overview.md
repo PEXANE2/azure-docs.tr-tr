@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec9734974971ac89ad54934f43c70f8805b6a013
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641786"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686481"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?
 
@@ -35,14 +35,6 @@ Aşağıda RBAC ile gerçekleştirebileceğiniz işlemlere örnekler verilmişti
 - Bir DBA grubuna abonelikteki SQL veritabanlarını yönetme izni verme
 - Bir kullanıcının sanal makineler, web siteleri ve alt ağlar gibi bir kaynak grubundaki tüm kaynakları yönetmesine izin verme
 - Bir uygulamaya bir kaynak grubundaki tüm kaynaklara erişim izni verme
-
-## <a name="best-practice-for-using-rbac"></a>RBAC kullanımı için en iyi yöntem
-
-RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Herkese Azure aboneliğiniz veya kaynaklarınızda sınırsız izin vermek yerine belirli eylemlere yalnızca belirli kapsamlarda izin verebilirsiniz.
-
-Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Aşağıdaki diyagramda RBAC kullanımı için önerilen model gösterilmiştir.
-
-![RBAC ve en düşük öncelik](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC nasıl çalışır?
 

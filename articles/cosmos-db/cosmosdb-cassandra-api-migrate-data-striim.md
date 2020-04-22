@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50028e81c4ca130aa3266c164a431dc935a271cb
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71266049"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730033"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim kullanarak verileri Azure Cosmos DB Cassandra API hesabına geçirin
 
@@ -155,7 +155,7 @@ Bu bölümde, veri hareketinin hedefi olarak Azure Cosmos DB Cassandra API hesab
 
    ![Hedefe bağlanma](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. Hedefi yapılandırmadan önce, [Striim'in Java ortamına baltimore kök sertifikası](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)eklediğinizden emin olun.
+1. Hedefi yapılandırmadan önce, [Striim'in Java ortamına baltimore kök sertifikası](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)eklediğinizden emin olun.
 
 1. Hedef Azure Cosmos DB örneğinizin yapılandırma özelliklerini girin ve devam etmek için **Kaydet'i** seçin. Dikkat edilmesi gereken temel parametreler şunlardır:
 

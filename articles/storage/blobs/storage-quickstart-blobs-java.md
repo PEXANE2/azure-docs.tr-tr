@@ -7,12 +7,12 @@ ms.date: 01/27/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: c883653754e1f69d3b2d79b256d57a036c70b58e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78330157"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731353"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Quickstart: Java v12 SDK ile blobs yönetin
 
@@ -355,4 +355,4 @@ Blob depolama örnek uygulamalarını görmek için şunları yapmaya devam edin
 > [Azure Blob depolama SDK v12 Java örnekleri](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
 * Daha fazla bilgi için [Java için Azure SDK'ya](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)bakın.
-* Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için Java bulut geliştiricileri için Azure'u ziyaret [edin.](/azure/java/)
+* Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için Java bulut geliştiricileri için Azure'u ziyaret [edin.](/azure/developer/java/)

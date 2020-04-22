@@ -4,12 +4,12 @@ description: Kullanılabilir metrik tanımları ve metrik değerleri almak için
 ms.subservice: metrics
 ms.topic: conceptual
 ms.date: 03/19/2018
-ms.openlocfilehash: f52776fc6b5f5f530cc368a2f148a2ff63fb5b40
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b0e321747e0f84be5a75ab96749311ff0071e8d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294631"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687407"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure İzleme REST API izlenecek
 
@@ -238,7 +238,7 @@ Herhangi bir filtreleme isteği için ölçümün 'değer' ('yerelleştirilmiş 
 
 **Yöntem**: GET
 
-**İstek URI**\:: https //management.azure.com/subscriptions/*{abonelik-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filtre}*&sonuçType=metadata&api-version=*{apiVersion }*
+**İstek URI**\:: https //management.azure.com/subscriptions/*{abonelik-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames= {metric}&timespan=*{starttime/endtime}*&$filter=*{filtre}*&sonuçType=metadata&api-version=*{apiVersion}* *{metric}*
 
 Örneğin, belirtilen zaman aralığında GeoType dimension = 'Primary' ifadesinin bulunduğu 'İşlemler' ölçümü için 'API Adı boyutu' için yayılan boyut değerlerinin listesini almak için istek aşağıdaki gibi olacaktır:
 
@@ -311,7 +311,7 @@ Herhangi bir filtreleme isteği için ölçümün adı 'değer' ('yerelleştiril
 
 **Yöntem**: GET
 
-**İstek**URI https://management.azure.com/subscriptions/: *{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-name} {resource-name}*/*{resource-name}*/providers/microsoft.insights/metricnames={metric}&timespan=*{starttime/endtime}*&$filter=*{filter}*&aralığı=*{timeGrain}*&toplama=*{aggreation}*&api-version *{metric}* *{ apiVersion}*
+**İstek URI**:\/https: management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metricnames= {metric}&timespan=*{starttime}&}*&$filter=*{filter}&* interval=*{timeGrain}*&toplama=*aggreation}* apiversion/versioni/&/*{metric}* *{apiVersion}*
 
 Örneğin, GeotType'ın 'Birincil' olduğu 5 dk aralığındaki 'Hareketler' sayısına göre azalan değerdeki ilk 3 API'yi almak için istek aşağıdaki gibi olacaktır:
 
@@ -463,7 +463,7 @@ Kullanılabilir metrik tanımları bilindikten sonra, ilgili metrik değerleri a
 
 **Yöntem**: GET
 
-**İstek URI**:`https://management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
+**İstek URI**:`https:\//management.azure.com/subscriptions/\*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*`
 
 Örneğin, verilen zaman aralığı için RunsSucceeded metrik veri noktalarını almak ve 1 saatlik bir zaman dilimi için istek aşağıdaki gibi olacaktır:
 
@@ -617,7 +617,7 @@ Azure Kaynak Gezgini'ni kullanmak, Azure portalında istenen kaynağı görünt�
 
 ![Alt "Azure Kaynak Gezgini"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Kaynak kimliği Azure portalından da elde edilebilir. Bunu yapmak için, istenen kaynağa gidin ve ardından Özellikler'i seçin. Kaynak Kimliği, aşağıdaki ekran görüntüsünde görüldüğü gibi Özellikler bölümünde görüntülenir:
 

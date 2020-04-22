@@ -6,15 +6,15 @@ author: azaricstefan
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8e6fd4955d6d68764895619efd968a957bcb5184
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460605"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676683"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Synapse SQL içindeki SQL isteğe bağlı (önizleme) kaynaklarını kullanarak depolama dosyalarını sorgula
 
@@ -62,7 +62,7 @@ Kullanım örnekleri için [Sorgu klasörlerine ve birden çok dosyaya](query-fo
 
 Parke kaynak verilerini sorgulamak için FORMAT = 'PARKE'
 
-```sql
+```syntaxsql
 OPENROWSET
 (
     { BULK 'data_file' ,
@@ -121,7 +121,6 @@ OPENROWSET deyimindeki WITH yan tümcesini atlayarak, hizmete şemayı temel dos
 ```sql
 OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
-
 ```
 
 ### <a name="filename-function"></a>Dosya adı fonksiyonu
@@ -163,7 +162,7 @@ Struct gibi iç içe bir sütundan iç içe kullanılan öğelere erişmek için
 
 Sözdizimi parçası örneği aşağıdaki gibidir:
 
-```sql
+```syntaxsql
     OPENROWSET
     (   BULK 'unstructured_data_path' ,
         FORMAT = 'PARQUET' )
@@ -197,7 +196,7 @@ Yinelenen bir sütundan skaler olmayan öğelere erişmek için, projeve sağlam
 
 Aşağıdaki sözdizimi fragmanına bakın:
 
-```sql
+```syntaxsql
     SELECT
        { JSON_VALUE (column_name, path_to_sub_element), }
        { JSON_QUERY (column_name [ , path_to_sub_element ]), )
@@ -215,9 +214,9 @@ Aşağıdaki sözdizimi fragmanına bakın:
 Farklı dosya türlerinin nasıl sorgulanır ve görünümler oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 - [Tek CSV dosyasorgulama](query-single-csv-file.md)
-- [Parke dosyalarını sorgula](query-parquet-files.md)
-- [JSON dosyalarını sorgula](query-json-files.md)
-- [Sorgu Parke iç içe türleri](query-parquet-nested-types.md)
+- [Parquet dosyalarını sorgulama](query-parquet-files.md)
+- [JSON dosyalarını sorgulama](query-json-files.md)
+- [Parquet iç içe türlerini sorgulama](query-parquet-nested-types.md)
 - [Sorgu klasörleri ve birden çok CSV dosyası](query-folders-multiple-csv-files.md)
 - [Sorgularda dosya meta verilerini kullanma](query-specific-files.md)
-- [Görünümoluşturma ve kullanma](create-use-views.md)
+- [Görünümleri oluşturma ve kullanma](create-use-views.md)

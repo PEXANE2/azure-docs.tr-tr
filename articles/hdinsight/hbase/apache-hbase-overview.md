@@ -7,25 +7,25 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 03/03/2020
-ms.openlocfilehash: 97814f4d22629fd74f395887a7361a3aabe55012
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/20/2020
+ms.openlocfilehash: e977d4d68a330f57c4b53da4270e4515d4e69ee0
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78271846"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729817"
 ---
 # <a name="what-is-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase nedir
 
-[Apache HBase,](https://hbase.apache.org/) [Apache Hadoop](https://hadoop.apache.org/) üzerine inşa edilmiş ve [Google BigTable'dan](https://cloud.google.com/bigtable/)sonra modellenen açık kaynak kodlu bir NoSQL veritabanıdır. HBase, sütun aileleri tarafından veritabanında büyük miktarlardaki yapılandırılmamış ve yarı yapılandırılmış veriler için rasgele erişim ve güçlü tutarlılık sağlar.
+[Apache HBase,](https://hbase.apache.org/) Apache Hadoop üzerine inşa edilmiş ve [Google BigTable'dan](https://cloud.google.com/bigtable/)sonra modellenen açık kaynak kodlu bir NoSQL veritabanıdır. HBase, şemasız bir veritabanında büyük miktarda veri için rasgele erişim ve güçlü tutarlılık sağlar. Veritabanı sütun aileler tarafından düzenlenir.
 
-Kullanıcı açısından bakıldığında, HBase bir veritabanına benzer. Veriler tablonun satır ve sütunlarında depolanır ve satır içindeki veriler sütun ailesine göre gruplanır. HBase, kullanılmadan önce sütunların ya da bunlarda depolanan veri türünün tanımlanmasına gerek duyulmayan, şemasız bir veritabanıdır. Açık kaynak kodu, binlerce düğümdeki petabaytlarca verileri işlemek için doğrusal olarak ölçeklendirir. Veri yedekleme, toplu işleme ve Hadoop ekosistemindeki dağıtılmış uygulamalar tarafından sağlanan diğer özelliklere dayanabilir.
+Kullanıcı açısından bakıldığında, HBase bir veritabanına benzer. Veriler tablonun satır ve sütunlarında depolanır ve satır içindeki veriler sütun ailesine göre gruplanır. HBase şemasız bir veritabanıdır. Sütunlar ve veri türleri kullanmadan önce tanımsız olabilir. Açık kaynak kodu, binlerce düğümdeki petabaytlarca verileri işlemek için doğrusal olarak ölçeklendirir. Hadoop ortamında dağıtılmış uygulamalar tarafından sağlanan veri artıklığı, toplu işleme ve diğer özelliklere güvenebilir.
 
 ## <a name="how-is-apache-hbase-implemented-in-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase nasıl uygulanır?
 
-HDInsight HBase, Azure ortamına tümleştirilmiş yönetilen bir küme olarak sunulur. Kümeler, düşük gecikme ve performans ve maliyet seçimlerinde daha fazla esneklik sağlayan verileri doğrudan [Azure Depolama'da](./../hdinsight-hadoop-use-blob-storage.md)depolamak üzere yapılandırılır. Bu, müşterilerin milyonlarca uç noktadan gelen algılayıcı ve telemetri verilerini depolayan hizmetleri oluşturmak ve bu verileri Hadoop işleriyle çözümlemek üzere etkileşimli web siteleri oluşturmalarını sağlar. HBase ve Hadoop Azure’da büyük veri projeleri için yi başlangıç noktalarıdır; bunlar özellikle büyük veri kümeleriyle çalışmak üzere gerçek zamanlı uygulamaları etkinleştirebilir.
+HDInsight HBase, Azure ortamına tümleştirilmiş yönetilen bir küme olarak sunulur. Kümeler, düşük gecikme ve performans ve maliyet seçimlerinde daha fazla esneklik sağlayan verileri doğrudan [Azure Depolama'da](./../hdinsight-hadoop-use-blob-storage.md)depolamak üzere yapılandırılır. Bu özellik, müşterilerin büyük veri kümeleriyle çalışan etkileşimli web siteleri oluşturmasına olanak tanır. Milyonlarca uç noktadan sensör ve telemetri verilerini depolayan hizmetler oluşturmak için. Ve hadoop işleri ile bu verileri analiz etmek. HBase ve Hadoop, Azure'daki büyük veri projesi için iyi bir başlangıç noktasıdır. Hizmetler, gerçek zamanlı uygulamaların büyük veri kümeleriyle çalışmasını sağlayabilir.
 
-HDInsight uygulaması, tabloların otomatik parçalanmasını, okumalar ve yazmalar için yüksek tutarlılık ve otomatik yük devretme sağlamak için HBase’in ölçek genişletmeli mimarisinden yararlanır. Performans, okumalar için bellek içi önbelleğe alma ve yazmalar için yüksek verimlilikli akış tarafından geliştirilmiştir. HBase kümesi sanal ağda oluşturulabilir. Ayrıntılar için bkz. [Azure Sanal Ağ'da HDInsight kümeleri oluşturma](./apache-hbase-provision-vnet.md).
+HDInsight uygulaması, tabloların otomatik olarak parçalanması için HBase'in ölçeklendirme mimarisini kullanır. Ve okuma ve yazma için güçlü tutarlılık ve otomatik failover. Performans, okumalar için bellek içi önbelleğe alma ve yazmalar için yüksek verimlilikli akış tarafından geliştirilmiştir. HBase kümesi sanal ağda oluşturulabilir. Ayrıntılar için bkz. [Azure Sanal Ağ'da HDInsight kümeleri oluşturma](./apache-hbase-provision-vnet.md).
 
 ## <a name="how-is-data-managed-in-hdinsight-hbase"></a>Veriler HDInsight HBase’de nasıl yönetilir?
 
@@ -41,9 +41,9 @@ BigTable (ve uzantısı olarak, HBase) web arama oluşturulan kanonik kullanım 
 |Senaryo |Açıklama |
 |---|---|
 |Anahtar değeri deposu|HBase anahtar değeri deposu olarak kullanılabilir ve ileti sistemlerini yönetmek için uygundur. Facebook, mesajlaşma sistemi için HBase'i kullanır ve Internet iletişimlerini depolamak ve yönetmek için idealdir. WebTable web sayfalarından çıkarılan tabloları aramak ve yönetmek için HBase kullanır.|
-|Algılayıcı verileri|HBase çeşitli kaynaklardan artımlı olarak toplanan verileri yakalamak için yararlıdır. Buna sosyal analiz, zaman serileri, etkileşimli panoları trendler ve sayaçlarla güncel tutma ve denetim günlüğü sistemlerini yönetme dahildir. Örnek olarak, Bloomberg tüccar terminali ve sunucu sistemlerinin durumuna ilişkin toplanan ölçümleri toplayan ve bunlara erişim imkanı sağlayan Open Time Series Veritabanı (OpenTSDB) verilebilir.|
+|Algılayıcı verileri|HBase çeşitli kaynaklardan artımlı olarak toplanan verileri yakalamak için yararlıdır. Bu veriler sosyal analizve zaman serilerini içerir. Ve etkileşimli panoları trendler ve sayaçlarla güncel tutmak ve denetim günlüğü sistemlerini yönetmek. Örnekler Bloomberg tüccar terminali ve Open Time Serisi Veritabanı (OpenTSDB) içerir. OpenTSDB, sunucu sistemlerinin durumu hakkında toplanan ölçümleri saklar ve sağlar.|
 |Gerçek zamanlı sorgu|[Apache Phoenix, Apache](https://phoenix.apache.org/) HBase için bir SQL sorgu motorudur. JDBC sürücüsü olarak erişilir ve SQL kullanarak HBase tablolarını sorgulamayı ve yönetmeyi sağlar.|
-|Bir platform olarak HBase|Uygulamalar, bir veri deposu olarak kullanarak HBase’in üstünde çalışabilir. Örnekler Phoenix, [OpenTSDB,](http://opentsdb.net/)Kiji ve Titan içerir. Uygulamalar HBase ile de tümleştirebilir. Örnekler [Apache Hive](https://hive.apache.org/), [Apache Pig](https://pig.apache.org/), [Solr](https://lucene.apache.org/solr/), [Apache Storm](https://storm.apache.org/), [Apache Flume](https://flume.apache.org/), [Apache Impala](https://impala.apache.org/), [Apache Spark](https://spark.apache.org/) , [Ganglia](http://ganglia.info/), ve [Apache Matkap](https://drill.apache.org/)içerir .|
+|Bir platform olarak HBase|Uygulamalar, bir veri deposu olarak kullanarak HBase’in üstünde çalışabilir. Örnekler Phoenix, OpenTSDB `Kiji`ve Titan içerir. Uygulamalar HBase ile de tümleştirebilir. Örnekler şunlardır: [Apache Hive](https://hive.apache.org/), Apache Pig, [Solr](https://lucene.apache.org/solr/), Apache Storm, Apache Flume, [Apache Impala](https://impala.apache.org/), Apache Spark, `Ganglia`ve Apache Matkap.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

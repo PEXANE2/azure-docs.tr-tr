@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
-ms.openlocfilehash: 350c2bf3c4d0fc0a16f1b393e7c8d8a372679797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331153"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683157"
 ---
 # <a name="configure-openssl-for-linux"></a>Linux için OpenSSL’yi yapılandırma
 
@@ -40,16 +40,18 @@ OPENSSLDIR `certs` altında alt dizin olup olmadığını kontrol edin. Yukarıd
 ## <a name="examples"></a>Örnekler
 
 - OPENSSLDIR `/opt/ssl`olduğunu . Birçok `certs` `.crt` veya `.pem` dosyaları ile alt dizin vardır.
-Konuşma SDK kullanan `/opt/ssl/certs` bir program çalıştırmadan önce noktaya ortam değişkeni `SSL_CERT_DIR` ayarlayın. Örnek:
+Konuşma SDK kullanan `/opt/ssl/certs` bir program çalıştırmadan önce noktaya ortam değişkeni `SSL_CERT_DIR` ayarlayın. Örneğin:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
 - OPENSSLDIR `/etc/pki/tls` (RHEL/CentOS tabanlı sistemlerde olduğu gibi). Örneğin, `certs` `ca-bundle.crt`sertifika paketi dosyası olan alt dizin vardır.
-Konuşma SDK kullanan bir program çalıştırmadan önce ortam değişkenini `SSL_CERT_FILE` bu dosyayı işaret etmek için ayarlayın. Örnek:
+Konuşma SDK kullanan bir program çalıştırmadan önce ortam değişkenini `SSL_CERT_FILE` bu dosyayı işaret etmek için ayarlayın. Örneğin:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```
+> [!NOTE]
+> Linux'un bazı dağılımlarında TMP veya TMPDIR ortam değişkeni tanımlı olmadığını da belirtmekte yarar vardır. Bu, Konuşma SDK'sının CRL'yi süresi dolana kadar yeniden kullanmak üzere diske önbelleğe almak yerine her seferinde Sertifika İptal Listesi'ni (CRL) indirmesine neden olur. İlk bağlantı performansını artırmak için [TMPDIR adında bir ortam değişkeni oluşturabilir ve seçtiğiniz geçici dizinin yoluna ayarlayabilirsiniz.](https://help.ubuntu.com/community/EnvironmentVariables)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

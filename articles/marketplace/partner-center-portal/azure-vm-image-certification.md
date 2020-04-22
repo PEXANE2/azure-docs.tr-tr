@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 009a8e3db097790788f71486431a3b5b05c488ea
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81265973"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731120"
 ---
 # <a name="azure-virtual-machine-vm-image-certification"></a>Azure sanal makine (VM) görüntü sertifikası
 
@@ -652,4 +652,4 @@ Son olarak, test sonuçlarını indirmek için **Rapor Oluştur'u** ve yürütü
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Her VHD için tek tip kaynak tanımlayıcıları (URI) oluşturma](https://aka.ms/AzureSASURI)
+- [Her VHD için tek tip kaynak tanımlayıcıları (URI) oluşturma](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

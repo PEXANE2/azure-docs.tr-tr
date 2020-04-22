@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 39ee0fa2dc973cd6c20756cae2024af79d1375dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1945025ff89a784908a1a3dffd2240172a6e2449
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294145"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687995"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Güvenlik Çerçevesi: İletişim Güvenliği | Azaltıcı etken 
 | Ürün / Hizmet | Makale |
@@ -31,7 +31,7 @@ ms.locfileid: "80294145"
 | **Azure Data Factory** | <ul><li>[Şirket içi SQL Server'ı Azure Veri Fabrikası'na bağlarken Veri yönetimi ağ geçidini kullanma](#sqlserver-factory)</li></ul> |
 | **Kimlik Sunucusu** | <ul><li>[Identity Server'a olan tüm trafiğin HTTPS bağlantısı üzerinde olduğundan emin olun](#identity-https)</li></ul> |
 | **Web Uygulaması** | <ul><li>[SSL, TLS ve DTLS bağlantılarını doğrulamak için kullanılan X.509 sertifikalarını doğrulayın](#x509-ssltls)</li><li>[Azure Uygulama Hizmeti'nde özel etki alanı için SSL sertifikasını yapılandırma](#ssl-appservice)</li><li>[HTTPS bağlantısı üzerinden tüm trafiği Azure Uygulama Hizmeti'ne zorlar](#appservice-https)</li><li>[HTTP Sıkı Taşıma Güvenliğini Etkinleştirme (HSTS)](#http-hsts)</li></ul> |
-| **Database** | <ul><li>[SQL sunucu bağlantısı şifrelemeve sertifika doğrulama sağlamak](#sqlserver-validation)</li><li>[SQL sunucusuna şifreli iletişimi zorla](#encrypted-sqlserver)</li></ul> |
+| **Veritabanı** | <ul><li>[SQL sunucu bağlantısı şifrelemeve sertifika doğrulama sağlamak](#sqlserver-validation)</li><li>[SQL sunucusuna şifreli iletişimi zorla](#encrypted-sqlserver)</li></ul> |
 | **Azure Depolama** | <ul><li>[Azure Depolama ile iletişimin HTTPS üzerinde olduğundan emin olun](#comm-storage)</li><li>[HTTPS etkin değilse blob indirdikten sonra MD5 karma sını doğrulayın](#md5-https)</li><li>[Azure Dosya Paylaşımları için aktarım sırasında veri şifrelemesi sağlamak için SMB 3.0 uyumlu istemciyi kullanın](#smb-shares)</li></ul> |
 | **Mobil İstemci** | <ul><li>[Sertifika Sabitleme uygula](#cert-pinning)</li></ul> |
 | **WCF** | <ul><li>[HTTPS 'yi etkinleştir - Güvenli Aktarım kanalı](#https-transport)</li><li>[WCF: İleti güvenliği Koruması düzeyini EncryptAndSign olarak ayarlayın](#message-protection)</li><li>[WCF: WCF hizmetinizi çalıştırmak için en az ayrıcalıklı bir hesap kullanın](#least-account-wcf)</li></ul> |
@@ -45,7 +45,7 @@ ms.locfileid: "80294145"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Event Hub | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Olay Hub'ları kimlik doğrulama ve güvenlik modeline genel bakış](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -56,7 +56,7 @@ ms.locfileid: "80294145"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -89,7 +89,7 @@ ms.locfileid: "80294145"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -100,7 +100,7 @@ ms.locfileid: "80294145"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | EnvironmentType - Azure |
 | **Başvurular**              | [Azure Uygulama Hizmeti'nde bir uygulama için HTTPS'yi etkinleştirme](../../app-service/configure-ssl-bindings.md) |
@@ -111,7 +111,7 @@ ms.locfileid: "80294145"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | EnvironmentType - Azure |
 | **Başvurular**              | [Azure Uygulama Hizmetinde HTTPS'yi zorla](../../app-service/configure-ssl-bindings.md#enforce-https) |
@@ -144,18 +144,18 @@ Bu kural, kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [OWASP HTTP Sıkı Ulaşım Güvenlik Hile Sayfası](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
+| **Başvurular**              | [OWASP HTTP Sıkı Ulaşım Güvenlik Hile Sayfası](https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html) |
 | **Adımlar** | <p>HTTP Strict Transport Security (HSTS), özel bir yanıt üstbilgisi aracılığıyla bir web uygulaması tarafından belirtilen bir güvenlik geliştirmesidir. Desteklenen bir tarayıcı bu üstbilgi aldığında, tarayıcı belirtilen etki alanına HTTP üzerinden herhangi bir iletişim gönderilmesini engelleyecek ve bunun yerine tüm iletişimleri HTTPS üzerinden gönderir. Ayrıca, tarayıcılarda istemleri aracılığıyla HTTPS tıklamasını da engeller.</p><p>HSTS'yi uygulamak için, aşağıdaki yanıt üstbilgisinin bir web sitesi için kod veya config olarak genel olarak yapılandırılması gerekir. Sıkı-Ulaşım-Güvenlik: max-age=300; Şunlardır SubDomains HSTS aşağıdaki tehditleri giderir:</p><ul><li>Kullanıcı yer imleri `https://example.com` veya el ile türleri ve bir adam-in-the-middle saldırgan tabidir: HSTS otomatik olarak hedef etki alanı için HTTPS http isteklerini yeniden yönlendirir</li><li>Tamamen HTTPS olması amaçlanan web uygulaması yanlışlıkla HTTP bağlantıları içerir veya HTTP üzerinden içerik hizmet vermektedir: HSTS http isteklerini hedef etki alanı için HTTPS'ye otomatik olarak yönlendirir</li><li>Ortadaki bir adam saldırgan, geçersiz bir sertifika kullanarak bir kurban kullanıcısının trafiğini engellemeye çalışır ve kullanıcının kötü sertifikayı kabul etmesini umuyor: HSTS kullanıcının geçersiz sertifika iletisini geçersiz kılmasına izin vermez</li></ul>|
 
 ## <a name="ensure-sql-server-connection-encryption-and-certificate-validation"></a><a id="sqlserver-validation"></a>SQL sunucu bağlantısı şifrelemeve sertifika doğrulama sağlamak
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Database | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Veritabanı | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | SQL Azure  |
 | **Öznitelikler**              | SQL Versiyon - V12 |
 | **Başvurular**              | [SQL Veritabanı için Güvenli Bağlantı Dizeleri Yazma da En İyi Uygulamalar](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
@@ -165,8 +165,8 @@ Bu kural, kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Database | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Veritabanı | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | OnPrem |
 | **Öznitelikler**              | SQL Version - MsSQL2016, SQL Version - MsSQL2012, SQL Version - MsSQL2014 |
 | **Başvurular**              | [Veritabanı Motoruna Şifreli Bağlantıları Etkinleştir](https://msdn.microsoft.com/library/ms191192)  |
@@ -176,19 +176,19 @@ Bu kural, kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL Fazı**               | Dağıtım |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Depolama Aktarım Düzeyi Şifreleme – HTTPS kullanma](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_encryption-in-transit) |
-| **Adımlar** | Azure Depolama verilerinin akiş güvenliğini sağlamak için, REST API'lerini ararken veya depolamadaki nesnelere erişirken her zaman HTTPS protokolünü kullanın. Ayrıca, Azure Depolama nesnelerine erişimi devretmek için kullanılabilen Paylaşılan Erişim İmzaları, Paylaşılan Erişim İmzaları kullanılırken yalnızca HTTPS protokolünün kullanılabileceğini belirterek SAS belirteçleri ile bağlantı gönderen herkesin kullanmasını sağlama seçeneğiiçerir uygun protokol.|
+| **Adımlar** | Azure Depolama verilerinin akiş güvenliğini sağlamak için, REST API'lerini ararken veya depolamadaki nesnelere erişirken her zaman HTTPS protokolünü kullanın. Ayrıca, Azure Depolama nesnelerine erişimi devretmek için kullanılabilecek Paylaşılan Erişim İmzaları, Paylaşılan Erişim İmzaları kullanılırken yalnızca HTTPS protokolünün kullanılabileceğini belirterek SAS belirteçleri ile bağlantı gönderen herkesin uygun protokolü kullanmasını sağlar.|
 
 ## <a name="validate-md5-hash-after-downloading-blob-if-https-cannot-be-enabled"></a><a id="md5-https"></a>HTTPS etkin değilse blob indirdikten sonra MD5 karma sını doğrulayın
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Azure Depolama | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Depolama Türü - Blob |
 | **Başvurular**              | [Windows Azure Blob MD5 Genel Bakış](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
@@ -199,7 +199,7 @@ Bu kural, kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Mobil İstemci | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | StorageType - Dosya |
 | **Başvurular**              | [Azure Dosya Depolama](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/#comment-2529238931), [Windows İstemcileri için Azure Dosya Depolama Kobİ Desteği](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files/#_mount-the-file-share) |
@@ -209,11 +209,11 @@ Bu kural, kullanıcı HTTP kullanarak bir sayfa istediğinde 301 (kalıcı yenid
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Azure Depolama | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel, Windows Phone |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [Sertifika ve Ortak Anahtar Sabitleme](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
+| **Başvurular**              | [Sertifika ve Ortak Anahtar Sabitleme](https://owasp.org/www-community/controls/Certificate_and_Public_Key_Pinning) |
 | **Adımlar** | <p>Sertifika sabitleme, OrtaDaki Adam (MITM) saldırılarına karşı savunma eder. Sabitleme, bir ana bilgisayara beklenen X509 sertifikası veya ortak anahtarıyla ilişki bağlama işlemidir. Bir sertifika veya ortak anahtar bir ana bilgisayar için bilinir veya görüldükten sonra, sertifika veya ortak anahtar ilişkili veya ana bilgisayarla 'sabitlenir'. </p><p>Böylece, bir düşman SSL MITM saldırısı yapmaya çalıştığında, SSL el sıkışması sırasında saldırganın sunucusundaki anahtar sabitlenmiş sertifikanın anahtarından farklı olacaktır ve istek atılır ve böylece ServicePointManager'Un `ServerCertificateValidationCallback` temsilcisi uygulanarak MITM Sertifika sabitleme engellenebilir.</p>|
 
 ### <a name="example"></a>Örnek
@@ -287,7 +287,7 @@ namespace CertificatePinningExample
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | NET Çerçeve 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
@@ -298,7 +298,7 @@ namespace CertificatePinningExample
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
@@ -327,7 +327,7 @@ string GetData(int value);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648826.aspx ) |
@@ -338,7 +338,7 @@ string GetData(int value);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC5, MVC6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Web API Denetleyicisinde SSL'yi zorlama](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
@@ -379,7 +379,7 @@ public class ValuesController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Redis için Azure Önbelleği | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Redis SSL desteği](https://azure.microsoft.com/documentation/articles/cache-faq/#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis) |
@@ -392,7 +392,7 @@ Redis'e güvenilen ortamlardaki güvenilir müşteriler tarafından erişilecek 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT Alan Ağ Geçidi | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -403,7 +403,7 @@ Redis'e güvenilen ortamlardaki güvenilir müşteriler tarafından erişilecek 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT Bulut Ağ Geçidi | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İletişim Protokolünüzü Seçin](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |

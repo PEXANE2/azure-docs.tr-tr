@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 84d7be64e7157c35639fec19cb28fe787fe29b19
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: c3c12f78118734c31641b90e6fcb8469ddda30b0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533896"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678000"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Öğretici: Oturum açın ve Açısal tek sayfalı bir uygulamadan Microsoft Graph API'yi arayın
 
@@ -53,10 +53,6 @@ Bu öğretici aşağıdaki kitaplığı kullanır:
 |Kitaplık|Açıklama|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript Açısal Sarıcı için Microsoft Kimlik Doğrulama Kitaplığı|
-
-> [!NOTE]
-> *Msal.js,* kişisel hesapların, iş hesaplarının ve okul hesaplarının oturum açmasını ve jeton edinmesini sağlayan Microsoft kimlik platformu bitiş noktasını hedefler. Microsoft kimlik platformu bitiş noktası [bazı sınırlamalar](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)vardır.
-> v1.0 ve v2.0 uç noktaları arasındaki farkları anlamak için [bitiş noktası karşılaştırma kılavuzuna](../azuread-dev/azure-ad-endpoint-comparison.md)bakın.
 
 MSAL.js kitaplığı için kaynak kodunu GitHub'daki [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) deposunda bulabilirsiniz.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 82fa5968d004bd4460f2c05ec944f6e568508675
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 5a17f98d69cb2196f92e19b66fc23dcd89bce188
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641145"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687137"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Çok bit hızında akışlar oluşturmak için Azure Medya Hizmetlerini kullanırken şirket içi kodlayıcıları yapılandırma
 Bu konu, canlı etkinliklerinizi yakalamak ve daha fazla işleme için AMS kanallarına (canlı kodlama etkin olan) tek bir bit hızıyla canlı akış göndermek için kullanabileceğiniz şirket içi canlı kodlayıcıları listeler. Konu ayrıca, listelenen kodlayıcıların nasıl yapılandırılabildiğini gösteren öğreticilere de bağlanır.
@@ -34,7 +34,7 @@ Bir AMS Kanalına tek bir bitrate canlı akışı göndermek için [Haivision KB
 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) kodlayıcısının ams kanalına tek bir bit hızı canlı akışı göndermek üzere nasıl yapılandırılabildiğini öğrenmek için [bkz.](media-services-configure-wirecast-live-encoder.md)
 
 ## <a name="elemental-live"></a>Elemental Live
-Daha fazla bilgi için [Elemental Live'a](https://www.elementaltechnologies.com/products/elemental-live)bakın.
+Daha fazla bilgi için [Elemental Live'a](https://www.elemental.com/products/aws-elemental-appliances-software/#elemental-live)bakın.
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

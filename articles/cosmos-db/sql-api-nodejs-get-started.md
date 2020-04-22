@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 04/20/2020
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: a67c00dab33272120097fde75fcf56f24f9f532b
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 212dd243842a8bdacc8a77241f456795ef508d9e
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411343"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731684"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Öğretici: Azure Cosmos DB SQL API verilerini yönetmek için JavaScript SDK ile bir Düğüm.js konsol uygulaması oluşturun
 
@@ -59,15 +59,19 @@ Uygulamayı oluşturmak için kod yazmaya başlamadan önce, uygulamanız için 
 
 1. Sık kullandığınız terminali açın.
 2. Node.js uygulamanızı kaydetmek istediğiniz klasör veya dizini bulun.
-3. Aşağıdaki komutlarla iki adet boş JavaScript dosyası oluşturun:
+3. Aşağıdaki komutlarla boş JavaScript dosyaları oluşturun:
 
    * Windows:
-     * ```fsutil file createnew app.js 0```
-     * ```fsutil file createnew config.js 0```
+     * `fsutil file createnew app.js 0`
+     * `fsutil file createnew config.js 0`
+     * `md data`
+     * `fsutil file createnew data\databaseContext.js 0`
 
    * Linux/OS X:
-     * ```touch app.js```
-     * ```touch config.js```
+     * `touch app.js`
+     * `touch config.js`
+     * `mkdir data`
+     * `touch data/databaseContext.js`
 
 4. Bir `package.json` dosya oluşturun ve başlatma. Aşağıdaki komutu kullanın:
    * ```npm init -y```
@@ -79,524 +83,83 @@ Uygulamayı oluşturmak için kod yazmaya başlamadan önce, uygulamanız için 
 
 Uygulamanız var olduğuna göre, uygulamanın Azure Cosmos DB ile konuşabildiğinden emin olmanız gerekir. Aşağıdaki adımlarda gösterildiği gibi birkaç yapılandırma ayarını güncelleyerek uygulamanızı Azure Cosmos DB ile konuşacak şekilde ayarlayabilirsiniz:
 
-1. Sık kullandığınız metin düzenleyicisinde ```config.js``` öğesini açın.
+1. En sevdiğiniz metin düzenleyicisinde *config.js* dosyasını açın.
 
-1. Aşağıdaki kod parçacığını kopyalayıp yapıştırın ve Azure Cosmos DB uç noktası URI ve birincil anahtarınıza ```config.endpoint``` ve ```config.key``` özelliklerini ayarlayın. Bu yapılandırmaların her ikisini de [Azure portalında](https://portal.azure.com) bulabilirsiniz.
-
-   ![Azure portaldan anahtarları alma ekran görüntüsü][keys]
-
-   ```javascript
-   // ADD THIS PART TO YOUR CODE
-   var config = {}
-
-   config.endpoint = "~your Azure Cosmos DB endpoint uri here~";
-   config.key = "~your primary key here~";
-   ``` 
-
-1. Aşağıdaki ```database```, ```container``` ve ```items``` verilerini kopyalayıp ```config.endpoint``` ve ```config.key``` özelliklerini ayarladığınız ```config``` nesnenize yapıştırın. Veritabanınızda depolamak istediğiniz veriler zaten varsa, buradaki verileri tanımlamak yerine Azure Cosmos DB'deki Veri AktarMa aracını kullanabilirsiniz. Config.js dosyaaşağıdaki kodu olmalıdır:
+1. Aşağıdaki kod parçacıklarını *config.js* dosyasına kopyalayıp yapıştırın ve `endpoint` `key` özellikleri ve Azure Cosmos DB bitiş noktası URI ve birincil anahtarınızı ayarlayın. Veritabanı, kapsayıcı adları **Görevler** ve **Öğeler**olarak ayarlanır. Bu uygulama için kullanacağınız bölüm anahtarı **/kategoridir.**
 
    :::code language="javascript" source="~/cosmosdb-nodejs-get-started/config.js":::
 
-   JavaScript SDK genel terimler *kapsayıcı* ve *öğe*kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. 
-   
-   `module.exports = config;`kod, ```app.js``` dosya içinde ```config``` başvuru yapabilmeniz için nesnenizi dışa aktarmak için kullanılır.
+   Azure [portalının](https://portal.azure.com) **Anahtarlar** bölmesinde bitiş noktası ve anahtar ayrıntılarını bulabilirsiniz.
 
-## <a name="connect-to-an-azure-cosmos-db-account"></a><a id="Connect"></a>Azure Cosmos DB hesabına bağlanma
+   ![Azure portaldan anahtarları alma ekran görüntüsü][keys]
 
-1. Bir metin düzenleyicisinde boş ```app.js``` dosyanızı açın. ```@azure/cosmos``` modülünü ve yeni oluşturduğunuz ```config``` modülünü içeri aktarmak için aşağıdaki kodu kopyalayıp yapıştırın.
+JavaScript SDK genel terimler *kapsayıcı* ve *öğe*kullanır. Bir kapsayıcı koleksiyon, grafik veya tablo olabilir. Öğe de kapsayıcının içinde bulunan belge, kenar/köşe veya satır olabilir. Önceki kod snippet'inde, `module.exports = config;` kod config nesnesini dışa aktarmak için kullanılır, böylece *app.js* dosyasında başvuruda bulunabilirsiniz.
 
-   ```javascript
-   // ADD THIS PART TO YOUR CODE
-   const CosmosClient = require('@azure/cosmos').CosmosClient;
+## <a name="create-a-database-and-a-container"></a>Veritabanı ve kapsayıcı oluşturma
 
-   const config = require('./config');
-   ```
+1. En sevdiğiniz metin düzenleyicisinde *databaseContext.js* dosyasını açın.
 
-1. Yeni bir CosmosClient oluşturmak için, önceden kaydedilen ```config.endpoint``` ve ```config.key``` öğelerini kullanmak amacıyla kodu kopyalayıp yapıştırın.
+1. Aşağıdaki kodu *veritabanıContext.js* dosyasına kopyalayıp yapıştırın. Bu kod, Azure Cosmos hesabınızda zaten yoksa "Görevler", "Öğeler" veritabanı ve kapsayıcıyı oluşturan bir işlev tanımlar:
 
-   ```javascript
-   const config = require('./config');
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/data/databaseContext.js" id="createDatabaseAndContainer":::
 
-   // ADD THIS PART TO YOUR CODE
-   const endpoint = config.endpoint;
-   const key = config.key;
+   Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. Veritabanları sınıfının `createIfNotExists` işlevini kullanarak bir veritabanı **oluşturursunuz.** Kapsayıcı, SQL API durumunda JSON belgeleri olan öğelerden oluşur. `createIfNotExists` **Kapsayıcılar** sınıfından işlevi kullanarak veya işlev oluşturarak bir kapsayıcı oluşturursunuz. Kapsayıcı oluşturduktan sonra verileri depolayabilir ve sorgulayabilirsiniz.
 
-   const client = new CosmosClient({ endpoint, key });
-   ```
-   
+   > [!WARNING]
+   > Kapsayıcı oluşturmanın fiyatlandırma etkileri vardır. Ne yle karşılaşacağınızı bilmeniz için [fiyatlandırma sayfamızı](https://azure.microsoft.com/pricing/details/cosmos-db/) ziyaret edin.
+
+## <a name="import-the-configuration"></a>Yapılandırmayı içeri aktarma
+
+1. En sevdiğiniz metin düzenleyicisinde *app.js* dosyasını açın.
+
+1. Önceki adımlarda tanımladığınız `@azure/cosmos` modülü, yapılandırmayı ve veritabanıBağlamını almak için aşağıdaki kodu kopyalayıp yapıştırın. 
+
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="ImportConfiguration":::
+
+## <a name="connect-to-the-azure-cosmos-account"></a>Azure Cosmos hesabına bağlanın
+
+*app.js* dosyasında, daha önce kaydedilmiş bitiş noktasını ve yeni bir CosmosClient nesnesi oluşturmak için aşağıdaki kodu kopyalayıp yapıştırın.
+
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateClientObjectDatabaseContainer":::
+
 > [!Note]
 > **Cosmos DB Emülatör'e**bağlanıyorsanız, düğüm işleminiz için TLS doğrulamasını devre dışı kılabilir:
->   ```
+>   ```javascript
 >   process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 >   const client = new CosmosClient({ endpoint, key });
 >   ```
 
 Artık Azure Cosmos DB istemcisini başlatmaya yarayacak koda sahip olduğunuza göre, Azure Cosmos DB kaynaklarıyla çalışmaya bakalım.
 
-## <a name="create-a-database"></a>Veritabanı oluşturma
+## <a name="query-items"></a><a id="QueryItem"></a>Öğeleri sorgula
 
-1. Veritabanı kimliğini ve kapsayıcı kimliğini ayarlamak için aşağıdaki kodu kopyalayıp yapıştırın. Bu t,c.'ler Azure Cosmos DB istemcisinin doğru veritabanını ve kapsayıcıyı nasıl bulacağıdır.
+Azure Cosmos DB, her kapsayıcıda depolanan JSON öğelerine karşı zengin sorguları destekler. Aşağıdaki örnek kod, kapsayıcınızdaki öğelere karşı çalıştırabileceğiniz bir sorguyu gösterir. Sınıfın sorgu işlevini kullanarak öğeleri sorgulayabilirsiniz. `Items` Azure Cosmos hesabınızdaki öğeleri sorgulamak için *app.js* dosyasına aşağıdaki kodu ekleyin:
 
-   ```javascript
-   const client = new CosmosClient({ endpoint, key });
-
-   // ADD THIS PART TO YOUR CODE
-   const HttpStatusCodes = { NOTFOUND: 404 };
-
-   const databaseId = config.database.id;
-   const containerId = config.container.id;
-   const partitionKey = { kind: "Hash", paths: ["/Country"] };
-   ```
-
-   `createIfNotExists` **Veritabanı** sınıfının işlevlerini kullanarak bir veritabanı oluşturulabilir. Veritabanı, kapsayıcılar genelinde bölümlenmiş öğelerin mantıksal bir kapsayıcısıdır. 
-
-2. **createDatabase** ve **readDatabase** yöntemlerini kopyalayıp app.js dosyasında ```databaseId``` ve ```containerId``` tanımlarının altına yapıştırın. **createDatabase** işlevi, zaten yoksa ```FamilyDatabase``` ```config``` nesneden belirtilen KIMLIKli yeni bir veritabanı oluşturur. **readDatabase** işlevi, veritabanının mevcut olduğundan emin olmak için veritabanı tanımını okur.
-
-   ```javascript
-   /**
-    * Create the database if it does not exist
-    */
-   async function createDatabase() {
-       const { database } = await client.databases.createIfNotExists({ id: databaseId });
-       console.log(`Created database:\n${database.id}\n`);
-   }
-
-   /**
-   * Read the database definition
-   */
-   async function readDatabase() {
-      const { resource: databaseDefinition } = await client.database(databaseId).read();
-      console.log(`Reading database:\n${databaseDefinition.id}\n`);
-   }
-   ```
-
-3. Aşağıdaki kodu kopyalayın ve çıkış iletisini yazdıracak **exit** yardımcı işlevini eklemek için **createDatabase** ve **readDatabase** işlevlerini ayarladığınız yere yapıştırın. 
-
-   ```javascript
-   // ADD THIS PART TO YOUR CODE
-   function exit(message) {
-      console.log(message);
-      console.log('Press any key to exit');
-      process.stdin.setRawMode(true);
-      process.stdin.resume();
-      process.stdin.on('data', process.exit.bind(process, 0));
-   };
-   ```
-
-4. Aşağıdaki kodu kopyalayıp **createDatabase** ve **readDatabase** işlevlerini çağırmak için **exit** işlevini ayarladığınız yere yapıştırın.
-
-   ```javascript
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error \${JSON.stringify(error)}`) });
-   ```
-
-   Bu noktada, ```app.js``` kodunuz şöyle görünmelidir:
-
-   ```javascript
-   const CosmosClient = require('@azure/cosmos').CosmosClient;
-
-   const config = require('./config');
-
-   const endpoint = config.endpoint;
-   const key = config.key;
-
-   const client = new CosmosClient({ endpoint, key });
-
-   const HttpStatusCodes = { NOTFOUND: 404 };
-
-   const databaseId = config.database.id;
-   const containerId = config.container.id;
-   const partitionKey = { kind: "Hash", paths: ["/Country"] };
-
-    /**
-    * Create the database if it does not exist
-    */
-    async function createDatabase() {
-     const { database } = await client.databases.createIfNotExists({ id: databaseId });
-     console.log(`Created database:\n${database.id}\n`);
-   }
-
-   /**
-   * Read the database definition
-   */
-   async function readDatabase() {
-     const { resource: databaseDefinition } = await client.database(databaseId).read();
-    console.log(`Reading database:\n${databaseDefinition.id}\n`);
-   }
-
-   /**
-   * Exit the app with a prompt
-   * @param {message} message - The message to display
-   */
-   function exit(message) {
-     console.log(message);
-     console.log('Press any key to exit');
-     process.stdin.setRawMode(true);
-     process.stdin.resume();
-     process.stdin.on('data', process.exit.bind(process, 0));
-   }
-
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error) }`) });
-   ```
-
-5. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın: 
-
-   ```bash 
-   node app.js
-   ```
-
-## <a name="create-a-container"></a><a id="CreateContainer"></a>Bir kapsayıcı oluşturma
-
-Ardından, verileri depolayıp sorgulayabilmeniz için Azure Cosmos DB hesabında bir kapsayıcı oluşturun. 
-
-> [!WARNING]
-> Kapsayıcı oluşturmanın fiyatlandırma etkileri vardır. Ne yle karşılaşacağınızı bilmeniz için [fiyatlandırma sayfamızı](https://azure.microsoft.com/pricing/details/cosmos-db/) ziyaret edin.
-
-`createIfNotExists` **Kapsayıcılar** sınıfından işlev veya işlev oluştur kullanılarak bir kapsayıcı oluşturulabilir.  Kapsayıcı öğelerden (SQL API kullanıldığında JSON belgeleri) ve ilişkili JavaScript uygulama mantığından oluşur.
-
-1. **createContainer** ve **readContainer** işlevini kopyalayıp app.js dosyasında **readDatabase** işlevinin altına yapıştırın. **createContainer** işlevi mevcut değilse ```config``` nesnesiyle belirtilen ```containerId``` bilgisine sahip yeni bir kapsayıcı oluşturur. **readContainer** işlevi, kapsayıcının mevcut olduğundan emin olmak için kapsayıcı tanımını okur.
-
-   ```javascript
-   /**
-   * Create the container if it does not exist
-   */
-
-   async function createContainer() {
-
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId, partitionKey }, { offerThroughput: 400 });
-    console.log(`Created container:\n${config.container.id}\n`);
-   }
-
-   /**
-    * Read the container definition
-   */
-   async function readContainer() {
-      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-   }
-   ```
-
-1. Çağrının altındaki kodu kopyalayıp **readDatabase** hedefine yapıştırarak **createContainer** ve **readContainer** işlevlerini yürütün.
-
-   ```javascript
-   createDatabase()
-     .then(() => readDatabase())
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => createContainer())
-     .then(() => readContainer())
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
-
-   Bu noktada, ```app.js``` kodunuz şöyle görünmelidir:
-
-   ```javascript
-   const CosmosClient = require('@azure/cosmos').CosmosClient;
-
-   const config = require('./config');
-
-   const endpoint = config.endpoint;
-   const key = config.key;
-
-   const client = new CosmosClient({ endpoint, key });
-
-   const HttpStatusCodes = { NOTFOUND: 404 };
-
-   const databaseId = config.database.id;
-   const containerId = config.container.id;
-   const partitionKey = { kind: "Hash", paths: ["/Country"] };
-
-   /**
-   * Create the database if it does not exist
-   */
-   async function createDatabase() {
-     const { database } = await client.databases.createIfNotExists({ id: databaseId });
-     console.log(`Created database:\n${database.id}\n`);
-   }
-
-   /**
-   * Read the database definition
-   */
-   async function readDatabase() {
-     const { body: databaseDefinition } = await client.database(databaseId).read();
-     console.log(`Reading database:\n${databaseDefinition.id}\n`);
-   }
-
-   /**
-   * Create the container if it does not exist
-   */
-
-   async function createContainer() {
-
-    const { container } = await client.database(databaseId).containers.createIfNotExists({ id: containerId, partitionKey }, { offerThroughput: 400 });
-    console.log(`Created container:\n${config.container.id}\n`);
-   }
-
-   /**
-    * Read the container definition
-   */
-   async function readContainer() {
-      const { resource: containerDefinition } = await client.database(databaseId).container(containerId).read();
-    console.log(`Reading container:\n${containerDefinition.id}\n`);
-   }
-
-   /**
-   * Exit the app with a prompt
-   * @param {message} message - The message to display
-   */
-   function exit(message) {
-     console.log(message);
-     console.log('Press any key to exit');
-     process.stdin.setRawMode(true);
-     process.stdin.resume();
-     process.stdin.on('data', process.exit.bind(process, 0));
-   }
-
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
-
-1. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın: 
-
-   ```bash 
-   node app.js
-   ```
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="QueryItems":::
 
 ## <a name="create-an-item"></a><a id="CreateItem"></a>Öğe oluşturma
 
-**Items** sınıfının create işlevini kullanarak bir öğe oluşturabilirsiniz. SQL API'yi kullanırken, öğeler kullanıcı tanımlı (rasgele) JSON içeriği olan belgeler olarak yansıtılır. Artık Azure Cosmos DB'ye bir öğe ekleyebilirsiniz.
+Bir öğe `Items` sınıfın oluşturma işlevi kullanılarak oluşturulabilir. SQL API'yi kullanırken, öğeler kullanıcı tanımlı (rasgele) JSON içeriği olan belgeler olarak yansıtılır. Bu öğreticide, görevler veritabanı içinde yeni bir öğe oluşturursunuz.
 
-1. **createFamilyItem** işlevini kopyalayıp **readContainer** işlevinin altına yapıştırın. **createFamilyItem** işlevi, ```config``` nesnesinde kaydedilen JSON verilerini içeren öğeleri oluşturur. Aynı kimlikle bir öğeyi oluşturmadan önce zaten var olmadığından emin oluruz.
+1. app.js dosyasında madde tanımını tanımlayın:
 
-   ```javascript
-   /**
-   * Create family item
-   */
-   async function createFamilyItem(itemBody) {
-      const { item } = await client.database(databaseId).container(containerId).items.upsert(itemBody);
-      console.log(`Created family item with id:\n${itemBody.id}\n`);
-   };
-   ```
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DefineNewItem":::
 
-1. **createFamilyItem** işlevini yürütmek için **readContainer** çağrısının altına kodu kopyalayıp yapıştırın.
+1. Daha önce tanımlanmış öğeyi oluşturmak için aşağıdaki kodu ekleyin:
 
-   ```javascript
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
+   :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="CreateItem":::
 
-     // ADD THIS PART TO YOUR CODE
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-     // ENDS HERE
+## <a name="update-an-item"></a><a id="ReplaceItem"></a>Öğeyi güncelleştirme
 
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
+Azure Cosmos DB öğelerin içeriğini değiştirmeyi destekler. Aşağıdaki kodu *app.js* dosyasına kopyalayıp yapıştırın. Bu kod kapsayıcıdan bir öğe alır ve *isComplete* alanını doğru olarak güncelleştirir.
 
-1. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın: 
-
-   ```bash 
-   node app.js
-   ```
-
-
-## <a name="query-azure-cosmos-db-resources"></a><a id="Query"></a>Azure Cosmos DB kaynaklarını sorgula
-
-Azure Cosmos DB, her bir kapsayıcıda depolanan JSON belgeleri için zengin sorguların gerçekleştirilmesini destekler. Aşağıdaki örnek kod, kapsayıcınızdaki belgeler için çalıştırabileceğiniz bir sorguyu gösterir.
-
-1. **queryContainer** işlevini kopyalayıp app.js dosyasındaki **createFamilyItem** işlevinin altına yapıştırın. Azure Cosmos DB, aşağıda gösterildiği gibi SQL benzeri sorguları destekler.
-
-   ```javascript
-   /**
-   * Query the container using SQL
-    */
-   async function queryContainer() {
-     console.log(`Querying container:\n${config.container.id}`);
-
-     // query to return all children in a family
-     const querySpec = {
-        query: "SELECT VALUE r.children FROM root r WHERE r.lastName = @lastName",
-        parameters: [
-            {
-                name: "@lastName",
-                value: "Andersen"
-            }
-        ]
-    };
-
-    const { resources } = await client.database(databaseId).container(containerId).items.query(querySpec).fetchAll();
-    for (var queryResult of resources) {
-        let resultString = JSON.stringify(queryResult);
-        console.log(`\tQuery returned ${resultString}\n`);
-    }
-   };
-   ```
-
-1. **queryContainer** işlevini yürütmek için **createFamilyItem** çağrısının altına kodu kopyalayıp yapıştırın.
-
-   ```javascript
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => queryContainer())
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
-
-1. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın:
-
-   ```bash 
-   node app.js
-   ```
-
-
-## <a name="replace-an-item"></a><a id="ReplaceItem"></a>Bir öğeyi değiştirme
-Azure Cosmos DB, öğelerin içeriğini değiştirmeyi destekler.
-
-1. **replaceFamilyItem** işlevini kopyalayıp app.js dosyasındaki **queryContainer** işlevinin altına yapıştırın. Alt öğenin 'grade' özelliğini 6 yerine 5 olarak değiştirdiğimize dikkat edin.
-
-   ```javascript
-   // ADD THIS PART TO YOUR CODE
-   /**
-   * Replace the item by ID.
-   */
-   async function replaceFamilyItem(itemBody) {
-      console.log(`Replacing item:\n${itemBody.id}\n`);
-      // Change property 'grade'
-      itemBody.children[0].grade = 6;
-     const { item } = await client.database(databaseId).container(containerId).item(itemBody.id, itemBody.Country).replace(itemBody);
-   };
-   ```
-
-1. **replaceFamilyItem** işlevini yürütmek için **queryContainer** çağrısının altına kodu kopyalayıp yapıştırın. Ayrıca, öğenin başarılı bir şekilde değiştiğini doğrulamak üzere **queryContainer**'ı tekrar çağırmak için kodu ekleyin.
-
-   ```javascript
-   createDatabase()
-     .then(() => readDatabase())
-     .then(() => createContainer())
-     .then(() => readContainer())
-     .then(() => createFamilyItem(config.items.Andersen))
-     .then(() => createFamilyItem(config.items.Wakefield))
-     .then(() => queryContainer())
-
-     // ADD THIS PART TO YOUR CODE
-     .then(() => replaceFamilyItem(config.items.Andersen))
-     .then(() => queryContainer())
-     // ENDS HERE
-
-     .then(() => { exit(`Completed successfully`); })
-     .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
-
-1. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın:
-
-   ```bash 
-   node app.js
-   ```
-
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="UpdateItem":::
 
 ## <a name="delete-an-item"></a><a id="DeleteItem"></a>Öğeyi silme
 
-Azure Cosmos DB, JSON öğelerini silmeyi destekler.
+Azure Cosmos DB, JSON öğelerini silmeyi destekler. Aşağıdaki kod, bir öğeyi kimliğine göre nasıl alacağını ve nasıl silebildiğini gösterir. Aşağıdaki kodu *app.js* dosyasına kopyalayıp yapıştırın:
 
-1. **deleteFamilyItem** işlevini **replaceFamilyItem** işlevinin altına kopyalayıp yapıştırın.
-
-   ```javascript
-   /**
-   * Delete the item by ID.
-   */
-   async function deleteFamilyItem(itemBody) {
-     await client.database(databaseId).container(containerId).item(itemBody.id, itemBody.Country).delete(itemBody);
-      console.log(`Deleted item:\n${itemBody.id}\n`);
-   };
-   ```
-
-1. **deleteFamilyItem** işlevini yürütmek için ikinci **queryContainer** çağrısının altına kodu kopyalayın ve yapıştırın.
-
-   ```javascript
-   createDatabase()
-      .then(() => readDatabase())
-      .then(() => createContainer())
-      .then(() => readContainer())
-      .then(() => createFamilyItem(config.items.Andersen))
-      .then(() => createFamilyItem(config.items.Wakefield))
-      .then(() => queryContainer
-      ())
-      .then(() => replaceFamilyItem(config.items.Andersen))
-      .then(() => queryContainer())
-
-    // ADD THIS PART TO YOUR CODE
-      .then(() => deleteFamilyItem(config.items.Andersen))
-    // ENDS HERE
-
-    .then(() => { exit(`Completed successfully`); })
-    .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
-
-1. Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın: 
-
-   ```bash 
-   node app.js
-   ```
-
-
-## <a name="delete-the-database"></a><a id="DeleteDatabase"></a>Veritabanını silme
-
-Oluşturulan veritabanı silindiğinde, veritabanı ve tüm alt kaynaklar (kapsayıcılar, öğeler vb.) kaldırılır.
-
-1. Veritabanını ve tüm alt kaynaklarını kaldırmak için **cleanup** işlevini kopyalayıp **deleteFamilyItem** işlevinin altına yapıştırın.
-
-   ```javascript
-   /**
-   * Cleanup the database and container on completion
-   */
-   async function cleanup() {
-     await client.database(databaseId).delete();
-   }
-   ```
-
-1. **cleanup** işlevini yürütmek için **deleteFamilyItem** çağrısının altına kodu kopyalayıp yapıştırın.
-
-   ```javascript
-   createDatabase()
-      .then(() => readDatabase())
-      .then(() => createContainer())
-      .then(() => readContainer())
-      .then(() => createFamilyItem(config.items.Andersen))
-      .then(() => createFamilyItem(config.items.Wakefield))
-      .then(() => queryContainer())
-      .then(() => replaceFamilyItem(config.items.Andersen))
-      .then(() => queryContainer())
-      .then(() => deleteFamilyItem(config.items.Andersen))
-
-      // ADD THIS PART TO YOUR CODE
-      .then(() => cleanup())
-      // ENDS HERE
-
-      .then(() => { exit(`Completed successfully`); })
-      .catch((error) => { exit(`Completed with error ${JSON.stringify(error)}`) });
-   ```
+:::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js" id="DeleteItem":::
 
 ## <a name="run-your-nodejs-application"></a><a id="Run"></a>Node.js uygulamanızı çalıştırın
 
@@ -604,7 +167,7 @@ Kodunuzun son hali şu şekilde olmalıdır:
 
 :::code language="javascript" source="~/cosmosdb-nodejs-get-started/app.js":::
 
-Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın: 
+Terminalinizde ```app.js``` dosyanızı bulun ve komutu çalıştırın:
 
 ```bash 
 node app.js
@@ -612,53 +175,34 @@ node app.js
 
 Başlarken uygulamanızın çıktısını görmeniz gerekir. Çıktı aşağıdaki örnek metinle eşleşmelidir.
 
-   ```
-    Created database:
-    FamilyDatabase
+```
+Created database:
+Tasks
 
-    Reading database:
-    FamilyDatabase
+Created container:
+Items
 
-    Created container:
-    FamilyContainer
+Querying container: Items
+1 - Pick up apples and strawberries.
 
-    Reading container:
-    FamilyContainer
+Created new item: 3 - Complete Cosmos DB Node.js Quickstart ⚡
 
-    Created family item with id:
-    Anderson.1
+Updated item: 3 - Complete Cosmos DB Node.js Quickstart ⚡
+Updated isComplete to true
 
-    Created family item with id:
-    Wakefield.7
+Deleted item with id: 3
+```
 
-    Querying container:
-    FamilyContainer
-            Query returned [{"firstName":"Henriette Thaulow","gender":"female","grade":5,"pets":[{"givenName":"Fluffy"}]}]
+## <a name="get-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>Eksiksiz Node.js öğreticisi çözümünü edinme
 
-    Replacing item:
-    Anderson.1
+Bu öğreticideki adımları tamamlamak için zamanın yoksa veya sadece kodu indirmek istiyorsanız, [bunu GitHub'dan](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started )alabilirsiniz.
 
-    Querying container:
-    FamilyContainer
-            Query returned [{"firstName":"Henriette Thaulow","gender":"female","grade":6,"pets":[{"givenName":"Fluffy"}]}]
+Bu makaledeki tüm kodu içeren başlangıç çözümlerini çalıştırmak için şunları yapmanız gerekir:
 
-    Deleted item:
-    Anderson.1
+* Bir [Azure Cosmos DB hesabı][create-account].
+* GitHub'da bulunan [Başlangıç](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) çözümü.
 
-    Completed successfully
-    Press any key to exit
-   ```
-
-## <a name="get-the-complete-nodejs-tutorial-solution"></a><a id="GetSolution"></a>Eksiksiz Node.js öğreticisi çözümünü edinme 
-
-Bu öğreticideki adımları tamamlamak için zamanın yoksa veya sadece kodu indirmek istiyorsanız, [bunu GitHub'dan](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started )alabilirsiniz. 
-
-Bu makaledeki tüm kodu içeren başlangıç çözümlerini çalıştırmak için şunları yapmanız gerekir: 
-
-* Bir [Azure Cosmos DB hesabı][create-account]. 
-* GitHub'da bulunan [Başlangıç](https://github.com/Azure-Samples/azure-cosmos-db-sql-api-nodejs-getting-started) çözümü. 
-
-Projenin bağımlılıklarını npm üzerinden yükleyin. Aşağıdaki komutu kullanın: 
+Projenin bağımlılıklarını npm üzerinden yükleyin. Aşağıdaki komutu kullanın:
 
 * ```npm install``` 
 

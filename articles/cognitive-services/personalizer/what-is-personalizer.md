@@ -1,21 +1,14 @@
 ---
 title: Kişiselleştirme nedir?
-titleSuffix: Azure Cognitive Services
 description: Personalizer, kullanıcılarınıza gerçek zamanlı davranışlarından ders çıkarılarak göstermek için en iyi deneyimi seçmenize olanak tanıyan bulut tabanlı bir API hizmetidir.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: overview
-ms.date: 01/21/2020
-ms.author: diberry
-ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/20/2020
+ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520985"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687255"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -102,5 +95,5 @@ Personalizer, tek en iyi içerik öğesini döndürmek için toplu bilgileri ner
 * [Rank isteğine ilişkin özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
 * [Ödül isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
 * [Hızlı Başlangıçlar](sdk-learning-loop.md)
-* [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
+* [Eğitmen](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Etkileşimli demoyu kullanma](https://personalizationdemo.azurewebsites.net/)

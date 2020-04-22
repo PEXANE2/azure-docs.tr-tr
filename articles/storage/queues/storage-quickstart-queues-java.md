@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199810"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729843"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Quickstart: Java için Azure Queue depolama istemcikitaplığı v12
 
@@ -366,6 +366,6 @@ Bu hızlı başlangıçta, Java kodunu kullanarak kuyruk oluşturmayı ve ona il
 Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Java bulut geliştiricileri için Azure](https://docs.microsoft.com/azure/java/)
+> [Java bulut geliştiricileri için Azure](https://docs.microsoft.com/azure/developer/java/)
 
 * Daha fazla Azure Kuyruğu depolama örneği uygulaması görmek için [Azure Queue depolama alanı SDK v12 Java istemci kitaplığı örneklerine](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)devam edin.

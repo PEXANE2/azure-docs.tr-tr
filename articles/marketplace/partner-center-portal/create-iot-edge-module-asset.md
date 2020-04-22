@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e83c70424c131e5324192b07e65321d63bf06e2e
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674221"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730708"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülü teknik varlıklarınızı hazırlayın
 
@@ -25,8 +25,8 @@ Bu makalede, Nesnelerin İnterneti (IoT) Edge modülü teknik varlıklarının A
 
 IoT Edge modülü, Docker uyumlu bir kapsayıcıdır ve IoT Edge aygıtında çalışır.
 
-- IoT Edge modülleri hakkında daha fazla bilgi edinmek için Azure [IoT Edge modüllerini anlayın.](https://aka.ms/UnderstandAzureIoTEdgemodules)
-- IoT Edge modül geliştirmenize başlamak için [bkz.](https://aka.ms/DevelopyourownIoTEdgemodules)
+- IoT Edge modülleri hakkında daha fazla bilgi edinmek için Azure [IoT Edge modüllerini anlayın.](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)
+- IoT Edge modül geliştirmenize başlamak için [bkz.](https://docs.microsoft.com/azure/iot-edge/module-development)
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
@@ -38,15 +38,15 @@ IoT Edge modülünüz aşağıdaki platform seçeneklerinden birini desteklemeli
 
 #### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen Tier 1 platformları
 
-Modülünüz, IoT Edge tarafından desteklenen tüm Tier 1 platformlarını desteklemelidir [(Azure IoT Edge desteğinde](https://aka.ms/AzureIoTEdgesupport)kaydedildi). Daha iyi bir müşteri deneyimi sağladığı ndan bu seçeneği öneririz. Bu kriterleri karşılayan modüller sergilenecektir. Bu platform seçeneğini kullanan bir modül şunları yapmalı:
+Modülünüz, IoT Edge tarafından desteklenen tüm Tier 1 platformlarını desteklemelidir [(Azure IoT Edge desteğinde](https://docs.microsoft.com/azure/iot-edge/support)kaydedildi). Daha iyi bir müşteri deneyimi sağladığı ndan bu seçeneği öneririz. Bu kriterleri karşılayan modüller sergilenecektir. Bu platform seçeneğini kullanan bir modül şunları yapmalı:
 
-- [GitHub Bildirim aracıyla](https://aka.ms/GitHubmanifest-tool)oluşturulmuş manifesto etiketleri olan en son etiket ve sürüm etiketi (örneğin, 1.0.1) sağlayın.
+- [GitHub Bildirim aracıyla](https://github.com/estesp/manifest-tool)oluşturulmuş manifesto etiketleri olan en son etiket ve sürüm etiketi (örneğin, 1.0.1) sağlayın.
 
-- [Azure IoT Edge Sertifikalı aygıt kataloğuna](https://catalog.azureiotsolutions.com/) **Yararlı bağlantılar** bölümüne bir bağlantı eklemek için [İş Merkezi'ndeki](https://partner.microsoft.com/dashboard/commercial-marketplace) teklif listeleme sekmesini kullanın. Azure https://aka.ms/iot-edge-certified [IoT Edge Aygıt Kataloğu'na](https://catalog.azureiotsolutions.com/)giderilen yeniden yönlendirme bağlantısını kullanabilirsiniz.
+- [Azure IoT Edge Sertifikalı aygıt kataloğuna](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/) **Yararlı bağlantılar** bölümüne bir bağlantı eklemek için [İş Merkezi'ndeki](https://partner.microsoft.com/dashboard/commercial-marketplace) teklif listeleme sekmesini kullanın.
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen Tier 1 platformlarının bir alt kümesi
 
-Modülünüz, IoT Edge tarafından desteklenen Tier 1 platformlarının bir alt kümesini (en az bir) desteklemelidir [(Azure IoT Edge desteğinde](https://aka.ms/AzureIoTEdgesupport)kaydedildi). Bu platform seçeneğini kullanan bir modül şunları yapmalı:
+Modülünüz, IoT Edge tarafından desteklenen Tier 1 platformlarının bir alt kümesini (en az bir) desteklemelidir [(Azure IoT Edge desteğinde](https://docs.microsoft.com/azure/iot-edge/support)kaydedildi). Bu platform seçeneğini kullanan bir modül şunları yapmalı:
 
 - Birden fazla platform desteklenirse, GitHub [bildirim aracıyla](https://github.com/estesp/manifest-tool) oluşturulmuş bildirim etiketleri olan en son bir etiket ve sürüm etiketi (örneğin, 1.0.1) sağlayın. Bildirim etiketleri yalnızca bir platform desteklendiğinde isteğe bağlıdır.
 - [Azure IoT Edge Sertifikalı aygıt kataloğundan](https://catalog.azureiotsolutions.com/)en az bir IoT Edge aygıtına **Yararlı bağlantılar** bölümüne bağlantı eklemek için [İş Merkezi'ndeki](https://partner.microsoft.com/dashboard/commercial-marketplace) teklif kaydı sekmesini kullanın.
@@ -146,4 +146,4 @@ IoT Edge modülünüzü Azure Marketi'ne yüklemek için öncelikle bir [Azure K
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [IoT Edge modül teklifinizi oluşturun](https://aka.ms/AzureCreateIoT)
+- [IoT Edge modül teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation)

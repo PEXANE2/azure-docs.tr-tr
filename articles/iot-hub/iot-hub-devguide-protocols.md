@@ -8,12 +8,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 6d1ab50e471c9c603c7886130375dc74e9b2a755
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284635"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729127"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Başvuru - bir iletişim protokolü seçin
 
@@ -39,7 +42,7 @@ Aygıt tarafı iletişimiçin protokolünüzü seçerken aşağıdaki noktaları
 
 * **Bulut-aygıt deseni.** HTTPS sunucu itme uygulamak için etkili bir yolu yoktur. Bu nedenle, HTTPS kullanırken, aygıtlar ioT Hub'ı buluttan aygıta iletiler için yoklar. Bu yaklaşım hem aygıt hem de IoT Hub için verimsizdir. Geçerli HTTPS yönergelerine göre, her cihaz iletileri her 25 dakikada bir veya daha fazla ankete etmelidir. MQTT ve AMQP, buluttan cihaza iletiler alırken sunucu itme sini destekler. IoT Hub'dan aygıta iletilerin anında itilmesini sağlarlar. Teslimat gecikmesi bir sorunsa, MQTT veya AMQP kullanılacak en iyi protokollerdir. Nadiren bağlı aygıtlar için HTTPS de çalışır.
 
-* **Alan ağ geçitleri.** MQTT ve HTTPS kullanırken, aynı TLS bağlantısını kullanarak birden çok cihazı (her biri cihaz başına kendi kimlik bilgilerine sahip) bağlayamazsınız. Her bağlı aygıt için alan ağ geçidi ve IoT Hub arasında bir TLS bağlantısı gerektiren [Alan ağ geçidi senaryoları](iot-hub-devguide-endpoints.md#field-gateways) için bu protokoller en uygun değildir.
+* **Alan ağ geçitleri.** MQTT ve HTTPS, TLS bağlantısı başına yalnızca tek bir aygıt kimliğini (aygıt kimliği artı kimlik bilgileri) destekler. Bu nedenle, bu protokoller, tek bir aygıt kimliği veya IoT Hub'a yukarı akım bağlantıları havuzunda birden çok aygıt kimliği kullanarak çoklama iletileri gerektiren [Alan ağ geçidi senaryoları](iot-hub-devguide-endpoints.md#field-gateways) için desteklenmez. Bu tür ağ geçitleri, akış yukarı trafiği için AMQP gibi bağlantı başına birden çok aygıt kimliği destekleyen bir iletişim kuralı kullanabilir.
 
 * **Düşük kaynak aygıtları.** MQTT ve HTTPS kitaplıkları AMQP kitaplıkları daha küçük bir ayak izi var. Bu nedenle, aygıtın sınırlı kaynakları varsa (örneğin, 1 MB RAM'den az), bu protokoller kullanılabilir tek protokol uygulaması olabilir.
 

@@ -1,5 +1,5 @@
 ---
-title: Coğrafi kullanılabilirlik ve para birimi desteği | Azure
+title: Ticari pazar için coğrafi kullanılabilirlik ve döviz desteği | Azure Marketi
 description: Ticari pazarda coğrafi kullanılabilirlik
 author: qianw211
 ms.service: marketplace
@@ -7,14 +7,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
-ms.openlocfilehash: 82c3ed79bbcc566a91f9f249ec2df747bbc01cac
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262018"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687577"
 ---
-# <a name="geographic-availability-and-currency-support"></a>Coğrafi kullanılabilirlik ve para birimi desteği
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Ticari pazar için coğrafi kullanılabilirlik ve para birimi desteği
 
 Ticari pazar teklifleri müşterinin fatura adresi tarafından tanımlanan 141 coğrafyada satın alınabilir ve işlemler 17 para biriminde tamamlanabilir. Aşağıdaki tabloda desteklenen her coğrafi konum, [ISO 3166 iki basamaklı alfa kodu](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)ve atanan para birimi listelenir.
 

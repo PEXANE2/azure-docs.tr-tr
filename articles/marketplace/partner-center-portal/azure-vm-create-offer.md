@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: 161fd9276427db0d0d7d56da1bfc0bb8ccf52a52
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536667"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731259"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure sanal makine teklifi oluşturma
 
@@ -34,19 +34,19 @@ Azure Marketi'nde yayımlamanın aşağıdaki avantajları vardır:
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
-Henüz yapmadıysanız, [Sanal makine teklif yayımlama kılavuzunu](https://aka.ms/Virtualmachineofferpublishingguide) ve bu Azure sanal makine malzemesini inceleyin:
+Henüz yapmadıysanız, [Sanal makine teklif yayımlama kılavuzunu](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) ve bu Azure sanal makine malzemesini inceleyin:
 
 - Quickstart kılavuzları
   - [Azure Quickstart şablonları](https://azure.microsoft.com/resources/templates/)
   - [GitHub Azure Quickstart şablonları](https://github.com/azure/azure-quickstart-templates)
 - Öğreticiler
-  - [Linux VM'leri](https://aka.ms/LinuxVMtutorial)
-  - [Windows VM’leri](https://aka.ms/windowsvms)
+  - [Linux VM'leri](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+  - [Windows VM’leri](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - Örnekler
-  - [Linux VM'leri için Azure CLI Örnekleri](https://aka.ms/linuxclisamples)
-  - [Linux VM'leri için Azure PowerShell](https://aka.ms/linuxpowershellsamples)
-  - [Windows VM'ler için Azure CLI Örnekleri](https://aka.ms/windowsclisamples)
-  - [Windows VM'ler için Azure PowerShell](https://aka.ms/windowspowershellvmsamples)
+  - [Linux VM'leri için Azure CLI Örnekleri](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
+  - [Linux VM'leri için Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
+  - [Windows VM'ler için Azure CLI Örnekleri](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
+  - [Windows VM'ler için Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ### <a name="fundamentals-in-technical-knowledge"></a>Teknik bilginin temelleri
 
@@ -66,7 +66,7 @@ Azure sanal makine teklifi oluşturabiliyor sanız, İş Ortağı Merkezi'nde ti
 2. Sol navigasyon çubuğunda, **Commercial Marketplace'i**seçin, ardından **Genel Bakış'** ı seçin.
 3. Genel **Bakış** sayfasında + **Yeni teklif ,** ardından Azure Sanal **Makine'yi**seçin. **Yeni teklif** iletişim kutusu görüntülenir.
 
-![Yeni teklif düğmesi ve azure sanal makine teklifi seçilerek İş Ortağı Merkezi'ndeki Genel Bakış sayfasını gösterir.](media/avm-create7.png)
+    ![Yeni teklif düğmesi ve azure sanal makine teklifi seçilerek İş Ortağı Merkezi'ndeki Genel Bakış sayfasını gösterir.](media/avm-create7.png)
 
 ## <a name="offer-id-and-alias"></a>Teklif kimliği ve takma ad
 
@@ -91,7 +91,7 @@ Test sürüşünü etkinleştirmek **için, test sürüşünü etkinleştir** on
 Ek test sürüşü kaynakları:
 
 - [Teknik en iyi uygulamalar](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [En iyi pazarlama deneyimleri](https://aka.ms/TestDriveMarketingBestPractices)
+- [En iyi pazarlama deneyimleri](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
 - [Test Sürücüleri genel bakış](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
 
 ### <a name="lead-management"></a>Müşteri adayı yönetimi
@@ -99,12 +99,12 @@ Ek test sürüşü kaynakları:
 Teklifinizi İş Ortağı Merkezi ile ticari pazara yayınlarken, müşteri ilişkileri yönetimi (CRM) sisteminize bağlayın. Bu, birisi ürününüzün ilgisini ifade eder etmez veya ürününüzü kullanır kullanmaz müşteri iletişim bilgilerini almanızı sağlar. **Test Sürüşünü** etkinleştirecekseniz (önceki bölüme bakın), aksi takdirde isteğe bağlıdır.
 
 1. Potansiyel müşterileri göndermemizi istediğiniz müşteri adayı hedefini seçin. İş Ortağı Merkezi aşağıdaki CRM sistemlerini destekler:
-    - Müşteri katılımı için [Dynamics 365](https://aka.ms/Dyn365LeadMgmt)
-    - [Marketo](https://aka.ms/LeadMgmtMarketo)
-    - [Salesforce](https://aka.ms/LeadMgmtSalesforce)
+    - Müşteri katılımı için [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
+    - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+    - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > CRM sisteminiz yukarıda listelenmemişse, müşteri müşteri adayı verilerini depolamak için [Azure Tablosu](https://aka.ms/AzureTableLeadMgmt) veya [Https Endpoint'i](https://aka.ms/LeadMgmtHTTPS) kullanın. Ardından verileri CRM sisteminize aktarın.
+    > CRM sisteminiz yukarıda listelenmemişse, müşteri müşteri adayı verilerini depolamak için [Azure Tablosu](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) veya [Https Endpoint'i](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) kullanın. Ardından verileri CRM sisteminize aktarın.
 
 2. İş Ortağı Merkezi'nde yayın yaparken teklifinizi müşteri adayı hedefe bağlayın.
 3. Müşteri adayı hedefine bağlantının düzgün şekilde yapılandırıldığından onaylayın. İş Ortağı Merkezi'nde yayımladıktan sonra bağlantıyı doğrular ve size bir test ipucu göndeririz. Teklifi yayına girmeden önce önizlemenize kadar, teklifi önizleme ortamında kendiniz dağıtmaya çalışarak müşteri adayı bağlantınızı da test edebilirsiniz.
@@ -274,7 +274,7 @@ Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüs
 
 Teklifinizi gösteren en fazla beş video ekleyin. Bunlar harici bir video hizmetinde barındırılmalıdır. Her videonun adını, web adresini ve videonun küçük resim PNG görüntüsünü 1280 x 720 piksel boyutunda girin.
 
-Ek pazar yeri listeleme kaynakları [için, pazar teklifi listeleri için en iyi uygulamalara](https://aka.ms/LdMgmtOfferListingBestPractices)bakın.
+Ek pazar yeri listeleme kaynakları [için, pazar teklifi listeleri için en iyi uygulamalara](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)bakın.
 
 Devam etmeden önce **taslağı Kaydet'i** seçin.
 
@@ -554,4 +554,4 @@ Bu örnekler, teklifin Azure Marketi'nde nasıl göründüğünü gösterir.
 
 ## <a name="next-step"></a>Sonraki adım
 
-- [Ticari pazarda mevcut bir teklifi güncelleştirme](https://aka.ms/UpdateOfferCM)
+- [Ticari pazarda mevcut bir teklifi güncelleştirme](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

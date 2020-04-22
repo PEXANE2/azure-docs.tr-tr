@@ -4,14 +4,14 @@ description: Azure Uygulama Yapılandırması'nı kullanarak Bahar Önyükleme u
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/13/2020
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 398005b37660cfa68936a0c8b3a3d90da8160e49
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: e6dc51250987e0282530209ffa13e52d6e75aa9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309066"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687357"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Bahar Önyükleme uygulamasına özellik bayrakları ekleme
 
@@ -55,9 +55,9 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 
 1. Yerel sisteminizdeki dosyaları ayıkladıktan sonra, Bahar Önyükleme uygulamanız düzenlemeye hazırdır. Uygulamanızın kök dizininde *pom.xml'i* bulun.
 
-1. Bir metin düzenleyicisi *içinde pom.xml* dosyasını açın `<dependencies>`ve listeye aşağıdakileri ekleyin .:
+1. Bir metin düzenleyicisi *içinde pom.xml* dosyasını açın `<dependencies>`ve aşağıdakileri listeye ekleyin:
 
-### <a name="spring-cloud-11x"></a>Bahar Bulutu 1.1.x
+    **Bahar Bulutu 1.1.x**
 
     ```xml
     <dependency>
@@ -76,7 +76,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
     </dependency>
     ```
 
-### <a name="spring-cloud-12x"></a>Bahar Bulutu 1.2.x
+    **Bahar Bulutu 1.2.x**
 
     ```xml
     <dependency>

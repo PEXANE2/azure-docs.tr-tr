@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
-ms.date: 03/10/2020
-ms.openlocfilehash: 638adaac699bb7aa2774f5cbd37dc8394a2baee3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/19/2020
+ms.openlocfilehash: b06c255f94b4d539c7c85e318238b10629cbb907
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240523"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81685129"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Quickstart: Azure SQL Veritabanı tek veritabanı oluşturma
 
@@ -67,7 +67,7 @@ Kaynak grubunu, sunucuyu ve tek veritabanını sonraki adımlara devam etmek iç
 
 Bu kaynakları kullanmayı bitirdiğinizde, oluşturduğunuz kaynak grubunu silebilir ve bu grup içindeki sunucuyu ve tek veritabanını da silebilir.
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure portalını kullanarak **MyResourceGroup'umu** ve tüm kaynaklarını silmek için:
 
@@ -75,7 +75,7 @@ Azure portalını kullanarak **MyResourceGroup'umu** ve tüm kaynaklarını silm
 1. Kaynak grubu sayfasında **kaynak grubunu sil'i**seçin.
 1. **Kaynak grup adı altında,** *myResourceGroup*girin ve sonra **Sil'i**seçin.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Kaynak grubunu ve tüm kaynaklarını silmek için kaynak grubunuzun adını kullanarak aşağıdaki Azure CLI komutunu çalıştırın:
 
@@ -83,15 +83,16 @@ Kaynak grubunu ve tüm kaynaklarını silmek için kaynak grubunuzun adını kul
 az group delete --name <your resource group>
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Kaynak grubunu ve tüm kaynaklarını silmek için kaynak grubunuzun adını kullanarak aşağıdaki PowerShell cmdlet'i çalıştırın:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzResourceGroup -Name <your resource group>
 ```
 
 ---
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Farklı araçları ve dilleri kullanarak veritabanınızı bağlayın ve [sorgulayın:](sql-database-connect-query.md)

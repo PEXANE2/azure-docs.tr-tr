@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: ba1521581316d559eb4e67bafba0061c31cc666b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272959"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687132"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Dil tanımlama modeliyle konuşulan dili otomatik olarak tanımlama
 
 Video Indexer otomatik dil tanımlama (LID), hangi otomatik olarak ses ten konuşulan dil içeriği tanımlama ve baskın tanımlanmış dilde transkripsiyonu için medya dosyası gönderme işlemidir destekler. 
 
-Şu anda LID destekler: İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Portekizce (Brezilyaca). 
+Şu anda LID destekler: İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Rusça ve Portekizce (Brezilyaca). 
 
 Aşağıdaki [Yönergeler ve sınırlamalar](#guidelines-and-limitations) bölümünü gözden geçirin.
 

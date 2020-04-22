@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 9bea9e375e00d6fc0f6c33aa1bcc766773db2059
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269950"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687108"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer nedir?
 
@@ -70,8 +70,8 @@ Aşağıdaki liste, Video Indexer video ve ses modellerini kullanarak videoları
 
 ### <a name="audio-insights"></a>Ses öngörüleri
 
-* **Ses transkripsiyonu**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunmaktadır.
-* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Chines, Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır. Dil güvenle tanımlanamazsa, Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için [Dil tanımlama modeline](language-identification-model.md)bakın.
+* **Ses transkripsiyonu**: Konuşmayı 12 dilde metne dönüştürür ve uzantılara izin verir. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Arapça, Rusça, Brezilya Portekizcesi, Hintçe ve Korece bulunmaktadır.
+* **Otomatik dil algılama**: En baskın olarak konuşulan dili otomatik olarak belirler. Desteklenen diller Arasında İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Mandarin Çincesi, Japonca, Rusça ve Brezilya Portekizcesi bulunmaktadır. Dil güvenle tanımlanamazsa, Video Indexer konuşulan dilin İngilizce olduğunu varsayar. Daha fazla bilgi için [Dil tanımlama modeline](language-identification-model.md)bakın.
 * **Çok dilli konuşma tanımlama ve transkripsiyon** (önizleme): Sesten farklı segmentlerde konuşulan dili otomatik olarak tanımlar. Medya dosyasının her bir bölümünü yazıya geçirilmeye gönderir ve transkripsiyonla tek bir leştirilmiş transkripsiyonla birleştirir. Daha fazla bilgi için, [çoklu dil içeriğini otomatik olarak tanımlayın ve yazıya döktü.](multi-language-identification-transcription.md)
 * **Açıklamalı altyazı**: Üç biçimde açıklamalı altyazı oluşturur: VTT, TTML, SRT.
 * **İki kanal işleme**: Otomatik ayrı transkript algılar ve tek zaman çizelgesi ile birleştirir.

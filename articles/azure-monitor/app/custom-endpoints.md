@@ -3,20 +3,25 @@ title: Azure Uygulama Öngörüleri varsayılan SDK uç noktalarını geçersiz 
 description: Varsayılan Azure Monitörü Uygulama Öngörüleri SDK uç noktalarını Azure Kamu gibi bölgeler için değiştirin.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: b4ab05c7ee815b385ffb2d1ff9e621063d744dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298329"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729520"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Varsayılan uç noktaları geçersiz kılan Uygulama Öngörüleri
 
 Uygulama Öngörüleri'nden belirli bölgelere veri göndermek için varsayılan uç nokta adreslerini geçersiz kılmanız gerekir. Her SDK, bu makalede açıklanan biraz farklı değişiklikler gerektirir. Bu değişiklikler, örnek kodun ayarlanmasını ve yer `QuickPulse_Endpoint_Address` `TelemetryChannel_Endpoint_Address`tutucu `Profile_Query_Endpoint_address` değerlerinin , ve belirli bölgenizin gerçek bitiş noktası adresleriyle değiştirilmesini gerektirir. Bu makalenin sonunda, bu yapılandırmanın gerekli olduğu bölgelerin bitiş noktası adreslerine bağlantılar içerir.
 
+> [!NOTE]
+> [Bağlantı dizeleri,](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) Uygulama Öngörüleri içinde özel uç noktaları ayarlamanın yeni tercih edilen yöntemidir.
+
+---
+
 ## <a name="sdk-code-changes"></a>SDK kodu değişiklikleri
 
-### <a name="net-with-applicationinsightsconfig"></a>.NET applicationinsights.config ile
+# <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Applicationinsights.config dosyası, SDK yükseltmesi yapıldığında otomatik olarak üzerine yazılır. Bir SDK yükseltmesi yaptıktan sonra bölgeye özgü uç nokta değerlerini yeniden girdiğinden emin olun.
@@ -41,7 +46,7 @@ Uygulama Öngörüleri'nden belirli bölgelere veri göndermek için varsayılan
 </ApplicationInsights>
 ```
 
-### <a name="aspnet-core"></a>ASP.NET Core
+# <a name="net-core"></a>[.NET Core](#tab/netcore)
 
 Ana bitiş noktasını ayarlamak için projenizdeki appsettings.json dosyasını aşağıdaki gibi değiştirin:
 
@@ -68,6 +73,8 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
     //Place in the ConfigureServices method. Place this before services.AddApplicationInsightsTelemetry("instrumentation key"); if it's present
 ```
+
+# <a name="azure-functions"></a>[Azure İşlevleri](#tab/functions)
 
 ### <a name="azure-functions-v2x"></a>Azure Fonksiyonları v2.x
 
@@ -120,7 +127,7 @@ namespace Example
 }
 ```
 
-### <a name="java"></a>Java
+# <a name="java"></a>[Java](#tab/java)
 
 Varsayılan bitiş noktası adresini değiştirmek için applicationinsights.xml dosyasını değiştirin.
 
@@ -155,7 +162,7 @@ Dosyayı `application.properties` değiştirin ve ekleyin:
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,7 +181,7 @@ Profile Endpoint: "Profile_Query_Endpoint_address"
 Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 ```
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/js)
 
 ```javascript
 <script type="text/javascript">
@@ -187,9 +194,11 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 </script>
 ```
 
-### <a name="python"></a>Python
+# <a name="python"></a>[Python](#tab/python)
 
 Opencensus-python SDK için alım bitiş noktasını değiştirme kılavuzu için [opencensus-python repo'ya başvurun.](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+
+---
 
 ## <a name="regions-that-require-endpoint-modification"></a>Uç nokta değişikliği gerektiren bölgeler
 

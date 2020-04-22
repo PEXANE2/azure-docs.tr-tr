@@ -10,80 +10,34 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1c12135ec6e5a0f4de1fdd46134a056447d3c331
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424240"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686050"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Anahtar Kasası tuşları hakkında
 
-Azure Key Vault, Microsoft Azure uygulamalarının ve kullanıcılarının anahtarları depolamasını ve kullanmasını sağlar. Birden çok anahtar türünü ve algoritmasını destekler ve yüksek değer tuşları için Donanım Güvenlik Modüllerinin (HSM) kullanılmasını sağlar. 
+Azure Anahtar Kasası birden çok anahtar türünü ve algoritmasını destekler ve yüksek değerli anahtarlar için Donanım Güvenlik Modüllerinin (HSM) kullanılmasını sağlar.
 
-Key Vault hakkında daha fazla bilgi için [Azure Anahtar Kasası nedir?](/azure/key-vault/key-vault-overview)
+Key Vault'taki şifreleme anahtarları JSON Web Key [JWK] nesneleri olarak temsil edilir. JavaScript Nesne Gösterimi (JSON) ve JavaScript Nesne İmzalama ve Şifreleme (JOSE) özellikleri şunlardır:
 
-## <a name="azure-key-vault"></a>Azure Key Vault
+-   [JSON Web Anahtarı (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON Web Şifreleme (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
+-   [JSON Web Algoritmaları (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
+-   [JSON Web İmza (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature) 
 
-Aşağıdaki bölümlerde Key Vault hizmetinin uygulanması nda geçerli olan genel bilgiler sunulmaktadır.
+Temel JWK/JWA belirtimleri, Key Vault uygulamasına özgü anahtar türlerini etkinleştirmek için de genişletilir. Örneğin, Anahtarları NIçin Satıcıya özel ambalaj kullanarak almak, yalnızca Key Vault HSM'lerde kullanılabilecek anahtarların güvenli bir şekilde taşınmasını sağlar. 
 
-### <a name="supporting-standards"></a>Destekleyici standartlar
-
-JavaScript Nesne Gösterimi (JSON) ve JavaScript Nesne İmzalama ve Şifreleme (JOSE) belirtimleri önemli arka plan bilgileridir.  
-
--   [JSON Web Anahtarı (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)  
--   [JSON Web Şifreleme (JWE)](https://tools.ietf.org/html/draft-ietf-jose-json-web-encryption-40)  
--   [JSON Web Algoritmaları (JWA)](https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40)  
--   [JSON Web İmza (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature-41)  
-
-### <a name="data-types"></a>Veri türleri
-
-Anahtarlar, şifreleme ve imzalama için ilgili veri türleri için JOSE belirtimlerine bakın.  
-
--   **algoritma** - örneğin, RSA1_5 önemli bir işlem için desteklenen bir algoritma  
--   **şifremetin değeri** - codeher metin sekizli, Base64URL kullanılarak kodlanmış  
--   **digest-value** - Base64URL kullanılarak kodlanmış bir karma algoritma, çıktı  
--   **anahtar türü** - desteklenen anahtar türlerinden biri, örneğin RSA (Rivest-Shamir-Adleman).  
--   **düz metin değeri** - düz metin sekizli, Base64URL kullanılarak kodlanmış  
--   **imza değeri** - Base64URL kullanılarak kodlanmış imza algoritmasının çıktısı  
--   **base64URL** - bir Base64URL [RFC4648] kodlanmış ikili değer  
--   **boolean** - ya doğru ya da yanlış  
--   **Kimlik** - Azure Etkin Dizin (Azure AD) bir kimlik.  
--   **IntDate** - belirtilen UTC tarih/saatine kadar 1970-01-01T0:0:0Z UTC saniye sayısını temsil eden bir JSON ondalık değer. Genel olarak tarih/saat ve özellikle UTC ile ilgili ayrıntılar için RFC3339'a bakın.  
-
-### <a name="objects-identifiers-and-versioning"></a>Nesneler, tanımlayıcılar ve sürüm
-
-Key Vault'ta depolanan nesneler, yeni bir nesne örneği oluşturulduğunda sürülür. Her sürüme benzersiz bir tanımlayıcı ve URL atanır. Bir nesne ilk oluşturulduğunda, özgün bir sürüm tanımlayıcısı verilir ve nesnenin geçerli sürümü olarak işaretlenir. Aynı nesne adı ile yeni bir örnek oluşturma yeni nesne özgün bir sürüm tanımlayıcısı verir, geçerli sürümü haline neden.  
-
-Key Vault'taki nesneler geçerli tanımlayıcı veya sürüme özgü tanımlayıcı kullanılarak ele alınabilir. Örneğin, adla `MasterKey`birlikte bir Anahtar verildiğinde, geçerli tanımlayıcıyla işlemleri gerçekleştirmek, sistemin kullanılabilir en son sürümü kullanmasına neden olur. Sürüme özgü tanımlayıcıile işlemleri gerçekleştirmek, sistemin nesnenin belirli bir sürümünü kullanmasına neden olur.  
-
-Nesneler, Key Vault içinde bir URL kullanılarak benzersiz bir şekilde tanımlanır. Sistemdeki hiçbir iki nesne, coğrafi konuma bakılmaksızın aynı URL'ye sahip değildir. Bir nesnenin tam URL'si Nesne Tanımlayıcısı olarak adlandırılır. URL, Anahtar Kasası' nı, nesne türünü, kullanıcıtarafından sağlanan Nesne Adı'nı ve Nesne Sürümünü tanımlayan bir önekten oluşur. Nesne Adı büyük/küçük harf duyarsız ve değişmez. Nesne Sürümü içermeyen tanımlayıcılara Temel Tanımlayıcılar denir.  
-
-Daha fazla bilgi için kimlik [doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
-
-Nesne tanımlayıcısı aşağıdaki genel biçimi vardır:  
-
-`https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
-
-Konumlar:  
-
-|||  
-|-|-|  
-|`keyvault-name`|Microsoft Azure Key Vault hizmetindeki önemli bir kasanın adı.<br /><br /> Anahtar Vault adları kullanıcı tarafından seçilir ve genel olarak benzersizdir.<br /><br /> Anahtar Vault adı sadece 0-9, a-z, A-Z ve -içeren bir 3-24 karakter dize olmalıdır.|  
-|`object-type`|Nesnenin türü, ya "anahtarlar" ya da "sırlar".|  
-|`object-name`|A, `object-name` kullanıcıadına verilen bir addır ve Bir Anahtar Kasası içinde benzersiz olmalıdır. Ad, yalnızca 0-9, a-z, A-Z ve -'yi içeren 1-127 karakterli bir dize olmalıdır.|  
-|`object-version`|An, `object-version` isteğe bağlı olarak bir nesnenin benzersiz bir sürümünü adreslemek için kullanılan bir sistem tarafından oluşturulan, 32 karakter dize tanımlayıcısıdır.|  
-
-## <a name="key-vault-keys"></a>Anahtar Kasa tuşları
-
-### <a name="keys-and-key-types"></a>Anahtarlar ve anahtar türleri
-
-Key Vault'taki şifreleme anahtarları JSON Web Key [JWK] nesneleri olarak temsil edilir. Temel JWK/JWA belirtimleri, Key Vault uygulamasına özgü anahtar türlerini etkinleştirmek için de genişletilir. Örneğin, Anahtarları NIçin Satıcıya özel ambalaj kullanarak almak, yalnızca Key Vault HSM'lerde kullanılabilecek anahtarların güvenli bir şekilde taşınmasını sağlar.  
+Azure Key Vault hem Yumuşak hem de Sert tuşlarını destekler:
 
 - **"Yumuşak" tuşları**: Key Vault tarafından yazılımda işlenen, ancak HSM'de bulunan bir sistem anahtarı kullanılarak istirahatte şifrelenen bir anahtardır. İstemciler varolan bir RSA veya EC (Eliptik Eğri) anahtarını içe aktarabilir veya Key Vault'un bir anahtar oluşturmasini isteyebilir.
 - **"Sabit" tuşlar**: HSM'de (Donanım Güvenlik Modülü) işlenen anahtardır. Bu anahtarlar Key Vault HSM Güvenlik Dünyaları'ndan birinde korunur (izolasyon sağlamak için coğrafya başına bir Güvenlik Dünyası vardır). İstemciler yumuşak formda veya uyumlu bir HSM aygıtından dışa aktararak bir RSA veya EC anahtarı içe aktarabilirler. İstemciler, anahtar oluşturmak için Key Vault'u da isteyebilir. Bu anahtar türü, HSM anahtar malzemesini taşımak için elde edilen JWK'ya key_hsm özniteliği ekler.
 
-     Coğrafi sınırlar hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi'ne](https://azure.microsoft.com/support/trust-center/privacy/) bakın  
+Coğrafi sınırlar hakkında daha fazla bilgi için [Microsoft Azure Güven Merkezi'ne](https://azure.microsoft.com/support/trust-center/privacy/) bakın  
+
+## <a name="cryptographic-protection"></a>Şifreleme koruması
 
 Key Vault yalnızca RSA ve Eliptik Eğri tuşlarını destekler. 
 
@@ -94,9 +48,7 @@ Key Vault yalnızca RSA ve Eliptik Eğri tuşlarını destekler.
 
 Key Vault 2048, 3072 ve 4096 boyutlarında RSA tuşlarını destekler. Anahtar Vault Eliptik Eğrisi anahtar tipleri P-256, P-384, P-521 ve P-256K (SECP256K1) destekler.
 
-### <a name="cryptographic-protection"></a>Şifreleme koruması
-
-Key Vault'un kullandığı şifreleme modülleri, HSM veya yazılım olsun, FIPS (Federal Bilgi İşlem Standartları) doğrulanır. FIPS modunda çalıştırmak için özel bir şey yapmanız gerekmez. HSM korumalı olarak **oluşturulan** veya **içe aktarılan** anahtarlar, BIR HSM içinde işlenir ve FIPS 140-2 Düzey 2'ye doğrulanır. Yazılım korumalı olarak **oluşturulan** veya **içe aktarılan** anahtarlar, FIPS 140-2 Düzey 1'e doğrulanmış şifreleme modülleri içinde işlenir. Daha fazla bilgi [için, Bkz. Anahtarlar ve anahtar türleri.](#keys-and-key-types)
+Key Vault'un kullandığı şifreleme modülleri, HSM veya yazılım olsun, FIPS (Federal Bilgi İşlem Standartları) doğrulanır. FIPS modunda çalıştırmak için özel bir şey yapmanız gerekmez. HSM korumalı olarak **oluşturulan** veya **içe aktarılan** anahtarlar, BIR HSM içinde işlenir ve FIPS 140-2 Düzey 2'ye doğrulanır. Yazılım korumalı olarak **oluşturulan** veya **içe aktarılan** anahtarlar, FIPS 140-2 Düzey 1'e doğrulanmış şifreleme modülleri içinde işlenir.
 
 ###  <a name="ec-algorithms"></a>EC algoritmaları
  Aşağıdaki algoritma tanımlayıcıları Key Vault'ta EC ve EC-HSM tuşları ile desteklenir. 
@@ -114,7 +66,6 @@ Key Vault'un kullandığı şifreleme modülleri, HSM veya yazılım olsun, FIPS
 -   **ES256K** - SHA-256 için ECDSA, P-256K eğrisi ile oluşturulan sindirir ve tuşlarını sindirir. Bu algoritma standartlaştırma bekliyor.
 -   **ES384** - SHA-384 için ECDSA, P-384 eğrisi ile oluşturulan sindirir ve tuşlarını sindirir. Bu algoritma [RFC7518](https://tools.ietf.org/html/rfc7518)açıklanmıştır.
 -   **ES512** - SHA-512 için ECDSA, P-521 eğrisi ile oluşturulan sindirir ve tuşlar. Bu algoritma [RFC7518](https://tools.ietf.org/html/rfc7518)açıklanmıştır.
-
 
 ###  <a name="rsa-algorithms"></a>RSA algoritmaları  
  Aşağıdaki algoritma tanımlayıcıları Key Vault'ta RSA ve RSA-HSM tuşları ile desteklenir.  
@@ -134,7 +85,7 @@ Key Vault'un kullandığı şifreleme modülleri, HSM veya yazılım olsun, FIPS
 -   **RS512** - RSASSA-PKCS-v1_5 SHA-512 kullanıyor. Sağlanan uygulama sindirimi değeri SHA-512 kullanılarak hesaplanmalıdır ve 64 bayt uzunluğunda olmalıdır.  
 -   **RSNULL** - Bkz. [RFC2437], belirli TLS senaryolarını etkinleştirmek için özel leştirilmiş bir kullanım örneği.  
 
-###  <a name="key-operations"></a>Anahtar işlemleri
+##  <a name="key-operations"></a>Anahtar işlemleri
 
 Key Vault anahtar nesneler üzerinde aşağıdaki işlemleri destekler:  
 
@@ -164,7 +115,7 @@ Kullanıcılar, JWK nesnesinin key_ops özelliğini kullanarak Key Vault'un dest
 
 JWK nesneleri hakkında daha fazla bilgi için [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)adresine bakın.  
 
-###  <a name="key-attributes"></a>Temel öznitelikler
+## <a name="key-attributes"></a>Temel öznitelikler
 
 Anahtar malzemeye ek olarak aşağıdaki öznitelikler de belirtilebilir. JSON İsteği'nde, '{' '}'öznitelikleri, belirtilmemiş olsa bile gereklidir.  
 
@@ -177,24 +128,24 @@ Anahtar öznitelikleri içeren herhangi bir yanıta dahil olan salt okunur özni
 - *created*: IntDate, isteğe bağlı. *Oluşturulan* öznitelik, anahtarın bu sürümünün ne zaman oluşturulduğunu gösterir. Bu öznitelik eklenmesinden önce oluşturulan anahtarlar için değer null' dur. Değeri IntDate değeri içeren bir sayı olmalıdır.  
 - *güncelleme*: IntDate, isteğe bağlı. *Güncelleştirilmiş* öznitelik, anahtarın bu sürümünün ne zaman güncelleştirileni gösterir. Bu öznitelik eklenmeden önce en son güncelleştirilen anahtarlar için değer null'dur. Değeri IntDate değeri içeren bir sayı olmalıdır.  
 
-IntDate ve diğer veri türleri hakkında daha fazla bilgi için [bkz.](#data-types)  
+IntDate ve diğer veri türleri hakkında daha fazla bilgi için bkz: [Anahtarlar, sırlar ve sertifikalar hakkında: [Veri türleri.](../general/about-keys-secrets-certificates.md#data-types)
 
-#### <a name="date-time-controlled-operations"></a>Tarih-zaman kontrollü işlemler
+### <a name="date-time-controlled-operations"></a>Tarih-zaman kontrollü işlemler
 
 Henüz geçerli olmayan ve süresi dolmuş anahtarlar, *nbf* / *exp* penceresi dışında, **şifresini çözmek**için çalışacaktır , **açmak**, ve işlemleri **doğrulamak** (403 döndürmez, Yasak). Henüz geçerli olmayan durumu kullanmanın mantığı, bir anahtarın üretim kullanımından önce sınanmasını sağlamaktır. Süresi dolmuş durumu kullanmanın mantığı, anahtar geçerli olduğunda oluşturulan verilerüzerinde kurtarma işlemlerine izin vermektir. Ayrıca, Key Vault ilkelerini kullanarak veya *etkin* anahtar özniteliğini **false'a**güncelleyerek bir anahtara erişimi devre dışı bırakabilirsiniz.
 
-Veri türleri hakkında daha fazla bilgi için [Bkz. Veri türleri.](#data-types)
+Veri türleri hakkında daha fazla bilgi için [Bkz. Veri türleri.](../general/about-keys-secrets-certificates.md#data-types)
 
 Diğer olası öznitelikler hakkında daha fazla bilgi için [JSON Web Anahtarı 'na (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)bakın.
 
-### <a name="key-tags"></a>Anahtar etiketleri
+## <a name="key-tags"></a>Anahtar etiketleri
 
 Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key Vault, her biri 256 karakter adı ve 256 karakter değerine sahip olabilecek en fazla 15 etiketi destekler.  
 
 >[!Note]
 >Etiketler, *liste* varsa veya bu nesne türüne (anahtarlar, sırlar veya sertifikalar) izin *alıyorsa,* arayan tarafından okunabilir.
 
-###  <a name="key-access-control"></a>Anahtar erişim denetimi
+##  <a name="key-access-control"></a>Anahtar erişim denetimi
 
 Key Vault tarafından yönetilen anahtarlar için erişim kontrolü, anahtarların kapsayıcısı gibi davranan bir Key Vault düzeyinde sağlanır. Anahtarlar için erişim denetimi ilkesi, aynı Anahtar Kasası'ndaki sırlar için erişim denetimi ilkesinden farklıdır. Kullanıcılar anahtarları tutmak için bir veya daha fazla kasa oluşturabilir ve senaryoya uygun bölümlemesi ve anahtarların yönetimini korumaları gerekir. Anahtarlar için erişim denetimi, sırlar için erişim denetiminden bağımsızdır.  
 
@@ -224,7 +175,11 @@ Aşağıdaki izinler, kullanıcı başına / hizmet temel olarak, bir tonoz üze
 
 Anahtarlarla çalışma hakkında daha fazla bilgi için [Key Vault REST API başvurusunda ki Anahtar işlemlerine](/rest/api/keyvault)bakın. İzinlerin oluşturulması hakkında daha fazla bilgi için [Vaults - Update Access Policy](/rest/api/keyvault/vaults/updateaccesspolicy) [bkz.](/rest/api/keyvault/vaults/createorupdate) 
 
-## <a name="see-also"></a>Ayrıca Bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
+- [Anahtar Kasası Hakkında](../general/overview.md)
+- [Anahtarlar, sırlar ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
+- [Gizli diziler hakkında](../secrets/about-secrets.md)
+- [Sertifikalar hakkında](../certificates/about-certificates.md)
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

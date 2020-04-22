@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70390188"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731949"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Olay Ağı abonelikleri için olay filtrelemeanlama
 
@@ -59,7 +59,7 @@ Veri alanlarındaki değerlere göre filtre uygulayıp karşılaştırma işleci
 
 * işleç türü - Karşılaştırma türü.
 * anahtar - Filtreleme için kullandığınız olay verilerindeki alan. Bir sayı, boolean veya dize olabilir.
-* değer veya değerler - Anahtarla karşılaştırılması gereken değer veya değerler.
+* değerleri - Anahtarla karşılaştırılacak değer veya değerler.
 
 Birden çok değere sahip tek bir filtre belirtirseniz, bir **OR** işlemi gerçekleştirilir, bu nedenle anahtar alanın değeri bu değerlerden biri olmalıdır. Örnek aşağıda verilmiştir:
 

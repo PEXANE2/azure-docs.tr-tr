@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 025dbc56fb46ef5b6225d35564b8e4ac3c82e6e3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81414455"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731173"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Bahar Bulutu'nda dağıtım için java spring uygulaması hazırlama
 
@@ -27,7 +27,7 @@ Bu makalede, gerekli bağımlılıkları ve bunları POM dosyasına nasıl ekley
 
 Azure Bahar Bulutu'nda yalnızca Bahar/Java uygulamaları çalıştırılabilir.
 
-Azure Yay Bulutu hem Java 8 hem de Java 11'i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK'nın en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için [JDK'yı yükleyin' e](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)bakın.
+Azure Yay Bulutu hem Java 8 hem de Java 11'i destekler. Barındırma ortamı, Azure için Azul Zulu OpenJDK'nın en son sürümünü içerir. Azure için Azul Zulu OpenJDK hakkında daha fazla bilgi için [JDK'yı yükleyin' e](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install)bakın.
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Bahar Önyükleme ve Bahar Bulutu sürümleri
 

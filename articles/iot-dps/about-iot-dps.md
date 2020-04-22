@@ -8,12 +8,15 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.openlocfilehash: e564660b502a950021ba4e4754ff5c210dfd477f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 1b12886ee55741f62a1156269423ffadd34cd433
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79241181"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81683301"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Cihazı Sağlama Hizmeti ile cihaz sağlama
 Microsoft Azure, tüm IoT çözüm ihtiyaçlarınız için zengin bir tümleşik genel bulut hizmetleri kümesi sağlar. IoT Hub Aygıt Sağlama Hizmeti (DPS), IoT Hub için insan müdahalesi gerektirmeden doğru IoT hub'ına sıfır dokunuş, tam zamanında sağlama sağlayan bir yardımcı hizmettir. DPS, milyonlarca aygıtın güvenli ve ölçeklenebilir bir şekilde sağlanmasına olanak tanır.
@@ -23,7 +26,7 @@ DPS'nin aygıtları bağlı hale getirmek ve IoT Hub'a yapılandırmak için mü
 
 * IoT Hub bağlantı bilgilerini fabrikada sabit kodlamaya gerek kalmadan tek bir IoT çözümüne dokunma olmadan sağlama (ilk kurulum)
 * Birden çok hub'da yük dengeleme cihazları
-* Cihazları satış işlemi verilerine göre cihaz sahibinin IoT çözümüne bağlama (çoklu kiracı)
+* Cihazları satış işlem verilerine dayalı olarak sahiplerinin IoT çözümüne bağlama (çoklu kiralama)
 * Cihazları kullanım durumuna göre belirli bir IoT çözümüne bağlama (çözüm yalıtımı)
 * Bir cihazı en düşük gecikme süresine sahip IoT hub’a bağlama (coğrafi parçalama)
 * Cihazdaki bir değişikliğe göre yeniden sağlama

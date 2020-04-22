@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 08a246b07effb8d5f3e2473a4d7959882cf43235
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74688979"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687950"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure'da Bir Düğüm.js uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Visual [Studio Code](https://code.visualstudio.com/) [Node.js ve npm , Node.js](
 
 Ayrıca, Azure Platformu'nda (PaaS) Linux Web Apps'ı oluşturmak, yönetmek ve dağıtmak için kullanabileceğiniz [Azure Uygulama Hizmeti uzantısını](vscode:extension/ms-azuretools.vscode-azureappservice)da yüklemeniz gerekir.
 
-### <a name="sign-in"></a>Oturum aç
+### <a name="sign-in"></a>Oturum açma
 
 Uzantı yüklendikten sonra Azure hesabınıza giriş yapın. Etkinlik Çubuğu'nda, **AZURE APP SERVICE** gezginini göstermek için Azure logosunu seçin. **Azure'da Oturum Aç'ı seçin...** ve yönergeleri izleyin.
 
@@ -90,7 +90,7 @@ npm start
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
 
-## <a name="deploy-to-azure"></a>Azure’a Dağıt
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu bölümde, Node.js uygulamanızı VS Kodu ve Azure Uygulama Hizmeti uzantısını kullanarak dağıtabilirsiniz. Bu hızlı başlatma, uygulamanızın sıkıştırıldığı ve Linux'taki bir Azure Web Uygulamasına dağıtıldığı en temel dağıtım modelini kullanır.
 
@@ -159,12 +159,12 @@ Uygulamayı **AZURE APP SERVICE** explorer'da bulun, uygulamayı sağ tıklatın
 
 Birkaç saniye sonra, günlük akışı hizmetine bağlı olduğunuzu belirten bir ileti görürsünüz. Daha fazla etkinlik görmek için sayfayı birkaç kez yenileyin.
 
-    ```bash
-    2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
-    2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
-    2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
-    2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
-    ```
+<pre>
+2019-09-20 20:37:39.574 INFO  - Initiating warmup request to container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node
+2019-09-20 20:37:55.011 INFO  - Waiting for response to warmup request for container msdocs-vscode-node_2_00ac292a. Elapsed time = 15.4373071 sec
+2019-09-20 20:38:08.233 INFO  - Container msdocs-vscode-node_2_00ac292a for site msdocs-vscode-node initialized successfully and is ready to serve requests.
+2019-09-20T20:38:21  Startup Request, url: /Default.cshtml, method: GET, type: request, pid: 61,1,7, SCM_SKIP_SSL_VALIDATION: 0, SCM_BIN_PATH: /opt/Kudu/bin, ScmType: None
+</pre>
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaştım](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=tailing-logs)

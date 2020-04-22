@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 34de5f59e96a37282063741a1664f512697c167b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288725"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687507"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Sanal Makine Teklif Yayın Kılavuzu
 
@@ -53,7 +53,7 @@ Müşterinizle ilişkili aboneye sanal bir cihaz dağıttığınızda sanal maki
 | Gereksinim | Ayrıntılar |  
 |:--- |:--- | 
 | Faturalama ve ölçüm | VM'niz BYOL veya Pay-As-You-Go aylık faturalandırmayı desteklemelidir. |  
-| Azure uyumlu sanal sabit disk (VHD) | VM'ler Windows veya Linux üzerine inşa edilmelidir. <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için [Azure'da onaylanan Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için [bkz.](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)</li> </ul> |  
+| Azure uyumlu sanal sabit disk (VHD) | VM'ler Windows veya Linux üzerine inşa edilmelidir. <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için [Azure'da onaylanan Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için [bkz.](./partner-center-portal/azure-vm-create-offer.md)</li> </ul> |  
 
 >[!Note]
 >Bulut Çözüm Sağlayıcıları (CSP) iş ortağı kanal tercihi artık kullanılabilir.  Microsoft CSP iş ortağı kanalları aracılığıyla teklifinizi pazarlama hakkında daha fazla bilgi için lütfen [Bulut Çözüm Sağlayıcıları'na](./cloud-solution-providers.md) bakın.
@@ -62,9 +62,9 @@ Müşterinizle ilişkili aboneye sanal bir cihaz dağıttığınızda sanal maki
 
 Eğer bunu yapmadıysanız, 
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
 Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
 
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
-- Daha fazla bilgi için [Sanal makine teklifine](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer) bakın.
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- Bkz. daha fazla bilgi için [sanal bir makine teklifi oluşturun.](./partner-center-portal/azure-vm-create-offer.md)

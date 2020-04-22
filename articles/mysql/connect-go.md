@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.openlocfilehash: 5b55c457f5e30b1b844aafd0114f73b62bdbcac7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80067969"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81681867"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>MySQL için Azure Veritabanı: Bağlanmak ve veri sorgulamak için Go dilini kullanma
 Bu hızlı başlangıçta, Windows, Ubuntu Linux ve Apple macOS platformlarından [Go](https://golang.org/) dilinde yazılmış kod kullanarak MySQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu konuda, Go kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve MySQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
@@ -289,7 +289,7 @@ func main() {
     rows, err := db.Exec("UPDATE inventory SET quantity = ? WHERE name = ?", 200, "banana")
     checkError(err)
     rowCount, err := rows.RowsAffected()
-    fmt.Printf("Deleted %d row(s) of data.\n", rowCount)
+    fmt.Printf("Updated %d row(s) of data.\n", rowCount)
     fmt.Println("Done.")
 }
 ```

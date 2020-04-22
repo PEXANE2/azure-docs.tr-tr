@@ -2,20 +2,30 @@
 title: Azure Geçiş'teki yenilikler
 description: Azure Geçiş hizmetindeki yenilikler ve en yeni güncelleştirmeler hakkında bilgi edinin.
 ms.topic: overview
-ms.date: 04/16/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 1b0221f497ae7bbf84f163eef1ddb862d8de2951
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ba85b0a4ed30320099388ccb48dd91ad6445efd5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535256"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677238"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Geçiş'teki yenilikler
 
 [Azure Geçiş,](migrate-services-overview.md) şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure Geçiş'teki yeni sürümler ve özellikler özetlenmiştir.
 
 
+## <a name="update-april-2020"></a>Güncelleme (Nisan 2020)
+
+Azure Geçiş, Azure Kamu'daki dağıtımları destekler. 
+
+- VMware VM'leri, Hyper-V VM'leri ve fiziksel sunucuları keşfedebilir ve değerlendirebilirsiniz.
+- VMware VM'leri, Hyper-V VM'leri ve fiziksel sunucuları Azure'a geçirebilirsiniz.
+- VMware geçişi için aracısız veya aracısız geçiş kullanabilirsiniz. [Daha fazla bilgi edinin](server-migrate-overview.md).
+- Azure Kamu için desteklenen coğrafyaları ve bölgeleri [gözden geçirin.](migrate-support-matrix.md#supported-geographies-azure-government)
+- [Aracı tabanlı bağımlılık çözümlemesi](concepts-dependency-visualization.md#agent-based-analysis) Azure Kamu'da desteklenmez.
+- Önizlemedeki özellikler Azure Kamu'da, özellikle [aracısız bağımlılık çözümlemesi](concepts-dependency-visualization.md#agentless-analysis)ve [uygulama bulma](how-to-discover-applications.md)da desteklenir.
 
 ## <a name="update-march-2020"></a>Güncelleme (Mart 2020)
 

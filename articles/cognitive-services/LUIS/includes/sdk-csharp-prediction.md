@@ -10,16 +10,17 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 3bb0b9fb8b268c3e036ffb365eb8d5b80a241269
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77372138"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732050"
 ---
 .NET için Dil Anlayışı (LUIS) tahmin istemci kitaplığını kullanın:
 
 * Yuvaya göre tahmin alma
+* Versiyona Göre Tahmin
 
 [Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Language.LUIS.Runtime) | [Tahmin çalışma zamanı Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) | [C# Örnekleri](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/LanguageUnderstanding/predict-with-sdk-3x)
 
@@ -27,10 +28,7 @@ ms.locfileid: "77372138"
 
 * Dil Anlama (LUIS) portal hesabı - [Ücretsiz bir tane oluşturun](https://www.luis.ai)
 * [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
-
-Daha fazla belge mi arıyorsunuz?
-
- * [SDK referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet)
+* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
 
 ## <a name="setting-up"></a>Ayarlama
 
@@ -61,7 +59,7 @@ export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
 
 Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pencerenizden `source ~/.bashrc` çalıştırın.
 
-#### <a name="macos"></a>[Macos](#tab/unix)
+#### <a name="macos"></a>[macOS](#tab/unix)
 
 'nizi `.bash_profile`ve ortam değişkenini ekleyin:
 

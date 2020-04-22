@@ -3,12 +3,12 @@ title: Azure Uygulama Öngörülerinde Bağımlılık İzleme | Microsoft Doküm
 description: Uygulama Öngörüleri ile şirket içi veya Microsoft Azure web uygulamanızdan gelen bağımlılık çağrılarını izleyin.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1d4e8d1a0482257c92f47a00bd440e786c09c7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80292118"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731503"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Uygulama Öngörülerinde Bağımlılık İzleme 
 
@@ -97,7 +97,7 @@ ASP.NET uygulamalar için, tam SQL sorgusu enstrümantasyon motoru gerektiren ba
 | Platform | Adım(lar) Tam SQL Sorgusu almak için gerekli |
 | --- | --- |
 | Azure Web App |Web uygulama kontrol [panelinizde, Application Insights bıçaklarını açın](../../azure-monitor/app/azure-web-apps.md) ve .NET altında SQL Komutları etkinleştirin |
-| IIS Server (Azure VM, on-prem vb.) | [Instrumentation Engine'i yüklemek](../../azure-monitor/app/status-monitor-v2-api-enable-instrumentation-engine.md) ve IIS'yi yeniden başlatmak için Durum Monitörü PowerShell Modülünü kullanın. |
+| IIS Server (Azure VM, on-prem vb.) | [Instrumentation Engine'i yüklemek](../../azure-monitor/app/status-monitor-v2-api-reference.md) ve IIS'yi yeniden başlatmak için Durum Monitörü PowerShell Modülünü kullanın. |
 | Azure Cloud Service | [StatusMonitor'u yüklemek için başlangıç görevi ekleme](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> [Uygulamanız, ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) veya ASP.NET Core uygulamaları için NuGet [paketlerini](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) yükleyerek uygulamanız ApplicationInsights SDK'ya dahil edilmelidir. |
 | IIS Ekspresi | Desteklenmiyor
 
@@ -191,6 +191,6 @@ Her Application Insights SDK gibi bağımlılık toplama modülü de açık kayn
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel durumlar](../../azure-monitor/app/asp-net-exceptions.md)
+* [Özel Durumlar](../../azure-monitor/app/asp-net-exceptions.md)
 * [Kullanıcı & sayfa verileri](../../azure-monitor/app/javascript.md)
-* [Kullanılabilir -lik](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -1,18 +1,18 @@
 ---
-title: Azure Otomasyonu'ndaki bağlantı varlıkları
+title: Azure Otomasyonu'nda bağlantıları yönetme
 description: Azure Otomasyonu'ndaki bağlantı varlıkları, bir runbook veya DSC yapılandırmasından harici bir hizmete veya uygulamaya bağlanmak için gereken bilgileri içerir. Bu makalede, bağlantıların ayrıntıları ve hem metinsel hem de grafiksel yazarlıkta onlarla nasıl çalışılabilenler açıklanmaktadır.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: d1ce59322b0cbfaf5a4f7b31371f0d0929a3a3ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 90d4ec1bbfd0d76ffedf1505c9147376e3947c3c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457731"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729048"
 ---
-# <a name="connection-assets-in-azure-automation"></a>Azure Otomasyonu'ndaki bağlantı varlıkları
+# <a name="manage-connections-in-azure-automation"></a>Azure Otomasyonu'nda bağlantıları yönetme
 
 Otomasyon bağlantı varlığı, bir runbook veya DSC yapılandırmasından harici bir hizmete veya uygulamaya bağlanmak için gereken bilgileri içerir. Bu, URL veya bağlantı noktası gibi bağlantı bilgilerine ek olarak kullanıcı adı ve parola gibi kimlik doğrulama için gereken bilgileri içerebilir. Bir bağlantının değeri, birden çok değişken oluşturmak yerine belirli bir uygulamaya bağlanmaözelliklerinin tümünü tek bir kıymette tutmaktır. Kullanıcı bir bağlantının değerlerini tek bir yerde ayarlayabilir ve bir bağlantının adını tek bir parametrede runbook'a veya DSC yapılandırmasına geçirebilirsiniz. Bir bağlantının özelliklerine `Get-AutomationConnection` etkinlikle birlikte runbook veya DSC yapılandırmasında erişilebilir.
 

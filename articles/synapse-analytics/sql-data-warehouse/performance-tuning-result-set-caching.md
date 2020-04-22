@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 42f8f51545f643e1ed9e1a23c9445f6e216fdabe
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: eadbe13269ce1259b4560af117f5b15b3b294151
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273418"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730597"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama
 
@@ -42,10 +42,11 @@ Sonuç kümesi önbelleğe alma veritabanı için Açık döndükten sonra, önb
 - Kullanıcı tanımlı işlevlerini kullanan sorgular
 - Satır düzeyi güvenliği etkin olan tabloları kullanan sorgular veya sütun düzeyi güvenliği etkin
 - Satır boyutu 64KB'den büyük olan verileri döndüren sorgular
+- Büyük verileri boyutunda döndüren sorgular (10 GB >) 
 
 > [!IMPORTANT]
 > Sonuç kümesi önbelleği oluşturmak ve önbellekten veri almak için yapılan işlemler, Synapse SQL havuz örneğinin denetim düğümünde gerçekleşir.
-> Sonuç kümesi önbelleğe alma açık olduğunda, büyük sonuç kümesini döndüren sorguları çalıştırmak (örneğin, 1 milyon satır >) denetim düğümünde yüksek CPU kullanımına neden olabilir ve örnekteki genel sorgu yanıtını yavaşlatabilir.  Bu sorgular genellikle veri arama veya ETL işlemleri sırasında kullanılır. Denetim düğümünün vurgulanmasından ve performans sorununa neden olmak için, kullanıcıların bu tür sorguları çalıştırmadan önce veritabanında kapkaç sonucu kümesini açmaları gerekir.  
+> Sonuç kümesi önbelleğe alma açık olduğunda, büyük sonuç kümesini (örneğin, 1GB >) döndüren sorguları çalıştırmak, denetim düğümünde yüksek azaltmalara neden olabilir ve örnekteki genel sorgu yanıtını yavaşlatabilir.  Bu sorgular genellikle veri arama veya ETL işlemleri sırasında kullanılır. Denetim düğümünün vurgulanmasından ve performans sorununa neden olmak için, kullanıcıların bu tür sorguları çalıştırmadan önce veritabanında kapkaç sonucu kümesini açmaları gerekir.  
 
 Bu sorguyu, bir sorgu için önbelleğe alma işlemlerini ayarlayarak sonuç olarak alınan süre için çalıştırın:
 

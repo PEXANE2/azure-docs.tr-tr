@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2018
+ms.date: 04/20/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcccc64e0c766164a06932e9b65a4459816f9deb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89e09fd63ee6121ac9bf7f3c2be00f0ac22f752f
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409125"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731701"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Self servis uygulama ataması nasıl yapılandırılır?
 
@@ -41,6 +41,9 @@ Bu özelliği kullanarak şunları yapabilirsiniz:
 -   İsteğe bağlı olarak, bir işletme onaylayıcısının, iş onaylayıcısının Uygulama Erişim Paneli'nden, [Application Access Panel](https://myapps.microsoft.com/)bu kullanıcıların uygulamada oturum açmada kullanabileceği parolaları ayarlamasına izin verin.
 
 -   İsteğe bağlı olarak otomatik olarak atanan kullanıcıları doğrudan bir uygulama rolüne atayın.
+
+> [!NOTE]
+> Kullanıcıların bir self servis uygulamasına katılmak için istekte bulunmaları ve sahiplerinin istekleri onaylaması veya reddetmesi için Azure Active Directory Premium (P1 veya P2) lisansı gereklidir. Azure Active Directory Premium lisansı olmadan, kullanıcılar self servis uygulamalar ekleyemez.
 
 ## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Kullanıcıların kendi uygulamalarını bulmalarını sağlamak için self servis uygulama erişimini etkinleştirin
 

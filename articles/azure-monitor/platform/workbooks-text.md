@@ -9,12 +9,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c5fb585d0eb6aeb7866c2ab04b324ee31fe903ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77658058"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687337"
 ---
 # <a name="workbook-text-parameters"></a>Çalışma kitabı metin parametreleri
 
@@ -59,6 +59,8 @@ Textboxes'ın yaygın kullanımı, diğer çalışma kitabı denetimleri tarafı
 
     ![KQL'de başvurulan metin parametresi gösteren resim](./media/workbooks-text/text-reference.png)
 
+> [!NOTE]
+> Yukarıdaki örnekte, `{SlowRequestThreshold}` bir sonda değerini temsil eder. Parametre alanının tırnak işareti `{ComputerName}` olmadan kabul girişine ekleyebilmesi için `"{ComputerName}"` Kusto sorgunuzu değiştirmek için Kusto sorgunuzu değiştirmeniz gerekir gibi bir dize için sorgu yapıyorsanız.
 
 ## <a name="setting-default-values"></a>Varsayılan değerleri ayarlama
 1. Edit modunda boş bir çalışma kitabıyla başlayın.

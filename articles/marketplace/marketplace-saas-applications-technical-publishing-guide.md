@@ -1,21 +1,21 @@
 ---
-title: Azure Marketi SaaS Uygulamaları Teknik Yayın Kılavuzu
+title: Azure Marketi SaaS Uygulamaları Yayın Kılavuzu
 description: SaaS uygulamalarını Azure Marketi'nde yayınlamak için adım adım kılavuz ve yayımlama denetim listeleri
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: keithcharlie
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: kevidal
-ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 04/15/2020
+ms.author: dsindona
+ms.openlocfilehash: 1bc2feb4d8f3f103802bd823c66cd3f54ac5d74a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80544292"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687550"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS Uygulaması Teklifi Yayımlama Kılavuzu
+# <a name="saas-applications-offer-publishing-guide"></a>SaaS uygulamaları Teklif Yayın Kılavuzu
 
 SaaS uygulamaları üç farklı eylem çağrısıyla pazarda yayınlanabilir: "Bana Ulaşın", "Şimdi deneyin" ve "Hemen alın." Bu kılavuz, her biri için gereksinimler de dahil olmak üzere bu üç seçeneği açıklar. 
 
@@ -110,8 +110,8 @@ Azure AD tümleştirmenizi, uygulamanızın tek kiracılı mı yoksa çok kirac�
 **Çok kiracılı uygulamalar için:**  
 
 Azure AD'yi zaten destekliyorsanız aşağıdakileri yapın:
-1.  Uygulamanızı Azure portalına kaydedin
-2.  'Tek tıklamayla' deneme deneyimi elde etmek için Azure AD'deki çoklu kira desteği özelliğini etkinleştirin. Daha spesifik bilgileri [burada](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bulabilirsiniz.  
+1.    Uygulamanızı Azure portalına kaydedin
+2.    'Tek tıklamayla' deneme deneyimi elde etmek için Azure AD'deki çoklu kira desteği özelliğini etkinleştirin. Daha spesifik bilgileri [burada](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)bulabilirsiniz.  
 
 Azure AD Federe SSO'da yeniyseniz, aşağıdakileri yapın: 
 1.  Uygulamanızı Azure portalına kaydedin
@@ -144,9 +144,9 @@ Microsoft ticaret işlemini barındırıyor. Microsoft, müşterinizi sizin adı
 ## <a name="next-steps"></a>Sonraki adımlar
 Eğer bunu yapmadıysanız,
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+* Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
-Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
+Ortak Merkezi'ne kaydolmak için yeni bir teklif oluşturmaya veya varolan bir teklif üzerinde çalışmaya başlayın:
 
-- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.
-- Daha fazla bilgi için [Azure SaaS uygulama teklifine](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer) bakın.
+* Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+* Daha fazla bilgi için [bir SaaS uygulama teklifi oluşturmaya](./partner-center-portal/create-new-saas-offer.md) bakın.

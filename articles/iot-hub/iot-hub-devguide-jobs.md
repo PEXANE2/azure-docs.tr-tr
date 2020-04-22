@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 147dd0f454bd85673bcba5cd6148c5da9716c580
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65409045"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730098"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Birden fazla cihazda işleri zamanlama
 
@@ -185,7 +186,7 @@ Aşağıdaki liste, iş veya iş sonuçları için sorgulanırken kullanılabile
 | **Türü** |İş türleri: |
 | | **scheduleUpdateTwin**: İstenilen özellikler veya etiketler kümesini güncelleştirmek için kullanılan bir iş. |
 | | **scheduleDeviceMethod**: Aygıt ikizlerinin setinde bir cihaz yöntemini çağırmak için kullanılan iş. |
-| **durum** |İşin şu anki durumu. Durum için olası değerler: |
+| **Durum** |İşin şu anki durumu. Durum için olası değerler: |
 | | **bekleme :** Planlanmış ve iş hizmeti tarafından alınmayı bekliyor. |
 | | **scheduled**: Gelecekte bir süre için zamanlanır. |
 | | **running**: Şu anda etkin iş. |

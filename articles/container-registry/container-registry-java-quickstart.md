@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: ef933ae9a6b0a34529c7ec145b13c023728a3457
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78165449"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731851"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Quickstart: Java kapsayıcı görüntülerini Azure Kapsayıcı Kayıt Defteri'ne oluşturun ve itin
 
@@ -163,7 +163,7 @@ Microsoft destekli resmi Java temel görüntülerinin diğer sürümleri için b
 Spring ve Azure hakkında daha fazlasını öğrenmek için Azure’da Spring belge merkezinde çalışmaya devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure’da Spring](/azure/java/spring-framework)
+> [Azure’da Spring](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>Ek Kaynaklar
 
@@ -173,5 +173,5 @@ Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 * [Azure DevOps ve Java ile çalışma](/azure/devops/java)
 * [Docker üzerinde Spring Boot'u Kullanmaya Başlama](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [Azure App Service’e Spring Boot Uygulaması Dağıtma](/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [Azure App Service’e Spring Boot Uygulaması Dağıtma](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
 * [Linux üzerinde Azure Web App’e yönelik özel Docker görüntüsü kullanma](/azure/app-service-web/app-service-linux-using-custom-docker-image)

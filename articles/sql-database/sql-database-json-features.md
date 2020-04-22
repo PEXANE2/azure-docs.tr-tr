@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
-ms.date: 01/15/2019
-ms.openlocfilehash: 958d937ad85fd62249c7ce3f0e0ab2f8cc1d1b80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/19/2020
+ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73819932"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687749"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Azure SQL Veritabanı'nda JSON özellikleriyle başlarken
 Azure SQL Veritabanı, JavaScript Nesne Gösterimi [(JSON)](https://www.json.org/) biçiminde temsil edilen verileri ayrıştırmanızı ve sorgulamanızı ve ilişkisel verilerinizi JSON metni olarak dışa aktarmanızı sağlar. Aşağıdaki JSON senaryoları Azure SQL Veritabanı'nda kullanılabilir:
@@ -30,7 +30,7 @@ Veritabanı katmanından veri alan ve JSON biçiminde yanıt veren bir web hizme
 
 Aşağıdaki örnekte, Sales.Customer tablosundaki satırlar FOR JSON yan tümcesi kullanılarak JSON olarak biçimlendirilir:
 
-```
+```sql
 select CustomerName, PhoneNumber, FaxNumber
 from Sales.Customers
 FOR JSON PATH
@@ -38,7 +38,7 @@ FOR JSON PATH
 
 FOR JSON PATH yan tümcesi sorgu sonuçlarını JSON metni olarak biçimlendirin. Hücre değerleri JSON değerleri olarak oluşturulurken sütun adları anahtar olarak kullanılır:
 
-```
+```json
 [
 {"CustomerName":"Eric Torres","PhoneNumber":"(307) 555-0100","FaxNumber":"(307) 555-0101"},
 {"CustomerName":"Cosmina Vlad","PhoneNumber":"(505) 555-0100","FaxNumber":"(505) 555-0101"},
@@ -50,7 +50,7 @@ Sonuç kümesi, her satırın ayrı bir JSON nesnesi olarak biçimlendiği bir J
 
 PATH, sütun diğer adlarında nokta gösterimi kullanarak JSON sonucun çıktı biçimini özelleştirebileceğinizi gösterir. Aşağıdaki sorgu, çıkış JSON biçiminde "CustomerName" anahtarının adını değiştirir ve telefon ve faks numaralarını "İlgili Kişi" alt nesnesi olarak koyar:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as [Contact.Phone], FaxNumber as [Contact.Fax]
 from Sales.Customers
 where CustomerID = 931
@@ -59,7 +59,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 
 Bu sorgunun çıktısı aşağıdaki gibi görünür:
 
-```
+```json
 {
     "Name":"Nada Jovanovic",
     "Contact":{
@@ -73,7 +73,7 @@ Bu örnekte, [WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354
 
 FOR JSON yan tümcesinin ana değeri, iç içe json nesneleri veya dizileri olarak biçimlendirilmiş veritabanınızdan karmaşık hiyerarşik verileri döndürmenize olanak tanır. Aşağıdaki örnek, `Orders` iç içe bir dizi `Customer` olarak ait tablodan satırları `Orders`nasıl dahil gösterir:
 
-```
+```sql
 select CustomerName as Name, PhoneNumber as Phone, FaxNumber as Fax,
         Orders.OrderID, Orders.OrderDate, Orders.ExpectedDeliveryDate
 from Sales.Customers Customer
@@ -81,12 +81,11 @@ from Sales.Customers Customer
         on Customer.CustomerID = Orders.CustomerID
 where Customer.CustomerID = 931
 FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
-
 ```
 
 Müşteri verilerini almak ve ardından ilgili Siparişlerin listesini almak için ayrı sorgular göndermek yerine, aşağıdaki örnek çıktıda gösterildiği gibi, tek bir sorguyla gerekli tüm verileri alabilirsiniz:
 
-```
+```json
 {
   "Name":"Nada Jovanovic",
   "Phone":"(215) 555-0100",
@@ -95,7 +94,7 @@ Müşteri verilerini almak ve ardından ilgili Siparişlerin listesini almak iç
     {"OrderID":382,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":395,"OrderDate":"2013-01-07","ExpectedDeliveryDate":"2013-01-08"},
     {"OrderID":1657,"OrderDate":"2013-01-31","ExpectedDeliveryDate":"2013-02-01"}
-]
+  ]
 }
 ```
 
@@ -104,7 +103,7 @@ Katı yapılı verileriniz yoksa, karmaşık alt nesneleriniz, dizileriniz veya 
 
 JSON, Azure SQL Veritabanı'ndaki diğer dize türü gibi kullanılabilen metin biçimidir. JSON verilerini standart bir NVARCHAR olarak gönderebilir veya depolayabilirsiniz:
 
-```
+```sql
 CREATE TABLE Products (
   Id int identity primary key,
   Title nvarchar(200),
@@ -120,7 +119,7 @@ END
 
 Bu örnekte kullanılan JSON verileri NVARCHAR(MAX) türü kullanılarak temsil edilir. JSON bu tabloya eklenebilir veya aşağıdaki örnekte gösterildiği gibi standart Transact-SQL sözdizimi kullanılarak depolanan yordamın bir bağımsız değişkeni olarak sağlanabilir:
 
-```
+```sql
 EXEC InsertProduct 'Toy car', '{"Price":50,"Color":"White","tags":["toy","children","games"]}'
 ```
 
@@ -131,7 +130,7 @@ Azure SQL tablolarında depolanan JSON olarak biçimlendirilmiş verileriniz var
 
 Azure SQL veritabanında kullanılabilen JSON işlevleri, JSON olarak biçimlendirilmiş verileri diğer SQL veri türü olarak ele almanıza izin tanır. JSON metninden değerleri kolayca ayıklayabilir ve herhangi bir sorguda JSON verilerini kullanabilirsiniz:
 
-```
+```sql
 select Id, Title, JSON_VALUE(Data, '$.Color'), JSON_QUERY(Data, '$.tags')
 from Products
 where JSON_VALUE(Data, '$.Color') = 'White'
@@ -149,7 +148,7 @@ JSON_MODIFY işlevi, JSON metninde güncellenmesi gereken değerin yolunu ve esk
 
 JSON standart bir metinde depolandığından, metin sütunlarında depolanan değerlerin düzgün biçimlendirilmiş olduğunun garantisi yoktur. JSON sütununda depolanan metnin standart Azure SQL Veritabanı denetim kısıtlamaları ve ISJSON işlevini kullanarak düzgün biçimlendirilmiş olduğunu doğrulayabilirsiniz:
 
-```
+```sql
 ALTER TABLE Products
     ADD CONSTRAINT [Data should be formatted as JSON]
         CHECK (ISJSON(Data) > 0)
@@ -168,7 +167,7 @@ Yukarıdaki örnekte, açılması gereken JSON dizininin nerede bulunacağını 
 
 Değişkendeki bir JSON dizisini @orders bir satır kümesine dönüştürebilir, bu sonuç kümesini analiz edebilir veya satırları standart bir tabloya ekleyebiliriz:
 
-```
+```sql
 CREATE PROCEDURE InsertOrders(@orders nvarchar(max))
 AS BEGIN
 
@@ -181,9 +180,9 @@ AS BEGIN
             Customer varchar(200),
             Quantity int
      )
-
 END
 ```
+
 JSON dizisi olarak biçimlendirilmiş ve depolanan yordamiçin parametre olarak sağlanan siparişlerin toplanması ayrıştırılabilir ve Siparişler tablosuna eklenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

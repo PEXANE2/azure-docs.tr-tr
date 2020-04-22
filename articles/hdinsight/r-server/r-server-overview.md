@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: overview
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: 5bf405840de54c4e2399ee73e723201acca9e6bc
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.date: 04/20/2020
+ms.openlocfilehash: 76fcdb52df88be2c4033140f4bc71b28424d7f38
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80657028"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687787"
 ---
 # <a name="what-is-ml-services-in-azure-hdinsight"></a>Azure HDInsight'ta ML Hizmetleri Nedir
 
@@ -23,7 +23,7 @@ HDInsight'taki ML Services, neredeyse her boyuttaki veri kümelerinde R tabanlı
 
 Kenar düğümü kümeye bağlanmak ve R komut dosyalarınızı çalıştırmak için kullanışlı bir yer sağlar. Kenar düğümü, ScaleR paralelleştirilmiş dağıtılmış işlevlerisunucunın çekirdekleri arasında çalıştırmayı sağlar. ScaleR'ın Hadoop Harita Azalt'ını kullanarak kümenin düğümleri üzerinde de çalıştırabilirsiniz. Apache Spark bilgi işlem bağlamlarını da kullanabilirsiniz.
 
-Çözümlemeden kaynaklanan modeller veya öngörüler şirket içi kullanım için indirilebilir. Azure'un başka bir yerinde de işletilebilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve web [hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)ile .
+Çözümlemeden kaynaklanan modeller veya öngörüler şirket içi kullanım için indirilebilir. Azure'un `operationalized` başka bir yerinde de olabilirler. Özellikle, [Azure Machine Learning Studio (klasik)](https://studio.azureml.net)ve web [hizmeti](../../machine-learning/studio/deploy-a-machine-learning-web-service.md)ile .
 
 ## <a name="get-started-with-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri ile başlayın
 
@@ -63,16 +63,16 @@ Aşağıdaki özellikler HDInsight'taki ML Services'a dahildir.
 | R özellikli | R ile yazılmış çözümler için [R paketleri,](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference) R'nin açık kaynak dağıtımı ve komut dosyası yürütme için çalışma zamanı altyapısı. |
 | Python özellikli | Python'da yazılan çözümler için [Python modülleri,](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference) Python'un açık kaynak dağılımı ve komut dosyası yürütme için çalışma zamanı altyapısı.
 | [Önceden eğitilmiş modeller](https://docs.microsoft.com/machine-learning-server/install/microsoftml-install-pretrained-models) | Görsel analiz ve metin duyarlılığı analizi için, sağladığınız verileri puana hazır. |
-| [Dağıtma ve tüket](r-server-operationalize.md) | Sunucunuzu operasyonel hale getirin ve çözümleri bir web hizmeti olarak dağıtın. |
+| [Dağıtma ve tüket](r-server-operationalize.md) | `Operationalize`sunucunuz ve çözümleri bir web hizmeti olarak dağıtın. |
 | [Uzaktan yürütme](r-server-hdinsight-manage.md#connect-remotely-to-microsoft-ml-services) | İstemci iş istasyonunuzdan ağınızdaki ML Hizmetleri kümesinde uzak oturumları başlatın. |
 
 ## <a name="data-storage-options-for-ml-services-on-hdinsight"></a>HDInsight'ta ML Hizmetleri için veri depolama seçenekleri
 
-HDFS dosya sistemi için varsayılan depolama bir Azure Depolama hesabı veya Azure Veri Gölü Depolama olabilir. Analiz sırasında küme depolamasına yüklenen veriler kalıcı hale getirilir. Veriler küme silindikten sonra bile kullanılabilir. Çeşitli araçlar depolamaya veri aktarımını işleyebilir. Araçlar depolama hesabının portal tabanlı yükleme tesisini ve [AzCopy](../../storage/common/storage-use-azcopy.md) yardımcı programını içerir.
+HDFS dosya sistemi için varsayılan depolama bir Azure Depolama hesabı veya Azure Veri Gölü Depolama olabilir. Analiz sırasında küme depolamasına yüklenen veriler kalıcı hale getirilir. Veriler küme silindikten sonra bile kullanılabilir. Çeşitli araçlar depolamaya veri aktarımını işleyebilir. Araçlar depolama hesabının portal tabanlı yükleme tesisini ve AzCopy yardımcı programını içerir.
 
 Küme oluşturma sırasında ek Blob ve Veri göl depolarına erişimi etkinleştirebilirsiniz. Kullanımdaki birincil depolama seçeneği ile sınırlı değilsiniz.  Birden çok depolama hesabı kullanma hakkında daha fazla bilgi edinmek [için HDInsight makalesinde ML Hizmetleri için Azure Depolama seçeneklerine](./r-server-storage.md) bakın.
 
-Kenar düğümünde kullanılmak üzere bir depolama seçeneği olarak [Azure Dosyaları'nı](../../storage/files/storage-how-to-use-files-linux.md) da kullanabilirsiniz. Azure Files, Azure Depolama'da oluşturulan dosya paylaşımlarının Linux dosya sistemine kaydedilmesini sağlar. Daha fazla bilgi için [HDInsight'ta ML Hizmetleri için Azure Depolama seçeneklerine](r-server-storage.md)bakın.
+Kenar düğümünde kullanılmak üzere bir depolama seçeneği olarak Azure Dosyaları'nı da kullanabilirsiniz. Azure Files, Azure Depolama'da oluşturulan dosya paylaşımlarının Linux dosya sistemine kaydedilmesini sağlar. Daha fazla bilgi için [HDInsight'ta ML Hizmetleri için Azure Depolama seçeneklerine](r-server-storage.md)bakın.
 
 ## <a name="access-ml-services-edge-node"></a>Erişim ML Hizmetleri kenar düğümü
 
@@ -82,9 +82,9 @@ Microsoft ML Server'a kenar düğümünde bir tarayıcı veya SSH/PuTTY kullanar
 
 R komut dosyalarınız 8000' den fazla açık kaynak R paketinden herhangi birini kullanabilir. ScaleR kitaplığından paralelleştirilmiş ve dağıtılmış yordamları da kullanabilirsiniz. Komut dosyaları kenar düğümünde çalıştırın r yorumlayıcısı içinde bu düğüm üzerinde çalıştırın. Map Reduce (RxHadoopMR) veya Spark (RxSpark) bilgi işlem bağlamı yla ScaleR işlevlerini arayan adımlar dışında. İşlevler, verilerle ilişkili veri düğümleri arasında dağıtılmış bir şekilde çalıştırılır. Bağlam seçenekleri hakkında daha fazla bilgi [için, HDInsight'ta ML Hizmetleri için Bilgi İşlem bağlamı seçeneklerine](r-server-compute-contexts.md)bakın.
 
-## <a name="operationalize-a-model"></a>Bir modeli kullanıma hazır hale getirme
+## <a name="operationalize-a-model"></a>`Operationalize`bir model
 
-Veri modellemeniz tamamlandığında, azure'dan veya şirket içinde yeni veriler için öngörülerde bulunmak için modeli işlevsel hale getirebilirsiniz. Bu işlem puanlama olarak bilinir. Puanlama HDInsight, Azure Machine Learning veya şirket içinde yapılabilir.
+Veri modellemeniz tamamlandığında, `operationalize` Azure'dan veya şirket içinde yeni veriler için öngörülerde bulunmak için model. Bu işlem puanlama olarak bilinir. Puanlama HDInsight, Azure Machine Learning veya şirket içinde yapılabilir.
 
 ### <a name="score-in-hdinsight"></a>HDInsight'ta puan
 
@@ -96,7 +96,7 @@ Azure Machine Learning'i kullanarak puan almak için, modelinizi Azure web hizme
 
 ### <a name="score-on-premises"></a>Şirket içinde puan
 
-Modelinizi oluşturduktan sonra şirket içinde puan elde etmek için: Modeli R'de seri hale getirmek, indirin, seri hale getirmek ten, sonra yeni veri puanlamak için kullanın. HDInsight'ta Daha önce [Score'da](#score-in-hdinsight) açıklanan yaklaşımı kullanarak veya [web hizmetlerini](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)kullanarak yeni veriler elde edebilirsiniz.
+Modelinizi oluşturduktan sonra şirket içinde puan elde etmek için: Modeli R'de seri hale getirmek, indirin, seri hale getirmek ten, sonra yeni veri puanlamak için kullanın. HDInsight'ta Daha önce Score'da açıklanan yaklaşımı kullanarak veya [web hizmetlerini](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)kullanarak yeni veriler elde edebilirsiniz.
 
 ## <a name="maintain-the-cluster"></a>Kümeyi koruyun
 
@@ -130,7 +130,7 @@ HDInsight'taki mevcut bir ML Hizmetleri kümesi portal üzerinden yukarı veya a
 
 BIR HDInsight kümesinin Linux kenar düğümü, R tabanlı analiz için iniş bölgesidir. HDInsight'ın son sürümleri, kenar düğümünde RStudio Server'ın tarayıcı tabanlı bir IDE'sini sağlar. RStudio Server geliştirme ve yürütme için R konsolundan daha üretkendir.
 
-Masaüstü IDE, kümeye uzak bir MapReduce veya Spark bilgi işlem bağlamında erişebilir. Seçenekler şunlardır: [Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS), RStudio ve Walware's Eclipse tabanlı [StatET](http://www.walware.de/goto/statet)için Microsoft'un R Tools .
+Masaüstü IDE, kümeye uzak bir MapReduce veya Spark bilgi işlem bağlamında erişebilir. Seçenekler şunlardır: Visual Studio (RTVS), RStudio ve Walware's Eclipse tabanlı StatET için Microsoft'un [R Tools.](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019)
 
 Komut istemine **R** yazarak kenar düğümündeki R konsoluna erişin. Konsol arabirimini kullanırken, metin düzenleyicisinde R komut dosyası geliştirmek uygundur. Daha sonra komut dosyanızın bölümlerini gerektiği gibi R konsoluna kesip yapıştırın.
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: e17a76d5a017400287644ad2da46caa5b6636654
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262307"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730498"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi
 
@@ -47,7 +47,7 @@ Hesap geçiş işlemini başlatmak için banner'a tıklayın. Aşağıdaki öğe
 
 Microsoft ile ortaklık yapmak isteyen şirketlerin Microsoft İş Ortağı Ağı'na (MPN) katılması ve bir MPN kimliği alması gerekir. Zaten Microsoft İş Ortağı Ağı'nın bir üyesiyseniz ve bir MPN kimliğiniz varsa, hesap etkinleştirme işlemi sırasında ihtiyacınız olduğu için bilgileri elinizin altında tutun.  
 
-Microsoft İş Ortağı Ağı'nın bir üyesi değilseniz, MPN kimliği almak için [buraya katılabilirsiniz.](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/en-us/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) Hesap etkinleştirme işlemi sırasında girmeniz gerektiğinden MPN kimliğinizi not alın.
+Microsoft İş Ortağı Ağı'nın bir üyesi değilseniz, MPN kimliği almak için [buraya katılabilirsiniz.](https://signup.microsoft.com/signup?sku=StoreForBusinessIW&origin=partnerdashboard&culture=en-us&ru=https://partner.microsoft.com/dashboard/account/v3/xpu/onboard?ru=/dashboard/account/v3/enrollment/companyprofile/basicpartnernetwork/new) Hesap etkinleştirme işlemi sırasında girmeniz gerektiğinden MPN kimliğinizi not alın.
 
 Microsoft İş Ortağı Ağı hakkında daha fazla bilgi edinmek için [bkz.](https://partner.microsoft.com/en-US/membership) Microsoft İş Ortağı Ağı'ndaki ISV avantajları hakkında daha fazla bilgi edinmek için [ISV Kaynak](https://partner.microsoft.com/isv-resource-hub)Hub'ına bakın.  
 
@@ -61,7 +61,7 @@ Dynamics 365 Müşteri Katılımı, PowerApps ve Dynamics 365 Operasyonları tek
 > Bu, Dynamics 365 Business Central teklifleri için geçerli değildir.  
 
 1. MPN üyelik hesabınız ilk olarak Ortak Üyelik Merkezi'nde (PMC) oluşturulduysa, hesabınızın geçirildiğini doğrulamak için [Ortak Merkezi'nde](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) oturum açın. MPN Kimliğinizin yer verdiği bir profil ekranı görürseniz, devam etmeye hazırsınız. Değilse, [Ortak Üyelik Merkezi'ndeki](https://partners.microsoft.com/partnerprogram/Welcome.aspx)istemleri izleyerek hesap geçişinizi başlatmanız gerekir. Yardıma ihtiyacınız varsa, desteği ziyaret [edin.](https://partner.microsoft.com/support?issueid=100-0077)
-2. [İş Ortağı Merkezi'ndeki Commercial Marketplace genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)gidin. Sol gezinti bölmesinde "Ticari Pazar Yeri" görürseniz, kaydolursunuz ve bir sonraki adıma devam etmelisiniz. Değilse, şimdi [ticari pazara kaydolun.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)
+2. [İş Ortağı Merkezi'ndeki Commercial Marketplace genel bakış sayfasına](https://partner.microsoft.com/dashboard/commercial-marketplace/overview)gidin. Sol gezinti bölmesinde "Ticari Pazar Yeri" görürseniz, kaydolursunuz ve bir sonraki adıma devam etmelisiniz. Değilse, şimdi [ticari pazara kaydolun.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
 3. [Tekliflerinizi arayarak AppSource'ta tekliflerinizi onaylayın.](https://appsource.microsoft.com/) Teklifleriniz zaten AppSource'taysa, bir sonraki adıma devam edin. AppSource'ta olmayan herhangi bir teklif için, yeni bir [Dynamics 365 Müşteri Katılımı teklifi](create-new-customer-engagement-offer.md) veya yeni dynamics [365 Operasyon teklifi](create-new-operations-offer.md)oluşturun.
 4. İş Ortağı Merkezi'nin [Anlaşmaları sayfasında,](https://partner.microsoft.com/dashboard/account/agreements) **İş Uygulamaları ISV Eki'ni**gözden aldığınızdan ve kabul ettiğinizden emin olun.
 5. İş Ortağı Merkezi'nin [Hesap ayarlarında,](https://partner.microsoft.com/dashboard/account/v3/accountsettings/billingprofile)fatura bilgilerinizin tamamlandığından emin olun.
@@ -73,10 +73,10 @@ Dynamics 365 Müşteri Katılımı, PowerApps ve Dynamics 365 Operasyonları tek
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-Destek ve güncellemeler için haftalık [Dynamics ISV topluluk çağrısına](https://aka.ms/DynamicsISV-CommunityCall) katılın.
+Forumlarda uzmanlardan ve meslektaşlarından yardım alın ve [Microsoft Dynamics CRM'de](https://community.dynamics.com/crm?wa=wsignin1.0)blogları, web seminerlerini, videoları, etkinlikleri ve daha fazlasını keşfedin.
 
-Pazar yeri tekliflerinizi yayınlamak, onaylamak veya yönetmek için yardıma ihtiyacınız varsa, [bir destek bileti gönderin.](https://aka.ms/MarketplacePublisherSupport)
+Pazar yeri tekliflerinizi yayınlamak, onaylamak veya yönetmek için yardıma ihtiyacınız varsa, [bir destek bileti gönderin.](https://partner.microsoft.com/support/v2/?stage=1)
 
-## <a name="next-steps"></a>Sonraki adımlar
+## <a name="next-step"></a>Sonraki adım
 
 - [İş Ortağı Merkezi'nde ticari pazar hesabınızı yönetme](./manage-account.md)

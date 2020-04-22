@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: c2a0dde496d6af66387210ca9b2ebf9cb4bdae7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79087942"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686872"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Öğretici: Azure Veri Kutusu Ağ Geçidine bağlanma, ayarlama, etkinleştirme
 
@@ -23,7 +23,7 @@ This tutorial describes how to connect to, set up, and activate your Data Box Ga
 
 Kurulum ve etkinleştirme işleminin tamamlanması yaklaşık 10 dakika sürebilir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Sanal bir cihaza bağlanma
@@ -41,7 +41,7 @@ Veri Kutusu Ağ Geçidinizi yapılandırmadan ve ayarlamadan önce şunları yap
 
 1. Bir tarayıcı penceresi açın ve aygıtın yerel web ui adresine şu anda erişin:
    
-   [https://ip-address-of-network-interface](https://ip-address-of-network-interface)
+   https:\//ip-adres-ağ-arayüz
    
    Önceki öğreticide belirtilen bağlantı URL'sini kullanın. Web sitesinin güvenlik sertifikasında bir sorun olduğunu belirten bir hata veya uyarı görürsünüz.
 

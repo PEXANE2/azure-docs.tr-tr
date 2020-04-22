@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: a4f9833e8dd14dc7c8ec5849cb809bf2089a5dae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77206132"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684839"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Çevirmen Metin API'si için dil ve bölge desteği
 
@@ -55,7 +55,7 @@ ms.locfileid: "77206132"
 |Çekçe| `cs`    |   Sinir|
 |Danca|    `da`        |Sinir|
 |Felemenkçe| `nl`|   Sinir|
-|Türkçe|   `en`    |   Sinir|
+|İngilizce|   `en`    |   Sinir|
 |Estonya Dili|  `et`    |   Sinir|
 |Fiji|    `fj`    |   Istatistiksel|
 |Filipino|  `fil`   |   Istatistiksel|
@@ -63,6 +63,7 @@ ms.locfileid: "77206132"
 |Fransızca|    `fr`    |   Sinir|
 |Almanca|    `de`    |   Sinir|
 |Yunanca| `el`    |   Sinir|
+|Gucerat dili|  `gu`    |   Sinir|
 |Haiti Creole|    `ht`        |Istatistiksel|
 |İbranice |`he`   |Sinir
 |Hintçe| `hi`    |   Sinir|
@@ -85,6 +86,7 @@ ms.locfileid: "77206132"
 |Malayalam dili| `ml` | Sinir
 |Maltaca|   `mt`    |   Istatistiksel|
 |Maori dili| `mi`  | Sinir|
+|Marathi| `mr`  | Sinir|
 |Norveççe| `nb`    |   Sinir|
 |Farsça|   `fa`    |   Sinir|
 |Lehçe|    `pl`    |   Sinir|
@@ -120,7 +122,7 @@ ms.locfileid: "77206132"
 
 Transliterate yöntemi aşağıdaki dilleri destekler. "To/From"da "<->", dilin listelenen komut dosyalarından herhangi birinden veya herhangi birinden çevrilebileceğini belirtir. "-->" dilin yalnızca bir komut dosyasından diğerine çevrilebileceğini gösterir.
 
-| Dil    | Dil kodu | Betik | Hedef/Kaynak | Betik|
+| Dil    | Dil kodu | Komut Dosyası | Hedef/Kaynak | Komut Dosyası|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arapça | `ar` | Arapça`Arab` | <--> | Latin`Latn` |
 |Bangla  | `bn` | Bengali`Beng` | <--> | Latin`Latn` |
@@ -227,7 +229,7 @@ Diller yöntemini kullanarak Çevirmen Metin API v3.0 için desteklenen dillerin
 | Çekçe      | `cs`          |
 | Danca      | `da`          |
 | Felemenkçe      | `nl`          |
-| Türkçe    | `en`     |
+| İngilizce    | `en`     |
 | Estonya Dili      | `et`          |
 | Fince      | `fi`          |
 | Fransızca      | `fr`          |

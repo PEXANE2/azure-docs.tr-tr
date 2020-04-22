@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/09/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63ec58711c5dd142064e2d5cb29ccaa9eb9c0ed9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1c2427fff37158745e416f4b2f0641697ad62ea9
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79300658"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81682686"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Öğretici: InVision ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -157,13 +157,15 @@ Bu bölümde, B.Simon'ın InVision'a erişim izni vererek Azure tek oturum açma
 
     e. **SAML Sertifikası** metin kutusunda, indirilen **Sertifikayı (Base64)** Notepad'e açın, içeriği kopyalayın ve SAML Certificate textbox'a yapıştırın.
 
-    f. **HASH Algoritması**için açılan dosyadan **SHA-256'yı** seçin.
+    f. Ad **Kimliği Biçimi** metin kutusunda, **Ad Kimliği Biçimi**için kullanın. `Unspecified`
 
-    g. **SSO Düğme Etiketi**için uygun adı girin.
+    g. **HASH Algoritması**için açılan dosyadan **SHA-256'yı** seçin.
 
-    h. **Just-in-Time provisioning On'a izin** verin.
+    h. **SSO Düğme Etiketi**için uygun adı girin.
 
-    i. **Güncelleştir**’e tıklayın.
+    i. **Just-in-Time provisioning On'a izin** verin.
+
+    j. **Güncelleştir**’e tıklayın.
 
 ### <a name="create-invision-test-user"></a>InVision test kullanıcısı oluşturma
 

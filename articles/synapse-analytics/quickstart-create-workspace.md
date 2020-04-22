@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0b6bf4c6a54e2f187a5751d267720f356e0c30ff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424401"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81676738"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Hızlı başlangıç: Azure Synapse Analytics çalışma alanı oluşturma (önizleme)
 
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa, başlamadan [önce ücretsiz bir hesap oluşturun.](h
     - Hesap adını kullanarak el ile girilen
 
     > [!IMPORTANT]
-    > Azure Synapse çalışma alanının seçili ADLS Gen2 hesabına okuma ve yazma yapabilmesi gerekir.
+    > Azure Synapse çalışma alanının seçili ADLS Gen2 hesabına okuma ve yazma yapabilmesi gerekir. Ayrıca, birincil depolama hesabı olarak bağladığınız herhangi bir depolama hesabı için, depolama hesabının oluşturulmasında **hiyerarşik ad alanını** etkinleştirmiş olmalısınız.
     >
     > ADLS Gen2 seçim alanlarının altında, çalışma alanının yönetilen kimliğinin, tam erişim sağlayan seçili Data Lake Storage Gen2 dosya sisteminde **Storaqe Blob Data Contributor** rolüne atanacağını belirten bir not vardır.
 

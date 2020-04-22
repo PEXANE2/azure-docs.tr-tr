@@ -7,12 +7,13 @@ ms.date: 3/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0600568ace5384cfb13688d14d1cf79e473f3208
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: amqp
+ms.openlocfilehash: 270e6a0173ed0088ff5d37c989947f5272634200
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133211"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687193"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -208,7 +209,7 @@ edgeAgent ve edgeHub modüllerine ek olarak, diğer modüllerin proxy yapıland�
 
 Aşağıdaki yordam IoT Edge cihazının ömrü boyunca geçerlidir.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 IoT Edge aygıtları için dağıtımlar oluşturmak için **Set modülleri** sihirbazını kullandığınızda, her modülün proxy sunucu bağlantılarını yapılandırmak için kullanabileceğiniz bir **Çevre Değişkenleri** bölümü vardır.
 

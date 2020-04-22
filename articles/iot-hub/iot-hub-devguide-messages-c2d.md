@@ -8,12 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: 3a7254cc9de89a297811792b4dd64b4b669ba8e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: mqtt
+ms.openlocfilehash: 307ab47c1f7498f71e61108a616d35ef1d4f61c9
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271245"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730006"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Bir IoT hub'ından buluttan aygıta iletiler gönderme
 
@@ -96,7 +97,7 @@ Gövde, her biri aşağıdaki özelliklere sahip JSON serileştirilmiş bir kay�
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | İletinin sonucunun ne zaman gerçekleştiğini belirten bir zaman damgası (örneğin, hub geri bildirim iletisini aldı veya özgün iletinin süresi doldu) |
 | OrijinalMessageId  | Bu geri bildirim bilgilerinin ilişkili olduğu buluttan aygıta iletinin *MessageId'i* |
-| Statuscode         | IoT hub'ı tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli dize: <br/> *Başarı* <br/> *Süresi dolmuş* <br/> *DeliveryCountExceeded* <br/> *Reddedilen* <br/> *Tasfiye* |
+| Statuscode         | IoT hub'ı tarafından oluşturulan geri bildirim iletilerinde kullanılan gerekli dize: <br/> *Başarı* <br/> *Süresi doldu* <br/> *DeliveryCountExceeded* <br/> *Reddedilen* <br/> *Tasfiye* |
 | Açıklama        | StatusCode için *dize* değerleri |
 | DeviceId           | Bu geri bildirim parçasının ilişkili olduğu buluttan aygıta iletinin hedef aygıtının *DeviceId'i* |
 | DeviceGenerationId | Bu geri bildirim parçasının ilişkili olduğu buluttan aygıta iletinin hedef aygıtının *DeviceGenerationId'i* |

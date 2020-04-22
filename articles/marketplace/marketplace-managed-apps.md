@@ -6,14 +6,14 @@ author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 38323ecfee69460b16542a3e004513f6a7389c41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56281ff8faba6b4b950334e2b0018d48c8e7aeb3
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288419"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687574"
 ---
 # <a name="azure-applications-managed-application-offer-publishing-guide"></a>Azure Uygulamaları: Yönetilen Uygulama Teklifi Yayımlama Kılavuzu
 
@@ -34,7 +34,7 @@ Aşağıdaki koşullar gerektiğinde Azure uygulamasını kullanın: yönetilen 
 |---------|---------|
 |Müşterinin Azure aboneliğine dağıtıldı | Yönetilen Uygulamalar müşterinin aboneliğinde dağıtılmalı ve üçüncü bir taraf tarafından yönetilebilir. | 
 |Faturalama ve ölçüm    |  Kaynaklar müşterinin Azure aboneliğinde sağlanacaktır. Gittiğiniz kadar öde (PAYGO) sanal makineler, müşteri yle Birlikte Microsoft üzerinden işlenir ve müşterinin Azure aboneliği (PAYGO) üzerinden faturalandırılır. <br> Kendi lisansınızı getirme durumunda, Microsoft müşteri aboneliğinde tahakkuk eden altyapı maliyetlerini faturalayacaktır, ancak yazılım lisans ücretlerinizi doğrudan müşteriye aktarabilirsiniz.        |
-|Azure uyumlu sanal sabit disk (VHD)    |   VM'ler Windows veya Linux üzerine inşa edilmelidir.<ul> <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için [Azure'da onaylanan Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için [bkz.](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)</li> </ul> |
+|Azure uyumlu sanal sabit disk (VHD)    |   VM'ler Windows veya Linux üzerine inşa edilmelidir.<ul> <ul> <li>Linux VHD oluşturma hakkında daha fazla bilgi için [Azure'da onaylanan Linux dağıtımlarına](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)bakın.</li> <li>Windows VHD oluşturma hakkında daha fazla bilgi için [bir Azure uygulama teklifi oluşturma](./partner-center-portal/create-new-azure-apps-offer.md)bilgisine bakın.</li> </ul> |
 
 >[!NOTE]
 > Yönetilen uygulamalar Market aracılığıyla dağıtılabilir olmalıdır. Müşteri iletişimi bir sorunsa, müşteri adayı paylaşımını etkinleştirdikten sonra ilgili müşterilere ulaşmalısınız.  
@@ -43,10 +43,12 @@ Aşağıdaki koşullar gerektiğinde Azure uygulamasını kullanın: yönetilen 
 >Bulut Çözüm Sağlayıcıları (CSP) iş ortağı kanal tercihi artık kullanılabilir.  Microsoft CSP iş ortağı kanalları aracılığıyla teklifinizi pazarlama hakkında daha fazla bilgi için lütfen [Bulut Çözüm Sağlayıcıları'na](./cloud-solution-providers.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Eğer bunu yapmadıysanız, 
 
-- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
+- Pazar yeri hakkında [bilgi edinin.](https://azuremarketplace.microsoft.com/sell)
 
-Kayıtlıysanız ve yeni bir teklif oluşturuyorsanız veya varolan bir teklif üzerinde çalışıyorsanız,
+Ortak Merkezi'ne kaydolmak için yeni bir teklif oluşturmaya veya varolan bir teklif üzerinde çalışmaya başlayın:
 
-- Teklifinizi oluşturmak veya tamamlamak için [Bulut İş Ortağı Portalı'nda oturum açın.](https://cloudpartner.azure.com)
+- Teklifinizi oluşturmak veya tamamlamak için [Partner Center'da oturum açın.](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)
+- Daha fazla bilgi için [bir Azure uygulama teklifi oluşturma](./partner-center-portal/create-new-azure-apps-offer.md) bilgisine bakın.

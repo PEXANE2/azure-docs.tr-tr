@@ -4,12 +4,12 @@ description: Sorun giderme yükleme, Azure Yedekleme Sunucusu kaydı ve uygulama
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 7a1cac63ba6497b8580c83fe2b666b020701283a
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421288"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688043"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -62,7 +62,7 @@ Microsoft Azure Yedekleme Sunucusu (MABS) sorun giderme başlatmaya başlamadan 
 
 | İşlem | Hata ayrıntıları | Geçici çözüm |
 | --- | --- | --- |
-| Aracıları korumalı sunuculara itme | Aracı işlemi, ServerName>'ndeki \<DPM Agent Coordinator hizmetinde yapılan bir iletişim hatası nedeniyle başarısız oldu. | **Üründe gösterilen önerilen eylem işe yaramazsa, aşağıdaki adımları gerçekleştirin:** <ul><li> Güvenilmeyen bir etki alanından bilgisayar ekiyorsanız, [aşağıdaki adımları](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)izleyin. <br> (VEYA) </li><li> Güvenilir bir etki alanından bir bilgisayar ekiyorsanız, bu [blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)özetlenen adımları kullanarak sorun giderme. <br>(VEYA)</li><li> Sorun giderme adımı olarak virüsten korumayı devre dışı bırakmayı deneyin. Sorunu giderirse, [bu makalede](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))önerilen virüsten koruma ayarlarını değiştirin.</li></ul> |
+| Aracıları korumalı sunuculara itme | Aracı işlemi, ServerName>'ndeki \<DPM Agent Coordinator hizmetinde yapılan bir iletişim hatası nedeniyle başarısız oldu. | **Üründe gösterilen önerilen eylem işe yaramazsa, aşağıdaki adımları gerçekleştirin:** <ul><li> Güvenilmeyen bir etki alanından bilgisayar ekiyorsanız, [aşağıdaki adımları](https://docs.microsoft.com/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)izleyin. <br> (VEYA) </li><li> Güvenilir bir etki alanından bir bilgisayar ekiyorsanız, bu [blogda](https://techcommunity.microsoft.com/t5/system-center-blog/data-protection-manager-agent-network-troubleshooting/ba-p/344726)özetlenen adımları kullanarak sorun giderme. <br>(VEYA)</li><li> Sorun giderme adımı olarak virüsten korumayı devre dışı bırakmayı deneyin. Sorunu giderirse, [bu makalede](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)önerilen virüsten koruma ayarlarını değiştirin.</li></ul> |
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Kurulum, kayıt defteri meta verilerini güncelleştiremedi
 
@@ -96,7 +96,7 @@ Microsoft Azure Yedekleme Sunucusu (MABS) sorun giderme başlatmaya başlamadan 
 | Backup | Yalnızca sistem durumunu yedeklederseniz, korumalı bilgisayarda sistem durumu yedeklemesini depolamak için yeterli boş alan olduğunu doğrulayın. | <ol><li>Windows Server Backup'ın korumalı makineye yüklü olduğunu doğrulayın.</li><li>Korumalı bilgisayarda sistem durumu için yeterli alan olduğunu doğrulayın. Bunu doğrulamanın en kolay yolu, korumalı bilgisayara gitmek, Windows Server Yedekleme'yi açmak, seçimleri tıklatmak ve ardından BMR'yi seçmektir. UI daha sonra ne kadar alan gerektiğini söyler. AÇ **WSB** > **Yerel Yedekleme** > **Yedekleme çizelgesi** > **Seç Yedek Yapılandırma** > **Tam sunucu** (boyut görüntülenir). Doğrulama için bu boyutu kullanın.</li></ol>
 | Backup | BMR için yedekleme hatası | BMR boyutu büyükse, bazı uygulama dosyalarını işletim sistemi sürücüsüne taşıyın ve yeniden deneyin. |
 | Backup | Yeni bir Microsoft Azure Yedekleme Sunucusu'nda bir VMware VM'yi yeniden koruma seçeneği eklenecek şekilde gösterilmez. | VMware özellikleri, Microsoft Azure Yedekleme Sunucusu'nun eski ve kullanımdan kaldırılmış bir örneğine işaret edilir. Bu sorunu çözmek için:<br><ol><li>VCenter'da (SC-VMM eşdeğeri), **Özet** sekmesine gidin ve ardından **Özel Özniteliklere**gidin.</li>  <li>Eski Microsoft Azure Yedekleme Sunucusu adını **DPMServer** değerinden silin.</li>  <li>Yeni Microsoft Azure Yedekleme Sunucusu'na geri dön ve PG'yi değiştirin.  **Yenile** düğmesini seçtikten sonra, VM koruma eklemek için kullanılabilir olarak bir onay kutusu ile görünür.</li></ol> |
-| Backup | Dosyalara/paylaşılan klasörlere erişirken hata | Bu makalede önerilen virüsten koruma ayarlarını değiştirmeyi deneyin [DPM sunucusunda virüsten koruma yazılımı çalıştırın.](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/hh757911(v=sc.12))|
+| Backup | Dosyalara/paylaşılan klasörlere erişirken hata | Bu makalede önerilen virüsten koruma ayarlarını değiştirmeyi deneyin [DPM sunucusunda virüsten koruma yazılımı çalıştırın.](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)|
 
 ## <a name="change-passphrase"></a>Parola sözcükünü değiştir
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 6b7ca1f10744bf38137c57d94d796655946c31b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81390355"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81730612"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure uygulama teklifi oluşturma
 
@@ -293,7 +293,7 @@ Bu plan en az bir bulutta kullanılabilir hale getirilmelidir.
 
 Çözümünüzü, Market tümleştirmesi olan tüm ortak Azure bölgelerindeki müşteriler için dağıtılabilir hale getirmek için **Herkese Açık Azure** seçeneğini seçin.  [Coğrafi kullanılabilirlik](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies)hakkında daha fazla bilgi edinin.
 
-Çözümünüzü, ABD Federal, Eyalet, yerel veya bu kuruluşlardan müşteriler için kontrollü erişime sahip bir devlet topluluğu bulutu olan [Azure Kamu Bulutu'nda](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)dağıtılabilir hale getirmek için Azure Kamu **Bulutu** seçeneğini belirleyin.  Yayıncı olarak, bu bulut topluluğuna hizmet etmek için tüm uyumluluk denetimlerinden, güvenlik önlemlerinden ve en iyi uygulamalardan siz sorumlusunuz.  Azure Kamu fiziksel olarak yalıtılmış veri merkezlerini ve ağlarını kullanır (yalnızca ABD'de bulunur).  Azure [Hükümeti'nde](https://aka.ms/azuregovpublish)yayımlamadan önce Microsoft, belirli uç noktalar farklı olabileceğinden çözümünüzü ortamda sınayın ve doğrulamanızı önerir. Çözümünüzü aşamalı olarak düzenlemek ve test etmek için bu [bağlantıdan](https://azure.microsoft.com/global-infrastructure/government/request/)bir deneme hesabı isteyin.
+Çözümünüzü, ABD Federal, Eyalet, yerel veya bu kuruluşlardan müşteriler için kontrollü erişime sahip bir devlet topluluğu bulutu olan [Azure Kamu Bulutu'nda](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)dağıtılabilir hale getirmek için Azure Kamu **Bulutu** seçeneğini belirleyin.  Yayıncı olarak, bu bulut topluluğuna hizmet etmek için tüm uyumluluk denetimlerinden, güvenlik önlemlerinden ve en iyi uygulamalardan siz sorumlusunuz.  Azure Kamu fiziksel olarak yalıtılmış veri merkezlerini ve ağlarını kullanır (yalnızca ABD'de bulunur).  Azure [Hükümeti'nde](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace-partners)yayımlamadan önce Microsoft, belirli uç noktalar farklı olabileceğinden çözümünüzü ortamda sınayın ve doğrulamanızı önerir. Çözümünüzü aşamalı olarak düzenlemek ve test etmek için bu [bağlantıdan](https://azure.microsoft.com/global-infrastructure/government/request/)bir deneme hesabı isteyin.
 
 >[!Note]
 >Bir plan belirli bir bulutta kullanılabilir olarak yayımlandıktan sonra, bu bulut kaldırılamaz.

@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 05b166b2ec46900d9e3972025efb581d9619ec6a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: a1ec89dfd2dda91a10f2cc00b6ca4d9d7abbf032
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81252678"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731149"
 ---
 # <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizden müşteri adayları
 
@@ -96,7 +96,7 @@ Müşterinin bilgileri birden çok alan üzerinden gönderilir. Aşağıdaki ör
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Müşteri adayımın ayarlanması nda nereden yardım alabilirim?
 
-Belgeleri [burada](#connect-to-your-crm-system) bulabilir veya aka.ms/marketplacepublishersupport üzerinden bir destek bileti gönderebilir, ardından **'teklif oluşturma'** → **teklif türünü** → **'müşteri adayı yönetimi yapılandırması'nı seçebilirsiniz.**
+[Burada](#connect-to-your-crm-system) belgeleri bulabilir veya ardından **'teklif oluşturma'** → teklif türünü → **'müşteri adayı yönetimi yapılandırması'** seçeneğini seçerek https://partner.microsoft.com/support/v2/?stage=1 bir destek bileti **gönderebilirsiniz.**
 
 ### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Pazarda bir teklif yayınlamak için bir müşteri adayı nı yapılandırmam gerekiyor mu?
 
@@ -133,7 +133,7 @@ Azure Blob müşteri adayı hedefi artık desteklenmez, bu nedenle teklifiniz ta
 
 ### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Marketplace'ten bir e-posta aldım, crm'imde neden müşteri adayı bulamıyorum?
 
-Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedenleriyle, .edu etki alanından özel tanımlayıcı bilgiler geçirmeyiz. aka.ms/marketplacepublishersupport üzerinden destek bileti gönderin.
+Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedenleriyle, .edu etki alanından özel tanımlayıcı bilgiler geçirmeyiz. Üzerinden https://partner.microsoft.com/support/v2/?stage=1bir destek bileti gönderin.
 
 ### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Azure Tablosu'nu müşteri adayı olarak yapılandırıldım, müşteri adaylarını nasıl görüntüleyebilirim?
 

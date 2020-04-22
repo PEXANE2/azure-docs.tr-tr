@@ -3,12 +3,12 @@ title: ASP.NET Temel uygulamalar için Azure Uygulama Öngörüleri | Microsoft 
 description: Kullanılabilirlik, performans ve kullanım için Core web uygulamalarını ASP.NET izleyin.
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: d6a0e507022452f1491e71651ba3bc8db3d1c090
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1a9a81d76df7f14fb99b8521e7bfa2edff6c9e9e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284798"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687381"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Çekirdek uygulamaları için Uygulama Öngörüleri
 
@@ -103,7 +103,7 @@ Burada kullanacağımız örnek, hedefleyen `netcoreapp2.2`bir [MVC uygulamasıd
 
     * `ApplicationInsights:InstrumentationKey`
 
-    Örnek:
+    Örneğin:
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -162,11 +162,11 @@ ASP.NET Core'daki [performans sayaçları](https://azure.microsoft.com/documenta
     
 Alternatif olarak `FullScript` `ScriptBody` SDK v2.14'ten başlayarak kullanılabilir. İçerik Güvenlik İlkesi `<script>` ayarlamak için etiketi denetlemeniz gerekiyorsa bunu kullanın:
 
-    ```cshtml
-        <script> // apply custom changes to this script tag.
-            @Html.Raw(JavaScriptSnippet.ScriptBody)
-        </script>
-    ```
+```cshtml
+ <script> // apply custom changes to this script tag.
+     @Html.Raw(JavaScriptSnippet.ScriptBody)
+ </script>
+```
 
 Daha `.cshtml` önce başvurulan dosya adları varsayılan Bir MVC uygulama şablonundan dır. Sonuç olarak, uygulamanız için istemci tarafı izlemeyi düzgün bir şekilde etkinleştirmek istiyorsanız, JavaScript `<head>` snippet'inin izlemek istediğiniz uygulamanızın her sayfasının bölümünde görünmesi gerekir. Bu uygulama şablonu için bu hedefi JavaScript snippet ekleyerek `_Layout.cshtml`gerçekleştirebilirsiniz. 
 

@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/4/2019
+ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a142ce3c082f6f9a53287885ba347fc78f77718
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: da324e1e1a40e515cac4b26d6c9f8661f344e1d7
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262035"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687597"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft ticari market hakkında SSS
 
@@ -46,7 +46,7 @@ Azure Marketi, Azure ürün ve hizmetlerini genişletmek için oluşturulmuş Mi
 
 **Azure Marketi'ne nasıl başlarım?**
 
-[Azure](https://azuremarketplace.microsoft.com/marketplace/apps)Marketi'ni ziyaret ederek Azure'da çalışmak üzere sertifikalı ve optimize edilmiş çok çeşitli kurumsal uygulamalar ve çözümler bulabilirsiniz. Azure Marketi'ne [**bir kaynak oluşturduğunuzda**](https://portal.azure.com/#create/hub) [Azure portalı] üzerinden de erişilebilir.
+[Azure](https://azuremarketplace.microsoft.com/marketplace/apps)Marketi'ni ziyaret ederek Azure'da çalışmak üzere sertifikalı ve optimize edilmiş çok çeşitli kurumsal uygulamalar ve çözümler bulabilirsiniz. Azure Marketi'ne [**bir kaynak oluşturduğunuzda**](https://portal.azure.com/#create/hub)[Azure portalı] üzerinden de erişilebilir.
 
 **Azure Marketi'nin temel avantajları nelerdir?**
 
@@ -57,7 +57,7 @@ Azure Marketi ile müşteriler Azure için oluşturulmuş veya Azure'da yerleşi
 Azure Market teklifleri şu yollarla satın alınabilir:
 
 * [Web tabanlı vitrin](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [Azure portalı Azure][portalı]
+* [Azure portalı] [Azure portalı]
 * [Azure Komut Satırı Arabirimi (CLI)](/cli/azure/?view=azure-cli-latest)
 
 >[!Note]
@@ -127,7 +127,7 @@ Azure aboneliği, yayıncının Bağımsız Yazılım Satıcıları (ISV) çöz�
 
 + *Kullanıcı başına:* SaaS abonelikleri, aylık veya yıllık olarak faturalandırılan kullanıcı bazında fiyatlandırılabilir. 
 
-Teklife özel fiyatlandırma ayrıntıları, Azure portalında [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) veya [Azure portalında]çözüm ayrıntıları sayfasında bulunabilir.
+Teklife özel fiyatlandırma ayrıntıları, [Azure portalında] bulunan [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) veya içindeki çözüm ayrıntıları sayfasında bulunabilir.
 
 > [!Note]
 > Aylık ücretler dışında, aksi belirtilmedikçe Azure kullanım ücretleri tüm fiyatlandırma modelleri için geçerlidir.
@@ -180,9 +180,9 @@ Hayır. Azure Marketi'nde çözümlere sahip olan yayıncı fiyatlandırma ayarl
 
 **Azure Marketi abonelik bilgilerimi ve fatura bilgilerimi nerede görüntüleyebilirim?**
 
-MOSP - [Microsoft Online Abonelik Programı](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) [müşterileri, Azure portalının]Maliyet Yönetimi + Faturalandırma bölümünün Faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
+MOSP - [Microsoft Online Abonelik Programı](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (web direct) müşterileri, [Azure portalının] Maliyet Yönetimi + Faturalandırma bölümünün Faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
 
-Kurumsal Sözleşme (EA) müşterileri, [Azure portalının]Maliyet Yönetimi + Faturalandırma bölümünün Faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
+Kurumsal Sözleşme (EA) müşterileri, [Azure portalının] Maliyet Yönetimi + Faturalandırma bölümünün Faturalar sekmesinde Market satın alma ayrıntılarını görüntüleyebilir.
 
 Bulut Çözüm Sağlayıcısı (CSP) iş ortakları, Müşteriler görünümünde bir şirket seçtikten sonra Sipariş Geçmişi sekmesindeki İş Ortağı Merkezi'ndeki her müşteri için Market satın alma ayrıntılarını görüntüleyebilir.
 
@@ -208,7 +208,7 @@ Azure Marketi'nden satın alınan diğer hizmetleri bir EA aboneliğine geçirme
 
 **Azure Marketi satın alma satın alma ımın ne kadarını kullandığımı nasıl öğrenebilirim?**
 
-Azure [portalında]tahmini kullanım bilgileri bulunabilir. Bu tür tahmini kullanım bilgileri son etkinlikleri içermeyebilir ve geçmiş tüketimden elde edilen tahminlere dayalı olabilir. Genel önizleme sırasında, bu özellik tüm satın almaişlemleri için kullanılamayabilir ve ürün türüne bağlı olarak değişebilir.
+Tahmini kullanım bilgileri [Azure portalında] bulunabilir. Bu tür tahmini kullanım bilgileri son etkinlikleri içermeyebilir ve geçmiş tüketimden elde edilen tahminlere dayalı olabilir. Genel önizleme sırasında, bu özellik tüm satın almaişlemleri için kullanılamayabilir ve ürün türüne bağlı olarak değişebilir.
 
 ### <a name="customer-support"></a>Müşteri desteği
 
@@ -307,7 +307,7 @@ Azure Marketi üzerinden Liste, Deneme sürümü veya BYOL (Kendi Lisansını Ge
 
 **Azure Marketi üzerinden yapılan alışverişlerde işlem ücreti var mı?**
 
-Çözüm lisansı Azure Marketi üzerinden satın alındığında, yazılım lisansının gelirleri yayımcı ve Microsoft arasında bölünür.  Bu, [Marketplace Publisher Anlaşması'ndaki](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)hüküm ve koşullara uygun olarak yapılır. Ayrıca, BYOL (Bring Your Own License) yayıncılarına ait çözümlerde işlem ücreti alınmaz.
+Çözüm lisansı Azure Marketi üzerinden satın alındığında, yazılım lisansının gelirleri yayımcı ve Microsoft arasında bölünür.  Bu, [Marketplace Publisher Anlaşması'ndaki](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)hüküm ve koşullara uygun olarak yapılır. Ayrıca, BYOL (Bring Your Own License) yayıncılarına ait çözümlerde işlem ücreti alınmaz.
 
 **Standart Sözleşme Nedir?**
 
@@ -335,7 +335,7 @@ Müşteri adayları, ürünlerinizi Market'ten dağıtan müşterilerdir. Ürün
 
 **Müşteri adayımın ayarlanması nda nereden yardım alabilirim?**
 
-[İş Ortağı Merkezi-Müşteri Müşteri Adayları](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) Belgelerinde daha [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) fazla bilgi edinin veya teklif türünüzü ve müşteri lideri yönetiminizi seçerek bir destek bileti gönderin.
+[İş Ortağı Merkezi-Müşteri Müşteri Adayları](./partner-center-portal/commercial-marketplace-get-customer-leads.md) Belgelerinde daha [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) fazla bilgi edinin veya teklif türünüzü ve müşteri lideri yönetiminizi seçerek bir destek bileti gönderin.
 
 **Marketplace'te bir teklif yayınlamak için bir müşteri adayı nı yapılandırmam gerekiyor mu?**
 
@@ -343,7 +343,7 @@ Evet, bir **İletişim Beni,** **SaaS uygulaması**veya **danışmanlık hizmetl
 
 **Müşteri adayı yapılandırmasının doğru olduğunu nasıl doğrulayabilirim?**
 
-Teklifi tamamladıktan ve bir müşteri adayı hedef belirledikten sonra, giriş [İş Ortağı Merkezi'nde](https://cloudpartner.azure.com/)düzgün bir şekilde yayınlanabilir. Giriş yayına girmeden önce, müşteri adayı yapılandırma kurulumunun doğru çalışıp çalışmadığınızı doğrulayabilirsiniz.  Teklifte yapılandırılan müşteri adayı hedefine bir test müşteri adayı gönderin.
+Teklifi tamamladıktan ve bir müşteri adayı hedef belirledikten sonra, giriş [İş Ortağı Merkezi'nde](https://partner.microsoft.com/)düzgün bir şekilde yayınlanabilir. Giriş yayına girmeden önce, müşteri adayı yapılandırma kurulumunun doğru çalışıp çalışmadığınızı doğrulayabilirsiniz.  Teklifte yapılandırılan müşteri adayı hedefine bir test müşteri adayı gönderin.
 
 **Azure Marketi, yayıncıların hangi ülkelerden/bölgelerden satış satması için kullanılabilir?**
 
@@ -353,13 +353,13 @@ Aşağıdaki ülkelerde/bölgelerde bulunan yayıncılar şu anda Azure Marketi'
 
 *Sanal Makine & Azure Uygulamaları:*
 
-1. [Ortak Merkezi'nde](https://cloudpartner.azure.com/)oturum açın.
+1. [Ortak Merkezi'nde](https://partner.microsoft.com/)oturum açın.
 1. **Tüm Teklifler** sekmesinden teklifi seçin.
 1. Ekranın sol tarafındaki bölmede **SNU** sekmesini seçin.
 1. Silme için SKU'yu seçin ve bu SKU için **sil** düğmesini tıklatın.
 1. Teklifi Azure Marketi'nde [yeniden yayınlayın.](./cloud-partner-portal/manage-offers/cpp-publish-offer.md)
 
-Daha fazla bilgi için [teklif silme](./cloud-partner-portal/manage-offers/cpp-delete-offer.md)bölümüne bakın.
+Daha fazla bilgi için [bir teklifi güncelleştirmeye](./partner-center-portal/update-existing-offer.md)bakın.
 
 *Web Apps (SaaS uygulamaları, Eklentiler) danışmanlık hizmetleri &:*
 
@@ -392,7 +392,7 @@ GTM avantajlarımız ve işinizi pazarda büyütme yolları hakkında daha fazla
 
 **Azure Marketi çözümleri Microsoft web özelliklerinde nerede tanıtılır?**
 
-Azure Marketi çözümleri Microsoft [Azure portalında]ve [Azure Marketweb web sitesinde](https://azuremarketplace.microsoft.com/marketplace/)mevcuttur. Azure kullanan Bulut Geliştiricileri ve BT Uzmanları, her oturum açtıklarında iş ortağı çözümlerine maruz kalır. Azure [Marketi ana sayfası](https://azuremarketplace.microsoft.com/marketplace) ve [Azure çözümleri sayfasında](https://azure.microsoft.com/solutions/)da bir alt iş ortağı çözümleri sergilenir ve döndürülür.
+Azure Marketi çözümleri Microsoft [Azure portalı]' ve [Azure Marketi web sitesinde](https://azuremarketplace.microsoft.com/marketplace/)mevcuttur. Azure kullanan Bulut Geliştiricileri ve BT Uzmanları, her oturum açtıklarında iş ortağı çözümlerine maruz kalır. Azure [Marketi ana sayfası](https://azuremarketplace.microsoft.com/marketplace) ve [Azure çözümleri sayfasında](https://azure.microsoft.com/solutions/)da bir alt iş ortağı çözümleri sergilenir ve döndürülür.
 
 ### <a name="billing-and-payments"></a>Faturalandırma ve ödemeler
 
@@ -474,6 +474,3 @@ Evet, destek bileti yoluyla isteğiniz üzerine, uygun gördüğünüz takdirde 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Ticari [pazar yayıncısı kılavuzu](/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin.
-
-
-[Azure portal]: https://portal.azure.com

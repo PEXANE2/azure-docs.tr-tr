@@ -2,14 +2,14 @@
 title: Azure Geçişi ile değerlendirme/geçiş için VMware VM'leri hazırlayın
 description: Azure Geçişi ile VMware VM'lerinin değerlendirilmesi/geçişi için nasıl hazırlanacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 9f0729a3ddb2d8196a855557a6b8587940563984
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a3f9716d6302c41f139d9a2a8b1f994b79afd199
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81535273"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81677293"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
@@ -151,7 +151,7 @@ VMware VM'lerin [aracı tabanlı geçişi](server-migrate-overview.md) için ger
 3. Aracı tabanlı geçiş bir çoğaltma cihazı kullanır:
     - Çoğaltma cihazı için dağıtım gereksinimlerini [gözden geçirin.](migrate-replication-appliance.md#appliance-requirements)
     - Cihaza MySQL yükleme [seçeneklerini gözden geçirin.](migrate-replication-appliance.md#mysql-installation)
-    - Gerekli URL erişimine dikkat [edin.](migrate-replication-appliance.md#url-access)
+    - Genel ve [devlet](migrate-replication-appliance.md#azure-government-url-access) bulutları için gereken URL erişimine dikkat [edin.](migrate-replication-appliance.md#url-access)
     - Çoğaltma cihazı için [bağlantı noktası erişim](migrate-replication-appliance.md#port-access) gereksinimlerini gözden geçirin.
     
 ## <a name="next-steps"></a>Sonraki adımlar

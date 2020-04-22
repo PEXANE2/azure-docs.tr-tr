@@ -10,12 +10,12 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 05e668ff5b0ec19c5e380cf6bfee4b6e46900b2f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9c15e4217c5331346c5a95329bae7e2a4f0e0841
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77371899"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732064"
 ---
 Node.js için Dil Anlayışı (LUIS) çalışma zamanı istemci kitaplığını şu şekilde kullanın:
 
@@ -28,6 +28,7 @@ Node.js için Dil Anlayışı (LUIS) çalışma zamanı istemci kitaplığını 
 
 * Dil Anlama çalışma zamanı kaynağı: [Azure portalında bir tane oluşturun](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
 * [Node.js](https://nodejs.org)
+* Bir LUIS uygulama kimliği - genel IoT uygulama kimliğini `df67dcdb-c37d-46af-88e1-8b97951ca1c2`kullanın. Quickstart kodunda kullanılan kullanıcı sorgusu bu uygulamaya özgüdür.
 
 ## <a name="setting-up"></a>Ayarlama
 
@@ -37,9 +38,9 @@ Luis çalışma zamanı kaynağı oluşturarak [çalışma zamanı anahtarınız
 
 [!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
-### <a name="create-a-new-javascript-nodejs-file"></a>Yeni bir javascript (Node.js) dosyası oluşturma
+### <a name="create-a-new-javascript-nodejs-file"></a>Yeni bir JavaScript (Node.js) dosyası oluşturma
 
-Tercih ettiğiniz düzenleyicide veya IDE'de yeni `luis_prediction.js`bir javascript dosyası oluşturun.
+Tercih ettiğiniz düzenleyicide veya IDE'de yeni `luis_prediction.js`bir JavaScript dosyası oluşturun.
 
 ### <a name="install-the-npm-library-for-the-luis-runtime"></a>LUIS çalışma zamanı için NPM kitaplığını yükleme
 

@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3c89fae09583c96cf8139885fe2554cf6784b4e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78269834"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687968"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Güvenlik Çerçevesi: Yapılandırma Yönetimi | Azaltıcı etken 
 | Ürün / Hizmet | Makale |
 | --------------- | ------- |
 | **Web Uygulaması** | <ul><li>[İçerik Güvenlik İlkesi (CSP) uygulayın ve satır satır lı javascript'i devre dışı](#csp-js)</li><li>[Tarayıcının XSS filtresini etkinleştirme](#xss-filter)</li><li>[ASP.NET uygulamaları, dağıtımdan önce izleme ve hata ayıklamadevre vermemelidir](#trace-deploy)</li><li>[Yalnızca güvenilen kaynaklardan üçüncü taraf javascript'lere erişin](#js-trusted)</li><li>[Kimlik doğrulaması ASP.NET sayfalarının UI Redressing veya click-jacking savunmalarını dahil ettiğinden emin olun](#ui-defenses)</li><li>[ASP.NET Web Uygulamaları'nda CORS etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun](#cors-aspnet)</li><li>[ASP.NET Sayfalarda İstek özniteliğini doğrulamayı etkinleştirme](#validate-aspnet)</li><li>[JavaScript kitaplıklarının yerel olarak barındırılan en son sürümlerini kullanma](#local-js)</li><li>[Otomatik MIME koklamayı devre dışı](#mime-sniff)</li><li>[Parmak izini almaktan kaçınmak için Windows Azure Web Sitelerindeki standart sunucu üstbilgilerini kaldırma](#standard-finger)</li></ul> |
-| **Database** | <ul><li>[Veritabanı Altyapısı erişimi için Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
+| **Veritabanı** | <ul><li>[Veritabanı Altyapısı erişimi için Windows Güvenlik Duvarı yapılandırma](#firewall-db)</li></ul> |
 | **Web API** | <ul><li>[Cors Web API'ASP.NET etkinse yalnızca güvenilen kökenlere izin verildiğinden emin olun](#cors-api)</li><li>[Web API'nin yapılandırma dosyalarının hassas veriler içeren bölümlerini şifreleme](#config-sensitive)</li></ul> |
 | **IoT Cihazı** | <ul><li>[Tüm yönetici arabirimlerinin güçlü kimlik bilgileriyle güvenli olduğundan emin olun](#admin-strong)</li><li>[Bilinmeyen kodun aygıtlarda yürütülmediğinden emin olun](#unknown-exe)</li><li>[IoT Cihazının işletim sistemi ve ek bölümlerini bit dolabı ile şifreleme](#partition-iot)</li><li>[Cihazlarda yalnızca minimum hizmetlerin/özelliklerin etkin olduğundan emin olun](#min-enable)</li></ul> |
 | **IoT Alan Ağ Geçidi** | <ul><li>[IoT Field Gateway'in işletim sistemi ve ek bölümlerini bit dolabı yla şifreleme](#field-bit-locker)</li><li>[Yükleme sırasında alan ağ geçidinin varsayılan oturum açma kimlik bilgilerinin değiştirildiğinden emin olun](#default-change)</li></ul> |
@@ -41,7 +41,7 @@ ms.locfileid: "78269834"
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İçerik Güvenlik Politikasına Giriş](https://www.html5rocks.com/en/tutorials/security/content-security-policy/), [İçerik Güvenlik Politikası Başvurusu](https://content-security-policy.com/), Güvenlik [özellikleri](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/), İçerik [güvenlik politikasına giriş](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy), [CSP kullanabilir miyim?](https://caniuse.com/#feat=contentsecuritypolicy) |
@@ -73,10 +73,10 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [XSS Koruma Filtresi](https://www.owasp.org/index.php/List_of_useful_HTTP_headers#X-XSS-Protection) |
+| **Başvurular**              | [XSS Koruma Filtresi](https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html) |
 | **Adımlar** | <p>X-XSS-Protection yanıt üstbilgisi yapılandırması tarayıcının site ler arası komut dosyası filtresini denetler. Bu yanıt üstbilgiaşağıdaki değerlere sahip olabilir:</p><ul><li>`0:`Bu, filtreyi devre dışı</li><li>`1: Filter enabled`Bir site arası komut dosyası saldırısı algılanırsa, saldırıyı durdurmak için tarayıcı sayfayı temizler</li><li>`1: mode=block : Filter enabled`. Sayfayı dezenfekte etmek yerine, bir XSS saldırısı algılandığında, tarayıcı sayfanın görüntülanmasını önler</li><li>`1: report=http://[YOURDOMAIN]/your_report_URI : Filter enabled`. Tarayıcı sayfayı dezenfekte eder ve ihlali bildirir.</li></ul><p>Bu, seçtiğiniz bir URI'ye ayrıntıları göndermek için CSP ihlal raporlarını kullanan bir Krom işlevidir. Son 2 seçenek güvenli değerler olarak kabul edilir.</p>|
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET uygulamaları, dağıtımdan önce izleme ve hata ayıklamadevre vermemelidir
@@ -84,7 +84,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Hata Ayıklama Genel Bakış](https://msdn.microsoft.com/library/ms227556.aspx), [ASP.NET İzleme Genel Bakış](https://msdn.microsoft.com/library/bb386420.aspx), [Nasıl: ASP.NET Bir Uygulama için İzleme etkinleştirin](https://msdn.microsoft.com/library/0x5wc973.aspx), [Nasıl: ASP.NET Uygulamaları için Hata Ayıklama etkinleştirin](https://msdn.microsoft.com/library/e8z01xdh(VS.80).aspx) |
@@ -95,7 +95,7 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -106,10 +106,10 @@ Example: var str="alert(1)"; eval(str);
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvurular**              | [OWASP click-jacking Savunma Hile Sayfası](https://www.owasp.org/index.php/Clickjacking_Defense_Cheat_Sheet), [IE Dahili - X-Frame-Options ile tıklama jacking mücadele](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **Başvurular**              | [OWASP click-jacking Savunma Hile Sayfası](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE Dahili - X-Frame-Options ile tıklama jacking mücadele](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **Adımlar** | <p>"Kullanıcı geri alma saldırısı" olarak da bilinen tıklama kaçırma, bir saldırganın kullanıcıyı üst düzey sayfaya tıklamayı planladıkları sırada başka bir sayfadaki bir düğmeye veya bağlantıyı tıklatması için kandırmak için birden çok saydam veya opak katman kullanmasıdır.</p><p>Bu katmanlama, kurbanın sayfasını yükleyen bir iframe ile kötü amaçlı bir sayfa oluşturarak elde edilir. Bu nedenle, saldırgan kendi sayfası için direnen tıklamaları "kaçırmak" ve büyük olasılıkla başka bir uygulama, etki alanı veya her ikisine ait başka bir sayfaya yönlendirme. Tıklama kaçırma saldırılarını önlemek için, tarayıcıya diğer etki alanlarından çerçevelemeye izin vermemelerini söyleyen uygun X-Frame-Options HTTP yanıt üstbilgisini ayarlayın</p>|
 
 ### <a name="example"></a>Örnek
@@ -141,7 +141,7 @@ Yalnızca aynı etki alanında sayfalar tarafından çerçevelenmiş olması ger
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Web Formları, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -172,7 +172,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Web Formları, MVC5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [İstek Doğrulama - Betik Saldırılarını Önleme](https://www.asp.net/whitepapers/request-validation) |
@@ -198,7 +198,7 @@ veya, uygulama düzeyinde
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -209,7 +209,7 @@ veya, uygulama düzeyinde
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [IE8 Güvenlik Bölüm V: Kapsamlı Koruma](https://blogs.msdn.com/ie/archive/2008/07/02/ie8-security-part-v-comprehensive-protection.aspx), [MIME tipi](https://en.wikipedia.org/wiki/Mime_type) |
@@ -274,7 +274,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | EnvironmentType - Azure |
 | **Başvurular**              | [Windows Azure Web Sitelerindestandart sunucu üstbilgilerini kaldırma](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
@@ -284,8 +284,8 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Database | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Veritabanı | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | SQL Azure, OnPrem |
 | **Öznitelikler**              | N/A, SQL Sürümü - V12 |
 | **Başvurular**              | [Azure SQL veritabanı güvenlik duvarı nasıl yapılandırılabilen](https://azure.microsoft.com/documentation/articles/sql-database-firewall-configure/)veritabanı [altyapısı, Veritabanı Altyapısı Erişimi için Windows Güvenlik Duvarı Yapılandırma](https://msdn.microsoft.com/library/ms175043) |
@@ -296,7 +296,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC 5 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | ASP.NET Web API 2, ASP.NET Web API'de [Origin'İstekleri Etkinleştirme](https://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api) [- ASP.NET Web API 2'de CORS Desteği](https://msdn.microsoft.com/magazine/dn532203.aspx) |
@@ -392,7 +392,7 @@ public class ResourcesController : ApiController
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web API | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | MVC 6 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [ASP.NET Çekirdek 1.0'da Origin'ASP.NET İstekleri (CORS) etkinleştirme](https://docs.asp.net/en/latest/security/cors.html) |
@@ -506,7 +506,7 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Windows 10 IoT Core'da Güvenli Önyükleme ve bit-locker Aygıt Şifrelemesini etkinleştirme](https://docs.microsoft.com/windows/iot-core/secure-your-device/securebootandbitlocker) |
@@ -517,7 +517,7 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT Cihazı | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | Yok  |
@@ -561,7 +561,7 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | IoT Bulut Ağ Geçidi | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Ağ geçidi seçimi - Azure IoT Hub |
 | **Başvurular**              | [IoT Hub Cihaz Yönetimi Genel Bakış](https://azure.microsoft.com/documentation/articles/iot-hub-device-management-overview/), Aygıt [Firmware nasıl güncellenir](../../iot-hub/tutorial-firmware-update.md) |
@@ -582,7 +582,7 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
+| **Bileşen**               | Azure Depolama | 
 | **SDL Fazı**               | Dağıtım |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
@@ -593,8 +593,8 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | Azure Storage | 
-| **SDL Fazı**               | Oluşturma |  
+| **Bileşen**               | Azure Depolama | 
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [Azure Depolama Hizmetleri için CORS Desteği](https://msdn.microsoft.com/library/azure/dn535601.aspx) |
@@ -605,7 +605,7 @@ Bir denetleyici veya eylem için CORS'u devre dışı kullanabilirsiniz, [Devre 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com) |
@@ -628,7 +628,7 @@ Aşağıda, azaltma etkinleştirilmiş örnek bir yapılandırma verilmiştir:
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL Fazı**               | Oluşturma |  
+| **SDL Fazı**               | Yapı |  
 | **Uygulanabilir Teknolojiler** | .NET Çerçeve 3 |
 | **Öznitelikler**              | Yok  |
 | **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com) |

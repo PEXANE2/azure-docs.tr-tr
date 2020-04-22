@@ -2,13 +2,13 @@
 title: Şablon yapısı ve sözdizimi
 description: Bildirimsel JSON sözdizimini kullanarak Azure Kaynak Yöneticisi şablonlarının yapısını ve özelliklerini açıklar.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 4e8334e4ddfaee52c5d1aa68fb8689fcde0a6cbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/20/2020
+ms.openlocfilehash: 60d800eb5251fb3454ba60a67bd109261c6ff9d4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79459999"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687877"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>ARM şablonlarının yapısını ve sözdizimini anlama
 
@@ -293,7 +293,7 @@ Aşağıdaki örnek, bir çıktı tanımının yapısını gösterir:
 Satır satırlı yorumlar için, `//` `/* ... */` ya da kullanabilirsiniz, ancak bu sözdizimi tüm araçlarla çalışmıyor. Satır ara yorumları olan şablonlar üzerinde çalışmak için portal şablondüzenleyicisini kullanamazsınız. Bu yorum stilini eklerseniz, kullandığınız araçların satır satırlı JSON yorumlarını desteklediğinden emin olun.
 
 > [!NOTE]
-> Azure CLI kullanarak şablonları açıklamalarla dağıtmak için `--handle-extended-json-format` anahtarı kullanmanız gerekir.
+> Sürüm 2.3.0 veya daha büyük sürümlerle Azure CLI'yi kullanarak `--handle-extended-json-format` yorumları içeren şablonları dağıtmak için anahtarı kullanmanız gerekir.
 
 ```json
 {
@@ -404,7 +404,7 @@ Bir dizeyi birden çok satıra kırabilirsiniz. Örneğin, aşağıdaki JSON ör
   ],
 ```
 
-Azure CLI kullanarak şablonları çok satırlı dizeleri dağıtmak `--handle-extended-json-format` için anahtarı kullanmanız gerekir.
+Sürüm 2.3.0 veya daha büyük olan Azure CLI'yi kullanarak çok satırlı `--handle-extended-json-format` dizeleri olan şablonları dağıtmak için anahtarı kullanmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

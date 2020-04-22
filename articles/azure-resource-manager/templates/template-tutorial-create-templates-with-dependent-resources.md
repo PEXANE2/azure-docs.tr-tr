@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bbe973f5c701f55705fe197f56f5f8ab1d9e8c68
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: e589fa8ae5627746ec1f04e2098a7b592f00dc24
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260802"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81684931"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Öğretici: Bağımlı kaynaklarla ARM şablonları oluşturma
 
@@ -96,11 +96,11 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
     ![Visual Studio Code Azure Kaynak Yöneticisi sanal ağ şablonları bağlı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar.  Bu kaynak başka bir kaynağa bağlıdır:
+    dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. Bu kaynak başka bir kaynağa bağlıdır:
 
     * `Microsoft.Network/networkSecurityGroups`
 
-1. Elli kaynağı genişletin. Kaynak türü `Microsoft.Network/networkInterfaces` şeklindedir. Kaynak, iki farklı kaynağa bağımlıdır:
+1. Beşinci kaynağı genişletin. Kaynak türü `Microsoft.Network/networkInterfaces` şeklindedir. Kaynak, iki farklı kaynağa bağımlıdır:
 
     * `Microsoft.Network/publicIPAddresses`
     * `Microsoft.Network/virtualNetworks`
@@ -163,7 +163,7 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 1. Azure portalından sol menüden **Kaynak grubunu** seçin.
 2. **Ada göre filtrele** alanına kaynak grubu adını girin.
-3. Kaynak grubu adını seçin.  Kaynak grubundaki toplam altı kaynak görüyor olmalısınız.
+3. Kaynak grubu adını seçin. Kaynak grubunda toplam altı kaynak görürsünüz.
 4. Üst menüden **kaynak grubunu sil'i** seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

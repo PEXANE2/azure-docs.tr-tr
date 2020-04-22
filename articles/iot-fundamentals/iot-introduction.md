@@ -7,12 +7,15 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: c79f18669e1b13f79491e98658107221b43f3ff5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- amqp
+- mqtt
+ms.openlocfilehash: 73eb0b3164a386bb270e42ceba56d5dc7045af1c
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046186"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729000"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure Nesnelerin İnterneti (IoT) nedir?
 
@@ -20,7 +23,7 @@ Azure Nesnelerin İnterneti (IoT), Microsoft tarafından yönetilen ve milyarlar
 
 ## <a name="iot-devices"></a>IoT cihazları
 
-Bir IoT cihazı genellikle internete bağlanmak için WiFi kullanan sensörleri ile bir devre kartı oluşur. Örnek:
+Bir IoT cihazı genellikle internete bağlanmak için WiFi kullanan sensörleri ile bir devre kartı oluşur. Örneğin:
 
 * Uzaktan kumandalı yağ pompasında basınç sensörü.
 * Klima ünitesinde sıcaklık ve nem sensörleri.

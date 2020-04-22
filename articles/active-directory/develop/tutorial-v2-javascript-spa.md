@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 4a6694a072231f98383c13e6a42aedf68f62ac93
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533794"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81678019"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oturum açın ve JavaScript tek sayfalı bir uygulamadan (SPA) Microsoft Graph API'yi arayın
 
@@ -47,10 +47,6 @@ Bu kılavuzda aşağıdaki kitaplık kullanır:
 |Kitaplık|Açıklama|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript için Microsoft Kimlik Doğrulama Kitaplığı|
-
-> [!NOTE]
-> *Msal.js,* kişisel hesapların, okul ve iş hesaplarının oturum açmasını ve jeton edinmesini sağlayan Microsoft kimlik platformu bitiş noktasını hedefler. Microsoft kimlik platformu bitiş noktası [bazı sınırlamalar](../azuread-dev/azure-ad-endpoint-comparison.md#limitations)vardır.
-> v1.0 ve v2.0 uç noktaları arasındaki farkları anlamak için [bitiş noktası karşılaştırma kılavuzuna](../azuread-dev/azure-ad-endpoint-comparison.md)bakın.
 
 <!--end-collapse-->
 

@@ -4,12 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 3d8de08605d3dd693eb74a84a29c2efa6cad669a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77671741"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687684"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı Algılama - Performans Anomalileri
 
@@ -71,7 +71,7 @@ Smart Detections performans anormallikleri hakkındaki e-postalar, Application I
 
   * Henüz değil, ama yapabilirsiniz:
     * Bir metnin eşiği ne zaman geçtiğini bildiren [uyarılar ayarlayın.](../../azure-monitor/app/alerts.md)
-    * [Telemetriyi](../../azure-monitor/app/export-telemetry.md) bir [veritabanına](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) veya [powerbi'ye,](../../azure-monitor/app/export-power-bi.md )kendiniz analiz edebilirsiniz.
+    * [Telemetriyi](../../azure-monitor/app/export-telemetry.md) bir [veritabanına](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) veya kendiniz analiz edebilirsiniz [Power BI'ye](../../azure-monitor/app/export-power-bi.md )dışa aktarın.
 * *Analiz ne sıklıkta gerçekleştirilir?*
 
   * Biz önceki gün (UTC saat diliminde tam gün) telemetri üzerinde günlük analiz çalıştırın.
@@ -125,11 +125,11 @@ Yanıt süresi bozulması bildirimi size şunları söyler:
   * Çalışma süresinin nerede harcandığınızı görüntülemenize yardımcı olacak profil oluşturucu izleri (profil oluşturma izleme örnekleri algılama süresi boyunca bu işlem için toplanmışsa bağlantı kullanılabilir). 
   * Bu işlem için zaman aralığını/filtreyi dilimleyip zarlayapabileceğiniz Metrik Explorer'da performans raporları.
   * Belirli arama özelliklerini görüntülemek için bu aramayı arayın.
-  * Hata raporları - 1 > bu, bu işlemde performans düşüşüne katkıda bulunmuş olabilecek hatalar olduğu anlamına gelir.
+  * Hata raporları - 1 > sayılsa, bu işlemde performans düşüşüne katkıda bulunmuş olabilecek hatalar olduğu anlamına gelir.
 
 ## <a name="dependency-duration-degradation"></a>Bağımlılık Süresi Bozulması
 
-Modern uygulama daha fazla birçok durumda dış hizmetler üzerinde ağır güvenilirlik yol açan mikro hizmetler tasarım yaklaşımı, benimsemek. Örneğin, uygulamanız bazı veri platformuna dayanıyorsa veya kendi bot hizmetinizi oluştursanız bile, botlarınızın daha fazla insanla etkileşimkurmasını sağlamak için bazı bilişsel hizmetler sağlayıcısına ve botların yanıtları çekmesi için bazı veri depolama hizmetine aktarabilirsiniz. Kaynak.  
+Modern uygulamalar, birçok durumda dış hizmetlerde ağır güvenilirlik sağlayan bir mikro hizmet tasarımı yaklaşımını giderek daha fazla benimser. Örneğin, uygulamanız bazı veri platformuna dayanıyorsa veya kendi bot hizmetinizi oluştursanız bile, botlarınızın daha fazla insanla etkileşimkurmasını sağlamak için bazı bilişsel hizmetler sağlayıcısına ve botların yanıtları çekmesi için bazı veri depolama hizmetine geçiş yapacaksınız.  
 
 Örnek bağımlılık bozulması bildirimi:
 
@@ -174,7 +174,7 @@ Telemetriyi keşfetmek için zaman aralığını ve filtreleri değiştirin.
 Bu tanı araçları, uygulamanızdaki telemetriyi incelemenize yardımcı olur:
 
 * [Profil Oluşturucu](profiler.md) 
-* [Anlık görüntü hata ayıklayıcısı](../../azure-monitor/app/snapshot-debugger.md)
+* [Anlık görüntü hata ayıklama](../../azure-monitor/app/snapshot-debugger.md)
 * [Analiz](../../azure-monitor/log-query/get-started-portal.md)
 * [Analitik akıllı tanılama](../../azure-monitor/app/analytics.md)
 

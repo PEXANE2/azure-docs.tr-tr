@@ -4,15 +4,15 @@ description: Bu makalede, Azure Cosmos DB'nin yüksek kullanılabilirlik sağlad
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 2afeae937d56a84c39167ad55a57c86f2623e52d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382717"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688068"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB ile yüksek kullanılabilirlik
 
@@ -97,6 +97,8 @@ Bu özellik aşağıdaki Azure bölgelerinde kullanılabilir:
 - Batı Avrupa
 
 - Batı ABD 2
+
+- Doğu Avustralya
 
 > [!NOTE]
 > Tek bir bölge Azure Cosmos hesabı için Kullanılabilirlik Bölgeleri etkinleştirmek, hesabınıza ek bir bölge eklemeye eşdeğer ücretlere neden olur. Fiyatlandırma yla ilgili ayrıntılar için [Azure Cosmos DB makalelerinde](optimize-cost-regions.md) [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/cosmos-db/) ve çok bölgeli maliyete bakın.

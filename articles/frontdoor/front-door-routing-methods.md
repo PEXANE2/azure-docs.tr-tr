@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 69ef68dafc2385eb5614179c3d04265250383104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7dd00d28ecfe844094677e0ae19f4fd359d97d0
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79471549"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687801"
 ---
 # <a name="front-door-routing-methods"></a>Ön Kapı yönlendirme yöntemleri
 
@@ -27,7 +27,7 @@ Front Door'da trafik yönlendirmesi için dört ana kavram vardır:
 * ** [Gecikme sayısı](#latency):** Gecikme tabanlı yönlendirme, isteklerin duyarlılık aralığında kabul edilebilir en düşük gecikme geri uçlarına gönderilmesini sağlar. Temel olarak, kullanıcı istekleriniz ağ gecikmesiyle ilgili olarak "en yakın" arka uç kümesine gönderilir.
 * ** [Öncelik](#priority):** Tüm trafik için birincil hizmet arka ucunu kullanmak istediğinizde öncelikleri farklı arka uçlarınıza atayabilir ve birincil veya yedek arka uçların kullanılamaması durumunda yedekler sağlayabilirsiniz.
 * ** [Ağırlıklı](#weighted):** Trafiği bir dizi arka uça eşit olarak veya ağırlık katsayılarına göre dağıtmak istediğinizde farklı arka uçlarınıza ağırlık atayabilirsiniz.
-* **Oturum Affinity:** Kullanıcı oturumu hala etkin olduğu ve arka uç örneği sistem durumu sondalarına bağlı olarak sağlıklı rapor verdiği sürece, kullanıcıdan sonraki isteklerin aynı arka uca gönderilmesini istediğinizde ön uç ana bilgisayarlarınıza veya etki alanlarınıza oturum afiyetini yapılandırabilirsiniz. 
+* ** [Oturum Affinity](#affinity):** Kullanıcı oturumu hala etkin olduğu ve arka uç örneği sistem durumu sondalarına bağlı olarak sağlıklı rapor verdiği sürece, kullanıcıdan sonraki isteklerin aynı arka uca gönderilmesini istediğinizde ön uç ana bilgisayarlarınıza veya etki alanlarınıza oturum afiyetini yapılandırabilirsiniz. 
 
 Tüm Front Door yapılandırmaları, arka uç durumu ve otomatik anında global yük devretme izlemesini kapsar. Daha fazla bilgi için Ön [Kapı Arka Uç İzleme'ye](front-door-health-probes.md)bakın. Ön Kapınız tek bir yönlendirme yöntemini temel alan çalışacak şekilde yapılandırılabilir ve uygulama gereksinimlerinize bağlı olarak en iyi yönlendirme topolojisi oluşturmak için bu yönlendirme yöntemlerinin birden birini veya tümlerini birlikte kullanabilirsiniz.
 
@@ -71,7 +71,7 @@ Ağırlıklı yöntem bazı yararlı senaryolar sağlar:
 * **Ek kapasite için bulut patlaması**: Ön Kapının arkasına koyarak şirket içi bir dağıtımı buluta hızla genişletin. Bulutta fazladan kapasiteye ihtiyacınız olduğunda, daha fazla arka uç ekleyebilir veya etkinleştirebilir ve trafiğin hangi bölümünün her arka uça gittiğini belirtebilirsiniz.
 
 ## <a name="session-affinity"></a><a name = "affinity"></a>Oturum Benzeşimi
-Varsayılan olarak, oturum yakınlığı olmadan, Ön Kapı, özellikle farklı arka uçlara geçiş gecikmeleri olarak veya aynı farklı istekler değişirken, yük dengeleme yapılandırmasına dayalı olarak aynı istemciden gelen istekleri farklı arka uçlara iletir kullanıcı farklı bir Ön Kapı ortamına iner. Ancak belirli diğer senaryolardaki bazı durum bilgisi olan uygulamalar, aynı kullanıcıdan gelen ardışık isteklerin ilk isteği işleyen aynı arka uca yönlendirilmesini tercih etmektedir. Tanımlama bilgilerine dayalı oturum benzeşimi özelliği, bir kullanıcı oturumunu aynı arka uçta tutmak istediğinizde kullanışlıdır. Azure Ön Kapı yönetilen tanımlama bilgilerini kullanarak, arka uç sağlıklı olduğu ve kullanıcı oturumunun süresi dolmadığı sürece, sonraki trafiği kullanıcı oturumundan aynı arka uca yönlendirebilir. 
+Varsayılan olarak, oturum yakınlığı olmadan, Ön Kapı, özellikle farklı arka uçlara geçkamalar değiştiğinde veya aynı kullanıcıdan farklı istekler farklı bir Ön Kapı ortamına indiğinde, yük dengeleme yapılandırmasına dayalı olarak aynı istemciden kaynaklanan istekleri farklı arka uçlara iletir. Ancak belirli diğer senaryolardaki bazı durum bilgisi olan uygulamalar, aynı kullanıcıdan gelen ardışık isteklerin ilk isteği işleyen aynı arka uca yönlendirilmesini tercih etmektedir. Tanımlama bilgilerine dayalı oturum benzeşimi özelliği, bir kullanıcı oturumunu aynı arka uçta tutmak istediğinizde kullanışlıdır. Azure Ön Kapı yönetilen tanımlama bilgilerini kullanarak, arka uç sağlıklı olduğu ve kullanıcı oturumunun süresi dolmadığı sürece, sonraki trafiği kullanıcı oturumundan aynı arka uca yönlendirebilir. 
 
 Oturum benzeşimi, yapılandırılan etki alanlarınızın (veya alt etki alanlarınızın) her biri için ön uç konağı seviyesinde etkinleştirilebilir. Bu özellik etkinleştirildikten sonra Front Door kullanıcı oturumuna bir tanımlama bilgisi ekler. Front Door, tanımlama bilgisi tabanlı oturum benzeşimi sayesinde aynı IP adresini kullanan farklı kullanıcıları dahi tanımlayabilir ve bu sayede trafiğin farklı arka uçlarınız arasında daha eşit bir şekilde dağıtılmasını sağlayabilir.
 

@@ -2,15 +2,15 @@
 title: Şablon oluşturma - Visual Studio Code
 description: Resource Manager şablonları üzerinde çalışmak için Visual Studio Code ve Azure Resource Manager araçları eklentisini kullanın.
 author: neilpeterson
-ms.date: 03/27/2019
+ms.date: 04/17/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 4b1ecbf3a1f6083261e87537e20d52e755b77424
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: cd107db5220a96d75092a94736e060ae46672926
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640742"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686623"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>Hızlı başlatma: Visual Studio Kodu ile Azure Kaynak Yöneticisi şablonları oluşturma
 

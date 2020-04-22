@@ -3,12 +3,12 @@ title: Java uygulamalarını her ortamda izleyin - Azure Monitör Uygulama Öng�
 description: Uygulama enstrümanting olmadan herhangi bir ortamda çalışan Java uygulamaları için uygulama performansı izleme. Dağıtılmış izleme ve uygulama haritası.
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 5706d5a74bd6850a237f7418b1a86a8e9c7762e1
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604571"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687726"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Uygulama Öngörüleri izleme Java kodsuz uygulama - genel önizleme
 
@@ -32,7 +32,7 @@ Uygulamanızın JVM args ekleyin `-javaagent:path/to/applicationinsights-agent-3
 
 Tipik JVM args içerir `-Xmx512m` ve. `-XX:+UseG1GC` Eğer bunları nereye ekleyacağınızı biliyorsanız, o zaman bunu nereye ekleyebileceğinizi zaten biliyorsunuzdemektir.
 
-Uygulamanızın JVM args yapılandırma ile ek yardım için, [3.0 Önizleme bakın: JVM args güncellemek için ipuçları.](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Tips-for-updating-your-JVM-args)
+Uygulamanızın JVM args yapılandırma ile ek yardım için, [3.0 Önizleme bakın: JVM args güncellemek için ipuçları.](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)
 
 **3. Aracıyı Application Insights kaynağınıza yönlendirin**
 
@@ -80,7 +80,7 @@ Dosyada, `ApplicationInsights.json` ayrıca yapılandırabilirsiniz:
 * HTTP Proxy
 * Kendi kendine teşhis
 
-[3.0 Genel Önizleme: Yapılandırma Seçenekleri'nde](https://github.com/microsoft/ApplicationInsights-Java/wiki/3.0-Preview:-Configuration-Options)ayrıntılara bakın.
+[3.0 Genel Önizleme: Yapılandırma Seçenekleri'nde](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)ayrıntılara bakın.
 
 ## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Otomatik toplanan istekler, bağımlılıklar, günlükler ve ölçümler
 
@@ -195,7 +195,7 @@ Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-### <a name="exceptions"></a>Özel durumlar
+### <a name="exceptions"></a>Özel Durumlar
 En sevdiğiniz günlük çerçevesi üzerinden özel özel durum telemetrisi gönderebilirsiniz.
 
 Veya Application Insights Java SDK 2.x'i de kullanabilirsiniz:

@@ -3,14 +3,14 @@ title: Windows geliştirme ortamı ayarlama
 description: Çalışma zamanını, SDK'yı ve araçları yükleyip yerel bir geliştirme kümesi oluşturun. Bu kurulumu tamamladıktan sonra Windows üzerinde uygulama derlemek için hazır hale gelirsiniz.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 03/02/2020
+ms.date: 04/20/2020
 ms.custom: sfrev
-ms.openlocfilehash: f08c6b0675475b4e15ce6db3a9dbe0e2863b9ddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252760"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81731748"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows üzerinde geliştirme ortamınızı hazırlama
 
@@ -68,8 +68,8 @@ Yalnızca SDK'yı yüklemeniz gerekiyorsa bu paketi yükleyebilirsiniz:
 
 Geçerli sürümler şunlardır:
 
-* Servis Kumaş ı SDK ve Aletler 4.0.470
-* Servis Kumaş çalışma süresi 7.0.470
+* Servis Kumaş ı SDK ve Aletler 4.1.409
+* Servis Kumaş çalışma süresi 7.1.409
 
 Desteklenen sürümlerin listesi için [Service Fabric sürümlerine](service-fabric-versions.md) bakın
 

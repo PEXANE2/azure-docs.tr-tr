@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 77c58bb8dfa7d21b108d2aa63e90142f66877fb7
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/20/2020
+ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606518"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729131"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Veri akışını eşlemede satır dönüştürmeyi değiştirme
 
@@ -48,10 +48,12 @@ Alter row ilkelerinin çalışması için veri akışının bir veritabanına ve
 
 ![Alter satır lavabosu](media/data-flow/alter-row2.png "Alter Satır Lavabosu")
 
- Varsayılan davranış yalnızca eklere izin vermektir. Güncelleştirmelere, yükseltmelere veya silmelere izin vermek için, lavaboda bu duruma karşılık gelen kutuyu işaretleyin. Güncelleştirmeler, yükseltmeler veya silmeler etkinse, lavaboda hangi anahtar sütunların eşleşip eşleşecek lerini belirtmeniz gerekir.
+Varsayılan davranış yalnızca eklere izin vermektir. Güncelleştirmelere, yükseltmelere veya silmelere izin vermek için, lavaboda bu duruma karşılık gelen kutuyu işaretleyin. Güncelleştirmeler, yükseltmeler veya silmeler etkinse, lavaboda hangi anahtar sütunların eşleşip eşleşecek lerini belirtmeniz gerekir.
 
 > [!NOTE]
 > Eklerin, güncelleştirmeleriniz veya yükseltmeleriniz lavabodaki hedef tablonun şemasını değiştirirse, veri akışı başarısız olur. Veritabanınızdaki hedef şemasını değiştirmek için tablo eylemi olarak **tabloyu yeniden oluşturma'yı** seçin. Bu, yeni şema tanımıyla tablonuzu düşürür ve yeniden oluşturur.
+
+Lavabo dönüştürme, hedef veritabanınızda benzersiz satır tanımlaması için tek bir anahtar veya bir dizi anahtar gerektirir. SQL lavaboları için, anahtarları lavabo ayarları sekmesinde ayarlayın. CosmosDB için, ayarlardaki bölüm anahtarını ayarlayın ve lavabo eşlemenizde CosmosDB sistem alanını "id" olarak ayarlayın. CosmosDB için güncelleştirmeler, ekler ve silmek için sistem sütunu "id" eklemek zorunludur.
 
 ## <a name="data-flow-script"></a>Veri akışı betiği
 

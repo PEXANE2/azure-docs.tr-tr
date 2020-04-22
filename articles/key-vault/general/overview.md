@@ -11,14 +11,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 55a7c6e505d6d0c43319280bf7199805b108cd77
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81425087"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81688028"
 ---
-# <a name="what-is-azure-key-vault"></a>Azure Anahtar Kasası nedir?
+# <a name="about-azure-key-vault"></a>Azure Key Vault hakkında
 
 Azure Key Vault aşağıdaki sorunları çözmeye yardımcı olur:
 
@@ -80,4 +80,7 @@ Key Vault, depolama hesapları, olay hub’ları ve günlük analizi ile tümle�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [Anahtarlar, sırlar ve sertifikalar](about-keys-secrets-certificates.md) hakkında daha fazla bilgi edinin
 - [Hızlı Başlangıç: CLI kullanarak bir Azure Key Vault oluşturma](../secrets/quick-create-cli.md)
+- [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

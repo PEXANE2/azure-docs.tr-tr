@@ -8,14 +8,14 @@ manager: maiye
 editor: ''
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: c156d5f1242674adc53a2a813e9b2c140221ecfb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 85b966a9423fa6c8b2dc9e97cab1e24d9756caa4
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80245319"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687350"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Azure Uygulama Yapılandırması ile Bir Java Bahar uygulaması oluşturun
 
@@ -143,25 +143,25 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 1. Uygulamanızın kaynak `bootstrap.properties` dizininin altında yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri Uygulama Yapılandırma mağazanız için uygun özelliklerle değiştirin.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string=${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. **APP_CONFIGURATION_CONNECTION_STRING**adlı bir ortam değişkeni ayarlayın ve Uygulama Yapılandırma mağazanızın erişim anahtarına ayarlayın. Komut satırında, aşağıdaki komutu çalıştırın ve değişikliğin etkili olmasını sağlamak için komut istemini yeniden başlatın:
 
     ```cmd
-        setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
+    setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
     Windows PowerShell kullanıyorsanız, aşağıdaki komutu çalıştırın:
 
     ```azurepowershell
-        $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
+    $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
     ```
 
     macOS veya Linux kullanıyorsanız, aşağıdaki komutu çalıştırın:
 
     ```cmd
-        export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
+    export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak oluşturma ve çalıştırma
