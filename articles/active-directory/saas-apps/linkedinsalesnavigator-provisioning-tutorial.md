@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f789f82288c9820214c4ab32c271bb547945d4d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 48b9f2dc64d1d3ddd8253a253dcab8ef972032f9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77057388"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869737"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için LinkedIn Satış Gezgini'ni yapılandırın
 
 Bu öğreticinin amacı, Azure AD'den LinkedIn Satış Gezgini'ne otomatik olarak kullanıcı hesapları sağlamak ve sağlamadan sağlamada LinkedIn Sales Navigator ve Azure AD'de gerçekleştirmeniz gereken adımları size göstermektir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdaki öğelere sahip olduğunuzu varsayar:
 
@@ -53,7 +53,7 @@ Sağlama hizmetini yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki k
 
 ## <a name="configuring-user-provisioning-to-linkedin-sales-navigator"></a>Kullanıcı sağlamayı LinkedIn Sales Navigator olarak yapılandırma
 
-Bu bölüm, Azure REKLAM'ınızı LinkedIn Sales Navigator'ın SCIM kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini LinkedIn Sales Navigator'da atanmış kullanıcı hesaplarını oluşturmak, güncelleştirmek ve devre dışı edecek şekilde yapılandırmak ve kullanıcı ve Azure AD'de grup ataması.
+Bu bölüm, Azure REKLAM'ınızı LinkedIn Sales Navigator'ın SCIM kullanıcı hesabı sağlama API'sine bağlamanız ve sağlama hizmetini LinkedIn Sales Navigator'da atanan kullanıcı hesaplarını Oluşturmak, güncelleştirmek ve devre dışı edecek şekilde yapılandırmak yoluyla size yol gösterin.
 
 > [!TIP]
 > Azure [portalında](https://portal.azure.com)sağlanan yönergeleri izleyerek LinkedIn Sales Navigator için SAML tabanlı Tek Oturum Açma özelliğini de seçebilirsiniz. Tek oturum açma, otomatik sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
@@ -99,7 +99,7 @@ Bu bölüm, Azure REKLAM'ınızı LinkedIn Sales Navigator'ın SCIM kullanıcı 
 
 11. **Yönetici Kimlik Bilgileri** altında aşağıdaki alanları doldurun:
 
-    * Kiracı **URL** alanına girin. https://api.linkedin.com
+    * Kiracı **URL** alanına girin. https://developer.linkedin.com
 
     * Gizli **Belirteç** alanında, adım 1'de oluşturduğunuz erişim jetonunu girin ve **Test Bağlantısı'nı** tıklatın.
 
@@ -107,7 +107,7 @@ Bu bölüm, Azure REKLAM'ınızı LinkedIn Sales Navigator'ın SCIM kullanıcı 
 
 12. **Bildirim E-posta** alanında ödeme hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve aşağıdaki onay kutusunu işaretleyin.
 
-13. **Kaydet**'e tıklayın.
+13. **Kaydet**’e tıklayın.
 
 14. **Öznitelik Eşlemeleri** bölümünde, Azure AD'den LinkedIn Satış Gezgini'ne eşitlenecek kullanıcı ve grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen özniteliklerin, güncelleştirme işlemleri için LinkedIn Sales Navigator'daki kullanıcı hesapları ve gruplarıyla eşleşecek şekilde kullanılacağını unutmayın. Herhangi bir değişiklik yapmak için Kaydet düğmesini seçin.
 
@@ -115,7 +115,7 @@ Bu bölüm, Azure REKLAM'ınızı LinkedIn Sales Navigator'ın SCIM kullanıcı 
 
 15. LinkedIn Sales Navigator için Azure AD sağlama hizmetini etkinleştirmek **On** **için, Ayarlar** bölümünde Ki **Sağlama Durumunu**
 
-16. **Kaydet**'e tıklayın.
+16. **Kaydet**’e tıklayın.
 
 Bu, Kullanıcılar ve Gruplar bölümünde LinkedIn Sales Navigator'a atanan kullanıcıların ve/veya grupların ilk senkronizasyonunu başlatır. İlk eşitlemenin, hizmet çalışırken yaklaşık her 40 dakikada bir oluşan sonraki eşitlemelerden daha uzun süreceğini unutmayın. LinkedIn Sales Navigator uygulamanızda sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik günlüklerine olan bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 620c0226d3aca907352658ebbe1b94c7673d91cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77014836"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869296"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Özel Bulut kaynaklarını ve etkinliğini yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "77014836"
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
@@ -37,13 +37,13 @@ Ek bilgi ve eylemler için bir Özel Bulut seçin.
 
 ## <a name="private-cloud-summary"></a>Özel Bulut özeti
 
-Seçili Özel Bulut'un kapsamlı bir özetini görüntüleyin.  Özet sayfası, Özel Bulut'ta dağıtılan DNS sunucularını içerir.  Şirket içi DNS sunucularından Özel Bulut DNS sunucularınıza DNS yönlendirmeayarlayabilirsiniz.  DNS iletme hakkında daha fazla bilgi için, [şirket için Özel Bulut vCenter için ad çözümü için DNS'yi yapılandırın'](https://docs.azure.cloudsimple.com/on-premises-dns-setup/)a bakın.
+Seçili Özel Bulut'un kapsamlı bir özetini görüntüleyin.  Özet sayfası, Özel Bulut'ta dağıtılan DNS sunucularını içerir.  Şirket içi DNS sunucularından Özel Bulut DNS sunucularınıza DNS yönlendirmeayarlayabilirsiniz.  DNS iletme hakkında daha fazla bilgi için, [şirket için Özel Bulut vCenter için ad çözümü için DNS'yi yapılandırın'](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)a bakın.
 
 ![Özel Bulut Özeti](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>Kullanılabilir eylemler
 
-* [Başlat vSphere istemcisi](https://docs.azure.cloudsimple.com/vsphere-access/). Bu Özel Bulut için vCenter'a erişin.
+* [Başlat vSphere istemcisi](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access). Bu Özel Bulut için vCenter'a erişin.
 * [Satın alma düğümleri](create-nodes.md). Bu Özel Bulut'a düğüm ekleyin.
 * [Genişletin.](expand-private-cloud.md) Bu Özel Bulut'a düğüm ekleyin.
 * **Yenileyin.** Bu sayfadaki bilgileri güncelleştirin.
@@ -58,10 +58,10 @@ Seçili Özel Bulut için tanımlı VLAN'ların/alt ağların listesini görünt
 
 ### <a name="available-actions"></a>Kullanılabilir eylemler
 
-* [VLANS/Subnets ekleyin.](https://docs.azure.cloudsimple.com/create-vlan-subnet/) Bu Özel Bulut'a bir VLAN/alt kümesi ekleyin.
+* [VLANS/Subnets ekleyin.](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/) Bu Özel Bulut'a bir VLAN/alt kümesi ekleyin.
 
 Aşağıdaki eylemler için bir VLAN/Subnet seçin
-* [Güvenlik duvarı tablosunu takın.](https://docs.azure.cloudsimple.com/firewall/) Bu Özel Bulut'a bir güvenlik duvarı tablosu takın.
+* [Güvenlik duvarı tablosunu takın.](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/) Bu Özel Bulut'a bir güvenlik duvarı tablosu takın.
 * **Düzenle**
 * **Silme** (yalnızca kullanıcı tanımlı VLAN'lar/Alt ağlar)
 

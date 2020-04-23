@@ -6,17 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
-ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437041"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023614"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure'da Office 365 yönetim çözümü (Önizleme)
 
 ![Office 365 logosu](media/solution-office-365/icon.png)
-
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Çözüm güncelleştirmesi
@@ -36,8 +35,8 @@ ms.locfileid: "80437041"
 >
 > ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-april-30th"></a>S: Şu andan 30 Nisan'a kadar Office 365 Azure Monitör çözümüne binme mümkün mü?
-> Hayır, Azure Monitor Office 365 çözümü artık kullanılabilir komut dosyaları yok. Çarşünün çözüm çözümü
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>S: Şu andan 30 Temmuz'a kadar Office 365 Azure Monitör çözümüne binme mümkün mü?
+> Hayır, Azure Monitor Office 365 çözümü artık kullanılabilir komut dosyaları yok. Çarşünün çözümü 30 Temmuz' da kaldı
 > 
 > ### <a name="q-will-the-tables-and-schemas-be-changed"></a>S: Tablolar ve şemalar değişecek mi?
 > **OfficeActivity** tablo adı ve şema geçerli çözümde olduğu gibi kalır. Azure AD verilerine başvuran sorgular hariç olmak üzere, yeni çözümde aynı sorguları kullanmaya devam edebilirsiniz.
@@ -103,11 +102,11 @@ ms.locfileid: "80437041"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
 > Evet, bkz. [Azure Sentinel veri kaynaklarını bağlayın.](../../sentinel/connect-data-sources.md)
 > 
-> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>S: 30 Nisan'da ne olacak? Önceden izinden ayrılmam gerekiyor mu?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>S: 30 Temmuz'da ne olacak? Önceden izinden ayrılmam gerekiyor mu?
 > 
 > - **Office365** çözümünden veri alamazsınız. Çözüm artık Market'te kullanılmayacak
 > - Azure Sentinel müşterileri için, Log Analytics çalışma alanı çözümü **Office365,** Azure Sentinel **SecurityInsights** çözümüne dahil edilecektir.
-> - Çözümünüzü el ile kapalı kullanmazsanız, 30 Nisan'da verilerinizin bağlantısı otomatik olarak kesilir.
+> - Çözümünüzü el ile kapalı kullanmazsanız, 30 Temmuz'da verilerinizin bağlantısı otomatik olarak kesilir.
 > 
 > ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>S: Verilerim yeni çözüme aktayacak mı?
 > Evet. **Office 365** çözümünü çalışma alanınızdan kaldırdığınızda, şema kaldırıldığıiçin verileri geçici olarak kullanılamaz hale gelir. Sentinel'deki yeni **Office 365** bağlayıcısını etkinleştirdiğinizde, şema çalışma alanına geri yüklenir ve zaten toplanan veriler kullanılabilir hale gelir. 

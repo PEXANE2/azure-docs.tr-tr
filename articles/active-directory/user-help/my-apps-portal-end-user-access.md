@@ -12,12 +12,12 @@ ms.date: 02/03/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ab3ab25df6ce41d4045a270754830d501fe40689
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8eb59eebd29c2cc94e20b71b467866686deec2f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80347163"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869719"
 ---
 # <a name="sign-in-and-start-apps-from-the-my-apps-portal"></a>Uygulamalarım portalından oturum açın ve uygulamaları başlatın
 
@@ -110,7 +110,7 @@ Kuruluşunuzun bulut tabanlı uygulamalarına erişme ve kullanma izniniz varsa,
 
 kuruluşunuzun uygulamalarını iOS ve Android cihazlarınızda Bir Intune Yönetilen Tarayıcıdan görüntüleyin ve kullanın.
 
-1. Mobil cihazınızda, Apple App Store ve [Google Play Store'dan](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)Intune Yönetilen Tarayıcı uygulamasını indirin ve yükleyin. [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8)
+1. Mobil cihazınızda, Apple App Store ve Google Play Store'dan Intune Yönetilen Tarayıcı uygulamasını indirin ve yükleyin.
 
 2. Intune Yönetilen Tarayıcı uygulamasını açın, https://myapps.microsoft.comsizi özelleştirilmiş bir sayfaya yönlendirirlerse kuruluşunuz tarafından sağlanan https://myapps.microsoft.com/contoso.combağlantıyı kullanın.
 

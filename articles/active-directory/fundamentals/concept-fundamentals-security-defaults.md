@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3139d39797c3bc576bb39f1438b7e6d3f37e3c5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f307553a97973d03b0699248373e53e4845aa39a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78248856"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869910"
 ---
 # <a name="what-are-security-defaults"></a>Güvenlik varsayılanları nelerdir?
 
@@ -83,7 +83,7 @@ Kiracınızda güvenlik varsayılanları etkinleştirildikten sonra, eski bir pr
 
 Kuruluşlar, Aşağıdakiler de dahil olmak üzere Azure Kaynak Yöneticisi API'si aracılığıyla yönetilen çeşitli Azure hizmetlerini kullanır:
 
-- Azure portalında 
+- Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
@@ -92,8 +92,6 @@ Hizmetlerinizi yönetmek için Azure Kaynak Yöneticisi'ni kullanmak son derece 
 Azure Kaynak Yöneticisi'ne erişmek ve yapılandırmaları güncelleştirmek isteyen kullanıcıların kimliğini doğrulamak önemlidir. Erişime izin vermeden önce ek kimlik doğrulaması gerektirerek kimliklerini doğrularsınız.
 
 Kiracınızdaki güvenlik varsayılanlarını etkinleştirdikten sonra, Azure portalına, Azure PowerShell'e veya Azure CLI'sine erişen tüm kullanıcının ek kimlik doğrulamasını tamamlaması gerekir. Bu ilke, ister yönetici ister kullanıcı olsun, Azure Kaynak Yöneticisi'ne erişen tüm kullanıcılar için geçerlidir. 
-
-Kullanıcı Çok Faktörlü Kimlik Doğrulama için kayıtlı değilse, devam etmek için Microsoft Authenticator uygulamasını kullanarak kullanıcının kaydolması gerekir. 14 günlük Çok Faktörlü Kimlik Doğrulama kayıt dönemi sağlanacaktır.
 
 > [!NOTE]
 > 2017 Öncesi Exchange Online kiracılar, varsayılan olarak modern kimlik doğrulamayı devre dışı bıraktı. Bu kiracılar aracılığıyla kimlik doğrulaması yaparken bir giriş döngüsü olasılığını önlemek için, [modern kimlik doğrulama etkinleştirmelisiniz.](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/enable-or-disable-modern-authentication-in-exchange-online)
@@ -141,7 +139,7 @@ Dizininizde güvenlik varsayılanlarını etkinleştirmek için:
 1.  **Azure Etkin Dizin** > **Özelliklerine**göz atın.
 1. **Güvenlik varsayılanlarını yönet'i**seçin.
 1. Güvenlik **varsayılanlarını Etkinleştir'i** **Evet'e**ayarlama.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="disabling-security-defaults"></a>Güvenlik varsayılanlarını devre dışı bırakma
 
@@ -155,7 +153,7 @@ Dizininizdeki güvenlik varsayılanlarını devre dışı kınık için:
 1.  **Azure Etkin Dizin** > **Özelliklerine**göz atın.
 1. **Güvenlik varsayılanlarını yönet'i**seçin.
 1. Güvenlik **varsayılanlarını** etkinleştirme'yi **No'ya**ayarlama
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

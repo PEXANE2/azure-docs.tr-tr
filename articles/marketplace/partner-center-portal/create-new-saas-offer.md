@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: 45559978f710549088d75d0f0706b798ebad3821
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a39e1e19f65722b4b5ae809ca943da719a3c6e22
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81314083"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869769"
 ---
 # <a name="create-a-new-saas-offer"></a>Yeni bir SaaS teklifi oluşturma
 
@@ -43,7 +43,7 @@ Başka bir teklif türü seçerseniz, eski Bulut [İş Ortağı Portalına](http
 
 <br>Örnek: Test Teklifi 1&#8482;
 
-**Oluştur'u**seçin.  Bu teklif için **Teklife genel bakış** sayfası oluşturulur.  
+**Oluştur**’u seçin.  Bu teklif için **Teklife genel bakış** sayfası oluşturulur.  
 
 <!---
 ![Offer overview on Partner Center](./media/commercial-marketplace-offer-overview.png)
@@ -206,7 +206,7 @@ Ticari pazar yeri yayıncıları için iki tür değişiklik vardır:
 - **Kiracı atamaları** (gerekli): Her özel değişiklik en fazla 20 kiracı lı ekine hedeflenebilir. Özel bir değişiklik eklerseniz, en az bir kiracı kimliği sağlamanız gerekir. Kiracı kimliği Azure'da müşterinizi tanımlar. Müşterinizden bu kimliği isteyebilir ve azure Active Directory > Properties > portal.azure.com'e giderek bu kimliği bulabilirler. Dizin kimliği değeri kiracı kimliğidir (örneğin, 50c464d3-4930-494c-963c-1e951d15360e). [Microsoft Azure ve Office 365 kiracı kimliğim nedir?](https://www.whatismytenantid.com).
 - **Açıklama** (isteğe bağlı): İsteğe bağlı olarak, değişiklikle hedeflediğiniz müşteriyi belirlemenize yardımcı olan kiracı kimliği için dostça bir açıklama sağlayın.
 
-#### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+#### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 Kendi özel hüküm ve koşullarınızı sağlamak istiyorsanız, bunları şartlar ve koşullar alanına girmeyi seçebilirsiniz. Bu alana en fazla 10.000 karakter metin girebilirsiniz. Hüküm ve koşullarınız daha uzun bir açıklama gerektiriyorsa, şartlar ve koşullarınızın bulunabileceği bu alana tek bir URL bağlantısı girin. Bu aktif bir bağlantı olarak müşterilere görüntülenir.
 
@@ -289,6 +289,9 @@ Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanı
 - **Videolar** (isteğe bağlı): Teklifinizi gösteren videolara bağlantılar ekleyin. Müşterilere sunduğunuz teklifle birlikte gösterilen YouTube ve/veya Vimeo videolarına bağlantılar kullanabilirsiniz. Ayrıca png formatında 1280 x 720 piksel boyutunda videonun küçük resmini girmeniz gerekir. Teklif başına en fazla dört video görüntüleyebilirsiniz.
 
 Bir sonraki bölüme geçmeden önce **Kaydetmeyi** unutmayın.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="additional-marketplace-listing-resources"></a>Ek pazar yeri listeleme kaynakları
 
@@ -399,7 +402,7 @@ Müşterilerin listelenen fiyatı ödemesi gereken sıklığını seçin. En az 
 
 - **Fiyat**: Aylık USD veya yıllık USD
 
-Yerel para birimi cinsinden belirlenen fiyatlar (USD = Abd Doları) kurulum sırasında mevcut mevcut döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve her pazardaki fiyatı gözden geçirerek yayımlamadan önce bu fiyatları doğrulayın. Özel fiyatları tek bir pazarda ayarlamak istiyorsanız, fiyatlandırma elektronik tablosunu değiştirin ve içe aktarın. Bu fiyatlandırmayı doğrulamaktan siz sorumlusunuz ve bu ayarların sahibisiniz.
+USD cinsinden belirlenen fiyatlar (USD = Abd Doları) kaydedildiğinde geçerli döviz kurları kullanılarak seçilen tüm piyasaların yerel para birimine dönüştürülür. Fiyatlandırma elektronik tablosunu dışa aktararak ve her pazardaki fiyatı gözden geçirerek yayımlamadan önce bu fiyatları doğrulayın. Özel fiyatları tek bir pazarda ayarlamak istiyorsanız, fiyatlandırma elektronik tablosunu değiştirin ve içe aktarın. Bu fiyatlandırmayı doğrulamaktan siz sorumlusunuz ve bu ayarların sahibisiniz.
 *\*Fiyatlandırma verilerinin dışa aktarılmasını etkinleştirmek için öncelikle fiyatlandırma değişikliklerinizi kaydetmeniz gerekir.*
 
 Bir plan yayımlandıktan sonra nelerin değişebileceğine ilişkin bazı kısıtlamalar olduğundan, yayımlanmadan önce fiyatlarınızı dikkatle inceleyin:

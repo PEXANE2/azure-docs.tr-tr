@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
-ms.openlocfilehash: 544de1b4ac46a58d533f71a46266807a3b93820a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: adbcf28cfbbe2ea3b7cc9c7fd0d1c76246938344
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920051"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870401"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Günlükleri ve ölçümleri tanılama ayarlarıyla analiz edin
 
@@ -22,6 +22,9 @@ Azure Bahar Bulutu'nun tanılama işlevini kullanarak günlükleri ve ölçümle
 * Üçüncü taraf bir hizmet veya özel analiz çözümü tarafından yutulmak için etkinlik merkezinize günlük akışı akışı.
 
 İzlemek istediğiniz günlük kategorisini ve metrik kategorisini seçin.
+
+> [!TIP]
+> Sadece günlüklerinizi akış istiyorum? Bu [Azure CLI komutuna](https://docs.microsoft.com/cli/azure/ext/spring-cloud/spring-cloud/app?view=azure-cli-latest#ext-spring-cloud-az-spring-cloud-app-logs)göz atın!
 
 ## <a name="logs"></a>Günlükler
 
@@ -46,7 +49,7 @@ Başlamak için, bu hizmetlerden birinin verileri almasını etkinleştirin. Gü
     * **Log Analytics’e gönderme**
 
 1. İzlemek istediğiniz günlük kategorisini ve metrik kategorisini seçin ve ardından bekletme süresini (gün içinde) belirtin. Bekletme süresi yalnızca depolama hesabı için geçerlidir.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 > [!NOTE]
 > Günlüklerin veya ölçümlerin yayıldığında ve depolama hesabınızda, etkinlik merkezinizde veya Log Analytics'te göründükleri zaman arasında 15 dakikaya kadar bir boşluk olabilir.

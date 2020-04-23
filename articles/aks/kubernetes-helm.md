@@ -1,19 +1,19 @@
 ---
-title: Azure'da Kubernetes'te Helm ile kapsayıcıları dağıtma
+title: AKS'de Helm ile mevcut uygulamaları yükleyin
 description: Bir Azure Kubernetes Hizmeti (AKS) kümesinde kapsayıcıları dağıtmak için Miğfer paketleme aracını nasıl kullanacağınızı öğrenin
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: zarhoads
-ms.openlocfilehash: 4a9ccaff0e3425c365a64ecb4fbadf3c7aa8dcfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e46bed5fc9fd83a907f8c9e716317a54548c58cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595187"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870244"
 ---
-# <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Helm ile uygulamaları yükleyin
+# <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Helm ile mevcut uygulamaları yükleme
 
 [Helm,][helm] Kubernetes uygulamalarının yaşam döngüsünü yüklemenize ve yönetmenize yardımcı olan bir açık kaynak paketleme aracıdır. *APT* ve *Yum*gibi Linux paket yöneticilerine benzer şekilde Helm, önceden yapılandırılmış Kubernetes kaynaklarının paketleri olan Kubernetes grafiklerini yönetmek için kullanılır.
 

@@ -1,25 +1,21 @@
 ---
 title: Azure Örneği Meta veri Hizmeti
-description: Windows VM'lerin bilgi işlem, ağ ve yaklaşan bakım olayları hakkında bilgi almak için yeniden hesaplı arabirim.
-services: virtual-machines-windows
-documentationcenter: ''
+description: VM'lerin bilgi işlem, ağ ve yaklaşan bakım olayları hakkında bilgi almak için yeniden hesaplı arabirim.
 author: KumariSupriya
 manager: paulmey
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.service: virtual-machines
+ms.subservice: monitoring
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: cb9453e1a25f4042c45d4e89229b555c996d4c8b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520962"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870076"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Örneği Meta veri hizmeti
 
@@ -39,7 +35,7 @@ Hizmet, genel olarak kullanılabilir Azure bölgelerinde kullanılabilir. Tüm A
 Bölgeler                                        | Kullanılabilir -lik?                                 | Desteklenen Sürümler
 -----------------------------------------------|-----------------------------------------------|-----------------
 [Tüm Genel Olarak Kullanılabilen Küresel Azure Bölgeleri](https://azure.microsoft.com/regions/)     | Genel Kullanıma Sunulmuştur | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
-[Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunulmuştur | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | Genel Kullanıma Sunulmuştur | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Çin 21Vianet](https://www.azure.cn/)                                            | Genel Kullanıma Sunulmuştur | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | Genel Kullanıma Sunulmuştur | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15
 
@@ -110,7 +106,7 @@ API | Varsayılan Veri Biçimi | Diğer Biçimler
 /scheduledevents | json | yok
 /test edildi | json | yok
 
-Varsayılan olmayan yanıt biçimine erişmek için, istekte istenen biçimi sorgu dize parametresi olarak belirtin. Örnek:
+Varsayılan olmayan yanıt biçimine erişmek için, istekte istenen biçimi sorgu dize parametresi olarak belirtin. Örneğin:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -126,7 +122,7 @@ Instance Meta data Service bitiş noktasına yalnızca routable olmayan bir IP a
 
 ### <a name="error"></a>Hata
 
-Bir veri öğesi bulunamazsa veya yanlış biçimlendirilmiş bir istek varsa, Örnek Meta veri hizmeti standart HTTP hatalarını döndürür. Örnek:
+Bir veri öğesi bulunamazsa veya yanlış biçimlendirilmiş bir istek varsa, Örnek Meta veri hizmeti standart HTTP hatalarını döndürür. Örneğin:
 
 HTTP Durum Kodu | Neden
 ----------------|-------
@@ -726,7 +722,7 @@ Azure Ortamı'nın bölgeleri ve değerleri aşağıda listelenmiştir.
  Bölgeler | Azure Ortamı
 ---------|-----------------
 [Tüm Genel Olarak Kullanılabilen Küresel Azure Bölgeleri](https://azure.microsoft.com/regions/)     | AzurePublicCloud
-[Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
@@ -840,7 +836,7 @@ Yukarıdaki imzayı aldıktan sonra, imzanın Microsoft'tan geldiğini doğrulay
  Bulut | Sertifika
 ---------|-----------------
 [Tüm Genel Olarak Kullanılabilen Küresel Azure Bölgeleri](https://azure.microsoft.com/regions/)     | *.metadata.azure.com
-[Azure Kamu](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
+[Azure Devlet Kurumları](https://azure.microsoft.com/overview/clouds/government/)              | *.metadata.azure.us
 [Azure Çin 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | *.metadata.azure.cn
 [Azure Almanya](https://azure.microsoft.com/overview/clouds/germany/)                    | *.metadata.microsoftazure.de
 

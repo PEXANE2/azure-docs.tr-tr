@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02cc78f7e786e97062cce6d402c972e66fa56860
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: ef8094464b428f1f46017b0d4abaac5aeb1fa428
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81688107"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mongodb-cloud"></a>Öğretici: MongoDB Cloud ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -32,12 +32,12 @@ Bu eğitimde, MongoDB Bulutu'nun Azure Etkin Dizini (Azure AD) ile nasıl entegr
 
 Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için gerekli olanlar:
 
 * Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Tek oturum açma (SSO) için etkinleştirilen bir MongoDB Bulut aboneliği.
+* Tek oturum açma (SSO) için etkinleştirilen bir MongoDB Cloud kuruluşu, [serbest küme](https://www.mongodb.com/cloud) için kaydolabilirsiniz
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -146,7 +146,7 @@ Bu bölümde, B.Simon'ın MongoDB Bulut'a erişim izni vererek Azure tek oturum 
 
 ## <a name="configure-mongodb-cloud-sso"></a>MongoDB Bulut SSO'su yapılandır
 
-MongoDB Cloud tarafında tek oturum açma yapılandırmak için Azure portalından kopyalanan uygun URL'lere ihtiyacınız vardır. Ayrıca, MongoDB Bulut Kuruluşunuz için Federasyon Uygulamasını yapılandırmanız gerekir. [MongoDB Bulut belgelerindeki](https://docs.atlas.mongodb.com/security/federated-authentication/index.html)yönergeleri izleyin. Bir sorununuzun varsa, [MongoDB Cloud destek ekibine](https://support.mongodb.com/)başvurun.
+MongoDB Cloud tarafında tek oturum açma yapılandırmak için Azure portalından kopyalanan uygun URL'lere ihtiyacınız vardır. Ayrıca, MongoDB Bulut Kuruluşunuz için Federasyon Uygulamasını yapılandırmanız gerekir. [MongoDB Bulut belgelerindeki](https://docs.atlas.mongodb.com/security/federated-auth-azure-ad/)yönergeleri izleyin. Bir sorununuzun varsa, [MongoDB Cloud destek ekibine](https://support.mongodb.com/)başvurun.
 
 ### <a name="create-a-mongodb-cloud-test-user"></a>MongoDB Bulut testi kullanıcısı oluşturma
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9b39a672cb5640a36490f2cd088092f40065870
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454790"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081617"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Güvenlik uyarıları - bir başvuru kılavuzu
 
@@ -399,8 +399,8 @@ Güvenlik Merkezi'nin desteklenen öldürme zinciri niyetleri [MITRE ATT&trade;&
 
 |Amaç|Açıklama|
 |------|-------|
-|**Saldırı Öncesi**</br>(Sondalama'nın yerini alır)|Saldırı Öncesi, kötü amaçlı bir amaç ne olursa olsun belirli bir kaynağa erişme girişimi veya sömürüden önce bilgi toplamak için hedef sisteme erişim sağlama girişimi nde başarısız olabilir. Bu adım genellikle hedef sistemi tarayıp bir giriş noktası belirlemek için ağ dışından kaynaklanan bir girişim olarak algılanır.</br>Saldırı öncesi sahne hakkında daha fazla bilgi [MITRE sayfasında](https://attack.mitre.org/matrices/pre/)okunabilir.|
-|**İlk Erişim**</br>(Exploitation'ın yerini alır)|InitialAccess, bir saldırganın saldırıya uğrayan kaynağa tutunmayı başardığı aşamadır. Bu aşama, kullanıcı hesapları, sertifikalar vb. gibi bilgi işlem ana bilgisayarları ve kaynakları için önemlidir. Tehdit aktörleri genellikle bu aşamadan sonra kaynağı kontrol etmek mümkün olacak.|
+|**Saldırı Öncesi**|Saldırı Öncesi, kötü amaçlı bir amaç ne olursa olsun belirli bir kaynağa erişme girişimi veya sömürüden önce bilgi toplamak için hedef sisteme erişim sağlama girişimi nde başarısız olabilir. Bu adım genellikle hedef sistemi tarayıp bir giriş noktası belirlemek için ağ dışından kaynaklanan bir girişim olarak algılanır.</br>Saldırı öncesi sahne hakkında daha fazla bilgi [MITRE sayfasında](https://attack.mitre.org/matrices/pre/)okunabilir.|
+|**İlk Erişim**|InitialAccess, bir saldırganın saldırıya uğrayan kaynağa tutunmayı başardığı aşamadır. Bu aşama, kullanıcı hesapları, sertifikalar vb. gibi bilgi işlem ana bilgisayarları ve kaynakları için önemlidir. Tehdit aktörleri genellikle bu aşamadan sonra kaynağı kontrol etmek mümkün olacak.|
 |**Kalıcılık**|Kalıcılık, tehdit aktörüne bu sistemde kalıcı bir varlık sağlayan bir sisteme erişim, eylem veya yapılandırma değişikliğidir. Tehdit aktörlerinin genellikle sistem yeniden başlatmaları, kimlik bilgilerinin kaybolması veya uzaktan erişim aracının yeniden başlatılmasını veya yeniden erişim lerini yeniden kazanmaları için alternatif bir arka kapı sağlamasını gerektiren diğer hatalar gibi kesintiler yoluyla sistemlere erişimi sürdürmeleri gerekir.|
 |**AyrıcalıkYükseltme**|Ayrıcalık yükseltme, bir rakibin bir sistem veya ağ üzerinde daha yüksek düzeyde izin almasına olanak tanıyan eylemlerin sonucudur. Belirli araçlar veya eylemler çalışmak için daha yüksek bir ayrıcalık düzeyi gerektirir ve büyük olasılıkla bir işlem boyunca birçok noktada gereklidir. Belirli sistemlere erişim veya düşmanların amaçlarına ulaşması için gerekli belirli işlevleri yerine getirme izinlerine sahip kullanıcı hesapları da bir ayrıcalık artışı olarak kabul edilebilir.|
 |**SavunmaEvasion**|Savunma kaçırma, bir düşmanın tespitten kaçınmak veya diğer savunmalardan kaçınmak için kullanabileceği tekniklerden oluşur. Bazen bu eylemler, belirli bir savunma yıkıntma veya azaltma nın ek yararına sahip diğer kategorilerdeki tekniklerle (veya varyasyonları) aynıdır.|

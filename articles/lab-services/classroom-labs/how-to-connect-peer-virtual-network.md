@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: b0efed83237c191f02bfffd9b26a0fd9cd2c871f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 6ed0d743f9b9cdc136b8f52f4d9d02583fc63eb9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606585"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870190"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'nde laboratuvar ağınızı bir eş sanal ağıyla bağlayın
 
 Bu makalede, başka bir ağ ile laboratuvarağı izleme hakkında bilgi sağlar.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Sanal ağ eşleme, Azure sanal ağlarına sorunsuz bir şekilde bağlanmanızı sağlar. Eşleme yapıldıktan sonra, bağlantı açısından sanal ağlar tek bir sanal ağ gibi görünür. Eşlenen sanal ağlardaki sanal makineler arasındaki trafik, aynı sanal ağdaki sanal makineler arasında yalnızca özel IP adresleri üzerinden yönlendirilmiş gibi Microsoft omurga altyapısı üzerinden yönlendirilir. Daha fazla bilgi için [Sanal ağ eşleme'ye](../../virtual-network/virtual-network-peering-overview.md)bakın.
 
@@ -46,7 +46,7 @@ Yeni [laboratuvar hesabı oluşturma](tutorial-setup-lab-account.md)sırasında,
 
 ### <a name="address-range"></a>Adres aralığı
 
-Laboratuvarlar için sanal makineler için **Adres aralığı** sağlama seçeneği de vardır. Adres aralığı sağlanırsa, laboratuvar hesabının altındaki laboratuarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CIDR gösteriminde olmalıdır (örn. 10.20.0.0/20) ve varolan adres aralıklarıyla örtüşmemelidir.  Bir adres aralığı sağlarken, oluşturulacak *laboratuvar* sayısını düşünmek ve bunu karşılamak için bir adres aralığı sağlamak önemlidir. Laboratuvar Hizmetleri, laboratuvar başına en fazla 512 sanal makine yi varsayar.  Örneğin, '/23' içeren bir ip aralığı yalnızca bir laboratuvar oluşturabilir.  '/21' içeren bir aralık dört laboratuvar oluşturulmasına olanak sağlar.
+Laboratuvarlar için sanal makineler için **Adres aralığı** sağlama seçeneği de vardır.  **Adres aralığı** özelliği yalnızca **Eş sanal ağı** laboratuar için etkinleştirildiğinde geçerlidir.  Adres aralığı sağlanırsa, laboratuvar hesabının altındaki laboratuarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CIDR gösteriminde olmalıdır (örn. 10.20.0.0/20) ve varolan adres aralıklarıyla örtüşmemelidir.  Bir adres aralığı sağlarken, oluşturulacak *laboratuvar* sayısını düşünmek ve bunu karşılamak için bir adres aralığı sağlamak önemlidir. Laboratuvar Hizmetleri, laboratuvar başına en fazla 512 sanal makine yi varsayar.  Örneğin, '/23' içeren bir ip aralığı yalnızca bir laboratuvar oluşturabilir.  '/21' içeren bir aralık dört laboratuvar oluşturulmasına olanak sağlar.
 
 Adres **aralığı** belirtilmemişse, Laboratuvar Hizmetleri sanal ağınızla eşlenecek sanal ağı oluştururken Azure tarafından kendisine verilen varsayılan adres aralığını kullanır.  Aralığı genellikle 10.x.0.0/16 gibi bir şeydir.  Bu, ip aralığının çakışması nedeniyle laboratuvar ayarlarında aralık belirtip adres aralığı nı belirttiğinizden veya sanal ağınızın eşlenen adres aralığını kontrol ettiğinizden emin olun.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d738868e0e4ca7599f4aaf8d6e09d22f26a8db92
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77016383"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024481"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central'da su kalitesi izleme uygulaması oluşturun
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırın.
 > * Beyaz etiketleme kullanarak uygulama markasını özelleştirin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğiniz olmasını öneririz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir abonelik oluşturabilirsiniz.
 
@@ -58,7 +58,7 @@ Bu bölümde, bir su kalitesi izleme uygulaması oluşturmak için Azure IoT Mer
     * **URL**: İstediğiniz URL'yi girebilir veya URL değerini daha sonra değiştirebilirsiniz.
     * Azure aboneliğiniz varsa, **Dizin,** **Azure aboneliği**ve **Bölge**için değerleri girin. Aboneliğiniz yoksa, **7 günlük ücretsiz deneme sürümünü** açabilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.
 
-    Dizinler ve abonelikler hakkında daha fazla bilgi için uygulama hızlı [başlat'ı oluştur'a](../core/quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) bakın.
+    Dizinler ve abonelikler hakkında daha fazla bilgi için uygulama hızlı [başlat'ı oluştur'a](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) bakın.
 
 1. Sayfanın sol alt kısmındaki **Oluştur** düğmesini seçin.
 
@@ -139,13 +139,13 @@ Aşağıdaki aygıt şablonu ayarlarını özelleştirme alıştırması yapın:
 1. **Sıcaklık** telemetri türüne gidin.
 1. Görüntü **adı** değerini **Bildirilen sıcaklıkla değiştirin.**
 1. Ölçü birimini değiştirin veya **Min değerini** ve **Max değerini**ayarlayın.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 #### <a name="add-a-cloud-property"></a>Bulut özelliği ekleme
 
 1. Aygıt şablonu menüsünden **Bulut özelliğini**seçin.
 1. Yeni bir bulut özelliği eklemek için **+ Bulut Özelliği Ekle'yi**seçin. Azure IoT Central'da, aygıtla alakalı ancak aygıt tarafından gönderilmesi beklenmeyen bir özellik ekleyebilirsiniz. Böyle bir özelliğin bir örneği, yükleme alanına, varlık bilgilerine veya bakım bilgilerine özgü bir uyarı eşiğidir.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ### <a name="explore-views"></a>Görünümleri keşfedin
 

@@ -1,29 +1,23 @@
 ---
 title: Birden fazla NIC kullanan Azure'da Windows VM'leri oluşturma ve yönetme
 description: Azure PowerShell veya Resource Manager şablonlarını kullanarak birden fazla NIC'si olan bir Windows VM'yi nasıl oluşturup yöneteceğimiz öğrenin.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 9bff5b6d-79ac-476b-a68f-6f8754768413
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6651ae21694022be86d8db08737c609aed3df569
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249990"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870264"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Birden çok NIC'si olan bir Windows sanal makinesi oluşturma ve yönetme
 Azure'daki sanal makinelerin (VM'ler) kendilerine birden çok sanal ağ arabirimi kartı (NIC) eklenebilir. Yaygın bir senaryo, ön uç ve arka uç bağlantısı için farklı alt ağlara sahip olmaktır. Bir VM'deki birden çok NIC'i birden çok alt ağla ilişkilendirebilirsiniz, ancak bu alt ağların tümü aynı sanal ağda (vNet) yer almalıdır. Bu makalede, birden çok NIC'si bağlı bir VM oluşturmak için nasıl ayrıntıları. NiC'lerin mevcut bir VM'den nasıl ekleyeceğinizi veya kaldırabileceğinizi de öğrenirsiniz. Farklı [VM boyutları,](sizes.md) farklı sayıda NIC'i destekler, bu nedenle VM'nizi buna göre boyutlandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *myResourceGroup,* *myVnet*ve *myVM'i*içerir.
 

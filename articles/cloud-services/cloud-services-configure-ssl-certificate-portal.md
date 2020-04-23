@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
-ms.openlocfilehash: 4d397279ac7e5949398d695db615d9a003ab7acd
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811685"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024855"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>Azure'daki bir uygulama için TLS yapılandırma
 
@@ -32,7 +32,7 @@ Bir uygulama için TLS yapılandırmak için öncelikle, bu amaçla sertifika ve
 
 Sertifika, Azure'daki TLS/SSL sertifikaları için aşağıdaki gereksinimleri karşılamalıdır:
 
-* Sertifika özel bir anahtar içermelidir.
+* Sertifika ortak bir anahtar içermelidir.
 * Sertifika anahtar değişimi için oluşturulmalıdır, Kişisel Bilgi Alışverişi (.pfx) dosyasına ihraç edilebilir.
 * Sertifikanın özne adı bulut hizmetine erişmek için kullanılan etki alanıyla eşleşmelidir. cloudapp.net etki alanı için bir sertifika yetkilisinden (CA) TLS/SSL sertifikası alamazsınız. Hizmetinize erişirken kullanmak üzere özel bir etki alanı adı edinmeniz gerekir. CA'dan sertifika istediğinizde, sertifikanın özne adı, başvurunuza erişmek için kullanılan özel alan adıile eşleşmelidir. Örneğin, özel alan adınız **contoso.com** ***.contoso.com** veya **www\.contoso.com**için CA'nızdan bir sertifika isteyebilirsiniz.
 * Sertifika en az 2048 bit şifreleme kullanmalıdır.

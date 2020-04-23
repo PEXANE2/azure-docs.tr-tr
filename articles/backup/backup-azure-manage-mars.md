@@ -4,12 +4,12 @@ description: Azure Yedekleme hizmetini kullanarak Microsoft Azure Kurtarma Hizme
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 404341c8324d9e127e8d8e6bc8083926c0d3106f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537364"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025110"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Yedekleme hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) Aracı sıyrık larını yönetme
 
@@ -79,8 +79,8 @@ Yedeklenmesini istemediğiniz dosya ve klasörleri atlamak için dışlama kural
 
     ![Öğeleri seçin](./media/backup-azure-manage-mars/select-items-remove.png)
 
-> [!NOTE]
-> Bir birimi ilkeden tamamen kaldırdığınızda dikkatli olun.  Yeniden eklemeniz gerekirse, yeni bir birim olarak kabul edilir. Sonraki zamanlanmış yedekleme, Artımlı Yedekleme yerine Bir Başlangıç Yedekleme (tam yedekleme) gerçekleştirecektir. Daha sonra öğeleri geçici olarak kaldırmanız ve eklemeniz gerekiyorsa, tam yedekleme yerine artımlı yedekleme sağlamak için **Öğeleri Kaldır** yerine **Dışlama Ayarları'nı** kullanmanız önerilir.
+    > [!NOTE]
+    > Bir birimi ilkeden tamamen kaldırdığınızda dikkatli olun.  Yeniden eklemeniz gerekirse, yeni bir birim olarak kabul edilir. Sonraki zamanlanmış yedekleme, Artımlı Yedekleme yerine Bir Başlangıç Yedekleme (tam yedekleme) gerçekleştirecektir. Daha sonra öğeleri geçici olarak kaldırmanız ve eklemeniz gerekiyorsa, tam yedekleme yerine artımlı yedekleme sağlamak için **Öğeleri Kaldır** yerine **Dışlama Ayarları'nı** kullanmanız önerilir.
 
 2. Sonraki adımları tamamlayın ve işlemi tamamlamak için **Bitir'i** tıklatın.
 
@@ -90,7 +90,7 @@ Dosya ve Klasörler yedeklemesini korumayı durdurmanın iki yolu vardır:
 
 - **Korumayı durdurun ve yedekleme verilerini koruyun.**
   - Bu seçenek, gelecekteki tüm yedekleme işlerinin korunmasını durdurur.
-  - Azure Yedekleme hizmeti varolan tüm kurtarma noktalarını süresiz olarak saklar. Kurtarma noktaları, koruma sürdürülene kadar son kullanma tarihi kontrol edilmez.
+  - Azure Yedekleme hizmeti varolan tüm kurtarma noktalarını korumaya devam edecektir.  
   - Süresi dolmamış kurtarma noktaları için yedeklenen verileri geri yükleyebilirsiniz.
   - Korumayı sürdürmeye karar verirseniz, *yedek zamanlamayı yeniden etkinleştir* seçeneğini kullanabilirsiniz. Bundan sonra, veriler yeni bekletme ilkesine göre korunur.
 - **Korumayı durdurun ve yedekleme verilerini silin.**
@@ -167,7 +167,6 @@ Bir parola, Mars aracısını Kullanarak Azure'a veya Azure'dan şirket içi vey
 
     ![Parola oluşturma.](./media/backup-azure-manage-mars/passphrase2.png)
 - Parolanın tercihen Azure Anahtar Kasası'nda, alternatif bir konumda (kaynak makine dışında) güvenli bir şekilde kaydedilmesini sağlayın. MARS ajanlarıyla yedeklenen birden fazla makineniz varsa tüm parolaları takip edin.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Linux için Konuk Yapılandırma ilkeleri nasıl oluşturulur?
 description: Linux için Azure İlkesi Konuk Yapılandırma ilkesini nasıl oluşturabilirsiniz öğrenin.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 24442a89d55e34f9ce9697c2f6a32cfc740bcd85
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 219b38bd81cae8d16241d1ee16cfdd2f400ae91e
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758970"
+ms.locfileid: "82024991"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux için Konuk Yapılandırma ilkeleri nasıl oluşturulur?
 
@@ -26,9 +26,8 @@ Azure veya Azure olmayan bir makinenin durumunu doğrulamak için kendi yapılan
 > Konuk Yapılandırması ile özel ilkeler bir Önizleme özelliğidir.
 >
 > Konuk Yapılandırma uzantısı, Azure sanal makinelerinde denetim ler gerçekleştirmek için gereklidir.
-> Uzantıyı ölçekte dağıtmak için aşağıdaki ilke tanımlarını atayın:
->   - Windows VM'lerde Konuk Yapılandırma İlkesi'ni etkinleştirmek için ön koşulları dağıtın.
->   - Linux VM'lerde Konuk Yapılandırma Politikası'nı etkinleştirmek için ön koşulları dağıtın.
+> Uzantıyı tüm Linux makinelerinde ölçekte dağıtmak için aşağıdaki ilke tanımını atayın:
+>   - [Linux VM'lerde Konuk Yapılandırma Politikası'nı etkinleştirmek için ön koşulları dağıtın.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>PowerShell modüllerini yükleyin
 

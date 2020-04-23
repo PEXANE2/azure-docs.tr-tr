@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 048ab7249b27839890bab3e677154ca3c7a0cc98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 949f1b3ee3db72e1c541c3dd4c5f74f364f1b514
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239430"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869888"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Varolan bir Uygulama Ağ Geçidi ni kullanarak Bir Uygulama Ağ Geçidi Giriş Denetleyicisi (AGIC) yükleme
 
@@ -20,14 +20,14 @@ Uygulama Ağ Geçidi Denetleyicisi (AGIC), Kubernetes kümenizdeki bir bölmedir
 AGIC, Kubernetes [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) kaynaklarını izler ve Kubernetes kümesinin durumuna göre Uygulama Ağ Geçidi config'i oluşturur ve uygular.
 
 ## <a name="outline"></a>Anahat:
-- [Ön koşullar](#prerequisites)
+- [Önkoşullar](#prerequisites)
 - [Azure Kaynak Yöneticisi Kimlik Doğrulaması (ARM)](#azure-resource-manager-authentication)
     - Seçenek 1: [Aad-pod kimliğini ayarlama](#set-up-aad-pod-identity) ve ARM'larda Azure Kimliği oluşturma
     - Seçenek 2: [Hizmet Sorumlusu Kullanma](#using-a-service-principal)
 - [Miğferkullanarak Giriş Denetleyicisi Yükleme](#install-ingress-controller-as-a-helm-chart)
 - [Çoklu küme / Paylaşılan Uygulama Ağ Geçidi](#multi-cluster--shared-application-gateway): Agic'i, Uygulama Ağ Geçidi'nin bir veya daha fazla AKS kümeleri ve/veya diğer Azure bileşenleri arasında paylaşıldığı bir ortama yükleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu belge, aşağıdaki araçları ve altyapıyı zaten yüklü olarak sahip olduğunuzu varsayar:
 - [Gelişmiş Ağ](https://docs.microsoft.com/azure/aks/configure-azure-cni) etkin [AKS](https://azure.microsoft.com/services/kubernetes-service/)
 - [AKS](https://docs.microsoft.com/azure/application-gateway/create-zone-redundant) ile aynı sanal ağda Uygulama Ağ Geçidi v2
@@ -117,7 +117,7 @@ Bir Kubernetes sırrı ile ARM'a AGIC erişimi sağlamak da mümkündür.
 1. Active Directory Service Principal oluşturun ve base64 ile kodlayın. Temel64 kodlama JSON blob Kubernetes kaydedilmesi için gereklidir.
 
 ```azurecli
-az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0
+az ad sp create-for-rbac --sdk-auth | base64 -w0
 ```
 
 2. `helm-config.yaml` Dosyaya base64 kodlanmış JSON blob ekleyin. Daha `helm-config.yaml` fazla bilgi sonraki bölümde yer almaktadır.
@@ -184,7 +184,7 @@ armAuth:
     ## Alternatively you can use Service Principal credentials
     # armAuth:
     #    type: servicePrincipal
-    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
+    #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --sdk-auth | base64 -w0" >>
     
     ################################################################################
     # Specify if the cluster is RBAC enabled or not
@@ -221,7 +221,7 @@ armAuth:
          --set appgw.subscriptionId=subscription-uuid \
          --set appgw.shared=false \
          --set armAuth.type=servicePrincipal \
-         --set armAuth.secretJSON=$(az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0) \
+         --set armAuth.secretJSON=$(az ad sp create-for-rbac --sdk-auth | base64 -w0) \
          --set rbac.enabled=true \
          --set verbosityLevel=3 \
          --set kubernetes.watchNamespace=default \

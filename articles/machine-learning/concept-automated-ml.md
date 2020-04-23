@@ -9,60 +9,88 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
-ms.date: 02/28/2020
-ms.openlocfilehash: 095561f02fdeff6688b78d69cc1becc4ee0f8901
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.date: 04/22/2020
+ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115205"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082018"
 ---
-# <a name="what-is-automated-machine-learning"></a>Otomatik makine öğrenmesi nedir?
+# <a name="what-is-automated-machine-learning-automl"></a>Otomatik makine öğrenimi (AutoML) nedir?
 
-Otomatik makine öğrenimi, aynı zamanda otomatik ML olarak anılacaktır, zaman alıcı otomatikleme sürecidir, makine öğrenme modeli geliştirme yinelemeli görevleri. Bu veri bilim adamları, analistler ve geliştiriciler yüksek ölçekli, verimlilik ve verimlilik ile ML modelleri oluşturmak için tüm model kalitesini sürdürürken sağlar. Otomatik ML, Microsoft Research [bölümümüzden](https://arxiv.org/abs/1705.05355)bir atılıma dayanmaktadır.
+Otomatik makine öğrenimi, aynı zamanda otomatik ML veya AutoML olarak anılacaktır, zaman alıcı otomatikleme sürecidir, makine öğrenme modeli geliştirme yinelemeli görevleri. Bu veri bilim adamları, analistler ve geliştiriciler yüksek ölçekli, verimlilik ve verimlilik ile ML modelleri oluşturmak için tüm model kalitesini sürdürürken sağlar. Otomatik ML, Microsoft Research [bölümümüzden](https://arxiv.org/abs/1705.05355)bir atılıma dayanmaktadır.
 
 Geleneksel makine öğrenimi modeli geliştirme kaynak yoğun, üretmek ve modelleri düzinelerce karşılaştırmak için önemli etki alanı bilgisi ve zaman gerektiren. Otomatik makine öğrenimi ile, üretime hazır ML modellerini büyük bir kolaylık ve verimlilikle elde etmek için gereken süreyi hızlandıracaksınız.
 
-## <a name="when-to-use-automated-ml"></a>Otomatik ML ne zaman kullanılır
+## <a name="when-to-use-automl-classify-regression--forecast"></a>AutoML ne zaman kullanılır: sınıflandırmak, regresyon, & tahmin
 
 Azure Machine Learning'in belirttiğiniz hedef metrik'i kullanarak sizin için bir modeli eğitip ayarlamasını istediğinizde otomatik ML uygulayın. Otomatik ML, makine öğrenimi modeli geliştirme sürecini demokratikleştirir ve veri bilimi uzmanlıkları ne olursa olsun, herhangi bir sorun için uçtan uca makine öğrenimi boru hattını tanımlamaya yönelik kullanıcıları güçlendirir.
 
 Veri bilimciler, analistler ve endüstriler arasında geliştiriciler otomatik ML kullanabilirsiniz:
-
-+ Kapsamlı programlama bilgisi olmadan makine öğrenimi çözümlerini uygulayın
++ Kapsamlı programlama bilgisi olmadan ML çözümlerini uygulayın
 + Zamandan ve kaynaklardan tasarruf edin
 + Veri bilimien iyi uygulamalarından yararlanın
 + Çevik problem çözme sağlama
 
-Aşağıdaki tabloda ortak otomatik ML kullanım durumları listelenistır. 
+### <a name="classification"></a>Sınıflandırma
 
-Sınıflandırma| Zaman serisi tahmini | Regresyon
----|---|---
-[Dolandırıcılık Algılama](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)|[Satış Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)|[CPU Performans Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)
-|[Pazarlama Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)|[Talep Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)|
-|[Haber Grubu Veri Sınıflandırması](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)|[İçecek Üretim Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)|
+Sınıflandırma yaygın bir makine öğrenme görevidir. Sınıflandırma, modellerin eğitim verilerini kullanarak öğrendikleri ve bu öğrenmeleri yeni verilere uyguladıkları denetimli öğrenme türüdür. Azure Machine Learning, sınıflandırma için derin sinirsel ağ metin featurizers gibi bu görevler için özel olarak başarılar sunar. [Featurization seçenekleri](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin. 
 
-## <a name="design-automated-ml-experiments"></a>Otomatik ML deneyleri tasarla
+Sınıflandırma modellerinin temel amacı, eğitim verilerinden elde edilen bilgilere dayanarak yeni verilerin hangi kategorilere düşeceğini tahmin etmektir. Yaygın sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneğini görün.
+
+Bu Python dizüstü bilgisayarlarda sınıflandırma ve otomatik makine öğrenimi örneklerine bakın: [Sahtekarlık Algılama,](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) [Pazarlama Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ve Haber Grubu [Veri Sınıflandırması](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+
+### <a name="regression"></a>Regresyon
+Sınıflandırmaya benzer şekilde, regresyon görevleri de ortak bir denetimli öğrenme görevidir. Azure Machine [Learning, bu görevler için özel olarak başarı lar](how-to-use-automated-ml-for-ml-models.md#featurization)sunar.
+
+Öngörülen çıktı değerlerinin kategorik olduğu sınıflandırmadan farklı olarak, regresyon modelleri bağımsız belirleyicilere dayalı sayısal çıktı değerlerini tahmin eder. Regresyonda amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmin değişkenleri arasındaki ilişkiyi kurmaya yardımcı olmaktır. Örneğin, otomobil fiyatı, gaz kilometre, güvenlik derecelendirmesi, vb gibi özelliklere dayalı Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile gerileme](tutorial-auto-train-models.md)örneğini görün.
+
+Bu Python dizüstü bilgisayarlardaki tahminler için gerileme ve otomatik makine öğrenimi örneklerine bakın: [CPU Performans Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+
+### <a name="time-series-forecasting"></a>Zaman serisi tahmini
+
+Bina tahminleri, ister gelir, ister stok, satış veya müşteri talebi olsun, herhangi bir işletmenin ayrılmaz bir parçasıdır. Teknikleri ve yaklaşımları birleştirmek ve önerilen, yüksek kaliteli zaman serisi tahmini almak için otomatik ML kullanabilirsiniz. Bu nasıl yapılacağını öğrenin: [zaman serisi tahmini için otomatik makine öğrenimi.](how-to-auto-train-forecast.md) 
+
+Otomatik bir zaman serisi deneyi çok değişkenli bir regresyon sorunu olarak kabul edilir. Geçmiş zaman serisi değerleri, diğer tahminörlerle birlikte regresör için ek boyutlar haline gelmek üzere "döndürülür". Bu yaklaşım, klasik zaman serisi yöntemlerinin aksine, doğal olarak birden fazla bağlamsal değişkeni ve eğitim sırasında birbirleriyle olan ilişkilerini birleştirme avantajına sahiptir. Otomatik ML, veri kümesi ve tahmin ufuklarında bulunan tüm öğeler için tek, ancak genellikle dahili dallı bir model öğrenir. Böylece daha fazla veri model parametrelerini tahmin etmek için kullanılabilir ve görünmeyen serilere genelleme mümkün olur.
+
+Gelişmiş tahmin yapılandırması şunları içerir:
+* tatil algılama ve featurization
+* zaman serisi ve DNN öğrenenler (Auto-ARIMA, Peygamber, ForecastTCN)
+* birçok model gruplama yoluyla destek
+* haddeleme kökenli çapraz doğrulama
+* yapılandırılabilir gecikmeler
+* haddeleme penceresi toplu özellikleri
+
+
+Bu Python dizüstü bilgisayarlardaki tahminler için gerileme ve otomatik makine öğrenimi örneklerine bakın: [Satış Tahmini,](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb) [Talep Tahmini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)ve İçecek [Üretim Tahmini.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)
+
+## <a name="how-automl-works"></a>AutoML nasıl çalışır?
+
+Eğitim sırasında Azure Machine Learning, sizin için farklı algoritmalar ve parametreler ilerleyen paralel olarak bir dizi ardışık hatlar oluşturur. Hizmet, her yinelemenin bir eğitim puanına sahip bir model ürettiği özellik seçimleri ile eşleştirilmiş ML algoritmaları aracılığıyla yinelenir. Puan ne kadar yüksekse, model verilerinizi "sığdırmak" için o kadar iyi kabul edilir.  Denemede tanımlanan çıkış ölçütlerini vurduğunda durur. 
 
 **Azure Machine Learning'i**kullanarak, otomatik ML eğitim denemelerinizi şu adımlarla tasarlayabilir ve çalıştırabilirsiniz:
 
 1. Çözülmesi gereken **ML sorununu tanımlayın:** sınıflandırma, tahmin veya gerileme
 
+1. **Python SDK'yı mı yoksa stüdyo web deneyimini mi kullanmak istediğinizi seçin:** [Python SDK ile stüdyo web deneyimi](#parity)arasındaki eşitlik hakkında bilgi edinin.
+
+   * Sınırlı veya hiç kod deneyimi için Azure Machine Learning stüdyo web deneyimini[https://ml.azure.com](https://ml.azure.com/)  
+   * Python geliştiricileri için [Azure Machine Learning Python SDK'ya](how-to-configure-auto-train.md) göz atın 
+
+    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
+    
 1. **Etiketli eğitim verilerinin kaynağını ve biçimini belirtin**: Numpy dizileri veya Pandas veri çerçevesi
 
 1. [Yerel bilgisayarınız, Azure Machine Learning Computes, remote VM'ler veya Azure Databricks](how-to-set-up-training-targets.md)gibi **model eğitimi için bilgi işlem hedefini yapılandırın.**  Uzak bir [kaynakta](how-to-auto-train-remote.md)otomatik eğitim hakkında bilgi edinin.
 
-1. Farklı modellerde kaç yineleme, hiperparametre ayarları, gelişmiş ön işleme/featurization ve en iyi modeli belirlerken hangi ölçümlere bakılması gerektiğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın.**  [Azure Machine Learning stüdyosunda](https://ml.azure.com)veya [SDK ile](how-to-configure-auto-train.md)otomatik eğitim denemesi için ayarları yapılandırabilirsiniz. 
-
-    [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]
-
+1. Farklı modellerde kaç yineleme, hiperparametre ayarları, gelişmiş ön işleme/featurization ve en iyi modeli belirlerken hangi ölçümlere bakılması gerektiğini belirleyen **otomatik makine öğrenimi parametrelerini yapılandırın.**  
 1. **Eğitim çalışmasını gönderin.**
 
-## <a name="how-automated-ml-works"></a>Otomatik ML nasıl çalışır?
+1. **Sonuçları gözden geçirin** 
 
-Eğitim sırasında Azure Machine Learning, farklı algoritmalar ve parametreleri deneyen paralel ardışık hatlar oluşturur. Hizmet, her yinelemenin bir eğitim puanına sahip bir model ürettiği özellik seçimleri ile eşleştirilmiş ML algoritmaları aracılığıyla yinelenir. Puan ne kadar yüksekse, model verilerinizi "sığdırmak" için o kadar iyi kabul edilir.  Denemede tanımlanan çıkış ölçütlerini vurduğunda durur. Aşağıdaki diyagram bu işlemi göstermektedir. 
-
-  ![Otomatik Makine öğrenme](./media/concept-automated-ml/automl-concept-diagram2.png)
+Aşağıdaki diyagram bu işlemi göstermektedir. 
+![Otomatik Makine öğrenme](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
 Ayrıca, çalışma sırasında toplanan [ölçümleri içeren](how-to-understand-automated-ml.md) günlüğe kaydedilmiş çalıştırma bilgilerini de inceleyebilirsiniz. Eğitim çalışması, model ve veri`.pkl` ön işleme içeren bir Python seri nesnesi (dosya) üretir.
@@ -94,7 +122,7 @@ Her otomatik makine öğrenimi deneyinde, algoritmaların iyi performans göster
 | [KesilenSVDSarma](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |Bu transformatör, kesilen tekil değer ayrıştırma (SVD) ile doğrusal boyutlandırma azaltma gerçekleştirir. PCA'nın aksine, bu tahminci tekil değer ayrıştırma işleminden önce verileri merkezlemiyor, bu da scipy.seyrek matrislerle verimli bir şekilde çalışabileceği anlamına geliyor. |
 | [SeyrekNormalleştirici](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | En az bir sıfır olmayan bileşeni olan her örnek (yani veri matrisinin her satırı) diğer örneklerden bağımsız olarak yeniden ölçeklendirilir, böylece norm (l1 veya l2) bir |
 
-### <a name="advanced-preprocessing-optional-featurization"></a>Gelişmiş ön işleme: isteğe bağlı featurization
+### <a name="advanced-preprocessing--featurization"></a>Gelişmiş ön işleme & featurization
 
 Veri korkulukları, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve featurization da mevcuttur. [Ne featurization dahil olduğu hakkında daha fazla bilgi edinin.](how-to-use-automated-ml-for-ml-models.md#featurization) Bu ayarı şu şekilde etkinleştirin:
 
@@ -102,65 +130,17 @@ Veri korkulukları, kodlama ve dönüşümler gibi ek gelişmiş ön işleme ve 
 
 + Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig` Sınıf](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)için belirtme. 
 
-## <a name="classification--regression"></a>Sınıflandırma & regresyon
-
-Sınıflandırma ve regresyon makine öğrenimi görevlerinin en yaygın türleridir. Her ikisi de, modellerin eğitim verilerini kullanarak öğrendikleri ve bu öğrenmeleri yeni verilere uyguladığı denetimli öğrenme türleridir. Azure Machine Learning, sınıflandırma için derin sinirsel ağ metin featurizers gibi bu görevler için özel olarak başarılar sunar. [Featurization seçenekleri](how-to-use-automated-ml-for-ml-models.md#featurization)hakkında daha fazla bilgi edinin. 
-
-Sınıflandırma modellerinin temel amacı, eğitim verilerinden elde edilen bilgilere dayanarak yeni verilerin hangi kategorilere düşeceğini tahmin etmektir. Yaygın sınıflandırma örnekleri arasında sahtekarlık algılama, el yazısı tanıma ve nesne algılama sayılabilir.  Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile sınıflandırma](tutorial-train-models-with-aml.md)örneğini görün.
-
-Öngörülen çıktı değerlerinin kategorik olduğu sınıflandırmadan farklı olarak, regresyon modelleri bağımsız belirleyicilere dayalı sayısal çıktı değerlerini tahmin eder. Regresyonda amaç, bir değişkenin diğerlerini nasıl etkilediğini tahmin ederek bu bağımsız tahmin değişkenleri arasındaki ilişkiyi kurmaya yardımcı olmaktır. Örneğin, otomobil fiyatı, gaz kilometre, güvenlik derecelendirmesi, vb gibi özelliklere dayalı Daha fazla bilgi edinin ve [otomatik makine öğrenimi ile gerileme](tutorial-auto-train-models.md)örneğini görün.
-
-## <a name="time-series-forecasting"></a>Zaman serisi tahmini
-
-Bina tahminleri, ister gelir, ister stok, satış veya müşteri talebi olsun, herhangi bir işletmenin ayrılmaz bir parçasıdır. Teknikleri ve yaklaşımları birleştirmek ve önerilen, yüksek kaliteli zaman serisi tahmini almak için otomatik ML kullanabilirsiniz.
-
-Otomatik bir zaman serisi deneyi çok değişkenli bir regresyon sorunu olarak kabul edilir. Geçmiş zaman serisi değerleri, diğer tahminörlerle birlikte regresör için ek boyutlar haline gelmek üzere "döndürülür". Bu yaklaşım, klasik zaman serisi yöntemlerinin aksine, doğal olarak birden fazla bağlamsal değişkeni ve eğitim sırasında birbirleriyle olan ilişkilerini birleştirme avantajına sahiptir. Otomatik ML, veri kümesi ve tahmin ufuklarında bulunan tüm öğeler için tek, ancak genellikle dahili dallı bir model öğrenir. Böylece daha fazla veri model parametrelerini tahmin etmek için kullanılabilir ve görünmeyen serilere genelleme mümkün olur.
-
-Daha fazla bilgi edinin ve [zaman serisi tahmini için otomatik makine öğrenimi örneğini](how-to-auto-train-forecast.md)görün. Veya aşağıdakiler dahil olmak üzere gelişmiş tahmin yapılandırmasının ayrıntılı kod örnekleri için [enerji talebi not defterine](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) bakın:
-
-* tatil algılama ve featurization
-* zaman serisi ve DNN öğrenenler (Auto-ARIMA, Peygamber, ForecastTCN)
-* birçok model gruplama yoluyla destek
-* haddeleme kökenli çapraz doğrulama
-* yapılandırılabilir gecikmeler
-* haddeleme penceresi toplu özellikleri
-
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble modelleri
-
-Otomatik makine öğrenimi, varsayılan olarak etkinleştirilen topluluk modellerini destekler. Topluluk öğrenme, tek model kullanmanın aksine birden fazla modeli birleştirerek makine öğrenimi sonuçlarını ve öngörülü performansı artırır. Topluluk yinelemeleri, çalışmanızın son yinelemeleri olarak görünür. Otomatik makine öğrenimi, modelleri birleştirmek için hem oylama hem de istifleme topluluğu yöntemlerini kullanır:
-
-* **Oylama**: öngörülen sınıf olasılıklarının (sınıflandırma görevleri için) veya öngörülen regresyon hedeflerinin (regresyon görevleri için) ağırlıklı ortalamasına göre tahmin eder.
-* **İstifleme**: istifleme heterojen modelleri birleştirir ve tek tek modellerden elde edilen çıktıya dayalı bir meta-model eğiter. Geçerli varsayılan meta modelleri sınıflandırma görevleri için LogisticRegression ve regresyon/tahmin görevleri için ElasticNet'tir.
-
-Sıralanmış topluluk başlatma ile [Caruana topluluk seçim algoritması](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) topluluk içinde kullanmak için hangi modelleri karar vermek için kullanılır. Yüksek düzeyde, bu algoritma en iyi bireysel puanları ile en fazla beş model ile topluluk açılır ve bu modeller kötü bir ilk topluluk önlemek için en iyi puanı% 5 eşik içinde olduğunu doğrular. Daha sonra her topluluk yinelemesi için, varolan topluluka yeni bir model eklenir ve elde edilen puan hesaplanır. Yeni bir model varolan topluluk puanı geliştirilmişise, topluluk yeni modeli içerecek şekilde güncellenir.
-
-Otomatik makine öğreniminde varsayılan topluluk ayarlarını değiştirmenin [nasıl yapılacağını](how-to-configure-auto-train.md#ensemble) görün.
-
-## <a name="use-with-onnx"></a>ONNX ile kullanın
-
-Azure Machine Learning ile, bir Python modeli oluşturmak ve ONNX biçimine dönüştürmek için otomatik ML'yi kullanabilirsiniz. Modeller ONNX formatında olduktan sonra, çeşitli platformlarda ve cihazlarda çalıştırılabilir. [ONNX ile ML modellerini hızlandırma](concept-onnx.md)hakkında daha fazla bilgi edinin.
-
-[Bu Jupyter dizüstü bilgisayar örneğinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ONNX biçimine nasıl dönüştürileceksiniz bakın. [ONNX'te hangi algoritmaların desteklenildiği](how-to-configure-auto-train.md#select-your-experiment-type)öğrenin.
-
-ONNX çalışma süresi c#'ı da destekler, böylece C# uygulamalarınızda otomatik olarak oluşturulmuş modeli yeniden kodlamaya veya REST uç noktalarının tanıttığına gerek kalmadan kullanabilirsiniz. [ONNX çalışma zamanı C# API ile ONNX modellerini çıkartma](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)hakkında daha fazla bilgi edinin. 
-
-## <a name="automated-ml-in-azure-machine-learning"></a>Azure Makine Öğreniminde Otomatik ML
-
-Azure Machine Learning, otomatik ML ile çalışmak için iki deneyim sunar
-
-* Kod deneyimli müşteriler için [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 
-
-* Sınırlı/no kod deneyimi müşterileri için Azure Machine Learning stüdyosu[https://ml.azure.com](https://ml.azure.com/)  
-
-Aşağıda, her deneyimde desteklenen üst düzey otomatik ML yetenekleri özetlenir.
-
 <a name="parity"></a>
+
+## <a name="the-studio-vs-sdk"></a>Stüdyo vs SDK
+
+Python SDK ile Azure Machine Learning'deki stüdyo aracılığıyla kullanılabilen üst düzey otomatik ML özellikleri arasındaki parite ve farklar hakkında bilgi edinin. 
 
 ### <a name="experiment-settings"></a>Deney ayarları 
 
 Aşağıdaki ayarlar, otomatik ML denemenizi yapılandırmanızı sağlar. 
 
-| | Python SDK'sı| Studio
+| |The Python SDK|Stüdyo web deneyimi|
 ----|:----:|:----:
 Verileri tren/doğrulama kümelerine bölme| ✓|✓
 ML görevlerini destekler: sınıflandırma, gerileme ve tahmin| ✓| ✓
@@ -175,35 +155,54 @@ Algoritmaları engelleme|✓|✓
 Azure Databricks kümeleri üzerindeki eğitimi destekler| ✓|
 Tasarlanmış özellik adlarını görüntüleme|✓|
 Featurization özeti| ✓|
-Tatil featurization|✓|
-Günlük dosyaları için ayrıntılılık düzeyi| ✓|
+Tatiller için featurization|✓|
+Günlük dosya ayrıntılı düzeyleri| ✓|
 
 ### <a name="model-settings"></a>Model ayarları
 
 Bu ayarlar, otomatik ML denemeniz sonucunda en iyi modele uygulanabilir.
 
-||Python SDK'sı|Studio
-----|:----:|:----:
-En iyi model kaydı| ✓|✓
-En iyi model dağıtımı| ✓| ✓
-En iyi model açıklanabilirlik| ✓|✓
-Topluluk & yığın topluluk modellerini oylama ya da etkinleştirme| ✓|✓
-Birincil olmayan metrik temele göre en iyi modeli göster|✓|
-ONNX model uyumluluğunu etkinleştirme/devre dışı|✓|
-Modeli test etme | ✓| |
+| |The Python SDK|Stüdyo web deneyimi|
+|----|:----:|:----:|
+|En iyi model kaydı, dağıtım, açıklanabilirlik| ✓|✓|
+|Topluluk & yığın topluluk modellerini oylama ya da etkinleştirme| ✓|✓|
+|Birincil olmayan metrik temele göre en iyi modeli göster|✓||
+|ONNX model uyumluluğunu etkinleştirme/devre dışı|✓||
+|Modeli test etme | ✓| |
 
 ### <a name="run-control-settings"></a>Denetim ayarlarını çalıştırın
 
 Bu ayarlar, deneme çalışanlarınızı ve alt çalışır denetim ve denetim sağlar. 
 
-||Python SDK'sı| Studio
-----|:----:|:----:
-Özet tablosunu çalıştır| ✓|✓
-Çalıştırmayı iptal et| ✓|✓
-Alt çalıştırmayı iptal etme| ✓| ✓
-Korkulukları alın| ✓|✓
-Çalıştırmayı duraklatma| ✓| 
-Devam çalıştırma| ✓| 
+| |The Python SDK|Stüdyo web deneyimi|
+|----|:----:|:----:|
+|Özet tablosunu çalıştır| ✓|✓|
+|Çocuk çalıştırmaları & çalıştırmaları iptal etme| ✓|✓|
+|Korkulukları alın| ✓|✓|
+|Devam çalıştırmaları & duraklatma| ✓| |
+
+## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble modelleri
+
+Otomatik makine öğrenimi, varsayılan olarak etkinleştirilen topluluk modellerini destekler. Topluluk öğrenme, tek model kullanmanın aksine birden fazla modeli birleştirerek makine öğrenimi sonuçlarını ve öngörülü performansı artırır. Topluluk yinelemeleri, çalışmanızın son yinelemeleri olarak görünür. Otomatik makine öğrenimi, modelleri birleştirmek için hem oylama hem de istifleme topluluğu yöntemlerini kullanır:
+
+* **Oylama**: öngörülen sınıf olasılıklarının (sınıflandırma görevleri için) veya öngörülen regresyon hedeflerinin (regresyon görevleri için) ağırlıklı ortalamasına göre tahmin eder.
+* **İstifleme**: istifleme heterojen modelleri birleştirir ve tek tek modellerden elde edilen çıktıya dayalı bir meta-model eğiter. Geçerli varsayılan meta modelleri sınıflandırma görevleri için LogisticRegression ve regresyon/tahmin görevleri için ElasticNet'tir.
+
+Sıralanmış topluluk başlatma ile [Caruana topluluk seçim algoritması](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) topluluk içinde kullanmak için hangi modelleri karar vermek için kullanılır. Yüksek düzeyde, bu algoritma en iyi bireysel puanları ile en fazla beş model ile topluluk açılır ve bu modeller kötü bir ilk topluluk önlemek için en iyi puanı% 5 eşik içinde olduğunu doğrular. Daha sonra her topluluk yinelemesi için, varolan topluluka yeni bir model eklenir ve elde edilen puan hesaplanır. Yeni bir model varolan topluluk puanı geliştirilmişise, topluluk yeni modeli içerecek şekilde güncellenir.
+
+Otomatik makine öğreniminde varsayılan topluluk ayarlarını değiştirmenin [nasıl yapılacağını](how-to-configure-auto-train.md#ensemble) görün.
+
+<a name="use-with-onnx"></a>
+
+## <a name="automl--onnx"></a>AutoML & ONNX
+
+Azure Machine Learning ile, bir Python modeli oluşturmak ve ONNX biçimine dönüştürmek için otomatik ML'yi kullanabilirsiniz. Modeller ONNX formatında olduktan sonra, çeşitli platformlarda ve cihazlarda çalıştırılabilir. [ONNX ile ML modellerini hızlandırma](concept-onnx.md)hakkında daha fazla bilgi edinin.
+
+[Bu Jupyter dizüstü bilgisayar örneğinde](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)ONNX biçimine nasıl dönüştürileceksiniz bakın. [ONNX'te hangi algoritmaların desteklenildiği](how-to-configure-auto-train.md#select-your-experiment-type)öğrenin.
+
+ONNX çalışma süresi c#'ı da destekler, böylece C# uygulamalarınızda otomatik olarak oluşturulmuş modeli yeniden kodlamaya veya REST uç noktalarının tanıttığına gerek kalmadan kullanabilirsiniz. [ONNX çalışma zamanı C# API ile ONNX modellerini çıkartma](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)hakkında daha fazla bilgi edinin. 
+
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

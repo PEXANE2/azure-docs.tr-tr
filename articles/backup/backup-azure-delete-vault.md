@@ -1,18 +1,18 @@
 ---
 title: Microsoft Azure Kurtarma Hizmetleri kasası silme
-description: Bu makalede, bağımlılıkları nasıl kaldırabileceğinizi ve ardından Microsoft Azure Yedekleme Kurtarma Hizmetleri (MARS) kasasını nasıl silen öğrenin.
+description: Bu makalede, bağımlılıkları nasıl kaldırabileceğinizi ve ardından Azure Yedekleme Kurtarma Hizmetleri kasasını nasıl silenöğrenin.
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: f33f52048729b50015ba86db71118b9a21e1a2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69fed6c53914ed7aa16b04b5311ec69966734f25
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500396"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025144"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Yedekleme Kurtarma Hizmetleri kasası silme
 
-Bu makalede, Microsoft [Azure Yedekleme](backup-overview.md) Kurtarma Hizmetleri (MARS) kasasının nasıl silinir. Bağımlılıkları kaldırmak ve sonra bir kasa silme için talimatlar içerir.
+Bu makalede, Azure [Yedekleme](backup-overview.md) Kurtarma Hizmetleri kasasının nasıl silinir. Bağımlılıkları kaldırmak ve sonra bir kasa silme için talimatlar içerir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 45a27be400753b56c42310a340334feba8a420c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c98ae7c95ac3fc186786612dd3d8d8bd55fa816f
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73906863"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024889"
 ---
 # <a name="working-with-security-policies"></a>Güvenlik ilkeleriyle çalışma
 
@@ -62,11 +62,11 @@ Güvenlik Merkezi'nde güvenlik ilkelerinizi görüntüleme:
 
 1. Bu sayfadaki mevcut seçenekler arasından seçim yapın:
 
-    1. Endüstri ilkeleriyle çalışmak için **daha fazla standart ekle'yi**tıklatın. Daha fazla bilgi için [dinamik uyumluluk paketlerine güncelleştir'e](update-regulatory-compliance-packages.md)bakın.
+    1. Endüstri ilkeleriyle çalışmak için **daha fazla standart ekle'yi**seçin. Daha fazla bilgi için [dinamik uyumluluk paketlerine güncelleştir'e](update-regulatory-compliance-packages.md)bakın.
 
-    1. Özel girişimleri atamak ve yönetmek için **özel girişimler ekle'yi**tıklatın. Daha fazla bilgi için [bkz.](custom-security-policies.md)
+    1. Özel girişimleri atamak ve yönetmek için **Özel girişimler ekle'yi**seçin. Daha fazla bilgi için [bkz.](custom-security-policies.md)
 
-    1. Varsayılan ilkeyi görüntülemek ve yeniden yapmak için **etkili ilkeyi Görüntüle'yi** tıklatın ve aşağıda açıklandığı gibi devam edin. 
+    1. Varsayılan ilkeyi görüntülemek ve görüntülemek için **etkili ilkeyi Görüntüle'yi** seçin ve aşağıda açıklandığı gibi devam edin. 
 
        ![politika ekranı](./media/security-center-policies/policy-screen.png)
        
@@ -96,20 +96,20 @@ Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen
 Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri oluşturuyorsa, öneriyi gönderen ilke tanımını devre dışı bırakarak bunu durdurabilirsiniz.
 Öneriler hakkında daha fazla bilgi için [bkz.](security-center-recommendations.md)
 
-1. Güvenlik Merkezi'nde, **İlke & Uyumluluk** bölümünden **Güvenlik ilkesini**tıklatın.
+1. Güvenlik Merkezi'nde, **İlke & Uyumluluk** bölümünden Güvenlik **ilkesini**seçin.
 
    ![politika yönetimi](./media/tutorial-security-policy/policy-management.png)
 
-2. Öneriyi devre dışı kaltın istediğiniz abonelik veya yönetim grubunu tıklatın.
+2. Öneriyi devre dışı kaltın istediğiniz abonelik veya yönetim grubunu seçin.
 
    > [!NOTE]
    > Bir yönetim grubunun ilkelerini aboneliklerine uygulayacağını unutmayın. Bu nedenle, bir aboneliğin ilkesini devre dışı bırakırsanız ve abonelik hala aynı ilkeyi kullanan bir yönetim grubuna aitse, ilke önerilerini almaya devam edersiniz. İlke hala yönetim düzeyinden uygulanır ve öneriler yine de oluşturulur.
 
-1. **Etkili İlkeyi Görüntüle'yi**tıklatın.
+1. **Etkili İlkeyi Görüntüle'yi**seçin.
 
    ![devre dışı at](./media/tutorial-security-policy/view-effective-policy.png)
 
-1. Atanan ilkeyi tıklatın.
+1. Atanan ilkeyi seçin.
 
    ![devre dışı at](./media/tutorial-security-policy/security-policy.png)
 
@@ -117,7 +117,7 @@ Varsayılan güvenlik ilkesi ortamınız için uygun olmayan bir öneri oluştur
 
    ![devre dışı at](./media/tutorial-security-policy/disable-policy.png)
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’i seçin.
 
    > [!NOTE]
    > Devre dışı ilke değişikliklerinin yürürlüğe girmesi 12 saat kadar sürebilir.

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b0943098041af4c247ccd35715161bfb2e91895
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 972f4119fa17b4449fae4038283a183f097ccc4d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726245"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081447"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ally"></a>Öğretici: Ally ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -32,12 +32,12 @@ Bu eğitimde, Ally'nin Azure Etkin Dizini (Azure AD) ile nasıl entegre edilece�
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
 * Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Ally tek oturum açma (SSO) aboneliği ni sağladı.
+* Ally tek oturum açma (SSO) aboneliğini etkinleştirildi. Aboneliğiniz yoksa, [ücretsiz deneme sürümünü başlatın.](https://www.ally.io/?utm_source=azure&utm_medium=mktgplace&utm_term=tutorial)
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
@@ -83,13 +83,13 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
 1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
-    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
-    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
 1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_GUID>`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://app.ally.io/saml/consume/<CUSTOM_UUID>`
 
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı ve YanıtURL'i ile güncelleştirin. Bu değerleri almak için [Ally Client destek ekibine](mailto:contact@ally.io) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/12/2019
-ms.openlocfilehash: d9e1bff3d25a978b5159d8e6ab8ab2453df77ca3
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 8e1e718fa4e6660d72203ac98bb6d427cdba2059
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640507"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024566"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Python için Azure Machine Learning SDK ile makine öğrenimi boru hatlarını zamanlayın
 
 Bu makalede, Azure'da çalışacak bir ardışık olarak bir ardışık olarak nasıl zamanlayabileceğinizi öğreneceksiniz. Geçen süreyi veya dosya sistemi değişikliklerini temel alan bir zamanlama oluşturmayı seçebilirsiniz. Zaman tabanlı zamanlamalar, veri kayması izleme gibi rutin görevleri halletmek için kullanılabilir. Değişiklik tabanlı zamanlamalar, yüklenen yeni veriler veya düzenlenen eski veriler gibi düzensiz veya öngörülemeyen değişikliklere tepki vermek için kullanılabilir. Zamanlamaları nasıl oluşturacağınıöğrendikten sonra, bunları nasıl alıp devre dışı bırakacağınız öğrenilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://aka.ms/AMLFree)oluşturun.
 
@@ -91,7 +91,7 @@ Ardışık etki alanı Bir [DataPath](https://docs.microsoft.com/python/api/azur
 ```python
 datastore = Datastore(workspace=ws, name="workspaceblobstore")
 
-reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on time",
+reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="Based on input file change.",
                             pipeline_id=pipeline_id, experiment_name=experiment_name, datastore=datastore, data_path_parameter_name="input_data")
 ```
 

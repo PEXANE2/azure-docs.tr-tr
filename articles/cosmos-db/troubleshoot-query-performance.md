@@ -4,22 +4,22 @@ description: Azure Cosmos DB SQL sorgu sorunlarını nasıl tanımlayabildiğini
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
-ms.date: 02/10/2020
+ms.date: 04/20/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4a8b61f3719a60af567d10f8839987e613babc9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131373"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870449"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
 Bu makale, Azure Cosmos DB'deki sorun giderme sorguları için genel olarak önerilen bir yaklaşımdan geçer. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı tam bir savunma olarak düşünmeseniz de, en yaygın performans ipuçlarını buraya dahil ettik. Bu makaleyi, Azure Cosmos DB çekirdeği (SQL) API'sinde yavaş veya pahalı sorguları giderme için başlangıç noktası olarak kullanmalısınız. Yavaş olan veya önemli miktarda iş tükeden sorguları tanımlamak için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz.
 
-Azure Cosmos DB'de sorgu optimizasyonlarını geniş bir şekilde kategorilere ayırabilirsiniz: 
+Azure Cosmos DB'de sorgu optimizasyonlarını geniş bir şekilde kategorilere ayırabilirsiniz:
 
 - Sorgunun İstek Birimi (RU) ücretini azaltan optimizasyonlar
 - Gecikme süresini azaltan optimizasyonlar
@@ -28,19 +28,18 @@ Bir sorgunun RU ücretini azaltırsanız, gecikme süresini de neredeyse kesinli
 
 Bu makalede, [beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesini kullanarak yeniden oluşturabileceğiniz örnekler verilmektedir.
 
-## <a name="important"></a>Önemli
+## <a name="common-sdk-issues"></a>Ortak SDK sorunları
 
 - En iyi performans için [Performans ipuçlarını](performance-tips.md)izleyin.
     > [!NOTE]
     > Daha iyi performans için Windows 64 bit ana bilgisayar işlemeyi öneririz. SQL SDK, sorguları yerel olarak ayrışdırmak ve optimize etmek için yerel serviceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. Linux ve ServiceInterop.dll'nin kullanılamadığı diğer desteklenmeyen platformlar için, optimize edilmiş sorguyu almak için ağ geçidine ek bir ağ çağrısı yapılır.
-- Azure Cosmos DB sorguları minimum öğe sayısını desteklemez.
-    - Kod, sıfırdan maksimum madde sayısına kadar herhangi bir sayfa boyutunu işlemelidir.
-    - Bir sayfadaki öğelerin sayısı önceden haber alınmaksızın değiştirilebilir ve değişecektir.
-- Boş sayfalar sorgular için beklenir ve herhangi bir zamanda görünebilir.
-    - Boş sayfalar SDK'larda açıkta kalır, çünkü bu pozlama bir sorguyu iptal etmek için daha fazla fırsat sağlar. Ayrıca, SDK'nın birden fazla ağ araması yaptığını da açıkça ortaya koyuyor.
-    - Azure Cosmos DB'de fiziksel bir bölüm bölündüğü için boş sayfalar varolan iş yüklerinde görünebilir. İlk bölüm boş sayfaneden sıfır sonuç olacaktır.
-    - Boş sayfalar, sorgunun belgeleri almak için arka uçta belirli bir süreden fazla zaman aldığı için, sorguyu önleyen arka uçtan kaynaklanır. Azure Cosmos DB bir sorguyu önlerse, sorgunun devam etmesine izin verecek bir devam belirteci döndürecektir.
-- Sorguyu tamamen boşalttın. SDK örneklerine bakın ve `while` tüm `FeedIterator.HasMoreResults` sorguyu boşaltmak için bir döngü kullanın.
+- Sorgularınız `MaxItemCount` için a ayarlayabilirsiniz, ancak minimum öğe sayısı belirtemezsiniz.
+    - Kod, sıfırdan `MaxItemCount`.
+    - Bir sayfadaki öğe sayısı her zaman belirtilenden `MaxItemCount`daha az olacaktır. Ancak, `MaxItemCount` kesinlikle maksimum ve bu miktardan daha az sonuç olabilir.
+- Bazen sorgularda, gelecekteki bir sayfada sonuç olsa bile boş sayfalar olabilir. Bunun nedenleri:
+    - SDK birden fazla ağ araması yapıyor olabilir.
+    - Sorgunun belgeleri alması uzun zaman alabilir.
+- Tüm sorgularda, sorgunun devam etmesine izin verecek bir devam belirteci vardır. Sorguyu tamamen boşalttın. SDK örneklerine bakın ve `while` tüm `FeedIterator.HasMoreResults` sorguyu boşaltmak için bir döngü kullanın.
 
 ## <a name="get-query-metrics"></a>Sorgu ölçümlerini alın
 
@@ -61,6 +60,8 @@ Senaryonuzla ilgili sorgu optimizasyonlarını anlamak için aşağıdaki bölü
 - [Dizin oluşturma ilkesine gerekli yolları ekleyin.](#include-necessary-paths-in-the-indexing-policy)
 
 - [Dizini hangi sistem işlevlerinin kullandığını anlayın.](#understand-which-system-functions-use-the-index)
+
+- [Dizin imi hangi toplu sorguların kullandığını anlayın.](#understand-which-aggregate-queries-use-the-index)
 
 - [Hem filtre hem de ORDER BY yan tümcesi olan sorguları değiştirin.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
@@ -190,7 +191,7 @@ Dizin oluşturma ilkesine, yazma kullanılabilirliği veya performansı üzerind
 
 Bir ifade dize değerleri aralığına çevrilebiliyorsa, dizini kullanabilir. Yoksa olamaz.
 
-Dizini kullanabilen dize işlevlerinin listesi aşağıda veda edebilirsiniz:
+Dizin kullanabilen bazı yaygın dize işlevlerinin listesi aşağıda veda edebilirsiniz:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
@@ -207,6 +208,50 @@ Dizin kullanmayan ve her belgeyi yüklemesi gereken bazı yaygın sistem işlevl
 ------
 
 Sorgunun diğer bölümleri, sistem işlevleri olmasa bile dizini kullanmaya devam edebilir.
+
+### <a name="understand-which-aggregate-queries-use-the-index"></a>Dizini hangi toplu sorguların kullandığını anlama
+
+Çoğu durumda, Azure Cosmos DB'deki toplu sistem işlevleri dizini kullanır. Ancak, bir toplu sorgudaki filtrelere veya ek yan tümcelere bağlı olarak, sorgu motorunun çok sayıda belge yüklemesi gerekebilir. Genellikle, sorgu motoru önce eşitlik ve aralık filtreleri uygular. Bu filtreleri uyguladıktan sonra, sorgu motoru ek filtreleri değerlendirebilir ve gerekirse toplamı hesaplamak için kalan belgeleri yüklemeye başvurabilir.
+
+Örneğin, bu iki örnek sorgu göz önüne alındığında, `CONTAINS` hem eşitlik hem de sistem işlev filtresi olan `CONTAINS` sorgu genellikle sadece sistem işlev filtresi olan bir sorgudan daha verimli olacaktır. Bunun nedeni, eşitlik filtresinin önce uygulanması ve belgelerin daha pahalı `CONTAINS` filtre için yüklenmesi gerekmeden önce dizini kullanmasıdır.
+
+Yalnızca `CONTAINS` filtre ile sorgula - daha yüksek RU ücreti:
+
+```sql
+SELECT COUNT(1) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+Hem eşitlik filtresi hem `CONTAINS` de filtre ile sorgula - RU ücretini düşür:
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" AND CONTAINS(c.description, "spinach")
+```
+
+Dizin tam olarak kullanılmayacak toplam sorgularının ek örnekleri aşağıda verilmiştir:
+
+#### <a name="queries-with-system-functions-that-dont-use-the-index"></a>Dizini kullanmayan sistem işlevlerine sahip sorgular
+
+Dizinin kullanıp kullanıp kullanmadığınızı görmek için ilgili [sistem işlevinin sayfasına](sql-query-system-functions.md) başvurmalısınız.
+
+```sql
+SELECT MAX(c._ts) FROM c WHERE CONTAINS(c.description, "spinach")
+```
+
+#### <a name="aggregate-queries-with-user-defined-functionsudfs"></a>Kullanıcı tanımlı işlevlere (UDF'ler) sahip toplu sorgular
+
+```sql
+SELECT AVG(c._ts) FROM c WHERE udf.MyUDF("Sausages and Luncheon Meats")
+```
+
+#### <a name="queries-with-group-by"></a>GROUP BY ile sorgular
+
+Maddedeki mülklerin kardinalliği arttıkça RU ücreti `GROUP BY` artacaktır. `GROUP BY` Bu örnekte, sorgu motorunun `c.foodGroup = "Sausages and Luncheon Meats"` filtreyle eşleşen her belgeyi yüklemesi gerekir, böylece RU ücretinin yüksek olması beklenir.
+
+```sql
+SELECT COUNT(1) FROM c WHERE c.foodGroup = "Sausages and Luncheon Meats" GROUP BY c.description
+```
+
+Sık sık aynı toplu sorguları çalıştırmayı planlıyorsanız, [Azure Cosmos DB değişiklik akışıyla](change-feed.md) tek tek sorguları çalıştırmaktan daha gerçek zamanlı bir gerçek zamanlı görüntü oluşturmak daha verimli olabilir.
 
 ### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Hem filtre hem de ORDER BY yan tümcesi olan sorguları değiştirme
 

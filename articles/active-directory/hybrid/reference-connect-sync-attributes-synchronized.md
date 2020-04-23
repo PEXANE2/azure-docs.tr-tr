@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/24/2019
+ms.date: 04/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab51030ad39e1360cabc7d63390af7c1654d2891
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79253617"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082127"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect eşitleme: Azure Active Directory ile eşitlenen öznitelikler
 Bu konu, Azure AD Connect eşitlemi tarafından eşitlenen öznitelikleri listeler.  
@@ -375,7 +375,7 @@ Bu grup, genel bir iş yükü veya uygulama için gereken en az öznitelikleri o
 * Yammer (yalnızca Kullanıcı tüketilir)
 * [SharePoint gibi kaynaklar tarafından sunulan Karma İşletmelerarası İş (B2B) çapraz org işbirliği senaryoları](https://go.microsoft.com/fwlink/?LinkId=747036)
 
-Bu grup, Azure AD dizininin Office 365, Dynamics veya Intune'u desteklemek için kullanılmaması durumunda kullanılabilecek öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesi vardır.
+Bu grup, Azure AD dizininin Office 365, Dynamics veya Intune'u desteklemek için kullanılmaması durumunda kullanılabilecek öznitelikler kümesidir. Küçük bir çekirdek öznitelikleri kümesi vardır. Bazı üçüncü taraf uygulamalarda tek oturum açma veya sağlama nın, burada açıklanan özniteliklere ek olarak özniteliklerin eşitleştirilmesini gerektirdiğini unutmayın. Uygulama gereksinimleri, her uygulama için [SaaS uygulama öğreticisinde](../saas-apps/tutorial-list.md) açıklanmıştır.
 
 | Öznitelik Adı | Kullanıcı | İletişim | Grup | Açıklama |
 | --- |:---:|:---:|:---:| --- |

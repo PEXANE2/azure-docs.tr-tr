@@ -7,38 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 93dd8636f60ceca0f43d806d4f5b1a037ed21ee4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 83ec57290f56a903a7c4456ba760fbbb3b54f885
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289031"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869358"
 ---
 # <a name="azure-application-support-tab"></a>Azure uygulama Destek sekmesi
 
-Mühendislik ve müşteri destek bilgilerini sağlamak için Destek sekmesini kullanın.
- 
-## <a name="identify-contacts-and-websites"></a>Kişileri ve web sitelerini tanımlama
+[Bulut İş Ortağı Portalı](https://cloudpartner.azure.com/) artık Azure uygulama tekliflerinin oluşturulmasını ve yönetimini desteklemez. Bunun yerine, bu işlev Microsoft [İş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşındı. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)
 
-Gerekli bilgileri sağlamak için bir sonraki ekran yakalamayı kılavuz olarak kullanın. Kırmızı yıldız (*) ile eklenen tüm alan adları tamamlanmalıdır.
-
-  ![Teklif için destek formu](./media/azureapp-support-tab.png)
-
-1. **Mühendislik İletişim**altında, aşağıdaki alanlar için bilgi sağlamak:
-
-   - **Ad\* ** - Uygulamanız için mühendislik kişi adını girin. Bu kişi Microsoft'tan teknik iletişim alır.
-   - **E-posta\* ** - Mühendislik ilgili iletişiminin e-posta adresini girin.
-   - **Telefon\* ** - Mühendislik ilgili iletişimintelefon numarasını girin.
-  
-2. **Destek İletişim**altında, aşağıdaki alanlar için bilgi sağlamak:
-
-   - **Ad\* ** - Uygulamanızın destek kişisinin adını girin. Bu kişi Microsoft'tan destekle ilgili iletişimler alır.
-   - **E-posta\* ** - Uygulamanızın destek iletişim inine girin.
-   - **Telefon\* ** - Destek kişisinin telefon numarasını girin.
- 
-3. **Destek Urlleri**altında, müşterileriniz destek biletleri açtığında Microsoft'un kullanacağı uygun destek URL'lerini sağlayın. Bu Url'ler Genel Azure veya Azure Kamu Bulutu için olacaktır.
-4. İşiniz bittiğinde **Kaydet**’i seçin.
-
-## <a name="next-steps"></a>Sonraki adımlar
-
-[Azure uygulama teklifini yayımlama](./cpp-publish-offer.md)
+Yeni bir Azure uygulama teklifi oluşturmadan önce, [İş Ortağı Merkezi hesabı oluştur'u](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) okumalı ve ardından seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/directory) açmalısınız. Teklifinizi oluşturmak için [Azure uygulama teklifi oluştur'daki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer) yönergeleri izleyin.

@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6f4dbedad56f6867558a8b70575ad906c8796612
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f625f5df4f33c6516bd5c50f97c52404d76757a0
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392555"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024464"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD oturum unu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
@@ -100,7 +100,7 @@ Aşağıdaki adımları uygulayın:
     |Alan|Açıklama|
     |-|-|
     |İstemci Kimliği| Uygulama kaydının **Uygulama (istemci) kimliğini** kullanın. |
-    |İhraççı Url| Kiracı `https://login.microsoftonline.com/<tenant-id>/v2.0`kimliği * \<>* uygulama kaydının **Dizin (kiracı) kimliğiyle** kullanın ve değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek ve örneğin uygun belirteç imzalama anahtarlarını ve belirteç veren talep değerini belirlemek için uygun meta verileri indirmek için kullanılır. Bölüm, `/v2.0` AAD v1 kullanarak yapılan uygulamalar için atlanabilir. |
+    |İhraççı Url| Kimlik `<authentication-endpoint>/<tenant-id>/v2.0`doğrulama * \<bitiş noktası>* kullanarak [bulut ortamınız için kimlik doğrulama bitiş noktasını](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (örneğin, "global Azure için"https://login.microsoft.comolarak) kullanın ve değiştirin ve * \<ayrıca kiracı kimliği>* uygulama kaydının oluşturulduğu **Dizin (kiracı) kimliğiyle** değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek ve örneğin uygun belirteç imzalama anahtarlarını ve belirteç veren talep değerini belirlemek için uygun meta verileri indirmek için kullanılır. Bölüm, `/v2.0` AAD v1 kullanarak yapılan uygulamalar için atlanabilir. |
     |İstemci Sırrı (İsteğe Bağlı)| Uygulama kaydında oluşturduğunuz istemci sırrını kullanın.|
     |İzin Verilen Belirteç Kitleleri| Bu bir bulut veya sunucu uygulamasıysa ve bir web uygulamasından kimlik doğrulama belirteçlerine izin vermek istiyorsanız, web uygulamasının **Uygulama Kimliği URI'sini** buraya ekleyin. Yapılandırılan **İstemci Kimliği** *her zaman* dolaylı olarak izin verilen bir hedef kitle olarak kabul edilir. |
 

@@ -3,18 +3,18 @@ title: Azure Geçir Sunucu Değerlendirmesinde Bağımlılık analizi
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak değerlendirme için bağımlılık çözümlemesi nasıl kullanılacağını açıklar.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b11796f2c5d7c1d87f383e6780444e572352eff5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81537755"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024770"
 ---
 # <a name="dependency-analysis"></a>Bağımlılık analizi
 
 Bu makalede, Azure Geçir:Sunucu Değerlendirmesi'nde bağımlılık çözümlemesi açıklanmaktadır.
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Bağımlılık çözümlemesi, değerlendirmek ve Azure'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. 
 
@@ -51,7 +51,7 @@ Aracı tabanlı analiz için Sunucu Değerlendirmesi, bağımlılık görselleş
 
 ### <a name="collected-data"></a>Toplanan veriler
 
-Aracı tabanlı görselleştirme için aşağıdaki veriler toplanır:
+Aracı tabanlı analiz için aşağıdaki veriler toplanır:
 
 - Kaynak makine sunucu adı, işlem, uygulama adı.
 - Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.

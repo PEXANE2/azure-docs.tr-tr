@@ -1,23 +1,24 @@
 ---
-title: Azure Depolama için güvenlik denetimleri
-description: Azure Depolama'yı değerlendirmek için güvenlik denetimleri denetim listesi
+title: Güvenlik denetimleri
+titleSuffix: Azure Storage
+description: Azure Depolama'yı değerlendirmek için güvenlik denetimleri listesi.
 services: storage
 author: msmbaldwin
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 379acaf48c02f0a579c07773cd48366d962a44f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03f497051367d36bd229a3f358d28a1130ec620
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80061125"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082365"
 ---
 # <a name="security-controls-for-azure-storage"></a>Azure Depolama için güvenlik denetimleri
 
-Bu makalede, Azure Depolama'da yerleşik güvenlik denetimleri belgeleilmiştir. 
+Bu makalede, Azure Depolama'da yerleşik güvenlik denetimleri belgeleilmiştir.
 
 [!INCLUDE [Security controls Header](../../../includes/security-controls-header.md)]
 
@@ -36,6 +37,7 @@ Bu makalede, Azure Depolama'da yerleşik güvenlik denetimleri belgeleilmiştir.
 | Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
 | Hizmet bitiş noktası desteği| Evet |  |
+| Hizmet etiketleri desteği| Evet | Azure Depolama tarafından desteklenen hizmet etiketleri hakkında daha fazla bilgi için [Azure hizmet etiketleriyle ilgili genel bakışa](../../virtual-network/service-tags-overview.md) bakın. |
 | VNet enjeksiyon desteği| Yok |  |
 | Ağ yalıtımı ve güvenlik duvarı desteği| Evet | |
 | Zorunlu tünel desteği| Yok |  |
@@ -52,7 +54,7 @@ Bu makalede, Azure Depolama'da yerleşik güvenlik denetimleri belgeleilmiştir.
 
 | Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik doğrulaması| Evet | Azure Etkin Dizin, Paylaşılan anahtar, Paylaşılan erişim jetonu. |
+| Kimlik Doğrulaması| Evet | Azure Etkin Dizin, Paylaşılan anahtar, Paylaşılan erişim jetonu. |
 | Yetkilendirme| Evet | RBAC, POSIX AKLAR ve SAS Jetonları ile Destek Yetkilendirmesi |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi

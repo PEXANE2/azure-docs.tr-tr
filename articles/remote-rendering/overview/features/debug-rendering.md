@@ -1,18 +1,18 @@
 ---
-title: Hata Ayıklama Oluşturma
+title: İşleme Hatalarını Ayıklama
 description: Sunucu tarafı hata ayıklama işleme efektlerine genel bakış
 author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
-ms.openlocfilehash: 675f8d988e64ed7b556f154f681ccb53ed1000c6
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394299"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868152"
 ---
-# <a name="debug-rendering"></a>Hata Ayıklama Oluşturma
+# <a name="debug-rendering"></a>İşleme Hatalarını Ayıklama
 
 Hata ayıklama API'si, sunucu tarafı oluşturmayı farklı hata ayıklama efektleriyle değiştirmek için bir dizi genel seçenek sağlar.
 
@@ -56,7 +56,7 @@ Ancak, sağlanan etkileri hizmet sağlığı içine herhangi bir ayrıntılı i�
 ## <a name="performance-considerations"></a>Performansla ilgili önemli noktalar
 
 * Metin kaplamalarını etkinleştirmek, çok az performans yüküne neden olmaz.
-* Ayrıca bindirme etkinleştirme önemsiz olmayan bir performans yükü ne olur, ancak sahneye bağlı olarak değişebilir. Karmaşık sahneleriçin bu mod, kare hızının 60-Hz hedefinin altına düşmesine neden olabilir.
+* Tel kafes modunu etkinleştirmek önemsiz olmayan bir performans yüküne neden olur, ancak sahneye bağlı olarak değişebilir. Karmaşık sahneler için bu mod, kare hızının 60-Hz hedefinin altına düşmesine neden olabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

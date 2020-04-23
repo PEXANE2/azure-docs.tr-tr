@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 159b38962fe91cedfc8d313bef943dbc74e9974e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
-ms.translationtype: MT
+ms.openlocfilehash: e8c4e1fcca347ad2783238c0f5ec4fe407849d3b
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520245"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024545"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure'da statik bir HTML web uygulaması oluşturma
 
@@ -42,16 +42,12 @@ git clone https://github.com/Azure-Samples/html-docs-hello-world.git
 
 ## <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
-Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın.
-
-Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin.
+Örnek kodu içeren dizine geçin ve `az webapp up` komutunu çalıştırın. Aşağıdaki komutta <app_name> kısmını benzersiz uygulama adıyla değiştirin. Statik içerik bayrakla `--html` gösterilir.
 
 ```bash
 cd html-docs-hello-world
-```
 
-```azurecli
-az webapp up --location westeurope --name <app_name> 
+az webapp up --location westeurope --name <app_name> --html
 ```
 
 `az webapp up` komutu şu eylemleri gerçekleştirir:
@@ -102,7 +98,7 @@ Değişikliklerinizi kaydedin ve nanodan çıkın. Kaydetmek için `^O` ve çık
 
 Şimdi aynı `az webapp up` komutuyla uygulamayı yeniden dağıtacaksınız.
 
-```azurecli
+```bash
 az webapp up --location westeurope --name <app_name> --html
 ```
 
@@ -130,7 +126,7 @@ Soldaki menü, uygulamanızı yapılandırmak için farklı sayfalar sağlar.
 
 Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Bu kaynakların gelecekte gerekli olacağını düşünmüyorsanız, Cloud Shell’de aşağıdaki komutu çalıştırarak kaynak grubunu silin. Kaynak grubu adının [web uygulaması oluşturma](#create-a-web-app) adında otomatik olarak oluşturulduğunu unutmayın.
 
-```azurecli
+```bash
 az group delete --name appsvc_rg_Windows_westeurope
 ```
 

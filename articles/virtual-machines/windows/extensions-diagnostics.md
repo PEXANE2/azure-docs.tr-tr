@@ -1,31 +1,27 @@
 ---
 title: Windows için Azure Tanılama Uzantısı
 description: Azure Tanılama Uzantısını kullanarak Azure Windows VM'lerini izleyin
-services: virtual-machines-windows
-documentationcenter: ''
 author: johnkemnetz
 manager: ashwink
-editor: ''
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/06/2018
 ms.author: johnkem
-ms.openlocfilehash: d4ba3e8bbdad72f10c630a056f988ec83e9b1a68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d38a3cac5525de6835bbb0f9873cbd0636d44a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77471627"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869668"
 ---
 # <a name="azure-diagnostics-extension-for-windows-vms"></a>Windows VM'ler için Azure Tanılama Uzantısı
 
-## <a name="overview"></a>Genel Bakış
+## <a name="overview"></a>Genel bakış
 
 Azure Tanılama VM uzantısı, Windows VM'nizden performans sayaçları ve olay günlükleri gibi izleme verileri toplamanızı sağlar. Hangi verileri toplamak istediğinizi ve Azure Depolama hesabı veya Azure Etkinlik Hub'ı gibi verilerin nereye gitmesini istediğinizi ayrıntılı olarak belirtebilirsiniz. Bu verileri Azure portalında grafikler oluşturmak veya metrik uyarılar oluşturmak için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 

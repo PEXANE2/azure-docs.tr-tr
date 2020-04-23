@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: e591a7035db82425952a16f5c4c220e25d8517fe
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ee8bee832e48dc7354b4136e25be9bcc43eb90c5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81457187"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870552"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps'ta güvenli erişim ve veri
 
@@ -655,7 +655,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik Doğrulaması** | `type` | Evet | **Müşteri Sertifikası** <br>or <br>`ClientCertificate` | TLS/SSL istemci sertifikaları için kullanılacak kimlik doğrulama türü. Kendi imzalı sertifikalar desteklenirken, TLS/SSL için kendi imzalı sertifikalar desteklenmez. |
+| **Kimlik Doğrulaması** | `type` | Evet | **Müşteri Sertifikası** <br>or <br>`ClientCertificate` | TLS/SSL istemci sertifikaları için kullanılacak kimlik doğrulama türü <p><p>**Not**: Kendi imzalı sertifikalar desteklenirken, TLS/SSL için kendi imzalı sertifikalar desteklenmez. HTTP bağlayıcısı ara TLS/SSL sertifikalarını desteklemez. |
 | **Pfx** | `pfx` | Evet | <*kodlanmış-pfx-dosya-içerik*> | Kişisel Bilgi Alışverişi (PFX) dosyasından temel 64 kodlanmış içerik <p><p>PFX dosyasını base64 kodlanmış biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell'i kullanabilirsiniz: <p>1. Sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. İşlevi kullanarak sertifika `ToBase64String()` içeriğini dönüştürün ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| Hayır | <*pfx dosyası için şifre*> | PFX dosyasına erişmek için parola |
 |||||

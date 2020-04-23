@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f7c4b25dad50b8fe620d358aa7fb3e9decabc2f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fbd8d9bdfb356ff9816056b85b1dc5688d17b58c
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294348"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869763"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>Operasyonlar için yeni bir Dynamics 365 oluşturma teklifi
 
@@ -108,7 +108,7 @@ En az bir ve en fazla üç kategori seçin. Bu kategoriler, teklifinizi uygun pa
 
 Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayrıntı sayfasında görür.
 
-### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 **Şartlar ve koşullar** alanında kendi yasal hüküm ve koşullarınızı sağlayın. Ayrıca, şart ve koşullarınızın bulunabileceği URL'yi de sağlayabilirsiniz. Müşterilerin teklifinizi denemeden önce bu koşulları kabul etmeleri gerekmektedir.
 
@@ -195,6 +195,9 @@ Burada teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en a
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
 Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 

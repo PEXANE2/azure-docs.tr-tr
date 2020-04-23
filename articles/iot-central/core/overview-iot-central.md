@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: ffaab22efb2f6969f03720abba4a7afc6387021a
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758214"
+ms.locfileid: "82025246"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -60,7 +60,7 @@ IoT Merkezi dokümantasyonu, Bir IoT Merkezi uygulamasıyla etkileşimde bulunan
 - Cihazlarınızdan telemetri alan ve bu cihazları yönetmenizi sağlayan bulut tabanlı bir uygulama.
 - Bulut tabanlı uygulamanıza bağlı özel kod çalıştıran birden fazla cihaz.
 
-Yeni bir IoT Merkezi uygulamasını hızla dağıtabilir ve ardından tarayıcınızdaki özel gereksinimlerinize göre özelleştirebilirsiniz. Genel bir uygulama _şablonu_ yla veya [Perakende,](../retail/overview-iot-central-retail-pnp.md) [Enerji,](../energy/overview-iot-central-energy.md) [Devlet](../government/overview-iot-central-government.md)veya [Sağlık](../healthcare/overview-iot-central-healthcare.md)hizmetleri için endüstri odaklı uygulama şablonlarından biriyle başlayabilirsiniz.
+Yeni bir IoT Merkezi uygulamasını hızla dağıtabilir ve ardından tarayıcınızdaki özel gereksinimlerinize göre özelleştirebilirsiniz. Genel bir uygulama _şablonu_ yla veya [Perakende,](../retail/overview-iot-central-retail.md) [Enerji,](../energy/overview-iot-central-energy.md) [Devlet](../government/overview-iot-central-government.md)veya [Sağlık](../healthcare/overview-iot-central-healthcare.md)hizmetleri için endüstri odaklı uygulama şablonlarından biriyle başlayabilirsiniz.
 
 Çözüm oluşturucu olarak, uygulamanıza bağlanan aygıtlar için bir _aygıt şablonu_ oluşturmak için web tabanlı araçları kullanırsınız. Aygıt şablonu, aşağıdakiler gibi bir aygıt türünün özelliklerini ve davranışını tanımlayan plandır:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: 6baf5d77b70fa6e2717b492163826f27d80fbb88
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80991629"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869807"
 ---
 # <a name="create-a-new-managed-service-offer"></a>Yeni yönetilen hizmet teklifi oluşturma
 
@@ -63,7 +63,7 @@ Bir sonraki bölüme geçmeden önce sayfayı **kaydetmeyi** unutmayın.
 
 Teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılacak en az bir ve en fazla beş kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini mutlaka unutmayın.
 
-### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 **Şartlar ve koşullar** alanında kendi yasal hüküm ve koşullarınızı sağlayın. Ayrıca, şart ve koşullarınızın bulunabileceği URL'yi de sağlayabilirsiniz. Müşterilerin teklifinizi denemeden önce bu koşulları kabul etmeleri gerekmektedir.
 
@@ -137,6 +137,9 @@ Bu bölümde, bir **Destek kişi** ve mühendislik **kişi**için ad, e-posta ve
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
 Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="marketplace-logos"></a>Pazar yeri logoları
 

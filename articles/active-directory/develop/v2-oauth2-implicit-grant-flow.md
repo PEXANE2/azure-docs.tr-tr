@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7fb2bbcdd5f84e3637a108d0753566d3a9de7fd0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677755"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868421"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft kimlik platformu ve Örtülü hibe akışı
 
@@ -117,7 +117,7 @@ Kullanıcı kimlik doğrulaması yaptıktan ve onay verdikten sonra, Microsoft k
 
 Başarılı bir `response_mode=fragment` yanıt `response_type=id_token+token` kullanarak ve aşağıdaki gibi görünüyor (okunabilirlik için satır sonları ile):
 
-```
+```HTTP
 GET https://localhost/myapp/#
 &token_type=Bearer
 &expires_in=3599
@@ -138,7 +138,7 @@ GET https://localhost/myapp/#
 
 Hata yanıtları, uygulamanın `redirect_uri` bunları uygun şekilde işleyebilmeleri için de gönderilebilir:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -184,7 +184,7 @@ URL'deki sorgu parametreleri hakkındaki ayrıntılar için [oturum açma isteğ
 
 Başarılı bir `response_mode=fragment` yanıt kullanarak gibi görünüyor:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=12345
@@ -206,7 +206,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 
 Hata yanıtları da uygulamanın bunları uygun şekilde işleyebilecek `redirect_uri` şekilde gönderilebilir. Durumunda `prompt=none`, beklenen bir hata olacaktır:
 
-```
+```HTTP
 GET https://localhost/myapp/#
 error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 10d5449cb77ea09f62db0a2f2bbdab6761646738
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ec62095f14b38d0c4ffebfabc14c4a0a27a70fb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295455"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869820"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>PowerApps teklifi & Müşteri Katılımı için yeni bir Dynamics 365 oluşturun
 
@@ -111,7 +111,7 @@ Bu teklifin geçerli olduğu Dynamics 365 ürünlerinin tümünü seçin.
 
 Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayrıntı sayfasında görür. Yalnızca pazarlama/açıklayıcı değişiklikler nedeniyle sürüm numarasını güncelliyorsanız, Pazarlama **yalnızca değişiklik** kutusunu işaretleyin. Bu seçenek, teklifin sertifika ve sağlama aşamalarını atlamasına olanak tanır.
 
-### <a name="terms-and-conditions"></a>Hüküm ve koşullar
+### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
 **Şartlar ve koşullar** alanında kendi yasal hüküm ve koşullarınızı sağlayın. Ayrıca, şart ve koşullarınızın bulunabileceği URL'yi de sağlayabilirsiniz. Müşterilerin teklifinizi denemeden önce bu koşulları kabul etmeleri gerekmektedir.
 
@@ -214,6 +214,9 @@ Burada teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en a
 ### <a name="marketplace-images"></a>Pazar yeri görüntüleri
 
 Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="store-logos"></a>Mağaza logoları
 

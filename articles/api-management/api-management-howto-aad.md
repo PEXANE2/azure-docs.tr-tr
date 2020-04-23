@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6102b1e1d6ddbac01033b9cecfeba96a7eb33777
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 41f9f267880d199d2e221453eea5c3584ce96881
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473549"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868405"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management'ta geliştirici hesaplarını yetkilendirmek için Azure Active Directory kullanın
 
 Bu makalede, Azure Etkin Dizini (Azure AD) kullanıcıları için geliştirici portalına erişimi nasıl etkinleştirdiğinizgösterilmektedir. Bu kılavuz, kullanıcıları içeren dış gruplar ekleyerek Azure AD kullanıcı gruplarını nasıl yöneteceklerini de gösterir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
 - Azure API Yönetimi örneğini içe aktarın ve yayımlayın. Daha fazla bilgi için [Içe Aktar ve yayımla'](import-and-publish.md)ya bakın.
@@ -33,12 +33,12 @@ Bu makalede, Azure Etkin Dizini (Azure AD) kullanıcıları için geliştirici p
 
 ## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD'yi kullanarak geliştirici hesaplarını yetkilendirme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. 
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
 2. Şunu seçin: ![oku seçin](./media/api-management-howto-aad/arrow.png).
 3. Arama **kutusuna api** yazın.
 4. **API Yönetimi hizmetlerini**seçin.
 5. API Management hizmet örneğinizi seçin.
-6. **Güvenlik**altında, **Kimlikler'i**seçin.
+6. **Geliştirici portalı** **altında, Kimlikler'i**seçin.
 7. Üstten **+Ekle'yi** seçin.
 
     **Kimlik sağlayıcı ekle** bölmesi sağda görünür.

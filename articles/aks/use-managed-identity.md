@@ -7,12 +7,12 @@ manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 907aa83bc293aacd9920d8fd79a1b3184dd1d5dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81767602"
+ms.locfileid: "82024413"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
 
@@ -25,7 +25,7 @@ AKS yönetilen iki kimlik oluşturur:
 - **Sisteme atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü kümeninkine bağlıdır. Küme silindiğinde kimlik silinir.
 - **Kullanıcı tarafından atanan yönetilen kimlik**: Kümede yetkilendirme için kullanılan kimlik. Örneğin, kullanıcı tarafından atanan kimlik, AKS'ye Azure Kapsayıcı Kayıt Şirketlerini (ACRs) kullanmasına veya Azure'dan meta veri almak için kubelet'e yetki vermek için kullanılır.
 
-Eklentiler de yönetilen bir kimlik kullanarak kimlik doğrulaması. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. Kaynakların MC_* kaynak grubunun dışında olduğu kendi VNet, statik IP adresi veya ekli Azure diskinizi oluşturmak ve kullanmak için bir rol ataması gerçekleştirmek için kümenin PrincipalID'ini kullanın. Rol ataması hakkında daha fazla bilgi için diğer [Azure kaynaklarına Temsilci erişimi](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)ne bakın.
+Eklentiler de yönetilen bir kimlik kullanarak kimlik doğrulaması. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -58,6 +58,9 @@ Yönetilen kimlikleri kullanarak başarılı bir küme oluşturma bu hizmet teme
     "secret": null
   }
 ```
+
+> [!NOTE]
+> Kaynakların MC_* kaynak grubunun dışında olduğu kendi VNet, statik IP adresi veya ekli Azure diskinizi oluşturmak ve kullanmak için, rol ataması gerçekleştirmek için küme sistem atanmış yönetilen kimliğin PrincipalID'ini kullanın. Rol ataması hakkında daha fazla bilgi için diğer [Azure kaynaklarına Temsilci erişimi](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)ne bakın.
 
 Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 

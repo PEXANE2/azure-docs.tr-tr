@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 063f2e1005db177420da7f81b799ab01fd212d7e
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478480"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025025"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript kullanarak etkinlik merkezlerine etkinlik gönderme veya olay hub'ları (azure/olay hub'ları sürüm 5)
 Bu hızlı başlangıç, **azure/event hub'ları sürüm 5** JavaScript paketini kullanarak bir etkinlik merkezine olayları nasıl göndereceğinizi ve bir olay merkezinden etkinlik alacağını gösterir. 
@@ -21,7 +21,7 @@ Bu hızlı başlangıç, **azure/event hub'ları sürüm 5** JavaScript paketini
 > [!IMPORTANT]
 > Bu hızlı başlatma, en son azure/event hub'ları sürüm 5 paketini kullanır. Eski azure/event hub'ları sürüm 2 paketini kullanan hızlı bir başlangıç için [azure/event hub'ları sürüm 2'yi kullanarak olayları gönder ve al](event-hubs-node-get-started-send.md)bakın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
@@ -185,7 +185,7 @@ Daha sonra kullanım için bağlantı dizesini ve kapsayıcı adını alma kodun
 1. Bu `node receive.js` dosyayı çalıştırmak için bir komut istemi çalıştırın. Pencere, alınan olaylarla ilgili iletileri görüntülemelidir.
 
     > [!NOTE]
-    > Ek bilgi açıklamaları da dahil olmak üzere tam kaynak kodu için [GitHub receiveEventsUsingCheckpointStore.js sayfasına](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)gidin.
+    > Ek bilgi açıklamaları da dahil olmak üzere tam kaynak kodu için [GitHub receiveEventsUsingCheckpointStore.js sayfasına](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsUsingCheckpointStore.js)gidin.
 
 Tebrikler! Artık etkinlik merkezinizden etkinlikler aldınız. Alıcı programı, olay merkezindeki varsayılan tüketici grubunun tüm bölümlerinden olaylar alır.
 

@@ -9,22 +9,22 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: overview
+ms.topic: how-to
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: yelevin
-ms.openlocfilehash: 9d2d1985b23e1c7f5e0f7d9fd2795bd85e28ace0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e59359d791729d2136003596d80dd1f31a9a2aac
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240089"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025161"
 ---
 # <a name="connect-data-sources"></a>Veri kaynaklarını bağlama
 
-Yerleşik Azure Sentinel için öncelikle veri kaynaklarınıza bağlanmanız gerekir. Azure Sentinel, Microsoft çözümleri için kutudan çıkabilen ve Microsoft Tehdit Koruması çözümleri ve Office 365, Azure AD, Azure ATP gibi Microsoft 365 kaynakları ve gerçek zamanlı tümleştirme sağlayan bir dizi bağlayıcıyla birlikte gelir ve Microsoft Cloud App Security ve daha fazlası. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar da vardır. Veri kaynaklarınızı Azure Sentinel'e bağlamak için ortak etkinlik biçimini, Syslog'u veya REST-API'yi de kullanabilirsiniz.  
+Yerleşik Azure Sentinel için öncelikle veri kaynaklarınıza bağlanmanız gerekir. Azure Sentinel, Microsoft çözümleri için kutudan çıkan ve Microsoft Tehdit Koruması çözümleri ve Office 365, Azure AD, Azure ATP ve Microsoft Bulut Uygulama Güvenliği gibi Microsoft 365 kaynakları ve daha fazlası dahil olmak üzere gerçek zamanlı tümleştirme sağlayan bir dizi bağlayıcıyla birlikte gelir. Ayrıca, Microsoft dışı çözümler için daha geniş güvenlik ekosistemine yerleşik bağlayıcılar da vardır. Veri kaynaklarınızı Azure Sentinel'e bağlamak için ortak etkinlik biçimini, Syslog'u veya REST-API'yi de kullanabilirsiniz.  
 
 1. Menüde Veri **bağlayıcılarını**seçin. Bu sayfa, Azure Sentinel'in sağladığı bağlayıcıların tam listesini ve durumlarını görmenizi sağlar. Bağlanmak istediğiniz bağlayıcıyı seçin ve **Bağlayıcıyı Aç sayfasını**seçin. 
 
@@ -53,7 +53,7 @@ Aşağıdaki veri bağlantı yöntemleri Azure Sentinel tarafından desteklenir:
     - [Azure Güvenlik Merkezi](connect-azure-security-center.md)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [Etki alanı adı sunucusu](connect-dns.md)
-    - [Ofis 365](connect-office-365.md)
+    - [Office 365](connect-office-365.md)
     - [Microsoft Defender ATP](connect-microsoft-defender-advanced-threat-protection.md)
     - [Microsoft web uygulaması güvenlik duvarı](connect-microsoft-waf.md)
     - [Windows güvenlik duvarı](connect-windows-firewall.md)

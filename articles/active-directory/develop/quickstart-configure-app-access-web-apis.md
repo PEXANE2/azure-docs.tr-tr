@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 03/09/2020
+ms.date: 04/22/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 5e628626f2db49ff67d6d7ab425a3a19870b1ebd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240901"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082331"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Hızlı başlatma: Web API'lerine erişmek için istemci uygulamasını yapılandırma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, uygulamanız için web API'lerine erişmek için yeni
 
 İstemci, Microsoft Graph API gibi bir kaynak uygulaması tarafından açığa çıkarılan bir web API'sına erişemeden önce, onay çerçevesi istemcinin istenen izinler için gerekli izin iznini almasını sağlar. Varsayılan olarak, tüm uygulamalar Microsoft Graph API'den izin isteyebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Quickstart'ın Tamamlanması: Bir uygulamayı Microsoft kimlik platformuna kaydedin.](quickstart-register-app.md)
 * Microsoft [kimlik platformu bitiş noktasında İzinlerin ve onayların](v2-permissions-and-consent.md)gözden geçirilmesi.
@@ -51,14 +51,14 @@ Web API'lerine erişmek için uygulamanızı yapılandırmak için aşağıdaki 
 
    * Web uygulamaları için, uygulamanızın temel URL'sini girin. Örneğin `http://localhost:31544` yerel makinenizde çalışan bir web uygulamasının URL'si olabilir. Kullanıcılar, bir web istemci uygulamasında oturum açmak için bu URL'yi kullanır.
    * Genel uygulamalar için, Azure AD'nin belirteç yanıtlarını döndürmek üzere kullandığı URI'yi girin. Örneğin, uygulamanıza özgü bir değer `https://MyFirstApp`girin: .
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 Ortak istemciler için önerilen yönlendirme URL'leri arasından seçim yapmak için aşağıdaki adımları izleyin:
 
 1. Uygulamaya **Genel Bakış** sayfasından **Kimlik Doğrulama'yı**seçin.
 1. **Ortak istemciler (mobil, masaüstü) için Önerilen Yönlendirme URL'lerini**bulun. **Eski deneyime Geçiş'i**seçmeniz gerekebilir.
 1. Uygulamanız için bir veya daha fazla yönlendirme URI'sini seçin. Ayrıca özel bir yeniden yönlendirme URI girebilirsiniz. Ne kullanacağından emin değilseniz, kitaplık belgelerine bakın.
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 UUİ'leri yönlendirmek için bazı kısıtlamalar uygulanır. Daha fazla bilgi için bkz: [URI/yanıtURL kısıtlamalarını ve sınırlamalarını yeniden yönlendirin.](https://docs.microsoft.com/azure/active-directory/develop/reply-url)
 
@@ -110,7 +110,10 @@ Uygulama ayarlarını platforma veya aygıta göre yapılandırmak için aşağ�
    | **Web**              | Uygulamanız için **Uri'yi Yeniden Yönlendirme'yi** girin. |
    | **iOS / macOS**              | Info.plist'te XCode'da bulabileceğiniz uygulama **Paket Kimliği'ni**veya Yapı Ayarları'nı girin. Paket kimliğinin eklenmesi, uygulama için otomatik olarak yeniden yönlendirme URI oluşturur. |
    | **Android**          | AndroidManifest.xml dosyasında bulabileceğiniz uygulama **Paketi adını**sağlayın.<br/>**İmza karmasını**oluşturun ve girin. İmza karma ekleme otomatik olarak uygulama için bir yönlendirme URI oluşturur.  |
-   | **Mobil ve masaüstü uygulamaları**  | İsteğe bağlı. Masaüstü ve aygıtlar için uygulamalar oluşturuyorsanız **önerilen önerilen yeniden yönlendirme URL'lerinden** birini seçin.<br/>İsteğe bağlı. Azure AD'nin kimlik doğrulama isteklerine yanıt olarak kullanıcıları yönlendireceği konum olarak kullanılan **Özel yeniden yönlendirme URI'yi**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için `https://localhost`. |
+   | **Mobil ve masaüstü uygulamaları**  | İsteğe bağlı. Masaüstü ve aygıtlar için uygulamalar oluşturuyorsanız **önerilen önerilen yeniden yönlendirme URL'lerinden** birini seçin.<br/>İsteğe bağlı. Azure AD'nin kimlik doğrulama isteklerine yanıt olarak kullanıcıları yönlendireceği konum olarak kullanılan **Özel yeniden yönlendirme URI'yi**girin. Örneğin, etkileşim istediğiniz .NET Core uygulamaları için `http://localhost`. |
+
+   > [!NOTE]
+   > Etkin Dizin Federasyonu Hizmetleri (AD FS) ve Azure AD B2C'de bir bağlantı noktası numarası da belirtmeniz gerekir.  Örneğin: `http://localhost:1234`. 
 
    > [!IMPORTANT]
    > En son Microsoft Kimlik Doğrulama Kitaplığını (MSAL) kullanmayan veya bir aracı kullanmayan mobil uygulamalar için, bu uygulamalar için yeniden yönlendirme URL'lerini **Masaüstü + aygıtlarında**yapılandırmanız gerekir.
@@ -130,7 +133,7 @@ Web uygulamanıza bir kimlik bilgisi eklemek için, bir sertifika ekleyin veya b
 1. Uygulamaya **Genel Bakış** sayfasından **Sertifikalar & sırları** bölümünü seçin.
 1. **Sertifikayı karşıya yükle**’yi seçin.
 1. Yüklemek istediğiniz dosyayı seçin. Şu dosya türlerinden biri olmalıdır: .cer, .pem, .crt.
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 İstemci sırrı eklemek için:
 
@@ -138,7 +141,7 @@ Web uygulamanıza bir kimlik bilgisi eklemek için, bir sertifika ekleyin veya b
 1. **Yeni istemci gizli dizisi**’ni seçin.
 1. İstemci gizli diziniz için bir açıklama ekleyin.
 1. Bir süre seçin.
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 > [!NOTE]
 > Yapılandırmada yaptığınız değişiklikleri kaydettikten sonra en sağdaki sütunda istemci gizli dizi değeri gösterilir. İstemci uygulamanızın kodunda kullanmak üzere **değeri kopyalamayı unutmayın**. Bu sayfadan ayrıldıktan sonra bu değere erişemezsiniz.

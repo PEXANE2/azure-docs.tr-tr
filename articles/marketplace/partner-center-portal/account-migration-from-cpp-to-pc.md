@@ -1,18 +1,18 @@
 ---
 title: Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi - Azure için ticari pazar
-description: Hesabınızı NIçin CPP'den İş Merkezi'ne geçirin. - Azure için ticari pazar
+description: Hesabınızı CPP'den İş Ortağı Merkezi'ne -Azure için ticari pazar yeri- nasıl geçirebilirsiniz?
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 3979be6f49f4ad01a6092fc0d5aa767d342c4642
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730498"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024430"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne hesap geçişi
 
@@ -42,6 +42,16 @@ Hesap geçiş işlemini başlatmak için banner'a tıklayın. Aşağıdaki öğe
 2. Microsoft İş Ortağı Ağı programına kaydolun
 
     CPP hesabınızda Microsoft İş Ortağı Ağı Kimliği yoksa veya geçersiz sayıldıysa, etkinleştirme işleminin bir parçası olarak Microsoft İş Ortağı Ağı programına kaydolmanız gerekir.
+
+## <a name="publishers-moving-from-cpp"></a>CPP'den taşınan yayıncılar
+
+Hesabınız [Bulut İş Ortağı Portalı'ndan (CPP)](https://cloudpartner.azure.com)geçirilmişse, yeni bir İş Ortağı Merkezi hesabı oluşturmanız gerekmez. Yeni İş Ortağı Merkezi hesabınıza e-posta ve mevcut CPP hesabınızda oturum açtıktan sonra bir banner bildiriminde özelleştirilmiş bir bağlantı almış olmalısınız.
+
+Bu özelleştirilmiş bağlantıyı ziyaret ederek yeni İş Ortağı Merkezi hesabınızı etkinleştirdikten sonra, İş Ortağı Merkezi'ndeki [ticari pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) ziyaret ederek hesabınıza geri dönebilirsiniz.
+
+Yayımlama sözleşmesi ve şirket profil bilgileri, daha önce ayarlanmış hesap ödeme profili bilgileri, kullanıcı hesapları ve izinleri ve CPP hesabınızla ilişkili etkin tekliflerle birlikte yeni İş Ortağı Merkezi hesabınıza taşınır.
+
+Hesap bilgileriniz CPP'den İş Ortağı Merkezi'ne taşındıktan sonra, hesap güncellemeleri yapmak veya kullanıcıları, izinleri ve faturalandırmayı yönetmek için Artık CPP'yi kullanmazsınız. Sınırlı bir süre için, İş Ortağı Merkezi'nde yaptığınız tüm hesap güncellemeleri, CPP portalı sonunda azalana kadar salt okunur CPP hesabınızda otomatik olarak güncellenir.
 
 ## <a name="sign-up-for-microsoft-partner-network-program"></a>Microsoft İş Ortağı Ağı programına kaydolun
 

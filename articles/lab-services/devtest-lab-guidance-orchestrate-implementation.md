@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "62127353"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025008"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Azure DevTest Labs'ın uygulanmasını düzenleme
 Bu makale, Azure DevTest Labs'ın hızlı dağıtımı ve uygulanması için önerilen bir yaklaşım sağlar. Aşağıdaki resim, çeşitli endüstri gereksinimlerini ve senaryolarını desteklemek için esnekliği gözlemlerken genel süreci açıklayıcı bir kılavuz olarak vurgular.
@@ -43,7 +43,7 @@ Azure DevTest Labs çözümünü dağıtırken ilk odak noktası, sanal makinele
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>Milestone 2: Pilot laboratuarı dağıtın
 Ağ topolojisi yerleştirildikten sonra, ilk/pilot laboratuvar aşağıdaki adımları atarak oluşturulabilir:
 
-1. İlk DevTest Labs ortamı oluşturun (adım adım yönergeleri [burada](https://github.com/Azure/fta-devops/blob/master/devtest-labs/articles/devtest-labs-walkthrough-it.md)bulabilirsiniz)
+1. İlk DevTest Labs ortamı oluşturun.
 2. Laboratuvarda kullanılmak üzere izin verilebilen VM görüntülerini ve boyutlarını belirleyin. DevTest Labs ile kullanılmak üzere Azure'a özel resimlerin yüklenip yüklenmeyeceğine karar verin.
 3. Laboratuvar için ilk Role Base Access Controls (RBAC) oluşturarak laboratuvara erişimi güvenli hale getirmek (laboratuvar sahipleri ve laboratuvar kullanıcıları). DevTest Labs ile kimlik için Azure Active Directory ile senkronize etkin dizin hesapları kullanmanızı öneririz.
 4. DevTest Laboratuvarlarını zamanlamalar, maliyet yönetimi, talep edilebilir VM'ler, özel görüntüler veya formüller gibi ilkeleri kullanacak şekilde yapılandırın.

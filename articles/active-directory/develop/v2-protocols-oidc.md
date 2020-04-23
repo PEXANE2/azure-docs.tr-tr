@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ebec4cb6bbbac5b331eb2eb4145716e16e7320fa
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677682"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868328"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft kimlik platformu ve OpenID Connect protokolü
 
@@ -38,6 +38,7 @@ OpenID Connect, bir uygulamanın oturum açması için gereken bilgilerin çoğu
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ```
+
 > [!TIP]
 > Deneyin! Kiracı [https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) yapılandırmasını `common` görmek için tıklatın.
 
@@ -52,7 +53,7 @@ Dört `{tenant}` değerden birini alabilir:
 
 Meta veriler basit bir JavaScript Nesne Gösterimi (JSON) belgesidir. Bir örnek için aşağıdaki snippet bakın. Parçacık içeriği [OpenID Connect belirtiminde](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2)tam olarak açıklanmıştır.
 
-```
+```json
 {
   "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
   "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
@@ -84,7 +85,7 @@ Web uygulamanızın kullanıcının kimliğini niçin doğrulaması gerekiyorsa,
 
 Örneğin:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -123,7 +124,7 @@ Kullanıcı kimlik doğrulaması yaptıktan ve onay verdikten sonra, Microsoft k
 
 Kullandığınızda `response_mode=form_post` başarılı bir yanıt şuna benzer:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -140,7 +141,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 Hata yanıtları, uygulamanın bunları işleyebilmeleri için uri yönlendirmesine de gönderilebilir. Bir hata yanıtı şuna benzer:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -187,7 +188,7 @@ Uygulamanızdan kullanıcıyı oturumunuzu imzalamak istediğinizde, uygulamanı
 
 Kullanıcıyı OpenID Connect `end_session_endpoint` meta veri belgesinde listelenenlere yönlendirebilirsiniz:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/v2.0/logout?
 post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 ```
@@ -211,7 +212,7 @@ Tam OpenID Connect oturum açma ve belirteç edinme akışı bir sonraki diyagra
 ## <a name="get-access-tokens"></a>Erişim jetonları alın
 Erişim belirteçleri elde etmek için oturum açma isteğini değiştirin:
 
-```
+```HTTP
 // Line breaks are for legibility only.
 
 GET https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -236,7 +237,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 
 Kullanarak `response_mode=form_post` başarılı bir yanıt şu gibi görünür:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded
@@ -254,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 Hata yanıtları, uygulamanın bunları uygun şekilde işleyebilmeleri için uri yönlendirmesine de gönderilebilir. Bir hata yanıtı şuna benzer:
 
-```
+```HTTP
 POST /myapp/ HTTP/1.1
 Host: localhost
 Content-Type: application/x-www-form-urlencoded

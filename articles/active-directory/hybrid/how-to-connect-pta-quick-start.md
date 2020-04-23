@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b84e972584562be741919c7dccb6bdfe1bdea628
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312864"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082212"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory Pass-through Authentication: Quickstart
 
@@ -37,6 +37,9 @@ Kiracınıza Geçiş Kimlik Doğrulaması dağıtmak için aşağıdaki yönerge
 ## <a name="step-1-check-the-prerequisites"></a>Adım 1: Ön koşulları kontrol edin
 
 Aşağıdaki ön koşulların yerinde olduğundan emin olun.
+
+>[!IMPORTANT]
+>Güvenlik açısından bakıldığında, yöneticiler PTA aracısını çalıştıran sunucuya etki alanı denetleyicisi yatmaktadır gibi davranmalıdır.  PTA aracısı sunucuları, Saldırı yla Karşı [Etki Alanı Denetleyicilerini Güvence Altına Alma'da](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) belirtildiği gibi aynı doğrultuda sertleştirilmiş olmalıdır
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Azure Etkin Dizin yönetici merkezinde
 

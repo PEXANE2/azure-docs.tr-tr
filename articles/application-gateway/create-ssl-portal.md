@@ -5,20 +5,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/13/2019
+ms.date: 04/22/2019
 ms.author: victorh
-ms.openlocfilehash: b40eb107fc975d2ef0170944892b936680de3c9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 62f5375a0d468f5b137c4628c89c802d83dee102
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312384"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024502"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak TLS sonlandırma ile bir uygulama ağ geçidini yapılandırın
 
 Arka uç sunucuları için sanal makineler kullanan TLS sonlandırma sertifikasına sahip bir [uygulama ağ geçidini](overview.md) yapılandırmak için Azure portalını kullanabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Otomatik olarak imzalanan sertifika oluşturma
@@ -56,13 +56,11 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Sertifikadan bir pfx dosyasını dışa aktarmak için döndürülen Parmak İzi ile [Export-PfxCertificate'ı](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) kullanın:
+Sertifikadan bir pfx dosyasını dışa aktarmak için döndürülen Parmak İzi ile [Export-PfxCertificate'ı](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) kullanın. Parolanızın 4 - 12 karakter uzunluğunda olduğundan emin olun:
 
-> [!NOTE]
-> .pfx dosya parolasınızda özel karakterler kullanmayın. Yalnızca alfasayısal karakterler desteklenir.
 
 ```powershell
-$pwd = ConvertTo-SecureString -String "Azure123456" -Force -AsPlainText
+$pwd = ConvertTo-SecureString -String <your password> -Force -AsPlainText
 Export-PfxCertificate `
   -cert cert:\localMachine\my\E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630 `
   -FilePath c:\appgwcert.pfx `
@@ -150,7 +148,7 @@ Arka uç havuzu, istekleri sağlayan arka uç sunucularına yönlendirmek için 
 
    - **PFX sertifika dosyası** - Daha önce oluşturduğunuz c:\appgwcert.pfx dosyasına göz atın ve seçin.
    - **Sertifika adı** - Sertifikanın adı için *mycert1* yazın.
-   - **Parola** - Parola için *Azure123456* yazın.
+   - **Şifre** - Şifrenizi yazın.
   
         **Dinleyici** sekmesindeki diğer ayarlar için varsayılan değerleri kabul edin ve yönlendirme kuralının geri kalanını yapılandırmak için **Arka Uç hedefleri** sekmesini seçin.
 
@@ -194,10 +192,10 @@ Bunu yapmak için şunları yapacaksınız:
     - **Kaynak grubu**: Kaynak grubu adı için **myResourceGroupAG'ı** seçin.
     - **Sanal makine adı**: Sanal makinenin adı için *myVM* girin.
     - **Kullanıcı Adı**: Yönetici kullanıcı adı için *azureuser* girin.
-    - **Parola**: Yönetici parolası için *Azure123456'yı* girin.
-4. Diğer varsayılanları kabul edin ve sonra **İleri: Diskler'i**seçin.  
-5. **Diskler** sekmesi varsayılanlarını kabul edin ve sonra **Sonraki: Ağ'ı**seçin.
-6. **Ağ** sekmesinde, **myVNet'in** **Sanal ağ** için seçildiğini ve **Alt Net'in** **myBackendSubnet**olarak ayarlı olduğunu doğrulayın. Diğer varsayılanları kabul edin ve sonra **Sonraki: Yönetim'i**seçin.
+    - **Parola**: Yönetici hesabı için bir parola girin.
+1. Diğer varsayılanları kabul edin ve sonra **İleri: Diskler'i**seçin.  
+2. **Diskler** sekmesi varsayılanlarını kabul edin ve sonra **Sonraki: Ağ'ı**seçin.
+3. **Ağ** sekmesinde, **myVNet'in** **Sanal ağ** için seçildiğini ve **Alt Net'in** **myBackendSubnet**olarak ayarlı olduğunu doğrulayın. Diğer varsayılanları kabul edin ve sonra **Sonraki: Yönetim'i**seçin.
 
    Uygulama Ağ Geçidi, içinde olduğu sanal ağın dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
 1. **Yönetim** sekmesinde, **Önyükleme tanılamasını** **Kapalı**olarak ayarlayın. Diğer varsayılanları kabul edin ve ardından **Gözden Geçir + oluştur'u**seçin.
@@ -242,7 +240,7 @@ Bu örnekte, iIS'yi sanal makinelere yalnızca Azure'un uygulama ağ geçidini b
 
     ![Arka uç sunucuları ekleme](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. **Kaydet'i**seçin.
+6. **Kaydet**’i seçin.
 
 7. Bir sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 

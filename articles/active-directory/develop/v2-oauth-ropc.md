@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 828bdab26684b29d664ea42d0b36f475c7872a80
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: a282264ed3e9539bcc96babfc41376d2c6c35628
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309458"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868645"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft kimlik platformu ve OAuth 2.0 Kaynak Sahibi Parola Kimlik Bilgileri
 
@@ -50,8 +50,8 @@ ROPC akışı tek bir istektir: istemci kimliğini ve kullanıcı kimlik bilgile
 > [![Postacı'da bu isteği çalıştırmayı deneyin](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
-```
-// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
+```HTTP
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required.
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -67,13 +67,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Parametre | Koşul | Açıklama |
 | --- | --- | --- |
 | `tenant` | Gerekli | Kullanıcıyı oturum açmak istediğiniz dizin kiracı. Bu GUID veya dostu ad biçiminde olabilir. Bu parametre ayarlanamıyor `common` veya `consumers`, ama ' `organizations`olarak ayarlanabilir . |
-| `client_id` | Gerekli | Uygulama (istemci) kimliği, Uygulamanıza atanan [Azure portalı - Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasıdır. | 
+| `client_id` | Gerekli | Uygulama (istemci) kimliği, Uygulamanıza atanan [Azure portalı - Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasıdır. |
 | `grant_type` | Gerekli | Ayarlanmış `password`olmalı. |
 | `username` | Gerekli | Kullanıcının e-posta adresi. |
 | `password` | Gerekli | Kullanıcının parolası. |
 | `scope` | Önerilen | Uygulamanın gerektirdiği [kapsamların](v2-permissions-and-consent.md)veya izinlerin yer le ayrılmış bir listesi. Etkileşimli bir akışta, yönetici veya kullanıcı bu kapsamları önceden kabul etmelidir. |
-| `client_secret`| Bazen gerekli | Uygulamanız genel bir istemciyse, `client_secret` `client_assertion` uygulama dahil edilemez veya dahil edilemez.  Uygulama gizli bir istemciyse, eklenmelidir. | 
-| `client_assertion` | Bazen gerekli | Farklı bir `client_secret`form , bir sertifika kullanılarak oluşturulan.  Daha fazla ayrıntı için [sertifika kimlik bilgilerine](active-directory-certificate-credentials.md) bakın. | 
+| `client_secret`| Bazen gerekli | Uygulamanız genel bir istemciyse, `client_secret` `client_assertion` uygulama dahil edilemez veya dahil edilemez.  Uygulama gizli bir istemciyse, eklenmelidir. |
+| `client_assertion` | Bazen gerekli | Farklı bir `client_secret`form , bir sertifika kullanılarak oluşturulan.  Daha fazla ayrıntı için [sertifika kimlik bilgilerine](active-directory-certificate-credentials.md) bakın. |
 
 ### <a name="successful-authentication-response"></a>Başarılı kimlik doğrulama yanıtı
 

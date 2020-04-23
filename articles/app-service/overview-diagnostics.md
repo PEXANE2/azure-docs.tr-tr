@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: jennile
 ms.custom: seodec18
-ms.openlocfilehash: e06e71d4436ac6c64ff2edc876d7849d084482f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df8f68e47776f46ae2d1331f85bd76d6cfe17b80
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671627"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869936"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure Uygulama Hizmeti tanılama genel bakış
 
@@ -32,6 +32,10 @@ App Service tanılama ana sayfasında, her ana sayfa döşemesinde anahtar kelim
 
 ![Giriş sayfası](./media/app-service-diagnostics/app-service-diagnostics-homepage-1.png)
 
+> [!NOTE]
+> Uygulamanız kapanıyorsa veya yavaş performans gösteriyorsa, sorunun temel nedenini belirlemek için [bir profil oluşturma izleme sini toplayabilirsiniz.](https://azure.github.io/AppService/2018/06/06/App-Service-Diagnostics-Profiling-an-ASP.NET-Web-App-on-Azure-App-Service.html) Profil oluşturma hafiftir ve üretim senaryoları için tasarlanmıştır.
+>
+
 ## <a name="interactive-interface"></a>Etkileşimli arayüz
 
 Uygulamanızın sorunuyla en iyi hizalayan bir ana sayfa kategorisi seçtiğinizde, App Service tanılamanın etkileşimli arayüzü Cin, uygulamanızla ilgili sorunları tanılama ve çözme konusunda size rehberlik edebilir. İlgilendiğiniz sorun kategorisinin tam tanılama raporunu görüntülemek için Cin tarafından sağlanan döşeme kısayollarını kullanabilirsiniz. Döşeme kısayolları, tanılama ölçümlerinize doğrudan erişmenizi sağlar.
@@ -40,7 +44,7 @@ Uygulamanızın sorunuyla en iyi hizalayan bir ana sayfa kategorisi seçtiğiniz
 
 Bu kutucuklara tıkladıktan sonra, kutucukta açıklanan sorunla ilgili konuların listesini görebilirsiniz. Bu konular, raporun tamamından kayda değer bilgiler sağlar. Sorunları daha fazla araştırmak için bu konulardan herhangi birini tıklayabilirsiniz. Ayrıca, tek bir sayfadaki tüm konuları incelemek için **Tam Raporu Görüntüle'yi** tıklatabilirsiniz.
 
-![Konular](./media/app-service-diagnostics/application-logs-insights-3.png)
+![Konu başlıkları](./media/app-service-diagnostics/application-logs-insights-3.png)
 
 ![Tam Raporu Görüntüle](./media/app-service-diagnostics/view-full-report-4.png)
 

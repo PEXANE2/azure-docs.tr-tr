@@ -8,19 +8,19 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: 173f5c698ab44ea269995665bcbc33c726d4f03a
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811467"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024617"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services’da sertifikalara genel bakış
 Sertifikalar Azure'da bulut hizmetleri[(hizmet sertifikaları)](#what-are-service-certificates)ve yönetim API'si[(yönetim sertifikaları)](#what-are-management-certificates)ile kimlik doğrulaması için kullanılır. Bu konu, her iki sertifika türüne de genel bir genel bakış, bunları nasıl [oluşturulup](#create) Azure'a dağıtılayabilmek sağlar.
 
 Azure'da kullanılan sertifikalar x.509 v3 sertifikalarıdır ve başka bir güvenilir sertifika tarafından imzalanabilir veya kendi imzalanabilirler. Kendi imzalı bir sertifika kendi oluşturucusu tarafından imzalandığıiçin varsayılan olarak güvenilir değildir. Tarayıcıların çoğu bu sorunu yok sayabilir. Yalnızca bulut hizmetlerinizi geliştirirken ve test ederken kendi imzalı sertifikalar kullanmalısınız. 
 
-Azure tarafından kullanılan sertifikalar özel veya ortak anahtar içerebilir. Sertifikalar, bunları kesin bir şekilde tanımlamak için bir araç sağlayan bir parmak izi vardır. Bu parmak izi, bulut hizmetinin hangi sertifikayı kullanması gerektiğini belirlemek için Azure [yapılandırma dosyasında](cloud-services-configure-ssl-certificate-portal.md) kullanılır. 
+Azure tarafından kullanılan sertifikalar ortak bir anahtar içerebilir. Sertifikalar, bunları kesin bir şekilde tanımlamak için bir araç sağlayan bir parmak izi vardır. Bu parmak izi, bulut hizmetinin hangi sertifikayı kullanması gerektiğini belirlemek için Azure [yapılandırma dosyasında](cloud-services-configure-ssl-certificate-portal.md) kullanılır. 
 
 >[!Note]
 >Azure Bulut Hizmetleri, AES256-SHA256 şifreli sertifikayı kabul etmez.
@@ -51,7 +51,7 @@ Abonelik başına 100 yönetim sertifikası sınırı vardır. Ayrıca, belirli 
 Bu ayarlara uydukları sürece kendi imzalı sertifika oluşturmak için kullanılabilir herhangi bir aracı kullanabilirsiniz:
 
 * X.509 sertifikası.
-* Özel bir anahtar içerir.
+* Ortak anahtar içerir.
 * Anahtar değişimi (.pfx dosyası) için oluşturulmuştur.
 * Konu adı, bulut hizmetine erişmek için kullanılan etki alanıyla eşleşmelidir.
 

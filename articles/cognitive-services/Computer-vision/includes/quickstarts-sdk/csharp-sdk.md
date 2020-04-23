@@ -9,18 +9,18 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce311d2deaf0eec76ef0dec3ea279a387d14fd22
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 522adc0f07f4ab21e391b952284dff97b089dccc
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81637137"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81791673"
 ---
 <a name="HOLTop"></a>
 
 [Referans belgeleri](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [Paketi (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [Örnekleri](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği - [Ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
 * [.NET Core'un](https://dotnet.microsoft.com/download/dotnet-core)geçerli sürümü.
@@ -40,7 +40,7 @@ Deneme aboneliğinizden veya kaynağınızdan bir anahtar aldıktan sonra, sıra
 
 Tercih ettiğiniz düzenleyicide veya IDE'de yeni bir .NET Core uygulaması oluşturun. 
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `computer-vision-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *Program.cs*.
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adı `computer-vision-quickstart`olan yeni bir konsol uygulaması oluşturmak için komutu kullanın. Bu komut, tek bir kaynak dosyası ile basit bir "Hello World" C# projesi oluşturur: *ComputerVisionQuickstart.cs*.
 
 ```console
 dotnet new console -n computer-vision-quickstart
@@ -62,13 +62,13 @@ Build succeeded.
 ...
 ```
 
-Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *Program.cs* dosyasını açın. Aşağıdaki `using` yönergeleri ekleyin:
+Proje dizininden, tercih ettiğiniz düzenleyici veya IDE'deki *ComputerVisionQuickstart.cs* dosyasını açın. Aşağıdaki `using` yönergeleri ekleyin:
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_using)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
 Uygulamanın **Program** sınıfında, kaynağınızın Azure bitiş noktası ve anahtarı için değişkenler oluşturun.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_vars)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_vars)]
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükleme
 
@@ -105,11 +105,11 @@ Bu kod parçacıkları, .NET için Computer Vision istemci kitaplığı ile aşa
 
 Yeni bir yöntemde, son noktanız ve anahtarınızla istemciyi anında anons edin. Anahtarınızla bir **[ApiKeyServiceClientCredentials nesnesi](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.apikeyserviceclientcredentials?view=azure-dotnet)** oluşturun ve **[computerVisionClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-dotnet)** nesnesi oluşturmak için bitiş noktanızla birlikte kullanın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_auth)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
 Bu yöntemi `Main` yöntemde aramak isteyebilirsiniz.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_client)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_client)]
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -117,22 +117,22 @@ Aşağıdaki kod, `AnalyzeImageUrl`uzak bir görüntüyü çözümlemek ve sonu�
 
 Yönteme `Main` yöntem çağrısını ekleyin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyzeinmain)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyzeinmain)]
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarlama
 
 **Program** sınıfınızda, çözümlemek istediğiniz resmin URL'sine bir başvuru kaydedin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_url)]
 
 > [!NOTE]
-> Yerel bir görüntüyü de analiz edebilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs) örnek kodu görün.
+> Yerel bir görüntüyü de analiz edebilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) örnek kodu görün.
 
 ### <a name="specify-visual-features"></a>Görsel özellikleri belirtin
 
 Görüntü analizi için yeni yönteminizi tanımlayın. Analizlerinizde ayıklamak istediğiniz görsel özellikleri belirten kodu aşağıya ekleyin. Tam bir liste için **[VisualFeatureTypes](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-dotnet)** tamuna bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_visualfeatures)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
 Özelliklerini uygulamak için Aşağıdaki kod bloklarını **AnalyzeImageUrl** yönteminize ekleyin. Sonuna bir kapanış ayracı eklemeyi unutmayın.
 
@@ -144,7 +144,7 @@ Görüntü analizi için yeni yönteminizi tanımlayın. Analizlerinizde ayıkla
 
 **AnalyzeImageAsync** yöntemi, tüm çıkarılan bilgileri içeren bir **ImageAnalysis** nesnesini döndürür.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_analyze_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 Aşağıdaki bölümlerde bu bilgilerin nasıl ayrıştırılalı ştırış edilebildiğini göstereceğimiz.
 
@@ -152,49 +152,49 @@ Aşağıdaki bölümlerde bu bilgilerin nasıl ayrıştırılalı ştırış edi
 
 Aşağıdaki kod, görüntü için oluşturulan altyazıların listesini alır. Daha fazla ayrıntı için [görüntüleri açıkla'ya](../../concept-describing-images.md) bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_describe)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_describe)]
 
 ### <a name="get-image-category"></a>Resim kategorisi alın
 
 Aşağıdaki kod görüntünün algılanan kategorisini alır. Daha fazla ayrıntı için [görüntüleri kategorilere ayırın.](../../concept-categorizing-images.md)
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_categorize)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_categorize)]
 
 ### <a name="get-image-tags"></a>Resim etiketlerini alın
 
 Aşağıdaki kod, görüntüde algılanan etiketler kümesini alır. Daha fazla ayrıntı için [İçerik etiketlerini](../../concept-tagging-images.md) görün.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_tags)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_tags)]
 
 ### <a name="detect-objects"></a>Nesneleri algılama
 
 Aşağıdaki kod görüntüdeki ortak nesneleri algılar ve konsola yazdırır. Daha fazla ayrıntı için [Nesne algılama](../../concept-object-detection.md) konusuna bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_objects)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_objects)]
 
 ### <a name="detect-brands"></a>Markaları algılama
 
 Aşağıdaki kod, görüntüdeki kurumsal markaları ve logoları algılar ve konsola yazdırır. Daha fazla ayrıntı için [Marka algılama](../../concept-brand-detection.md) ya da bkz.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_brands)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_brands)]
 
 ### <a name="detect-faces"></a>Yüz algılama
 
 Aşağıdaki kod, resimde algılanan yüzleri dikdörtgen koordinatlarıyla döndürür ve yüz özniteliklerini seçer. Daha fazla ayrıntı için [Yüz algılama](../../concept-detecting-faces.md) ya da yüz algılama bilgisine bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_faces)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_faces)]
 
 ### <a name="detect-adult-racy-or-gory-content"></a>Yetişkinlere uygun, müstehcen veya kanlı içeriği algılama
 
 Aşağıdaki kod, görüntüde algılanan yetişkinlere uygun içeriğin varlığını yazdırır. Daha fazla bilgi için [Yetişkin, müstehcen, kanlı içeriğe](../../concept-detecting-adult-content.md) bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_adult)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_adult)]
 
 ### <a name="get-image-color-scheme"></a>Görüntü renk düzeni alın
 
 Aşağıdaki kod, baskın renkler ve vurgu rengi gibi görüntüde algılanan renk özniteliklerini yazdırır. Daha fazla ayrıntı için [Renk şemaları'na](../../concept-detecting-color-schemes.md) bakın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_color)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_color)]
 
 ### <a name="get-domain-specific-content"></a>Etki alanına özel içerik alın
 
@@ -202,17 +202,17 @@ Computer Vision, görüntüler üzerinde daha fazla analiz yapmak için özel mo
 
 Aşağıdaki kod, görüntüde algılanan ünlüler hakkındaki verileri ayrışdırır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_celebs)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_celebs)]
 
 Aşağıdaki kod, görüntüde algılanan yer işaretleri yle ilgili verileri ayrışdırır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_landmarks)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_landmarks)]
 
 ### <a name="get-the-image-type"></a>Görüntü türünü alma
 
 Aşağıdaki kod, küçük resim veya&mdash;çizgi çizimi olsun görüntünün türü hakkında bilgi yazdırır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_type)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Basılı ve el yazısıyla yazılmış metni okuma
 
@@ -220,34 +220,34 @@ Computer Vision görüntüdeki görünür metni okuyabilir ve karakter akışın
 
 Yönteme `Main` yöntem çağrısını ekleyin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttextinmain)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
 ### <a name="set-up-test-image"></a>Test görüntüsünü ayarlama
 
 **Program** sınıfınızda, metin çıkarmak istediğiniz resmin URL'sine bir başvuru kaydedin.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extracttext_url)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
 
 > [!NOTE]
-> Yerel bir resimden metin ayıklayabilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs) örnek kodu görün.
+> Yerel bir resimden metin ayıklayabilirsiniz. Yerel görüntüleri içeren senaryolar için [GitHub'daki](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) örnek kodu görün.
 
 ### <a name="call-the-read-api"></a>Okuma API'sini arayın
 
 Metni okumak için yeni yöntemi tanımlayın. Verilen görüntü için **BatchReadFileAsync** yöntemini çağıran aşağıdaki kodu ekleyin. Bu, bir işlem kimliği döndürür ve görüntünün içeriğini okumak için bir eşzamanlı işlem başlatır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_call)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
 
 ### <a name="get-read-results"></a>Okuma sonuçları alın
 
 Ardından, işlem kimliğini **BatchReadFileAsync** çağrısından döndürün ve hizmetin çalışma sonuçları için sorgulanması için kullanın. Aşağıdaki kod, sonuçlar döndürülene kadar işlemi bir saniye aralıklarla denetler. Daha sonra çıkarılan metin verilerini konsola yazdırır.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_response)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
 
 ### <a name="display-read-results"></a>Okuma sonuçlarını görüntüleme
 
 Alınan metin verilerini ayrıştmak ve görüntülemek için aşağıdaki kodu ekleyin ve yöntem tanımını tamamlayın.
 
-[!code-csharp[](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/ComputerVision/Program.cs?name=snippet_extract_display)]
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_display)]
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
@@ -270,4 +270,4 @@ Bilişsel Hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynak 
 >[Bilgisayarlı Vizyon API başvurusu (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
 * [Görüntü İşleme nedir?](../../Home.md)
-* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs)bulunabilir.
+* Bu örnek için kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs)bulunabilir.

@@ -7,25 +7,25 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
-ms.date: 03/02/2020
-ms.openlocfilehash: d7330225ecbdc6715847821a47c140a3c2b8d1b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/21/2020
+ms.openlocfilehash: dd0b4d1b0998bd4b13a17fb8345b87924bc27e1d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251944"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869986"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight'ta Power BI kullanarak Apache Spark verilerini analiz edin
 
-Bu eğitimde, [Azure HDInsight'taki](https://azure.microsoft.com/services/hdinsight/)bir Apache Spark kümesindeki verileri görselleştirmek için [Microsoft Power BI'yi](https://powerbi.microsoft.com/) nasıl kullanacağınızı öğreneceksiniz.
+Bu eğitimde, Azure HDInsight'taki bir Apache Spark kümesindeki verileri görselleştirmek için Microsoft Power BI'yi nasıl kullanacağınızı öğreneceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Power BI kullanarak Spark verilerini görselleştirme
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgu çalıştırma](./apache-spark-load-data-run-query.md) makalesini tamamlayın.
 
@@ -70,9 +70,6 @@ Bu bölümde Power BI kullanarak, Spark kümesi verilerinden görselleştirme, r
 ### <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop'ta rapor oluşturma
 
 Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanmak, kümeden veri yüklemek ve bu verileri temel alarak basit bir görselleştirme oluşturmaktır.
-
-> [!NOTE]  
-> Bu makalede gösterilen bağlayıcı şu anda önizleme aşamasındadır. Geri bildirimlerinizi [Power BI Topluluğu](https://community.powerbi.com/) sitesi ya da [Power BI Ideas](https://ideas.powerbi.com/forums/265200-power-bi-ideas) sayfasından gönderin.
 
 1. Power BI Desktop’ı açın. Açılırsa başlangıç sıçrama ekranını kapatın.
 
@@ -180,7 +177,7 @@ Bir kümeyi silmek için bkz: [Tarayıcınızı, PowerShell'i veya Azure CLI'yi 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, [Azure HDInsight'taki](https://azure.microsoft.com/services/hdinsight/)bir Apache Spark kümesindeki verileri görselleştirmek için [Microsoft Power BI'yi](https://powerbi.microsoft.com/) nasıl kullanacağınızı öğrendiniz. Bir sonraki makaleye bir makine öğrenme uygulaması oluşturabilirsiniz görmek için ilerleyin.
+Bu eğitimde, Azure HDInsight'taki bir Apache Spark kümesindeki verileri görselleştirmek için Microsoft Power BI'yi nasıl kullanacağınızı öğrendiniz. Bir sonraki makaleye bir makine öğrenme uygulaması oluşturabilirsiniz görmek için ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Makine öğrenimi uygulaması oluşturma](./apache-spark-ipython-notebook-machine-learning.md)

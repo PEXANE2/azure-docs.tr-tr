@@ -12,16 +12,16 @@ ms.date: 12/3/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9f633e0d205adaf5cefb2e3c036ce7f48253651
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 537d609c1281929203d1891f37614b7627e1683a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886390"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868674"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft kimlik platformunda yönetici onayı
 
-Bazı izinler, kiracı içinde verilebilmeleri için yöneticinin onayvermesini gerektirir.  Yönetici onayı bitiş noktasını, tüm kiracıya izin vermek için de kullanabilirsiniz.  
+Bazı izinler, kiracı içinde verilebilmeleri için yöneticinin onayvermesini gerektirir.  Yönetici onayı bitiş noktasını, tüm kiracıya izin vermek için de kullanabilirsiniz.
 
 ## <a name="recommended-sign-the-user-into-your-app"></a>Önerilen: Kullanıcıyı uygulamanızda oturum
 
@@ -33,15 +33,15 @@ Kullanıcıyı uygulamanızda oturum açtığınızda, gerekli izinleri onaylama
 
 Kuruluşunuzun yöneticisinden izin istemeye hazır olduğunuzda, kullanıcıyı Microsoft kimlik platformu *yönetici onayı bitiş noktasına*yönlendirebilirsiniz.
 
-```
+```HTTP
 // Line breaks are for legibility only.
-    GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
-  client_id=6731de76-14a6-49ae-97bc-6eba6914391e
-  &state=12345
-  &redirect_uri=http://localhost/myapp/permissions
-    &scope=
-    https://graph.microsoft.com/calendars.read 
-    https://graph.microsoft.com/mail.send
+GET https://login.microsoftonline.com/{tenant}/v2.0/adminconsent?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&state=12345
+&redirect_uri=http://localhost/myapp/permissions
+&scope=
+https://graph.microsoft.com/calendars.read
+https://graph.microsoft.com/mail.send
 ```
 
 
@@ -51,7 +51,7 @@ Kuruluşunuzun yöneticisinden izin istemeye hazır olduğunuzda, kullanıcıyı
 | `client_id` | Gerekli | Azure portalı - Uygulama [kayıtlarının](https://go.microsoft.com/fwlink/?linkid=2083908) uygulamanıza atandığı **Uygulama (istemci) Kimliği.** |
 | `redirect_uri` | Gerekli |UYGULAMANIZIN işlemesi için yanıtın gönderilmesini istediğiniz uri'yi yeniden yönlendirin. Uygulama kayıt portalına kaydettiğiniz yönlendirme URL'lerinden biriyle tam olarak eşleşmelidir. |
 | `state` | Önerilen | Belirteç yanıtında da döndürülecek isteğe dahil edilen bir değer. İstediğiniz herhangi bir içerik dizisi olabilir. Kimlik doğrulama isteği oluşmadan önce kullanıcının durumu yla ilgili bilgileri uygulamada kodlamak için durumu (örneğin, üzerinde oldukları sayfa veya görünüm) kullanın. |
-|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (/.default kullanarak) veya dinamik kapsamlar olabilir.  Bu OIDC kapsamları içerebilir`openid` `profile`( `email`, , . | 
+|`scope`        | Gerekli      | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (/.default kullanarak) veya dinamik kapsamlar olabilir.  Bu OIDC kapsamları içerebilir`openid` `profile`( `email`, , . |
 
 
 Bu noktada, Azure AD isteği tamamlamak için bir kiracı yöneticinin oturum etmesini gerektirir. Yöneticiden `scope` parametrede istediğiniz tüm izinleri onaylaması istenir.  Statik ( )`/.default`bir değer kullandıysanız, v1.0 yönetici onayı bitiş noktası gibi çalışır ve uygulama için gerekli izinlerde bulunan tüm kapsamlar için onay ister.

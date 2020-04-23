@@ -2,17 +2,17 @@
 title: Genel Bakış
 description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim denetimi için Azure Resource Manager’ın nasıl kullanılacağı açıklanmaktadır.
 ms.topic: overview
-ms.date: 03/25/2020
-ms.openlocfilehash: 1e2a6959117749b4e7d08a9768b4189b97ef08bd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/21/2020
+ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80258150"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870485"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Kaynak Yöneticisi nedir?
 
-Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenize olanak tanıyan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve etiketler gibi yönetim özelliklerini kullanırsınız.
+Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturmanıza, güncelleştirmenize ve silmenize olanak tanıyan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve etiketler gibi yönetim özelliklerini kullanırsınız.
 
 Azure Kaynak Yöneticisi şablonları hakkında bilgi edinmek için [Şablon dağıtımına genel bakış](../templates/overview.md)'a bakın.
 
@@ -30,10 +30,10 @@ Portalda bulunan tüm özellikler PowerShell, Azure CLI, REST API'leri ve istemc
 
 Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabileceğiniz bazı terimler vardır.
 
-* **kaynak** - Azure üzerinden kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, web uygulamaları, veritabanları ve sanal ağlar kaynak örnekleridir.
+* **kaynak** - Azure üzerinden kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, web uygulamaları, veritabanları ve sanal ağlar kaynak örnekleridir. Kaynak grupları, abonelikler, yönetim grupları ve etiketler de kaynaklara örnektir.
 * **kaynak grubu** - Azure çözümü için ilgili kaynakları tutan bir kapsayıcı. Kaynak grubu, grup olarak yönetmek istediğiniz kaynakları içerir. Kuruluşunuz açısından en mantıklı duruma göre hangi kaynakların bir kaynak grubuna ait olduğuna siz karar verirsiniz. [Bkz. Kaynak grupları.](#resource-groups)
 * **kaynak sağlayıcısı** - Azure kaynakları sağlayan bir hizmet. Örneğin, sanal makine kaynağını sağlayan microsoft.compute ortak bir kaynak sağlayıcısıdır. Microsoft.Storage başka bir ortak kaynak sağlayıcısıdır. [Bkz. Kaynak sağlayıcıları ve türleri.](resource-providers-and-types.md)
-* **Kaynak Yöneticisi şablonu** - Kaynak grubuna veya aboneye dağıtılabilmek için bir veya daha fazla kaynak tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir. Bkz. [Şablon dağıtımına genel bakış](../templates/overview.md).
+* **Kaynak Yöneticisi şablonu** - Kaynak grubuna, abonelikte, yönetim grubuna veya kiracıya dağıtılabilmek için bir veya daha fazla kaynak tanımlayan bir JavaScript Nesne Gösterimi (JSON) dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir. Bkz. [Şablon dağıtımına genel bakış](../templates/overview.md).
 * **bildirim temelli söz dizimi** - Oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan "Oluşturmak istediğiniz şeyi" belirtmenize imkan tanıyan söz dizimi. Resource Manager şablonu, bildirim temelli söz diziminin bir örneğidir. Dosya içinde Azure’a dağıtılacak altyapının özelliklerini tanımlarsınız.  Bkz. [Şablon dağıtımına genel bakış](../templates/overview.md).
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Resource Manager’ı kullanmanın avantajları
@@ -48,7 +48,7 @@ Kaynak Yöneticisi ile şunları yapabilirsiniz:
 
 * Doğru sırada dağıtılmak üzere kaynaklar arasındaki bağımlılıkları tanımlayın.
 
-* Role Tabanlı Erişim Denetimi (RBAC) yerel olarak yönetim platformuna entegre olduğundan kaynak grubunuzdaki tüm hizmetlere erişim denetimi uygulayın.
+* Role Tabanlı Erişim Denetimi (RBAC) yerel olarak yönetim platformuna entegre olduğundan tüm hizmetlere erişim denetimi uygulayın.
 
 * Aboneliğinizdeki tüm kaynakları mantıksal olarak düzenlemek için kaynaklara etiketler uygulayın.
 
@@ -58,11 +58,11 @@ Kaynak Yöneticisi ile şunları yapabilirsiniz:
 
 Azure dört kapsam düzeyi sağlar: [yönetim grupları,](../../governance/management-groups/overview.md)abonelikler, [kaynak grupları](#resource-groups)ve kaynaklar. Aşağıdaki resimde bu katmanlara ait bir örnek gösterilir.
 
-![Kapsam](./media/overview/scope-levels.png)
+![Yönetim düzeyleri](./media/overview/scope-levels.png)
 
 Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiğiniz düzey, ayarın ne kadar yaygın olarak uygulanacağını belirler. Düşük düzeyler, yüksek düzeylerdeki ayarları devralır. Örneğin, aboneye bir [ilke](../../governance/policy/overview.md) uyguladığınızda, ilke aboneliğinizdeki tüm kaynak gruplarına ve kaynaklara uygulanır. Kaynak grubuna bir ilke uyguladığınız zaman, bu ilke kaynak grubu ve tüm kaynakları uygulanır. Ancak, başka bir kaynak grubunun bu ilke ataması yoktur.
 
-Şablonları yönetim gruplarına, aboneliklere veya kaynak gruplarına dağıtabilirsiniz.
+Şablonları kiracılara, yönetim gruplarına, aboneliklere veya kaynak gruplarına dağıtabilirsiniz.
 
 ## <a name="resource-groups"></a>Kaynak grupları
 
@@ -71,6 +71,8 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 * Grubunuzdaki tüm kaynaklar aynı yaşam döngüsünü paylaşmalıdır. Bunları birlikte dağıtır, güncelleştirir ve silersiniz. Veritabanı sunucusu gibi bir kaynağın farklı bir dağıtım döngüsünde bulunması gerekiyorsa, bu kaynak farklı bir kaynak grubuna konulmalıdır.
 
 * Her kaynak yalnızca bir kaynak grubunda yer alabilir.
+
+* Bazı kaynaklar bir kaynak grubunun dışında bulunabilir. Bu kaynaklar [abonelik,](../templates/deploy-to-subscription.md)yönetim [grubu](../templates/deploy-to-management-group.md)veya [kiracıya](../templates/deploy-to-tenant.md)dağıtılır. Bu kapsamlarda yalnızca belirli kaynak türleri desteklenir.
 
 * Bir kaynak grubuna dilediğiniz zaman kaynak ekleyebilir veya kaldırabilirsiniz.
 

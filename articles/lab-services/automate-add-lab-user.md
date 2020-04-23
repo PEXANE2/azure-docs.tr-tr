@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 70a6359923734c83590d4677bb2c93966c925d14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76718148"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82023631"
 ---
 # <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs'daki bir laboratuvara laboratuvar kullanıcıeklemeyi otomatikleştirme
-Azure DevTest Labs, Azure portalını kullanarak self servis geliştirme test ortamlarını hızla oluşturmanıza olanak tanır. Ancak, birkaç takım ve birkaç DevTest Labs örnekleri varsa, oluşturma işlemini otomatikleştirmek zaman kazandırabilir. [Azure Kaynak Yöneticisi şablonları,](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) laboratuvarlar, laboratuvar VM'leri, özel resimler, formüller oluşturmanıza ve kullanıcıları otomatik bir şekilde eklemenize olanak tanır. Bu makale, özellikle bir DevTest Labs örneğine kullanıcı eklemeye odaklanır.
+Azure DevTest Labs, Azure portalını kullanarak self servis geliştirme test ortamlarını hızla oluşturmanıza olanak tanır. Ancak, birkaç takım ve birkaç DevTest Labs örnekleri varsa, oluşturma işlemini otomatikleştirmek zaman kazandırabilir. [Azure Kaynak Yöneticisi şablonları,](https://github.com/Azure/azure-devtestlab/tree/master/Environments) laboratuvarlar, laboratuvar VM'leri, özel resimler, formüller oluşturmanıza ve kullanıcıları otomatik bir şekilde eklemenize olanak tanır. Bu makale, özellikle bir DevTest Labs örneğine kullanıcı eklemeye odaklanır.
 
 Bir kullanıcıyı laboratuvara eklemek için, kullanıcıyı laboratuvar için **DevTest Labs Kullanıcı** rolüne eklersiniz. Bu makalede, aşağıdaki yollardan birini kullanarak bir laboratuvara kullanıcı eklemeyi otomatikleştirin:
 

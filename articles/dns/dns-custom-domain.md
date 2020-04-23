@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: article
 ms.date: 7/13/2019
 ms.author: rohink
-ms.openlocfilehash: d84a7a908bd3bb5cfb2958a617be437f3b6b154e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56a7680de3127da06341ac03252a9ab0cff9da7c
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266240"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024957"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure hizmeti için özel etki alanı ayarları sağlamak için Azure DNS'yi kullanın
 
 Azure DNS, özel etki alanlarını destekleyen veya tam nitelikli etki alanı adı (FQDN) olan Azure kaynaklarınız için özel bir etki alanı için DNS sağlar. Bir örnek, bir Azure web uygulamanız olması ve kullanıcılarınızın bu uygulamaya\.contoso.com veya www contoso.com'yi FQDN olarak kullanarak erişmelerini istemenizdir. Bu makale, Azure hizmetinizi azure dns ile özel etki alanlarını kullanmak için yapılandırmakonusunda size yol açmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure DNS'yi özel etki alanınız için kullanabilmek için öncelikle etki alanınızı Azure DNS'ye devretmeniz gerekir. Ad sunucularınızı temsilci olarak nasıl yapılandıracağınıza ilişkin yönergeler için [bir etki alanını Azure DNS'ye devret'i](./dns-delegate-domain-azure-dns.md) ziyaret edin. Etki alanınız Azure DNS bölgenize devredildikten sonra, gereken DNS kayıtlarını yapılandırabilirsiniz.
 
@@ -134,7 +134,7 @@ DNS Bölgenize gidin ve **+ Kayıt kümesini**tıklatın. **Kayıt ekle kümesi*
 |TTL birimi     | Saat        | Saat ölçümü olarak saatler kullanılır         |
 |Diğer ad     | asverify.adatumfunctiona9ed.blob.core.windows.net        | Diğer adı oluşturduğunuz DNS adı, bu örnekte depolama hesabına varsayılan olarak sağlanan asverify.adatumfunctiona9ed.blob.core.windows.net DNS adıdır.        |
 
-**Depolama** > **Alanı Hesapları'nı**tıklatarak depolama hesabınıza geri gidin, depolama hesabınızı seçin ve Özel **etki alanını**tıklatın. Metin kutusunda asverify öneki olmadan oluşturduğunuz takma ad yazın, **Dolaylı CNAME doğrulamasını kullanın ve **Kaydet'i**tıklatın. Bu adım tamamlandıktan sonra, DNS bölgenize dönün ve asverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, cdnverify öneki ile CNAME kaydını silmek için güvenlidir.
+**Depolama** > **Alanı Hesapları'nı**tıklatarak depolama hesabınıza geri gidin, depolama hesabınızı seçin ve Özel **etki alanını**tıklatın. Metin kutusunda asverify öneki olmadan oluşturduğunuz takma ad yazın, **dolaylı CNAME doğrulamayı kullan'ı**işaretleyin ve **Kaydet'i**tıklatın. Bu adım tamamlandıktan sonra, DNS bölgenize dönün ve asverify öneki olmadan bir CNAME kaydı oluşturun.  Bu noktadan sonra, cdnverify öneki ile CNAME kaydını silmek için güvenlidir.
 
 ![blob depolama özel etki alanı](./media/dns-custom-domain/indirectvalidate.png)
 

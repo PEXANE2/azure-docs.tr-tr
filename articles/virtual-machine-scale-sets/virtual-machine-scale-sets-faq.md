@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 1dbc08e01b9a36b1bc80ee6b81ceb2d92ff831cc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273724"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870210"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure sanal makine ölçek kümeleri hakkında SSS
 
@@ -445,7 +445,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
     Yönetici kimlik bilgilerini doğrudan ölçek kümesi modelinde (örneğin Azure Kaynak Gezgini, PowerShell veya CLI'yi kullanarak) güncelleştirin. Ölçek kümesi güncelleştirildikten sonra, tüm yeni VM'ler yeni kimlik bilgilerine sahip olabilir. Varolan VM'ler yalnızca yeniden görüntülenirlerse yeni kimlik bilgilerine sahiptir.
 
-- VM erişim uzantılarını kullanarak parolayı sıfırla.
+- VM erişim uzantılarını kullanarak parolayı sıfırla. [Burada](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)açıklandığı gibi parola gereksinimlerini takip emin olun.
 
     Aşağıdaki PowerShell örneğini kullanın:
 

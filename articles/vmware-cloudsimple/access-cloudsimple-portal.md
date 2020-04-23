@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d3dd2eee6f771df23b72eae7a33122c42f1690
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244738"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869327"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portalından CloudSimple portalı ile VMware Çözümüne erişin
 
@@ -34,7 +34,7 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
@@ -71,5 +71,5 @@ Genel yönetici ayrıcalığınız varsa, kuruluşunuz için onay alabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Özel bulut oluşturmayı](https://docs.azure.cloudsimple.com/create-private-cloud/) öğrenin
+* [Özel bulut oluşturmayı](https://docs.microsoft.com/azure/vmware-cloudsimple/create-private-cloud/) öğrenin
 * Özel bulut ortamını nasıl [yapılandırılatırmayı](quickstart-create-private-cloud.md) öğrenin

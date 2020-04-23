@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77025325"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870467"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>CloudSimple portalından Özel Bulut vCenter ayrıcalıklarını artırın
 
 Private Cloud vCenter'ınıza yönetimerişimi için CloudSimple ayrıcalıklarınızı geçici olarak artırabilirsiniz.  Yükseltilmiş ayrıcalıkları kullanarak VMware çözümleri yükleyebilir, kimlik kaynakları ekleyebilir ve kullanıcıları yönetebilirsiniz.
 
-VCenter SSO etki alanında yeni kullanıcılar oluşturulabilir ve vCenter'a erişim hakkı verilebilir.  Yeni kullanıcılar oluşturduğunuzda, bunları vCenter'a erişmek için CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için [VMware vCenter'ın CloudSimple Private Cloud izin modeline](https://docs.azure.cloudsimple.com/learn-private-cloud-permissions/)bakın.
+VCenter SSO etki alanında yeni kullanıcılar oluşturulabilir ve vCenter'a erişim hakkı verilebilir.  Yeni kullanıcılar oluşturduğunuzda, bunları vCenter'a erişmek için CloudSimple yerleşik gruplarına ekleyin.  Daha fazla bilgi için [VMware vCenter'ın CloudSimple Private Cloud izin modeline](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)bakın.
 
 > [!CAUTION]
 > Yönetim bileşenleri için yapılandırma değişiklikleri yapmayın. Artırılabilen ayrıcalıklı durum sırasında gerçekleştirilen eylemler sisteminizi olumsuz etkileyebilir veya sisteminizin kullanılamamasına neden olabilir.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="escalate-privileges"></a>Ayrıcalıkları yükseltme
 
@@ -88,5 +88,5 @@ Görevlerinizi tamamlamak için ek süreye ihtiyacınız varsa, ayrıcalık yük
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Active Directory'yi kullanmak için vCenter kimlik kaynaklarını ayarlama](https://docs.azure.cloudsimple.com/set-vcenter-identity/)
-* Yedekleme iş [yükü sanal makinelere](https://docs.azure.cloudsimple.com/backup-workloads-veeam/) yedekleme çözümü yükleme
+* [Active Directory'yi kullanmak için vCenter kimlik kaynaklarını ayarlama](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* Yedekleme iş [yükü sanal makinelere](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/) yedekleme çözümü yükleme

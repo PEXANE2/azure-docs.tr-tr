@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024441"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868026"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quickstart - CloudSimple hizmetine göre Azure VMware Çözümü Oluşturun
 
@@ -34,7 +34,7 @@ Ağ Önkoşulları Gözden [Geçirin.](cloudsimple-network-checklist.md)
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
@@ -82,9 +82,9 @@ CloudSimple Private Cloud ortamı için ödeme olarak ödeme kapasitesi ayarlama
 11. Hükmetmek için düğüm sayısını seçin.
 12. **Gözden Geçir + Oluştur'u**seçin.
 13. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmek için **Önceki'yi**tıklatın.
-14. **Oluştur'u**seçin.
+14. **Oluştur**’u seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Özel Bulut oluşturun ve ortamı yapılandırın](quickstart-create-private-cloud.md)
-* [CloudSimple hizmeti](https://docs.azure.cloudsimple.com/cloudsimple-service) hakkında daha fazla bilgi edinin
+* [CloudSimple hizmeti](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service) hakkında daha fazla bilgi edinin

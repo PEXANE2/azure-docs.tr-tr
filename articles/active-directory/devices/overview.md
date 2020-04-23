@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c895a13eb9b2bed9e3a8a5a250c4e925dfa834c5
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ba0630474224c34eb96429cd7592028362e03381
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80331804"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82024447"
 ---
 # <a name="what-is-a-device-identity"></a>Cihaz kimliği nedir?
 
@@ -53,6 +53,9 @@ Azure AD'de bir aygıt almak için birden çok seçeneğiniz vardır:
 
 ![Azure AD Aygıtları bıçaklarında görüntülenen aygıtlar](./media/overview/azure-active-directory-devices-all-devices.png)
 
+> [!NOTE]
+> Karma durum, bir aygıtın durumundan daha fazlasını ifade eder. Karma bir durum için geçerli bir Azure AD kullanıcısı da gereklidir.
+
 ## <a name="device-management"></a>Cihaz yönetimi
 
 Azure AD'deki aygıtlar Microsoft Intune, Microsoft Endpoint Configuration Manager, Grup İlkesi (karma Azure AD join), Mobil Uygulama Yönetimi (MAM) araçları veya diğer üçüncü taraf araçları gibi Mobil Aygıt Yönetimi (MDM) araçları kullanılarak yönetilebilir.
@@ -63,6 +66,8 @@ Aygıtları Azure AD'ye kaydetme ve birleştirme, kullanıcılarınıza bulut ka
 
 > [!NOTE]
 > Aygıt tabanlı Koşullu Erişim ilkeleri, karma Azure AD'ye katılan aygıtlar veya uyumlu Azure AD'nin katılması veya Azure AD'ye kayıtlı aygıtlar gerektirir.
+
+Birincil yenileme belirteci (PRT) aygıt hakkında bilgi içerir ve SSO için gereklidir. PrT olmadan bir uygulamada ayarlanmış aygıt tabanlı Koşullu Erişim ilkeniz varsa, erişim reddedilir. Karma Koşullu Erişim ilkeleri, karma bir durum aygıtı ve oturum açmış geçerli bir kullanıcı gerektirir.
 
 Azure AD'ye katılan veya azure AD'yi karma olarak katılan aygıtlar, SSO'dan kuruluşunuzun şirket içi kaynaklarının yanı sıra bulut kaynaklarına da yarar sağlar. Makalede daha fazla bilgi bulunabilir, [SSO'nun azure AD'ye katılan cihazlarda şirket içi kaynaklarnasıl çalıştığı.](azuread-join-sso.md)
 

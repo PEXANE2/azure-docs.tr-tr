@@ -1,24 +1,18 @@
 ---
 title: Azure PowerShell kullanarak bağlantı noktalarını VM'ye açma
 description: Azure kaynak yöneticisi dağıtım modunu ve Azure PowerShell'i kullanarak windows vm'inizin bağlantı noktasını nasıl açacağınızı / bir bitiş noktası oluşturup kurabilirsiniz öğrenin
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a0dcc53d84edb4dd697213106c02626df24acfd8
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75754178"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869407"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>PowerShell'i kullanarak Azure'da bir VM bağlantı noktası ve uç noktaları nasıl açılır?
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: b2e8bec18f4f5df6fb78a3c31aa0956ec7333eb5
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770120"
+ms.locfileid: "82024634"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı’nda okuma amaçlı çoğaltmalar
 
@@ -33,9 +33,6 @@ Okunan çoğaltma özelliği, eşzamanlı çoğaltma kullanır. Özellik eşzama
 
 ## <a name="cross-region-replication"></a>Bölgeler arası çoğaltma
 Ana sunucunuzdan farklı bir bölgede okuma yinelemesi oluşturabilirsiniz. Bölgeler arası çoğaltma, olağanüstü durum kurtarma planlaması veya verileri kullanıcılarınıza yakınlaştırma gibi senaryolar için yararlı olabilir.
-
-> [!NOTE]
-> Çapraz bölge çoğaltma önizlemede.
 
 [MariaDB bölgesi için](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)herhangi bir Azure Veritabanında ana sunucunuz olabilir.  Ana sunucu, eşleştirilmiş bölgesinde veya evrensel yineleme bölgelerinde bir yinelemeye sahip olabilir. Aşağıdaki resimde, ana bölgenize bağlı olarak hangi yineleme bölgelerinin kullanılabilir olduğu gösterilmektedir.
 

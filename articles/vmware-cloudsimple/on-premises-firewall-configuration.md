@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 539665c4756a7dc87078922421b45a88404f58f1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77082959"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868137"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>CloudSimple Private Cloud ortamınıza ve uygulamalarınıza şirket içinden erişme
 
@@ -35,7 +35,7 @@ Private Cloud vCenter ve NSX-T yöneticinize erişmek için, aşağıdaki tablod
 
 ## <a name="ports-required-for-using-on-premises-active-directory-as-an-identity-source"></a>Şirket içi etkin dizinin kimlik kaynağı olarak kullanılması için gereken bağlantı noktaları
 
-Özel Bulut vCenter'da şirket içi etkin dizini kimlik kaynağı olarak yapılandırmak için tabloda tanımlanan bağlantı noktalarının açılması gerekir.  Bkz. Yapılandırma adımları [için CloudSimple Private Cloud'daki vCenter için bir kimlik sağlayıcısı olarak Azure AD'yi kullanın.](https://docs.azure.cloudsimple.com/azure-ad/)
+Özel Bulut vCenter'da şirket içi etkin dizini kimlik kaynağı olarak yapılandırmak için tabloda tanımlanan bağlantı noktalarının açılması gerekir.  Bkz. Yapılandırma adımları [için CloudSimple Private Cloud'daki vCenter için bir kimlik sağlayıcısı olarak Azure AD'yi kullanın.](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-ad/)
 
 | Bağlantı noktası         | Kaynak                           | Hedef                                         | Amaç                                                                                                                                          |
 |--------------|----------------------------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,6 +60,6 @@ Private Cloud vCenter ve NSX-T yöneticinize erişmek için, aşağıdaki tablod
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [V'ler ve Alt Ağlar oluşturma ve yönetme](https://docs.azure.cloudsimple.com/create-vlan-subnet/)
-* [Azure ExpressRoute'u kullanarak şirket içi ağa bağlanma](https://docs.azure.cloudsimple.com/on-premises-connection/)
-* [Şirket içinde Siteden Siteye VPN Kurulumu](https://docs.azure.cloudsimple.com/vpn-gateway/)
+* [V'ler ve Alt Ağlar oluşturma ve yönetme](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)
+* [Azure ExpressRoute'u kullanarak şirket içi ağa bağlanma](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-connection/)
+* [Şirket içinde Siteden Siteye VPN Kurulumu](https://docs.microsoft.com/azure/vmware-cloudsimple/vpn-gateway/)

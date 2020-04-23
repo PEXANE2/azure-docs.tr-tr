@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: e40171b95e6faae0020f8bf61410aad8999ddecb
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 608c2619c19a2b5fa7e39c1ecb82be40ff4e83f4
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536547"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82072629"
 ---
 ## <a name="2-assign-access-permissions-to-an-identity"></a>2. Bir kimliğe erişim izinleri atama
 
@@ -87,15 +87,6 @@ Aşağıdaki izin kümeleri, dosya paylaşımının kök dizininde desteklenir:
 - NT AUTHORITY\SYSTEM:(F)
 - YARATICI SAHİBİ:(OI)(CI)(IO)(F)
 
-### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS izinlerini icacls ile yapılandırma
-Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere ve dosyalara tam izin vermek için aşağıdaki Windows komutunu kullanın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
-
-```
-icacls <mounted-drive-letter>: /grant <user-email>:(f)
-```
-
-NTFS izinlerini ayarlamak için icacls'in nasıl kullanılacağı hakkında daha fazla bilgi için ve desteklenen izinlerin farklı türleri hakkında daha fazla bilgi [için icacls için komut satırı başvurusuna](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)bakın.
-
 ### <a name="mount-a-file-share-from-the-command-prompt"></a>Komut isteminden dosya paylaşımını montaj
 
 Azure dosya paylaşımını monte etmek için Windows **net kullanım** komutunu kullanın. Aşağıdaki örnekte yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın. Dosya paylaşımlarını montaj hakkında daha fazla bilgi için bkz. Windows [ile Azure dosya paylaşımı nı kullan.](../articles/storage/files/storage-how-to-use-files-windows.md) 
@@ -103,6 +94,7 @@ Azure dosya paylaşımını monte etmek için Windows **net kullanım** komutunu
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> /user:Azure\<storage-account-name> <storage-account-key>
 ```
+
 ### <a name="configure-ntfs-permissions-with-windows-file-explorer"></a>NTFS izinlerini Windows Dosya Gezgini ile yapılandırma
 Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere ve dosyalara tam izin vermek için Windows Dosya Gezgini'ni kullanın.
 
@@ -114,6 +106,15 @@ Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere v
 7.    **Tamam'ı**seçin.
 8.    **Güvenlik** sekmesinde, yeni kullanıcınıza vermek istediğiniz tüm izinleri seçin.
 9.    **Uygula**’yı seçin.
+
+### <a name="configure-ntfs-permissions-with-icacls"></a>NTFS izinlerini icacls ile yapılandırma
+Kök dizini de dahil olmak üzere dosya paylaşımı altındaki tüm dizinlere ve dosyalara tam izin vermek için aşağıdaki Windows komutunu kullanın. Örnekteki yer tutucu değerlerini kendi değerlerinizle değiştirmeyi unutmayın.
+
+```
+icacls <mounted-drive-letter>: /grant <user-email>:(f)
+```
+
+NTFS izinlerini ayarlamak için icacls'in nasıl kullanılacağı hakkında daha fazla bilgi için ve desteklenen izinlerin farklı türleri hakkında daha fazla bilgi [için icacls için komut satırı başvurusuna](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)bakın.
 
 ## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. Etki alanı birleştirilmiş VM'den dosya paylaşımı nı monte edin
 

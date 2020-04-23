@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 10831c0dc39fa241a43541850afae39593ae033b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: a2fe7daf1476f19f6a6eea83174342fa1273fe14
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678280"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867972"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Quickstart - Özel Bulut ortamını yapılandırma
 
@@ -148,7 +148,7 @@ VLAN/alt ağ oluşturulacak.  Artık bu VLAN Kimliğini, Özel Bulut vCenter'ın
 
 ## <a name="connect-your-environment-to-an-azure-virtual-network"></a>Ortamınızı azure sanal ağına bağlayın
 
-CloudSimple, Özel Bulut'unuzun bir ExpressRoute devresi sağlar. Azure'daki sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı kurma yla ilgili tüm ayrıntılar için [ExpressRoute'u kullanarak Azure Sanal Ağ Bağlantısı'ndaki](https://docs.azure.cloudsimple.com/cloudsimple-azure-network-connection/)adımları izleyin.
+CloudSimple, Özel Bulut'unuzun bir ExpressRoute devresi sağlar. Azure'daki sanal ağınızı ExpressRoute devresine bağlayabilirsiniz. Bağlantıyı kurma yla ilgili tüm ayrıntılar için [ExpressRoute'u kullanarak Azure Sanal Ağ Bağlantısı'ndaki](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-azure-network-connection)adımları izleyin.
 
 ## <a name="sign-in-to-vcenter"></a>vCenter'da oturum açın
 

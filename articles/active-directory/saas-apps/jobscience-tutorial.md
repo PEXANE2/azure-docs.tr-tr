@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f0ea5b922b2c958aabf5be3a6123bb81a8f0234
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048500"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Öğretici: Jobscience ile Azure Active Directory entegrasyonu
 
@@ -34,7 +34,7 @@ Bu eğitimde, İş Bilimini Azure Etkin Dizini (Azure AD) ile nasıl entegre aca
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişiminin ve tek oturum açmanın ne olduğunu](../manage-apps/what-is-single-sign-on.md)görün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini İş Bilimi ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -116,7 +116,7 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve İş Bilimi
     Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Bu değer gerçek değil. Bu değeri gerçek Oturum Açma URL'si ile güncelleştirin. Bu değeri [Jobscience Client destek ekibi](https://www.jobscience.com/support) veya daha sonra öğreticide açıklanan oluşturacağınız SSO profilinden alın. 
+    > Bu değer gerçek değil. Bu değeri gerçek Oturum Açma URL'si ile güncelleştirin. Bu değeri [Jobscience Client destek ekibi](http://www.jobscience.com/support) veya daha sonra öğreticide açıklanan oluşturacağınız SSO profilinden alın. 
  
 1. **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** tıklatın ve ardından sertifika dosyasını bilgisayarınıza kaydedin.
 
@@ -134,7 +134,7 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve İş Bilimi
 
 1. **Kurulum'a**gidin.
    
-   ![Kurulum](./media/jobscience-tutorial/IC784358.png "Kurulum")
+   ![Kurulum](./media/jobscience-tutorial/IC784358.png "Setup")
 
 1. Soldaki gezinti bölmesinde, **Yönet** bölümünde, ilgili bölümü genişletmek için **Etki Alanı Yönetimi'ni** tıklatın ve ardından Etki Alanım sayfasını açmak için **Etki Alanımı** tıklatın. **My Domain** 
    
@@ -176,7 +176,7 @@ Bu bölümde, Azure portalında Azure AD oturumunu etkinleştirin ve İş Bilimi
 
     h. **Kimlik Sağlayıcı Giriş URL** textbox'ına, Azure portalından kopyalamış olduğunuz Oturum Açma **URL'sinin**değerini yapıştırın.
 
-    i. **Kaydet**'e tıklayın.
+    i. **Kaydet**’e tıklayın.
 
 1. Soldaki gezinti bölmesinde, **Yönet** bölümünde, ilgili bölümü genişletmek için **Etki Alanı Yönetimi'ni** tıklatın ve ardından Etki Alanım sayfasını açmak için **Etki Alanımı** tıklatın. **My Domain** 
     
@@ -245,7 +245,7 @@ Azure AD kullanıcılarının Jobscience'da oturum açabilmeleri için Jobscienc
 
 1. Setup'a git.
    
-   ![Kurulum](./media/jobscience-tutorial/ic784358.png "Kurulum")
+   ![Kurulum](./media/jobscience-tutorial/ic784358.png "Setup")
 1. ** \> Kullanıcıları Yönetme'ye**gidin.
    
    ![Kullanıcılar](./media/jobscience-tutorial/ic784369.png "Kullanıcılar")
@@ -268,7 +268,7 @@ Azure AD kullanıcılarının Jobscience'da oturum açabilmeleri için Jobscienc
 
    f. Nick **Adı** metin kutusuna Simon gibi bir kullanıcının nick adını yazın.
 
-   g. **Kaydet**'e tıklayın.
+   g. **Kaydet**’e tıklayın.
 
     
 > [!NOTE]

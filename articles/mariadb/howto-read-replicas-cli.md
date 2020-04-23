@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: abf80e98881b73bed53c5a939a79bc8b3a9de2db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/21/2020
+ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530589"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025059"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Azure CLI ve REST API'sini kullanarak MariaDB için Azure Veritabanı'nda okuma yinelemeleri oluşturma ve yönetme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure CLI ve REST API'sini kullanarak MariaDB hizmeti için Azure V
 ## <a name="azure-cli"></a>Azure CLI
 Azure CLI'yi kullanarak okuma yinelemeleri oluşturabilir ve yönetebilirsiniz.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 - [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - Ana sunucu olarak kullanılacak [MariaDB sunucusu için](quickstart-create-mariadb-server-database-using-azure-portal.md) bir Azure Veritabanı. 
@@ -45,9 +45,6 @@ Komut `az mariadb server replica create` aşağıdaki parametreleri gerektirir:
 | source-server | mydemoserver | Çoğaltmak için varolan ana sunucunun adı veya kimliği. |
 
 Çapraz bölge okuma yinelemesi `--location` oluşturmak için parametreyi kullanın. 
-
-> [!NOTE]
-> Çapraz bölge çoğaltma önizlemede.
 
 Aşağıdaki CLI örneği, Batı ABD'de çoğaltma oluşturur.
 

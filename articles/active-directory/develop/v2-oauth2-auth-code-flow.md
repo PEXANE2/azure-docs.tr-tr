@@ -12,12 +12,12 @@ ms.date: 01/31/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e5e462c52c8b06af6da5081f84a082138cd53a3f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81677941"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868499"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft kimlik platformu ve OAuth 2.0 yetkilendirme kodu akışı
 
@@ -35,7 +35,7 @@ Yüksek düzeyde, bir yerel/mobil uygulama için tüm kimlik doğrulama akışı
 
 ## <a name="request-an-authorization-code"></a>Yetkilendirme kodu isteme
 
-Yetkilendirme kodu akışı, istemcinin kullanıcıyı `/authorize` bitiş noktasına yönlendirmesiyle başlar. Bu istekte, istemci `openid`kullanıcıdan `offline_access` `https://graph.microsoft.com/mail.read `izin ve izin ister.  Bazı izinler, örneğin bir kuruluşun dizinine kullanarak veri yazmak `Directory.ReadWrite.All`gibi yönetici tarafından kısıtlanır. Uygulamanız bu izinlerden birine kuruluş kullanıcısından erişmesini isterse, kullanıcı uygulamanızın izinlerini onaylama yetkisine sahip olmadığını belirten bir hata iletisi alır. Yönetici tarafından kısıtlanmış kapsamlara erişim isteğinde bulunmak için bunları doğrudan bir şirket yöneticisinden istemeniz gerekir.  Daha fazla bilgi için [Yönetici tarafından kısıtlanmış izinleri](v2-permissions-and-consent.md#admin-restricted-permissions)okuyun.
+Yetkilendirme kodu akışı, istemcinin kullanıcıyı `/authorize` bitiş noktasına yönlendirmesiyle başlar. Bu istekte, istemci `openid`kullanıcıdan `offline_access` `https://graph.microsoft.com/mail.read ` izin ve izin ister.  Bazı izinler, örneğin bir kuruluşun dizinine kullanarak veri yazmak `Directory.ReadWrite.All`gibi yönetici tarafından kısıtlanır. Uygulamanız bu izinlerden birine kuruluş kullanıcısından erişmesini isterse, kullanıcı uygulamanızın izinlerini onaylama yetkisine sahip olmadığını belirten bir hata iletisi alır. Yönetici tarafından kısıtlanmış kapsamlara erişim isteğinde bulunmak için bunları doğrudan bir şirket yöneticisinden istemeniz gerekir.  Daha fazla bilgi için [Yönetici tarafından kısıtlanmış izinleri](v2-permissions-and-consent.md#admin-restricted-permissions)okuyun.
 
 ```
 // Line breaks for legibility only
@@ -76,7 +76,7 @@ Kullanıcı kimlik doğrulaması yaptıktan ve onay verdikten sonra, Microsoft k
 
 Başarılı bir `response_mode=query` yanıt kullanarak gibi görünüyor:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
@@ -91,7 +91,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 
 Hata yanıtları, uygulamanın `redirect_uri` bunları uygun şekilde işleyebilmeleri için de gönderilebilir:
 
-```
+```HTTP
 GET https://login.microsoftonline.com/common/oauth2/nativeclient?
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -122,7 +122,7 @@ Aşağıdaki tabloda hata yanıtı `error` parametresi döndürülebilir çeşit
 
 Artık bir authorization_code edindiğinize ve kullanıcı tarafından izin aldığınıza `code` göre, `access_token` istediğiniz kaynak için kullanabilirsiniz. Bunu, bitiş `POST` noktasına bir istek göndererek yapın: `/token`
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -221,7 +221,7 @@ Artık başarılı bir şekilde bir `access_token`, `Authorization` üstbilgi de
 > [!TIP]
 > Postacı bu isteği yürütmek! (Önce `Authorization` üstbilgi değiştir) [Postacı'da bu isteği çalıştırmayı deneyin ![](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
-```
+```HTTP
 GET /v1.0/me/messages
 Host: https://graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
@@ -235,7 +235,7 @@ Belirteçleri yenilemenin belirli kullanım ömürleri yoktur. Genellikle, yenil
 
 Yeni erişim belirteçleri elde etmek için kullanıldığında yeni belirteçleri iptal olmasa da, eski yenileme belirtecisini atmanız beklenir. [OAuth 2.0 spec](https://tools.ietf.org/html/rfc6749#section-6) diyor ki: "Yetkilendirme sunucusu MAY, bu durumda istemci eski yenileme belirteci atmak ve yeni yenileme belirteci ile değiştirmek gerekir yeni bir yenileme belirteci sorunu. Yetkilendirme sunucusu, istemciye yeni bir yenileme belirteci verdikten sonra eski yenileme belirteci iptal edebilir."
 
-```
+```HTTP
 // Line breaks for legibility only
 
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1
@@ -276,6 +276,7 @@ Başarılı bir belirteç yanıtı gibi görünecektir:
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
+
 | Parametre     | Açıklama         |
 |---------------|-------------------------------------------------------------|
 | `access_token`  | İstenen erişim jetonu. Uygulama, web API gibi güvenli kaynağa kimlik doğrulamak için bu belirteci kullanabilir. |

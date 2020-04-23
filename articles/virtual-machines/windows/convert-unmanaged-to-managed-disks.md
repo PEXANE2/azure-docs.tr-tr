@@ -3,15 +3,16 @@ title: Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dö
 description: Kaynak Yöneticisi dağıtım modelinde PowerShell'i kullanarak windows VM'i yönetilen disklerden yönetilen disklere dönüştürme
 author: roygara
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: conceptual
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 8c180cfc597c0ade27b1fe8cca5a8751176ea12e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8069b174b7a69cc2e6c47171159569c56a15563
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75460121"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82081957"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows sanal makinesini yönetilmeyen disklerden yönetilen disklere dönüştürme
 
@@ -94,7 +95,7 @@ Dönüştürmeden önce, tüm VM uzantılarının 'Sağlama başarılı' durumun
 
 Ayrıca, Azure portalını kullanarak yönetilmeyen diskleri yönetilen disklere dönüştürebilirsiniz.
 
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. Portaldaki VM listesinden VM'yi seçin.
 3. VM için bıçakta menüden **Diskler'i** seçin.
 4. **Diskler** bıçağının üst kısmında, **yönetilen disklere Geçir'i**seçin.

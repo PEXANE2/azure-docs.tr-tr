@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 672b663a9cab72d465ea00e0a5ade364eadbf64e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfc60fbc03021e72dccc0f60a7ac34d204ef6df9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78251521"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025195"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Etkinlik Hub'ları Kaynaklarına erişmek için Azure Etkin Dizini ile yönetilen bir kimliğin kimliğini doğrulatın
 Azure Etkinlik Hub'ları Azure kaynakları için yönetilen [kimliklerle](../active-directory/managed-identities-azure-resources/overview.md)Azure Etkin Dizin (Azure AD) kimlik doğrulamasını destekler. Azure kaynakları için yönetilen kimlikler, Azure Sanal Makinelerde (VM), İşlev uygulamalarında, Sanal Makine Ölçek Kümeleri'nde ve diğer hizmetlerde çalışan uygulamalardan Azure AD kimlik bilgilerini kullanarak Etkinlik Hub'ları kaynaklarına erişimi yetkilendirmeye izin verebilir. Azure kaynakları için yönetilen kimlikleri ve Azure AD kimlik doğrulaması kullanarak, bulutta çalışan uygulamalarınızla kimlik bilgilerini depolamaktan kaçınabilirsiniz.
@@ -24,7 +24,7 @@ Bu makalede, bir Azure VM'den yönetilen bir kimlik kullanarak bir etkinlik merk
 ## <a name="enable-managed-identities-on-a-vm"></a>VM'de yönetilen kimlikleri etkinleştirme
 VM'nizden Etkinlik Hub'ları kaynaklarını yetkilendirmek için Azure Kaynakları için yönetilen kimlikleri kullanabilmeniz için önce VM'deki Azure Kaynakları için yönetilen kimlikleri etkinleştirmeniz gerekir. Azure Kaynakları için yönetilen kimlikleri nasıl etkinleştireceklerini öğrenmek için şu makalelerden birine bakın:
 
-- [Azure portalında](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
+- [Azure portal](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager şablonu](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
@@ -65,7 +65,7 @@ Etkinlik Hub'ları kaynaklarına bir rol atamak için Azure portalındaki kayna�
 4.  Rol **atama ekle** sayfasında, atamak istediğiniz Olay Hub'ları rollerini seçin. Ardından, rolü atamak için kaydolduğunuz hizmet kimliğini bulmak için arama yapın.
     
     ![Rol atama sayfası ekleme](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  **Kaydet'i**seçin. Rolü atadığınız kimlik, bu rolün altında listelenir. Örneğin, aşağıdaki resimde hizmet kimliğinin Olay Hub'ları Veri sahibi olduğu gösterilmektedir.
+5.  **Kaydet**’i seçin. Rolü atadığınız kimlik, bu rolün altında listelenir. Örneğin, aşağıdaki resimde hizmet kimliğinin Olay Hub'ları Veri sahibi olduğu gösterilmektedir.
     
     ![Bir role atanan kimlik](./media/authenticate-managed-identity/role-assigned.png)
 
@@ -149,7 +149,7 @@ Apache Kafka uygulamalarını, Yönetilen kimlik OAuth'u kullanarak Azure Etkinl
     - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
 - [Microsoft.Azure.EventHubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Bu örnekler eski **Microsoft.Azure.EventHubs** kitaplığını kullanır, ancak en son **Azure.Messaging.EventHubs** kitaplığını kullanarak kolayca güncelleştirebilirsiniz. Örneği eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)bakın.
+    Bu örnekler eski **Microsoft.Azure.EventHubs** kitaplığını kullanır, ancak en son **Azure.Messaging.EventHubs** kitaplığını kullanarak kolayca güncelleştirebilirsiniz. Örneği eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)bakın.
     Bu örnek en son **Azure.Messaging.EventHubs** kitaplığını kullanacak şekilde güncelleştirildi.
 - [Kafka için Etkinlik Hub'ları - yönetilen kimlik OAuth kullanarak mesaj gönderip alın](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth/java/managedidentity)
 

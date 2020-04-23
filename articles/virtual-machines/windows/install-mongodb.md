@@ -1,29 +1,25 @@
 ---
 title: Azure'da Bir Windows VM'de MongoDB'yi yükleme
 description: Kaynak Yöneticisi dağıtım modeliyle oluşturulan Windows Server 2012 R2 çalıştıran bir Azure VM'sine MongoDB'yi nasıl yükleyeceğimiz öğrenin.
-services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 37c1b58d364e7eadb33803ce7eac1f2b956ec1b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74038545"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869443"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>MongoDB'yi Azure'daki bir Windows VM'de yükleme ve yapılandırma
 [MongoDB](https://www.mongodb.org) popüler bir açık kaynak, yüksek performanslı NoSQL veritabanıdır. Bu makale, Azure'daki bir Windows Server 2016 sanal makinesine (VM) MongoDB yükleme ve yapılandırma konusunda size yol gösteriş eder. [MongoDB'yi Azure'da bir Linux VM'ye](../linux/install-mongodb.md)de yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 MongoDB'yi yüklemeden ve yapılandırmadan önce bir VM oluşturmanız ve ideal olarak bir veri diski eklemeniz gerekir. VM oluşturmak ve bir veri diski eklemek için aşağıdaki makalelere bakın:
 
 * [Azure portalını](quick-create-portal.md) veya [Azure PowerShell'i](quick-create-powershell.md)kullanarak bir Windows Server VM oluşturun.

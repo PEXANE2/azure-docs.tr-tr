@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: dkkapur
 ms.author: dekapur
-ms.openlocfilehash: adad0ddfc78530b3a3a7c139d9a95ec4790c8053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a614d6b5d0cf5c6c1df5ffcb90e56960d6b8a2a9
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76934142"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82025042"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Ayrılmış konaklara dağıtma
 
@@ -18,7 +18,7 @@ ms.locfileid: "76934142"
 
 Özel sku fiziksel sunucu açısından iş yükü yalıtımı gerektiren kapsayıcı iş yükleri için uygundur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Herhangi bir aboneliğin özel sku'yu kullanması için varsayılan sınır 0'dır. Bu sku'yu üretim kapsayıcısı dağıtımlarınız için kullanmak istiyorsanız, sınırı artırmak için bir [Azure Destek isteği][azure-support] oluşturun.
 
@@ -37,7 +37,7 @@ API sürümü 2019-12-01'den başlayarak, bir Dağıtım şablonunun kapsayıcı
 ## <a name="modify-your-json-deployment-template"></a>JSON dağıtım şablonunuzu değiştirme
 
 Dağıtım şablonunuzda aşağıdaki özellikleri değiştirin veya ekleyin:
-* Altında `resources`, `apiVersion` `2012-12-01`ayarlayın .
+* Altında `resources`, `apiVersion` `2019-12-01`ayarlayın .
 * Kapsayıcı grup özelliklerinin altında, `sku` değeri `Dedicated`olan bir özellik ekleyin.
 
 Aşağıda, özel sku'yu kullanan kapsayıcı grubu dağıtım şablonunun kaynaklar bölümüiçin örnek bir bölüm verilmiştir:

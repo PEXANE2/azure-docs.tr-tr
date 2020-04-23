@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/10/2020
-ms.openlocfilehash: d5626f00e9627338349d9b579bcf26256148b551
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731259"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869053"
 ---
 # <a name="create-an-azure-virtual-machine-offer"></a>Azure sanal makine teklifi oluşturma
 
@@ -240,7 +240,7 @@ Müşterilerin destek ekibinize ulaşabileceği destek web sitesini sağlayın.
 Müşterileriniz bir destek bileti açtığında Microsoft iş ortaklarının kullanması için kişi bilgileri sağlayın. Bu pazarda listelenmez.
 
 - Adı
-- Email
+- E-posta
 - Telefon
 
 ### <a name="engineering-contact"></a>Mühendislik iletişim
@@ -248,12 +248,15 @@ Müşterileriniz bir destek bileti açtığında Microsoft iş ortaklarının ku
 Teklifinizde sertifikayla ilgili sorunlar da dahil olmak üzere sorunlar olduğunda Microsoft'un kullanması için kişi bilgileri sağlayın. Bu pazarda listelenmez.
 
 - Adı
-- Email
+- E-posta
 - Telefon
 
 ### <a name="marketplace-media"></a>Pazar yeri ortamı
 
 Teklifinizle birlikte kullanılacak logolar ve resimler sağlayın. Tüm görüntüler PNG formatında olmalıdır. Bulanık görüntüler gönderinin reddedilmesine neden olur.
+
+>[!Note]
+>Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
 #### <a name="marketplace-logos"></a>Pazar yeri logoları
 

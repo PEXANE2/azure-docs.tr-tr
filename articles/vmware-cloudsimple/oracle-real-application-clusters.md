@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77016026"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81868070"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC'yi yüklemek için CloudSimple Private Cloud'unuzu optimize edin
 
@@ -169,7 +169,7 @@ Hızlı kurtarma alanı (FRA), Oracle ASM disk grubu tarafından yönetilen dosy
 
 vSAN ilkeleri, VM disklerde depolanan veriler için tolere etme ve disk şeritleme hatalarını tanımlar.  Oluşturulan depolama ilkesi VM oluşturulurken VM diskler üzerinde uygulanmalıdır.
 
-1. Özel Bulut'unuzun [vSphere istemcisinde oturum açın.](https://docs.azure.cloudsimple.com/vsphere-access)
+1. Özel Bulut'unuzun [vSphere istemcisinde oturum açın.](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)
 2. Üst menüden **İlkeler ve Profiller'i**seçin.
 3. Sol menüden **VM Depolama İlkeleri'ni** seçin ve ardından **VM depolama İlkesi Oluştur'u**seçin.
 4. İlke için anlamlı bir ad girin ve **NEXT'i**tıklatın.

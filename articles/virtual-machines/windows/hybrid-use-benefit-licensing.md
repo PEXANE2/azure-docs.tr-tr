@@ -1,24 +1,18 @@
 ---
 title: Windows Server için Azure Hibrit Avantajı
 description: Azure'a şirket içi lisanslar getirmek için Windows Yazılım Güvencesi avantajlarınızı nasıl en üst düzeye çıkarınızı öğrenin
-services: virtual-machines-windows
-documentationcenter: ''
 author: xujing-ms
-manager: gwallace
-editor: ''
-ms.assetid: 332583b6-15a3-4efb-80c3-9082587828b0
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 470e38c21a250273216f93eb38a5334a4bb581e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f84d4fcd85f1e718f414e63bbe76fd29fa32427d
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77911805"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869576"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server için Azure Hibrit Avantajı
 Yazılım Güvencesi olan müşteriler için, Windows Server için Azure Karma Avantajı, şirket içi Windows Server lisanslarınızı kullanmanıza ve Windows sanal makinelerini Azure'da daha düşük bir maliyetle çalıştırmanıza olanak tanır. Windows Işletim Sistemi ile yeni sanal makineler dağıtmak için Windows Server için Azure Karma Avantajı'nı kullanabilirsiniz. Bu makale, Windows Server için Azure Karma Avantajı ile yeni VM'lerin nasıl dağıtılanabildiği ve varolan çalışan VM'leri nasıl güncelleştirebileceğiniz le ilgili adımların üzerinden geçilir. Windows Server lisanslama ve maliyet tasarrufu için Azure Karma Avantajı hakkında daha fazla bilgi için [Windows Server lisanslama için Azure Karma Avantajı sayfasına](https://azure.microsoft.com/pricing/hybrid-use-benefit/)bakın.
