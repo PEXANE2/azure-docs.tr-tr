@@ -15,4 +15,4 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "77660520"
 ---
-Azure PowerShell cmdletlerini bilgisayarınıza yerel olarak yükleyebilir ve çalıştırabilirsiniz. PowerShell cmdlets sık sık güncellenir. En son sürümü yüklemediyseniz, yönergelerde belirtilen değerler başarısız olabilir. Bilgisayarınızda yüklü Azure PowerShell sürümlerini bulmak için `Get-Module -ListAvailable Az` cmdlet'i kullanın. Yüklemek veya güncelleştirmek için [Azure PowerShell modüllerini yükleyin' e](/powershell/azure/install-az-ps)bakın.
+Ayrıca Azure PowerShell cmdlet 'lerini bilgisayarınıza yerel olarak yükleyip çalıştırabilirsiniz. PowerShell cmdlet 'leri sıklıkla güncelleştirilir. En son sürümü yüklemediyseniz, yönergelerde belirtilen değerler başarısız olabilir. Bilgisayarınızda yüklü Azure PowerShell sürümlerini bulmak için `Get-Module -ListAvailable Az` cmdlet 'ini kullanın. Yüklemek veya güncelleştirmek için bkz. [Azure PowerShell modülünü yüklemek](/powershell/azure/install-az-ps).

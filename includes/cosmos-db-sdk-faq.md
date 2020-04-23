@@ -11,27 +11,27 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188122"
 ---
-**1. Müşteriler emekli olan SDK'dan nasıl haberdar edilecektir?**
+**1. kullanıcılara devre dışı bırakma SDK 'sının nasıl bildirilmesi gerekir?**
 
-Microsoft, desteklenen bir SDK'ya sorunsuz bir geçişi kolaylaştırmak için emekli olan SDK'nın desteğinin sonuna 12 aylık avans bildirimi sağlayacaktır. Ayrıca, müşteriler çeşitli iletişim kanalları aracılığıyla bilgilendirilecektir – Azure Yönetim Portalı, Geliştirici Merkezi, blog yazısı ve atanan hizmet yöneticilerine doğrudan iletişim.
+Microsoft, desteklenen bir SDK 'ya sorunsuz bir geçiş yapılmasını kolaylaştırmak için devre dışı bırakma SDK 'sının destek sonuna 12 aylık öncelikli bildirim sağlayacaktır. Ayrıca, müşteriler çeşitli iletişim kanalları (Azure Yönetim Portalı, Geliştirici Merkezi, blog gönderisi ve atanan hizmet yöneticilerine doğrudan iletişim aracılığıyla bilgilendirilir.
 
-**2. Müşteriler 12 aylık dönemde "olacak" emekli azure cosmos DB SDK kullanarak uygulamaları yazabilir mi?** 
+**2. müşteriler 12 aylık dönemde "yapılacak" Kullanımdan kaldırılmış Azure Cosmos DB SDK kullanarak uygulamalar yazar mı?** 
 
-Evet, müşteriler 12 aylık yetkisiz kullanım süresi boyunca "hazır" emekli Azure Cosmos DB SDK'yı kullanarak uygulamaları yazara, dağıtmaya ve değiştirebilmek için tam erişime sahip olacaktır. 12 aylık yetkisiz kullanım süresi boyunca, müşterilerin Azure Cosmos DB SDK'nın daha yeni desteklenen sürümüne uygun şekilde geçiş etmeleri önerilir.
+Evet, müşteriler 12 ay yetkisiz kullanım süresi boyunca "yapılacak" Kullanımdan kaldırılmış Azure Cosmos DB SDK 'sını kullanarak, uygulamaları yazmak, dağıtmak ve değiştirmek için tam erişime sahip olur. 12 aylık kullanım süresi boyunca, müşterilerin uygun şekilde Azure Cosmos DB SDK 'nın daha yeni bir sürümüne geçirilmesi önerilir.
 
-**3. Müşteriler, 12 aylık bildirim döneminden sonra emekli bir Azure Cosmos DB SDK kullanarak uygulamaları yazar ve değiştirebilir mi?**
+**3. müşteriler, 12 aylık bildirim süresinden sonra kullanımdan kaldırılan Azure Cosmos DB SDK kullanarak uygulamalar yazabilir ve değiştirebilir mi?**
 
-12 aylık bildirim süresinden sonra SDK emekliye ayrıldı. Emekli bir SDK kullanan bir uygulama tarafından Azure Cosmos DB'ye herhangi bir erişime Azure Cosmos DB platformu tarafından izin verilmez. Ayrıca, Microsoft emekli SDK'da müşteri desteği sağlamaz.
+12 aylık bildirim süresinden sonra SDK kullanımdan kaldırılacak. Kullanımdan kaldırılan bir SDK kullanan uygulamalar tarafından Azure Cosmos DB erişimine Azure Cosmos DB platformu izin verilmez. Ayrıca, Microsoft, kullanımdan kaldırılan SDK 'da müşteri desteği sağlamacaktır.
 
-**4. Desteklenmeyen Azure Cosmos DB SDK sürümünü kullanan Müşterinin çalışan uygulamalarına ne olur?**
+**4. müşterilerin desteklenmeyen Azure Cosmos DB SDK sürümü kullanan çalışan uygulamaları ne olur?**
 
-Azure Cosmos DB hizmetine emekli bir SDK sürümüyle bağlanmaya yönelik tüm girişimler reddedilir. 
+Kullanımdan kaldırılan bir SDK sürümüyle Azure Cosmos DB hizmetine bağlanma girişimleri reddedilir. 
 
-**5. Emekli olmayan tüm SDK'lara yeni özellikler ve işlevler uygulanacak mı?**
+**5. yeni özellikler ve işlevler, kullanımdan kaldırılmayan tüm SDK 'lara uygulanacak mi?**
 
-Yeni özellikler ve işlevler yalnızca yeni sürümlere eklenir. SDK'nın eski, kullanımdan kaldırılmış bir sürümünü kullanıyorsanız, Azure Cosmos DB'ye istekleriniz önceki gibi çalışmaya devam eder, ancak yeni özelliklere erişmezsiniz.  
+Yeni özellikler ve işlevler yalnızca yeni sürümlere eklenecektir. SDK 'nın eski, kullanımdan kaldırılmayan bir sürümünü kullanıyorsanız, Azure Cosmos DB için istekleriniz daha önce de çalışır, ancak yeni yetenekler için erişiminiz olmayacaktır.  
 
-**6. Başvurumu bir kesme tarihinden önce güncelleyemezsem ne yapmalıyım?**
+**6. uygulamamı bir kesme tarihinden önce güncelleştirediğimde ne yapmam gerekir?**
 
-Mümkün olduğunca erken en son SDK'ya yükseltmenizi öneririz. Emeklilik için bir SDK etiketlendikten sonra başvurunuzu güncellemek için 12 ayınız olacaktır. Herhangi bir nedenle, bu zaman dilimi içinde uygulama güncellemenizi tamamlayamıyorsanız, lütfen [Cosmos DB Ekibi'ne](mailto:askcosmosdb@microsoft.com) başvurun ve kesme tarihinden önce yardım isteyin.
+En son SDK 'ya mümkün olduğunca erken yükseltmeniz önerilir. Devre dışı bırakma için bir SDK etiketledikten sonra uygulamanızı güncellemek için 12 ay sahip olursunuz. Her nedenden dolayı, uygulama güncelleştirmenizi bu zaman diliminde tamamlamadıysanız, lütfen [Cosmos DB ekibine](mailto:askcosmosdb@microsoft.com) başvurarak, kesme tarihinden önce yardım isteyin.
 

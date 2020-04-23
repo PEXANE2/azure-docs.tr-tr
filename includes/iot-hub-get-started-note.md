@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188480"
 ---
 > [!NOTE]
-> Bu öğretici başlamadan önce, [Raspberry Pi online simülatör](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) öğretici veya cihaz öğreticiler birini tamamlamak; örneğin, [ahududu Pi düğüm ile.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). Bu makalelerde, Azure IoT aygıtınızı ve IoT hub'ınızı ayarlar sınız ve cihazınızda çalışacak bir örnek uygulama dağıtırsınız. Uygulama toplanan sensör verilerini IoT hub'ınıza gönderir.
+> Bu öğreticiye başlamadan önce [Raspberry PI Çevrimiçi simülatör](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [Node. js Ile Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md). Bu makalelerde, Azure IoT cihazınızı ve IoT Hub 'ınızı ayarlarsınız ve cihazınızda çalıştırmak üzere bir örnek uygulama dağıtırsınız. Uygulama, toplanan algılayıcı verilerini IoT Hub 'ınıza gönderir.

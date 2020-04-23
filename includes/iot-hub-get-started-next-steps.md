@@ -15,17 +15,17 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "75911924"
 ---
-Azure IoT Hub'ı ile çalışmaya devam etmek ve genişletilmiş tüm IoT senaryolarını keşfetmek için aşağıdakilere bakın:
+Azure IoT Hub kullanmaya başlayın ve tüm genişletilmiş IoT senaryolarını araştırmak için aşağıdakilere bakın:
 
-- [Visual Studio Code için Azure IoT Hub uzantısı ile bulut aygıtı mesajlaşmalarını yönetme](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Visual Studio Code için Azure IoT Hub Uzantısı ile bulut cihaz iletilerini yönetme](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Visual Studio Code için Azure IoT Hub uzantısı ile cihazları yönetme](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Visual Studio Code için Azure IoT Hub uzantılı cihazları yönetme](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
 - [İleti yönlendirmeyi ayarlama](../articles/iot-hub/tutorial-routing.md)
 
 - [IoT hub’ınızdan gelen gerçek zamanlı algılayıcı verilerini Power BI kullanarak görselleştirme](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [IoT hub'ınızdaki gerçek zamanlı sensör verilerini görselleştirmek için bir web uygulaması kullanın](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini görselleştirmek için bir Web uygulaması kullanın](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [Azure Machine Learning’de, IoT hub’ınızdan gelen algılayıcı verileriyle hava durumu tahmini](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

@@ -15,36 +15,36 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "79461223"
 ---
-## <a name="use-cli-shell"></a>CLI Shell kullanın
+## <a name="use-cli-shell"></a>CLı kabuğu kullanma
 
-CLI komutlarını yürütmek için [Azure Bulut Su şusu](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) kullanılması önerilir. **Cloud Shell,** bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz, etkileşimli bir kabuktur. Yaygın kullanılan Azure araçları hesabınızla kullanmanız için Cloud Shell'de önceden yüklenir ve yapılandırılır. Bu hizmet, çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği sunar. Linux kullanıcıları Bash deneyimini, Windows kullanıcıları da PowerShell deneyimini seçebilir.
+CLı komutlarını yürütmek için [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest) kullanılması önerilir. **Cloud Shell** , bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz ve etkileşimli bir kabuktur. Yaygın kullanılan Azure araçları hesabınızla kullanmanız için Cloud Shell'de önceden yüklenir ve yapılandırılır. Bu hizmet, çalışma şeklinize en uygun kabuk deneyimini seçme esnekliği sunar. Linux kullanıcıları Bash deneyimini, Windows kullanıcıları da PowerShell deneyimini seçebilir.
 
-CLI'yi yerel olarak da yükleyebilirsiniz. Platformunuziçin talimatlar için [Azure CLI'yi yükleyin'](https://docs.microsoft.com/cli/azure/install-azure-cli) e bakın.
+CLı 'yi yerel olarak da yükleyebilirsiniz. Platformunuza ilişkin yönergeler için bkz. [Azure CLI 'Yı yüklemeyin](https://docs.microsoft.com/cli/azure/install-azure-cli) .
 
-### <a name="sign-in"></a>Oturum aç
+### <a name="sign-in"></a>Oturum açma
 
-CLI'nin yerel bir yüklemesini kullanmak için Azure'da oturum açma gerekir. Bu adım Azure Bulut BulutU Için gerekli değildir. `az login` Komutla oturum açın.
+CLı 'nın yerel yüklemesinin kullanılması için Azure 'da oturum açmak gerekir. Azure Cloud Shell için bu adım gerekli değildir. `az login` Komutuyla oturum açın.
 
 CLI varsayılan tarayıcınızı açabiliyorsa, tarayıcıyı açar ve oturum açma sayfasını yükler. Aksi takdirde, tarayıcınızda gezindikten https://aka.ms/devicelogin sonra bir yetkilendirme kodu girmek için bir tarayıcı sayfası açmanız ve komut satırındaki yönergeleri izlemeniz gerekir.
 
 ### <a name="specify-location-of-files"></a>Dosyaların konumunu belirtin
 
-Birçok Medya Hizmetleri CLI komutları, dosya adı içeren bir parametreyi geçirmenize olanak sağlar. **Cloud Shell**kullanıyorsanız, dosyanızı clouddrive'ınıza yükleyebilirsiniz (Bash veya PowerShell'i kullanarak). 
+Birçok Media Services CLı komutu bir dosya adı ile bir parametre geçirmenize izin verir. **Cloud Shell**kullanıyorsanız, dosyanızı CloudDrive 'A (bash veya PowerShell kullanarak) yükleyebilirsiniz. 
 
 ![Dosyaları karşıya yükleme]
 
-İster yerel bir CLI veya **Cloud Shell**kullanıyor olun, dosya yolunu kullanmakta olduğunuz işletim sistemi veya Bulut Kabuğu'na (Bash veya PowerShell) göre belirtmeniz gerekir. Aşağıda bazı örnekler verilmiştir:
+Yerel bir CLı veya **Cloud Shell**kullanıyor olmanıza bakılmaksızın, kullanmakta olduğunuz işletim sistemine veya Cloud Shell (bash veya PowerShell) göre dosya yolunu belirtmeniz gerekir. Aşağıda bazı örnekler verilmiştir:
 
-Dosyaya göreli yol (tüm işletim sistemi)
+Dosyanın göreli yolu (tüm işletim sistemi)
 
 * `@"mytestfile.json"`
 * `@"../mytestfile.json"`
 
-Linux/Mac ve Windows OS'de mutlak dosya yolu
+Linux/Mac ve Windows işletim sistemi için mutlak dosya yolu
 
 * `@ "/usr/home/mytestfile.json"`
 *    `@"c:\tmp\user\mytestfile.json"`
 
-Komut `{file}` dosyaya giden bir yol soruyorsa kullanın. Örneğin, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Komut `@{file}` belirtilen dosyayı yükleyecekse kullanın. Örneğin, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
+Komutun `{file}` dosyanın yolunu soruyor olması halinde kullanın. Örneğin, `az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`. <br/> Komut `@{file}` belirtilen dosyayı yükleyecekse kullanın. Örneğin, `az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`.
 
 [Dosyaları karşıya yükleme]: ./media/media-services-cli/upload-download-files.png

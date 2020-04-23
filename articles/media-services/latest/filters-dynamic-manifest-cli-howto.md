@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri ile filtre oluşturmak için CLI'yi kullanın| Microsoft Dokümanlar
-description: Bu makalede, Azure Media Services v3 ile filtreler oluşturmak için CLI nasıl kullanılacağı gösterilmektedir.
+title: Azure Media Services ile filtre oluşturmak için CLı kullanma | Microsoft Docs
+description: Bu makalede, Azure Media Services v3 ile filtre oluşturmak için CLı 'nin nasıl kullanılacağı gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -21,29 +21,29 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/27/2020
 ms.locfileid: "74896067"
 ---
-# <a name="creating-filters-with-cli"></a>CLI ile filtre oluşturma 
+# <a name="creating-filters-with-cli"></a>CLı ile filtre oluşturma 
 
-İçeriğinizi müşterilere teslim ederken (Canlı etkinlikler veya Talep üzerine Video akışı), istemcinizin varsayılan varlığın bildirim dosyasında açıklanandan daha fazla esnekliğe ihtiyacı olabilir. Azure Medya Hizmetleri, içeriğiniz için hesap filtreleri ve varlık filtreleri tanımlamanıza olanak tanır. 
+İçeriğinizi müşterilere sunarken (canlı etkinlikler veya Isteğe bağlı video akışı), istemciniz varsayılan varlığın bildirim dosyasında açıklananlardan daha fazla esneklik gerektirebilir. Azure Media Services, içeriğiniz için hesap filtrelerini ve varlık filtrelerini tanımlamanızı sağlar. 
 
-Bu özelliğin ayrıntılı açıklaması ve kullanıldığı [senaryolar](filters-concept.md)için [Dinamik Bildirimler](filters-dynamic-manifest-overview.md) ve Filtreler bölümüne bakın.
+Bu özelliğin ve kullanılan senaryoların ayrıntılı açıklaması için bkz. [dinamik bildirimler](filters-dynamic-manifest-overview.md) ve [Filtreler](filters-concept.md).
 
-Bu konu, Bir Video on-Demand varlık için bir filtre yapılandırma ve Hesap [Filtreleri](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) ve [Varlık Filtreleri](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak için Medya Hizmetleri v3 için CLI kullanmak nasıl gösterir. 
+Bu konuda, bir video Isteğe bağlı varlığı için bir filtrenin nasıl yapılandırılacağı ve [hesap filtreleri](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) ve [varlık filtreleri](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)oluşturmak IÇIN Media Services v3 için CLI kullanımı gösterilmektedir. 
 
 > [!NOTE]
-> Sunuyu gözden geçirdiğinden emin [olunTimeRange](filters-concept.md#presentationtimerange).
+> [Presentationtimerange](filters-concept.md#presentationtimerange)öğesini gözden geçirdiğinizden emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
-- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun. 
+- [Media Services hesabı oluşturun](create-account-cli-how-to.md). Kaynak grubu adını ve Media Services hesap adını hatırlayacağınızdan emin olun. 
 
 [!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="define-a-filter"></a>Filtre tanımlama 
 
-Aşağıdaki örnek, son bildirime eklenen parça seçim koşullarını tanımlar. Bu filtre, EC-3 olan tüm ses parçalarını ve 0-1000000 aralığında bit hızına sahip tüm video parçalarını içerir.
+Aşağıdaki örnek, son bildirime eklenen izleme seçim koşullarını tanımlar. Bu filtre, EC-3 olan tüm ses izlerini ve 0-1000000 aralığında bit hızına sahip video izlemelerini içerir.
 
 > [!TIP]
-> REST'te **Filtreler'i** tanımlamayı planlıyorsanız, "Özellikler" sarıcı JSON nesnesini eklemeniz gerektiğine dikkat edin.  
+> BEKLEYEN **filtreleri** tanımlamanızı planlıyorsanız, "Özellikler" sarmalayıcı JSON nesnesini eklemeniz gerektiğini unutmayın.  
 
 ```json
 [
@@ -80,31 +80,31 @@ Aşağıdaki örnek, son bildirime eklenen parça seçim koşullarını tanımla
 
 ## <a name="create-account-filters"></a>Hesap filtreleri oluşturma
 
-Aşağıdaki [az ams hesap filtresi](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleri içeren bir hesap filtresi oluşturur. 
+Aşağıdaki [az AMS Account-Filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir hesap filtresi oluşturur. 
 
-Komut, parça seçimlerini temsil `--tracks` eden JSON içeren isteğe bağlı bir parametreyi geçirmenize olanak tanır.  JSON'u bir dosyadan yüklemek için @{file} kullanın. Azure CLI'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
+Komutu, izleme seçimlerini temsil eden JSON içeren `--tracks` isteğe bağlı bir parametreyi geçirmenize olanak sağlar.  JSON 'ı bir dosyadan yüklemek için @ {File} kullanın. Azure CLı 'yi yerel olarak kullanıyorsanız, tüm dosya yolunu belirtin:
 
 ```azurecli
 az ams account-filter create -a amsAccount -g resourceGroup -n filterName --tracks @tracks.json
 ```
 
-Ayrıca, [filtreler için JSON örneklerine](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter)bakın.
+Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/accountfilters/createorupdate#create-an-account-filter).
 
 ## <a name="create-asset-filters"></a>Varlık filtreleri oluşturma
 
-Aşağıdaki [az ams varlık filtresi](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimlerine sahip bir varlık filtresi oluşturur. 
+Aşağıdaki [az AMS varlık-Filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest) komutu, [daha önce tanımlanan](#define-a-filter)filtre izleme seçimleriyle bir varlık filtresi oluşturur. 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
 ```
 
-Ayrıca, [filtreler için JSON örneklerine](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)bakın.
+Ayrıca bkz. [Filtreler Için JSON örnekleri](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter).
 
-## <a name="associate-filters-with-streaming-locator"></a>Filtreleri Akış Bulucu ile ilişkilendirin
+## <a name="associate-filters-with-streaming-locator"></a>Filtreleri akış bulucu ile ilişkilendir
 
-Akış Lı'nız için geçerli olacak varlık veya hesap filtrelerinin listesini belirtebilirsiniz. [Dinamik Paketleyici (Streaming Endpoint),](dynamic-packaging-overview.md) bu filtre listesini istemcinizin URL'de belirttiği filtrelerle birlikte uygular. Bu kombinasyon, Akış Lı Buluc'ta belirttiğiniz URL + filtrelerdeki filtrelere dayanan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak istiyorsanız ancak URL'deki filtre adlarını ortaya çıkarmak istemiyorsanız bu özelliği kullanmanızı öneririz.
+Akış Konumlayıcı için uygulanabilecek varlık veya hesap filtrelerinin bir listesini belirtebilirsiniz. [Dinamik Paketleyici (akış uç noktası)](dynamic-packaging-overview.md) , bu filtre listesini ISTEMCINIZDEKI URL 'de belirttiği değişikliklerle birlikte uygular. Bu bileşim, akış Bulucu üzerinde belirlediğiniz URL + filtrelerdeki filtreleri temel alan [dinamik bir bildirim](filters-dynamic-manifest-overview.md)oluşturur. Filtre uygulamak, ancak URL 'de filtre adlarını göstermek istemiyorsanız bu özelliği kullanmanızı öneririz.
 
-Aşağıdaki CLI kodu, Akış Bulucu'nun nasıl `filters`oluşturulup belirtilen. Bu, varlık filtresi adlarının ve/veya hesap filtresi adlarının boşluktan ayrılmış bir listesini alan isteğe bağlı bir özelliktir.
+Aşağıdaki CLı kodu, bir akış Bulucu oluşturma ve belirtme `filters`işlemlerinin nasıl yapılacağını gösterir. Bu, varlık filtresi adlarının ve/veya hesap filtresi adlarının boşlukla ayrılmış bir listesini alan isteğe bağlı bir özelliktir.
 
 ```azurecli
 az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocatorName \
@@ -116,9 +116,9 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="stream-using-filters"></a>Filtreleri kullanarak akış
 
-Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL'sinde kullanabilir. Filtreler uyarlanabilir bitrate akış protokollerine uygulanabilir: Apple HTTP Live Streaming (HLS), MPEG-DASH ve Smooth Streaming.
+Filtreleri tanımladıktan sonra, istemcileriniz bunları akış URL 'sinde kullanabilir. Filtreler, uyarlamalı bit hızı akış protokollerine uygulanabilir: Apple HTTP Canlı Akışı (HLS), MPEG-DASH ve Kesintisiz Akış.
 
-Aşağıdaki tablo, filtreli URL'lerin bazı örneklerini gösterir:
+Aşağıdaki tabloda, filtre içeren URL 'lerin bazı örnekleri gösterilmektedir:
 
 |Protokol|Örnek|
 |---|---|
@@ -128,7 +128,7 @@ Aşağıdaki tablo, filtreli URL'lerin bazı örneklerini gösterir:
 
 ## <a name="next-step"></a>Sonraki adım
 
-[Videoları akış](stream-files-tutorial-with-api.md) 
+[Video akışı](stream-files-tutorial-with-api.md) 
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

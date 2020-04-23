@@ -15,38 +15,38 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/28/2020
 ms.locfileid: "67509134"
 ---
-1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-1. Sol menüdeki **Tüm hizmetleri** seçin ve ardından **Mobil** **bölümündeBildirim Hub'larını** seçin. Hizmeti sol menüdeki **SıK Kullanılanlar** bölümüne eklemek için hizmet adının yanındaki yıldız simgesini seçin. **Sık Kullanılanlar'a** **Bildirim Hub'ları** ekledikten sonra sol menüde seçin.
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin ve ardından **Mobil** bölümünde **Notification Hubs** ' yi seçin. Hizmet adının yanındaki yıldız simgesini seçerek hizmeti Sol menüdeki **Sık Kullanılanlar** bölümüne ekleyin. **Sık kullanılanlara** **Notification Hubs** ekledikten sonra, soldaki menüden seçin.
 
-      ![Azure portalı - Bildirim Hub'larını seçin](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+      ![Azure portal Notification Hubs seçin](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
 
-1. Bildirim **Hub'ları** sayfasında araç çubuğuna **Ekle'yi** seçin.
+1. **Notification Hubs** sayfasında, araç çubuğunda **Ekle** ' yi seçin.
 
-      ![Bildirim Hub'ları - Araç çubuğu ekle düğmesi](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+      ![Notification Hubs-araç çubuğu düğmesi Ekle](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
 
-1. Bildirim **Merkezi** sayfasında aşağıdaki adımları yapın:
+1. **Bildirim Hub** 'ı sayfasında, aşağıdaki adımları uygulayın:
 
-    1. **Bildirim**Hub'ına bir ad girin.  
+    1. **Bildirim Hub 'ına**bir ad girin.  
 
-    1. Yeni bir **ad alanı oluştur'a**bir ad girin. Ad alanı bir veya daha fazla hub içerir.
+    1. **Yeni ad alanı oluştur**' a bir ad girin. Bir ad alanı bir veya daha fazla hub içerir.
 
-    1. **Konum** açılır liste kutusundan bir değer seçin. Bu değer, hub'ı oluşturmak istediğiniz konumu belirtir.
+    1. **Konum** açılan liste kutusundan bir değer seçin. Bu değer, hub 'ı oluşturmak istediğiniz konumu belirtir.
 
-    1. **Kaynak Grubu'nda**varolan bir kaynak grubu seçin veya yeni bir kaynak grubu için bir ad oluşturun.
+    1. **Kaynak grubunda**var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu için bir ad oluşturun.
 
-    1. **Oluştur'u**seçin.
+    1. **Oluştur**’u seçin.
 
         ![Azure portalı - Bildirim hub'ı özelliklerini ayarlama](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
 
-1. **Bildirimler** 'i (çan simgesi) seçin ve ardından **kaynağa Git'i**seçin. Ayrıca **Bildirim Hub'ları** sayfasındaki listeyi yenileyebilir ve hub'ınızı seçebilirsiniz.
+1. **Bildirimleri** (zil simgesi) seçin ve ardından **Kaynağa Git**' i seçin. Ayrıca **Notification Hubs** sayfasında listeyi yenileyebilir ve hub 'ınızı seçebilirsiniz.
 
       ![Azure portalı - bildirimler -> Kaynağa git](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 
-1. Listeden **Erişim İlkeleri**'ni seçin. İki bağlantı dizesinin sizin için kullanılabildiğini unutmayın. Anında iletme bildirimlerini işlemek için daha sonra bunlara ihtiyacınız olur.
+1. Listeden **Erişim İlkeleri**'ni seçin. İki bağlantı dizesinin sizin için kullanılabilir olduğunu unutmayın. Anında iletme bildirimlerini işlemek için onlara daha sonra ihtiyacınız olacak.
 
       >[!IMPORTANT]
-      >Uygulamanızda **VarsayılanFullSharedAccessSignature** ilkesini *kullanmayın.* Bu sadece arka uçta kullanılmak üzere dir.
+      >Uygulamanızda **Defaultfullsharedaccesssignature** *ilkesini kullanmayın.* Bu, yalnızca arka uçta kullanılmak üzere tasarlanmıştır.
       >
 
       ![Azure portalı - Bildirim hub'ı bağlantı dizeleri](./media/notification-hubs-portal-create-new-hub/notification-hubs-connection-strings-portal.png)
