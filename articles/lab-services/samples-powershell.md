@@ -1,6 +1,6 @@
 ---
-title: Azure Laboratuvar Hizmetleri için Azure PowerShell Örnekleri | Microsoft Dokümanlar
-description: Azure PowerShell Örnekleri - Azure Lab Hizmetleri'ndeki laboratuvarları yönetmenize yardımcı olacak komut dosyaları
+title: Azure Lab Services için Azure PowerShell örnekleri | Microsoft Docs
+description: Azure PowerShell örnekleri-Azure Lab Services laboratuvarları yönetmenize yardımcı olacak betikler
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,24 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44050ab9367572a8160f6e268781478ca3313419
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "64730611"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100864"
 ---
-# <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Laboratuvar Hizmetleri için Azure PowerShell örnekleri
+# <a name="azure-powershell-samples-for-azure-lab-services"></a>Azure Lab Services için Azure PowerShell örnekleri
 
-Aşağıdaki tablo, Azure Lab Hizmetleri için Azure PowerShell komut dosyalarını örnekleyen bağlantılar içerir.
+Aşağıdaki tablo, Azure Lab Services için örnek Azure PowerShell betiklerinin bağlantılarını içerir.
 
 | |  |
 |---|---|
-|[Laboratuvara harici kullanıcı ekleme](scripts/add-external-user-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, Azure DevTest Labs'daki bir laboratuvara harici bir kullanıcı ekler. |
-|[Laboratuvara pazar yeri görüntüleri ekleme](scripts/add-marketplace-images-to-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, Azure DevTest Labs'daki bir laboratuvara pazar yeri görüntüleri ekler. |
-|[VHD'den özel görüntü oluşturma](scripts/create-custom-image-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, Azure DevTest Labs'daki bir laboratuvarda özel bir görüntü oluşturur. |
-|[Laboratuvarda özel bir rol oluşturma](scripts/create-custom-role-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, Azure Lab Hizmetleri'ndeki bir laboratuvarda özel bir rol oluşturur. |
-|[Laboratuvarda izin verilen VM boyutlarını ayarlama](scripts/set-allowed-vm-sizes-in-lab.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Bu PowerShell komut dosyası, bir laboratuvarda sanal makine (VM) boyutlarına izin verdi. |
+|[Laboratuvara dış Kullanıcı ekleme](scripts/add-external-user-to-lab.md)| Bu PowerShell betiği, Azure DevTest Labs bir laboratuvara dış Kullanıcı ekler. |
+|[Laboratuvara Market görüntüleri ekleme](scripts/add-marketplace-images-to-lab.md)| Bu PowerShell betiği, Market görüntülerini Azure DevTest Labs bir laboratuvara ekler. |
+|[Bir VHD 'den özel görüntü oluşturma](scripts/create-custom-image-from-vhd.md)| Bu PowerShell betiği, Azure DevTest Labs laboratuvarında özel bir görüntü oluşturur. |
+|[Laboratuvarda özel bir rol oluşturma](scripts/create-custom-role-in-lab.md)| Bu PowerShell betiği, Azure Lab Services laboratuvarında özel bir rol oluşturur. |
+|[Laboratuvarda izin verilen VM boyutlarını ayarlama](scripts/set-allowed-vm-sizes-in-lab.md)| Bu PowerShell betiği, bir laboratuvardaki izin verilen sanal makine (VM) boyutlarını ayarlar. |
 

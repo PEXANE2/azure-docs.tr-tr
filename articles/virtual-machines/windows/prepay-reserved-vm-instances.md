@@ -1,21 +1,19 @@
 ---
-title: Tasarruf etmek için Azure sanal makineleri için ön ödeme
-description: İşlem maliyetlerinizden tasarruf etmek için Azure Ayrılmış Sanal Makine Örnekleri'ni nasıl satın alacağınızı öğrenin.
-services: virtual-machines-windows
+title: Azure sanal makineleri için para tasarrufu sağlamak üzere ön ödeme
+description: Azure ayrılmış sanal makine örneklerini, işlem maliyetlerinizi kaydetmek için nasıl satın alacağınızı öğrenin.
 author: yashar
 manager: yashar
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/27/2020
 ms.author: banders
-ms.openlocfilehash: 15e71494e9c7eecea7153ac213318b7a2e4b31ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8d9b883c5319108166951814fcedb18181e25145
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371668"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098671"
 ---
-# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure Ayrılmış VM Örnekleri ile maliyetlerden tasarruf edin
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Azure ayrılmış VM örnekleri ile maliyetleri kaydetme
 [!INCLUDE [virtual-machines-buy-compute-reservations](../../../includes/virtual-machines-common-prepay-reserved-vm-instances.md)]

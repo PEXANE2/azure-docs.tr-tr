@@ -1,62 +1,62 @@
 ---
-title: Sorun giderme bağlantı sorunları - MySQL için Azure Veritabanı
-description: Yeniden deneme gerektiren geçici hatalar, güvenlik duvarı sorunları ve kesintiler de dahil olmak üzere MySQL için Azure Veritabanı'na bağlantı sorunlarını nasıl gidereceklerini öğrenin.
-keywords: mysql bağlantısı,bağlantı dizesi,bağlantı sorunları,geçici hata,bağlantı hatası
-author: jasonwhowell
-ms.author: jasonh
+title: Bağlantı sorunlarını giderme-MySQL için Azure veritabanı
+description: Yeniden denemeler, güvenlik duvarı sorunları ve kesintiler gerektiren geçici hatalar da dahil olmak üzere MySQL için Azure veritabanı 'nda bağlantı sorunlarını nasıl giderebileceğinizi öğrenin.
+keywords: MySQL bağlantısı, bağlantı dizesi, bağlantı sorunları, geçici hata, bağlantı hatası
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: b22d47d177c4606396b0c8b2279301121c905ca2
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: e4afcb8756f64ab9b66044a1bf1304427330e365
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768284"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100898"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>MySQL için Azure Veritabanı bağlantı sorunlarını giderme
 
-Bağlantı sorunları, şunları dahil olmak üzere çeşitli nedenlerden kaynaklanabilir:
+Bağlantı sorunlarına aşağıdakiler de dahil olmak üzere çeşitli öğeler neden olmuş olabilir:
 
 * Güvenlik duvarı ayarları
-* Bağlantı zaman ayarı
-* Yanlış giriş bilgileri
-* MySQL kaynakları için bazı Azure Veritabanında ulaşılan maksimum sınır
-* Hizmet altyapısı ile ilgili sorunlar
-* Bakım hizmetinde yapılıyor
-* Sunucunun bilgi işlem dağılımı vCores sayısını ölçekleme veya farklı bir hizmet katmanına hareket ettirerek değiştirilir
+* Bağlantı zaman aşımı
+* Hatalı oturum açma bilgileri
+* MySQL için Azure veritabanı kaynaklarında maksimum sınıra ulaşıldı
+* Hizmetin altyapısıyla ilgili sorunlar
+* Hizmette gerçekleştirilen bakım
+* Sunucunun işlem ayırması, sanal çekirdek sayısı ölçeklenerek veya farklı bir hizmet katmanına taşınarak değiştirilir
 
-Genel olarak, MySQL için Azure Veritabanı'na bağlantı sorunları aşağıdaki gibi sınıflandırılabilir:
+Genellikle, MySQL için Azure veritabanı 'na yönelik bağlantı sorunları şu şekilde sınıflandırılabilirler:
 
 * Geçici hatalar (kısa ömürlü veya aralıklı)
-* Kalıcı veya geçici olmayan hatalar (düzenli olarak yineleyen hatalar)
+* Kalıcı veya geçici olmayan hatalar (düzenli olarak yinelenen hatalar)
 
-## <a name="troubleshoot-transient-errors"></a>Geçici hataları giderme
+## <a name="troubleshoot-transient-errors"></a>Geçici hatalarda sorun giderme
 
-Geçici hatalar bakım yapıldığında oluşur, sistem donanım veya yazılımda bir hatayla karşılaşır veya sunucunuzun vCores veya servis katmanını değiştirirsiniz. MySQL için Azure Veritabanı yerleşik yüksek kullanılabilirlik sağlar ve bu tür sorunları otomatik olarak azaltmak için tasarlanmıştır. Ancak, uygulamanız sunucuya olan bağlantısını genellikle en fazla 60 saniyeden kısa bir süre için kaybeder. Bazı olayların bazen kısa sürede hafifletilmesi, örneğin büyük bir işlemin uzun süren bir kurtarma işlemine neden olması gibi sürebilir.
+Bakım gerçekleştirildiğinde geçici hatalar meydana gelir, sistem donanım veya yazılımla ilgili bir hatayla karşılaştığında veya sunucunuzun sanal çekirdeklerini veya hizmet katmanını değiştirirsiniz. MySQL için Azure veritabanı hizmeti, yerleşik yüksek kullanılabilirliğe sahiptir ve bu tür sorunları otomatik olarak azaltmak için tasarlanmıştır. Bununla birlikte, uygulamanız, genellikle 60 saniyeden kısa bir süre boyunca sunucu bağlantısını kaybeder. Büyük bir işlemin uzun süre çalışan bir kurtarmaya neden olduğu gibi bazı olayların hafifletmek daha uzun sürebilir.
 
-### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını çözme adımları
+### <a name="steps-to-resolve-transient-connectivity-issues"></a>Geçici bağlantı sorunlarını giderme adımları
 
-1. Hataların uygulama tarafından raporlandığı süre içinde meydana gelen bilinen kesintiler için [Microsoft Azure Hizmet Panosu'nu](https://azure.microsoft.com/status) denetleyin.
-2. MySQL için Azure Veritabanı gibi bir bulut hizmetine bağlanan uygulamalar geçici hatalar beklemeli ve kullanıcılara uygulama hatası olarak bunları yüzeye çıkarmak yerine bu hataları işlemek için yeniden deneme mantığını uygulamalıdır. En iyi uygulamalar ve geçici hataları işlemek için tasarım yönergeleri [için MySQL için Azure Veritabanı için geçici bağlantı hatalarının işlenmesini](concepts-connectivity.md) gözden geçirin.
-3. Bir sunucu kaynak sınırlarına yaklaştıkça, hatalar geçici bağlantı sorunu gibi görünebilir. [MySQL için Azure Veritabanındaki Sınırlamalar'a](concepts-limits.md)bakın.
-4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaşma süresi 60 saniyeyi aşarsa veya belirli bir günde birden fazla hata oluşumu nu görürseniz, Azure Destek sitesinde **Destek Al'ı** seçerek bir [Azure](https://azure.microsoft.com/support/options) destek isteği dosyalayın.
+1. Uygulama tarafından hataların bildirildiği zaman içinde oluşan bilinen kesintiler için [Microsoft Azure hizmet panosunu](https://azure.microsoft.com/status) denetleyin.
+2. MySQL için Azure veritabanı gibi bir bulut hizmetine bağlanan uygulamalar, geçici hatalar beklemelisiniz ve bunları kullanıcılara uygulama hataları olarak eklemek yerine bu hataları işlemek için yeniden deneme mantığını uygulamalıdır. En iyi uygulamalar ve geçici hataları işlemeye yönelik tasarım yönergeleri için, [MySQL Için Azure veritabanı için geçici bağlantı hatalarının işlenmesini](concepts-connectivity.md) gözden geçirin.
+3. Sunucu kaynak sınırlarına yaklaşıyorsa, hatalar geçici bağlantı sorunu olabilir. [MySQL Için Azure veritabanı 'Ndaki sınırlamalara](concepts-limits.md)bakın.
+4. Bağlantı sorunları devam ederse veya uygulamanızın hatayla karşılaştığı süre 60 saniye değerini aşarsa veya hatanın belirli bir gün içinde birden çok kez yinelendiğini görürseniz, [Azure](https://azure.microsoft.com/support/options) destek sitesinde **Destek Al** ' ı seçerek bir Azure destek isteği dosyası sağlayın.
 
-## <a name="troubleshoot-persistent-errors"></a>Kalıcı hataları giderme
+## <a name="troubleshoot-persistent-errors"></a>Kalıcı hatalarda sorun giderme
 
-Uygulama Kalıcı olarak MySQL için Azure Veritabanı'na bağlanamazsa, genellikle aşağıdakilerden biriyle ilgili bir sorunu gösterir:
+Uygulama, MySQL için Azure veritabanı 'na kalıcı olarak bağlanamazsa, genellikle aşağıdakilerden biriyle ilgili bir sorun olduğunu gösterir:
 
-* Sunucu güvenlik duvarı yapılandırması: MySQL sunucu güvenlik duvarı için Azure Veritabanı'nın proxy sunucuları ve ağ geçitleri de dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
-* İstemci güvenlik duvarı yapılandırması: İstemcinizin güvenlik duvarı veritabanı sunucunuzla bağlantıya izin vermelidir. Bazı güvenlik duvarlarında MySQL gibi uygulama adlarının yanı sıra, izin verilemeyeceğiniz sunucunun IP adresleri ve bağlantı noktaları.
-* Kullanıcı hatası: Bağlantı dizesindeki sunucu adı veya kullanıcı adındaeksik * \@* sunucu adı eki gibi bağlantı parametrelerini yanlış yazmış olabilirsiniz.
+* Sunucu güvenlik duvarı yapılandırması: MySQL Server güvenlik duvarı için Azure veritabanı 'nın, proxy sunucuları ve ağ geçitleri dahil olmak üzere istemcinizden gelen bağlantılara izin verecek şekilde yapılandırıldığından emin olun.
+* İstemci güvenlik duvarı yapılandırması: istemcinizdeki güvenlik duvarı, veritabanı sunucunuza yönelik bağlantılara izin vermelidir. Bazı güvenlik duvarlarındaki MySQL gibi uygulama adlarının yanı sıra, izin verilmeyen sunucunun IP adreslerine ve bağlantı noktalarına izin verilmesi gerekir.
+* Kullanıcı hatası: bağlantı dizesindeki sunucu adı veya Kullanıcı adında eksik * \@ServerName* son eki gibi yanlış bağlantı parametreleri olabilir.
 
-### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını çözme adımları
+### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Kalıcı bağlantı sorunlarını giderme adımları
 
-1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-manage-firewall-using-portal.md) ayarlayın. Yalnızca geçici sınama amacıyla, başlangıç IP adresi olarak 0.0.0.0'ı ve bitiş IP adresi olarak 255.255.255.255 kullanarak bir güvenlik duvarı kuralı ayarlayın. Bu, sunucuyu tüm IP adreslerine açar. Bu, bağlantı sorununuzu çözerse, bu kuralı kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
-2. İstemci ve internet arasındaki tüm güvenlik duvarlarında, 3306 bağlantı noktasının giden bağlantılar için açık olduğundan emin olun.
-3. Bağlantı dizenizi ve diğer bağlantı ayarlarınızı doğrulayın. [MySQL için uygulamaları Azure Veritabanına nasıl bağlayabilirsiniz'u](howto-connection-string.md)gözden geçirin.
-4. Panodaki servis durumunu kontrol edin. Bölgesel bir kesinti olduğunu düşünüyorsanız, yeni bir bölgeye kurtarılan adımlar [için MySQL için Azure Veritabanı ile iş sürekliliğine genel bakış](concepts-business-continuity.md) bölümüne bakın.
+1. İstemci IP adresine izin vermek için [güvenlik duvarı kuralları](howto-manage-firewall-using-portal.md) ayarlayın. Yalnızca geçici test amacıyla, başlangıç IP adresi olarak 0.0.0.0 kullanarak bir güvenlik duvarı kuralı ayarlayın ve bitiş IP adresi olarak 255.255.255.255 kullanın. Bu, sunucuyu tüm IP adreslerine açar. Bu, bağlantı sorununuzu giderirse, bu kuralı kaldırın ve uygun şekilde sınırlı bir IP adresi veya adres aralığı için bir güvenlik duvarı kuralı oluşturun.
+2. İstemci ile İnternet arasındaki tüm güvenlik duvarlarında, bağlantı noktası 3306 ' ın giden bağlantılar için açık olduğundan emin olun.
+3. Bağlantı dizenizi ve diğer bağlantı ayarlarını doğrulayın. [Uygulamaları MySQL Için Azure veritabanı 'na bağlamayı](howto-connection-string.md)inceleyin.
+4. Panodaki hizmet durumunu denetleyin. Bölgesel bir kesinti olduğunu düşünüyorsanız, yeni bir bölgeye kurtarma adımları için bkz. [MySQL Için Azure veritabanı ile iş sürekliliği 'Ne genel bakış](concepts-business-continuity.md) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [MySQL için Azure Veritabanı için geçici bağlantı hatalarının işlenmesi](concepts-connectivity.md)
+* [MySQL için Azure veritabanı geçici bağlantı hatalarını işleme](concepts-connectivity.md)

@@ -1,14 +1,14 @@
 ---
 title: Azure Dosyalarını yedekleme hakkında SSS
-description: Bu makalede, Azure dosya paylaşımlarınızı Azure Yedekleme hizmetiyle nasıl koruyacağınıza ilişkin sık sorulan soruların yanıtlarını keşfedin.
-ms.date: 07/29/2019
+description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
+ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c69d4642aefbd599d3783dcdfa059a0cd9d129d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302551"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101170"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -18,9 +18,9 @@ Bu makaledeki bölümleri hızlı taramak için **bu makale altında** sağ tara
 
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Azure Dosyaları için yedekleme işini yapılandırma
 
-### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares"></a>Korumak istediğim ve geçerli Azure dosya paylaşımları içeren Depolama Hesaplarımın bazılarını neden göremiyorum?
+### <a name="why-cant-i-see-some-of-my-storage-accounts-that-i-want-to-protect-which-contain-valid-azure-file-shares"></a>Koruma için geçerli Azure dosya paylaşımları içeren depolama hesaplarımdan bazılarını neden göremiyorum?
 
-Azure Dosya Paylaşımları için Yedekleme, önizleme sırasında her Depolama Hesabı türünü desteklemez. Desteklenen Depolama Hesaplarının listesini görüntülemek için [buraya](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview) başvurun. Aradığınız Depolama Hesabının zaten korumalı veya başka bir Kasa ile kayıtlı olması da mümkündür. Depolama Hesabını koruma için diğer Kasalarda bulmak için kasadan [kaldırın](troubleshoot-azure-files.md#configuring-backup).
+Depolama hesabının desteklenen depolama hesabı türlerinden birine ait olduğundan emin olmak için [Azure dosya paylaşımları yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) bakın. Aradığınız depolama hesabı zaten korunuyor ya da başka bir kasaya kaydedilmiş olabilir. Diğer kasaların koruma için depolama hesabını bulmasıyla [depolama hesabının kasadan kaydını kaldırın](manage-afs-backup.md#unregister-a-storage-account) .
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup"></a>Yedeklemeyi yapılandırmaya çalışırken, Depolama Hesabında Azure dosya paylaşımlarımdan bazılarını neden göremiyorum?
 
@@ -28,66 +28,19 @@ Azure dosya paylaşımının, aynı Kurtarma Hizmetleri kasasında zaten korumal
 
 ### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync"></a>Azure Dosya Eşitleme’deki bir Eşitleme Grubuna bağlanan Dosya Paylaşımlarını koruyabilir miyim?
 
-Evet. Eşitleme Gruplarına bağlanan Azure Dosya Paylaşımlarının koruması etkindir ve Genel önizlemenin parçasıdır.
+Evet. Eşitleme gruplarına bağlanan Azure dosya paylaşımlarının koruması etkin.
 
-### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Dosya paylaşımlarını yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabına tıkladım. Ancak koruyamadım. Bu dosya paylaşımlarını başka bir Kasa ile nasıl koruyabilirim?
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-didnt-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>Dosya paylaşımlarını yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabına tıkladım. Ancak, bunları korumadı. Bu dosya paylaşımlarını diğer kasalarla korumak Nasıl yaparım? mı?
 
-Yedeklemeye çalışırken, dosya paylaşımlarını keşfetmek için bir Depolama Hesabı seçildiğinde Depolama Hesabı, bu işlemin yapıldığı Kasaya kaydolur. Dosya paylaşımları farklı bir Kasa ile korumayı seçerseniz, bu Kasadan seçilen Depolama Hesabının [Kaydını Sil](troubleshoot-azure-files.md#configuring-backup)’in.
+Yedeklemeye çalışırken, BT içindeki dosya paylaşımlarını bulacak bir depolama hesabı seçmek, depolama hesabını bunun yapıldığı kasaya kaydeder. Dosya paylaşımlarını farklı bir kasala korumayı seçerseniz, seçili depolama hesabının kaydını bu kasadan [silin](manage-afs-backup.md#unregister-a-storage-account) .
 
-### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya paylaşımlarımı yedeklediğim Kasa'yı değiştirebilir miyim?
+### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Dosya Paylaşımlarımı yedeklemediğim kasayı değiştirebilir miyim?
 
-Evet. Ancak, bağlı Kasa'dan [bir dosya paylaşımında korumayı durdurmanız,](manage-afs-backup.md#stop-protection-on-a-file-share) bu Depolama Hesabının [Kaydını Açmanız](troubleshoot-azure-files.md#configuring-backup) ve ardından farklı bir Vault'tan korumanız gerekir.
-
-### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Azure Dosyası paylaşımlarını hangi coğrafyalarda yedekleyebilirim?
-
-Azure Dosya paylaşımları için yedekleme şu anda Önizleme aşamasındadır ve yalnızca aşağıdaki bölgelerde kullanılabilir:
-
-- Doğu Avustralya (AE)
-- Avustralya Güneydoğu (ASE)
-- Güney Brezilya (BRS)
-- Orta Kanada (CNC)
-- Doğu Kanada (CE)
-- Orta ABD (CUS)
-- Doğu Asya (EA)
-- Doğu ABD (EUS)
-- Doğu ABD 2 (EUS2)
-- Doğu Japonya (JPE)
-- Batı Japonya (JPW)
-- Hindistan Orta (INC)
-- Hindistan Güney (INS)
-- Güney Kore - Orta (KRC)
-- Güney Kore - Güney (KRS)
-- Orta Kuzey ABD (NCUS)
-- Kuzey Avrupa (NE)
-- Orta Güney ABD (SCUS)
-- Güneydoğu Asya (SEA)
-- Güney Birleşik Krallık (UKS)
-- Batı Birleşik Krallık (UKW)
-- Batı Avrupa (WE)
-- Batı ABD (WUS)
-- Orta Batı ABD (WCUS)
-- Batı ABD 2 (WUS 2)
-- ABD Gov Arizona (UGA)
-- ABD Gov Texas (UGT)
-- ABD Gov Virginia (UGV)
-- Avustralya Merkez (ACL)
-- Hindistan Batı (INW)
-- Güney Afrika Kuzey(SAN)
-- BAE Kuzey(UAN)
-- Fransa Merkez (FRC)
-- Almanya Kuzey (GN)                       
-- Almanya Batı Orta (GWC)
-- Güney Afrika Batı (SAW)
-- BAE Merkez (UAC)
-- NWE (Norveç Doğu)     
-- NWW (Norveç Batı)
-- SZN (İsviçre Kuzey)
-
-[AskAzureBackupTeam@microsoft.com](mailto:askazurebackupteam@microsoft.com) Yukarıda listelenmemiş belirli bir coğrafi içinde kullanmanız gerekiyorsa yazın.
+Evet. Bununla birlikte, bağlı kasadan [dosya paylaşımında korumayı durdurmanız](manage-afs-backup.md#stop-protection-on-a-file-share) , bu depolama hesabının [kaydını](manage-afs-backup.md#unregister-a-storage-account) kaldırmanız ve ardından farklı bir kasadan korumanız gerekir.
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>Kasada kaç tane Azure dosya paylaşımını koruyabilirim?
 
-Önizleme sırasında, Kasa başına en fazla 50 Depolama Hesabından Azure dosya paylaşımını koruyabilirsiniz. Tek bir kasada en fazla 200 Azure dosya paylaşımını koruyabilirsiniz.
+Azure dosya paylaşımlarını her kasa için 50 depolama hesabından koruyabilirsiniz. Tek bir kasada en fazla 200 Azure dosya paylaşımını koruyabilirsiniz.
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>Aynı Depolama Hesabından, farklı Kasalara iki farklı dosya paylaşımını koruyabilir miyim?
 
@@ -95,41 +48,37 @@ Hayır. Depolama Hesabındaki tüm dosya paylaşımları, aynı Kasa tarafından
 
 ## <a name="backup"></a>Backup
 
-### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Dosya paylaşımı başına kaç tane zamanlanmış yedekleme yapılandırabilirim?
+### <a name="what-should-i-do-if-my-backups-start-failing-due-to-the-maximum-limit-reached-error"></a>En fazla sınıra ulaşılma nedeniyle yedeklemelerim başarısız olursa ne yapmam gerekir?
 
-Azure Yedekleme şu anda Azure Dosya Paylaşımlarının zamanlanmış bir kez yedeklemesini yapılandırmayı destekler.
-
-### <a name="how-many-on-demand-backups-can-i-take-per-file-share"></a>Dosya paylaşımı başına kaç tane İsteğe Bağlı yedekleme alabilirim?
-
-Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık Görüntüye sahip olabilirsiniz. Sınır, ilkenizde tanımlandığı şekilde, Azure Backup tarafından alınan anlık görüntüleri içerir. Sınıra ulaştıktan sonra yedekleriniz başarısız olmaya başlarsa, daha sonraki yedeklemelerin başarılı olması için İsteğe Bağlı geri yükleme noktalarını silin.
+Zamanın herhangi bir noktasında dosya paylaşımı için en fazla 200 Anlık Görüntüye sahip olabilirsiniz. Sınır, ilkenizde tanımlandığı şekilde, Azure Backup tarafından alınan anlık görüntüleri içerir. Sınıra ulaştıktan sonra yedeklemeleriniz başarısız olmaya başladıysa, başarılı bir sonraki yedeklemeler için Isteğe bağlı anlık görüntüleri silin.
 
 ## <a name="restore"></a>Geri Yükleme
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share"></a>Silinen bir Azure dosya paylaşımından kurtarma gerçekleştirebilir miyim?
 
-Bir Azure dosya paylaşımı silindiğinde, size silinecek yedeklemelerin listesi gösterilir ve onay beklenir. Silinen Azure dosya paylaşımı geri yüklenemez.
+Bir Azure dosya paylaşımının silindiği zaman, silinecek yedeklemelerin listesi gösterilir ve bir onay istenir. Şu anda, silinen bir Azure dosya paylaşma geri yüklenemez.
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share"></a>Azure dosya paylaşımındaki korumayı durdurursam yedeklemelerden geri yükleme yapabilir miyim?
 
 Evet. Korumayı durdurduğunuzda **Yedekleme Verilerini Koru** seçeneğini belirlediyseniz tüm mevcut geri yükleme noktalarından geri yükleme yapabilirsiniz.
 
-### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal edersem ne olur?
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Devam eden bir geri yükleme işini iptal etdiğimde ne olur?
 
-Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi durur ve iptalden önce geri yüklenen tüm dosyalar, herhangi bir geri alma olmadan yapılandırılmış hedefte (orijinal veya alternatif konum) kalır.
+Devam eden bir geri yükleme işi iptal edilirse, geri yükleme işlemi duraklar ve iptalden önce geri yüklenen tüm dosyalar, geri alma işlemleri yapılmadan yapılandırılmış hedefte (orijinal veya alternatif konum) kalır.
 
-## <a name="manage-backup"></a>Yedeklemeyi yönet
+## <a name="manage-backup"></a>Yedeklemeyi Yönet
 
-### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Azure Dosyası paylaşımlarının yedeklemelerini yapılandırmak/yönetmek/geri yüklemek için PowerShell'i kullanabilir miyim?
+### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>PowerShell 'i Azure dosya paylaşımlarının yedeklerini yapılandırmak/yönetmek/geri yüklemek için kullanabilir miyim?
 
-Evet. Lütfen detaylı [belgelere](backup-azure-afs-automation.md) buradan bakınız.
+Evet. Ayrıntılı [belgelere bakın](backup-azure-afs-automation.md).
 
-### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-it"></a>Azure Backup tarafından alınan anlık görüntülere erişebilir ve bu görüntüleri bağlayabilir miyim?
+### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Azure yedeklemeleri tarafından alınan anlık görüntülere erişebilir ve bunları bağlayabilir miyim?
 
-Azure Backup tarafından alınan tüm Anlık Görüntülere, portaldaki, PowerShell veya CLI’daki Anlık Görüntüler Görüntülenerek erişilebilir. Azure Dosyaları paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure Dosyaları için paylaşım anlık görüntülerine genel bakış (önizleme)](../storage/files/storage-snapshots-files.md).
+Azure Backup tarafından alınan tüm anlık görüntülere Portal, PowerShell veya CLı 'daki anlık görüntüler görüntülenerek erişilebilir. Azure Dosyaları paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure Dosyaları için paylaşım anlık görüntülerine genel bakış (önizleme)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabileceğim maksimum bekletme nedir?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabildiğim maksimum bekletme nedir?
 
-Azure dosya paylaşımları için yedekleme, ilkeleri 180 güne kadar bekletme yle yapılandırma olanağı sunar. Ancak, [PowerShell'deki "İsteğe bağlı yedekleme" seçeneğini](backup-azure-afs-automation.md#trigger-an-on-demand-backup)kullanarak, 10 yıl boyunca bile bir kurtarma noktasını koruyabilirsiniz.
+Maksimum saklama hakkındaki ayrıntılar için [destek matrisine](azure-file-share-support-matrix.md) bakın. Azure Backup, yedekleme ilkesini yapılandırırken bekletme değerlerini girerken anlık görüntü sayısı için gerçek zamanlı bir hesaplama yapar. Tanımlanan saklama değerleriniz için karşılık gelen anlık görüntü sayısı 200 ' i aşarsa, Portal, bekletme değerlerinizi ayarlamanızı isteyen bir uyarı gösterir. Bu sayede herhangi bir zamanda herhangi bir zamanda herhangi bir dosya paylaşımında Azure dosyaları için desteklenen en fazla anlık görüntü sayısını aşamazsınız.
 
 ### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Bir Azure dosya paylaşımı için Yedekleme ilkesini değiştirdiğimde ne olur?
 
@@ -137,7 +86,7 @@ Dosya paylaşımlarında yeni bir ilke uygulandığında yeni ilkenin zamanlama 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Yedekleme'nin diğer alanları hakkında daha fazla bilgi edinmek için şu diğer Yedekleme SSS'lerinden bazılarına bakın:
+Azure Backup diğer alanlarıyla ilgili daha fazla bilgi edinmek için, bu diğer yedekleme hakkında SSS bölümüne bakın:
 
 - [Kurtarma Hizmetleri kasası hakkında SSS](backup-azure-backup-faq.md)
 - [Azure VM yedeklemesi hakkında SSS](backup-azure-vm-backup-faq.md)

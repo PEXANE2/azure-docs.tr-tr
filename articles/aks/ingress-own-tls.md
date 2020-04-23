@@ -1,47 +1,47 @@
 ---
-title: TLS sertifikalarınızı giriş için kullanın
+title: Inress için TLS sertifikalarınızı kullanma
 titleSuffix: Azure Kubernetes Service
-description: Azure Kubernetes Hizmeti (AKS) kümesinde kendi sertifikalarınızı kullanan bir NGINX giriş denetleyicisini nasıl yükleyip yapılandırıştırmayı öğrenin.
+description: Azure Kubernetes Service (AKS) kümesinde kendi sertifikalarınızı kullanan bir NGıNX giriş denetleyicisi yüklemeyi ve yapılandırmayı öğrenin.
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: ec6a398b52424c142b3d7ee82625c10c733456ab
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 4c3edb40c6d0c9a64ce3cb01f665e8e9cf60d12e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668469"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100983"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service'te (AKS) HTTPS giriş denetleyicisi oluşturma ve kendi TLS sertifikalarınızı kullanma
 
-Giriş denetleyicisi, Kubernetes hizmetleri için ters proxy, yapılandırılabilir trafik yönlendirmesi ve TLS sonlandırma sağlayan bir yazılım dır. Kubernetes giriş kaynakları, tek tek Kubernetes hizmetleri için giriş kurallarını ve rotalarını yapılandırmak için kullanılır. Giriş denetleyicisi ve giriş kuralları kullanılarak, trafiği Bir Kubernetes kümesindeki birden çok hizmete yönlendirmek için tek bir IP adresi kullanılabilir.
+Giriş denetleyicisi, Kubernetes Hizmetleri için ters proxy, yapılandırılabilir trafik yönlendirme ve TLS sonlandırma sağlayan bir yazılım parçasıdır. Kubernetes giriş kaynakları, bağımsız bir Kubernetes hizmeti için giriş kurallarını ve rotaları yapılandırmak üzere kullanılır. Bir giriş denetleyicisi ve giriş kuralları kullanarak, bir Kubernetes kümesinde trafiği birden çok hizmete yönlendirmek için tek bir IP adresi kullanılabilir.
 
-Bu makalede, Bir Azure Kubernetes Hizmeti (AKS) kümesinde [NGINX giriş denetleyicisini][nginx-ingress] nasıl dağıtabileceğinizgösterilmektedir. Kendi sertifikalarınızı oluşturursunuz ve giriş rotasında kullanılmak üzere bir Kubernetes sırrı oluşturursunuz. Son olarak, aks kümesinde her biri tek bir IP adresi üzerinden erişilebilen iki uygulama çalıştırılır.
+Bu makalede bir Azure Kubernetes Service (AKS) kümesinde [NGINX giriş denetleyicisinin][nginx-ingress] nasıl dağıtılacağı gösterilir. Kendi sertifikalarınızı oluşturur ve giriş rotası ile kullanmak üzere bir Kubernetes gizli dizisi oluşturun. Son olarak, her biri tek bir IP adresi üzerinden erişilebilen AKS kümesinde iki uygulama çalıştırılır.
 
 Aşağıdakileri de yapabilirsiniz:
 
-- [Harici ağ bağlantısı na sahip temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
-- [HTTP uygulama yönlendirme eklentisini etkinleştirme][aks-http-app-routing]
-- [Dahili, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturma][aks-ingress-internal]
-- [Dinamik bir genel IP adresiyle][aks-ingress-tls] veya statik bir genel IP [adresiyle][aks-ingress-static-tls] TLS sertifikaları otomatik olarak oluşturmak için Let's Encrypt'i kullanan bir giriş denetleyicisi oluşturun
+- [Dış ağ bağlantısı ile temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
+- [HTTP uygulama yönlendirme eklentisini etkinleştirin][aks-http-app-routing]
+- [İç, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturun][aks-ingress-internal]
+- [Dinamik bir genel IP adresi][aks-ingress-tls] veya [STATIK bir genel IP adresi][aks-ingress-static-tls] ile otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi kullanan bir giriş denetleyicisi oluşturun
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu makalede, NGINX giriş denetleyicisini ve örnek bir web uygulamasını yüklemek için Helm kullanır. Helm'in AKS kümenizde başlatılması nı ve Tiller için bir hizmet hesabı kullanmasını ngerekir. Helm'in en son sürümünden kullandığınızdan emin olun. Yükseltme yönergeleri için [Helm yükleme dokümanlarına][helm-install]bakın. Helm'i yapılandırma ve kullanma hakkında daha fazla bilgi için Azure [Kubernetes Hizmetinde (AKS) Helm ile Yükleme uygulamaları'na][use-helm]bakın.
+Bu makalede NGıNX giriş denetleyicisini ve örnek bir Web uygulamasını yüklemek için [helm3][helm] kullanılmaktadır. AKS kümenizde helk başlatılmış ve Tiller için bir hizmet hesabı kullanmanız gerekir. Held 'nin en son sürümünü kullandığınızdan emin olun. Yükseltme yönergeleri için, bkz. [hela Install docs][helm-install]. Held 'yi yapılandırma ve kullanma hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Held ile uygulama yüklemesi][use-helm].
 
-Bu makalede, Azure CLI sürümünü 2.0.64 veya sonraki sürümde çalıştırdığınızda da vardır. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
+Bu makalede, Azure CLı sürüm 2.0.64 veya üstünü de çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 ## <a name="create-an-ingress-controller"></a>Giriş denetleyicisi oluşturma
 
-Giriş denetleyicisini oluşturmak `Helm` için *nginx-ingress'i*yüklemek için kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin yinelemelerini çalıştıran kopyalardan tam olarak yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Giriş denetleyicisini oluşturmak için, `Helm` *NGINX-giriş*yüklemek üzere kullanın. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin Çoğaltmalarından tamamen yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
 
-Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Windows Server düğümleri (şu anda AKS önizlemede) giriş denetleyicisini çalıştırmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
-
-> [!TIP]
-> Aşağıdaki örnek, *giriş temel*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkin değilse, Helm komutlarına ekleyin. `--set rbac.create=false`
+Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Windows Server düğümleri (Şu anda AKS 'deki önizlemede) giriş denetleyicisini çalıştırmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara gelen istekler için istemci kaynağı IP `--set controller.service.externalTrafficPolicy=Local` [korumasını][client-source-ip] etkinleştirmek istiyorsanız, Helm install komutuna ekleyin. İstemci kaynağı IP, *X-Forwarded-For*altında istek üstbilgisinde depolanır. İstemci kaynağı IP koruma etkin leştirilmiş bir giriş denetleyicisi kullanırken, SSL geçişi çalışmaz.
+> Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
+
+> [!TIP]
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, SSL geçişi çalışmaz.
 
 ```console
 # Create a namespace for your ingress resources
@@ -55,9 +55,9 @@ helm install stable/nginx-ingress \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
 
-Yükleme sırasında, giriş denetleyicisi için bir Azure genel IP adresi oluşturulur. Bu genel IP adresi giriş denetleyicisinin ömrü için statiktir. Giriş denetleyicisini silerseniz, ortak IP adresi ataması kaybolur. Daha sonra ek bir giriş denetleyicisi oluşturursanız, yeni bir genel IP adresi atanır. Genel IP adresinin kullanımını korumak istiyorsanız, bunun yerine [statik genel IP adresine sahip bir giriş denetleyicisi oluşturabilirsiniz.][aks-ingress-static-tls]
+Yükleme sırasında, giriş denetleyicisi için bir Azure genel IP adresi oluşturulur. Bu genel IP adresi, giriş denetleyicisinin yaşam döngüsü için statiktir. Giriş denetleyicisini silerseniz, genel IP adresi ataması kaybedilir. Daha sonra ek bir giriş denetleyicisi oluşturursanız, yeni bir genel IP adresi atanır. Genel IP adresinin kullanımını sürdürmek istiyorsanız, bunun yerine [statik bir genel IP adresi olan bir giriş denetleyicisi oluşturabilirsiniz][aks-ingress-static-tls].
 
-Genel IP adresini almak için `kubectl get service` komutu kullanın. IP adresinin hizmete atanması birkaç dakika sürer.
+Genel IP adresini almak için `kubectl get service` komutunu kullanın. IP adresinin hizmete atanması birkaç dakika sürer.
 
 ```
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
@@ -67,17 +67,17 @@ virulent-seal-nginx-ingress-controller        LoadBalancer   10.0.48.240   40.87
 virulent-seal-nginx-ingress-default-backend   ClusterIP      10.0.50.5     <none>         80/TCP                       7m
 ```
 
-Dağıtımı test etmek için son adımda kullanıldığından, bu genel IP adresini not alın.
+Dağıtımı test etmek için son adımda kullanıldığından, bu genel IP adresini bir yere unutmayın.
 
-Henüz giriş kuralları oluşturulmadı. Herkese açık IP adresine göz atarsanız, NGINX giriş denetleyicisinin varsayılan 404 sayfası görüntülenir.
+Henüz giriş kuralı oluşturulmadı. Genel IP adresine gözattığınızda NGıNX giriş denetleyicisinin varsayılan 404 sayfası görüntülenir.
 
 ## <a name="generate-tls-certificates"></a>TLS sertifikaları oluşturma
 
-Bu makale için, `openssl`'' ile kendi imzalı bir sertifika oluşturalım. Üretim kullanımı için, bir sağlayıcı veya kendi sertifika yetkilisi (CA) aracılığıyla güvenilir, imzalı bir sertifika talep etmelisiniz. Bir sonraki adımda, TLS sertifikasını ve OpenSSL tarafından oluşturulan özel anahtarı kullanarak bir Kubernetes *Secret* oluşturursunuz.
+Bu makalede, ile `openssl`otomatik olarak imzalanan bir sertifika oluşturalım. Üretim kullanımı için, bir sağlayıcı veya kendi sertifika yetkiliniz (CA) aracılığıyla güvenilir ve imzalı bir sertifika istemeniz gerekir. Bir sonraki adımda, bir Kubernetes *gizli* anahtarını, OpenSSL tarafından oluşturulan TLS sertifikasını ve özel anahtarı kullanarak oluşturabilirsiniz.
 
-Aşağıdaki örnek, *aks-ingress-tls.crt*adlı 365 gün için geçerli 2048 bit RSA X509 sertifikası oluşturur. Özel anahtar dosyası *aks-ingress-tls.key*olarak adlandırılır. Bir Kubernetes TLS sırrı bu dosyaların her ikisini de gerektirir.
+Aşağıdaki örnek, *aks-ingress-TLS. CRT*adlı 365 gün için geçerli 2048 BITLIK bir RSA x509 sertifikası üretir. Özel anahtar dosyası *aks-ingress-TLS. Key*olarak adlandırılmıştır. Bir Kubernetes TLS parolası, bu dosyaların her ikisini de gerektirir.
 
-Bu makale, *demo.azure.com* konusu ortak adı ile çalışır ve değiştirilmesi gerekmez. Üretim kullanımı için parametre için `-subj` kendi kuruluş değerlerinizi belirtin:
+Bu makale, *demo.Azure.com* konu ortak adı ile birlikte çalışarak, değiştirilmesi gerekmez. Üretim kullanımı için, `-subj` parametre için kendi kuruluş değerlerinizi belirtin:
 
 ```console
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -88,9 +88,9 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 ## <a name="create-kubernetes-secret-for-the-tls-certificate"></a>TLS sertifikası için Kubernetes gizli dizisi oluşturma
 
-Kubernetes'in giriş denetleyicisi için TLS sertifikasını ve özel anahtarı kullanmasına izin vermek için bir Gizli oluşturur ve kullanırsınız. Gizli bir kez tanımlanır ve önceki adımda oluşturulan sertifika ve anahtar dosyasını kullanır. Giriş yollarını tanımlarken bu gizliye başvurursunuz.
+Kubernetes 'in, giriş denetleyicisi için TLS sertifikasını ve özel anahtarı kullanmasına izin vermek için bir gizli dizi oluşturup kullanın. Gizli dizi bir kez tanımlanır ve önceki adımda oluşturulan sertifika ve anahtar dosyasını kullanır. Ardından, giriş yollarını tanımlarken bu gizliliğe başvurabilirsiniz.
 
-Aşağıdaki örnekte gizli bir ad *oluşturur aks-ingress-tls:*
+Aşağıdaki örnek, bir gizli dizi adı ( *aks-ınress-TLS*) oluşturur:
 
 ```console
 kubectl create secret tls aks-ingress-tls \
@@ -99,23 +99,23 @@ kubectl create secret tls aks-ingress-tls \
     --cert aks-ingress-tls.crt
 ```
 
-## <a name="run-demo-applications"></a>Demo uygulamaları çalıştırma
+## <a name="run-demo-applications"></a>Demo uygulamalarını çalıştırma
 
-Sertifikanızın içeren bir giriş denetleyicisi ve Gizli yapılandırıldı. Şimdi AKS kümenizde iki demo uygulaması çalıştıralım. Bu örnekte, Helm basit bir 'Merhaba dünya' uygulamasının iki örneğini dağıtmak için kullanılır.
+Bir giriş denetleyicisi ve sertifikanız ile gizli dizi yapılandırıldı. Şimdi AKS kümenizde iki tanıtım uygulaması çalıştıralım. Bu örnekte, HELI basit bir ' Hello World ' uygulamasının iki örneğini dağıtmak için kullanılır.
 
-Örnek Miğfer grafiklerini yüklemeden önce, Azure örnek lerini Miğfer ortamınıza aşağıdaki gibi ekleyin:
+Örnek HELI grafiklerini yükleyebilmeniz için önce aşağıdaki gibi, Azure Samples Repository 'yi Helu ortamınıza ekleyin:
 
 ```console
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
-Bir Miğfer grafiğinden aşağıdaki komutla ilk demo uygulamasını oluşturun:
+Aşağıdaki komutla bir Held grafiğinden ilk demo uygulamayı oluşturun:
 
 ```console
 helm install azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
-Şimdi demo uygulamasının ikinci bir örneğini yükleyin. İkinci örnek için, iki uygulamanın görsel olarak farklı olması için yeni bir başlık belirtirsiniz. Ayrıca benzersiz bir hizmet adı belirtirsiniz:
+Şimdi tanıtım uygulamasının ikinci bir örneğini yükleyin. İkinci örnek için, iki uygulamanın görsel olarak benzersiz olması için yeni bir başlık belirtirsiniz. Ayrıca, benzersiz bir hizmet adı da belirtirsiniz:
 
 ```console
 helm install azure-samples/aks-helloworld \
@@ -124,18 +124,18 @@ helm install azure-samples/aks-helloworld \
     --set serviceName="ingress-demo"
 ```
 
-## <a name="create-an-ingress-route"></a>Giriş rotası oluşturma
+## <a name="create-an-ingress-route"></a>Giriş yolu oluşturma
 
-Her iki uygulama şimdi Kubernetes kümeüzerinde çalışıyor, ancak tür `ClusterIP`bir hizmet ile yapılandırılır. Bu nedenle, uygulamalara internetten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
+Her iki uygulama da artık Kubernetes kümenizde çalışıyor, ancak bunlar türünde `ClusterIP`bir hizmetle yapılandırılmış. Bu nedenle, uygulamalara internet 'ten erişilemez. Bunları herkese açık hale getirmek için bir Kubernetes giriş kaynağı oluşturun. Giriş kaynağı, trafiği iki uygulamadan birine yönlendiren kuralları yapılandırır.
 
-Aşağıdaki örnekte, adrese `https://demo.azure.com/` giden trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `https://demo.azure.com/hello-world-two` giden trafik `ingress-demo` servise yönlendirilir. Bu makale için, bu demo ana bilgisayar adlarını değiştirmeniz gerekmez. Üretim kullanımı için, sertifika isteği ve oluşturma sürecinin bir parçası olarak belirtilen adları sağlayın.
+Aşağıdaki örnekte, adrese `https://demo.azure.com/` olan trafik adlı `aks-helloworld`hizmete yönlendirilir. Adrese `https://demo.azure.com/hello-world-two` giden trafik `ingress-demo` hizmete yönlendirilir. Bu makalede, bu demo ana bilgisayar adlarını değiştirmeniz gerekmez. Üretim kullanımı için, sertifika isteği ve oluşturma sürecinin bir parçası olarak belirtilen adları sağlayın.
 
 > [!TIP]
-> Sertifika istek işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotanızda tanımlanan ana bilgisayarla eşleşmiyorsa, giriş denetleyicisi bir *Kubernetes Ingress Controller Sahte Sertifika* uyarısı görüntüler. Sertifikanızın ve giriş rotanızın ana bilgisayar adlarının eşleştirdiğinden emin olun.
+> Sertifika isteği işlemi sırasında belirtilen ana bilgisayar adı, CN adı, giriş rotasında tanımlanan konakla eşleşmiyorsa, denetleyici bir *Kubernetes ınress denetleyicisi sahte sertifika* uyarısı görüntüler. Sertifikanızın ve giriş yolu ana bilgisayar adlarının eşleştiğinden emin olun.
 
-*Tls* *bölümü,* giriş demo.azure.com için *aks-ingress-tls* adlı Secret'ı kullanmak için giriş yolunu söyler. Yine, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
+*TLS* bölümü, giriş yoluna, ana bilgisayar *demo.Azure.com*için *aks-giriş-TLS* adlı gizli dizi kullanımını söyler. Daha sonra, üretim kullanımı için kendi ana bilgisayar adresinizi belirtin.
 
-Adlandırılmış `hello-world-ingress.yaml` bir dosya oluşturun ve aşağıdaki örnekYAML'de kopyalayın.
+Adlı `hello-world-ingress.yaml` bir dosya oluşturun ve aşağıdaki örnekteki YAML 'yi kopyalayın.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -165,7 +165,7 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-`kubectl apply -f hello-world-ingress.yaml` Komutu kullanarak giriş kaynağını oluşturun.
+`kubectl apply -f hello-world-ingress.yaml` Komutunu kullanarak giriş kaynağını oluşturun.
 
 ```
 $ kubectl apply -f hello-world-ingress.yaml
@@ -173,15 +173,15 @@ $ kubectl apply -f hello-world-ingress.yaml
 ingress.extensions/hello-world-ingress created
 ```
 
-## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test edin
+## <a name="test-the-ingress-configuration"></a>Giriş yapılandırmasını test etme
 
-Sertifikaları sahte *demo.azure.com* ana bilgisayarımızla `curl` test etmek için *--çözüm* parametresini kullanın ve belirtin. Bu parametre, giriş denetleyicinizin genel IP adresiyle *demo.azure.com* adını eşlemenizi sağlar. Aşağıdaki örnekte gösterildiği gibi, kendi giriş denetleyicinizin ortak IP adresini belirtin:
+Sahte *demo.Azure.com* barındırımızda sertifikaları test etmek için kullanın `curl` ve *--Resolve* parametresini belirtin. Bu parametre, *demo.Azure.com* adını giriş DENETLEYICINIZIN genel IP adresi ile eşlemenizi sağlar. Aşağıdaki örnekte gösterildiği gibi kendi giriş denetleyicinizin genel IP adresini belirtin:
 
 ```
 curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 ```
 
-Adresle ek bir yol sağlanmadı, bu nedenle */* giriş denetleyicisi rotaya varsayılan olarak gelir. İlk demo uygulaması, aşağıdaki yoğunlaştırılmış örnek çıktıda gösterildiği gibi döndürülür:
+Adresle birlikte ek bir yol sağlanmadı, bu nedenle giriş denetleyicisi */* rotayı varsayılan olarak alır. İlk demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi döndürülür:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
@@ -195,7 +195,7 @@ $ curl -v -k --resolve demo.azure.com:443:40.87.46.190 https://demo.azure.com
 [...]
 ```
 
-Komutumuzdaki `curl` *-v* parametresi alınan TLS sertifikası da dahil olmak üzere ayrıntılı bilgi çıkarmaktadır. Kıvırma çıktınızın yarısında, kendi TLS sertifikanızın kullanıldığını doğrulayabilirsiniz. *-k* parametresi, kendi imzalı bir sertifika kullanıyor olmamıza rağmen sayfayı yüklemeye devam ediyor. Aşağıdaki örnek, *verenin: CN=demo.azure.com; O=aks-ingress-tls* sertifikası kullanılmıştır:
+Komutumuz `curl` *-v* parametresi, alınan TLS sertifikası da dahil olmak üzere ayrıntılı bilgiler verir. Kıvrımlı çıkışınızla yarım yönlü, kendi TLS sertifikanızın kullanıldığını doğrulayabilirsiniz. Otomatik olarak imzalanan bir sertifika kullanıyor olsanız da *-k* parametresi sayfayı yüklemeye devam eder. Aşağıdaki örnek *veren: CN = demo. Azure. com; O = aks-ingress-TLS* sertifikası kullanıldı:
 
 ```
 [...]
@@ -208,7 +208,7 @@ Komutumuzdaki `curl` *-v* parametresi alınan TLS sertifikası da dahil olmak ü
 [...]
 ```
 
-Şimdi adrese */hello-world-two* yolunu ekleyin, örneğin `https://demo.azure.com/hello-world-two`. Özel başlığı olan ikinci demo uygulaması, aşağıdaki yoğunlaştırılmış örnek çıktıda gösterildiği gibi döndürülür:
+Şimdi adrese */Hello-World-iki* yolu ekleyin, örneğin `https://demo.azure.com/hello-world-two`. Aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi, özel başlığa sahip ikinci demo uygulaması döndürülür:
 
 ```
 $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/hello-world-two
@@ -224,25 +224,25 @@ $ curl -v -k --resolve demo.azure.com:443:137.117.36.18 https://demo.azure.com/h
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu makalede, giriş bileşenleri ve örnek uygulamalar yüklemek için Helm kullanılır. Bir Miğfer grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar bölmeleri, dağıtımları ve hizmetleri içerir. Bu kaynakları temizlemek için, örnek ad alanının tamamını veya tek tek kaynakları silebilirsiniz.
+Bu makalede giriş bileşenlerini ve örnek uygulamaları yüklemek için Held kullanılmaktadır. Bir helk grafiği dağıttığınızda, bir dizi Kubernetes kaynağı oluşturulur. Bu kaynaklar, pods, dağıtımlar ve hizmetleri içerir. Bu kaynakları temizlemek için, tüm örnek ad alanını veya ayrı kaynakları silebilirsiniz.
 
-### <a name="delete-the-sample-namespace-and-all-resources"></a>Örnek ad alanını ve tüm kaynakları silme
+### <a name="delete-the-sample-namespace-and-all-resources"></a>Örnek ad alanını ve tüm kaynakları Sil
 
-Örnek ad alanının tamamını silmek için komutu `kubectl delete` kullanın ve ad alanı adınızı belirtin. Ad alanındaki tüm kaynaklar silinir.
+Tüm örnek ad alanını silmek için `kubectl delete` komutunu kullanın ve ad alanı adınızı belirtin. Ad alanındaki tüm kaynaklar silinir.
 
 ```console
 kubectl delete namespace ingress-basic
 ```
 
-Daha sonra, AKS merhaba dünya uygulaması için Helm repo kaldırın:
+Ardından, AKS Hello World uygulamasının Held deposunu kaldırın:
 
 ```console
 helm repo remove azure-samples
 ```
 
-### <a name="delete-resources-individually"></a>Kaynakları tek tek silme
+### <a name="delete-resources-individually"></a>Kaynakları tek tek Sil
 
-Alternatif olarak, daha ayrıntılı bir yaklaşım oluşturulan tek tek kaynakları silmektir. Helm bültenlerini komutla listele. `helm list` Aşağıdaki örnek çıktıda gösterildiği gibi *nginx-ingress* ve *aks-helloworld*adlı grafiklere bakın:
+Alternatif olarak, oluşturulan kaynakları tek tek silmek daha ayrıntılı bir yaklaşımdır. `helm list` Komut Ile Held sürümlerini listeleyin. Aşağıdaki örnek çıktıda gösterildiği gibi *NGINX-ingress* ve *aks-HelloWorld*adlı grafikleri arayın:
 
 ```
 $ helm list
@@ -253,7 +253,7 @@ billowing-guppy 1           Tue Oct 23 16:41:38 2018    DEPLOYED    aks-hellowor
 listless-quokka 1           Tue Oct 23 16:41:30 2018    DEPLOYED    aks-helloworld-0.1.0                default
 ```
 
-`helm delete` Komutla sürümleri silin. Aşağıdaki örnek, NGINX giriş dağıtımını ve iki örnek AKS merhaba dünya uygulamalarını siler.
+`helm delete` Komutuyla sürümleri silin. Aşağıdaki örnekte NGıNX giriş dağıtımı ve iki örnek AKS Hello World Apps de silinir.
 
 ```
 $ helm delete virulent-seal billowing-guppy listless-quokka
@@ -263,25 +263,25 @@ release "billowing-guppy" deleted
 release "listless-quokka" deleted
 ```
 
-Ardından, AKS merhaba dünya uygulaması için Helm repo kaldırın:
+Ardından, AKS Hello World uygulamasının Held deposunu kaldırın:
 
 ```console
 helm repo remove azure-samples
 ```
 
-Trafiği örnek uygulamalara yönlendiren giriş rotasını kaldırın:
+Trafiği örnek uygulamalara yönlendiren giriş yolunu kaldırın:
 
 ```console
 kubectl delete -f hello-world-ingress.yaml
 ```
 
-Gizli sertifikayı silin:
+Sertifika gizliliğini silin:
 
 ```console
 kubectl delete secret aks-ingress-tls
 ```
 
-Son olarak, kendi ad alanını silebilirsiniz. Komutu `kubectl delete` kullanın ve ad alanı adınızı belirtin:
+Son olarak, kendi ad alanını silebilirsiniz. `kubectl delete` Komutunu kullanın ve ad alanı adınızı belirtin:
 
 ```console
 kubectl delete namespace ingress-basic
@@ -289,21 +289,22 @@ kubectl delete namespace ingress-basic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede AKS bazı dış bileşenleri dahil. Bu bileşenler hakkında daha fazla bilgi edinmek için aşağıdaki proje sayfalarına bakın:
+Bu makalede bazı dış bileşenler AKS 'ye eklenmiştir. Bu bileşenler hakkında daha fazla bilgi edinmek için aşağıdaki proje sayfalarına bakın:
 
-- [Dümen CLI][helm-cli]
-- [NGINX giriş denetleyicisi][nginx-ingress]
+- [Held CLı][helm-cli]
+- [NGıNX giriş denetleyicisi][nginx-ingress]
 
 Aşağıdakileri de yapabilirsiniz:
 
-- [Harici ağ bağlantısı na sahip temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
-- [HTTP uygulama yönlendirme eklentisini etkinleştirme][aks-http-app-routing]
-- [Dahili, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturma][aks-ingress-internal]
-- [Dinamik bir genel IP adresiyle][aks-ingress-tls] veya statik bir genel IP [adresiyle][aks-ingress-static-tls] TLS sertifikaları otomatik olarak oluşturmak için Let's Encrypt'i kullanan bir giriş denetleyicisi oluşturun
+- [Dış ağ bağlantısı ile temel bir giriş denetleyicisi oluşturma][aks-ingress-basic]
+- [HTTP uygulama yönlendirme eklentisini etkinleştirin][aks-http-app-routing]
+- [İç, özel ağ ve IP adresi kullanan bir giriş denetleyicisi oluşturun][aks-ingress-internal]
+- [Dinamik bir genel IP adresi][aks-ingress-tls] veya [STATIK bir genel IP adresi][aks-ingress-static-tls] ile otomatik olarak TLS sertifikaları oluşturmak için şifrelemeyi kullanan bir giriş denetleyicisi oluşturun
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 
 <!-- LINKS - internal -->

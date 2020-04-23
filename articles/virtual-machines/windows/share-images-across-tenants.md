@@ -1,35 +1,33 @@
 ---
-title: Azure'da galeri resimlerini kiracılar arasında paylaşın
-description: Paylaşılan Resim Galerileri'ni kullanarak VM görüntülerini Azure kiracıları arasında nasıl paylaşılamayın gerektiğini öğrenin.
-services: virtual-machines-windows
+title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
+description: Paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c35799147d276bf4b6f07893b7cd975c5c5823c
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74065509"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101204"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galeri VM görüntülerini Azure kiracıları arasında paylaşın
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
 
-Paylaşılan Resim Galerileri, RBAC kullanarak görüntüleri paylaşmanıza izin sağlar. RBAC'ı kiracınızın içindeki görüntüleri paylaşmak için ve hatta kiracınızın dışındaki kişilerle bile kullanabilirsiniz. Bu basit paylaşım seçeneği hakkında daha fazla bilgi için [galeriyi Paylaş'a](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)bakın.
+Paylaşılan görüntü galerileri, RBAC kullanarak görüntüleri paylaşmanıza olanak sağlar. RBAC kullanarak kiracınızdaki görüntüleri paylaşabilir ve hatta kiracınızın dışındaki bireyler ekleyebilirsiniz. Bu basit paylaşım seçeneği hakkında daha fazla bilgi için [Galeriyi paylaşma](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)bölümüne bakın.
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 
 > [!IMPORTANT]
-> Portalı, başka bir azure kiracıdaki görüntüden vm dağıtmak için kullanamazsınız. Kiracılar arasında paylaşılan bir resimden Bir VM oluşturmak için [Azure CLI](../linux/share-images-across-tenants.md) veya Powershell'i kullanmanız gerekir.
+> Başka bir Azure kiracısındaki görüntüden bir VM dağıtmak için portalını kullanamazsınız. Kiracılar arasında paylaşılan bir görüntüden VM oluşturmak için [Azure CLI](../linux/share-images-across-tenants.md) veya PowerShell kullanmanız gerekir.
 
 ## <a name="create-a-vm-using-powershell"></a>PowerShell kullanarak VM oluşturma
 
-Uygulama kimliğini, gizli ve kiracı kimliğini kullanarak her iki kiracıya da giriş yapın. 
+Uygulama KIMLIĞI, gizli anahtar ve kiracı KIMLIĞINI kullanarak her iki kiracıda oturum açın. 
 
 ```azurepowershell-interactive
 $applicationId = '<App ID>'
@@ -42,7 +40,7 @@ Connect-AzAccount -ServicePrincipal -Credential $cred  -Tenant "<Tenant 1 ID>"
 Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant "<Tenant 2 ID>"
 ```
 
-Uygulama kaydında izni olan kaynak grubunda VM'yi oluşturun. Bu örnekteki bilgileri kendi kiyle değiştirin.
+Kaynak grubunda, uygulama kaydında izne sahip VM 'yi oluşturun. Bu örnekteki bilgileri kendi ile değiştirin.
 
 
 
@@ -86,4 +84,4 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure portalını](shared-images-portal.md)kullanarak paylaşılan resim galerisi kaynakları da oluşturabilirsiniz.
+Ayrıca, [Azure Portal](shared-images-portal.md)kullanarak paylaşılan görüntü Galerisi kaynakları da oluşturabilirsiniz.

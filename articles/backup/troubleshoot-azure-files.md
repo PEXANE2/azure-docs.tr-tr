@@ -1,73 +1,284 @@
 ---
-title: Azure Dosya Paylaşımlarını Yedekleme sorunlarını giderme
+title: Azure dosya paylaşımını yedekleme sorunlarını giderme
 description: Bu makalede, Azure dosya paylaşımlarınızın korunması sırasında oluşan sorunlarla ilgili sorun giderme bilgileri verilmektedir.
-ms.date: 08/20/2019
+ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252395"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100065"
 ---
-# <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Azure Dosya Paylaşımlarını yedekleme sorunlarını giderme
+# <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Azure dosya paylaşımlarını yedeklerken sorunları giderme
 
-Aşağıdaki tablolarda listelenen bilgilerle Azure Dosya Paylaşımları yedeklemesi kullanılırken karşılaşılan sorunları ve hataları giderebilirsiniz.
+Bu makalede, Azure Backup hizmetini kullanarak yedeklemeyi yapılandırırken veya Azure dosya paylaşımlarını geri yüklerken, içinde aldığınız herhangi bir sorunu gidermek için sorun giderme bilgileri sağlanmaktadır.
 
-## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Önizleme sırasında Azure dosya paylaşımı yedeklemesine yönelik sınırlamalar
+## <a name="common-configuration-issues"></a>Yaygın yapılandırma sorunları
 
-Azure Dosya paylaşımları için yedekleme, Önizleme aşamasındadır. Hem genel amaçlı v1 hem de genel amaçlı v2 depolama hesaplarındaki Azure Dosya Paylaşımları desteklenir. Aşağıdaki yedekleme senaryoları, Azure dosya paylaşımları için desteklenmemektedir:
+### <a name="could-not-find-my-storage-account-to-configure-backup-for-the-azure-file-share"></a>Azure dosya paylaşımının yedeklemesini yapılandırmak için depolama Hesabım bulunamadı
 
-- Azure Yedekleme'yi kullanarak Azure Dosyalarını korumak için kullanılabilir CLI yok.
-- Günlük zamanlanan maksimum yedekleme sayısı birdir.
-- Günlük zamanlanan maksimum istek üzerine yedekleme sayısı dörttür.
-- Kurtarma Hizmetleri kasanızdaki yedeklemelerin yanlışlıkla silinmesini önlemek için depolama hesabındaki [kaynak kilitlerini](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest) kullanın.
-- Azure Backup tarafından oluşturulan anlık görüntülerin silmeyin. Anlık görüntülerin silinmesi, kurtarma noktalarının kaybolması ve/veya geri yükleme işlemlerinin başarısız olmasıyla sonuçlanabilir
-- Azure Yedekleme tarafından korunan dosya paylaşımlarını silmeyin. Geçerli çözüm, dosya paylaşımı silindikten sonra Azure Yedekleme tarafından çekilen tüm anlık görüntüleri siler ve dolayısıyla tüm geri yükleme noktalarını kaybeder
+- Bulma işlemi tamamlanana kadar bekleyin.
+- Depolama hesabı altındaki herhangi bir dosya paylaşımının zaten başka bir kurtarma hizmetleri kasasıyla korunuyor olup olmadığını denetleyin.
 
-[Bölge yedekdepolama](../storage/common/storage-redundancy-zrs.md) (ZRS) çoğaltma ile Depolama HesaplarındaAzure Dosya Paylaşımları yedeklemesi şu anda yalnızca Orta ABD (CUS), Doğu ABD (EUS), Doğu ABD 2 (EUS2), Kuzey Avrupa (NE), Güneydoğu Asya (SEA), Batı Avrupa (WE) ve Batı ABD 2'de (WUS2) kullanılabilir.
+  >[!NOTE]
+  >Bir depolama hesabındaki tüm dosya paylaşımları yalnızca bir kurtarma hizmetleri Kasası altında korunabilir. Depolama hesabınızın kaydedildiği kurtarma hizmetleri kasasını bulmak için [bu betiği](scripts/backup-powershell-script-find-recovery-services-vault.md) kullanabilirsiniz.
 
-## <a name="configuring-backup"></a>Yedeklemeyi yapılandırma
+- Dosya paylaşımının desteklenmeyen depolama hesaplarında bulunmadığından emin olun. Desteklenen depolama hesaplarını bulmak için [Azure dosya paylaşma yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) başvurabilirsiniz.
 
-Aşağıdaki tablo, yedeklemenin yapılandırılmasına yöneliktir:
+### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Portal durumlarında hata oluştu, depolama hesaplarını bulma işlemi başarısız oldu
 
-| Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
-| ------------------ | ----------------------------- |
-| Azure dosya paylaşımına yönelik yedeklemeyi yapılandırmak için Depolama Hesabımı bulamıyorum | <ul><li>Bulma işlemi tamamlanana kadar bekleyin. <li>Depolama hesabından herhangi bir Dosya paylaşımının zaten başka bir Kurtarma Hizmetleri kasası ile korunup korunmadığını denetleyin. **Not**: Bir Depolama Hesabındaki tüm dosya paylaşımları tek bir Kurtarma Hizmetleri kasası kapsamında korunabilir. <li>Desteklenmeyen herhangi bir Depolama Hesabında Dosya paylaşımının mevcut olmadığından emin olun.<li> Bu depolama hesabı onay **kutusuna erişmek için güvenilen Microsoft hizmetlerine izin** verin, depolama hesabında işaretlenmiştir. [Daha fazla bilgi edinin.](../storage/common/storage-network-security.md)|
-| Portal durumlarında hata oluştu. Depolama hesaplarını bulma işlemi başarısız oldu. | Aboneliğiniz iş ortağı hesabıysa (CSP etkin) hatayı yoksayın. Aboneliğinizde CSP etkin değilse ve depolama hesaplarınız bulunamıyorsa desteğe başvurun.|
-| Seçilen Depolama Hesabı doğrulaması veya kaydı başarısız oldu.| İşlemi yeniden deneyin, sorun devam ederse desteğe başvurun.|
-| Seçilen Depolama Hesabında Dosya paylaşımları listelenemedi veya bulunamadı. | <ul><li> Kaynak Grubunda Depolama Hesabının mevcut olduğundan (ve silinmediğinden veya kasadaki son doğrulamadan/kayıttan sonra taşınmadığından) emin olun.<li>Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun. <li>Depolama Hesabının, Dosya paylaşımı yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun.<li>Dosya paylaşımının, aynı Kurtarma Hizmetleri kasasında zaten korumalı olup olmadığını denetleyin.|
-| Yedekleme Dosyası paylaşım yapılandırması (veya koruma ilkesi yapılandırması) başarısız oluyor. | <ul><li>Sorunun devam edip etmediğini görmek için işlemi yeniden deneyin. <li> Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun. <li> Aynı anda birden çok Dosya paylaşımını korumaya çalışıyorsanız ve dosya paylaşımlarının bir kısmı başarısız oluyorsa başarısız Dosya paylaşımları için yedeklemeyi yapılandırmayı tekrar deneyin. |
-| Bir Dosya paylaşımının koruması kaldırıldıktan sonra Kurtarma Hizmetleri kasası silinemiyor. | Azure portalında Vault > **Yedekleme Altyapı** > **Depolama hesaplarınızı** açın ve Kurtarma Hizmetleri kasasından depolama hesabını kaldırmak için **Kayıt Dışı'yı** tıklatın.|
+Bir iş ortağı aboneliğiniz varsa (CSP etkin), hatayı yoksayın. Aboneliğiniz CSP etkinleştirilmemişse ve depolama hesaplarınız bulunamadıysa, desteğe başvurun.
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Yedekleme veya iş hatalarını geri yükleme için hata iletileri
+### <a name="selected-storage-account-validation-or-registration-failed"></a>Seçilen depolama hesabı doğrulaması veya kaydı başarısız oldu
 
-| Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
-| -------------- | ----------------------------- |
-| Dosya paylaşımı bulunamadığından işlem başarısız oldu. | Korumak istediğiniz Dosya paylaşımının silinmemiş olduğundan emin olun.|
-| Depolama hesabı bulunamadı veya desteklenmiyor. | <ul><li>Depolama hesabının Kaynak Grubunda mevcut olduğundan ve silinmediğinden veya son doğrulamadan sonra Kaynak Grubundan kaldırılmadığından emin olun. <li> Depolama hesabının, Dosya paylaşımı yedeklemesi için desteklenen bir Depolama hesabı olduğundan emin olun.|
-| Bu dosya paylaşımı için anlık görüntü sayısı üst sınırına ulaştınız, eski görüntülerin süresi dolduktan sonra yenilerini almanız mümkün olacaktır. | <ul><li> Bu hata, bir Dosya için birden fazla isteğe bağlı yedekleme oluşturduğunuzda oluşabilir. <li> Azure Backup tarafından alınanlar da dahil olmak üzere, Dosya paylaşımı başına 200 anlık görüntü sınırı söz konusudur. Zamanlanmış olan daha eski yedeklemeler (veya anlık görüntüler) otomatik olarak temizlenir. Üst sınıra ulaşılırsa isteğe bağlı yedeklemelerin (veya anlık görüntülerin) silinmesi gerekir.<li> Azure Dosyaları portalından isteğe bağlı yedeklemeleri (Azure dosya paylaşımı anlık görüntülerini) silin. **Not**: Azure Backup tarafından oluşturulan anlık görüntüleri silerseniz kurtarma noktalarını kaybedersiniz. |
-| Depolama hizmeti azaltması nedeniyle Dosya paylaşımını yedekleme veya geri yükleme başarısız oldu. Bunun sebebi, depolama hizmetinin, söz konusu depolama hesabına yönelik diğer istekleri işlemekle meşgul olmasından kaynaklanıyor olabilir.| Bir süre sonra işlemi yeniden deneyin. |
-| Hedef Dosya Paylaşımı Bulunamadı hatası ile geri yükleme başarısız oldu. | <ul><li>Seçilen Depolama Hesabının mevcut olduğundan ve Hedef Dosya paylaşımının silinmediğinden emin olun. <li> Depolama Hesabının, Dosya paylaşımı yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun. |
-| Depolama hesabının Kilitli durumda olması nedeniyle Yedekleme veya Geri Yükleme işleri başarısız oldu. | Depolama Hesabı üzerindeki kilidi kaldırın veya okuma kilidi yerine silme kilidini kullanarak işlemi yeniden deneyin. |
-| Başarısız dosyaların sayısı, eşik değerinden daha fazla olduğu için kurtarma başarısız oldu. | <ul><li> Kurtarma hatası nedenleri bir dosyada listelenmektedir. (Yol, İş ayrıntılarında belirtilir.) Lütfen hataları giderin ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin. <li> Dosya geri yükleme hatalarının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması, <br/> - Üst dizinde başarısız dosyayla aynı ada sahip bir dizinin mevcut olması. |
-| Hiçbir dosya kurtarılamadığı için kurtarma başarısız oldu. | <ul><li> Kurtarma hatası nedenleri bir dosyada listelenmektedir. (Yol, İş ayrıntılarında belirtilir.) Hataları giderin ve yalnızca başarısız dosyalar için geri yükleme işlemlerini yeniden deneyin. <li> Dosya geri yükleme hatasının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması. <br/> - Üst dizinde başarısız dosyayla aynı ada sahip bir dizinin mevcut olması. |
-| Kaynaktaki dosyalardan biri mevcut olmadığından geri yüklemenin başarısız olmaktadır. | <ul><li> Seçilen öğeler kurtarma noktası verilerinde mevcut değildir. Dosyaları kurtarmak için doğru dosya listesini sağlayın. <li> Kurtarma noktasına karşılık gelen dosya paylaşımı anlık görüntüsü el ile silindi. Farklı bir kurtarma noktası seçin ve geri yükleme işlemini yeniden deneyin. |
-| Aynı hedefe yönelik olarak devam eden bir Kurtarma işi mevcuttur. | <ul><li>Dosya paylaşımı yedeklemesi, aynı hedef Dosya paylaşımına yönelik paralel kurtarmayı desteklememektedir. <li>Mevcut kurtarma işleminin tamamlanmasını bekleyip tekrar deneyin. Kurtarma Hizmetleri kasasında bir kurtarma işi bulamazsanız aynı abonelikte yer alan diğer Kurtarma Hizmetleri kasalarını denetleyin. |
-| Hedef dosya paylaşımı dolu olduğundan geri yükleme işlemi başarısız olmuştur. | Hedef dosya paylaşımı için boyut kotasını geri yükleme verilerine uyacak şekilde artırın ve işlemi yeniden deneyin. |
-| Hedef dosya paylaşımı ile ilişkili Dosya Eşitleme Hizmeti kaynaklarında geri yükleme öncesi işlemler gerçekleştirilirken bir hata oluştuğundan geri yükleme işlemi başarısız oldu. | Lütfen daha sonra yeniden deneyin, sorun devam ederse lütfen Microsoft desteğine başvurun. |
-| Bir veya daha fazla dosyayı kurtarma başarısız oldu. Daha fazla bilgi için, yukarıda verilen yoldaki başarısız dosya listesini kontrol edin. | <ul> <li> Kurtarma hatasının nedenleri dosyada listelenmektedir (yol, İş ayrıntılarında belirtilir), nedenleri giderin ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin. <li> Dosya geri yükleme hatalarının sık karşılaşılan nedenleri şunlardır: <br/> - Başarısız dosyaların o sırada kullanımda olması. <br/> - Üst dizinde başarısız dosyalarla aynı ada sahip bir dizinin mevcut olması. |
+Kaydı yeniden deneyin. Sorun devam ederse desteğe başvurun.
 
-## <a name="modify-policy"></a>İlkeyi değiştir
+### <a name="could-not-list-or-find-file-shares-in-the-selected-storage-account"></a>Seçili depolama hesabında dosya paylaşımları listelenemedi veya bulunamadı
 
-| Hata iletileri | Geçici çözüm veya çözümleme ipuçları |
-| ------------------ | ----------------------------- |
-| Bu öğe için başka bir yapılandırma koruma işlemi devam ediyor. | Lütfen önceki değişiklik ilkesi işleminin bir süre sonra bitip yeniden denemesini bekleyin.|
-| Seçili öğe üzerinde başka bir işlem devam ediyor. | Lütfen diğer devam eden işlemin tamamlanmasını ve bir süre sonra yeniden denemesini bekleyin |
+- Depolama hesabının kaynak grubunda mevcut olduğundan ve silinmemiş ya da kasadaki son doğrulamadan veya kayıttan sonra taşınmadığından emin olun.
+- Korumak istediğiniz dosya paylaşımının silinmediğinden emin olun.
+- Depolama hesabının dosya paylaşma yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun. Desteklenen depolama hesaplarını bulmak için [Azure dosya paylaşma yedeklemesi Için destek matrisine](azure-file-share-support-matrix.md) başvurabilirsiniz.
+- Dosya paylaşımının aynı kurtarma hizmetleri kasasında zaten korumalı olup olmadığını denetleyin.
+
+### <a name="backup-file-share-configuration-or-the-protection-policy-configuration-is-failing"></a>Yedekleme dosya paylaşma yapılandırması (veya koruma ilkesi yapılandırması) başarısız oluyor
+
+- Sorunun devam edip etmediğini görmek için yapılandırmayı yeniden deneyin.
+- Korumak istediğiniz dosya paylaşımının silinmediğinden emin olun.
+- Aynı anda birden çok dosya paylaşımını korumaya çalışıyorsanız ve dosya paylaşımlarının bazıları başarısız olursa, başarısız dosya paylaşımları için yedeklemeyi yapılandırmayı yeniden deneyin.
+
+### <a name="unable-to-delete-the-recovery-services-vault-after-unprotecting-a-file-share"></a>Dosya paylaşımının korumasını kaldırdıktan sonra kurtarma hizmetleri Kasası silinemiyor
+
+Azure Portal, **kasa** > **Yedekleme altyapısı** > **depolama hesaplarınızı** açın ve kurtarma hizmetleri kasasından depolama hesaplarını kaldırmak için **kayıt Sil** ' e tıklayın.
+
+>[!NOTE]
+>Kurtarma Hizmetleri Kasası, yalnızca kasaya kayıtlı tüm depolama hesaplarının kaydı kaldırıldıktan sonra silinebilir.
+
+## <a name="common-backup-or-restore-errors"></a>Ortak yedekleme veya geri yükleme hataları
+
+### <a name="filesharenotfound--operation-failed-as-the-file-share-is-not-found"></a>Dosya paylaşma bulunamadığı için FileShareNotFound-Işlem başarısız oldu
+
+Hata kodu: FileShareNotFound
+
+Hata Iletisi: dosya paylaşma bulunamadığı için Işlem başarısız oldu
+
+Korumaya çalıştığınız dosya paylaşımının silinmemiş olduğundan emin olun.
+
+### <a name="usererrorfileshareendpointunreachable--storage-account-not-found-or-not-supported"></a>UserErrorFileShareEndpointUnreachable-depolama hesabı bulunamadı veya desteklenmiyor
+
+Hata kodu: UserErrorFileShareEndpointUnreachable
+
+Hata Iletisi: depolama hesabı bulunamadı veya desteklenmiyor
+
+- Depolama hesabının kaynak grubunda mevcut olduğundan ve son doğrulamadan sonra silinmemiş veya kaynak grubundan kaldırılmadığından emin olun.
+
+- Depolama hesabının dosya paylaşma yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun.
+
+### <a name="afsmaxsnapshotreached--you-have-reached-the-max-limit-of-snapshots-for-this-file-share-you-will-be-able-to-take-more-once-the-older-ones-expire"></a>Afsmaxsnapshotulaşıldı-bu dosya paylaşımının en fazla anlık görüntü sınırına ulaştınız; eskilerinin süreleri dolduğunda daha fazla bilgi alabilirsiniz
+
+Hata kodu: Afsmaxsnapshotulaşıldı
+
+Hata Iletisi: Bu dosya paylaşımının en fazla anlık görüntü sınırına ulaştınız; daha eski bir süre sona erdiğinde daha fazla işlem yapabilirsiniz.
+
+- Bu hata, bir dosya paylaşımında birden çok isteğe bağlı yedekleme oluşturduğunuzda ortaya çıkabilir.
+- Azure Backup tarafından alınanları içeren dosya paylaşımında 200 anlık görüntü sınırı vardır. Zamanlanmış olan daha eski yedeklemeler (veya anlık görüntüler) otomatik olarak temizlenir. Üst sınıra ulaşılırsa isteğe bağlı yedeklemelerin (veya anlık görüntülerin) silinmesi gerekir.
+
+Azure Dosyaları portalından isteğe bağlı yedeklemeleri (Azure dosya paylaşımı anlık görüntülerini) silin.
+
+>[!NOTE]
+> Azure Backup tarafından oluşturulan anlık görüntüleri silerseniz kurtarma noktalarını kaybedersiniz.
+
+### <a name="usererrorstorageaccountnotfound--operation-failed-as-the-specified-storage-account-does-not-exist-anymore"></a>UserErrorStorageAccountNotFound-belirtilen depolama hesabı artık olmadığı için Işlem başarısız oldu
+
+Hata kodu: UserErrorStorageAccountNotFound
+
+Hata Iletisi: belirtilen depolama hesabı artık olmadığı için Işlem başarısız oldu.
+
+Depolama hesabının hala mevcut olduğundan ve silinmediğinden emin olun.
+
+### <a name="usererrordtsstorageaccountnotfound--the-storage-account-details-provided-are-incorrect"></a>UserErrorDTSStorageAccountNotFound-belirtilen depolama hesabı ayrıntıları yanlış
+
+Hata kodu: UserErrorDTSStorageAccountNotFound
+
+Hata Iletisi: belirtilen depolama hesabı ayrıntıları hatalı.
+
+Depolama hesabının hala mevcut olduğundan ve silinmediğinden emin olun.
+
+### <a name="usererrorresourcegroupnotfound--resource-group-doesnt-exist"></a>UserErrorResourceGroupNotFound-kaynak grubu yok
+
+Hata kodu: UserErrorResourceGroupNotFound
+
+Hata Iletisi: kaynak grubu yok
+
+Var olan bir kaynak grubunu seçin veya yeni bir kaynak grubu oluşturun.
+
+### <a name="parallelsnapshotrequest--a-backup-job-is-already-in-progress-for-this-file-share"></a>ParallelSnapshotRequest-bu dosya paylaşımında bir yedekleme işi zaten devam ediyor
+
+Hata kodu: ParallelSnapshotRequest
+
+Hata Iletisi: Bu dosya paylaşımında bir yedekleme işi zaten devam ediyor.
+
+- Dosya paylaşma yedeklemesi, aynı dosya paylaşımında paralel anlık görüntü isteklerini desteklemez.
+
+- Mevcut yedekleme işinin bitmesini bekleyin ve sonra yeniden deneyin. Kurtarma Hizmetleri kasasında bir yedekleme işi bulamıyorsanız, aynı abonelikte diğer kurtarma hizmetleri kasalarını kontrol edin.
+
+### <a name="filesharebackupfailedwithazurerprequestthrottling-filesharerestorefailedwithazurerprequestthrottling--file-share-backup-or-restore-failed-due-to-storage-service-throttling-this-may-be-because-the-storage-service-is-busy-processing-other-requests-for-the-given-storage-account"></a>Filesharebackupfailedwithazurerprequestazaltma/FileshareRestoreFailedWithAzureRpRequestThrottling-dosya paylaşım yedeklemesi veya geri yükleme depolama hizmeti azaltma nedeniyle başarısız oldu. Bunun nedeni, depolama hizmetinin verilen depolama hesabı için diğer istekleri işlemekle meşgul olması olabilir
+
+Hata kodu: Filesharebackupfailedwithazurerprequestazaltma/FileshareRestoreFailedWithAzureRpRequestThrottling
+
+Hata Iletisi: depolama hizmeti azaltma nedeniyle dosya paylaşma yedeklemesi veya geri yüklemesi başarısız oldu. Bunun sebebi, depolama hizmetinin, söz konusu depolama hesabına yönelik diğer istekleri işlemekle meşgul olmasından kaynaklanıyor olabilir.
+
+Yedekleme/geri yükleme işlemini daha sonra deneyin.
+
+### <a name="targetfilesharenotfound--target-file-share-not-found"></a>TargetFileShareNotFound-hedef dosya paylaşma bulunamadı
+
+Hata kodu: TargetFileShareNotFound
+
+Hata Iletisi: hedef dosya paylaşma bulunamadı.
+
+- Seçili depolama hesabının var olduğundan ve hedef dosya paylaşımının silinmediğinden emin olun.
+
+- Depolama hesabının dosya paylaşma yedeklemesi için desteklenen bir depolama hesabı olduğundan emin olun.
+
+### <a name="usererrorstorageaccountislocked--backup-or-restore-jobs-failed-due-to-storage-account-being-in-locked-state"></a>Usererrorstorageaccountııkilitlenen-yedekleme veya geri yükleme işleri depolama hesabının kilitli durumda olması nedeniyle başarısız oldu
+
+Hata kodu: Usererrorstorageaccountıkilitleme
+
+Hata Iletisi: depolama hesabının kilitli durumda olmasından dolayı yedekleme veya geri yükleme işleri başarısız oldu.
+
+Depolama hesabındaki kilidi kaldırın veya **okuma kilidi** yerine **silme kilidi** kullanın ve yedekleme veya geri yükleme işlemini yeniden deneyin.
+
+### <a name="datatransferservicecoflimitreached--recovery-failed-because-number-of-failed-files-are-more-than-the-threshold"></a>Hatalı dosya sayısı eşikten daha fazla olduğu için DataTransferServiceCoFLimitReached-Recovery başarısız oldu
+
+Hata kodu: DataTransferServiceCoFLimitReached
+
+Hata Iletisi: başarısız dosya sayısı eşikten fazla olduğundan kurtarma başarısız oldu.
+
+- Kurtarma hatası nedenleri bir dosyada (iş ayrıntılarında belirtilen yol) listelenir. Hatalara yönelik sorunları giderin ve geri yükleme işlemini yalnızca başarısız dosyalar için yeniden deneyin.
+
+- Dosya geri yükleme hatalarının sık karşılaşılan nedenleri:
+
+  - başarısız olan dosyalar şu anda kullanımda
+  - üst dizinde başarısız olan dosyayla aynı ada sahip bir dizin var.
+
+### <a name="datatransferserviceallfilesfailedtorecover--recovery-failed-as-no-file-could-be-recovered"></a>DataTransferServiceAllFilesFailedToRecover, hiçbir dosya kurtarılamadığından kurtarma başarısız oldu
+
+Hata kodu: DataTransferServiceAllFilesFailedToRecover
+
+Hata Iletisi: hiçbir dosya kurtarılamadığından kurtarma başarısız oldu.
+
+- Kurtarma hatası nedenleri bir dosyada (iş ayrıntılarında belirtilen yol) listelenir. Hataları giderin ve yalnızca başarısız dosyalar için geri yükleme işlemlerini yeniden deneyin.
+
+- Dosya geri yükleme hatalarının sık karşılaşılan nedenleri:
+
+  - başarısız olan dosyalar şu anda kullanımda
+  - üst dizinde başarısız olan dosyayla aynı ada sahip bir dizin var.
+
+### <a name="usererrordtssourceurinotvalid---restore-fails-because-one-of-the-files-in-the-source-does-not-exist"></a>Usererrordtssourceurınotvalid-kaynaktaki dosyalardan biri mevcut olmadığından geri yükleme başarısız oluyor
+
+Hata kodu: Datatransferservicesourceurınotvalid
+
+Hata Iletisi: kaynaktaki dosyalardan biri mevcut olmadığından geri yükleme başarısız olur.
+
+- Seçilen öğeler kurtarma noktası verilerinde mevcut değildir. Dosyaları kurtarmak için doğru dosya listesini sağlayın.
+- Kurtarma noktasına karşılık gelen dosya paylaşımı anlık görüntüsü el ile silindi. Farklı bir kurtarma noktası seçin ve geri yükleme işlemini yeniden deneyin.
+
+### <a name="usererrordtsdestlocked--a-recovery-job-is-in-process-to-the-same-destination"></a>Usererrordtsdestkilitlendi-aynı hedefe yönelik bir kurtarma işi var
+
+Hata kodu: Usererrordtsdestkilitlendi
+
+Hata Iletisi: bir kurtarma işi aynı hedefe yönelik bir işlemdir.
+
+- Dosya paylaşma yedeklemesi, aynı hedef dosya paylaşımında paralel kurtarmayı desteklemez.
+
+- Mevcut kurtarma işleminin tamamlanmasını bekleyip tekrar deneyin. Kurtarma Hizmetleri kasasında bir kurtarma işi bulamıyorsanız, aynı abonelikte diğer kurtarma hizmetleri kasalarını kontrol edin.
+
+### <a name="usererrortargetfilesharefull--restore-operation-failed-as-target-file-share-is-full"></a>Hedef dosya paylaşım dolu olduğundan UserErrorTargetFileShareFull-restore işlemi başarısız oldu
+
+Hata kodu: UserErrorTargetFileShareFull
+
+Hata Iletisi: hedef dosya paylaşma dolu olduğu için geri yükleme işlemi başarısız oldu.
+
+Hedef dosya paylaşımının boyut kotasını geri yükleme verilerine uyacak şekilde artırın ve geri yükleme işlemini yeniden deneyin.
+
+### <a name="usererrortargetfilesharequotanotsufficient--target-file-share-does-not-have-sufficient-storage-size-quota-for-restore"></a>Usererrortargetfilesharequotanotyetecek-Target dosya paylaşımının geri yükleme için yeterli depolama boyutu kotası yok
+
+Hata kodu: Usererrortargetfilesharequotanotyeterince
+
+Hata Iletisi: hedef dosya paylaşımının geri yükleme için yeterli depolama boyutu kotası yok
+
+Hedef dosya paylaşımının boyut kotasını geri yükleme verilerine uyacak şekilde artırın ve işlemi yeniden deneyin
+
+### <a name="file-sync-prerestorefailed--restore-operation-failed-as-an-error-occurred-while-performing-pre-restore-operations-on-file-sync-service-resources-associated-with-the-target-file-share"></a>Dosya Eşitleme PreRestoreFailed-geri yükleme işlemi, hedef dosya paylaşımıyla ilişkili Dosya Eşitleme hizmeti kaynakları üzerinde önceden geri yükleme işlemleri gerçekleştirilirken bir hata oluştuğundan başarısız oldu
+
+Hata kodu: Dosya Eşitleme PreRestoreFailed
+
+Hata Iletisi: hedef dosya paylaşımıyla ilişkili Dosya Eşitleme hizmet kaynaklarında ön geri yükleme işlemleri gerçekleştirilirken bir hata oluştuğundan geri yükleme işlemi başarısız oldu.
+
+Verileri daha sonra geri yüklemeyi deneyin. Sorun devam ederse, Microsoft desteğine başvurun.
+
+### <a name="azurefilesyncchangedetectioninprogress--azure-file-sync-service-change-detection-is-in-progress-for-the-target-file-share-the-change-detection-was-triggered-by-a-previous-restore-to-the-target-file-share"></a>AzureFileSyncChangeDetectionInProgress-Azure Dosya Eşitleme hizmet değişikliği algılaması hedef dosya paylaşımında devam ediyor. Değişiklik algılama, hedef dosya paylaşımında önceki bir geri yükleme tarafından tetiklendi
+
+Hata kodu: AzureFileSyncChangeDetectionInProgress
+
+Hata Iletisi: hedef dosya paylaşımında Azure Dosya Eşitleme hizmet değişikliği algılaması devam ediyor. Değişiklik algılama, hedef dosya paylaşımında önceki bir geri yükleme tarafından tetiklendi.
+
+Farklı bir hedef dosya paylaşma kullanın. Alternatif olarak, geri yüklemeyi yeniden denemeden önce hedef dosya paylaşımında Azure Dosya Eşitleme hizmet değişikliği algılamanın tamamlanmasını bekleyebilirsiniz.
+
+### <a name="usererrorafsrecoverysomefilesnotrestored--one-or-more-files-could-not-be-recovered-successfully-for-more-information-check-the-failed-file-list-in-the-path-given-above"></a>Usererrorafsrecoverysomefilesnotgeri yüklendi-bir veya daha fazla dosya başarıyla kurtarılamadı. Daha fazla bilgi için yukarıda verilen yoldaki başarısız dosya listesini denetleyin
+
+Hata kodu: Usererrorafsrecoverysomefilesnotgeri yüklendi
+
+Hata Iletisi: bir veya daha fazla dosya başarıyla kurtarılamadı. Daha fazla bilgi için, yukarıda verilen yoldaki başarısız dosya listesini kontrol edin.
+
+- Kurtarma hatası nedenleri dosyada (Iş ayrıntılarında belirtilen yol) listelenmiştir. Nedenleri çözün ve yalnızca başarısız dosyalar için geri yükleme işlemini yeniden deneyin.
+- Dosya geri yükleme hatalarının sık karşılaşılan nedenleri:
+
+  - başarısız olan dosyalar şu anda kullanımda
+  - üst dizinde başarısız olan dosyayla aynı ada sahip bir dizin var.
+
+### <a name="usererrorafssourcesnapshotnotfound--azure-file-share-snapshot-corresponding-to-recovery-point-cannot-be-found"></a>UserErrorAFSSourceSnapshotNotFound-kurtarma noktasına karşılık gelen Azure dosya paylaşımının anlık görüntüsü bulunamıyor
+
+Hata kodu: UserErrorAFSSourceSnapshotNotFound
+
+Hata Iletisi: kurtarma noktasına karşılık gelen Azure dosya paylaşımının anlık görüntüsü bulunamıyor
+
+- Kurtarma için kullanmaya çalıştığınız kurtarma noktasına karşılık gelen dosya paylaşımının anlık görüntüsünün hala mevcut olduğundan emin olun.
+
+  >[!NOTE]
+  >Azure Backup tarafından oluşturulan bir dosya paylaşımının anlık görüntüsünü silerseniz, ilgili kurtarma noktaları kullanılamaz hale gelir. Garantili kurtarmanın güvence altına almak için anlık görüntüleri silmemesini öneririz.
+
+- Verilerinizi kurtarmak için başka bir geri yükleme noktası seçmeyi deneyin.
+
+### <a name="usererroranotherrestoreinprogressonsametarget--another-restore-job-is-in-progress-on-the-same-target-file-share"></a>UserErrorAnotherRestoreInProgressOnSameTarget-aynı hedef dosya paylaşımında başka bir geri yükleme işi devam ediyor
+
+Hata kodu: UserErrorAnotherRestoreInProgressOnSameTarget
+
+Hata Iletisi: başka bir geri yükleme işi aynı hedef dosya paylaşımında devam ediyor
+
+Farklı bir hedef dosya paylaşma kullanın. Alternatif olarak, iptal edebilir veya diğer geri yüklemenin tamamlanmasını bekleyebilirsiniz.
+
+## <a name="common-modify-policy-errors"></a>Ortak ilke hatalarını değiştirme
+
+### <a name="bmsusererrorconflictingprotectionoperation--another-configure-protection-operation-is-in-progress-for-this-item"></a>BMSUserErrorConflictingProtectionOperation-bu öğe için başka bir yapılandırma koruma işlemi devam ediyor
+
+Hata kodu: BMSUserErrorConflictingProtectionOperation
+
+Hata Iletisi: Bu öğe için başka bir yapılandırma koruma işlemi devam ediyor.
+
+Önceki değiştirme ilkesi işleminin bitmesini bekleyin ve daha sonra yeniden deneyin.
+
+### <a name="bmsusererrorobjectlocked--another-operation-is-in-progress-on-the-selected-item"></a>Bmsusererrorobjectkilitlendi-seçili öğede başka bir işlem devam ediyor
+
+Hata kodu: Bmsusererrorobjectkilitlendi
+
+Hata Iletisi: seçili öğede başka bir işlem devam ediyor.
+
+Devam eden diğer işlemin tamamlanmasını bekleyin ve daha sonra yeniden deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dosya paylaşımlarını yedekleme hakkında daha fazla bilgi için bkz:
+Azure dosya paylaşımlarını yedekleme hakkında daha fazla bilgi için bkz.:
 
 - [Azure dosya paylaşımlarını yedekleme](backup-afs.md)
 - [Azure dosya paylaşımlarını yedekleme ile ilgili SSS](backup-azure-files-faq.md)

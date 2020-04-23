@@ -1,7 +1,7 @@
 ---
-title: Web API(mobil uygulamalar) aramak için bir belirteç edinin | Azure
+title: Bir Web API 'SI çağırmak için belirteç alma (mobil uygulamalar) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Web API'lerini çağıran bir mobil uygulama nın nasıl oluşturulabildiğini öğrenin. (Uygulama için bir belirteç alın.)
+description: Web API 'Lerini çağıran bir mobil uygulama oluşturmayı öğrenin. (Uygulama için bir belirteç alın.)
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,22 +13,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: a77e6c9086a745804c23f431f633d530e2655f16
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868890"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098909"
 ---
-# <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API'lerini çağıran bir mobil uygulama için belirteç alma
+# <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Web API 'Lerini çağıran bir mobil uygulama için belirteç alın
 
-Uygulamanız korumalı web API'lerini arayabilmesi için önce bir erişim belirteci gerekir. Bu makale, Microsoft Kimlik Doğrulama Kitaplığı (MSAL) kullanarak bir belirteç almak için işlem boyunca size yol.
+Uygulamanız korunan Web API 'Lerini çağırabilmeniz için bir erişim belirtecine ihtiyaç duyuyor. Bu makalede, Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteci almak için işlem adım adım açıklanmaktadır.
 
 ## <a name="define-a-scope"></a>Kapsam tanımlama
 
-Bir belirteç isteğinde bulunduğunuzda, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın hangi verilere erişebileceğini belirler.
+Bir belirteç istediğinizde, bir kapsam tanımlamanız gerekir. Kapsam, uygulamanızın erişebileceği verileri belirler.
 
-Bir kapsamı tanımlamanın en kolay yolu, istenen web `App ID URI` API'larını kapsamla `.default`birleştirmektir. Bu tanım, Microsoft kimlik platformuna uygulamanızın portalda ayarlanan tüm kapsamları gerektirdiğini söyler.
+Kapsam tanımlamanın en kolay yolu, istenen Web API 'sini kapsam `App ID URI` `.default`ile birleştirmenin bir yoludur. Bu tanım, uygulamanızın portalda ayarlanan tüm kapsamları gerektirip gerektirmediğini Microsoft Identity platformunu söyler.
 
 ### <a name="android"></a>Android
 ```Java
@@ -45,11 +45,11 @@ let scopes = ["https://graph.microsoft.com/.default"]
 var scopes = new [] {"https://graph.microsoft.com/.default"};
 ```
 
-## <a name="get-tokens"></a>Jeton alın
+## <a name="get-tokens"></a>Belirteçleri al
 
-### <a name="acquire-tokens-via-msal"></a>MSAL üzerinden jeton edinme
+### <a name="acquire-tokens-via-msal"></a>Belirteçleri MSAL aracılığıyla alma
 
-MSAL, uygulamaların jetonları sessizce ve etkileşimli olarak edinmesine olanak tanır. `AcquireTokenSilent()` Aradığınızda `AcquireTokenInteractive()`veya , MSAL istenen kapsamlar için bir erişim belirteci döndürür. Doğru desen sessiz bir istek te ve daha sonra etkileşimli bir istek geri düşmek etmektir.
+MSAL, uygulamaların belirteçleri sessizce ve etkileşimli olarak almasına izin verir. Veya `AcquireTokenInteractive()`öğesini çağırdığınızda `AcquireTokenSilent()` , msal istenen kapsamlar için bir erişim belirteci döndürür. Doğru model, sessiz bir istek yapmak ve sonra etkileşimli bir isteğe geri dönmelidir.
 
 #### <a name="android"></a>Android
 
@@ -83,7 +83,7 @@ sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
 
 #### <a name="ios"></a>iOS
 
-İlk sessizce bir belirteç edinme deneyin:
+Önce bir belirteci sessizce almaya çalışın:
 
 ```objc
 
@@ -145,7 +145,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 }
 ```
 
-MSAL dönerse, `MSALErrorInteractionRequired`belirteçleri etkileşimli olarak edinmeyi deneyin:
+MSAL dönerse `MSALErrorInteractionRequired`belirteçleri etkileşimli olarak almaya çalışın:
 
 ```objc
 UIViewController *viewController = ...; // Pass a reference to the view controller that should be used when getting a token interactively
@@ -179,14 +179,14 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 })
 ```
 
-iOS ve macOS için MSAL, etkileşimli veya sessizce bir belirteç elde etmek için çeşitli değiştiriciler destekler:
+İOS ve macOS için MSAL, bir belirteci etkileşimli veya sessizce almak için çeşitli değiştiriciler destekler:
 * [Belirteç almak için ortak parametreler](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALTokenParameters.html#/Configuration%20parameters)
-* [Etkileşimli belirteç almak için parametreler](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
-* [Sessiz bir belirteç almak için parametreler](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
+* [Etkileşimli belirteç alma parametreleri](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALInteractiveTokenParameters.html#/Configuring%20MSALInteractiveTokenParameters)
+* [Sessiz belirteç alma parametreleri](https://azuread.github.io/microsoft-authentication-library-for-objc/Classes/MSALSilentTokenParameters.html)
 
 #### <a name="xamarin"></a>Xamarin
 
-Aşağıdaki örnekte, etkileşimli olarak bir belirteç almak için en az kodu gösterilmektedir. Örnek, kullanıcının profilini okumak için Microsoft Graph'ı kullanır.
+Aşağıdaki örnek, bir belirteci etkileşimli olarak almak için minimum kodu gösterir. Örnek, kullanıcının profilini okumak için Microsoft Graph kullanır.
 
 ```csharp
 string[] scopes = new string[] {"user.read"};
@@ -205,45 +205,45 @@ catch(MsalUiRequiredException)
 }
 ```
 
-#### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET zorunlu parametreler
+#### <a name="mandatory-parameters-in-msalnet"></a>MSAL.NET 'de zorunlu parametreler
 
-`AcquireTokenInteractive`yalnızca bir zorunlu parametresi vardır: `scopes`. Parametre, `scopes` belirteç gerektiren kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph içinse, her Microsoft Graph API'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvuruda, "İzinler" bölümüne gidin.
+`AcquireTokenInteractive`yalnızca bir zorunlu parametreye sahiptir: `scopes`. `scopes` Parametresi, bir belirtecin gerekli olduğu kapsamları tanımlayan dizeleri numaralandırır. Belirteç Microsoft Graph için ise, her bir Microsoft Graph API 'sinin API başvurusunda gerekli kapsamları bulabilirsiniz. Başvurunun "Izinler" bölümüne gidin.
 
-Örneğin, [kullanıcının ilgili kişilerini listelemek](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)için "User.Read", "Contacts.Read" kapsamını kullanın. Daha fazla bilgi için [Microsoft Graph izinleri başvurusuna](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)bakın.
+Örneğin, [kullanıcının kişilerini listelemek](https://docs.microsoft.com/graph/api/user-list-contacts)Için "User. Read", "Contacts. Read" kapsamını kullanın. Daha fazla bilgi için bkz. [Microsoft Graph izinleri başvurusu](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Android'de, uygulamayı oluştururken üst etkinliği kullanarak `PublicClientApplicationBuilder`belirtebilirsiniz. Ana etkinliği o anda belirtmezseniz, daha sonra aşağıdaki `.WithParentActivityOrWindow` bölümde ki gibi kullanarak belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç etkileşimden sonra bu üst aktiviteye geri döner. Belirtmezseniz, `.ExecuteAsync()` arama bir özel durum oluşturur.
+Android 'de, kullanarak `PublicClientApplicationBuilder`uygulamayı oluştururken üst etkinliği belirtebilirsiniz. Bu sırada üst etkinliği belirtmezseniz, daha sonra aşağıdaki bölümde olduğu gibi kullanarak `.WithParentActivityOrWindow` belirtebilirsiniz. Üst etkinliği belirtirseniz, belirteç, etkileşimden sonra bu üst etkinliğe geri alınır. Bunu belirtmezseniz, `.ExecuteAsync()` çağrı bir özel durum oluşturur.
 
-#### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET'da belirli isteğe bağlı parametreler
+#### <a name="specific-optional-parameters-in-msalnet"></a>MSAL.NET içinde belirli isteğe bağlı parametreler
 
-Aşağıdaki bölümlerde isteğe bağlı parametreler MSAL.NET.
+Aşağıdaki bölümlerde MSAL.NET içinde isteğe bağlı parametreler açıklanmaktadır.
 
 ##### <a name="withprompt"></a>WithPrompt
 
-Parametre, `WithPrompt()` bir istem belirterek kullanıcıyla etkileşimi denetler.
+`WithPrompt()` Parametresi, bir istem belirterek kullanıcıyla etkileşimi denetler.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
-Sınıf aşağıdaki sabitleri tanımlar:
+Sınıfı aşağıdaki sabitleri tanımlar:
 
-- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunmaya zorlar. İletişim kutusu, kullanıcının oturum yaptığı hesapları içerir. Kullanıcının farklı kimlikler arasından seçim seçmesine izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL'ı kimlik sağlayıcısına göndermeye `prompt=select_account` iter.
+- `SelectAccount`güvenlik belirteci hizmetini (STS) hesap seçimi iletişim kutusunu sunacak şekilde zorlar. İletişim kutusu, kullanıcının oturumu olan hesapları içerir. Kullanıcının farklı kimlikler arasında seçim yapmasına izin vermek istediğinizde bu seçeneği kullanabilirsiniz. Bu seçenek, MSAL 'in kimlik `prompt=select_account` sağlayıcısına gönderilmesini sağlar.
 
-    Sabit `SelectAccount` varsayılandır ve kullanılabilir bilgilere dayalı olarak mümkün olan en iyi deneyimi etkin bir şekilde sağlar. Kullanılabilir bilgiler hesap, kullanıcı için bir oturumun varlığı ve benzeri içerebilir. Bunu yapmak için iyi bir nedeniniz yoksa bu varsayılanı değiştirmeyin.
-- `Consent`daha önce izin verilmiş olsa bile kullanıcıdan onay istemenizi sağlar. Bu durumda, MSAL `prompt=consent` kimlik sağlayıcısına gönderir.
+    `SelectAccount` Bu varsayılan değerdir ve kullanılabilir bilgilere göre olası en iyi deneyimi etkin bir şekilde sunar. Kullanılabilir bilgiler hesap, Kullanıcı için bir oturumun varlığı ve bu şekilde devam edebilir. Bunu yapmak için iyi bir nedeniniz yoksa, bu varsayılanı değiştirmeyin.
+- `Consent`daha önce izin verilse bile kullanıcıdan izin vermenizi ister. Bu durumda, MSAL kimlik sağlayıcısına `prompt=consent` gönderilir.
 
-    Kuruluş yönetiminin kullanıcıların `Consent` uygulamayı her kullandıklarında onay iletişim kutusunu görmelerini gerektirdiği güvenlik odaklı uygulamalarda sabiti kullanmak isteyebilirsiniz.
-- `ForceLogin`komut istemi gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini istemesini sağlar.
+    Kuruluşun yönetimi, kullanıcıların uygulamayı her `Consent` kullandıklarında onay iletişim kutusunu görmesini gerektiren güvenlik odaklı uygulamalarda sabiti kullanmak isteyebilirsiniz.
+- `ForceLogin`istem gerekli olmasa bile, hizmetin kullanıcıdan kimlik bilgilerini sormasını sağlar.
 
-    Belirteç edinimi başarısız olursa ve kullanıcının yeniden oturum açmasına izin vermek istiyorsanız, bu seçenek yararlı olabilir. Bu durumda, MSAL `prompt=login` kimlik sağlayıcısına gönderir. Bu seçeneği, kuruluş yönetiminin kullanıcının uygulamanın belirli bölümlerine her erişirinde oturum açmasını gerektirdiği güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
-- `Never`sadece .NET 4.5 ve Windows Runtime (WinRT) içindir. Bu sabit kullanıcıyı isteyaramaz, ancak gizli katıştırılmış web görünümünde depolanan çerezi kullanmaya çalışır. Daha fazla bilgi için bkz: [MSAL.NET ile web tarayıcılarını kullanma.](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers)
+    Bu seçenek, belirteç alımı başarısız olursa ve kullanıcının yeniden oturum açmasını istiyorsanız yararlı olabilir. Bu durumda, MSAL kimlik sağlayıcısına `prompt=login` gönderilir. Bu seçeneği, kuruluş yönetimi 'nin, kullanıcının uygulamanın belirli bölümlerine her erişirken oturum açmasını gerektiren güvenlik odaklı uygulamalarda kullanmak isteyebilirsiniz.
+- `Never`yalnızca .NET 4,5 ve Windows Çalışma Zamanı (WinRT) içindir. Bu sabit kullanıcıya sormaz, ancak gizli katıştırılmış Web görünümünde depolanan tanımlama bilgisini kullanmayı dener. Daha fazla bilgi için bkz. [msal.NET ile Web tarayıcıları kullanma](https://docs.microsoft.com/azure/active-directory/develop/msal-net-web-browsers).
 
-    Bu seçenek başarısız `AcquireTokenInteractive` olursa, bir ui etkileşimi gerekli olduğunu bildirmek için bir özel durum atar. Sonra başka bir `Prompt` parametre kullanmanız gerekir.
+    Bu seçenek başarısız olursa, bir `AcquireTokenInteractive` UI etkileşiminin gerekli olduğunu bildirmek için bir özel durum oluşturur. Daha sonra başka bir `Prompt` parametre kullanmanız gerekir.
 - `NoPrompt`kimlik sağlayıcısına bir istem göndermez.
 
-    Bu seçenek yalnızca Azure Etkin Dizin B2C'deki profil oluşturma ilkeleri için yararlıdır. Daha fazla bilgi için [B2C ayrıntılarına](https://aka.ms/msal-net-b2c-specificities)bakın.
+    Bu seçenek yalnızca Azure Active Directory B2C düzenleme profili ilkeleri için yararlıdır. Daha fazla bilgi için bkz. [B2C özellikleri](https://aka.ms/msal-net-b2c-specificities).
 
-##### <a name="withextrascopetoconsent"></a>Withextrascopetoconsent
+##### <a name="withextrascopetoconsent"></a>Withextrascopetoonay
 
-Kullanıcının `WithExtraScopeToConsent` çeşitli kaynaklara önceden onay vermesini istediğiniz gelişmiş bir senaryoda değiştirici'yi kullanın. Normalde MSAL.NET veya Microsoft kimlik platformu 2.0 ile kullanılan artımlı onayı kullanmak istemiyorsanız bu değiştirici kullanabilirsiniz. Daha fazla bilgi için [bkz.](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)
+Değiştirici, `WithExtraScopeToConsent` kullanıcının birkaç kaynağa ön onay sağlamasını istediğiniz gelişmiş bir senaryoda kullanın. Bu değiştiriciyi, genellikle MSAL.NET veya Microsoft Identity Platform 2,0 ile kullanılan artımlı izin kullanmak istemediğinizde kullanabilirsiniz. Daha fazla bilgi için, bkz. [birkaç kaynak için Kullanıcı onayını ön](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources)alma.
 
 Aşağıda bir kod örneği verilmiştir:
 
@@ -255,18 +255,18 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Diğer isteğe bağlı parametreler
 
-Diğer isteğe bağlı parametreler `AcquireTokenInteractive`hakkında bilgi edinmek için, [AcquireTokenInteractiveParameterBuilder için referans belgelerine](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods)bakın.
+İçin `AcquireTokenInteractive`diğer isteğe bağlı parametreler hakkında daha fazla bilgi edinmek için bkz. [Acquiretokenınteractiveparameterbuilder için başvuru belgeleri](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
-### <a name="acquire-tokens-via-the-protocol"></a>Protokol aracılığıyla belirteçler edinme
+### <a name="acquire-tokens-via-the-protocol"></a>Protokol aracılığıyla belirteçleri alma
 
-Jeton almak için protokolü doğrudan kullanmanızı önermiyoruz. Bunu yaparsanız, uygulama tek oturum açma (SSO), aygıt yönetimi ve koşullu erişim içeren bazı senaryoları desteklemez.
+Belirteçleri almak için protokolü doğrudan kullanmayı önermiyoruz. Bunu yaparsanız uygulama, çoklu oturum açma (SSO), cihaz yönetimi ve koşullu erişim ile ilgili bazı senaryoları desteklemez.
 
-Mobil uygulamalar için belirteçler almak için protokolü kullandığınızda, iki istekte bulunun:
+Mobil uygulamalar için belirteçleri almak üzere Protokolü kullandığınızda iki istek yapın:
 
-* Bir yetkilendirme kodu alın.
-* Kodu bir belirteçle değiştirin.
+* Yetkilendirme kodu alın.
+* Belirteç için kodu Exchange.
 
-#### <a name="get-an-authorization-code"></a>Yetkilendirme kodu alma
+#### <a name="get-an-authorization-code"></a>Yetkilendirme kodu al
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
@@ -278,7 +278,7 @@ client_id=<CLIENT_ID>
 &state=12345
 ```
 
-#### <a name="get-access-and-refresh-the-token"></a>Erişim elde edin ve belirteçleri yenileyin
+#### <a name="get-access-and-refresh-the-token"></a>Erişim al ve belirteci Yenile
 
 ```HTTP
 POST /{tenant}/oauth2/v2.0/token HTTP/1.1

@@ -1,71 +1,71 @@
 ---
-title: Hizmet Sağlığı genel bakış | Microsoft Dokümanlar
-description: Azure uygulamalarınızın mevcut ve gelecekteki Azure hizmet sorunları ve bakımdan nasıl etkilendiği hakkında kişiselleştirilmiş bilgiler.
+title: Hizmet durumuna genel bakış | Microsoft Docs
+description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: a1c6a10ab48125c030c9a35864f829438404ad97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78898432"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097260"
 ---
-# <a name="service-health-overview"></a>Hizmet Sağlığına genel bakış
+# <a name="service-health-overview"></a>Hizmet durumuna genel bakış
 
-Hizmet Durumu, Azure hizmetlerinizin sistem durumunu kullandığınız bölgelerde izleyen özelleştirilebilir bir pano sağlar. Bu panoda, devam eden hizmet sorunları, yaklaşan planlı bakım veya ilgili sağlık danışma önerileri gibi etkin olayları izleyebilirsiniz. Olaylar etkin olmadığında, 90 güne kadar sağlık geçmişinize yerleştirilirler. Son olarak, hizmet sorunları sizi etkilediğinde sizi proaktif olarak bilgilendiren hizmet durumu uyarıları oluşturmak ve yönetmek için Hizmet Durumu panosunu kullanabilirsiniz.
+Hizmet durumu size, Azure hizmetlerinizin sistem durumunu kullandığınız bölgelerde izleyen özelleştirilebilir bir pano sağlar. Bu panoda, devam eden hizmet sorunları, gelecek planlı bakım veya ilgili sağlık danışma belgeleri gibi etkin olayları izleyebilirsiniz. Olaylar etkin olmadığında, 90 güne kadar sistem durumu geçmişinize yerleştirilirler. Son olarak, hizmet sorunları ne zaman etkilentiğinizde size bildirimde bulunan hizmet durumu uyarılarını oluşturmak ve yönetmek için hizmet durumu panosunu kullanabilirsiniz.
 
-## <a name="service-health-events"></a>Hizmet Sağlığı Etkinlikleri
+## <a name="service-health-events"></a>Hizmet durumu olayları
 
-Hizmet Sağlığı kaynaklarınızı etkileyebilecek dört tür sağlık olayı izler:
+Hizmet durumu, kaynaklarınızı etkileyebilecek dört sistem durumu olayı türünü izler:
 
-1. **Hizmet sorunları** - Azure hizmetlerinde şu anda sizi etkileyen sorunlar. 
-2. **Planlı bakım** - Gelecekte hizmetlerinizin kullanılabilirliğini etkileyebilecek yaklaşan bakım.  
-3. **Sağlık danışma ları** - Azure hizmetlerinde dikkatinizi gerektiren değişiklikler. Bunlara örnek olarak Azure özelliklerinin ne zaman amortismana sokulduğu veya bir kullanım kotası aşması verilebilir.
-4. **Güvenlik danışma ları (önizleme)** - Azure hizmetlerinizin kullanılabilirliğini etkileyebilecek güvenlikle ilgili bildirimler.
+1. **Hizmet sorunları** -Şu anda sizi etkileyen Azure hizmetlerinde sorunlar. 
+2. **Planlı bakım** -gelecekte hizmetlerinizin kullanılabilirliğini etkileyebilecek yaklaşan bakım.  
+3. **Durum Danışma belgeleri** -Azure hizmetlerinde ilgilenmeniz gereken değişiklikler. Örnek olarak, Azure özelliklerinin veya yükseltme gereksinimlerinin kullanım dışı bırakılması (örneğin, desteklenen bir PHP çerçevesine yükseltme) verilebilir.
+4. **Güvenlik Danışma belgeleri (Önizleme)** -Azure hizmetlerinizin kullanılabilirliğini etkileyebilecek güvenlikle ilgili bildirimler.
 
 > [!NOTE]
-> Hizmet Durumu olaylarını görüntülemek için, kullanıcılara bir abonelikte [Okuyucu rolü](../role-based-access-control/role-assignments-portal.md) verilmelidir.
+> Hizmet durumu olaylarını görüntülemek için kullanıcılara bir abonelik üzerinde [okuyucu rolü verilmelidir](../role-based-access-control/role-assignments-portal.md) .
 
-## <a name="get-started-with-service-health"></a>Hizmet Sağlığı ile başlayın
+## <a name="get-started-with-service-health"></a>Hizmet durumu ile çalışmaya başlama
 
-Hizmet Durumu panonuzu başlatmak için portal panonuzdaki Hizmet Durumu döşemesini seçin. Daha önce döşemeyi kaldırdıysanız veya özel pano kullanıyorsanız, "Daha fazla hizmet" (panonuzda sol altta) Hizmet Durumu hizmetini arayın.
+Hizmet sistem durumu panonuzu başlatmak için Portal panonuzda hizmet durumu kutucuğunu seçin. Kutucuğu daha önce kaldırdıysanız veya özel pano kullanıyorsanız, "diğer hizmetler" (panoda sol alt) bölümünde hizmet sistem durumu hizmetini aratın.
 
-![Hizmet Sağlığı ile başlayın](./media/service-health-overview/azure-service-health-overview-1.png)
+![Hizmet durumu ile çalışmaya başlama](./media/service-health-overview/azure-service-health-overview-1.png)
 
-## <a name="see-current-issues-which-impact-your-services"></a>Hizmetlerinizi etkileyen güncel sorunları görün
+## <a name="see-current-issues-which-impact-your-services"></a>Hizmetlerinizi etkileyen geçerli sorunları görün
 
-**Hizmet sorunları** görünümü, Azure hizmetlerinde kaynaklarınızı etkileyen devam eden sorunları gösterir. Sorunun ne zaman başladığını ve hangi hizmetlerin ve bölgelerin etkilendiğini anlayabilirsiniz. Azure'un sorunu çözmek için ne yaptığını anlamak için en son güncelleştirmeyi de okuyabilirsiniz. 
+**Hizmet sorunları** görünümü, Azure Hizmetlerindeki kaynakları etkileyen devam eden sorunları gösterir. Sorunun başladığı zamanı ve hangi hizmet ve bölgelerin etkilendiğini anlayabilirsiniz. Sorunu çözmek için Azure 'un ne yaptığını anlamak için en son güncelleştirmeyi de okuyabilirsiniz. 
 
 ![Hizmet sorununu yönetme](./media/service-health-overview/azure-service-health-overview-2.png)
 
-Sorundan etkilenebilecek belirli kaynak listesini görmek için **Olası etki** sekmesini seçin. Ekibinizle paylaşmak için bu kaynakların bir CSV listesini indirebilirsiniz.
+Sahip olduğunuz ve sorundan etkilenmiş olabileceğiniz kaynakların belirli bir listesini görmek için **olası etki** sekmesini seçin. Takımınızla paylaşmak için bu kaynakların CSV listesini indirebilirsiniz.
 
-![Hizmet sorununu yönetme - Etki](./media/service-health-overview/azure-service-health-overview-4.png)
+![Hizmet sorununu yönetme-etki](./media/service-health-overview/azure-service-health-overview-4.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Bağlantıları ve indirilebilir açıklamaları alın 
 
-Sorun yönetim sisteminizde kullanmak için bir bağlantı alabilirsiniz. Azure portalına erişimi olmayan kişilerle paylaşmak için PDF ve bazen CSV dosyalarını indirebilirsiniz.   
+Sorun yönetim sisteminizde kullanmak için sorun için bir bağlantı edinebilirsiniz. Azure portal erişimi olmayan kişilerle paylaşmak için PDF ve bazen CSV dosyalarını indirebilirsiniz.   
 
-![Hizmet sorununu yönetme - Sorun yönetimi](./media/service-health-overview/azure-service-health-overview-3.png)
+![Hizmet sorununu yönetme-sorun yönetimi](./media/service-health-overview/azure-service-health-overview-3.png)
 
-## <a name="get-support-from-microsoft"></a>Microsoft'tan destek alın
+## <a name="get-support-from-microsoft"></a>Microsoft 'tan destek alın
 
-Sorunun çözülmesinden sonra bile kaynağınız kötü durumda bırakılırsa desteğe başvurun.  Sayfanın sağındaki destek bağlantılarını kullanın.  
+Sorun çözümlendikten sonra bile kaynağınız hatalı bir durumda bırakılırsa desteğe başvurun.  Sayfanın sağ tarafındaki destek bağlantılarını kullanın.  
 
-## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Kişiselleştirilmiş bir sağlık haritasını panonuza sabitleme
+## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>Panonuza kişiselleştirilmiş bir sistem durumu haritasını sabitleme
 
-İş açısından kritik aboneliklerinizi, bölgelerinizi ve kaynak türlerinizi göstermek için Hizmet Durumu'na Filtre Uygulayın. Filtreyi kaydedin ve sistem durumunu gösteren kişiselleştirilmiş dünya haritasını portal panonuza sabitleyin. 
+İş açısından kritik abonelikleri, bölgeleri ve kaynak türlerinizi göstermek için hizmet durumunu filtreleyin. Filtreyi kaydedin ve sistem durumunu gösteren kişiselleştirilmiş dünya haritasını portal panonuza sabitleyin. 
 
-![Kişiselleştirilmiş sağlık haritasını filtrele](./media/service-health-overview/azure-service-health-overview-6a.png)
+![Kişiselleştirilmiş sistem durumu haritasını filtrele](./media/service-health-overview/azure-service-health-overview-6a.png)
 
-![Kişiselleştirilmiş bir sağlık haritasını sabitleme](./media/service-health-overview/azure-service-health-overview-6b.png)
+![Kişiselleştirilmiş bir sistem durumu haritasını sabitleme](./media/service-health-overview/azure-service-health-overview-6b.png)
 
 ## <a name="configure-service-health-alerts"></a>Hizmet durumu uyarılarını yapılandırma
 
-Service Health, iş açısından kritik kaynaklarınız etkilendiğinde e-postalar, kısa mesajlar ve web hook bildirimleri aracılığıyla sizi uyarmak için Azure Monitor ile tümleşir. Uygun hizmet durumu olayı için bir etkinlik günlüğü uyarısı ayarlayın. Eylem Grupları'nı kullanarak bu uyarıyı kuruluşunuzdaki uygun kişilere yönlendirin. Daha fazla bilgi için Hizmet [Durumu Uyarılarını Yapılandır](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
+Hizmet durumu, iş açısından kritik kaynaklarınız etkilendiğinde e-posta, kısa mesaj ve Web kancası bildirimleri aracılığıyla sizi uyarmak için Azure Izleyici ile tümleşir. Uygun hizmet sistem durumu olayı için bir etkinlik günlüğü uyarısı ayarlayın. Işlem gruplarını kullanarak kuruluşunuzdaki uygun kişilere uyarı yönlendirin. Daha fazla bilgi için bkz. [hizmet durumu uyarılarını yapılandırma](../azure-monitor/platform/alerts-activity-log-service-notifications.md)
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sağlık sorunları hakkında bilgilendirilmeniz için uyarılar ayarlayın. Daha fazla bilgi için Azure [Hizmet Durumu Uyarıları'nı ayarlamaya yönelik en iyi uygulamalara](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)bakın. 
+Sistem durumu sorunları hakkında bildirim almak için uyarıları ayarlayın. Daha fazla bilgi için bkz. [Azure hizmet durumu uyarılarını ayarlamaya yönelik en iyi uygulamalar](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s). 

@@ -1,41 +1,35 @@
 ---
 title: Azure için vCPU kotaları
-description: Azure için vCPU kotaları hakkında bilgi edinin.
-keywords: ''
-services: virtual-machines-windows
-documentationcenter: ''
+description: Azure sanal makineleri için vCPU kotaları hakkında bilgi edinin.
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.subservice: sizes
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 20017f42031e126bbdae40f66bf4c36efd12f17c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 13d9153d1bf6776b7d3d71c4a85c18d8529188b3
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75893457"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097889"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Sanal makine vCPU kotaları
 
-Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları, her bölgedeki her abonelik için iki katmanda düzenlenir. Birinci katman Total Regional vCPUs'dur, ikinci katman ise D serisi vCPUs'lar gibi çeşitli VM boyutundaki aile çekirdekleridir. VM için vCPUs'lar yeni bir VM dağıtıldığında, VM boyutu ailesi veya toplam bölgesel vCPU kotası için vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmeyecektir. Bölgedeki toplam sanal makine sayısı için de bir kota var. Bu kotaların her biriyle ilgili ayrıntılar [Azure portalındaki](https://portal.azure.com) **Abonelik** sayfasının Kullanım **+ kotaları** bölümünde görülebilir veya PowerShell kullanarak değerleri sorgulayabilirsiniz.
+Sanal makineler ve sanal makine ölçek kümeleri için vCPU kotaları her bir bölgede her bir abonelik için iki katmanda düzenlenir. İlk katman toplam bölgesel vCPU sayısı ve ikinci katman D serisi vCPU 'Lar gibi çeşitli VM boyutu ailesi çekirdekleri. Yeni bir VM 'nin dağıtıldığı her zaman, sanal makine için vCPU 'Lar VM boyut ailesi için vCPU kotasını veya toplam bölgesel vCPU kotasını aşmamalıdır. Bu kotalardan biri aşılırsa, VM dağıtımına izin verilmez. Ayrıca, bölgedeki toplam sanal makine sayısı için bir kota de vardır. Bu kotaların her biri hakkındaki ayrıntılar, [Azure Portal](https://portal.azure.com) **abonelik** sayfasının **kullanım + kotalar** bölümünde görünebilir veya PowerShell kullanarak değerleri sorgulayabilirsiniz.
 
    
  
 ## <a name="check-usage"></a>Kullanımı denetleme
 
-Kota kullanımınızı kontrol etmek için [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet'i kullanabilirsiniz.
+Kota kullanımınızı denetlemek için [Get-AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) cmdlet 'ini kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzVMUsage -Location "East US"
 ```
 
-Çıktı şuna benzer:
+Çıktı şuna benzer olacaktır:
 
 ```
 Name                             Current Value Limit  Unit
@@ -79,10 +73,10 @@ Premium Storage Managed Disks                1 10000 Count
 
 
 ## <a name="reserved-vm-instances"></a>Ayrılmış VM Örnekleri
-VM boyutu esnekliği olmadan tek bir aboneliğe kapsamına giren Ayrılmış VM Örnekleri, vCPU kotalarına yeni bir boyut katar. Bu değerler, belirtilen boyutun abonelikte dağıtılabilen örnek sayısını açıklar. Ayrılmış VM örneklerinin abonelikte dağıtılabilir olmasını sağlamak için kotanın rezerve edilmesini sağlamak için kota sisteminde yer tutucu olarak çalışırlar. Örneğin, belirli bir aboneliğin 10 Standard_D1 ayrılmış VM örneği varsa, ayrılmış Standard_D1 VM örneklerinin kullanım sınırı 10 olacaktır. Bu, Azure'un Standard_D1 örneğinde kullanılacak Toplam Bölgesel vCPUs kotasında her zaman en az 10 vCPUs bulunmasını ve standart D Ailesi vCPU kotasında Standard_D1 örnek için kullanılmak üzere en az 10 vCPUs bulunmasını sağlamasına neden olur.
+VM boyutu esnekliği olmayan tek bir aboneliğin kapsamına alınmış ayrılmış VM örnekleri, vCPU kotaları için yeni bir boyut ekler. Bu değerler, belirtilen boyutun abonelikte dağıtılabilir olması gereken örneklerinin sayısını anlatır. Kota, ayrılmış VM örneklerinin abonelikte dağıtılabilir olmasını sağlamak için kotanın ayrıldığından emin olmak üzere kota sisteminde bir yer tutucu olarak çalışır. Örneğin, belirli bir abonelikte 10 Standard_D1 ayrılmış VM örneği varsa, Standard_D1 ayrılmış VM örnekleri için kullanım sınırı 10 olur. Bu, Azure 'un, Standard_D1 örnekleri için kullanılmak üzere toplam bölgesel vCPU kotasında her zaman en az 10 vCPU olduğundan ve Standard_D1 örnekleri için kullanılacak standart D ailesi vCPU kotasında en az 10 vCPU olduğundan emin olmasına neden olur.
 
-Tek Abonelik RI satın almak için kota artışı gerekiyorsa, aboneliğinizde [kota artışı talep](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) edebilirsiniz.
+Tek bir aboneliği satın almak için kota artışı gerekiyorsa, aboneliğinizde [bir kota artışı isteyebilirsiniz](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Faturalandırma ve kotalar hakkında daha fazla bilgi için [Azure abonelik ve hizmet sınırları, kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json)bölümüne bakın.
+Faturalandırma ve Kotalar hakkında daha fazla bilgi için bkz. [Azure aboneliği ve hizmet limitleri, Kotalar ve kısıtlamalar](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json).
