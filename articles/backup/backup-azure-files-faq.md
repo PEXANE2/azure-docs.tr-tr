@@ -3,12 +3,12 @@ title: Azure Dosyalarını yedekleme hakkında SSS
 description: Bu makalede, Azure dosya paylaşımlarınızı Azure Backup hizmetiyle koruma hakkında sık sorulan soruların yanıtlarını bulun.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: b89e4a55bc8bc4ef2f4cdb50059537fe7708b6a6
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101170"
+ms.locfileid: "82105650"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Dosyalarını yedekleme ile ilgili sorular
 
@@ -74,7 +74,7 @@ Evet. Ayrıntılı [belgelere bakın](backup-azure-afs-automation.md).
 
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Azure yedeklemeleri tarafından alınan anlık görüntülere erişebilir ve bunları bağlayabilir miyim?
 
-Azure Backup tarafından alınan tüm anlık görüntülere Portal, PowerShell veya CLı 'daki anlık görüntüler görüntülenerek erişilebilir. Azure Dosyaları paylaşım anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure Dosyaları için paylaşım anlık görüntülerine genel bakış (önizleme)](../storage/files/storage-snapshots-files.md).
+Azure Backup tarafından alınan tüm anlık görüntülere Portal, PowerShell veya CLı 'daki anlık görüntüler görüntülenerek erişilebilir. Azure dosyaları paylaşma anlık görüntüleri hakkında daha fazla bilgi edinmek için bkz. [Azure dosyaları için paylaşılan anlık görüntülere genel bakış](../storage/files/storage-snapshots-files.md).
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Yedeklemeler için yapılandırabildiğim maksimum bekletme nedir?
 

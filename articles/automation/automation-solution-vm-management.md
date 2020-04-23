@@ -5,25 +5,27 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0331678b50d2448013556ab0694d0ca87045c3a3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82096925"
+ms.locfileid: "82106041"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu 'nda çalışma saatleri dışında VM 'Leri başlatma/durdurma
 
 **VM 'leri çalışma saatleri dışında Başlat/Durdur** çözümü, Azure sanal makinelerinizi başlatır veya durdurur. Kullanıcı tanımlı zamanlamalarda makineleri başlatır veya sonlandırır, Azure Izleyici günlükleri aracılığıyla öngörüler sağlar ve [eylem gruplarını](../azure-monitor/platform/action-groups.md)kullanarak isteğe bağlı e-postalar gönderir. Çözüm çoğu senaryo için hem Azure Resource Manager hem de klasik VM 'Leri destekler. 
 
-Bu çözüm, VM maliyetlerini iyileştirmek isteyen kullanıcılar için merkezileşmemiş düşük maliyetli bir Otomasyon seçeneği sağlar. Bu çözümle şunları yapabilirsiniz:
+Bu çözüm, VM 'Leri başlatmak için [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) cmdlet 'ini kullanır. VM 'Leri durdurmak için [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) kullanır.
+
+> [!NOTE]
+> **Çalışma saatleri dışında VM 'Leri Başlat/Durdur** çözümü, kullanılabilir Azure modüllerinin en yeni sürümlerini destekleyecek şekilde güncelleştirilmiştir.
+
+Çözüm, VM maliyetlerini iyileştirmek isteyen kullanıcılar için merkezileşmemiş düşük maliyetli bir Otomasyon seçeneği sağlar. Bu çözümle şunları yapabilirsiniz:
 
 - [VM 'leri başlatıp durdurulacak şekilde zamanlayın](automation-solution-vm-management-config.md#schedule).
 - [Azure etiketlerini kullanarak](automation-solution-vm-management-config.md#tags) (klasik VM 'lerde desteklenmez), sanal makinelerin artan sırada başlamasını ve durdurulmasını zamanlayın.
 - VM 'Leri [düşük CPU kullanımına](automation-solution-vm-management-config.md#cpuutil)göre oto durdur.
-
-> [!NOTE]
-> **Çalışma saatleri dışında VM 'Leri Başlat/Durdur** çözümü, kullanılabilir Azure modüllerinin en yeni sürümlerini destekleyecek şekilde güncelleştirilmiştir.
 
 Geçerli çözümle ilgili sınırlamalar aşağıda verilmiştir:
 

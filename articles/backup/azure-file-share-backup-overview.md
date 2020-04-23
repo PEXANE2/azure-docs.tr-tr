@@ -3,12 +3,12 @@ title: Azure dosya paylaşma yedeklemesi hakkında
 description: Azure dosya paylaşımlarını kurtarma hizmetleri kasasında nasıl yedekleyeceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: bea5035ff50eaf4047f56cde3bd671d81e21f5d3
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: c79100724b882c0682c86070ee74a8726d6b049f
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101441"
+ms.locfileid: "82105752"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşma yedeklemesi hakkında
 
@@ -47,12 +47,7 @@ Azure dosya paylaşma yedeklemesi, buluttaki verilerinizi koruyan ve şirket iç
 
 ## <a name="backup-costs"></a>Yedekleme maliyetleri
 
-Azure dosya paylaşma yedeklemesi, anlık görüntü tabanlı bir çözümdür ve anlık görüntülere uygulanan depolama ücretleri [burada](https://azure.microsoft.com/pricing/details/storage/files/)bahsedilen fiyatlandırma ayrıntılarına göre Azure dosya kullanımıyla birlikte faturalandırılır.
-
-Ancak, yedekleme çözümünü kullanmak için korunan örnek ücreti, [Azure dosyaları Için Yedekleme](https://azure.microsoft.com/pricing/details/backup/) bölümünde açıklanan fiyatlandırma modeline göre belirlenir. Şu anda gerçek fiyat yalnızca Orta Batı ABD için güncelleştirilmiştir. Diğer bölgeler için, tam fiyatlar kısa bir süre önce bazı bölgesel çeşitlerle güncelleştirilir, ancak aynı fiyatlandırma modeli kullanılır.
-
->[!NOTE]
->Artık "korumalı örnek ücreti" yoktur ve [burada](https://azure.microsoft.com/pricing/details/storage/files/)belirtilen fiyatlandırmaya göre yalnızca anlık görüntüler için ücretlendirilirsiniz.
+Azure dosya paylaşma yedeklemesi anlık görüntü tabanlı bir çözüm olduğundan, şu anda yalnızca anlık görüntüler için ücretlendirilirsiniz. Anlık görüntüler için tahakkuk eden depolama ücretleri, [burada](https://azure.microsoft.com/pricing/details/storage/files/)bahsedilen fiyatlandırma ayrıntılarına göre Azure dosyaları kullanımıyla birlikte faturalandırılır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

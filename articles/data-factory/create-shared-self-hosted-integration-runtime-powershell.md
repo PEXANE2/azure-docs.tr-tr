@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile paylaşılan kendi kendine barındırılan tümleştirme çalışma süresi oluşturun
-description: Birden çok veri fabrikasının tümleştirme çalışma süresine erişebilmeleri için Azure Veri Fabrikası'nda paylaşılan kendi barındırılan tümleştirme çalışma zamanı nasıl oluşturabileceğinizi öğrenin.
+title: PowerShell ile paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
+description: Azure Data Factory ' de paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı öğrenin. böylece, tümleştirme çalışma zamanına birden çok veri fabrikası erişebilir.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,64 +11,64 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
-ms.openlocfilehash: cabdb45467f71749184c5f9a6a112242a82d618b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81416597"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106636"
 ---
-# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Veri Fabrikası'nda paylaşılan kendi barındırılan tümleştirme çalışma zamanı oluşturma
+# <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Azure Data Factory içinde, şirket içinde barındırılan, paylaşılan bir tümleştirme çalışma zamanı oluşturma
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Bu kılavuz, Azure Veri Fabrikası'nda kendi kendine barındırılan paylaşılan bir tümleştirme çalışma süresini nasıl oluşturabileceğinizi gösterir. Ardından, paylaşılan kendi kendine barındırılan tümleştirme çalışma zamanını başka bir veri fabrikasında kullanabilirsiniz.
+Bu kılavuzda, Azure Data Factory paylaşılan bir şirket içinde barındırılan tümleştirme çalışma zamanının nasıl oluşturulacağı gösterilmektedir. Daha sonra, paylaşılan şirket içinde barındırılan tümleştirme çalışma zamanını başka bir veri fabrikasında kullanabilirsiniz.
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Azure Veri Fabrikası Kullanıcı UI'yi kullanarak paylaşılan kendi kendine barındırılan bir IR oluşturun
+## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Azure Data Factory Kullanıcı arabirimini kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturma
 
-Azure Veri Fabrikası Kullanıcı UI'sini kullanarak kendi kendine barındırılan paylaşılan bir IR oluşturmak için aşağıdaki adımları atabilirsiniz:
+Azure Data Factory Kullanıcı arabirimini kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturmak için aşağıdaki adımları gerçekleştirebilirsiniz:
 
-1. Paylaşılacak şekilde barındırılan IR'de, bağlantılı IR'yi oluşturmak istediğiniz veri fabrikasına izin verin.
+1. Paylaşılacak olan şirket içinde barındırılan IR 'de, bağlı IR oluşturmak istediğiniz veri fabrikasına izin verin.
       
-    ![Paylaşım sekmesinde izin vermek için düğme](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
+    ![Paylaşım sekmesinde izin verme düğmesi](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
       
-    ![İzin atama seçimleri](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![İzinleri atamaya yönelik seçimler](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
     
-2. Paylaşılacak kendi barındırılan IR'nin kaynak kimliğine dikkat edin.
+2. Paylaşılacak, şirket içinde barındırılan IR 'nin kaynak KIMLIĞINI aklınızda olun.
       
-   ![Kaynak kimliğinin konumu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
+   ![Kaynak KIMLIĞININ konumu](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
     
-3. İzinlerin verildiği veri fabrikasında, kendi kendine barındırılan yeni bir IR (bağlantılı) oluşturun ve kaynak kimliğini girin.
+3. İzinlerin verildiği veri fabrikasında, yeni bir kendinden konak IR (bağlantılı) oluşturun ve kaynak KIMLIĞINI girin.
       
-   ![Bağlantılı, barındırılan tümleştirme çalışma zamanı oluşturmak için düğme](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
+   ![Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma düğmesi](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
       
-    ![Ad ve kaynak kimliği için kutular](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Ad ve kaynak KIMLIĞI için kutular](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
 
-## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell'i kullanarak kendi kendine barındırılan paylaşılan bir IR oluşturun
+## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Azure PowerShell kullanarak, şirket içinde barındırılan, paylaşılan bir IR oluşturma
 
-Azure PowerShell'i kullanarak kendi kendine barındırılan paylaşılan bir IR oluşturmak için aşağıdaki adımları atabilirsiniz: 
+Azure PowerShell kullanarak, şirket içinde barındırılan paylaşılan bir IR oluşturmak için aşağıdaki adımları gerçekleştirebilirsiniz: 
 1. Veri fabrikası oluşturma. 
 1. Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma.
-1. Kendi kendine barındırılan tümleştirme çalışma süresini diğer veri fabrikalarıyla paylaşın.
-1. Bağlantılı bir tümleştirme çalışma zamanı oluşturun.
+1. Şirket içinde barındırılan tümleştirme çalışma zamanını diğer veri fabrikaları ile paylaşma.
+1. Bağlı bir tümleştirme çalışma zamanı oluşturun.
 1. Paylaşımı iptal edin.
 
-### <a name="prerequisites"></a>Ön koşullar 
+### <a name="prerequisites"></a>Önkoşullar 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure aboneliği.** Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/) 
+- **Azure aboneliği**. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) . 
 
-- **Azure PowerShell**. [PowerShellGet ile Windows'da Azure PowerShell'i Yükleyin](https://docs.microsoft.com/powershell/azure/install-az-ps)yönergeleriizleyin. PowerShell'i, diğer veri fabrikalarıyla paylaşılabilen, kendi kendine barındırılan bir tümleştirme çalışma süresi oluşturmak için bir komut dosyası çalıştırmak için kullanırsınız. 
+- **Azure PowerShell**. [PowerShellGet Ile Windows üzerinde Azure PowerShell Install](https://docs.microsoft.com/powershell/azure/install-az-ps)içindeki yönergeleri izleyin. Diğer veri fabrikaları ile paylaşılabilen şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için bir betiği çalıştırmak üzere PowerShell 'i kullanırsınız. 
 
 > [!NOTE]  
-> Veri Fabrikası'nın şu anda kullanılabildiği Azure bölgelerinin listesi için, [bölgeye göre kullanılabilen Ürünler'de](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)ilginizi çeken bölgeleri seçin.
+> Data Factory Şu anda kullanılabildiği Azure bölgelerinin bir listesi için, [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory)hakkında sizi ilgilendiren bölgeleri seçin.
 
 ### <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. Windows PowerShell Tümleşik Komut Dosyası Ortamı’nı (ISE) başlatın.
 
-1. Değişkenler oluşturun. Aşağıdaki komut dosyasını kopyalayın ve yapıştırın. **SubscriptionName** ve **ResourceGroupName**gibi değişkenleri gerçek değerlerle değiştirin: 
+1. Değişken oluşturun. Aşağıdaki betiği kopyalayıp yapıştırın. **SubscriptionName** ve **resourcegroupname**gibi değişkenleri gerçek değerlerle değiştirin: 
 
     ```powershell
     # If input contains a PSH special character, e.g. "$", precede it with the escape character "`" like "`$". 
@@ -89,19 +89,19 @@ Azure PowerShell'i kullanarak kendi kendine barındırılan paylaşılan bir IR 
     $LinkedIntegrationRuntimeDescription = "[Description for Linked Integration Runtime]"
     ```
 
-1. Oturum açın ve bir abonelik seçin. Oturum açmak ve Azure aboneliğinizi seçmek için komut dosyasına aşağıdaki kodu ekleyin:
+1. Oturum açın ve bir abonelik seçin. Oturum açmak ve Azure aboneliğinizi seçmek için betiğe aşağıdaki kodu ekleyin:
 
     ```powershell
     Connect-AzAccount
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-1. Bir kaynak grubu ve veri fabrikası oluşturun.
+1. Bir kaynak grubu ve bir veri fabrikası oluşturun.
 
     > [!NOTE]  
-    > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanız varsa, bu adımı atlayın. 
+    > Bu adım isteğe bağlıdır. Zaten bir veri fabrikanızı varsa, bu adımı atlayın. 
 
-    [Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, WestEurope konumunda `myResourceGroup` adı verilen bir kaynak grubu oluşturur: 
+    [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak bir [Azure Kaynak grubu](../azure-resource-manager/management/overview.md) oluşturun. Kaynak grubu, Azure kaynaklarının grup olarak dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek WestEurope konumunda adlı `myResourceGroup` bir kaynak grubu oluşturur: 
 
     ```powershell
     New-AzResourceGroup -Location $DataFactoryLocation -Name $ResourceGroupName
@@ -118,9 +118,9 @@ Azure PowerShell'i kullanarak kendi kendine barındırılan paylaşılan bir IR 
 ### <a name="create-a-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. Diğer veri fabrikalarıyla paylaşmak istediğiniz kendi kendine barındırılan tümleştirme çalışma süresine zaten sahipseniz, bu adımı atlayın.
+> Bu adım isteğe bağlıdır. Diğer veri fabrikaları ile paylaşmak istediğiniz şirket içinde barındırılan tümleştirme çalışma zamanı zaten varsa, bu adımı atlayın.
 
-Kendi kendine barındırılan tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
+Şirket içinde barındırılan bir tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
@@ -131,9 +131,9 @@ $SharedIR = Set-AzDataFactoryV2IntegrationRuntime `
     -Description $SharedIntegrationRuntimeDescription
 ```
 
-#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Tümleştirme çalışma zamanı kimlik doğrulama anahtarını alın ve bir düğüm kaydettirin
+#### <a name="get-the-integration-runtime-authentication-key-and-register-a-node"></a>Tümleştirme çalışma zamanı kimlik doğrulama anahtarını al ve bir düğümü Kaydet
 
-Kendi kendine barındırılan tümleştirme çalışma zamanı için kimlik doğrulama anahtarını almak için aşağıdaki komutu çalıştırın:
+Şirket içinde barındırılan tümleştirme çalışma zamanının kimlik doğrulama anahtarını almak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Get-AzDataFactoryV2IntegrationRuntimeKey `
@@ -142,45 +142,45 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
     -Name $SharedIntegrationRuntimeName
 ```
 
-Yanıt, bu kendi kendine barındırılan tümleştirme çalışma zamanı için kimlik doğrulama anahtarını içerir. Tümleştirme çalışma zamanı düğümlerini kaydederken bu anahtarı kullanırsınız.
+Yanıt, bu şirket içinde barındırılan tümleştirme çalışma zamanı için kimlik doğrulama anahtarını içerir. Tümleştirme çalışma zamanı düğümünü kaydettiğinizde bu anahtarı kullanırsınız.
 
-#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Kendi barındırılan tümleştirme çalışma süresini yükleme ve kaydetme
+#### <a name="install-and-register-the-self-hosted-integration-runtime"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını yükleyip kaydetme
 
-1. [Azure Veri Fabrikası Tümleştirme Çalışma Süresi'nden](https://aka.ms/dmg)kendi kendine barındırılan tümleştirme çalışma zamanı yükleyicisini indirin.
+1. Şirket içinde barındırılan tümleştirme çalışma zamanı yükleyicisini [Azure Data Factory Integration Runtime](https://aka.ms/dmg)indirin.
 
-2. Kendi kendine barındırılan tümleştirmeyi yerel bir bilgisayara yüklemek için yükleyiciyi çalıştırın.
+2. Şirket içinde barındırılan tümleştirmeyi yerel bir bilgisayara yüklemek için yükleyiciyi çalıştırın.
 
-3. Önceki adımda aldığınız kimlik doğrulama anahtarıyla yeni kendi barındırılan tümleştirmeyi kaydedin.
+3. Şirket içinde barındırılan yeni tümleştirmeyi, önceki adımda aldığınız kimlik doğrulama anahtarıyla kaydedin.
 
-### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Kendi kendine barındırılan tümleştirme çalışma süresini başka bir veri fabrikasıyla paylaşma
+### <a name="share-the-self-hosted-integration-runtime-with-another-data-factory"></a>Şirket içinde barındırılan tümleştirme çalışma zamanını başka bir veri fabrikası ile paylaşma
 
 #### <a name="create-another-data-factory"></a>Başka bir veri fabrikası oluşturma
 
 > [!NOTE]  
-> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz veri fabrikası zaten varsa, bu adımı atlayın.
+> Bu adım isteğe bağlıdır. Paylaşmak istediğiniz Data Factory zaten varsa, bu adımı atlayın.
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `
     -Location $DataFactoryLocation `
     -Name $LinkedDataFactoryName
 ```
-#### <a name="grant-permission"></a>Hibe izni
+#### <a name="grant-permission"></a>İzin ver
 
-Oluşturduğunuz ve kaydettiğiniz kendi kendine barındırılan tümleştirme çalışma süresine erişmesi gereken veri fabrikasına izin verin.
+Oluşturduğunuz ve kaydettiğiniz şirket içinde barındırılan tümleştirme çalışma zamanına erişmesi gereken veri fabrikasına izin verin.
 
 > [!IMPORTANT]  
-> Bu adımı atlamayın!
+> Bu adımı atlayın!
 
 ```powershell
 New-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId ` #MSI of the Data Factory with which it needs to be shared
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' ` #This is the Contributor role
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
-### <a name="create-a-linked-self-hosted-integration-runtime"></a>Bağlantılı, barındırılan tümleştirme çalışma zamanı oluşturma
+### <a name="create-a-linked-self-hosted-integration-runtime"></a>Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturma
 
-Bağlantılı, barındırılan tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
+Bağlı bir şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmak için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime `
@@ -192,20 +192,20 @@ Set-AzDataFactoryV2IntegrationRuntime `
     -Description $LinkedIntegrationRuntimeDescription
 ```
 
-Artık bu bağlantılı tümleştirme çalışma zamanını bağlantılı herhangi bir hizmette kullanabilirsiniz. Bağlı tümleştirme çalışma süresi, etkinlikleri çalıştırmak için paylaşılan tümleştirme çalışma zamanını kullanır.
+Artık bağlı bir hizmette bu bağlı tümleştirme çalışma zamanını kullanabilirsiniz. Bağlantılı tümleştirme çalışma zamanı, etkinlikleri çalıştırmak için paylaşılan tümleştirme çalışma zamanını kullanır.
 
-### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Veri fabrikasından tümleştirme çalışma zamanı paylaşımını iptal edin
+### <a name="revoke-integration-runtime-sharing-from-a-data-factory"></a>Veri fabrikasından tümleştirme çalışma zamanı paylaşımını iptal etme
 
 Paylaşılan tümleştirme çalışma zamanından bir veri fabrikasının erişimini iptal etmek için aşağıdaki komutu çalıştırın:
 
 ```powershell
 Remove-AzRoleAssignment `
     -ObjectId $factory.Identity.PrincipalId `
-    -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+    -RoleDefinitionName 'Contributor' `
     -Scope $SharedIR.Id
 ```
 
-Varolan bağlı tümleştirme çalışma süresini kaldırmak için paylaşılan tümleştirme çalışma süresine karşı aşağıdaki komutu çalıştırın:
+Mevcut bağlı tümleştirme çalışma zamanını kaldırmak için, paylaşılan tümleştirme çalışma zamanına karşı aşağıdaki komutu çalıştırın:
 
 ```powershell
 Remove-AzDataFactoryV2IntegrationRuntime `
@@ -218,6 +218,6 @@ Remove-AzDataFactoryV2IntegrationRuntime `
 
 ### <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Veri Fabrikası'nda tümleştirme çalışma zamanı kavramlarını](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)gözden geçirin.
+- [Azure Data Factory tümleştirme çalışma zamanı kavramlarını](https://docs.microsoft.com/azure/data-factory/concepts-integration-runtime)gözden geçirin.
 
-- [Azure portalında kendi kendine barındırılan bir tümleştirme çalışma zamanı oluşturmayı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)öğrenin.
+- [Azure Portal şirket içinde barındırılan tümleştirme çalışma zamanı oluşturmayı](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)öğrenin.

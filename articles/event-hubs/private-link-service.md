@@ -1,98 +1,113 @@
 ---
-title: Azure Etkinlik Hub'larını Azure Özel Bağlantı Hizmetiyle Tümleştir
-description: Azure Etkinlik Hub'larını Azure Özel Bağlantı Hizmeti ile nasıl entegre edebilirsiniz öğrenin
+title: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirme
+description: Azure Event Hubs Azure özel bağlantı hizmeti ile tümleştirmeyi öğrenin
 services: event-hubs
 author: spelluru
 ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bcc360bbe4dd58200993b9377317ccb608b3529d
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81383644"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106483"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Etkinlik Hub'larını Azure Özel Bağlantısıyla Tümleştir (Önizleme)
-Azure Özel Bağlantı Hizmeti, Azure Hizmetleri'ne (örneğin, Azure Etkinlik Hub'ları, Azure Depolama ve Azure Cosmos DB) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal **ağınızdaki özel** bir bitiş noktası üzerinden erişmenizi sağlar.
+# <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Event Hubs Azure özel bağlantısı ile tümleştirme (Önizleme)
+Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
-Özel bitiş noktası, sizi Azure Özel Bağlantısı ile çalışan bir hizmete özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağıörneğine bağlanarak erişim denetiminde en yüksek parçalılık düzeyini sağlayabilirsiniz.
+Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
-Daha fazla bilgi için Azure [Özel Bağlantı nedir?](../private-link/private-link-overview.md)
+Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
-> [!NOTE]
-> Bu özellik yalnızca **özel** katmanla desteklenir. İlgili katman hakkında daha fazla bilgi için, [Özel Etkinlik Hub'larına Genel Bakış'a](event-hubs-dedicated-overview.md)bakın. 
+> [!IMPORTANT]
+> Bu özellik yalnızca **adanmış** katmanla desteklenir. Adanmış katman hakkında daha fazla bilgi için bkz. [Event Hubs ayrılmış genel bakış](event-hubs-dedicated-overview.md). 
 >
-> Bu özellik şu anda **önizlemede.** 
+> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
+>[!WARNING]
+> Özel uç noktaların etkinleştirilmesi, diğer Azure hizmetlerinin Event Hubs etkileşimde olmasını engelleyebilir.
+>
+> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
+>
+> Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
+> - Azure Izleyici (Tanılama ayarı)
+> - Azure Stream Analytics
+> - Azure Event Grid ile tümleştirme
+> - Azure IoT Hub yolları
+> - Azure IoT Device Explorer
+>
+> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
+> - Azure Web Apps
+> - Azure İşlevleri
 
-## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portalını kullanarak özel bir bitiş noktası ekleme
+## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-Bir Etkinlik Hub'ı ad alanını Azure Özel Bağlantısıyla tümleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız vardır:
+Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
-- Olay Hub'ları ad alanı.
-- Azure sanal ağı.
+- Bir Event Hubs ad alanı.
+- Bir Azure sanal ağı.
 - Sanal ağdaki bir alt ağ.
-- Hem ad alanı hem de sanal ağ için sahip veya katılımcı izinleri.
+- Hem ad alanı hem de sanal ağ için sahip veya katkıda bulunan izinleri.
 
-Özel bitiş noktanız ve sanal ağınız aynı bölgede olmalıdır. Portalı kullanarak özel bitiş noktası için bir bölge seçtiğinizde, otomatik olarak yalnızca o bölgedeki sanal ağları filtreler. Ad alanınız farklı bir bölgede olabilir.
+Özel uç noktanız ve sanal ağınız aynı bölgede olmalıdır. Portalı kullanarak özel uç nokta için bir bölge seçtiğinizde bu, yalnızca o bölgedeki sanal ağları otomatik olarak filtreleyecek. Ad alanınız farklı bir bölgede olabilir.
 
-Özel bitiş noktanız sanal abunuzda özel bir IP adresi kullanır.
+Özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
 ### <a name="steps"></a>Adımlar
-Zaten bir Olay Hub'ları ad alanınız varsa, aşağıdaki adımları izleyerek özel bir bağlantı bağlantısı oluşturabilirsiniz:
+Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir özel bağlantı bağlantısı oluşturabilirsiniz:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. 
-2. Arama **çubuğunda, olay hub'larını**yazın.
-3. Özel bir bitiş noktası eklemek istediğiniz listeden **ad alanını** seçin.
-4. **Ayarlar'ın**altındaki **Ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel bitiş noktası bağlantıları (önizleme)** sekmesini seçin. Özel bir Olay Hub katmanı kullanmıyorsanız, bir ileti görürsünüz: **Olay Hub'larında özel uç nokta bağlantıları yalnızca özel bir küme altında oluşturulan ad alanları tarafından desteklenir.**
-6. Sayfanın üst kısmındaki **+ Özel Bitiş Noktası** düğmesini seçin.
+2. Arama çubuğuna **Olay Hub 'ları**yazın.
+3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
+4. **Ayarlar**altında **ağ** sekmesini seçin.
+5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları (Önizleme)** sekmesini seçin. Event Hubs adanmış bir katmanını kullanmıyorsanız, bir ileti görürsünüz: **Event Hubs özel uç nokta bağlantıları yalnızca adanmış bir küme altında oluşturulan ad alanları tarafından desteklenir**.
+6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
     ![Görüntü](./media/private-link-service/private-link-service-3.png)
-7. Temel **Bilgiler** sayfasında aşağıdaki adımları izleyin: 
-    1. Özel bitiş noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
-    2. Özel bitiş noktası kaynağı için **kaynak grubunu** seçin.
-    3. Özel bitiş noktası için bir **ad** girin. 
-    5. Özel bitiş noktası için bir **bölge** seçin. Özel bitiş noktanız sanal ağınızla aynı bölgede olmalıdır, ancak bağlandığınız özel bağlantı kaynağının farklı bir bölgesinde olabilir. 
-    6. **Sonraki'ni seçin:** Sayfanın altındaki kaynak >düğmesi.
+7. **Temel bilgiler** sayfasında, aşağıdaki adımları izleyin: 
+    1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
+    2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
+    3. Özel uç nokta için bir **ad** girin. 
+    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanızın sanal ağınızla aynı bölgede olması gerekir, ancak bağlandığınız özel bağlantı kaynağını farklı bir bölgede bulabilirsiniz. 
+    6. Sayfanın alt kısmındaki **İleri: kaynak >** düğmesini seçin.
 
-        ![Özel Bitiş Noktası Oluşturma - Temel Bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
-8. **Kaynak** sayfasında aşağıdaki adımları izleyin:
-    1. Bağlantı yöntemi için, **dizinimdeki bir Azure kaynağına Bağlan'ı**seçerseniz aşağıdaki adımları izleyin: 
-        1. **Etkinlik Hub'larınızın ad alanının** bulunduğu **Azure aboneliğini** seçin. 
-        2. **Kaynak türü**için, Kaynak türü için **Microsoft.EventHub/namespaces'i** seçin. **Resource type**
-        3. **Kaynak**için açılan listeden olay hub'ları ad alanını seçin. 
-        4. **Hedef alt kaynağının** ad **alanı**olarak ayarlı olduğunu doğrulayın.
-        5. **İleri'yi seçin:** Sayfanın altındaki Configuration >düğmesi. 
+        ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
+8. **Kaynak** sayfasında, aşağıdaki adımları izleyin:
+    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz şu adımları izleyin: 
+        1. **Event Hubs ad alanının** bulunduğu **Azure aboneliğini** seçin. 
+        2. **Kaynak türü**Için, **kaynak türü**için **Microsoft. EventHub/namespaces** ' i seçin.
+        3. **Kaynak**için, açılan listeden bir Event Hubs ad alanı seçin. 
+        4. **Hedef alt kaynağın** **ad alanı**olarak ayarlandığını onaylayın.
+        5. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
         
-            ![Özel Bitiş Noktası Oluşturma - Kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
-    2. **Kaynak kimliği veya diğer adıyla bir Azure kaynağına bağlan'ı**seçerseniz aşağıdaki adımları izleyin:
-        1. Kaynak **kimliği** veya **takma ad**girin. Bazılarının sizinle paylaştığı kaynak kimliği veya takma ad olabilir.
-        2. **Hedef alt kaynak**için ad **alanını**girin. Özel bitiş noktanızın erişebileceği alt kaynak türüdür.
-        3. (isteğe bağlı) İstek **iletisi**girin. Kaynak sahibi, özel uç nokta bağlantısını yönetirken bu iletiyi görür.
-        4. Ardından, **Sayfanın** altındaki >Yapılandırma düğmesini seçin.
+            ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
+    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, bazılarının sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir.
+        2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
+        3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
+        4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin.
 
-            ![Özel Bitiş Noktası Oluşturma - Kaynak kimliğini kullanarak bağlan](./media/private-link-service/connect-resource-id.png)
-9. **Yapılandırma** sayfasında, sanal ağdaki alt ağı özel bitiş noktasını dağıtmak istediğiniz yere seçersiniz. 
-    1. Sanal **ağ**seçin. Yalnızca seçili abonelik ve konumdaki sanal ağlar açılır listede listelenir. 
+            ![Özel uç nokta oluşturma-kaynak KIMLIĞI kullanarak bağlanma](./media/private-link-service/connect-resource-id.png)
+9. **Yapılandırma** sayfasında, bir sanal ağda özel uç noktayı dağıtmak istediğiniz alt ağı seçersiniz. 
+    1. Bir **sanal ağ**seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
     2. Seçtiğiniz sanal ağda bir **alt ağ** seçin. 
-    3. **Sonrakini Seçin: Etiketler sayfanın** altındaki >düğmesini etiketler. 
+    3. Sayfanın alt kısmındaki **İleri: etiketler >** düğmesini seçin. 
 
-        ![Özel Bitiş Noktası Oluşturma - Yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
-10. **Etiketler** sayfasında, özel bitiş noktası kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından, sayfanın altındaki **Gözden Geçir + oluştur** düğmesini seçin. 
-11. Gözden **Geçir + oluştur,** tüm ayarları gözden geçir ve özel bitiş noktasını oluşturmak için **Oluştur'u** seçin.
+        ![Özel uç nokta oluşturma-yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
+10. **Etiketler** sayfasında, Özel uç nokta kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından sayfanın alt kısmındaki **gözden geçir + oluştur** düğmesini seçin. 
+11. **Gözden geçir + oluştur**' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
     
-    ![Özel Bitiş Noktası Oluşturma - Sayfayı Gözden Geçir in ve Oluştur](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Oluşturduğunuz özel uç nokta bağlantısını son noktalar listesinde gördüğünüzü doğrulayın. Bu örnekte, dizininizdeki bir Azure kaynağına bağlı olduğunuz ve yeterli izinleriniz olduğundan özel bitiş noktası otomatik olarak onaylanır. 
+    ![Özel uç nokta oluşturma-sayfa Inceleme ve oluşturma](./media/private-link-service/create-private-endpoint-review-create-page.png)
+12. Oluşturduğunuz özel uç nokta bağlantısının uç noktalar listesinde görüntülendiğini doğrulayın. Bu örnekte, dizininizde bir Azure kaynağına bağlandığınızdan ve yeterli izinlere sahip olduğunuzdan özel uç nokta otomatik olarak onaylanır. 
 
-    ![Özel bitiş noktası oluşturuldu](./media/private-link-service/private-endpoint-created.png)
+    ![Özel uç nokta oluşturuldu](./media/private-link-service/private-endpoint-created.png)
 
-## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell'i kullanarak özel bir bitiş noktası ekleme
-Aşağıdaki örnekte, özel bir uç nokta bağlantısı oluşturmak için Azure PowerShell'in nasıl kullanılacağı gösterilmektedir. Sizin için özel bir küme oluşturmaz. Özel bir Olay Hub'ları kümesi oluşturmak için [bu makaledeki](event-hubs-dedicated-cluster-create-portal.md) adımları izleyin. 
+## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell kullanarak özel uç nokta ekleme
+Aşağıdaki örnek, Azure PowerShell özel bir uç nokta bağlantısı oluşturmak için nasıl kullanılacağını gösterir. Sizin için adanmış bir küme oluşturmaz. Adanmış bir Event Hubs kümesi oluşturmak için [Bu makaledeki](event-hubs-dedicated-cluster-create-portal.md) adımları izleyin. 
 
 ```azurepowershell-interactive
 # create resource group
@@ -153,8 +168,8 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ```
 
-### <a name="configure-the-private-dns-zone"></a>Özel DNS Bölgesini yapılandırma
-Olay Hub'ları etki alanı için özel bir DNS bölgesi oluşturun ve sanal ağla bir ilişkilendirme bağlantısı oluşturun:
+### <a name="configure-the-private-dns-zone"></a>Özel DNS bölgesini yapılandırma
+Event Hubs etki alanı için özel bir DNS bölgesi oluşturun ve sanal ağla bir ilişki bağlantısı oluşturun:
 
 ```azurepowershell-interactive
 $zone = New-AzPrivateDnsZone -ResourceGroupName $rgName `
@@ -179,70 +194,70 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 }
 ```
 
-## <a name="manage-private-endpoints-using-azure-portal"></a>Azure portalLarını kullanarak özel uç noktaları yönetme
+## <a name="manage-private-endpoints-using-azure-portal"></a>Azure portal kullanarak özel uç noktaları yönetme
 
-Özel bir bitiş noktası oluşturduğunuzda, bağlantının onaylanması gerekir. Özel bir bitiş noktası oluşturduğunuz kaynak dizininizdeyse, yeterli izine sahip olmak koşuluyla bağlantı isteğini onaylayabilirsiniz. Başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bağlantı isteğinizi bu kaynağın sahibinin onaylamasını beklemeniz gerekir.
+Özel bir uç nokta oluşturduğunuzda bağlantının onaylanması gerekir. Özel bir uç noktası oluşturmakta olduğunuz kaynak dizininizdeki ise, yeterli izinlere sahip olduğunuz belirtilen bağlantı isteğini onaylayabilirsiniz. Başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bu kaynağın sahibinin bağlantı isteğinizi onaylamasını beklemeniz gerekir.
 
-Dört hüküm veren durum vardır:
+Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketici özel bitiş noktası durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| None | Beklemede | Bağlantı el ile oluşturulur ve Private Link kaynak sahibinden onay bekliyor. |
-| Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanıma hazır. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedilen | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
-| Kaldır | Bağlantı kesildi | Bağlantı özel bağlantı kaynak sahibi tarafından kaldırıldı, özel bitiş noktası bilgilendirici hale gelir ve temizleme için silinmelidir. |
+| Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
-###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir bitiş noktası bağlantısını onaylama, reddetme veya kaldırma
+###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
 1. Azure Portal’da oturum açın.
-2. Arama **çubuğunda, olay hub'larını**yazın.
+2. Arama çubuğuna **Olay Hub 'ları**yazın.
 3. Yönetmek istediğiniz **ad alanını** seçin.
 4. **Ağ** sekmesini seçin.
-5. İstediğiniz işlemi temel alan aşağıdaki uygun bölüme gidin: onaylamak, reddetmek veya kaldırmak.
+5. Şunları yapmak istediğiniz işleme göre aşağıdaki ilgili bölüme gidin: onaylama, reddetme veya kaldırma.
 
-### <a name="approve-a-private-endpoint-connection"></a>Özel bir bitiş noktası bağlantısını onaylama
-1. Bekleyen herhangi bir bağlantı varsa, sağlama durumunda **Bekleyen** ile listelenen bir bağlantı görürsünüz. 
-2. Onaylamak istediğiniz **özel bitiş noktasını** seçin
+### <a name="approve-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama
+1. Bekleyen herhangi bir bağlantı varsa, sağlama durumunda **bekliyor** ile listelenmiş bir bağlantı görürsünüz. 
+2. Onaylamak istediğiniz **Özel uç noktayı** seçin
 3. **Onayla** düğmesini seçin.
 
     ![Görüntü](./media/private-link-service/approve-private-endpoint.png)
-4. Bağlantı **yut'luk** sayfasında bir yorum ekleyin (isteğe bağlı) ve **Evet'i**seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz. 
-5. **Onaylandı**olarak değiştirilen listede ki özel bitiş noktası bağlantısının durumunu görmeniz gerekir. 
+4. **Bağlantıyı Onayla** sayfasında, bir açıklama ekleyin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
+5. Listede, **Onaylandı**olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
-### <a name="reject-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını reddetme
+### <a name="reject-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını reddetme
 
-1. Reddetmek istediğiniz özel bitiş noktası bağlantıları varsa, bekleyen bir istek veya varolan bağlantı olsun, bağlantıyı seçin ve **Reddet** düğmesini tıklatın.
+1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da var olan bir bağlantı olup olmadığına bakılmaksızın bağlantıyı seçin ve **Reddet** düğmesine tıklayın.
 
     ![Görüntü](./media/private-link-service/private-endpoint-reject-button.png)
-2. Bağlantıyı **Reddet** sayfasında bir yorum girin (isteğe bağlı) girin ve **Evet'i**seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz. 
-3. **Reddedilen**olarak değiştirilen listedeki özel bitiş noktası bağlantısının durumunu görmeniz gerekir. 
+2. **Bağlantıyı Reddet** sayfasında, bir açıklama girin (isteğe bağlı) ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
+3. Listede, **reddedildi**olarak değiştirilen özel uç nokta bağlantısının durumunu görmeniz gerekir. 
 
 ### <a name="remove-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldırma
 
-1. Özel bir bitiş noktası bağlantısını kaldırmak için, listede onu seçin ve araç çubuğunda **Kaldır'ı** seçin.
-2. Sil **bağlantı** sayfasında, özel bitiş noktasının silinmesini onaylamak için **Evet'i** seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz.
-3. Durum Bağlantısız olarak **değiştirilmeniz**gerekir. Ardından, bitiş noktasının listeden kaybolduğunu görürsünüz.
+1. Özel bir uç nokta bağlantısını kaldırmak için listeden seçin ve araç çubuğundan **Kaldır** ' ı seçin.
+2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz.
+3. Durumu **bağlı değil**olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz.
 
-## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalıştığını doğrulayın
+## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
 
-Özel bitiş noktası kaynağının aynı alt netindeki kaynakların özel bir IP adresi üzerinden Olay Hub'ları ad alanınıza bağladığını ve doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
+Özel uç nokta kaynağının aynı alt ağı içindeki kaynakların, özel bir IP adresi üzerinden Event Hubs ad alanına bağlanıp doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
 
-İlk olarak, [Azure portalında Windows sanal makine oluştur'daki](../virtual-machines/windows/quick-create-portal.md) adımları izleyerek sanal bir makine oluşturun
+İlk olarak, [Azure Portal Windows sanal makinesi oluşturma](../virtual-machines/windows/quick-create-portal.md) bölümündeki adımları izleyerek bir sanal makine oluşturun
 
 **Ağ** sekmesinde:
 
-1. **Sanal ağ** ve **alt ağ**belirtin. Yeni bir sanal ağ oluşturabilir veya varolan bir ağ seçebilirsiniz. Varolan bir tane seçiyorsanız, bölgenin eşleştiğinden emin olun.
-1. Ortak **bir IP** kaynağı belirtin.
-1. NIC **ağ güvenlik grubunda** **Yok'u**seçin.
-1. Yük **dengelemesinde**, **No'yu**seçin.
+1. **Sanal ağ** ve **alt ağ**belirtin. Yeni bir sanal ağ oluşturabilir veya var olan bir sanal ağı seçebilirsiniz. Mevcut bir tane seçilirse, bölgenin eşleştiğinden emin olun.
+1. Genel bir **IP** kaynağı belirtin.
+1. **NIC ağ güvenlik grubunda** **hiçbiri**' ni seçin.
+1. **Yük dengelemesinde** **Hayır**' ı seçin.
 
-Komut satırını açın ve aşağıdaki komutu çalıştırın:
+Komut satırını açın ve şu komutu çalıştırın:
 
 ```console
 nslookup <your-event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Bir Olay Hub'ının IP adresini ortak bir bitiş noktası üzerinden çözmek için ns arama komutunu çalıştırıyorsanız, aşağıdaki gibi görünen bir sonuç görürsünüz:
+Bir Event Hubs ad alanının IP adresini ortak bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
 
 ```console
 c:\ >nslookup <your-event-hubs-namespae-name>.servicebus.windows.net
@@ -253,7 +268,7 @@ Address:  (public IP address)
 Aliases:  <your-event-hubs-namespace-name>.servicebus.windows.net
 ```
 
-Özel bir bitiş noktası üzerinden olay hub'larının ad alanının IP adresini çözmek için ns arama komutunu çalıştırArsanız, aşağıdaki gibi görünen bir sonuç görürsünüz:
+Bir Event Hubs ad alanının IP adresini özel bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
 
 ```console
 c:\ >nslookup your_event-hubs-namespace-name.servicebus.windows.net
@@ -266,15 +281,15 @@ Aliases:  <your-event-hub-name>.servicebus.windows.net
 
 ## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
-**Fiyatlandırma**: Fiyatlandırma bilgileri için [Azure Özel Bağlantı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/private-link/)bakın.
+**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar**: Azure Etkinlik Hub'ları için Özel Bitiş Noktası genel önizlemededir. Bu özellik tüm Azure ortak bölgelerinde kullanılabilir.
+**Sınırlamalar**: Azure Event Hubs Için özel uç nokta genel önizlemede. Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
 
-**Olay Hub'ları ad alanı başına maksimum özel uç nokta sayısı**: 120.
+**Event Hubs ad alanı başına en fazla özel uç nokta sayısı**: 120.
 
-Daha fazla kullanım için Azure [Özel Bağlantı hizmeti: Sınırlamalar](../private-link/private-link-service-overview.md#limitations)
+Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Özel Bağlantı](../private-link/private-link-service-overview.md) hakkında daha fazla bilgi edinin
-- [Azure Etkinlik Hub'ları](event-hubs-about.md) hakkında daha fazla bilgi edinin
+- [Azure özel bağlantısı](../private-link/private-link-service-overview.md) hakkında daha fazla bilgi edinin
+- [Azure Event Hubs](event-hubs-about.md) hakkında daha fazla bilgi
