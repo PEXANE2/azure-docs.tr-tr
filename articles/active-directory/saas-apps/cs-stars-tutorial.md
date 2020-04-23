@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0c4cb553ee7edc92b5cb3d319631a985de476b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15b31bf14b01a215d99814ce57eb9cd5f2cb2773
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159294"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81869428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Öğretici: CS Stars ile Azure Active Directory entegrasyonu
 
@@ -35,7 +35,7 @@ CS Stars'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini CS Stars ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -111,7 +111,7 @@ Azure AD oturumaçmayı CS Stars ile yapılandırmak için aşağıdaki adımlar
     b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [CS Stars İstemci destek ekibine](http://www.riskonnectclearsight.com/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [CS Stars İstemci destek ekibine](https://riskonnect.com/support/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
 4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
@@ -129,7 +129,7 @@ Azure AD oturumaçmayı CS Stars ile yapılandırmak için aşağıdaki adımlar
 
 ### <a name="configure-cs-stars-single-sign-on"></a>CS Yıldızlarını Yapılandırtek İşaretle
 
-**CS Stars** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [CS Stars destek ekibine](http://www.riskonnectclearsight.com/support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**CS Stars** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [CS Stars destek ekibine](https://riskonnect.com/support/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -184,7 +184,7 @@ Bu bölümde, Britta Simon'ın CS Stars'a erişim izni vererek Azure tek oturum 
 
 ### <a name="create-cs-stars-test-user"></a>CS Stars test kullanıcısı oluşturma
 
-Bu bölümde, CS Stars'ta Britta Simon adında bir kullanıcı oluşturursunuz. CS Stars platformundaki kullanıcıları eklemek için [CS Stars destek ekibiyle](http://www.riskonnectclearsight.com/support/) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, CS Stars'ta Britta Simon adında bir kullanıcı oluşturursunuz. CS Stars platformundaki kullanıcıları eklemek için [CS Stars destek ekibiyle](https://riskonnect.com/support/) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

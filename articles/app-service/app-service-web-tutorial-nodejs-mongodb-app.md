@@ -6,12 +6,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 947bfe88443489084a20653d835ab849087ac92d
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: 5dd99d9aa7e63066ac4801282e548f2995e57e67
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80810573"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085634"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Öğretici: Azure'da Bir Düğüm.js ve MongoDB uygulaması oluşturun
 
@@ -35,7 +35,7 @@ Azure App Service, yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -87,17 +87,12 @@ npm start
 
 Uygulama tam olarak yüklendiğinde, şu iletiye benzer bir şey görürsünüz:
 
-```console
+<pre>
 --
-MEAN.JS - Development Environment
+Demek. JS - Geliştirme Ortamı
 
-Environment:     development
-Server:          http://0.0.0.0:3000
-Database:        mongodb://localhost/mean-dev
-App version:     0.5.0
-MEAN.JS version: 0.5.0
---
-```
+Çevre: geliştirme http://0.0.0.0:3000 Server: Veritabanı: mongodb://localhost/mean-dev App sürümü: 0.5.0 ORTALAMA. JS sürümü: 0.5.0 --
+</pre>
 
 Bir tarayıcıda `http://localhost:3000` sayfasına gidin. Üst menüde **Kaydol**’a tıklayın ve bir test kullanıcısı oluşturun. 
 
@@ -142,7 +137,7 @@ az cosmosdb create --name <cosmosdb_name> --resource-group myResourceGroup --kin
 
 Cosmos DB hesabı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 {
   "consistencyPolicy":
   {
@@ -151,12 +146,12 @@ Cosmos DB hesabı oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bil
     "maxStalenessPrefix": 100
   },
   "databaseAccountOfferType": "Standard",
-  "documentEndpoint": "https://<cosmosdb_name>.documents.azure.com:443/",
+  "documentEndpoint": "https://&lt;cosmosdb_name&gt;.documents.azure.com:443/",
   "failoverPolicies": 
   ...
-  < Output truncated for readability >
+  &lt; Output truncated for readability &gt;
 }
-```
+</pre>
 
 ## <a name="connect-app-to-production-mongodb"></a>Üretim MongoDB’sine uygulama bağlama
 
@@ -172,14 +167,14 @@ az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
 
 Azure CLI aşağıdaki örneğe benzer bilgiler görüntüler:
 
-```json
+<pre>
 {
   "primaryMasterKey": "RS4CmUwzGRASJPMoc0kiEvdnKmxyRILC9BWisAYh3Hq4zBYKr0XQiSE4pqx3UchBeO4QRCzUt1i7w0rOkitoJw==",
   "primaryReadonlyMasterKey": "HvitsjIYz8TwRmIuPEUAALRwqgKOzJUjW22wPL2U8zoMVhGvregBkBk9LdMTxqBgDETSq7obbwZtdeFY7hElTg==",
   "secondaryMasterKey": "Lu9aeZTiXU4PjuuyGBbvS1N9IRG3oegIrIh95U6VOstf9bJiiIpw3IfwSUgQWSEYM3VeEyrhHJ4rn3Ci0vuFqA==",
   "secondaryReadonlyMasterKey": "LpsCicpVZqHRy7qbMgrzbRKjbYCwCKPQRl0QpgReAOxMcggTvxJFA94fTi0oQ7xtxpftTJcXkjTirQ0pT7QFrQ=="
 }
-```
+</pre>
 
 `primaryMasterKey` değerini kopyalayın. Bu bilgiler sonraki adımda gerekli olacaktır.
 
@@ -225,16 +220,12 @@ node server.js
 
 Uygulama yüklendiğinde, üretim ortamında çalıştığından emin olmak için kontrol edin:
 
-```console
+<pre>
 --
-MEAN.JS
+Demek. Js
 
-Environment:     production
-Server:          http://0.0.0.0:8443
-Database:        mongodb://<cosmosdb_name>:<primary_master_key>@<cosmosdb_name>.documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false
-App version:     0.5.0
-MEAN.JS version: 0.5.0
-```
+Çevre: üretim http://0.0.0.0:8443 Server: Veritabanı:&lt;&gt;@&lt;mongodb://&gt;&lt;cosmosdb_name&gt;: primary_master_key cosmosdb_name .documents.azure.com:10250/mean?ssl=true&sslverifycertificate=false App sürümü: 0.5.0 ORTALAMA. JS sürümü: 0.5.0
+</pre>
 
 Bir tarayıcıda `http://localhost:8443` sayfasına gidin. Üst menüde **Kaydol**’a tıklayın ve bir test kullanıcısı oluşturun. Kullanıcı oluşturma ve oturum açmada başarılı olursanız, uygulamanız Azure’da Cosmos DB veritabanına veri yazıyor demektir. 
 
@@ -284,7 +275,7 @@ db: {
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (5/5), done.
@@ -300,9 +291,9 @@ remote: Handling node.js deployment.
 .
 .
 remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
+To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
-``` 
+</pre>
 
 Dağıtım işleminin `npm install` komutundan sonra [Gulp](https://gulpjs.com/)’ı çalıştırdığını fark etmişsinizdir. App Service, dağıtım sırasında Gulp veya Grunt görevlerini çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde iki ek dosya bulunur: 
 

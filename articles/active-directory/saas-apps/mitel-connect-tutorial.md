@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 30a4dcbd15d8a47d99b3a61879a7e61938d3b133
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 26a761708f56ff7aba8daf86d2991579e60291cb
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160542"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870204"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect"></a>Öğretici: Mitel MiCloud Connect ile Azure Active Directory entegrasyonu
 
@@ -33,7 +33,7 @@ Bu eğitimde, Mitel MiCloud Connect'i Azure Active Directory (Azure AD) ile nas�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini MiCloud Connect ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -202,7 +202,7 @@ Bu bölümde, Britta Simon'ın Mitel Connect'e erişim izni vererek Azure tek ot
 
 Bu bölümde, MiCloud Connect hesabınızda Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcılar tek oturum açmadan önce oluşturulmalı ve etkinleştirilmelidir.
 
-Mitel Hesabı portalına kullanıcı ekleme hakkında daha fazla bilgi için Mitel Bilgi Tabanı'ndaki [Kullanıcı ekleme](https://docs.shoretel.com/connectcloud/Account/Users/AddUser) makalesine bakın.
+Mitel Hesabı portalına kullanıcı ekleme hakkında daha fazla bilgi için Mitel Bilgi Tabanı'ndaki [Kullanıcı ekleme](https://oneview.mitel.com/s/article/Adding-a-User-092815) makalesine bakın.
 
 MiCloud Connect hesabınızda aşağıdaki ayrıntılarla bir kullanıcı oluşturun:
 

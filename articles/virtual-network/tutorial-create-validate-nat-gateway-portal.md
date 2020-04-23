@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: 7c26487018b9632b5780dcd7c56ab36f286f8cac
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80059990"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084752"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Öğretici: Azure portalını kullanarak bir NAT Ağ Geçidi oluşturun ve NAT hizmetini test edin
 
@@ -29,7 +29,7 @@ Bu eğitimde, Azure'daki sanal makineler için giden bağlantı sağlamak için 
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com)oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Kaynağı giden trafik için hazırlayın
 
@@ -46,9 +46,9 @@ Bu bölümde aşağıdaki bilgileri ile adımlarda aşağıdaki parametreleri de
 | **\<kaynak-grup adı>**  | myResourceGroupNAT |
 | **\<sanal ağ adı>** | myVNetsource          |
 | **\<bölge adı>**          | Doğu ABD 2      |
-| **\<IPv4 adres-boşluk>**   | 192.168.0.0\16          |
+| **\<IPv4 adres-boşluk>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnetsource        |
-| **\<alt net-adres aralığı>** | 192.168.0.0\24          |
+| **\<alt net-adres aralığı>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -169,9 +169,9 @@ Bu bölümde aşağıdaki bilgileri ile adımlarda aşağıdaki parametreleri de
 | **\<kaynak-grup adı>**  | myResourceGroupNAT |
 | **\<sanal ağ adı>** | myVNetdestination          |
 | **\<bölge adı>**          | Doğu ABD 2      |
-| **\<IPv4 adres-boşluk>**   | 192.168.0.0\16          |
+| **\<IPv4 adres-boşluk>**   | 192.168.0.0/16          |
 | **\<subnet-name>**          | mySubnetdestination        |
-| **\<alt net-adres aralığı>** | 192.168.0.0\24          |
+| **\<alt net-adres aralığı>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 

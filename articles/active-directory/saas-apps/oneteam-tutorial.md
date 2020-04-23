@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 195fa26a38d89d9ef738e6060ff7dab602d5c234
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 875114c53cb3193b1b140e95be19daf7fb6415a9
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67095904"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oneteam"></a>Öğretici: Oneteam ile Azure Active Directory entegrasyonu
 
@@ -34,7 +34,7 @@ Oneteam'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Oneteam ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -118,7 +118,7 @@ Oneteam ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdak
     Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<team name>.one-team.io/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Oneteam Müşteri destek ekibine](https://support.one-team.com/hc/requests/new) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için Oneteam Müşteri destek ekibine başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
 6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
@@ -136,7 +136,7 @@ Oneteam ile Azure AD oturum açma işlemlerini yapılandırmak için aşağıdak
 
 ### <a name="configure-oneteam-single-sign-on"></a>Oneteam Tek Oturum Açma'yı Yapılandır
 
-**Oneteam** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından [Oneteam destek ekibine](https://support.one-team.com/hc/requests/new)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Oneteam** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve uygun kopyalanmış URL'lerini Azure portalından Oneteam destek ekibine göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -194,7 +194,7 @@ Bu bölümde, Britta Simon'ın Oneteam'e erişim izni vererek Azure tek oturum a
 Bu bölümde, Britta Simon adlı bir kullanıcı Oneteam oluşturulur. Oneteam, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Oneteam'de bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 >[!NOTE]
->El ile bir kullanıcı oluşturmanız gerekiyorsa, [Oneteam destek ekibiyle](https://support.one-team.com/hc/requests/new)destek biletini yükseltebilirsiniz.
+>El ile bir kullanıcı oluşturmanız gerekiyorsa, Oneteam destek ekibiyle destek biletini yükseltebilirsiniz.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

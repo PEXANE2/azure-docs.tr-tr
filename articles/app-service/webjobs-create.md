@@ -6,21 +6,21 @@ ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
-ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
+ms.reviewer: msangapu;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 028551f04b2e44e9456e2f7343159ad9b52fd25f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279149"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085153"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure Uygulama Hizmetinde Web İşleri ile arka plan görevlerini çalıştırma
 
 Bu makalede, yürütülebilir veya komut dosyası yüklemek için [Azure portalını](https://portal.azure.com) kullanarak Web İşlerin nasıl dağıtılancayacağın gösterilmektedir. Visual Studio'u kullanarak Web İşlerin nasıl geliştirilip dağıtılabildiğini öğrenmek için [bkz.](webjobs-dotnet-deploy-vs.md)
 
-## <a name="overview"></a>Genel Bakış
-WebJobs, Azure [Uygulama Hizmeti'nin](index.yml) bir programı veya komut dosyasını bir web uygulaması, API uygulaması veya mobil uygulamayla aynı bağlamda çalıştırmanızı sağlayan bir özelliğidir. Webİşler'i kullanmak için ek bir ücret yoktur.
+## <a name="overview"></a>Genel bakış
+WebJobs, Azure [Uygulama Hizmeti'nin](index.yml) bir web uygulaması, API uygulaması veya mobil uygulamayla aynı durumda bir program veya komut dosyası çalıştırmanızı sağlayan bir özelliğidir. Webİşler'i kullanmak için ek bir ücret yoktur.
 
 > [!IMPORTANT]
 > WebJobs henüz Linux'taki Uygulama Hizmeti için desteklenmedi.
@@ -80,7 +80,7 @@ when making changes in one don't forget the other two.
    | **Adı** | myContinuousWebJob | Bir App Service uygulamasında benzersiz olan bir ad. Bir harf veya sayı ile başlamalıdır ve "-" ve "_" dışındaki özel karakterler içeremez. |
    | **Dosya Yükleme** | ConsoleApp.zip | Yürütülebilir veya komut dosyası dosyanızın yanı sıra programı veya komut dosyasını çalıştırmak için gereken destekleyici dosyaları içeren bir *.zip* dosyası. Desteklenen yürütülebilir veya komut dosyası dosya türleri [Desteklenen dosya türleri](#acceptablefiles) bölümünde listelenir. |
    | **Tür** | Sürekli | [WebJob türleri](#webjob-types) bu makalede daha önce açıklanmıştır. |
-   | **Ölçeklendirme** | Çok örnek | Yalnızca Sürekli Web İşleri için kullanılabilir. Programın veya komut dosyasının tüm örneklerde mi yoksa tek bir örnekte mi çalıştığını belirler. Birden çok örnekte çalışma seçeneği, Ücretsiz veya Paylaşılan [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)için geçerli değildir. | 
+   | **Ölçek** | Çok örnek | Yalnızca Sürekli Web İşleri için kullanılabilir. Programın veya komut dosyasının tüm örneklerde mi yoksa tek bir örnekte mi çalıştığını belirler. Birden çok örnekte çalışma seçeneği, Ücretsiz veya Paylaşılan [fiyatlandırma katmanları](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)için geçerli değildir. | 
 
 4. **Tamam**'a tıklayın.
 

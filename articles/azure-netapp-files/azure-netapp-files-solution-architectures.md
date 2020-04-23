@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 04/22/2020
 ms.author: b-juche
-ms.openlocfilehash: 8eae528c965e599e7adfb546a09b0d5879e7c54f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a26e403671a2f69eeb785d92fa0c1d37a19e3ac5
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369517"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085085"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Dosyalarını kullanmak için çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi uygulamalara başvurular sağlanmaktadır.  
@@ -38,6 +38,7 @@ Bu makalede, Azure NetApp Dosyalarını kullanmak için çözüm mimarilerini an
 
 * [Azure NetApp Dosyalarını kullanarak Azure dağıtımında en iyi uygulama kılavuzunda Oracle](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM görüntüleri ve bunların Microsoft Azure'da dağıtımı: Paylaşılan depolama yapılandırma seçenekleri](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-vm-solutions#shared-storage-configuration-options)
+* [Oracle Database ile Azure NetApp Files kullanmanın avantajları](https://docs.microsoft.com/azure/azure-netapp-files/solutions-benefits-azure-netapp-files-oracle-database)
 
 ## <a name="sap-application-solutions"></a>SAP uygulama çözümleri 
 

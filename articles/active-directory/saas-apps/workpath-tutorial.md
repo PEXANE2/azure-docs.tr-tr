@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9f22df8df77c3d59990d26b0f63f134f537d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c224f1e3b7ce53df9bfb24b0c9a9ac14f15996fe
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75561805"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867712"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workpath"></a>Öğretici: Workpath ile Azure Active Directory tek oturum açma (SSO) tümleştirmesi
 
@@ -33,7 +33,7 @@ Bu eğitimde, Workpath'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağ�
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -96,7 +96,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.workpath.com/`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Workpath İstemci destek ekibine](https://help.workpath.com/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Tanımlayıcı, YanıtLA URL'si ve Oturum Açma URL'si ile güncelleştirin. Bu değerleri almak için [Workpath İstemci destek ekibine](https://www.workpath.com/en/company/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
 1. Workpath uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
@@ -149,7 +149,7 @@ Bu bölümde, B.Simon'ın Workpath'e erişim izni vererek Azure tek oturum açma
 
 ## <a name="configure-workpath-sso"></a>Workpath SSO'da yapılandır
 
-**Workpath** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve azure portalından uygun kopyalanmış URL'leri [Workpath destek ekibine](https://help.workpath.com/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Workpath** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'ini** ve azure portalından uygun kopyalanmış URL'leri [Workpath destek ekibine](https://www.workpath.com/en/company/)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 ### <a name="create-workpath-test-user"></a>Workpath test kullanıcısı oluşturma
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: c13c6ab180a172c034d25ac84781f5d3f83ae186
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 43fbc158c9ed0bbe87a75cd845433c7a7be2e6d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086631"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867906"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Öğretici: Workstars ile Azure Active Directory tümleştirmesi
 
@@ -34,7 +34,7 @@ Workstars'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Workstars ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -110,7 +110,7 @@ Azure AD oturum açma işlemlerini Workstars ile yapılandırmak için aşağıd
     b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri gerçek Yanıt URL'si ile güncelleştirin. Değeri almak için [Workstars İstemci destek ekibine](https://support.workstars.com/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Yanıt URL'si ile güncelleştirin. Değeri almak için [Workstars İstemci destek ekibine](http://support.workstars.com/) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
 5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
@@ -210,7 +210,7 @@ Bu bölümde, Britta Simon'ın Workstars'a erişim izni vererek Azure tek oturum
 
 ### <a name="create-workstars-test-user"></a>Workstars test kullanıcısı oluşturma
 
-Bu bölümde, Workstars'ta Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Workstars platformuna eklemek için [Workstars destek ekibiyle](https://support.workstars.com) birlikte çalışın.
+Bu bölümde, Workstars'ta Britta Simon adında bir kullanıcı oluşturursunuz. Kullanıcıları Workstars platformuna eklemek için [Workstars destek ekibiyle](http://support.workstars.com) birlikte çalışın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: 8674438032ebd925296c95e9ffa0a2a0b95322f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369786"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085748"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel Varlık Arama bilişsel beceri (Önizleme)
 
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.CustomEntityLookupSkill
 
 ## <a name="data-limits"></a>Veri sınırları
 + Desteklenen maksimum giriş kaydı boyutu 256 MB'dır. Verilerinizi özel varlık arama becerisine göndermeden önce ayırmanız gerekiyorsa, [Metin Bölme becerisini](cognitive-search-skill-textsplit.md)kullanmayı düşünün.
-+ Desteklenen maksimum varlıklar tanım tablosu 10 MB *varlıklarDefitionUri* parametresi kullanılarak sağlanırsa. 
++ Desteklenen maksimum varlıklar tanım tablosu, *varlıklarDefinitionUri* parametresi kullanılarak sağlanırsa 10 MB'dır. 
 + Varlıklar satır satırda tanımlanırsa, *inlineNtitiesDefinition* parametresi kullanılarak, desteklenen maksimum boyut 10 KB'dir.
 
 ## <a name="skill-parameters"></a>Beceri parametreleri
@@ -63,13 +63,13 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 Özel Varlık Arama becerisine özel varlıkların listesini sağlamanın 3 farklı yolu vardır. Listeyi bir ' de sağlayabilirsiniz. CSV dosyası, bir . JSON dosyası veya beceri tanımının bir parçası olarak satır içinde tanım olarak.  
 
-Tanım dosyası bir . CSV veya . JSON dosyası, dosyanın yolu *varlıklarDefitionUri* parametrenin bir parçası olarak sağlanmalıdır. Bu durumda, dosya her dizinleyici çalıştırın başında bir kez indirilir. Dizinleyici nin çalışması amaçlandığı sürece dosyaya erişilebilir olmalıdır. Ayrıca, dosya UTF-8 kodlanmış olmalıdır.
+Tanım dosyası bir . CSV veya . JSON dosyası, dosyanın yolunu *varlıklarDefinitionUri* parametrenin bir parçası olarak sağlanmalıdır. Bu durumda, dosya her dizinleyici çalıştırın başında bir kez indirilir. Dizinleyici nin çalışması amaçlandığı sürece dosyaya erişilebilir olmalıdır. Ayrıca, dosya UTF-8 kodlanmış olmalıdır.
 
 Tanım satır satır olarak sağlanıyorsa, *inlineNtitiesDefinition* beceri parametresi içeriği olarak satır içinde sağlanmalıdır. 
 
 ### <a name="csv-format"></a>CSV formatı
 
-Dosyaya giden yolu sağlayarak ve *varlıklarDefitionUri* beceri parametresi içinde ayarlayarak, Virgülle Ayrılmış Değer (CSV) dosyasında aramak için özel varlıkların tanımını sağlayabilirsiniz. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
+Virgülden Ayrılmış Değer (CSV) dosyasında, dosyanın yolunu sağlayarak ve *varlıklarDefinitionUri* beceri parametresinde ayarlayarak, arayacağınız özel varlıkların tanımını sağlayabilirsiniz. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
 
 CSV formatı basittir. Her satır, aşağıda gösterildiği gibi benzersiz bir varlığı temsil eder:
 
@@ -85,7 +85,7 @@ Bu durumda, bulunan varlıklar olarak döndürülebilecek üç varlık vardır (
 
 Bir JSON dosyasında da aramak için özel varlıkların tanımını sağlayabilirsiniz. JSON biçimi, dönem başına eşleşen kuralları tanımlamanıza olanak sağladığından size biraz daha fazla esneklik sağlar. Örneğin, her dönem için bulanık eşleşen mesafeyi (Damerau-Levenshtein mesafesi) veya eşleştirmenin büyük/küçük harf duyarlı olup olmaması gerektiğini belirtebilirsiniz. 
 
- CSV dosyaları gibi, JSON dosyasına yol sağlamak ve *varlıklarDefitionUri* beceri parametresi ayarlamak gerekir. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
+ CSV dosyalarında olduğu gibi, JSON dosyasına giden yolu sağlamanız ve *varlıklarıDefinitionUri* beceri parametresi olarak ayarlamanız gerekir. Yol bir https konumunda olmalıdır. Tanım dosyası 10 MB boyutuna kadar olabilir.
 
 En temel JSON özel varlık listesi tanımı eşleşecek varlıkların listesi olabilir:
 

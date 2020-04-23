@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 4a8b3cf47235e061e5dbcc08a409fce84d421771
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77562216"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085000"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Eylemlerini Kullanarak Uygulama Hizmetine Dağıt
 
@@ -27,8 +27,8 @@ Azure Uygulama Hizmeti iş akışı için dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik doğrulaması** | 1. Bir hizmet ilkesi tanımlayın <br /> 2. GitHub sırrı oluşturma |
-|**Oluşturma** | 1. Çevreyi ayarlama <br /> 2. Web uygulaması oluşturun |
+|**Kimlik Doğrulaması** | 1. Bir hizmet ilkesi tanımlayın <br /> 2. GitHub sırrı oluşturma |
+|**Yapı** | 1. Çevreyi ayarlama <br /> 2. Web uygulaması oluşturun |
 |**Dağıt** | 1. Web uygulamasını dağıtma |
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
@@ -62,7 +62,7 @@ Uygulama düzeyinde kimlik bilgilerini, yani dağıtım için profil yayımlamay
 4. Şimdi şubenizdeki iş akışı dosyasında: `.github/workflows/workflow.yml` Azure Web `publish-profile` Uygulaması'nı dağıtma eyleminin gizlisini değiştirin.
     
     ```yaml
-        - uses: azure/webapps-deploy@v1
+        - uses: azure/webapps-deploy@v2
           with:
             creds: ${{ secrets.azureWebAppPublishProfile }}
     ```
@@ -79,12 +79,12 @@ Ortamı ayarlama kurulum eylemlerinden biri kullanılarak yapılabilir.
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**     | `actions/setup-java` |
-|**Javascript** | `actions/setup-node` |
+|**JavaScript** | `actions/setup-node` |
 |**Python**     | `actions/setup-python` |
 
 Aşağıdaki örnekler, iş akışının çeşitli desteklenen diller için ortamı oluşturan bölümünü gösterir:
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: Setup Node 10.x
@@ -127,7 +127,7 @@ Bu, dile ve Azure Uygulama Hizmeti tarafından desteklenen dillere bağlıdır, 
 
 Aşağıdaki örnekler, web uygulamasını oluşturan iş akışının çeşitli desteklenen dillerdeki bölümünü gösterir.
 
-**Javascript**
+**JavaScript**
 
 ```yaml
     - name: 'Run npm'
@@ -182,7 +182,7 @@ Aşağıdaki örnekler, web uygulamasını oluşturan iş akışının çeşitli
 ```
 ## <a name="deploy-to-app-service"></a>App Service’e dağıtma
 
-Kodunuzu bir Uygulama Hizmeti uygulamasına `azure/webapps-deploy@v1 ` dağıtmak için eylemi kullanın. Bu eylemin dört parametresi vardır:
+Kodunuzu bir Uygulama Hizmeti uygulamasına `azure/webapps-deploy@v2` dağıtmak için eylemi kullanın. Bu eylemin dört parametresi vardır:
 
 | **Parametre**  | **Açıklama**  |
 |---------|---------|
@@ -219,7 +219,7 @@ jobs:
         npm run test --if-present
        
     - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v1
+          uses: azure/webapps-deploy@v2
           with: 
             app-name: node-rn
             publish-profile: ${{ secrets.azureWebAppPublishProfile }}
@@ -258,7 +258,7 @@ jobs:
         npm run test --if-present
                
     # deploy web app using Azure credentials
-    - uses: azure/webapps-deploy@v1
+    - uses: azure/webapps-deploy@v2
       with:
         app-name: 'node-rn'
 

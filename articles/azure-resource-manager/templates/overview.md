@@ -3,12 +3,12 @@ title: Şablonlara genel bakış
 description: Kaynakların dağıtımı için Azure Kaynak Yöneticisi şablonlarını kullanarak avantajları açıklar.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 02602b4d12ae4333c88b352e4c13923d67f2c591
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80885744"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086343"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -50,7 +50,7 @@ ARM şablonlarını ve diğer altyapılardan birini kod hizmeti olarak kullanmak
 
 * **Dağıtım Planları**: Mevzuat ve uyumluluk standartlarını karşılamak için Microsoft tarafından sağlanan [Planlardan](../../governance/blueprints/overview.md) yararlanabilirsiniz. Bu planlar, çeşitli mimariler için önceden oluşturulmuş şablonlar içerir.
 
-* **CI/CD tümleştirmesi**: Şablonları, hızlı ve güvenilir uygulama ve altyapı güncelleştirmeleri için sürüm ardışık alanlarınızı otomatikleştirebilen sürekli tümleştirme ve sürekli dağıtım (CI/CD) araçlarınıza entegre edebilirsiniz. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak, ARM şablon projeleri sürekli oluşturmak ve dağıtmak için Azure Ardışık Hatları'nı kullanabilirsiniz. Daha fazla bilgi edinmek için, boru hatları ve [Azure Boru Hatları ile Sürekli tümleştirme](template-tutorial-use-azure-pipelines.md)içeren VS [projesine](add-template-to-azure-pipelines.md) bakın.
+* **CI/CD tümleştirmesi**: Şablonları, hızlı ve güvenilir uygulama ve altyapı güncelleştirmeleri için sürüm ardışık alanlarınızı otomatikleştirebilen sürekli tümleştirme ve sürekli dağıtım (CI/CD) araçlarınıza entegre edebilirsiniz. Azure DevOps ve Kaynak Yöneticisi şablon görevi kullanarak, ARM şablon projeleri sürekli oluşturmak ve dağıtmak için Azure Ardışık Hatları'nı kullanabilirsiniz. Daha fazla bilgi edinmek için, iş dizileri ve Öğretici [ile VS projesine](add-template-to-azure-pipelines.md) [bakın: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli tümleştirilmesi.](./deployment-tutorial-pipeline.md)
 
 * **Dışa aktarılabilir kod**: Kaynak grubunun geçerli durumunu dışa aktararak veya belirli bir dağıtım için kullanılan şablonu görüntüleyerek varolan bir kaynak grubu için şablon alabilirsiniz. [Dışarı aktarılan şablonu](export-template-portal.md) görüntülemek şablon söz dizimi hakkında bilgi edinmek için yararlı bir yoldur.
 

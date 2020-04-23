@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,seodec18
-ms.date: 03/11/2020
-ms.openlocfilehash: 66bfa0d3ee4cb03f1b48e2db24be7a90d97f60d6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/22/2020
+ms.openlocfilehash: 5fa25f54faecbc7caf130ffeb0d24c3d8fef7e09
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79117223"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084813"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Öğretici: HDInsight üzerinde Apache Spark Yapılandırılmış Akışını Apache Kafka ile kullanma
 
@@ -21,7 +21,7 @@ Bu öğretici, Azure HDInsight'ta [Apache Kafka](./kafka/apache-kafka-introducti
 
 Spark Structured Streaming, Spark SQL üzerine kurulmuş bir akış işleme motorudur. Bu altyapıyı kullanarak, statik veriler üzerinde toplu hesaplamayla aynı şekilde akış hesaplamalarını ifade edebilirsiniz.  
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Kümeler oluşturmak için Azure Kaynak Yöneticisi şablonu kullanma
@@ -29,13 +29,13 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 Bu belgedeki adımları bitirdiğinizde, fazla ücretleri önlemek için kümeleri silmeyi unutmayın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * jq, bir komut satırı JSON işlemci.  Bkz. [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 
 * HDInsight'ta Spark ile [Jupyter Notebook'ları](https://jupyter.org/) kullanma aşinalığı. Daha fazla bilgi için [Verileri Yükle'ye bakın ve HDInsight belgesinde Apache Spark ile sorguları çalıştırın.](spark/apache-spark-load-data-run-query.md)
 
-* [Scala](https://www.scala-lang.org/) programlama dilini bilme. Bu öğreticide kullanılan kod, Scala dilinde yazılmıştır.
+* Scala programlama dilini bilme. Bu öğreticide kullanılan kod, Scala dilinde yazılmıştır.
 
 * Kafka konuları oluşturmayı bilme. Daha fazla bilgi için [HDInsight hızlı başlatma belgesindeki Apache Kafka'ya](kafka/apache-kafka-get-started.md) bakın.
 
@@ -48,7 +48,7 @@ Bu belgedeki adımları bitirdiğinizde, fazla ücretleri önlemek için kümele
 
 ## <a name="structured-streaming-with-apache-kafka"></a>Apache Kafka ile Yapılandırılmış Akış
 
-Spark Yapılandırılmış Akışı, Spark SQL altyapısı üzerinde derlenen bir akış işleme altyapısıdır. Yapılandırılmış Akış kullanırken, toplu sorgular yazdığınız şekilde akış sorguları yazabilirsiniz.
+Spark Yapılandırılmış Akışı, Spark SQL altyapısı üzerinde derlenen bir akış işleme altyapısıdır. Yapılandırılmış Akış'ı kullanırken, toplu sorguları yazdığınız gibi akış sorguları da yazabilirsiniz.
 
 Aşağıdaki kod parçacıkları, Kafka’dan okuma ve dosyaya depolama işlemlerini gösterir. Birincisi bir toplu iş işlemi, ikincisiyse bir akış işlemidir:
 
@@ -277,7 +277,7 @@ Bu örnek, HDInsight'ta Kafka ile Spark Structured Streaming'in nasıl kullanıl
     println("Schema declared")
     ```
 
-1. Verileri seçin ve akışı başlatın. Aşağıdaki komut, toplu bir sorgu kullanarak kafka'dan veri alınıp sonuçları Spark kümesindeki HDFS'ye nasıl yazacaklarını gösterir. Bu örnekte, `select` Kafka'dan iletiyi (değer alanı) alır ve şemayı ona uygular. Veriler daha sonra PARKE FORMATInDA HDFS 'ye (WASB veya ADL) yazılır. Bir sonraki Jupyter hücrenizdeki komutu girin.
+1. Verileri seçin ve akışı başlatın. Aşağıdaki komut, toplu sorgu kullanarak Kafka'dan nasıl veri alınır gösteriş gösterir. Ve sonra Sonuçları Spark kümesindeki HDFS'ye yazın. Bu örnekte, `select` Kafka'dan iletiyi (değer alanı) alır ve şemayı ona uygular. Veriler daha sonra PARKE FORMATInDA HDFS 'ye (WASB veya ADL) yazılır. Bir sonraki Jupyter hücrenizdeki komutu girin.
 
     ```scala
     // Read a batch from Kafka
@@ -316,7 +316,7 @@ Bu örnek, HDInsight'ta Kafka ile Spark Structured Streaming'in nasıl kullanıl
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, ilişkili HDInsight kümesini ve kaynak grubuyla ilişkili diğer tüm kaynakları da siler.
+Bu öğretici ile oluşturulan kaynakları temizlemek için kaynak grubunu silebilirsiniz. Kaynak grubunu silmek, ilişkili HDInsight kümesini de siler. Ve kaynak grubuyla ilişkili diğer kaynaklar.
 
 Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
@@ -331,7 +331,7 @@ Azure portalını kullanarak kaynak grubunu kaldırmak için:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, HdInsight'ta [Apache Kafka'dan](./kafka/apache-kafka-introduction.md) gelen verileri yazmak ve okumak için [Apache Spark Structured Streaming'i](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) kullanmayı öğrendiniz. Kafka ile [Apaçi Fırtınası'nın](./storm/apache-storm-overview.md) nasıl kullanılacağını öğrenmek için aşağıdaki bağlantıyı kullanın.
+Bu eğitimde, Apache Spark Structured Streaming'in nasıl kullanılacağını öğrendiniz. HDInsight'ta Apache Kafka'dan veri yazmak ve okumak için. Kafka ile Apaçi Fırtınası'nın nasıl kullanılacağını öğrenmek için aşağıdaki bağlantıyı kullanın.
 
 > [!div class="nextstepaction"]
 > [Apaçi Kafka ile Apaçi Fırtınası kullanın](hdinsight-apache-storm-with-kafka.md)

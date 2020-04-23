@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: ea5df6a2d4a972638b52587f9edc868f65e25df5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532757"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085136"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Quickstart: Linux'ta Azure Uygulama Hizmeti'nde Bir Python uygulaması oluşturun
 
@@ -19,7 +19,7 @@ Bu hızlı başlangıçta, Bir Python web uygulamasını [Linux'taki Uygulama Hi
 
 Uygulamaları bir IDE üzerinden dağıtmayı tercih ediyorsanız, [Visual Studio Code'tan Python uygulamalarını Uygulama Hizmetine dağıt'a](/azure/python/tutorial-deploy-app-service-on-linux-01)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a> (Python 3.6 da desteklenir)
@@ -109,25 +109,25 @@ Bağımsız `--sku F1` değişken, Ücretsiz fiyatlandırma katmanında web uygu
 
 İsteğe bağlı olarak `-l <location-name>` **centralus,** **eastasia**, **westeurope**, koreasouth , **brazilsouth**, **centralindia**, ve benzeri gibi bir Azure bölgesi **koreasouth** `<location_name>` olduğu bağımsız değişkeni ekleyebilirsiniz. [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) Komutu çalıştırarak Azure hesabınız için izin verilebilen bölgelerin listesini alabilirsiniz.
 
-Komutun `az webapp up` tamamen çalışması birkaç dakika sürebilir. Çalışırken, aşağıdaki örneğe benzer bilgileri görüntüler, daha önce sağladığınız ad nerede `<app_name>` olacaktır:
+Komutun `az webapp up` tamamen çalışması birkaç dakika sürebilir. Çalışırken, aşağıdaki örneğe benzer bilgileri görüntüler, daha önce sağladığınız ad nerede `<app-name>` olacaktır:
 
 <pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
 Resource group creation complete
 Creating App service plan 'appsvc_asp_Linux_centralus' ...
 App service plan creation complete
-Creating app '<app-name>' ....
+Creating app '&lt;app-name&gt;' ....
 Configuring default logging for the app, if not already enabled
 Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
 Getting scm site credentials for zip deployment
 Starting zip deployment. This operation can take a while to complete ...
 Deployment endpoint responded with status code 202
-You can launch the app at http://<app-name>.azurewebsites.net
+You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 {
-  "URL": "http://<app-name>.net",
+  "URL": "http://&lt;app-name&gt;.net",
   "appserviceplan": "appsvc_asp_Linux_centralus",
   "location": "eastus",
-  "name": "<app-name>",
+  "name": "&lt;app-name&gt;",
   "os": "Linux",
   "resourcegroup": "appsvc_rg_Linux_centralus",
   "runtime_version": "python|3.7",

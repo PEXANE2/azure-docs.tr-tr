@@ -134,7 +134,7 @@
           href: source-control-integration.md
     - name: Yapılandırma Yönetimi
       items:
-        - name: State Configuration (DSC) yönetimi
+        - name: Durum Yapılandırması (DSC)
           items:
             - name: Genel Bakış
               href: automation-dsc-overview.md
@@ -156,7 +156,7 @@
               href: automation-dsc-diagnostics.md
             - name: DSC ile ilgili sorunları giderme
               href: troubleshoot/desired-state-configuration.md
-        - name: Değişiklik İzleme ve Stok yönetimi
+        - name: Değişiklik İzleme ve Stok
           items:
             - name: Genel Bakış
               href: change-tracking.md
@@ -182,7 +182,7 @@
                   href: troubleshoot/onboarding.md
                 - name: Değişiklik İzleme ve Stok kullanma
                   href: troubleshoot/change-tracking.md
-    - name: Hizmetin kapalı olduğu saatlerde VM’leri Başlatma/Durdurma
+    - name: Hizmetin kapalı olduğu saatlerde Sanal Makineleri Başlatma/Durdurma
       items:
         - name: Genel Bakış
           href: automation-solution-vm-management.md

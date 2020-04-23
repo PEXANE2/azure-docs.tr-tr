@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/26/2020
-ms.openlocfilehash: 2321918e9eae63a71d136753657bd7259862c2d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 337d36d8f5e7a7b69b98de2f68ff372d4914f905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79272662"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084779"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight ile kullanılabilen Apache Hadoop bileşenleri ve sürümleri nelerdir?
 
-Microsoft Azure HDInsight'taki [Apache Hadoop](https://hadoop.apache.org/) ekosistem bileşenleri ve sürümlerinin yanı sıra Kurumsal Güvenlik Paketi hakkında bilgi edinin. Ayrıca, HDInsight'ta Hadoop bileşen sürümlerini nasıl kontrol edebilirsiniz öğrenin.
+Microsoft Azure HDInsight'taki [Apache Hadoop](https://hadoop.apache.org/) ortamı bileşenleri ve sürümleri ve Kurumsal Güvenlik Paketi hakkında bilgi edinin. Ayrıca, HDInsight'ta Hadoop bileşen sürümlerini nasıl kontrol edebilirsiniz öğrenin.
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Apache Hadoop bileşenleri farklı HDInsight sürümleri ile kullanılabilir
 
-Azure HDInsight, herhangi bir zamanda dağıtılabilen birden çok Hadoop küme sürümlerini destekler. 4 Nisan 2017 itibariyle Azure HDInsight tarafından kullanılan varsayılan küme sürümü 3,6'dır.
+Azure HDInsight, herhangi bir zamanda dağıtılabilen birden çok Hadoop küme sürümlerini destekler. 4 Nisan 2017'de Azure HDInsight tarafından kullanılan varsayılan küme sürümü 3,6'dır.
 
 HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tabloda listelenmiştir:
 
@@ -55,7 +55,7 @@ HDInsight küme sürümleriyle ilişkili bileşen sürümleri aşağıdaki tablo
 
 ## <a name="check-for-current-hadoop-component-version-information"></a>Geçerli Hadoop bileşen sürüm bilgilerini denetleyin
 
-HDInsight küme sürümleriyle ilişkili Hadoop ekosistem bileşeni sürümleri, HDInsight güncellemeleriyle değişebilir. Hadoop bileşenlerini kontrol etmek ve bir küme için hangi sürümlerin kullanıldığını doğrulamak için Ambari REST API'yi kullanın. **GetComponentInformation** komutu hizmet bileşenleri hakkında bilgi alır. Ayrıntılar için [Apache Ambari belgelerine](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)bakın.
+HDInsight küme sürümleriyle ilişkili Hadoop ortamı bileşen sürümleri, HDInsight güncellemeleriyle değişebilir. Hadoop bileşenlerini kontrol etmek ve bir küme için hangi sürümlerin kullanıldığını doğrulamak için Ambari REST API'yi kullanın. **GetComponentInformation** komutu hizmet bileşenleri hakkında bilgi alır. Ayrıntılar için [Apache Ambari belgelerine](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)bakın.
 
 ### <a name="release-notes"></a>Sürüm notları
 
@@ -65,7 +65,7 @@ HDInsight'ın en son sürümleriyle ilgili ek sürüm notları için [HDInsight 
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>HDInsight sürümleri için son kullanma ve emekliliği destekleme
 
-**Desteğin sona ermesi,** Microsoft'un artık belirtilen HDInsight sürümü için destek sağlamayacağı ve küme oluşturma için Azure portalı üzerinden artık kullanılabilir olmayacağı anlamına gelir. Ancak, bu sürümler Azure CLI veya çeşitli SDK'lar kullanılarak oluşturulabilir. 
+**Desteğin sona ermesi,** Microsoft'un artık belirtilen HDInsight sürümü için destek sağlamayacağı anlamına gelir. Ayrıca, küme oluşturma için Azure portalı üzerinden artık kullanılamayalacaktır. Ancak, bu sürümler Azure CLI veya çeşitli SDK'lar kullanılarak oluşturulabilir.
 
 HDInsight sürümünün **emekliye ayrılması,** varolan kümelerin olduğu gibi çalışmaya devam edeceği anlamına gelir. Ancak, bu sürümün yeni kümeleri hiçbir yolla oluşturulamaz (CLI ve SDK'lar dahil). Diğer kontrol düzlemi özellikleri (manuel ölçekleme ve Otomatik ölçekleme gibi) sürüm emekliliğinden sonra da çalışmayabilir. Destek, kullanımdan kaldırılan sürümler için kullanılamaz.
 
@@ -73,7 +73,7 @@ Aşağıdaki tablolarDA HDInsight sürümleri listeleneb.r Destek süresi ve eme
 
 ### <a name="available-versions"></a>Kullanılabilir sürümler
 
-Aşağıdaki tabloda, Azure portalında kullanılabilen HDInsight sürümlerinin yanı sıra PowerShell ve .NET SDK gibi diğer dağıtım yöntemleri listelenmektedir.
+Aşağıdaki tabloda, Azure portalında bulunan HDInsight sürümleri ve PowerShell ve .NET SDK gibi diğer dağıtım yöntemleri listelenmektedir.
 
 | HDInsight sürümü | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek son kullanma tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portalında kullanılabilirlik |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -87,7 +87,7 @@ Kıvılcım 2.1, 2.2 & Kafka 1.0 desteği 30 Haziran 2020 tarihinde sona erecek.
 
 ### <a name="retired-versions"></a>Kullanımdan kaldırılan sürümler
 
-Aşağıdaki tabloda, Azure portalında **bulunmayan** HDInsight sürümleri listelenmektedir.
+Aşağıdaki tabloda, AZURE portalında **bulunmayan** HDInsight sürümleri listelenmektedir.
 
 | HDInsight sürümü | HDP versiyonu | VM İŞLETİM SİSTEMİ | Sürüm tarihi | Destek son kullanma tarihi | Emeklilik tarihi | Yüksek kullanılabilirlik |  Azure portalında kullanılabilirlik |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -110,7 +110,7 @@ Kurumsal Güvenlik, küme oluşturma iş akışının bir parçası olarak HDIns
 
 - Kimlik doğrulama için Active Directory ile tümleştirme.
 
-    Geçmişte, yalnızca yerel bir yönetici kullanıcısı ve yerel bir SSH kullanıcısıyla HDInsight kümeleri oluşturabilirsiniz. Yerel yönetici kullanıcı tüm dosyalara, klasörlere, tablolara ve sütunlara erişebilir.  Kurumsal Güvenlik Paketi ile, HDInsight kümelerini şirket içi Active Directory, Azure Active Directory Domain Services veya Active Directory on IaaS'ı içeren kendi Active Dizininizle entegre ederek rol tabanlı erişim denetimini etkinleştirebilirsiniz sanal makine. Kümedeki etki alanı yöneticisi, kullanıcılara kümeye erişmek için kendi kurumsal (etki alanı) kullanıcı adını ve parolasını kullanma izni verebilir.
+    Geçmişte, yerel yönetici kullanıcısı ve yerel SSH kullanıcısıyla HDInsight kümeleri oluşturdunuz. Yerel yönetici kullanıcı tüm dosyalara, klasörlere, tablolara ve sütunlara erişebilir.  Kurumsal Güvenlik Paketi ile HDInsight'ı Active Dizininizle bütünleştirerek rol tabanlı erişim denetimini etkinleştirebilirsiniz. Şirket içi Active Directory, Azure Active Directory Etki Alanı Hizmetleri içerir. Veya IaaS sanal makinede Active Directory. Kümedeki etki alanı yöneticisi, kullanıcılara kendi kurumsal (etki alanı) kullanıcı adı ve parolalarını kullanma izni verebilir.
 
     Daha fazla bilgi için bkz.
 
@@ -144,37 +144,18 @@ Kurumsal Güvenlik, küme oluşturma iş akışının bir parçası olarak HDIns
 
 Kurumsal Güvenlik Paketi, Azure Veri Gölü Depolama'nın hem birincil depolama alanı hem de eklenti depolama alanı olarak kullanılmasını destekler.
 
-### <a name="pricing-and-service-level-agreement"></a>Fiyatlandırma ve hizmet düzeyi sözleşmesi
+### <a name="pricing-and-service-level-agreement-sla"></a>Fiyatlandırma ve hizmet düzeyi sözleşmesi (SLA)
 
 Kurumsal Güvenlik Paketi için fiyatlandırma ve SLA hakkında daha fazla bilgi için [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/)fiyatlandırması'na bakın.
 
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight küme sürümleri için hizmet düzeyi sözleşmesi
 
-Hizmet düzeyi sözleşmesi (SLA) bir _destek penceresi_açısından tanımlanır. Destek penceresi, HDInsight küme sürümünün Microsoft Müşteri Hizmetleri ve Desteği tarafından desteklenme zamanıdır. Sürümde geçmiş bir _destek son kullanma tarihi_ varsa, HDInsight kümesi destek penceresinin dışındadır. Belirli bir HDInsight sürümü X için destek bitiş tarihi (daha yeni bir X+1 sürümü kullanılabilir hale geldiğinden sonra) aşağıdakilerin daha sonraki olarak hesaplanır:  
+Hizmet düzeyi sözleşmesi (SLA) bir _destek penceresi_olarak tanımlanır. Destek penceresi, HDInsight sürümünün desteklediği zaman `Microsoft Customer Service and Support`dilimidir. Sürümde geçmiş bir _destek son kullanma tarihi_varsa, HDInsight kümesi destek penceresinin dışındadır. HDInsight sürüm X için destek sona ermesi (daha yeni bir X+1 sürümü kullanılabilir hale geldiğinden sonra) daha sonraki sürümdür:  
 
 - Formül 1: HDInsight küme sürümü X'in yayımlandığı tarihe 180 gün ekleyin.
 - Formül 2: HDInsight küme sürümü X+1'in Azure portalında kullanıma sunulduğu tarihe 90 gün ekleyin.
 
 _Emeklilik tarihi,_ küme sürümünün HDInsight'ta oluşturulamayacağı tarihtir. 31 Temmuz 2017'den itibaren, bir HDInsight kümesini emeklilik tarihinden sonra yeniden boyutlandıramaz.
-
-## <a name="hortonworks-release-notes-associated-with-hdinsight-versions"></a>Hortonworks HDInsight sürümleri ile ilişkili sürüm notları
-
-Bölüm, HORTonworks Veri Platformu dağıtımları ve HDInsight ile kullanılan Apache bileşenleri için sürüm notları için bağlantılar sağlar.
-* HDInsight küme sürümü 4.0 [Hortonworks Veri Platformu 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) dayalı bir Hadoop dağıtım kullanır
-* HDInsight küme sürüm 3.6 [Hortonworks Veri Platformu 2.6](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html)dayalı bir Hadoop dağıtım kullanır.
-* HDInsight küme sürüm 3.5 [Hortonworks Veri Platformu 2.5](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)dayalı bir Hadoop dağıtım kullanır. HDInsight küme sürümü 3.5, Azure portalında oluşturulan _varsayılan_ Hadoop kümesidir.
-* HDInsight küme sürüm 3.4 [Hortonworks Veri Platformu 2.4](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.4.0/bk_HDP_RelNotes/content/ch_relnotes_v240.html)dayalı bir Hadoop dağıtım kullanır.
-* HDInsight küme sürüm 3.3 [Hortonworks Veri Platformu 2.3](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.0/bk_HDP_RelNotes/content/ch_relnotes_v230.html)dayalı bir Hadoop dağıtım kullanır.
-
-  * [Apache Storm sürüm notları](https://storm.apache.org/2015/11/05/storm0100-released.html) Apache web sitesinde mevcuttur.
-  * [Apache Hive sürüm notları](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) Apache web sitesinde mevcuttur.
-* HDInsight küme sürüm 3.2 [Hortonworks Veri Platformu 2.2][hdp-2-2]dayalı bir Hadoop dağıtım kullanır.
-
-  * Belirli Apache bileşenleri için sürüm notları aşağıdaki gibi mevcuttur: [Kovan 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Domuz 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [İpLik 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Ortak](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Fırtına 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), ve [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
-* HDInsight küme sürüm 3.1 [Hortonworks Veri Platformu 2.1.7][hdp-2-1-7]dayalı bir Hadoop dağıtım kullanır. 7 Kasım 2014'ten önce oluşturulan HDInsight 3.1 kümeleri [Hortonworks Veri Platformu 2.1.1'e][hdp-2-1-1]dayanmaktadır.
-* HDInsight küme sürüm 3.0 [Hortonworks Veri Platformu 2.0][hdp-2-0-8]dayalı bir Hadoop dağıtım kullanır.
-* HDInsight küme sürüm 2.1 [Hortonworks Veri Platformu 1.3][hdp-1-3-0]dayalı bir Hadoop dağıtım kullanır.
-* HDInsight küme sürüm 1.6 [Hortonworks Veri Platformu 1.1][hdp-1-1-0]dayalı bir Hadoop dağıtım kullanır.
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Kümeler için varsayılan düğüm yapılandırması ve sanal makine boyutları
 
@@ -184,15 +165,4 @@ Kümeniz için hangi sanal makine SUS'larının seçilen hakkında daha fazla bi
 
 - [HDInsight'ta Apache Hadoop, Spark ve daha fazlası için küme kurulumu](hdinsight-hadoop-provision-linux-clusters.md)
 - [Windows PC'den HDInsight'ta Apache Hadoop'ta çalışın](hdinsight-hadoop-windows-tools.md)
-
-[hdp-2-2]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.2.9/bk_HDP_RelNotes/content/ch_relnotes_v229.html
-
-[hdp-2-1-7]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.7-Win/bk_releasenotes_HDP-Win/content/ch_relnotes-HDP-2.1.7.html
-
-[hdp-2-1-1]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.1/bk_releasenotes_hdp_2.1/content/ch_relnotes-hdp-2.1.1.html
-
-[hdp-2-0-8]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.8.0/bk_releasenotes_hdp_2.0/content/ch_relnotes-hdp2.0.8.0.html
-
-[hdp-1-3-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.3.0_1.html
-
-[hdp-1-1-0]: https://docs.hortonworks.com/HDPDocuments/HDP1/HDP-1.3.0/bk_releasenotes_hdp_1.x/content/ch_relnotes-hdp1.1.1.16_1.html
+- [Hortonworks, Azure HDInsight sürümleriyle ilişkili sürüm notları](./hortonworks-release-notes.md)

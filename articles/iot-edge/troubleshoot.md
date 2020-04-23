@@ -4,19 +4,19 @@ description: Azure IoT Edge için bileşen durumu ve günlükleri alma ve sık k
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/20/2019
+ms.date: 04/21/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3529d6a67c6c8c19c053fe3170298658e90b4a54
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 2e15dffac73b4a50b1ef9288feaeb6073dea91e0
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729264"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086530"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge için genel sorunlar ve çözümler
 
@@ -40,20 +40,19 @@ Komutu `check` aşağıdaki gibi çalıştırabilir veya `--help` seçeneklerin 
   iotedge check
   ```
 
-Araç tarafından çalıştırılan denetim türleri aşağıdaki gibi sınıflandırılabilir:
+Sorun giderme aracı, bu üç kategoriye sıralanmış birçok denetim çalıştırMaktadır:
 
 * Yapılandırma denetimleri: *Config.yaml* ve konteyner motoruyla ilgili sorunlar da dahil olmak üzere Edge aygıtlarının buluta bağlanmasını engelleyebilecek ayrıntıları inceler.
 * Bağlantı denetimleri: IoT Edge çalışma zamanı nın ana bilgisayar aygıtındaki bağlantı noktalarına erişebileceğini ve tüm IoT Edge bileşenlerinin IoT Hub'ına bağlanabileceğini doğrular.
 * Üretime hazırlık denetimleri: Aygıt sertifikası yetkilisi (CA) sertifikalarıve modül günlüğü dosyası yapılandırması durumu gibi önerilen üretim en iyi uygulamalarını arar.
 
-Tanılama denetimlerinin tam listesi için, [Yerleşik sorun giderme işlevine](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)bakın.
+Bir hata veya uyarı alırsanız ne yapmanız gerektiğini de içeren bu aracın çalıştırılabildikleri tanılama denetimlerinin her biri hakkında bilgi için [Bkz. IoT Edge sorun giderme denetimleri.](https://github.com/Azure/iotedge/blob/master/doc/troubleshoot-checks.md)
 
 ## <a name="gather-debug-information-with-iotedge-support-bundle-command"></a>iotedge 'destek paketi' komutuyla hata ayıklama bilgilerini toplama
 
 Bir IoT Edge aygıtından günlükleri toplamanız gerektiğinde, en uygun `support-bundle` yol komutu kullanmaktır. Varsayılan olarak, bu komut modülü, IoT Edge Security Manager ve konteyner motoru günlükleri, 'iotedge denetimi' JSON çıkışı ve diğer yararlı hata ayıklama bilgilerini toplar. Kolay paylaşım için bunları tek bir dosyaya sıkıştırır. Komut `support-bundle` [sürüm 1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) ve sonrası kullanılabilir.
 
 Günlükleri `support-bundle` almak `--since` istediğinizi geçmişten ne kadar süre önce belirtmek için bayrağı ni ile komutu çalıştırın. Örneğin `6h` son 6 saatten beri, son `6d` 6 günden beri, `6m` son 6 dakikadan beri günlükleri alırsınız ve benzeri. Seçeneklerin `--help` tam listesini görmek için bayrağı ekleyin.
-
 
 * Linux üzerinde:
 

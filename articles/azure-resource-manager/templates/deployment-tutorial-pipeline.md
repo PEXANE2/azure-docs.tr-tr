@@ -1,15 +1,15 @@
 ---
 title: Azure Pipelines ile sürekli tümleştirme
 description: Azure Kaynak Yöneticisi şablonlarını sürekli olarak nasıl oluşturup, test etmeyi ve dağıtmayı öğrenin.
-ms.date: 03/13/2020
+ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6ce6f176a52a742a3216a5b761b34254027a1c5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255082"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084337"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli entegrasyonu
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -57,11 +57,7 @@ GitHub hesabınız [yoksa, Ön koşullara](#prerequisites)bakın.
 
 1. Yeşil düğme yle **Yeni'yi**seçin.
 1. **Depo adına,** bir depo adı girin.  Örneğin, **AzureRmPipeline-repo**. **AzureRmPipeline'dan** herhangi birini proje adınız ile değiştirmeyi unutmayın. Bu öğretici geçmesi için **Ya Ortak** veya **özel** seçebilirsiniz. Ve sonra **depo oluştur'u**seçin.
-1. URL'yi yazın. Depo URL'si aşağıdaki biçimdir:
-
-    ```url
-    https://github.com/[YourAccountName]/[YourRepositoryName]
-    ```
+1. URL'yi yazın. Depo URL'si aşağıdaki biçimdir - ** https://github.com/[Hesap Adınız]/[RepositoryName]**.
 
 Bu depo, *uzak*depo olarak adlandırılır. Aynı projenin geliştiricilerinin her biri kendi *yerel deposunu*klonlayabilir ve değişiklikleri uzak depoda birleştirilebilir.
 
@@ -131,7 +127,7 @@ Bir sonraki yordamı devam etmeden önce bir DevOps organizasyonu gereklidir.  E
     * **Sürüm denetimi**: **Git'i**seç. Sürüm **denetimini** görmek **Version control**için Gelişmiş'i genişletmeniz gerekebilir.
 
     Diğer özellikler için varsayılan değeri kullanın.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 Projeleri Azure'a dağıtmak için kullanılan bir hizmet bağlantısı oluşturun.
 
@@ -146,7 +142,7 @@ Projeleri Azure'a dağıtmak için kullanılan bir hizmet bağlantısı oluştur
     * **Kaynak Grubu**: Boş bırakın.
     * **Bağlantı adı**: bağlantı adı girin. Örneğin, **AzureRmPipeline-conn**. Bu adı yazın, ardışık alanı oluştururken isme ihtiyacınız var.
     * **Tüm boru hatlarına erişim izni ver.** (seçilmiş)
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
 
@@ -186,7 +182,7 @@ Projeleri Azure'a dağıtmak için kullanılan bir hizmet bağlantısı oluştur
 
     ![Azure Kaynak Yöneticisi Azure DevOps Azure Boru Hatları adımı](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     Görev hakkında daha fazla bilgi için [Azure Kaynak Grubu Dağıtım görevi](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)ve Azure Kaynak Yöneticisi şablon dağıtım [görevine](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md) bakın
 

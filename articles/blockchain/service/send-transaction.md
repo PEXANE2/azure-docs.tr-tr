@@ -1,15 +1,15 @@
 ---
 title: Akıllı sözleşmeler oluşturma, oluşturma & dağıtma eğitimi - Azure Blockchain Hizmeti
 description: Visual Studio Code'daki Ethereum uzantısı için Azure Blockchain Geliştirme Kiti'ni, Azure Blockchain Hizmeti'nde akıllı bir sözleşme oluşturmak, oluşturmak ve dağıtmak için nasıl kullanacağınıza ilişkin öğretici.
-ms.date: 12/06/2019
+ms.date: 04/22/2020
 ms.topic: tutorial
-ms.reviewer: chrisseg
-ms.openlocfilehash: 5b901ab904425a22d2fe9643ffa75a4e978efa88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.reviewer: caleteet
+ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74972879"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086666"
 ---
 # <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure Blockchain Hizmetinde akıllı sözleşmeler oluşturun, oluşturun ve dağıtın
 
@@ -24,7 +24,7 @@ Ethereum için Azure Blockchain Geliştirme Kiti'ni şu şekilde kullanıyorsunu
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tam [Quickstart: Azure Blockchain Hizmeti konsorsiyum ağına bağlanmak için Visual Studio Kodunu kullanın](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -41,7 +41,7 @@ Windows'da düğüm-gyp modülü için yüklü bir C++ derleyicisi gereklidir. M
 * Visual Studio 2019 yüklüyse, MS build araçları yolunu npm için ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Aksi takdirde, yönetici komut uyruşu olarak yükseltilmiş bir `npm install --global windows-build-tools` *Çalıştır'da* tek başına VS Build araçlarını yükleyin.
 
-Düğüm-gyp hakkında daha fazla bilgi için [GitHub'daki düğüm-gyp deposuna](https://github.com/node-gyp)bakın.
+Düğüm-gyp hakkında daha fazla bilgi için [GitHub'daki düğüm-gyp deposuna](https://github.com/nodejs/node-gyp)bakın.
 
 ## <a name="create-a-smart-contract"></a>Akıllı bir sözleşme oluşturma
 

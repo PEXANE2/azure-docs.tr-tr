@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 9e8aa9bbbdf166ba0caf29cd0bce22b8ed321e4e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 48cdbc8188604ce1992a1cb15289576ba92902a3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81685193"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086156"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL Denetimi
 
@@ -30,7 +30,7 @@ Denetim şunları da sağlar:
 > [!NOTE] 
 > Bu konu hem Azure SQL Veritabanı hem de Azure Synapse Analytics veritabanları için geçerlidir. Basitlik için SQL Veritabanı, hem Azure SQL Veritabanı'na hem de Azure Synapse Analytics'e atıfta bulunularak kullanılır.
 
-## <a name="overview"></a><a id="overview"></a>Genel Bakış
+## <a name="overview"></a><a id="overview"></a>Genel bakış
 
 SQL veritabanı denetimini kullanarak:
 
@@ -89,7 +89,7 @@ Aşağıdaki bölümde Azure portalını kullanarak denetim yapılandırması a�
   
    ![depolama seçenekleri](./media/sql-database-auditing-get-started/auditing-select-destination.png)
    
-### <a name=""></a><a id="audit-storage-destination">Depolama hedefine denetim</a>
+### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>Depolama hedefine denetim
 
 Denetim günlüklerini bir depolama hesabına yapılandırmak için **Depolama** ve Açık **Depolama ayrıntılarını**seçin. Günlüklerin kaydedilen Azure depolama hesabını seçin ve ardından bekletme dönemini seçin. Ardından **Tamam**'a tıklayın. Bekletme döneminden eski günlükler silinir.
 
@@ -108,13 +108,13 @@ Denetim günlüklerini bir depolama hesabına yapılandırmak için **Depolama**
 - AAD Kimlik Doğrulaması kullanırken, başarısız oturum açma kayıtları SQL denetim günlüğünde *görünmez.* Başarısız oturum açma denetim kayıtlarını görüntülemek için, bu olayların ayrıntılarını günlüğe kaydeden [Azure Etkin Dizin portalını]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)ziyaret etmeniz gerekir.
 - [Salt Okunur Yinelemelerde](sql-database-read-scale-out.md) denetim otomatik olarak etkinleştirilir. Depolama klasörlerinin hiyerarşisi, adlandırma kuralları ve günlük biçimi hakkında daha fazla bilgi için [SQL Veritabanı Denetim Günlüğü Biçimi'ne](sql-database-audit-log-format.md)bakın. 
 
-### <a name=""></a><a id="audit-log-analytics-destination">Log Analytics hedefine denetim</a>
+### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics hedefine denetim
   
 Yazma denetim günlüklerini bir Log Analytics çalışma alanına yapılandırmak için **Log Analytics (Önizleme) seçeneğini** seçin ve **Log Analytics ayrıntılarını**açın. Günlüklerin yazıldığı Log Analytics çalışma alanını seçin veya oluşturun ve **ardından Tamam'ı**tıklatın.
    
    ![LogAnalyticsworkspace](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-### <a name=""></a><a id="audit-event-hub-destination">Olay Hub hedefine denetim</a>
+### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>Olay Hub hedefine denetim
 
 > [!WARNING]
 > Üzerinde SQL havuzu bulunan bir sunucuda denetimi etkinleştirmek, **SQL havuzunun yeniden başlatılmasına ve yeniden duraklatılmasına** neden olur ve bu da faturalandırma ücretlerine neden olabilir.
@@ -199,7 +199,7 @@ Bir Azure depolama hesabına denetim günlükleri yazmayı seçtiyseniz, günlü
 
 <!--The description in this section refers to preceding screen captures.-->
 
-#### <a name="auditing-geo-replicated-databases"></a>Coğrafi olarak çoğaltılan veritabanlarını denetleme
+### <a name="auditing-geo-replicated-databases"></a>Coğrafi olarak çoğaltılan veritabanlarını denetleme
 
 Coğrafi olarak çoğaltılan veritabanlarında, birincil veritabanında denetimi etkinleştirdiğinizde ikincil veritabanı nın aynı denetim ilkesi ne olur. Birincil veritabanından bağımsız olarak **ikincil sunucuda**denetimi etkinleştirerek ikincil veritabanında denetim kurmak da mümkündür.
 
@@ -211,7 +211,7 @@ Coğrafi olarak çoğaltılan veritabanlarında, birincil veritabanında denetim
     >[!IMPORTANT]
     >Veritabanı düzeyinde denetim ile, ikincil veritabanı için depolama ayarları birincil veritabanı ile aynı olacak, bölgeler arası trafiğe neden. Yalnızca sunucu düzeyinde denetimi etkinleştirmenizi ve veritabanı düzeyinde denetimi tüm veritabanları için devre dışı bırakmanızı öneririz.
 
-#### <a name="storage-key-regeneration"></a>Depolama anahtarı rejenerasyonu
+### <a name="storage-key-regeneration"></a>Depolama anahtarı rejenerasyonu
 
 Üretimde, depolama anahtarlarınızı düzenli aralıklarla yenileme olasılığınız yüksektir. Azure depolama alanına denetim günlükleri yazarken, anahtarlarınızı yenilerken denetim ilkenizi yeniden kaydetmeniz gerekir. İşlem aşağıdaki gibidir:
 
@@ -226,7 +226,7 @@ Coğrafi olarak çoğaltılan veritabanlarında, birincil veritabanında denetim
 
 ## <a name="manage-azure-sql-server-and-database-auditing"></a><a id="manage-auditing"></a>Azure SQL Server ve Veritabanı denetimini yönetme
 
-#### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
+### <a name="using-azure-powershell"></a>Azure PowerShell’i kullanma
 
 **PowerShell cmdlets (ek filtreleme için WHERE yan tümcesi desteği dahil)**:
 
@@ -239,7 +239,7 @@ Coğrafi olarak çoğaltılan veritabanlarında, birincil veritabanında denetim
 
 Komut dosyası örneği için bkz. [PowerShell kullanarak denetimi ve tehdit algılamayı yapılandırın.](scripts/sql-database-auditing-and-threat-detection-powershell.md)
 
-#### <a name="using-rest-api"></a>REST API kullanma
+### <a name="using-rest-api"></a>REST API kullanma
 
 **REST API**:
 
@@ -255,7 +255,7 @@ Ek filtreleme için WHERE yan tümcesi desteği ile genişletilmiş ilke:
 - [Veritabanı *Genişletilmiş* Denetim İlkealın](/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Sunucu *Genişletilmiş* Denetim İlkesi Alın](/rest/api/sql/server%20auditing%20settings/get)
 
-#### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
+### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 
 Azure [Kaynak Yöneticisi](../azure-resource-manager/management/overview.md) şablonlarını kullanarak Azure SQL veritabanı denetimini aşağıdaki örneklerde gösterildiği gibi yönetebilirsiniz:
 

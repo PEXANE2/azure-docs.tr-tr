@@ -6,12 +6,12 @@ ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 7c03e2b5e8c035b53b874a8e7751283fdbe3d516
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.openlocfilehash: ee5a12b11e36f3d1e08d1154d21f198c0fd1b76e
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80811293"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085278"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure"></a>Öğretici: Azure'da PHP ve MySQL uygulaması oluşturun
 
@@ -23,7 +23,7 @@ ms.locfileid: "80811293"
 
 ![Azure App Service’te çalışan PHP uygulaması](./media/app-service-web-tutorial-php-mysql/complete-checkbox-published.png)
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -169,10 +169,10 @@ az mysql server create --resource-group myResourceGroup --name <mysql_server_nam
 
 MySQL sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 {
   "location": "westeurope",
-  "name": "<mysql_server_name>",
+  "name": "&lt;mysql_server_name&gt;",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "additionalProperties": {},
@@ -184,9 +184,9 @@ MySQL sunucusu oluşturulduğunda Azure CLI, aşağıdaki örneğe benzer bilgil
   },
   "sslEnforcement": "Enabled",
   ...    +  
-  -  < Output has been truncated for readability >
+  -  &lt; Output has been truncated for readability &gt;
 }
-```
+</pre>
 
 ### <a name="configure-server-firewall"></a>Sunucu güvenlik duvarını yapılandırma
 
@@ -400,7 +400,7 @@ Varsayılan olarak, Azure Uygulama Hizmeti kök_/_ sanal uygulama yolunu ( ) da�
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
-```bash
+<pre>
 Counting objects: 3, done.
 Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
@@ -412,8 +412,8 @@ remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
 remote: Running deployment command...
 ...
-< Output has been truncated for readability >
-```
+&lt; Output has been truncated for readability &gt;
+</pre>
 
 > [!NOTE]
 > Dağıtım işleminin sonunda [Composer](https://getcomposer.org/) paketleri yüklediğini fark edebilirsiniz. App Service, varsayılan dağıtım sırasında bu otomasyonları çalıştırmadığı için bu örnek depoyu etkinleştirmek üzere kök dizinde üç ek dosya bulunur:

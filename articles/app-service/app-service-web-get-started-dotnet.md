@@ -3,14 +3,14 @@ title: 'Quickstart: C# ASP.NET Core uygulaması oluşturma'
 description: Visual Studio'dan varsayılan C# ASP.NET Core web uygulaması şablonuna dağıtarak Azure Uygulama Hizmeti'nde web uygulamalarını nasıl çalıştırırabilirsiniz öğrenin.
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
-ms.date: 03/17/2020
+ms.date: 04/22/2020
 ms.custom: mvc, devcenter, vs-azure, seodec18
-ms.openlocfilehash: be7c4a2fb65f913bc97617af1a0f21ee8fcca714
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 6c7ab1290033792cf356c4882811670011df5efe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81313291"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086054"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure'da ASP.NET Core web uygulaması oluşturma
 
@@ -18,7 +18,7 @@ Bu hızlı başlangıçta, ilk ASP.NET Core web uygulamanızı nasıl oluşturup
 
 İşi nizi bitirdiğinizde, bir Uygulama Hizmeti barındırma planı ve dağıtılmış bir web uygulamasına sahip bir Uygulama Hizmetinden oluşan bir Azure kaynak grubunuz olur.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/dotnet/)
 - Bu hızlı başlangıç, bir uygulamayı Windows'daki Uygulama Hizmeti'ne dağıtır. _Linux_ üzerinde App Service'e dağıtım yapmak için bkz. [Linux üzerinde App Service'te .NET Core web uygulaması oluşturma](./containers/quickstart-dotnetcore.md).
@@ -107,7 +107,7 @@ Web uygulamanızı güncellemek ve yeniden dağıtmak için aşağıdaki adımla
 
 1. **Çözüm Gezgini'nde**, projeniz **altında, Pages** > **Index.cshtml'i**açın.
 
-1. İki `<div>` etiketini aşağıdaki kodla değiştirin:
+1. Etiketin `<div>` tamamını aşağıdaki kodla değiştirin:
 
    ```HTML
    <div class="jumbotron">

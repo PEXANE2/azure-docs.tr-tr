@@ -3,15 +3,16 @@ title: Azure CLI ile Windows VM oluşturma ve şifreleme
 description: Bu hızlı başlangıçta, bir Windows sanal makinesi oluşturmak ve şifrelemek için Azure CLI'yi nasıl kullanacağınızı öğrenirsiniz
 author: msmbaldwin
 ms.author: mbaldwin
-ms.service: security
+ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
-ms.openlocfilehash: 786a906241b355cdae403c6ed08b60eb27045d6f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: aa0dd0bf55d51800d6a9b4283aa9e653887bf2f1
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385257"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82082807"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-vm-with-the-azure-cli"></a>Hızlı başlatma: Azure CLI ile bir Windows VM oluşturma ve şifreleme
 

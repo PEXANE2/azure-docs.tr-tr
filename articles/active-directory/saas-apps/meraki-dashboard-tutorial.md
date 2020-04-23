@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/17/2020
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 571f4421a5d890fab31eda0125802d33918144ef
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6d5fd75a737a0a866b6e5c26c417458ee95845fb
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81726385"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084167"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-meraki-dashboard"></a>Öğretici: Meraki Dashboard ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -32,7 +32,7 @@ Bu eğitimde, Meraki Panosu'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -57,7 +57,6 @@ Meraki Dashboard'un Azure AD'ye entegrasyonunu yapılandırmak için, Meraki Pan
 1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Meraki Panosu** yazın.
 1. Sonuç panelinden **Meraki Panosu'nu** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-meraki-dashboard"></a>Meraki Panosu için Azure AD oturum açma işlemlerini yapılandırma ve test
 
 Azure AD SSO'nu Meraki Dashboard ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Meraki Panosu'ndaki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
@@ -81,8 +80,14 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Temel **SAML Yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL'ler Azure ile önceden doldurulmuştür. Kullanıcının **Kaydet** düğmesini tıklatarak yapılandırmayı kaydetmesi gerekir.
+1. Temel **SAML Yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
+     
+    **Yanıtla URL** metin kutusunda, aşağıdaki deseni kullanarak bir URL yazın:`https://n27.meraki.com/saml/login/m9ZEgb/< UNIQUE ID >`
 
+    > [!NOTE]
+    > YanıtURL değeri gerçek değil. Bu değeri, daha sonra öğreticide açıklanan gerçek YanıtURL değeriyle güncelleştirin.
+
+1. **Kaydet** düğmesine tıklayın.
 
 1. Meraki Dashboard uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
@@ -92,8 +97,8 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     
     | Adı | Kaynak Özniteliği|
     | ---------------| --------- |
-    | kullanıcı adı | user.userprincipalname |
-    | rol | user.assignedroles |
+    | `https://dashboard.meraki.com/saml/attributes/username` | user.userprincipalname |
+    | `https://dashboard.meraki.com/saml/attributes/role` | user.assignedroles |
 
     > [!NOTE]
     > Azure AD'deki rolleri nasıl yapılandırılayacağımı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)bakın.
@@ -106,7 +111,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     ![Parmak Izi değerini kopyala](common/copy-thumbprint.png)
 
-1. **Meraki Panosu'nu Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
+1. **Meraki Panosu'nu Ayarla** bölümünde, Giriş URL değerini kopyalayın ve bilgisayarınıza kaydedin.
 
     ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
@@ -156,7 +161,7 @@ Bu bölümde, Meraki Panosu'na erişim sağlayarak B.Simon'Un Azure tek oturum a
 
     ![Meraki Pano Yapılandırması](./media/meraki-dashboard-tutorial/configure3.png)
 
-1. Azure portalından kopyaladığınız **Parmak İzi** Değerini **X.590 cert SHA1 parmak izi** metin kutusuna yapıştırın. Daha sonra **Kaydet**'e tıklayın.
+1. Azure portalından kopyaladığınız **Parmak İzi** Değerini **X.590 cert SHA1 parmak izi** metin kutusuna yapıştırın. Daha sonra **Kaydet**'e tıklayın. Tasarruf tan sonra, Tüketici URL'si açılır. Tüketici URL değerini kopyalayın ve bunu Azure portalındaki **Temel SAML Yapılandırma Bölümündeki** **Yanıtla URL** textbox'ına yapıştırın.
 
     ![Meraki Pano Yapılandırması](./media/meraki-dashboard-tutorial/configure4.png)
 

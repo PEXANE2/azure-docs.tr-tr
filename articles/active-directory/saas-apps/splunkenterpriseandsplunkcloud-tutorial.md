@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160969"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>Öğretici: Splunk Enterprise ve Splunk Cloud ile Azure Active Directory entegrasyonu
 
@@ -35,7 +35,7 @@ Splunk Enterprise ve Splunk Cloud'u Azure AD ile tümleştirmek size aşağıdak
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Splunk Enterprise ve Splunk Cloud ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -113,7 +113,7 @@ Splunk Enterprise ve Splunk Cloud ile Azure AD oturum açma işlemlerini yapıla
     c. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [Splunk Enterprise ve Splunk Cloud Client destek ekibine](https://www.splunk.com/about-us/contact.html#tabs/customer-support) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek Oturum Açma URL'si, Tanımlayıcı ve Yanıt URL'si ile güncelleştirin. Bu değerleri almak için [Splunk Enterprise ve Splunk Cloud Client destek ekibine](https://www.splunk.com/en_us/about-splunk/contact-us.html) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
 5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federasyon **Metadata XML'ini** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
@@ -121,7 +121,7 @@ Splunk Enterprise ve Splunk Cloud ile Azure AD oturum açma işlemlerini yapıla
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>Splunk Enterprise ve Splunk Cloud Tek Oturum Açma'yı Yapılandır
 
-**Splunk Enterprise ve Splunk Cloud** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'i** ve azure portalından uygun kopyalanmış URL'leri [Splunk Enterprise ve Splunk Cloud destek ekibine](https://www.splunk.com/about-us/contact.html#tabs/customer-support)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+**Splunk Enterprise ve Splunk Cloud** tarafında tek oturum açma yapılandırmak için, indirilen **Federasyon Metadata XML'i** ve azure portalından uygun kopyalanmış URL'leri [Splunk Enterprise ve Splunk Cloud destek ekibine](https://www.splunk.com/en_us/about-splunk/contact-us.html)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -176,7 +176,7 @@ Bu bölümde, Britta Simon'ın Splunk Enterprise ve Splunk Cloud'a erişim sağl
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>Splunk Enterprise ve Splunk Cloud test kullanıcıoluşturma
 
-Bu bölümde, Splunk Enterprise ve Splunk Cloud'da Britta Simon adında bir kullanıcı oluşturursunuz.  [Splunk Enterprise ve Splunk Cloud platformundaki kullanıcıları eklemek için Splunk Enterprise ve Splunk Cloud destek ekibiyle](https://www.splunk.com/about-us/contact.html#tabs/customer-support) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
+Bu bölümde, Splunk Enterprise ve Splunk Cloud'da Britta Simon adında bir kullanıcı oluşturursunuz.  [Splunk Enterprise ve Splunk Cloud platformundaki kullanıcıları eklemek için Splunk Enterprise ve Splunk Cloud destek ekibiyle](https://www.splunk.com/en_us/about-splunk/contact-us.html) birlikte çalışın. Tek oturum açmadan önce kullanıcılar oluşturulmalı ve etkinleştirilmelidir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c8427333a0a395ca4a0998662cacf13dea662e04
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e3517804cb66a9f98351e4c68f4f7c4387cee8fe
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77212848"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083810"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>Hızlı başlangıç: Azure Cosmos DB Table API verilerini yönetmek için bir Java uygulaması oluşturun
 
@@ -27,7 +27,7 @@ ms.locfileid: "77212848"
 
 Bu hızlı başlangıçta, bir Azure Cosmos DB Tablo API hesabı oluşturur sunuz ve tablo lar ve varlıklar oluşturmak için GitHub'dan klonlanmış Bir Veri Gezgini ve Java uygulamasını kullanıyorsunuz. Azure Cosmos DB, belge, tablo, anahtar değeri ve grafik veritabanlarını küresel dağıtım ve yatay ölçek özelliklerine sahip hızlı bir şekilde oluşturmanıza ve sorgulamanıza olanak tanıyan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Veya Azure aboneliği olmadan [Azure Cosmos DB'yi ücretsiz olarak deneyin.](https://azure.microsoft.com/try/cosmosdb/) Ayrıca Bir URI `https://localhost:8081` ve anahtarı `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`ile Azure [Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) kullanabilirsiniz.
 - [Java Geliştirme Kiti (JDK) 8](https://www.azul.com/downloads/azure-only/zulu/?&version=java-8-lts&architecture=x86-64-bit&package=jdk). Ortam `JAVA_HOME` değişkeninizi JDK'nın yüklü olduğu klasöre yönlendirin.
@@ -52,7 +52,7 @@ Bu hızlı başlangıçta, bir Azure Cosmos DB Tablo API hesabı oluşturur sunu
 
 ## <a name="clone-the-sample-application"></a>Örnek uygulamayı kopyalama
 
-Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz. 
+Şimdi GitHub'dan bir Tablo uygulaması kopyalayalım, bağlantı dizesini ayarlayalım ve uygulamayı çalıştıralım. Verilerle program aracılığıyla çalışmanın ne kadar kolay olduğunu göreceksiniz.
 
 1. Bir komut istemini açın, git-samples adlı yeni bir klasör oluşturun ve komut istemini kapatın.
 
@@ -71,6 +71,8 @@ Bu hızlı başlangıçta, bir Azure Cosmos DB Tablo API hesabı oluşturur sunu
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-java-getting-started.git 
     ```
+
+> ! [İpucu] Benzer kodun daha ayrıntılı bir gözden geçirme için [Cosmos DB Tablo API örnek](table-storage-how-to-use-java.md) makalesine bakın. 
 
 ## <a name="update-your-connection-string"></a>Bağlantı dizenizi güncelleştirme
 

@@ -10,18 +10,18 @@ ms.service: azure-app-configuration
 ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
-ms.openlocfilehash: 85b966a9423fa6c8b2dc9e97cab1e24d9756caa4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687350"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085068"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Quickstart: Azure Uygulama Yapılandırması ile Bir Java Bahar uygulaması oluşturun
 
 Bu hızlı başlangıçta, uygulama ayarlarının kodunuzdan ayrı olarak depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama Yapılandırmasını bir Java Spring uygulamasına dahil edersiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
 - Sürüm 8 ile desteklenen [bir Java Geliştirme Kiti (JDK).](https://docs.microsoft.com/java/azure/jdk)
@@ -143,7 +143,7 @@ Yeni bir Bahar Önyükleme projesi oluşturmak için [Bahar Başlatıcısı'nı]
 1. Uygulamanızın kaynak `bootstrap.properties` dizininin altında yeni bir dosya oluşturun ve aşağıdaki satırları dosyaya ekleyin. Örnek değerleri Uygulama Yapılandırma mağazanız için uygun özelliklerle değiştirin.
 
     ```CLI
-    spring.cloud.azure.appconfiguration.stores[0].connection-string=${APP_CONFIGURATION_CONNECTION_STRING}
+    spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
 1. **APP_CONFIGURATION_CONNECTION_STRING**adlı bir ortam değişkeni ayarlayın ve Uygulama Yapılandırma mağazanızın erişim anahtarına ayarlayın. Komut satırında, aşağıdaki komutu çalıştırın ve değişikliğin etkili olmasını sağlamak için komut istemini yeniden başlatın:

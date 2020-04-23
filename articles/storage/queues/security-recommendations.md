@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 8bb56db9eed962ac8f8202c61a7446527c15dfc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11e16453cc2a6044c4b153bd1556d85545ff9625
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060892"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086632"
 ---
 # <a name="security-recommendations-for-queue-storage"></a>Sıra depolama için güvenlik önerileri
 
@@ -29,7 +29,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
-| Azure Kaynak Yöneticisi dağıtım modelini kullanma | Üstün erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve yönetişim, yönetilen kimliklere erişim, erişim dahil olmak üzere önemli güvenlik geliştirmeleri için Azure Kaynak Yöneticisi dağıtım modelini kullanarak yeni depolama hesapları oluşturun sırlar için Azure Key Vault'a ve Azure Depolama verilerine ve kaynaklarına erişmek için Azure AD tabanlı kimlik doğrulama ve yetkilendirmeye. Mümkünse, Azure Kaynak Yöneticisi'ni kullanmak için klasik dağıtım modelini kullanan varolan depolama hesaplarını geçirin. Azure Kaynak Yöneticisi hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi'ne genel bakış](/azure/azure-resource-manager/resource-group-overview)bilgisi ne bürünülsin. | - |
+| Azure Kaynak Yöneticisi dağıtım modelini kullanma | Üstün erişim denetimi (RBAC) ve denetim, Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, sırlar için Azure Anahtar Kasası'na erişim ve Azure Depolama veri ve kaynaklarına erişim için Azure AD tabanlı kimlik doğrulama ve yetkilendirme gibi önemli güvenlik geliştirmeleri için Azure Kaynak Yöneticisi dağıtım modelini kullanarak yeni depolama hesapları oluşturun. Mümkünse, Azure Kaynak Yöneticisi'ni kullanmak için klasik dağıtım modelini kullanan varolan depolama hesaplarını geçirin. Azure Kaynak Yöneticisi hakkında daha fazla bilgi için [Azure Kaynak Yöneticisi'ne genel bakış](/azure/azure-resource-manager/resource-group-overview)bilgisi ne bürünülsin. | - |
 | Tüm depolama hesaplarınızda **Güvenli aktarım seçeneğini** etkinleştirin | **Güvenli aktarım seçeneğini** etkinleştirdiğinizde, depolama hesabına karşı yapılan tüm istekler güvenli bağlantılar üzerinden gerçekleşmelidir. HTTP üzerinden yapılan tüm istekler başarısız olur. Daha fazla bilgi için bkz. Azure [Depolama'da güvenli aktarım talep edin.](../common/storage-require-secure-transfer.md) | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 | Tüm depolama hesaplarınız için gelişmiş tehdit koruması sağlama | Azure Depolama için gelişmiş tehdit koruması, depolama hesaplarına erişmek veya bunlardan yararlanmak için olağandışı ve zararlı olabilecek girişimleri algılayan ek bir güvenlik zekası katmanı sağlar. Etkinlikteki anormallikler oluştuğunda Azure Güvenlik Merkezi'nde güvenlik uyarıları tetiklenir ve abonelik yöneticilerine e-posta yoluyla gönderilir ve şüpheli etkinliklerin ayrıntıları ve tehditleri nasıl araştırıp düzelteceklerine ilişkin öneriler sunulur. Daha fazla bilgi için Azure [Depolama için Gelişmiş tehdit koruması 'na](../common/storage-advanced-threat-protection.md)bakın. | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 | Paylaşılan erişim imzası (SAS) belirteçlerini yalnızca HTTPS bağlantılarıyla sınırlandırın | Bir istemci kuyruk verilerine erişmek için bir SAS belirteci kullandığında HTTPS'nin gerekli olması, gizlice dinleme riskini en aza indirmeye yardımcı olur. Daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni.](../common/storage-sas-overview.md) | - |
@@ -46,13 +46,14 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Müşterilere vermiş olduğunuz herhangi bir SAS için bir iptal planı var | Bir SAS tehlikeye girerse, mümkün olan en kısa sürede bu SAS iptal etmek isteyeceksiniz. Bir kullanıcı delegasyonu SAS'ı iptal etmek için, bu anahtarla ilişkili tüm imzaları hızla geçersiz ksaymak için kullanıcı delegasyonu anahtarını iptal edin. Depolanan bir erişim ilkesiyle ilişkili bir hizmet SAS'ı iptal etmek için, depolanan erişim ilkesini silebilir, ilkeyi yeniden adlandırabilir veya son kullanma süresini geçmişte olan bir saatle değiştirebilirsiniz. Daha fazla bilgi için bkz: [Paylaşılan erişim imzalarını (SAS) kullanarak Azure Depolama kaynaklarına sınırlı erişim izni.](../common/storage-sas-overview.md)  | - |
 | Bir hizmet SAS depolanan bir erişim ilkesiyle ilişkili değilse, son kullanma süresini bir saat veya daha az olarak ayarlayın | Depolanan bir erişim ilkesiyle ilişkili olmayan bir hizmet SAS'sı iptal edilemez. Bu nedenle, SAS'ın bir saat veya daha kısa bir süre için geçerli olması için son kullanma süresinin sınırlandırılması önerilir. | - |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|
 | Güvenlik duvarı kurallarını etkinleştirme | Güvenlik duvarı kurallarını, depolama hesabınıza erişimi, belirtilen IP adreslerinden veya aralıklarından veya Azure Sanal Ağı'ndaki (VNet) alt ağlar listesinden kaynaklanan isteklerle sınırlamak için yapılandırın. Güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için [Azure Dosya Eşitleme proxy ve güvenlik duvarı ayarlarına](../files/storage-sync-files-firewall-and-proxy.md)bakın. | - |
 | Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verme | Talepler Azure Sanal Ağı 'nda (VNet) veya izin verilen genel IP adreslerinden gelen bir hizmetten kaynaklanmadığı sürece, depolama hesabınız için güvenlik duvarı kurallarını açmak varsayılan olarak gelen veri isteklerini engeller. Engellenen istekler arasında diğer Azure hizmetlerinden, Azure portalından, günlük ve metrik hizmetleri gibi hizmetlerden gelenler yer almaktadır. Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin vermek için bir özel durum ekleyerek diğer Azure hizmetlerinden gelen isteklere izin verebilirsiniz. Güvenilen Microsoft hizmetleri için özel durum ekleme hakkında daha fazla bilgi için [Azure Dosya Eşitleme proxy ve güvenlik duvarı ayarlarına](../files/storage-sync-files-firewall-and-proxy.md)bakın.| - |
 | Özel uç noktaları kullanma | Özel bir bitiş noktası, Azure Sanal Ağınızdan (VNet) depolama hesabına özel bir IP adresi atar. Özel bir bağlantı üzerinden VNet'iniz ve depolama hesabınız arasındaki tüm trafiği güvence altına alar. Özel uç noktaları hakkında daha fazla bilgi için Azure [Özel Bitiş Noktası'nı kullanarak bir depolama hesabına özel bağlan'a](../../private-link/create-private-endpoint-storage-portal.md)bakın. | - |
+| VNet hizmet etiketlerini kullanma | Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketinin kapsadığı adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir. Azure Depolama tarafından desteklenen hizmet etiketleri hakkında daha fazla bilgi için [Azure hizmet etiketleriyle ilgili genel bakış'a](../../virtual-network/service-tags-overview.md)bakın. Giden ağ kuralları oluşturmak için hizmet etiketlerinin nasıl kullanılacağını gösteren bir öğretici [için](../../virtual-network/tutorial-restrict-network-access-to-resources.md)bkz. | - |
 | Ağ erişimini belirli ağlarla sınırlandırın | Ağ erişimini, erişim gerektiren istemcileri barındıran ağlarla sınırlamak, kaynaklarınızın ağ saldırılarına maruz kalmasını azaltır. | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Günlük /İzleme

@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırma kurallarını ve kısıtlamalarını gösterir.
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: f6203f987654b33b32da72bfec030a9d0ab69df8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.date: 04/22/2020
+ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981537"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086394"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -534,6 +534,13 @@ Aşağıdaki tablolarda, alfasayısal terim şu anlamlara gelir:
 > | --- | --- | --- | --- |
 > | Küme | kaynak grubu | 4-63 | Alfanümerik ve tireler.<br><br>Alfanümerik ile başlayıp bitirin. |
 > | çalışma alanı | kaynak grubu | 4-63 | Alfanümerik ve tireler.<br><br>Alfanümerik ile başlayıp bitirin. |
+
+## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
+
+> [!div class="mx-tableFixed"]
+> | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
+> | --- | --- | --- | --- |
+> | çözümler | çalışma alanı | Yok | Microsoft tarafından yazılan çözümler için, ad desende olmalıdır:<br>`SolutionType(WorkspaceName)`<br><br>Üçüncü şahıslar tarafından yazılmış çözümler için, ad desende olmalıdır:<br>`SolutionType[WorkspaceName]`<br><br>Örneğin, geçerli bir ad:<br>`AntiMalware(contoso-IT)`<br><br>Çözüm türü büyük/küçük harf duyarlıdır. |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
 

@@ -8,19 +8,19 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: guybo
-ms.openlocfilehash: 625dd1c8051d7949987d0dd19ee8a08347eedf14
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4140f9f07a0fd653c8e0370d017cbae7effd0a07
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758646"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084320"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure'da Red Hat tabanlı bir sanal makine hazırlama
 Bu makalede, Azure'da kullanılmak üzere red hat enterprise Linux (RHEL) sanal makinesini nasıl hazırlayacağınızı öğreneceksiniz. Bu makalede ele alınan RHEL sürümleri 6.7+ ve 7.1+ şeklindedir. Bu makalede ele alınan hazırlık için hipervizörler Hyper-V, çekirdek tabanlı sanal makine (KVM) ve VMware'dir. Red Hat'in Bulut Erişimi programına katılmak için uygunluk gereksinimleri hakkında daha fazla bilgi için [Red Hat'in Bulut Erişimi web sitesine](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) ve [Azure'da RHEL'i çalıştırmaya](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)bakın. Bina RHEL görüntülerini otomatikleştirmenin yolları için [Azure Resim Oluşturucusu'na](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)bakın.
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>Hyper-V Manager'dan Red Hat tabanlı sanal makine hazırlayın
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL görüntüsünü sanal bir sabit diske (VHD) yüklediğinizi varsayar. İşletim sistemi görüntüsünü yüklemek için Hyper-V Manager'ın nasıl kullanılacağı hakkında daha fazla bilgi için [Hyper-V Rolünü Yükleyin ve Sanal Makineyi Yapılandırın'](https://technet.microsoft.com/library/hh846766.aspx)a bakın.
 
 **RHEL kurulum notları**
@@ -202,7 +202,7 @@ Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL gör
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -326,7 +326,7 @@ Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL gör
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # waagent -force -deprovision
 
@@ -477,7 +477,7 @@ Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL gör
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -517,7 +517,7 @@ Bu bölüm, Red Hat web sitesinden bir ISO dosyası aldığınızı ve RHEL gör
 
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-vmware"></a>VMware'den Red Hat tabanlı sanal makine hazırlayın
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Bu bölüm, VMware'de zaten bir RHEL sanal makine yüklediğinizi varsayar. VMware'de işletim sistemi nasıl kurulabilir hakkında ayrıntılı bilgi için [VMware Guest İşletim Sistemi Kurulum Kılavuzu'na](https://partnerweb.vmware.com/GOSIG/home.html)bakın.
 
 * Linux işletim sistemini yüklediğinizde, çoğu zaman birçok yükleme için varsayılan olan LVM yerine standart bölümler kullanmanızı öneririz. Bu, özellikle bir işletim sistemi diskinin sorun giderme için başka bir sanal makineye eklenmesi gerekiyorsa, LVM adının klonlanmış sanal makineyle çakışmasını önler. LVM veya RAID tercih edilirse veri disklerinde kullanılabilir.
@@ -608,7 +608,7 @@ Bu bölüm, VMware'de zaten bir RHEL sanal makine yüklediğinizi varsayar. VMwa
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 
@@ -724,7 +724,7 @@ Bu bölüm, VMware'de zaten bir RHEL sanal makine yüklediğinizi varsayar. VMwa
 
 1. Sanal makineyi sağlamanın kaldırılması ve Azure'da sağlama için hazırlanması için aşağıdaki komutları çalıştırın:
 
-        # Mote: if you are migrating a specific virtual machine and do not wish to create a generalized image,
+        # Note: if you are migrating a specific virtual machine and do not wish to create a generalized image,
         # skip the deprovision step
         # sudo waagent -force -deprovision
 

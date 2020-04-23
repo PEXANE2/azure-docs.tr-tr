@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 0767d6c003be8f4e0b28c8d8ce1d48b8f578dd86
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: ae76c30f63c87f7e741fff31792d520fb144b93b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273537"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084286"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure'da nesil 2 VM desteği
 
@@ -27,7 +27,7 @@ Generation 2 VM'ler, nesil 1 VM'ler tarafından kullanılan BIOS tabanlı mimari
 Generation 1 VM'ler Azure'daki tüm VM boyutlarıyla desteklenir (Mv2 serisi VM'ler hariç). Azure artık aşağıdaki seçili VM serisi için nesil 2 desteği sunar:
 
 * [B serisi](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
-* [DC serisi](../dcv2-series.md)
+* [DCsv2 serisi](../dcv2-series.md)
 * [DSv2 serisi](../dv2-dsv2-series.md) ve [Dsv3 serisi](../dv3-dsv3-series.md)
 * [Esv3 serisi](../ev3-esv3-series.md)
 * [Fsv2 serisi](../fsv2-series.md)

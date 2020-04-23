@@ -6,13 +6,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: 3457adf67fa067a154eef008b08d8cfcc1d9eaa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c439ff8df95d759e96d2fc82356bda8551507e8d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75551548"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084949"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows veya Linux sanal makineleri için birimi bağlama veya ayırma 
 
@@ -45,3 +45,4 @@ Gerektiğinde Windows veya Linux sanal makineleri için bir birim monte edebilir
 
 * [Azure NetApp Files için NFSv 4.1 varsayılan etki alanını yapılandırma](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS Sıkça Sorulan Soru](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
+* [Ağ Dosya Sistemi'ne genel bakış](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)

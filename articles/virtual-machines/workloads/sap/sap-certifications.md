@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: c19471fee9235faffba12a12d9f92de77f60fd4d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: df80113b85153f4e52bcbefa7b33dab9da296173
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770512"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084830"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure'da çalışan SAP sertifikaları ve yapılandırmaları
 
@@ -65,7 +65,7 @@ Başvuru:
 | SAP BPC 10.01 MS SP08 | Windows ve Linux | | Tüm NetWeaver Sertifikalı VM türleri<br /> SAP Not #2451795 |
 | SAP İş Nesneleri BI platformu | Windows ve Linux | | SAP Not #2145537 |
 | SAP Veri Hizmetleri 4.2 | | | SAP Not #2288344 |
-| SAP Hybris Ticaret Platformu  | Windows | SQL Server, Oracle | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris Ticaret Platformu  | SLES 12 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
-| SAP Hybris Ticaret Platformu  | RHEL 7 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Wiki](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud) |
+| SAP Hybris Ticaret Platformu  | Windows | SQL Server, Oracle | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Dokümantasyon](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Ticaret Platformu  | SLES 12 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Dokümantasyon](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
+| SAP Hybris Ticaret Platformu  | RHEL 7 veya daha yeni | SAP HANA | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Dokümantasyon]https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/6.7.0.0/en-US/8c71300f866910149b40c88dfc0de431.html) |
 | SAP (Hybris) Ticaret Platformu 1811 ve sonrası  | Windows, SLES veya RHEL | SQL Azure DB | Tüm NetWeaver sertifikalı VM türleri <br /> [Hybris Dokümantasyon](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html) |

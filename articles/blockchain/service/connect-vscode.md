@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmetine bağlanmak için Visual Studio Kodunu kullanma
 description: Visual Studio Code'daki Ethereum uzantısı için Azure Blockchain Geliştirme Kiti'ni kullanarak Azure Blockchain Hizmeti konsorsiyum ağına bağlanın
-ms.date: 03/26/2020
+ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 269a3e419186daddf1e6a41a54e52e688f4bc7e3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348574"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084847"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Quickstart: Azure Blockchain Hizmeti konsorsiyum ağına bağlanmak için Visual Studio Kodunu kullanın
 
@@ -17,7 +17,7 @@ Bu hızlı başlangıçta, Azure Blockchain Hizmeti'ndeki bir konsorsiyuma bağl
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tam [Hızlı Başlatma: Azure portalını veya Quickstart'ı kullanarak blockchain üyesi oluşturun:](create-member.md) [Azure CLI'yi kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
@@ -34,7 +34,7 @@ Windows'da düğüm-gyp modülü için yüklü bir C++ derleyicisi gereklidir. M
 * Visual Studio 2019 yüklüyse, MS build araçları yolunu npm için ayarlayın. Örneğin, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Aksi takdirde, yönetici komut uyruşu olarak yükseltilmiş bir `npm install --global windows-build-tools` *Çalıştır'da* tek başına VS Build araçlarını yükleyin.
 
-Düğüm-gyp hakkında daha fazla bilgi için [GitHub'daki düğüm-gyp deposuna](https://github.com/node-gyp)bakın.
+Düğüm-gyp hakkında daha fazla bilgi için [GitHub'daki düğüm-gyp deposuna](https://github.com/nodejs/node-gyp)bakın.
 
 ### <a name="verify-azure-blockchain-development-kit-environment"></a>Azure Blockchain Geliştirme Kiti ortamını doğrulayın
 

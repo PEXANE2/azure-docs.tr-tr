@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 31826f5d4d88c977f859a009bface2fddf3a1c88
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 98a160b361e316c87e61855825c2cc36fdbb06d1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093191"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Öğretici: Rackspace SSO ile Azure Active Directory entegrasyonu
 
@@ -34,7 +34,7 @@ Rackspace SSO'yu Azure AD ile tümleştirmek size aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Rackspace SSO ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -187,7 +187,7 @@ Bu bölümde, Britta Simon'ın Rackspace SSO'ya erişim izni vererek Azure tek o
 
 ### <a name="set-up-attribute-mapping-in-the-rackspace-control-panel"></a>Rackspace denetim panelinde Öznitelik Eşleme'yi ayarlama
 
-Rackspace, Rackspace rollerini ve gruplarını tek oturum açma kullanıcılarınıza atamak için bir **Öznitelik Eşleme İlkesi** kullanır. **Öznitelik Eşleme İlkesi,** Azure AD SAML taleplerini Rackspace'in gerektirdiği kullanıcı yapılandırma alanlarına çevirir. Daha fazla belge Rackspace [Öznitelik Temelleri Haritalama belgelerinde](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/)bulunabilir. Bazı hususlar:
+Rackspace, Rackspace rollerini ve gruplarını tek oturum açma kullanıcılarınıza atamak için bir **Öznitelik Eşleme İlkesi** kullanır. **Öznitelik Eşleme İlkesi,** Azure AD SAML taleplerini Rackspace'in gerektirdiği kullanıcı yapılandırma alanlarına çevirir. Daha fazla belge Rackspace [Öznitelik Temelleri Haritalama belgelerinde](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/)bulunabilir. Bazı hususlar:
 
 * Azure REKLAM gruplarını kullanarak farklı düzeylerde Rackspace erişimi atamak istiyorsanız, Grupların Azure **Rackspace SSO** Tek Oturum Açma ayarlarında hak iddia etmesini etkinleştirmeniz gerekir. **Öznitelik Eşleme İlkesi** daha sonra bu grupları istenen Rackspace rolleri ve gruplarıyla eşleştirmek için kullanılır:
 
@@ -226,7 +226,7 @@ mapping:
 > [!TIP]
 > İlke dosyanızı düzenlerken YAML sözdizimini doğrulayan bir metin düzenleyicisi kullandığınızdan emin olun.
 
-Daha fazla örnek için Rackspace [Attribute Mapping Basics belgelerine](https://developer.rackspace.com/docs/rackspace-federation/attribmapping-basics/) bakın.
+Daha fazla örnek için Rackspace [Attribute Mapping Basics belgelerine](https://developer.rackspace.com/docs/rackspace-federation/appendix/map/) bakın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

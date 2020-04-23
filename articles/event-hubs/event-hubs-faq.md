@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: d2d74a90d6712089cff681381e11b1caec9d469d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f6e1896c97c96cd484d15fb9e6a3056e5c5d6b2
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283676"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086377"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Olay Hub'ları sık sorulan sorular
 
@@ -71,7 +71,7 @@ Olay Hub'ları, kaynaklarınızın durumunu [Azure Monitor'a](../azure-monitor/o
 
 Azure Etkinlik Hub'ları ile iletişim kurmak için bu protokolleri kullanmak için açmanız gereken giden bağlantı noktaları için aşağıdaki tabloya bakın. 
 
-| Protokol | Bağlantı Noktaları | Ayrıntılar | 
+| Protokol | Bağlantı noktaları | Ayrıntılar | 
 | -------- | ----- | ------- | 
 | AMQP | 5671 ve 5672 | [Bkz. AMQP protokol kılavuzu](../service-bus-messaging/service-bus-amqp-protocol-guide.md) | 
 | HTTP, HTTPS | 80, 443 |  |
@@ -182,7 +182,7 @@ Testte aşağıdaki kriterler kullanılmıştır:
 Sonuçlar, özel bir Olay Hub'ları kümesiyle neler inebileceği hakkında bir fikir verir. Buna ek olarak, bir adanmış küme, mikro toplu ve uzun vadeli bekletme senaryolarınız için etkin leştirilmiş Olay Hub'ları Yakalama ile birlikte gelir.
 
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Olay Hub'larına Adanmış kümeyi nasıl oluştururum?
-[Kota artış destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya Olay [Hub'ları ekibiyle](mailto:askeventhubs@microsoft.com)iletişimkurarak Etkinlik Hub'larına adanmış bir küme oluşturursunuz. Kümenin dağıtılması ve sizin yeriniz tarafından kullanılmak üzere teslim edilmesi genellikle yaklaşık iki hafta sürer. Bu işlem, kümenin dağıtılması yaklaşık iki saat süren Azure portalı veya Azure Kaynak Yöneticisi şablonları aracılığıyla tam bir self servis kullanıma sunulana kadar geçicidir.
+[Kota artış destek isteği](https://portal.azure.com/#create/Microsoft.Support) göndererek veya Olay [Hub'ları ekibiyle](mailto:askeventhubs@microsoft.com)iletişimkurarak Etkinlik Hub'larına adanmış bir küme oluşturursunuz. Kümenin dağıtılması ve sizin yeriniz tarafından kullanılmak üzere teslim edilmesi genellikle yaklaşık iki hafta sürer. Bu işlem, Azure portalı üzerinden tam bir self servis kullanıma sunulana kadar geçicidir.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

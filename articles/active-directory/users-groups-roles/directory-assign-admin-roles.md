@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 04/14/2020
+ms.date: 04/22/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3f284efd6a9a2fd83c8e2a8f9fb7a962c1cacc1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ac49209fb1debca604a6aeb8ad3993ff898c331
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81406474"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083011"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -52,17 +52,18 @@ Aşağıdaki yönetici rolleri kullanılabilir:
 Bu roldeki kullanıcılar kurumsal uygulamaların, uygulama kayıtlarının ve uygulama proxy ayarlarının tüm yönlerini oluşturabilir ve yönetebilir. Bu role atanan kullanıcıların yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmediğini unutmayın.
 
 Uygulama Yöneticileri, uygulamanın kimliğine bürünmelerine olanak tanıyan uygulama kimlik bilgilerini yönetebilir. Bu nedenle, bu role atanan kullanıcılar yalnızca herhangi bir Azure REKLAM rolüne atanmamış uygulamaların veya yalnızca yönetici rollerine atanan uygulamaların uygulama kimlik bilgilerini yönetebilir:
+
 * Uygulama Yöneticisi
 * Uygulama Geliştirici
 * Bulut Uygulaması Yöneticisi
 * Dizin Okuyucular
 
-Bir uygulama yukarıda belirtilmeyen başka bir role atanmışsa, Uygulama Yöneticisi bu uygulamanın kimlik bilgilerini yönetemez. 
- 
+Bir uygulama yukarıda belirtilmeyen başka bir role atanmışsa, Uygulama Yöneticisi bu uygulamanın kimlik bilgilerini yönetemez.
+
 Bu rol, Microsoft Graph API'deki izinler dışında, devredilen izinlere ve uygulama izinlerine _izin_ verme olanağı da verir.
 
 > [!IMPORTANT]
-> Bu özel durum, _diğer_ uygulamaların (örneğin, kaydettiğiniz üçüncü taraf uygulamalar veya uygulamalar) izinlerini yine de kabul edebilirsiniz, ancak Azure AD'nin kendisinden izin almadığınız anlamına gelir. _Bu_ izinleri uygulama kaydının bir parçası olarak istemeye devam edebilirsiniz, ancak bu izinleri _vermek_ (örneğin, izin vermek) bir Azure AD yöneticisi gerektirir. Bu, kötü niyetli bir kullanıcının, örneğin tüm dizinlere yazabilen bir uygulama oluşturarak ve ona rıza göstererek ve bu uygulamanın izinleri aracılığıyla kendilerini küresel bir yönetici olmak için yükselterek izinlerini kolayca yükseltemeyeceği anlamına gelir.
+> Bu özel durum, _diğer_ uygulamaların (örneğin, kaydettiğiniz Microsoft dışındaki uygulamalar veya uygulamalar) izinlerini yine de kabul edebilirsiniz, ancak Azure AD'nin kendisinden izin almamayız anlamına gelir. _Bu_ izinleri uygulama kaydının bir parçası olarak istemeye devam edebilirsiniz, ancak bu izinleri _vermek_ (diğer bir deyişle, onay vermek) bir Azure AD yöneticisi gerektirir. Bu, kötü niyetli bir kullanıcının, örneğin tüm dizinlere yazabilen bir uygulama oluşturarak ve ona rıza göstererek ve bu uygulamanın izinleri aracılığıyla kendilerini küresel bir yönetici olmak için yükselterek izinlerini kolayca yükseltemeyeceği anlamına gelir.
 
 ### <a name="application-developer"></a>[Uygulama Geliştirici](#application-developer-permissions)
 
@@ -70,13 +71,15 @@ Bu roldeki kullanıcılar, "Kullanıcılar uygulamaları kaydedebilir" ayarı No
 
 ### <a name="authentication-administrator"></a>[Kimlik Doğrulama Yöneticisi](#authentication-administrator-permissions)
 
-Kimlik Doğrulama yöneticisi rolü şu anda genel önizlemededir. Bu role sahip kullanıcılar parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik Doğrulama Yöneticileri, kullanıcıların mevcut parola dışı kimlik bilgilerine (örneğin, MFA veya FIDO) karşı yeniden kaydolmalarını ve **aygıttaki MFA'yı iptal**etmesini gerektirebilir , bu da yönetici olmayan veya yalnızca aşağıdaki rolleratanan kullanıcıların bir sonraki oturumlarında MFA'yı ister:
+Bu role sahip kullanıcılar bazı kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleştirebilir. Kimlik doğrulama yöneticileri, yönetici olmayan veya bazı rollere atanan kullanıcıların varolan parola olmayan kimlik bilgilerine (örneğin, MFA veya FIDO) karşı yeniden kaydolmalarını gerektirebilir ve ayrıca **aygıttaki MFA'yı hatırla**'yı iptal edebilir ve bu da bir sonraki oturum açmada MFA'yı ister. Bu eylemler yalnızca yönetici olmayan veya aşağıdaki rollerden biri veya daha fazlası atanan kullanıcılar için geçerlidir:
 
 * Kimlik Doğrulama Yöneticisi
 * Dizin Okuyucular
 * Misafir Davetçi
 * İleti Merkezi Okuyucu
 * Raporlar Okuyucu
+
+[Ayrıcalıklı kimlik doğrulama yöneticisi](#privileged-authentication-administrator) rolü, tüm kullanıcılar için yeniden kayıt ve çok faktörlü kimlik doğrulamayı zorlayabilir.
 
 > [!IMPORTANT]
 > Bu role sahip kullanıcılar, Azure Active Directory içinde ve dışında hassas veya özel bilgilere veya kritik yapılandırmaya erişimi olan kişilerin kimlik bilgilerini değiştirebilir. Bir kullanıcının kimlik bilgilerini değiştirmek, kullanıcının kimliğini ve izinlerini varsayma yeteneği anlamına gelebilir. Örneğin:
@@ -103,7 +106,7 @@ Bu role sahip kullanıcılar Azure portalında B2C Kullanıcı Akışları (yerl
 
 ### <a name="b2c-user-flow-attribute-administrator"></a>[B2C Kullanıcı Akışı Öznitelik Yöneticisi](#b2c-user-flow-attribute-administrator-permissions)
 
-Bu role sahip kullanıcılar, kiracıdaki tüm kullanıcı akışlarıiçin özel öznitelikler ekler veya siler.Bu nedenle, bu role sahip kullanıcılar son kullanıcı şemasını değiştirebilir veya yeni öğeler ekleyebilir ve tüm kullanıcı akışlarının davranışını etkileyebilir ve dolaylı olarak son kullanıcılardan hangi verilerin istenebileceği ve sonuçta uygulamalara talep olarak gönderilebilecek değişikliklere neden olabilir.Bu rol kullanıcı akışlarını kaldıramaz.
+Bu role sahip kullanıcılar, kiracıdaki tüm kullanıcı akışlarıiçin özel öznitelikler ekler veya siler.Bu nedenle, bu role sahip kullanıcılar son kullanıcı şemasına yeni öğeler değiştirebilir veya ekleyebilir ve tüm kullanıcı akışlarının davranışını etkileyebilir ve dolaylı olarak son kullanıcılardan hangi verilerin istenebileceği ve sonuçta uygulamalara talep olarak gönderilebilecek değişikliklere neden olabilir.Bu rol kullanıcı akışlarını kaldıramaz.
 
 ### <a name="b2c-ief-keyset-administrator"></a>[B2C IEF Anahtar Seti Yöneticisi](#b2c-ief-keyset-administrator-permissions)
 
@@ -128,6 +131,7 @@ Satın alma işlemleri yapar, abonelikleri yönetir, destek biletlerini yönetir
 Bu roldeki kullanıcılar, uygulama proxy'sini yönetme olanağı dışında Uygulama Yöneticisi rolüyle aynı izinlere sahiptir. Bu rol, kurumsal uygulamaların ve uygulama kayıtlarının tüm yönlerini oluşturma ve yönetme olanağı sağlar. Bu rol ayrıca, temsilci verilen izinlere ve Microsoft Graph API hariç uygulama izinlerine izin verme olanağı da verir. Bu role atanan kullanıcılar, yeni uygulama kayıtları veya kurumsal uygulamalar oluştururken sahip olarak eklenmez.
 
 Bulut Uygulama Yöneticileri, uygulamanın kimliğine bürünmelerine olanak tanıyan uygulama kimlik bilgilerini yönetebilir. Bu nedenle, bu role atanan kullanıcılar yalnızca herhangi bir Azure REKLAM rolüne atanmamış uygulamaların veya yalnızca yönetici rollerine atanan uygulamaların uygulama kimlik bilgilerini yönetebilir:
+
 * Uygulama Geliştirici
 * Bulut Uygulaması Yöneticisi
 * Dizin Okuyucular
@@ -215,7 +219,7 @@ Bu role sahip kullanıcılar, hizmet mevcut olduğunda Microsoft Exchange Online
 Bu yönetici, Azure Etkin Dizin kiracıları ile dış kimlik sağlayıcıları arasındaki federasyonu yönetir.Bu rol ile kullanıcılar yeni kimlik sağlayıcıları ekleyebilir ve kullanılabilir tüm ayarları (örneğin kimlik doğrulama yolu, hizmet kimliği, atanan anahtar kapsayıcıları) yapılandırabilir.Bu kullanıcı, kiracının dış kimlik sağlayıcılarının kimlik doğrulamalarına güvenmesini sağlayabilir.Son kullanıcı deneyimleri üzerindeki sonuç, kiracının türüne bağlıdır:
 
 * Çalışanlar ve iş ortakları için Azure Active Directory kiracıları: Bir federasyonun eklenmesi (örneğin Gmail ile) henüz kullanılmayan tüm konuk davetlerini hemen etkileyecektir. Bkz. [B2B konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme.](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)
-* Azure Active Directory B2C kiracıları: Bir federasyonun eklenmesi (örneğin, Facebook veya başka bir Azure AD kuruluşuyla) kimlik sağlayıcısı kullanıcı akışına seçenek olarak eklenine (yerleşik ilke olarak da adlandırılır) son kullanıcı akışlarını hemen etkilemez. Bkz. Bir Microsoft hesabını bir örnek için [kimlik sağlayıcısı olarak yapılandırma.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Kullanıcı akışlarını değiştirmek için "B2C Kullanıcı Akışı Yöneticisi"nin sınırlı rolü gereklidir.
+* Azure Active Directory B2C kiracıları: Bir federasyonun eklenmesi (örneğin, Facebook veya başka bir Azure AD kuruluşuyla) kimlik sağlayıcısı kullanıcı akışına seçenek olarak ekleninden (yerleşik ilke olarak da adlandırılır) son kullanıcı akışlarını hemen etkilemez. Bkz. Bir Microsoft hesabını bir örnek için [kimlik sağlayıcısı olarak yapılandırma.](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app)Kullanıcı akışlarını değiştirmek için "B2C Kullanıcı Akışı Yöneticisi"nin sınırlı rolü gereklidir.
 
 ### <a name="global-administrator--company-administrator"></a>[Global Yönetici / Şirket Yöneticisi](#company-administrator-permissions)
 
@@ -350,7 +354,13 @@ Bu role sahip kullanıcılar, Microsoft Evrensel Yazdırma çözümünde yazıc�
 
 ### <a name="privileged-authentication-administrator"></a>[Ayrıcalıklı Kimlik Doğrulama Yöneticisi](#privileged-authentication-administrator-permissions)
 
-Bu role sahip kullanıcılar, genel yöneticiler de dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleyebilir. Ayrıcalıklı Kimlik Doğrulama Yöneticileri, kullanıcıları mevcut parola dışı kimlik bilgilerine (örneğin MFA, FIDO) karşı yeniden kaydolmaya ve 'cihazda MFA'yı hatırlayın' iptal ini iptal etmeye zorlayarak tüm kullanıcıların bir sonraki oturumunu MFA'ya gerekettirmeyi zorlayabilir.
+Bu role sahip kullanıcılar, genel yöneticiler de dahil olmak üzere tüm kullanıcılar için parola olmayan kimlik bilgilerini ayarlayabilir veya sıfırlayabilir ve tüm kullanıcılar için parolaları güncelleyebilir. Ayrıcalıklı Kimlik Doğrulama Yöneticileri, kullanıcıları mevcut parola dışı kimlik bilgilerine (MFA veya FIDO gibi) karşı yeniden kaydolmaya ve 'cihazda MFA'yı hatırlayın' iptal ini iptal etmeye zorlayarak tüm kullanıcıların bir sonraki oturumunu MFA'ya gerekettirmeyi zorlayabilir. [Kimlik Doğrulama yöneticisi](#authentication-administrator) rolü, yalnızca aşağıdaki Azure AD rollerine atanan yönetici olmayanlar ve kullanıcılar için yeniden kayıt ve MFA'yı zorlayabilir:
+
+* Kimlik Doğrulama Yöneticisi
+* Dizin Okuyucular
+* Misafir Davetçi
+* İleti Merkezi Okuyucu
+* Raporlar Okuyucu
 
 ### <a name="privileged-role-administrator"></a>[Ayrıcalıklı Rol Yöneticisi](#privileged-role-administrator-permissions)
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 04/03/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c2cddbc9086c80922fcf9c5d96cd197ab4778
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 5f4dc7223d64fd299da70375329260f7b4f8b322
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81422532"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82083470"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-securitytmws"></a>Öğretici: Trend Micro Web Security(TMWS) ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
@@ -32,7 +32,7 @@ Bu eğitimde, Trend Micro Web Security'yi (TMWS) Azure Etkin Dizini (Azure AD) i
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -87,7 +87,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     b. **Yanıtla URL** metin kutusuna bir URL yazın:`https://auth.iws-hybrid.trendmicro.com/simplesaml/module.php/saml/sp/saml2-acs.php/ics-sp`
 
     > [!NOTE]
-    > Tanımlayıcı değeri gerçek değildir. Bu değeri gerçek Tanımlayıcı ile güncelleştirin. Tanımlayıcı değeri almak için [Trend Micro Web Security(TMWS) İstemci destek ekibine](https://success.trendmicro.com/contact-support-north-america) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+    > Tanımlayıcı değeri gerçek değildir. Bu değeri gerçek Tanımlayıcı ile güncelleştirin. Bu **değerleri, Yönetim > Dizin Hizmetleri'nden**Azure AD için **Kimlik Doğrulama Yöntemi** ekranında Azure Yönetici Portalı alanı için Hizmet Sağlayıcı **Ayarları** altında niçin alabilirsiniz.
 
 1. Trend Micro Web Security(TMWS) uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
@@ -173,7 +173,41 @@ Bu bölümde, B.Simon'ın Trend Micro Web Security'ye (TMWS) erişim sağlayarak
 
 ## <a name="configure-trend-micro-web-security-sso"></a>Trend Micro Web Security SSO'da yapılandırın
 
-**Trend Micro Web Security(TMWS)** tarafında tek oturum açma işlemi yapmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Azure portalından [Trend Micro Web Security(TMWS) destek ekibine](https://success.trendmicro.com/contact-support-north-america)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
+1. TMWS yönetim konsolunda oturum açın ve **Yönetİcİ** > **KULLANICILARi & AUTHENTICATION** > **Directory Services'e**gidin.
+
+1. Ekranın üst alanına tıklayınız.
+
+1. Görünen Kimlik Doğrulama Yöntemi ekranında **Azure AD'yi**tıklatın.
+
+1. Verilerinin TMWS ile senkronize edilmediği takdirde kuruluşunuzun AD kullanıcılarının TMWS üzerinden web sitelerini ziyaret etmesine izin verip vermemeye karar vermek için **A'yı** veya **Kapat'ı** tıklatın.
+
+    > [!NOTE]
+    > Azure AD'den senkronize olmayan kullanıcıların kimliği yalnızca bilinen TMWS ağ geçitleri veya kuruluşunuz için özel bağlantı noktası aracılığıyla gerçekleşebilir.
+
+1. Kimlik **Sağlayıcı Ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
+
+    a. Hizmet **URL** alanında, Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın
+
+    b. **Logon ad özniteliği** alanında, Kullanıcı talep adını Azure portalından **kullanıcı.onpremisessamaccountname** kaynak özniteliğiile yapıştırın.
+
+    c. Ortak **SSL sertifika** alanında, Azure portalından indirilen **Sertifikayı (Base64)** kullanın.
+
+1. **Eşitleme Ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
+
+    a. **Kiracı** alanında, Azure portalından **Dizin (kiracı) Kimliği** veya Özel etki **alanı adı** değerini kullanın.
+
+    b. Uygulama **Kimliği** alanında, Azure portalından **Uygulama (istemci) kimlik** değeri.
+
+    c. **İstemci gizli** alanında, Azure portalından **Istemci sırrını** kullanın.
+
+    d. **Eşitleme zamanlama** alanında, Azure AD ile el ile veya zamanlamaya göre eşitlemayı seçin. Active Directory kullanıcı bilgilerinde değişiklik olduğunda El ile seçerseniz, Dizin Hizmetleri ekranına geri dönmeyi ve TMWS'deki bilgilerin güncel kalması için el ile eşitleme gerçekleştirmeyi unutmayın.
+
+    e. Azure AD hizmetinin başarıyla bağlanıp bağlanamayacağını kontrol etmek için **Test Bağlantısı'nı** tıklatın. 
+    
+    f. **Kaydet**’e tıklayın.
+ 
+ > [!NOTE]
+ > Trend Micro Web Security'yi Azure AD ile yapılandırma hakkında daha fazla bilgi için lütfen [bu](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx) belgeye bakın.
 
 ## <a name="test-sso"></a>Test SSO 
 

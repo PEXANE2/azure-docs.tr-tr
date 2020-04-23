@@ -132,7 +132,7 @@
     - name: Sektör uygulama şablonları
       items:
         - name: Perakende
-          href: ../retail/overview-iot-central-retail-pnp.md
+          href: ../retail/overview-iot-central-retail.md
         - name: Enerji
           href: ../energy/overview-iot-central-energy.md
         - name: Devlet

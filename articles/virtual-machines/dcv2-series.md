@@ -7,19 +7,19 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: lahugh
-ms.openlocfilehash: 7834c8a32d4d85fc354bac209e13f19f3b8315fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d35e37e53b84d317446a93a2301fc3b703b426b7
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80256938"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085731"
 ---
-# <a name="preview-dcsv2-series"></a>Önizleme: DCsv2 serisi
+# <a name="dcsv2-series"></a>DCsv2 serisi
 
 
 DCsv2 serisi, genel bulutta işlenirken verilerinizin ve kodlarınızın gizliliğini ve bütünlüğünü korumaya yardımcı olabilir. Bu makineler, SGX teknolojisine sahip en son nesil Intel XEON E-2288G İşlemci tarafından desteklenen bir cihazdır. Intel Turbo Boost Teknolojisi ile bu makineler 5.0GHz'e kadar çıkabiliyor. DCsv2 serisi örnekleri, müşterilerin kullanımdayken kodlarını ve verilerini korumak için güvenli enklav tabanlı uygulamalar oluşturmasına olanak tanır.
 
-Örnek kullanım durumları arasında gizli çok taraflı veri paylaşımı, dolandırıcılık algılama, kara para aklamayla mücadele, blockchain, gizli kullanım analitiği, istihbarat analizi ve gizli makine öğrenimi sayılabilir.
+Örnek kullanım durumları şunlardır: gizli çok taraflı veri paylaşımı, dolandırıcılık algılama, kara para aklamayla mücadele, blockchain, gizli kullanım analitiği, istihbarat analizi ve gizli makine öğrenimi.
 
 Premium Depolama: Desteklenen*
 
@@ -41,15 +41,15 @@ Bellek Koruma Güncelleştirmeleri: Desteklenmiyor
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128 (172)                                                         | 12800/192                                 | 2                                            |
 
 - DCsv2 serisi VM'ler nesil 2 `Gen2` [VM'lerdir](./linux/generation-2.md#creating-a-generation-2-vm) ve yalnızca görüntüleri destekler.
-- Şu anda sadece İngiltere Güney ve Kanada Merkez mevcuttur.
-- Önceki nesil Gizli İşlem VM'leri: [DC Serisi](sizes-previous-gen.md)
-- Azure Portal Oluşturma VM kullanarak DCsv2 [VM'ler oluşturun - Portal](./linux/quick-create-portal.md)
+- Şu anda yalnızca İngiltere Güney, Kanada Orta ve ABD Doğu'da mevcuttur.
+- Önceki nesil Gizli İşlem VM'leri: [DC serisi](sizes-previous-gen.md#preview-dc-series)
+- [Azure portalını](./linux/quick-create-portal.md) veya [Azure Marketini](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview) kullanarak DCsv2 VM'leri oluşturun
 
 
 
 ## <a name="other-sizes"></a>Diğer boyutlar
 
-- [Genel amaç](sizes-general.md)
+- [Genel amaçlı](sizes-general.md)
 - [Bellek için iyileştirilmiş](sizes-memory.md)
 - [Depolama için iyileştirilmiş](sizes-storage.md)
 - [GPU için iyileştirilmiş](sizes-gpu.md)

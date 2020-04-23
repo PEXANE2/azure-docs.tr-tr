@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233376"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Öğretici: SpringCM ile Azure Active Directory entegrasyonu
 
@@ -35,7 +35,7 @@ SpringCM'i Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini SpringCM ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -145,7 +145,7 @@ Azure AD oturumaçmayı SpringCM ile yapılandırmak için aşağıdaki adımlar
             
     d. **Etkinleştir**olarak **SAML Etkin'i** seçin.
 
-    e. **Kaydet**'e tıklayın.
+    e. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
@@ -202,7 +202,7 @@ Bu bölümde, Britta Simon'ın SpringCM'ye erişim izni vererek Azure tek oturum
 Azure Active Directory kullanıcılarının SpringCM'de oturum açabilmeleri için SpringCM'de oturum açmaları gerekir. SpringCM durumunda, sağlama manuel bir görevdir.
 
 > [!NOTE]
-> Daha fazla bilgi için [bkz.](https://knowledge.springcm.com/create-and-edit-a-springcm-user) 
+> Daha fazla bilgi için [bkz.](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053) 
 
 **SpringCM'e bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
@@ -222,7 +222,7 @@ Azure Active Directory kullanıcılarının SpringCM'de oturum açabilmeleri iç
 
 1. Kullanıcıyı bir **Güvenlik grubuna**ekleyin.
 
-1. **Kaydet**'e tıklayın.
+1. **Kaydet**’e tıklayın.
 
    > [!NOTE]
    > Azure AD kullanıcı hesaplarını sağlamak için SpringCM tarafından sağlanan diğer SpringCM kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.

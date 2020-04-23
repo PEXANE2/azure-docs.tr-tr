@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e76ca7198bfded725d89f04fd162d470a85da904
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67442848"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866792"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Öğretici: Merces tarafından HR2day ile Azure Active Directory entegrasyonu
 
@@ -34,7 +34,7 @@ Merces tarafından HR2day'i Azure AD ile tümleştirmek size aşağıdaki avanta
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Merces tarafından HR2day ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -142,7 +142,7 @@ Azure AD oturum açma işlemlerini Merces ile HR2day ile yapılandırmak için a
 
     f. **Tamam'ı** tıklatın
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
 7. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
@@ -163,7 +163,7 @@ Azure AD oturum açma işlemlerini Merces ile HR2day ile yapılandırmak için a
 **HR2day'da Merces** tarafına göre tek oturum açma yı yapılandırmak için, indirilen **Sertifikayı (Base64)** ve uygun kopyalanmış URL'leri Merces destek ekibi tarafından Azure portalından [HR2day'a](mailto:servicedesk@merces.nl)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 > [!NOTE]
-> Merces ekibine bu tümleştirmenin desenle **https://hr2day.force.com/INSTANCENAME**birlikte ayarlanması için Entity ID'ye ihtiyaç duyduğundan bahsedin.
+> Merces ekibine bu tümleştirmenin https deseni ile ayarlanması için Entity ID'ye ihtiyaç duyduğundan **\/bahsetmek: /hr2day.force.com/INSTANCENAME**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 

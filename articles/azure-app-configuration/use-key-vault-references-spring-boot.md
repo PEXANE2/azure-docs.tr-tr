@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: b6b6d10165eed331c397e17a18e382b095e1f74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6a5bc947c3ea414f197df9cfcdd5f233e4654cbc
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79216737"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085034"
 ---
 # <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Öğretici: Java Spring uygulamasında Anahtar Vault referanslarını kullanma
 
@@ -35,13 +35,13 @@ Bu öğretici, anahtarınıza Anahtar Kasa başvurularının nasıl uygulanacağ
 
 Bu öğreticideki adımları yapmak için herhangi bir kod düzenleyicisini kullanabilirsiniz. Örneğin, [Visual Studio Code,](https://code.visualstudio.com/) Windows, macOS ve Linux işletim sistemleri için kullanılabilen bir çapraz platform kod düzenleyicisidir.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Key Vault'ta depolanan bir değere başvuran bir Uygulama Yapılandırması anahtarı oluşturun.
 > * Java Spring uygulamasından bu anahtarın değerine erişin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
 * Sürüm 8 ile desteklenen [bir Java Geliştirme Kiti (JDK).](https://docs.microsoft.com/java/azure/jdk)
@@ -61,7 +61,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
     * **Anahtar kasası adında,** benzersiz bir ad gereklidir. Bu öğretici için **Contoso-vault2'yi**girin.
     * **Bölge** açılır listesinde bir konum seçin.
 1. Diğer **Create anahtar kasa** seçeneklerini varsayılan değerleriyle bırakın.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 Bu noktada, azure hesabınız bu yeni kasaya erişmeye yetkili tek hesaptır.
 
@@ -78,11 +78,11 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
     * **Adı**: **İleti**girin .
     * **Değer**: **Key Vault'tan Merhaba**girin.
 1. Diğer invarsayılan değerleri ile **gizli özellikler oluştur** bırakın.
-1. **Oluştur'u**seçin.
+1. **Oluştur**’u seçin.
 
 ## <a name="add-a-key-vault-reference-to-app-configuration"></a>Uygulama Yapılandırmasına Anahtar Kasa sı başvurusu ekleme
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. **Tüm kaynakları**seçin ve ardından hızlı başlatmada oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynakları**seçin ve ardından hızlı başlatmada oluşturduğunuz Uygulama Yapılandırma mağazası örneğini seçin.
 
 1. **Configuration Explorer'ı**seçin.
 
@@ -140,6 +140,14 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 
 ## <a name="update-your-code-to-use-a-key-vault-reference"></a>Key Vault referansını kullanmak için kodunuzu güncelleştirin
 
+1. **APP_CONFIGURATION_ENDPOINT**adlı bir ortam değişkeni oluşturun. App Configuration mağazanızın değerini bitiş noktasına ayarlayın. Bitiş noktasını Azure portalında **Access Keys** bıçağında bulabilirsiniz.
+
+1. *Kaynaklar* klasöründe *bootstrap.properties'i* açın. Bağlantı dizesi yerine Uygulama Yapılandırmauç Noktasını kullanmak için bu dosyayı güncelleştirin.
+
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
+    ```
+
 1. *MessageProperties.java'yı*aç. *keyVaultMessage*adlı yeni bir değişken ekleyin:
 
     ```java
@@ -166,7 +174,7 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 1. *AzureCredentials.java* adında yeni bir dosya oluşturun ve aşağıdaki kodu ekleyin.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import com.azure.core.credential.TokenCredential;
     import com.azure.identity.EnvironmentCredentialBuilder;
@@ -195,7 +203,7 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 1. *AppConfiguration.java*adında yeni bir dosya oluşturun. Ve aşağıdaki kodu ekleyin.
 
     ```java
-    package com.example;
+    package com.example.demo;
 
     import org.springframework.context.annotation.Bean;
     import org.springframework.context.annotation.Configuration;
@@ -214,7 +222,7 @@ Kasaya bir sır eklemek için birkaç ek adım atmalısınız. Bu durumda, Anaht
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
-    com.example.AppConfiguration
+    com.example.demo.AppConfiguration
     ```
 
 1. Bahar Önyükleme uygulamanızı Maven ile oluşturun ve örneğin çalıştırın:

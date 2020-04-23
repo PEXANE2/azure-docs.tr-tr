@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 95bfa7b1918da09e4f5913eeb2b57c290b093efe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 432e22879ce0eba89f04a1084e2d4a93a487dd45
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270452"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086445"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Mantık Uygulamaları için Azure Kaynak Yöneticisi şablonlarını dağıtma
 
 Mantık uygulamanız için bir Azure Kaynak Yöneticisi şablonu oluşturduktan sonra şablonunuzu şu şekilde dağıtabilirsiniz:
 
-* [Azure portalında](#portal)
+* [Azure portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
@@ -30,7 +30,7 @@ Mantık uygulamanız için bir Azure Kaynak Yöneticisi şablonu oluşturduktan 
 
 Bir mantıksal uygulama şablonunu Azure'a otomatik olarak dağıtmak için, sizi Azure portalına kaydeden ve mantık uygulamanız hakkında bilgi almak için sizi teşvik eden aşağıdaki **Azure'a Dağıt** düğmesini seçebilirsiniz. Daha sonra mantık uygulaması şablonu veya parametreleri için gerekli değişiklikleri yapabilirsiniz.
 
-[![Azure'a Dağıt](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Azure’a dağıtma](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Örneğin, Azure portalında oturum açtıktan sonra aşağıdaki bilgiler istenir:
 
@@ -79,7 +79,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 Daha fazla bilgi için şu konulara bakın:
 
-* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../azure-resource-manager/templates/deploy-cli.md) 
+* [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../azure-resource-manager/templates/deploy-cli.md)
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -91,7 +91,7 @@ Mantıksal uygulama şablonlarını dağıtmak ve ortamları yönetmek için tak
 Azure Kaynak Akşonları ile Azure Kaynak Yöneticisi şablonları için sürekli tümleştirme ve sürekli dağıtım (CI/CD) hakkında daha fazla bilgi için aşağıdaki konulara ve örneklere bakın:
 
 * [Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştir](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
-* [Öğretici: Azure Kaynak Yöneticisi şablonları için Azure Altyapı Hatları ile sürekli tümleştirme](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
+* [Öğretici: Azure Kaynak Yöneticisi şablonlarının Azure Pipelines ile sürekli entegrasyonu](../azure-resource-manager/templates/deployment-tutorial-pipeline.md)
 * [Örnek: Azure Mantıksal Uygulamaları'ndan Azure Servis Veri Mes'üne bağlanın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtın](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Mantıksal Uygulamaları'ndan Azure Depolama hesaplarına bağlanın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Örnek: Azure Mantıksal Uygulamaları için bir işlev uygulaması eylemi ayarlayın ve Azure DevOps'lerde Azure Ardışık Hatları ile dağıtma](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

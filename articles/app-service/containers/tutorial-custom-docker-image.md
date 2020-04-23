@@ -8,18 +8,18 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a6c9eb354bce09a5f652895f4af34df1f6750bec
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045754"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085869"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Öğretici: Özel bir resim oluşturun ve özel bir kayıt defterinden Uygulama Hizmeti'nde çalıştırın
 
 [App Service,](app-service-linux-intro.md) PHP 7.3 ve Node.js 10.14 gibi belirli sürümler için linux'ta yerleşik Docker görüntüleri sağlar. App Service, hem yerleşik görüntüleri hem de özel görüntüleri bir hizmet olarak platform olarak barındırmak için Docker konteyner teknolojisini kullanır. Bu öğreticide, özel bir resim oluşturmayı ve Uygulama Hizmeti'nde çalıştırmayı öğrenirsiniz. Bu desen, yerleşik görüntülerin sizin tercih ettiğiniz dili içermediği veya uygulamanızın yerleşik görüntülerde sağlanmayan belirli bir yapılandırma gerektirdiği durumlarda yararlı olur.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Özel bir kapsayıcı kayıt defterine özel bir görüntü dağıtma
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -123,7 +123,7 @@ az acr credential show --name <azure-container-registry-name>
 
 Çıktı, kullanıcı adı ile birlikte iki parola yı gösterir.
 
-```json
+<pre>
 {
   "passwords": [
     {
@@ -135,9 +135,9 @@ az acr credential show --name <azure-container-registry-name>
       "value": "{password}"
     }
   ],
-  "username": "<registry-username>"
+  "username": "&lt;registry-username&gt;"
 }
-```
+</pre>
 
 Yerel terminal pencerenizden, aşağıdaki örnekte gösterildiği gibi `docker login` komutu kullanarak Azure Konteyner Kayıt Defteri'nde oturum açın. * \<Azure-container-registry-name>* ve * \<kayıt defteri kullanıcı adı>* kayıt defterinizin değerleriyle değiştirin. İstendiğinde, önceki adımdaki parolalardan birini yazın.
 
@@ -149,7 +149,7 @@ Girişin başarılı olduğunu doğrulayın.
 
 ### <a name="push-image-to-azure-container-registry"></a>Azure Container Registry’ye görüntü gönderme
 
-Azure Kapsayıcı Kayıt Defteri için yerel resminizi etiketleyin. Örnek:
+Azure Kapsayıcı Kayıt Defteri için yerel resminizi etiketleyin. Örneğin:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
@@ -168,11 +168,11 @@ az acr repository list -n <azure-container-registry-name>
 
 Aşağıdaki çıktıyı almalısınız.
 
-```json
+<pre>
 [
   "mydockerimage"
 ]
-```
+</pre>
 
 ### <a name="create-app-service-plan"></a>App Service planı oluşturma
 
@@ -188,7 +188,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gibi bilgiler gösterir:
 
-```json
+<pre>
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -196,12 +196,12 @@ Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gi
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
-  "deploymentLocalGitUrl": "https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
+  "deploymentLocalGitUrl": "https://&lt;username&gt;@&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Web uygulamasında kayıt defteri kimlik bilgilerini yapılandırma
 

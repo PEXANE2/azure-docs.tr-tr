@@ -3,12 +3,12 @@ title: Azure Ardışık Hatlar ve şablonları ile CI/CD
 description: Kaynak Yöneticisi şablonlarını dağıtmak için Visual Studio'daki Azure Kaynak Grubu dağıtım projelerini kullanarak Azure Altyapı Hatları'nda sürekli tümleştirmenin nasıl ayarlanır olduğunu açıklar.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8eff1c7efae319106eb8a85af7823a820a0da39
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153463"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084660"
 ---
 # <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştir
 
@@ -28,7 +28,7 @@ Bu makalede, Visual Studio projeniz ve Azure DevOps kuruluşunuzun ardışık ya
 
 * Bir Azure DevOps kuruluşunuz var. Eğer yoksa, [ücretsiz bir oluşturun.](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) Ekibinizin zaten bir Azure DevOps kuruluşu varsa, kullanmak istediğiniz Azure DevOps projesinin yöneticisi olduğunuzdan emin olun.
 
-* Azure aboneliğinize bir [hizmet bağlantısı](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) yapılandırıldınız. Ardışık işteki görevler, hizmet sorumlusunun kimliği altında yürütülür. Bağlantıyı oluşturmak için adımlar için [bkz.](template-tutorial-use-azure-pipelines.md#create-a-devops-project)
+* Azure aboneliğinize bir [hizmet bağlantısı](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) yapılandırıldınız. Ardışık işteki görevler, hizmet sorumlusunun kimliği altında yürütülür. Bağlantıyı oluşturmak için adımlar için [bkz.](deployment-tutorial-pipeline.md#create-a-devops-project)
 
 * **Azure Kaynak Grubu** başlangıç şablonundan oluşturulmuş bir Visual Studio projeniz var. Bu tür bir proje oluşturma hakkında bilgi için [Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma](create-visual-studio-deployment-project.md)bölümüne bakın.
 
@@ -122,7 +122,7 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
    ```
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
    ![İşlem hattını kaydetme](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
@@ -249,7 +249,7 @@ Dağıtım görevi, adlı `WebSite.json` şablona ve WebSite.parameters.json adl
         deploymentMode: 'Incremental'
    ```
 
-1. **Kaydet'i**seçin.
+1. **Kaydet**’i seçin.
 
 1. Commit için bir ileti sağlayın ve doğrudan **ana**söze bağla.
 
@@ -261,4 +261,4 @@ Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık h
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-ARM şablonları ile Azure Ardışık Hatlar'ı kullanma yla ilgili adım adım işlem için [Bkz.](template-tutorial-use-azure-pipelines.md)
+ARM şablonları ile Azure Ardışık Hatlar'ı kullanma yla ilgili adım adım işlem için [Bkz.](deployment-tutorial-pipeline.md)

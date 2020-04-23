@@ -5,12 +5,12 @@ ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: e15d325f0cf13ae774a5dc471a1e2b447286a99c
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: de51df50995c47800a2084108973c3b009ae3462
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81009262"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085986"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure’da PHP web uygulaması oluşturma
 
@@ -26,7 +26,7 @@ Mac, Windows veya Linux makinesi kullanarak buradaki adımları izleyebilirsiniz
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -85,8 +85,8 @@ az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --
 
 Web uygulaması oluşturulduğunda Azure CLI aşağıda yer alan çıktıdaki gibi bilgiler gösterir:
 
-```json
-Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
+<pre>
+Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git'
 {
   "availabilityState": "Normal",
   "clientAffinityEnabled": true,
@@ -94,11 +94,12 @@ Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebs
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app_name>.azurewebsites.net",
+  "defaultHostName": "&lt;app_name&gt;.azurewebsites.net",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
+
 Git dağıtımı etkinleştirilmiş boş yeni bir web uygulaması oluşturdunuz.
 
 > [!NOTE]

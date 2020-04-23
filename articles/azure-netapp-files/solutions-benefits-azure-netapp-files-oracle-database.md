@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: b-juche
-ms.openlocfilehash: d28f5469174a2659869ebb01ef01653b7190e30e
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: a73da39dafcc8be78fbe1c023693ffa4a19aa1d3
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772086"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085017"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Oracle Veritabanı ile Azure NetApp Dosyalarını Kullanmanın Avantajları
+# <a name="benefits-of-using-azure-netapp-files-with-oracle-database"></a>Oracle Database ile Azure NetApp Files kullanmanın avantajları
 
 Oracle Direct NFS (dNFS), işletim sisteminin kendi NFS sürücüsünden daha yüksek performans alabilmek için mümkün kılar. Bu makalede, teknoloji açıklar ve dNFS ve geleneksel NFS istemcisi (Çekirdek NFS) arasında bir performans karşılaştırması sağlar. Ayrıca Azure NetApp Dosyaları ile dNFS kullanmanın avantajlarını ve kolaylığını gösterir.  
 
@@ -39,7 +39,7 @@ Buna karşılık, Oracle dNFS birden çok ağ akışı nda ağ trafiğini yük d
 
 [Doğrudan NFS için Oracle SSS,](http://www.orafaq.com/wiki/Direct_NFS) Oracle dNFS'nin optimize edilmiş bir NFS istemcisi olduğunu gösterir. NAS depolama aygıtlarında bulunan NFS depolama alanına (TCP/IP üzerinden erişilebilir) hızlı ve ölçeklenebilir erişim sağlar. dNFS, asm gibi veritabanı çekirdeğinde yerleşiktir ve bu çekirdek öncelikle DAS veya SAN depolama ile kullanılır. Bu nedenle, *kılavuz NAS depolama uygularken dNFS kullanmak ve SAN depolama uygularken ASM kullanmaktır.*
 
-dNFS Oracle 18c'de varsayılan seçenek ve RAC için varsayılan seçenektir.
+dNFS, Oracle 18c'deki varsayılan seçenektir.
 
 dNFS Oracle Database 11g ile başlayarak kullanılabilir. Aşağıdaki diyagram, dNFS ile yerli NFS karşılaştırılır. DNFS kullandığınızda, Azure sanal makinesinde çalışan bir Oracle veritabanı, yerel NFS istemcisinden daha fazla G/Ç kullanabilir.
 

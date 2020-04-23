@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: cdb31f1a46d7f46b69e9e0ad47a77ba6b32a50a0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.date: 04/22/2020
+ms.openlocfilehash: f8331b64792781a89428f8c5070375c31c0da48d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770826"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82084898"
 ---
 # <a name="release-notes"></a>Sürüm notları
 
@@ -66,14 +66,3 @@ HDInsight küme güvenilirliği ve performans iyileştirmeleri yapmaya devam edi
 ## <a name="component-version-change"></a>Bileşen sürüm değişikliği
 Bu sürüm için bileşen sürümü değişikliği yok. HDInsight 4.0 reklam HDInsight 3.6 için geçerli bileşen sürümlerini burada bulabilirsiniz.
 
-## <a name="known-issues"></a>Bilinen sorunlar
-
-18 Mart 2020 itibarıyla Batı Avrupa veya Kuzey Avrupa'daki bazı Azure HDInsight müşterileri, bu bölgelerde HDInsight kümeleri oluştururken veya ölçeklenirken hata bildirimleri aldı. Bu sorunla ilgili hatalar şunlardır:
-
-- İstek işlenirken dahili sunucu hatası oluştu. Lütfen isteği yeniden deneyin veya desteğe başvurun.
-- En az bir kaynak dağıtım işlemi başarısız oldu. Ayrıntılar için lütfen dağıtım işlemlerini listeleyin. Kullanım https://aka.ms/DeployOperations detayları için lütfen bkz.
-- Kullanıcı SubscriptionId\<'\>Abonelik Kimliği ' kaynak oluşturmak\<için çekirdek leri kalmadı ' küme adı>'. Gerekli: \<\>X , Kullanılabilir: 0.
-
-Mühendisler bu sorunun farkındadır ve aktif olarak araştırmaktadır.
-
-Ek yardım için bir [destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)oluşturun.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad06d2f695109866bab60502a67f0d2c2f425477
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4280bd1385bbf936dc9188df259ca1a4b4a62d6a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68480499"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81870378"
 ---
 # <a name="tutorial-integrate-cognidox-with-azure-active-directory"></a>Öğretici: Cognidox'u Azure Active Directory ile tümleştirin
 
@@ -33,7 +33,7 @@ Bu eğitimde, Cognidox'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağ�
 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -103,7 +103,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     | Adı | Ad Alanı  |  Dönüşüm | Parametre 1 |
     | ---------------| --------------- | --------- |
-    | wanshort | http://appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
+    | wanshort | http:\//appinux.com/windowsaccountname2 | ExtractMailPrefix() | user.userprincipalname |
 
 
     a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için yeni **talep ekle'yi** tıklatın.
@@ -118,7 +118,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
 
     f. **Parametre 1** listesinden, bu satır için gösterilen değeri yazın.
 
-    g. **Kaydet**'e tıklayın.
+    g. **Kaydet**’e tıklayın.
 
 4. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, Federation **Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 

@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 03/11/2020
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 0ceef2561d84a1fa491ab9577e1eac789b62bef7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 0b32f7e8fa2ec0d1d28f2fd42147e140d2d03341
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81454637"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086122"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Blob depolama için güvenlik önerileri
 
@@ -57,6 +57,7 @@ Azure Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure 
 | Güvenlik duvarı kurallarını etkinleştirme | Güvenlik duvarı kurallarını, depolama hesabınıza erişimi, belirtilen IP adreslerinden veya aralıklarından veya Azure Sanal Ağı'ndaki (VNet) alt ağlar listesinden kaynaklanan isteklerle sınırlamak için yapılandırın. Güvenlik duvarı kurallarını yapılandırma hakkında daha fazla bilgi için [Azure Dosya Eşitleme proxy ve güvenlik duvarı ayarlarına](../files/storage-sync-files-firewall-and-proxy.md)bakın. | - |
 | Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin verme | Talepler Azure Sanal Ağı 'nda (VNet) veya izin verilen genel IP adreslerinden gelen bir hizmetten kaynaklanmadığı sürece, depolama hesabınız için güvenlik duvarı kurallarını açmak varsayılan olarak gelen veri isteklerini engeller. Engellenen istekler arasında diğer Azure hizmetlerinden, Azure portalından, günlük ve metrik hizmetleri gibi hizmetlerden gelenler yer almaktadır. Güvenilen Microsoft hizmetlerinin depolama hesabına erişmesine izin vermek için bir özel durum ekleyerek diğer Azure hizmetlerinden gelen isteklere izin verebilirsiniz. Güvenilen Microsoft hizmetleri için özel durum ekleme hakkında daha fazla bilgi için [Azure Dosya Eşitleme proxy ve güvenlik duvarı ayarlarına](../files/storage-sync-files-firewall-and-proxy.md)bakın.| - |
 | Özel uç noktaları kullanma | Özel bir bitiş noktası, Azure Sanal Ağınızdan (VNet) depolama hesabına özel bir IP adresi atar. Özel bir bağlantı üzerinden VNet'iniz ve depolama hesabınız arasındaki tüm trafiği güvence altına alar. Özel uç noktaları hakkında daha fazla bilgi için Azure [Özel Bitiş Noktası'nı kullanarak bir depolama hesabına özel bağlan'a](../../private-link/create-private-endpoint-storage-portal.md)bakın. | - |
+| VNet hizmet etiketlerini kullanma | Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil eder. Microsoft, hizmet etiketinin kapsadığı adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir. Azure Depolama tarafından desteklenen hizmet etiketleri hakkında daha fazla bilgi için [Azure hizmet etiketleriyle ilgili genel bakış'a](../../virtual-network/service-tags-overview.md)bakın. Giden ağ kuralları oluşturmak için hizmet etiketlerinin nasıl kullanılacağını gösteren bir öğretici [için](../../virtual-network/tutorial-restrict-network-access-to-resources.md)bkz. | - |
 | Ağ erişimini belirli ağlarla sınırlandırın | Ağ erişimini, erişim gerektiren istemcileri barındıran ağlarla sınırlamak, kaynaklarınızın ağ saldırılarına maruz kalmasını azaltır. | [Evet](../../security-center/security-center-sql-service-recommendations.md) |
 
 ## <a name="loggingmonitoring"></a>Günlük /İzleme

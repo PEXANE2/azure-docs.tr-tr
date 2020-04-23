@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 7db3f6f50745526876ef2ca6e3253f1931420f0f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 4fe8eb0b363fc95ac5913e66884a2ed8f3d225a6
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81683257"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086496"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Quickstart: BACPAC dosyasını Azure SQL Veritabanı'ndaki bir veritabanına aktarma
 
@@ -61,7 +61,7 @@ Azure PowerShell kullanarak bir BACPAC dosyasından yönetilen bir [örneğe](sq
 
 ## <a name="using-sqlpackage"></a>SqlPackage kullanma
 
-[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak bir SQL Server veritabanı almak için [alma parametrelerini ve özelliklerini](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)görün. SqlPackage Visual [Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) için en son SQL Server Management Studio ve [SQL Server Veri Araçları](https://msdn.microsoft.com/library/mt204009.aspx)vardır. En son [SqlPackage'ı](https://www.microsoft.com/download/details.aspx?id=53876) Microsoft indirme merkezinden de indirebilirsiniz.
+[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) komut satırı yardımcı programını kullanarak bir SQL Server veritabanı almak için [alma parametrelerini ve özelliklerini](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)görün. [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) ve [Visual Studio için SQL Server Veri Araçları](https://msdn.microsoft.com/library/mt204009.aspx) SqlPackage içerir. En son [SqlPackage'ı](https://www.microsoft.com/download/details.aspx?id=53876) Microsoft indirme merkezinden de indirebilirsiniz.
 
 Ölçek ve performans için, Azure portalını kullanmak yerine çoğu üretim ortamlarında SqlPackage kullanmanızı öneririz. Dosyaları kullanarak `BACPAC` geçiş hakkında bir SQL Server Müşteri Danışma Ekibi blogunda [BACPAC Dosyalarını kullanarak SQL Server'dan Azure SQL Veritabanına geçiş](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)bkz.
 

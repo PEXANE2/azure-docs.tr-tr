@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: 787809e4132defa101bb82659e8af1a2d9f1b9b6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: b66874cf95ed29d9be0a2d1ea397704131c7b21d
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81453888"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085447"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -41,7 +41,7 @@ Ne öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makale, Tutorial: Sql Database veya Tutorial [ile Azure'da ASP.NET bir uygulama oluşturma:](app-service-web-tutorial-dotnet-sqldatabase.md) [Azure Uygulama Hizmeti'nde ASP.NET Core ve SQL Veritabanı uygulaması oluşturun' da](app-service-web-tutorial-dotnetcore-sqldb.md)kaldığınız yerden devam edin. Henüz yapmadıysanız, önce iki öğreticiden birini izleyin. Alternatif olarak, adımları SQL Database ile kendi .NET uygulamanız için uyarlayabilirsiniz.
 
@@ -205,14 +205,14 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 Çıktının bir örneği aşağıda verilmiştir:
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "principalId": "21dfa71c-9e6f-4d17-9e90-1d28801c9735",
   "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
   "type": "SystemAssigned"
 }
-```
+</pre>
 
 ### <a name="grant-permissions-to-managed-identity"></a>Yönetilen kimliğe izin verme
 

@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 72bf08dce36d857c1fe91bbe9806336dfa185f7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed10e998ea05b6687190b1f87095f8bc28265905
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78671986"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086624"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da sık karşılaşılan dizin oluşturma hatası ve uyarıları giderme
 
@@ -35,7 +35,7 @@ API sürümüyle `2019-05-06`başlayarak, öğe düzeyinde Dizinleyici hataları
 | Özellik | Açıklama | Örnek |
 | --- | --- | --- |
 | anahtar | Hata veya uyarıdan etkilenen belgenin belge kimliği. | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| ad | Hatanın veya uyarının oluştuğu yeri açıklayan işlem adı. Bu aşağıdaki yapı tarafından oluşturulur: [kategori]. [alt kategori]. [kaynakTürü]. [resourceName] | DocumentExtraction.azureblob.myBlobContainerName Zenginleştirme.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projeksiyon.KnowledgeStore.Table.myTableName |
+| ad | Hatanın veya uyarının oluştuğu yeri açıklayan işlem adı. Bu aşağıdaki yapı tarafından oluşturulur: [kategori]. [alt kategori]. [kaynakTürü]. [resourceName] | DocumentExtraction.azureblob.myBlobContainerName Zenginleştirme.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableNameName |
 | message | Hata veya uyarının üst düzey açıklaması. | Web Api isteği başarısız olduğu için beceri yürütülemedi. |
 | Şey | Özel bir beceri yürütme başarısız olursa WebApi yanıtı gibi sorunu tanılamak için yararlı olabilecek ek ayrıntılar. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 kaynak,`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` Func ... yığın iz geri kalanı ... |
 | documentationLink | Hata ayıklama ve sorunu çözmek için ayrıntılı bilgileri içeren ilgili belgelere bağlantı. Bu bağlantı genellikle bu sayfadaki aşağıdaki bölümlerden birine işaret edecektir. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -91,6 +91,8 @@ Indexer skillset bir beceri çalıştırmak mümkün değildi.
 
 ## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>Hata: Web API isteği başarısız olduğu için beceri yürütülemedi
 Web API'ye yapılan çağrı başarısız olduğu için beceri yürütme başarısız oldu. Genellikle, bu hata sınıfı özel beceriler kullanıldığında oluşur ve bu durumda sorunu gidermek için özel kodunuzu ayıklamanız gerekir. Bunun yerine hata yerleşik bir beceriden geliyorsa, sorunu gidermede yardım için hata iletisine bakın.
+
+Bu sorunu hata ayıklarken, bu beceri için herhangi bir [beceri giriş uyarıları](#warning-skill-input-was-invalid) dikkat emin olun. Dizinleyici beklenmeyen girişi geçtiği için Web API bitiş noktanız başarısız olabilir.
 
 <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
 

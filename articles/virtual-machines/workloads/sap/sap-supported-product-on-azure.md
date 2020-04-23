@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cfc66789360f78c927dd157305074ed5ea6f32a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 8b2f4e7a16c967b26b545d1405f973bf8b8afaae
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768451"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086139"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir
 Bu makalede, Azure dağıtımları için hangi SAP yazılımının desteklendirilip desteklenebileceği ve gerekli işletim sistemi sürümlerinin veya DBMS sürümlerinin ne olduğu açıklanmaktadır.
@@ -135,7 +135,7 @@ Azure Kubernetes Hizmetleri'ndeki (AKS) SAP Datahub/Vora desteği [SAP destek no
 
 SAP BPC 10.1 SP08 [desteği SAP destek notunda](https://launchpad.support.sap.com/#/notes/2451795) #2451795
 
-Azure'daki SAP Hybris Ticaret Platformu desteği [Hybris Wiki'de](https://cxwiki.sap.com/display/cloudss/Using+the+hybris+Platform+with+the+Cloud)ayrıntılı olarak açıklanmaktadır. SAP Hybris Ticaret Platformu için desteklenen DBMS olarak, bu gibi listeler:
+Azure'daki SAP Hybris Ticaret Platformu desteği [Hybris Dokümantasyonu'nda](https://help.sap.com/viewer/a74589c3a81a4a95bf51d87258c0ab15/1811/en-US/8c71300f866910149b40c88dfc0de431.html)ayrıntılı olarak açıklanmaktadır. SAP Hybris Ticaret Platformu için desteklenen DBMS olarak, bu gibi listeler:
 
 - Windows işletim sistemi platformunda SQL Server ve Oracle. SAP NetWeaver için de aynı minimum sürümler geçerlidir. Ayrıntılar için [SAP destek notu #1928533](https://launchpad.support.sap.com/#/notes/1928533) bakın
 - SAP HANA Red Hat ve SUSE Linux üzerine. SAP HANA sertifikalı VM türleri [bu belgede](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#sap-hana-support)daha önce belgelenmiş olarak gereklidir. SAP (Hybris) Ticaret Platformu OLTP iş yükü olarak kabul edilir

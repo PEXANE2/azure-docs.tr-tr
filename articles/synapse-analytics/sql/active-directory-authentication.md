@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5808f892f189bd6cb2cc39bd157be1d61c966763
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81424758"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82086105"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Synapse SQL ile kimlik doğrulama için Azure Active Directory Authentication'ı kullanma
 
 Azure Etkin Dizin kimlik doğrulaması, Azure Etkin Dizin (Azure AD) kimliklerini kullanarak [Azure Synapse Analytics'e](../overview-faq.md) bağlanma mekanizmasıdır.
 
-Azure AD kimlik doğrulaması ile, izin yönetimini basitleştirmek için Azure Synapse'ye erişimi olan kullanıcıların kimliklerini merkezi olarak yönetebilirsiniz. Avantajları şunlardır:
+Azure AD kimlik doğrulaması ile, izin yönetimini basitleştirmek için Azure Synapse erişimi olan kullanıcı kimliklerini merkezi olarak yönetebilirsiniz. Avantajları şunlardır:
 
 - Normal kullanıcı adı ve parola kimlik doğrulamasına alternatif sağlar.
 - Veritabanı sunucuları arasında kullanıcı kimliklerinin çoğalmasını durdurmaya yardımcı olur.
@@ -48,26 +48,34 @@ Farklı veri motorlarında saygı duyulan dosya ve verilerdeki erişim hakların
 
 Aşağıdaki üst düzey diyagram, Synapse SQL ile Azure AD kimlik doğrulamasını kullanmanın çözüm mimarisini özetler. Azure AD yerel kullanıcı parolasını desteklemek için yalnızca Bulut bölümü ve Azure AD/Synapse Synapse SQL olarak kabul edilir. Federe kimlik doğrulamasını (veya Windows kimlik bilgileri için kullanıcı/parolayı) desteklemek için ADFS bloğu ile iletişim gereklidir. Oklar iletişim yollarını gösteriyor.
 
-![aad auth diyagramı][1]
+![aad auth diyagramı](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-Aşağıdaki diyagram, istemcinin bir belirteç göndererek veritabanına bağlanmasına izin veren federasyon, güven ve barındırma ilişkilerini gösterir. Belirteç bir Azure REKLAMı tarafından doğrulanır ve veritabanı tarafından güvenilir. Müşteri 1, yerel kullanıcılarla bir Azure Etkin Dizinini veya federe kullanıcılarla bir Azure REKLAM'ı temsil edebilir. Müşteri 2, içe aktarılan kullanıcılar da dahil olmak üzere olası bir çözümü temsil eder; Bu örnekte, ADFS'nin Azure Active Directory ile senkronize edildiği federe bir Azure Active Directory'sinden gelir. Azure AD kimlik doğrulaması kullanarak bir veritabanına erişimin barındırma aboneliğinin Azure AD ile ilişkilendirilmesi gerektiğini anlamak önemlidir. Aynı abonelik, Azure SQL Veritabanı'nı veya SQL havuzunu barındıran SQL Server'ı oluşturmak için kullanılmalıdır.
+Aşağıdaki diyagram, istemcinin bir belirteç göndererek veritabanına bağlanmasına izin veren federasyon, güven ve barındırma ilişkilerini gösterir. Belirteç bir Azure REKLAMı tarafından doğrulanır ve veritabanı tarafından güvenilir. 
 
-![abonelik ilişkisi][2]
+Müşteri 1, yerel kullanıcılarla bir Azure Etkin Dizinini veya federe kullanıcılarla bir Azure REKLAM'ı temsil edebilir. Müşteri 2, içe aktarılan kullanıcılar da dahil olmak üzere olası bir çözümü temsil eder; Bu örnekte, ADFS'nin Azure Active Directory ile senkronize edildiği federe bir Azure Active Directory'sinden gelir. 
+
+Azure AD kimlik doğrulaması kullanarak bir veritabanına erişimin barındırma aboneliğinin Azure AD ile ilişkilendirilmesi gerektiğini anlamak önemlidir. Aynı abonelik, Azure SQL Veritabanı'nı veya SQL havuzunu barındıran SQL Server'ı oluşturmak için kullanılmalıdır.
+
+![abonelik ilişkisi](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>Yönetici yapısı
 
-Azure AD kimlik doğrulaması kullanırken, Synapse SQL için iki Yönetici hesabı vardır; özgün SQL Server yöneticisi ve Azure AD yöneticisi. Yalnızca bir Azure AD hesabına dayalı yönetici, bir kullanıcı veritabanında ilk Azure AD içerdiği veritabanı kullanıcısını oluşturabilir. Azure AD yöneticisi girişi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. 
+Azure AD kimlik doğrulaması kullanırken, Synapse SQL için iki Yönetici hesabı vardır; özgün SQL Server yöneticisi ve Azure AD yöneticisi. Yalnızca bir Azure AD hesabına dayalı yönetici, bir kullanıcı veritabanında ilk Azure AD içerdiği veritabanı kullanıcısını oluşturabilir. 
 
-Yönetici bir grup hesabı olduğunda, synapse SQL örneği için birden çok Azure AD yöneticisine olanak sağlayarak herhangi bir grup üyesi tarafından kullanılabilir. Grup hesabını yönetici olarak kullanmak, Synapse Analytics çalışma alanındaki kullanıcıları veya izinleri değiştirmeden Azure AD'deki grup üyelerini merkezi olarak eklemenize ve kaldırmanıza izin vererek yönetilebilirliği artırır. İstediğiniz zaman yalnızca bir Azure AD yöneticisi (kullanıcı veya grup) yapılandırılabilir.
+Azure AD yöneticisi girişi bir Azure AD kullanıcısı veya Azure AD grubu olabilir. Yönetici bir grup hesabı olduğunda, synapse SQL örneği için birden çok Azure AD yöneticisine olanak sağlayarak herhangi bir grup üyesi tarafından kullanılabilir. 
 
-![yönetici yapısı][3]
+Grup hesabını yönetici olarak kullanmak, Synapse Analytics çalışma alanındaki kullanıcıları veya izinleri değiştirmeden Azure AD'deki grup üyelerini merkezi olarak eklemenize ve kaldırmanıza izin vererek yönetilebilirliği artırır. İstediğiniz zaman yalnızca bir Azure AD yöneticisi (kullanıcı veya grup) yapılandırılabilir.
+
+![yönetici yapısı](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>İzinler
 
 Yeni kullanıcılar oluşturmak için veritabanında izne `ALTER ANY USER` sahip olmalısınız. İzin `ALTER ANY USER` herhangi bir veritabanı kullanıcısına verilebilir. `ALTER ANY USER` İzin, sunucu yöneticisi hesapları ve veritabanı kullanıcıları tarafından `CONTROL ON DATABASE` `ALTER ON DATABASE` bu veritabanı için izin li `db_owner` veya veritabanı rolü üyeleri tarafından da tutulur.
 
-Synapse SQL'de bulunan bir veritabanı kullanıcısı oluşturmak için, azure AD kimliğini kullanarak veritabanına veya örneğe bağlanmanız gerekir. İlk bulunan veritabanı kullanıcısını oluşturmak için, bir Azure AD yöneticisi (veritabanının sahibi) kullanarak veritabanına bağlanmanız gerekir. Azure AD kimlik doğrulaması yalnızca Azure AD yöneticisi Synapse SQL için oluşturulduğunda mümkündür. Azure Active Directory yöneticisi sunucudan kaldırıldıysa, Synapse SQL içinde daha önce oluşturulan mevcut Azure Active Directory kullanıcıları, Azure Etkin Dizin kimlik bilgilerini kullanarak veritabanına artık bağlanabilir.
+Synapse SQL'de bulunan bir veritabanı kullanıcısı oluşturmak için, azure AD kimliğini kullanarak veritabanına veya örneğe bağlanmanız gerekir. İlk bulunan veritabanı kullanıcısını oluşturmak için, bir Azure AD yöneticisi (veritabanının sahibi) kullanarak veritabanına bağlanmanız gerekir. 
 
+Azure AD kimlik doğrulaması yalnızca Azure AD yöneticisi Synapse SQL için oluşturulduğunda mümkündür. Azure Active Directory yöneticisi sunucudan kaldırıldıysa, Synapse SQL içinde daha önce oluşturulan mevcut Azure Active Directory kullanıcıları, Azure Etkin Dizin kimlik bilgilerini kullanarak veritabanına artık bağlanabilir.
+ 
 ## <a name="azure-ad-features-and-limitations"></a>Azure AD özellikleri ve sınırlamaları
 
 - Azure AD'nin aşağıdaki üyeleri Synapse SQL'de kullanılabilir:
@@ -120,21 +128,8 @@ Aşağıdaki kimlik doğrulama yöntemleri Azure AD sunucu ilkeleri (oturum açm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Synapse SQL'de erişim ve denetime genel bir bakış için [Synapse SQL erişim denetimine](../sql/access-control.md)bakın. Veritabanı ilkeleri hakkında daha fazla bilgi edinmek [için, Bkz. İlkeler.](https://msdn.microsoft.com/library/ms181127.aspx) Veritabanı rolleri hakkında ek bilgiler, [Veritabanı rolleri](https://msdn.microsoft.com/library/ms189121.aspx) makalesinde bulunabilir.
+- Synapse SQL'de erişim ve denetime genel bir bakış için [Synapse SQL erişim denetimine](../sql/access-control.md)bakın.
+- Veritabanı sorumluları hakkında daha fazla bilgi için bkz. [Sorumlular](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Veritabanı rolleri hakkında daha fazla bilgi için bkz. [Veritabanı rolleri](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+
  
-
-<!--Image references-->
-
-[1]: ./media/aad-authentication/1-active-directory-authentication-diagram.png
-[2]: ./media/aad-authentication/2-subscription-relationship.png
-[3]: ./media/aad-authentication/3-admin-structure.png
-[4]: ./media/aad-authentication/4-select-subscription.png
-[5]: ./media/aad-authentication/5-active-directory-settings-portal.png
-[6]: ./media/aad-authentication/6-edit-directory-select.png
-[7]: ./media/aad-authentication/7-edit-directory-confirm.png
-[8]: ./media/aad-authentication/8-choose-active-directory.png
-[9]: ./media/aad-authentication/9-active-directory-settings.png
-[10]: ./media/aad-authentication/10-choose-admin.png
-[11]: ./media/aad-authentication/11-connect-using-integrated-authentication.png
-[12]: ./media/aad-authentication/12-connect-using-password-authentication.png
-[13]: ./media/aad-authentication/13-connect-to-db.png

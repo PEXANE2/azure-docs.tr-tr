@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
 ms.custom: cli-validate
-ms.openlocfilehash: 92a9368bf6aa4f2cf043b3aabd443b37cdcde390
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2cafcab4e7f8e9d98fa993a13def1bfca061135f
+ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77523960"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82085816"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Öğretici: Kapsayıcılar için Web App uygulamasında çok kapsayıcılı (önizleme) uygulama oluşturma
 
@@ -21,7 +21,7 @@ ms.locfileid: "77523960"
 
 [Kapsayıcılar için Web App](app-service-linux-intro.md), Docker görüntülerini esnek bir şekilde kullanmanızı sağlar. Bu öğreticide WordPress ve MySQL kullanarak çok kapsayıcılı bir uygulama oluşturmayı öğreneceksiniz. Bu öğreticiyi Cloud Shell'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) komut satırı aracı (2.0.32 veya üzeri) ile yerel olarak da çalıştırabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Bir Docker Compose yapılandırmasını Kapsayıcılar için Web App ile çalışacak biçime dönüştürme
@@ -33,7 +33,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için [Docker Compose](https://docs.docker.com/compose/)ile deneyim eve ihtiyacınız var.
 
@@ -87,7 +87,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 App Service planı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 {
   "adminSiteName": null,
   "appServicePlanName": "myAppServicePlan",
@@ -98,12 +98,12 @@ App Service planı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer 
   "location": "South Central US",
   "maximumNumberOfWorkers": 1,
   "name": "myAppServicePlan",
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   "targetWorkerSizeId": 0,
   "type": "Microsoft.Web/serverfarms",
   "workerTierName": null
 }
-```
+</pre>
 
 ### <a name="docker-compose-with-wordpress-and-mysql-containers"></a>Docker Compose içeriğini WordPress ve MySQL kapsayıcılarıyla kullanma
 
@@ -117,7 +117,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 
 Web uygulaması oluşturulduğunda Cloud Shell aşağıda yer alan çıktıdaki gibi bilgiler gösterir:
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "availabilityState": "Normal",
@@ -126,11 +126,11 @@ Web uygulaması oluşturulduğunda Cloud Shell aşağıda yer alan çıktıdaki 
   "cloningInfo": null,
   "containerSize": 0,
   "dailyMemoryTimeQuota": 0,
-  "defaultHostName": "<app-name>.azurewebsites.net",
+  "defaultHostName": "&lt;app-name&gt;.azurewebsites.net",
   "enabled": true,
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
 }
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -156,18 +156,18 @@ az mysql server create --resource-group myResourceGroup --name <mysql-server-nam
 
 Sunucunun oluşturulması birkaç dakika sürebilir. MySQL sunucusu oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 {
   "administratorLogin": "adminuser",
   "administratorLoginPassword": null,
-  "fullyQualifiedDomainName": "<mysql-server-name>.database.windows.net",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>",
+  "fullyQualifiedDomainName": "&lt;mysql-server-name&gt;.database.windows.net",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/&lt;mysql-server-name&gt;",
   "location": "southcentralus",
-  "name": "<mysql-server-name>",
+  "name": "&lt;mysql-server-name&gt;",
   "resourceGroup": "myResourceGroup",
   ...
 }
-```
+</pre>
 
 ### <a name="configure-server-firewall"></a>Sunucu güvenlik duvarını yapılandırma
 
@@ -189,17 +189,17 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql-server-
 
 Veritabanı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 {
   "additionalProperties": {},
   "charset": "latin1",
   "collation": "latin1_swedish_ci",
-  "id": "/subscriptions/12db1644-4b12-4cab-ba54-8ba2f2822c1f/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/<mysql-server-name>/databases/wordpress",
+  "id": "/subscriptions/12db1644-4b12-4cab-ba54-8ba2f2822c1f/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/&lt;mysql-server-name&gt;/databases/wordpress",
   "name": "wordpress",
   "resourceGroup": "myResourceGroup",
   "type": "Microsoft.DBforMySQL/servers/databases"
 }
-```
+</pre>
 
 ### <a name="configure-database-variables-in-wordpress"></a>WordPress'te veritabanı değişkenlerini yapılandırma
 
@@ -213,17 +213,17 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 [
   {
     "name": "WORDPRESS_DB_HOST",
     "slotSetting": false,
-    "value": "<mysql-server-name>.mysql.database.azure.com"
+    "value": "&lt;mysql-server-name&gt;.mysql.database.azure.com"
   },
   {
     "name": "WORDPRESS_DB_USER",
     "slotSetting": false,
-    "value": "adminuser@<mysql-server-name>"
+    "value": "adminuser@&lt;mysql-server-name&gt;"
   },
   {
     "name": "WORDPRESS_DB_NAME",
@@ -241,7 +241,7 @@ Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bil
     "value": "BaltimoreCyberTrustroot.crt.pem"
   }
 ]
-```
+</pre>
 
 Çevre değişkenleri hakkında daha fazla bilgi için [bkz.](configure-custom-container.md#configure-environment-variables)
 
@@ -287,14 +287,14 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 Uygulama yeniden yapılandırıldığında Cloud Shell aşağıda yer alan örnekteki gibi bilgiler gösterir:
 
-```json
+<pre>
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",
     "value": "COMPOSE|dmVyc2lvbjogJzMuMycKCnNlcnZpY2VzOgogICB3b3JkcHJlc3M6CiAgICAgaW1hZ2U6IG1zYW5nYXB1L3dvcmRwcmVzcwogICAgIHBvcnRzOgogICAgICAgLSAiODAwMDo4MCIKICAgICByZXN0YXJ0OiBhbHdheXM="
   }
 ]
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -316,9 +316,9 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 [
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   {
     "name": "WORDPRESS_DB_NAME",
     "slotSetting": false,
@@ -330,7 +330,7 @@ Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bil
     "value": "TRUE"
   }
 ]
-```
+</pre>
 
 ### <a name="modify-configuration-file"></a>Yapılandırma dosyasını değiştirme
 
@@ -363,7 +363,7 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 Komutunuz çalıştıktan sonra aşağıdaki örneğe benzer bir çıkış gösterir:
 
-```json
+<pre>
 [
   {
     "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -375,7 +375,7 @@ Komutunuz çalıştıktan sonra aşağıdaki örneğe benzer bir çıkış göst
     "value": "COMPOSE|dmVyc2lvbjogJzMuMycKCnNlcnZpY2VzOgogICBteXNxbDoKICAgICBpbWFnZTogbXlzcWw6NS43CiAgICAgdm9sdW1lczoKICAgICAgIC0gZGJfZGF0YTovdmFyL2xpYi9teXNxbAogICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgIGVudmlyb25tZW50OgogICAgICAgTVlTUUxfUk9PVF9QQVNTV09SRDogZXhhbXBsZXBhc3MKCiAgIHdvcmRwcmVzczoKICAgICBkZXBlbmRzX29uOgogICAgICAgLSBteXNxbAogICAgIGltYWdlOiB3b3JkcHJlc3M6bGF0ZXN0CiAgICAgcG9ydHM6CiAgICAgICAtICI4MDAwOjgwIgogICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgIGVudmlyb25tZW50OgogICAgICAgV09SRFBSRVNTX0RCX1BBU1NXT1JEOiBleGFtcGxlcGFzcwp2b2x1bWVzOgogICAgZGJfZGF0YTo="
   }
 ]
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -421,13 +421,13 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app-na
 
 Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bilgiler gösterir:
 
-```json
+<pre>
 [
-  < JSON data removed for brevity. >
+  &lt; JSON data removed for brevity. &gt;
   {
     "name": "WORDPRESS_DB_USER",
     "slotSetting": false,
-    "value": "adminuser@<mysql-server-name>"
+    "value": "adminuser@&lt;mysql-server-name&gt;"
   },
   {
     "name": "WP_REDIS_HOST",
@@ -435,7 +435,7 @@ Uygulama ayarı oluşturulduğunda Cloud Shell, aşağıdaki örneğe benzer bil
     "value": "redis"
   }
 ]
-```
+</pre>
 
 ### <a name="update-app-with-new-configuration"></a>Uygulamayı yeni yapılandırmayla güncelleştirme
 
@@ -447,14 +447,14 @@ az webapp config container set --resource-group myResourceGroup --name <app-name
 
 Komutunuz çalıştıktan sonra aşağıdaki örneğe benzer bir çıkış gösterir:
 
-```json
+<pre>
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",
     "value": "COMPOSE|dmVyc2lvbjogJzMuMycKCnNlcnZpY2VzOgogICBteXNxbDoKICAgICBpbWFnZTogbXlzcWw6NS43CiAgICAgdm9sdW1lczoKICAgICAgIC0gZGJfZGF0YTovdmFyL2xpYi9teXNxbAogICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgIGVudmlyb25tZW50OgogICAgICAgTVlTUUxfUk9PVF9QQVNTV09SRDogZXhhbXBsZXBhc3MKCiAgIHdvcmRwcmVzczoKICAgICBkZXBlbmRzX29uOgogICAgICAgLSBteXNxbAogICAgIGltYWdlOiB3b3JkcHJlc3M6bGF0ZXN0CiAgICAgcG9ydHM6CiAgICAgICAtICI4MDAwOjgwIgogICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgIGVudmlyb25tZW50OgogICAgICAgV09SRFBSRVNTX0RCX1BBU1NXT1JEOiBleGFtcGxlcGFzcwp2b2x1bWVzOgogICAgZGJfZGF0YTo="
   }
 ]
-```
+</pre>
 
 ### <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
@@ -494,17 +494,17 @@ Birden fazla kapsayıcı kullanma konusunda sorun yaşarsanız şu konumdan kaps
 
 Aşağıdaki örneğe benzer bir çıktı görürsünüz:
 
-```json
+<pre>
 [
    {
       "machineName":"RD00XYZYZE567A",
       "lastUpdated":"2018-05-10T04:11:45Z",
       "size":25125,
-      "href":"https://<app-name>.scm.azurewebsites.net/api/vfs/LogFiles/2018_05_10_RD00XYZYZE567A_docker.log",
+      "href":"https://&lt;app-name&gt;.scm.azurewebsites.net/api/vfs/LogFiles/2018_05_10_RD00XYZYZE567A_docker.log",
       "path":"/home/LogFiles/2018_05_10_RD00XYZYZE567A_docker.log"
    }
 ]
-```
+</pre>
 
 Her kapsayıcı için bir günlük ve üst işlem için ek bir günlük görürsünüz. Günlüğü görüntülemek için ilgili `href` değerini tarayıcıya kopyalayın.
 
