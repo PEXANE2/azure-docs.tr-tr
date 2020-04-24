@@ -20,8 +20,8 @@
     - name: Uygulama geliştirme
       expanded: true
       items:
-        - name: Draft kullanma
-          href: kubernetes-draft.md
+        - name: Helm ile geliştirme
+          href: quickstart-helm.md
         - name: Azure Dev Spaces
           expanded: true
           items:
@@ -316,7 +316,7 @@
                 - name: 3 - Ekip geliştirme
                   href: ../dev-spaces/team-development-nodejs.md
                   maintainContext: true
-        - name: Helm ile uygulamaları çalıştırma
+        - name: Helm ile mevcut uygulamaları yükleme
           href: kubernetes-helm.md
         - name: OpenFaaS kullanma
           href: openfaas.md

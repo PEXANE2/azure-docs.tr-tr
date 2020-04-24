@@ -19,6 +19,8 @@
   items:
     - name: Sertifikayı içeri aktar
       href: tutorial-import-certificate.md
+    - name: Sertifika rotasyonunu yapılandırma
+      href: tutorial-rotate-certificates.md
 - name: Kavramlar
   items:
     - name: Key Vault sertifikalarını kullanmaya başlama

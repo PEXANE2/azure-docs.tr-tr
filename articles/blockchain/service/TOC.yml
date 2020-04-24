@@ -7,10 +7,12 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Üye Oluşturma - Portal
+    - name: Portalı kullanarak üye oluşturma
       href: create-member.md
-    - name: Üye Oluşturma - CLI
+    - name: CLI kullanarak üye oluşturma
       href: create-member-cli.md
+    - name: Şablon kullanarak üye oluşturma
+      href: create-member-template.md
     - name: İşlem düğümüne bağlanma
       items:
         - name: VS Code'u kullanma

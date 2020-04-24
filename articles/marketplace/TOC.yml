@@ -441,7 +441,7 @@
           href: ./partner-center-portal/manage-account.md
         - name: Şirket iş hesabı bulma veya oluşturma
           href: ./partner-center-portal/company-work-accounts.md
-        - name: CPP’den İş Ortağı Merkezi’ne Hesap Geçişi
+        - name: CPP’den İş Ortağı Merkezi’ne hesap geçişi
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Yeni teklif oluşturma
       items:

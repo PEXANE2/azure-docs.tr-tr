@@ -79,6 +79,8 @@
   items:
     - name: SCIM 2.0 protokol uyumluluğu
       href: application-provisioning-config-problem-scim-compatibility.md
+    - name: SCIM ve Graph senaryoları
+      href: scim-graph-scenarios.md
     - name: Sağlama yöntemini seçin
       href: isv-automatic-provisioning-multi-tenant-apps.md
     - name: Bulutta İK sağlama

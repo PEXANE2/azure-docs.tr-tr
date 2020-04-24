@@ -49,6 +49,8 @@
                   href: storage-quickstart-blobs-nodejs.md
                 - name: JavaScript (Node.js için v10 SDK)
                   href: storage-quickstart-blobs-nodejs-legacy.md
+                - name: JavaScript (tarayıcı için v12 SDK)
+                  href: quickstart-blobs-javascript-browser.md
                 - name: JavaScript (tarayıcı için v10 SDK)
                   href: storage-quickstart-blobs-javascript-client-libraries-legacy.md
             - name: Başlayın
@@ -113,6 +115,8 @@
           items:
             - name: Güvenlik önerileri
               href: security-recommendations.md
+            - name: Güvenlik temeli
+              href: ../common/security-baseline.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Depolama bekleyen verileri şifreleme
               href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               items:

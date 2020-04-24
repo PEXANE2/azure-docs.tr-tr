@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure Machine Learning belgeleri
-summary: Makine öğrenmesi modellerini ve işlem hatlarını büyük ölçekte eğitmek, dağıtmak ve yönetmek için Azure Machine Learning’i nasıl kullanacağınızı öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
+summary: Azure Machine Learning ile makine öğrenmesi modellerini, AutoML denemelerini ve işlem hatlarını büyük ölçekte eğitmeyi, dağıtmayı ve yönetmeyi öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
 metadata:
   title: Azure Machine Learning belgeleri
-  description: Makine öğrenmesi modellerini ve işlem hatlarını büyük ölçekte eğitmek, dağıtmak ve yönetmek için Azure Machine Learning’i nasıl kullanacağınızı öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
+  description: Azure Machine Learning ile makine öğrenmesi modellerini, AutoML denemelerini ve işlem hatlarını büyük ölçekte eğitmeyi, dağıtmayı ve yönetmeyi öğrenin. Öğreticiler, kod örnekleri, API başvuruları ve daha fazlası bunu nasıl yapacağınızı gösterir.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.date: 03/18/2020
-  ms.openlocfilehash: 5855d523bf32798166ab32b6ff336cae95e81ca1
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/22/2020
+  ms.openlocfilehash: 174c5b1164505900345e35ff58d2970bf119cc82
+  ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "80063965"
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "82084218"
 landingContent:
 - title: Makine öğrenmesi ile çalışmaya başlama
   linkLists:
@@ -27,16 +27,28 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Tasarımcı (sürükle ve bırak)
       url: tutorial-designer-automobile-price-train-score.md
+    - text: AutoML (kodsuz/az kod ile)
+      url: tutorial-first-experiment-automated-ml.md
     - text: RStudio
       url: tutorial-1st-r-experiment.md
-    - text: Otomatik ML
-      url: tutorial-first-experiment-automated-ml.md
+- title: Stüdyo web deneyimini kullanma
+  linkLists:
   - linkListType: overview
     links:
-    - text: Azure Machine Learning nedir?
-      url: overview-what-is-azure-ml.md
-    - text: Mimari ve kavramlar
-      url: concept-azure-machine-learning-architecture.md
+    - text: Tasarımcı (sürükle ve bırak) nedir?
+      url: concept-designer.md
+    - text: Otomatik makine öğrenmesi nedir?
+      url: concept-automated-ml.md
+  - linkListType: tutorial
+    links:
+    - text: 'AutoML: sınıflandırma modeli oluşturma'
+      url: tutorial-first-experiment-automated-ml.md
+    - text: 'AutoML: ML modellerini eğitme ve dağıtma'
+      url: how-to-use-automated-ml-for-ml-models.md
+    - text: 'Tasarımcı: otomatik fiyatları tahmin etme'
+      url: tutorial-designer-automobile-price-train-score.md
+    - text: Görüntü etiketleme projesi oluşturma
+      url: tutorial-labeling.md
 - title: Python SDK'yı kullanma
   linkLists:
   - linkListType: tutorial
@@ -45,8 +57,10 @@ landingContent:
       url: tutorial-1st-experiment-sdk-setup.md
     - text: Görüntüleri sınıflandırma
       url: tutorial-train-models-with-aml.md
-    - text: Otomatik ML ile taksi ücretlerini tahmin etme
+    - text: AutoML ile taksi ücretlerini tahmin etme
       url: tutorial-auto-train-models.md
+    - text: Azure ML işlem hatları oluşturma
+      url: tutorial-pipeline-batch-scoring-classification.md
   - linkListType: how-to-guide
     links:
     - text: Ortamınızı ayarlama
@@ -59,20 +73,8 @@ landingContent:
       url: how-to-train-pytorch.md
     - text: Keras ile eğitme
       url: how-to-train-keras.md
-- title: ML işlem hatlarını oluşturma
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: ML işlem hatları oluşturma (Python)
-      url: tutorial-pipeline-batch-scoring-classification.md
-    - text: Fiyatları tahmin etmek için doğrusal regresyon (tasarımcı)
-      url: tutorial-designer-automobile-price-train-score.md
-  - linkListType: overview
-    links:
     - text: ML işlem hatları nedir?
       url: concept-ml-pipelines.md
-    - text: Tasarımcı nedir?
-      url: concept-designer.md
 - title: Modelleri dağıtma ve yönetme
   linkLists:
   - linkListType: how-to-guide
@@ -81,27 +83,25 @@ landingContent:
       url: concept-model-management-and-deployment.md
     - text: Nasıl ve nerede dağıtılır?
       url: how-to-deploy-and-where.md
-    - text: MLOps örnekleri
-      url: https://github.com/microsoft/MLOps
     - text: Gerçek zamanlı tahmin
       url: how-to-consume-web-service.md
     - text: Toplu tahmin
       url: how-to-use-parallel-run-step.md
-    - text: Kimlik Doğrulaması
-      url: how-to-setup-authentication.md
 - title: Başvuru belgelerine gitme
   linkLists:
   - linkListType: reference
     links:
     - text: Python için SDK
       url: https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py
-    - text: R için SDK
-      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html
+    - text: Tasarımcı algoritmaları ve modülleri
+      url: algorithm-module-reference/module-reference.md
+    - text: MLOps örnekleri deposu
+      url: https://github.com/microsoft/MLOps
     - text: REST API
       url: https://docs.microsoft.com/rest/api/azureml/
     - text: Machine learning CLI
       url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
-    - text: Tasarımcı algoritmaları ve modülleri
-      url: algorithm-module-reference/module-reference.md
     - text: AI referans mimarileri (GitHub)
       url: https://github.com/Microsoft/AI
+    - text: R için SDK
+      url: https://azure.github.io/azureml-sdk-for-r/reference/index.html

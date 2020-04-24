@@ -149,8 +149,9 @@
             - name: Özel Bağlantı kullanma
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: SSL ile web hizmetlerinin güvenliğini sağlama
+            - name: TLS ile web hizmetlerinin güvenliğini sağlama
               href: how-to-secure-web-service.md
+              displayName: ssl
             - name: AKS dağıtımlarında Azure AD kimliği kullanma
               href: how-to-use-azure-ad-identity.md
             - name: Depolama erişim tuşlarını yeniden oluşturma

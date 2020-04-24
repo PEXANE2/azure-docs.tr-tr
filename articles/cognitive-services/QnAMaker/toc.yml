@@ -61,6 +61,8 @@
     - name: En iyi uygulamalar
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
+    - name: Soru-Cevap Oluşturma ve LUIS’i kullanma
+      href: choose-natural-language-processing-service.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure kaynaklarını yönetme
@@ -74,6 +76,8 @@
           href: How-To/collaborate-knowledge-base.md
         - name: Etkin öğrenmeyi açma
           href: How-To/use-active-learning.md
+        - name: Varsayılan yanıtı değiştirme
+          href: How-To/change-default-answer.md
     - name: Bilgi bankasını yönetme
       items:
         - name: Bilgi bankası oluşturma

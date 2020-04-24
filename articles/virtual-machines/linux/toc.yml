@@ -45,9 +45,13 @@
       href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
     - name: 14b - Jenkins’i Azure DevOps ile tümleştirme
       href: ../../jenkins/tutorial-build-deploy-jenkins.md
-    - name: 15a - Azure’da IaaS ve PaaS için DevOps
+    - name: 15a - Sıralı dağıtım stratejisini yapılandırma
       href: tutorial-devops-azure-pipelines-classic.md
-    - name: 15b - Azure Pipelines (YAML) ile CI/CD
+    - name: 15b - Kanarya dağıtım stratejisini yapılandırma
+      href: tutorial-azure-devops-canary-strategy.md
+    - name: 15c - Mavi-Yeşil dağıtım stratejisini yapılandırma
+      href: tutorial-azure-devops-blue-green-strategy.md
+    - name: 15d - Azure Pipelines (YAML) ile CI/CD
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - LAMP yığını oluşturma
       href: tutorial-lamp-stack.md

@@ -26,6 +26,8 @@
       href: learn/automation-tutorial-runbook-textual-python2.md
 - name: Kavramlar
   items:
+    - name: Otomasyon hesabı kimlik doğrulamasına genel bakış
+      href: automation-security-overview.md
     - name: Runbook yürütmesine genel bakış
       href: automation-runbook-execution.md
     - name: Karma Runbook Çalışanına genel bakış
@@ -48,6 +50,8 @@
           href: automation-create-standalone-account.md
         - name: Resource Manager şablonu ile Otomasyon hesabı oluşturma
           href: automation-create-account-template.md
+        - name: Amazon Web Services ile kimlik doğrulamasını yapılandırma
+          href: automation-config-aws-account.md
         - name: Otomasyon Farklı Çalıştır hesabı yönetme
           href: manage-runas-account.md
         - name: Rol izinlerini ve güvenliği yönetme
@@ -156,6 +160,8 @@
               href: automation-dsc-diagnostics.md
             - name: DSC ile ilgili sorunları giderme
               href: troubleshoot/desired-state-configuration.md
+            - name: Azure DSC uzantısı sürüm geçmişi
+              href: automation-dsc-extension-history.md
         - name: Değişiklik İzleme ve Stok
           items:
             - name: Genel Bakış
@@ -248,8 +254,6 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Office 365 hizmetlerini yönetme
           href: manage-office-365.md
-        - name: Amazon Web Services ile kimlik doğrulaması runbook’ları
-          href: automation-config-aws-account.md
         - name: Otomasyon runbook’uyla AWS VM’si dağıtma
           href: automation-scenario-aws-deployment.md
         - name: Runbook ile Resource Manager şablonu dağıtma

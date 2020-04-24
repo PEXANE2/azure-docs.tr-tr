@@ -20,10 +20,28 @@
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates'
     - name: Azure PowerShell
       href: samples-powershell.md
+      items:
+        - name: Laboratuvara dış kullanıcı ekleme
+          href: scripts/add-external-user-to-lab.md
+        - name: Laboratuvara market görüntüleri ekleme
+          href: scripts/add-marketplace-images-to-lab.md
+        - name: VHD’den özel görüntü oluşturma
+          href: scripts/create-custom-image-from-vhd.md
+        - name: Laboratuvarda özel rol oluşturma
+          href: scripts/create-custom-role-in-lab.md
+        - name: Laboratuvarda izin verilen VM boyutlarını ayarlama
+          href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: Azure PowerShell - Az.DevTestLabs2 modülü
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
     - name: Azure CLI
       href: samples-cli.md
+      items:
+        - name: VM oluşturma ve kullanılabilirliğini doğrulama
+          href: scripts/create-verify-virtual-machine-in-lab-cli.md
+        - name: VM başlatma
+          href: scripts/start-connect-virtual-machine-in-lab-cli.md
+        - name: VM’yi durdurma ve silme
+          href: scripts/stop-delete-virtual-machine-in-lab-cli.md
 - name: Kavramlar
   items:
     - name: DevTest Labs kavramları

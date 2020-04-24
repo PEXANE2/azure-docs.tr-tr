@@ -1199,6 +1199,8 @@
           href: platform/diagnostic-logs-schema.md
         - name: Etkinlik günlüğü şeması
           href: platform/activity-log-schema.md
+    - name: Azure İzleyici Günlükleri tablo başvurusu
+      href: 'https://docs.microsoft.com/azure/azure-monitor/reference/'
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Azure CLI - Application Insights (Önizleme)

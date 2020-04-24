@@ -20,8 +20,8 @@
       href: quickstart-synapse-studio.md
     - name: Havuz oluşturma
       items:
-        - name: Web araçlarını kullanarak Apache Spark havuzu oluşturma
-          href: ./spark/apache-spark-notebook-create-spark-use-sql.md
+        - name: Web araçlarını kullanarak Apache Spark not defteri oluşturma
+          href: quickstart-apache-spark-notebook.md
         - name: Azure portalını kullanarak Apache Spark havuzu oluşturma
           href: quickstart-create-apache-spark-pool.md
         - name: SQL havuzu oluşturma

@@ -108,7 +108,7 @@
           items:
             - name: Azure SQL Denetimi
               href: sql-database-auditing.md
-            - name: VNet veya güvenlik duvarının arkasındaki depolama
+            - name: Sanal ağ veya güvenlik duvarının arkasındaki depolama hesabına yönelik denetim
               href: create-auditing-storage-account-vnet-firewall.md
             - name: Denetim günlüğü biçimi
               href: sql-database-audit-log-format.md
