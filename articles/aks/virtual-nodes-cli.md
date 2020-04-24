@@ -1,34 +1,34 @@
 ---
-title: Azure CLI'yi kullanarak sanal düğümler oluşturma
+title: Azure CLı kullanarak sanal düğümler oluşturma
 titleSuffix: Azure Kubernetes Service
-description: Bölmeleri çalıştırmak için sanal düğümler kullanan bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturmak için Azure CLI'yi nasıl kullanacağınızı öğrenin.
+description: Pods 'leri çalıştırmak için sanal düğümleri kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmak üzere Azure CLı 'yı nasıl kullanacağınızı öğrenin.
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: b3dec8a7d46226b9d6f4416c98332f0023c0c294
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 826c7f98b9540d84ac151e05cd81f2cc6042776c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392596"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128907"
 ---
-# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI'yi kullanarak sanal düğümler kullanmak için bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturun ve yapılandırma
+# <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLı kullanarak sanal düğümleri kullanmak için bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma ve yapılandırma
 
-Bir Azure Kubernetes Hizmeti (AKS) kümesinde uygulama iş yüklerini hızla ölçeklendirmek için sanal düğümler kullanabilirsiniz. Sanal düğümlerle, bölmelerin hızlı bir şekilde sağlanmasına ve yalnızca yürütme sürelerinin saniyede ödenmesine sahipsiniz. Ek bölmeleri çalıştırmak için VM bilgi işlem düğümleri dağıtmak için Kubernetes küme otomatik ölçekleyici beklemeniz gerekmez. Sanal düğümler yalnızca Linux bölmeleri ve düğümleri ile desteklenir.
+Azure Kubernetes Service (AKS) kümesindeki uygulama iş yüklerini hızla ölçeklendirmek için sanal düğümleri kullanabilirsiniz. Sanal düğümlerde, pods 'yi hızlı bir şekilde sağlamaktan ve yürütme süresi boyunca yalnızca saniye başına ödeme yaparsınız. Kubernetes kümesi otomatik Scaler için, ek FID 'leri çalıştırmak üzere VM işlem düğümlerini dağıtmaya beklemeniz gerekmez. Sanal düğümler yalnızca Linux Pod ve düğümleri ile desteklenir.
 
-Bu makalede, sanal ağ kaynaklarını ve AKS kümesini nasıl oluşturup yapılandırabileceğinizi, ardından sanal düğümleri nasıl etkinleştirdiğinizi gösterir.
+Bu makalede, sanal ağ kaynaklarının ve AKS kümesinin nasıl oluşturulacağı ve yapılandırılacağı ve ardından sanal düğümlerin nasıl etkinleştirileceği gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Sanal düğümler, Azure Kapsayıcı Örnekleri 'nde (ACI) çalışan bölmeler ile AKS kümesi arasında ağ iletişimini sağlar. Bu iletişimi sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *gelişmiş* ağ kullanılarak oluşturulan AKS kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ ile oluşturulur. Bu makalede, sanal ağ ve alt ağlar nasıl oluşturulacak, ardından gelişmiş ağ kullanan bir AKS kümesi dağıtılanın.
+Sanal düğümler Azure Container Instances (aci) ve aks kümesinde çalışan Pod 'ler arasında ağ iletişimini sağlar. Bu iletişim sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *Gelişmiş* ağ kullanılarak oluşturulan aks kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ ile oluşturulur. Bu makalede, bir sanal ağ ve alt ağ oluşturma ve ardından Gelişmiş ağ kullanan bir AKS kümesi dağıtma işlemleri gösterilir.
 
-Daha önce ACI kullanmadıysanız, hizmet sağlayıcısını aboneliğinize kaydedin. Aşağıdaki örnekte gösterildiği gibi az sağlayıcı [listesi][az-provider-list] komutunu kullanarak ACI sağlayıcı kaydının durumunu kontrol edebilirsiniz:
+Daha önce ACI kullandıysanız, hizmet sağlayıcısını aboneliğiniz ile kaydedin. Aşağıdaki örnekte gösterildiği gibi [az Provider List][az-provider-list] komutunu kullanarak aci sağlayıcı kaydının durumunu denetleyebilirsiniz:
 
 ```azurecli-interactive
 az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" -o table
 ```
 
-*Microsoft.ContainerInstance* sağlayıcısı, aşağıdaki örnek çıktıda gösterildiği gibi *Kayıtlı*olarak rapor vermelidir:
+Aşağıdaki örnek çıktıda gösterildiği gibi, *Microsoft. Containerınstance* sağlayıcısı *kayıtlı*olarak rapor etmelidir:
 
 ```output
 Namespace                    RegistrationState    RegistrationPolicy
@@ -36,7 +36,7 @@ Namespace                    RegistrationState    RegistrationPolicy
 Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
-Sağlayıcı *NotRegistered*olarak gösterirse, aşağıdaki örnekte gösterildiği gibi [az sağlayıcı kaydını][az-provider-register] kullanarak sağlayıcıyı kaydedin:
+Sağlayıcı *Notregistered*olarak gösteriyorsa, aşağıdaki örnekte gösterildiği gibi [az Provider Register][az-provider-register] kullanarak sağlayıcıyı kaydedin:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
@@ -44,38 +44,38 @@ az provider register --namespace Microsoft.ContainerInstance
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Aşağıdaki bölgeler sanal düğüm dağıtımları için desteklenir:
+Sanal düğüm dağıtımları için aşağıdaki bölgeler desteklenir:
 
-* Avustralya Doğu (avustralya doğu)
-* Orta ABD (centralus)
-* Doğu ABD (doğu)
+* Avustralya Doğu (australiaeast)
+* Orta ABD (merkezde ABD)
+* Doğu ABD (eastus)
 * Doğu ABD 2 (eastus2)
-* Japonya Doğu (Japaneast)
-* Kuzey Avrupa (kuzeyavrupa)
-* Güneydoğu Asya (güneydoğuasya)
-* Batı Orta ABD (westcentralus)
+* Japonya Doğu (japaneast)
+* Kuzey Avrupa (northeurope)
+* Güneydoğu Asya (Güneydoğu)
+* Orta Batı ABD (westcentralus)
 * Batı Avrupa (westeurope)
 * Batı ABD (westus)
 * Batı ABD 2 (westus2)
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
-Sanal Düğümler işlevselliği büyük ölçüde ACI'ın özellik kümesine bağlıdır. Aşağıdaki senaryolar henüz Sanal Düğümlerle desteklenmez
+Sanal düğümler işlevselliği, ACI 'nin özellik kümesine yoğun bir şekilde bağımlıdır. Aşağıdaki senaryolar henüz sanal düğümlerde desteklenmiyor
 
-* ACR görüntülerini çekmek için servis ilkesini kullanma. [Geçici çözüm](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry) [Kubernetes sırlarını](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) kullanmaktır
-* VNet eşleme, Kubernetes ağ ilkeleri ve ağ güvenlik grupları yla internete giden trafiği içeren [Sanal Ağ Sınırlamaları.](../container-instances/container-instances-vnet.md)
-* Init kapları
-* [Ana bilgisayar takma adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* ACI exec için [argümanlar](../container-instances/container-instances-exec.md#restrictions)
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) sanal düğüm e poddağıtmaz
-* Sanal düğümler Linux bölmelerinin zamanlamasını destekler. Windows Server kapsayıcılarını ACI'ye zamanlamak için açık kaynak [Sanal Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını el ile yükleyebilirsiniz. 
+* ACR görüntülerini çekmek için hizmet sorumlusu kullanma. [Geçici çözüm](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) , [Kubernetes gizli](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) dizileri kullanmaktır
+* VNet eşlemesi, Kubernetes ağ ilkeleri ve ağ güvenlik gruplarıyla internet 'e giden trafik dahil [sanal ağ sınırlamaları](../container-instances/container-instances-vnet.md) .
+* Init kapsayıcıları
+* [Ana bilgisayar diğer adları](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
+* ACI 'da exec için [bağımsız değişkenler](../container-instances/container-instances-exec.md#restrictions)
+* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) , sanal düğüme Pod dağıtmayacak
+* Sanal düğümler, Linux pods zamanlamasını destekler. Açık kaynak [sanal Kubelet aci](https://github.com/virtual-kubelet/azure-aci) sağlayıcısını, Windows Server kapsayıcılarını acı 'ye zamanlamak için el ile yükleyebilirsiniz. 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır.
 
-Bulut Kabuğunu açmak için, kod bloğunun sağ üst köşesinden **deneyin'i** seçin. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/bash](https://shell.azure.com/bash)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell açmak için, bir kod bloğunun sağ üst köşesinden **dene** ' yi seçin. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
-CLI'yi yerel olarak yüklemeyi ve kullanmayı tercih ederseniz, bu makalede Azure CLI sürümü 2.0.49 veya sonrası gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
+CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.49 veya üstünü gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -87,7 +87,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
 
-[az ağ vnet oluşturma][az-network-vnet-create] komutunu kullanarak sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8*adres öneki ile sanal ağ adı *myVnet* ve *myAKSSubnet*adlı bir alt ağ oluşturur. Bu alt net in adres öneki *varsayılan 10.240.0.0/16:*
+[Az Network VNET Create][az-network-vnet-create] komutunu kullanarak bir sanal ağ oluşturun. Aşağıdaki örnek, *10.0.0.0/8*adres ön *ekine sahip bir* sanal ağ adı ve *myakssubnet*adlı bir alt ağ oluşturur. Bu alt ağın adres ön eki varsayılan olarak *10.240.0.0/16*' dır:
 
 ```azurecli-interactive
 az network vnet create \
@@ -98,7 +98,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 ```
 
-Şimdi [az ağ vnet subnet oluşturma][az-network-vnet-subnet-create] komutunu kullanarak sanal düğümler için ek bir alt ağ oluşturun. Aşağıdaki örnek, *10.241.0.0/16*adres öneki ile *myVirtualNodeSubnet* adlı bir alt ağ oluşturur.
+Şimdi [az Network VNET subnet Create][az-network-vnet-subnet-create] komutunu kullanarak sanal düğümler için ek bir alt ağ oluşturun. Aşağıdaki örnek, *10.241.0.0/16*adres ön ekine sahip *myvirtualnodesubnet* adlı bir alt ağ oluşturur.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -108,9 +108,9 @@ az network vnet subnet create \
     --address-prefixes 10.241.0.0/16
 ```
 
-## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Hizmet sorumlusu oluşturma veya yönetilen bir kimlik kullanma
+## <a name="create-a-service-principal-or-use-a-managed-identity"></a>Hizmet sorumlusu oluşturma veya yönetilen kimlik kullanma
 
-Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. Bu hizmet sorumlusu Azure CLI veya portal ile otomatik olarak oluşturulabilir veya kendiniz önceden bir tane oluşturup ek izinler atayabilirsiniz. Alternatif olarak, hizmet sorumlusu yerine izinler için yönetilen bir kimlik kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md)
+Bir AKS kümesinin diğer Azure kaynaklarıyla etkileşime geçmesini sağlamak için bir Azure Active Directory hizmet sorumlusu kullanılır. Bu hizmet sorumlusu Azure CLI veya portal ile otomatik olarak oluşturulabilir veya kendiniz önceden bir tane oluşturup ek izinler atayabilirsiniz. Alternatif olarak, bir hizmet sorumlusu yerine izinler için yönetilen bir kimlik de kullanabilirsiniz. Daha fazla bilgi için bkz. [yönetilen kimlikleri kullanma](use-managed-identity.md).
 
 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] komutunu kullanarak bir hizmet sorumlusu oluşturun. `--skip-assignment` parametresi, ek izinlerin atanmasını engeller.
 
@@ -134,15 +134,15 @@ az ad sp create-for-rbac --skip-assignment
 
 ## <a name="assign-permissions-to-the-virtual-network"></a>Sanal ağa izin atama
 
-Kümenizin sanal ağı kullanmasına ve yönetmesine izin vermek için, AKS hizmet sorumlusuna ağ kaynaklarını kullanmak için doğru hakları vermeniz gerekir.
+Kümenizin sanal ağı kullanmasına ve yönetmesine izin vermek için, AKS hizmet sorumlusuna ağ kaynaklarını kullanmak için doğru haklara sahip olmanız gerekir.
 
-İlk olarak, az ağ [vnet göstermek][az-network-vnet-show]kullanarak sanal ağ kaynak kimliği almak:
+İlk olarak, [az Network VNET Show][az-network-vnet-show]kullanarak sanal ağ kaynak kimliğini alın:
 
 ```azurecli-interactive
 az network vnet show --resource-group myResourceGroup --name myVnet --query id -o tsv
 ```
 
-AKS kümesinin sanal ağı kullanması için doğru erişim sağlamak için, az rol ataması oluşturma komutunu kullanarak bir [rol ataması oluşturun.][az-role-assignment-create] `<appId`> ve `<vnetId>` yerine önceki iki adımda topladığınız değerleri yazın.
+Sanal ağı kullanmak için AKS kümesine doğru erişimi vermek üzere [az role atama Create][az-role-assignment-create] komutunu kullanarak bir rol ataması oluşturun. `<appId`> ve `<vnetId>` yerine önceki iki adımda topladığınız değerleri yazın.
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
@@ -150,13 +150,13 @@ az role assignment create --assignee <appId> --scope <vnetId> --role Contributor
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Bir önceki adımda oluşturulan AKS alt ağına bir AKS kümesi dağıtabilirsiniz. [Az network vnet subnet show][az-network-vnet-subnet-show]kullanarak bu alt netin kimliğini alın:
+Bir AKS kümesini önceki bir adımda oluşturulan AKS alt ağına dağıtırsınız. [Az Network VNET subnet Show][az-network-vnet-subnet-show]kullanarak bu alt ağın kimliğini alın:
 
 ```azurecli-interactive
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda ve ardından `<appId>` önceki bölümde `<password>` toplanan değerlerle birlikte alınan kimlikle değiştirin.
+AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda elde edilen kimlikle ve daha sonra `<appId>` ve `<password>` önceki bölümde toplanan değerlerle değiştirin.
 
 ```azurecli-interactive
 az aks create \
@@ -174,9 +174,9 @@ az aks create \
 
 Birkaç dakika sonra komut tamamlanır ve küme hakkında JSON tarafından biçimlendirilmiş bilgiler gösterilir.
 
-## <a name="enable-virtual-nodes-addon"></a>Sanal düğüm eklemeyi etkinleştirme
+## <a name="enable-virtual-nodes-addon"></a>Sanal düğümlerin eklentisini etkinleştir
 
-Sanal düğümleri etkinleştirmek için şimdi [az aks enable-addons][az-aks-enable-addons] komutunu kullanın. Aşağıdaki örnek, önceki adımda oluşturulan *myVirtualNodeSubnet* adlı alt ağı kullanır:
+Sanal düğümleri etkinleştirmek için şimdi [az aks Enable-addons][az-aks-enable-addons] komutunu kullanın. Aşağıdaki örnek, önceki adımda oluşturulan *Myvirtualnodesubnet* adlı alt ağı kullanır:
 
 ```azurecli-interactive
 az aks enable-addons \
@@ -200,7 +200,7 @@ Kümenize bağlantıyı doğrulamak için [kubectl get][kubectl-get] komutunu ku
 kubectl get nodes
 ```
 
-Aşağıdaki örnek çıktı oluşturulan tek VM düğümü ve daha sonra Linux, *sanal-düğüm-aci-linux*için sanal düğüm gösterir:
+Aşağıdaki örnek çıktıda, oluşturulan tek VM düğümü ve Linux için sanal düğüm, *sanal düğüm-aci-Linux*sanal düğümü gösterilmektedir:
 
 ```output
 NAME                          STATUS    ROLES     AGE       VERSION
@@ -208,9 +208,9 @@ virtual-node-aci-linux        Ready     agent     28m       v1.11.2
 aks-agentpool-14693408-0      Ready     agent     32m       v1.11.2
 ```
 
-## <a name="deploy-a-sample-app"></a>Örnek bir uygulama dağıtma
+## <a name="deploy-a-sample-app"></a>Örnek uygulama dağıtma
 
-Adlandırılmış `virtual-node.yaml` bir dosya oluşturun ve aşağıdaki YAML'de kopyalayın. Kapsayıcıyı düğümüzerinde zamanlamak için bir [düğümSeçici][node-selector] ve [tolerasyon][toleration] tanımlanır.
+Aşağıdaki YAML 'de `virtual-node.yaml` adlı bir dosya oluşturun ve kopyalayın. Düğüm üzerinde kapsayıcıyı zamanlamak için bir [Nodeselector][node-selector] ve [toleranation][toleration] tanımlanmıştır.
 
 ```yaml
 apiVersion: apps/v1
@@ -243,13 +243,13 @@ spec:
         effect: NoSchedule
 ```
 
-[Kubectl uygula][kubectl-apply] komutu ile uygulamayı çalıştırın.
+Uygulamayı [kubectl Apply][kubectl-apply] komutuyla çalıştırın.
 
 ```console
 kubectl apply -f virtual-node.yaml
 ```
 
-Bölme lerin ve zamanlanan düğümün `-o wide` listesini çıktılamak için bağımsız değişkenle [kubectl get pods][kubectl-get] komutunu kullanın. Bölmenin `aci-helloworld` düğümde zamanlandığına `virtual-node-aci-linux` dikkat edin.
+[Kubectl Get Pod][kubectl-get] komutunu `-o wide` bağımsız değişkenle birlikte kullanarak bir pod ve zamanlanan düğüm listesini çıkış. `aci-helloworld` Pod 'ın `virtual-node-aci-linux` düğüm üzerinde zamanlandığına dikkat edin.
 
 ```console
 kubectl get pods -o wide
@@ -260,32 +260,32 @@ NAME                            READY     STATUS    RESTARTS   AGE       IP     
 aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.0.4   virtual-node-aci-linux
 ```
 
-Bölmeye, sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağından bir dahili IP adresi atanır.
+Pod 'a sanal düğümlerle kullanılmak üzere atanan Azure sanal ağ alt ağından bir iç IP adresi atanır.
 
 > [!NOTE]
-> Azure Kapsayıcı Kayıt Defteri'nde depolanan görüntüleri kullanıyorsanız, [bir Kubernetes sırrını yapılandırın ve kullanın.][acr-aks-secrets] Sanal düğümlerin geçerli bir sınırlaması, tümleşik Azure AD hizmeti temel kimlik doğrulamasını kullanamamanızdır. Bir sır kullanmazsanız, sanal düğümlerde zamanlanan bölmeler başlatılamaz `HTTP response status code 400 error code "InaccessibleImage"`ve hatayı bildiremez.
+> Azure Container Registry depolanan görüntüleri kullanıyorsanız, [bir Kubernetes gizli anahtarını yapılandırın ve kullanın][acr-aks-secrets]. Sanal düğümlerin geçerli sınırlaması, tümleşik Azure AD hizmet sorumlusu kimlik doğrulamasını kullanamıyoruz. Gizli anahtar kullanmıyorsanız, sanal düğümlerde zamanlanan Pod 'ler başlatılamaz ve hatayı `HTTP response status code 400 error code "InaccessibleImage"`bildirebilir.
 
-## <a name="test-the-virtual-node-pod"></a>Sanal düğüm bölmesini test edin
+## <a name="test-the-virtual-node-pod"></a>Sanal düğüm Pod 'u test etme
 
-Sanal düğümde çalışan bölmeyi test etmek için, bir web istemcisi ile demo uygulamasına göz atın. Bölmeye dahili bir IP adresi atandığı için, AKS kümesindeki başka bir bölmeden gelen bu bağlantıyı hızlı bir şekilde sınayabilirsiniz. Bir test bölmesi oluşturun ve bir terminal oturumu takın:
+Sanal düğümde çalışan Pod 'u test etmek için, bir web istemcisiyle tanıtım uygulamasına gidin. Pod 'a bir iç IP adresi atandığında, bu bağlantıyı AKS kümesindeki başka bir pod 'tan hızlıca test edebilirsiniz. Bir test Pod oluşturun ve buna bir terminal oturumu ekleyin:
 
 ```console
 kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
-Pod `curl` kullanarak yükleyin: `apt-get`
+Şunu `curl` kullanarak `apt-get`Pod 'a yüklensin:
 
 ```console
 apt-get update && apt-get install -y curl
 ```
 
-Şimdi pod'unuzun adresine erişin, `curl`örneğin *http://10.241.0.4*. Önceki `kubectl get pods` komutta gösterilen kendi iç IP adresinizi sağlayın:
+Artık, kullanarak `curl`Pod 'nizin adresine erişin *http://10.241.0.4*. Önceki `kubectl get pods` komutta gösterilen kendı iç IP adresini belirtin:
 
 ```console
 curl -L http://10.241.0.4
 ```
 
-Demo uygulaması, aşağıdaki yoğunlaştırılmış örnek çıktıda gösterildiği gibi görüntülenir:
+Demo uygulaması aşağıdaki sıkıştırılmış örnek çıktıda gösterildiği gibi görüntülenir:
 
 ```output
 <html>
@@ -295,21 +295,21 @@ Demo uygulaması, aşağıdaki yoğunlaştırılmış örnek çıktıda gösteri
 [...]
 ```
 
-Terminal oturumunu test bölmenize `exit`' le kapatın. Oturumunuz sona erdiğinde, bölme silinir.
+İle `exit`test Pod 'unuzla Terminal oturumunu kapatın. Oturumunuz sona erdikten sonra Pod silinir.
 
-## <a name="remove-virtual-nodes"></a>Sanal düğümleri kaldırma
+## <a name="remove-virtual-nodes"></a>Sanal düğümleri kaldır
 
-Artık sanal düğümler kullanmak istemiyorsanız, [az aks devre dışı-addons][az aks disable-addons] komutunu kullanarak bunları devre dışı bırakabilirsiniz. 
+Artık sanal düğümleri kullanmak istemiyorsanız, [az aks Disable-addons][az aks disable-addons] komutunu kullanarak bunları devre dışı bırakabilirsiniz. 
 
-Gerekirse tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Azure Bulut Su Larını açmaya gidin.
+Gerekirse, tarayıcınızda Azure Cloud Shell açmak [https://shell.azure.com](https://shell.azure.com) için bölümüne gidin.
 
-İlk olarak, `aci-helloworld` sanal düğüm üzerinde çalışan bölmeyi silin:
+İlk olarak, sanal `aci-helloworld` düğümde çalışan Pod 'yi silin:
 
 ```console
 kubectl delete -f virtual-node.yaml
 ```
 
-Aşağıdaki örnek komut Uyruşur sanal düğümleri devre dışı kalmaktadır:
+Aşağıdaki örnek komut Linux sanal düğümlerini devre dışı bırakır:
 
 ```azurecli-interactive
 az aks disable-addons --resource-group myResourceGroup --name myAKSCluster --addons virtual-node
@@ -339,13 +339,13 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name $AKS_VNET 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, sanal düğümüzerinde bir bölme zamanlandı ve özel, dahili BIR IP adresi atandı. Bunun yerine bir hizmet dağıtımı oluşturabilir ve bir yük dengeleyicisi veya giriş denetleyicisi aracılığıyla pod'unuza trafik yönlendirebilirsiniz. Daha fazla bilgi için [aks'ta temel bir giriş denetleyicisi oluşturma'ya][aks-basic-ingress]bakın.
+Bu makalede, sanal düğümde bir pod zamanlandı ve özel, dahili bir IP adresi atandı. Bunun yerine, bir yük dengeleyici veya giriş denetleyicisi aracılığıyla bir hizmet dağıtımı oluşturup Pod 'inize trafik yönlendirebilirsiniz. Daha fazla bilgi için bkz. [AKS 'de temel giriş denetleyicisi oluşturma][aks-basic-ingress].
 
-Sanal düğümler genellikle AKS'deki ölçekleme çözümünün bir bileşenidir. Ölçekleme çözümleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Sanal düğümler genellikle AKS 'deki bir ölçeklendirme çözümünün bir bileşenidir. Çözümleri ölçeklendirme hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Kubernetes yatay pod otomatik ölçekleyicikullanın][aks-hpa]
-- [Kubernetes küme otomatik ölçekleyicisini kullanma][aks-cluster-autoscaler]
-- [Sanal Düğümler için Otomatik Ölçeklendirme örneğine göz atın][virtual-node-autoscale]
+- [Kubernetes yatay Pod otomatik Scaler 'ı kullanma][aks-hpa]
+- [Kubernetes kümesi otomatik Scaler 'ı kullanma][aks-cluster-autoscaler]
+- [Sanal düğümler için otomatik ölçeklendirme örneğine göz atın][virtual-node-autoscale]
 - [Sanal Kubelet açık kaynak kitaplığı hakkında daha fazla bilgi edinin][virtual-kubelet-repo]
 
 <!-- LINKS - external -->

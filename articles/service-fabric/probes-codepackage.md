@@ -1,64 +1,66 @@
 ---
-title: Azure Hizmet Kumaş ı probları
-description: Uygulama ve hizmet bildirim dosyalarını kullanarak Azure Hizmet Dokusunda Liveness Probe nasıl modellendirilir?
+title: Azure Service Fabric araştırmaları
+description: Uygulama ve hizmet bildirim dosyalarını kullanarak Azure Service Fabric 'da bir araştırmanın nasıl modelleyini.
 ms.topic: conceptual
+author: tugup
+ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 38f3888a29bf505b723d40bc7cd08fb0c7e29eff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81431221"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137595"
 ---
-# <a name="liveness-probe"></a>Canlılık Sondası
-7.1 Service Fabric ile başlayarak [konteyner uygulamaları][containers-introduction-link] için Canlılık Prob mekanizmasını destekler. Liveness Probe konteyner uygulamasının canlılığını duyurmaya yardımcı olur ve zamanında yanıt vermedikleri nde yeniden başlatılamasına neden olur.
-Bu makalede, bildirim dosyaları aracılığıyla bir Liveness Probe nasıl tanımlandığına genel bir bakış sağlar.
+# <a name="liveness-probe"></a>Lizleştirme araştırması
+Azure Service Fabric, sürüm 7,1 ' den başlayarak [Kapsayıcılı][containers-introduction-link] uygulamalar için bir araştırma mekanizmasını destekler. Bir müdahale araştırması, kapsayıcılı bir uygulamanın, hızla yanıt vermezse yeniden başlatılacak şekilde raporlanmasına yardımcı olur.
+Bu makalede, bildirim dosyalarını kullanarak bir lizleştirme araştırması tanımlama hakkında genel bakış sunulmaktadır.
 
-Bu makaleye geçmeden önce Service Fabric uygulama modeli ve [Service Fabric hosting modelini][hosting-model-link]tanımanızı öneririz. [Service Fabric application model][application-model-link]
+Bu makaleye devam etmeden önce [Service Fabric uygulama modeliyle][application-model-link] ve [Service Fabric barındırma modeliyle][hosting-model-link]tanıdık olun.
 
 > [!NOTE]
-> Liveness Probe yalnızca NAT ağ modundaki kapsayıcılar için desteklenir.
+> Lizleştirme araştırması yalnızca NAT ağ modundaki kapsayıcılar için desteklenir.
 
-## <a name="semantics"></a>Semantiği
-Kapsayıcı başına yalnızca 1 Canlılık Sondası belirtebilirsiniz ve bu alanlardaki davranışını denetleyebilirsiniz:
+## <a name="semantics"></a>İçeriyor
+Kapsayıcı başına yalnızca bir lizleştirme araştırması belirtebilir ve bu alanları kullanarak davranışını kontrol edebilirsiniz:
 
-* `initialDelaySeconds`: Konteyner başladıktan sonra sondayı çalıştırmaya başlamak için saniyeler içinde ilk gecikme. Desteklenen değer int. Varsayılan 0'dır. En az 0'dır.
+* `initialDelaySeconds`: Kapsayıcı başladıktan sonra araştırmayı yürütmeye başlamak için saniye cinsinden ilk gecikme. Desteklenen değer **int**'tir. Varsayılan değer 0 ' dır ve minimum 0 ' dır.
 
-* `timeoutSeconds`: Saniyeler içinde, başarılı bir şekilde tamamlanmamışsa sondayı başarısız olarak görüruz. Desteklenen değer int. Varsayılan 1'dir. Minimum is 1.
+* `timeoutSeconds`: Başarılı bir şekilde bitmemişse, araştırmanın başarısız olarak kabul ettiğimiz saniye cinsinden süre. Desteklenen değer **int**'tir. Varsayılan değer 1 ' dir ve en az 1 ' dir.
 
-* `periodSeconds`: Ne sıklıkta araştırdığımızı belirtmek için saniye cinsinden periyot. Desteklenen değer int. Varsayılan 10'dur. Minimum is 1.
+* `periodSeconds`: Yoklamanın sıklığını belirtmek için saniye cinsinden süre. Desteklenen değer **int**'tir. Varsayılan değer 10 ' dur ve en az 1 ' dir.
 
-* `failureThreshold`: FailureThreshold tuşuna bastığımızda, konteyner yeniden başlatılacaktır. Desteklenen değer int. Varsayılan 3'dür. Minimum is 1.
+* `failureThreshold`: Bu değere ulaşıyoruz, kapsayıcı yeniden başlatılır. Desteklenen değer **int**'tir. Varsayılan değer 3 ' dir ve en az 1 ' dir.
 
-* `successThreshold`: Başarısızlıkta, sondanın başarı olarak kabul edilememesi için SuccessThreshold için başarılı bir şekilde yürütülmesi gerekir. Desteklenen değer int. Varsayılan 1'dir. Minimum is 1.
+* `successThreshold`: Hatada, araştırmanın başarılı olarak kabul edilmesi için, bu değer için başarıyla çalıştırılması gerekir. Desteklenen değer **int**'tir. Varsayılan değer 1 ' dir ve en az 1 ' dir.
 
-Bir anda konteyner için en fazla 1 sonda olacaktır. Sonda zaman dışarı **Saniye** tamamlanmazsa biz beklemeye devam ve **failureThreshold**doğru sayma . 
+Herhangi bir anda bir kapsayıcıda en çok bir yoklama olabilir. Yoklama, **TimeoutSeconds**'da ayarlanan sürede bitmiyorsa, bekleyin ve **FailureThreshold**değerine doğru süreyi Sayın. 
 
-Ayrıca, ServiceFabric DeployedServicePackage üzerinde sonda [Sağlık Raporları][health-introduction-link] aşağıdaki yükseltecektir:
+Ayrıca, Service Fabric **Deployedservicepackage**üzerinde aşağıdaki araştırma [sistem durumu raporlarını][health-introduction-link] yükseltir:
 
-* `Ok`: Eğer sonda **başarıiçin** başarılı olursaThreshold o zaman tamam olarak sağlık rapor.
+* `OK`: Yoklama **, başarılı bir şekilde ayarlanan**değer için başarılı oldu.
 
-* `Error`: Sonda hatasıCount == **failureThreshold**, kapsayıcıyı yeniden başlatmadan önce Hata bildiririz.
+* `Error`: Kapsayıcı yeniden başlatılmadan önce araştırma **FailureCount** ==  **FailureThreshold**.
 
 * `Warning`: 
-    1. Sonda başarısız olursa ve hataSayısı< **hatasıEşik uyarıyı** bildiririz. Bu sistem durumu raporu, hata Sayısı başarısızlığa ulaşıncaya kadar **kalırEşik** veya **başarıEşik**.
-    2. Başarı sonrası başarısızlık, biz hala Uyarı rapor ama güncelleştirilmiş ardışık başarı ile.
+    * Araştırma başarısız olur ve **FailureCount** < **FailureThreshold**. Bu sistem durumu raporu, **FailureCount** , **FailureThreshold** veya **başarılı eşikte**ayarlanan değere ulaşıncaya kadar kalır.
+    * Hatadan sonra başarılı olduğunda, uyarı, art arda güncelleştirilmiş başarıları ile kalır.
 
-## <a name="specifying-liveness-probe"></a>Canlılık Sondası Belirtme
+## <a name="specifying-a-liveness-probe"></a>Bir lizliği araştırması belirtme
 
-ServiceManifestImport altında ApplicationManifest.xml'de prob belirtebilirsiniz:
+**Servicemanifestımport**altındaki ApplicationManifest. xml dosyasında bir araştırma belirtebilirsiniz.
 
-Prob ya biri olabilir:
+Araştırma, aşağıdakilerden herhangi biri olabilir:
 
-1. HTTP
-2. TCP
-3. Exec 
+* HTTP
+* TCP
+* Exec 
 
-## <a name="http-probe"></a>HTTP Sondası
+### <a name="http-probe"></a>HTTP araştırma
 
-HTTP sondası için Service Fabric, belirtilen bağlantı noktasına ve yola bir HTTP isteği gönderir. 200'den büyük veya eşit ve 400'den küçük kodu döndürme kodu başarıyı gösterir.
+Bir HTTP araştırması için Service Fabric, belirttiğiniz bağlantı noktasına ve yola bir HTTP isteği gönderir. 200 ' den büyük veya buna eşit ve 400 ' den küçük olan bir dönüş kodu, başarıyı gösterir.
 
-Aşağıda HttpGet sondasının nasıl belirtilen bir örneği verilmiştir:
+HTTP araştırması belirtme hakkında bir örnek aşağıda verilmiştir:
 
 ```xml
   <ServiceManifestImport>
@@ -79,21 +81,21 @@ Aşağıda HttpGet sondasının nasıl belirtilen bir örneği verilmiştir:
   </ServiceManifestImport>
 ```
 
-HttpGet sondası ayarlayabileceğiniz ek özelliklere sahiptir:
+HTTP araştırmasına ayarlayabileceğiniz ek özellikler vardır:
 
-* `path`: HTTP isteğine erişim yolu.
+* `path`: HTTP isteğinde kullanılacak yol.
 
-* `port`: Sondalar için erişim noktası. Menzil 1 ile 65535 arasındadır. Zorunlu.
+* `port`: Yoklamalar için kullanılacak bağlantı noktası. Bu özellik zorunludur. Aralık 1 ile 65535 arasındadır.
 
-* `scheme`: Kod paketine bağlanmak için kullanılacak şema. HTTPS olarak ayarlanırsa, sertifika doğrulaması atlanır. Varsayılan lar HTTP
+* `scheme`: Kod paketine bağlanmak için kullanılacak düzen. Bu özellik HTTPS olarak ayarlandıysa, sertifika doğrulaması atlanır. Varsayılan ayar HTTP ' dir.
 
-* `httpHeader`: Üstbilgi istek te ayarlamak için. Bunlardan birden fazla belirtebilirsiniz.
+* `httpHeader`: İstekte ayarlanacak üst bilgiler. Birden çok üst bilgi belirleyebilirsiniz.
 
-* `host`: Bağlanmak için IP'yi barındırın.
+* `host`: Bağlanılacak ana bilgisayar IP adresi.
 
-## <a name="tcp-probe"></a>TCP Sondası
+### <a name="tcp-probe"></a>TCP araştırma
 
-TCP prob için Service Fabric, belirtilen bağlantı noktasına sahip konteynerüzerinde bir soket açmaya çalışır. Eğer bir bağlantı kurabiliyorsa, sonda başarı olarak kabul edilir. Aşağıda, TCP soketi kullanan sondanın nasıl belirtilen bir örneği verilmiştir:
+TCP araştırması için Service Fabric, belirtilen bağlantı noktasını kullanarak kapsayıcıda bir yuva açmaya çalışacaktır. Bir bağlantı kurabildiğinden, araştırma başarılı olarak kabul edilir. TCP yuvası kullanan bir araştırmanın nasıl belirtilbir örneği aşağıda verilmiştir:
 
 ```xml
   <ServiceManifestImport>
@@ -111,13 +113,13 @@ TCP prob için Service Fabric, belirtilen bağlantı noktasına sahip konteyner�
   </ServiceManifestImport>
 ```
 
-## <a name="exec-probe"></a>Exec Sondası
+### <a name="exec-probe"></a>Yürütme araştırması
 
-Bu sonda kapsayıcıya bir yönetici verecek ve komutun tamamlanmasını bekleyecek.
+Bu araştırma, kapsayıcıda bir **Exec** komutu oluşturacak ve komutun bitmesini bekleyecek.
 
 > [!NOTE]
-> Exec komutu virgülle ayrılmış bir dize alır. Örnekteki aşağıdaki komut Linux kapsayıcısı için çalışacaktır.
-> Windows konteyner deniyorsanız, <Command>cmd</Command> kullanın
+> **Exec** komutu, virgülle ayrılmış bir dize alır. Aşağıdaki örnekteki komut bir Linux kapsayıcısı için çalışacaktır.
+> Bir Windows kapsayıcısını araştırmayı deniyorsanız, **cmd**kullanın.
 
 ```xml
   <ServiceManifestImport>
@@ -138,8 +140,8 @@ Bu sonda kapsayıcıya bir yönetici verecek ve komutun tamamlanmasını bekleye
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-İlgili bilgiler için aşağıdaki makalelere bakın.
-* [Servis Kumaş ve konteynerler.][containers-introduction-link]
+İlgili bilgiler için aşağıdaki makaleye bakın:
+* [Service Fabric ve kapsayıcılar][containers-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

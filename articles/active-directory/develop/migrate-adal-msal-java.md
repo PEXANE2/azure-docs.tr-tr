@@ -1,7 +1,7 @@
 ---
-title: ADAL-MSAL geçiş kılavuzu (MSAL4j) | Azure
+title: ADAL to MSAL geçiş kılavuzu (MSAL4j) | Mavisi
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory Authentication Library (ADAL) Java uygulamanızı Microsoft Kimlik Doğrulama Kitaplığı'na (MSAL) nasıl geçirebilirsiniz öğrenin.
+description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Java uygulamanızı Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,87 +14,91 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: 7ba845e79074313f0ccf2c066ba016bd72d46efe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7729a30acb1b191378960887164bb4b32e225c36
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81534576"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128017"
 ---
-# <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL -MSAL geçiş kılavuzu
+# <a name="adal-to-msal-migration-guide-for-java"></a>Java için ADAL MSAL geçiş kılavuzu
 
-Bu makalede, Microsoft Kimlik Doğrulama Kitaplığını (MSAL) kullanmak için Azure Etkin Dizin Kimlik Doğrulama Kitaplığı 'nı (ADAL) kullanan bir uygulamayı geçirmek için yapmanız gereken değişiklikler vurgulanır.
+Bu makalede, Microsoft kimlik doğrulama kitaplığı 'nı (ADAL) Azure Active Directory kullanan bir uygulamayı Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmak üzere geçirmek için gereken değişiklikler vurgulanmaktadır.
 
-Hem Java için Microsoft Kimlik Doğrulama Kitaplığı (MSAL4J) hem de Java için Azure AD Kimlik Doğrulama Kitaplığı (ADAL4J), Azure AD varlıklarının kimliğini doğrulamak ve Azure AD'den belirteç istemek için kullanılır. Şimdiye kadar çoğu geliştirici, Azure AD Kimlik Doğrulama Kitaplığı 'nı (ADAL) kullanarak belirteçler isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için geliştiriciler platformu (v1.0) için Azure AD ile çalışmıştır.
+Hem Java için Microsoft kimlik doğrulama kitaplığı (MSAL4J) hem de Java için Azure AD kimlik doğrulama kitaplığı (ADAL4J), Azure AD varlıklarının kimliğini doğrulamak için ve Azure AD 'de belirteçleri istemek için kullanılır. Bu aşamada, çoğu geliştirici Azure AD kimlik doğrulama kitaplığı (ADAL) kullanarak belirteçleri isteyerek Azure AD kimliklerinin (iş ve okul hesapları) kimliğini doğrulamak için Azure AD 'de geliştiriciler platformu (v 1.0) ile çalıştık.
 
 MSAL aşağıdaki avantajları sunar:
 
-- Yeni Microsoft kimlik platformu bitiş noktasını kullandığından, Azure AD kimlikleri, Microsoft hesapları ve azure AD İş'i (B2C) aracılığıyla daha geniş bir Microsoft kimlik kümesini doğrulayabilirsiniz.
-- Kullanıcılarınız en iyi tek oturum açma deneyimini yaşar.
-- Uygulamanız artımlı onay sağlayabilir ve koşullu erişimi desteklemek daha kolaydır.
+- Daha yeni Microsoft Identity platform uç noktasını kullandığından, Azure AD Iş ve tüketici (B2C) aracılığıyla Azure AD kimlikleri, Microsoft hesapları ve sosyal ve yerel hesaplar gibi daha geniş bir dizi Microsoft kimliği için kimlik doğrulaması yapabilirsiniz.
+- Kullanıcılarınız en iyi çoklu oturum açma deneyimini alacak.
+- Uygulamanız artımlı onayı etkinleştirebilir ve Koşullu erişimin desteklenmesi daha kolay olabilir.
 
-Java için MSAL, Microsoft kimlik platformuyla kullanmanızı tavsiye ettiğimiz auth kitaplığıdır. ADAL4J'de yeni özellikler uygulanmayacaktır. İleriye dönük tüm çabalar MSAL'ın iyileştirilmesine odaklanmıştır.
+Java için MSAL, Microsoft Identity platformu ile kullanmanızı önerdiğimiz kimlik doğrulama kitaplığıdır. ADAL4J üzerinde yeni özellik uygulanmayacak. Öne çıkan tüm çabalar MSAL iyileştirmeye odaklanılmıştır.
 
 ## <a name="differences"></a>Farklılıklar
 
-Geliştiriciler için Azure AD (v1.0) bitiş noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft kimlik platformu (v2.0) bitiş noktası hakkında farklı ne](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)okumak isteyebilirsiniz?
+Geliştiriciler için Azure AD (v 1.0) uç noktası (ve ADAL4J) ile çalışıyorsanız, [Microsoft Identity platform (v 2.0) uç noktası hakkında ne kadar farklı olduğunu](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)okumak isteyebilirsiniz.
 
-## <a name="scopes-not-resources"></a>Kapsamlar kaynak değil
+## <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL4J kaynaklar için belirteçler satın alarken, Java için MSAL kapsamlar için belirteçler edinir. Java sınıfları için bir dizi MSAL kapsam parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin listesidir. Örnek kapsamları görmek için [Microsoft Graph'ın kapsamlarına](https://docs.microsoft.com/graph/permissions-reference) bakın.
+ADAL4J, for Java için MSAL for Java için belirteçleri edinme Java sınıfları için bir dizi MSAL, bir kapsamlar parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin bir listesidir. Örnek kapsamları görmek için [Microsoft Graph kapsamlarına](https://docs.microsoft.com/graph/permissions-reference) bakın.
+
+Uygulamalarınızı v 1.0 uç `/.default` NOKTASıNDAN (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com`, eşdeğer kapsam değeri. `https://graph.microsoft.com/.default`  Kaynak URL biçiminde değilse, ancak formun `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`kaynak kimliği ise, kapsam değerini kullanmaya devam edebilirsiniz. `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`
+
+Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) inceleyin.
 
 ## <a name="core-classes"></a>Çekirdek sınıflar
 
-ADAL4J'de `AuthenticationContext` sınıf, bir Kurum aracılığıyla Güvenlik Belirteci Hizmeti (STS) veya yetkilendirme sunucusuyla olan bağlantınızı temsil eder. Ancak, Java için MSAL istemci uygulamaları etrafında tasarlanmıştır. İki ayrı sınıf `PublicClientApplication` sağlar: ve `ConfidentialClientApplication` istemci uygulamalarını temsil eder.  İkincisi, `ConfidentialClientApplication`, güvenli bir daemon uygulaması için bir uygulama tanımlayıcısı gibi bir sırrı korumak için tasarlanmış bir uygulamayı temsil eder.
+ADAL4J ' de, `AuthenticationContext` sınıfı güvenlik belirteci HIZMETI (STS) veya yetkilendirme sunucusu Ile bir yetkili aracılığıyla bağlantınızı temsil eder. Ancak, Java için MSAL istemci uygulamaları etrafında tasarlanmıştır. İki ayrı sınıf sağlar: `PublicClientApplication` ve `ConfidentialClientApplication` istemci uygulamalarını temsil eder.  İkinci `ConfidentialClientApplication`olarak, bir Daemon uygulaması için uygulama tanımlayıcısı gibi bir gizli anahtarı güvenli bir şekilde korumak için tasarlanan bir uygulamayı temsil eder.
 
-Aşağıdaki tablo, ADAL4J işlevlerinin Java işlevleri için yeni MSAL ile nasıl eşleşiş gösterdiğini gösterir:
+Aşağıdaki tabloda, ADAL4J işlevlerinin Java işlevleri için yeni MSAL nasıl eşlendiğini gösterilmektedir:
 
 | ADAL4J yöntemi| MSAL4J yöntemi|
 |------|-------|
-|edinme Token(String kaynak, ClientCredential kimlik bilgileri, AuthenticationCallback geri arama) | edinmeToken(ClientCredentialParameters)|
-|edinme Token(String kaynak, ClientAssertion iddiası, AuthenticationCallback geri arama)|edinmeToken(ClientCredentialParameters)|
-|edinme Token(String kaynak, AsimetrikKeyCredential kimlik bilgileri, AuthenticationCallback geri arama)|edinmeToken(ClientCredentialParameters)|
-|edinmeToken(String kaynak, String clientId, String kullanıcı adı, String şifre, AuthenticationCallback geri arama)| edinmeToken(Kullanıcı adıPasswordParameters)|
-|acquireToken(String kaynak, String clientId, String kullanıcı adı, String password=null, AuthenticationCallback geri arama)|edinmeToken(IntegratedWindowsAuthenticationParameters)|
-|acquireToken(String kaynak, UserAssertion userAssertion, ClientCredential kimlik bilgisi, AuthenticationCallback geri arama)| satın almaToken(OnBehalfOfParametreleri)|
-|satın almaTokenByAuthorizationCode() | edinmeToken(AuthorizationCodeParameters) |
-| satınDeviceCode() ve satın AlmaTokenByDeviceCode()| edinmeToken(DeviceCodeParameters)|
-|satın almaTokenByRefreshToken()| satın AlmaTokenSilently(SilentParameters)|
+|acquireToken (dize kaynağı, ClientCredential kimlik bilgileri, AuthenticationCallback geri çağırma) | acquireToken (ClientCredentialParameters)|
+|acquireToken (dize kaynağı, ClientAssertion onaylama, AuthenticationCallback geri çağırma)|acquireToken (ClientCredentialParameters)|
+|acquireToken (dize kaynağı, AsymmetricKeyCredential kimlik bilgileri, AuthenticationCallback geri çağırma)|acquireToken (ClientCredentialParameters)|
+|acquireToken (dize kaynağı, dize ClientID, dize Kullanıcı adı, dize parolası, AuthenticationCallback geri çağırma)| acquireToken (UsernamePasswordParameters)|
+|acquireToken (dize kaynağı, dize ClientID, dize Kullanıcı adı, dize parolası = null, AuthenticationCallback geri çağırma)|acquireToken (IntegratedWindowsAuthenticationParameters)|
+|acquireToken (dize kaynağı, Kullanıcı onaylama Kullanıcı onaylama, ClientCredential kimlik bilgileri, AuthenticationCallback geri çağırma)| acquireToken (OnBehalfOfParameters)|
+|acquireTokenByAuthorizationCode () | acquireToken (AuthorizationCodeParameters) |
+| acquireDeviceCode () ve acquireTokenByDeviceCode ()| acquireToken (DeviceCodeParameters)|
+|acquireTokenByRefreshToken ()| Acquiretokensessizce (SilentParameters)|
 
 ## <a name="iaccount-instead-of-iuser"></a>IUser yerine IAccount
 
-ADAL4J kullanıcıları manipüle etti. Bir kullanıcı tek bir insanı veya yazılım aracısını temsil etse de, Microsoft kimlik sisteminde bir veya daha fazla hesabı olabilir. Örneğin, bir kullanıcının birkaç Azure REKLAMı, Azure AD B2C veya Microsoft kişisel hesabı olabilir.
+ADAL4J tarafından yönetilen kullanıcılar. Bir kullanıcı tek bir insan veya yazılım aracısını temsil ediyorsa, Microsoft Identity sisteminde bir veya daha fazla hesabı olabilir. Örneğin, bir kullanıcının birkaç Azure AD, Azure AD B2C veya Microsoft Kişisel hesabı olabilir.
 
-Java için `IAccount` MSAL, Hesap kavramını arayüz üzerinden tanımlar. Bu, ADAL4J'den bir kırılma değişikliğidir, ancak aynı kullanıcının birden fazla hesaba ve hatta belki de farklı Azure REKLAM dizinlerinde birden fazla hesaba sahip olabileceği gerçeğini yakaladığından iyi bir değişikliktir. Java için MSAL, ev hesabı bilgileri sağlandığı için konuk senaryolarında daha iyi bilgi sağlar.
+Java için MSAL, `IAccount` arabirim aracılığıyla hesap kavramını tanımlar. Bu, ADAL4J ' den önemli bir değişiklik olmakla kalmaz, ancak aynı kullanıcının çeşitli hesaplara sahip olabileceğinden ve belki de farklı Azure AD dizinlerinde bile olduğu gerçeğini yakaladığı için bu iyi bir yoldur. Ana hesap bilgileri sağlandığı için Java için MSAL, Konuk senaryolarında daha iyi bilgiler sağlar.
 
 ## <a name="cache-persistence"></a>Önbellek kalıcılığı
 
-ADAL4J belirteç önbelleği için destek yoktu.
-Java için MSAL, süresi dolmuş belirteçleri mümkün olduğunda otomatik olarak yenileyerek ve kullanıcının mümkün olduğunda kimlik bilgilerini sağlaması için gereksiz istemleri önleyerek belirteç kullanım ömürlerini yönetmeyi basitleştirmek için bir [belirteç önbelleği](msal-acquire-cache-tokens.md) ekler.
+ADAL4J belirteç önbelleği için desteğe sahip değildi.
+Java için MSAL, mümkün olduğunda süresi geçen belirteçleri otomatik olarak yenileyerek ve mümkün olduğunda kullanıcının kimlik bilgilerini sağlaması için gereksiz istemler yaparak belirteç yaşam sürelerini yönetmeyi kolaylaştırmak için bir [belirteç önbelleği](msal-acquire-cache-tokens.md) ekler.
 
-## <a name="common-authority"></a>Ortak Otorite
+## <a name="common-authority"></a>Ortak yetkili
 
-V1.0'da, yetkiyi `https://login.microsoftonline.com/common` kullanırsanız, kullanıcılar herhangi bir Azure Active Directory (AAD) hesabıyla (herhangi bir kuruluş için) oturum açabilir.
+V 1.0 'da, `https://login.microsoftonline.com/common` yetkili kullanırsanız, kullanıcılar herhangi bir Azure ACTIVE DIRECTORY (AAD) hesabıyla oturum açabilirler (herhangi bir kuruluş için).
 
-Yetkiyi `https://login.microsoftonline.com/common` v2.0'da kullanırsanız, kullanıcılar herhangi bir AAD kuruluşuyla, hatta microsoft kişisel hesabıyla (MSA) oturum açabilir. Java için MSAL'da, herhangi bir AAD hesabına girişi kısıtlamak `https://login.microsoftonline.com/organizations` istiyorsanız, yetkiyi kullanmanız gerekir (ADAL4J ile aynı davranıştır). Bir yetkisini belirtmek `authority` için, sınıfınızı `PublicClientApplication` oluştururken [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) yöntemindeki parametreyi ayarlayın.
+`https://login.microsoftonline.com/common` Yetkilisi 'yi v 2.0 'da kullanıyorsanız, kullanıcılar HERHANGI bir AAD organizasyonu ile veya hatta bir Microsoft kişisel HESABı (MSA) ile oturum açabilirler. Java için MSAL ' de, herhangi bir AAD hesabıyla oturum açmayı kısıtlamak istiyorsanız, `https://login.microsoftonline.com/organizations` YETKILISINI (ADAL4J ile aynı davranış) kullanmanız gerekir. Bir yetkili belirtmek için, `authority` `PublicClientApplication` sınıfınızı oluştururken [Publicclientapplication. Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) yönteminde parametresini ayarlayın.
 
-## <a name="v10-and-v20-tokens"></a>v1.0 ve v2.0 belirteçleri
+## <a name="v10-and-v20-tokens"></a>v 1.0 ve v 2.0 belirteçleri
 
-V1.0 uç noktası (ADAL tarafından kullanılan) sadece v1.0 belirteçleri yayan.
+V 1.0 uç noktası (ADAL tarafından kullanılan) yalnızca v 1.0 belirteçlerini yayar.
 
-V2.0 uç noktası (MSAL tarafından kullanılan) v1.0 ve v2.0 belirteçleri yatabilir. Web API'sinin uygulama bildiriminin bir özelliği, geliştiricilerin belirteç sürümünün hangi sürümünün kabul edildiğini seçmelerine olanak tanır. Başvuru `accessTokenAcceptedVersion` [bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) başvuru belgelerine bakın.
+V 2.0 uç noktası (MSAL tarafından kullanılan), v 1.0 ve v 2.0 belirteçlerini yayabilir. Web API 'sinin uygulama bildiriminin bir özelliği, geliştiricilerin hangi belirteç sürümünün kabul edildiğini seçmesini sağlar. Bkz `accessTokenAcceptedVersion` . [uygulama bildirimi](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) başvuru belgeleri.
 
-v1.0 ve v2.0 belirteçleri hakkında daha fazla bilgi için [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)bakın.
+V 1.0 ve v 2.0 belirteçleri hakkında daha fazla bilgi için bkz. [Azure Active Directory erişim belirteçleri](https://docs.microsoft.com/azure/active-directory/develop/access-tokens).
 
-## <a name="adal-to-msal-migration"></a>ADAL'dan MSAL göçüne
+## <a name="adal-to-msal-migration"></a>ADAL to MSAL geçişi
 
-ADAL4J'de, yenileme belirteçleri açığa çıkarıldı ve bu da geliştiricilerin bunları önbelleğe almasına olanak sağladı. Daha sonra, `AcquireTokenByRefreshToken()` kullanıcı artık bağlı olmadığında, kullanıcı adına panoları yenileyen uzun süreli hizmetleri uygulama gibi çözümleri etkinleştirmek için kullanırlar.
+ADAL4J ' de, yenileme belirteçleri gösterilir ve izin verilen geliştiricilerin onları önbelleğe alma izni vardır. Daha sonra, Kullanıcı `AcquireTokenByRefreshToken()` artık bağlı olmadığında Kullanıcı adına panoları yenileyen uzun süreli Hizmetleri uygulama gibi çözümleri etkinleştirmek için kullanırlar.
 
-Java için MSAL, güvenlik nedenleriyle yenileme belirteçlerini ortaya çıkarmaz. Bunun yerine, MSAL sizin için ferahlatıcı belirteçleri işler.
+Java için MSAL, güvenlik nedenleriyle yenileme belirteçleri sunmaz. Bunun yerine, MSAL belirteçleri sizin için yenilemeyi işler.
 
-Java için MSAL, ADAL4j ile edindiğiniz yenileme belirteçlerini Müşteri Uygulamasına geçirmenize olanak tanıyan bir API'ye sahiptir: [satın AlmaToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-). Bu yöntemle, daha önce kullanılan yenileme belirteci ile birlikte istediğiniz kapsamları (kaynaklar) sağlayabilirsiniz. Yenileme belirteci yeni bir belirteç için değiştirilir ve uygulamanız tarafından kullanılmak üzere önbelleğe alınacaktır.
+Java için MSAL, ADAL4j ile elde ettiğiniz yenileme belirteçlerini ClientApplication: [Acquiretoken (RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-)öğesine geçirmenize olanak tanıyan bir API içerir. Bu yöntemde, daha önce kullanılan yenileme belirtecini istediğiniz kapsamlar (kaynaklar) ile birlikte sağlayabilirsiniz. Yenileme belirteci yeni bir tane için değiştirilir ve uygulamanız tarafından kullanılmak üzere önbelleğe alınır.
 
-Aşağıdaki kod snippet gizli bir istemci uygulamasında bazı geçiş kodu gösterir:
+Aşağıdaki kod parçacığı, bir gizli istemci uygulamasındaki bazı geçiş kodlarını gösterir:
 
 ```java
 String rt = GetCachedRefreshTokenForSIgnedInUser(); // Get refresh token from where you have them stored
@@ -109,14 +113,14 @@ PublicClientApplication app = PublicClientApplication.builder(CLIENT_ID) // Clie
 IAuthenticationResult result = app.acquireToken(parameters);
 ```
 
-Yeni `IAuthenticationResult` yenileme belirteciniz önbellekte depolanırken, erişim belirteci ve kimlik belirteci döndürür.
-Uygulama da şimdi bir IAccount içerecektir:
+, `IAuthenticationResult` Yeni yenileme belirteciniz önbellekte depolandığından, bir erişim BELIRTECI ve kimlik belirteci döndürür.
+Uygulama artık bir IAccount da içerecektir:
 
 ```java
 Set<IAccount> accounts =  app.getAccounts().join();
 ```
 
-Şu anda önbellekte bulunan belirteçleri kullanmak için aşağıdakileri arayın:
+Şu anda önbellekte olan belirteçleri kullanmak için şunu çağırın:
 
 ```java
 SilentParameters parameters = SilentParameters.builder(scope, accounts.iterator().next()).build();

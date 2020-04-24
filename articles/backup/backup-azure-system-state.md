@@ -4,12 +4,12 @@ description: Windows Server ve/veya Windows bilgisayarlarının sistem durumunu 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "76294023"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "82128195"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Kaynak Yöneticisi dağıtımında Windows sistem durumunu yedekleme
 
@@ -127,7 +127,7 @@ Artık bir kasa oluşturduğunuza göre, Windows sistem durumunu yedeklemek içi
 
     ![kasa kimlik bilgilerini indirme](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    Kasa kimlik bilgileri, İndirmeler klasörünüze indirilir. Kasa kimlik bilgilerini indirme tamamlandıktan sonra kimlik bilgilerini açmak veya kaydetmek isteyip istemediğinizi soran bir açılır pencere görüntülenir. **Save (Kaydet)** düğmesine tıklayın. Yanlışlıkla **Aç**’a tıklarsanız, kasa kimlik bilgilerini açmaya çalışan iletişim kutusu başarısız olur. Kasa kimlik bilgilerini açamazsınız. Sonraki adıma geçin. Kasa kimlik bilgileri İndirmeler klasöründedir.
+    Kasa kimlik bilgileri, İndirmeler klasörünüze indirilir. Kasa kimlik bilgilerini indirme tamamlandıktan sonra kimlik bilgilerini açmak veya kaydetmek isteyip istemediğinizi soran bir açılır pencere görüntülenir. **Kaydet**’e tıklayın. Yanlışlıkla **Aç**’a tıklarsanız, kasa kimlik bilgilerini açmaya çalışan iletişim kutusu başarısız olur. Kasa kimlik bilgilerini açamazsınız. Sonraki adıma geçin. Kasa kimlik bilgileri İndirmeler klasöründedir.
 
     ![kasa kimlik bilgilerini indirme tamamlandı](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -224,10 +224,10 @@ Aracı artık yüklenmiş ve makineniz kasaya kaydedilmiştir. Yedeklemenizi yap
 
 ## <a name="questions"></a>Sorularınız mı var?
 
-Sorularınız varsa veya dahil edilmesini istediğiniz herhangi bir özellik varsa [bize geri bildirim gönderin](https://aka.ms/azurebackup_feedback).
+Sorularınız varsa veya dahil edilmesini istediğiniz herhangi bir özellik varsa [bize geri bildirim gönderin](https://feedback.azure.com/forums/258995-azure-backup).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Windows makinelerini yedekleme](backup-configure-vault.md) konusunda daha fazla bilgi edinin.
+* [Windows makinelerini yedekleme](backup-windows-with-mars-agent.md) konusunda daha fazla bilgi edinin.
 * Windows Server sistem durumlarınızı yedeklediğinize göre, [kasalarınızı ve sunucularınızı yönetebilirsiniz](backup-azure-manage-windows-server.md).
 * Bir yedeklemeyi geri yüklemeniz gerekirse [dosyaları bir Windows makinesine geri yüklemek](backup-azure-restore-windows-server.md) için bu makaleyi kullanın.

@@ -1,6 +1,6 @@
 ---
-title: Python ADAL-MSAL geçiş kılavuzu | Azure
-description: Azure Active Directory Authentication Library (ADAL) Python uygulamanızı Python için Microsoft Kimlik Doğrulama Kitaplığı'na (MSAL) nasıl geçirebilirsiniz öğrenin.
+title: Python ADAL MSAL geçiş kılavuzu | Mavisi
+description: Azure Active Directory kimlik doğrulaması kitaplığı (ADAL) Python uygulamanızı Python için Microsoft kimlik doğrulama kitaplığı 'na (MSAL) geçirmeyi öğrenin.
 services: active-directory
 titleSuffix: Microsoft identity platform
 author: rayluo
@@ -14,66 +14,70 @@ ms.date: 11/11/2019
 ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
-ms.openlocfilehash: fe9dc6c04fe033fd518218d1b5ea971e573405fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76696575"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128039"
 ---
-# <a name="adal-to-msal-migration-guide-for-python"></a>Python için ADAL-MSAL geçiş kılavuzu
+# <a name="adal-to-msal-migration-guide-for-python"></a>Python için ADAL MSAL geçiş kılavuzu
 
-Bu makalede, Microsoft Kimlik Doğrulama Kitaplığını (MSAL) kullanmak için Azure Etkin Dizin Kimlik Doğrulama Kitaplığı 'nı (ADAL) kullanan bir uygulamayı geçirmek için yapmanız gereken değişiklikler vurgulanır.
+Bu makalede, Microsoft kimlik doğrulama kitaplığı 'nı (ADAL) Azure Active Directory kullanan bir uygulamayı Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanmak üzere geçirmek için gereken değişiklikler vurgulanmaktadır.
 
 ## <a name="difference-highlights"></a>Fark vurguları
 
-ADAL, Azure Etkin Dizin (Azure AD) v1.0 bitiş noktası yla çalışır. Microsoft Kimlik Doğrulama Kitaplığı (MSAL), eskiden Azure Active Directory v2.0 bitiş noktası olarak bilinen Microsoft kimlik platformuyla çalışır. Microsoft kimlik platformu, Azure AD v1.0'dan farklıdır:
+ADAL Azure Active Directory (Azure AD) v 1.0 uç noktasıyla birlikte çalışmaktadır. Microsoft kimlik doğrulama kitaplığı (MSAL), daha önce Azure Active Directory v 2.0 uç noktası olarak bilinen Microsoft Identity platformu ile birlikte kullanılır. Microsoft Identity platformu, Azure AD v 1.0 'dan farklıdır:
 
-Destekle -yen:
+Desteklememektedir
   - İş ve okul hesapları (Azure AD tarafından sağlanan hesaplar)
   - Kişisel hesaplar (Outlook.com veya Hotmail.com gibi)
-  - Azure AD B2C teklifi aracılığıyla kendi e-postalarını veya sosyal kimliklerini (LinkedIn, Facebook, Google gibi) getiren müşterileriniz
+  - Kendi e-postalarını veya sosyal kimlik bilgilerini (LinkedIn, Facebook, Google gibi) Azure AD B2C teklif aracılığıyla getiren müşterileriniz
 
-- Standartlar ile uyumludur:
-  - OAuth v2.0
-  - OpenID Bağlantı (OIDC)
+- , İle uyumlu standartlara sahiptir:
+  - OAuth v 2.0
+  - OpenID Connect (OıDC)
 
-Daha fazla ayrıntı için [Microsoft kimlik platformu (v2.0) bitiş noktası hakkında farklı olan nedir?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)
+Daha fazla ayrıntı için bkz. [Microsoft Identity platform (v 2.0) uç noktası hakkında ne fark var?](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)
 
-### <a name="scopes-not-resources"></a>Kapsamlar kaynak değil
+### <a name="scopes-not-resources"></a>Kapsam kaynakları değil
 
-ADAL Python kaynaklar için belirteçler satın aldı, ancak MSAL Python kapsamlar için belirteçler edinir. MSAL Python'daki API yüzeyinde artık kaynak parametresi yok. İstenilen izinleri ve kaynakları bildiren dizeleri listesi olarak kapsamları sağlamanız gerekir. Kapsamların bazı örneklerini görmek için [Microsoft Graph'ın kapsamlarına](https://docs.microsoft.com/graph/permissions-reference)bakın.
+ADAL Python, kaynaklar için belirteçleri alır, ancak MSAL Python kapsamlar için belirteçleri alır. MSAL Python 'daki API yüzeyinde artık kaynak parametresi yok. İstenen izinleri ve istenen kaynakları bildiren dizelerin bir listesi olarak kapsamlar sağlamanız gerekir. Kapsamların bir örneğini görmek için bkz. [Microsoft Graph kapsamları](https://docs.microsoft.com/graph/permissions-reference).
+
+Uygulamalarınızı v 1.0 uç `/.default` NOKTASıNDAN (ADAL) Microsoft Identity platform uç noktasına (msal) geçirmeye yardımcı olması için kapsam sonekini kaynağa ekleyebilirsiniz. Örneğin, kaynak değeri için `https://graph.microsoft.com`, eşdeğer kapsam değeri. `https://graph.microsoft.com/.default`  Kaynak URL biçiminde değilse, ancak formun `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX`kaynak kimliği ise, kapsam değerini kullanmaya devam edebilirsiniz. `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`
+
+Farklı kapsam türleri hakkında daha fazla bilgi için [Microsoft Identity platformunda izinler ve onay](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent) ' i ve [v 1.0 belirteçleri 'ni kabul eden bir Web API 'si için kapsamları](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes) inceleyin.
 
 ### <a name="error-handling"></a>Hata işleme
 
-Python için Azure Active Directory Authentication Library `AdalError` (ADAL), bir sorun olduğunu belirtmek için özel durumu kullanır. Python için MSAL genellikle hata kodları kullanır, bunun yerine. Daha fazla bilgi [için Python hata işleme için MSAL'a](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python)bakın.
+Python için Azure Active Directory kimlik doğrulama kitaplığı (ADAL), bir `AdalError` sorun olduğunu göstermek için özel durumu kullanır. Python için MSAL, genellikle bunun yerine hata kodlarını kullanır. Daha fazla bilgi için bkz. [msal for Python hata işleme](https://docs.microsoft.com/azure/active-directory/develop/msal-handling-exceptions?tabs=python).
 
 ### <a name="api-changes"></a>API değişiklikleri
 
-Aşağıdaki tabloda Python için ADAL'da bir API ve Python için MSAL'daki yerine kullanılacak api listelemektedir:
+Aşağıdaki tabloda, Python için ADAL içindeki bir API ve Python için MSAL içindeki yerine kullanılacak bir API listelenmektedir:
 
-| Python API için ADAL  | Python API için MSAL |
+| Python API 'SI için ADAL  | Python API için MSAL |
 | ------------------- | ---------------------------------- |
-| [Kimlik DoğrulamaBağlam](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication veya ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
-| Yok  | [get_authorization_request_url()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
-| [acquire_token_with_authorization_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
-| [acquire_token()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
-| [acquire_token_with_refresh_token()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | Yok |
-| [acquire_user_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
-| [acquire_token_with_device_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) ve [cancel_request_to_get_token_with_device_code()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
-| [acquire_token_with_username_password()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
-| [acquire_token_with_client_credentials()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) ve [acquire_token_with_client_certificate()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
-| Yok | [acquire_token_on_behalf_of()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
-| [TokenCache()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
-| Yok | Kalıcılık içeren önbellek, [MSAL Uzantıları'ndan](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) edinilebilir |
+| [AuthenticationContext](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication veya ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
+| Yok  | [get_authorization_request_url ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
+| [acquire_token_with_authorization_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
+| [acquire_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent ()](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
+| [acquire_token_with_refresh_token ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | Yok |
+| [acquire_user_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
+| [acquire_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code) ve [cancel_request_to_get_token_with_device_code ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
+| [acquire_token_with_username_password ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password ()](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
+| [acquire_token_with_client_credentials ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials) ve [acquire_token_with_client_certificate ()](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
+| Yok | [acquire_token_on_behalf_of ()](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
+| [TokenCache ()](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
+| Yok | [Msal uzantılarından](https://github.com/marstr/original-microsoft-authentication-extensions-for-python) kullanılabilen kalıcı önbellek |
 
-## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>MSAL Python için varolan yenileme belirteçlerini geçirin
+## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>MSAL Python için mevcut yenileme belirteçlerini geçirme
 
-Microsoft kimlik doğrulama kitaplığı (MSAL), yenileme belirteçleri kavramını özetler. MSAL Python varsayılan olarak bellek içi belirteç önbelleği sağlar, böylece yenileme belirteçlerini depolamanız, aramanız veya güncelleştirmeniz gerekmez. Yenileme belirteçleri genellikle kullanıcı müdahalesi olmadan güncelleştirilebildiği için kullanıcılar da daha az oturum açma istemleri görür. Belirteç önbelleği hakkında daha fazla bilgi için Python [için MSAL'daki Özel belirteç önbelleği serileştirmesine](msal-python-token-cache-serialization.md)bakın.
+Microsoft kimlik doğrulama kitaplığı (MSAL), yenileme belirteçleri kavramını soyutlar. MSAL Python, varsayılan olarak bir bellek içi belirteç önbelleği sunarak yenileme belirteçlerini depolamanıza, aramaya da güncelleştirmenize gerek kalmaz. Ayrıca, yenileme belirteçleri Kullanıcı müdahalesi olmadan güncelleştirilebildiğinden, kullanıcılar daha az oturum açma istemi görür. Belirteç önbelleği hakkında daha fazla bilgi için bkz. [Python IÇIN msal Içindeki özel belirteç önbelleği serileştirme](msal-python-token-cache-serialization.md).
 
-Aşağıdaki kod, Python için MSAL tarafından yönetilecek başka bir OAuth2 kitaplığı (ADAL Python dahil ancak bunlarla sınırlı olmamak üzere) tarafından yönetilen yenileme belirteçlerinizi geçirmenize yardımcı olur. Bu yenilenme belirteçlerini geçirmenin bir nedeni, uygulamanızı Python için MSAL'a geçirdiğinizde varolan kullanıcıların yeniden oturum açmalarını önlemektir.
+Aşağıdaki kod, Python için MSAL tarafından yönetilmek üzere başka bir OAuth2 kitaplığı (ADAL Python dahil ancak bunlarla sınırlı olmamak üzere) tarafından yönetilen yenileme belirteçlerinizi geçirmenize yardımcı olur. Bu yenileme belirteçlerini geçirmenin bir nedeni, mevcut kullanıcıların, uygulamanızı Python için MSAL 'e geçirdiğinizde yeniden oturum açmasını önlemektir.
 
-Yenileme belirteci geçirme yöntemi, önceki yenileme belirteci kullanarak yeni bir erişim belirteci elde etmek için Python için MSAL kullanmaktır. Yeni yenileme belirteci döndürüldüğünde, Python için MSAL bunu önbellekte saklar. Aşağıda, nasıl yapılacağının bir örneği verilmiştir:
+Yenileme belirtecini geçirme yöntemi, Python için MSAL kullanarak önceki yenileme belirtecini kullanarak yeni bir erişim belirteci elde etmek içindir. Yeni yenileme belirteci döndürüldüğünde, Python için MSAL bunu önbellekte depolar. Bunun nasıl yapılacağını gösteren bir örnek aşağıda verilmiştir:
 
 ```python
 from msal import PublicClientApplication
@@ -100,4 +104,4 @@ for old_rt, old_scope in get_preexisting_rt_and_their_scopes_from_elsewhere(...)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için [v1.0 ve v2.0 karşılaştırmasına](active-directory-v2-compare.md)bakın.
+Daha fazla bilgi için [v 1.0 ve v 2.0 karşılaştırması](active-directory-v2-compare.md)bölümüne bakın.

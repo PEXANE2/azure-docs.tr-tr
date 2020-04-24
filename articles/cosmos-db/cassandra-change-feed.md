@@ -1,26 +1,26 @@
 ---
-title: Cassandra için Azure Cosmos DB API'sında özet akışı değiştirme
-description: Cassandra'nın verilerinizdeki değişiklikleri alması için Azure Cosmos DB API'sinde değişiklik akışını nasıl kullanacağınızı öğrenin.
+title: Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme
+description: Veri üzerinde yapılan değişiklikleri almak için Cassandra için Azure Cosmos DB API 'sindeki değişiklik akışını nasıl kullanacağınızı öğrenin.
 author: TheovanKraay
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: c2c695608653130b97bf29cc9ce48e2fbb429209
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74694629"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137425"
 ---
-# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra için Azure Cosmos DB API'sında özet akışı değiştirme
+# <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>Cassandra için Azure Cosmos DB API 'sindeki akışı değiştirme
 
-Cassandra için Azure Cosmos DB API'deki özet akışı desteğini [değiştir,](change-feed.md) Cassandra Sorgu Dili'ndeki (CQL) sorgu yüklemleri aracılığıyla kullanılabilir. Bu yüklem koşullarını kullanarak, değişiklik akışı API'sini sorgulayabilirsiniz. Uygulamalar, CQL'de gerekli olduğu gibi birincil anahtarı (bölüm tuşu olarak da bilinir) kullanarak tabloda yapılan değişiklikleri alabilir. Daha sonra sonuçlara dayalı olarak daha fazla işlem yapabilirsiniz. Tablodaki satırdeğişiklikleri, değişiklik zamanları sırasına göre yakalanır ve bölüm anahtarı başına sıralama sırası garanti edilir.
+Cassandra için Azure Cosmos DB API 'sindeki [akış desteğini değiştirme](change-feed.md) , Cassandra sorgu dilindeki (CQL) sorgu koşulları aracılığıyla kullanılabilir. Bu koşul koşullarını kullanarak, değişiklik akışı API 'sini sorgulayabilirsiniz. Uygulamalar, birincil anahtarı (bölüm anahtarı olarak da bilinir) kullanarak, CQL 'de gerekli olduğu gibi, bir tabloda yapılan değişiklikleri alabilir. Daha sonra sonuçlara göre daha fazla eylem gerçekleştirebilirsiniz. Tablodaki satırlarda yapılan değişiklikler, değiştirilme zamanı sırasına göre yakalanır ve bölüm anahtarı başına sıralama düzeni garanti edilir.
 
-Aşağıdaki örnekte, .NET kullanarak Cassandra API Keyspace tablosundaki tüm satırlarda değişiklik akışı nasıl alınış gösterilmektedir. Yüklem COSMOS_CHANGEFEED_START_TIME() belirli bir başlangıç saatinden (bu durumda geçerli tarih saatinde) değişiklik akışındaki öğeleri sorgulamak için doğrudan CQL içinde kullanılır. Burada tam [örnek](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/)indirebilirsiniz.
+Aşağıdaki örnek .NET kullanarak bir Cassandra API keyspace tablosundaki tüm satırlarda nasıl değişiklik akışı alınacağını göstermektedir. COSMOS_CHANGEFEED_START_TIME () koşulu doğrudan CQL içinde, değişiklik akışındaki öğeleri belirli bir başlangıç zamanından (Bu durumda geçerli DateTime) sorgulamak için kullanılır. [Burada C# ve](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) [Java için](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java)tam örneği indirebilirsiniz.
 
-Her yinelemede, sorgu durumu kullanılarak son nokta değişikliklerinde sorgu devam eder. Keyspace'de tabloda sürekli yeni değişiklikler akışı görebiliriz. Eklenen veya güncelleştirilen satırlarda değişiklikler görürsünüz. Cassandra API'deki değişiklik yayınını kullanarak işlemleri silme işlemleri şu anda desteklenmemektedir. 
+Her yinelemede sorgu, sayfalama durumu kullanılarak yapılan son noktada devam ediyor. Keyspace 'teki tabloda yeni değişikliklerin sürekli akışını görebiliriz. Eklenen veya güncellenen satırlardaki değişiklikleri görüyoruz. Cassandra API değişiklik akışını kullanarak silme işlemleri için izleme şu anda desteklenmiyor.
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,8 +70,41 @@ Her yinelemede, sorgu durumu kullanılarak son nokta değişikliklerinde sorgu d
     }
 
 ```
+```java
+        Session cassandraSession = utils.getSession();
 
-Değişiklikleri birincil anahtarla tek bir satıra almak için, sorguya birincil anahtarı ekleyebilirsiniz. Aşağıdaki örnekte, "user_id = 1" satırıiçin değişikliklerin nasıl izlendiği gösterilmektedir
+        try {
+              DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+               LocalDateTime now = LocalDateTime.now().minusHours(6).minusMinutes(30);  
+               String query="SELECT * FROM uprofile.user where COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+               
+             byte[] token=null; 
+             System.out.println(query); 
+             while(true)
+             {
+                 SimpleStatement st=new  SimpleStatement(query);
+                 st.setFetchSize(100);
+                 if(token!=null)
+                     st.setPagingStateUnsafe(token);
+                 
+                 ResultSet result=cassandraSession.execute(st) ;
+                 token=result.getExecutionInfo().getPagingState().toBytes();
+                 
+                 for(Row row:result)
+                 {
+                     System.out.println(row.getString("user_name"));
+                 }
+             }
+                    
+
+        } finally {
+            utils.close();
+            LOGGER.info("Please delete your table after verifying the presence of the data in portal or from CQL");
+        }
+
+```
+Birincil anahtara göre tek bir satırdaki değişiklikleri almak için sorguya birincil anahtar ekleyebilirsiniz. Aşağıdaki örnek, "user_id = 1" olduğu satırdaki değişikliklerin nasıl izleneceğini gösterir
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -79,21 +112,25 @@ Değişiklikleri birincil anahtarla tek bir satıra almak için, sorguya birinci
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
-
+```java
+    String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
+                    + dtf.format(now)+ "'";
+    SimpleStatement st=new  SimpleStatement(query);
+```
 ## <a name="current-limitations"></a>Geçerli sınırlamalar
 
-Cassandra API ile değişiklik beslemesi kullanırken aşağıdaki sınırlamalar geçerlidir:
+Cassandra API ile değişiklik akışı kullanılırken aşağıdaki sınırlamalar geçerlidir:
 
-* Ekler ve güncelleştirmeler şu anda desteklenir. Silme işlemi henüz desteklenmedi. Geçici çözüm olarak, silinen satırlara yumuşak bir işaretçi ekleyebilirsiniz. Örneğin, satıra "silinmiş" adlı bir alan ekleyin ve "true" olarak ayarlayın.
-* Son güncelleştirme, temel SQL API'de olduğu gibi devam etti ve varlık için ara güncelleştirmeler kullanılamıyor.
+* Ekler ve güncelleştirmeler şu anda destekleniyor. Silme işlemi henüz desteklenmiyor. Geçici bir çözüm olarak, silinmekte olan satırlara yumuşak bir işaretleyici ekleyebilirsiniz. Örneğin, "Deleted" adlı satıra bir alan ekleyin ve "true" olarak ayarlayın.
+* Son güncelleştirme, çekirdek SQL API 'sinde olduğu gibi kalıcı hale getirilir ve varlık için ara güncelleştirmeler kullanılamaz.
 
 
 ## <a name="error-handling"></a>Hata işleme
 
-Cassandra API'de değişiklik akışı kullanılarak aşağıdaki hata kodları ve iletiler desteklenir:
+Aşağıdaki hata kodları ve iletileri Cassandra API içindeki değişiklik akışı kullanılırken desteklenir:
 
-* **HTTP hata kodu 429** - Değişiklik akışı hızı sınırlı olduğunda, boş bir sayfa döndürür.
+* **Http hata kodu 429** -değişiklik akışı hız sınırlı olduğunda boş bir sayfa döndürür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme](manage-cassandra-with-resource-manager.md)
+* [Azure Resource Manager şablonları kullanarak Azure Cosmos DB Cassandra API kaynaklarını yönetme](manage-cassandra-with-resource-manager.md)

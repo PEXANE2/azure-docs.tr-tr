@@ -32,10 +32,12 @@
       href: azure-media-player-plugin-gallery.md
     - name: Yerelleştirme
       href: azure-media-player-localization.md
+- name: Örnekler
+  items:
+    - name: Azure Media Player Örnekleri
+      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
 - name: Başvuru
   items:
-    - name: Örnekler
-      href: 'https://github.com/Azure-Samples/azure-media-player-samples'
     - name: API
       href: 'https://docs.microsoft.com/en-us/javascript/api/azuremediaplayer/?view=azure-node-latest'
     - name: API yöntemleri
