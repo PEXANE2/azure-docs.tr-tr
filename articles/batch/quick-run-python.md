@@ -1,41 +1,35 @@
 ---
-title: Azure Toplu İşi çalıştırmak için Python API'sini kullanma
-description: Toplu İşlem Python istemci kitaplığını kullanarak bir Azure Toplu Toplu iş ve görevleri hızla çalıştırın. Toplu İşlem hizmetinin temel kavramlarını öğrenin.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: python
+title: Azure Batch işini çalıştırmak için Python API kullanma
+description: Batch Python istemci kitaplığını kullanarak Azure Batch bir örnek işi ve görevleri hızlıca çalıştırın. Batch hizmetinin temel kavramlarını öğrenin.
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: labrenne
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: 140ae0fc9f9a8daba193aa05e0800d83b7b6b963
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 07ad9115f6cb602b4df5adbe9a7acdc0425bbf86
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77086051"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117208"
 ---
-# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Hızlı başlatma: Azure Toplu İşi çalıştırmak için Python API'sini kullanma
+# <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>Hızlı başlangıç: Azure Batch işini çalıştırmak için Python API kullanma
 
-Bu hızlı başlangıçta, bir uygulamadan Azure Toplu İşi çalıştırmak için Python API'sını kullanırsınız. Uygulama, veri dosyalarını Azure Depolama'ya yükler ve Toplu İşlem düğümleri (sanal makineler) *havuzu* oluşturur. Daha sonra, temel bir komut kullanarak havuzdaki her giriş dosyasını işlemek için *görevleri* çalıştıran bir *iş* oluşturur.
+Bu hızlı başlangıçta, bir uygulamadan Azure Batch işini çalıştırmak için Python API 'sini kullanırsınız. Uygulama, giriş veri dosyalarını Azure depolama 'ya yükler ve toplu işlem düğümleri *havuzu* oluşturur (sanal makineler). Ardından, temel bir komut kullanarak havuzdaki her bir giriş dosyasını işlemek için *Görevler* çalıştıran bir *iş* oluşturur.
 
-Burada Toplu İşlem hizmetinin temel kavramlarını öğreneceksiniz ve daha büyük ölçekte daha gerçekçi iş yükleriyle Toplu İş'i denemeye hazır olacaksınız.
+Burada Batch hizmetinin temel kavramlarını öğrenirsiniz ve daha büyük ölçekte daha gerçekçi iş yükleri ile Batch 'i denemeye hazır olursunuz.
 
-![Azure Toplu İş Akışına Genel Bakış](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
+![Azure Batch iş akışına genel bakış](./media/quick-run-python/overview-of-the-azure-batch-workflow.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Bir **Azure Toplu İş** hesabı ve bağlantılı Azure **Depolama** hesabı. Bu hesapları oluşturmak için [Azure portalını](quick-create-portal.md) veya [CLI'yi](quick-create-cli.md) kullanın.
-- [Python](https://python.org/downloads), [pip](https://pip.pypa.io/en/stable/installing/) paket yöneticisi de dahil olmak üzere sürüm 2.7 veya 3.3 veya daha sonra
+- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- **Azure Batch** hesabı ve bağlı **Azure depolama** hesabı. Bu hesapları oluşturmak için [Azure Portal](quick-create-portal.md) veya [CLI](quick-create-cli.md) kullanın.
+- [PIP](https://pip.pypa.io/en/stable/installing/) Package Manager dahil [Python](https://python.org/downloads), sürüm 2,7 veya 3,3 ya da üzeri
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 [!INCLUDE [batch-common-credentials](../../includes/batch-common-credentials.md)]
 
@@ -47,7 +41,7 @@ GitHub’dan [örnek uygulamayı indirin veya kopyalayın](https://github.com/Az
 git clone https://github.com/Azure-Samples/batch-python-quickstart.git
 ```
 
-Python komut dosyasını `python_quickstart_client.py`içeren dizine gidin.
+Python betiğini `python_quickstart_client.py`içeren dizine gidin.
 
 Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 
@@ -55,7 +49,7 @@ Python geliştirme ortamınızda `pip` kullanarak gerekli paketleri yükleyin.
 pip install -r requirements.txt
 ```
 
-`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
+`config.py` dosyasını açın. Batch ve depolama hesabı kimlik bilgilerini, hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
 
 ```Python
 _BATCH_ACCOUNT_NAME = 'mybatchaccount'
@@ -108,7 +102,7 @@ Varsayılan yapılandırmasında uygulama çalıştırıldığında tipik yürü
 Bu hızlı başlangıçtaki Python uygulaması şunları yapar:
 
 * Azure depolama hesabınızdaki blob kapsayıcısına üç küçük metin dosyası yükler. Bu dosyalar, Batch görevleri tarafından işlenecek girdilerdir.
-* Ubuntu 18.04 LTS çalıştıran iki işlem düğümünden oluşan bir havuz oluşturur.
+* Ubuntu 18,04 LTS çalıştıran iki işlem düğümü havuzu oluşturur.
 * Düğümler üzerinde çalıştırılacak bir iş ve üç görev oluşturur. Her görev bir Bash kabuk komut satırı kullanarak giriş dosyalarından birini işler.
 * Görevler tarafından döndürülen dosyaları gösterir.
 
@@ -149,7 +143,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="create-a-pool-of-compute-nodes"></a>İşlem düğümleri havuzu oluşturma
 
-Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada, [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi'nde yayınlanan bir Ubuntu Server 18.04 LTS görüntüsüne [ImageReference'ı](/python/api/azure-batch/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
+Uygulama, Batch havuzu oluşturmak için düğüm sayısını, VM boyutunu ve havuz yapılandırmasını ayarlamak üzere Batch [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) sınıfını kullanır. Burada [Virtualmachineconfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) nesnesi, Azure Marketi 'Nde yayınlanan Ubuntu Server 18,04 LTS görüntüsüne bir [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) belirtir. Batch, Azure Market’te çok çeşitli Linux ve Windows Server görüntülerinin yanı sıra özel VM görüntülerini destekler.
 
 Düğüm sayısı (`_POOL_NODE_COUNT`) ve VM boyutu (`_POOL_VM_SIZE`), tanımlı sabitlerdir. Varsayılan olarak, örnek 2 boyutunda *Standard_A1_v2* düğümleri havuzu oluşturur. Önerilen boyut, bu hızlı örnek için performans ile maliyetin iyi bir dengesini sunar.
 
@@ -174,7 +168,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-batch-job"></a>Batch işi oluşturma
 
-Batch işi bir veya daha fazla görevin mantıksal gruplandırmasıdır. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Uygulama, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) sınıfını kullanır. [Job.add](/python/api/azure-batch/azure.batch.operations.joboperations) yöntemi, belirtilen Toplu Iş hesabına bir iş ekler. Başlangıçta iş hiçbir görev içermez.
+Batch işi bir veya daha fazla görevin mantıksal gruplandırmasıdır. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Uygulama, havuzunuzda bir iş oluşturmak üzere [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) sınıfını kullanır. [İş. Add](/python/api/azure-batch/azure.batch.operations.joboperations) yöntemi, belirtilen Batch hesabına bir iş ekler. Başlangıçta iş hiçbir görev içermez.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -230,7 +224,7 @@ for task in tasks:
 
 Uygulama kendi oluşturduğu depolama kapsayıcısını otomatik olarak siler ve Batch havuzu ve işini silme seçeneğini sunar. Zamanlanmış bir iş olmasa bile, düğümler çalışırken havuz için sizden ücret alınır. Havuz artık gerekli değilse silin. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. 
 
-Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portalında bunu yapmak için Toplu İş hesabı için kaynak grubunu seçin ve **kaynak grubunu sil'i**seçin.
+Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portal için, Batch hesabının kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,43 +1,43 @@
 ---
-title: Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
-description: Azure Kubernetes Hizmeti'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
+title: Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
+description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: container-service
 author: saudas
 manager: saudas
 ms.topic: article
 ms.date: 04/02/2020
 ms.author: saudas
-ms.openlocfilehash: 7a71d3bd70d97df884f1bc962c0ef9897d7fd2cb
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82024413"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112975"
 ---
-# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Hizmetinde yönetilen kimlikleri kullanma
+# <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
-Şu anda, bir Azure Kubernetes Hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı) yük dengeleyicileri ve Azure'da yönetilen diskler gibi ek kaynaklar oluşturmak için bir kimlik gerektirir, bu kimlik yönetilen bir *kimlik* veya *hizmet sorumlusu*olabilir. Bir hizmet [ilkesi](kubernetes-service-principal.md)kullanıyorsanız, sizin adınıza bir hizmet ilkesi sağlamanız gerekir veya AKS sizin adınıza bir tane oluşturur. Yönetilen kimliği kullanırsanız, bu durum AKS tarafından otomatik olarak oluşturulur. Hizmet ilkelerini kullanan kümeler, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet ilkelerini yönetmek karmaşıklık ekler, bu nedenle yönetilen kimlikleri kullanmak daha kolaydır. Aynı izin gereksinimleri hem hizmet ilkeleri hem de yönetilen kimlikler için geçerlidir.
+Şu anda Azure Kubernetes hizmeti (AKS) kümesi (özellikle Kubernetes bulut sağlayıcısı), Azure 'da yük dengeleyiciler ve yönetilen diskler gibi ek kaynaklar oluşturmak için bir kimlik gerektirir. bu kimlik, *yönetilen bir kimlik* ya da *hizmet sorumlusu*olabilir. [Hizmet sorumlusu](kubernetes-service-principal.md)kullanıyorsanız, bir veya birden çok aks sizin adınıza bir tane oluşturuyor olmalıdır. Yönetilen kimlik kullanıyorsanız, bu işlem sizin için otomatik olarak oluşturulur. Hizmet sorumlularını kullanan kümeler sonunda, kümenin çalışmasını sağlamak için hizmet sorumlusunun yenilenmesi gereken bir duruma ulaşır. Hizmet sorumlularını yönetmek karmaşıklık ekler ve bunun yerine yönetilen kimliklerin kullanılması daha kolay olur. Aynı izin gereksinimleri hem hizmet sorumluları hem de yönetilen kimlikler için geçerlidir.
 
-*Yönetilen kimlikler* aslında hizmet ilkeleri etrafında bir sarmalayıcı ve yönetim kolaylaştırır. Daha fazla bilgi edinmek [için Azure kaynakları için yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
+*Yönetilen kimlikler* temelde hizmet sorumluları etrafında bir sarmalayıcıdır ve yönetimini daha kolay hale getirir. Daha fazla bilgi edinmek için [Azure kaynakları için Yönetilen kimlikler](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)hakkında bilgi edinin.
 
-AKS yönetilen iki kimlik oluşturur:
+AKS iki yönetilen kimlik oluşturur:
 
-- **Sisteme atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü kümeninkine bağlıdır. Küme silindiğinde kimlik silinir.
-- **Kullanıcı tarafından atanan yönetilen kimlik**: Kümede yetkilendirme için kullanılan kimlik. Örneğin, kullanıcı tarafından atanan kimlik, AKS'ye Azure Kapsayıcı Kayıt Şirketlerini (ACRs) kullanmasına veya Azure'dan meta veri almak için kubelet'e yetki vermek için kullanılır.
+- **Sistem tarafından atanan yönetilen kimlik**: Kubernetes bulut sağlayıcısının kullanıcı adına Azure kaynakları oluşturmak için kullandığı kimlik. Sistem tarafından atanan kimliğin yaşam döngüsü, kümeyle bağlantılıdır. Küme silindiğinde kimlik silinir.
+- **Kullanıcı tarafından atanan yönetilen kimlik**: kümede yetkilendirme için kullanılan kimlik. Örneğin, Kullanıcı tarafından atanan kimlik, Azure Container Registry 'leri (ACRs) kullanmak üzere AKS 'leri yetkilendirmek veya kubelet 'in Azure 'dan meta verileri almasına yetki vermek için kullanılır.
 
-Eklentiler de yönetilen bir kimlik kullanarak kimlik doğrulaması. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. 
+Eklentiler ayrıca yönetilen kimlik kullanarak kimlik doğrular. Her eklenti için, yönetilen bir kimlik AKS tarafından oluşturulur ve eklentinin ömrü boyunca sürer. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdaki kaynağın yüklü olması gerekir:
 
-- Azure CLI, sürüm 2.2.0 veya sonrası
+- Azure CLı, sürüm 2.2.0 veya üzeri
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklere sahip bir AKS kümesi oluşturma
+## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklerle bir AKS kümesi oluşturma
 
-Artık aşağıdaki CLI komutlarını kullanarak yönetilen kimliklere sahip bir AKS kümesi oluşturabilirsiniz.
+Artık aşağıdaki CLı komutlarını kullanarak, yönetilen kimliklerle bir AKS kümesi oluşturabilirsiniz.
 
-İlk olarak, bir Azure kaynak grubu oluşturun:
+İlk olarak, bir Azure Kaynak grubu oluşturun:
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -50,7 +50,7 @@ Ardından, bir AKS kümesi oluşturun:
 az aks create -g MyResourceGroup -n MyManagedCluster --enable-managed-identity
 ```
 
-Yönetilen kimlikleri kullanarak başarılı bir küme oluşturma bu hizmet temel profil bilgilerini içerir:
+Yönetilen kimlikler kullanılarak başarılı bir küme oluşturulması, bu hizmet sorumlusu profil bilgilerini içerir:
 
 ```json
 "servicePrincipalProfile": {
@@ -60,7 +60,9 @@ Yönetilen kimlikleri kullanarak başarılı bir küme oluşturma bu hizmet teme
 ```
 
 > [!NOTE]
-> Kaynakların MC_* kaynak grubunun dışında olduğu kendi VNet, statik IP adresi veya ekli Azure diskinizi oluşturmak ve kullanmak için, rol ataması gerçekleştirmek için küme sistem atanmış yönetilen kimliğin PrincipalID'ini kullanın. Rol ataması hakkında daha fazla bilgi için diğer [Azure kaynaklarına Temsilci erişimi](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)ne bakın.
+> Bir sanal ağ, statik IP adresi veya kaynakların MC_ * kaynak grubunun dışında olduğu bağlı Azure diskini oluşturmak ve kullanmak için, rol ataması gerçekleştirmek üzere küme sistemi tarafından atanan yönetilen kimliğin PrincipalId 'sini kullanın. Rol atama hakkında daha fazla bilgi için bkz. [diğer Azure kaynaklarına erişim yetkisi verme](kubernetes-service-principal.md#delegate-access-to-other-azure-resources).
+>
+> Azure bulut sağlayıcısı tarafından kullanılan küme tarafından yönetilen kimliğin izin verdiği süre, 60 dakika sürebilir.
 
 Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 
@@ -68,9 +70,9 @@ Son olarak, kümeye erişmek için kimlik bilgilerini alın:
 az aks get-credentials --resource-group myResourceGroup --name MyManagedCluster
 ```
 
-Küme birkaç dakika içinde oluşturulacak. Daha sonra uygulama iş yüklerinizi yeni kümeye dağıtabilir ve hizmet temel tabanlı AKS kümelerinde yaptığınız gibi onunla etkileşimkurabilirsiniz.
+Küme birkaç dakika içinde oluşturulacak. Böylece, uygulama iş yüklerinizi yeni kümeye dağıtabilir ve hizmet sorumlusu tabanlı AKS kümelerinde yaptığınız gibi etkileşimde bulunabilirsiniz.
 
 > [!IMPORTANT]
 >
-> - Yönetilen kimliklere sahip AKS kümeleri yalnızca kümenin oluşturulması sırasında etkinleştirilebilir.
-> - Varolan AKS kümeleri, yönetilen kimlikleri etkinleştirmek için güncelleştirilemez veya yükseltilemez.
+> - Yönetilen kimlikleri olan AKS kümeleri yalnızca kümenin oluşturulması sırasında etkinleştirilebilir.
+> - Mevcut AKS kümeleri, yönetilen kimlikleri etkinleştirmek için güncelleştirilemez veya yükseltilemez.

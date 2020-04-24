@@ -1,20 +1,15 @@
 ---
-title: Bulutta bir sahneyi işleme - Azure Batch
+title: Bulutta sahne oluşturma
 description: Öğretici - Batch Renderin Hizmetini ve Azure Komut Satırı Arabirimini kullanarak Autodesk 3ds Max sahnesini Arnold ile işleme
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: tutorial
 ms.date: 03/05/2020
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: a415a74af654ef9cf56a37c1fca5ac6632ba4418
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78672987"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117140"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme 
 
@@ -29,11 +24,11 @@ Azure Batch, kullanım başına ödeme temelinde bulut ölçekli işleme özelli
 
 Bu öğreticide, ışın izleme işleyicisi [Arnold](https://www.autodesk.com/products/arnold/overview)'ı kullanarak Batch ile bir 3ds Max sahnesini işleyeceksiniz. Batch havuzu, önceden yüklenen grafikler ve kullandığın kadar öde lisansı sağlayan işleme uygulamalar içeren bir Azure Marketi resmi kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
 
-Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif &copy; Hakkı Autodesk, Inc.)
+Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif &copy; hakkı Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -96,7 +91,7 @@ az storage container create \
     --name scenefiles
 ```
 
-`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örnek:
+`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örneğin:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -138,7 +133,7 @@ az storage blob upload-batch \
   "enableInterNodeCommunication": false 
 }
 ```
-Toplu iş, özel düğümleri ve [düşük öncelikli](batch-low-pri-vms.md) düğümleri destekler ve havuzlarınızda veya her ikisini de kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. 
+Batch, adanmış düğümleri ve [düşük öncelikli](batch-low-pri-vms.md) düğümleri destekler ve Havuzlarınızda birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. 
 
 Belirtilen havuz Batch Rendering hizmetinin yazılımıyla birlikte bir Windows Server görüntüsü çalıştıran tek bir düşük öncelikli düğüm içerir. Bu havuz, 3ds Max ve Arnold ile işlenmek üzere lisanslanmıştır. Sonraki adımlardan birinde, havuzu daha fazla düğüm sayısıyla ölçeklendireceksiniz.
 
@@ -168,7 +163,7 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Çıkış dosyalarını kapsayıcıya yazmak için, Batch'in Paylaşılan Erişim İmzası (SAS) belirteci kullanması gerekir. [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) komutuyla belirteci oluşturun. Bu örnek, hesaptaki herhangi bir blob kapsayıcısına yazmak için bir belirteç oluşturur ve belirteç 15 Kasım 2020 tarihinde sona erer:
+Çıkış dosyalarını kapsayıcıya yazmak için, Batch'in Paylaşılan Erişim İmzası (SAS) belirteci kullanması gerekir. [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) komutuyla belirteci oluşturun. Bu örnekte, hesaptaki herhangi bir blob kapsayıcısına yazmak için bir belirteç oluşturulur ve 15 Kasım 2020 ' de belirtecin süresi dolar:
 
 ```azurecli-interactive
 az storage account generate-sas \
@@ -291,7 +286,7 @@ Havuzun yeniden boyutlandırılması birkaç dakika sürer. Bu işlem gerçekle�
 
 ## <a name="render-a-multiframe-scene"></a>Çok kareli bir sahneyi işleme
 
-Tek kare örneğinde olduğu gibi, *myrenderjob* adlı işin içinde işleme görevlerini oluşturmak için [az batch task create](/cli/azure/batch/task#az-batch-task-create) komutunu kullanın. Burada, görev ayarlarını *myrendertask_multi.json* adlı JSON dosyasında belirtin. (Dosyayı [GitHub'dan](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json)indirebilirsiniz.) Her altı görev 3ds Max sahne *MotionBlur-DragonFlying.max*bir kare işlemek için bir Arnold komut satırı belirtir.
+Tek kare örneğinde olduğu gibi, *myrenderjob* adlı işin içinde işleme görevlerini oluşturmak için [az batch task create](/cli/azure/batch/task#az-batch-task-create) komutunu kullanın. Burada, görev ayarlarını *myrendertask_multi.json* adlı JSON dosyasında belirtin. (Dosyayı [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json)'dan indirebilirsiniz.) Altı görevin her biri, 3ds Max *SahMotionBlur-DragonFlying. Max*'in bir karesini işlemek Için bir Arnold komut satırı belirtir.
 
 Geçerli kabuğunuzda *myrendertask_multi.json* adlı bir dosya oluşturun ve indirilen dosyanın içeriğini kopyalayıp buraya yapıştırın. JSON dosyasındaki `blobSource` ve `containerURL` öğelerini, depolama hesabınızın adını ve SAS belirtecinizi içermesini sağlayacak şekilde değiştirin. Altı görevden her biri için ayarları değiştirdiğinizden emin olun. Dosyayı kaydedin ve görevleri kuyruğa almak için aşağıdaki komutu çalıştırın:
 
@@ -301,7 +296,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
-Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örnek:
+Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 az batch task list \
@@ -309,7 +304,7 @@ az batch task list \
     --output table
 ```
 
-Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örnek:
+Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örneğin:
 
 ```azurecli-interactive
 az batch task show \
@@ -317,7 +312,7 @@ az batch task show \
     --task-id mymultitask1
 ```
  
-Görevler, işlem düğümlerinde - *dragon0002.jpg dragon0007.jpg* adlı çıkış dosyaları oluşturmak ve depolama hesabınızda *iş-myrenderjob* konteyner yükleyin. *dragon0002.jpg* Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örnek:
+Görevler, işlem düğümlerinde *dragon0002. jpg* - *dragon0007. jpg* adlı çıkış dosyalarını oluşturur ve bunları depolama hesabınızda *iş-myrenderjob* kapsayıcısına yükler. Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örneğin:
 
 ```azurecli-interactive
 az storage blob download-batch \

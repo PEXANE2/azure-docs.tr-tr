@@ -11,11 +11,11 @@ ms.contentlocale: tr-TR
 ms.lasthandoff: 03/24/2020
 ms.locfileid: "67509091"
 ---
-Anında iletme bildirimleri normal olarak, uyumlu bir kitaplık kullanılarak Mobile Apps veya ASP.NET gibi bir arka uç hizmetine gönderilir. Arka uçiçin bir kitaplık yoksa, bildirim iletileri göndermek için doğrudan REST API'yi de kullanabilirsiniz.
+Anında iletme bildirimleri normal olarak, uyumlu bir kitaplık kullanılarak Mobile Apps veya ASP.NET gibi bir arka uç hizmetine gönderilir. Arka uçta bir kitaplık yoksa, bildirim iletilerini göndermek için doğrudan REST API de kullanabilirsiniz.
 
-Bildirim göndermek için gözden geçirmek isteyebileceğiniz diğer bazı öğreticilerin bir listesi aşağıda veda edebilirsiniz:
+Bildirim göndermek için gözden geçirmek isteyebileceğiniz diğer bazı öğreticilerin listesi aşağıda verilmiştir:
 
-* Azure Mobil Uygulamaları: Bildirim Hub'larıyla entegre edilmiş bir Mobil Uygulamalar arka uçtan bildirim gönderme nin bir örneği için [iOS Uygulamanıza Anında Iletme Bildirimleri Ekle bölümüne](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md)bakın.  
+* Azure Mobile Apps: Notification Hubs ile tümleştirilmiş Mobile Apps arka uçta bildirimlerin nasıl gönderileceği hakkında bir örnek Için bkz. [IOS uygulamanıza anında Iletme bildirimleri ekleme](../articles/app-service-mobile/app-service-mobile-ios-get-started-push.md).  
 * ASP.NET: [Bildirimleri kullanıcılara göndermek için Notification Hubs'ı kullanın](../articles/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification.md).
 * Azure Notification Hub Java SDK: Java bildirim göndermek için bkz. [Java’ya ait Notification Hubs nasıl kullanılır](../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md). Android Geliştirmesi için Eclipse'te test edilmiştir.
 * PHP: [PHP'ye ait Notification Hubs nasıl kullanılır](../articles/notification-hubs/notification-hubs-php-push-notification-tutorial.md).

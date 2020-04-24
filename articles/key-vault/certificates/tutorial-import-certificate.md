@@ -1,6 +1,6 @@
 ---
-title: Öğretici - Azure portalını kullanarak Key Vault'ta sertifika alma | Microsoft Dokümanlar
-description: Azure Anahtar Kasası'nda sertifika alma nın nasıl yapılacağını gösteren öğretici
+title: Öğretici-Azure portal kullanarak Key Vault sertifikayı Içeri aktarma | Microsoft Docs
+description: Azure Key Vault bir sertifikanın nasıl içeri aktarılacağını gösteren öğretici
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -9,30 +9,30 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/03/2020
+ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 754f30f7931f9fad6a95328cbf8ab34f70cb75a0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 9496173ee006c6ca3cab557f4e63ec21647ad0fd
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423113"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82105582"
 ---
-# <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault'ta sertifika alma
+# <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Öğretici: Azure Key Vault sertifikayı Içeri aktarma
 
-Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu öğreticide, bir anahtar kasası oluşturursunuz ve sertifika almak için kullanırsınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
+Azure Key Vault, gizli diziler için güvenli bir depolama sağlayan bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu öğreticide bir Anahtar Kasası oluşturup bir sertifikayı içeri aktarmak için kullanacaksınız. Key Vault hakkında daha fazla bilgi için [Genel Bakış](../general/overview.md) bölümünü inceleyin.
 
 Öğretici şunların nasıl yapıldığını göstermektedir:
 
 > [!div class="checklist"]
 > * Bir anahtar kasası oluşturma.
-> * Portalı kullanarak Key tonozunda bir sertifika içe aktarın.
-> * CLI kullanarak Key tonozunda bir sertifika içe aktarın.
+> * Portalı kullanarak anahtar kasasında bir sertifikayı içeri aktarın.
+> * CLı kullanarak Anahtar Kasası 'nda bir sertifikayı içeri aktarın.
 
 
-Başlamadan önce [Key Vault temel kavramlarını](../general/basic-concepts.md)okuyun. 
+Başlamadan önce [temel kavramları Key Vault](../general/basic-concepts.md)okuyun. 
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -40,53 +40,56 @@ https://portal.azure.com adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
-1. Azure portalı menüsünden veya **Ana** sayfadan **kaynak oluştur'u**seçin.
-2. Arama kutusuna, **Anahtar Kasası**girin.
+1. Azure portal menüsünde veya **giriş** sayfasından **kaynak oluştur**' u seçin.
+2. Arama kutusuna **Key Vault**girin.
 3. Sonuç listesinden **Key Vault**’u seçin.
 4. Key Vault bölümünde **Oluştur**’u seçin.
 5. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:
-    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıç için **Örnek-Vault**kullanıyoruz. 
+    - **Ad**: Benzersiz bir ad gereklidir. Bu hızlı başlangıçta **örnek kasasını**kullanırız. 
     - **Abonelik**: Bir abonelik seçin.
-    - **Kaynak Grubu**altında, **yeni oluştur'u** seçin ve bir kaynak grubu adı girin.
-    - **Konum** çekme menüsünde bir konum seçin.
+    - **Kaynak grubu**altında **Yeni oluştur** ' u seçin ve bir kaynak grubu adı girin.
+    - **Konum** aşağı açılan menüsünde bir konum seçin.
     - Diğer seçenekleri varsayılan değerlerinde bırakın.
 6. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.
 
 Aşağıda listelenen iki özelliği not edin:
 
-* **Vault Adı**: Örnek-Vault **Example-Vault**. Bu adı diğer adımlar için kullanacaksınız.
+* **Kasa adı**: örnekte bu **örnek kasadır**. Bu adı diğer adımlar için kullanacaksınız.
 * **Kasa URI’si**: Örnekte bu: https://example-vault.vault.azure.net/. REST API'si aracılığıyla kasanızı kullanan uygulamaların bu URI'yi kullanması gerekir.
 
 Bu noktada Azure hesabınız, bu yeni anahtar kasasında işlemler gerçekleştirmeye yetkili olan tek hesaptır.
 
 ![Key Vault oluşturma işlemi tamamlandıktan sonra alınan çıktı](../media/certificates/tutorial-import-cert/vault-properties.png)
 
-## <a name="import-a-certificate-to-key-vault"></a>Key Vault'a sertifika alma
+## <a name="import-a-certificate-to-key-vault"></a>Key Vault bir sertifikayı içeri aktar
 
-Kasaya bir sertifika almak için diskte olmak için pem veya PFX sertifika dosyasına sahip olmanız gerekir. Bu durumda, **örnek sertifika**adlı dosya adı ile bir sertifika alınacak.
+Bir sertifikayı kasaya aktarmak için diskte olması gereken bir ped veya PFX Sertifika dosyası olması gerekir. Bu durumda, **örnek sertifika**adlı dosya adına sahip bir sertifikayı içeri aktaracağız.
 
 > [!IMPORTANT]
-> Azure Key Vault'ta desteklenen sertifika biçimleri PFX ve PEM'dir. 
-> - .pem dosya biçimi bir veya daha fazla X509 sertifika dosyası içerir.
-> - .pfx dosya biçimi, birden fazla şifreleme nesnesi tek bir dosyada yani sunucu sertifikasında (etki alanınız için verilen) depolamak için bir arşiv dosyası biçimidir ve isteğe bağlı olarak bir ara CA içerebilir.  
+> Azure Key Vault, desteklenen sertifika biçimleri PFX ve PEı ' dir. 
+> - . pek dosya biçimi bir veya daha fazla x509 sertifika dosyası içeriyor.
+> - . pfx dosya biçimi, birden çok şifreleme nesnesini tek bir dosyada (etki alanınız için verilir), eşleşen bir özel anahtarla depolamak için bir arşiv dosyası biçimidir ve isteğe bağlı olarak bir ara CA 'yı içerebilir.  
 
-1. Key Vault özellikleri **sayfalarında, Sertifikalar'ı**seçin.
+1. Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
 2. **Oluştur/İçeri Aktar**’a tıklayın.
-3. Sertifika **Oluştur** ekranında aşağıdaki değerleri seçin:
-    - **Sertifika Oluşturma Yöntemi**: İthalat.
-    - **Sertifika Adı**: Örnek Sertifika.
-    - **Upload Sertifika Dosyası**: diskten sertifika dosyasını seçin
-    - Diğer değerleri varsayılan değerlerinde bırakın. **Oluştur'u**tıklatın.
+3. **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
+    - **Sertifika oluşturma yöntemi**: içeri aktarma.
+    - **Sertifika adı**: örnek sertifikası.
+    - **Sertifika dosyasını karşıya yükle**: diskten sertifika dosyasını seçin
+    - **Parola** : parola korumalı bir sertifika dosyası yüklüyorsanız, bu parolayı burada belirtin. Aksi takdirde, boş bırakın. Sertifika dosyası başarıyla alındıktan sonra Anahtar Kasası bu parolayı kaldırır.
+4. **Oluştur**' a tıklayın.
 
-![Sertifika özellikleri](../media/certificates/tutorial-import-cert/cert-import.png)
+![Sertifika Özellikleri](../media/certificates/tutorial-import-cert/cert-import.png)
 
-Sertifikanın başarıyla alındığı iletiyi aldıktan sonra, listede üzerine tıklayabilirsiniz. Daha sonra bazı özelliklerini görebilirsiniz. 
+**Içeri aktarma** yöntemi kullanılarak bir sertifika eklendiğinde, Azure Anahtar Kasası otomatik olarak sertifika parametrelerini (geçerlilik süresi, verenin adı, etkinleştirme tarihi vb.) dolduracaktır.
 
-![Sertifika özellikleri](../media/certificates/tutorial-import-cert/current-version-hidden.png)
+Sertifikanın başarıyla içeri aktarıldığını belirten iletiyi aldıktan sonra, özelliklerini görüntülemek için listede öğesine tıklayabilirsiniz. 
 
-## <a name="import-a-certificate-using-azure-cli"></a>Azure CLI kullanarak sertifika alma
+![Sertifika Özellikleri](../media/certificates/tutorial-import-cert/current-version-hidden.png)
 
-Sertifikayı belirli bir anahtar kasasına aktarın. Özel anahtar içeren varolan geçerli bir sertifikayı Azure Key Vault'a almak için alınacak dosya PFX veya PEM biçiminde olabilir. Sertifika PEM formatındaysa, PEM dosyasının anahtarının yanı sıra x509 sertifikalarını da içermesi gerekir. Bu işlem sertifikalar/alma izni gerektirir.
+## <a name="import-a-certificate-using-azure-cli"></a>Azure CLı kullanarak bir sertifikayı içeri aktarma
+
+Bir sertifikayı belirtilen bir anahtar kasasına aktarın. Özel bir anahtar içeren mevcut geçerli bir sertifikayı Azure Key Vault içine aktarmak için, içeri aktarılacak dosya PFX ya da ped biçiminde olabilir. Sertifika pek biçimindeyse, ped dosyası, x509 sertifikalarını ve anahtar içermelidir. Bu işlem sertifikaları/içeri aktarma iznini gerektirir.
 
 ```azurecli
 az keyvault certificate import --file
@@ -99,7 +102,23 @@ az keyvault certificate import --file
                                [--subscription]
                                [--tags]
 ```
-Parametreler hakkında daha fazla bilgi için [burada](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)
+[Burada](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) parametreler hakkında daha fazla bilgi edinin
+
+Sertifikayı içeri aktardıktan sonra sertifika [göster](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) 'i kullanarak sertifikayı görüntüleyebilirsiniz
+
+
+```azurecli
+az keyvault certificate show [--id]
+                             [--name]
+                             [--only-show-errors]
+                             [--subscription]
+                             [--vault-name]
+                             [--version]
+```
+
+
+
+Şimdi bir Anahtar Kasası oluşturdunuz, bir sertifika içeri aktardı ve sertifikanın özellikleri görüntülendi.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -113,8 +132,8 @@ Artık gerek kalmadığında kaynak grubunu silin; bunu yaptığınızda Key Vau
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir Anahtar Kasası oluşturdunuz ve içinde bir sertifika aldınız. Key Vault ve uygulamalarınızla nasıl entegre edilebildiğini öğrenmek için aşağıdaki makalelere devam edin.
+Bu öğreticide bir Key Vault oluşturdunuz ve bir sertifikayı içeri aktardınız. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
-- [Azure Key Vault'ta sertifikaları yönetme](/archive/blogs/kv/manage-certificates-via-azure-key-vault) hakkında daha fazla bilgi edinin
-- [REST API'lerini Kullanarak Sertifika Alma örneklerine](/rest/api/keyvault/importcertificate/importcertificate) bakın
-- Azure Key Vault en iyi uygulamalarını gözden [geçirin](../general/best-practices.md)
+- [Azure Key Vault 'da sertifika oluşturmayı yönetme](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) hakkında daha fazla bilgi edinin
+- [REST API 'Leri kullanarak sertifika alma](/rest/api/keyvault/importcertificate/importcertificate) örneklerine bakın
+- [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

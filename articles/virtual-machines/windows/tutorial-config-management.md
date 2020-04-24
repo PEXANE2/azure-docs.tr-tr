@@ -1,44 +1,37 @@
 ---
-title: Öğretici - Azure'da Windows sanal makine yapılandırması yönetme
-description: Bu eğitimde, windows sanal makinesinde değişiklikleri nasıl tanımlayabileceğinizi ve paket güncelleştirmelerini nasıl yöneteceklerini öğreneceksiniz
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: Öğretici-Azure 'da Windows sanal makine yapılandırmasını yönetme
+description: Bu öğreticide, bir Windows sanal makinesinde değişiklikleri belirlemeyi ve paket güncelleştirmelerini yönetmeyi öğreneceksiniz
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d97323f1916ee46e6b1f8d4ca8723b950baca39c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ed36dc669c8b89ba4a2b7831c6eb6f8742e73730
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238583"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100422"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure'da değişiklikleri izleyin ve Windows sanal makinesini güncelleştirin
+# <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>Öğretici: Azure 'da değişiklikleri Izleme ve Windows sanal makinesini güncelleştirme
 
-Azure [Değişiklik İzleme](../../automation/change-tracking.md) ve [Güncelleştirme Yönetimi](../../automation/automation-update-management.md)ile Azure'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu Sanal Makineler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
+Azure [değişiklik izleme](../../automation/change-tracking.md) ve [güncelleştirme yönetimi](../../automation/automation-update-management.md)ile Azure 'daki Windows sanal makinelerinizdeki değişiklikleri kolayca tanımlayabilir ve bu VM 'ler için işletim sistemi güncelleştirmelerini yönetebilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Windows güncelleştirmelerini yönetin.
-> * Değişiklikleri ve envanteri izleyin.
+> * Windows güncelleştirmelerini yönetme.
+> * Değişiklikleri ve stoku izleyin.
 
 ## <a name="open-azure-cloud-shell"></a>Azure Cloud Shell’i açma
 
-Azure Bulut Kabuğu, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Azure hesabınızla kullanmak üzere önceden yüklenmiş ve yapılandırılan ortak Azure araçları vardır.
+Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz, ücretsiz bir etkileşimli kabuktur. Önceden yüklenmiş ve Azure hesabınızla kullanılmak üzere yapılandırılmış ortak Azure araçları vardır.
 
-Cloud Shell'deki herhangi bir kod bloğunu açmak için, kod bloğunun sağ üst köşesinden **deneyin'i** seçmenin tek yolu.
+Cloud Shell herhangi bir kod bloğunu açmak için, bu kod bloğunun sağ üst köşesinden **dene** ' yi seçin.
 
-Ayrıca cloud shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde açabilirsiniz. Kod **Copy** bloklarını kopyalamak için Kopyala'yı seçin, Bulut Kabuğu sekmesine yapıştırın ve kodu çalıştırmak için Enter tuşunu seçin.
+Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de açabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell sekmesine yapıştırın ve kodu çalıştırmak için Enter tuşunu seçin.
 
 ## <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
@@ -50,7 +43,7 @@ Bu öğreticide Azure izlemesi ve güncelleştirme yönetimini yapılandırmak i
 $cred = Get-Credential
 ```
 
-Ardından, [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM oluşturun. Aşağıdaki örnek, `myVM` `East US` konumda bir VM oluşturur. Bunlar zaten yoksa, kaynak grubu `myResourceGroupMonitor` ve destekleyici ağ kaynakları oluşturulur:
+Ardından, [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM 'yi oluşturun. Aşağıdaki örnek, `myVM` `East US` konumunda adlı bir VM oluşturur. Henüz yoksa, kaynak grubu `myResourceGroupMonitor` ve destekleyici ağ kaynakları oluşturulur:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -64,158 +57,158 @@ Kaynakların ve sanal makinenin oluşturulması birkaç dakika sürer.
 
 ## <a name="manage-windows-updates"></a>Windows güncelleştirmelerini yönetme
 
-Güncelleştirme Yönetimi, Azure Windows VM'leriniz için güncelleştirmeleri ve yamaları yönetmenize yardımcı olur. Doğrudan VM'nizden:
+Güncelleştirme Yönetimi, Azure Windows VM 'leriniz için güncelleştirmeleri ve düzeltme eklerini yönetmenize yardımcı olur. Doğrudan sanal makinenizde, hızlıca şunları yapabilirsiniz:
 
 - Kullanılabilir güncelleştirmelerin durumunu değerlendirme.
 - Gerekli güncelleştirmeleri yüklemeyi zamanlama.
-- Güncelleştirmelerin VM'ye başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin.
+- Güncelleştirmelerin VM 'ye başarıyla uygulandığını doğrulamak için dağıtım sonuçlarını gözden geçirin.
 
-Fiyatlandırma bilgileri [için, Güncelleştirme yönetimi için Otomasyon fiyatlandırması'na](https://azure.microsoft.com/pricing/details/automation/)bakın.
+Fiyatlandırma bilgileri için bkz. [güncelleştirme yönetimi Için Otomasyon Fiyatlandırması](https://azure.microsoft.com/pricing/details/automation/).
 
 ### <a name="enable-update-management"></a>Güncelleştirme Yönetimi’ni etkinleştirme
 
-VM'iniz için Güncelleştirme Yönetimini etkinleştirmek için:
+VM 'niz için Güncelleştirme Yönetimi etkinleştirmek için:
 
-1. Pencerenin en sol tarafında **Sanal makineleri**seçin.
+1. Pencerenin en sol tarafında, **sanal makineler**' i seçin.
 1. Listeden bir VM seçin.
-1. VM penceresinin **İşlemler** bölmesinde, **Update yönetimini**seçin.
-1. **Güncelleştirme Yönetimini Etkinleştir** penceresi açılır.
+1. VM penceresinin **işlemler** bölmesinde **güncelleştirme yönetimi**' ni seçin.
+1. **Etkinleştir güncelleştirme yönetimi** penceresi açılır.
 
-Doğrulama, bu VM için Güncelleştirme Yönetimi etkin olup olmadığını belirlemek için yapılır. Doğrulama, log analitiği çalışma alanı, bağlantılı bir Otomasyon hesabı ve çözümün çalışma alanında olup olmadığını kontrol eder.
+Bu VM için Güncelleştirme Yönetimi etkinleştirilip etkinleştirilmeyeceğini öğrenmek için doğrulama yapılır. Doğrulama bir Log Analytics çalışma alanı, bağlantılı Otomasyon hesabı için ve çözümün çalışma alanında olup olmadığı için denetimler içerir.
 
-Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Günlük Analizi](../../log-analytics/log-analytics-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
+Güncelleştirme Yönetimi gibi özellikler ve hizmetler tarafından oluşturulan verileri toplamak için bir [Log Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı kullanırsınız. Çalışma alanı, birden fazla kaynaktan alınan verilerin incelenip analiz edilebileceği ortak bir konum sağlar.
 
-VM'lerde güncelleştirme gerektiren ek eylemler gerçekleştirmek için, runbook'ları VM'lere karşı çalıştırmak için Azure Otomasyonu'nu kullanabilirsiniz. Bu tür eylemler, güncelleştirmeleri indirmeyi veya uygulamayı içerir.
+Güncelleştirme gerektiren VM 'lerde ek eylemler gerçekleştirmek için Azure Otomasyonu 'nu kullanarak runbook 'ları sanal makinelere karşı çalıştırabilirsiniz. Bu tür eylemler, güncelleştirmeleri indirmeyi veya uygulamayı içerir.
 
-Doğrulama işlemi, VM'nin Microsoft İzleme Aracısı (MMA) ve Otomasyon Karma Runbook Worker ile sağlanıp sağlanmadÝðýný da denetler. Aracıyı VM ile iletişim kurmak ve güncelleştirme durumu hakkında bilgi almak için kullanırsınız.
+Doğrulama işlemi ayrıca VM 'nin Microsoft Monitoring Agent (MMA) ve otomasyon karma Runbook Worker ile sağlanıp sağlanmadığını kontrol eder. Aracıyı, VM ile iletişim kurmak ve güncelleştirme durumu hakkında bilgi almak için kullanırsınız.
 
-Güncelleştirme **Yönetimini Etkinleştir** penceresinde, Günlük Analizi çalışma alanı ve otomasyon hesabını seçin ve ardından **Etkinleştir'i**seçin. Çözümün etkin hale gelmesi 15 dakika kadar sürer.
+**Etkinleştir güncelleştirme yönetimi** penceresinde, Log Analytics çalışma alanı ve Otomasyon hesabı ' nı seçin ve ardından **Etkinleştir**' i seçin. Çözümün etkinleştirilmesi 15 dakika kadar sürer.
 
-Uçağa binme sırasında eksik olan aşağıdaki ön koşullar otomatik olarak eklenir:
+Ekleme sırasında eksik olan aşağıdaki önkoşulların herhangi biri otomatik olarak eklenir:
 
-* [Günlük Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı
+* [Log Analytics](../../log-analytics/log-analytics-overview.md) çalışma alanı
 * [Otomasyon](../../automation/automation-offering-get-started.md)
-* VM'de etkinleştirilen [Karma çalışma kitabı çalışanı](../../automation/automation-hybrid-runbook-worker.md)
+* VM 'de etkin olan [karma Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
 
-Çözüm etkinleştirildikten sonra **Güncelleştirme yönetimi** penceresi açılır. Konumu, Log Analytics çalışma alanını ve Otomasyon hesabını kullanmak üzere yapılandırın ve ardından **Etkinleştir'i**seçin. Bu seçenekler soluk görünüyorsa, VM için başka bir otomasyon çözümü etkinleştirilir ve bu çözümün çalışma alanı ve Otomasyon hesabı kullanılmalıdır.
+Çözüm etkinleştirildikten sonra, **güncelleştirme yönetimi** penceresi açılır. Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve ardından **Etkinleştir**' i seçin. Bu seçenekler soluk görünüyorsa, VM için başka bir otomasyon çözümü etkinleştirilir ve bu çözümün çalışma alanının ve otomasyon hesabının kullanılması gerekir.
 
-![Güncelleştirme Yönetimi çözümlerini etkinleştirin](./media/tutorial-monitoring/manageupdates-update-enable.png)
+![Güncelleştirme Yönetimi Çözümü Etkinleştir](./media/tutorial-monitoring/manageupdates-update-enable.png)
 
-Güncelleştirme Yönetimi çözümemi etkinleştirmek 15 dakika kadar sürebilir. Bu süre boyunca tarayıcı penceresini kapatmayın. Çözüm etkinleştirildikten sonra, VM akışlarındaki eksik güncelleştirmelerle ilgili bilgiler Azure Monitor günlüklerine akar. Verilerin analiz edilebis olması 30 dakika ile 6 saat arasında sürebilir.
+Güncelleştirme Yönetimi çözümünün etkinleştirilmesi 15 dakika kadar sürebilir. Bu süre boyunca tarayıcı penceresini kapatmayın. Çözüm etkinleştirildikten sonra VM 'deki eksik güncelleştirmeler hakkında bilgiler Azure Izleyici günlüklerine akar. Verilerin Analize uygun olması için 30 dakikadan 6 saate kadar zaman alabilir.
 
 ### <a name="view-an-update-assessment"></a>Güncelleştirme değerlendirmesini görüntüleme
 
-Güncelleştirme Yönetimi etkinleştirildikten sonra **Güncelleştirme yönetimi** penceresi görüntülenir. Güncelleştirmelerin değerlendirilmesi tamamlandıktan sonra, **Eksik güncelleştirmeler** sekmesinde eksik güncelleştirmelerin listesini görürsünüz.
+Güncelleştirme Yönetimi etkinleştirildikten sonra, **güncelleştirme yönetimi** penceresi görüntülenir. Güncelleştirmelerin değerlendirilmesinden sonra **eksik** Güncelleştirmeler sekmesinde eksik güncelleştirmelerin bir listesini görürsünüz.
 
  ![Güncelleştirme durumunu görüntüleme](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
 ### <a name="schedule-an-update-deployment"></a>Güncelleştirme dağıtımı zamanlama
 
-Güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma hangi güncelleştirme türlerinin ekeceğini siz seçersiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
+Güncelleştirmeleri yüklemek için yayın zamanlamanızı ve hizmet pencerenizi izleyen bir dağıtım zamanlayın. Dağıtıma dahil edilecek güncelleştirme türlerini seçersiniz. Örneğin, kritik güncelleştirmeleri veya güvenlik güncelleştirmelerini dahil edip güncelleştirme paketlerini dışlayabilirsiniz.
 
-VM için yeni bir güncelleştirme dağıtımı zamanlamak için, **Güncelleştirme yönetimi** penceresinin üst kısmında **ki Güncelleştir dağıtımını Zamanla'yı** seçin. Yeni **güncelleştirme dağıtım** penceresinde aşağıdaki bilgileri belirtin:
+VM için yeni bir güncelleştirme dağıtımı zamanlamak üzere güncelleştirme **yönetimi** penceresinin en üstünde **güncelleştirme dağıtımı zamanla** ' yı seçin. **Yeni güncelleştirme dağıtımı** penceresinde, aşağıdaki bilgileri belirtin:
 
 | Seçenek | Açıklama |
 | --- | --- |
 | **Adı** |Güncelleştirme dağıtımını tanımlamak için benzersiz bir ad girin. |
-|**İşletim sistemi**| **Linux** veya **Windows'u**seçin.|
-| **Güncelleştirilen gruplar** |Azure'da barındırılan VM'ler için, abonelik, kaynak grupları, konumlar ve etiketlerin birleşimini temel alan bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek üzere Azure tarafından barındırılan dinamik bir VM grubu oluşturur. </br></br>Azure'da barındırılmayan VM'ler için varolan kaydedilmiş bir aramayı seçin. Bu aramada, dağıtıma dahil etmek üzere bu VM'lerden oluşan bir grup seçebilirsiniz. </br></br> Daha fazla bilgi için [Dinamik Gruplar'a](../../automation/automation-update-management-groups.md)bakın.|
-| **Güncelleştirilen makineler** |**Kaydedilen arama,** **Alınan grup**veya **Makineler'i**seçin.<br/><br/>**Makineler'i**seçerseniz, açılan listeden tek tek makineleri seçebilirsiniz. Her makinenin hazır olması tablonun **UPDATE AGENT READINESS** sütununda gösterilir.</br></br> Azure Monitor günlüklerinde bilgisayar grupları oluşturmanın farklı yöntemleri hakkında bilgi edinmek için [Azure Monitor günlüklerinde Bilgisayar gruplarına](../../azure-monitor/platform/computer-groups.md) bakın |
-|**Sınıflandırmaları güncelleştir**|Gerekli tüm güncelleştirme sınıflandırmalarını seçin.|
-|**Güncelleştirmeleri ekleme/hariç tutma**|**Ekle/Hariç tut** bölmesini açmak için bu seçeneği belirleyin. Eklenecek ve hariç tutulacak güncelleştirmeler ayrı sekmelerde dir. İçermenin nasıl işleyiş işleyiş yaptığı hakkında daha fazla bilgi için [bkz.](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment) |
-|**Zamanlama ayarları**|Başlamak için zaman seçin ve **Bir kez** veya **Yinelenen**seçin.|
-| **Ön komut dosyaları + Post-scriptler**|Dağıtımdan önce ve sonra çalışacak komut dosyalarını seçin.|
-| **Bakım penceresi** | Güncelleştirmeler için ayarlanan dakika sayısını girin. Geçerli değerler 30 ile 360 dakika arasında değişir. |
-| **Yeniden başlatma denetimi**| Yeniden başlatmaların nasıl işleneceğini seçin. Kullanılabilir seçimler şunlardır:<ul><li>**Gerekirse yeniden başlatın**</li><li>**Her zaman yeniden başlat**</li><li>**Hiçbir zaman yeniden başlatma**</li><li>**Yalnızca yeniden başlatma**</li></ul>**Gerekirse** yeniden başlatma varsayılan seçimdir. **Yalnızca yeniden başlatmayı**seçerseniz, güncelleştirmeler yüklenmiyor.|
+|**İşletim sistemi**| **Linux** veya **Windows**' u seçin.|
+| **Güncelleştirilecek gruplar** |Azure üzerinde barındırılan VM 'Ler için abonelik, kaynak grubu, konum ve etiketlerin birleşimine göre bir sorgu tanımlayın. Bu sorgu, dağıtımınıza dahil etmek için Azure 'da barındırılan sanal makinelerin dinamik bir grubunu oluşturur. </br></br>Azure üzerinde barındırılmayan VM 'Ler için, var olan kayıtlı bir aramayı seçin. Bu aramayla, dağıtıma dahil etmek için bu VM 'lerin bir grubunu seçebilirsiniz. </br></br> Daha fazla bilgi için bkz. [Dinamik Gruplar](../../automation/automation-update-management-groups.md).|
+| **Güncelleştirilecek makineler** |**Kaydedilmiş arama**, **içeri aktarılan grup**veya **makineler**seçin.<br/><br/>**Makineler**' i seçerseniz, açılan listeden makineleri tek tek seçebilirsiniz. Her makinenin hazır olması, tablonun **GÜNCELLEŞTIRME ARACıSı hazırlık** sütununda gösterilir.</br></br> Azure Izleyici günlüklerinde bilgisayar grupları oluşturmaya yönelik farklı yöntemler hakkında bilgi edinmek için bkz. [Azure izleyici günlüklerinde bilgisayar grupları](../../azure-monitor/platform/computer-groups.md) |
+|**Güncelleştirme sınıflandırmaları**|Tüm gerekli güncelleştirme sınıflandırmalarını seçin.|
+|**Güncelleştirmeleri dahil et/Dışla**|**Dahil et/hariç tut** bölmesini açmak için bu seçeneği belirleyin. Dahil edilecek güncelleştirmeler ve dışlanması gerekenler ayrı sekmelerde bulunur. Ekleme hakkında daha fazla bilgi için bkz. [güncelleştirme dağıtımı zamanlama](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment). |
+|**Zamanlama ayarları**|Başlatılacak saati seçin ve **bir** veya **tekrardan**birini seçin.|
+| **Ön betikler + betikleri sonrası**|Dağıtımdan önce ve sonra çalıştırılacak betikleri seçin.|
+| **Bakım penceresi** | Güncelleştirmeler için ayarlanan dakika sayısını girin. Geçerli değerler 30 ila 360 dakika arasındadır. |
+| **Yeniden başlatma denetimi**| Yeniden başlatmaları nasıl ele alındığını seçin. Kullanılabilir seçimler şunlardır:<ul><li>**Gerekirse yeniden Başlat**</li><li>**Her zaman yeniden başlat**</li><li>**Hiçbir zaman yeniden başlatma**</li><li>**Yalnızca yeniden Başlat**</li></ul>**Gerekirse yeniden Başlat** varsayılan seçimdir. **Yalnızca yeniden başlatma**' yı seçerseniz güncelleştirmeler yüklenmez.|
 
-Zamanlamayı yapılandırmayı bitirdikten sonra durum panosuna dönmek için **Oluştur'u** tıklatın. **Zamanlanan** tablo oluşturduğunuz dağıtım zamanlamasını gösterir.
+Zamanlamayı yapılandırmayı tamamladıktan sonra, durum panosuna dönmek için **Oluştur** ' a tıklayın. **Zamanlanan** tablo, oluşturduğunuz dağıtım zamanlamasını gösterir.
 
-Güncelleştirme dağıtımlarını programlı olarak da oluşturabilirsiniz. REST API ile nasıl bir güncelleştirme dağıtımı oluşturabilirsiniz öğrenmek için Bkz. [Yazılım Güncelleştirme Yapılandırmaları - Oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanabileceğiniz örnek bir runbook da vardır. Bu runbook hakkında daha fazla bilgi edinmek [için](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)bkz.
+Ayrıca, programlama yoluyla güncelleştirme dağıtımları da oluşturabilirsiniz. REST API güncelleştirme dağıtımı oluşturmayı öğrenmek için bkz. [yazılım güncelleştirme yapılandırması-oluştur](/rest/api/automation/softwareupdateconfigurations/create). Ayrıca, haftalık güncelleştirme dağıtımı oluşturmak için kullanabileceğiniz örnek bir runbook da vardır. Bu runbook hakkında daha fazla bilgi edinmek için bkz. [bir kaynak grubundaki bir veya daha fazla VM için haftalık güncelleştirme dağıtımı oluşturma](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ### <a name="view-results-of-an-update-deployment"></a>Güncelleştirme dağıtımının sonuçlarını görüntüleme
 
-Zamanlanan dağıtım başladıktan sonra, **Güncelleştirme yönetimi** penceresinin **Güncelleştirme dağıtımları** sekmesinde dağıtım durumunu görebilirsiniz.
+Zamanlanan dağıtım başladıktan sonra, dağıtım durumunu **güncelleştirme yönetimi** penceresinin **güncelleştirme dağıtımları** sekmesinde görebilirsiniz.
 
-Dağıtım şu anda çalışıyorsa, durumu "Devam ediyor" olarak gösterir. Başarılı bir şekilde tamamlandıktan sonra durum "Başarılı" olarak değişir. Ancak dağıtımdaki herhangi bir güncelleştirme başarısız olursa, durum "Kısmen başarısız olur."
+Dağıtım Şu anda çalışıyorsa, durumu "sürüyor" olarak gösterilir. Başarılı bir şekilde tamamlandıktan sonra durum "başarılı" olarak değişir. Ancak dağıtımdaki herhangi bir güncelleştirme başarısız olursa, durum "kısmen başarısız" olur.
 
-Bu dağıtımiçin panoyu görmek için tamamlanmış güncelleştirme dağıtımını seçin.
+Bu dağıtımın panosunu görmek için tamamlanan güncelleştirme dağıtımını seçin.
 
 ![Belirli bir dağıtım için Güncelleştirme Dağıtımı durum panosu](./media/tutorial-monitoring/manageupdates-view-results.png)
 
-**Güncelleştirme sonuçları** döşemesi, VM'deki toplam güncelleştirme ve dağıtım sonuçlarının bir özetini gösterir. Sağdaki tablo, her güncelleştirmenin ve yükleme sonuçlarının ayrıntılı bir dökümünü gösterir. Her sonuç aşağıdaki değerlerden birine sahiptir:
+**Güncelleştirme sonuçları** kutucuğu, sanal makine üzerindeki toplam güncelleştirme sayısı ve dağıtım sonuçlarının özetini gösterir. Sağdaki tabloda her güncelleştirmenin ayrıntılı bir dökümü ve yükleme sonuçları gösterilir. Her sonuç aşağıdaki değerlerden birine sahiptir:
 
-* **Denenmedi**: Güncelleştirme yüklü değil. Tanımlanan bakım penceresi süresine bağlı olarak yeterli zaman yoktu.
+* **Denenmedi**: güncelleştirme yüklü değil. Tanımlanan bakım penceresi süresine göre yeterli zaman yok.
 * **Başarılı**: Güncelleştirme başarılı oldu.
 * **Başarısız**: Güncelleştirme başarısız oldu.
 
 Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm günlükler**’i seçin.
 
-Hedef VM'de güncelleştirme dağıtımını yönetmekten sorumlu runbook'un iş akışını görmek için **Çıktı** döşemesini seçin.
+Hedef sanal makinede güncelleştirme dağıtımını yönetmekten sorumlu runbook 'un iş akışını görmek için **Çıkış** kutucuğunu seçin.
 
-Dağıtım hataları hakkında ayrıntılı bilgi görmek için **Hatalar'ı** seçin.
+Dağıtım hatalarıyla ilgili ayrıntılı bilgileri görmek için **hatalar** ' ı seçin.
 
 ## <a name="monitor-changes-and-inventory"></a>Değişiklikleri ve sayımı izleme
 
-Bilgisayarlarınızda yazılım, dosya, Linux daemons, Windows hizmetleri ve Windows kayıt defteri anahtarlarının envanterini toplayabilir ve görüntüleyebilirsiniz. Makinelerinizin yapılandırmalarını izlemek, ortamınızdaki operasyonel sorunları belirlemenize ve makinelerinizin durumunu daha iyi anlamanıza yardımcı olur.
+Bilgisayarlarınızda yazılım, dosya, Linux Daemon 'ları, Windows Hizmetleri ve Windows kayıt defteri anahtarlarının envanterini toplayabilir ve görüntüleyebilirsiniz. Makinelerinizin yapılandırmalarının izlenmesi, ortamınızda işletimsel sorunları belirlemenize ve makinelerinizin durumunu daha iyi anlamanıza yardımcı olur.
 
-### <a name="enable-change-and-inventory-management"></a>Değişim ve stok yönetimini etkinleştirme
+### <a name="enable-change-and-inventory-management"></a>Değişiklik ve stok yönetimini etkinleştir
 
-VM'iniz için değişim ve stok yönetimini etkinleştirmek için:
+VM 'niz için değişiklik ve stok yönetimini etkinleştirmek için:
 
-1. Pencerenin en sol tarafında **Sanal makineleri**seçin.
+1. Pencerenin en sol tarafında, **sanal makineler**' i seçin.
 1. Listeden bir VM seçin.
-1. VM penceresindeki **İşlemler** altında Stok **veya** **Değişiklik izlemeyi**seçin.
-1. **Değişim İzlemesini Etkinleştir ve Stok** bölmesi açılır.
+1. VM penceresinde **işlemler** ' in altında, **Envanter** veya **değişiklik izleme**' yi seçin.
+1. **Değişiklik izleme etkinleştirme ve envanter** bölmesi açılır.
 
-Konumu, Günlük Analitiği çalışma alanını ve Otomasyon hesabını kullanmak üzere yapılandırın ve ardından **Etkinleştir'i**seçin. Seçenekler soluk görünüyorsa, VM için bir otomasyon çözümü zaten etkinleştirilir. Bu durumda, zaten etkin leştirilmiş çalışma alanı ve Otomasyon hesabı kullanılmalıdır.
+Kullanılacak konumu, Log Analytics çalışma alanını ve otomasyon hesabını yapılandırın ve ardından **Etkinleştir**' i seçin. Seçenekler soluk görünüyorsa, VM için zaten bir otomasyon çözümü etkinleştirilmiştir. Bu durumda, zaten etkinleştirilmiş çalışma alanı ve Otomasyon hesabı kullanılmalıdır.
 
-Çözümler menüde ayrı ayrı görünse de, aynı çözümdür. Biri etkinleştirildiğinde, sanal makinenizde her ikisi de etkinleştirilir.
+Çözümler menüde ayrı olarak görünse de, aynı çözüm vardır. Biri etkinleştirildiğinde, sanal makinenizde her ikisi de etkinleştirilir.
 
 ![Değişiklik ve Sayım izlemeyi etkinleştirme](./media/tutorial-monitoring/manage-inventory-enable.png)
 
-Çözüm etkinleştirildikten sonra, verilerin görünmesi için envanterin VM'de toplanması biraz zaman alabilir.
+Çözüm etkinleştirildikten sonra, veriler görüntülenmeden önce VM 'de sayım toplanması biraz zaman alabilir.
 
 ### <a name="track-changes"></a>Değişiklikleri izleme
 
-**OPERATIONS**altındaki VM'nizde **İzlemeyi Değiştir'i** seçin ve ardından **Ayarları Edit'i**seçin. **Değişiklik İzleme** bölmesi açılır. İzlemek istediğiniz ayar türünü seçin ve **+ Ekle**’yi seçerek ayarları yapılandırın.
+**İşlem**kapsamındaki sanal makinenizde **değişiklik izleme** seçin ve ardından **Ayarları Düzenle**' yi seçin. **Değişiklik izleme** bölmesi açılır. İzlemek istediğiniz ayar türünü seçin ve **+ Ekle**’yi seçerek ayarları yapılandırın.
 
-Windows için kullanılabilir ayarlar şunlardır:
+Windows için kullanılabilir ayarlar seçenekleri şunlardır:
 
 * Windows Kayıt Defteri
 * Windows Dosyaları
 
-İzlemeyi Değiştir hakkında ayrıntılı bilgi için [VM'deki Sorun Giderme değişikliklerine](../../automation/automation-tutorial-troubleshoot-changes.md)bakın.
+Değişiklik İzleme hakkında ayrıntılı bilgi için bkz. [VM 'deki değişikliklerle Ilgili sorunları giderme](../../automation/automation-tutorial-troubleshoot-changes.md).
 
-### <a name="view-inventory"></a>Sayımı görüntüleme
+### <a name="view-inventory"></a>Envanteri görüntüleme
 
-Sanal makinenizde **İŞLEMLER** bölümünden **Sayım**’ı seçin. **Yazılım** sekmesinde, bulunan yazılımı gösteren bir tablo vardır. Her yazılım kaydının üst düzey ayrıntıları tabloda görünür. Bu ayrıntılar, yazılım adını, sürümü, yayımcıyı ve son yenilenen zamanı içerir.
+Sanal makinenizde **İŞLEMLER** bölümünden **Sayım**’ı seçin. **Yazılım** sekmesinde, bulunan yazılımın gösterildiği bir tablo vardır. Her yazılım kaydı için üst düzey Ayrıntılar tabloda görüntülenir. Bu ayrıntılar yazılım adı, sürüm, yayımcı ve son yenilenme süresini içerir.
 
-![Sayımı görüntüleme](./media/tutorial-monitoring/inventory-view-results.png)
+![Envanteri görüntüleme](./media/tutorial-monitoring/inventory-view-results.png)
 
 ### <a name="monitor-activity-logs-and-changes"></a>Etkinlik günlüklerini ve değişiklikleri izleme
 
-VM'nizdeki **İzlemeYi Değiştir** penceresinden **Azure Etkinliği günlük** bölmesini açmak için Etkinlik Günlüğü Bağlantısını **Yönet'i** seçin. VM'iniz için Değişiklik İzleme'yi Azure etkinlik günlüğüne bağlamak için **Bağlan'ı** seçin.
+VM 'nizin **değişiklik izleme** penceresinde, **Azure etkinlik günlüğü** bölmesini açmak Için **etkinlik günlüğü bağlantısını Yönet** ' i seçin. SANAL makinenizin Azure etkinlik günlüğüne Değişiklik İzleme bağlanmak için **Bağlan** ' ı seçin.
 
-Değişiklik İzleme etkinleştirildikten sonra, VM'niz için **Genel Bakış** bölmesine gidin ve VM'nizi durdurmak için **Durdur'u** seçin. Sorulduğunda **Evet**'i seçerek VM'yi durdurun. VM ayrıldıktan sonra, VM'nizi yeniden başlatmak için **Başlat'ı** seçin.
+Değişiklik İzleme etkinleştirildikten sonra, sanal makinenizin **genel bakış** bölmesine gıdın ve VM 'nizi durdurmak için **Durdur** ' u seçin. Sorulduğunda **Evet**'i seçerek VM'yi durdurun. VM serbest bırakıldıktan sonra, sanal makineyi yeniden başlatmak için **Başlat** ' ı seçin.
 
-Bir VM'yi durdurma ve yeniden başlatma, etkinlik günlüğünde bir olayı günlüğe kaydeder. **İzleme** bölmesine geri dön ve bölmenin altındaki **Olaylar** sekmesini seçin. Bir süre sonra, olaylar grafikte ve tabloda görünür. Bu olay için ayrıntılı bilgileri görüntülemek için her olayı seçebilirsiniz.
+Bir VM 'yi durdurma ve yeniden başlatma, etkinlik günlüğünde bir olay günlüğe kaydeder. **Değişiklik izleme** bölmesine dönün ve bölmenin altındaki **Olaylar** sekmesini seçin. Bir süre sonra, olaylar grafikte ve tabloda görüntülenir. Bu olayla ilgili ayrıntılı bilgileri görüntülemek için her bir olayı seçebilirsiniz.
 
 ![Etkinlik günlüğünde değişiklikleri görüntüleme](./media/tutorial-monitoring/manage-activitylog-view-results.png)
 
-Önceki grafik, zaman içinde gerçekleşen değişiklikleri gösterir. Azure Etkinlik Günlüğü bağlantısı ekledikten sonra, üstteki çizgi grafiği Azure Etkinlik Günlüğü etkinliklerini görüntüler.
+Önceki grafik zaman içinde oluşan değişiklikleri gösterir. Bir Azure etkinlik günlüğü bağlantısı ekledikten sonra üstteki çizgi grafiğinde Azure etkinlik günlüğü olayları görüntülenir.
 
-Çubuk grafiklerin her satırı farklı bir izlenebilir değişiklik türünü temsil eder. Bu tür Linux daemons, dosyalar, Windows kayıt defteri anahtarları, yazılım ve Windows hizmetleri vardır. **Değiştir** sekmesi değişiklik ayrıntılarını gösterir. Değişiklikler, her birinin oluştuğu sırada görünür ve en son değişiklik önce gösterilir.
+Çubuk grafiklerin her bir satırı, farklı bir rafa yerleştirilebilir değişiklik türünü temsil eder. Bu türler Linux Daemon 'ları, dosyalar, Windows kayıt defteri anahtarları, yazılımlar ve Windows hizmetlerdir. **Değişiklik** sekmesinde değişiklik ayrıntıları gösterilir. Değişiklikler her oluştuğunda, en son değişiklikle önce gösterilen şekilde görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, VM'iniz için Değişiklik İzleme ve Güncelleştirme Yönetimi'ni yapılandırmış ve gözden geçirmişsiniz. Şunları öğrendiniz:
+Bu öğreticide, VM 'niz için Değişiklik İzleme ve Güncelleştirme Yönetimi yapılandırdınız ve gözden geçirdiniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Bir kaynak grubu ve VM oluşturun.
-> * Windows güncelleştirmelerini yönetin.
-> * Değişiklikleri ve envanteri izleyin.
+> * Kaynak grubu ve VM oluşturma.
+> * Windows güncelleştirmelerini yönetme.
+> * Değişiklikleri ve stoku izleyin.
 
-VM'nizi izleme hakkında bilgi edinmek için bir sonraki öğreticiye gidin.
+VM 'nizi izleme hakkında bilgi edinmek için sonraki Öğreticiye gidin.
 
 > [!div class="nextstepaction"]
 > [Sanal makineleri izleme](tutorial-monitor.md)

@@ -1,25 +1,20 @@
 ---
-title: Öğretici - Azure'da Windows VM'leri için Azure Güvenlik Merkezi'ni kullanma
+title: Öğretici-Azure 'da Windows VM 'Leri için Azure Güvenlik Merkezi 'Ni kullanma
 description: Bu öğreticide, Azure’da Windows sanal makinelerinizi korumaya ve güvenliğini sağlamaya yardımcı olmak için Azure Güvenlik Merkezi özelliklerini öğreneceksiniz.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8979206096896d30338af58387a312617144fd1f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456235"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100490"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Öğretici: Windows sanal makinelerini izlemek için Azure Güvenlik Merkezi kullanma
 
@@ -61,9 +56,9 @@ Güvenlik ilkeleri, Güvenlik Merkezi’nin kendisi için veriler topladığı v
 
 Aboneliğin tümüne bir güvenlik ilkesi oluşturmak için:
 
-1. Güvenlik Merkezi panosunda **Güvenlik ilkesini** seçin ve ardından aboneliğinizi seçin.
+1. Güvenlik Merkezi panosunda **güvenlik ilkesi** ' ni seçin ve ardından aboneliğinizi seçin.
 2. **Güvenlik ilkesi** dikey penceresinde **Güvenlik ilkesini** seçin. 
-3. Güvenlik **ilkesinde - Güvenlik ilkesi** bıçak, abonelik için uygulamak istediğiniz ilke öğelerini açın veya kapatın.
+3. **Güvenlik ilkesi-güvenlik ilkesi** dikey penceresinde, aboneliğe uygulamak istediğiniz ilke öğelerini açın veya kapatın.
 4. Ayarlarınızı seçmeyi tamamladığınızda dikey pencerenin en üstünden **Kaydet**'i seçin. 
 
 
@@ -103,9 +98,9 @@ Tüm önerilerin listesini göstermek için:
 
 ## <a name="view-detected-threats"></a>Algılanan tehditleri görüntüleme
 
-Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama yetenekleri hakkında ayrıntılı bilgi için, [Güvenlik Merkezi'nin tehditleri nasıl algıladığını görün?](../../security-center/security-center-alerts-overview.md#detect-threats)
+Güvenlik Merkezi, kaynak yapılandırma önerilerine ek olarak tehdit algılama uyarıları görüntüler. Güvenlik uyarıları özelliği, Azure kaynaklarına karşı güvenlik tehditlerini algılamak için her bir sanal makineden, Azure ağ bağlantısı günlükleri ve bağlantılı iş ortağı çözümlerinden toplanan verileri bir araya getirir. Güvenlik Merkezi tehdit algılama özellikleri hakkında ayrıntılı bilgi için bkz. [Güvenlik Merkezi tehditleri nasıl algılar?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
-Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu yüksek fiyatlandırma katmanına taşındığınızda **ücretsiz deneme** sürümü kullanılabilir. 
+Güvenlik uyarıları özelliği, Güvenlik Merkezi fiyatlandırma katmanının *Ücretsiz* katmanından *Standart* katmanına yükseltilmesini gerektirir. Bu daha yüksek fiyatlandırma katmanına geçtiğinizde **ücretsiz deneme sürümü** kullanılabilir. 
 
 Fiyatlandırma katmanını değiştirmek için:  
 

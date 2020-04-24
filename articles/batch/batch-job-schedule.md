@@ -1,85 +1,78 @@
 ---
 title: İşlerinizi zamanlayın
-description: Görevlerinizi yönetmek için iş zamanlamasını kullanın.
-services: batch
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
-ms.service: batch
+description: Görevlerinizi yönetmek için iş zamanlamayı kullanın.
 ms.topic: article
-ms.workload: big-compute
 ms.date: 02/20/2020
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 55ea8fb4cc0e65deaa89d718c4a46513716dcf54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 49b2064d38f9f646c6189d859479d2414569ff60
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78672439"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116885"
 ---
-# <a name="schedule-jobs-for-efficiency"></a>Verimlilik için işleri zamanlama
+# <a name="schedule-jobs-for-efficiency"></a>İşleri verimlilik için zamanlama
 
-Toplu işlerini zamanlama, diğer görevlere bağımlı olan görevleri hesaba katarak önce çalıştırmak istediğiniz işlere öncelik vermenizi sağlar. İşlerinizi zamanlayarak, en az miktarda kaynak kullandığınızdan emin olabilirsiniz. Düğümler gerekli olmadığında devre dışı bırakılabilir, diğer görevlere bağımlı görevler tam zamanında iş akışlarını optimize eder. Aynı anda sadece bir iş çalışır. Yenisi, bir önceki tamamlanana kadar başlamaz. İşinizi otomatik tamamlama ya da otomatik tamamlama olarak ayarlayabilirsiniz. 
+Batch işlerinin zamanlanması, diğer görevlere bağımlılıkları olan hesap görevlerini yaparken önce çalıştırmak istediğiniz işlerin önceliklerini belirlemenizi sağlar. İşlerinizi zamanlayarak, en az miktarda kaynak kullandığınızdan emin olabilirsiniz. Düğüm, gerekli olmadığında kullanımdan kaldırılır, diğer görevlere bağımlı olan görevler, iş akışlarını en iyi duruma getirmek için bir süre sonra sona erdirir. Tek seferde yalnızca bir iş çalışır. Önceki bir işlem tamamlanana kadar yeni bir tane başlatılmaz. İşinizi otomatik tamamlama olarak ayarlayabilirsiniz. 
 
-## <a name="benefit-of-job-scheduling"></a>İş planlamasının avantajı
+## <a name="benefit-of-job-scheduling"></a>İş zamanlama avantajı
 
-İşleri zamanlamanın yararı, iş oluşturma için bir zamanlama belirtebilmektir. İş yöneticisi görevini kullanarak zamanladığınız görevler bir işle ilişkilidir. İş yöneticisi görevi iş için görevler oluşturur. Bunu yapmak için, iş yöneticisi görevinin Toplu İşlem hesabıyla kimlik doğrulaması gerekir. AZ_BATCH_AUTHENTICATION_TOKEN erişim jetonunu kullanın. Belirteç, işin geri kalanına erişim sağlar. 
+İşlerin zamanlanması, iş oluşturma için bir zamanlama belirtmektir. İş Yöneticisi görevini kullanarak zamanladığınız görevler bir işle ilişkilendirilir. İş Yöneticisi görevi iş için görevler oluşturacaktır. Bunu yapmak için, iş yöneticisi görevinin Batch hesabıyla kimlik doğrulaması yapması gerekir. AZ_BATCH_AUTHENTICATION_TOKEN erişim belirtecini kullanın. Belirteç, işin geri kalanına erişime izin verir. 
 
-## <a name="use-the-portal-to-schedule-a-job"></a>Bir iş planlamak için portalı kullanma
+## <a name="use-the-portal-to-schedule-a-job"></a>Bir işi zamanlamak için portalı kullanma
 
-   1. [Azure portalında](https://portal.azure.com/)oturum açın.
+   1. [Azure Portal](https://portal.azure.com/)oturum açın.
 
-   2. İşleri zamanlamak istediğiniz Toplu İş hesabını seçin.
+   2. İşleri zamanlamak istediğiniz Batch hesabını seçin.
 
-   3. Yeni bir iş çizelgesi oluşturmak ve **Temel formu**tamamlamak için **Ekle'yi** seçin.
+   3. **Ekle** ' yi seçerek yeni bir iş zamanlaması oluşturun ve **temel formu**doldurun.
 
 
 
-![Bir iş zamanlama][1]
+![İş zamanlama][1]
 
-**İş çizelgesi Kimliği**: Bu iş zamanlaması için benzersiz tanımlayıcı.
+**İş ZAMANLAMASı kimliği**: Bu iş zamanlaması için benzersiz tanımlayıcı.
 
-**Ekran adı**: İş için görüntü adı benzersiz olmak zorunda değildir, ancak en fazla 1024 karakter uzunluğundadır.
+**Görünen ad**: işin görünen adının benzersiz olması gerekmez, ancak en fazla 1024 karakter uzunluğunda olmalıdır.
 
-**Kadar çalıştırmayın**: İşin en erken ne zaman çalışacağını belirtir. Bunu ayarlamazsanız, zamanlama işleri hemen çalıştırmaya hazır hale gelir.
+**Şu kadar çalıştırmayın**: işin çalıştırılacağı en erken zamanı belirtir. Bunu ayarlamazsanız, zamanlama işleri hemen çalıştırmaya hazır hale gelir.
 
-**Sonra çalışma :** Burada ayarladığınız süre den sonra hiçbir iş çalıştırın. Bir zaman belirtmezseniz, bunu açıkça sonlandırana kadar etkin kalan yinelenen bir iş zamanlamasını oluşturursunuz.
+**Sonrasında çalıştırma**: burada ayarladığınız zamandan sonra iş çalıştırılmadı. Bir zaman belirtmezseniz, açıkça sonlanana kadar etkin olmaya devam eden yinelenen bir iş zamanlaması oluşturuyorsunuz.
 
-**Yineleme aralığı**: İşler arasındaki süreyi belirtebilirsiniz. Zamanlanan bir anda yalnızca bir iş olabilir, bu nedenle bir iş zamanlaması altında yeni bir iş oluşturma nın zamanı geldiyse, ancak önceki iş hala çalışıyorsa, Toplu İşlem hizmeti önceki iş bitene kadar yeni iş oluşturmaz.  
+**Yinelenme aralığı**: işler arasındaki süreyi belirtebilirsiniz. Zamanlanan bir zamanda yalnızca bir iş olabilir, bu nedenle bir iş zamanlaması altında yeni bir iş oluşturmak zaman alıyorsa, ancak önceki iş hala çalışıyorsa, Batch hizmeti, önceki iş bitene kadar yeni işi oluşturmaz.  
 
-**Başlangıç penceresi**: Burada zamanlamanın bir işin oluşturulması gerektiğini gösterdiği andan başlayarak, tamamlanması gerekene kadar zaman aralığını belirtirsiniz. Geçerli iş penceresi sırasında tamamlanmazsa, bir sonraki iş başlamaz.
+**Başlangıç penceresi**: burada, zaman aralığını, zamanlamanın bir işin oluşturulması gerektiğini gösterdiği ve tamamlanması gerektiği zamana kadar belirtirsiniz. Geçerli iş kendi penceresi sırasında tamamlanmazsa, bir sonraki iş başlamaz.
 
-Temel formun alt kısmında, işin çalışmasını istediğiniz havuzu belirtirsiniz. Havuz kimliği bilgilerinizi bulmak için **Güncelleştir'i**seçin. 
+Temel formun en altında, işin çalıştırılmasını istediğiniz havuzu belirtirsiniz. Havuz KIMLIĞI bilgilerinizi bulmak için **Güncelleştir**' i seçin. 
 
 ![Havuzu belirtin][2]
 
 
-**Havuz Kimliği**: İşi çalıştıracağınız havuzu belirleyin.
+**Havuz kimliği**: işin çalıştırılacağı havuzu belirler.
 
-**İş yapılandırma görevi**: İş Yöneticisi görevini ve bunları kullanıyorsanız İş hazırlama ve bırakma görevlerini adlandırmak için **Güncelleştirme'yi** seçin.
+**İş yapılandırma görevi**: iş yöneticisi görevinin ve bunları kullanıyorsanız iş hazırlama ve bırakma görevlerinin adını vermek için **Güncelleştir** ' i seçin.
 
-**Öncelik**: İşe öncelik verin.
+**Öncelik**: işe bir öncelik verin.
 
-**Maksimum duvar saati süresi**: İşin çalıştırabileceği maksimum süreyi ayarlayın. Bu süre içinde tamamlanmamışsa, Toplu Iş işi sona erdirir. Bunu ayarlamazsanız, iş için bir zaman sınırı yoktur.
+**Maksimum duvar saati zamanı**: işin çalışacağı maksimum süreyi ayarlayın. Zaman dilimi içinde tamamlanmazsa toplu iş işi sonlandırır. Bunu ayarlamazsanız, iş için zaman sınırı yoktur.
 
-**Maksimum görev yeniden deneme sayısı**: Bir görevin en fazla dört kez yeniden denenme sayısını belirtin. Bu, bir API çağrısının sahip olabileceği yeniden deneme sayısıyla aynı değildir.
+**En fazla görev yeniden deneme sayısı**: bir görevin en fazla dört kata kaç kez yeniden deneneceğini belirtin. Bu, bir API çağrısının sahip olabileceği yeniden deneme sayısı ile aynı değildir.
 
-**Tüm görevler tamamlandığında**: Varsayılan eylem değildir.
+**Tüm görevler tamamlandığında**: varsayılan eylem değildir.
 
-**Bir görev başarısız olduğunda**: Varsayılan eylem değildir. Yeniden deneme sayısı tükenmişse veya görevi başlatırken bir hata varsa görev başarısız olur. 
+**Bir görev başarısız olduğunda**: varsayılan eylem değildir. Yeniden deneme sayısı tükenirse veya görev başlatılırken bir hata oluşursa bir görev başarısız olur. 
 
-**Kaydet'i**seçtikten sonra, sol navigasyonda **İş zamanlamalarına** giderseniz, **Yürütme bilgilerini**seçerek işin yürütülmesini izleyebilirsiniz.
+**Kaydet**' i seçtikten sonra, sol gezinti bölmesinde **iş zamanlamalarına** giderseniz, **yürütme bilgileri**' ni seçerek işin yürütülmesini izleyebilirsiniz.
 
 
 ## <a name="for-more-information"></a>Daha fazla bilgi edinmek için
 
-Azure CLI'yi kullanarak bir işi yönetmek için [az toplu iş zamanlamasına](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest)bakın.
+Azure CLı kullanarak bir işi yönetmek için, bkz. [az Batch Job-Schedule](https://docs.microsoft.com/cli/azure/batch/job-schedule?view=azure-cli-latest).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Diğer görevlere bağlı görevleri çalıştırmak için görev bağımlılıkları oluşturun.](batch-task-dependencies.md)
+[Diğer görevlere bağımlı görevleri çalıştırmak için görev bağımlılıkları oluşturun](batch-task-dependencies.md).
 
 
 

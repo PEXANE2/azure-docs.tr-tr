@@ -1,25 +1,20 @@
 ---
-title: Öğretici - Azure portalında Windows sanal makinelerini yedekleme
+title: Öğretici-Azure portal Windows sanal makinelerini yedekleme
 description: Bu öğreticide, Azure Backup ile Windows sanal makinelerinizi korumak için Azure portalını kullanmayı öğreneceksiniz.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: recovery
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e1fa85dc63bc23760888192f2118158e73320a86
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456116"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100439"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Öğretici: Azure'da Windows sanal makineleri için dosyaları yedekleme ve geri yükleme
 
@@ -32,7 +27,7 @@ Düzenli aralıklarla yedekleme yaparak verilerinizi koruyabilirsiniz. Azure Bac
 
 ## <a name="backup-overview"></a>Backup’a genel bakış
 
-Azure Backup hizmeti bir yedekleme işi başlattığında, yedekleme uzantısını zaman içinde bir noktanın anlık görüntüsü alacak şekilde tetikler. Azure Yedekleme hizmeti [VMSnapshot uzantısını](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)kullanır. Uzantı, VM’nin çalışıyor olması durumunda ilk VM yedeklemesi sırasında yüklenir. VM çalışmıyorsa Backup hizmeti, temel alınan depolamanın anlık görüntüsünü alır (VM durduğunda herhangi bir uygulama yazma işlemi gerçekleşmediği için).
+Azure Backup hizmeti bir yedekleme işi başlattığında, yedekleme uzantısını zaman içinde bir noktanın anlık görüntüsü alacak şekilde tetikler. Azure Backup hizmeti [VMSnapshot uzantısını](https://docs.microsoft.com/azure/virtual-machines/extensions/vmsnapshot-windows)kullanır. Uzantı, VM’nin çalışıyor olması durumunda ilk VM yedeklemesi sırasında yüklenir. VM çalışmıyorsa Backup hizmeti, temel alınan depolamanın anlık görüntüsünü alır (VM durduğunda herhangi bir uygulama yazma işlemi gerçekleşmediği için).
 
 Windows VM'lerinin anlık görüntüsü alınırken, Backup hizmeti Birim Gölge Kopyası Hizmeti (VSS) ile eşgüdümlü çalışarak sanal makine disklerinin tutarlı bir anlık görüntüsünü elde eder. Azure Backup hizmeti anlık görüntüyü aldıktan sonra veriler kasaya aktarılır. Verimliliği maksimuma çıkarmak için hizmet yalnızca bir önceki yedeklemeden itibaren değişmiş olan veri bloklarının aktarımını yapar.
 
@@ -44,12 +39,12 @@ Kurtarma Hizmetleri Kasasına basit bir zamanlanmış günlük yedekleme oluştu
 1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Sol taraftaki menüden **Sanal makineler**'i seçin. 
 1. Listeden yedekleyeceğiniz VM'yi seçin.
-1. VM bıçağında, **İşlemler** bölümünde **Yedekleme'yi**tıklatın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
+1. VM dikey penceresinde, **işlemler** bölümünde, **Yedekle**' ye tıklayın. **Yedeklemeyi etkinleştir** dikey penceresi açılır.
 1. **Kurtarma Hizmetleri kasası**’nda **Yeni oluştur**’a tıklayıp yeni kasa için ad belirtin. Sanal makineyle aynı kaynak grubunda ve konumda yeni bir kasa oluşturulur.
-1. **Yedekleme ilkesini seç**altında varsayılan **(Yeni) DailyPolicy'yi**tutun ve ardından **Yedeklemeyi Etkinleştir'i**tıklatın.
+1. **Yedekleme Ilkesi Seç**altında, varsayılan **(yeni) Dailypolicy**' ı seçin ve ardından **yedeklemeyi etkinleştir**' e tıklayın.
 1. Başlangıç kurtarma noktası oluşturmak için **Yedekleme** dikey penceresinde **Şimdi yedekle** seçeneğine tıklayın.
-1. Yedekleme **Şimdi** bıyıcağı'nda takvim simgesini tıklatın, geri yükleme noktasının ne kadar süreyle tutuleceğini seçmek için takvim denetimini kullanın ve **Tamam'ı**tıklatın.
-1. VM'nizin **Yedekleme** bıçağında, tamamlanan geri yükleme noktalarının sayısını görürsünüz.
+1. **Şimdi Yedekle** dikey penceresinde Takvim simgesine tıklayın, geri yükleme noktasının ne kadar süreyle tutulacağını seçmek için Takvim denetimini kullanın ve **Tamam**' a tıklayın.
+1. VM 'niz için **yedekleme** dikey penceresinde, tamamlanmış geri yükleme noktası sayısını görürsünüz.
 
 
     ![Kurtarma noktaları](./media/tutorial-backup-vms/backup-complete.png)
@@ -74,17 +69,17 @@ Bu örnekte, IIS'nin varsayılan web sayfasında kullanılan görüntü dosyası
 
 1. Yerel bilgisayarınızda, yeni bir sekme açın ve [Azure portal](https://portal.azure.com)'a gidin.
 1. Sol taraftaki menüde **Sanal makineler**'i ve listedeki VM'lerden birini seçin.
-1. VM bıçağında, **İşlemler** bölümünde **Yedekleme'yi**tıklatın. **Yedekleme** dikey penceresi açılır. 
+1. VM dikey penceresinde, **işlemler** bölümünde, **Yedekle**' ye tıklayın. **Yedekleme** dikey penceresi açılır. 
 1. Dikey pencerenin üst tarafındaki menüde **Dosya Kurtarma** seçeneğini belirleyin. **Dosya Kurtarma** dikey penceresi açılır.
 1. **1. Adım: Kurtarma noktasını seçme** bölümünde, açılır menüden bir kurtarma noktası seçin.
 1. **2. Adım: Dosyalara göz atmak ve kurtarmak için betiği indirme indirme** bölümünde **Yürütülebilir Dosyayı İndir** düğmesine tıklayın. Dosyanın parolasını kopyalayın ve güvenli bir yere kaydedin.
 1. Yerel bilgisayarınızda **Dosya Gezgini**'ni açın, **İndirilenler** klasörünüze gidin ve indirilen .exe dosyasını kopyalayın. Dosya adında ön ek olarak VM adınız bulunur. 
-1. VM'nizde (RDP bağlantısını kullanarak), .exe dosyasını VM'nizin masaüstüne yapıştırın. 
-1. VM'nizin masaüstüne gidin ve .exe dosyasına çift tıklayın. Bir komut istemi başlatılacaktır. Program, erişebileceğiniz bir dosya paylaşımı olarak kurtarma noktasını bağlar. Paylaşımı oluşturmayı tamamladığında, **q** yazarak komut istemini kapatın.
+1. VM 'niz (RDP bağlantısını kullanarak),. exe dosyasını sanal makinenizin masaüstüne yapıştırın. 
+1. VM'nizin masaüstüne gidin ve .exe dosyasına çift tıklayın. Bir komut istemi başlatılır. Program, kurtarma noktasını erişebileceğiniz bir dosya paylaşma olarak takar. Paylaşımı oluşturmayı tamamladığında, **q** yazarak komut istemini kapatın.
 1. VM'nizde **Dosya Gezgini**'ni açın ve dosya paylaşımı için kullanılmış olan sürücü harfine gidin.
 1. \inetpub\wwwroot konumuna gidin ve dosya paylaşımından **iisstart.png** dosyasını kopyalayıp \inetpub\wwwroot konumuna yapıştırın. Örneğin, F:\inetpub\wwwroot\iisstart.png dosyasını kopyalayın ve dosyayı kurtarmak için bunu c:\inetpub\wwwroot konumuna yapıştırın.
 1. Yerel bilgisayarınızda, IIS varsayılan sayfasını gösteren VM'nin IP adresine bağlandığınız tarayıcı sekmesini açın. Tarayıcı sayfasını yenilemek için CTRL + F5 tuşlarına basın. Artık görüntünün geri yüklendiğini görüyor olmalısınız.
-1. Yerel bilgisayarınızda Azure portalı için tarayıcı sekmesine geri dönün ve **3. Adım: Kurtarma işleminden sonra diskleri çıkarma** bölümünde **Diskleri Çıkar** düğmesine tıklayın. Bu adımı gerçekleştirmeyi unutursanız takma noktası ile bağlantı 12 saatin sonunda otomatik olarak kesilir. Bu 12 saatten sonra, yeni bir montaj noktası oluşturmak için yeni bir komut dosyası indirmeniz gerekir.
+1. Yerel bilgisayarınızda Azure portalı için tarayıcı sekmesine geri dönün ve **3. Adım: Kurtarma işleminden sonra diskleri çıkarma** bölümünde **Diskleri Çıkar** düğmesine tıklayın. Bu adımı gerçekleştirmeyi unutursanız takma noktası ile bağlantı 12 saatin sonunda otomatik olarak kesilir. Bu 12 saat sonra yeni bir bağlama noktası oluşturmak için yeni bir betik indirmeniz gerekir.
 
 
 

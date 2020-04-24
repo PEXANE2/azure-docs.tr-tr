@@ -1,7 +1,7 @@
 ---
-title: Form Recognizer örnek etiketleme aracı nasıl dağıtılır?
+title: Form tanıyıcı örnek etiketleme aracını dağıtma
 titleSuffix: Azure Cognitive Services
-description: Denetimli öğrenime yardımcı olmak için Form Tanıyıcısı örnek etiketleme aracını dağıtmanın farklı yollarını öğrenin.
+description: Denetimli öğrenme konusunda yardımcı olmak için form tanıyıcı örnek etiketleme aracını dağıtmanıza yönelik farklı yollar edinin.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,120 +9,120 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 7ddb4b2cd465b5e9542d777d33b9bd8cb952becd
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 27afbafcadb4c482e97e1d003706e7d2712e63c9
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81531346"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117276"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
-Form Recognizer örnek etiketleme aracı, denetimli öğrenme amacıyla formları (belgeleri) el ile etiketlemek için kullanabileceğiniz basit bir kullanıcı arabirimi (UI) sağlayan bir uygulamadır. Bu makalede, size nasıl yapılacağını öğreten bağlantılar ve talimatlar sağlayacağız:
+Form tanıyıcı örnek etiketleme aracı basit bir kullanıcı arabirimi (UI) sağlayan bir uygulamadır. Bu, denetimli öğrenme amacıyla formları (belgeler) el ile etiketlemek için kullanabileceğiniz bir uygulamadır. Bu makalede, aşağıdakileri nasıl yapılacağını öğreten bağlantılar ve yönergeler sunuyoruz:
 
 * [Örnek etiketleme aracını yerel olarak çalıştırma](#run-the-sample-labeling-tool-locally)
-* [Örnek etiketleme aracını Azure Kapsayıcı Örneği'ne (ACI) dağıtma](#deploy-with-azure-container-instances-aci)
-* [Açık kaynak ocr form etiketleme aracını kullanın ve katkıda bulunun](#open-source-on-github)
+* [Örnek etiketleme aracını bir Azure Container Instance 'a (acı) dağıtma](#deploy-with-azure-container-instances-aci)
+* [Açık kaynak OCR formu etiketleme aracını kullanma ve bunlara katkıda bulunma](#open-source-on-github)
 
 ## <a name="run-the-sample-labeling-tool-locally"></a>Örnek etiketleme aracını yerel olarak çalıştırma
 
-Verileri etiketlemeye başlamanın en hızlı yolu, örnek etiketleme aracını yerel olarak çalıştırmaktır. Aşağıdaki quickstart, el ile etiketlenmiş verilerle özel bir model eğitmek için Form Recognizer REST API'yi ve örnek etiketleme aracını kullanır. 
+Verileri etiketlemenin en hızlı yolu, örnek etiketleme aracını yerel olarak çalıştırkullanmaktır. Aşağıdaki hızlı başlangıçta, el ile etiketlenmiş verilerle özel bir modeli eğiten, form tanıyıcı REST API ve örnek etiketleme aracı kullanılmaktadır. 
 
-* [Quickstart: Formları etiketle, bir modeli eğitin ve örnek etiketleme aracını kullanarak formu analiz edin.](./quickstarts/label-tool.md)
+* [Hızlı başlangıç: formları etiketleme, model eğitme ve örnek etiketleme aracını kullanarak bir formu analiz etme](./quickstarts/label-tool.md).
 
-## <a name="deploy-with-azure-container-instances-aci"></a>Azure Kapsayıcı Örnekleri (ACI) ile dağıtma
+## <a name="deploy-with-azure-container-instances-aci"></a>Azure Container Instances (ACI) ile dağıtma
 
-Başlamadan önce, örnek etiketleme aracını bir Azure Kapsayıcı Örneği'ne (ACI) dağıtmanın iki yolu olduğunu unutmayın. Örnek etiketleme aracını ACI ile çalıştırmak için her iki seçenek de kullanılır: 
+Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (acı) dağıtmanın iki yolu olduğunu unutmayın. Örnek etiketleme aracını ACI ile çalıştırmak için her iki seçenek de kullanılır: 
 
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI kullanma](#azure-cli)
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure portalını kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
+Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
 1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
-3. Ardından, **Web Uygulaması'nı**seçin. 
+3. Ardından **Web uygulaması**' nı seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Web uygulamasını seçin](./media/quickstarts/formre-create-web-app.png)
+   > ![Web uygulaması Seç](./media/quickstarts/formre-create-web-app.png)
    
-4. İlk olarak, **Temeller** sekmesinin seçildiğinden emin olun. Şimdi, bazı bilgiler vermeniz gerekecek: 
+4. İlk olarak, **temel bilgiler** sekmesinin seçili olduğundan emin olun. Şimdi bazı bilgiler sağlamanız gerekir: 
 
    > [!div class="mx-imgBorder"]
-   > ![Temel Bilgileri Seçin](./media/quickstarts/formre-select-basics.png)
-   * Abonelik - Varolan bir Azure aboneliğini seçin
-   * Kaynak Grubu - Varolan bir kaynak grubunu yeniden kullanabilir veya bu proje için yeni bir kaynak oluşturabilirsiniz. Yeni bir kaynak grubu oluşturulması önerilir.
-   * Ad - Web uygulamanıza bir ad verin. 
-   * Yayımla - **Docker Konteyner'i** Seçin
-   * İşletim Sistemi - **Linux'u** Seçin
-   * Bölge - Sizin için mantıklı bir bölge seçin.
-   * Linux Planı - Uygulama hizmetiniz için bir fiyatlandırma katmanı/planı seçin. 
+   > ![Temelleri seçin](./media/quickstarts/formre-select-basics.png)
+   * Abonelik-mevcut bir Azure aboneliğini seçin
+   * Kaynak grubu-var olan bir kaynak grubunu yeniden kullanabilir veya bu proje için yeni bir tane oluşturabilirsiniz. Yeni bir kaynak grubu oluşturmak önerilir.
+   * Ad-Web uygulamanıza bir ad verin. 
+   * Yayımla- **Docker kapsayıcısı** Seç
+   * İşletim sistemi- **Linux** seçin
+   * Bölge-sizin için anlamlı bir bölge seçin.
+   * Linux planı-uygulama hizmetiniz için bir fiyatlandırma katmanı/planı seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Web uygulamanızı yapılandırın](./media/quickstarts/formre-select-docker-linux.png)
+   > ![Web uygulamanızı yapılandırma](./media/quickstarts/formre-select-docker-linux.png)
 
-5. Ardından **Docker** sekmesini seçin. 
-
-   > [!div class="mx-imgBorder"]
-   > ![Docker'ı seçin](./media/quickstarts/formre-select-docker.png)
-
-6. Şimdi Docker kabınızı yapılandıralım. Aksi belirtilmedikçe tüm alanlar gereklidir:
-
-   * Seçenekler - **Tek Kapsayıcı** seçin
-   * Resim Kaynağı - **Özel Kayıt Defteri'ni** Seçin 
-   * Sunucu URL 'i - Bunu`https://mcr.microsoft.com`
-   * Kullanıcı adı (İsteğe Bağlı) - Bir kullanıcı adı oluşturun. 
-   * Parola (İsteğe Bağlı) - Hatırlayacağınız güvenli bir parola oluşturun.
-   * Resim ve etiket - Bunu`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
-   * Sürekli Dağıtım - Geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Aç** olarak ayarlayın.
-   * Başlangıç komutu - Bunu`./run.sh eula=accept`
+5. Sonra **Docker** sekmesini seçin. 
 
    > [!div class="mx-imgBorder"]
-   > ![Docker'ı yapılandır](./media/quickstarts/formre-configure-docker.png)
+   > ![Docker 'ı seçin](./media/quickstarts/formre-select-docker.png)
 
-7. İşte bu kadar. Ardından, **Gözden Geçir + Oluştur'u**seçin, ardından web uygulamanızı dağıtmak için **Oluşturun'ü** oluşturun. Tamamlandığında, kaynağınız için **Genel Bakış'ta** sağlanan URL'den web uygulamanıza erişebilirsiniz.
+6. Şimdi Docker kapsayıcınızı yapılandıralim. Aksi belirtilmediği takdirde tüm alanlar gereklidir:
+
+   * Seçenekler- **tek kapsayıcı** seçin
+   * Görüntü kaynağı- **özel kayıt defteri** seçme 
+   * Sunucu URL 'SI-bunu olarak ayarlayın`https://mcr.microsoft.com`
+   * Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
+   * Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
+   * Image ve Tag-bunu olarak ayarla`mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest`
+   * Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
+   * Başlangıç komutu-bunu olarak ayarlayın`./run.sh eula=accept`
+
+   > [!div class="mx-imgBorder"]
+   > ![Docker 'ı yapılandırma](./media/quickstarts/formre-configure-docker.png)
+
+7. İşte bu kadar. Ardından Web uygulamanızı dağıtmak için **gözden geçir + oluştur**' u ve ardından **Oluştur** ' u seçin. Tamamlandığında, Web uygulamanıza, kaynağınız için **genel bakış** bölümünde belirtilen URL 'de erişebilirsiniz.
 
 > [!NOTE]
-> Web uygulamanızı oluştururken yetkilendirme/kimlik doğrulaması da yapılandırabilirsiniz. Bu başlamak için gerekli değildir. 
+> Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir. 
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure portalını kullanmaya alternatif olarak, Azure CLI'yi kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI'yi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)yüklemeniz gerekir. Azure CLI ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
+Azure portal kullanmaya alternatif olarak, Azure CLı kullanarak bir kaynak oluşturabilirsiniz. Devam etmeden önce [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)'yı yüklemeniz gerekir. Azure CLı ile zaten çalışıyorsanız bu adımı atlayabilirsiniz. 
 
-Bu komut hakkında bilmeniz gereken birkaç şey var:
+Bu komutla ilgili bilmeniz gereken birkaç nokta vardır:
 
-* `DNS_NAME_LABEL=aci-demo-$RANDOM`rasgele bir DNS adı oluşturur. 
-* Bu örnek, kaynak oluşturmak için kullanabileceğiniz bir kaynak grubunuz olduğunu varsayar. Aboneliğinizle ilişkili geçerli bir kaynak grubuyla değiştirin. `<resource_group_name>` 
-* Kaynağı nerede oluşturmak istediğinizi belirtmeniz gerekir. Web `<region name>` uygulaması için istediğiniz bölge ile değiştirin. 
-* Bu komut otomatik olarak EULA'yı kabul eder.
+* `DNS_NAME_LABEL=aci-demo-$RANDOM`Rastgele bir DNS adı üretir. 
+* Bu örnek, kaynak oluşturmak için kullanabileceğiniz bir kaynak grubunuz olduğunu varsayar. Aboneliğinizle `<resource_group_name>` ilişkili geçerli bir kaynak grubuyla değiştirin. 
+* Kaynağı oluşturmak istediğiniz yeri belirtmeniz gerekir. Web `<region name>` uygulaması için istediğiniz bölge ile değiştirin. 
+* Bu komut EULA 'Yı otomatik olarak kabul eder.
 
-Azure CLI'den, örnek etiketleme aracı için bir web uygulaması kaynağı oluşturmak için bu komutu çalıştırın: 
+Azure CLı 'da, örnek etiketleme aracı için bir Web uygulaması kaynağı oluşturmak üzere şu komutu çalıştırın: 
 
 ```azurecli
 DNS_NAME_LABEL=aci-demo-$RANDOM
 
 az container create \
-  --resource-group <resorunce_group_name> \
+  --resource-group <resource_group_name> \
   --name <name> \
   --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \
   --cpu 2 \
-  --memory 8
+  --memory 8 \
   --command-line "./run.sh eula=accept"
 ```
 
-### <a name="connect-to-azure-ad-for-authorization"></a>Yetkilendirme için Azure AD'ye bağlanın
+### <a name="connect-to-azure-ad-for-authorization"></a>Yetkilendirme için Azure AD 'ye bağlanma
 
-Web uygulamanızı Azure Active Directory'ye bağlamanız önerilir. Bu, yalnızca geçerli kimlik bilgilerine sahip kullanıcıların oturum açabilmesini ve web uygulamanızı kullanmasını sağlar. Azure Active Directory'ye bağlanmak için [Uygulama Hizmeti uygulamanızı Yapılanyapılandır'daki](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) yönergeleri izleyin.
+Web uygulamanızı Azure Active Directory bağlamanız önerilir. Bu, yalnızca geçerli kimlik bilgilerine sahip kullanıcıların oturum açabilmesini ve Web uygulamanızı kullanmasını sağlar. Azure Active Directory bağlanmak için [App Service uygulamanızı yapılandırma](https://docs.microsoft.com/azure/app-service/configure-authentication-provider-aad) bölümündeki yönergeleri izleyin.
 
-## <a name="open-source-on-github"></a>GitHub'da açık kaynak
+## <a name="open-source-on-github"></a>GitHub 'da açık kaynak
 
-OCR Form Etiketleme Aracı, GitHub'da açık kaynak projesi olarak da kullanılabilir. Araç React + Redux kullanılarak oluşturulmuş bir web uygulamasıdır ve TypeScript ile yazılmıştır. Daha fazla bilgi edinmek veya katkıda bulunmak için [OCR Form Etiketleme Aracı'na](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)bakın.
+OCR formu etiketleme Aracı, GitHub 'da açık kaynaklı bir proje olarak da kullanılabilir. Araç, yanıt verme + Redux kullanılarak oluşturulan ve TypeScript 'te yazılmış bir Web uygulamasıdır. Daha fazla bilgi edinmek veya katkıda bulunmak için bkz. [OCR formu etiketleme aracı](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Eğitim verilerini el ile etiketlemek ve denetimli öğrenme gerçekleştirmek için aracı nasıl kullanacağınızı öğrenmek için hızlı bir şekilde başlatılabilen [etiketlerle Tren'i](./quickstarts/label-tool.md) kullanın.
+Eğitim verilerini el ile etiketlemek ve denetimli öğrenimi gerçekleştirmek üzere aracı nasıl kullanacağınızı öğrenmek için, [etiketlerle eğit](./quickstarts/label-tool.md) hızlı ' yı kullanın.

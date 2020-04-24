@@ -1,36 +1,36 @@
 ---
-title: Quickstart - Maven ve Jib kullanarak Java kapsayıcı görüntülerini Azure Konteyner Kayıt Defteri'ne oluşturun ve itin
-description: Kapsayıcı bir Java uygulaması oluşturun ve Maven Jib eklentisini kullanarak Azure Konteyner Kayıt Defteri'ne taşıyın.
+title: Hızlı başlangıç-Maven ve JIB kullanarak Azure Container Registry Java kapsayıcı görüntülerini derleyin ve gönderin
+description: Kapsayıcılı bir Java uygulaması oluşturun ve Maven JIB eklentisini kullanarak Azure Container Registry gönderin.
 author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: ef933ae9a6b0a34529c7ec145b13c023728a3457
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: fbb6f4633ef6e984746a4fb4516380f4b2e3a9da
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731851"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116783"
 ---
-# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Quickstart: Java kapsayıcı görüntülerini Azure Kapsayıcı Kayıt Defteri'ne oluşturun ve itin
+# <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>Hızlı başlangıç: Java kapsayıcı görüntülerini derleyin ve Azure Container Registry gönderin
 
-Bu hızlı başlangıç, maven Jib eklentisini kullanarak nasıl kapsayıcı bir Java uygulaması oluşturup Azure Konteyner Kayıt Defteri'ne taşıyabileceğinizi gösterir. Maven ve Jib'in kullanımı, bir Azure kapsayıcı kayıt defteriyle etkileşim kurmak için geliştirici aracını kullanmaya bir örnektir.
+Bu hızlı başlangıçta, kapsayıcılı bir Java uygulamasının nasıl oluşturulacağı ve Maven JIB eklentisini kullanarak Azure Container Registry nasıl göndergörüntüleneceği gösterilmektedir. Maven ve JIB kullanımı, bir Azure Container Registry ile etkileşim kurmak için geliştirici araçları kullanmanın bir örneğidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği; henüz Azure aboneliğiniz yoksa [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) etkinleştirebilir veya [ücretsiz Azure hesabı](https://azure.microsoft.com/pricing/free-trial) için kaydolabilirsiniz.
 * [Azure Komut Satırı Arabirimi (CLI)](/cli/azure/overview).
 * Desteklenen bir Java Development Kit (JDK). Azure’da geliştirme sırasında kullanılabilecek JDK’ler hakkında daha fazla bilgi için bkz. <https://aka.ms/azure-jdks>.
-* Apache's [Maven](http://maven.apache.org) yapı aracı (Sürüm 3 veya üzeri).
+* Apache [Maven](http://maven.apache.org) derleme aracı (sürüm 3 veya üzeri).
 * [Git](https://git-scm.com) istemcisi.
 * [Docker](https://www.docker.com) istemcisi.
-* [ACR Docker kimlik yardımcısı.](https://github.com/Azure/acr-docker-credential-helper)
+* [ACR Docker kimlik bilgisi Yardımcısı](https://github.com/Azure/acr-docker-credential-helper).
 
 ## <a name="create-the-spring-boot-on-docker-getting-started-web-app"></a>Docker üzerinde Spring Boot'u Kullanmaya Başlama web uygulamasını oluşturma
 
 Aşağıdaki adımlar, bir Spring Boot web uygulaması oluşturma ve yerel olarak test etme sürecinde size yol gösterecektir.
 
-1. Komut isteminden, Docker Başlarken Örnek [Proje'de Bahar Önyüklemesini](https://github.com/spring-guides/gs-spring-boot-docker) klonlamak için aşağıdaki komutu kullanın.
+1. Komut isteminden, [Docker Başlarken örnek projesinde Spring Boot](https://github.com/spring-guides/gs-spring-boot-docker) 'ı kopyalamak için aşağıdaki komutu kullanın.
 
    ```bash
    git clone https://github.com/spring-guides/gs-spring-boot-docker.git
@@ -54,11 +54,11 @@ Aşağıdaki adımlar, bir Spring Boot web uygulaması oluşturma ve yerel olara
    curl http://localhost:8080
    ```
 
-Görüntülenen aşağıdaki iletiyi görmelisiniz: **Hello Docker World**
+Aşağıdaki iletinin görüntülendiğini görmeniz gerekir: **Merhaba Docker World**
 
 ## <a name="create-an-azure-container-registry-using-the-azure-cli"></a>Azure CLI’yi kullanarak Azure Container Registry oluşturma
 
-Ardından, aşağıdaki adımları kullanarak bir Azure kaynak grubu ve ACR oluşturursunuz:
+Ardından, aşağıdaki adımları kullanarak bir Azure Kaynak grubu ve ACR 'nizi oluşturacaksınız:
 
 1. Aşağıdaki komutu kullanarak Azure hesabınızda oturum açın:
 
@@ -72,7 +72,7 @@ Ardından, aşağıdaki adımları kullanarak bir Azure kaynak grubu ve ACR olu�
    az account set -s <subscription ID>
    ```
 
-1. Bu öğreticide kullanılacak Azure kaynakları için bir kaynak grubu oluşturun. Aşağıdaki komutta, yer tutucuları kendi kaynak adınız ve 'de. gibi `eastus`bir konumla değiştirdiğinizden emin olun.
+1. Bu öğreticide kullanılacak Azure kaynakları için bir kaynak grubu oluşturun. Aşağıdaki komutta, yer tutucuları kendi kaynak adınızla ve gibi bir konum ile değiştirdiğinizden emin olun `eastus`.
 
    ```azurecli
    az group create \
@@ -80,7 +80,7 @@ Ardından, aşağıdaki adımları kullanarak bir Azure kaynak grubu ve ACR olu�
        --location=<location>
    ```
 
-1. Kaynak grubunda aşağıdaki komutu kullanarak özel bir Azure kapsayıcı kayıt defteri oluşturun. Yer tutucuları gerçek değerlerle değiştirdiğinden emin olun. Bu öğreticinin ilerleyen adımlarında örnek uygulama Docker görüntüsü olarak bu kayıt defterine gönderilecektir.
+1. Aşağıdaki komutu kullanarak kaynak grubunda özel bir Azure Container Registry oluşturun. Yer tutucuları gerçek değerlerle değiştirdiğinizden emin olun. Bu öğreticinin ilerleyen adımlarında örnek uygulama Docker görüntüsü olarak bu kayıt defterine gönderilecektir.
 
    ```azurecli
    az acr create \
@@ -92,30 +92,33 @@ Ardından, aşağıdaki adımları kullanarak bir Azure kaynak grubu ve ACR olu�
 
 ## <a name="push-your-app-to-the-container-registry-via-jib"></a>Uygulamanızı Jib aracılığıyla kapsayıcı kayıt defterine gönderme
 
-Son olarak, proje yapılandırmanızı günceller ve resminizi oluşturmak ve dağıtmak için komut istemini kullanırsınız.
+Son olarak, proje yapılandırmanızı güncelleyebilir ve görüntünüzü derlemek ve dağıtmak için komut istemi ' ni kullanabilirsiniz.
 
-1. Aşağıdaki komutu kullanarak Azure CLI'den Azure Konteyner Kayıt Defteri'nizde oturum açın. Yer tutucuyu kendi kayıt defteri adınızı değiştirdiğinizden emin olun.
+> [!NOTE]
+> Yeni oluşturduğunuz Azure Container Registry 'de oturum açmak için Docker Daemon ' ın çalışıyor olması gerekir. Makinenize Docker yüklemek için [resmi Docker belgeleri burada bulabilirsiniz](https://docs.docker.com/install/).
+
+1. Aşağıdaki komutu kullanarak Azure CLı 'dan Azure Container Registry oturum açın. Yer tutucusunu kendi kayıt defteri adınızla değiştirdiğinizden emin olun.
 
    ```azurecli
    az configure --defaults acr=<your registry name>
    az acr login
    ```
 
-   Komut, `az configure` `az acr` komutlarla kullanılacak varsayılan kayıt defteri adını ayarlar.
+   Komut `az configure` , `az acr` komutlarla kullanılacak varsayılan kayıt defteri adını ayarlar.
 
 1. Spring Boot uygulamanızın tamamlanmış proje dizinine (örneğin, "*C:\SpringBoot\gs-spring-boot-docker\complete*" veya "*/users/robert/SpringBoot/gs-spring-boot-docker/complete*") gidin ve *pom.xml* dosyasını metin düzenleyicide açın.
 
-1. `<properties>` Aşağıdaki XML ile *pom.xml* dosyasındaki koleksiyonu güncelleştirin. Yer tutucuyu kayıt defteri niz ile `<jib-maven-plugin.version>` değiştirin ve değeri [jib-maven eklentisinin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)en son sürümüyle güncelleştirin.
+1. `<properties>` *Pod. xml* dosyasındaki koleksiyonu aşağıdaki XML ile güncelleştirin. Yer tutucuyu kayıt defteri adınızla değiştirin ve değeri `<jib-maven-plugin.version>` `2.1.0`ile bir özellik veya [JIB-Maven-Plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)' in daha yeni bir sürümünü ekleyin.
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
-      <jib-maven-plugin.version>1.8.0</jib-maven-plugin.version>
       <java.version>1.8</java.version>
+      <jib-maven-plugin.version>2.1.0</jib-maven-plugin.version>
    </properties>
    ```
 
-1. Aşağıdaki `<plugins>` örnekte gösterildiği `<plugin>` gibi, öğenin içerdiği ve girişini `jib-maven-plugin`içerebilecek şekilde *pom.xml* dosyasındaki koleksiyonu güncelleştirin. Azure için resmi olarak desteklenen JDK içeren Microsoft Kapsayıcı `mcr.microsoft.com/java/jdk:8-zulu-alpine`Kayıt Defteri'nden (MCR): temel bir resim kullandığımızı unutmayın. Resmi olarak desteklenen JDKs ile diğer MCR temel görüntüler için, [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre), [Java SE Headless JRE](https://hub.docker.com/_/microsoft-java-jre-headless), ve [Java SE JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven)bakın .
+1. Aşağıdaki örnekte `<plugins>` gösterildiği gibi, *Pok. xml* dosyasındaki koleksiyonu, `<plugin>` öğesi için `jib-maven-plugin`ve girdisi olacak şekilde güncelleştirin. Azure için resmi `mcr.microsoft.com/java/jdk:8-zulu-alpine`olarak desteklenen bir JDK içeren Microsoft Container Registry (MCR) ' den bir temel görüntü kullandığınızı unutmayın. Resmi olarak desteklenen JDKs 'e sahip diğer MCR temel görüntüleri için bkz. [Java ve JDK](https://hub.docker.com/_/microsoft-java-jdk), [Java, JRE](https://hub.docker.com/_/microsoft-java-jre), [Java, gözetimsiz JRE](https://hub.docker.com/_/microsoft-java-jre-headless)ve [Java, JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven).
 
    ```xml
    <plugin>
@@ -141,11 +144,11 @@ Son olarak, proje yapılandırmanızı günceller ve resminizi oluşturmak ve da
 
 > [!NOTE]
 >
-> Güvenlik nedenleriyle, oluşturulan `az acr login` kimlik bilgisi yalnızca 1 saat için geçerlidir. *401 Yetkisiz* bir hata alırsanız, yeniden `az acr login -n <your registry name>` kimlik doğrulaması için komutu yeniden çalıştırabilirsiniz.
+> Güvenlik nedenleriyle, tarafından `az acr login` oluşturulan kimlik bilgileri yalnızca 1 saat için geçerlidir. *401 Yetkisiz* bir hata alırsanız, yeniden kimlik doğrulaması yapmak için `az acr login -n <your registry name>` komutu tekrar çalıştırabilirsiniz.
 
-## <a name="verify-your-container-image"></a>Konteyner resminizi doğrulama
+## <a name="verify-your-container-image"></a>Kapsayıcı görüntünüzü doğrulama
 
-Tebrikler! Artık Azure destekli JDK'nın ACR'nize itilen kapsayıcı Java Uygulaması'na sahipsiniz. Artık görüntüyü Azure Uygulama Hizmeti'ne dağıtarak veya komutla yerele çekerek (yer tutucuyu değiştirme) test edebilirsiniz:
+Tebrikler! Artık Azure 'da bulunan ve Azure 'da bulunan ve ACR 'nize gönderilen Azure 'da Kapsayıcılı Java uygulama derlemeniz vardır. Artık görüntüyü Azure App Service veya komutu ile yerel (yer tutucuyu değiştirme) ile çekerek test edebilirsiniz:
 
 ```bash
 docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
@@ -153,12 +156,12 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Microsoft destekli resmi Java temel görüntülerinin diğer sürümleri için bkz:
+Resmi Microsoft tarafından desteklenen Java temel görüntülerinin diğer sürümleri için bkz.:
 
-* [Java SE JDK](https://hub.docker.com/_/microsoft-java-jdk)
-* [Java SE JRE](https://hub.docker.com/_/microsoft-java-jre)
-* [Java SE Başsız JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
-* [Java SE JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven)
+* [Java & JDK](https://hub.docker.com/_/microsoft-java-jdk)
+* [Java, JRE](https://hub.docker.com/_/microsoft-java-jre)
+* [Java, gözetimsiz JRE](https://hub.docker.com/_/microsoft-java-jre-headless)
+* [Java, JDK ve Maven](https://hub.docker.com/_/microsoft-java-maven)
 
 Spring ve Azure hakkında daha fazlasını öğrenmek için Azure’da Spring belge merkezinde çalışmaya devam edin.
 
@@ -169,7 +172,7 @@ Spring ve Azure hakkında daha fazlasını öğrenmek için Azure’da Spring be
 
 Daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
-* [Java Geliştiricileri için Azure](/azure/java)
+* [Java geliştiricileri için Azure](/azure/java)
 * [Azure DevOps ve Java ile çalışma](/azure/devops/java)
 * [Docker üzerinde Spring Boot'u Kullanmaya Başlama](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)

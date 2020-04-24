@@ -1,22 +1,16 @@
 ---
-title: Paralel iş yükü çalıştırma - Azure Batch .NET
+title: Paralel iş yükü çalıştırma
 description: Öğretici - Batch .NET istemci kitaplığını kullanarak Azure Batch’te ffmpeg ile paralel medya dosyaları dönüştürme
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 8734f748da07b36497ce143646e614ef82056d37
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 24f68ee1d2650a5f3e77b61fb30b5c0185cd82b1
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81254611"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117157"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -35,24 +29,24 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* [Visual Studio 2017 veya sonraki sürümlerinde](https://www.visualstudio.com/vs)veya Linux, macOS veya Windows için [.NET Core 2.1.](https://www.microsoft.com/net/download/dotnet-core/2.1)
+* [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) .
 
 * Bir Batch hesabı ve bağlı bir Azure Depolama hesabı. Bu hesapları oluşturmak için [Azure portalı](quick-create-portal.md) veya [Azure CLI](quick-create-cli.md) kullanan Batch hızlı başlangıçlarına bakın.
 
-* [ffmpeg 3.4’ün Windows 64 bit sürümü](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için, sadece zip dosyası gerekir. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
+* [ffmpeg 3.4’ün Windows 64 bit sürümü](https://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.4-win64-static.zip) (.zip). Zip dosyasını yerel bilgisayarınıza indirin. Bu öğretici için yalnızca ZIP dosyasına ihtiyacınız vardır. Dosyanın sıkıştırmasını açmanız veya yerel olarak yüklemeniz gerekmez.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="add-an-application-package"></a>Uygulama paketi ekleme
 
 Batch hesabınıza [uygulama paketi](batch-application-packages.md) olarak ffmpeg eklemek için Azure portalını kullanın. Uygulama paketleri, görev uygulamalarını ve havuzunuzdaki işlem düğümlerine dağıtımlarını yönetmenize yardımcı olur. 
 
-1. Azure portalında, **Daha Fazla Hizmet** > **Toplu İş Hesapları'nı**tıklatın ve Toplu İşlem hesabınızın adını tıklatın.
-3. **Uygulamaları** > **Ekle'yi**tıklatın.
+1. Azure Portal, **diğer hizmetler** > **Batch hesapları**' na tıklayın ve Batch hesabınızın adına tıklayın.
+3. **Uygulamalar** > **Ekle**' ye tıklayın.
 4. **Uygulama kimliği** için *ffmpeg*, paket sürümü için *3.4* girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam**’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
 
 ![Uygulama paketi ekleme](./media/tutorial-parallel-dotnet/add-application.png)
@@ -97,7 +91,7 @@ const string appPackageVersion = "3.4";
 
 Uygulamayı Visual Studio'da veya `dotnet build` ve `dotnet run` komutlarıyla komut satırında derleyip çalıştırın. Uygulamayı çalıştırdıktan sonra, uygulamanın her bir parçasının ne işe yaradığını öğrenmek üzere kodu gözden geçirin. Örneğin Visual Studio'da:
 
-* Çözüm Gezgini'nde çözüme sağ tıklayın ve **Çözüm Oluştur'u**tıklatın. 
+* Çözüm Gezgini çözüme sağ tıklayın ve **çözüm oluştur**' a tıklayın. 
 
 * İstenirse, herhangi bir NuGet paketinin geri yüklenmesini onaylayın. Eksik paketleri indirmeniz gerekirse, [NuGet Paket Yöneticisi](https://docs.nuget.org/consume/installing-nuget)’nin yüklü olduğundan emin olun.
 
@@ -124,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki bilgi işlem düğümlerinin ısı haritasını görmek için **Pools** > *WinFFmpegPool'u*tıklatın.
+Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar** > *WinFFmpegPool*' e tıklayın.
 
 Görevler çalıştırılırken ısı haritası aşağıdakine benzer:
 
@@ -153,7 +147,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Uygulama, Batch hizmetinde havuz, iş ve görevleri oluşturup yönetmek üzere bir [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) nesnesi oluşturur. Örnekteki Batch istemcisi, paylaşılan anahtar kimlik doğrulaması kullanır. Toplu Iş, tek tek kullanıcıların veya katılımsız bir uygulamanın kimliğini doğrulamak için [Azure Etkin Dizin aracılığıyla](batch-aad-auth.md) kimlik doğrulamasını da destekler.
+Uygulama, Batch hizmetinde havuz, iş ve görevleri oluşturup yönetmek üzere bir [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) nesnesi oluşturur. Örnekteki Batch istemcisi, paylaşılan anahtar kimlik doğrulaması kullanır. Batch Ayrıca, bireysel kullanıcıların veya katılımsız bir uygulamanın kimliğini doğrulamak için [Azure Active Directory](batch-aad-auth.md) aracılığıyla kimlik doğrulamasını destekler.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -199,7 +193,7 @@ Ardından örnek, `CreatePoolIfNotExistAsync` çağrısıyla Batch hesabında bi
 Düğüm sayısı ve VM boyutu, tanımlı sabitler kullanılarak ayarlanır. Batch, adanmış düğümleri ve [düşük öncelikli düğümleri](batch-low-pri-vms.md) destekler ve havuzlarınızda bunlardan birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. Örnek, varsayılan olarak *Standard_A1_v2* boyutunda yalnızca 5 düşük öncelikli düğüm içeren bir havuz oluşturur.
 
 >[!Note]
->Düğüm kotalarınızı kontrol ettiğinizden emin olun. Kota isteğinin nasıl oluşturulacağına ilişkin talimatlar için [Toplu hizmet kotalarına ve sınırlarına](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) bakın."
+>Düğüm kotalarınızı denetlediğinizden emin olun. Kota isteği oluşturma hakkında yönergeler için bkz. [Batch hizmeti kotaları ve limitleri](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbatch%2Fbatch-quota-limit%23increase-a-quota&data=02%7C01%7CLaura.Brenner%40microsoft.com%7C9843bf742920414ca3e508d7cb83e288%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637201639605899246&sdata=uKY00XhSMjDkFIPGHYmDN4TOtL4UQhFus42ncst95pg%3D&reserved=0) . "
 
 ffmpeg uygulaması, havuz yapılandırmasına bir [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) eklenerek işlem düğümlerine dağıtılır.
 
@@ -251,7 +245,7 @@ await job.CommitAsync();
 
 Örnek, `AddTasksAsync` yöntemini çağırarak iş içinde görevler oluşturur ve [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) nesnelerinin bir listesini oluşturur. Her `CloudTask`, bir [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) özelliği kullanarak giriş `ResourceFile` nesnesini işlemek üzere ffmpeg çalıştırır. ffmpeg, daha önce havuz oluşturulduğunda her bir düğüme yüklenmiştir. Burada komut satırı, her bir giriş MP4 (video) dosyasını bir MP3 (ses) dosyasına dönüştürmek için ffmpeg çalıştırır.
 
-Örnek, komut satırını çalıştırdıktan sonra MP3 dosyası için bir [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) nesnesi oluşturur. Her bir görevin çıkış dosyaları (bu örnekte bir tane), görevin [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) özelliği kullanılarak bağlı depolama hesabındaki bir kapsayıcıya yüklenir. Daha önce kod örneğinde, çıkış kabına yazma erişimi sağlamak için paylaşılan erişim imzası URL'si elde`outputContainerSasUrl`edilebildi. Nesne üzerinde ayarlanan `outputFile` koşullara dikkat edin. Görevden bir çıktı dosyası yalnızca görev başarıyla tamamlandıktan sonra`OutputFileUploadCondition.TaskSuccess`kapsayıcıya yüklenir ( ). Daha fazla uygulama ayrıntıları için GitHub'daki tam [kod örneğine](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bakın.
+Örnek, komut satırını çalıştırdıktan sonra MP3 dosyası için bir [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) nesnesi oluşturur. Her bir görevin çıkış dosyaları (bu örnekte bir tane), görevin [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) özelliği kullanılarak bağlı depolama hesabındaki bir kapsayıcıya yüklenir. Daha önce kod örneğinde, çıkış kapsayıcısına yazma erişimi sağlamak için paylaşılan`outputContainerSasUrl`erişim imzası URL 'si () alındı. `outputFile` Nesne üzerinde ayarlanan koşullara göz önünde. Bir görevden çıkış dosyası, yalnızca görev başarıyla tamamlandıktan sonra kapsayıcıya yüklenir (`OutputFileUploadCondition.TaskSuccess`). Daha fazla uygulama ayrıntısı için GitHub 'daki tam [kod örneğine](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) bakın.
 
 Sonra örnek, [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) yöntemi ile görevleri işe ekler ve işlem düğümleri üzerinde çalışmak üzere kuyruğa alır.
 
@@ -340,4 +334,4 @@ Batch iş yüklerini zamanlamak ve işlemek üzere .NET API kullanmaya ilişkin 
 > [Batch C# örnekleri](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
 
 
-Örnek değişkenlowPriorityNodeCount=0 ve DedicatedNodeCount=5 ayarlanması sorunu düzeltildi ve işin tamamlanmasına izin verdi.
+LowPriorityNodeCount = 0 örnek değişkeninin ve ayrılmış nodeCount = 5 değerinin ayarlanması sorunu düzeltti ve işin tamamlanmasını izin vermez.

@@ -1,49 +1,43 @@
 ---
-title: Toplu İşlem ile Key Vault'a güvenli bir şekilde erişin - Azure Toplu İşlem
-description: Azure Toplu İşi'ni kullanarak Key Vault'tan kimlik bilgilerinize nasıl programlı olarak erişeceklerinizi öğrenin.
-services: batch
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.workload: big-compute
+title: Batch ile Key Vault’a güvenli erişim
+description: Azure Batch kullanarak Key Vault kimlik bilgilerinizin programlama yoluyla nasıl erişebileceğini öğrenin.
 ms.topic: article
 ms.date: 02/13/2020
-ms.author: lahugh
-ms.openlocfilehash: 0134e7d92ddca9bd3b45abaf642f33de9d209b33
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d24904c3a539431e8aff420e9fbd8291cddde78a
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192311"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117463"
 ---
 # <a name="securely-access-key-vault-with-batch"></a>Batch ile Key Vault’a güvenli erişim
 
-Bu makalede, Azure Anahtar Kasası'nda depolanan kimlik bilgilerine güvenli bir şekilde erişmek için Toplu Iş düğümlerini nasıl ayarlayabileceğinizi öğreneceksiniz. Yönetici kimlik bilgilerinizi Key Vault'a koymanın, ardından anahtar kasasına komut dosyasından erişmek için kimlik bilgilerini kodlamanın bir anlamı yoktur. Çözüm, Toplu İşlem düğümlerinize Key Vault'a erişim hakkı veren bir sertifika kullanmaktır. Birkaç adımda Toplu İşlem için güvenli anahtar depolama sı yatabiliriz.
+Bu makalede, Azure Key Vault ' de depolanan kimlik bilgilerine güvenli bir şekilde erişmek için Batch düğümlerini ayarlamayı öğreneceksiniz. Key Vault ' de yönetici kimlik bilgilerinizi yerleştirmekten ve sonra bir betikten Key Vault erişmek için kimlik bilgilerini sabit kodlamasına yönelik bir nokta yoktur. Çözüm, toplu Iş düğümlerinizin Key Vault erişimine izin veren bir sertifika kullanmaktır. Birkaç adımda toplu Iş için güvenli anahtar depolaması uygulayabiliriz.
 
-Toplu İşlem düğümünden Azure Anahtar Kasası'na kimlik doğrulaması yapmak için şunları yapmanız gerekir:
+Bir Batch düğümünden Azure Key Vault kimlik doğrulaması yapmak için şunlar gerekir:
 
-- Azure Etkin Dizin (Azure AD) kimlik bilgisi
+- Azure Active Directory (Azure AD) kimlik bilgisi
 - Bir sertifika
-- Toplu Işlem hesabı
-- En az bir düğümiçeren toplu iş havuzu
+- Batch hesabı
+- En az bir düğüm içeren bir Batch havuzu
 
-## <a name="obtain-a-certificate"></a>Sertifika alma
+## <a name="obtain-a-certificate"></a>Sertifika edinme
 
-Zaten bir sertifikanız yoksa, sertifika almanın en kolay yolu komut satırı aracını `makecert` kullanarak kendi imzalı bir sertifika oluşturmaktır.
+Henüz bir sertifikanız yoksa, bir tane almanın en kolay yolu, `makecert` komut satırı aracını kullanarak kendinden imzalı bir sertifika oluşturmadır.
 
-Genellikle bu yolda `makecert` bulabilirsiniz: `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Yönetici olarak bir komut istemi `makecert` açın ve aşağıdaki örneği kullanarak gidin.
+Genellikle bu yolda bulabilirsiniz `makecert` : `C:\Program Files (x86)\Windows Kits\10\bin\<arch>`. Yönetici olarak bir komut istemi açın ve aşağıdaki örneği `makecert` kullanarak gidin.
 
 ```console
 cd C:\Program Files (x86)\Windows Kits\10\bin\x64
 ```
 
-Ardından, çağrılan `makecert` `batchcertificate.cer` kendi imzalı sertifika dosyaları oluşturmak `batchcertificate.pvk`için aracı kullanın ve. Kullanılan ortak ad (CN) bu uygulama için önemli değildir, ancak sertifikanın ne için kullanıldığını size belirten bir şey yapmak yararlıdır.
+Ardından, ve `makecert` `batchcertificate.cer` `batchcertificate.pvk`adlı otomatik olarak imzalanan sertifika dosyaları oluşturmak için aracını kullanın. Kullanılan ortak ad (CN) Bu uygulama için önemli değildir, ancak sertifikanın ne için kullanıldığını belirten bir şey yapmak faydalı olur.
 
 ```console
 makecert -sv batchcertificate.pvk -n "cn=batch.cert.mydomain.org" batchcertificate.cer -b 09/23/2019 -e 09/23/2019 -r -pe -a sha256 -len 2048
 ```
 
-Toplu iş `.pfx` bir dosya gerektirir. Oluşturulan `makecert` `.pfx` dosyaları tek `.pvk` bir dosyaya `.cer` dönüştürmek için [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) aracını kullanın.
+Batch bir `.pfx` dosya gerektiriyor. Tarafından `makecert` `.pfx` oluşturulan [pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) `.cer` ve `.pvk` dosyalarını tek bir dosyaya dönüştürmek için Pvk2pfx aracını kullanın.
 
 ```console
 pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificate.pfx -po
@@ -51,12 +45,12 @@ pvk2pfx -pvk batchcertificate.pvk -spc batchcertificate.cer -pfx batchcertificat
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-Key Vault'a erişim bir **kullanıcıya** veya hizmet **sorumlusuna**verilir. Key Vault'a programlı olarak erişmek için, önceki adımı oluşturduğumuz sertifikayla birlikte bir hizmet sorumlusu kullanın.
+Key Vault erişim, bir **Kullanıcı** veya **hizmet sorumlusu**için verilir. Programlı olarak Key Vault erişmek için, önceki adımda oluşturduğumuz sertifikayla bir hizmet sorumlusu kullanın.
 
-Azure hizmet ilkeleri hakkında daha fazla bilgi için [Azure Etkin Dizini'ndeki Uygulama ve hizmet temel nesneleri'ne](../active-directory/develop/app-objects-and-service-principals.md)bakın.
+Azure hizmet sorumluları hakkında daha fazla bilgi için [Azure Active Directory Içindeki uygulama ve hizmet sorumlusu nesneleri](../active-directory/develop/app-objects-and-service-principals.md)bölümüne bakın.
 
 > [!NOTE]
-> Hizmet sorumlusu, Anahtar Kasası ile aynı Azure AD kiracısında olmalıdır.
+> Hizmet sorumlusu, Key Vault aynı Azure AD kiracısında olmalıdır.
 
 ```powershell
 $now = [System.DateTime]::Parse("2020-02-10")
@@ -73,27 +67,27 @@ $newADApplication = New-AzureRmADApplication -DisplayName "Batch Key Vault Acces
 $newAzureAdPrincipal = New-AzureRmADServicePrincipal -ApplicationId $newADApplication.ApplicationId
 ```
 
-Uygulama url'leri önemli değildir, çünkü bunları yalnızca Key Vault erişimi için kullanıyoruz.
+Yalnızca Key Vault erişim için kullandığınızdan, uygulamanın URL 'Leri önemli değildir.
 
-## <a name="grant-rights-to-key-vault"></a>Key Vault'un hibe hakları
+## <a name="grant-rights-to-key-vault"></a>Key Vault haklar verme
 
-Önceki adımda oluşturulan hizmet sorumlusunun, Key Vault'tan sırları almak için izin alması gerekir. İzin, Azure portalı aracılığıyla veya aşağıdaki PowerShell komutu yla verilebilir.
+Önceki adımda oluşturulan hizmet sorumlusunun Key Vault gizli dizileri alma izni vardır. İzin, Azure portal veya aşağıdaki PowerShell komutu ile verilebilir.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'BatchVault' -ServicePrincipalName '"https://batch.mydomain.com' -PermissionsToSecrets 'Get'
 ```
 
-## <a name="assign-a-certificate-to-a-batch-account"></a>Toplu Iş hesabına sertifika atama
+## <a name="assign-a-certificate-to-a-batch-account"></a>Batch hesabına sertifika atama
 
-Toplu Iş havuzu oluşturun, ardından havuzdaki sertifika sekmesine gidin ve oluşturduğunuz sertifikayı atayın. Sertifika artık tüm Toplu Işlem düğümlerinde.
+Bir Batch havuzu oluşturun, ardından havuzdaki sertifika sekmesine gidin ve oluşturduğunuz sertifikayı atayın. Sertifika artık tüm Batch düğümlerinde bulunur.
 
-Ardından, sertifikayı Toplu İşlem hesabına atamamız gerekir. Sertifikayı hesaba atamak, sertifikayı havuzlara ve ardından düğümlere atamamıza olanak tanır. Bunu yapmanın en kolay yolu portaldaki Toplu Hesabınıza gitmek, **Sertifikalar'a**gitmek ve **Ekle'yi**seçmektir. Sertifika `.pfx` [Edinin'de](#obtain-a-certificate) oluşturduğumuz dosyayı yükleyin ve parolayı girin. Tamamlandıktan sonra, sertifika listeye eklenir ve parmak izini doğrulayabilirsiniz.
+Ardından, sertifikayı Batch hesabına atamamız gerekir. Sertifikayı hesaba atamak, bunu havuzlara ve sonra düğümlere atamamızı sağlar. Bunu yapmanın en kolay yolu, portalda Batch hesabınıza gidip **Sertifikalar**' a gidip **Ekle**' yi seçmelidirler. `.pfx` [Sertifika edinme](#obtain-a-certificate) ve parola sağlama bölümünde oluşturduğumuz dosyayı karşıya yükleyin. Tamamlandıktan sonra sertifika listeye eklenir ve parmak izini doğrulayabilirsiniz.
 
-Artık bir Toplu Iş havuzu oluşturduğunuzda, havuz içindeki **Sertifikalar'a** gidin ve oluşturduğunuz sertifikayı bu havuza atayabilirsiniz. Bunu yaptığınızda, mağaza konumu için **LocalMachine'i** seçtiğinizden emin olun. Sertifika havuzdaki tüm Toplu İşlem düğümlerine yüklenir.
+Artık bir Batch havuzu oluşturduğunuzda, havuz içindeki **sertifikalara** gidebilir ve oluşturduğunuz sertifikayı bu havuza atayabilirsiniz. Bunu yaptığınızda, depolama konumu için **LocalMachine** 'yi seçtiğinizden emin olun. Sertifika, havuzdaki tüm Batch düğümlerine yüklenir.
 
 ## <a name="install-azure-powershell"></a>Azure PowerShell'i yükleme
 
-Düğümlerinizdeki PowerShell komut dosyalarını kullanarak Key Vault'a erişmeyi planlıyorsanız, Azure PowerShell kitaplığı yüklü olmanız gerekir. Düğümlerinizwindows Management Framework (WMF) 5 yüklüyse, bunu yapmanın birkaç yolu vardır, ardından bunu indirmek için install-module komutunu kullanabilirsiniz. WMF 5 olmayan düğümler kullanıyorsanız, bunu yüklemenin en kolay yolu Toplu Dosyalar'ınızla `.msi` Azure PowerShell dosyasını bir araya getirmek ve ardından Toplu Başlatma komut dosyanızın ilk bölümü olarak yükleyiciyi aramaktır. Ayrıntılar için şu örneğe bakın:
+Düğümlerinizde PowerShell betikleri kullanarak Key Vault erişmeyi planlıyorsanız Azure PowerShell kitaplığının yüklü olması gerekir. Bunu yapmak için birkaç yol vardır. Bu durumda, düğümleriniz Windows Management Framework (WMF) 5 yüklüyse, yüklemek için Install-Module komutunu kullanabilirsiniz. WMF 5 içermeyen düğümleri kullanıyorsanız, bunu yüklemenin en kolay yolu, Azure PowerShell `.msi` dosyasını toplu iş dosyalarınıza paketleyip Batch başlangıç betiğinizin ilk parçası olarak yükleyiciyi çağırmalıdır. Ayrıntılar için aşağıdaki örneğe bakın:
 
 ```powershell
 $psModuleCheck=Get-Module -ListAvailable -Name Azure -Refresh
@@ -104,16 +98,16 @@ if($psModuleCheck.count -eq 0) {
 
 ## <a name="access-key-vault"></a>Key Vault'a Erişim
 
-Şimdi toplu düğümlerde çalışan komut dosyalarında Key Vault'a erişmek için hepimiz kurulumuz. Anahtar Vault'a bir komut dosyasından erişmek için tek ihtiyacınız olan komut dosyanızın sertifikayı kullanarak Azure AD'ye karşı kimlik doğrulaması olmasıdır. PowerShell'de bunu yapmak için aşağıdaki örnek komutları kullanın. **Thumbprint,** **App ID** (hizmet müdürünün kimliği) ve **Kiracı Kimliği** (hizmet müdürünün bulunduğu kiracı) için uygun GUID'yi belirtin.
+Artık, toplu düğümlerde çalışan betiklerdeki Key Vault erişim sağlıyoruz. Bir betikten Key Vault erişmek için, Azure AD 'de sertifikayı kullanarak kimlik doğrulaması yapmak üzere betiğinizin olması gerekir. Bunu PowerShell 'de yapmak için aşağıdaki örnek komutları kullanın. **Parmak izi**, **uygulama kimliği** (hizmet sorumlunuz KIMLIĞI) ve **Kiracı kimliği** (hizmet sorumlunun bulunduğu kiracı) için uygun GUID 'yi belirtin.
 
 ```powershell
 Add-AzureRmAccount -ServicePrincipal -CertificateThumbprint -ApplicationId
 ```
 
-Kimlik doğrulaması yaptıktan sonra KeyVault'a normalde olduğu gibi erişin.
+Kimliği doğrulandıktan sonra, normalde yaptığınız şekilde Keykasasına erişin.
 
 ```powershell
 $adminPassword=Get-AzureKeyVaultSecret -VaultName BatchVault -Name batchAdminPass
 ```
 
-Bunlar komut dosyanızda kullanılacak kimlik bilgileridir.
+Bunlar, betiğinizdeki kullanım kimlik bilgileridir.

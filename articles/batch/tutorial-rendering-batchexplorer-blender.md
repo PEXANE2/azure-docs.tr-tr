@@ -1,31 +1,29 @@
 ---
 title: Azure Batch ve Batch Explorer'ı kullanarak Blender sahnesi işleme
 description: 'Öğretici: Azure Batch ve Batch Explorer istemci uygulamasını kullanarak bir Blender sahnesinden birden fazla kare işleme'
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60617682"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117089"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Öğretici: Batch Explorer'ı kullanarak Blender sahnesi işleme
 
 Bu öğreticide bir Blender tanıtım sahnesinden birden fazla kare işleme adımları gösterilmektedir. Hem istemci hem de işleme VM'lerinde kullanımı ücretsiz olduğundan öğreticide Blender kullanılmıştır ancak işlem Maya veya 3ds Max gibi diğer uygulamalarda da benzer olacaktır.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure depolamasına Blender sahnesi yükleme
 > * İşlemeyi gerçekleştirmek için birden fazla düğüme sahip Batch havuzu oluşturma
 > * Birden çok çerçeve işleme
 > * İşlenen kare dosyalarını görüntüleme ve indirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.
 

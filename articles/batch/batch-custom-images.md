@@ -1,121 +1,116 @@
 ---
-title: Yönetilen bir resimden özel bir havuz sağlama - Azure Toplu İş | Microsoft Dokümanlar
-description: Yönetilen bir görüntü kaynağından uygulamanızın yazılımı ve verileriyle bilgi işlem düğümleri sağlamak için toplu iş havuzu oluşturun.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+title: Yönetilen görüntüden özel havuz sağlama
+description: Uygulamanıza yönelik yazılım ve verilerle işlem düğümleri sağlamak için yönetilen bir görüntü kaynağından bir Batch havuzu oluşturun.
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: labrenne
-ms.openlocfilehash: 1ef6be2ba9364203dceba54ab51325c05dbbbe41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10e3932bc6006e1d91fbc7e4cf58a5d98c043520
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020157"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82117327"
 ---
-# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Sanal makineler havuzu oluşturmak için yönetilen bir görüntü kullanma
+# <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Bir sanal makine havuzu oluşturmak için yönetilen bir görüntü kullanma
 
-Toplu İşlem havuzunuzun sanal makineleri (VM) için özel bir resim oluşturmak için [Paylaşılan Resim Galerisi'ni](batch-sig-images.md)veya yönetilen bir *resim* kaynağını kullanabilirsiniz.
+Batch havuzunuzun sanal makineleri (VM 'Ler) için özel bir görüntü oluşturmak üzere [paylaşılan görüntü galerisini](batch-sig-images.md)veya *yönetilen bir görüntü* kaynağını kullanabilirsiniz.
 
 > [!TIP]
-> Çoğu durumda, Paylaşılan Resim Galerisi'ni kullanarak özel görüntüler oluşturmanız gerekir. Paylaşılan Resim Galerisi'ni kullanarak havuzları daha hızlı sağlayabilir, daha büyük miktarlarda VM ölçeklendirebilir ve VM'leri sağlarken güvenilirliğini artırabilirsiniz. Daha fazla bilgi için bkz: [Özel bir havuz oluşturmak için Paylaşılan Resim Galerisini Kullanın.](batch-sig-images.md)
+> Çoğu durumda, paylaşılan görüntü Galerisi 'Ni kullanarak özel görüntüler oluşturmanız gerekir. Paylaşılan görüntü Galerisi 'ni kullanarak, havuzları daha hızlı sağlayabilir, daha büyük miktarlarda VM 'Ler ölçeklendirebilir ve VM 'Ler sağlanırken güvenilirliği daha iyi bir şekilde sağlayabilirsiniz. Daha fazla bilgi edinmek için bkz. [paylaşılan görüntü galerisini kullanarak özel bir havuz oluşturma](batch-sig-images.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- **Yönetilen bir görüntü kaynağı.** Özel bir görüntü kullanarak sanal makineler den oluşan bir havuz oluşturmak için, Toplu İşlem hesabıyla aynı Azure aboneliğinde ve bölgesinde yönetilen bir görüntü kaynağına sahip olmanız veya oluşturmanız gerekir. Görüntü, VM'nin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri disklerinden oluşturulmalıdır. Yönetilen bir görüntü hazırlamak için daha fazla bilgi ve adımlar için aşağıdaki bölüme bakın.
+- **Yönetilen bir görüntü kaynağı**. Özel bir görüntü kullanarak bir sanal makine havuzu oluşturmak için, Batch hesabıyla aynı Azure aboneliği ve bölgesinde bir yönetilen görüntü kaynağı oluşturmanız veya oluşturmanız gerekir. Görüntü, sanal makinenin işletim sistemi diskinin anlık görüntülerinden ve isteğe bağlı olarak bağlı veri diskine oluşturulmalıdır. Yönetilen bir görüntüyü hazırlama hakkında daha fazla bilgi ve adım için aşağıdaki bölüme bakın.
   - Oluşturduğunuz her havuz için benzersiz bir özel görüntü kullanın.
-  - Toplu İş API'lerini kullanarak görüntüyle birlikte **resource ID** bir havuz oluşturmak için, formdaki `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`görüntünün kaynak kimliğini belirtin. Portalı kullanmak için görüntünün **adını** kullanın.  
-  - Ölçeklendirmeye izin vermek için yönetilen görüntü kaynağının havuzun ömrü boyunca bulunması gerekir ve havuz silindikten sonra kaldırılabilir.
+  - Batch API 'Lerini kullanarak görüntüyle bir havuz oluşturmak için, bu formdan `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage`olan görüntünün **kaynak kimliğini** belirtin. Portalı kullanmak için görüntünün **adını** kullanın.  
+  - Yönetilen görüntü kaynağı, havuzun kullanım ömrü için mevcut olmalıdır ve havuz silindikten sonra kaldırılabilirler.
 
-- **Azure Etkin Dizin (AAD) kimlik doğrulaması.** Toplu İstemci API'nin AAD kimlik doğrulamasını kullanması gerekir. AAD için Azure Toplu İşlem desteği [Active Directory ile Authenticate Toplu hizmet çözümlerinde](batch-aad-auth.md)belgelenmiştir.
+- **Azure Active Directory (AAD) kimlik doğrulaması**. Batch istemci API 'sinin AAD kimlik doğrulamasını kullanması gerekir. AAD için Azure Batch desteği [Active Directory Batch hizmeti çözümlerinin kimlik doğrulaması konusunda](batch-aad-auth.md)belgelenmiştir.
 
-## <a name="prepare-a-custom-image"></a>Özel bir resim hazırlama
+## <a name="prepare-a-custom-image"></a>Özel görüntü hazırlama
 
-Azure'da yönetilen bir resim hazırlayabilirsiniz:
+Azure 'da, yönetilen bir görüntüyü şuradan hazırlayabilirsiniz:
 
-- Azure VM'nin işletim sistemi ve veri disklerinin anlık görüntüleri
+- Azure VM 'nin işletim sistemi ve veri disklerinin anlık görüntüleri
 - Yönetilen disklere sahip genelleştirilmiş bir Azure VM
-- Buluta yüklenen genelleştirilmiş şirket içi VHD
+- Buluta yüklenen genelleştirilmiş bir şirket içi VHD
 
-Toplu toplu işleri özel bir görüntüyle güvenilir bir şekilde ölçeklendirmek için, *yalnızca* ilk yöntemi kullanarak yönetilen bir görüntü oluşturmanızı öneririz: VM'nin disklerinin anlık görüntülerini kullanarak. VM hazırlamak, anlık görüntü almak ve anlık görüntüden bir görüntü oluşturmak için aşağıdaki adımları izleyin.
+Toplu Iş havuzlarını özel bir görüntüyle güvenilir bir şekilde ölçeklendirmek için, *yalnızca* ilk yöntemi kullanarak yönetilen bir görüntü oluşturmanız ÖNERILIR: VM disklerinin anlık görüntülerini kullanma. Bir VM hazırlamak, anlık görüntü almak ve anlık görüntüden görüntü oluşturmak için aşağıdaki adımlara bakın.
 
 ### <a name="prepare-a-vm"></a>VM hazırlama
 
-Görüntü için yeni bir VM oluşturuyorsanız, yönetilen görüntünüz için temel görüntü olarak Toplu İşlem tarafından desteklenen birinci taraf bir Azure Marketi görüntüsünü kullanın. Yalnızca birinci taraf görüntüleri temel görüntü olarak kullanılabilir. Azure Toplu İş bölümü tarafından desteklenen Azure Marketi resim başvurularının tam listesini almak için [Liste düğümü aracısı SKUs](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) işlemine bakın.
+Görüntü için yeni bir VM oluşturuyorsanız, yönetilen görüntünüz için temel görüntü olarak Batch tarafından desteklenen ilk taraf Azure Marketi görüntüsünü kullanın. Yalnızca ilk taraf görüntüleri temel görüntü olarak kullanılabilir. Azure Batch tarafından desteklenen Azure Market görüntüsü başvurularının tam listesini almak için bkz. [düğüm Aracısı SKU 'Larını Listele](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) işlemi.
 
 > [!NOTE]
-> Temel resminiz olarak ek lisans ve satın alma koşulları olan bir üçüncü taraf resmi kullanamazsınız. Bu Market görüntüleri hakkında daha fazla bilgi için [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+> Temel görüntünüz için ek lisans ve satın alma koşullarına sahip bir üçüncü taraf görüntüsü kullanamazsınız. Bu market görüntüleri hakkında daha fazla bilgi için bkz. [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
 ) veya [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
-) VM'leri kılavuzuna bakın.
+) VM 'leri Kılavuzu.
 
-- VM'nin yönetilen bir diskle oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
-- Özel Komut Dosyası uzantısı gibi Azure uzantılarını VM'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Toplu İşlem havuzunu dağıtırken sorunlarla karşılaşabilir.
-- Ekli veri disklerini kullanırken, diskleri kullanmak için bir VM'nin içinden monte edip biçimlendirmeniz gerekir.
-- Sağladığınız temel işletim sistemi görüntüsünün varsayılan geçici sürücüyü kullandığından emin olun. Toplu Iş düğümü aracısı şu anda varsayılan geçici sürücüyü bekliyor.
-- VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) üzerinden bağlanın. Gerekli herhangi bir yazılımı yükleyin veya istenen verileri kopyalayın.  
+- VM 'nin yönetilen bir disk ile oluşturulduğundan emin olun. Bu, bir VM oluşturduğunuzda varsayılan depolama ayarıdır.
+- Özel Betik uzantısı gibi Azure uzantılarını VM 'ye yüklemeyin. Görüntü önceden yüklenmiş bir uzantı içeriyorsa, Azure Batch havuzunu dağıttığınızda sorunlarla karşılaşabilir.
+- Bağlı veri diskleri kullanılırken, bunları kullanmak için diskleri bir VM içinden bağlamanız ve biçimlendirmeniz gerekir.
+- Sağladığınız temel işletim sistemi görüntüsünün varsayılan geçici sürücüyü kullandığından emin olun. Batch düğüm Aracısı Şu anda varsayılan geçici sürücüyü bekliyor.
+- VM çalışmaya başladıktan sonra RDP (Windows için) veya SSH (Linux için) aracılığıyla buna bağlanın. Gerekli yazılımları yükler veya istenen verileri kopyalayın.  
 
 ### <a name="create-a-vm-snapshot"></a>VM anlık görüntüsü oluşturma
 
-Anlık görüntü, bir VHD'nin tam, salt okunur kopyasıdır. VM'nin işletim sistemi veya veri disklerinin anlık görüntüsünü oluşturmak için Azure portalını veya komut satırı araçlarını kullanabilirsiniz. Anlık görüntü oluşturmak için adımlar ve seçenekler için [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) veya [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) VM'ler kılavuzuna bakın.
+Anlık görüntü, bir VHD 'nin tam ve salt okunurdur kopyasıdır. Bir sanal makinenin işletim sistemi veya veri disklerinin anlık görüntüsünü oluşturmak için Azure portal veya komut satırı araçlarını kullanabilirsiniz. Anlık görüntü oluşturma adımları ve seçenekleri için bkz. [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md) veya [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md) VM 'leri Kılavuzu.
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Bir veya daha fazla anlık görüntüden görüntü oluşturma
 
-Anlık görüntüden yönetilen bir görüntü oluşturmak [için, az image create](/cli/azure/image) komutu gibi Azure komut satırı araçlarını kullanın. Bir işletim sistemi disk anlık görüntüsü ve isteğe bağlı olarak bir veya daha fazla veri diski anlık belirterek bir görüntü oluşturabilirsiniz.
+Bir anlık görüntüden yönetilen bir görüntü oluşturmak için [az Image Create](/cli/azure/image) komutu gibi Azure komut satırı araçlarını kullanın. Bir işletim sistemi disk anlık görüntüsü ve isteğe bağlı olarak bir veya daha fazla veri diski anlık görüntüsü belirterek görüntü oluşturabilirsiniz.
 
-## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Portaldaki özel bir resimden havuz oluşturma
+## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Portalda özel görüntüden havuz oluşturma
 
-Özel resminizi kaydettikten ve kaynak kimliğini veya adını aldıktan sonra, bu resimden bir Toplu Iş havuzu oluşturun. Aşağıdaki adımlar, Azure portalından nasıl bir havuz oluşturabileceğinizi gösterir.
+Özel görüntünüzü kaydettikten ve kaynak KIMLIĞINI veya adını öğrendikten sonra, bu görüntüden bir Batch havuzu oluşturun. Aşağıdaki adımlarda Azure portal havuzun nasıl oluşturulacağı gösterilmektedir.
 
 > [!NOTE]
-> Toplu İşlem API'lerinden birini kullanarak havuzu oluşturuyorsanız, AAD kimlik doğrulaması için kullandığınız kimliğin görüntü kaynağına izin verdiğinden emin olun. [Active Directory ile Toplu İş İvesi'ni Doğrula'ya Doğrula hizmet çözümlerine](batch-aad-auth.md)bakın.
+> Havuzu Batch API 'Lerinden birini kullanarak oluşturuyorsanız, AAD kimlik doğrulaması için kullandığınız kimliğin görüntü kaynağı için izinlere sahip olduğundan emin olun. Bkz. [Active Directory Batch hizmeti çözümlerini kimlik doğrulama](batch-aad-auth.md).
 >
-> Yönetilen görüntü için kaynak havuzun ömrü için bulunmalıdır. Temel kaynak silinirse, havuz ölçeklendirilemez.
+> Yönetilen görüntünün kaynağı havuzun ömrü için mevcut olmalıdır. Temeldeki kaynak silinirse, havuz ölçeklenmeyebilir.
 
-1. Azure portalında Batch hesabınıza gidin. Bu hesap, özel görüntüyü içeren kaynak grubuyla aynı abonelikte ve bölgede olmalıdır.
-2. Soldaki **Ayarlar** **penceresinde, Havuzlar** menü öğesini seçin.
+1. Azure portalında Batch hesabınıza gidin. Bu hesabın, özel görüntüyü içeren kaynak grubuyla aynı abonelikte ve bölgede olması gerekir.
+2. Soldaki **Ayarlar** penceresinde **havuzlar** menü öğesini seçin.
 3. **Havuzlar** penceresinde **Ekle** komutunu seçin.
-4. Havuz **Ekle** penceresinde, **Resim Türü** açılır penceresinden Özel **Resim (Linux/Windows) seçeneğini** belirleyin. Özel **VM görüntü** açılır tarafından görüntü adını (kaynak kimliğinin kısa biçimi) seçin.
-5. Özel resminiz için doğru **Publisher/Offer/Sku'yu** seçin.
-6. **Düğüm boyutu,** **Hedef adanmış düğümler**ve **Düşük öncelikli düğümler**ve istenen isteğe bağlı ayarlar da dahil olmak üzere kalan gerekli ayarları belirtin.
+4. **Havuz Ekle** penceresinde, **görüntü türü** açılan menüsünden **özel görüntü (Linux/Windows)** öğesini seçin. **Özel VM görüntüsü** açılan menüsünde, görüntü adını (kaynak kimliği için kısa biçim) seçin.
+5. Özel görüntünüz için doğru **yayımcıyı/teklifi/SKU 'yu** seçin.
+6. **Düğüm boyutu**, **hedef adanmış düğümler**ve **düşük öncelikli düğümlerin**yanı sıra istediğiniz isteğe bağlı ayarları da kapsayan, kalan gerekli ayarları belirtin.
 
-    Örneğin, Microsoft Windows Server Datacenter 2016 özel görüntü için **Havuz Ekle** penceresi aşağıda gösterildiği gibi görünür:
+    Örneğin, Microsoft Windows Server Datacenter 2016 özel görüntüsü için, **Havuz Ekle** penceresi aşağıda gösterildiği gibi görünür:
 
     ![Özel Windows görüntüsünden havuz ekleme](media/batch-custom-images/add-pool-custom-image.png)
   
-Varolan bir havuzun özel bir resme dayalı olup olmadığını denetlemek **için, Havuz** penceresinin kaynak özeti **bölümündeki İşletim Sistemi** özelliğine bakın. Havuz özel bir görüntüden oluşturulduysa, **Özel VM Image**olarak ayarlanır.
+Mevcut bir havuzun özel bir görüntüye dayalı olup olmadığını denetlemek için **Havuz** penceresinin kaynak Özeti bölümünde **işletim sistemi** özelliğine bakın. Havuz özel bir görüntüden oluşturulduysa, **özel VM görüntüsü**olarak ayarlanır.
 
-Havuzla ilişkili tüm özel görüntüler havuzun **Özellikler** penceresinde görüntülenir.
+Bir havuz ile ilişkili tüm özel görüntüler havuzun **Özellikler** penceresinde görüntülenir.
 
-## <a name="considerations-for-large-pools"></a>Büyük havuzlar için dikkat edilecek hususlar
+## <a name="considerations-for-large-pools"></a>Büyük havuzlara dikkat edilecek noktalar
 
-Özel bir görüntü kullanarak yüzlerce vm veya daha fazla bir havuz oluşturmayı planlıyorsanız, VM anlık görüntü oluşturulan bir görüntü kullanmak için önceki kılavuzu izlemek önemlidir.
+Özel bir görüntü kullanarak yüzlerce VM veya daha fazlasını içeren bir havuz oluşturmayı planlıyorsanız, bir VM anlık görüntüsünden oluşturulmuş bir görüntüyü kullanmak için yukarıdaki yönergeleri izlemeniz önemlidir.
 
-Ayrıca aşağıdaki hususlara dikkat edin:
+Ayrıca aşağıdaki noktalara dikkat edin:
 
-- **Boyut sınırları** - Toplu iş, özel bir görüntü kullandığınızda havuz boyutunu 2500 özel işlem düğümü veya 1000 düşük öncelikli düğümle sınırlar.
+- **Boyut limitleri** -özel bir görüntü kullandığınızda toplu işlem havuz boyutunu 2500 adanmış işlem düğümlerine veya 1000 düşük öncelikli düğümlere sınırlar.
 
-  Birden çok havuz oluşturmak için aynı görüntüyü (veya aynı temel anlık görüntüye dayalı birden çok görüntü) kullanırsanız, havuzlarda bulunan toplam işlem düğümleri önceki sınırları aşamaz. Bir görüntüyü veya temel anlık görüntüsünü tek bir havuzdan daha fazla kullanmak için kullanmanızı önermiyoruz.
+  Birden çok havuz oluşturmak için aynı görüntüyü (veya aynı temel anlık görüntüye dayalı birden çok görüntüyü) kullanırsanız, havuzlardaki toplam işlem düğümleri önceki limitleri aşamaz. Tek bir havuzun daha fazla olması için bir görüntünün veya temel anlık görüntüsünün kullanılması önerilmez.
 
-  Havuzu [gelen NAT havuzlarıyla](pool-endpoint-configuration.md)yapılandırdığınızda sınırlar azaltılabilir.
+  Havuzu [gelen NAT havuzlarıyla](pool-endpoint-configuration.md)yapılandırırsanız sınırlar azaltılabilir.
 
-- **Yeniden boyutlandırma zaman ayarı** - Havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yapmıyorsa), havuzun yeniden boyutlandırma Zaman Ödeme özelliğini 20-30 dakika gibi bir değere yükseltin. Havuzunuz zaman araları süresi içinde hedef boyutuna ulaşamazsa, başka bir [yeniden boyutlandırma işlemi gerçekleştirin.](/rest/api/batchservice/pool/resize)
+- **Yeniden boyutlandırma zaman aşımı** -havuzunuz sabit sayıda düğüm içeriyorsa (otomatik ölçeklendirme yapmaz), havuzun resizeTimeout özelliğini 20-30 dakika gibi bir değere yükseltin. Havuzunuz, zaman aşımı süresi içinde hedef boyutuna ulaşmazsa, başka bir [yeniden boyutlandırma işlemi](/rest/api/batchservice/pool/resize)gerçekleştirin.
 
-  300'den fazla işlem düğümü içeren bir havuz planlıyorsanız, hedef boyutuna ulaşmak için havuzu birden çok kez yeniden boyutlandırmanız gerekebilir.
+  300 ' den fazla işlem düğümüne sahip bir havuz planlıyorsanız, hedef boyutuna ulaşmak için havuzu birden çok kez yeniden boyutlandırmanız gerekebilir.
   
-[Paylaşılan Resim Galerisi'ni](batch-sig-images.md)kullanarak, daha fazla Paylaşılan Resim yinelemesiyle birlikte özelleştirilmiş resimlerinizle birlikte daha büyük havuzlar oluşturabilirsiniz. Paylaşılan Görüntüler'i kullanarak, havuzun sabit duruma ulaşması için gereken süre %25'e kadar daha hızlıdır ve VM boşta kalma süresi %30'a kadar daha kısadır.
+[Paylaşılan görüntü galerisini](batch-sig-images.md)kullanarak, daha fazla paylaşılan görüntü çoğaltmalarıyla birlikte özelleştirilmiş görüntülerinize sahip daha büyük havuzlar da oluşturabilirsiniz. Paylaşılan görüntüleri kullanarak havuzun kararlı duruma ulaşması için gereken süre %25 daha hızlı ve VM boşta kalma gecikmesi %30 ' a kadar daha kısadır.
 
-## <a name="considerations-for-using-packer"></a>Packer kullanmak için dikkat edilmesi gerekenler
+## <a name="considerations-for-using-packer"></a>Packer kullanma konuları
 
-Doğrudan Packer ile yönetilen bir görüntü kaynağı oluşturma yalnızca kullanıcı abonelik modu Toplu hesapları ile yapılabilir. Toplu Işlem modu hesapları için önce bir VHD oluşturmanız, ardından VHD'yi yönetilen bir görüntü kaynağına aktarmanız gerekir. Havuz ayırma moduna (kullanıcı aboneliği veya Toplu Iş partisi) bağlı olarak, yönetilen bir görüntü kaynağı oluşturma adımlarınızın değişmesi gerekir.
+Doğrudan Packer ile yönetilen bir görüntü kaynağı oluşturmak yalnızca kullanıcı aboneliği modu Batch hesaplarıyla yapılabilir. Batch hizmeti modu hesaplarında, önce bir VHD oluşturmanız ve ardından VHD 'yi yönetilen bir görüntü kaynağına aktarmanız gerekir. Havuz ayırma moduna (Kullanıcı aboneliği veya Batch hizmeti) bağlı olarak, yönetilen bir görüntü kaynağı oluşturma adımlarınız farklılık gösterecektir.
 
-Yönetilen görüntüyü oluşturmak için kullanılan kaynağın özel görüntüye başvuran herhangi bir havuzun yaşam ömürleri boyunca bulunduğundan emin olun. Aksi takdirde havuz ayırma hataları ve/veya yeniden boyutlandırma hatalarına neden olabilir.
+Yönetilen görüntüyü oluşturmak için kullanılan kaynağın, Özel görüntüye başvuran herhangi bir havuzun yaşam süreleri için mevcut olduğundan emin olun. Bunun yapılmaması, havuz ayırma hatalarına ve/veya yeniden boyutlandırmaya neden olabilir.
 
-Görüntü veya alttaki kaynak kaldırılırsa, aşağıdakilere benzer `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`bir hata alabilirsiniz: . Bu hatayı alırsanız, temel kaynağın kaldırılmadığını sağlayın.
+Görüntü veya temel alınan kaynak kaldırılırsa şuna benzer bir hata alabilirsiniz: `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`. Bu hatayı alırsanız, temeldeki kaynağın kaldırılmadığından emin olun.
 
-VM oluşturmak için Packer'ı kullanma hakkında daha fazla bilgi için Packer [ile Linux görüntüsü oluşturma](../virtual-machines/linux/build-image-with-packer.md) veya Packer ile Bir Windows görüntüsü [oluşturma](../virtual-machines/windows/build-image-with-packer.md)başlıklı bilgi için.
+Sanal makine oluşturmak için Packer kullanma hakkında daha fazla bilgi için bkz. [Packer Ile Linux görüntüsü oluşturma](../virtual-machines/linux/build-image-with-packer.md) veya [Packer Ile Windows görüntüsü oluşturma](../virtual-machines/windows/build-image-with-packer.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplu İşleme'ye derinlemesine bir bakış için [bkz.](batch-api-basics.md)
+Toplu Işe yönelik ayrıntılı genel bakış için bkz. [Batch ile büyük ölçekli paralel işlem çözümleri geliştirme](batch-api-basics.md).
