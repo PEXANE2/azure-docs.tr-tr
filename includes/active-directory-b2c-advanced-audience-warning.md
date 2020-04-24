@@ -12,4 +12,4 @@ ms.lasthandoff: 03/28/2020
 ms.locfileid: "78183184"
 ---
 > [!NOTE]
-> Azure Etkin Dizin B2C'de, [özel ilkeler](../articles/active-directory-b2c/custom-policy-get-started.md) öncelikle karmaşık senaryoları ele alacak şekilde tasarlanmıştır. Çoğu senaryoda yerleşik [kullanıcı akışlarını](../articles/active-directory-b2c/user-flow-overview.md)kullanmanızı öneririz.
+> Azure Active Directory B2C, [özel ilkeler](../articles/active-directory-b2c/custom-policy-get-started.md) birincil olarak karmaşık senaryolara yöneliktir. Çoğu senaryoda, yerleşik [Kullanıcı akışlarını](../articles/active-directory-b2c/user-flow-overview.md)kullanmanızı öneririz.
