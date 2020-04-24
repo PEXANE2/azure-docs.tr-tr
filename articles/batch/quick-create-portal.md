@@ -1,20 +1,15 @@
 ---
 title: Azure Hızlı Başlangıç - Batch işi çalıştırma - Portal
-description: Toplu Iş hesabı, bilgi işlem düğümleri havuzu ve havuzda temel görevleri çalıştıran bir iş oluşturmak için Azure portalını nasıl kullanacağınızı öğrenin.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
+description: Batch hesabı, bir işlem düğümleri havuzu ve havuzda temel görevleri çalıştıran bir iş oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 6ce0066765de3d99f8309bf568b467518f38923e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4857b9ffb38cf48678f793284afaaf3bbefb7e42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240439"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114165"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
@@ -24,14 +19,14 @@ Bu hızlı başlangıçta, Azure portalını kullanarak bir Batch hesabı, bir i
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma 
 
-Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
+[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
 
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
 Test amacıyla örnek bir Batch hesabı oluşturmak için bu adımları izleyin. Havuzlar ve işler oluşturmak için bir Batch hesabı gerekir. Burada gösterildiği gibi, bir Azure depolama hesabını Batch hesabına bağlayabilirsiniz. Bu hızlı başlangıç için gerekli olmamasına karşın, depolama hesabı uygulamaları dağıtmak ve çoğu gerçek yaşam iş yükleri için giriş ve çıkış verilerini depolamak üzere yararlıdır.
 
 
-1. Kaynak > **İşlem** > **Toplu İş Hizmeti** **Oluştur'u**seçin. 
+1.  > **Compute**Kaynak >  **oluşturma**işlem**Batch hizmeti**' ni seçin. 
 
    ![Market’te Batch][marketplace_portal]
 
@@ -50,7 +45,7 @@ Test amacıyla örnek bir Batch hesabı oluşturmak için bu adımları izleyin.
 Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem düğümleri havuzu oluşturun. Bu hızlı örneğe yönelik havuz, Azure Market’te Windows Server 2012 R2 görüntüsü çalıştıran 2 düğümden oluşur.
 
 
-1. Toplu İşlem **hesabında, Ekle'yi** > **Add**seçin.
+1. Batch hesabında **havuzlar** > **Ekle**' yi seçin.
 
 2. *mypool* adlı bir **Havuz Kimliği** girin. 
 
@@ -59,9 +54,9 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
    |Ayar  |Değer  |
    |---------|---------|
    |**Görüntü Türü**|Market (Linux/Windows)|
-   |**Yayımcı**     |MicrosoftWindowsServer|
-   |**Teklif**     |WindowsServer|
-   |**Sku**     |2012-R2-Datacenter-smalldisk|
+   |**'In**     |MicrosoftWindowsServer|
+   |**Sunduğu**     |WindowsServer|
+   |**İsteyin**     |2012-R2-Datacenter-smalldisk|
 
    ![Bir havuz işletim sistemi seçin][pool_os] 
 
@@ -86,7 +81,7 @@ Birkaç dakika sonra havuzun durumu **Sabit** olur ve düğümler başlar. Düğ
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Başlangıçta iş hiçbir görev içermez. 
 
-1. Toplu İş hesabı görünümünde, **İşler** > **Ekle'yi**seçin. 
+1. Batch hesabı görünümünde, **işler** > **Ekle**' yi seçin. 
 
 2. *myjob* adlı bir **İş Kimliği** girin. **Havuz** menüsünde *mypool*’u seçin. Diğer ayarlar için varsayılan değerleri kabul edin ve **Tamam**'ı seçin.
 
@@ -102,7 +97,7 @@ Batch kullandığınızda komut satırı, uygulamanızı veya betiğinizi belirt
 
 İlk görevi oluşturmak için:
 
-1. **Ekle'yi**seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
 2. *mytask* adlı bir **Görev Kimliği** girin. 
 

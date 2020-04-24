@@ -1,6 +1,6 @@
 ---
-title: PIM kullanmaya başlayın - Azure Active Directory | Microsoft Dokümanlar
-description: Azure portalında Azure AD Ayrıcalıklı Kimlik Yönetimi'ni (PIM) nasıl etkinleştirdiğinizi ve kullanmaya nasıl başlayacaksınız öğrenin.
+title: PıM-Azure Active Directory kullanmaya başlama | Microsoft Docs
+description: Azure portal Azure AD Privileged Identity Management (PıM) kullanmayı nasıl etkinleştireceğinizi ve kullanmaya başlamanızı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,88 +10,89 @@ ms.service: active-directory
 ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/13/2020
+ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cbb9b4340a7cdb9be5039722a8f75e09288ec48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79472869"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82112227"
 ---
 # <a name="start-using-privileged-identity-management"></a>Privileged Identity Management'ı kullanmaya başlama
 
-Ayrıcalıklı Kimlik Yönetimi (PIM) ile Azure Etkin Dizin (Azure AD) kuruluşunuzdaki erişimi yönetebilir, denetleyebilir ve izleyebilirsiniz. Bu kapsam, Azure kaynaklarına, Azure AD'ye ve Office 365 veya Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetlerine erişimi içerir.
+Bu makalede Privileged Identity Management (PıM) etkinleştirmeyi ve kullanmaya başlamanızı açıklamaktadır.
 
-Bu makalede, Ayrıcalıklı Kimlik Yönetimi'ni nasıl etkinleştirilip başlatılacak açıklanmaktadır.
+Azure Active Directory (Azure AD) kuruluşunuzda erişimi yönetmek, denetlemek ve izlemek için Privileged Identity Management (PıM) kullanın. PıM ile Azure kaynakları, Azure AD kaynakları ve Office 365 ya da Microsoft Intune gibi diğer Microsoft çevrimiçi hizmetler için gerekli ve anında erişim sağlayabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Ayrıcalıklı Kimlik Yönetimi'ni kullanmak için aşağıdaki lisanslardan birine sahip olmalısınız:
+Privileged Identity Management kullanmak için aşağıdaki lisanslardan birine sahip olmanız gerekir:
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Daha fazla bilgi için, [Ayrıcalıklı Kimlik Yönetimi'ni kullanmak için Lisans gereksinimlerine](subscription-requirements.md)bakın.
+Daha fazla bilgi için bkz. [Privileged Identity Management kullanılacak lisans gereksinimleri](subscription-requirements.md).
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>Azure AD rolleri için PIM'e kaydolun
+## <a name="prepare-pim-for-azure-ad-roles"></a>Azure AD rolleri için PıM 'yi hazırlama
 
-Dizininiz için Ayrıcalıklı Kimlik Yönetimi'ni etkinleştirdikten sonra, Azure AD rollerini yönetmek için Ayrıcalıklı Kimlik Yönetimi'ne kaydolmanız gerekir.
+Dizininiz için Privileged Identity Management etkinleştirildikten sonra, Azure AD rollerini yönetmek için Privileged Identity Management hazırlayabilirsiniz.
 
-1. **Azure AD Ayrıcalıklı Kimlik Yönetimi'ni**açın.
+Azure AD rolleri için aşağıdaki sırayla hazırlanmanız için önerdiğimiz görevler şunlardır:
 
-1. **Azure AD rollerini**seçin.
+1. [Azure AD rol ayarlarını yapılandırın](pim-how-to-change-default-settings.md).
+1. [Uygun atamalar sunun](pim-how-to-add-role-to-user.md).
+1. [Uygun kullanıcıların Azure AD rollerini tam zamanında etkinleştirmesine Izin verin](pim-how-to-activate-role.md).
 
-    ![Azure AD rolleri için Ayrıcalıklı Kimlik Yönetimi'ne kaydolun](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+## <a name="prepare-pim-for-azure-roles"></a>Azure rolleri için PıM 'yi hazırlama
 
-1. **Kaydol'u**seçin.
+Dizininiz için Privileged Identity Management etkinleştirdikten sonra, bir abonelikte Azure kaynak erişimi için Azure rollerini yönetmeye Privileged Identity Management hazırlanabilirsiniz.
 
-1. Görünen iletide, Azure AD rollerini yönetmek için Ayrıcalıklı Kimlik Yönetimi'ne kaydolmak için **Evet'i** tıklatın.
+Azure rollerine hazırlanmanız için önerdiğimiz görevler sırayla aşağıda verilmiştir:
 
-    ![Azure AD rolleri iletisi için Ayrıcalıklı Kimlik Yönetimi'ne kaydolun](./media/pim-getting-started/sign-up-pim-message.png)
-
-    Kaydolma tamamlandığında Azure REKLAM seçenekleri etkinleştirilir. Portalı yenilemeniz gerekebilir.
-
-    Ayrıcalıklı Kimlik Yönetimi ile korumak için Azure kaynaklarını nasıl keşfedip seçeceksiniz hakkında bilgi için, [Ayrıcalıklı Kimlik Yönetimi'nde yönetmek için Azure kaynaklarını keşfedin'e](pim-resource-roles-discover-resources.md)bakın.
+1. [Azure kaynaklarını bulma](pim-resource-roles-discover-resources.md)
+1. [Azure rol ayarlarını yapılandırın](pim-resource-roles-configure-role-settings.md).
+1. [Uygun atamalar sunun](pim-resource-roles-assign-roles.md).
+1. [Uygun kullanıcıların Azure rollerini tam zamanında etkinleştirmesine Izin verin](pim-resource-roles-activate-your-roles.md).
 
 ## <a name="navigate-to-your-tasks"></a>Görevlerinize gitme
 
-Ayrıcalıklı Kimlik Yönetimi kurulduktan sonra, kimlik yönetimi görevlerinizi başlatabilirsiniz.
+Privileged Identity Management kurulduktan sonra, bunun nasıl yapılacağını öğrenebilirsiniz.
 
-![Görevleri ve Yönetme seçeneklerini gösteren Ayrıcalıklı Kimlik Yönetimi'nde gezinme penceresi](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Görevleri gösterme ve seçenekleri yönetme Privileged Identity Management gezinti penceresi](./media/pim-getting-started/pim-quickstart-tasks.png)
 
 | Görev + Yönet | Açıklama |
 | --- | --- |
 | **Rollerim**  | Size atanan uygun ve etkin rollerin listesini görüntüler. Burada atanan uygun rolleri etkinleştirebilirsiniz. |
 | **İsteklerim** | Uygun rol atamalarını etkinleştirmek için bekleyen isteklerinizi görüntüler. |
-| **İstekleri onaylama** | Dizininizde onaylamak üzere atanmış kullanıcılar tarafından uygun rolleri etkinleştirme isteklerinin listesini görüntüler. |
-| **Erişimi gözden geçirme** | İster kendiniz ister bir başkası için erişimi gözden geçiriyor olun, tamamlamak üzere atanmış olduğunuz etkin erişim yorumlarını listeler. |
-| **Azure AD rolleri** | Azure AD rol atamalarını yönetmek için ayrıcalıklı rol yöneticilerinin bir pano ve ayarları görüntüler. Bu pano, ayrıcalıklı rol yöneticisi olmayan kullanıcılar için devre dışıdır. Bu kullanıcılar Görünümüm adlı özel bir panoya erişebilir. Görünümüm panosu, tüm kiracı değil yalnızca panoya erişen kullanıcı hakkında bilgileri görüntüler. |
-| **Azure kaynakları** | Azure kaynak rol atamalarını yönetmek için ayrıcalıklı rol yöneticilerinin bir pano ve ayarları görüntüler. Bu pano, ayrıcalıklı rol yöneticisi olmayan kullanıcılar için devre dışıdır. Bu kullanıcılar Görünümüm adlı özel bir panoya erişebilir. Görünümüm panosu, tüm kiracı değil yalnızca panoya erişen kullanıcı hakkında bilgileri görüntüler. |
+| **İstekleri onaylama** | Dizininizdeki, onaylamanız için belirlediğiniz kullanıcılara uygun rolleri etkinleştirme isteklerinin listesini görüntüler. |
+| **Erişimi gözden geçirme** | Kendinize veya başka birine yönelik erişimi gözden geçirirken, tamamlanmak üzere atadığınız etkin erişim incelemelerini listeler. |
+| **Azure AD rolleri** | Azure AD rol atamalarını yönetmek için ayrıcalıklı rol yöneticilerinin bir panosunu ve ayarlarını görüntüler. Bu pano, ayrıcalıklı rol yöneticisi olmayan kullanıcılar için devre dışıdır. Bu kullanıcılar Görünümüm adlı özel bir panoya erişebilir. Görünümüm panosu, tüm kiracı değil yalnızca panoya erişen kullanıcı hakkında bilgileri görüntüler. |
+| **Azure kaynakları** | Azure Kaynak rolü atamalarını yönetmek için ayrıcalıklı rol yöneticilerinin bir panosunu ve ayarlarını görüntüler. Bu pano, ayrıcalıklı rol yöneticisi olmayan kullanıcılar için devre dışıdır. Bu kullanıcılar Görünümüm adlı özel bir panoya erişebilir. Görünümüm panosu, tüm kiracı değil yalnızca panoya erişen kullanıcı hakkında bilgileri görüntüler. |
 
-## <a name="add-a-pim-tile-to-the-dashboard"></a>Panoya PIM döşemesi ekleme
+## <a name="add-a-pim-tile-to-the-dashboard"></a>Panoya PıM kutucuğu ekleme
 
-Ayrıcalıklı Kimlik Yönetimi'ni açmayı kolaylaştırmak için Azure portal panonuza Ayrıcalıklı Kimlik Yönetimi döşemesi ekleyin.
+Privileged Identity Management açmayı kolaylaştırmak için Azure portal panonuza bir PıM kutucuğu ekleyin.
 
-1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. **Tüm hizmetleri** seçin ve Azure AD Ayrıcalıklı **Kimlik Yönetimi** hizmetini bulun.
+1. **Tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management** hizmeti bulun.
 
-    ![Tüm hizmetlerde Azure AD Ayrıcalıklı Kimlik Yönetimi](./media/pim-getting-started/pim-all-services-find.png)
+    ![Tüm hizmetlerde Azure AD Privileged Identity Management](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Ayrıcalıklı Kimlik Yönetimi Quickstart'ı seçin.
+1. Privileged Identity Management hızlı başlangıcı ' nı seçin.
 
-1. Ayrıcalıklı Kimlik Yönetimi Quickstart bıçağını panoya sabitlemek için **panoya Pin bıçağını** işaretleyin.
+1. Privileged Identity Management hızlı başlangıç dikey penceresini panoya sabitlemek için **panoya sabitle dikey penceresini** işaretleyin.
 
-    ![İmtiyazlı Kimlik Yönetimi bıçağını panoya sabitlemek için pushpin simgesi](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Privileged Identity Management dikey pencereyi panoya sabitlemek için raptiye simgesi](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
-    Azure panosunda şöyle bir döşeme görürsünüz:
+    Azure panosu 'nda şöyle bir kutucuk göreceksiniz:
 
-    ![Panelde Ayrıcalıklı Kimlik Yönetimi Quickstart döşemesi](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Panoda Privileged Identity Management hızlı başlangıç kutucuğu](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ayrıcalıklı Kimlik Yönetiminde Azure AD rollerini atama](pim-how-to-add-role-to-user.md)
-- [Ayrıcalıklı Kimlik Yönetimi'nde yönetmek için Azure kaynaklarını keşfedin](pim-resource-roles-discover-resources.md)
+- [Privileged Identity Management Azure AD rolleri atama](pim-how-to-add-role-to-user.md)
+- [Privileged Identity Management Azure kaynak erişimini yönetme](pim-resource-roles-discover-resources.md)

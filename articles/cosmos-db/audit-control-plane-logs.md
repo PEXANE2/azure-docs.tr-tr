@@ -1,52 +1,63 @@
 ---
-title: Azure Cosmos DB denetim düzlemi işlemleri nasıl denetler?
-description: Azure Cosmos DB'de bölge ekleme, iş ortasını güncelleştirme, bölge başarısızlığı, vNet vb. ekleme gibi denetim düzlemi işlemlerini nasıl denetleyeceğinizi öğrenin
+title: Azure Cosmos DB denetim düzlemi işlemlerini denetleme
+description: Bölge ekleme, aktarım hızını güncelleştirme, bölge yük devretme, VNet ekleme, sanal ağ vb. gibi denetim düzlemi işlemlerini nasıl denetleyeceğinizi öğrenin. Azure Cosmos DB
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: sngun
-ms.openlocfilehash: 64ad8e6b1101d8486268c857b3a7752e1801f52c
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 32dd598b8fc62c0ec68f86f95b02f9f3d98cedd2
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80420268"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116307"
 ---
-# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemleri nasıl denetler?
+# <a name="how-to-audit-azure-cosmos-db-control-plane-operations"></a>Azure Cosmos DB denetim düzlemi işlemlerini denetleme
 
-Denetim düzlemi işlemleri, Azure Cosmos hesabında veya kapsayıcıda yapılan değişiklikleri içerir. Örneğin, bir Azure Cosmos hesabı oluşturmak, bir bölge eklemek, iş buzunu güncelleştirmek, bölge başarısızlığı, VNet vb. eklemek, denetim düzlemi işlemlerinden bazılarıdır. Bu makalede, Azure Cosmos DB'deki denetim düzlemi işlemlerinin nasıl denetlenecekleri açıklanmaktadır.
+Azure Cosmos DB denetim düzlemi, Azure Cosmos hesabında farklı bir işlem kümesi gerçekleştirmenize olanak tanıyan bir Reston hizmettir. Ortak bir kaynak modeli (örneğin, veritabanı, hesap) ve son kullanıcılara kaynak modelinde işlem gerçekleştirmeye yönelik çeşitli işlemler sunar. Denetim düzlemi işlemleri Azure Cosmos hesabında veya kapsayıcısında yapılan değişiklikleri içerir. Örneğin, bir Azure Cosmos hesabı oluşturma, bölge ekleme, aktarım hızını güncelleştirme, bölge yük devretme, VNet ekleme vb. gibi işlemler, bazı denetim düzlemi işlemlerdir. Bu makalede Azure Cosmos DB içindeki denetim düzlemi işlemlerini denetleme açıklanmaktadır. Azure CLı, PowerShell veya Azure portal kullanarak Azure Cosmos hesaplarında denetim düzlemi işlemlerini çalıştırabilirsiniz, ancak kapsayıcılar için Azure CLı veya PowerShell kullanın.
 
-## <a name="disable-key-based-metadata-write-access"></a>Anahtar tabanlı meta veri yazma erişimini devre dışı
- 
-Azure Cosmos DB'deki denetim düzlemi işlemlerini denetlemeden önce, hesabınızdaki anahtar tabanlı meta veri yazma erişimini devre dışı düşürün. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları aracılığıyla Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. `disableKeyBasedMetadataWriteAccess` Özelliği doğru olarak ayarlayarak yazma erişimini devre dışı kullanabilirsiniz. Bu özelliği ayarladıktan sonra, herhangi bir kaynakta değişiklikler yalnızca uygun Rol tabanlı erişim denetimi (RBAC) rolü ve kimlik bilgilerine sahip bir kullanıcıdan gerçekleşebilir. Bu özelliğinasıl ayarleyeceğiniz hakkında daha fazla bilgi edinmek için [SDK'lar makalesindeki Değişiklikleri Önleme makalesine](role-based-access-control.md#preventing-changes-from-cosmos-sdk) bakın.
+Denetim denetim düzlemi işlemlerinin yararlı olduğu bazı örnek senaryolar aşağıda verilmiştir:
 
- Meta veri yazma erişimini kapatırken aşağıdaki noktaları göz önünde bulundurun:
+* Azure Cosmos hesabınız için güvenlik duvarı kuralları değiştirildiğinde bir uyarı almak istiyorsunuz. Azure Cosmos hesabınızın ağ güvenliğini yöneten ve hızlı bir şekilde gerçekleştirilecek kurallara yönelik yetkisiz değişiklikler bulmak için uyarı gereklidir.
 
-* Uygulamalarınızın Yukarıdaki kaynakları değiştiren meta veri çağrıları yapmamasını değerlendirin ve emin olun (Örneğin, SDK veya hesap anahtarlarını kullanarak koleksiyon oluşturma, güncelleme iş bölümü, ...).
+* Azure Cosmos hesabınızdan yeni bir bölge eklenirse veya buradan bir uyarı almak istiyorsanız uyarı almak isteyebilirsiniz. Bölge ekleme veya kaldırma, faturalandırma ve veri egemenlik gereksinimlerini etkiler. Bu uyarı, hesabınızda yanlışlıkla ekleme veya bölge kaldırma işlemini tespit etmenize yardımcı olur.
 
-* Şu anda Azure portalı meta veri işlemleri için hesap anahtarlarını kullanır ve bu nedenle bu işlemler engellenir. Alternatif olarak, bu tür işlemleri gerçekleştirmek için Azure CLI, SDK veya Kaynak Yöneticisi şablon dağıtımlarını kullanın.
+* Değişiklik yapılan tanılama günlüklerinden daha fazla ayrıntı almak istiyorsunuz. Örneğin, bir sanal ağ değiştirildi.
 
-## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Kontrol düzlemi işlemleri için tanılama günlüklerini etkinleştirme
+## <a name="disable-key-based-metadata-write-access"></a>Anahtar tabanlı meta veri yazma erişimini devre dışı bırak
 
-Azure portalını kullanarak denetim düzlemi işlemleri için tanılama günlüklerini etkinleştirebilirsiniz. Denetim düzlemi işlemlerinde günlüğe kaydetmeyi etkinleştirmek için aşağıdaki adımları kullanın:
+Azure Cosmos DB ' de denetim düzlemi işlemlerini denetetmeden önce, hesabınızda anahtar tabanlı meta veri yazma erişimini devre dışı bırakın. Anahtar tabanlı meta veri yazma erişimi devre dışı bırakıldığında, hesap anahtarları üzerinden Azure Cosmos hesabına bağlanan istemcilerin hesaba erişmesi engellenir. `disableKeyBasedMetadataWriteAccess` Özelliği true olarak ayarlayarak yazma erişimini devre dışı bırakabilirsiniz. Bu özelliği ayarladıktan sonra, herhangi bir kaynakta yapılan değişiklikler, uygun rol tabanlı erişim denetimi (RBAC) rolüne ve kimlik bilgilerine sahip olan bir kullanıcıdan meydana gelebilir. Bu özelliği ayarlama hakkında daha fazla bilgi için bkz. SDK 'larda [değişiklik](role-based-access-control.md#preventing-changes-from-cosmos-sdk) yapma makalesi. Yazma erişimini devre dışı bıraktıktan sonra, iş akışındaki SDK tabanlı değişiklikler, Dizin çalışmaya devam edecektir.
 
-1. Azure [portalında](https://portal.azure.com) oturum açın ve Azure Cosmos hesabınıza gidin.
+Meta veri yazma erişimini kapatırken aşağıdaki noktaları göz önünde bulundurun:
 
-1. **Tanılama ayarları** bölmesini açın, oluşturulacak günlükler için bir **Ad** sağlayın.
+* Uygulamalarınızın, SDK veya hesap anahtarlarını kullanarak yukarıdaki kaynakları (örneğin, koleksiyon oluşturma, iş üretimini güncelleştirme,...) değiştiren meta veri çağrıları oluşturmadığından emin olun.
 
-1. Günlük türü için **ControlPlaneRequests'i** seçin ve **Günlük Analitiğine Gönder** seçeneğini seçin.
+* Şu anda Azure portal, meta veri işlemleri için hesap anahtarlarını kullanır, bu nedenle bu işlemler engellenir. Alternatif olarak, bu tür işlemleri gerçekleştirmek için Azure CLı, SDK 'lar veya Kaynak Yöneticisi Şablon dağıtımlarını kullanın.
 
-Günlükleri bir depolama hesabında veya bir olay hub'ına akışta da depolayabilirsiniz. Bu makalede, günlükleri günlükleri günlük leri analiz göndermek ve sonra onları sorgulamak nasıl gösterir. Etkinleştirdikten sonra, tanılama günlüklerinin etkili olması birkaç dakika sürer. Bu noktadan sonra gerçekleştirilen tüm kontrol uçağı işlemleri izlenebilir. Aşağıdaki ekran görüntüsü, denetim düzlemgünlüklerinin nasıl etkinleştirilen gösterir:
+## <a name="enable-diagnostic-logs-for-control-plane-operations"></a>Denetim düzlemi işlemleri için tanılama günlüklerini etkinleştirme
 
-![Denetim düzlemi istekleri günlüğe kaydetmeyi etkinleştirme](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+Azure portal kullanarak denetim düzlemi işlemleri için tanılama günlüklerini etkinleştirebilirsiniz. Etkinleştirildikten sonra, tanılama günlükleri işlemi, ilgili ayrıntılarla birlikte bir dizi başlangıç ve tamamlanmış olay olarak kaydeder. Örneğin, *Regionfailoverstart* ve *regionfailovertamamlanı* bölge yük devretme olayını tamamlar.
 
-## <a name="view-the-control-plane-operations"></a>Kontrol düzlemi işlemlerini görüntüleme
+Denetim düzlemi işlemlerinde günlüğe kaydetmeyi etkinleştirmek için aşağıdaki adımları kullanın:
 
-Günlüğe kaydetmeyi açtıktan sonra, belirli bir hesabın işlemlerini izlemek için aşağıdaki adımları kullanın:
+1. [Azure Portal](https://portal.azure.com) açın ve Azure Cosmos hesabınıza gidin.
+
+1. **Tanılama ayarları** bölmesini açın, oluşturulacak Günlükler Için bir **ad** sağlayın.
+
+1. Günlük türü için **Controlplanerequests** ' yi seçin ve **Log Analytics gönder** seçeneğini belirleyin.
+
+Günlükleri bir depolama hesabında veya bir olay hub 'ına de kaydedebilirsiniz. Bu makalede, Log Analytics 'e günlüklerin nasıl gönderileceği ve daha sonra sorgulanacağını gösterir. Etkinleştirildikten sonra, tanılama günlüklerinin etkili olması birkaç dakika sürer. Bu noktadan sonra gerçekleştirilen tüm denetim düzlemi işlemleri izlenir. Aşağıdaki ekran görüntüsünde denetim düzlemi günlüklerinin nasıl etkinleştirileceği gösterilmektedir:
+
+![Denetim düzlemi isteklerini günlüğe kaydetmeyi etkinleştir](./media/audit-control-plane-logs/enable-control-plane-requests-logs.png)
+
+## <a name="view-the-control-plane-operations"></a>Denetim düzlemi işlemlerini görüntüleme
+
+Günlüğe kaydetmeyi etkinleştirdikten sonra, belirli bir hesap için işlemleri izlemek üzere aşağıdaki adımları kullanın:
 
 1. [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol daki gezinmeden **Monitör** sekmesini açın ve ardından **Günlükler** bölmesini seçin. Kapsamda belirli bir hesapla sorguları kolayca çalıştırabileceğiniz bir UI açılır. Denetim düzlemgünlüklerini görüntülemek için aşağıdaki sorguyu çalıştırın:
+
+1. Sol taraftaki gezinmede **izleyici** sekmesini açın ve ardından **Günlükler** bölmesini seçin. Bu, kapsamdaki belirli hesapla kolayca sorguları çalıştırabileceğiniz bir kullanıcı arabirimi açar. Denetim düzlemi günlüklerini görüntülemek için aşağıdaki sorguyu çalıştırın:
 
    ```kusto
    AzureDiagnostics
@@ -54,21 +65,94 @@ Günlüğe kaydetmeyi açtıktan sonra, belirli bir hesabın işlemlerini izleme
    | where TimeGenerated >= ago(1h)
    ```
 
-Bir Azure Cosmos hesabına Bir VNET eklendiğinde aşağıdaki ekran görüntüleri günlükleri yakalar:
+Aşağıdaki ekran görüntüleri, bir Azure Cosmos hesabına VNET eklendiğinde günlükleri yakalar:
 
-![VNet eklendiğinde düzlem günlüklerini denetleme](./media/audit-control-plane-logs/add-ip-filter-logs.png)
+![VNet eklendiğinde denetim düzlemi günlükleri](./media/audit-control-plane-logs/add-ip-filter-logs.png)
 
-Cassandra tablosunun iş bölümü güncelleştirildiğinde aşağıdaki ekran görüntüleri günlükleri yakalar:
+Aşağıdaki ekran görüntüleri, Cassandra tablosunun aktarım hızı güncelleştirilirken günlükleri yakalar:
 
-![Elde iş güncelleştirme olduğunda düzlem günlüklerini denetleme](./media/audit-control-plane-logs/throughput-update-logs.png)
+![Verimlilik güncelleniyorsa denetim düzlemi günlükleri](./media/audit-control-plane-logs/throughput-update-logs.png)
 
-## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Belirli bir işlemle ilişkili kimliği belirleme
+## <a name="identify-the-identity-associated-to-a-specific-operation"></a>Belirli bir işlemle ilişkili kimliği tanımlama
 
-Daha fazla hata ayıklamak istiyorsanız, Etkinlik Kimliği'ni kullanarak veya işlemin zaman damgası ile **Etkinlik günlüğündeki** belirli bir işlemi tanımlayabilirsiniz. Zaman damgası, etkinlik kimliğinin açıkça geçirilen olmadığı bazı Kaynak Yöneticisi istemcileri için kullanılır. Etkinlik günlüğü, işlemin başlatıldığı kimlik hakkında ayrıntılı bilgi verir. Aşağıdaki ekran görüntüsü, etkinlik kimliğinin nasıl kullanılacağını ve etkinlik günlüğünde onunla ilişkili işlemleri nasıl bulacağını gösterir:
+Daha fazla hata ayıklamak isterseniz, etkinlik **günlüğünde** etkinlik kimliğini veya işlemin zaman damgasını kullanarak belirli bir işlemi tanımlayabilirsiniz. Zaman damgası, etkinlik KIMLIĞININ açıkça geçirildiği bazı Kaynak Yöneticisi istemcileri için kullanılır. Etkinlik günlüğü, işlemin başlatıldığı kimliğin ayrıntılarını verir. Aşağıdaki ekran görüntüsünde etkinlik KIMLIĞINI kullanma ve etkinlik günlüğünde onunla ilişkili işlemleri bulma işlemi gösterilmektedir:
 
-![Etkinlik kimliğini kullanın ve işlemleri bulun](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+![Etkinlik KIMLIĞINI kullanın ve işlemleri bulun](./media/audit-control-plane-logs/find-operations-with-activity-id.png)
+
+## <a name="control-plane-operations-for-azure-cosmos-account"></a>Azure Cosmos hesabı için denetim düzlemi işlemleri
+
+Hesap düzeyinde kullanılabilen Denetim düzlemi işlemleri aşağıda verilmiştir. İşlemlerin çoğu hesap düzeyinde izlenir. Bu işlemler, Azure izleyici 'de ölçümler olarak kullanılabilir:
+
+* Eklenen bölge
+* Bölge kaldırıldı
+* Hesap silindi
+* Yük devredilen bölge
+* Hesap oluşturuldu
+* Sanal ağ silindi
+* Hesap Ağ ayarları güncelleştirildi
+* Hesap çoğaltma ayarları güncelleştirildi
+* Hesap anahtarları güncelleştirildi
+* Hesap yedekleme ayarları güncelleştirildi
+* Hesap Tanılama ayarları güncelleştirildi
+
+## <a name="control-plane-operations-for-database-or-containers"></a>Veritabanı veya kapsayıcılar için denetim düzlemi işlemleri
+
+Aşağıda, veritabanı ve kapsayıcı düzeyinde kullanılabilen Denetim düzlemi işlemleri verilmiştir. Bu işlemler, Azure izleyici 'de ölçümler olarak kullanılabilir:
+
+* SQL veritabanı güncelleştirildi
+* SQL kapsayıcısı güncelleştirildi
+* SQL veritabanı verimlilik güncelleştirildi
+* SQL kapsayıcısı üretilen Işi güncelleştirildi
+* SQL veritabanı silindi
+* SQL kapsayıcısı silindi
+* Cassandra keyspace güncelleştirildi
+* Cassandra tablosu güncelleştirildi
+* Cassandra keyspace üretilen Işi güncelleştirildi
+* Cassandra tablosu üretilen Işi güncelleştirildi
+* Cassandra keyspace silindi
+* Cassandra tablosu silindi
+* Gremlin veritabanı güncelleştirildi
+* Gremlin grafiği güncelleştirildi
+* Gremlin veritabanı performansı güncelleştirildi
+* Gremlin Graf üretilen Işi güncelleştirildi
+* Gremlin veritabanı silindi
+* Gremlin grafiği silindi
+* Mongo veritabanı güncelleştirildi
+* Mongo koleksiyonu güncelleştirildi
+* Mongo veritabanı üretilen Işi güncelleştirildi
+* Mongo koleksiyon üretilen Işi güncelleştirildi
+* Mongo veritabanı silindi
+* Mongo koleksiyonu silindi
+* AzureTable tablo güncelleştirildi
+* AzureTable tablo üretilen Işi güncelleştirildi
+* AzureTable tablo silindi
+
+## <a name="diagnostic-log-operations"></a>Tanılama günlüğü işlemleri
+
+Farklı işlemler için tanılama günlüklerindeki işlem adları aşağıda verilmiştir:
+
+* RegionAddStart, Regionaddtamamlanmıştır
+* RegionRemoveStart, Regionremovetamamlanmıştır
+* AccountDeleteStart, Accountdeletetamamlanmıştır
+* RegionFailoverStart, Regionfailovertamamlanmıştır
+* AccountCreateStart, Accountcreatetamamlandı
+* AccountUpdateStart, Accountupdatetamamlanmıştır
+* VirtualNetworkDeleteStart, Virtualnetworkdeletetamamlanmıştır
+* DiagnosticLogUpdateStart, Diagnosticlogupdatetamamlanmıştır
+
+API 'ye özgü işlemler için, işlem aşağıdaki biçimde adlandırılır:
+
+* ApiKind + Apikınresourcetype + OperationType + Başlat/Tamam
+* ApiKind + Apikınresourcetype + "aktarım hızı" + operationType + start/tamamlamayı
+
+**Örneğinde** 
+
+* CassandraKeyspacesUpdateStart, Cassandrakeyspacesupdatetamamlanmıştır
+* CassandraKeyspacesThroughputUpdateStart, Cassandrakeyspacesthroughputupdatetamamlanmıştır
+
+*Resourcedetails* özelliği, kaynak gövdesinin tamamını bir istek yükü olarak içerir ve güncelleştirmek için istenen tüm özellikleri içerir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Cosmos DB için Azure Monitörünü keşfedin](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
-* [Azure Cosmos DB'deki ölçümlerle izleme ve hata ayıklama](use-metrics.md)
+* [Azure Cosmos DB için Azure Izleyicisini keşfet](../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json)
+* [Azure Cosmos DB ölçümlerle izleme ve hata ayıklama](use-metrics.md)

@@ -1,100 +1,114 @@
 ---
-title: Azure Hizmet Veri Toplarını Azure Özel Bağlantı Hizmetiyle Tümleştir
-description: Azure Hizmet Veri Yolu'nun Azure Özel Bağlantı Hizmeti ile nasıl entegre edilebildiğini öğrenin
+title: Azure Service Bus Azure özel bağlantı hizmeti ile tümleştirme
+description: Azure Service Bus Azure özel bağlantı hizmeti ile tümleştirme hakkında bilgi edinin
 services: service-bus-messaging
 author: spelluru
 ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: b8c4248b7275ac96acce96f890f6ff0148116f48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f456137b61a96f555b2604e7871516fd1d38ab42
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478012"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116715"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Hizmet Veri Toplarını Azure Özel Bağlantısıyla Tümleştir (Önizleme)
+# <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin (Önizleme)
 
-Azure Özel Bağlantı Hizmeti, Azure hizmetlerine (örneğin, Azure Servis Veri Mes'i, Azure Cosmos Depolama ve Azure Cosmos DB) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal **ağınızdaki özel** bir bitiş noktası üzerinden erişmenizi sağlar.
+Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Service Bus, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
 
-Özel bitiş noktası, sizi Azure Özel Bağlantısı ile çalışan bir hizmete özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağıörneğine bağlanarak erişim denetiminde en yüksek parçalılık düzeyini sağlayabilirsiniz.
+Özel uç nokta, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
 
-Daha fazla bilgi için Azure [Özel Bağlantı nedir?](../private-link/private-link-overview.md)
+Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/private-link-overview.md)
 
-> [!NOTE]
-> Bu özellik, Azure Hizmet Veri Servisi'nin **birinci sınıf** katmanıyla desteklenir. Premium katman hakkında daha fazla bilgi için [Service Bus Premium ve Standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
+>[!WARNING]
+> Özel uç noktaları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir.
 >
-> Bu özellik şu anda **önizlemede.** 
+> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
+>
+> Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
+> - Azure Event Grid ile tümleştirme
+> - Azure IoT Hub yolları
+> - Azure IoT Device Explorer
+>
+> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
+> - Azure App Service
+> - Azure İşlevleri
+
+> [!IMPORTANT]
+> Bu özellik, Azure Service Bus **Premium** katmanıyla desteklenir. Premium katmanı hakkında daha fazla bilgi için, [Service Bus Premium ve standart mesajlaşma katmanları](service-bus-premium-messaging.md) makalesine bakın.
+>
+> Bu özellik şu anda **Önizleme**aşamasındadır. 
 
 
-## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portalını kullanarak özel bir bitiş noktası ekleme
+## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
-Bir Hizmet Veri Aracı ad alanını Azure Özel Bağlantısıyla tümleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız vardır:
+Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
-- Servis Veri Günü ad alanı.
-- Azure sanal ağı.
+- Bir Service Bus ad alanı.
+- Bir Azure sanal ağı.
 - Sanal ağdaki bir alt ağ.
-- Hem Hizmet Veri Günü ad alanı hem de sanal ağ için sahip veya katılımcı izinleri.
+- Hem Service Bus ad alanı hem de sanal ağ için sahip veya katkıda bulunan izinleri.
 
-Özel bitiş noktanız ve sanal ağınız aynı bölgede olmalıdır. Portalı kullanarak özel bitiş noktası için bir bölge seçtiğinizde, otomatik olarak yalnızca o bölgedeki sanal ağları filtreler. Servis Veri Günü ad alanınız farklı bir bölgede olabilir. Ayrıca, özel bitiş noktanız sanal ağınızda özel bir IP adresi kullanır.
+Özel uç noktanız ve sanal ağınız aynı bölgede olmalıdır. Portalı kullanarak özel uç nokta için bir bölge seçtiğinizde bu, yalnızca o bölgedeki sanal ağları otomatik olarak filtreleyecek. Service Bus ad alanınız farklı bir bölgede olabilir. Ve özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
 ### <a name="steps"></a>adımlar
 
-Zaten varolan bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bir bitiş noktası oluşturabilirsiniz:
+Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bir uç nokta oluşturabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com)oturum açın. 
-2. Arama çubuğunda Servis **Veri Servisi**yazın.
-3. Özel bir bitiş noktası eklemek istediğiniz listeden **ad alanını** seçin.
-4. **Ayarlar'ın**altındaki **Ağ** sekmesini seçin.
-5. Sayfanın üst kısmındaki **Özel bitiş noktası bağlantıları (önizleme)** sekmesini seçin
-6. Sayfanın üst kısmındaki **+ Özel Bitiş Noktası** düğmesini seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın. 
+2. Arama çubuğuna **Service Bus**yazın.
+3. Listeden özel uç nokta eklemek istediğiniz **ad alanını** seçin.
+4. **Ayarlar**altında **ağ** sekmesini seçin.
+5. Sayfanın üst kısmındaki **Özel uç nokta bağlantıları (Önizleme)** sekmesini seçin
+6. Sayfanın üst kısmındaki **+ Özel uç nokta** düğmesini seçin.
 
-    ![Özel bitiş noktası düğmesi ekleme](./media/private-link-service/private-link-service-3.png)
-7. Temel **Bilgiler** sayfasında aşağıdaki adımları izleyin: 
-    1. Özel bitiş noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
-    2. Özel bitiş noktası kaynağı için **kaynak grubunu** seçin.
-    3. Özel bitiş noktası için bir **ad** girin. 
-    5. Özel bitiş noktası için bir **bölge** seçin. Özel bitiş noktanız sanal ağınızla aynı bölgede olmalıdır, ancak bağlandığınız özel bağlantı kaynağının farklı bir bölgesinde olabilir. 
-    6. **Sonraki'ni seçin:** Sayfanın altındaki kaynak >düğmesi.
+    ![Özel uç nokta Ekle düğmesi](./media/private-link-service/private-link-service-3.png)
+7. **Temel bilgiler** sayfasında, aşağıdaki adımları izleyin: 
+    1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
+    2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
+    3. Özel uç nokta için bir **ad** girin. 
+    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanızın sanal ağınızla aynı bölgede olması gerekir, ancak bağlandığınız özel bağlantı kaynağını farklı bir bölgede bulabilirsiniz. 
+    6. Sayfanın alt kısmındaki **İleri: kaynak >** düğmesini seçin.
 
-        ![Özel Bitiş Noktası Oluşturma - Temel Bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
-8. **Kaynak** sayfasında aşağıdaki adımları izleyin:
-    1. Bağlantı yöntemi için, **dizinimdeki bir Azure kaynağına Bağlan'ı**seçerseniz aşağıdaki adımları izleyin:   
-        1. **Hizmet Veri Aracı ad alanınızın** bulunduğu Azure **aboneliğini** seçin. 
-        2. **Kaynak türü**için, Kaynak türü için **Microsoft.ServiceBus/namespaces'i** seçin. **Resource type**
-        3. **Kaynak**için açılan listeden bir Hizmet Veri Günü ad alanı seçin. 
-        4. **Hedef alt kaynağının** ad **alanı**olarak ayarlı olduğunu doğrulayın.
-        5. **İleri'yi seçin:** Sayfanın altındaki Configuration >düğmesi. 
+        ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
+8. **Kaynak** sayfasında, aşağıdaki adımları izleyin:
+    1. Bağlantı yöntemi için **dizinimde bir Azure kaynağına bağlan**' ı seçerseniz şu adımları izleyin:   
+        1. **Service Bus ad alanının** bulunduğu **Azure aboneliğini** seçin. 
+        2. **Kaynak türü**Için, **kaynak türü**Için **Microsoft. ServiceBus/namespaces** ' i seçin.
+        3. **Kaynak**için, açılan listeden bir Service Bus ad alanı seçin. 
+        4. **Hedef alt kaynağın** **ad alanı**olarak ayarlandığını onaylayın.
+        5. Sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
         
-            ![Özel Bitiş Noktası Oluşturma - Kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)
-    2. **Kaynak kimliği veya diğer adıyla bir Azure kaynağına bağlan'ı**seçerseniz aşağıdaki adımları izleyin:
-        1. Kaynak **kimliği** veya **takma ad**girin. Bazılarının sizinle paylaştığı kaynak kimliği veya takma ad olabilir.
-        2. **Hedef alt kaynak**için ad **alanını**girin. Özel bitiş noktanızın erişebileceği alt kaynak türüdür. 
-        3. (isteğe bağlı) İstek **iletisi**girin. Kaynak sahibi, özel uç nokta bağlantısını yönetirken bu iletiyi görür. 
-        4. Ardından, **Sayfanın** altındaki >Yapılandırma düğmesini seçin. 
+            ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)
+    2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, bazılarının sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir.
+        2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür. 
+        3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür. 
+        4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 
 
-            ![Özel Bitiş Noktası Oluşturma - kaynak kimliğini kullanarak bağlan](./media/private-link-service/connect-resource-id.png)
-9. **Yapılandırma** sayfasında, sanal ağdaki alt ağı özel bitiş noktasını dağıtmak istediğiniz yere seçersiniz. 
-    1. Sanal **ağ**seçin. Yalnızca seçili abonelik ve konumdaki sanal ağlar açılır listede listelenir. 
+            ![Özel uç nokta oluşturma-kaynak KIMLIĞI kullanarak bağlanma](./media/private-link-service/connect-resource-id.png)
+9. **Yapılandırma** sayfasında, bir sanal ağda özel uç noktayı dağıtmak istediğiniz alt ağı seçersiniz. 
+    1. Bir **sanal ağ**seçin. Yalnızca şu anda seçili olan abonelikte ve konumda bulunan sanal ağlar açılan listede listelenir. 
     2. Seçtiğiniz sanal ağda bir **alt ağ** seçin. 
-    3. **Sonrakini Seçin: Etiketler sayfanın** altındaki >düğmesini etiketler. 
+    3. Sayfanın alt kısmındaki **İleri: etiketler >** düğmesini seçin. 
 
-        ![Özel Bitiş Noktası Oluşturma - Yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
-10. **Etiketler** sayfasında, özel bitiş noktası kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından, sayfanın altındaki **Gözden Geçir + oluştur** düğmesini seçin. 
-11. Gözden **Geçir + oluştur,** tüm ayarları gözden geçir ve özel bitiş noktasını oluşturmak için **Oluştur'u** seçin.
+        ![Özel uç nokta oluşturma-yapılandırma sayfası](./media/private-link-service/create-private-endpoint-configuration-page.png)
+10. **Etiketler** sayfasında, Özel uç nokta kaynağıyla ilişkilendirmek istediğiniz etiketleri (adlar ve değerler) oluşturun. Ardından sayfanın alt kısmındaki **gözden geçir + oluştur** düğmesini seçin. 
+11. **Gözden geçir + oluştur**' da, tüm ayarları gözden geçirin ve **Oluştur** ' u seçerek özel uç noktasını oluşturun.
     
-    ![Özel Bitiş Noktası Oluşturma - Sayfayı Gözden Geçir in ve Oluştur](./media/private-link-service/create-private-endpoint-review-create-page.png)
-12. Özel bitiş noktasının oluşturulduğunu doğrulayın. Kaynağın sahibiyseniz ve **Bağlantı yöntemi** **için dizin seçeneğimde bir Azure kaynağına bağlan'ı** seçmişseniz, bitiş noktası bağlantısı otomatik olarak **onaylanmalıdır.** **Bekleme** durumundaysa, Azure portalı bölümünü [kullanarak özel uç noktalarını yönet](#manage-private-endpoints-using-azure-portal) bölümüne bakın.
+    ![Özel uç nokta oluşturma-sayfa Inceleme ve oluşturma](./media/private-link-service/create-private-endpoint-review-create-page.png)
+12. Özel uç noktanın oluşturulduğunu doğrulayın. Kaynak sahibiyseniz ve **bağlantı yöntemi**için **Dizinimde bir Azure kaynağına bağlan** seçeneğini belirlediyseniz, uç nokta bağlantısı **otomatik olarak onaylanmalıdır**. **Bekleme** durumundaysa, [Azure Portal kullanarak özel uç noktaları yönetme](#manage-private-endpoints-using-azure-portal) bölümüne bakın.
 
-    ![Özel bitiş noktası oluşturuldu](./media/private-link-service/private-endpoint-created.png)
+    ![Özel uç nokta oluşturuldu](./media/private-link-service/private-endpoint-created.png)
 
-## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell'i kullanarak özel bir bitiş noktası ekleme
-Aşağıdaki örnek, Hizmet Veri Servisi ad alanına özel bir uç nokta bağlantısı oluşturmak için Azure PowerShell'i nasıl kullanacağınızı gösterir.
+## <a name="add-a-private-endpoint-using-powershell"></a>PowerShell kullanarak özel uç nokta ekleme
+Aşağıdaki örnek, bir Service Bus ad alanına özel bir uç nokta bağlantısı oluşturmak için Azure PowerShell nasıl kullanacağınızı gösterir.
 
-Özel bitiş noktanız ve sanal ağınız aynı bölgede olmalıdır. Servis Veri Günü ad alanınız farklı bir bölgede olabilir. Ayrıca, özel bitiş noktanız sanal ağınızda özel bir IP adresi kullanır.
+Özel uç noktanız ve sanal ağınız aynı bölgede olmalıdır. Service Bus ad alanınız farklı bir bölgede olabilir. Ve özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
 ```azurepowershell-interactive
 
@@ -153,84 +167,84 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 ```
 
 
-## <a name="manage-private-endpoints-using-azure-portal"></a>Azure portalLarını kullanarak özel uç noktaları yönetme
+## <a name="manage-private-endpoints-using-azure-portal"></a>Azure portal kullanarak özel uç noktaları yönetme
 
-Özel bir bitiş noktası oluşturduğunuzda, bağlantının onaylanması gerekir. Özel bir bitiş noktası oluşturduğunuz kaynak dizininizdeyse, yeterli izine sahip olmak koşuluyla bağlantı isteğini onaylayabilirsiniz. Başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bağlantı isteğinizi bu kaynağın sahibinin onaylamasını beklemeniz gerekir.
+Özel bir uç nokta oluşturduğunuzda bağlantının onaylanması gerekir. Özel bir uç noktası oluşturmakta olduğunuz kaynak dizininizdeki ise, yeterli izinlere sahip olduğunuz belirtilen bağlantı isteğini onaylayabilirsiniz. Başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bu kaynağın sahibinin bağlantı isteğinizi onaylamasını beklemeniz gerekir.
 
-Dört hüküm veren durum vardır:
+Dört sağlama durumu vardır:
 
-| Hizmet eylemi | Hizmet tüketici özel bitiş noktası durumu | Açıklama |
+| Hizmet eylemi | Hizmet tüketicisi özel uç nokta durumu | Açıklama |
 |--|--|--|
-| None | Beklemede | Bağlantı el ile oluşturulur ve Private Link kaynak sahibinden onay bekliyor. |
-| Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanıma hazır. |
+| Hiçbiri | Beklemede | Bağlantı el ile oluşturulur ve özel bağlantı kaynağı sahibinden onay bekliyor. |
+| Onaylama | Onaylandı | Bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir. |
 | Reddet | Reddedilen | Bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi. |
-| Kaldır | Bağlantı kesildi | Bağlantı özel bağlantı kaynak sahibi tarafından kaldırıldı, özel bitiş noktası bilgilendirici hale gelir ve temizleme için silinmelidir. |
+| Kaldır | Bağlantı kesildi | Bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı, Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. |
  
-###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir bitiş noktası bağlantısını onaylama, reddetme veya kaldırma
+###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama, reddetme veya kaldırma
 
 1. Azure Portal’da oturum açın.
-1. Arama çubuğunda Servis **Veri Servisi**yazın.
+1. Arama çubuğuna **Service Bus**yazın.
 1. Yönetmek istediğiniz **ad alanını** seçin.
 1. **Ağ** sekmesini seçin.
-5. İstediğiniz işlemi temel alan aşağıdaki uygun bölüme gidin: onaylamak, reddetmek veya kaldırmak. 
+5. Şunları yapmak istediğiniz işleme göre aşağıdaki ilgili bölüme gidin: onaylama, reddetme veya kaldırma. 
 
-### <a name="approve-a-private-endpoint-connection"></a>Özel bir bitiş noktası bağlantısını onaylama
+### <a name="approve-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını onaylama
 
-1. Bekleyen herhangi bir bağlantı varsa, sağlama durumunda **Bekleyen** ile listelenen bir bağlantı görürsünüz. 
-2. Onaylamak istediğiniz **özel bitiş noktasını** seçin
+1. Bekleyen herhangi bir bağlantı varsa, sağlama durumunda **bekliyor** ile listelenmiş bir bağlantı görürsünüz. 
+2. Onaylamak istediğiniz **Özel uç noktayı** seçin
 3. **Onayla** düğmesini seçin.
 
-    ![Özel bitiş noktasını onaylama](./media/private-link-service/private-endpoint-approve.png)
-4. Bağlantı **bağlantısını onayla** sayfasında isteğe bağlı bir **yorum**girin ve **Evet'i**seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz. 
+    ![Özel uç noktayı Onayla](./media/private-link-service/private-endpoint-approve.png)
+4. **Bağlantıyı Onayla** sayfasında, isteğe bağlı bir **Açıklama**girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
-    ![Bağlantı sayfasını onaylama](./media/private-link-service/approve-connection-page.png)
-5. **Onaylanan**olarak değiştirilen listedeki bağlantıdurumunu görmeniz gerekir. 
+    ![Bağlantı sayfasını Onayla](./media/private-link-service/approve-connection-page.png)
+5. Listede, **Onaylandı**olarak değiştirilen bağlantının durumunu görmeniz gerekir. 
 
-    ![Bağlantı durumu - onaylı](./media/private-link-service/connection-status-approved.png)
+    ![Bağlantı durumu-onaylandı](./media/private-link-service/connection-status-approved.png)
 
-### <a name="reject-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını reddetme
+### <a name="reject-a-private-endpoint-connection"></a>Özel bir uç nokta bağlantısını reddetme
 
-1. Reddetmek istediğiniz özel bitiş noktası bağlantıları varsa, bekleyen bir istek veya daha önce onaylanmış varolan bağlantı olsun, bitiş noktası bağlantısını seçin ve **Reddet** düğmesini tıklatın.
+1. Reddetmek istediğiniz özel uç nokta bağlantıları varsa, bekleyen bir istek ya da daha önce onaylanmış mevcut bir bağlantı olup olmadığı takdirde, uç nokta bağlantısını seçin ve **Reddet** düğmesine tıklayın.
 
-    ![Reddet düğmesi](./media/private-link-service/private-endpoint-reject.png)
-2. Bağlantıyı **Reddet** sayfasında isteğe bağlı bir açıklama girin ve **Evet'i**seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz. 
+    ![Reddetme düğmesi](./media/private-link-service/private-endpoint-reject.png)
+2. **Bağlantıyı Reddet** sayfasında, isteğe bağlı bir açıklama girin ve **Evet**' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
-    ![Bağlantı sayfasını reddet](./media/private-link-service/reject-connection-page.png)
-3. **Reddedilen**ler listesindeki bağlantıdurumunu görmeniz gerekir. 
+    ![Bağlantıyı Reddet sayfası](./media/private-link-service/reject-connection-page.png)
+3. **Reddedilen**değiştirilen listede bağlantının durumunu görmeniz gerekir. 
 
-    ![Bitiş noktası reddedildi](./media/private-link-service/endpoint-rejected.png)
+    ![Uç nokta reddedildi](./media/private-link-service/endpoint-rejected.png)
 
 
 ### <a name="remove-a-private-endpoint-connection"></a>Özel uç nokta bağlantısını kaldırma
 
-1. Özel bir bitiş noktası bağlantısını kaldırmak için, listede onu seçin ve araç çubuğunda **Kaldır'ı** seçin. 
+1. Özel bir uç nokta bağlantısını kaldırmak için listeden seçin ve araç çubuğundan **Kaldır** ' ı seçin. 
 
-    ![Düğmeyi kaldır](./media/private-link-service/remove-endpoint.png)
-2. Sil **bağlantı** sayfasında, özel bitiş noktasının silinmesini onaylamak için **Evet'i** seçin. **Hayır'ı**seçerseniz hiçbir şey olmaz. 
+    ![Kaldır düğmesi](./media/private-link-service/remove-endpoint.png)
+2. **Bağlantıyı Sil** sayfasında, Özel uç noktasının silinmesini onaylamak için **Evet** ' i seçin. **Hayır**' ı seçerseniz, hiçbir şey olmaz. 
 
-    ![Bağlantı sayfasını silme](./media/private-link-service/delete-connection-page.png)
-3. Durum Bağlantısız olarak **değiştirilmeniz**gerekir. Ardından, bitiş noktasının listeden kaybolduğunu görürsünüz. 
+    ![Bağlantı sayfasını Sil](./media/private-link-service/delete-connection-page.png)
+3. Durumu **bağlı değil**olarak değiştirildiğini görmeniz gerekir. Ardından, uç noktanın listeden kaybolduğunu görürsünüz. 
 
-## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalıştığını doğrulayın
+## <a name="validate-that-the-private-link-connection-works"></a>Özel bağlantı bağlantısının çalışıp çalışmadığını doğrulama
 
-Özel bitiş noktası kaynağının aynı alt netindeki kaynakların özel bir IP adresi üzerinden Hizmet Veri Gönderi ad alanınıza bağladığını ve doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
+Özel uç nokta kaynağının aynı alt ağı içindeki kaynakların, özel bir IP adresi üzerinden Service Bus ad alanına bağlanıp doğru özel DNS bölge tümleştirmesine sahip olduğunu doğrulamanız gerekir.
 
-İlk olarak, [Azure portalında Windows sanal makine oluştur'daki](../virtual-machines/windows/quick-create-portal.md) adımları izleyerek sanal bir makine oluşturun
+İlk olarak, [Azure Portal Windows sanal makinesi oluşturma](../virtual-machines/windows/quick-create-portal.md) bölümündeki adımları izleyerek bir sanal makine oluşturun
 
 **Ağ** sekmesinde:
 
-1. **Sanal ağ** ve **Subnet**belirtin. Yeni bir sanal ağ oluşturabilir veya varolan bir ağ seçebilirsiniz. Varolan bir tane seçiyorsanız, bölgenin eşleştiğinden emin olun.
-1. Ortak **bir IP** kaynağı belirtin.
-1. **NIC ağ güvenlik grubu için** **Yok'u**seçin.
-1. **Yük dengelemesi**için **Hayır'ı**seçin.
+1. **Sanal ağ** ve **alt ağ**belirtin. Yeni bir sanal ağ oluşturabilir veya var olan bir sanal ağı seçebilirsiniz. Mevcut bir tane seçilirse, bölgenin eşleştiğinden emin olun.
+1. Genel bir **IP** kaynağı belirtin.
+1. **NIC ağ güvenlik grubu**için **hiçbiri**' ni seçin.
+1. **Yük Dengeleme**için **Hayır**' ı seçin.
 
-Komut satırını açın ve aşağıdaki komutu çalıştırın:
+Komut satırını açın ve şu komutu çalıştırın:
 
 ```console
 nslookup <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Bir Hizmet Veri Gönderi ad alanının IP adresini ortak bir bitiş noktası üzerinden çözmek için ns arama komutunu çalıştırıyorsanız, aşağıdaki gibi görünen bir sonuç görürsünüz:
+Bir Service Bus ad alanının IP adresini ortak bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
 
 ```console
 c:\ >nslookup <your-service-bus-namespace-name>.servicebus.windows.net
@@ -241,7 +255,7 @@ Address:  (public IP address)
 Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-Özel bir bitiş noktası üzerinden bir Hizmet Veri Gönderi ad alanının IP adresini çözmek için ns arama komutunu çalıştırArsanız, aşağıdaki gibi görünen bir sonuç görürsünüz:
+Bir Service Bus ad alanının IP adresini özel bir uç nokta üzerinden çözümlemek için NS arama komutunu çalıştırırsanız şuna benzer bir sonuç görürsünüz:
 
 ```console
 c:\ >nslookup your_service-bus-namespace-name.servicebus.windows.net
@@ -252,17 +266,17 @@ Address:  10.1.0.5 (private IP address)
 Aliases:  <your-service-bus-namespace-name>.servicebus.windows.net
 ```
 
-## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve Tasarım Konuları
+## <a name="limitations-and-design-considerations"></a>Sınırlamalar ve tasarım konuları
 
-**Fiyatlandırma**: Fiyatlandırma bilgileri için [Azure Özel Bağlantı fiyatlandırması'na](https://azure.microsoft.com/pricing/details/private-link/)bakın.
+**Fiyatlandırma**: fiyatlandırma bilgileri için bkz. [Azure özel bağlantı fiyatlandırması](https://azure.microsoft.com/pricing/details/private-link/).
 
-**Sınırlamalar**: Azure Hizmet Veri Servisi için Özel Bitiş Noktası genel önizlemededir. Bu özellik tüm Azure ortak bölgelerinde kullanılabilir.
+**Sınırlamalar**: Azure Service Bus Için özel uç nokta genel önizlemede. Bu özellik tüm Azure genel bölgelerinde kullanılabilir.
 
-**Hizmet Veri Günü ad alanı başına maksimum özel uç noktası sayısı**: 120.
+**Service Bus ad alanı başına en fazla özel uç nokta sayısı**: 120.
 
-Daha fazla kullanım için Azure [Özel Bağlantı hizmeti: Sınırlamalar](../private-link/private-link-service-overview.md#limitations)
+Daha fazla bilgi için bkz [. Azure özel bağlantı hizmeti: sınırlamalar](../private-link/private-link-service-overview.md#limitations)
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-- [Azure Özel Bağlantı](../private-link/private-link-service-overview.md) hakkında daha fazla bilgi edinin
-- [Azure Servis Veri Yolu](service-bus-messaging-overview.md) hakkında daha fazla bilgi edinin
+- [Azure özel bağlantısı](../private-link/private-link-service-overview.md) hakkında daha fazla bilgi edinin
+- [Azure Service Bus](service-bus-messaging-overview.md) hakkında daha fazla bilgi edinin

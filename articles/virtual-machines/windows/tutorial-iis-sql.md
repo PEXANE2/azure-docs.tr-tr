@@ -1,28 +1,23 @@
 ---
-title: Öğretici - Azure'da SQL, IIS, .NET yığını çalıştıran VM'ler oluşturun
+title: Öğretici-Azure 'da SQL, IIS, .NET Stack çalıştıran VM 'Ler oluşturma
 description: Bu öğreticide, Azure’daki bir Windows sanal makinesinde Azure SQL, IIS, .NET yığını yüklemeyi öğrenirsiniz.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e67f4dfebc00897b7a4ed4d675159a848e4b2fdf
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 3e44236f74a5448c540c58ba730d65b412d48bd0
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455691"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101714"
 ---
-# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile Windows VM'de SQL, IIS, .NET yığınını yükleme
+# <a name="tutorial-install-the-sql-iis-net-stack-in-a-windows-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile SQL, IIS, .NET Stack 'i Windows sanal makinesine yüklemeyin
 
-Bu öğreticide, Azure PowerShell kullanarak bir SQL, IIS, .NET yığını yüklüyoruz. Bu yığın, Windows Server 2016’da çalışan, biri IIS ve .NET, diğeri SQL Server’a sahip iki sanal makineden oluşur.
+Bu öğreticide, Azure PowerShell kullanarak bir SQL, IIS, .NET yığını yükleyeceğiz. Bu yığın, Windows Server 2016’da çalışan, biri IIS ve .NET, diğeri SQL Server’a sahip iki sanal makineden oluşur.
 
 > [!div class="checklist"]
 > * VM oluşturma 
@@ -34,11 +29,11 @@ Bu öğreticide, Azure PowerShell kullanarak bir SQL, IIS, .NET yığını yükl
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="create-an-iis-vm"></a>IIS VM oluşturma 
 
-Bu örnekte, PowerShell Cloud Shell'de Hızlı bir Windows Server 2016 VM oluşturmak ve ardından IIS ve .NET Framework'ü yüklemek için [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet kullanıyoruz. IIS ve SQL sanal makineleri bir kaynak grubu ile sanal ağ paylaşır, dolayısıyla bu adlara yönelik değişkenler oluştururuz.
+Bu örnekte, PowerShell Cloud Shell [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'ini hızla bir Windows Server 2016 VM oluşturmak ve ardından ııs ve .NET Framework yüklemek için kullanırız. IIS ve SQL sanal makineleri bir kaynak grubu ile sanal ağ paylaşır, dolayısıyla bu adlara yönelik değişkenler oluştururuz.
 
 
 ```azurepowershell-interactive
@@ -57,7 +52,7 @@ New-AzVm `
     -OpenPorts 80,3389 
 ```
 
-[Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet ile özel komut dosyası uzantısını kullanarak IIS ve .NET çerçevesini yükleyin.
+[Set-Azvmexgersıon](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet 'i ile özel Betik uzantısı 'Nı kullanarak IIS ve .NET Framework 'ü kurun.
 
 ```azurepowershell-interactive
 Set-AzVMExtension `
@@ -73,7 +68,7 @@ Set-AzVMExtension `
 
 ## <a name="create-another-subnet"></a>Başka bir alt ağ oluşturma
 
-SQL sanal makinesi için ikincil alt ağ oluşturun. [Get-AzVirtualNetwork]{/powershell/module/az.network/get-azvirtualnetwork} kullanarak vNet'i alın.
+SQL sanal makinesi için ikincil alt ağ oluşturun. [Get-AzVirtualNetwork] {/PowerShell/Module/az.exe Network/Get-azvirtualnetwork} kullanarak vNet 'i alın.
 
 ```azurepowershell-interactive
 $vNet = Get-AzVirtualNetwork `
@@ -92,7 +87,7 @@ Add-AzVirtualNetworkSubnetConfig `
    -ServiceEndpoint Microsoft.Sql
 ```
 
-[Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) kullanarak vNet'i yeni alt ağ bilgileriyle güncelleştirin
+[Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) kullanarak sanal ağı yeni alt ağ bilgileriyle güncelleştirin
    
 ```azurepowershell-interactive   
 $vNet | Set-AzVirtualNetwork
@@ -116,7 +111,7 @@ New-AzVm `
     -OpenPorts 3389,1401 
 ```
 
-[SQL Server uzantısını](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) SQL VM'ye eklemek için [Set-AzVMSqlServerExtension'ı](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) kullanın.
+[SQL Server UZANTıSıNı](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) SQL VM 'ye eklemek için [set-azvmsqlserverextension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsqlserverextension) komutunu kullanın.
 
 ```azurepowershell-interactive
 Set-AzVMSqlServerExtension `
@@ -136,8 +131,8 @@ Bu öğreticide, Azure PowerShell kullanarak SQL&#92;IIS&#92;.NET yığını yü
 > * SQL Server çalıştıran bir sanal makine oluşturma
 > * SQL Server uzantısı yükleme
 
-TLS/SSL sertifikaları ile IIS web sunucusunun nasıl güvenli hale getirilebildiğini öğrenmek için bir sonraki öğreticiye ilerleyin.
+IIS Web Server 'ı TLS/SSL sertifikalarıyla güvenli hale getirme hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [TLS/SSL sertifikalarına sahip güvenli IIS web sunucusu](tutorial-secure-web-server.md)
+> [TLS/SSL sertifikaları ile güvenli IIS Web sunucusu](tutorial-secure-web-server.md)
 

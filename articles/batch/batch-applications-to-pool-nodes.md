@@ -1,55 +1,47 @@
 ---
-title: Uygulamaları ve verileri havuz düğümlerine kopyalama
-description: Uygulamaları ve verileri havuz düğümlerine kopyalamayı öğrenin.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Uygulama ve verileri havuz düğümlerine kopyalama
+description: Uygulama ve verileri havuz düğümlerine kopyalamayı öğrenin.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 02/17/2020
-ms.author: labrenne
-ms.openlocfilehash: 226a0d69ac387142ecf580537e35f8754ac848a6
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 700e9b80f8420266c0300b47bdd30bc271f8421c
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385590"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115593"
 ---
-# <a name="copying-applications-and-data-to-pool-nodes"></a>Uygulamaları ve verileri havuz düğümlerine kopyalama
+# <a name="copying-applications-and-data-to-pool-nodes"></a>Uygulama ve verileri havuz düğümlerine kopyalama
 
-Azure Toplu İşlem, veri ve uygulamaların görevler tarafından kullanılabilmesi için veri ve uygulamaları bilgi işlem düğümlerine getirmenin çeşitli yollarını destekler. Tüm işi çalıştırmak için veri ve uygulama gerekebilir ve bu nedenle her düğüme yüklenmesi gerekir. Bazıları yalnızca belirli bir görev için gerekli olabilir veya iş için yüklenmesi gerekebilir, ancak her düğümde olması gerekmez. Toplu iş bu senaryoların her biri için araçlara sahiptir.
+Azure Batch, veri ve uygulamaların görevler tarafından kullanıma hazır olması için işlem düğümlerine veri ve uygulama almanın çeşitli yollarını destekler. Tüm işleri çalıştırmak için veri ve uygulamalar gerekli olabilir ve bu nedenle her düğümde yüklü olması gerekir. Bazıları yalnızca belirli bir görev için gerekli olabilir veya iş için yüklenmelidir, ancak her düğümde olması gerekmez. Batch, bu senaryoların her biri için araçlara sahiptir.
 
-- **Havuz başlangıç görev kaynağı dosyaları**: Havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Yükleme komutu gerçekleştirmek için bir uygulama paketi veya başlangıç görevinin kaynak dosyası koleksiyonuyla birlikte bu yöntemi kullanın.  
+- **Havuz başlangıç görevi kaynak dosyaları**: havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Bir Install komutu gerçekleştirmek için bu yöntemi bir uygulama paketi veya başlangıç görevinin kaynak dosyası koleksiyonuyla birlikte kullanın.  
 
 Örnekler: 
-- Uygulamaları taşımak veya yüklemek için başlangıç görev komut satırını kullanın
+- Uygulamaları taşımak veya yüklemek için başlangıç görevi komut satırını kullanma
 
-- Azure depolama hesabında belirli dosyaların veya kapsayıcıların listesini belirtin. Daha fazla bilgi için [REST belgelerinde add#resourcefile'a](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile) bakın
+- Bir Azure depolama hesabındaki belirli dosya veya kapsayıcıların listesini belirtin. Daha fazla bilgi için bkz. [rest belgelerinde # resourceFile ekleme](https://docs.microsoft.com/rest/api/batchservice/pool/add#resourcefile)
 
-- Havuzda çalışan her iş, öncelikle MyApplication.msi ile yüklenmesi gereken MyApplication.exe'yi çalıştırAr. Bu mekanizmayı kullanırsanız, başlangıç görevinin başarı özelliğinin **doğru** **olmasını beklemesini** ayarlamanız gerekir. Daha fazla bilgi için [REST belgelerinde add#starttask'a](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)bakın.
+- Havuz üzerinde çalışan her iş, önce MyApplication. msi ile yüklenmesi gereken MyApplication. exe ' yi çalıştırır. Bu mekanizmayı kullanırsanız, başlangıç görevinin **Success için bekle** özelliğini **true**olarak ayarlamanız gerekir. Daha fazla bilgi için [rest belgelerine # startTask ekleme](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask)bölümüne bakın.
 
-- Havuzdaki **uygulama paketi başvuruları:** Havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Bir uygulama paketiyle ilişkili yükleme komutu yoktur, ancak herhangi bir yükleme komutunu çalıştırmak için başlangıç görevini kullanabilirsiniz. Uygulamanız yükleme gerektirmiyorsa veya çok sayıda dosyadan oluşuyorsa, bu yöntemi kullanabilirsiniz. Çok sayıda dosya başvurularını küçük bir yükte birleştirdikleri için uygulama paketleri çok sayıda dosya için uygundur. Tek bir göreve 100'den fazla ayrı kaynak dosyası eklemeye çalışırsanız, Toplu İşlem hizmeti tek bir görev için dahili sistem sınırlamaları ile karşılanabilir. Ayrıca, aynı uygulamanın birçok farklı sürümüne sahip olabileceğiniz ve aralarında seçim yapmanız gereken zorlu sürüm gereksinimleriniz varsa uygulama paketlerini kullanın. Daha fazla bilgi [için, Toplu uygulama paketleri yle düğümleri hesaplamak için uygulamaları dağıt'ı](https://docs.microsoft.com/azure/batch/batch-application-packages)okuyun.
+- Havuzdaki **uygulama paketi başvuruları** : havuzdaki her düğüme yüklenmesi gereken uygulamalar veya veriler için. Uygulama paketiyle ilişkili bir Install komutu yoktur, ancak herhangi bir Install komutunu çalıştırmak için bir başlangıç görevi kullanabilirsiniz. Uygulamanız yükleme gerektirmiyorsa veya çok sayıda dosya içeriyorsa, bu yöntemi kullanabilirsiniz. Uygulama paketleri, çok sayıda dosya başvurularını küçük bir yük içine birleştirdiğinden çok sayıda dosya için idealdir. Tek bir görevde 100 ' den fazla ayrı kaynak dosyası eklemeyi denerseniz, Batch hizmeti tek bir görevde iç sistem sınırlamalarına karşı gelebilir. Ayrıca, aynı uygulamanın birçok farklı sürümüne sahip olabileceğiniz ve aralarında seçim yapmanız gereken durumlarda, uygulama paketlerini kullanın. Daha fazla bilgi için [batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma](https://docs.microsoft.com/azure/batch/batch-application-packages)makalesini okuyun.
 
-- **İş hazırlama görev kaynağı dosyaları**: İşin çalışması için yüklenmesi gereken, ancak tüm havuza yüklenmesi gerekmeyen uygulamalar veya veriler için. Örneğin: havuzunuzda çok sayıda farklı türde iş varsa ve yalnızca bir iş türünün çalışması için MyApplication.msi'ye ihtiyacı varsa, yükleme adımını iş hazırlama görevine koymak mantıklıdır. İş hazırlama görevleri hakkında daha fazla bilgi için, [Toplu işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştır'a](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/)bakın.
+- **İş hazırlama görevi kaynak dosyaları**: işin çalışması için yüklenmesi gereken uygulamalar veya veriler için, ancak tüm havuzda yüklü olması gerekmez. Örneğin: havuzunuzun birçok farklı iş türü olması ve yalnızca bir iş türünün çalıştırmak için MyApplication. msi ihtiyacı varsa, yükleme adımını iş hazırlama görevine koymak mantıklı olur. İş hazırlama görevleri hakkında daha fazla bilgi için bkz. [Batch işlem düğümlerinde iş hazırlama ve iş bırakma görevlerini çalıştırma](https://azure.microsoft.com/documentation/articles/batch-job-prep-release/).
 
-- **Görev kaynağı dosyaları**: Bir uygulama veya veri yalnızca tek bir görevle alakalı olduğunda. Örneğin: Beş göreviniz var, her biri farklı bir dosyayı işler ve çıktıyı blob depolama alanına yazar.  Bu durumda, her görevin kendi giriş dosyası olduğundan, giriş dosyası **görevler kaynak dosyaları** koleksiyonunda belirtilmelidir.
+- **Görev kaynak dosyaları**: bir uygulama veya veriler yalnızca tek bir görevle ilgili olduğunda. Örneğin: beş göreviniz vardır, her biri farklı bir dosyayı işler ve sonra çıktıyı blob depolamaya yazar.  Bu durumda, her görevin kendi giriş dosyası bulunduğundan, giriş dosyası **Görevler kaynak dosyaları** koleksiyonunda belirtilmelidir.
 
-## <a name="determine-the-scope-required-of-a-file"></a>Dosyanın gerekli kapsamını belirleme
+## <a name="determine-the-scope-required-of-a-file"></a>Bir dosyanın gerekli kapsamını belirleme
 
-Bir dosyanın kapsamını belirlemeniz gerekir - bir havuz, iş veya görev için gereken dosyadır. Havuza giren dosyalar, havuz uygulama paketlerini veya başlangıç görevini kullanmalıdır. İş kapsamına giren dosyalar bir iş hazırlama görevi kullanmalıdır. Havuz veya iş düzeyinde kapsamlı dosyaların iyi bir örneği uygulamalardır. Göreve kapsamlı dosyalar görev kaynağı dosyalarını kullanmalıdır.
+Bir dosyanın kapsamını belirlemeniz gerekir-bir havuz, iş veya bir görev için gereken dosyadır. Havuz kapsamındaki dosyalar havuz uygulama paketlerini veya bir başlangıç görevini kullanmalıdır. İş kapsamındaki dosyaların iş hazırlama görevi kullanması gerekir. Havuz veya iş düzeyinde kapsamlı dosyalara yönelik iyi bir örnek, uygulamalardır. Görev kapsamındaki dosyaların görev kaynak dosyalarını kullanması gerekir.
 
 ### <a name="other-ways-to-get-data-onto-batch-compute-nodes"></a>Toplu işlem düğümlerine veri almanın diğer yolları
 
-Toplu İşlem API'sine resmi olarak entegre olmayan Toplu işlem düğümlerine veri almanın başka yolları da vardır. Azure Toplu İş düğümleri üzerinde denetiminiz olduğundan ve özel yürütülebilir leri çalıştırabildiğinizden, Toplu İşlem düğümü hedefe bağlandığı ve bu kaynağa ait kimlik bilgilerini Azure Toplu İş düğümüne sahip olduğunuz sürece istediğiniz sayıda özel kaynaktan veri çekebilirsiniz. Birkaç yaygın örnek:
+Toplu işlem düğümlerine resmi olarak tümleşik olmayan toplu işlem düğümlerine veri almanın başka yolları vardır REST API. Azure Batch düğümleri üzerinde denetime sahip olduğunuzdan ve özel yürütülebilir dosyalar çalıştırabildiğinden, Batch düğümünün hedefle bağlantısı olduğu ve Azure Batch düğümü üzerinde bu kaynak için kimlik bilgileri olduğu sürece herhangi bir sayıda özel kaynaktan veri çekebilirsiniz. Yaygın olarak karşılaşılan birkaç örnek şunlardır:
 
-- SQL'den veri indirme
-- Diğer web hizmetlerinden/özel konumlardan veri indirme
-- Ağ paylaşımını eşleme
+- SQL 'den veri yükleme
+- Diğer Web hizmetlerinden/özel konumlardan veri yükleme
+- Ağ paylaşımından eşleme
 
-### <a name="azure-storage"></a>Azure depolama alanı
+### <a name="azure-storage"></a>Azure Storage
 
-Blob depolama indirme ölçeklenebilirlik hedefleri vardır. Azure depolama dosyası paylaşımı ölçeklenebilirlik hedefleri tek bir blob için aynıdır. Boyut, ihtiyacınız olan düğüm ve havuz sayısını etkiler.
+BLOB depolama, ölçeklenebilirlik hedeflerini indirir. Azure depolama dosya paylaşma ölçeklenebilirliği hedefleri, tek bir Blobun ile aynıdır. Boyut, ihtiyacınız olan düğüm ve havuzların sayısını etkileyecektir.
 

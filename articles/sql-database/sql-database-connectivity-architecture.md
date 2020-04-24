@@ -1,6 +1,6 @@
 ---
-title: Bağlantı Mimarisi
-description: Bu belge, Azure'un içinden veya Azure dışından veritabanı bağlantıları için Azure SQL bağlantı mimarisini açıklar.
+title: Bağlantı mimarisi
+description: Bu belgede, Azure içinden veya Azure dışından veritabanı bağlantıları için Azure SQL bağlantı mimarisi açıklanmaktadır.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,75 +12,75 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 2028aac9c01aedc4baa568d370c9f7d21c920647
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b4e7d827536245a22d168c7d9923c2e5b82830b0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419272"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111802"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL Bağlantı Mimarisi
 > [!NOTE]
-> Bu makale, Azure SQL sunucusu ve Azure SQL sunucusunda oluşturulan SQL Veritabanı ve SQL Veri Ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
+> Bu makale Azure SQL Server ve Azure SQL Server 'da oluşturulan SQL veritabanı ve SQL veri ambarı veritabanları için geçerlidir. Kolaylık açısından, hem SQL Veritabanı hem de SQL Veri Ambarı için SQL Veritabanı terimi kullanılmaktadır.
 
 > [!IMPORTANT]
-> Bu makale, **Azure SQL Veritabanı Yönetilen Örnek**için geçerli *değildir.* Yönetilen [bir örnek için Bağlantı mimarisine](sql-database-managed-instance-connectivity-architecture.md)bakın.
+> Bu *Makale,* **Azure SQL veritabanı yönetilen örneği**için geçerlidir. [Yönetilen bir örnek Için bağlantı mimarisi](sql-database-managed-instance-connectivity-architecture.md)' ne bakın.
 
-Bu makalede, ağ trafiğini Azure SQL Veritabanı'na veya SQL Veri Ambarı'na yönlendiren çeşitli bileşenlerin mimarisi açıklanmaktadır. Ayrıca, farklı bağlantı ilkelerini ve Azure'un içinden bağlanan istemcileri ve Azure dışından bağlanan istemcileri nasıl etkilediğini de açıklar. 
+Bu makalede, ağ trafiğini Azure SQL veritabanı veya SQL veri ambarı 'na yönlendirdiği çeşitli bileşenlerin mimarisi açıklanmaktadır. Ayrıca, farklı bağlantı ilkelerini ve Azure içinden bağlanan istemcileri ve Azure dışından bağlanan istemcileri nasıl etkilediğini açıklar. 
 
 ## <a name="connectivity-architecture"></a>Bağlantı mimarisi
 
-Aşağıdaki diyagram, Azure SQL Veritabanı bağlantı mimarisine üst düzey bir genel bakış sağlar.
+Aşağıdaki diyagramda Azure SQL veritabanı bağlantı mimarisine yönelik yüksek düzeyde bir genel bakış sunulmaktadır.
 
 ![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 
-Aşağıdaki adımlar, bir Azure SQL veritabanına nasıl bağlantı kurulduğunu açıklar:
+Aşağıdaki adımlarda, bir bağlantının Azure SQL veritabanına nasıl kurulduğu açıklanır:
 
-- İstemciler, genel bir IP adresi olan ve bağlantı noktası 1433'te dinleyen ağ geçidine bağlanır.
-- Ağ geçidi, etkili bağlantı ilkesine bağlı olarak trafiği doğru veritabanı kümesine yönlendirir veya ileder.
-- Veritabanı kümesi trafiğinin içinde ilgili Azure SQL veritabanına iletilir.
+- İstemciler, genel bir IP adresine sahip olan ağ geçidine bağlanır ve 1433 numaralı bağlantı noktasını dinler.
+- Ağ Geçidi, etkin bağlantı ilkesine bağlı olarak, trafiği doğru veritabanı kümesine yönlendirir veya proxy 'ye yönlendirir.
+- Veritabanı kümesi trafiğinin içinde uygun Azure SQL veritabanına iletilir.
 
 ## <a name="connection-policy"></a>Bağlantı ilkesi
 
-Azure SQL Veritabanı, bir SQL Veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
+Azure SQL veritabanı, SQL veritabanı sunucusunun bağlantı ilkesi ayarı için aşağıdaki üç seçeneği destekler:
 
-- **Yönlendirme (önerilir):** İstemciler, daha az gecikme gecikmesine ve gelişmiş iş elde etme önüne geçerek doğrudan veritabanını barındıran düğüme bağlantılar kurar. Bağlantıların bu modu kullanabilmek için şunları
-   - İstemciden 11000 11999 aralığındaki bağlantı noktalarında bölgedeki tüm Azure SQL IP adreslerine giden iletişime izin verin. Bunu yönetmeyi kolaylaştırmak için SQL için Hizmet Etiketleri'ni kullanın.  
-   - İstemciden 1433 bağlantı noktasındaki Azure SQL Veritabanı ağ geçidi IP adreslerine giden iletişime izin verin.
+- **Yeniden yönlendir (önerilir):** İstemciler, veritabanını barındıran düğüme doğrudan bağlantı kurar, azaltılmış gecikme süresi ve geliştirilmiş işleme için önde gelen bir işlem sağlar. Bu modu kullanmak için istemcilerin şunları yapması gerekir:
+   - İstemciden giden iletişimin, 11000 11999 aralığındaki bağlantı noktalarında bulunan bölgedeki tüm Azure SQL IP adreslerine erişmesine izin verin. Daha kolay yönetilmesini sağlamak için SQL için hizmet etiketlerini kullanın.  
+   - Bağlantı noktası 1433 üzerinde istemciden Azure SQL veritabanı ağ geçidi IP adreslerine giden iletişime izin verin.
 
-- **Proxy:** Bu modda, tüm bağlantılar Azure SQL Veritabanı ağ geçitleri aracılığıyla yakınlaştırılarak gecikme gecikmesi ve daha az iş ortası elde edilmesine yol açar. Bağlantıların bu modu kullanabilmesi için istemcilerin istemciden 1433 bağlantı noktasındaki Azure SQL Veritabanı ağ geçidi IP adreslerine giden iletişime izin vermeleri gerekir.
+- **Proxy:** Bu modda, tüm bağlantılar Azure SQL veritabanı ağ geçitleri aracılığıyla, artan gecikme süresi ve düşük aktarım hızı için önde gelen aracılardır. Bu modu kullanma bağlantıları için istemcilerin, bağlantı noktası 1433 üzerinde istemciden Azure SQL veritabanı ağ geçidi IP adreslerine giden iletişime izin vermek gerekir.
 
-- **Varsayılan değer:** Bu, bağlantı ilkesini açıkça değiştirmediğiniz sürece, oluşturulduktan sonra tüm `Proxy` `Redirect`sunucularda geçerli olan bağlantı ilkesidir. Varsayılan ilke, Azure'un içinden kaynaklanan tüm istemci bağlantıları (örneğin, `Proxy`bir Azure Sanal Makinesi'nden) ve dışarıdan kaynaklanan tüm istemci bağlantıları (örneğin, yerel iş istasyonunuzdaki bağlantılar) içindir.`Redirect`
+- **Varsayılan:** Bu, bağlantı ilkesini `Proxy` açıkça değiştirmediğiniz müddetçe, oluşturulduktan sonra tüm sunucularda etkin olan bağlantı ilkesidir. `Redirect` Varsayılan ilke`Redirect` , Azure 'ın içinden (örneğin, bir Azure sanal makinesinden) gelen tüm istemci bağlantılarına ve `Proxy`dış kaynaklı tüm istemci bağlantılarına (örneğin, yerel iş istasyonunuzun bağlantıları) yöneliktir.
 
- En düşük `Redirect` gecikme ve `Proxy` en yüksek iş sonu için bağlantı ilkesi üzerinden bağlantı ilkesini şiddetle öneririz. Ancak, yukarıda belirtildiği gibi ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekir. İstemci bir Azure Sanal Makineise, [bunu hizmet etiketleriyle](../virtual-network/security-overview.md#service-tags)Ağ Güvenlik Grupları 'nı (NSG) kullanarak gerçekleştirebilirsiniz. İstemci şirket içinde bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız aracılığıyla ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
+ En düşük gecikme süresi `Redirect` ve en yüksek aktarım `Proxy` hızı için bağlantı ilkesi üzerinde bağlantı ilkesini kesinlikle öneririz. Ancak, yukarıda özetlenen ağ trafiğine izin vermek için ek gereksinimleri karşılamanız gerekecektir. İstemci bir Azure sanal makinedir, bunu [hizmet etiketleriyle](../virtual-network/security-overview.md#service-tags)ağ güvenlik grupları (NSG) kullanarak gerçekleştirebilirsiniz. İstemci Şirket içindeki bir iş istasyonundan bağlanıyorsa, şirket güvenlik duvarınız üzerinden ağ trafiğine izin vermek için ağ yöneticinizle birlikte çalışmanız gerekebilir.
 
 ## <a name="connectivity-from-within-azure"></a>Azure içinden bağlantı
 
-Azure içinden bağlanıyorsanız, bağlantılarınızın varsayılan olarak `Redirect` bir bağlantı ilkesi vardır. `Redirect` TCP oturumu Azure SQL veritabanına kurulduktan sonra istemci oturumu, Azure SQL Veritabanı ağ geçidinden hedef sanal IP'ye yapılan bir değişiklikle doğru veritabanı kümesine yönlendirilir. Bundan sonra, sonraki tüm paketler Azure SQL Veritabanı ağ geçidini atlayarak doğrudan kümeye akar. Aşağıdaki diyagram bu trafik akışını göstermektedir.
+Azure içinden bağlanıyorsanız bağlantılarınız, varsayılan `Redirect` olarak bir bağlantı ilkesine sahiptir. Bir ilke `Redirect` , TCP oturumu Azure SQL veritabanı 'na kurulduktan sonra, istemci oturumu daha sonra doğru veritabanı kümesine yeniden yönlendirilir ve bu, Azure SQL veritabanı ağ geçidindeki hedef sanal IP 'ye yapılan bir değişikliğe göre kümeye yönlendirilir. Bundan sonra, Azure SQL veritabanı ağ geçidini atlayarak sonraki tüm paketler doğrudan kümeye akar. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
 ![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-azure.png)
 
 ## <a name="connectivity-from-outside-of-azure"></a>Azure dışından bağlantı
 
-Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan olarak bir `Proxy` bağlantı ilkesi vardır. Bir ilke, `Proxy` TCP oturumunun Azure SQL Veritabanı ağ geçidi üzerinden oluşturuldurulur ve sonraki tüm paketler ağ geçidi nden akar. Aşağıdaki diyagram bu trafik akışını göstermektedir.
+Azure dışından bağlanıyorsanız, bağlantılarınızın varsayılan `Proxy` olarak bir bağlantı ilkesi vardır. Bir ilke, `Proxy` TCP oturumunun Azure SQL veritabanı ağ geçidi aracılığıyla ve sonraki tüm paketlerin ağ geçidiyle akış üzerinden kurulduğu anlamına gelir. Aşağıdaki diyagramda bu trafik akışı gösterilmektedir.
 
 ![mimariye genel bakış](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
 > [!IMPORTANT]
-> Ayrıca [DAC ile bağlantı](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) sağlamak için 14000-14999 bağlantı noktalarını açın
+> Ayrıca [, dac Ile bağlanmayı](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) etkinleştirmek için 1434 ve 14000-14999 TCP bağlantı noktalarını açın
 
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Veritabanı ağ geçidi IP adresleri
 
-Aşağıdaki tabloda bölgelere göre Ağ Geçitlerinin IP Adresleri listelanmaktadır. Azure SQL Veritabanına bağlanmak için ağ trafiğinin bölgedeki **tüm** Ağ Geçitlerinden & izin vermeniz gerekir.
+Aşağıdaki tabloda bölgeye göre ağ geçitlerinin IP adresleri listelenir. Bir Azure SQL veritabanına bağlanmak için ağ trafiğinin bölge için **Tüm** ağ geçitlerinden & izin vermeniz gerekir.
 
-Trafiğin belirli bölgelerdeki yeni Ağ Geçitlerine nasıl geçirileceğinin ayrıntıları aşağıdaki makalede yer almaktadır: [Azure SQL Veritabanı trafik geçişi yeni ağ geçitlerine](sql-database-gateway-migration.md)
+Trafiğin belirli bölgelerde yeni ağ geçitlerine nasıl geçirilme ayrıntıları aşağıdaki makalede verilmiştir: [Azure SQL veritabanı trafiğini daha yeni ağ geçitlerine geçirme](sql-database-gateway-migration.md)
 
 
-| Bölge Adı          | Ağ Geçidi IP Adresleri |
+| Bölge Adı          | Ağ geçidi IP adresleri |
 | --- | --- |
 | Orta Avustralya    | 20.36.105.0 |
-| Avustralya Merkez2   | 20.36.113.0 |
+| Avustralya Central2   | 20.36.113.0 |
 | Doğu Avustralya       | 13.75.149.87, 40.79.161.1 |
 | Avustralya Güneydoğu | 191.239.192.109, 13.73.109.251 |
 | Güney Brezilya         | 104.41.11.5, 191.233.200.14 |
@@ -112,7 +112,7 @@ Trafiğin belirli bölgelerdeki yeni Ağ Geçitlerine nasıl geçirileceğinin a
 | Güney Afrika Batı    | 102.133.24.0       |
 | Orta Güney ABD     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Güneydoğu Asya      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
-| BAE Merkez          | 20.37.72.64        |
+| BAE Orta          | 20.37.72.64        |
 | BAE Kuzey            | 65.52.248.0        |
 | Güney Birleşik Krallık             | 51.140.184.11      |
 | Batı Birleşik Krallık              | 51.141.8.11        |
@@ -126,6 +126,6 @@ Trafiğin belirli bölgelerdeki yeni Ağ Geçitlerine nasıl geçirileceğinin a
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL Veritabanı sunucusu için Azure SQL Veritabanı bağlantı ilkesini nasıl değiştireceğiniz hakkında bilgi için [conn-policy'ye](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)bakın.
-- 4,5 veya daha sonraki bir sürümü ADO.NET kullanan istemciler için Azure SQL Veritabanı bağlantı davranışı hakkında bilgi için, [ADO.NET 4,5 için 1433'ün ötesindeki Bağlantı Noktaları'na](sql-database-develop-direct-route-ports-adonet-v12.md)bakın.
-- Genel uygulama geliştirme genel bakış bilgileri için, [bkz.](sql-database-develop-overview.md)
+- Azure SQL veritabanı sunucusu için Azure SQL veritabanı bağlantı ilkesini değiştirme hakkında daha fazla bilgi için bkz. [Conn-Policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- ADO.NET 4,5 veya sonraki bir sürümünü kullanan istemciler için Azure SQL veritabanı bağlantı davranışı hakkında bilgi için bkz. [1433 sonrasındaki bağlantı noktaları ADO.NET 4,5](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Genel uygulama geliştirmeye genel bakış bilgileri için bkz. [SQL veritabanı uygulaması geliştirmeye genel bakış](sql-database-develop-overview.md).

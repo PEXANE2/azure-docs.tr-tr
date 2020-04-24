@@ -1,39 +1,37 @@
 ---
-title: Render uygulamalarını kullanma - Azure Toplu İş
-description: Azure Toplu İşile oluşturma uygulamaları nasıl kullanılır? Bu makalede, her render uygulaması çalıştırmak için nasıl kısa bir açıklama sağlar.
-services: batch
-ms.service: batch
+title: İşleme uygulamaları kullanma
+description: Azure Batch ile uygulama işleme nasıl kullanılır. Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakkında kısa bir açıklama sunulmaktadır.
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: dc0ce23c90a4ba6575ba26b37d97f94ba8fa1f63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6610724cd2ecb14d165b587f9df31353e8eb8e41
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75390477"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115814"
 ---
-# <a name="rendering-applications"></a>Uygulamaları oluşturma
+# <a name="rendering-applications"></a>Uygulamaları işleme
 
-Renderuygulamaları Toplu iş ve görevler oluşturarak kullanılır. Görev komut satırı özelliği, uygun komut satırı ve parametreleri belirtir.  İş görevlerini oluşturmanın en kolay [yolu, bu makalede](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)belirtildiği gibi Toplu İş Gezgini şablonlarını kullanmaktır.  Şablonlar görüntülenebilir ve gerekirse değiştirilmiş sürümler oluşturulabilir.
+İşleme uygulamaları toplu işler ve görevler oluşturularak kullanılır. Görev komut satırı özelliği uygun komut satırını ve parametreleri belirtir.  İş görevlerini oluşturmanın en kolay yolu, [Bu makalede](https://docs.microsoft.com/azure/batch/batch-rendering-using#using-batch-explorer)belirtildiği gibi Batch Explorer şablonlarını kullanmaktır.  Şablonlar görüntülenebilir ve gerekirse oluşturulan sürümler değiştirilebilir.
 
-Bu makalede, her render uygulaması çalıştırmak için nasıl kısa bir açıklama sağlar.
+Bu makalede, her bir işleme uygulamasının nasıl çalıştırılacağı hakkında kısa bir açıklama sunulmaktadır.
 
-## <a name="rendering-with-autodesk-3ds-max"></a>Autodesk 3ds Max ile oluşturma
+## <a name="rendering-with-autodesk-3ds-max"></a>Autodesk 3ds Max ile işleme
 
-### <a name="renderer-support"></a>Renderer desteği
+### <a name="renderer-support"></a>İşleyici desteği
 
-3ds Max yerleşik render ek olarak, aşağıdaki render vm görüntüleri üzerinde kullanılabilir ve 3ds Max sahne dosyası tarafından başvurulabilir:
+3ds Max ile oluşturulan oluşturuculara ek olarak, aşağıdaki işleyiciler işleme VM görüntülerinde kullanılabilir ve 3ds Max sahne dosyası tarafından başvurulabilirler:
 
 * Autodesk Arnold
-* Kaos Grubu V-Ray
+* Chaos Group V-Ray
 
 ### <a name="task-command-line"></a>Görev komut satırı
 
-Bir `3dsmaxcmdio.exe` havuz düğümünde komut satırı oluşturma gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yoldadır. Uygulama `3dsmaxcmdio.exe` `3dsmaxcmd.exe` [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) belgelenen uygulama ile aynı kullanılabilir parametrelere sahiptir (Rendering | Komut Satırı Oluşturma bölümü).
+Bir havuz `3dsmaxcmdio.exe` düğümünde komut satırı oluşturmayı gerçekleştirmek için uygulamayı çağırın.  Bu uygulama, görev çalıştırıldığında yol üzerinde bulunur. `3dsmaxcmdio.exe` Uygulama, `3dsmaxcmd.exe` uygulama ile aynı kullanılabilir parametrelere sahiptir ve bu, [3ds Max yardım belgelerinde](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (işleme |) belgelenmiştir. Komut satırı Işleme bölümü).
 
-Örnek:
+Örneğin:
 
 ```
 3dsmaxcmdio.exe -v:5 -rfw:0 -start:{0} -end:{0} -bitmapPath:"%AZ_BATCH_JOB_PREP_WORKING_DIR%\sceneassets\images" -outputName:dragon.jpg -w:1280 -h:720 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scenes\dragon.max"
@@ -41,48 +39,48 @@ Bir `3dsmaxcmdio.exe` havuz düğümünde komut satırı oluşturma gerçekleşt
 
 Notlar:
 
-* Varlık dosyalarının bulunduğundan emin olmak için büyük özen gerekir.  **Varlıkların İzleme** penceresini kullanarak yolların doğru ve göreceli `-bitmapPath` olduğundan emin olun veya komut satırındaki parametreyi kullanın.
-* Görev çalıştırıldığında 3ds Max tarafından yazılan dosyayı `stdout.txt` denetleyerek varlıkları bulameme gibi işleme yle ilgili sorunlar olup olmadığına bakın.
+* Varlık dosyalarının bulunduğundan emin olmak için harika bir ilginin alınması gerekir.  Yolların doğru ve göreli olduğundan, **varlık izleme** penceresini kullanarak veya komut satırındaki `-bitmapPath` parametresini kullandığınızdan emin olun.
+* İşle ilgili bir sorun olup olmadığını, örneğin varlık bulma gibi, bir görev çalıştırıldığında 3ds Max ile `stdout.txt` yazılmış dosyayı denetleyerek, bkz..
 
-### <a name="batch-explorer-templates"></a>Toplu Gezgin şablonları
+### <a name="batch-explorer-templates"></a>Batch Explorer şablonları
 
-Havuz ve iş şablonlarına Toplu Gezgin'deki **Galeri'den** erişilebilir.  Şablon kaynak dosyaları [GitHub'daki Toplu Gezgin veri deposunda](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)mevcuttur.
+Havuz ve iş şablonlarına Batch Explorer **galerisinden** bir şekilde erişilebilir.  Şablon kaynak dosyaları, [GitHub 'daki Batch Explorer veri deposunda](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/3dsmax)bulunur.
 
-## <a name="rendering-with-autodesk-maya"></a>Autodesk Maya ile Rendering
+## <a name="rendering-with-autodesk-maya"></a>Autodesk Maya ile işleme
 
-### <a name="renderer-support"></a>Renderer desteği
+### <a name="renderer-support"></a>İşleyici desteği
 
-Maya yerleşik render ek olarak, aşağıdaki render vm görüntüleri üzerinde kullanılabilir ve 3ds Max sahne dosyası tarafından başvurulabilir:
+Maya içinde yerleşik olan oluşturuculara ek olarak, aşağıdaki işleyiciler işleme VM görüntülerinde kullanılabilir ve 3ds Max sahne dosyası tarafından başvurulabilirler:
 
 * Autodesk Arnold
-* Kaos Grubu V-Ray
+* Chaos Group V-Ray
 
 ### <a name="task-command-line"></a>Görev komut satırı
 
-`renderer.exe` Komut satırı işleyicisi görev komut satırında kullanılır. Komut satırı [işleyicisi Maya yardım](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)belgelenmiştir.
+`renderer.exe` Komut satırı işleyicisi görev komut satırında kullanılır. Komut satırı işleyicisi [Maya yardımı](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4)'nda belgelenmiştir.
 
-Aşağıdaki örnekte, sahne dosyalarını ve varlıklarını iş hazırlama çalışma dizinine kopyalamak için bir iş hazırlama görevi kullanılır, işoluşturma görüntüsünü depolamak için bir çıktı klasörü kullanılır ve çerçeve 10 işlenir.
+Aşağıdaki örnekte, sahne dosyalarını ve varlıklarını iş hazırlama çalışma dizinine kopyalamak için bir iş hazırlama görevi kullanılır, işleme görüntüsünü depolamak için bir çıkış klasörü kullanılır ve kare 10 işlenir.
 
 ```
 render -renderer sw -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-V-Ray işleme için, Maya sahne dosyası normalde renderer olarak V-Ray belirtecek.  Komut satırında da belirtilebilir:
+V-Ray işleme için, Maya sahne dosyası normalde işleyici olarak V-Ray ' i belirtir.  Komut satırında de belirlenebilir:
 
 ```
 render -renderer vray -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-Arnold render için, Maya sahne dosyası normalde renderer olarak Arnold belirtecek.  Komut satırında da belirtilebilir:
+Arnold işleme için, Maya sahne dosyası normalde işleyici olarak Arnold olarak belirtilebilir.  Komut satırında de belirlenebilir:
 
 ```
 render -renderer arnold -proj "%AZ_BATCH_JOB_PREP_WORKING_DIR%" -verb -rd "%AZ_BATCH_TASK_WORKING_DIR%\output" -s 10 -e 10 -x 1920 -y 1080 "%AZ_BATCH_JOB_PREP_WORKING_DIR%\scene-file.ma"
 ```
 
-### <a name="batch-explorer-templates"></a>Toplu Gezgin şablonları
+### <a name="batch-explorer-templates"></a>Batch Explorer şablonları
 
-Havuz ve iş şablonlarına Toplu Gezgin'deki **Galeri'den** erişilebilir.  Şablon kaynak dosyaları [GitHub'daki Toplu Gezgin veri deposunda](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)mevcuttur.
+Havuz ve iş şablonlarına Batch Explorer **galerisinden** bir şekilde erişilebilir.  Şablon kaynak dosyaları, [GitHub 'daki Batch Explorer veri deposunda](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/maya)bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Toplu Gezgini'ni kullanarak [GitHub'daki veri deposundaki](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) havuz ve iş şablonlarını kullanın.  Gerektiğinde, yeni şablonlar oluşturun veya sağlanan şablonlardan birini değiştirin.
+Batch Explorer kullanarak [GitHub 'daki veri deposundan](https://github.com/Azure/BatchExplorer-data/tree/master/ncj) havuz ve iş şablonlarını kullanın.  Gerektiğinde yeni şablonlar oluşturun veya sağlanan şablonlardan birini değiştirin.

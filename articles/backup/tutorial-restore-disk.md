@@ -1,15 +1,15 @@
 ---
-title: Öğretici - Azure Yedekleme ile VM diski geri yükleme
+title: Öğretici-Azure Backup bir VM diskini geri yükleme
 description: Yedekleme ve Kurtarma Hizmetleri ile Azure’da bir diskin nasıl geri yükleneceğini ve kurtarılan bir sanal makinenin nasıl oluşturulacağını öğrenin.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a66cee7e844f0049f2d2ca2f6841943aa267f3e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 31e2645a4a627793f13c37c543d9e08240e06930
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238737"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82113723"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure’da bir diski geri yükleme ve kurtarılan bir VM oluşturma
 
@@ -27,7 +27,7 @@ Disk geri yüklemek ve kurtarılmış bir VM oluşturmak üzere PowerShell kulla
 
 CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici için Azure CLI 2.0.18 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme]( /cli/azure/install-azure-cli).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici için Azure Backup ile korunmuş olan bir Linux sanal makinesi gerekir. Yanlışlıkla bir sanal makineyi silme ve kurtarma işleminin benzetimini yapmak için, bir kurtarma noktasındaki diskten bir sanal makine oluşturursunuz. Azure Backup ile korunan bir Linux sanal makinesine ihtiyacınız varsa bkz. [CLI ile Azure’da bir sanal makineyi yedekleme](quick-backup-vm-cli.md).
 
@@ -59,11 +59,11 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Sanal makine diskini geri yükleme
 
 > [!IMPORTANT]
-> Çok kuvvetle az CLI sürüm 2.0.74 veya daha sonra yönetilen disk geri yükleme de dahil olmak üzere hızlı bir geri yükleme tüm yararları elde etmek için kullanılması tavsiye edilir. Kullanıcı her zaman en son sürümü kullanırsa en iyisidir.
+> Yönetilen disk geri yükleme dahil olmak üzere hızlı geri yükleme avantajlarından yararlanmak için az CLı Version 2.0.74 veya üzeri kullanılması önemle önerilir. Kullanıcı her zaman en son sürümü kullanıyorsa, bu en iyisidir.
 
 ### <a name="managed-disk-restore"></a>Yönetilen disk geri yükleme
 
-Yedeklenen VM diskleri yönetmişse ve amaç yönetilen diskleri kurtarma noktasından geri yüklemekse, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra geri yüklenen disklerden VM'yi dağıtmak için kullanılabilecek dağıtım şablonlarını depolamak için kullanılır. Ardından, yönetilen disklerin geri yüklenecek bir hedef kaynak grubu da sağlarsınız.
+Yedeklenen sanal makinede yönetilen diskler varsa ve kurtarma noktasından yönetilen diskleri geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Daha sonra, yönetilen disklerin içine geri yükleneceği bir hedef kaynak grubu da sağlarsınız.
 
 1. Depolama hesabı oluşturmak için [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) komutunu kullanın. Depolama hesabı adı tamamen küçük harflerden oluşmalı ve genel olarak benzersiz olmalıdır. *mystorageaccount* değerini kendi benzersiz adınızla değiştirin:
 
@@ -74,7 +74,7 @@ Yedeklenen VM diskleri yönetmişse ve amaç yönetilen diskleri kurtarma noktas
         --sku Standard_LRS
     ```
 
-2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *MyRecoveryPointName'i* önceki [az yedekleme kurtarma noktası listesinden](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) çıktıda elde ettiğiniz kurtarma noktası adı ile değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın.***
+2. [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) komutuyla kurtarma noktanızdan diski geri yükleyin. *mystorageaccount* değerini, önceki komutta oluşturduğunuz depolama hesabının adıyla değiştirin. *Myrecoverypointname* değerini, önceki [az Backup RecoveryPoint List](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) komutunun çıktısında edindiğiniz kurtarma noktası adıyla değiştirin. ***Ayrıca, yönetilen disklerin geri yüklendiği hedef kaynak grubunu da sağlayın***.
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -88,11 +88,23 @@ Yedeklenen VM diskleri yönetmişse ve amaç yönetilen diskleri kurtarma noktas
     ```
 
 > [!WARNING]
-> Hedef kaynak grubu sağlanmazsa, yönetilen diskler verilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Bu, diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan geri yükleme süresi için önemli sonuçlar doğuracaktır.
+> Target-Resource-Group sağlanmazsa, yönetilen diskler, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yüklenir. Diskleri geri yüklemek için geçen süre tamamen verilen depolama hesabına bağlı olduğundan, bu geri yükleme saatine önemli sonuçlara sahip olur. Müşteriler, yalnızca Target-Resource-Group parametresi verildiğinde anında geri yükleme avantajına sahip olur. Yönetilen diskleri yönetilmeyen olarak geri yüklemek için amaç, hedef-kaynak grubu parametresini sağlamamıştır ve bunun yerine, aşağıda gösterildiği gibi, yönetilmeyen disk parametresini geri yükle parametresini sağlar. Bu parametre az 3.4.0 onenlerden kullanılabilir.
+
+    ```azurecli-interactive
+    az backup restore restore-disks \
+        --resource-group myResourceGroup \
+        --vault-name myRecoveryServicesVault \
+        --container-name myVM \
+        --item-name myVM \
+        --storage-account mystorageaccount \
+        --rp-name myRecoveryPointName
+        --restore-as-unmanaged-disk
+    ```
+Bu işlem, yönetilen diskleri, belirtilen depolama hesabına yönetilmeyen diskler olarak geri yükler ve ' anlık ' geri yükleme işlevlerinden yararlanmaz. CLı 'nın gelecek sürümlerinde, hedef kaynak grubu parametresini veya ' yönetilmeyen--------------------------
 
 ### <a name="unmanaged-disks-restore"></a>Yönetilmeyen diskler geri yükleme
 
-Yedeklenen VM'de yönetilmeyen diskler varsa ve amaç kurtarma noktasından diskleri geri yüklemekse, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra geri yüklenen disklerden VM'yi dağıtmak için kullanılabilecek dağıtım şablonlarını depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Kullanıcı tüm yönetilmeyen diskleri tek bir yere geri yüklemek isterse, verilen depolama hesabı da bu diskler için bir hazırlama konumu olarak kullanılabilir.
+Yedeklenen sanal makinede yönetilmeyen diskler varsa ve diskleri kurtarma noktasından geri yüklemek istiyorsanız, önce bir Azure depolama hesabı sağlarsınız. Bu depolama hesabı, VM yapılandırmasını ve daha sonra VM 'yi geri yüklenen disklerden dağıtmak için kullanılabilecek Dağıtım şablonunu depolamak için kullanılır. Varsayılan olarak, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Kullanıcı tüm yönetilmeyen diskleri tek bir yere geri yüklemeyi istiyorsa, söz konusu depolama hesabı da bu disklere yönelik hazırlama konumu olarak da kullanılabilir.
 
 Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
 
@@ -117,7 +129,7 @@ Ek adımlarda, sanal makine oluşturmak için geri yüklenen disk kullanılır.
         --rp-name myRecoveryPointName
     ```
 
-Yukarıda belirtildiği gibi, yönetilmeyen diskler özgün depolama hesabına geri yüklenir. Bu en iyi geri yükleme performansı sağlar. Ancak, tüm yönetilmeyen disklerin verilen depolama hesabına geri yüklenmeleri gerekiyorsa, aşağıda gösterildiği gibi ilgili bayrağı kullanın.
+Yukarıda belirtildiği gibi, yönetilmeyen diskler özgün depolama hesaplarına geri yüklenir. Bu, en iyi geri yükleme performansını sağlar. Ancak, tüm yönetilmeyen disklerin verilen depolama hesabına geri yüklenmesi gerekiyorsa, aşağıda gösterildiği gibi ilgili bayrağı kullanın.
 
 ```azurecli-interactive
     az backup restore restore-disks \
@@ -151,15 +163,15 @@ a0a8e5e6  Backup           Completed   myvm         2017-09-19T03:09:21  0:15:26
 fe5d0414  ConfigureBackup  Completed   myvm         2017-09-19T03:03:57  0:00:31.191807
 ```
 
-Geri yükleme iş raporlarının *Durumu* *Tamamlandığında,* gerekli bilgiler (VM yapılandırması ve dağıtım şablonu) depolama hesabına geri yüklenir.
+Geri yükleme işi raporlarının *durumu* *tamamlandığında*, gerekli bilgiler (VM yapılandırması ve dağıtım şablonu) depolama hesabına geri yüklendi.
 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Geri yüklenen diskten sanal makine oluşturma
 
-Son adım, geri yüklenen disklerden bir VM oluşturmaktır. VM'yi oluşturmak için verilen depolama hesabına indirilen dağıtım şablonundan yararlanabilirsiniz.
+Son adım geri yüklenen disklerden bir VM oluşturmaktır. VM oluşturmak için verilen depolama hesabına indirilen Dağıtım şablonunu kullanabilirsiniz.
 
-### <a name="fetch-the-job-details"></a>İş ayrıntılarını getir
+### <a name="fetch-the-job-details"></a>Iş ayrıntılarını getir
 
-Ortaya çıkan iş ayrıntıları, sorgulanabilen ve dağıtılabilen URI şablonuna verir. Tetiklenen geri yüklenen iş için daha fazla ayrıntı almak için iş gösterisi komutunu kullanın.
+Sonuç iş ayrıntıları, sorgulanabilen ve dağıtılabilen şablon URI 'SI sağlar. Tetiklenen geri yüklenen iş hakkında daha fazla bilgi edinmek için iş göster komutunu kullanın.
 
 ```azurecli-interactive
 az backup job show \
@@ -168,7 +180,7 @@ az backup job show \
     -n 1fc2d55d-f0dc-4ca6-ad48-aca0fe5d0414
 ```
 
-Bu sorgunun çıktısı tüm ayrıntıları verecektir, ancak biz sadece depolama hesabı içeriği ile ilgileniyoruz. Azure CLI'nin [sorgu yeteneğini](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebiliriz
+Bu sorgunun çıktısı tüm ayrıntıları verir, ancak yalnızca depolama hesabı içeriklerinde ilgileniyoruz. Azure CLı 'nin [sorgu özelliğini](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest) kullanarak ilgili ayrıntıları getirebilirsiniz
 
 ```azurecli-interactive
 az backup job show \
@@ -189,11 +201,11 @@ az backup job show \
 }
 ```
 
-### <a name="fetch-the-deployment-template"></a>Dağıtım şablonuna getir
+### <a name="fetch-the-deployment-template"></a>Dağıtım şablonunu getir
 
-Müşterinin depolama hesabı ve verilen kapsayıcı altında olduğundan şablona doğrudan erişilemez. Bu şablona erişmek için tam URL'ye (geçici bir SAS belirteciyle birlikte) ihtiyacımız vardır.
+Bir müşterinin depolama hesabı ve verilen kapsayıcı altında olduğundan, şablon doğrudan erişilebilir değildir. Bu şablona erişmek için URL 'nin tamamı (geçici bir SAS belirteci ile birlikte) gereklidir.
 
-İlk olarak, iş ayrıntılarından şablon blob Uri ayıklayın
+İlk olarak, iş ayrıntılarından şablon blobu URI 'sini ayıklayın
 
 ```azurecli-interactive
 az backup job show \
@@ -205,15 +217,15 @@ az backup job show \
 "https://mystorageaccount.blob.core.windows.net/myVM-daa1931199fd4a22ae601f46d8812276/azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json"
 ```
 
-Şablon blob Uri bu biçimde olacak ve şablon adı ayıklamak
+Şablon blob URI 'Si bu biçimde olur ve şablon adını ayıklar
 
 ```https
 https://<storageAccountName.blob.core.windows.net>/<containerName>/<templateName>
 ```
 
-Yani, yukarıdaki örnekteki şablon adı ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` olacak ve kapsayıcı adı```myVM-daa1931199fd4a22ae601f46d8812276```
+Bu nedenle, yukarıdaki örnekteki şablon adı ```azuredeploy1fc2d55d-f0dc-4ca6-ad48-aca0519c0232.json``` ve kapsayıcı adı```myVM-daa1931199fd4a22ae601f46d8812276```
 
-Şimdi [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) ayrıntılı olarak bu kapsayıcı ve şablon için SAS belirteci alın
+Şimdi bu kapsayıcı ve şablon için SAS belirtecini [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/secure-template-with-sas-token?tabs=azure-cli#provide-sas-token-during-deployment) açıklandığı gibi alın
 
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
@@ -235,9 +247,9 @@ url=$(az storage blob url \
     --connection-string $connection)
 ```
 
-### <a name="deploy-the-template-to-create-the-vm"></a>VM'yi oluşturmak için şablonu dağıtma
+### <a name="deploy-the-template-to-create-the-vm"></a>VM 'yi oluşturmak için şablonu dağıtma
 
-Şimdi [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)açıklandığı gibi VM oluşturmak için şablonu dağıtın.
+Şimdi [burada](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)açıklandığı gibi, VM 'yi oluşturmak için şablonu dağıtın.
 
 ```azurecli-interactive
 az group deployment create \

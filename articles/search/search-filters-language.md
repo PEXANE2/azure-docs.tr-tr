@@ -1,53 +1,53 @@
 ---
-title: Arama dizinindeki dile göre filtreleme
+title: Arama dizininde dile göre filtrele
 titleSuffix: Azure Cognitive Search
-description: Çok dilli aramayı desteklemek için filtre ölçütleri, sorgu yürütmesini dile özgü alanlara kapsama.
+description: Dile özgü alanlara sorgu yürütmeyi kapsayan çok dilli aramayı desteklemek için ölçütleri filtreleyin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 5dbf32610e54df4ff009d4cb0a0b080babb4ec73
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: b0ebbbb64e173e1501f08f8385b14c365759a804
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74112072"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116290"
 ---
-# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da dile göre filtreleme 
+# <a name="how-to-filter-by-language-in-azure-cognitive-search"></a>Azure Bilişsel Arama dile göre filtreleme 
 
-Çok dilli bir arama uygulamasında ki temel gereksinimlerden biri, kullanıcının kendi dilinde arama yapma ve sonuçları alma yeteneğidir. Azure Bilişsel Arama'da, çok dilli bir uygulamanın dil gereksinimlerini karşılamanın bir yolu, dizeleri belirli bir dilde depolamaya adanmış bir dizi alan oluşturmak ve ardından tam metin aramasını sorgu sırasında yalnızca bu alanlara kısıtlamaktır.
+Çok dilli arama uygulamasındaki önemli bir gereksinim, kullanıcının kendi dilinde arama ve sonuç alma olanağıdır. Azure Bilişsel Arama, çok dilli bir uygulamanın dil gereksinimlerini karşılamanın bir yolu, belirli bir dilde dizeleri depolamak için ayrılmış bir dizi alan oluşturmaktır ve sonra tam metin aramasını sorgu sırasında yalnızca bu alanlarla kısıtlar.
 
-İstekteki sorgu parametreleri hem arama işlemini kapsamak hem de sunmak istediğiniz arama deneyimiyle uyumlu içerik sağlamayan alanların sonuçlarını kırpmak için kullanılır.
+İstekteki sorgu parametreleri, her iki arama işlemini de kapsam için kullanılır ve ardından, iletmek istediğiniz arama deneyimiyle uyumlu içerik sağlamayan alanların sonuçlarını kırpabilir.
 
 | Parametreler | Amaç |
 |-----------|--------------|
-| **aramaAlanlar** | Tam metin aramasını adlandırılmış alanlar listesiyle sınırlar. |
-| **$select** | Yanıtı yalnızca belirttiğiniz alanları içerecek şekilde kırpıyor. Varsayılan olarak, tüm alınan alanlar döndürülür. **$select** parametresi, hangilerinin geri döneceğini seçmenizi sağlar. |
+| **searchFields** | Tam metin aramasını adlandırılmış alanlar listesiyle sınırlandırır. |
+| **$select** | Yanıtı yalnızca belirttiğiniz alanları içerecek şekilde kırpar. Varsayılan olarak, tüm alınabilir alanlar döndürülür. **$Select** parametresi, hangi hangilerinin dönebileceği seçmenize olanak sağlar. |
 
-Bu tekniğin başarısı alan içeriğinin bütünlüğüne bağlıdır. Azure Bilişsel Arama dizeleri çevirmez veya dil algılama gerçekleştirmez. Alanların beklediğiniz dizeleri içerdiğinden emin olmak size kalmış.
+Bu teknik, alan içeriklerinin bütünlüğünden başarılı oldu. Azure Bilişsel Arama dizeleri çevirmez veya dil algılamayı gerçekleştirmez. Alanların, istediğiniz dizeleri içerdiğinden emin olmanız gerekir.
 
-## <a name="define-fields-for-content-in-different-languages"></a>Farklı dillerdeki içerik alanlarını tanımlama
+## <a name="define-fields-for-content-in-different-languages"></a>Farklı dillerdeki içerik için alanları tanımlama
 
-Azure Bilişsel Arama'da sorgular tek bir dizin hedeflemez. Tek bir arama deneyiminde dile özgü dizeleri sağlamak isteyen geliştiriciler genellikle değerleri depolamak için ayrılmış alanları tanımlar: İngilizce dizeleri için bir alan, Fransızca için bir alan, ve benzeri. 
+Azure Bilişsel Arama 'de sorgular tek bir dizini hedefler. Tek bir arama deneyiminde dile özgü dizeler sağlamak isteyen geliştiriciler genellikle değerleri depolamak için ayrılmış alanlar tanımlar: Ingilizce dizeler için bir alan, Fransızca için bir, vb. 
 
-Aşağıda gösterilen [gayrimenkul örneği](search-get-started-portal.md) de dahil olmak üzere örneklerimizde, aşağıdaki ekran görüntüsüne benzer alan tanımları görmüş olabilirsiniz. Bu örnekte, bu dizindeki alanların dil çözümleyici sayıltıcı atamalarının nasıl görüldüğüne dikkat edin. Dizeleri içeren alanlar, hedef dilin dilsel kurallarını işlemek üzere tasarlanmış bir çözümleyiciyle eşleştiğinde tam metin aramasında daha iyi performans gösterir.
+Aşağıdaki örnek, farklı dillerdeki içerikleri içeren birkaç dize alanına sahip olan [gerçek emlak örneğinden](search-get-started-portal.md) biridir. Bu dizindeki alanlar için dil çözümleyici atamalarına dikkat edin. Dizeleri içeren alanlar, hedef dilin dil kurallarını işlemek için mühendislik uygulanan bir çözümleyici ile eşleştirildiği zaman tam metin aramasında daha iyi işlem yapar.
 
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> Dil çözümleyicileriyle alan tanımlarını gösteren kod örnekleri [için](https://docs.microsoft.com/azure/search/search-create-index-dotnet) bkz. [Define an index (REST)](search-create-index-rest-api.md)
+> Dil Çözümleyicileri ile alan tanımlarını gösteren kod örnekleri için bkz. [Dizin tanımlama (.net)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) ve [DIZIN tanımlama (REST)](search-create-index-rest-api.md).
 
-## <a name="build-and-load-an-index"></a>Bir dizin oluşturma ve yükleme
+## <a name="build-and-load-an-index"></a>Dizin oluşturma ve yükleme
 
-Bir ara (ve belki de bariz) adım oluşturmak ve bir sorgu formüle etmeden önce [dizin doldurmak](https://docs.microsoft.com/azure/search/search-create-index-dotnet) olmasıdır. Biz bütünlük için burada bu adım söz. Dizin kullanılabilir olup olmadığını belirlemek için bir yolu [portalda](https://portal.azure.com)dizinler listesini kontrol etmektir.
+Ara (ve belirgin) bir adım sorgu oluşturmadan önce [dizini derleyip doldurmanız](https://docs.microsoft.com/azure/search/search-create-index-dotnet) gerekir. Bu adımdan daha fazla bahsedin. Dizinin kullanılabilir olup olmadığını belirlemenin bir yolu, [portaldaki](https://portal.azure.com)dizinler listesini denetleyerek.
 
-## <a name="constrain-the-query-and-trim-results"></a>Sorguyu kısıtlama ve sonuçları kırpma
+## <a name="constrain-the-query-and-trim-results"></a>Sorgu ve kırpma sonuçlarını kısıtlama
 
-Sorgudaki parametreler, aramayı belirli alanlara sınırlamak ve ardından senaryonuza yardımcı olmayan alanların sonuçlarını kırpmak için kullanılır. Aramayı Fransızca dizeleri içeren alanlara bağlama hedefi göz önüne alındığında, **aramayı Alanları'nı** kullanarak sorguyu o dilde dizeleri içeren alanlarda hedeflemek için kullanırsınız. 
+Sorgudaki parametreler, aramayı belirli alanlarla sınırlandırmak için kullanılır ve sonra herhangi bir alanın sonuçlarını senaryonuz için faydalı olmayan şekilde kırpabilir. Arama, Fransızca dizeleri içeren alanlara kısıtlama hedefi verildiğinde, sorguyu Bu dildeki dizeleri içeren alanlara hedeflemek için **Searchfields** 'i kullanırsınız. 
 
-Varsayılan olarak, bir arama geri alınabilen olarak işaretlenmiş tüm alanları döndürür. Bu nedenle, sağlamak istediğiniz dile özgü arama deneyimine uymayan alanları hariç tutmak isteyebilirsiniz. Özellikle, aramayı Fransızca dizeleri olan bir alanla sınırlandırıyorsanız, büyük olasılıkla sonuçlarınızdan İngilizce dizeleri olan alanları hariç tutmak isteyebilirsiniz. **$select** sorgu parametresini kullanmak, hangi alanların arama uygulamasına döndürüldi üzerinde denetim sağlar.
+Varsayılan olarak, bir arama alınabilir olarak işaretlenen tüm alanları döndürür. Bu nedenle, sağlamak istediğiniz dile özgü arama deneyimiyle uyumlu olmayan alanları dışlamak isteyebilirsiniz. Özellikle, Fransızca dizelerini içeren bir alanla aramayı sınırlandırdıysanız, muhtemelen sonuçlardan Ingilizce dizeler içeren alanları dışlamak isteyebilirsiniz. **$Select** Query parametresinin kullanılması, çağıran uygulamaya hangi alanların döndürüleceğini denetlemenizi sağlar.
 
 ```csharp
 parameters =
@@ -58,11 +58,11 @@ parameters =
     };
 ```
 > [!Note]
-> Sorguda $filter bağımsız değişken olmamasına rağmen, bu kullanım örneği filtre kavramlarıyla güçlü bir şekilde bağlıdır, bu nedenle bunu bir filtreleme senaryosu olarak salıyoruz.
+> Sorguda $filter bağımsız değişken olmasa da, bu kullanım örneği filtre kavramlarıyla ilgili olarak özellikle bir filtreleme senaryosu olarak sunulur.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Bilişsel Arama'daki Filtreler](search-filters.md)
++ [Azure Bilişsel Arama filtreler](search-filters.md)
 + [Dil çözümleyicileri](https://docs.microsoft.com/rest/api/searchservice/language-support)
 + [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)
 + [Belgelerde Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/search-documents)

@@ -1,52 +1,51 @@
 ---
-title: 'Resim sınıflandırma öğretici: Modelleri dağıtma'
+title: 'Görüntü sınıflandırma öğreticisi: modelleri dağıtma'
 titleSuffix: Azure Machine Learning
-description: İki bölümlük bir serinin ikincisi olan bu öğretici, Python Jupyter dizüstü bilgisayarında scikit-learn içeren bir görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning'in nasıl kullanılacağını gösterir.
+description: İki bölümden oluşan bir serinin ikinci Bu öğreticide, bir Python Jupyter Not defteri içinde bir görüntü sınıflandırma modeli dağıtmak için Azure Machine Learning nasıl kullanılacağı gösterilmektedir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 02/10/2020
+ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: 81e02492f7e79b87e1513a910afe4719908adbbb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 87ce101910a94cbddf0af4df7b04fc000928845f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80159101"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82111870"
 ---
-# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Kapsayıcı Örnekleri'nde görüntü sınıflandırma modelini dağıtma
+# <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Öğretici: Azure Container Instances bir görüntü sınıflandırma modeli dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. [Önceki öğreticide](tutorial-train-models-with-aml.md) makine öğrenmesi modellerini eğittiniz ve buluttaki çalışma alanınıza modeli kaydettiniz.  Artık modeli bir web hizmeti olarak dağıtmaya hazırsınız. Bir web hizmeti bir görüntü, bu durumda bir Docker görüntüdür. Puanlama mantığını ve modelin kendisini kapsüller. 
+Bu öğretici, **iki bölümden oluşan bir öğretici serisinin ikinci bölümüdür**. [Önceki öğreticide](tutorial-train-models-with-aml.md) makine öğrenmesi modellerini eğittiniz ve buluttaki çalışma alanınıza modeli kaydettiniz.  Artık modeli bir Web hizmeti olarak dağıtmaya hazırsınız demektir. Bir Web hizmeti, bu durumda bir Docker görüntüsü olan bir görüntüdür. Puanlama mantığını ve modelin kendisini kapsüller. 
 
-Öğreticinin bu bölümünde, aşağıdaki görevler için Azure Machine Learning'i kullanırsınız:
+Öğreticinin bu bölümünde aşağıdaki görevler için Azure Machine Learning kullanırsınız:
 
 > [!div class="checklist"]
 > * Test ortamınızı ayarlayın.
 > * Çalışma alanınızdan modeli alın.
-> * Modeli yerel olarak test edin.
-> * Modeli Kapsayıcı Örnekleri'ne dağıtın.
+> * Modeli Container Instances için dağıtın.
 > * Dağıtılan modeli test edin.
 
-Kapsayıcı Örnekleri, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes Service’i kullanmayı göz önünde bulundurabilirsiniz. Daha fazla bilgi için [nasıl dağıtılanın ve nerede dağıtılanın.](how-to-deploy-and-where.md)
+Container Instances, iş akışını test etmek ve anlamak için harika bir çözümdür. Ölçeklenebilir üretim dağıtımları için Azure Kubernetes Service’i kullanmayı göz önünde bulundurabilirsiniz. Daha fazla bilgi için bkz. [dağıtma ve nerede](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Bu makaledeki kod Azure Machine Learning SDK sürüm 1.0.41 ile test edilmiştir.
+> Bu makaledeki kod, Azure Machine Learning SDK sürümü 1.0.83 ile test edilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Not defterini çalıştırmak için, önce Öğretici 'deki model eğitimini tamamlayın [(bölüm 1): Bir görüntü sınıflandırma modeli eğitin.](tutorial-train-models-with-aml.md)   Ardından klonlanmış *öğreticileriniz/resim sınıflandırması-mnist-veri* klasörünüzde *img-classification-part2-deploy.ipynb* not defterini açın.
+Not defterini çalıştırmak için, ilk olarak öğreticide model eğitimi ' ni [(1. bölüm) doldurun: görüntü sınıflandırma modelini eğitme](tutorial-train-models-with-aml.md).   Ardından klonlanan *öğreticiler/Image-Classification-mnist-Data* klasöründe *img-Classification-part2-Deploy. ipynb* Not defterini açın.
 
-Bu öğretici, kendi [yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub'da](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) da mevcuttur.  Yüklü `matplotlib` `scikit-learn` ve ortamınızda olduğundan emin olun. 
+Bu öğretici, kendi [Yerel ortamınızda](how-to-configure-environment.md#local)kullanmak istiyorsanız [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) 'da da kullanılabilir.  Ortamınızdaki ve `matplotlib` `scikit-learn` ortamınızda yüklü olduğundan emin olun. 
 
 > [!Important]
-> Bu makalenin geri kalanı, not defterinde gördüğünüz le aynı içeriği içerir.  
+> Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
 >
-> Kodu çalıştırırken okumak istiyorsanız hemen Jupyter not defterine geçin.
-> Not defterinde tek bir kod hücresini çalıştırmak için kod hücresini tıklatın ve **Shift+Enter'a**basın. Veya tüm dizüstü bilgisayarı üst araç çubuğundan **Çalıştır'ı** seçerek tüm dizüstü bilgisayarı çalıştırın.
+> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin.
+> Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter**tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
 ## <a name="set-up-the-environment"></a><a name="start"></a>Ortamı ayarlama
 
@@ -54,78 +53,177 @@ Başlangıç olarak test ortamını ayarlayın.
 
 ### <a name="import-packages"></a>Paketleri içeri aktarma
 
-Bu öğretici için gereken Python paketlerini alma:
+Bu öğretici için gereken Python paketlerini içeri aktarın.
+
 
 ```python
 %matplotlib inline
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
  
-import azureml
-from azureml.core import Workspace, Run
+import azureml.core
 
 # Display the core SDK version number
 print("Azure ML SDK Version: ", azureml.core.VERSION)
 ```
 
-### <a name="retrieve-the-model"></a>Modeli alma
+## <a name="deploy-as-web-service"></a>Web hizmeti olarak dağıtma
 
-Önceki öğreticide çalışma alanınızda bir modeli kaydetmiştiniz. Şimdi bu çalışma alanını yükleyin ve modeli yerel dizine indirin:
+Modeli ACI 'de barındırılan bir Web hizmeti olarak dağıtın. 
+
+Doğru ACI ortamını oluşturmak için şunları sağlayın:
+* Modelin nasıl kullanılacağını gösteren puanlama betiği
+* ACI’yı oluşturmak için bir yapılandırma dosyası
+* Daha önce eğittiğiniz model
+
+### <a name="create-scoring-script"></a>Puanlama betiği oluşturma
+
+Modelin nasıl kullanılacağını göstermek için web hizmeti çağrısının kullandığı, score.py adlı puanlama betiğini oluşturun.
+
+Puanlama betiğine gerekli iki işlevi eklemelisiniz:
+* Normalde modeli genel bir nesneye yükleyen `init()` işlevi. Bu işlev, Docker kapsayıcısı başlatıldığında tek bir kez çalıştırılır. 
+
+* `run(input_data)` işlevi, giriş verileri temelinde bir değer tahmin etmek için modeli kullanır. Çalıştırmanın girişleri ve çıkışlarında serileştirme ve seriden çıkarma için normal olarak JSON kullanılır ama başka biçimler de desteklenir.
+
+```python
+%%writefile score.py
+import json
+import numpy as np
+import os
+import pickle
+import joblib
+
+def init():
+    global model
+    # AZUREML_MODEL_DIR is an environment variable created during deployment.
+    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
+    model = joblib.load(model_path)
+
+def run(raw_data):
+    data = np.array(json.loads(raw_data)['data'])
+    # make prediction
+    y_hat = model.predict(data)
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
+```
+
+### <a name="create-configuration-file"></a>Yapılandırma dosyası oluşturma
+
+Dağıtım yapılandırma dosyası oluşturun ve ACI kapsayıcısına gereken CPU sayısını ve gigabayt cinsinden RAM miktarını belirtin. Modelinize bağlı olsa da, birçok model için varsayılan 1 çekirdek ve 1 gigabayt RAM çoğunlukla yeterlidir. Daha sonra fazlasına ihtiyacınız olduğunu düşünüyorsanız, görüntüyü yeniden oluşturabilir ve hizmeti yeniden dağıtabilirsiniz.
 
 
 ```python
+from azureml.core.webservice import AciWebservice
+
+aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
+                                               memory_gb=1, 
+                                               tags={"data": "MNIST",  "method" : "sklearn"}, 
+                                               description='Predict MNIST with sklearn')
+```
+
+### <a name="deploy-in-aci"></a>ACI’da dağıtma
+Tahmini tamamlanma süresi: **yaklaşık 2-5 dakika**
+
+Görüntüyü yapılandırın ve dağıtın. Aşağıdaki kod şu adımlardan geçer:
+
+1. Eğitim sırasında kaydedilen ortamı (`tutorial-env`) kullanarak modelin gerektirdiği bağımlılıkları içeren ortam nesnesi oluşturun.
+1. Modeli bir Web hizmeti olarak dağıtmak için gereken çıkarım yapılandırması oluşturma şunu kullanarak:
+   * Puanlama dosyası (`score.py`)
+   * önceki adımda oluşturulan ortam nesnesi
+1. Modeli ACI kapsayıcısına dağıtın.
+1. Web hizmeti HTTP uç noktasını alın.
+
+
+```python
+%%time
+from azureml.core.webservice import Webservice
+from azureml.core.model import InferenceConfig
+from azureml.core.environment import Environment
 from azureml.core import Workspace
 from azureml.core.model import Model
-import os
+
 ws = Workspace.from_config()
 model = Model(ws, 'sklearn_mnist')
 
-model.download(target_dir=os.getcwd(), exist_ok=True)
 
-# verify the downloaded model file
-file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
+inference_config = InferenceConfig(entry_script="score.py", environment=tutorial-env)
 
-os.stat(file_path)
+service = Model.deploy(workspace=ws, 
+                       name='sklearn-mnist-svc3', 
+                       models=[model], 
+                       inference_config=inference_config, 
+                       deployment_config=aciconfig)
+
+service.wait_for_deployment(show_output=True)
 ```
 
-## <a name="test-the-model-locally"></a>Modeli yerel olarak test etme
+REST istemci çağrılarını kabul eden puanlama web hizmetinin HTTP uç noktasını alın. Bu uç nokta, web hizmetini test etmek veya bunu bir uygulamayla tümleştirmek isteyen herkesle paylaşılabilir.
 
-Dağıtmadan önce, modelinizin yerel olarak çalıştığından emin olun:
-* Test verilerini yükleyin.
-* Test verilerini tahmin edin.
-* Karışıklık matrisini inceleyin.
+
+```python
+print(service.scoring_uri)
+```
+
+## <a name="test-the-model"></a>Modeli test etme
+
+
+### <a name="download-test-data"></a>Test verilerini indir
+Test verilerini **./Data/** dizinine indirin
+
+
+```python
+import os
+from azureml.core import Dataset
+from azureml.opendatasets import MNIST
+
+data_folder = os.path.join(os.getcwd(), 'data')
+os.makedirs(data_folder, exist_ok=True)
+
+mnist_file_dataset = MNIST.get_file_dataset()
+mnist_file_dataset.download(data_folder, overwrite=True)
+```
 
 ### <a name="load-test-data"></a>Test verilerini yükleme
 
-Eğitim eğitimi sırasında oluşturulan **./data/dizindeki** test verilerini yükleyin:
+Test verilerini, eğitim öğreticisi sırasında oluşturulan **./data/** dizininden yükleyin.
+
 
 ```python
 from utils import load_data
 import os
+import glob
 
 data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
-y_test = load_data(os.path.join(
-    data_folder, 'test-labels.gz'), True).reshape(-1)
+X_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-images-idx3-ubyte.gz"), recursive=True)[0], False) / 255.0
+y_test = load_data(glob.glob(os.path.join(data_folder,"**/t10k-labels-idx1-ubyte.gz"), recursive=True)[0], True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>Test verilerini tahmin etme
 
-Öngörüler almak için test veri kümesini modele aktarın:
+Tahminleri almak için test veri kümesinin modele akışını gerçekleştirin.
+
+
+Aşağıdaki kod şu adımlardan geçer:
+1. Verileri JSON dizisi olarak ACI’da barındırılan web hizmetine gönderme. 
+
+1. Hizmeti çağırmak için SDK'nın `run` API’sini kullanma. cURL gibi HTTP araçlarını kullanarak ham çağrılar da yapabilirsiniz.
+
 
 ```python
-import pickle
-from sklearn.externals import joblib
-
-clf = joblib.load(os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
-y_hat = clf.predict(X_test)
+import json
+test = json.dumps({"data": X_test.tolist()})
+test = bytes(test, encoding='utf8')
+y_hat = service.run(input_data=test)
 ```
 
 ###  <a name="examine-the-confusion-matrix"></a>Karışıklık matrisini inceleme
 
-Test kümesinden kaç örneğin doğru sınıflandırıldığını görmek için karışıklık matrisi oluşturun. Yanlış öngörüler için yanlış sınıflandırılmış değere dikkat edin: 
+Test kümesinden kaç örneğin doğru sınıflandırıldığını görmek için karışıklık matrisi oluşturun. Yanlış tahminler için yanlış sınıflandırılmış değere dikkat edin.
+
 
 ```python
 from sklearn.metrics import confusion_matrix
@@ -150,7 +248,7 @@ print('Overall accuracy:', np.average(y_hat == y_test))
     Overall accuracy: 0.9204
    
 
-Karışıklık matrisini grafik olarak görüntülemek için `matplotlib` kullanın. Bu grafikte, x ekseni gerçek değerleri, y ekseni ise öngörülen değerleri gösterir. Her ızgaradaki renk hata oranını gösterir. Renk ne kadar açıksa hata oranı da o kadar yüksektir. Örneğin, birçok 5's 3 olarak yanlış sınıflandırılır. Yani (5,3) parlak bir ızgara bakın:
+Karışıklık matrisini grafik olarak görüntülemek için `matplotlib` kullanın. Bu grafikte X ekseni asıl değerleri, Y ekseni de tahmini değerleri gösterir. Her kılavuzun rengi, hata oranını gösterir. Renk ne kadar açıksa hata oranı da o kadar yüksektir. Örneğin, birçok 5 yanlışlıkla 3 olarak sınıflandırılmıştır. Bu nedenle, (5, 3) üzerinde parlak bir ızgara görürsünüz.
 
 ```python
 # normalize the diagonal cells so that they don't overpower the rest of the cells when visualized
@@ -175,141 +273,17 @@ plt.show()
 
 ![Karışıklık matrisini gösteren grafik](./media/tutorial-deploy-models-with-aml/confusion.png)
 
-## <a name="deploy-as-a-web-service"></a>Web hizmeti olarak dağıtma
 
-Modeli test ettikten ve sonuçlardan memnun olduktan sonra, modeli Kapsayıcı Örnekleri'nde barındırılan bir web hizmeti olarak dağıtın. 
+## <a name="show-predictions"></a>Tahminleri göster
 
-Kapsayıcı Örnekleri için doğru ortamı oluşturmak için aşağıdaki bileşenleri sağlayın:
-* Modelin nasıl kullanılacağını gösteren bir puanlama komut dosyası.
-* Hangi paketlerin yüklenmesi gerektiğini gösteren bir ortam dosyası.
-* Kapsayıcı örneğini oluşturmak için bir yapılandırma dosyası.
-* Daha önce eğittin model.
+Dağıtılan modeli, test verilerinden alınan 30 görüntüden oluşan rastgele bir örnekle test edin.  
 
-<a name="make-script"></a>
 
-### <a name="create-scoring-script"></a>Puanlama betiği oluşturma
+1. Döndürülen tahminleri yazdırma ve bunları giriş görüntüleriyle birlikte çizme. Yanlış sınıflandırılmış örnekleri vurgulamak için kırmızı yazı tipi ve ters görüntü (siyah üzerine beyaz) kullanılır. 
 
-**score.py**adlı puanlama komut dosyası oluşturun. Web hizmeti çağrısı, modelin nasıl kullanılacağını göstermek için bu komut dosyasını kullanır.
+ Model doğruluğu yüksek olduğundan, yanlış sınıflandırılmış örneği görebilmek için önce aşağıdaki kodu birkaç kez çalıştırmanız gerekebilir.
 
-Puanlama komut dosyasına bu iki gerekli işlevi ekleyin:
-* Normalde modeli genel bir nesneye yükleyen `init()` işlevi. Bu işlev, Docker kapsayıcısı başlatıldığında tek bir kez çalıştırılır. 
 
-* `run(input_data)` işlevi, giriş verileri temelinde bir değer tahmin etmek için modeli kullanır. Çalıştırmanın girişleri ve çıkışlarında serileştirme ve seriden çıkarma için normal olarak JSON kullanılır ama başka biçimler de desteklenir.
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-
-from azureml.core.model import Model
-
-def init():
-    global model
-    # retrieve the path to the model file using the model name
-    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
-    model = joblib.load(model_path)
-
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
-    return y_hat.tolist()
-```
-
-<a name="make-myenv"></a>
-
-### <a name="create-environment-file"></a>Ortam dosyası oluşturma
-
-Sonraki **myenv.yml**adlı bir ortam dosyası oluşturmak , komut dosyasının tüm paket bağımlılıkları belirtir. Bu dosya, tüm bu bağımlılıkların Docker görüntüsüne yüklendiğinden emin olmak için kullanılır. Bu modele `scikit-learn` ve `azureml-sdk` gerekir. Tüm özel ortam dosyaları, verion >= 1,0,45 pip bağımlılığı olarak azureml varsayılanlarını listelemalı. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir.
-
-```python
-from azureml.core.conda_dependencies import CondaDependencies
-
-myenv = CondaDependencies()
-myenv.add_conda_package("scikit-learn")
-myenv.add_pip_package("azureml-defaults")
-
-with open("myenv.yml", "w") as f:
-    f.write(myenv.serialize_to_string())
-```
-Dosyanın içeriğini `myenv.yml` gözden geçirin:
-
-```python
-with open("myenv.yml", "r") as f:
-    print(f.read())
-```
-
-### <a name="create-a-configuration-file"></a>Yapılandırma dosyası oluşturma
-
-Dağıtım yapılandırma dosyası oluşturun. Konteyner Örnekleri kapsayıcınız için gereken CPU ve gigabayt ram sayısını belirtin. Modelinize bağlı olmasına rağmen, bir çekirdek ve 1 gigabayt RAM varsayılan birçok model için yeterlidir. Daha sonra daha fazlasına ihtiyacınız varsa, görüntüyü yeniden oluşturmanız ve hizmeti yeniden dağıtmanız gerekir.
-
-```python
-from azureml.core.webservice import AciWebservice
-
-aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                               memory_gb=1, 
-                                               tags={"data": "MNIST",  
-                                                     "method": "sklearn"},
-                                               description='Predict MNIST with sklearn')
-```
-
-### <a name="deploy-in-container-instances"></a>Konteyner Örneklerinde Dağıtma
-Dağıtımı tamamlamak için tahmini süre **yaklaşık yedi ila sekiz dakikadır.**
-
-Görüntüyü yapılandırın ve dağıtın. Aşağıdaki kod şu adımlardan geçer:
-
-1. Bu dosyaları kullanarak bir görüntü oluşturun:
-   * Puanlama dosyası, `score.py`.
-   * Çevre dosyası, `myenv.yml`.
-   * Model dosyası.
-1. Görüntüyü çalışma alanının altına kaydedin. 
-1. Resmi Kapsayıcı Örnekleri kapsayıcısına gönderin.
-1. Görüntüyü kullanarak Kapsayıcı Örnekleri'nde bir kapsayıcı başlatın.
-1. Web hizmeti HTTP uç noktasını alın.
-
-Kendi ortam dosyanızı tanımlıyorsanız, azureml varsayılanlarını >= 1,0,45 sürümüyle pip bağımlılığı olarak listelemeniz gerektiğini lütfen unutmayın. Bu paket, modeli bir web hizmeti olarak barındırmak için gereken işlevselliği içerir.
-
-```python
-%%time
-from azureml.core.webservice import Webservice
-from azureml.core.model import InferenceConfig
-from azureml.core.environment import Environment
-
-myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
-inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
-service = Model.deploy(workspace=ws,
-                       name='sklearn-mnist-svc',
-                       models=[model], 
-                       inference_config=inference_config,
-                       deployment_config=aciconfig)
-
-service.wait_for_deployment(show_output=True)
-```
-
-REST istemci çağrılarını kabul eden puanlama web hizmetinin HTTP uç noktasını alın. Bu bitiş noktasını web hizmetini sınamak veya bir uygulamaya entegre etmek isteyen herkesle paylaşabilirsiniz: 
-
-```python
-print(service.scoring_uri)
-```
-
-## <a name="test-the-deployed-service"></a>Dağıtılan hizmeti test edin
-
-Daha önce, modelin yerel sürümü ile tüm test verilerini puan. Artık dağıtılan modeli test verilerinden rastgele 30 görüntü örneğiyle test edebilirsiniz.  
-
-Aşağıdaki kod şu adımlardan geçer:
-1. Verileri JSON dizisi olarak Kapsayıcı Örnekleri'nde barındırılan web hizmetine gönderin. 
-
-1. Hizmeti çağırmak için SDK'nın `run` API’sini kullanma. Ayrıca **kıvırma**gibi herhangi bir HTTP aracı nı kullanarak ham aramalar yapabilirsiniz.
-
-1. Döndürülen tahminleri yazdırma ve bunları giriş görüntüleriyle birlikte çizme. Yanlış sınıflandırılan örnekleri vurgulamak için siyah üzerine beyaz kırmızı yazı tipi ve ters görüntü kullanılır. 
-
-Model doğruluğu yüksek olduğundan, yanlış sınıflandırılan bir örneği göremeden önce aşağıdaki kodu birkaç kez çalıştırmanız gerekebilir:
 
 ```python
 import json
@@ -326,7 +300,7 @@ result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
-plt.figure(figsize=(20, 1))
+plt.figure(figsize = (20, 1))
 
 for s in sample_indices:
     plt.subplot(1, n, i + 1)
@@ -344,11 +318,8 @@ for s in sample_indices:
 plt.show()
 ```
 
-Bu sonuç, test görüntülerinin rastgele bir örneğinden elde edilir:
+Web hizmetini test etmek için ham HTTP isteği de gönderebilirsiniz.
 
-![Grafik gösterim sonuçları](./media/tutorial-deploy-models-with-aml/results.png)
-
-Ayrıca web hizmetini test etmek için ham bir HTTP isteği gönderebilirsiniz:
 
 ```python
 import requests
@@ -373,7 +344,7 @@ print("prediction:", resp.text)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynak grubunu ve diğer öğreticiler ve keşifler için çalışma alanını korumak için, bu API çağrısını kullanarak yalnızca Kapsayıcı Örnekleri dağıtımını silebilirsiniz:
+Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak için bu API çağrısını kullanarak yalnızca Container Instances dağıtımı silebilirsiniz:
 
 ```python
 service.delete()
@@ -384,8 +355,8 @@ service.delete()
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure Machine Learning için](how-to-deploy-and-where.md)tüm dağıtım seçenekleri hakkında bilgi edinin.
-+ [Web hizmeti için istemci oluşturmayı](how-to-consume-web-service.md)öğrenin.
-+  Büyük miktarlarda veri üzerinde eşzamanlı olarak [öngörülerde bulunun.](how-to-use-parallel-run-step.md)
-+ Azure Machine Learning modellerinizi [Uygulama Öngörüleri](how-to-enable-app-insights.md)ile izleyin.
-+ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğretici deneyin. 
++ [Azure Machine Learning için dağıtım seçenekleri](how-to-deploy-and-where.md)hakkında bilgi edinin.
++ [Web hizmeti için istemci oluşturma](how-to-consume-web-service.md)hakkında bilgi edinin.
++  [Büyük miktarlarda verileri zaman uyumsuz olarak tahmin edin](how-to-use-parallel-run-step.md) .
++ Azure Machine Learning modellerinizi [Application Insights](how-to-enable-app-insights.md)izleyin.
++ [Otomatik algoritma seçim](tutorial-auto-train-models.md) öğreticisini deneyin. 

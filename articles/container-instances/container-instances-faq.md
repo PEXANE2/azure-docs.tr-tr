@@ -1,101 +1,104 @@
 ---
 title: Sık sorulan sorular
-description: Azure Kapsayıcı Örnekleri hizmetiyle ilgili sık sorulan soruların yanıtları
+description: Azure Container Instances hizmetiyle ilgili sık sorulan soruların yanıtları
 author: dkkapur
 ms.topic: article
 ms.date: 04/10/2020
-ms.openlocfilehash: 8730dcb24af61730d7f93ea37a53cf87435eb9f9
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261627"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115236"
 ---
-# <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Kapsayıcı Örnekleri hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-azure-container-instances"></a>Azure Container Instances hakkında sık sorulan sorular
 
-Bu makalede, Azure Kapsayıcı Örnekleri hakkında sık sorulan sorular giderilen.
+Bu makalede Azure Container Instances hakkında sık sorulan sorular ele alınmaktadır.
 
 ## <a name="deployment"></a>Dağıtım
 
-### <a name="how-large-can-my-container-image-be"></a>Konteyner resmim ne kadar büyük olabilir?
+### <a name="how-large-can-my-container-image-be"></a>Kapsayıcı resminiz ne kadar büyük olabilir?
 
-Azure Kapsayıcı Örnekleri'nde dağıtılabilir kapsayıcı görüntüsü için maksimum boyut 15 GB'dır. Dağıttığınız anda tam kullanılabilirlik durumuna bağlı olarak daha büyük görüntüler dağıtabilirsiniz, ancak bu garanti edilmez.
+Azure Container Instances üzerinde dağıtılabilir bir kapsayıcı görüntüsünün en büyük boyutu 15 GB 'tır. Dağıttığınız sırada tam kullanılabilirliğe göre daha büyük görüntüleri dağıtabilirsiniz, ancak bu garanti edilmez.
 
-Kapsayıcı görüntünüzün boyutu, dağıtımının ne kadar sürdüğünü etkiler, bu nedenle genellikle kapsayıcı görüntülerinizi mümkün olduğunca küçük tutmak istersiniz.
+Kapsayıcı resminizin boyutu, ne kadar süreyle dağıtılması gerektiğini etkiler, bu nedenle genellikle kapsayıcı görüntülerinizi mümkün olduğunca küçük tutmak istiyor.
 
-### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Konteynerimin dağıtımını nasıl hızlandırabilirim?
+### <a name="how-can-i-speed-up-the-deployment-of-my-container"></a>Kapsayıcımın dağıtımını nasıl hızlandırabilirim?
 
-Dağıtım sürelerinin ana belirleyicilerinden biri görüntü boyutu olduğundan, boyutu küçültmenin yollarını arayın. İhtiyacınız olmayan katmanları kaldırın veya görüntüdeki katmanların boyutunu küçültün (daha hafif bir temel işletim sistemi görüntüsü seçerek). Örneğin, Linux kapsayıcıları çalıştırıyorsanız, Alp'i tam bir Ubuntu Sunucusu yerine temel resminiz olarak kullanmayı düşünün. Benzer şekilde, Windows kapsayıcıları için mümkünse nano server temel görüntüsü kullanın. 
+Dağıtım sürelerinin ana öğelerinden biri görüntü boyutu olduğundan, boyutu azaltmanın yollarını arayın. İhtiyacınız olmayan katmanları kaldırın veya görüntüdeki katmanların boyutunu küçültün (daha hafif bir temel işletim sistemi görüntüsü seçerek). Örneğin, Linux kapsayıcıları çalıştırıyorsanız, tam Ubuntu sunucusu yerine alp 'yi temel görüntü olarak kullanmayı düşünün. Benzer şekilde, Windows kapsayıcıları için mümkünse nano sunucu temel görüntüsünü kullanın. 
 
-[Önbelleğe Alınmış Görüntüler Listesi](/rest/api/container-instances/listcachedimages) API'si aracılığıyla kullanılabilen Azure Kapsayıcı Resimleri'nde önceden önbelleğe alınmış görüntülerin listesini de kontrol etmelisiniz. Önceden önbelleğe alınmış görüntülerden biri için görüntü katmanını değiştirebilirsiniz. 
+Ayrıca, [önbelleğe](/rest/api/container-instances/listcachedimages) alınmış görüntüler API 'si aracılığıyla kullanılabilen Azure Container görüntülerinde önceden önbelleğe alınmış görüntülerin listesini de denetlemeniz gerekir. Önceden önbelleğe alınmış görüntülerden biri için bir görüntü katmanını geçirebilirsiniz. 
 
-Kapsayıcı başlatma süresini azaltma konusunda daha [ayrıntılı kılavuza](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) bakın.
+Kapsayıcı başlatma süresini azaltmak için daha [ayrıntılı rehberlik](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) bölümüne bakın.
 
-### <a name="what-windows-base-os-images-are-supported"></a>Hangi Windows temel işletim sistemi görüntüleri desteklenir?
+### <a name="what-windows-base-os-images-are-supported"></a>Hangi Windows temel işletim sistemi görüntüleri destekleniyor?
 
-#### <a name="windows-server-2016-base-images"></a>Windows Server 2016 temel resimleri
+#### <a name="windows-server-2016-base-images"></a>Windows Server 2016 temel görüntüler
 
-* [Nano](https://hub.docker.com/_/microsoft-windows-nanoserver)Sunucu `10.0.14393.x`: ,`sac2016`
-* [Windows Server](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2016`Core : ,`10.0.14393.x`
+* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
+* [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
 
 > [!NOTE]
-> Yarı Yıllık Kanal sürümü 1709 veya 1803'e dayalı Windows görüntüleri desteklenmez.
+> Yarı yıllık kanal sürümü 1709 veya 1803 tabanlı Windows görüntüleri desteklenmez.
 
-#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 ve istemci temel görüntüleri (önizleme)
+#### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 ve istemci temel görüntüleri (Önizleme)
 
-* [Nano](https://hub.docker.com/_/microsoft-windows-nanoserver)Server `1809` `10.0.17763.914` : , veya daha önce
-* [Windows Server](https://hub.docker.com/_/microsoft-windows-servercore) `ltsc2019`Core `1809` `10.0.17763.914` : , , veya daha önce
-* [Windows](https://hub.docker.com/_/microsoft-windows) `1809`: `10.0.17763.914` , veya daha önce
+* [Nano sunucu](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.914` veya önceki
+* [Windows Server çekirdeği](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809` `10.0.17763.914` veya daha önceki
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.914` veya öncesi
 
-### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Kapsayıcımda hangi .NET veya .NET Core resim katmanını kullanmalıyım? 
+### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Kapsayıcımda hangi .NET veya .NET Core görüntü katmanını kullanmalıyım? 
 
-Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için,.NET Core 2.1'in yayınlanmasından bu yana desteklenen bir *runtime-alpine* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, windows server core görüntüsünü *(4.7.2-windowsservercore-ltsc2016*gibi yalnızca çalışma zamanı görüntüsü) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüler daha küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
+Gereksinimlerinizi karşılayan en küçük görüntüyü kullanın. Linux için .NET Core 2,1 sürümünden bu yana desteklenen bir *Runtime-alçam* .NET Core görüntüsü kullanabilirsiniz. Windows için, tam .NET Framework kullanıyorsanız, bir Windows Server çekirdek görüntüsü (yalnızca çalışma zamanı görüntüsü, örneğin *4.7.2-windowsservercore-ltsc2016*) kullanmanız gerekir. Yalnızca çalışma zamanı görüntüleri küçüktür, ancak .NET SDK gerektiren iş yüklerini desteklemez.
 
-## <a name="availability-and-quotas"></a>Kullanılabilirlik ve kotalar
+## <a name="availability-and-quotas"></a>Kullanılabilirlik ve Kotalar
 
-### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Konteynerlerime veya kapsayıcı grubuma kaç çekirdek ve bellek ayırmalıyım?
+### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Kapsayıcılarım veya kapsayıcı grubu için kaç çekirdek ve bellek ayıramalıyım?
 
-Bu gerçekten iş yükünü bağlıdır. Kapsayıcılarınızın nasıl olduğunu görmek için küçük ve test performansını başlatın. [CPU ve bellek kaynağı kullanımını izleyin](container-instances-monitor.md)ve ardından kapsayıcıda dağıttığınız işlemlerin türüne göre çekirdek veya bellek ekleyin. 
+Bu aslında iş yükünüze bağlıdır. Kapsayıcılarınızın nasıl çalıştığını görmek için küçük ve test performansı ' nı başlatın. [CPU ve bellek kaynak kullanımını izleyin](container-instances-monitor.md)ve ardından kapsayıcıda dağıttığınız işlem türüne göre çekirdek veya bellek ekleyin.
 
-Cpu çekirdekleri ve kapsayıcı grubu başına kullanılabilir bellek üst sınırları için dağıtmakta olduğunuz bölge için [kaynak kullanılabilirliğini](container-instances-region-availability.md#availability---general) de kontrol ettiğinizden emin olun. 
+CPU çekirdekleri üzerindeki üst sınırlar ve kapsayıcı grubu başına kullanılabilir bellek için [kaynak kullanılabilirliğini](container-instances-region-availability.md#availability---general) kontrol ettiğinizden emin olun. 
 
-### <a name="what-underlying-infrastructure-does-aci-run-on"></a>ACI hangi altyapıyla çalışır?
+> [!NOTE]
+> Bir kapsayıcı grubunun kaynakları, hizmetin temel alınan altyapısı tarafından kullanılır. Kapsayıcılarınız, gruba ayrılan tüm kaynakları değil, çoğuna erişebilecek. Bu nedenle, gruptaki kapsayıcılar için kaynak istenirken küçük bir kaynak arabelleği planlayın.
 
-Azure Kapsayıcı Örnekleri isteğe bağlı olarak sunucusuz kapsayıcılar hizmeti olmayı hedeflediğiiçin, kapsayıcılarınızı geliştirmeye odaklanmanızı ve altyapı konusunda endişelenmenizi istiyoruz! ACI, başta F ve D serisinden olmak üzere çeşitli SK'lerin Azure VM'leri kümelerinde çalışır. Hizmeti geliştirmeye ve optimize etmeye devam ettikçe bunun gelecekte de değişmesini bekliyoruz. 
+### <a name="what-underlying-infrastructure-does-aci-run-on"></a>Hangi temel altyapıyı üzerinde çalışır?
 
-### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>ACI'ye binlerce çekirdek dağıtmak istiyorum - kotamı yükseltebilir miyim?
+Amaçlar 'nin, daha az bir isteğe bağlı kapsayıcı hizmeti olarak Azure Container Instances, bu nedenle Kapsayıcınız geliştirmeye odaklanmanız ve altyapıya ilişkin endişelenmeniz istiyoruz! Performans üzerinde karşılaştırmalar yapmak için merak eden veya andırmaya yönelik olarak, farklı SKU 'ların Azure VM 'lerinde, öncelikle F ve D serisinden çalışır. Bu, hizmeti geliştirmeye ve iyileştirmeye devam ettiğimiz için gelecekte değiştirilmesini bekleiyoruz. 
+
+### <a name="i-want-to-deploy-thousand-of-cores-on-aci---can-i-get-my-quota-increased"></a>ACI 'de binlerce çekirdek dağıtmak istiyorum-Kotam arttı mi?
  
-Evet (bazen). Geçerli [kotalar için kota lar ve limitler](container-instances-quotas.md) maddesine ve istek le hangi sınırların artırılabildiğine bakın.
+Evet (bazen). Geçerli kotalar için [Kotalar ve sınırlar](container-instances-quotas.md) makalesine ve isteğe göre hangi limitlerin arttırılabileceği konusuna bakın.
 
-### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>4 çekirdek ve 16 GB'dan fazla RAM ile dağıtabilir miyim?
+### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>4 ' ten fazla çekirdekte ve 16 GB RAM ile dağıtım yapabilir miyim?
 
-Henüz bağlanamazsınız. Şu anda, bunlar bir kapsayıcı grubu için maksimum. Azure Destek'e belirli gereksinimler veya isteklerle başvurun. 
+Henüz bağlanamazsınız. Şu anda bunlar bir kapsayıcı grubu için en yüksek UMS. Belirli gereksinimler veya isteklerle Azure desteği ile iletişim kurun. 
 
-### <a name="when-will-aci-be-in-a-specific-region"></a>ACI belirli bir bölgede ne zaman olacak?
+### <a name="when-will-aci-be-in-a-specific-region"></a>Belirli bir bölgede ne zaman bir ACI olur?
 
-Mevcut bölge durumu [burada](container-instances-region-availability.md#availability---general)yayınlanır. Belirli bir bölge için gereksiniminiz varsa Azure Desteği'ne başvurun.
+Geçerli bölge kullanılabilirliği [burada](container-instances-region-availability.md#availability---general)yayımlanır. Belirli bir bölge için bir gereksiniminize sahipseniz Azure desteği 'ne başvurun.
 
 ## <a name="features-and-scenarios"></a>Özellikler ve senaryolar
 
-### <a name="how-do-i-scale-a-container-group"></a>Bir konteyner grubunu nasıl ölçeklendirebilirim?
+### <a name="how-do-i-scale-a-container-group"></a>Bir kapsayıcı grubunu ölçeklendirmek Nasıl yaparım??
 
-Şu anda, ölçekleme kapsayıcılar veya kapsayıcı grupları için kullanılamaz. Daha fazla örnek çalıştırmanız gerekiyorsa, hizmete kapsayıcı grubu oluşturma için daha fazla istek oluşturmak için API'mizi kullanın. 
+Şu anda, kapsayıcılar veya kapsayıcı grupları için ölçekleme kullanılamaz. Daha fazla örnek çalıştırmanız gerekirse, API 'lerimizi kullanarak hizmet için kapsayıcı grubu oluşturmaya yönelik daha fazla istek oluşturun ve daha fazla istek oluşturun. 
 
-### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Özel bir VNet'te çalışan örnekler için hangi özellikler kullanılabilir?
+### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Özel VNet 'te çalışan örneklere hangi özellikler sağlanıyor?
 
-Kapsayıcı [gruplarını](container-instances-vnet.md) seçtiğiniz bir Azure sanal ağında dağıtabilir ve Azure kaynaklarınız üzerinden VNet içindeki trafiği yönlendirmek için özel IP'leri kapsayıcı gruplarına devredebilirsiniz. Bir kapsayıcı grubunun sanal ağa dağıtılması şu anda Azure bölgelerinin bir alt kümesindeki üretim iş yükleri için kullanılabilir.
+Seçtiğiniz [bir Azure sanal ağında kapsayıcı grupları dağıtabilir](container-instances-vnet.md) ve VNET Içindeki trafiği Azure kaynaklarınızın tamamında yönlendirmek için kapsayıcı gruplarına özel IP 'ler atayabilirsiniz. Bir kapsayıcı grubunun bir sanal ağa dağıtılması, Azure bölgelerinin bir alt kümesindeki üretim iş yükleri için şu anda kullanılabilir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-### <a name="when-does-the-meter-start-running"></a>Sayaç ne zaman çalışmaya başlar?
+### <a name="when-does-the-meter-start-running"></a>Ölçüm ne zaman çalışmaya başlar?
 
-Kapsayıcı grubu süresi, ilk kapsayıcınızın görüntüsünü çekmeye başladığımız andan (yeni bir dağıtım için) veya kapsayıcı grubunuzun yeniden başlatıldığı andan (zaten dağıtılmışsa), kapsayıcı grubu durdurulana kadar hesaplanır. [Konteyner Örnekleri fiyatlandırması](https://azure.microsoft.com/pricing/details/container-instances/)ile ilgili ayrıntılara bakın.
+Kapsayıcı grubu süresi, ilk kapsayıcının görüntüsünü çekmeye başladığımız zamandan (yeni bir dağıtım için) veya kapsayıcı grubunuz yeniden başlatıldığında (zaten dağıtılmışsa), kapsayıcı grubu durduruluncaya kadar hesaplanır. [Container Instances fiyatlandırmayla](https://azure.microsoft.com/pricing/details/container-instances/)ayrıntılara bakın.
 
-### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Konteynerlerim durdurulduğunda ücretlendirilmekten vazgeçer miyim?
+### <a name="do-i-stop-being-charged-when-my-containers-are-stopped"></a>Kapsayıcılarım durdurulduğunda ücretlendiriyorum mı?
 
-Tüm konteyner grubunuz durdurulduktan sonra sayaçlar çalışmayı durdurur. Kapsayıcı grubunuzdaki bir kapsayıcı çalışıyor sayılsa da, kapsayıcıları yeniden başlatmak istemeniz durumunda kaynakları saklarız. 
+Tüm kapsayıcı grubunuz durdurulduktan sonra ölçümler çalışmayı durdurur. Kapsayıcı grubunuzdaki bir kapsayıcı çalıştığı sürece, kapsayıcıları yeniden başlatmak istemeniz durumunda kaynakları tutuyoruz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Kapsayıcı Örnekleri hakkında [daha fazla bilgi edinin.](container-instances-overview.md)
-* Azure Kapsayıcı Örnekleri'nde [sık karşılaşılan sorunları giderin.](container-instances-troubleshooting.md)
+* Azure Container Instances hakkında [daha fazla bilgi edinin](container-instances-overview.md) .
+* Azure Container Instances 'daki [yaygın sorunları giderin](container-instances-troubleshooting.md) .

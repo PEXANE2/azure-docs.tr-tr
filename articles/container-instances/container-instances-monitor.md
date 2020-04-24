@@ -1,54 +1,54 @@
 ---
 title: Kapsayıcı örneklerini izleme
-description: Azure Kapsayıcı Örnekleri'ndeki kapsayıcılarınız tarafından CPU ve bellek gibi işlem kaynaklarının tüketimini izleme.
+description: Azure Container Instances kapsayıcılarında, CPU ve bellek gibi işlem kaynaklarının tüketimini izleme.
 ms.topic: article
 ms.date: 04/24/2019
-ms.openlocfilehash: b4a66254c18d7e01b6d56e64e6b62721b620d499
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8d41e419abe43530186e256ac6253e2d4783f9b
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78250027"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116376"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Azure Container Instances’taki kapsayıcı kaynaklarını izleme
 
-[Azure Monitor,][azure-monitoring] kapsayıcı örnekleriniz tarafından kullanılan bilgi kaynakları hakkında bilgi sağlar. Bu kaynak kullanım verileri, kapsayıcı gruplarınız için en iyi kaynak ayarlarını belirlemenize yardımcı olur. Azure Monitor, kapsayıcı örneklerinizdeki ağ etkinliğini izleyen ölçümler de sağlar.
+[Azure izleyici][azure-monitoring] , kapsayıcılar örneklerinizin kullandığı işlem kaynakları hakkında öngörüler sağlar. Bu kaynak kullanım verileri, kapsayıcı gruplarınız için en iyi kaynak ayarlarını belirlemenize yardımcı olur. Azure Izleyici, kapsayıcı örneklerindeki ağ etkinliğini izleyen ölçümleri de sağlar.
 
-Bu belge, hem Azure portalını hem de Azure CLI'yi kullanarak kapsayıcı örnekleri için Azure Monitor ölçümlerinin toplanmasıyla ilgili ayrıntılar.
+Bu belgede, hem Azure portal hem de Azure CLı kullanan kapsayıcı örnekleri için Azure Izleyici ölçümleri toplanıyor.
 
 > [!IMPORTANT]
-> Azure Kapsayıcı Örnekleri'ndeki Azure Monitör ölçümleri şu anda önizlemededir ve bazı [sınırlamalar geçerlidir.](#preview-limitations) Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Azure Container Instances Azure Izleyici ölçümleri Şu anda önizleme aşamasındadır ve bazı [sınırlamalar geçerlidir](#preview-limitations). Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 ## <a name="preview-limitations"></a>Önizleme sınırlamaları
 
-Şu anda Azure Monitor ölçümleri yalnızca Linux kapsayıcıları için kullanılabilir.
+Azure Izleyici ölçümleri Şu anda yalnızca Linux kapsayıcıları için kullanılabilir.
 
 ## <a name="available-metrics"></a>Mevcut ölçümler
 
-Azure Monitör, [Azure Kapsayıcı Örnekleri için][supported-metrics]aşağıdaki ölçümleri sağlar. Bu ölçümler bir kapsayıcı grubu ve tek tek kapsayıcılar için kullanılabilir.
+Azure Izleyici [Azure Container Instances için aşağıdaki ölçümleri][supported-metrics]sağlar. Bu ölçümler bir kapsayıcı grubu ve bağımsız kapsayıcılar için kullanılabilir. Varsayılan olarak ölçümler, ortalamalar olarak toplanır.
 
-* **CPU Kullanımı** - **milicores**ölçülür. Bir milicore bir CPU çekirdeğinin 1/1000th'idir, bu nedenle 500 milicore (veya 500 m) cpu çekirdeğinin %50 kullanımını temsil eder. Tüm çekirdeklerde **ortalama kullanım** olarak toplanır.
+* **CPU kullanımı** - **miliçekirdekte**ölçülür. Bir milincil bir CPU çekirdekli 1/1000 ' dir, bu nedenle 500 miliçekirdekler 0,5 CPU Core kullanımını temsil eder.
 
-* **Bellek Kullanımı** - **ortalama bayt**olarak toplanır.
+* **Bellek kullanımı** (bayt).
 
-* **Ağ Baytları Saniyede Alınan** ve **Saniyede Aktarılan Ağ Baytları** - **saniyede ortalama bayt**olarak toplanır. 
+* **Saniye başına alınan ağ baytları** ve **saniye başına aktarılan ağ baytları**. 
 
 ## <a name="get-metrics---azure-portal"></a>Ölçümleri alma - Azure portal
 
-Kapsayıcı grubu oluşturulduğunda, Azure portalda Azure İzleyici verileri sağlanır. Bir kapsayıcı grubunun ölçümlerini görmek için kapsayıcı grubu için **Genel Bakış** sayfasına gidin. Burada, kullanılabilir ölçümlerin her biri için önceden oluşturulmuş grafikleri görebilirsiniz.
+Kapsayıcı grubu oluşturulduğunda, Azure portalda Azure İzleyici verileri sağlanır. Bir kapsayıcı grubuna yönelik ölçümleri görmek için, kapsayıcı grubu için **genel bakış** sayfasına gidin. Burada, kullanılabilir ölçümlerin her biri için önceden oluşturulmuş grafikleri görebilirsiniz.
 
 ![çift grafik][dual-chart]
 
-Birden çok kapsayıcı içeren bir kapsayıcı grubunda, ölçümleri kapsayıcıya göre sunmak için bir [boyut][monitor-dimension] kullanın. Tek bir kapsayıcının ölçümlerinin yer aldığı bir grafik oluşturmak için aşağıdaki adımları izleyin:
+Birden çok kapsayıcı içeren bir kapsayıcı grubunda, ölçümleri kapsayıcıya göre sunmak için bir [Boyut][monitor-dimension] kullanın. Tek bir kapsayıcının ölçümlerinin yer aldığı bir grafik oluşturmak için aşağıdaki adımları izleyin:
 
-1. Genel **Bakış** sayfasında, **CPU**gibi metrik grafiklerden birini seçin. 
-1. Uygula **bölme** düğmesini seçin ve **Kapsayıcı Adı'nı**seçin.
+1. **Genel bakış** sayfasında, **CPU**gibi ölçüm grafiklerinden birini seçin. 
+1. **Bölmeyi Uygula** düğmesini seçin ve **kapsayıcı adı**' nı seçin.
 
 ![boyut][dimension]
 
 ## <a name="get-metrics---azure-cli"></a>Ölçümleri alma - Azure CLI
 
-Kapsayıcı örnekleriiçin ölçümler, Azure CLI kullanılarak da toplanabilir. Önce, aşağıdaki komutu kullanarak kapsayıcı grubunun kimliğini alın. `<resource-group>` değerini kaynak grubunuzun adıyla ve `<container-group>` değerini kapsayıcı grubunuzun adıyla değiştirin.
+Kapsayıcı örnekleri ölçümleri de Azure CLı kullanılarak toplanabilir. Önce, aşağıdaki komutu kullanarak kapsayıcı grubunun kimliğini alın. `<resource-group>` değerini kaynak grubunuzun adıyla ve `<container-group>` değerini kapsayıcı grubunuzun adıyla değiştirin.
 
 
 ```console
@@ -78,7 +78,7 @@ Timestamp            Name       Average
 2019-04-23 23:10:00  CPU Usage  0.5
 ```
 
-Desteklenen diğer `--metric` [ölçümleri][supported-metrics]almak için komuttaki parametrenin değerini değiştirin. Örneğin, **bellek** kullanım ölçümlerini almak için aşağıdaki komutu kullanın. 
+[Desteklenen diğer ölçümleri][supported-metrics]almak için `--metric` komutundaki parametresinin değerini değiştirin. Örneğin, **bellek** kullanım ölçümlerini almak için aşağıdaki komutu kullanın. 
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --output table
@@ -101,7 +101,7 @@ Timestamp            Name          Average
 2019-04-23 23:10:00  Memory Usage  8093696.0
 ```
 
-Çok kapsayıcılı bir grup `containerName` için boyut, kapsayıcı başına ölçümleri döndürmek için eklenebilir.
+Çok kapsayıcılı bir grup için, `containerName` boyut, kapsayıcı başına dönüş ölçümlerine eklenebilir.
 
 ```azurecli
 az monitor metrics list --resource $CONTAINER_GROUP --metric MemoryUsage --dimension containerName --output table
@@ -140,7 +140,7 @@ Timestamp            Name          Containername             Average
 
 [Azure İzlemesi'ne genel bakış][azure-monitoring] bölümünde Azure İzlemesi hakkında daha fazla bilgi edinebilirsiniz.
 
-Azure Kapsayıcı Örnekleri için bir metrik bir eşiği geçtiğinde haberdar olmak için [metrik uyarıları][metric-alert] nasıl oluşturacağınız hakkında bilgi edinin.
+Azure Container Instances için bir ölçüm eşiğe ulaşıldığında bildirim almak için [ölçüm uyarıları][metric-alert] oluşturmayı öğrenin.
 
 <!-- IMAGES -->
 [cpu-chart]: ./media/container-instances-monitor/cpu-multi.png

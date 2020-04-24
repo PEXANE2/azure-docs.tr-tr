@@ -1,6 +1,6 @@
 ---
-title: TDE koruyucusunu çıkarın - PowerShell
-description: TDE'yi Kendi Anahtar (BYOK) desteğiyle TDE kullanarak bir Azure SQL Veritabanı veya Veri Ambarı için olası bir TDE koruyucusu için yanıt verme kılavuzu.
+title: TDE koruyucusunu kaldır-PowerShell
+description: Kendi anahtarını getir (BYOK) desteği ile TDE ' i kullanarak bir Azure SQL veritabanı veya veri ambarı için olası riskli bir TDE için nasıl yapılır Kılavuzu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,83 +11,83 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: 5a89c3f7d52c5717b902a69e9c64b3fcc422c481
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 64f3f3c1a4fa656edc7163f6c8ee0ad60f117be6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067204"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116579"
 ---
-# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Şeffaf Veri Şifreleme (TDE) koruyucusunu kaldırma
+# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell kullanarak Saydam Veri Şifrelemesi (TDE) koruyucusunu kaldırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-- Azure aboneliğiniz olmalı ve bu abonelikte yönetici olmalısınız
-- Azure PowerShell'in yüklü ve çalıştırılan olması gerekir.
-- Bu nasıl yapılır kılavuzu, Azure SQL Veritabanı veya Veri Ambarı için TDE koruyucusu olarak Azure Key Vault'tan bir anahtar zaten kullandığınızı varsayar. Daha fazla bilgi edinmek için [BYOK Desteği ile Şeffaf Veri Şifreleme'ye](transparent-data-encryption-byok-azure-sql.md) bakın.
+- Bu abonelikte bir Azure aboneliğinizin olması ve bir yönetici olmanız gerekir
+- Azure PowerShell yüklü ve çalışıyor olmanız gerekir.
+- Bu nasıl yapılır kılavuzunda, bir Azure SQL veritabanı veya veri ambarı için TDE koruyucusu olarak Azure Key Vault bir anahtar kullandığınızı varsaymış olursunuz. Daha fazla bilgi için bkz. [BYOK desteği ile saydam veri şifrelemesi](transparent-data-encryption-byok-azure-sql.md) .
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlets için [AzureRM.Sql'e](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın.
+ Az modülü yükleme yönergeleri için bkz. [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps). Belirli cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
-> PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
+> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Yükleme için Azure [CLI'yi yükle'ye](/cli/azure/install-azure-cli)bakın.
+Yükleme için bkz. [Azure CLI 'Yı yükleme](/cli/azure/install-azure-cli).
 
 * * *
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu nasıl yapılır kılavuzu, Azure Key Vault - Bring Own Key (BYOK) desteğinde müşteri tarafından yönetilen anahtarlarla TDE kullanan bir Azure SQL Veritabanı veya Veri Ambarı için tehlikeye girme potansiyeline sahip bir TDE koruyucuya nasıl yanıt verilebildiğini açıklar. TDE için BYOK desteği hakkında daha fazla bilgi edinmek için [genel bakış sayfasına](transparent-data-encryption-byok-azure-sql.md)bakın.
+Bu nasıl yapılır kılavuzunda, Azure Key Vault-Kendi Anahtarını Getir (BYOK) desteği 'nde müşteri tarafından yönetilen anahtarlarla TDE kullanan bir Azure SQL veritabanı veya veri ambarı için olası riskli bir TDE için nasıl yanıt verileceğini açıklanmaktadır. TDE için BYOK desteği hakkında daha fazla bilgi edinmek için [genel bakış sayfasına](transparent-data-encryption-byok-azure-sql.md)bakın.
 
-Aşağıdaki yordamlar yalnızca aşırı durumlarda veya test ortamlarında yapılmalıdır. Azure Key Vault'tan etkin olarak kullanılan TDE koruyucularını silmeden **veritabanının kullanılamamasına**neden olacağından, nasıl yapılacağını kılavuzu dikkatle gözden geçirin.
+Aşağıdaki yordamlar yalnızca olağanüstü durumlarda veya test ortamlarında yapılmalıdır. Azure Key Vault ' den etkin olarak kullanılan TDE koruyucuları silmek veritabanının kullanım dışı **kalması**nedeniyle nasıl yapılır kılavuzunu dikkatle gözden geçirin.
 
-Bir anahtarın ele geçirilmeşüphesi varsa (örneğin, bir hizmet veya kullanıcının anahtara yetkisiz erişimi varsa), anahtarı silmek en iyisidir.
+Bir anahtarın tehlikeye atılmaya şüphelenildiği durumlarda, bir hizmet veya kullanıcının anahtara yetkisiz erişimi olması gibi, anahtarın silinmesi en iyisidir.
 
-TDE koruyucusu Key Vault'ta silindikten sonra, 10 dakikaya kadar tüm şifreli veritabanlarının ilgili hata iletisi ile tüm bağlantıları reddetmeye başlayacağını ve durumunu [Erişilemez](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)olarak değiştireceğini unutmayın.
+Key Vault ' de TDE koruyucusu silindikten sonra, tüm şifreli veritabanlarının, karşılık gelen hata iletisiyle tüm bağlantıları reddetmesinin ve durumunu [erişilemez](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-byok-azure-sql#inaccessible-tde-protector)olarak değiştirecek şekilde devam etmesini unutmayın.
 
-Aşağıdaki adımlar, belirli bir veritabanının Sanal Günlük Dosyaları (VLF) tarafından hala kullanılmakta olan TDE Koruyucu parmak izlerini nasıl kontrol edileceğini özetler.
-Veritabanının geçerli TDE koruyucusu ve veritabanı kimliği çalıştırılarak bulunabilir:
+Aşağıdaki adımlarda, belirli bir veritabanının sanal günlük dosyaları (VLF) tarafından hala kullanımda olan TDE Protector parmak izlerinin nasıl denetinin yapılacağı ana hatlarıyla gösterilmiştir.
+Veritabanının geçerli TDE koruyucunun parmak izi ve veritabanı KIMLIĞI şu şekilde çalıştırılarak bulunabilir:
 
 ```sql
 SELECT [database_id],
        [encryption_state],
        [encryptor_type], /*asymmetric key means AKV, certificate means service-managed keys*/
-       [encryptor_thumbprint],
+       [encryptor_thumbprint]
  FROM [sys].[dm_database_encryption_keys]
 ```
 
-Aşağıdaki sorgu VLF'leri ve şifreleyiciyi kullanımdaki ilgili parmak izlerini döndürür. Her farklı parmak izi Azure Key Vault (AKV) farklı anahtar anlamına gelir:
+Aşağıdaki sorgu VLFs 'yi ve kullanılan parmak izlerini kullanan Şifreleyici 'yi geri döndürür. Her farklı parmak izi Azure Key Vault (AKV) içinde farklı bir anahtara başvurur:
 
 ```sql
 SELECT * FROM sys.dm_db_log_info (database_id)
 ```
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell komutu **Get-AzureRmSqlServerKeyKey sorguda** kullanılan TDE Koruyucusu'nun parmak izini sağlar, böylece AKV'de hangi tuşların ve hangi tuşların silinir olduğunu görebilirsiniz. Yalnızca veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault'tan güvenle silinebilir.
+**Get-azurermsqlserverkeyvaultkey** PowerShell komutu, sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-PowerShell **komutu az sql server key show** sorguda kullanılan TDE Koruyucusu'nun parmak izini sağlar, böylece akv'de hangi tuşların ve hangi tuşların silinir olduğunu görebilirsiniz. Yalnızca veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault'tan güvenle silinebilir.
+**Az SQL Server Key Show** PowerShell komutu, sorguda kullanılan TDE koruyucunun parmak izini sağlar, böylece saklanacak anahtarları ve Akv 'de hangi anahtarların silineceğini görebilirsiniz. Yalnızca, veritabanı tarafından artık kullanılmayan anahtarlar Azure Key Vault güvenle silinebilir.
 
 * * *
 
-Bu nasıl yapılacağını kılavuzu, olay yanıtından sonra istenen sonuca bağlı olarak iki yaklaşımın üzerinden geçer:
+Bu nasıl yapılır Kılavuzu, olay yanıtından sonra istenen sonuca bağlı olarak iki yaklaşımdan geçer:
 
-- Azure SQL veritabanlarını / Veri Ambarlarını **erişilebilir** tutmak için
-- Azure SQL veritabanları / Veri Ambarları **erişilemez** hale getirmek için
+- Azure SQL veritabanlarını/veri ambarlarını **erişilebilir** tutmak için
+- Azure SQL veritabanlarını/veri ambarlarını **erişilemez** hale getirmek için
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Şifrelenmiş kaynakları erişilebilir tutmak için
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Key [Vault'ta yeni](/powershell/module/az.keyvault/add-azkeyvaultkey)bir anahtar oluşturun. Erişim denetimi kasa düzeyinde sağlandığından, bu yeni anahtarın potansiyel olarak tehlikeye giren TDE koruyucudan ayrı bir anahtar kasasında oluşturulduğundan emin olun.
+1. [Key Vault yeni bir anahtar](/powershell/module/az.keyvault/add-azkeyvaultkey)oluşturun. Bu yeni anahtarın, çok riskli bir TDE koruyucudan farklı bir anahtar kasasında oluşturulduğundan emin olun, çünkü erişim denetimi bir kasa düzeyinde sağlanır.
 
-2. [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) ve [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlets kullanarak sunucuya yeni anahtar ekleyin ve sunucunun yeni TDE koruyucusu olarak güncelleyin.
+2. [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) ve [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) cmdlet 'lerini kullanarak yeni anahtarı sunucuya ekleyin ve sunucunun yeni TDE koruyucusu olarak güncelleştirin.
 
    ```powershell
    # add the key from Key Vault to the server  
@@ -98,29 +98,29 @@ Bu nasıl yapılacağını kılavuzu, olay yanıtından sonra istenen sonuca ba�
        -ServerName <LogicalServerName> -Type AzureKeyVault -KeyId <KeyVaultKeyId>
    ```
 
-3. Sunucunun ve tüm kopyaların [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet'i kullanarak yeni TDE koruyucuya güncelleştirdiğinden emin olun.
+3. Sunucu ve çoğaltmaların, [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) cmdlet 'ini kullanarak yeni TDE koruyucuya güncelleştirildiğinden emin olun.
 
    > [!NOTE]
-   > Yeni TDE koruyucunun sunucu nun altındaki tüm veritabanlarına ve ikincil veritabanlarına yayılması birkaç dakika sürebilir.
+   > Yeni TDE koruyucunun sunucu altındaki tüm veritabanlarına ve ikincil veritabanlarına yayılması birkaç dakika sürebilir.
 
    ```powershell
    Get-AzSqlServerTransparentDataEncryptionProtector -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Key [Vault'taki yeni anahtarın yedeğini](/powershell/module/az.keyvault/backup-azkeyvaultkey) al.
+4. Key Vault [Yeni anahtarın bir yedeğini](/powershell/module/az.keyvault/backup-azkeyvaultkey) alın.
 
    ```powershell
    # -OutputFile parameter is optional; if removed, a file name is automatically generated.
    Backup-AzKeyVaultKey -VaultName <KeyVaultName> -Name <KeyVaultKeyName> -OutputFile <DesiredBackupFilePath>
    ```
 
-5. [Kaldır-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) cmdlet'i kullanarak Anahtar Kasası'ndan tehlikeye geçirilen anahtarı silin.
+5. [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) cmdlet 'ini kullanarak Key Vault güvenliği aşılmış anahtarı silin.
 
    ```powershell
    Remove-AzKeyVaultKey -VaultName <KeyVaultName> -Name <KeyVaultKeyName>
    ```
 
-6. [Geri Yükleme-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet kullanarak gelecekte Key Vault için bir anahtar geri yüklemek için:
+6. [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) cmdlet 'ini kullanarak gelecekte Key Vault bir anahtarı geri yüklemek için:
 
    ```powershell
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
@@ -128,11 +128,11 @@ Bu nasıl yapılacağını kılavuzu, olay yanıtından sonra istenen sonuca ba�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Komut başvurusu için [Azure CLI keyvault'a](/cli/azure/keyvault/key)bakın.
+Komut başvurusu için bkz. [Azure CLI Anahtar Kasası](/cli/azure/keyvault/key).
 
-1. Key [Vault'ta yeni](/cli/azure/keyvault/key#az-keyvault-key-create)bir anahtar oluşturun. Erişim denetimi kasa düzeyinde sağlandığından, bu yeni anahtarın potansiyel olarak tehlikeye giren TDE koruyucudan ayrı bir anahtar kasasında oluşturulduğundan emin olun.
+1. [Key Vault yeni bir anahtar](/cli/azure/keyvault/key#az-keyvault-key-create)oluşturun. Bu yeni anahtarın, çok riskli bir TDE koruyucudan farklı bir anahtar kasasında oluşturulduğundan emin olun, çünkü erişim denetimi bir kasa düzeyinde sağlanır.
 
-2. Sunucuya yeni anahtarı ekleyin ve sunucunun yeni TDE koruyucusu olarak güncelleştirin.
+2. Yeni anahtarı sunucuya ekleyin ve sunucunun yeni TDE koruyucusu olarak güncelleştirin.
 
    ```azurecli
    # add the key from Key Vault to the server  
@@ -142,29 +142,29 @@ Komut başvurusu için [Azure CLI keyvault'a](/cli/azure/keyvault/key)bakın.
    az sql server tde-key set --server-key-type AzureKeyVault --kid <KeyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
    ```
 
-3. Sunucunun ve yinelemelerin yeni TDE koruyucusu için güncelleştirdiğinden emin olun.
+3. Sunucunun ve çoğaltmaların yeni TDE koruyucuya güncelleştirildiğinden emin olun.
 
    > [!NOTE]
-   > Yeni TDE koruyucunun sunucu nun altındaki tüm veritabanlarına ve ikincil veritabanlarına yayılması birkaç dakika sürebilir.
+   > Yeni TDE koruyucunun sunucu altındaki tüm veritabanlarına ve ikincil veritabanlarına yayılması birkaç dakika sürebilir.
 
    ```azurecli
    az sql server tde-key show --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
    ```
 
-4. Key Vault'taki yeni anahtarın yedeğini al.
+4. Key Vault yeni anahtarın bir yedeğini alın.
 
    ```azurecli
    # --file parameter is optional; if removed, a file name is automatically generated.
    az keyvault key backup --file <DesiredBackupFilePath> --name <KeyVaultKeyName> --vault-name <KeyVaultName>
    ```
 
-5. Anahtar Kasası'ndan tehlikeye alınan anahtarı silin.
+5. Güvenliği aşılan anahtarı Key Vault silin.
 
    ```azurecli
    az keyvault key delete --name <KeyVaultKeyName> --vault-name <KeyVaultName>
    ```
 
-6. Gelecekte Key Vault için bir anahtar geri yüklemek için.
+6. Daha sonra Key Vault bir anahtarı geri yüklemek için.
 
    ```azurecli
    az keyvault key restore --file <BackupFilePath> --vault-name <KeyVaultName>
@@ -174,16 +174,16 @@ Komut başvurusu için [Azure CLI keyvault'a](/cli/azure/keyvault/key)bakın.
 
 ## <a name="to-make-the-encrypted-resources-inaccessible"></a>Şifrelenmiş kaynakları erişilemez hale getirmek için
 
-1. Tehlikeye girme potansiyeli olan anahtar tarafından şifrelenen veritabanlarını bırakın.
+1. Güvenliği aşılmış olabilecek anahtarla şifrelenen veritabanlarını bırakın.
 
-   Veritabanı ve günlük dosyaları otomatik olarak yedeklenir, böylece veritabanının zamanında geri yüklemesi herhangi bir noktada (anahtarı sağladığınız sürece) yapılabilir. En son işlemlerin 10 dakikasına kadar olası veri kaybını önlemek için veritabanları etkin bir TDE koruyucusu silinmeden önce bırakılmalıdır.
+   Veritabanı ve günlük dosyaları otomatik olarak yedeklenir, bu nedenle veritabanının bir noktadan sonra geri yüklenmesi herhangi bir noktada yapılabilir (anahtarı sağladığınız sürece). En son işlemlerin 10 dakikaya kadar olan olası veri kaybını engellemek için etkin bir TDE koruyucusu silinmeden önce veritabanlarının bırakılması gerekir.
 
-2. Anahtar Kasası'ndaki TDE koruyucunun anahtar malzemesini yedekle.
-3. Key Vault'tan tehlikeye atma potansiyeline olan anahtarı kaldırın
+2. Key Vault içindeki TDE koruyucunun önemli malzemesini yedekleyin.
+3. Key Vault karşı riskli anahtarı kaldırın
 
 [!INCLUDE [sql-database-akv-permission-delay](includes/sql-database-akv-permission-delay.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Güvenlik gereksinimlerine uymak için sunucunun TDE koruyucusunu nasıl döndürdüğünüzi öğrenin: [PowerShell'i kullanarak Şeffaf Veri Şifreleme koruyucusunu döndürün](transparent-data-encryption-byok-azure-sql-key-rotation.md)
-- TDE için Kendi Anahtar Desteğinizi Getir: [PowerShell'i kullanarak Key Vault'tan kendi anahtarınızı kullanarak TDE'yi açın](transparent-data-encryption-byok-azure-sql-configure.md)
+- Güvenlik gereksinimleriyle uyum sağlamak için bir sunucunun TDE koruyucusunu döndürme hakkında bilgi edinin: [PowerShell kullanarak saydam veri şifrelemesi koruyucusunu döndürme](transparent-data-encryption-byok-azure-sql-key-rotation.md)
+- TDE için Kendi Anahtarını Getir desteği ile çalışmaya başlama: [PowerShell kullanarak Key Vault kendi anahtarınızı kullanarak TDE açma](transparent-data-encryption-byok-azure-sql-configure.md)

@@ -1,26 +1,21 @@
 ---
 title: Öğretici - Azure PowerShell ile Azure disklerini yönetme
 description: Bu öğreticide, Azure CLI PowerShell kullanarak sanal makineler için Azure diskleri oluşturup yönetmeyi öğrenirsiniz
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: disks
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.subservice: disks
-ms.openlocfilehash: 1957ae620cccee619c8608b79d9e804c356adf17
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455674"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100337"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Öğretici - Azure PowerShell ile Azure disklerini yönetme
 
@@ -37,15 +32,15 @@ Azure sanal makineleri, VM’lerin işletim sistemini, uygulamalarını ve veril
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="default-azure-disks"></a>Varsayılan Azure diskleri
 
 Azure sanal makinesi oluşturulduğunda, sanal makineye otomatik olarak iki disk eklenir. 
 
-**İşletim sistemi diski** - İşletim sistemi diskleri 4 terabayta kadar boyutlandırılabilir ve VM'nin işletim sistemini barındırır. [Azure Marketi](https://azure.microsoft.com/marketplace/) görüntüden yeni bir sanal makine (VM) oluşturursanız, genellikle 127 GB (ancak bazı görüntülerin işletim sistemi disk boyutları daha küçüktür). İşletim sistemi diskine varsayılan olarak *C* sürücü harfi atanır. İşletim sistemi diskinin yapılandırmasını önbelleğe alan disk, işletim sistemi performansı için iyileştirilir. İşletim sistemi diski, uygulama veya veri **barındırmamalıdır**. Uygulamalar ve veriler için, bu makalede daha sonra ayrıntılı olarak açıklanan bir veri diski kullanın.
+**İşletim sistemi diski** - İşletim sistemi diskleri 4 terabayta kadar boyutlandırılabilir ve VM'nin işletim sistemini barındırır. Bir [Azure Marketi](https://azure.microsoft.com/marketplace/) görüntüsünden yeni bir sanal makıne (VM) oluşturursanız, genellıkle 127 GB (ancak bazı görüntülerin daha küçük işletim sistemi disk boyutları vardır). İşletim sistemi diskine, varsayılan olarak *C:* sürücü harfi atanır. İşletim sistemi diskinin yapılandırmasını önbelleğe alan disk, işletim sistemi performansı için iyileştirilir. İşletim sistemi diski, uygulama veya veri **barındırmamalıdır**. Uygulamalar ve veriler için, bu makalede daha sonra ayrıntılı olarak açıklanan bir veri diski kullanın.
 
-**Geçici disk** - Geçici diskler, VM ile aynı Azure ana bilgisayarında bulunan bir katı hal sürücüsü kullanır. Geçici diskler yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak VM yeni bir konağa taşındığında, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu [VM boyutuna göre](sizes.md)belirlenir. Geçici disklere d sürücü harfi *atanır:* varsayılan olarak.
+**Geçici disk** - Geçici diskler, VM ile aynı Azure ana bilgisayarında bulunan bir katı hal sürücüsü kullanır. Geçici diskler yüksek performansa sahiptir ve geçici veri işleme gibi işlemler için kullanılabilir. Ancak VM yeni bir konağa taşındığında, geçici diskte depolanan tüm veriler kaldırılır. Geçici diskin boyutu, [VM boyutu](sizes.md)tarafından belirlenir. Geçici disklere varsayılan olarak *D:* sürücü harfi atanır.
 
 ## <a name="azure-data-disks"></a>Azure veri diskleri
 
@@ -71,7 +66,7 @@ Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olmas�
 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) ile sanal makinede yönetici hesabı için gereken kullanıcı adı ve parolasını ayarlayın:
 
 
-[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile sanal makine oluşturun. VM’nin yönetici hesabı için bir kullanıcı adı ve parola girmeniz istenir.
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile sanal makineyi oluşturun. VM’nin yönetici hesabı için bir kullanıcı adı ve parola girmeniz istenir.
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -85,7 +80,7 @@ New-AzVm `
 ```
 
 
-[New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)ile ilk yapılandırmayı oluşturun. Aşağıdaki örnek boyutu 128 gigabayt olan bir diski yapılandırır.
+[Yeni-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig)ile ilk yapılandırmayı oluşturun. Aşağıdaki örnek boyutu 128 gigabayt olan bir diski yapılandırır.
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -94,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-[Yeni AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) komutu yla veri diskini oluşturun.
+[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) komutuyla veri diskini oluşturun.
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -103,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) komutu ile veri diskini eklemek istediğiniz sanal makineyi alın.
+[Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) komutuyla veri diski eklemek istediğiniz sanal makineyi alın.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-[Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) komutu ile veri diskini sanal makine yapılandırmasına ekleyin.
+Veri diskini, [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) komutuyla sanal makine yapılandırmasına ekleyin.
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `

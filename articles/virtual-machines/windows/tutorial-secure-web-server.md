@@ -1,45 +1,40 @@
 ---
-title: "Öğretici: Azure'da TLS/SSL sertifikalarıyla bir Windows web sunucusunun güvenliğini sağlama"
-description: Bu eğitimde, Azure Key Vault'ta depolanan TLS/SSL sertifikalarıyla IIS web sunucusunu çalıştıran bir Windows sanal makinesini korumak için Azure PowerShell'i nasıl kullanacağınızı öğreneceksiniz.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: "Öğretici: Azure 'da TLS/SSL sertifikaları ile Windows Web sunucusunun güvenliğini sağlama"
+description: Bu öğreticide, Azure Key Vault depolanan TLS/SSL sertifikalarıyla IIS Web sunucusunu çalıştıran bir Windows sanal makinesini güvenli hale getirmek için Azure PowerShell nasıl kullanacağınızı öğreneceksiniz.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2795d45cd5bba7aab33b06350faee23e83189c30
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: da9834636944c6bb816c4f49b0e9bf3abda2264a
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81455589"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82097787"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Key Vault'ta depolanan TLS/SSL sertifikalarıyla Azure'daki bir Windows sanal makinesinde bir web sunucusunun güvenliğini sağlama
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Öğretici: Azure 'daki bir Windows sanal makinesinde bulunan ve Key Vault depolanan TLS/SSL sertifikaları ile Web sunucusunun güvenliğini sağlama
 
 > [!NOTE]
-> Şu anda bu doküman yalnızca Genelleştirilmiş görüntüler için çalışır. Özel bir disk kullanarak bu öğretici deneiyorsanız bir hata alırsınız. 
+> Şu anda bu belge yalnızca Genelleştirilmiş görüntüler için çalışıyor. Bu öğreticiyi özel bir disk kullanarak gerçekleştirmeye çalışıyorsanız bir hata alırsınız. 
 
-Web sunucularını güvenli hale getirmek için, daha önce Güvenli Soketkatmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), web trafiğini şifrelemek için sertifika kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault'ta depolanabilir ve Azure'da Windows sanal makinelerine (VM) güvenli sertifika dağıtımına izin verir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Web sunucularının güvenliğini sağlamak için, daha önce Güvenli Yuva Katmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS), sertifika Web trafiğini şifrelemek için kullanılabilir. Bu TLS/SSL sertifikaları Azure Key Vault depolanabilir ve Azure 'daki Windows sanal makinelerine (VM 'Ler) sertifikaların güvenli bir şekilde dağıtılmasına izin verebilir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Azure Key Vault oluşturma
 > * Sertifikaları oluşturma veya Key Vault’a yükleme
 > * VM oluşturma ve ISS web sunucusunu yükleme
-> * Sertifikayı VM'ye enjekte edin ve IIS'yi TLS bağlama ile yapılandırın
+> * Sertifikayı VM 'ye ekleme ve IIS 'yi bir TLS bağlaması ile yapılandırma
 
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 
 ## <a name="overview"></a>Genel Bakış
@@ -49,7 +44,7 @@ Oluşturulan sertifikaları içeren özel bir VM görüntüsü kullanmak yerine,
 
 
 ## <a name="create-an-azure-key-vault"></a>Azure Key Vault oluşturma
-Bir Anahtar Kasası ve sertifikalar oluşturmadan önce, [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek *Doğu ABD* konumunda *myResourceGroupSecureWeb* adlı bir kaynak grubu oluşturur:
+Key Vault ve sertifikaları oluşturabilmeniz için önce [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun. Aşağıdaki örnek *Doğu ABD* konumunda *myResourceGroupSecureWeb* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -57,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Ardından, [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)ile bir Anahtar Vault oluşturun. Her Key Vault benzersiz bir ad gerektirir ve küçük harflerle yazılmalıdır. Aşağıdaki örnekte yer alan `mykeyvault` değerini, kendi benzersiz Key Vault adınızla değiştirin:
+Ardından [New-Azkeykasasıyla](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault)bir Key Vault oluşturun. Her Key Vault benzersiz bir ad gerektirir ve küçük harflerle yazılmalıdır. Aşağıdaki örnekte yer alan `mykeyvault` değerini, kendi benzersiz Key Vault adınızla değiştirin:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -68,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Sertifika oluşturma ve sertifikayı Key Vault’ta depolama
-Üretim kullanımı [için, Içe Aktar-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate)ile güvenilir sağlayıcı tarafından imzalanmış geçerli bir sertifika almanız gerekir. Bu öğretici için aşağıdaki örnek, [New-AzKeyVaultCertificatePolicy'nin](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy)varsayılan sertifika ilkesini kullanan [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) ile kendi imzalı bir sertifikayı nasıl oluşturabileceğinizi gösterir. 
+Üretim kullanımı için, [Import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate)ile güvenilen sağlayıcı tarafından imzalanmış geçerli bir sertifika içeri aktarmanız gerekir. Bu öğreticide, aşağıdaki örnek [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy)' den varsayılan sertifika Ilkesini kullanan [Add-azkeyvaultcertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) ile kendinden imzalı bir sertifikayı nasıl oluşturabileceğiniz gösterilmektedir. 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -91,7 +86,7 @@ VM için [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/mi
 $cred = Get-Credential
 ```
 
-Şimdi [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM oluşturabilirsiniz. Aşağıdaki örnekte *EastUS* konumunda *myVM* adlı bir VM oluşturulur. Mevcut değilse, destekleyici ağ kaynakları oluşturulur. Güvenli web trafiği sağlanması için, cmdlet ayrıca *443* numaralı bağlantı noktasını açar.
+Artık [New-azvm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)ile VM oluşturabilirsiniz. Aşağıdaki örnekte *EastUS* konumunda *myVM* adlı bir VM oluşturulur. Mevcut değilse, destekleyici ağ kaynakları oluşturulur. Güvenli web trafiği sağlanması için, cmdlet ayrıca *443* numaralı bağlantı noktasını açar.
 
 ```azurepowershell-interactive
 # Create a VM
@@ -117,11 +112,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-VM’nin oluşturulması birkaç dakika sürer. Son adım, IIS web sunucusunu [Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)ile yüklemek için Azure Özel Komut Dosyası Uzantısı'nı kullanır.
+VM’nin oluşturulması birkaç dakika sürer. Son adım, [set-Azvmexgerile](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension)IIS Web sunucusunu yüklemek Için Azure Özel Betik uzantısı 'nı kullanır.
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Key Vault’tan VM'ye sertifika ekleme
-Key Vault'tan VM'ye sertifika eklemek için [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret)ile sertifikanızın kimliğini alın. [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret)ile VM'ye sertifika ekleyin:
+Sertifikayı bir VM 'ye Key Vault eklemek için [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret)Ile sertifikanızın kimliğini alın. [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret)Ile sertifikayı VM 'ye ekleyin:
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -135,7 +130,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>Sertifikayı kullanmak üzere IIS'yi yapılandırma
-IIS yapılandırmasını güncelleştirmek için [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) ile Özel Komut Dosyası Uzantısı'nı yeniden kullanın. Bu güncelleştirme, Key Vault’tan IIS’ye eklenen sertifikayı uygular ve web bağlamasını yapılandırır:
+IIS yapılandırmasını güncelleştirmek için [set-Azvmexgerile](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) özel betik uzantısını yeniden kullanın. Bu güncelleştirme, Key Vault’tan IIS’ye eklenen sertifikayı uygular ve web bağlamasını yapılandırır:
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -155,7 +150,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>Güvenli web uygulamasını sınama
-[Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile VM'nizin genel IP adresini edinin. Aşağıdaki örnek, daha önce oluşturulan `myPublicIP` için IP adresini alır:
+[Get-Azpublicıpaddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress)ile sanal MAKINENIZIN genel IP adresini alın. Aşağıdaki örnek, daha önce oluşturulan `myPublicIP` için IP adresini alır:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
@@ -171,13 +166,13 @@ Güvenli IIS siteniz, sonra aşağıdaki örnekte olduğu gibi görüntülenir:
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu eğitimde, Azure Key Vault'ta depolanan TLS/SSL sertifikasına sahip bir IIS web sunucusu nun güvenliğini sağladınız. Şunları öğrendiniz:
+Bu öğreticide, Azure Key Vault depolanan bir TLS/SSL sertifikası ile bir IIS Web sunucusunun güvenliğini sağlayabilirsiniz. Şunları öğrendiniz:
 
 > [!div class="checklist"]
 > * Azure Key Vault oluşturma
 > * Sertifikaları oluşturma veya Key Vault’a yükleme
 > * VM oluşturma ve ISS web sunucusunu yükleme
-> * Sertifikayı VM'ye enjekte edin ve IIS'yi TLS bağlama ile yapılandırın
+> * Sertifikayı VM 'ye ekleme ve IIS 'yi bir TLS bağlaması ile yapılandırma
 
 Hazır sanal makine betik örneklerini görmek için bu bağlantıyı izleyin.
 

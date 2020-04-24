@@ -1,20 +1,15 @@
 ---
-title: Geliştiriciler için API'ler ve araçlar - Azure Toplu İş | Microsoft Dokümanlar
+title: Geliştiriciler için API 'Ler ve araçlar
 description: Azure Batch hizmeti ile çözüm geliştirmek için kullanılabilen API’ler ve araçlar hakkında bilgi edinin.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 00d2a74946957f690979eec1d3a03a9b766299d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c268675a39dfd3c70b3d8d8e457a2a200d7db6
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252330"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82114930"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Batch API'lerine ve araçlarına genel bakış
 
@@ -39,10 +34,10 @@ Uygulamalarınız ve hizmetleriniz doğrudan REST API çağrıları kullanabilir
 
 | API | API başvurusu | İndirme | Öğretici | Kod örnekleri | Daha Fazla Bilgi |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[docs.microsoft.com][batch_rest] |Yok |- |- | [Desteklenen Sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
-| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Yayın Notları](https://aka.ms/batch-net-dataplane-changelog) |
+| **Batch REST** |[docs.microsoft.com][batch_rest] |Yok |- |- | [Desteklenen sürümler](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Öğretici](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Sürüm Notları](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[docs.microsoft.com][api_python] |[PyPI][api_python_pypi] |[Öğretici](tutorial-parallel-python.md)|[GitHub][api_sample_python] | [Benioku](https://github.com/Azure/azure-sdk-for-python/blob/master/doc/batch.rst) |
-| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[npm][api_nodejs_npm] |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
+| **Batch Node.js** |[docs.microsoft.com][api_nodejs] |[NPM][api_nodejs_npm] |[Öğretici](batch-nodejs-get-started.md) |- | [Benioku](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
 | **Batch Java** |[docs.microsoft.com][api_java] |[Maven][api_java_jar] |- |[Benioku][api_sample_java] | [Benioku](https://github.com/Azure/azure-batch-sdk-for-java)|
 
 ## <a name="batch-management-apis"></a>Batch Yönetimi API’leri
@@ -54,7 +49,7 @@ Batch için Azure Resource Manager API'leri, Batch hesaplarına programlı eriş
 | **Batch Yönetimi REST** |[docs.microsoft.com][api_rest_mgmt] |Yok |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Yönetimi .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Öğretici](batch-management-dotnet.md) |[GitHub][api_sample_net] |
 | **Batch Yönetimi Python** |[docs.microsoft.com][api_python_mgmt] |[PyPI][api_python_mgmt_pypi] |- |- |
-| **Batch Yönetimi Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[npm][api_nodejs_mgmt_npm] |- |- | 
+| **Batch Yönetimi Node.js** |[docs.microsoft.com][api_nodejs_mgmt] |[NPM][api_nodejs_mgmt_npm] |- |- | 
 | **Batch Yönetimi Java** |- |[Maven][api_java_mgmt_jar] |- |- |
 ## <a name="batch-command-line-tools"></a>Batch komut satırı araçları
 
@@ -69,8 +64,8 @@ Batch uygulamalarınızı ve hizmetlerinizi oluşturmak ve bunlarda hata ayıkla
 
 * [Azure portalı][portal]: Azure portalında Batch havuzlarını, işlerini ve görevlerini oluşturabilir, izleyebilir ve silebilirsiniz. Bu ve diğer kaynakların durum bilgilerini, işlerinizi çalıştırırken görüntüleyebilir, hatta havuzlarınızdaki işlem düğümlerinden dosya indirebilirsiniz. Örneğin, sorun giderme sırasında başarısız bir görevin `stderr.txt` öğesini indirebilirsiniz. İşlem düğümlerinde oturum açmak için kullanabileceğiniz Uzak Masaüstü (RDP) dosyalarını da indirebilirsiniz.
 * [Azure Batch Explorer][batch_labs]: Batch Explorer (eski adı BatchLabs), Azure Batch uygulamalarıyla ilgili oluşturma, hata ayıklama ve izleme işlemlerini gerçekleştirmenize yardımcı olan ücretsiz, gelişmiş özelliklere sahip ve tek başına kullanılan bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz.
-* [Azure Toplu Tersanesi](https://github.com/Azure/batch-shipyard): Toplu Tersane, Azure Toplu İş'te konteyner tabanlı toplu iş işleme ve HPC iş yüklerinin sağlanmasına, yürütülmesine ve izlenmesine yardımcı olan bir araçtır.
-* [Azure Depolama Gezgini][storage_explorer]: Azure Toplu İşlem aracı olmasa da, Toplu İşlem çözümlerinizi geliştirirken ve hata ayıklarken Depolama Gezgini sahip olunması gereken bir diğer değerli araçtır.
+* [Shipbahçe Azure Batch](https://github.com/Azure/batch-shipyard): Batch shipbahçe, Azure Batch üzerinde kapsayıcı tabanlı toplu Işleme ve HPC iş yüklerini sağlamaya, yürütmeye ve izlemeye yardımcı olan bir araçtır.
+* [Azure Depolama Gezgini][storage_explorer]: kesinlikle Azure Batch bir araç olmadığı sürece Depolama Gezgini, Batch çözümlerinizi geliştirirken ve hata ayıklamanıza çalışırken sahip olacak başka bir değerli araçtır.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 

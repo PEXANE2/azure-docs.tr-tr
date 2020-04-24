@@ -1,64 +1,59 @@
 ---
-title: Azure render başvuru mimarileri - Azure Toplu İş
-description: Bir şirket içi işleme çiftliğini buluta patlatarak genişletmek için Azure Toplu İş ve diğer Azure hizmetlerini kullanmaya yönelik mimariler
-services: batch
-ms.service: batch
-author: davefellows
-manager: evansma
-ms.author: labrenne
+title: Azure işleme başvuru mimarileri
+description: Azure Batch ve diğer Azure hizmetlerini kullanarak, buluta gömülmüş şirket içi bir işleme grubunu genişletmek için mimariler
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: 20442a6618ca9357bb3be95879b68bffca45a40d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bbdb5eb39805ac87bf90216e5fbeedae91b423f0
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022962"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115780"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Azure işleme için başvuru mimarileri
 
-Bu makalede, bir şirket içi işleme çiftliği olan Azure'u genişletmek veya "patlama" senaryoları için üst düzey mimari diyagramları gösterilmektedir. Örnekler, Azure hesaplama, ağ ve depolama hizmetleri için farklı seçenekleri gösterir.
+Bu makalede, Azure 'da şirket içi bir işleme grubu olarak genişleyen senaryolar veya "veri bloğu" için üst düzey mimari diyagramları gösterilmektedir. Örneklerde Azure işlem, ağ ve depolama hizmetleri için farklı seçenekler gösterilmektedir.
 
-## <a name="hybrid-with-nfs-or-cfs"></a>NFS veya CFS ile hibrit
+## <a name="hybrid-with-nfs-or-cfs"></a>NFS veya CFS ile karma
 
-Aşağıdaki diyagram, aşağıdaki Azure hizmetlerini içeren karma bir senaryo gösterir:
+Aşağıdaki diyagramda aşağıdaki Azure hizmetlerini içeren bir karma senaryo gösterilmektedir:
 
-* **İşlem** - Azure Toplu Seri havuzu veya Sanal Makine Ölçeği Kümesi.
+* **İşlem** -Azure Batch havuzu veya sanal makine ölçek kümesi.
 
-* **Ağ** - Şirket içi: Azure ExpressRoute veya VPN. Azure: Azure VNet.
+* Şirket içi **ağ** : Azure ExpressRoute veya VPN. Azure: Azure VNet.
 
-* **Depolama** - Giriş ve çıktı dosyaları: Azure VM'leri kullanan NFS veya CFS, Azure Dosya Eşitlemi veya RSync aracılığıyla şirket içi depolama yla senkronize edilmiştir. Alternatif olarak: NFS kullanan şirket içi NAS aygıtlarından giriş veya çıkış dosyaları için Avere vFXT.
+* **Depolama** -giriş ve çıkış dosyaları: Azure VM 'LERINI kullanarak NFS veya cfs, Azure dosya eşitleme veya rsync aracılığıyla şirket içi depolamayla eşitlenir. Alternatif olarak: NFS kullanarak şirket içi NAS cihazlarındaki dosyaları girmek veya çıkış yapmak için avere vFXT.
 
-  ![Bulut patlaması - NFS veya CFS ile hibrit](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
+  ![Bulut patlaması-NFS veya CFS ile karma](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
-## <a name="hybrid-with-blobfuse"></a>Blobfuse ile Hibrid
+## <a name="hybrid-with-blobfuse"></a>Blobsigortası ile karma
 
-Aşağıdaki diyagram, aşağıdaki Azure hizmetlerini içeren karma bir senaryo gösterir:
+Aşağıdaki diyagramda aşağıdaki Azure hizmetlerini içeren bir karma senaryo gösterilmektedir:
 
-* **İşlem** - Azure Toplu Seri havuzu veya Sanal Makine Ölçeği Kümesi.
+* **İşlem** -Azure Batch havuzu veya sanal makine ölçek kümesi.
 
-* **Ağ** - Şirket içi: Azure ExpressRoute veya VPN. Azure: Azure VNet.
+* Şirket içi **ağ** : Azure ExpressRoute veya VPN. Azure: Azure VNet.
 
-* **Depolama** - Giriş ve çıktı dosyaları: Azure Blobfuse üzerinden kaynakları hesaplamak için monte edilmiş Blob depolama.
+* **Depolama** -giriş ve çıkış dosyaları: Azure blobsigortası aracılığıyla işlem kaynaklarına bağlanmış BLOB depolama.
 
-  ![Bulut patlama - Blobfuse ile Hibrid](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
+  ![Blobsigortası ile bulut patlaması-karma](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
 ## <a name="hybrid-compute-and-storage"></a>Karma işlem ve depolama
 
-Aşağıdaki diyagram, hem işlem hem de depolama için tam olarak bağlı karma bir senaryo gösterir ve aşağıdaki Azure hizmetlerini içerir:
+Aşağıdaki diyagramda hem işlem hem de depolama için tam bağlantılı bir karma senaryo gösterilmektedir ve aşağıdaki Azure hizmetleri bulunur:
 
-* **İşlem** - Azure Toplu Seri havuzu veya Sanal Makine Ölçeği Kümesi.
+* **İşlem** -Azure Batch havuzu veya sanal makine ölçek kümesi.
 
-* **Ağ** - Şirket içi: Azure ExpressRoute veya VPN. Azure: Azure VNet.
+* Şirket içi **ağ** : Azure ExpressRoute veya VPN. Azure: Azure VNet.
 
-* **Depolama** - Cross-premises: Avere vFXT. Azure Veri Kutusu üzerinden blob depolamasına veya NAS hızlandırma için şirket içi Avere FXT'ye isteğe bağlı arşivleme.
+* **Depolama** -şirket Içi: avere vFXT. Azure Data Box BLOB depolama alanına veya şirket içi avere FXT 'ye yönelik şirket içi dosyaların, NAS hızlandırma için isteğe bağlı olarak arşivlenmesi.
 
-  ![Bulut patlaması - Karma işlem ve depolama](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
+  ![Bulut patlaması-karma işlem ve depolama](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Toplu İş [ile Render yöneticilerini](batch-rendering-render-managers.md) kullanma hakkında daha fazla bilgi edinin.
+* Azure Batch ile [işleme yöneticilerini](batch-rendering-render-managers.md) kullanma hakkında daha fazla bilgi edinin.
 
-* [Azure'da Oluşturma](batch-rendering-service.md)seçenekleri hakkında daha fazla bilgi edinin.
+* [Azure 'Da işleme](batch-rendering-service.md)seçenekleri hakkında daha fazla bilgi edinin.

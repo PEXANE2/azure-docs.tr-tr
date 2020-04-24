@@ -1,6 +1,6 @@
 ---
-title: Azure Synapse Analytics'te Apache Spark - Temel Kavramlar
-description: Bu makale, Azure Synapse Analytics'te Apache Spark'a ve farklı kavramlara giriş sağlar.
+title: Azure SYNAPSE Analytics 'te Apache Spark-çekirdek kavramlar
+description: Bu makalede, Azure SYNAPSE Analytics ve farklı kavramlarda Apache Spark bir giriş sunulmaktadır.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -9,58 +9,58 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 3cf654e77bf68c5194a0213d4452242b5c44e234
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: b1db306ffdb1c05c880e5fc639de2cc1db130d8e
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423673"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096291"
 ---
-# <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure Synapse Analytics Temel Konseptlerinde Apache Spark
+# <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Azure SYNAPSE Analytics temel kavramları Apache Spark
 
-Apache Spark, büyük veri analitik uygulamaların performansını artırmak için bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure Synapse Analytics'teki Apache Spark, Microsoft'un Bulut'taki Apache Spark uygulamalarından biridir. 
+Apache Spark, büyük veri analizi uygulamalarının performansını artırmak üzere bellek içi işlemeyi destekleyen paralel bir işleme çerçevesidir. Azure SYNAPSE Analytics 'te Apache Spark, Microsoft 'un buluttaki Apache Spark uygulamalarından biridir. 
 
-Azure Synapse, Azure'da Spark özellikleri oluşturmayı ve yapılandırmayı kolaylaştırır. Azure Synapse, burada belgelenen bu Spark özelliklerinin farklı bir uygulamasını sağlar.
+Azure SYNAPSE, Azure 'da Spark özellikleri oluşturmayı ve yapılandırmayı kolaylaştırır. Azure SYNAPSE, burada belgelenen Bu Spark yeteneklerinin farklı bir uygulamasını sağlar.
 
-## <a name="spark-pools-preview"></a>Kıvılcım havuzları (önizleme)
+## <a name="spark-pools-preview"></a>Spark havuzları (Önizleme)
 
-Azure portalında bir Kıvılcım havuzu (önizleme) oluşturulur. Anlık olarak verileri işleyen bir Kıvılcım örneği oluşturmak için kullanılan bir Kıvılcım havuzunun tanımıdır. Bir Kıvılcım havuzu oluşturulduğunda, yalnızca meta veri olarak bulunur; hiçbir kaynak tüketilmez, çalıştırılır veya ücretlendirilmez. Kıvılcım havuzu, Bir Kıvılcım örneğinin özelliklerini kontrol eden bir dizi özelliktedir; bu özellikler ad, boyut, ölçekleme davranışı, yaşama zamanı içerir ancak bunlarla sınırlı değildir.
+Azure portal Spark Havuzu (Önizleme) oluşturulur. Veri işleyen bir Spark örneği oluşturmak için, örneği oluşturulurken kullanılan bir Spark havuzunun tanımıdır. Spark havuzu oluşturulduğunda, yalnızca meta veriler olarak bulunur; hiçbir kaynak Tüketilmekte, çalışmıyor veya ücretlendirilmez. Spark havuzunda Spark örneğinin özelliklerini denetleyen bir dizi özellik vardır; Bu özellikler, ad, boyut, ölçekleme davranışı ve yaşam süresi ile sınırlı değildir.
 
-Spark havuzları oluşturmayla ilişkili bir dolar veya kaynak maliyeti olmadığından, herhangi bir sayı farklı yapılandırmaları herhangi bir sayı ile oluşturulabilir. İzinler, kullanıcıların yalnızca bazılarına erişmesine izin veren Spark havuzlarına da uygulanabilir, diğerlerine değil.
+Spark havuzları oluşturmayla ilişkili dolar veya kaynak maliyeti olmadığından, herhangi bir sayıda farklı yapılandırma ile herhangi bir numara oluşturulabilir. İzinler, kullanıcıların yalnızca bazılarına erişime izin veren Spark havuzlarına da uygulanabilir.
 
-En iyi yöntem, geliştirme ve hata ayıklama için kullanılabilecek daha küçük Spark havuzları ve daha sonra üretim iş yüklerini çalıştırmak için daha büyük havuzlar oluşturmaktır.
+En iyi uygulama, geliştirme ve hata ayıklama için kullanılabilecek daha küçük Spark havuzları oluşturmak ve ardından üretim iş yüklerini çalıştırmaya yönelik daha büyük bir uygulamadır.
 
-Spark havuzu oluşturmayı okuyabilir ve tüm özelliklerini buradan görebilirsiniz [Synapse Analytics'teki Spark havuzları ile başlayın](apache-spark-notebook-create-spark-use-sql.md#create-an-apache-spark-pool)
+Spark havuzu oluşturmayı okuyabilir ve bunların tüm özelliklerini nasıl görebileceğiniz [SYNAPSE Analytics 'Te Spark havuzlarıyla çalışmaya başlayın](../quickstart-create-apache-spark-pool.md)
 
-## <a name="spark-instances"></a>Kıvılcım örnekleri
+## <a name="spark-instances"></a>Spark örnekleri
 
-Bir Kıvılcım havuzuna bağlandığınızda, oturum oluşturduğunuzda ve bir iş çalıştırdığınızda, kıvılcım örnekleri oluşturulur. Birden çok kullanıcı tek bir Spark havuzuna erişebildiğinizden, bağlanan her kullanıcı için yeni bir Spark örneği oluşturulur. 
+Spark örnekleri, bir Spark havuzuna bağlandığınızda, bir oturum oluşturup bir iş çalıştırdığınızda oluşturulur. Birden çok kullanıcının tek bir Spark havuzuna erişimi olabileceğinden, bağlanan her kullanıcı için yeni bir Spark örneği oluşturulur. 
 
-İkinci bir iş gönderdiğinizzaman, havuzda kapasite varsa, varolan Kıvılcım örneğinin de kapasitesi vardır, varolan örnek işi işleyecek; değilse ve havuz düzeyinde kapasite varsa, yeni bir Kıvılcım örneği oluşturulur.
+İkinci bir işi gönderdiğinizde, havuzda kapasite varsa, var olan Spark örneğinin kapasitesi de vardır; bu durumda, var olan örnek işi işler; değilse ve havuz düzeyinde kapasite varsa yeni bir Spark örneği oluşturulur.
 
 ## <a name="examples"></a>Örnekler
 
 ### <a name="example-1"></a>Örnek 1
 
-- SP1 adında bir Kıvılcım havuzu oluşturursunuz; 20 düğüm sabit küme boyutuna sahiptir.
-- Bir not defteri iş göndermek, J1 10 düğümleri, bir Kıvılcım örneği kullanan, SI1 işi işlemek için oluşturulur.
-- Şimdi havuzda hala kapasite ve örnek, J2, SI1 tarafından işlenir, çünkü 10 düğüm kullanan başka bir iş, J2 gönderin.
-- J2 11 düğüm isteseydi, SP1 veya SI1'de kapasite olmazdı. Bu durumda, J2 bir not defterinden geliyorsa, iş reddedilir; J2 toplu iş geliyorsa, o zaman sıraya olacaktır.
+- SP1 adlı bir Spark havuzu oluşturursunuz; 20 düğümden oluşan sabit bir küme boyutuna sahiptir.
+- Bir not defteri işi gönderirseniz, iş işlemek için bir Spark örneği olan 10 düğümleri kullanan bir J1, SI1 oluşturulur.
+- Artık havuzda kapasite olduğundan ve örnek, J2, SI1 tarafından işlendiği için, daha sonra 10 düğümü kullanan başka bir iş J2.
+- J2 11 düğümleri isteniyorsa, SP1 veya SI1 'de kapasite yoktur. Bu durumda, J2 bir not defterinden geliyorsa iş reddedilir; J2 bir Batch işinden geliyorsa sıraya alınır.
 
 ### <a name="example-2"></a>Örnek 2
 
-- Bir Spark havuzu arama SP2 oluşturursunuz; bir otomatik ölçek etkin 10 - 20 düğümleri vardır
-- Bir not defteri iş göndermek, J1 10 düğümleri, bir Kıvılcım örneği, SI1, işi işlemek için oluşturulur kullanır.
-- Şimdi başka bir iş göndermek, J2, 10 düğümleri kullanır, örneğin otomatik 20 düğüm ve işlemler J2 büyür havuzda hala kapasite olduğu için.
+- Spark havuz çağrısı SP2 oluşturursunuz; Otomatik ölçeklendirme etkinleştirilmiş 10 – 20 düğümleri vardır
+- İşi işlemek için bir Spark örneği, SI1 olan J1 bir not defteri işi gönderebilirsiniz.
+- Artık, örnek otomatik olarak 20 düğüme ve J2 işleme olan havuzda kapasite olduğundan, J2.
 
 ### <a name="example-3"></a>Örnek 3
 
-- SP1 adında bir Kıvılcım havuzu oluşturursunuz; 20 düğüm sabit küme boyutuna sahiptir.
-- Bir not defteri iş göndermek, J1 10 düğümleri, bir Kıvılcım örneği kullanan, SI1 işi işlemek için oluşturulur.
-- Başka bir kullanıcı, U2, 10 düğüm, yeni bir Kıvılcım örneği, SI2, işi işlemek için oluşturulan kullanan bir İş, J3 gönderir.
-- Şimdi havuzda hala kapasite ve örnek, J2, SI1 tarafından işlenir, çünkü 10 düğüm kullanan başka bir iş, J2 gönderin.
+- SP1 adlı bir Spark havuzu oluşturursunuz; 20 düğümden oluşan sabit bir küme boyutuna sahiptir.
+- Bir not defteri işi gönderirseniz, iş işlemek için bir Spark örneği olan 10 düğümleri kullanan bir J1, SI1 oluşturulur.
+- Farklı bir kullanıcı olan J3, işi işlemek için yeni bir Spark örneği, SI2 olan bir Işi gönderir.
+- Artık havuzda kapasite bulunduğundan ve J2 örneği SI1 tarafından işlendiği için, J2 tarafından kullanılan başka bir iş (örneğin, 10 düğüm) gönderebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Apache Kıvılcım Dokümantasyon](https://spark.apache.org/docs/2.4.4/)
+- [Apache Spark belgeleri](https://spark.apache.org/docs/2.4.4/)

@@ -1,28 +1,21 @@
 ---
-title: Azure Toplu İşlem havuzu tüm olayı silme
-description: Toplu iş havuzu için başvuru, tüm olayı siler. Bu olay, bir havuz silme işlemi tamamlandığında yayılır.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch havuzu silme Tamam olayı
+description: Toplu Işlem havuzu silme Tamam olayı başvurusu. Bu olay, bir havuz silme işlemi tamamlandığında yayınlanır.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
-ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77023625"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82115950"
 ---
 # <a name="pool-delete-complete-event"></a>Havuz silme tamamlama olayı
 
- Bu olay, bir havuz silme işlemi tamamlandığında yayılır.
+ Bu olay, bir havuz silme işlemi tamamlandığında yayınlanır.
 
- Aşağıdaki örnek, bir havuzun gövdesini tam olayı siler.
+ Aşağıdaki örnekte, bir havuz silme Tamam olayının gövdesi gösterilmektedir.
 
 ```
 {
@@ -34,9 +27,9 @@ ms.locfileid: "77023625"
 
 |Öğe|Tür|Notlar|
 |-------------|----------|-----------|
-|`id`|Dize|Havuzun kimliği.|
-|`startTime`|DateTime|Havuz silmenin başladığı saat.|
-|`endTime`|DateTime|Havuzun silinme süresi.|
+|`id`|Dize|Havuzun KIMLIĞI.|
+|`startTime`|DateTime|Havuzun silmenin başladığı zaman.|
+|`endTime`|DateTime|Havuzun silineceği zaman tamamlandı.|
 
 ## <a name="remarks"></a>Açıklamalar
-Havuz yeniden boyutlandırma işlemi için durumlar ve hata kodları hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account)
+Havuz yeniden boyutlandırma işleminin durumları ve hata kodları hakkında daha fazla bilgi için bkz. bir [hesaptan havuz silme](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).

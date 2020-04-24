@@ -1,29 +1,21 @@
 ---
-title: Azure Toplu Iş Parti başlangıç olayı
-description: Toplu iş başlatma olayı için başvuru bilgileri. Bir görev zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra bu olay yayımlanır.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
+title: Azure Batch görev başlatma olayı
+description: Batch görevi başlatma olayı için başvuru bilgileri. Bu olay, bir Görev Zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra yayınlanır.
 ms.topic: article
-ms.tgt_pltfrm: ''
-ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: labrenne
-ms.openlocfilehash: bed3749e29867298f3e8258a08448b7b094055ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022826"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116409"
 ---
 # <a name="task-start-event"></a>Görev başlangıç olayı
 
- Bir görev zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra bu olay yayımlanır. Görev yeniden denenir veya yeniden sıralanırsa, bu olay aynı görev için yeniden yayımlanır, ancak yeniden deneme sayısı ve sistem görev sürümü buna göre güncelleştirilir.
+ Bu olay, bir Görev Zamanlayıcı tarafından bir işlem düğümünde başlamak üzere zamanlandıktan sonra yayınlanır. Görev yeniden deneniyorsa veya yeniden kuyruğa bu olay aynı görev için tekrar yayınlanacaktır, ancak yeniden deneme sayısı ve sistem görevinin sürümü uygun şekilde güncelleştirilir.
 
 
- Aşağıdaki örnek, görev başlatma olayının gövdesini gösterir.
+ Aşağıdaki örnekte, bir görev başlatma olayının gövdesi gösterilmektedir.
 
 ```
 {
@@ -49,36 +41,36 @@ ms.locfileid: "77022826"
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`jobId`|Dize|Görevi içeren işin kimliği.|
-|`id`|Dize|Görevin kimliği.|
-|`taskType`|Dize|Görevin türü. Bu, bir iş yöneticisi görevi olduğunu belirten 'JobManager' veya bir iş yöneticisi görevi olmadığını belirten 'Kullanıcı' olabilir.|
-|`systemTaskVersion`|Int32|Bu, bir görevin dahili yeniden deneme sayacıdır. Dahili olarak Toplu İşlem hizmeti, geçici sorunları hesaba katmak için bir görevi yeniden deneyebilir. Bu sorunlar iç zamanlama hataları veya kötü durumda işlem düğümlerinden kurtarmak için girişimleri içerebilir.|
-|[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümü hakkında bilgi içerir.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin, birden çok işlem düğümü gerektiren Çok Örnekli Görev olduğunu belirtir.  Ayrıntılar için [çoklu InstanceSettings'e](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) bakın.|
-|[`constraints`](#constraints)|Karmaşık Tür|Bu göreve uygulanan yürütme kısıtlamaları.|
-|[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkında bilgi içerir.|
+|`jobId`|Dize|Görevi içeren işin KIMLIĞI.|
+|`id`|Dize|Görevin KIMLIĞI.|
+|`taskType`|Dize|Görevin türü. Bu, bir iş Yöneticisi görevi olduğunu ya da bir iş Yöneticisi görevi olmadığını belirten ' user ' olduğunu belirten ' JobManager ' olabilir.|
+|`systemTaskVersion`|Int32|Bu, bir görevde iç yeniden deneme sayacıdır. Toplu olarak Batch hizmeti, geçici sorunlar için bir görevi hesaba yeniden deneyebilir. Bu sorunlar, iç zamanlama hataları içerebilir veya işlem düğümlerinden hatalı bir durumda kurtarmaya çalışır.|
+|[`nodeInfo`](#nodeInfo)|Karmaşık Tür|Görevin çalıştırıldığı işlem düğümüyle ilgili bilgiler içerir.|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Karmaşık Tür|Görevin birden çok işlem düğümü gerektiren çok örnekli bir görev olduğunu belirtir.  Ayrıntılar için bkz. [Multiınstancesettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) .|
+|[`constraints`](#constraints)|Karmaşık Tür|Bu görev için uygulanan yürütme kısıtlamaları.|
+|[`executionInfo`](#executionInfo)|Karmaşık Tür|Görevin yürütülmesi hakkındaki bilgileri içerir.|
 
-###  <a name="nodeinfo"></a><a name="nodeInfo"></a>Nodeınfo
-
-|Öğe adı|Tür|Notlar|
-|------------------|----------|-----------|
-|`poolId`|Dize|Görevin çalıştırıldığı havuzun kimliği.|
-|`nodeId`|Dize|Görevin çalıştırıldığı düğümün kimliği.|
-
-###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>multiInstanceSettings
+###  <a name="nodeinfo"></a><a name="nodeInfo"></a>NodeInfo
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`numberOfInstances`|int|Görevin gerektirdiği işlem düğümlerinin sayısı.|
+|`poolId`|Dize|Görevin çalıştırıldığı havuzun KIMLIĞI.|
+|`nodeId`|Dize|Görevin çalıştırıldığı düğümün KIMLIĞI.|
 
-###  <a name="constraints"></a><a name="constraints"></a>Kısıtlama -ları
-
-|Öğe adı|Tür|Notlar|
-|------------------|----------|-----------|
-|`maxTaskRetryCount`|Int32|Görevin en fazla kaç kez yeniden denenebilir. Toplu İşlem hizmeti, çıkış kodu sıfır değilse görevi yeniden dener.<br /><br /> Bu değerin özellikle yeniden deneme sayısını denetlediğini unutmayın. Toplu İşlem hizmeti görevi bir kez dener ve daha sonra bu sınıra kadar yeniden deneyebilir. Örneğin, en yüksek yeniden deneme sayısı 3 ise, Toplu İşlem bir görevi en fazla 4 kez (bir ilk deneme ve 3 yeniden deneme) dener.<br /><br /> En yüksek yeniden deneme sayısı 0 ise, Toplu İşlem hizmeti görevleri yeniden denemez.<br /><br /> En yüksek yeniden deneme sayısı -1 ise, Toplu İşlem hizmeti görevleri sınırsız olarak yeniden dener.<br /><br /> Varsayılan değer 0'dır (yeniden deneme yok).|
-
-###  <a name="executioninfo"></a><a name="executionInfo"></a>Executionınfo
+###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a>Multiınstancesettings
 
 |Öğe adı|Tür|Notlar|
 |------------------|----------|-----------|
-|`retryCount`|Int32|Görevin Toplu İşlem hizmeti tarafından yeniden denenme sayısı. Belirtilen MaxTaskRetryCount'a kadar sıfır olmayan bir çıkış koduyla çıkarsa görev yeniden denendi|
+|`numberOfInstances`|int|Görevin gerektirdiği işlem düğümü sayısı.|
+
+###  <a name="constraints"></a><a name="constraints"></a>kısıtlamaları
+
+|Öğe adı|Tür|Notlar|
+|------------------|----------|-----------|
+|`maxTaskRetryCount`|Int32|Görevin en fazla yeniden denenme sayısı. Batch hizmeti, çıkış kodu sıfır değilse bir görevi yeniden dener.<br /><br /> Bu değerin özellikle yeniden deneme sayısını denetlediğine unutmayın. Batch hizmeti görevi bir kez dener ve daha sonra bu sınıra kadar yeniden deneyebilir. Örneğin, en fazla yeniden deneme sayısı 3 ise Batch, 4 kata kadar bir görevi dener (bir başlangıç denemesi ve 3 yeniden deneme).<br /><br /> En fazla yeniden deneme sayısı 0 ise, Batch hizmeti görevleri yeniden denemeyecek.<br /><br /> En fazla yeniden deneme sayısı-1 ise, Batch hizmeti görevleri sınırlı olmadan yeniden dener.<br /><br /> Varsayılan değer 0 ' dır (yeniden deneme yok).|
+
+###  <a name="executioninfo"></a><a name="executionInfo"></a>ExecutionInfo
+
+|Öğe adı|Tür|Notlar|
+|------------------|----------|-----------|
+|`retryCount`|Int32|Görevin Batch hizmeti tarafından yeniden denenme sayısı. Bu görev, belirtilen MaxTaskRetryCount 'a kadar sıfır olmayan çıkış kodu ile çıktıktan sonra yeniden denenir|

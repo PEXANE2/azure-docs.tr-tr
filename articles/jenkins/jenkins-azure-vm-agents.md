@@ -27,7 +27,7 @@ Bu öğreticide şunları yapacaksınız:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-Integration-with-Jenkins-Using-Azure-VM-Agents/player]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliği
 * Bir Jenkins ana sunucusu. Yoksa [hızlı başlangıcı](install-jenkins-solution-template.md) görüntüleyerek Azure'da bir tane ayarlayabilirsiniz.
@@ -136,7 +136,7 @@ Yapılandırmayı doğrulamak için **Verify Template** (Şablonu Doğrula) öğ
 
 ![Konsol çıktısı](./media/jenkins-azure-vm-agents/console-output.png)
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunlarını giderme
+## <a name="troubleshooting-the-jenkins-plugin"></a>Jenkins eklentisiyle ilgili sorunları giderme
 
 Jenkins eklentileriyle ilgili hatalarla karşılaşırsanız [Jenkins JIRA](https://issues.jenkins-ci.org/) sayfasında söz konusu bileşenle ilgili sorun bildirebilirsiniz.
 

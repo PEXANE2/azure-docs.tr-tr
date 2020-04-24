@@ -1,27 +1,24 @@
 ---
-title: Öğretici - Azure PowerShell ile özel VM görüntüleri oluşturun
+title: Öğretici-Azure PowerShell ile özel VM görüntüleri oluşturma
 description: Bu öğreticide, Azure PowerShell kullanarak Azure’da özel sanal makine görüntüsü oluşturmayı öğrenirsiniz
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 87347cfea0e45d3498c48f07578523a20d5a13e2
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 108ff8d89771217ed2833f2a47aa52ff05aa2f13
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641092"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82100388"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>Öğretici: Azure PowerShell ile bir Azure VM'nin özel görüntüsünü oluşturma
 
-Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, dağıtımları önyükleme ve birden çok VM arasında tutarlılık sağlamak için kullanılabilir. Bu eğitimde, PowerShell'i kullanarak bir Azure sanal makinenin kendi özel görüntüsünü oluşturursunuz. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Özel görüntüler market görüntüleri gibidir, ancak bunları kendiniz oluşturursunuz. Özel görüntüler, dağıtımları önyüklemek ve birden çok VM arasında tutarlılık sağlamak için kullanılabilir. Bu öğreticide, PowerShell kullanarak bir Azure sanal makinesi için kendi özel görüntünüzü oluşturacaksınız. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Sysprep ve VM’leri genelleştirme
@@ -30,23 +27,23 @@ ms.locfileid: "81641092"
 > * Aboneliğinizdeki tüm görüntüleri listeleme
 > * Görüntü silme
 
-Genel önizlemede Azure [VM Image Builder](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) hizmetine sahibiz. Özelleştirmelerinizi bir şablonda açıklayın ve bu makalede görüntü oluşturma adımlarını işleyecek. [Azure Image Builder 'ı deneyin (önizleme)](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
+Genel önizlemede [Azure VM görüntüsü Oluşturucu](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview) hizmeti sunuyoruz. Özelleştirmeleri bir şablonda açıklamanız yeterlidir ve bu makaledeki görüntü oluşturma adımlarını işleymeyecektir. [Azure Image Builder 'ı (Önizleme) deneyin](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder).
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 Aşağıdaki adımlar, mevcut bir VM’yi alıp, yeni VM örnekleri oluşturmak için kullanabileceğiniz yeniden kullanılabilir bir özel görüntüye dönüştürmeyi ayrıntılı olarak açıklar.
 
-Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu [komut dosyası örneği](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) sizin için bir tane oluşturabilir. Bu öğreticide çalışırken, gerektiğinde kaynak grubu ve VM adlarını değiştirin.
+Bu öğreticideki örneği tamamlamak için, mevcut bir sanal makinenizin olması gerekir. Gerekirse, bu [betik örneği](../scripts/virtual-machines-windows-powershell-sample-create-vm.md) sizin için bir tane oluşturabilir. Bu öğreticide çalışırken, gerektiğinde kaynak grubu ve VM adlarını değiştirin.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell). **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="prepare-vm"></a>VM'yi hazırlama
 
-Sanal bir makinenin görüntüsünü oluşturmak için, kaynak VM'yi genelleştirerek, ayırarak ve ardından Azure ile genelleştirilmiş olarak işaretleyerek hazırlamanız gerekir.
+Bir sanal makinenin görüntüsünü oluşturmak için, kaynak VM 'yi genelleştirerek, ayırmayı kaldırarak ve daha sonra Azure ile Genelleştirilmiş olarak işaretleyerek hazırlamanız gerekir.
 
 ### <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep kullanarak Windows VM'sini genelleştirme
 
@@ -54,7 +51,7 @@ Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldır�
 
 
 1. Sanal makineye bağlanın.
-2. Yönetici olarak Komut İstemi penceresini açın. Dizin *değiştirin %windir%\system32\sysprep*, `sysprep.exe`ve sonra çalıştırın .
+2. Yönetici olarak Komut İstemi penceresini açın. Dizini *%windir%\system32\sysprep*olarak değiştirip komutunu çalıştırın `sysprep.exe`.
 3. **Sistem Hazırlama Aracı** iletişim kutusunda ** Sistem İlk Çalıştırma Deneyimi (OOBE) Moduna Gir**'i seçin ve **Genelleştir** onay kutusunun seçili olduğundan emin olun.
 4. **Kapatma Seçenekleri**'nde **Kapat**'ı seçin ve **Tamam**'a tıklayın.
 5. Sysprep tamamlandığında, sanal makineyi kapatır. **VM'yi yeniden başlatmayın**.
@@ -63,7 +60,7 @@ Sysprep diğer öğelerin yanı sıra tüm kişisel hesap bilgilerinizi kaldır�
 
 Görüntü oluşturmak için, VM'nin serbest bırakılması ve Azure'da genelleştirilmiş olarak işaretlenmesi gerekir.
 
-[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)kullanarak VM'yi bulun.
+[Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm)kullanarak VM 'yi serbest bırakın.
 
 ```azurepowershell-interactive
 Stop-AzVM `
@@ -71,7 +68,7 @@ Stop-AzVM `
    -Name myVM -Force
 ```
 
-Sanal makinenin durumunu `-Generalized` [Set-AzVm'i](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)kullanarak ayarlayın. 
+`-Generalized` [Set-azvm](https://docs.microsoft.com/powershell/module/az.compute/set-azvm)' i kullanarak sanal makinenin durumunu ayarlayın. 
    
 ```azurepowershell-interactive
 Set-AzVM `
@@ -82,7 +79,7 @@ Set-AzVM `
 
 ## <a name="create-the-image"></a>Görüntü oluşturma
 
-Şimdi [Yeni-AzImageConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) ve [New-AzImage](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)kullanarak VM bir görüntü oluşturabilirsiniz. Aşağıdaki örnek, *myVM* adlı bir VM’den *myImage* adlı bir görüntü oluşturur.
+Artık [New-Azımageconfig](https://docs.microsoft.com/powershell/module/az.compute/new-azimageconfig) ve [New-AZıMAGE](https://docs.microsoft.com/powershell/module/az.compute/new-azimage)kullanarak VM 'nin bir görüntüsünü oluşturabilirsiniz. Aşağıdaki örnek, *myVM* adlı bir VM’den *myImage* adlı bir görüntü oluşturur.
 
 Sanal makineyi alın. 
 
@@ -112,9 +109,9 @@ New-AzImage `
  
 ## <a name="create-vms-from-the-image"></a>Görüntüden VM oluşturma
 
-Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Özel görüntüden VM oluşturma işlemi, Market görüntüsü kullanarak VM oluşturmaya benzer. Market görüntüsünü kullandığınızda, görüntü, görüntü sağlayıcısı, teklif, SKU ve sürüm hakkındaki bilgileri sağlamanız gerekir. [Yeni-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet için basitleştirilmiş parametre kümesini kullanarak, aynı kaynak grubunda olduğu sürece özel görüntünün adını sağlamanız gerekir. Farklı bir kaynak grubunda VM oluşturmayı planlıyorsanız, -ImageName parametresi için görüntünün Kaynak Kimliğini sağlayın.
+Artık bir görüntünüz olduğuna göre, görüntüden bir veya daha fazla yeni VM oluşturabilirsiniz. Özel görüntüden VM oluşturma işlemi, Market görüntüsü kullanarak VM oluşturmaya benzer. Market görüntüsünü kullandığınızda, görüntü, görüntü sağlayıcısı, teklif, SKU ve sürüm hakkındaki bilgileri sağlamanız gerekir. [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) cmdlet 'i için Basitleştirilmiş parametre kümesini kullanarak, yalnızca aynı kaynak grubunda olduğu sürece özel görüntünün adını sağlamanız gerekir. VM 'yi farklı bir kaynak grubunda oluşturmayı planlıyorsanız,-Gename parametresinin görüntüsünün kaynak kimliğini sağlayın.
 
-Bu örnek, *myImage* görüntümden *myVMfromImage* adlı bir VM oluşturur, *myResourceGroup.*
+Bu örnek *Myresourcegroup*görüntüsünden *Myvmfromımage* adlı bir VM *myImage* oluşturur.
 
 
 ```azurepowershell-interactive
@@ -130,7 +127,7 @@ New-AzVm `
     -OpenPorts 3389
 ```
 
-Eşzamanlı dağıtım sayısını tek bir görüntüden 20 VM ile sınırlamanızı öneririz. Aynı özel görüntüden 20'den fazla VM'nin büyük ölçekli, eşzamanlı dağıtımlarını planlıyorsanız, birden çok resim yinelemesi içeren [paylaşılan resim galerisi](shared-image-galleries.md) kullanmanız gerekir. 
+Tek bir görüntüden 20 VM 'ye eş zamanlı dağıtım sayısını kısıtlamanızı öneririz. Aynı özel görüntüden 20 ' den fazla VM 'ye ait büyük ölçekli, eşzamanlı dağıtımlar planlarken, birden çok görüntü çoğaltmasıyla paylaşılan bir [görüntü Galerisi](shared-image-galleries.md) kullanmanız gerekir. 
 
 
 ## <a name="image-management"></a>Görüntü yönetimi 
@@ -144,7 +141,7 @@ $images = Get-AzResource -ResourceType Microsoft.Compute/images
 $images.name
 ```
 
-Görüntüyü silin. Bu örnek *myImage* adlı görüntüyü *myResourceGroup'tan*siler.
+Görüntüyü silin. Bu örnek *Myresourcegroup* *MyImage* adlı görüntüyü siler.
 
 ```azurepowershell-interactive
 Remove-AzImage `
@@ -163,7 +160,7 @@ Bu öğreticide, özel bir VM görüntüsü oluşturdunuz. Şunları öğrendini
 > * Aboneliğinizdeki tüm görüntüleri listeleme
 > * Görüntü silme
 
-Yüksek kullanılabilir sanal makinelerin nasıl oluşturulması hakkında bilgi edinmek için bir sonraki öğreticiye ilerleyin.
+Yüksek oranda kullanılabilir sanal makineler oluşturma hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Yüksek oranda kullanılabilir VM’ler oluşturma](tutorial-availability-sets.md)

@@ -1,41 +1,35 @@
 ---
-title: Quickstart - Azure CLI'yi kullanarak Windows VM oluşturma
-description: Bu hızlı başlangıçta, Windows sanal makinesi oluşturmak için Azure CLI'yi nasıl kullanacağınızı öğrenirsiniz
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: Hızlı başlangıç-Azure CLı kullanarak Windows VM oluşturma
+description: Bu hızlı başlangıçta, Azure CLı kullanarak bir Windows sanal makinesi oluşturma hakkında bilgi edineceksiniz.
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 37f86f480e0d2a46bb54ad9b041fb1892a9ebbc4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c6f1663924f338b6b17c760afe64527f563f5bc2
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81458173"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82098025"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile Windows sanal makinesi oluşturma
 
 Azure CLI, komut satırından veya betik içindeki Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta Azure CLI kullanarak Azure’da Windows Server 2016 çalıştıran bir sanal makinenin (VM) nasıl dağıtılacağı gösterilir. VM’ye RDP oluşturup IIS web sunucusunu yükleyerek VM’nizin çalıştığını görebilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/bash](https://shell.azure.com/bash)sekmesinde başlatabilirsiniz. Kod bloklarını kopyalamak için **Kopyala'yı** seçin, Bulut Kabuğu'na yapıştırın ve çalıştırmak için **Enter** tuşuna basın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com/bash](https://shell.azure.com/bash). Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+[az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -43,10 +37,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Sanal makine oluşturma
 
-[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki *örnekmyVM*adlı bir VM oluşturur. Bu örnek, yönetimkullanıcı adı için *azureuser* kullanır. 
+[az vm create](/cli/azure/vm) ile bir VM oluşturun. Aşağıdaki örnek, *myvm*ADLı bir VM oluşturur. Bu örnek, bir Yönetici Kullanıcı adı için *azureuser* kullanır. 
 
-[Azure VM'ler için parola gereksinimlerini](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-)karşılayan bir parola sağlamanız gerekir. Aşağıdaki örneği kullanarak, komut satırına bir parola girmeniz istenir. Ayrıca parolanız için `--admin-password` bir değer ile parametre ekleyebilirsiniz. VM'ye bağlandığınızda kullanıcı adı ve parola daha sonra kullanılacaktır.
+[Azure VM 'lerinin parola gereksinimlerini](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)karşılayan bir parola sağlamanız gerekir. Aşağıdaki örneği kullanarak komut satırına bir parola girmeniz istenir. Parolanız için bir değer ile `--admin-password` parametresini de ekleyebilirsiniz. SANAL makineye bağlandığınızda Kullanıcı adı ve parola daha sonra kullanılacaktır.
 
 ```azurecli-interactive
 az vm create \
@@ -107,7 +101,7 @@ Sanal makinenizde İnternet’ten IIS yüklenmiş ve 80 numaralı bağlantı nok
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde, kaynak grubunu, VM'i ve ilgili tüm kaynakları kaldırmak için [az grubu silme](/cli/azure/group) komutunu kullanabilirsiniz:
+Artık gerekli değilse, [az Group Delete](/cli/azure/group) komutunu kullanarak kaynak grubunu, VM 'yi ve tüm ilgili kaynakları kaldırabilirsiniz:
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

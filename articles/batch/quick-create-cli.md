@@ -1,21 +1,15 @@
 ---
 title: Azure Hızlı Başlangıç - Batch işi çalıştırma - CLI
-description: Azure CLI ile bir Batch işi çalıştırmayı hızlı bir şekilde öğrenin. Komut satırından veya komut satırlarından Azure kaynakları oluşturun ve yönetin.
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
-ms.devlang: azurecli
+description: Azure CLI ile bir Batch işi çalıştırmayı hızlı bir şekilde öğrenin. Komut satırından veya betiklerden Azure kaynaklarını oluşturun ve yönetin.
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 9106741e18354d39909fa84ce6e9f3a66ccf2014
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3ec3ab6cc988ba1d11231a1bda1eec15d6e811c8
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77024509"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116341"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Hızlı başlangıç: Azure CLI ile ilk Batch işinizi çalıştırma
 
@@ -170,7 +164,7 @@ az batch task file download \
     --destination ./stdout.txt
 ```
 
-`stdout.txt` dosyasının içeriğini bir metin düzenleyicisinde görüntüleyebilirsiniz. İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz. Örnek:
+`stdout.txt` dosyasının içeriğini bir metin düzenleyicisinde görüntüleyebilirsiniz. İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz. Örneğin:
 
 ```
 AZ_BATCH_TASK_DIR=/mnt/batch/tasks/workitems/myjob/job-1/mytask1
@@ -192,7 +186,7 @@ AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 Batch öğreticileri ve örnekleri ile devam etmek istiyorsanız, bu hızlı başlangıçta kullanılan Batch hesabını ve bağlı depolama hesabını kullanın. Batch hesabının kendisi için herhangi bir ücret alınmaz.
 
-Zamanlanmış bir iş olmasa bile, düğümler çalışırken havuzlar için sizden ücret alınır. Artık bir havuza ihtiyacınız olmadığında, [az toplu iş havuzu silme](/cli/azure/batch/pool#az-batch-pool-delete) komutuyla silin. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. 
+Zamanlanmış bir iş olmasa bile, düğümler çalışırken havuzlar için sizden ücret alınır. Artık havuz gerekmiyorsa, [az Batch Pool Delete](/cli/azure/batch/pool#az-batch-pool-delete) komutuyla silin. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. 
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool

@@ -1,53 +1,53 @@
 ---
-title: Azure HPC Önbelleğine genel bakış
-description: Yüksek performanslı bilgi işlem için bir dosya erişim hızlandırıcı çözümü olan Azure HPC Önbelleğini açıklar
+title: Azure HPC önbelleğine genel bakış
+description: Yüksek performanslı bilgi işlem için bir dosya erişim Hızlandırıcısı çözümü olan Azure HPC Cache 'i açıklar
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
+ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536650"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82106466"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Azure HPC Önbelleği nedir?
 
-Azure HPC Önbelleği, yüksek performanslı bilgi işlem (HPC) görevleri için verilerinize erişimi hızlandırır. Azure'da dosyaları önbelleğe alarak Azure HPC Önbelleği, bulut bilgi işlemin ölçeklenebilirliğini mevcut iş akışınıza getirir. Bu hizmet, verilerinizin yerel veri merkezi ağ bağlantılı depolama (NAS) ortamıgibi WAN bağlantıları arasında depolandığı iş akışları için bile kullanılabilir.
+Azure HPC Cache, yüksek performanslı bilgi işlem (HPC) görevleri için verilerinize erişimi hızlandırır. Azure HPC Cache, Azure 'daki dosyaları önbelleğe alarak, bulut bilgi işlemin ölçeklenebilirliğini mevcut iş akışınıza getirir. Bu hizmet, verilerinizin WAN bağlantıları arasında depolandığı iş akışları (örneğin, yerel veri merkezi ağ bağlantılı depolama (NAS) ortamınızda) için de kullanılabilir.
 
-Azure HPC Önbelleğinin başlatılması ve Azure portalından izlenmesi kolaydır. Varolan NFS depolama alanı veya yeni Blob kapsayıcıları, arka uç depolama hedefini değiştirseniz bile istemci erişimini basit kılan toplu ad alanının bir parçası haline gelebilir.
+Azure HPC önbelleğinin Azure portal kolayca başlatılması ve izlenmesi kolay bir işlemdir. Mevcut NFS depolaması veya yeni blob kapsayıcıları, arka uç depolama hedefini değiştirseniz bile, istemci erişiminin basit olmasını sağlayan, toplanmış ad alanının bir parçası haline gelebilir.
 
 ## <a name="use-cases"></a>Uygulama alanları
 
-Azure HPC Önbelleği, şu gibi iş akışları için üretkenliği en iyi şekilde artırır:
+Azure HPC Cache, aşağıdaki gibi iş akışları için en iyi verimliliği geliştirir:
 
-* Okuma ağırlıklı dosya erişimi iş akışı
-* NFS'ye erişilebilen depolama, Azure Blob veya her ikisinde depolanan veriler
-* 75.000 CPU çekirdeğine kadar hesaplama çiftlikleri
+* Okuma ağır dosya erişimi iş akışı
+* NFS erişimli depolama, Azure Blob veya her ikisine de depolanan veriler
+* 75.000 adede kadar CPU çekirdeğini hesaplama grupları
 
-Azure HPC Önbelleği birçok endüstride çok çeşitli iş akışlarına eklenebilir. Çok sayıda makinenin ölçekte ve düşük gecikme gecikmesi olan bir dizi dosyaya erişmeleri gereken tüm sistem bu hizmetten yararlanacaktır. Aşağıdaki bölümlerde belirli örnekler verilmiştir.
+Azure HPC önbelleği birçok sektör genelinde çok çeşitli iş akışlarına eklenebilir. Çok sayıda makinenin bir dosya kümesine ölçekli ve düşük gecikme süresiyle bu hizmetten faydalanır olması gereken tüm sistem. Aşağıdaki bölümler belirli örneklere sahiptir.
 
-### <a name="visual-effects-vfx-rendering"></a>Görsel efektler (VFX) oluşturma
+### <a name="visual-effects-vfx-rendering"></a>Görsel etkiler (VFX) işleme
 
-Azure HPC Önbelleği, medya ve eğlence de zaman açısından kritik hale getirme projeleri için veri erişimini hızlandırabilir. VFX işleme iş akışları genellikle çok sayıda bilgi işlem düğümü tarafından son dakika işleme gerektirir. Bu iş akışlarına ait veriler genellikle şirket içi NAS ortamında bulunur. Azure HPC Önbelleği, gecikme süresini azaltmak ve isteğe bağlı işleme esnekliğini artırmak için bu dosya verilerini bulutta önbelleğe alabilir.
+Medya ve eğlence sürümünde Azure HPC önbelleği, zaman açısından kritik işleme projeleri için veri erişimini hızlandırabilir. VFX işleme iş akışları çoğunlukla çok sayıda işlem düğümü tarafından son dakikalık işleme gerektirir. Bu iş akışlarının verileri genellikle şirket içi bir NAS ortamında bulunur. Azure HPC önbelleği, gecikme süresini azaltmak ve isteğe bağlı işleme esnekliği geliştirmek için bulutta bu dosya verilerini önbelleğe alabilir.
 
 ### <a name="life-sciences"></a>Yaşam bilimleri
 
-Birçok yaşam bilimleri iş akışları ölçek-out dosya önbelleğe yararlanabilir.
+Birçok yaşam bilimleri iş akışı, genişleme dosya önbelleklemesi avantajlarından yararlanabilir.
 
-Genomik analiz iş akışlarını Azure'a taşımayı isteyen bir araştırma enstitüsü, Azure HPC Önbelleğini kullanarak bunları kolayca kaydırabilir. Önbellek POSIX dosya erişimi sağladığından, buluttaki varolan istemci iş akışlarını çalıştırmak için istemci tarafında değişiklik gerekmez.
+Genomik analiz iş akışlarının Azure 'a bağlantı noktası almak isteyen bir Araştırma Enstitüsü, Azure HPC cache kullanarak bunları kolayca kaydırabilirler. Önbellek, POSIX dosya erişimi sağladığından, var olan istemci iş akışını bulutta çalıştırmak için hiçbir istemci tarafı değişikliği gerekli değildir.
 
-Azure HPC Önbelleği, ikincil analiz, farmakolojik simülasyon veya AI odaklı görüntü analizi gibi görevlerde verimliliği artırmak için de kullanılabilir.
+Azure HPC Cache ayrıca ikincil analiz, ilaç macological simülasyonu veya AI odaklı görüntü analizi gibi görevlerde verimliliği artırmak için de yararlanılabilir olabilir.
 
 ### <a name="financial-services-analytics"></a>Finansal hizmetler analizi
 
-Azure HPC Önbellek dağıtımı, finansal hizmetler şirketlerine stratejik kararlar vermeleri için daha iyi bir fikir vermek için nicel analiz hesaplamalarını, risk analizi iş yüklerini ve Monte Carlo simülasyonlarını hızlandırmaya yardımcı olabilir.
+Azure HPC önbellek dağıtımı, finansal hizmetler şirketlerinin stratejik kararlar vermesini daha iyi kavramak için nicel Analysis hesaplamaları, risk analizi iş yükleri ve Monte Carlo benzetimlerinin hızlandırılmasına yardımcı olabilir.
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Azure HPC Önbelleği şu Azure bölgelerinde kullanılabilir:
+Azure HPC önbelleği şu Azure bölgelerinde kullanılabilir:
 
 | Kuzey Amerika      | Avrupa         | Asya            | Avustralya      |
 |--------------------|----------------|-----------------|----------------|
@@ -56,16 +56,22 @@ Azure HPC Önbelleği şu Azure bölgelerinde kullanılabilir:
 | Orta Güney ABD | | | |
 | Batı ABD 2        | | | |
 
-[Müşteri tarafından yönetilen anahtarlar özelliği](customer-keys.md) yalnızca bu bölgelerde desteklenir:
+[Müşteri tarafından yönetilen anahtarlar özelliği](customer-keys.md) yalnızca şu bölgelerde desteklenir:
 
 * Doğu ABD
 * Orta Güney ABD
 * Batı ABD 2
 
-En son kullanılabilirlik bilgileri için [Azure HPC Önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
+En son kullanılabilirlik bilgileri için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) kontrol edin.
+
+## <a name="service-availability"></a>Hizmet kullanılabilirliği
+
+Azure HPC Cache ile kullanacağınız her abonelik için erişim istemeniz gerekir. Bu kısıtlama hizmet kalitesinin sağlanmasına yardımcı olur.
+
+[Bu formu](https://aka.ms/onboard-hpc-cache)doldurarak erişim isteyin. Aboneliğiniz erişim listesine eklendikten sonra önbellekler oluşturabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Özellikleri hakkında daha fazla bilgi edinmek için [Azure HPC Önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) okuyun
-* Ürün [ön koşulları](hpc-cache-prereqs.md) hakkında bilgi edinin
-* Azure portalından [Bir Azure HPC Önbelleği Oluşturma](hpc-cache-create.md)
+* Özellikleri hakkında daha fazla bilgi edinmek için [Azure HPC önbellek ürün sayfasını](https://azure.microsoft.com/services/hpc-cache) okuyun
+* Ürün [önkoşulları](hpc-cache-prereqs.md) hakkında bilgi edinin
+* Azure portal [bir Azure HPC önbelleği oluşturun](hpc-cache-create.md)

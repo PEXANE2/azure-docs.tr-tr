@@ -1,42 +1,32 @@
 ---
-title: Azure İlkeleri ile Tümleştirme - Azure Toplu İşi | Microsoft Dokümanlar
-description: ''
-services: batch
-documentationcenter: ''
-author: LauraBrenner
-manager: evansma
-editor: ''
-ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Azure Ilkeleriyle tümleştirme
+description: Azure Ilkesi, kaynaklarınız üzerinde kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.topic: article
 ms.date: 02/24/2020
-ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
+ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77618379"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82116086"
 ---
-# <a name="integration-with-azure-policy"></a>Azure İlkesiyle Tümleştirme
+# <a name="integration-with-azure-policy"></a>Azure Ilkesiyle tümleştirme
 
-Azure İlkesi, Azure'da, bu kaynakların şirket standartlarınızla ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlamak için kaynaklarınız üzerinde kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullandığınız bir hizmettir. Azure İlkesi, kaynaklarınızı atadığınız ilkelere uymadığınıza göre değerlendirir. 
+Azure Ilkesi, kaynakların kurumsal standartlarınızla ve hizmet düzeyi sözleşmelerle uyumlu kalmasını sağlamak için kaynaklarınız üzerinde kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullandığınız bir hizmettir. Azure Ilkesi, atadığınız ilkelerle uyumlu olmayan kaynaklarınızı hesaplar. 
 
-Azure Toplu İş'in, ilke uyumluluğunu yönetmenize yardımcı olacak iki yerleşik uzantısı vardır. 
+Azure Batch, ilke uyumluluğunu yönetmenize yardımcı olmak için iki yerleşik uzantıya sahiptir. 
 
-|**Adı**...|   **Açıklama**|**Etki(ler)**|  **Sürüm**|    **Kaynak**
+|**Ad**...|   **Açıklama**|**Efekt (ler)**|  **Sürüm**|    **Kaynak**
 |----------------|----------|----------|----------------|---------------|
-|Toplu iş hesaplarındaki tanılama günlükleri etkinleştirilmeli|   Tanılama günlüklerinin denetim için. Bu, araştırma amacıyla kullanmak üzere etkinlik izlerini yeniden oluşturmanıza olanak tanır; bir güvenlik olayı meydana geldiğinde veya ağınızın gizliliği ihlal edildiğinde|Auditifnotexists, Devre Dışı|  2.0.0|  GitHub|
-|Metrik uyarı kuralları Toplu Iş hesaplarında yapılandırılmalıdır| Gerekli metrik etkinleştirmek için Toplu hesaptaki metrik uyarı kurallarının denetim yapılandırması|   Auditifnotexists, Devre Dışı| 1.0.0|  GitHub|
+|Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir|   Tanılama günlüklerini etkinleştirme denetimi. Bu, araştırma amacıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar; bir güvenlik olayı gerçekleştiğinde veya ağınız tehlikede olduğunda|Auditınotexists, devre dışı|  2.0.0|  GitHub|
+|Toplu Iş hesaplarında ölçüm uyarısı kuralları yapılandırılmalıdır| Gerekli ölçümü etkinleştirmek için Batch hesabındaki ölçüm uyarı kurallarının yapılandırmasını denetleme|   Auditınotexists, devre dışı| 1.0.0|  GitHub|
 
-İlke tanımları karşılanması gereken koşulları açıklar. Bir koşul, kaynak özelliğini gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına önceden tanımlanmış diğer adlar kullanılarak erişilir. Kaynak türüiçin belirli özelliklere erişmek için özellik takma adlarını kullanırsınız. Diğer adlar, kaynaktaki bir özellik için hangi değerlerin veya koşulların izin verildiğini kısıtlamanızı sağlar. Her diğer ad, belirli bir kaynak türü için farklı API sürümlerindeki yollara eş ler. İlke değerlendirmesi sırasında, ilke altyapısı bu API sürümü için özellik yolunu alır.
+İlke tanımları, karşılanması gereken koşulları tanımlar. Bir koşul, kaynak özelliğini gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına önceden tanımlanmış diğer adlar kullanılarak erişilir. Bir kaynak türü için belirli özelliklere erişmek üzere özellik diğer adlarını kullanırsınız. Diğer adlar, bir kaynaktaki bir özellik için izin verilen değerleri veya koşulları kısıtlamanıza olanak sağlar. Her diğer ad, belirli bir kaynak türü için farklı API sürümlerindeki yollarla eşlenir. İlkesi değerlendirmesi sırasında, ilke altyapısı bu API sürümünün özellik yolunu alır.
 
-Toplu İşlem tarafından gerekli kaynaklar şunlardır: hesap, işlem düğümü, havuz, iş ve görev. Bu nedenle, bu kaynaklar için belirli özelliklere erişmek için özellik takma adlarını kullanırsınız. [Diğer Adlar](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases) hakkında daha fazla bilgi edinin
+Batch tarafından gereken kaynaklar şunlardır: hesap, işlem düğümü, havuz, iş ve görev. Bu nedenle, bu kaynakların belirli özelliklerine erişmek için özellik diğer adlarını kullanırsınız. [Diğer adlar](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases) hakkında daha fazla bilgi
 
-Geçerli diğer adları bildiğinizden ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure ilke uzantısını kullanın. Visual Studio Code tarafından desteklenen tüm platformlarda kurulabilir. Bu destek Windows, Linux ve macOS'u içerir. [Yükleme yönergelerine](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)bakın.
+Geçerli diğer adları bildiğiniz ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure ilkesi uzantısını kullanın. Bu, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir. Bkz. [yükleme yönergeleri](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
 
 
 

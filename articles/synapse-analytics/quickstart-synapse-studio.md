@@ -1,6 +1,6 @@
 ---
-title: Synapse Studio'u kullanma (önizleme)
-description: Bu hızlı başlangıçta, Synapse Studio'u kullanarak çeşitli dosya türlerini sorgulamanın ne kadar kolay olduğunu görecek ve öğreneceksiniz.
+title: SYNAPSE Studio 'Yu kullanma (Önizleme)
+description: Bu hızlı başlangıçta, SYNAPSE Studio kullanarak çeşitli dosya türlerini sorgulamak için ne kadar kolay olduğunu göreceksiniz ve öğrenirsiniz.
 services: synapse-analytics
 author: jovanpop-msft
 ms.service: synapse-analytics
@@ -9,62 +9,62 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 294f53fe929343708bdbb9564b23c46865cf02ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81423869"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82096342"
 ---
-# <a name="quickstart-using-synapse-studio-preview"></a>Quickstart: Synapse Studio kullanma (önizleme)
+# <a name="quickstart-using-synapse-studio-preview"></a>Hızlı başlangıç: SYNAPSE Studio 'Yu kullanma (Önizleme)
 
-Bu hızlı başlangıçta, Synapse Studio'u kullanarak dosyaları nasıl sorgulayabileceğinizi öğreneceksiniz.
+Bu hızlı başlangıçta, SYNAPSE Studio kullanarak dosyaları sorgulamayı öğreneceksiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
 [Azure Portal](https://portal.azure.com/) oturum açın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-[Azure Synapse çalışma alanı ve ilişkili depolama hesabı oluşturun.](quickstart-create-workspace.md)
+[Azure SYNAPSE çalışma alanı ve ilişkili depolama hesabı oluşturun](quickstart-create-workspace.md).
 
-## <a name="launch-synapse-studio"></a>Synapse Studio'u başlatın
+## <a name="launch-synapse-studio"></a>SYNAPSE Studio 'Yu Başlat
 
-Azure portalındaki Azure Synapse çalışma alanınızda **Synapse Studio'yu Başlat'ı**tıklatın.
+Azure portal Azure SYNAPSE çalışma alanınızda, **SYNAPSE Studio 'Yu Başlat**' a tıklayın.
 
-![Synapse Studio'u başlatın](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
+![SYNAPSE Studio 'Yu Başlat](./media/quickstart-synapse-studio/launch-synapse-workspace.png)
 
-Alternatif olarak, [Azure Synapse Analytics'i](https://web.azuresynapse.net) tıklatarak ve uygun kiracı, abonelik ve çalışma alanı değerlerini sağlayarak Synapse Studio'yu başlatabilirsiniz.
+Alternatif olarak, [Azure SYNAPSE Analytics](https://web.azuresynapse.net) ' i tıklatarak ve uygun kiracı, abonelik ve çalışma alanı değerlerini sağlayarak SYNAPSE Studio 'yu başlatabilirsiniz.
 
-## <a name="browse-storage-accounts"></a>Depolama hesaplarına göz atın
+## <a name="browse-storage-accounts"></a>Depolama hesaplarına gözatamıyorum
 
-Synapse Studio'yu açtıktan **sonra, Çalışma** alanındaki depolama hesabını görüntülemek için Data'ya göz atın ve ardından **Depolama hesaplarını** genişletin.
+SYNAPSE Studio 'Yu açtıktan sonra **verilere** gidin ve **depolama** hesabı ' nı genişleterek çalışma alanındaki depolama hesabını görüntüleyin.
 
-![Depolama yla ilgili dosyalara göz atın](./media/quickstart-synapse-studio/browse-files-on-storage.png)
+![Depolamadaki dosyalara gözatamıyorum](./media/quickstart-synapse-studio/browse-files-on-storage.png)
 
-Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanarak yeni klasörler oluşturabilir ve dosya yükleyebilirsiniz.
+Dosyalarınızı düzenlemek için araç çubuğundaki bağlantıları kullanarak yeni klasörler oluşturabilir ve dosyaları karşıya yükleyebilirsiniz.
 
 ## <a name="query-files-on-storage-account"></a>Depolama hesabındaki dosyaları sorgula
 
 > [!IMPORTANT]
-> Dosyaları sorgulayabilmek için `Storage Blob Reader` temel depolama alanında rolün bir üyesi olmanız gerekir. [Azure **Depolama'da Depolama Blob Veri Okuyucu** veya Depolama **Blob Veri Katılımcısı** RBAC izinlerini](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)nasıl atayacağımöğrenin.
+> Dosyaları sorgulayabilmeniz için temeldeki depolamada `Storage Blob Reader` rolün bir üyesi olmanız gerekir. [Azure depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC izinleri atama](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)hakkında bilgi edinin.
 
-1. Bazı `PARQUET` dosyaları yükleyin.
-2. Bir veya daha fazla dosya seçin ve dosyaların içeriğini görmek için yeni bir SQL komut dosyası veya Spark not defteri oluşturun. Bir not defteri oluşturmak istiyorsanız, çalışma [alanında Apache Spark havuzu](spark/apache-spark-notebook-create-spark-use-sql.md)oluşturmanız gerekir.
+1. Bazı `PARQUET` dosyaları karşıya yükleyin.
+2. Bir veya daha fazla dosya seçin ve ardından dosyaların içeriğini görmek için yeni bir SQL betiği veya Spark Not defteri oluşturun. Bir not defteri oluşturmak isterseniz, [çalışma alanında Apache Spark havuzu](quickstart-create-apache-spark-pool.md)oluşturmanız gerekir.
 
-   ![Depolama daki dosyaları sorgula](./media/quickstart-synapse-studio/query-files-on-storage.png)
+   ![Depolamadaki dosyaları sorgula](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Dosyanın içeriğini görmek için oluşturulan sorguyu veya not defterini çalıştırın:
+3. Dosyanın içeriğini görmek için oluşturulan sorguyu veya Not defterini çalıştırın:
 
-   ![Dosyanın içeriğini görme](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
+   ![Dosya içeriğini gör](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
-4. Sorguyu filtrelemek ve sonuçları sıralamak için değiştirebilirsiniz. [SQL özelliklerine genel bakışta](sql/overview-features.md)isteğe bağlı olarak kullanılabilir dil özelliklerini bulun.
+4. Sonuçları filtrelemek ve sıralamak için sorguyu değiştirebilirsiniz. SQL [özelliklerine genel bakış](sql/overview-features.md)için Isteğe bağlı SQL 'de bulunan dil özelliklerini bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Depolama'da Depolama **Blob Veri Okuyucusu** veya **Depolama Blob Veri Katılımcısı** RBAC izinleri atayarak](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) Azure AD kullanıcılarının dosyaları sorgulamasını sağlama
-- [SQL İsteğe Bağlı kullanarak Azure Depolama'daki dosyaları sorgula](sql/on-demand-workspace-overview.md)
-- [Apache Spark havuzu oluşturma](spark/apache-spark-notebook-create-spark-use-sql.md)
-- [Azure Depolama'da depolanan dosyalar hakkında Power BI raporu oluşturma](sql/tutorial-connect-power-bi-desktop.md)
+- Azure [depolama 'Da **Depolama Blobu veri okuyucusu** veya **Depolama Blobu veri katılımcısı** RBAC Izinleri ATAYARAK](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) dosyaları sorgulamak için Azure AD kullanıcıları 'nı etkinleştirin
+- [Azure depolama 'da Isteğe bağlı SQL kullanarak dosyaları sorgulama](sql/on-demand-workspace-overview.md)
+- [Apache Spark Havuzu Oluştur](quickstart-create-apache-spark-pool.md)
+- [Azure depolama 'da depolanan dosyalar üzerinde Power BI raporu oluşturma](sql/tutorial-connect-power-bi-desktop.md)
