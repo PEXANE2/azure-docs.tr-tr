@@ -3,12 +3,12 @@ title: Hizmet durumuna genel bakış | Microsoft Docs
 description: Azure uygulamalarınızın geçerli ve gelecekteki Azure hizmet sorunlarından ve bakımda nasıl etkilendiğine ilişkin kişiselleştirilmiş bilgiler.
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: 280be9f0df1f94dad59c1af147d499860571f86e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097260"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146907"
 ---
 # <a name="service-health-overview"></a>Hizmet durumuna genel bakış
 
@@ -41,6 +41,12 @@ Hizmet sistem durumu panonuzu başlatmak için Portal panonuzda hizmet durumu ku
 Sahip olduğunuz ve sorundan etkilenmiş olabileceğiniz kaynakların belirli bir listesini görmek için **olası etki** sekmesini seçin. Takımınızla paylaşmak için bu kaynakların CSV listesini indirebilirsiniz.
 
 ![Hizmet sorununu yönetme-etki](./media/service-health-overview/azure-service-health-overview-4.png)
+
+## <a name="see-emerging-issues-which-may-impact-your-services"></a>Hizmetleri etkileyebilecek sorunları ortaya çıkan sorunlara bakın
+
+Etkilenen müşterilere hedeflenen iletişimin gönderilebilmesi için, yaygın olarak hizmet sorunlarının [Azure durum sayfasına](https://status.azure.com) nakledilebileceği durumlar vardır. Azure hizmet durumu 'nun sizi etkileyebilecek sorunların kapsamlı bir görünümünü sağladığından emin olmak için, etkin Azure durum sayfası sorunları, *gelişen sorunlar*olarak hizmet durumu 'nda ortaya çıkmış olabilir. Azure durum sayfasında etkin bir olay olduğunda, hizmet durumu 'nda ortaya çıkan bir sorun başlığı görüntülenir. Sorunun tüm ayrıntılarını görmek için başlık ' a tıklayın.
+
+![Gelişen hizmet sorunu](./media/service-health-overview/azure-service-health-emerging-issue.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>Bağlantıları ve indirilebilir açıklamaları alın 
 

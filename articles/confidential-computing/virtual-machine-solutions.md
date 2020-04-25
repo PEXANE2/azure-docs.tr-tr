@@ -1,0 +1,152 @@
+---
+title: Sanal makinelerde Azure gizli bilgi işlem çözümleri
+description: Sanal makinelerde Azure gizli bilgi işlem çözümleri hakkında bilgi edinin.
+author: JBCook
+ms.service: virtual-machines
+ms.subservice: workloads
+ms.workload: infrastructure
+ms.topic: conceptual
+ms.date: 04/06/2020
+ms.author: JenCook
+ms.openlocfilehash: 8db477f87f344b28e8941e185c70c81d9b860a72
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82149482"
+---
+# <a name="solutions-on-azure-virtual-machines"></a>Azure sanal makinelerinde çözümler
+
+Bu makalede, [Intel yazılım uzantısı koruyucusu](https://software.intel.com/sgx) (Intel SGX) tarafından desteklenen Intel Işlemcileri çalıştıran Azure gizli bilgi işlem sanal makinelerini (VM 'ler) dağıtma hakkında bilgiler yer almaktadır. 
+
+## <a name="azure-confidential-computing-vm-sizes"></a>Azure gizli bilgi işlem VM boyutları
+
+Azure gizli bilgi işlem sanal makineleri, bulutta işlendiği sırada verilerinizin ve kodunuzun confidentially ve bütünlüğünü korumak için tasarlanmıştır 
+
+[DCsv2 serisi](../virtual-machines/dcv2-series.md) VM 'Ler en son ve en son gizli bilgi işlem boyutu ailesidir. Bu VM 'Ler daha büyük bir dağıtım özelliği yelpazesi destekler, 2x disk belleği önbelleği (EPC) ve DC Serisi VM 'lerimize kıyasla daha büyük bir boyut seçimi vardır. [DC Serisi](../virtual-machines/sizes-previous-gen.md#preview-dc-series) VM 'ler Şu anda önizleme aşamasındadır ve genel kullanıma sunulmayacak ve kullanım dışı bırakılacak.
+
+[Hızlı başlangıç öğreticisini](quick-create-marketplace.md)izleyerek Microsoft ticari Marketi aracılığıyla bir DCSV2 serisi VM dağıtmaya başlayın.
+
+### <a name="current-available-sizes-and-regions"></a>Kullanılabilir geçerli Boyutlar ve bölgeler
+
+Kullanılabilir bölgeler ve kullanılabilirlik bölgelerinde genel olarak kullanılabilen tüm gizli işlem VM boyutlarının bir listesini almak için [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest)'de aşağıdaki komutu çalıştırın:
+
+```azurecli-interactive
+az vm list-skus 
+    --size dc 
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
+    --all 
+    --output table
+```
+
+2020 Nisan itibariyle, bu SKU 'Lar aşağıdaki bölgelerde ve kullanılabilirlik bölgelerinde kullanılabilir:
+
+```output
+Name              Locations      AZ_a
+----------------  -------------  ------
+Standard_DC8_v2   eastus         2
+Standard_DC1s_v2  eastus         2
+Standard_DC2s_v2  eastus         2
+Standard_DC4s_v2  eastus         2
+Standard_DC8_v2   CanadaCentral
+Standard_DC1s_v2  CanadaCentral
+Standard_DC2s_v2  CanadaCentral
+Standard_DC4s_v2  CanadaCentral
+Standard_DC8_v2   uksouth        3
+Standard_DC1s_v2  uksouth        3
+Standard_DC2s_v2  uksouth        3
+Standard_DC4s_v2  uksouth        3
+Standard_DC8_v2   CentralUSEUAP
+Standard_DC1s_v2  CentralUSEUAP
+Standard_DC2s_v2  CentralUSEUAP
+Standard_DC4s_v2  CentralUSEUAP
+```
+
+Yukarıdaki boyutların daha ayrıntılı bir görünümü için aşağıdaki komutu çalıştırın:
+
+```azurecli-interactive
+az vm list-skus 
+    --size dc 
+    --query "[?family=='standardDCSv2Family']"
+```
+
+## <a name="deployment-considerations"></a>Dağıtma konuları
+
+10 dakikadan kısa bir süre içinde DCsv2 serisi bir sanal makine dağıtmak için hızlı başlangıç öğreticisini izleyin. 
+
+- **Azure aboneliği** – bir gizli BILGI işlem VM örneği dağıtmak için bir Kullandıkça Öde aboneliğine veya diğer satın alma seçeneğine göz önünde bulundurun. [Ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)kullanıyorsanız, uygun Azure işlem çekirdeği miktarı için kotayı kullanamazsınız.
+
+- **Fiyatlandırma ve bölgesel kullanılabilirlik** - [sanal makine fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)DCsv2 serisi VM 'ler için fiyatlandırmayı bulun. Azure bölgelerinde kullanılabilirlik için [bölgeye göre kullanılabilir ürünleri](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleyin.
+
+
+- **Çekirdek kotası** – Azure aboneliğinizdeki çekirdek kotasını varsayılan değerden artırmanız gerekebilir. Aboneliğiniz Ayrıca, DCsv2-Series dahil olmak üzere belirli VM boyutu ailelerinde dağıtabileceğiniz çekirdek sayısını da sınırlayabilir. Kota artışı istemek için, ücretsiz [bir çevrimiçi müşteri destek isteği açın](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests) . Varsayılan sınırlar, abonelik kategorime bağlı olarak değişebilir.
+
+  > [!NOTE]
+  > Büyük ölçekli kapasite gereksinimleriniz varsa Azure desteği 'ne başvurun. Azure kotaları, kapasite garantisi değil kredi limitlerdir. Kotasından bağımsız olarak yalnızca kullandığınız çekirdekler için ücretlendirilirsiniz.
+  
+- **Yeniden boyutlandırma** – özel donanımlar nedeniyle, yalnızca aynı büyüklükte aile içindeki gizli bilgi işlem örneklerini yeniden boyutlandırabilirsiniz. Örneğin, bir DCsv2 serisi VM 'yi yalnızca bir DCsv2 serisi boyutundan diğerine yeniden boyutlandırabilirsiniz. Gizli olmayan bir bilgi işlem boyutunun gizli bilgi işlem boyutuna göre yeniden boyutlandırılması desteklenmez.  
+
+- **Görüntü** : gizli bilgi işlem örnekleri üzerinde Intel Software Guard uzantısı (Intel SGX) desteği sağlamak için, tüm dağıtımların 2. nesil görüntülerde çalıştırılması gerekir. Azure gizli bilgi işlem, Ubuntu 18,04 Gen 2, Ubuntu 16,04 Gen 2 ve Windows Server 2016 Gen 2 üzerinde çalışan iş yüklerini destekler. Desteklenen ve desteklenmeyen senaryolar hakkında daha fazla bilgi edinmek için [Azure 'da 2. nesil VM 'ler için destek](../virtual-machines/linux/generation-2.md) konusunu okuyun. 
+
+- **Depolama** – Azure gizli bilgi işlem sanal makine veri diskleri ve kısa ömürlü işletim sistemi disklerimiz NVMe disklerinde. Örnekler, Ultra SSD veya Standart HDD değil yalnızca Premium SSD ve Standart SSD disklerini destekler. Sanal makine boyutu **DC8_v2** Premium depolamayı desteklemez. 
+
+- **Disk şifrelemesi** – gizli işlem örnekleri şu anda disk şifrelemeyi desteklemez. 
+
+## <a name="high-availability-and-disaster-recovery-considerations"></a>Yüksek kullanılabilirlik ve olağanüstü durum kurtarma konuları
+
+Azure 'da sanal makineler kullanırken, kapalı kalma süresini önlemek için yüksek kullanılabilirlik ve olağanüstü durum kurtarma çözümü uygulamaktan siz sorumlusunuz. 
+
+Azure gizli bilgi işlem, şu anda Kullanılabilirlik Alanları aracılığıyla bölge yedekliliği desteklemez. Gizli bilgi işlem için en yüksek kullanılabilirlik ve yedeklilik için [kullanılabilirlik kümelerini](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)kullanın. Donanım kısıtlamaları nedeniyle, gizli bilgi işlem örneklerinin kullanılabilirlik kümelerinin yalnızca en fazla 10 güncelleştirme etki alanı olabilir. 
+
+## <a name="deploying-via-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu aracılığıyla dağıtma 
+
+Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenizi sağlayan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve Etiketler gibi yönetim özelliklerini kullanırsınız.
+
+Azure Resource Manager şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../azure-resource-manager/templates/overview.md).
+
+ARM şablonunda bir DCsv2 serisi VM dağıtmak için [sanal makine kaynağını](../virtual-machines/windows/template-description.md)kullanacaksınız. **VMSize** ve **ImageReference**için doğru özellikleri belirttiğinizden emin olmanız gerekir.
+
+### <a name="vm-size"></a>VM Boyutu
+
+Sanal makine kaynağında ARM şablonunuzda aşağıdaki boyutlardan birini belirtin. Bu dize, **özelliklerde** **VMSize** olarak konur.
+
+```json
+  [
+        "Standard_DC1s_v2",
+        "Standard_DC2s_v2",
+        "Standard_DC4s_v2",
+        "Standard_DC8_v2"
+      ],
+```
+
+### <a name="gen2-os-image"></a>Gen2 OS görüntüsü
+
+**Özellikler**altında, **storageprofile**altındaki bir görüntüye de başvurmanız gerekir. **ImageReference**için aşağıdaki görüntülerden *yalnızca birini* kullanın.
+
+```json
+      "2016-datacenter-gensecond": {
+        "offer": "WindowsServer",
+        "publisher": "MicrosoftWindowsServer",
+        "sku": "2016-datacenter-gensecond",
+        "version": "latest"
+      },
+        "18_04-lts-gen2": {
+        "offer": "UbuntuServer",
+        "publisher": "Canonical",
+        "sku": "18_04-lts-gen2",
+        "version": "latest"
+      },
+      "16_04-lts-gen2": {
+        "offer": "UbuntuServer",
+        "publisher": "Canonical",
+        "sku": "16_04-lts-gen2",
+        "version": "latest"
+      }
+```
+
+## <a name="next-steps"></a>Sonraki Adımlar 
+
+Bu makalede, gizli bilgi işlem sanal makinesi oluştururken gereken nitelikleri ve konfigürasyonları öğrenmiş olursunuz. Artık bir DCsv2 serisi VM dağıtmak için Azure Market ' e gidebilirsiniz.
+
+[!div class=”nextstepaction”]
+[Azure Marketi 'nde DCsv2 serisi bir sanal makine dağıtma](quick-create-marketplace.md)

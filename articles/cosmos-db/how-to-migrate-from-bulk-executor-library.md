@@ -1,96 +1,100 @@
 ---
-title: Azure Cosmos DB .NET V3 SDK'daki toplu yürütme kitaplığından toplu desteğe geçiş
-description: Azure Cosmos DB SDK V3'teki toplu yürütme kitaplığını kullanarak uygulamanızı nasıl geçirebilirsiniz öğrenin
+title: Toplu yürütücü kitaplığından Azure Cosmos DB .NET v3 SDK 'daki toplu desteğe geçiş yapın
+description: Toplu yürütücü kitaplığı 'nı kullanarak uygulamanızı Azure Cosmos DB SDK V3 'deki toplu desteğe geçirmeyi öğrenin
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/24/2020
 ms.author: maquaran
-ms.openlocfilehash: 820a5398d84122659b1676b7d5722bce08b1837d
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: d63b34c118cd719f73abbd6711dcb3ef02a6fb28
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80755980"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146301"
 ---
-# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Azure Cosmos DB .NET V3 SDK'daki toplu yürütme kitaplığından toplu desteğe geçiş
+# <a name="migrate-from-the-bulk-executor-library-to-the-bulk-support-in-azure-cosmos-db-net-v3-sdk"></a>Toplu yürütücü kitaplığından Azure Cosmos DB .NET v3 SDK 'daki toplu desteğe geçiş yapın
 
-Bu makalede, .NET toplu [yürütme kitaplığını](bulk-executor-dot-net.md) kullanan varolan bir uygulama kodunu .NET SDK'nın en son sürümünde [toplu destek](tutorial-sql-api-dotnet-bulk-import.md) özelliğine geçirmek için gerekli adımlar açıklanmaktadır.
+Bu makalede, .net [toplu yürütücü kitaplığı](bulk-executor-dot-net.md) 'nı kullanan mevcut bir uygulamanın kodunu .NET SDK 'sının en son sürümündeki [toplu destek](tutorial-sql-api-dotnet-bulk-import.md) özelliğine geçirmek için gereken adımlar açıklanmaktadır.
 
-## <a name="enable-bulk-support"></a>Toplu destek etkinleştirme
+## <a name="enable-bulk-support"></a>Toplu desteği etkinleştir
 
-`CosmosClient` [AllowBulkExecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) yapılandırması aracılığıyla örnekte toplu destek etkinleştirin:
+[Allowbulkexecution](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.allowbulkexecution) yapılandırması aracılığıyla `CosmosClient` örnekte toplu desteği etkinleştirin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Initialization":::
 
-## <a name="create-tasks-for-each-operation"></a>Her işlem için Görevler Oluşturma
+## <a name="create-tasks-for-each-operation"></a>Her işlem için görev oluşturma
 
-.NET SDK'daki toplu destek, [Görev Paralel Kitaplığı'ndan](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) yararlanarak ve eşzamanlı olarak gerçekleşen gruplandırma işlemlerini yürütmektedir. 
+.NET SDK 'da toplu destek, [görev paralel kitaplığı](https://docs.microsoft.com/dotnet/standard/parallel-programming/task-parallel-library-tpl) ve aynı anda oluşan gruplandırma işlemleri üzerinden çalışarak işe yarar. 
 
-Belge veya işlem listenizi giriş parametresi olarak alacak tek bir yöntem yoktur, ancak toplu olarak yürütmek istediğiniz her işlem için bir Görev oluşturmanız gerekir.
+SDK 'da belge veya işlem listenizi giriş parametresi olarak alacak tek bir yöntem yoktur, ancak bunun yerine, toplu olarak yürütmek istediğiniz her işlem için bir görev oluşturmanız ve ardından bunların tamamlanmasını beklemeniz yeterlidir.
 
-Örneğin, ilk girdiniz her öğenin aşağıdaki şema sahip olduğu öğelerin listesiyse:
+Örneğin, ilk giriş, her öğenin aşağıdaki şemaya sahip olduğu öğelerin bir listesidir:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="Model":::
 
-Toplu alma işlemi yapmak istiyorsanız (BulkExecutor.BulkImportAsync kullanmaya benzer), her madde `CreateItemAsync` değeriyle eşzamanlı çağrılar yapmanız gerekir. Örnek:
+Toplu içeri aktarma yapmak istiyorsanız (Bulkyürütücü. Bulkımportasync kullanmaya benzer), için `CreateItemAsync`eşzamanlı olarak çağrılarına sahip olmanız gerekir. Örneğin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkImport":::
 
-Toplu *güncelleştirme* yapmak istiyorsanız [(BulkExecutor.BulkUpdateAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)kullanmaya benzer), madde değerini güncelledikten sonra yönteme `ReplaceItemAsync` eşzamanlı çağrılar yapmanız gerekir. Örnek:
+Toplu *güncelleştirme* yapmak Istiyorsanız ( [Bulkyürütücü. bulkupdateasync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkupdateasync)kullanmaya benzer), öğe değerini güncelleştirdikten sonra metoda eşzamanlı olarak `ReplaceItemAsync` çağrı yapmanız gerekir. Örneğin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkUpdate":::
 
-Ve toplu *silme* yapmak istiyorsanız [(BulkExecutor.BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)kullanarak benzer), her öğenin `DeleteItemAsync` `id` ve bölüm anahtarı ile eşzamanlı aramalar olması gerekir. Örnek:
+Toplu *silme* yapmak Istiyorsanız ( [Bulkyürütücü. BulkDeleteAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkdeleteasync)ile benzer), her bir öğenin `DeleteItemAsync` `id` ve bölüm anahtarıyla, için eşzamanlı olarak çağrılarına sahip olmanız gerekir. Örneğin:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkDelete":::
 
-## <a name="capture-task-result-state"></a>Görev sonuç durumunu yakalama
+## <a name="capture-task-result-state"></a>Görev sonucu durumunu yakala
 
-Önceki kod örneklerinde, eşzamanlı bir görev listesi oluşturdunuz `CaptureOperationResponse` ve bu görevlerin her birinde yöntemi çağırdınız. Bu yöntem, herhangi bir hata yakalayarak ve [istek birimleri kullanımını](request-units.md)izleyerek, BulkExecutor gibi benzer bir yanıt *şema* korumak sağlayan bir uzantısıdır.
+Önceki kod örneklerinde, eş zamanlı bir görev listesi oluşturdunuz ve bu görevlerin her birinde `CaptureOperationResponse` yöntemi dentik. Bu yöntem, tüm hataları yakalayıp [istek birimlerinin kullanımını](request-units.md)izleyerek *benzer bir yanıt şemasını* bulkyürütücü olarak korumamıza imkan tanıyan bir uzantıdır.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="CaptureOperationResult":::
 
-Nerede `OperationResponse` olarak ilan edilir:
+`OperationResponse` Şöyle bildirildiği konum:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="OperationResult":::
 
-## <a name="execute-operations-concurrently"></a>İşlemleri aynı anda yürütme
+## <a name="execute-operations-concurrently"></a>İşlemleri eşzamanlı olarak Yürüt
 
-Görev listesi tanımlandıktan sonra, hepsi tamamlanana kadar bekleyin. Toplu işleminizin kapsamını aşağıdaki kod snippet'inde gösterildiği gibi tanımlayarak görevlerin tamamlanmasını izleyebilirsiniz:
+Tüm görev listesinin kapsamını izlemek için bu yardımcı sınıfı kullanıyoruz:
+
+   :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="BulkOperationsHelper":::
+
+`ExecuteAsync` Yöntemi tüm işlemler tamamlanana kadar bekler ve bunu şöyle kullanabilirsiniz:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="WhenAll":::
 
-## <a name="capture-statistics"></a>İstatistikleri yakalama
+## <a name="capture-statistics"></a>İstatistikleri yakala
 
-Önceki kod tüm işlemler tamamlanana kadar bekler ve gerekli istatistikleri hesaplar. Bu istatistikler toplu uygulayıcı kitaplığın [BulkImportResponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)benzer.
+Önceki kod, tüm işlemler tamamlanana kadar bekler ve gerekli istatistikleri hesaplar. Bu istatistikler, toplu yürütücü kitaplığı 'nın [Bulkımportresponse](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkimport.bulkimportresponse)ile benzerdir.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration/Program.cs" ID="ResponseType":::
 
-İçeriği: `BulkOperationResponse`
+`BulkOperationResponse` Şunu içerir:
 
-1. Toplu destek yoluyla operasyon listesini işlemek için gereken toplam süre.
-1. Başarılı operasyonların sayısı.
+1. Toplu destek aracılığıyla işlem listesini işlemek için harcanan toplam süre.
+1. Başarılı işlem sayısı.
 1. Tüketilen istek birimlerinin toplamı.
-1. Hata lar varsa, günlüğe kaydetme ve tanımlama amacıyla özel durum ve ilişkili öğeyi içeren bir tuples listesini görüntüler.
+1. Hata varsa, günlüğe kaydetme ve tanımlama amacıyla özel durumu ve ilişkili öğeyi içeren başlıkların bir listesini görüntüler.
 
-## <a name="retry-configuration"></a>Yapılandırmayı yeniden deneyin
+## <a name="retry-configuration"></a>Yapılandırmayı yeniden dene
 
-Toplu yürütücü kitaplığı, denetimi kitaplıka devretmek `0` için RetryOptions'ı `MaxRetryWaitTimeInSeconds` `MaxRetryAttemptsOnThrottledRequests` ve [RetryOptions'ı](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) ayarlamak için belirtilen [kılavuza](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) sahipti.
+Toplu yürütücü kitaplığı, [guidance](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account) `MaxRetryWaitTimeInSeconds` denetimin kitaplığa atamasını sağlamak için `MaxRetryAttemptsOnThrottledRequests` ve [RetryOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) olarak `0` ayarlanması için bahsedilen kılavuza sahipti.
 
-.NET SDK'da toplu destek için gizli bir davranış yoktur. Yeniden deneme seçeneklerini doğrudan [CosmosClientOptions.MaxRetryDenemeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) ve [CosmosClientOptions.MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)üzerinden yapılandırabilirsiniz.
+.NET SDK 'da toplu destek için gizli bir davranış yoktur. Yeniden deneme seçeneklerini [Cosmosclientoptions. MaxRetryAttemptsOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretryattemptsonratelimitedrequests) ve [Cosmosclientoptions. MaxRetryWaitTimeOnRateLimitedRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.maxretrywaittimeonratelimitedrequests)aracılığıyla doğrudan yapılandırabilirsiniz.
 
 > [!NOTE]
-> Sağlanan istek birimlerinin veri miktarına bağlı olarak beklenenden çok daha düşük olduğu durumlarda, bunları yüksek değerlere ayarlamayı düşünebilirsiniz. Toplu işlem daha uzun sürer, ancak daha yüksek yeniden denemeler nedeniyle tamamen başarılı olma şansı daha yüksektir.
+> Sağlanan istek birimlerinin, veri miktarına göre beklenenden çok daha düşük olduğu durumlarda, bunları yüksek değerlere ayarlamayı düşünmek isteyebilirsiniz. Toplu işlem daha uzun sürer, ancak daha yüksek yeniden denemeler nedeniyle tamamen başarılı olma şansı daha yüksektir.
 
 ## <a name="performance-improvements"></a>Performans iyileştirmeleri
 
-.NET SDK'daki diğer işlemlerde olduğu gibi, akış API'lerini kullanmak daha iyi performans sağlar ve gereksiz serileştirmeyi önler. 
+.NET SDK ile diğer işlemlerde olduğu gibi, Stream API 'Leri kullanılması daha iyi performansa neden olur ve gereksiz Serileştirmeyi önler. 
 
-Akış API'lerinin kullanılması, yalnızca kullandığınız verilerin yapısı bir bayt akışıyla (örneğin, dosya akışları) eşleşirse mümkündür. Bu gibi durumlarda, `CreateItemStreamAsync` `ReplaceItemStreamAsync`, `DeleteItemStreamAsync` veya yöntemleri `ResponseMessage` kullanarak ve `ItemResponse`(yerine) ile çalışma elde edilebilir iş kısmını artırır.
+Stream API 'Lerinin kullanılması yalnızca kullandığınız verilerin doğası bir bayt akışı (örneğin, dosya akışları) ile eşleşiyorsa mümkündür. Bu gibi `CreateItemStreamAsync`durumlarda,, `ReplaceItemStreamAsync`, veya `DeleteItemStreamAsync` yöntemlerini kullanarak `ResponseMessage` (yerine `ItemResponse`), elde edilen aktarım hızını artırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * .NET SDK sürümleri hakkında daha fazla bilgi edinmek için [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) makalesine bakın.
-* GitHub'dan tüm [geçiş kaynak kodunu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) alın.
-* [GitHub'da ek toplu örnekler](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)
+* GitHub 'dan tüm [geçiş kaynak kodunu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkExecutorMigration) alın.
+* [GitHub 'da ek toplu örnekler](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/BulkSupport)

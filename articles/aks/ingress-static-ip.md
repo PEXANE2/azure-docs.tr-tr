@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) kümesinde statik bir genel IP adres
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3a71666a5391194e63566d61cb2d054eed4e271c
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100949"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145493"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde statik bir genel IP adresi ile giriş denetleyicisi oluşturma
 
@@ -62,7 +62,7 @@ Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması ger
 > Aşağıdaki örnek, *Giriş-Basic*adlı giriş kaynakları için bir Kubernetes ad alanı oluşturur. Gerektiğinde kendi ortamınız için bir ad alanı belirtin. AKS kümeniz RBAC etkinleştirilmemişse, helk komutlarına ekleyin `--set rbac.create=false` .
 
 > [!TIP]
-> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, SSL geçişi çalışmaz.
+> Kümenizdeki kapsayıcılara yönelik [istemci kaynak IP korumasını][client-source-ip] etkinleştirmek Istiyorsanız, Helm install komutuna ekleyin `--set controller.service.externalTrafficPolicy=Local` . İstemci kaynak IP 'si, *Için X-iletilen-için*istek üstbilgisinde depolanır. İstemci kaynak IP koruması etkinken bir giriş denetleyicisi kullanılırken, TLS geçişi çalışmaz.
 
 Aşağıdaki betiği, giriş denetleyicinizin **IP adresi** ve FQDN öneki için kullanmak istediğiniz benzersiz bir **ad** ile güncelleştirin:
 
@@ -287,7 +287,7 @@ certificate.cert-manager.io/tls-secret created
 
 Kubernetes giriş denetleyicinizin FQDN 'sine bir Web tarayıcısı açın (örneğin,) *https://demo-aks-ingress.eastus.cloudapp.azure.com*.
 
-Bu örneklerde kullanırken `letsencrypt-staging`, verilen SSL sertifikasına tarayıcı tarafından güvenilmiyor. Uygulamanıza devam etmek için uyarı isteğini kabul edin. Sertifika bilgileri, bu *sahte bir ara x1* sertifikasının, Şifreleyebilmesine göre verildiğini gösterir. Bu sahte sertifika, `cert-manager` isteğin doğru bir şekilde işlendiğini ve sağlayıcıdan bir sertifika alındığını gösterir:
+Bu örneklerde kullanırken `letsencrypt-staging`, verilen TLS/SSL sertifikasına tarayıcı tarafından güvenilmiyor. Uygulamanıza devam etmek için uyarı isteğini kabul edin. Sertifika bilgileri, bu *sahte bir ara x1* sertifikasının, Şifreleyebilmesine göre verildiğini gösterir. Bu sahte sertifika, `cert-manager` isteğin doğru bir şekilde işlendiğini ve sağlayıcıdan bir sertifika alındığını gösterir:
 
 ![Hazırlama sertifikasını şifreleyelim](media/ingress/staging-certificate.png)
 

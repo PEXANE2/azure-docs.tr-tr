@@ -1,25 +1,25 @@
 ---
-title: Azure Anahtar Kasası dağıtım şablonu | Azure Marketi
-description: Yeni bir Azure Anahtar Kasası örneğini dağıtmak için gereken Azure Kaynak Yöneticisi şablonu listelenir.
+title: Azure Key Vault dağıtım şablonu | Azure Marketi
+description: Yeni bir Azure Key Vault örneği dağıtmak için gereken Azure Resource Manager şablonunu listeler.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 0d08caf5444216666e7296b830f0af6af606dd4f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a6e7260bb761db5cfa6884baf29317a004ab1452
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273843"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147036"
 ---
 # <a name="key-vault-deployment-template"></a>Anahtar kasası dağıtım şablonu
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikadaki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) yönergeleri izleyin.
 
-Aşağıdaki Azure Kaynak Yöneticisi şablonu yeni bir Azure Anahtar Kasası örneğini tanımlar.  Anahtar kasa sertifikası [oluştur](cpp-create-key-vault-cert.md)makalesinde kullanılır. 
+Aşağıdaki Azure Resource Manager şablonu yeni bir Azure Key Vault örneği tanımlar.  [Anahtar Kasası sertifikası oluşturma](cpp-create-key-vault-cert.md)makalesinde kullanılır.
 
 ```json
 {

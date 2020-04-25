@@ -1,45 +1,45 @@
 ---
-title: Azure Marketi için bir kullanıcı VM görüntüsü oluşturma
-description: Kullanıcı VM görüntüsü oluşturmak için gereken adımları ve başvuruları listeler.
+title: Azure Marketi için bir Kullanıcı VM görüntüsü oluşturma
+description: Bir Kullanıcı VM görüntüsü oluşturmak için gereken adımları ve başvuruları listeler.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 6bbee7f53cb9a61b72bdbbd941a3a0401f5b913b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9d82d50769925480d461c122096c3919d7e8940d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273962"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146562"
 ---
 # <a name="create-a-user-vm-image"></a>Kullanıcı VM görüntüsü oluşturma
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin hareketli yönetimine İş Ortağı Merkezi'ne başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine teknik varlıklarınızı oluştur'daki](https://aka.ms/AzureVMTechAsset) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin Iş Ortağı Merkezi 'nin hareketli yönetimine başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine teknik varlıklarınızı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) bölümündeki yönergeleri izleyin.
 
-Bu makalede, genelleştirilmiş bir VHD'den yönetilmeyen bir görüntü oluşturmak için gereken iki genel adım açıklanmaktadır.  Referanslar her adımda size rehberlik etmek için sağlanır: görüntüyü yakalayın ve görüntüyü genelleştirin.
+Bu makalede, genelleştirilmiş bir VHD 'den yönetilmeyen bir görüntü oluşturmak için gereken iki genel adım açıklanmaktadır.  Her adımda size rehberlik etmek için başvurular sağlanır: görüntüyü yakalama ve görüntüyü Genelleştirme.
 
 
-## <a name="capture-the-vm-image"></a>VM görüntüsünü yakalama
+## <a name="capture-the-vm-image"></a>VM görüntüsünü yakala
 
-Erişim yaklaşımınıza karşılık gelen VM'yi yakalamayla ilgili aşağıdaki makalede talimatları kullanın:
+Erişim yaklaşımınıza karşılık gelen VM 'yi yakalamak için aşağıdaki makaledeki yönergeleri kullanın:
 
--  PowerShell: [Azure VM'den yönetilmeyen bir VM görüntüsü nasıl oluşturulur?](../../../virtual-machines/windows/capture-image-resource.md)
--  Azure CLI: [Sanal makine veya VHD görüntüsü nasıl oluşturulur?](../../../virtual-machines/linux/capture-image.md)
--  API: [Sanal Makineler - Yakalama](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
+-  PowerShell: [bir Azure VM 'den YÖNETILMEYEN VM görüntüsü oluşturma](../../../virtual-machines/windows/capture-image-resource.md)
+-  Azure CLı: [bir sanal makinenin veya VHD 'nin görüntüsünü oluşturma](../../../virtual-machines/linux/capture-image.md)
+-  API: [sanal makineler-yakala](https://docs.microsoft.com/rest/api/compute/virtualmachines/capture)
 
 
 ## <a name="generalize-the-vm-image"></a>VM görüntüsünü genelleştirin
 
-Daha önce genelleştirilmiş bir VHD kullanıcı görüntüsü oluşturduğunuziçin, aynı zamanda genelleştirilmiş olmalıdır.  Yine, erişim mekanizmasınıza karşılık gelen aşağıdaki makaleyi seçin.  (Diskinizi yakaladığınızda zaten genellemiş olabilirsiniz.)
+Kullanıcı görüntüsünü önceden genelleştirilmiş bir VHD 'den oluşturmuş olduğunuzdan, genelleştirilmiş de genelleştirilmelidir.  Yine, erişim mekanizmanıza karşılık gelen aşağıdaki makaleyi seçin.  (Diski yakalandığında zaten genelleştirilmiş bir durum olabilir.)
 
--  PowerShell: [VM'yi genelleştirin](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
--  Azure CLI: [Adım 2: VM görüntüsü oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
--  API: [Sanal Makineler - Genelleme](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
+-  PowerShell: [VM 'Yi Genelleştirme](https://docs.microsoft.com/azure/virtual-machines/windows/sa-copy-generalized#generalize-the-vm)
+-  Azure CLı: [2. Adım: VM görüntüsü oluşturma](https://docs.microsoft.com/azure/virtual-machines/linux/capture-image#step-2-create-vm-image)
+-  API: [sanal makineler-Genelleştir](https://docs.microsoft.com/rest/api/compute/virtualmachines/generalize)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından [bir sertifika oluşturup](cpp-create-key-vault-cert.md) yeni bir Azure Anahtar Kasası'nda saklarsınız.  Bu sertifika, VM'ye güvenli bir WinRM bağlantısı kurmak için gereklidir.
+Daha sonra [bir sertifika oluşturup](cpp-create-key-vault-cert.md) yeni bir Azure Key Vault depolayacaksınız.  Bu sertifika, sanal makineye güvenli bir WinRM bağlantısı kurmak için gereklidir.

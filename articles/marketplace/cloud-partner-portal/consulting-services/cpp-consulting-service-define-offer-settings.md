@@ -1,78 +1,78 @@
 ---
-title: Danışmanlık hizmeti teklifi için teklif ayarlarını tanımla | Azure Marketi
-description: Azure Marketi için Bulut İş Ortağı Portalı'ndaki bir Azure veya Dynamics 365 danışmanlık hizmeti teklifinde teklif ayarlarını tanımlayın.
+title: Danışmanlık hizmeti teklifi için teklif ayarlarını tanımlayın | Azure Marketi
+description: Azure Marketi için Bulut İş Ortağı Portalı Azure veya Dynamics 365 danışmanlık hizmeti teklifinin teklif ayarlarını tanımlayın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 6a3c168d0bd13e7c335841ac4016f18464cd50d5
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 406a37a1ef946b1c3ceb0d7b02ba318f423dcf53
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80985125"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146687"
 ---
 # <a name="offer-settings-tab"></a>Teklif ayarları sekmesi
 
 >[!Important]
->13 Nisan 2020'den itibaren Danışmanlık hizmet tekliflerinizi Yönetim Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Danışmanlık hizmeti oluşturma genel bakış](https://aka.ms/AzureCreateConsultingService) talimatları izleyin.
+>13 Nisan 2020 ' den itibaren, danışmanlık hizmeti tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [danışmanlık hizmeti oluşturmaya genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-consulting-service-offer) ' daki yönergeleri izleyin.
 
-Yeni **Teklif** ekranında ilk adım teklif kimliğini oluşturmaktır. Teklif kimliği üç bölümden oluşur: **Teklif Kimliği,** **Yayıncı Kimliği**ve **Ad**. Bu bölümlerin her biri aşağıdaki bölümlerde ele alınmıştır.
+**Yeni teklif** ekranında, ilk adım teklif kimliğini oluşturmaktır. Teklif kimliği üç bölümden oluşur: **TEKLIF kimliği**, **Yayımcı kimliği**ve **ad**. Bu bölümlerin her biri aşağıdaki bölümlerde ele alınmıştır.
 
-![Yeni bir danışmanlık hizmeti teklifi oluşturun - Teklif Ayarları sekmesi](media/consultingoffer-settings-tab.png)
+![Yeni bir danışmanlık hizmeti teklifi teklif ayarları sekmesi oluşturma](media/consultingoffer-settings-tab.png)
 
 
-### <a name="offer-id"></a>Teklif Kimliği*
+### <a name="offer-id"></a>Teklif KIMLIĞI *
 
-Bu tanımlayıcı, teklifi ilk gönderdiğiniz de oluşturduğunuz benzersiz bir addır. Yalnızca küçük alfasayısal karakterlerden, tirelerden veya alt çizgilerden oluşmalıdır. **Teklif Kimliği** URL'de görünür ve arama motoru sonuçlarını etkiler. Bir örnek *yourcompanyname_exampleservice.*
+Bu tanımlayıcı, teklifi ilk gönderdiğinizde oluşturduğunuz benzersiz bir addır. Yalnızca küçük harf alfasayısal karakter, kısa çizgi veya alt çizgi içermelidir. **TEKLIF KIMLIĞI** URL 'de görünür ve arama motoru sonuçlarını etkiler. Örnek *yourcompanyname_exampleservice*.
 
-Örnekte gösterildiği gibi, **Teklif Kimliği,** benzersiz bir tanımlayıcı oluşturmak için yayımcı kimliğinize eklenir. Bu benzersiz tanımlayıcı rezerve edilebilir ve arama motorları tarafından dizine kalıcı bir bağlantı olarak maruz kalır.
+Örnekte gösterildiği gibi, benzersiz bir tanımlayıcı oluşturmak için, **TEKLIF kimliği** yayımcı kimliğinize eklenir. Bu benzersiz tanımlayıcı, bir kalıcı bağlantı olarak sunulur ve arama motorları tarafından dizinlenebilir.
 
 >[!Note]
->Bir teklif canlı olarak yayınlanındıktan sonra, tanımlayıcısı güncelleştirilemez.
+>Bir teklif canlı olduktan sonra, tanımlayıcısı güncelleştirilemiyor.
 
 
-### <a name="publisher-id"></a>Yayıncı Kimliği*
+### <a name="publisher-id"></a>Yayımcı KIMLIĞI *
 
-Bu tanımlayıcı hesabınızla ilgilidir. Kuruluş hesabınızla oturum açtıktan sonra **Publisher Kimliğiniz** açılan menüde gösterir.
+Bu tanımlayıcı hesabınızla ilgilidir. Kuruluş hesabınızla oturum açtıktan sonra, **Yayımcı kimliğiniz** açılan menüde görünür.
 
 
-### <a name="name"></a>İsim*
+### <a name="name"></a>Ada
 
-Bu dize, AppSource'ta veya Azure Marketi'nde teklif adı olarak görüntülenir. **Ad** kutusu 50 karakterle sınırlıdır. Gözden geçirenin, süreyi ekleyip teklif adınıza yazı sunmak için başlığınızı düzeltmesi gerekebilir.
+Bu dize, AppSource 'ta veya Azure Marketi 'nde teklif adı olarak görüntülenir. **Ad** kutusu 50 karakterle sınırlıdır. Gözden geçirenin, teklif adınızın süresini ve teklif türünü eklemek için başlığınız düzenlemesi gerekebilir.
 
-Aşağıdaki örnek, teklif adının nasıl bir araya getirildiğini gösterir. 
+Aşağıdaki örnek, teklif adının nasıl derlendiğini gösterir. 
 
 ![Yeni bir danışmanlık hizmeti teklifi oluşturun](media/cppsampleconsultingoffer.png)
 
 Teklif adı dört bölümden oluşur:
 
--   **Süre:** Editörün **Storefront Ayrıntılar** sekmesinde tanımlanır. Süre saat, gün veya hafta cinsinden ifade edilebilir.
--   **Hizmet türü:** Editörün **Storefront Ayrıntılar** sekmesinde tanımlanır. Hizmet türleri `Assessment`, `Briefing` `Implementation`, `Proof of concept`, `Workshop`, ve .
--   **Edat:** Gözden geçiren tarafından eklenir.
--   **Adı:** **Teklif Ayarları** sayfasında tanımlanmıştır.
+-   **Süre:** Düzenleyicinin **storefront details** sekmesinde tanımlanmıştır. Süre, saat, gün veya hafta olarak ifade edilebilir.
+-   **Hizmet türü:** Düzenleyicinin **storefront details** sekmesinde tanımlanmıştır. `Assessment`Hizmet türleri `Briefing`, `Implementation` `Proof of concept`,, ve. `Workshop`
+-   **Ön konum:** Gözden geçiren tarafından eklenmiştir.
+-   **Ad:** **Teklif ayarları** sayfasında tanımlanmıştır.
 
 >[!Note]
->**Ad** kutusu 50 karakterle sınırlıdır. Gözden geçirenin, süreyi ekleyip teklif adınıza yazı sunmak için başlığınızı düzeltmesi gerekebilir.
+>**Ad** kutusu 50 karakterle sınırlıdır. Gözden geçirenin, teklif adınızın süresini ve teklif türünü eklemek için başlığınız düzenlemesi gerekebilir.
 
-Aşağıdaki liste birkaç iyi adlandırılmış teklif adları sağlar:
+Aşağıdaki listede birkaç iyi adlandırılmış teklif adı verilmiştir:
 
--   Profesyonel Hizmetler için Temel Bilgiler: 1-İnsan Kaynakları Brifingi
--   Bulut Geçiş Platformu: 1-İnsan Kaynakları Brifingi
--   PowerApps ve Microsoft Flow: 1 Günlük Atölye
--   Azure Makine Öğrenimi: 3-Wk PoC
--   Tuğla ve Tık Perakende Çözümü: 1-Hr Brifingi
--   Kendi Verilerinizi Getirin: 1-Wk Workshop
--   Bulut Analizi: 3 Günlük Atölye
--   Power BI Eğitimi: 3 Günlük Çalıştay
--   Satış Yönetimi Çözümü: 1 Haftalık Uygulama
--   CRM Quickstart: 1 Günlük Atölye
--   Satışlar için Dinamik365: 2 Günlük Değerlendirme
+-   Profesyonel hizmetler için Essentials: 1-hr Briing
+-   Buluta Geçiş Platform: 1-hr Briing
+-   PowerApps ve Microsoft Flow: 1 günlük atölye
+-   Azure Machine Learning: 3-WK PoC
+-   Blok ve tıklama Retail Solution: 1-hr Briing
+-   Kendi verilerinizi getirin: 1-WK Workshop
+-   Bulut Analizi: 3 günlük atölye
+-   Power BI eğitimi: 3 günlük atölye
+-   Satış yönetimi çözümü: 1 haftalık uygulama
+-   CRM hızlı başlangıcı: 1 günlük atölye
+-   Sales için Dynamics 365:2 günlük değerlendirme
 
-**Teklif Ayarları** sekmesini doldurduktan sonra gönderinizi kaydedin. Teklif adı artık editörün üzerinde görünür ve **tüm tekliflerde**bulabilirsiniz.
+**Teklif ayarları** sekmesini doldurduktan sonra, Gönderiminizi kaydedin. Teklif adı artık düzenleyicinin üzerinde görünür ve **Tüm tekliflerle**bulabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık mağaza ön bilgilerini girebilir [ve Azure Marketi'nde mi yoksa AppSource'da mı yayınlayacağınızı belirleyebilirsiniz.](./cpp-consulting-service-storefront-details.md)
+Artık [storefront ayrıntılarını girebilir ve Azure Market 'te veya AppSource 'ta yayımlamayı](./cpp-consulting-service-storefront-details.md)seçebilirsiniz.

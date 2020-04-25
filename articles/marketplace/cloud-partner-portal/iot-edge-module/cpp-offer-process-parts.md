@@ -1,47 +1,47 @@
 ---
-title: Azure IoT Edge Modülü yayımlama genel bakış | Azure Marketi
-description: Azure Marketi'nde bir IoT Edge modülü teklifi yayımlama işlemine genel bakış.
+title: Azure IoT Edge modül teklifi yayımlamaya genel bakış | Azure Marketi
+description: Azure Marketi 'nde IoT Edge modülü teklifini yayımlama sürecine genel bakış.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 20c76cec82944568c1b16694bef2838626b90b03
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: e9116e5cdb3bd9ed61205ceabd4d51c96c6aadc2
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983356"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144663"
 ---
-# <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge modülü yayımlama genel bakış teklifi
+# <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge modül teklifi yayımlamaya genel bakış
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) bölümündeki yönergeleri izleyin.
 
-<table> <tr> <td>Bu bölümde, Microsoft Azure Marketi'nde yeni bir <a href="https://azuremarketplace.microsoft.com">Azure Marketplace</a>Azure IoT Edge modülü teklifinin nasıl yayımlanabileceği açıklanmaktadır. IoT Edge modülü, Docker uyumlu bir kapsayıcıdır ve IoT Edge aygıtında çalışmak üzere üretilmiştir. Azure IoT Edge modülleri, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure hizmetleri veya özel çözüm kodu içerebilir. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
+<table> <tr> <td>Bu bölümde, Microsoft <a href="https://azuremarketplace.microsoft.com">Azure Marketi</a>'ne yeni bir Azure IoT Edge modülü teklifinin nasıl yayımlanacağı açıklanmaktadır. IoT Edge modülü, bir IoT Edge cihazında çalıştırılmak üzere yapılan Docker ile uyumlu bir kapsayıcıdır. Azure IoT Edge modüller, IoT Edge tarafından yönetilen en küçük hesaplama birimidir ve Azure hizmetleri veya özel çözüm kodu içerebilir. </td> <td><img src="./media/iotedge-icon1.png"  alt="Azure IoT Edge module icon" /></td> </tr> </table>
 
-## <a name="publishing-process"></a>Yayımlama süreci
+## <a name="publishing-process"></a>Yayımlama işlemi
 
-IoT Edge modül teklifini yayınlamak için üst düzey adımlar şunlardır:
+IoT Edge modülü teklifinin yayımlanması için üst düzey adımlar şunlardır:
 
-1. Teklifi oluşturma<br> Teklif hakkında ayrıntılı bilgi sağlayın. Bu bilgiler şunları içerir: teklif açıklaması, pazarlama malzemeleri, destek bilgileri ve varlık özellikleri.
+1. Teklifi oluşturma<br> Teklif hakkında ayrıntılı bilgi sağlayın. Bu bilgiler şunları içerir: teklif açıklaması, pazarlama malzemeleri, destek bilgileri ve varlık belirtimleri.
 
-2. İş ve teknik varlıkları oluşturma<br> İlişkili çözüm için iş varlıkları (yasal belgeler ve pazarlama malzemeleri) ve teknik varlıkları (Azure Konteyner Kayıt Defteri'nde barındırılan IoT Edge modül görüntüleri) oluşturun.
+2. İşletme ve teknik varlıkları oluşturma<br> İlişkili çözüme yönelik iş varlıklarını (yasal belgeler ve pazarlama malzemeleri) ve teknik varlıkları (bir Azure Container Registry barındırılan IoT Edge modül görüntüleri) oluşturun.
 
-3. SKU'yu oluşturun<br> Teklifle ilişkili SKU(lar)ı oluşturun. Yayınlamayı planladığınız her resim için benzersiz bir SKU gereklidir.
+3. SKU 'YU oluşturma<br> Teklifle ilişkili SKU 'ları oluşturun. Yayımlamayı planladığınız her görüntü için benzersiz bir SKU gereklidir.
 
-4. Teklifi onaylamak ve yayınlamak <br>Teklif ve teknik varlıklar tamamlandıktan sonra, teklifi gönderebilirsiniz. Bu gönderme yayımlama işlemini başlatır. Bu işlem sırasında çözüm test edilir, doğrulanır, onaylanır ve Azure Marketi'nde "yayınlanır".
+4. Teklifi onaylama ve yayımlama <br>Teklif ve teknik varlıklar tamamlandıktan sonra teklifi gönderebilirsiniz. Bu gönderim, yayımlama işlemini başlatır. Bu işlem sırasında çözüm test edildi, onaylanır, onaylandı ve sonra Azure Marketi 'nde "canlı gidiyor".
 
-## <a name="parts-of-an-offer"></a>Teklifin bölümleri
+## <a name="parts-of-an-offer"></a>Teklifin parçaları
 
-Aşağıdaki makaleler, IoT Edge modül teklifinin önemli bölümlerini kapsamaktadır.
+Aşağıdaki makaleler bir IoT Edge modülü teklifinin temel kısımlarını kapsar.
 
-- [Ön koşullar](./cpp-prerequisites.md) <br>Bu makalede, bir IoT Edge modülü teklifi oluşturmadan veya yayımlamadan önce teknik ve iş gereksinimleri listeleilmektedir.
-- [IoT Edge modülü teknik varlıklarını hazırlama](./cpp-create-technical-assets.md) <br>Bu makalede, bir IoT Edge modülü için teknik varlıkların nasıl hazırlanacağı açıklanmaktadır. IoT Edge modülüAzure Marketi'nde yayımlanabilmesi için bu varlıkların gerekli tüm teknik ölçütleri karşılaması gerekir.
-- [IoT Edge modül teklifi oluşturma](./cpp-create-offer.md) <br>Bu makalede, [Bulut İş Ortağı Portalı](https://cloudpartner.azure.com)kullanarak yeni bir IoT Edge modülü teklif girişi oluşturmak için gereken adımlar listelemektedir.
-- [IoT Edge modülü teklifini yayımlama](./cpp-publish-offer.md)<br> Bu makalede, Azure Marketi'nde yayımlanmak üzere teklifin nasıl gönderilen açıklanmaktadır.
+- [Ön koşullar](./cpp-prerequisites.md) <br>Bu makalede, IoT Edge bir modül teklifi oluşturabilmeniz veya yayımlayabilmeniz için teknik ve iş gereksinimleri listelenmektedir.
+- [IoT Edge modülü teknik varlıklarını hazırlama](./cpp-create-technical-assets.md) <br>Bu makalede, teknik varlıkların bir IoT Edge modülü için nasıl hazırlanacağı açıklanmaktadır. Bu varlıkların, IoT Edge modülünün Azure Marketi 'nde yayımlanabilmesi için gereken tüm teknik kriterleri karşılaması gerekir.
+- [IoT Edge modül teklifi oluşturma](./cpp-create-offer.md) <br>Bu makalede, [bulut iş ortağı portalı](https://cloudpartner.azure.com)kullanarak yeni bir IoT Edge modülü teklif girişi oluşturmak için gereken adımlar listelenmektedir.
+- [IoT Edge modülü teklifini yayımlama](./cpp-publish-offer.md)<br> Bu makalede, teklifi Azure Marketi 'nde yayımlama için nasıl göndereceğiniz açıklanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Edge modüllerini Microsoft Azure Marketi'nde yayımlamak için [gereken teknik ve iş gereksinimlerini](./cpp-prerequisites.md) gözden geçirin.
+Microsoft Azure Market IoT Edge modülünü yayımlamaya yönelik [Teknik ve iş gereksinimlerini](./cpp-prerequisites.md) gözden geçirin.

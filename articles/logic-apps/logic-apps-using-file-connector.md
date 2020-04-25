@@ -1,6 +1,6 @@
 ---
-title: Şirket içinde dosya sistemlerine bağlanma
-description: Azure Logic Apps'taki şirket içi veri ağ geçidi aracılığıyla Dosya Sistemi bağlayıcısı ile şirket içi dosya sistemlerine bağlanan görevleri ve iş akışlarını otomatikleştirin
+title: Şirket içi dosya sistemlerine bağlanma
+description: Azure Logic Apps ' deki şirket içi veri ağ geçidi aracılığıyla dosya sistemi Bağlayıcısı ile şirket içi dosya sistemlerine bağlanan görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 author: derek1ee
@@ -8,97 +8,100 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: ab17137f162b893b54942d870b07a36f87d1b71d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: b1f4feab9587fb77089be265801c71f5b23b26ab
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115082"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146789"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps ile şirket içi dosya sistemlerine bağlanma
 
-Azure Logic Apps ve Dosya Sistemi bağlayıcısı ile, örneğin şirket içi dosya paylaşımında dosya oluşturan ve yöneten otomatik görevler ve iş akışları oluşturabilirsiniz:
+Azure Logic Apps ve dosya sistemi Bağlayıcısı ile, bir şirket içi dosya paylaşımında dosya oluşturup yöneten otomatik görevler ve iş akışları oluşturabilirsiniz, örneğin:
 
-- Dosyaları oluşturun, alın, ekleyin, güncelleyin ve silin.
-- Klasörlerdeki veya kök klasörlerdeki dosyaları listeleyin.
-- Dosya içeriği ve meta veriler alın.
+- Dosyaları oluşturun, alın, ekleyin, güncelleştirin ve silin.
+- Klasörlerdeki dosyaları veya kök klasörleri listeleyin.
+- Dosya içeriğini ve meta verileri alın.
 
-Bu makale, bu örnek senaryoda açıklandığı gibi şirket içi bir dosya sistemine nasıl bağlanabileceğinizi gösterir: Dropbox'a yüklenen bir dosyayı dosya paylaşımına kopyalayın ve ardından bir e-posta gönderin. Şirket içi sistemlere güvenli bir şekilde bağlanmak ve erişmek için, mantık uygulamaları [şirket içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanır. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir inceleyin?](../logic-apps/logic-apps-overview.md) Bağlayıcıya özgü teknik bilgiler için [Dosya Sistemi bağlayıcısı başvurusuna](/connectors/filesystem/)bakın.
+Bu makalede, bir şirket içi dosya sistemine bu örnek senaryo tarafından açıklandığı şekilde nasıl bağlanabilmeniz gösterilmektedir: Dropbox 'a yüklenen bir dosyayı bir dosya paylaşımında kopyalama ve sonra bir e-posta gönderme. Mantıksal uygulamalar, şirket içi sistemlere güvenli bir şekilde bağlanmak ve erişmek için şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanır. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Bağlayıcıya özgü teknik bilgiler için, bkz. [dosya sistemi Bağlayıcısı başvurusu](/connectors/filesystem/).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Mantık uygulamalarını dosya sistemi sunucunuz gibi şirket içi sistemlere bağlamadan [önce, şirket içi bir veri ağ geçidi yüklemeniz ve kurmanız](../logic-apps/logic-apps-gateway-install.md)gerekir. Bu şekilde, mantık uygulamanızdan dosya sistemi bağlantısını oluştururken ağ geçidi yüklemenizi kullanacağınızı belirtebilirsiniz.
+* Mantıksal uygulamaları, dosya sistemi sunucunuz gibi şirket içi sistemlere bağlayabilmeniz için önce şirket [içi veri ağ geçidini yüklemeniz ve ayarlamanız](../logic-apps/logic-apps-gateway-install.md)gerekir. Bu şekilde, mantıksal uygulamanızdan dosya sistemi bağlantısı oluştururken ağ geçidi yüklemenizi kullanmayı belirtebilirsiniz.
 
-* Ücretsiz olarak kaydolabileceğiniz [dropbox hesabı.](https://www.dropbox.com/) Mantık uygulamanız ile Dropbox hesabınız arasında bağlantı oluşturmak için hesap kimlik bilgileriniz gereklidir.
+* Ücretsiz olarak kaydolabilir bir [Dropbox hesabı](https://www.dropbox.com/). Hesap kimlik bilgileriniz, mantıksal uygulamanız ve Dropbox hesabınız arasında bağlantı oluşturmak için gereklidir.
 
-* Kullanmak istediğiniz dosya sistemine sahip bilgisayara erişim. Örneğin, veri ağ geçidini dosya sisteminizle aynı bilgisayara yüklerseniz, bu bilgisayarın hesap kimlik bilgilerini gerekir.
+* Kullanmak istediğiniz dosya sistemine sahip olan bilgisayara erişin. Örneğin, veri ağ geçidini dosya sisteminizle aynı bilgisayara yüklerseniz, bu bilgisayarın hesap kimlik bilgilerine sahip olmanız gerekir.
 
-* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen bir sağlayıcıdan gelen e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](https://docs.microsoft.com/connectors/). Bu mantıksal uygulama bir Office 365 Outlook hesabı kullanır. Başka bir e-posta hesabı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
+* Office 365 Outlook, Outlook.com veya Gmail gibi Logic Apps tarafından desteklenen sağlayıcıdan gelen bir e-posta hesabı. Diğer sağlayıcılar için [buradaki bağlayıcı listesini inceleyin](https://docs.microsoft.com/connectors/). Bu mantıksal uygulama bir Office 365 Outlook hesabı kullanır. Başka bir e-posta hesabı kullanıyorsanız genel adımlar aynıdır, ancak kullanıcı arabirimi biraz farklı olabilir.
 
-* [Mantık uygulamaları oluşturmak için nasıl](../logic-apps/quickstart-create-first-logic-app-workflow.md)temel bilgi . Bu örnekte, boş bir mantık uygulamasına ihtiyacınız var.
+  > [!IMPORTANT]
+  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
+
+* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md)hakkında temel bilgi. Bu örnekte, boş bir mantıksal uygulama gerekir.
 
 ## <a name="add-trigger"></a>Tetikleyici ekleme
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
+1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
 
-1. Arama kutusuna filtreniz olarak "dropbox" girin. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **Dosya oluşturulduğunda**
+1. Arama kutusuna filtreniz olarak "Dropbox" yazın. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **bir dosya oluşturulduğunda**
 
-   ![Dropbox tetikleyicisi seçin](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
+   ![Dropbox tetikleyicisi Seç](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-1. Dropbox hesap kimlik bilgilerinizle oturum açın ve Azure Logic Apps için Dropbox verilerinize erişim yetkisi verin.
+1. Dropbox hesabınızın kimlik bilgilerinizle oturum açın ve Azure Logic Apps için Dropbox verilerinize erişim yetkisi verin.
 
 1. Tetikleyiciniz için gerekli bilgileri sağlayın.
 
-   ![Dropbox tetikleme](media/logic-apps-using-file-connector/dropbox-trigger.png)
+   ![Dropbox tetikleyicisi](media/logic-apps-using-file-connector/dropbox-trigger.png)
 
 ## <a name="add-actions"></a>Eylem ekleme
 
-1. Tetikleyicinin altında Sonraki **adımı**seçin. Arama kutusuna filtreniz olarak "dosya sistemi" girin. Eylemler listesinden şu eylemi seçin: **Dosya oluşturma**
+1. Tetikleyici altında, **İleri adım**' ı seçin. Arama kutusuna filtreniz olarak "dosya sistemi" yazın. Eylemler listesinden şu eylemi seçin: **dosya oluştur**
 
-   ![Dosya Sistemi konektörünü bul](media/logic-apps-using-file-connector/find-file-system-action.png)
+   ![Dosya sistemi bağlayıcısını bul](media/logic-apps-using-file-connector/find-file-system-action.png)
 
-1. Dosya sisteminizle zaten bir bağlantınız yoksa, bir bağlantı oluşturmanız istenir.
+1. Dosya sisteminize zaten bir bağlantınız yoksa bir bağlantı oluşturmanız istenir.
 
    ![Bağlantı oluşturma](media/logic-apps-using-file-connector/file-system-connection.png)
 
    | Özellik | Gerekli | Değer | Açıklama |
    | -------- | -------- | ----- | ----------- |
-   | **Bağlantı Adı** | Evet | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
-   | **Kök klasörü** | Evet | <*kök-klasör-adı*> | Örneğin, dosya sisteminizin kök klasörü, şirket içi veri ağ geçidinin yüklendiği bilgisayara yerel bir klasör veya bilgisayarın erişebileceği bir ağ paylaşımı klasörü gibi şirket içi veri ağ geçidinizi yüklediyseniz. <p>Örneğin, `\\PublicShare\\DropboxFiles` <p>Kök klasör, dosyayla ilgili tüm eylemler için göreli yollar için kullanılan ana üst klasördür. |
-   | **Kimlik Doğrulama Türü** | Hayır | <*auth tipi*> | Dosya sisteminizin kullandığı kimlik doğrulama türü: **Windows** |
-   | **Username** | Evet | <*etki alanı*>\\<*kullanıcı adı*> | Dosya sisteminizin bulunduğu bilgisayarın kullanıcı adı |
-   | **Parola** | Evet | <*şifreniz*> | Dosya sisteminizin bulunduğu bilgisayarın şifresi |
-   | **Ağ geçidi** | Evet | <*yüklü ağ geçidi adı*> | Daha önce yüklenmiş ağ geçidinizin adı |
+   | **Bağlantı adı** | Yes | <*bağlantı adı*> | Bağlantınız için istediğiniz ad |
+   | **Kök klasör** | Yes | <*kök klasörü-adı*> | Dosya sisteminiz için kök klasör; Örneğin, şirket içi veri ağ geçidinin yüklü olduğu bilgisayarda yerel bir klasör gibi şirket içi veri ağ geçidinizi veya bilgisayarın erişebileceği bir ağ paylaşımının klasörünü yüklediyseniz. <p>Örneğin, `\\PublicShare\\DropboxFiles` <p>Kök klasör, tüm dosya ile ilgili eylemler için göreli yollar için kullanılan ana üst klasördür. |
+   | **Kimlik doğrulama türü** | Hayır | <*kimlik doğrulama türü*> | Dosya sisteminizin kullandığı kimlik doğrulaması türü: **Windows** |
+   | **Nitelen** | Yes | <*etki*>\\alanı<*Kullanıcı adı*> | Dosya sisteminizin bulunduğu bilgisayar için Kullanıcı adı |
+   | **Parola** | Yes | <*Parolanız*> | Dosya sisteminizin bulunduğu bilgisayarın parolası |
+   | **geçidinde** | Yes | <*yüklü-ağ geçidi-adı*> | Daha önce yüklenen ağ geçidinizin adı |
    |||||
 
 1. İşiniz bittiğinde **Oluştur**’u seçin.
 
-   Logic Apps bağlantınızı yapılandırır ve sınar, bu da bağlantının düzgün çalıştığından emin olun. Bağlantı doğru ayarlanmışsa, daha önce seçtiğiniz eylem için seçenekler görüntülenir.
+   Logic Apps bağlantınızın düzgün çalıştığından emin olmak için bağlantınızı yapılandırır ve test eder. Bağlantı doğru ayarlandıysa, daha önce seçtiğiniz eylem için seçenekler görünür.
 
-1. Dosya **oluştur** eyleminde, dosya yı kopyalamak için ayrıntıları Dropbox'tan şirket içi dosya paylaşımınızdaki kök klasöre sağlayın. Önceki adımlardan çıktı eklemek için kutuların içini tıklatın ve dinamik içerik listesi göründüğünde kullanılabilir alanlardan seçim yapmayı n için.
+1. **Dosya oluştur** eyleminde, Dropbox 'tan şirket içi dosya paylaşımınızda bulunan kök klasöre dosya kopyalama ayrıntılarını belirtin. Önceki adımlardan çıkış eklemek için, kutuların içine tıklayın ve dinamik içerik listesi göründüğünde kullanılabilir alanlar ' ı seçin.
 
-   ![Dosya eylemi oluşturma](media/logic-apps-using-file-connector/create-file-filled.png)
+   ![Dosya oluşturma eylemi](media/logic-apps-using-file-connector/create-file-filled.png)
 
-1. Şimdi, uygun kullanıcıların yeni dosyayı bilmesi için e-posta gönderen bir Outlook eylemi ekleyin. E-postanın alıcılarını, başlığını ve gövdesini girin. Test etmek için kendi e-posta adresinizi kullanabilirsiniz.
+1. Şimdi, uygun kullanıcıların yeni dosya hakkındaki bilgileri bilmesi için e-posta gönderen bir Outlook eylemi ekleyin. E-postanın alıcılarını, başlığını ve gövdesini girin. Sınama için kendi e-posta adresinizi kullanabilirsiniz.
 
-   ![E-posta eylemi gönderme](media/logic-apps-using-file-connector/send-email.png)
+   ![E-posta eylemi gönder](media/logic-apps-using-file-connector/send-email.png)
 
-1. Mantıksal uygulamanızı kaydedin. Dropbox'a bir dosya yükleyerek uygulamanızı test edin.
+1. Mantıksal uygulamanızı kaydedin. Dropbox 'a bir dosya yükleyerek uygulamanızı test edin.
 
-   Mantık uygulamanız dosyayı şirket içi dosya paylaşımınıza kopyalamalı ve alıcılara kopyalanan dosya yla ilgili bir e-posta göndermelidir.
+   Mantıksal uygulamanızın dosyayı şirket içi dosya paylaşımınıza kopyalaması ve alıcılara kopyalanmış dosya hakkında bir e-posta gönderilmesi gerekir.
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Tetikleyiciler, eylemler ve konektörün Swagger dosyasında açıklandığı gibi sınırlar gibi bu bağlayıcı hakkında daha fazla teknik ayrıntı için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/fileconnector/)bakın.
+Bu bağlayıcı hakkında, bağlayıcının Swagger dosyasında açıklanan Tetikleyiciler, Eylemler ve sınırlar gibi daha teknik ayrıntılar için [bağlayıcının başvuru sayfasına](https://docs.microsoft.com/connectors/fileconnector/)bakın.
 
 > [!NOTE]
-> [Bir entegrasyon hizmeti ortamındaki (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)mantık uygulamaları için, bu bağlayıcının İmKB etiketli sürümü bunun yerine [İmKB ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
+> Bir [tümleştirme hizmeti ortamındaki (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Logic Apps için, bu bağlayıcının Ise etiketli sürümü bunun yerine [Ise ileti sınırlarını](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şirket içi verilere nasıl [bağlanıyarı](../logic-apps/logic-apps-gateway-connection.md) zedilen öğrenin 
+* Şirket [içi verilere bağlanmayı](../logic-apps/logic-apps-gateway-connection.md) öğrenin 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

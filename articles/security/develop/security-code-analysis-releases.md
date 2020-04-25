@@ -1,10 +1,10 @@
 ---
-title: Microsoft Güvenlik Kodu Çözümlemesi bültenleri
-description: Bu makalede, Microsoft Güvenlik Kodu Çözümlemesi uzantısı için gelecek sürümler açıklanmaktadır
+title: Microsoft Güvenlik kodu analiz yayınları
+description: Bu makalede Microsoft Güvenlik kodu analiz uzantısı için yaklaşan sürümler açıklanmaktadır
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/14/2020
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,63 +12,63 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: a07ce7437d664baca0cfdc310dbc2631f41fdbcc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: d4281d3b6132e551283a71cd1801ef462fbfc68c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81462041"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146135"
 ---
-# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft Güvenlik Kodu Analizi sürümleri ve yol haritası
+# <a name="microsoft-security-code-analysis-releases-and-roadmap"></a>Microsoft Güvenlik kodu analiz sürümleri ve yol haritası
 
-Geliştirici Desteği ile işbirliği içinde Microsoft Güvenlik Kodu Analizi ekibi, MSCA uzantımıza en son ve gelecek geliştirmeleri duyurmaktan gurur duyar. Lütfen aşağıdaki Yol Haritası'na bakın.
+Geliştirici Desteği ile iş ortaklığında Microsoft Güvenlik kodu analizi ekibi, MSCA uzantımızda son ve yaklaşan geliştirmeleri duyurmaktan gurur duyuyor. Lütfen aşağıdaki yol haritasını inceleyin.
 
 ![Yayınlar](./media/security-code-analysis-releases/releases.png)
 
-## <a name="credential-scanner-v20-released-on-april-1-2020"></a>Kimlik Bilgisi Tarayıcı v2.0: 1 Nisan 2020 tarihinde yayınlandı
+## <a name="credential-scanner-v20-released-in-april-2020"></a>Kimlik bilgisi tarayıcısı v 2.0: Nisan 2020 ' de yayınlandı
 
-### <a name="innovations--improvements"></a>Yenilikler & Geliştirmeler
+### <a name="innovations--improvements"></a>Yeniliklere & Iyileştirmeleri
 
-- **Çekirdek Motoru**
+- **Çekirdek altyapısı**
 
-   - Yakın doğrusal çalışma süreleri ile %25'lik ortalama performans yükseltmesi
-   - Daha fazla doğruluk için bağlam/kanıt ala¤› arama ve sıralama
-   - Genel parola algılamalarında iyileştirmeler ve bariz yer tutucular için eşleşen mantık (örneğin, fakePassword)
+   - Neredeyse doğrusal çalışma süreleriyle %25 oranında ortalama performans yükseltmesi
+   - Daha fazla doğruluk için bağlam/kanıt tabanlı arama ve derecelendirme
+   - Genel parola algılamaları ve açık yer tutucular için eşleşen mantık geliştirmeleri (örneğin, fakePassword)
 
-- **Kapsam** - Aşağıdaki üst talep dahil olmak üzere 25 + gizli türleri için destek:
+- **Kapsam** -aşağıdaki en iyi istek dahil 25 + gizli türler için destek:
 
-   - Kumaş hesap sertifikası Passphrase
-   - İstemci Secret/API Anahtarı
-   - HTTP yetkilendirme üstbilgi
-   - Amazon S3 İstemci Gizli Erişim Anahtarı
-   - Azure Active Directory İstemci Erişim Belirteci
-   - Azure İşlev Yöneticisi/API Anahtarı
-   - Güç BI Erişim Anahtarı
-   - Azure Kaynak Yöneticisi şablon uyşu
+   - Fabric hesabı sertifika parolası
+   - Gizli anahtar/API anahtarı
+   - HTTP yetkilendirme üst bilgisi
+   - Amazon S3 Istemci gizli dizi erişim anahtarı
+   - Azure Active Directory Istemci erişim belirteci
+   - Azure Işlevi ana/API anahtarı
+   - Power BI erişim anahtarı
+   - Azure Resource Manager şablonu parola stili
 
 - **Çıkışlar**
 
-   - SARIF 2.1 ve CSV dosya çıktısı dosya biçimleri desteği
+   - SARIF 2,1 ve CSV dosyası çıkış dosyası biçimleri için destek
 
-## <a name="binskim-v160-to-be-released-on-april-2020"></a>BinSkim v1.6.0: Nisan 2020'de piyasaya sürülecek
+## <a name="binskim-v160-released-in-april-2020"></a>BinSkim v 1.6.0: Nisan 2020 ' de yayınlandı
 
-### <a name="improvements"></a>Gelişmeler
+### <a name="improvements"></a>Geliştirmeleri
 
-- ÖZELLİk: Son SARIF v2 (sürüm 2.1.16) güncelleştirme. Bu, komut satırında -iş haşlamaları, scan hedeflerinin birden çok kopyasıyla dizinleri özyinelemeyle çözümlediğinde önemli bir performans artışı olan - komut satırında geçerken sonuçlar önbelleğe alma sağlar.
-- HATA DÜZELTME: BA2021 yılında yazım hatası düzeltme. DoNotMarkWritableSectionsAsExecutable çıktı.
-- PERFORMANS: IL Kitaplığı (önceden derlenmiş) ikilileri de dahil olmak üzere yönetilen derlemeler için karışık olmayan mod lar için PDB yüklemesini ortadan kaldırın.
-- YANLIŞ NEGATIF DÜZELTME: Bir ikilinin yanına yerleştirilen bir PDB'nin analiz altında ikiliyle eşleştiğini doğrulayın
-- ÖZELLİk: Ek (yerel, sembol olmayan sunucu) PDB arama konumlarını belirtmek için --yerel-sembol-dizinler bağımsız değişkeni sağlayın
-- YANLIŞ POZITIF DÜZELTME: Oluşturulan .NET çekirdekli bootstrap exe (kullanıcı tarafından kontrol edilebilir kod değildir) için PDB odaklı analizi atlayın.
+- ÖZELLIK: son SARIF v2 (sürüm 2.1.16) sürümüne güncelleştirin. Bu, birden çok tarama hedefi kopyası olan dizinleri yinelemeli olarak analiz edilirken önemli bir performans geliştirmesi olan komut satırında geçiş yaparken sonuçların önbelleğe alınmasına izin vermez.
+- Hata düzelme: BA2021 'de yazım hatası 'ı onarın. DoNotMarkWritableSectionsAsExecutable çıkışı.
+- PERFORMANS: Il kitaplığı (derlenmiş zaman derlenen) ikili dosyaları dahil olmak üzere yönetilen derlemeler için tüm karışık mod için PDB yüklemeyi kaldırın.
+- YANLıŞ negatıf düzelme: bir ikilinin birlikte yerleştirildiği bir PDB 'nin, analiz altındaki ikiliye uyduğundan emin olun
+- ÖZELLIK: ek (yerel, simge dışı sunucu) PDB arama konumları belirtmek için--Local-symbol-dizinlerinde bağımsız değişkenini sağlayın
+- YANLıŞ pozıtıf onarım: oluşturulan .NET Core Native Bootstrap exe (Kullanıcı tarafından denetlenebilir kod olmayan) için PDB odaklı çözümlemeyi atlayın.
 
-## <a name="whats-next-in-fy20"></a>FY20'de sırada ne var?
+## <a name="whats-next-in-fy20"></a>FY20 ' deki yenilikler nelerdir?
 
-- Java Güvenlik Analizi aracı
-- Python Güvenlik Analizi aracı
-- ES Lint TypeScript ve JavaScript için TS Lint yerine
+- Java güvenlik çözümleme aracı
+- Python güvenlik çözümleme aracı
+- TypeScript ve JavaScript için TS Lint 'i değiştirme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Microsoft Güvenlik Kodu Analizi'nin gemiye nasıl yüklenir ve yüklenir, ilgili talimatları için [Onboarding ve yükleme kılavuzumuza](security-code-analysis-onboard.md)bakın.
+Microsoft Güvenlik kodu analizini ekleme ve yükleme yönergeleri için [ekleme ve yükleme kılavuzumuza](security-code-analysis-onboard.md)bakın.
 
 Uzantı ve sunulan araçlar hakkında daha fazla sorunuz varsa, [SSS sayfamıza](security-code-analysis-faq.md)göz atın.

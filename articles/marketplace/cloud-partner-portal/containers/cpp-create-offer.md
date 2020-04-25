@@ -1,42 +1,42 @@
 ---
-title: Azure Kapsayıcıları teklifi oluşturma | Azure Marketi
-description: Nasıl Marketplace için yeni bir konteyner teklifi yayınlamak için ...
+title: Azure kapsayıcıları teklifi oluşturma | Azure Marketi
+description: Market için yeni bir kapsayıcı teklifi yayımlama...
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 25d678ad7b8c2b786239b294de873bc1d98fa5cb
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: a7266d0f32a8ac18a4a76dee7eb3c39be253f7bd
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270341"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148282"
 ---
-# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı ile yeni bir konteyner teklifi oluşturun
+# <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Bulut İş Ortağı Portalı ile yeni bir kapsayıcı teklifi oluşturun
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Kapsayıcı tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Kapsayıcısı Oluştur teklifinde](https://aka.ms/CreateContainerOffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure Container tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [bir Azure kapsayıcı oluşturma teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) bölümündeki yönergeleri izleyin.
 
-Bu makalede, Azure Marketi için bir kapsayıcı teklif girişinin nasıl oluşturulup yayımlandırılabildiğini açıklanmaktadır. Her teklif Azure Marketi'nde kendi varlığı olarak görünür ve bir veya daha fazla SUK ile ilişkilidir.  Konteyner teklifi, varlıkların ve destekleyici hizmetlerin aşağıdaki gruplandırmalarından oluşur:
+Bu makalede, Azure Marketi için bir kapsayıcı teklif girişi oluşturma ve yayımlama açıklanır. Her teklif Azure Marketi 'nde kendi varlığı olarak görünür ve bir veya daha fazla SKU ile ilişkilendirilir.  Kapsayıcı teklifi, aşağıdaki varlık ve destekleyici hizmetler gruplarından oluşur:
 
 |  **Varlık grubu**   |  **Açıklama**  |
 |  ---------------   |  ---------------  |
-|    SKU'lar            |  Bir teklifin en küçük dağıtılabilir birimi. Tek bir teklifte (ürün sınıfı) teklifle ilişkili birden çok SNU olabilir. Desteklenen özellikler ve faturalandırma modelleri arasında ayrım yapmak için SUS'ları kullanabilirsiniz. |
-|  Market       | Pazarlama, yasal ve müşteri adayı yönetim varlıkları ve teknik özellikleri içerir.  <ul><li> Pazarlama varlıkları teklif adı, açıklama ve logolar içerir</li> <li> Yasal varlıklar arasında gizlilik politikası, kullanım koşulları ve diğer yasal belgeler yer almaktadır.</li>  <li> Müşteri adayı yönetimi ilkesi, Azure Marketi son kullanıcı portalından müşteri adaylarını nasıl işleyeceğinibelirtmenize olanak tanır.</li> </ul> |
-| Destek            | Destek iletişimi ve ilke bilgilerini içerir |
+|    SKU'lar            |  Bir teklifin en küçük dağıtılabilir birimi. Tek bir teklifin (ürün sınıfı) teklifle ilişkili birden fazla SKU 'su olabilir. Desteklenen özellikleri ve faturalandırma modellerini ayırt etmek için SKU 'Ları kullanabilirsiniz. |
+|  Market       | Pazarlama, yasal ve lider yönetimi varlıkları ve belirtimleri içerir.  <ul><li> Pazarlama varlıkları, teklif adı, açıklama ve logo içerir</li> <li> Yasal varlıklar, bir gizlilik ilkesi, kullanım koşulları ve diğer yasal belgeleri içerir</li>  <li> Lider yönetimi ilkesi, Azure Marketi Son Kullanıcı portalından müşteri adaylarını nasıl işleyeceğinizi belirtmenizi sağlar.</li> </ul> |
+| Destek            | Destek iletişim ve ilke bilgilerini içerir |
 
 
-## <a name="new-offer-form"></a>Yeni Teklif formu 
+## <a name="new-offer-form"></a>Yeni teklif formu 
 
-Cloud Partner [Portal'da](https://cloudpartner.azure.com/)oturum açın ve ardından sol menü çubuğunda **+ Yeni teklifi** seçin. Yeni teklif menüsünde, **Yeni Teklif** formunu görüntülemek ve yeni bir kapsayıcı teklifi için varlıkları tanımlama işlemini başlatmak için **Kapsayıcılar'ı** seçin.
+[Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın ve ardından sol menü çubuğunda **+ yeni teklif** ' i seçin. Yeni teklif menüsünde **kapsayıcılar** ' ı seçerek **yeni teklif** formunu görüntüleyin ve yeni bir kapsayıcı teklifi için varlık tanımlama sürecini başlatın.
 
-![Yeni teklif için kapsayıcı seçeneğini seçin](./media/azure-container-offer.png)
+![Yeni teklif için kapsayıcılar seçin seçeneği](./media/azure-container-offer.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kapsayıcı teklif türü için **Yeni Teklif** sayfası, yeni bir teklif oluşturmak için kullanacağınız bir dizi sekme ve form alanı sağlar. Aşağıdaki makalelerin her biri, yeni konteyner teklifiniz için varlık gruplarını ve destekleyici hizmetleri tanımlamak için sekmeyi nasıl kullanacağınızı açıklar.
+Kapsayıcı teklif türü için **yeni teklif** sayfası, yeni bir teklif oluşturmak için kullanacağınız sekmeler ve form alanları kümesini sağlar. Aşağıdaki makalelerin her biri, yeni kapsayıcı teklifiniz için varlık gruplarını ve destekleyici hizmetleri tanımlamak üzere sekmesinin nasıl kullanılacağını açıklamaktadır.
 
 - [Teklif Ayarları sekmesi](./cpp-offer-settings-tab.md)
 - [SKU'lar sekmesi](./cpp-skus-tab.md)

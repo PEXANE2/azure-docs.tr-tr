@@ -1,35 +1,35 @@
 ---
-title: Azure Marketi için yaygın SAS URL sorunları ve düzeltmeleri
-description: Paylaşılan erişim imzası URI'lerini ve olası çözümleri kullanarak ilgili sık karşılaşılan sorunları listele.
+title: Azure Marketi için ortak SAS URL 'SI sorunları ve düzeltmeleri
+description: Paylaşılan erişim imzası URI 'Leri ve olası çözümleri kullanma hakkında yaygın sorunları listeleyin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/27/2018
 ms.author: dsindona
-ms.openlocfilehash: c575389538230218e1e6e4f172ebcfbee8ee51dc
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 723762695d34380b7f237fa9082dc470dafcc8df
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273469"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147038"
 ---
-# <a name="common-sas-url-issues-and-fixes"></a>Sık karşılaşılan SAS URL sorunları ve düzeltmeleri
+# <a name="common-sas-url-issues-and-fixes"></a>Ortak SAS URL 'SI sorunları ve düzeltmeleri
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Ortak SAS URL sorunları ve düzeltmeler](https://aka.ms/AzureSAS_URL_FAQ) yönergeleriizleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [ortak SAS URL 'si sorunları ve düzeltmeleri](https://docs.microsoft.com/azure/marketplace/partner-center-portal/common-sas-uri-issues) bölümündeki yönergeleri izleyin.
 
-Aşağıdaki tablo, paylaşılan erişim imzalarıyla çalışırken karşılaşılan bazı yaygın sorunları (çözümünüz için yüklenen VHD'leri tanımlamak ve paylaşmak için kullanılır) ve önerilen çözümlerle birlikte listeler.
+Aşağıdaki tabloda, önerilen çözümlerin yanı sıra paylaşılan erişim imzaları (çözümünüz için karşıya yüklenen VHD 'leri tanımlamak ve paylaşmak için kullanılır) ile çalışırken karşılaşılan bazı yaygın sorunlar listelenmektedir.
 
-| **Sorunu** | **Hata İletisi** | **Düzeltme** | 
+| **Konuda** | **Hata Iletisi** | **Düzeltme** | 
 | --------- | ------------------- | ------- | 
-| &emsp;  *Görüntülerin kopyalanmasında hata* |  |  |
-| "?" SAS URL'sinde bulunmuyor | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Önerilen araçları kullanarak SAS URL'sini güncelleştirin. |
-| SAS URL'sinde olmayan "st" ve "se" parametreleri | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | SAS URL'sini uygun **Başlangıç Tarihi** ve **Bitiş Tarihi** değerleriyle güncelleştirin. | 
-| "sp=rl" SAS URL'de değil | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | SAS URL'sini ve `Read` `List`'' olarak ayarlanmış izinlerle güncelleştirin. | 
-| SAS URL'de VHD adında beyaz boşluklar var | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Beyaz boşlukları kaldırmak için SAS URL'sini güncelleştirin. |
-| SAS URL Yetkilendirme hatası | `Failure: Copying Images. Not able to download blob due to authorization error` | SAS URI biçimini gözden geçirin ve düzeltin. Gerekirse yenile. |
-| SAS URL "st" ve "se" parametreleri tam tarih-saat belirtimi yok | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | SAS URL **Başlangıç Tarihi** ve `se` Bitiş **Tarihi** parametreleri (ve`st` alt dizeleri) `11-02-2017T00:00:00Z`gibi tam tarih biçimine sahip olması gerekir. Kısaltılmış sürümler geçerli değildir. (Azure CLI'deki bazı komutlar varsayılan olarak kısaltılmış değerler oluşturabilir.) | 
+| &emsp;  *Görüntüler kopyalanırken hata oluştu* |  |  |
+| SAS URL 'sinde "?" bulunamadı | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Önerilen araçları kullanarak SAS URL 'sini güncelleştirin. |
+| SAS URL 'SI içinde "St" ve "sa" parametreleri yok | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | SAS URL 'sini, içinde uygun **Başlangıç tarihi** ve **bitiş tarihi** değerleriyle güncelleştirin. | 
+| "SP = rl" SAS URL 'SI içinde değil | `Failure: Copying Images. Not able to download blob using provided SAS Uri` | Ve `Read` `List`olarak ayarlanan izinlerle SAS URL 'sini güncelleştirin. | 
+| SAS URL 'sinde, VHD adında boşluk vardır | `Failure: Copying Images. Not able to download blob using provided SAS Uri.` | Boşluk kaldırmak için SAS URL 'sini güncelleştirin. |
+| SAS URL 'SI yetkilendirme hatası | `Failure: Copying Images. Not able to download blob due to authorization error` | SAS URI biçimini gözden geçirin ve düzeltin. Gerekirse yeniden oluşturun. |
+| SAS URL 'SI "St" ve "o" parametrelerinin tam tarih-saat belirtimi yoktur | `Failure: Copying Images. Not able to download blob due to incorrect SAS URL` | SAS URL 'SI **Başlangıç tarihi** ve **bitiş tarihi** parametrelerinin`st` ( `se` ve alt dizelerinin), gibi tam bir tarih saat biçimi olması `11-02-2017T00:00:00Z`gerekir. Kısaltılmış sürümler geçerli değil. (Azure CLı 'deki bazı komutlar varsayılan olarak kısaltılmış değerler oluşturabilir.) | 
 |  |  |  |
 
-Daha fazla bilgi için bkz. [paylaşılan erişim imzalarını (SAS) kullanma.](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)
+Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/).

@@ -1,44 +1,44 @@
 ---
 title: Azure IoT Edge modülü için teklif ayarları | Azure Marketi
-description: Bir IoT Edge modülü için teklif ayarlarını yapılandırın.
+description: IoT Edge modülü için teklif ayarlarını yapılandırın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 7a35277a61217dab2982d6436903cd09abfe8c7d
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d6d2306dfd44bad6e1f903c3cef3eeb4993f4cd9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984972"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148030"
 ---
-# <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge modülü Teklif Ayarları sekmesi
+# <a name="iot-edge-module-offer-settings-tab"></a>IoT Edge modülü teklif ayarları sekmesi
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) bölümündeki yönergeleri izleyin.
 
-**IoT Edge Modülleri > Yeni Teklif** sayfası **Teklif Ayarları** sekmesine odaklanarak açılır. 
+**IoT Edge modüller > yeni teklif** sayfası, **teklif ayarları** sekmesi üzerinde odaklanarak açılır.
 
 ![IoT Edge modülleri için yeni teklif sayfası](./media/iot-edge-module-offer-settings-tab.png)
 
 
-## <a name="offer-identity-settings"></a>Kimlik ayarları sunun
+## <a name="offer-identity-settings"></a>Teklif kimliği ayarları
 
-**Teklif Kimliği**altında, aşağıdaki tabloda açıklanan alanlar için bilgi sağlamanız gerekir. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir. 
+**Teklif kimliği**altında, aşağıdaki tabloda açıklanan alanlarla ilgili bilgileri sağlamanız gerekir. Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir. 
 
 |  **Alan**       |     **Açıklama**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Teklif Kimliği\***       | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı, ürün URL'leri ve öngörü raporlarında görünür olacaktır. Maksimum uzunluğu 50 karakterdir ve küçük alfasayısal karakterler ve tire (-) kullanabilir. (Tanımlayıcı tire ile son olarak bitiremez.) **Not:** Bir teklif yayından çıktıktan sonra bu alan değiştirilemez. <br> Örneğin, Contoso teklif kimliği **örnek-iot-edge-modülü**içeren bir teklif yayınlarsa, `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`Azure Marketi URL'si atanır. |
-| **Yayımcı\***     | Kuruluşunuzun Azure Marketi'ndeki benzersiz tanımlayıcısı. Tüm teklifleri yayıncı kimliğinizle ilişkilendirilmelidir. Teklif kaydedildikten sonra bu değer değiştirilemez. |
-| **Adı\***          | Teklifiniz için görüntü adı. Bu ad Azure Marketi'nde ve Bulut İş Ortağı Portalı'nda görüntülenir. En fazla 50 karakter olabilir. Ürününuz için tanınabilir bir marka adı kullanmanızı öneririz. Ürününuzun pazarlanmadığı sürece kuruluşunuzun adını eklemeyin. Bu teklifi diğer web sitelerinde ve yayınlarda pazarlıyorsanız, adın tüm yayınlarında tamamen aynı olduğundan emin olun. |
+| **Teklif Kimliği\***       | Teklif için benzersiz bir tanımlayıcı (yayımcı profili içinde). Bu tanımlayıcı, ürün URL 'Leri ve Öngörüler raporlarında görünür olacaktır. En fazla 50 karakter uzunluğunda olabilir ve küçük harfli alfasayısal karakterler ve tireler (-) kullanabilir. (Tanımlayıcı bir tire ile bitemez.) **Note:** Bu alan bir teklif canlı olduktan sonra değiştirilemez. <br> Örneğin, contoso teklif KIMLIĞI **örneği-IoT-Edge modülü**ile bir teklif yayımladığında Azure Market URL 'si `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-iot-edge-module?tab=Overview`atanır. |
+| **'In\***     | Kuruluşunuzun Azure Marketi 'nde benzersiz tanımlayıcısı. Tüm tekliflerinizin yayımcı KIMLIĞINIZLE ilişkilendirilmesi gerekir. Teklif kaydedildikten sonra bu değer değiştirilemez. |
+| **Adı\***          | Teklifinizin görünen adı. Bu ad, Azure Marketi 'nde ve Bulut İş Ortağı Portalı görüntülenir. En fazla 50 karakter olabilir. Ürününüz için tanınabilir bir marka adı kullanmanızı öneririz. Ürününüzün pazarlanmadığı müddetçe kuruluşunuzun adını eklemeyin. Bu teklifi diğer web siteleri ve yayımlarda pazartadıysanız, adın tüm yayınlarda tam olarak aynı olduğundan emin olun. |
 |  |  |
 
 
-Teklif Ayarlarınızı kaydetmek için **Kaydet'i** seçin.
+Teklif ayarlarınızı kaydetmek için **Kaydet** ' i seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifiniz için SNU'ları yapılandırmak için [SK'ler](./cpp-skus-tab.md) sekmesini kullanın.
+Teklifinizin SKU 'Larını yapılandırmak için [SKU 'ları](./cpp-skus-tab.md) sekmesini kullanın.

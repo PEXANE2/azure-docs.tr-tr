@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 73f79145f63e0d8afee7596f1f8231a054ef1c2e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: a407461e20eefe29dd410ac6ed547b33287a5be8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82097702"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145422"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Runbook hatalarında sorun giderme
 
@@ -180,11 +180,11 @@ At line:16 char:1
 
 ### <a name="cause"></a>Nedeni
 
-Bu hata, bir runbook 'ta hem Azurerd hem de az Module cmdlet 'leri kullanılarak oluşur. Azurerd modülünü içeri aktarmadan önce az Module içeri aktardığınızda gerçekleşir.
+Bu hata, büyük olasılıkla Azurere 'den, runbook 'inizdeki diğer modüllere tamamlanmamış bir geçişin kullanılması nedeniyle oluşur. Bu, Azure Otomasyonu 'nun yalnızca Azurere modüllerini kullanarak bir runbook işi başlatılmasına neden olabilir, sonra yalnızca az modüller kullanarak başka bir iş, bir sandbox kilitlenmesine başlar. 
 
 ### <a name="resolution"></a>Çözüm
 
-Az ve Azurerd cmdlet 'leri aynı runbook 'ta içeri aktarılamaz ve kullanılamaz. Azure Otomasyonu 'nda az cmdlet 'ler hakkında daha fazla bilgi için bkz. [Azure Automation 'da modülleri yönetme](../shared-resources/modules.md).
+Aynı runbook 'ta az ve Azurerk cmdlet 'lerinin kullanılmasını önermiyoruz. Bu modüllerin doğru kullanımı hakkında daha fazla bilgi edinmek için, bkz. [az modules 'A geçme](../shared-resources/modules.md#migrating-to-az-modules).
 
 ## <a name="scenario-the-runbook-fails-with-the-error-a-task-was-canceled"></a><a name="task-was-cancelled"></a>Senaryo: runbook hata vererek başarısız oldu: bir görev iptal edildi
 
@@ -581,7 +581,7 @@ Bu hatayı çözmek için iki yol vardır.
 * [Başlangıç-iş](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/start-job?view=powershell-7)kullanmak yerine, runbook 'u başlatmak için [Start-azautomationrunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) kullanın.
 * Bir karma runbook çalışanında runbook 'u çalıştırmayı deneyin.
 
-Bu davranış ve Azure Otomasyonu runbook 'larının diğer davranışları hakkında daha fazla bilgi edinmek için bkz. [runbook davranışı](../automation-runbook-execution.md#runbook-behavior).
+Bu davranış ve Azure Otomasyonu runbook 'larının diğer davranışları hakkında daha fazla bilgi edinmek için bkz. [Azure Otomasyonu 'Nda runbook yürütme](../automation-runbook-execution.md).
 
 ## <a name="scenario-linux-hybrid-runbook-worker-receives-a-prompt-for-a-password-when-signing-a-runbook"></a>Senaryo: Linux hibrit Runbook Worker, bir runbook imzalanırken parola istemi alır
 
@@ -645,11 +645,11 @@ Bu sorunun olası nedenleri:
 
 #### <a name="not-using-run-as-account"></a>Farklı Çalıştır hesabı kullanmıyor
 
-Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için, [5. adım-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) adımlarını izleyin. 
+Key Vault erişmek için bir farklı çalıştır hesabı kullandığınızdan emin olmak için [Adım 5-Azure kaynaklarını yönetmek için kimlik doğrulaması ekleme](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) ' ye uyun. 
 
 #### <a name="insufficient-permissions"></a>Yetersiz izinler
 
-Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sahip olduğundan emin olmak için [Key Vault ekleme izinleri](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) bölümündeki adımları izleyin. 
+Farklı Çalıştır hesabınızın Key Vault erişmek için yeterli izinlere sahip olduğundan emin olmak için [Key Vault Izinleri ekleyin](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) . 
 
 ## <a name="my-problem-isnt-listed-above"></a><a name="other"></a>Sorun yukarıda listelenmiyor
 
@@ -669,7 +669,7 @@ Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasınd
 
 ### <a name="issues-using-az-modules"></a>Az modüller kullanan sorunlar
 
-Aynı Otomasyon hesabında az modules ve Azurerd modüllerinin kullanılması desteklenmez. Daha fazla ayrıntı için bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules) .
+Azurerd ' den az olan runbook modüllerinizin tamamlanmamış geçişini kullanmak, korumalı alan kilitlenmelerine ve Runbook hatalarıyla neden olabilir. Bkz. [runbook 'larınızda modülleri kullanma](../automation-runbook-execution.md#using-modules-in-your-runbooks).
 
 ### <a name="inconsistent-behavior-in-runbooks"></a>Runbook'larda tutarsız davranış
 
@@ -688,10 +688,6 @@ Farklı Çalıştır hesapları, geçerli hesabınız olarak Azure kaynaklarınd
 
 Web kancalarına parametre geçirme konusunda yardım için bkz. [Web kancasından runbook başlatma](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters-used-when-the-webhook-starts-a-runbook).
 
-### <a name="using-az-modules"></a>Az modüllerini kullanma
-
-Aynı Otomasyon hesabında az modules ve Azurerd modüllerinin kullanılması desteklenmez. Bkz. [runbook 'Larda az modüller](https://docs.microsoft.com/azure/automation/az-modules).
-
 ### <a name="using-self-signed-certificates"></a>Otomatik olarak imzalanan sertifikaları kullanma
 
 Otomatik olarak imzalanan sertifikaları kullanmak için bkz. [Yeni sertifika oluşturma](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
@@ -700,8 +696,9 @@ Otomatik olarak imzalanan sertifikaları kullanmak için bkz. [Yeni sertifika ol
 
 Azure korumalı alanı tüm işlem dışı COM sunucularına erişimi engeller. Örneğin, korumalı bir uygulama veya Runbook Windows Yönetim Araçları (WMI) veya Windows Installer hizmetine (msiserver. exe) çağrı yapamıyor. Korumalı alanın kullanımı hakkındaki ayrıntılar için bkz. [Azure Otomasyonu 'Nda runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
 
-## <a name="recommended-documents"></a>Önerilen Belgeler
+## <a name="recommended-documents"></a>Önerilen belgeler
 
+* [Azure Otomasyonu’nda runbook yürütme](../automation-runbook-execution.md)
 * [Azure Otomasyonu 'nda runbook başlatma](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
 * [Azure Otomasyonu’nda runbook yürütme](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 

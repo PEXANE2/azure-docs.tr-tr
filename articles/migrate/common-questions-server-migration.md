@@ -1,109 +1,109 @@
 ---
-title: Azure Geçir Sunucu Geçişi SSS
-description: Makineleri geçirmek için Azure Geçir Sunucusu Geçişi'ni kullanma yla ilgili sık sorulan soruların yanıtlarını alın.
+title: Azure geçişi sunucu geçişi SSS
+description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: bf33c276c721f3be16d75b964c2b223e90c2a560
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529816"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146045"
 ---
-# <a name="azure-migrate-server-migration-common-questions"></a>Azure Geçir Sunucusu Geçişi: Sık sorulan sorular
+# <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
-Bu makalede, Azure Geçişi: Sunucu Geçişi aracı yla ilgili sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa, şu kaynakları denetleyin:
+Bu makalede, Azure geçişi: sunucu geçiş aracı hakkında sık sorulan sorular yanıtlanmaktadır. Başka sorularınız varsa şu kaynakları kontrol edin:
 
-- Azure Geçiş hakkında [genel sorular](resources-faq.md)
-- [Azure Geçiş cihazı](common-questions-appliance.md) yla ilgili sorular
-- [Keşif, değerlendirme ve bağımlılık görselleştirme](common-questions-discovery-assessment.md) ile ilgili sorular
-- [Azure Geçiş forumunda](https://aka.ms/AzureMigrateForum) soruları yanıtlayın
+- Azure geçişi hakkında [genel sorular](resources-faq.md)
+- [Azure geçişi](common-questions-appliance.md) gereci hakkında sorular
+- [Bulma, değerlendirme ve bağımlılık görselleştirmesiyle](common-questions-discovery-assessment.md) ilgili sorular
+- [Azure geçişi forumundaki](https://aka.ms/AzureMigrateForum) soruların yanıtlarını alın
 
-## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Azure Geçişi ile geçiş için hangi coğrafyalar desteklenir?
+## <a name="what-geographies-are-supported-for-migration-with-azure-migrate"></a>Azure geçişi ile geçiş için hangi coğrafi dosyalar desteklenir?
 
-Kamu ve [hükümet bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafyaları gözden [geçirin.](migrate-support-matrix.md#supported-geographies-public-cloud)
+[Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 
-## <a name="how-does-agentless-vmware-replication-work"></a>Aracısız VMware çoğaltma nasıl çalışır?
+## <a name="how-does-agentless-vmware-replication-work"></a>Aracısız VMware çoğaltması nasıl çalışır?
 
-VMware için aracısız çoğaltma yöntemi VMware anlık görüntüleri ve VMware Değiştirilen Blok İzleme (CBT) kullanır.
+VMware için aracısız çoğaltma yöntemi VMware anlık görüntülerini ve VMware değiştirilmiş blok Izlemeyi (CBT) kullanır.
 
 İşlem şöyledir:
 
-1. Çoğaltmayı başlattığınızda, ilk çoğaltma döngüsü zamanlanır. İlk döngüde, VM'nin anlık görüntüsü alınır. Anlık görüntü VMs VMDKs (diskler) çoğaltmak için kullanılır. 
-2. İlk çoğaltma döngüsü bittikten sonra, delta çoğaltma döngüleri düzenli olarak zamanlanır.
-    - Delta çoğaltma sırasında anlık görüntü alınır ve önceki çoğaltma döngüsünden bu yana değişen veri blokları çoğaltılır.
-    - VMware CBT son döngüden bu yana değişen blokları belirlemek için kullanılır.
-    - Periyodik çoğaltma döngülerinin sıklığı Azure Geçiş tarafından otomatik olarak yönetilir ve aynı veri deposundan kaç vm ve diskin aynı anda çoğaltıldığını gösterir. İdeal koşullarda, çoğaltma sonunda her VM için saatte bir döngüye yakınlaşır.
+1. Çoğaltmayı başlattığınızda, bir ilk çoğaltma çevrimi zamanlanır. İlk döngüde, VM 'nin bir anlık görüntüsü alınır. Anlık görüntü, VMDK (diskler) VM 'lerini çoğaltmak için kullanılır. 
+2. İlk çoğaltma döngüsü bittikten sonra, Delta çoğaltma döngüleri düzenli aralıklarla zamanlanır.
+    - Delta çoğaltma sırasında, bir anlık görüntü alınır ve önceki çoğaltma döngüsünün çoğaltılmasından bu yana değişen veri blokları olur.
+    - VMware CBT, son döngüden bu yana değişmiş blokları belirlemede kullanılır.
+    - Düzenli çoğaltma döngülerinin sıklığı Azure geçişi tarafından otomatik olarak yönetilir ve aynı veri deposundan kaç tane diğer VM ve diskin eşzamanlı olarak çoğaltıldığına bağlıdır. İdeal koşullarda, çoğaltma sonunda her VM için saat başına bir döngüye geçiş yapar.
 
-Geçiş yaptığınızda, makinenin kalan verileri yakalaması için isteğe bağlı çoğaltma döngüsü zamanlanır. Sıfır veri kaybı ve uygulama tutarlılığı sağlamak için, geçiş sırasında makineyi kapatmayı seçebilirsiniz.
+Geçiş yaptığınızda, makinenin kalan verileri yakalaması için isteğe bağlı bir çoğaltma çevrimi zamanlanır. Sıfır veri kaybını ve uygulama tutarlılığını sağlamak için, geçiş sırasında makineyi kapatmayı seçebilirsiniz.
 
-## <a name="why-isnt-resynchronization-exposed"></a>Yeniden senkronizasyon neden açıklanmaz?
+## <a name="why-isnt-resynchronization-exposed"></a>Yeniden eşitleme neden ortaya çıkmıyor?
 
-Aracısız geçiş sırasında, her delta döngüsünde, geçerli anlık görüntü ile daha önce alınan anlık görüntü arasındaki fark yazılır. Her zaman anlık görüntüler arasındaki fark, veri katlama. Belirli bir sektör anlık görüntüler arasında *N* kez yazılırsa, yalnızca son eşitlemeyle ilgilendiğimiz için son yazmanın aktarılması gerekir. İşlem, her yazıyı izlediğimiz ve uyguladığımız aracı tabanlı çoğaltmadan farklıdır. Bu süreçte, her delta döngüsü bir resynchronization olduğunu. Yani, hiçbir resynchronization seçeneği maruz. Diskler bir hata nedeniyle eşitlenmezse, bir sonraki döngüde sabitlenir. 
+Aracısız geçiş sırasında, her Delta döngüde, geçerli anlık görüntü ve önceden alınan anlık görüntü arasındaki fark yazılır. Bu her zaman anlık görüntüler arasındaki farktır, içindeki verileri katlama. Belirli bir kesim, anlık görüntüler arasında *N* kez yazılmışsa yalnızca son eşitlemede ilgilendiğimiz için yalnızca son yazma işlemi aktarılmalıdır. İşlem, her yazma işlemini izleyip uygulamamız sırasında aracı tabanlı çoğaltmadan farklıdır. Bu işlemde, her Delta çevrimi bir yeniden eşitleme işlemidir. Bu nedenle, yeniden eşitleme seçeneği gösterilmez. Bir hata nedeniyle diskler eşitlenmemişse, sonraki döngüde düzeltilir. 
 
-## <a name="how-does-churn-rate-affect-agentless-replication"></a>Çalkalama oranı aracısız çoğaltmayı nasıl etkiler?
+## <a name="how-does-churn-rate-affect-agentless-replication"></a>Dalgalanma oranı aracısız çoğaltmayı nasıl etkiler?
 
-Aracısız çoğaltma verilerde katlandığı için, *karmaşa deseni* *karmaşa hızından*daha önemlidir. Bir dosya tekrar tekrar yazıldığında, oranın çok fazla etkisi olmaz. Ancak, diğer tüm sektörlerin yazıldığı bir desen, bir sonraki döngüde yüksek karmaşaya neden olur. Aktardığımız veri miktarını en aza indirdiğimiz için, bir sonraki döngüyü planlamadan önce verilerin mümkün olduğunca katlanabilir.  
+Aracısız çoğaltma veride veri katdığından, *karmaşıklık* *oranı karmaşıklık hızından*daha önemlidir. Bir dosya tekrar yazıldığında ve yeniden yazıldığında, oran çok etkiye sahip değildir. Ancak, diğer her kesimin yazıldığı bir model sonraki döngüde yüksek dalgalanma neden olur. Aktardığımız veri miktarını en aza indirdiğimiz için, bir sonraki döngüyü zamanlamadan önce verilerin mümkün olduğunca katlarına izin veririz.  
 
-## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Çoğaltma döngüsü ne sıklıkta zamanlanır?
+## <a name="how-frequently-is-a-replication-cycle-scheduled"></a>Çoğaltma döngüsünü ne sıklıkta planlıyor?
 
-Bir sonraki çoğaltma döngüsünü zamanlamak için formül (önceki çevrim süresi / 2) veya bir saat, hangisi daha yüksektir.
+Sonraki çoğaltma döngüsünü zamanlamaya yönelik formül (önceki bir dönem/2) veya bir saat, hangisi daha yüksek.
 
-Örneğin, bir VM delta döngüsü için dört saat sürerse, bir sonraki döngü sonraki saat içinde değil, iki saat içinde zamanlanır. İlk delta döngüsü hemen zamanlandığında, ilk çoğaltmahemen sonra işlem farklıdır.
+Örneğin, bir VM bir Delta çevrimi için dört saat sürüyorsa, sonraki zaman bir sonraki saat içinde değil, iki saat içinde zamanlanır. İlk yineleme döngüsünün hemen zamanlandığı zaman, işlem ilk çoğaltmadan hemen sonra farklıdır.
 
-## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Aracısız çoğaltma VMware sunucularını nasıl etkiler?
+## <a name="how-does-agentless-replication-affect-vmware-servers"></a>Aracısız çoğaltma, VMware sunucularını nasıl etkiler?
 
-Aracısız çoğaltma, VMware vCenter Server ve VMware ESXi ana bilgisayarları üzerinde bazı performans etkisi sağlar. Aracısız çoğaltma anlık görüntüler kullandığından, depolama da IOPS tüketir, bu nedenle bazı IOPS depolama bant genişliği gereklidir. Ortamınızda depolama veya IOP'lerle ilgili kısıtlamalarınız varsa aracısız çoğaltma kullanmanızı önermiyoruz.
+Aracısız çoğaltma VMware vCenter Server ve VMware ESXi konaklarında bazı performans etkilerine neden olur. Aracısız çoğaltma anlık görüntüler kullandığından, depolama üzerinde ıOPS 'yi tüketir, bu nedenle bazı ıOPS depolama bant genişliği gereklidir. Ortamınızda depolama veya IOPS üzerinde kısıtlamalar varsa aracısız çoğaltmanın kullanılması önerilmez.
 
-## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>UEFI VM'lerin Azure Gen 2'ye aracısız geçişini yapabilir miyim?
+## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>UEFı VM 'lerin Azure Gen 2 ' ye aracısız geçişini yapabilir miyim?
 
-Hayır. Bu VM'leri Gen 2 Azure VM'lerine geçirmek için Azure Site Kurtarma'yı kullanın. 
+Hayır. Bu VM 'Leri Gen 2 Azure VM 'lerine geçirmek için Azure Site Recovery kullanın. 
 
-## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Geçiş yaparken VM'leri Azure Kullanılabilirlik Bölgelerine sabitleyebilir miyim?
+## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>Geçiş yaparken VM 'Leri Azure Kullanılabilirlik Alanları sabitleyebilir miyim?
 
-Hayır. Azure Kullanılabilirlik Bölgeleri Azure Geçiş geçişi için desteklenmez.
+Hayır. Azure Kullanılabilirlik Alanları Azure geçişi geçiş için desteklenmiyor.
 
-## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Azure Geçir çoğaltma sırasında hangi aktarım protokolünü kullanır?
+## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Çoğaltma sırasında Azure geçişi hangi taşıma protokolünü kullanıyor?
 
-Azure Geçir, SSL şifrelemeli Ağ Blok Aygıtı (NBD) protokolünü kullanır.
+Azure geçişi, ağ engelleme cihazı (NBD) protokolünü TLS şifrelemesi ile kullanır.
 
-## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Geçiş için gereken minimum vCenter Server sürümü nedir?
+## <a name="what-is-the-minimum-vcenter-server-version-required-for-migration"></a>Geçiş için gereken en düşük vCenter Server sürümü nedir?
 
-En az vCenter Server 5.5 ve vSphere ESXi host sürüm 5.5 olmalıdır.
+En az vCenter Server 5,5 ve vSphere ESXi ana bilgisayar sürümü 5,5 olmalıdır.
 
-## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Müşteriler VM'lerini yönetilmeyen disklere geçirebiliyor mu?
+## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>Müşteriler, sanal makinelerini yönetilmeyen disklere geçirebilir mi?
 
-Hayır. Azure Geçiş yalnızca yönetilen disklere (Standart HDD, Premium SSD) geçişi destekler.
+Hayır. Azure geçişi yalnızca yönetilen disklere geçişi destekler (Standart HDD, Premium SSD).
 
-## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Aracısız geçiş kullanarak aynı anda kaç VM kopyalayabilirim?
+## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>Aracısız geçiş kullanarak bir seferde kaç sanal makine çoğaltırım?
 
-Şu anda, vCenter Server örneğine göre aynı anda 100 VM geçirebilirsiniz. 10 VM'lik gruplar halinde geçirin.
+Şu anda, her vCenter Server örneği için 100 VM 'yi aynı anda geçirebilirsiniz. 10 VM 'lerin toplu işleri halinde geçiş yapın.
 
-## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltma için Azure Geçir cihazını kullanırken çoğaltmayı nasıl azaltabilirim?  
+## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy'yi kullanarak gaz yapabilirsiniz. Örneğin:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
 
-NetQosPolicy'de kullanılacak AppNamePrefix "GatewayWindowsService.exe"dir. Aşağıdaki gibi bir ilke oluşturarak, cihazdan çoğaltma trafiğini daraltmak için Azure Geçir cihazı üzerinde bir ilke oluşturabilirsiniz:
+NetQosPolicy içinde kullanılacak AppNamePrefix değeri "GatewayWindowsService. exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
  
-Yeni-NetQosPolicy -Adı "ThrottleReplication" -AppPathNameMatchCondition "GatewayWindowsService.exe" -ThrottleRateActionBitsPerSecond 1MB
+New-NetQosPolicy-Name "Kısıtımizi"-AppPathNameMatchCondition "GatewayWindowsService. exe"-kısıtlar Lerateactionbitspersecond 1MB
 
-## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Makineleri fiziksel sunucu olarak ne zaman geçiriyorum?
+## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Makineleri fiziksel sunucu olarak ne zaman geçirebilirim?
 
-Makineleri fiziksel sunucular olarak ele alarak geçirme, bir dizi senaryoda yararlıdır:
+Makineleri fiziksel sunucu olarak düşünerek, bir dizi senaryoda yararlı olacak şekilde geçirme:
 
-- Şirket içi fiziksel sunucuları geçirterken.
-- Xen, KVM gibi platformlar tarafından sanallaştırılmış VM'leri geçirin.
-- Hyper-V veya VMware VM'leri geçirmek için, bazı nedenlerden dolayı [Hyper-V](tutorial-migrate-hyper-v.md)veya [VMware](server-migrate-overview.md) geçişi için standart geçiş işlemini kullanamıyorsanız. Örneğin VMware vCenter çalıştırmıyorsanız ve yalnızca ESXi ana bilgisayarlarını kullanıyorsanız.
-- Şu anda özel bulutlarda çalışan VM'leri Azure'a geçirmek için
-- Amazon Web Hizmetleri (AWS) veya Google Bulut Platformu (GCP) gibi genel bulutlarda çalışan VM'leri Azure'a geçirmek istiyorsanız.
+- Şirket içi fiziksel sunucuları geçirdiğinizde.
+- VM 'Leri Xen, KVM gibi platformlar tarafından sanallaştırdıysanız.
+- Hyper-V veya VMware VM 'lerini geçirmek için, bazı nedenlerle [Hyper-v](tutorial-migrate-hyper-v.md)veya [VMware](server-migrate-overview.md) geçişi için standart geçiş işlemini kullanamazsınız. Örneğin, VMware vCenter çalıştırmıyorsanız ve yalnızca ESXi Konakları kullanılıyorsa.
+- Özel bulutlarda çalışmakta olan VM 'Leri Azure 'a geçirmek için
+- Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri Azure 'a geçirmek istiyorsanız.
 
-## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server'ımda VM'leri keşfetmek için iki (veya daha fazla) cihaz dağıttım. Ancak, VM'leri göç etmeye çalıştığımda, yalnızca cihazdan birine karşılık gelen VM'ler görüyorum.
+## <a name="i-deployed-two-or-more-appliances-to-discover-vms-in-my-vcenter-server-however-when-i-try-to-migrate-the-vms-i-only-see-vms-corresponding-to-one-of-the-appliance"></a>VCenter Server VM 'Leri bulmaya yönelik iki (veya daha fazla) gereç dağıttım. Ancak, VM 'Leri geçirmeye çalıştığımda yalnızca gerecden birine karşılık gelen VM 'Leri görüyorum.
 
-Bu iyi bir kullanım durumu olsa da, şu anda bunu destekliyoruz. Aynı VM kümesini keşfetmek için iki (veya daha fazla) cihaz dağıtmak, VM sahipliğinin iki cihaz arasında sürekli olarak sokulmaya devam ettiği bir hizmet sorununa neden olur. Bu nedenle VM'lerin göründüğünü ve kaybolduğunu görürsünüz. Bu gibi durumlarda, sorunu çözmek için bir cihazı silmeniz ve sert bir yenileme yapmanız gerekir.
+Bu iyi bir kullanım durumu olabilir, ancak şu anda bunu desteklemiyoruz. Aynı VM kümesini bulmaya yönelik iki (veya daha fazla) gereç dağıtımı, iki gereç arasında sanal makine sahipliğinin geçiş yapmasına devam eden bir hizmet sorununa neden olur. Bu, sanal makinelerin görünme ve görünme nedenidir. Bu gibi durumlarda, sorunu çözmek için bir gereci silmeniz ve bir sabit yenileme yapmanız gerekir.
 
-## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>VMware VM'leri geçirmek için VMware vCenter'a ihtiyacım var mı?
-[VMware VM'leri](server-migrate-overview.md) VMware aracı tabanlı veya aracısız geçiş kullanarak geçirmek için, VM'lerin bulunduğu ESXi ana bilgisayarlarının vCenter Server tarafından yönetilmesi gerekir. vCenter Server'ıniz yoksa, VMware VM'leri fiziksel sunucu olarak geçirerek geçirebilirsiniz. [Daha fazla bilgi edinin](migrate-support-matrix-physical-migration.md).
+## <a name="do-i-need-vmware-vcenter-to-migrate-vmware-vms"></a>VMware VM 'lerini geçirmek için VMware vCenter 'a ihtiyacım var mı?
+VMware Aracısı tabanlı veya aracısız geçiş kullanarak [VMware VM 'lerini geçirmek](server-migrate-overview.md) Için, sanal makinelerin bulunduğu ESXi konaklarının vCenter Server tarafından yönetilmesi gerekir. VCenter Server yoksa, VMware VM 'lerini fiziksel sunucu olarak geçirerek geçirebilirsiniz. [Daha fazla bilgi edinin](migrate-support-matrix-physical-migration.md).
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure [Geçiş genel görünümünü](migrate-services-overview.md)okuyun.
+[Azure geçişi 'ne genel bakış](migrate-services-overview.md)konusunu okuyun.

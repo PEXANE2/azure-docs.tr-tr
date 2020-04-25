@@ -1,43 +1,43 @@
 ---
-title: Azure Marketi'nde sanal makine teklifi yayınlama
-description: Varolan bir sanal makine teklifini Azure Marketi'nde yayımlamak için gereken adımları listeler.
+title: Azure Marketi 'nde bir sanal makine teklifi yayımlama
+description: Mevcut bir sanal makine teklifini Azure Marketi üzerine yayımlamak için gereken adımları listeler.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
-ms.openlocfilehash: bb875a5c4ab1b898b64fe22140414e5d5b7830b8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f66ce0c15e976898d5022bf5705a82fe0969ec07
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273792"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147653"
 ---
-# <a name="publish-a-virtual-machine-offer"></a>Sanal makine teklifi yayınlama
+# <a name="publish-a-virtual-machine-offer"></a>Bir sanal makine teklifi yayımlama
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) ' nde bulunan yönergeleri izleyin.
 
- Teklifi portalda tanımladıktan ve ilişkili teknik varlıkları oluşturduktan sonra son adım, teklifi yayımlamak için göndermektir. Aşağıdaki diyagram, yayımlama işleminde "canlı yayına geçmek" için gereken ana adımları görüntüler:
+ Son adım, portalda teklif tanımladıktan ve ilişkili teknik varlıkları oluşturduktan sonra, teklifi yayımlama için gönderirsiniz. Aşağıdaki diyagramda yayımlama işlemindeki "canlı çalış" ile ana adımlar gösterilmektedir:
 
-![Sanal makine teklifi için yayımlama adımları](./media/publishvm_013.png)
+![Sanal Makine teklifi için yayımlama adımları](./media/publishvm_013.png)
 
-Aşağıdaki tabloda bu adımlar açıklanır ve tamamlanması için maksimum zaman tahmini sağlar:
+Aşağıdaki tabloda bu adımlar açıklanmakta ve tamamlanması için en fazla bir süre tahmini sunulmaktadır:
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **Yayımlama Adımı**           | **Zaman**    | **Açıklama**                                                            |
+|  **Yayımlama adımı**           | **Işınızda**    | **Açıklama**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
-| Ön koşulları doğrula         | 15 dk   | Teklif bilgileri ve teklif ayarları doğrulanır.                        |
-| Test Sürüşü Doğrulama (isteğe bağlı) | 2 saat | Test Sürüşünü etkinleştirmek için seçtiyseniz, Microsoft Test Sürücüsü yapılandırmasını, dağıtımını ve çoğaltmaişlemini seçili bölgeler arasında doğrular. |
-| Sertifika                  | 3 gün | Teklif, Azure Sertifika Ekibi tarafından analiz edilir. Bu adım, virüsler, kötü amaçlı yazılımlar, güvenlik uyumluluğu ve güvenlik sorunları için taramalar gerçekleştirir. Bir sorun bulunursa geri bildirim sağlanır. |
-| Sağlama                   | 4 gün   | VM teklifi pazar üretim sistemlerinde çoğaltılır.               |
-| Ambalaj ve kurşun üretimi kaydı | \<1 saat  | Teklifin teknik varlıkları müşteri kullanımı için paketlenir ve müşteri adayı sistemleri yapılandırılır ve ayarlanır. |
-|  Yayıncı oturum kapatma             |  -        | Teklif yayına girmeden önce son yayıncı incelemesi ve onayı. Teklifinizi, tüm gereksinimlerinizi karşıladığını doğrulamak için seçili aboneliklerde (teklif bilgileri adımlarında) dağıtabilirsiniz.  |
-| Sağlama                   | 4 gün | Kesinleşmiş VM teklifi pazar üretim sistemlerinde ve bölgelerde çoğaltılır. | 
-| Canlı                           | 4 gün | VM teklifi serbest bırakılır, gerekli bölgelere çoğaltılır ve halka açık hale getirilir. |
+| Önkoşulları doğrulama         | 15 dk   | Teklif bilgileri ve teklif ayarları onaylanır.                        |
+| Sınama sürücüsü doğrulaması (isteğe bağlı) | 2 saat | Test sürücüsünü etkinleştirmeyi seçtiyseniz, Microsoft test sürücüsü yapılandırmasını, dağıtımını ve çoğaltmasını seçili bölgeler aracılığıyla doğrular. |
+| Sertifika                  | 3 gün | Teklif, Azure Sertifika ekibi tarafından çözümlenir. Bu adım, virüsler, kötü amaçlı yazılım, güvenlik uyumluluğu ve güvenlik sorunları için taramalar gerçekleştirir. Sorun bulunursa geri bildirim sağlanır. |
+| Sağlama                   | 4 gün   | VM teklifi market üretim sistemlerinde çoğaltılır.               |
+| Paketleme ve lider oluşturma kaydı | \<1 saat  | Teklifin teknik varlıkları müşteri kullanımı için paketlenmiştir ve müşteri adayı sistemleri yapılandırılır ve ayarlanır. |
+|  Yayımcı oturumu kapatma             |  -        | Teklifin etkin olmadan önce son yayımcı incelemesi ve onayı. Teklifinizi, tüm gereksinimlerinizi karşıladığından emin olmak için seçili aboneliklerde (teklif bilgileri adımlarında) dağıtabilirsiniz.  |
+| Sağlama                   | 4 gün | Son VM teklifi market üretim sistemleri ve bölgelerinde çoğaltılır. | 
+| Canlı                           | 4 gün | VM teklifi serbest bırakılır, gerekli bölgelere çoğaltılır ve herkese açık hale getirilir. |
 |  |  |
 
-Bu işlemin tamamlanması için 16 güne kadar bekleyin.  Bu yayımlama adımlarını inceledikten sonra, VM teklifiniz [Microsoft Azure Marketi'nde](https://azuremarketplace.microsoft.com/marketplace/)listelenir. 
+Bu işlemin tamamlanabilmesi için 16 güne kadar izin verin.  Bu yayımlama adımlarını tamamladıktan sonra, sanal makine teklifiniz [Microsoft Azure Market](https://azuremarketplace.microsoft.com/marketplace/)listelenecektir. 
 

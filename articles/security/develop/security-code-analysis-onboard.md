@@ -1,10 +1,10 @@
 ---
-title: Microsoft Güvenlik Kodu Analizi onboarding kılavuzu
-description: Bu makalede, Microsoft Güvenlik Kodu Çözümlemesi uzantısı nın yüklenmesi açıklanmaktadır
+title: Microsoft Güvenlik kodu analizi ekleme Kılavuzu
+description: Bu makalede, Microsoft Güvenlik kodu çözümleme uzantısı 'nı yükleme açıklanmaktadır
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/14/2020
+ms.date: 04/24/2020
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,87 +12,87 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 3ef111817b6351277f975b9b7e454f9a89982451
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 5b7e36c12dab65f4bcc6c05a1ee902301c402d5e
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460214"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147676"
 ---
-# <a name="onboarding-and-installing"></a>Onboarding ve yükleme
+# <a name="onboarding-and-installing"></a>Ekleme ve yükleme
 
-Microsoft Güvenlik Kodu Analizi'ne başlamak için ön koşullar:
+Microsoft Güvenlik kodu çözümlemesi ile çalışmaya başlama önkoşulları:
 
-- Aşağıdaki bölümde ayrıntılı olarak belirtildiği gibi uygun bir Microsoft Birleşik Destek teklifi.
-- Azure DevOps kuruluşu.
-- Azure DevOps kuruluşuna uzantıyükleme izni.
-- Bulut tarafından barındırılan Azure DevOps ardışık bir düzenek ile senkronize edilebilen kaynak kodu.
+- Aşağıdaki bölümde açıklandığı gibi uygun bir Microsoft Birleştirilmiş Destek teklif.
+- Azure DevOps organizasyonu.
+- Azure DevOps kuruluşuna uzantı yüklemek için izin.
+- Bulutta barındırılan bir Azure DevOps işlem hattı ile eşitlenebilir kaynak kodu.
 
-## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik Kodu Çözümlemesi uzantısıonboarding
+## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu çözümleme uzantısını ekleme
 
-### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik Kodu Analizi uzantısını satın almak ister misiniz?
+### <a name="interested-in-purchasing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu analiz uzantısı 'nı satın alma ile ilgileniyor musunuz?
 
-Aşağıdaki destek tekliflerinden birine sahipseniz, uzantıya erişmek için mevcut saatleri satın almak veya değiştirmek için Teknik Hesap Yöneticinize başvurun:
+Aşağıdaki destek tekliflerinden birine sahipseniz, uzantıya erişim sağlamak için mevcut saatleri satın almak veya değiştirmek üzere teknik hesap yöneticinize başvurun:
 
-- Birleşik Destek Gelişmiş katmanı
-- Birleşik Destek Performansı katmanı
+- Birleşik destek Gelişmiş katmanı
+- Birleşik destek performans katmanı
 - Geliştiriciler için Premier Destek
-- Ortaklar için Premier Destek
-- Kurumsal için Premier Destek
+- Iş ortakları için Premier Destek
+- Enterprise için Premier Destek
 
-Yukarıda belirtilen destek anlaşmalarından birine sahip değilseniz, uzantıyı Ortaklarımızdan birinden satın alabilirsiniz.
+Yukarıda belirtilen destek anlaşmalarından birine sahip değilseniz, bu uzantıyı Iş ortaklarımızın birinden satın alabilirsiniz.
 
-**Sonraki Adımlar:**
+**Sonraki adımlar:**
 
-Aşağıdaki listeden bir İş Ortağına başvurun ve Microsoft Güvenlik Kodu Çözümlemesi uzantısını satın almak isteyin.
+Yukarıdaki nitelikleri karşıladıysanız, Microsoft Güvenlik kodu analizi uzantısını satın almak için aşağıdaki listeden bir iş ortağıyla iletişim kurun. Aksi takdirde, [Microsoft Güvenlik kodu çözümleme desteği](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)'ne başvurun.
 
->**Ortak:**
+>**Ortaklarınıza**
 
-- Bölgeler - İletişim Bilgileri:cloudsupport@zones.com
-- Wortell – İletişim Bilgileri:info@wortell.nl
+- Bölgeler-Iletişim ayrıntıları:cloudsupport@zones.com
+- Worsöyleyin – Iletişim ayrıntıları:info@wortell.nl
 
-### <a name="become-a-partner"></a>Ortak Olun
+### <a name="become-a-partner"></a>Iş ortağı olun
 
-Microsoft Güvenlik Kodu Çözümlemesi ekibi, iş ortaklarının iş ortakları için Bir Premier Destek anlaşması na sahip olmasını istiyor. İş ortakları, uzantıyı satın almak isteyen ancak Microsoft ile Kurumsal Destek sözleşmesi olmayan müşterilere satarak Azure DevOps müşterilerinin daha güvenli bir şekilde geliştirmesini sağlamaya yardımcı olur. İlgilenen ortaklar [buradan](http://www.microsoftpartnersupport.com/msrd/opin)kayıt yaptırabilirsiniz.
+Microsoft Güvenlik kodu çözümleme ekibi, iş ortakları için bir Premier Destek iş ortağı sözleşmesi eklemek istiyor. İş ortakları, uzantıyı satın almak isteyen müşterilere satarak Azure DevOps müşterilerinin daha güvenli bir şekilde geliştirilebilme sağlanmasına yardımcı olur, ancak Microsoft ile kurumsal destek sözleşmenize gerek kalmaz. İlgilendiğiniz iş ortakları [buradan](http://www.microsoftpartnersupport.com/msrd/opin)kayıt yapabilir.
 
-## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik Kodu Çözümlemesi uzantısını yükleme
+## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Güvenlik kodu analizi uzantısını yükleme
 
-1. Uzantı Azure DevOps kuruluşunuzla paylaşıldıktan sonra Azure DevOps kuruluş sayfanıza gidin. Böyle bir sayfa için `https://dev.azure.com/contoso`örnek bir URL' dir.
-1. Adınızın yanındaki sağ üst köşedeki alışveriş çantası simgesini seçin ve **ardından uzantıları yönet'i**seçin.
-1. **Paylaşılan'u**seçin.
-1. Microsoft Güvenlik Kodu Analizi uzantısını seçin, **yükle'yi**seçin.
-1. Açılan listeden, uzantıyı yüklemek için Azure DevOps kuruluşunu seçin.
-1. **Yükle**’yi seçin. Yükleme tamamlandıktan sonra uzantıyı kullanmaya başlayabilirsiniz.
+1. Uzantı Azure DevOps kuruluşunuzla paylaşıldıktan sonra Azure DevOps kuruluş sayfanıza gidin. Böyle bir sayfanın örnek URL 'SI `https://dev.azure.com/contoso`.
+1. Adınızın yanındaki sağ üst köşede bulunan alışveriş çantası simgesini seçin ve ardından **Uzantıları Yönet**' i seçin.
+1. **Paylaşılan**' ı seçin.
+1. Microsoft Güvenlik kodu analiz uzantısı ' nı seçin, ardından **Install**' ı seçin.
+1. Açılan listeden, uzantıyı yüklemek için Azure DevOps organizasyonunu seçin.
+1. **Yükle**’yi seçin. Yükleme tamamlandıktan sonra, uzantısını kullanmaya başlayabilirsiniz.
 
 >[!NOTE]
-> Uzantıyı yüklemek için erişiminiz olmasa bile, yükleme adımlarını devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulunabilirsiniz.
+> Uzantıyı yükleme erişiminiz olmasa bile, yükleme adımlarıyla devam edin. Yükleme işlemi sırasında Azure DevOps kuruluş yöneticinizden erişim isteğinde bulabilirsiniz.
 
-Uzantıyı yükledikten sonra, güvenli geliştirme oluşturma görevleri görünür ve Azure Ardışık Hatlarınıza eklenecek şekilde kullanılabilir.
+Uzantıyı yükledikten sonra, güvenli geliştirme derleme görevleri görünür ve Azure Pipelines eklemek için kullanılabilir.
 
-## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Azure DevOps ardışık sisteminize belirli yapı görevleri ekleme
+## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Azure DevOps işlem hattınızla belirli derleme görevleri ekleme
 
-1. Azure DevOps kuruluşunuzdan ekip projenizi açın.
-1. Boru Hatları > **Oluşturur'ı**seçin. **Pipelines**
-1. Uzantı oluşturma görevlerini eklemek istediğiniz ardışık yapı yı seçin:
-   - Yeni ardışık kaynak: **Yeni'yi** seçin ve yeni bir ardışık kaynak oluşturmak için ayrıntılı adımları izleyin.
-   - Ardışık düzenle: Varolan bir **Edit** ardışık düzenle ve ardışık hattı düzenlemeye başlamak için Düzenle'yi seçin.
-1. Görevler **+** **Ekle** bölmesini seçin ve gidin.
-1. Listeden veya arama kutusunu kullanarak eklemek istediğiniz yapı görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
+1. Azure DevOps kuruluşunuzda, takım projenizi açın.
+1. İşlem **hatları** > **derlemeleri**seçin.
+1. Uzantı derleme görevlerini eklemek istediğiniz işlem hattını seçin:
+   - Yeni işlem hattı: **Yeni** ' yi seçin ve yeni bir işlem hattı oluşturmak için ayrıntılı adımları izleyin.
+   - İşlem hattını Düzenle: mevcut bir işlem hattını seçin ve ardından işlem hattını düzenlemeye başlamak için **Düzenle** ' yi seçin.
+1. ' **+** İ seçin ve **Görevler Ekle** bölmesine gidin.
+1. Listeden ya da arama kutusunu kullanarak eklemek istediğiniz derleme görevini bulun. **Add (Ekle)** seçeneğini belirleyin.
 1. Görev için gereken parametreleri belirtin.
-1. Yeni bir yapıyı sıraya n için sıraya girin.
+1. Yeni bir derlemeyi kuyruğa al.
    >[!NOTE]
-   >Dosya ve klasör yolları kaynak deponuzun köküne göredir. Çıktı dosyalarını ve klasörlerini parametre olarak belirtirseniz, bunlar yapı aracısı üzerinde tanımladığımız ortak konumla değiştirilir.
+   >Dosya ve klasör yolları, kaynak deponuzdaki köke göre değişir. Çıkış dosyalarını ve klasörlerini parametre olarak belirtirseniz, bunlar derleme aracısında tanımlamış olduğumuz ortak konumla değiştirilmiştir.
 
 > [!TIP]
 >
-> - Yapınızdan sonra bir çözümleme çalıştırmak için, yapınızın Yapı Yapı Larını Yayımla adımından sonra Microsoft Güvenlik Kodu Çözümlemesi yapı görevlerini yerleştirin. Bu şekilde, yapınız statik çözümleme araçlarını çalıştırmadan önce sonuçları bitirebilir ve yayınlayabilir.
-> - Güvenli geliştirme oluşturma görevleri için her zaman **Hataya Devam** Et'i seçin. Bir araç başarısız olsa bile, diğerleri çalıştırabilirsiniz. Araçlar arasında karşılıklı bağımlılık yoktur.
-> - Microsoft Güvenlik Kodu Çözümlemesi yapı görevleri yalnızca bir araç başarılı bir şekilde çalışmazsa başarısız olur. Ancak, bir araç koddaki sorunları tanımlasa bile başarılı olurlar. Analiz Sonrası yapı görevini kullanarak, bir araç koddaki sorunları tanımladığında yapınızı başarısız olacak şekilde yapılandırabilirsiniz.
-> - Bazı Azure DevOps yapı görevleri, bir sürüm ardışık hattı üzerinden çalıştırıldığında desteklenmez. Daha ayrıntılı olarak, Azure DevOps'ler bir sürüm ardışık alanı içinde yapı yayımlayan görevleri desteklemez.
-> - Azure DevOps Takım Yapısı'nda parametre olarak belirtebileceğiniz önceden tanımlanmış [değişkenlerin](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)listesi için bkz.
+> - Derlemeden sonra bir analiz çalıştırmak için, derlemenize ait derleme yapıtlarını Yayımla adımını tamamladıktan sonra Microsoft Güvenlik kodu çözümleme derleme görevlerini koyun. Bu şekilde, derlemeniz statik analiz araçlarını çalıştırmadan önce, sonuçları bitirebilirler ve gönderebilir.
+> - Güvenli Geliştirme derleme görevleri için her zaman **hata durumunda devam et '** i seçin. Bir araç başarısız olsa da, diğerleri çalıştırılabilir. Araçlar arasında bağımlılık yoktur.
+> - Microsoft Güvenlik kodu Analizi derleme görevleri yalnızca bir araç başarıyla çalışamazsa başarısız olur. Ancak bir araç, koddaki sorunları tanımlarsa bile başarılı olur. Analiz sonrası derleme görevini kullanarak, bir araç koddaki sorunları belirlediğinde, derlemenizi başarısız olarak yapılandırabilirsiniz.
+> - Bir yayın işlem hattı aracılığıyla çalıştırıldığında bazı Azure DevOps derleme görevleri desteklenmez. Daha belirgin olarak, Azure DevOps bir yayın işlem hattı içinden yapıtları yayınlayan görevleri desteklemez.
+> - Azure DevOps ekip derlemesinde parametre olarak belirtebileceğiniz önceden tanımlanmış değişkenlerin bir listesi için bkz. [Azure DevOps derleme değişkenleri](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yapı görevlerini yapılandırma hakkında daha fazla bilgi için [Yapılandırma kılavuzumuza](security-code-analysis-customize.md) veya [YAML Yapılandırma kılavuzumuza](yaml-configuration.md)bakın.
+Yapı görevlerini yapılandırma hakkında daha fazla bilgi için bkz. [yapılandırma kılavuzumuzu](security-code-analysis-customize.md) veya [YAML yapılandırma kılavuzu](yaml-configuration.md).
 
 Uzantı ve sunulan araçlar hakkında daha fazla sorunuz varsa, [SSS sayfamıza](security-code-analysis-faq.md)göz atın.

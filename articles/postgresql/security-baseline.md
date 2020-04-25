@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a38bb12577fd646b2e7abf773dbb2a3f138f58fe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: HT
+ms.openlocfilehash: eb6fc65d15ba7262b38a48e220f01d74bfcee54a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82127559"
+ms.locfileid: "82146547"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql-single-server"></a>PostgreSQL için Azure veritabanı tek sunucu için Azure Güvenlik temeli
 
@@ -130,7 +130,7 @@ PostgreSQL için Azure veritabanı için hizmet etiketi kullanımını anlayın:
 
 - DDoS koruma standardı etkinleştirilmelidir
 
-- PostgreSQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir
+- PostgreSQL veritabanı sunucuları için TLS bağlantısının zorla etkinleştirilmesi gerekir
 
 Azure Ilkesini yapılandırma ve yönetme:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -525,7 +525,7 @@ Azure 'da müşteri veri korumasını anlayın:https://docs.microsoft.com/azure/
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
 
-**Rehberlik**: PostgreSQL Için Azure veritabanı, postgresql sunucunuzu GÜVENLI yuva KATMANı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur. Azure portal, varsayılan olarak tüm PostgreSQL için Azure veritabanı örneklerine "SSL bağlantısını zorla" özelliğinin etkinleştirildiğinden emin olun.
+**Rehberlik**: PostgreSQL Için Azure veritabanı, daha önce GÜVENLI yuva KATMANı (SSL) olarak bilinen aktarım katmanı GÜVENLIĞI (TLS) kullanarak PostgreSQL sunucunuzu istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuz ile istemci uygulamalarınız arasında TLS bağlantılarının uygulanması, sunucu ile uygulamanız arasındaki veri akışını şifreleyerek "ortadaki adam" saldırılarına karşı korunmaya yardımcı olur. Azure portal, varsayılan olarak tüm PostgreSQL için Azure veritabanı örneklerine "SSL bağlantısını zorla" özelliğinin etkinleştirildiğinden emin olun.
 
 Şu anda PostgreSQL için Azure veritabanı 'nda desteklenen TLS sürümü TLS 1,0, TLS 1,1, TLS 1,2.
 
@@ -794,7 +794,7 @@ Azure Resource Manager erişimi engellemek için koşullu erişimi yapılandırm
 
 **Kılavuz**: Azure Ilkesiyle PostgreSQL Için Azure veritabanı örneklerine yönelik standart güvenlik yapılandırması tanımlayın ve uygulayın. PostgreSQL için Azure veritabanı örneklerine yönelik ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. DBforPostgreSQL" ad alanındaki Azure Ilke diğer adlarını kullanın. Ayrıca, PostgreSQL için Azure veritabanı örnekleri ile ilgili yerleşik ilke tanımlarını kullanabilirsiniz, örneğin:
 
-- PostgreSQL veritabanı sunucuları için SSL bağlantısını zorla etkinleştirilmelidir
+- PostgreSQL veritabanı sunucuları için TLS bağlantısının zorla etkinleştirilmesi gerekir
 
 - PostgreSQL veritabanı sunucuları için günlük bağlantıları etkinleştirilmelidir
 

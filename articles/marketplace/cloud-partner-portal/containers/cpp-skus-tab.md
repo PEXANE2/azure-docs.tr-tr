@@ -1,35 +1,35 @@
 ---
-title: Azure Kapsayıcıları görüntüsü için SK'ler | Azure Marketi
-description: SK'leri azure kapsayıcısı için yapılandırın.
+title: Azure kapsayıcıları görüntüsü için SKU 'Lar | Azure Marketi
+description: Azure kapsayıcısı için SKU 'Ları yapılandırın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c5cf218632c720fd042cc5f5d4ed95d5096b5b5
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 5f37d157e11b8cd7cf093fa558e81d9a1ce345a9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81270205"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146196"
 ---
-# <a name="container-skus-tab"></a>Konteyner SKUs sekmesi
+# <a name="container-skus-tab"></a>Kapsayıcı SKU 'Ları sekmesi
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Kapsayıcı tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Kapsayıcısı Oluştur teklifinde](https://aka.ms/CreateContainerOffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure Container tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [bir Azure kapsayıcı oluşturma teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) bölümündeki yönergeleri izleyin.
 
-**Yeni Teklif** sayfasının **STU** sekmesi, bir veya daha fazla SNU oluşturmanıza ve bunları yeni teklifinize ilişkilendirmenize olanak tanır.  Bir çözümü özellik kümelerine, faturalandırma modellerine veya diğer özelliklere göre ayırt etmek için farklı SCO'lar kullanabilirsiniz.
+**Yeni teklif** sayfasının **SKU 'ları** sekmesi bir veya daha fazla SKU oluşturmanıza ve bunları yeni teklifinizle ilişkilendirmenize olanak sağlar.  Bir çözümü Özellik kümelerine, faturalandırma modellerine veya diğer özelliklerle ayırt etmek için farklı SKU 'Lar kullanabilirsiniz.
 
-## <a name="sku-settings"></a>SKU Ayarları
+## <a name="sku-settings"></a>SKU ayarları
 
-Yeni bir teklif oluşturmaya başladığınızda, teklifle ilişkili herhangi bir STU yoktur. Yeni bir SKU oluşturmak için aşağıdaki adımları izleyin:
+Yeni bir teklif oluşturmaya başladığınızda, teklifle ilişkili hiçbir SKU yoktur. Yeni bir SKU oluşturmak için aşağıdaki adımları izleyin:
 
-1. SKU sekmesinde Yeni **SKU'yu** seçin
+1. SKU 'Lar sekmesinde **yenı SKU** ' yı seçin.
 
    ![Yeni SKU istemi](./media/containers-sku-settings.png)
 
-2. Gerekli SKU ve konteyner bilgilerini sağlayın. Her SKU bir kapsayıcı görüntüsüne karşılık gelir. Bir SKU'nun iki bölümü vardır:
+2. Gerekli SKU ve kapsayıcı bilgilerini sağlayın. Her SKU bir kapsayıcı resmine karşılık gelir. SKU 'nun iki bölümü vardır:
 
     -   SKU meta verileri
     -   Kapsayıcı meta verileri
@@ -37,43 +37,43 @@ Yeni bir teklif oluşturmaya başladığınızda, teklifle ilişkili herhangi bi
 
 ### <a name="sku-metadata"></a>SKU meta verileri
 
-SKU meta verileri, kapsayıcı girişi için ön ekran bilgilerini içerir.
+SKU meta verileri kapsayıcı listesi için storefront görüntü bilgilerini içerir.
 
 ![SKU meta verileri](./media/containers-sku-details.png)
 
 
 ### <a name="container-metadata"></a>Kapsayıcı meta verileri
 
-Kapsayıcı meta verileri, Azure Kapsayıcı Kayıt Defteri'nde (ACR) görüntü deposu bilgilerinizin başvuru bilgilerine sahiptir. Azure Marketi bu resmi Pazara özgü genel kayıt defterine kopyalar ve sertifikadan sonra görüntüyü müşteriler için kullanılabilir hale getirir. Azure kullanıcısından bir Azure Marketi kapsayıcı görüntüsünü kullanma istekleri, ACR'den değil, Market'in genel kayıt defterinden sunulur.
+Kapsayıcı meta verileri Azure Container Registry (ACR) içindeki görüntü deposu ayrıntılarınızın başvuru bilgilerine sahiptir. Azure Marketi bu görüntüyü Market 'e özgü, ortak bir kayıt defterine kopyalar ve ardından görüntünün sertifikadan sonra müşterilere açık olmasını sağlar. Azure kullanıcısının Azure Marketi kapsayıcısı görüntüsünü tüketmesi için tüm isteklerin ACR değil, Market 'in ortak kayıt defterinden sunulması.
 
 ![Kapsayıcı meta verileri](./media/containers-image-repository.png)
     
-Önceki ekran yakalamadaki **Görüntü Deposu Ayrıntıları** aşağıdaki alanları içerir.  Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Önceki ekran yakalamadaki **görüntü deposu ayrıntıları** aşağıdaki alanları içerir.  Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
--   **Abonelik\* Kimliği** - ACR'nin bulunduğu Azure abonelik kimliği.
--   **Kaynak grubu\* adı** - ACR'nin kaynak grubu adı.
--   **Kayıt defteri\* adı** - ACR adı.
--   **Depo adı\* ** - Depo adı. Bu ad ayarlandıktan sonra, bu değer değiştirilemez. Hesabınızdaki diğer tekliflerle çakışmayı önlemek için benzersiz bir ad kullanın.
--   **Kullanıcı\* adı** - ACR görüntüsüyle ilişkili kullanıcı adı (yönetici kullanıcı adı).
--   **Parola\* ** - ACR görüntüsüyle ilişkili parola.
+-   **Abonelik kimliği\* ** -ACR 'nin mevcut olduğu Azure abonelik kimliği.
+-   **Kaynak grubu adı\* ** -ACR 'nin kaynak grubu adı.
+-   **Kayıt defteri\* adı** -ACR adı.
+-   **Depo adı\* ** -Depo adı. Bu ad ayarlandıktan sonra bu değer değiştirilemez. Hesabınızdaki diğer tekliflerle çakışmayı önlemek için benzersiz bir ad kullanın.
+-   **Kullanıcı\* adı** -ACR görüntüsüyle ilişkili Kullanıcı adı (Yönetici Kullanıcı adı).
+-   **Parola\* ** -ACR görüntüsüyle ilişkili parola.
 
     >[!NOTE]
-    >Kullanıcı adı ve parola, iş ortaklarının yayımlama işleminde belirtilen ACR'ye erişebilmesini sağlamak için gereklidir.
+    >İş ortaklarının yayımlama sürecinde belirtilen ACR 'ye erişimi olduğundan emin olmak için Kullanıcı adı ve parola gereklidir.
 
 
 ### <a name="image-version"></a>Görüntü Sürümü
 
-Kapsayıcı görüntü yayınlarken, bir veya daha fazla görüntü etiketi sağlayabilir ve SHA sindirir.
+Bir kapsayıcı görüntüsü yayımlarken bir veya daha fazla resim etiketi ve SHA digests sağlayabilirsiniz.
 
-**Resim\* Etiketi veya Özeti**
+**Resim etiketi\* veya Özeti**
  
-- Bu etiket veya özet `latest` bir etiket ve sürüm etiketi `xx.xx.xx-` içermelidir (örneğin, xx'in bir sayı olduğu yerden başlayarak). Bunlar birden çok platformu hedeflemek için [açık etiketler](https://github.com/estesp/manifest-tool) olmalıdır. Bir bildirim etiketiyle başvurulan tüm etiketlerde de eklenmelidir, böylece bunları yükleyebiliriz. 
-- Etiketleri kullanarak kapsayıcının çeşitli sürümlerini ekleyebilirsiniz. Tüm bildirim etiketleri `latest`(hariç) `X.Y-` `X.Y.Z-` ya da X, Y, Z'nin tümseger olduğu yerde başlamalıdır. <br/> Örneğin, `latest` bir etiket `1.0.1-linux-x64`, `1.0.1-linux-arm32`, `1.0.1-windows-arm32`, ve , bu etiketleri işaret ederse buraya eklenmesi gerekir.
+- Bu etiket veya Özet, bir `latest` etiket ve sürüm etiketi içermelidir (örneğin, xx bir sayı olduğu `xx.xx.xx-` için başlangıç). Birden çok platformu hedeflemek için [bildirim etiketleri](https://github.com/estesp/manifest-tool) olmaları gerekir. Bir bildirim etiketi tarafından başvurulan tüm Etiketler de karşıya yüklenebilmemiz için eklenmelidir. 
+- Etiketleri kullanarak kapsayıcının birkaç sürümünü ekleyebilirsiniz. Tüm bildirim etiketleri (except `latest`), ya da `X.Y-` `X.Y.Z-` X, Y, Z tamsayılarla başlamalıdır. <br/> Örneğin `latest` , bir etiket `1.0.1-linux-x64`, `1.0.1-linux-arm32`ve `1.0.1-windows-arm32`' a işaret ediyorsa, bu etiketlerin buraya eklenmesi gerekir.
 
 >[!NOTE]
->Test sırasında görüntüyü tanımlayabilmek için resminize bir **test etiketi** eklemeyi unutmayın.
+>Test sırasında görüntüyü tanımlayabilmeniz için yansımanıza bir **sınama etiketi** eklemeyi unutmayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifiniz için pazar yeri açıklaması oluşturmak için [Market sekmesini](./cpp-marketplace-tab.md) kullanın. 
+Teklifiniz için Market açıklaması oluşturmak üzere [Market sekmesini](./cpp-marketplace-tab.md) kullanın. 

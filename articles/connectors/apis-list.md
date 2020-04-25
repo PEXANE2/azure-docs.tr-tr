@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 9723fc3ab68785c6e444647f427fcf9788792cea
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115695"
+ms.locfileid: "82147987"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps için Bağlayıcılar
 
@@ -48,9 +48,6 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak veya yönetilen ba�
 
   Bağlayıcılar, standart ya da kurumsal olarak sınıflandırılır. [Kurumsal bağlayıcılar](#enterprise-connectors) , ek bir MALIYET için SAP, IBM MQ ve IBM 3270 gibi kurumsal sistemlere erişim sağlar. Bağlayıcının standart veya kurumsal olduğunu anlamak için, [Bağlayıcılar genel bakış](https://docs.microsoft.com/connectors)altındaki her bağlayıcının başvuru sayfasındaki Teknik ayrıntılara bakın.
 
-  > [!IMPORTANT]
-  > **1 mayıs 2020**' den Itibaren, Google 'ın [veri güvenliğine ve gizlilik ilkelerine](https://www.blog.google/technology/safety-security/project-strobe/) kadar yapılan değişiklikler [Gmail bağlayıcısını](https://docs.microsoft.com/connectors/gmail/)kullanan mantıksal uygulamaları etkileyebilir. Mantıksal uygulamalarınız Gmail bağlayıcısını bir Gmail tüketicisi hesabı (veya @gmail.com @googlemail.comile biten e-posta adresi) ile kullanıyorsa, Logic Apps yalnızca Google onaylı Tetikleyiciler, Eylemler ve bağlayıcılar kullanabilir. **15 haziran 2020**' den itibaren uyumlu olmayan tüm iş akışları devre dışı bırakılacaktır. Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
-
   Ayrıca, bazı bağlayıcılar birden çok kategori içerebilse de, bu kategorileri kullanarak bağlayıcılar tanımlayabilirsiniz. Örneğin, SAP bir kurumsal bağlayıcı ve şirket içi bağlayıcıdır:
 
   |   |   |
@@ -59,6 +56,9 @@ Bağlayıcılar, yerleşik Tetikleyiciler ve eylemler olarak veya yönetilen ba�
   | [**Şirket içi bağlayıcılar**](#on-premises-connectors) | Şirket [içi veri ağ geçidini][gateway-doc]yükleyip ayarladıktan sonra, bu bağlayıcılar mantıksal uygulamalarınızın SQL Server, SharePoint Server, Oracle DB, dosya paylaşımları ve diğerleri gibi şirket içi sistemlere erişmesine yardımcı olur. |
   | [**Tümleştirme hesabı bağlayıcıları**](#integration-account-connectors) | Bir tümleştirme hesabı oluştururken ve ödeme yaptığınızda, bu bağlayıcılar XML 'yi dönüştürür ve doğrular, düz dosyaları kodlayıp kodunu çözer ve AS2, EDIOLGU ve x12 protokolleriyle işletmeden işletmeye (B2B) iletileri işler. |
   |||
+
+  > [!IMPORTANT]
+  > Gmail bağlayıcısını kullanmak istiyorsanız, mantıksal uygulamalarda kısıtlama olmadan yalnızca G-Suite iş hesapları bu bağlayıcıyı kullanabilir. Gmail tüketicisi hesabınız varsa, bu bağlayıcıyı yalnızca belirli Google onaylı hizmetlerle kullanabilirsiniz veya [Gmail Bağlayıcınız ile kimlik doğrulaması için kullanmak üzere bir Google istemci uygulaması oluşturabilirsiniz](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application). Daha fazla bilgi için, bkz. [Azure Logic Apps Google bağlayıcıları Için veri güvenliği ve gizlilik ilkeleri](../connectors/connectors-google-data-security-privacy-policy.md).
 
 <a name="integration-service-environment"></a>
 

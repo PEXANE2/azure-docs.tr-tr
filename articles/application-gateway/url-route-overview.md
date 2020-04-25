@@ -1,18 +1,18 @@
 ---
 title: Azure Application Gateway URL tabanlı içerik yönlendirmeye genel bakış
-description: Bu makalede, Azure Uygulama Ağ Geçidi URL tabanlı içerik yönlendirme, UrlPathMap yapılandırması ve PathBasedRouting kuralına genel bir bakış sağlanmaktadır.
+description: Bu makalede, Azure Application Gateway URL tabanlı içerik yönlendirme, UrlPathMap yapılandırması ve PathBasedRouting kuralına genel bakış sunulmaktadır.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 09/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e20acb131b1a091fef858dab34705f4a8d3b4c4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d393055b0ac62198bd5a7239b2b92b7aeff62e5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77251847"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145362"
 ---
 # <a name="url-path-based-routing-overview"></a>URL Yolu Tabanlı Yönlendirmeye genel bakış
 
@@ -24,10 +24,10 @@ Aşağıdaki örnekte, Application Gateway contoso.com için VideoServerPool, Im
 
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1.png)
 
-http\://contoso.com/video/* talepleri VideoServerPool'a yönlendirilir\:ve http //contoso.com/images/* ImageServerPool'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
+Http\://contoso.com/video/* Için Istekler VideoServerPool 'a yönlendirilir ve http\://contoso.com/images/*, ımageserverpool 'a yönlendirilir. Yol desenlerinden hiçbiri eşleşmiyorsa DefaultServerPool seçilir.
 
 > [!IMPORTANT]
-> v1 SKU için kurallar portalda listelenen sırayla işlenir. Temel dinleyici listede ilk sıradaysa ve gelen bir istekle eşleşiyorsa, o dinleyici tarafından işlenir. v2 SKU için, tam eşleşmeler daha yüksek önceliğe sahiptir. Ancak, temel bir dinleyiciyi yapılandırmadan önce çok siteli dinleyicileri yapılandırmanız önerilir. Bu işlem, trafiğin doğru arka uca yönlendirilmesini güvence altına alır.
+> V1 SKU 'SU için kurallar portalda listelendikleri sırada işlenir. Temel dinleyici listede ilk sıradaysa ve gelen bir istekle eşleşiyorsa, o dinleyici tarafından işlenir. V2 SKU 'SU için, tam eşleşmeler daha yüksek önceliğe sahiptir. Ancak, temel bir dinleyiciyi yapılandırmadan önce çok siteli dinleyicileri yapılandırmak kesinlikle önerilir. Bu işlem, trafiğin doğru arka uca yönlendirilmesini güvence altına alır.
 
 ## <a name="urlpathmap-configuration-element"></a>UrlPathMap yapılandırma öğesi
 
@@ -62,17 +62,17 @@ UrlPathMap öğesi, arka uç sunucu havuzu eşlemeleri için Yol desenleri belir
 }]
 ```
 
-### <a name="pathpattern"></a>Yol Deseni
+### <a name="pathpattern"></a>Pathmodel
 
-PathPattern eşleşecek yol desenleri listesidir. Her biri / ile başlamalıdır. "*" işareti, yalnızca "/" işaretinin ardından en sona koyulabilir. Yol eşleştiriciye beslenen dize ilkinden sonra herhangi bir metin içermez? ya da #, ve bu chars burada izin verilmez. Aksi takdirde, bir URL'de izin verilen karakterlere PathPattern'de izin verilir.
+Pathmodel eşleştirilecek yol desenlerinin bir listesidir. Her biri / ile başlamalıdır. "*" işareti, yalnızca "/" işaretinin ardından en sona koyulabilir. Yol eşleştirici öğesine besleyici dize, ilk öğesinden sonra herhangi bir metin içermez mi? veya # ve bu karakter burada kullanılamaz. Aksi halde, bir URL 'de izin verilen karakterlere Pathmodel içinde izin verilir.
 
-Desteklenen desenler, Uygulama Ağ Geçidi v1 veya v2'yi dağıtıp dağıtmadığınıza bağlıdır:
+Desteklenen desenler Application Gateway v1 veya v2 dağıtdığınıza bağlıdır:
 
 #### <a name="v1"></a>v1
 
-Yol kuralları büyük/küçük harf duyarsızdır.
+Yol kuralları büyük/küçük harfe duyarlıdır.
 
-|v1 yol deseni  |Desteklenir mi?  |
+|V1 yol kalıbı  |Destekleniyor mu?  |
 |---------|---------|
 |`/images/*`     |evet|
 |`/images*`     |hayır|
@@ -83,9 +83,9 @@ Yol kuralları büyük/küçük harf duyarsızdır.
 
 #### <a name="v2"></a>v2
 
-Yol kuralları büyük/küçük harf duyarsızdır.
+Yol kuralları büyük/küçük harfe duyarlıdır.
 
-|v2 yol deseni  |Desteklenir mi?  |
+|v2 yol deseninin  |Destekleniyor mu?  |
 |---------|---------|
 |`/images/*`     |evet|
 |`/images*`     |evet|
@@ -113,8 +113,8 @@ PathBasedRouting kuralının kod parçacığı:
         "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/httpListeners/<listenerName>"
     },
     "urlPathMap": {
-        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/ urlPathMaps/{urlpathMapName}"
-    },
+        "id": "/subscriptions/{subscriptionId}/../microsoft.network/applicationGateways/{gatewayName}/urlPathMaps/{urlpathMapName}"
+    }
 
 }
     }

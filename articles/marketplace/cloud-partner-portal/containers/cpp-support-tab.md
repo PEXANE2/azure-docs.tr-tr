@@ -1,51 +1,51 @@
 ---
-title: Azure Kapsayıcıları resmi için destek ayarları | Azure Marketi
-description: Bir Azure kapsayıcısı için destek ayarlarını yapılandırın.
+title: Azure kapsayıcıları görüntüsü için destek ayarları | Azure Marketi
+description: Azure kapsayıcısı için destek ayarlarını yapılandırın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
-ms.openlocfilehash: 58845401fc14950b9c446d1481b8ac6f8ecc5523
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 8369c99c5bc44a7281c9e2072c20c723974ec83a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81269933"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82146389"
 ---
-# <a name="container-support-tab"></a>Konteyner Desteği sekmesi
+# <a name="container-support-tab"></a>Kapsayıcı desteği sekmesi
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Kapsayıcı tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Kapsayıcısı Oluştur teklifinde](https://aka.ms/CreateContainerOffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure Container tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [bir Azure kapsayıcı oluşturma teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) bölümündeki yönergeleri izleyin.
 
-Teklifiniz için teknik ve kullanıcı destek kaynakları sağlamak için **Yeni Teklif** sayfasının **Destek** sekmesini kullanın.  Destek formunda aşağıdaki giriş alanları sağlanmaktadır: **Engineering Contact**, **Customer Support**ve **Support Urls**. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
+Teklifiniz için teknik ve Kullanıcı Destek kaynakları sağlamak üzere **yeni teklif** sayfasının **destek** sekmesini kullanın.  Aşağıdaki giriş alanlarında destek formu: **mühendislik iletişim**, **müşteri desteği**ve **Destek URL 'leri**verilmiştir. Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir.
 
 
 ## <a name="support-form-fields"></a>Destek formu alanları
 
-Mühendislik İletişim ve Müşteri Destek alanları için gerekli bilgileri sağlayın.
+Mühendislik Ilgili kişisi ve müşteri desteği alanları için gerekli bilgileri sağlayın.
 
 
-### <a name="engineering-contact"></a>Mühendislik İletişim
+### <a name="engineering-contact"></a>Mühendislik Iletişim
 
-Engineering kişisi, kuruluşunuz ve Microsoft arasındaki teknik iletişimdir. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Mühendislik ilgili kişisi, kuruluşunuz ile Microsoft arasındaki teknik bir kişiniz. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
-- **Adı\* ** - Teknik/mühendislik desteği olarak hizmet veren kişi veya grubun adı.
-- **E-posta\* ** - Bu teknik iletişimin e-posta adresi.
-- **Telefon\* ** - Teknik destek için telefon numarası.
+- **Ad\* ** -teknik/mühendislik desteği olarak hizmet veren kişinin veya grubun adı.
+- **E\* -posta** -bu teknik kişinin e-posta adresi.
+- Teknik destek için **Telefon\* ** numarası.
 
 
-### <a name="customer-support"></a>Müşteri Desteği
+### <a name="customer-support"></a>Müşteri desteği
 
-Müşteri Desteği kişisi, Azure'da müşteriler tarafından açılan destek biletlerini alır.  Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Müşteri desteği ilgili kişisi, Azure 'da müşteriler tarafından açılan destek biletlerini alır.  Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
-- **Ad\* ** - Müşteri desteği olarak hizmet veren kişi veya grubun adı.
-- **E-posta\* ** - Bu destek iletişim e-posta adresi.
-- **Telefon\* ** - Müşteri desteği için telefon numarası.
+- **Ad\* ** -müşteri desteği olarak hizmet veren kişinin veya grubun adı.
+- **E\* -posta** -bu destek kişisinin e-posta adresi.
+- Müşteri desteği için **Telefon\* ** numarası.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Destek bilgilerini sağlamayı bitirdikten [sonra, teklifinizi yayınlamaya](./cpp-publish-offer.md)hazırsınız. 
+Destek bilgilerini sağlamayı tamamladıktan sonra [teklifinizi yayımlamaya](./cpp-publish-offer.md)hazırsınız demektir. 
 

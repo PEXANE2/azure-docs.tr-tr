@@ -1,31 +1,31 @@
 ---
-title: Azure Anahtar Kasası sertifikası oluşturma | Azure Marketi
-description: Azure tarafından dağıtılan bir VHD'den vm'nin nasıl kaydedildiğini açıklar.
+title: Azure Key Vault sertifikası oluşturma | Azure Marketi
+description: Azure tarafından dağıtılan bir VHD 'den bir sanal makinenin nasıl kaydedileceği açıklanmaktadır.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 09e82b9905104df9b1902b0f64f6cfdf812aabb8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 9981f8eda174bbe04b54933528d20d270d360824
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81274030"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148250"
 ---
-# <a name="create-certificates-for-azure-key-vault"></a>Azure Anahtar Kasası için sertifikalar oluşturun
+# <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault için sertifikalar oluşturma
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikadaki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) yönergeleri izleyin.
 
-Bu makalede, Azure tarafından barındırılan bir sanal makineye (VM) Windows Uzaktan Yönetimi (WinRM) bağlantısı oluşturmak için gereken kendi imzalı sertifikaların nasıl sağlandığı açıklanmaktadır. Bu işlem üç adımdan oluşur:
+Bu makalede, Azure 'da barındırılan bir sanal makineye (VM) bir Windows Uzaktan Yönetimi (WinRM) bağlantısı kurmak için gereken kendinden imzalı sertifikaların nasıl sağlanacağı açıklanmaktadır. Bu işlem üç adımdan oluşur:
 
-1.    Güvenlik sertifikasını oluşturun. 
-2.    Bu sertifikayı depolamak için Azure Anahtar Kasası'nı oluşturun. 
-3.    Sertifikaları bu anahtar kasasına saklayın. 
+1.    Güvenlik sertifikası oluşturun. 
+2.    Bu sertifikayı depolamak için Azure Key Vault oluşturun. 
+3.    Bu anahtar kasasında sertifikaları depolayın. 
 
-Bu çalışma için yeni veya varolan bir Azure kaynak grubu kullanabilirsiniz.  Eski yaklaşım aşağıdaki açıklama kullanılır.
+Bu iş için yeni veya var olan bir Azure Kaynak grubu kullanabilirsiniz.  Aşağıdaki açıklamada, önceki yaklaşım kullanılır.
 
 
 
@@ -33,15 +33,15 @@ Bu çalışma için yeni veya varolan bir Azure kaynak grubu kullanabilirsiniz. 
 
 ## <a name="create-the-certificate"></a>Sertifikayı oluşturma
 
-Sertifika dosyasını (.pfx) yerel bir klasörde oluşturmak için aşağıdaki Azure Powershell komut dosyasını edin ve çalıştırın.  Aşağıdaki parametreler için değerleri değiştirmeniz gerekir:
+Sertifika dosyasını (. pfx) yerel bir klasörde oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın.  Aşağıdaki parametrelerin değerlerini değiştirmeniz gerekir:
 
 |  **Parametre**        |   **Açıklama**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$certroopath` | .pfx dosyasını kaydetmek için yerel klasör  |
-| `$location`    | Azure standart coğrafi konumlardan biri  |
-| `$vmName`      | Planlanan Azure sanal makinesinin adı   |
-| `$certname`    | Sertifikanın adı; planlanan VM tam nitelikli etki alanı adı maç gerekir  |
-| `$certpassword` | Sertifikalar için parola, planlanan VM için kullanılan şifre eşleşmelidir  |
+| `$certroopath` | . Pfx dosyasının kaydedileceği yerel klasör  |
+| `$location`    | Azure Standart coğrafi konumlarından biri  |
+| `$vmName`      | Planlı Azure sanal makinesinin adı   |
+| `$certname`    | Sertifikanın adı; planlı VM 'nin tam etki alanı adıyla eşleşmelidir  |
+| `$certpassword` | Sertifikalar için parola, planlanan VM için kullanılan parolayla aynı olmalıdır  |
 |  |  |
 
 ```powershell
@@ -71,22 +71,22 @@ Sertifika dosyasını (.pfx) yerel bir klasörde oluşturmak için aşağıdaki 
 
 ```
 > [!TIP]
-> Çeşitli parametrelerin değerleri korunacak şekilde bu adımlar sırasında aynı PowerShell konsol oturumunu etkin tutun.
+> Farklı parametrelerin değerlerinin korunabilmesi için, bu adımlar sırasında aynı PowerShell konsolu oturumunu etkin tutun.
 
 > [!WARNING]
-> Bu komut dosyalarını kaydederseniz, yalnızca güvenli bir konumda saklayın, çünkü güvenlik bilgileri (parola) içerir.
+> Bu betiği kaydederseniz, güvenlik bilgileri (parola) içerdiğinden yalnızca güvenli bir konumda saklayın.
 
 
-## <a name="create-the-key-vault"></a>Anahtar kasasını oluşturma
+## <a name="create-the-key-vault"></a>Anahtar Kasası oluşturma
 
-[Anahtar kasa dağıtım şablonunun](./cpp-key-vault-deploy-template.md) içeriğini yerel makinenizdeki bir dosyaya kopyalayın. (aşağıdaki örnek komut dosyasında, `C:\certLocation\keyvault.json`bu kaynak .)  Azure Anahtar Kasası örneği ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azure Powershell komut dosyasını oluşturun ve çalıştırın.  Aşağıdaki parametreler için değerleri değiştirmeniz gerekir:
+[Anahtar Kasası dağıtım şablonunun](./cpp-key-vault-deploy-template.md) içeriğini yerel makinenizde bir dosyaya kopyalayın. (Aşağıdaki örnek betikte bu kaynak `C:\certLocation\keyvault.json`.)  Bir Azure Key Vault örneği ve ilişkili kaynak grubu oluşturmak için aşağıdaki Azure PowerShell betiğini düzenleyin ve çalıştırın.  Aşağıdaki parametrelerin değerlerini değiştirmeniz gerekir:
 
 |  **Parametre**        |   **Açıklama**                                                               |
 |  -------------        |   ---------------                                                               |
-| `$postfix`            | Dağıtım tanımlayıcılarına eklenen rasgele sayısal dize                     |
-| `$rgName`             | Oluşturmak için Azure kaynak grubu (RG) adı                                        |
-|  `$location`          | Azure standart coğrafi konumlardan biri                                  |
-| `$kvTemplateJson`     | Anahtar kasası için Kaynak Yöneticisi şablonu içeren dosya yolu (keyvault.json) |
+| `$postfix`            | Dağıtım tanımlayıcılarına eklenen rastgele sayısal dize                     |
+| `$rgName`             | Oluşturulacak Azure Kaynak grubu (RG) adı                                        |
+|  `$location`          | Azure Standart coğrafi konumlarından biri                                  |
+| `$kvTemplateJson`     | Anahtar Kasası için Kaynak Yöneticisi şablonu içeren dosyanın yolu (keykasa. JSON) |
 | `$kvname`             | Yeni anahtar kasasının adı                                                       |
 |  |  |
 
@@ -186,9 +186,9 @@ Sertifika dosyasını (.pfx) yerel bir klasörde oluşturmak için aşağıdaki 
         
 ```
 
-## <a name="store-the-certificate"></a>Sertifikayı depolama
+## <a name="store-the-certificate"></a>Sertifikayı depolayın
 
-Artık .pfx dosyasında bulunan sertifikaları aşağıdaki komut dosyasını çalıştırarak yeni anahtar kasasına saklayabilirsiniz. 
+Artık,. pfx dosyasında yer alan sertifikaları aşağıdaki betiği çalıştırarak yeni anahtar kasasına kaydedebilirsiniz. 
 
 ```powershell
     #push certificate to key vault secret
@@ -217,4 +217,4 @@ Artık .pfx dosyasında bulunan sertifikaları aşağıdaki komut dosyasını ç
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha sonra [kullanıcı VM görüntünüzden bir VM dağıtırsınız.](./cpp-deploy-vm-user-image.md)
+Ardından, [Kullanıcı VM görüntüsünden BIR VM dağıtacaksınız](./cpp-deploy-vm-user-image.md).

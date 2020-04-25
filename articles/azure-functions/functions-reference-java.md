@@ -1,46 +1,46 @@
 ---
-title: Azure İşlevler için Java geliştirici başvurusu
-description: Java ile işlevlerin nasıl geliştirildiğini öğrenin.
+title: Azure Işlevleri için Java geliştirici başvurusu
+description: Java ile işlevleri geliştirmeyi anlayın.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 4b1f39ff4fd48a3ed99b34391e9cc6efdad86a5d
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: 19a290fe7717d7838e8fcd1d1f5cddb3f54eb812
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80672996"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82145321"
 ---
-# <a name="azure-functions-java-developer-guide"></a>Azure İşlevler Java geliştirici kılavuzu
+# <a name="azure-functions-java-developer-guide"></a>Azure Işlevleri Java geliştirici kılavuzu
 
-Azure Fonksiyonları çalışma süresi [Java SE 8 LTS 'yi (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)destekler. Bu kılavuz, Azure İşlevlerini Java ile yazmanın incelikleri hakkında bilgi içerir.
+Azure Işlevleri çalışma zamanı, [Java SE 8 LTS 'yi (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)destekler. Bu kılavuzda, Java ile Azure Işlevleri yazma hakkında bilgiler yer alır.
 
-Diğer dillerde olduğu gibi, Bir İşlev Uygulamasının bir veya daha fazla işlevi olabilir. Java işlevi, `public` ek açıklama `@FunctionName`ile dekore edilmiş bir yöntemdir. Bu yöntem, java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Java'da yazılmış bir Fonksiyon Uygulaması, birden çok genel `@FunctionName`yöntemle açıklamalı birden çok sınıfa sahip olabilir.
+Diğer dillerde olduğu gibi, bir İşlev Uygulaması bir veya daha fazla işleve sahip olabilir. Java işlevi, ek açıklamayla `public` `@FunctionName`donatılmış bir yöntemdir. Bu yöntem, bir Java işlevinin girişini tanımlar ve belirli bir pakette benzersiz olmalıdır. Java 'da yazılan bir İşlev Uygulaması birden fazla ortak yöntemi olan birden çok sınıfa sahip olabilir `@FunctionName`.
 
-Bu makalede, [Azure İşlevler geliştirici başvurularını](functions-reference.md)zaten okuduğunuz varsayar. Ayrıca [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) veya [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)kullanarak, ilk işlevi oluşturmak için Fonksiyonları quickstart tamamlamanız gerekir.
+Bu makalede, [Azure işlevleri geliştirici başvurusunu](functions-reference.md)zaten okuduğunuzu varsaymış olursunuz. Ayrıca, [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java) veya [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)kullanarak ilk Işlevinizi oluşturmak için işlevler hızlı başlangıcını de tamamlamalısınız.
 
 ## <a name="programming-model"></a>Programlama modeli 
 
-[Tetikleyiciler ve bağlama kavramları](functions-triggers-bindings.md) Azure İşlevleri için temeldir. Tetikleyiciler kodunuzu yürütmeyi başlatın. Bağlamalar, özel veri erişim kodu yazmak zorunda kalmadan verileri bir işlevden veri aktarıp döndürmeniz için bir yol verir.
+[Tetikleyiciler ve bağlamaların](functions-triggers-bindings.md) kavramları Azure işlevleri için temel bir araçlardır. Tetikleyiciler, kodunuzun yürütülmesini başlatır. Bağlamalar, özel veri erişim kodu yazmak zorunda kalmadan bir işleve veri geçirmek ve veri döndürmek için bir yol sağlar.
 
 ## <a name="create-java-functions"></a>Java işlevleri oluşturma
 
-Java işlevlerinin oluşturulmasını kolaylaştırmak için, belirli bir işlev tetikleyicisi olan projeler oluşturmanıza yardımcı olmak için önceden tanımlanmış Java şablonları kullanan Maven tabanlı takım oluşturma ve arketipler vardır.    
+Java işlevlerinin oluşturulmasını kolaylaştırmak için, belirli bir işlev tetikleyicisine sahip projeler oluşturmanıza yardımcı olması için önceden tanımlanmış Java şablonlarını kullanan Maven tabanlı araç ve arşiv türleri vardır.    
 
-### <a name="maven-based-tooling"></a>Maven tabanlı takım
+### <a name="maven-based-tooling"></a>Maven tabanlı araç
 
-Aşağıdaki geliştirici ortamlarında Java işlev projeleri oluşturmanıza olanak tanıyan Azure İşlevleri aracı vardır: 
+Aşağıdaki geliştirici ortamlarında, Java işlev projeleri oluşturmanıza olanak sağlayan Azure Işlevleri araçları vardır: 
 
 + [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
-+ [Eclipse](functions-create-maven-eclipse.md)
++ [Küreler](functions-create-maven-eclipse.md)
 + [IntelliJ](functions-create-maven-intellij.md)
 
-Yukarıdaki makale bağlantıları, seçtiğiniz IDE'yi kullanarak ilk işlevlerinizi nasıl oluşturabileceğinizi gösterir. 
+Yukarıdaki makale bağlantılarında, tercih ettiğiniz IDE 'yi kullanarak ilk işlevlerinizi nasıl oluşturacağınız gösterilmektedir. 
 
-### <a name="project-scaffolding"></a>Proje İskelesi
+### <a name="project-scaffolding"></a>Proje yapı Iskelesi
 
-Terminalden komut satırı geliştirmeyi tercih ederseniz, Java tabanlı işlev projelerini iskeleye `Apache Maven` bağlamanın en basit yolu arketipler kullanmaktır. Azure Fonksiyonları için Java Maven arketipi aşağıdaki _groupId_altında yayınlanır:_artifactId_: [com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
+Terminalden komut satırı geliştirmeyi tercih ediyorsanız, Java tabanlı işlev projelerini dolandırmanın en kolay yolu, arşiv türleri kullanmaktır `Apache Maven` . Azure Işlevleri için Java Maven arşiv ETYPE şu _GroupID_altında yayımlanır:_ArtifactId_: [com. Microsoft. Azure: Azure-Functions-arşiv ETYPE](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/). 
 
-Aşağıdaki komut, bu arketip kullanarak yeni bir Java işlev projesi oluşturur:
+Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
 
 ```
 mvn archetype:generate \
@@ -48,13 +48,13 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Bu arketip kullanmaya başlamak için [Java quickstart'ına](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)bakın. 
+Bu arşiv ETYPE kullanmaya başlamak için bkz. [Java hızlı başlangıç](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java). 
 
-## <a name="create-kotlin-functions-preview"></a>Kotlin işlevleri oluşturma (önizleme)
+## <a name="create-kotlin-functions-preview"></a>Kotlin işlevleri oluşturma (Önizleme)
 
-Kotlin işlevleri ni oluşturmak için bir Maven arketipi de vardır. Bu arketip, şu anda önizleme, aşağıdaki _groupId_altında yayınlanır:_artifactId_: [com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/). 
+Ayrıca, Kotlin işlevleri oluşturmak için bir Maven arşiv ETYPE vardır. Şu anda önizleme aşamasında olan bu arşiv ETYPE şu _GroupID_altında yayımlanır:_ArtifactId_: [com. Microsoft. Azure: Azure-Functions-Kotlin-](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/),. 
 
-Aşağıdaki komut, bu arketip kullanarak yeni bir Java işlev projesi oluşturur:
+Aşağıdaki komut, bu arşiv ETYPE kullanarak yeni bir Java işlev projesi oluşturur:
 
 ```
 mvn archetype:generate \
@@ -62,11 +62,11 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-kotlin-archetype
 ```
 
-Bu arketip kullanmaya başlamak için [Kotlin quickstart'a](functions-create-first-kotlin-maven.md)bakın.
+Bu arşiv ETYPE kullanmaya başlamak için, bkz. [Kotlin hızlı başlangıç](functions-create-first-kotlin-maven.md).
 
 ## <a name="folder-structure"></a>Klasör yapısı
 
-Azure İşlevler Java projesinin klasör yapısı aşağıda veda edilmiştir:
+Bir Azure Işlevleri Java projesinin klasör yapısı aşağıda verilmiştir:
 
 ```
 FunctionsProject
@@ -90,20 +90,20 @@ FunctionsProject
  | - pom.xml
 ```
 
-_* Kotlin projesi hala Maven olduğu için çok benzer görünüyor_
+_* Kotlin projesi hala Maven olduğundan çok benzer görünüyor_
 
-İşlev uygulamasını yapılandırmak için paylaşılan bir [ana bilgisayar.json](functions-host-json.md) dosyası kullanabilirsiniz. Her işlevin kendi kod dosyası (.java) ve bağlama yapılandırma dosyası (function.json) vardır.
+İşlev uygulamasını yapılandırmak için paylaşılan bir [Host. JSON](functions-host-json.md) dosyası kullanabilirsiniz. Her işlevin kendi kod dosyası (. Java) ve bağlama yapılandırma dosyası (Function. JSON) vardır.
 
-Bir projeye birden fazla işlev koyabilirsiniz. Fonksiyonlarınızı ayrı kavanozlara koymaktan kaçının. `FunctionApp` Hedef dizindeki, Azure'daki işlev uygulamanıza dağıtılan şeydir.
+Bir projeye birden fazla işlev yerleştirebilirsiniz. İşlevlerinizi ayrı jliler 'e yerleştirmekten kaçının. Hedef `FunctionApp` dizindeki, Azure 'da işlev uygulamanıza dağıtılan şeydir.
 
 ## <a name="triggers-and-annotations"></a>Tetikleyiciler ve ek açıklamalar
 
- Işlevler, http isteği, zamanlayıcı veya veri güncelleştirmesi gibi bir tetikleyici tarafından çağrılır. Bir veya daha fazla çıktı üretmek için işlevinizin bu tetikleyiciyi ve diğer girişleri işlemesi gerekir.
+ İşlevler, bir HTTP isteği, süreölçer veya veri güncelleştirmesi gibi bir tetikleyici tarafından çağrılır. İşlevinizin bir veya daha fazla çıkış üretmek için bu tetikleyiciyi ve diğer girişleri işlemesi gerekir.
 
-Giriş ve çıktıları yöntemlerinize bağlamak için [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) paketinde yer alan Java ek açıklamalarını kullanın. Daha fazla bilgi için [Java başvuru dokümanlarına](/java/api/com.microsoft.azure.functions.annotation)bakın.
+Yöntemlerinizi giriş ve çıkışları bağlamak için [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) paketinde bulunan Java ek açıklamalarını kullanın. Daha fazla bilgi için bkz. [Java başvuru belgeleri](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Azure Blob depolama, Azure Sıra depolama alanı veya Azure Tablo depolama sını yerel olarak çalıştırmak için [yerel ayarlar.json'unuzda](/azure/azure-functions/functions-run-local#local-settings-file) bir Azure Depolama hesabı yapılandırmanız gerekir.
+> [Yerel. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) ' da Azure Blob depolama, Azure kuyruk depolaması veya Azure Tablo depolama alanı tetiklerinizi yerel olarak çalıştırmak Için bir Azure depolama hesabı yapılandırmanız gerekir.
 
 Örnek:
 
@@ -117,7 +117,7 @@ public class Function {
 }
 ```
 
-Burada `function.json` [azure-functions-maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)tarafından karşılık gelen oluşturulur:
+`function.json` [Azure-Functions-Maven-Plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin)tarafından buna karşılık gelen oluşturulan:
 
 ```json
 {
@@ -143,13 +143,13 @@ Burada `function.json` [azure-functions-maven-plugin](https://mvnrepository.com/
 
 ## <a name="jdk-runtime-availability-and-support"></a>JDK çalışma zamanı kullanılabilirliği ve desteği 
 
-Java işlev uygulamalarının yerel gelişimi için, [Azul Systems'den](https://www.azul.com/downloads/azure-only/zulu/)Azure Java 8 JDK'ler [için Azul Zulu Enterprise'ı](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) indirin ve kullanın. Azure İşlevleri, işlev uygulamalarınızı buluta dağıttığınızda Azul Java 8 JDK çalışma zamanını kullanır.
+Java işlev uygulamalarının yerel geliştirmesi için Azul [sistemlerinden](https://www.azul.com/downloads/azure-only/zulu/)Azure Java 8 JDKs [Için Azul Zulu kurumsal](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) 'ı indirin ve kullanın. Azure Işlevleri, işlev uygulamalarınızı buluta dağıtırken Azul Java 8 JDK çalışma zamanını kullanır.
 
-JDK'lar ve işlev uygulamalarıyla ilgili sorunlar için [Azure desteği,](https://azure.microsoft.com/support/) nitelikli bir [destek planıyla](https://azure.microsoft.com/support/plans/)kullanılabilir.
+JDKs ve Function uygulamalarıyla ilgili sorunlar için [Azure desteği](https://azure.microsoft.com/support/) , [nitelikli bir destek planıyla](https://azure.microsoft.com/support/plans/)sunulmaktadır.
 
-## <a name="customize-jvm"></a>JVM'yi özelleştir
+## <a name="customize-jvm"></a>JVM 'YI özelleştirme
 
-Fonksiyonlar, Java işlevlerinizi çalıştırmak için kullanılan Java sanal makinesini (JVM) özelleştirmenize olanak tanır. [Aşağıdaki JVM seçenekleri](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) varsayılan olarak kullanılır:
+İşlevler, Java işlevlerinizi çalıştırmak için kullanılan Java sanal makinesini (JVM) özelleştirmenizi sağlar. [Aşağıdaki JVM seçenekleri](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) varsayılan olarak kullanılır:
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -157,44 +157,53 @@ Fonksiyonlar, Java işlevlerinizi çalıştırmak için kullanılan Java sanal m
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-Adlandırılmış `JAVA_OPTS`bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz. Azure portalında veya Azure CLI'de Azure'a dağıtılan işlev uygulamanıza uygulama ayarları ekleyebilirsiniz.
+Adlı `JAVA_OPTS`bir uygulama ayarında ek bağımsız değişkenler sağlayabilirsiniz. Azure portal veya Azure CLı 'de Azure 'a dağıtılan işlev uygulamanıza uygulama ayarları ekleyebilirsiniz.
+
+> [!IMPORTANT]  
+> Tüketim planında, özelleştirmenin çalışması için değeri 0 olan WEBSITE_USE_PLACEHOLDER ayarını da eklemeniz gerekir. Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
 
 ### <a name="azure-portal"></a>Azure portal
 
-Azure [portalında,](https://portal.azure.com)ayarı eklemek için `JAVA_OPTS` Uygulama Ayarları [sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın.
+[Azure Portal](https://portal.azure.com), `JAVA_OPTS` ayarı eklemek için [uygulama ayarları sekmesini](functions-how-to-use-azure-function-app-settings.md#settings) kullanın.
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Aşağıdaki örnekte olduğu gibi, ayarlamak `JAVA_OPTS`için az [functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz:
+Aşağıdaki örnekte olduğu gibi, ayarlamak `JAVA_OPTS`için [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) komutunu kullanabilirsiniz:
 
+#### <a name="consumption-plan"></a>[Tüketim planı](#tab/consumption)
 ```azurecli-interactive
-az functionapp config appsettings set --name <APP_NAME> \
---resource-group <RESOURCE_GROUP> \
---settings "JAVA_OPTS=-Djava.awt.headless=true"
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+"WEBSITE_USE_PLACEHOLDER=0" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
 ```
-Bu örnek, başsız modu sağlar. İşlev uygulamanızın adı ve `<APP_NAME>` `<RESOURCE_GROUP>` kaynak grubuyla değiştirin.
+#### <a name="dedicated-plan--premium-plan"></a>[Adanmış plan/Premium plan](#tab/dedicated+premium)
+```azurecli-interactive
+az functionapp config appsettings set \
+--settings "JAVA_OPTS=-Djava.awt.headless=true" \
+--name <APP_NAME> --resource-group <RESOURCE_GROUP>
+```
+---
 
-> [!WARNING]  
-> Tüketim [planında,](functions-scale.md#consumption-plan) `0`'' `WEBSITE_USE_PLACEHOLDER` değeri olan ayarı eklemeniz gerekir.  
-Bu ayar, Java işlevleri için soğuk başlangıç sürelerini artırır.
+Bu örnek, gözetimsiz moda izin vermez. İşlev `<APP_NAME>` uygulamanızın adıyla ve `<RESOURCE_GROUP>` kaynak grubuyla değiştirin. 
 
 ## <a name="third-party-libraries"></a>Üçüncü taraf kitaplıkları 
 
-Azure İşlevler üçüncü taraf kitaplıklarının kullanımını destekler. Varsayılan olarak, proje `pom.xml` dosyanızda belirtilen tüm bağımlılıklar [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) hedef sırasında otomatik olarak paketlenir. `pom.xml` Dosyada bağımlılık olarak belirtilmeyen kitaplıklar için, bunları işlevin kök dizininde bir `lib` dizine yerleştirin. `lib` Dizin yerleştirilen bağımlılıklar çalışma zamanında sistem sınıfı yükleyicisine eklenir.
+Azure Işlevleri, üçüncü taraf kitaplıkların kullanımını destekler. Varsayılan olarak, proje `pom.xml` dosyanızda belirtilen tüm bağımlılıklar, [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) hedef sırasında otomatik olarak paketlenmiştir. `pom.xml` Dosyada bağımlılıklar olarak belirtilmeyen kitaplıklar için, bunları işlevin kök dizinindeki bir `lib` dizine yerleştirin. `lib` Dizine yerleştirilmiş bağımlılıklar, çalışma zamanında sistem sınıfı yükleyicilerine eklenir.
 
-Bağımlılık `com.microsoft.azure.functions:azure-functions-java-library` varsayılan olarak sınıf yolunda sağlanır ve `lib` dizine dahil edilmesi gerekmez. Ayrıca, [azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) [burada](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) sınıf yoluna listelenen bağımlılıkları ekler.
+`com.microsoft.azure.functions:azure-functions-java-library` Bağımlılık, varsayılan olarak Sınıfyoluna sağlanır ve `lib` dizine eklenmesi gerekmez. Ayrıca, [Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) , [burada](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) listelenen bağımlılıkları Sınıfyoluna ekler.
 
 ## <a name="data-type-support"></a>Veri türü desteği
 
-Giriş veya çıktı bağlamalarına bağlamak için Düz eski `azure-functions-java-library`Java nesnelerini (POJ'ler), string ve tamsayı gibi ilkel veri türlerinde tanımlanan türleri kullanabilirsiniz.
+Giriş veya çıkış bağlamalarına bağlamak için düz eski Java nesnelerini (POJOs) `azure-functions-java-library`, içinde tanımlanan türleri veya dize ve tamsayı gibi temel veri türlerini kullanabilirsiniz.
 
-### <a name="pojos"></a>POJO'LAR
+### <a name="pojos"></a>POJOs
 
-Giriş verilerini POJO'ya dönüştürmek için [azure-functions-java-worker](https://github.com/Azure/azure-functions-java-worker) [gson](https://github.com/google/gson) kitaplığını kullanır. İşlevlere giriş olarak kullanılan POJO tipleri olmalıdır. `public`
+Giriş verilerini POJO 'ya dönüştürmek için [Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) [gson](https://github.com/google/gson) kitaplığını kullanır. İşlevlere giriş olarak kullanılan POJO türleri olmalıdır `public`.
 
 ### <a name="binary-data"></a>İkili veriler
 
-İkili girdileri veya çıktıları `byte[]`, function.json alanı `dataType` ayarlayarak `binary`bind:
+Function. json ' daki `byte[]` `dataType` alanı ' e `binary`ayarlayarak, ikili girdileri veya çıkışları öğesine bağlayın:
 
 ```java
    @FunctionName("BlobTrigger")
@@ -208,11 +217,11 @@ Giriş verilerini POJO'ya dönüştürmek için [azure-functions-java-worker](ht
     }
 ```
 
-Null değerleri bekliyorsanız, `Optional<T>`kullanın.
+Null değerler bekleliyorsanız kullanın `Optional<T>`.
 
 ## <a name="bindings"></a>Bağlamalar
 
-Giriş ve çıktı bağlamaları, kodunuzdaki verilere bağlanmak için bildirimsel bir yol sağlar. Bir işlevin birden çok giriş ve çıkış bağlaması olabilir.
+Giriş ve çıkış bağlamaları, kodunuzun içinden verilere bağlanmak için bildirim temelli bir yol sağlar. Bir işlevde birden fazla giriş ve çıkış bağlaması olabilir.
 
 ### <a name="input-binding-example"></a>Giriş bağlama örneği
 
@@ -250,11 +259,11 @@ public class Function {
 }
 ```
 
-Bu işlevi bir HTTP isteğiyle çağırırsınız. 
-- HTTP istek yükü bağımsız `String` değişken `inputReq`için bir olarak geçirilir.
-- Bir giriş Tablo depolamadan alınır ve `TestInputData` bağımsız değişkene `inputData`geçirilir.
+Bu işlevi bir HTTP isteğiyle çağırır. 
+- HTTP istek yükü, bağımsız değişken `String` `inputReq`için bir olarak geçirilir.
+- Tablo depolamadan bir giriş alınır ve bağımsız değişkenine `TestInputData` `inputData`olarak geçirilir.
 
-Bir dizi girdi almak `String[]`için , , `POJO[]` `List<String>`, veya `List<POJO>`.
+Bir toplu işlem almak için `String[]`,, veya `POJO[]` `List<String>` `List<POJO>`' a bağlayabilirsiniz.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -271,11 +280,11 @@ Bir dizi girdi almak `String[]`için , , `POJO[]` `List<String>`, veya `List<POJ
 
 ```
 
-Yapılandırılan olay hub'ında yeni veri olduğunda bu işlev tetiklenir. `cardinality` Çünkü , `MANY`işlev olay hub'ından bir toplu ileti toplu alır. `EventData`olay hub'ından işlev `TestEventData` yürütmeiçin dönüştürülür.
+Bu işlev, yapılandırılan olay hub 'ında her yeni veri olduğunda tetiklenir. `cardinality` , Olarak ayarlandığı için `MANY`, işlevi olay hub 'ından bir ileti toplu işi alır. `EventData`Olay Hub 'ı, işlev yürütmesi `TestEventData` için öğesine dönüştürülür.
 
-### <a name="output-binding-example"></a>Çıktı bağlama örneği
+### <a name="output-binding-example"></a>Çıkış bağlama örneği
 
-Bir çıktı bağlamayı return value'a `$return`kullanarak bağlayabilirsiniz. 
+' I kullanarak `$return`, dönüş değerine bir çıkış bağlaması bağlayabilirsiniz. 
 
 ```java
 package com.example;
@@ -292,9 +301,9 @@ public class Function {
 }
 ```
 
-Birden çok çıktı bağlaması varsa, bunlardan yalnızca biri için iade değerini kullanın.
+Birden çok çıkış bağlaması varsa, bunlardan yalnızca biri için dönüş değerini kullanın.
 
-Birden çok çıktı değeri `OutputBinding<T>` göndermek `azure-functions-java-library` için pakette tanımlanan kullanın. 
+Birden çok çıkış değeri göndermek için, `OutputBinding<T>` `azure-functions-java-library` pakette tanımlanan öğesini kullanın. 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -328,20 +337,20 @@ Birden çok çıktı değeri `OutputBinding<T>` göndermek `azure-functions-java
     }
 ```
 
-Bu işlevi bir HttpRequest'te çağırırsınız. Sıra depolamasına birden çok değer yazar.
+Bu işlevi bir HttpRequest üzerinde çağırılır. Kuyruk depolamaya birden çok değer yazar.
 
 ## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage ve HttpResponseMessage
 
- Bunlar ' `azure-functions-java-library`da tanımlanır. Bunlar, HttpTrigger işlevleriyle çalışmak için yardımcı türleridir.
+ Bunlar ' de `azure-functions-java-library`tanımlanmıştır. HttpTrigger işlevleriyle çalışmak için yardımcı türlerdir.
 
-| Özel tip      |       Hedef        | Tipik kullanım                  |
+| Özelleştirilmiş tür      |       Hedef        | Tipik kullanım                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntem, üstbilgi veya sorgu alır |
-| `HttpResponseMessage` | HTTP Çıkış Bağlama | 200 dışındaki durum döndürür   |
+| `HttpRequestMessage<T>`  |    HTTP Tetikleyicisi     | Yöntemi, üstbilgileri veya sorguları alır |
+| `HttpResponseMessage` | HTTP çıkış bağlama | 200 dışında bir durum döndürür   |
 
 ## <a name="metadata"></a>Meta Veriler
 
-Çok az tetikleyici, giriş verileriyle birlikte [tetikleyici meta veri](/azure/azure-functions/functions-triggers-bindings) gönderir. Meta verileri `@BindingName` tetiklemek için bağlamak için ek açıklama kullanabilirsiniz.
+Birkaç tetikleyici, giriş verileriyle birlikte [tetikleyici meta verilerini](/azure/azure-functions/functions-triggers-bindings) gönderir. Daha fazla açıklama `@BindingName` kullanarak tetikleyici meta verilerine bağlayabilirsiniz.
 
 
 ```Java
@@ -361,7 +370,7 @@ public class Function {
     }
 }
 ```
-Önceki örnekte, `queryValue` HTTP istek URL'sinde sorgu `name` dize parametresine bağlıdır. `http://{example.host}/api/metadata?name=test` İşte başka bir örnek, `Id` kuyruktan meta veri tetikleme nasıl bağlanılmayı gösterir.
+Yukarıdaki örnekte,, `queryValue` http istek URL 'sindeki sorgu dizesi parametresine `name` bağlanır. `http://{example.host}/api/metadata?name=test` Sıra tetikleyicisi meta `Id` verilerinden nasıl bağlanılacağını gösteren başka bir örnek aşağıda verilmiştir.
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -378,15 +387,15 @@ public class Function {
 ```
 
 > [!NOTE]
-> Ek açıklamasağlanan adı meta veri özelliği eşleşmesi gerekir.
+> Ek açıklamada belirtilen adın meta veri özelliğiyle eşleşmesi gerekir.
 
 ## <a name="execution-context"></a>Yürütme bağlamı
 
-`ExecutionContext`, tanımlanan `azure-functions-java-library`, çalışma zamanı işlevleri ile iletişim kurmak için yardımcı yöntemler içerir.
+`ExecutionContext`, içinde `azure-functions-java-library`tanımlanan, işlevler çalışma zamanı ile iletişim kurmak için yardımcı yöntemleri içerir.
 
-### <a name="logger"></a>Günlükçü
+### <a name="logger"></a>Medi
 
-İşlev kodundan günlükleri yazmak için `getLogger`tanımlanan `ExecutionContext`, kullanılan kullanın.
+İşlev `getLogger`kodundan Günlükler yazmak `ExecutionContext`için ' de tanımlanan ' ı kullanın.
 
 Örnek:
 
@@ -405,36 +414,36 @@ public class Function {
 }
 ```
 
-## <a name="view-logs-and-trace"></a>Günlükleri ve izlemeleri görüntüleme
+## <a name="view-logs-and-trace"></a>Günlükleri görüntüleme ve izleme
 
-Azure CLI'yi, Java stdout ve stderr günlüğe kaydetmenin yanı sıra diğer uygulama günlüğe kaydetmeyi de aktarmak için kullanabilirsiniz. 
+Azure CLı 'yi kullanarak Java stdout ve stderr günlük kaydını ve diğer uygulama günlüğünü de yazdırabilirsiniz. 
 
-Azure CLI'yi kullanarak uygulama günlüğü yazmak için işlev uygulamanızı şu şekilde yapılandırabilirsiniz:
+Azure CLı kullanarak uygulama günlüğü yazmak için işlev uygulamanızı yapılandırma:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
-Azure CLI'yi kullanarak işlev uygulamanız için günlük çıktısını aktarmak için yeni bir komut istemi, Bash veya Terminal oturumu açın ve aşağıdaki komutu girin:
+Azure CLı kullanarak işlev uygulamanıza ait günlük çıktısını akışa almak için yeni bir komut istemi, bash veya terminal oturumu açın ve aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
-[az webapp günlük kuyruk](/cli/azure/webapp/log) komutu `--provider` seçeneği kullanarak çıktı filtre seçenekleri vardır. 
+[Az WebApp log tail](/cli/azure/webapp/log) komutu, `--provider` seçeneğini kullanarak çıktıyı filtrelemeye yönelik seçeneklere sahiptir. 
 
-Azure CLI'yi kullanarak günlük dosyalarını tek bir ZIP dosyası olarak indirmek için yeni bir komut istemi, Bash veya Terminal oturumu açın ve aşağıdaki komutu girin:
+Azure CLı kullanarak günlük dosyalarını tek bir ZIP dosyası olarak indirmek için yeni bir komut istemi, bash veya terminal oturumu açın ve aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-Bu komutu çalıştırmadan önce Azure portalında veya Azure CLI'de dosya sistemi günlüğe kaydetmeyi etkinleştirmiş olmalısınız.
+Bu komutu çalıştırmadan önce Azure portal veya Azure CLı 'de dosya sistemi günlüğünü etkinleştirmiş olmanız gerekir.
 
 ## <a name="environment-variables"></a>Ortam değişkenleri
 
-İşlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md)yürütme sırasında ortam değişkenleri olarak ortaya çıkarır. Bu ayarlara kullanarak `System.getenv("AzureWebJobsStorage")`erişebilirsiniz.
+Işlevlerde, hizmet bağlantı dizeleri gibi [uygulama ayarları](functions-app-settings.md), yürütme sırasında ortam değişkenleri olarak sunulur. Bu ayarlara,, `System.getenv("AzureWebJobsStorage")`kullanarak erişebilirsiniz.
 
-Aşağıdaki örnek, adlı `myAppSetting`anahtar ile uygulama [ayarı](functions-how-to-use-azure-function-app-settings.md#settings)alır:
+Aşağıdaki örnek, adlı `myAppSetting`anahtar ile [uygulama ayarını](functions-how-to-use-azure-function-app-settings.md#settings)alır:
 
 ```java
 
@@ -447,14 +456,17 @@ public class Function {
 
 ```
 
+> [!NOTE]
+> En iyileştirilmiş soğuk başlangıç deneyimi için FUNCTIONS_EXTENSION_VERSION AppSetting değeri ~ 2 veya ~ 3 olmalıdır.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure İşlevler Java geliştirme hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
+Azure Işlevleri Java geliştirmesi hakkında daha fazla bilgi için aşağıdaki kaynaklara bakın:
 
 * [Azure İşlevleri için en iyi uygulamalar](functions-best-practices.md)
 * [Azure İşlevleri geliştirici başvurusu](functions-reference.md)
-* [Azure Fonksiyonları tetikler ve bağlamalar](functions-triggers-bindings.md)
-* [Görsel Stüdyo Kodu](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)ve [Eclipse](functions-create-maven-eclipse.md) ile yerel geliştirme ve hata ayıklama
-* [Visual Studio Code ile Uzaktan Hata Ayıklama Java Azure Fonksiyonları](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
-* [Azure Fonksiyonları için Maven eklentisi](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
-* Amaç aracılığıyla işlev `azure-functions:add` oluşturmayı kolaylaştırın ve [ZIP dosya dağıtımı](deployment-zip-push.md)için bir hazırlama dizini hazırlayın.
+* [Azure Işlevleri Tetikleyicileri ve bağlamaları](functions-triggers-bindings.md)
+* [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)ve [tutulma](functions-create-maven-eclipse.md) ile yerel geliştirme ve hata ayıklama
+* [Visual Studio Code ile Java Azure Işlevleri ile uzaktan hata ayıklama](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Azure Işlevleri için Maven eklentisi](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
+* İşlev oluşturmayı `azure-functions:add` amaç aracılığıyla kolaylaştırın ve [ZIP dosya dağıtımı](deployment-zip-push.md)için bir hazırlama dizini hazırlayın.

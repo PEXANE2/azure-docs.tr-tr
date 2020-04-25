@@ -1,24 +1,24 @@
 ---
 title: Kaynakları etiketleme ilkeleri
-description: Etiket uyumluluğunu sağlamak için atayabileceğiniz Azure İlkeleri'ni açıklar.
+description: Etiket uyumluluğunu sağlamak için atayabileceğiniz Azure Ilkelerini açıklar.
 ms.topic: conceptual
 ms.date: 03/20/2020
-ms.openlocfilehash: e7febe4c833cefd0ee9a5c49b4b70f4901fea8d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3eeb28ea23b18c3492f68d2fac294fc014420c5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80147024"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147859"
 ---
-# <a name="assign-policies-for-tag-compliance"></a>Etiket uyumluluğu için ilkeler atama
+# <a name="assign-policies-for-tag-compliance"></a>Etiket uyumluluğu için ilke atama
 
-Etiketleme kurallarını ve kurallarını uygulamak için [Azure İlkesi'ni](../../governance/policy/overview.md) kullanırsınız. Bir ilke oluşturarak, kuruluşunuz için beklenen etiketlere sahip olmayan kaynakların aboneliğinize dağıtılması senaryosunu önlersiniz. Etiketleri el ile uygulamak veya uyumlu olmayan kaynakları aramak yerine, dağıtım sırasında gerekli etiketleri otomatik olarak uygulayan bir ilke oluşturursunuz. Etiketler de artık yeni [Değiştir](../../governance/policy/concepts/effects.md#modify) efekti ve düzeltme [görevi](../../governance/policy/how-to/remediate-resources.md)ile varolan kaynaklara uygulanabilir. Aşağıdaki bölümde etiketler için örnek ilkeler gösterilmektedir.
+Etiketleme kuralları ve kurallarını zorlamak için [Azure ilkesi](../../governance/policy/overview.md) 'ni kullanırsınız. Bir ilke oluşturarak, kuruluşunuz için beklenen etiketlere sahip olmayan, aboneliğinize dağıtılan kaynakların senaryosundan kaçınabilirsiniz. Etiketlerin el ile uygulanması veya uyumlu olmayan kaynakları aramak yerine, dağıtım sırasında gerekli etiketleri otomatik olarak uygulayan bir ilke oluşturursunuz. Etiketler artık yeni [değişiklik](../../governance/policy/concepts/effects.md#modify) efekti ve bir [Düzeltme göreviyle](../../governance/policy/how-to/remediate-resources.md)mevcut kaynaklara da uygulanabilir. Aşağıdaki bölümde, Etiketler için örnek ilkeler gösterilmektedir.
 
 ## <a name="policies"></a>İlkeler
 
-[!INCLUDE [Tag policies](../../../includes/azure-policy-samples-policies-tags.md)]
+[!INCLUDE [Tag policies](../../../includes/policy/samples/bycat/policies-tags.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kaynakları etiketleme hakkında bilgi edinmek için [Azure kaynaklarınızı düzenlemek için etiketleri kullan'a](tag-resources.md)bakın.
-* Tüm kaynak türleri destek etiketleri değil. Kaynak türüne etiket uygulayıp uygulayamayacağınızı belirlemek [için Azure kaynakları için Etiket desteğine](tag-support.md)bakın.
+* Kaynakları etiketleme hakkında bilgi edinmek için bkz. [Azure kaynaklarınızı düzenlemek için etiketleri kullanma](tag-resources.md).
+* Tüm kaynak türleri etiketleri desteklemez. Bir kaynak türüne etiket uygulayıp uygulayacağınızı öğrenmek için bkz. [Azure kaynakları Için etiket desteği](tag-support.md).

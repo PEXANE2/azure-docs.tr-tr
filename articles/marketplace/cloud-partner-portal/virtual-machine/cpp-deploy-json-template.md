@@ -1,25 +1,25 @@
 ---
 title: Azure VHD dağıtım şablonu | Azure Marketi
-description: Bir kullanıcı sanal sabit diskinden yeni bir Azure sanal makine dağıtmak için gereken Azure Kaynak Yöneticisi şablonu listelenir.
+description: Bir Kullanıcı sanal sabit diskinden yeni bir Azure sanal makinesi dağıtmak için gereken Azure Resource Manager şablonunu listeler.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
-ms.openlocfilehash: 506412c23288d58c2f59b91a300265ddd79428bf
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: f3e3dc6e0d73627f49ba04a8b861253bafcddfa9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273928"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148043"
 ---
 # <a name="virtual-hard-disk-deployment-template"></a>Sanal sabit disk dağıtım şablonu
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikasındaki](https://aks.ms/CertifyVMimage) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure VM görüntü sertifikadaki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-image-certification) yönergeleri izleyin.
 
-Aşağıdaki Azure Kaynak Yöneticisi şablonu, yerel sanal sabit diskten (VHD) oluşturulan yeni bir Azure sanal makine (VM) örneğini tanımlar.  Bu şablon, bir [kullanıcı VHD'den bir Azure VM dağıt'](./cpp-deploy-vm-user-image.md)ı makalesinde kullanılır. 
+Aşağıdaki Azure Resource Manager şablonu, yerel sanal sabit diskten (VHD) oluşturulan yeni bir Azure sanal makinesi (VM) örneğini tanımlar.  Bu şablon, [bir Kullanıcı VHD 'Sinden Azure VM dağıtma](./cpp-deploy-vm-user-image.md)makalesinde kullanılır.
 
 ```json
 {

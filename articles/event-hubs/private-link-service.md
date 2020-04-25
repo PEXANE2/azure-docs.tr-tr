@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: 110d4b94eda8315c20f4baa70256f7e5ed378530
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106483"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82148194"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>Azure Event Hubs Azure özel bağlantısı ile tümleştirme (Önizleme)
 Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Event Hubs, Azure depolama ve Azure Cosmos DB) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki **özel bir uç nokta** üzerinden erişmenizi sağlar.
@@ -29,7 +29,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 >[!WARNING]
 > Özel uç noktaların etkinleştirilmesi, diğer Azure hizmetlerinin Event Hubs etkileşimde olmasını engelleyebilir.
 >
-> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
+> Sanal ağlar kullanılırken güvenilen Microsoft Hizmetleri desteklenmez.
 >
 > Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
 > - Azure Izleyici (Tanılama ayarı)
@@ -44,7 +44,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bir Event Hubs ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -72,7 +72,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
     1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
     2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
     3. Özel uç nokta için bir **ad** girin. 
-    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanızın sanal ağınızla aynı bölgede olması gerekir, ancak bağlandığınız özel bağlantı kaynağını farklı bir bölgede bulabilirsiniz. 
+    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanız, sanal ağınızla aynı bölgede olmalıdır, ancak bağlanmakta olduğunuz özel bağlantı kaynağından farklı bir bölgede olabilir. 
     6. Sayfanın alt kısmındaki **İleri: kaynak >** düğmesini seçin.
 
         ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -86,7 +86,7 @@ Zaten bir Event Hubs ad alanınız varsa, aşağıdaki adımları izleyerek bir 
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)    
     2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
-        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, bazılarının sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir.
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Event Hubs ad alanına gitmeniz ve URI 'nin ' den `/subscriptions/`başlayarak olan kısmını kopyalamadır. Örnek için aşağıdaki resme bakın. 
         2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür.
         3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür.
         4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin.

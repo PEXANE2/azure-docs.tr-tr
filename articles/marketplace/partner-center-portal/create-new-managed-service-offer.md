@@ -1,6 +1,6 @@
 ---
-title: Ticari Pazar Da yeni bir Yönetilen Hizmet teklifi oluşturun
-description: İş Ortağı Merkezi'ndeki Ticari Pazar Portalı'nı kullanarak Azure Market'te giriş yapmak için yeni bir Yönetilen Hizmet teklifi oluşturma.
+title: Ticari Market 'te yeni bir yönetilen hizmet teklifi oluşturun
+description: Iş Ortağı Merkezi 'nde ticari Market portalı 'nı kullanarak Azure Marketi 'nde listeleme için yeni bir yönetilen hizmet teklifi oluşturma.
 author: JnHs
 ms.author: jenhayes
 manager: evansma
@@ -8,99 +8,99 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c040907c6101d11ee645f9967278d3cf297bd74a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81869807"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82147921"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Yeni yönetilen hizmet teklifi oluşturma
+# <a name="create-a-new-managed-service-offer"></a>Yeni bir yönetilen hizmet teklifi oluşturun
 
 > [!IMPORTANT]
-> Yönetilen Hizmet tekliflerinizin yönetimini Bulut İş Ortağı Portalı'ndan İş Ortağı Merkezi'ne taşıyoruz. Tekliflerin izin verilene kadar, bulut iş ortağı portalındaki tekliflerinizi yönetmek için lütfen [Azure Marketine Yönetilen Hizmet Teklifi Yayımla'daki](../../lighthouse/how-to/publish-managed-services-offers.md) yönergeleri izleyin.
+> Yönetilen hizmet tekliflerinizin yönetimini Bulut İş Ortağı Portalı Iş ortağı merkezine taşıdık. Tekliflerinizi geçirene kadar Bulut İş Ortağı Portalı tekliflerinizi yönetmek için [Azure Market 'Te yönetilen hizmet sunma teklifi yayımlama](../../lighthouse/how-to/publish-managed-services-offers.md) bölümündeki yönergeleri izleyin.
 
-Yönetilen Hizmet, [Azure Deniz Feneri](../../lighthouse/overview.md) senaryolarını etkinleştirmeye yardımcı olur. Bir müşteri Yönetilen Hizmet teklifini kabul ettiğinde, Azure temsilci [kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)için kaynaklara binebilir.
+Yönetilen hizmet, [Azure açık kullanım](../../lighthouse/overview.md) senaryolarını etkinleştirmek için yardım sağlar. Bir müşteri yönetilen bir hizmet teklifini kabul ettiğinde, [Azure tarafından atanan kaynak yönetimine](../../lighthouse/concepts/azure-delegated-resource-management.md)yönelik kaynakları ekleyebilir.
 
-Yönetilen Hizmet teklifleri oluşturmaya başlamak için, ilk önce [Bir İş Ortağı Merkezi hesabı oluşturduğunuzdan](./create-account.md) ve Seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)açtığınızı sağlayın. Yönetilen Hizmet teklifini yayınlamak için [Gümüş veya Altın Bulut Platformu uzmanlık düzeyine](https://partner.microsoft.com/membership/cloud-platform-competency) sahip olmalısınız veya Azure Uzmanı [MSP](https://partner.microsoft.com/membership/azure-expert-msp) olmalısınız.
+Yönetilen hizmet tekliflerini oluşturmaya başlamak için, ilk olarak [bir Iş Ortağı Merkezi hesabı](./create-account.md) oluşturduğunuzdan ve **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)seçtiğinizden emin olun. Yönetilen hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](https://partner.microsoft.com/membership/cloud-platform-competency) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir.
 
-![İş Ortağı Merkezi'nde Ticari Pazar panosu](./media/new-offer-overview.png)
+![Iş Ortağı Merkezi 'nde ticari Market panosu](./media/new-offer-overview.png)
 
 >[!Note]
-> Bir teklif yayımlandıktan sonra, Ortak Merkezi'nde yapılan teklife yönelik yapılan güncellemeler yalnızca yeniden yayımlandıktan sonra sistemde ve mağaza önlerinde güncellenir. Lütfen değişiklik yaptıktan sonra teklifi yayınlanmak üzere gönderdiğinden emin olun.
+> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan teklifle ilgili düzenlemeler yalnızca sistem sırasında ve yeniden yayımlamadan sonra mağazaların ön yüzlerinin güncelleştirilmesini sağlar. Lütfen değişiklikleri yaptıktan sonra teklifi yayın için gönderdiğinizden emin olun.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
-+ **Yeni teklif** düğmesini seçin ve ardından **Yönetilen Hizmet** menü öğesini seçin. **Yeni teklif** iletişim kutusu görüntülenir.
+**+ Yeni teklif** düğmesini seçin ve ardından **yönetilen hizmet** menü öğesini seçin. **Yeni teklif** iletişim kutusu görüntülenir.
 
-### <a name="offer-id-and-alias"></a>Teklif kimliği ve takma ad
+### <a name="offer-id-and-alias"></a>Teklif KIMLIĞI ve diğer ad
 
-- **Teklif Kimliği**: Hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu kimlik, pazar teklifiiçin URL adresindeki müşteriler tarafından görülebilir. Bu kimlik yalnızca küçük alfasayısal karakterler (tireler ve alt çizerler dahil, ancak beyaz boşluk yok), 50 karakterle sınırlı olabilir ve **Oluştur'u**seçtikten sonra değiştirilemez.  Örneğin, *burada test-teklif-1* girerseniz, teklif URL'si `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **TEKLIF kimliği**: hesabınızdaki her teklif için benzersiz tanımlayıcı. Bu KIMLIK, Market teklifinin URL adresindeki müşterilere görünür olacaktır. Bu KIMLIK yalnızca küçük harfli alfasayısal karakterler (tireler ve alt çizgiler dahil ancak boşluk yok), 50 karakterle sınırlı olur ve **Oluştur**'u seçtikten sonra değiştirilemez.  Örneğin, burada *Test-teklif-1* girerseniz, teklif URL 'si olur `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
-- **Teklif diğer adı**: Ortak Merkezi'ndeki teklife atıfta bulunmak için kullanılan ad. Bu ad pazarda kullanılmaz ve teklif adı ve müşterilere gösterilecek diğer değerlerden farklıdır. **Oluştur'u**seçtikten sonra bu değer değiştirilemez.
+- **Teklif diğer adı**: Iş Ortağı Merkezi içindeki teklifine başvurmak için kullanılan ad. Bu ad Market 'te kullanılmayacak ve teklif adından ve müşterilere gösterilecek diğer değerlerden farklı. Bu değer, **Oluştur**' u seçtikten sonra değiştirilemez.
 
-**Teklif Kimliği** nizi ve **Teklif takma**adını girdikten sonra **Oluştur'u**seçin. Daha sonra teklifinizin tüm farklı kısımları üzerinde çalışabileceksiniz.
+**TEKLIF kimliği** ve **teklif diğer adınızı**girdikten sonra **Oluştur**' u seçin. Daha sonra teklifinizin farklı bölümlerinin tümünde çalışabileceksiniz.
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
-**Teklif kurulum** sayfası aşağıdaki bilgileri ister. Bu alanları tamamladıktan sonra **Kaydet'i** seçtiğinizden emin olun.
+**Teklif kurulum** sayfası, aşağıdaki bilgileri ister. Bu alanları tamamladıktan sonra **Kaydet** ' i seçtiğinizden emin olun.
 
-## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlayın
+## <a name="connect-lead-management"></a>Müşteri adayı yönetimini bağlama
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Yönetilen Hizmetler [sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre bir **Müşteri Adayı Hedefi** gerektiğini unutmayın. Bu, bir müşteri teklifinizi her dağıtında CRM sisteminizde bir kayıt oluşturur.
+[Yönetilen hizmetler sertifika ilkelerine](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)göre, bir **müşteri adayı hedefinin** gerekli olduğunu unutmayın. Bu, müşterinin teklifinizi dağıttığı her seferinde CRM sisteminizde bir kayıt oluşturur.
 
-Daha fazla bilgi için Müşteri [Adayı yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md)adabına bakın.
+Daha fazla bilgi için bkz. [müşteri adayı yönetimine genel bakış](./commercial-marketplace-get-customer-leads.md).
 
-Bir sonraki bölüme geçmeden önce sayfayı **kaydetmeyi** unutmayın.
+Sonraki bölüme geçmeden önce sayfayı **kaydetmeyi** unutmayın.
 
 ## <a name="properties"></a>Özellikler
 
-**Özellikler** sayfası, teklifinizi pazarda gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar. Bu sayfayı tamamladıktan sonra **Kaydet'i** seçin.
+**Özellikler** sayfası, teklifinizi Market 'te gruplandırmak için kullanılan kategorileri ve teklifinizi destekleyen yasal sözleşmeleri tanımlamanızı sağlar. Bu sayfayı tamamladıktan sonra **Kaydet** ' i seçin.
 
 ### <a name="category"></a>Kategori
 
-Teklifinizi uygun pazar yeri arama alanlarına yerleştirmek için kullanılacak en az bir ve en fazla beş kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini mutlaka unutmayın.
+Teklifinizi uygun Market arama alanına yerleştirmek için kullanılacak en az bir ve en fazla beş kategori seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğine dikkat edin.
 
 ### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
-**Şartlar ve koşullar** alanında kendi yasal hüküm ve koşullarınızı sağlayın. Ayrıca, şart ve koşullarınızın bulunabileceği URL'yi de sağlayabilirsiniz. Müşterilerin teklifinizi denemeden önce bu koşulları kabul etmeleri gerekmektedir.
+**Hüküm ve koşullar** alanında kendi yasal hüküm ve koşullarınızı belirtin. Ayrıca, hüküm ve koşullarınızın bulunabileceği URL 'YI de sağlayabilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-**Teklif listesi** sayfası, teklifiniz için pazar yeri ayrıntılarını (teklif adı, açıklama, resim vb.) tanımlamanızı sağlar.
+**Teklif listesi** sayfası teklifiniz için Market ayrıntılarını (teklif adı, açıklama, görüntüler vb.) tanımlamanıza olanak sağlar.
 
 > [!NOTE]
-> Teklif listesi içeriği (açıklama, belge, ekran görüntüsü, kullanım koşulları, vb.) "Bu uygulama yalnızca [İngilizce olmayan dilde] ifadesiyle başladığı sürece İngilizce olması gerekmez." Teklif listesi içeriğinde kullanılandan başka bir dilde içerik sunmak için yararlı bir *bağlantı URL'si* sağlamak da kabul edilebilir.
+> Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
 ### <a name="name"></a>Adı
 
-Buraya girdiğiniz ad, teklif listenizin başlığı olarak müşterilere gösterilir. Bu alan, teklifi oluşturduğunuzda **Teklif takma adı** için girdiğiniz metinle önceden doldurulmuştur, ancak bu değeri değiştirebilirsiniz. Bu ad ticari marka olabilir (ve ticari marka veya telif hakkı sembolleri içerebilir). Ad 50 karakterden fazla olamaz ve herhangi bir emoji içeremez.
+Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metin ile önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
-### <a name="search-results-summary"></a>Arama sonuçları özeti
+### <a name="search-results-summary"></a>Arama sonuçları Özeti
 
-Teklifinizin kısa bir açıklamasını (en fazla 100 karakter) sağlayın ve bu açıklamanızı pazar yeri arama sonuçlarında da kullanılabilir.
+Sunabileceğiniz (en fazla 100 karakter) kısa bir açıklama sağlayın ve bu işlem Market arama sonuçlarında kullanılabilir.
 
-### <a name="long-summary"></a>Uzun özet
+### <a name="long-summary"></a>Uzun Özet
 
-Teklifinizin daha uzun bir açıklamasını sağlayın (en fazla 256 karakter). Bu uzun özet, pazar yeri arama sonuçlarında da kullanılabilir.
+Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 256 karakter). Bu uzun Özet, Market arama sonuçlarında da kullanılabilir.
 
 ### <a name="description"></a>Açıklama
 
-Teklifinizin daha uzun bir açıklamasını sağlayın (en fazla 3.000 karakter). Bu açıklama, pazar yeri giriş özetinde müşterilere görüntülenir. Teklifinizin değer teklifini, temel avantajlarını, kategorive/veya endüstri derneklerini, uygulama içi satın alma fırsatlarını ve gerekli açıklamaları ekleyin.
+Teklifiniz için daha uzun bir açıklama sağlayın (en fazla 3.000 karakter). Bu açıklama Market dökümüne Genel Bakış bölümündeki müşterilere görüntülenecektir. Teklifinizin değer teklifini, anahtar avantajlarını, kategori ve/veya sektör ilişkilendirmelerini, uygulama içi satın alma fırsatlarını ve gerekli tüm teklifleri dahil edin.
 
-Açıklamanızı yazmak için bazı ipuçları:  
+Tanımlarınızı yazmak için bazı ipuçları:  
 
-- Teklifinizin değer teklifini açıklamanızın ilk birkaç cümlesinde açıkça açıklayın. Değer teklifinize aşağıdaki öğeleri ekleyin:
+- Tanımınızın ilk birkaç cümlede teklifinizin değer teklifini açık bir şekilde açıklamalıdır. Değer teklifinde aşağıdaki öğeleri ekleyin:
   - Teklifin açıklaması
-  - Tekliften yararlanan kullanıcı türü
-  - Müşteri ihtiyaçları veya teklif adresleri ağrı
-- İlk birkaç cümlenin arama motoru sonuçlarında görüntülenebileceğini unutmayın.  
-- Ürününüzü satmak için özelliklere ve işlevselliğe güvenmeyin. Bunun yerine, sağladığınız değere odaklanın.  
-- Sektöre özgü kelime dağarcığı veya fayda tabanlı ifadeler mümkün olduğunca kullanın.
+  - Tekliften faydalanan Kullanıcı türü
+  - Müşteri ihtiyaçları veya teklif adreslerine yönelik bir sorun
+- İlk birkaç tümcenin arama motoru sonuçlarında görüntülenebileceğini aklınızda bulundurun.  
+- Ürününüzü satmaya yönelik özelliklere ve işlevlere güvenmeyin. Bunun yerine, teslim ettiğiniz değere odaklanın.  
+- Sektöre özgü sözlük veya avantaj temelli bir ifade mümkün olduğunca yararlanın.
 
-Teklif açıklamanızı daha ilgi çekici hale getirmek için, açıklamanızı biçimlendirmek için zengin metin düzenleyicisini kullanın.
+Teklif açıklamanızı daha ilgi çekici hale getirmek için, tanımlarınızı biçimlendirmek için zengin metin düzenleyicisini kullanın.
 
 ![Zengin metin düzenleyicisini kullanma](./media/text-editor2.png)
 
@@ -110,40 +110,40 @@ Zengin metin düzenleyicisini kullanmak için aşağıdaki yönergeleri kullanı
 
      ![Metin biçimini değiştirmek için zengin metin düzenleyicisini kullanma](./media/text-editor3.png)
 
-- Metne madde işaretli veya numaralanmış bir liste eklemek için aşağıdaki seçenekleri kullanın:
+- Metne bir madde işaretli veya numaralı liste eklemek için aşağıdaki seçenekleri kullanın:
 
      ![Liste eklemek için zengin metin düzenleyicisini kullanma](./media/text-editor4.png)
 
-- Metne girintiyi eklemek veya kaldırmak için aşağıdaki seçenekleri kullanın:
+- Metne girintileme eklemek veya kaldırmak için aşağıdaki seçenekleri kullanın:
 
-     ![Girinti için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
+     ![Girintilemek için zengin metin düzenleyicisini kullanma](./media/text-editor5.png)
 
-### <a name="privacy-policy-link"></a>Gizlilik politikası bağlantısı
+### <a name="privacy-policy-link"></a>Gizlilik ilkesi bağlantısı
 
-Kuruluşunuzun gizlilik politikasına (sitenizde barındırılan) URL'yi girin. Uygulamanızın gizlilik yasalarına ve yönetmeliklerine uygun olmasını sağlamaktan ve geçerli bir gizlilik politikası sağlamaktan siz sorumlusunuz.
+Kuruluşunuzun gizlilik ilkesinin URL 'sini (sitenizde barındırılan) girin. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
 
 ### <a name="useful-links"></a>Yararlı bağlantılar
 
-Çözümünüz le ilgili isteğe bağlı tamamlayıcı çevrimiçi belgeler sağlayın. + **Link ekle'ye**tıklayarak ek yararlı bağlantılar ekleyin.
+Çözümünüz hakkında isteğe bağlı ek çevrimiçi belgeler sağlayın. **+ Bağlantı ekle**' ye tıklayarak ek yararlı bağlantılar ekleyin.
 
 ### <a name="contact-information"></a>İletişim Bilgileri
 
-Bu bölümde, bir **Destek kişi** ve mühendislik **kişi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortaklarına sağlanabilir.
+Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi**için ad, e-posta ve telefon numarası sağlamanız gerekir. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
 
-### <a name="support-urls"></a>Destek URL'leri
+### <a name="support-urls"></a>Destek URL 'Leri
 
-**Azure Global Müşterileri** ve/veya Azure **Kamu müşterileri**için destek web sitelerine sahipseniz, bu URL'leri buradan sağlayın.
+**Azure küresel müşterileri** ve/veya **Azure Kamu müşterileri**için destek web siteleri varsa, bu URL 'leri burada sağlayın.
 
-### <a name="marketplace-images"></a>Pazar yeri görüntüleri
+### <a name="marketplace-images"></a>Market görüntüleri
 
-Bu bölümde, teklifinizi müşteriye gösterirken kullanılacak logolar ve resimler sağlayabilirsiniz. Tüm görüntüler .png formatında olmalıdır.
+Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
 
 >[!Note]
->Dosya yükleme sorunu yaşıyorsanız, yerel ağınızın İş Ortağı https://upload.xboxlive.com Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
+>Dosya yükleme sorununuz varsa, yerel ağınızın Iş Ortağı Merkezi tarafından kullanılan https://upload.xboxlive.com hizmeti engellemediğinden emin olun.
 
-#### <a name="marketplace-logos"></a>Pazar yeri logoları
+#### <a name="marketplace-logos"></a>Market logoları
 
-Dört logo boyutları gereklidir: **Küçük (40x40)**, **Orta (90x90)**, **Büyük (115x115)** ve **Geniş (255x115)**. Logolarınız için aşağıdaki yönergeleri izleyin:
+Dört logo boyutu gereklidir: **küçük (40x40)**, **Orta (90x90)**, **büyük (115x115)** ve **geniş (255x115)**. Logolarınız için şu yönergeleri izleyin:
 
 - Azure tasarımının basit bir renk paleti vardır. Logonuzdaki birincil ve ikincil renklerinin sayısını sınırlandırın.
 - Portalın tema renkleri siyah ve beyazdır. Bu renkleri logonuzun arka plan rengi olarak kullanmayın. Logonuzun portalda öne çıkmasını sağlayan bir renk kullanın. Basit birincil renkleri öneririz.
@@ -158,107 +158,107 @@ Teklifinizin nasıl çalıştığını gösteren en fazla beş ekran görüntüs
 
 #### <a name="videos"></a>Videolar
 
-İsteğe bağlı olarak, teklifinizi gösteren en fazla beş video ekleyebilirsiniz. Bu videolar YouTube ve/veya Vimeo'da barındırılmalıdır. Her biri için videonun adını, URL'sini ve videonun küçük resmini (1280 x 720 piksel) girin.
+İsteğe bağlı olarak, teklifinizi gösteren en fazla beş video ekleyebilirsiniz. Bu videoların YouTube ve/veya Vimeo 'da barındırılması gerekir. Her biri için videonun adını, URL 'sini ve videonun küçük bir görüntüsünü (1280 x 720 piksel) girin.
 
-#### <a name="additional-marketplace-listing-resources"></a>Ek pazar yeri listeleme kaynakları
+#### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
 
-- [Pazar teklifi listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Market teklif listeleri için en iyi uygulamalar](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="preview"></a>Önizleme
 
-Teklifinizi daha geniş bir pazar yeri teklifine canlı olarak yayınlamadan önce, önce teklifi sınırlı bir önizleme kitlesitarafından kullanılabilir hale getirmeniz gerekir. Bu, müşterilerinizin kullanımına sunmadan önce Azure Marketi'nde nasıl göründüğünü onaylamanızı sağlar. Microsoft destek ve mühendislik ekipleri de bu önizleme döneminde teklifinizi görüntüleyebilir.
+Teklifinizi daha geniş Market teklifiyle yayımlamadan önce, önce onu sınırlı bir önizleme hedef kitlesi için kullanılabilir hale getirmeniz gerekir. Bu, müşterilerinizin müşterilere hazır hale gelmeden önce Azure Marketi 'nde nasıl göründüğünü doğrulamanıza olanak sağlar. Microsoft destek ve mühendislik ekipleri, bu önizleme döneminde teklifinizi da görüntüleyebilecektir.
 
-**Önizleme Hedef Kitlesi** bölümüne Azure abonelik dislerini girerek önizleme hedef kitlesini tanımlayabilirsiniz. 10'a kadar abonelik tonu'nu el ile girebilir veya 100'e kadar abonelik tonu içeren bir .csv dosyası yükleyebilirsiniz.
+Ön izleme **İzleyicisi** bölümüne Azure abonelik kimlikleri girerek önizleme kitleyi tanımlayabilirsiniz. En fazla 10 abonelik kimliğini el ile girebilir veya en fazla 100 abonelik kimliğiyle bir. csv dosyası yükleyebilirsiniz.
 
-Bu aboneliklerle ilişkili tüm müşteriler, teklif in yayına girmeden önce Azure Marketi'nde görüntüleyebilir. Teklifinizi önizlemek için kendi aboneliklerinizi buraya eklediğinizden emin olun.
+Bu aboneliklerle ilişkili müşteriler, teklifi canlı olmadan önce Azure Marketi 'nde görüntüleyebilecektir. Teklifinizin önizlemesini yapabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun.
 
 ## <a name="plan-overview"></a>Plana genel bakış
 
-Her teklifin bir veya daha fazla planı olmalıdır (bazen SUS olarak da adlandırılır). Farklı özellik kümelerini farklı fiyatlarla desteklemek veya belirli bir müşteri kitlesi için belirli bir planı özelleştirmek için birden çok plan ekleyebilirsiniz. Müşteriler, ana teklif altında kendileri için kullanılabilen planları görüntüleyebilir.
+Her teklifin bir veya daha fazla planı olmalıdır (bazen SKU 'Lar olarak adlandırılır). Farklı fiyatlarla farklı özellik kümelerini desteklemek için veya belirli bir müşterinin sınırlı bir kitlesi için belirli bir planı özelleştirmek üzere birden çok plan ekleyebilirsiniz. Müşteriler, kendileri için kullanılabilir olan planları üst teklif altında görüntüleyebilir.
 
-**Plan'a genel bakış** sayfasında , **+ Yeni plan oluştur'u**seçin. Ardından bir **Plan Kimliği** ve Plan **adı**girin. Bu değerlerin her ikisi de en fazla 50 karakteriçeren küçük alfasayısal karakterler, tireler ve alt çizgi ler içerebilir. Bu değerler müşteriler tarafından görülebilir ve teklifi yayımladıktan sonra değiştirilemez.
+**Plana genel bakış** sayfasında **+ Yeni plan oluştur**' u seçin. Ardından bir **plan kimliği** ve bir **Plan adı**girin. Bu değerlerin her ikisi de en fazla 50 karakter içeren küçük harfli alfasayısal karakterler, tireler ve alt çizgiler içerebilir. Bu değerler müşterilere görünebilir ve teklifi yayımladıktan sonra değiştirilemez.
 
-Planınız üzerinde çalışmaya devam etmek için bu değerleri girdikten sonra **Oluştur'u** seçin. Tamamlanması gereken üç bölüm vardır: **Plan listesi,** **Fiyatlandırma ve kullanılabilirlik**ve **Teknik yapılandırma.**
+Planınızda çalışmaya devam etmek için bu değerleri girdikten sonra **Oluştur** ' u seçin. Tamamlanacak üç bölüm vardır: **plan listeleme**, **fiyatlandırma ve kullanılabilirlik**ve **Teknik yapılandırma**.
 
-### <a name="plan-listing"></a>Plan listesi
+### <a name="plan-listing"></a>Planı listeleme
 
-İlk olarak, plan için bir **Arama sonuçları özeti** sağlayın. Bu, pazar yeri arama sonuçlarında kullanılabilecek planınızın (en fazla 100 karakter) kısa bir açıklamasıdır.
+İlk olarak, plan için bir **Arama sonuçları Özeti** sağlayın. Bu, Market arama sonuçlarında kullanılabilen planınızın (en fazla 100 karakter) kısa bir açıklamasıdır.
 
-Ardından, planın daha ayrıntılı bir açıklamasını sağlayan bir **Açıklama** girin.
+Sonra, planın daha ayrıntılı bir açıklamasını sağlayan bir **Açıklama** girin.
 
 ### <a name="pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik
 
-Şu anda Yönetilen Hizmet teklifi için kullanılabilecek tek bir fiyatlandırma modeli vardır: **Kendi lisansınızı getirin (BYOL)**. Bu, müşterilerinize bu teklifle ilgili maliyetler için doğrudan fatura keseceğiniz anlamına gelir ve Microsoft size herhangi bir ücret talep etmez.
+Şu anda, yönetilen hizmet teklifi için kullanılabilecek yalnızca bir fiyatlandırma modeli vardır: **kendi lisansınızı getirin (KLG)**. Bu, müşterilerinize bu teklifle ilgili maliyetleri doğrudan faturalayeceğiniz ve Microsoft 'un size herhangi bir ücret ödemeyeceği anlamına gelir.
 
-**Plan görünürlüğü** bölümü, bu planın [özel](../../marketplace/private-offers.md)olup olmadığını belirtmenizi sağlar. Bu özel **plan** kutusunu işaretlenmemiş olarak bırakırsanız, planınız belirli müşterilerle (veya belirli sayıda müşteriyle) sınırlı olmayacaktır.
+**Plan görünürlüğü** bölümü, bu planın [özel](../../marketplace/private-offers.md)olup olmadığını belirtmenize olanak tanır. **Bu özel bir plan** kutusunu işaretsiz bırakırsanız, planınız belirli müşteriler (veya belirli bir sayıda müşteri) ile sınırlandırılır.
 
-Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet'i**seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri tanımlamanız gerekir. Bunlar tek tek (en fazla 10 abonelik için) veya .csv dosyası yükleyerek (tüm planlarda en fazla 10.000 abonelik için) girilebilir. Teklifi test etmek ve doğrulamak için kendi aboneliklerinizi buraya eklediğinizden emin olun.
+Bu planı yalnızca belirli müşteriler için kullanılabilir hale getirmek için **Evet**' i seçin. Bunu yaptığınızda, abonelik kimliklerini sağlayarak müşterileri belirlemeniz gerekir. Bunlar tek bir (10 abonelik için) veya bir. csv dosyası karşıya yükleyerek (tüm planlar genelinde en fazla 10.000 abonelik için) girilebilir. Teklifi sınayabilmeniz ve doğrulayabilmeniz için kendi aboneliklerinizi buraya eklediğinizden emin olun.
 
 > [!IMPORTANT]
-> Bir plan genel olarak yayımlandıktan sonra, bunu özel olarak değiştiremezsiniz. Hangi müşterilerin teklifinizi kabul edip kaynakları temsilci olarak verebileceğini denetlemek için özel bir plan kullanın. Genel bir planla, belirli müşterilerle veya hatta belirli sayıda müşteriyle kullanılabilirliği kısıtlayamazsınız (ancak bunu yapmayı seçerseniz planı tamamen satmayı durdurabilirsiniz). Bir müşteri teklifi kabul ettikten sonra, teklifi yayınladığınızda [Yönetilen Hizmetler Kaydı Atama Silme Rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) Rol **Tanımı** kümesine bir **Yetkilendirme** dahil ettiğinizde bir [temsilciye erişimi kaldırabilirsiniz.](../../lighthouse/how-to/onboard-customer.md#remove-access-to-a-delegation) Ayrıca müşteriye ulaşabilir ve [erişiminizi kaldırmalarını isteyebilirsiniz.](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)
+> Bir plan ortak olarak yayımlandıktan sonra, özel olarak değiştiremezsiniz. Hangi müşterilerin teklif ve temsilci kaynaklarınızı kabul edeceğini denetlemek için özel bir plan kullanın. Ortak bir plan sayesinde, kullanılabilirliği belirli müşterilerle veya hatta belirli sayıda müşteriye kısıtlayamazsınız (ancak bunu yapmak isterseniz planı tamamen satmaya devam edebilirsiniz). Bir müşteri bir teklifi kabul ettikten sonra, teklifi yayımladığınızda rol **tanımıyla** [yönetilen hizmetler kayıt ataması silme rolü](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) olarak ayarlanmış bir **Yetkilendirme** eklediyseniz, bir [temsilciye erişimi kaldırabilirsiniz](../../lighthouse/how-to/remove-delegation.md) . Ayrıca müşteriye ulaşabilir ve [erişiminizi kaldırmasını](../../lighthouse/how-to/view-manage-service-providers.md#add-or-remove-service-provider-offers)isteyebilirsiniz.
 
 ### <a name="technical-configuration"></a>Teknik yapılandırma
 
-Planınızın bu bölümü, müşteri kaynaklarını yönetmek için yetkilendirme bilgilerini içeren bir bildirim oluşturur. Bu bilgiler, [Azure temsilci kaynak yönetimini](../../lighthouse/concepts/azure-delegated-resource-management.md)etkinleştirmek için gereklidir.
+Planınızın bu bölümü, müşteri kaynaklarını yönetmeye yönelik yetkilendirme bilgilerini içeren bir bildirim oluşturur. [Azure tarafından atanan kaynak yönetimini](../../lighthouse/concepts/azure-delegated-resource-management.md)etkinleştirmek için bu bilgiler gereklidir.
 
-Hangi rollerin destekleneceğini ve yetkilendirmelerinizi tanımlamak için en iyi uygulamaları anlamak için [Azure Deniz Feneri senaryolarında Kiracıları, rolleri ve kullanıcıları](../../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) gözden geçirin.
+Hangi rollerin desteklendiğini ve yetkilendirmelerinizi tanımlamaya yönelik en iyi yöntemleri anlamak için [Azure Use senaryolarında kiracılar, roller ve kullanıcıları](../../lighthouse/concepts/tenants-users-roles.md#best-practices-for-defining-users-and-roles) gözden geçirdiğinizden emin olun.
 
 > [!NOTE]
-> Yukarıda belirtildiği gibi, **Yetkilendirme** girişlerinizdeki kullanıcılar ve roller, planı satın alan her müşteri için geçerli olacaktır. Belirli bir müşteriye erişimi sınırlamak istiyorsanız, bunların özel kullanımı için özel bir plan yayımlamanız gerekir.
+> Yukarıda belirtildiği gibi, **Yetkilendirme** girdinizdeki kullanıcılar ve roller planı satın alan her müşteri için de geçerlidir. Belirli bir müşteriye erişimi sınırlandırmak istiyorsanız, özel kullanım için özel bir plan yayımlamanız gerekir.
 
 #### <a name="manifest"></a>Bildirim
 
-İlk olarak, bildirim için bir **Sürüm** sağlayın. *n.n.n* biçimini kullanın (örneğin, 1.2.5).
+İlk olarak, bildirim için bir **Sürüm** belirtin. *N. n. n* biçimini kullanın (örneğin, 1.2.5).
 
-Ardından, **Kiracı Kimliğinizi**girin. Bu, kuruluşunuzun Azure Etkin Dizini (Azure AD) kiracı kimliğiyle ilişkili bir GUID'dir; diğer bir şekilde, müşterilerinizin kaynaklarına erişeceğiniz yönetici kiracı. Bu kullanışlınız yoksa, Azure portalının sağ üst tarafında hesap adınızın üzerinde gezinerek veya **Switch dizinini**seçerek bulabilirsiniz.
+Ardından, **KIRACı kimliğinizi**girin. Bu, kuruluşunuzun Azure Active Directory (Azure AD) kiracı KIMLIĞIYLE ilişkili bir GUID 'dir; diğer bir deyişle, müşterilerinizin kaynaklarına erişecek olan kiracı yönetimi. Bu kullanışlı bir sahip değilseniz, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek bulabilirsiniz.
 
-Teklifinizin yeni bir sürümünü yayımladıysanız ve güncelleştirilmiş bir manifesto oluşturmanız gerekiyorsa, **+ Yeni manifesto'u**seçin. Önceki bildirim sürümünden sürüm numarasını artırdığından emin olun.
+Teklifinizin yeni bir sürümünü yayımladığınızda ve güncelleştirilmiş bir bildirim oluşturmanız gerekiyorsa **+ Yeni bildirim**' ı seçin. Önceki bildirim sürümünden sürüm numarasını artırdığınızdan emin olun.
 
 #### <a name="authorization"></a>Yetkilendirme
 
-Yetkilendirmeler, planı satın alan müşteriler için kaynaklara ve aboneliklere erişebilen yönetici kiracınızdaki varlıkları tanımlar. Bu varlıkların her birine, belirli erişim düzeyleri veren yerleşik bir rol atanır.
+Yetkilendirmeler, yönetim kiracınızda, planı satın alan müşteriler için kaynaklara ve aboneliklere erişebilecek olan varlıkları tanımlar. Bu varlıkların her birine, belirli erişim düzeyleri veren bir yerleşik rol atanır.
 
-Her plan için en fazla yirmi yetkilendirme oluşturabilirsiniz.
+Her plan için en fazla yirmi yetkilendirmeler oluşturabilirsiniz.
 
 > [!TIP]
-> Çoğu durumda, bir dizi tek tek kullanıcı hesabı yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna roller atamak istersiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayımlamak zorunda kalmadan tek tek kullanıcılara erişim eklemenize veya kaldırmanıza olanak tanır. Azure REKLAM gruplarına roller atarken, [Grup **türünün** **Office 365** **değil, Güvenlik** olduğundan emin olun.](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) Ek öneriler için Azure [Deniz Feneri senaryolarında Kiracılar, roller ve kullanıcılara](../../lighthouse/concepts/tenants-users-roles.md)bakın.
+> Çoğu durumda, bir dizi bireysel kullanıcı hesabı yerine bir Azure AD kullanıcı grubuna veya hizmet sorumlusuna roller atamak isteyeceksiniz. Bu, erişim gereksinimleriniz değiştiğinde planı güncelleştirmek ve yeniden yayınlamak zorunda kalmadan bireysel kullanıcılar için erişim eklemenize veya kaldırmanıza olanak sağlar. Azure AD gruplarına rol atarken, [ **Grup türünün** **Office 365**değil **güvenlik** olduğundan emin olun](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Ek öneriler için bkz. [Azure 'Da kiracılar, roller ve kullanıcılar ile Ilgili kullanım senaryoları](../../lighthouse/concepts/tenants-users-roles.md).
 
-Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra **daha** fazla kullanıcı ve rol tanımı eklemek için gerektiğinde + Yetki Ekle'yi seçebilirsiniz.
+Her **Yetkilendirme**için aşağıdakileri sağlamanız gerekir. Daha sonra, daha fazla Kullanıcı ve rol tanımı eklemek için gereken sayıda **Yetkilendirme** seçeneğini belirleyin.
 
-- **Azure AD Nesne kimliği**: Bir kullanıcının, kullanıcı grubunun veya uygulamanın Azure AD tanımlayıcısı, müşterilerinizin kaynaklarına belirli izinler (Rol Tanımı ile tanımlandığı şekilde) verilecektir.
-- **Azure AD NesneSi Görüntü Adı**: Müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olacak kolay bir addır. Müşteri, kaynakları devre verirken bu adı görür.
-- **Rol Tanımı**: Listeden kullanılabilir Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD Nesne kimliği** alanındaki kullanıcının müşterilerinizin kaynakları üzerinde sahip olacağı izinleri belirler. Bu rollerin açıklamaları için, Azure temsilci kaynak yönetimi için [Yerleşik roller](../../role-based-access-control/built-in-roles.md) ve [Rol desteği'ne](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)bakın.
+- **Azure AD nesne kimliği**: bir kullanıcının, Kullanıcı grubunun veya UYGULAMANıN Azure AD tanımlayıcısı (rol tanımı tarafından tanımlandığı gibi) müşterilerinizin kaynaklarına verilecek.
+- **Azure AD nesne görünen adı**: müşterinin bu yetkilendirmenin amacını anlamasına yardımcı olacak kolay bir ad. Müşteri, kaynakları yetkilendirirken bu adı görür.
+- **Rol tanımı**: listeden mevcut Azure AD yerleşik rollerinden birini seçin. Bu rol, **Azure AD nesne kimliği** alanındaki kullanıcının kaynaklarınızın kaynaklarına sahip olacağı izinleri tespit eder. Bu rollerin açıklamaları için bkz. [Azure tarafından yetkilendirilen kaynak yönetimi Için](../../lighthouse/concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management) [yerleşik roller](../../role-based-access-control/built-in-roles.md) ve rol desteği.
   > [!NOTE]
-  > Geçerli yeni yerleşik roller Azure'a eklendikçe, bunlar görünmeden önce bazı gecikmeler olsa da burada kullanılabilir hale gelir.
-- **Atanabilir Roller**: Bu seçenek, yalnızca bu yetkilendirme için **Rol Tanımı'nda** Kullanıcı Erişim Yöneticisi'ni seçtiyseniz görünür. Bu öyleyse, buraya bir veya daha fazla devratılabilir rol eklemeniz gerekir. Azure AD **Nesne kimliği** alanındaki kullanıcı, [düzeltilebilen ilkeleri dağıtmak](../../lighthouse/how-to/deploy-policy-remediation.md)için gereken yönetilen [kimliklere](../../active-directory/managed-identities-azure-resources/overview.md)bu rolleri atayabilecektir. Normalde Kullanıcı Erişim Yöneticisi rolüyle ilişkili başka hiçbir izinin bu kullanıcı için geçerli olmayacağını unutmayın.
+  > Uygun yeni yerleşik roller Azure 'a eklendikçe, bunlar görüntülenmeden önce biraz gecikme olabileceğinden burada kullanılabilir hale gelir.
+- **Atanabilir roller**: Bu seçenek yalnızca, bu yetkilendirme Için **rol tanımında** Kullanıcı erişimi Yöneticisi ' ni seçtiyseniz görünür. Bu durumda, buraya bir veya daha fazla atanabilir rol eklemeniz gerekir. **Azure AD nesne kimliği** alanındaki Kullanıcı, bu rolleri, düzeltilebilecek [ilkeleri dağıtmak](../../lighthouse/how-to/deploy-policy-remediation.md)için gereken [yönetilen kimliklere](../../active-directory/managed-identities-azure-resources/overview.md)atayabilecektir. Normalde Kullanıcı erişimi Yöneticisi rolüyle ilişkili başka hiçbir izin bu kullanıcı için uygulanmayacak şekilde unutmayın.
 
 > [!TIP]
-> Gerekirse bir [temsilciliğe erişimi](../../lighthouse/how-to/onboard-customer.md#remove-access-to-a-delegation) kaldırabildiğinizden emin olmak için, [Yönetilen Hizmetler Kaydı Atama Silme Rolüne](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) **Rol Tanımı** kümesine sahip bir **Yetkilendirme** ekleyin. Bu rol atanmazsa, devredilen kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
+> Gerekirse, [bir temsilciye erişimi kaldırabilmeniz](../../lighthouse/how-to/remove-delegation.md) Için, [yönetilen hizmetler kayıt ataması silme rolü](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)' ne ayarlanmış **rol tanımıyla** bir **Yetkilendirme** ekleyin. Bu rol atanmamışsa, atanan kaynaklar yalnızca müşterinin kiracısındaki bir kullanıcı tarafından kaldırılabilir.
 
-Planınız için tüm bölümleri tamamladıktan sonra, + Ek planlar oluşturmak için gereken den fazla kez **yeni plan oluştur** seçeneğini belirleyebilirsiniz. İşiniz bittiğinde **Kaydet**'i seçin.
+Planınız için tüm bölümleri tamamladıktan sonra, ek planlar oluşturmanız gerektiği kadar **+ Yeni plan oluştur** ' u seçebilirsiniz. İşiniz bittiğinde **Kaydet**'i seçin.
 
 ## <a name="publish"></a>Yayımlama
 
-### <a name="submit-offer-to-preview"></a>Teklifönizlemeye gönderme
+### <a name="submit-offer-to-preview"></a>Önizlemeye teklif Gönder
 
-Teklifin gerekli tüm bölümlerini tamamladıktan **publish** sonra, portalın sağ üst köşesinde yayınla'yı seçin. **İnceleme ve yayımlama** sayfasına yönlendirileceksiniz.
+Teklifin tüm gerekli bölümlerini tamamladıktan sonra portalın sağ üst köşesinde **Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfasına yönlendirilirsiniz.
 
-Bu teklifi ilk kez yayınlıyorsanız, şunları yapabilirsiniz:
+Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-  - *Başlatılmamamıştır* - bölüme dokunulmadığı ve tamamlanması gerektiği anlamına gelir.
-  - *Eksik* - bölümün düzeltilmesi gereken veya daha fazla bilgi sağlanması nı gerektiren hataları olduğu anlamına gelir. Bölüme geri dön ve güncelleştir.
-  - *Tam* - bölüm tamamlandı, gerekli tüm veriler sağlandı ve hiçbir hata yok demektir. Teklifi sunamadan önce teklifin tüm bölümlerinin tam bir durumda olması gerekir.
-- Sertifika **notları** bölümünde, uygulamanızın anlaşılmasına yardımcı olan ek notlara ek olarak uygulamanızın doğru test edildiğinden emin olmak için sertifika ekibine test talimatları sağlayın.
-- **Gönder'i**seçerek yayımlama için teklif gönderin. Teklifin önizleme sürümü gözden geçirip onaylamanız için kullanılabilir olduğunda size bir e-posta göndeririz. Ortak Merkezi'ne dönün ve teklifinizi halka (veya özel bir teklifte özel bir hedef kitleye) yayınlamak için teklif için **Go-live'ı** seçin.
+  - *Başlatılmamış* -bölüm dokunulmamış ve tamamlanması gereken anlamına gelir.
+  - *Tamamlanmamış* -bölümde düzeltilmesi gereken hatalar olduğu veya daha fazla bilgi sağlanması gerekir. Bölüm (ler) e geri dönün ve güncelleştirin.
+  - *Tam* -bölümün tamamlandığı, tüm gerekli verilerin sağlandığı ve hata olmadığı anlamına gelir. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+- **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
+- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Teklifin önizleme sürümü gözden geçirmeniz ve onaylamanız için kullanılabilir olduğunda size bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde (veya özel bir teklif olarak özel hedef kitleye) yayımlama teklifi için **Go-Live** ' ı seçin.
 
 ### <a name="customer-experience-and-offer-management"></a>Müşteri deneyimi ve teklif yönetimi
 
-Bir müşteri teklifinizi dağıttığında, [Azure temsilcikaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)için abonelikleri veya kaynak gruplarını devredebilecektir. Bu işlem hakkında daha fazla şey [için, müşteri onboarding işlemi](../../lighthouse/how-to/publish-managed-services-offers.md#the-customer-onboarding-process)bakın.
+Müşteri teklifinizi dağıttığında, [Azure tarafından atanan kaynak yönetimi](../../lighthouse/concepts/azure-delegated-resource-management.md)için abonelikleri veya kaynak gruplarını devredebilir. Bu süreç hakkında daha fazla bilgi için bkz. [Müşteri ekleme işlemi](../../lighthouse/how-to/publish-managed-services-offers.md#the-customer-onboarding-process).
 
-[Teklifinizin güncelleştirilmiş bir sürümünü](update-existing-offer.md) istediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklife yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler Azure portalındaki [**Hizmet sağlayıcıları**](../../lighthouse/how-to/view-manage-service-providers.md) sayfasında bir güncelleştirmenin kullanılabilir olduğunu bildiren bir simge görür. Her müşteri değişiklikleri gözden geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğine karar verebilir.
+[Teklifinizin güncelleştirilmiş bir sürümünü](update-existing-offer.md) dilediğiniz zaman yayımlayabilirsiniz. Örneğin, daha önce yayımlanmış bir teklifine yeni bir rol tanımı eklemek isteyebilirsiniz. Bunu yaptığınızda, teklifi zaten eklemiş olan müşteriler, bir güncelleştirmenin kullanılabildiğini bilmesini sağlayan Azure portal [**hizmet sağlayıcıları**](../../lighthouse/how-to/view-manage-service-providers.md) sayfasında bir simge görür. Her müşteri, değişiklikleri gözden geçirebilecek ve yeni sürüme güncelleştirmek isteyip istemediğinize karar verecek.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ticari Market'te bulunan bir teklifi güncelleştirme](./update-existing-offer.md)
-- [Azure Deniz Feneri hakkında bilgi edinin](../../lighthouse/overview.md)
+- [Azure ışıklı kullanımı hakkında bilgi edinin](../../lighthouse/overview.md)
