@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/15/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 61fb8b53d7d109fefc002b387702a240353f0dca
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: bfe0c6fcc0d1d22807bfb59b146050fb307892a0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117616"
+ms.locfileid: "82133150"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager kaynak sağlayıcısı işlemleri
 
@@ -4284,7 +4284,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > |  | **etki alanları/privateLinkResources** |  |
 > | Eylem | Microsoft. EventGrid/Domains/privateLinkResources/Read | Etki alanları için PrivateLinkResources Al veya Listele |
 > |  | **etki alanları/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
 > |  | **etki alanları/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/Domains/Providers/Microsoft. Insights/metricDefinitions/Read | Etki alanları için kullanılabilir ölçümleri alır |
 > |  | **etki alanları/konular** |  |
@@ -4352,7 +4352,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Sistem konuları için tanılama ayarını alır |
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Sistem konuları için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
 > |  | **Systemkonular/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/Systemkonular/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Sistem konuları için kullanılabilir ölçümleri alır |
 > |  | **konularıyla** |  |
@@ -4376,7 +4376,7 @@ Azure hizmeti: [Event Grid](../event-grid/index.yml)
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Read | Konular için tanılama ayarını alır |
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/diagnosticSettings/Write | Konular için tanılama ayarını oluşturur veya güncelleştirir |
 > |  | **Konular/sağlayıcılar/Microsoft. Insights/logDefinitions** |  |
-> | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Tanılama günlüklerine erişime izin verir |
+> | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/logDefinitions/Read | Kaynak günlüklerine erişime izin verir |
 > |  | **Konular/sağlayıcılar/Microsoft. Insights/metricDefinitions** |  |
 > | Eylem | Microsoft. EventGrid/konular/sağlayıcılar/Microsoft. Insights/metricDefinitions/okuma | Konular için kullanılabilir ölçümleri alır |
 > |  | **topictypes** |  |

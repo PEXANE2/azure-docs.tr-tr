@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gölü Depolama sorgu hızlandırma (önizleme) kullanarak verileri filtreleme | Microsoft Dokümanlar
-description: Depolama hesabınızdan bir veri alt kümesi almak için sorgu hızlandırma (önizleme) kullanın.
+title: Azure Data Lake Storage sorgu hızlandırma (Önizleme) kullanarak verileri filtreleme | Microsoft Docs
+description: Depolama hesabınızdan verilerin bir alt kümesini almak için sorgu hızlandırma (Önizleme) kullanın.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,56 +8,56 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: ae3dfc7681ef0d8ce3fcf679bddbd0ff195f4e3b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 22776d9498676ec77cd71845ca5e39f01926259d
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81771852"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137578"
 ---
-# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Azure Veri Gölü Depolama sorgu hızlandırma (önizleme) kullanarak verileri filtreleme
+# <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage sorgu hızlandırma kullanarak verileri filtreleme (Önizleme)
 
-Bu makalede, depolama hesabınızdan bir veri alt kümesi almak için sorgu hızlandırma (önizleme) nasıl kullanılacağını gösterir. 
+Bu makalede, depolama hesabınızdan verilerin bir alt kümesini almak için sorgu hızlandırmasının (Önizleme) nasıl kullanılacağı gösterilir. 
 
-Sorgu hızlandırma (önizleme), uygulamaların ve analiz çerçevelerinin yalnızca belirli bir işlemi gerçekleştirmek için gereksinim duydukları verileri alarak veri işlemeyi önemli ölçüde optimize etmesini sağlayan Azure Veri Gölü Depolaması için yeni bir özelliktir. Daha fazla bilgi için Azure [Veri Gölü Depolama Sorgusu Hızlandırma (önizleme) adresine](data-lake-storage-query-acceleration.md)bakın.
+Sorgu hızlandırma (Önizleme), uygulamaların ve analiz çerçevelerinin yalnızca belirli bir işlemi gerçekleştirmek için gereksinim duydukları verileri alarak veri işlemeyi önemli ölçüde iyileştirmesini sağlayan Azure Data Lake Storage yeni bir özelliğidir. Daha fazla bilgi için bkz. [Azure Data Lake Storage sorgu hızlandırma (Önizleme)](data-lake-storage-query-acceleration.md).
 
 > [!NOTE]
-> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için [Bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [bu forma](https://aka.ms/adls/qa-preview-signup)bakın.  
+> Sorgu hızlandırma özelliği genel önizlemededir ve Kanada Orta ve Fransa Orta bölgelerinde kullanılabilir. Sınırlamaları gözden geçirmek için, [bilinen sorunlar](data-lake-storage-known-issues.md) makalesine bakın. Önizlemeye kaydolmak için [Bu forma](https://aka.ms/adls/qa-preview-signup)bakın.  
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-- Azure Depolama'ya erişmek için bir Azure aboneliğine ihtiyacınız olacak. Zaten aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- Azure depolama 'ya erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- **Genel amaçlı v2** depolama hesabı. bkz. [Bir depolama hesabı oluşturun.](../common/storage-quickstart-create-account.md)
+- **Genel amaçlı v2** depolama hesabı. bkz. [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
 
 - [.NET SDK](https://dotnet.microsoft.com/download). 
 
 ### <a name="java"></a>[Java](#tab/java)
 
-- Azure Depolama'ya erişmek için bir Azure aboneliğine ihtiyacınız olacak. Zaten aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- Azure depolama 'ya erişmek için bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-- **Genel amaçlı v2** depolama hesabı. bkz. [Bir depolama hesabı oluşturun.](../common/storage-quickstart-create-account.md)
+- **Genel amaçlı v2** depolama hesabı. bkz. [depolama hesabı oluşturma](../common/storage-quickstart-create-account.md).
 
-- [Java Geliştirme Kiti (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri.
+- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) sürüm 8 veya üzeri.
 
 - [Apache Maven](https://maven.apache.org/download.cgi). 
 
   > [!NOTE] 
-  > Bu makalede, Apache Maven kullanarak bir Java projesi oluşturduğunuz varsayar. Apache Maven kullanarak proje oluşturma nın bir örneği için [bkz.](storage-quickstart-blobs-java.md#setting-up)
+  > Bu makalede, Apache Maven kullanarak bir Java projesi oluşturduğunuzu varsayılmaktadır. Apache Maven kullanarak bir projenin nasıl oluşturulacağı hakkında bir örnek için bkz. [ayarlama](storage-quickstart-blobs-java.md#setting-up).
   
 ---
 
-## <a name="install-packages"></a>Paketleri yükleme 
+## <a name="install-packages"></a>Paketleri yükler 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-1. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir .zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
+1. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/.net](https://aka.ms/adls/qqsdk/.net). 
 
 2. Bu dosyanın içeriğini proje dizininize ayıklayın.
 
-3. Proje dosyanızı *(.csproj)* bir metin düzenleyicisinde açın ve \<bu\> paket başvurularını Proje öğesinin içine ekleyin.
+3. Proje dosyanızı (*. csproj*) bir metin düzenleyicisinde açın ve bu paket başvurularını \<proje\> öğesinin içine ekleyin.
 
    ```xml
    <ItemGroup>
@@ -67,13 +67,13 @@ Sorgu hızlandırma (önizleme), uygulamaların ve analiz çerçevelerinin yaln�
    </ItemGroup>
    ```
 
-4. Önizleme SDK paketlerini geri yükleyin. Bu örnek `dotnet restore` komut, komutu kullanarak önizleme SDK paketlerini geri yükler. 
+4. Önizleme SDK paketlerini geri yükleyin. Bu örnek komut, `dotnet restore` komutunu kullanarak önizleme SDK paketlerini geri yükler. 
 
    ```console
    dotnet restore --source C:\Users\contoso\myProject
    ```
 
-5. Ortak NuGet deposundan diğer tüm bağımlılıkları geri yükleyin.
+5. Tüm diğer bağımlılıkları genel NuGet deposundan geri yükleyin.
 
    ```console
    dotnet restore
@@ -81,16 +81,16 @@ Sorgu hızlandırma (önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 
 ### <a name="java"></a>[Java](#tab/java)
 
-1. Projenizin kökünde dizin oluşturun. Kök dizini **pom.xml** dosyasını içeren dizindir.
+1. Projenizin kökünde dizin oluşturun. Kök dizin, **Pok. xml** dosyasını içeren dizindir.
 
    > [!NOTE]
-   > Bu makaledeki örnekler, dizinin adının **lib**olduğunu varsayar.
+   > Bu makaledeki örneklerde, Dizin adının **lib**olduğu varsayılır.
 
-2. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir .zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
+2. Sorgu hızlandırma paketlerini indirin. Bu bağlantıyı kullanarak bu paketleri içeren sıkıştırılmış bir. zip dosyası elde edebilirsiniz: [https://aka.ms/adls/qqsdk/java](https://aka.ms/adls/qqsdk/java). 
 
-3. Bu .zip dosyasındaki dosyaları oluşturduğunuz dizine ayıklayın. Örneğimizde, bu dizini **lib**adlandırılır. 
+3. Bu. zip dosyasındaki dosyaları oluşturduğunuz dizine ayıklayın. Örneğimizde, bu dizin **lib**olarak adlandırılmıştır. 
 
-4. Metin düzenleyicinizdeki *pom.xml* dosyasını açın. Bağımlılıklar grubuna aşağıdaki bağımlılık öğelerini ekleyin. 
+4. *Pod. xml* dosyasını metin düzenleyicinizde açın. Aşağıdaki bağımlılık öğelerini bağımlılıklar grubuna ekleyin. 
 
    ```xml
    <!-- Request static dependencies from Maven -->
@@ -140,12 +140,12 @@ Sorgu hızlandırma (önizleme), uygulamaların ve analiz çerçevelerinin yaln�
 
 ---
 
-## <a name="add-statements"></a>Ekstre ekleme
+## <a name="add-statements"></a>Deyim Ekle
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Bu `using` deyimleri kod dosyanızın en üstüne ekleyin.
+Bu `using` deyimleri, kod dosyanızın en üstüne ekleyin.
 
 ```csharp
 using Azure.Storage.Blobs;
@@ -155,14 +155,14 @@ using Azure.Storage.QuickQuery;
 using Azure.Storage.QuickQuery.Models;
 ```
 
-Sorgu hızlandırma CSV ve Json biçimlendirilmiş verileri alır. Bu nedenle, kullanmayı seçtiğiniz csv veya Json ayrıştma kitaplıkları için ifadeler kullandığınızdan emin olun. Bu makalede görünen örnekler, NuGet'de bulunan [CsvHelper](https://www.nuget.org/packages/CsvHelper/) kitaplığını kullanarak bir CSV dosyasını ayrıştırır. Bu nedenle, bu `using` ifadeleri kod dosyasının en üstüne ekleriz.
+Sorgu hızlandırma CSV ve JSON biçimli verileri alır. Bu nedenle, kullanmayı seçtiğiniz CSV veya JSON ayrıştırma kitaplıklarının using deyimlerini eklediğinizden emin olun. Bu makalede görüntülenen örneklerde, NuGet 'de bulunan [Csvhelper](https://www.nuget.org/packages/CsvHelper/) kitaplığını kullanarak bir CSV dosyası ayrıştırılabilir. Bu nedenle, bu `using` deyimleri kod dosyasının en üstüne ekleyeceğiz.
 
 ```csharp
 using CsvHelper;
 using CsvHelper.Configuration;
 ```
 
-Bu makalede sunulan örnekleri derlemek için bu `using` ifadeleri de eklemeniz gerekir.
+Bu makalede sunulan örnekleri derlemek için de bu `using` deyimleri de eklemeniz gerekir.
 
 ```csharp
 using System.Threading.Tasks;
@@ -174,7 +174,7 @@ using System.Linq;
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Bu `import` deyimleri kod dosyanızın en üstüne ekleyin.
+Bu `import` deyimleri, kod dosyanızın en üstüne ekleyin.
 
 ```java
 import com.azure.storage.blob.*;
@@ -190,15 +190,15 @@ import org.apache.commons.csv.*;
 
 ## <a name="retrieve-data-by-using-a-filter"></a>Filtre kullanarak veri alma
 
-Sorgu hızlandırma isteğinde satır filtresi yüklemlerini ve sütun projeksiyonlarını belirtmek için SQL'i kullanabilirsiniz. Aşağıdaki kod depolama alanında bir CSV dosyasını sorgular ve üçüncü sütunun `Hemingway, Ernest`değeriyle eşleştiği tüm veri satırlarını döndürür. 
+Bir sorgu hızlandırma isteğindeki satır filtresi koşullarını ve sütun projeksiyonlarını belirtmek için SQL 'i kullanabilirsiniz. Aşağıdaki kod, depolama alanındaki bir CSV dosyasını sorgular ve üçüncü sütunun değerle `Hemingway, Ernest`eşleştiği tüm veri satırlarını döndürür. 
 
-- SQL sorgusunda, anahtar `BlobStorage` kelime sorgulanan dosyayı belirtmek için kullanılır.
+- SQL sorgusunda, sorgulanmakta olan dosyayı `BlobStorage` belirtmek için anahtar sözcüğü kullanılır.
 
-- Sütun başvuruları ilk `_N` sütunun olduğu `_1`yer olarak belirtilir. Kaynak dosya bir üstbilgi satırı içeriyorsa, sütunlara üstbilgi satırında belirtilen ada göre başvurabilirsiniz. 
+- Sütun başvuruları, ilk sütunun `_N` bulunduğu konum olarak belirtilir `_1`. Kaynak dosya bir başlık satırı içeriyorsa, üst bilgi satırında belirtilen ada göre sütunlara başvurabilirsiniz. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Async yöntemi `BlobQuickQueryClient.QueryAsync` sorgu hızlandırma API'sine sorgu gönderir ve sonra sonuçları [akış](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) nesnesi olarak uygulamaya geri aktarır.
+Async yöntemi `BlobQuickQueryClient.QueryAsync` sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları bir [Stream](https://docs.microsoft.com/dotnet/api/system.io.stream?view=netframework-4.8) nesnesi olarak uygulamaya geri akış sağlar.
 
 ```cs
 static async Task QueryHemingway(BlockBlobClient blob)
@@ -260,7 +260,7 @@ class ProgressHandler : IProgress<long>
 
 ### <a name="java"></a>[Java](#tab/java)
 
-Yöntem `BlobQuickQueryClient.openInputStream()` sorguyu sorgu hızlandırma API'sine gönderir ve ardından sonuçları diğer `InputStream` InputStream nesnesi gibi okunabilen bir nesne olarak uygulamaya geri aktarır.
+Yöntemi `BlobQuickQueryClient.openInputStream()` sorguyu sorgu hızlandırma API 'sine gönderir ve ardından sonuçları başka bir InputStream nesnesi gibi okuyabilen bir `InputStream` nesne olarak uygulamaya geri gönderir.
 
 ```java
 static void QueryHemingway(BlobClient blobClient) {
@@ -312,11 +312,11 @@ static void DumpQueryCsv(BlobClient blobClient, String query, Boolean headers) {
 
 ---
 
-## <a name="retrieve-specific-columns"></a>Belirli sütunları alma
+## <a name="retrieve-specific-columns"></a>Belirli sütunları al
 
-Sonuçlarınızı bir sütun alt kümesine göre görebilirsiniz. Bu şekilde yalnızca belirli bir hesaplama gerçekleştirmek için gereken sütunları alırsınız. Bu, uygulama performansını artırır ve ağ üzerinden daha az veri aktarıldığından maliyeti azaltır. 
+Sonuçlarınızı bir sütun alt kümesiyle kapsamını belirleyebilirsiniz. Bu şekilde, yalnızca belirli bir hesaplamayı gerçekleştirmek için gereken sütunları elde edersiniz. Bu, uygulama performansını geliştirir ve ağ üzerinden daha az veri aktarıldığından maliyeti azaltır. 
 
-Bu kod, yalnızca `PublicationYear` veri kümesindeki tüm kitapların sütununa alır. Ayrıca, sorgudaki sütunlara başvurmak için kaynak dosyadaki üstbilgi satırındaki bilgileri de kullanır.
+Bu kod, veri kümesindeki `PublicationYear` tüm kitaplar için yalnızca sütunu alır. Ayrıca, sorgudaki sütunlara başvurmak için kaynak dosyasındaki üst bilgi satırındaki bilgileri de kullanır.
 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
@@ -341,7 +341,7 @@ static void QueryPublishDates(BlobClient blobClient)
 
 ---
 
-Aşağıdaki kod, satır filtreleme ve sütun projeksiyonlarını aynı sorguda birleştirir. 
+Aşağıdaki kod, satır filtrelemeyi ve sütun projeksiyonlarını aynı sorguyla birleştirir. 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -368,6 +368,5 @@ static void QueryMysteryBooks(BlobClient blobClient)
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sorgu hızlandırma kayıt formu](https://aka.ms/adls/queryaccelerationpreview)    
-- [Azure Veri Gölü Depolama sorgu hızlandırma (önizleme)](data-lake-storage-query-acceleration.md)
-- [Sorgu hızlandırma SQL dil başvurusu (önizleme)](query-acceleration-sql-reference.md)
-- Sorgu ivmesi REST API başvurusu
+- [Azure Data Lake Storage sorgu hızlandırma (Önizleme)](data-lake-storage-query-acceleration.md)
+- [Sorgu hızlandırma SQL dil başvurusu (Önizleme)](query-acceleration-sql-reference.md)

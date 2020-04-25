@@ -1,54 +1,54 @@
 ---
-title: Azure Bastion tanı günlüklerini etkinleştirme ve bu tür uygulamalarla çalışma
-description: Bu makalede, Azure Bastion tanı günlüklerini etkinleştirmeyi ve bunlarla nasıl çalışacağınızı öğrenin.
+title: Azure savunma kaynak günlüklerini etkinleştirme ve bunlarla çalışma
+description: Bu makalede, Azure savunma tanılama günlüklerini etkinleştirme ve bunlarla çalışmayı öğrenin.
 services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
-ms.openlocfilehash: 97f0cdb1e93ef2ad06d2daa04b2f4893fd5dfac2
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 4b71dba02a311b8fa6a16645364f90d7632693a2
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619272"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131266"
 ---
-# <a name="enable-and-work-with-bastion-diagnostic-logs"></a>Bastion tanı günlüklerini etkinleştirme ve bu günlüklerle çalışma
+# <a name="enable-and-work-with-bastion-resource-logs"></a>Kaynak günlüklerini etkinleştirme ve bunlarla çalışma
 
-Kullanıcılar Azure Bastion'u kullanarak iş yüklerine bağlandıkça, Bastion uzak oturumların tanılamalarını kaydedebilir. Daha sonra tanılamayı hangi kullanıcıların hangi iş yüklerine, hangi zamanda, nerede ve diğer ilgili günlük bilgileriyle bağdaştıracağını görüntülemek için kullanabilirsiniz. Tanılamayı kullanabilmek için Azure Bastion'daki tanılama günlüklerini etkinleştirmeniz gerekir. Bu makale, tanılama günlüklerini etkinleştirmenize ve ardından günlükleri görüntülemenize yardımcı olur.
+Kullanıcılar Azure savunma kullanarak iş yüklerine bağlandıklarında, uzak oturumların tanılamayı günlüğe kaydedebilir. Daha sonra tanılamayı, hangi zaman, nerede ve diğer ilgili günlüğe kaydetme bilgilerini hangi iş yüklerine bağladığınızı görüntülemek için kullanabilirsiniz. Tanılamayı kullanabilmeniz için Azure 'da tanılama günlüklerini etkinleştirmeniz gerekir. Bu makale, tanılama günlüklerini etkinleştirmenize ve sonra günlükleri görüntülemenize yardımcı olur.
 
-## <a name="enable-the-diagnostics-log"></a><a name="enable"></a>Tanılama günlüğünü etkinleştirme
+## <a name="enable-the-resource-log"></a><a name="enable"></a>Kaynak günlüğünü etkinleştirme
 
-1. Azure [portalında](https://portal.azure.com)Azure Bastion kaynağınıza gidin ve Azure Bastion sayfasından **Tanılama ayarlarını** seçin.
+1. [Azure Portal](https://portal.azure.com)Azure savunma kaynağınız ' ne gidin ve Azure savunma sayfasından **Tanılama ayarları** ' nı seçin.
 
-   ![tanılama ayarları](./media/diagnostic-logs/1diagnostics-settings.png)
-2. **Tanılama ayarlarını**seçin, ardından günlükler için hedef eklemek için **+Tanılama ayarı ekle'yi** seçin.
+   ![Tanılama ayarları](./media/diagnostic-logs/1diagnostics-settings.png)
+2. **Tanılama ayarları**' nı seçin, sonra da Günlükler için bir hedef eklemek için **+ Tanılama ayarı Ekle** ' yi seçin.
 
-   ![tanılama ayarı ekleme](./media/diagnostic-logs/2add-diagnostic-setting.png)
+   ![Tanılama ayarı Ekle](./media/diagnostic-logs/2add-diagnostic-setting.png)
 3. **Tanılama ayarları** sayfasında, tanılama günlüklerini depolamak için kullanılacak depolama hesabı türünü seçin.
 
    ![depolama konumunu seçin](./media/diagnostic-logs/3add-storage-account.png)
-4. Ayarları tamamladığınızda, bu örneğe benzer:
+4. Ayarları tamamladığınızda, bu örneğe benzer şekilde görünür:
 
    ![örnek ayarlar](./media/diagnostic-logs/4example-settings.png)
 
 ## <a name="view-diagnostics-log"></a><a name="view"></a>Tanılama günlüğünü görüntüle
 
-Tanılama günlüklerinize erişmek için, tanılama ayarlarını etkinleştirirken belirttiğiniz depolama hesabını doğrudan kullanabilirsiniz.
+Tanılama günlüklerine erişmek için, tanılama ayarlarını etkinleştirirken belirttiğiniz depolama hesabını doğrudan kullanabilirsiniz.
 
-1. Depolama hesabı kaynağınıza, ardından **Kapsayıcılar'a**gidin. Depolama hesabı blob konteyner oluşturulan **insights-logs-bastionauditlogs** blob bakın.
+1. Depolama hesabınızın kaynağına ve ardından **kapsayıcılara**gidin. Depolama hesabı blobu kapsayıcıda oluşturulan **Öngörüler-logs-bastionauditlogs** blob 'unu görürsünüz.
 
-   ![tanılama ayarları](./media/diagnostic-logs/1-navigate-to-logs.png)
-2. Kapsayıcının içine girerken, blogunuzda çeşitli klasörler görürsünüz. Bu klasörler, Azure Bastion kaynağınızın kaynak hiyerarşisini gösterir.
+   ![Tanılama ayarları](./media/diagnostic-logs/1-navigate-to-logs.png)
+2. Kapsayıcının içinde gezinirken, Blogunuzdaki çeşitli klasörleri görürsünüz. Bu klasörler, Azure savunma kaynağınız için kaynak hiyerarşisini gösterir.
 
-   ![tanılama ayarı ekleme](./media/diagnostic-logs/2-resource-h.png)
-3. Erişim/görünüm istediğiniz tanılama günlükleri olan Azure Bastion kaynağınızın tam hiyerarşisine gidin. 'y=', 'm=', 'd=', 'h=' ve 'm=' tanı günlükleri için sırasıyla yılı, ayı, günü, saati ve dakikayı gösterir.
+   ![Tanılama ayarı Ekle](./media/diagnostic-logs/2-resource-h.png)
+3. Tanılama günlüklerine erişmek/görüntülemek istediğiniz Azure savunma kaynağınızın tam hiyerarşisine gidin. ' Y = ', 'm = ', ' = ', ' h = ' ve 'm = ', kaynak günlükleri için sırasıyla yılı, ayı, günü, saati ve dakikayı gösterir.
 
    ![depolama konumunu seçin](./media/diagnostic-logs/3-resource-location.png)
-4. Azure Bastion tarafından oluşturulan ve gezindiği döneme ait tanılama günlüğü verilerini içeren json dosyasını bulun.
+4. Azure savunma tarafından oluşturulan ve zaman dönemi için tanılama günlük verilerini içeren JSON dosyasını bulun.
 
-5. Depolama blob konteyner json dosyasını indirin. Json dosyasından örnek bir giriş başvuru için aşağıda gösterilmiştir:
+5. JSON dosyasını depolama blob kapsayıcıınızdan indirin. Aşağıdaki başvuru için JSON dosyasından örnek bir giriş gösterilmektedir:
 
    ```json
    { 
@@ -79,4 +79,4 @@ Tanılama günlüklerinize erişmek için, tanılama ayarlarını etkinleştirir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bastion SSS'yi](bastion-faq.md)okuyun.
+Savunma [hakkında SSS](bastion-faq.md)makalesini okuyun.

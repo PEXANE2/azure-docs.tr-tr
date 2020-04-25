@@ -1,37 +1,37 @@
 ---
-title: Olay Izgara kaynağı olarak Azure SingnalR
-description: Azure Event Grid ile Azure SinyalR etkinlikleri için sağlanan özellikleri açıklar
+title: Event Grid kaynağı olarak Azure SignalR
+description: Azure Event Grid ile Azure SignalR olayları için sunulan özellikleri açıklar
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 04/23/2020
 ms.author: babanisa
-ms.openlocfilehash: 730d1a7a053ab636c45313dd0c35a537434eb782
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393386"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133712"
 ---
-# <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR Hizmeti için Azure Olay Izgara etkinliği şeması
+# <a name="azure-event-grid-event-schema-for-signalr-service"></a>SignalR hizmeti için Azure Event Grid olay şeması
 
-Bu makalede, SignalR Service olayları için özellikleri ve şema sağlar.Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın. Ayrıca, Azure SignalR'ı etkinlik kaynağı olarak kullanmanız için hızlı başlangıçların ve öğreticilerin bir listesini de verir.
+Bu makalede, SignalR hizmeti olaylarına yönelik özellikler ve şema sağlanmaktadır.Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md). Ayrıca, Azure SignalR 'yi bir olay kaynağı olarak kullanmak için hızlı başlayan ve öğreticilerin bir listesini sağlar.
 
-## <a name="event-grid-event-schema"></a>Olay Izgara olay şeması
+## <a name="event-grid-event-schema"></a>Event Grid olay şeması
 
-### <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
+### <a name="available-event-types"></a>Kullanılabilir olay türleri
 
-SignalR Hizmeti aşağıdaki olay türlerini yayır:
+SignalR hizmeti aşağıdaki olay türlerini yayar:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft.SignalRService.ClientConnectionConnected | İstemci bağlantısı bağlandığında yükseltildi. |
-| Microsoft.SignalRService.ClientConnectionBağlantısı kesildi | İstemci bağlantısı kesildiğinde yükseltildi. |
+| Microsoft. SignalRService. ClientConnectionConnected | İstemci bağlantısı bağlandığında tetiklenir. |
+| Microsoft. SignalRService. Clientconnectionconnected | İstemci bağlantısı kesildiğinde tetiklenir. |
 
 ### <a name="example-event"></a>Örnek olay
 
-Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gösterir: 
+Aşağıdaki örnek, istemci bağlantısı bağlantılı olayının şemasını gösterir: 
 
 ```json
 [{
@@ -51,7 +51,7 @@ Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gö
 }]
 ```
 
-İstemci bağlantısı bağlantısı kesilen bir olayın şeması benzer: 
+İstemci bağlantısı kesik bağlantısı olayının şeması benzerdir: 
 
 ```json
 [{
@@ -74,16 +74,16 @@ Aşağıdaki örnek, istemci bağlantısına bağlı bir olayın şemasını gö
 
 ### <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki üst düzey verilere sahiptir:
+Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
-| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
-| id | string | Etkinlik için benzersiz tanımlayıcı. |
-| veri | object | SignalR Service olay verileri. |
+| Türü | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| id | string | Etkinliğin benzersiz tanımlayıcısı. |
+| veri | object | SignalR hizmeti olay verileri. |
 | dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
 | metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
@@ -91,19 +91,19 @@ Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| timestamp | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
-| hubName | string | İstemci bağlantısının ait olduğu hub. |
-| Connectionıd | string | İstemci bağlantısı için benzersiz tanımlayıcı. |
-| userId | string | Talepte tanımlanan kullanıcı tanımlayıcısı. |
-| errorMessage | string | Bağlantının kesilmesine neden olan hata. |
+| timestamp | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
+| hubName | string | İstemci bağlantısının ait olduğu merkez. |
+| ConnectionID | string | İstemci bağlantısı için benzersiz tanımlayıcı. |
+| userId | string | Talep içinde tanımlanan kullanıcı tanımlayıcısı. |
+| Hata | string | Bağlantının bağlantısının kesilmesine neden olan hata. |
 
 ## <a name="tutorials-and-how-tos"></a>Öğreticiler ve nasıl yapılır kılavuzları
 |Başlık | Açıklama |
 |---------|---------|
-| [Olay Kılavuz'u kullanarak Azure SignalR Hizmeti etkinliklerine tepki verme](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Hizmetini Olay Ağıt'ı ile tümleştirmeye genel bakış. |
-| [Azure SignalR Hizmeti etkinlikleri Etkinlik Ağılasına nasıl gönderilir?](../azure-signalr/signalr-howto-event-grid-integration.md) | Azure SignalR Hizmeti etkinliklerinin Bir uygulamaya Nasıl Gönderilebildiğini Event Grid aracılığıyla gösterir. |
+| [Event Grid kullanarak Azure SignalR hizmeti olaylarına tepki verme](../azure-signalr/signalr-concept-event-grid-integration.md) | Event Grid ile Azure SignalR hizmeti tümleştirilmesine genel bakış. |
+| [Event Grid için Azure SignalR hizmeti olaylarını gönderme](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid aracılığıyla Azure SignalR hizmeti olaylarının bir uygulamaya nasıl gönderileceğini gösterir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
-* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.
+* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
+* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).

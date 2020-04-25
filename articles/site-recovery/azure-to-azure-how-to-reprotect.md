@@ -1,6 +1,6 @@
 ---
-title: Azure Site Kurtarma ile Azure VM'lerini birincil bölgeye yeniden koruma | Microsoft Dokümanlar
-description: Azure Site Kurtarma'yı kullanarak ikincil ve birincil bölge olan Azure VM'lerinin başarısız olduktan sonra nasıl yeniden korunuruz unu açıklar.
+title: Azure VM 'lerini Azure Site Recovery ile birincil bölgeye yeniden koruma | Microsoft Docs
+description: Azure VM 'lerinin yük devretme sonrasında, ikincil ve birincil bölge olan Azure Site Recovery kullanarak nasıl yeniden korunacağını açıklar.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,92 +8,96 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 73747b8331054cdc3bfa1f4073ccf2cdb62ab326
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283251"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137527"
 ---
-# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Azure VM'ler üzerinde birincil bölgeye karşı başarısız olan Yeniden koruma
+# <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Azure VM 'lerinden birincil bölgeye yeniden koruma başarısız oldu
 
-[Azure Site Kurtarma'yı](site-recovery-overview.md)kullanarak bir bölgeden diğerine Azure VM'leri [üzerinde başarısız](site-recovery-failover.md) olduğunuzda, VM'ler **korumasız** bir durumda ikincil bölgede önyükleme sağlar. VM'leri birincil bölgeye geri döndüremeistiyorsanız, aşağıdaki görevleri yapın:
+Azure VM 'lerinden [Azure Site Recovery](site-recovery-overview.md)kullanarak bir bölgeden diğerine [Yük devretmek](site-recovery-failover.md) için VM 'ler, **korunmayan** bir durumda ikincil bölgede önyüklenir. VM 'Leri birincil bölgeye yeniden devretmek istiyorsanız aşağıdaki görevleri yapın:
 
-1. İkinci bölgedeki VM'leri yeniden koruyun, böylece birincil bölgeye çoğalmaya başlarlar.
-1. Yeniden koruma tamamlandıktan ve VM'ler çoğaldıktan sonra, ikincil bölgeden birincil bölgeye kadar başarısız olabilirsiniz.
+1. İkincil bölgedeki VM 'Leri, birincil bölgeye çoğaltılmaya başlayacak şekilde yeniden koruyun.
+1. Yeniden koruma tamamlandıktan ve VM 'Ler çoğaltıldıktan sonra ikinciden birincil bölgeye yük devretmek için yük devretme yapabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-- VM başarısız olması birincil bölgeden ikincil bölgeye doğru yapılmalıdır.
-- Birincil hedef site kullanılabilir olmalıdır ve bu bölgede kaynaklara erişebilmeli veya kaynak oluşturabilmelisin.
+- Birincil sunucudan ikincil bölgeye sanal makine yük devretmesi uygulanmalıdır.
+- Birincil hedef site kullanılabilir olmalıdır ve bu bölgedeki kaynaklara erişebiliyor veya kaynak oluşturmanız gerekir.
 
-## <a name="reprotect-a-vm"></a>VM'yi yeniden koruma
+## <a name="reprotect-a-vm"></a>VM 'yi yeniden koruma
 
-1. **Vault** > **Çoğaltılan öğelerde,** VM üzerinden başarısız olana sağ tıklayın ve Yeniden **Koruma'yı**seçin. Yeniden koruma yönü ikincilden birincile doğru gösterilmelidir.
+1. **Kasa** > **çoğaltılan öğeler**' de, yük devredilen VM 'ye sağ tıklayın ve **yeniden koru**' yı seçin. Yeniden koruma yönü ikincilden birinciye göstermelidir.
 
-   ![Yeniden Koruma](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
+   ![Yeniden koruma](./media/site-recovery-how-to-reprotect-azure-to-azure/reprotect.png)
 
-1. Kaynak grubunu, ağı, depolamayı ve kullanılabilirlik kümelerini gözden geçirin. Ardından **Tamam**'a tıklayın. Yeni olarak işaretlenmiş herhangi bir kaynak varsa, bunlar yeniden koruma işleminin bir parçası olarak oluşturulur.
-1. Yeniden koruma işi, hedef alanı en son verilerle tohumlar. İş bittikten sonra delta çoğaltma gerçekleşir. Daha sonra, birincil siteye geri başarısız olabilir. Yeniden koruma sırasında özelleştirme seçeneğini kullanarak depolama hesabını veya kullanmak istediğiniz ağı seçebilirsiniz.
+1. Kaynak grubu, ağ, depolama ve kullanılabilirlik kümelerini gözden geçirin. Ardından **Tamam**'a tıklayın. Yeni olarak işaretlenmiş kaynaklar varsa, bunlar yeniden koruma sürecinin bir parçası olarak oluşturulur.
+1. Yeniden koruma işi hedef siteye en son verileri ekler. İş bittikten sonra değişim çoğaltması gerçekleşir. Ardından, birincil siteye yük devretmek için geri dönebilirsiniz. Özelleştirme seçeneğini kullanarak, yeniden koruma sırasında kullanmak istediğiniz depolama hesabını veya ağı seçebilirsiniz.
 
-   ![Özelleştir seçeneğini](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
+   ![Özelleştirme seçeneği](./media/site-recovery-how-to-reprotect-azure-to-azure/customize.png)
 
-### <a name="customize-reprotect-settings"></a>Yeniden koruma ayarlarını özelleştirin
+### <a name="customize-reprotect-settings"></a>Yeniden koruma ayarlarını özelleştirme
 
-Yeniden koruma sırasında hedef VM'nin aşağıdaki özelliklerini özelleştirebilirsiniz.
+Yeniden koruma sırasında hedef VM 'nin aşağıdaki özelliklerini özelleştirebilirsiniz.
 
 ![Özelleştirme](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |Özellik |Notlar  |
 |---------|---------|
-|Hedef kaynak grubu | VM'nin oluşturulduğu hedef kaynak grubunu değiştirin. Yeniden korumanın bir parçası olarak, hedef VM silinir. Başarısız olduktan sonra VM'yi oluşturmak için altında yeni bir kaynak grubu seçebilirsiniz. |
-|Hedef sanal ağ | Yeniden koruma işi sırasında hedef ağ değiştirilemez. Ağı değiştirmek için ağ eşlemiyeniden yapın. |
-|Hedef depolama (İkincil VM yönetilen diskler kullanmaz) | Başarısız olduktan sonra VM'nin kullandığı depolama hesabını değiştirebilirsiniz. |
-|Çoğaltma yönetilen diskler (İkincil VM yönetilen diskleri kullanır) | Site Kurtarma, ikincil VM'nin yönetilen disklerini yansıtmak için birincil bölgede yineleme yönetilen diskler oluşturur. |
-|Önbellek depolama | Çoğaltma sırasında kullanılacak bir önbellek depolama hesabı belirtebilirsiniz. Varsayılan olarak, yoksa yeni bir önbellek depolama hesabı oluşturulur. |
-|Kullanılabilirlik kümesi | İkinci bölgedeki VM kullanılabilirlik kümesinin bir parçasıysa, birincil bölgedeki hedef VM için bir kullanılabilirlik kümesi seçebilirsiniz. Varsayılan olarak, Site Kurtarma birincil bölgede ayarlanan varolan kullanılabilirliği bulmaya çalışır ve onu kullanır. Özelleştirme sırasında yeni bir kullanılabilirlik kümesi belirtebilirsiniz. |
+|Hedef kaynak grubu | VM 'nin oluşturulduğu hedef kaynak grubunu değiştirin. Yeniden korumanın parçası olarak, hedef sanal makine silinir. Yük devretmeden sonra VM oluşturmak için yeni bir kaynak grubu seçebilirsiniz. |
+|Hedef sanal ağ | Hedef ağ, yeniden koruma işi sırasında değiştirilemez. Ağı değiştirmek için Ağ eşlemesini yeniden yapın. |
+|Hedef depolama (Ikincil VM yönetilen diskleri kullanmıyor) | Yük devretmeden sonra VM 'nin kullandığı depolama hesabını değiştirebilirsiniz. |
+|Yönetilen çoğaltma diskleri (Ikincil VM yönetilen diskleri kullanır) | Site Recovery, birincil bölgede, ikincil VM 'nin yönetilen disklerini yansıtmak için çoğaltma yönetilen diskler oluşturur. |
+|Önbellek depolama | Çoğaltma sırasında kullanılacak bir önbellek depolama hesabı belirtebilirsiniz. Varsayılan olarak, mevcut değilse yeni bir önbellek depolama hesabı oluşturulur. |
+|Kullanılabilirlik kümesi | İkincil bölgedeki VM bir kullanılabilirlik kümesinin parçasıysa, birincil bölgedeki hedef VM için bir kullanılabilirlik kümesi seçebilirsiniz. Varsayılan olarak, Site Recovery mevcut kullanılabilirlik kümesini birincil bölgede bulmaya çalışır ve onu kullanır. Özelleştirme sırasında yeni bir kullanılabilirlik kümesi belirtebilirsiniz. |
 
 ### <a name="what-happens-during-reprotection"></a>Yeniden koruma sırasında ne olur?
 
-Varsayılan olarak, aşağıdakioluşur:
+Varsayılan olarak, aşağıdakiler gerçekleşir:
 
-1. VM üzerinde başarısız olan bölgede bir önbellek depolama hesabı oluşturulur.
-1. Hedef depolama hesabı (birincil bölgedeki özgün depolama hesabı) yoksa, yeni bir hesap oluşturulur. Atanan depolama hesabı adı, ikincil VM tarafından kullanılan depolama hesabının `asr`adıdır.
-1. VM'niz yönetilen diskleri kullanıyorsa, ikincil VM disklerinden çoğaltılan verileri depolamak için birincil bölgede yineleme yönetilen diskler oluşturulur.
-1. Hedef kullanılabilirlik kümesi yoksa, gerekirse yeniden koruma işinin bir parçası olarak yeni bir tane oluşturulur. Yeniden koruma ayarlarını özelleştirmişseniz, seçili küme kullanılır.
+1. Yük devredilen VM 'nin çalıştığı bölgede bir önbellek depolama hesabı oluşturulur.
+1. Hedef depolama hesabı (birincil bölgedeki orijinal depolama hesabı) yoksa, yeni bir tane oluşturulur. Atanan depolama hesabı adı, ikincil VM tarafından kullanılan ve soneki olan `asr`depolama hesabının adıdır.
+1. VM 'niz yönetilen diskler kullanıyorsa, ikincil VM 'nin disklerinden çoğaltılan verileri depolamak için birincil bölgede çoğaltma yönetilen diskler oluşturulur.
+1. Hedef kullanılabilirlik kümesi yoksa, gerekirse yeniden koruma işinin bir parçası olarak yeni bir tane oluşturulur. Yeniden koruma ayarlarını özelleştirdiyseniz, seçilen küme kullanılır.
 
-Bir yeniden koruma işini tetiklediğinizde ve hedef VM olduğunda aşağıdakiler oluşur:
+Yeniden koruma işi tetikliyorsanız ve hedef VM varsa, aşağıdakiler gerçekleşir:
 
-1. Hedef tarafı VM çalışıyorsa kapatılır.
-1. VM yönetilen diskler kullanıyorsa, özgün diskin bir `-ASRReplica` kopyası sonek ile oluşturulur. Özgün diskler silinir. Kopyalar `-ASRReplica` çoğaltma için kullanılır.
-1. VM yönetilmeyen diskler kullanıyorsa, hedef VM'nin veri diskleri ayrılır ve çoğaltma için kullanılır. Os diskinin bir kopyası oluşturulur ve VM'ye eklenir. Özgün işletim sistemi diski ayrılmıştır ve çoğaltma için kullanılır.
-1. Yalnızca kaynak disk ve hedef disk arasındaki değişiklikler eşitlenir. Diferansiyeller hem diskler karşılaştırılarak ve sonra aktarılarak hesaplanır. Yeniden korumayı tamamlamak için tahmini zamanı bulmak için aşağıya bakın.
-1. Eşitleme tamamlandıktan sonra delta çoğaltma başlar ve çoğaltma ilkesine uygun bir kurtarma noktası oluşturulur.
+1. Çalışıyorsa, hedef tarafı VM kapalıdır.
+1. VM yönetilen diskleri kullanıyorsa, orijinal diskin bir kopyası bir `-ASRReplica` sonek ile oluşturulur. Özgün diskler silinir. Kopyalar `-ASRReplica` , çoğaltma için kullanılır.
+1. VM, yönetilmeyen diskler kullanıyorsa, hedef sanal makinenin veri diskleri ayrılır ve çoğaltma için kullanılır. İşletim sistemi diskinin bir kopyası oluşturulur ve VM 'ye eklenir. Özgün işletim sistemi diski ayrılır ve çoğaltma için kullanılır.
+1. Yalnızca kaynak disk ve hedef disk arasındaki değişiklikler eşitlenir. Farklılıklar, her iki diski karşılaştırarak ve sonra aktarılarak hesaplanır. Yeniden korumanın tamamlanacağı tahmini süreyi bulmak için aşağıdaki onay işareti yapın.
+1. Eşitleme tamamlandıktan sonra, Delta çoğaltma başlar ve çoğaltma ilkesi ile birlikte bir kurtarma noktası oluşturulur.
 
-Bir yeniden koruma işini tetiklediğinizde ve hedef VM ve diskler yoksa, aşağıdakiler oluşur:
+Yeniden koruma işi tetikliyorsanız ve hedef VM ve diskler yoksa, aşağıdakiler gerçekleşir:
 
-1. VM yönetilen diskler kullanıyorsa, yineleme diskleri sonek ile `-ASRReplica` oluşturulur. Kopyalar `-ASRReplica` çoğaltma için kullanılır.
-1. VM yönetilmeyen diskler kullanıyorsa, hedef depolama hesabında yineleme diskleri oluşturulur.
-1. Tüm diskler başarısız bölgeden yeni hedef bölgeye kopyalanır.
-1. Eşitleme tamamlandıktan sonra delta çoğaltma başlar ve çoğaltma ilkesine uygun bir kurtarma noktası oluşturulur.
+1. VM yönetilen diskleri kullanıyorsa, çoğaltma diskleri sonek ile `-ASRReplica` oluşturulur. Kopyalar `-ASRReplica` , çoğaltma için kullanılır.
+1. VM, yönetilmeyen diskler kullanıyorsa, çoğaltma diskleri hedef depolama hesabında oluşturulur.
+1. Tüm diskler, yük devredilen bölgeden yeni hedef bölgeye kopyalanır.
+1. Eşitleme tamamlandıktan sonra, Delta çoğaltma başlar ve çoğaltma ilkesi ile birlikte bir kurtarma noktası oluşturulur.
 
-#### <a name="estimated-time-to-do-the-reprotection"></a>Yeniden koruma yapmak için tahmini süre
+#### <a name="estimated-time-to-do-the-reprotection"></a>Yeniden koruma için tahmini süre
 
-Çoğu durumda, Azure Site Kurtarma kaynak bölgeye tam veri çoğaltmaz.
-Aşağıdaki koşullar ne kadar veri çoğaltılacağını belirler:
+Çoğu durumda Azure Site Recovery, tüm verileri kaynak bölgeye çoğaltmaz.
+Aşağıdaki koşullar, ne kadar veri çoğaltılacağı belirlenir:
 
-1. Kaynak VM verileri kaynak grubu değişikliği/silme gibi bazı nedenlerden dolayı silinirse, bozulursa veya erişilemezse, kaynak bölgesinde kullanılacak veri bulunmadığından yeniden koruma sırasında tam bir ilk çoğaltma gerçekleşir.
-1. Kaynak VM verilerine erişilebilirse, hem diskleri karşılaştırArak hem diskleri karşılaştırArak hem de aktarılarak yalnızca diferansiyeller hesaplanır. Tahmini zamanı almak için aşağıdaki tabloyu kontrol edin.
+1. Kaynak VM verileri silinmiş, bozuk veya bir nedenden dolayı bir kaynak grubu değişikliği/silme gibi bir nedenden dolayı, yeniden koruma sırasında, kullanılacak kaynak bölgede kullanılabilir veri olmadığından, tüm ilk çoğaltma işlemi gerçekleşir.
+1. Kaynak VM verileri erişilebilir ise, yalnızca farklılıklar, diskler karşılaştırılarak ve sonra aktarıldıktan sonra hesaplanır. Tahmini süreyi almak için aşağıdaki tabloyu kontrol edin.
 
-|Örnek durum | Yeniden korunmak için gereken süre |
+|Örnek durum | Yeniden korumak için geçen süre |
 |---|---|
-|Kaynak bölgede 1 TB standart diskli 1 VM vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 60 MiB/S iş ile standarttır.<br/>Başarısız olduktan sonra veri değişikliği yok.| Yaklaşık süre: 45 dakika - 1,5 saat.<br/>Yeniden koruma sırasında, Site Kurtarma yaklaşık 45 dakika, 127 GB / 45 MBs alacak tüm verilerin checksum dolduracaktır.<br/>Site Kurtarma'nın yaklaşık 20-30 dakika otomatik ölçeklendirmesi için bazı ek su işleri süresi gereklidir.<br/>Çıkış suçlaması yok. |
-|Kaynak bölgede 1 TB standart diskli 1 VM vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 60 MiB/S iş ile standarttır.<br/>45 GB veri başarısız olduktan sonra değişir.| Yaklaşık süre: 1 saat - 2 saat.<br/>Yeniden koruma sırasında, Site Kurtarma yaklaşık 45 dakika, 127 GB / 45 MBs alacak tüm verilerin checksum dolduracaktır.<br/>45 GB/ 45 MBps, yaklaşık 17 dakika 45 GB değişiklikleri uygulamak için transfer süresi.<br/>Çıkış ücretleri çekler için değil, 45 GB veri değişiklikleri için olacaktır. |
+|Kaynak bölgesinin 1 TB standart diski olan 1 VM 'si vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 60 MBps aktarım hızı ile standarttır.<br/>Yük devretmeden sonra veri değişikliği yok.| Yaklaşık süre: 60-90 dakika.<br/> Yeniden koruma sırasında Site Recovery tüm verilerin sağlama toplamını dolduracaktır. Bu, 45Mb/sn ' de çalışır, bu nedenle, geçecek toplam süre 127 GB/45 MBps, yaklaşık 45 dakika olur.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika. |
+|Kaynak bölgesinin 1 TB standart diski olan 1 VM 'si vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 60 MBps aktarım hızı ile standarttır.<br/>Yük devretmeden sonra 45 GB veri değişikliği.| Yaklaşık süre: 2,5-3 saat.<br/> Yeniden koruma sırasında Site Recovery tüm verilerin sağlama toplamını dolduracaktır. Bu, 45Mb/sn ' de çalışır, bu nedenle, geçecek toplam süre 127 GB/45 MBps, yaklaşık 45 dakika olur.<br/>Aktarım hızı, üretilen işleme yaklaşık %16 oranında veya 9.6 'ya MB/sn 'dir. Bu nedenle, 45 GB/9.6 'ya MBps ve yaklaşık 80 dakika olan 45 GB değişikliklerini uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika. |
+|Kaynak bölgesinin 1 TB standart diski olan 1 VM 'si vardır.<br/>Yalnızca 20 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 60 MBps aktarım hızı ile standarttır.<br/>Yük devretme işleminden hemen sonra diskteki ilk veriler 15 GB idi. Yük devretmeden sonra 5 GB veri değişikliği vardı. Bu nedenle toplam doldurulmuş veri sayısı 20 GB 'dir.| Yaklaşık saat: 1-1,5 saat.<br/>Diskte doldurulmuş veriler disk boyutunun %10 ' dan az olduğundan, bir ilk çoğaltma işlemi yaptık.<br/> Aktarım hızı, üretilen işleme yaklaşık %16 oranında veya 9.6 'ya MB/sn 'dir. Bu nedenle, 20 GB/9.6 'ya MBps, yaklaşık 36 dakika olan 20 GB değişiklikleri uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika. |
+|Kaynak bölgesinin 1 TB Premium diski olan 1 VM 'si vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 200 MBps aktarım hızı ile Premium ' dur.<br/>Yük devretmeden sonra veri değişikliği yok.| Yaklaşık süre: 45-60 dakika.<br/>Yeniden koruma sırasında Site Recovery tüm verilerin sağlama toplamını dolduracaktır. Bu, 80 Mbps hızında çalışır, bu nedenle, geçecek toplam süre 127 GB/80 MBps, yaklaşık 27 dakika olur.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika. |
+|Kaynak bölgesinin 1 TB Premium diski olan 1 VM 'si vardır.<br/>Yalnızca 127 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 200 MBps aktarım hızı ile Premium ' dur.<br/>Yük devretmeden sonra 45 GB veri değişikliği.| Yaklaşık saat: 1,5-2 saat.<br/>Yeniden koruma sırasında Site Recovery tüm verilerin sağlama toplamını dolduracaktır. Bu, 80 Mbps hızında çalışır, bu nedenle, geçecek toplam süre 127 GB/80 MBps, yaklaşık 27 dakika olur.</br>Aktarım hızı, üretilen işleme yaklaşık %16 veya 32MBps. Bu nedenle, 45 GB/32 MBps ve yaklaşık 24 dakika olan 45 GB değişikliklerini uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika. |
+|Kaynak bölgesinin 1 TB Premium diski olan 1 VM 'si vardır.<br/>Yalnızca 20 GB veri kullanılır ve diskin geri kalanı boştur.<br/>Disk türü 200 MBps aktarım hızı ile Premium ' dur.<br/>Yük devretme işleminden hemen sonra diskteki ilk veriler 15 GB idi. Yük devretmeden sonra 5 GB veri değişikliği vardı. Bu nedenle toplam doldurulmuş veri sayısı 20 GB 'dir| Yaklaşık süre: 30-45 dakika.<br/>Diskte doldurulmuş veriler disk boyutunun %10 ' dan az olduğundan, bir ilk çoğaltma işlemi yaptık.<br/>Aktarım hızı, üretilen işleme yaklaşık %16 veya 32MBps. Bu nedenle, 20 GB/32 MBps ve yaklaşık 11 dakika olan 20 GB değişiklikleri uygulamak için aktarım süresi.<br/>Site Recovery otomatik olarak ölçeklendirmek için bazı ek yük süresi gerekir, yaklaşık 20-30 dakika |
 
-Birincil bölgeye geri döndükten sonra VM yeniden korunduğunda (örneğin, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC(ler) silinir.
+VM birincil bölgeye geri çağrıldıktan sonra yeniden korunuyorsa (yani, VM birincil bölgeden DR bölgesine yeniden korunuyorsa), hedef VM ve ilişkili NIC 'ler silinir.
 
-VM, DR bölgesinden birincil bölgeye yeniden korunduğunda, eski birincil VM'yi ve ilişkili NIC(ler)i silmeyiz.
+VM, DR bölgesinden birincil bölgeye yeniden korunuyorsa, Erstwhile Birincil VM ve ilişkili NIC 'leri silmedik.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM korunduktan sonra, bir hata başlatabilirsiniz. Failover ikincil bölgedeki VM'yi kapatır ve bu işlem sırasında kısa bir kapalı kalma süresiyle birincil bölgede VM oluşturur ve önyüklemeye neden olabilir. Bu işlem için uygun bir zaman seçmenizi ve birincil siteye tam bir başarısızlık başlatmadan önce bir test başarısızlığını çalıştırmanızı öneririz. Azure Site Kurtarma başarısız ları hakkında [daha fazla bilgi edinin.](site-recovery-failover.md)
+VM korunduktan sonra bir yük devretme işlemi başlatabilirsiniz. Yük devretme, İkincil bölgedeki sanal makineyi kapatır ve bu işlem sırasında kısa kapalı kalma süresiyle birincil bölgede VM 'yi oluşturur ve önyükler. Bu işlem için uygun bir zaman seçmenizi ve birincil siteye tam yük devretme başlatmadan önce yük devretme testi çalıştırmanızı öneririz. Azure Site Recovery yük devretme hakkında [daha fazla bilgi edinin](site-recovery-failover.md) .

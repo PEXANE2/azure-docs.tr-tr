@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 07046d181e8e83e0271cb78cfb182df4e76980b5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115525"
+ms.locfileid: "82131201"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -65,7 +65,7 @@ Güncelleştirilmiş tasarımla başlatılan yeni bir oyuncu kaplaması.
     * URL 'yi Video Indexer pencere öğesi API 'Lerine işaret eden bir URL ile değiştirme (örneğin, [Öngörüler pencere öğesi](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget))
     * Yeni bir katıştırılmış URL oluşturmak için Video Indexer Web sitesini kullanma:
          
-         Video sayfanıza ulaşmak için **oynat** ' a basın-> ** &lt;Ekle&gt; ** ' ye tıklayın > URL 'yi uygulamanıza kopyalayın:
+         Videonun sayfasına ulaşmak için **oynat** 'a basın-> ** &lt; / &gt; ekleme** düğmesine tıklayın-> URL 'yi uygulamanıza kopyalayın:
    
     Bölgesel URL 'Ler desteklenmez ve önümüzdeki haftalarda engellenecektir.
 

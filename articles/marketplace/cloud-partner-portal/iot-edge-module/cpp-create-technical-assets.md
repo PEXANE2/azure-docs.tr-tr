@@ -1,61 +1,61 @@
 ---
 title: Azure IoT Edge modülü teknik varlıkları oluşturma | Azure Marketi
-description: Bir IoT Edge modülü için teknik varlıkları oluşturun.
+description: IoT Edge modülü için teknik varlıklar oluşturun.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: b36d03695c107054549fba716f4cc27ecb7bba26
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983492"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142401"
 ---
-# <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülü teknik varlıklarınızı hazırlayın
+# <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge modülünüzü hazırlayın teknik varlıkları hazırlama
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureIoTTechAsset) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-iot-edge-module-asset) bölümündeki yönergeleri izleyin.
 
-Bu makalede, Azure Marketi'nde yayımlanmadan önce IoT Edge modülü teknik varlıklarınızın karşılaması gereken gereksinimler açıklanmaktadır.
+Bu makalede, IoT Edge modülünün teknik varlıklarınızın Azure Marketi 'nde yayınlanmadan önce karşılaması gereken gereksinimler açıklanmaktadır.
 
-## <a name="understanding-iot-edge-modules-and-getting-started"></a>IoT Edge modüllerini anlama ve
+## <a name="understanding-iot-edge-modules-and-getting-started"></a>IoT Edge modüllerini anlama ve Başlarken
 
-IoT Edge modülü, Docker uyumlu bir kapsayıcıdır ve IoT Edge aygıtında çalışmak üzere üretilmiştir.
+IoT Edge modülü, bir IoT Edge cihazında çalıştırılmak üzere yapılan Docker ile uyumlu bir kapsayıcıdır.
 
-- IoT Edge modülleri hakkında daha fazla bilgi edinmek için Azure [IoT Edge modüllerini anlayın.](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)
-- IoT Edge modül geliştirmenize başlamak [için, IoT Edge modüllerini geliştirmek için gereksinimleri ve araçları](https://docs.microsoft.com/azure/iot-edge/module-development)görün.
+- IoT Edge modüller hakkında daha fazla bilgi edinmek için bkz. [Azure IoT Edge modülleri anlama](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules).
+- IoT Edge modülünüzü geliştirmeye başlamak için bkz. [IoT Edge modülleri geliştirmeye yönelik gereksinimler ve araçlar](https://docs.microsoft.com/azure/iot-edge/module-development).
 
 ## <a name="technical-requirements"></a>Teknik gereksinimler
 
-IoT Edge modülünüzün Azure Marketi'nde sertifikalandırılabilmesi ve yayımlanabilmesi için aşağıdaki teknik gereksinimlerin karşılanması gerekir.
+IoT Edge modülünüzün Azure Marketi 'nde sertifikalandırılması ve yayımlanması için aşağıdaki teknik gereksinimlerin karşılanması gerekir.
 
 ### <a name="platform-support"></a>Platform desteği
 
-IoT Edge modülünüz aşağıdaki platform seçeneklerinden birini desteklemelidir.
+IoT Edge modülünüzün aşağıdaki platform seçeneklerinden birini desteklemesi gerekir.
 
-#### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen Tier 1 platformları
+#### <a name="tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen katman 1 platformları
 
-IoT Edge tarafından desteklenen tüm Tier 1 platformlarını destekleyin [(Azure IoT Edge desteğinde](https://docs.microsoft.com/azure/iot-edge/support)kaydedildi). Daha iyi bir müşteri deneyimi sağladığı ndan bu seçeneği öneririz. Bu kriterleri karşılayan modüller sergilenecektir. Bu platform seçeneğini kullanan bir modül şunları yapmalı:
+IoT Edge tarafından desteklenen tüm katman 1 platformlarını destekler ( [Azure IoT Edge desteğiyle](https://docs.microsoft.com/azure/iot-edge/support)kaydedilir). Daha iyi bir müşteri deneyimi sağladığından bu seçeneği öneririz. Bu ölçütlere uyan modüller görüntülenir. Bu platform seçeneğini kullanan bir modül şunları içermelidir:
 
-- GitHub `latest` [bildirim aracıyla](https://github.com/estesp/manifest-tool)oluşturulmuş bildirim `1.0.1`etiketleri olan bir etiket ve sürüm etiketi (örneğin,) sağlayın.
-- [Uyumlu IoT Edge sertifikalı aygıtlara](https://aka.ms/iot-edge-certified)bağlantı eklemek için [Market sekmesini](./cpp-marketplace-tab.md) kullanın. Bu `https://aka.ms/iot-edge-certified`bağlantı, müşterilerin sertifikalı aygıtlara göz atabileceği veya arama yapabileceği bir web sitesine gider. Bu web sitesi, [Azure IoT Edge Sertifikalı](https://catalog.azureiotsolutions.com/) aygıt kataloğu olarak da bilinir.
+- GitHub `latest` [bildirim aracı](https://github.com/estesp/manifest-tool)ile oluşturulmuş bildirim etiketleri olan bir etiket ve `1.0.1`sürüm etiketi (örneğin,) sağlayın.
+- Müşterilerin Sertifikalı cihazlara gözatabilecekleri veya arayabildiği [IoT Edge sertifikalı](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]})bir Web sitesine bağlantı eklemek için [Market sekmesini](./cpp-marketplace-tab.md) kullanın. Bu web sitesi, [Azure IoT Edge sertifikalı](https://catalog.azureiotsolutions.com/) cihaz kataloğu olarak da bilinir.
 
-#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen Tier 1 platformlarının bir alt kümesi
+#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge tarafından desteklenen katman 1 platformların bir alt kümesi
   
-IoT Edge tarafından desteklenen Tier 1 platformlarının bir alt kümesini (en az bir) destekleyin [(Azure IoT Edge desteğinde](https://docs.microsoft.com/azure/iot-edge/support)kaydedildi). Bu platform seçeneğini kullanan bir modül şunları yapmalı:
+IoT Edge tarafından desteklenen katman 1 platformların (en az bir) alt kümesini ( [Azure IoT Edge desteğiyle](https://docs.microsoft.com/azure/iot-edge/support)kaydedilir) destekler. Bu platform seçeneğini kullanan bir modül şunları içermelidir:
 
-- Birden `latest` fazla platform desteklenirse, `1.0.1`GitHub [bildirim aracıyla](https://github.com/estesp/manifest-tool) oluşturulmuş bildirim etiketleri olan bir etiket ve sürüm etiketi (örneğin,) sağlayın. Bildirim etiketleri yalnızca bir platform desteklendiğinde isteğe bağlıdır.
-- [Azure IoT Edge Sertifikalı](https://catalog.azureiotsolutions.com/) aygıt kataloğunda en az bir IoT Edge aygıtına bağlantı sağlamak için Market [sekmesini](./cpp-marketplace-tab.md) kullanın.
+- Birden fazla `latest` platform destekleniyorsa, GitHub [bildirim aracı](https://github.com/estesp/manifest-tool) ile oluşturulmuş bildirim `1.0.1`etiketleri olan bir etiket ve sürüm etiketi sağlayın (örneğin,). Bildirim etiketleri yalnızca bir platform desteklensırada isteğe bağlıdır.
+- [Azure IoT Edge sertifikalı](https://catalog.azureiotsolutions.com/) cihaz kataloğunda en az bir IoT Edge cihazına bağlantı sağlamak için [Market sekmesini](./cpp-marketplace-tab.md) kullanın.
 
 ### <a name="device-dimensions"></a>Cihaz boyutları
 
-Hedeflenen IoT Edge cihazlarındaki IoT Edge modül boyutları (CPU/RAM/Storage/GPU/vb.) aşağıdaki gereksinimleri karşılamalıdır:
+Hedeflenen IoT Edge cihazlarındaki IoT Edge modül boyutları (CPU/RAM/depolama/GPU/vb.) aşağıdaki gereksinimleri karşılamalıdır:
 
-- Modülün [Azure IoT Edge Sertifikalı](https://catalog.azureiotsolutions.com/) aygıt kataloğunda en az bir **IoT Edge sertifikalı cihazla çalışması** gerekir.
-- **Minimum donanım gereksinimleri,** teklifin açıklamasındaki son paragraf olarak belgelenmelidir [(Market sekmesi](./cpp-marketplace-tab.md)altında). İsteğe bağlı olarak, önerilen donanım gereksinimlerini önemli ölçüde farklıysa da listeleyebilirsiniz. Örneğin, teklif açıklamanızın sonuna aşağıdaki bölümü ekleyin:
+- Modülün [Azure IoT Edge sertifikalı](https://catalog.azureiotsolutions.com/) cihaz kataloğunda **en az bir IoT Edge sertifikalı cihazla çalışması** gerekir.
+- **En düşük donanım gereksinimleri** , teklifin açıklamasında ( [Market sekmesi](./cpp-marketplace-tab.md)altında) son paragraf olarak belgelenmelidir. İsteğe bağlı olarak, önemli ölçüde farklılık gösterebilse de önerilen donanım gereksinimlerini listeleyebilirsiniz. Örneğin, teklif tanımlarınızın sonuna aşağıdaki bölümü ekleyin:
 
   ```html
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
@@ -63,18 +63,18 @@ Hedeflenen IoT Edge cihazlarındaki IoT Edge modül boyutları (CPU/RAM/Storage/
 
 ### <a name="configuration"></a>Yapılandırma
 
-Ayrıca, bir IoT Edge aygıtına dağıtımı mümkün olduğunca doğrudan ileri ye getirmek için varsayılan yapılandırma ayarlarını da içerir. Kapsayıcı ayrıca edgeHub ve IoT Hub ile iletişimi etkinleştirmek için IoT Edge Modülü SDK'yı da içerebilir.
+Ayrıca, IoT Edge bir cihaza dağıtımı mümkün olduğunca basit hale getirmek için varsayılan yapılandırma ayarlarını da içerir. Kapsayıcı Ayrıca, edgeHub ve IoT Hub iletişim sağlamak için IoT Edge modülü SDK 'sını de içerebilir.
 
 #### <a name="default-configuration"></a>Varsayılan yapılandırma
 
-IoT Edge [modülleri, Bulut İş Ortağı portalının SKU sekmesinde](./cpp-skus-tab.md)sağlanan varsayılan ayarlarla başlayabilmeli. Aşağıdaki varsayılan ayarlar kullanılabilir:
+IoT Edge modüller [, bulut Iş ortağı portalının SKU sekmesinde](./cpp-skus-tab.md)belirtilen varsayılan ayarlarla başlayabilmelidir. Aşağıdaki varsayılan ayarlar kullanılabilir:
 
-- Varsayılan **rotalar**
-- Varsayılan **ikiz istenilen özellikler**
+- Varsayılan **yollar**
+- Varsayılan **ikizi istenen özellikler**
 - Varsayılan **ortam değişkenleri**
 - Varsayılan **createOptions**
 
-Varsayılan değer için gerekli olan parametrenin (örneğin, müşterinin sunucusunun IP adresi) anlamlı olmadığı bir senaryoda, varsayılan değer olarak bir parametre eklersiniz. Bu değer parantez içinde ve büyük harfle kapatılır. Bu örnek için, aşağıdaki varsayılan ortam değişkenini ayarlarsınız:
+Varsayılan değer için gereken bir parametrenin anlamlı olmadığı bir senaryoda (örneğin, bir müşterinin sunucusunun IP adresi), varsayılan değer olarak bir parametre eklersiniz. Bu değer, köşeli ayraçlar ve büyük harfle alınır. Bu örnekte, aşağıdaki varsayılan ortam değişkenini ayarlarsınız:
 
 ```
     ServerIPAddress = <MY_SERVER_IP_ADDRESS>
@@ -82,63 +82,63 @@ Varsayılan değer için gerekli olan parametrenin (örneğin, müşterinin sunu
 
 #### <a name="configuration-documentation"></a>Yapılandırma belgeleri
 
-Bir IoT Edge modülünün tüm yapılandırma ayarları açıkça belgelenmelidir (rotalarının nasıl kullanılacağı, ikiz istenilen özellikler, ortam değişkenleri, createOptions vb.) Belgelerinize bir bağlantı sağlayın veya belgeler teklif/sku açıklamanızın bir parçası olmalıdır.
+Bir IoT Edge modülünün tüm yapılandırma ayarları açıkça belgelenmelidir (yollarını kullanma, ikizi istenen özellikler, ortam değişkenleri, createOptions vb.) Belgelerinize bir bağlantı sağlayın veya belge teklif/SKU açıklamanız kapsamında olmalıdır.
 
-### <a name="tags-and-versioning"></a>Etiketler ve sürüm
+### <a name="tags-and-versioning"></a>Etiketler ve sürüm oluşturma
 
-Müşteriler kolayca bir modül dağıtmak ve otomatik olarak pazardan güncellemeleri almak gerekir (bir geliştirici senaryosunda.) Ayrıca test ettikleri tam sürümü kullanabilmeli ve dondurabilmeli (üretim senaryosunda.)
+Müşterilerin bir modülün kolayca dağıtılması ve marketten güncelleştirmeleri otomatik olarak alabilmesi gerekir (bir geliştirici senaryosunda.) Ayrıca, test ettikleri tam sürümü (bir üretim senaryosunda) kullanabilmek ve dondurmaları gerekir.
 
-Bu müşteri beklentilerini karşılamak ve pazarda yayınlanacak, IoT Edge modülleri aşağıdaki gereksinimleri karşılamalıdır:
+Bu müşterinin beklentilerini karşılamak ve Market 'te yayımlanmak için IoT Edge modüllerin aşağıdaki gereksinimleri karşılaması gerekir:
 
-- Desteklenen tüm `latest` platformlarda en son sürümü işaret eden bir bildirim etiketi ekleyin.
-- Sürüm etiketleri X, Y ve Z'nin tümseger olduğu X.Y.Z formunda olmalıdır.
-- Desteklenen tüm platformlarda belirli `1.0.1`bir sürüme işaret eden bir "sürüm" etiketi ekleyin.
-- Değişmez olmaları `1.0.1`gerektiğinden, "sürüm" etiketlerini güncellemeyin.
+- Desteklenen tüm platformlarda `latest` en son sürümü gösteren bir bildirim etiketi ekleyin.
+- Sürüm etiketleri X. Y. Z biçiminde olmalıdır; burada X, Y ve Z tamsayılardır.
+- Desteklenen tüm platformlarda belirli bir sürümü işaret eden `1.0.1`gibi bir "sürüm" etiketi ekleyin.
+- Sabit olmaları gerektiğinden, gibi `1.0.1`"sürüm" etiketlerini güncelleştirmeyin.
 
 >[!Note]
->İsteğe bağlı olarak, sürüm gibi "yuvarlanan sürüm" etiketleri `2.0` içerebilir. `1.0` Bu, paralel olarak birden çok ana sürümü nidamı destekler.
+>İsteğe bağlı olarak, sürüm oluşturma `2.0` ve `1.0`gibi "sıralı sürüm" etiketleri içerebilir. Bu, paralel olarak birden çok ana sürümü korumanın kullanılmasını destekler.
 
 ### <a name="telemetry"></a>Telemetri
 
-IoT Modülü SDK'sını kullanan modüller, telemetri `PublisherId.OfferId.SkuId` amacıyla benzersiz modül tanımlayıcısını ayarlamalıdır. Benzersiz bir tanımlayıcı, Azure Marketi'nin çalışan modül örneklerinin sayısını belirlemesini sağlar.
+IoT modülü SDK 'sını kullanan modüller, telemetri amaçlarıyla benzersiz modül tanımlayıcısını olarak `PublisherId.OfferId.SkuId` ayarlanmalıdır. Benzersiz bir tanımlayıcı, Azure Marketi 'nin çalışmakta olan modül örneklerinin sayısını belirlemesine olanak sağlar.
 
- Bu tanımlayıcıyı ayarlamak `ProductInfo` için IoT Modülü SDK'larından aşağıdaki yöntemleri kullanın:
+ Aşağıdaki yöntemleri kullanarak IoT modülü SDK 'Ları bu tanımlayıcıya ayarlayın `ProductInfo` :
 
-- [C\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [,\#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo) 
+- [,](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
-IoT Modülü SDK'sını kullanmayan modüller için, indirme sayısı gibi Bulut İş Ortağı Portalı üzerinden daha az kesin öngörüler mevcuttur.
+IoT modülü SDK 'sını kullanmayan modüller için, İndirme sayısı gibi Bulut İş Ortağı Portalı aracılığıyla daha az kesin Öngörüler sunulmaktadır.
 
 ### <a name="security"></a>Güvenlik
 
-IoT Edge modülleri ana bilgisayara mümkün olduğunca en az ayrıcalıklı erişimi istemelidir. [Ayrıcalıklı modüllerden](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) kaçınılmalıdır.
+IoT Edge modüller, ana bilgisayara mümkün olduğunca en az ayrıcalıklı erişimi sormalıdır. [Ayrıcalıklı modüller](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) kaçınılmalıdır.
 
-### <a name="module-iot-sdk"></a>Modül IoT SDK
+### <a name="module-iot-sdk"></a>Modül IoT SDK 'Sı
 
-IoT Modülü SDK dahil sertifikasyon için bir ön koşul değildir. Ancak, IoT Modülü SDK dahil olmak üzere daha iyi bir kullanıcı deneyimi sağlayabilir. Örneğin, Bulut'a yönlendirmeyi veya ileti göndermeyi desteklemek için.
+IoT modülü SDK 'Sı dahil, sertifika için bir önkoşul değildir. Ancak, IoT modülü SDK 'Sı dahil daha iyi bir kullanıcı deneyimi sağlayabilir. Örneğin, buluta yönlendirmeyi veya ileti göndermeyi desteklemek için.
 
-IoT Modülü SDK çalışan modül örneklerinin sayısı hakkında telemetri verileri almak için gereklidir.
+Çalışan modül örneği sayısı hakkında telemetri verileri almak için IoT modülü SDK 'Sı gereklidir.
 
 
-## <a name="recertification-process"></a>Resertifikasyon süreci
+## <a name="recertification-process"></a>Yeniden sertifika işlemi
 
 <!-- Add legal time windows-->
-Ortaklar, modüllerini etkileyen bir kırılma olduğunda, örneğin:
+İş ortakları, modüllerini etkileyen bir değişiklik olduğunda bildirim alır, örneğin:
 
-- IoT Edge tarafından desteklenen Tier 1 os/arch destek matrisi
-- IoT Modülü SDK
-- IoT Edge Çalışma Süresi
+- IoT Edge tarafından desteklenen katman 1 işletim sistemi/mimari desteği matrisi
+- IoT modülü SDK 'Sı
+- IoT Edge çalışma zamanı
 - IoT Edge modülü sertifika yönergeleri
 
-İş ortaklarının modüllerini güncellemeleri ve Bulut İş Ortağı Portalı aracını kullanarak bunları yeniden onaylamaları gerekir.
+İş ortaklarının modüllerini güncelleştirmek ve Bulut İş Ortağı Portalı aracını kullanarak onları yeniden bilmeleri gerekir.
 
-## <a name="host-your-iot-edge-module-in-an-azure-container-registry"></a>IoT Edge modülünüzü Azure Kapsayıcı Kayıt Defteri'nde barındırın
+## <a name="host-your-iot-edge-module-in-an-azure-container-registry"></a>IoT Edge modülünüzü bir Azure Container Registry barındırın
 
-IoT Edge modülünüzü Bulut İş Ortağı Portalı'na yüklemek için öncelikle bir [Azure Kapsayıcı Kayıt Defteri'nde](https://azure.microsoft.com/services/container-registry/) (ACR) barındırmanız gerekir. Modül, bir bildirim etiketiyle başvurulan resim etiketleri de dahil olmak üzere yayımlamak istediğiniz tüm etiketleri içermelidir.
+IoT Edge modülünüzü Bulut İş Ortağı Portalı yüklemek için önce [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) içinde barındırın. Modül, bir bildirim etiketi tarafından başvurulan görüntü etiketleri dahil olmak üzere yayımlamak istediğiniz tüm etiketleri içermelidir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [IoT Edge modül teklifinizi oluşturun](./cpp-create-offer.md)
+- [IoT Edge modülü Teklifinizi oluşturma](./cpp-create-offer.md)

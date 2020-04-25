@@ -1,6 +1,6 @@
 ---
-title: WINDOWS aygıtlarını DPS ile otomatik olarak sağlama - Azure IoT Edge | Microsoft Dokümanlar
-description: Azure IoT Edge için otomatik aygıt sağlamayı Aygıt Sağlama Hizmeti ile test etmek için Windows makinenizde simüle edilmiş bir aygıt kullanın
+title: DPS ile Windows cihazlarını otomatik olarak Sağlama-Azure IoT Edge | Microsoft Docs
+description: Cihaz sağlama hizmeti ile Azure IoT Edge için otomatik cihaz sağlamayı test etmek üzere Windows makinenizde bir sanal cihaz kullanın
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,110 +8,110 @@ ms.date: 4/3/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fc051e2a0ebbdae7c62ff8a249747d118d3c2ce4
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668687"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131031"
 ---
-# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows'da sanal TPM içeren simüle edilmiş bir IoT Edge aygıtı oluşturma ve sağlama
+# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows üzerinde sanal TPM ile sanal bir IoT Edge cihaz oluşturma ve sağlama
 
-Azure IoT Edge aygıtları, kenar etkin olmayan aygıtlar gibi [Aygıt Sağlama Hizmeti](../iot-dps/index.yml) kullanılarak otomatik olarak kullanılabilir. Otomatik sağlama işlemine aşina değilseniz, devam etmeden önce [otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
+Azure IoT Edge cihazlar, yalnızca Edge özellikli olmayan cihazlarda olduğu gibi [cihaz sağlama hizmeti](../iot-dps/index.yml) kullanılarak otomatik temin edilebilir. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
 
-DPS, hem bireysel kayıt hem de grup kaydında IoT Edge aygıtları için simetrik anahtar attestation'ı destekler. Grup kaydı için, simetrik anahtar attestation'da geçerli olmak üzere "IoT Edge aygıtıdır" seçeneğini işaretlerseniz, bu kayıt grubunun altında kayıtlı olan tüm aygıtlar IoT Edge aygıtları olarak işaretlenir.
+DPS, hem bireysel kayıt hem de grup kaydında IoT Edge cihazlar için simetrik anahtar kanıtlamayı destekler. Grup kaydı için, simetrik anahtar kanıtlama içinde "IoT Edge cihaz" seçeneğini true olarak belirlerseniz, bu kayıt grubu altında kayıtlı tüm cihazlar IoT Edge cihaz olarak işaretlenir.
 
-Bu makalede, simüle edilmiş bir IoT Edge aygıtında otomatik sağlamanın nasıl test edilebildiğini aşağıdaki adımlarla gösterir:
+Bu makalede, aşağıdaki adımlarla sanal bir IoT Edge cihazında otomatik sağlamayı test etme işlemi gösterilmektedir:
 
-* IoT Hub Aygıt Sağlama Hizmeti (DPS) örneğini oluşturun.
-* Donanım güvenliği için simüle edilmiş güvenilir platform modülü (TPM) içeren Windows makinenizde simüle edilmiş bir aygıt oluşturun.
-* Aygıt için tek tek bir kayıt oluşturun.
-* IoT Edge çalışma süresini yükleyin ve aygıtı IoT Hub'ına bağlayın.
+* IoT Hub cihaz sağlama hizmeti 'nin (DPS) bir örneğini oluşturun.
+* Donanım güvenliği için benzetimli Güvenilir Platform Modülü (TPM) ile Windows makinenizde sanal bir cihaz oluşturun.
+* Cihaz için tek bir kayıt oluşturun.
+* IoT Edge çalışma zamanını yükleyip cihazı IoT Hub bağlayın.
 
 > [!TIP]
-> Bu makalede, sanal aygıtlarda TPM attestation kullanarak otomatik sağlama test açıklanır, ancak çok fiziksel TPM donanım kullanırken de geçerlidir.
+> Bu makalede, sanal cihazlarda TPM kanıtlaması kullanılarak otomatik sağlama testi açıklanır, ancak fiziksel TPM donanımı de kullanılırken bunun çoğu geçerlidir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Windows geliştirme makinesi. Bu makalede Windows 10 kullanır.
-* Etkin bir IoT Hub'ı.
+* Bir Windows geliştirme makinesi. Bu makalede Windows 10 kullanılır.
+* Etkin bir IoT Hub.
 
 > [!NOTE]
-> TPM 2.0 DPS ile TPM attestation kullanırken gereklidir ve sadece bireysel değil, grup, kayıtları oluşturmak için kullanılabilir.
+> TPM kanıtlaması ile TPM kanıtlama kullanılırken TPM 2,0 gereklidir ve yalnızca bireysel, grup değil kayıtları oluşturmak için kullanılabilir.
 
-## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IoT Hub Cihaz Sağlama Hizmetini Ayarlama
+## <a name="set-up-the-iot-hub-device-provisioning-service"></a>IoT Hub cihaz sağlama hizmetini ayarlama
 
-Azure'da IoT Hub Aygıt Sağlama Hizmeti'nin yeni bir örneğini oluşturun ve IoT hub'ınıza bağlayın. [IoT Hub DPS'yi](../iot-dps/quick-setup-auto-provision.md)kur'a'daki yönergeleri takip edebilirsiniz.
+Azure 'da IoT Hub cihaz sağlama hizmetinin yeni bir örneğini oluşturun ve IoT Hub 'ınıza bağlayın. [IoT Hub DPS 'Yi ayarlama](../iot-dps/quick-setup-auto-provision.md)bölümündeki yönergeleri izleyebilirsiniz.
 
-Aygıt Sağlama Hizmeti çalıştırdıktan **sonra, kimlik kapsamının** değerini genel bakış sayfasından kopyalayın. IoT Edge çalışma süresini yapılandırırken bu değeri kullanırsınız.
+Cihaz sağlama hizmetini çalıştırdıktan sonra, genel bakış sayfasından **kimlik kapsamının** değerini kopyalayın. IoT Edge çalışma zamanını yapılandırırken bu değeri kullanırsınız.
 
 > [!TIP]
-> Fiziksel bir TPM aygıtı kullanıyorsanız, her TPM yongasına özgü olan ve onunla ilişkili TPM yonga üreticisinden alınan **Onay anahtarını**belirlemeniz gerekir. TPM aygıtınız için benzersiz bir **Kayıt Kimliği** elde ederek, örneğin, onay anahtarının SHA-256 karmasını oluşturarak.
+> Fiziksel bir TPM cihazı kullanıyorsanız, her TPM yongası için benzersiz olan ve kendisiyle ilişkili TPM yonga üreticisinden elde edilen **onay anahtarını**belirlemeniz gerekir. TPM cihazınız için benzersiz bir **kayıt kimliği** türetebilirsiniz; Örneğin, onay anahtarının SHA-256 karmasını oluşturma.
 >
-> DpS'de kaydınızı oluşturmak için [Azure Portal ile cihaz kayıtlarını nasıl yöneteceğimiz](../iot-dps/how-to-manage-enrollments.md) ve ardından bu makaledeki [IoT Edge çalışma süresini yükleme](#install-the-iot-edge-runtime) bölümüne devam etmek için makaledeki yönergeleri izleyin.
+> Kayıt bilgilerinizi DPS içinde oluşturmak için [Azure portalı ile cihaz kayıtlarını yönetme](../iot-dps/how-to-manage-enrollments.md) makalesindeki yönergeleri izleyin ve sonra devam etmek için bu makaledeki [IoT Edge çalışma zamanını Install](#install-the-iot-edge-runtime) bölümüne ilerleyin.
 
 ## <a name="simulate-a-tpm-device"></a>TPM cihazının benzetimini yapma
 
-Windows geliştirme makinenizde simüle edilmiş bir TPM aygıtı oluşturun. Cihazınız için **Kayıt Kimliği** ve **Onay anahtarını** alın ve bunları DPS'de tek bir kayıt girişi oluşturmak için kullanın.
+Windows geliştirme makinenizde sanal bir TPM cihazı oluşturun. Cihazınızın **kayıt kimliği** ve **onay anahtarını** alın ve DPS 'de tek bir kayıt girişi oluşturmak için bunları kullanın.
 
-DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bildirme fırsatınız vardır. Aygıt ikizinde etiketleri, bölge, ortam, konum veya aygıt türü gibi çözümünüzde gereksinim duyduğunuz herhangi bir metrike göre aygıtları gruplandırmak için ayarlayabilirsiniz. Bu etiketler otomatik [dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Cihaz ikizi, çalışma, cihaz, konum veya cihaz türü gibi çözümünüzde ihtiyaç duyduğunuz herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
-Benzetimli aygıtı oluşturmak için kullanmak istediğiniz SDK dilini seçin ve tek tek kaydı oluşturana kadar adımları izleyin.
+Sanal cihazı oluşturmak için kullanmak istediğiniz SDK dilini seçin ve bireysel kayıt oluşturana kadar adımları izleyin.
 
-Tek tek kaydı oluşturduğunuzda, Windows geliştirme makinenizdeki simüle edilmiş TPM aygıtının bir **IoT Edge aygıtı**olduğunu bildirmek için **True'yu** seçin.
+Tek bir kaydı oluşturduğunuzda, Windows geliştirme makinenizdeki sanal bir TPM cihazının **IoT Edge bir cihaz**olduğunu bildirmek için **true** ' ı seçin.
 
 > [!TIP]
-> Azure CLI'de bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve bir aygıtın veya aygıt grubunun bir IoT Edge aygıtı olduğunu belirtmek için **kenar özellikli** bayrağı kullanabilirsiniz.
+> Azure CLı 'da bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
 
-Simüle cihaz ve bireysel kayıt kılavuzları:
+Sanal cihaz ve bireysel Kayıt Kılavuzu:
 
-* [C](../iot-dps/quick-create-simulated-device.md)
+* [,](../iot-dps/quick-create-simulated-device.md)
 * [Java](../iot-dps/quick-create-simulated-device-tpm-java.md)
 * [C#](../iot-dps/quick-create-simulated-device-tpm-csharp.md)
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
-Tek tek kaydı oluşturduktan sonra, **Kayıt Kimliği'nin**değerini kaydedin. IoT Edge çalışma süresini yapılandırırken bu değeri kullanırsınız.
+Bireysel kaydı oluşturduktan sonra **kayıt kimliği**değerini kaydedin. IoT Edge çalışma zamanını yapılandırırken bu değeri kullanırsınız.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma süresini yükleme
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalışır ve kenarda kod çalıştırabilmeniz için aygıta ek kapsayıcılar dağıtmanızı sağlar.
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir.
 
-Cihazınızı sağlarken aşağıdaki bilgilere ihtiyacınız olacak:
+Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
 
-* DPS **Id Kapsam** değeri
-* Oluşturduğunuz aygıt **Kayıt Kimliği**
+* DPS **kimlik kapsamı** değeri
+* Oluşturduğunuz cihaz **kayıt kimliği**
 
-IoT Edge çalışma zamanını benzetimli TPM'yi çalıştıran aygıta yükleyin. IoT Edge çalışma süresini manuel değil otomatik olarak yapılandıracaksınız.
+IoT Edge çalışma zamanını, sanal TPM 'nin çalıştığı cihaza yükler. IoT Edge çalışma zamanını otomatik, el ile değil, sağlama için yapılandıracaksınız.
 
 > [!TIP]
-> Yükleme ve test sırasında TPM simülatörü çalıştıran pencereyi açık tutun.
+> Yükleme ve test etme sırasında TPM simülatörünü çalıştıran pencereyi açık tutun.
 
-Kapsayıcıları yönetme ve IoT Edge'i güncelleştirme gibi görevler için ön koşullar ve yönergeler de dahil olmak üzere Windows'a IoT [Edge](how-to-install-iot-edge-windows.md)yükleme hakkında daha ayrıntılı bilgi için bkz.
+Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT Edge, bkz. [Azure IoT Edge çalışma zamanını Windows 'A yükleme](how-to-install-iot-edge-windows.md).
 
-1. Yönetici modunda bir PowerShell penceresi açın. IoT Edge'i yüklerken AMD64 PowerShell oturumunu kullandığınızdan emin olun, PowerShell'i (x86) değil.
+1. Yönetici modunda bir PowerShell penceresi açın. PowerShell (x86) değil IoT Edge yüklerken PowerShell 'in AMD64 oturumunu kullandığınızdan emin olun.
 
-1. **Deploy-IoTEdge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve moby çalışma süresini ve IoT Edge çalışma süresini karşıdan yüklez. Komut, Windows kapsayıcılarını kullanmayı varsayılan olarak kullanır.
+1. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve ardından Moby çalışma zamanını ve IoT Edge çalışma zamanını indirir. Komut varsayılan olarak Windows kapsayıcıları ' nı kullanmaktır.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. Bu noktada, IoT Core aygıtları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server aygıtları yeniden başlatmanızı isteyebilir. Öyleyse, cihazınızı şimdi yeniden başlatın. Cihazınız hazır olduğunda PowerShell'i yeniden yönetici olarak çalıştırın.
+1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-1. **Initialize-IoTEdge komutu,** Makinenizdeki IoT Edge çalışma süresini yapılandırır. Komut, Windows kapsayıcılarıyla el ile sağlama için varsayılandır. El `-Dps` ile sağlama yerine Aygıt Sağlama Hizmetini kullanmak için bayrağı kullanın.
+1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Komut, Windows kapsayıcıları ile el ile sağlamayı varsayılan olarak belirler. El ile `-Dps` sağlama yerine cihaz sağlama hizmetini kullanmak için bayrağını kullanın.
 
-   Yer tutucu değerlerini `{scope_id}` daha `{registration_id}` önce topladığınız verilerle değiştirin.
+   Ve `{scope_id}` `{registration_id}` için yer tutucu değerlerini daha önce topladığınız verilerle değiştirin.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
    ```
 
-## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
+## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
 
-Çalışma süresi başarıyla başladıysa, IoT Hub'ınıza gidip IoT Edge modüllerini cihazınıza dağıtmaya başlayabilirsiniz. Çalışma zamanının yüklü olduğunu ve başarılı bir şekilde başladığını doğrulamak için cihazınızdaki aşağıdaki komutları kullanın.  
+Çalışma zamanı başarıyla başlatıldıysa, IoT Hub ve cihazınıza IoT Edge modülleri dağıtmaya başlayabilirsiniz. Çalışma zamanının başarıyla yüklendiğini ve başlatıldığını doğrulamak için cihazınızda aşağıdaki komutları kullanın.  
 
 IoT Edge hizmetinin durumunu kontrol edin.
 
@@ -119,13 +119,13 @@ IoT Edge hizmetinin durumunu kontrol edin.
 Get-Service iotedge
 ```
 
-Son 5 dakikadaki servis kayıtlarını inceleyin.
+Son 5 dakikadan hizmet günlüklerini inceleyin.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Çalışan modülleri listele.
+Çalışan modülleri listeleyin.
 
 ```powershell
 iotedge list
@@ -133,4 +133,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aygıt Sağlama Hizmeti kayıt işlemi, aygıt kimliğini ve aygıt ikiz etiketlerini yeni aygıtı sağlarken aynı anda ayarlamanızı sağlar. Bu değerleri, otomatik aygıt yönetimini kullanarak tek tek aygıtları veya aygıt gruplarını hedeflemek için kullanabilirsiniz. Azure portalını kullanarak veya [Azure CLI'yi kullanarak](how-to-deploy-monitor-cli.md) [IoT Edge modüllerini ölçekte](how-to-deploy-monitor.md) nasıl dağıtılayacağım ve izleyeceğinizi öğrenin
+Cihaz sağlama hizmeti kayıt işlemi, yeni cihazı sağladığınız anda cihaz KIMLIĞI ve cihaz ikizi etiketlerini ayarlamanıza olanak sağlar. Bu değerleri, otomatik cihaz yönetimi kullanarak ayrı cihazları veya cihaz gruplarını hedeflemek için kullanabilirsiniz. Azure portal veya [Azure CLI kullanarak](how-to-deploy-cli-at-scale.md) [IoT Edge modüllerini ölçekte nasıl dağıtacağınızı ve izleyeceğinizi](how-to-deploy-at-scale.md) öğrenin

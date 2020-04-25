@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: a0125c556789b1a1a5b11dcd16b852d7f57b6c50
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82099878"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143789"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Çalıştır komutunu kullanarak PowerShell betiklerini Windows sanal makinenizde çalıştırma
 
@@ -58,7 +58,7 @@ The entity was not found in this Azure location
 |**EnableAdminAccount**|Yerel yönetici hesabının devre dışı olup olmadığını denetler ve bu durumda izin vermez.|
 |**Komutunu**| TCP/IP 'ye erişen her bir bağdaştırıcı için IP adresi, alt ağ maskesi ve varsayılan ağ geçidi için ayrıntılı bilgileri gösterir.|
 |**Rdpayarları**|Kayıt defteri ayarlarını ve etki alanı ilkesi ayarlarını denetler. Makine bir etki alanının parçasıysa veya ayarları varsayılan değerlere değiştirdiğinde ilke eylemlerini önerir.|
-|**ResetRDPCert**|RDP dinleyicisine bağlı SSL sertifikasını kaldırır ve RDP dinleyicisi güvenliğini varsayılana geri yükler. Sertifikayla ilgili herhangi bir sorun görürseniz bu betiği kullanın.|
+|**ResetRDPCert**|RDP dinleyicisine bağlı TLS/SSL sertifikasını kaldırır ve RDP dinleyicisi güvenliğini varsayılana geri yükler. Sertifikayla ilgili herhangi bir sorun görürseniz bu betiği kullanın.|
 |**SetRDPPort**|Uzak Masaüstü bağlantıları için varsayılan veya Kullanıcı tarafından belirtilen bağlantı noktası numarasını ayarlar. Bağlantı noktasına gelen erişim için güvenlik duvarı kuralları sağlar.|
 
 ## <a name="azure-cli"></a>Azure CLI

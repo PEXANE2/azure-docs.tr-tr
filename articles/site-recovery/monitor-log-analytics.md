@@ -1,90 +1,90 @@
 ---
-title: Azure Monitör Günlükleri ile Azure Site Kurtarma'yı izleme
-description: Azure Monitör Günlükleri (Log Analytics) ile Azure Site Kurtarma'yı nasıl izleyeceğinizi öğrenin
+title: Azure Izleyici günlükleriyle Azure Site Recovery izleme
+description: Azure Izleyici günlükleriyle Azure Site Recovery izlemeyi öğrenin (Log Analytics)
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74133426"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131183"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure İzleyici Günlükleriyle Site Recovery’yi izleme
 
-Bu makalede, [Azure Monitör Günlükleri](../azure-monitor/platform/data-platform-logs.md)ve [Günlük Analitiği](../azure-monitor/log-query/log-query-overview.md)kullanılarak Azure [Site Kurtarma](site-recovery-overview.md)tarafından çoğaltılan makinelerin nasıl izlendiği açıklanmaktadır.
+Bu makalede Azure [Site Recovery](site-recovery-overview.md)tarafından çoğaltılan makinelerin [Azure izleyici günlükleri](../azure-monitor/platform/data-platform-logs.md)kullanılarak ve [Log Analytics](../azure-monitor/log-query/log-query-overview.md)nasıl izleneceği açıklanır.
 
-Azure Monitor Günlükleri, diğer izleme verilerinin yanı sıra etkinlik ve tanılama günlüklerini toplayan bir günlük veri platformu sağlar. Azure Monitör Günlükleri'nde, günlük sorgularını yazmak ve test etmek ve günlük verilerini etkileşimli olarak analiz etmek için Log Analytics'i kullanırsınız. Günlük sonuçlarını görselleştirebilir ve sorgulayabilir ve izlenen verilere dayalı eylemleri yapmak için uyarıları yapılandırabilirsiniz.
+Azure Izleyici günlükleri, diğer izleme verileriyle birlikte etkinlik ve kaynak günlüklerini toplayan bir günlük veri platformu sağlar. Azure Izleyici günlükleri içinde, günlük sorgularını yazmak ve test etmek ve günlük verilerini etkileşimli olarak analiz etmek için Log Analytics kullanırsınız. Günlük sonuçlarını görselleştirebilir ve sorgulayabilir ve izlenen verilere göre eylemleri gerçekleştirmek için uyarıları yapılandırabilirsiniz.
 
-Site Kurtarma için, aşağıdakileri yapmanıza yardımcı olmak için Azure Monitör Günlükleri'ni izleyebilirsiniz:
+Site Recovery için, aşağıdakileri yapmanıza yardımcı olması için Azure günlüklerini Izleyebilirsiniz:
 
-- **Site Kurtarma sağlık ve durumunu izleyin.** Örneğin, çoğaltma durumunu, test başarısız durumunu, Site Kurtarma olaylarını, korumalı makineler için kurtarma noktası hedeflerini (RDO' ları) ve disk/veri değiştirme oranlarını izleyebilirsiniz.
-- **Site Kurtarma için uyarılar ayarlayın.** Örneğin, makine durumu, test başarısız durumu veya Site Kurtarma iş durumu için uyarıları yapılandırabilirsiniz.
+- **Site Recovery durumunu ve durumunu izleyin**. Örneğin, çoğaltma durumunu, test yük devretme durumunu, Site Recovery olayları, korunan makineler için kurtarma noktası hedeflerini (RPOs) ve disk/veri değişim hızlarını izleyebilirsiniz.
+- **Site Recovery için uyarıları ayarlayın**. Örneğin, makine sistem durumu, test yük devretme durumu veya Site Recovery iş durumu için uyarıları yapılandırabilirsiniz.
 
-Site Kurtarma ile Azure Monitör Günlükleri'nin kullanılması **Azure'dan Azure'a** çoğaltma için ve **VMware VM/fiziksel sunucudan Azure çoğaltmasına** desteklenir.
+Azure Izleyici günlüklerini Site Recovery ile Azure 'da Azure **'a** çoğaltma, **VMware VM/fiziksel sunucusu ise Azure** 'a çoğaltma için desteklenir.
 
 > [!NOTE]
-> VMware ve fiziksel makineler için karmaşalı veri günlükleri ve yükleme hızı günlüklerini almak için İşlem Sunucusu'na bir Microsoft izleme aracısı yüklemeniz gerekir. Bu aracı, çoğaltma makinelerinin günlüklerini çalışma alanına gönderir. Bu özellik sadece 9.30 mobilite aracısı sürümü için kullanılabilir.
+> VMware ve fiziksel makinelere yönelik dalgalanma veri günlüklerini ve karşıya yükleme hızı günlüklerini almak için Işlem sunucusuna bir Microsoft Monitoring Agent yüklemeniz gerekir. Bu aracı, çoğaltılan makinelerin günlüklerini çalışma alanına gönderir. Bu özellik yalnızca 9,30 Mobility Agent sürümü için geçerlidir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 İşte gerekenler:
 
-- Kurtarma Hizmetleri kasasında korunan en az bir makine.
-- Site Kurtarma günlüklerini depolamak için bir Günlük Analizi çalışma alanı. Çalışma alanı ayarlama [hakkında bilgi edinin.](../azure-monitor/learn/quick-create-workspace.md)
-- Log Analytics'te günlük sorgularının nasıl yazılabildiğini, çalıştırılabildiğini ve analiz edilebildiğini temel bir şekilde anlayın. [Daha fazla bilgi edinin](../azure-monitor/log-query/get-started-portal.md).
+- Bir kurtarma hizmetleri kasasında korunan en az bir makine.
+- Site Recovery günlüklerini depolamak için bir Log Analytics çalışma alanı. Çalışma alanı ayarlama [hakkında bilgi edinin](../azure-monitor/learn/quick-create-workspace.md) .
+- Log Analytics 'de günlük sorgularının nasıl yazılacağı, çalıştırılacağı ve analiz edileceği hakkında temel bir anlama. [Daha fazla bilgi edinin](../azure-monitor/log-query/get-started-portal.md).
 
-Başlamadan önce sık sorulan izleme sorularını gözden [geçirmenizi](monitoring-common-questions.md) öneririz.
+Başlamadan önce [yaygın izleme sorularını](monitoring-common-questions.md) incelemenizi öneririz.
 
-## <a name="configure-site-recovery-to-send-logs"></a>Günlükleri göndermek için Site Kurtarma'yı yapılandırma
+## <a name="configure-site-recovery-to-send-logs"></a>Günlükleri göndermek için Site Recovery yapılandırma
 
-1. Kasada, **Tanılama ayarlarını** > tıklatın**Tanılama ayarı ekleyin.**
+1. Kasada, **Tanılama ayarları** > **Tanılama ayarı Ekle**' ye tıklayın.
 
-    ![Tanısal günlüğe kaydetmeyi seçin](./media/monitoring-log-analytics/add-diagnostic.png)
+    ![Kaynak günlüğünü seçin](./media/monitoring-log-analytics/add-diagnostic.png)
 
-2. **Tanılama ayarlarında,** bir ad belirtin ve Günlük **Analitiğine Gönder**kutusunu işaretleyin.
-3. Azure Monitör Günlükleri aboneliğini ve Günlük Analizi çalışma alanını seçin.
-4. Geçişte **Azure Tanılama'yı** seçin.
-5. Günlük listesinden **AzureSiteRecovery**önekiyle tüm günlükleri seçin. Ardından **Tamam**'a tıklayın.
+2. **Tanılama ayarları**' nda bir ad belirtin ve kutuyu **Log Analytics gönder**' i işaretleyin.
+3. Azure Izleyici günlük aboneliğini ve Log Analytics çalışma alanını seçin.
+4. Geçiş **Azure tanılama** seçin.
+5. Günlük listesinden, **Azuresterecovery**ön ekine sahip tüm günlükleri seçin. Ardından **Tamam**'a tıklayın.
 
     ![Çalışma alanını seçme](./media/monitoring-log-analytics/select-workspace.png)
 
-Site Kurtarma günlükleri, seçili çalışma alanında bir tabloya **(Azure Diagnostics)** beslemeye başlar.
+Site Recovery Günlükler seçili çalışma alanındaki bir tabloya (**AzureDiagnostics**) akışa başlar.
 
-## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>İşlem Sunucusu'ndaki Microsoft izleme aracısını karmaşa ve yükleme hızı günlükleri göndermek için yapılandırın
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Işlem sunucusunda, değişim ve karşıya yükleme hızı günlükleri göndermek için Microsoft Monitoring Agent 'ı yapılandırma
 
-VMware/fiziksel makineleriniz için veri karmaşası oranı bilgilerini ve kaynak veri yükleme hızı bilgilerini şirket içinde yakalayabilirsiniz. Bunu etkinleştirmek için İşlem Sunucusu'na bir Microsoft izleme aracısının yüklenmesi gerekir.
+Şirket içinde VMware/fiziksel makineleriniz için veri değişim oranı bilgilerini ve kaynak verilerini karşıya yükleme hızı bilgilerini yakalayabilirsiniz. Bunu etkinleştirmek için, Işlem sunucusuna bir Microsoft İzleme aracısının yüklenmesi gerekir.
 
-1. Log Analytics çalışma alanına gidin ve **Gelişmiş Ayarlar'a**tıklayın.
-2. Bağlı **Kaynaklar** sayfasına tıklayın ve windows **sunucularını**seçin.
-3. Windows Agent'ı (64 bit) İşlem Sunucusu'na indirin. 
-4. [Çalışma alanı kimliğini ve anahtarı edinme](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [TLS 1.2 kullanmak üzere aracıyı yapılandır](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. Elde edilen çalışma alanı kimliğini ve anahtarı sağlayarak [aracı yüklemeyi tamamlayın.](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)
-7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş Ayarlar'a**tıklayın. **Veri** sayfasına gidin ve **Windows Performans Sayaçları'na**daha fazla tıklayın. 
-8. Örnek aralığı 300 saniye olan aşağıdaki iki sayıcıyı eklemek için **'+'** düğmesine tıklayın:
+1. Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın.
+2. **Bağlı kaynaklar** sayfasına tıklayın ve **Windows Server**' ı seçin.
+3. Işlem sunucusuna Windows Agent 'ı (64 bit) indirin. 
+4. [Çalışma alanı KIMLIĞINI ve anahtarını alma](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Aracıyı TLS 1,2 kullanacak şekilde yapılandırma](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. Alınan çalışma alanı KIMLIĞINI ve anahtarını sağlayarak [Aracı yüklemesini doldurun](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) .
+7. Yükleme tamamlandıktan sonra, Log Analytics çalışma alanına gidin ve **Gelişmiş ayarlar**' a tıklayın. **Veri** sayfasına gidin ve **Windows performans sayaçları**' na tıklayın. 
+8. Aşağıdaki iki sayacı 300 saniyelik örnek aralığıyla eklemek için **' + '** düğmesine tıklayın:
 
         ASRAnalytics(*)\SourceVmChurnRate 
         ASRAnalytics(*)\SourceVmThrpRate 
 
-Karmaşa ve yükleme hızı verileri çalışma alanına beslemeye başlar.
+Dalgalanma ve karşıya yükleme hızı verileri, çalışma alanına beslemeyi başlatacak.
 
 
-## <a name="query-the-logs---examples"></a>Günlükleri sorgula - örnekler
+## <a name="query-the-logs---examples"></a>Günlükleri sorgulama-örnekler
 
-[Kusto sorgu dili](../azure-monitor/log-query/get-started-queries.md)ile yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Kurtarma izleme için kullanabileceğiniz ortak sorguların birkaç örneği yer almaktadır.
+[Kusto sorgu diliyle](../azure-monitor/log-query/get-started-queries.md)yazılmış günlük sorgularını kullanarak günlüklerden veri alırsınız. Bu bölümde, Site Recovery izlemek için kullanabileceğiniz yaygın sorgulara yönelik birkaç örnek verilmiştir.
 
 > [!NOTE]
-> Bazı örnekler **a2A**ayarlanmış **replicationProviderName_s** kullanın. Bu, Site Kurtarma'yı kullanarak ikincil bir Azure bölgesine çoğaltılan Azure VM'lerini alır. Bu örneklerde, Site Kurtarma kullanarak Azure'a çoğaltılan şirket içi VMware VM'leri veya fiziksel sunucuları almak istiyorsanız, **A2A'yı** **InMageAzureV2**ile değiştirebilirsiniz.
+> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, Site Recovery kullanılarak ikincil bir Azure bölgesine çoğaltılan Azure VM 'lerini alır. Bu örneklerde, Site Recovery kullanarak Azure 'a çoğaltılan şirket içi VMware VM 'lerini veya fiziksel sunucuları almak istiyorsanız **A2A** ile **InMageAzureV2**değiştirebilirsiniz.
 
 
 ### <a name="query-replication-health"></a>Sorgu çoğaltma durumu
 
-Bu sorgu, tüm korumalı Azure VM'lerinin geçerli çoğaltma durumu için bir pasta grafiği çizer ve üç durum la ayrılır: Normal, Uyarı veya Kritik.
+Bu sorgu, tüm korumalı Azure VM 'lerinin geçerli çoğaltma durumu için bir pasta grafiği çizer ve üç duruma bölünür: normal, uyarı veya kritik.
 
 ```
 AzureDiagnostics  
@@ -95,9 +95,9 @@ AzureDiagnostics 
 | summarize count() by replicationHealth_s  
 | render piechart   
 ```
-### <a name="query-mobility-service-version"></a>Mobilite hizmet sürümünü sorgula
+### <a name="query-mobility-service-version"></a>Mobility hizmeti sürümünü sorgula
 
-Bu sorgu, Çalıştıkları Mobilite aracısının sürümüne göre ayrılmış, Site Kurtarma ile çoğaltılan Azure VM'leri için bir pasta grafiği çizer.
+Bu sorgu, Site Recovery ile çoğaltılan Azure VM 'lerinin, çalıştırdığı Mobility Aracısı sürümüne göre ayrılmış bir pasta grafiği çizer.
 
 ```
 AzureDiagnostics  
@@ -109,9 +109,9 @@ AzureDiagnostics 
 | render piechart 
 ```
 
-### <a name="query-rpo-time"></a>RPO süresini sorgula
+### <a name="query-rpo-time"></a>Sorgu RPO saati
 
-Bu sorgu, Kurtarma noktası hedefine (RPO) göre ayrılmış, Site Kurtarma ile çoğaltılan Azure VM'lerinin çubuk grafiğini çizer: 15 dakikadan az, 15-30 dakika arasında, 30 dakikadan fazla.
+Bu sorgu, kurtarma noktası hedefi (RPO) tarafından ayrılmış, Site Recovery ile çoğaltılan Azure VM 'lerinin çubuk grafiğini çizer: 15 dakikadan az, 30 dakikadan uzun bir süre 15-30.
 
 ```
 AzureDiagnostics 
@@ -125,11 +125,11 @@ rpoInSeconds_d <= 1800, "15-30Min", ">30Min") 
 | render barchart 
 ```
 
-![Sorgu RPO](./media/monitoring-log-analytics/example1.png)
+![Sorgu RPO 'SU](./media/monitoring-log-analytics/example1.png)
 
-### <a name="query-site-recovery-jobs"></a>Site Kurtarma işlerini sorgula
+### <a name="query-site-recovery-jobs"></a>Site Recovery işleri sorgula
 
-Bu sorgu, son 72 saat içinde tetiklenen tüm Site Kurtarma işlerini (tüm olağanüstü durum kurtarma senaryoları için) ve bunların tamamlanma durumunu alır.
+Bu sorgu, Son 72 saat içinde tetiklenen tüm Site Recovery işleri (tüm olağanüstü durum kurtarma senaryoları için) ve tamamlanma durumlarını alır.
 
 ```
 AzureDiagnostics  
@@ -138,9 +138,9 @@ AzureDiagnostics 
 | project JobName = OperationName , VaultName = Resource , TargetName = affectedResourceName_s, State = ResultType  
 ```
 
-### <a name="query-site-recovery-events"></a>Site Kurtarma olaylarını sorgula
+### <a name="query-site-recovery-events"></a>Sorgu Site Recovery olayları
 
-Bu sorgu, son 72 saat içinde yükseltilen tüm Site Kurtarma olaylarını (tüm olağanüstü durum kurtarma senaryoları için) önemderecesiyle birlikte alır. 
+Bu sorgu, Son 72 saat içinde oluşturulan tüm Site Recovery olaylarını (tüm olağanüstü durum kurtarma senaryoları için) önem derecesine sahip olarak alır. 
 
 ```
 AzureDiagnostics   
@@ -149,9 +149,9 @@ AzureDiagnostics  
 | project AffectedObject=affectedResourceName_s , VaultName = Resource, Description_s = healthErrors_s , Severity = Level  
 ```
 
-### <a name="query-test-failover-state-pie-chart"></a>Sorgu testi başarısız durumu (pasta grafiği)
+### <a name="query-test-failover-state-pie-chart"></a>Sorgu testi yük devretme durumu (pasta grafik)
 
-Bu sorgu, Site Kurtarma ile çoğaltılan Azure VM'lerinin test başarısızlığı durumu için bir pasta grafiği çizer.
+Bu sorgu, Site Recovery ile çoğaltılan Azure VM 'lerinin test yük devretme durumu için bir pasta grafik çizer.
 
 ```
 AzureDiagnostics  
@@ -164,9 +164,9 @@ AzureDiagnostics 
 | render piechart 
 ```
 
-### <a name="query-test-failover-state-table"></a>Sorgu testi başarısız durumu (tablo)
+### <a name="query-test-failover-state-table"></a>Sorgu testi yük devretme durumu (tablo)
 
-Bu sorgu, Site Kurtarma ile çoğaltılan Azure VM'lerinin test başarısızlığı durumu için bir tablo çizer.
+Bu sorgu, Site Recovery ile çoğaltılan Azure VM 'lerinin test yük devretme durumu için bir tablo çizer.
 
 ```
 AzureDiagnostics   
@@ -177,9 +177,9 @@ AzureDiagnostics  
 | project VirtualMachine = name_s , VaultName = Resource , TestFailoverStatus = failoverHealth_s 
 ```
 
-### <a name="query-machine-rpo"></a>Sorgu makinesi RPO
+### <a name="query-machine-rpo"></a>Makine RPO 'SU sorgula
 
-Bu sorgu, belirli bir Azure VM'nin (ContosoVM123) son 72 saat için RPO'sunun izini süren bir eğilim grafiği çizer.
+Bu sorgu, Son 72 saat boyunca belirli bir Azure VM 'nin (ContosoVM123) RPO 'sunu izleyen bir eğilim grafiğini çizer.
 
 ```
 AzureDiagnostics   
@@ -190,11 +190,11 @@ AzureDiagnostics  
 | project TimeGenerated, name_s , RPO_in_seconds = rpoInSeconds_d   
 | render timechart 
 ```
-![Sorgu makinesi RPO](./media/monitoring-log-analytics/example2.png)
+![Makine RPO 'SU sorgula](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure VM için veri değiştirme oranını (karmaşa) ve yükleme oranını sorgula
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Bir Azure VM için sorgu verileri değişiklik hızı (karmaşıklık) ve karşıya yükleme oranı
 
-Bu sorgu, veri değişim oranını (Saniyede Bayt yaz) ve veri yükleme oranını temsil eden belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer. 
+Bu sorgu, veri değişim hızını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden belirli bir Azure VM (ContosoVM123) için bir eğilim grafiği çizer. 
 
 ```
 AzureDiagnostics   
@@ -207,14 +207,14 @@ Category contains "Upload", "UploadRate", "none") 
 | project TimeGenerated , InstanceWithType , Churn_MBps = todouble(Value_s)/1048576   
 | render timechart  
 ```
-![Sorgu veri değişikliği](./media/monitoring-log-analytics/example3.png)
+![Sorgu verileri değişikliği](./media/monitoring-log-analytics/example3.png)
 
-### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware veya fiziksel makine için veri değiştirme oranını (karmaşa) ve yükleme oranını sorgula
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware veya fiziksel makine için sorgu veri değişim oranı (karmaşıklık) ve karşıya yükleme oranı
 
 > [!Note]
-> Bu günlükleri almak için Process Server'daki izleme aracısını ayarladığınızdan emin olun. [İzleme aracısını yapılandırmak için gereken adımlara](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)bakın.
+> Bu günlükleri getirmek için Işlem sunucusunda izleme aracısını oluşturduğunuzdan emin olun. [İzleme aracısını yapılandırma adımları](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)bölümüne bakın.
 
-Bu sorgu, veri değişim oranını (Saniyede Bayt yaz) ve veri yükleme hızını temsil eden, çoğaltılmış bir **öğewin-9r7sfh9qlru'nun**belirli bir **disk disk0'ü** için bir eğilim grafiği çizer. Yinelenen öğenin **Diskler** bıçağında disk adını kurtarma hizmetleri kasasında bulabilirsiniz. Sorguda kullanılacak örnek adı, bu örnekte olduğu gibi makinenin DNS adı ve ardından gelen disk adıdır.
+Bu sorgu, veri değişim oranını (saniye başına yazılan bayt) ve veri yükleme oranını temsil eden **Win-9r7sfh9enru**öğesinin çoğaltılan bir öğesi **Disk0** için bir eğilim grafiği çizer. Disk adını, kurtarma hizmetleri kasasındaki çoğaltılan öğenin **diskler** dikey penceresinde bulabilirsiniz. Sorguda kullanılacak örnek adı, makinenin DNS adıdır ve ardından _ ve disk adı bu örnekte olur.
 
 ```
 Perf
@@ -224,11 +224,11 @@ Perf
 | project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
 | render timechart
 ```
-Process Server bu verileri her 5 dakikada bir Log Analytics çalışma alanına iter. Bu veri noktaları, 5 dakika için hesaplanan ortalamayı temsil ediyor.
+İşlem sunucusu bu verileri her 5 dakikada bir Log Analytics çalışma alanına iter. Bu veri noktaları, 5 dakika boyunca hesaplanan ortalama süreyi temsil eder.
 
-### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Olağanüstü durum kurtarma özetini sorgula (Azure'dan Azure'a)
+### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Sorgu olağanüstü durum kurtarma Özeti (Azure 'dan Azure 'a)
 
-Bu sorgu, ikincil bir Azure bölgesine çoğaltılan Azure VM'leri için bir özet tablosu çizer.  VM adı, çoğaltma ve koruma durumu, RPO, test başarısızlığı durumu, Mobilite aracısı sürümü, etkin çoğaltma hataları ve kaynak konumu gösterir.
+Bu sorgu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için bir Özet tablosu çizer.  VM adı, çoğaltma ve koruma durumu, RPO, test yük devretme durumu, Mobility Aracısı sürümü, etkin çoğaltma hataları ve kaynak konumu gösterir.
 
 ```
 AzureDiagnostics 
@@ -238,9 +238,9 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, SourceLocation = primaryFabricName_s 
 ```
 
-### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Olağanüstü durum kurtarma özetini sorgula (VMware/fiziksel sunucular)
+### <a name="query-disaster-recovery-summary-vmwarephysical-servers"></a>Sorgu olağanüstü durum kurtarma Özeti (VMware/fiziksel sunucular)
 
-Bu sorgu, Azure'da çoğaltılan VMware VM'leri ve fiziksel sunucuları için bir özet tablosu çizer.  Makine adı, çoğaltma ve koruma durumu, RPO, test hatası durumu, Mobilite aracısı sürümü, etkin çoğaltma hataları ve ilgili işlem sunucusunu gösterir.
+Bu sorgu, VMware VM 'Leri ve Azure 'a çoğaltılan fiziksel sunucular için bir Özet tablosu çizer.  Makine adı, çoğaltma ve koruma durumu, RPO, test yük devretme durumu, Mobility Aracısı sürümü, etkin çoğaltma hataları ve ilgili işlem sunucusu gösterilir.
 
 ```
 AzureDiagnostics  
@@ -250,16 +250,16 @@ AzureDiagnostics 
 | project VirtualMachine = name_s , Vault = Resource , ReplicationHealth = replicationHealth_s, Status = protectionState_s, RPO_in_seconds = rpoInSeconds_d, TestFailoverStatus = failoverHealth_s, AgentVersion = agentVersion_s, ReplicationError = replicationHealthErrors_s, ProcessServer = processServerName_g  
 ```
 
-## <a name="set-up-alerts---examples"></a>Uyarıları ayarlama - örnekler
+## <a name="set-up-alerts---examples"></a>Uyarıları ayarlama-örnekler
 
-Azure Monitor verilerine dayalı Olarak Site Kurtarma uyarıları ayarlayabilirsiniz. Günlük uyarıları ayarlama hakkında [daha fazla bilgi edinin.](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) 
+Azure Izleyici verilerine göre Site Recovery uyarıları ayarlayabilirsiniz. Günlük uyarılarını ayarlama hakkında [daha fazla bilgi edinin](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) . 
 
 > [!NOTE]
-> Bazı örnekler **a2A**ayarlanmış **replicationProviderName_s** kullanın. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM'leri için uyarılar ayarlar. Bu örneklerde, şirket içi VMware VM'ler veya Azure'da çoğaltılan fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A'yı** **InMageAzureV2** ile değiştirebilirsiniz.
+> Örneklerden bazıları **A2A**olarak ayarlanmış **replicationProviderName_s** kullanır. Bu, ikincil bir Azure bölgesine çoğaltılan Azure VM 'Leri için uyarıları ayarlar. Bu örneklerde, Azure 'a çoğaltılan şirket içi VMware VM 'Leri veya fiziksel sunucular için uyarılar ayarlamak istiyorsanız **A2A** ile **InMageAzureV2** değiştirebilirsiniz.
 
-### <a name="multiple-machines-in-a-critical-state"></a>Kritik durumda birden çok makine
+### <a name="multiple-machines-in-a-critical-state"></a>Kritik durumdaki birden çok makine
 
-Çoğaltılan 20'den fazla Azure VM'si Kritik duruma giriyorsa bir uyarı ayarlayın.
+20 ' den fazla çoğaltılan Azure VM 'si kritik bir duruma gittiği takdirde uyarı ayarlayın.
 
 ```
 AzureDiagnostics   
@@ -269,11 +269,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-Uyarı için **Eşik değerini** 20 olarak ayarlayın.
+Uyarı için **eşik değerini** 20 olarak ayarlayın.
 
-### <a name="single-machine-in-a-critical-state"></a>Kritik durumda tek makine
+### <a name="single-machine-in-a-critical-state"></a>Kritik durumdaki tek makine
 
-Belirli bir yinelenen Azure VM kritik duruma geçerse bir uyarı ayarlayın.
+Belirli bir çoğaltılan Azure VM 'si kritik duruma geçtiğinde bir uyarı ayarlayın.
 
 ```
 AzureDiagnostics   
@@ -284,11 +284,11 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Uyarı için **Eşik değerini** 1 olarak ayarlayın.
+Uyarı için **eşik değerini** 1 olarak ayarlayın.
 
-### <a name="multiple-machines-exceed-rpo"></a>Birden fazla makine RPO'u aşıyor
+### <a name="multiple-machines-exceed-rpo"></a>Birden çok makine RPO 'yu aşıyor
 
-20'den fazla Azure VM'si için RPO 30 dakikayı aşarsa bir uyarı ayarlayın.
+20 ' den fazla Azure VM 'ye yönelik RPO 30 dakikayı aşarsa bir uyarı ayarlayın.
 ```
 AzureDiagnostics   
 | where replicationProviderName_s == "A2A"   
@@ -298,9 +298,9 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-Uyarı için **Eşik değerini** 20 olarak ayarlayın.
+Uyarı için **eşik değerini** 20 olarak ayarlayın.
 
-### <a name="single-machine-exceeds-rpo"></a>Tek makine RPO aşıyor
+### <a name="single-machine-exceeds-rpo"></a>Tek makine RPO 'yu aşıyor
 
 Tek bir Azure VM için RPO 30 dakikayı aşarsa bir uyarı ayarlayın.
 
@@ -314,11 +314,11 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-Uyarı için **Eşik değerini** 1 olarak ayarlayın.
+Uyarı için **eşik değerini** 1 olarak ayarlayın.
 
-### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Birden fazla makine için test başarısız90 günü aşıyor
+### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>Birden çok makine için yük devretme testi 90 günü aşıyor
 
-Son başarılı test başarısızlığı 90 günden fazla ysa, 20 VM'den fazla bir uyarı ayarlayın. 
+20 ' den fazla VM için son başarılı test yük devretmesi 90 günden daha fazla olursa bir uyarı ayarlayın. 
 
 ```
 AzureDiagnostics  
@@ -329,11 +329,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Uyarı için **Eşik değerini** 20 olarak ayarlayın.
+Uyarı için **eşik değerini** 20 olarak ayarlayın.
 
-### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Tek makine için test başarısız90 günü aşıyor
+### <a name="test-failover-for-single-machine-exceeds-90-days"></a>Tek makine için yük devretme testi 90 günü aşıyor
 
-Belirli bir VM için son başarılı test başarısızlığı 90 günden fazla olduysa bir uyarı ayarlayın.
+Belirli bir sanal makine için son başarılı test yük devretmesi 90 günden daha önce olursa bir uyarı ayarlayın.
 ```
 AzureDiagnostics  
 | where replicationProviderName_s == "A2A"   
@@ -344,11 +344,11 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-Uyarı için **Eşik değerini** 1 olarak ayarlayın.
+Uyarı için **eşik değerini** 1 olarak ayarlayın.
 
-### <a name="site-recovery-job-fails"></a>Site Kurtarma işi başarısız olur
+### <a name="site-recovery-job-fails"></a>Site Recovery iş başarısız
 
-Bir Site Kurtarma işi (bu durumda Yeniden Koruma işi) son gün boyunca herhangi bir Site Kurtarma senaryosunda başarısız olursa bir uyarı ayarlayın. 
+Son gün içinde bir Site Recovery işi (Bu durumda yeniden koruma işi) herhangi bir Site Recovery senaryosunda başarısız olursa bir uyarı ayarlayın. 
 ```
 AzureDiagnostics   
 | where Category == "AzureSiteRecoveryJobs"   
@@ -357,8 +357,8 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-Uyarı için, hataları son gün deki hataları denetlemek için **Eşik değerini** 1'e, **Dönem'i** 1 dakikaya ayarlayın.
+Uyarı için **eşik değerini** 1 olarak ayarlayın ve son gün içindeki hataların denetlenmesi için 1440 dakikaya kadar olan **süreyi** belirleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Dahili Site Kurtarma izleme [hakkında bilgi edinin.](site-recovery-monitor-and-troubleshoot.md)
+Yerleşik Site Recovery izleme [hakkında bilgi edinin](site-recovery-monitor-and-troubleshoot.md) .

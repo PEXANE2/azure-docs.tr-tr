@@ -1,6 +1,6 @@
 ---
-title: Azure Monitör'ü kullanarak günlükleri ArcSight ile tümleştirin | Microsoft Dokümanlar
-description: Azure Monitörünü kullanarak Azure Active Directory günlüklerini ArcSight ile nasıl entegre edebilirsiniz öğrenin
+title: Günlükleri Azure Izleyici kullanarak Arcizle tümleştirin | Microsoft Docs
+description: Azure Izleyici 'yi kullanarak Azure Active Directory günlüklerini Arcgörüş ile tümleştirmeyi öğrenin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,46 +17,46 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f03b146331069371106c1857f2acc68b566d3c5d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75608389"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129242"
 ---
-# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitörünü kullanarak Azure Active Directory günlüklerini ArcSight ile tümleştirin
+# <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Active Directory günlüklerini Arcizle tümleştirin
 
-[Micro Focus ArcSight,](https://software.microfocus.com/products/siem-security-information-event-management/overview) platformunuzdaki güvenlik tehditlerini algılamanıza ve yanıt lamanıza yardımcı olan bir güvenlik bilgileri ve olay yönetimi (SIEM) çözümüdür. Artık Azure AD için ArcSight konektörü kullanarak Azure Monitor'u kullanarak Azure Active Directory (Azure AD) günlüklerini ArcSight'a yönlendirebilirsiniz. Bu özellik, ArcSight'ı kullanarak kiracınızı güvenlik tenebize etmek için izlemenize olanak tanır.  
+[Micro Focus Arcgörüş](https://software.microfocus.com/products/siem-security-information-event-management/overview) , platformunuzun güvenlik tehditlerini algılamanıza ve bunlara yanıt vermenize yardımcı olan bir güvenlik bilgileri ve olay yönetimi (SIEM) çözümüdür. Artık Azure AD 'ye yönelik Arcizme bağlayıcısını kullanarak Azure Izleyici 'yi kullanarak Azure Active Directory (Azure AD) günlüklerini Arcgörüş alanına yönlendirebilirsiniz. Bu özellik, kiracınızı kullanarak kiracınızı güvenlik güvenliğinin aşılmasına karşı izlemenizi sağlar.  
 
-Bu makalede, Azure Monitor'u kullanarak Azure AD günlüklerini ArcSight'a nasıl yönlendirdiğinizi öğreneceksiniz. 
+Bu makalede, Azure Izleyici kullanarak Azure AD günlüklerini Arcize yönlendirmeyi öğreneceksiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
-* Azure AD etkinlik günlükleri içeren bir Azure etkinlik merkezi. [Etkinlik günlüklerinizi bir etkinlik hub'ına nasıl aktartığın](quickstart-azure-monitor-stream-logs-to-event-hub.md)öğren. 
-* ArcSight Syslog NG Daemon SmartConnector (SmartConnector) veya ArcSight Yük Dengeleyici'nin yapılandırılmış bir örneği. Olaylar ArcSight Yük Dengeleyicisi'ne gönderilirse, sonuç olarak Yük Dengeleyicisi tarafından SmartConnector'a gönderilir.
+* Azure AD etkinlik günlüklerini içeren bir Azure Olay Hub 'ı. [Etkinlik günlüklerinizi bir olay hub 'ına akışa](quickstart-azure-monitor-stream-logs-to-event-hub.md)alma hakkında bilgi edinin. 
+* Arcgözetimi syslog, Daemon SmartConnector (SmartConnector) veya Arcgörüş Load Balancer yapılandırılmış bir örneği. Olaylar Arcgörüş Load Balancer gönderilirse, bu, sonuçta Load Balancer tarafından SmartConnector 'a gönderilir.
 
-[Azure Monitörü Etkinlik Hub'ı için ArcSight SmartConnector için yapılandırma kılavuzunu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)indirin ve açın. Bu kılavuz, Azure Monitör için ArcSight SmartConnector'u yüklemek ve yapılandırmak için gereken adımları içerir. 
+[Azure Izleyici Olay Hub 'ı Için Arcgörüş SmartConnector yapılandırma kılavuzunu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)indirip açın. Bu kılavuz, Azure Izleyici için Arcgörüş SmartConnector 'ı yüklemek ve yapılandırmak için gereken adımları içerir. 
 
-## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure REKLAM günlüklerini ArcSight ile tümleştirme
+## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD günlüklerini Arcgörüş ile tümleştirme
 
-1. İlk olarak, yapılandırma kılavuzunun **Önkoşullar** bölümündeki adımları tamamlayın. Bu bölümde aşağıdaki adımlar yer almaktadır:
-    * Bağlayıcıyı dağıtacak ve yapılandıracak **sahip** rolü olan bir kullanıcı olduğundan emin olmak için kullanıcı izinlerini Azure'da ayarlayın.
-    * Syslog NG Daemon SmartConnector ile sunucuda bağlantı noktalarını açın, böylece Azure'dan erişebilsin. 
-    * Dağıtım bir Windows PowerShell komut dosyası çalıştırır, bu nedenle PowerShell'in konektörü dağıtmak istediğiniz makinede komut dosyalarını çalıştırmasını etkinleştirmeniz gerekir.
+1. İlk olarak, yapılandırma kılavuzunun **Önkoşullar** bölümündeki adımları uygulayın. Bu bölüm aşağıdaki adımları içerir:
+    * Bağlayıcıyı dağıtmak ve yapılandırmak için **sahip** rolüne sahip bir kullanıcı olduğundan emin olmak için Azure 'da Kullanıcı izinlerini ayarlayın.
+    * Sunucu üzerindeki bağlantı noktalarını Syslog NG Daemon SmartConnector ile açın, bu nedenle Azure 'dan erişilebilir. 
+    * Dağıtım bir Windows PowerShell betiği çalıştırır, bu yüzden bağlayıcıyı dağıtmak istediğiniz makinede betikleri çalıştırmak için PowerShell 'i etkinleştirmeniz gerekir.
 
-2. Konektörü dağıtmak için yapılandırma **kılavuzunun Bağlayıcıyı Dağıtma** bölümündeki adımları izleyin. Bu bölüm, bağlayıcıyı nasıl indirip ayıkladığınız, uygulama özelliklerini yapılandırmanız ve çıkarılan klasörden dağıtım komut dosyasını çalıştırmanız için size yol açar. 
+2. Bağlayıcıyı dağıtmak için yapılandırma kılavuzunun **bağlayıcı dağıtma** bölümündeki adımları izleyin. Bu bölümde, bağlayıcının nasıl indirileceği ve ayıklanacağı, uygulama özelliklerinin nasıl yapılandırılacağı ve dağıtım betiği ayıklanan klasörden nasıl çalıştırılacağı anlatılmaktadır. 
 
-3. Bağlayıcının ayarlanıp düzgün çalıştığından emin olmak için **Azure'da Dağıtımı Doğrulama** adımlarını kullanın. Aşağıdakileri doğrulayın:
-    * Gerekli Azure işlevleri Azure aboneliğinizde oluşturulur.
-    * Azure AD günlükleri doğru hedefe akışlanır. 
-    * Dağıtımınızdaki uygulama ayarları Azure İşlev Uygulamaları'ndaki Uygulama Ayarları'nda devam eder. 
-    * Azure'da, CeF formatında eşlenen dosyaları içeren ArcSight bağlayıcısı ve depolama hesapları için bir Azure REKLAM uygulamasıyla, ArcSight için yeni bir kaynak grubu oluşturulur.
+3. Bağlayıcının ayarlandığından ve düzgün çalıştığından emin olmak için **Azure 'Da dağıtımı doğrulama** bölümündeki adımları kullanın. Aşağıdakileri doğrulayın:
+    * Önkoşul Azure işlevleri, Azure aboneliğinizde oluşturulur.
+    * Azure AD günlükleri doğru hedefe akışla kaydedilir. 
+    * Dağıtımınızdaki uygulama ayarları, Azure Işlev uygulamalarındaki uygulama ayarlarında kalıcı hale getirilir. 
+    * Arcgörüş için yeni bir kaynak grubu Azure 'da, Arcgörüş bağlayıcı ve CEF biçimindeki eşlenmiş dosyaları içeren depolama hesapları için bir Azure AD uygulamasıyla oluşturulur.
 
-4. Son olarak, yapılandırma kılavuzunun **Dağıtım Sonrası Yapılandırmaları'ndaki** dağıtım sonrası adımları tamamlayın. Bu bölümde, işlev uygulamalarının bir zaman aşım döneminden sonra boşta durmasını önlemek, olay merkezinden tanılama günlüklerinin akışını yapılandırmak ve SysLog NG Daemon'u güncelleştirmek için bir Uygulama Hizmet Planı'ndaysanız ek yapılandırmanasıl gerçekleştirileceğiniz açıklanmaktadır SmartConnector keystore sertifikası yeni oluşturulan depolama hesabı ile ilişkilendirmek için.
+4. Son olarak, yapılandırma kılavuzunun **dağıtım sonrası yapılandırmalarında** dağıtım sonrası adımlarını tamamlayabilirsiniz. Bu bölümde, işlev uygulamalarının bir zaman aşımı süresinden sonra boşta kalmasını engellemek, Olay Hub 'ından kaynak günlüklerinin akışını yapılandırmak ve yeni oluşturulan depolama hesabıyla ilişkilendirmek için Syslog ng Daemon akıllı bağlayıcı anahtar deposu sertifikasını güncelleştirmek üzere bir App Service planınız varsa ek yapılandırmanın nasıl gerçekleştirileceği açıklanmaktadır.
 
-5. Yapılandırma kılavuzu, Azure'daki bağlayıcı özelliklerini nasıl özelleştireceklerini ve bağlayıcıyı nasıl yükseltip kaldırabilirsiniz imal etmeyi de açıklar. Ayrıca, etkinlik yükü tek bir Syslog NG Daemon SmartConnector'un kaldırabileceğinden daha büyükse, [Azure Tüketim planına](https://azure.microsoft.com/pricing/details/functions) yükseltme ve ArcSight Yük Dengeleyicisini yapılandırma dahil olmak üzere performans iyileştirmeleri ile ilgili bir bölüm de vardır.
+5. Yapılandırma Kılavuzu Ayrıca, Azure 'daki bağlayıcı özelliklerini özelleştirmeyi ve bağlayıcının nasıl yükseltileceğini ve kaldırılacağını açıklar. Ayrıca, olay yükü tek bir Syslog Daemon akıllı bağlayıcısının işleyebileceği değerden daha büyükse, performans geliştirmeleriyle ilgili bir [Azure tüketim planına](https://azure.microsoft.com/pricing/details/functions) yükseltme ve ArcLoad Balancer görüş yapılandırma dahil bir bölüm de vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure MonitörÜ Etkinlik Hub'ı için ArcSight SmartConnector için yapılandırma kılavuzu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)
+[Azure Izleyici Olay Hub 'ı için Arcgörüş SmartConnector yapılandırma kılavuzu](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

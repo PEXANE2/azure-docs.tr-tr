@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: eb8e06370ecbe2b104a19c4e420b5d3ae013a00e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116324"
+ms.locfileid: "82127560"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve sorun giderme Azure Machine Learning
 
@@ -40,6 +40,23 @@ Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları
 
 ## <a name="installation-and-import"></a>Yükleme ve içeri aktarma
 
+* **PIP yüklemesi: bağımlılıkların tek satırlık yüklemeyle tutarlı olması garanti edilmez**: 
+
+   Tek bir satır olarak yüklediğinizde çalışan bir bağımlılık Çözümleyicisi olmadığından, bu, PIP 'nin bilinen bir sınırlamasıdır. İlk benzersiz bağımlılık, tek bir baktığı tek. 
+
+   Aşağıdaki kodda `azure-ml-datadrift` bulunur ve `azureml-train-automl` tek satırlık bir PIP yüklemesi kullanılarak yüklenir. 
+     ```
+       pip install azure-ml-datadrift, azureml-train-automl
+     ```
+   Bu örnekte, diyelim ki `azure-ml-datadrift` 1,0 sürüm > ve `azureml-train-automl` < 1,2 sürümünü gerektiriyor. En son sürümü 1,3 `azure-ml-datadrift` ise, daha eski bir sürümün `azureml-train-automl` paket gereksiniminden bağımsız olarak her iki paket de 1,3 ' e yükseltilir. 
+
+   Paketleriniz için uygun sürümlerin yüklendiğinden emin olmak için aşağıdaki kodda gibi birden çok satır kullanarak yükleme yapın. Burada sıra bir sorun değildir, çünkü PIP bir sonraki satır çağrısının parçası olarak açıkça indirgendiğinden. Bu nedenle, uygun sürüm bağımlılıkları uygulanır.
+    
+     ```
+        pip install azure-ml-datadrift
+        pip install azureml-train-automl 
+     ```
+     
 * **Hata iletisi: ' PyYAML ' kaldırılamıyor**
 
     Python için Azure Machine Learning SDK: PyYAML yüklü bir `distutils` projem. Bu nedenle, kısmi bir kaldırma işlemi varsa, hangi dosyaların kendisine ait olduğunu doğru bir şekilde belirleyemedik. Bu hatayı yoksayarak SDK 'Yı yüklemeye devam etmek için şunu kullanın:
@@ -83,20 +100,6 @@ Azure Machine Learning çalışırken karşılaşabileceğiniz [kaynak kotaları
     * Sürüm `azureml-dataprep` 1.1.8 veya üstünü ekleyin.
     * Sürüm `pyarrow` 0,11 veya üstünü ekleyin.
     
-* **PIP yüklemesi: bağımlılıkların tek satır yüklemesiyle tutarlı olması garanti edilmez**: tek bir satır olarak yüklediğinizde çalışan bir bağımlılık Çözümleyicisi olmadığı için bu, PIP 'nin bilinen bir sınırlamasıdır. İlk benzersiz bağımlılık, tek bir baktığı tek. Örneğin, sürüm < 1,2 ve en son sürüm 1,3 ise, Kullanıcı paketleri aşağıda gösterildiği gibi tek bir satıra yüklediğinde her şey, her şeyin her şeyi aşağıda gösterildiği gibi tek bir satıra yüklediğine rağmen, Azure-ML-datadri1,0 > ft ' i yüklüyorsanız, her şey, her şey,, azureml-tren-oto ml paketi daha eski bir sürüm gerektirse de, her şey 1,3 'e yükseltilir. 
-
-    * Tek satırlık yükleme ile tutarsız bağımlılıklar görürsünüz.
-    ```python
-       pip install azure-ml-datadrift, azureml-train-automl
-     ```
-   
-    * Paketleriniz için uygun sürümlerin yüklendiğinden emin olmak için aşağıdaki kodda gibi birden çok satır kullanarak yükleme yapın. Sıralama burada değildir.
-    
-     ```python
-        pip install azure-ml-datadrift
-        pip install azureml-train-automl 
-     ```
-     
 ## <a name="create-and-manage-workspaces"></a>Çalışma alanları oluşturma ve yönetme
 
 > [!WARNING]

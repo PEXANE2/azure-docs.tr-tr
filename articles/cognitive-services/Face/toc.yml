@@ -7,14 +7,8 @@
       href: Overview.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: İstemci SDK’sini kullanma
-      items:
-        - name: .NET SDK
-          href: Quickstarts/csharp-sdk.md
-        - name: Python SDK'sı
-          href: QuickStarts/python-sdk.md
-        - name: Go SDK'sı
-          href: QuickStarts/go-sdk.md
+    - name: İstemci kitaplığını kullanma
+      href: Quickstarts/client-libraries.md
     - name: REST API’sini kullanma
       items:
         - name: Bir görüntüdeki yüzleri algılama

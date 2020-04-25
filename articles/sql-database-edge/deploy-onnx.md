@@ -1,44 +1,44 @@
 ---
-title: SQL Database Edge Preview'da ONNX ile öngörüleri dağıtma ve yapma
-description: Bir modeli nasıl eğitecek, ONNX'e dönüştürecek, Azure SQL Veritabanı Kenarı Önizlemesine dağıtacak ve yüklenen ONNX modelini kullanarak verilerde yerel PREDICT'i çalıştırmayı öğrenin.
-keywords: sql veritabanı kenarını dağıtmak
+title: SQL veritabanı Edge önizlemesinde ONNX ile tahminlere dağıtım ve dağıtım yapma
+description: Bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL veritabanı Edge önizlemesine dağıtma ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın etme hakkında bilgi edinin.
+keywords: SQL veritabanı ucunu dağıtma
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
-ms.date: 03/26/2020
-ms.openlocfilehash: aff9346595d3b8985d3558658af32d05f88c0554
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.date: 04/23/2020
+ms.openlocfilehash: aa2bf5473bf5bd76cfdad39310ce793ab3921652
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80365457"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129288"
 ---
-# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>SQL Database Edge Preview'da bir ONNX modeliyle öngörüleri dağıtma ve yapma
+# <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>SQL veritabanı Edge önizlemesinde bir ONNX modeliyle tahmine dayalı dağıtım ve dağıtım yapma
 
-Bu hızlı başlangıçta, bir modeli nasıl eğiteceğinizi, ONNX'e dönüştürmeyi, Azure SQL Veritabanı Kenarı Önizlemesine dağıtmayı ve yüklenen ONNX modelini kullanarak verilerde yerel PREDICT'i çalıştırmayı öğreneceksiniz. Daha fazla bilgi için [SQL Database Edge Preview'da ONNX ile Machine learning ve AI'ye](onnx-overview.md)bakın.
+Bu hızlı başlangıçta, bir modeli eğitme, ONNX 'e dönüştürme, Azure SQL veritabanı Edge önizlemesine dağıtma ve ardından karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın etme hakkında bilgi edineceksiniz. Daha fazla bilgi için bkz. [SQL veritabanı Edge önizlemesinde ONNX Ile makine öğrenimi ve AI](onnx-overview.md).
 
-Bu quickstart **scikit-öğrenmek** dayanmaktadır ve [Boston Konut veri seti](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)kullanır.
+Bu hızlı başlangıç, **scikit-** ' i öğrenin ve [Boston Muhafazası veri kümesini](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)kullanır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bir Azure SQL Veritabanı Kenarı modülü dağıtmadıysanız, [Azure portalını kullanarak SQL Veritabanı Kenarı Önizlemesini dağıtma](deploy-portal.md)adımlarını izleyin.
+* Azure SQL veritabanı Edge modülünü dağıtmadıysanız [Azure Portal kullanarak SQL veritabanı Edge önizlemesi dağıtma](deploy-portal.md)adımlarını izleyin.
 
-* [Azure Veri Stüdyosu'nu](https://docs.microsoft.com/sql/azure-data-studio/download)yükleyin.
+* [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/download)'i yükler.
 
-* Azure Veri Stüdyosu'nu açın ve bu hızlı başlangıç için gereken paketleri yüklemek için aşağıdaki adımları izleyin:
+* Azure Data Studio açın ve bu hızlı başlangıç için gereken paketleri yüklemek için şu adımları izleyin:
 
-    1. Python 3 Çekirdeğine bağlı [Yeni Not Defteri'ni](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) açın. 
-    1. **Paketleri Yönet'e** tıklayın ve **Yeni Ekle**altında , **scikit-learn**için arama yapın ve scikit-learn paketini yükleyin. 
-    1. Ayrıca, **setuptools**, **numpy**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc**, ve **sqlalchemy** paketleri yükleyin.
+    1. Python 3 çekirdeğine bağlı [Yeni Not defteri](https://docs.microsoft.com/sql/azure-data-studio/sql-notebooks) 'ni açın. 
+    1. **Paketleri Yönet** ' e tıklayın ve **Yeni Ekle**' nin altında, **scikit**için arama yapın-scikit-öğrenme paketini öğrenin ve yüklemeyi yapın. 
+    1. Ayrıca **setuptools**, **sayısal tuş takımı**, **onnxmltools**, **onnxruntime**, **skl2onnx**, **pyodbc**ve **sqlalchemy** paketlerini de yüklemelisiniz.
     
-* Aşağıdaki her komut dosyası bölümü için, Azure Veri Stüdyosu not defterindeki bir hücreye girin ve hücreyi çalıştırın.
+* Aşağıdaki her komut bölümü için, Azure Data Studio not defterindeki bir hücreye girin ve hücreyi çalıştırın.
 
-## <a name="train-a-pipeline"></a>Bir boru hattı eğitin
+## <a name="train-a-pipeline"></a>İşlem hattını eğitme
 
-Bir evin ortanca değerini tahmin etmek için özellikleri kullanmak için veri kümesini bölün.
+Veri kümesini, bir evin ortanca değerini tahmin etmek için özellikleri kullanacak şekilde ayırın.
 
 ```python
 import numpy as np
@@ -54,16 +54,12 @@ boston = load_boston()
 boston
 
 df = pd.DataFrame(data=np.c_[boston['data'], boston['target']], columns=boston['feature_names'].tolist() + ['MEDV'])
-
-# x contains all predictors (features)
-x = df.drop(['MEDV'], axis = 1)
-
-# y is what we are trying to predict - the median value
-y = df.iloc[:,-1]
-
+ 
+target_column = 'MEDV'
+ 
 # Split the data frame into features and target
-x_train = df.drop(['MEDV'], axis = 1)
-y_train = df.iloc[:,-1]
+x_train = pd.DataFrame(df.drop([target_column], axis = 1))
+y_train = pd.DataFrame(df.iloc[:,df.columns.tolist().index(target_column)])
 
 print("\n*** Training dataset x\n")
 print(x_train.head())
@@ -72,7 +68,7 @@ print("\n*** Training dataset y\n")
 print(y_train.head())
 ```
 
-**Çıktı**:
+**Çıkış**:
 
 ```text
 *** Training dataset x
@@ -101,7 +97,7 @@ print(y_train.head())
 Name: MEDV, dtype: float64
 ```
 
-LinearRegression modelini eğitmek için bir boru hattı oluşturun. Diğer regresyon modellerini de kullanabilirsiniz.
+Bir işlem hattı oluşturun ve bu model için bir işlem hattı oluşturun. Diğer gerileme modellerini de kullanabilirsiniz.
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -125,7 +121,7 @@ model = Pipeline(
 model.fit(x_train, y_train)
 ```
 
-Modelin doğruluğunu kontrol edin ve ardından R2 puanını ve ortalama kare hatasını hesaplayın.
+Modelin doğruluğunu kontrol edin ve ardından R2 Puanını ve ortalama kare hata hatasını hesaplayın.
 
 ```python
 # Score the model
@@ -137,16 +133,16 @@ print('*** Scikit-learn r2 score: {}'.format(sklearn_r2_score))
 print('*** Scikit-learn MSE: {}'.format(sklearn_mse))
 ```
 
-**Çıktı**:
+**Çıkış**:
 
 ```text
 *** Scikit-learn r2 score: 0.7406426641094094
 *** Scikit-learn MSE: 21.894831181729206
 ```
 
-## <a name="convert-the-model-to-onnx"></a>Modeli ONNX'e dönüştürün
+## <a name="convert-the-model-to-onnx"></a>Modeli ONNX 'e Dönüştür
 
-Veri türlerini desteklenen SQL veri türlerine dönüştürün. Bu dönüştürme, diğer veri çerçeveleri için de gerekli olacaktır.
+Veri türlerini desteklenen SQL veri türlerine dönüştürün. Bu dönüştürme diğer veri çerçeveleri için de gerekecektir.
 
 ```python
 from skl2onnx.common.data_types import FloatTensorType, Int64TensorType, DoubleTensorType
@@ -169,7 +165,7 @@ def convert_dataframe_schema(df, drop=None, batch_axis=False):
     return inputs
 ```
 
-Kullanarak, `skl2onnx`LinearRegression modelini ONNX biçimine dönüştürün ve yerel olarak kaydedin.
+Kullanarak `skl2onnx`, bir doğrsıya dönüştürme modelini onnx biçimine dönüştürün ve yerel olarak kaydedin.
 
 ```python
 # Convert the scikit model to onnx format
@@ -179,12 +175,12 @@ onnx_model_path = 'boston1.model.onnx'
 onnxmltools.utils.save_model(onnx_model, onnx_model_path)
 ```
 
-## <a name="test-the-onnx-model"></a>ONNX modelini test edin
+## <a name="test-the-onnx-model"></a>ONNX modelini test etme
 
-Modeli ONNX biçimine dönüştürdükten sonra, performansta çok az ve hiç bozulma göstermek için modeli puan.
+Modeli ONNX biçimine dönüştürdükten sonra, performans düşüklüğüne düşmek için modele puan gösterin.
 
 > [!NOTE]
-> ONNX Runtime, küçük tutarsızlıkların mümkün olması için çiftler yerine float kullanır.
+> ONNX çalışma zamanı Double değerleri yerine float kullanır, bu nedenle küçük tutarsızlıklar mümkündür.
 
 ```python
 import onnxruntime as rt
@@ -211,7 +207,7 @@ print('MSE are equal' if sklearn_mse == onnx_mse else 'Difference in MSE scores:
 print()
 ```
 
-**Çıktı**:
+**Çıkış**:
 
 ```text
 *** Onnx r2 score: 0.7406426691136831
@@ -223,7 +219,7 @@ MSE are equal
 
 ## <a name="insert-the-onnx-model"></a>ONNX modelini ekleme
 
-Modeli Azure SQL Veritabanı Kenarı'nda, `models` veritabanındaki `onnx`bir tabloda saklayın. Bağlantı dizesi, **sunucu adresini,** **kullanıcı adını**ve **parolayı**belirtin.
+Modeli, veritabanındaki `models` `onnx`bir tabloda Azure SQL veritabanı Edge 'de depolayın. Bağlantı dizesinde **sunucu adresini**, **Kullanıcı adını**ve **parolayı**belirtin.
 
 ```python
 import pyodbc
@@ -281,12 +277,12 @@ conn.commit()
 
 ## <a name="load-the-data"></a>Verileri yükleme
 
-Verileri Azure SQL Veritabanı Kenarı'na yükleyin.
+Verileri Azure SQL veritabanı Edge 'e yükleyin.
 
-İlk olarak, Boston konut veri kümesinin alt kümelerini depolamak için iki tablo, **özellik** ve **hedef**oluşturun.
+İlk olarak, Boston Muhafazası veri kümesinin alt kümelerini depolamak için iki tablo, **özellik** ve **hedef**oluşturun.
 
-* **Özellikler,** hedefi, ortanca değeri tahmin etmek için kullanılan tüm verileri içerir. 
-* **Hedef,** veri kümesindeki her kayıt için ortanca değeri içerir. 
+* **Özellikler** , target, ortanca değerini tahmin etmek için kullanılan tüm verileri içerir. 
+* **Hedef** , veri kümesindeki her bir kayıt için ortanca değerini içerir. 
 
 ```python
 import sqlalchemy
@@ -341,7 +337,7 @@ print(x_train.head())
 print(y_train.head())
 ```
 
-Son `sqlalchemy` olarak, tablolara `x_train` `y_train` `features` ve pandalara veri çerçeveleri `target`eklemek için kullanın ve sırasıyla. 
+Son olarak, `sqlalchemy` `x_train` ve `y_train` sırasıyla tablolara `features` `target`ve Pandas dataframe 'leri eklemek için kullanın. 
 
 ```python
 db_connection_string = 'mssql+pyodbc://' + username + ':' + password + '@' + server + '/' + database + '?driver=ODBC+Driver+17+for+SQL+Server'
@@ -350,14 +346,14 @@ x_train.to_sql(features_table_name, sql_engine, if_exists='append', index=False)
 y_train.to_sql(target_table_name, sql_engine, if_exists='append', index=False)
 ```
 
-Artık veritabanındaki verileri görüntüleyebilirsiniz.
+Artık verileri veritabanında görüntüleyebilirsiniz.
 
-## <a name="run-predict-using-the-onnx-model"></a>ONNX modelini kullanarak PREDICT'i çalıştırın
+## <a name="run-predict-using-the-onnx-model"></a>ONNX modelini kullanarak ÖNTAHMIN Çalıştır
 
-Azure SQL Database Edge'deki modelle, yüklenen ONNX modelini kullanarak verilerde yerel PREDICT'i çalıştırın.
+Azure SQL veritabanı Edge 'de modeliyle, karşıya yüklenen ONNX modelini kullanarak verileri yerel olarak tahmın edin.
 
 > [!NOTE]
-> Kalan hücreyi çalıştırmak için not defteri çekirdeğini SQL olarak değiştirin.
+> Kalan hücreyi çalıştırmak için Not defteri çekirdeğini SQL olarak değiştirin.
 
 ```sql
 USE onnx
@@ -393,4 +389,4 @@ FROM PREDICT(MODEL = @model, DATA = predict_input) WITH (variable1 FLOAT) AS p
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [SQL Database Edge'de ONNX ile Makine Öğrenimi ve Yapay AI](onnx-overview.md)
+* [SQL veritabanı Edge 'de ONNX ile Machine Learning ve AI](onnx-overview.md)

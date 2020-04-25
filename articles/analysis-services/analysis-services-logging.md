@@ -1,106 +1,106 @@
 ---
-title: Azure Analiz Hizmetleri için tanılama günlüğü | Microsoft Dokümanlar
-description: Azure Çözümleme Hizmetleri sunucunuzu izlemek için Azure kaynak tanılama günlüğe kaydetmeyi nasıl ayarlayabileceğinizi açıklar.
+title: Azure Analysis Services için tanılama günlüğü | Microsoft Docs
+description: Azure Analysis Services sunucunuzu izlemek için günlüğü ayarlamayı açıklar.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0f13f297facedceb50920c0f6afca63fe1df0b48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266188"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82128922"
 ---
 # <a name="setup-diagnostic-logging"></a>Tanılama günlüğüne kaydetmeyi ayarlama
 
-Analiz Hizmetleri çözümlerinin önemli bir parçası sunucularınızın nasıl performans gösterdiğini izlemektir. [Azure kaynak günlükleri](../azure-monitor/platform/platform-logs-overview.md)ile günlükleri izleyebilir ve [Azure Depolama'ya](https://azure.microsoft.com/services/storage/)gönderebilir, Azure [Etkinlik Hub'larına](https://azure.microsoft.com/services/event-hubs/)aktarabilir ve [Azure Monitor günlüklerine](../azure-monitor/azure-monitor-log-hub.md)aktarabilirsiniz.
+Herhangi bir Analysis Services çözümünün önemli bir kısmı, sunucularınızın nasıl çalıştığını izlerdir. Azure Analysis Services, Azure Izleyici ile tümleşiktir. [Azure izleyici kaynak günlükleri](../azure-monitor/platform/platform-logs-overview.md)Ile [Azure depolama](https://azure.microsoft.com/services/storage/)'ya günlükleri izleyip gönderebilir, [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)akışa alabilir ve [Azure izleyici günlüklerine](../azure-monitor/azure-monitor-log-hub.md)aktarabilirsiniz.
 
-![Depolama, Olay Hub'ları veya Azure Monitör günlüklerine tanılama günlüğü](./media/analysis-services-logging/aas-logging-overview.png)
+![Depolama, Event Hubs veya Azure Izleyici günlüklerine kaynak günlüğü](./media/analysis-services-logging/aas-logging-overview.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>Günlüğe neler kaydedilir?
 
-**Motor,** **Servis**ve **Ölçümler** kategorilerini seçebilirsiniz.
+**Motor**, **hizmet**ve **ölçüm** kategorilerini seçebilirsiniz.
 
 ### <a name="engine"></a>Altyapı
 
-**Motor'u** seçmek tüm [xEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)günlüklerini . Tek tek olayları seçemezsiniz. 
+**Motor** seçildiğinde tüm [XEvents](https://docs.microsoft.com/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events)günlüğe kaydedilir. Ayrı olayları seçemezsiniz. 
 
 |XEvent kategorileri |Olay adı  |
 |---------|---------|
 |Güvenlik Denetimi    |   Audit Login      |
 |Güvenlik Denetimi    |   Audit Logout      |
-|Güvenlik Denetimi    |   Denetim Sunucusu Başlar ve Durur      |
-|İlerleme Raporları     |   İlerleme Raporu Başlıyor      |
-|İlerleme Raporları     |   İlerleme Raporu Sonu      |
-|İlerleme Raporları     |   İlerleme Raporu Güncel      |
+|Güvenlik Denetimi    |   Denetim sunucusu başlatılır ve duraklar      |
+|İlerleme raporları     |   İlerleme raporu başlangıç      |
+|İlerleme raporları     |   İlerleme raporu sonu      |
+|İlerleme raporları     |   İlerleme raporu geçerli      |
 |Sorgular     |  Query Begin       |
 |Sorgular     |   Query End      |
-|Komutlar     |  Komut Başla       |
-|Komutlar     |  Komut Sonu       |
-|Hatalar & Uyarılar     |   Hata      |
-|Bul     |   Sonu Keşfet      |
+|Komutlar     |  Komut başlangıcı       |
+|Komutlar     |  Komut sonu       |
+|Hatalar & uyarıları     |   Hata      |
+|Bul     |   Bulma bitişi      |
 |Bildirim     |    Bildirim     |
 |Oturum     |  Session Initialize       |
-|Kilitler    |  Çıkmaz       |
-|Sorgu İşleme     |   VertiPaq SE Sorgusu Başla      |
-|Sorgu İşleme     |   VertiPaq SE Sorgu Sonu      |
-|Sorgu İşleme     |   VertiPaq SE Sorgu Önbellek Eşleştirme      |
-|Sorgu İşleme     |   Doğrudan Sorgu Başla      |
-|Sorgu İşleme     |  Doğrudan Sorgu Sonu       |
+|Kilitler    |  Çözül       |
+|Sorgu Işleme     |   VertiPaq, sorgu başlangıcı      |
+|Sorgu Işleme     |   VertiPaq bir sorgu bitişi      |
+|Sorgu Işleme     |   VertiPaq & sorgu önbelleği eşleşmesi      |
+|Sorgu Işleme     |   Doğrudan sorgu başlangıcı      |
+|Sorgu Işleme     |  Doğrudan sorgu bitişi       |
 
 ### <a name="service"></a>Hizmet
 
-|İşlem adı  |Oluşur  |
+|İşlem adı  |Olduğunda gerçekleşir  |
 |---------|---------|
-|ResumeServer     |    Sunucuya devam edin     |
-|Askıya Alma Sunucusu    |   Sunucumu duraklatma      |
-|Silme Sunucusu     |    Sunucu silme     |
-|Sunucu'yı Yeniden Başlat    |     Kullanıcı SSMS veya PowerShell aracılığıyla bir sunucuyeniden başlatın    |
-|GetServerLogFiles    |    Kullanıcı PowerShell üzerinden sunucu günlüğü dışa aktarın     |
-|İhracat Modeli     |   Kullanıcı Visual Studio'da Açık'ı kullanarak portalda bir model dışa aktarmaz     |
+|ResumeServer     |    Bir sunucuyu sürdürür     |
+|SuspendServer    |   Bir sunucuyu duraklatma      |
+|DeleteServer     |    Sunucu silme     |
+|RestartServer    |     Kullanıcı SSMS veya PowerShell aracılığıyla bir sunucuyu yeniden başlatır    |
+|GetServerLogFiles    |    Kullanıcı, PowerShell aracılığıyla sunucu günlüğünü dışarı aktarır     |
+|Dışarı ExportModel     |   Kullanıcı, Visual Studio 'da aç kullanarak portalda bir modeli dışarı aktarır     |
 
 ### <a name="all-metrics"></a>Tüm ölçümler
 
-Ölçümler kategorisi, aynı [Sunucu ölçümlerini](analysis-services-monitor.md#server-metrics) AzureMetrics tablosuna kaydeder. Sorgu [ölçeğini](analysis-services-scale-out.md) kullanıyorsanız ve her okuma yinelemesi için ölçümleri ayırmanız gerekiyorsa, **Bunun** yerine İşlem Adı'nın **LogMetric'e**eşit olduğu Azure Diagnostics tablosunu kullanın.
+Ölçüm kategorisi, AzureMetrics tablosuna aynı [Sunucu ölçümlerini](analysis-services-monitor.md#server-metrics) günlüğe kaydeder. Sorgu [ölçeği](analysis-services-scale-out.md) genişletme kullanıyorsanız ve her bir okuma çoğaltması için ölçümleri ayırmanız gerekiyorsa, bunun yerine AzureDiagnostics tablosunu kullanın; burada, **OperationName** , **logmetric**öğesine eşittir.
 
 ## <a name="setup-diagnostics-logging"></a>Tanılama günlüğünü ayarlama
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalı](https://portal.azure.com) > sunucusunda, sol gezintide **Tanılama günlüklerini** tıklatın ve ardından **tanılamayı aç'ı**tıklatın.
+1. [Azure portal](https://portal.azure.com) > sunucusu ' nda, sol gezinti bölmesinde **Tanılama ayarları** ' na tıklayın ve ardından **tanılamayı aç**' a tıklayın.
 
-    ![Azure portalında Azure Cosmos DB için tanılama günlüğe kaydetmeyi açın](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
+    ![Azure portal Azure Cosmos DB için kaynak günlüğünü açma](./media/analysis-services-logging/aas-logging-turn-on-diagnostics.png)
 
 2. **Tanılama ayarları** sayfasında aşağıdaki seçenekleri belirtin: 
 
-    * **Adı**. Oluşturmak için günlükleri için bir ad girin.
+    * **Ad**. Oluşturulacak Günlükler için bir ad girin.
 
-    * **Bir depolama hesabına arşivleyin.** Bu seçeneği kullanmak için, bağlanmak için varolan bir depolama hesabına ihtiyacınız var. Bkz. [Bir depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md). Bir Kaynak Yöneticisi, genel amaçlı hesap oluşturmak için yönergeleri izleyin ve ardından portaldaki bu sayfaya dönerek depolama hesabınızı seçin. Yeni oluşturulan depolama hesaplarının açılan menüde görünmesi birkaç dakika sürebilir.
-    * **Bir olay hub'ına akış**. Bu seçeneği kullanmak için, bağlanmak için varolan bir Olay Hub'ı ad alanı ve olay hub'ına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Azure portalı kullanarak Event Hubs ad alanı ve olay hub'ı oluşturma](../event-hubs/event-hubs-create.md). Ardından Olay Hub'ı ad alanını ve ilke adını seçmek için portaldaki bu sayfaya dönün.
-    * **Azure Monitörü'ne (Log Analytics çalışma alanı) gönderin.** Bu seçeneği kullanmak için, varolan bir çalışma alanı kullanın veya portalda yeni bir çalışma alanı kaynağı [oluşturun.](../azure-monitor/learn/quick-create-workspace.md) Günlüklerinizi görüntüleme hakkında daha fazla bilgi için bu makalede [Log Analytics çalışma alanında günlükleri](#view-logs-in-log-analytics-workspace) görüntüle'ye bakın.
+    * **Bir depolama hesabına arşivleme**. Bu seçeneği kullanmak için, bağlanmak üzere var olan bir depolama hesabının olması gerekir. Bkz. [depolama hesabı oluşturma](../storage/common/storage-create-storage-account.md). Yönergeleri izleyerek Kaynak Yöneticisi, genel amaçlı bir hesap oluşturun ve ardından portalda bu sayfaya dönüp depolama hesabınızı seçin. Yeni oluşturulan depolama hesaplarının açılan menüde görünmesi birkaç dakika sürebilir.
+    * **Bir olay hub 'ına akış**. Bu seçeneği kullanmak için, bağlanmak için mevcut bir olay hub 'ı ad alanı ve Olay Hub 'ı gerekir. Daha fazla bilgi için bkz. [Azure portalı kullanarak Event Hubs ad alanı ve olay hub'ı oluşturma](../event-hubs/event-hubs-create.md). Ardından, Olay Hub 'ı ad alanını ve ilke adını seçmek için portalda bu sayfaya geri dönün.
+    * **Azure izleyici 'ye (Log Analytics çalışma alanı) gönderin**. Bu seçeneği kullanmak için, var olan bir çalışma alanını kullanın ya da portalda [Yeni bir çalışma alanı kaynağı oluşturun](../azure-monitor/learn/quick-create-workspace.md) . Günlüklerinizi görüntüleme hakkında daha fazla bilgi için bu makaledeki [Log Analytics çalışma alanındaki günlükleri görüntüle](#view-logs-in-log-analytics-workspace) bölümüne bakın.
 
-    * **Motor**. xEvents'i günlüğe kaydetmek için bu seçeneği belirleyin. Bir depolama hesabına arşivleme ediyorsanız, tanılama günlükleri için bekletme süresini seçebilirsiniz. Günlükler bekletme süresi dolduktan sonra otomatik olarak silinir.
-    * **Hizmet**. Hizmet düzeyi olaylarını günlüğe kaydetmek için bu seçeneği belirleyin. Bir depolama hesabına arşivleme yapıyorsanız tanılama günlüklerinin saklama süresini belirleyebilirsiniz. Günlükler bekletme süresi dolduktan sonra otomatik olarak silinir.
-    * **Ölçümler**. Ayrıntılı verileri Ölçümler'de depolamak için bu seçeneği [belirleyin.](analysis-services-monitor.md#server-metrics) Bir depolama hesabına arşivleme yapıyorsanız tanılama günlüklerinin saklama süresini belirleyebilirsiniz. Günlükler bekletme süresi dolduktan sonra otomatik olarak silinir.
+    * **Altyapı**. XEvents 'i günlüğe kaydetmek için bu seçeneği belirleyin. Bir depolama hesabına arşivleme yapıyorsanız, kaynak günlükleri için bekletme dönemini seçebilirsiniz. Günlükler, saklama süresi dolduktan sonra tekrar silinir.
+    * **Hizmeti**. Hizmet düzeyi olaylarını günlüğe kaydetmek için bu seçeneği belirleyin. Bir depolama hesabına arşivleme yapıyorsanız, kaynak günlükleri için bekletme dönemini seçebilirsiniz. Günlükler, saklama süresi dolduktan sonra tekrar silinir.
+    * **Ölçümler**. Ayrıntılı verileri [ölçümlerde](analysis-services-monitor.md#server-metrics)depolamak için bu seçeneği belirleyin. Bir depolama hesabına arşivleme yapıyorsanız, kaynak günlükleri için bekletme dönemini seçebilirsiniz. Günlükler, saklama süresi dolduktan sonra tekrar silinir.
 
-3. **Kaydet**'e tıklayın.
+3. **Kaydet**’e tıklayın.
 
-    "Çalışma alanı adı> için \<tanılama güncelleştirmek için başarısız olduğunu belirten bir hata alırsanız. abonelik \<kimliği> microsoft.insights kullanmak için kayıtlı değildir." Hesabı kaydetmek için [Sorun Giderme Azure Tanılama](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) yönergelerini izleyin ve bu yordamı yeniden deneyin.
+    "Çalışma alanı adı için \<tanılamayı güncelleştirme> bildiren bir hata alırsanız. > abonelik \<kimliği, Microsoft. Insights 'ı kullanmak için kayıtlı değil. " hesabı kaydetmek için [sorun giderme Azure tanılama](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) yönergeleri izleyin ve bu yordamı yeniden deneyin.
 
-    Tanılama günlüklerinizin gelecekte herhangi bir noktada nasıl kaydedilip kaydedilebildiğini değiştirmek isterseniz, ayarları değiştirmek için bu sayfaya dönebilirsiniz.
+    Kaynak günlüklerinizin gelecekte herhangi bir noktada nasıl kaydedildiğini değiştirmek istiyorsanız, ayarları değiştirmek için bu sayfaya geri dönebilirsiniz.
 
 ### <a name="powershell"></a>PowerShell
 
-İşte size gitmek için temel komutları vardır. PowerShell'i kullanarak bir depolama hesabına günlüğe kaydetme konusunda adım adım yardım almak istiyorsanız, bu makalenin ilerleyen yerlerine bakın.
+Size başlamanıza yönelik temel komutlar aşağıda verilmiştir. PowerShell kullanarak bir depolama hesabına günlük kaydı ayarlamaya yönelik adım adım yardım istiyorsanız, bu makalenin ilerleyen kısımlarında yer alan öğreticiye bakın.
 
-Ölçümleri ve tanılama günlüğüne kaydetmeyi PowerShell kullanarak etkinleştirmek için aşağıdaki komutları kullanın:
+PowerShell kullanarak ölçümleri ve kaynak günlüğünü etkinleştirmek için aşağıdaki komutları kullanın:
 
-- Tanılama günlüklerinin bir depolama hesabına kaydedilmesini sağlamak için şu komutu kullanın:
+- Bir depolama hesabında kaynak günlüklerinin depolanmasını etkinleştirmek için şu komutu kullanın:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
@@ -108,7 +108,7 @@ Analiz Hizmetleri çözümlerinin önemli bir parçası sunucularınızın nası
 
    Depolama hesabı kimliği, günlükleri göndermek istediğiniz depolama hesabının kaynak kimliğidir.
 
-- Tanılama günlüklerinin akışını bir olay hub'ına yapmak için şu komutu kullanın:
+- Kaynak günlüklerinin bir olay hub 'ına akışını etkinleştirmek için şu komutu kullanın:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
@@ -120,7 +120,7 @@ Analiz Hizmetleri çözümlerinin önemli bir parçası sunucularınızın nası
    {service bus resource ID}/authorizationrules/{key name}
    ``` 
 
-- Tanılama günlüklerini Log Analytics çalışma alanına göndermek için şu komutu kullanın:
+- Kaynak günlüklerinin Log Analytics çalışma alanına gönderilmesini etkinleştirmek için şu komutu kullanın:
 
    ```powershell
    Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
@@ -144,27 +144,27 @@ Bu parametreleri bir arada kullanarak birden fazla çıkış seçeneği oluştur
 
 ## <a name="manage-your-logs"></a>Günlüklerinizi yönetme
 
-Günlükler genellikle günlük kurulumu ndan sonra birkaç saat içinde kullanılabilir. Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
+Günlükler genellikle günlüğe kaydetme kurulumu için birkaç saat içinde kullanılabilir. Depolama hesabınızdaki günlüklerinizi yönetmek size bağlıdır:
 
 * Günlüklerinize erişebilecek kişileri kısıtlayarak güvenliklerini sağlamak için standart Azure erişim denetimi yöntemlerini kullanın.
 * Artık depolama hesabınızda tutmak istemediğiniz günlükleri silin.
-* Eski günlüklerin depolama hesabınızdan silinmesi için bir bekletme süresi ayarladıktan emin olun.
+* Depolama hesabınızdan eski günlüklerin silindiği için bir bekletme dönemi ayarladığınızdan emin olun.
 
-## <a name="view-logs-in-log-analytics-workspace"></a>Günlük Analytics çalışma alanında günlükleri görüntüleme
+## <a name="view-logs-in-log-analytics-workspace"></a>Log Analytics çalışma alanındaki günlükleri görüntüleme
 
-Ölçümler ve sunucu olayları, yan yana analiz için Log Analytics çalışma alanı kaynağınızdaki xEvents ile tümleştirilir. Log Analytics çalışma alanı, mimarinizde tanısal günlük verilerinin bütünsel bir görünümünü sağlayan diğer Azure hizmetlerinden etkinlikler alacak şekilde de yapılandırılabilir.
+Ölçümler ve sunucu olayları, yan yana analize yönelik Log Analytics çalışma alanı kaynağınızın xEvents ile tümleşiktir. Log Analytics çalışma alanı, mimariniz genelinde tanılama günlüğü verilerinin bir bütünsel görünümünü sağlayan diğer Azure hizmetlerinden olayları alacak şekilde de yapılandırılabilir.
 
-Tanılama verilerinizi görüntülemek için Log Analytics çalışma alanında, sol menüden **Günlükler'i** açın.
+Tanılama verilerinizi görüntülemek için, Log Analytics çalışma alanında, sol menüden **Günlükler** ' i açın.
 
-![Azure portalında Günlük Arama seçenekleri](./media/analysis-services-logging/aas-logging-open-log-search.png)
+![Azure portal günlük arama seçenekleri](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Sorgu oluşturucuda, **LogManagement** > **AzureDiagnostics'i**genişletin. AzureDiagnostics, Motor ve Servis olaylarını içerir. Bir sorgunun anında oluşturulduğunu fark edin. EventClass'ın\_alanı, şirket içi günlüğe kaydetme için xEvents kullandıysanız tanıdık gelen xEvent adlarını içerir. **EventClass'ı\_** veya olay adlarından birini tıklatın ve Log Analytics çalışma alanı sorgu oluşturmaya devam ediyor. Sorgularınızı daha sonra kullanmak üzere kaydetmeyi unutmayın.
+Sorgu tasarımcısında, **logmanagement** > **AzureDiagnostics**' ı genişletin. AzureDiagnostics, altyapı ve hizmet olaylarını içerir. Bir sorgunun açık bir şekilde oluşturulduğunu fark edin. EventClass\_s alanı xEvent adlarını içerir, bu da şirket içi günlüğe kaydetme Için XEvents kullandıysanız tanıdık görünebilir. **EventClass\_s** ' e veya olay adlarından birine tıklayın ve Log Analytics çalışma alanı bir sorgu oluşturma devam eder. Sorgularınızı daha sonra kullanmak üzere kaydetmeyi unutmayın.
 
 ### <a name="example-queries"></a>Örnek sorgular
 
 #### <a name="example-1"></a>Örnek 1
 
-Aşağıdaki sorgu, bir model veritabanı ve sunucu için her sorgu sonu/yenileme son olayı için süreleri döndürür. Ölçeklendirilirse, çoğaltma numarası ServerName_s dahil olduğundan, sonuçlar yineleme tarafından bölünur. RootActivityId_g göre gruplandırma, Azure Diagnostics REST API'den alınan satır sayısını azaltır ve [Log Analytics Rate sınırlarında](https://dev.loganalytics.io/documentation/Using-the-API/Limits)açıklandığı gibi sınırlar içinde kalmaya yardımcı olur.
+Aşağıdaki sorgu, bir model veritabanı ve sunucusu için her sorgu bitiş/yenileme bitiş olayı için süreleri döndürür. Ölçeği ölçeklenirse, çoğaltma numarası ServerName_s eklendiğinden sonuçlar çoğaltma tarafından bölünür. RootActivityId_g gruplama, Azure Tanılama REST API alınan satır sayısını azaltır ve [Log Analytics hız sınırları](https://dev.loganalytics.io/documentation/Using-the-API/Limits)bölümünde açıklandığı gibi limitlerin içinde kalmalarına yardımcı olur.
 
 ```Kusto
 let window = AzureDiagnostics
@@ -179,7 +179,7 @@ window
 
 #### <a name="example-2"></a>Örnek 2
 
-Aşağıdaki sorgu, bir sunucu için bellek ve QPU tüketimini döndürür. Ölçeklendirilirse, çoğaltma numarası ServerName_s dahil olduğundan, sonuçlar yineleme tarafından bölünur.
+Aşağıdaki sorgu, bir sunucu için bellek ve QPU kullanımını döndürür. Ölçeği ölçeklenirse, çoğaltma numarası ServerName_s eklendiğinden sonuçlar çoğaltma tarafından bölünür.
 
 ```Kusto
 let window = AzureDiagnostics
@@ -194,7 +194,7 @@ window
 
 #### <a name="example-3"></a>Örnek 3
 
-Aşağıdaki sorgu, bir sunucu için Satır okuma/sn Analiz Hizmetleri motor performans sayaçlarını döndürür.
+Aşağıdaki sorgu, bir sunucu için Okuma/sn Analysis Services altyapısı performans sayaçlarını döndürür.
 
 ```Kusto
 let window =  AzureDiagnostics
@@ -208,17 +208,17 @@ window
 | order by TimeGenerated asc 
 ```
 
-Kullanabileceğiniz yüzlerce sorgu vardır. Sorgular hakkında daha fazla bilgi edinmek için [Azure Monitor günlük sorgularına başlayın'](../azure-monitor/log-query/get-started-queries.md)a bakın.
+Kullanabileceğiniz yüzlerce sorgu vardır. Sorgular hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici günlük sorgularını kullanmaya başlama](../azure-monitor/log-query/get-started-queries.md).
 
 
-## <a name="turn-on-logging-by-using-powershell"></a>PowerShell'i kullanarak günlüğe kaydetmeyi açın
+## <a name="turn-on-logging-by-using-powershell"></a>PowerShell kullanarak günlüğü açma
 
-Bu hızlı öğreticide, Çözümleme Hizmeti sunucunuzla aynı abonelik ve kaynak grubunda bir depolama hesabı oluşturursunuz. Daha sonra tanılama günlüğe kaydetmeyi açmak ve çıktıyı yeni depolama hesabına göndermek için Set-AzDiagnosticSetting'i kullanırsınız.
+Bu hızlı öğreticide, Analysis Service sunucunuz ile aynı abonelikte ve kaynak grubunda bir depolama hesabı oluşturursunuz. Ardından, yeni depolama hesabına çıkış göndererek tanılama günlüğünü açmak için set-AzDiagnosticSetting ' i kullanabilirsiniz.
 
 ### <a name="prerequisites"></a>Ön koşullar
-Bu öğreticiyi tamamlamak için aşağıdaki kaynaklara sahip olmalısınız:
+Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklara sahip olmanız gerekir:
 
-* Varolan bir Azure Çözümleme Hizmetleri sunucusu. Sunucu kaynağı oluşturma yla ilgili talimatlar için azure [portalında sunucu oluşturma](analysis-services-create-server.md)veya [PowerShell'i kullanarak bir Azure Analiz Hizmetleri sunucusu oluşturma](analysis-services-create-powershell.md)'na bakın.
+* Mevcut bir Azure Analysis Services sunucusu. Sunucu kaynağı oluşturma hakkında yönergeler için, bkz. [Azure Portal sunucu oluşturma](analysis-services-create-server.md)veya [PowerShell kullanarak Azure Analysis Services sunucusu oluşturma](analysis-services-create-powershell.md).
 
 ### <a name="aconnect-to-your-subscriptions"></a></a>Aboneliklerinize bağlanma
 
@@ -236,31 +236,31 @@ Birden çok aboneliğiniz varsa Azure Anahtar Kasanızı oluşturmak için kulla
 Get-AzSubscription
 ```
 
-Ardından, günlüğe kaydettiğiniz Azure Analiz Hizmetleri hesabıyla ilişkili aboneliği belirtmek için şunları yazın:
+Daha sonra, günlük kaydı yaptığınız Azure Analysis Services hesapla ilişkili aboneliği belirtmek için şunu yazın:
 
 ```powershell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
-> Hesabınızla ilişkili birden çok aboneliğiniz varsa, aboneliği belirtmeniz önemlidir.
+> Hesabınızla ilişkili birden fazla aboneliğiniz varsa, aboneliğin belirtilmesi önemlidir.
 >
 >
 
 ### <a name="create-a-new-storage-account-for-your-logs"></a>Günlükleriniz için yeni bir depolama hesabı oluşturma
 
-Sunucunuzla aynı abonelikte olması koşuluyla, günlükleriniz için varolan bir depolama hesabı kullanabilirsiniz. Bu öğretici için, Çözüm hizmetleri günlüklerine adanmış yeni bir depolama hesabı oluşturursunuz. Bunu kolaylaştırmak için, depolama hesabı ayrıntılarını **sa**adlı bir değişkende depolıyorsun.
+Günlükleriniz için mevcut bir depolama hesabını kullanabilirsiniz. Bu, sunucunuz ile aynı abonelikte yer verilir. Bu öğreticide, Analysis Services günlüklerine adanmış yeni bir depolama hesabı oluşturursunuz. Daha kolay hale getirmek için, depolama hesabı ayrıntılarını **sa**adlı bir değişkende depolarsınız.
 
-Ayrıca, Çözümleme Hizmetleri sunucunuzu içeren kaynak grubuyla aynı kaynak grubunu da kullanırsınız. `awsales_resgroup`'nin `awsaleslogs`yerine geçen `West Central US` değerler ve kendi değerlerinizle:
+Ayrıca, Analysis Services sunucunuzu içeren kaynakla aynı kaynak grubunu da kullanırsınız. `awsales_resgroup`, `awsaleslogs`Ve `West Central US` değerlerini kendi değerlerinizle değiştirin:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
-### <a name="identify-the-server-account-for-your-logs"></a>Günlükleriniz için sunucu hesabını belirleme
+### <a name="identify-the-server-account-for-your-logs"></a>Günlüklerinizin sunucu hesabını tanımla
 
-Hesap adını, Kaynak Adı'nın hesabın adı olduğu bir değişken adlı **hesaba**ayarlayın.
+Hesap adını hesap adlı bir değişkene **ayarlayın, burada**resourceName hesabın adıdır.
 
 ```powershell
 $account = Get-AzResource -ResourceGroupName awsales_resgroup `
@@ -269,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>Günlü kaydını etkinleştir
 
-Günlüğe kaydetmeyi etkinleştirmek için, set-AzDiagnosticSetting cmdlet'i yeni depolama hesabı, sunucu hesabı ve kategori değişkenleriyle birlikte kullanın. **-Etkin** bayrağı **$true**ayarlayarak aşağıdaki komutu çalıştırın:
+Günlüğe kaydetmeyi etkinleştirmek için, set-AzDiagnosticSetting cmdlet 'ini yeni depolama hesabı, sunucu hesabı ve kategori değişkenleriyle birlikte kullanın. Aşağıdaki komutu çalıştırın, **-Enabled** bayrağını **$true**olarak ayarlar:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
@@ -314,9 +314,9 @@ Location                    :
 Tags                        :
 ```
 
-Bu çıktı, artık sunucu için günlük kullanımının etkin olduğunu onaylar ve bilgileri depolama hesabına kaydeder.
+Bu çıktı, günlüğe kaydetme işleminin artık sunucu için etkinleştirildiğini onaylar ve depolama hesabına bilgi kaydedilir.
 
-Günlükleriniz için bekletme ilkesini, eski günlüklerin otomatik olarak silinmesi için de ayarlayabilirsiniz. Örneğin, **-BekletmeEtkin** bayrağı kullanarak **$true**ve **-BekletmeGün parametresini** **90'a**ayarlayın. 90 günden eski günlükler otomatik olarak silinir.
+Günlüklerinizin bekletme ilkesini, eski günlüklerin otomatik olarak silinmesi için de ayarlayabilirsiniz. Örneğin, **$true**için **-RetentionEnabled** bayrağını kullanarak bekletme ilkesi ayarlayın ve **-retentionındays** parametresini **90**olarak ayarlayın. 90 günden daha eski Günlükler otomatik olarak silinir.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
@@ -326,6 +326,6 @@ Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure kaynak tanılama günlüğe kaydetme](../azure-monitor/platform/platform-logs-overview.md)hakkında daha fazla bilgi edinin.
+[Azure izleyici kaynak günlüğü](../azure-monitor/platform/platform-logs-overview.md)hakkında daha fazla bilgi edinin.
 
-PowerShell yardım [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) bakın.
+PowerShell Yardımı 'nda [set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) bölümüne bakın.

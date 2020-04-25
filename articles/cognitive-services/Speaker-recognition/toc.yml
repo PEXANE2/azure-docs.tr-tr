@@ -1,4 +1,5 @@
 - name: Konuşmacı Tanıma Belgeleri
+  href: Home.md
 - name: Genel Bakış
   items:
     - name: Konuşmacı Tanıma hakkında bilgi edinin

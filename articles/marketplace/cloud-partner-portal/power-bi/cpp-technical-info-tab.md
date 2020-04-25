@@ -1,38 +1,38 @@
 ---
-title: Power BI App teklifi için teknik bilgiler | Azure Marketi
-description: Microsoft AppSource Marketplace için Power BI App teklifi için Teknik bilgi alanlarını yapılandırın.
+title: Power BI uygulama teklifi için teknik bilgiler | Azure Marketi
+description: Microsoft AppSource Market için Power BI uygulama teklifi için teknik bilgi alanlarını yapılandırın.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: d814ebc34193f5d7c0c3828d32aa3d2af29f3679
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b012ac012c7de3c6428ecbe2d2b922a2a9aa0523
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981367"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141770"
 ---
-# <a name="power-bi-apps-technical-info-tab"></a>Power BI Apps Teknik Bilgi sekmesi
+# <a name="power-bi-apps-technical-info-tab"></a>Power BI Apps Teknik bilgi sekmesi
 
 >[!Important]
->13 Nisan 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
+>13 Nisan 2020 ' den itibaren, Power BI uygulama tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturmaya genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) ' daki yönergeleri izleyin.
 
-Yeni **Teklif** sayfasında, Power BI yükleyici paket URL'sini ve yeni teklifi doğrulamak için ihtiyaç duyduğunuz diğer bilgileri sağlamak için **Teknik Bilgiler** sekmesini kullanın.  İlk sürüm için tüm Power BI uygulamaları ücretsizdir ve AppSource'tan indirilebilir. Bu nedenle, bu teklif türü için stok tutma birimlerini (SUS) tanımlayamam.
+**Yeni teklif** sayfasında, Power BI Installer paketi URL 'sini ve yeni teklifi doğrulamak için ihtiyaç duyduğunuz diğer bilgileri sağlamak Için **Teknik bilgiler** sekmesini kullanın.  İlk sürüm için tüm Power BI uygulamalar ücretsizdir ve AppSource 'tan indirilebilir. Bu nedenle, bu teklif türü için stok tutma birimleri (SKU 'Lar) tanımlayamazsınız.
 
-![Teknik Bilgi sekmesi](./media/technical-info-tab.png)
+![Teknik bilgi sekmesi](./media/technical-info-tab.png)
 
 
-## <a name="technical-info-fields"></a>Teknik Bilgi alanları 
+## <a name="technical-info-fields"></a>Teknik bilgi alanları 
 
-Teknik **Bilgiler** sekmesinde, aşağıdaki tabloda açıklanan alanları tamamlayın. Alan etiketinin sonundaki yıldız işareti (*) alanın gerekli olduğu anlamına gelir.
+**Teknik bilgi** sekmesinde, aşağıdaki tabloda açıklanan alanları doldurun. Alan etiketinin sonundaki bir yıldız işareti (*) alanın gerekli olduğu anlamına gelir.
 
 |        Alan          |  Açıklama                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Yükleyici URL'si\***     | Power BI, uygulamayı yayımladığınızda ve üretime tanıttığınızda bu URL'yi oluşturur.  Daha fazla bilgi için bkz. [Power BI'de panolar ve raporlar içeren uygulamaları yayımla.](https://docs.microsoft.com/power-bi/service-create-distribute-apps)  |
-|  **Doğrulama talimatları**  |  İsterseniz, Microsoft doğrulama ekibinin uygulamanızı yapılandırmasına, bağlamasına ve test etmesini sağlamak için yönergeler (en fazla 3.000 karakter) ekleyin. Veri Bağla seçeneğini sınamak için kullanılabilecek tipik yapılandırma ayarlarını, hesapları, parametreleri veya diğer bilgileri ekleyin. Bu bilgiler yalnızca doğrulama ekibi tarafından görülebilir ve yalnızca doğrulama amacıyla kullanılır.  |
-| **Bu uygulama Power BI içerik paketi olarak mı oluşturuldu?** | Şu anda, bu alan yalnızca dahili olarak kullanılır. **Varsayılan No**ayarını bırakın. Ayarı **Evet**olarak değiştirirseniz, yayımlama işlemini durdurabilirsiniz.  |  
+| **Yükleyici URL 'SI\***     | Power BI, uygulamayı yayımladığınızda ve üretime yükselttiğinizde Bu URL 'YI oluşturur.  Daha fazla bilgi için bkz. [Power BI içindeki panoları ve raporları kullanarak uygulama yayımlama](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Doğrulama yönergeleri**  |  İsterseniz, Microsoft doğrulama ekibinin uygulamanızı yapılandırmasına, bağlanmasına ve test etmenize yardımcı olmak için yönergeler (en fazla 3.000 karakter) ekleyin. Verileri bağla seçeneğini test etmek için kullanılabilecek tipik yapılandırma ayarlarını, hesapları, parametreleri veya diğer bilgileri ekleyin. Bu bilgiler yalnızca doğrulama ekibi tarafından görülebilir ve yalnızca doğrulama amaçlarıyla kullanılır.  |
+| **Bu uygulama Power BI bir içerik paketi olarak oluşturuldu mu?** | Şu anda bu alan yalnızca dahili olarak kullanılır. **Hayır**varsayılan ayarını bırakın. Ayarı **Evet**olarak değiştirirseniz, Yayımlama sürecini durdurabilirsiniz.  |  
 |  |  |
 
 

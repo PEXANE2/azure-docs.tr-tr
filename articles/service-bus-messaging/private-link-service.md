@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
-ms.openlocfilehash: f456137b61a96f555b2604e7871516fd1d38ab42
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116715"
+ms.locfileid: "82141940"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>Azure Service Bus Azure özel bağlantısıyla tümleştirin (Önizleme)
 
@@ -25,7 +25,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 >[!WARNING]
 > Özel uç noktaları uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir.
 >
-> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
+> Sanal ağlar kullanılırken güvenilen Microsoft Hizmetleri desteklenmez.
 >
 > Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
 > - Azure Event Grid ile tümleştirme
@@ -44,7 +44,7 @@ Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../private-link/p
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Azure portal kullanarak özel uç nokta ekleme
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
 Bir Service Bus ad alanını Azure özel bağlantısıyla bütünleştirmek için aşağıdaki varlıklara veya izinlere ihtiyacınız olacaktır:
 
@@ -71,7 +71,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
     1. Özel uç noktasını oluşturmak istediğiniz **Azure aboneliğini** seçin. 
     2. Özel uç nokta kaynağı için **kaynak grubunu** seçin.
     3. Özel uç nokta için bir **ad** girin. 
-    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanızın sanal ağınızla aynı bölgede olması gerekir, ancak bağlandığınız özel bağlantı kaynağını farklı bir bölgede bulabilirsiniz. 
+    5. Özel uç nokta için bir **bölge** seçin. Özel uç noktanız, sanal ağınızla aynı bölgede olmalıdır, ancak bağlanmakta olduğunuz özel bağlantı kaynağından farklı bir bölgede olabilir. 
     6. Sayfanın alt kısmındaki **İleri: kaynak >** düğmesini seçin.
 
         ![Özel uç nokta oluşturma-temel bilgiler sayfası](./media/private-link-service/create-private-endpoint-basics-page.png)
@@ -85,7 +85,7 @@ Zaten mevcut bir ad alanınız varsa, aşağıdaki adımları izleyerek özel bi
         
             ![Özel uç nokta oluşturma-kaynak sayfası](./media/private-link-service/create-private-endpoint-resource-page.png)
     2. **Kaynak kimliği veya diğer ad ile bir Azure kaynağına bağlan**' ı seçerseniz, aşağıdaki adımları izleyin:
-        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, bazılarının sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir.
+        1. **Kaynak kimliğini** veya **diğer adı**girin. Bu, birinin sizinle paylaştığı kaynak KIMLIĞI veya diğer ad olabilir. Kaynak KIMLIĞINI almanın en kolay yolu, Azure portal Service Bus ad alanına gitmeniz ve URI 'nin ' den `/subscriptions/`başlayarak olan kısmını kopyalamadır. Örnek için aşağıdaki resme bakın. 
         2. **Hedef alt kaynak**için **ad alanı**girin. Bu, Özel uç noktanızın erişebileceği alt kaynağın türüdür. 
         3. seçim **İstek iletisi**girin. Kaynak sahibi, Özel uç nokta bağlantısını yönetirken bu iletiyi görür. 
         4. Ardından sayfanın alt kısmındaki **İleri: yapılandırma >** düğmesini seçin. 

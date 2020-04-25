@@ -9,27 +9,27 @@ ms.topic: include
 ms.date: 08/16/2019
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: ee6ee600160349548a0e886131f1a29b90de8746
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cf6a5730f92eba8f0a4e63bf40a4d2b50f76eb3a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80275892"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131081"
 ---
-Teklifinizi İş Ortağı Merkezi aracılığıyla pazara yayınlarken, müşteri ilginizi dile getirdikten hemen sonra müşteri iletişim bilgilerini alabilmeniz için teklifinizi Müşteri İlişkileri Yönetimi (CRM) sisteminize bağlamanız gerekir ürününüzü dağıtıyor.
+Teklifinizi Iş Ortağı Merkezi aracılığıyla Market 'te yayımladığınızda, teklifinizi CRM sisteminize bağlamanız gerekir. Bu şekilde, müşteri ilgili iletişim bilgilerini bir müşterinin ilgisini ifade ettikten veya ürününüzü dağıttığında hemen alabilirsiniz.
 
-1. **Müşteri müşteri adaylarını göndermemizi istediğiniz bir müşteri adayı seçin.** Aşağıdaki CRM sistemleri desteklenir:
+1. Potansiyel müşterileri göndermemizi istediğiniz müşteri adayı hedefini seçin. Aşağıdaki CRM sistemleri desteklenir:
 
-    * Müşteri Katılımı için [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md)
+    * Müşteri katılımı için [Dynamics 365](../commercial-marketplace-lead-management-instructions-dynamics.md)
     * [Marketo](../commercial-marketplace-lead-management-instructions-marketo.md)
     * [Salesforce](../commercial-marketplace-lead-management-instructions-salesforce.md)
 
-    CRM sisteminiz yukarıdaki listede açıkça desteklenmiyorsa, müşteri müşteri adayı verilerini depolamanızı sağlayan aşağıdaki seçeneklere sahip siniz ve ardından bu verileri CRM sisteminize aktarabilir veya içe aktarabilirsiniz.
+    CRM sisteminiz bu listede açıkça desteklenmiyorsa, aşağıdaki seçenekleri kullanarak müşteri adayı verilerini saklayabilirsiniz. Daha sonra bu verileri, CRM sisteminize aktarabilir veya içeri aktarabilirsiniz.
 
-    * [Azure Tablosu](../commercial-marketplace-lead-management-instructions-azure-table.md)
-    * [Https Bitiş Noktası](../commercial-marketplace-lead-management-instructions-https.md)
+    * [Azure tablosu](../commercial-marketplace-lead-management-instructions-azure-table.md)
+    * [HTTPS uç noktası](../commercial-marketplace-lead-management-instructions-https.md)
 
-2. Market teklifinizden müşteri adaylarını almak üzere müşteri adayı hedefini nasıl ayarlayacağınızı görmek için seçtiğiniz müşteri adayı hedefine ilişkin yukarıda bağlantısı verilen belgeleri okuyun. 
-3. İş Ortağı Merkezi'nde teklifinizi markette yayımlarken teklifi müşteri adayı hedefine bağlayın. Bunun nasıl yapılacağını öğrenmek için yukarıda bağlı belgelere bakın.
-4. Müşteri adayı hedefine bağlantının düzgün ayarlandığını onaylayın. Müşteri adayı hedefinizi doğru şekilde yapılandırdıktan ve İş Ortağı Merkezi'ndeki teklifiniz üzerine Yayımla'yı vurduktan sonra bağlantıyı doğrularız ve size bir test müşteri adayı göndeririz. Canlı yayına çıkmadan önce teklifi görüntülerken, teklifi önizleme ortamında kendiniz elde etmeye çalışarak müşteri adayı bağlantınızı da test edebilirsiniz. 
-5. Müşteri adayı nı kaybetmemek için müşteri adayı hedefine bağlantının güncel kaldığından emin olun, bu nedenle ucunda bir şey değiştiğinde bu bağlantıları güncelleştirdiğinizden emin olun.
+2. Market teklifinizin müşteri adaylarını almak üzere müşteri adayı hedefini ayarlamayı öğrenmek için seçili lider hedefi için bu bağlantılı belgeleri okuyun.
+3. Teklifi Iş Ortağı Merkezi 'nde Market 'e yayımladığınızda teklifinizin baş hedefe bağlanmasını sağlayabilirsiniz. Bunun nasıl yapılacağı hakkında bilgi için bkz. bağlantılı belgeler.
+4. Müşteri adayı hedefi bağlantısının düzgün şekilde ayarlandığını doğrulayın. Müşteri adayı hedefini doğru yapılandırdıktan sonra Iş Ortağı Merkezi 'nde teklifiniz üzerinde **Yayımla** ' yı seçin. Bağlantıyı doğrulayacağız ve size bir test lideri göndereceğiz. Canlı çalışmadan önce teklifi görüntülediğinizde, teklifi önizleme ortamında edinmeyi deneyerek lider bağlantınızı da test edebilirsiniz.
+5. Müşteri adaylarını kaybetmemek için, müşteri adayı hedefine olan bağlantının güncel kalmasını sağlayın. Bu bağlantıları, sonunda bir şeyler her değiştiğinde güncelleştirdiğinizden emin olun.

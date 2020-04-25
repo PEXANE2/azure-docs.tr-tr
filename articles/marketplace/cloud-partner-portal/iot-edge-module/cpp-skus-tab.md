@@ -1,143 +1,143 @@
 ---
-title: Azure IoT Edge modülü SKUs' ları | Azure Marketi
-description: Bir IoT Edge modülü için SUS oluşturun.
+title: Azure IoT Edge modül SKU 'Ları | Azure Marketi
+description: IoT Edge modülü için SKU 'Lar oluşturun.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: c1d1daea71ea8b69ef24031c643caf8dcd0d1fb7
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 0a394c14842fe0c4eb4baa18cbb13acb8ca3170a
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983339"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142451"
 ---
-# <a name="iot-edge-module-skus-tab"></a>IoT Edge modülü SUs sekmesi
+# <a name="iot-edge-module-skus-tab"></a>IoT Edge modülü SKU 'Ları sekmesi
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) bölümündeki yönergeleri izleyin.
 
-**Yeni Teklif** sayfasının **STU** sekmesi, bir veya daha fazla SNU oluşturmanıza ve bunları yeni teklifinize ilişkilendirmenize olanak tanır.  Bir çözümü özellik kümelerine, faturalandırma modellerine veya başka bir özelliğe göre ayırt etmek için farklı SCO'lar kullanabilirsiniz.
+**Yeni teklif** sayfasının **SKU 'ları** sekmesi bir veya daha fazla SKU oluşturmanıza ve bunları yeni teklifinizle ilişkilendirmenize olanak sağlar.  Bir çözümü Özellik kümelerine, faturalandırma modellerine veya başka bir özelliğe göre ayırt etmek için farklı SKU 'Lar kullanabilirsiniz.
 
 
-## <a name="sku-settings"></a>SKU Ayarları
+## <a name="sku-settings"></a>SKU ayarları
 
-Yeni bir teklif oluşturmaya başladığınızda, teklifle ilişkili herhangi bir STU yoktur. Yeni bir SKU oluşturmak için aşağıdaki adımları izleyin:
+Yeni bir teklif oluşturmaya başladığınızda, teklifle ilişkili hiçbir SKU yoktur. Yeni bir SKU oluşturmak için aşağıdaki adımları izleyin:
 
-- **IoT Edge Modülleri > Yeni Teklif** sayfasında **SK'ler** sekmesini seçin.
-- SKU'lar altında iletişim kutusunu açmak için **+ Yeni SKU'yu** seçin.
+- **IoT Edge modüller > yeni teklif** sayfasında **SKU 'lar** sekmesini seçin.
+- SKU 'Lar altında **+ yenı SKU** ' yı seçerek bir iletişim kutusu açın.
 
-  ![IoT Edge modülleri için Yeni Teklif sekmesinde yeni SKU düğmesi](./media/iot-edge-module-skus-tab-new-sku.png)
+  ![IoT Edge modülleri için yeni teklif sekmesindeki yeni SKU düğmesi](./media/iot-edge-module-skus-tab-new-sku.png)
 
-- Yeni **SKU** iletişim kutusunda, SKU için bir tanımlayıcı girin ve ardından **Tamam'ı**seçin.
-(Aşağıdaki tablo tanımlayıcı adlandırma kuralları verir.)
+- **Yenı SKU** ILETIŞIM kutusunda SKU için bir tanımlayıcı girip **Tamam**' ı seçin.
+(Aşağıdaki tabloda tanımlayıcı adlandırma kuralları verilmiştir.)
 
-**SKU** sekmesi yenilenir ve SKU'yu yapılandırmak için ayarladığınız alanları görüntüler. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
+**SKU 'lar** sekmesi yenilenir ve SKU 'yu yapılandırmak için düzenlediğiniz alanları görüntüler. Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir.
 
 |  **Alan**       |     **Açıklama**                                                          |
 |  ---------       |     ---------------                                                          |
-| **SKU KİmLİk\***       | Bu SKU için tanımlayıcı. Bu ad, küçük alfasayısal karakterler veya tirelerden (-) oluşan en fazla 50 karaktere sahiptir, ancak tire ile son olarak dönememez. **Not:** Teklif yayınlandıktan sonra bu adı değiştiremezsiniz. Ad, ürün URL'lerinde genel olarak görülebilir. |
+| **SKU KIMLIĞI\***       | Bu SKU için tanımlayıcı. Bu ad, küçük harfli alfasayısal karakterler veya kısa çizgilerden (-) oluşan en fazla 50 karakter içerir, ancak kısa çizgi ile bitemez. **Note:** Teklifin yayımlandıktan sonra bu adı değiştiremezsiniz. Ad, ürün URL 'Lerinde herkese açık bir şekilde görünür. |
 |  |  |
 
 
-## <a name="sku-details"></a>SKU Detayları
+## <a name="sku-details"></a>SKU ayrıntıları
 
-**SKU'nuzun** Azure Marketi ve Azure Portalı web sitelerinde nasıl görüntüleneceğini tanımlamak için SKU Ayrıntılarını yapılandırın.
+SKU 'nuzun Azure Marketi 'nde ve Azure portal web sitelerinde nasıl görüntüleneceğini tanımlamak için **SKU ayrıntılarını** yapılandırın.
 
-![IoT Edge modülü sku meta data](media/iot-edge-module-skus-tab-metadata.png)
+![IoT Edge modülü SKU meta verileri](media/iot-edge-module-skus-tab-metadata.png)
 
-Aşağıdaki **tabloda, SKU Ayrıntıları**altındaki alanların amacı, içeriği ve biçimlendirmesi açıklanmaktadır. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Aşağıdaki tabloda, **SKU ayrıntıları**altındaki alanlar için amaç, içerik ve biçimlendirme açıklanmaktadır. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
 |  **Alan**       |     **Açıklama**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Başlık\***        | Bu SKU için başlık. Maksimum uzunluğu 50 karakter. <br/> Azure Portalı'nda gösterilir ve dağıtıldığında varsayılan modül adı (boşluk lar ve özel karakterler olmadan) olarak kullanılır. Bu alanın tam olarak nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
-| **Özet\***      | Bu SKU kısa özeti. Maksimum uzunluğu 100 karakter. **Teklifi özetlemeyin,** sadece SKU.  Bu özet Azure Marketi'nde gösterilir. Bu alanın tam olarak nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
-| **Açıklama\***  | Bu SKU kısa açıklaması. Maksimum uzunluğu 3000 karakter. Teklif ama sadece bu SKU tarif ETMEYIN. Azure marketinde ve Azure portalında gösterilir. Azure portalında, Market sekmesinde tanımlanan teklifi açıklayan Market Açıklaması'na eklenir.  SKU Özeti ile aynı olabilir. Bu alanın tam olarak nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
-| **Bu SKU'yı sakla\*** | Varsayılan ayarı tutun, hangi **Hayır**. |
+| **Başlık\***        | Bu SKU için başlık. En fazla 50 karakter uzunluğunda. <br/> Azure portal gösterilir ve dağıtıldığında varsayılan bir modül adı (boşluklar ve özel karakterler olmadan) olarak kullanılacaktır. Tam olarak bu alanın nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
+| **Özet\***      | Bu SKU 'nun kısa özeti. En fazla 100 karakter uzunluğunda. Teklifi **özetleme,** yalnızca SKU.  Bu Özet Azure Marketi 'nde gösterilir. Tam olarak bu alanın nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
+| **Açıklama\***  | Bu SKU 'nun kısa açıklaması. En fazla 3000 karakter uzunluğunda. Teklifi tanımlama, ancak yalnızca bu SKU. Azure Marketi 'nde ve Azure portal görüntülenir. Azure portal, Market sekmesinde tanımlanan teklifi açıklayan Market açıklamasına eklenecektir.  SKU Özeti ile aynı olabilir. Tam olarak bu alanın nerede görüntülendiğini görmek için aşağıdaki resimlere bakın.|
+| **Bu SKU 'YU gizle\*** | **Hayır**olan varsayılan ayarı koruyun. |
 |  |  |
 
 
 ### <a name="sku-example"></a>SKU örneği
 
- Aşağıdaki örnekler, SKU **Başlık**, **Özet**ve **Açıklama** alanlarının farklı görünümlerde nasıl göründüğünü gösterir.
+ Aşağıdaki örneklerde SKU **başlığı**, **Özeti**ve **Açıklama** alanlarının farklı görünümlerde nasıl göründüğü gösterilmektedir.
  
 
-#### <a name="on-the-azure-marketplace-website"></a>Azure Marketi web sitesinde:
+#### <a name="on-the-azure-marketplace-website"></a>Azure Marketi Web sitesinde:
 
-- SKU detaylarına bakarken:
+- SKU ayrıntıları aranırken:
 
-    ![Azure Marketi web sitesinde SK'ler nasıl görüntülenir?](media/iot-edge-module-ampdotcom-pdp-plans.png)
+    ![Azure Market web sitesinde SKU 'Ları nasıl görüntülenir](media/iot-edge-module-ampdotcom-pdp-plans.png)
 
 
-#### <a name="on-the-azure-portal-website"></a>Azure Portal web sitesinde:
+#### <a name="on-the-azure-portal-website"></a>Azure portal web sitesinde:
 
-- SK'lere göz atarken:
+- SKU 'Lara gözatarken:
 
-    ![Azure portalında gezinirken IoT Edge modülü nasıl #1](media/iot-edge-module-portal-browse.png)
+    ![IoT Edge modülün #1 Azure portal gözatarken nasıl gösterdiği](media/iot-edge-module-portal-browse.png)
 
-    ![Azure portalında gezinirken IoT Edge modülü nasıl #2](media/iot-edge-module-portal-product-picker.png)
+    ![IoT Edge modülün #2 Azure portal gözatarken nasıl gösterdiği](media/iot-edge-module-portal-product-picker.png)
 
-- SK'lar ararken:
+- SKU 'Lar aranırken:
 
-    ![Azure portalında arama yaparken IoT Edge modülü nasıl açılır?](media/iot-edge-module-portal-search.png)
+    ![IoT Edge modülün Azure portal ararken nasıl gösterdiği](media/iot-edge-module-portal-search.png)
 
-- SKU detaylarına bakarken:
+- SKU ayrıntıları aranırken:
 
-    ![Portaldaki ürün ayrıntılarına bakarken IoT Edge modülü nasıl açılır?](./media/iot-edge-module-portal-pdp.png)
+    ![Portalda ürün ayrıntılarını ararken IoT Edge modülünün nasıl gösterdiği](./media/iot-edge-module-portal-pdp.png)
 
-- Modülü dağıtırken:
+- Modülün dağıtımı sırasında:
     
-    ![Dağıtılırken IoT Edge modülü nasıl açılır?](./media/iot-edge-module-deployment.png)
+    ![IoT Edge modülün dağıtıldığında nasıl gösterdiği](./media/iot-edge-module-deployment.png)
 
 
 ## <a name="sku-content"></a>SKU içeriği
 
-**Edge Modül Görüntüleri**altında, IoT Edge modülünüzü yüklemek için ihtiyacımız olan bilgileri sağlayın.
+**Edge modülü görüntüleri**altında IoT Edge modülünüzü karşıya yüklemek için ihtiyacımız olan bilgileri girin.
 
-IoT Edge modül resminizi içeren [Azure Konteyner Kayıt Defterinize](https://azure.microsoft.com/services/container-registry/) (ACR) erişmemize izin verin, böylece onu yükleyip sertifikalayabilelim. Yayımlandıktan sonra, IoT Edge modülünüz Azure Marketi tarafından barındırılan genel bir konteyner kayıt defteri kullanılarak kopyalanır ve dağıtılır.
+IoT Edge modül görüntünüzü içeren [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR) için bize erişim sağlayın ve bu sayede dosyayı onaylabiliriz. Yayımlandıktan sonra, IoT Edge modülünüzün Azure Marketi tarafından barındırılan ortak bir kapsayıcı kayıt defteri kullanılarak kopyalanıp dağıtılması gerekir.
 
-Birden çok platformu hedefleyebilir ve etiketler aracılığıyla çeşitli sürümler sağlayabilirsiniz. Etiketler ve sürüm ler hakkında daha fazla bilgi için ["IoT Edge modülü teknik varlıklarınızı hazırlayın" adresinden](./cpp-create-technical-assets.md)edinebilirsiniz.
+Birden çok platformu hedefleyebilir ve Etiketler aracılığıyla çeşitli sürümler sağlayabilirsiniz. ["IoT Edge modülü teknik varlıklarınızı hazırlama" bölümünde Etiketler ve sürüm oluşturma](./cpp-create-technical-assets.md)hakkında daha fazla bilgi edinin.
 
-![IoT Edge Modül Görüntüleri](./media/iot-edge-module-skus-tab-acr.png)
+![Modül görüntülerini IoT Edge](./media/iot-edge-module-skus-tab-acr.png)
 
-Aşağıdaki tabloda, **Resim Deposu Ayrıntıları** ve Resim **Sürümü**bölümleri için alanların amacı, içeriği ve biçimlendirmesi açıklanmaktadır.  Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Aşağıdaki tabloda, **görüntü deposu ayrıntıları** ve **görüntü sürümü**bölümlerine ilişkin alanların amacı, içerikleri ve biçimlendirmesi açıklanmaktadır.  Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
 
 |  **Alan**       |     **Açıklama**                                                          |
 |  ---------       |     ---------------                                                          |
-|  |  ***Resim Deposu Ayrıntıları***    |
-| **Abonelik Kimliği\***        | ACR'nizin Azure abonelik kimliği.|
-| **Kaynak grubu adı\***      | ACR'nizin kaynak grubu adı.|
-| **Kayıt defteri adı\***  | ACR kayıt adınız. Sadece kayıt defteri adını kopyalamak, DEĞIL oturum açma sunucusu `azurecr.io`adı (örneğin, olmadan .) |
-| **Depo adı\***  | IoT Edge modülünüzü içeren ACR'nizin depo adı. **Not:** Ad ayarlandıktan sonra değiştirilemez. Hesabınızdaki başka hiçbir teklifin aynı ada sahip olmadığından emin olmak için benzersiz bir ad kullanın. |
-| **Username\*** | ACR 'nizle ilişkili kullanıcı adı (yönetici kullanıcı adı). |
-| **Parola\*** | ACR'nizle ilişkili parola. |
-|    |  ***Resim Sürümü***   |
-| **Resim Etiketi veya Özeti\*** | En azından bir `latest` etiket ve sürüm etiketi içermelidir `xx.xx.xx-` (örneğin, xx'in bir sayı olduğu yerden başlayarak). Bunlar birden çok platformu hedeflemek için [açık etiketler](https://github.com/estesp/manifest-tool) olmalıdır. Bir bildirim etiketiyle başvurulan tüm etiketlerde de eklenmelidir, böylece bunları yükleyebiliriz. Etiketleri kullanarak bir IoT Edge modülünün çeşitli sürümlerini ekleyebilirsiniz. Tüm bildirim etiketleri `latest`(hariç) `X.Y-` `X.Y.Z-` ya da X, Y, Z'nin tümseger olduğu yerde başlamalıdır. Etiketler ve sürüm ler hakkında daha fazla bilgi için ["IoT Edge modülü teknik varlıklarınızı hazırlayın" adresinden](./cpp-create-technical-assets.md)edinebilirsiniz. <br/> `latest` Örneğin, bir etiket bu işaret `1.0.1-linux-x64`, `1.0.1-linux-arm32`, `1.0.1-windows-arm32`, ve , bu 6 etiketleri burada eklenmesi gerekir. |
+|  |  ***Görüntü deposu ayrıntıları***    |
+| **Abonelik KIMLIĞI\***        | ACR 'nizin Azure abonelik KIMLIĞI.|
+| **Kaynak grubu adı\***      | ACR 'nizin kaynak grubu adı.|
+| **Kayıt defteri adı\***  | ACR kayıt defteriniz adı. Yalnızca kayıt defteri adını, oturum açma sunucusu adını DEĞIL (örneğin, olmadan `azurecr.io`) kopyalayın |
+| **Depo adı\***  | IoT Edge modülünüzü içeren ACR 'nizin Depo adı. **Note:** Ad ayarlandıktan sonra, daha sonra değiştirilemez. Hesabınızda başka hiçbir teklifin aynı ada sahip olmamasını sağlamak için benzersiz bir ad kullanın. |
+| **Nitelen\*** | ACR 'iyle ilişkilendirilen Kullanıcı adı (Yönetici Kullanıcı adı). |
+| **Parolayı\*** | ACR 'iyle ilişkilendirilen parola. |
+|    |  ***Görüntü sürümü***   |
+| **Resim etiketi veya Özeti\*** | En azından bir `latest` etiket ve sürüm etiketi içermelidir (örneğin, xx bir sayı olduğu için başlangıç `xx.xx.xx-` ). Birden çok platformu hedeflemek için [bildirim etiketleri](https://github.com/estesp/manifest-tool) olmaları gerekir. Bir bildirim etiketi tarafından başvurulan tüm Etiketler de karşıya yüklenebilmemiz için eklenmelidir. Etiketleri kullanarak bir IoT Edge modülünün birkaç sürümünü ekleyebilirsiniz. Tüm bildirim etiketleri (except `latest`), ya da `X.Y-` `X.Y.Z-` X, Y, Z tamsayılarla başlamalıdır. ["IoT Edge modülü teknik varlıklarınızı hazırlama" bölümünde Etiketler ve sürüm oluşturma](./cpp-create-technical-assets.md)hakkında daha fazla bilgi edinin. <br/> Örneğin `latest` , bir etiket `1.0.1-linux-x64`, `1.0.1-linux-arm32`,, ve `1.0.1-windows-arm32`' a işaret ediyorsa, bu 6 etiketlerinin buraya eklenmesi gerekir. |
 |  |  |
 
 
-### <a name="help-your-customers-launch-by-using-default-settings"></a>Varsayılan ayarları kullanarak müşterilerinizin başlatmaya yardımcı olun
+### <a name="help-your-customers-launch-by-using-default-settings"></a>Varsayılan ayarları kullanarak müşterilerinizin başlatma yardımına yardımcı olma
 
-IoT Edge modülünüzü dağıtmak için en yaygın ayarları tanımlayın. Bu varsayılanlarla IoT Edge modülünüzü kullanıma sunmasına izin vererek müşteri dağıtımlarını optimize edin.
+IoT Edge modülünüzü dağıtmak için en yaygın ayarları tanımlayın. Bu varsayılan değerlerle IoT Edge modülünüzü kullanıma hazır hale getirerek müşteri dağıtımlarını iyileştirin.
 
-![Dağıtımda IoT Edge modülü varsayılan ayarları](./media/iot-edge-module-skus-tab-iot-edge-defaults.png)
+![Dağıtım sırasında modül varsayılan ayarlarını IoT Edge](./media/iot-edge-module-skus-tab-iot-edge-defaults.png)
 
-Aşağıdaki tabloda **Varsayılan Yollar, Varsayılan** **ikiz istenen özellikler,** **Varsayılan ortam değişkenleri**ve Varsayılan **CreateOptions**için alanların amacı, içeriği ve biçimlendirmeaçıklanır.
+Aşağıdaki tabloda **Varsayılan rotalar**için alanların amacı, içeriği ve biçimlendirmesi, varsayılan **ikizi istenen özellikler**, varsayılan **ortam değişkenleri**ve **varsayılan createOptions**açıklanmaktadır.
 
 |  **Alan**       |     **Açıklama**                                                          |
 |  ---------       |     ---------------                                                          |
-| **Varsayılan yollar**        | Her varsayılan rota adı ve değeri 512 karakterden az olmalıdır. En fazla 5 varsayılan rota tanımlayabilirsiniz. Rota değerinizde doğru bir [rota sözdizimini](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) kullandığınızdan emin olun. Modülünüze başvurmak için, boşluk ve özel karakter içermeyen **SKU Unvanınız** olacak varsayılan modül adını kullanın. Henüz bilinmeyen diğer modüllere başvurmak `<FROM_MODULE_NAME>` için, müşterilerinize bu bilgileri güncelleştirmeleri gerektiğini bildirmek için kuralı kullanın. [IoT Edge rotaları](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)hakkında daha fazla bilgi edinin. <br/> Örneğin, modül `ContosoModule` veri girişlerini `ContosoInput` ve çıktılarını `ContosoOutput`dinliyorsa, aşağıdaki 2 varsayılan yolu tanımlamak mantıklıdır:<br/>- Adı #1:`ToContosoModule`<br/>- Değer #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>- Ad #2:`FromContosoModuleToCloud`<br/>- Değer #2:`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
-| **Varsayılan ikiz istenilen özellikler**      | Her varsayılan ikiz istenilen özellikleri adı ve değeri 512 karakterden az olmalıdır. En fazla 5 ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkiz istenilen özelliklerin değerleri, diziler olmadan ve en fazla 4 iç içe hiyerarşisi olan json, kaçamayan geçerli olmalıdır. [İstenilen ikiz özellikler](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)hakkında daha fazla bilgi edinin. <br/> Örneğin, bir modül istenen ikiz özellikler aracılığıyla dinamik olarak yapılandırılabilir yenileme hızını destekliyorsa, aşağıdaki varsayılan ikiz istenen özelliği tanımlamak mantıklıdır:<br/> - Adı #1:`RefreshRate`<br/>- Değer #1:`60`|
-| **Varsayılan ortam değişkenleri**  | Her varsayılan ortam değişkenleri adı ve değeri 512 karakterden az olmalıdır. En fazla 5 ad/değer ortamı değişkeni tanımlayabilirsiniz. <br/>Örneğin, bir modül başlatılmadan önce kullanım koşullarını kabul etmeyi gerektiriyorsa, aşağıdaki ortam değişkenini tanımlayabilirsiniz:<br/> - Adı #1:`ACCEPT_EULA`<br/>- Değer #1:`Y`|
-| **Varsayılan createOptions**  | createOptions 512 karakterden az olmalıdır. JSON geçerli olmalı, kaçamayan. [CreateOptions](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules)hakkında daha fazla bilgi edinin. <br/> Örneğin, bir modül bağlantı noktasını bağlamayı gerektiriyorsa, aşağıdaki createOptions'ı tanımlayabilirsiniz:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|
+| **Varsayılan yollar**        | Her varsayılan yol adı ve değeri 512 karakterden kısa olmalıdır. En fazla 5 varsayılan yol tanımlayabilirsiniz. Rota değerde doğru bir [yol sözdizimi](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes) kullandığınızdan emin olun. Modülünüzü ifade etmek için varsayılan modül adını kullanın, bu, boşluk ve özel karakterler olmadan **SKU başlığınız** olacaktır. Henüz bilinmeyen diğer modüllere başvurmak için, müşterilerinizin bu bilgileri güncelleştirmesi `<FROM_MODULE_NAME>` gerektiğini bilmesini sağlamak için kuralını kullanın. [IoT Edge yollar](https://docs.microsoft.com/azure/iot-edge/module-composition#declare-routes)hakkında daha fazla bilgi edinin. <br/> Örneğin, modül `ContosoModule` üzerinde `ContosoInput` giriş ve çıkış verilerini dinler `ContosoOutput`, aşağıdaki 2 varsayılan yolları tanımlamak mantıklı olur:<br/>-Ad #1:`ToContosoModule`<br/>-Değer #1:`FROM /messages/modules/<FROM_MODULE_NAME>/outputs/* INTO BrokeredEndpoint("/modules/ContosoModule/inputs/ContosoInput")`<br/>-Ad #2:`FromContosoModuleToCloud`<br/>-Değer #2:`FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream`<br/>  |
+| **Varsayılan ikizi istenen özellikler**      | Her varsayılan ikizi istenen özellikler adı ve değeri 512 karakterden kısa olmalıdır. En fazla 5 ad/değer ikizi istenen özellikleri tanımlayabilirsiniz. İkizi Desired özelliklerinin değerleri, diziler olmadan ve en fazla iç içe geçmiş 4 ' ü içeren geçerli bir JSON, kaçışsız olmalıdır. [İkizi istenen özellikler](https://docs.microsoft.com/azure/iot-edge/module-composition#define-or-update-desired-properties)hakkında daha fazla bilgi edinin. <br/> Örneğin, bir modül ikizi istenen özellikler aracılığıyla dinamik olarak yapılandırılabilir yenileme oranını destekliyorsa, aşağıdaki varsayılan ikizi istenen özelliği tanımlamak mantıklı olur:<br/> -Ad #1:`RefreshRate`<br/>-Değer #1:`60`|
+| **Varsayılan ortam değişkenleri**  | Her varsayılan ortam değişkeni adı ve değeri 512 karakterden kısa olmalıdır. En fazla 5 ad/değer ortam değişkeni tanımlayabilirsiniz. <br/>Örneğin, bir modülün başlamadan önce kullanım koşullarını kabul etmesi gerekiyorsa, aşağıdaki ortam değişkenini tanımlayabilirsiniz:<br/> -Ad #1:`ACCEPT_EULA`<br/>-Değer #1:`Y`|
+| **Varsayılan createOptions**  | CreateOptions 512 karakterden kısa olmalıdır. Geçerli bir JSON, kaçışsız olmalıdır. [CreateOptions](https://docs.microsoft.com/azure/iot-edge/module-composition#configure-modules)hakkında daha fazla bilgi edinin. <br/> Örneğin, bir modül bağlantı noktası bağlamayı gerektiriyorsa, aşağıdaki createOptions tanımlayabilirsiniz:<br/>  `"HostConfig":{"PortBindings":{"5012/tcp":[{"HostPort":"5012"}]}`|
 |   |   |
 
-SKU ayarlarınızı kaydetmek için **Kaydet'i** seçin. 
+SKU ayarlarınızı kaydetmek için **Kaydet** ' i seçin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teklifiniz için pazar yeri açıklaması oluşturmak için [Market sekmesini](./cpp-marketplace-tab.md) kullanın.
+Teklifiniz için Market açıklaması oluşturmak üzere [Market sekmesini](./cpp-marketplace-tab.md) kullanın.

@@ -1,50 +1,50 @@
 ---
-title: Azure Marketi'nde sanal makine teklifi
-description: Azure Marketi'nde bir VM teklifi yayımlama işlemine genel bakış.
+title: Azure Marketi 'nde sanal makine teklifi
+description: Azure Marketi 'nde VM teklifi yayımlama sürecine genel bakış.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: dsindona
-ms.openlocfilehash: 0f2ae9fe6f006b5418ebee82b08a44188b7c58d3
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: b857cf8b7485beb884adf77d99f82d965f55a0ad
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273078"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142793"
 ---
 # <a name="virtual-machine-offer"></a>Sanal makine teklifi
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) ' nde bulunan yönergeleri izleyin.
 
 |    |    |
 |-----------------------------------------------------------------|------------------------------------------|
-| Bu bölümde, Azure Marketi'nde yeni [Azure Marketplace](https://azuremarketplace.microsoft.com)bir sanal makine teklifinin nasıl yayımlanabileceği açıklanmaktadır. Bir işletim sistemi sanal sabit disk (VHD) ve sıfır veya daha fazla veri VHD'leri içeren hem Windows hem de Linux tabanlı sanal makineler için destek sağlanır. | ![sanal makine simgesi](./media/virtual-machine-icon.png)  |
+| Bu bölümde, [Azure Marketi](https://azuremarketplace.microsoft.com)'ne yeni bir sanal makine teklifinin nasıl yayımlanacağı açıklanmaktadır. Bir işletim sistemi sanal sabit diski (VHD) ve sıfır veya daha fazla veri VHD 'si içeren hem Windows tabanlı hem de Linux tabanlı sanal makineler için destek sağlanır. | ![sanal makine simgesi](./media/virtual-machine-icon.png)  |
 
 
-## <a name="publishing-overview"></a>Yayımlama genel bakış
+## <a name="publishing-overview"></a>Yayımlamaya genel bakış
 
-Aşağıdaki video olan [Azure Marketinizi Optimize Edin,](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player)bu pazarda nasıl yayınlayacağınızı (sanal makine çözümünün kullanılması), ürün sayfanızla kullanıcı deneyimini nasıl optimize edebileceğiniz ve isteğe bağlı Test Sürüşü deneyimi, kullanıcı müşteri adaylarının nasıl oluşturulduğu ve bunları nasıl tüketebileceğiniz ve müşteri etkileşimini optimize edebileceğiniz dahil olmak üzere Azure Marketi'ne geniş bir genel bakış sunar.
+Aşağıdaki videoda, [Azure Market teklifinizi en iyileştirin](https://channel9.msdn.com/Events/Build/2017/P4026?ocid=player), Azure Market 'te yayımlama (bir sanal makine çözümü kullanılarak), ürün sayfanız ve Isteğe bağlı test sürücüsü deneyiminizle Kullanıcı deneyimini en uygun hale getirmeyi, Kullanıcı liderinizi nasıl kullanabileceğinizi ve müşteri katılımını en uygun hale getirmeyi de kapsayan genel bir bakış sunar.
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2017/P4026/player]
 
 
-## <a name="vm-publishing-process-flow"></a>VM Yayıncılık proses akışı
+## <a name="vm-publishing-process-flow"></a>VM yayımlama işlemi akışı
 
-Aşağıdaki diyagram, VM teklifini yayımlamadaki üst düzey adımları göstermektedir. 
+Aşağıdaki diyagramda bir VM teklifi yayımlamanın üst düzey adımları gösterilmektedir. 
 
-![VM yayımlama süreci](./media/publishvm_001.png)
+![VM yayımlama işlemi](./media/publishvm_001.png)
 
-1. Teklifi oluşturun - Teklif tanımı, pazarlama malzemeleri, yasal, destek bilgileri ve varlık özellikleri de dahil olmak üzere teklifle ilgili tüm ayrıntılar ve bilgiler yapılandırılır.
+1. Teklifi oluşturun-teklif açıklaması, pazarlama malzemeleri, yasal, destek bilgileri ve varlık belirtimleri dahil olmak üzere teklifle ilgili tüm ayrıntıları ve bilgileri yapılandırılır.
 
-2. İş ve teknik varlıkları oluşturun - İlişkili çözüm için iş varlıkları (yasal belgeler ve pazarlama malzemeleri) ve teknik varlıkları (burada, VM'ler ve ekli diskler) oluşturun. 
+2. İş ve teknik varlıkları oluşturun-ilgili çözüme yönelik iş varlıklarını (yasal belgeler ve pazarlama malzemeleri) ve teknik varlıkları oluşturun (burada, VM 'Ler ve bağlı diskler). 
 
-3. SKU'yu oluşturun - Teklifle ilişkili SKU(lar) oluşturun ve bunları gönderin.  Yayınlamayı planladığınız her resim için benzersiz bir SKU gereklidir. 
+3. SKU 'YU oluşturun-teklifle ilişkili ilgili SKU 'ları oluşturun ve bunları iletin.  Yayımlamayı planladığınız her görüntü için benzersiz bir SKU gereklidir. 
  
-4. Teklifi onaylayın ve yayınlayın - Teklif ve teknik varlıklar tamamlandıktan sonra teklifi gönderebilirsiniz. Bu gönderim, çözümün test edildiği, doğrulandığı, onaylandığı, daha sonra pazarda "yayına geçtiği" yayımlama sürecini başlatacaktır.  
+4. Teklifi onaylama ve yayımlama-teklif ve teknik varlıklar tamamlandığında teklifi gönderebilirsiniz. Bu gönderim, çözümün test edilmiş, doğrulanan, sertifikalı ve sonra Market 'teki "canlı" olduğu yayımlama işlemini başlatacak.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu adımları düşünmeden önce, Microsoft Azure Marketi'nde bir VM yayımlamak için [teknik ve iş gereksinimlerini](./cpp-prerequisites.md) karşılamanız gerekir. 
+Bu adımları kabul etmeden önce, bir VM 'yi Microsoft Azure Market yayımlamak için [Teknik ve iş gereksinimlerini](./cpp-prerequisites.md) karşılamanız gerekir. 

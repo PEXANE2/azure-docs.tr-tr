@@ -1,176 +1,176 @@
 ---
-title: Azure Marketi'ndeki mevcut bir VM teklifini güncelleştirme
-description: Azure Marketi'nde varolan bir VM teklifini nasıl güncelleştireceğimi açıklar.
+title: Azure Marketi 'nde var olan bir VM teklifini güncelleştirme
+description: Azure Marketi 'nde mevcut bir VM teklifinin nasıl güncelleştireceğinizi açıklar.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
-ms.openlocfilehash: a15ccb1de2a9ce0072d032e624ead3b4d730763b
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273061"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142910"
 ---
-# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketi'nde varolan bir VM teklifini güncelleştirme
+# <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Azure Marketi 'nde mevcut bir VM teklifini güncelleştirme
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) ' nde bulunan yönergeleri izleyin.
 
-Bu makale, [Bulut İş Ortağı Portalı'ndaki](https://cloudpartner.azure.com/) sanal makine (VM) teklifinizi güncelleştirmenin ve teklifi yeniden yayımlamanın farklı yönlerini size iletir. 
+Bu makalede, sanal makine (VM) teklifinizi [bulut iş ortağı portalı](https://cloudpartner.azure.com/) ve ardından teklifi yeniden yayımlayacağınız farklı yönleri açıklanmaktadır.
 
-Teklifinizi güncellemeniz için sık karşılaşılan nedenler şunlardır:
+Teklifinizi güncelleştirmeniz için kullanabileceğiniz çeşitli çok sayıda, aşağıdakiler de dahil olmak üzere, şunlar vardır:
 
--  Mevcut STU'lara yeni bir VM resim sürümü ekleme
--  SKU'nun kullanılabilen bölgeleri değiştirme
--  Yeni STU'lar ekle
--  Teklif veya tek tek SNU'lar için pazar meta verilerini güncelleştirme
--  Gittikçe öde teklifleri nin fiyatlandırmasını güncelleştir
+-  Mevcut SKU 'Lara yeni bir VM görüntüsü sürümü ekleyin
+-  Bir SKU 'nun kullanılabildiği bölgeleri değiştirme
+-  Yeni SKU 'Lar Ekle
+-  Teklif veya bağımsız SKU 'Lar için Market meta verilerini güncelleştirme
+-  Kullandıkça Öde tekliflarında fiyatlandırmayı güncelleştirme
 
-Bu değişikliklerde size yardımcı olmak için, portal **Karşılaştırma** ve **Geçmiş** özelliklerini sunar.  
+Bu değişiklikler konusunda size yardımcı olmak için Portal **karşılaştırma** ve **geçmiş** özelliklerini sunmaktadır.  
 
 >[!Note]
->Bulut Çözüm Sağlayıcıları (CSP) iş ortağı kanal tercihi artık kullanılabilir.  Microsoft CSP iş ortağı kanalları aracılığıyla teklifinizi pazarlama hakkında daha fazla bilgi için lütfen [Bulut Çözüm Sağlayıcıları'na](../../cloud-solution-providers.md) bakın.
+>Bulut çözümü sağlayıcıları (CSP) iş ortağı kanalı kabul etme artık kullanılabilir.  Teklifinizi Microsoft CSP iş ortağı kanalları aracılığıyla pazarlama hakkında daha fazla bilgi için lütfen bkz. [bulut çözümü sağlayıcıları](../../cloud-solution-providers.md) .
 
-## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>VM teklifinde veya SKU'da izin verilmemiş değişiklikler
+## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>VM teklifinin veya SKU 'sunda izin verilmeyen değişiklikler
 
-Teklif Azure Marketi'nde canlı olarak yayınlanınca değiştirileemeyen bir VM teklifinin veya SKU'nun bazı öznitelikleri vardır:
+Teklif Azure Marketi 'nde canlı olduktan sonra değiştirilemeyen bir VM teklifinin veya SKU 'sunun bazı öznitelikleri vardır:
 
--  **Teklifin kimliği** ve **Yayıncı Kimliği**
--  Mevcut SKU'ların **SKU Kimliği**
--  Varolan SK'lerin veri disk sayısı
--  Mevcut SBI'lerde faturalama/lisans modeli değişiklikleri
--  Yayınlanan SKU'ya fiyat artışları
+-  Teklifin **TEKLIF kimliği** ve **Yayımcı kimliği**
+-  Mevcut SKU 'ların **SKU kimliği**
+-  Mevcut SKU 'ların veri diski sayısı
+-  Faturalandırma/lisans modeli, mevcut SKU 'Larda değişir
+-  Yayınlanmış bir SKU 'ya fiyat artar
 
 
-## <a name="common-update-operations"></a>Sık güncelleştirme işlemleri
+## <a name="common-update-operations"></a>Ortak güncelleştirme işlemleri
 
-VM teklifinde değiştirebileceğiniz çok çeşitli özellikler olmasına rağmen, aşağıdaki işlemler yaygındır.
+Bir VM teklifinde değiştirebileceğiniz çok çeşitli özellikler olsa da, aşağıdaki işlemler yaygındır.
 
-### <a name="update-the-vm-image-version-for-a-sku"></a>Bir SKU için VM görüntü sürümünü güncelleştirme
+### <a name="update-the-vm-image-version-for-a-sku"></a>SKU için VM görüntüsü sürümünü güncelleştirme
 
-VM görüntüsünün güvenlik yamaları, ek özellikler ve benzeri yollarla düzenli olarak güncellenmesi yaygındır.  Bu tür senaryolar altında, Aşağıdaki adımları kullanarak SKU başvurur VM görüntü güncelleştirmek istiyorum:
+Bir VM görüntüsünün güvenlik düzeltme ekleri, ek özellikler vb. ile düzenli olarak güncelleştirilmesini yaygındır.  Bu senaryolarda, aşağıdaki adımları kullanarak SKU 'nuzun VM görüntüsünü güncelleştirmek istersiniz:
 
-1.  [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
 
-2.  **Tüm teklifler**altında, güncelleme teklifi bulabilirsiniz.
+2.  **Tüm teklifler**altında, güncelleştirilecek teklifi bulun.
 
-3.  **SKU** sekmesinde, güncelleştirmek için VM resmiyle ilişkili SKU'ya tıklayın.
+3.  **SKU 'lar** sekmesinde, güncelleştirilecek VM görüntüsüyle ilişkili SKU 'ya tıklayın.
 
-4.  **Disk sürümü**altında, yeni bir VM resmi eklemek için **+Yeni Disk Sürümü'ne** tıklayın.
+4.  Yeni bir VM görüntüsü eklemek için **disk sürümü**' nün altında **+ yeni disk sürümü** ' ne tıklayın.
 
-5.  Yeni VM Images **Disk sürümünü**sağlayın. Disk sürümünün [anlamsal sürüm](https://semver.org/) biçimini izlemesi gerekir. Sürümler X, Y ve Z'nin tümseger olduğu X.Y.Z formunda olmalıdır. Sağladığınız yeni sürümün önceki tüm sürümlerden daha büyük olduğunu doğrulayın; aksi takdirde yeni sürümü yeniden yayımladıktan sonra portalda veya Azure Marketi'nde görüntülenmeyecek.
+5.  Yeni VM görüntüleri **disk sürümünü**sağlayın. Disk sürümünün [anlam sürümü](https://semver.org/) biçimini izlemesi gerekir. Sürümler X. Y. Z biçiminde olmalıdır; burada X, Y ve Z tamsayılardır. Sağladığınız yeni sürümün önceki sürümlerden daha büyük olduğunu doğrulayın; Aksi halde, yeni sürümü yeniden yayımladıktan sonra portalda veya Azure Marketi 'nde görüntülenmez.
 
-6.  **OS VHD URL için,** işletim sistemi VHD için oluşturulan [paylaşılan erişim imzası (SAS) URI'yi](./cpp-get-sas-uri.md) girin. 
+6.  **OS VHD URL 'si**için, IŞLETIM sistemi VHD 'si için oluşturulan [paylaşılan ERIŞIM imzası (SAS) URI](./cpp-get-sas-uri.md) 'sini girin. 
 
     > [!WARNING] 
-    > Veri diski sayısı SKU'nun farklı sürümleri arasında değiştirilemez. Önceki sürümlerde yapılandırılmış veri diskleri varsa, bu yeni sürüm de aynı sayıda veri diski olmalıdır.
+    > Veri diski sayısı, SKU 'nun farklı sürümleri arasında değişiklik alamaz. Önceki sürümlerde veri diskleri yapılandırılmışsa, bu yeni sürümün aynı sayıda veri diskine de sahip olması gerekir.
 
-7.  Yeni VM sürümünüzü Azure Marketi'nde yayınlamak için iş akışını başlatmak için **Yayımla'yı** tıklatın.
+7.  Yeni VM sürümünüzü Azure Marketi 'nde yayımlamak üzere iş akışını başlatmak için **Yayımla** ' ya tıklayın.
 
 
-### <a name="change-region-availability-of-a-sku"></a>Bir SKU'nun bölge kullanılabilirliğini değiştirme
+### <a name="change-region-availability-of-a-sku"></a>SKU 'nun bölge kullanılabilirliğini değiştirme
 
-Zaman içinde, teklifinizi/SKU'nuzu daha fazla bölgede kullanılabilir hale getirmek isteyebilirsiniz.  Alternatif olarak, belirli bir bölgede teklifi/SKU'yu desteklemeyi durdurmak isteyebilirsiniz.
+Zaman içinde teklifinizin/SKU 'nuzu daha fazla bölgede kullanılabilir hale getirmek isteyebilirsiniz.  Alternatif olarak, belirli bir bölgedeki teklif/SKU 'YU desteklemeyi durdurmak isteyebilirsiniz.
 Kullanılabilirliği değiştirmek için aşağıdaki adımları kullanın:
 
-1.  [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
 
-2.  **Tüm teklifler** altında güncellemek istediğiniz teklifi bulabilirsiniz.
+2.  **Tüm teklifler** altında güncelleştirmek istediğiniz teklifi bulun.
 
-3.  **SKU** sekmesinde, kullanılabilirliğini değiştirmek istediğiniz SKU'yu tıklatın.
+3.  **SKU 'lar** sekmesinde, kullanılabilirliğini DEğIşTIRMEk istediğiniz SKU 'ya tıklayın.
 
-4.  **Ülke/Bölge kullanılabilirlik** alanı altındaki **Ülkeleri Seç** düğmesine tıklayın.
+4.  **Ülke/bölge kullanılabilirliği** alanının altındaki **ülkeleri Seç** düğmesine tıklayın.
 
-5.  Bölgede kullanılabilirlik açılır pencere, ekleyin veya bu SKU için bölgeleri kaldırın.
+5.  Bölge kullanılabilirliği açılır penceresinde, bu SKU 'nun bölgelerini ekleyin veya kaldırın.
 
-6.  SK'ler bölge kullanılabilirliğinizi güncelleştirmek için yayımlama iş akışını başlatmak için **Yayımla'yı** tıklatın.
+6.  SKU bölgenizin kullanılabilirliğini güncelleştirmek üzere Yayımla iş akışını başlatmak için **Yayımla** ' ya tıklayın.
 
-Yeni bir bölgede bir SKU kullanıma sunuluyorsa, **Dışa Aktarma Fiyatlandırma Verileri** işlevi aracılığıyla söz konusu bölge için fiyatlandırma belirtme olanağınız olacaktır. Daha önce kullanılabilir olan bir bölgeyi geri ekliyorsanız, fiyatlandırma değişikliklerine izin verilmediği için fiyatlandırmasını güncelleştiremesiniz.
-
-
-### <a name="add-a-new-sku"></a>Yeni bir SKU ekle
-
-Mevcut teklifiniz için yeni bir SKU kullanılabilir hale getirmek için aşağıdaki adımları kullanın: 
-
-1.  [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-
-2.  **Tüm teklifler** altında güncellemek istediğiniz teklifi bulabilirsiniz.
-
-3.  **SKU** sekmesinin altında, **yeni SKU ekle'ye** tıklayın ve açılır pencerede bir **SKU kimliği** sağlayın.
-
-4.  Makalede ayrıntılı olarak belirtildiği gibi VM'yi yeniden yayımlayın [Sanal makineyi Azure Marketi'nde yayımlayın.](./cpp-publish-offer.md)
-
-5.  Yeni SKU'nuzu yayınlamak için iş akışını başlatmak için **Yayımla'yı** tıklatın.
+Bir SKU yeni bir bölgede kullanılabilir duruma getiriliyorsa, **fiyatlandırma verilerini dışarı aktar** işlevini kullanarak söz konusu bölge için fiyatlandırma belirtme olanağına sahip olursunuz. Daha önce kullanılabilir bir bölgeyi geri ekliyorsanız fiyatlandırma değişikliklerine izin verilmediğinden fiyatlandırma güncelleyemeyeceksiniz.
 
 
-### <a name="update-offer-marketplace-metadata"></a>Teklif pazar meta verilerini güncelleştirin
+### <a name="add-a-new-sku"></a>Yeni bir SKU Ekle
 
-Teklifinizle ilişkili pazar meta verilerini (şirket adı, logolar, vb.) güncellemek için aşağıdaki adımları kullanın: 
+Mevcut teklifiniz için yeni bir SKU 'YU kullanılabilir hale getirmek için aşağıdaki adımları kullanın: 
 
-1.  [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
 
-2.  **Tüm teklifler** altında güncellemek istediğiniz teklifi bulabilirsiniz.
+2.  **Tüm teklifler** altında güncelleştirmek istediğiniz teklifi bulun.
 
-3.  **Market** sekmesine gidin ve meta veri değişiklikleri yapmak [için sanal bir makineyi Azure Marketi'ne yayımlama](./cpp-publish-offer.md) makaledeki yönergeleri izleyin.
+3.  **SKU 'lar** sekmesinde, **Yeni SKU Ekle** ' ye tıklayın ve açılır pencerede bir **SKU kimliği** sağlayın.
 
-4.  Değişikliklerinizi yayınlamak için iş akışını başlatmak için **Yayımla'yı** tıklatın.
+4.  [Sanal makineyi Azure Marketi 'Nde yayımlama](./cpp-publish-offer.md)makalesinde ayrıntılı olarak VM 'yi yeniden yayımlayın.
+
+5.  Yeni SKU 'nuzu yayımlamak üzere iş akışını başlatmak için **Yayımla** ' ya tıklayın.
 
 
-### <a name="update-pricing-on-published-offers"></a>Yayınlanan Tekliflerdeki Fiyatlandırmayı Güncelleştir
+### <a name="update-offer-marketplace-metadata"></a>Teklif marketi meta verilerini Güncelleştir
 
-Gittikçe öde teklifiniz yayınlandıktan sonra, SKU fiyatlandırmasını doğrudan artıramazsınız.  (Ancak, aynı teklif altında yeni bir SKU oluşturabilir, eski SKU'yu silebilir ve ardından yeni müşteriler için teklifinizi yeniden yayımlayabilirsiniz.)  Buna karşılık, aşağıdaki adımları kullanarak yayımlanmış bir teklifin fiyatını düşürebilirsiniz:
+Teklifinizle ilişkili olan market meta verilerini (Şirket adı, logolar vb.) güncelleştirmek için aşağıdaki adımları kullanın: 
 
-1.  [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
 
-2.  **Tüm teklifler**altında, güncelleme teklifi bulabilirsiniz.
+2.  **Tüm teklifler** altında güncelleştirmek istediğiniz teklifi bulun.
 
-3.  Fiyatlandırmayı düşürmek istediğiniz SKU'ya tıklayın.
+3.  **Market** sekmesine gidin ve meta verileri değişiklik yapmak Için [Azure Marketi 'ne bir sanal makine yayımlama](./cpp-publish-offer.md) makalesindeki yönergeleri izleyin.
 
-4.  Fiyatlandırmayı 1x1 GUI'de ayarladıysanız, fiyatı doğrudan UI'de değiştirebilirsiniz. Fiyatlandırmayı alma/dışa aktarma tablosu yla ayarlarsanız, fiyatları yalnızca alma/dışa aktarma özelliği yle düşürebilirsiniz.
+4.  Değişikliklerinizi yayımlamak üzere iş akışını başlatmak için **Yayımla** ' ya tıklayın.
 
-3.  **Kaydet**'e tıklayın.
 
-4.  Değişikliklerinizi yayınlamak için iş akışını başlatmak için **Yayımla'yı** tıklatın.
+### <a name="update-pricing-on-published-offers"></a>Yayımlanmış tekliflerle ilgili fiyatlandırmayı güncelleştirme
 
-Yeni azalan fiyatlandırma, web sitesinde canlı olarak yeni müşteriler tarafından görülebilir.  Bu yeni fiyat müşterilerinizi aşağıdaki şekillerde etkileyecektir:
+Kullandıkça Öde teklifiniz yayımlandıktan sonra, SKU fiyatlandırmasını doğrudan artırabilirsiniz.  (Ancak, aynı teklif altında yeni bir SKU oluşturabilir, eski SKU 'yu silebilir ve sonra teklifinizi yeni müşteriler için yeniden yayımlayabilirsiniz.)  Buna karşılık, aşağıdaki adımları kullanarak yayımlanmış bir teklifin fiyatını azaltabilirsiniz:
 
-- Yeni müşterilerden bu yeni fiyat tahsil edilecektir. 
-- Mevcut müşteriler için fiyat düşüşü, fiyat düşüşünün etkili olduğu faturalandırma döngüsünün başlangıcına geriye dönük olarak yansıtılacaktır.
-Fiyat düşüşlerinin meydana geldiği döngü için önceden faturalandırıldıysa, azalan fiyatı karşılamak için bir sonraki faturalandırma döngüsü sırasında geri ödeme alırlar.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+
+2.  **Tüm teklifler**altında, güncelleştirilecek teklifi bulun.
+
+3.  Fiyatlandırmasını azaltmak istediğiniz SKU 'ya tıklayın.
+
+4.  1x1 GUI 'de fiyatlandırmayı ayarladıysanız, fiyatı kullanıcı arabiriminden doğrudan değiştirebilirsiniz. İçeri/dışarı aktarma elektronik tablosu aracılığıyla fiyatlandırma ayarlarsanız, fiyatları yalnızca içeri/dışarı aktarma özelliği aracılığıyla azaltabilirsiniz.
+
+3.  **Kaydet**’e tıklayın.
+
+4.  Değişikliklerinizi yayımlamak üzere iş akışını başlatmak için **Yayımla** ' ya tıklayın.
+
+Yeni azaltılan fiyatlandırma, Web sitesinde etkin olduktan sonra yeni müşterilere görünür olacaktır.  Bu yeni fiyat, müşterilerinizi aşağıdaki yollarla etkiler:
+
+- Yeni müşteriler bu yeni ücret üzerinden ücretlendirilecektir. 
+- Mevcut müşteriler için fiyat azalmasıyla, Fiyat azalmasıyla ilgili faturalandırma döngüsünün başlangıcına geriye dönük olarak yansıtılyacaktır.
+Bir fiyat azalmasıyla ilgili bir dönem için zaten faturalandırılmışsa, daha düşük bir fiyat elde etmek üzere bir sonraki faturalandırma sürecinde bir para iadesi alırlar.
 
 
 <!-- TD: This has been implemented, need to change the SKU Tab topic to reflect and move this section there. -->
-### <a name="simplified-currency-pricing"></a>Basitleştirilmiş Döviz Fiyatlandırması
+### <a name="simplified-currency-pricing"></a>Basitleştirilmiş para birimi fiyatlandırması
 
-1 Eylül 2018 tarihinden itibaren **basitleştirilmiş döviz fiyatlandırması** adlı yeni bir bölüm portala eklenecektir. Microsoft, dünyanın dört bir yanındaki müşterilerinizden daha öngörülebilir fiyatlandırma ve koleksiyonlar sağlayarak Azure Marketi işini kolaylaştırıyor. Bu düzene, müşterilerinize fatura verdiğimiz para birimi sayısını azaltmak da dahildir.
+1 2018 Eylül 'den itibaren, portala **Basitleştirilmiş para birimi fiyatlandırması** adlı yeni bir bölüm eklenecektir. Microsoft, müşterilerinizden dünya genelindeki daha öngörülebilir fiyatlandırma ve koleksiyonlar sağlayarak Azure Market işletmesini kolaylaştırıyor. Bu hızlandırma, müşterilerinize faturadığımız para birimi sayısını azaltmayı içerir.
 
-Yeni bölüm bu yeni para birimlerinde fiyatlandırma alacak.Tüm müşteriler bu yeni kapatma para birimlerine geçirildikten sonra, orijinal fiyatlandırma bölümü kullanımdan kaldırılacak ve yalnızca Basitleştirilmiş Para Birimi Fiyatlandırması bölümü kalır.
+Yeni bölüm bu yeni para birimlerinde fiyatlandırma kazanacak.Tüm müşteriler bu yeni kapatma para birimlerine geçirildikten sonra, orijinal fiyatlandırma bölümü kullanımdan kaldırılır ve yalnızca Basitleştirilmiş para birimi fiyatlandırma bölümü kalır.
 
-Uzlaşma para biriminin değiştiği bölgeler için yeni bir fiyat belirlemek için 1 Kasım 2018 tarihine kadar süreniz olacak. Uzlaşma para biriminin değişmediği bölgelerin fiyatını artıramazsınız.
+1 Kasım 2018 ' e kadar, kapatma para birimi 'nin değişmekte olduğu bölgeler için yeni bir fiyat ayarlamanız gerekir. Kapatma para birimiyle değişmeyen bölgelerin fiyatını artıramezsiniz.
 
 > [!NOTE] 
-> Teklifinizi yayınlamak için API'leri kullanırsanız, Teklif JSON'da yeni bir bölüm görebilirsiniz. Bu, teklifin türüne `virtualMachinePricingV2` `monthlyPricingV2`bağlı olarak veya , olarak açıklamalı olacaktır. 
+> Teklifinizi yayımlamak için API 'Ler kullanıyorsanız, bu teklif JSON içinde yeni bir bölüm görebilirsiniz. Bu, teklifin türüne bağlı `virtualMachinePricingV2` olarak `monthlyPricingV2`veya olarak açıklanmalıdır. 
 
-Bu değişiklikle ilgili herhangi bir sorunuz varsa Azure [Marketi Desteği'ne](../../support-azure-marketplace.md)başvurun.
+Bu değişiklik hakkında sorularınız varsa [Azure Market desteği](../../support-azure-marketplace.md)'ne başvurun.
 
 
-## <a name="compare-feature"></a>Özelliği Karşılaştır
+## <a name="compare-feature"></a>Karşılaştırma özelliği
 
-Zaten yayımlanmış bir teklifte değişiklik yaptığınızda, yapılan değişiklikleri denetlemek için **Karşılaştırma** özelliğinden yararlanabilirsiniz. Bu özelliği kullanmak için:
+Önceden yayımlanmış bir teklifte değişiklik yaptığınızda, yapılan değişiklikleri denetlemek için **karşılaştırma** özelliğinden yararlanabilirsiniz. Bu özelliği kullanmak için:
 
-1.  Düzenleme işleminin herhangi bir noktasında, teklifiniz için **Karşılaştır** düğmesini tıklatın.
+1.  İstediğiniz herhangi bir noktada, teklifiniz için **Karşılaştır** düğmesine tıklayın.
 
-    ![Özellik düğmesini karşılaştır](./media/publishvm_037.png)
+    ![Özellik düğmesini Karşılaştır](./media/publishvm_037.png)
 
 
 2.  Pazarlama varlıklarının ve meta verilerin yan yana sürümlerini görüntüleyin.
 
 
-## <a name="history-of-publishing-actions"></a>Yayın Eylemlerinin Tarihi
+## <a name="history-of-publishing-actions"></a>Yayımlama eylemlerinin geçmişi
 
-Herhangi bir geçmiş yayımlama etkinliğini görüntülemek için Bulut İş Ortağı Portalı'nın sol navigasyon menü çubuğundaki **Geçmiş** öğesini tıklatın. Burada Azure Marketi tekliflerinizin ömrü boyunca gerçekleştirilen zaman damgalı eylemleri görüntüleyebilirsiniz.  
+Geçmiş yayımlama etkinliklerini görüntülemek için Bulut İş Ortağı Portalı sol gezinti menü çubuğundan **Geçmiş** öğesine tıklayın. Burada, Azure Market tekliflerinizin kullanım ömrü boyunca alınmış olan zaman damgamış eylemleri görüntüleyebileceksiniz.  
 <!-- TD: Add after section authored: For more information, see [History page](../portal-tour/cpp-history-page.md). -->
 

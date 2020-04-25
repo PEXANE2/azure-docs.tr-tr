@@ -1,45 +1,45 @@
 ---
-title: Azure IoT Edge modülü ön koşulları | Azure Marketi
-description: IoT Edge modülü yayınlamak için ön koşullar.
+title: Azure IoT Edge modül önkoşulları | Azure Marketi
+description: IoT Edge modülünü yayımlama önkoşulları.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 9a54b31725d14a3ff54bd2d945cd69f4b8769b87
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: d1bfc29a0cb031421b4017454bc8a2cdd8be09f9
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80983186"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142379"
 ---
-# <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge modülü yayımlama ön koşulları
+# <a name="iot-edge-module-publishing-prerequisites"></a>IoT Edge modülü yayımlama önkoşulları
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) bölümündeki yönergeleri izleyin.
 
-Bu makalede, bir IoT Edge modülü teklifi yayımlama nın ön koşulları açıklanmaktadır.  Bunu zaten yapmadıysanız, [IoT Edge modülleri yayımlama kılavuzunu gözden geçirin.](../..//iot-edge-module.md)
+Bu makalede bir IoT Edge modülü teklifini yayımlama önkoşulları açıklanmaktadır.  Daha önce yapmadıysanız, [IoT Edge modülleri Yayımlama Kılavuzu](../..//iot-edge-module.md)' nu gözden geçirin.
 
 
-## <a name="publishing-prerequisites"></a>Ön koşullarıyayınlama
+## <a name="publishing-prerequisites"></a>Ön koşullar yayımlanıyor
 
-Azure Marketi'nde bir IoT Edge modülü yayınlamak için aşağıdaki ön koşulları karşılamanız gerekir:
+Azure Marketi 'Nde bir IoT Edge modülünü yayımlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 <!-- P2: It would be great to point to the terms of use of CPP here. This can often be a blocker for big companies and these terms of use are not anonymously visible yet.-->
-- [Bulut İş Ortağı Portalına](https://cloudpartner.azure.com/)Erişim . Daha fazla bilgi için [Azure Marketi ve AppSource yayımlama kılavuzuna](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)bakın.
-- [Azure MarketI Koşullarına](https://azure.microsoft.com/support/legal/marketplace-terms/) Uyum
-- IoT Edge modülü teknik varlığınızı bir Azure Konteyner Kayıt Defteri'nde barındırın.  Daha fazla bilgi için [IoT Edge modülü teknik varlığınızı nasıl hazırlayacağınızı](./cpp-create-technical-assets.md) öğrenin
-- IoT Edge modülü meta verilerinizi kullanıma hazır layın. Örneğin, aşağıdaki varlıkları hazırlayın:
+- [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)erişim. Daha fazla bilgi için bkz. [Azure Marketi ve AppSource Yayımlama Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+- [Azure Marketi koşullarına](https://azure.microsoft.com/support/legal/marketplace-terms/) yönelik anlaşma
+- IoT Edge modülü teknik varlığınızı bir Azure Container Registry barındırın.  Daha fazla bilgi için bkz. [IoT Edge modülü teknik varlığınızı hazırlama](./cpp-create-technical-assets.md)
+- IoT Edge modülünüzün meta verilerini kullanıma hazırlayın. Örneğin, aşağıdaki varlıkları hazırlayın:
     - Bir başlık
-    - Açıklama (HTML biçiminde)
-    - Logo görüntüsü (PNG formatı ve 40x40px, 90x90px, 115x115px, 255x115px dahil sabit görüntü boyutları)
-    - Kullanım süresi ve gizlilik politikası
-    - Rotalar, ikiz istenen özellikler, createOptions ve çevre değişkenleri içeren varsayılan modül yapılandırması.
-    - Modül dokümantasyonu
+    - Bir açıklama (HTML biçiminde)
+    - Logo resmi (PNG biçimi ve 40x40px, 90x90px, 115x115px, 255x115px dahil)
+    - Kullanım Koşulları ve Gizlilik ilkesi
+    - Şunu içeren bir varsayılan modül yapılandırması: rotalar, ikizi istenen özellikler, createOptions ve ortam değişkenleri.
+    - Modül belgeleri
     - Destek kişileri
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Edge modülü teknik varlığınızı hazırladıktan](./cpp-create-technical-assets.md) [sonra, IoT Edge modül teklifinizi oluşturmaya](./cpp-create-offer.md)hazır olacaksınız. 
+[IoT Edge modülü teknik varlığınızı hazırladıktan](./cpp-create-technical-assets.md)sonra, [IoT Edge modül teklifinizi oluşturmaya](./cpp-create-offer.md)hazır olursunuz. 

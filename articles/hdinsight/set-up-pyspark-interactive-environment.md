@@ -1,38 +1,38 @@
 ---
-title: Azure HDInsight Araçları ile PySpark etkileşimli ortam
-description: Sorgular ve komut dosyaları oluşturmak ve göndermek için Visual Studio Code için Azure HDInsight Araçlarını nasıl kullanacağınızı öğrenin.
-keywords: VScode,Azure HDInsight Araçları,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,İnteraktif Kovan,İnteraktif Sorgu
+title: Azure HDInsight araçları ile PySpark etkileşimli ortamı
+description: Sorgular ve betikler oluşturmak ve göndermek için Visual Studio Code için Azure HDInsight araçlarını kullanmayı öğrenin.
+keywords: VScode, Azure HDInsight araçları, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, etkileşimli sorgu
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: 2a725f3c5c9e1428079807b5b76dbe72d416a9c7
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.date: 04/23/2020
+ms.openlocfilehash: d9a3356ea18ccf4660d05b3fade9d9e6d6cbb5ee
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393670"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131338"
 ---
-# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamı nı ayarlama
+# <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code için PySpark etkileşimli ortamını ayarlama
 
-Aşağıdaki adımlar, VS Code'da PySpark etkileşimli ortamını nasıl ayarlayabileceğinizi gösterir.
+Aşağıdaki adımlarda VS Code 'da PySpark etkileşimli ortamının nasıl ayarlanacağı gösterilmektedir.
 
-Ana sayfanızda sanal ortam oluşturmak için **python/pip** komutunu kullanırız. Başka bir sürüm kullanmak istiyorsanız, **python/pip** komutunun varsayılan sürümünü el ile değiştirmeniz gerekir. Daha fazla ayrıntı [güncelleme alternatifleri](https://linux.die.net/man/8/update-alternatives)bakın.
+Ana yolunuzda sanal ortam oluşturmak için **Python/PIP** komutunu kullanıyoruz. Başka bir sürüm kullanmak istiyorsanız, **Python/PIP** komutunun varsayılan sürümünü el ile değiştirmeniz gerekir. Daha fazla ayrıntı için bkz. [Update-alternatifler](https://linux.die.net/man/8/update-alternatives).
 
-1. [Python](https://www.python.org/downloads/) ve [pip'i](https://pip.pypa.io/en/stable/installing/)yükleyin.
+1. [Python](https://www.python.org/downloads/) ve [PIP](https://pip.pypa.io/en/stable/installing/)'yi yükler.
 
-   + Python'u [https://www.python.org/downloads/](https://www.python.org/downloads/)' dan yükleyin.
-   + Pip'i [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleyin (Python yüklemesinden yüklenmiyorsa).
-   + Python ve pip'in aşağıdaki komutları kullanarak başarıyla yüklenmesini doğrulayın. (İsteğe bağlı)
+   * Python uygulamasını şuradan [https://www.python.org/downloads/](https://www.python.org/downloads/)
+   * PIP 'yi [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) yükleme (Python yüklemesinden yüklenmemişse).
+   * Aşağıdaki komutları kullanarak Python ve PIP 'nin başarıyla yüklendiğini doğrulayın. (İsteğe bağlı)
 
-        ![Python pip sürüm komutunu kontrol edin](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
+        ![Python pversıon sürümü komutunu denetle](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > MacOS varsayılan sürümünü kullanmak yerine Python'u el ile yüklemeniz önerilir.
+     > MacOS varsayılan sürümünü kullanmak yerine Python 'un el ile yüklenmesi önerilir.
 
-2. Aşağıdaki komutu çalıştırarak **virtualenv** yükleyin.
+2. Aşağıdaki komutu çalıştırarak **virtualenv** 'yi çalıştırın.
 
    ```bash
    pip install virtualenv
@@ -40,9 +40,9 @@ Ana sayfanızda sanal ortam oluşturmak için **python/pip** komutunu kullanır�
 
 ## <a name="other-packages"></a>Diğer paketler
 
-Bir hata iletisi ile karşılaşırsanız, aşağıdaki komutları çalıştırarak gerekli paketleri yükleyin:
+Bir hata iletisiyle karşılaşırsanız, aşağıdaki komutları çalıştırarak gerekli paketleri yükleyebilirsiniz:
 
-   ![Python için libkrb5 paketi yükleyin](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+   ![Python için libkrb5 paketini yükler](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
 
 ```bash
 sudo apt-get install libkrb5-dev
@@ -52,24 +52,16 @@ sudo apt-get install libkrb5-dev
 sudo apt-get install python-dev
 ```
 
-VS Code'u yeniden başlatın ve ardından **HDInsight: PySpark Interactive'i**çalıştıran komut dosyası düzenleyicisine geri dön.
+VS Code yeniden başlatın ve ardından HDInsight çalıştıran betik düzenleyicisine geri dönün **: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 ### <a name="demo"></a>Tanıtım
 
-* VS Kodu için HDInsight: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* VS Code için HDInsight: [video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Araçlar ve uzantılar
 
-* [Visual Studio Kodu için Azure HDInsight Aracı'nı kullanma](hdinsight-for-vscode.md)
-* [Apache Spark Scala uygulamaları oluşturmak ve göndermek için IntelliJ için Azure Araç Kiti'ni kullanın](spark/apache-spark-intellij-tool-plugin.md)
-* [Apache Spark uygulamalarını SSH üzerinden uzaktan hata ayıklamak için IntelliJ için Azure Araç Kiti'ni kullanın](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Vpn üzerinden Apache Spark uygulamalarını uzaktan hata ayıklamak için IntelliJ için Azure Araç Kiti'ni kullanın](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Spark uygulamaları oluşturmak için Eclipse için Azure Araç Setinde HDInsight Araçlarını kullanın](spark/apache-spark-eclipse-tool-plugin.md)
-* [HDInsight'ta Apache Spark kümesine sahip Apache Zeppelin dizüstü bilgisayarları kullanma](spark/apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesinde Jupyter dizüstü bilgisayar için çekirdekler mevcuttur](spark/apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](spark/apache-spark-jupyter-notebook-use-external-packages.md)
+* [Visual Studio Code için Azure HDInsight aracını kullanma](hdinsight-for-vscode.md)
+* [Apache Spark Scala uygulamaları oluşturmak ve göndermek için Azure Toolkit for IntelliJ kullanma](spark/apache-spark-intellij-tool-plugin.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Azure HDInsight'ta Microsoft Power BI ile Apache Hive verilerini görselleştirin](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Azure HDInsight'da Apache Hive sorgularını çalıştırmak için Apache Zeppelin'i kullanma](./interactive-query/hdinsight-connect-hive-zeppelin.md)

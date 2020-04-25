@@ -1,6 +1,6 @@
 ---
-title: Güvenli yönetici erişimi için en iyi uygulamalar - Azure AD | Microsoft Dokümanlar
-description: Kuruluşunuzun yönetim erişiminin ve yönetici hesaplarının güvende olduğundan emin olun. Azure AD, Azure ve Microsoft Çevrimiçi Hizmetlerini yapılandıran sistem mimarları ve BT uzmanları için.
+title: Güvenli yönetici erişimi için en iyi uygulamalar-Azure AD | Microsoft Docs
+description: Kuruluşunuzun yönetim erişiminin ve yönetici hesaplarının güvenli olduğundan emin olun. Azure AD, Azure ve Microsoft Online hizmetlerini yapılandıran sistem mimarları ve BT uzmanları için.
 services: active-directory
 keywords: ''
 author: curtand
@@ -14,19 +14,19 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c46facb2d43137175730bf04fea0efec9c1ecbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 512efa959ccb78533845cd1f376318394b5c377b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266279"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129160"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
-Modern kuruluştaki iş varlıklarının çoğunun veya tümünün güvenliği, BT sistemlerini yöneten ve yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Siber saldırganlar da dahil olmak üzere kötü niyetli aktörler genellikle yönetici hesaplarını ve ayrıcalıklı erişimin diğer öğelerini hedefleyerek hassas verilere ve sistemlere kimlik bilgilerini kullanarak hızla erişmeye çalışır. Bulut hizmetleri için önleme ve yanıt, bulut hizmeti sağlayıcısının ve müşterinin ortak sorumluluklarıdır. Uç noktalara ve buluta yönelik en son tehditler hakkında daha fazla bilgi için [Microsoft Güvenlik İstihbaratı Raporu'na](https://www.microsoft.com/security/operations/security-intelligence-report)bakın. Bu makalede, mevcut planlarınız ve burada açıklanan kılavuz arasındaki boşlukları kapatmaya yönelik bir yol haritası geliştirmenize yardımcı olabilir.
+Modern kuruluştaki çoğu veya tüm iş varlıklarının güvenliği, BT sistemlerini yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Cyber-saldırganlar de dahil olmak üzere kötü amaçlı aktörler genellikle, kimlik bilgilerinin hırsızlık saldırıları ile hassas verilere ve sistemlere hızla erişim kazanmak için yönetici hesaplarını ve diğer ayrıcalıklı erişim öğelerini hedefler Bulut hizmetleri için, önleme ve yanıt, bulut hizmeti sağlayıcısının ve müşterinin ortak sorumluluklarına yöneliktir. Uç noktalara ve buluta yönelik en son tehditler hakkında daha fazla bilgi için [Microsoft Güvenlik Intelligence raporuna](https://www.microsoft.com/security/operations/security-intelligence-report)bakın. Bu makale, geçerli planlarınız ve burada açıklanan kılavuz arasındaki boşlukları kapatmaya yönelik bir yol haritası geliştirmenize yardımcı olabilir.
 
 > [!NOTE]
-> Microsoft, en yüksek düzeyde güven, şeffaflık, standartlara uygunluk ve mevzuata uygunluk konusunda kendini adamıştır. Microsoft global olay yanıt ekibinin bulut hizmetlerine yönelik saldırıların etkilerini nasıl azalttığı ve Microsoft Trust Center'da Microsoft İş Ürünleri ve Bulut Hizmetlerinde güvenliğin nasıl yerleşik olduğu hakkında daha fazla bilgi edinin - Microsoft [Trust Center'da Güvenlik](https://www.microsoft.com/trustcenter/security) ve Microsoft uyumluluk hedefleri [- Uyumluluk](https://www.microsoft.com/trustcenter/compliance).
+> Microsoft, en yüksek düzeyde güven, saydamlık, standart uyumluluk ve mevzuat uyumluluğuna kararlıdır. Microsoft küresel olay yanıtı ekibinin, bulut hizmetlerine yönelik saldırıların etkilerini nasıl azaltmasının yanı sıra Microsoft Güven Merkezi- [Uyumluluk](https://www.microsoft.com/trustcenter/compliance)' de Microsoft [Trust Center-güvenlik](https://www.microsoft.com/trustcenter/security) ve Microsoft Uyumluluk hedefleri ' nde Microsoft iş ürünleri ve bulut Hizmetleri ' ne nasıl oluşturulduğu hakkında daha fazla bilgi edinin.
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -42,399 +42,399 @@ A cyber-attack, if successful, can shut down operations not just for a few hours
 ## Securing privileged access for hybrid and cloud deployments
 
 does the article really start here?-->
-Çoğu kuruluş için, işletme varlıklarının güvenliği BT sistemlerini yöneten ve yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Siber saldırganlar, kuruluşun hassas verilerine erişmek için altyapı sistemlerine (Active Directory ve Azure Active Directory gibi) ayrıcalıklı erişime odaklanır. 
+Çoğu kuruluş için iş varlıklarının güvenliği, BT sistemlerini yöneten ve yöneten ayrıcalıklı hesapların bütünlüğüne bağlıdır. Cyber-saldırganlar, kuruluşun hassas verilerine erişim kazanmak için altyapı sistemlerine (örneğin Active Directory ve Azure Active Directory) ayrıcalıklı Erişime odaklanmaktadır. 
 
-Birincil güvenlik çemberi olarak bir ağın giriş ve çıkış noktalarını güvence altına almaya odaklanan geleneksel yaklaşımlar, Internet'te SaaS uygulamalarının ve kişisel cihazların kullanımındaki artış nedeniyle daha az etkilidir. Karmaşık bir modern kuruluşta, kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleri, ağ güvenliği çevresinin yerini doğal olarak almaktadır.
+Birincil güvenlik çevresi olarak bir ağın giriş ve çıkış noktalarının güvenliğini sağlamaya odaklanmaya odaklanılmış olan geleneksel yaklaşımlar, SaaS uygulamalarının ve kişisel cihazların Internet 'te kullanımıyla ilgili olarak daha az etkilidir. Karmaşık bir modern kuruluşta, kuruluşun kimlik katmanındaki kimlik doğrulama ve yetkilendirme denetimleri, ağ güvenliği çevresinin yerini doğal olarak almaktadır.
 
-Ayrıcalıklı yönetim hesapları bu yeni "güvenlik çevresini" etkin bir şekilde kontrol ediyor. Ortamın şirket içi, bulut veya karma şirket içi ve bulut barındırılan hizmetler olup olmadığına bakılmaksızın ayrıcalıklı erişimi korumak çok önemlidir. İdari erişimi belirlenen düşmanlara karşı korumak, kuruluşunuzun sistemlerini risklerden izole etmek için eksiksiz ve düşünceli bir yaklaşım sergilemenizi gerektirir. 
+Ayrıcalıklı yönetim hesapları, bu yeni "güvenlik çevre" denetiminde etkili bir şekilde kontrol edilir. Ortamın şirket içi, bulut ya da karma şirket içi ve bulut tarafından barındırılan hizmetler olmasından bağımsız olarak ayrıcalıklı erişimin korunması önemlidir. Belirlenen yönetici erişiminin korunması, kuruluşunuzun sistemlerini risklerden yalıtmak için tamamen ve düşünceli bir yaklaşım yapmanızı gerektirir. 
 
-Ayrıcalıklı erişimin sağlanması,
+Ayrıcalıklı erişimin güvenliğini sağlamak için değişiklikler gerekir
 
-* Süreçler, idari uygulamalar ve bilgi yönetimi
-* Ev sahibi savunması, hesap korumaları ve kimlik yönetimi gibi teknik bileşenler
+* Süreçler, yönetim uygulamaları ve bilgi yönetimi
+* Ana bilgisayar savunmaları, hesap korumaları ve kimlik yönetimi gibi teknik bileşenler
 
-Bu belge, öncelikle Azure AD, Microsoft Azure, Office 365 ve diğer bulut hizmetlerinde yönetilen veya bildirilen kimlikleri ve erişimi güvenli hale getirmek için bir yol haritası oluşturmaya odaklanır. Şirket içi yönetim hesapları olan kuruluşlar için, [Ayrıcalıklı Erişimi Sağlama'da](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)Active Directory'den yönetilen şirket içi ve karma ayrıcalıklı erişim kılavuzuna bakın. 
+Bu belge, birincil olarak Azure AD, Microsoft Azure, Office 365 ve diğer bulut hizmetlerinde yönetilen veya bildirilen kimliklerin ve erişimin güvenliğini sağlamak için bir yol haritası oluşturmaya odaklanır. Şirket içi yönetim hesapları olan kuruluşlar için, [ayrıcalıklı erişimin güvenliğini sağlamak](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)üzere Active Directory tarafından yönetilen şirket içi ve karma ayrıcalıklı erişim Kılavuzu ' na bakın. 
 
 > [!NOTE] 
-> Bu makaledeki kılavuz, öncelikle Azure Active Directory'nin P1 ve P2 planlarına dahil olan Azure Active Directory özelliklerini ifade eder. Azure Active Directory Premium P2, EMS E5 paketine ve Microsoft 365 E5 paketine dahildir. Bu kılavuz, kuruluşunuzun kullanıcılarınız için satın alınan Azure AD Premium P2 lisanslarına sahip olduğunu varsayar. Bu lisanslara sahip değilseniz, bazı kılavuzlar kuruluşunuz için geçerli olmayabilir. Ayrıca, bu makale boyunca, genel yönetici (veya genel yönetici) terimi "şirket yöneticisi" veya "kiracı yöneticisi" ile eş anlamlıdır.
+> Bu makaledeki kılavuz, birincil olarak Azure Active Directory Premium planlarına P1 ve P2 'a eklenen Azure Active Directory özelliklerine başvurur. Azure Active Directory Premium P2, EMS E5 Suite ve Microsoft 365 E5 Suite 'e dahildir. Bu kılavuzda, kuruluşunuzda kullanıcılarınız için satın alınan Azure AD Premium P2 lisansları zaten var. Bu lisanslarınız yoksa, bazı kılavuzlardan biri kuruluşunuza uygulanmayabilir. Ayrıca, bu makale boyunca genel yönetici (veya genel yönetici) terimi "Şirket Yöneticisi" veya "Kiracı Yöneticisi" ile eşanlamlıdır.
 
-## <a name="develop-a-roadmap"></a>Bir yol haritası geliştirin 
+## <a name="develop-a-roadmap"></a>Yol haritası geliştirme 
 
-Microsoft, siber saldırganlara karşı ayrıcalıklı erişimi sağlamak için bir yol haritası geliştirmenizi ve izlemenizi önerir. Yol haritanızı her zaman kuruluşunuzdaki mevcut yeteneklerinizi ve belirli gereksinimlerinizi karşılayacak şekilde ayarlayabilirsiniz. Yol haritasının her aşaması, düşmanların şirket içi, bulut ve karma varlıklarınız için ayrıcalıklı erişime saldırması için gereken maliyeti ve zorluğu artırmalıdır. Microsoft aşağıdaki dört yol haritası aşamasını önerir: Bu önerilen yol haritası, Microsoft'un siber saldırı olayı ve yanıt uygulamasıyla ilgili deneyimlerini temel alan en etkili ve en hızlı uygulamaları öncelikle planlar. Bu yol haritasının zaman çizelgeleri yaklaşıkdır.
+Microsoft, siber saldırganlarına karşı ayrıcalıklı erişimi güvenli hale getirmek için bir yol haritası geliştirmenizi ve izlemenizi önerir. Her zaman yol haritasını, mevcut olanaklarınızı ve kuruluşunuzdaki belirli gereksinimleri karşılayacak şekilde ayarlayabilirsiniz. Yol haritası 'nın her aşaması, reklam işlemleri için, şirket içi, bulut ve karma varlıklarınız için ayrıcalıklı erişim saldırıları için maliyet ve zorluk derecesini yükseltmelidir. Microsoft aşağıdaki dört yol haritası aşamasını önerir: Bu önerilen yol haritası, Microsoft 'un Cyber saldırı olayı ve yanıt uygulamasıyla ilgili deneyimlerine bağlı olarak en etkili ve en hızlı uygulamaları zamanlar. Bu yol haritası için zaman çizelgeleri yaklaşık değerlerdir.
 
-![Zaman çizgileri ile yol haritasının aşamaları](./media/directory-admin-roles-secure/roadmap-timeline.png)
+![Zaman çizgileri ile yol haritası aşamaları](./media/directory-admin-roles-secure/roadmap-timeline.png)
 
-* Aşama 1 (24-48 saat): Hemen yapmanızı önerdiğimiz kritik öğeler
+* 1. aşama (24-48 saat): hemen yapmanızı önerdiğimiz kritik öğeler
 
-* Aşama 2 (2-4 hafta): En sık kullanılan saldırı tekniklerini azaltmak
+* 2. aşama (2-4 hafta): en sık kullanılan saldırı tekniklerini azaltma
 
-* Aşama 3 (1-3 ay): Görünürlük oluşturun ve yönetici etkinliğinin tam denetimini oluşturun
+* 3. aşama (1-3 ay): yönetici etkinliğinin görünürlüğünü oluşturun ve tam denetim oluşturun
 
-* Aşama 4 (altı ay ve sonrası): Güvenlik platformunuzu daha da sertleştirmek için savunma oluşturmaya devam edin
+* 4. aşama (altı ay ve daha fazla): güvenlik platformunuzu daha fazla savunmaya yönelik savunma oluşturmaya devam edin
 
-Bu yol haritası çerçevesi, daha önce dağıtmış olabileceğiniz Microsoft teknolojilerinin kullanımını en üst düzeye çıkarmak için tasarlanmıştır. Ayrıca, geçerli ve yaklaşan önemli güvenlik teknolojilerinden yararlanabilir ve daha önce dağıtmış veya dağıtmayı düşündüğünüz diğer satıcılardan gelen güvenlik araçlarını tümleştirebilirsiniz. 
+Bu yol haritası çerçevesi, zaten dağıttığınız Microsoft teknolojilerinin kullanımını en üst düzeye çıkarmak için tasarlanmıştır. Ayrıca, geçerli ve yaklaşan güvenlik teknolojilerinden yararlanabilir ve önceden dağıttığınız veya dağıtımını ele aldığınız diğer satıcılardan güvenlik araçlarını tümleştirebilirsiniz. 
 
-## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>Aşama 1: Hemen yapmanızı önerdiğimiz kritik öğeler
+## <a name="stage-1-critical-items-that-we-recommend-you-do-right-away"></a>1. Aşama: hemen yapmanız önerdiğimiz kritik öğeler
 
-![Aşama 1 İlk yapılacak kritik öğeler](./media/directory-admin-roles-secure/stage-one.png)
+![İlk yapmanız için 1. aşama kritik öğe](./media/directory-admin-roles-secure/stage-one.png)
 
-Yol haritasının 1. Temel bir güvenli ayrıcalıklı erişim düzeyi sağlamak için bu birkaç öğeyi ilk 24-48 saat içinde hemen yapmanızı öneririz. Güvenli Ayrıcalıklı Erişim yol haritasının bu aşaması aşağıdaki eylemleri içerir:
-
-### <a name="general-preparation"></a>Genel hazırlık
-
-#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açma
-
-Azure AD Ayrıcalıklı Kimlik Yönetimi'ni (PIM) zaten açtıysanız, bunu üretim kiracınızda yapın. Ayrıcalıklı Kimlik Yönetimi'ni açtıktan sonra, ayrıcalıklı erişim rol değişiklikleri için bildirim e-posta iletileri alırsınız. Bu bildirimler, dizininizdeki ayrıcalıklı rollere ek kullanıcılar eklendiğinde erken uyarı sağlar.
-
-Azure AD Ayrıcalıklı Kimlik Yönetimi, Azure AD Premium P2 veya EMS E5'e dahildir. Bu çözümler, şirket içi ortamda ve bulutta uygulamalara ve kaynaklara erişimi korumanıza yardımcı olur. Azure AD Premium P2 veya EMS E5'iniz yoksa ve bu yol haritasında atıfta bulunulan özelliklerden daha fazlasını değerlendirmek istiyorsanız, [Enterprise Mobility + Security ücretsiz 90 günlük deneme sürümüne](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)kaydolun. Azure AD gelişmiş güvenlik raporlama, denetim ve uyarıları kullanarak etkinliği izlemek için Azure AD Ayrıcalıklı Kimlik Yönetimi ve Azure AD Kimlik Koruması'nı denemek için bu lisans denemelerini kullanın.
-
-Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açtıktan sonra:
-
-1. Üretim kiracınızın genel yöneticisi olan bir hesapla [Azure portalında](https://portal.azure.com/) oturum açın.
-
-2. Ayrıcalıklı Kimlik Yönetimi'ni kullanmak istediğiniz kiracıyı seçmek için Azure portalının sağ üst köşesindeki kullanıcı adınızı seçin.
-
-3. Azure portalı menüsünde **Tüm hizmetleri** seçin ve **Azure AD Ayrıcalıklı Kimlik Yönetimi**listesini filtreleyin.
-
-4. **Tüm hizmetler** listesinden Ayrıcalıklı Kimlik Yönetimi'ni açın ve panonuza sabitle.
-
-Kiracınızda Azure AD Ayrıcalıklı Kimlik Yönetimi'ni kullanan ilk kişiye otomatik olarak **Güvenlik yöneticisi** ve kiracıdaki Ayrıcalıklı **rol yöneticisi** rolleri atanır. Yalnızca ayrıcalıklı rol yöneticileri, kullanıcıların Azure AD dizin ideliği rol atamalarını yönetebilir. Ayrıca, Azure AD Ayrıcalıklı Kimlik Yönetimi'ni ekledikten sonra, ilk bulma ve atama deneyiminde size yol gösteren güvenlik sihirbazı gösterilir. Şu anda herhangi bir ek değişiklik yapmadan sihirbazdan çıkabilirsiniz. 
-
-#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>İmtiyazlı rollerde olan hesapları tanımlama ve kategorilere ayırma 
-
-Azure AD Ayrıcalıklı Kimlik Yönetimi'ni açarak, dizin rollerindeki kullanıcıları küresel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online yöneticisi ve SharePoint Online yöneticisi olarak görüntüleyin. Kiracınızda Azure AD PIM yoksa [PowerShell API'sını](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)kullanabilirsiniz. Bu rol genel olarak genel olarak genel olarak genel yönetici rolüyle başlayın: Bu yönetici rolüne atanan bir kullanıcı, Microsoft 365'te bu rolün atanmış olup olmadıklarına bakılmaksızın kuruluşunuzun abone olduğu tüm bulut hizmetlerinde aynı izinlere sahiptir yönetici merkezi, Azure portalı veya Microsoft PowerShell için Azure REKLAM modüllerini kullanarak. 
-
-Bu rollerde artık gerek olmayan hesapları kaldırın. Ardından, yönetici rollerine atanan kalan hesapları kategorilere ayırın:
-
-* Yönetim kullanıcılarına ayrı ayrı atanmış ve idari olmayan amaçlar için de kullanılabilir (örneğin, kişisel e-posta)
-* İdari kullanıcılara ayrı ayrı atanan ve yalnızca idari amaçlarla atanan
-* Birden çok kullanıcı arasında paylaşılan
-* Cam kesme acil erişim senaryoları için
-* Otomatik komut dosyaları için
-* Harici kullanıcılar için
-
-#### <a name="define-at-least-two-emergency-access-accounts"></a>En az iki acil erişim hesabı tanımlama 
-
-Varolan bir kullanıcının hesabını yönetici olarak oturum açamadığından veya etkinleştirmediğinden, Azure AD kiracınızın yönetiminin yanlışlıkla devre dışı bırakılabileceği bir duruma girmediğinden emin olun. Örneğin, kuruluş şirket içi bir kimlik sağlayıcısına aktarılırsa, kullanıcıların şirket içinde oturum açamaması için bu kimlik sağlayıcısı kullanılamayabilir. Kiracınızda iki veya daha fazla acil durum erişim hesabı depolayarak yanlışlıkla yönetim erişimi eksikliğinin etkisini azaltabilirsiniz.
-
-Acil erişim hesapları, kuruluşların varolan bir Azure Etkin Dizin ortamında ayrıcalıklı erişimi kısıtlamaya yardımcı olur. Bu hesaplar son derece ayrıcalıklıdır ve belirli kişilere atanmaz. Normal yönetim hesaplarının kullanılamadığı 'cam kırma' senaryoları için acil durum erişim hesapları acil durumla sınırlıdır. Kuruluşlar, acil durum hesabının kullanımını yalnızca gerekli olan zamana kadar kontrol etme ve azaltma amacını sağlamalıdır.
-
-Atanan veya genel yönetici rolü için uygun hesapları değerlendirin. *.onmicrosoft.com etki alanını ("cam kesme" acil erişimi için tasarlanmıştır) kullanarak yalnızca bulutlara yönelik herhangi bir hesap görmediyseniz, bunları oluşturun. Daha fazla bilgi için Azure [AD'deki acil erişim yönetim hesaplarını yönetme'ye](directory-emergency-access.md)bakın.
-
-#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Çok faktörlü kimlik doğrulamayı açın ve diğer tüm yüksek ayrıcalıklı tek kullanıcılı olmayan tek kullanıcılı yönetici hesaplarını kaydedin
-
-Azure AD yönetici rollerinden birine veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Çok Faktörlü Kimlik Doğrulaması (MFA) gerektirme: Genel yönetici, Ayrıcalıklı Rol yöneticisi, Exchange Online yöneticisi ve SharePoint Çevrimiçi yönetici. [Yönetici hesaplarınız için Çok Faktörlü Kimlik Doğrulamayı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve [https://aka.ms/mfasetup](https://aka.ms/mfasetup)tüm kullanıcıların 'da kayıtlı olduğundan emin olmak için kılavuzu kullanın. Daha fazla bilgi, [Office 365'teki verilere ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun adım 2 ve adım 3 altında bulunabilir. 
-
-## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>Aşama 2: En sık kullanılan saldırı tekniklerini azaltmak
-
-![Aşama 2 Sık kullanılan saldırıları azaltmak](./media/directory-admin-roles-secure/stage-two.png)
-
-Yol haritasının 2. Güvenli Ayrıcalıklı Erişim yol haritasının bu aşaması aşağıdaki eylemleri içerir.
+Yol haritasının 1. aşaması, hızlı ve kolay bir şekilde uygulanması gereken kritik görevlere odaklanılmıştır. Temel düzeyde güvenli ayrıcalıklı erişim sağlamak için bu birkaç öğeyi ilk 24-48 saat içinde hemen yapmanızı öneririz. Güvenli ayrıcalıklı erişim yol haritası 'nın bu aşaması aşağıdaki eylemleri içerir:
 
 ### <a name="general-preparation"></a>Genel hazırlık
 
-#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Hizmetlerin, sahiplerin ve yöneticilerin envanterini yürütmek
+#### <a name="turn-on-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management aç
 
-Kendi cihazını getir (BYOD) ve evden iş politikalarının artması ve işletmelerde kablosuz bağlantının artmasıyla, ağınıza kimlerin bağladığını izlemeniz çok önemlidir. Etkili bir güvenlik denetimi genellikle, abunuzda çalışan ve BT tarafından desteklenmeyen ve bu nedenle güvenli olmayan aygıtları, uygulamaları ve programları ortaya çıkarır. Daha fazla bilgi için Azure [güvenlik yönetimi ve izlemeye genel bakış](../../security/fundamentals/management-monitoring-overview.md)alabiliyorum. Stok sürecinize aşağıdaki görevlerin tümlerini dahil ettiğinizden emin olun. 
+Azure AD Privileged Identity Management (PıM) zaten açık değilse üretim kiracınızda bunu yapın. Privileged Identity Management açtıktan sonra, ayrıcalıklı erişim rolü değişiklikleri için bildirim e-posta iletilerini alacaksınız. Bu bildirimler, dizininizde son derece ayrıcalıklı rollere ek kullanıcılar eklendiğinde erken uyarı sağlar.
 
-* Yönetim rolleri olan kullanıcıları ve yönetebilecekleri hizmetleri tanımlayın.
-* Kuruluşunuzdaki hangi kullanıcıların Azure AD'ye yönetici erişimiolduğunu (Aşama 1'de listelenenlerin ötesindeki ek roller de dahil olmak üzere) öğrenmek için Azure AD PIM'i kullanın.
-* Office 365, Azure AD'de tanımlanan rollerin ötesinde, kuruluşunuzdaki kullanıcılara atayabileceğiniz bir dizi yönetici rolüyle birlikte gelir. Her yönetici rolü ortak iş işlevleriyle eşlenir ve kuruluşunuzdaki kişilere [Microsoft 365 yönetici merkezinde](https://admin.microsoft.com)belirli görevleri yapma izni verir. Kuruluşunuzdaki hangi kullanıcıların Azure AD'de yönetilmeyen roller de dahil olmak üzere Office 365'e hangi kullanıcılara yönetici erişimi ne olduğunu öğrenmek için Microsoft 365 yönetici merkezini kullanın. Daha fazla bilgi için [Bkz. Office 365 yönetici rolleri](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) ve [Office 365 için Güvenlik en iyi uygulamaları](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)hakkında.
-* Azure, Intune veya Dynamics 365 gibi kuruluşunuzun güvendiği diğer hizmetlerde envanteri gerçekleştirin.
-* Yönetici hesaplarınızın (yalnızca kullanıcıların günlük hesaplarını değil, yönetim amaçlı kullanılan hesaplar) kendilerine bağlı çalışan e-posta adreslerine sahip olduğundan ve Azure MFA'ya kaydolduğundan veya MFA'yı şirket içinde kullandığından emin olun.
-* Kullanıcılardan yönetim erişimi için iş gerekçelerini isteyin.
-* İhtiyacı olmayan kişiler ve hizmetler için yönetici erişimini kaldırın.
+Azure AD Privileged Identity Management, Azure AD Premium P2 veya EMS E5 'ye dahildir. Bu çözümler, şirket içi ortamda ve bulutta uygulamalara ve kaynaklara erişimi korumanıza yardımcı olur. Zaten Azure AD Premium P2 veya EMS E5 yoksa ve bu yol haritasında başvurulan özelliklerin daha fazlasını değerlendirmek istiyorsanız, [ücretsiz 90 günlük ücretsiz denemeye Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)kaydolun. Azure AD Privileged Identity Management ve Azure AD Kimlik Koruması denemek için bu lisans denemelerinden yararlanarak Azure AD gelişmiş güvenlik raporlama, denetim ve uyarılarını kullanarak etkinliği izleyin.
 
-#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Microsoft hesaplarını, iş veya okul hesaplarına geçmesi gereken yönetim rollerinde belirleme
+Azure AD Privileged Identity Management açtıktan sonra:
 
-Bazen, bir kuruluşun ilk global yöneticileri, Azure AD'yi kullanmaya başladıklarında varolan Microsoft hesap kimlik bilgilerini yeniden kullanır. Bu Microsoft hesaplarının tek tek bulut tabanlı veya eşitlenmiş hesaplarla değiştirilmesi gerekir. 
+1. Üretim kiracınızın genel yöneticisi olan bir hesapla [Azure Portal](https://portal.azure.com/) oturum açın.
 
-#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Genel yönetici hesapları için ayrı kullanıcı hesapları ve posta yönlendirmesi sağlama 
+2. Privileged Identity Management kullanmak istediğiniz kiracıyı seçmek için, Azure portal sağ üst köşesindeki Kullanıcı adınızı seçin.
 
-Kişisel e-posta hesapları siber saldırganlar tarafından düzenli olarak phished olduğundan, küresel yönetici hesapları kişisel e-posta adresleri olmamalıdır. Internet risklerini (kimlik avı saldırıları, kasıtsız web'de gezinme) yönetim ayrıcalıklarından ayırmak için, yönetim ayrıcalıklarına sahip her kullanıcı için özel hesaplar oluşturun. 
+3. Azure portal menüsünde **tüm hizmetler** ' i seçin ve **Azure AD Privileged Identity Management**listeyi filtreleyin.
 
-Bunu daha önce yapmadıysanız, kullanıcıların yanlışlıkla e-postaları açmadıklarından veya yönetici hesaplarıyla ilişkili programları çalıştırmadıklarından emin olmak için genel yönetici görevlerini gerçekleştirmeleri için ayrı hesaplar oluşturun. Bu hesapların e-postalarını çalışan bir posta kutusuna ilettiğinden emin olun.  
+4. **Tüm hizmetler** listesinden Privileged Identity Management açın ve panonuza sabitleyin.
 
-#### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>İdari hesapların parolalarının son zamanlarda değiştiğinden emin olun
+Kiracınızda Azure AD Privileged Identity Management kullanmaya yönelik ilk kişi, Kiracıdaki **Güvenlik Yöneticisi** ve **ayrıcalıklı rol yöneticisi** rollerine otomatik olarak atanır. Yalnızca ayrıcalıklı rol yöneticileri kullanıcıların Azure AD dizin rolü atamalarını yönetebilir. Ayrıca, Azure AD Privileged Identity Management eklendikten sonra, ilk bulma ve atama deneyiminde size yol gösteren Güvenlik Sihirbazı gösterilir. Bu sırada başka bir değişiklik yapmadan sihirbazdan çıkabilirsiniz. 
 
-Tüm kullanıcıların yönetim hesaplarında oturum açmış ve parolalarını son 90 gün içinde en az bir kez değiştirdiğinden emin olun. Ayrıca, birden çok kullanıcının parolayı son zamanlarda değiştirdiğini bildiği paylaşılan hesapların değiştirilmesinden emin olun.
+#### <a name="identify-and-categorize-accounts-that-are-in-highly-privileged-roles"></a>Yüksek ayrıcalıklı rollerdeki hesapları belirleme ve kategorilere ayırma 
 
-#### <a name="turn-on-password-hash-synchronization"></a>Parola karma eşitlemesi açma
+Azure AD Privileged Identity Management açtıktan sonra, Dizin rolleri genel Yöneticisi, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi içindeki kullanıcıları görüntüleyin. Kiracınızda Azure AD PıM 'niz yoksa [POWERSHELL API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)'sini kullanabilirsiniz. Bu rol genel olduğundan genel yönetici rolü ile başlayın: Bu yönetici rolünü atayan bir Kullanıcı, bu rolün Microsoft 365 Yönetici merkezinde mi yoksa Azure portal, yoksa Microsoft PowerShell için Azure AD modülü kullanılarak mı atandığını bağımsız olarak, kuruluşunuzun abone olduğu tüm bulut hizmetlerinde aynı izinlere sahiptir. 
 
-Parola karma eşitleme, şirket içi Active Directory örneğinden bulut tabanlı Azure AD örneğine kullanıcı parolası karmalarını eşitlemek için kullanılan bir özelliktir. Active Directory Federation Services (AD FS) veya diğer kimlik sağlayıcılarıile federasyon kullanmaya karar verseniz bile, AD veya ADFS sunucuları gibi şirket içi altyapınızın başarısız olması veya olması durumunda isteğe bağlı olarak parola karma senkronizasyonunu yedek olarak ayarlayabilirsiniz geçici olarak kullanılamaz. Bu, kullanıcıların şirket içi AD örneğinde oturum açtıkları parolayı kullanarak hizmette oturum açmalarına olanak tanır. Ayrıca, bir kullanıcı Azure AD'ye bağlı olmayan diğer hizmetlerde aynı e-posta adresini ve parolasını kullandıysa, kimlik bilgilerinin gizliliğini ihlal ettiği bilinen parolalarla karşılaştırarak kimlik bilgilerini algılamasına olanak tanır.  Daha fazla bilgi için bkz: [Azure AD Connect eşitlemesi ile parola karma senkronizasyonu uygula.](../hybrid/how-to-connect-password-hash-synchronization.md)
+Bu rollerde artık gerekmeyen hesapları kaldırın. Ardından, yönetici rollerine atanan kalan hesapları kategorilere ayırın:
 
-#### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Tüm ayrıcalıklı rollerdeki ve maruz kalan kullanıcılar için çok faktörlü kimlik doğrulama (MFA) gerektirme
+* Yönetici kullanıcılara ayrı ayrı atanır ve ayrıca yönetici olmayan amaçlar için de kullanılabilir (örneğin, kişisel e-posta)
+* Tek tek yönetici kullanıcılara atanır ve yalnızca yönetim amacıyla belirlenir
+* Birden çok kullanıcı arasında paylaşılıyor
+* Kesme camı için acil durum erişim senaryoları
+* Otomatikleştirilmiş betikler için
+* Dış kullanıcılar için
 
-Azure AD, yöneticileriniz ve hesaplarının ele geçirilmesi durumunda önemli bir etkisi olacak diğer tüm kullanıcılar da dahil olmak üzere tüm kullanıcılarınız için (örneğin, finans memurları) çok faktörlü kimlik doğrulama (MFA) gerektirmenizi önerir. Bu, gizliliği ihlal edilen bir parola nedeniyle saldırı riskini azaltır.
+#### <a name="define-at-least-two-emergency-access-accounts"></a>En az iki acil durum erişim hesabı tanımlayın 
+
+Oturum açma veya mevcut bir kullanıcının hesabını yönetici olarak etkinleştirememe nedeniyle, Azure AD kiracınızın yönetiminden yanlışlıkla kilitlendikleri bir duruma ulaşmadığınızdan emin olun. Örneğin, kuruluş şirket içi bir kimlik sağlayıcısına federe ise, kullanıcıların şirket içinde oturum açması için bu kimlik sağlayıcısı kullanılamıyor olabilir. Kiracınızda iki veya daha fazla acil durum erişim hesabı depolayarak yönetim erişiminin yanlışlıkla ne kadar etkili olduğunu azaltabilirsiniz.
+
+Acil erişim hesapları, kuruluşların mevcut bir Azure Active Directory ortamında ayrıcalıklı erişimi kısıtlamalarına yardımcı olur. Bu hesaplar son derece ayrıcalıklı ve belirli kişilere atanmamıştır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği ' kesme camı ' senaryolarında acil durum ile sınırlıdır. Kuruluşlar, acil durum hesabının kullanımını yalnızca gerekli olduğu zamana göre denetim altına almak ve azaltmak zorunda kalmaz.
+
+Genel yönetici rolü için atanan veya uygun olan hesapları değerlendirin. *. Onmicrosoft.com etki alanını ("cam" acil erişim için tasarlanmıştır) kullanarak yalnızca herhangi bir bulut hesabı görmüyorsanız, bunları oluşturun. Daha fazla bilgi için bkz. [Azure AD 'de acil durum erişimi yönetim hesaplarını yönetme](directory-emergency-access.md).
+
+#### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Multi-Factor Authentication 'ı açın ve diğer tüm yüksek ayrıcalıklı tek kullanıcılı yönetici hesaplarını kaydedin
+
+Azure AD Yönetici rollerinin bir veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Multi-Factor Authentication (MFA) iste: genel yönetici, ayrıcalıklı rol yöneticisi, Exchange Online Yöneticisi ve SharePoint Online Yöneticisi. [Yönetici hesaplarınız Için Multi-Factor Authentication 'ı (MFA)](../authentication/howto-mfa-userstates.md) etkinleştirmek ve tüm bu kullanıcıların kaydoldiğinden emin olmak için kılavuzu kullanın [https://aka.ms/mfasetup](https://aka.ms/mfasetup). 2. adım ve [Office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)kılavuzunun 3. adımında daha fazla bilgi bulunabilir. 
+
+## <a name="stage-2-mitigate-the-most-frequently-used-attack-techniques"></a>2. Aşama: en sık kullanılan saldırı tekniklerini azaltma
+
+![2. aşama sık kullanılan saldırıları azaltır](./media/directory-admin-roles-secure/stage-two.png)
+
+Yol haritası 'nın 2. aşaması, kimlik bilgilerinin hırsızlık ve kötüye kullanımı için en sık kullanılan saldırı tekniklerini azaltmaya odaklanır ve yaklaşık 2-4 hafta içinde uygulanabilir. Güvenli ayrıcalıklı erişim yol haritası 'nın bu aşaması aşağıdaki eylemleri içerir.
+
+### <a name="general-preparation"></a>Genel hazırlık
+
+#### <a name="conduct-an-inventory-of-services-owners-and-admins"></a>Hizmetler, sahipler ve yöneticilerin envanterini yürütün
+
+Kendi cihazını getir (KCG) ve ev-giriş ilkelerindeki ve işletmelerde kablosuz bağlantı artışının büyümesi sayesinde, ağınıza kimlerin bağlanıldığını izlemeniz önemlidir. Etkin bir güvenlik denetimi genellikle ağınızda çalışan ve bu nedenle güvenli olmayan cihazları, uygulamaları ve programları ortaya çıkarır. Daha fazla bilgi için bkz. [Azure Güvenlik yönetimi ve izlemeye genel bakış](../../security/fundamentals/management-monitoring-overview.md). Envanter sürecinizdeki aşağıdaki görevlerin tümünü dahil olduğunuzdan emin olun. 
+
+* Yönetici rollerine sahip kullanıcıları ve yönetebilecekleri Hizmetleri belirler.
+* Kuruluşunuzdaki hangi kullanıcıların Azure AD 'ye yönetim erişimi olduğunu öğrenmek için, 1. Aşama ' de listelenenlerin ötesinde ek roller de dahil olmak üzere Azure AD PıM 'yi kullanın.
+* Office 365, Azure AD 'de tanımlanan rollerin ötesinde, kuruluşunuzdaki kullanıcılara atayabileceğiniz bir yönetici rolleri kümesiyle birlikte gelir. Her yönetici rolü ortak iş işlevlerine eşlenir ve kuruluşunuzdaki kişilere [Microsoft 365 Yönetim merkezinde](https://admin.microsoft.com)belirli görevleri yapmak için izinler verir. Kuruluşunuzdaki kullanıcıların, Azure AD 'de yönetilmeyen roller aracılığıyla da dahil olmak üzere Office 365 ' e yönetici erişimi olduğunu öğrenmek için Microsoft 365 Yönetim merkezini kullanın. Daha fazla bilgi için bkz. Office [365 Yönetici rolleri](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) ve [En Iyi güvenlik uygulamaları hakkında Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center).
+* Kuruluşunuzun Azure, Intune veya Dynamics 365 gibi bağlı olduğu diğer hizmetlerde envanterini yapın.
+* Yönetici hesaplarınızın (yalnızca kullanıcılara ait gündelik hesapları değil, yönetim amacıyla kullanılan hesaplara), bunlara iliştirilmiş ve Azure MFA için kayıtlı ve şirket içi MFA kullanan bir çalışan e-posta adresi olduğundan emin olun.
+* Kullanıcılara yönetim erişimi için iş gerekçesini sorun.
+* İhtiyaç duymayacak kişiler ve hizmetler için yönetici erişimini kaldırın.
+
+#### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>Yönetim rollerinde iş veya okul hesaplarına geçiş yapması gereken Microsoft hesaplarını tanımla
+
+Bazen bir kuruluşun ilk genel yöneticileri, Azure AD kullanmaya başladıklarında mevcut Microsoft hesabı kimlik bilgilerini yeniden kullanır. Bu Microsoft hesaplarının ayrı ayrı bulut tabanlı veya eşitlenmiş hesaplarla değiştirilmeleri gerekir. 
+
+#### <a name="ensure-separate-user-accounts-and-mail-forwarding-for-global-administrator-accounts"></a>Genel yönetici hesapları için ayrı kullanıcı hesapları ve posta iletimi sağlayın 
+
+Kişisel e-posta hesapları, siber saldırganlar tarafından düzenli olarak kesilmediğinden, genel yönetici hesaplarında kişisel e-posta adresleri olmamalıdır. İnternet risklerini (istenmeyen web taraması) yönetici ayrıcalıklarından ayırmaya yardımcı olmak için, yönetici ayrıcalıklarına sahip her bir kullanıcı için adanmış hesaplar oluşturun. 
+
+Daha önce yapmadıysanız, kullanıcıların yanlışlıkla e-postaları açmadığından veya yönetici hesaplarıyla ilişkili programları çalıştırdıklarından emin olmak için kullanıcıların genel yönetici görevlerini gerçekleştirmesi için ayrı hesaplar oluşturun. Bu hesapların e-postalarını çalışan bir posta kutusuna iletdiğinden emin olun.  
+
+#### <a name="ensure-the-passwords-of-administrative-accounts-have-recently-changed"></a>Yönetim hesaplarının parolalarının yakın zamanda değiştiğinden emin olun
+
+Tüm kullanıcıların yönetim hesaplarında oturum açdığından ve en son 90 gün içinde parolalarını en az bir kez değiştiğinden emin olun. Ayrıca, birden fazla kullanıcının, parolayı bildiğiniz tüm paylaşılan hesapların parolalarının yakın zamanda değiştiğinden emin olun.
+
+#### <a name="turn-on-password-hash-synchronization"></a>Parola karması eşitlemesini aç
+
+Parola karması eşitleme, Kullanıcı parolası karmalarının karmalarını şirket içi Active Directory örneğinden bulut tabanlı bir Azure AD örneğine eşitlemek için kullanılan bir özelliktir. Active Directory Federasyon Hizmetleri (AD FS) (AD FS) veya diğer kimlik sağlayıcılarıyla Federasyonu kullanmaya karar verseniz bile, AD veya ADFS sunucuları gibi şirket içi altyapınız başarısız olursa veya geçici olarak kullanılamaz duruma gelirse, isteğe bağlı olarak parola karması eşitlemesini bir yedekleme olarak ayarlayabilirsiniz. Bu, kullanıcıların şirket içi AD örneğinde oturum açmak için kullandıkları aynı parolayı kullanarak hizmette oturum açmasını sağlar. Ayrıca, bir kullanıcının Azure AD 'ye bağlı olmayan diğer hizmetlerde aynı e-posta adresini ve parolasını yararlanılabilir sahip olması durumunda, kimlik koruması 'nın tehlikeye girdiği bilinen parolalarla karşılaştırılmasıyla, kimlik koruması aşılan kimlik bilgilerini algılamasını sağlar.  Daha fazla bilgi için bkz. [Azure AD Connect eşitleme ile parola karması eşitlemeyi uygulama](../hybrid/how-to-connect-password-hash-synchronization.md).
+
+#### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Tüm ayrıcalıklı rollerdeki kullanıcılar ve kullanıma sunulan kullanıcılar için çok faktörlü kimlik doğrulaması (MFA) gerektir
+
+Azure AD, yöneticiler dahil tüm kullanıcılarınız için çok faktörlü kimlik doğrulaması (MFA) gerektirmenizi ve hesapları tehlikeye düştüğünde (örneğin, finans officileri) önemli bir etkiye sahip olan diğer tüm kullanıcıları da yapmanızı önerir. Bu, güvenliği aşılmış bir parola nedeniyle saldırının riskini azaltır.
 
 Aç:
 
-* Kuruluşunuzdaki tüm kullanıcılar için [Koşullu Erişim ilkelerini kullanan MFA.](../authentication/howto-mfa-getstarted.md)
+* Kuruluşunuzdaki tüm kullanıcılar için [koşullu erişim ilkelerini kullanarak MFA](../authentication/howto-mfa-getstarted.md) .
 
-İşletmeler için Windows Hello kullanıyorsanız, MFA gereksinimi Windows Hello oturum açma deneyimi kullanılarak karşılanabilir. Daha fazla bilgi için [Windows Hello'ya](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)bakın. 
+Iş için Windows Hello kullanıyorsanız, MFA gereksinimi Windows Hello oturum açma deneyimi kullanılarak karşılanır. Daha fazla bilgi için bkz. [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport). 
 
-#### <a name="configure-identity-protection"></a>Kimlik Korumayı Yapılandırma 
+#### <a name="configure-identity-protection"></a>Kimlik korumasını yapılandırma 
 
-Azure AD Kimlik Koruması, kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını algılamak için kullanabileceğiniz algoritma tabanlı bir izleme ve raporlama aracıdır. Algılanan şüpheli etkinliklere otomatik yanıtları yapılandırabilir ve bunları çözmek için uygun eylemi gerçekleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md).
+Azure AD Kimlik Koruması, kuruluşunuzun kimliklerini etkileyen olası güvenlik açıklarını algılamak için kullanabileceğiniz, algoritma tabanlı bir izleme ve raporlama aracıdır. Algılanan şüpheli etkinliklere yönelik otomatikleştirilmiş yanıtları yapılandırabilir ve bunları çözmek için uygun işlemleri gerçekleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory Kimlik Koruması](../active-directory-identityprotection.md).
 
-#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Office 365 Güvenli Puanınızı edinin (Office 365 kullanıyorsanız)
+#### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>Office 365 güvenli puanınızı edinin (Office 365 kullanıyorsanız)
 
-Güvenli Skor, hangi Office 365 hizmetlerini kullandığınızı (OneDrive, SharePoint ve Exchange gibi) bulur ve ayarlarınıza ve etkinliklerinize bakar ve bunları Microsoft tarafından oluşturulmuş bir taban çizgisiyle karşılaştırır. En iyi güvenlik uygulamalarıyla ne kadar uyumlu olduğunuza bağlı olarak bir puan alırsınız. Office 365 Business Premium veya Enterprise aboneliği için yönetici izinlerine (genel yönetici veya özel [https://securescore.office.com](https://securescore.office.com/)yönetici rolü) sahip olan herkes Güvenli Puan'a şu andan erişebilir.
+Güvenli puan, kullandığınız Office 365 hizmetlerinin (OneDrive, SharePoint ve Exchange gibi), ayarlarınızı ve etkinliklerinize baktığı ve bunları Microsoft tarafından belirlenen bir taban çizgisiyle karşılaştıran şekilde şekillendirilir. En iyi güvenlik uygulamalarından nasıl hizalandığını temel alarak bir puan alacaksınız. Office 365 Iş Premium veya kurumsal abonelik için yönetici izinlerine sahip olan herkes (genel yönetici veya özel yönetici rolü), tarihinde [https://securescore.office.com](https://securescore.office.com/)güvenli puana erişebilir.
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 güvenlik ve uyumluluk kılavuzunu gözden geçirin (Office 365 kullanıyorsanız)
+#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 güvenlik ve Uyumluluk kılavuzunu gözden geçirin (Office 365 kullanıyorsanız)
 
-[Güvenlik ve uyumluluk planı,](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) Office 365 müşterisinin Office 365'i yapılandırması ve diğer EMS özelliklerinden nasıl yararlanması gerektiği ne kadar yaklaşımı özetler. Ardından, [Office 365'teki verilere ve hizmetlere erişimi](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) koruma ve [Office 365'te güvenlik ve uyumluluğu izleme](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)kılavuzuna yönelik 3-6 adımlarını gözden geçirin.
+[Güvenlik ve uyumluluk planı](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57) , Office 365 müşterilerinin Office 365 ' nin nasıl yapılandırılması ve diğer EMS özelliklerinden faydalanma yaklaşımını özetler. Daha sonra, [office 365 ' de veri ve hizmetlere erişimi koruma](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e) 3-6 ve [Office 365 güvenlik ve uyumluluğunu izleme](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)Kılavuzu ' nda bulunan adımları gözden geçirin.
 
-#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365 Etkinlik İzlemeyi Yapılandırma (Office 365 kullanıyorsanız)
+#### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365 etkinlik Izlemeyi yapılandırma (Office 365 kullanıyorsanız)
 
-Kuruluşunuzdaki kişilerin Office 365 hizmetlerini nasıl kullandıklarını izleyerek, yönetim hesabı olan ve bu portallarda oturum açmamak nedeniyle Office 365 erişimine ihtiyaç duymayabileceğiniz kullanıcıları belirlemenize olanak tanıyabilirsiniz. Daha fazla bilgi için [Microsoft 365 yönetici merkezindeki Etkinlik raporlarına](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)bakın.
+Kuruluşunuzdaki kişilerin Office 365 hizmetlerini nasıl kullandığını izleyip, yönetici hesabına sahip olan ve bu portallarda oturum olmaması nedeniyle Office 365 erişimine gerek olmayan kullanıcıları tanımlamanızı sağlayabilirsiniz. Daha fazla bilgi için, [Microsoft 365 Yönetim merkezinde etkinlik raporları](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)' na bakın.
 
-#### <a name="establish-incidentemergency-response-plan-owners"></a>Olay/acil durum müdahale planı sahipleri oluşturma
+#### <a name="establish-incidentemergency-response-plan-owners"></a>Olay/acil durum yanıt planı sahipleri oluşturma
 
-Olay yanıtını etkin bir şekilde gerçekleştirmek karmaşık bir girişimdir. Bu nedenle, başarılı bir olay yanıt yeteneği kurmak önemli planlama ve kaynaklar gerektirir. Siber saldırıları sürekli olarak izlemeniz ve olayların ele alınmasına öncelik veren prosedürler oluşturmanız çok önemlidir. Veri toplama, analiz etme ve raporlama nın etkili yöntemleri, ilişkiler kurmak ve diğer dahili gruplar ve plan sahipleriyle iletişim kurmak için hayati önem taşır. Daha fazla bilgi için [Microsoft Güvenlik Yanıt Merkezi'ne](https://technet.microsoft.com/security/dn440717)bakın. 
+Olay yanıtının etkili bir şekilde gerçekleştirilmesi karmaşık bir zorunlulukdır. Bu nedenle, başarılı bir olay yanıtı özelliği oluşturmak için önemli planlama ve kaynaklar gerekir. Iber saldırıları için sürekli olarak izlemeniz ve olayların işlenmesine öncelik verme yordamları oluşturmanız önemlidir. Verilerin toplanması, çözümlenmesi ve raporlanması için etkili yöntemler, ilişki oluşturmak ve diğer dahili gruplarla ve plan sahipleriyle iletişim kurmak için hayati öneme sahiptir. Daha fazla bilgi için bkz. [Microsoft Güvenlik Yanıt Merkezi](https://technet.microsoft.com/security/dn440717). 
 
-#### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Zaten yapılmamışsa, şirket içi ayrıcalıklı yönetim hesaplarını güvenli hale
+#### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>Daha önce yapmadıysanız, şirket içi ayrıcalıklı yönetim hesaplarının güvenliğini sağlayın
 
-Azure Etkin Dizin kiracınız şirket içi Active Directory ile senkronize edilmişse, [Güvenlik Ayrıcalıklı Erişim Yol Haritası](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Aşama 1'deki kılavuzu izleyin. Buna, şirket içi yönetim görevleri yürütmesi gereken kullanıcılar için ayrı yönetici hesapları oluşturma, Etkin Dizin yöneticileri için Ayrıcalıklı Erişim İş İstasyonları dağıtma ve iş istasyonları için benzersiz yerel yönetici parolaları oluşturma ve Sunucu.
+Azure Active Directory kiracınız şirket içi Active Directory eşitlendiğinde, [güvenlik ayrıcalıklı erişim yol haritası](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Aşama 1 ' deki yönergeleri izleyin. Bu, şirket içi yönetim görevleri yapması, Active Directory yöneticileri için ayrıcalıklı erişim Iş Istasyonları dağıtmak ve iş istasyonları ve sunucular için benzersiz yerel yönetici parolaları oluşturmak isteyen kullanıcılar için ayrı yönetici hesapları oluşturmayı içerir.
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure erişimi yöneten kuruluşlar için ek adımlar
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure 'a erişimi yöneten kuruluşlar için ek adımlar
 
-#### <a name="complete-an-inventory-of-subscriptions"></a>Aboneliklerin envanterini tamamlama
+#### <a name="complete-an-inventory-of-subscriptions"></a>Aboneliklerin envanterini doldurun
 
-Kuruluşunuzda üretim uygulamalarını barındıran abonelikleri tanımlamak için Kurumsal portalını ve Azure portalını kullanın.
+Kuruluşunuzda üretim uygulamalarını barındıran abonelikleri belirlemek için Enterprise Portal 'ı ve Azure portal kullanın.
 
-#### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft hesaplarını yönetici rollerinden kaldırma
+#### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft hesaplarını yönetici rollerinden kaldır
 
-Xbox, Live ve Outlook gibi diğer programların Microsoft hesapları, kuruluş abonelikleri için yönetici hesapları olarak kullanılmamalıdır. Yönetici durumunu tüm Microsoft hesaplarından kaldırın ve Azure Etkin chris@contoso.comDizini (örneğin) iş veya okul hesaplarıyla değiştirin.
+Xbox, Live ve Outlook gibi diğer programlardaki Microsoft hesapları, kurumsal abonelikler için yönetici hesabı olarak kullanılmamalıdır. Tüm Microsoft hesaplarından yönetici durumunu kaldırın ve Azure Active Directory (örneğin, chris@contoso.com) iş veya okul hesaplarıyla değiştirin.
 
 #### <a name="monitor-azure-activity"></a>Azure etkinliğini izleme
 
-Azure Etkinlik Günlüğü, Azure'da abonelik düzeyindeki olayların geçmişini sağlar. Bu, kimlerin hangi kaynakları oluşturduğu, güncelleştirdiği ve silindiği ve bu olayların ne zaman oluştuğu hakkında bilgi sunar. Daha fazla bilgi için [Azure aboneliğinizdeki önemli eylemlerle ilgili Denetim'e](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)bakın ve bildirim alın.
+Azure Etkinlik Günlüğü, Azure'da abonelik düzeyindeki olayların geçmişini sağlar. Hangi kaynakları oluşturan, güncelleştiren ve silen ve bu olaylar ne zaman gerçekleştiği hakkında bilgi sunar. Daha fazla bilgi için bkz. [Azure aboneliğinizdeki önemli eylemlerle ilgili bildirimleri denetleme ve alma](../../azure-monitor/platform/quick-audit-notify-action-subscription.md).
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD aracılığıyla diğer bulut uygulamalarına erişimi yöneten kuruluşlar için ek adımlar
 
-#### <a name="configure-conditional-access-policies"></a>Koşullu Erişim ilkelerini yapılandırma
+#### <a name="configure-conditional-access-policies"></a>Koşullu erişim ilkelerini yapılandırma
 
-Şirket içi ve bulut barındırılan uygulamalar için Koşullu Erişim ilkeleri hazırlayın. Kullanıcıların iş yeri aygıtlara katıldıysa, [Azure Active Directory aygıt kaydını kullanarak şirket içi Koşullu Erişimi Ayarlama'dan](../active-directory-device-registration-on-premises-setup.md)daha fazla bilgi alın.
+Şirket içi ve bulutta barındırılan uygulamalar için koşullu erişim ilkeleri hazırlayın. Kullanıcılarınızın çalışma alanına katılmış cihazları varsa, [Azure Active Directory cihaz kaydı kullanarak şirket Içi koşullu erişim ayarlamalarından](../active-directory-device-registration-on-premises-setup.md)daha fazla bilgi alın.
 
 
-## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>Aşama 3: Görünürlük oluşturun ve yönetici etkinliğini tam olarak kontrol altına alın
+## <a name="stage-3-build-visibility-and-take-full-control-of-admin-activity"></a>3. Aşama: yönetim etkinliğinin görünürlüğünü oluşturun ve tam denetim yapın
 
-![Aşama 3 yönetici etkinliğini kontrol altına almak](./media/directory-admin-roles-secure/stage-three.png)
+![3. aşama yönetici etkinliğinin denetimini al](./media/directory-admin-roles-secure/stage-three.png)
 
-Aşama 3, Aşama 2'deki azaltıcı etkenler üzerine inşa edilir ve yaklaşık 1-3 ay içinde uygulanacak şekilde tasarlanmıştır. Güvenli Ayrıcalıklı Erişim yol haritasının bu aşaması aşağıdaki bileşenleri içerir.
+3. Aşama 2. aşama üzerinde azaltmalar oluşturur ve yaklaşık 1-3 ayda uygulanacak şekilde tasarlanmıştır. Güvenli ayrıcalıklı erişim yol haritası 'nın bu aşaması aşağıdaki bileşenleri içerir.
 
 ### <a name="general-preparation"></a>Genel hazırlık
 
-#### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Yönetici rollerindeki kullanıcıların erişim incelemesini tamamlama
+#### <a name="complete-an-access-review-of-users-in-administrator-roles"></a>Yönetici rollerindeki kullanıcıların erişim incelemesini tamamlar
 
-Daha fazla kurumsal kullanıcı bulut hizmetleri aracılığıyla ayrıcalıklı erişim kazanıyor ve bu da giderek artan bir yönetilmeyen platforma yol açabilir. Buna, Office 365 için genel yönetici olan kullanıcılar, Azure abonelik yöneticileri ve VM'lere veya SaaS uygulamaları aracılığıyla yönetici erişimi olan kullanıcılar dahildir. Bunun yerine, kuruluşlar, başta yöneticiler olmak üzere tüm çalışanların, günlük iş işlemlerini ayrıcalıksız kullanıcılar olarak ele almalarını ve yalnızca gerektiğinde yönetici haklarını almalarını gerekir. Yönetici rollerindeki kullanıcı sayısı ilk benimsenmeden bu yana artmış olabileceğinden, yönetici ayrıcalıklarını etkinleştirmeye uygun olan her kullanıcıyı tanımlamak ve onaylamak için tam erişim incelemeleri. 
+Daha fazla şirket kullanıcısı bulut hizmetleri aracılığıyla ayrıcalıklı erişim elde edebilir ve bu da artan bir yönetilmeyen platforma yol açabilir. Bu, Office 365, Azure abonelik yöneticileri ve sanal makinelere ya da SaaS uygulamaları aracılığıyla yönetici erişimi olan kullanıcılar için küresel yöneticilere sahip olan kullanıcıları içerir. Bunun yerine, kuruluşların tüm çalışanları, özellikle Yöneticiler, günlük iş işlemlerini ayrıcalıksız kullanıcılar olarak işlemesini ve yalnızca gerektiğinde yönetici haklarına sahip olması gerekir. Yönetici rollerindeki kullanıcı sayısı ilk benimsemeye başladıktan sonra, yönetici ayrıcalıklarını etkinleştirmeye uygun olan her kullanıcıyı tanımlamak ve doğrulamak için tüm erişim incelemelerini gözden geçirdiklerinden emin olun. 
 
 Şunları yapın:
 
-* Hangi kullanıcıların Azure AD yöneticileri olduğunu belirleyin, isteğe bağlı, tam zamanında yönetici erişimini ve rol tabanlı güvenlik denetimlerini etkinleştirin.
-* Yönetici ayrıcalıklı erişimi için açık bir gerekçesi olmayan kullanıcıları farklı bir role dönüştürün (uygun bir rol yoksa kaldırın).
+* Hangi kullanıcıların Azure AD yöneticileri olduğunu belirleme, isteğe bağlı, tam zamanında yönetici erişimi ve rol tabanlı güvenlik denetimlerini etkinleştirme.
+* Yönetici ayrıcalıklı erişimi için açık bir gerekçe olmayan kullanıcıları farklı bir role dönüştürün (uygun rol yoksa, bunları kaldırın).
 
-#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Tüm kullanıcılar için daha güçlü kimlik doğrulamanın kullanıma devam edilmesi 
+#### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Tüm kullanıcılar için daha güçlü kimlik doğrulaması dağıtımına devam et 
 
-C-suite yöneticilerinin, üst düzey yöneticilerin, kritik BT ve güvenlik personelinin ve diğer yüksek düzeyde maruz kalan kullanıcıların Azure MFA veya Windows Hello gibi modern ve güçlü kimlik doğrulamasına sahip olmasını zorunlu kılmasını zorunlu kıl. 
+C Suite yöneticileri, üst düzey yöneticiler, kritik BT ve güvenlik personeli ve diğer yüksek kaliteli kullanıcıların Azure MFA veya Windows Hello gibi modern, güçlü kimlik doğrulamasına sahip olmasını gerektirir. 
 
-#### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Azure AD için yönetim için özel iş istasyonlarını kullanma
+#### <a name="use-dedicated-workstations-for-administration-for-azure-ad"></a>Azure AD yönetimi için adanmış iş istasyonlarını kullanma
 
-Saldırganlar, program mantığını değiştiren veya yöneticinin kimlik bilgisi girmesini gözetleyen kötü amaçlı kod aracılığıyla verilerin bütünlüğünü ve gerçekliğini bozabilmek için bir kuruluşun verilerine ve sistemlerine erişmek için ayrıcalıklı hesapları hedeflemeyi deneyebilir. Ayrıcalıklı Erişim İş İstasyonları (PAW), hassas görevler için İnternet saldırıları ve tehdit vektörlerinden korunan ayrılmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması; kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu kaydetme, Pass-the-Hash ve Pass-The-Ticket gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar. Ayrıcalıklı erişim iş istasyonları dağıtarak, yöneticilerin sertleştirilmiş bir masaüstü ortamı dışında yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için [bkz.](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+Saldırganlar, bir kuruluşun verilerine ve sistemlerine erişim kazanmak için ayrıcalıklı hesapları hedefleyebilir ve böylece, yöneticinin bir kimlik bilgisi girerek program mantığını veya gözops 'u değiştiren kötü amaçlı kodlar aracılığıyla verilerin bütünlüğünü ve gerçekliğini kesintiye uğramasını sağlayabilir. Ayrıcalıklı Erişim İş İstasyonları (PAW), hassas görevler için İnternet saldırıları ve tehdit vektörlerinden korunan ayrılmış bir işletim sistemi sağlar. Bu hassas görevler ve hesapların günlük kullanım iş istasyonları ve cihazlarından ayrılması; kimlik avı saldırıları, uygulama ve işletim sistemi güvenlik açıkları, çeşitli kimliğe bürünme saldırıları ve tuş vuruşu kaydetme, Pass-the-Hash ve Pass-The-Ticket gibi kimlik bilgisi hırsızlığı saldırılarına karşı çok güçlü koruma sağlar. Ayrıcalıklı erişim iş istasyonlarını dağıtarak, sağlamlaştırılmış bir masaüstü ortamı dışında yöneticinin yönetici kimlik bilgilerini girme riskini azaltabilirsiniz. Daha fazla bilgi için bkz. [ayrıcalıklı erişim Iş istasyonları](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations).
 
-#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Ulusal Standartlar ve Teknoloji Enstitüsü'nün olayları ele alma önerilerini gözden geçirme 
+#### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>Olayları işlemeye yönelik ulusal standartlar ve teknoloji önerilerini gözden geçirin 
 
-Ulusal Standartlar ve Teknoloji Enstitüsü (NIST), özellikle olayla ilgili verilerin analiz için ve her olaya uygun tepkinin belirlenmesi için olay ışığına yürütücüler sağlıyor. Daha fazla bilgi için [bkz: (NIST) Bilgisayar Güvenliği Olay İşleme Kılavuzu (SP 800-61, Revizyon 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
+Ulusal Standartlar ve Teknoloji Enstitüsü (NıST), özellikle olayla ilgili verileri analiz etmek ve her olaya uygun yanıtı belirlemek için olay işleme için yönergeler sağlar. Daha fazla bilgi için bkz. [(NIST) bilgisayar güvenliği olay Işleme Kılavuzu (SP 800-61, düzeltme 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf).
 
-#### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>JIT'nin ek idari roller için Ayrıcalıklı Kimlik Yönetimi (PIM) uygulaması
+#### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>Ek yönetim rollerine JıT için Privileged Identity Management (PıM) uygulayın
 
-Azure Etkin Dizin için [Azure AD Ayrıcalıklı Kimlik Yönetimi](../privileged-identity-management/pim-configure.md) özelliğini kullanın. İmtiyazlı rollerin zaman sınırlı etkinleştirilmesi, aşağıdakileri yapmanızı sağlayarak çalışır:
+Azure Active Directory için [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) özelliğini kullanın. Ayrıcalıklı rollerin zaman sınırlı etkinleştirilmesi şunları sağlar:
 
-* Belirli bir görevi gerçekleştirmek için yönetici ayrıcalıklarını etkinleştirme
-* Etkinleştirme işlemi sırasında MFA'yı uygulayın
-* Yöneticilerini bant dışı değişiklikler hakkında bilgilendirmek için uyarıları kullanma
-* Kullanıcıların önceden yapılandırılmış bir süre için belirli ayrıcalıkları korumalarını sağlama
-* Güvenlik yöneticilerinin tüm ayrıcalıklı kimlikleri keşfetmesine, denetim raporlarını görüntülemesine ve yönetici ayrıcalıklarını etkinleştirmeye uygun olan her kullanıcıyı tanımlamak için erişim incelemeleri oluşturmasına izin verin
+* Belirli bir görevi gerçekleştirmek için yönetici ayrıcalıklarını etkinleştirin
+* Etkinleştirme işlemi sırasında MFA 'yı zorlama
+* Yöneticilere bant dışı değişiklikler hakkında bilgi vermek için uyarıları kullanın
+* Kullanıcıların önceden yapılandırılmış bir süre için belirli ayrıcalıkları korumasını sağlar
+* Güvenlik yöneticilerinin tüm ayrıcalıklı kimlikleri bulmasına, Denetim raporlarını görüntülemesine ve yönetici ayrıcalıklarını etkinleştirecek şekilde uygun olan her kullanıcıyı belirlemek için erişim İncelemeleri oluşturmasına izin verin
 
-Azure AD Ayrıcalıklı Kimlik Yönetimi'ni zaten kullanıyorsanız, zamana bağlı ayrıcalıklar için zaman dilimlerini gerektiği gibi ayarlayın (örneğin, bakım pencereleri).
+Zaten Azure AD Privileged Identity Management kullanıyorsanız zamana ait ayrıcalıklar için zaman çerçevesini gerektiği gibi ayarlayın (örneğin, bakım pencereleri).
 
-#### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Parola tabanlı oturum açma protokollerine maruz kalmanın belirlenmesi (Exchange Online kullanıyorsanız)
+#### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Parola tabanlı oturum açma protokollerinin görünürlüğünü belirleme (Exchange Online kullanıyorsanız)
 
-Geçmişte protokoller, kullanıcı adı/parola birleşimlerinin aygıtlara, e-posta hesaplarına, telefonlara ve benzeri noktalara gömülü olduğunu varsaydı. Ancak şimdi bulutta siber saldırı riski ile, kimlik bilgileri tehlikeye girerse kuruluş için felaket olabilecek her potansiyel kullanıcıyı belirlemenizi ve güçlü kimlik doğrulama gereksinimleri ve Koşullu Erişim uygulayarak kullanıcı adı/parola yoluyla e-postalarında oturum açmalarını hariç tutmanızı öneririz. [Koşullu Erişim'i kullanarak eski kimlik doğrulamasını](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)engelleyebilirsiniz. Lütfen Exchange online üzerinden [temel kimlik doğrulamasını nasıl engelleyiriz](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) hakkındaki ayrıntıları kontrol edin. 
+Geçmişte, protokoller Kullanıcı adı/parola birleşimlerinin cihazlara, e-posta hesaplarına, telefonlara, vb. gömülü olduğunu kabul eder. Ancak artık buluttaki siber saldırılara karşı risk altınıza göre, kimlik bilgilerinin tehlikeye girdiği, kuruluşa çok zararlı olabilecek ve güçlü kimlik doğrulama gereksinimleri ve koşullu erişim uygulayarak Kullanıcı adı/parola aracılığıyla e-postalarında oturum açabiliyor olan tüm olası kullanıcıları tanımlamanızı öneririz. [Koşullu erişimi kullanarak eski kimlik doğrulamasını](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)engelleyebilirsiniz. Lütfen Exchange Online aracılığıyla [temel kimlik doğrulamasını engelleme](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) hakkındaki ayrıntıları kontrol edin. 
 
-#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 rolleri için roller gözden geçirme değerlendirmesini tamamlama (Office 365 kullanıyorsanız)
+#### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 rolleri için bir rol gözden geçirme değerlendirmesi tamamlamayı (Office 365 kullanıyorsanız)
 
-Tüm yönetici kullanıcılarının doğru rollerde olup olmadığını değerlendirin (bu değerlendirmeye göre silin ve yeniden atayın).
+Tüm Yöneticiler kullanıcılarının doğru rollerde olup olmadığını değerlendirin (bu değerlendirmeye göre Sil ve yeniden ata).
 
-#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Office 365'te kullanılan güvenlik olayı yönetimi yaklaşımını gözden geçirin ve kendi kuruluşunuzla karşılaştırın
+#### <a name="review-the-security-incident-management-approach-used-in-office-365-and-compare-with-your-own-organization"></a>Office 365 ' de kullanılan güvenlik olay yönetimi yaklaşımını gözden geçirin ve kendi kuruluşunuzla karşılaştırın
 
-Bu raporu Microsoft [Office 365'teki Güvenlik Olayı Yönetimi'nden](https://www.microsoft.com/download/details.aspx?id=54302)indirebilirsiniz.
+Bu raporu, [Microsoft Office 365 ' deki güvenlik olay yönetimi](https://www.microsoft.com/download/details.aspx?id=54302)'nden indirebilirsiniz.
 
-#### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Şirket içi ayrıcalıklı yönetim hesaplarını güvence altına almaya devam edin
+#### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>Şirket içi ayrıcalıklı yönetim hesaplarını güvenli hale getirmeye devam edin
 
-Azure Etkin Dizini'niz şirket içi Active Directory'ye bağlıysa, [Güvenlik Ayrıcalıklı Erişim Yol Haritası](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Aşama 2'deki kılavuzu izleyin. Buna tüm yöneticiler için Ayrıcalıklı Erişim İş İstasyonları dağıtmak, MFA gerektiren, DC bakımı için Yeterli Yeterli Yönetici kullanmak, etki alanlarının saldırı yüzeyini düşürmek, saldırı algılaması için ATA'yı dağıtmak dahildir.
+Azure Active Directory Şirket içi Active Directory bağlıysa, [güvenlik ayrıcalıklı erişim yol haritası](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access): Aşama 2 ' deki yönergeleri izleyin. Bu, tüm yöneticiler için ayrıcalıklı erişim Iş Istasyonlarını dağıtmak, etki alanlarının saldırı yüzeyini düşürmek ve saldırı algılama için ATA dağıtmak üzere yalnızca DC bakımı için yeterli yönetici kullanarak MFA gerektirmektir.
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure erişimi yöneten kuruluşlar için ek adımlar
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure 'a erişimi yöneten kuruluşlar için ek adımlar
 
-#### <a name="establish-integrated-monitoring"></a>Entegre izleme oluşturma
+#### <a name="establish-integrated-monitoring"></a>Tümleşik izleme oluşturma
 
-[Azure Güvenlik Merkezi,](../../security-center/security-center-intro.md) Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmeyecek tehditleri algılamaya yardımcı olur ve geniş bir güvenlik çözümleri ekosistemiyle çalışır.
+[Azure Güvenlik Merkezi](../../security-center/security-center-intro.md) , Azure aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, başka türlü fark edilmemiş tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş bir ekosistemiyle birlikte çalışabilir.
 
-#### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Ayrıcalıklı hesaplarınızı barındırılan Sanal Makineler içinde envanter
+#### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>Barındırılan sanal makineler içindeki ayrıcalıklı hesaplarınızın envanterini çıkarın
 
-Çoğu durumda, kullanıcılara tüm Azure abonelikleriniz veya kaynaklarınız için sınırsız izin vermeniz gerekmez. Azure AD yönetici rollerini kuruluşunuzdaki görevleri ayırmak ve yalnızca belirli işleri gerçekleştirmesi gereken kullanıcılara erişim hakkı vermek için kullanabilirsiniz. Örneğin, bir yöneticinin abonelikte yalnızca VM'leri yönetmesine izin vermek için Azure AD yöneticisi rollerini, diğeri ise aynı abonelik içindeki SQL veritabanlarını yönetebilir. Daha fazla bilgi için azure [portalında Rol Tabanlı Erişim Denetimi'ne başlayın'](../../role-based-access-control/overview.md)a bakın.
+Çoğu durumda kullanıcılara tüm Azure abonelikleriniz veya kaynaklarınız için kısıtlanmamış izinler vermeniz gerekmez. Kuruluşunuzdaki görevleri ayırmak ve yalnızca belirli işleri gerçekleştirmesi gereken kullanıcılara erişim miktarına izin vermek için Azure AD yönetici rolleri ' ni kullanabilirsiniz. Örneğin, bir yöneticinin bir abonelikteki yalnızca VM 'Leri yönetmesine izin vermek için Azure AD yönetici rolleri ' ni kullanın, diğer bir deyişle SQL veritabanlarını aynı abonelik içinde yönetebilir. Daha fazla bilgi için, bkz. [Azure Portal rol tabanlı Access Control kullanmaya başlama](../../role-based-access-control/overview.md).
 
-#### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD yönetici rolleri için PIM'i uygulama
+#### <a name="implement-pim-for-azure-ad-administrator-roles"></a>Azure AD yönetici rolleri için PıM uygulama
 
-Azure kaynaklarına erişimi yönetmek, denetlemek ve izlemek için Azure AD yöneticisi rolleriyle Ayrıcalıklı kimlik yönetimi'ni kullanın. PIM kullanmak, ayrıcalıklı hesapları ayrıcalıkların maruz kalma süresini azaltarak ve raporlar ve uyarılar aracılığıyla bunların kullanımına görünürlüğünüzü artırarak siber saldırılara karşı korur. Daha fazla bilgi için bkz: [Ayrıcalıklı Kimlik Yönetimi ile Azure kaynaklarına RBAC erişimini yönetin.](../../role-based-access-control/pim-azure-resource.md)
+Azure kaynaklarına erişimi yönetmek, denetlemek ve izlemek için Azure AD yönetici rolleriyle ayrıcalıklı kimlik yönetimi kullanın. PıM 'nin kullanılması, ayrıcalıkların etkilenme süresini azaltarak ve raporlarınızı raporlar ve uyarılar aracılığıyla kullanım için artırarak ayrıcalıklıya saldırılarına karşı ayrıcalıklı hesapları korur. Daha fazla bilgi için bkz. [Privileged Identity Management Ile Azure KAYNAKLARıNA RBAC erişimini yönetme](../../role-based-access-control/pim-azure-resource.md).
 
-#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>İlgili Azure günlüklerini SIEM sistemlerinize göndermek için Azure günlük entegrasyonlarını kullanın 
+#### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>İlgili Azure günlüklerini SıEM sistemlerinize göndermek için Azure günlük tümleştirmelerini kullanın 
 
-Azure günlük tümleştirmesi, Azure kaynaklarınızdaki ham günlükleri kuruluşunuzun mevcut Güvenlik Bilgileri ve Etkinlik Yönetimi (SIEM) sistemlerine entegre etmenizi sağlar. [Azure günlük tümleştirmesi,](../../security/fundamentals/azure-log-integration-overview.md) Windows Olay Görüntüleyicisi günlüklerinden Windows etkinliklerini, Azure Etkinlik Günlükleri, Azure Güvenlik Merkezi uyarıları ve Azure Tanı günlüklerinden Azure kaynaklarını toplar. 
+Azure günlük tümleştirmesi, Azure kaynaklarınızdan ham günlükleri kuruluşunuzun mevcut güvenlik bilgileri ve olay yönetimi (SıEM) sistemleriyle tümleştirmenize olanak sağlar. [Azure günlük tümleştirmesi](../../security/fundamentals/azure-log-integration-overview.md) , Windows Olay Görüntüleyicisi günlüklerinden Windows olaylarını ve Azure etkinlik günlükleri, Azure Güvenlik Merkezi uyarıları ve Azure Kaynak günlüklerinden Azure kaynaklarını toplar. 
 
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>Azure AD aracılığıyla diğer bulut uygulamalarına erişimi yöneten kuruluşlar için ek adımlar
 
-#### <a name="implement-user-provisioning-for-connected-apps"></a>Bağlı uygulamalar için kullanıcı sağlama uygulama
+#### <a name="implement-user-provisioning-for-connected-apps"></a>Bağlı uygulamalar için Kullanıcı sağlamayı uygulama
 
-Azure AD, Dropbox, Salesforce, ServiceNow gibi bulut (SaaS) uygulamalarında kullanıcı kimliklerinin oluşturulmasını, bakımını ve kaldırılmasını otomatikleştirmenize olanak tanır. Daha fazla bilgi için Azure [AD ile SaaS uygulamalarında kullanıcı sağlama ve sağlama](../app-provisioning/user-provisioning.md)sağlama sağlama konusuna bakın.
+Azure AD, kullanıcı kimliklerinin Dropbox, Salesforce, ServiceNow gibi bulut (SaaS) uygulamalarında oluşturulmasını, bakımını ve kaldırılmasını otomatik hale getirmenizi sağlar. Daha fazla bilgi için bkz. [Azure AD Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
 
-#### <a name="integrate-information-protection"></a>Bilgi korumayı tümleştirme
+#### <a name="integrate-information-protection"></a>Tümleştirme bilgi koruması
 
-MCAS, dosyaları araştırmanıza ve Azure Bilgi Koruması sınıflandırma etiketlerini temel alarak ilkeler belirlemenize olanak sağlayarak verilerinizin bulutta daha fazla görünürlüğünü ve denetimini sağlar. Buluttaki dosyaları tarayıp sınıflandırın ve Azure bilgi koruma etiketleri uygulayın. Daha fazla bilgi için Azure [Bilgi Koruması tümleştirmesi'ne](https://docs.microsoft.com/cloud-app-security/azip-integration)bakın.
+MCAS, dosyaları araştırmanıza ve Azure Information Protection sınıflandırma etiketlerine göre ilkeler ayarlamanıza olanak tanıyarak, buluttaki verilerinizin daha fazla görünürlüğünü ve denetimini etkinleştirir. Bulutta dosyaları tarayın ve sınıflandırın ve Azure Information Protection etiketlerini uygulayın. Daha fazla bilgi için bkz. [Azure Information Protection tümleştirme](https://docs.microsoft.com/cloud-app-security/azip-integration).
 
-#### <a name="configure-conditional-access"></a>Koşullu Erişimi Yapılandırma
+#### <a name="configure-conditional-access"></a>Koşullu erişimi yapılandırma
 
-[SaaS uygulamaları](https://azure.microsoft.com/overview/what-is-saas/) ve Azure AD'ye bağlı uygulamalar için koşullu Erişimi grup, konum ve uygulama hassasiyetine göre yapılandırın. 
+[SaaS uygulamaları](https://azure.microsoft.com/overview/what-is-saas/) ve Azure AD bağlı uygulamaları için bir grup, konum ve uygulama duyarlılığı temelinde koşullu erişimi yapılandırın. 
 
-#### <a name="monitor-activity-in-connected-cloud-apps"></a>Bağlı bulut uygulamalarındaki etkinliği izleme
+#### <a name="monitor-activity-in-connected-cloud-apps"></a>Bağlı bulut uygulamalarındaki etkinlikleri izleme
 
-Bağlı uygulamalarda da kullanıcıların erişiminin korunduğundan emin olmak için [Microsoft Bulut Uygulama Güvenliği'nden](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)yararlanmanızı öneririz. Bu, aşağıdakileri yapmanızı sağlayarak yönetici hesaplarınızın güvenliğini sağlamanın yanı sıra kurumsal bulut uygulamalarına erişimi de güvence altına alar:
+Kullanıcıların erişiminin bağlı uygulamalarda da korunduğundan emin olmak için [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)kullanmanızı öneririz. Bu, yönetim hesaplarınızı güvenli hale getirmenin yanı sıra, bulut uygulamalarına kurumsal erişimin güvenliğini sağlar ve şunları yapabilirsiniz:
 
-* Bulut uygulamalarına görünürlüğü ve denetimi genişletin
+* Görünürlük ve denetimi bulut uygulamalarına genişletme
 * Erişim, etkinlikler ve veri paylaşımı için ilkeler oluşturma
-* Riskli faaliyetleri, anormal davranışları ve tehditleri otomatik olarak tanımlar
+* Riskli etkinlikleri, olağan dışı davranışları ve tehditleri otomatik olarak belirleyin
 * Veri sızıntısını önleme
-* Riski ve otomatik tehdit önlemeyi ve politika uygulamayı en aza indirin
+* Risk ve otomatik tehdit önleme ve ilke zorlamayı en aza indirme
 
-Cloud App Security SIEM aracısı, Office 365 uyarılarının ve etkinliklerinin merkezi olarak izlenmesini sağlamak için Bulut App Security'yi SIEM sunucunuzla bütünleştirir. Sunucunuzda çalışır ve Cloud App Security'den uyarılar ve etkinlikler çeker ve bunları SIEM sunucusuna aktarAr. Daha fazla bilgi için [SIEM entegrasyonuna](https://docs.microsoft.com/cloud-app-security/siem)bakın.
+Cloud App Security SıEM Aracısı, Office 365 uyarıları ve etkinliklerini merkezi olarak izlemeyi etkinleştirmek için SıEM sunucunuz ile Cloud App Security tümleştirir. Sunucunuzda çalışır ve Cloud App Security uyarı ve etkinlik çeker ve bunları SıEM sunucusuna akıp. Daha fazla bilgi için bkz. [SIEM tümleştirmesi](https://docs.microsoft.com/cloud-app-security/siem).
 
-## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4. Aşama: Daha proaktif bir güvenlik duruşu için savunma oluşturmaya devam edin
+## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>4. Aşama: daha proaktif bir güvenlik duruşunu savunma oluşturmaya devam edin
 
-![Aşama 4 proaktif bir güvenlik duruşu benimsemek](./media/directory-admin-roles-secure/stage-four.png)
+![4. aşama proaktif güvenlik duruşunu benimseyin](./media/directory-admin-roles-secure/stage-four.png)
 
-Yol haritasının 4. Bir yol haritasını tamamlamak, günümüzde bilinen ve kullanılabilen olası saldırılara karşı güçlü ayrıcalıklı erişim korumaları geliştirmenize yardımcı olur. Ne yazık ki, güvenlik tehditleri sürekli olarak gelişir ve değişir, bu nedenle güvenliği maliyeti artırmaya ve çevrenizi hedef alan düşmanların başarı oranını azaltmaya odaklanmış devam eden bir süreç olarak görmenizi öneririz.
+Yol haritası 'nın 4. aşaması, 1. aşama 'daki görünürlüğe göre oluşturulur ve altı ayda ve sonra uygulanacak şekilde tasarlanmıştır. Bir yol haritasını tamamlamak, şu anda bilinen ve kullanılabilir olan olası saldırılara karşı güçlü ayrıcalıklı erişim korumaları geliştirmenize yardımcı olur. Ne yazık ki güvenlik tehditleri sürekli olarak geliştikçe ve kaydırılarak, maliyeti artırmaya ve ortamınızı hedefleyen duyuru başarı oranını düşürmeye odaklanan devam eden bir işlem olarak güvenliği görüntülemenizi öneririz.
 
-Ayrıcalıklı erişimi güvence altına almak, modern bir kuruluşta iş varlıkları için güvenlik güvenceleri oluşturmak için kritik bir ilk adımdır, ancak tam bir güvenlik programının ilke, operasyon, bilgi gibi öğeleri içeren tek parçası değildir güvenlik, sunucular, uygulamalar, bilgisayarlar, aygıtlar, bulut kumaşı ve diğer bileşenler sürekli güvenlik güvenceleri sağlar. 
+Ayrıcalıklı erişimin güvenliğini sağlamak, modern bir kuruluştaki iş varlıkları için güvenlik unsurları oluşturmaya yönelik kritik bir ilk adımdır, ancak ilke, işlemler, bilgi güvenliği, sunucular, uygulamalar, bilgisayarlar, cihazlar, bulut dokusu ve diğer bileşenler için sürekli güvenlik düzeyi sağlar. 
 
-Ayrıcalıklı erişim hesaplarınızı yönetmenin yanı sıra, aşağıdakileri sürekli olarak gözden geçirmenizi öneririz:
+Ayrıcalıklı erişim hesaplarınızı yönetmenin yanı sıra, aşağıdakileri devam eden bir şekilde incelemenizi öneririz:
 
-* Yöneticilerin, ayrıcalıksız kullanıcılar olarak günlük işlerini yaptıklarından emin olun.
-* Yalnızca gerektiğinde ayrıcalıklı erişim izni ver ve daha sonra kaldırın (tam zamanında).
+* Yöneticilerin, her gün İşletmelerini ayrıcalıksız kullanıcılar olarak yaptığını doğrulayın.
+* Yalnızca gerektiğinde ayrıcalıklı erişim verin ve daha sonra (tam zamanında) kaldırın.
 * Ayrıcalıklı hesaplarla ilgili denetim etkinliğini koruyun ve gözden geçirin.
 
-Tam bir güvenlik yol haritası oluşturma hakkında daha fazla bilgi için Microsoft [bulut BT mimarisi kaynaklarına](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)bakın. Bu konulardan herhangi birinde yardımcı olmak için Microsoft hizmetlerine girişme hakkında daha fazla bilgi için, Microsoft temsilcinize başvurun veya [kuruluşunuzu korumak için kritik siber savunma lar oluşturun'a](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)bakın.
+Tüm güvenlik yol haritası oluşturma hakkında daha fazla bilgi için bkz. [Microsoft Cloud It Architecture kaynakları](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Bu konulardan herhangi birine yardımcı olmak üzere Microsoft hizmetlerine başvurma hakkında daha fazla bilgi için Microsoft temsilcinize başvurun veya bkz. [kuruluşunuzu korumak Için derleme açısından kritik siber savunmaları](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
-Güvenli Ayrıcalıklı Erişim yol haritasının bu devam eden bu aşaması aşağıdaki bileşenleri içerir.
+Güvenli ayrıcalıklı erişim yol haritası 'nın bu son devam eden aşaması aşağıdaki bileşenleri içerir.
 
 ### <a name="general-preparation"></a>Genel hazırlık
 
-#### <a name="review-admin-roles-in-azure-active-directory"></a>Azure Etkin Dizini'nde yönetici rollerini gözden geçirme 
+#### <a name="review-admin-roles-in-azure-active-directory"></a>Azure Active Directory yönetici rollerini gözden geçirin 
 
-Geçerli yerleşik Azure AD yönetici rollerinin hala güncel olup olmadığını belirleyin ve kullanıcıların yalnızca ilgili izinler için ihtiyaç duydukları rollerde ve delegasyonlarda olduğundan emin olun. Azure AD ile, farklı işlevlere hizmet etmesi için ayrı yöneticiler atayabilirsiniz. Daha fazla bilgi için Azure [Etkin Dizini'nde yönetici rolleri atama](directory-assign-admin-roles.md)'ya bakın.
+Mevcut yerleşik Azure AD Yönetici rollerinin hala güncel olup olmadığını ve kullanıcıların yalnızca ilgili izinler için ihtiyaç duydukları roller ve temsilci olduklarından emin olun. Azure AD ile ayrı yöneticileri farklı işlevlere sunacak şekilde belirleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Active Directory yönetici rolleri atama](directory-assign-admin-roles.md).
 
-#### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Azure AD'yi yöneten kullanıcıları gözden geçirin
+#### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>Azure AD 'ye katılmış cihazların yönetimine sahip kullanıcıları gözden geçirme
 
-Daha fazla bilgi için, [karma Azure Etkin Dizin birleştirilmiş aygıtları nasıl yapılandırabilirsiniz.](../device-management-hybrid-azuread-joined-devices-setup.md)
+Daha fazla bilgi için bkz. [karma Azure Active Directory katılmış cihazları yapılandırma](../device-management-hybrid-azuread-joined-devices-setup.md).
 
-#### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Yerleşik Office 365 yönetici rollerinin](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) üyelerini gözden geçirme
+#### <a name="review-members-of-built-in-office-365-admin-roles"></a>[Yerleşik Office 365 Yönetici rollerinin](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) üyelerini gözden geçirme
 Office 365 kullanıyorsanız.
 ‎
-#### <a name="validate-incident-response-plan"></a>Olay yanıt planını doğrulama
+#### <a name="validate-incident-response-plan"></a>Olay yanıtı planını doğrula
 
-Microsoft, planınızı geliştirmek için, planınızın beklendiği gibi çalıştığını düzenli olarak doğrulamanızı önerir:
+Planınızı geliştirmek için, Microsoft planınızın beklendiği gibi çalıştığını düzenli olarak doğrulamanızı önerir:
 
-* Nelerin gözden kaçırdığını görmek için mevcut yol haritanızı gözden geçirin
-* Postmortem analizine dayanarak, mevcut gözden geçirme veya yeni en iyi uygulamaları tanımlayın
+* Eksik olanları görmek için mevcut yol eşlemenizi inceleyin
+* Postmordıtem analizine bağlı olarak, var olan veya yeni en iyi yöntemleri tanımla
 * Güncelleştirilmiş olay yanıt planınızın ve en iyi uygulamaların kuruluşunuz genelinde dağıtıldığından emin olun
 
 
-### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure erişimi yöneten kuruluşlar için ek adımlar 
+### <a name="additional-steps-for-organizations-managing-access-to-azure"></a>Azure 'a erişimi yöneten kuruluşlar için ek adımlar 
 
-[Azure aboneliğinin sahipliğini başka bir hesaba aktarmanız](../../cost-management-billing/manage/billing-subscription-transfer.md)gerekip gerekmeden belirleyin.
+[Bir Azure aboneliğinin sahipliğini başka bir hesaba aktarmanız](../../cost-management-billing/manage/billing-subscription-transfer.md)gerekip gerekmediğini belirleme.
 ‎
 
-## <a name="break-glass-what-to-do-in-an-emergency"></a>"Break cam": acil bir durumda ne yapmalı
+## <a name="break-glass-what-to-do-in-an-emergency"></a>"Cam kesmesi": acil durum
 
-![Acil mola cam erişimi için hesaplar](./media/directory-admin-roles-secure/emergency.jpeg)
+![Acil durum kesme camı erişimi hesapları](./media/directory-admin-roles-secure/emergency.jpeg)
 
-1. Önemli yöneticilere ve güvenlik görevlilerine olayla ilgili bilgileri bildirin.
+1. Olay ile ilgili uygun bilgileri kullanarak anahtar yöneticilerine ve güvenlik ofislere bildirim gönderin.
 
-2. Saldırı oyun kitabınızı gözden geçirin. 
+2. Saldırı PlayBook 'unu gözden geçirin. 
 
-3. Azure AD'de oturum açabilmek için "kesme camı" hesap kullanıcı adı/parola kombinasyonuna erişin. 
+3. Azure AD 'de oturum açmak için "cam" hesabı Kullanıcı adı/parola birleşimine erişin. 
 
-4. [Azure destek isteği açarak](../../azure-portal/supportability/how-to-create-azure-support-request.md)Microsoft'tan yardım alın.
+4. [Azure destek isteği açarak](../../azure-portal/supportability/how-to-create-azure-support-request.md)Microsoft 'tan yardım alın.
 
-5. [Azure AD oturum açma raporlarına](../reports-monitoring/overview-reports.md)bakın. Bir olay meydana gelen ve rapora dahil edildiğinde arasında bir gecikme olabilir.
+5. [Azure AD oturum açma raporlarına](../reports-monitoring/overview-reports.md)bakın. Oluşan bir olay ve rapora dahil edildiğinde bir gecikme olabilir.
 
-6. Karma ortamlar için, federe ve AD FS sunucunuz kullanılamıyorsa, geçici olarak federe kimlik doğrulamasından parola karma eşitlemeyi kullanmak için geçiş yapmanız gerekebilir. Bu, AD FS sunucusu kullanılabilir hale gelene kadar etki alanı federasyonunu yönetilen kimlik doğrulamasına geri döndürür.
+6. Karma ortamlarda, federe ve AD FS sunucunuz kullanılamazsa, geçici olarak federal kimlik doğrulamasından Parola karması eşitlemesini kullanacak şekilde geçiş yapmanız gerekebilir. Bu, AD FS sunucusu kullanılabilir hale gelene kadar etki alanı federasyonunu yönetilen kimlik doğrulamasına geri döndürür.
 
 7. Ayrıcalıklı hesaplar için e-postayı izleyin.
 
-8. Olası adli ve yasal soruşturma için ilgili günlüklerin yedeklerini kaydettiğinizden emin olun.
+8. Olası bir ve yasal araştırma için ilgili günlüklerin yedeklerini kaydettiğinizden emin olun.
 
-Microsoft Office 365'in güvenlik olaylarını nasıl işlediği hakkında daha fazla bilgi için [Microsoft Office 365'te Güvenlik Olayı Yönetimi'ne](https://aka.ms/Office365SIM)bakın.
+Microsoft Office 365 güvenlik olaylarını nasıl işleyeceği hakkında daha fazla bilgi için, bkz. [Microsoft Office 365 ' de güvenlik olay yönetimi](https://aka.ms/Office365SIM).
 
-## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>SSS: Ayrıcalıklı erişimin sağlanmasıyla ilgili aldığımız sık sorulan sorular  
+## <a name="faq-common-questions-we-receive-regarding-securing-privileged-access"></a>SSS: ayrıcalıklı erişimin güvenliğini sağlama hakkında aldığımız yaygın sorular  
 
-**S:** Henüz herhangi bir güvenli erişim bileşeni uygulamadıysam ne yapmalıyım?
+**S:** Henüz bir güvenli erişim bileşeni uygulamadım, ne yapmam gerekiyor?
 
-**Cevap:** En az iki kesme cam hesabı tanımlayın, MFA'yı ayrıcalıklı yönetici hesaplarınıza atayın ve kullanıcı hesaplarını Global yönetici hesaplarından ayırın.
+**Cevap:** En az iki adet kesme camı hesabı tanımlayın, ayrıcalıklı yönetici hesaplarınıza MFA atayın ve küresel yönetici hesaplarından Kullanıcı hesaplarını ayırın.
 
-**S:** Bir ihlalden sonra, önce ele alınması gereken en önemli sorun nedir?
+**S:** Bir ihlal sonrasında ilk olarak ilgilenilmesi gereken en önemli sorun nedir?
 
-**Cevap:** Yüksek maruz kalan kişiler için en güçlü kimlik doğrulamaya ihtiyaç beslediğinizden emin olun.
+**Cevap:** Yüksek düzeyde açığa çıkarılan bireyler için en güçlü kimlik doğrulaması gerektirdiğinizden emin olun.
 
-**S:** Ayrıcalıklı yöneticilerimiz devre dışı bırakılırsa ne olur?
+**S:** Ayrıcalıklı yöneticilerimiz devre dışı bırakılmışsa ne olur?
 
-**Cevap:** Her zaman güncel tutulan bir Global yönetici hesabı oluşturun.
+**Cevap:** Her zaman güncel tutulan bir genel yönetici hesabı oluşturun.
 
-**S:** Geriye tek bir küresel yönetici kaldıysa ve bunlara ulaşılamazsa ne olur? 
+**S:** Yalnızca bir genel yönetici yoksa ve bunlara ulaşılamadığından ne olur? 
 
-**Cevap:** Hemen ayrıcalıklı erişim elde etmek için cam kesme hesaplarınızdan birini kullanın.
+**Cevap:** Acil erişim sağlamak için, kesme camı hesaplarından birini kullanın.
 
-**S:** Kuruluşumdaki yöneticileri nasıl koruyabilirim?
+**S:** Kuruluşumun içindeki yöneticileri nasıl koruyabilirim?
 
-**Cevap:** Yöneticilerin günlük işlerini her zaman standart "ayrıcalıksız" kullanıcılar olarak yapmaları nasihal olsun.
+**Cevap:** Yöneticilerin her zaman gündelik işletmelerini standart "ayrıcalıksız" kullanıcılar olarak yapması gerekir.
 
-**S:** Azure AD içinde yönetici hesapları oluşturmak için en iyi uygulamalar nelerdir?
+**S:** Azure AD 'de yönetici hesapları oluşturmak için en iyi uygulamalar nelerdir?
 
-**Cevap:** Belirli yönetici görevleri için ayrıcalıklı erişimi ayırın.
+**Cevap:** Belirli yönetici görevleri için ayrıcalıklı erişim ayırın.
 
 **S:** Kalıcı yönetici erişimini azaltmak için hangi araçlar var?
 
-**Cevap:** Ayrıcalıklı Kimlik Yönetimi (PIM) ve Azure AD yönetici rolleri.
+**Cevap:** Privileged Identity Management (PıM) ve Azure AD yönetici rolleri.
 
-**S:** Yönetici hesaplarını Azure AD ile eşitleme konusunda Microsoft'un konumu nedir?
+**S:** Yönetici hesaplarını Azure AD 'ye eşitlemeye ilişkin Microsoft konumu nedir?
 
-**Cevap:** Tier 0 yönetici hesapları (AD ormanı, etki alanları veya etki alanı denetleyicileri ve tüm varlıklar üzerinde doğrudan veya dolaylı yönetim denetimi olan hesaplar, gruplar ve diğer varlıklar dahil) yalnızca şirket içi AD hesapları için kullanılır ve genellikle bulut için Azure AD için senkronize edilmez.
+**Cevap:** Katman 0 Yönetici hesapları (hesaplar, gruplar ve AD Ormanı, etki alanları veya etki alanı denetleyicileri ve tüm varlıklar) için doğrudan veya dolaylı yönetim denetimine sahip olan diğer varlıklar dahil, yalnızca şirket içi AD hesapları için kullanılır ve genellikle bulut için Azure AD ile eşitlenmez.
 
-**S:** Yöneticilerin portala rasgele yönetici erişimi atamasını nasıl engelleyebiliriz?
+**S:** Yöneticilerin portalda rastgele yönetici erişimi atamasını nasıl sağlıyoruz?
 
-**Cevap:** Tüm kullanıcılar ve çoğu yönetici için ayrıcalıklı olmayan hesapları kullanın. Hangi yönetici hesaplarının ayrıcalıklı olması gerektiğini belirlemek için kuruluşun bir ayak izini geliştirerek başlayın. Ve yeni oluşturulan yönetim kullanıcıları için izleyin.
+**Cevap:** Tüm kullanıcılar ve yöneticiler için ayrıcalıklı olmayan hesaplar kullanın. Hangi yönetici hesaplarının ayrıcalıklı olacağını öğrenmek için kuruluşun parmak izini geliştirerek başlayın. Ve yeni oluşturulan yönetim kullanıcılarını izler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Microsoft Trust Center for Product Security](https://www.microsoft.com/trustcenter/security) – Microsoft bulut ürün ve hizmetlerinin güvenlik özellikleri
+* [Ürün güvenliği Için Microsoft Güven Merkezi](https://www.microsoft.com/trustcenter/security) – Microsoft bulut ürünlerinin ve hizmetlerinin güvenlik özellikleri
 
-* [Microsoft Trust Center - Uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft'un bulut hizmetleri için kapsamlı uyumluluk teklifleri kümesi
+* [Microsoft Güven Merkezi-uyumluluk](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – Microsoft 'un bulut hizmetleri için kapsamlı bir uyumluluk teklifleri kümesi
 
-* [Risk değerlendirmesinin nasıl gerçekleştirilece ilişkin yönergeler](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - Microsoft bulut hizmetleri için güvenlik ve uyumluluk gereksinimlerini yönetme
+* [Risk değerlendirmesi gerçekleştirme hakkında yönergeler](https://www.microsoft.com/trustcenter/guidance/risk-assessment) -Microsoft bulut hizmetleri için güvenlik ve uyumluluk gereksinimlerini yönetme
 
 ### <a name="other-microsoft-online-services"></a>Diğer Microsoft Çevrimiçi Hizmetleri
 
-* [Microsoft Intune Security](https://www.microsoft.com/trustcenter/security/intune-security) – Intune, buluttan mobil cihaz yönetimi, mobil uygulama yönetimi ve BILGISAYAR yönetimi özellikleri sağlar.
+* [Microsoft Intune güvenliği](https://www.microsoft.com/trustcenter/security/intune-security) – Intune, buluttan mobil cihaz yönetimi, mobil uygulama YÖNETIMI ve bilgisayar yönetimi özellikleri sağlar.
 
-* [Microsoft Dynamics 365 security](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365, müşteri ilişkileri yönetimi (CRM) ve kurumsal kaynak planlama (ERP) özelliklerini birbirleyen Microsoft bulut tabanlı çözümdür.
+* [Microsoft dynamics 365 güvenliği](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365, müşteri ilişkileri YÖNETIMI (CRM) ve kurumsal kaynak planlama (ERP) yeteneklerini birleştiren Microsoft bulut tabanlı çözümüdür.

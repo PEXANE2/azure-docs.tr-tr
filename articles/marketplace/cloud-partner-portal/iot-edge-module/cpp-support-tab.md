@@ -7,41 +7,41 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: 45304e12bf959cb1f695384535360af283ee3f10
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981877"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142307"
 ---
-# <a name="iot-edge-module-support-tab"></a>IoT Edge modülü Destek sekmesi
+# <a name="iot-edge-module-support-tab"></a>IoT Edge modülü destek sekmesi
 
 >[!Important]
->13 Nisan 2020'den itibaren, IoT Edge modül tekliflerinizi İş Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Bir IoT Edge modülü teklifi oluştur'daki](https://aka.ms/AzureCreateIoT) yönergeleri izleyin.
+>13 Nisan 2020 ' den itibaren, IoT Edge modülü tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [IoT Edge modülü oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-iot-edge-module-creation) bölümündeki yönergeleri izleyin.
 
-Teklifiniz için teknik ve kullanıcı destek kaynakları sağlamak için **Yeni Teklif** sayfasının **Destek** sekmesini kullanın.  Destek formunda aşağıdaki giriş alanları sağlanmaktadır: **Engineering Contact**, **Customer Support**ve **Support Urls**. Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
+Teklifiniz için teknik ve Kullanıcı Destek kaynakları sağlamak üzere **yeni teklif** sayfasının **destek** sekmesini kullanın.  Aşağıdaki giriş alanlarında destek formu: **mühendislik iletişim**, **müşteri desteği**ve **Destek URL 'leri**verilmiştir. Alan adının sonuna bir yıldız işareti (*), gerekli olduğunu gösterir.
 
-![IoT Edge modülleri için Yeni Teklif formunda destek sekmesi](./media/iot-edge-module-support-tab.png)
+![IoT Edge modüller için yeni teklif formundaki destek sekmesi](./media/iot-edge-module-support-tab.png)
 
 ## <a name="support-form-fields"></a>Destek formu alanları
 
-Aşağıdaki tabloda form alanları ve her alan için gerekli giriş açıklanmaktadır. Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Aşağıdaki tablo, form alanlarını ve her alan için gereken girişi açıklar. Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
 |  **Alan**                |     **Açıklama**                                                          |
 |  ---------                |     ---------------                                                          |
-| ***Mühendislik İletişim***  |  *Microsoft ve kuruluşunuz arasında teknik bir iletişim görevi görehizmet eder* | 
-| **Adı\***                  | Teknik/mühendislik desteği olarak hizmet veren kişi veya grubun adı     |
-| **E-posta\***                 | Bu teknik ilgiliiletişimin e-posta adresi                                      |
+| ***Mühendislik Iletişim***  |  *Microsoft ve kuruluşunuz arasında teknik bir iletişim işlevi görür* | 
+| **Adı\***                  | Teknik/mühendislik desteği olarak hizmet veren kişinin veya grubun adı     |
+| **E-posta\***                 | Bu teknik kişinin e-posta adresi                                      |
 | **Telefon\***                 | Teknik destek için telefon numarası                                           |
-| ***Müşteri Desteği***  | *Azure'da müşteriler tarafından açılan destek biletlerini alır* |
-| **Adı\***                  | Müşteri desteği olarak hizmet veren kişi veya grubun adı                  |
+| ***Müşteri desteği***  | *Azure 'da müşteriler tarafından açılan destek biletlerini alır* |
+| **Adı\***                  | Müşteri desteği olarak hizmet veren kişinin veya grubun adı                  |
 | **E-posta\***                 | Müşteri desteğinin e-posta adresi                                            |
 | **Telefon\***                 | Müşteri desteği için telefon numarası                                            |
-| ***Destek Urlleri***  | *Müşterileriniz destek biletleri açtığında Microsoft'un kullanacağı destek siteleri* |
-| **Genel Azure**          | Genel internet destek sitesi URL'si                                         |
-| **Azure Devlet Bulutu**| Devlet bulut destek sitesi URL'si                                        |
+| ***Destek URL 'Leri***  | *Müşterileriniz destek biletlerini açtıklarında Microsoft 'un kullanacağı siteleri destekleme* |
+| **Genel Azure**          | Genel internet desteği sitesi URL 'SI                                         |
+| **Azure Kamu Bulutu**| Kamu Bulutu destek sitesinin URL 'SI                                        |
 |   |   |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Destek bilgilerini sağlamayı bitirdikten [sonra, teklifinizi yayınlamaya](./cpp-publish-offer.md)hazırsınız.
+Destek bilgilerini sağlamayı tamamladıktan sonra [teklifinizi yayımlamaya](./cpp-publish-offer.md)hazırsınız demektir.

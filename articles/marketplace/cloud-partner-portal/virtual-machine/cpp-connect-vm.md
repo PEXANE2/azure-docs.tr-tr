@@ -1,74 +1,74 @@
 ---
 title: Microsoft Azure tabanlı sanal makinenize bağlanın | Azure Marketi
-description: Azure'da oluşturulan yeni sanal makineye nasıl bağlanılabildiğini açıklar.
+description: Azure 'da oluşturulan yeni sanal makineye nasıl bağlanabileceğinizi açıklar.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
-ms.openlocfilehash: 6f2652a98aa081b62ba80951212ef3a3de513593
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: 4aea624c2127c9b0a61d72b8d14929ce6f47df24
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81272670"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142483"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>Azure tabanlı sanal makinenize bağlanın
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin hareketli yönetimine İş Ortağı Merkezi'ne başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine teknik varlıklarınızı oluştur'daki](https://aka.ms/AzureVMTechAsset) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin Iş Ortağı Merkezi 'nin hareketli yönetimine başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine teknik varlıklarınızı oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) bölümündeki yönergeleri izleyin.
 
-Bu makalede, Azure'da oluşturduğunuz sanal makinelere (VM) nasıl bağlanAbileceğiniz ve oturum açıldığı açıklanmaktadır.  Başarılı bir şekilde bağlandıktan sonra, VM ile ana bilgisayar sunucusunda yerel olarak oturum açmış gibi çalışabilirsiniz. 
+Bu makalede, Azure 'da oluşturduğunuz sanal makinelere (VM 'Ler) bağlanma ve bunları açma işlemleri açıklanmaktadır.  Başarıyla bağlandıktan sonra, konak sunucusunda yerel olarak oturum açmış olduğunuz gibi VM ile çalışabilirsiniz.
 
-## <a name="connect-to-a-windows-based-vm"></a>Windows tabanlı bir VM'ye bağlanma
+## <a name="connect-to-a-windows-based-vm"></a>Windows tabanlı bir VM 'ye bağlanma
 
-Azure'da barındırılan Windows tabanlı VM'ye bağlanmak için uzak masaüstü istemcisini kullanırsınız.  Windows'un çoğu sürümü, uzak masaüstü protokolü (RDP) için yerel olarak destek içerir.  Diğer makineler için, [Uzak Masaüstü istemcilerinde](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)istemciler hakkında daha fazla bilgi bulabilirsiniz.  
+Azure 'da barındırılan Windows tabanlı VM 'ye bağlanmak için uzak masaüstü istemcisini kullanacaksınız.  Windows 'un çoğu sürümü yerel olarak Uzak Masaüstü Protokolü (RDP) desteği içerir.  Diğer makineler için, [Uzak Masaüstü istemcilerindeki](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)istemciler hakkında daha fazla bilgi edinebilirsiniz.  
 
-Aşağıdaki makalede, VM'nize bağlanmak için yerleşik Windows RDP desteğinin nasıl kullanılacağı ayrıntılı olarak anlatılıyor: [Windows çalıştıran bir Azure sanal makinesine nasıl bağlanıp oturum açabilirsiniz.](../../../virtual-machines/windows/connect-logon.md)  
+Aşağıdaki makalede, yerleşik Windows RDP desteğinin sanal makinenize bağlanmak için nasıl kullanılacağı anlatılmaktadır: [Windows çalıştıran bir Azure sanal makinesine bağlanma ve oturum açma](../../../virtual-machines/windows/connect-logon.md).  
 
 >[!TIP]
-> İşlem sırasında ,örneğin .rdp dosyasının bilinmeyen bir yayımcıdan geldiğini veya kullanıcı kimlik bilgilerinizin doğrulanamayacağını belirten güvenlik uyarıları alabilirsiniz.  Bu uyarıları yoksaymak güvenlidir.
+> İşlem sırasında, örneğin. rdp dosyasının bilinmeyen bir yayımcıdan veya Kullanıcı kimlik bilgilerinizin doğrulanamadığı bir güvenlik uyarısı alabilirsiniz.  Bu uyarıları yoksaymak güvenlidir.
 
 
-## <a name="connect-to-a-linux-based-vm"></a>Linux tabanlı bir VM'ye bağlanma
+## <a name="connect-to-a-linux-based-vm"></a>Linux tabanlı bir VM 'ye bağlanma
 
-Linux tabanlı VM'yi bağlamak için güvenli bir kabuk protokolü (SSH) istemcisine ihtiyacınız vardır.  Bu tartışma ücretsiz [PuTTY](https://www.ssh.com/ssh/putty/) SHH terminali kullanacaktır.
+Linux tabanlı VM 'yi bağlamak için güvenli bir kabuk Protokolü (SSH) istemcisine ihtiyacınız vardır.  Bu tartışma, ücretsiz [Putty](https://www.ssh.com/ssh/putty/) Shh terminalini kullanacaktır.
 
-1. [Azure portalına](https://ms.portal.azure.com)gidin. **Sanal makineleri**arayın ve seçin. 
-2. Bağlanmak istediğiniz VM'yi seçin.  
-3. Zaten çalışmıyorsa VM'yi **başlatın.**
-4. **Genel Bakış** sayfasını açmak için VM'nin adını tıklayın.
-5. VM'nizin Genel IP adresine ve DNS adını not edin.  (Bu değerler ayarlı değilse, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) gerekir
+1. [Azure Portal](https://ms.portal.azure.com)gidin. **Sanal makineleri**arayın ve seçin. 
+2. Bağlanmak istediğiniz VM 'yi seçin.  
+3. Zaten çalışmıyorsa VM 'yi **başlatın** .
+4. **Genel bakış** sayfasını açmak için VM adına tıklayın.
+5. VM 'nizin genel IP adresi ve DNS adı ' nı aklınızda edin.  (Bu değerler ayarlanmamışsa, [bir ağ arabirimi oluşturmanız](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#create-a-network-interface) gerekir
 
-   ![VM Genel Bakış ayarları](./media/publishvm_019.png)
+   ![VM genel bakış ayarları](./media/publishvm_019.png)
  
 6. PuTTY uygulamasını açın.  
-7. PuTTY Configuration iletişim kutusunda, VM'nizin IP adresini veya DNS adını girin. 
+7. PuTTY yapılandırması iletişim kutusunda, sanal makinenizin IP adresini veya DNS adını girin. 
 
-   ![PuTTY terminal ayarları](./media/publishvm_020.png)
+   ![PuTTY Terminal ayarları](./media/publishvm_020.png)
  
-8. PuTTY terminalini açmak için **Aç'ı** tıklatın.  
-9. Size istendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin. 
+8. Bir PuTTY terminali açmak için **Aç** ' a tıklayın.  
+9. İstendiğinde, Linux VM hesabınızın hesap adını ve parolasını girin. 
 
-Bağlantı sorunları yaşıyorsanız, SSH istemcinizin belgelerine (örneğin [Bölüm 10: Sık hata iletileri.](https://www.ssh.com/ssh/putty/putty-manuals)
+Bağlantı sorunlarınız varsa, SSH istemcinizin belgelerine bakın. Örneğin, [Bölüm 10: ortak hata iletileri](https://www.ssh.com/ssh/putty/putty-manuals).
 
-Sağlanan bir Linux VM'sine masaüstü ekleme hakkında daha fazla bilgi için, [Azure'daki bir Linux VM'ye bağlanmak için Uzak Masaüstü'nü Yükle ve yapılandırma](../../../virtual-machines/linux/use-remote-desktop.md)konusuna bakın.
+Sağlanan bir Linux sanal makinesine masaüstü ekleme dahil daha fazla bilgi için bkz. [Azure 'da bir LINUX VM 'sine bağlanmak Için uzak masaüstü 'Nü yüklemek ve yapılandırmak](../../../virtual-machines/linux/use-remote-desktop.md).
 
 
-## <a name="stop-unused-vms"></a>Kullanılmayan VM'leri durdurma
-VM çalışırken *veya boştayken*VM barındırma için Azure faturaları.  Bu nedenle, şu anda kullanılmayan VM'leri durdurmak en iyi yöntemdir.  Örneğin, test, yedekleme veya emekli VM'ler kapatma için adaylardır. VM'yi kapatmak için aşağıdaki adımları tamamlayın:
+## <a name="stop-unused-vms"></a>Kullanılmayan VM 'Leri durdur
+Bir VM çalışırken *veya boşta KALDıĞıNDA*VM barındırma için Azure faturaları.  Bu nedenle, şu anda kullanılmayan VM 'Leri durdurmak en iyi uygulamadır.  Örneğin, test, yedekleme veya kullanımdan kaldırılan VM 'Ler, kapanmaya yönelik adaylardır. Bir VM 'yi kapatmak için aşağıdaki adımları izleyin:
 
-1. Sanal **makineler** bıçağında, durdurmak istediğiniz VM'yi seçin. 
+1. **Sanal makineler** dikey penceresinde, durdurmak istediğiniz VM 'yi seçin. 
 2. Sayfanın üst kısmındaki araç çubuğunda **Durdur** düğmesine tıklayın.
 
    ![VM durdurma](./media/publishvm_018.png)
 
-Azure, VM'nin yalnızca VM'deki işletim sistemini kapatmakla kalmıyor, aynı zamanda daha önce sağlanan donanım ve ağ kaynaklarını da serbest bırakan *deallocation*adlı bir işlemde VM'yi hızla durdurur.
+Azure, yalnızca VM 'deki işletim sistemini kapatmayan *, ancak*daha önce kendisi için sağlanmış olan donanım ve ağ kaynaklarını serbest bırakma adlı bir işlemdeki sanal makineyi hızlı bir şekilde sonlandırır.
 
-Daha sonra durmuş bir VM'yi yeniden etkinleştirmek istiyorsanız, onu seçin ve **Başlat** düğmesini tıklatın.
+Durdurulmuş bir sanal makineyi daha sonra yeniden etkinleştirmek istiyorsanız, seçin ve **Başlat** düğmesine tıklayın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uzaktan bağlandıktan sonra [VM'nizi yapılandırmaya](./cpp-configure-vm.md)hazırsınız.
+Uzaktan bağlandıktan sonra, [VM 'nizi yapılandırmaya](./cpp-configure-vm.md)hazırsınız demektir.

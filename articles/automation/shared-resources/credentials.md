@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42abeba310e7a30364f93e998f12129a2d3c1f15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 4226a625918be378b14e14c55fe4dd4ca5c398d5
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114301"
+ms.locfileid: "82136694"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu 'nda kimlik bilgilerini yönetme
 
@@ -41,7 +41,7 @@ Azure PowerShell az modülünün bir parçası olarak, aşağıdaki tablodaki cm
 
 ## <a name="activities-used-to-access-credentials"></a>Kimlik bilgilerine erişmek için kullanılan etkinlikler
 
-Aşağıdaki tablodaki etkinlikler runbook 'larda ve DSC yapılandırmalarında kimlik bilgilerine erişmek için kullanılır.
+Aşağıdaki tablodaki etkinlikler, grafik runbook 'larında ve DSC yapılandırmalarında kimlik bilgilerine erişmek için kullanılır. Etkinliklerin kullanımıyla ilgili örnekler için bkz. [Azure Otomasyonu 'Nda grafik yazma](../automation-graphical-authoring-intro.md#activities).
 
 | Etkinlik | Açıklama |
 |:--- |:--- |

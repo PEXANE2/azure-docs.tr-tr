@@ -1,84 +1,94 @@
 ---
-title: 'İki Sınıf Destek Vektör Makinesi: Modül Referansı'
+title: 'İki sınıf destek vektör makinesi: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Destek vektör makinesi algoritmasını temel alan bir model oluşturmak için Azure Machine Learning'de **Iki Sınıf Destek Vektör Makinesi** modüllerini nasıl kullanacağınızı öğrenin.
+description: Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için Azure Machine Learning ' de **Iki sınıf destek vektör makinesi** modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: ba788518951e72c1701d99decf46350e8665dbae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: 912d6b80914232d1a2ed2b1fe987ebdf949a1abc
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79455817"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82136507"
 ---
-# <a name="two-class-support-vector-machine-module"></a>İki Sınıf Destek Vektör Makinesi modülü
+# <a name="two-class-support-vector-machine-module"></a>İki sınıf destek vektör makinesi modülü
 
-Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-Destek vektör makinesi algoritmasını temel alan bir model oluşturmak için bu modülü kullanın. 
+Destek vektör makinesi algoritmasına dayalı bir model oluşturmak için bu modülü kullanın. 
 
-Destek vektör makineleri (SVM' ler) iyi araştırılmış bir denetimli öğrenme yöntemleri sınıfıdır. Bu özel uygulama, sürekli veya kategorik değişkenlere dayalı iki olası sonucu tahmin etmek için uygundur.
+Destek vektör makineleri (SVMs), denetimli bir öğrenme yöntemlerinin iyi bir şekilde araştırdığı bir sınıftır. Bu belirli uygulama, sürekli veya kategorik değişkenlere bağlı olarak iki olası sonucu tahmin etmek için uygundur.
 
-Model parametrelerini tanımladıktan sonra, eğitim modüllerini kullanarak ve etiket veya sonuç sütunu içeren etiketli bir *veri kümesi* sağlayarak modeli eğitin.
+Model parametrelerini tanımladıktan sonra eğitim modüllerini kullanarak modeli eğitme ve bir etiket ya da sonuç sütunu içeren *etiketli bir veri kümesi* sağlama.
 
 ## <a name="about-support-vector-machines"></a>Destek vektör makineleri hakkında
 
-Destek vektör makineleri makine öğrenme algoritmalarının en eskileri arasındadır ve Bilgi alımından metin ve görüntü sınıflandırmasına kadar birçok uygulamada SVM modelleri kullanılmıştır. SVM'ler hem sınıflandırma hem de regresyon görevleri için kullanılabilir.
+Destek vektörü makineler, makine öğrenimi algoritmalarının en üstünde bulunur ve SVM modelleri birçok uygulamada, bilgi alımı metin ve resim sınıflandırmasına kadar kullanılır. SVMs, hem sınıflandırma hem de gerileme görevleri için kullanılabilir.
 
-Bu SVM modeli, etiketli veriler gerektiren denetlenen bir öğrenme modelidir. Eğitim sürecinde, algoritma giriş verilerini analiz eder ve *hiperdüzlem*adı verilen çok boyutlu bir özellik uzayında desenleri tanır.  Tüm giriş örnekleri bu alanda nokta olarak gösterilir ve kategoriler mümkün olduğunca geniş ve açık bir boşluk bölünecek şekilde çıktı kategorilerine eşlenir.
+Bu SVM modeli, etiketli veri gerektiren bir denetimli öğrenme modelidir. Eğitim sürecinde, algoritma giriş verilerini analiz eder ve *hiper düzlem*adlı çok boyutlu bir özellik alanında desenleri tanır.  Tüm giriş örnekleri bu alandaki işaret olarak temsil edilir ve bu şekilde, kategorilerin geniş olarak bölünmesi ve mümkün olduğunca bir boşluğu temizlemek üzere çıkış kategorilerine eşlenir.
 
-Tahmin için, SVM algoritması yeni örnekleri bir kategoriye veya diğerine atatır ve bunları aynı alana eşler. 
+Tahmin için SVM algoritması, yeni örnekleri bir kategoriye veya diğerine atar ve bunları aynı alanla eşleştiriyor. 
 
 ## <a name="how-to-configure"></a>Yapılandırma 
 
-Bu model türü için, sınıflandırıcıyı eğitmek için kullanmadan önce veri kümesini normalleştirmeniz önerilir.
+Bu model türü için, sınıflandırıcının eğitimi için kullanmadan önce veri kümesini normalleştirmeniz önerilir.
   
-1.  İki **Sınıf Destek Vektör Makinesi** modüllerini boru hattınıza ekleyin.  
+1.  **Iki sınıf destek vektör makinesi** modülünü ardışık düzene ekleyin.  
   
-2.  **Eğitmen modu oluştur** seçeneğini ayarlayarak modelin nasıl eğitilmek istediğini belirtin.  
+2.  Model **oluşturma modunu** ayarlayarak modelin eğitilme şeklini belirleyin.  
   
-    -   **Tek Parametre**: Modeli nasıl yapılandırmak istediğinizi biliyorsanız, bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
+    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi biliyorsanız bağımsız değişken olarak belirli bir değer kümesi sağlayabilirsiniz.  
 
-    -   **Parametre Aralığı**: En iyi parametrelerden emin [değilseniz, Tune Model Hiperparametreler](tune-model-hyperparameters.md) modüllerini kullanarak en uygun parametreleri bulabilirsiniz. Bazı değerler aralığı sağlarsınız ve eğitmen, en iyi sonucu üreten değerlerin birleşimini belirlemek için ayarların birden çok birleşimini yineler.
+    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz, [model hiper parametrelerini ayarla](tune-model-hyperparameters.md) modülünü kullanarak en iyi parametreleri bulabilirsiniz. Birkaç değer aralığı sağlarsınız ve en iyi sonucu üreten değerlerin birleşimini öğrenmek için eğitmen ayarların birden fazla birleşimine yinelenir.
 
-3.  **Yineleme sayısı**için, modeli yaparken kullanılan yineleme sayısını gösteren bir sayı yazın.  
+3.  **Yineleme sayısı**için model oluşturulurken kullanılan yineleme sayısını belirten bir sayı yazın.  
   
-     Bu parametre, eğitim hızı ve doğruluğu arasındaki dengeleri kontrol etmek için kullanılabilir.  
+     Bu parametre, eğitim hızı ve doğruluk arasındaki dengelemeyi denetlemek için kullanılabilir.  
   
-4.  **Lambda**için, L1 düzenlileştirme için ağırlık olarak kullanmak için bir değer yazın.  
+4.  **Lambda**Için, L1 düzenleme için ağırlık olarak kullanılacak bir değer yazın.  
   
-     Bu düzenlileştirme katsayısı modeli ayarlamak için kullanılabilir. Daha büyük değerler daha karmaşık modelleri cezalandırır.  
+     Bu düzenleme katsayısı modeli ayarlamak için kullanılabilir. Daha büyük değerler daha karmaşık modellerin sıztı.  
   
-5.  Eğitimden önce özellikleri normalleştirmek istiyorsanız, **özellikleri normalleştir**seçeneğini seçin.
+5.  Eğitim öncesi özellikleri normalleştirmek istiyorsanız, **özellikleri Normalleştir**seçeneğini belirleyin.
   
-     Normalleştirme uygularsanız, eğitimden önce, veri noktaları ortalamaya ortalanır ve standart sapma nın bir birimine sahip olacak şekilde ölçeklendirilir.
+     Normalleştirme uygularsanız, eğitimin üzerinden veri noktaları ortalandı ve bir standart sapma birimine sahip olacak şekilde ölçeklendirilir.
   
-6.  Katsayıları normalleştirmek **için birim küreye Proje**seçeneğini seçin.
+6.  Katsayılarını normalleştirmek için, **birim küreden proje**seçeneğini belirleyin.
   
-     Değerleri birim alana yansıtmak, eğitimden önce veri noktalarının 0'da ortalanması ve standart sapma birimine sahip olacak şekilde ölçeklendirildiğini gösterir.
+     Değerleri birim alanına yansıtma, eğitimin, veri noktalarının 0 ' dan ortalanmasını ve bir standart sapma birimine sahip olacak şekilde ölçeklendirilmesi anlamına gelir.
   
-7.  **Rasgele sayı tohumunda,** çalıştırmalar arasında tekrarlanabilirlik sağlamak istiyorsanız tohum olarak kullanmak üzere bir tamsayı değeri yazın.  Aksi takdirde, bir sistem saat değeri bir tohum olarak kullanılır, bu da çalıştırmalar arasında biraz farklı sonuçlara neden olabilir.
+7.  **Rastgele sayı**çekirdeği ' nde, reproducibility 'in çalışmasına emin olmak istiyorsanız çekirdek olarak kullanılacak bir tamsayı değeri yazın.  Aksi takdirde, bir sistem saati değeri çekirdek olarak kullanılır, bu da çalışma genelinde biraz farklı sonuçlara neden olabilir.
   
-9. Etiketli bir veri kümesini ve [eğitim modüllerinden](module-reference.md)birini bağlayın:
+9. Etiketli bir veri kümesini bağlayın ve modeli eğitme:
+
+    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
   
-    -   Tek **Parametre** **için eğitmen oluştur modunu** ayarlarsanız, [Tren Modeli](train-model.md) modüllerini kullanın.
+    + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
   
-10. Boru hattını gönderin.
+    > [!NOTE]
+    > 
+    > [Modeli Eğiteetmek](train-model.md)için bir parametre aralığı geçirirseniz, tek parametre listesindeki yalnızca varsayılan değeri kullanır.  
+    > 
+    > Tek bir parametre değerleri kümesini [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) modülüne geçirirseniz, her parametre için bir dizi ayar beklerken, değerleri yoksayar ve öğrenici için varsayılan değerleri kullanır.  
+    > 
+    > **Parametre aralığı** seçeneğini belirleyip herhangi bir parametre için tek bir değer girerseniz, belirtilen tek değer, diğer parametrelerin bir değer aralığı üzerinde değişse bile, tarama boyunca kullanılır.
+  
+10. İşlem hattını gönderme.
 
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-+ Eğitilen modelin anlık görüntüsünü kaydetmek **için, Tren modeli** modülünün sağ panelindeki **Çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **Kayıt veri kümesi** simgesini seçin.
++ Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
-+ Puanlama için modeli kullanmak **için, Puan Modeli** modüllerini bir ardışık yapıya ekleyin.
++ Puanlama için modeli kullanmak üzere, bir işlem hattına **puan modeli** modülünü ekleyin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

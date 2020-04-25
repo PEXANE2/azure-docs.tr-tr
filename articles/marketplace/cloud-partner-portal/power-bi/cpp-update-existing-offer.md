@@ -1,70 +1,70 @@
 ---
-title: Power BI App teklifini güncelleyin | Azure Marketi
-description: Microsoft AppSource Marketplace'te yayımlandıktan sonra Power BI App teklifini güncelleştirin.
+title: Power BI uygulaması teklifini güncelleştirme | Azure Marketi
+description: Power BI uygulama teklifini Microsoft AppSource marketi 'nde yayımlandıktan sonra güncelleştirin.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
-ms.openlocfilehash: ee8f67a41d339e6e5f65548867c5458739857d50
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: b210a945993457fa76703528178763fdc67e876b
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80981265"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82141683"
 ---
-# <a name="update-a-power-bi-app-offer"></a>Power BI App teklifini güncelleştirin
+# <a name="update-a-power-bi-app-offer"></a>Power BI uygulaması teklifini güncelleştirme
 
 >[!Important]
->13 Nisan 2020'den itibaren Power BI uygulama tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturma genel bakış](https://aka.ms/AzureCreatePBIServiceApp) yönergelerini izleyin.
+>13 Nisan 2020 ' den itibaren, Power BI uygulama tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Power BI uygulama oluşturmaya genel bakış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer) ' daki yönergeleri izleyin.
 
-Bu makalede, Microsoft Power BI App teklifinizi [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/) nasıl güncelleştirip teklifi yeniden yayımlayacağınızı gösterir. Bir teklifi güncelleştirmek için bazı yaygın nedenler şunlardır:
+Bu makalede, [bulut iş ortağı portalı](https://cloudpartner.azure.com/) Microsoft Power BI uygulaması teklifinizi güncelleştirme ve ardından teklifi yeniden yayımlama işlemlerinin nasıl yapılacağı gösterilir. Bir teklifi güncelleştirmek için bazı yaygın nedenler şunlardır:
 
-- Uygulamanın içeriğini Power BI'de güncellemek ve yeni paketlenen uygulamadan yükleme URL'si almak için
-- Teklifin Azure Marketi meta verilerini (satış, pazarlama veya destek bilgileri ve varlıkları) güncelleştirmek için
+- Power BI 'de uygulamanın içeriğini güncelleştirmek ve yeni paketlenmiş uygulamadan yükleme URL 'sini almak için
+- Teklifin Azure Marketi meta verilerini (satış, pazarlama veya destek bilgileri ve varlıklar) güncelleştirmek için
  
-Bu gibi değişiklikleri izlemek için portalın **Karşılaştırma** ve **Geçmiş** özelliklerini kullanın.
+Bu gibi değişikliklerin izlenmesini sağlamak için portalın **karşılaştırma** ve **geçmiş** özelliklerini kullanın.
 
-## <a name="common-update-operations"></a>Sık güncelleştirme işlemleri
+## <a name="common-update-operations"></a>Ortak güncelleştirme işlemleri
 
-Power BI App teklifinin bazı öznitelikleri, teklif AppSource'ta yayınlandıktan sonra değiştirilemez. İzin verilmeyen değişiklikler arasında **Teklif Kimliği** ve **Yayımcı Kimliği**yer almaktadır. Ama yine de özellikleri geniş bir yelpazede değiştirebilirsiniz. Burada bazı yaygın değişiklikler vardır.
+Power BI uygulama teklifinin bazı öznitelikleri, teklif AppSource 'ta yayımlandıktan sonra değiştirilemez. İzin verilmeyen değişiklikler, **TEKLIF kimliği** ve **Yayımcı kimliğini**içerir. Ancak yine de çok çeşitli özellikleri değiştirebilirsiniz. Bazı yaygın değişiklikler aşağıda verilmiştir.
 
-### <a name="update-app-content-in-power-bi"></a>Power BI'deki uygulama içeriğini güncelleştirin
+### <a name="update-app-content-in-power-bi"></a>Power BI uygulama içeriğini güncelleştirme
 
-Power BI uygulamaları genellikle yeni içerik, güvenlik yamaları, özellikler ve benzeri ile periyodik olarak güncellenir. Bir uygulama değiştirildiğinde, aşağıdaki adımları izleyerek yükleme URL'sini güncelleştirin:
+Power BI uygulamalar genellikle yeni içerikle, güvenlik düzeltme ekleriyle, özelliklerle ve bu şekilde düzenli olarak güncelleştirilir. Bir uygulama değiştirildiğinde, aşağıdaki adımları izleyerek yükleme URL 'sini güncelleştirin:
 
-1.  Bulut İş [Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-2.  **Tüm teklifler**altında, güncellemek istediğiniz teklifi bulun.
-3.  Teknik **Bilgiler** sekmesine yeni bir yükleme URL'si girin.
-4.  Yeni uygulama sürümünü AppSource'da yayınlamak için iş akışını başlatmak için **Yayımla'yı** seçin.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2.  **Tüm teklifler**altında, güncelleştirmek istediğiniz teklifi bulun.
+3.  **Teknik bilgi** sekmesinde yeni bir yükleme URL 'si girin.
+4.  Yeni uygulama sürümünü AppSource 'a yayımlamak için iş akışını başlatmak üzere **Yayımla** ' yı seçin.
 
 
 ### <a name="update-the-offers-marketplace-metadata"></a>Teklifin Market meta verilerini güncelleştirme
 
-Teklifinizin Market meta verileri, şirket adınızı, logolarınızı ve diğer bilgileri içerir. Meta verileri güncelleştirmek için aşağıdaki adımları izleyin:
+Teklifinizin Market meta verileri, şirketinizin adını, logolarını ve diğer bilgileri içerir. Meta verileri güncelleştirmek için şu adımları izleyin:
 
-1.  Bulut İş [Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-2.  **Tüm teklifler**altında, güncellemek istediğiniz teklifi bulun.
-3.  **Storefront Ayrıntılar** sekmesinde, makale [Power BI uygulaması Storefront Ayrıntılar sekmesindeki](./cpp-storefront-details-tab.md)yönergeleri izleyerek meta verileri değiştirin.
-4.  Değişikliklerinizi yayınlamak için iş akışını başlatmak için **Yayımla'yı** seçin.
+1.  [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2.  **Tüm teklifler**altında, güncelleştirmek istediğiniz teklifi bulun.
+3.  **Storefront Ayrıntılar** sekmesinde, [Power BI App storefront Details sekmesindeki](./cpp-storefront-details-tab.md)yönergeleri izleyerek meta verileri değiştirin.
+4.  Değişikliklerinizi yayımlamak için iş akışını başlatmak üzere **Yayımla** ' yı seçin.
 
 
-## <a name="the-compare-feature"></a>Karşılaştır özelliği
+## <a name="the-compare-feature"></a>Compare özelliği
 
-Yayımlanmış bir teklifi güncellerken, yaptığınız değişiklikleri denetleyebilirsiniz. **Karşılaştır** özelliğini kullanmak için:
+Yayımlanmış bir teklifi güncelleştirdiğinizde yaptığınız değişiklikleri kontrol edebilirsiniz. **Karşılaştırma** özelliğini kullanmak için:
 
-1.  Düzenleme işleminin herhangi bir noktasında, teklifin **Karşılaştır** düğmesini seçin.
+1.  Herhangi bir noktada, düzen sürecinde, teklifin **Karşılaştır** düğmesini seçin.
 
-    ![Karşılaştırma düğmesi](./media/compare-feature-button.png)
+    ![Karşılaştır düğmesi](./media/compare-feature-button.png)
 
 2.  Pazarlama varlıklarının ve meta verilerin yan yana sürümlerini görüntüleyin.
 
 
-## <a name="history-of-publishing-actions"></a>Yayımlama eylemlerinin tarihi
+## <a name="history-of-publishing-actions"></a>Yayımlama eylemlerinin geçmişi
 
-Teklifinizin yayın geçmişini görüntülemek için Bulut İş Ortağı Portalı'nın sol tarafında **Geçmiş** sekmesini açın. Burada AppSource tekliflerinizde zaman damgalı eylemlerin geçmişini görürsünüz.
+Teklifinizin yayımlama geçmişini görüntülemek için, Bulut İş Ortağı Portalı sol tarafında **Geçmiş** sekmesini açın. Burada, AppSource tekliflerinizin zaman damgalı eylemlerin bir geçmişini görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bulut İş Ortağı Portalı'nda, Market müşterileriniz ve kullanımınız hakkında yararlı bilgiler bulmak için [Seller Insights'ı](../../cloud-partner-portal-orig/si-getting-started.md) düzenli olarak kullanın.  
+Bulut İş Ortağı Portalı, Market müşterileriniz ve kullanımınız hakkında faydalı bilgiler bulmak için düzenli olarak [satıcı öngörüleri](../../cloud-partner-portal-orig/si-getting-started.md) kullanın.  

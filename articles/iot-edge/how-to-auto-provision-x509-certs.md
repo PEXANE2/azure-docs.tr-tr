@@ -1,6 +1,6 @@
 ---
-title: X.509 sertifikalarını kullanarak DPS'li cihazları otomatik olarak sağlama - Azure IoT Edge | Microsoft Dokümanlar
-description: Azure IoT Edge için otomatik aygıt sağlamayı Aygıt Sağlama Hizmeti ile test etmek için X.509 sertifikalarını kullanın
+title: X. 509.440 sertifikalarını kullanarak DPS cihazları otomatik olarak Sağlama-Azure IoT Edge | Microsoft Docs
+description: Cihaz sağlama hizmeti ile Azure IoT Edge için otomatik cihaz sağlamayı test etmek üzere X. 509.440 sertifikalarını kullanın
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,53 +9,53 @@ ms.date: 04/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d5e968e578428a16a0005149a409986015a1fc5c
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81393747"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131301"
 ---
-# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X.509 sertifikalarını kullanarak bir IoT Edge aygıtı oluşturma ve sağlama
+# <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>X. 509.440 sertifikalarını kullanarak bir IoT Edge cihazı oluşturma ve sağlama
 
-Azure [IoT Hub Aygıt Sağlama Hizmeti (DPS)](../iot-dps/index.yml)ile X.509 sertifikalarını kullanarak IoT Edge aygıtlarını otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemine aşina değilseniz, devam etmeden önce [otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
+[Azure IoT Hub cihaz sağlama hizmeti (DPS)](../iot-dps/index.yml)Ile, X. 509.440 sertifikalarını kullanarak IoT Edge cihazları otomatik olarak sağlayabilirsiniz. Otomatik sağlama işlemini tanımıyorsanız, devam etmeden önce [Otomatik sağlama kavramlarını](../iot-dps/concepts-auto-provisioning.md) gözden geçirin.
 
-Bu makalede, bir IoT Edge aygıtında X.509 sertifikalarını kullanarak aygıt sağlama hizmeti kaydının nasıl oluşturulabileceğinizi aşağıdaki adımları gösterilmektedir:
+Bu makalede, aşağıdaki adımlarla bir IoT Edge cihazında X. 509.440 sertifikalarını kullanarak bir cihaz sağlama hizmeti kaydı oluşturma işlemi gösterilmektedir:
 
 * Sertifikalar ve anahtarlar oluşturun.
-* Aygıt için tek tek bir kayıt veya bir aygıt kümesi için grup kaydı oluşturun.
-* IoT Edge çalışma süresini yükleyin ve aygıtı IoT Hub'a kaydedin.
+* Bir cihaz için tek bir kayıt veya bir dizi cihaz için Grup kaydı oluşturun.
+* IoT Edge çalışma zamanını yükleyip cihazı IoT Hub kaydedin.
 
-X.509 sertifikalarını bir attestation mekanizması olarak kullanmak, üretimi ölçeklendirmenin ve cihaz sağlamayı basitleştirmenin mükemmel bir yoludur. Tipik olarak, X.509 sertifikaları bir güven sertifikası zincirinde düzenlenir. Kendi imzalı veya güvenilir bir kök sertifikasıyla başlayarak, zincirdeki her sertifika bir sonraki alt sertifikayı imzalar. Bu desen, kök sertifikadan her ara sertifikaya ve aygıta yüklenen son "yaprak" sertifikasına devredilmiş bir güven zinciri oluşturur.
+Bir kanıtlama mekanizması olarak X. 509.440 sertifikalarını kullanmak, üretimi ölçeklendirmek ve cihaz sağlamayı basitleştirmek için mükemmel bir yoldur. Genellikle, X. 509.440 sertifikaları bir sertifika güven zincirinde düzenlenir. Otomatik olarak imzalanan veya güvenilen bir kök sertifikayla başlayarak, zincirdeki her bir sertifika sonraki alt sertifikayı imzalar. Bu model, bir cihazda yüklü olan son "yaprak" sertifikaya, her ara sertifika aracılığıyla kök sertifikadan bir güven zinciri oluşturur.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin bir IoT Hub'ı.
-* IoT Edge aygıtı olması için fiziksel veya sanal bir aygıt.
-* [Git'in](https://git-scm.com/download/) en son sürümü yüklendi.
-* Azure'daki IoT Hub Aygıt Sağlama Hizmeti'nin bir örneği, IoT hub'ınıza bağlıdır.
-  * Aygıt Sağlama Hizmeti örneğiniz yoksa, [IoT Hub DPS'yi ayarla'daki](../iot-dps/quick-setup-auto-provision.md)yönergeleri izleyin.
-  * Aygıt Sağlama Hizmeti çalıştırdıktan **sonra, kimlik kapsamının** değerini genel bakış sayfasından kopyalayın. IoT Edge çalışma süresini yapılandırırken bu değeri kullanırsınız.
+* Etkin bir IoT Hub.
+* IoT Edge cihaz olması için fiziksel veya sanal bir cihaz.
+* [Git](https://git-scm.com/download/) 'in en son sürümü yüklendi.
+* Azure 'da IoT Hub 'ınıza bağlı IoT Hub cihaz sağlama hizmeti örneği.
+  * Cihaz sağlama hizmeti örneğiniz yoksa [IoT Hub DPS 'Yi ayarlama](../iot-dps/quick-setup-auto-provision.md)bölümündeki yönergeleri izleyin.
+  * Cihaz sağlama hizmetini çalıştırdıktan sonra, genel bakış sayfasından **kimlik kapsamının** değerini kopyalayın. IoT Edge çalışma zamanını yapılandırırken bu değeri kullanırsınız.
 
-## <a name="generate-device-identity-certificates"></a>Aygıt kimlik sertifikaları oluşturma
+## <a name="generate-device-identity-certificates"></a>Cihaz kimlik sertifikaları oluşturma
 
-Aygıt kimlik sertifikası, bir güven sertifikası zinciri aracılığıyla üst düzey X.509 sertifika yetkilisi (CA) sertifikasına bağlanan bir yaprak sertifikadır. Aygıt kimlik sertifikası, aygıtın IoT hub'ınızda olmasını istediğiniz aygıt kimliğine ortak ad (CN) ayarlamış olmalıdır.
+Cihaz kimlik sertifikası, en üstteki X. 509.440 sertifika yetkilisi (CA) sertifikasına bir sertifika güven zinciri üzerinden bağlanan bir yaprak sertifikadır. Cihaz kimliği sertifikası, cihazın IoT Hub 'ınızda olmasını istediğiniz cihaz KIMLIĞINE ayarlanmış olan ortak adı (CN) olmalıdır.
 
-Aygıt kimlik sertifikaları yalnızca IoT Edge aygıtını sağlama ve aygıtın kimliğini Azure IoT Hub ile doğrulamak için kullanılır. IoT Edge aygıtının doğrulama için modüllere veya yaprak aygıtlara sunduğu CA sertifikalarının aksine sertifikaları imzalamazlar. Daha fazla bilgi için [Azure IoT Edge sertifika kullanım ayrıntısına](iot-edge-certs.md)bakın.
+Cihaz kimlik sertifikaları yalnızca IoT Edge cihazı sağlamak ve cihazın Azure IoT Hub kimlik doğrulamasını yapmak için kullanılır. IoT Edge cihazın, doğrulama için modüllerde veya yaprak cihazlarda sundukları CA sertifikalarının aksine, sertifikaları imzalarlar. Daha fazla bilgi için bkz. [Azure IoT Edge sertifika kullanımı ayrıntısı](iot-edge-certs.md).
 
-Aygıt kimlik sertifikasını oluşturduktan sonra iki dosyanız olmalıdır: sertifikanın ortak bölümünü içeren bir .cer veya .pem dosyası ve sertifikanın özel anahtarına sahip bir .cer veya .pem dosyası. DPS'de grup kaydı kullanmayı planlıyorsanız, aynı güven sertifikası zincirinde ara veya kök CA sertifikasının ortak bölümüne de ihtiyacınız vardır.
+Cihaz kimliği sertifikasını oluşturduktan sonra iki dosyanız olmalıdır: sertifikanın ortak bölümünü içeren bir. cer veya. ped dosyası ve sertifikanın özel anahtarıyla bir. cer veya. PEA dosyası. DPS 'de grup kaydı kullanmayı planlıyorsanız, aynı sertifika güven zincirindeki bir ara veya kök CA sertifikasının genel bölümüne de ihtiyacınız vardır.
 
-X.509 ile otomatik sağlama ayarlamak için aşağıdaki dosyalara ihtiyacınız var:
+X. 509.952 ile otomatik sağlamayı ayarlamak için aşağıdaki dosyalara ihtiyacınız vardır:
 
-* Aygıt kimlik sertifikası ve özel anahtar sertifikası. Tek bir kayıt oluşturursanız, aygıt kimlik sertifikası DPS'ye yüklenir. Özel anahtar IoT Edge çalışma zamanına geçirilir.
-* En azından aygıt kimliğine ve içinde ara sertifikalara sahip olması gereken tam zincir sertifikası. Tam zincir sertifikası IoT Edge çalışma süresine geçirilir.
-* Sertifika güven zincirinden bir ara veya kök CA sertifikası. Bir grup kaydı oluşturursanız, bu sertifika DPS'ye yüklenir.
+* Cihaz kimliği sertifikası ve onun özel anahtar sertifikası. Tek bir kayıt oluşturursanız cihaz kimliği sertifikası, DPS 'e yüklenir. Özel anahtar IoT Edge çalışma zamanına geçirilir.
+* En azından cihaz kimliği ve ara sertifikaları olması gereken tam bir zincir sertifikası. Tam zincir sertifikası IoT Edge çalışma zamanına geçirilir.
+* Sertifika güven zincirindeki bir ara veya kök CA sertifikası. Bu sertifika, bir grup kaydı oluşturursanız, DPS 'e yüklenir.
 
 ### <a name="use-test-certificates"></a>Test sertifikalarını kullanma
 
-Yeni kimlik sertifikaları oluşturmak için kullanılabilir bir sertifika yetkiniz yoksa ve bu senaryoyu denemek istiyorsanız, Azure IoT Edge git deposu test sertifikaları oluşturmak için kullanabileceğiniz komut dosyaları içerir. Bu sertifikalar yalnızca geliştirme testleri için tasarlanmıştır ve üretimde kullanılmamalıdır.
+Yeni kimlik sertifikaları oluşturmak için kullanabileceğiniz bir sertifika yetkiliniz yoksa ve bu senaryoyu denemek istiyorsanız, Azure IoT Edge git deposu, test sertifikaları oluşturmak için kullanabileceğiniz betikleri içerir. Bu sertifikalar yalnızca geliştirme testi için tasarlanmıştır ve üretimde kullanılmamalıdır.
 
-Test sertifikaları oluşturmak [için, IoT Edge aygıt özelliklerini test etmek için demo sertifikaları oluştur'daki](how-to-create-test-certificates.md)adımları izleyin. Sertifika oluşturma komut dosyalarını ayarlamak ve kök CA sertifikası oluşturmak için gerekli iki bölümü tamamlayın. Ardından, aygıt kimlik sertifikası oluşturmak için adımları izleyin. İşi bittiğinde, aşağıdaki sertifika zincirine ve anahtar çiftine sahip olmalısınız:
+Test sertifikaları oluşturmak için, [IoT Edge cihaz özelliklerini test etmek için tanıtım sertifikaları oluşturma](how-to-create-test-certificates.md)bölümündeki adımları izleyin. Sertifika oluşturma betikleri ayarlamak ve bir kök CA sertifikası oluşturmak için gereken iki bölümü doldurun. Ardından, bir cihaz kimlik sertifikası oluşturma adımlarını izleyin. İşiniz bittiğinde, aşağıdaki sertifika zinciri ve anahtar çiftine sahip olmanız gerekir:
 
 Linux:
 
@@ -67,40 +67,40 @@ Windows:
 * `<WRKDIR>\certs\iot-edge-device-identity-<name>-full-chain.cert.pem`
 * `<WRKDIR>\private\iot-edge-device-identity-<name>.key.pem`
 
-Bu sertifikaların her ikisine de IoT Edge aygıtında ihtiyacınız vardır. DPS'de tek tek kayıt kullanacaksanız,.cert.pem dosyasını yüklersiniz. DPS'de grup kaydı kullanacaksanız, yüklemek için aynı güven sertifikası zincirinde bir ara veya kök CA sertifikasına da ihtiyacınız vardır. Demo sertifikaları kullanıyorsanız, grup kaydı `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` için sertifikayı kullanın.
+IoT Edge cihazında bu sertifikaların her ikisi de gereklidir. DPS 'de tek kayıt kullanacaksanız,. cert. ped dosyasını karşıya yüklersiniz. DPS 'de grup kaydı 'nı kullanacaksanız, karşıya yüklemek için aynı sertifika güven zincirindeki bir ara veya kök CA sertifikasına de ihtiyacınız vardır. Tanıtım sertifikaları kullanıyorsanız, grup kaydı için `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` sertifikayı kullanın.
 
-## <a name="create-a-dps-individual-enrollment"></a>DPS tek tek kayıt oluşturma
+## <a name="create-a-dps-individual-enrollment"></a>DPS bireysel kaydı oluşturma
 
-Tek bir IoT Edge aygıtı için DPS'de tek tek bir kayıt oluşturmak için oluşturulan sertifikalarınızı ve anahtarlarınızı kullanın. Tek tek kayıtlar, aygıtın kimlik sertifikasının ortak bölümünü alır ve aygıttaki sertifikayla eşleşir.
+Tek bir IoT Edge cihaz için DPS 'de tek bir kayıt oluşturmak üzere oluşturulan sertifikalarınızı ve anahtarlarınızı kullanın. Bireysel kayıtlar bir cihazın kimlik sertifikasının genel bölümünü alır ve cihazdaki sertifikayla eşleşir.
 
-Birden çok IoT Edge aygıtı sağlamak istiyorsanız, bir sonraki bölümdeki adımları izleyin, [DPS grup kaydı oluşturun.](#create-a-dps-group-enrollment)
+Birden çok IoT Edge cihaz sağlamak istiyorsanız, bir sonraki bölümdeki adımları izleyin, [BIR DPS grup kaydı oluşturun](#create-a-dps-group-enrollment).
 
-DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bildirme fırsatınız vardır. Aygıt ikizinde, etiketleri aygıtları bölge, ortam, konum veya aygıt türü gibi çözümünüzde gereksinim duyduğunuz herhangi bir metrike göre gruplayabilir. Bu etiketler otomatik [dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
-Aygıt Sağlama Hizmeti'ndeki kayıtlar hakkında daha fazla bilgi için [aygıt kayıtlarını nasıl yönetebilirsiniz](../iot-dps/how-to-manage-enrollments.md)konusuna bakın.
+Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. cihaz kayıtlarını [yönetme](../iot-dps/how-to-manage-enrollments.md).
 
    > [!TIP]
-   > Azure CLI'de bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve bir aygıtın veya aygıt grubunun bir IoT Edge aygıtı olduğunu belirtmek için **kenar özellikli** bayrağı kullanabilirsiniz.
+   > Azure CLı 'da bir [kayıt](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) veya [kayıt grubu](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment-group) oluşturabilir ve **kenar özellikli** bayrağını kullanarak bir cihazın veya cihaz grubunun IoT Edge bir cihaz olduğunu belirtebilirsiniz.
 
-1. Azure [portalında,](https://portal.azure.com)IoT Hub Aygıt Sağlama Hizmeti örneğinize gidin.
+1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-1. **Ayarlar** **altında, kayıtları yönet'i**seçin.
+1. **Ayarlar**altında kayıtları **Yönet**' i seçin.
 
-1. **Tek tek kayıt ekle'yi** seçin ve ardından kaydı yapılandırmak için aşağıdaki adımları tamamlayın:  
+1. **Bireysel kayıt Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:  
 
-   * **Mekanizma**: **X.509'u**seçin.
+   * **Mekanizma**: **X. 509.440**öğesini seçin.
 
-   * **Birincil Sertifika .pem veya .cer dosyası**: Ortak dosyayı aygıt kimlik sertifikasından yükleyin. Bir test sertifikası oluşturmak için komut dosyalarını kullandıysanız, aşağıdaki dosyayı seçin:
+   * **Birincil sertifika. pek veya. cer dosyası**: ortak dosyayı cihaz kimliği sertifikasından karşıya yükleyin. Bir test sertifikası oluşturmak için betikleri kullandıysanız aşağıdaki dosyayı seçin:
 
       `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 
-   * **IoT Hub Aygıt Kimliği**: İsterseniz cihazınız için bir kimlik sağlayın. Modül dağıtımı için tek bir aygıtı hedeflemek için aygıt adlarını kullanabilirsiniz. Aygıt kimliği sağlamazsanız, X.509 sertifikasındaki ortak ad (CN) kullanılır.
+   * **IoT Hub CIHAZ kimliği**: isterseniz cihazınız IÇIN bir kimlik sağlayın. Modül dağıtımı için tek bir cihazı hedeflemek üzere cihaz kimliklerini kullanabilirsiniz. Bir cihaz KIMLIĞI sağlamazsanız, X. 509.440 sertifikası içindeki ortak ad (CN) kullanılır.
 
-   * **IoT Edge aygıt**: Kaydın bir IoT Edge aygıtı için olduğunu bildirmek için **True'yu** seçin.
+   * **IoT Edge cihaz**: kaydın IoT Edge bir cihaz için olduğunu bildirmek için **true** seçeneğini belirleyin.
 
-   * **Bu aygıtın atanabileceği IoT hub'larını seçin**: Cihazınızı bağlamak istediğiniz bağlantılı IoT merkezini seçin. Birden çok hub seçebilirsiniz ve aygıt seçili ayırma ilkesine göre bunlardan birine atanır.
+   * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **İlk Aygıt İkiz Durumu**: İstersenize aygıt ikizine eklenecek etiket değeri ekleyin. Etiketleri, otomatik dağıtım için aygıt gruplarını hedeflemek için kullanabilirsiniz. Örneğin:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -115,37 +115,37 @@ Aygıt Sağlama Hizmeti'ndeki kayıtlar hakkında daha fazla bilgi için [aygıt
 
 1. **Kaydet**’i seçin.
 
-Bu aygıt için bir kayıt bulunduğuna göre, IoT Edge çalışma süresi yükleme sırasında aygıtı otomatik olarak sağlayabilir. IoT Edge aygıtınızı kurmak için [IoT Edge çalışma zamanı](#install-the-iot-edge-runtime) bölümünü yüklemeye devam edin.
+Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge cihazınızı ayarlamak için [IoT Edge çalışma zamanı 'Nı yüklemeye](#install-the-iot-edge-runtime) devam edin.
 
-## <a name="create-a-dps-group-enrollment"></a>DPS grup kaydı oluşturma
+## <a name="create-a-dps-group-enrollment"></a>Bir DPS grup kaydı oluşturma
 
-Birden çok IoT Edge aygıtı için DPS'de grup kaydı oluşturmak için oluşturulan sertifikalarınızı ve anahtarlarınızı kullanın. Grup kayıtları, tek tek aygıt kimlik sertifikaları oluşturmak için kullanılan güven sertifikası zincirinden bir ara veya kök CA sertifikası kullanır.
+Birden çok IoT Edge cihaz için DPS 'de bir grup kaydı oluşturmak için oluşturulan sertifikalarınızı ve anahtarlarınızı kullanın. Grup kayıtları, tek tek cihaz kimlik sertifikalarını oluşturmak için kullanılan sertifika güven zincirindeki bir ara veya kök CA sertifikası kullanır.
 
-Bunun yerine tek bir IoT Edge aygıtı sağlamak istiyorsanız, önceki bölümdeki adımları izleyin, [DPS tek tek kayıt oluşturun.](#create-a-dps-individual-enrollment)
+Bunun yerine tek bir IoT Edge cihaz sağlamak istiyorsanız, önceki bölümdeki adımları izleyin, [BIR DPS bireysel kaydı oluşturun](#create-a-dps-individual-enrollment).
 
-DPS'de bir kayıt oluşturduğunuzda, Başlangıç **Aygıtı İkiz Durumu**bildirme fırsatınız vardır. Aygıt ikizinde, etiketleri aygıtları bölge, ortam, konum veya aygıt türü gibi çözümünüzde gereksinim duyduğunuz herhangi bir metrike göre gruplayabilir. Bu etiketler otomatik [dağıtımlar](how-to-deploy-monitor.md)oluşturmak için kullanılır.
+DPS 'de bir kayıt oluşturduğunuzda, bir **Ilk cihaz Ikizi durumu**bildirme fırsatına sahip olursunuz. Device ikizi 'da, bir cihaz için gereken bölge, ortam, konum veya cihaz türü gibi herhangi bir ölçüme cihazları gruplamak için Etiketler ayarlayabilirsiniz. Bu Etiketler [otomatik dağıtımlar](how-to-deploy-at-scale.md)oluşturmak için kullanılır.
 
 ### <a name="verify-your-root-certificate"></a>Kök sertifikanızı doğrulama
 
-Bir kayıt grubu oluşturduğunuzda, doğrulanmış bir sertifika kullanma seçeneğiniz olur. Kök sertifikanın mülkiyetine sahip olduğunuzu kanıtlayarak bir sertifikayı DPS ile doğrulayabilirsiniz. Daha fazla bilgi için, [X.509 CA sertifikaları için sahip kanıtı nın nasıl yapılacağını](../iot-dps/how-to-verify-certificates.md)görün.
+Bir kayıt grubu oluşturduğunuzda, doğrulanmış bir sertifika kullanma seçeneğiniz vardır. Kök sertifikaya sahip olduğunuzu belirterek, bir sertifikayı DPS ile doğrulayabilirsiniz. Daha fazla bilgi için bkz. [X. 509.440 CA sertifikaları Için nasıl sahip olma](../iot-dps/how-to-verify-certificates.md).
 
-1. Azure [portalında,](https://portal.azure.com)IoT Hub Aygıt Sağlama Hizmeti örneğinize gidin.
+1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-1. Sol menüden **Sertifikalar'ı** seçin.
+1. Sol taraftaki menüden **Sertifikalar** ' ı seçin.
 
-1. Yeni bir sertifika eklemek için **Ekle'yi** seçin.
+1. Yeni bir sertifika eklemek için **Ekle** ' yi seçin.
 
-1. Sertifikanız için uygun bir ad girin ve Ardından X.509 sertifikanızın ortak kısmını temsil eden .cer veya .pem dosyasına göz atın.
+1. Sertifikanız için bir kolay ad girin, sonra X. 509.440 sertifikanızın ortak bölümünü temsil eden. cer veya. ped dosyasına gidin.
 
-   Demo sertifikalarını kullanıyorsanız, sertifikayı `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` yükleyin.
+   Tanıtım sertifikalarını kullanıyorsanız, `<wrkdir>/certs/azure-iot-test-only.root.ca.cert.pem` sertifikayı karşıya yükleyin.
 
 1. **Kaydet**’i seçin.
 
-1. Sertifikanız artık **Sertifikalar** sayfasında listelenmelidir. Sertifika ayrıntılarını açmak için seçin.
+1. Sertifikanızın artık **Sertifikalar** sayfasında listelenmesi gerekir. Sertifika ayrıntılarını açmak için seçin.
 
-1. **Doğrulama Kodu Oluştur'u** seçin ve ardından oluşturulan kodu kopyalayın.
+1. **Doğrulama kodu oluştur** ' u seçin, sonra oluşturulan kodu kopyalayın.
 
-1. İster kendi CA sertifikanızı getirdiolun, ister demo sertifikalarını kullanıyor olun, sahip olma kanıtını doğrulamak için IoT Edge deposunda sağlanan doğrulama aracını kullanabilirsiniz. Doğrulama aracı, konu adı olarak sağlanan doğrulama kodunu içeren yeni bir sertifikayı imzalamak için CA sertifikanızı kullanır.
+1. Kendi CA sertifikanızı mi getirdiğinizi, ister tanıtım sertifikalarını mı kullandığınızı bağımsız olarak, IoT Edge deposunda sunulan doğrulama aracını kullanarak sahip olma kanıtını doğrulayabilirsiniz. Doğrulama Aracı, konu adı olarak belirtilen doğrulama koduna sahip yeni bir sertifikayı imzalamak için CA sertifikanızı kullanır.
 
    * Windows:
 
@@ -159,33 +159,33 @@ Bir kayıt grubu oluşturduğunuzda, doğrulanmış bir sertifika kullanma seçe
      ./certGen.sh create_verification_certificate <verification code>
      ```
 
-1. Azure portalındaki aynı sertifika ayrıntıları sayfasında, yeni oluşturulan doğrulama sertifikasını yükleyin.
+1. Azure portal sertifika ayrıntıları sayfasında, yeni oluşturulan doğrulama sertifikasını karşıya yükleyin.
 
 1. **Doğrula** seçeneğini belirleyin.
 
-### <a name="create-enrollment-group"></a>Kayıt grubu oluşturma
+### <a name="create-enrollment-group"></a>Kayıt grubu oluştur
 
-Aygıt Sağlama Hizmeti'ndeki kayıtlar hakkında daha fazla bilgi için [aygıt kayıtlarını nasıl yönetebilirsiniz](../iot-dps/how-to-manage-enrollments.md)konusuna bakın.
+Cihaz sağlama hizmetindeki kayıtlar hakkında daha fazla bilgi için bkz. cihaz kayıtlarını [yönetme](../iot-dps/how-to-manage-enrollments.md).
 
-1. Azure [portalında,](https://portal.azure.com)IoT Hub Aygıt Sağlama Hizmeti örneğinize gidin.
+1. [Azure Portal](https://portal.azure.com), IoT Hub cihaz sağlama hizmeti örneğinize gidin.
 
-1. **Ayarlar** **altında, kayıtları yönet'i**seçin.
+1. **Ayarlar**altında kayıtları **Yönet**' i seçin.
 
-1. **Kayıt grubu ekle'yi** seçin ve ardından kaydı yapılandırmak için aşağıdaki adımları tamamlayın:
+1. Kayıt **grubu Ekle** ' yi seçin, ardından kaydı yapılandırmak için aşağıdaki adımları izleyin:
 
-   * **Grup adı**: Bu grup kaydı için unutulmaz bir ad sağlayın.
+   * **Grup adı**: Bu grup kaydı için hatırlayabileceğiniz bir ad sağlayın.
 
-   * **Attestation Türü**: **Sertifika**seçin.
+   * **Kanıtlama türü**: **sertifika**seçin.
 
-   * **IoT Edge cihazı**: **True'yı**seçin. Grup kaydı için tüm aygıtların IoT Edge aygıtları olması gerekir veya bunların hiçbiri olamaz.
+   * **IoT Edge cihaz**: **doğru**öğesini seçin. Bir grup kaydı için tüm cihazların IoT Edge cihaz olması veya hiçbirinin olmaması gerekir.
 
-   * **Sertifika Türü**: DPS ile depolanmış doğrulanmış bir CA sertifikanız varsa **CA Sertifikası'nı** veya yalnızca bu kayıt için yeni bir dosya yüklemek istiyorsanız **Ara Sertifika'yı** seçin.
+   * **Sertifika türü**: yalnızca bu kayıt için yeni bir dosya yüklemek ISTIYORSANıZ, DPS ile depolanan DOĞRULANMıŞ bir CA sertifikanız varsa **CA Sertifikası** ' nı veya **Ara Sertifika** ' yı seçin.
 
-   * **Birincil sertifika**: Son bölümde CA sertifikasını seçtiyseniz, açılan listeden sertifikanızı seçin. Ara sertifika seçtiyseniz, ortak dosyayı aygıt kimlik sertifikaları oluşturmak için kullanılan güven sertifikası zincirindeki ca sertifikasından yükleyin.
+   * **Birincil sertifika**: son bölümde CA sertifikası ' nı seçerseniz, açılan listeden sertifikanızı seçin. Ara sertifika ' yı seçerseniz, ortak dosyayı cihaz kimlik sertifikalarını oluşturmak için kullanılan sertifika güven zincirindeki bir CA sertifikasından karşıya yükleyin.
 
-   * **Bu aygıtın atanabileceği IoT hub'larını seçin**: Cihazınızı bağlamak istediğiniz bağlantılı IoT merkezini seçin. Birden çok hub seçebilirsiniz ve aygıt seçili ayırma ilkesine göre bunlardan birine atanır.
+   * **Bu cihazın atanabileceği IoT Hub 'Larını seçin**: Cihazınızı bağlamak Istediğiniz bağlantılı IoT Hub 'ını seçin. Birden çok hub seçebilirsiniz ve bu cihaz, seçilen ayırma ilkesine göre bu cihazdan birine atanır.
 
-   * **İlk Aygıt İkiz Durumu**: İstersenize aygıt ikizine eklenecek etiket değeri ekleyin. Etiketleri, otomatik dağıtım için aygıt gruplarını hedeflemek için kullanabilirsiniz. Örneğin:
+   * **Ilk cihaz Ikizi durumu**: isterseniz, cihaza ikizi eklenecek bir etiket değeri ekleyin. Otomatik dağıtım için cihaz gruplarını hedeflemek üzere etiketleri kullanabilirsiniz. Örneğin:
 
       ```json
       {
@@ -200,33 +200,33 @@ Aygıt Sağlama Hizmeti'ndeki kayıtlar hakkında daha fazla bilgi için [aygıt
 
 1. **Kaydet**’i seçin.
 
-Bu aygıt için bir kayıt bulunduğuna göre, IoT Edge çalışma süresi yükleme sırasında aygıtı otomatik olarak sağlayabilir. IoT Edge cihazınızı kurmak için sonraki bölüme devam edin.
+Bu cihaz için bir kayıt mevcut olduğuna göre, IoT Edge çalışma zamanı cihazı yükleme sırasında otomatik olarak sağlayabilir. IoT Edge cihazınızı ayarlamak için sonraki bölüme geçin.
 
-## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma süresini yükleme
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge çalışma zamanını yükler
 
-IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalışır ve kenarda kod çalıştırabilmeniz için aygıta ek kapsayıcılar dağıtmanızı sağlar.
+IoT Edge çalışma zamanı tüm IoT Edge cihazlarına dağıtılır. Bileşenleri kapsayıcılarda çalıştırılır ve kenarda kod çalıştırabilmeniz için cihaza ek kapsayıcılar dağıtmanıza izin verir.
 
-DPS ile X.509 sağlama yalnızca IoT Edge sürüm 1.0.9 veya daha yeni desteklenir.
+DPS ile X. 509.440 sağlama yalnızca IoT Edge Version 1.0.9 veya daha yeni sürümlerde desteklenir.
 
-Cihazınızı sağlarken aşağıdaki bilgilere ihtiyacınız olacak:
+Cihazınızı sağlarken aşağıdaki bilgilere sahip olmanız gerekir:
 
-* DPS **Id Kapsam** değeri. Bu değeri Azure portalındaki DPS örneğinizin genel bakış sayfasından alabilirsiniz.
-* Aygıttaki aygıt kimlik sertifikası zinciri dosyası.
-* Aygıttaki aygıt kimlik anahtarı dosyası.
-* İsteğe bağlı bir kayıt kimliği (sağlanmazsa aygıt kimlik sertifikasındaki ortak addan çekilir).
+* DPS **kimlik kapsamı** değeri. Bu değeri, Azure portal DPS örneğinizin genel bakış sayfasından elde edebilirsiniz.
+* Cihazdaki cihaz kimliği sertifika zinciri dosyası.
+* Cihazdaki cihaz kimliği anahtar dosyası.
+* İsteğe bağlı bir kayıt KIMLIĞI (sağlanmazsa, cihaz kimlik sertifikasındaki ortak ad üzerinden çekilir).
 
 ### <a name="linux-device"></a>Linux cihazı
 
-Cihazınızın mimarisine uygun komutları kullanarak Azure IoT Edge çalışma süresini cihazınıza yüklemek için aşağıdaki bağlantıyı kullanın. Güvenlik daemon'una yapılandırış bölümüne girdiğinizde, IoT Edge çalışma süresini manuel değil, X.509 otomatik olarak yapılandırın. Bu makalenin önceki bölümlerini tamamladıktan sonra ihtiyacınız olan tüm bilgi ve sertifika dosyalarına sahip olmanız gerekir.
+Cihazınızın mimarisine uygun komutları kullanarak Azure IoT Edge çalışma zamanını cihazınıza yüklemek için aşağıdaki bağlantıyı kullanın. Güvenlik cini yapılandırma bölümüne geldiğinizde, X. 509.952 otomatik için IoT Edge çalışma zamanını, el ile değil, sağlama için yapılandırın. Bu makalenin önceki bölümlerini tamamladıktan sonra ihtiyacınız olan tüm bilgi ve sertifika dosyalarına sahip olmanız gerekir.
 
-[Azure IoT Edge çalışma süresini Linux'a yükleme](how-to-install-iot-edge-linux.md)
+[Linux üzerinde Azure IoT Edge çalışma zamanını yükler](how-to-install-iot-edge-linux.md)
 
-X.509 sertifikasını ve anahtar bilgilerini config.yaml dosyasına eklediğinizde, yollar dosya URI'leri olarak sağlanmalıdır. Örneğin:
+X. 509.952 sertifikasını ve anahtar bilgilerini config. YAML dosyasına eklediğinizde, yolların dosya URI 'Leri olarak sağlanması gerekir. Örneğin:
 
 * `file:///<path>/identity_certificate_chain.pem`
 * `file:///<path>/identity_key.pem`
 
-X.509 otomatik sağlama yapılandırma dosyasındaki bölüm aşağıdaki gibi görünür:
+X. 509.440 otomatik sağlama yapılandırma dosyasındaki bölümü şuna benzer:
 
 ```yaml
 # DPS X.509 provisioning configuration
@@ -241,9 +241,9 @@ provisioning:
     identity_pk: "<REQUIRED URI TO DEVICE IDENTITY PRIVATE KEY>"
 ```
 
-Yer tutucu değerlerini `scope_id` `identity_cert`DPS `identity_pk` örneğinizin kapsam kimliğiyle ve URI'lerle cihazınızdaki sertifika zinciri ve anahtar dosya konumlarına değiştirin. İsterseniz `registration_id` aygıt için a sağlayın veya bu satırı bırakın, aygıtı kimlik sertifikasının CN adı ile kaydettirmek için yorumladı.
+, İçin `scope_id` `identity_cert` `identity_pk` yer tutucu değerlerini, DPS örneğinizin kapsam kimliğiyle, ve URI 'leri ise sertifika zinciri ve anahtar dosya konumlarına göre değiştirin. İsterseniz Cihaz `registration_id` için bir belirtin veya bu satırı, KIMLIK sertifikasının CN adı ile kaydetmek için bu satırı açıklama olarak bırakın.
 
-Config.yaml dosyasını güncelledikten sonra her zaman güvenlik daemon'una yeniden başlayın.
+Config. YAML dosyasını güncelleştirdikten sonra her zaman güvenlik arka plan programını yeniden başlatın.
 
 ```bash
 sudo systemctl restart iotedge
@@ -251,24 +251,24 @@ sudo systemctl restart iotedge
 
 ### <a name="windows-device"></a>Windows cihazı
 
-Kimlik sertifikası zincirini ve kimlik anahtarını oluşturduğunuz aygıta IoT Edge çalışma saatini yükleyin. IoT Edge çalışma süresini manuel değil otomatik olarak yapılandıracaksınız.
+Kimlik sertifika zincirini ve kimlik anahtarını oluşturduğunuz cihaza IoT Edge çalışma zamanını yükleyebilirsiniz. IoT Edge çalışma zamanını otomatik, el ile değil, sağlama için yapılandıracaksınız.
 
-Kapsayıcıları yönetme ve IoT Edge'i güncelleştirme gibi görevler için ön koşullar ve yönergeler de dahil olmak üzere Windows'a IoT [Edge](how-to-install-iot-edge-windows.md)yükleme hakkında daha ayrıntılı bilgi için bkz.
+Windows üzerinde IoT Edge yükleme hakkında daha ayrıntılı bilgi için IoT Edge, bkz. [Azure IoT Edge çalışma zamanını Windows 'A yükleme](how-to-install-iot-edge-windows.md).
 
-1. Yönetici modunda bir PowerShell penceresi açın. IoT Edge'i yüklerken AMD64 PowerShell oturumunu kullandığınızdan emin olun, PowerShell'i (x86) değil.
+1. Yönetici modunda bir PowerShell penceresi açın. PowerShell (x86) değil IoT Edge yüklerken PowerShell 'in AMD64 oturumunu kullandığınızdan emin olun.
 
-1. **Deploy-IoTEdge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve moby çalışma süresini ve IoT Edge çalışma süresini karşıdan yüklez. Komut, Windows kapsayıcılarını kullanmayı varsayılan olarak kullanır.
+1. **Deploy-ıotedge** komutu, Windows makinenizin desteklenen bir sürümde olup olmadığını denetler, kapsayıcılar özelliğini açar ve ardından Moby çalışma zamanını ve IoT Edge çalışma zamanını indirir. Komut varsayılan olarak Windows kapsayıcıları ' nı kullanmaktır.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-1. Bu noktada, IoT Core aygıtları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server aygıtları yeniden başlatmanızı isteyebilir. Öyleyse, cihazınızı şimdi yeniden başlatın. Cihazınız hazır olduğunda PowerShell'i yeniden yönetici olarak çalıştırın.
+1. Bu noktada, IoT çekirdek cihazları otomatik olarak yeniden başlatılabilir. Diğer Windows 10 veya Windows Server cihazları yeniden başlatmanızı isteyebilir. Bu durumda cihazınızı şimdi yeniden başlatın. Cihazınız çalışmaya başladıktan sonra PowerShell 'i yönetici olarak yeniden çalıştırın.
 
-1. **Initialize-IoTEdge komutu,** Makinenizdeki IoT Edge çalışma süresini yapılandırır. Komut, `-Dps` bayrağı otomatik sağlama kullanmak için kullanmadığınız sürece el ile sağlama için varsayılandır.
+1. **Initialize-ıotedge** komutu, makinenizde IoT Edge çalışma zamanını yapılandırır. Otomatik sağlamayı kullanmak için `-Dps` bayrağını kullanmadığınız takdirde, komut el ile sağlamayı varsayılan olarak sağlar.
 
-   DPS örneğinizin `{scope_id}`ve `{identity cert chain path}`cihazınızdaki dosya yollarının yer tutucu değerlerini ve `{identity key path}` DPS örneğinizin uygun değerleriyle değiştirin. Kayıt kimliğini belirtmek istiyorsanız, yer `-RegistrationId {registration_id}` tutucuyu uygun şekilde değiştirerek de ekleyin.
+   , `{scope_id}` `{identity cert chain path}`, Ve `{identity key path}` için yer tutucu değerlerini, DPS örneğinizin ve cihazınızdaki dosya yollarından uygun değerlerle değiştirin. Kayıt KIMLIĞINI `-RegistrationId {registration_id}` belirtmek istiyorsanız, yer tutucuyu uygun şekilde değiştirin.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
@@ -276,15 +276,15 @@ Kapsayıcıları yönetme ve IoT Edge'i güncelleştirme gibi görevler için ö
    ```
 
    >[!TIP]
-   >Config.yaml dosyası, sertifikanızı ve önemli bilgilerinizi dosya URI'leri olarak saklar. Ancak, Initialize-IoTEdge komutu bu biçimlendirme adımını sizin için işler, böylece aygıtınızdaki sertifikaya ve anahtar dosyalarına mutlak yolu sağlayabilirsiniz.
+   >Config. YAML dosyası, sertifikanızı ve anahtar bilgilerinizi dosya URI 'Leri olarak depolar. Ancak, Initialize-ıotedge komutu sizin için bu biçimlendirme adımını işler, böylece cihazınızdaki sertifikaya ve anahtar dosyalarına mutlak yol sağlayabilirsiniz.
 
-## <a name="verify-successful-installation"></a>Başarılı yüklemeyi doğrulama
+## <a name="verify-successful-installation"></a>Yüklemenin başarılı olduğunu doğrulama
 
-Çalışma süresi başarıyla başladıysa, IoT Hub'ınıza gidip IoT Edge modüllerini cihazınıza dağıtmaya başlayabilirsiniz.
+Çalışma zamanı başarıyla başlatıldıysa, IoT Hub ve cihazınıza IoT Edge modülleri dağıtmaya başlayabilirsiniz.
 
-Aygıt Sağlama Hizmeti'nde oluşturduğunuz tek tek kaydın kullanıldığını doğrulayabilirsiniz. Azure portalındaki Aygıt Sağlama Hizmeti örneğinize gidin. Oluşturduğunuz tek tek kayıt için kayıt ayrıntılarını açın. Kaydın durumunun **atandığını** ve aygıt kimliğinin listelenmiş olduğuna dikkat edin.
+Cihaz sağlama hizmeti 'nde oluşturduğunuz bireysel kaydın kullanıldığını doğrulayabilirsiniz. Azure portal cihaz sağlama hizmeti örneğinize gidin. Oluşturduğunuz bireysel kayıt için kayıt ayrıntılarını açın. Kayıt durumunun **atandığını** ve cihaz kimliğinin listelendiğini unutmayın.
 
-Çalışma zamanının yüklü olduğunu ve başarılı bir şekilde başladığını doğrulamak için cihazınızdaki aşağıdaki komutları kullanın.
+Çalışma zamanının başarıyla yüklendiğini ve başlatıldığını doğrulamak için cihazınızda aşağıdaki komutları kullanın.
 
 ### <a name="linux-device"></a>Linux cihazı
 
@@ -294,13 +294,13 @@ IoT Edge hizmetinin durumunu kontrol edin.
 systemctl status iotedge
 ```
 
-Servis günlüklerini inceleyin.
+Hizmet günlüklerini inceleyin.
 
 ```cmd/sh
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Çalışan modülleri listele.
+Çalışan modülleri listeleyin.
 
 ```cmd/sh
 iotedge list
@@ -314,13 +314,13 @@ IoT Edge hizmetinin durumunu kontrol edin.
 Get-Service iotedge
 ```
 
-Servis günlüklerini inceleyin.
+Hizmet günlüklerini inceleyin.
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Çalışan modülleri listele.
+Çalışan modülleri listeleyin.
 
 ```powershell
 iotedge list
@@ -328,4 +328,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aygıt Sağlama Hizmeti kayıt işlemi, aygıt kimliğini ve aygıt ikiz etiketlerini yeni aygıtı sağlarken aynı anda ayarlamanızı sağlar. Bu değerleri, otomatik aygıt yönetimini kullanarak tek tek aygıtları veya aygıt gruplarını hedeflemek için kullanabilirsiniz. Azure portalını kullanarak veya [Azure CLI'yi kullanarak](how-to-deploy-monitor-cli.md) [IoT Edge modüllerini ölçekte nasıl dağıtıp izleyeceğinizi](how-to-deploy-monitor.md) öğrenin.
+Cihaz sağlama hizmeti kayıt işlemi, yeni cihazı sağladığınız anda cihaz KIMLIĞI ve cihaz ikizi etiketlerini ayarlamanıza olanak sağlar. Bu değerleri, otomatik cihaz yönetimi kullanarak ayrı cihazları veya cihaz gruplarını hedeflemek için kullanabilirsiniz. Azure portal veya [Azure CLI kullanarak](how-to-deploy-cli-at-scale.md) [IoT Edge modüllerini ölçekte nasıl dağıtacağınızı ve izleyeceğinizi](how-to-deploy-at-scale.md) öğrenin.

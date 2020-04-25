@@ -1,21 +1,21 @@
 ---
-title: Azure Akış Analizi'nde kullanıcı tanımlı işlevler
-description: Bu makale, Azure Akış Analizi'nde kullanıcı tarafından tanımlanan işlevlere genel bir bakıştır.
+title: Azure Stream Analytics 'de Kullanıcı tanımlı işlevler
+description: Bu makale, Azure Stream Analytics içindeki kullanıcı tanımlı işlevlere genel bir bakış.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: b29d66e8bb213fbbb162c3249f022e0783f9f62f
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115592"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133477"
 ---
-# <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure Akış Analizi'nde kullanıcı tanımlı işlevler
+# <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı işlevler
 
-Azure Akış Analizi'ndeki SQL benzeri sorgu dili, veri akışında gerçek zamanlı analiz mantığının uygulanmasını kolaylaştırır. Akış Analizi, sorgunuzda çağrılan özel işlevler aracılığıyla ek esneklik sağlar. Aşağıdaki kod örneği, bir `sampleFunction` parametre kabul eden, işin aldığı her giriş kaydını kabul eden ve `sampleResult`sonuç çıktıya ' olarak yazılan udf' dur.
+Azure Stream Analytics SQL benzeri sorgu dili, akış verilerinde gerçek zamanlı analiz mantığını uygulamayı kolaylaştırır. Stream Analytics, sorgunuzda çağrılan özel işlevlerle daha fazla esneklik sağlar. Aşağıdaki kod örneği, bir parametre kabul eden `sampleFunction` adlı UDF 'dir, işin aldığı her giriş kaydı ve sonuç çıkışa yazılır `sampleResult`.
 
 ```sql
 SELECT 
@@ -28,30 +28,30 @@ FROM
 
 ## <a name="types-of-functions"></a>İşlev türleri
 
-Azure Akış Analizi aşağıdaki dört işlev türünü destekler: 
+Azure Stream Analytics aşağıdaki dört işlev türünü destekler: 
 
 * JavaScript kullanıcı tanımlı işlevleri 
-* JavaScript kullanıcı tanımlı agregalar 
-* C# kullanıcı tanımlı fonksiyonlar (Visual Studio kullanarak) 
+* JavaScript Kullanıcı tanımlı toplamalar 
+* C# Kullanıcı tanımlı işlevler (Visual Studio kullanarak) 
 * Azure Machine Learning 
 
-Bu işlevleri, makine öğrenme modellerini kullanarak gerçek zamanlı puanlama, dize manipülasyonları, karmaşık matematiksel hesaplamalar, kodlama ve verileri çözme gibi senaryolar için kullanabilirsiniz. 
+Makine öğrenimi modelleri, dize düzenlemeleri, karmaşık matematik hesaplamaları, kodlama ve kod çözme verileri ile gerçek zamanlı Puanlama gibi senaryolar için bu işlevleri kullanabilirsiniz. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Kullanıcı tanımlı işlevler durum suz ve döndürme değeri yalnızca skaler bir değer olabilir. İşinizin performansını etkileyeceği nden, bu kullanıcı tanımlı işlevlerden harici REST uç noktalarına çağrıda bulunduramazsınız. 
+Kullanıcı tanımlı işlevler durumsuz ve dönüş değeri yalnızca skaler bir değer olabilir. Bu Kullanıcı tanımlı işlevlerden dış REST uç noktalarına çağrı yapılamaz, çünkü işinizin performansı büyük olasılıkla etkiler. 
 
-Azure Akış Analizi, tüm işlev çağrılarının ve döndürülen sonuçların kaydını tutmaz. Tekrarlanabilirliği garanti etmek için - örneğin, eski zaman damgasından işinizi yeniden çalıştırmak aynı `Date.GetData()` `Math.random()`sonuçları tekrar üretir - bu işlevler her çağırma için aynı sonucu döndürmediği için aynı sonuçları kullanmayın.  
+Azure Stream Analytics, tüm işlev etkinleştirmeleri ve döndürülen sonuçlar için bir kayıt yapmaz. Örneğin, yinelenebilirlik sağlamak için, işinizi eski zaman damgasından yeniden çalıştırmak aynı sonuçları yeniden üretir. bu işlevler her bir çağrı için aynı sonucu döndürmediğinden `Date.GetData()` , `Math.random()`veya gibi işlevleri kullanmayın.  
 
-## <a name="diagnostic-logs"></a>Tanılama günlükleri
+## <a name="resource-logs"></a>Kaynak günlükleri
 
-Çalışma zamanı hataları ölümcül olarak kabul edilir ve etkinlik ve tanılama günlükleri ile su yüzüne çıkar. İşlevinizin tüm özel durumları ve hataları işlemesi ve geçerli bir sonucu sorgunuza döndürmesi önerilir. Bu, işinizin başarısız bir [duruma](job-states.md)girmesini önleyecektir.  
+Tüm çalışma zamanı hataları önemli olarak değerlendirilir ve etkinlik ve kaynak günlükleri aracılığıyla ortaya çıkmış demektir. İşlevinizin tüm özel durumları ve hataları işlemesi ve sorgunuza geçerli bir sonuç döndürmesi önerilir. Bu, işinizin [başarısız durumuna](job-states.md)gitmesini engeller.  
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Akış Analizi'nde JavaScript kullanıcı tanımlı işlevler](stream-analytics-javascript-user-defined-functions.md)
-* [Azure Akış Analizi JavaScript kullanıcı tanımlı toplamları](stream-analytics-javascript-user-defined-aggregates.md)
-* [Azure Akış Analizi işleri için .NET Standart kullanıcı tanımlı işlevleri geliştirme](stream-analytics-edge-csharp-udf-methods.md)
-* [Azure Akış Analitiğini Azure Makine Öğrenimi ile tümleştirin](machine-learning-udf.md)
+* [Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri](stream-analytics-javascript-user-defined-functions.md)
+* [JavaScript Kullanıcı tanımlı toplamaları Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
+* [Azure Stream Analytics işleri için .NET Standard Kullanıcı tanımlı işlevler geliştirme](stream-analytics-edge-csharp-udf-methods.md)
+* [Azure Stream Analytics Azure Machine Learning ile tümleştirin](machine-learning-udf.md)
 

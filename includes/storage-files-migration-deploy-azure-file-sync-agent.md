@@ -1,41 +1,40 @@
 ---
 title: Azure Dosya Eşitleme aracısını dağıtma
-description: Azure Dosya Eşitleme aracısını dağıtma. Geçiş dokümanları arasında paylaşılan ortak bir metin bloğu.
+description: Azure Dosya Eşitleme Aracısı dağıtılıyor. Geçiş belgeleri arasında paylaşılan ortak bir metin bloğu.
 author: fauhse
 ms.service: storage
 ms.topic: conceptual
 ms.date: 2/20/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 694becc49667204ef2071a140bb6330285089039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66388f14949b4f398de18c9162ca453e7fb3cbe1
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78209421"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143588"
 ---
-Bu bölümde, Windows Server'ınıza Azure Dosya Eşitleme aracısını yüklersiniz.
-[Dağıtım kılavuzu,](../articles/storage/files/storage-sync-files-deployment-guide.md) **IE gelişmiş güvenliği**kapatmanız gerektiğini göstermektedir. IE gelişmiş güvenlik, Azure Dosya Eşitlemesi ile geçerli olmayan bir güvenlik önlemidir ve bu güvenliği kapatmak herhangi bir sorun olmadan Azure'a kimlik doğrulamanızı sağlar.
+Bu bölümde, Windows Server örneğinize Azure Dosya Eşitleme aracısını yüklersiniz.
 
-PowerShell'i açın ve gerekli PowerShell modüllerini aşağıdaki komutlarla kurun. İstendiğinde modülün tamamını ve NuGet sağlayıcısını yüklediğinizden emin olun:
+[Dağıtım Kılavuzu](../articles/storage/files/storage-sync-files-deployment-guide.md) , **Internet Explorer Artırılmış güvenlik yapılandırmasını**kapatmanız gerektiğini gösterir. Bu güvenlik ölçüsü Azure Dosya Eşitleme için geçerli değildir. Devre dışı bırakmak, herhangi bir sorun olmadan Azure 'da kimlik doğrulaması yapmanıza olanak sağlar.
+
+PowerShell 'i açın ve aşağıdaki komutları kullanarak gerekli PowerShell modüllerini yükler. İstendiğinde tam modülü ve NuGet sağlayıcısını yüklediğinizden emin olun.
 
 ```powershell
 Install-Module -Name Az -AllowClobber
 Install-Module -Name Az.StorageSync
 ```
 
-Eğer sunucudan internet ulaşan herhangi bir sorun varsa, şimdi bunları çözmek için zamanı. Azure Dosya Eşitlemi, Internet'e sunulan tüm ağ bağlantısını kullanır.
-Bir proxy sunucusunun internete ulaşmasını gerektirmesi de desteklenir. Aracı yükleme sırasında makine genelinde bir proxy'yi şimdi yapılandırabilir veya yalnızca dosya eşitlemenin kullanacağı bir proxy belirtebilirsiniz.
+Sunucunuza internet 'e ulaşan herhangi bir sorununuz varsa, bu sorunları çözmek için zaman ayırın. Azure Dosya Eşitleme, internet 'e yönelik kullanılabilir ağ bağlantılarını kullanır. Bir proxy sunucusunun İnternet 'e ulaşmasını gerektirme de desteklenir. Şimdi makine genelinde bir ara sunucu yapılandırabilir veya aracı yüklemesi sırasında yalnızca Azure Dosya Eşitleme kullanacağı bir ara sunucu belirtebilirsiniz.
 
-Bu, bu sunucu için güvenlik duvarlarınızı açmanız gerektiği anlamına geliyorsa, bu sizin için kabul edilebilir bir yaklaşım olabilir. Sunucu yüklemesinin sonunda, sunucu kaydı tamamlandıktan sonra, seçtiğiniz bölge için dosya eşitlemesi için iletişim kurmanız gereken Azure'daki tam bitiş noktası URL'lerini gösteren bir ağ bağlantı raporu olacaktır. Rapor ayrıca iletişimin neden gerekli olduğunu da bildirir. Raporu, bu sunucunun etrafındaki güvenlik duvarlarını belirli URL'lere kilitlemek için kullanabilirsiniz.
+Bir proxy yapılandırıyorsanız, bu sunucu için güvenlik duvarlarını açmanız gerekir, bu da sizin için kabul edilebilir bir yaklaşım olabilir. Sunucu yüklemesinin sonunda, sunucu kaydını tamamladıktan sonra, bir ağ bağlantısı raporu, seçtiğiniz bölge için iletişim kurması gereken Azure Dosya Eşitleme Azure 'da tam uç nokta URL 'Lerini gösterir. Rapor ayrıca iletişimin neden gerekli olduğunu size bildirir. Bu sunucunun etrafındaki güvenlik duvarlarını belirli URL 'Ler ile kilitlemek için bu raporu kullanabilirsiniz.
 
-Güvenlik duvarlarını geniş açmadığınız, ancak bunun yerine sunucuyu daha üst düzey DNS ad boşluklarıyla iletişim kurmak için sınırlandırdığınız daha tutucu bir yaklaşım da izleyebilirsiniz - [Azure Dosya Eşitleme proxy ve güvenlik duvarı ayarları](../articles/storage/files/storage-sync-files-firewall-and-proxy.md) makalesinde daha fazla belge ve ayrıntı mevcuttur. Kendi ağ en iyi uygulamaları izleyin.
+Ayrıca güvenlik duvarları genelinde açılmayın daha koruyucu bir yaklaşımını de izleyebilirsiniz, bunun yerine sunucuyu daha üst düzey DNS ad alanlarıyla iletişim kuracak şekilde sınırlandırın. Daha fazla bilgi için bkz. [proxy ve güvenlik duvarı ayarları Azure dosya eşitleme](../articles/storage/files/storage-sync-files-firewall-and-proxy.md). Kendi ağ en iyi uygulamalarınızı izleyin.
 
-Sunucu *yükleme* sihirbazının sonunda, bir sunucu *kayıt* sihirbazı açılır.
-Sunucuyu daha önceki Depolama Eşitleme Hizmeti Azure kaynağınıza kaydedin.
+Sunucu *yükleme* sihirbazının sonunda, bir sunucu *kayıt* Sihirbazı açılır. Sunucuyu daha önce depolama eşitleme hizmetinizin Azure kaynağına kaydedin.
 
-Bu adımlar, önce yüklemeniz gereken yukarıdaki PowerShell modülleri de dahil olmak üzere dağıtım kılavuzunda daha ayrıntılı olarak açıklanmıştır: [Azure Dosya Eşitleme aracısı yükleme.](../articles/storage/files/storage-sync-files-deployment-guide.md)
+Bu adımlar, önce yüklemeniz gereken PowerShell modülleri de dahil olmak üzere dağıtım kılavuzunda daha ayrıntılı olarak açıklanmıştır: [Aracı yüklemesi Azure dosya eşitleme](../articles/storage/files/storage-sync-files-deployment-guide.md).
 
-En son aracı kullanılmalıdır ve Microsoft Download Center indirilebilir: [Azure Dosya Eşitleme - aracı](https://aka.ms/AFS/agent "Azure Dosya Eşitleme aracısı indir").
+En son aracıyı kullanın. Bunu Microsoft Indirme merkezi 'nden indirebilirsiniz: [Azure dosya eşitleme Aracısı](https://aka.ms/AFS/agent "Aracı indirme Azure Dosya Eşitleme").
 
-Başarılı bir yükleme ve sunucu kaydından sonra, bu adımı başarıyla tamamlayıp tamamlamadığınızı kontrol edebilirsiniz: Azure portalındaki Depolama Eşitleme Hizmeti kaynağına gidin ve sol menüyü "Kayıtlı sunucular"a kadar takip edin. Sunucunuzun hemen orada listelenmiş olduğunu göreceksiniz.
+Başarılı bir yükleme ve sunucu kaydından sonra, bu adımı başarıyla tamamladığınızı kontrol edebilirsiniz. Azure portal depolama eşitleme hizmeti kaynağına gidin ve ardından sol menüyü **kayıtlı sunucular**' a uygulayın. Sunucunuzu orada listelendiğini görürsünüz.

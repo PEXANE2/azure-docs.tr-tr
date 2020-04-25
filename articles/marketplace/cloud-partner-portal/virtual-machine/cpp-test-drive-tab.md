@@ -1,55 +1,55 @@
 ---
-title: Azure Marketi Için Bulut İş Ortağı Portalı'nda Sanal makine Test Sürüşü sekmesi
-description: Azure Marketi VM teklifi oluştururken kullanılan Test Sürücüsü sekmesini açıklar.
+title: Azure Marketi için Bulut İş Ortağı Portalı sanal makine test sürücüsü sekmesi
+description: Azure Marketi VM teklifi oluşturma bölümünde kullanılan test sürücüsü sekmesini açıklar.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
-ms.openlocfilehash: 22538047adc17a40438359e11bff7fd20e43bcc6
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: adac73d64feb6280c5043776249072e9f7595faa
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81273095"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82142981"
 ---
-# <a name="virtual-machine-test-drive-tab"></a>Sanal makine Test Sürüşü sekmesi
+# <a name="virtual-machine-test-drive-tab"></a>Sanal makine sınama sürücüsü sekmesi
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Sanal Makine tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Sanal Makine Oluştur teklifindeki](https://aka.ms/CreateAzureVMoffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure sanal makine tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure sanal makine oluşturma teklifi](https://docs.microsoft.com/azure/marketplace/partner-center-portal/azure-vm-create-offer) ' nde bulunan yönergeleri izleyin.
 
-**Yeni Teklif** sayfasının **Test Sürüşü** sekmesi, potansiyel müşterilerinize, standart laştırılmış bir senaryoda gösterilen, ürününüzün temel özelliklerinin ve avantajlarının uygulamalı, kendi kendine yönlendirilmiş bir gösterisini sunmanıza olanak tanır.  Test Sürüşü, Test Sürüşü'ni destekleyen teklif türleri için isteğe bağlı bir özelliktir.  Test Sürüşü, destekleyici varlıkların düzgün bir şekilde uygulanmasını gerektirir.  Daha fazla bilgi için [Azure Marketi Test Sürüşü](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)makalesine bakın.  <!--TD: Replace with migrated version of Test Drive article! -->
+**Yeni teklif** sayfasının **test sürücüsü** sekmesi, olası müşterilerinizi, standart bir senaryoda gösterilen, ürününüzün temel özelliklerinin ve avantajlarının uygulamalı, kendinden kılavuzlu bir tanıtımı ile sağlamanıza olanak sağlar.  Test sürücüsü, test sürücüsünü destekleyen teklif türleri için isteğe bağlı bir özelliktir.  Sınama sürücüsü, destekleyici varlıkların düzgün bir şekilde uygulandığından emin olmanızı gerektirir.  Daha fazla bilgi için [Azure Marketi sınama sürücüsü](https://azure.microsoft.com/blog/azure-marketplace-test-drive/)makalesine bakın.  <!--TD: Replace with migrated version of Test Drive article! -->
 
-Bu özelliği etkinleştirmek **için, Test Sürüşü** sekmesinde, **Test Sürüşü Etkinleştir'de** **Evet** seçeneğini tıklatın.  **Test Sürüşü** sekmesi, düzenlenebilen alanları görüntüler.  Alan adına eklenen bir yıldız işareti (*) bunun gerekli olduğunu gösterir.
+Bu özelliği etkinleştirmek için, **test sürücüsü** sekmesinde, **Test sürücüsünü etkinleştir**' de **Evet** seçeneğine tıklayın.  **Test sürücüsü** sekmesi, düzenlenecek alanları görüntüler.  Alan adı üzerinde eklenen bir yıldız işareti (*) gerekli olduğunu gösterir.
 
-![Sanal makineler için Yeni Teklif formunda Test Sürüşü sekmesi](./media/publishvm_007.png)
+![Sanal makineler için yeni teklif formunda sürücü sına sekmesi](./media/publishvm_007.png)
 
 
 ## <a name="field-values"></a>Alan değerleri
 
-Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır.  Gerekli alanlar yıldız işareti (*) tarafından suçlanır.
+Aşağıdaki tabloda bu alanların amacı ve içeriği açıklanmaktadır.  Gerekli alanlar bir yıldız işareti (*) ile tanımlanır.
 
 
 |    Alan                  |       Açıklama                                                            |
 |  ---------                |     ---------------                                                          |
-|  *Şey*   |  |
-| **Açıklama\***           | Test Sürüşü senaryonuza genel bir bakış sağlayın. Bu metin, Test Sürüşü verilirken kullanıcıya gösterilir. Biçimlendirilmiş içerik sağlamak istiyorsanız, bu alan temel HTML'yi destekler.  |
-| **Kullanım Kılavuzu\***           | Test Sürüşü kullanıcılarının çözümünüzü nasıl kullanacaklarını anlamalarına yardımcı olan ayrıntılı bir kullanım kılavuzu (.pdf) yükleyin.  |
-| **Test Sürüşü Demo Videosu** | Çözümünüzü gösteren bir video yükleyin.  Bu seçeneği seçtiyseniz, videonun bir adı, URL'sini (YouTube veya Vimeo'da barındırılan) ve video için bir (533x324 piksel) küçük resmi sağlamanız gerekir. |
-| *Teknik Yapılandırma* |  |
-| **Örnekler\***             | Bölge kullanılabilirliğini ve vm örneğinin göreceli olarak kullanılabilirliğini belirtin (daha fazla ayrıntı için bilgi simgesini tıklatın).  <br/>Olası eşzamanlı Test Sürüşü oturumları aboneliğiniz için kota sınırını aşmamalıdır.  Bunlardan önceki olarak hesaplanır: [Seçilen Bölge Sayısı] x [Sıcak örnekler] + [Seçilen Bölge Sayısı] x [Sıcak örnekler] + [Seçilen Bölge Sayısı] x [Soğuk örnekler] x [Soğuk örnekler] |
-| **Test Sürüşü Süresi\***   | Saat içinde maksimum seans süresi. Bu süre aşıldıktan sonra Test Sürüşü oturumu otomatik olarak sona erer.  |
-|**Test Sürüşü ARM Şablonu\***| Bu Test Sürüşüile ilişkili Azure Kaynak Yöneticisi şablonuna yükleyin. Daha fazla bilgi için, [Test Sürüşü için Sanal Makine Dağıtım Şablonu Dönüştürme'ye](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive)bakın. |
-| **Erişim Bilgileri\***    | Azure Kaynak Yöneticisi erişim ve deneme giriş bilgileri, düz metin veya basit HTML olarak yazılır. |
-| *Test Sürüşü Dağıtım Abonelik Ayrıntıları* |  |
-| **Azure Abonelik Kimliği\*** | [Microsoft Azure portalında](https://ms.portal.azure.com) oturum açarak ve sol menü çubuğundaki **Abonelikler'i** tıklatarak elde edilebilir. (Örnek: "a83645ac-1234-5ab6-6789-1h234g764ghty")    Bu tanımlayıcı formun `a83645ac-1234-5ab6-6789-1h234g764ghty`bir GUID olmalıdır.|
-| **Azure AD Kiracı Kimliği\***    | Azure Active Directory kiracı kimliği.  [Microsoft Azure portalında](https://ms.portal.azure.com) oturum açarak ve sol menü çubuğunda **Azure Active Directory'yi** tıklatarak, ardından orta menü çubuğundaki **Özellikler'i** tıklatarak ve ardından formdan **Dizin Kimliği** kopyalayarak elde edilebilir.  Bu tanımlayıcı da bir GUID olmalıdır.  Boşsa, kuruluşunuz için bir kiracı kimliği oluşturmanız gerekir. |
-| **Azure AD Uygulama Kimliği\***       | Kayıtlı Azure VM çözümünüz için tanımlayıcı  |
-| **Azure AD Uygulama Anahtarı\***      | Kayıtlı çözümünüz için kimlik doğrulama anahtarı |
+|  *Bilgileri*   |  |
+| **Açıklama\***           | Test sürücünüzün senaryosuna genel bir bakış sağlar. Sınama sürücüsü sağlanırken bu metin kullanıcıya gösterilir. Bu alan, biçimlendirilen içerik sağlamak istiyorsanız temel HTML 'yi destekler.  |
+| **Kullanıcı El Ile\***           | Test sürücüsü kullanıcılarının çözümünüzü nasıl kullanacağınızı anlamalarına yardımcı olan ayrıntılı bir kullanıcı el ile (. PDF) yükleyin.  |
+| **Test sürücüsü tanıtım videosu** | Çözümünüze servis talebi gösteren bir video yükleyin.  Bu seçeneği tercih ederseniz, video için bir ad, video URL 'SI (YouTube veya Vimeo 'da barındırılır) ve (533x324 piksel) küçük resmini sağlamanız gerekir. |
+| *Teknik yapılandırma* |  |
+| **Örnekler\***             | Bölge kullanılabilirliğini ve sanal makine örneğinin görece kullanılabilirliğini belirtin (daha fazla ayrıntı için bilgi simgesine tıklayın).  <br/>Potansiyel eşzamanlı test sürücüsü oturumları, aboneliğinizin kota sınırını aşmamalıdır.  Bu değer, şu şekilde hesaplanır: [Seçili bölge sayısı] x [etkin örnekler] + [Seçili bölge sayısı] x [normal örnekler] + [Seçili bölge sayısı] x [soğuk örnekleri] |
+| **Sınama sürücüsü süresi\***   | Saat cinsinden maksimum oturum süresi. Test sürücüsü oturumu bu süre dolduktan sonra otomatik olarak sonlandırılır.  |
+|**Test sürücüsü ARM şablonu\***| Bu test sürücüsüyle ilişkili Azure Resource Manager şablonunu karşıya yükleyin. Daha fazla bilgi için bkz. [test sürücüsü Için sanal makine Dağıtım şablonunu dönüştürme](https://github.com/Azure/AzureTestDrive/wiki/Transforming-Virtual-Machine-Deployment-Template-for-Test-Drive). |
+| **Erişim bilgileri\***    | Azure Resource Manager, salt metin veya basit HTML olarak yazılmış erişim ve deneme oturum açma bilgileri. |
+| *Test sürücüsü dağıtım aboneliği ayrıntıları* |  |
+| **Azure Abonelik Kimliği\*** | [Microsoft Azure Portal](https://ms.portal.azure.com) oturum açarak ve sol menü çubuğundan **abonelikler** ' e tıklayarak elde edilebilir. (Örnek: "a83645ac-1234-5AB6-345-1h234g764ghty")    Bu tanımlayıcı formun `a83645ac-1234-5ab6-6789-1h234g764ghty`bir GUID olmalıdır.|
+| **Azure AD Kiracı kimliği\***    | Azure Active Directory kiracı KIMLIĞI.  [Microsoft Azure Portal](https://ms.portal.azure.com) oturum açarak ve sol menü çubuğundan **Azure Active Directory** ' a tıklayıp ortadaki menü çubuğunda **Özellikler** ' e tıklayıp sonra da **dizin kimliğini** formdan kopyalayarak elde edilebilir.  Bu tanımlayıcı aynı zamanda bir GUID olmalıdır.  Boşsa, kuruluşunuz için bir kiracı KIMLIĞI oluşturmanız gerekir. |
+| **Azure AD Uygulaması Kimliği\***       | Kayıtlı Azure VM çözümünüz için tanımlayıcı  |
+| **Azure AD Uygulaması anahtarı\***      | Kayıtlı çözümünüzün kimlik doğrulama anahtarı |
 |   |   |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki [Pazar Yeri](./cpp-marketplace-tab.md) sekmesinde, çözümünüz hakkında pazarlama ve yasal bilgiler sağlayacaksınız.
+Bir sonraki [Market](./cpp-marketplace-tab.md) sekmesinde, çözümünüz hakkında pazarlama ve yasal bilgiler sunacaktır.

@@ -1,6 +1,6 @@
 ---
-title: Değişmez blob depolama - Azure Depolama
-description: Azure Depolama, blob (nesne) depolama için kullanıcıların verileri belirli bir aralıkta silinemez, değiştirilemez bir durumda depolamasını sağlayan WORM (Write Once, Read Many) desteği sunar.
+title: Sabit BLOB depolama-Azure depolama
+description: Azure depolama, kullanıcıların belirli bir Aralık için silinebilir olmayan ve değiştirilemeyen bir durumda veri depolamasını sağlayan blob (nesne) depolama için solucan (bir kez yaz, çok oku) desteğini sunar.
 services: storage
 author: tamram
 ms.service: storage
@@ -9,168 +9,168 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a980c7bd068a463956191eece43ec1be233e7890
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bb66e90f1d835a6341b47bb698cf05bc442e0ac0
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367627"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82129244"
 ---
-# <a name="store-business-critical-blob-data-with-immutable-storage"></a>İş açısından kritik blob verilerini değişmez depolama yla depolama
+# <a name="store-business-critical-blob-data-with-immutable-storage"></a>Sabit depolamayla iş açısından kritik blob verilerini depolayın
 
-Azure Blob depolama için değişmez depolama, kullanıcıların işle ilgili kritik veri nesnelerini WORM (Bir Kez Yaz, Çok Oku) durumunda depolamasına olanak tanır. Bu durum, verileri kullanıcı tarafından belirtilen bir aralık için eritilemez ve değiştirilemez hale getirir. Bekletme aralığı süresince, lekeler oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Değişmez depolama, tüm Azure bölgelerinde genel amaçlı v1, genel amaçlı v2, BlobStorage ve BlockBlobStorage hesapları için kullanılabilir.
+Azure Blob depolama için sabit depolama, kullanıcıların iş açısından kritik veri nesnelerini bir solucan içinde depolamasına olanak sağlar (bir kez yaz, çok oku) durumu. Bu durum, verileri silinebilir olmayan ve Kullanıcı tarafından belirtilen bir Aralık için değiştirilemez hale getirir. Saklama aralığı süresince, Bloblar oluşturulup okunabilir, ancak değiştirilemez veya silinemez. Genel amaçlı v1, genel amaçlı v2, BlobStorage ve tüm Azure bölgelerindeki blok Blobstorage hesapları için sabit depolama kullanılabilir.
 
-Azure portalı, PowerShell veya Azure CLI'yi kullanarak yasal dayanakları nasıl ayarlayıp temizleyeceğimiz veya bunları oluşturabilirsiniz hakkında bilgi için [Blob depolama için uygun olmayan ilkeleri ayarlayın ve yönetin.](storage-blob-immutability-policies-manage.md)
+Yasal tutmaları ayarlama ve temizleme veya Azure portal, PowerShell veya Azure CLı kullanarak zaman tabanlı bir bekletme ilkesi oluşturma hakkında bilgi için bkz. [BLOB depolama için imlebilirlik Ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md).
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
-## <a name="about-immutable-blob-storage"></a>Değişmez Blob depolama hakkında
+## <a name="about-immutable-blob-storage"></a>Sabit BLOB depolama hakkında
 
-Değişmez depolama, sağlık kuruluşu, finans kurumları ve&mdash;ilgili sektörlerin&mdash;özellikle broker-bayi kuruluşlarının verileri güvenli bir şekilde depolamasına yardımcı olur. Değişmez depolama da değişiklik veya silme karşı kritik verileri korumak için herhangi bir senaryoda kaldıraçlı olabilir.
+Sabit depolama, sağlık kurumlarının, mali kurumların ve ilgili&mdash;sektörlerin özellikle de aracı&mdash;dağıtıcı kuruluşların verileri güvenli bir şekilde depolamasına yardımcı olur Sabit depolama Ayrıca, değişiklik veya silme açısından kritik verileri korumak için herhangi bir senaryoda yararlanılabilir olabilir.
 
 Tipik kullanım alanları şunlardır:
 
-- **Mevzuata uygunluk**: Azure Blob depolama için değişmez depolama, kuruluşların SEC 17a-4(f), CFTC 1.31(d), FINRA ve diğer düzenlemeleri ele almalarına yardımcı olur. Cohasset Associates tarafından hazırlanan teknik bir teknik inceleme, Değişmez depolamanın bu düzenleyici gereksinimleri nasıl karşılar, [Microsoft Service Trust Portal](https://aka.ms/AzureWormStorage)üzerinden indirilebilir olduğunu ayrıntılarıyla anlatır. [Azure Güven Merkezi,](https://www.microsoft.com/trustcenter/compliance/compliance-overview) uyumluluk sertifikalarımız hakkında ayrıntılı bilgiler içerir.
+- **Mevzuat uyumluluğu**: Azure Blob depolama için sabit depolama, KURULUŞLARıN, sn. a-4 (f), CFTC 1.31 (d), finra ve diğer yönetmelikleri ele masına yardımcı olur. Cohasset ile teknik bir Teknik İnceleme ayrıntıları, bu mevzuat gereksinimlerinin ne kadar sabit olduğunu [Microsoft hizmet güveni portalı](https://aka.ms/AzureWormStorage)aracılığıyla indirileceğine ilişkin ayrıntıları ayrıntılarıyla ilişkilendirir. [Azure Güven Merkezi](https://www.microsoft.com/trustcenter/compliance/compliance-overview) , uyumluluk sertifikalarımızla ilgili ayrıntılı bilgiler içerir.
 
-- **Güvenli belge saklama**: Azure Blob depolama için değişmez depolama, hesap yönetim ayrıcalıklarına sahip kullanıcılar da dahil olmak üzere verilerin hiçbir kullanıcı tarafından değiştirilememesini veya silinememesini sağlar.
+- **Güvenli belge saklama**: Azure Blob depolama için sabit depolama, verilerin hesap yönetici ayrıcalıklarına sahip kullanıcılar dahil olmak üzere herhangi bir kullanıcı tarafından değiştirilmesini veya silinmesini sağlar.
 
-- **Yasal bekleme**: Azure Blob depolama için değişmez depolama, kullanıcıların dava veya iş kullanımı açısından kritik öneme sahip hassas bilgileri, bekleme kaldırılana kadar istenilen süre boyunca kurcalamaya dayanıklı bir durumda depolamalarına olanak tanır. Bu özellik yalnızca yasal kullanım durumlarla sınırlı değildir, ancak olay tetikleyicilerine veya şirket ilkesine dayalı verileri koruma gereksiniminin gerekli olduğu olay tabanlı bir tutma veya kuruluş kilidi olarak da düşünülebilir.
+- **Yasal tutma**: Azure Blob depolama için sabit depolama, kullanıcıların, bekletme kaldırılana kadar istenen süre için, BT veya iş kullanımı açısından kritik öneme sahip gizli bilgileri, istenen süreye göre depolamanıza olanak sağlar. Bu özellik yalnızca yasal kullanım durumları ile sınırlı değildir, ancak olay tetikleyicilerine veya kurumsal ilkeye göre verilerin korunması gerektiğinde olay tabanlı bir saklama veya kurumsal kilit olarak da düşünülebilir.
 
-Değişmez depolama aşağıdaki özellikleri destekler:
+Sabit depolama aşağıdaki özellikleri destekler:
 
-- **[Zamana dayalı bekletme ilkesi desteği](#time-based-retention-policies)**: Kullanıcılar verileri belirli bir aralıkta depolamak için ilkeler ayarlayabilir. Zaman tabanlı bekletme ilkesi ayarlandığında, blobs oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinmez. Bekletme süresi dolduktan sonra, lekeler silinebilir, ancak üzerine yazılamaz.
+- **[Zamana dayalı bekletme ilkesi desteği](#time-based-retention-policies)**: kullanıcılar, belirli bir Aralık için verileri depolamak üzere ilkeler ayarlayabilir. Zaman tabanlı bir bekletme ilkesi ayarlandığında, Bloblar oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Saklama süresi dolduktan sonra Bloblar silinebilir ancak üzerine yazılmaz.
 
-- **[Yasal tutma ilkesi desteği](#legal-holds)**: Bekletme aralığı bilinmiyorsa, kullanıcılar yasal tutma temizlenene kadar değişmez verileri depolamak için yasal tutmalar ayarlayabilir.  Yasal tutma ilkesi ayarlandığında, blobs oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinmez. Her yasal tutma, tanımlayıcı dizesi olarak kullanılan kullanıcı tanımlı alfasayısal etiketle (servis talebi kimliği, olay adı, vb.) ilişkilidir. 
+- **[Yasal tutma ilkesi desteği](#legal-holds)**: bekletme aralığı bilinmiyorsa, kullanıcılar yasal tutmaları, yasal saklama temizlenene kadar sabit verileri depolayacak şekilde ayarlayabilir.  Yasal bir saklama ilkesi ayarlandığında, Bloblar oluşturulabilir ve okunabilir, ancak değiştirilemez veya silinemez. Her yasal saklama, bir tanımlayıcı dize olarak kullanılan Kullanıcı tanımlı bir alfasayısal etiketle (örneğin, bir durum KIMLIĞI, olay adı vb.) ilişkilendirilir. 
 
-- **Tüm blob katmanları için destek**: WORM ilkeleri Azure Blob depolama katmanından bağımsızdır ve tüm katmanlar için geçerlidir: sıcak, serin ve arşiv. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
+- **Tüm blob katmanları Için destek**: solucan Ilkeleri Azure Blob depolama katmanından bağımsızdır ve tüm katmanlara uygulanır: sık erişimli, seyrek erişimli ve arşiv. Kullanıcılar verileri iş yüklerine göre en uygun maliyetli katmanda depolarken verilerin de sabit tutulmasını sağlayabilir.
 
-- **Kapsayıcı düzeyinde yapılandırma**: Kullanıcılar zaman tabanlı bekletme ilkelerini ve yasal bekleme etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
+- **Kapsayıcı düzeyinde yapılandırma**: kullanıcılar, zaman tabanlı bekletme ilkelerini ve geçerli saklama etiketlerini kapsayıcı düzeyinde yapılandırabilir. Kullanıcılar basit kapsayıcı düzeyi ayarlarını kullanarak zamana bağlı saklama ilkelerini oluşturup kilitleme, saklama aralıklarını uzatma ve yasal tutma ayarlayıp silme gibi daha birçok işlem yapabilir. Bu ilkeler kapsayıcıdaki mevcut ve yeni tüm bloblara uygulanır.
 
-- **Denetim günlüğü desteği**: Her kapsayıcı bir ilke denetim günlüğü içerir. Kilitli zaman tabanlı bekletme ilkeleri için yedi saate kadar bekletme komutunu gösterir ve kullanıcı kimliğini, komut türünü, zaman damgalarını ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17a-4(f) düzenleyici yönergelerine uygun olarak, politikanın kullanım ömrü boyunca saklanır. [Azure Etkinlik Günlüğü,](../../azure-monitor/platform/platform-logs-overview.md) tüm kontrol düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [azure tanı günlüklerini](../../azure-monitor/platform/platform-logs-overview.md) etkinleştirirken veri düzlemi işlemlerini korur ve gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
+- **Denetim günlüğü desteği**: her kapsayıcı bir ilke Denetim günlüğü içerir. Kilitleme zaman tabanlı bekletme ilkeleri için yedi adede kadar zamana dayalı saklama komutu gösterir ve Kullanıcı KIMLIĞI, komut türü, zaman damgaları ve bekletme aralığını içerir. Yasal tutma olaylarında günlük girişinde kullanıcı kimliği, komut türü, zaman damgaları ve yasal tutma etiketleri yer alır. Bu günlük, SEC 17A-4 (f) mevzuat yönergelerine uygun olarak ilkenin kullanım ömrü boyunca tutulur. [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md) tüm denetim düzlemi etkinliklerinin daha kapsamlı bir günlüğünü gösterir; [Azure Kaynak günlüklerinin](../../azure-monitor/platform/platform-logs-overview.md) etkinleştirilmesi ve veri düzlemi işlemlerini gösterir. Düzenlemeler veya diğer amaçlar doğrultusunda ihtiyaç duyulabilecek günlüklerin düzenli olarak depolanması kullanıcının sorumluluğundadır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı saklama ilkesi veya yasal bekleme uygulandığında, varolan tüm lekeler 30 saniyeden kısa bir sürede değişmez bir WORM durumuna geçer. Bu ilke korumalı kapsayıcıya yüklenen tüm yeni lekeler de değişmez bir duruma taşınır. Tüm lekeler değişmez bir duruma geldiklerinde, değişmez ilke onaylanır ve değişmez kapsayıcıdaki herhangi bir işlem üzerinde veya silinmesine izin verilmez.
+Azure Blob depolama için sabit depolama özelliği, iki WORM veya sabit ilke türünü destekler: zamana bağlı saklama ve yasal tutma. Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi veya yasal saklama alanı uygulandığında, mevcut tüm Bloblar 30 saniyeden az bir şekilde sabit bir solucan durumuna geçer. Bu ilkeyle korunan kapsayıcıya yüklenen tüm yeni Bloblar da sabit bir duruma geçer. Tüm Bloblar sabit bir durumda olduktan sonra, değişmez ilke onaylanır ve sabit kapsayıcıda üzerine yazma veya silme işlemlerine izin verilmez.
 
-Konteyner ve depolama hesabı silme işlemi, yasal bir bekleme veya kilitli zaman tabanlı bir ilke tarafından korunan bir kapsayıcıda herhangi bir blob varsa da izin verilmez. Yasal bir bekleme ilkesi blob, konteyner ve depolama hesabı silme karşı koruyacaktır. Hem kilitsiz hem de kilitli zaman tabanlı ilkeler, belirtilen süre boyunca blob silmeye karşı koruma sağlayacaktır. Hem kilitsiz hem de kilitli zaman tabanlı ilkeler, yalnızca kapsayıcının içinde en az bir blob varsa, kapsayıcı silme işlemine karşı koruma sağlayacaktır. Yalnızca *kilitli* zaman tabanlı ilkeile bir kapsayıcı depolama hesabı silmelerine karşı korur; Kilitsiz zaman tabanlı ilkelere sahip kapsayıcılar depolama hesabı silme koruması veya uyumluluk sağlamaz.
+Kapsayıcıda, yasal bir saklama veya kilitli zaman tabanlı bir ilke tarafından korunan bir blob varsa kapsayıcı ve depolama hesabı silmeye de izin verilmez. Yasal bir saklama ilkesi blob, kapsayıcı ve depolama hesabı silmeye karşı korunur. Hem kilidi açılmış hem de kilitli zaman tabanlı ilkeler, belirtilen süre boyunca blob silinmeye karşı korunur. Hem kilitlemeli hem de kilitli zaman tabanlı ilkeler, kapsayıcıda yalnızca en az bir blob varsa kapsayıcı silmeye karşı koruma sağlayacaktır. Yalnızca *kilitli* zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silmelerini karşı korunur; kilidi açılmış zaman tabanlı ilkelerle kapsayıcı, depolama hesabı silme koruması ve uyumluluğu sunmaz.
 
-Zaman tabanlı bekletme ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için [Blob depolama için uygun olmayan ilkeleri ayarla ve yönetin.](storage-blob-immutability-policies-manage.md)
+Zamana dayalı saklama ilkelerini ayarlama ve kilitleme hakkında daha fazla bilgi için bkz. [BLOB depolama için imlebilirlik Ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md).
 
-## <a name="time-based-retention-policies"></a>Zamana dayalı bekletme ilkeleri
+## <a name="time-based-retention-policies"></a>Zamana dayalı saklama ilkeleri
 
 > [!IMPORTANT]
-> Blobun SEC 17a-4(f) ve diğer mevzuata uygunluk için uyumlu değişmez (korumalı yazma ve silme) durumunda olması için zamantabanlı bekletme ilkesi *kilitlenmelidir.* Politikayı genellikle 24 saatten kısa bir süre içinde kilitlemenizi öneririz. Uygulanan zaman tabanlı bekletme ilkesinin ilk durumu *açılır*ve bu özellik özelliği ni sınamanıza ve kilitlemeden önce ilkede değişiklik yapmanıza olanak sağlar. *Kilitsiz* durum kullanılabilirlik koruması sağlarken, *kilitlenme* durumu kısa süreli özellik denemeleri dışında herhangi bir amaçla kullanmanızı önermiyoruz. 
+> Bir zaman tabanlı bekletme ilkesi, blob 'un SEC 17A-4 (f) ve diğer yasal *uyumluluk için uyumlu* bir sabit (yazma ve silme korumalı) durumunda olması gerekir. İlkeyi, genellikle 24 saatten daha az sürede kilitlemenizi öneririz. Uygulanan bir zaman tabanlı bekletme ilkesinin ilk durumu, kilidi kapatmadan önce özelliği test etmeniz ve ilkede değişiklikler *yapmanız sağlanır.* *Kilidi açık* duruma karşı koruma sağlarken, kısa vadeli Özellik denemeleri dışında herhangi bir amaçla *kilitsiz* durum kullanılması önerilmez. 
 
-Bir kapsayıcıya zaman tabanlı bekletme ilkesi uygulandığında, kapsayıcıdaki tüm lekeler *etkili* bekletme süresi boyunca değişmez durumda kalır. Blobs için etkili bekletme süresi, blob'un **oluşturma süresi** ile kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir. Kullanıcılar saklama süresini uzatabildiğinden, sabit depolama geçerli olan saklama süresinin hesaplanmasında kullanıcı tarafından belirtilen en son saklama aralığı değeri kullanılır.
+Bir kapsayıcıya zaman tabanlı bir bekletme ilkesi uygulandığında, kapsayıcıdaki tüm Bloblar, *etkin* saklama dönemi süresince sabit durumda kalır. Blob 'lar için geçerli saklama süresi, Blobun **oluşturulma zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farka eşittir. Kullanıcılar saklama süresini uzatabildiğinden, sabit depolama geçerli olan saklama süresinin hesaplanmasında kullanıcı tarafından belirtilen en son saklama aralığı değeri kullanılır.
 
-Örneğin, bir kullanıcının beş yıllık bekletme aralığıyla zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bu kapta mevcut bir leke, _testblob1_, bir yıl önce oluşturuldu; bu nedenle, _testblob1_ için etkili saklama süresi dört yıldır. Yeni bir blob, _testblob2_, konteyner yüklendiğinde, _testblob2_ için etkili saklama süresi oluşturulduktan sonra beş yıldır.
+Örneğin, bir kullanıcının beş yıl bekletme aralığı ile zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bu kapsayıcıda bulunan mevcut bir blob, _testblob1_, bir yıl önce oluşturulmuştur; Bu nedenle, _testblob1_ için geçerli saklama süresi dört yıldır. _Testblob2_yeni bir blob, kapsayıcıya yüklendiğinde, _testblob2_ için geçerli saklama süresi, oluşturma zamanından beş yıl olur.
 
-Yalnızca özellik testi için kilitsiz zaman tabanlı bir saklama ilkesi önerilir ve SEC 17a-4(f) ve diğer mevzuata uygunlukla uyumlu olması için bir ilke kilitlenmelidir. Zaman ayarı tabanlı bekletme ilkesi kilitlendikten sonra, ilke kaldırılamaz ve etkin saklama süresine en fazla beş artışa izin verilir.
+Kilitlemeli bir süre tabanlı bekletme ilkesi yalnızca özellik testi için önerilir ve sn, SEC 17A-4 (f) ve diğer mevzuata uyumluluğuyla uyumlu olması için kilitlenmelidir. Zaman tabanlı bekletme ilkesi kilitlendiğinde, ilke kaldırılamaz ve etkin saklama süresine en fazla beş artışa izin verilir.
 
 Aşağıdaki sınırlar bekletme ilkeleri için geçerlidir:
 
-- Bir depolama hesabı için, kilitli zaman tabanlı değişmez ilkelere sahip kapsayıcıların maksimum sayısı 10.000'dir.
-- Minimum bekletme aralığı 1 gündür. Maksimum 146.000 gün (400 yıl) olduğunu.
-- Bir kapsayıcı için, kilitli zaman tabanlı değişmez ilkeler için bekletme aralığını uzatmak için en fazla olan düzenler 5'tir.
+- Depolama hesabı için, kilitli zamana dayalı sabit ilkelerle maksimum kapsayıcı sayısı 10.000 ' dir.
+- En düşük saklama aralığı 1 gündür. En fazla 146.000 gün (400 yıl).
+- Bir kapsayıcı için, kilitli zaman tabanlı sabit ilkeler için bir bekletme aralığını uzatmak üzere en fazla düzenleme sayısı 5 ' tir.
 - Bir kapsayıcı için, kilitli bir ilke için en fazla yedi zaman tabanlı bekletme ilkesi denetim günlüğü tutulur.
 
-### <a name="allow-protected-append-blobs-writes"></a>Korumalı ek blobs yazmaizin
+### <a name="allow-protected-append-blobs-writes"></a>Korumalı ekleme Blobları yazmaları sağlar
 
-Ek blobs veri blokları oluşur ve denetim ve günlük senaryoları tarafından gerekli veri ek işlemleri için optimize edilmiştir. Tasarım olarak, ek lekeler sadece blob sonuna yeni blokların eklenmesine izin verir. Ne olursa olsun immutability, değişiklik veya bir ek blob mevcut blokların silinmesi temelde izin verilmez. Ek blobs hakkında daha fazla bilgi edinmek için, [Append Blobs hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)bakın.
+Ekleme Blobları, veri bloklarından oluşur ve denetim ve günlük senaryoları için gereken veri ekleme işlemleri için iyileştirilmiştir. Tasarım, ekleme Blobları yalnızca Blobun sonuna yeni blokların eklenmesine izin verir. Değişiklik yapılarından bağımsız olarak, bir ekleme blobu içindeki mevcut blokların değiştirilmesine veya silinmesine göre temelde izin verilmez. Blob ekleme hakkında daha fazla bilgi için bkz. [BLOB ekleme blobu hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs).
 
-Yalnızca zaman tabanlı bekletme `allowProtectedAppendWrites` ilkeleri, bir ek blob'a yeni bloklar yazmaya olanak tanıyan bir ayar alırken, bir yandan da karşılama koruması ve uyumluluğu korur. Etkinleştirilirse, doğrudan ilke korumalı kapsayıcıda bir ek blob oluşturmanıza ve *AppendBlock* API'sını kullanarak varolan ek bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve varolan bloklar değiştirilemez veya silinemez. Etkin bekletme süresi geçene kadar ekteki blobun silinmesini engelleyerek zaman tutma uygulanabilirliği koruması hala geçerlidir. Bu ayarı etkinleştirmek blok lekeleri veya sayfa lekeleri değişmezlik davranışını etkilemez.
+Yalnızca zaman tabanlı bekletme ilkeleri, daha fazla `allowProtectedAppendWrites` koruma ve uyumluluk sağlarken, ek bir bloba yeni bloklar yazmaya olanak tanıyan bir ayara sahiptir. Etkinleştirilirse, ilkeyle korunan kapsayıcıda doğrudan bir ekleme blobu oluşturabilir ve *Appendblock* API 'sini kullanarak var olan ekleme bloblarının sonuna yeni veri blokları eklemeye devam edebilirsiniz. Yalnızca yeni bloklar eklenebilir ve var olan tüm bloklar değiştirilemez veya silinemez. Zaman bekletme güvenilirlik koruması hala geçerlidir, etkin saklama süresi geçene kadar ekleme blobu silmeyi önler. Bu ayarın etkinleştirilmesi, blok Blobları veya sayfa Blobları için dengesterlebilirlik davranışını etkilemez.
 
-Bu ayar zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ek blobs *etkili* bekletme süresi boyunca değişmez durumda kalmaya devam eder. Yeni veriler ekteki blob'un ilk oluşturmanın ötesine eklenebilir olduğundan, bekletme süresinin nasıl belirlendiği konusunda küçük bir fark vardır. Etkili bekletme, ek blob'un **son değişiklik süresi** ile kullanıcı tarafından belirtilen bekletme aralığı arasındaki farktır. Benzer şekilde bekletme aralığı genişletildiğinde, değişmez depolama etkili bekletme süresini hesaplamak için kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
+Bu ayar, zaman tabanlı bekletme ilkesinin bir parçası olduğundan, ekleme Blobları, *etkin* saklama dönemi süresince hala sabit durumda kalır. Yeni veriler ekleme Blobun ilk oluşturulduktan sonra eklenebileceği için, bekletme döneminin nasıl belirlendiği küçük bir farklılık vardır. Etkin saklama, ekleme blobunun **son değiştirilme zamanı** ve Kullanıcı tarafından belirtilen bekletme aralığı arasındaki farktır. Benzer şekilde, saklama aralığı genişletildiğinde, sabit depolama, etkin saklama süresini hesaplamak için Kullanıcı tarafından belirtilen bekletme aralığının en son değerini kullanır.
 
-Örneğin, bir kullanıcının etkin leştirilmiş ve 90 `allowProtectedAppendWrites` günlük bekletme aralığına sahip zaman tabanlı bir bekletme ilkesi oluşturduğunu varsayalım. Bir ek blob, _logblob1_, bugün konteyner oluşturulur, yeni günlükleri önümüzdeki 10 gün boyunca ek blob eklenmeye devam; bu yüzden, _logblob1_ için etkili saklama süresi bugünden itibaren 100 gündür (son ekinin zamanı + 90 gün).
+Örneğin, bir kullanıcının etkin bir zaman tabanlı bekletme ilkesi oluşturduğunu ve 90 günlük bekletme `allowProtectedAppendWrites` aralığına sahip olduğunu varsayalım. Bir Append blobu, _logblob1_, bugün kapsayıcıda oluşturulur, yeni Günlükler sonraki 10 gün boyunca ekleme blobuna eklenmeye devam eder; Bu nedenle, _logblob1_ için geçerli saklama süresi bugünden itibaren 100 gündür (son append + 90 gün saati).
 
-Kilitsiz zaman tabanlı bekletme `allowProtectedAppendWrites` ilkeleri, ayarının herhangi bir zamanda etkinleştirilmesine ve devre dışı tutulmasına olanak sağlar. Zaman tabanlı bekletme ilkesi kilitlendikten sonra `allowProtectedAppendWrites` ayar değiştirilemez.
+Kilitsiz zaman tabanlı bekletme ilkeleri, `allowProtectedAppendWrites` ayarın etkin ve devre dışı olarak herhangi bir zamanda etkinleştirilmesini sağlar. Zaman tabanlı bekletme ilkesi kilitlendiğinde, `allowProtectedAppendWrites` ayar değiştirilemez.
 
-Yasal tutma politikaları `allowProtectedAppendWrites` etkinleştiremez ve herhangi bir yasal tutma 'allowProtectedAppendWrites' özelliğini geçersiz kılar. `allowProtectedAppendWrites` Etkinleştirilmiş zaman tabanlı bir saklama ilkesine yasal bir bekleme uygulanırsa, yasal bekleme kaldırılana kadar *AppendBlock* API başarısız olur.
+Yasal saklama ilkeleri etkinleştirilemez `allowProtectedAppendWrites` ve geçerli saklama, ' allowProtectedAppendWrites ' özelliğini null olarak tutacaktır. Etkin olan `allowProtectedAppendWrites` bir zaman tabanlı bekletme ilkesine geçerli bir saklama uygulanmışsa, yasal tutmaya yükseltilmemiş kadar *Appendblock* API 'si başarısız olur.
 
 ## <a name="legal-holds"></a>Yasal tutma
 
-Yasal dayanaklar, yasal soruşturma amaçları veya genel koruma politikaları için kullanılabilecek geçici tutarlardır. Her yasal tutma ilkesinin bir veya daha fazla etiketle ilişkilendirilmesi gerekir. Etiketler, tutmanın amacını kategorilere ayırmak ve açıklamak için servis talebi kimliği veya olay gibi adlandırılmış bir tanımlayıcı olarak kullanılır.
+Yasal saklama işlemleri, yasal Araştırma amaçları veya genel koruma ilkeleri için kullanılabilen geçici tutmalar. Her yasal saklama ilkesinin bir veya daha fazla etiketle ilişkilendirilmesi gerekir. Etiketler, bekletme amacını kategorilere ayırmak ve belirlemek için bir Case ID veya Event gibi adlandırılmış bir tanımlayıcı olarak kullanılır.
 
-Bir kapsayıcı nın hem yasal tutma hem de zamantabanlı saklama ilkesi aynı anda olabilir. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır.
+Bir kapsayıcı aynı anda hem yasal ayrı tutmaya hem de zaman tabanlı bir bekletme ilkesine sahip olabilir. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır.
 
-Aşağıdaki sınırlar yasal tutarlar için geçerlidir:
+Geçerli tutmalar için aşağıdaki sınırlar geçerlidir:
 
-- Bir depolama hesabı için, yasal bekleme ayarı olan maksimum kapsayıcı sayısı 10.000'dir.
-- Bir kapsayıcı için, yasal bekleme etiketleri maksimum sayısı 10'dur.
-- Yasal bekleme etiketinin minimum uzunluğu üç alfasayısal karakterdir. Maksimum uzunluk 23 alfasayısal karakterdir.
-- Bir kapsayıcı için, ilke süresince en fazla 10 yasal tutma ilkesi denetim günlüğü tutulur.
+- Bir depolama hesabı için, geçerli bir saklama ayarı olan en fazla kapsayıcı sayısı 10.000 ' dir.
+- Bir kapsayıcı için, en fazla yasal saklama etiketi sayısı 10 ' dur.
+- Geçerli bir saklama etiketinin minimum uzunluğu üç alfasayısal karakterdir. Maksimum uzunluk 23 alfasayısal karakterdir.
+- Bir kapsayıcı için, ilke süresince en fazla 10 yasal saklama ilkesi denetim günlüğü tutulur.
 
 ## <a name="scenarios"></a>Senaryolar
-Aşağıdaki tablo, farklı değişmez senaryolar için devre dışı bırakılan Blob depolama işlemleri türlerini gösterir. Daha fazla bilgi için [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) belgelerine bakın.
+Aşağıdaki tabloda, farklı sabit senaryolar için devre dışı bırakılmış BLOB depolama işlemlerinin türleri gösterilmektedir. Daha fazla bilgi için bkz. [Azure Blob hizmeti REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) belgeleri.
 
-|Senaryo  |Blob durumu  |Blob işlemleri reddedildi  |Konteyner ve hesap koruması
+|Senaryo  |Blob durumu  |Blob işlemleri reddedildi  |Kapsayıcı ve hesap koruması
 |---------|---------|---------|---------|
-|Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı     |Sabit: hem silme hem de yazma korumalı         | Blob<sup>1,</sup>Put Block<sup>1,</sup>Put Block List<sup>1</sup>, Sil Kapsayıcı, Blob Sil, Blob Metadata Set, Put Page, Set Blob Özellikleri, Snapshot Blob, Artımlı Kopya Blob, Ek Blok<sup>2</sup>         |Konteyner silme reddedildi; Depolama Hesabı silme reddedildi         |
-|Blob üzerinde etkili saklama süresi doldu ve hiçbir yasal tutma ayarlanır    |Yalnızca yazma korumalı (silme işlemlerine izin verilir)         |Blob<sup>1</sup>koy , Blok<sup>1</sup>koymak , Blok Listesi<sup>1</sup>koyun , Set Blob Metadata, Put Page, Set Blob Özellikleri, Snapshot Blob, Artımlı Kopya Blob, Ek Blok<sup>2</sup>         |Korunan konteyner içinde en az 1 blob varsa konteyner silme reddedilir; Depolama Hesabı silme yalnızca *kilitli* zaman tabanlı ilkeler için reddedildi         |
-|WORM ilkesi uygulanmaz (zamantabanlı saklama ve yasal bekleme etiketi yok)     |Değiştirilebilir         |None         |None         |
+|Blobdaki geçerli saklama süresi dolmadı ve/veya yasal tutma ayarlandı     |Sabit: hem silme hem de yazma korumalı         | Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, kapsayıcıyı silme, blobu silme, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Kapsayıcı silme reddedildi; Depolama hesabı silme reddedildi         |
+|Blobda etkin bekletme aralığının süresi doldu ve geçerli bir tutma ayarlanmadı    |Yalnızca yazma korumalı (silme işlemlerine izin verilir)         |Blob<sup>1</sup>, put bloğu<sup>1</sup>, yerleştirme, blok listesi<sup>1</sup>, blob meta verilerini ayarlama, yerleştirme sayfası, blob özelliklerini ayarlama, anlık görüntü blobu, artımlı kopya blobu, ekleme bloğu<sup>2</sup>         |Korumalı kapsayıcıda en az 1 blob varsa kapsayıcı silme reddedildi; Depolama hesabı silme yalnızca *kilitli* zaman tabanlı ilkeler için reddedildi         |
+|Hiçbir solucan ilkesi uygulanmadı (zaman tabanlı saklama ve geçerli saklama etiketi yok)     |Değiştirilebilir         |Hiçbiri         |Hiçbiri         |
 
-<sup>1</sup> Blob hizmeti, bu işlemlerin bir kez yeni bir blob oluşturmasına olanak tanır. Değişmez bir kapsayıcıda varolan bir blob yolunda sonraki tüm overwrite işlemlerine izin verilmez.
+<sup>1</sup> blob hizmeti bu işlemlerin bir kez yeni blob oluşturmasına izin verir. Sabit bir kapsayıcıda var olan bir blob yolundaki tüm sonraki üzerine yazma işlemlerine izin verilmez.
 
-<sup>2</sup> Append Block'a yalnızca `allowProtectedAppendWrites` özellik etkinken zaman ayarı ilkesi için izin verilir. Daha fazla bilgi [için, Korumalı Ek Blobs Yazmaları](#allow-protected-append-blobs-writes) Bölümüne bakın.
+<sup>2</sup> Append bloğuna yalnızca `allowProtectedAppendWrites` özelliği etkinleştirilmiş zaman tabanlı bekletme ilkeleri için izin verilir. Daha fazla bilgi için, [korumalı ekleme Blobları yazmaları Izin ver](#allow-protected-append-blobs-writes) bölümüne bakın.
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Bu özelliği kullanmak için ek ücret alınmaz. Değişmez veriler, mutable verilerle aynı şekilde fiyatlandırılır. Azure Blob depolama alanıyla ilgili fiyatlandırma ayrıntıları için [Azure Depolama fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/storage/blobs/)bakın.
+Bu özelliği kullanmak için ek ücret alınmaz. Değişmez veriler, değişebilir verilerle aynı şekilde fiyatlandırılır. Azure Blob depolama hakkındaki fiyatlandırma ayrıntıları için bkz. [Azure Depolama fiyatlandırması sayfası](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="faq"></a>SSS
 
-**WORM uyumluluğu ile ilgili belgeleri sağlayabilir misiniz?**
+**SOLUCAN uyumluluğuna ilişkin belgeler verebilir misiniz?**
 
-Evet. Microsoft, uygunluğu belgelemek için, kayıt yönetimi ve bilgi yönetimi konusunda uzmanlaşmış lider bir bağımsız değerlendirme firması olan Cohasset Associates'i, değişmez Blob depolamasını ve finansal hizmetler sektöründe. Cohasset, worm durumunda zaman tabanlı Blobs tutmak için kullanıldığında değişmez Blob depolama, CFTC Kural 1.31(c)-(d), FINRA Kural 4511 ve SEC Kural 17a-4 ilgili depolama gereksinimlerini karşılar doğrulanır. Microsoft, finansal kurumlar için kayıtların saklanması için küresel olarak en açıklayıcı kılavuzu temsil ettiği için bu kurallar kümesini hedeflemidir. Cohasset raporu [Microsoft Service Trust Center'da](https://aka.ms/AzureWormStorage)kullanılabilir. WORM immutability uyumluluğu ile ilgili olarak Microsoft'tan bir attestation mektubu istemek için lütfen Azure desteğine başvurun.
+Evet. Microsoft, uyumluluğu belgelemek için, sabit blob depolamayı ve finans hizmetleri sektörüne özgü gereksinimlerle uyumluluğunu değerlendirmek üzere kayıt yönetimi ve bilgi yönetimi, Cohasset Associates ' de uzmanlaşmış, önde gelen bağımsız bir değerlendirme firması elde eder. Cohasset, bir solucan durumunda zaman tabanlı Blobları sürdürmek için kullanıldığında, sabit BLOB depolama alanının, CFTC Rule 1.31 (c)-(d), FINRA kuralı 4511 ve SEC Rule 17A-4 ' nin ilgili depolama gereksinimlerini karşılar. Microsoft, bu kural kümesini hedefleyen, mali kurumlara yönelik kayıtlar için küresel olarak en iyi şekilde koruma kılavuzunu temsil etmektedir. Cohasset raporu, [Microsoft hizmet Güven Merkezi](https://aka.ms/AzureWormStorage)' nde kullanılabilir. Microsoft 'tan solucan kanıtlama uygunluk uyumluluğuna ilişkin bir kanıtlama mektubu istemek için lütfen Azure desteğine başvurun.
 
-**Bu özellik yalnızca blobs ve append blobs engellemek için mi, ya da sayfa lekeleri için de geçerli mi?**
+**Özellik yalnızca blob 'ları ve ekleme bloblarını ve sayfa bloblarını da engellemek için geçerlidir mi?**
 
-Değişmez depolama kapsayıcı düzeyinde ayarlanır gibi herhangi bir blob türü ile kullanılabilir, ancak özellikle blok lekeleri ve ek lekeleri depolar kapsayıcılar için WORM kullanmanızı öneririz. Bir kapsayıcıdaki varolan lekeler yeni ayarlanmış bir WORM ilkesi yle korunur. Ancak worm kapsayıcısının dışında yeni sayfa lekeleri oluşturulması ve sonra kopyaedilmesi gerekir. WORM kapsayıcısına kopyalandıktan sonra, sayfa lekesinde başka değişiklik yapılmasına izin verilmez. Herhangi bir etkin sanal makine için VHD'leri (sayfa lekeleri) depolayan bir kapsayıcıda WORM ilkesinin ayarlanması, VM diskini kilitleyeceği için önerilmez. Zamana dayalı ilkeleri kilitlemeden önce belgeleri ayrıntılı olarak gözden geçirmenizi ve senaryolarınızı test etmenizi öneririz.
+Sabit depolama, kapsayıcı düzeyinde ayarlandığı için herhangi bir blob türüyle kullanılabilir, ancak genellikle blok bloblarını ve ekleme bloblarını depolayan kapsayıcılar için solucan kullanmanızı öneririz. Bir kapsayıcıdaki mevcut Bloblar, yeni set SOLUCANı ilkesiyle korunacaktır. Ancak yeni sayfa bloblarının solucan kapsayıcısının dışında oluşturulması ve ardından içinde kopyalanması gerekir. Bir solucan kapsayıcısına kopyalandıktan sonra, bir sayfa blobuna başka değişikliklere izin verilmez. VM diskini kilitleyecek şekilde VHD 'leri (sayfa Blobları) depolayan bir kapsayıcıda bir solucan ilkesi ayarlamak önerilmez. Zaman tabanlı herhangi bir ilkeyi kilitlemeden önce, belgeleri iyice incelemenizi ve senaryolarınızı test etmenizi öneririz.
 
-**Bu özelliği kullanmak için yeni bir depolama hesabı oluşturmam gerekiyor mu?**
+**Bu özelliği kullanmak için yeni bir depolama hesabı oluşturmem gerekir mi?**
 
-Hayır, mevcut veya yeni oluşturulan genel amaçlı v1, genel amaçlı v2, BlobStorage veya BlockBlobStorage hesapları ile değişmez depolama kullanabilirsiniz. Genel amaçlı v1 depolama hesapları desteklenir, ancak daha fazla özellikten yararlanabileceğiniz genel amaçlı v2'ye yükseltmenizi öneririz. Varolan genel amaçlı bir v1 depolama hesabını yükseltme hakkında bilgi için [bkz.](../common/storage-account-upgrade.md)
+Hayır, mevcut veya yeni oluşturulan genel amaçlı v1, genel amaçlı v2, BlobStorage veya BlockBlobStorage hesaplarıyla sabit depolama kullanabilirsiniz. Genel amaçlı v1 depolama hesapları desteklenir, ancak daha fazla özellikten faydalanabilmeniz için, genel amaçlı v2 'ye yükseltmeniz önerilir. Mevcut bir genel amaçlı v1 depolama hesabını yükseltme hakkında daha fazla bilgi için bkz. [Depolama hesabını yükseltme](../common/storage-account-upgrade.md).
 
-**Hem yasal tutma hem de zamana dayalı saklama politikası uygulayabilir miyim?**
+**Yalnızca yasal bir saklama ve zaman tabanlı bekletme ilkesi uygulayabilir miyim?**
 
-Evet, bir kapsayıcı nın hem yasal tutma hem de zamana dayalı saklama ilkesi aynı anda olabilir; ancak, 'allowProtectedAppendWrites' ayarı yasal bekleme temizlenene kadar geçerli olmayacaktır. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır. 
+Evet, bir kapsayıcı aynı anda hem yasal ayrı tutmaya hem de zaman tabanlı bir bekletme ilkesine sahip olabilir; Ancak, geçerli saklama temizlenene kadar ' allowProtectedAppendWrites ' ayarı geçerli olmayacaktır. Geçerli saklama süresi sona erse dahi tüm yasal tutma durumları kaldırılana kadar kapsayıcı içindeki tüm bloblar sabit durumda kalır. Buna karşın tüm yasal tutma ilkeleri silinse dahi geçerli olan saklama süresi boyunca blob sabit durumda kalır. 
 
-**Yasal tutma politikaları sadece yasal işlemler için mi dir, yoksa başka kullanım senaryoları mı var?**
+**Yasal saklama ilkeleri yalnızca yasal bir şekilde geçerlidir veya başka kullanım senaryolarında bulunabilir mi?**
 
-Hayır, Legal Hold sadece zamana dayalı olmayan bir saklama ilkesi için kullanılan genel terimdir. Sadece dava ile ilgili işlemler için kullanılması gerekmez. Yasal Tutma ilkeleri, bekletme süresinin bilinmemesi gereken önemli kuruluş WORM verilerini korumak için üzerine yazmayı devre dışı bırakmak ve silmek için yararlıdır. Görevinizi kritik WORM iş yüklerini korumak için bir kuruluş ilkesi olarak kullanabilirsiniz veya özel bir olay tetikleyicizaman tabanlı bekletme ilkesi kullanımını gerektirmeden önce bir evreleme ilkesi olarak kullanabilirsiniz. 
+Hayır, yasal tutma yalnızca zamana bağlı olmayan bir bekletme ilkesi için kullanılan genel bir terimdir. Yalnızca, ile ilgili bir yaklaşım için kullanılması gerekmez. Yasal saklama ilkeleri, bekletme döneminin bilinmediği önemli kurumsal solucan verilerini korumak için üzerine yazma ve silmeleri devre dışı bırakmak için yararlıdır. Görev açısından kritik solucan iş yüklerinizi korumak için bir kuruluş ilkesi olarak kullanabilir veya özel bir olay tetikleyicisi zaman tabanlı bir bekletme ilkesi kullanımını gerektirdiğinden bunu bir hazırlama ilkesi olarak kullanabilirsiniz. 
 
-**_Kilitli_ zaman tabanlı saklama politikasını veya yasal beklemeyi kaldırabilir miyim?**
+**_Kilitli_ bir zaman tabanlı bekletme ilkesi veya yasal tutmayı kaldırabilir miyim?**
 
-Yalnızca kilitsiz zaman tabanlı bekletme ilkeleri bir kapsayıcıdan kaldırılabilir. Zaman tabanlı bekletme ilkesi kilitlendikten sonra kaldırılamaz; yalnızca etkili saklama süresi uzantılarına izin verilir. Yasal bekleme etiketleri silinebilir. Tüm yasal etiketler silindiğinde, yasal tutma kaldırılır.
+Yalnızca kilitlenmemiş süre tabanlı bekletme ilkeleri bir kapsayıcıdan kaldırılabilir. Zaman tabanlı bekletme ilkesi kilitlendikten sonra kaldırılamaz; Yalnızca etkili Bekletme dönemi uzantılarına izin verilir. Yasal saklama etiketleri silinebilir. Tüm yasal Etiketler silindiğinde, yasal saklama kaldırılır.
 
-**Zamana dayalı saklama ilkesi veya yasal tutma ile bir kapsayıcı silmeye çalışırsam ne olur?**
+**Zaman tabanlı bekletme ilkesiyle veya yasal tutmayla kapsayıcıyı silmeye çalışırsam ne olur?**
 
-Kilitlenmiş veya kilitlenmiş zaman tabanlı saklama ilkesine sahip konteynerin içinde en az bir blob varsa veya kapsayıcıyasal bir ambarı varsa, Sil Kapsayıcısı işlemi başarısız olur. Sil Kapsayıcısı işlemi yalnızca kapsayıcının içinde blob yoksa ve yasal tutar lar yoksa başarılı olur. 
+Kapsayıcıda en az bir blob varsa, kilitli veya kilitlenmemiş bir zaman tabanlı bekletme ilkesiyle veya kapsayıcıda geçerli bir saklama varsa, kapsayıcı silme işlemi başarısız olur. Kapsayıcıyı silme işlemi, yalnızca kapsayıcıda blob yoksa ve geçerli tutma yoksa başarılı olur. 
 
-**Zamana dayalı saklama ilkesi veya yasal tutma olan bir kapsayıcıyla bir depolama hesabını silmeye çalışırsam ne olur?**
+**Zaman tabanlı bekletme ilkesine veya yasal tutmaya sahip bir kapsayıcıya sahip bir depolama hesabını silmeye çalışırsam ne olur?**
 
-Yasal tutma kümesine sahip en az bir kapsayıcı veya **kilitli** zaman tabanlı bir ilke varsa depolama hesabı silme işlemi başarısız olur. Kilitsiz zaman tabanlı bir ilke içeren bir kapsayıcı, depolama hesabı silmeişlemine karşı koruma sağlamaz. Depolama hesabını silmeden önce tüm yasal saklamaları kaldırmalı ve **tüm kilitli** kapsayıcıları silmeniz gerekir. Kapsayıcı silme hakkında bilgi için önceki soruya bakın. [Azure Kaynak Yöneticisi kilitleri](../../azure-resource-manager/management/lock-resources.md)ile depolama hesabınız için daha fazla silme koruması da uygulayabilirsiniz.
+Geçerli bir saklama kümesi veya **kilitli** zaman tabanlı bir ilke olan en az bir kapsayıcı varsa, depolama hesabı silme işlemi başarısız olur. Kilidi açılmış zaman tabanlı ilkeye sahip bir kapsayıcı, depolama hesabı silinmeye karşı koruma sağlamaz. Depolama hesabını silebilmeniz için tüm yasal tutmaları kaldırmanız ve tüm **kilitli** kapsayıcıları silmeniz gerekir. Kapsayıcı silme hakkında daha fazla bilgi için önceki soruya bakın. Ayrıca, [Azure Resource Manager kilitleri](../../azure-resource-manager/management/lock-resources.md)olan depolama hesabınıza yönelik daha fazla silme koruması da uygulayabilirsiniz.
 
-**Blob değişmez durumdayken verileri farklı blob katmanları (sıcak, serin, arşiv) arasında taşıyabilir miyim?**
+**Blob sabit durumundayken verileri farklı blob katmanlarında (sık erişimli, seyrek erişimli Arşiv) taşıyabilir miyim?**
 
-Evet, verileri uyumlu değişmez durumda tutarken verileri blob katmanları arasında taşımak için Blob Tier Ayarını Ayarla komutunu kullanabilirsiniz. Değişmez depolama sıcak, serin ve arşiv blob katmanlarında desteklenir.
+Evet, verileri uyumlu sabit durumda tutarken blob katmanlarında verileri taşımak için blob katmanını ayarla komutunu kullanabilirsiniz. Sabit depolama, sık erişimli, seyrek erişimli ve arşiv blob katmanlarında desteklenir.
 
 **Ödemeyi yapamadıysam ve saklama süresi dolmadıysa ne olur?**
 
-Ödeme olmaması durumunda, Normal veri saklama ilkeleri, Microsoft ile olan sözleşmenizin hüküm ve koşullarında öngörüldüğü şekilde geçerli olacaktır. Genel bilgi için [Microsoft'ta Veri yönetimi](https://www.microsoft.com/en-us/trust-center/privacy/data-management)ne bürünme bilgi. 
+Ödeme dışı durumda, normal veri saklama ilkeleri Microsoft ile sözleşmenizin hüküm ve koşullarından dolayı geçerli olur. Genel bilgi için bkz. [Microsoft 'Ta veri yönetimi](https://www.microsoft.com/en-us/trust-center/privacy/data-management). 
 
 **Özelliği deneyebilmek için deneme veya yetkisiz kullanım süresi sunuyor musunuz?**
 
-Evet. Zaman tabanlı bekletme ilkesi ilk oluşturulduğunda, *kilitsiz* durumdadır. Bu durumda, bekletme aralığında artırma veya azaltma gibi istediğiniz değişikliği yapabilir ve hatta ilkeyi silebilirsiniz. İlke kilitlendikten sonra bekletme aralığı sona erene kadar kilitli kalır. Bu kilitli ilke silme ve bekletme aralığında değişiklik önler. *Kilitsiz* durumu yalnızca deneme amaçlı kullanmanızı ve poliçeyi 24 saatlik bir süre içinde kilitlemenizi önemle tavsiye ediyoruz. Bu uygulamalar SEC 17a-4(f) ve diğer düzenlemelere uymanıza yardımcı olur.
+Evet. Zaman tabanlı bir bekletme ilkesi ilk oluşturulduğunda, *kilidi açılmış* durumda olur. Bu durumda, bekletme aralığında (artış veya azaltma, hatta ilkeyi silme gibi) istediğiniz değişikliği yapabilirsiniz. İlke kilitlendikten sonra, saklama aralığı sona erene kadar kilitli kalır. Bu kilitli ilke, saklama aralığına silme ve değiştirme yapılmasını engeller. *Kilidi açık* durumdan yalnızca deneme amacıyla kullanmanızı ve ilkeyi 24 saatlik bir süre içinde kilitlemeyi önemle öneririz. Bu uygulamalar, SEC 17A-4 (f) ve diğer yönetmeliklere uyum sağlamanıza yardımcı olur.
 
-**Değişmez blob ilkelerinin yanında yumuşak silme kullanabilir miyim?**
+**Sabit blob ilkeleriyle birlikte geçici silme kullanabilir miyim?**
 
-Evet, uyumluluk gereksinimleriniz yumuşak silmenin etkinleştirilmesine izin veriyorsa. [Azure Blob depolama alanı için yumuşak silme,](storage-blob-soft-delete.md) yasal tutma veya zamana dayalı saklama ilkesine bakılmaksızın bir depolama hesabındaki tüm kapsayıcılar için geçerlidir. Değişmez WORM ilkeleri uygulanmadan ve onaylanmadan önce ek koruma için yumuşak silmeyi etkinleştirmenizi öneririz.
+Evet, uyumluluk gereksinimleriniz geçici silmenin etkinleştirilmesini sağlar. [Azure Blob depolama Için geçici silme](storage-blob-soft-delete.md) , yasal bir saklama veya zaman tabanlı bekletme ilkesinden bağımsız olarak bir depolama hesabındaki tüm kapsayıcılar için geçerlidir. Herhangi bir sabit solucan İlkesi uygulanmadan ve onaylanmadan önce ek koruma için geçici silme özelliğinin etkinleştirilmesini öneririz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Blob depolama için uygun olmayan ilkeler belirleyin ve yönetin](storage-blob-immutability-policies-manage.md)
-- [Yaşam döngüsü yönetimiyle blob verilerini otomatik olarak katmanlamak ve silmek için kurallar ayarlama](storage-lifecycle-management-concepts.md)
+- [BLOB depolama için dengesde kullanılabilirlik ilkelerini ayarlama ve yönetme](storage-blob-immutability-policies-manage.md)
+- [Yaşam döngüsü yönetimi ile blob verilerini otomatik olarak katmana ve silmeye yönelik kurallar ayarlama](storage-lifecycle-management-concepts.md)
 - [Azure Depolama blobları için geçici silme](../blobs/storage-blob-soft-delete.md)
-- [Azure Kaynak Yöneticisi kilitleriyle abonelikleri, kaynak gruplarını ve kaynakları koruyun.](../../azure-resource-manager/management/lock-resources.md)
+- [Abonelikleri, kaynak gruplarını ve kaynakları Azure Resource Manager kilitlerle koruyun](../../azure-resource-manager/management/lock-resources.md).

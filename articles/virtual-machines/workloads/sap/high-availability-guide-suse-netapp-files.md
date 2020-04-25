@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/27/2020
+ms.date: 03/27/2020
 ms.author: radeltch
-ms.openlocfilehash: ac8ffba279fac338f3d28cec2f0d671be740150e
-ms.sourcegitcommit: 1f738a94b16f61e5dad0b29c98a6d355f724a2c7
-ms.translationtype: MT
+ms.openlocfilehash: 436e9c6b8bdff42680d7aa5b941822090f668855
+ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "78164755"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "82127654"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP uygulamaları için Azure NetApp Files SUSE Linux Enterprise Server üzerindeki Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik
 
@@ -78,7 +78,7 @@ Bu makalede, Azure NetApp Files ile SAP NetWeaver uygulaması için yüksek kull
 * SAP Note [2243692][2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
 * SAP Note [1984787][1984787] , SUSE Linux Enterprise Server 12 hakkında genel bilgiler içerir.
 * SAP Note [1999351][1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
-* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes), Linux için gereken tüm SAP notlarını içerir.
+* SAP Community WIKI] (https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için tüm gerekli SAP notları vardır.
 * [Linux 'ta SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [Linux 'ta SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
@@ -94,45 +94,45 @@ Yüksek oranda kullanılabilir NFS kümesi oluşturmak için SUSE Linux 'ta bu i
 Artık Azure NetApp Files dağıtılan paylaşılan depolamayı kullanarak SAP NetWeaver HA elde etmek mümkündür. Paylaşılan depolama için Azure NetApp Files kullanmak, ek [NFS kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)gereksinimini ortadan kaldırır. SAP NetWeaver Merkezi Hizmetleri (yoks/SCS) HA için pacemaker hala gereklidir.
 
 
-![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
+![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.png)
 
 SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir [yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) gereklidir. [Standart yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı öneririz. Aşağıdaki listede, (A) SCS ve ERS yük dengeleyicinin yapılandırması gösterilmektedir.
 
-### <a name="ascs"></a>(A)SCS
+### <a name="ascs"></a>A PSC
 
 * Ön uç yapılandırması
   * IP adresi 10.1.1.20
-* Arka uç yapılandırması
-  * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 620<strong>&lt;nr&gt;</strong>
+  * Bağlantı noktası 620<strong>&lt;NR&gt;</strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 36<strong>&lt;nr&gt;</strong> TCP
-    * 39<strong>&lt;nr&gt;</strong> TCP
-    * 81<strong>&lt;nr&gt;</strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong>&lt;NR&gt; </strong> TCP
+    * 36<strong>&lt;NR&gt; </strong> TCP
+    * 39<strong>&lt;NR&gt; </strong> TCP
+    * 81<strong>&lt;NR&gt; </strong> TCP
+    * 5<strong>&lt;NR&gt;</strong>13 TCP
+    * 5<strong>&lt;NR&gt;</strong>14 TCP
+    * 5<strong>&lt;NR&gt;</strong>16 TCP
 
 ### <a name="ers"></a>SÖZCÜKLERI
 
 * Ön uç yapılandırması
   * IP adresi 10.1.1.21
-* Arka uç yapılandırması
-  * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
 * Araştırma bağlantı noktası
-  * Bağlantı noktası 621<strong>&lt;nr&gt;</strong>
+  * Bağlantı noktası 621<strong>&lt;NR&gt;</strong>
 * Yük Dengeleme kuralları
   * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
   * Temel Load Balancer kullanıyorsanız, aşağıdaki bağlantı noktaları için Yük Dengeleme kuralları oluşturun
-    * 32<strong>&lt;nr&gt;</strong> TCP
-    * 33<strong>&lt;nr&gt;</strong> TCP
-    * 5<strong>&lt;nr&gt;</strong>13 TCP
-    * 5<strong>&lt;nr&gt;</strong>14 TCP
-    * 5<strong>&lt;nr&gt;</strong>16 TCP
+    * 32<strong>&lt;NR&gt; </strong> TCP
+    * 33<strong>&lt;NR&gt; </strong> TCP
+    * 5<strong>&lt;NR&gt;</strong>13 TCP
+    * 5<strong>&lt;NR&gt;</strong>14 TCP
+    * 5<strong>&lt;NR&gt;</strong>16 TCP
+
+* Arka uç yapılandırması
+  * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını ayarlama 
 
@@ -152,15 +152,16 @@ Bu makalede sunulan SAP NetWeaver mimarisi, tek Azure NetApp Files kapasite havu
 
 4. [Azure NetApp Files için bir alt ağ temsilcisine yönelik yönergeler](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)bölümünde açıklandığı gibi Azure NetApp dosyalarına bir alt ağ atayın.  
 
-5. [Azure NetApp Files için bir birim oluşturma yönergelerini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)izleyerek Azure NetApp Files birimleri dağıtın. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Örneğin sapmnt<b>QAS</b>, Usrsap<b>QAS</b>, vb. birim adları ve sapmnt<b>QAS</b>, usrsap<b>QAS</b>, vb. Azure NetApp Files birimlerinin dosya yollarıdır.  
+5. [Azure NetApp Files için bir birim oluşturma yönergelerini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)izleyerek Azure NetApp Files birimleri dağıtın. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Bu örnekte iki Azure NetApp Files birimi kullanıyoruz: SAP<b>QAS</b> ve Trans. Karşılık gelen bağlama noktalarına bağlanan dosya yolları/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS/usrsap</b><b>QAS</b>sys, vb. ' dir.  
 
-   1. Volume sapmnt<b>QAS</b> (NFS://10.1.0.4/sapmnt<b>QAS</b>)
-   2. birim usrsap<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>)
-   3. birim usrsap<b>QAS</b>sys (NFS://10.1.0.5/usrsap<b>QAS</b>sys)
-   4. birim usrsap<b>QAS</b>ers (NFS://10.1.0.4/usrsap<b>QAS</b>ERS)
+   1. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/Sapmnt<b>QAS</b>)
+   2. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs)
+   3. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys)
+   4. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>ERS)
    5. Volume Trans (nfs://10.1.0.4/trans)
-   6. Volume usrsap<b>QAS</b>pas (NFS://10.1.0.5/usrsap<b>QAS</b>pas)
-   7. birim usrsap<b>QAS</b>aas (NFS://10.1.0.4/usrsap<b>QAS</b>AAS)
+   6. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas)
+   7. toplu SAP<b>QAS</b> (NFS://10.1.0.4/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
+
    
 Bu örnekte, Azure NetApp Files nasıl kullanılabileceğini göstermek üzere tüm SAP NetWeaver dosya sistemleri için Azure NetApp Files kullandık. NFS aracılığıyla bağlanması gerekmeyen SAP dosya sistemleri de [Azure disk depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) olarak dağıtılabilir. Bu örnekte <b>bir-e</b> 'nin Azure NetApp Files olması gerekir ve <b>f-g</b> (diğer bir deyişle,/usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) Azure disk depolama olarak dağıtılabilir. 
 
@@ -172,7 +173,7 @@ SUSE yüksek kullanılabilirlik mimarisinde SAP NetWeaver için Azure NetApp Fil
 - Minimum birim 100 GiB 'dir
 - Azure NetApp Files ve Azure NetApp Files birimlerinin takılabileceği tüm sanal makineler aynı bölgedeki aynı Azure sanal ağında veya eşlenmiş [sanal ağlarda](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) olmalıdır. Aynı bölgedeki VNET eşlemesi üzerinden Azure NetApp Files erişim artık desteklenir. Azure NetApp erişimi genel eşleme üzerinden henüz desteklenmiyor.
 - Seçilen sanal ağ, Azure NetApp Files atanmış bir alt ağa sahip olmalıdır.
-- Azure NetApp Files, [dışarı aktarma ilkesi](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)sunar: izin verilen istemcileri, erişim türünü (okuma & yazma, salt okuma, vb.) denetleyebilirsiniz. 
+- Azure NetApp Files, [dışarı aktarma ilkesi](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)sunar: izin verilen istemcileri, erişim türünü (okuma&yazma, salt okuma, vb.) denetleyebilirsiniz. 
 - Azure NetApp Files Özellik henüz bölge farkında değildir. Şu anda Azure NetApp Files özelliği bir Azure bölgesindeki tüm kullanılabilirlik bölgelerinde dağıtılmaz. Bazı Azure bölgelerindeki olası gecikme etkilerine yönelik etkileri göz önünde bulundurun. 
 - Azure NetApp Files birimler, NFSv3 veya NFSv 4.1 birimleri olarak dağıtılabilir. SAP uygulama katmanı (ASCS/ERS, SAP uygulama sunucuları) için her iki protokol de desteklenir. 
 
@@ -181,7 +182,7 @@ SUSE yüksek kullanılabilirlik mimarisinde SAP NetWeaver için Azure NetApp Fil
 Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. VM 'Leri dağıtın. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız.
 
 1. Kaynak Grubu oluşturma
-1. Sanal ağ oluşturma
+1. Sanal Ağ Oluşturma
 1. YOKS için bir kullanılabilirlik kümesi oluşturma  
    En fazla güncelleştirme etki alanını ayarla
 1. Sanal makine oluştur 1  
@@ -206,7 +207,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
 1. NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
-    > VM üzerinde `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri `nobody`olarak görüntülenir.  
+    > VM 'de `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files ' deki varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`**. NFS istemcisindeki (yani, VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri olarak `nobody`görüntülenir.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -220,7 +221,7 @@ Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files b
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** `nfs4_disable_idmapping`doğrulayın. **Y**olarak ayarlanmalıdır. `nfs4_disable_idmapping` bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
+4. **[A]** doğrula `nfs4_disable_idmapping`. **Y**olarak ayarlanmalıdır. Bulunduğu `nfs4_disable_idmapping` dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -241,7 +242,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
 
 ### <a name="deploy-azure-load-balancer-manually-via-azure-portal"></a>Azure portal aracılığıyla Azure Load Balancer el ile dağıtın
 
-Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. VM 'Leri dağıtın. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız.
+Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. VM 'Leri dağıtın. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzundaki sanal makineleri kullanırsınız.
 
 1. Yük dengeleyici oluşturma (iç, standart):  
    1. Ön uç IP adreslerini oluşturma
@@ -249,23 +250,22 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.1.1.20**)
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
       1. YOKLAR için IP adresi 10.1.1.21
          * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **10.1.1.21** ve **ön uç). QAS. ERS**)
-   1. Arka uç havuzlarını oluşturma
-      1. YOKS için bir arka uç havuzu oluşturun
-         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
-         1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
-         1. Sanal makine Ekle ' ye tıklayın.
-         1. Sanal makine seçin
-         1. (A) SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
-         1. Ekle'ye tıklayın.
+   1. Arka uç havuzunu oluşturma
+      1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+      1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
+      1. Sanal makine Ekle ' ye tıklayın.
+      1. Sanal makine seçin
+      1. (A) SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
+      1. Ekle'ye tıklayın.
    1. Sistem durumu araştırmalarını oluşturma
       1. YOKS için bağlantı noktası 620**00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
       1. YOKLAR için bağlantı noktası 621**01**
             * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
    1. Yük Dengeleme kuralları
@@ -276,7 +276,7 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. **Ha bağlantı noktalarını** seçin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
          * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **lb. QAS. ERS**)
 1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
@@ -284,23 +284,22 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
          1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
          1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **10.1.1.20**)
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
       1. YOKLAR için IP adresi 10.1.1.21
          * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **10.1.1.21** ve **ön uç). QAS. ERS**)
-   1. Arka uç havuzlarını oluşturma
-      1. YOKS için bir arka uç havuzu oluşturun
-         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
-         1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
-         1. Sanal makine Ekle ' ye tıklayın.
-         1. Daha önce yoks için oluşturduğunuz kullanılabilirlik kümesini seçin 
-         1. (A) SCS kümesinin sanal makinelerini seçin
-         1. Tamam’a tıklayın.
+   1. Arka uç havuzunu oluşturma
+      1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+      1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
+      1. Sanal makine Ekle ' ye tıklayın.
+      1. Daha önce yoks için oluşturduğunuz kullanılabilirlik kümesini seçin 
+      1. (A) SCS kümesinin sanal makinelerini seçin
+      1. Tamam 'a tıklayın
    1. Sistem durumu araştırmalarını oluşturma
       1. YOKS için bağlantı noktası 620**00**
          1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
          1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
          1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
       1. YOKLAR için bağlantı noktası 621**01**
             * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
    1. Yük Dengeleme kuralları
@@ -311,11 +310,11 @@ Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home) aracılı�
          1. Protokol **TCP**'yi tut, bağlantı noktası **3200** girin
          1. Boşta kalma zaman aşımını 30 dakikaya yükselt
          1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
-         1. Tamam’a tıklayın.
+         1. Tamam 'a tıklayın
       1. YOKS için ek bağlantı noktaları
          * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında yineleyin
       1. YOKLAR için ek bağlantı noktaları
-         * 33**01**, 5**01**13, 5**01 14, 5** **01**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında tekrarlar
+         * 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 ve d/sn için TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
       > [!Note]
       > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
@@ -380,13 +379,13 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
 3. **[A]** kurulum konak adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
+   Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.   
+   /Etc/hostklasörüne aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin   
 
    <pre><code>
    # IP address of cluster node 1
@@ -398,6 +397,30 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    # IP address of the load balancer frontend configuration for SAP Netweaver ERS
    <b>10.1.1.21    anftstsapers</b>
    </code></pre>
+
+4. **[1]** Azure NetApp FILES biriminde sap dizinleri oluşturun.  
+   VM 'lerden birine Azure NetApp Files birimi geçici olarak bağlayın ve SAP dizinlerini (dosya yolları) oluşturun.  
+
+   ```
+    # mount temporarily the volume
+    sudo mkdir -p /saptmp
+    # If using NFSv3
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=3,tcp 10.1.0.4:/sapQAS /saptmp
+    # If using NFSv4.1
+    sudo mount -t nfs -o rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys,tcp 10.1.0.4:/sapQAS /saptmp
+    # create the SAP directories
+    sudo cd /saptmp
+    sudo mkdir -p sapmntQAS
+    sudo mkdir -p usrsapQASascs
+    sudo mkdir -p usrsapQASers
+    sudo mkdir -p usrsapQASsys
+    sudo mkdir -p usrsapQASpas
+    sudo mkdir -p usrsapQASaas
+    # unmount the volume and delete the temporary directory
+    sudo cd ..
+    sudo umount /saptmp
+    sudo rmdir /saptmp
+    ``` 
 
 ## <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver yüklemesi için hazırlanma
 
@@ -416,7 +439,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** `autofs` Yapılandır
+2. **[A]** Yapılandır`autofs`
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -429,9 +452,9 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind,sync 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    NFSv 4.1 kullanılıyorsa, şunu içeren bir dosya oluşturun:
@@ -439,15 +462,15 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.5:/usrsap<b>qas</b>sys
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
    > Birimleri bağlama sırasında Azure NetApp Files birimlerinin NFS protokol sürümüyle eşleştiğinden emin olun. Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulduysa, ilgili NFSv3 yapılandırmasını kullanın. Azure NetApp Files birimleri NFSv 4.1 birimleri olarak oluşturulduysa, KIMLIK eşlemesini devre dışı bırakmak için yönergeleri izleyin ve karşılık gelen NFSv 4.1 yapılandırmasını kullandığınızdan emin olun. Bu örnekte Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulmuştur.  
    
-   Yeni paylaşımları bağlamak için `autofs` yeniden başlatın
+   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
     <pre><code>
       sudo systemctl enable autofs
       sudo service autofs restart
@@ -478,17 +501,22 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
 
    > [!IMPORTANT]
    > En son test, Netcat 'in biriktirme listesi ve yalnızca bir bağlantıyı işleme sınırlaması nedeniyle isteklere yanıt vermeyi durdurduğu ortaya çıkarılan durumlardır. Netcat kaynağı Azure yük dengeleyici isteklerini dinlemeyi durduruyor ve kayan IP kullanılamaz hale gelir.  
-   > Mevcut Paceüreticisi kümeleri için, [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)içindeki yönergeleri izleyerek netcat 'i socat ile değiştirmeyi öneririz. Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
+   > Mevcut Paceyapıcısı kümelerinde, Netcat 'i socat ile değiştirme konusunda tavsiye ederiz. Şu anda paket kaynak aracılarının bir parçası olan Azure-lb kaynak Aracısı 'nı şu paket sürümü gereksinimleriyle kullanmanızı öneririz:
+   > - SLES 12 SP4/SP5 için sürüm en az Resource-Agents-4.3.018. a7fb5035-3.30.1 olmalıdır.  
+   > - SLES 15/15 SP1 için sürüm en az Resource-Agents-4.3.0184.6 ee15eb2-4.13.1 olmalıdır.  
+   >
+   > Değişikliğin kısa kapalı kalma süresinin gerekli olacağını unutmayın.  
+   > Mevcut pacemaker kümelerinde, yapılandırma zaten [Azure yük dengeleyici algılama sağlamlaştırma](https://www.suse.com/support/kb/doc/?id=7024128)bölümünde açıklandığı gibi socat kullanacak şekilde değiştirilmişse Azure-lb Resource Agent 'a hemen geçiş yapmak için bir gereksinim yoktur.
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -497,9 +525,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
      params ip=<b>10.1.1.20</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ASCS anything \
-     params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:620<b>00</b>,backlog=10,fork,reuseaddr /dev/null" \
-     op monitor timeout=20s interval=10 depth=0
+   sudo crm configure primitive nc_<b>QAS</b>_ASCS azure-lb port=620<b>00</b>
    
    sudo crm configure group g-<b>QAS</b>_ASCS fs_<b>QAS</b>_ASCS nc_<b>QAS</b>_ASCS vip_<b>QAS</b>_ASCS \
       meta resource-stickiness=3000
@@ -516,7 +542,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    #
    # Resource Group: g-QAS_ASCS
    #     fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #     nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #     nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #     vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    </code></pre>
@@ -543,13 +569,13 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -558,12 +584,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
      params ip=<b>10.1.1.21</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
    
-   sudo crm configure primitive nc_<b>QAS</b>_ERS anything \
-    params binfile="/usr/bin/socat" cmdline_options="-U TCP-LISTEN:621<b>01</b>,backlog=10,fork,reuseaddr /dev/null" \
-    op monitor timeout=20s interval=10 depth=0
-   
-   # WARNING: Resources nc_QAS_ASCS,nc_QAS_ERS violate uniqueness for parameter "binfile": "/usr/bin/socat"
-   # Do you still want to commit (y/n)? y
+   sudo crm configure primitive nc_<b>QAS</b>_ERS azure-lb port=621<b>01</b>
    
    sudo crm configure group g-<b>QAS</b>_ERS fs_<b>QAS</b>_ERS nc_<b>QAS</b>_ERS vip_<b>QAS</b>_ERS
    </code></pre>
@@ -580,11 +601,11 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS  (ocf::heartbeat:IPaddr2):     <b>Started anftstsapcl2</b>
    </code></pre>
 
@@ -662,7 +683,7 @@ Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** Ass ve ers SAP hizmetlerini `sapservice` dosyasına ekleyin
+8. **[1]** Ass ve ers SAP hizmetlerini `sapservice` dosyaya ekleyin
 
    ASCS hizmeti girişini ikinci düğüme ekleyin ve ilk düğüme ERS hizmet girişini kopyalayın.
 
@@ -738,17 +759,17 @@ Sıraya alma sunucusu 2 mimarisini ([ENSA2](https://help.sap.com/viewer/cff8531b
    # stonith-sbd     (stonith:external/sbd): <b>Started anftstsapcl2</b>
    #  Resource Group: g-QAS_ASCS
    #      fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl1</b>
-   #      nc_QAS_ASCS        (ocf::heartbeat:anything):      <b>Started anftstsapcl1</b>
+   #      nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl1</b>
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl1</b>
    #      rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl1</b>
    #  Resource Group: g-QAS_ERS
    #      fs_QAS_ERS (ocf::heartbeat:Filesystem):    <b>Started anftstsapcl2</b>
-   #      nc_QAS_ERS (ocf::heartbeat:anything):      <b>Started anftstsapcl2</b>
+   #      nc_QAS_ERS (ocf::heartbeat:azure-lb):      <b>Started anftstsapcl2</b>
    #      vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       <b>Started anftstsapcl2</b>
    #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   <b>Started anftstsapcl2</b>
    </code></pre>
 
-## <a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver uygulama sunucusu hazırlığı 
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver uygulama sunucusu hazırlığı 
 
 Bazı veritabanları, veritabanı örneği yüklemesinin bir uygulama sunucusunda yürütülmesini gerektirir. Uygulama sunucusu sanal makinelerini bu durumlarda kullanabilecek şekilde hazırlayın.
 
@@ -759,7 +780,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
 
 1. **[A]** işletim sistemini yapılandırma
 
-   Kirli önbellek boyutunu küçültün. Daha fazla bilgi için bkz. [büyük RAM Ile SLES 11/12 sunucularında düşük yazma performansı](https://www.suse.com/support/kb/doc/?id=7010287).
+   Kirli önbelleğin boyutunu küçültün. Daha fazla bilgi için bkz. [büyük RAM Ile SLES 11/12 sunucularında düşük yazma performansı](https://www.suse.com/support/kb/doc/?id=7010287).
 
    <pre><code>
    sudo vi /etc/sysctl.conf
@@ -770,14 +791,14 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
 
 1. **[A]** kurulum konak adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
+   Bir DNS sunucusu kullanabilir veya tüm düğümlerdeki/etc/Konakları değiştirebilirsiniz. Bu örnek,/etc/hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
 
    ```bash
    sudo vi /etc/hosts
    ```
 
-   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.
+   /Etc/hostklasörüne aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin
 
    <pre><code>
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS/SCS
@@ -813,7 +834,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** PAS 'de `autofs` yapılandırma
+1. **[P]** pas `autofs` üzerinde yapılandırma
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -826,9 +847,9 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    NFSv 4.1 kullanılıyorsa, ile yeni bir dosya oluşturun:
@@ -836,19 +857,19 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
-   Yeni paylaşımları bağlamak için `autofs` yeniden başlatın
+   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
 
    <pre><code>
    sudo systemctl enable autofs
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** AAS üzerinde `autofs` yapılandırma
+1. **[P]** AAS `autofs` üzerinde yapılandırma
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -861,9 +882,9 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    NFSv 4.1 kullanılıyorsa, ile yeni bir dosya oluşturun:
@@ -871,12 +892,12 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
-   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
-   Yeni paylaşımları bağlamak için `autofs` yeniden başlatın
+   Yeni `autofs` paylaşımları bağlamak için yeniden başlatın
 
    <pre><code>
    sudo systemctl enable autofs
@@ -903,7 +924,7 @@ Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir su
    <pre><code>sudo service waagent restart
    </code></pre>
 
-## <a name="install-database"></a>Veritabanını yükler
+## <a name="install-database"></a>Veritabanını yükleme
 
 Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha]. Desteklenen veritabanlarının listesi için bkz. [SAP Note 1928533][1928533].
 
@@ -962,7 +983,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
 
 1. Test HAGetFailoverConfig, HACheckConfig ve HACheckFailoverConfig
 
-   Aşağıdaki komutları, ASCS örneğinin çalışmakta olduğu düğümde \<sapsıd > adm olarak çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
+   ASCS örneğinin çalışmakta olduğu \<düğümde sapsıd>adm olarak aşağıdaki komutları çalıştırın. Komutlar hata vererek başarısız olursa, bu durum, ana bilgisayar bilgisayarınızdaki çizgilerden kaynaklanıyor olabilir. Bu bilinen bir sorundur ve SAP-SUSE-Cluster-Connector paketindeki SUSE tarafından düzeltilecektir.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -1018,13 +1039,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rscsap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Starting anftstsapcl1
    </code></pre>
@@ -1047,13 +1068,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1065,18 +1086,18 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   ASCS örneğini geçirmek için \<sapsıd > adm olarak aşağıdaki komutları çalıştırın.
+   ASCS örneğini geçirmek için \<aşağıdaki komutları sapsıd>adm olarak çalıştırın.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1094,13 +1115,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1112,13 +1133,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1138,13 +1159,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
 
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
 
@@ -1175,13 +1196,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1193,18 +1214,18 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. ASCS örneğinin çalıştırıldığı düğüm üzerinde < sapsıd\>adm olarak aşağıdaki komutları çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
+   Bir sıraya alma kilidi oluşturun, örneğin işlem su01 içinde bir Kullanıcı düzenleyin. ASCS örneğinin çalıştırıldığı düğüm üzerinde <sapsid\>adm olarak aşağıdaki komutları çalıştırın. Komutlar, yoks örneğini durdurur ve yeniden başlatır. Sıraya alma sunucusu 1 mimarisi kullanılıyorsa, bu testte sıraya alma kilidinin kaybedilmesi beklenir. Sıraya alma sunucusu 2 mimarisi kullanılıyorsa, sıraya alma bekletilecektir. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1224,13 +1245,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1242,13 +1263,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1258,7 +1279,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, `sapstart`tarafından yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, tarafından `sapstart`yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
@@ -1270,13 +1291,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1288,13 +1309,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
@@ -1316,13 +1337,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1334,13 +1355,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1350,7 +1371,7 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>anftstsapcl1:~ # pgrep er.sapQAS | xargs kill -9
    </code></pre>
 
-   Komutu yalnızca bir kez çalıştırırsanız `sapstart` işlem yeniden başlatılır. Bunu yeterince sık çalıştırırsanız, `sapstart` işlemi yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   Komutu yalnızca bir kez çalıştırırsanız, `sapstart` işlem yeniden başlatılır. Bunu yeterince sık çalıştırırsanız, `sapstart` işlem yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    <pre><code>anftstsapcl1:~ # crm resource cleanup rsc_sap_QAS_ERS01
    </code></pre>
@@ -1360,13 +1381,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1378,13 +1399,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1403,13 +1424,13 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
    <pre><code>
     Resource Group: g-QAS_ASCS
         fs_QAS_ASCS        (ocf::heartbeat:Filesystem):    Started anftstsapcl2
-        nc_QAS_ASCS        (ocf::heartbeat:anything):      Started anftstsapcl2
+        nc_QAS_ASCS        (ocf::heartbeat:azure-lb):      Started anftstsapcl2
         vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
         rsc_sap_QAS_ASCS00 (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    stonith-sbd     (stonith:external/sbd): Started anftstsapcl1
     Resource Group: g-QAS_ERS
         fs_QAS_ERS (ocf::heartbeat:Filesystem):    Started anftstsapcl1
-        nc_QAS_ERS (ocf::heartbeat:anything):      Started anftstsapcl1
+        nc_QAS_ERS (ocf::heartbeat:azure-lb):      Started anftstsapcl1
         vip_QAS_ERS        (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
@@ -1420,6 +1441,4 @@ Aşağıdaki testler, [SUSE 'in en iyi yöntemler kılavuzlarındaki][suse-ha-gu
 * [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
 * [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
 * [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
-* SAP 'nin olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan yapmayı öğrenin 
-* Azure 'da HANA (büyük örnekler) için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md).
 * Azure VM 'lerinde SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan planı oluşturma hakkında bilgi edinmek için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha]

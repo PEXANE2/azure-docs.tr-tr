@@ -1,34 +1,34 @@
 ---
-title: Sorun Giderme - Azure Web Uygulaması Güvenlik Duvarı
-description: Bu makale, Azure Uygulama Ağ Geçidi için Web Uygulama Güvenlik Duvarı (WAF) için sorun giderme bilgileri sağlar
+title: Sorun giderme-Azure Web uygulaması güvenlik duvarı
+description: Bu makalede, Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) için sorun giderme bilgileri sağlanmaktadır
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 33c85752903edd618044ccbab06aff7df9a791da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74046186"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82131263"
 ---
-# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Uygulama Ağ Geçidi için Sorun Giderme Web Uygulaması Güvenlik Duvarı (WAF)
+# <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Azure Application Gateway Web uygulaması güvenlik duvarı (WAF) sorunlarını giderme
 
-Web Uygulama Güvenlik Duvarınızdan (WAF) geçmesi gereken istekler engellenirse yapabileceğiniz birkaç şey vardır.
+Web uygulaması güvenlik duvarınız (WAF) üzerinden geçmesi gereken istekler engelleniyorsa, yapabileceğiniz birkaç nokta vardır.
 
-İlk olarak, [WAF genel görünümünü](ag-overview.md) ve [WAF yapılandırma](application-gateway-waf-configuration.md) belgelerini okuduğunuzdan emin olun. Ayrıca, [WAF izleme](../../application-gateway/application-gateway-diagnostics.md) etkin olduğundan emin olun Bu makaleler waf nasıl çalıştığını açıklamak, WAF kural ayarlar nasıl çalıştığını ve nasıl WAF günlükleri erişmek için.
+İlk olarak, [WAF genel bakış](ag-overview.md) ve [WAF yapılandırma](application-gateway-waf-configuration.md) belgelerini okuduğunuzdan emin olun. Ayrıca, [WAF izlemesini](../../application-gateway/application-gateway-diagnostics.md) etkinleştirdiğinizden emin olun. bu makalelerde WAF işlevlerinin nasıl, WAF kural kümelerinin nasıl çalıştığı ve WAF günlüklerine nasıl erişebileceğiniz açıklanmıştır.
 
 ## <a name="understanding-waf-logs"></a>WAF günlüklerini anlama
 
-WAF günlüklerinin amacı, WAF tarafından eşleşen veya engellenen her isteği göstermektir. Eşleşen veya engellenen tüm değerlendirilen isteklerin genel muhasebesidir. WAF'ın olmaması gereken bir isteği engellediğini fark ederseniz (yanlış pozitif), birkaç şey yapabilirsiniz. İlk olarak, daraltın ve belirli isteği bulun. İsteğin belirli URI, zaman damgası veya işlem kimliğini bulmak için günlüklere bakın. İlişkili günlük girişlerini bulduğunuzda, yanlış pozitif ler üzerinde hareket etmeye başlayabilirsiniz.
+WAF günlüklerinin amacı, WAF tarafından eşlenen veya engellenen her isteği göstermek için kullanılır. Bu, eşleşen veya engellenen tüm değerlendirilen isteklerin bir muhasebendir. WAF 'nin olmayan bir isteği (yanlış pozitif bir değer) engellediğini fark ederseniz, birkaç şey yapabilirsiniz. Birincisi, daraltın ve belirli isteği bulun. Belirli URI, zaman damgası veya isteğin işlem KIMLIĞINI bulmak için günlüklere bakın. İlişkili günlük girdilerini bulduğunuzda, yanlış pozitif sonuçlar üzerinde işlem yapmaya başlayabilirsiniz.
 
-Örneğin, WAF'ınızdan geçmek istediğiniz *1=1* dizesini içeren yasal bir trafiğiniz olduğunu varsam. İsteğe çalışırsanız, WAF herhangi bir parametre veya alanda *1=1* dizenizi içeren trafiği engeller. Bu genellikle bir SQL enjeksiyon saldırısı ile ilişkili bir dize. Günlüklere bakabilir ve isteğin zaman damgasını ve engellenen/eşleşen kuralları görebilirsiniz.
+Örneğin, WAF 'niz üzerinden geçirmek istediğiniz *1 = 1* dizesini içeren yasal bir trafiğinizin olduğunu varsayalım. İsteği denerseniz, WAF herhangi bir parametre veya alanda *1 = 1* dizenizi içeren trafiği engeller. Bu bir SQL ekleme saldırısından genellikle ilişkili bir dizedir. Günlüklere bakabilir ve isteğin zaman damgasını ve engellenen/eşleştirilen kuralları görebilirsiniz.
 
-Aşağıdaki örnekte, aynı istek sırasında (TransactionId alanını kullanarak) dört kuralın tetiklediğini görebilirsiniz. İlki, kullanıcının istek için sayısal/IP URL'si kullandığı için eşleşip eşleştildiği ve bunun da bir uyarı olduğu için anomali puanını üç artırdığı yazıyor. Eşleşen bir sonraki kural 942130, aradığınız olan. `details.data` *1=1'i* sahada görebilirsiniz. Bu da bir uyarı olduğu için anomali skorunu tekrar üçe kadar arttırır. Genellikle, eylem **Matched** olan her kural anomali puanı artar ve bu noktada anomali puanı altı olacaktır. Daha fazla bilgi için [Anomaly puanlama moduna](ag-overview.md#anomaly-scoring-mode)bakın.
+Aşağıdaki örnekte, aynı istek sırasında (TransactionId alanı kullanılarak) dört kuralın tetiklendiğini görebilirsiniz. Kullanıcı istek için bir sayısal/IP URL 'SI kullandığından, bir uyarı olduğundan, anomali puanı üç kez arttığı için Birincisi onu eşleştirdiğini söyler. Eşleşen bir sonraki kural, aradığınız bir sonraki kuraldır 942130 ' dir. `details.data` Alanda *1 = 1* ' i görebilirsiniz. Bu, aynı zamanda bir uyarı olduğundan anomali Puanını üç kez daha arttırır. Genellikle, eylemi **eşleşen** her kural anomali Puanını arttırır ve bu noktada anomali puanı altı olur. Daha fazla bilgi için bkz. [anomali Puanlama modu](ag-overview.md#anomaly-scoring-mode).
 
-Son iki günlük girişi, anomali skoru yeterince yüksek olduğu için isteğin engellendiğini gösteriyor. Bu girişlerin diğer ikisinden farklı bir eylemi var. İsteği gerçekten *engellediklerini* gösteriyorlar. Bu kurallar zorunludur ve devre dışı tutulamaz. Onlar kurallar olarak düşünülmemelidir, ama WAF iç çekirdek altyapı olarak daha fazla.
+En son iki günlük girdisi, anomali puanı yeterince yüksek olduğu için isteğin engellendiğini gösterir. Bu girişlerin diğer iki farklı eylemi vardır. Bunlar, isteği gerçekten *engellediği* gibi gösterir. Bu kurallar zorunludur ve devre dışı bırakılamaz. Bunlar kural olarak düşünülmemelidir, ancak WAF iç yapısının çekirdek altyapısı olarak daha fazla.
 
 ```json
 { 
@@ -133,56 +133,56 @@ Son iki günlük girişi, anomali skoru yeterince yüksek olduğu için isteğin
 }
 ```
 
-## <a name="fixing-false-positives"></a>Yanlış pozitifleri düzeltme
+## <a name="fixing-false-positives"></a>Hatalı pozitif durumlar düzeltiliyor
 
-Bu bilgiler ve 942130 kuralının *1=1* dizesiyle eşleşen bilgiyle, bunun trafiğinizi engellemesini engellemek için birkaç şey yapabilirsiniz:
+Bu bilgilerle ve 942130 kuralı, *1 = 1* dizesiyle eşleşen bir bilgi ile, bunu, trafiğinizi engellemesini durdurmak için birkaç şey yapabilirsiniz:
 
-- Dışlama Listesi Kullanma
+- Dışlama listesi kullan
 
-   Dışlama listeleri hakkında daha fazla bilgi için [WAF yapılandırmasına](application-gateway-waf-configuration.md#waf-exclusion-lists) bakın.
-- Kuralı devre dışı kılmış olur.
+   Dışlama listeleri hakkında daha fazla bilgi için bkz. [WAF yapılandırması](application-gateway-waf-configuration.md#waf-exclusion-lists) .
+- Kuralı devre dışı bırakın.
 
-### <a name="using-an-exclusion-list"></a>Dışlama listesini kullanma
+### <a name="using-an-exclusion-list"></a>Dışlama listesi kullanma
 
-Yanlış pozitif uygulama konusunda bilinçli bir karar vermek için, uygulamanızın kullandığı teknolojileri tanımak önemlidir. Örneğin, teknoloji yığınınızda bir SQL sunucusu olmadığını ve bu kurallarla ilgili yanlış pozitif sonuçlar aldığınızı varsan. Bu kuralları devre dışı bırakmak güvenliğinizi zayıflatmaz.
+Yanlış olumlu işleme hakkında bilinçli bir karar vermek için, uygulamanızın kullandığı teknolojilere alışmak önemlidir. Örneğin, teknoloji yığınınıza bir SQL Server yok deyin ve bu kurallarla ilgili yanlış pozitif sonuçlar elde edersiniz. Bu kuralların devre dışı bırakılması, güveninizi zayıflatmak zorunda değildir.
 
-Dışlama listesini kullanmanın bir yararı, isteğin yalnızca belirli bir bölümünün devre dışı bırakılmış olmasıdır. Ancak, bu, genel bir ayar olduğundan, WAF'ınızdan geçen tüm trafik için belirli bir dışlamanın geçerli olduğu anlamına gelir. Örneğin, *1=1* belirli bir uygulama için gövdede geçerli bir istekse, ancak diğerleri için geçerli değilse, bu bir soruna yol açabilir. Başka bir yararı, tüm istek hariç aksine, belirli bir durum yerine getirilirse hariç tutulacak gövde, üstbilgi ve çerezler arasında seçim yapabilirsiniz.
+Dışlama listesi kullanmanın bir avantajı, isteğin yalnızca belirli bir bölümünün devre dışı bırakılmakta olmasından biridir. Bununla birlikte, bu, belirli bir dışlamanın, bir genel ayar olduğu için WAF 'niz üzerinden geçen tüm trafik için geçerli olduğu anlamına gelir. Örneğin, bu, *1 = 1* ' in gövdede belirli bir uygulama için geçerli bir istek olması, ancak diğerleri için değil, bir soruna neden olabilir. Bu, tüm isteği dışlamamak yerine belirli bir koşul karşılanırsa, gövde, üst bilgiler ve tanımlama bilgileri arasında seçim yapabileceğiniz bir avantajdır.
 
-Bazen, belirli parametrelerin sezgisel olmayan bir şekilde WAF'ye aktarıldığı durumlar vardır. Örneğin, Azure Etkin Dizini'ni kullanarak kimlik doğrulaması yapılırken geçirilen bir belirteç vardır. Bu belirteç, *__RequestVerificationToken,* genellikle bir İstek Çerez olarak geçirilen olsun. Ancak, tanımlama bilgilerinin devre dışı bırakıldığı bazı durumlarda, bu belirteç de istek özniteliği veya "arg" olarak geçirilir. Bu durumda, *__RequestVerificationToken'nin* de **İstek özniteliği adı** olarak dışlama listesine eklenmediğinden emin olmanız gerekir.
+Bazen, belirli parametrelerin WAF 'ye, sezgisel olmayan bir şekilde geçirilme durumları vardır. Örneğin, Azure Active Directory kullanılarak kimlik doğrulanırken geçirilen bir belirteç vardır. Bu belirteç *__RequestVerificationToken*, genellikle Istek tanımlama bilgisi olarak geçirilir. Ancak, tanımlama bilgilerinin devre dışı bırakıldığı bazı durumlarda, bu belirteç istek özniteliği veya "arg" olarak da geçirilir. Bu durumda, *__RequestVerificationToken* dışlama listesine bir **istek özniteliği adı** olarak da eklendiğinden emin olmanız gerekir.
 
 ![Dışlamalar](../media/web-application-firewall-troubleshoot/exclusion-list.png)
 
-Bu örnekte, *metin1*eşittir **İstek özniteliği adını** dışlamak istiyorum. Güvenlik duvarı günlüklerinde öznitelik adını görebildiğiniz için bu belirgindir: **veri: Eşleşen Veriler: ARGS içinde bulunan 1=1:text1: 1=1**. Öznitelik **text1'dir.** Ayrıca bu öznitelik adını birkaç başka yol la bulabilirsiniz, [bkz.](#finding-request-attribute-names)
+Bu örnekte, bir *Metin1*değerine eşit olan **istek özniteliği adını** dışlamak istiyorsunuz. Bu, güvenlik duvarı günlüklerinde öznitelik adını görebileceğiniz için görünür: **veri: eşleşen veriler: 1 = 1 bağımsız değişkenler içinde bulundu: Metin1:1 = 1**. Özniteliği **Metin1**. Bu öznitelik adını birkaç farklı yolla de bulabilirsiniz, bkz. [istek özniteliği adlarını bulma](#finding-request-attribute-names).
 
 ![WAF dışlama listeleri](../media/web-application-firewall-troubleshoot/waf-config.png)
 
 ### <a name="disabling-rules"></a>Kuralları devre dışı bırakma
 
-Yanlış pozitif etrafında almak için başka bir yolu, WAF kötü niyetli olduğunu düşündüm giriş eşleşen kuralı devre dışı kalmaktır. WAF günlüklerini ayrıştırdığınız ve kuralı 942130'a indirgediğiniz için Azure portalında devre dışı kullanabilirsiniz. Azure [portalı üzerinden web uygulaması güvenlik duvarı kurallarını özelleştir'e](application-gateway-customize-waf-rules-portal.md)bakın.
+Yanlış pozitif bir değer almanın başka bir yolu da, WAF 'nin kötü amaçlı olduğu girişte eşleşen kuralı devre dışı bırakmasıdır. WAF günlüklerini ayrıştırmış ve kuralı 942130 ' e doğru bir şekilde yaptıktan sonra, Azure portal devre dışı bırakabilirsiniz. Bkz. [Azure Portal aracılığıyla Web uygulaması güvenlik duvarı kurallarını özelleştirme](application-gateway-customize-waf-rules-portal.md).
 
-Bir kuralı devre dışı bırakmanın bir yararı, normalde engellenecek belirli bir koşulu içeren tüm trafiği biliyorsanız, tüm WAF için bu kuralı devre dışı bırakabilirsiniz. Ancak, yalnızca belirli bir kullanım durumunda geçerli bir trafikse, genel bir ayar olduğu için bu kuralı tüm WAF için devre dışı bırakarak bir güvenlik açığı açarsınız.
+Bir kuralı devre dışı bırakmanın bir avantajı, normalde engellenecek olan belirli bir koşulu içeren tüm trafiğin geçerli trafik olduğunu biliyorsanız, tüm WAF için bu kuralı devre dışı bırakabilirsiniz. Ancak, belirli bir kullanım durumunda yalnızca geçerli trafik varsa, genel bir ayar olduğundan tüm WAF için bu kuralı devre dışı bırakarak bir güvenlik açığı açarsınız.
 
-Azure PowerShell'i kullanmak istiyorsanız, [PowerShell aracılığıyla web uygulaması güvenlik duvarı kurallarını özelleştir'e](application-gateway-customize-waf-rules-powershell.md)bakın. Azure CLI'yi kullanmak istiyorsanız, [Azure CLI aracılığıyla web uygulaması güvenlik duvarı kurallarını özelleştir'e](application-gateway-customize-waf-rules-cli.md)bakın.
+Azure PowerShell kullanmak istiyorsanız, bkz. [PowerShell aracılığıyla Web uygulaması güvenlik duvarı kurallarını özelleştirme](application-gateway-customize-waf-rules-powershell.md). Azure CLı 'yı kullanmak istiyorsanız, bkz. [Azure CLI aracılığıyla Web uygulaması güvenlik duvarı kurallarını özelleştirme](application-gateway-customize-waf-rules-cli.md).
 
 ![WAF kuralları](../media/web-application-firewall-troubleshoot/waf-rules.png)
 
-## <a name="finding-request-attribute-names"></a>İstek öznitelik adlarını bulma
+## <a name="finding-request-attribute-names"></a>İstek özniteliği adlarını bulma
 
-[Fiddler](https://www.telerik.com/fiddler)yardımıyla, tek tek istekleri incelemek ve bir web sayfasının belirli alanları denir belirlemek. Bu, Dışlama Listeleri'ni kullanarak belirli alanların denetimden çıkarılmasını hariç tutmanın yardımcı olabilir.
+[Fiddler](https://www.telerik.com/fiddler)'ın yardımıyla, bireysel istekleri inceleyeceksiniz ve bir Web sayfasındaki belirli alanları belirlersiniz. Bu, belirli alanların dışlama listeleri kullanılarak incelemeden dışlanmasına yardımcı olabilir.
 
-Bu örnekte, *1=1* dizesinin girildiği alana **text1**olarak adverilir.
+Bu örnekte, *1 = 1* dizesinin girildiği alanın **Metin1**olarak adlandırıldığını görebilirsiniz.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-1.png)
 
-Bu, hariç tutabileceğiniz bir alandır. Dışlama listeleri hakkında daha fazla bilgi edinmek için [Bkz. Web uygulaması güvenlik duvarı isteği boyut sınırları ve dışlama listeleri.](application-gateway-waf-configuration.md#waf-exclusion-lists) Bu durumda değerlendirmeyi aşağıdaki dışlamayı yapılandırarak hariç tutabilirsiniz:
+Bu, dışarıda bırakabilmeniz için bir alandır. Dışlama listeleri hakkında daha fazla bilgi edinmek için bkz. [Web uygulaması güvenlik duvarı istek boyutu sınırları ve dışlama listeleri](application-gateway-waf-configuration.md#waf-exclusion-lists). Aşağıdaki dışlamayı yapılandırarak bu durumda değerlendirmeyi dışarıda bırakabilirsiniz:
 
-![WAF hariç tutma](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
+![WAF dışlaması](../media/web-application-firewall-troubleshoot/waf-exclusion-02.png)
 
-Ayrıca, dışlama listesine ne eklemeniz gerektiğini görmek için bilgileri almak için güvenlik duvarı günlüklerini de inceleyebilirsiniz. Günlüğe kaydetmeyi etkinleştirmek [için, Uygulama Ağ Geçidi için Arka uç durumu, tanılama günlükleri ve ölçümlere](../../application-gateway/application-gateway-diagnostics.md)bakın.
+Ayrıca, dışlama listesine eklemek için gerekenleri görmek üzere bilgileri almak için güvenlik duvarı günlüklerini inceleyebilirsiniz. Günlüğe kaydetmeyi etkinleştirmek için, bkz. [Application Gateway Için arka uç sistem durumu, kaynak günlükleri ve ölçümler](../../application-gateway/application-gateway-diagnostics.md).
 
-Güvenlik duvarı günlüğünü inceleyin ve incelemek istediğiniz isteğin gerçekleştiği saat için PT1H.json dosyasını görüntüleyin.
+Güvenlik Duvarı günlüğünü inceleyin ve denetlemek istediğiniz isteğin gerçekleştiği saat için PT1H. json dosyasını görüntüleyin.
 
-Bu örnekte, aynı İşlem Kimliği'ne sahip dört kuralınız olduğunu ve bunların hepsinin aynı anda oluştuğunu görebilirsiniz:
+Bu örnekte, aynı TransactionId ile dört kuralın olduğunu ve tümünün tam olarak aynı anda gerçekleştiğini görebilirsiniz:
 
 ```json
 -   {
@@ -287,51 +287,51 @@ Bu örnekte, aynı İşlem Kimliği'ne sahip dört kuralınız olduğunu ve bunl
 -   }
 ```
 
-CRS kuralının nasıl çalıştığı ve CRS kural kümesi 3.0'ın bir anormallik puanlama sistemiyle çalıştığını bildiğiniziçin [(Azure Uygulama Ağ Geçidi için Web Uygulama Güvenlik Duvarı'na](ag-overview.md)bakın) eylemle birlikte en alttaki iki kuralın **engellendiğini biliyorsunuz: Engellenen** özellik toplam anormallik puanına göre engellenir. Üzerinde durulması gereken kurallar ilk ikidir.
+Bir anomali Puanlama sistemi ile birlikte çalışma hakkında bilgi sahibi 3,0 olmak için (bkz. [Azure Application Gateway Için Web uygulaması güvenlik duvarı](ag-overview.md)) **: Engellenen** özelliğin en alttaki iki kuralının, toplam anomali puanına göre engellediğini bildiğiniz bir durum. Üzerine odaklanmak için kullanılan kurallar en üstteki iki.
 
-Kullanıcı, Uygulama Ağ Geçidi'ne gitmek için sayısal bir IP adresi kullandığından ilk giriş günlüğe kaydedilir ve bu durumda göz ardı edilebilir.
+Kullanıcı, Application Gateway gezinmek için sayısal bir IP adresi kullandığından, ilk giriş günlüğe kaydedilir ve bu durumda yok sayılabilir.
 
-İkincisi (kural 942130) ilginç biridir. Ayrıntılarda bir desenle eşleşip (1=1) ve alanın **text1**olarak adlandırıldığını görebilirsiniz. **1=1'e** **eşit** **İstek Özniteliği Adı'nı** hariç tutmak için önceki adımları izleyin.
+İkinci bir tane (kural 942130) ilginç bir değer. Ayrıntıların bir Düzenle eşleştiğini (1 = 1) görebilirsiniz ve alan **Metin1**olarak adlandırılır. **1 = 1** **değerine eşit** olan **istek özniteliği adını** dışlamak için aynı önceki adımları izleyin.
 
-## <a name="finding-request-header-names"></a>İstek üstbilgi adlarını bulma
+## <a name="finding-request-header-names"></a>İstek üst bilgisi adlarını bulma
 
-Fiddler bir kez daha istek üstbilgi adlarını bulmak için yararlı bir araçtır. Aşağıdaki ekran görüntüsünde, *İçerik Türü,* *Kullanıcı Aracısı*ve benzeri bu GET isteğinin üstbilgilerini görebilirsiniz.
+Fiddler, istek üst bilgisi adlarını bulmak için bir kez yararlı bir araçtır. Aşağıdaki ekran görüntüsünde, *Içerik türü*, *Kullanıcı-aracı*vb. dahIl olmak üzere bu GET isteğinin üst bilgilerini görebilirsiniz.
 
 ![Fiddler](../media/web-application-firewall-troubleshoot/fiddler-2.png)
 
-İstek ve yanıt üsteerlerini görüntülemenin başka bir yolu da Chrome'un geliştirici araçlarının içine bakmaktır. F12 tuşuna veya ->**Denetim Geliştirici Araçlarını** **Tıklatabilir** -> ve **Ağ** sekmesini seçebilirsiniz.
+İstek ve yanıt üst bilgilerini görüntülemenin bir başka yolu da Chrome Geliştirici araçlarının içine bakmedir. F12 tuşuna basarak veya sağ tıklama >**Geliştirici Araçları** **İnceleme** -> ' ye basabilir ve **ağ** sekmesini seçebilirsiniz. bir Web sayfası yükleyin ve incelemek istediğiniz isteğe tıklayın.
 
-![Krom F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
+![Chrome F12](../media/web-application-firewall-troubleshoot/chrome-f12.png)
 
-## <a name="finding-request-cookie-names"></a>İstek çerez adlarını bulma
+## <a name="finding-request-cookie-names"></a>İstek tanımlama bilgisi adlarını bulma
 
-İstek çerezleri içeriyorsa, Bunları Fiddler'da görüntülemek için **Çerezler** sekmesi seçilebilir.
+İstek tanımlama bilgileri içeriyorsa, bunları Fiddler 'da görüntülemek için **tanımlama bilgileri** sekmesi seçilebilir.
 
-## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Yanlış pozitifleri ortadan kaldırmak için küresel parametreleri kısıtlama
+## <a name="restrict-global-parameters-to-eliminate-false-positives"></a>Yanlış pozitifleri ortadan kaldırmak için genel parametreleri kısıtla
 
-- İstek vücut denetimini devre dışı
+- İstek gövdesi incelemesini devre dışı bırak
 
-   İstek **gövdesini** kapalı olarak inceleyin ayarlayarak, tüm trafiğin istek gövdeleri WAF'ınız tarafından değerlendirilmeyecektir. İstek gövdeleri uygulamanız için kötü niyetli olmadığını biliyorsanız, bu yararlı olabilir.
+   **İnceleme isteği gövdesini** kapalı olarak ayarlayarak tüm trafiğin istek gövdeleri WAF 'niz tarafından değerlendirilmeyecektir. Bu, istek gövdelerinin uygulamanızda kötü amaçlı olmadığını bildiğiniz durumlarda yararlı olabilir.
 
-   Bu seçeneği devre dışı bırakarak, yalnızca istek gövdesi denetlenmez. Üstbilgi ve tanımlama bilgileri, dışlama listesi işlevini kullanarak hariç tutulmadığı sürece denetlenmeye devam eder.
+   Bu seçeneği devre dışı bırakarak yalnızca istek gövdesi incelenemiyor. Bireysel durumlar, dışlama listesi işlevselliği kullanılarak dışlanmamışsa, üst bilgiler ve tanımlama bilgileri incede kalır.
 
 - Dosya boyutu sınırları
 
-   WAF'ınız için dosya boyutunu sınırlandırarak, web sunucularınıza bir saldırı olasılığını sınırlandırıyorsunuz. Büyük dosyaların yüklenmesine izin vererek, arka ponponunuzu bunalmış olma riski artar. Dosya boyutunu uygulamanız için normal bir kullanım örneğiyle sınırlamak, saldırıları önlemenin başka bir yoludur.
+   WAF 'niz için dosya boyutunu sınırlayarak, web sunucularınızda saldırı olasılığını sınırlandırırsınız. Büyük dosyaların karşıya yüklenmesine izin vererek, arka ucunuzun çok fazla olması riskini artırır. Dosya boyutunu uygulamanız için normal kullanım durumuyla sınırlamak, saldırıları önlemenin yalnızca başka bir yoludur.
 
    > [!NOTE]
-   > Uygulamanızın belirli bir boyutun üzerinde herhangi bir dosya yüklemesi gerekmeyeceğini biliyorsanız, bir sınır belirleyerek bunu kısıtlayabilirsiniz.
+   > Uygulamanızın belirli bir boyutun üzerine herhangi bir dosya yüklemesine gerek duymayacağını biliyorsanız, bir sınır ayarlayarak bunu kısıtlayabilirsiniz.
 
-## <a name="firewall-metrics-waf_v1-only"></a>Güvenlik Duvarı Ölçümleri (yalnızca WAF_v1)
+## <a name="firewall-metrics-waf_v1-only"></a>Güvenlik Duvarı ölçümleri (yalnızca WAF_v1)
 
-v1 Web Uygulama Güvenlik Duvarları için aşağıdaki ölçümler artık portalda kullanılabilir: 
+V1 Web uygulaması güvenlik duvarları için aşağıdaki ölçümler portalda kullanılabilir: 
 
-1. Web Uygulaması Güvenlik Duvarı Engellenen İstek Sayısı Engellenen istek sayısı engellendi
-2. Web Uygulaması Güvenlik Duvarı Engellendi Kural Sayısı Eşleşen tüm kurallar **ve** istek engellendi
-3. Web Uygulama Güvenlik Duvarı Toplam Kural Dağılımı Değerlendirme sırasında eşleşen tüm kurallar
+1. Web uygulaması güvenlik duvarı engellenen Istek sayısı engellenen isteklerin sayısı
+2. Web uygulaması güvenlik duvarı engellenen kural sayısı, eşleşen tüm kuralların **ve** isteğin engellenmiş olduğu
+3. Web uygulaması güvenlik duvarı toplam kural dağıtımı değerlendirme sırasında eşleşen tüm kurallar
      
-Ölçümleri etkinleştirmek için portaldaki **Ölçümler** sekmesini seçin ve üç ölçümden birini seçin.
+Ölçümleri etkinleştirmek için portalda **ölçümler** sekmesini seçin ve üç ölçüden birini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bkz. Uygulama Ağ Geçidi'nde web uygulaması güvenlik duvarı nasıl yapılandırılabilirsiniz.](tutorial-restrict-web-traffic-powershell.md)
+Bkz. [Application Gateway Web uygulaması güvenlik duvarını yapılandırma](tutorial-restrict-web-traffic-powershell.md).

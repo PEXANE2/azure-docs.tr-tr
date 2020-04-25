@@ -1,128 +1,128 @@
 ---
 title: Sorguları izleme
 titleSuffix: Azure Cognitive Search
-description: Performans ve iş elde etmek için sorgu ölçümlerini izleyin. Tanılama günlüklerinde sorgu dize girişlerini toplayın ve analiz edin.
+description: Performans ve verimlilik için sorgu ölçümlerini izleyin. Sorgu dizesi girişlerini kaynak günlüklerinde toplayın ve çözümleyin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: a3a313ef9cd74ba901f5a6a2d82a18e3c21145dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462539"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127688"
 ---
-# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da sorgu isteklerini izleme
+# <a name="monitor-query-requests-in-azure-cognitive-search"></a>Azure Bilişsel Arama 'de sorgu isteklerini izleme
 
-Bu makalede, ölçümler ve tanılama günlüğe kaydetme kullanarak sorgu performansı ve birim nasıl ölçülecek açıklanmaktadır. Ayrıca, arama korpusunun yarar ve etkinliğini değerlendirmeniz gerektiğinde, sorgularda kullanılan giriş terimlerinin nasıl toplandığını da açıklar.
+Bu makalede, ölçüm ve kaynak günlüğü kullanarak sorgu performansının ve birimin nasıl ölçülmesi açıklanmaktadır. Ayrıca, arama corpclarınızın yardımcı programını ve verimliliğini değerlendirmenize gerek duyduğunuzda, sorgularda kullanılan giriş koşullarının nasıl toplandığını da açıklar.
 
-Ölçümlere beslenen geçmiş veriler 30 gün boyunca korunur. Daha uzun bekletme veya operasyonel veriler ve sorgu dizeleri hakkında rapor vermek için, günlüğe kaydedilmiş olayları ve ölçümleri kalıcı hale getirmek için bir depolama seçeneği belirten bir [tanılama ayarını](search-monitor-logs.md) etkinleştirdiğinden emin olun.
+Ölçümlerde akışların bulunduğu geçmiş verileri 30 gün boyunca korunur. Daha uzun bekletme için veya işletimsel verileri ve Sorgu dizelerini raporlamak için, günlüğe kaydedilen olayları ve ölçümleri kalıcı hale getiren bir depolama seçeneği belirten bir [Tanılama ayarını](search-monitor-logs.md) etkinleştirdiğinizden emin olun.
 
 Veri ölçümünün bütünlüğünü en üst düzeye çıkaran koşullar şunlardır:
 
-+ Faturalandırılabilir bir hizmet (Temel veya Standart katmanda oluşturulan bir hizmet) kullanın. Ücretsiz hizmet birden çok abone tarafından paylaşılır ve bu da yükler değiştikçe belirli bir miktar değişkenlik sağlar.
++ Faturalanabilir bir hizmet (temel veya Standart katmanda oluşturulan bir hizmet) kullanın. Ücretsiz hizmet birden çok abone tarafından paylaşılır ve bu, yükleme vardiyası olarak belirli bir miktar volame sağlar.
 
-+ İçe ve yalıtılmış bir ortam oluşturmak için mümkünse tek bir yineleme ve bölüm kullanın. Birden çok yineleme kullanıyorsanız, sorgu ölçümleri birden çok düğüm arasında ortalamaolarak alınır ve bu da sonuçların kesinliğini düşürebilir. Benzer şekilde, birden çok bölüm, dizin oluşturma da devam ediyorsa, bazı bölümlerin farklı verilere sahip olabileceği potansiyeliyle birlikte verilerin bölündüğü anlamına gelir. Sorgu performansını alarken, tek bir düğüm ve bölüm sınama için daha kararlı bir ortam sağlar.
++ İçerilen ve yalıtılmış bir ortam oluşturmak için, mümkünse tek bir çoğaltma ve bölüm kullanın. Birden çok çoğaltma kullanıyorsanız, sorgu ölçümlerinin birden çok düğüm arasında ortalaması alınır ve bu da sonuçların duyarlılığını azaltır. Benzer şekilde, birden çok bölüm verilerin bölündüğü anlamına gelir, çünkü dizin oluşturma işlemi de devam edecekse bazı bölümlerin farklı verileri olabilir. Sorgu performansını ayarlamaya çalışırken, tek bir düğüm ve bölüm test için daha kararlı bir ortam sağlar.
 
 > [!Tip]
-> Ek istemci tarafı kodu ve Uygulama Öngörüleri ile, uygulama kullanıcılarınızın ilgisini çeken şeyin ne olduğunu daha derinlemesine anlamak için tıklama verilerini de yakalayabilirsiniz. Daha fazla bilgi için [bkz.](search-traffic-analytics.md)
+> Ek istemci tarafı kodu ve Application Insights ile, uygulama kullanıcılarınızın ilgisini duyma hakkında daha derin Öngörüler için tıklama verilerini de yakalayabilirsiniz. Daha fazla bilgi için bkz. [arama trafiği analizi](search-traffic-analytics.md).
 
-## <a name="query-volume-qps"></a>Sorgu hacmi (QPS)
+## <a name="query-volume-qps"></a>Sorgu birimi (QPS)
 
-Birim, bir dakika içinde çalıştırılan sorguların ortalama, sayı, minimum veya maksimum değerleri olarak bildirilebilen yerleşik bir metrik **olan, Saniye Başına Arama Sorguları** (QPS) olarak ölçülür. Ölçümler için bir dakikalık aralıklar (TimeGrain = "PT1M") sistem içinde sabitlenir.
+Birim, tek dakikalık bir pencerede yürütülen sorguların ortalama, sayı, minimum veya maksimum değerleri olarak rapor oluşturulabilecek yerleşik bir ölçüm olan, **saniyedeki arama sorgusu** (QPS) olarak ölçülür. Ölçümler için bir dakikalık aralıklar (Timegrek = "PT1M") sistem içinde düzeltilmiştir.
 
-Sorguların milisaniye cinsinden yürütülmesi yaygındır, bu nedenle yalnızca saniye olarak ölçen sorgular ölçümlerde görünür.
+Sorguların milisaniye cinsinden yürütülmesi yaygındır, bu nedenle yalnızca saniyeler olarak ölçecek sorgular ölçümlerde görünür.
 
 | Toplama Türü | Açıklama |
 |------------------|-------------|
-| Ortalama | Sorgu yürütmesinin gerçekleştiği bir dakika içindeki ortalama saniye sayısı.|
-| Sayı | Bir dakika aralığında günlüğe yayılan ölçümlerin sayısı. |
-| Maksimum | Bir dakika içinde kaydedilmiş saniyede en yüksek arama sorgusu sayısı. |
-| Minimum | Saniyebaşına en düşük arama sorgusu sayısı bir dakika içinde kaydedilir.  |
+| Ortalama | Sorgu yürütmenin gerçekleştiği bir dakika içinde ortalama saniye sayısı.|
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Maksimum | Bir dakika içinde saniyede kayıtlı en yüksek arama sorgusu sayısı. |
+| Minimum | Bir dakika içinde saniyede kaydedilen arama sorgularının en düşük sayısı.  |
 | Toplam | Dakika içinde yürütülen tüm sorguların toplamı.  |
 
-Örneğin, bir dakika içinde, bunun gibi bir desen olabilir: SearchQueriesPerSecond için maksimum yüksek yük bir saniye, ortalama yük 58 saniye takip ve son olarak bir saniye sadece bir sorgu ile, en az.
+Örneğin, bir dakika içinde şu şekilde bir düzene sahip olabilirsiniz: en yüksek bir ikinci yük olan SearchQueriesPerSecond için maksimum, ortalama yükün 58 saniye ve son olarak tek bir sorgu ile bir saniye, en az bir sorgu ile.
 
-Başka bir örnek: bir düğüm, her bir metnin değerinin 40 olduğu 100 ölçüm yayıbiliyorsa, "Sayım" 100, "Toplam" 4000, "Ortalama" 40 ve "Max" 40'tır.
+Başka bir örnek: bir düğüm 100 ölçümleri yayıyorsa, her ölçümün değeri 40, "Count 100" ise "Sum 4000", "Average" 40 ve "Max" 40.
 
 ## <a name="query-performance"></a>Sorgu performansı
 
-Hizmet genelinde, sorgu performansı arama gecikmesi (sorgunun tamamlanması ne kadar sürer) ve kaynak çekişmesi sonucunda bırakılan daraltılmış sorgular olarak ölçülür.
+Hizmet genelinde, sorgu performansı arama gecikmesi (bir sorgunun tamamlandığı süre) ve kaynak çekişmesinin sonucu olarak bırakılan kısıtlanmış sorgular olarak ölçülür.
 
 ### <a name="search-latency"></a>Arama gecikmesi
 
 | Toplama Türü | Gecikme süresi | 
 |------------------|---------|
 | Ortalama | Milisaniye cinsinden ortalama sorgu süresi. | 
-| Sayı | Bir dakika aralığında günlüğe yayılan ölçümlerin sayısı. |
-| Maksimum | Örnekteki en uzun süre çalışan sorgu. | 
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Maksimum | Örnekteki en uzun çalışan sorgu. | 
 | Minimum | Örnekteki en kısa çalışan sorgu.  | 
-| Toplam | Örnekteki tüm sorguların toplam yürütme süresi, aralık içinde yürütülme (bir dakika).  |
+| Toplam | Örnekteki tüm sorguların, Aralık içinde yürütülerek toplam yürütme süresi (bir dakika).  |
 
-**Arama Gecikmesi** ölçümlerinin aşağıdaki örneğini göz önünde bulundurun: Ortalama 23,26 milisaniye lik bir süreyle 86 sorgu örneklendi. En az 0, bazı sorguların bırakıldığını gösterir. En uzun süren sorgunun tamamlanması 1000 milisaniye sürdü. Toplam yürütme süresi 2 saniye ydi.
+Aşağıdaki **arama gecikmesi** ölçümleri örneğini göz önünde bulundurun: 86 sorgu örneklenir ve ortalama süre 23,26 milisaniyedir. Minimum 0 değeri, bazı sorguların bırakılmakta olduğunu gösterir. En uzun çalışan sorgunun tamamlanması 1000 milisaniye sürdü. Toplam yürütme süresi 2 saniyedir.
 
-![Gecikme agregaları](./media/search-monitor-usage/metrics-latency.png "Gecikme agregaları")
+![Gecikme süresi toplamaları](./media/search-monitor-usage/metrics-latency.png "Gecikme süresi toplamaları")
 
-### <a name="throttled-queries"></a>Daraltılmış sorgular
+### <a name="throttled-queries"></a>Kısıtlanmış sorgular
 
-Daraltılmış sorgular, işlem yerine bırakılan sorguları ifade eder. Çoğu durumda, azaltma hizmeti çalıştırmanın normal bir parçasıdır.  Bu mutlaka bir yanlış bir gösterge değildir.
+Kısıtlanmış sorgular, işlem yerine bırakılan sorgulara başvurur. Çoğu durumda, azaltma hizmeti çalıştırmanın normal bir parçasıdır.  Yanlış bir sorun olduğunu belirten bir işaret değildir.
 
-Azaltma, şu anda işlenen istek sayısı kullanılabilir kaynakları aştığında oluşur. Yineleme döndürme den çıkarıldığında veya dizin oluşturma sırasında daraltılmış isteklerde bir artış görebilirsiniz. Hem sorgu hem de dizin oluşturma istekleri aynı kaynak kümesi tarafından işlenir.
+Şu anda işlenen istek sayısı kullanılabilir kaynakları aşarsa kısıtlama oluşur. Bir çoğaltma, döndürme sırasında veya dizin oluşturma sırasında getirildiğinde, kısıtlanmış isteklerde artış görebilirsiniz. Hem sorgu hem de dizin oluşturma istekleri aynı kaynak kümesi tarafından işlenir.
 
-Hizmet, kaynak tüketimine göre isteklerin bırakılıp bırakılmayacağını belirler. Bellek, CPU ve disk IO'da tüketilen kaynakların yüzdesi belirli bir süre boyunca ortalamaolarak alınır. Bu yüzde bir eşiği aşarsa, istek hacmi azalana kadar dizindeki tüm istekler daraltır. 
+Hizmet, isteklerin kaynak tüketimine göre atılıp düşürümeyeceğini belirler. Bellek, CPU ve disk GÇ genelinde tüketilen kaynakların yüzdesi bir süre içinde ortalaması alınır. Bu yüzde bir eşiği aşarsa, istek hacmi azaltılana kadar dizine yapılan tüm istekler azaltılır. 
 
-Müşterinize bağlı olarak, daraltılmış bir istek şu şekilde belirtilebilir:
+İstemcinizi bağlı olarak, kısıtlanmış bir istek şu yollarla belirtilebilir:
 
-+ Bir hizmet bir hata döndürür "Çok fazla istek gönderiyorsunuz. Lütfen daha sonra tekrar deneyin." 
-+ Bir hizmet, hizmetin şu anda kullanılamamış olduğunu belirten bir 503 hata kodu döndürür. 
-+ Portalı kullanıyorsanız (örneğin, Arama Gezgini), sorgu sessizce bırakılır ve yeniden Ara'yı tıklatmanız gerekir.
++ Bir hizmet, "çok fazla istek gönderiyorsunuz" hatası döndürüyor. Lütfen daha sonra tekrar deneyin." 
++ Hizmet, hizmetin Şu anda kullanılamadığını belirten bir 503 hata kodu döndürür. 
++ Portalı kullanıyorsanız (örneğin, arama Gezgini), sorgu sessizce bırakılır ve yeniden ara ' yı tıklamanız gerekir.
 
-Daraltılmış sorguları onaylamak **için, Daraltılmış arama sorguları** ölçüsükullanın. Portaldaki ölçümleri keşfedebilir veya bu makalede açıklandığı gibi bir uyarı ölçümü oluşturabilirsiniz. Örnekleme aralığıiçinde bırakılan sorgular için, yürütülmeyen sorguların yüzdesini almak için *Toplam'ı* kullanın.
+Kısıtlanmış sorguları onaylamak için, **Kısıtlanmış arama sorguları** ölçümünü kullanın. Portalda ölçümleri keşfedebilirsiniz veya bu makalede açıklandığı gibi bir uyarı ölçümü oluşturabilirsiniz. Örnekleme aralığı içinde bırakılan sorgular için, Yürütülmeyen sorguların yüzdesini almak için *Toplam* ' u kullanın.
 
 | Toplama Türü | Azaltma |
 |------------------|-----------|
-| Ortalama | Aralık içinde bırakılan sorguyüzdesi. |
-| Sayı | Bir dakika aralığında günlüğe yayılan ölçümlerin sayısı. |
-| Maksimum | Aralık içinde bırakılan sorguyüzdesi.|
-| Minimum | Aralık içinde bırakılan sorguyüzdesi. |
-| Toplam | Aralık içinde bırakılan sorguyüzdesi. |
+| Ortalama | Aralık içinde bırakılan sorguların yüzdesi. |
+| Sayı | Günlük için tek dakikalık aralıkta bulunan ölçüm sayısı. |
+| Maksimum | Aralık içinde bırakılan sorguların yüzdesi.|
+| Minimum | Aralık içinde bırakılan sorguların yüzdesi. |
+| Toplam | Aralık içinde bırakılan sorguların yüzdesi. |
 
-**Daraltılmış Arama Sorguları Yüzdesi**için, en az, en yüksek, ortalama ve toplam, hepsi aynı değere sahiptir: bir dakika boyunca toplam arama sorgusu sayısından daraltılmış arama sorgularının yüzdesi.
+**Kısıtlanmış arama sorguları yüzdesi**, minimum, maksimum, ortalama ve toplam için aynı değer vardır: bir dakika boyunca toplam arama sorgusu sayısından kısıtlanmış olan arama sorgularının yüzdesi.
 
-Aşağıdaki ekran görüntüsünde, ilk sayı sayımdır (veya günlüğe gönderilen metrik sayısı). En üstte veya metrin üzerinde gezinirken görünen ek toplamalar ortalama, maksimum ve toplamiçerir. Bu örnekte, hiçbir istek bırakılmadı.
+Aşağıdaki ekran görüntüsünde, ilk sayı sayı (veya günlüğe gönderilen ölçüm sayısı) sayısıdır. En üstte veya ölçüm üzerine gelindiğinde görüntülenen ek toplamalar, ortalama, en yüksek ve toplam içerir. Bu örnekte, hiçbir istek bırakılmadı.
 
-![Daraltılmış toplamalar](./media/search-monitor-usage/metrics-throttle.png "Daraltılmış toplamalar")
+![Kısıtlanmış toplamalar](./media/search-monitor-usage/metrics-throttle.png "Kısıtlanmış toplamalar")
 
-## <a name="explore-metrics-in-the-portal"></a>Portaldaki ölçümleri keşfedin
+## <a name="explore-metrics-in-the-portal"></a>Portalda ölçümleri keşfet
 
-Geçerli sayılara hızlı bir bakış için, hizmete Genel Bakış sayfasındaki **İzleme** sekmesi, toplama türünü değiştirme seçeneğiyle, saat, gün ve hafta cinsinden ölçülen sabit aralıklarla üç ölçüm **(Arama gecikmesi,** **saniye başına arama sorguları (arama birimi başına)**, **Daraltılmış Arama Sorguları Yüzdesi)** gösterir.
+Geçerli sayılara hızlı bir şekilde bakmak için, hizmet Genel Bakış sayfasındaki **izleme** sekmesine üç ölçüm (**arama gecikme süresi**, **saniye başına arama sorguları (arama birimi başına)**, kısıtlı **arama sorguları yüzdesi**), toplama türünü değiştirme seçeneğiyle birlikte saat, gün ve hafta cinsinden ölçülen sabit aralıklar arasında gösterilir.
 
-Daha derin bir araştırma için, eğilimleri veya anormallikleri keşfetmek için verileri katmanlayabilmeniz, yakınlaştırabilmeniz ve görselleştirebilmeniz için **İzleme** menüsünden açık ölçümler kaşifi yapın. Bir metrik grafiği oluşturma yla ilgili bu [öğreticiyi](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)tamamlayarak ölçümler explorer hakkında daha fazla bilgi edinin.
+Daha derin araştırma için, **izleme** menüsünden Ölçüm Gezgini 'ni açın, böylece eğilimleri ve anormallikleri araştırmak üzere verileri katmanlaştırabilir, yakınlaştırabilir ve görselleştirebilirsiniz. [Ölçüm grafiği oluşturma hakkında bu öğreticiyi](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-metrics-explorer)tamamlayarak Ölçüm Gezgini hakkında daha fazla bilgi edinin.
 
-1. İzleme bölümünde, arama hizmetinize ayarlanan kapsamla ölçüler gezginini açmak için **Ölçümler'i** seçin.
+1. Izleme bölümünde **, ölçüm ' i seçerek ölçüm** Gezgini ' ni arama hizmetinize ayarlanmış kapsam ile açın.
 
-1. Metrik altında, açılır listeden birini seçin ve tercih edilen bir tür için kullanılabilir toplama listesini gözden geçirin. Toplama, toplanan değerlerin her zaman aralığında nasıl örnekleneceğini tanımlar.
+1. Ölçüm altında, açılan listeden birini seçin ve tercih edilen bir tür için kullanılabilir toplamalar listesini gözden geçirin. Toplama, toplanan değerlerin her zaman aralığında nasıl örnekleneceğini tanımlar.
 
-   ![QPS ölçümü için ölçümler kaşifi](./media/search-monitor-usage/metrics-explorer-qps.png "QPS ölçümü için ölçümler kaşifi")
+   ![QPS ölçümü için ölçüm Gezgini](./media/search-monitor-usage/metrics-explorer-qps.png "QPS ölçümü için ölçüm Gezgini")
 
-1. Sağ üst köşede, zaman aralığını ayarlayın.
+1. Sağ üst köşede zaman aralığını ayarlayın.
 
-1. Bir görselleştirme seçin. Varsayılan bir çizgi grafiğidir.
+1. Görselleştirme seçin. Varsayılan değer bir çizgi grafiğidir.
 
-1. **Metrik ekle'yi** seçerek ve farklı toplamaları seçerek ek toplamaları katmanlayın.
+1. **Ölçüm Ekle** ve farklı toplamalar seçme seçeneklerini belirleyerek ek toplamaları katman.
 
-1. Çizgi grafiğinde ilgi çeken bir alana yakınlaştırın. Fare işaretçisini alanın başına koyun, sol fare düğmesini tıklatın ve basılı tutun, alanın diğer tarafına sürükleyin ve düğmeyi bırakın. Grafik bu zaman aralığını yakınlaştırır.
+1. Çizgi grafik üzerinde ilgilendiğiniz bir alana yakınlaştırın. Fare işaretçisini alanın başlangıcına koyun, sol fare düğmesine tıklayın ve basılı tutun, alanın diğer tarafına sürükleyin ve düğmeyi bırakın. Grafik bu zaman aralığında yakınlaşacaktır.
 
-## <a name="identify-strings-used-in-queries"></a>Sorgularda kullanılan dizeleri tanımlama
+## <a name="identify-strings-used-in-queries"></a>Sorgularda kullanılan dizeleri tanımla
 
-Tanılama günlüğe kaydetmeyi etkinleştirdiğinizde, sistem **Azure Diagnostics** tablosunda sorgu isteklerini yakalar. Ön koşul olarak, günlük analitiği çalışma alanı veya başka bir depolama seçeneği belirterek [tanılama günlüğünü](search-monitor-logs.md)zaten etkinleştirmiş olmalısınız.
+Kaynak günlüğünü etkinleştirdiğinizde, sistem sorgu isteklerini **AzureDiagnostics** tablosunda yakalar. Bir önkoşul olarak, bir Log Analytics çalışma alanı ya da başka bir depolama seçeneği belirterek [kaynak günlüğü](search-monitor-logs.md)'nün zaten etkinleştirilmiş olması gerekir.
 
-1. İzleme bölümünde, Log Analytics'te boş bir sorgu penceresi açmak için **Günlükler'i** seçin.
+1. Izleme bölümünde, Log Analytics ' de boş bir sorgu penceresi açmak için **Günlükler** ' i seçin.
 
-1. Sorgu sorgusu.Arama işlemleri için aşağıdaki ifadeyi çalıştırın, işlem adı, sorgu dizesi, sorgulanan dizin ve bulunan belge sayısından oluşan bir tablo sonucu kümesi döndürün. Son iki deyim, sonuçlarınızdaki gürültüyü azaltan bir örnek dizini üzerinde boş veya belirtilmemiş bir aramadan oluşan sorgu dizelerini hariç tutar.
+1. Sorgu. Search işlemlerini aramak için aşağıdaki ifadeyi çalıştırın, işlem adından, sorgu dizesinden, sorgulanan dizinden ve bulunan belge sayısından oluşan tablolu bir sonuç kümesi döndürür. Son iki deyim, bir boş veya belirtilmemiş aramadan oluşan sorgu dizelerini, örnek bir dizin üzerinden hariç tutar ve bu, sonuçlarınızda paraziti keser.
 
    ```
    AzureDiagnostics
@@ -132,19 +132,19 @@ Tanılama günlüğe kaydetmeyi etkinleştirdiğinizde, sistem **Azure Diagnosti
    | where IndexName_s != "realestate-us-sample-index"
    ```
 
-1. İsteğe bağlı olarak, belirli bir sözdizimi veya dize üzerinde arama yapmak için *Query_s* bir Sütun filtresi ayarlayın. Örneğin, üzerinde filtre olabilir `?api-version=2019-05-06&search=*&%24filter=HotelName` *eşittir).*
+1. İsteğe bağlı olarak, belirli bir söz dizimi veya dizeyi aramak için *Query_s* bir sütun filtresi ayarlayın. Örneğin *, üzerine filtre uygulayabilir* `?api-version=2019-05-06&search=*&%24filter=HotelName`).
 
-   ![Günlüğe kaydedilmiş sorgu dizeleri](./media/search-monitor-usage/log-query-strings.png "Günlüğe kaydedilmiş sorgu dizeleri")
+   ![Günlüğe kaydedilen sorgu dizeleri](./media/search-monitor-usage/log-query-strings.png "Günlüğe kaydedilen sorgu dizeleri")
 
-Bu teknik geçici araştırma için çalışırken, bir rapor oluşturmak sorgu dizelerini çözümlemeye daha elverişli bir düzende birleştirmenize ve sunmanıza olanak tanır.
+Bu teknik geçici araştırma için çalışırken, bir rapor oluşturmak, Sorgu dizelerini bir düzen daha fazla şekilde analiz edilecek şekilde birleştirip sunmanıza olanak tanır.
 
-## <a name="identify-long-running-queries"></a>Uzun süren sorguları belirleme
+## <a name="identify-long-running-queries"></a>Uzun süre çalışan sorguları tanımla
 
-Sadece metrik olarak alınanların değil, tüm sorguların numaralarını almak için süre sütununa ekleyin. Bu verileri sıralamak, hangi sorguların tamamlanmasının en uzun süre olduğunu gösterir.
+Yalnızca ölçüm olarak çekilen olanları değil, tüm sorguların numaralarını almak için Duration sütununu ekleyin. Bu verileri sıralamak, hangi sorguların ne kadar uzun sürme olduğunu gösterir.
 
-1. İzleme bölümünde, günlük bilgileri için sorgu yapmak için **Günlükler'i** seçin.
+1. Izleme bölümünde günlük bilgilerini sorgulamak için **Günlükler** ' i seçin.
 
-1. Süreye göre milisaniye cinsinden sıralanmış sorguları döndürmek için aşağıdaki sorguyu çalıştırın. En uzun süren sorgular en üsttedir.
+1. Sorgu döndürmek için aşağıdaki sorguyu çalıştırın, milisaniye cinsinden süreye göre sıralanır. En uzun çalışan sorgular en üstte bulunur.
 
    ```
    AzureDiagnostics
@@ -153,35 +153,35 @@ Sadece metrik olarak alınanların değil, tüm sorguların numaralarını almak
    | sort by DurationMs
    ```
 
-   ![Sorguları süreye göre sıralama](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Sorguları süreye göre sıralama")
+   ![Sorguları süreye göre sırala](./media/search-monitor-usage/azurediagnostics-table-sortby-duration.png "Sorguları süreye göre sırala")
 
-## <a name="create-a-metric-alert"></a>Metrik uyarı oluşturma
+## <a name="create-a-metric-alert"></a>Ölçüm uyarısı oluşturma
 
-Metrik uyarı, bir bildirim alacağınız veya önceden tanımladığınız düzeltici eylemi tetiklediğiniz bir eşik belirler. 
+Ölçüm uyarısı, bir bildirim alacağınız veya önceden tanımladığınız bir düzeltici eylemi tetikleyen bir eşik oluşturur. 
 
-Bir arama hizmeti için, arama gecikmesi ve daraltılmış sorgular için bir metrik uyarı oluşturmak yaygındır. Sorguların ne zaman bırakıldığını biliyorsanız, yükü azaltan veya kapasiteyi artıran çözümler arayabilirsiniz. Örneğin, dizin oluşturma sırasında daraltılmış sorgular artarsa, sorgu etkinliği dinlenene kadar erteleyebilirsiniz.
+Arama hizmeti için arama gecikmesi ve kısıtlanmış sorgular için bir ölçüm uyarısı oluşturulması yaygındır. Sorguların ne zaman bırakılacağını biliyorsanız, yükü azaltan veya kapasiteyi artıran düzeltmelere bakabilirsiniz. Örneğin, dizin oluşturma sırasında kısıtlanmış sorgular artlarsa, sorgu etkinlik alt taraflarına kadar erteleyebilirsiniz.
 
-Belirli bir çoğaltma bölümü yapılandırmasının sınırlarını zorlarken, sorgu birimi eşikleri (QPS) için uyarılar ayarlamak da yararlıdır.
+Belirli bir çoğaltma bölümü yapılandırmasının sınırlarını gönderirken, sorgu birimi eşikleri (QPS) için uyarıları ayarlamak da faydalı olur.
 
-1. İzleme bölümü altında **Uyarılar'ı** seçin ve ardından **+ Yeni uyarı kuralını**tıklatın. Arama hizmetinizin kaynak olarak seçildiğinden emin olun.
+1. Izleme bölümünde **Uyarılar** ' ı seçin ve ardından **+ Yeni uyarı kuralı**' nı tıklatın. Arama hizmetinizin kaynak olarak seçildiğinden emin olun.
 
-1. Koşul altında **Ekle'yi**tıklatın.
+1. Koşul bölümünde **Ekle**' ye tıklayın.
 
-1. Sinyal mantığını yapılandırın. Sinyal türü için **ölçümleri** seçin ve ardından sinyali seçin.
+1. Sinyal mantığını yapılandırın. Sinyal türü için **ölçümler** ' i seçin ve ardından sinyali seçin.
 
-1. Sinyali seçtikten sonra, ayarlama koşullarına nasıl devam edileceğine ilişkin bilinçli bir karar için geçmiş verileri görselleştirmek için bir grafik kullanabilirsiniz.
+1. Sinyali seçtikten sonra, koşulları ayarlamaya nasıl devam edeceğine dair bilinçli bir karar için geçmiş verileri görselleştirmek üzere bir grafik kullanabilirsiniz.
 
-1. Ardından, Uyarı mantığına doğru aşağı kaydırın. Kavram kanıtı için, test amacıyla yapay olarak düşük bir değer belirtebilirsiniz.
+1. Ardından, uyarı mantığına aşağı kaydırın. Kavram kanıtı için, test amacıyla yapay düşük bir değer belirtebilirsiniz.
 
    ![Uyarı mantığı](./media/search-monitor-usage/alert-logic-qps.png "Uyarı mantığı")
 
-1. Ardından, bir Eylem Grubu belirtin veya oluşturun. Bu, eşik karşılandığında çağrılması gereken yanıttır. Anında iletme bildirimi veya otomatik bir yanıt olabilir.
+1. Sonra, bir eylem grubu belirtin veya oluşturun. Bu, eşik karşılandığında çağrılacak yanıttır. Anında iletme bildirimi veya otomatik bir yanıt olabilir.
 
-1. Son olarak, Uyarı ayrıntılarını belirtin. Uyarıyı adlandırın ve açıklayın, önem derecesi atayın ve kuralı etkin veya devre dışı bırakılmış bir durumda oluşturup oluşturmayacağını belirtin.
+1. Son olarak, uyarı ayrıntılarını belirtin. Uyarıyı adlandırın, bir önem derecesi değeri atayın ve kuralın etkin veya devre dışı durumunda oluşturulup oluşturulmayacağını belirtin.
 
    ![Uyarı ayrıntıları](./media/search-monitor-usage/alert-details.png "Uyarı ayrıntıları")
 
-Bir e-posta bildirimi belirtirseniz, "Azure: Etkinleştirilen Önem Derecesi: 3" `<your rule name>`konu satırıiçeren "Microsoft Azure"dan bir e-posta alırsınız.
+Bir e-posta bildirimi belirttiyseniz, "Azure: Activated önem derecesi: 3 `<your rule name>`" konu satırındaki "Microsoft Azure" adresinden bir e-posta alırsınız.
 
 <!-- ## Report query data
 
@@ -189,7 +189,7 @@ Power BI is an analytical reporting tool useful for visualizing data, including 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bunu daha önce yapmadıysanız, tüm gözetim yetenekleri hakkında bilgi edinmek için arama hizmeti izlemenin temellerini gözden geçirin.
+Daha önce yapmadıysanız, daha fazla bakış özelliği hakkında bilgi edinmek için arama hizmeti izlemenin temellerini gözden geçirin.
 
 > [!div class="nextstepaction"]
-> [Azure Bilişsel Arama'daki işlemleri ve etkinlikleri izleme](search-monitor-usage.md)
+> [Azure Bilişsel Arama işlemler ve etkinlikleri izleme](search-monitor-usage.md)

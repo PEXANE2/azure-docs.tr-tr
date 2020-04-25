@@ -1,88 +1,88 @@
 ---
-title: Varolan Azure Kapsayıcıları teklifini güncelleştirme | Azure Marketi
-description: Azure Marketi'nde varolan bir kapsayıcı teklifini güncelleştirme.
+title: Mevcut bir Azure kapsayıcıları teklifini güncelleştirme | Azure Marketi
+description: Azure Marketi 'nde mevcut bir kapsayıcı teklifini güncelleştirme.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
-ms.openlocfilehash: 650ef45e56184b67efba67810580d9d6e763a4d0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.openlocfilehash: cc378dcc1d5f777f4e81825e2f99dedd37a87f96
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81271276"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82143816"
 ---
-# <a name="update-an-existing-container-offer"></a>Varolan bir kapsayıcı teklifini güncelleştirme
+# <a name="update-an-existing-container-offer"></a>Mevcut bir kapsayıcı teklifini güncelleştirme
 
 > [!IMPORTANT]
-> 13 Nisan 2020'den itibaren Azure Kapsayıcı tekliflerinizin yönetimini İş Ortağı Merkezi'ne taşımaya başlayacağız. Geçişten sonra, Tekliflerinizi İş Ortağı Merkezi'nde oluşturur ve yönetirsiniz. Geçirilen tekliflerinizi yönetmek için [Azure Kapsayıcısı Oluştur teklifinde](https://aka.ms/CreateContainerOffer) yönergeleri izleyin.
+> 13 Nisan 2020 ' den itibaren, Azure Container tekliflerinizin yönetimini Iş Ortağı Merkezi 'ne taşımaya başlayacağız. Geçişten sonra, Iş Ortağı Merkezi 'nde tekliflerinizi oluşturup yönetirsiniz. Geçirilmiş tekliflerinizi yönetmek için [bir Azure kapsayıcı oluşturma teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer) bölümündeki yönergeleri izleyin.
 
-Bu makale, [Bulut İş Ortağı Portalı'ndaki](https://cloudpartner.azure.com/)konteyner teklifinizi güncelleştirmenin farklı yönlerini uygular.
+Bu makalede, [bulut iş ortağı portalı](https://cloudpartner.azure.com/)kapsayıcınızı güncelleştirme konusunda farklı yönleri adım adım anlatılmaktadır.
 
-Teklifinizi güncelleştirmek istemenizin birkaç nedeni vardır:
+Teklifinizi güncelleştirmek isteyebileceğiniz bazı nedenler vardır; örneğin:
 
--  Mevcut STU'lara yeni bir kapsayıcı görüntüsü sürümü ekleme.
--  Yeni STU'lar ekleme.
--  Teklif veya tek tek SNU'lar için pazar meta verilerini güncelleme.
+-  Mevcut SKU 'Lara yeni bir kapsayıcı görüntüsü sürümü ekleniyor.
+-  Yeni SKU 'Lar ekleniyor.
+-  Teklif veya bağımsız SKU 'Lar için Market meta verilerini güncelleştirme.
 
-Bu değişikliklerde size yardımcı olmak için, portal **Karşılaştırma** ve **Geçmiş** özelliklerini sağlar.  
+Bu değişiklikler konusunda size yardımcı olmak için Portal **karşılaştırma** ve **geçmiş** özellikleri sağlar.  
 
 
-## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Konteyner teklifinde veya SKU'da izin verilmemiş değişiklikler
+## <a name="unpermitted-changes-to-a-container-offer-or-sku"></a>Bir kapsayıcı teklifinde veya SKU 'sunda izin verilmeyen değişiklikler
 
-Azure Marketi'nde canlı olarak kullanılabilir olduktan sonra değiştirilemeyecek bir kapsayıcı teklifinin veya SKU'nun öznitelikleri vardır. Aşağıdaki ayarları değiştiremezsiniz:
+Teklif Azure Marketi 'nde canlı olduktan sonra değiştirilemeyen bir kapsayıcı teklifinin veya SKU 'sunun öznitelikleri vardır. Aşağıdaki ayarları değiştiremezsiniz:
 
--  **Teklifin kimliği** ve **Yayıncı Kimliği**
--  Mevcut SKU'ların **SKU Kimliği**
+-  Teklifin **TEKLIF kimliği** ve **Yayımcı kimliği**
+-  Mevcut SKU 'ların **SKU kimliği**
 -  Sürüm etiketleri, örneğin:`1.0.1`
--  Mevcut SBI'lerde faturalama/lisans modeli değişiklikleri
+-  Faturalandırma/lisans modeli, mevcut SKU 'Larda değişir
 
-## <a name="common-update-operations"></a>Sık güncelleştirme işlemleri
+## <a name="common-update-operations"></a>Ortak güncelleştirme işlemleri
 
 Aşağıdaki güncelleştirme işlemleri yaygındır.
 
-### <a name="update-container-image-version-for-a-sku"></a>Bir SKU için kapsayıcı resim sürümünü güncelleştirme
+### <a name="update-container-image-version-for-a-sku"></a>SKU için kapsayıcı görüntüsü sürümünü güncelleştirme
 
-Bir kapsayıcı görüntüsünün güvenlik yamaları, ek özellikler ve benzeri yollarla düzenli olarak güncellenmesi yaygındır. Bu senaryoda, Aşağıdaki adımları kullanarak SKU'nuzun başvurulmaya vurduğu kapsayıcı görüntüsünü güncelleştirmek istiyorsunuz:
+Bir kapsayıcı görüntüsünün güvenlik düzeltme ekleri, ek özellikler vb. ile düzenli olarak güncelleştirilmesini yaygındır. Bu senaryoda, aşağıdaki adımları kullanarak SKU 'sunun başvurduğu kapsayıcı görüntüsünü güncelleştirmek istersiniz:
 
-1. [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-2. **Tüm teklifler**altında, güncellemek istediğiniz teklifi bulun.
-3. **SKU** sekmesinde, güncelleştirmek için kapsayıcı görüntüsüyle ilişkili SKU'yu seçin.
-4. **Kapsayıcı resminin**altında, yeni bir kapsayıcı resmi eklemek için **+ Yeni Resim Sürümü'nü** seçin.
-5. Yeni kapsayıcı **resim sürümlerini**sağlayın. Resim sürümünün önceki sürümler ile aynı etiketler yönergelerine uyması gerekir. Sürüm etiketleri X, Y ve Z'nin tümseger olduğu X.Y.Z formunda olmalıdır. Sağladığınız yeni sürümün önceki tüm sürümlerden daha büyük olduğunu doğrulayın.
-6. Yeni kapsayıcı resim sürümünüzü Azure Marketi'nde yayınlamak için iş akışını başlatmak için **Yayımla'yı** seçin.
+1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2. **Tüm teklifler**altında, güncelleştirmek istediğiniz teklifi bulun.
+3. **SKU 'lar** sekmesinde, güncelleştirilecek kapsayıcı görüntüsüyle ilişkili SKU 'yu seçin.
+4. **Kapsayıcı görüntüsü**altında yeni bir kapsayıcı görüntüsü eklemek Için **+ yeni görüntü sürümü** ' nü seçin.
+5. Yeni kapsayıcı **görüntüsü sürümlerini**belirtin. Görüntü sürümünün önceki sürümlerle aynı etiket yönergeleriyle izlenmesi gerekir. Sürüm etiketleri X. Y. Z biçiminde olmalıdır; burada X, Y ve Z tamsayılardır. Sağladığınız yeni sürümün önceki sürümlerden daha büyük olduğunu doğrulayın.
+6. Yeni kapsayıcı görüntüsü sürümünüzü Azure Market 'Te yayımlamak için iş akışını başlatmak üzere **Yayımla** ' yı seçin.
 
-### <a name="add-a-new-sku"></a>Yeni bir SKU ekle
+### <a name="add-a-new-sku"></a>Yeni bir SKU Ekle
 
-Yeni bir SKU'yu teklifiniz için kullanılabilir hale getirmek için aşağıdaki adımları kullanın:
+Teklifinizin yeni bir SKU 'SU için kullanılabilir olmasını sağlamak için aşağıdaki adımları kullanın:
 
-1. [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-2. **Tüm teklifler**altında, güncellemek istediğiniz teklifi bulun.
-3. **SKU** sekmesinin altında **yeni SKU ekle'yi** seçin ve açılır pencerede bir **SKU kimliği** sağlayın.
-4. [Kapsayıcı teklifini Yayımla'da](./cpp-publish-offer.md)açıklanan adımları kullanarak kapsayıcıyı yeniden yayımlayın.
-5. Yeni SKU'nuzu yayınlamak için iş akışını başlatmak için **Yayımla'yı** seçin.
+1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2. **Tüm teklifler**altında, güncelleştirmek istediğiniz teklifi bulun.
+3. **SKU 'lar** sekmesinde, **Yeni SKU Ekle** ' yi seçin ve açılır pencerede bir **SKU kimliği** sağlayın.
+4. Kapsayıcıyı [Yayımla teklifinde](./cpp-publish-offer.md)açıklanan adımları kullanarak kapsayıcıyı yeniden yayımlayın.
+5. Yeni SKU 'nuzu yayımlamak üzere iş akışını başlatmak için **Yayımla** ' yı seçin.
 
-### <a name="update-offer-marketplace-metadata"></a>Teklif pazar meta verilerini güncelleştirin
+### <a name="update-offer-marketplace-metadata"></a>Teklif marketi meta verilerini Güncelleştir
 
-Teklifinizle ilişkili pazar meta verilerini güncelleştirmek için aşağıdaki adımları kullanın. (Örneğin: şirket adı, logolar ve vb.)
+Teklifinizle ilişkili Market meta verilerini güncelleştirmek için aşağıdaki adımları kullanın. (Örneğin, şirket adı, logo ve vb.)
 
-1. [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com/)oturum açın.
-2. **Tüm teklifleraltında,** güncellemek istediğiniz teklifi bulun.
-3. **Market** sekmesine gidin. Meta veri değişiklikleri yapmak için [Yayımlama kapsayıcı teklifi](./cpp-publish-offer.md) makalesindeki yönergeleri kullanın.
-4. Değişikliklerinizi yayınlamak için iş akışını başlatmak için **Yayımla'yı** seçin.
+1. [Bulut iş ortağı portalı](https://cloudpartner.azure.com/)oturum açın.
+2. **Tüm teklifler**altında, güncelleştirmek istediğiniz teklifi bulun.
+3. **Market** sekmesine gidin. meta verileri değişiklik yapmak Için [kapsayıcıyı Yayımla](./cpp-publish-offer.md) teklif teklifi makalesindeki yönergeleri kullanın.
+4. Değişikliklerinizi yayımlamak için iş akışını başlatmak üzere **Yayımla** ' yı seçin.
 
-## <a name="compare-feature"></a>Özelliği karşılaştırın
+## <a name="compare-feature"></a>Karşılaştırma özelliği
 
 Yayımlanmış bir teklifte değişiklik yaptığınızda, yaptığınız değişiklikleri denetlemek için **Karşılaştır** özelliğini kullanabilirsiniz.
 
-### <a name="to-use-the-compare-feature"></a>Karşılaştır özelliğini kullanmak için:
+### <a name="to-use-the-compare-feature"></a>Karşılaştırma özelliğini kullanmak için:
 
-1. Düzenleme işleminin herhangi bir noktasında teklifiniz için Karşılaştır'ı seçin.
+1. Herhangi bir noktada, sizin teklifiniz için karşılaştırma ' yı seçin.
 2. Pazarlama varlıklarının ve meta verilerin yan yana sürümlerine bakın.
 
 
-## <a name="history-of-publishing-actions"></a>Yayımlama eylemlerinin tarihi
+## <a name="history-of-publishing-actions"></a>Yayımlama eylemlerinin geçmişi
 
-Geçmiş yayımlama etkinliğini görmek için Bulut İş Ortağı Portalı'nın sol daki gezinti menüsü çubuğundaki **Geçmiş** sekmesini seçin. Azure Marketi tekliflerinizin ömrü boyunca zaman damgalı eylemleri görebilirsiniz.
+Geçmiş yayımlama etkinliğini görmek için Bulut İş Ortağı Portalı sol gezinti menü çubuğunda **Geçmiş** sekmesini seçin. Azure Market tekliflerinizin kullanım ömrü boyunca alınan zaman damgamış eylemleri görebilirsiniz.

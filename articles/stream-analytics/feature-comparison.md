@@ -1,53 +1,53 @@
 ---
-title: Azure Akış Analizi özellik karşılaştırması
-description: Bu makalede, Azure portalı, Visual Studio ve Visual Studio Code'taki Azure Akış Analizi bulutu ve IoT Edge işleri için desteklenen özellikler karşılaştırılır.
+title: Azure Stream Analytics özelliği karşılaştırması
+description: Bu makalede Azure portal, Visual Studio ve Visual Studio Code Azure Stream Analytics bulut ve IoT Edge işleri için desteklenen özellikler karşılaştırılır.
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: d3b27a50fa86916b71c84b30ecdbf45deb0ec45c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: b169a067f05de422b714e18a4d7ebb9c9e7f0428
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81770765"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133494"
 ---
-# <a name="azure-stream-analytics-feature-comparison"></a>Azure Akış Analizi özellik karşılaştırması
+# <a name="azure-stream-analytics-feature-comparison"></a>Azure Stream Analytics özelliği karşılaştırması
 
-Azure Akış Analizi ile, [Azure portalı,](stream-analytics-quick-create-portal.md) [Visual Studio](stream-analytics-quick-create-vs.md)ve Visual [Studio Code'u](quick-create-vs-code.md)kullanarak bulutta ve IoT Edge'de akış çözümleri oluşturabilirsiniz. Bu makaledeki tablolar, her iki iş türü için her platform tarafından desteklenen özellikleri gösterir.
+Azure Stream Analytics, bulutta ve IoT Edge [Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-vs-code.md)kullanarak akış çözümleri oluşturabilirsiniz. Bu makaledeki tablolarda her iki iş türü için her platform tarafından desteklenen özellikler gösterilir.
 
 > [!NOTE]
-> Visual Studio ve Visual Studio Code araçları Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya KuzeyDoğu bölgelerindeki işleri desteklemez.
+> Visual Studio ve Visual Studio Code araçları, Çin Doğu, Çin Kuzey, Almanya Orta ve Almanya kuzeydoğu bölgelerinde bulunan işleri desteklemez.
 
-## <a name="cloud-job-features"></a>Bulut iş özellikleri
+## <a name="cloud-job-features"></a>Bulut işi özellikleri
 
 
 |Özellik  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|Çapraz platform     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
-|Komut dosyası yazma     |Evet         |Evet         |Evet         |
-|Script Intellisense     |Sözdizimi vurgulama         |Sözdizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |Sözdizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |
-|Tüm girdi, çıktı ve iş yapılandırmaları türlerini tanımlama     |Evet         |Evet         |Evet         |
-|Kaynak denetimi     |Hayır         |Evet         |Evet         |
-|CI/CD desteği     |Kısmi         |Evet         |Evet         |
-|Giriş ve çıktıları birden çok sorgu arasında paylaşma     |Hayır         |Evet         |Evet         |
-|Örnek bir dosyayla sorgu testi     |Evet         |Evet        |Evet         |
-|Canlı veri yerel test     |Hayır         |Evet       |Evet      |
-|İşleri listele ve iş varlıklarını görüntüleyin     |Evet         |Evet        |Evet         |
-|Yerel bir projeye iş verme     |Hayır         |Evet         |Evet         |
-|İş gönderme, başlatma ve durdurma     |Evet         |Evet         |Evet         |
-|İş ölçümlerini ve diyagramı görüntüleme     |Evet         |Evet         |Portalda açma         |
-|İş çalışma zamanı hatalarını görüntüleme     |Evet         |Evet         |Hayır         |
-|Tanılama günlükleri     |Evet         |Hayır         |Hayır         |
-|Özel ileti özellikleri     |Evet         |Evet         |Hayır       |
-|C# özel kod fonksiyonu ve Deserializer|Salt okunur modu|Evet|Hayır|
-|JavaScript UDF ve UDA     |Evet         |Evet         |Yalnızca Windows         |
-|Machine Learning Hizmeti     |Evet        |Evet         |Hayır         |
-|Machine Learning Studio     |Evet, ancak sorgu sınanamıyor        |Evet |Hayır         |
-|Uyumluluk düzeyi     |1.0</br>1.1</br>1.2 (varsayılan)         |1.0</br>1.1</br>1.2 (varsayılan)           |1.0</br>1.1</br>1.2 (varsayılan)           |
-|Dahili ML tabanlı Anomali Algılama fonksiyonları     |Evet         |Evet         |Evet         |
-|Dahili GeoSpatial fonksiyonları     |Evet         |Evet         |Evet         |
+|Platformlar arası     |Mac</br>Linux</br>Windows         |Windows        |Mac</br>Linux</br>Windows          |
+|Betik yazma     |Yes         |Yes         |Yes         |
+|Betik IntelliSense     |Söz dizimi vurgulama         |Söz dizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |Söz dizimi vurgulama</br>Kod tamamlama</br>Hata işaretçisi         |
+|Tüm giriş, çıkış ve iş yapılandırması türlerini tanımlayın     |Yes         |Yes         |Yes         |
+|Kaynak denetimi     |Hayır         |Yes         |Yes         |
+|CI/CD desteği     |Kısmi         |Yes         |Yes         |
+|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Yes         |Yes         |
+|Örnek dosya ile sorgu testi     |Yes         |Yes        |Yes         |
+|Canlı veri yerel testi     |Hayır         |Yes       |Yes      |
+|İşleri listeleme ve iş varlıklarını görüntüleme     |Yes         |Yes        |Yes         |
+|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Yes         |Yes         |
+|İşleri gönderme, başlatma ve durdurma     |Yes         |Yes         |Yes         |
+|İş ölçümlerini ve Diyagramı görüntüleme     |Yes         |Yes         |Portalda açma         |
+|İş çalışma zamanı hatalarını görüntüleme     |Yes         |Yes         |Hayır         |
+|Kaynak günlükleri     |Yes         |Hayır         |Hayır         |
+|Özel ileti özellikleri     |Yes         |Yes         |Hayır       |
+|C# özel kod işlevi ve seri hale getirici|Salt okunurdur modu|Yes|Hayır|
+|JavaScript UDF ve UDA     |Yes         |Yes         |Yalnızca Windows         |
+|Machine Learning Hizmeti     |Yes        |Yes         |Hayır         |
+|Machine Learning Studio     |Evet, ancak sorgu test edilemez        |Yes |Hayır         |
+|Uyumluluk düzeyi     |1.0</br>1.1</br>1,2 (varsayılan)         |1.0</br>1.1</br>1,2 (varsayılan)           |1.0</br>1.1</br>1,2 (varsayılan)           |
+|Yerleşik ML tabanlı anomali algılama işlevleri     |Yes         |Yes         |Yes         |
+|Yerleşik Jeo-uzamsal işlevler     |Yes         |Yes         |Yes         |
 
 
 
@@ -55,25 +55,25 @@ Azure Akış Analizi ile, [Azure portalı,](stream-analytics-quick-create-portal
 
 |Özellik  |Portal  |Visual Studio  |Visual Studio Code  |
 |---------|---------|---------|---------|
-|İş yazma     |Evet         |Evet         |Hayır         |
-|Kaynak denetimi     |Hayır         |Evet         |Hayır         |
-|Yerel bir projeye iş verme     |Hayır         |Evet         |Hayır         |
-|Örnek bir dosyayla sorgu testi     |Evet         |Evet         |Hayır         |
-|Giriş ve çıktıları birden çok sorgu arasında paylaşma     |Hayır         |Evet         |Hayır         |
-|C# UDF     |Hayır         |Evet         |Hayır         |
-|İş gönderme     |Evet         |Evet         |Hayır         |
-|İşleri listele ve iş varlıklarını görüntüleyin     |Evet         |Evet         |Hayır         |
-|İş ölçümlerini ve diyagramı görüntüleme     |Evet         |Kısmi         |Hayır         |
-|İş çalışma zamanı hatalarını görüntüleme     |Evet         |Kısmi         |Hayır         |
+|İş yazma     |Yes         |Yes         |Hayır         |
+|Kaynak denetimi     |Hayır         |Yes         |Hayır         |
+|Yerel bir projeye bir işi dışarı aktarma     |Hayır         |Yes         |Hayır         |
+|Örnek dosya ile sorgu testi     |Yes         |Yes         |Hayır         |
+|Birden çok sorgu arasında girişleri ve çıkışları paylaşma     |Hayır         |Yes         |Hayır         |
+|C# UDF     |Hayır         |Yes         |Hayır         |
+|İşleri gönder     |Yes         |Yes         |Hayır         |
+|İşleri listeleme ve iş varlıklarını görüntüleme     |Yes         |Yes         |Hayır         |
+|İş ölçümlerini ve Diyagramı görüntüleme     |Yes         |Kısmi         |Hayır         |
+|İş çalışma zamanı hatalarını görüntüleme     |Yes         |Kısmi         |Hayır         |
 |CI/CD desteği     |Hayır         |Hayır         |Hayır         |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [IoT Edge üzerinde Azure Stream Analytics](stream-analytics-edge.md)
-* [Öğretici: Azure Akışı Analytics IoT Edge işi için C# kullanıcı tanımlı bir işlev yazın (Önizleme)](stream-analytics-edge-csharp-udf.md)
-* [Visual Studio araçlarını kullanarak Stream Analytics IoT Edge işlerini geliştirin](stream-analytics-tools-for-visual-studio-edge-jobs.md)
-* [Azure Akış Analizi işlerini görüntülemek için Visual Studio'yı kullanın](stream-analytics-vs-tools.md)
-* [Visual Studio Code (Önizleme) ile Azure Akış Analizini Keşfedin](visual-studio-code-explore-jobs.md)
+* [Öğretici: Azure Stream Analytics IoT Edge işi için C# Kullanıcı tanımlı bir işlev yazma (Önizleme)](stream-analytics-edge-csharp-udf.md)
+* [Visual Studio araçlarını kullanarak Stream Analytics IoT Edge işleri geliştirme](stream-analytics-tools-for-visual-studio-edge-jobs.md)
+* [Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma](stream-analytics-vs-tools.md)
+* [Visual Studio Code ile Azure Stream Analytics araştırma (Önizleme)](visual-studio-code-explore-jobs.md)
 
 

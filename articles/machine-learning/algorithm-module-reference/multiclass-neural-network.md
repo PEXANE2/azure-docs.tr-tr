@@ -1,93 +1,103 @@
 ---
-title: 'Çok Sınıflı Sinir Ağı: Modül Referansı'
+title: 'Birden çok Lass sinir ağı: modül başvurusu'
 titleSuffix: Azure Machine Learning
-description: Birden çok değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinirağı modeli oluşturmak için Azure Machine Learning'deki Çok Sınıflı Nöral Ağ modüllerini nasıl kullanacağınızı öğrenin.
+description: Birden fazla değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için Azure Machine Learning ' de çok Lass sinir ağ modülünü nasıl kullanacağınızı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/22/2020
-ms.openlocfilehash: 653b12ddd54c5ec9e4e7dd23a323f34460daa962
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/22/2020
+ms.openlocfilehash: c7fb02681936f575153f23ac60db43cc75541075
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77920425"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137765"
 ---
-# <a name="multiclass-neural-network-module"></a>Çok Sınıflı Sinir Ağı modülü
+# <a name="multiclass-neural-network-module"></a>Birden çok Lass sinir ağ modülü
 
-Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
+Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
 
-Birden çok değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinirsel ağ modeli oluşturmak için bu modülü kullanın. 
+Birden çok değere sahip bir hedefi tahmin etmek için kullanılabilecek bir sinir ağ modeli oluşturmak için bu modülü kullanın. 
 
-Örneğin, bu tür sinir ağları, basamak veya harf tanıma, belge sınıflandırma ve desen tanıma gibi karmaşık bilgisayar görme görevlerinde kullanılabilir.
+Örneğin, bu türdeki sinir ağları, sayı veya mektup tanıma, belge sınıflandırması ve model tanıma gibi karmaşık bilgisayar görme görevlerinde kullanılabilir.
 
-Nöral ağları kullanarak sınıflandırma denetlenen bir öğrenme yöntemidir ve bu nedenle etiket *sütunu* içeren etiketli bir veri kümesi gerektirir.
+Sinir Networks kullanan sınıflandırma, denetimli bir öğrenme yöntemidir ve bu nedenle etiket sütunu içeren *etiketli bir veri kümesi* gerektirir.
 
-Modeli ve etiketli veri kümesini [Train Model'e](./train-model.md)giriş olarak sağlayarak modeli eğitebilirsiniz. Daha sonra yeni giriş örnekleri için değerleri tahmin etmek için eğitilen model kullanılabilir.  
+Modeli [eğitmek](./train-model.md)için bir girdi olarak modeli ve etiketli veri kümesini sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra yeni giriş örneklerinin değerlerini tahmin etmek için kullanılabilir.  
 
-## <a name="about-neural-networks"></a>Sinir ağları hakkında
+## <a name="about-neural-networks"></a>Sinir Networks hakkında
 
-Sinir ağı birbirine bağlı katmanlar kümesidir. Girişler ilk katmandır ve ağırlıklı kenarlar ve düğümlerden oluşan bir döngüsel grafikle bir çıktı katmanına bağlanır.
+Bir sinir ağı, birbirine bağlı bir katman kümesidir. Girişler ilk katmandır ve ağırlıklı kenarlardan ve düğümlerden oluşan Çevrimsiz bir grafik tarafından çıkış katmanına bağlanır.
 
-Giriş ve çıktı katmanları arasında birden çok gizli katman ekleyebilirsiniz. Çoğu tahmine dayalı görev yalnızca bir veya birkaç gizli katmanla kolayca gerçekleştirilebilir. Ancak, son araştırmalar, birçok katmanlı derin sinir ağlarının (DNN) görüntü veya konuşma tanıma gibi karmaşık görevlerde etkili olabileceğini göstermiştir. Ardışık katmanlar, artan anlamsal derinlik düzeylerini modellemek için kullanılır.
+Giriş ve çıkış katmanları arasında birden çok gizli katman ekleyebilirsiniz. En tahmine dayalı görevler, yalnızca bir veya birkaç gizli katman ile kolayca gerçekleştirilebilir. Ancak, son araştırma, çok sayıda katmanlı derin sinir ağların (DNN), görüntü veya konuşma tanıma gibi karmaşık görevlerde etkili olduğunu göstermiştir. Art arda gelen katmanlar, daha yüksek semantik derinlik düzeylerini modellemek için kullanılır.
 
-Giriş ler ve çıktılar arasındaki ilişki, nöral ağın giriş verileri üzerinde eğitilmesinden öğrenilir. Grafiğin yönü, girişlerden gizli katmana ve çıktı katmanına doğru ilerler. Katmandaki tüm düğümler, ağırlıklı kenarlarla bir sonraki katmandaki düğümlere bağlanır.
+Girişler ve çıktılar arasındaki ilişki, giriş verilerinde sinir ağını öğreticiden öğrenilir. Grafiğin yönü, girdilerin gizli katman ve çıkış katmanına göre ilerler. Bir katmandaki tüm düğümler, sonraki katmandaki düğümlere ağırlıklı kenarlar ile bağlanır.
 
-Belirli bir giriş için ağın çıktısını hesaplamak için, gizli katmanlarda ve çıktı katmanındaki her düğümde bir değer hesaplanır. Değer, önceki katmandan düğümdeğerlerinin ağırlıklı toplamı hesaplanarak ayarlanır. Daha sonra bu ağırlıklı toplama bir etkinleştirme işlevi uygulanır.
+Belirli bir girdi için ağın çıkışını hesaplamak üzere, Gizli katmanlardaki ve çıkış katmanındaki her bir düğümde bir değer hesaplanır. Değer, önceki katmandaki düğümlerin değerlerinin ağırlıklı toplamı hesaplanarak ayarlanır. Daha sonra bu ağırlıklı Sum için bir etkinleştirme işlevi uygulanır.
 
-## <a name="configure-multiclass-neural-network"></a>Çok Sınıflı Sinir Ağı Yapılandırma
+## <a name="configure-multiclass-neural-network"></a>Birden çok Lass sinir ağını yapılandırma
 
-1. Tasarımcıda **çok sınıflı Nöral Ağ** modülünüzü ardınıza ekleyin. Bu modülü Machine **Learning**, **Initialize**, **Classification** kategorisinde bulabilirsiniz.
+1. Tasarımcı 'daki işlem hattınızı çoklu **Lass sinir ağ** modülünü ekleyin. Bu modülü, **Sınıflandırma** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz.
 
-2. **Eğitmen modu oluşturma**: Modelin nasıl eğitilmek istediğinizi belirtmek için bu seçeneği kullanın:
+2. **Eğitmen modu oluşturma**: modelin nasıl eğitilme etmek istediğinizi belirtmek için bu seçeneği kullanın:
 
-    - **Tek Parametre**: Modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği seçin.
+    - **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
 
-    - **Parametre Aralığı**: En iyi parametrelerden emin değilseniz ve parametre süpürmesini çalıştırmak istiyorsanız bu seçeneği seçin. Üzerinde çoğaltmak için bir dizi değer seçin ve [Tune Model Hiperparametreleri,](tune-model-hyperparameters.md) en iyi sonuçları üreten hiperparametreleri belirlemek için sağladığınız ayarların olası tüm kombinasyonları üzerinde yinelenir.  
+    - **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.  
 
-3. **Gizli katman belirtimi**: Oluşturmak için ağ mimarisi türünü seçin.
+3. **Gizli katman belirtimi**: oluşturulacak ağ mimarisi türünü seçin.
 
-    - **Tam bağlı servis talebi**: Varsayılan nöral ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği seçin. Çok sınıflı nöral ağ modelleri için varsayılanlar aşağıdaki gibidir:
+    - **Tam bağlı durum**: varsayılan sinir ağ mimarisini kullanarak bir model oluşturmak için bu seçeneği belirleyin. Birden çok Lass sinir ağ modelleri için varsayılanlar aşağıdaki gibidir:
 
         - Bir gizli katman
-        - Çıktı katmanı tamamen gizli katmana bağlı.
-        - Gizli katman giriş katmanına tamamen bağlıdır.
-        - Giriş katmanındaki düğüm sayısı, eğitim verilerindeki özellik sayısına göre belirlenir.
-        - Gizli katmandaki düğüm sayısı kullanıcı tarafından ayarlanabilir. Varsayılan değer 100'dür.
-        - Çıktı katmanındaki düğüm sayısı sınıf ların sayısına bağlıdır.
+        - Çıktı Katmanı gizli katmana tam olarak bağlanır.
+        - Gizli katman, giriş katmanına tam olarak bağlanır.
+        - Giriş katmanındaki düğümlerin sayısı eğitim verilerinde özelliklerin sayısına göre belirlenir.
+        - Gizli katmandaki düğümlerin sayısı Kullanıcı tarafından ayarlanabilir. Varsayılan değer 100'dür.
+        - Çıkış katmanındaki düğümlerin sayısı, sınıfların sayısına bağlıdır.
   
    
 
-5. **Gizli düğüm sayısı**: Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenize olanak tanır. Gizli düğüm sayısını yazın. Varsayılan, 100 düğümlü gizli bir katmandır.
+5. **Gizli düğümlerin sayısı**: Bu seçenek, varsayılan mimarideki gizli düğüm sayısını özelleştirmenizi sağlar. Gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır.
 
-6. **Öğrenme hızı**: Düzeltmeden önce her yinelemede atılan adımın boyutunu tanımlayın. Öğrenme hızı için daha büyük bir değer, modelin daha hızlı yakınsamasını sağlayabilir, ancak yerel minima'yı aşabilir.
+6. **Öğrenme oranı**: düzeltmeden önce her yinelemede gerçekleştirilen adımın boyutunu tanımlayın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
 
-7. **Öğrenme yinelemesayısı**: Algoritmanın eğitim servis taleplerini işlemesi gereken maksimum sayıyı belirtin.
+7. **Öğrenme yinelemesi sayısı**: algoritmanın eğitim çalışmalarını kaç kez işlemesi gerektiğini belirtin.
 
-8. **İlk öğrenme ağırlıkları çapı**: Öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
+8. **İlk öğrenme ağırlıkları çapı**: öğrenme sürecinin başlangıcında düğüm ağırlıklarını belirtin.
 
-9. **Momentum**: Önceki yinelemelerden düğümlere öğrenme sırasında uygulanacak bir ağırlık belirtin.
+9. **İtici güç**: önceki yinelemelerdeki düğümlere öğrenme sırasında uygulanacak ağırlığı belirtin.
   
-11. **Karıştırma örnekleri**: Yinelemeler arasında servis taleplerini karıştırmak için bu seçeneği seçin.
+11. **Örnekleri karıştır**: yinelemeler arasındaki örnekleri karıştırmak için bu seçeneği belirleyin.
 
-    Bu seçeneği niçin seçerseniz, ardışık düzen hattını her çalıştırdığınızda servis talepleri tam olarak aynı sırada işlenir.
+    Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
 
-12. **Rasgele sayı tohumu**: Aynı boru hattının serileri arasında tekrarlanabilirlik sağlamak istiyorsanız, tohum olarak kullanılacak bir değer yazın.
+12. **Rastgele sayı çekirdek**: aynı işlem hattının çalıştırmaları arasında yinelenebilirlik sağlamak istiyorsanız, çekirdek olarak kullanılacak bir değer yazın.
 
-14. Bir eğitim veri kümesini ve [eğitim modüllerinden](module-reference.md)birini bağlayın: 
+14. Modeli eğitme:
 
-    - Tek **Parametre** **için eğitmen modu oluştur** ayarlarsanız, Tren [Modeli](train-model.md)kullanın.  
+    + **Tek parametre**için bir görüntü **oluşturma modu** ayarlarsanız, etiketli bir veri kümesini ve [model eğitimi](train-model.md) modülünü bağlayın.  
+  
+    + **Parametre aralığına** **oluşturma** , bir etiketli veri kümesini bağlama ve modeli [Ayarla hiper parametrelerini](tune-model-hyperparameters.md)kullanarak modeli eğitme.  
+  
+    > [!NOTE]
+    > 
+    > [Modeli Eğiteetmek](train-model.md)için bir parametre aralığı geçirirseniz, tek parametre listesindeki yalnızca varsayılan değeri kullanır.  
+    > 
+    > Tek bir parametre değerleri kümesini [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) modülüne geçirirseniz, her parametre için bir dizi ayar beklerken, değerleri yoksayar ve öğrenici için varsayılan değerleri kullanır.  
+    > 
+    > **Parametre aralığı** seçeneğini belirleyip herhangi bir parametre için tek bir değer girerseniz, belirtilen tek değer, diğer parametrelerin bir değer aralığı üzerinde değişse bile, tarama boyunca kullanılır.  
   
 
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-- Eğitilen modelin anlık görüntüsünü kaydetmek **için, Tren modeli** modülünün sağ panelindeki **Çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **Kayıt veri kümesi** simgesini seçin.
+- Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 

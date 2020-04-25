@@ -1,6 +1,6 @@
 ---
-title: Azure Trafik Yöneticisi'nde bozulan durum giderme
-description: Bozulmuş durum olarak gösterdiğinde Trafik Yöneticisi profilleri sorun giderme.
+title: Azure Traffic Manager 'da azaltılmış durum sorunlarını giderme
+description: Düşürülmüş durum olarak görüntülendiğinde Traffic Manager profillerinin sorunlarını giderme.
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
@@ -12,43 +12,43 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: rohink
-ms.openlocfilehash: c398763405472c9018a5c30d34fbd3963ecb93b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6d720067b619b0d871899f2ac9025a9d8ab24d95
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76938375"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82130759"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager’da düşürülmüş durum için sorun giderme
 
-Bu makalede, bozulmuş bir durum gösteren bir Azure Trafik Yöneticisi profili sorun giderme nasıl açıklanmaktadır. Bir Azure Trafik Yöneticisi bozulmuş durum sorun giderme ilk adım olarak tanı günlük etkinleştirmektir.  Daha fazla bilgi için [tanı günlüklerini](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) etkinleştirme'ye bakın. Bu senaryo için, cloudapp.net barındırılan hizmetlerden bazılarını işaret eden bir Trafik Yöneticisi profilini yapılandırdığınızı düşünün. Trafik Yöneticinizin durumu **bozulmuş** bir durum görüntülerse, bir veya daha fazla uç noktanın durumu **bozulabilir:**
+Bu makalede, düzeyi düşürülmüş bir durumu gösteren bir Azure Traffic Manager profilinde nasıl sorun giderileceği açıklanır. Azure Traffic Manager 'in düşürülmüş durumunun giderilmesi için ilk bir adım olarak günlüğe kaydetme etkinleştirilir.  Daha fazla bilgi için [kaynak günlüklerini etkinleştirme](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-diagnostic-logs) bölümüne bakın. Bu senaryo için cloudapp.net tarafından barındırılan hizmetlerden bazılarını işaret eden bir Traffic Manager profili yapılandırdığınıza dikkat edin. Traffic Manager sistem durumu **düşürülmüş** bir durum görüntülüyorsa, bir veya daha fazla uç noktanın durumu **azaltılabilir**olabilir:
 
-![bozulmuş uç nokta durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
+![düşürülmüş uç nokta durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degradedifonedegraded.png)
 
-Trafik Yöneticinizin durumu **etkin olmayan** bir durum görüntülerse, her iki uç nokta devre **dışı bırakılmış**olabilir:
+Traffic Manager sistem durumu **etkin olmayan** bir durum görüntülüyorsa, her iki uç noktası da **devre dışı**bırakılabilir:
 
-![Etkin Olmayan Trafik Yöneticisi durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
+![Etkin olmayan Traffic Manager durumu](./media/traffic-manager-troubleshooting-degraded/traffic-manager-inactive.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Trafik Yöneticisi sondalarını anlama
+## <a name="understanding-traffic-manager-probes"></a>Traffic Manager araştırmalarını anlama
 
-* Trafik Yöneticisi, sonda sonda yolundan bir HTTP 200 yanıtı aldığında bir bitiş noktasının ÇEVRIMIÇI olduğunu düşünür. Uygulamanız başka bir HTTP yanıt kodu döndürürse, bu yanıt kodunu Trafik Yöneticisi profilinizin [Beklenen durum kodu aralıklarına](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) eklemeniz gerekir.
-* Trafik Yöneticisi profilinizin [Beklenen durum kodu aralıklarında](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30x yönlendirme yanıtı başarısız olarak kabul edilir. Trafik Yöneticisi yeniden yönlendirme hedefini araştırmaz.
-* HTTPs sondaları için sertifika hataları yoksayılır.
-* 200 döndürülde kadar sonda yolunun gerçek içeriği önemli değil. URL'yi "/favicon.ico" gibi bazı statik içeriğe doğru araştırmak yaygın bir tekniktir. ASP sayfaları gibi dinamik içerik, uygulama sağlıklı olsa bile her zaman 200'e dönmeyebilir.
-* En iyi yöntem, sonda yolunu sitenin yukarı veya aşağı olduğunu belirlemek için yeterli mantığa sahip bir şeye ayarlamaktır. Önceki örnekte, "/favicon.ico" yolunu ayarlayarak, yalnızca w3wp.exe'nin yanıt verdiğini test esiniz. Bu sonda, web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin durumunu belirlemek için mantığı olan "/Probe.aspx" gibi bir şeye giden bir yol ayarlamak olacaktır. Örneğin, CPU kullanımı için performans sayaçları kullanabilir veya başarısız isteklerin sayısını ölçebilirsiniz. Veya web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeye çalışabilirsiniz.
-* Bir profildeki tüm uç noktalar bozulursa, Trafik Yöneticisi tüm uç noktaları sağlıklı olarak davranır ve trafiği tüm uç noktalara yönlendirir. Bu davranış, sondalama mekanizmasıyla ilgili sorunların hizmetinizin tamamen kesintisine neden olmamasını sağlar.
+* Traffic Manager, yalnızca araştırma bir HTTP 200 yanıtını araştırma yolundan geri aldığında bir uç noktanın ÇEVRIMIÇI olduğunu varsayar. Uygulamanız başka bir HTTP yanıt kodu döndürürse, bu yanıt kodunu Traffic Manager profilinizin [beklenen durum kodu aralıklarına](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) eklemeniz gerekir.
+* Bu işlemi Traffic Manager profilinizin [beklenen durum kodu aralıklarında](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring#configure-endpoint-monitoring) geçerli bir yanıt kodu olarak belirtmediğiniz sürece, 30 kata yeniden yönlendirme yanıtı hata olarak değerlendirilir. Traffic Manager yeniden yönlendirme hedefini araştırmaz.
+* HTTPs araştırmaları için Sertifika hataları yok sayılır.
+* Bir 200 döndürüldüğünde, araştırma yolunun gerçek içeriği ne kadar büyük değildir. "/Ayrıcalıklı icon.exe" gibi bazı statik içeriklere bir URL 'YI yoklama yaygın bir tekniktir. ASP sayfaları gibi dinamik içerik, uygulama sağlıklı olsa bile her zaman 200 döndürmeyebilir.
+* En iyi uygulama, araştırma yolunu, sitenin yukarı veya aşağı olduğunu anlamak için yeterli mantığa sahip bir şeye ayarlamaya yönelik bir uygulamadır. Önceki örnekte, yolu "/ayrıcalıklı icon.exe" olarak ayarlayarak yalnızca W3wp. exe ' nin yanıt verdiğini test edersiniz. Bu araştırma Web uygulamanızın sağlıklı olduğunu göstermeyebilir. Daha iyi bir seçenek, sitenin sistem durumunu belirleme mantığı olan "/Probe.aspx" gibi bir şey için bir yol ayarlamak olacaktır. Örneğin, performans sayaçlarını CPU kullanımı için kullanabilir veya başarısız isteklerin sayısını ölçebilir. Ya da Web uygulamasının çalıştığından emin olmak için veritabanı kaynaklarına veya oturum durumuna erişmeyi deneyebilirsiniz.
+* Bir profildeki tüm uç noktalar düşerse, Traffic Manager tüm uç noktaları sağlıklı olarak değerlendirir ve trafiği tüm uç noktalara yönlendirir. Bu davranış, araştırma mekanizmasıyla ilgili sorunların hizmetinizin tamamen kesintiye neden olmamasını sağlar.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Sonda hatasını gidermek için, sonda URL'sinden HTTP durum kodu dönüşünü gösteren bir araca ihtiyacınız vardır. Ham HTTP yanıtını gösteren birçok araç mevcuttur.
+Bir araştırma hatasıyla ilgili sorunları gidermek için, araştırma URL 'sinden döndürülen HTTP durum kodunu gösteren bir araca ihtiyacınız vardır. Ham HTTP yanıtını gösteren birçok araç mevcuttur.
 
 * [Fiddler](https://www.telerik.com/fiddler)
-* [Curl](https://curl.haxx.se/)
-* [Wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+* [kıvr](https://curl.haxx.se/)
+* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
 
-Ayrıca, HTTP yanıtlarını görüntülemek için Internet Explorer'daki F12 Hata Ayıklama Araçları'nın Ağ sekmesini kullanabilirsiniz.
+Ayrıca, HTTP yanıtlarını görüntülemek için Internet Explorer 'daki F12 hata ayıklama araçlarının ağ sekmesini de kullanabilirsiniz.
 
-Bu örnekiçin, sonda URL'mizden yanıtı görmek\/istiyoruz: http: /watestsdp2008r2.cloudapp.net:80/Probe. Aşağıdaki PowerShell örneği sorunu göstermektedir.
+Bu örnekte, araştırma URL 'imizden gelen yanıtı görmek istiyoruz: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Aşağıdaki PowerShell örneğinde sorun gösterilmektedir.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -60,9 +60,9 @@ Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirectio
     ---------- -----------------
            301 Moved Permanently
 
-Yeniden yönlendirme yanıtı aldığımıza dikkat edin. Daha önce belirtildiği gibi, 200 dışındaki herhangi bir StatusCode bir hata olarak kabul edilir. Trafik Yöneticisi bitiş noktası durumunu Çevrimdışı olarak değiştirir. Sorunu çözmek için, uygun StatusCode'un sonda yolundan döndürülebilmesini sağlamak için web sitesi yapılandırmasını denetleyin. Trafik Yöneticisi sondasını 200'lük bir yolu işaret etmek için yeniden yapılandırın.
+Yeniden yönlendirme yanıtı aldığınızı fark edin. Daha önce belirtildiği gibi, 200 dışındaki tüm StatusCode bir hata olarak değerlendirilir. Traffic Manager uç nokta durumunu çevrimdışı olarak değiştirir. Sorunu çözmek için, araştırma yolundan doğru StatusCode 'nin döndürüldüğünden emin olmak için Web sitesi yapılandırmasını denetleyin. Traffic Manager araştırmasını, 200 döndüren bir yolu işaret edecek şekilde yeniden yapılandırın.
 
-Sondanız HTTPS protokolünü kullanıyorsa, test sırasında SSL/TLS hatalarını önlemek için sertifika denetimini devre dışı bmalısınız. Aşağıdaki PowerShell deyimleri geçerli PowerShell oturumu için sertifika doğrulamadevre dışı bırakma:
+Araştırmanız HTTPS protokolünü kullanıyorsa, testiniz sırasında SSL/TLS hatalarından kaçınmak için sertifika denetimini devre dışı bırakmanız gerekebilir. Aşağıdaki PowerShell deyimleri geçerli PowerShell oturumu için sertifika doğrulamayı devre dışı bırakır:
 
 ```powershell
 add-type @"
@@ -81,16 +81,16 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-[Trafik Yöneticisi trafik yönlendirme yöntemleri hakkında](traffic-manager-routing-methods.md)
+[Traffic Manager trafik yönlendirme yöntemleri hakkında](traffic-manager-routing-methods.md)
 
-[Trafik Yöneticisi Nedir](traffic-manager-overview.md)
+[Traffic Manager nedir?](traffic-manager-overview.md)
 
 [Bulut Hizmetleri](https://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Azure Uygulama Hizmeti](https://azure.microsoft.com/documentation/services/app-service/web/)
+[Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 
 [Traffic Manager üzerindeki işlemler (REST API Başvurusu)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Trafik Yöneticisi Cmdlets][1]
+[Azure Traffic Manager cmdlet 'Leri][1]
 
 [1]: https://docs.microsoft.com/powershell/module/az.trafficmanager
