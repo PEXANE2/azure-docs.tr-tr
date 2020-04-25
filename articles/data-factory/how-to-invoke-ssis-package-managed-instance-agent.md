@@ -1,6 +1,6 @@
 ---
-title: SSIS paketlerini Azure SQL Yönetilen Örnek Aracısı ile yürütün
-description: SSIS paketlerini Azure SQL Yönetilen Örnek Aracısı ile nasıl yürütüleceklerini öğrenin.
+title: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
+description: Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırmayı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,92 +9,108 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: b3b7a25149a9d075c81b30307ade2beb71907637
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81394728"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144796"
 ---
-# <a name="execute-ssis-packages-by-azure-sql-managed-instance-agent"></a>SSIS paketlerini Azure SQL Yönetilen Örnek Aracısı ile yürütün
-Bu makalede, Azure SQL Yönetilen Örnek Aracı'yı kullanarak bir SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacak işletileceği açıklanmaktadır. Bu özellik, tıpkı ssis paketlerini sql server agent tarafından prem ortamınızda zamanlarken olduğu gibi benzer davranışlar sağlar.
+# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanarak SSIS paketlerini çalıştırma
+Bu makalede, Azure SQL veritabanı yönetilen örnek Aracısı kullanılarak bir SQL Server Integration Services (SSIS) paketinin nasıl çalıştırılacağı açıklanmaktadır. Bu özellik, SSIS paketlerini şirket içi ortamınızda SQL Server Agent kullanarak zamanladığınızda benzer davranışlar sağlar.
 
-Bu özellik sayesinde, Azure SQL Yönetilen Örneği'nin SSISDB'sinde veya Azure Dosyaları gibi Dosya Sistemi'nde depolanan SSIS paketlerini çalıştırabilirsiniz.
+Bu özellikle, SSıSDB 'de depolanan SSIS paketlerini bir Azure SQL veritabanı yönetilen örneğinde veya Azure dosyaları gibi bir dosya sisteminde çalıştırabilirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
-Bu özelliği kullanmak için, sürüm 18.5 veya sonraki sürüm olan SSMS'in en son sürümünü indirin ve yükleyin. [Bu web sitesinden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017)indirin.
+Bu özelliği kullanmak için sürüm 18,5 olan SQL Server Management Studio (SSMS) en son sürümünü [indirip](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) yükleyin.
 
-Azure Veri Fabrikası'nda, Azure SQL Yönetilen Örneği'ni bitiş noktası sunucusu olarak kullanan bir Azure-SSIS Tümleştirme Çalışma Süresi sağlamanız gerekir. Zaten sağlamadıysanız, öğreticideki talimatları izleyerek bunu [sağedin.](tutorial-create-azure-ssis-runtime-portal.md) 
+Ayrıca, Azure Data Factory 'de [bir Azure-SSIS tümleştirme çalışma zamanı](tutorial-create-azure-ssis-runtime-portal.md) sağlamanız gerekir. Uç nokta sunucusu olarak Azure SQL veritabanı yönetilen örneğini kullanır. 
 
-## <a name="run-ssis-packages-in-ssisdb-by-azure-sql-managed-instance-agent"></a>SSIS paketlerini Azure SQL Yönetilen Örnek Aracısı ile SSISDB'de çalıştırma
-Bu adımda, Azure SQL Yönetilen Örnek'te SSISDB'de depolanan SSIS paketlerini çağırmak için Azure SQL Yönetilen Örnek Aracı'yı kullanırsınız.
-1. SSMS'in en son sürümünde Azure SQL Yönetilen Örneği'ne bağlanın.
-2. Yeni bir Ajan İş ve yeni bir İş adımı oluşturun.
+## <a name="run-an-ssis-package-in-ssisdb"></a>SSSıSDB 'de bir SSIS paketi çalıştırma
+Bu yordamda, SSıSDB 'de depolanan bir SSIS paketini çağırmak için Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanırsınız.
 
-![Yeni Ajan İş](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+1. SSMS 'nin en son sürümünde Azure SQL veritabanı yönetilen örneğine bağlanın.
+1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent**altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
-3. Yeni **İş Adımı** **sayfasında, SQL Server Tümleştirme Hizmetleri Paketi** türünü seçin.
+   ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
 
-![Yeni SSIS İş adımı](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+1. **Yeni Iş adımı** sayfasında tür olarak **SQL Server Integration Services paket** ' i seçin.
 
-4. **Paket** sekmesinde, paket kaynağı türü olarak **SSIS Kataloğu'nu** seçin.
-5. SSISDB aynı Azure SQL Yönetilen Örneği'nde olduğundan, kimlik doğrulaması belirtmeniz gerekmez.
-6. SSISDB'nizden bir SSIS paketi belirtin.
+   ![Yeni bir SSIS iş adımı oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
-![Paket Kaynak Türü - SSIS Kataloğu](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
+1. **Paket** sekmesinde, paket kaynak türü olarak **SSIS Kataloğu** ' nu seçin.
+1. SSıSDB bir Azure SQL veritabanı yönetilen örneği içinde olduğundan, kimlik doğrulaması belirtmeniz gerekmez.
+1. SSSıSDB 'den bir SSIS paketi belirtin.
 
-7. **Yapılandırmalar** sekmesinde **parametre** değerlerini belirtebilir, Bağlantı **Yöneticileri'ndeki**değerleri geçersiz kılabilir, **Özelliği** geçersiz kılabilir ve **Günlük düzeyini**seçebilirsiniz.
+   ![Paket kaynak türü için seçimleri olan paket sekmesi](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
 
-![Paket Kaynak Türü - SSIS Katalog Yapılandırması](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
+1. **Yapılandırma** sekmesinde şunları yapabilirsiniz:
+  
+   - **Parametreler**altında parametre değerlerini belirtin.
+   - **Bağlantı yöneticileri**altındaki değerleri geçersiz kılın.
+   - Özelliği geçersiz kılın ve **Gelişmiş**altında günlüğe kaydetme düzeyini seçin.
 
-8. Yukarıdaki tüm yapılandırmayı tamamladıktan sonra Aracı İş yapılandırmasını kaydetmek için **Tamam'ı** tıklatın.
-9. SSIS paketini çalıştırmak için Ajan İş'i başlatın.
+   ![Paket kaynak türünün seçimleriyle birlikte Yapılandırma sekmesi](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb-configuration.png)
 
-
-## <a name="run-ssis-packages-in-file-system-by-azure-sql-managed-instance-agent"></a>SSIS paketlerini dosya sisteminde Azure SQL yönetilen örnek aracısı ile çalıştırma
-Bu adımda, Dosya Sistemi'nde depolanan SSIS paketlerini çalıştırmak üzere çağırmak için Azure SQL Yönetilen Örnek Aracı'yı kullanırsınız.
-1. SSMS'in en son sürümünde Azure SQL Yönetilen Örneği'ne bağlanın.
-2. Yeni bir Ajan İş ve yeni bir İş adımı oluşturun.
-
-   ![Yeni Ajan İş](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
-
-3. Yeni **İş Adımı** **sayfasında, SQL Server Tümleştirme Hizmetleri Paketi** türünü seçin.
-
-   ![Yeni SSIS İş adımı](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
-
-4. **Paket** sekmesinde, paket kaynağı türü olarak **Dosya sistemini** seçin.
-
-   ![Paket Kaynak Türü - Dosya Sistemi](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
-
-   1. Paketiniz Azure Dosyası'na yüklenmişse, dosya kaynağı türü olarak **Azure dosya paylaşımını** seçin.
-      - Paket yolu ** \\ <storage account name>.file.core.windows.net\<dosya paylaşım \<adı>paket adı>.dtsx**
-      - Azure dosyasına erişmek için Paket **dosyası erişim kimlik bilgisine** Azure dosya hesabı adı ve hesap anahtarı yazın. Etki alanı **Azure**olarak ayarlanır.
-   2. Paketiniz bir ağ paylaşımına yüklenmişse, dosya kaynağı türü olarak **Ağ paylaşımını** seçin.
-      - Paket yolu, dtsx uzantısı ile paket dosyanızın **UNC yoludur.**
-      - Ağ paylaşım paketi dosyasına erişmek için ilgili **etki alanını,** **kullanıcı adını**ve **parolayı** yazın.
-   3. Paket dosyanız parolayla şifrelenmişse, **Şifreleme parolasını** seçin ve parolayı yazın.
-
- 5. **Yapılandırmalar** sekmesinde, SSIS paketini yürütmek için bir yapılandırma dosyasına ihtiyacınız varsa **yapılandırma dosya yolunu** yazın.
- 6. Yürütme **seçenekleri** sekmesinde, SSIS paketini yürütmek için **windows kimlik doğrulaması** mı yoksa **32 bit çalışma zamanı** mı kullanacağınızı seçebilirsiniz.
- 7. **Günlüğe Kaydetme** sekmesinde, günlük dosyalarını depolamak için **günlük yolunu** ve ilgili günlük erişim kimlik bilgisini seçebilirsiniz. Varsayılan olarak, günlük yolu paket klasörü yolu ile aynı olacak ve günlük erişim kimlik bilgileri paket erişim kimlik bilgileriyle aynı olacaktır.
- 8. Değerleri **Ayarla** sekmesinde, paket özelliklerini geçersiz kılmak için **Özellik Yolu** ve **Değer'i** yazabilirsiniz.
- Örneğin, kullanıcı değişkeninizin değerini geçersiz kılmak için yolunu aşağıdaki biçimde girin: **<variable name>\Package.Variables[User:: ]. Değer**.
- 9. Yukarıdaki tüm yapılandırmayı tamamladıktan sonra Aracı İş yapılandırmasını kaydetmek için **Tamam'ı** tıklatın.
- 10. SSIS paketini çalıştırmak için Ajan İş'i başlatın.
+1. Aracı iş yapılandırmasını kaydetmek için **Tamam ' ı** seçin.
+1. SSIS paketini çalıştırmak için aracı işini başlatın.
 
 
- ## <a name="cancel-ssis-package-execution"></a>SSIS paket yürütmeyi iptal etme
- Bir Azure SQL Yönetilen Aracı işinden paket yürütmeyi iptal etmek için aracı işini doğrudan durdurmak yerine aşağıdaki adımları izlemeniz gerekir.
- 1. **MSDB.dbo.sysjobs**adresinden SQL aracınızı **jobId'i** bulun.
- 2. Aşağıdaki sorguile iş kimliğine dayalı ilgili SSIS **executionId'i** bulun:
-    ```sql
-    select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
-    ```
- 3. SSIS kataloğu altında **Etkin Operasyonlar'ı** seçin.
+## <a name="run-an-ssis-package-in-the-file-system"></a>Dosya sisteminde bir SSIS paketi çalıştırma
+Bu yordamda, dosya sisteminde depolanan bir SSIS paketini çalıştırmak için Azure SQL veritabanı yönetilen örnek Aracısı 'nı kullanırsınız.
 
-    ![Paket Kaynak Türü - Dosya Sistemi](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+1. SSMS 'nin en son sürümünde Azure SQL veritabanı yönetilen örneğine bağlanın.
+1. Yeni bir aracı işi ve yeni bir iş adımı oluşturun. **SQL Server Agent**altında **işler** klasörüne sağ tıklayın ve ardından **yeni iş**' ı seçin.
 
- 4. ExecutionId'e dayalı ilgili işlemi **durdurun.**
+   ![Yeni bir aracı işi oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
+
+1. **Yeni Iş adımı** sayfasında tür olarak **SQL Server Integration Services paket** ' i seçin.
+
+   ![Yeni bir SSIS iş adımı oluşturmaya yönelik seçimler](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
+
+1. **Paket** sekmesinde:
+
+   1. **Paket kaynağı**için **dosya sistemi**' ni seçin.
+   
+   1. **Dosya kaynağı türü**için:   
+
+      - Paketiniz Azure dosyalarına yüklenirse **Azure dosya paylaşma**' yı seçin.
+
+        ![Dosya kaynak türü seçenekleri](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
+      
+        Paket yolu ** \\ <storage account name>.\<File.Core.Windows.NET dosya paylaşımının adı>\<paket adı>. dtsx**.
+      
+        **Paket dosyası erişimi kimlik bilgileri**altında Azure dosyasına erişmek için Azure dosya hesabı adını ve hesap anahtarını girin. Etki alanı **Azure**olarak ayarlanır.
+
+      - Paketiniz bir ağ paylaşımında karşıya yüklenirse **ağ paylaşma**' yı seçin.
+      
+        Paket yolu, paket dosyanızın. dtsx uzantısıyla birlikte UNC yoludur.
+      
+        Ağ paylaşımının paket dosyasına erişmek için karşılık gelen etki alanını, Kullanıcı adını ve parolayı girin.
+   1. Paket dosyanız bir parolayla şifrelenirse, **şifreleme parolası** ' nı seçin ve parolayı girin.
+1. **Yapılandırmalar** SEKMESINDE, SSIS paketini çalıştırmak için bir yapılandırma dosyası gerekiyorsa yapılandırma dosyası yolunu girin.
+1. **Yürütme seçenekleri** SEKMESINDE, SSIS paketini çalıştırmak için **Windows kimlik doğrulaması** mı yoksa **32 bit çalışma zamanı** mi kullanacağınızı seçebilirsiniz.
+1. **Günlüğe kaydetme sekmesinde günlüğe** kaydetme yolunu ve günlük dosyalarını depolamak için karşılık gelen günlük erişimi kimlik bilgilerini seçebilirsiniz. Varsayılan olarak, günlük kaydı, paket klasörü yoluyla aynıdır ve günlük erişimi kimlik bilgileri, paket erişimi kimlik bilgileriyle aynıdır.
+1. **Değerleri ayarla** sekmesinde, paket özelliklerini geçersiz kılmak için özellik yolunu ve değerini girebilirsiniz.
+ 
+   Örneğin, Kullanıcı değişkeninizin değerini geçersiz kılmak için, yolunu şu biçimde girin: **\Package.exe [User:<variable name>:]. Değer**.
+1. Aracı iş yapılandırmasını kaydetmek için **Tamam ' ı** seçin.
+1. SSIS paketini çalıştırmak için aracı işini başlatın.
+
+
+## <a name="cancel-ssis-package-execution"></a>SSIS paketi yürütmeyi iptal et
+Azure SQL veritabanı yönetilen örnek Aracısı işinden paket yürütmeyi iptal etmek için, aracı işini doğrudan durdurmak yerine aşağıdaki adımları uygulayın:
+
+1. **Msdb. dbo. sysjobs**öğesinden SQL Agent iş **kimliği** ' ni bulun.
+1. Bu sorguyu kullanarak, iş KIMLIĞINE göre karşılık gelen SSIS **ExecutionID** 'sini bulun:
+   ```sql
+   select * from ssisdb.internal.execution_parameter_values_noncatalog where  parameter_value = 'SQL_Agent_Job_{jobId}' order by execution_id desc
+   ```
+1. SSıSDB kataloğuna sağ tıklayın ve ardından **etkin işlemler**' i seçin.
+
+   ![SSSıSDB kataloğunun kısayol menüsünde "Etkin Işlemler"](./media/how-to-invoke-ssis-package-managed-instance-agent/catalog-active-operations.png)
+
+1. **ExecutionID**temelinde ilgili işlemi durdurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
- SSIS paketlerini Azure Veri Fabrikası'nı kullanarak da zamanlayabilirsiniz. Adım adım yönergeler için [Azure Veri Fabrikası Olay Tetikleyicisi'ne](how-to-create-event-trigger.md)bakın. 
+Ayrıca, Azure Data Factory kullanarak SSIS paketlerini de zamanlayabilirsiniz. Adım adım yönergeler için bkz. [Azure Data Factory olay tetikleyicisi](how-to-create-event-trigger.md). 

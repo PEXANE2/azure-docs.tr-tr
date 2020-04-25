@@ -1,9 +1,9 @@
 ---
-title: Koşullu Erişim ilkeleri dışında olan kullanıcıları yönetme - Azure AD
-description: Koşullu Erişim ilkeleri dışında bırakılmış kullanıcıları yönetmek için Azure Active Directory (Azure AD) erişim yorumlarını nasıl kullanacağınızı öğrenin
+title: Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetme-Azure AD
+description: Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure Active Directory (Azure AD) erişim incelemelerini nasıl kullanacağınızı öğrenin
 services: active-directory
 documentationcenter: ''
-author: msaburnley
+author: barclayn
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -12,151 +12,159 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 09/25/2018
-ms.author: ajburnle
+ms.date: 04/24/2020
+ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91bb5a342eea079b6e9abcf109ad472151d3c13d
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75422706"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144493"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu Erişim ilkeleri dışında olan kullanıcıları yönetmek için Azure AD erişim yorumlarını kullanma
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
 
-İdeal bir dünyada, kuruluşunuzun kaynaklarına erişimi sağlamak için tüm kullanıcılar erişim polislerini takip eder. Ancak, bazen özel durumlar yapmanızı gerektiren iş durumları vardır. Bu makalede, dışlamaların gerekli olabileceği bazı örnekler ve BT yöneticisi olarak bu görevi nasıl yönetebileceğiniz, ilke özel durumlarının denetlenmesini önleyebileceğiniz ve denetçilere bu özel durumların Azure kullanılarak düzenli olarak incelendiğine dair kanıt sağlamanız bazı örnekler açıklanmaktadır Etkin Dizin (Azure AD) erişim değerlendirmeleri.
+İdeal bir dünyada, tüm kullanıcılar kuruluşunuzun kaynaklarına erişimi güvenli hale getirmek için erişim ilkelerini izler. Ancak bazen özel durumlar oluşturmanız gereken iş durumları vardır. Bu makale, dışlamaların gerekli olabileceği bazı durumlara örnek olarak geçer. BT Yöneticisi olarak bu görevi yönetebilir, ilke özel durumlarının fazla ilerlemesinin önüne kaçabilir ve bu özel durumların Azure Active Directory (Azure AD) erişim gözden geçirmeleri kullanılarak düzenli olarak inceleneceğini prova ile Denetçiler sağlayabilirsiniz.
 
-> [!NOTE]
-> Geçerli bir Azure AD Premium P2, Enterprise Mobility + Security E5 ücretli veya deneme lisansı, Azure AD erişim değerlendirmelerini kullanmak için gereklidir. Daha fazla bilgi için [Azure Etkin Dizin sürümlerine](../fundamentals/active-directory-whatis.md)bakın.
+>[!NOTE]
+> Azure AD erişim gözden geçirmeleri kullanmak için geçerli bir Azure AD Premium P2, Enterprise Mobility + Security E5 ücretli veya deneme lisansı gerekir. Daha fazla bilgi için bkz. [Azure Active Directory sürümleri](../fundamentals/active-directory-whatis.md).
 
-## <a name="why-would-you-exclude-users-from-policies"></a>Kullanıcıları neden ilkelerden dışlıyorsun?
+## <a name="why-would-you-exclude-users-from-policies"></a>Kullanıcıları ilkelerden nasıl dışlıyorsunuz?
 
-BT yöneticisi olarak, kullanıcıların çok faktörlü kimlik doğrulama (MFA) kullanarak kimlik doğrulaması (MFA) veya güvenilir bir ağ veya aygıttan oturum açmalarını gerektirmek için [Azure AD Koşullu Erişim'i](../conditional-access/overview.md) kullanabilirsiniz. Dağıtım planlaması sırasında, bu gereksinimlerden bazılarının tüm kullanıcılar tarafından karşılanamayacağını fark esiniz. Örneğin, dahili ağınızın bir parçası olmayan uzak bir ofisten çalışan kullanıcılar veya desteklenmeyen eski bir telefon kullanan bir yönetici vardır. İşletme, bu kullanıcıların oturum açmalarına ve işlerini yapmalarına izin verilmesini gerektirir, bu nedenle Koşullu Erişim ilkelerinin dışında tutulurlar.
+Yönetici olarak, çok faktörlü kimlik doğrulaması (MFA) istemek ve kimlik doğrulama isteklerini belirli ağlara veya cihazlara sınırlamak için [Azure AD koşullu erişimi](../conditional-access/overview.md) kullanmaya karar verdiğinizi varsayalım. Dağıtım planlaması sırasında, tüm kullanıcıların bu gereksinimleri karşılamayabileceğini fark etmiş olursunuz. Örneğin, iç ağınızın bir parçası değil, uzak ofislerden çalışan kullanıcılarınız olabilir. Ayrıca, bu cihazların değiştirilmesini beklerken desteklenmeyen cihazları kullanarak bağlanan kullanıcılara da sahip olmanız gerekebilir. Kısacası, bu kullanıcıların oturum açmasını ve işlerini, koşullu erişim ilkelerinden dışlanmasını sağlamak için yapması gerekir.
 
-Başka bir örnek olarak, kullanıcıların kiracılarına erişmesine izin vermek istemediğiniz bir dizi ilçe ve bölgeyi yapılandırmak için Koşullu Erişim'de [adlandırılmış konumları](../conditional-access/location-condition.md) kullanabilirsiniz.
+Başka bir örnek olarak, kullanıcıların kiracılarına erişmesine izin vermek istemediğiniz bir ülke ve bölge kümesi belirtmek üzere koşullu erişim içinde [adlandırılmış konumlar](../conditional-access/location-condition.md) kullanıyor olabilirsiniz.
 
-![Koşullu Erişim'de adlandırılmış konumlar](./media/conditional-access-exclusion/named-locations.png)
+![Koşullu erişimde adlandırılmış konumlar](./media/conditional-access-exclusion/named-locations.png)
 
-Ancak, bazı durumlarda, kullanıcıların bu engellenen ülkelerden/bölgelerde oturum açmaları için geçerli bir nedeni olabilir. Örneğin, kullanıcılar iş veya kişisel nedenlerle seyahat ediyor olabilir. Bu örnekte, bu ülkeleri/bölgeleri engellemek için Koşullu Erişim ilkesi, ilkenin dışında kalan kullanıcılar için özel bir bulut güvenlik grubuna sahip olabilir. Seyahat ederken erişime ihtiyaç duyan kullanıcılar, [Azure AD self servis Grup yönetimini](../users-groups-roles/groups-self-service-management.md)kullanarak kendilerini gruba ekleyebilirler.
+Ne yazık ki, bazı kullanıcılar hala bu engellenen ülkelerde/bölgelerde oturum açmak için geçerli bir neden olabilir. Örneğin, kullanıcılar iş için seyahat ediyor ve şirket kaynaklarına erişmesi gerekiyor. Bu durumda, bu ülkeleri/bölgeleri engellemeye yönelik koşullu erişim ilkesi, ilkeden çıkarılan kullanıcılar için bir bulut güvenlik grubu kullanabilir. Seyahat sırasında erişmesi gereken kullanıcılar, [Azure AD Self Servis Grup Yönetimi](../users-groups-roles/groups-self-service-management.md)'ni kullanarak kendilerini gruba ekleyebilir.
 
-Başka bir örnek, [kullanıcılarınızın büyük çoğunluğu için eski kimlik doğrulamasını engelleyen](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)bir Koşullu Erişim ilkesine sahip olabilirsiniz. Microsoft, güvenlik duruşunuzu iyileştirmek için kiracınızdaki eski protokollerin kullanımını engellemenizi şiddetle önerir. Ancak, office 2010 veya IMAP/SMTP/POP tabanlı istemciler aracılığıyla kaynaklarına erişmek için kesinlikle eski kimlik doğrulama yöntemlerini kullanması gereken bazı kullanıcılarınız varsa, bu kullanıcıları eski kimlik doğrulama yöntemlerini engelleyen ilkeden hariç tutabilirsiniz.
+Diğer bir örnek [, kullanıcılarınızın büyük çoğunluğu için eski kimlik doğrulamasını engelleyen](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)koşullu erişim ilkeniz olabilir. Ancak, Office 2010 veya IMAP/SMTP/POP tabanlı istemciler aracılığıyla kaynaklarınıza erişmek için eski kimlik doğrulama yöntemlerini kullanması gereken bazı kullanıcılarınız varsa, bu kullanıcıları eski kimlik doğrulama yöntemlerini engelleyen ilkeden dışlayabilirsiniz.
 
-## <a name="why-are-exclusions-challenging"></a>Dışlamalar neden zorlayıcı?
+>[!NOTE]
+>Microsoft, güvenlik duruşunuzu geliştirmek için kiracınızdaki eski protokollerin kullanımını engellemeniz önerilir.
 
-Azure AD'de, Koşullu Erişim ilkesini bir kullanıcı kümesine kapsamız. Azure AD rollerini, bireysel kullanıcıları veya kullanıcıların misafirlerini seçerek bu kullanıcıların bazılarını hariç tutabilirsiniz. Bu dışlamalar yapılandırıldığında, bu kullanıcılar için ilke amacının uygulanaamayacağı unutulmamalıdır. Bu dışlamalar tek tek kullanıcıların listesi veya eski bir şirket içi güvenlik grubu aracılığıyla yapılandırıldıysa, bu dışlama listesinin görünürlüğünü (kullanıcılar varlığını bilmeyebilir) ve BT yöneticisinin bu liste üzerindeki denetimini (kullanıcılar ilkeyi by-pass etmek için güvenlik grubu). Ayrıca, bir defada hariç tutulmaya hak kazanan kullanıcılar artık buna ihtiyaç duymayabilir veya buna uygun olmayabilir.
+## <a name="why-are-exclusions-challenging"></a>Dışlamaları neden zor?
 
-Bir dışlamanın başında, ilkeyi atlayan kullanıcıların kısa bir listesi vardır. Zamanla, daha fazla kullanıcı dışlanır ve liste büyür. Bir noktada, listeyi gözden geçirmek ve bu kullanıcıların her biri hala dışlanmış olması gerektiğini onaylamak için bir ihtiyaç vardır. Teknik açıdan listeyi yönetmek nispeten kolay olabilir, ancak iş kararlarını kim verir ve bunların denetlenebilir olduğundan nasıl emin olabilirsiniz?
+Azure AD 'de bir kullanıcı kümesine koşullu erişim ilkesi kapsamı ekleyebilirsiniz. Ayrıca, Azure AD rolleri, bireysel kullanıcılar veya konuklar ' i seçerek dışlamaları yapılandırabilirsiniz. Dışlamalar yapılandırıldığında, ilke hedefinin dışlanan kullanıcılara zorlanmayacağını aklınızda bulundurmanız gerekir. Dışlamalar, bir kullanıcı listesi veya eski şirket içi güvenlik grupları kullanılarak yapılandırılmışsa, dışlamalarla sınırlı görünürlüğe sahip olursunuz. Sonuç olarak:
 
-Ancak, bir Azure REKLAM grubu kullanarak koşullu erişim ilkesine dışlamayı yapılandırırsanız, görünürlüğü artırmak ve özel durumu olan kullanıcı sayısını azaltmak için erişim değerlendirmelerini telafi denetimi olarak kullanabilirsiniz.
+- Kullanıcılar Dışlandıklarından emin olmayabilir.
 
-## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Koşullu Erişim ilkesinde dışlama grubu oluşturma
+- Kullanıcılar, ilkeyi atlamak için güvenlik grubuna katılabilir.
 
-Yeni bir Azure REKLAM grubu ve bu grup için geçerli olmayan koşullu erişim ilkesi oluşturmak için aşağıdaki adımları izleyin.
+- Dışlanan kullanıcılar dışlama için uygun olmayabilir ancak artık buna uygun olmayabilir.
+
+Genellikle, bir dışlamayı ilk yapılandırdığınızda, ilkeyi atlayan kullanıcıların shortlistesi vardır. Zaman içinde, daha fazla Kullanıcı dışlamaya eklenir ve liste artar. Bir noktada listeyi gözden geçirmeniz ve bu kullanıcıların her birinin dışlamaya uygun olduğunu onaylamanız gerekir. Dışlama listesini bir teknik bakış noktasından yönetmek nispeten kolay olabilir, ancak iş kararlarını kim yapabilir ve bunların tamamen denetlenebilir olmasını nasıl sağlar? Ancak, bir Azure AD grubu kullanarak dışlamasını yapılandırırsanız, erişim incelemelerini bir telafi denetimi olarak kullanabilir, görünürlüğü ve dışlanan kullanıcı sayısını azaltabilirsiniz.
+
+## <a name="how-to-create-an-exclusion-group-in-a-conditional-access-policy"></a>Koşullu erişim ilkesinde dışlama grubu oluşturma
+
+Yeni bir Azure AD grubu ve bu gruba uygulanmayan bir koşullu erişim ilkesi oluşturmak için bu adımları izleyin.
 
 ### <a name="create-an-exclusion-group"></a>Dışlama grubu oluşturma
 
 1. Azure Portal’da oturum açın.
 
-1. Sol gezintide **Azure Etkin Dizin'i** tıklatın ve ardından **Gruplar'ı**tıklatın.
+2. Sol gezinti bölmesinde **Azure Active Directory** ' a ve ardından **gruplar**' a tıklayın.
 
-1. Üst menüde, grup bölmesini açmak için **Yeni Grup'u** tıklatın.
+3. En üstteki menüde **Yeni Grup** ' a tıklayarak Grup bölmesini açın.
 
-1. Grup **türü** listesinde **Güvenlik'i**seçin. Bir ad ve açıklama belirtin.
+4. **Grup türü** listesinde **güvenlik**' i seçin. Bir ad ve açıklama belirtin.
 
-1. **Üyelik** türünü **Atanmış**olarak ayarladıklınız için emin olun.
+5. **Üyelik** türünü **atanmış**olarak ayarladığınızdan emin olun.
 
-1. Bu dışlama grubunun bir parçası olması gereken kullanıcıları seçin ve ardından **Oluştur'u**tıklatın.
+6. Bu dışlama grubunun parçası olması gereken kullanıcıları seçin ve ardından **Oluştur**' a tıklayın.
 
-    ![Azure Etkin Dizini'nde yeni grup bölmesi](./media/conditional-access-exclusion/new-group.png)
+![Azure Active Directory yeni grup bölmesi](./media/conditional-access-exclusion/new-group.png)
 
-### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Grubu dışlayan koşullu erişim ilkesi oluşturma
+### <a name="create-a-conditional-access-policy-that-excludes-the-group"></a>Grubu dışlayan bir koşullu erişim ilkesi oluşturma
 
-Artık bu dışlama grubunu kullanan bir Koşullu Erişim ilkesi oluşturabilirsiniz.
+Artık, bu dışlama grubunu kullanan bir koşullu erişim ilkesi oluşturabilirsiniz.
 
-1. Sol gezintide **Azure Etkin Dizin'i** tıklatın ve ardından **İlkeler** çubuğunu açmak için **Koşullu Erişim'i** tıklatın.
+1. Sol gezinti bölmesinde **Azure Active Directory** ' a ve ardından **koşullu erişim** ' e tıklayarak **ilkeler** dikey penceresini açın.
 
-1. **Yeni** bölmeyi açmak için **Yeni ilkeyi** tıklatın.
+2. Yeni **ilke** ' ye tıklayarak **Yeni** bölmeyi açın.
 
-1. Bir ad belirtin.
+3. Bir ad belirtin.
 
-1. Atamalar altında **Kullanıcılar ve gruplar**tıklatın.
+4. Atamalar ' ın altında **Kullanıcılar ve gruplar**' a tıklayın.
 
-1. **Ekle** sekmesinde Tüm **Kullanıcılar'ı**seçin.
+5. **Dahil et** sekmesinde, **tüm kullanıcılar**' ı seçin.
 
-1. **Dışla** sekmesinde, **Kullanıcılara ve gruplara** bir onay işareti ekleyin ve ardından **dışlanmış kullanıcıları seç'i**tıklatın.
+6. **Dışla** sekmesinde, **Kullanıcılar ve gruplar** 'a onay işareti ekleyin ve **Dışlanan kullanıcıları seç**' e tıklayın.
 
-1. Oluşturduğunuz dışlama grubunu seçin.
+7. Oluşturduğunuz dışlama grubunu seçin.
 
-    > [!NOTE]
-    > En iyi uygulama olarak, kiracınızın kilitsiz olmadığından emin olmak için sınama sırasında en az bir yönetici hesabının ilkenden hariç tutmanız önerilir.
+   > [!NOTE] 
+   > En iyi uygulama olarak, kiracınızdan kilitlenmediğinden emin olmak için, test edilirken en az bir yönetici hesabının dışlanmasını öneririz.
 
-1. Koşullu Erişim ilkesini kuruluş gereksinimlerinize göre ayarlamaya devam edin.
+8. Kurumsal gereksinimlerinize göre koşullu erişim ilkesini ayarlamaya devam edin.
 
-    ![Koşullu Erişim'de dışlanmış kullanıcı bölmesini seçme](./media/conditional-access-exclusion/select-excluded-users.png)
+![Koşullu erişimde dışlanan kullanıcılar bölmesini seçin](./media/conditional-access-exclusion/select-excluded-users.png)
+  
+Koşullu erişim ilkelerinde dışlamaları yönetmek için erişim incelemelerini kullanabileceğiniz iki örneği ele alalım.
 
-Koşullu Erişim ilkelerindeki hariç tutulmaları yönetmek için erişim değerlendirmelerini kullanabileceğiniz iki örneği ele alalım.
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Örnek 1: Engellenen ülkelerden/bölgelerden erişen kullanıcılar için erişim gözden geçirmesi
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>Örnek 1: Engellenen ülkelerden/bölgelerden erişen kullanıcılar için erişim incelemesi
+Belirli ülkelerden/bölgelerden erişimi engelleyen bir koşullu erişim ilkeniz olduğunu varsayalım. Bu, ilkeden dışlanan bir grubu içerir. Grubun üyelerinin gözden geçirilmesi durumunda önerilen bir erişim incelemesi aşağıda verilmiştir.
 
-Belirli ülkelerden/bölgelerden erişimi engelleyen bir Koşullu Erişim politikanız olduğunu varsayalım. İlkenin dışında tutulmuş bir grubu içerir. Burada, grup üyelerinin gözden geçirildiği önerilen bir erişim incelemesi vereme leri önerilir.
+> [!NOTE] 
+> Erişim İncelemeleri oluşturmak için bir genel yönetici veya Kullanıcı Yöneticisi rolü gereklidir.
 
-> [!NOTE]
-> Erişim incelemeleri oluşturmak için Global yönetici veya Kullanıcı yöneticisi rolü gereklidir.
+1. Gözden geçirme her hafta gerçekleştirilir.
 
-1. İnceleme her hafta tekrarlanacaktır.
+2. Bu dışlama grubunu en güncel durumda tutduğunuzdan emin olmak için hiçbir zaman bitmeyecektir.
 
-2. Bu dışlama grubunu en güncel tuttuğunuzdan emin olmak için asla bitmez.
+3. Bu grubun tüm üyeleri gözden geçirme kapsamında olacaktır.
 
-3. Bu grubun tüm üyeleri inceleme kapsamında olacaktır.
+4. Her kullanıcının bu engellenen ülkeler/bölgelerden hala erişmesi gereken kendi kendine test olması gerekir, bu nedenle yine de grubun üyesi olmaları gerekir.
 
-4. Her kullanıcı, engellenen bu ülkelerden/bölgelerden hala erişebilmeniz gerektiğini, bu nedenle yine de grubun bir üyesi olması gerektiğini kendi kendine kanıtlamak zorunda kalacaktır.
+5. Kullanıcı, gözden geçirme isteğine yanıt vermezse, bunlar gruptan otomatik olarak kaldırılır ve bu ülkelere/bölgelere yolculuk sırasında artık kiracıya erişemez.
 
-5. Kullanıcı inceleme isteğine yanıt vermezse, bu şirket otomatik olarak gruptan kaldırılır ve bu nedenle bu ülkelere/bölgelere seyahat ederken kiracıya artık erişemez.
+6. Kullanıcıların erişim incelemesinin başlangıcını ve tamamlanmasını bilmesini sağlamak için e-posta bildirimlerini etkinleştirin.
 
-6. Kullanıcıların erişim incelemesinin başlatılması ve tamamlanması hakkında bilgilendirilmeleri için posta bildirimlerini etkinleştirin.
+    ![Bir erişim gözden geçirme bölmesi oluşturun örneğin 1](./media/conditional-access-exclusion/create-access-review-1.png)
 
-    ![Örneğin bir erişim gözden geçirme bölmesi oluşturma 1](./media/conditional-access-exclusion/create-access-review-1.png)
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Örnek 2: eski kimlik doğrulamasıyla erişen kullanıcılar için erişim gözden geçirmesi
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>Örnek 2: Eski kimlik doğrulamayla erişen kullanıcılar için erişim incelemesi
+Eski kimlik doğrulaması ve daha eski istemci sürümlerini kullanan kullanıcılar için erişimi engelleyen bir koşullu erişim ilkeniz olduğunu ve bu, ilkeden dışlanan bir grubu içermenizi sağlar. Grubun üyelerinin gözden geçirilmesi durumunda önerilen bir erişim incelemesi aşağıda verilmiştir.
 
-Eski kimlik doğrulaması ve eski istemci sürümlerini kullanan kullanıcıların erişimini engelleyen bir Koşullu Erişim ilkeniz olduğunu varsayalım. İlkenin dışında tutulmuş bir grubu içerir. Burada, grup üyelerinin gözden geçirildiği önerilen bir erişim incelemesi vereme leri önerilir.
+1. Bu incelemenin yinelenen bir gözden geçirme olması gerekir.
 
-1. Bu inceleme yinelenen bir inceleme olması gerekir.
+2. Gruptaki herkesin gözden geçirilmesi gerekir.
 
-2. Gruptaki herkesin gözden geçirilmesi gerekiyor.
+3. Bu, iş birimi sahiplerini seçili gözden geçirenler olarak listelemek üzere yapılandırılabilir.
 
-3. Seçilen gözden geçirenler olarak iş birimi sahiplerini listelemek için yapılandırılabilir.
+4. Sonuçları otomatik olarak uygulayın ve eski kimlik doğrulama yöntemlerini kullanarak devam etmek üzere onaylanmamış kullanıcıları kaldırın.
 
-4. Sonuçları otomatik olarak uygulayın ve eski kimlik doğrulama yöntemlerini kullanmaya devam etmek için onaylanmamış kullanıcıları kaldırın.
+5. Büyük grupların gözden geçirenlerin kararlarına kolayca karar verebilmeleri için önerilerin etkinleştirilmesi yararlı olabilir.
 
-5. Büyük grupların gözden geçirenlerinin kararlarını kolayca verebilmesi için önerilerin etkinhale getirilmesi yararlı olabilir.
+6. Kullanıcılara erişim incelemesinin başlatılması ve tamamlanması hakkında bildirim almak için posta bildirimlerini etkinleştirin.
 
-6. Kullanıcıların erişim incelemesinin başlatılması ve tamamlanması hakkında bilgilendirilmeleri için posta bildirimlerini etkinleştirin.
+    ![Bir erişim gözden geçirme bölmesi oluşturun örneğin 2](./media/conditional-access-exclusion/create-access-review-2.png)
 
-    ![Örneğin 2 için bir erişim gözden geçirme bölmesi oluşturma](./media/conditional-access-exclusion/create-access-review-2.png)
+>[!IMPORTANT] 
+>Çok sayıda dışlama grubunuz varsa ve bu nedenle birden çok erişim incelemesi oluşturmanız gerekiyorsa, Microsoft Graph Beta uç noktasında onları programlı bir şekilde oluşturmanıza ve yönetmenize olanak tanıyan bir API sunuyoruz. Başlamak için bkz. [Azure AD erişim gözden GEÇIRMELERI API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) ve [MICROSOFT Graph aracılığıyla Azure AD erişim gözden geçirmeleri alma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
-**Pro İpucu**: Çok sayıda dışlama grubunuz varsa ve bu nedenle birden çok erişim incelemesi oluşturmanız gerekiyorsa, artık Microsoft Graph beta bitiş noktasında bunları programlı olarak oluşturmanıza ve yönetmenize olanak tanıyan bir API'miz var. Başlamak için, [Azure AD erişim incelemeleri API başvurusu](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) ve Microsoft Graph üzerinden Azure AD erişim [incelemelerini alma örneği](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)bölümüne bakın.
+## <a name="access-review-results-and-audit-logs"></a>Erişim gözden geçirmesi sonuçları ve denetim günlükleri
 
-## <a name="access-review-results-and-audit-logs"></a>İnceleme sonuçlarına ve denetim günlüklerine erişin
+Artık her şeye, gruba, koşullu erişim ilkesine ve erişim incelemelerine sahip olduğunuza göre, bu incelemelerdeki sonuçların izlenmesi ve izlenmesi zaman alabilir.
 
-Artık her şey yerinde, grup, Koşullu Erişim ilkesi ve erişim değerlendirmeleri var, izlemek ve bu değerlendirmeleri sonuçlarını izlemek için zamanı.
+1. Azure portal, **erişim İncelemeleri** dikey penceresini açın.
 
-1. Azure portalında Access **incelemeleri** bıçağını açın.
+2. Dışlama grubunu yönetmek için oluşturduğunuz denetim ve programı açın.
 
-1. Dışlama grubunu yönetmek için oluşturduğunuz denetim ve programı açın.
+3. Listede kalmak ve kimin kaldırılmadığını görmek için **sonuçlar** ' a tıklayın.
 
-1. Listede kimlerin kalması onaylandı ve kimler kaldırıldı görmek için **Sonuçlar'ı** tıklatın.
+    ![Erişim gözden geçirmeleri sonuçları kimin onaylandığını gösterir](./media/conditional-access-exclusion/access-reviews-results.png)
 
-    ![Erişim incelemeleri sonuçları kimin onaylandığını gösterir](./media/conditional-access-exclusion/access-reviews-results.png)
+4. Ardından, bu gözden geçirme sırasında gerçekleştirilen eylemleri görmek için **Denetim günlükleri** ' ne tıklayın.
 
-1. Ardından, bu inceleme sırasında gerçekleştirilen eylemleri görmek için **Denetim günlüklerini** tıklatın.
+    ![Erişim gözden geçirmeleri denetim günlüklerini listeleme eylemleri](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
 
-    ![Erişim, denetim günlüklerini listeleme eylemlerini gözden geçirir](./media/conditional-access-exclusion/access-reviews-audit-logs.png)
-
-Bt yöneticisi olarak, dışlama gruplarını ilkelerinize göre yönetmenin bazen kaçınılmaz olduğunu bilirsiniz. Ancak, bu grupları korumak, işletme sahibi veya kullanıcıların kendileri tarafından düzenli olarak gözden geçirmek ve bu değişiklikleri denetlemek Azure AD erişim incelemeleri ile daha kolay hale getirebilir.
+BT Yöneticisi olarak, ilke dışlama gruplarını ilkelerinize göre yönetme bazen de kaçınılmaz. Bununla birlikte, bu grupları korumak, iş sahibi veya kullanıcıların kendileri tarafından düzenli olarak incelenmesi ve Azure AD erişim gözden geçirmeleri ile bu değişiklikleri denetlemek daha kolay hale getirilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Grupların veya uygulamaların erişim gözden geçirmesini oluşturma](create-access-review.md)
-- [Azure Etkin Dizinde Koşullu Erişim Nedir?](../conditional-access/overview.md)
+- [Gruplar veya uygulamalar için erişim gözden geçirmesi oluşturma](create-access-review.md)
+- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)

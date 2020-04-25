@@ -1,7 +1,7 @@
 ---
-title: Azure Makine Öğreniminde Veriler
+title: Bulutta güvenli veri erişimi
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning'in verilerinize nasıl güvenli bir şekilde bağladığını ve bu verileri makine öğrenimi görevleri için nasıl kullandığını öğrenin.
+description: Azure Machine Learning verilerinize güvenli bir şekilde bağlanmayı ve ML görevleri için veri kümelerini ve veri depolarını kullanmayı öğrenin. Veri depoları, Azure Data Lake Gen 1 & 2, SQL DB, Databricks,... Azure Blobundan veri depolayabilirler.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,56 +9,56 @@ ms.topic: conceptual
 ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
-ms.date: 03/20/2020
-ms.openlocfilehash: 982c9c9eadec4403c8116430e1e25092de99f1d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/24/2020
+ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128483"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144481"
 ---
-# <a name="data-access-in-azure-machine-learning"></a>Azure Machine Learning'de veri erişimi
+# <a name="secure-data-access-in-azure-machine-learning"></a>Azure Machine Learning 'da güvenli veri erişimi
 
-Azure Machine Learning, buluttaki verilerinize bağlanmanızı kolaylaştırır.  Temel depolama hizmeti üzerinde bir soyutlama katmanı sağlar, böylece depolama türüne özgü kod yazmak zorunda kalmadan verilerinize güvenli bir şekilde erişebilir ve verilerinizi ile çalışır. Azure Machine Learning ayrıca aşağıdaki veri özelliklerini de sağlar:
+Azure Machine Learning buluttaki verilerinize bağlanmanızı kolaylaştırır.  Bu, temel alınan depolama hizmeti üzerinde bir Özet katman sağlar, böylece depolama türüne özel kod yazmak zorunda kalmadan verilerinize güvenli bir şekilde erişebilir ve bunlarla çalışabilirsiniz. Azure Machine Learning Ayrıca aşağıdaki veri yeteneklerini de sağlar:
 
-*    Veri soyundan sürüm ve izleme
+*    Veri kökenini sürümü oluşturma ve izleme
 *    Veri etiketleme 
 *    Veri değişikliklerini izleme
-*    Pandalar ve Kıvılcım DataFrame'lerle birlikte çalışabilirlik
+*    Pandas ve Spark veri çerçeveleri ile birlikte çalışabilirlik
 
 ## <a name="data-workflow"></a>Veri iş akışı
 
-Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazır olduğunuzda, aşağıdaki veri teslim iş akışını öneririz. Bu iş akışı, Azure'daki bulut tabanlı bir depolama hizmetinde bir [Azure depolama hesabınız](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) ve verilerinizin olduğunu varsayar. 
+Bulut tabanlı depolama çözümünüzdeki verileri kullanmaya hazırsanız, aşağıdaki veri teslimi iş akışını öneririz. Bu iş akışı, Azure 'daki bulut tabanlı bir depolama hizmetinde bir [Azure depolama hesabınız](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) ve verileriniz olduğunu varsayar. 
 
-1. Bağlantı bilgilerini Azure depolamaalanınızda depolamak için bir [Azure Machine Learning veri deposu](#datastores) oluşturun.
+1. Azure depolama verilerinize bağlantı bilgilerini depolamak için bir [Azure Machine Learning veri deposu](#datastores) oluşturun.
 
-2. Bu veri deposundan, temel depolama alanınızdaki belirli bir dosyayı(lar) işaret etmek için bir [Azure Machine Learning veri kümesi](#datasets) oluşturun. 
+2. Bu veri deposundan, temel depolamadaki belirli bir dosyayı (dosyaları) göstermek için bir [Azure Machine Learning veri kümesi](#datasets) oluşturun. 
 
-3. Makine öğrenimi denemenizde bu veri kümesini kullanmak için
-    1. Model eğitimi için denemenizin işlem hedefine monte edin.
+3. Machine Learning denemenize bu veri kümesini kullanmak için şunlardan birini yapabilirsiniz
+    1. Model eğitimi için deneme işlem hedefine bağlayın.
 
-        **Veya** 
+        **VEYA** 
 
-    1. Otomatik makine öğrenimi (otomatik ML) deneme çalışır, makine öğrenimi boru hatları veya [Azure Machine Learning tasarımcısı](concept-designer.md)gibi Azure Machine Learning çözümlerinde doğrudan tüketin.
+    1. Otomatik makine öğrenimi (otomatik ML) deneme çalıştırmaları, makine öğrenimi ardışık düzenleri veya [Azure Machine Learning Tasarımcısı](concept-designer.md)gibi Azure Machine Learning çözümlerinde doğrudan kullanın.
 
-4. Veri kayması için algılamak için model çıktı veri seti için [veri kümesi monitörleri](#data-drift) oluşturun. 
+4. Model çıkış veri kümeniz için veri [kümesi izleyicileri](#data-drift) oluşturun. 
 
-5. Veri kayması algılanırsa, giriş veri kümenizi güncelleştirin ve modelinizi buna göre yeniden eğitin.
+5. Veri kayması algılanırsa, giriş veri kümenizi güncelleştirip modelinize uygun şekilde yeniden eğitme.
 
-Aşağıdaki diyagram, bu önerilen iş akışının görsel bir gösterisağlar.
+Aşağıdaki diyagramda, önerilen bu iş akışının görsel bir gösterimi sunulmaktadır.
 
-![Veri kavramı-diyagramı](./media/concept-data/data-concept-diagram.svg)
+![Veri kavramı-diyagram](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Veri Depoları
+## <a name="datastores"></a>Veri depoları
 
-Azure Machine Learning veri depoları bağlantı bilgilerini Azure depolama alanınıza güvenli bir şekilde saklar, böylece komut dosyalarınızda kodlamanız gerekmez. Depolama hesabınıza kolayca bağlanmak ve temel Azure depolama hizmetinizdeki verilere erişmek için bir veri deposu kaydedin ve [oluşturun.](how-to-access-data.md) 
+Azure Machine Learning veri depoları, bağlantı bilgilerini Azure depolama verilerinize güvenli bir şekilde saklayın, bu sayede betiklerinizde kod yazmanız gerekmez. Depolama hesabınıza kolayca bağlanmak ve temel Azure depolama hizmetindeki verilere erişmek için [bir veri deposu kaydedin ve oluşturun](how-to-access-data.md) . 
 
-Azure'da veri deposu olarak kaydedilebilen desteklenen bulut tabanlı depolama hizmetleri:
+Azure 'da, veri depoları olarak kaydedilenebilir desteklenen bulut tabanlı depolama hizmetleri:
 
-+ Azure Blob Konteyner
++ Azure Blob kapsayıcısı
 + Azure Dosya Paylaşımı
 + Azure Data Lake
-+ Azure Veri Gölü Gen2
++ Azure Data Lake Gen2
 + Azure SQL Veritabanı
 + PostgreSQL için Azure Veritabanı
 + Databricks Dosya Sistemi
@@ -66,53 +66,53 @@ Azure'da veri deposu olarak kaydedilebilen desteklenen bulut tabanlı depolama h
 
 ## <a name="datasets"></a>Veri kümeleri
 
-Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verilere işaret eden referanslardır. Bunlar verilerinizin kopyaları olmadığından, ek depolama maliyeti tahakkuk etmez. Depolamadaki verilerinizle etkileşimde kalmak için, verilerinizi makine öğrenimi görevleri için sarf edilebilir bir nesneye dönüştürmek için [bir veri kümesi oluşturun.](how-to-create-register-datasets.md) Veri alma karmaşıklıkları olmadan farklı denemeler arasında paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
+Azure Machine Learning veri kümeleri, depolama hizmetinizdeki verileri işaret eden başvurulardır. Verilerinizin kopyaları olmadığından, ek depolama maliyeti tahakkuk etmemektedir. Depolama alanındaki verilerinizle etkileşim kurmak için, verilerinizi makine öğrenimi görevleri için tüketilebilir bir nesneye paketlemek üzere [bir veri kümesi oluşturun](how-to-create-register-datasets.md) . Veri alma karmaşıklıkları olmadan farklı denemeleri genelinde paylaşmak ve yeniden kullanmak için veri kümesini çalışma alanınıza kaydedin.
 
-Veri kümeleri, veri depoları aracılığıyla yerel dosyalardan, genel url'lerden, [Azure Açık Veri kümelerinden](https://azure.microsoft.com/services/open-datasets/)veya Azure depolama hizmetlerinden oluşturulabilir. Bellekpandas veri çerçevesinden bir veri kümesi oluşturmak için, verileri parke gibi yerel bir dosyaya yazın ve bu dosyadan veri kümenizi oluşturun.  
+Veri kümeleri yerel dosyalardan, genel URL 'lerden, [Azure açık veri](https://azure.microsoft.com/services/open-datasets/)kümelerinden veya veri depoları aracılığıyla Azure Storage hizmetlerinden oluşturulabilir. Bellek Pandas dataframe 'ten bir veri kümesi oluşturmak için, verileri bir Parquet gibi yerel bir dosyaya yazın ve veri kümenizi bu dosyadan oluşturun.  
 
 2 tür veri kümesini destekliyoruz: 
-+ [TabularDataset,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) sağlanan dosyayı veya dosya listesini ayrıştarak verileri tabular biçiminde temsil eder. Daha fazla manipülasyon ve temizlik için Pandalara veya Spark DataFrame'e Bir TabularDataset yükleyebilirsiniz. Veri biçimlerinin tam listesi için TabularDatasets oluşturabilir, [TabularDatasetFactory sınıfına](https://aka.ms/tabulardataset-api-reference)bakın.
++ [Tabulardataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , belirtilen dosya veya dosya listesini ayrıştırarak verileri tablolu biçimde temsil eder. Daha fazla düzenleme ve temizleme için TabularDataset ' i Pandas veya Spark veri çerçevesine yükleyebilirsiniz. ' Den Tabulardataset 'ler oluşturabileceğiniz veri biçimlerinin tamamen listesi için, [Tabulardatasetfactory sınıfına](https://aka.ms/tabulardataset-api-reference)bakın.
 
-+ [FileDataset,](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) veri depolarınızda veya herkese açık URL'lerinizde tek veya birden çok dosyaya başvurur. DosyaDatasets tarafından başvurulan dosyaları bilgi işlem hedefinize [indirebilir veya monte](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) edebilirsiniz.
++ Bir [dosya veri kümesi](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) , veri mağazalarınızın veya genel URL 'nizin tek veya birden çok dosyasına başvurur. Dosya veri kümeleri tarafından başvurulan dosyaları, işlem hedeflerinize [indirebilir veya bağlayabilirsiniz](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) .
 
-Ek veri kümeleri özellikleri aşağıdaki belgelerde bulunabilir:
+Ek veri kümesi özellikleri aşağıdaki belgelerde bulunabilir:
 
-+ [Sürüm ve izleme](how-to-version-track-datasets.md) veri kümesi soyu.
-+ Veri kayması algılamasına yardımcı olmak için [veri setinizi izleyin.](how-to-monitor-datasets.md)    
++ [Sürüm ve izleme](how-to-version-track-datasets.md) veri kümesi kökenini.
++ Veri kümesini Izleme hakkında yardım almak için veri [kümenizi izleyin](how-to-monitor-datasets.md) .    
 
-## <a name="work-with-your-data"></a>Verilerinizle çalışın
+## <a name="work-with-your-data"></a>Verileriniz ile çalışma
 
-Veri kümeleri ile Azure Machine Learning özellikleriyle sorunsuz entegrasyon yoluyla bir dizi makine öğrenimi görevini gerçekleştirebilirsiniz. 
+Veri kümeleri ile Azure Machine Learning özellikleriyle sorunsuz tümleştirme aracılığıyla bir dizi makine öğrenimi görevi gerçekleştirebilirsiniz. 
 
-+ Bir [veri etiketleme projesi](#label)oluşturun.
-+ Tren makine öğrenme modelleri:
-     + [otomatik ML deneyleri](how-to-use-automated-ml-for-ml-models.md)
-     + [tasarımcı](tutorial-designer-automobile-price-train-score.md#import-data)
-     + [Dizüstü](how-to-train-with-datasets.md)
-     + [Azure Machine Learning boru hatları](how-to-create-your-first-pipeline.md)
-+ [Makine öğrenimi boru hatlarında](how-to-create-your-first-pipeline.md) [toplu çıkarımla](how-to-use-parallel-run-step.md) puanlama için veri kümelerine erişin.
-+ [Veri kayması](#drift) algılamaiçin bir veri kümesi monitörü ayarlayın.
++ [Veri etiketleme projesi](#label)oluşturun.
++ Makine öğrenimi modellerini eğitme:
+     + [otomatikleştirilen ML denemeleri](how-to-use-automated-ml-for-ml-models.md)
+     + [Tasarımcı](tutorial-designer-automobile-price-train-score.md#import-data)
+     + [bilgisayarların](how-to-train-with-datasets.md)
+     + [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)
++ [Makine öğrenimi ardışık düzenleri](how-to-create-your-first-pipeline.md)'nde [Batch çıkarımı](how-to-use-parallel-run-step.md) ile Puanlama için veri kümelerine erişin.
++ [Veri kayması](#drift) algılaması için bir veri kümesi İzleyicisi ayarlayın.
 
 <a name="label"></a>
 
 ## <a name="data-labeling"></a>Veri etiketleme
 
-Büyük miktarda verinin etiketlanması genellikle makine öğrenimi projelerinde baş ağrısı olmuştur. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar görme bileşenine sahip olanlar genellikle binlerce görüntü ve ilgili etiketler gerektirir.
+Büyük miktarlarda verilerin etiketlenmesi, genellikle makine öğrenimi projelerinde bir zahmetli 'e sahiptir. Görüntü sınıflandırması veya nesne algılama gibi bir bilgisayar vizyonu bileşeni olan kişiler, genellikle binlerce görüntü ve karşılık gelen Etiketler gerektirir.
 
-Azure Machine Learning, etiketleme projeleri oluşturmanız, yönetmeniz ve izlemeniz için size merkezi bir konum sağlar. Projeleri etiketlemek, verileri, etiketleri ve ekip üyelerini koordine ederek etiketleme görevlerini daha verimli bir şekilde yönetmenize yardımcı olur. Şu anda desteklenen görevler, çok etiketli veya çok katmanlı görüntü sınıflandırması ve sınırlı kutular kullanılarak nesne tanımlamadır.
+Azure Machine Learning, etiketleme projelerini oluşturmak, yönetmek ve izlemek için size merkezi bir konum sağlar. Verilerin etiketlenmesi, verileri, etiketleri ve takım üyelerini koordine etmenize yardımcı olmak için etiketleme görevlerini daha verimli bir şekilde yönetmenizi sağlar. Şu anda desteklenen görevler, çok etiketli veya çok sınıflı ve sınırlanmış kutular kullanılarak nesne tanımlaması olan görüntü sınıflandırmasıdır.
 
-Bir [veri etiketleme projesi](how-to-create-labeling-projects.md)oluşturun ve makine öğrenimi denemelerinde kullanılmak üzere bir veri kümesi çıktı.
+Bir [veri etiketleme projesi](how-to-create-labeling-projects.md)oluşturun ve Machine Learning denemeleri 'te kullanmak üzere bir veri kümesi çıkışı yapın.
 
 <a name="drift"></a>
 
 ## <a name="data-drift"></a>Veri kayması
 
-Makine öğrenimi bağlamında, veri kayması model performansının düşmesine yol açan model giriş verilerindeki değişimdir. Bu model doğruluğu zaman içinde bozulur üst nedenlerinden biridir, böylece veri sürüklenme izleme model performans sorunları algılamaya yardımcı olur.
+Machine Learning bağlamında, veri dolu modeli, performans düşüşünü modellemeyi sağlayan model girişi verilerinde değişiklik gösterir. Model doğruluğunun zaman içindeki en önemli nedenlerinden biridir, böylece izleme verileri, model performans sorunlarını algılamaya yardımcı olur.
 
-Bir veri kümesindeki yeni verilerdeki verileri nasıl algılayıp uyaraceksiniz hakkında daha fazla bilgi edinmek için [veri kümesi monitörü oluştur](how-to-monitor-datasets.md) makalesine bakın.
+Veri kümesindeki yeni verilerde verileri algılama ve bu verileri uyarma hakkında daha fazla bilgi edinmek için veri [kümesi Izleyicisi oluşturma](how-to-monitor-datasets.md) makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
-+ Bu adımları kullanarak Azure Machine Learning stüdyosunda veya Python SDK ile bir veri kümesi [oluşturun.](how-to-create-register-datasets.md)
-+ Örnek defterlerimizle veri seti eğitim [örneklerini](https://aka.ms/dataset-tutorial)deneyin.
-+ Veri drift örnekleri için, bu [veri drift öğretici](https://aka.ms/datadrift-notebook)bakın.
++ [Bu adımları kullanarak](how-to-create-register-datasets.md) Azure Machine Learning Studio 'Da veya Python SDK ile bir veri kümesi oluşturun.
++ [Örnek Not defterlerimizle](https://aka.ms/dataset-tutorial)veri kümesi eğitimi örneklerini deneyin.
++ Veri kayması örnekleri için, bu [veri kayması öğreticisine](https://aka.ms/datadrift-notebook)bakın.
