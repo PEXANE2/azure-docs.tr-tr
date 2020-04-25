@@ -1,61 +1,61 @@
 ---
-title: CoreASP.NET hızlı başlat - Azure Monitör Uygulama Öngörüleri
-description: Azure Monitöruygulama Öngörüleri ile izleme için hızlı bir ASP.NET Core Web Uygulaması oluşturmak için talimatlar sağlar
+title: Hızlı başlangıç ASP.NET Core-Azure Izleyici Application Insights
+description: Azure Izleyici ile izleme için ASP.NET Core bir Web uygulamasını hızlıca ayarlamaya yönelik yönergeler sağlar Application Insights
 ms.subservice: application-insights
 ms.topic: quickstart
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78894825"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144860"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web Uygulamanızı İzlemeye Başlama
 
 Azure Application Insights ile web uygulamanızı kullanılabilirlik, performans ve kullanım bakımından kolayca izleyebilirsiniz. Ayrıca, bir kullanıcının bildirmesini beklemeden uygulamanızdaki hataları hızlıca tanımlayıp tespit edebilirsiniz. 
 
-Bu hızlı başlangıç, Application Insights SDK'yı mevcut bir ASP.NET Core web uygulamasına ekleyerek size yol göstersin. Visual Studio ödeme olmadan Uygulama Öngörüleri yapılandırma hakkında bilgi edinmek için bu [makalede](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core).
+Bu hızlı başlangıç, var olan bir ASP.NET Core Web uygulamasına Application Insights SDK ekleme konusunda size rehberlik eder. Visual Studio 'Yu Application Insights yapılandırma hakkında bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)göz atın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
-- [Visual Studio 2019'u](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) aşağıdaki iş yükleriyle yükleyin:
+- Aşağıdaki iş yükleriyle [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/?utm_medium=microsoft&utm_source=docs.microsoft.com&utm_campaign=inline+link&utm_content=download+vs2019) ' i yükledikten sonra:
   - ASP.NET ve web geliştirme
   - Azure geliştirme
 - [.NET Core 2.0 SDK yükleme](https://dotnet.microsoft.com/download)
 - Bir Azure Aboneliği ve var olan bir .NET Core web uygulaması gerekir.
 
-ASP.NET Core web uygulamanız yoksa, [ASP.NET Bir Çekirdek uygulaması oluşturmak ve Uygulama Öngörüleri eklemek](../../azure-monitor/app/asp-net-core.md) için adım adım kılavuzumuzu kullanabilirsiniz.
+ASP.NET Core Web uygulamanız yoksa, [ASP.NET Core bir uygulama oluşturmak ve Application Insights eklemek](../../azure-monitor/app/asp-net-core.md) için adım adım kılavuzumuzu kullanabilirsiniz.
 
-Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com/)oturum açın.
+[Azure Portal](https://portal.azure.com/) oturum açın.
 
 ## <a name="enable-application-insights"></a>Application Insights'ı etkinleştirme
 
 Application Insights, şirket içinde veya bulutta çalışmasından bağımsız olarak İnternet’e bağlı herhangi bir uygulamadan telemetri verilerini toplayabilir. Bu verileri görüntülemeyi başlatmak için aşağıdaki adımları kullanın.
 
-1. **Kaynak** > **Oluştur Geliştirici araçları** > **Uygulama Öngörüleri'ni**seçin.
+1. **Kaynak** > oluştur**Geliştirici Araçları** > **Application Insights**seçin.
 
    > [!NOTE]
-   >Uygulama Öngörüleri kaynağını ilk kez oluşturuyorsanız, [Uygulama Öngörüleri Oluştur Kaynak](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) dokümanını ziyaret ederek daha fazla bilgi edinebilirsiniz.
+   >İlk kez bir Application Insights kaynağı oluşturuyorsanız [Application Insights kaynak oluştur belge oluştur](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) ' a giderek daha fazla bilgi edinebilirsiniz.
 
     Bir yapılandırma kutusu görünür. Giriş alanlarını doldurmak için aşağıdaki tabloyu kullanın.
 
    | Ayarlar        |  Değer           | Açıklama  |
    | ------------- |:-------------|:-----|
    | **Adı**      | Genel Olarak Benzersiz Değer | İzlemekte olduğunuz uygulamayı tanımlayan ad |
-   | **Kaynak Grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya varolan bir kaynak grubu kullanabilirsiniz. |
+   | **Kaynak grubu**     | myResourceGroup      | App Insights verilerini barındıracak yeni kaynak grubunun adı. Yeni bir kaynak grubu oluşturabilir veya var olan bir grup kullanabilirsiniz. |
    | **Konum** | Doğu ABD | Yakınınızda bulunan veya uygulamanızın barındırıldığı konumun yakınında olan bir konum seçin |
 
-2. **Oluştur'u**tıklatın.
+2. **Oluştur**' a tıklayın.
 
 
 
@@ -65,13 +65,13 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
     ![Application Insights Telemetrisi ekleme](./media/dotnetcore-quick-start/2vsaddappinsights.png)
 
-2. Başlat **düğmesini** tıklatın
+2. **Başlarken** düğmesine tıklayın
 
-3. Hesabınızı ve aboneliğinizi seçin > Azure portalında oluşturduğunuz **Varolan kaynağı** seçin > **Kaydol'u**tıklatın.
+3. Hesabınızı ve aboneliğinizi seçin > Azure portal oluşturduğunuz **mevcut kaynağı** seçin > **Kaydet**' e tıklayın.
 
-4. **Proje** > **Yönet NuGet Paketleri** > **Paket kaynağını seçin: nuget.org** > Uygulama Öngörüleri SDK paketlerini en son kararlı sürümle**güncelleyin.**
+4. **Proje** > **NuGet paketleri** > **paket kaynağını seçin: NuGet.org** > Application Insights SDK paketlerini en son kararlı sürüme**güncelleştirin** .
 
-5. Uygulamanızı başlatmak için Hata Ayıklama (Ctrl+F5) olmadan **Hata Ayıklama** > **Başlat'ı** seçin
+5. Uygulamanızı başlatmak için hata ayıklama**olmadan Başlat** ' ı seçin (CTRL + F5) **Debug** > 
 
     ![Application Insights’a Genel Bakış Menüsü](./media/dotnetcore-quick-start/3debug.png)
 
@@ -80,7 +80,7 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Azure portalında izlemeyi başlatın
 
-1. Azure portalındaki Uygulama Öngörüleri **Genel Bakış** sayfasını **Ana Sayfa'yı** seçerek yeniden açın ve en yeni kaynakların altında, şu anda çalışan uygulamanızla ilgili ayrıntıları görüntülemek için daha önce oluşturduğunuz kaynağı seçin.
+1. **Ana** sayfa ' yı seçerek Azure Portal Application Insights **genel bakış** sayfasını yeniden açın ve son zamanlarda, çalışmakta olan uygulamanız hakkındaki ayrıntıları görüntülemek için daha önce oluşturduğunuz kaynağı seçin.
 
    ![Application Insights’a Genel Bakış Menüsü](./media/dotnetcore-quick-start/4overview.png)
 
@@ -88,30 +88,25 @@ Application Insights, şirket içinde veya bulutta çalışmasından bağımsız
 
    ![Uygulama Eşlemesi](./media/dotnetcore-quick-start/5appmap.png)
 
-3. ](./media/dotnetcore-quick-start/006.png) **Analytics'te** **Uygulama** ![Analizi simgesi Uygulama Haritası simgesine tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
+3. ](./media/dotnetcore-quick-start/006.png) **Analytics 'teki**uygulama **Analizi** simgesi ![uygulama Haritası simge görünümü ' ne tıklayın. Bu işlem, Application Insights tarafından toplanan tüm verileri analiz etmeye yönelik zengin bir sorgu dili sağlayan **Application Insights Analizi**’ni açar. Bu örnekte, istek sayısını grafik olarak işleyen bir sorgu oluşturulur. Diğer verileri çözümlemek için kendi sorgularınızı yazabilirsiniz.
 
    ![Belirli bir süre içindeki kullanıcı isteklerinin analiz grafiği](./media/dotnetcore-quick-start/6analytics.png)
 
-4. **Genel Bakış** sayfasına dönün ve KPI Panolarını inceleyin.  Bu pano, gelen istek sayısı, bu isteklerin süresi ve oluşan hatalar dahil olmak üzere uygulamanızın sistem durumu hakkında istatistikler sağlar. 
+4. **Genel bakış** sayfasına dönün ve KPI panolarını inceleyin.  Bu pano, gelen istek sayısı, bu isteklerin süresi ve oluşan hatalar dahil olmak üzere uygulamanızın sistem durumu hakkında istatistikler sağlar. 
 
    ![Sistem Durumuna Genel Bakış zaman çizelgesi grafikleri](./media/dotnetcore-quick-start/7kpidashboards.png)
 
-5. **Ölçümler'de**sol a tıklama. Kaynağınızın durumunu ve kullanımını araştırmak için ölçüler gezginini kullanın. **Yeni grafik ekle**’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle**’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler inmeden "Tarayıcı sayfası yükleme süresi" ve toplamadan "Avg" seçerek ortalama tarayıcı sayfası yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçümleri Explorer hakkında daha fazla bilgi edinmek için [Azure Ölçümleri Gezgini'ne başlama](../../azure-monitor/platform/metrics-getting-started.md)yı ziyaret edin.
+5. Sağ tarafta **ölçümler**' e tıklayın. Kaynağınızın sistem durumunu ve kullanımını araştırmak için ölçüm gezginini kullanın. **Yeni grafik ekle**’ye tıklayarak ek özel görünümler oluşturabilir veya **Düzenle**’yi seçerek mevcut grafik türlerini, yüksekliğini, renk paletini, gruplandırmaları ve ölçümleri değiştirebilirsiniz. Örneğin, ölçümler açılan penceresinden "tarayıcı sayfa yükleme süresi" ni ve toplamasının "Ort" öğesini seçerek ortalama tarayıcı sayfa yükleme süresini görüntüleyen bir grafik yapabilirsiniz. Azure Ölçüm Gezgini hakkında daha fazla bilgi edinmek için [azure Ölçüm Gezgini](../../azure-monitor/platform/metrics-getting-started.md)kullanmaya başlama makalesini ziyaret edin.
 
-     ![Ölçümler sekmesi: Ortalama tarayıcı sayfası yükleme süresi grafiği](./media/dotnetcore-quick-start/8metrics.png)
-
-## <a name="video"></a>Video
-
-- [Uygulama Öngörülerini .NET Core ve Visual Studio ile](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) sıfırdan yapılandırma hakkında harici adım adım video.
-- [Uygulama Öngörülerini .NET Core ve Visual Studio Code ile](https://youtu.be/ygGt84GDync) sıfırdan yapılandırma hakkında harici adım adım video.
+     ![Ölçümler sekmesi: ortalama tarayıcı sayfa yükleme süresi grafiği](./media/dotnetcore-quick-start/8metrics.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Sınama bittiğinde, kaynak grubunu ve ilgili tüm kaynakları silebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin.
+Testi tamamladığınızda, kaynak grubunu ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için aşağıdaki adımları izleyin.
 
 > [!NOTE]
-> Varolan bir kaynak grubu kullandıysanız, aşağıdaki talimatlar çalışmaz ve tek tek Application Insights kaynağını silmeniz gerekir. Bir kaynak grubunu her sildiğinizde, o grubun üyesi olan tüm alt kaynaklarının silineceğini unutmayın.
+> Var olan bir kaynak grubunu kullandıysanız aşağıdaki yönergeler çalışmaz ve yalnızca tek bir Application Insights kaynağını silmeniz gerekir. Bir kaynak grubunu her sildiğinizde, bu grubun üyesi olan tüm kaynaklar silinir.
 
-1. Azure portalındaki sol menüden Kaynak **gruplarını** tıklatın ve ardından **myResourceGroup'u**tıklatın.
+1. Azure portal sol taraftaki menüden **kaynak grupları** ' na ve ardından **myresourcegroup**' a tıklayın.
 2. Kaynak grubu sayfanızda, **Sil**’e tıklayın, metin kutusuna **myResourceGroup** yazın ve ardından **Sil**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar

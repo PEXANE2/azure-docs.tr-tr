@@ -1,7 +1,7 @@
 ---
-title: Özel Vizyon projesi için bir etki alanı seçin - Computer Vision
+title: Özel Görüntü İşleme projesi için bir etki alanı seçin-Görüntü İşleme
 titleSuffix: Azure Cognitive Services
-description: Bu makalede, Özel Vizyon Hizmeti'nde projeniz için bir etki alanı nasıl seçeceğiniz gösterilmektedir.
+description: Bu makalede, Özel Görüntü İşleme Hizmeti projeniz için bir etki alanı seçme gösterilmektedir.
 services: cognitive-services
 author: shonohs
 manager: nitinme
@@ -10,64 +10,64 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 1569b6081adad4cae0855f9adfb4e14e910bf819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78899456"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82127769"
 ---
-# <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Vizyon projesi için etki alanı seçme
+# <a name="select-a-domain-for-a-custom-vision-project"></a>Özel Görüntü İşleme projesi için bir etki alanı seçin
 
-Özel Vizyon projenizin ayarlar bıçağından, projeniz için bir etki alanı seçebilirsiniz. Senaryonuza en yakın etki alanını seçin.
+Özel Görüntü İşleme projenizin ayarlar dikey penceresinde, projeniz için bir etki alanı seçebilirsiniz. Senaryonuza en yakın etki alanını seçin.
 
 ## <a name="image-classification"></a>Resimleri Sınıflandırma
 
 |Domain|Amaç|
 |---|---|
-|__Genel__| Çok çeşitli görüntü sınıflandırma görevleri için optimize edin. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanını seçeceğiniz den emin değilseniz, Genel etki alanını seçin.|
-|__Gıda__|Bir restoran menüsünde görmek gibi yemeklerin fotoğrafları için optimize edin. Tek tek meyve veya sebzelerin fotoğraflarını sınıflandırmak istiyorsanız, Gıda alan adını kullanın.|
-|__Yer işaretleri__|Hem doğal hem de yapay olarak tanınabilir yerler için optimize edin. Bu etki alanı en iyi, simge sel fotoğrafta açıkça görüldüğünde çalışır. Bu etki alanı, önündeki kişiler tarafından biraz engellenmiş olsa bile çalışır.|
-|__Perakende__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan resimler için optimize edin. Elbiseler, pantolonlar ve gömlekler arasında yüksek hassasiyetle sınıflandırmak istiyorsanız, bu alanı kullanın.|
-|__Kompakt etki alanları__| Kenar aygıtlarında gerçek zamanlı sınıflandırma kısıtlamaları için optimize edin.|
+|__Genel__| Çok çeşitli resim Sınıflandırma görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin.|
+|__Yemek__|Bir restoran menüsünde gördüğünüz gibi yemeklerin fotoğrafları için iyileştirildi. Bireysel meyve veya vegetables fotoğraflarını sınıflandırmak istiyorsanız, yiyecek etki alanını kullanın.|
+|__Yer işaretleri__|Hem doğal hem de yapay olan tanınabilir yer işaretleri için iyileştirilmiştir. Bu etki alanı, yer işareti fotoğrafta açık bir şekilde görünür olduğunda en iyi şekilde çalışıyor. Bu etki alanı, yer işareti, önündeki kişiler tarafından biraz engelde olsa bile çalışıyor.|
+|__Perakende__|Bir alışveriş kataloğunda veya alışveriş web sitesinde bulunan görüntüler için iyileştirilmiştir. Dresler, Pants ve Shirts arasında yüksek duyarlıklı sınıflandırmaları istiyorsanız bu etki alanını kullanın.|
+|__Compact etki alanları__| Edge cihazlarında gerçek zamanlı sınıflandırmanın kısıtlamaları için iyileştirildi.|
 
 ## <a name="object-detection"></a>Nesne Algılama
 
 |Domain|Amaç|
 |---|---|
-|__Genel__| Çok çeşitli nesne algılama görevleri için optimize edin. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanını seçeceğiniz den emin değilseniz, Genel etki alanını seçin.|
-|__Logo__|Görüntülerde marka logolarını bulmak için optimize edin.|
-|__Raflarda Ürünler__|Raflarda ürünleri algılamak ve sınıflandırmak için optimize edin.|
-|__Kompakt etki alanları__| Kenar aygıtlarında gerçek zamanlı nesne algılama kısıtlamaları için optimize edin.|
+|__Genel__| Çok çeşitli nesne algılama görevleri için iyileştirilmiştir. Diğer etki alanlarından hiçbiri uygun değilse veya hangi etki alanının seçeceğinizden emin değilseniz, genel etki alanını seçin.|
+|__Logo__|Görüntülerde marka logolarını bulmak için iyileştirildi.|
+|__Rafların ürünleri__|Rafların ürünlerini algılamak ve sınıflandırmak için iyileştirildi.|
+|__Compact etki alanları__| Uç cihazlarda gerçek zamanlı nesne algılama kısıtlamaları için iyileştirilmiştir.|
 
-## <a name="compact-domains"></a>Kompakt etki alanları
+## <a name="compact-domains"></a>Compact etki alanları
 
-Kompakt etki alanları tarafından oluşturulan modeller yerel olarak çalıştırmak için dışa aktarılabilir. Model performansı seçili etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVidia GPU \[1\]model boyutu ve çıkarım süresi rapor. 
+Compact etki alanları tarafından oluşturulan modeller yerel olarak çalışacak şekilde aktarılabilir. Model performansı seçilen etki alanına göre değişir. Aşağıdaki tabloda, Intel Masaüstü CPU ve NVIDIA GPU \[1\]' deki model boyutunu ve çıkarım zamanını raporlarız. 
 
 > [!NOTE]
-> Bu sayılar ön işleme ve işlem sonrası zamanı içermez.
+> Bu numaralar ön işleme ve anında işleme süresini içermez.
 
-|Görev|Domain|Model Boyutu|CPU çıkarım süresi|GPU çıkarım süresi|
+|Görev|Domain|Model boyutu|CPU çıkarımı süresi|GPU çıkarımı süresi|
 |---|---|---|---|---|
-|Sınıflandırma|General (compact) (Genel (kompakt))|5 MB|13 ms|5 ms|
-|Nesne Algılama|General (compact) (Genel (kompakt))|45 MB|35 ms|5 ms|
-|Nesne Algılama|Genel (kompakt) [S1]|14 MB|27 ms|7 ms|
+|Sınıflandırma|General (compact) (Genel (kompakt))|5 MB|13 MS|5 MS|
+|Nesne Algılama|General (compact) (Genel (kompakt))|45 MB|35 MS|5 MS|
+|Nesne Algılama|Genel (Compact) [S1]|14 MB|27 MS|7 MS|
 
-## <a name="vaidk-vision-ai-dev-kit"></a>VAIDK (Vision AI Dev Kiti)
+## <a name="vaidk-vision-ai-dev-kit"></a>VAıDK (Vision AI Dev Kit)
 
-Kompakt bir etki alanı seçildiğinde ,"Temel Platformlar" ile "Vision AI Dev Kit" arasında ayrım sağlayan "Dışa Aktarma Yetenekleri" seçeneği sağlanır.
+Bir Compact etki alanı seçildiğinde, "temel platformlar" ve "Vision AI Dev Kit" arasında ayrım yapılmasına izin veren "dışa aktarma özellikleri" ek seçeneği sağlanır.
 
-_Dışa Aktarma Yetenekleri_ altında iki seçenek vardır:
+_Dışa aktarma özellikleri_ altında iki seçenek vardır:
 
-- Temel platformlar (Tensorflow, CoreML, ONNX, vb.)
-- Vizyon AI Dev Kit.
+- Temel platformlar (TensorFlow, CoreML, ONNX, vb.)
+- Vision AI geliştirme seti.
 
-_Vision AI Dev Kit_ _Genel_seçildiğinde, _Yerler_, ve _Perakende_ ama _Gıda_ kompakt etki alanları Görüntü Sınıflandırma için kullanılabilir iken hem _Genel (kompakt)_ ve _Genel (kompakt) [S1]_ nesne algılama için kullanılabilir.
+_VISION AI Dev Kit_ 'i seçildiğinde, genel _,_ yer _işaretleri_ve _Perakende_ , _yiyecek_ compact etki alanlarının her Ikisi de nesne algılaması için _Genel (Compact)_ ve _Genel (Compact) [S1]_ kullanılabilir.
 
 >[!NOTE]
->Nesne Algılama için __genel (kompakt)__ etki alanı özel postprocessing mantığı gerektirir. Ayrıntı için, lütfen dışa aktarılan zip paketinde bir örnek komut dosyasına bakın. Postprocessing mantığı olmayan bir modele ihtiyacınız varsa, __Genel (kompakt) [S1]__ kullanın.
+>Nesne algılaması için __Genel (Compact)__ etki alanı özel bir özelleştirmediğiniz mantığı gerektirir. Ayrıntılı bilgi için lütfen bkz. bir örnek komut dosyası. Gönderme işlemi mantığı olmadan bir modele ihtiyacınız varsa __Genel (Compact) [S1]__ kullanın.
 
 >[!IMPORTANT]
->Dışa aktarılan modellerin buluttaki tahmin API'si ile tam olarak aynı sonucu verdiğini garanti etmez. Çalışan platformdaki küçük fark veya ön işleme uygulaması model çıktılarında daha büyük farklara neden olabilir. Ön işleme mantığının ayrıntıları için lütfen [bu belgeye](python-tutorial.md)bakın.
+>Verme modellerinin, buluttaki tahmin API 'siyle tam olarak aynı sonucu vereceğiyle ilgili hiçbir garanti yoktur. Çalışan platformda veya ön işleme uygulamasındaki hafif fark, model çıkışları üzerinde daha büyük farka neden olabilir. Ön işleme mantığının ayrıntıları için lütfen [Bu belgeye](quickstarts/image-classification.md)bakın.
 
 \[1\] Intel Xeon E5-2690 CPU ve NVIDIA Tesla M60

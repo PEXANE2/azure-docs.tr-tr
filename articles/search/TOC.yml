@@ -68,6 +68,8 @@
           href: cognitive-search-tutorial-blob.md
         - name: Python
           href: cognitive-search-tutorial-blob-python.md
+    - name: Power Apps’ten sorgulama
+      href: search-howto-powerapps.md
 - name: Örnekler
   items:
     - name: 'C# örnekleri'
@@ -232,10 +234,8 @@
           items:
             - name: Öneri oluşturucu oluşturma
               href: index-add-suggesters.md
-            - name: Öneri veya otomatik tamamlama ekleme
+            - name: Otomatik tamamlama ve öneriler ekleme
               href: search-autocomplete-tutorial.md
-        - name: Power Apps’ten sorgulama
-          href: search-howto-powerapps.md
         - name: Söz dizimi başvurusu
           items:
             - name: Basit sorgu söz dizimi
@@ -256,8 +256,8 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: Koleksiyon filtrelerini anlama
           href: search-query-understand-collection-filters.md
-        - name: Çok düzeyli model örneği
-          href: search-example-adventureworks-multilevel-faceting.md
+        - name: Dile göre filtrele
+          href: search-filters-language.md
     - name: Sonuçlar
       items:
         - name: Sonuçlar üzerinde çalışma
@@ -455,10 +455,6 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK dosyaları tanıtımı
           href: 'https://aka.ms/jfkfiles'
-        - name: NYC İşleri tanıtımı
-          href: 'https://aka.ms/azjobsdemo'
-        - name: Arama kullanım örnekleri
-          href: 'https://searchsamples.azurewebsites.net/'
     - name: Eğitim
       items:
         - name: Giriş (Microsoft Learn)

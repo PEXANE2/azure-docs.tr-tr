@@ -7,6 +7,9 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
+    - name: ARM şablonu
+      displayName: Resource Manager
+      href: quickstart-cluster-template.md
     - name: .NET uygulaması oluşturma
       href: service-fabric-quickstart-dotnet.md
     - name: Linux kapsayıcı uygulaması dağıtma

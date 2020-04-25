@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: e7e500f0459c0f5fd4039acf316d9469e1567a09
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/24/2020
-ms.locfileid: "82117010"
+ms.locfileid: "82133375"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Hızlı başlangıç: Yüksek oranda kullanılabilir global web uygulaması için Front Door oluşturma
 
@@ -26,7 +26,7 @@ Bir Web uygulaması için yüksek kullanılabilirlik ayarlamak üzere Azure port
 
 Bu hızlı başlangıçta Azure ön kapısı, farklı Azure bölgelerinde çalışan bir Web uygulamasının iki örneğini havuzlar. Eşit ağırlıklı ve aynı öncelikli arka uçlara dayalı bir ön kapı yapılandırması oluşturursunuz. Bu yapılandırma, trafiği uygulamayı çalıştıran en yakın siteye yönlendirir. Azure ön kapısı, Web uygulamasını sürekli izler. Hizmet, en yakın site kullanılamadığında, kullanılabilir bir sonraki siteye otomatik yük devretme sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -42,7 +42,7 @@ Henüz bir Web uygulamanız yoksa, örnek Web uygulamaları ayarlamak için aşa
 
 1. **Web** > **Web uygulaması**' nı seçin.
 
-   ![Azure portalında web uygulaması oluşturma](media/quickstart-create-front-door/create-web-app-for-front-door.png)
+   ![Azure portalında web uygulaması oluşturma](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
 
 1. **Web uygulaması**' nda kullanılacak **aboneliği** seçin.
 
@@ -60,7 +60,7 @@ Henüz bir Web uygulamanız yoksa, örnek Web uygulamaları ayarlamak için aşa
 
 1. **Gözden geçir + oluştur**' u seçin, **Özeti**gözden geçirin ve ardından **Oluştur**' u seçin. Dağıtımın tamamlanması birkaç dakika sürebilir.
 
-   ![Web uygulaması için Özeti gözden geçirme](media/quickstart-create-front-door/summary-for-web-app-for-front-door.png)
+   ![Web uygulaması için Özeti gözden geçirme](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
 
 Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Aynı yordamı, aşağıdaki değerler dışında aynı değerlerle kullanın:
 
@@ -68,7 +68,7 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
 | ---              | ---  |
 | **Kaynak grubu**   | **Yeni** ' yi seçin ve *FrontDoorQS_rg2* girin |
 | **Adı**             | Web uygulamanız için benzersiz bir ad girin, bu örnekte *Webappcontoso-2*  |
-| **Geli**           | Farklı bir bölge, bu örnekte *Orta Güney ABD* |
+| **Bölge**           | Farklı bir bölge, bu örnekte *Orta Güney ABD* |
 | **App Service plan** > **Windows planı**         | **Yeni** ' yi seçin ve *Myappserviceplangüneydoğu US*' i girip **Tamam** ' ı seçin. |
 
 ## <a name="create-a-front-door-for-your-application"></a>Uygulamanız için Front Door oluşturma
@@ -87,7 +87,7 @@ Dağıtımınız tamamlandıktan sonra ikinci bir Web uygulaması oluşturun. Ay
 
 1. **Ana bilgisayar adı**için, genel olarak benzersiz bir ana bilgisayar adı girin. Bu örnek *contoso-ön uç*kullanır. **Add (Ekle)** seçeneğini belirleyin.
 
-   ![Azure ön kapısı için bir ön uç konağı ekleme](media/quickstart-create-front-door/add-frontend-host-for-front-door.png)
+   ![Azure ön kapısı için bir ön uç konağı ekleme](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
 Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
 
@@ -103,7 +103,7 @@ Sonra, iki Web uygulaması içeren bir arka uç havuzu oluşturun.
 
 1. Aboneliğinizi yeniden seçin ve **arka uç ana bilgisayar adından**oluşturduğunuz ikinci Web uygulamasını seçin. **Add (Ekle)** seçeneğini belirleyin.
 
-   ![Ön kapıya bir arka uç konağı ekleme](media/quickstart-create-front-door/add-backend-host-to-pool-for-front-door.png)
+   ![Ön kapıya bir arka uç konağı ekleme](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
 
 Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç konunuzu arka uç havuzuna eşler. Kural, için `contoso-frontend.azurefd.net` bir Isteği **Mybackendpool**öğesine iletir.
 
@@ -116,7 +116,7 @@ Son olarak, bir yönlendirme kuralı ekleyin. Bir yönlendirme kuralı, ön uç 
 
 1. **Gözden geçir + oluştur**' u ve ardından **Oluştur**' u seçin.
 
-   ![Yapılandırılmış Azure ön kapısı](media/quickstart-create-front-door/configuration-of-front-door.png)
+   ![Yapılandırılmış Azure ön kapısı](media/quickstart-create-front-door/configuration-azure-front-door.png)
 
 ## <a name="view-azure-front-door-in-action"></a>Azure ön kapısını görüntüleme işlemi
 
@@ -141,7 +141,7 @@ Hızlı genel yük devretmeyi işlem sırasında test etmek için aşağıdaki a
 
 1. Tarayıcınızı yenileyin. Bu kez bir hata iletisi görmeniz gerekir.
 
-   ![Her iki Web uygulaması örneği de durduruldu](media/quickstart-create-front-door/service-has-been-stopped.png)
+   ![Her iki Web uygulaması örneği de durduruldu](media/quickstart-create-front-door/web-app-stopped-message.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -1,42 +1,42 @@
 ---
 title: Azure Lighthouse nedir?
-description: Azure Deniz Feneri, hizmet sağlayıcıların müşterilerine daha yüksek otomasyon ve verimlilikle yönetilen hizmetler sunmalarına olanak tanır.
-ms.date: 11/11/2019
+description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
+ms.date: 04/23/2020
 ms.topic: overview
-ms.openlocfilehash: 1d4d33238f30c2a579c6a0da6a39238207db4f4a
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: aea1451d995d135506fb93e3fc9e86f67227d5b8
+ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80982795"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82144254"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
-Azure Deniz Feneri, hizmet sağlayıcılarına azure'u daha yüksek otomasyon, ölçek ve gelişmiş yönetimle tüm müşterilerine görüntülemeleri ve yönetmeleri için tek bir denetim düzlemi sunar. Azure Deniz Feneri ile hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve sağlam yönetim aracıkullanarak yönetilen hizmetler sunabilir. Bu teklif, birden çok kiracı arasında kaynakları yöneten kurumsal BT kuruluşlarına da fayda sağlayabilir.
+Azure Athouse hizmeti sağlayıcıları, daha yüksek otomasyon, ölçek ve gelişmiş idare özelliklerine sahip tüm müşterilerine Azure 'u görüntülemek ve yönetmek için tek bir denetim düzlemi sunmaktadır. Azure açık, hizmet sağlayıcıları, Azure platformunda yerleşik kapsamlı ve güçlü yönetim araçlarını kullanarak yönetilen Hizmetleri sunabilir. Bu teklif, birden fazla kiracıda kaynakları yöneten kurumsal BT kuruluşları için de avantaj sağlayabilir.
 
-![Azure Deniz Feneri'ne genel bakış diyagramı](media/azure-lighthouse-overview.jpg)
+![Azure açık kullanım için genel bakış Diyagramı](media/azure-lighthouse-overview.jpg)
 
-## <a name="benefits"></a>Yararları
+## <a name="benefits"></a>Avantajlar
 
-Azure Deniz Feneri, müşterileriniz için yönetilen hizmetler oluşturmanıza ve sunmanıza kârlı ve verimli bir şekilde yardımcı olur. Avantajlara şunlar dahildir:
+Azure Kathouse, müşterileriniz için yönetilen Hizmetleri öngörülebilir ve verimli bir şekilde oluşturup sunmanıza yardımcı olur. Avantajlara şunlar dahildir:
 
-- **Ölçekte yönetim**: Müşteri kaynaklarını yönetmek için müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir.
-- **Müşteriler için daha fazla görünürlük ve kesinlik**: Kaynaklarını yönettiğiniz müşteriler, IP'niz korunurken eylemlerinizde daha fazla görünürlüğe ve yönetim için temsilcilik yaptıkları kapsam üzerinde hassas denetime sahip olacaktır.
-- **Kapsamlı ve birleşik platform araçlama**: Araçlama deneyimimiz, EA, CSP ve kullangibi öde gibi birden fazla lisans modeli de dahil olmak üzere önemli hizmet sağlayıcı senaryolarını ele alarmaktadır. Yeni özellikler, varolan araçlar ve API'ler, lisanslama modelleri ve [Bulut Çözüm Sağlayıcısı programı (CSP)](https://docs.microsoft.com/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Seçtiğiniz Azure Deniz Feneri seçenekleri, mevcut iş akışlarınıza ve uygulamalarınıza entegre edilebilir ve [iş ortağı kimliğinizi bağlayarak](../billing/billing-partner-admin-link-started.md)müşteri etkileşimleri üzerindeki etkinizi izleyebilirsiniz.
+- **Ölçekteki yönetim**: müşteri kaynaklarını yönetmeye yönelik müşteri katılımı ve yaşam döngüsü işlemleri daha kolay ve ölçeklenebilir.
+- **Müşteriler Için daha fazla görünürlük ve duyarlık**: MÜŞTERILER, IP 'niz korunurken, erişimi tamamen kaldırma özelliği de dahil olmak üzere, eylemleriniz üzerinde daha fazla görünürlük ve yönetim için temsilci seçtikleri kapsam üzerinde tam denetim sahibi olacaktır.
+- **Kapsamlı ve Birleşik platform araçları**: alet oluşturma DENEYIMIMIZ, EA, CSP ve kullandıkça öde gibi birden fazla lisanslama modeli de dahil olmak üzere temel hizmet sağlayıcısı senaryolarına yöneliktir. Yeni yetenekler, mevcut araçlar ve API 'Ler, lisanslama modelleri ve [bulut çözümü sağlayıcısı programı (CSP)](https://docs.microsoft.com/partner-center/csp-overview)gibi iş ortağı programlarıyla çalışır. Seçtiğiniz Azure hafif kullanım seçenekleri mevcut iş akışlarınızla ve uygulamalarınızla tümleştirilebilir ve [iş ortağı kimliğinizi bağlayarak](../billing/billing-partner-admin-link-started.md)müşteri görevlendirmelerinizi izleyebilirsiniz.
 
-Müşterilerinizin Azure kaynaklarını yönetmek için Azure Deniz Feneri'ni kullanmanın ek bir maliyeti yoktur.
+Müşterilerinizin Azure kaynaklarını yönetmek için Azure açık Thouse kullanımıyla ilişkili ek maliyet yoktur.
 
 ## <a name="capabilities"></a>Özellikler
 
-Azure Deniz Feneri, müşteri etkileşimini ve yönetimini kolaylaştırmaya yardımcı olmak için birden çok yol içerir:
+Azure ışıklı kullanımı, müşteri katılımı ve yönetimini kolaylaştırmaya yardımcı olmak için birden çok yol içerir:
 
-- **Azure temsilci kaynak yönetimi**: Bağlam arasında geçiş yapmak ve düzlemleri denetlemek zorunda kalmadan müşterilerinizin Azure kaynaklarını kendi kiracınızın içinden güvenli bir şekilde yönetin. Daha fazla bilgi için Bkz. [Azure temsilcikaynak yönetimi.](concepts/azure-delegated-resource-management.md)
-- **Yeni Azure portalı deneyimleri**: [Azure portalındaki](https://portal.azure.com)yeni **Müşterilerim** sayfasında kiracılar arası bilgileri görüntüleyin. İlgili **Servis sağlayıcıları,** müşterilerinizin servis sağlayıcı erişimini görüntülemesine ve yönetmesine olanak tanır. Daha fazla bilgi için, [müşterileri görüntüleyin ve yönetin](./how-to/view-manage-customers.md) ve [servis sağlayıcılarını görüntüleyin ve yönetin.](how-to/view-manage-service-providers.md)
-- **Azure Kaynak Yöneticisi şablonları:** Azure temsilcikaynak yönetimi için biniş yapan müşteriler de dahil olmak üzere yönetim görevlerini daha kolay gerçekleştirin. Daha fazla bilgi [için, örneklerirepo](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) ve [Onboard bir müşteri için Azure temsilci kaynak yönetimi](how-to/onboard-customer.md)bakın.
-- **Azure Marketi'nde Yönetilen Hizmetler sunar**: Müşterilerinize özel veya genel teklifler aracılığıyla hizmet sunmak ve Azure Kaynak Yöneticisi şablonlarını kullanmaya alternatif olarak otomatik olarak Azure temsilcili kaynak yönetimine dahil edin. Daha fazla bilgi için Azure [Marketi'ndeki Yönetilen hizmetler tekliflerine](concepts/managed-services-offers.md)bakın.
-- **Azure yönetilen uygulamalar**: Müşterilerinizin kendi aboneliklerinde dağıtması ve kullanması kolay paket uygulamaları. Uygulama, genel Azure Deniz Feneri deneyiminin bir parçası olarak hizmeti yönetmenize izin vererek kiracınızdan erişiğiniz olan bir kaynak grubuna dağıtılır. Daha fazla bilgi için Azure [yönetilen uygulamalara genel bakış](../azure-resource-manager/managed-applications/overview.md)bilgisine bakın.
+- **Azure Temsilcili kaynak yönetimi**: içerik ve denetim düzlemleri arasında geçiş yapmak zorunda kalmadan müşterilerinizin Azure kaynaklarını kendi kiracınızın içinden güvenli bir şekilde yönetin. Abonelikler ve kaynak grupları, yönetim kiracısındaki belirtilen kullanıcılar ve roller için, gerektiğinde erişimi kaldırabilme olanağı temsil edebilir. Daha fazla bilgi için bkz. [Azure temsilcisi kaynak yönetimi](concepts/azure-delegated-resource-management.md).
+- **Yeni Azure Portal deneyimler**: [Azure Portal](https://portal.azure.com)içindeki yeni **müşterilerimiz** sayfasında çapraz kiracı bilgilerini görüntüleyin. Karşılık gelen bir **hizmet** sağlayıcı dikey penceresi, müşterilerinizin hizmet sağlayıcı erişimini görüntülemesine ve yönetmesine olanak tanır. Daha fazla bilgi için bkz. [müşterileri görüntüleme ve yönetme](./how-to/view-manage-customers.md) ve [hizmet sağlayıcılarını görüntüleme ve yönetme](how-to/view-manage-service-providers.md).
+- **Azure Resource Manager şablonlar**: Azure tarafından atanan kaynak yönetimine yönelik ekleme müşterileri dahil olmak üzere yönetim görevlerini daha kolay bir şekilde gerçekleştirin. Daha fazla bilgi için bkz. [örnek](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) depomız ve [bir müşteriyi Azure tarafından atanan kaynak yönetimine ekleme](how-to/onboard-customer.md).
+- **Azure Market 'Te yönetilen hizmetler**teklifi: özel veya genel tekliflerle hizmetlerinizi müşterilere sunun ve Azure Resource Manager şablonlarını kullanarak hazırlama için alternatif olarak Azure tarafından atanan kaynak yönetimine otomatik olarak eklendi. Daha fazla bilgi için bkz. [Azure Marketi 'Nde yönetilen hizmetler teklifleri](concepts/managed-services-offers.md).
+- **Azure yönetilen uygulamalar**: müşterilerinizin kendi aboneliklerinde dağıtımı ve kullanması kolay olan uygulamaları paketleyin ve sunun. Uygulama, kiracınızdan erişebileceğiniz bir kaynak grubuna dağıtılır ve bu, hizmeti genel Azure Athouse deneyiminin bir parçası olarak yönetmenize olanak tanır. Daha fazla bilgi için bkz. [Azure yönetilen uygulamalara genel bakış](../azure-resource-manager/managed-applications/overview.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure tarafından atanan temsilcinin kaynak yönetimi](concepts/azure-delegated-resource-management.md) hakkında bilgi edinin.
-- Kiracılar [arası yönetim deneyimleri](concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
+- [Çapraz kiracı yönetim deneyimleri](concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.

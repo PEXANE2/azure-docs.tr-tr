@@ -107,7 +107,7 @@
           href: ./ag/bot-protection.md
         - name: İlkeyi mevcut Application Gateway ile ilişkilendirme
           href: ./ag/associate-waf-policy-existing-gateway.md
-        - name: Tanılama günlükleri
+        - name: Kaynak günlükleri
           href: ./ag/web-application-firewall-logs.md
         - name: WAF sorunlarını giderme
           href: ./ag/web-application-firewall-troubleshoot.md

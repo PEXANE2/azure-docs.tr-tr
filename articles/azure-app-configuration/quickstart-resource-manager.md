@@ -1,6 +1,6 @@
 ---
-title: Azure Uygulama Yapılandırması ile otomatik VM dağıtımı hızlı başlat
-description: Bu hızlı başlangıç, Azure Uygulama Yapılandırma deposunu dağıtmak için Azure PowerShell modülü ve Azure Kaynak Yöneticisi şablonlarının nasıl kullanılacağını gösterir. Ardından, bir VM dağıtmak için mağazadaki değerleri kullanın.
+title: Azure Uygulama yapılandırması hızlı başlangıç ile otomatik VM dağıtımı
+description: Bu hızlı başlangıçta, Azure uygulama yapılandırma deposu dağıtmak için Azure PowerShell modülünün ve Azure Resource Manager şablonlarının nasıl kullanılacağı gösterilmektedir. Ardından, bir VM dağıtmak için depodaki değerleri kullanın.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 04/14/2020
@@ -9,18 +9,18 @@ ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
+ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309106"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82137561"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Quickstart: Uygulama Yapılandırması ve Kaynak Yöneticisi şablonu yla otomatik VM dağıtımı
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>Hızlı başlangıç: uygulama yapılandırması ve Kaynak Yöneticisi şablonuyla otomatik VM dağıtımı
 
-Azure PowerShell modülü, PowerShell cmdlets veya komut dosyalarını kullanarak Azure kaynaklarını oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıç, bir Azure Uygulama Yapılandırma deposudağıtmak için Azure PowerShell ve Azure Kaynak Yöneticisi şablonlarını nasıl kullanacağınızı gösterir. Ardından, bir VM dağıtmak için mağazadaki anahtar değerlerini nasıl kullanacağınızı öğrenirsiniz.
+Azure PowerShell modülü, PowerShell cmdlet 'leri veya betikleri kullanılarak Azure kaynakları oluşturmak ve yönetmek için kullanılır. Bu hızlı başlangıçta, Azure uygulama yapılandırma deposu dağıtmak için Azure PowerShell ve Azure Resource Manager şablonlarının nasıl kullanılacağı gösterilmektedir. Daha sonra, bir VM 'yi dağıtmak için depodaki anahtar değerlerini nasıl kullanacağınızı öğrenirsiniz.
 
-Bir Uygulama Yapılandırma deposu oluşturmak için ön koşul şablonunu kullanır ve ardından Azure portalını veya Azure CLI'yi kullanarak mağazaya anahtar değerler eklersiniz. Birincil şablon, varolan bir yapılandırma deposundan varolan anahtar değer yapılandırmalarına başvurur. Alınan değerler, bu örnekte bir VM gibi şablon tarafından oluşturulan kaynakların özelliklerini ayarlamak için kullanılır.
+Uygulama yapılandırma deposu oluşturmak için önkoşul şablonunu kullanır ve ardından Azure portal veya Azure CLı kullanarak depoya anahtar değerleri ekleyebilirsiniz. Birincil şablon var olan bir yapılandırma deposundan mevcut anahtar-değer yapılandırmalarına başvurur. Alınan değerler, bu örnekteki bir VM gibi, şablon tarafından oluşturulan kaynakların özelliklerini ayarlamak için kullanılır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -28,20 +28,20 @@ Bir Uygulama Yapılandırma deposu oluşturmak için ön koşul şablonunu kulla
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azure aboneliğiniz yoksa, ücretsiz bir [hesap oluşturun.](https://azure.microsoft.com/free/)
+* Azure aboneliğiniz yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-* Bu hızlı başlatma için Azure PowerShell modülü gerekir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+* Bu hızlı başlangıç Azure PowerShell modülünü gerektirir. Yerel makinenizde yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-`Connect-AzAccount` Komutla Azure aboneliğinizde oturum açın ve açılan tarayıcıya Azure kimlik bilgilerinizi girin:
+`Connect-AzAccount` Komutuyla Azure aboneliğinizde oturum açın ve açılır tarayıcıda Azure kimlik bilgilerinizi girin:
 
 ```azurepowershell-interactive
 # Connect to your Azure account
 Connect-AzAccount
 ```
 
-Birden fazla aboneliğiniz varsa, aşağıdaki cmdlets'i çalıştırarak bu hızlı başlangıç için kullanmak istediğiniz aboneliği seçin. Aboneliğinizin adıyla `<your subscription name>` değiştirmeyi unutmayın:
+Birden fazla aboneliğiniz varsa, aşağıdaki cmdlet 'leri çalıştırarak bu hızlı başlangıç için kullanmak istediğiniz aboneliği seçin. Aboneliğinizin adıyla değiştirmeyi `<your subscription name>` unutmayın:
 
 ```azurepowershell-interactive
 # List all available subscriptions.
@@ -53,7 +53,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-[Yeni-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
+[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
 ```azurepowershell-interactive
 $resourceGroup = "StreamAnalyticsRG"
@@ -63,11 +63,11 @@ New-AzResourceGroup `
     -Location $location
 ```
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Azure Uygulama Yapılandırma mağazalarını dağıtma
+## <a name="deploy-an-azure-app-configuration-store"></a>Azure uygulama yapılandırma deposu dağıtma
 
-Anahtar değerlerini VM'ye uygulayabilmek için, varolan bir Azure Uygulama Yapılandırma mağazanız olması gerekir. Bu bölümde, Azure Kaynak Yöneticisi şablonu kullanarak bir Azure Uygulama Yapılandırma deposunun nasıl dağıtılancaya kadar dağıtılanın. Zaten bir uygulama config deposu varsa, bu makalenin bir sonraki bölümüne taşıyabilirsiniz. 
+SANAL makineye anahtar değerleri uygulayabilmeniz için önce var olan bir Azure uygulama yapılandırma deposuna sahip olmanız gerekir. Bu bölümde, bir Azure Resource Manager şablonu kullanarak bir Azure uygulama yapılandırma deposunun nasıl dağıtılacağı anlatılmaktadır. Zaten bir uygulama yapılandırma depoluize sahipseniz bu makalenin sonraki bölümüne geçebilirsiniz. 
 
-1. Aşağıdaki json kodunu *prereq.azuredeploy.json*adlı yeni bir dosyaya kopyalayıp yapıştırın.
+1. Aşağıdaki JSON kodunu kopyalayın ve *prereq. azuredeploy. JSON*adlı yeni bir dosyaya yapıştırın.
 
    ```json
    {
@@ -109,7 +109,7 @@ Anahtar değerlerini VM'ye uygulayabilmek için, varolan bir Azure Uygulama Yap�
    }
    ```
 
-1. Aşağıdaki json kodunu *prereq.azuredeploy.parameters.json*adlı yeni bir dosyaya kopyalayıp yapıştırın. **GET-UNIQUE'i** Configuration Store'unuz için benzersiz bir adla değiştirin.
+1. Aşağıdaki JSON kodunu kopyalayın ve *prereq. azuredeploy. Parameters. JSON*adlı yeni bir dosyaya yapıştırın. Yapılandırma deponuzda benzersiz bir ad ile **Get-UNIQUE** değerini değiştirin.
 
    ```json
    {
@@ -123,40 +123,40 @@ Anahtar değerlerini VM'ye uygulayabilmek için, varolan bir Azure Uygulama Yap�
    }
    ```
 
-1. PowerShell pencerenizde, Azure Uygulama Yapılandırma mağazasını dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametre dosya yolunu değiştirmeyi unutmayın.
+1. PowerShell pencerenizde, Azure uygulama yapılandırma deposunu dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametresi dosya yolunu değiştirmeyi unutmayın.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
+       -ResourceGroupName "<your resource group>" `
        -TemplateFile "<path to prereq.azuredeploy.json>" `
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```
 
-## <a name="add-vm-configuration-key-values"></a>VM yapılandırma anahtar değerleri ekleme
+## <a name="add-vm-configuration-key-values"></a>VM yapılandırması anahtar değerlerini ekleme
 
-Azure Kaynak Yöneticisi şablonu kullanarak bir Uygulama Yapılandırma mağazası oluşturabilirsiniz, ancak Azure portalını veya Azure CLI'yi kullanarak anahtar değerler eklemeniz gerekir. Bu hızlı başlangıçta, Azure portalını kullanarak anahtar değerleri eklersiniz.
+Bir Azure Resource Manager şablonu kullanarak bir uygulama yapılandırma deposu oluşturabilirsiniz, ancak Azure portal veya Azure CLı kullanarak anahtar değerleri eklemeniz gerekir. Bu hızlı başlangıçta Azure portal kullanarak anahtar değerleri eklersiniz.
 
-1. Dağıtım tamamlandıktan sonra Azure [portalında](https://portal.azure.com)yeni oluşturulan Uygulama Yapılandırma mağazasına gidin.
+1. Dağıtım tamamlandıktan sonra, [Azure Portal](https://portal.azure.com)yeni oluşturulan uygulama yapılandırma deposuna gidin.
 
-1. **Ayarlar** > **Erişim Tuşları'nı**seçin. Birincil salt okunur anahtar bağlantı dizesini not edin. Bu bağlantı dizesini daha sonra, uygulamanızı oluşturduğunuz Uygulama Yapılandırma deposuyla iletişim kurmak üzere yapılandırmak için kullanırsınız.
+1. **Ayarlar** > **erişim anahtarları**' nı seçin. Birincil salt okunurdur anahtar bağlantı dizesini bir yere unutmayın. Uygulamanızı oluşturduğunuz uygulama yapılandırma deposuyla iletişim kuracak şekilde yapılandırmak için bu bağlantı dizesini daha sonra kullanacaksınız.
 
-1. Aşağıdaki anahtar değeri çiftleri eklemek için Configuration **Explorer** > **Create'i** seçin:
+1. Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma **Gezgini** > **Oluştur** ' u seçin:
 
    |Anahtar|Değer|
    |-|-|
-   |windowsOsVersion|2019-Datacenter|
+   |windowsOsVersion|2019-veri merkezi|
    |diskSizeGB|1023|
   
-   **Etiket**için *şablon* girin, ancak **İçerik Türünü** boş tutun.
+   **Etiket**için *şablon* girin, ancak **içerik türünü** boş tutun.
 
-## <a name="deploy-vm-using-stored-key-values"></a>Depolanan anahtar değerlerini kullanarak VM dağıtma
+## <a name="deploy-vm-using-stored-key-values"></a>Depolanan anahtar değerlerini kullanarak VM 'yi dağıtma
 
-Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablonu kullanarak bir VM dağıtmaya hazırsınız. Şablon, oluşturduğunuz **windowsOsVersion** ve **diskSizeGB** tuşlarına başvurur.
+Artık anahtar değerlerini depoya eklemişseniz, bir Azure Resource Manager şablonu kullanarak bir VM dağıtmaya hazırsınız demektir. Şablon, oluşturduğunuz **Windowsosversion** ve **disksizegb** anahtarlarına başvurur.
 
 > [!WARNING]
-> ARM şablonları, Özel Bağlantı etkinleştirilmiş bir Uygulama Yapılandırma mağazasında ki tuşlara başvuru yapamaz.
+> ARM şablonları, özel bağlantısı etkinleştirilmiş bir uygulama yapılandırma deposundaki anahtarlara başvuramaz.
 
-1. Aşağıdaki json kodunu *azuredeploy.json*adlı yeni bir dosyaya kopyalayıp yapıştırın veya dosyayı [Azure Quickstart şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)indirin.
+1. Aşağıdaki JSON kodunu kopyalayın ve *azuredeploy. JSON*adlı yeni bir dosyaya yapıştırın veya [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)dosyayı indirin.
 
    ```json
    {
@@ -378,7 +378,7 @@ Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablo
    }
    ```
 
-1. Aşağıdaki json kodunu *azuredeploy.parameters.json*adlı yeni bir dosyaya kopyalayıp yapıştırın veya dosyayı [Azure Quickstart şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)indirin.
+1. Aşağıdaki JSON kodunu kopyalayıp *azuredeploy. Parameters. JSON*adlı yeni bir dosyaya yapıştırın veya [Azure hızlı başlangıç şablonlarından](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)dosyayı indirin.
 
    ```json
    {
@@ -417,16 +417,16 @@ Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablo
 
    |Parametre|Değer|
    |-|-|
-   |adminPassword|VM için bir yönetici parolası.|
-   |appConfigStoreName|Azure Uygulama Yapılandırma mağazanızın adı.|
-   |appConfigStoreResourceGroup|Uygulama Yapılandırma mağazanızı içeren kaynak grubu.|
+   |adminPassword|VM için yönetici parolası.|
+   |appConfigStoreName|Azure uygulama yapılandırma deponuzın adı.|
+   |appConfigStoreResourceGroup|Uygulama yapılandırma deponuzi içeren kaynak grubu.|
    |vmSkuKey|*windowsOSVersion*|
    |diskSizeKey|*diskSizeGB*|
-   |adminUsername|VM için bir yönetici kullanıcı adı.|
+   |adminUsername|VM için Yönetici Kullanıcı adı.|
    |storageAccountName|VM ile ilişkili bir depolama hesabı için benzersiz bir ad.|
-   |domainNameLabel|Benzersiz bir etki alanı adı.|
+   |Etkialanıadetiketi|Benzersiz bir etki alanı adı.|
 
-1. PowerShell pencerenizde VM'yi dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametre dosya yolunu değiştirmeyi unutmayın.
+1. PowerShell pencerenizde, VM 'yi dağıtmak için aşağıdaki komutu çalıştırın. Kaynak grubu adını, şablon dosya yolunu ve şablon parametresi dosya yolunu değiştirmeyi unutmayın.
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
@@ -435,11 +435,11 @@ Mağazaya anahtar değerler eklediğinize göre, Azure Kaynak Yöneticisi şablo
        -TemplateParameterFile "<path to azuredeploy.parameters.json>"
    ```
 
-Tebrikler! Azure Uygulama Yapılandırmasında depolanan yapılandırmaları kullanarak bir VM dağıttınız.
+Tebrikler! Azure Uygulama yapılandırması 'nda depolanan yapılandırmaları kullanarak bir VM dağıttık.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekmediğinde kaynak grubunu, Uygulama Yapılandırma deposunu, VM'yi ve ilgili tüm kaynakları silin. Gelecekte App Configuration mağazasını veya VM'yi kullanmayı planlıyorsanız, silmeyi atlayabilirsiniz. Bu işi kullanmaya devam etmeyecekseniz, aşağıdaki cmdlet'i çalıştırarak bu hızlı başlatmanın oluşturduğu tüm kaynakları silin:
+Artık gerekli değilse, kaynak grubunu, uygulama yapılandırma deposunu, VM 'yi ve tüm ilgili kaynakları silin. Uygulama yapılandırma deposunu veya VM 'yi gelecekte kullanmayı planlıyorsanız, silme işlemini atlayabilirsiniz. Bu işi kullanmaya devam edemeyecekecekseniz, aşağıdaki cmdlet 'i çalıştırarak bu hızlı başlangıç tarafından oluşturulan tüm kaynakları silin:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup `
@@ -448,9 +448,9 @@ Remove-AzResourceGroup `
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Azure Kaynak Yöneticisi şablonu ve Azure Uygulama Yapılandırması'ndan anahtar değerleri kullanarak bir VM dağıttınız.
+Bu hızlı başlangıçta, Azure Uygulama yapılandırmasından Azure Resource Manager şablonu ve anahtar değerlerini kullanarak bir VM dağıttınız.
 
-Azure Uygulama Yapılandırması ile diğer uygulamaları oluşturma hakkında bilgi edinmek için aşağıdaki makaleye devam edin:
+Azure Uygulama yapılandırması ile başka uygulamalar oluşturma hakkında bilgi edinmek için aşağıdaki makaleye geçin:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Azure Uygulama Yapılandırması ile ASP.NET Core uygulaması oluşturun](quickstart-aspnet-core-app.md)
+> [Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma](quickstart-aspnet-core-app.md)
